@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.openlocfilehash: e9ab243692f5a4a1ec7de25774f5bad867698fc3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60746413"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-portal"></a>Hozzon létre és kezelhető az Azure Database for MariaDB tűzfalszabályok az Azure portal használatával
@@ -50,7 +50,7 @@ Ahhoz, hogy az Azure-alkalmazások az Azure Database for MariaDB-kiszolgálóhoz
 ## <a name="manage-existing-firewall-rules-in-the-azure-portal"></a>Az Azure Portalon a meglévő tűzfalszabályok kezelése
 Ismételje meg a tűzfalszabályok kezelésére.
 * Az aktuális számítógép hozzáadásához kattintson **+ Hozzáadás a saját IP-címet**. Kattintson a **Mentés** gombra a módosítások mentéséhez.
-* További IP-címek hozzáadásához írja be a **SZABÁLYNÉV**, **KEZDŐ IP-**, és **záró IP-cím**. Kattintson a **Mentés** gombra a módosítások mentéséhez.
+* További IP-címek hozzáadásához írja be a **SZABÁLYNÉV**, **KEZDŐ IP-** , és **záró IP-cím**. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 * Meglévő szabály módosításához kattintson a szabály a mezők, és módosítsa. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 * Meglévő szabály törléséhez kattintson a három pont [...], és kattintson **törlése**. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 

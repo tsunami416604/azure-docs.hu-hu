@@ -16,10 +16,10 @@ ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: bb6ef5a87c5610d90188471db961ef20dfb18835
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60302731"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>Riasztások kezelése a StorSimple Virtual Array az a StorSimple Eszközkezelő
@@ -130,7 +130,7 @@ Az alábbi táblázatok sorolják fel, amelyek akkor fordulhatnak, valamint a to
 
 | Riasztás szövege | Esemény | További információ / ajánlott műveletek |
 |:--- |:--- |:--- |
-| Eszköz <*eszköznév*> nem csatlakozik a felhőben. |Az elnevezett eszköz nem lehet csatlakozni a felhőben. |Nem létesíthető kapcsolat a felhővel. Ezt a következők egyike okozhatja:<ul><li>Előfordulhat, hogy probléma adódott a hálózati beállításokat az eszközön.</li><li>Előfordulhat, hogy a tárfiók hitelesítő adatait a probléma.</li></ul>Kapcsolódási problémák hibaelhárításával kapcsolatos további információkért látogasson el a [helyi webes felületén](storsimple-ova-web-ui-admin.md) az eszköz. |
+| Eszköz <*eszköznév*> nem csatlakozik a felhőben. |Az elnevezett eszköz nem lehet csatlakozni a felhőben. |Nem sikerült csatlakozni a felhőben. Ezt a következők egyike okozhatja:<ul><li>Előfordulhat, hogy probléma adódott a hálózati beállításokat az eszközön.</li><li>Előfordulhat, hogy a tárfiók hitelesítő adatait a probléma.</li></ul>Kapcsolódási problémák hibaelhárításával kapcsolatos további információkért látogasson el a [helyi webes felületén](storsimple-ova-web-ui-admin.md) az eszköz. |
 
 ### <a name="configuration-alerts"></a>Riasztások konfigurálása
 

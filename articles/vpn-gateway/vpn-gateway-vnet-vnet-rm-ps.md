@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: cherylmc
 ms.openlocfilehash: 6ea919a4c9554584e0da79739d3465586ae43227
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60456358"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Virtuális hálózatok közötti VPN Gateway-kapcsolat konfigurálása a PowerShell használatával
@@ -75,7 +75,7 @@ Ebben a gyakorlatban igény szerint kombinálhatja a konfigurációkat, vagy csa
 
 ## <a name="samesub"></a>Azonos előfizetésben található virtuális hálózatok összekapcsolása
 
-### <a name="before-you-begin"></a>Előzetes teendők
+### <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -206,7 +206,7 @@ A példákban a következő értékeket használjuk:
 
 Miután elvégezte a parancsok, az átjáró létrehozása akár 45 percet vesz igénybe. Azure Cloud Shellt használja, ha a munkamenetet. Ehhez kattintson a felső sarokban marad a Cloud Shell terminál cloud Shell újraindítása, majd a TestVNet4 konfigurálásához. Nem kell várnia, amíg befejeződik a TestVNet1-átjárót.
 
-### <a name="step-3---create-and-configure-testvnet4"></a>3. lépés – A TestVNet4 létrehozása és konfigurálása
+### <a name="step-3---create-and-configure-testvnet4"></a>3\. lépés – A TestVNet4 létrehozása és konfigurálása
 
 A TestVNet1 konfigurálása után a hozza létre a TestVNet4 virtuális hálózatot. Kövesse az alábbi lépéseket, az értékeket a saját értékeire cserélve.
 
@@ -268,7 +268,7 @@ A TestVNet1 konfigurálása után a hozza létre a TestVNet4 virtuális hálóza
    -VpnType RouteBased -GatewaySku VpnGw1
    ```
 
-### <a name="step-4---create-the-connections"></a>4. lépés – A kapcsolatok létrehozása
+### <a name="step-4---create-the-connections"></a>4\. lépés – A kapcsolatok létrehozása
 
 Várjon, amíg az átjárók végezhető el. Indítsa újra az Azure Cloud Shell-munkamenetet, és másolja, és illessze be a változókat. lépés 2. és 3. lépés elején található értékek redeclare a konzolt.
 
@@ -302,11 +302,11 @@ A jelen és korábbi lépések közötti különbség abban áll, hogy a konfigu
 
 Miatt változnak az előfizetési környezet ebben a gyakorlatban, akkor előfordulhat, hogy egyszerűbb PowerShell használatával helyileg a számítógépen, inkább az Azure Cloud Shell használatával, amikor a 8. lépés.
 
-### <a name="step-5---create-and-configure-testvnet1"></a>5. lépés – A TestVNet1 létrehozása és konfigurálása
+### <a name="step-5---create-and-configure-testvnet1"></a>5\. lépés – A TestVNet1 létrehozása és konfigurálása
 
 Az előző szakaszban található [1. lépés](#Step1) és a [2. lépés](#Step2) elvégzésével hozza létre és konfigurálja a TestVNet1-et, valamint a TestVNet1 VPN-átjáróját. Ehhez a konfigurációhoz nem kell létrehoznia az előző szakaszban a TestVNet4-et, azonban ha már megtette, az sem akadályozza az alábbi lépések végrehajtását. Miután elvégezte az 1. lépést és a 2. lépést, folytassa az 6. lépéssel a TestVNet5 létrehozásához.
 
-### <a name="step-6---verify-the-ip-address-ranges"></a>6. lépés – Az IP-címtartományok ellenőrzése
+### <a name="step-6---verify-the-ip-address-ranges"></a>6\. lépés – Az IP-címtartományok ellenőrzése
 
 Fontos ügyelni arra, hogy az új virtuális hálózat (TestVNet5) IP-címtere ne legyen átfedésben a többi virtuális hálózati vagy hálózati átjárói tartománnyal. Ebben a példában a virtuális hálózatok különböző szervezetekhez is tartozhatnak. A gyakorlatban a TestVNet5 hálózathoz a következő értékeket használhatja:
 
@@ -325,7 +325,7 @@ Fontos ügyelni arra, hogy az új virtuális hálózat (TestVNet5) IP-címtere n
 * Kapcsolat: VNet5toVNet1
 * ConnectionType: VNet2VNet
 
-### <a name="step-7---create-and-configure-testvnet5"></a>7. lépés – A TestVNet5 létrehozása és konfigurálása
+### <a name="step-7---create-and-configure-testvnet5"></a>7\. lépés – A TestVNet5 létrehozása és konfigurálása
 
 Ezt a lépést az új előfizetés környezetében kell elvégezni. Ezt a részt azon másik szervezet rendszergazdájának kell elvégeznie, amely az előfizetés tulajdonosa.
 
@@ -404,7 +404,7 @@ Ezt a lépést az új előfizetés környezetében kell elvégezni. Ezt a részt
    -IpConfigurations $gwipconf5 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1
    ```
 
-### <a name="step-8---create-the-connections"></a>8. lépés – A kapcsolatok létrehozása
+### <a name="step-8---create-the-connections"></a>8\. lépés – A kapcsolatok létrehozása
 
 Ebben a példában, mivel az átjárók különböző előfizetésekben találhatóak, a lépést felosztottuk két PowerShell-munkamenetre, amelyek jelölése [1. előfizetés] és [5. előfizetés].
 

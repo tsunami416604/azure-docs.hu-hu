@@ -17,10 +17,10 @@ ms.date: 01/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: aeb97d661d330ed6afb3ca5e5e1eb924dacc4024
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60607702"
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>Automatikus biztonsági mentés az SQL Server Azure-beli virtuális gépeken (klasszikus)
@@ -74,7 +74,7 @@ A következő táblázat ismerteti a beállításokat, amelyeket az automatikus 
 | **Tárfiók** |Az Azure storage-fiók (a storage-fiók létrehozása a megadott virtuális gép) |Blob storage-ban automatikus biztonsági mentés fájlok tárolására szolgáló Azure storage-fiókkal. Ezen a helyen tárolja az összes biztonsági mentési fájlokat tároló jön létre. Elnevezési szabálya a biztonságimásolat-fájl tartalmazza a dátum, idő és a gép neve. |
 | **Titkosítás** |Engedélyezés/letiltás (letiltva) |Engedélyezi vagy letiltja a titkosítást. Ha engedélyezve van a titkosítás, a biztonsági mentés visszaállításához használt tanúsítványok találhatók a megadott tárfiók ugyanabban a tárolóban automaticbackup ugyanazt az elnevezési konvenciót használ. A jelszó is módosul, ha egy új tanúsítvány hozza létre ezt a jelszót, de a régi tanúsítvány továbbra is a korábbi biztonsági másolatok visszaállításához. |
 | **Jelszó** |Jelszó szöveg (nincs) |A titkosítási kulcsok jelszava. Ez csak akkor szükséges, ha engedélyezve van-e a titkosítás. Annak érdekében, hogy a titkosított biztonsági másolat visszaállítása, rendelkeznie kell a helyes jelszót és a kapcsolódó az időben, a biztonsági mentéshez használt tanúsítvány. |
-| **Rendszeradatbázisok biztonsági mentése** | Engedélyezés/letiltás (letiltva) | Teljes biztonsági másolat készítése a fő-, modell- és MSDB adatbázisról |
+| **Rendszeradatbázisok biztonsági mentése** | Engedélyezés/letiltás (letiltva) | A Master, Model és MSDB teljes biztonsági másolat készítése |
 | **Biztonsági mentés ütemezésének konfigurálása** | Manuális vagy automatikus (automatikus) | Válassza ki **automatikus** számára automatikusan teljes és a napló növekedése alapján biztonsági másolataihoz. Válassza ki **manuális** , adja meg a teljes ütemezését és biztonsági másolataihoz. |
 
 ## <a name="configuration-with-powershell"></a>PowerShell-konfiguráció

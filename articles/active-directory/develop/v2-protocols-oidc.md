@@ -19,10 +19,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 23a8eaaf095be1d59944791bd793047886dda40c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65544810"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>A Microsoft identity platform és az OpenID Connect protokollal
@@ -52,7 +52,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 A `{tenant}` négy értékek valamelyikét hajthatja végre:
 
-| Value | Leírás |
+| Érték | Leírás |
 | --- | --- |
 | `common` |Személyes Microsoft-fiókkal és az Azure AD-ből egy munkahelyi vagy iskolai fiókkal rendelkező felhasználók jelentkezhetnek be az alkalmazáshoz. |
 | `organizations` |Csak a felhasználók munkahelyi vagy iskolai fiókok Azure AD-ből az alkalmazás jelentkezhetnek be. |
@@ -110,19 +110,19 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > Kattintson az alábbi hivatkozásra a kérelem végrehajtásához. Miután bejelentkezett, a böngésző átirányítja `https://localhost/myapp/`, egy azonosító jogkivonat címet a címsorba. Vegye figyelembe, hogy a kérelem használ `response_mode=fragment` (bemutatási célokra csak). Javasoljuk, hogy használjon `response_mode=form_post`.
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
-| Paraméter | Feltétel | Leírás |
+| Paraméter | Állapot | Leírás |
 | --- | --- | --- |
-| `tenant` | Szükséges | Használhatja a `{tenant}` szabályozza, ki is jelentkezzen be az alkalmazásba irányuló kérelem elérési útja értéket. Az engedélyezett értékek a következők `common`, `organizations`, `consumers`, és a bérlői azonosító. További információkért lásd: [protokoll alapvető](active-directory-v2-protocols.md#endpoints). |
-| `client_id` | Szükséges | A **Alkalmazásazonosítót (ügyfél)** , amely a [az Azure-portál – alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) az alkalmazáshoz rendelt felhasználói élményt. |
-| `response_type` | Szükséges | Tartalmaznia kell `id_token` OpenID Connect bejelentkezhet. Emellett tartalmazhat más `response_type` értékek, mint például `code`. |
+| `tenant` | Kötelező | Használhatja a `{tenant}` szabályozza, ki is jelentkezzen be az alkalmazásba irányuló kérelem elérési útja értéket. Az engedélyezett értékek a következők `common`, `organizations`, `consumers`, és a bérlői azonosító. További információkért lásd: [protokoll alapvető](active-directory-v2-protocols.md#endpoints). |
+| `client_id` | Kötelező | A **Alkalmazásazonosítót (ügyfél)** , amely a [az Azure-portál – alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) az alkalmazáshoz rendelt felhasználói élményt. |
+| `response_type` | Kötelező | Tartalmaznia kell `id_token` OpenID Connect bejelentkezhet. Emellett tartalmazhat más `response_type` értékek, mint például `code`. |
 | `redirect_uri` | Ajánlott | Az átirányítási URI-ját az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszokat. Ez pontosan egyeznie kell az átirányítási URI-k a portál regisztrált egyik azzal a különbséggel, hogy az URL-kódolású kell lennie. Ha nem található, a végpont lesz válasszon egy regisztrált redirect_uri véletlenszerű küldeni a felhasználó biztonsági. |
 | `scope` | Szükséges | Hatókörök szóközzel elválasztott listáját. Az OpenID Connect, tartalmaznia kell a hatókör `openid`, amelyet a rendszer lefordítja arra a jóváhagyási felhasználói felület a "Bejelentkezés" engedélyt. Más hatókörök tartalmazhatják a hozzájárulás kérése a kéréshez. |
-| `nonce` | Szükséges | A kérésben, az eredményül kapott id_token érték jogcímként szerepeljenek, az alkalmazás által generált érték. Az alkalmazás ellenőrizheti ezt az értéket ismétlésének támadások számának csökkentése érdekében. Az érték általában véletlenszerű, egyedi karakterlánc, amely a kérés eredetének azonosítására használhatók. |
+| `nonce` | Kötelező | A kérésben, az eredményül kapott id_token érték jogcímként szerepeljenek, az alkalmazás által generált érték. Az alkalmazás ellenőrizheti ezt az értéket ismétlésének támadások számának csökkentése érdekében. Az érték általában véletlenszerű, egyedi karakterlánc, amely a kérés eredetének azonosítására használhatók. |
 | `response_mode` | Ajánlott | Meghatározza az eredményül kapott engedélyezési kód küldi vissza az alkalmazáshoz használandó módszert. A következők egyike lehet: `form_post` vagy `fragment`. A webes alkalmazásokhoz, javasoljuk `response_mode=form_post`, annak érdekében, a jogkivonatok legbiztonságosabb átvitelét az alkalmazáshoz. |
 | `state` | Ajánlott | A kérelem is visszaadott a jogkivonat-válaszban szereplő érték. Bármilyen tartalmat karakterlánc lehet. Egy véletlenszerűen generált egyedi érték általában szolgál [webhelyközi kérések hamisításának megakadályozása támadások megelőzése érdekében](https://tools.ietf.org/html/rfc6749#section-10.12). Az állapot is szolgál a felhasználói állapot az alkalmazás információ kódolása előtt a hitelesítési kérelmet, például a lapot vagy a nézet a felhasználó nem található. |
-| `prompt` | Választható | Azt jelzi, hogy milyen típusú felhasználói beavatkozás szükséges. Jelenleg az egyetlen érvényes értékek a következők `login`, `none`, és `consent`. A `prompt=login` jogcím kényszeríti a felhasználónak meg kell adnia a hitelesítő adataikat a kérelmet, amely egyszeri bejelentkezés ellentettjét adja. A `prompt=none` jogcím ennek az ellenkezője. Ez a jogcím biztosítja, hogy a felhasználó minden olyan interaktív kérdés: nem megjelenik. Ha a kérés nem lehet végrehajtani csendes keresztül egyszeri bejelentkezést, a Microsoft identity platform végpont hibát ad vissza. A `prompt=consent` jogcím elindítja az OAuth-hozzájárulási párbeszédpanel a felhasználó bejelentkezése után az. A párbeszédpanel megkérdezi a felhasználót, engedélyeket az alkalmazáshoz. |
-| `login_hint` | Választható | Ez a paraméter használatával előre töltse ki a felhasználónevét és e-mail cím mező, a bejelentkezési oldal a felhasználó számára, ha a felhasználónév előre tudja. Gyakran alkalmazások használata során újbóli hitelesítés után már kinyerését a felhasználónevet egy korábbi bejelentkezési használatával ezt a paramétert a `preferred_username` jogcím. |
-| `domain_hint` | Választható | A tartományt, a felhasználó egy összevont könyvtárban.  Ez kihagyja az e-mail-alapú felderítési folyamat, amely a felhasználó végighalad a bejelentkezési lapon némileg több zökkenőmentes felhasználói élményt. A bérlők számára, amely egy helyszíni címtár, például az AD FS segítségével összevont Ez gyakran eredményez zökkenőmentes bejelentkezési miatt a létező bejelentkezési munkamenet. |
+| `prompt` | Optional | Azt jelzi, hogy milyen típusú felhasználói beavatkozás szükséges. Jelenleg az egyetlen érvényes értékek a következők `login`, `none`, és `consent`. A `prompt=login` jogcím kényszeríti a felhasználónak meg kell adnia a hitelesítő adataikat a kérelmet, amely egyszeri bejelentkezés ellentettjét adja. A `prompt=none` jogcím ennek az ellenkezője. Ez a jogcím biztosítja, hogy a felhasználó minden olyan interaktív kérdés: nem megjelenik. Ha a kérés nem lehet végrehajtani csendes keresztül egyszeri bejelentkezést, a Microsoft identity platform végpont hibát ad vissza. A `prompt=consent` jogcím elindítja az OAuth-hozzájárulási párbeszédpanel a felhasználó bejelentkezése után az. A párbeszédpanel megkérdezi a felhasználót, engedélyeket az alkalmazáshoz. |
+| `login_hint` | Optional | Ez a paraméter használatával előre töltse ki a felhasználónevét és e-mail cím mező, a bejelentkezési oldal a felhasználó számára, ha a felhasználónév előre tudja. Gyakran alkalmazások használata során újbóli hitelesítés után már kinyerését a felhasználónevet egy korábbi bejelentkezési használatával ezt a paramétert a `preferred_username` jogcím. |
+| `domain_hint` | Optional | A tartományt, a felhasználó egy összevont könyvtárban.  Ez kihagyja az e-mail-alapú felderítési folyamat, amely a felhasználó végighalad a bejelentkezési lapon némileg több zökkenőmentes felhasználói élményt. A bérlők számára, amely egy helyszíni címtár, például az AD FS segítségével összevont Ez gyakran eredményez zökkenőmentes bejelentkezési miatt a létező bejelentkezési munkamenet. |
 
 Ezen a ponton a felhasználótól megadják hitelesítő adataikat, és a hitelesítés végrehajtásához. A Microsoft identity platform végpont ellenőrzi, hogy a felhasználó hozzájárult a megadott engedélyeket a `scope` lekérdezési paraméter. Ha a felhasználó még nem hagyta jóvá bármely ezeket az engedélyeket, a Microsoft identity platform végpont kéri a felhasználót, hogy engedélyt adjanak az a szükséges engedélyekkel. További információ [engedélyek, beleegyezése és több-bérlős alkalmazások](v2-permissions-and-consent.md).
 
@@ -201,7 +201,7 @@ GET https://login.microsoftonline.com/common/oauth2/v2.0/logout?
 post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 ```
 
-| Paraméter | Feltétel | Leírás |
+| Paraméter | Állapot | Leírás |
 | ----------------------- | ------------------------------- | ------------ |
 | `post_logout_redirect_uri` | Ajánlott | Az URL-cím, amely a felhasználó sikeres bejelentkezés után van átirányítva. Ha a paraméter nem tartalmaz, a felhasználó alábbi hibaüzenet jelenik meg a Microsoft identity platform végpont által létrehozott jelenik meg. Az URL-címet meg kell egyeznie az átirányítási URI-k az alkalmazás az app-regisztrációs portál regisztrált egyikét. |
 

@@ -12,10 +12,10 @@ ms.date: 04/18/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: 357ed4c42cc2758766b9ccd45a3fafa541338d11
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65154573"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>A LUIS-modell és a kulcsok határok
@@ -28,7 +28,7 @@ Ha az alkalmazás meghaladja a LUIS-modell korlátait és határokat, fontolja m
 
 |Terület|Korlát|
 |--|:--|
-| [Alkalmazás neve][luis-get-started-create-app] | * Maximális alapértelmezett karakter |
+| [Alkalmazás neve][luis-get-started-create-app] | \* Maximális alapértelmezett karakter |
 | [Batch-tesztelés][batch-testing]| 10-adatkészletek, 1000 utterances Adatkészletenként|
 | Explicit listája | 50 alkalmazásonként|
 | Külső entitások | korlátlan |
@@ -47,7 +47,7 @@ Ha az alkalmazás meghaladja a LUIS-modell korlátait és határokat, fontolja m
 | [Verziók](luis-concept-version.md)| korlátlan |
 | [Verziónév][luis-how-to-manage-versions] | 10 karakter hosszúságú alfanumerikus karaktereket, illetve időszak korlátozódik (.) |
 
-* Alapértelmezett karakter legfeljebb 50 karakter hosszú lehet. 
+\* Alapértelmezett karakter legfeljebb 50 karakter hosszú lehet. 
 
 <a name="intent-and-entity-naming"></a>
 

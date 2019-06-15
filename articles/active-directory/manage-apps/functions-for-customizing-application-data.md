@@ -15,10 +15,10 @@ ms.date: 01/21/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec1994169891d5256436ac4de741339c865bb268
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65824648"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Az Azure Active Directoryban attribútumleképezések kifejezések írása
@@ -184,7 +184,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 | **[hozzárendeléseinek]** |Szükséges |Karakterlánc |**[hozzárendeléseinek]**  objektum. |
 
 - - -
-### <a name="split"></a>Megosztott
+### <a name="split"></a>Felosztás
 **Függvény:**<br> Split (forrás, elválasztó karakter)
 
 **Leírás:**<br> Egy karakterlánc felosztja a mulit értékű tömb a megadott elválasztó karakter használatával.
@@ -194,7 +194,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 | Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
 | **source** |Szükséges |Karakterlánc |**forrás** érték frissítéséhez. |
-| **delimiter** |Szükséges |String |Adja meg a karakter, amely a sztring felosztásához használandó (Példa: ",") |
+| **delimiter** |Kötelező |String |Adja meg a karakter, amely a sztring felosztásához használandó (Példa: ",") |
 
 - - -
 ### <a name="stripspaces"></a>StripSpaces
@@ -234,7 +234,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 | Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
 | **source** |Szükséges |Karakterlánc |Általában az attribútum az az adatforrás-objektum neve |
-| **culture** |Választható |String |A kulturális környezet neve alapján RFC 4646 formátuma *languagecode2 – ország/regioncode2*, ahol *languagecode2* a kétbetűs nyelvi kódja és *ország/regioncode2*a kétbetűs szubkultúrákhoz kódja. Például ja-JP Japán (japán) és a hu-hu az angol (Egyesült Államok). Azokban az esetekben, ahol a kétbetűs nyelvkód nem érhető el egy ISO 639-2 származó hárombetűs kódot használja.|
+| **culture** |Optional |String |A kulturális környezet neve alapján RFC 4646 formátuma *languagecode2 – ország/regioncode2*, ahol *languagecode2* a kétbetűs nyelvi kódja és *ország/regioncode2*a kétbetűs szubkultúrákhoz kódja. Például ja-JP Japán (japán) és a hu-hu az angol (Egyesült Államok). Azokban az esetekben, ahol a kétbetűs nyelvkód nem érhető el egy ISO 639-2 származó hárombetűs kódot használja.|
 
 - - -
 ### <a name="toupper"></a>ToUpper
@@ -247,7 +247,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 | Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
 | **source** |Szükséges |Karakterlánc |Általában az attribútum neve, az adatforrás-objektum. |
-| **culture** |Választható |String |A kulturális környezet neve alapján RFC 4646 formátuma *languagecode2 – ország/regioncode2*, ahol *languagecode2* a kétbetűs nyelvi kódja és *ország/regioncode2*a kétbetűs szubkultúrákhoz kódja. Például ja-JP Japán (japán) és a hu-hu az angol (Egyesült Államok). Azokban az esetekben, ahol a kétbetűs nyelvkód nem érhető el egy ISO 639-2 származó hárombetűs kódot használja.|
+| **culture** |Optional |String |A kulturális környezet neve alapján RFC 4646 formátuma *languagecode2 – ország/regioncode2*, ahol *languagecode2* a kétbetűs nyelvi kódja és *ország/regioncode2*a kétbetűs szubkultúrákhoz kódja. Például ja-JP Japán (japán) és a hu-hu az angol (Egyesült Államok). Azokban az esetekben, ahol a kétbetűs nyelvkód nem érhető el egy ISO 639-2 származó hárombetűs kódot használja.|
 
 ## <a name="examples"></a>Példák
 ### <a name="strip-known-domain-name"></a>Sáv ismert tartománynév

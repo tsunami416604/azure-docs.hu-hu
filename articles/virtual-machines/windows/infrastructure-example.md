@@ -17,10 +17,10 @@ ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ddbaed6704fd32f7fd4fe5a790424cbf829d2f1c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60540402"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Windows virtuális gépek Azure-infrastruktúra bemutató példa
@@ -55,8 +55,8 @@ Az összes a fenti ezek elnevezési konvencióinak:
 * Adventure Works Cycles használ **[informatikai munkaterhelés]-[helye]-[Azure-erőforrás]** előtagjaként
   * Ebben a példában "**azos**" (az Azure Online Store) az informatikai számítási feladat neve és a "**használata**" (USA keleti RÉGIÓJA 2) az a hely
 * Virtuális hálózatok használata AZOS-használat – VN **[száma]**
-* A rendelkezésre állási csoportok használata azos-használata-as-**[szerepkör]**
-* Virtuálisgép-neveknek azos használata – használata – virtuálisgép -**[vmname]**
+* A rendelkezésre állási csoportok használata azos-használata-as- **[szerepkör]**
+* Virtuálisgép-neveknek azos használata – használata – virtuálisgép - **[vmname]**
 
 ## <a name="azure-subscriptions-and-accounts"></a>Az Azure-előfizetések és fiókok
 Az Adventure Works Cycles nevű Adventure Works nagyvállalati előfizetéssel, a vállalati előfizetést, segítségével az informatikai számítási feladathoz tartozó számlázási.

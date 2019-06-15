@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 3/14/2019
 ms.author: mayg
 ms.openlocfilehash: 8a36a80903a47bb4163666baf86ed8dac13a00de
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61471135"
 ---
 # <a name="review-the-cost-estimation-report-in-the-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Tekintse át a VMware-vészhelyreállításhoz az Azure-bA a Site Recovery Deployment Planner költségbecslési jelentést
@@ -122,17 +122,17 @@ Virtuális gépek manuális hozzáadása:
 
 **Virtuális gépek száma**: A konfigurációnak megfelelő virtuális gépek száma. Frissítheti a meglévő virtuális gépek számát, ha a hasonló konfigurációjú virtuális gépekről nem készül profil, de védve lesznek.
 
-**IaaS-méret (javaslat)**: Legyen az a kompatibilis virtuális gép az eszköz által javasolt virtuális gépi szerepkörének mérete. 
+**IaaS-méret (javaslat)** : Legyen az a kompatibilis virtuális gép az eszköz által javasolt virtuális gépi szerepkörének mérete. 
 
-**IaaS-méret (felhasználó választása)**: Alapértelmezés szerint megegyezik a javasolt virtuális gépi szerepkör mérete. Igény szerint módosíthatja a szerepkört. A számítási költség a kiválasztott virtuális gépi szerepkör méretén alapul.
+**IaaS-méret (felhasználó választása)** : Alapértelmezés szerint megegyezik a javasolt virtuális gépi szerepkör mérete. Igény szerint módosíthatja a szerepkört. A számítási költség a kiválasztott virtuális gépi szerepkör méretén alapul.
 
 **Tárolási típus**: A virtuális gép által használt tároló típusa. Lehet standard vagy prémium szintű tároló.
 
-**Virtuális gép tárterületének teljes mérete (GB)**: A virtuális gép teljes tárterülete.
+**Virtuális gép tárterületének teljes mérete (GB)** : A virtuális gép teljes tárterülete.
 
 **DR működéseinek száma évente**: Hányszor DR működéseinek hajt végre egy év. Alapértelmezés szerint az értéke évente 4. Módosíthatja adott virtuális gépek időszakait, vagy alkalmazhatja az új értéket az összes virtuális gépre úgy, hogy a felső sorba beírja az új értéket és az „Alkalmazás az összesre” gombra kattint. A DR működéseinek száma évente és a DR egyes működéseinek időtartama alapján a rendszer kiszámítja a DR működésének teljes költségét.  
 
-**Minden egyes DR működések időtartama (nap)**: Egyes működéseinek időtartama. Alapértelmezés szerint ez 90 naponként 7 nap a [Vészhelyreállítási frissítési garanciának](https://azure.microsoft.com/pricing/details/site-recovery) megfelelően. Módosíthatja adott virtuális gépek időszakait, vagy alkalmazhatja az új értéket az összes virtuális gépre úgy, hogy a felső sorba beírja az új értéket és az „Alkalmazás az összesre” gombra kattint. A DR működésének teljes költsége kiszámítása a DR évi működéseinek számán és a DR egyes működéseinek időtartamán alapul.
+**Minden egyes DR működések időtartama (nap)** : Egyes működéseinek időtartama. Alapértelmezés szerint ez 90 naponként 7 nap a [Vészhelyreállítási frissítési garanciának](https://azure.microsoft.com/pricing/details/site-recovery) megfelelően. Módosíthatja adott virtuális gépek időszakait, vagy alkalmazhatja az új értéket az összes virtuális gépre úgy, hogy a felső sorba beírja az új értéket és az „Alkalmazás az összesre” gombra kattint. A DR működésének teljes költsége kiszámítása a DR évi működéseinek számán és a DR egyes működéseinek időtartamán alapul.
   
 **Operációs rendszer típusa**: A virtuális gép operációs rendszerének típusa. Lehet Windows vagy Linux. Ha az operációs rendszer típusa Windows, az Azure Hybrid Use Benefit alkalmazható a virtuális gépre. 
 
@@ -144,7 +144,7 @@ Virtuális gépek manuális hozzáadása:
 
 **Stabil állapotú replikáció költsége**: A replikáció tárolási költségét tartalmazza.
 
-**Teljes működéseinek költsége (átlag)**: Ez magában foglalja a számítási és tárolási költségét Dr működésének.
+**Teljes működéseinek költsége (átlag)** : Ez magában foglalja a számítási és tárolási költségét Dr működésének.
 
 **ASR-licencköltség**: Az Azure Site Recovery-licenc költsége.
 

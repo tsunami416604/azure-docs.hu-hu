@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 13ea2b68027c81bca7b43cef62cf7039aa0ea8dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60609497"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Azure biztonsági és megfelelőségi terv – a háromrétegű IaaS-webalkalmazás a UK-OFFICIAL
@@ -154,7 +154,7 @@ Ezek a virtuális hálózatok továbbra is külön erőforrásként történik, 
 
 **Hálózati biztonsági csoportok**: [Az NSG-k](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) tartalmazza a hozzáférés-vezérlési listák, amelyek engedélyezik vagy megtagadják a forgalmat a Vneten belül. Az NSG-ket egy alhálózatot vagy az egyes Virtuálisgép-szintű forgalom védelmére használható.
 
-**Az Active Directory Domain Services (AD DS)**: Ez az architektúra biztosít egy dedikált [Active Directory Domain Services](https://technet.microsoft.com/library/hh831484.aspx) központi telepítés.
+**Az Active Directory Domain Services (AD DS)** : Ez az architektúra biztosít egy dedikált [Active Directory Domain Services](https://technet.microsoft.com/library/hh831484.aspx) központi telepítés.
 
 **Naplózás és a naplózási**: [Azure-tevékenységnapló](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) rögzíti műveletek végrehajtását az erőforrást az előfizetésében, mint például az kezdeményező a műveletet, amikor a művelet végrehajtásának, a művelet állapotának és más tulajdonságokat, amelyek segíthetnek a kutatási a a művelet. Azure-tevékenységnapló egy Azure platformszolgáltatás, amely egy adott előfizetés összes műveleteket rögzíti. Naplók archiválhatók vagy exportált, ha szükséges.
 

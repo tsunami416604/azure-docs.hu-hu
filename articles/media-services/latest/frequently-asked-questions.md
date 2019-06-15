@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/24/2019
 ms.author: juliako
 ms.openlocfilehash: 98e8c0ccd150776341e644f7565696e8fbd63e99
-ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65556271"
 ---
 # <a name="azure-media-services-v3-frequently-asked-questions"></a>Az Azure Media Services v3 – gyakori kérdések
@@ -46,7 +46,7 @@ Tördelés használatakor mindig használjon a következő hivatkozás enumerál
 
 További információkért lásd: [megállapodást v2 API-k hézagok funkció](migrate-from-v2-to-v3.md#feature-gaps-with-respect-to-v2-apis).
 
-## <a name="live-streaming"></a>Élő közvetítés 
+## <a name="live-streaming"></a>Live streaming (Élő adatfolyam) 
 
 ###  <a name="how-to-insert-breaksvideos-and-image-slates-during-live-stream"></a>Hogyan szúrhat be a sortöréseket és videók és lemezkép befutók során élő streamet?
 

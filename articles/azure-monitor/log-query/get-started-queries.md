@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: bwren
 ms.openlocfilehash: 105454205c0fe3a0020693a1289a65cecd2bf57b
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65519015"
 ---
 # <a name="get-started-with-azure-monitor-log-queries"></a>Az Azure Monitor log-lekérdezések használatának első lépései
@@ -108,7 +108,7 @@ SecurityEvent
 
 Szűrési feltételek írásakor, használhatja az alábbi kifejezések:
 
-| Kifejezés | Leírás | Példa |
+| kifejezés | Leírás | Példa |
 |:---|:---|:---|
 | == | Egyenlőség ellenőrzése<br>(case-sensitive) | `Level == 8` |
 | =~ | Egyenlőség ellenőrzése<br>(case-insensitive) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
@@ -138,7 +138,7 @@ SecurityEvent
 ### <a name="time-picker"></a>Időpontválasztó
 A időválasztó mellett a Futtatás gombra, és azt jelzi, hogy csak az elmúlt 24 órában a rekordok lekérdezésekor. Ez az összes lekérdezés alkalmazott alapértelmezett időintervallumát. Az elmúlt egy órában csak a rekordok lekéréséhez válassza _utolsó óra_ , és futtassa újra a lekérdezést.
 
-![Időpontválasztó](media/get-started-queries/timepicker.png)
+![Időválasztó](media/get-started-queries/timepicker.png)
 
 
 ### <a name="time-filter-in-query"></a>A lekérdezés Időszűrő

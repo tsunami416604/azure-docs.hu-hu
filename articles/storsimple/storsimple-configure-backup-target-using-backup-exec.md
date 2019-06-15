@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/05/2016
 ms.author: hkanna
 ms.openlocfilehash: e11d541f0450c0de4ba6d60f889fc7471b1fa1aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60724320"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>A biztonsági mentési Exec a StorSimple mint biztonsági mentési cél
@@ -313,8 +313,8 @@ Az alábbi ábrán egy tipikus kötetet a biztonsági mentési feladat hozzáren
 | Gyakorisága, illetve biztonsági mentési típusa | Korlátlan | Növekményes (1-5 nap)  |   
 |---|---|---|
 | Heti (1 – 4 hét) | Szombat | Hétfőtől péntekig |
-| Havonta  | Szombat  |   |
-| Évente | Szombat  |   |
+| Havi  | Szombat  |   |
+| Éves ütemezéshez | Szombat  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-backup-job"></a>StorSimple-kötetek hozzárendelése egy biztonsági mentési Exec biztonsági mentési feladat
@@ -381,14 +381,14 @@ Az alábbi táblázat bemutatja, hogyan futtathatók a helyi és a StorSimple-le
 
 ### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS példa ütemezése: Elforgatás GFS heti, havi és éves ütemterv
 
-| Hét | Korlátlan | 1. nap növekményes | 2. napon növekményes | Növekményes naponta 3 | Növekményes naponta 4 | Növekményes nap 5 |
+| Hét | Korlátlan | 1\. nap növekményes | 2\. napon növekményes | Növekményes naponta 3 | Növekményes naponta 4 | Növekményes nap 5 |
 |---|---|---|---|---|---|---|
 | 1 hét | Helyi RAID kötetre  | Helyi RAID kötetre | Helyi RAID kötetre | Helyi RAID kötetre | Helyi RAID kötetre | Helyi RAID kötetre |
 | 2 hét | A StorSimple hét 2 – 4 |   |   |   |   |   |
 | 3 hét | A StorSimple hét 2 – 4 |   |   |   |   |   |
 | 4 hét | A StorSimple hét 2 – 4 |   |   |   |   |   |
-| Havonta | A StorSimple havi |   |   |   |   |   |
-| Évente | StorSimple évente  |   |   |   |   |   |
+| Havi | A StorSimple havi |   |   |   |   |   |
+| Éves ütemezéshez | StorSimple évente  |   |   |   |   |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-archive-and-deduplication-job"></a>StorSimple-kötetek hozzárendelése egy Backup Execkel archive, és a deduplikációs feladat

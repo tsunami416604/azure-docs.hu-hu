@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.custom: seodec18
 ms.openlocfilehash: 7be6c9eda6d0a70d929efe4c00f661eb67105820
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606423"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet konfigurálása
@@ -295,14 +295,14 @@ Hozzon létre egy [Databricks-fürt](https://docs.microsoft.com/azure/azure-data
 
 Használja ezeket a beállításokat:
 
-| Beállítás |A következőkre vonatkozik| Value |
+| Beállítás |A következőkre vonatkozik:| Érték |
 |----|---|---|
-| Fürt neve |mindig| yourclustername |
-| A Databricks futtatókörnyezete |mindig| Any non ML runtime (non ML 4.x, 5.x) |
-| Python-verzió |mindig| 3 |
-| Feldolgozók |mindig| 2-es vagy újabb |
-| Munkavégző csomópont virtuális gépek típusai <br>(az egyidejű az ismétlések maximális száma határozza meg) |Automatizált gépi tanulás<br>csak| Az optimalizált memóriájú virtuális gép előnyben részesített |
-| Automatikus skálázás engedélyezése |Automatizált gépi tanulás<br>csak| Törölje a jelet |
+| Fürt neve |Mindig| yourclustername |
+| A Databricks futtatókörnyezete |Mindig| Any non ML runtime (non ML 4.x, 5.x) |
+| Python-verzió |Mindig| 3 |
+| Feldolgozók |Mindig| 2-es vagy újabb |
+| Munkavégző csomópont virtuális gépek típusai <br>(az egyidejű az ismétlések maximális száma határozza meg) |Automatizált ML<br>csak| Az optimalizált memóriájú virtuális gép előnyben részesített |
+| Automatikus skálázás engedélyezése |Automatizált ML<br>csak| Törölje a jelet |
 
 Várjon, amíg a fürt fut, mielőtt továbblépne.
 
@@ -311,7 +311,7 @@ Ha a fürt már fut, [hozzon létre egy könyvtárat](https://docs.databricks.co
 
 1. Válasszon **csak egy** beállítás (más SDK telepítése nem támogatott)
 
-   |SDK&nbsp;package&nbsp;extras|Source|PyPi&nbsp;neve&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+   |SDK&nbsp;package&nbsp;extras|source|PyPi&nbsp;neve&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
    |A Databricks| Töltse fel a Python tojás vagy PyPI | azureml-sdk[databricks]|
    |A Databricks - a-<br> automatizált gépi Tanulási képességek| Töltse fel a Python tojás vagy PyPI | azureml-sdk[automl_databricks]|
@@ -378,7 +378,7 @@ Ezt a fájlt a kód használatához `ws=Workspace.from_config()`. Ez a kód az a
 
 Háromféleképpen hozhat létre a konfigurációs fájlban:
 
-* **Kövesse a [hozzon létre egy Azure Machine Learning szolgáltatás munkaterület](setup-create-workspace.md#sdk)**: A *config.json* fájl jön létre az Azure-jegyzetfüzetek könyvtárban. A fájl munkaterületét a konfigurációs információkat tartalmaz. Töltse le, vagy másolja a *config.json* más fejlesztési környezethez.
+* **Kövesse a [hozzon létre egy Azure Machine Learning szolgáltatás munkaterület](setup-create-workspace.md#sdk)** : A *config.json* fájl jön létre az Azure-jegyzetfüzetek könyvtárban. A fájl munkaterületét a konfigurációs információkat tartalmaz. Töltse le, vagy másolja a *config.json* más fejlesztési környezethez.
 
 * **Töltse le a fájlt**: Az a [az Azure portal](https://ms.portal.azure.com)válassza **config.json letöltése** a a **áttekintése** szakasz a munkaterület.
 

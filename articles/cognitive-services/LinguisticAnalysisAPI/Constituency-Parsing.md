@@ -12,10 +12,10 @@ ms.date: 03/21/2016
 ms.author: lesun
 ROBOTS: NOINDEX
 ms.openlocfilehash: 7611f5f16111b5d8b0d2d293750f658125e50837
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60535435"
 ---
 # <a name="constituency-parsing"></a>Vevőkör-elemzés
@@ -58,7 +58,7 @@ Egy elemző célja az összes ilyen kifejezések keresésére.
 Interestingly természetes nyelven a mondatok általában egy másik ágyazhatók egymásba.
 A következő kifejezésekkel ellátva természetes ábrázolása egy fa, például a következő:
 
-![Fa](./Images/tree.png)
+![fa](./Images/tree.png)
 
 Ehhez a fához megjelölt "NP" az ágak főnév kifejezések.
 Van néhány ilyen kifejezések: *E*, *egy új hibrid automobile*, *Bluetooth*, és *egy új hibrid automobile Bluetooth*.

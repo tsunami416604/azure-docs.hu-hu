@@ -12,10 +12,10 @@ ms.date: 05/02/2019
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: b9a0890000cda0b3663ac29bee61fc1c702f6254
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65410691"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>A Cognitive Services beszédfelismerő eszközök SDK beszerzése
@@ -24,7 +24,7 @@ A beszédfelismerés Devices SDK-val célirányosan fejlesztett szoftverfejleszt
 
 ## <a name="choose-a-development-kit"></a>Válassza ki a fejlesztői csomag
 
-|Eszközök|Specifikáció|Leírás|Alkalmazási helyzetek|
+|Eszközök|Specifikáció|Leírás|Forgatókönyvek|
 |--|--|--|--|
 |[Roobo intelligens hang Dev csomag](https://ddk.roobo.com)</br>[A telepítő](speech-devices-sdk-roobo-v1.md) / [rövid](speech-devices-sdk-android-quickstart.md)![Roobo intelligens hang Dev csomag](media/speech-devices-sdk/device-roobo-v1.jpg)|Mic-tömb, ARM SOC, Wi-Fi 7, hang Out, IO. </br>Android|Az első Speech eszközök SDK Microsoft Mic Array és SDK-t és feldolgozási magas színvonalú beszédátírási és tolmácsolást forgatókönyvek fejlesztéséhez előtér alkalmazkodni|Beszélgetés Beszédátírási, intelligens Speaker Hangtípus hordható-ügynök|
 |[Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)![Azure Kinect DK](media/speech-devices-sdk/device-azure-kinect-dk.jpg)|7 mic tömb RGB és mélysége fényképezőgépek. </br>Windows/Linux|A fejlesztői csomag olyan kifinomult számítógép látás- és a modellek létrehozásához speciális mesterséges intelligencia (AI). A legjobb minőségű térbeli mikrofon tömb és mélysége kamera kombinálja egy videokamerát és a tájolás érzékelő – egy kis eszközön több módok, beállítások és SDK-k széles befogadásához összes számítási típus.|Beszélgetés Beszédátírási, robotika, intelligens létrehozása|

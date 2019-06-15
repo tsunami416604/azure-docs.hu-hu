@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/04/2018
 ms.author: damaerte
 ms.openlocfilehash: 0aa00af543a3d21db9b8ad0ed808a8bff0b534e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60200275"
 ---
 [!INCLUDE [PersistingStorage-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
@@ -70,7 +70,7 @@ A fájlmegosztás továbbra is megmarad, ha manuálisan törölni. A cloud Shell
 ![Fut a "clouddrive unmount'command](media/persisting-shell-storage/unmount-h.png)
 
 > [!WARNING]
-> Bár a parancs futtatása nem inaktiválja azokat az erőforrásokat, egy erőforráscsoport, a storage-fiók vagy a Cloud Shell leképezett fájlmegosztás törlésével törli az `$Home` directory lemezképét és a fájlmegosztás található fájlokat. A művelet nem vonható vissza.
+> Bár a parancs futtatása nem inaktiválja azokat az erőforrásokat, egy erőforráscsoport, a storage-fiók vagy a Cloud Shell leképezett fájlmegosztás törlésével törli az `$Home` directory lemezképét és a fájlmegosztás található fájlokat. Ez a művelet nem vonható vissza.
 
 ### <a name="list-clouddrive"></a>lista `clouddrive`
 Felderítheti, mely fájlmegosztás van csatlakoztatva, `clouddrive`futtassa a `df` parancsot. 

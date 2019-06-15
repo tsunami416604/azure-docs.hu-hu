@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: magoedte
 ms.openlocfilehash: 0f35ea3e35277ee7f1afd8278a31f45ed20c6995
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65522122"
 ---
 # <a name="how-to-disable-monitoring-of-your-virtual-machines-with-azure-monitor-for-vms-preview"></a>Hogyan tilthatja le a virtuális gépek figyelése és az Azure Monitor-beli virtuális gépek (előzetes verzió)
@@ -53,8 +53,8 @@ A következő lépések bemutatják, hogyan történő teljes eltávolításáho
 2. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájában írja be a Log Analytics. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
 3. A Log Analytics-munkaterületek listájában válassza ki a munkaterületet, mikor választotta az Azure Monitor-beli virtuális gépek előkészítése.
 4. A bal oldali panelen válassza ki a **megoldások**.  
-5. Megoldások listájából válassza ki **InfrastructureInsights (a munkaterület neve)**, majd a a **áttekintése** a megoldás oldalára, kattintson **törlése**.  Amikor a rendszer kéri, erősítse meg, kattintson a **Igen**.  
-6. Megoldások listájából válassza ki a **ServiceMap (a munkaterület neve)**, majd a a **áttekintése** a megoldás oldalára, kattintson **törlése**.  Amikor a rendszer kéri, erősítse meg, kattintson a **Igen**.  
+5. Megoldások listájából válassza ki **InfrastructureInsights (a munkaterület neve)** , majd a a **áttekintése** a megoldás oldalára, kattintson **törlése**.  Amikor a rendszer kéri, erősítse meg, kattintson a **Igen**.  
+6. Megoldások listájából válassza ki a **ServiceMap (a munkaterület neve)** , majd a a **áttekintése** a megoldás oldalára, kattintson **törlése**.  Amikor a rendszer kéri, erősítse meg, kattintson a **Igen**.  
 
 Ha az Azure Monitor-beli virtuális gépek előkészítése, mielőtt nem [engedélyezve van a teljesítményszámlálók gyűjtése](vminsights-enable-overview.md#performance-counters-enabled) a Windows vagy Linux-alapú virtuális gépeket a munkaterületen, le kell tiltania ezeket a szabályokat a leírtlépéseketkövetve[Itt](../platform/data-sources-performance-counters.md#configuring-performance-counters) Windows és Linux rendszeren.
 

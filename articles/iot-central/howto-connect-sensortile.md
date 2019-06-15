@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: sandeep.pujar
 ms.openlocfilehash: 8c1b4a4ab834b2203a7e0b6e4e9e366c3fc38774
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65472168"
 ---
 # <a name="connect-sensortilebox-device-to-your-azure-iot-central-application"></a>SensorTile.box eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz
@@ -41,7 +41,7 @@ Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **SensorT
 
 1. Kérheti le az eszköz kapcsolat adatait, **hatókör azonosítója**, **Eszközazonosító**, és **elsődleges kulcs**válassza **Connect** az eszköz oldalon.
 
-    ![Kapcsolat részletei](media/howto-connect-sensortile/connect-device.png)
+    ![Kapcsolat adatai](media/howto-connect-sensortile/connect-device.png)
 
 1. Jegyezze fel a kapcsolati adatok. Ideiglenesen megszakadt a kapcsolat az internetről a következő lépésben DevKit eszközét előkészítésekor.
 
@@ -51,7 +51,7 @@ Ebben a szakaszban megismerheti, hogyan küldhet az eszközre az alkalmazás bel
 
 1. Nyissa meg a ST Gedélyezése érzékelő alkalmazást, majd nyomja le az **hozzon létre egy új alkalmazást** gombra.
 
-    ![App létrehozása](media/howto-connect-sensortile/create-app.png)
+    ![alkalmazás létrehozása](media/howto-connect-sensortile/create-app.png)
 
 1. Válassza ki a **mérőeszköz** alkalmazás.
 1. A Feltöltés gombra.
@@ -84,10 +84,10 @@ A következő jellemzőkkel SensorTile.box eszköz sablonból létrehozott alkal
 
 ### <a name="telemetry"></a>Telemetria
 
-| Mezőnév     | Mértékegységek  | Minimum | Maximum | Tizedeshelyek |
+| Mező neve     | Egység  | Minimális | Maximum | Tizedeshelyek |
 | -------------- | ------ | ------- | ------- | -------------- |
-| páratartalom       | %      | 30       | 90     | 1.              |
-| TEMP           | °C     | 0     | 40     | 1.              |
+| páratartalom       | %      | 30       | 90     | 1              |
+| TEMP           | °C     | 0     | 40     | 1              |
 | pressure       | mbar    | 900     | 1100    | 2              |
 | magnetometerX  | mgauss | -1000   | 1000    | 0              |
 | magnetometerY  | mgauss | -1000   | 1000    | 0              |
@@ -95,9 +95,9 @@ A következő jellemzőkkel SensorTile.box eszköz sablonból létrehozott alkal
 | accelerometerX | mg     | -2000   | 2000    | 0              |
 | accelerometerY | mg     | -2000   | 2000    | 0              |
 | accelerometerZ | mg     | -2000   | 2000    | 0              |
-| gyroscopeX     | A DPS   | -3276   | 3276    | 1.              |
-| gyroscopeY     | A DPS   | -3276   | 3276    | 1.              |
-| gyroscopeZ     | A DPS   | -3276   | 3276    | 1.              |
+| gyroscopeX     | A DPS   | -3276   | 3276    | 1              |
+| gyroscopeY     | A DPS   | -3276   | 3276    | 1              |
+| gyroscopeZ     | A DPS   | -3276   | 3276    | 1              |
 | FFT_X     |    |    |     |               |
 | FFT_Y     |    |    |     |               |
 | FFT_Z     |    |    |     |               |

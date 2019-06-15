@@ -9,13 +9,13 @@ ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 26055727e308f8c05aece31746434d7e9a0a5abd
-ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65555945"
 ---
-# <a name="troubleshoot-azure-file-sync"></a>Azure File Sync – hibaelhárítás
+# <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
 
 Ez a cikk célja, hibakeresésre és az Azure File Sync üzembe helyezéssel előforduló problémák megoldására. Azt is ismertetjük, hogyan fontos naplók gyűjtését a rendszer, ha a probléma egy mélyebb vizsgálatra szükség. Ha nem látja a választ a kérdésére, lépjen kapcsolatba velünk (a eszkalálásáról rendelésben) a következő csatornákon keresztül:
@@ -84,18 +84,18 @@ Ha az üzenet és az Azure-fájlmegosztás jelenleg nem használja a felhőbeli 
 Ez a probléma akkor fordul elő, ha a felhasználó fiókja nem rendelkezik megfelelő jogosultsággal a felhőbeli végpont létrehozásához. 
 
 Felhőbeli végpont létrehozása, a felhasználói fiókot a következő Microsoft Authorization engedélyekkel kell rendelkeznie:  
-* Olvasás: Szerepkör-definíció beolvasása
+* Olvasás: Szerepkör-definíció lekérése
 * Írás: Egyéni szerepkör-definíció létrehozása vagy módosítása
-* Olvasás: Szerepkör-hozzárendelés beolvasása
+* Olvasás: Szerepkör-kijelölés lekérése
 * Írás: Szerepkör-hozzárendelés létrehozása
 
 A következő beépített szerepkör rendelkezik a szükséges Microsoft Authorization engedélyekkel:  
 * Tulajdonos
-* Felhasználói hozzáférés adminisztrátora
+* Felhasználói hozzáférés rendszergazdája
 
 Az határozza meg, hogy a felhasználói fiók szerepkör rendelkezik-e a szükséges engedélyek:  
 1. Az Azure Portalon válassza ki a **erőforráscsoportok**.
-2. Az erőforráscsoport, ahol a storage-fiók megtalálható, majd válassza ki és **hozzáférés-vezérlés (IAM)**.
+2. Az erőforráscsoport, ahol a storage-fiók megtalálható, majd válassza ki és **hozzáférés-vezérlés (IAM)** .
 3. Válassza ki a **szerepkör-hozzárendelések** fülre.
 4. Válassza ki a **szerepkör** (például a tulajdonos vagy közreműködő) a felhasználói fiókjához.
 5. Az a **erőforrás-szolgáltató** listáról válassza ki **Microsoft Authorization**. 
@@ -105,7 +105,7 @@ Az határozza meg, hogy a felhasználói fiók szerepkör rendelkezik-e a szüks
 <a id="server-endpoint-createjobfailed"></a>**A kiszolgálói végpont létrehozása sikertelen, hiba: "MgmtServerJobFailed" (hibakód:-2134375898)**  
 Ez a probléma akkor fordul elő, ha a kiszolgálói végpont elérési útja a rendszerkötet és a felhőbeli rétegezés engedélyezve van. Felhőbeli rétegezés nem támogatott a rendszerköteten. Kiszolgálói végpont létrehozása a rendszerköteten, tiltsa le a felhőbeli rétegezés a kiszolgálói végpont létrehozása során.
 
-<a id="server-endpoint-deletejobexpired"></a>**A kiszolgálói végpont törlése sikertelen, hiba: "MgmtServerJobExpired"**                
+<a id="server-endpoint-deletejobexpired"></a>**A kiszolgálói végpont törlése sikertelen, hiba: "MgmtServerJobExpired"**                 
 Ez a probléma akkor fordul elő, ha a kiszolgáló offline állapotban, vagy nincs hálózati kapcsolat. A kiszolgáló már nem érhető el, ha a kiszolgáló, a portálon, amely törli a kiszolgálói végpontot regisztrációját. Törölje a kiszolgálói végpontot, kövesse az ismertetett lépéseket [a kiszolgáló regisztrációját az Azure File Sync](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service).
 
 <a id="server-endpoint-provisioningfailed"></a>**Nem lehet kiszolgálói végpont tulajdonságai lap megnyitásához, vagy a felhőbeli rétegzési szabályzat frissítése**  
@@ -153,7 +153,7 @@ A kiszolgálóvégpontok nem lehetséges, hogy jelentkezzen szinkronizálási te
 > [!Note]  
 > Ha a kiszolgáló állapota, a regisztrált kiszolgálók panelen "Jelenik meg a kapcsolat nélküli", hajtsa végre a leírt lépéseket a [kiszolgálói végpont rendelkezik egy "Nincs tevékenység" vagy "Függő" állapotát, és a regisztrált kiszolgálók panelen a kiszolgáló állapota "Offline jelenik meg" ](#server-endpoint-noactivity) szakaszban.
 
-## <a name="sync"></a>Szinkronizálás
+## <a name="sync"></a>Sync
 <a id="afs-change-detection"></a>**Ha Létrehoztam egy fájlt közvetlenül a saját Azure-fájlmegosztást az SMB-n keresztül, vagy a portálon keresztül, mennyi ideig tart a fájl szinkronizálása a szinkronizálási csoport kiszolgálóira?**  
 [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 
@@ -252,7 +252,7 @@ Ezek a hibák megtekintéséhez futtassa a **FileSyncErrorsReport.ps1** (az Azur
 | 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | A fájl nem szinkronizálható, mert az Azure-beli fájlmegosztás korlátot. | A probléma megoldásához tekintse meg [a megosztás Azure fájltárolási korlátot elérte](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810) a hibaelhárítási útmutató szakaszát. |
 | 0x80070005 | -2147024891 | E_ACCESSDENIED | Ez a hiba akkor fordulhat elő, a következő okok miatt: fájl titkosítva van egy nem támogatott megoldás (például NTFS EFS) által, a fájl rendelkezik a törlés függőben lévő állapotba, vagy egy csak olvasható replikációs DFS-R mappában található | A fájl titkosítva van egy nem támogatott megoldás, ha a fájl visszafejtése, és a támogatott titkosítási megoldással. Támogatási megoldások listáját lásd: [titkosítási megoldások](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions) az útmutató a tervezési szakaszban. Ha a fájl a függő állapotú törlés, a fájl törlődik, az összes megnyitott fájlleírók bezárásakor. Ha a fájl csak olvasható replikációs DFS-R mappában található, a Azure Files Sync kiszolgálóvégpontok nem csak olvasható replikációs mappák a DFS-R támogatja. Lásd: [kapacitástervezési útmutató](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs) további információt.
 | 0x20 | 32 | ÚJRA | A fájl nem szinkronizálható, mert az használatban van. Ha már nincs használatban a fájl lesznek szinkronizálva. | Nincs szükség felhasználói műveletre. |
-| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Egy fájl módosult a szinkronizálás közben, ezért a fájlt újra kell szinkronizálni. | Nincs szükség felhasználói műveletre. |
+| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | A fájl módosításának szinkronizálás során a szinkronizálható, újra kell. | Nincs szükség felhasználói műveletre. |
 
 #### <a name="handling-unsupported-characters"></a>Kezelése nem támogatott karaktereket
 Ha a **FileSyncErrorsReport.ps1** PowerShell-parancsfájl bemutatja a hiba oka nem támogatott karaktereket (hibakódjai 0x7b és 0x8007007b), érdemes távolítsa el vagy nevezze át a megfelelő fájlnevek a hibás karaktereket. PowerShell valószínűleg nyomtatja ki ezeket a karaktereket a kérdőjelek vagy üres téglalapok, mivel ezek a karakterek a legtöbb nem szabványos kódolással. A [Megoldásértékelési eszköz](storage-sync-files-planning.md#evaluation-tool) segítségével azonosíthatja a nem támogatott karaktereket.
@@ -310,7 +310,7 @@ Semmit nem kell; a kiszolgáló újra fog próbálkozni. Ha ezt a hibát néhán
 | **Hibakarakterlánc** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
 | **Szervizelés szükséges** | Nem |
 
-Nincs szükség felhasználói műveletre. Ha egy fájl vagy a fájl megosztása (felhőbeli végpont) visszaállítása az Azure Backup használatával, a szinkronizálás le van tiltva, az Azure-fájlmegosztás címváltozásának felderítését befejeződéséig. Címváltozásának felderítését a visszaállítás befejeződött, és a időtartama alapján a fájlmegosztásban található fájlok száma után azonnal fut.
+Nincs szükség műveletre. Ha egy fájl vagy a fájl megosztása (felhőbeli végpont) visszaállítása az Azure Backup használatával, a szinkronizálás le van tiltva, az Azure-fájlmegosztás címváltozásának felderítését befejeződéséig. Címváltozásának felderítését a visszaállítás befejeződött, és a időtartama alapján a fájlmegosztásban található fájlok száma után azonnal fut.
 
 <a id="-2134364065"></a>**Szinkronizálás az a felhőbeli végpont a megadott Azure-fájlmegosztás nem érhető el.**  
 
@@ -475,7 +475,7 @@ Ez a hiba akkor fordulhat elő, ha a szervezet az SSL-megszakító proxy, vagy h
     Restart-Service -Name FileSyncSvc -Force
     ```
 
-Ha beállítja ezt a beállításazonosítót, az Azure File Sync-ügynök minden helyileg megbízhatónak minősülő SSL-tanúsítványt elfogad a kiszolgáló és a felhőszolgáltatás közötti adatátvitel során.
+Ez a beállításazonosító beállításával az Azure File Sync ügynök fogad el minden olyan helyi megbízható SSL-tanúsítványt a kiszolgáló és a felhőszolgáltatás közötti adatátvitel során.
 
 <a id="-2147012894"></a>**Nem sikerült létrehozni a kapcsolatot a szolgáltatással.**  
 
@@ -500,7 +500,7 @@ Ha beállítja ezt a beállításazonosítót, az Azure File Sync-ügynök minde
 Ez a hiba oka lehet:
 
 - Helytelen a kiszolgáló ideje
-- A kiszolgálói végpont törlése sikertelen volt
+- A kiszolgálói végpont törlése nem sikerült
 - Hitelesítéshez használt tanúsítvány lejárt. 
     Ellenőrizze, hogy ha a tanúsítvány lejárt, hajtsa végre az alábbi lépéseket:  
     1. A Tanúsítványok MMC beépülő modul megnyitásához, válassza ki a számítógép fiókját, és keresse meg \Personal\Certificates tanúsítványok (helyi számítógép).
@@ -577,7 +577,7 @@ Azokban az esetekben vannak sok fájl a szinkronizálási hibák száma, ahol sz
 | **Hibakarakterlánc** | ECS_E_SYNC_INVALID_PATH |
 | **Szervizelés szükséges** | Igen |
 
-Győződjön meg arról, hogy az elérési út létezik, helyi NTFS-köteten található, és nem újraelemzési pont vagy meglévő kiszolgálói végpont.
+Győződjön meg arról, az elérési út létezik, a helyi NTFS-köteten, és nem egy újraelemzési pontot vagy a meglévő kiszolgálói végpontot.
 
 <a id="-2134375817"></a>**A szinkronizálás nem sikerült, mert a szűrő-illesztőprogram verziója nem kompatibilis az ügynök verziója**  
 

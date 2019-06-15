@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: a9c857ab9e9a3cfc0d1314600b612c4e6293173d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60332313"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>Horizontális felskálázás a szilánkleképezés-kezelővel rendelkező adatbázisok
@@ -55,11 +55,11 @@ Rugalmas méretezés a következő típusú horizontális skálázási kulcsokk�
 | .NET | Java |
 | --- | --- |
 | egész szám |egész szám |
-| hosszú |hosszú |
+| long |long |
 | GUID azonosítója |uuid |
 | byte[]  |byte[] |
-| datetime | időbélyeg |
-| TimeSpan | időtartam|
+| datetime | timestamp |
+| TimeSpan | Időtartam|
 | Datetimeoffset |offsetdatetime |
 
 ### <a name="list-and-range-shard-maps"></a>Lista és a tartomány szilánkleképezések
@@ -98,8 +98,8 @@ A fenti táblázat az általános példát egy **ShardMap** objektum. Minden sor
 
 Az ügyféloldali kódtár a szilánkleképezés-kezelővel szegmenstérképet gyűjteménye. Kezeli az adatokat egy **ShardMapManager** három helyen tárolt példány:
 
-1. **Globális Szegmenstérkép (GSM)**: Megadhatja egy adatbázist a tárházban az összes szegmenstérképet és leképezések szolgál. Kezelheti az adatokat automatikusan létrejönnek a speciális táblák és tárolt eljárásokat. Ez általában egy kis adatbázist, és könnyedén elérhető, és azt nem használható más az alkalmazás igényeinek megfelelően. Nevű speciális sémában végzett **__ShardManagement**.
-2. **Helyi Szegmenstérkép (LSM)**: Minden Ön által megadott szilánk kell adatbázis több kis méretű táblák és speciális tárolt eljárások, amelyek tartalmaznak, és kezelheti a szegmens térkép szegmensben vonatkozó információkat tartalmazó módosul. Ezt az információt a GSM adatait a redundáns, és lehetővé teszi az alkalmazás gyorsítótárazott szilánkleképezés-megfeleltetési adatokat ellenőrzése nélkül tetszőleges terhelés helyezi a GSM; az alkalmazás a LSM használ annak megállapításához, hogy a gyorsítótárazott leképezés továbbra is érvényes. A táblák a LSM az egyes szegmensek megfelelő is megtalálhatók a séma **__ShardManagement**.
+1. **Globális Szegmenstérkép (GSM)** : Megadhatja egy adatbázist a tárházban az összes szegmenstérképet és leképezések szolgál. Kezelheti az adatokat automatikusan létrejönnek a speciális táblák és tárolt eljárásokat. Ez általában egy kis adatbázist, és könnyedén elérhető, és azt nem használható más az alkalmazás igényeinek megfelelően. Nevű speciális sémában végzett **__ShardManagement**.
+2. **Helyi Szegmenstérkép (LSM)** : Minden Ön által megadott szilánk kell adatbázis több kis méretű táblák és speciális tárolt eljárások, amelyek tartalmaznak, és kezelheti a szegmens térkép szegmensben vonatkozó információkat tartalmazó módosul. Ezt az információt a GSM adatait a redundáns, és lehetővé teszi az alkalmazás gyorsítótárazott szilánkleképezés-megfeleltetési adatokat ellenőrzése nélkül tetszőleges terhelés helyezi a GSM; az alkalmazás a LSM használ annak megállapításához, hogy a gyorsítótárazott leképezés továbbra is érvényes. A táblák a LSM az egyes szegmensek megfelelő is megtalálhatók a séma **__ShardManagement**.
 3. **Alkalmazás-gyorsítótár**: Minden alkalmazás példány elérése a **ShardMapManager** objektum fenntart egy helyi memórián belüli gyorsítótár, a leképezések. Legutóbb beolvasott útválasztási információkat tárolja.
 
 ## <a name="constructing-a-shardmapmanager"></a>Hozhat létre, amely egy ShardMapManager

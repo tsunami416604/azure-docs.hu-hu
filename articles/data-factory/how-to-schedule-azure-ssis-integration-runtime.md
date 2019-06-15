@@ -14,10 +14,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: 54d7979f9fbe23e9372aa2702b46e42ca64496d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60522176"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Elindítása és leállítása az Azure-SSIS integrációs modul ütemezés szerint
@@ -109,7 +109,7 @@ Ha létrehoz egy harmadik eseményindítót, ütemezett napi éjfélkor futtatja
 
    ![ADF Web Activity On Demand SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-on-demand-ssis-ir.png)
 
-5. A felügyelt identitás hozzárendelése az ADF- **közreműködői** magát, így a folyamatai a webes tevékenység segítségével meghívhatja a REST API-t indítása és leállítása, kiépített Azure-SSIS integrációs modulokról szerepkört.  Az Azure Portalon az ADF lapon kattintson **hozzáférés-vezérlés (IAM)**, kattintson a **+ szerepkör-hozzárendelés hozzáadása**, majd a **szerepkör-hozzárendelés hozzáadása** panelen a következő műveleteket hajthatja végre.
+5. A felügyelt identitás hozzárendelése az ADF- **közreműködői** magát, így a folyamatai a webes tevékenység segítségével meghívhatja a REST API-t indítása és leállítása, kiépített Azure-SSIS integrációs modulokról szerepkört.  Az Azure Portalon az ADF lapon kattintson **hozzáférés-vezérlés (IAM)** , kattintson a **+ szerepkör-hozzárendelés hozzáadása**, majd a **szerepkör-hozzárendelés hozzáadása** panelen a következő műveleteket hajthatja végre.
 
     1. A **szerepkör**válassza **közreműködői**. 
     2. A **rendelhet hozzáféréseket**válassza **az Azure AD-felhasználó, csoport vagy szolgáltatásnév**. 
@@ -131,7 +131,7 @@ Ha létrehoz egy harmadik eseményindítót, ütemezett napi éjfélkor futtatja
 2. A harmadik folyamat teszteléséhez nyissa meg az SQL Server Management Studio (SSMS). A **kapcsolódás a kiszolgálóhoz** ablakban az alábbi műveleteket hajthatja végre. 
 
     1. A **kiszolgálónév**, adja meg  **&lt;az Azure SQL Database-kiszolgálónév&gt;. database.windows.net**.
-    2. Válassza ki **beállítások >>**.
+    2. Válassza ki **beállítások >>** .
     3. A **csatlakozhat az adatbázishoz**válassza **SSISDB**.
     4. Kattintson a **Csatlakozás** gombra. 
     5. Bontsa ki a **Integration Services-katalógusok** -> **SSISDB** -> a mappa -> **projektek** -> Projekt az SSIS -> **csomagok** . 
@@ -156,7 +156,7 @@ Most, hogy a folyamatok meg a várt módon működnek, futtatását őket a mega
 
     1. A **neve**, adja meg az eseményindító nevét. A következő példában **naponta** eseményindító nevét. 
     2. A **típus**válassza **ütemezés**. 
-    3. A **Start dátuma (UTC)**, adja meg a kezdő dátum és idő (UTC). 
+    3. A **Start dátuma (UTC)** , adja meg a kezdő dátum és idő (UTC). 
     4. A **ismétlődési**, adja meg az eseményindító egy kiadása ütemben történik. A következő példában, a **napi** után. 
     5. A **záró**válassza **nem teljes** vagy adjon meg egy záró dátum és idő kiválasztása után **dátum**. 
     6. Válassza ki **aktiválva** az eseményindító aktiválása a teljes ADF-beállításokat a közzététel után azonnal. 
@@ -340,11 +340,11 @@ Az alábbi szakasz ismerteti a PowerShell-runbook létrehozása. A parancsfájl 
 
    ![Indítsa el a runbook ablak](./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-window.png)
    
-6. A feladat ablakban válassza ki a **kimeneti** csempére. A kimeneti ablakban, várjon, amíg az üzenet **### befejezve ###** , miután látta, **### kezdő ###**. Az Azure-SSIS integrációs modul indítása körülbelül 20 percet vesz igénybe. Bezárás **feladat** ablakot, és biztonsági get való **Runbook** ablak.
+6. A feladat ablakban válassza ki a **kimeneti** csempére. A kimeneti ablakban, várjon, amíg az üzenet **### befejezve ###** , miután látta, **### kezdő ###** . Az Azure-SSIS integrációs modul indítása körülbelül 20 percet vesz igénybe. Bezárás **feladat** ablakot, és biztonsági get való **Runbook** ablak.
 
    ![Az Azure SSIS integrációs modul – elindítva](./media/how-to-schedule-azure-ssis-integration-runtime/start-completed.png)
     
-7. Ismételje az előző két lépést használatával **LEÁLLÍTÁSA** értékeként **művelet**. Indítsa újra a runbook kiválasztásával **Start** gombra az eszköztáron. Adja meg az erőforráscsoport, az ADF és az Azure-SSIS integrációs modul nevét. A **művelet**, adja meg **LEÁLLÍTÁSA**. A kimeneti ablakban, várjon, amíg az üzenet **### befejezve ###** , miután látta, **### leállítása ###**. Az Azure-SSIS integrációs modul leállítása nem eltarthat elindításával. Bezárás **feladat** ablakot, és biztonsági get való **Runbook** ablak.
+7. Ismételje az előző két lépést használatával **LEÁLLÍTÁSA** értékeként **művelet**. Indítsa újra a runbook kiválasztásával **Start** gombra az eszköztáron. Adja meg az erőforráscsoport, az ADF és az Azure-SSIS integrációs modul nevét. A **művelet**, adja meg **LEÁLLÍTÁSA**. A kimeneti ablakban, várjon, amíg az üzenet **### befejezve ###** , miután látta, **### leállítása ###** . Az Azure-SSIS integrációs modul leállítása nem eltarthat elindításával. Bezárás **feladat** ablakot, és biztonsági get való **Runbook** ablak.
 
 ## <a name="create-schedules-for-your-runbook-to-startstop-azure-ssis-ir"></a>Ütemezések a runbook indítása és leállítása az Azure-SSIS integrációs modul létrehozása
 

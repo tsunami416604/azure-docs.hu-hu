@@ -18,10 +18,10 @@ ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1f6f66779bec9ed4e38e5a662c2d3728ba2034b6
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65545297"
 ---
 # <a name="single-page-applications"></a>Egylapos alkalmazások
@@ -30,7 +30,7 @@ Egyoldalas alkalmazások (gyógyfürdők) általában egy JavaScript-megjelenít
 
 Ebben a forgatókönyvben, ha a felhasználó bejelentkezik, a JavaScript előtér-célból használ [Active Directory Authentication Library for JavaScript (adal-t. JS)](https://github.com/AzureAD/azure-activedirectory-library-for-js) és a egy azonosító jogkivonat (id_token) beszerzése az Azure ad-ben az implicit engedélyezés megadásáról. A jogkivonatot a rendszer gyorsítótárazza, és az ügyfél csatlakoztatja a kérést, a tulajdonosi jogkivonatot, amikor a webes API háttéralkalmazás, amely az OWIN közbenső szoftver használatával lett biztonságossá téve.
 
-## <a name="diagram"></a>Diagram
+## <a name="diagram"></a>Ábra
 
 ![Egyoldalas alkalmazás diagram](./media/authentication-scenarios/single_page_app.png)
 
@@ -49,7 +49,7 @@ Ebben a forgatókönyvben, ha a felhasználó bejelentkezik, a JavaScript előt�
 
 Tekintse meg a [egyoldalas alkalmazás-forgatókönyvek Kódminták](sample-v1-code.md#single-page-applications). Ügyeljen arra, hogy térjen vissza később gyakran új mintát gyakran kerülnek.
 
-## <a name="app-registration"></a>Appok regisztrálása
+## <a name="app-registration"></a>Alkalmazásregisztráció
 
 * Egyetlen bérlő – Ha egy alkalmazás csak a szervezet számára hoz létre, azt regisztrálni kell a vállalati címtárban az Azure portal használatával.
 * Több-bérlős – Ha olyan alkalmazás, amely a szervezeten kívüli felhasználók által használható épít, a vállalati címtárban szerepelnie kell, de is regisztrálni kell az alkalmazást használó minden egyes szervezet címtárában. Elérhetővé teszi az alkalmazás a címtárban, megadhatja a regisztrációs folyamat, amely lehetővé teszi, hogy engedélyt adjanak az alkalmazásnak az ügyfelek számára. Amikor regisztrál az alkalmazáshoz, akkor megjelenik egy párbeszédpanel, amely tartalmazza az alkalmazáshoz szükséges engedélyeket, majd a beállítást, hogy engedélyt adjanak. Attól függően, a szükséges engedélyekkel a másik szervezet rendszergazda is szükség beleegyezés. A felhasználó vagy rendszergazda beleegyezik, az alkalmazás regisztrálva lesz a címtárban.

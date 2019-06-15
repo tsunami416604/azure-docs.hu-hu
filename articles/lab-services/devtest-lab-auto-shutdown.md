@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/17/2019
 ms.author: spelluru
 ms.openlocfilehash: 9adf8dd4a5a3c469ed130b29308a0d828aee40bf
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873990"
 ---
 # <a name="manage-autoshutdown-policies-for-a-lab-in-azure-devtest-labs"></a>Autoshutdown Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet szabályzatainak kezelése
@@ -166,7 +166,7 @@ Első lépésként hozzon létre egy logikai alkalmazást az Azure-előfizetésh
     }
     ```
     
-    ![Kéréstörzs JSON-sémája](./media/devtest-lab-auto-shutdown/request-json.png)
+    ![Kérelem Kéréstörzs JSON-sémája](./media/devtest-lab-auto-shutdown/request-json.png)
 7. Válassza ki **+ új lépés** a tervezőben, és kövesse az alábbi lépéseket:
     1. Keresse meg **Office 365 Outlook – e-mail küldése**. 
     2. Válassza ki **e-mail küldése** a **műveletek**. 
@@ -177,7 +177,7 @@ Első lépésként hozzon létre egy logikai alkalmazást az Azure-előfizetésh
     5. Válassza ki **tulajdonos**, és adjon meg az e-mail-értesítés tárgya. Példa: "Leállítani a gép vmName laborban: labName."
     6. Válassza ki **törzs**, és határozza meg az értesítési e-mail szövegtörzse. Például: "vmName van ütemezve, 15 perc múlva leáll. Hagyja ki a Leállítás gombra kattintva: URL-CÍME. Egy óránál késleltetés Leállítás: delayUrl60. Késleltetés leállítási 2 óra: delayUrl120. "
 
-        ![Kéréstörzs JSON-sémája](./media/devtest-lab-auto-shutdown/email-options.png)
+        ![Kérelem Kéréstörzs JSON-sémája](./media/devtest-lab-auto-shutdown/email-options.png)
 1. Válassza az eszköztár **Save** (Mentés) elemét. Most is másolhatja a **HTTP POST URL-címe**. Válassza ki a Másolás gombra, hogy az URL-címet a vágólapra. 
 
     ![WebHook URL-címe](./media/devtest-lab-auto-shutdown/webhook-url.png)

@@ -16,10 +16,10 @@ ms.author: mimart
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ecadb499d140ccfc993820080cae0b749977fc61
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65824744"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Összevont egyszeri bejelentkezés az Azure Active Directory-tanúsítványok kezelése
@@ -30,11 +30,11 @@ Ez a cikk csak az alkalmazásokat, amelyek révén az Azure AD egyszeri bejelent
 
 ## <a name="auto-generated-certificate-for-gallery-and-non-gallery-applications"></a>Automatikusan létrehozott tanúsítvány katalógus és a katalógusban nem szereplő alkalmazásokhoz
 
-Amikor egy új alkalmazás hozzáadása a katalógusból, és egy SAML-alapú bejelentkezés konfigurálása (kiválasztásával **egyszeri bejelentkezési** > **SAML** az alkalmazás áttekintése lapon), az Azure AD-hoz létre egy a tanúsítvány, amely a három évig érvényes. Az aktív tanúsítvány, mint a biztonsági tanúsítvány letöltése (**.cer**) fájl, lépjen vissza az oldal (**SAML-alapú bejelentkezés**), és válassza ki a letöltési hivatkozás a **SAML aláíró tanúsítvány** fejléc. A nyers (bináris) tanúsítványt vagy a Base64 (base 64 kódolású szöveges) tanúsítványt választhat. Katalógus alkalmazások esetében ez a szakasz is jeleníthet meg egy hivatkozást a tanúsítvány-ként való letöltéséhez összevonási metaadatainak XML (egy **.xml** fájl), attól függően, az alkalmazás követelményeinek.
+Amikor egy új alkalmazás hozzáadása a katalógusból, és egy SAML-alapú bejelentkezés konfigurálása (kiválasztásával **egyszeri bejelentkezési** > **SAML** az alkalmazás áttekintése lapon), az Azure AD-hoz létre egy a tanúsítvány, amely a három évig érvényes. Az aktív tanúsítvány, mint a biztonsági tanúsítvány letöltése ( **.cer**) fájl, lépjen vissza az oldal (**SAML-alapú bejelentkezés**), és válassza ki a letöltési hivatkozás a **SAML aláíró tanúsítvány** fejléc. A nyers (bináris) tanúsítványt vagy a Base64 (base 64 kódolású szöveges) tanúsítványt választhat. Katalógus alkalmazások esetében ez a szakasz is jeleníthet meg egy hivatkozást a tanúsítvány-ként való letöltéséhez összevonási metaadatainak XML (egy **.xml** fájl), attól függően, az alkalmazás követelményeinek.
 
 ![SAML aktív aláíró tanúsítvány letöltési beállítások](./media/manage-certificates-for-federated-single-sign-on/active-certificate-download-options.png)
 
-Egy aktív vagy inaktív tanúsítvány kiválasztásával is letöltheti a **SAML-aláíró tanúsítvány** címsor **szerkesztése** ikon (a Ceruza), mely megjeleníti a **SAML aláíró tanúsítvány** lapot. Kattintson a három pontra (**...** ) mellett a kívánt tanúsítványt, töltse le, és válassza a tanúsítvány formátumot szeretne. Lehetősége van további adatvédelemmel ellátott levelezési (PEM) formátumú a tanúsítvány letöltéséhez. Ez a formátum akkor Base64 azonos, de egy **.pem** fájlnév-kiterjesztésű, amely a Windows, a tanúsítvány formátuma nem ismerhető fel.
+Egy aktív vagy inaktív tanúsítvány kiválasztásával is letöltheti a **SAML-aláíró tanúsítvány** címsor **szerkesztése** ikon (a Ceruza), mely megjeleníti a **SAML aláíró tanúsítvány** lapot. Kattintson a három pontra ( **...** ) mellett a kívánt tanúsítványt, töltse le, és válassza a tanúsítvány formátumot szeretne. Lehetősége van további adatvédelemmel ellátott levelezési (PEM) formátumú a tanúsítvány letöltéséhez. Ez a formátum akkor Base64 azonos, de egy **.pem** fájlnév-kiterjesztésű, amely a Windows, a tanúsítvány formátuma nem ismerhető fel.
 
 ![SAML-aláíró tanúsítvány letöltési beállítások (aktív és inaktív)](./media/manage-certificates-for-federated-single-sign-on/all-certificate-download-options.png)
 
@@ -88,7 +88,7 @@ Ezután töltse le az új tanúsítványt a megfelelő formátumban, töltse fel
 
 3. Kövesse az utasításokat a [katalógus és a katalógusban nem szereplő alkalmazások automatikusan létrehozott tanúsítvány](#auto-generated-certificate-for-gallery-and-non-gallery-applications) korábbi szakaszában. Ebben a lépésben letölti a tanúsítványt a megadott kódolási formátum, az alkalmazás számára szükséges a feltöltéshez.
 
-4. Ha szeretné az új tanúsítvány hozzá, lépjen vissza a **SAML-aláíró tanúsítvány** lapon, és az újonnan mentett tanúsítványt sorban kattintson a három pontra (**...** ), és válassza ki **tanúsítvány aktívvá**. Az új tanúsítvány állapotra vált **aktív**, és a egy állapotát módosításait a korábban aktív tanúsítvány **inaktív**.
+4. Ha szeretné az új tanúsítvány hozzá, lépjen vissza a **SAML-aláíró tanúsítvány** lapon, és az újonnan mentett tanúsítványt sorban kattintson a három pontra ( **...** ), és válassza ki **tanúsítvány aktívvá**. Az új tanúsítvány állapotra vált **aktív**, és a egy állapotát módosításait a korábban aktív tanúsítvány **inaktív**.
 
 5. Az alkalmazás SAML bejelentkezési konfigurációs utasításokat, megjelenik a korábban, feltöltheti az SAML-aláíró tanúsítvány a megfelelő kódolási formátum a következő továbbra is.
 
@@ -116,7 +116,7 @@ Ha egy tanúsítvány hamarosan lejár, meg lehet újítani eredményezi, jelent
 
 2. Ha az alkalmazás is automatikusan lecserélhetők egy tanúsítványt, állítsa be az új tanúsítvány aktív az alábbi lépéseket:
    1. Lépjen vissza a **SAML-aláíró tanúsítvány** lapot.
-   2. Az újonnan mentett tanúsítványt sorban kattintson a három pontra (**...** ), majd **tanúsítvány aktívvá**.
+   2. Az újonnan mentett tanúsítványt sorban kattintson a három pontra ( **...** ), majd **tanúsítvány aktívvá**.
    3. A következő két lépés kihagyható.
 
 3. Ha az alkalmazás csak képes kezelni egy tanúsítvány egy időben, válasszon végrehajtani a következő lépés egy állásidő időköz. (Ellenkező esetben, ha az alkalmazás nem automatikusan felveszi az új tanúsítványt, de több mint egy aláíró tanúsítványt képes kezelni, végezheti a következő lépés bármikor.)

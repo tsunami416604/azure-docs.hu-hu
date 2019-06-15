@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
 ms.openlocfilehash: 87bc7ed3bb59266484858f534080fa87a7230981
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60641921"
 ---
 # <a name="update-the-azure-backup-central-reporting-content-pack"></a>Az Azure Backup központi jelentéskészítési tartalomcsomag frissítése 
@@ -28,15 +28,15 @@ Ha még nem végzett módosításokat a tartalomcsomag példányának, automatik
 Az ajánlott eljárás szerint a rendszer importálja a tartalomcsomagot, egy [egyéni munkaterület](https://youtu.be/26zyOtyHPJM?t=1m57s). Most már szerkesztheti a jelentéseket.
 Ahogy korábban említettük Ha módosítja a tartalomcsomagot, megjelenik egy értesítés a Power bi-ban. Ha szeretné, a tartalomcsomag újabb beolvasása. 
 
-## <a name="coming-soon"></a>Hamarosan elérhető
+## <a name="coming-soon"></a>Hamarosan
    
 Az Azure Backup-tartalomcsomaghoz további számítási feladatok frissül. Számítási feladat például az Azure SQL Database IaaS VM biztonsági mentése és a System Center Data Protection Manager. Ez a támogatás hozzáadása az aktuális támogatása az Azure backup és az Azure virtuális gép biztonsági mentéseinek. Ez a támogatás azt jelenti, hogy megtekintheti és elemezheti a biztonsági mentési adatok egy központi helyen. [Jelentések is testreszabható](https://youtu.be/26zyOtyHPJM) a szervezet igényeinek megfelelően.
 
 Az előre konfigurált jelentéseket, amelyek az Azure Backup-tartalomcsomaghoz kapható változnak. A módosításokat a jelentések kifejezőbb számítási feladatokhoz. A jelentések közelgő beállítva lehetőségekbe itt érhető el.
 
-### <a name="summary"></a>Összegzés
+### <a name="summary"></a>Összefoglalás
    
-![Összegzés](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Summary.png)
+![Összefoglalás](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Summary.png)
 
 ### <a name="billing"></a>Számlázás
 

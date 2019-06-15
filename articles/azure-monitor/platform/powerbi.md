@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/01/219
 ms.author: bwren
 ms.openlocfilehash: 2db6ddf57802f6fcf38cfc3ad7094ed94eaca3d8
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65234200"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Az Azure Monitor log-adatok importálása a Power BI-bA
@@ -36,7 +36,7 @@ Importálja az adatokat egy [Log Analytics-munkaterület](manage-access.md) az A
 Először hozzon létre egy [naplólekérdezés](../log-query/log-query-overview.md) , amely feltölti a Power BI-adatkészletekbe kívánt adatot adja vissza.  Ez a lekérdezés, majd exportálja [Power Query (M) nyelvi](https://msdn.microsoft.com/library/mt807488.aspx) Power BI Desktop által használható.
 
 1. [A napló-lekérdezés létrehozása a Log Analytics](../log-query/get-started-portal.md) el az adatkészletet az adatok kinyerése érdekében.
-2. Válassza ki **exportálása** > **Power BI-lekérdezések (millió)**.  Ez a lekérdezés nevű szöveges fájlba exportálja **PowerBIQuery.txt**. 
+2. Válassza ki **exportálása** > **Power BI-lekérdezések (millió)** .  Ez a lekérdezés nevű szöveges fájlba exportálja **PowerBIQuery.txt**. 
 
     ![Naplóbeli keresés exportálása](media/powerbi/export-analytics.png)
 

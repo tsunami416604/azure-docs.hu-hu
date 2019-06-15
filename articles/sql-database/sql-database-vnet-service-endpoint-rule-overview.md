@@ -13,10 +13,10 @@ ms.reviewer: vanto, genemi
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 8c33cd7fe702f46f9c88643895b96445a9aa6a78
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60331423"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Az adatbázis-kiszolgálók virtuális hálózati Szolgáltatásvégpontok és szabályok használata
@@ -52,7 +52,7 @@ Egy virtuális hálózati szabályt arról tájékoztatja, hogy az SQL Database-
 
 Amíg nem tesz semmit, a virtuális gépeket az alhálózatok nem tud kommunikálni az SQL-adatbázis. Egy műveletet, amely létrehozza a kommunikációt egy virtuális hálózati szabály létrehozása. A közösségértékek a VNet szabály módszer kiválasztása szükség van a versengő, a tűzfal által kínált biztonsági beállításokat érintő összehasonlítása és a kontraszt megbeszélésre.
 
-### <a name="a-allow-access-to-azure-services"></a>A. Azure-szolgáltatásokhoz való hozzáférés engedélyezése
+### <a name="a-allow-access-to-azure-services"></a>A. Az Azure-szolgáltatásokhoz való hozzáférés engedélyezése
 
 A tűzfal panelnek egy **be-és kikapcsolása** feliratú gomb **Azure-szolgáltatásokhoz való hozzáférés engedélyezése**. A **ON** beállítás lehetővé teszi, hogy az összes Azure IP-címek és az összes Azure-alhálózatok által kezdeményezett kommunikáció. Ezek az Azure IP-címek vagy az alhálózatok előfordulhat, hogy nem kell tulajdonában. Ez **ON** beállítás valószínűleg több nyitva, mint azt szeretné, hogy az SQL Database lennie. A virtuális hálózati szabály funkció lehetővé teszi a sok ennél a részletes.
 
@@ -197,7 +197,7 @@ PolyBase az adatok betöltése az Azure SQL Data Warehouse-bA az Azure Storage-f
    > - Ha rendelkezik egy általános célú v1- vagy blob storage-fiók, meg kell **először frissítse a v2** ez [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
    > - Az Azure Data Lake Storage Gen2 kapcsolatos ismert problémákat, tekintse meg ezt [útmutató](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
     
-1. Lépjen a storage-fiók alatt **hozzáférés-vezérlés (IAM)**, és kattintson a **szerepkör-hozzárendelés hozzáadása**. Rendelje hozzá **Storage-Blobadatok Közreműködője** RBAC szerepkör az SQL Database-kiszolgálóhoz.
+1. Lépjen a storage-fiók alatt **hozzáférés-vezérlés (IAM)** , és kattintson a **szerepkör-hozzárendelés hozzáadása**. Rendelje hozzá **Storage-Blobadatok Közreműködője** RBAC szerepkör az SQL Database-kiszolgálóhoz.
 
    > [!NOTE] 
    > Csak a tulajdonosa a jogosultsággal rendelkező tagok ebben a lépésben hajthat végre. A különféle beépített szerepkörök az Azure-erőforrásokhoz, tekintse meg a [útmutató](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
@@ -209,7 +209,7 @@ PolyBase az adatok betöltése az Azure SQL Data Warehouse-bA az Azure Storage-f
        CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
        ```
     
-   1. Az adatbázishoz kötődő hitelesítő adatok létrehozása **azonosító = "Felügyeltszolgáltatás-identitást"**:
+   1. Az adatbázishoz kötődő hitelesítő adatok létrehozása **azonosító = "Felügyeltszolgáltatás-identitást"** :
 
        ```SQL
        CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
@@ -248,7 +248,7 @@ Kapcsolódási hiba 40914 vonatkozik *virtuális hálózati szabályok*, a tűzf
 
 ### <a name="error-40914"></a>40914 hiba
 
-*Üzenet szövege:* Nem nyitható meg a kiszolgáló "*[kiszolgálónév]*" a bejelentkezés által kért. Ügyfél számára nem engedélyezett a kiszolgálóhoz való hozzáféréshez.
+*Üzenet szövege:* Nem nyitható meg a kiszolgáló " *[kiszolgálónév]* " a bejelentkezés által kért. Ügyfél számára nem engedélyezett a kiszolgálóhoz való hozzáféréshez.
 
 *Hiba leírása:* Az ügyfél, amely rendelkezik a virtuális hálózat kiszolgálóvégpontok alhálózat szerepel. Azonban az Azure SQL Database-kiszolgáló nem virtuális hálózati szabályt, amely az alhálózat nem biztosít jogot az SQL-adatbázissal való kommunikációhoz.
 

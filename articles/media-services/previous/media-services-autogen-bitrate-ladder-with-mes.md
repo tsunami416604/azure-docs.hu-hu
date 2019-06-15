@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: bbaf4d490fcebb4cd741a9b83ffc5d7e85699755
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61224344"
 ---
 #  <a name="use-azure-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Az Azure Media Encoder Standard használatával skála automatikus létrehozása  
@@ -171,7 +171,7 @@ namespace AdaptiveStreamingMESPresest
 
 Ez a szakasz eredményeként kódolás MES által előállított kimeneti rétegek három példákat mutat be a **adaptív Streamelés** beállításkészletet. 
 
-### <a name="example-1"></a>1. példa
+### <a name="example-1"></a>1\. példa
 Forrás magasság "1080" és "29.970" képkockasebesség 6 videó rétegek hoz létre:
 
 |Réteg|Magasság|Szélesség|Bitrate(kbps)|
@@ -183,7 +183,7 @@ Forrás magasság "1080" és "29.970" képkockasebesség 6 videó rétegek hoz l
 |5|270|480|720|
 |6|180|320|380|
 
-### <a name="example-2"></a>2. példa
+### <a name="example-2"></a>2\. példa
 Forrás magasság "720" és "23.970" képkockasebesség 5 videó rétegek hoz létre:
 
 |Réteg|Magasság|Szélesség|Bitrate(kbps)|
@@ -194,7 +194,7 @@ Forrás magasság "720" és "23.970" képkockasebesség 5 videó rétegek hoz l�
 |4|270|480|600|
 |5|180|320|320|
 
-### <a name="example-3"></a>3. példa
+### <a name="example-3"></a>3\. példa
 Forrás magasság "360" és "29.970" képkockasebesség 3 videó rétegek hoz létre:
 
 |Réteg|Magasság|Szélesség|Bitrate(kbps)|

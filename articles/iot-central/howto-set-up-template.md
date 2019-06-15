@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: d1704220a13b6d6b5a48b7167d7912a38057127d
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65466522"
 ---
 # <a name="set-up-a-device-template"></a>Eszközsablon beállítása
@@ -70,7 +70,7 @@ Egy új telemetriai mérési hozzáadásához válassza **+ új mérték**, vál
 > Az eszköz sablon egyeznie kell a megfelelő eszköz kódot ahhoz, hogy a telemetria mérés esetén valós eszköz csatlakoztatva van, az alkalmazás megjelenítendő tulajdonságnevek. Végezze el ugyanezt konfigurálásakor beállításait, az eszköztulajdonságok és a parancsok, továbbra is az alábbi szakaszok az eszköz sablon megadására.
 .png például hozzáadhat egy új hőmérsékleti telemetria mérték:
 
-| Megjelenített név        | Mező neve    |  Mértékegységek    | Min   |Maximum|
+| Megjelenített név        | Mezőnév    |  Egység    | Min   |Max|
 | --------------------| ------------- |-----------|-------|---|
 | Hőmérséklet         | TEMP          |  degC     |  0    |100|
 
@@ -91,7 +91,7 @@ Adja meg a **megjelenítendő név**, **mezőnév**, és **súlyossági** az ese
 
 Például hozzáadhat egy új **ventilátor Motor hiba** esemény.
 
-| Megjelenített név        | Mező neve    |  Alapértelmezett súlyosság |
+| Megjelenített név        | Mezőnév    |  Alapértelmezett súlyosság |
 | --------------------| ------------- |-----------|
 | Ventilátormotor-hiba     | fanmotorerror |  Hiba    |
 
@@ -114,9 +114,9 @@ Adja meg az adatait **megjelenített név**, **mezőnév**, és **értékek** az
 
 Például hozzáadhat egy új **ventilátor mód** állapota, az eszköz küldhet, két lehetséges értékekkel rendelkező **operációs** és **leállítva**.
 
-| Megjelenített név | Mező neve    |  1. érték   | Megjelenített név | 2. érték    |Megjelenített név  | 
+| Megjelenített név | Mezőnév    |  1 érték   | Megjelenített név | Az érték 2    |Megjelenített név  | 
 | -------------| ------------- |----------- | -------------| -----------| -------------|
-| Ventilátor mód     | fanmode       |  1.         | Üzemel    |     0      | Leállítva      |
+| Ventilátor mód     | fanmode       |  1         | Üzemel    |     0      | Leállítva      |
 
 ![Ventilátor mód részleteit tartalmazó "Szerkesztés állapot" képernyő](./media/howto-set-up-template/statemeasurementsform.png)
 
@@ -141,7 +141,7 @@ Három állapota lehet. Az eszköz ezeket az állapotokat az jelenti.
 
 Például hozzáadhat egy új ventilátor sebesség beállítás kiválasztásával **beállítások** , és adjon meg az új **szám** beállítást:
 
-| Megjelenített név  | Mező neve    |  Mértékegységek  | Tizedesjegyek |Kezdeti|
+| Megjelenített név  | Mezőnév    |  Egység  | Tizedesjegyek |Kezdeti|
 | --------------| ------------- |---------| ---------|---- |
 | Sebesség ventilátor     | fanSpeed      | RPM     | 2        | 0   |
 
@@ -160,7 +160,7 @@ Két tulajdonságkategória érhető el:
 
 Például az eszköz utolsó szervizelt dátumának hozzáadhat egy új **dátum** (egy alkalmazás-tulajdonság) tulajdonsága a **tulajdonságok** lapon:
 
-| Megjelenített név  | Mező neve | Kezdeti érték   |
+| Megjelenített név  | Mezőnév | Kezdeti érték   |
 | --------------| -----------|-----------------|
 | Utolsó szervizelés      | lastServiced        | 01/29/2019     |
 
@@ -189,7 +189,7 @@ Egy alkalmazás tulajdonságként a location tulajdonsághoz hozhat létre az Io
 
 3. Konfigurálása **megjelenítendő név**, **mezőnév**, és (opcionálisan) **kezdeti érték** helyéhez.
 
-    | Megjelenített név  | Mező neve | Kezdeti érték |
+    | Megjelenített név  | Mezőnév | Kezdeti érték |
     | --------------| -----------|---------| 
     | Telepítési címe | installAddress | Microsoft, 1 Microsoft Way, Redmond, WA 98052   |
 
@@ -211,9 +211,9 @@ A location tulajdonság által jelentett tulajdonságként eszköz hozhat létre
 
 3. Konfigurálja a megjelenített nevet és mező nevét, és válassza ki **hely** , adattípus:
 
-    | Megjelenített név  | Mező neve | Adattípus |
+    | Megjelenített név  | Mezőnév | Adattípus |
     | --------------| -----------|-----------|
-    | Eszközhely | deviceLocation | hely  |
+    | Eszközhely | deviceLocation | location  |
 
    > [!NOTE]
    > A mezőneveknek meg kell egyeznie a megfelelő eszköz kód tulajdonságneveket
@@ -234,7 +234,7 @@ Miben különbözik egy parancs egy beállítást?
 
 Például hozzáadhat egy új **Echo** parancsot választva a **parancsok** fülre, majd válassza **+ új parancs**, és írja be az új parancs részletei:
 
-| Megjelenített név  | Mező neve | Alapértelmezett határidő-túllépés | Adattípus |
+| Megjelenített név  | Mezőnév | Alapértelmezett időtúllépés | Adattípus |
 | --------------| -----------|---------------- | --------- |
 | Echo parancs  | echo       |  30             | szöveg      |
 

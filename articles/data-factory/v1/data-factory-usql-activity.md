@@ -14,14 +14,14 @@ ms.author: abnarain
 manager: craigg
 robots: noindex
 ms.openlocfilehash: 5835c37363c7e9d2dd3253c08ab97f17852725f5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61248147"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Adatok átalakítása az Azure Data Lake Analytics U-SQL-parancsfájlok futtatásával 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](data-factory-usql-activity.md)
 > * [2-es verzió (aktuális verzió)](../transform-data-using-data-lake-analytics.md)
 
@@ -62,7 +62,7 @@ Egyszerű szolgáltatásnév hitelesítése alkalmazás entitás regisztrálása
 
 Egyszerű szolgáltatásnév hitelesítése használja a következő tulajdonságok megadásával:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | **servicePrincipalId** | Adja meg az alkalmazás ügyfél-azonosítót. | Igen |
 | **servicePrincipalKey** | Adja meg az alkalmazáskulcsot. | Igen |

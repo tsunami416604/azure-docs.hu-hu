@@ -13,10 +13,10 @@ ms.reviewer: brahmnes
 ms.date: 03/07/2019
 ms.author: mbullwin
 ms.openlocfilehash: 4157285e8af67acd1dc3627bebc12076d7fe072c
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65595550"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>A .NET-alkalmazások kivételeinek hibakeresési pillanatképei
@@ -54,7 +54,7 @@ A pillanatképek hozzáférést szerepköralapú hozzáférés-vezérlés (RBAC)
 Előfizetés-tulajdonost kell rendelni a `Application Insights Snapshot Debugger` szerepkör a felhasználók számára, akik pillanatképek vizsgálata. Ehhez a szerepkörhöz is hozzárendelhető az egyes felhasználók vagy csoportok szerint az előfizetés-tulajdonosokat a cél Application Insights-erőforrást, vagy a erőforráscsoportba vagy előfizetésbe.
 
 1. Keresse meg az Application Insights-erőforrást az Azure Portalon.
-1. Kattintson a **hozzáférés-vezérlés (IAM)**.
+1. Kattintson a **hozzáférés-vezérlés (IAM)** .
 1. Kattintson a **+ szerepkör-hozzárendelés hozzáadása** gombra.
 1. Válassza ki **Application Insights Snapshot Debugger** származó a **szerepkörök** legördülő listából.
 1. Keresse meg, és adja meg a hozzáadni kívánt felhasználó nevét.

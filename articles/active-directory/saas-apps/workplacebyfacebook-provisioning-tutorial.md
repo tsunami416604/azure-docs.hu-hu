@@ -16,10 +16,10 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 72c2e23b0d60ca242549ebf2c058ea8f44f2b1c8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60520131"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Oktatóanyag: A Facebook, a munkahelyi felhasználók automatikus átadása konfigurálása
@@ -76,7 +76,7 @@ Az Azure AD automatikusan szinkronizálhatók a munkahelyhez Facebook által hoz
 
 4. Állítsa be a **Kiépítési mód** való **automatikus**. 
 
-    ![kiépítés folyamatban](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
+    ![Kiépítés](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
 5. Alatt a **rendszergazdai hitelesítő adataival** részen adja meg a hozzáférési jogkivonat Facebook-rendszergazda által a munkahelyen és a bérlői URL-cím értékét állítsa `https://www.facebook.com/scim/v1/` . Tekintse át ezeket [utasításokat](https://developers.facebook.com/docs/workplace/integrations/custom-integrations/apps) létrehozásával egy hozzáférési tokent a munkahelyen. 
 

@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 083770c24a6c8939f8d1ff9f0efd5d18aff9dcb0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60487029"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Az Azure Data Factory - adatáthelyezés biztonsági szempontjai
@@ -127,7 +127,7 @@ Virtuális hálózat, a felhőbeli hálózatának logikai megfelelője. Csatlako
 
 Az alábbi táblázat a forrás- és helyek az adatok hibrid áthelyezése másik kombinációja alapján a hálózat és átjáró konfigurációs javaslatokat foglalja össze.
 
-| Forrás | Cél | Hálózati konfiguráció | Átjáró beállítása |
+| source | Cél | Hálózati konfiguráció | Átjáró beállítása |
 | ------ | ----------- | --------------------- | ------------- | 
 | Helyszíni követelmények | Virtuális gépek és felhőszolgáltatások üzembe helyezett virtuális hálózatok | IPSec VPN (pont – hely vagy site-to-site) | Átjáró lehet helyi telepítve, vagy egy Azure-beli virtuális gép (VM) a virtuális hálózaton | 
 | Helyszíni követelmények | Virtuális gépek és felhőszolgáltatások üzembe helyezett virtuális hálózatok | ExpressRoute (privát társviszony-létesítés) | Átjáró lehet helyi telepítve, vagy egy Azure virtuális gépen a virtuális hálózaton | 
@@ -183,7 +183,7 @@ A következő felhőalapú adattárak alkalmazásátjáróra IP-címét az átj�
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 **Kérdés:** Különböző adat-előállítók között megosztható az átjáró?
-**Válasz:** Ez a funkció még nem támogatott. Aktívan dolgozunk rajta.
+**Válasz:** Ez a funkció még nem támogatott. Már dolgozunk rajta.
 
 **Kérdés:** Milyen követelmények vonatkoznak a portokra működik az átjáró?
 **Válasz:** Átjáró lehetővé teszi a kapcsolat HTTP-alapú internet megnyitásához. A **443-as és a 80-as kimenő portot** kell megnyitni az átjáró a kapcsolat létrehozásához. Nyissa meg **bejövő Port 8050** csak a gépek szintjén (nem a vállalati tűzfalon szintjén) a hitelesítőadat-kezelő alkalmazás. Azure SQL Database vagy Azure SQL Data Warehouse használata esetén, a forrás / cél, akkor meg kell nyitnia **1433-as** portot is. További információkért lásd: [tűzfal-konfigurációk és IP-címek engedélyezési](#firewall-configurations-and-whitelisting-ip-address-of gateway) szakaszban. 

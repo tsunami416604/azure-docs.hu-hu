@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
 ms.openlocfilehash: 9a93786759941def4cf8677509b1b2565cac5090
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60325425"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>A Microsoft Azure szószedet: Az Azure platform felhőalapú terminológia szótár
@@ -39,7 +39,7 @@ Egy másik nevet [App Service-alkalmazás](#app-service-app).
 ## <a name="app-service-app"></a>App Service-alkalmazás
 A számítási erőforrásokat, amelyek [Azure App Service](app-service/overview.md) biztosít egy webhelyre vagy webalkalmazásra alkalmazást, a webes API-t, a üzemeltetési vagy [mobil-háttéralkalmazás](app-service-mobile/app-service-mobile-value-prop.md). App Service-alkalmazások is nevezzük *App Services*, *webes alkalmazások*, *az API apps*, és *mobilalkalmazások*.
 
-## <a name="availability-set"></a>rendelkezésre állási csoport
+## <a name="availability-set"></a>A rendelkezésre állási csoport
 Virtuális gépek, amelyek felügyelete együtt, adja meg az alkalmazás a redundancia és megbízhatóság gyűjteménye. Rendelkezésre állási csoport használata biztosítja, hogy mindkét tervezett vagy nem tervezett karbantartási események legalább egy virtuális gép elérhető.  
 Lásd: [Windows virtuális gépek rendelkezésre állásának kezelése](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) és [Linux rendszerű virtuális gépek rendelkezésre állásának kezelése](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
@@ -77,10 +77,10 @@ Lásd: [navigálása és kiválasztása Windows virtuálisgép-lemezképek az Az
 Erőforrások hozhatók létre, vagy a teljesítmény a teljesítményteszt elérhető száma. Korlátok általában tartoznak előfizetések, szolgáltatások és a is.  
 Lásd: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](azure-subscription-service-limits.md)
 
-## <a name="load-balancer"></a>terheléselosztó
+## <a name="load-balancer"></a>Terheléselosztó
 Egy erőforrás, amely elosztja a bejövő forgalmat a hálózaton lévő számítógépek között. Az Azure-ban a terheléselosztó elosztja a forgalmat egy terheléselosztó készlet meghatározott virtuális gépek között. A [terheléselosztó](load-balancer/load-balancer-overview.md) lehet internetkapcsolattal rendelkező vagy belső is lehet.  
 
-## <a name="mobile-app"></a>mobilalkalmazás
+## <a name="mobile-app"></a>Mobilalkalmazás
 Egy másik nevet [App Service-alkalmazás](#app-service-app).
 
 ## <a name="offer"></a>az ajánlat
@@ -94,7 +94,7 @@ A biztonságos webes portál üzembe helyezése és kezelése az Azure-szolgált
 Egy adott területre, amely nem közötti nemzeti határok, és a egy vagy több adatközpont tartalmaz egy-egy térségen belül. Díjszabás, regionális szolgáltatások és ajánlattípusokról régió szinten érhetők el. A régiót általában párban áll egy másik régióban, amely lehet akár több száz mérföld távolságban. Regionális párokról a magas rendelkezésre állású és vész-helyreállítási mechanizmusként használható. Más néven *hely*.  
 Lásd: [Azure-régiók](best-practices-availability-paired-regions.md)
 
-## <a name="resource"></a>erőforrás
+## <a name="resource"></a>resource
 Egy elem, amely az Azure-megoldás része. Minden egyes Azure-szolgáltatás lehetővé teszi a különböző típusú erőforrások, például adatbázisok és virtuális gépek üzembe helyezését.   
 Lásd: [Azure Resource Manager áttekintése](azure-resource-manager/resource-group-overview.md)
 
@@ -110,7 +110,7 @@ Lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-t
 Egy szolgáltatás, amely az erőforrásokat, akkor telepítheti és kezelheti a Resource Manageren keresztül. Mindegyik erőforrás-szolgáltató műveleteket biztosít a telepített erőforrásokkal folytatott munkához. Erőforrás-szolgáltatók az Azure Portalon, az Azure PowerShell és a számos programozási SDK-k érhetők el.  
 Lásd: [Azure Resource Manager áttekintése](azure-resource-manager/resource-group-overview.md)
 
-## <a name="role"></a>szerepkör
+## <a name="role"></a>role
 Hanem a hozzáférés-felhasználók, csoportok és szolgáltatásokat kell hozzárendelni. Ezek tudni elvégezni a műveleteket, mint például létrehozása, kezelése, és olvassa el az Azure-erőforrás.  
 Lásd: [RBAC: Beépített szerepkörök](role-based-access-control/built-in-roles.md)
 
@@ -129,7 +129,7 @@ Lásd: [tudnivalók az Azure storage-fiókok](storage/common/storage-create-stor
 Az ügyfél szerződést a Microsofttal, amely lehetővé teszi, hogy szerezze be az Azure-szolgáltatásokat. Az ajánlatot az előfizetéshez kiválasztott előfizetési díjak és kapcsolódó feltételek vonatkoznak rájuk.
 Lásd: [Microsoft Online előfizetői szerződés](https://azure.microsoft.com/support/legal/subscription-agreement/) és [kapcsolódnak az Azure-előfizetések az Azure Active Directory](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-## <a name="tag"></a>címke
+## <a name="tag"></a>tag
 Az indexelő kifejezés, amely lehetővé teszi, hogy a felügyeleti vagy számlázási követelményeinek megfelelően kategorizálhatja az erőforrásokat. Összetett erőforrások gyűjteménye, ha a címkék használatával vizuálisan megjeleníteni az eszközöket, amelyek a legésszerűbb módon. Például elláthat címkével olyan erőforrásokat, amelyek hasonló szerepet töltenek be a szervezetben, vagy ugyanahhoz a részleghez tartoznak.  
 Lásd: [az Azure-erőforrások rendszerezése címkék használatával](resource-group-using-tags.md)
 
@@ -150,7 +150,7 @@ Lásd: [virtuális gépi bővítmények és szolgáltatások (Windows) kapcsolat
 Az Azure-erőforrások, amelyek el van különítve a többi Azure bérlő közötti kapcsolatot biztosít a hálózat. Egy [Azure VPN Gateway](vpn-gateway/vpn-gateway-about-vpngateways.md) lehetővé teszi a virtuális hálózat és a egy helyszíni hálózat és a virtuális hálózatok közötti kapcsolatokat hozhat létre. Teljes körűen szabályozhatja az IP-címblokkok, a DNS-beállítások, a biztonsági szabályzatok és a virtuális hálózaton belüli útválasztási táblázatokat.  
 Lásd: [Virtual Network áttekintése](virtual-network/virtual-networks-overview.md)  
 
-## <a name="web-app"></a>Webalkalmazás
+## <a name="web-app"></a>Web app
 Egy másik nevet [App Service-alkalmazás](#app-service-app).
 
 ## <a name="see-also"></a>Lásd még

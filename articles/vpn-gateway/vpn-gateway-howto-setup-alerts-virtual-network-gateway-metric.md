@@ -8,10 +8,10 @@ ms.topic: conceptional
 ms.date: 04/22/2019
 ms.author: alzam
 ms.openlocfilehash: e54dadbda0582095e8152ea30376d369177bfd86
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65509904"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>Riasztásokat állíthat be a VPN Gateway-metrikák
@@ -21,10 +21,10 @@ Ez a cikk segít az Azure VPN Gateway metrikákhoz riasztásokat állíthat be. 
 
 |**Metrika**   | **Egység** | **Részletessége** | **Leírás** | 
 |---       | ---        | ---       | ---            | ---       |
-|**AverageBandwidth**| bájt/s  | 5 perc| Átlagos összesített sávszélesség kihasználtsága az összes hely – hely kapcsolat az átjárón.     |
-|**P2SBandwidth**| bájt/s  | 1 perc  | Átlagos összesített sávszélesség-használata minden pont – hely kapcsolat az átjárón.    |
+|**AverageBandwidth**| Bájt/mp  | 5 perc| Átlagos összesített sávszélesség kihasználtsága az összes hely – hely kapcsolat az átjárón.     |
+|**P2SBandwidth**| Bájt/mp  | 1 perc  | Átlagos összesített sávszélesség-használata minden pont – hely kapcsolat az átjárón.    |
 |**P2SConnectionCount**| Count  | 1 perc  | Az átjáró a pont – hely kapcsolatok száma.   |
-|**TunnelAverageBandwidth** | bájt/s    | 5 perc  | Átlagos alagutak létre az átjáró a sávszélesség használata. |
+|**TunnelAverageBandwidth** | Bájt/mp    | 5 perc  | Átlagos alagutak létre az átjáró a sávszélesség használata. |
 |**TunnelEgressBytes** | Bájt | 5 perc | Az átjáró a létrehozott alagúton kimenő forgalmat.   |
 |**TunnelEgressPackets** | Count | 5 perc | Az átjáró a létrehozott alagúton kimenő csomagok száma.   |
 |**TunnelEgressPacketDropTSMismatch** | Count | 5 perc | Kimenő csomagok száma forgalomválasztó eltérés által okozott alagúton eldobva. |
@@ -40,7 +40,7 @@ A következő példa lépései egy adott átjáróhoz tartozó riasztás hozza l
 - **Metrika:** TunnelAverageBandwidth
 - **Feltétel:** A sávszélesség > 10 bájt / s
 - **Window:** 5 perc
-- **Értesítési művelet:** E-mail-cím
+- **Értesítési művelet:** E-mail
 
 
 

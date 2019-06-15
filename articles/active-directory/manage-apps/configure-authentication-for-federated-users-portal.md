@@ -16,10 +16,10 @@ ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 18f7f6588cb4fb3b3b480402c3dad13be4a0ed2c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65781025"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Azure Active Directory-bejelentkezés konfigurálása az alkalmazás viselkedésében egy Kezdőtartomány-felderítés házirend segítségével
@@ -177,7 +177,7 @@ Ebben a példában létrehozhat egy olyan szabályzatot, amely hozzá van rendel
 - Felhasználók automatikus felgyorsítja az AD FS bejelentkezési képernyő van az egynél több összevont tartomány a bérlőben.
 - Lehetővé teszi, hogy közvetlenül az Azure Active Directoryhoz az összevont felhasználók esetében a szabályzat hozzá van rendelve az alkalmazások nem interaktív felhasználóneves és jelszavas bejelentkezést.
 
-#### <a name="step-1-create-an-hrd-policy"></a>1. lépés: Hozzon létre egy HRD-szabályzattal
+#### <a name="step-1-create-an-hrd-policy"></a>1\. lépés: Hozzon létre egy HRD-szabályzattal
 
 A következő szabályzatot automatikus – gyorsítja felhasználók egy AD FS bejelentkezési képernyő, ha azok bejelentkezés egy alkalmazás esetén egyetlen tartomány a bérlőben.
 
@@ -206,12 +206,12 @@ Get-AzureADPolicy
 
 A alkalmazni a HRD-szabályzattal, már létrehozott, hozzárendelheti a több alkalmazások szolgáltatásnevének.
 
-#### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>2. lépés: Keresse meg a szolgáltatásnév, amelyhez a szabályzat hozzárendelése  
+#### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>2\. lépés: Keresse meg a szolgáltatásnév, amelyhez a szabályzat hozzárendelése  
 Van szüksége a **ObjectID** , amelyhez hozzárendeli a szabályzatot szeretné egyszerű szolgáltatást lekéri. Többféleképpen is található a **ObjectID** szolgáltatásnevek.    
 
 A portálon, vagy lekérdezheti [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Azt is választhatja a [Graph Explorer eszköz](https://developer.microsoft.com/graph/graph-explorer) és a szervezet szolgáltatásnevek megtekintéséhez jelentkezzen be az Azure AD-fiókot. Mivel a Powershellt használ, használhatja a get-azureadserviceprincipal parancsmagot parancsmag az egyszerű szolgáltatásnevekről és a hozzájuk tartozó azonosítóik listáját.
 
-#### <a name="step-3-assign-the-policy-to-your-service-principal"></a>3. lépés: A szabályzat az egyszerű szolgáltatás hozzárendelése  
+#### <a name="step-3-assign-the-policy-to-your-service-principal"></a>3\. lépés: A szabályzat az egyszerű szolgáltatás hozzárendelése  
 Miután a **ObjectID** a szolgáltatásnév az alkalmazás legyen automatikus konfigurálásához, futtassa a következő parancsot. Ez a parancs a HRD-szabályzattal, amely a 2. lépésben megkeresett egyszerű szolgáltatást az 1. lépésben létrehozott társítja.
 
 ``` powershell
@@ -222,18 +222,18 @@ Minden egyes, amelyhez hozzá szeretné a szabályzat hozzáadása szolgáltatá
 
 Abban az esetben, ha egy alkalmazás már rendelkezik-e hozzárendelve egy HomeRealmDiscovery szabályzat akkor adhat hozzá egy másikat.  Ebben az esetben módosítsa a definíció a Kezdőtartomány-felderítés házirend, amely további paraméterek hozzáadása az alkalmazáshoz van hozzárendelve.
 
-#### <a name="step-4-check-which-application-service-principals-your-hrd-policy-is-assigned-to"></a>4. lépés: Ellenőrizze, hogy mely alkalmazások szolgáltatásnevének HRD-szabályzattal hozzá van rendelve
+#### <a name="step-4-check-which-application-service-principals-your-hrd-policy-is-assigned-to"></a>4\. lépés: Ellenőrizze, hogy mely alkalmazások szolgáltatásnevének HRD-szabályzattal hozzá van rendelve
 Ellenőrizze, hogy mely alkalmazások konfigurálása HRD-szabályzattal rendelkezik, használja a **Get-AzureADPolicyAppliedObject** parancsmagot. Adja át azt a **ObjectID** ellenőrizze a kívánt szabályzat.
 
 ``` powershell
 Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
 ```
-#### <a name="step-5-youre-done"></a>5. lépés: Kész!
+#### <a name="step-5-youre-done"></a>5\. lépés: Kész!
 Annak ellenőrzéséhez, hogy működik-e az új szabályzat az alkalmazás kipróbálásához.
 
 ### <a name="example-list-the-applications-for-which-hrd-policy-is-configured"></a>Példa: Melyik HRD szabályzat van konfigurálva az alkalmazások listáját
 
-#### <a name="step-1-list-all-policies-that-were-created-in-your-organization"></a>1. lépés: A szervezetben létrehozott összes szabályzat listázása 
+#### <a name="step-1-list-all-policies-that-were-created-in-your-organization"></a>1\. lépés: A szervezetben létrehozott összes szabályzat listázása 
 
 ``` powershell
 Get-AzureADPolicy
@@ -241,23 +241,23 @@ Get-AzureADPolicy
 
 Megjegyzés: a **ObjectID** lista hozzárendeléseinek kívánt szabályzat.
 
-#### <a name="step-2-list-the-service-principals-to-which-the-policy-is-assigned"></a>2. lépés: A szolgáltatásnevek, amelyhez hozzá van rendelve a szabályzat listázása  
+#### <a name="step-2-list-the-service-principals-to-which-the-policy-is-assigned"></a>2\. lépés: A szolgáltatásnevek, amelyhez hozzá van rendelve a szabályzat listázása  
 
 ``` powershell
 Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
 ```
 
 ### <a name="example-remove-an-hrd-policy-for-an-application"></a>Példa: Egy HRD-szabályzattal, egy alkalmazás eltávolítása
-#### <a name="step-1-get-the-objectid"></a>1. lépés: Az ObjectID beolvasása
+#### <a name="step-1-get-the-objectid"></a>1\. lépés: Az ObjectID beolvasása
 Az előző példa használatával a **ObjectID** , a szabályzatot, és hogy az alkalmazás egyszerű szolgáltatás, amelyről távolítsa el a kívánt. 
 
-#### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>2. lépés: A szabályzat-hozzárendelés eltávolítása az alkalmazás egyszerű szolgáltatás  
+#### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>2\. lépés: A szabályzat-hozzárendelés eltávolítása az alkalmazás egyszerű szolgáltatás  
 
 ``` powershell
 Remove-AzureADApplicationPolicy -ObjectId <ObjectId of the Service Principal>  -PolicyId <ObjectId of the policy>
 ```
 
-#### <a name="step-3-check-removal-by-listing-the-service-principals-to-which-the-policy-is-assigned"></a>3. lépés: Ellenőrizze az eltávolító, amely a szabályzat hozzá van rendelve a szolgáltatásnevek listázásával 
+#### <a name="step-3-check-removal-by-listing-the-service-principals-to-which-the-policy-is-assigned"></a>3\. lépés: Ellenőrizze az eltávolító, amely a szabályzat hozzá van rendelve a szolgáltatásnevek listázásával 
 
 ``` powershell
 Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>

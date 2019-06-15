@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 6189ea2866d1c16f994179df0179e29353e6c47d
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65410718"
 ---
 # <a name="create-a-custom-voice"></a>Hozzon létre egy egyéni beszédfelismerési
@@ -47,8 +47,8 @@ Az alábbi táblázat az importált adatkészletek feldolgozása állapotai:
 | Állapot | Jelentés |
 | ----- | ------- |
 | Feldolgozás | Az adatkészlet megkaptuk, és a feldolgozása folyamatban van. |
-| Sikeres művelet | Az adatkészlet ellenőrzése megtörtént, és előfordulhat, hogy most már használható hangalapú modell létrehozásához. |
-| Sikertelen | Az adatkészlet nem lett sikerült számos oka lehet, például fájlhibák Konfigurációadatok problémái vagy hálózati problémák miatt a feldolgozás során. |
+| Sikeres | Az adatkészlet ellenőrzése megtörtént, és előfordulhat, hogy most már használható hangalapú modell létrehozásához. |
+| Meghiúsult | Az adatkészlet nem lett sikerült számos oka lehet, például fájlhibák Konfigurációadatok problémái vagy hálózati problémák miatt a feldolgozás során. |
 
 Érvényesítés befejezése után láthatja az egyes az adatkészleteket az egyező kimondott szöveg teljes száma a **beszédmódok** oszlop. Ha a kiválasztott adattípus hosszú – hang Szegmentálás igényel, az ebben az oszlopban csak azt, vagy alapján az átiratok vagy a speech beszédátírási szolgáltatással rendelkezik szegmentált megcímkézzen tükrözi. Az adatkészlet érvényesítése sikeresen importálva megcímkézzen részletes eredményét és azok leképezés átiratok megtekintése további töltheti le. Tipp: hosszú – hang Szegmentálás adatfeldolgozási több, mint egy órát is eltarthat.
 
@@ -89,8 +89,8 @@ Az állapot látható voice-modellhez, az adatkészlet átalakításának folyam
 | Állapot | Jelentés |
 | ----- | ------- |
 | Feldolgozás | A szóbeli modell létrehozása folyamatban van. |
-| Sikeres művelet | A szóbeli modell létrehozását, és is üzembe helyezhetők. |
-| Sikertelen | A beszédfelismerési modell képzés számos oka lehet, például nem látható adatok problémák vagy hálózati problémák miatt leállt. |
+| Sikeres | A szóbeli modell létrehozását, és is üzembe helyezhetők. |
+| Meghiúsult | A beszédfelismerési modell képzés számos oka lehet, például nem látható adatok problémák vagy hálózati problémák miatt leállt. |
 
 Idő képzési hang feldolgozott adatok mennyiségétől függően változik. Tipikus alkalommal között tájékozódhat utterances több száz 30 perc a 20 000 utterances 40 óra. Miután a modell betanítása sikerült van, elkezdheti ki.
 

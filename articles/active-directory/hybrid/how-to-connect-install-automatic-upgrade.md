@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bfd61b78ca3027ade1f2f48dec33e0a8ed508d3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60349844"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatikus frissítés
@@ -43,7 +43,7 @@ Automatikus frissítés aktuális állapotának tekinthet meg a PowerShell-paran
 | Felfüggesztve |A rendszer csak állítja be. A rendszer **jelenleg nem** fogadni az automatikus frissítéseket. |
 | Letiltva |Automatikus frissítés le van tiltva. |
 
-Között módosíthatja **engedélyezve** és **letiltott** a `Set-ADSyncAutoUpgrade`. A rendszer kell beállítania az állapot csak **felfüggesztett**.  1.1.750.0 előtt a Set-ADSyncAutoUpgrade parancsmag lenne letiltása Autoupgrade, ha az automatikus frissítési állapot felfüggesztve értékre lett beállítva. Ez a funkció mostantól megváltozott, így nem blokkolja a AutoUpgrade.
+Között módosíthatja **engedélyezve** és **letiltott** a `Set-ADSyncAutoUpgrade`. A rendszer kell beállítania az állapot csak **felfüggesztett**.  1\.1.750.0 előtt a Set-ADSyncAutoUpgrade parancsmag lenne letiltása Autoupgrade, ha az automatikus frissítési állapot felfüggesztve értékre lett beállítva. Ez a funkció mostantól megváltozott, így nem blokkolja a AutoUpgrade.
 
 Automatikus frissítés a frissítési infrastruktúra használ az Azure AD Connect Health. Az automatikus frissítés működik, győződjön meg arról, hogy megnyitotta az URL-címeket a proxykiszolgálót a **az Azure AD Connect Health** leírtak szerint [Office 365 URL-címei és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
 
@@ -69,7 +69,7 @@ A eredménykódot tartalmaz egy előtagot a állapotának áttekintése.
 
 | Eredmény kódja előtagja | Leírás |
 | --- | --- |
-| Sikeres |A telepítés sikeresen frissült. |
+| Siker |A telepítés sikeresen frissült. |
 | UpgradeAborted |Egy ideiglenes állapot le a frissítést. Az elvárás, hogy később sikeres-e, és újból próbálkozunk. |
 | UpgradeNotSupported |A rendszer, amely blokkolja a rendszer automatikusan frissítendő konfigurációval rendelkezik. Tekintse meg, ha az állapot módosul, de az elvárás, hogy a rendszer manuálisan kell frissíteni a rendszer megpróbálja. |
 

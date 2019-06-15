@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 7fc945a00360e4eea4a5cf1e3962da2390d3bfeb
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65506855"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Elosztott tranzakciók több felhőalapú adatbázisban
@@ -42,7 +42,7 @@ SQL DB rugalmas adatbázis-tranzakciók képességeit, a .NET-kódtárakra Syste
 
 A telepítés után is használhatja az elosztott tranzakció API-k System.Transactions a kapcsolatokkal az SQL DB-hez. Ha rendelkezik meglévő API-k használatával MSDTC-alkalmazások, egyszerűen építse újra a meglévő .NET 4.6-alkalmazások a 4.6.1 telepítése után keretrendszer. Ha a projektek .NET 4.6, automatikusan fogja használni a frissített DLL-eket az új keretrendszer verziója, és API-hívások és az SQL DB kapcsolatok együttes alkalmazásával elosztott tranzakció már sikeres lesz.
 
-Ne feledje, hogy a rugalmas adatbázis-tranzakciók nem igényelnek MSDTC telepítése. Rugalmas adatbázis-tranzakciók ehelyett közvetlenül kezelt által és az SQL DB belül. Ez jelentősen leegyszerűsíti a felhőbeli forgatókönyvek mivel MSDTC üzembe helyezése nem szükséges, az elosztott tranzakciók és az SQL Database. 4. szakasz részletesen ismerteti a rugalmas adatbázis-tranzakciók és a szükséges .NET-keretrendszer és a felhőalapú alkalmazások Azure-ban üzembe helyezése.
+Ne feledje, hogy a rugalmas adatbázis-tranzakciók nem igényelnek MSDTC telepítése. Rugalmas adatbázis-tranzakciók ehelyett közvetlenül kezelt által és az SQL DB belül. Ez jelentősen leegyszerűsíti a felhőbeli forgatókönyvek mivel MSDTC üzembe helyezése nem szükséges, az elosztott tranzakciók és az SQL Database. 4\. szakasz részletesen ismerteti a rugalmas adatbázis-tranzakciók és a szükséges .NET-keretrendszer és a felhőalapú alkalmazások Azure-ban üzembe helyezése.
 
 ## <a name="development-experience"></a>Fejlesztői élmény
 

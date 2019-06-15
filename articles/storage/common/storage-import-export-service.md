@@ -9,10 +9,10 @@ ms.date: 05/07/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 97a3ac275613b644dfd90144039e4f3127186997
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65603106"
 ---
 # <a name="what-is-azure-importexport-service"></a>Mi az Azure Import/Export szolgáltatás?
@@ -47,7 +47,7 @@ Import/Export szolgáltatás a következő összetevőket használja:
     
 > [!NOTE]
 > A WAImportExport eszköz két verziója, 1. és 2 verzió érhető el. Azt javasoljuk, hogy használja:
-> - 1. verzió az importálási és exportálási szolgáltatáshoz az Azure Blob storage-bA. 
+> - 1\. verzió az importálási és exportálási szolgáltatáshoz az Azure Blob storage-bA. 
 > - 2 az adatok importálása az Azure files-verzió.
 >
 > A WAImportExport eszköz csak nem kompatibilis a 64 bites Windows operációs rendszert. Lépjen az adott operációsrendszer-verziók támogatott, [Azure Import/Export követelmények](storage-import-export-requirements.md#supported-operating-systems).
@@ -112,7 +112,7 @@ Magas szintű exportálási feladat az alábbi lépésekből áll:
 
 Adatok exportálása részletes utasításokért látogasson el [exportál adatokat az Azure-Blobok](storage-import-export-data-from-blobs.md).
 
-## <a name="region-availability"></a>Regionális elérhetőség 
+## <a name="region-availability"></a>Régiónkénti elérhetőség 
 
 Az Azure Import/Export szolgáltatás támogatja az adatok másolását, és az összes Azure storage-fiók. A felsorolt helyek valamelyikén lemezmeghajtók küldhet el. Ha a tárfiók egy Azure-beli helyen, amely nem szerepel itt, egy másik szállítási címhez tartozó hely áll rendelkezésre a feladat létrehozásakor.
 
@@ -122,13 +122,13 @@ Az Azure Import/Export szolgáltatás támogatja az adatok másolását, és az 
 |Ország/régió  |Ország/régió  |Ország/régió  |Ország/régió  |
 |---------|---------|---------|---------|
 |USA keleti régiója    | Észak-Európa        | Közép-India        |US Gov Iowa         |
-|USA nyugati régiója     |Nyugat-Európa         | Dél-India        | US DoD, kelet        |
-|USA 2. keleti régiója    | Kelet-Ázsia        |  Nyugat-India        | US DoD, közép        |
-|USA 2. nyugati régiója     | Délkelet-Ázsia        | Közép-Kanada        | Kelet-Kína         |
+|USA nyugati régiója     |Nyugat-Európa         | Dél-India        | US DoD – Kelet        |
+|USA 2. keleti régiója    | Kelet-Ázsia        |  Nyugat-India        | US DoD – Középső régió        |
+|USA nyugati régiója, 2.     | Délkelet-Ázsia        | Közép-Kanada        | Kelet-Kína         |
 |USA középső régiója     | Kelet-Ausztrália        | Kelet-Kanada        | Észak-Kína        |
-|USA északi középső régiója     |  Délkelet-Ausztrália       | Dél-Brazília        | Egyesült Királyság déli régiója        |
+|USA északi középső régiója     |  Délkelet-Ausztrália       | Dél-Brazília        | Az Egyesült Királyság déli régiója        |
 |USA déli középső régiója     | Nyugat-Japán        |Korea középső régiója         | Közép-Németország        |
-|USA nyugati középső régiója     |  Kelet-Japán       | US Gov Virginia        | Északkelet-Németország        |
+|USA nyugati középső régiója     |  Kelet-Japán       | USA-beli államigazgatás – Virginia        | Északkelet-Németország        |
 
 
 ## <a name="security-considerations"></a>Biztonsági szempontok

@@ -16,10 +16,10 @@ ms.date: 04/20/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 64edf2aa47211c1d2a598417a7b2edc00f260075
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60321391"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>Oktatóanyag: Az Azure Active Directory-integráció a vállalati ScaleX
@@ -60,7 +60,7 @@ ScaleX vállalat az Azure AD-integrációjának konfigurálásához hozzá kell 
 
 **ScaleX vállalati hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 

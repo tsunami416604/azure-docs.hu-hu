@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/02/2019
 ms.author: spelluru
 ms.openlocfilehash: 865ae0b3f7a7965698a67183a4c820ba71f49cd8
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65833914"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>Platform--szolgáltatásként (PaaS) szolgáltatások használata az Azure DevTest Labs szolgáltatásban
@@ -39,7 +39,7 @@ A nagy szervezetek is használnak a fejlesztői csapatok, például tesztelési 
 
 ## <a name="customizations"></a>A testreszabások
 
-#### <a name="sandbox"></a>Védőfal 
+#### <a name="sandbox"></a>Sandbox 
 A lab tulajdonos szabhatja testre a tesztlabor-környezetekben, módosíthatja a felhasználói szerephez **olvasó** való **közreműködői** az erőforráscsoporton belül. Ez a lehetőség van a **labor beállítások** lap a **Konfigurace a zásady** a labor létrehozása. Ez a változás a szerepkör lehetővé teszi, hogy a felhasználó számára az adott környezeten belüli erőforrásainak hozzáadása vagy eltávolítása. Ha szeretné korlátozni a hozzáférést a további, az Azure házirendekkel. Ez a funkció lehetővé teszi, hogy testre szabhatja az erőforrások vagy konfigurációs anélkül, hogy a hozzáférést az előfizetés szintjén.
 
 #### <a name="custom-tokens"></a>Egyéni jogkivonatok
@@ -57,7 +57,7 @@ DevTest Labs használatát támogatja [Resource Manager-sablonok beágyazott](..
 
 ## <a name="user-experience"></a>Felhasználói élmény
 
-## <a name="developer"></a>Fejlesztő
+## <a name="developer"></a>Fejlesztői
 A fejlesztők számára a virtuális gép létrehozása ugyanabban a munkafolyamatban használatával hozzon létre egy adott környezetben. Válassza ki a környezetet, és a gép rendszerképén ezeket, és adja meg a szükséges információkat a sablonhoz szükséges. Minden fejlesztői környezet kellene lehetővé teszi a módosítások és a továbbfejlesztett belső ciklus hibakeresés központi telepítésére vonatkozóan. A környezet hozható létre tetszőleges időpontban, a legújabb sablon használatával.  Ez a funkció lehetővé teszi, hogy a környezetekkel sem kell semmisíteni, és újra létre kell hozni az állásidő csökkentése nem kell manuálisan létrehozásakor a rendszer, vagy helyreálljon a hibák tesztelése érdekében.  
 
 ### <a name="testing"></a>Tesztelés
@@ -68,7 +68,7 @@ DevTest Labs-környezetben a független vizsgálati egyedi kódot és konfigurá
 ### <a name="cost-tracking"></a>Költségek nyomon követése
 A költségek nyomon követését biztosító szolgáltatás tartalmazza a különböző környezetekben Azure-erőforrások általános részeként költség trend. Erőforrások által a költségek nem kezdetét vette az a környezetben a különböző erőforrások, de a környezet egyetlen költségek jelenik meg.
 
-### <a name="security"></a>Biztonsági
+### <a name="security"></a>Biztonság
 A DevTest Labs egy megfelelően konfigurált Azure-előfizetést is [férjenek hozzá az Azure-erőforrások kizárólag a labor keresztül](devtest-lab-add-devtest-user.md). A környezetek egy tesztlabor tulajdonosa lehetővé tehetik a felhasználók bármilyen más Azure-erőforrásokhoz való hozzáférés nélkül férhetnek hozzá a jóváhagyott konfigurációval PaaS-erőforrásokhoz. A forgatókönyvben, ahol a lab felhasználói környezetek testreszabása a labor tulajdonos lehetővé tehetik a közreműködői hozzáférés. A közreműködői hozzáférés lehetővé teszi, hogy a lab-felhasználó hozzáadása vagy eltávolítása az Azure-erőforrás csak a felügyelt erőforráscsoporton belül. Ez lehetővé teszi az egyszerűbb nyomon követése, és kezeléséhez engedélyezése a felhasználónak közreműködői hozzáférés szükséges az előfizetéshez.
 
 ### <a name="automation"></a>Automation

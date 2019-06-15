@@ -10,10 +10,10 @@ ms.assetid: 0a6102d1-7554-4df2-b487-4dae9a7287b6
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.openlocfilehash: 64095f6706bb978cd33b8fe7833fe4e65fc3b0f8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60813425"
 ---
 # <a name="manage-azure-data-lake-analytics-using-policies"></a>Házirendek használata Azure Data Lake Analytics kezelése
@@ -59,7 +59,7 @@ Mennyi ideig módosítása, így a feladat-metaadatok és az erőforrások:
 
 1. Az Azure Portalon nyissa meg a Data Lake Analytics-fiók.
 2. Kattintson a **Tulajdonságok** elemre.
-3. A **Feladatlekérdezéseit megőrzése (nap)**, a csúszka segítségével válassza ki a egy értéke vagy a szövegmezőbe írja be az értéket.  
+3. A **Feladatlekérdezéseit megőrzése (nap)** , a csúszka segítségével válassza ki a egy értéke vagy a szövegmezőbe írja be az értéket.  
 4. Kattintson a **Save** (Mentés) gombra.
 
 ## <a name="job-level-policies"></a>Feladat-szintű szabályzatok

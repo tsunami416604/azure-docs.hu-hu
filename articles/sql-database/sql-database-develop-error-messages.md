@@ -14,10 +14,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/06/2019
 ms.openlocfilehash: 2682f98628f3c1cf22a2c3767f52bedbc148fa62
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60723492"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Az SQL Database-ügyfélalkalmazások SQL hibakódok: Adatbázis-csatlakozási hibák és egyéb problémák
@@ -155,9 +155,9 @@ A következő hibák minden előző kategóriákba nem tartoznak.
 | Hibakód | Severity | Leírás |
 | ---:| ---:|:--- |
 | [15006](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-15000-to-15999) |16 |(AdministratorLogin) azért nem egy érvényes nevet mert érvénytelen karaktereket tartalmaz.|
-| [18452](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-18000-to-18999) |14 |A bejelentkezés nem sikerült. A bejelentkezés nem megbízható tartományból van, ezért nem használható a Windows authentication.%.&#x2a;ls (a Windows-bejelentkezések nem támogatottak az SQL Server jelen verziójában.) |
+| [18452](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-18000-to-18999) |14 |A bejelentkezés sikertelen volt. A bejelentkezés nem megbízható tartományból van, ezért nem használható a Windows authentication.%.&#x2a;ls (a Windows-bejelentkezések nem támogatottak az SQL Server jelen verziójában.) |
 | [18456](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-18000-to-18999) |14 |Felhasználó bejelentkezése sikertelen volt a(z) %. &#x2a;ls'.%. &#x2a;ls %. &#x2a;ls (felhasználó a bejelentkezés sikertelen "%.&#x2a; található "is.) |
-| [18470](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-18000-to-18999) |14 |A felhasználó bejelentkezése sikertelen volt: '%.&#x2a;ls'. Indoklás: A fiók disabled.%. &#x2a;ls |
+| [18470](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-18000-to-18999) |14 |A felhasználó bejelentkezése sikertelen volt: '%.&#x2a;ls'. OK: A fiók disabled.%. &#x2a;ls |
 | 40014 |16 |Több adatbázis ugyanabban a tranzakcióban nem használható. |
 | 40054 |16 |Egy fürtözött index nélküli táblák nem támogatottak az SQL Server jelen verziójában. Hozzon létre egy fürtözött indexet, és próbálkozzon újra. |
 | 40133 |15 |Ez a művelet nem támogatott az SQL Server jelen verziójában. |
@@ -216,7 +216,7 @@ A következő hibák minden előző kategóriákba nem tartoznak.
 | 40652 |16 |Nem lehet áthelyezni, vagy hozzon létre kiszolgálót. Előfizetés (előfizetés-azonosító) fog haladni a kiszolgáló kvótáját. |
 | 40671 |17 |Kommunikációs hiba az átjáró és a felügyeleti szolgáltatás között. Próbálkozzon újra később. |
 | 40852 |16 |Adatbázis nem nyitható meg a(z) %. \*ls' kiszolgálón a(z) %. \*ls' a bejelentkezés által kért. Hozzáférés az adatbázishoz biztonságos kapcsolati karakterlánc használatával csak engedélyezett. Az adatbázis eléréséhez a kapcsolati karakterláncokat tartalmazó módosítása "biztonságos" a kiszolgáló teljes Tartománynevében - (server name).database.windows .net kell módosítani, hogy "kiszolgálónév".database. `secure`. windows.net. |
-| 40914 | 16 | Nem nyitható meg a kiszolgáló "*[kiszolgálónév]*" a bejelentkezés által kért. Ügyfél számára nem engedélyezett a kiszolgálóhoz való hozzáféréshez.<br /><br />Javításához érdemes lehet hozzáadni egy [virtuális hálózati szabályt](sql-database-vnet-service-endpoint-rule-overview.md). |
+| 40914 | 16 | Nem nyitható meg a kiszolgáló " *[kiszolgálónév]* " a bejelentkezés által kért. Ügyfél számára nem engedélyezett a kiszolgálóhoz való hozzáféréshez.<br /><br />Javításához érdemes lehet hozzáadni egy [virtuális hálózati szabályt](sql-database-vnet-service-endpoint-rule-overview.md). |
 | 45168 |16 |Az SQL Azure rendszer terhelés alatt van, és a egy felső korlátot egyidejű DB CRUD-műveletek egy SQL-adatbázis-kiszolgálóra helyezi (például adatbázis létrehozása). A kiszolgáló a hibaüzenetben megadott túllépte az egyidejű kapcsolatok maximális számát. Próbálkozzon újra később. |
 | 45169 |16 |Az SQL azure-rendszer terhelés alatt van, és felső korlát helyezi a szolgáltatást egy előfizetéshez egyidejű kiszolgáló CRUD-műveletek száma (például a kiszolgáló létrehozása). A hibaüzenetben megadott előfizetés túllépte az egyidejű kapcsolatok maximális számát, és a kérelem visszautasítva. Próbálkozzon újra később. |
 

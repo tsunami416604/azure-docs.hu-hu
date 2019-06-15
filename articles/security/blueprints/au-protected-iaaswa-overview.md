@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
 ms.openlocfilehash: 3c82a88ea15b52672f9bed428e2e7af40a65309c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610193"
 ---
 # <a name="azure-security-and-compliance-blueprint---iaas-web-application-for-australia-protected"></a>Azure biztonsági és megfelelőségi terv – IaaS-webalkalmazás védett Ausztráliában
@@ -93,14 +93,14 @@ Dedikált hálózati biztonsági csoport minden egyes alhálózatban van:
 - 1 hálózati biztonsági csoportot az SQL Server-kiszolgálók és a Felhőbeli tanúsító (SQLNSG)
 - 1 hálózati biztonsági csoportot a webes réteg (WEBNSG)
 
-### <a name="data-in-transit"></a>Az átvitt adatok
+### <a name="data-in-transit"></a>Átvitt adatok
 Az Azure és az Azure adatközpontok bemenő kommunikáció alapértelmezés szerint titkosítja. 
 
 Védett adatok továbbításához a vásárlói kezelésű hálózatok az architektúra egy VPN-átjárót konfigurált, IPSec-et az interneten vagy az ExpressRoute használ.
 
 Emellett minden tranzakció az Azure-bA az Azure felügyeleti portálján a TLS 1.2 használatával HTTPS-kapcsolaton keresztül történik.
 
-### <a name="data-at-rest"></a>Inaktív adat
+### <a name="data-at-rest"></a>Inaktív adatok
 Az architektúra a titkosítás, az adatbázis naplózási és más intézkedéseket az inaktív adatok védi.
 
 **Az Azure Storage**: Rest-követelményeket, a titkosított adatok kielégítése érdekében minden [Azure Storage](https://azure.microsoft.com/services/storage/) használ [a Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption). Ez segít a szervezeti biztonsági kötelezettségeit és megfelelőségi követelmények az ausztrál kormány ISM által meghatározott adatok biztonságos megőrzésében.

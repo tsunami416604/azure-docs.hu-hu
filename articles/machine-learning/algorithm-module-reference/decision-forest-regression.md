@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: d372adf75d46fdedb7a6f2b17e47822475d1f155
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65442363"
 ---
 # <a name="decision-forest-regression-module"></a>Döntési erdő regressziós modul
@@ -25,7 +25,7 @@ Ez a modul használatával a döntési fák algoritmus egy közelmúltra alapul�
 
 Miután konfigurálta a modellt, akkor kell betanítja a modellt, címkézett adatkészletet használ, és a [Train Model](./train-model.md) modul.  A betanított modell használható, hogy előrejelzéseket végezzen. 
 
-## <a name="how-it-works"></a>A szolgáltatás működése
+## <a name="how-it-works"></a>Működés
 
 Döntési fák algoritmus nem számszerű modellek egyszerű tesztek egy sorozatát végre minden egyes előfordulás esetén áthaladó bináris fa adatstruktúra, amíg el nem levélcsomópont (döntés).
 

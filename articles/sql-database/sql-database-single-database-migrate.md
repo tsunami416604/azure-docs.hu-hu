@@ -14,10 +14,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/11/2019
 ms.openlocfilehash: 1dd7d2fa413a6502dcd5c9db59e376c6586b5fea
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65790309"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>Az SQL Server-adatbázis áttelepítése az Azure SQL Database
@@ -33,7 +33,7 @@ Mindkét esetben győződjön meg arról, hogy a forrásadatbázis kompatibilis 
 > [!NOTE]
 > Nem SQL Server-adatbázis (beleértve a Microsoft Access-, Sybase-, MySQL Oracle- és DB2-adatbázisokat) az Azure SQL Database-be történő áttelepítéséhez lásd [az SQL Server áttelepítési segédet](https://blogs.msdn.microsoft.com/datamigration/2017/09/29/release-sql-server-migration-assistant-ssma-v7-6/) ismertető cikket.
 
-## <a name="method-1-migration-with-downtime-during-the-migration"></a>1. módszer: Migrálás leállás az áttelepítés során
+## <a name="method-1-migration-with-downtime-during-the-migration"></a>1\. módszer: Migrálás leállás az áttelepítés során
 
  Ez a módszer segítségével áttelepítheti az egyetlen vagy készletezett adatbázisként, ha Ön megengedhet valamennyi állásidőt vagy hajt végre egy teszt migrálás egy éles adatbázist a későbbi migráláshoz. Foglalkozó oktatóanyagért lásd: [egy SQL Server-adatbázis Migrálása](../dms/tutorial-sql-server-to-azure-sql.md).
 
@@ -65,7 +65,7 @@ Az alábbi lista az importálási teljesítmény optimalizálására vonatkozó 
 
 A migrálás befejezése után végezzen teljes vizsgálatot a [statisztikák frissítéséhez](https://msdn.microsoft.com/library/ms187348.aspx).
 
-## <a name="method-2-use-transactional-replication"></a>2. módszer: Tranzakciós replikáció használata
+## <a name="method-2-use-transactional-replication"></a>2\. módszer: Tranzakciós replikáció használata
 
 Ha nem helyezheti üzemen kívül az SQL Server-adatbázist a migrálás ideje alatt, az SQL Server tranzakciós replikációját is használhatja a migráláshoz. A módszer használatának feltétele, hogy a forrásadatbázisnak meg kell felelnie a [tranzakciós replikáció követelményeinek](https://msdn.microsoft.com/library/mt589530.aspx), valamint kompatibilisnek kell lennie az Azure SQL Database-szel is. Az AlwaysOn az SQL-replikációval kapcsolatos további információkért lásd: [replikáció konfigurálása AlwaysOn rendelkezésre állási csoportok számára (SQL Server)](/sql/database-engine/availability-groups/windows/configure-replication-for-always-on-availability-groups-sql-server).
 

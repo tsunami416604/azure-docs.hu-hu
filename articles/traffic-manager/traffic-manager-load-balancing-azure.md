@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 10/27/2016
 ms.author: limichel
 ms.openlocfilehash: 906e1840f35ab14997c727551b893a0219eb78d8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60330525"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Terheléselosztási szolgáltatás használata az Azure-ban
@@ -63,7 +63,7 @@ Az alábbi ábra az ebben a forgatókönyvben architektúráját mutatja be:
 
 ## <a name="setting-up-the-load-balancing-stack"></a>A terheléselosztó-verem telepítése
 
-### <a name="step-1-create-a-traffic-manager-profile"></a>1. lépés: Traffic Manager-profil létrehozása
+### <a name="step-1-create-a-traffic-manager-profile"></a>1\. lépés: Traffic Manager-profil létrehozása
 
 1. Az Azure Portalon kattintson a **erőforrás létrehozása** > **hálózatkezelés** > **Traffic Manager-profil**  >   **Hozzon létre**.
 2. Adja meg a következő alapvető információkat:
@@ -78,7 +78,7 @@ Az alábbi ábra az ebben a forgatókönyvben architektúráját mutatja be:
 
    !["A Traffic Manager létrehozása" panel](./media/traffic-manager-load-balancing-azure/s1-create-tm-blade.png)
 
-### <a name="step-2-create-the-application-gateways"></a>2. lépés: Az application Gateway átjárók létrehozása
+### <a name="step-2-create-the-application-gateways"></a>2\. lépés: Az application Gateway átjárók létrehozása
 
 1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **erőforrás létrehozása** > **hálózatkezelés** > **Application Gateway**.
 2. Adja meg az application gateway a következő alapvető információkat:
@@ -131,7 +131,7 @@ Ha úgy dönt, hogy egy háttérkészlet-, az application gateway egy útvonalal
 
    ![Application Gateway "Útvonalalapú szabály felvétele" panel](./media/traffic-manager-load-balancing-azure/s2-appgw-pathrule-blade.png)
 
-### <a name="step-3-add-application-gateways-to-the-traffic-manager-endpoints"></a>3. lépés: Adja hozzá az application Gateway-átjárók, a Traffic Manager-végpontok
+### <a name="step-3-add-application-gateways-to-the-traffic-manager-endpoints"></a>3\. lépés: Adja hozzá az application Gateway-átjárók, a Traffic Manager-végpontok
 
 Ebben a forgatókönyvben a Traffic Manager csatlakoztatva van az application Gateway átjárók (az a fenti lépések szerint), amelyek különböző régiókban találhatók. Most, hogy az application Gateway átjárók vannak konfigurálva, a következő lépés az csatlakoztathatja őket a Traffic Manager-profilra.
 
@@ -150,7 +150,7 @@ Ebben a forgatókönyvben a Traffic Manager csatlakoztatva van az application Ga
 
 4. Most tesztelheti a telepítő úgy férjenek hozzá a DNS-ben a Traffic Manager-profil (ebben a példában: TrafficManagerScenario.trafficmanager.net). Kérelem újraküldése, vizualizációjára vagy állítsa le a virtuális gépek és a webkiszolgálók esetében, amelyek különböző régiókban létrehozott, és a telepítés teszteléséhez a Traffic Manager-profil beállításainak módosítása.
 
-### <a name="step-4-create-a-load-balancer"></a>4. lépés: Load Balancer létrehozása
+### <a name="step-4-create-a-load-balancer"></a>4\. lépés: Load Balancer létrehozása
 
 Ebben a forgatókönyvben a terheléselosztó osztja el az adatbázisok magas rendelkezésre állású fürtön belül csatlakozhat a webes szintről.
 
@@ -198,10 +198,10 @@ Belső terheléselosztó konfigurálásával kapcsolatos további információk�
 5. Válassza ki a **háttérkészlet** és a **mintavételi** a alkalmazni a szabályt az előző lépésekben létrehozott.
 6. A **munkamenet megőrzését**, válassza ki, hogyan szeretné megőrizni a munkameneteket.
 7. A **üresjárati időtúllépés**, adja meg percben az üresjárati időkorlát lejárta előtt.
-8. Alatt **nem fix IP-**, ezek közül bármelyikre **letiltott** vagy **engedélyezve**.
+8. Alatt **nem fix IP-** , ezek közül bármelyikre **letiltott** vagy **engedélyezve**.
 9. A szabály létrehozásához kattintson az **OK** gombra.
 
-### <a name="step-5-connect-web-tier-vms-to-the-load-balancer"></a>5. lépés: Webes szintű virtuális gépek csatlakoztatása a terheléselosztóhoz
+### <a name="step-5-connect-web-tier-vms-to-the-load-balancer"></a>5\. lépés: Webes szintű virtuális gépek csatlakoztatása a terheléselosztóhoz
 
 Most úgy konfiguráljuk az IP-cím és a terheléselosztó előtérbeli portot az bármilyen adatbázis-kapcsolatok a webes szintű virtuális gépeken futó alkalmazások. Ez a konfiguráció csak a virtuális gépeken futó alkalmazások. A cél IP-cím és port konfigurálása, tekintse meg az alkalmazás dokumentációját. Az Azure Portalon az előtér-IP-cím megkereséséhez nyissa meg az előtérbeli IP-címkészlet a **terheléselosztó beállításai**.
 

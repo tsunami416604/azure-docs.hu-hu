@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: a249cf96981957de2c445079c0172b9c0c2ce543
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60799471"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Használja a soros konzol eléréséhez a grub-HIBÁT, és az egyfelhasználós módot
@@ -145,7 +145,7 @@ Hozzáférhet a grub-HIBÁT, nyomja le bármelyik billentyűt, amikor a virtuál
 ### <a name="single-user-mode-in-coreos"></a>A CoreOS egyfelhasználós üzemmódban
 CoreOS csökken, akkor egyfelhasználós üzemmódba automatikusan ha általában nem rendszerindító. Manuálisan adja meg az egyfelhasználós mód, használja az alábbi utasításokat:
 1. A grub-HIBÁT nyomja le az "e" a rendszerindítási bejegyzés szerkesztése
-1. Keresse meg a kezdetű sor `linux$`. 2., kell lennie beágyazva különböző if/else szolgáló szerződéses klauzulák
+1. Keresse meg a kezdetű sor `linux$`. 2\., kell lennie beágyazva különböző if/else szolgáló szerződéses klauzulák
 1. Hozzáfűzés `coreos.autologin=ttyS0` , mindkét végén `linux$` sorok
 1. Indítsa újra ezeket a beállításokat, és írja be a egyfelhasználós üzemmódban a Ctrl + X
 

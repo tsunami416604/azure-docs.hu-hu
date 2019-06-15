@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
 ms.openlocfilehash: 0d79bc167ea0416218a4d4822bcd6221699643ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60347254"
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>Az API Management használata az Azure Machine Learning Studio-webszolgáltatások kezelése
@@ -150,7 +150,7 @@ Közvetlenül a fejlesztői portál, amely megtekintésére és tesztelésére e
 
 4. A **kérés paraméterei**, írja be a **munkaterület** és **szolgáltatás**, írja be "2.0 a **API-verzió**, és a"true"az a **részletek**. Annak a **munkaterület** és **szolgáltatás** az AzureML webszolgáltatás irányítópultján (lásd: **a webszolgáltatás teszteléséhez** függelék).
 
-   A **Kérésfejlécek**, kattintson a **fejléc hozzáadása** , és írja be a "Content-Type" és "application/json". Kattintson a **fejléc hozzáadása** újra és írja be az "Engedélyezés" és "tulajdonosi  *\<a szolgáltatás API-kulcs\>*". Az API-KULCSÁT az AzureML webszolgáltatási irányítópultján található (lásd: **a webszolgáltatás teszteléséhez** függelék).
+   A **Kérésfejlécek**, kattintson a **fejléc hozzáadása** , és írja be a "Content-Type" és "application/json". Kattintson a **fejléc hozzáadása** újra és írja be az "Engedélyezés" és "tulajdonosi  *\<a szolgáltatás API-kulcs\>* ". Az API-KULCSÁT az AzureML webszolgáltatási irányítópultján található (lásd: **a webszolgáltatás teszteléséhez** függelék).
 
    A **kérelem törzse**, típus `{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}`.
 

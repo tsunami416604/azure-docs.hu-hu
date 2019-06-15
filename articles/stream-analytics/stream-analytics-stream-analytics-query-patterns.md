@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.openlocfilehash: f6971038be7404850d958de67eb4755ae7d21a29
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65761970"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Példák a Stream Analytics-használat gyakori minták lekérdezése
@@ -35,14 +35,14 @@ JSON és az Avro összetett típusok, például a beágyazott objektumok (rekord
 
 **Bemeneti**:
 
-| Fordítás | Time | Súlyozás |
+| Fordítás | Time | Tömeg |
 | --- | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |"1000" |
 | Honda |2015-01-01T00:00:02.0000000Z |"2000" |
 
 **Kimeneti**:
 
-| Fordítás | Súlyozás |
+| Fordítás | Tömeg |
 | --- | --- |
 | Honda |3000 |
 
@@ -224,7 +224,7 @@ Példa:
 | CountMake | Time |
 | --- | --- |
 | 2 |2015-01-01T00:00:02.000Z |
-| 1. |2015-01-01T00:00:04.000Z |
+| 1 |2015-01-01T00:00:04.000Z |
 
 **Megoldás:**
 
@@ -238,7 +238,7 @@ GROUP BY
 ```
 
 
-**Magyarázat:**
+**Magyarázat:** 
 **COUNT (DISTINCT teszi)** eltérő értékeket számát adja vissza a **győződjön meg arról,** oszlop egy időtartományon belül.
 
 ## <a name="query-example-determine-if-a-value-has-changed"></a>Lekérdezés. példa: Határozza meg, ha a egy értéke megváltozott-e.
@@ -422,14 +422,14 @@ Például 2 egymást követő ábrázolja az azonos ügyeljen a megadott díjmen
 
 **Bemeneti**:  
 
-| Felhasználó | Szolgáltatás | Esemény | Time |
+| Felhasználó | Funkció | Esemény | Time |
 | --- | --- | --- | --- |
-| user@location.com |RightMenu |Kezdés |2015-01-01T00:00:01.0000000Z |
-| user@location.com |RightMenu |Befejezés |2015-01-01T00:00:08.0000000Z |
+| user@location.com |RightMenu |Indítás |2015-01-01T00:00:01.0000000Z |
+| user@location.com |RightMenu |vége |2015-01-01T00:00:08.0000000Z |
 
 **Kimeneti**:  
 
-| Felhasználó | Szolgáltatás | Időtartam |
+| Felhasználó | Funkció | Időtartam |
 | --- | --- | --- |
 | user@location.com |RightMenu |7 |
 
@@ -443,7 +443,7 @@ Például 2 egymást követő ábrázolja az azonos ügyeljen a megadott díjmen
         Event = 'end'
 ```
 
-**MAGYARÁZAT**: Használja a **utolsó** funkció lekéréséhez az utolsó **idő** értéket, ha az esemény típusa **Start**. A **utolsó** függvény **PARTITION BY [felhasználó]** jelzi, hogy az eredmény számított egyedi felhasználónként. A lekérdezés tartalmaz egy 1 óra közötti maximális küszöbértéke **Start** és **leállítása** események, igény szerint konfigurálható, de **(korlát DURATION(hour, 1)**.
+**MAGYARÁZAT**: Használja a **utolsó** funkció lekéréséhez az utolsó **idő** értéket, ha az esemény típusa **Start**. A **utolsó** függvény **PARTITION BY [felhasználó]** jelzi, hogy az eredmény számított egyedi felhasználónként. A lekérdezés tartalmaz egy 1 óra közötti maximális küszöbértéke **Start** és **leállítása** események, igény szerint konfigurálható, de **(korlát DURATION(hour, 1)** .
 
 ## <a name="query-example-detect-the-duration-of-a-condition"></a>Lekérdezés. példa: Egy feltétel időtartama észlelése
 **Leírás**: Keresse meg a feltétel történt mennyi ideig ki.
@@ -451,7 +451,7 @@ Tegyük fel például, hogy hibát eredményezett a egy helytelen súly (fent 20
 
 **Bemeneti**:
 
-| Fordítás | Time | Súlyozás |
+| Fordítás | Time | Tömeg |
 | --- | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |2000 |
 | Toyota |2015-01-01T00:00:02.0000000Z |25000 |
@@ -499,18 +499,18 @@ Tegyük fel például, hogy hibát eredményezett a egy helytelen súly (fent 20
 
 | t | value |
 | --- | --- |
-| "2014-01-01T06:01:00" |1. |
+| "2014-01-01T06:01:00" |1 |
 | "2014-01-01T06:01:05" |2 |
 | "2014-01-01T06:01:10" |3 |
 | "2014-01-01T06:01:15" |4 |
 | "2014-01-01T06:01:30" |5 |
 | "2014-01-01T06:01:35" |6 |
 
-**Kimenet (első 10 sort)**:
+**Kimenet (első 10 sort)** :
 
 | windowend | lastevent.t | lastevent.Value |
 | --- | --- | --- |
-| 2014-01-01T14:01:00.000Z |2014-01-01T14:01:00.000Z |1. |
+| 2014-01-01T14:01:00.000Z |2014-01-01T14:01:00.000Z |1 |
 | 2014-01-01T14:01:05.000Z |2014-01-01T14:01:05.000Z |2 |
 | 2014-01-01T14:01:10.000Z |2014-01-01T14:01:10.000Z |3 |
 | 2014-01-01T14:01:15.000Z |2014-01-01T14:01:15.000Z |4 |
@@ -616,11 +616,11 @@ WHERE
 
 | LicensePlate | Fordítás | Time | TollID |
 | --- | --- | --- | --- |
-| DXE 5291 |Honda |2015-07-27T00:00:01.0000000Z | 1. |
-| YHN 6970 |Toyota |2015-07-27T00:00:05.0000000Z | 1. |
+| DXE 5291 |Honda |2015-07-27T00:00:01.0000000Z | 1 |
+| YHN 6970 |Toyota |2015-07-27T00:00:05.0000000Z | 1 |
 | QYF 9358 |Honda |2015-07-27T00:00:01.0000000Z | 2 |
 | GXF 9462 |BMW |2015-07-27T00:00:04.0000000Z | 2 |
-| VFE 1616 |Toyota |2015-07-27T00:00:10.0000000Z | 1. |
+| VFE 1616 |Toyota |2015-07-27T00:00:10.0000000Z | 1 |
 | RMV 8282 |Honda |2015-07-27T00:00:03.0000000Z | 3 |
 | MDR 6128 |BMW |2015-07-27T00:00:11.0000000Z | 2 |
 | YZK 5704 |Alátámaszt |2015-07-27T00:00:07.0000000Z | 3 |
@@ -629,12 +629,12 @@ WHERE
 
 | TollID | Count |
 | --- | --- |
-| 1. | 2 |
+| 1 | 2 |
 | 2 | 2 |
-| 1. | 1. |
-| 3 | 1. |
-| 2 | 1. |
-| 3 | 1. |
+| 1 | 1 |
+| 3 | 1 |
+| 2 | 1 |
+| 3 | 1 |
 
 **Megoldás**:
 
@@ -655,20 +655,20 @@ GROUP BY TUMBLINGWINDOW(second, 5), TollId
 
 **Bemeneti**:  
 
-| Eszközazonosító | Time | Attribútum | Value |
+| DeviceId | Time | Attribútum | Érték |
 | --- | --- | --- | --- |
-| 1. |2018-07-27T00:00:01.0000000Z |Hőmérséklet |50 |
-| 1. |2018-07-27T00:00:01.0000000Z |Hőmérséklet |50 |
+| 1 |2018-07-27T00:00:01.0000000Z |Hőmérséklet |50 |
+| 1 |2018-07-27T00:00:01.0000000Z |Hőmérséklet |50 |
 | 2 |2018-07-27T00:00:01.0000000Z |Hőmérséklet |40 |
-| 1. |2018-07-27T00:00:05.0000000Z |Hőmérséklet |60 |
+| 1 |2018-07-27T00:00:05.0000000Z |Hőmérséklet |60 |
 | 2 |2018-07-27T00:00:05.0000000Z |Hőmérséklet |50 |
-| 1. |2018-07-27T00:00:10.0000000Z |Hőmérséklet |100 |
+| 1 |2018-07-27T00:00:10.0000000Z |Hőmérséklet |100 |
 
 **Kimeneti**:  
 
-| AverageValue | Eszközazonosító |
+| AverageValue | DeviceId |
 | --- | --- |
-| 70 | 1. |
+| 70 | 1 |
 |45 | 2 |
 
 **Megoldás**:
@@ -696,7 +696,7 @@ GROUP BY DeviceId,TumblingWindow(minute, 5)
 
 **MAGYARÁZAT**: [COUNT (DISTINCT idő)](/stream-analytics-query/count-azure-stream-analytics) egyedi érték számát adja vissza a Time oszlopban egy időtartományon belül. Ezután használhatja ezt a lépést kimenete az átlag kiszámításakor eszközönként ismétlődések elvetésével.
 
-## <a name="get-help"></a>Segítség kérése
+## <a name="get-help"></a>Segítségkérés
 
 További segítségre van szüksége, próbálja meg [Azure Stream Analytics-fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 

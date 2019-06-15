@@ -18,10 +18,10 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c57feb33967732481d78e0ddaba5e90f4f82f327
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65544425"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>Xamarin Android-specifikus MSAL.NET megfontolások
@@ -56,16 +56,16 @@ A következő táblázat felsorolja az eszközök és böngészők tesztelt.
 
 | | Böngésző&ast;     |  Eredmény  | 
 | ------------- |:-------------:|:-----:|
-| Huawei/One+ | Chrome&ast; | Sikeres|
-| Huawei/One+ | Edge&ast; | Sikeres|
-| Huawei/One+ | Firefox&ast; | Sikeres|
-| Huawei/One+ | Brave&ast; | Sikeres|
-| Egy + | Ecosia&ast; | Sikeres|
-| Egy + | Kivitermesztő&ast; | Sikeres|
-| Huawei/One+ | Opera | Sikeres|
-| Huawei | OperaMini | Sikeres|
-| Huawei/One+ | InBrowser | Sikeres|
-| Egy + | Maxthon | Sikeres|
+| Huawei/One+ | Chrome&ast; | Fázis|
+| Huawei/One+ | Edge&ast; | Fázis|
+| Huawei/One+ | Firefox&ast; | Fázis|
+| Huawei/One+ | Brave&ast; | Fázis|
+| Egy + | Ecosia&ast; | Fázis|
+| Egy + | Kivitermesztő&ast; | Fázis|
+| Huawei/One+ | Opera | Fázis|
+| Huawei | OperaMini | Fázis|
+| Huawei/One+ | InBrowser | Fázis|
+| Egy + | Maxthon | Fázis|
 | Huawei/One+ | DuckDuckGo | Hitelesítés a felhasználó által megszakítva|
 | Huawei/One+ | UC böngésző | Hitelesítés a felhasználó által megszakítva|
 | Egy + | Delfinvédelmi | Hitelesítés a felhasználó által megszakítva|

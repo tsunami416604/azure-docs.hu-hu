@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 74c24e05d974c4b3bb15a242185b645231f74580
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65792783"
 ---
 # <a name="azure-storage-security-overview"></a>Az Azure Storage biztonsági áttekintése
@@ -85,7 +85,7 @@ A virtuális gépek az Azure Disk Encryption lehetővé teszi, szervezeti bizton
 
 Lemeztitkosítás virtuális gépekhez a Linux és Windows operációs rendszerek esetében működik. Emellett a Key Vault segítségével biztonságos, kezelése és naplózása a lemeztitkosítási kulcsok használatát. Virtuálisgép-lemezen lévő összes adatot az Azure storage-fiókokhoz az iparági szabványnak megfelelő titkosítási technológia használatával titkosítása. A Disk Encryption megoldás a Windows alapján [Microsoft BitLocker Meghajtótitkosításon](https://technet.microsoft.com/library/cc732774.aspx), és a Linux-megoldás alapján [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt).
 
-Tudnivalók a modellalapú alkalmazások létrehozásáról
+Részletek
 
 * [Az Azure Disk Encryption Windows és Linux rendszerű IaaS virtuális gépek](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
 
@@ -109,7 +109,7 @@ További információ:
 * [Azure Data Box Edge](../databox-online/data-box-edge-overview.md)
 * [Az Azure Data Box-átjáró](..//databox-online/data-box-gateway-overview.md)
 
-## <a name="advanced-threat-protection"></a>Advanced Threat Protection
+## <a name="advanced-threat-protection"></a>Fejlett fenyegetésvédelem
 
 Az Azure Storage által észlelt szokatlan és vélhetően kárt okozó kísérleteket elérni vagy kiaknázni a storage-fiók biztonsági intelligencia egy további réteget biztosít a komplex veszélyforrások elleni védelem. Komplex veszélyforrások elleni védelem figyelők diagnosztikai naplók az Azure Storage gyanús olvasási, írási vagy törlési kérések a Blob storage.
 
@@ -123,6 +123,6 @@ További információ:
 
 Használja az Azure Disk Encryption [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) segítségével vezérelheti és felügyelheti a lemeztitkosítási kulcsokat és titkos kulcsokat a key vault-előfizetés. Emellett biztosítja, hogy a virtuálisgép-lemezeken lévő összes adatot is titkosítása az Azure Storage-ban. A Key Vault naplózását a kulcsokat és a házirend-használati használjon.
 
-Tudnivalók a modellalapú alkalmazások létrehozásáról
+Részletek
 
 * [Mi az Azure Key Vault?](../key-vault/key-vault-overview.md)

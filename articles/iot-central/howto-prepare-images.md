@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: a20662c2fc9b416fefce89a6ebe706307ee71bb7
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65236482"
 ---
 # <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>Készítse elő és képek feltöltése az Azure IoT Central alkalmazáshoz
@@ -59,7 +59,7 @@ A következő táblázat összefoglalja a lemezkép mérete is használhatja:
 | Location egység | Méretek |
 | -------- | ------ |
 | Application Manager | 268x160 px |
-| Eszközsablon | 64 x 64 képpont |
+| Eszköz-sablon | 64 x 64 képpont |
 | Irányítópult-csempék | A legkisebb méretű csempe 200 x 200 képpont, nagyobb csempék kisméretű csempe négyzet vagy téglalap alakú többszöröse lehet. Ha például 200-as x 400 képpont, 400 x 200 képpont vagy 400 x 400 képpont |
 
 A legjobb megjelenítés az alkalmazásban létre kell hoznia a lemezképek, amelyek megfelelnek a dimenziók az előző táblázatban látható.
@@ -86,7 +86,7 @@ A **konfigurálása kép**, jelölje be a **kép** csempét tölthet fel képeke
 
 **Mentés** a feltöltött kép. Átméretezhető a szerkesztési módban. Válassza ki **kész** befejezésekor.
 
-### <a name="device-template"></a>Eszközsablon
+### <a name="device-template"></a>Eszköz-sablon
 
 Töltsön fel egy képet, az eszköz sablonból, navigáljon a **eszközsablonok** és az eszköz-sablon kiválasztása. Ez a feladat végrehajtásához egy jelentéskészítő kell lennie:
 

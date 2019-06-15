@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60ce66b079942944176540826c7f3e7a91b070d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60358208"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Az Azure AD jelszóvédelem ügynök verzióelőzményei
@@ -119,7 +119,7 @@ Javításokat tartalmaz:
 * Mindkét DC-ügynök és a proxy telepítők mostantól támogatja a helyben frissítés verzióra való későbbi verziókban.
 
 > [!WARNING]
-> 1.1.10.3 verzióból a helybeni frissítést nem támogatott, és a egy telepítési hibát eredményez. A frissítési verzióra 1.2.10 vagy újabb, kell először teljesen távolítsa el a tartományvezérlő-ügynök és a proxy szolgáltatás szoftvert, majd teljesen új az új verzió telepítése. Az Azure AD jelszóvédelem proxyszolgáltatás Újraregisztrálás megadása kötelező.  Regisztrálja újra az erdő nem szükséges.
+> 1\.1.10.3 verzióból a helybeni frissítést nem támogatott, és a egy telepítési hibát eredményez. A frissítési verzióra 1.2.10 vagy újabb, kell először teljesen távolítsa el a tartományvezérlő-ügynök és a proxy szolgáltatás szoftvert, majd teljesen új az új verzió telepítése. Az Azure AD jelszóvédelem proxyszolgáltatás Újraregisztrálás megadása kötelező.  Regisztrálja újra az erdő nem szükséges.
 
 > [!NOTE]
 > Helyben végzett frissítések DC ügynökszoftver követően újra kell indítani.

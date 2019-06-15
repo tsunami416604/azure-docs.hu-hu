@@ -16,10 +16,10 @@ ms.date: 05/26/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec0cfaaf0d4ae692581d63c7745660ffeacfb11f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60439566"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-23-video"></a>Oktatóanyag: Az Azure Active Directory-integráció a 23-videók
@@ -60,7 +60,7 @@ Konfigurálja az integráció 23 videó az Azure AD-be, szüksége 23 videó hoz
 
 **23 videó hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -132,7 +132,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása](./media/23video-tutorial/tutorial_23video_configure.png) 
 
-7. Az egyszeri bejelentkezés konfigurálása **23 videó** oldalon kell küldenie a letöltött **tanúsítvány (Base64)**, **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím**való [23 videó támogatási csapatának](mailto:support@23company.com). 
+7. Az egyszeri bejelentkezés konfigurálása **23 videó** oldalon kell küldenie a letöltött **tanúsítvány (Base64)** , **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím**való [23 videó támogatási csapatának](mailto:support@23company.com). 
 
 
 > [!TIP]

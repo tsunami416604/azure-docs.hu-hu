@@ -16,15 +16,15 @@ ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
 ms.openlocfilehash: acfd5230d1bd572ea5179651558e3f736a8570af
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65833121"
 ---
 # <a name="what-is-ip-address-1686312916"></a>Mi az, hogy a 168.63.129.16 IP-cím?
 
-168.63.129.16 IP-cím virtuális nyilvános IP-címet, amely a kommunikációs csatornát, az Azure platform erőforrásainak megkönnyítésére szolgál. Ügyfelek definiálhat bármilyen címteret a saját privát virtuális hálózatot az Azure-ban. Ezért az Azure-platform-erőforrások egyedi, nyilvános IP-címet kell bemutatni. A nyilvános virtuális IP-cím lehetővé teszi az alábbiakat:
+168\.63.129.16 IP-cím virtuális nyilvános IP-címet, amely a kommunikációs csatornát, az Azure platform erőforrásainak megkönnyítésére szolgál. Ügyfelek definiálhat bármilyen címteret a saját privát virtuális hálózatot az Azure-ban. Ezért az Azure-platform-erőforrások egyedi, nyilvános IP-címet kell bemutatni. A nyilvános virtuális IP-cím lehetővé teszi az alábbiakat:
 
 - Lehetővé teszi, hogy a Virtuálisgép-ügynök kommunikálni az Azure platformon, hogy jelezze, hogy a "Kész" állapotban van.
 - Lehetővé teszi a kommunikációt a DNS-kiszolgáló az erőforrások (például a virtuális gép), amelyek nem rendelkeznek egy egyéni DNS-kiszolgáló szűrt névfeloldást biztosítanak. Ez a szűrés gondoskodik arról, hogy a felhasználók is csak az erőforrások állomásnevét feloldani.

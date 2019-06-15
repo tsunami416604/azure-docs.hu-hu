@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: caleteet
 manager: femila
 ms.openlocfilehash: 80de4e1479fac7296889e45289a5f20e586e3f57
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65510749"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Hyperledger Fabric consortium network
@@ -139,7 +139,7 @@ Kattintson az **OK** gombra.
 
 A **összefoglalás**, tekintse át a megadott bemeneti adatok és a központi telepítés előtti Alapszintű ellenőrzés futtatásához.
 
-![Összegzés](./media/hyperledger-fabric-consortium-blockchain/summary.png)
+![Összefoglalás](./media/hyperledger-fabric-consortium-blockchain/summary.png)
 
 Jogi tudnivalók és adatvédelem feltételek áttekintése és kiválasztása **beszerzési** üzembe helyezéséhez. Virtuális gépek kiépítése folyamatban számától függően üzembe helyezési idő perc alatt több tíz, változhat pár percet vagy.
 

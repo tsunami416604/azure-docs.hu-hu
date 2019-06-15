@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: mbullwin
 ms.openlocfilehash: 61215adc2aee5cef3693d119bf0efb36526d748b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60904353"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Az Application Insights-folyamatok automatizálása a Logic Apps használatával
@@ -30,13 +30,13 @@ További műveleteket is hozzáadhat. Az Azure App Service Logic Apps funkciój�
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan hozhat létre egy logikai alkalmazást, amely az adatok attribútumokat az Analytics autocluster algoritmust használja a webalkalmazás. A folyamat automatikusan elküldi az eredményeket e-mailhez, csupán egy példa a használatáról Application Insights-elemzési és a Logic Apps együtt. 
 
-### <a name="step-1-create-a-logic-app"></a>1. lépés: Logikai alkalmazás létrehozása
+### <a name="step-1-create-a-logic-app"></a>1\. lépés: Logikai alkalmazás létrehozása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Kattintson a **erőforrás létrehozása**válassza **Web + mobil**, majd válassza ki **logikai alkalmazás**.
 
     ![Új logikai alkalmazás ablakának](./media/automate-with-logic-apps/1createlogicapp.png)
 
-### <a name="step-2-create-a-trigger-for-your-logic-app"></a>2. lépés: A logikai alkalmazás eseményindító létrehozása
+### <a name="step-2-create-a-trigger-for-your-logic-app"></a>2\. lépés: A logikai alkalmazás eseményindító létrehozása
 1. A a **Logikaialkalmazás-Tervező** időszak alatt **kezdje egy gyakori eseményindítóval**, jelölje be **ismétlődési**.
 
     ![Logic App Designerben ablak](./media/automate-with-logic-apps/2logicappdesigner.png)
@@ -45,7 +45,7 @@ Ebben az oktatóanyagban elsajátíthatja, hogyan hozhat létre egy logikai alka
 
     !["Ismétlődés" logikaialkalmazás-Tervező ablak](./media/automate-with-logic-apps/3recurrence.png)
 
-### <a name="step-3-add-an-application-insights-action"></a>3. lépés: Az Application Insights művelet hozzáadása
+### <a name="step-3-add-an-application-insights-action"></a>3\. lépés: Az Application Insights művelet hozzáadása
 1. Kattintson a **új lépés**.
 
 1. Az a **válasszon ki egy műveletet** írja be a keresőmezőbe **Azure Application Insights**.
@@ -54,7 +54,7 @@ Ebben az oktatóanyagban elsajátíthatja, hogyan hozhat létre egy logikai alka
 
     ![Logic App Designerben "Művelet kiválasztása" ablak](./media/automate-with-logic-apps/4visualize.png)
 
-### <a name="step-4-connect-to-an-application-insights-resource"></a>4. lépés: Csatlakozás az Application Insights-erőforrás
+### <a name="step-4-connect-to-an-application-insights-resource"></a>4\. lépés: Csatlakozás az Application Insights-erőforrás
 
 E lépés elvégzése után szükség van egy Alkalmazásazonosítót és a egy API-kulcsot az erőforrás. Kérheti le azokat az Azure Portalról, az alábbi ábrán látható módon:
 
@@ -66,7 +66,7 @@ Adjon meg egy nevet a kapcsolat, az alkalmazás azonosítója és API-kulcsot.
 
 ![Logic App Designerben folyamat csatlakozási ablak](./media/automate-with-logic-apps/7connection.png)
 
-### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>5. lépés: Adja meg az elemzési lekérdezés és a diagram típusát
+### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>5\. lépés: Adja meg az elemzési lekérdezés és a diagram típusát
 A következő példában a lekérdezés a sikertelen kérelmek kiválasztja az elmúlt napon belül, és azokat utal. a művelet részeként előforduló kivételek. Analytics utal. a sikertelen kérelmek, műveletazonosítója azonosítója alapján. A lekérdezés és a szegmensek az eredményeket a autocluster algoritmus használatával. 
 
 A saját lekérdezések létrehozásakor győződjön meg arról, hogy megfelelően működnek az Analyticsben előtt hozzáadása a folyamathoz.
@@ -88,7 +88,7 @@ A saját lekérdezések létrehozásakor győződjön meg arról, hogy megfelel�
 
     ![Elemzési lekérdezés konfigurációs ablaka](./media/automate-with-logic-apps/8query.png)
 
-### <a name="step-6-configure-the-logic-app-to-send-email"></a>6. lépés: Konfigurálja a logikai alkalmazás e-mailek küldése
+### <a name="step-6-configure-the-logic-app-to-send-email"></a>6\. lépés: Konfigurálja a logikai alkalmazás e-mailek küldése
 
 1. Kattintson a **új lépés**.
 
@@ -122,7 +122,7 @@ A saját lekérdezések létrehozásakor győződjön meg arról, hogy megfelel�
 
       ![Az Office 365 e-mailek konfigurációs képernyőjén](./media/automate-with-logic-apps/12emailattachment.png)
 
-### <a name="step-7-save-and-test-your-logic-app"></a>7. lépés: Mentés és a logikai alkalmazás tesztelése
+### <a name="step-7-save-and-test-your-logic-app"></a>7\. lépés: Mentés és a logikai alkalmazás tesztelése
 * Kattintson a **mentése** a módosítások mentéséhez.
 
 Várja meg az eseményindító a logikai alkalmazás futtatását, vagy futtassa a logikai alkalmazás azonnal kiválasztásával **futtatása**.

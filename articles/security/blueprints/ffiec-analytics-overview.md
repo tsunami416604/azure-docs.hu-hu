@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: meladie
 ms.openlocfilehash: a4e989778f041c586293e79005af2c8e87c8213c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60585879"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-ffiec-financial-services"></a>Azure biztonsági és megfelelőségi terv: Analytics FFIEC a pénzügyi szolgáltatások
@@ -91,11 +91,11 @@ A hálózati biztonsági csoportok rendelkezik bizonyos portokat és protokollok
 
 **Alhálózatok**: Minden egyes alhálózathoz társítva a megfelelő hálózati biztonsági csoporttal.
 
-### <a name="data-in-transit"></a>Az átvitt adatok
+### <a name="data-in-transit"></a>Átvitt adatok
 
 Az Azure és az Azure adatközpontok bemenő kommunikáció alapértelmezés szerint titkosítja. Az Azure Portalon az Azure Storage összes tranzakció HTTPS-kapcsolaton keresztül történik.
 
-### <a name="data-at-rest"></a>Inaktív adat
+### <a name="data-at-rest"></a>Inaktív adatok
 
 Az architektúra a titkosítás, az adatbázis naplózási és más intézkedéseket az inaktív adatok védi.
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/31/2017
 ms.author: banders
 ms.openlocfilehash: 8f71f42386ce49d4d7178cb03d28d74edacd7e39
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60371308"
 ---
 # <a name="understand-terms-on-your-azure-usage-and-charges-csv-for-a-microsoft-customer-agreement"></a>A Microsoft vevői szerződés az Azure-használat és költségek CSV feltételeinek értelmezése
@@ -42,28 +42,28 @@ Ha nagyvállalati szerződéssel rendelkező ügyfelek, láthatja, hogy a száml
 | Hónap| date |
 | Nap | date |
 | Év | date |
-| Product | termék |
-| Fogyasztásmérő azonosítója | fogyasztásmérő-azonosító |
-| Fogyasztásmérő kategóriája | meterCategory |
-| Fogyasztásmérő alkategóriája | meterSubCategory |
-| Fogyasztásmérő régiója | meterRegion |
-| Fogyasztásmérő neve | meterName |
-| Felhasznált mennyiség | MENNYISÉG |
-| Erőforrásdíj | effectivePrice | <!-- this was highlighted -->
-| Kiterjesztett költség | költség |
-| Erőforrás helye | resourceLocation |
-| Használt szolgáltatás | consumedService |
-| Példány azonosítója | instanceId |
-| 1. szolgáltatási információ | serviceInfo1 |
-| 2. szolgáltatási információ | serviceInfo2 |
-| További információk | additionalInfo |
-| Címkék | tags |
-| Társzolgáltatás azonosítója | – |
-| Részleg neve | számlaszakasz | <!-- this was highlighted -->
-| Költséghely | costCenter |
-| Mértékegység | unitofMeasure |
-| ResourceGroup | resourceGroup |
-| Külön számlázott díjak | isAzureCreditEligible | <!-- this was highlighted -->
+| Product | A termék |
+| MeterId | meterID |
+| MeterCategory | MeterCategory |
+| MeterSubCategory | meterSubCategory |
+| MeterRegion | MeterRegion |
+| MeterName | MeterName |
+| ConsumedQuantity | Mennyiség |
+| ResourceRate | effectivePrice | <!-- this was highlighted -->
+| ExtendedCost | költség |
+| resourceLocation | resourceLocation |
+| ConsumedService | consumedService |
+| InstanceId | instanceId |
+| ServiceInfo1 | serviceInfo1 |
+| ServiceInfo2 | serviceInfo2 |
+| AdditionalInfo | additionalInfo |
+| Tags | címkék |
+| StoreServiceIdentifier | – |
+| Részleg neve | invoiceSection | <!-- this was highlighted -->
+| CostCenter | costCenter |
+| UnitOfMeasure | unitofMeasure |
+| ResourceGroup | Erőforráscsoport |
+| ChargesBilledSeparately | isAzureCreditEligible | <!-- this was highlighted -->
 
 <!-- TO DO: Marketplace CSV? -->
 
@@ -71,7 +71,7 @@ Ha nagyvállalati szerződéssel rendelkező ügyfelek, láthatja, hogy a száml
 
 Az alábbi szakasz ismerteti az Azure használat és költségek jelenik meg a fontos fogalmakat.
 
-Időtartam | Leírás
+Kifejezés | Leírás
 --- | ---
 invoiceId | Az egyedi dokumentumazonosító szerepel a számlán PDF
 previousInvoiceId | Egy eredeti számlát, ha a jelen visszatérítés referencia
@@ -92,17 +92,17 @@ productOrderId | A termék sorrendben egyedi azonosítója
 productOrderName | Egyedi nevet a termék sorrend
 consumedService | Az igénybe vett szolgáltatás neve
 meterId | A mérőszám az egyedi azonosítója
-meterName | Mérőszám neve
-meterCategory | A mérőszám a besorolási kategória neve. Ha például *Cloud services*, *hálózatkezelés*stb.
+MeterName | Mérőszám neve
+MeterCategory | A mérőszám a besorolási kategória neve. Ha például *Cloud services*, *hálózatkezelés*stb.
 meterSubCategory | A mérőszám alárendelt besorolási kategória neve
-meterRegion | Neve az a régió, ahol a szolgáltatás a fogyasztásmérő érhető el. A releváns adatközpont bizonyos szolgáltatásokhoz, amelyek díjszabása adatokat szolgáltató adatközpont elhelyezkedése alapján.
+MeterRegion | Neve az a régió, ahol a szolgáltatás a fogyasztásmérő érhető el. A releváns adatközpont bizonyos szolgáltatásokhoz, amelyek díjszabása adatokat szolgáltató adatközpont elhelyezkedése alapján.
 az ajánlat | A megvásárolt előfizetési csomag neve
 productId | A díjakat halmoz fel a termék egyedi azonosítója
-termék | A díjakat halmoz fel a termék neve
+A termék | A díjakat halmoz fel a termék neve
 előfizetés-azonosító | Az előfizetés, a díjakat halmoz fel egyedi azonosítója
 subscriptionName | A díjakat halmoz fel az előfizetés neve
 reservationId | A megvásárolt foglalás-példány egyedi azonosítója
-foglalásnév | A megvásárolt foglalás példány neve
+reservationName | A megvásárolt foglalás példány neve
 publisherType | Írja be a publisher (értékek: firstParty, thirdPartyReseller, thirdPartyAgency)
 publisherName | Marketplace-szolgáltatások közzétevője
 resourceGroupId | Az erőforráscsoport az erőforráshoz tartozó egyedi azonosítója
@@ -111,14 +111,14 @@ resourceId | Az erőforrás-példány egyedi azonosítója
 resourceType | Erőforrás-példány típusa
 resourceLocation | Az Adatközpont, ahol az erőforrás fut. helyét azonosítja.
 location | Az erőforrás, ha különböző helyeken vannak konfigurálva az azonos régióban normalizált helye
-MENNYISÉG | Vásárolt, vagy a felhasznált egységek száma
-unitOfMeasure | A szolgáltatás számlázási mértékegysége. Például a számítási szolgáltatások díjszabása óradíjalapú.
+Mennyiség | Vásárolt, vagy a felhasznált egységek száma
+UnitOfMeasure | A szolgáltatás számlázási mértékegysége. Például a számítási szolgáltatások díjszabása óradíjalapú.
 chargeType | A díj típusa. Értékek: <ul><li>AsCharged-használat: Vannak a feladatokkal kapcsolatos díjakat alapján az Azure-szolgáltatások használatát. Ez magában foglalja a használati adatainak összevetésére a virtuális gépeket, amelyek miatt a fenntartott példányok nem terheli.</li><li>AsCharged-PurchaseMarketplace: A piactér-beli vásárlásokra egyszeri vagy rögzített ismétlődő díjak</li><li>AsCharged-UsageMarketplace: Marketplace-szolgáltatások, amelyek díja fogyasztás egységek alapján kell fizetni</li></ul>
 isAzureCreditEligible | Azt a jelzőt, amely azt jelzi, hogy a díj a szolgáltatás az Azure-kreditek használatával fizetendő jogosult (értékeket: IGAZ, hamis)
 serviceInfo1 | Szolgáltatásspecifikus metaadatok láthatók
 serviceInfo2 | Régi mező, amelyben a nem kötelező szolgáltatásspecifikus metaadatok láthatók
 additionalInfo | További szolgáltatásspecifikus metaadatok láthatók.
-tags | Az erőforrás rendel címkék
+címkék | Az erőforrás rendel címkék
 
 ### <a name="how-do-i-make-sure-that-the-charges-in-my-azure-usage-and-charges-file-are-correct"></a>Hogyan ellenőrizhetem, hogy, hogy helyesek-e a saját Azure-használat és költségek fájlban kell fizetni?
 

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
 ms.openlocfilehash: 6220aebdef6970f3d5f7017e4ae48f6f409ae0ce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60199397"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Az Azure Log Analytics Nozzle üzembe helyezése a Cloud Foundry figyelése
@@ -101,7 +101,7 @@ Ha nem használ a PCF az Ops Manager, a Nozzle üzembe helyezése alkalmazáské
 
 #### <a name="sign-in-to-your-cf-deployment-as-an-admin-through-cf-cli"></a>Jelentkezzen be a CF-hez telepítéséhez rendszergazdai CF parancssori felületén keresztül
 
-Futtassa az alábbi parancsot:
+Futtassa a következő parancsot:
 ```
 cf login -a https://api.${SYSTEM_DOMAIN} -u ${CF_USER} --skip-ssl-validation
 ```
@@ -125,7 +125,7 @@ uaac member add doppler.firehose ${FIREHOSE_USER}
 
 #### <a name="download-the-latest-log-analytics-nozzle-release"></a>Töltse le a Log Analytics Nozzle legújabb kiadását
 
-Futtassa az alábbi parancsot:
+Futtassa a következő parancsot:
 ```
 git clone https://github.com/Azure/oms-log-analytics-firehose-nozzle.git
 cd oms-log-analytics-firehose-nozzle
@@ -156,7 +156,7 @@ LOG_EVENT_COUNT_INTERVAL  : The time interval of the logging event count to Azur
 
 ### <a name="push-the-application-from-your-development-computer"></a>Az alkalmazás a fejlesztői számítógépről küldése
 
-Győződjön meg arról, hogy az oms-log-analytics – "firehose"-nozzle mappa alatt áll. Futtassa az alábbi parancsot:
+Győződjön meg arról, hogy az oms-log-analytics – "firehose"-nozzle mappa alatt áll. Futtassa a következő parancsot:
 ```
 cf push
 ```
@@ -194,7 +194,7 @@ A *"Cloud Foundry.omsview"* a Cloud Foundry OMS sablon megtekintése előzetes v
 
 Is [a riasztások létrehozása](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts), és szükség szerint a lekérdezések és a küszöbértékek testre szabhatja. A következő ajánlott riasztások:
 
-| Keresési lekérdezés                                                                  | Riasztás létrehozása ez alapján | Leírás                                                                       |
+| Keresési lekérdezés                                                                  | Riasztás alapján | Leírás                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
 | Type=CF_ValueMetric_CL Origin_s=bbs Name_s="Domain.cf-apps"                   | Eredmények < 1 száma   | **BBS. Domain.cf-alkalmazások** azt jelzi, hogy a cf-alkalmazás tartomány naprakész. Ez azt jelenti, hogy bbs felhőalapú adatkezelő CF-alkalmazás kéréseit a rendszer szinkronizálja. LRPsDesired (AIs Diego kívánt) végrehajtásához. Nem érkeztek adatok azt jelenti, hogy a cf-alkalmazás tartománya nem naprakész a megadott időtartományban. |
 | Type=CF_ValueMetric_CL Origin_s=rep Name_s=UnhealthyCell Value_d>1            | Eredmények > 0 száma   | Cellák Diego a 0 azt jelenti, hogy kifogástalan, és 1 azt jelenti, hogy nem megfelelő állapotú. Állítsa be a riasztás, ha több nem kifogástalan Diego cellák észlelt a megadott időtartományban. |
@@ -220,7 +220,7 @@ A Nozzle a vertikális alkalmazások Manager vagy a CF-hez CLI segítségével k
 Loggregator küld egy **LGR** log üzenet problémáira utalnak a naplózási folyamatot. Figyelheti a meghatározásához, hogy a loggregator vertikálisan fel kell-e riasztást.
 A loggregator vertikális felskálázásához az Doppler puffer méretét, vagy adjon hozzá további Doppler kiszolgálópéldányok a CF-jegyzékfájlban. További információkért lásd: [a loggregator skálázás útmutatóját](https://docs.cloudfoundry.org/running/managing-cf/logging-config.html#scaling).
 
-## <a name="update"></a>Frissítés
+## <a name="update"></a>frissítés
 
 A Nozzle frissítése egy újabb verzióval, töltse le az új Nozzle kiadásban, kövesse a fenti "A Nozzle üzembe helyezése" című szakaszának lépéseit, és újból az alkalmazást leküldéses.
 

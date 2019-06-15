@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: marossi
 ms.openlocfilehash: 8a8f669c33f40fb80dc826ec04203880dee74d82
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60829990"
 ---
 # <a name="logdownloader"></a>LogDownloader
@@ -45,7 +45,7 @@ python LogDownloader.py [-h] -a APP_ID -l LOG_DIR [-s START_DATE]
 | --- | --- | --- |
 | `-h`, `--help` | A súgóüzenetet és kilépési megjelenítése. | |
 | `-a APP_ID`, `--app_id APP_ID` | Az alkalmazás azonosítója (azaz a Azure blob tároló nevét). | Kötelező |
-| `-l LOG_DIR`, `--log_dir LOG_DIR` | Az alap könyvtár (almappa létrehozott) adatokat tölti le.  | Kötelező |
+| `-l LOG_DIR`, `--log_dir LOG_DIR` | Az alap könyvtár (almappa létrehozott) adatokat tölti le.  | Szükséges |
 | `-s START_DATE`, `--start_date START_DATE` | A letöltés kezdő dátuma (tartalmazza), a *éééé-hh-nn* formátumban. | `None` |
 | `-e END_DATE`, `--end_date END_DATE` | A letöltés záró dátum (tartalmazza), *éééé-hh-nn* formátumban. | `None` |
 | `-o OVERWRITE_MODE`, `--overwrite_mode OVERWRITE_MODE` | A felülírás módot használja. | |

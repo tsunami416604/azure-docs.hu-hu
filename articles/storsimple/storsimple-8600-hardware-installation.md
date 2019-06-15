@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: be3f68a00647840801e7c205d7abb34b718bd61c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60630880"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Kicsomagolása, állványra csatlakoztatást és a StorSimple 8600 sorozatú eszköz kábelezése
@@ -216,9 +216,9 @@ Támogatja a zónaredundáns vezérlő feladatátvétele, az eszköz hálózati 
 | Címke | Leírás |
 | --- | --- |
 | A |Helyi Internet-hozzáféréssel rendelkező hálózat |
-| B |0. vezérlő |
+| B |Vezérlő 0 |
 | C |PCM 0 |
-| D |1. vezérlő |
+| D |Vezérlő 1 |
 | E |PCM 1 |
 | F |Az EBOD-vezérlő 0 |
 | G |Az EBOD-vezérlő 1 |

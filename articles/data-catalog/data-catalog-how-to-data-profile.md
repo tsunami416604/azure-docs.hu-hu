@@ -9,10 +9,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: 64185a951b25b4e04ea5fc65aeede9b0e617d0c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61001700"
 ---
 # <a name="data-profile-data-sources"></a>Adatforrások adatprofiljának készítése
@@ -80,7 +80,7 @@ Az adatok profil **Azure Data Catalog** jeleníti meg a tábla és oszlop profil
 * NULL értéket tartalmazó sorok száma
 * Minimum, maximum, átlagos és -értékek szórásának
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Profilkészítési adatok statisztikák és a regisztrált adategységeket a alkalmasságát az üzleti problémák adatok meghatározásához kapcsolatos információkat biztosít. Jegyzetkészítés és adatforrások címkézésével, valamint adatok profilok adhat a felhasználóknak jobban megértheti az adatokat.
 
 ## <a name="see-also"></a>Lásd még:

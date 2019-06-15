@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 4030b1905f8d5b50ef6be3ffa61eda74d8a27951
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60552416"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>A feladat-visszavétel futtatása Hyper-V virtuális gépek
@@ -30,8 +30,8 @@ Feladatátvétel után az elsődleges kiszolgálóról a másodlagos helyre repl
 2. Az a **tervezett feladatátvétel megerősítése** lapon, válassza ki a forrás- és helyek. Megjegyzés: a feladatátvétel iránya. Ha a feladatátvételt az elsődleges, a várt és az összes virtuális gép Ez az információ csak a másodlagos helyen.
 3. Ha az Azure-ból, válassza ki a beállítások **adatszinkronizálás**:
     - **Szinkronizálja az adatokat (szinkronizálás csak a változásokat) a feladatátvétel előtt**– Ez a beállítás a virtuális gépek állásidő minimálisra csökkenti a szerint szinkronizálja azok leállítása nélkül. A következő lépéseket hajtja végre:
-        - 1. fázis: Pillanatképet készít a virtuális gép az Azure-ban, és átmásolja a helyszíni Hyper-V gazdagépen. A gépet továbbra is fut az Azure-ban.
-        - 2. fázis: Leállítja a virtuális gép az Azure-ban, így új módosítása nélkül hiba fordul elő. A változásokat a végső készletének átkerül a helyszíni kiszolgáló és a helyszíni virtuális gép már elindult.
+        - 1\. fázis: Pillanatképet készít a virtuális gép az Azure-ban, és átmásolja a helyszíni Hyper-V gazdagépen. A gépet továbbra is fut az Azure-ban.
+        - 2\. fázis: Leállítja a virtuális gép az Azure-ban, így új módosítása nélkül hiba fordul elő. A változásokat a végső készletének átkerül a helyszíni kiszolgáló és a helyszíni virtuális gép már elindult.
 
     - **Adatok csak a feladatátvétel során (teljes letöltés) szinkronizálása**– Ez a beállítás akkor gyorsabb.
         - Ezt a beállítást, hogy a lemez a legtöbb megváltozott, és nem szeretnénk ellenőrzőösszeg számítása időt várhatóan azért gyorsabb. A lemez letöltési hajtja végre. Ez hasznos is a helyszíni virtuális gép törölve lett.
@@ -59,8 +59,8 @@ Ha már telepítette a védelem között egy [Hyper-V-hely és az Azure](site-re
 5. A gazdagép neve ** válassza ki az új Hyper-V gazdakiszolgálón, amelyen el szeretné helyezni a virtuális gépet.
 6. Az adatszinkronizálás javasoljuk, hogy választja, a feladatátvétel előtt az adatok szinkronizálását. Így minimálisra csökkenthető a virtuális gépek állásidő, szinkronizálja őket leállítása nélkül. A következőket teszi:
 
-    - 1. fázis: Pillanatképet készít a virtuális gép az Azure-ban, és átmásolja a helyszíni Hyper-V gazdagépen. A gépet továbbra is fut az Azure-ban.
-    - 2. fázis: Leállítja a virtuális gép az Azure-ban, így új módosítása nélkül hiba fordul elő. A módosítások végső készletének átkerül a helyszíni kiszolgáló, és a helyszíni virtuális gép már elindult.
+    - 1\. fázis: Pillanatképet készít a virtuális gép az Azure-ban, és átmásolja a helyszíni Hyper-V gazdagépen. A gépet továbbra is fut az Azure-ban.
+    - 2\. fázis: Leállítja a virtuális gép az Azure-ban, így új módosítása nélkül hiba fordul elő. A módosítások végső készletének átkerül a helyszíni kiszolgáló, és a helyszíni virtuális gép már elindult.
     
 7. Kattintson a pipára a feladatátvétel (feladat-visszavétel) kezdődik.
 8. Miután a kezdeti szinkronizálás befejezését, és készen áll a állítsa le a virtuális gépet az Azure-ban kattintson a **feladatok** > \<tervezett feladatátvételi feladat >> **befejezheti a feladatátvételt** . Ez leállítja az Azure-beli gép, átviszi a legutóbbi változtatásokat a helyszíni virtuális gép, és elindítja azt.

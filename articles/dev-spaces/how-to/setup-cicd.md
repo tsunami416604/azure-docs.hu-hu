@@ -11,10 +11,10 @@ manager: yuvalm
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Container Service, tárolók
 ms.openlocfilehash: 983af0dd75e6ae62630c85d04ac3819c7e260439
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60687310"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>CI/CD használata az Azure fejlesztői, szóközök
@@ -43,7 +43,7 @@ Hozzon létre egy új tárolóhelyet nevű _fejlesztési_ használatával a `azd
 azds space select -n dev
 ```
 
-Amikor a rendszer kéri, válassza ki a szülő fejlesztési szóközzel, válassza ki a  _\<nincs\>_.
+Amikor a rendszer kéri, válassza ki a szülő fejlesztési szóközzel, válassza ki a  _\<nincs\>_ .
 
 A fejlesztési tárhely létrehozása után meg kell határoznia az állomásnév-utótagja. Használja a `azds show-context` parancsot az Azure fejlesztési tárolóhelyek Bejövőforgalom-vezérlőt az állomásnév-utótagja megjelenítéséhez.
 
@@ -101,7 +101,7 @@ Most már a CI-megoldás, amely automatikusan hozhat létre *mywebapi* és *webf
 1. Az a **alapértelmezett verzió**, válassza a **legújabb ágból a buildelési folyamat alapértelmezett címkékkel**.
 1. Hagyja **címkék** üres.
 1. Állítsa be a **forrás alias** való `drop`. A **forrás alias** érték előre meghatározott kiadási tevékenységek által használt, úgy kell beállítani.
-1. Kattintson a **Hozzáadás** parancsra.
+1. Kattintson a **Hozzáadás**lehetőségre.
 1. Most kattintson az újonnan létrehozott villámgyors bolt ikonjára `drop` összetevő forrás, az alább látható módon:
 
     ![Kiadási összetevő folyamatos üzembe helyezés beállítása](../media/common/release-artifact-cd-setup.png)

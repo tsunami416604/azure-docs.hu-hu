@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
 ms.openlocfilehash: e92086ca18887b9b2c2362e97d855c33834b83bb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65799192"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
@@ -62,15 +62,15 @@ Egy URL-címet, amellyel az ügyfél (a POST-kérés használatával) a követke
     
         |Name (Név)|Leírás|
         |---|---|
-        |azonosító|A videó azonosítója|
-        |állapot|A videó állapota|  
+        |id|A videó azonosítója|
+        |state|A videó állapota|  
     - Például: https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
 - A videóban azonosított személy:
   - Tulajdonságok
     
       |Name (Név)|Leírás|
       |---|---|
-      |azonosító| A videó azonosítója|
+      |id| A videó azonosítója|
       |faceId|A face ID, hogy megjelenik a videók indexe|
       |knownPersonId|A egy oldallal modellen belül egyedi személy azonosítója|
       |PersonName|Annak a személynek a nevét|

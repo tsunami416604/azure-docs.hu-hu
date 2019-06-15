@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/01/2016
 ms.author: allclark;yaqiyang
 ms.openlocfilehash: f6b21f288b94e06414fe66ff775ebb264368c0b8
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65411603"
 ---
 # <a name="download-the-azure-sdk-for-php"></a>A PHP-hoz készült Azure SDK letöltése
@@ -28,16 +28,16 @@ ms.locfileid: "65411603"
 A php-hez készült Azure SDK összetevők, amelyek lehetővé teszik, hogy fejlesztése, üzembe helyezése és kezelése az Azure-ban PHP-alkalmazásokat tartalmaz. Pontosabban a php-hez készült Azure SDK a következőket tartalmazza:
 
 * **A PHP-klienskódtárak Azure**. Ezek a kódtárak osztály lehetővé tevő interfészt biztosítanak az Azure-szolgáltatások, például az adatkezelési szolgáltatások eléréséhez, és felhőszolgáltatásokat fejleszthet.
-* **Az Azure parancssori felület Mac, Linux és Windows (az Azure parancssori felület)**. Ez a központi telepítésére és felügyeletére az Azure-szolgáltatások, például az Azure Websites és az Azure Virtual Machines parancsokat. Az Azure CLI-vel munkahelyi bármilyen platformon, beleértve a Mac, Linux és Windows.
-* **Az Azure PowerShell (csak Windows)**. Ez az üzembe helyezése és kezelése az Azure-szolgáltatások, például a Cloud Services és a virtuális gépek PowerShell-parancsmagok egy halmaza.
-* **Az Azure-emulátorok (csak Windows)**. A számítási és tárolási emulátory systému olyan helyi emulátor cloud services és az adatkezelési szolgáltatások, amelyek lehetővé teszik, hogy az alkalmazás helyi tesztelése. Az Azure-emulátorok csak futtatható Windows.
+* **Az Azure parancssori felület Mac, Linux és Windows (az Azure parancssori felület)** . Ez a központi telepítésére és felügyeletére az Azure-szolgáltatások, például az Azure Websites és az Azure Virtual Machines parancsokat. Az Azure CLI-vel munkahelyi bármilyen platformon, beleértve a Mac, Linux és Windows.
+* **Az Azure PowerShell (csak Windows)** . Ez az üzembe helyezése és kezelése az Azure-szolgáltatások, például a Cloud Services és a virtuális gépek PowerShell-parancsmagok egy halmaza.
+* **Az Azure-emulátorok (csak Windows)** . A számítási és tárolási emulátory systému olyan helyi emulátor cloud services és az adatkezelési szolgáltatások, amelyek lehetővé teszik, hogy az alkalmazás helyi tesztelése. Az Azure-emulátorok csak futtatható Windows.
 
 Az alábbi szakaszok ismertetik töltse le és telepítse a fent leírt összetevőket.
 
 A témakörben található utasítások azt feltételezik, hogy [PHP] [ install-php] telepítve.
 
 > [!NOTE]
-> 5.5-ös vagy újabb verziója használandó a PHP-klienskódtárak Azure PHP kell rendelkeznie.
+> 5\.5-ös vagy újabb verziója használandó a PHP-klienskódtárak Azure PHP kell rendelkeznie.
 >
 >
 

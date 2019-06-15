@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: areddish
 ms.openlocfilehash: 9dd473aadd7123cafc27209f5c34322fdbcffb71
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60816458"
 ---
 # <a name="migrate-to-the-30-api"></a>A 3.0-s át API
@@ -30,7 +30,7 @@ Ez az útmutató bemutatja, hogyan működik az új API-verzió a projektek fris
 
 ## <a name="use-the-updated-prediction-api"></a>A frissített előrejelzési API-val
 
-A 2.x-es API-kat használja az adott előrejelzési hívásban kép besorolások és a objektum detector használatával projektek. Mindkét projekt típusa is számára elfogadható az **PredictImage** és **PredictImageUrl** hívások. 3.0 kezdve rendelkezik osztottuk fel, az API-t, hogy a projekt típusa, a hívásnak egyeznie kell:
+A 2.x-es API-kat használja az adott előrejelzési hívásban kép besorolások és a objektum detector használatával projektek. Mindkét projekt típusa is számára elfogadható az **PredictImage** és **PredictImageUrl** hívások. 3\.0 kezdve rendelkezik osztottuk fel, az API-t, hogy a projekt típusa, a hívásnak egyeznie kell:
 
 * Használat **[ClassifyImage](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15)** és **[ClassifyImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c14)** való kaphatnak előjelzéseket kép besorolási projektekhez.
 * Használat **[DetectImage](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c19)** és **[DetectImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c18)** objektum észlelési projektek adatokat beolvasni.

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: mbullwin
 ms.openlocfilehash: 38723a5dd306c2a4b594d95e5cc660d117966bc4
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65518840"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés, megőrzés és tárolás az Application Insights szolgáltatásban
@@ -193,7 +193,7 @@ Nem javasoljuk, hogy explicit módon beállítása az alkalmazás csak a TLS 1.2
 
 ### <a name="platformlanguage-specific-guidance"></a>Konkrét útmutatást platformon és nyelven
 
-|Platformon és nyelven | Támogatás | További információk |
+|Platformon és nyelven | Támogatás | További információ |
 | --- | --- | --- |
 | Azure App Services  | Támogatott konfigurációra lehet szükség. | Támogatás a 2018 április mutattuk be. A bejelentés a [konfigurációs részletek](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/).  |
 | Azure Function Apps | Támogatott konfigurációra lehet szükség. | Támogatás a 2018 április mutattuk be. A bejelentés a [konfigurációs részletek](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/). |
@@ -240,9 +240,9 @@ Az SDK-k platformok közötti eltérőek lehetnek, és több összetevőt, amely
 
 | A művelet | (Lásd a következő tábla) gyűjtött adatok osztályok |
 | --- | --- |
-| [Application Insights SDK hozzáadása egy .NET webes projekthez][greenbrown] |ServerContext<br/>Következtetni<br/>Teljesítményszámlálók<br/>Kérelmek<br/>**Kivételek**<br/>Munkamenet<br/>Felhasználók |
+| [Application Insights SDK hozzáadása egy .NET webes projekthez][greenbrown] |ServerContext<br/>Következtetni<br/>Teljesítményszámlálók<br/>Kérelmek<br/>**Kivételek**<br/>Munkamenet<br/>felhasználók |
 | [Telepítse az Állapotfigyelőt az IIS-kiszolgálón][redfield] |Függőségek<br/>ServerContext<br/>Következtetni<br/>Teljesítményszámlálók |
-| [Application Insights SDK hozzáadása a Java-webalkalmazás][java] |ServerContext<br/>Következtetni<br/>Lekérés<br/>Munkamenet<br/>Felhasználók |
+| [Application Insights SDK hozzáadása a Java-webalkalmazás][java] |ServerContext<br/>Következtetni<br/>Kérés<br/>Munkamenet<br/>felhasználók |
 | [A JavaScript SDK-t adhat a weblap][client] |ClientContext <br/>Következtetni<br/>Oldal<br/>ClientPerf<br/>Ajax |
 | [Alapértelmezett tulajdonságainak meghatározása][apiproperties] |**Tulajdonságok** összes szabványos és egyéni esemény |
 | [Hívás TrackMetric][api] |Numerikus értékek<br/>**Tulajdonságok** |
@@ -263,7 +263,7 @@ A [platformokhoz készült SDK-k][platforms], tekintse meg a dokumentumokat.
 | ServerContext |A gép neve, területi beállítás, az operációs rendszer, eszköz, felhasználói munkamenet, felhasználói környezetet, a művelet |
 | Következtetni |földrajzi hely, IP-címről, timestamp, az operációs rendszer, böngészőben |
 | Mérőszámok |Metrika neve és értéke |
-| Események |Esemény neve és értéke |
+| Events |Esemény neve és értéke |
 | PageViews |URL-CÍMÉT és a lap neve vagy a képernyő nevét |
 | Ügyfél teljesítményoptimalizált |URL-cím/lap neve, a böngésző lapbetöltési ideje |
 | Ajax |A kiszolgáló webes HTTP-hívások |
@@ -271,7 +271,7 @@ A [platformokhoz készült SDK-k][platforms], tekintse meg a dokumentumokat.
 | Függőségek |Típus (SQL, a HTTP,...), a kapcsolati karakterlánc vagy URI-t, szinkronizálási vagy aszinkron, időtartama, sikeres, SQL-utasítás (az Állapotfigyelőt) |
 | **Kivételek** |Típus, **üzenet**, zásobníky volání, a forrás-fájl és a sor száma, hozzászóláslánc azonosítója |
 | Összeomlások |Id procesu, szülőfolyamat azonosítója, összeomlási szálazonosító; alkalmazás-javítás, a-azonosító, a build;  Kivétel típusa, cím, reason; rejtjelezett szimbólumok, és regisztrál, bináris kezdő és záró címet, bináris fájl neve és elérési útja, cpu-típus |
-| Híváslánc |**Üzenet** és súlyossági szint |
+| Nyomkövetés |**Üzenet** és súlyossági szint |
 | Teljesítményszámlálók |Processzor kihasználtsága, rendelkezésre álló memória, kérelmek gyakorisága, kivételek gyakorisága, folyamat saját bájtjai, átviteli sebessége, kérelem idejével, kérelem-várólista hossza |
 | Rendelkezésre állás |Webes teszt válaszkód, az időtartamot mindegyik teszt. lépés, teszt neve, timestamp, sikeres, válaszideje, teszt helye |
 | SDK-diagnosztika |Nyomkövetési üzenet vagy kivétel |

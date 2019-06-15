@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
 ms.openlocfilehash: 85296b4549d7c9499b8d0b815ddf1cd2e85e2b1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60337425"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfigurációs és felügyeleti problémák az Azure Cloud Services: Gyakori kérdések (GYIK)
@@ -219,7 +219,7 @@ A cloud Services nem támogatja a szerepköralapú hozzáférés-vezérlés (RBA
 
 Lásd: [megismerheti az Azure-ban a különféle szerepkörök](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
-## <a name="remote-desktop"></a>Távoli asztal
+## <a name="remote-desktop"></a>A távoli asztal
 
 ### <a name="can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission"></a>A Microsoft belső mérnökei távoli asztal Felhőszolgáltatás-példányok engedélye nélkül is?
 A Microsoft szigorú folyamat, amely nem teszi lehetővé a távoli asztal belső mérnökei azokat a Felhőszolgáltatás (e-mailben vagy egyéb írásbeli kommunikációs) írásos engedélye nélkül a webhely tulajdonosa vagy az általa kijelölt szervet követi.
@@ -311,7 +311,7 @@ Az SNI-kötés a PowerShell-parancsmag használatával konfigurálható **New-We
     
 Amint [Itt](https://technet.microsoft.com/library/ee790567.aspx), a $sslFlags az értékek a következők valamelyike lehet:
 
-|Value|Jelentés|
+|Érték|Jelentés|
 ------|------
 |0|Nincs SNI|
 |1|SNI engedélyezve |

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: raynew
 ms.openlocfilehash: 98ffe145103b4be04014627ed04d04dcf7542015
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60647407"
 ---
 # <a name="azure-backup-architecture"></a>Az Azure Backup-architektúra
@@ -49,8 +49,8 @@ Recovery Services-tárolók a következő jellemzőkkel rendelkeznek:
 - Egy tároló tartalmazza, beleértve a helyszíni és Azure-beli virtuális gépek biztonsági másolat elemeinek követheti nyomon.
 - Kezelheti az Azure-ral a jelszótárolóhoz való hozzáféréshez [szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 - Azt adja meg, hogy a redundancia biztosítása érdekében a tárolóban lévő adatok replikálási módját:
-    - **Helyileg redundáns tárolás (LRS)**: Az egy kínai adatközpont meghibásodása elleni védelem, használhatja az LRS. LRS tárolóskálázási egységben replikálja az adatokat. [További információk](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
-    - **Georedundáns tárolás (GRS)**: Régióra kiterjedő szolgáltatáskimaradás ellen védelmet biztosító, GRS használhatja. GRS az adatait egy másodlagos régióba replikálja. [További információk](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs). 
+    - **Helyileg redundáns tárolás (LRS)** : Az egy kínai adatközpont meghibásodása elleni védelem, használhatja az LRS. LRS tárolóskálázási egységben replikálja az adatokat. [További információk](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
+    - **Georedundáns tárolás (GRS)** : Régióra kiterjedő szolgáltatáskimaradás ellen védelmet biztosító, GRS használhatja. GRS az adatait egy másodlagos régióba replikálja. [További információk](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs). 
     - Alapértelmezés szerint a Recovery Services-tárolók GRS használják. 
 
 ## <a name="backup-agents"></a>Backup-ügynököket
@@ -178,7 +178,7 @@ A virtuális gépek disk storage és a rendelkezésre álló lemeztípusok kapcs
 
 Biztonsági másolatot készíthet Azure virtuális gépek premium storage az Azure Backup használatával:
 
-- A premium storage virtuális gépek biztonsági mentési folyamat során a Backup szolgáltatás létrehoz egy átmeneti előkészítési hely nevű *AzureBackup -*, a storage-fiókban. Az előkészítési hely mérete megegyezik a helyreállítási pont pillanatképének méretét.
+- A premium storage virtuális gépek biztonsági mentési folyamat során a Backup szolgáltatás létrehoz egy átmeneti előkészítési hely nevű *AzureBackup -* , a storage-fiókban. Az előkészítési hely mérete megegyezik a helyreállítási pont pillanatképének méretét.
 - Győződjön meg arról, hogy a premium storage-fiók rendelkezik-e elegendő szabad terület az átmeneti előkészítési hely. [További információk](../storage/common/storage-scalability-targets.md#premium-performance-storage-account-scale-limits). Ne módosítsa az előkészítési helyet.
 - A biztonsági mentési feladat befejezése után a rendszer törli az előkészítési helyet.
 - Az előkészítési helyhez használt tároló ára összhangban az [premium storage szolgáltatás díjszabása](../virtual-machines/windows/disks-types.md#billing).

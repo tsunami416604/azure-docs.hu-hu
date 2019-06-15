@@ -16,10 +16,10 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f8787008b396c2dd8ce1c006a40fee1e32e8100d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60442064"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Jelszavas egyszeri bejelentkezés nem katalógusból származó alkalmazásra konfigurálása során
@@ -64,7 +64,7 @@ Konfigurálása **jelszóalapú egyszeri bejelentkezés** számára egy alkalmaz
 
 8. Válassza ki a módot **jelszóalapú bejelentkezés.**
 
-9. Adja meg a **bejelentkezési URL-**, az URL-címet, amelyen a felhasználók megadják felhasználónevüket és jelszavukat való bejelentkezéshez. **Győződjön meg arról, a bejelentkezési mezők láthatók-e adnia URL-címen**.
+9. Adja meg a **bejelentkezési URL-** , az URL-címet, amelyen a felhasználók megadják felhasználónevüket és jelszavukat való bejelentkezéshez. **Győződjön meg arról, a bejelentkezési mezők láthatók-e adnia URL-címen**.
 
 10. Kattintson a **Mentés** gombra.
 
@@ -94,7 +94,7 @@ Konfigurálása **jelszóalapú egyszeri bejelentkezés** számára egy alkalmaz
 
 8. Válassza ki a módot **jelszóalapú bejelentkezés.**
 
-9. Adja meg a **bejelentkezési URL-**, az URL-címet, amelyen a felhasználók megadják felhasználónevüket és jelszavukat való bejelentkezéshez. **Győződjön meg arról, a bejelentkezési mezők láthatók-e adnia URL-címen**.
+9. Adja meg a **bejelentkezési URL-** , az URL-címet, amelyen a felhasználók megadják felhasználónevüket és jelszavukat való bejelentkezéshez. **Győződjön meg arról, a bejelentkezési mezők láthatók-e adnia URL-címen**.
 
 10. Kattintson a **Mentés** gombra.
 

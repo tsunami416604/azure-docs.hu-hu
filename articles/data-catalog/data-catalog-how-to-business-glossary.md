@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.openlocfilehash: 649a842c8c8890713bda938c8e11740c5c8be7aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61001913"
 ---
 # <a name="set-up-the-business-glossary-for-governed-tagging"></a>A címkézés szabályozott állítsa be az üzleti szószedet összeállítása
@@ -76,7 +76,7 @@ A Data Catalog-portálon a címkék kétféle és vizuális megjelenítés segí
 
 Szószedet-címkék és a felhasználói címkék is kereshető, és alkalmazhatja azokat a keresés szűrőként.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az üzleti szószedet lehetővé teszi a szabályozott címkézés, és az Azure Data Catalog használatával azonosítsa, kezelheti és egységes módon adategységeket. Az üzleti szószedet learning, az üzleti szószedet a szervezet tagjai léptetheti elő. A szószedet is támogatja az értelmezhető metaadatokat, ami megkönnyíti az adatvagyon felderítését és megértése rögzítése.
 

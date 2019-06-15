@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli;
 ms.openlocfilehash: 77050ad37862394785cf348a242f585cc089ba26
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606860"
 ---
-# <a name="contact-microsoft-support"></a>Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
+# <a name="contact-microsoft-support"></a>Forduljon a Microsoft ügyfélszolgálatához
 
 A StorSimple-Eszközkezelő lehetővé teszi, hogy **egy új támogatási jegyet** belül a szolgáltatásösszegző panel. Ha bármilyen problémába ütközik a StorSimple-megoldásokra, létrehozhat egy szolgáltatási kérelmet, ha technikai támogatást. Online-munkamenetben a támogatási szakértővel szükség lehet, indítson el egy támogatási munkamenetet a StorSimple eszközön. Ez a cikk végigvezeti:
 
@@ -31,7 +31,7 @@ A StorSimple-Eszközkezelő lehetővé teszi, hogy **egy új támogatási jegyet
 
 Tekintse át a [StorSimple 8000 sorozat támogatási SLA-k és információk](https://msdn.microsoft.com/library/mt433077.aspx) támogatási kérések létrehozása előtt.
 
-## <a name="create-a-support-request"></a>Támogatáskérés létrehozása
+## <a name="create-a-support-request"></a>Támogatási kérelem létrehozása
 
 Attól függően, hogy a [támogatási csomag](https://azure.microsoft.com/support/plans/), a StorSimple eszközön a StorSimple-Eszközkezelő szolgáltatás összefoglalás panelén közvetlenül a is létrehozhat támogatási jegyeket, egy adott probléma megoldásához. A következő lépésekkel hozzon létre egy támogatási kérést:
 

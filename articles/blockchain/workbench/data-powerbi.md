@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
 ms.openlocfilehash: dcb6729581d5282b32359874eaad22050d0d2048
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65510711"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Azure Blockchain Workbench-adatok használata a Microsoft Power BI-ban
@@ -37,7 +37,7 @@ Ebből a cikkből részletesen megismerheti, hogy hogyan csatlakozhat az Azure B
 
 4.  Adja meg a kiszolgáló és az adatbázis nevét a megjelenő párbeszédpanelen. Adja meg, hogy importálni akarja-e az adatokat, vagy **DirectQuery**-lekérdezést szeretne végrehajtani. Kattintson az **OK** gombra.
 
-    ![SQL Server-kiszolgáló választása](./media/data-powerbi/select-sql.png)
+    ![Select SQL Server](./media/data-powerbi/select-sql.png)
 
 5.  Adja meg az adatbázis hitelesítő adatait az Azure Blockchain Workbench eléréséhez. Válassza az **Adatbázis** lehetőséget, és adja meg a hitelesítő adatait.
 

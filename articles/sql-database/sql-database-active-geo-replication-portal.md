@@ -13,10 +13,10 @@ ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/13/2019
 ms.openlocfilehash: 8bada96c648881a9943176c45115627a829fcc58
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60864141"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Aktív georeplikáció konfigurálása az Azure SQL Database az Azure portal és a feladatátvétel kezdeményezése
@@ -70,7 +70,7 @@ A másodlagos adatbázist elsődlegessé mostantól átválthat.
 2. Az SQL Database panelen válassza ki a **minden beállítás** > **georeplikációs**.
 3. Az a **másodlagos példány hozható létre** listájához, válassza ki az adatbázist az új elsődleges válnak, és kattintson a kívánt **feladatátvételi**.
 
-    ![feladatátvétel](./media/sql-database-geo-replication-failover-portal/secondaries.png)
+    ![Feladatátvétel](./media/sql-database-geo-replication-failover-portal/secondaries.png)
 4. Kattintson a **Igen** , a feladatátvételi művelet elindításához.
 
 A parancs azonnal átvált a másodlagos adatbázis, az elsődleges szerepre. Ez a folyamat megfelelően be kell fejeződnie belül 30 másodperc vagy annál kisebb.

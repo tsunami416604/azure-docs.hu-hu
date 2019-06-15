@@ -17,10 +17,10 @@ ms.date: 05/11/2018
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 094d79026a55e651a1f67a5047dff20c769c359a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60371231"
 ---
 # <a name="no-subscriptions-found-sign-in-error-for-azure-portal-or-azure-account-center"></a>Nem találhatók előfizetések bejelentkezési hiba történt az Azure Portalon vagy az Azure account Center webhelyen
@@ -37,7 +37,7 @@ Ez a probléma akkor fordul elő, ha az nem megfelelő könyvtárba, vagy ha a f
 
 ## <a name="solution"></a>Megoldás
 
-### <a name="scenario-1-error-message-is-received-in-the-azure-portalhttpsportalazurecom"></a>1. forgatókönyv: Hibaüzenet érkezik a [Azure Portalon](https://portal.azure.com)
+### <a name="scenario-1-error-message-is-received-in-the-azure-portalhttpsportalazurecom"></a>1\. forgatókönyv: Hibaüzenet érkezik a [Azure Portalon](https://portal.azure.com)
 
 A probléma megoldásához:
 
@@ -46,7 +46,7 @@ A probléma megoldásához:
   ![Válassza ki a címtár tetején, az Azure portal jobb](./media/billing-no-subscriptions-found/directory-switch.png)
 * Ha a megfelelő Azure-könyvtár van kijelölve, de továbbra is megjelenik a hibaüzenet [a tulajdonosi szerepkör hozzárendelése a fiókhoz](../role-based-access-control/role-assignments-portal.md).
 
-### <a name="scenario-2-error-message-is-received-in-the-azure-account-centerhttpsaccountwindowsazurecomsubscriptions"></a>2. forgatókönyv: Hibaüzenet érkezik a [Azure Account Center](https://account.windowsazure.com/Subscriptions)
+### <a name="scenario-2-error-message-is-received-in-the-azure-account-centerhttpsaccountwindowsazurecomsubscriptions"></a>2\. forgatókönyv: Hibaüzenet érkezik a [Azure Account Center](https://account.windowsazure.com/Subscriptions)
 
 Ellenőrizze, hogy a fiókot, amelynek Ön a fiók rendszergazdája. Annak ellenőrzéséhez, aki a fiók rendszergazdája, kövesse az alábbi lépéseket:
 

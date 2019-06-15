@@ -13,17 +13,17 @@ ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: cjiang
 ms.openlocfilehash: 72fbdbcfcd94dd41a67bb81314802dd7314ae463
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60505812"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Amikor létrehozása, újraindítása vagy átméretezése az Azure-beli virtuális gépek foglalási hibáinak elhárítása
 
 Hozzon létre egy virtuális gépet (VM), indítsa újra a leállított (felszabadított) virtuális gépek vagy virtuális gép átméretezése, a Microsoft Azure számítási erőforrásokat, amelyek az előfizetés foglal le. A Microsoft folyamatosan fektet be a további infrastruktúra és a szolgáltatások győződjön meg arról, hogy mindig van összes virtuális gép típusát támogatja az ügyfelek igényei szerint. Azonban alkalmanként tapasztalhat erőforrás foglalási hibák miatt az adott régióban található Azure-szolgáltatások iránti igény példa nélküli növekedését tapasztaltuk. Ez a probléma akkor fordulhat elő, amikor megpróbálja létrehozni, vagy indítsa el a virtuális gépek egy régióban, amíg a virtuális gépek a következő hibakóddal és üzenet megjelenítése:
 
-**Hibakód:**: AllocationFailed vagy ZonalAllocationFailed
+**Hibakód:** : AllocationFailed vagy ZonalAllocationFailed
 
 **Chybová zpráva**: "A lefoglalás sikertelen. Ebben a régióban nincs elegendő kapacitás a kért Virtuálisgép-méretet. További információk a javítása sikeres, a https:\//aka.ms/allocation-guidance "
 
@@ -96,11 +96,11 @@ A kért Virtuálisgép-méret példányainak számát csökkentheti, és próbá
 
 ## <a name="background-information"></a>Háttér-információk
 ### <a name="how-allocation-works"></a>Foglalási működése
-Az Azure-adatközpontokban lévő kiszolgálók fürtökre vannak particionálva. Általában a rendszer több fürtön is próbálkozik egy foglalási kérelemmel, de előfordulhat, hogy a foglalási kérelem bizonyos korlátozásai arra kényszerítik az Azure-platformot, hogy csak egy fürtön próbálkozzon. Ebben a cikkben azt fog hivatkozni erre, "fürt rögzített." 1 alábbi ábra a kis-és a egy normál foglalási, amely több fürtön kísérlet történik. 2. ábra szemlélteti a kis-és a egy elkülönített, amelyek fürt 2 van rögzítve, mert a meglévő felhőalapú szolgáltatás CS_1 vagy rendelkezésre állási készlet üzemeltető.
+Az Azure-adatközpontokban lévő kiszolgálók fürtökre vannak particionálva. Általában a rendszer több fürtön is próbálkozik egy foglalási kérelemmel, de előfordulhat, hogy a foglalási kérelem bizonyos korlátozásai arra kényszerítik az Azure-platformot, hogy csak egy fürtön próbálkozzon. Ebben a cikkben azt fog hivatkozni erre, "fürt rögzített." 1 alábbi ábra a kis-és a egy normál foglalási, amely több fürtön kísérlet történik. 2\. ábra szemlélteti a kis-és a egy elkülönített, amelyek fürt 2 van rögzítve, mert a meglévő felhőalapú szolgáltatás CS_1 vagy rendelkezésre állási készlet üzemeltető.
 ![Foglalási diagramja](./media/virtual-machines-common-allocation-failure/Allocation1.png)
 
 ### <a name="why-allocation-failures-happen"></a>Miért fordulhat elő, hibák
-Egy memóriafoglalási kérelem rögzítve van egy fürthöz, amikor nincs ingyenes forrásokat, mivel a rendelkezésre álló erőforrás-készlet nem magasabb esélyét. Továbbá ha a foglalási kérelem rögzítve van egy fürthöz, de a fürt nem támogatja a kért erőforrás típusát, a kérelem sikertelen lesz akkor is, ha a fürt ingyenes erőforrás. A következő ábra 3 mutatja be az esetben, ahol egy rögzített felosztás meghiúsul, mert az csak jelölt fürtnek nincs szabad erőforrás. 4. ábra mutatja be az esetben, ahol egy rögzített felosztás meghiúsul, mert a csak jelölt fürt nem támogatja a kért Virtuálisgép-méret, annak ellenére, hogy a fürt rendelkezik ingyenes erőforrások.
+Egy memóriafoglalási kérelem rögzítve van egy fürthöz, amikor nincs ingyenes forrásokat, mivel a rendelkezésre álló erőforrás-készlet nem magasabb esélyét. Továbbá ha a foglalási kérelem rögzítve van egy fürthöz, de a fürt nem támogatja a kért erőforrás típusát, a kérelem sikertelen lesz akkor is, ha a fürt ingyenes erőforrás. A következő ábra 3 mutatja be az esetben, ahol egy rögzített felosztás meghiúsul, mert az csak jelölt fürtnek nincs szabad erőforrás. 4\. ábra mutatja be az esetben, ahol egy rögzített felosztás meghiúsul, mert a csak jelölt fürt nem támogatja a kért Virtuálisgép-méret, annak ellenére, hogy a fürt rendelkezik ingyenes erőforrások.
 
 ![Rögzített foglalási hiba](./media/virtual-machines-common-allocation-failure/Allocation2.png)
 

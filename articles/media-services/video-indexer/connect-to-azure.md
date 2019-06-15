@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
 ms.openlocfilehash: 33493f1bdff6071737aad4bfb8c7d0e5e22896db
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65799849"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Hozzon létre egy kapcsolódik az Azure Video Indexer-fiókot
@@ -139,11 +139,11 @@ A párbeszédpanelen adja meg a következő információkat:
 
 |Beállítás|Leírás|
 |---|---|
-|Video Indexer-fiók régiója|A Video Indexer-fiókot régió neve. A jobb teljesítmény és alacsonyabb költségek azt javasoljuk, adja meg a nevét, a régió, ahol az Azure Media Services-erőforrás és Azure Storage-fiókban találhatók. |
+|Video Indexer régiója|A Video Indexer-fiókot régió neve. A jobb teljesítmény és alacsonyabb költségek azt javasoljuk, adja meg a nevét, a régió, ahol az Azure Media Services-erőforrás és Azure Storage-fiókban találhatók. |
 |Az Azure Active Directory (AAD) bérlő|Az Azure AD-bérlővel, például "contoso.onmicrosoft.com" neve. A bérlői kapcsolatos információkat az Azure Portalról kérhető. Vigye a kurzort a jobb felső sarokban a bejelentkezett felhasználó neve. A neve, jobb oldalán található **tartomány**.|
 |Előfizetés azonosítója|Az Azure-előfizetést amellyel ezt a kapcsolatot kell létrehozni. Az előfizetés-azonosító az Azure Portalról kérhető. Kattintson a **minden szolgáltatás** a bal oldali panelen, és keressen a "előfizetések". Válassza ki **előfizetések** , majd válassza a kívánt Azonosítóját az előfizetések listáját.|
-|Azure Media Services-erőforráscsoport neve|Az erőforráscsoport, amelyben létrehozta a Media Services-fiók neve.|
-|Media Services-szolgáltatási erőforrás neve|Az Azure Media Services-fiók, amely az előző szakaszban létrehozott neve.|
+|Az Azure Media Services erőforráscsoport-név|Az erőforráscsoport, amelyben létrehozta a Media Services-fiók neve.|
+|Médiaszolgáltatás erőforrás neve|Az Azure Media Services-fiók, amely az előző szakaszban létrehozott neve.|
 |Alkalmazásazonosító|Az Azure AD alkalmazás Azonosítót (az engedélyeket a megadott Media Services-fiók), amely az előző szakaszban létrehozott.|
 |Alkalmazáskulcs|Az Azure AD alkalmazás kulcs az előző szakaszban létrehozott. |
 

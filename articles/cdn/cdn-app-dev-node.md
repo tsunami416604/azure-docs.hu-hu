@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 48a84520a61d19968b467091871459e21898dd5e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60564147"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Ismerkedés az Azure CDN-fejlesztéssel
@@ -86,7 +86,7 @@ A *app.js* nyissa meg a szerkesztőben, adja meg a program írt alapszintű stru
     var msRestAzure = require('ms-rest-azure');
     var cdnManagementClient = require('azure-arm-cdn');
     ```
-2. Azt kell meghatároznia az egyes állandókat a módszert fogja használni.  Adja hozzá a következőket.  Ügyeljen arra, hogy cserélje le a zárójelben, beleértve a  **&lt;csúcsos zárójeleket&gt;**, igény szerint a saját értékeire.
+2. Azt kell meghatároznia az egyes állandókat a módszert fogja használni.  Adja hozzá a következőket.  Ügyeljen arra, hogy cserélje le a zárójelben, beleértve a  **&lt;csúcsos zárójeleket&gt;** , igény szerint a saját értékeire.
    
     ``` javascript
     //Tenant app constants

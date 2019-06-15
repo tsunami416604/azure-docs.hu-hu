@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 2fdd82c2f0c96b3bd20231911bb88cf54c172931
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60457752"
 ---
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Hibaelhárítás: Az Azure Site-to-Site VPN időnként megszakad
@@ -38,29 +38,29 @@ Ellenőrizze az Azure virtuális hálózati átjáró típusa:
     
     ![Az átjáró áttekintése](media/vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently/gatewayoverview.png)
 
-### <a name="step-1-check-whether-the-on-premises-vpn-device-is-validated"></a>1. Ellenőrizze. lépés: a helyszíni VPN-eszköz érvényesítve van-e
+### <a name="step-1-check-whether-the-on-premises-vpn-device-is-validated"></a>1\. Ellenőrizze. lépés: a helyszíni VPN-eszköz érvényesítve van-e
 
 1. Ellenőrizze, hogy használ-e egy [ellenőrzött VPN-eszköz és az operációs rendszer verziója](vpn-gateway-about-vpn-devices.md#devicetable). Ha a VPN-eszköz nem érvényesíti, előfordulhat, hogy van-e bármelyik kompatibilitási probléma az eszköz gyártója.
 2. Győződjön meg arról, hogy a VPN-eszköz megfelelően van-e konfigurálva. További információkért lásd: [eszköz konfigurációs mintáinak szerkesztése](vpn-gateway-about-vpn-devices.md#editing).
 
-### <a name="step-2-check-the-security-association-settingsfor-policy-based-azure-virtual-network-gateways"></a>2. lépés (házirend-alapú Azure virtuális hálózati átjárók) biztonsági társítás beállításainak ellenőrzése
+### <a name="step-2-check-the-security-association-settingsfor-policy-based-azure-virtual-network-gateways"></a>2\. lépés (házirend-alapú Azure virtuális hálózati átjárók) biztonsági társítás beállításainak ellenőrzése
 
 1. Győződjön meg arról, hogy a virtuális hálózat, alhálózatok és a tartományokat a **helyi hálózati átjáró** definíciója a Microsoft Azure-ban is ugyanaz, mint a konfigurációt a helyszíni VPN-eszköz.
 2. Győződjön meg arról, hogy a biztonsági társítás beállításai megfelelnek-e.
 
-### <a name="step-3-check-for-user-defined-routes-or-network-security-groups-on-gateway-subnet"></a>3. lépés ellenőrzése a felhasználó által megadott útvonalak és hálózati biztonsági csoportok átjáró-alhálózat
+### <a name="step-3-check-for-user-defined-routes-or-network-security-groups-on-gateway-subnet"></a>3\. lépés ellenőrzése a felhasználó által megadott útvonalak és hálózati biztonsági csoportok átjáró-alhálózat
 
 Előfordulhat, hogy egy felhasználó által megadott útvonal, az átjáró-alhálózat korlátozása a forgalom egy része és egyéb forgalom engedélyezéséhez. Így jelenik meg, hogy a VPN-kapcsolat-e a forgalom egy része a megbízhatatlan és mások számára hasznos. 
 
-### <a name="step-4-check-the-one-vpn-tunnel-per-subnet-pair-setting-for-policy-based-virtual-network-gateways"></a>4. lépés ellenőrizze a "egy VPN-alagút egy alhálózat pár" (a szabályzatalapú virtuális hálózati átjárók) beállítása
+### <a name="step-4-check-the-one-vpn-tunnel-per-subnet-pair-setting-for-policy-based-virtual-network-gateways"></a>4\. lépés ellenőrizze a "egy VPN-alagút egy alhálózat pár" (a szabályzatalapú virtuális hálózati átjárók) beállítása
 
 Győződjön meg arról, hogy rendelkezik a helyszíni VPN-eszköz értéke **egy pár alhálózatot egy VPN-alagút** szabályzatalapú virtuális hálózati átjárók esetében.
 
-### <a name="step-5-check-for-security-association-limitation-for-policy-based-virtual-network-gateways"></a>5. lépés-ellenőrzés biztonsági társítás korlátozás (a szabályzatalapú virtuális hálózati átjárók)
+### <a name="step-5-check-for-security-association-limitation-for-policy-based-virtual-network-gateways"></a>5\. lépés-ellenőrzés biztonsági társítás korlátozás (a szabályzatalapú virtuális hálózati átjárók)
 
 A szabályzatalapú virtuális hálózati átjáró korlátja 200 alhálózat biztonsági társítás párok. Ha az Azure virtual network alhálózatok számát szorozva időpontok helyi alhálózatok száma nagyobb, mint 200, és láthatja, időnként alhálózat leválasztása.
 
-### <a name="step-6-check-on-premises-vpn-device-external-interface-address"></a>6. lépés – ellenőrizze a helyszíni VPN-eszköz külső adapter címe
+### <a name="step-6-check-on-premises-vpn-device-external-interface-address"></a>6\. lépés – ellenőrizze a helyszíni VPN-eszköz külső adapter címe
 
 - Ha az internetkapcsolattal rendelkező IP-cím a VPN-eszköz szerepel a **helyi hálózati átjáró** definíciója az Azure-ban, időnként szétkapcsolások tapasztalhat.
 - Az eszköz külső adapternek kell lennie, közvetlenül az interneten. Nincs hálózati címfordítás (NAT) vagy a tűzfal az interneten és az eszköz közötti lehet.

@@ -16,10 +16,10 @@ ms.date: 11/27/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4917720af2396b68ccd36cc0410c9acbbba2d9b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60304599"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>Az Azure-erőforrások felügyelt identitások konfigurálása a virtual machine scale sets PowerShell-lel
@@ -36,7 +36,7 @@ Ebben a cikkben a PowerShell-lel, mutatja a felügyelt identitásokból egy virt
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha még nem ismeri a felügyelt identitások Azure-erőforrások számára, tekintse meg a [áttekintés szakaszban](overview.md). **Ne feledje el áttekinteni a [különbség a rendszer által hozzárendelt, és a felhasználó által felügyelt hozzárendelt identitás](overview.md#how-does-it-work)**.
+- Ha még nem ismeri a felügyelt identitások Azure-erőforrások számára, tekintse meg a [áttekintés szakaszban](overview.md). **Ne feledje el áttekinteni a [különbség a rendszer által hozzárendelt, és a felhasználó által felügyelt hozzárendelt identitás](overview.md#how-does-it-work)** .
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
 - Ez a cikk a felügyeleti műveleteket hajt végre, a fiók az alábbi Azure szerepkör-alapú access control-hozzárendelések van szüksége:
 
@@ -102,7 +102,7 @@ Ha egy virtuális gép méretezési csoportot, amely a rendszer által hozzáren
 Update-AzVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType None
 ```
 
-## <a name="user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás
+## <a name="user-assigned-managed-identity"></a>felhasználó által hozzárendelt felügyelt identitás
 
 Ebben a szakaszban megismerheti, hogyan adhat hozzá, és a egy felhasználó által hozzárendelt felügyelt identitás eltávolítása egy virtuálisgép-méretezési csoport Azure PowerShell használatával.
 

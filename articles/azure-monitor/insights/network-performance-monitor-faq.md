@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
 ms.openlocfilehash: d573b7ad9edac6b1502744b61e85cba3402a6f68
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65232669"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
@@ -136,7 +136,7 @@ Az NPM figyelheti csatlakozási szolgáltatások a világ bármely részén egy 
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>Mely régiók támogatottak az NPM ExpressRoute-figyelő?
 Az NPM figyelheti az ExpressRoute-Kapcsolatcsoportok bármely Azure-régióban található. Való előkészítésre NPM, szüksége lesz a Log Analytics-munkaterület, amely az egyik kell elhelyezni a [támogatott régiók](/azure/expressroute/how-to-npm)
 
-## <a name="troubleshoot"></a>Az eszköz nem tudta a várt módon befejezni a szinkronizálást. A probléma megoldásának módjáról erre az üzenetre kattintva tájékozódhat.
+## <a name="troubleshoot"></a>Hibaelhárítás
 
 ### <a name="why-are-some-of-the-hops-marked-as-unidentified-in-the-network-topology-view"></a>Miért vannak egyes az útválasztók ugrásainak a hálózati topológia e nézetében az azonosítatlan megjelölve?
 Npm-et használ a traceroute módosított változatát feltérképezi a forrás-ügynöktől a célhelyre. Az azonosítatlan Ugrás jelöli, hogy a hálózati Ugrás a forrásügynök traceroute kérelem nem válaszolt. Ha három egymást követő hálózati útválasztók ugrásainak traceroute az ügynök nem válaszol, a megoldás jelöli meg a nem válaszoló ugrások azonosítatlan, és nem próbál további ugrásai felderítéséhez.
@@ -209,7 +209,7 @@ Ez akkor fordulhat elő, ha egy vagy több igaz:
 ### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>A szolgáltatás Kapcsolatfigyelő képesség a szolgáltatás válaszideje NA de hálózati adatveszteség, valamint a késés érvényesek
 Ez akkor fordulhat elő, ha a célként megadott szolgáltatás nem egy webalkalmazást, de a teszt van konfigurálva, egy webes tesztet. A test-konfiguráció szerkesztése, és válassza ki a tesztelési hálózati webes helyett.
 
-## <a name="miscellaneous"></a>Egyéb
+## <a name="miscellaneous"></a>Egyéb rendelkezések
 
 ### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>Van a teljesítményre gyakorolt hatás monitorozásra szolgáló csomóponton?
 Az NPM-folyamat leáll, ha azt használja a gazdagép CPU-erőforrások több mint 5 %-át van konfigurálva. Ez azért szükséges, hogy továbbra is használhatja a csomópontok szokásos számítási feladatai anélkül, hogy befolyásolná a teljesítményt.

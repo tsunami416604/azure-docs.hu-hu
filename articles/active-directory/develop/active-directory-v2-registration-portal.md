@@ -19,10 +19,10 @@ ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec615e1c6229539958f66d0dca15cf7eb788e597
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65546098"
 ---
 # <a name="app-registration-reference"></a>Alkalmazásregisztráció-referencia
@@ -34,13 +34,13 @@ Ez a dokumentum kontextust biztosít a és a különféle funkcióinak leírása
 ## <a name="my-applications-or-converged-applications"></a>Saját alkalmazások vagy összevont alkalmazások
 Ez a lista tartalmazza az összes alkalmazás regisztrálása az Azure AD v2.0-végpontra való használatra. Ezeket az alkalmazásokat a felhasználók személyes Microsoft-fiókok és az Azure Active Directoryból a munkahelyi vagy iskolai fiókokkal is tudnak. Az Azure AD v2.0-végpont kapcsolatos további információkért tekintse meg a [v2.0 áttekintése](active-directory-appmodel-v2-overview.md). Ezek az alkalmazások integrálása a Microsoft fiók hitelesítési végpontot is használható `https://login.live.com`.
 
-## <a name="azure-ad-only-applications"></a>Csak Azure AD-t használó alkalmazások
+## <a name="azure-ad-only-applications"></a>Az Azure AD csak alkalmazások
 Ez a lista tartalmazza az összes alkalmazás regisztrálása az Azure AD-1.0-s verziójú végpont való használatra. Ezeket az alkalmazásokat csak kell lehetővé teszi a felhasználók munkahelyi vagy iskolai fiókok az Azure Active Directoryból. Ez a lista tartalmazza az alkalmazásokat, amelyek használatával lett regisztrálva a **alkalmazásregisztrációk** felületét a [az Azure Portal](https://portal.azure.com).
 
 ## <a name="live-sdk-applications"></a>Live SDK-alkalmazások
 Ez a lista tartalmazza az összes alkalmazás kizárólag a Microsoft-fiókkal való használatra regisztrálva. Nincsenek engedélyezve az Azure Active Directoryval történő használatra. Ez a érheti el olyan alkalmazásokat, amelyek az MSA fejlesztői portálja, a korábban már regisztrált `https://account.live.com/developers/applications`. Minden függvény, amely a korábban végrehajtott `https://account.live.com/developers/applications` most már az új portálon végrehajtható `https://apps.dev.microsoft.com`.
 
-## <a name="application-secrets"></a>Alkalmazástitkok
+## <a name="application-secrets"></a>Titkos Alkalmazáskulcsok
 Titkos alkalmazáskulcsok rendszer hitelesítő adatokat, amelyek lehetővé teszik az alkalmazásnak, hogy megbízható [ügyfél-hitelesítés](https://tools.ietf.org/html/rfc6749#section-2.3) az Azure ad-ben. Az OAuth és OpenID Connect, az alkalmazás titkos gyakran nevezik egy `client_secret`. A 2.0-s protokoll, minden olyan alkalmazás, amely fogad egy biztonsági jogkivonatot egy webes címezhető helyen (használatával egy `https` séma) segítségével azonosítja magát a biztonsági jogkivonat beváltása után az Azure AD-alkalmazás titkos kell használnia. Továbbá minden olyan natív ügyfél, amely megkapja a tokenek egy eszközön lesz tiltott egy alkalmazás titkos kulcs az ügyfél-hitelesítés végrehajtásához. Ez megnehezíti a nem biztonságos környezetben titkos kulcsok tárolására.
 
 Minden alkalmazás két érvényes titkos alkalmazáskulcsok tartalmazhat egy adott időpontban. Két titkos kódok megőrzése révén az alkalmazás teljes környezetre rendszeres kulcsváltás képességével rendelkezik. Után az alkalmazás egy új titkos kulcsot a teljes migrálás, törölje a régi titkos kulcsot, és egy új beállítására.
@@ -49,7 +49,7 @@ Az alkalmazás regisztrációs portál jelenleg csak kétféle típusú titkos a
 A nyilvános kulcsot tartalmazó tanúsítvány feltöltése szükségesek.
 
 ## <a name="profile"></a>Profil
-A profil szakaszához az alkalmazás regisztrációs portál segítségével az alkalmazás bejelentkezési oldal testreszabható. Most módosíthatja a bejelentkezési oldal alkalmazás emblémája, használati szolgáltatás URL-CÍMÉT, és az adatvédelmi nyilatkozat URL-címe. Az emblémának áttetsző hátterű, 48x48 vagy 50x50 képpontos, legfeljebb 15 KB-os, GIF, PNG vagy JPEG formátumú képnek kell lennie. Próbálja ki az értékek módosítása, és az eredményül kapott bejelentkezési oldal megtekintése!
+A profil szakaszához az alkalmazás regisztrációs portál segítségével az alkalmazás bejelentkezési oldal testreszabható. Most módosíthatja a bejelentkezési oldal alkalmazás emblémája, használati szolgáltatás URL-CÍMÉT, és az adatvédelmi nyilatkozat URL-címe. Az embléma képnek kell lennie átlátszó 48 x 48 vagy 50 x 50 képpontos GIF, PNG vagy JPEG formátumú fájl 15 KB-os vagy kisebb. Próbálja ki az értékek módosítása, és az eredményül kapott bejelentkezési oldal megtekintése!
 
 ## <a name="live-sdk-support"></a>Live SDK-támogatás
 Ha engedélyezi a "Live SDK-támogatás", bármely hoz létre a titkos alkalmazáskulcsok vehető át az Azure AD és a Microsoft Account adattárakban. Ez lehetővé teszi az alkalmazás közvetlen integráció a Microsoft Account szolgáltatás (login.live.com). Ha alkalmazás készítése Microsoft Account használatával közvetlenül (szemben az Azure AD v2.0-végpont használatával), győződjön meg arról, hogy engedélyezve van a Live SDK-támogatás.

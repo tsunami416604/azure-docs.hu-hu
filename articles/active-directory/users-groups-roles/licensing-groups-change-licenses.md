@@ -17,10 +17,10 @@ ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4b65eb38b6c8102295f40b5e169ae7c32a2342a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60471196"
 ---
 # <a name="change-the-license-for-a-single-user-in-a-licensed-group-in-azure-active-directory"></a>A licenc az Azure Active Directoryban egy licenccel rendelkező csoport egy felhasználó módosítása
@@ -33,7 +33,7 @@ Ez a cikk ismerteti az ajánlott módszer, ha Csoportalapú licencelést haszná
 
 Ez a cikk tartalmazza a minta PowerShell-kód, az áttelepítési és ellenőrzési lépések végrehajtásához használható. A kód különösen hasznos nagy léptékű műveletekhez, amikor is nem manuális lépések végrehajtásához.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 Az áttelepítés megkezdése előtt fontos igaz az összes áttelepíteni kívánt felhasználó bizonyos Előfeltételek ellenőrzése. Ha az előfeltételek nem igaz az összes felhasználó, az áttelepítés bizonyos sikertelen lehet. Ennek eredményeképpen a felhasználói egy része lehet, hogy elveszíti a hozzáférést szolgáltatásaihoz vagy adataihoz. Ellenőrizni kell a következő előfeltételek:
 
 - Felhasználók rendelkeznek a *forrás licenc* rendelt Csoportalapú Licencelés használatával. Helyezze át a termék licencét egyetlen forráscsoport öröklődnek, és közvetlenül nem rendel.

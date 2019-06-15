@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 38decf98707231c21427f7a22dd4d12adb41852b
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65825439"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Egy összevont egyszeri bejelentkezés beállított, katalógusban nem szereplő alkalmazásba történő bejelentkezésnél
@@ -146,9 +146,9 @@ Után rövid idő alatt a kiválasztott felhasználók tudják elindítani ezeke
 
 Az Azure AD nem támogatja az alkalmazás egyszeri bejelentkezésre vonatkozó SAML-kérelmét. Néhány gyakori hibák a következők:
 
--   Az SAML-kérelemből hiányzó kötelező mezők
+-   Az SAML-kérelmet kötelező mezők hiányoznak
 
--   SAML-kérelem kódolási metódusa
+-   SAML-kérelem kódolt metódusa
 
 **Felbontás**
 
@@ -264,7 +264,7 @@ Törölje a nem használt válasz-URL az alkalmazáshoz konfigurált.
 
 6.  Válassza ki az egyszeri bejelentkezést a konfigurálni kívánt alkalmazást.
 
-7.  Miután az alkalmazás betöltött, nyissa meg az **SAML-alapkonfiguráció** szakaszt. Az a **válasz URL-cím (helyességi feltétel fogyasztói szolgáltatás URL-címe)**, a rendszer által létrehozott alapértelmezett válasz URL-címek vagy fel nem használt törlése. Például: `https://127.0.0.1:444/applications/default.aspx`.
+7.  Miután az alkalmazás betöltött, nyissa meg az **SAML-alapkonfiguráció** szakaszt. Az a **válasz URL-cím (helyességi feltétel fogyasztói szolgáltatás URL-címe)** , a rendszer által létrehozott alapértelmezett válasz URL-címek vagy fel nem használt törlése. Például: `https://127.0.0.1:444/applications/default.aspx`.
 
 
 

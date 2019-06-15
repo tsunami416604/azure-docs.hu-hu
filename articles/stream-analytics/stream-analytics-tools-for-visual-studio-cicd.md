@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.openlocfilehash: f34139dafffe3d4890f17988114dffdd8b480d2d
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65827313"
 ---
 # <a name="continuously-integrate-and-develop-with-azure-stream-analytics-cicd-nuget-package"></a>Folyamatos integráció és az Azure Stream Analytics CI/CD NuGet-csomag fejlesztése
 Ez a cikk ismerteti, hogyan állítsa be a folyamatos integráció és üzembe helyezési folyamat az Azure Stream Analytics CI/CD NuGet-csomag használatával.
 
-2.3.0000.0 verzióját használja, vagy a fenti, [Stream Analytics tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio) kérhet támogatást az MSBuild.
+2\.3.0000.0 verzióját használja, vagy a fenti, [Stream Analytics tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio) kérhet támogatást az MSBuild.
 
 A NuGet-csomag érhető el: [Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/). Az MSBuild, a helyi Futtatás és a központi telepítési eszközök, amelyek támogatják a folyamatos integráció és üzembe helyezés folyamatát biztosít [Stream Analytics Visual Studio-projektek](stream-analytics-vs-tools.md). 
 > [!NOTE]

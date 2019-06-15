@@ -2,19 +2,17 @@
 title: Adatmodell az Azure Backup
 description: Ez a cikk ismerteti a Power BI adatok modell részletei az Azure Backup-jelentésekhez.
 services: backup
-author: adiganmsft
+author: adigan
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-origin.date: 06/26/2017
-ms.date: 08/08/2018
-ms.author: v-junlch
-ms.custom: H1Hack27Feb2017
+ms.date: 06/26/2017
+ms.author: adigan
 ms.openlocfilehash: c6160570644da108ba713e8229b38f9587495c92
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60337578"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Adatmodell az Azure Backup-jelentésekhez
@@ -191,8 +189,5 @@ Ez a táblázat alapszintű mezők és az aggregációhoz különböző tároló
 ## <a name="next-steps"></a>További lépések
 Után tekintse át az adatmodell az Azure Backup-jelentések létrehozása, létrehozásával és -jelentések megtekintése a Power bi-ban kapcsolatos további részletekért tekintse meg a következő cikkekben talál.
 
-- [Jelentések létrehozása a Power bi-ban](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/)
-- [A Power BI-jelentések szűrése](https://powerbi.microsoft.com/documentation/powerbi-service-about-filters-and-highlighting-in-reports/)
-
-
-<!-- Update_Description: update metedata properties -->
+* [Jelentések létrehozása a Power bi-ban](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/)
+* [A Power BI-jelentések szűrése](https://powerbi.microsoft.com/documentation/powerbi-service-about-filters-and-highlighting-in-reports/)

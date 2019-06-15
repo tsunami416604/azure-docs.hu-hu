@@ -11,10 +11,10 @@ ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
 ms.topic: article
 ms.date: 07/29/2016
 ms.openlocfilehash: 58e59e4faa135e24124f494d90437b49caa30129
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60599491"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Forgatókönyv: Kivételkezelés és a hibanaplózás logikai alkalmazásokhoz
@@ -53,7 +53,7 @@ Az első lépés, hogy a logikai alkalmazás létrehozásához, és nyissa meg a
 
 Bejelentkezés a Dynamics CRM Online típusúaké rekord fogjuk, mert kezdjük az elején. Kell használnunk egy **kérelem** eseményindítót, mert a szülő logikai alkalmazás aktiválása a gyermek.
 
-### <a name="logic-app-trigger"></a>Logikaialkalmazás-trigger
+### <a name="logic-app-trigger"></a>A logikai alkalmazás eseményindítója
 
 Használjuk a **kérelem** aktiválása az alábbi példában látható módon:
 
@@ -471,7 +471,7 @@ Az API-hoz logikai alkalmazásból származó, a következő szintaxis használa
 
 A kifejezés a fenti kódmintában keres a *Create_NewPatientRecord* állapotát **sikertelen**.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 * Könnyen valósítható meg naplózás és hibakezelés egy logikai alkalmazást.
 * Azure Cosmos DB napló- és -rekordok (dokumentumok) használhatja a tárházban.

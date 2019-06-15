@@ -17,10 +17,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cb36d6a03da07681db468184a489a79f7f0deab7
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65825487"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>Együttműködhet a proxy-alkalmazások natív ügyfélalkalmazások engedélyezése
@@ -35,11 +35,11 @@ Natív alkalmazásokat közzétenni, használja az Azure AD Authentication Libra
 
 Ez a cikk végigvezeti az Application Proxy és az Azure AD Authentication Library natív alkalmazás közzététele a négy lépést.
 
-## <a name="step-1-publish-your-proxy-application"></a>1. lépés: A proxy-alkalmazások közzététele
+## <a name="step-1-publish-your-proxy-application"></a>1\. lépés: A proxy-alkalmazások közzététele
 
 A proxy-alkalmazások közzététele, mint bármely más alkalmazás, és rendelje hozzá a felhasználók elérhetik az alkalmazást. További információkért lásd: [alkalmazásait közzéteheti az alkalmazásproxy](application-proxy-add-on-premises-application.md).
 
-## <a name="step-2-register-your-native-application"></a>2. lépés: Natív alkalmazás regisztrálása
+## <a name="step-2-register-your-native-application"></a>2\. lépés: Natív alkalmazás regisztrálása
 
 Most már regisztrálnia kell az alkalmazás az Azure AD-ben a következő:
 
@@ -59,7 +59,7 @@ Most már regisztrálnia kell az alkalmazás az Azure AD-ben a következő:
 
 További részletes információ egy új alkalmazás regisztrálása létrehozásával kapcsolatban lásd: [alkalmazások integrálása az Azure Active Directory](../develop/quickstart-v1-integrate-apps-with-azure-ad.md).
 
-## <a name="step-3-grant-access-to-your-proxy-application"></a>3. lépés: Az alkalmazásproxy-alkalmazáshoz való hozzáférés biztosítása
+## <a name="step-3-grant-access-to-your-proxy-application"></a>3\. lépés: Az alkalmazásproxy-alkalmazáshoz való hozzáférés biztosítása
 
 Most, hogy a natív alkalmazás regisztrálása, hozzáférést biztosíthat más alkalmazások számára a címtárban, ebben az esetben az alkalmazásproxy-alkalmazás elérésére. A proxy-alkalmazások ki vannak téve a natív alkalmazás engedélyezése:
 
@@ -70,7 +70,7 @@ Most, hogy a natív alkalmazás regisztrálása, hozzáférést biztosíthat má
 5. Az a **milyen engedélyeket igényel az alkalmazás?** szakaszban kattintson a engedély típusa. Ha natív alkalmazása a bejelentkezett felhasználó API application proxy hozzáférésre van szüksége, válassza a **delegált engedélyek**. Ha a natív alkalmazás fut a háttérben szolgáltatásként vagy démon nincs bejelentkezve felhasználó, válassza a **Alkalmazásengedélyek**.
 6. Az a **engedélyek kiválasztása** fejléc, válassza ki a kívánt engedéllyel, és válassza ki **engedélyek hozzáadása**. A **API-engedélyek** mostantól a natív alkalmazás jeleníti meg a proxy, alkalmazás- és engedély API, hozzáadott oldala.
 
-## <a name="step-4-edit-the-active-directory-authentication-library"></a>4. lépés: Az Active Directory Authentication Library szerkesztése
+## <a name="step-4-edit-the-active-directory-authentication-library"></a>4\. lépés: Az Active Directory Authentication Library szerkesztése
 
 A hitelesítési környezetet, az Active Directory Authentication Library (ADAL) az alábbi szöveget a natív alkalmazás kód szerkesztése:
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
 ms.openlocfilehash: ef24e356c9ac8424fc519a3b16af5d37a20e706f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60444222"
 ---
 # <a name="how-to-use-the-azure-slave-plug-in-with-hudson-continuous-integration"></a>Az Azure alárendelt beépülő modul használata Hudson folyamatos integrációs
@@ -152,7 +152,7 @@ Ebben a szakaszban Ön hoz létre egy Hudson feladat arról, hogy az egy aláren
 5. Válassza ki a feladat konfigurációs lapja **korlátozása, amelyben a projekt futtathatók**.
 6. Válassza ki **csomópont és a felirat menü** válassza **linux** (beállítottunk ezt a címkét az előző szakaszban a virtuálisgép-sablon létrehozásakor).
 7. Az a **hozhat létre** területén kattintson **felépítési lépés hozzáadása** válassza **hajtsa végre a rendszerhéj**.
-8. Szerkessze a következő szkriptet, és cserélje le **{a github fiók neve}**, **{a projekt neve}**, és **{a projektkönyvtárba}** a megfelelő értékeket, és illessze be a szerkesztett a szöveg területen megjelenő parancsfájlt.
+8. Szerkessze a következő szkriptet, és cserélje le **{a github fiók neve}** , **{a projekt neve}** , és **{a projektkönyvtárba}** a megfelelő értékeket, és illessze be a szerkesztett a szöveg területen megjelenő parancsfájlt.
    
         # Clone from git repo
    

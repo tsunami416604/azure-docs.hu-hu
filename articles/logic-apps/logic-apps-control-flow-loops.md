@@ -11,10 +11,10 @@ manager: jeconnoc
 ms.date: 01/05/2019
 ms.topic: article
 ms.openlocfilehash: 339d4270dc1803879607663e9e2db4a86591ec76
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60683961"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Hurkok, ismételje meg a munkafolyamat-műveletek, vagy az Azure Logic Appsben tömbök feldolgozni létrehozása
@@ -54,7 +54,7 @@ Ez a példa a logikai alkalmazás küld egy webhely RSS-hírcsatorna napi össze
 2. Között az RSS-trigger és e-mail küldése műveletet, adja hozzá a "Foreach" hurkot. 
 
    1. Lépések közötti hurkot hozzáadásához helyezze az egérmutatót a nyíl ezeket a lépéseket között. 
-   Válassza ki a **plusz jelre** (**+**), amely akkor jelenik meg, majd válassza ki **művelet hozzáadása**.
+   Válassza ki a **plusz jelre** ( **+** ), amely akkor jelenik meg, majd válassza ki **művelet hozzáadása**.
 
       ![Válassza a "Művelet hozzáadása"](media/logic-apps-control-flow-loops/add-for-each-loop.png)
 
@@ -122,11 +122,11 @@ Ha a logikai alkalmazás kódnézete a dolgozik, meghatározhatja a `Foreach` hu
 
 <a name="sequential-foreach-loop"></a>
 
-## <a name="foreach-loop-sequential"></a>"Foreach" ciklus: Szekvenciális
+## <a name="foreach-loop-sequential"></a>"Foreach" ciklus: Egymást követő
 
 Alapértelmezés szerint a "Foreach" hurkot a könyvtárfában párhuzamosan futnak. Az egyes ciklusok egymás után futnak, állítsa be a hurok **szekvenciális** lehetőséget. "Foreach" hurkok kell egymás után futnak, amikor a beágyazott hurkok vagy hurkokat belül változók kiszámíthatóság várt. 
 
-1. A hurok jobb felső sarokban, válassza ki a **három pont** (**...** ) > **Beállítások**.
+1. A hurok jobb felső sarokban, válassza ki a **három pont** ( **...** ) > **Beállítások**.
 
    ![A "Foreach" ciklus, válassza a "..." > "Beállítások"](media/logic-apps-control-flow-loops/for-each-loop-settings.png)
 

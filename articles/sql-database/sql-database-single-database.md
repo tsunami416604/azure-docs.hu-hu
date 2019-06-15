@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 04/08/2019
 ms.openlocfilehash: 36b1fb96ac1dd89375588a65063ce729f6ac825d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65794389"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Mi az az Azure SQL Database egy adatbázis
@@ -51,7 +51,7 @@ Emellett vannak bizonyos funkciók és a szintaxis, amely nem támogatott egyál
 
 További információkért lásd: [feloldása Transact-SQL különbségek az SQL Database áttelepítése során](sql-database-transact-sql-information.md).
 
-## <a name="security"></a>Biztonsági
+## <a name="security"></a>Biztonság
 
 Az SQL Database biztosít széles körű [beépített biztonsági és megfelelőségi](sql-database-security-overview.md) szolgáltatásokat, amelyek segítik a különféle biztonsági és megfelelőségi követelmények alkalmazását.
 

@@ -18,10 +18,10 @@ ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d47075f9e18b299341a98983ffb8a47389fd7063
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540245"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Útmutató: Alkalmazás közzétevőjének tartománya (előzetes verzió) konfigurálása
@@ -38,7 +38,7 @@ A következő táblázat összefoglalja a közzétevő tartományérték alapér
 
 | Bérlő ellenőrzött tartományok | Alapértelmezett érték a közzétevő tartománya |
 |-------------------------|----------------------------|
-| null | null |
+| NULL | NULL |
 | *.onmicrosoft.com | *.onmicrosoft.com |
 | - *.onmicrosoft.com<br/>- domain1.com<br/>-Tartomány2.com (elsődleges) | domain2.com |
 
@@ -103,9 +103,9 @@ A közzétevői tartományt konfigurálása mit látnak a felhasználók az alka
 
 A következő táblázat ismerteti a 2019. május 21. előtt létrehozott alkalmazások viselkedését.
 
-![2019. május 21. előtt létrehozott alkalmazások beleegyezést kérő üzenete](./media/howto-configure-publisher-domain/old-app-behavior-table.png)
+![2019\. május 21. előtt létrehozott alkalmazások beleegyezést kérő üzenete](./media/howto-configure-publisher-domain/old-app-behavior-table.png)
 
-2019. május 21. után létrehozott új alkalmazások viselkedését a közzétevői tartományt és alkalmazás típusától függ. A következő táblázat ismerteti a módosítások megtekintéséhez, a konfigurációk különböző kombinációit számíthat.
+2019\. május 21. után létrehozott új alkalmazások viselkedését a közzétevői tartományt és alkalmazás típusától függ. A következő táblázat ismerteti a módosítások megtekintéséhez, a konfigurációk különböző kombinációit számíthat.
 
 ![Jóváhagyási kérés 2019. május 21. után létrehozott alkalmazások](./media/howto-configure-publisher-domain/new-app-behavior-table.png)
 

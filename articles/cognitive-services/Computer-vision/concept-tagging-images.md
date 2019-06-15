@@ -8,18 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-origin.date: 02/08/2019
-ms.date: 02/27/2019
-ms.author: v-junlch
+ms.date: 02/08/2019
+ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: aeb03566a650fe46286d77913e0d36dcbb19f436
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60759673"
 ---
-# <a name="applying-content-tags-to-images"></a>Képek tartalmának címkékkel
+# <a name="applying-content-tags-to-images"></a>Tartalomcímkék alkalmazása képekre
 
 Számítógépes Látástechnológia alapján ad vissza címkéket ezer felismerhető objektumok, tárgy, táj és műveleteket. Amennyiben a címkék félreérthetőek vagy nem közismertek, az API válasza „tippeket” tartalmaz a címke adott környezetben való értelmezésének megkönnyítése érdekében. A címkékhez nincs besorolási rendszer és öröklési hierarchia. A tartalomcímkék gyűjteménye képezi a kép ember által olvasható nyelven, teljes mondatokban megformált „leírásának” alapját. Fontos tudni, hogy a képleírásokhoz jelenleg csak az angol nyelv támogatott.
 
@@ -87,4 +86,3 @@ A következő JSON-választ mutatja be, milyen számítógépes Látástechnoló
 ## <a name="next-steps"></a>További lépések
 
 Fogalmak ismertetése [lemezképek kategorizálásához](concept-categorizing-images.md) és [lemezképek leíró](concept-describing-images.md).
-

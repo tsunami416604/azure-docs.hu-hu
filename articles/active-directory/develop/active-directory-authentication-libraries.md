@@ -19,10 +19,10 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b71585c178efbc30892cf95c5c2149818f0dcb3c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65764567"
 ---
 # <a name="azure-active-directory-authentication-libraries"></a>Az Azure Active Directory hitelesítési Kódtárai
@@ -40,7 +40,7 @@ Az Azure Active Directory Authentication Library (ADAL) 1.0-s verzió lehetővé
 
 ## <a name="microsoft-supported-client-libraries"></a>A Microsoft által támogatott Ügyfélkódtárak
 
-| Platform | Szalagtár | Letöltés | Forráskód | Sample | Leírások
+| Platform | Erőforrástár | Letöltés | Forráskód | Sample | Leírások
 | --- | --- | --- | --- | --- | --- |
 | .NET-ügyfél Windows Store, az UWP, Xamarin iOS és Android rendszerhez |ADAL .NET v3 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) |[GitHubon](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet) | [Asztali alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-dotnet) |[Referencia](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.clients.activedirectory?view=azure-dotnet) |
 | .NET-ügyfél Windows Store, Windows Phone 8.1 |ADAL .NET v2 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/2.28.4) |[GitHubon](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/releases/tag/v2.28.4) | [Asztali alkalmazás](https://github.com/AzureADQuickStarts/NativeClient-DotNet/releases/tag/v2.X) | |
@@ -53,7 +53,7 @@ Az Azure Active Directory Authentication Library (ADAL) 1.0-s verzió lehetővé
 
 ## <a name="microsoft-supported-server-libraries"></a>A Microsoft által támogatott kiszolgálói kódtárak
 
-| Platform | Szalagtár | Letöltés | Forráskód | Sample | Leírások
+| Platform | Erőforrástár | Letöltés | Forráskód | Sample | Leírások
 | --- | --- | --- | --- | --- | --- |
 | .NET |Az Azure ad OWIN|[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.ActiveDirectory/) |[GitHubon](https://github.com/aspnet/AspNetKatana/tree/dev/src/Microsoft.Owin.Security.ActiveDirectory) |[MVC App](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-webapp-dotnet) | |
 | .NET |A OpenIDConnect OWIN |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect) |[GitHubon](https://github.com/aspnet/AspNetKatana/tree/dev/src/Microsoft.Owin.Security.OpenIdConnect) |[Webalkalmazás](https://github.com/AzureADSamples/WebApp-OpenIDConnect-DotNet) | |
@@ -62,7 +62,7 @@ Az Azure Active Directory Authentication Library (ADAL) 1.0-s verzió lehetővé
 | .NET |A .NET 4.5-ös JWT-kezelő |[NuGet](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt) |[GitHubon](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
 | Node.js |Az Azure AD-Passport |[npm](https://www.npmjs.com/package/passport-azure-ad) |[GitHubon](https://github.com/AzureAD/passport-azure-ad) | [Webes API](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-webapi-nodejs)| |
 
-## <a name="scenarios"></a>Alkalmazási helyzetek
+## <a name="scenarios"></a>Forgatókönyvek
 
 Itt három általános forgatókönyv ügyfél, amely egy távoli erőforráshoz fér hozzá az adal-t a következők:
 

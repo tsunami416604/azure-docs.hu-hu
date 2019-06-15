@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: yegu
 ms.openlocfilehash: 602d77f3d4e8ed10c2c964462bc2dc21240cef5c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60541396"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Redis-fürtözés egy prémium szintű Azure Cache redis konfigurálása
@@ -38,20 +38,20 @@ Fürtszolgáltatás nem növeli a fürtözött Cache-gyorsítótárhoz elérhet�
 
 Az Azure-ban a Redis-fürttel, ahol minden egyes szegmens van egy elsődleges/replika pár replikációs ahol a replikáció által felügyelt Azure Cache Redis szolgáltatás elsődleges/replika modell érhető el. 
 
-## <a name="clustering"></a>Fürtözés
+## <a name="clustering"></a>Fürtszolgáltatás
 A fürtözés engedélyezve van a **új Azure Cache redis** panel gyorsítótár létrehozása során. 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
 A fürtszolgáltatás van konfigurálva a **Redis-fürt** panelen.
 
-![Fürtözés][redis-cache-clustering]
+![Fürtszolgáltatás][redis-cache-clustering]
 
 A fürt legfeljebb 10 szegmenssel rendelkezhet. Kattintson a **engedélyezve** , és húzza a csúszkát, vagy adjon meg egy számot 1 és 10 közötti **szegmensszám** kattintson **OK**.
 
 Minden egyes szegmens egy Azure által kezelt elsődleges/replika gyorsítótár-pár, és a gyorsítótár teljes mérete szorzata. a szegmensek száma szerint a kiválasztott tarifacsomag kiválasztása a gyorsítótár méretét. 
 
-![Fürtözés][redis-cache-clustering-selected]
+![Fürtszolgáltatás][redis-cache-clustering-selected]
 
 A gyorsítótár létrehozása után kapcsolódhat hozzá, és azt csak, például egy nem fürtözött gyorsítótárat, és a Redis használata osztja el a gyorsítótár szegmensek során az adatokat. Ha diagnosztikai [engedélyezve](cache-how-to-monitor.md#enable-cache-diagnostics), metrikák külön-külön mindegyik szegmenshez rögzített, és [megtekintett](cache-how-to-monitor.md) Redis panel az Azure Cache-ben. 
 

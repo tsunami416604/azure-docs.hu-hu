@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/04/2019
 ms.openlocfilehash: 54890aef8dabfa019a5181c155b6668b1c07cf2c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60331918"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Rugalmas adatbázis-ügyfélkódtárnak az Entity Framework
@@ -45,8 +45,8 @@ Miután létrehozta az adatbázisok, adja meg a hely tulajdonosainak **Program.c
 
 Entity Framework a fejlesztők a következő négy munkafolyamatok alkalmazásokat hozhat létre, és annak biztosítása érdekében az alkalmazás objektumának adatmegőrzés egyik támaszkodik:
 
-* **Code First (új adatbázis)**: Az EF fejlesztői az alkalmazás kódjának a modell hoz létre, és ezután EF hoz létre az adatbázist. 
-* **Code First (meglévő adatbázis)**: A fejlesztői lehetővé teszi, hogy az alkalmazás kódjának a modell létrehozásához egy meglévő adatbázis EF.
+* **Code First (új adatbázis)** : Az EF fejlesztői az alkalmazás kódjának a modell hoz létre, és ezután EF hoz létre az adatbázist. 
+* **Code First (meglévő adatbázis)** : A fejlesztői lehetővé teszi, hogy az alkalmazás kódjának a modell létrehozásához egy meglévő adatbázis EF.
 * **Első modell**: A fejlesztői hoz létre a modell az EF-Tervező, és ezután EF hoz létre az adatbázist a modellből.
 * **Adatbázis-első**: A fejlesztői eszközök célszámítógéppel a modellt a meglévő adatbázis EF használ. 
 

@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 05/13/2019
 ms.openlocfilehash: 3b0ad33ea6348f24079b3c88f972437244c0bc93
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65596760"
 ---
 # <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Az Azure Logic Apps munkafolyamat-definíciós nyelv séma referenciája
@@ -52,7 +52,7 @@ A magas szintű munkafolyamat-definíció struktúráját a következő:
 
 <a name="triggers-actions"></a>
 
-## <a name="triggers-and-actions"></a>Triggerek és műveletek
+## <a name="triggers-and-actions"></a>Eseményindítók és műveletek
 
 A munkafolyamat-definíció a `triggers` és `actions` szakaszok határozza meg a hívás, amely a munkafolyamat végrehajtása során. Szintaxist és ezek a szakaszok további információt lásd: [munkafolyamat triggerei és műveletei](../logic-apps/logic-apps-workflow-actions-triggers.md).
 
@@ -108,7 +108,7 @@ Az a `parameters` területén adja meg a központi telepítési bemenetek fogad�
 },
 ```
 
-| Attribútum | Szükséges | Típus | Leírás |
+| Attribútum | Kötelező | Típus | Leírás |
 |-----------|----------|------|-------------|
 | <*parameter-type*> | Igen | int, lebegőpontos, string, securestring, bool, tömböt, JSON-objektum, secureobject <p><p>**Megjegyzés**: Az összes jelszavak, kulcsok és titkos kulcsokat, használja a `securestring` és `secureobject` típusokat, mert a `GET` művelet nem ad vissza ezeket a típusokat. Paraméterek védelmével kapcsolatos további információkért lásd: [a logikai alkalmazás védelme](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters) | A paraméter típusa |
 | <*alapértelmezett paraméterértékek*> | Igen | Ugyanaz, mint `type` | Az alapértelmezett paraméter értéke, ha nem ad meg értéket, ha a munkafolyamat példányosítja |
@@ -143,7 +143,7 @@ Az a `staticResults` attribútumot, adja meg egy műveletet helyettem `outputs` 
 }
 ```
 
-| Attribútum | Szükséges | Típus | Leírás |
+| Attribútum | Kötelező | Típus | Leírás |
 |-----------|----------|------|-------------|
 | <*static-result-definition-name*> | Igen | String | A nevet egy statikus eredmény-definíciót, amely egy művelet definíció keresztül hivatkozhat egy `runtimeConfiguration.staticResult` objektum. További információkért lásd: [modul konfigurációs beállítások](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Bármely egyedi név, amelyeket szeretne is használhatja. Alapértelmezés szerint ez az egyedi név hozzáíródik a száma, amely a szükséges mértékben növekszik. |
 | <*output-attributes-and-values-returned*> | Igen | Változó | Ezek az attribútumok vonatkozó követelmények eltérőek lehetnek különböző feltételek alapján. Például, ha a `status` van `Succeeded`, a `outputs` attribútum tartalmaz olyan attribútumokat, és a művelet által visszaadott szerint utánzatként funkcionáló kimenetek értékek. Ha a `status` van `Failed`, a `outputs` attribútum tartalmazza a `errors` attribútuma, amely egy vagy több hibával tömb `message` hibaadatok rendelkező objektumok. |
@@ -292,7 +292,7 @@ Ha elkészült, a kifejezés jelenik meg a megfelelő tulajdonságot a munkafoly
 
 A [kifejezések](#expressions) és [funkciók](#functions), operátorok elvégzendő feladataikhoz, például a hivatkozás egy tulajdonságot vagy egy érték a tömbben.
 
-| Operátor | Feladat |
+| Művelet | Tevékenység |
 |----------|------|
 | ' | Egy szöveges karakterlánc bemenetként, vagy a kifejezések és függvények használatához burkolhatja a karakterlánc csak egyetlen idézőjelek között, például `'<myString>'`. Ne használja a dupla idézőjelek (""), amelyek ütköznek, a JSON formázását teljes kifejezés körül. Példa: <p>**Igen**: length('Hello') </br>**Nem**: length("Hello") <p>Ha tömbök, vagy számokat adja át, nem szükséges alkalmazásburkoló absztrakt. Példa: <p>**Igen**: hossza ([1, 2, 3]) </br>**Nem**: hossza ("[1, 2, 3]") |
 | [] | Egy értéket egy adott pozícióban (index) tömbben lévő hivatkozni, használjon szögletes zárójeleket. Ha például a második elem beolvasása a tömböt: <p>`myArray[1]` |
@@ -302,7 +302,7 @@ A [kifejezések](#expressions) és [funkciók](#functions), operátorok elvégze
 
 <a name="functions"></a>
 
-## <a name="functions"></a>Funkciók
+## <a name="functions"></a>Functions
 
 Némely kifejezés le futásidejű előfordulhat, hogy még nem léteznek futtatásához a munkafolyamat-definíció indításakor végrehajtandó azok értékeit. Hivatkozhat, illetve ezekkel az értékekkel a kifejezésekben dolgozhat, használhatja a [ *funkciók* ](../logic-apps/workflow-definition-language-functions-reference.md) , amely a munkafolyamat-definíciós nyelv biztosít.
 

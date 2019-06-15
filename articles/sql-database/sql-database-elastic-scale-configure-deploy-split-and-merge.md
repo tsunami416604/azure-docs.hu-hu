@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
 ms.openlocfilehash: 5aff7e93dcfaa5320be0d6f7d427abcdc88c69e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60585508"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Szilánkokra osztott adatbázisok közötti felosztási-egyesítési szolgáltatás üzembe helyezése
@@ -142,7 +142,7 @@ Ha nem sikerül dolgozó munkaköre online állapotba, de a webes szerepkör sik
    Server=myservername.database.windows.net; Database=mydatabasename;User ID=myuserID; Password=mypassword; Encrypt=True; Connection Timeout=30
    ```
 
-* Győződjön meg arról, hogy a kiszolgáló neve nem kezdődhet **https://**.
+* Győződjön meg arról, hogy a kiszolgáló neve nem kezdődhet **https://** .
 * Győződjön meg arról, hogy az Azure SQL Database-kiszolgáló lehetővé teszi, hogy csatlakozzon hozzá Azure-szolgáltatások. Ehhez nyissa meg az adatbázis a portálon, és ellenőrizze, hogy a **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítása ** a x.
 
 ## <a name="test-the-service-deployment"></a>A szolgáltatás központi telepítés tesztelése

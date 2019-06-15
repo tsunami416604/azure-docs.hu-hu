@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 05/06/2019
 ms.openlocfilehash: 38d9ad007b67756bdca0c6f98267aa16ba38ee9d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65791430"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Az Azure SQL nagy kapacitású adatbázisokkal kapcsolatos gyakori kérdések
@@ -44,19 +44,19 @@ Rétegek elsősorban különbözteti meg a Virtuálismag-alapú szolgáltatás a
 - A nagy kapacitású szolgáltatásszint nagyon nagy méretű adatbázisok számítási feladatokhoz van optimalizálva.
 - Az üzletileg kritikus szolgáltatási szinten üzleti számítási feladathoz megfelelő prioritást IO-késés esetén.
 
-| | Erőforrás típusa | Általános célú |  Rugalmas skálázás | Üzleti szempontból kulcsfontosságú |
+| | Erőforrás típusa | Általános rendeltetés |  Rugalmas skálázás | Üzletileg kritikus |
 |:---|:---:|:---:|:---:|:---:|:---:|
-| **A legjobb** |Az összes|  A legtöbb üzleti számítási feladathoz. Ajánlatok költségvetés-orientált elosztott terhelésű számítási és tárolási lehetőségek. | Alkalmazások nagy mennyiségű adat kapacitásigények, és lehetővé teszi az automatikus skálázás storage és a méretezési csoport fluidly számítási. | Magas tranzakciós sebességű és legkisebb késés IO OLTP alkalmazások. Biztosítja a legmagasabb hibatűrést használatával több hibákhoz, elkülönített replika.|
+| **A legjobb** |Összes|  A legtöbb üzleti számítási feladathoz. Ajánlatok költségvetés-orientált elosztott terhelésű számítási és tárolási lehetőségek. | Alkalmazások nagy mennyiségű adat kapacitásigények, és lehetővé teszi az automatikus skálázás storage és a méretezési csoport fluidly számítási. | Magas tranzakciós sebességű és legkisebb késés IO OLTP alkalmazások. Biztosítja a legmagasabb hibatűrést használatával több hibákhoz, elkülönített replika.|
 |  **Erőforrás típusa** ||Önálló adatbázis / rugalmas készlet / a felügyelt példány | Önálló adatbázis | Önálló adatbázis / rugalmas készlet / a felügyelt példány |
 | **Számítási mérete**|Önálló adatbázis / rugalmas készlet * | 1 és 80 virtuális magok | 1 és 80 virtuális magok * | 1 és 80 virtuális magok |
 | |Felügyelt példány | 8, 16, 24, 32, 40, 64, 80 virtuális magok | – | 8, 16, 24, 32, 40, 64, 80 virtuális magok |
-| **Tárolás típusa** | Az összes |Prémium szintű távtároló (példányonként) | Helyi SSD-gyorsítótárban (példányonként) megszüntetése összekapcsolt tárolóval | Adathozzáférésnek köszönhetően gyors helyi SSD-tárolás (példányonként) |
+| **Tárolás típusa** | Összes |Prémium szintű távtároló (példányonként) | Helyi SSD-gyorsítótárban (példányonként) megszüntetése összekapcsolt tárolóval | Adathozzáférésnek köszönhetően gyors helyi SSD-tárolás (példányonként) |
 | **Tároló mérete** | Önálló adatbázis / rugalmas készlet | 5 GB – 4 TB-IG | 100 TB-ig | 5 GB – 4 TB-IG |
 | | Felügyelt példány  | 32 GB – 8 TB | – | 32 GB – 4 TB-IG |
 | **I/o-teljesítmény** | Egyetlen adatbázisonként ** | A 7000-es maximális IOPS / virtuális mag 500 IOPS | Ismeretlen még | 5000 iops-érték 200 000 maximális iops|
 | | Felügyelt példány | Fájl méretétől függ. | – | Felügyelt példány: Fájl méretétől függ.|
-|**Rendelkezésre állás**|Az összes|1 replika, olvasási méretű, nem a helyi gyorsítótár | Több replika, legfeljebb 15 olvasási szintű, a részleges helyi gyorsítótár | 3 replika, 1 olvasási szintű, a zónaredundáns magas rendelkezésre ÁLLÁSÚ, teljes helyi gyorsítótár |
-|**Biztonsági másolatok**|Az összes|RA-GRS, 7 – 35 nap (alapértelmezés szerint 7 nap)| RA-GRS, 7 – 35 nap (alapértelmezés szerint 7 nap), állandó idő időponthoz recovery (PITR) | RA-GRS, 7 – 35 nap (alapértelmezés szerint 7 nap) |
+|**Rendelkezésre állás**|Összes|1 replika, olvasási méretű, nem a helyi gyorsítótár | Több replika, legfeljebb 15 olvasási szintű, a részleges helyi gyorsítótár | 3 replika, 1 olvasási szintű, a zónaredundáns magas rendelkezésre ÁLLÁSÚ, teljes helyi gyorsítótár |
+|**Biztonsági másolatok**|Összes|RA-GRS, 7 – 35 nap (alapértelmezés szerint 7 nap)| RA-GRS, 7 – 35 nap (alapértelmezés szerint 7 nap), állandó idő időponthoz recovery (PITR) | RA-GRS, 7 – 35 nap (alapértelmezés szerint 7 nap) |
 
 \* Nem támogatott a nagy kapacitású szolgáltatási szinten a rugalmas készletek
 
@@ -174,7 +174,7 @@ Az adatbázis mérete automatikusan növekszik, beszúrása vagy betöltési tö
 
 ### <a name="in-what-increments-does-my-database-size-grow"></a>Milyen lépésekben does saját adatbázis mérete növelhető
 
-1 GB
+1 GB
 
 ### <a name="is-the-storage-in-sql-database-hyperscale-local-or-remote"></a>Az SQL Database rendkívüli a tárterületet, helyi vagy távoli
 

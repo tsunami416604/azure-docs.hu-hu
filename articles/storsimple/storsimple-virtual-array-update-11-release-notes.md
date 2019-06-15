@@ -1,6 +1,6 @@
 ---
 title: A StorSimple virtuális tömb frissítés 1.1 kibocsátási megjegyzései |} A Microsoft Docs
-description: 1.1-es frissítést futtató StorSimple Virtual Array kritikus megoldatlan problémák és megoldásuk ismertetése
+description: 1\.1-es frissítést futtató StorSimple Virtual Array kritikus megoldatlan problémák és megoldásuk ismertetése
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/22/2018
 ms.author: alkohli
 ms.openlocfilehash: 55103d6307614f8796c41c35d6345e1fc3aca261
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60789637"
 ---
 # <a name="storsimple-virtual-array-update-11-release-notes"></a>A StorSimple virtuális tömb frissítés 1.1 kibocsátási megjegyzései
@@ -29,14 +29,14 @@ A következő kiadási megjegyzések a kritikus fontosságú megoldatlan problé
 
 A kibocsátási megjegyzésekben folyamatosan frissülnek, és ahogy ismertté kritikus problémák adódnak. A StorSimple Virtual Array üzembe helyezése, előtt alaposan tekintse át a kibocsátási megjegyzésekben található információkat.
 
-1.1-es frissítés felel meg a szoftververzió **10.0.10307.0**.
+1\.1-es frissítés felel meg a szoftververzió **10.0.10307.0**.
 
 > [!IMPORTANT]
 > - Azok zavart okozó frissítések, és indítsa újra az eszközt. I/o van folyamatban, ha az eszköz leállást. A frissítés alkalmazása részletes utasításokért ugorjon [frissítése 1.1 telepítése](storsimple-virtual-array-install-update-11.md).
 >
-> - 1.1-es frissítés érhető el, hogy az Azure Portalon csak akkor, ha az eszköz fut az 1.0-ás frissítés.
+> - 1\.1-es frissítés érhető el, hogy az Azure Portalon csak akkor, ha az eszköz fut az 1.0-ás frissítés.
 
-## <a name="whats-new-in-update-11"></a>1.1-es frissítés újdonságai
+## <a name="whats-new-in-update-11"></a>1\.1-es frissítés újdonságai
 
 Ez a frissítés tartalmazza a következő a fejlesztés és hibajavításokat tartalmaz:
 
@@ -48,17 +48,17 @@ Ez a frissítés tartalmazza a következő a fejlesztés és hibajavításokat t
 
 Az alábbi táblázat hibáinak javításai ebben a kiadásban összegzését tartalmazza.
 
-| Nem. | Szolgáltatás | Probléma |
+| Nem. | Funkció | Probléma |
 | --- | --- | --- |
 | 1 |Biztonsági másolatok| Ebben a kiadásban javult a biztonsági mentési hibák növelje felhőbeli hibák és a Processzor magas kihasználtsága rugalmasság módosításokat tartalmaz.|
 | 2 |Naplózás| Ebben a kiadásban a naplózása, amikor az eszköz támogatási munkamenet részletes módban módosításokat tartalmaz.|
 
 
-## <a name="known-issues-in-update-11"></a>1.1-es frissítés ismert problémái
+## <a name="known-issues-in-update-11"></a>1\.1-es frissítés ismert problémái
 
 Az alábbi táblázat a StorSimple Virtual Array az ismert problémák összegzését tartalmazza, és a kiadási jelezve a korábbi kiadásokban a problémák tartalmazza.
 
-| Nem. | Szolgáltatás | Probléma | Megkerülő megoldás és megjegyzések |
+| Nem. | Funkció | Probléma | Megkerülő megoldás és megjegyzések |
 | --- | --- | --- | --- |
 | **1.** |Frissítések |A virtuális tömbök az előzetes kiadásban létrehozott nem lehet frissíteni egy támogatott általánosan elérhető verzióra. |Ezek a virtuális tömbök kell végrehajtani a feladatátvételt a végleges kiadás vész-helyreállítási munkafolyamat használatával. |
 | **2.** |Kiépített adatlemez |Egyszer ellátta adatlemez bizonyos megadott méretű és hozta létre a megfelelő StorSimple Virtual Array, kell nem bontsa ki a vagy az adatlemez zsugorítani. Elvesztését eredményezi, a helyi rétegeken az eszköz összes adatának tegye kísérletet. | |

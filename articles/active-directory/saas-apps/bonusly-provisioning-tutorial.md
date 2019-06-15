@@ -17,10 +17,10 @@ ms.date: 03/27/2019
 ms.author: v-wingf-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ad0ee590572dbc92e67be9f84ffc65afc3e8473
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60282308"
 ---
 # <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Bonusly konfigurálása
@@ -47,7 +47,7 @@ Mielőtt konfigurálná a Bonusly a felhasználók automatikus átadása az Azur
 
 **Az Azure AD alkalmazáskatalógusában Bonusly hozzáadásához hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -120,7 +120,7 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
     ![Bonusly kiépítése](./media/bonusly-provisioning-tutorial/Token02.png)
 
-8. 5. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD Bonusly csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, Bonusly fiókja rendszergazdai engedélyekkel rendelkező, és próbálkozzon újra.
+8. 5\. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD Bonusly csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, Bonusly fiókja rendszergazdai engedélyekkel rendelkező, és próbálkozzon újra.
 
     ![Bonusly kiépítése](./media/bonusly-provisioning-tutorial/TestConnection.png)
 

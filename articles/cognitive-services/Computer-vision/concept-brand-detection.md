@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.openlocfilehash: d32beaa51471ccab19804122bfbcb33a6b1a5e3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60203034"
 ---
 # <a name="detect-popular-brands-in-images"></a>Népszerű márkái észleli a képeken
@@ -90,7 +90,7 @@ Bizonyos esetekben a márka detector használatával kiesik a emblémakép, mind
 }
 ```
 
-## <a name="use-the-api"></a>Az API-val
+## <a name="use-the-api"></a>Az API használata
 
 A márka észlelési szolgáltatás részét képezi a [kép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API-t. Ez az API REST-hívások vagy a natív SDK keresztül hívása. Például `Brands` a a **visualFeatures** lekérdezési paraméter. Ezt követően a teljes JSON-választ kap, ha egyszerűen elemezni a karakterlánc a tartalmát a `"brands"` szakaszban.
 

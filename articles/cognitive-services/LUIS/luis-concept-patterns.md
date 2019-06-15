@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
 ms.openlocfilehash: 2a160ab7447304dc6eb14f76a723df4e8a4d9f46
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60813568"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Minták előrejelzési pontosság növeléséhez.
@@ -68,9 +68,9 @@ A minta szintaxis támogatja a következő szintaxist:
 |Függvény|Szintaxis|A beágyazási szint|Példa|
 |--|--|--|--|
 |entitás| {} -kapcsos zárójelek|2|Hol található az űrlap {entitás neve üzemeltetett szolgáltatás}?|
-|választható|[] - szögletes zárójelek<BR><BR>A 3-ból a beágyazási szinttel, tetszőleges választható és csoportosítás kombinációját korlátja |2|A kérdőjel [?]|
+|Nem kötelező|[] - szögletes zárójelek<BR><BR>A 3-ból a beágyazási szinttel, tetszőleges választható és csoportosítás kombinációját korlátja |2|A kérdőjel [?]|
 |A csoportosítás|() - zárójelek|2|rendszer (egy \| b).|
-|vagy| \| – függőleges vonal (függőleges)<br><br>2. a függőleges vonal (vagy) több csoport korlátja |-|Hol található az űrlap ({űrlap neve, short} &#x7c; {űrlap-name-hosszú} &#x7c; {űrlap, number})| 
+|vagy| \| – függőleges vonal (függőleges)<br><br>2\. a függőleges vonal (vagy) több csoport korlátja |-|Hol található az űrlap ({űrlap neve, short} &#x7c; {űrlap-name-hosszú} &#x7c; {űrlap, number})| 
 |kezdő és/vagy az utterance (kifejezés) vége|^-jel|-|^ megkezdése az utterance (kifejezés)<br>az utterance (kifejezés) történik ^<br>^ {number} entitással teljes utterance (kifejezés) szigorú szövegkonstans egyeznie ^|
 
 ## <a name="nesting-syntax-in-patterns"></a>A beágyazási szintaxis a minták
@@ -97,7 +97,7 @@ Ha Entity1 szerepköröket, például a (Budapesten) forrás és cél (Cairo) eg
 
 Kombinációját **csoportosítási** a **választható** szintaxis legfeljebb 3 beágyazási szinttel rendelkezik.
 
-|Engedélyezve|Példa|
+|Engedélyezett|Példa|
 |--|--|
 |Igen|([(Teszt1 &#x7c; Teszt2)] &#x7c; Teszt3)|
 |Nem|([([Teszt1] &#x7c; Teszt2)] &#x7c; Teszt3)|
@@ -106,7 +106,7 @@ Kombinációját **csoportosítási** a **választható** szintaxis legfeljebb 3
 
 Kombinációját **csoportosítási** a **vagy-ing** szintaxis 2 függőleges sávok határral rendelkezik.
 
-|Engedélyezve|Példa|
+|Engedélyezett|Példa|
 |--|--|
 |Igen|(Teszt1 &#x7c; Teszt2 &#x7c; (Teszt3 &#x7c; test4))|
 |Nem|(Teszt1 &#x7c; Teszt2 &#x7c; Teszt3 &#x7c; (test4 &#x7c; test5)) |
@@ -170,7 +170,7 @@ A reguláris kifejezés szögletes zárójel szintaxis használatával az uttera
 |Nem kötelező szöveg minta|Jelentés|
 |--|--|
 |`[find] email about {subject} [from {person}]`|`find` és `from {person}` megadása nem kötelező|
-|"Lehet, segítséget kérek a [?] |} Nem kötelező, az írásjelek|
+|"Lehet, segítséget kérek a [?]|Nem kötelező, az írásjelek|
 
 Írásjelek (`?`, `!`, `.`) figyelmen kívül lesz hagyva, és ezek a minták a szögletes zárójelet szintaxis használatával figyelmen kívül kell. 
 

@@ -15,10 +15,10 @@ ms.date: 05/11/2018
 ms.author: zhiweiw
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fbdeef7c591221756ad206bf2f3dd78ac3d26c4f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60349981"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Diagnosztizálásához és elhárításához a duplikált attribútummal szinkronizálási hibák
@@ -67,11 +67,11 @@ Kövesse a lépéseket leszűkíteni a szinkronizálási hiba részletes adatait
 Az Azure Portalról lépéseket néhány meghatározott kezelhető helyzetek azonosításához:  
 1.  Ellenőrizze a **állapotának diagnosztizálása** oszlop. Az állapot mutatja, hogy van-e egy lehetséges megoldást az egy szinkronizálási hiba közvetlenül az Azure Active Directoryból. Más szóval a hibaelhárítási folyamat, amely létezik is a hibaesetét szűkítéséhez és potenciálisan javítást.
 
-| status | Mit jelent? |
+| Állapot | Mit jelent? |
 | ------------------ | -----------------|
-| Nincs elindítva | A diagnosztikai folyamat még nem járt. A diagnosztikai eredményei függően egy lehetséges megoldást az közvetlenül a portálról a szinkronizálási hiba van. |
+| Nem indult el | A diagnosztikai folyamat még nem járt. A diagnosztikai eredményei függően egy lehetséges megoldást az közvetlenül a portálról a szinkronizálási hiba van. |
 | Manuális javítás szükséges | A hiba nem fér el a feltételeket a portálon elérhető javításokat. Mindkét ütköző típusú objektumokat nem a felhasználók, vagy már a diagnosztikai lépések végrehajtása, és a javítás megoldás nem érhető el a portálról. Az utóbbi esetben a javítás, ahonnan a helyszíni még mindig megoldás egyikét. [Tudjon meg többet a helyszíni javításokat](https://support.microsoft.com/help/2647098). | 
-| Folyamatban lévő szinkronizálás | Egy javítást alkalmaztak. A portál vár, hogy törölje a hiba a következő szinkronizálási ciklus. |
+| Szinkronizálás folyamatban | Egy javítást alkalmaztak. A portál vár, hogy törölje a hiba a következő szinkronizálási ciklus. |
 
   >[!IMPORTANT]
   > A diagnosztikai állapot oszlop minden egyes szinkronizálási ciklust követően alaphelyzetbe állnak. 
@@ -107,8 +107,8 @@ Az a **árva objektumra mutat a forgatókönyv**, csak egyetlen felhasználó **
 ### <a name="do-both-of-these-accounts-belong-to-the-same-user"></a>Hajtsa végre ezeket a fiókokat mindkét tartozik ugyanahhoz a felhasználóhoz?
 Ezt a kérdést ellenőrzi egy bejövő ütköző felhasználót és a meglévő felhasználói objektum megjelenítéséhez, ha ugyanazon felhasználó tartoznak az Azure AD-ben.  
 1. Az ütköző objektumot az Azure Active Directoryban újonnan szinkronizálva van. Hasonlítsa össze az objektumok attribútumok:  
-   - Megjelenítendő név
-   - Felhasználó egyszerű neve
+   - Megjelenített név
+   - Egyszerű felhasználónév
    - Objektumazonosító
 2. Ha az Azure AD nem tudja őket összehasonlítani, ellenőrizze, hogy az Active Directory rendelkezik-e a megadott objektum **objektum megtalálható, nemmel**. Válasz **nem** Ha is talál.
 

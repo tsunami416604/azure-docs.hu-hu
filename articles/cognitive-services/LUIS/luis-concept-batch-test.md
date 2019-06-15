@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/29/2019
 ms.author: diberry
 ms.openlocfilehash: acb561970b6a8576d1219fc15758e21a3032c9e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60813286"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>A LUIS-portál 1000 utterances tesztelésével Batch
@@ -32,10 +32,10 @@ Küldje el a fájlt egy kötegfájlban utterances, más néven egy *adatkészlet
 
 |**Szabályok**|
 |--|
-|* Nincsenek ismétlődő kimondott szöveg|
+|\* Nincsenek ismétlődő kimondott szöveg|
 |1000 utterances vagy kevesebb|
 
-* Ismétlődések karakterlánc pontos egyezést, nem a rendszer először tokenekre bontott egyezéstípust minősülnek. 
+\* Ismétlődések karakterlánc pontos egyezést, nem a rendszer először tokenekre bontott egyezéstípust minősülnek. 
 
 ## <a name="entities-allowed-in-batch-tests"></a>Entitások engedélyezett a batch-tesztek
 

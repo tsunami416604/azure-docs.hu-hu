@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/02/2018
 ms.author: shvija
 ms.openlocfilehash: 80566b0246179064d2a479b8c9bf3c79a2a93aac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60822613"
 ---
 # <a name="available-event-hubs-apis"></a>Elérhető Event Hubs API-k
@@ -31,7 +31,7 @@ Az alábbi szakasz az összes jelenleg elérhető az Azure Event Hubs futásidej
 
 Minden egyes futásidejű kódtár az aktuális állapotával kapcsolatos további információkért lásd: [további információkat](#additional-information).
 
-| Nyelv és Platform | Ügyfélcsomag | EventProcessorHost csomag | Adattár |
+| Nyelv és Platform | Ügyfélcsomag | EventProcessorHost csomag | Tárház |
 | --- | --- | --- | --- |
 | .NET Standard | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) | [GitHubon](https://github.com/azure/azure-event-hubs-dotnet) |
 | .NET-keretrendszer | [NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) | – |
@@ -53,7 +53,7 @@ A [Node.js kódtár](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/e
 
 A következő táblázat felsorolja az összes jelenleg elérhető felügyeleti-specifikus szalagtár. Ezek a kódtárak egyike futásidejű műveletek tartalmaz, és az azzal a céllal, az Event Hubs entitáskezelésről.
 
-| Nyelv és Platform | Felügyeleti csomag | Adattár |
+| Nyelv és Platform | Felügyeleti csomag | Tárház |
 | --- | --- | --- |
 | .NET Standard | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Management.EventHub) | [GitHubon](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/ResourceManagement/EventHub) |
 

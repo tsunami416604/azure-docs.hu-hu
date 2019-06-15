@@ -15,10 +15,10 @@ ms.date: 02/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: bb23cbc275e01eab5361504c547c020b0a29f4c3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60532956"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Rbac-RÓL és az Azure portal segítségével Azure-erőforrásokhoz való hozzáférés kezelése
@@ -69,13 +69,13 @@ Először is el kell döntenie, nyissa meg a hozzáférés-vezérlés (IAM) pane
 
 1. Kattintson az adott erőforrás.
 
-1. Kattintson a **hozzáférés-vezérlés (IAM)**.
+1. Kattintson a **hozzáférés-vezérlés (IAM)** .
 
     Az alábbiakban látható egy példa egy előfizetés hozzáférés-vezérlés (IAM) paneljén. Módosítások access control ide, ha azok a teljes előfizetés szeretné alkalmazni.
 
     ![Egy előfizetés hozzáférés-vezérlés (IAM) paneljén](./media/role-assignments-portal/access-control-subscription.png)
 
-## <a name="view-roles-and-permissions"></a>Szerepkörök és engedélyek megtekintése
+## <a name="view-roles-and-permissions"></a>Nézet szerepkörök és engedélyek
 
 A szerepkör-definíció a szerepkör-hozzárendeléshez használható engedélyek gyűjteménye. Az Azure rendelkezik több mint 70 [beépített szerepkörök az Azure-erőforrások](built-in-roles.md). Kövesse az alábbi lépéseket az elérhető szerepkörök és engedélyek megtekintéséhez.
 
@@ -125,9 +125,9 @@ Kövesse az alábbi lépéseket a hozzáférést egy egyetlen felhasználó, cso
 
    ![Hozzáférés-vezérlés – szerepkör-hozzárendeléseket lapon](./media/role-assignments-portal/access-control-role-assignments.png)
 
-   A szerepkör-hozzárendelések lapon láthatja, kinek van hozzáférése a hatókörben. Látható, hogy egyes szerepkörök hatóköre **erre az erőforrásra** érvényes, míg mások más hatókörökből **(öröklődnek)**. Hozzáférés az erőforráshoz rendelt vagy a szülő hatókörnek egyik hozzárendeléséből örökölt.
+   A szerepkör-hozzárendelések lapon láthatja, kinek van hozzáférése a hatókörben. Látható, hogy egyes szerepkörök hatóköre **erre az erőforrásra** érvényes, míg mások más hatókörökből **(öröklődnek)** . Hozzáférés az erőforráshoz rendelt vagy a szülő hatókörnek egyik hozzárendeléséből örökölt.
 
-## <a name="add-a-role-assignment"></a>Szerepkör-hozzárendelés hozzáadása
+## <a name="add-a-role-assignment"></a>Egy szerepkör-hozzárendelés hozzáadása
 
 Az RBAC hozzáférést biztosítani, hogy szerepkör hozzárendelése egy felhasználó, csoport, szolgáltatásnevet vagy felügyelt identitás. Kövesse az alábbi lépéseket a különféle hatókörű hozzáférést.
 
@@ -161,7 +161,7 @@ Ahhoz, hogy a felhasználó az Azure-előfizetés rendszergazdájának, hozzáre
 
 1. Kattintson arra az előfizetésre, ahol szeretné a hozzáférést.
 
-1. Kattintson a **hozzáférés-vezérlés (IAM)**.
+1. Kattintson a **hozzáférés-vezérlés (IAM)** .
 
 1. Kattintson a **szerepkör-hozzárendelések** fülre kattintva megtekintheti az előfizetéshez tartozó szerepkör-hozzárendelések.
 
@@ -208,4 +208,4 @@ Az RBAC-ben hozzáférés eltávolításához egy szerepkör-hozzárendelést ke
 * [Oktatóanyag: Egy felhasználó hozzáférést rbac-RÓL és az Azure portal segítségével Azure-erőforrások](quickstart-assign-role-user-portal.md)
 * [Oktatóanyag: Egy felhasználó hozzáférést biztosítani Azure-erőforrások RBAC és az Azure PowerShell használatával](tutorial-role-assignments-user-powershell.md)
 * [Az RBAC hibaelhárítása az Azure-erőforrásokhoz](troubleshooting.md)
-* [Erőforrások rendszerezése az Azure-beli felügyeleti csoportokkal](../governance/management-groups/index.md)
+* [Az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../governance/management-groups/index.md)

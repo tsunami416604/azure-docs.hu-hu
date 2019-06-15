@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 10/26/2018
 ms.openlocfilehash: 42e1ef3e311633f9631163bc9d3df212b608ef3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60450760"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Figyelése, létrehozása és kezelése az SFTP-fájlok Azure Logic Apps használatával
@@ -73,7 +73,7 @@ Tekintse át a többi különbségről az SFTP-összekötő és az SFTP-SSH-öss
    Műveletek listája alatt válassza ki a kívánt művelet.
 
    Lépések közötti művelet hozzáadása, helyezze az egérmutatót a nyíl lépések között. 
-   Válassza a plusz jelre (**+**), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
+   Válassza a plusz jelre ( **+** ), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
 
 1. Adja meg a szükséges adatokat a kapcsolatot.
 
@@ -112,7 +112,7 @@ Ha az eseményindító egy új fájlt talál, a trigger ellenőrzi, hogy az új 
 
 Fájl tartalmának kérésekor eseményindítók nem kap fájlok 50 MB-nál nagyobb. 50 MB-nál nagyobb fájlok lekéréséhez kövesse az ezt a mintát: 
 
-* Használjon egy eseményindítót, amely visszaadja a fájl tulajdonságait, például **fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)**.
+* Használjon egy eseményindítót, amely visszaadja a fájl tulajdonságait, például **fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)** .
 
 * Hajtsa végre az eseményindítót egy műveletet, amely beolvassa a teljes fájlt, mint például a **fájl tartalmának beolvasása elérési út segítségével**, és rendelkezik a művelet használata [üzenet darabolás](../logic-apps/logic-apps-handle-large-messages.md).
 
@@ -120,7 +120,7 @@ Fájl tartalmának kérésekor eseményindítók nem kap fájlok 50 MB-nál nagy
 
 <a name="file-add-modified"></a>
 
-### <a name="sftp-trigger-when-a-file-is-added-or-modified"></a>Az SFTP-eseményindító: Fájl hozzáadásakor és módosításakor
+### <a name="sftp-trigger-when-a-file-is-added-or-modified"></a>Az SFTP-eseményindító: Amikor felvesznek vagy módosítanak egy fájlt
 
 Ez az eseményindító indul el a logikai alkalmazás munkafolyamata egy fájl hozzáadásakor vagy módosítja a SFTP-kiszolgálóra. Ha például egy feltételt, amely ellenőrzi a fájl tartalmát, és a tartalmat, hogy a tartalom megfelel-e a megadott feltétel alapján is hozzáadhat. Ezután hozzáadhat egy műveletet, amely a fájl tartalmának beolvasása, és ezt a tartalmat egy mappába az SFTP-kiszolgáló használatával. 
 
@@ -128,7 +128,7 @@ Ez az eseményindító indul el a logikai alkalmazás munkafolyamata egy fájl h
 
 Fájl tartalmának kérésekor eseményindítók nem kap fájlok 50 MB-nál nagyobb. 50 MB-nál nagyobb fájlok lekéréséhez kövesse az ezt a mintát: 
 
-* Használjon egy eseményindítót, amely visszaadja a fájl tulajdonságait, például **fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)**.
+* Használjon egy eseményindítót, amely visszaadja a fájl tulajdonságait, például **fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)** .
 
 * Hajtsa végre az eseményindítót egy műveletet, amely beolvassa a teljes fájlt, mint például a **fájl tartalmának beolvasása elérési út segítségével**, és rendelkezik a művelet használata [üzenet darabolás](../logic-apps/logic-apps-handle-large-messages.md).
 
@@ -140,7 +140,7 @@ Ez a művelet a tartalom olvas be egy fájl az SFTP-kiszolgálóra. Így példá
 
 Fájl tartalmának kérésekor eseményindítók nem kap fájlok 50 MB-nál nagyobb. 50 MB-nál nagyobb fájlok lekéréséhez kövesse az ezt a mintát: 
 
-* Használjon egy eseményindítót, amely visszaadja a fájl tulajdonságait, például **fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)**.
+* Használjon egy eseményindítót, amely visszaadja a fájl tulajdonságait, például **fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)** .
 
 * Hajtsa végre az eseményindítót egy műveletet, amely beolvassa a teljes fájlt, mint például a **fájl tartalmának beolvasása elérési út segítségével**, és rendelkezik a művelet használata [üzenet darabolás](../logic-apps/logic-apps-handle-large-messages.md).
 

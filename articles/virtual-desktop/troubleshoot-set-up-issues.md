@@ -8,10 +8,10 @@ ms.topic: troubleshoot
 ms.date: 04/08/2019
 ms.author: v-chjenk
 ms.openlocfilehash: 88e843c410a750387ecf58497dec79586e2a59d8
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65523334"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Bérlői és gazdagépcsoport létrehozása
@@ -319,8 +319,8 @@ Példa a nyers hiba:
 
 Ha az Azure piactéren, amely rendszert használ, adja meg a Windows virtuális asztalok megfelelően hitelesíteni a következő paraméterek értékeit:
 
-- Windows virtuális asztal bérlői RDS tulajdonosa: Szolgáltatásnév
-- Alkalmazás azonosítója: Az alkalmazás azonosítója az új egyszerű szolgáltatás létrehozása
+- Windows virtuális asztal bérlői RDS tulajdonosa: Egyszerű szolgáltatás
+- Alkalmazásazonosító: Az alkalmazás azonosítója az új egyszerű szolgáltatás létrehozása
 - A jelszó jelszó/megerősítése: A jelszó titkos kulcsot, az egyszerű szolgáltatás számára létrehozott
 - Az Azure AD-bérlő azonosítója: A létrehozott egyszerű szolgáltatás Azure AD-bérlő azonosítója
 

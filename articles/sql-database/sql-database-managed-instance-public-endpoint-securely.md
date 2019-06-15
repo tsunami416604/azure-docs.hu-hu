@@ -12,17 +12,17 @@ ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 05/08/2019
 ms.openlocfilehash: f06677b66c8f6586fec8cc5dfe97b1515b741e9c
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65470306"
 ---
 # <a name="use-an-azure-sql-database-managed-instance-securely-with-public-endpoints"></a>Egy Azure SQL Database felügyelt példány nyilvános végpontok biztonságosan használata
 
 Az Azure SQL Database felügyelt példány keresztül tud biztosítani felhasználói kapcsolat [nyilvános végpontok](../virtual-network/virtual-network-service-endpoints-overview.md). Ez a cikk ismerteti, hogyan teheti biztonságosabbá ezt a konfigurációt.
 
-## <a name="scenarios"></a>Alkalmazási helyzetek
+## <a name="scenarios"></a>Forgatókönyvek
 
 Egy SQL Database felügyelt példány biztosít, amely engedélyezi a csatlakozást a saját virtuális hálózaton belül egy privát végpontjaikat. Az alapértelmezett beállítás maximális elkülönítéshez. Előfordulhatnak azonban olyan forgatókönyvek, ahol meg kell adnia egy nyilvános végpontot kapcsolatot:
 

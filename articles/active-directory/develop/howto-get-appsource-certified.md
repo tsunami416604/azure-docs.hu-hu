@@ -19,10 +19,10 @@ ms.reviewer: andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0b820068f7bd59941346c8d2a3e8ede15252d58b
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540266"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>AppSource Certified beszerzése az Azure Active Directory
@@ -40,7 +40,7 @@ Ha azt szeretné, hogyan integrálható az alkalmazás az Azure AD szolgáltatá
 A *több-bérlős alkalmazás* olyan alkalmazás, amely elfogadja a felhasználók bármely vállalat vagy szervezet, amely rendelkezik az Azure AD anélkül, hogy egy külön példányt, konfigurációs vagy telepítési történő bejelentkezések. Appsource-ban azt javasolja, hogy az alkalmazások valósítható meg több-bérlős engedélyezéséhez a *egyetlen kattintással* ingyenes kipróbálására nyújt lehetőséget.
 
 Ahhoz, hogy az alkalmazás több-bérlős, kövesse az alábbi lépéseket:
-1. Állítsa be `Multi-Tenanted` tulajdonságot `Yes` a az alkalmazás regisztrációs információit a [az Azure portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Alapértelmezés szerint az Azure Portalon létrehozott alkalmazásokat alkalmazásbeállításait  *[egybérlős](#single-tenant-applications)*.
+1. Állítsa be `Multi-Tenanted` tulajdonságot `Yes` a az alkalmazás regisztrációs információit a [az Azure portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Alapértelmezés szerint az Azure Portalon létrehozott alkalmazásokat alkalmazásbeállításait  *[egybérlős](#single-tenant-applications)* .
 1. Kérelmek küldése a kód frissítése a `common` végpont. Ehhez a végponthoz való frissítése `https://login.microsoftonline.com/{yourtenant}` való `https://login.microsoftonline.com/common*`.
 1. Egyes platformokon, például az ASP .NET is frissíteni szeretné a kód több kiállítók fogadására.
 

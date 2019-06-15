@@ -10,10 +10,10 @@ ms.date: 02/12/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: ea6599152d3cbf1f50132f5b207c19148401f798
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60564259"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Hibrid Runbook-feldolgozók hibaelhárítása
@@ -56,7 +56,7 @@ A hibrid Runbook-feldolgozó futtató számítógépek meg kell felelnie a minim
 
 Erősítse meg, amely a hibrid Runbook-feldolgozó szolgáltatás fogja futtatni a számítógép megfelel-e a minimális hardverkövetelményeknek. Ha igen, monitor CPU és memória segítségével meghatározhatja a hibrid Runbook-feldolgozó folyamat teljesítményét és a Windows bármely korrelációját. Ha nincs, memória és CPU nyomás, ez jelezheti erőforrások frissítése. Válassza ki a különböző számítási erőforrás által támogatható a minimális követelményeknek és a méretezési csoport, amikor terheléshez azt jelzik, hogy szükség a növekedést is.
 
-Ellenőrizze a **Microsoft-SMA** eseménynaplót, amelyben egy megfelelő eseményt, leírás *Win32 folyamat kilépési kódja [4294967295]*. Ez a hiba oka még nincs konfigurálva a hitelesítést a runbookokban, vagy a hibrid feldolgozócsoport a futtató hitelesítő adatokat adott. Felülvizsgálat [Runbook-engedélyek](../automation-hrw-run-runbooks.md#runbook-permissions) , győződjön meg arról, hogy megfelelően konfigurálta hitelesítést a runbookokban.
+Ellenőrizze a **Microsoft-SMA** eseménynaplót, amelyben egy megfelelő eseményt, leírás *Win32 folyamat kilépési kódja [4294967295]* . Ez a hiba oka még nincs konfigurálva a hitelesítést a runbookokban, vagy a hibrid feldolgozócsoport a futtató hitelesítő adatokat adott. Felülvizsgálat [Runbook-engedélyek](../automation-hrw-run-runbooks.md#runbook-permissions) , győződjön meg arról, hogy megfelelően konfigurálta hitelesítést a runbookokban.
 
 ### <a name="no-cert-found"></a>Forgatókönyv: Nem található tanúsítvány a tanúsítványtárolóban, a hibrid Runbook-feldolgozón
 

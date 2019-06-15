@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: 404aaf91c0cb30df0a83353ef7397987ec3f8e80
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65799413"
 ---
 # <a name="azure-regions-in-which-video-indexer-exists"></a>Azure-régióban, amelyben a Video Indexer létezik
 
 Video Indexer API-kat tartalmazhat egy **hely** paraméter, amely az Azure-régió, amelyhez a hívást kell átirányítani kell beállítania. Ez lehet egy [Azure-régió, amelyben a Video Indexer elérhető](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all).
 
-## <a name="locations"></a>Helyszínek
+## <a name="locations"></a>Helyek
 
 A **hely** paramétert meg kell adni az Azure-régió neve alelem értékként. A Video Indexer használatakor az előnézeti módban helyezze *"próbaverzió"* értékeként. Ellenkező esetben az Azure-régióhoz, hogy a fiókja van, és a hívást kell átirányítani a kód nevének futtassa a következő sort [Azure CLI-vel](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest):
 

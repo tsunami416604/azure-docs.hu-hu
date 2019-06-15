@@ -10,10 +10,10 @@ ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: c032dbc528ed5034280d0ecb4c95700b51869991
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65793628"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jellemzőalapú navigáció megvalósítása az Azure Search-ben
@@ -232,7 +232,7 @@ SearchParameters sp = new SearchParameters()
 
 Egy dimenzió lekérdezési paraméter értéke egy mezőt, és attól függően, írja be az adatokat, további rendelkeznek által vesszővel tagolt listája, amely tartalmazza az `count:<integer>`, `sort:<>`, `interval:<integer>`, és `values:<list>`. Értékek listáját támogatott numerikus adatokat tartományok beállítása során. Lásd: [dokumentumok keresése (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) használattal kapcsolatos részleteket.
 
-Metszettel, valamint a kérést, az alkalmazás által megfogalmazott is kialakítson szűrők értékkorlátozás értéke a kijelölés alapján jelölt dokumentumok köre szűkítéséhez. Kerékpár áruházbeli, a jellemzőalapú navigáció biztosít a keresőmotorok kérdésekre, például *érhetők el a milyen színeket, gyártók és kerékpár típusú?*. Például a szűrés kérdésekre *mountain Bike-OK, mely pontos kerékpárok piros, tartomány díjszabása a jelen?*. Ha jelzi, hogy csak a piros termékek jelenjenek meg a "Red" gombra kattint, a következő lekérdezés az alkalmazás elküld tartalmaz `$filter=Color eq ‘Red’`.
+Metszettel, valamint a kérést, az alkalmazás által megfogalmazott is kialakítson szűrők értékkorlátozás értéke a kijelölés alapján jelölt dokumentumok köre szűkítéséhez. Kerékpár áruházbeli, a jellemzőalapú navigáció biztosít a keresőmotorok kérdésekre, például *érhetők el a milyen színeket, gyártók és kerékpár típusú?* . Például a szűrés kérdésekre *mountain Bike-OK, mely pontos kerékpárok piros, tartomány díjszabása a jelen?* . Ha jelzi, hogy csak a piros termékek jelenjenek meg a "Red" gombra kattint, a következő lekérdezés az alkalmazás elküld tartalmaz `$filter=Color eq ‘Red’`.
 
 A következő kódrészletet a a `JobsSearch.cs` lap a szűrőt a kiválasztott üzleti cím ad hozzá, ha kiválaszt egy értéket, az üzleti cím értékkorlátozás.
 
@@ -395,7 +395,7 @@ Végzett munka, a keresési eredmények között, nézze meg az URL-cím lekérd
    
 <a name="nextstep"></a>
 
-## <a name="learn-more"></a>Tudnivalók a modellalapú alkalmazások létrehozásáról
+## <a name="learn-more"></a>Részletek
 Tekintse meg [részletes ismertetése az Azure Search](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410). 45:25, jelenleg nincs egy bemutatót értékkorlátozással megvalósítása.
 
 A további elemzés, a jellemzőalapú navigáció tervezési elvek javasoljuk, hogy az alábbi hivatkozásokat:

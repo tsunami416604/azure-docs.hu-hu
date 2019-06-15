@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: sujayt
 ms.openlocfilehash: 3c87e159022b6dcf13daf2a2659c88c0529a8f48
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65796432"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure – Azure virtuális gép replikálási problémák elhárítása
@@ -165,7 +165,7 @@ A Site Recovery replikációja, a kimenő kapcsolat az adott URL-címek vagy IP-
     ![COM-hiba](./media/azure-to-azure-troubleshoot-errors/custom_dns.png)
 
 
-### <a name="issue-2-site-recovery-configuration-failed-151196"></a>2. hiba: Konfigurálni a Site Recovery nem tudta (151196)
+### <a name="issue-2-site-recovery-configuration-failed-151196"></a>2\. hiba: Konfigurálni a Site Recovery nem tudta (151196)
 - **Lehetséges ok** </br>
   - Az Office 365 portál és identitás IP4 végpontok nem létesíthető kapcsolat.
 
@@ -177,7 +177,7 @@ A Site Recovery replikációja, a kimenő kapcsolat az adott URL-címek vagy IP-
 > [!NOTE]
 > Ha a virtuális gépek mögött **Standard** belső load balancer, akkor azt nem kell a hozzáférést, azaz O365 IP-címek Alapértelmezés szerint login.micorsoftonline.com. Változtassa meg, hogy **alapszintű** belső terheléselosztó típusa, vagy hozzon létre ki kötött access, említetteknek megfelelően az [cikk](https://aka.ms/lboutboundrulescli).
 
-### <a name="issue-3-site-recovery-configuration-failed-151197"></a>3. hiba: Konfigurálni a Site Recovery nem tudta (151197)
+### <a name="issue-3-site-recovery-configuration-failed-151197"></a>3\. hiba: Konfigurálni a Site Recovery nem tudta (151197)
 - **Lehetséges ok** </br>
   - Nem lehet kapcsolatot az Azure Site Recovery szolgáltatási végpontjait.
 
@@ -185,7 +185,7 @@ A Site Recovery replikációja, a kimenő kapcsolat az adott URL-címek vagy IP-
   - Az Azure Site Recovery szükséges hozzáférést [Site Recovery IP-címtartományok](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges) a régiójától függően. Győződjön meg arról, hogy a szükséges ip-címtartományok érhetők el a virtuális gép.
 
 
-### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>4. hiba: A2A-replikáció sikertelen volt, amikor a hálózati forgalom halad át a helyszíni proxykiszolgáló (151072)
+### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>4\. hiba: A2A-replikáció sikertelen volt, amikor a hálózati forgalom halad át a helyszíni proxykiszolgáló (151072)
 - **Lehetséges ok** </br>
   - Érvénytelenek az egyéni proxy beállításait, és az ASR a mobilitási szolgáltatás ügynökének fejeződött nincs automatikus észlelés a proxybeállításokat az Internet Explorer
 

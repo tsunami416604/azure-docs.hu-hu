@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: ea625a61ed600dbaa22fef85987e9570a6fb7dbc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60371452"
 ---
 # <a name="get-started-with-your-billing-account-for-a-microsoft-customer-agreement"></a>Ismerkedés az Ön számlázási fiókjához a Microsoft ügyfél-szerződés
@@ -56,10 +56,10 @@ A számla megtekintése, töltse le a dokumentumokat, és beszerezni a jövőbel
 
 Minden egyes számlázási profilja rendelkezik a saját fizetési módok, amely segítségével a számlákat kell fizetnie. A következő fizetési módokat támogatja:
 
-| Typo             | Meghatározás  |
+| Típus             | Meghatározás  |
 |------------------|-------------|
-|Azure-kreditek    |  Kreditek a rendszer automatikusan alkalmazza, a teljes számlázott összeg a számla számításához, akkor meg kell fizetni. További információkért lásd: [nyomon követheti a számlázási profilja Azure kreditegyenlegét](billing-mca-check-azure-credits-balance.md). |
-|Csekk vagy átutalás | A fizetendő összeg fizethet a szolgáltatásért számláit ellenőrzés vagy átviteli keresztül átvitele. A fizetési utasításokat kapnak a számlán |
+|Az Azure-kreditek    |  Kreditek a rendszer automatikusan alkalmazza, a teljes számlázott összeg a számla számításához, akkor meg kell fizetni. További információkért lásd: [nyomon követheti a számlázási profilja Azure kreditegyenlegét](billing-mca-check-azure-credits-balance.md). |
+|Ellenőrizze vagy vezetéket használtak átvitel | A fizetendő összeg fizethet a szolgáltatásért számláit ellenőrzés vagy átviteli keresztül átvitele. A fizetési utasításokat kapnak a számlán |
 
 ### <a name="control-azure-marketplace-and-reservation-purchases-by-applying-policies"></a>Vezérlő Azure Marketplace-en és a fenntartás vásárlások házirendek alkalmazásával
 
@@ -71,8 +71,8 @@ Az Azure-csomagok automatikusan engedélyezve van egy számlázási profilt hoz 
 
 | Felkészülés             | Meghatározás  |
 |------------------|-------------|
-|Microsoft Azure-csomag   | Engedélyezi a felhasználók hozhatnak létre előfizetéseket, amelyek futtathatók a számítási feladatokat. További információkért lásd: [a Microsoft Azure-csomag](https://azure.microsoft.com/offers/ms-azr-0017g/) |
-|Microsoft Azure-csomag fejlesztéshez/teszteléshez | Lehetővé teszi a Visual Studio-előfizetők hozhatnak létre előfizetéseket, amelyek korlátozott fejlesztési vagy tesztelési feladatok. Ezeket az előfizetéseket kaphat további előnyöket, például az alacsonyabb díjszabás, valamint az exkluzív virtuálisgép-lemezképek elérését az Azure Portalon. További információkért lásd: [a Microsoft a Azure DevTest tervezése](https://azure.microsoft.com/offers/ms-azr-0148g/)|
+|A Microsoft Azure-csomagot   | Engedélyezi a felhasználók hozhatnak létre előfizetéseket, amelyek futtathatók a számítási feladatokat. További információkért lásd: [a Microsoft Azure-csomag](https://azure.microsoft.com/offers/ms-azr-0017g/) |
+|Microsoft Azure-csomag fejlesztéshez és teszteléshez | Lehetővé teszi a Visual Studio-előfizetők hozhatnak létre előfizetéseket, amelyek korlátozott fejlesztési vagy tesztelési feladatok. Ezeket az előfizetéseket kaphat további előnyöket, például az alacsonyabb díjszabás, valamint az exkluzív virtuálisgép-lemezképek elérését az Azure Portalon. További információkért lásd: [a Microsoft a Azure DevTest tervezése](https://azure.microsoft.com/offers/ms-azr-0148g/)|
 
 ## <a name="understand-invoice-sections"></a>Számla szakaszok ismertetése
 
@@ -85,7 +85,7 @@ A számla szakaszban lévő szerepkörök engedélye szabályozza, ki Azure-elő
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>A Microsoft Ügyfélszerződéséhez való hozzáférés ellenőrzése
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással
+## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
 
 Ha segítségre van szüksége, kell [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
 

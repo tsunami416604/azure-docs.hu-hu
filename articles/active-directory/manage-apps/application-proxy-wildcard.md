@@ -17,10 +17,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fc82f69c8dee4cc8c45e9fcf7fbf6fa184ad72b6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65783048"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Az Azure Active Directory application proxy a helyettesítő karaktereket tartalmazó alkalmazások 
@@ -123,7 +123,7 @@ Használó alkalmazások számára [kerberos általi korlátozott delegálás (K
 
 
 
-## <a name="scenario-1-general-wildcard-application"></a>1. forgatókönyv: Általános helyettesítő karaktereket tartalmazó alkalmazásokká
+## <a name="scenario-1-general-wildcard-application"></a>1\. forgatókönyv: Általános helyettesítő karaktereket tartalmazó alkalmazásokká
 
 Ebben a forgatókönyvben három különböző alkalmazás közzétenni kívánt rendelkezik:
 
@@ -177,7 +177,7 @@ A konfiguráció az alábbi struktúrával valósít meg:
 
 
 
-## <a name="scenario-2-general-wildcard-application-with-exception"></a>2. forgatókönyv: Általános helyettesítő karaktereket tartalmazó alkalmazásokká kivétel
+## <a name="scenario-2-general-wildcard-application-with-exception"></a>2\. forgatókönyv: Általános helyettesítő karaktereket tartalmazó alkalmazásokká kivétel
 
 Ebben a forgatókönyvben rendelkezik emellett három általános alkalmazásokat egy másik alkalmazás `finance.adventure-works.com`, amely csak akkor érhető el a pénzügyi részleg. Az aktuális alkalmazás struktúrával a pénzügyi alkalmazás elérhető-e a helyettesítő karaktereket tartalmazó alkalmazásokká keresztül, és amelyet minden alkalmazott lenne. Ennek módosításához, zárja ki az alkalmazás a helyettesítő karakteres külön alkalmazás korlátozóbb engedélyekkel pénzügyi konfigurálásával.
 

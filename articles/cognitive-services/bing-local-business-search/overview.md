@@ -10,17 +10,17 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh
 ms.openlocfilehash: 3cc9ed4dd108e76da6430a450876b709be514356
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65796768"
 ---
 # <a name="what-is-bing-local-business-search"></a>Mi az helyi vállalati keresési Bing?
 A helyi vállalati keresési Bing-API egy RESTful szolgáltatás, amely lehetővé teszi az alkalmazások helyi üzletek keresési lekérdezések alapján információ. Ha például `q=<business-name> in Redmond, Washington`, vagy `q=Italian restaurants near me`. 
 
-## <a name="features"></a>Funkciók
-| Szolgáltatás | Leírás |  
+## <a name="features"></a>Szolgáltatások
+| Funkció | Leírás |  
 | -- | -- | 
 | [Keresse meg a helyi üzleteket és helyek](quickstarts/local-quickstart.md) | A helyi vállalati keresési Bing-API honosított eredmények olvas be egy lekérdezést. Eredmények a vállalati webhely URL-címet és szöveget, a telefonszám és a földrajzi hely, többek között: GPS koordinálja, város, utca, házszám |  
 | [A földrajzi határokon helyi eredmények szűréséhez](specify-geographic-search.md) | Keresési paraméterek használatával korlátozza az eredményeket egy adott földrajzi területre, egy kör alakú területen vagy szögletes határolókeret megadott koordinátáit adja hozzá. | 

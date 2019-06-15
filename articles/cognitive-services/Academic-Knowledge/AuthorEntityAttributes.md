@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
 ms.openlocfilehash: d4b33c06ab023023aadf403cf0ef0b08c2bafc5f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60609756"
 ---
 # <a name="author-entity"></a>Szerző entitás
@@ -24,10 +24,10 @@ Name (Név)    |Leírás                            |Típus       | Műveletek
 ------- | ------------------------------------- | --------- | ----------------------------
 Azonosító      |Entitásazonosító                              |Int64      |Egyenlő
 AuN     |Szerző normalizált neve                 |String     |Egyenlő
-DAuN    |Szerző megjelenített neve                    |String     |nincs
-Másolat      |Szerző idézetet teljes száma            |Int32      |nincs  
-ECC     |Szerző becsült idézetet teljes száma  |Int32      |nincs
-E       |Kiterjesztett metaadatok (lásd a "Bővített Meta attribútumok" tábla)  |String     |nincs  
+DAuN    |Szerző megjelenített neve                    |String     |Egyik sem
+CC      |Szerző idézetet teljes száma            |Int32      |Egyik sem  
+ECC     |Szerző becsült idézetet teljes száma  |Int32      |Egyik sem
+E       |Kiterjesztett metaadatok (lásd a "Bővített Meta attribútumok" tábla)  |String     |Egyik sem  
 
 
 ## <a name="extended-metadata-attributes"></a>Kiterjesztett attribútumok metaadatok ##

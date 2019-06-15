@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: kasinh
 ms.openlocfilehash: 72b2368979f0c9e546e1c7ef7fc462bf1d64c947
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60782072"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>SQL Server biztonsági mentése az Azure az Azure Backup Serverhez

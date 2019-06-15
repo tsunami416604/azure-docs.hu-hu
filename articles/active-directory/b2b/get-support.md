@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a7b9ebefb9762b663adcd17fb1fdd656cb4f2ec2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65768436"
 ---
 # <a name="getting-support-for-b2b-collaboration"></a>Támogatás igénybevétele B2B-együttműködés
@@ -24,7 +24,7 @@ ms.locfileid: "65768436"
 Olvassa végig a dokumentációt, végezze el a megfelelő műveleteket, de még nem olvasható be, hogy működik? Nyisson meg egy támogatási jegyet (támogatási csomag szükséges):
 
 1. A [az Azure Portalon](https://portal.azure.com), a Súgó és támogatás panelen keresse meg és válassza ki az új támogatási kérelem:
-   - Probléma típusa: Műszaki
+   - Probléma típusa: Technikai
    - Előfizetés: Válassza ki az érintett előfizetés
      - Szolgáltatás: Active Directory
      - Támogatási csomag: Válassza ki a megfelelő támogatási csomagot

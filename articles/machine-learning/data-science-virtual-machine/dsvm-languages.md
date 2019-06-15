@@ -18,10 +18,10 @@ ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
 ms.openlocfilehash: 586f37ff972a6102da351794365f719a185857fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60502242"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>A Data Science virtuális gépen támogatott nyelvek 
@@ -39,7 +39,7 @@ Az adatelemzési virtuális gép (DSVM) tartalmaz számos előre elkészített n
 | A dsvm-hez kapcsolódó eszközök      | PySpark, R, Julia      |
 
 > [!NOTE]
-> 2018. március előtt létrehozott Windows Server 2016 tartalmazza a Python 3.5-ös és a Python 2.7-t. Python 2.7-t is a conda **legfelső szintű** környezet és **py35** a Python 3.5-ös környezetben van. 
+> 2018\. március előtt létrehozott Windows Server 2016 tartalmazza a Python 3.5-ös és a Python 2.7-t. Python 2.7-t is a conda **legfelső szintű** környezet és **py35** a Python 3.5-ös környezetben van. 
 
 ### <a name="how-to-use--run-it"></a>Hogyan futtathatja / használata?    
 
@@ -234,12 +234,12 @@ Julia hely alapértelmezés szerint egy globális környezetben olvasható össz
 
 ## <a name="other-languages"></a>Más nyelveken
 
-**C#**: Elérhető a Windows és a Visual Studio Community edition keresztül vagy a elérhető egy `Developer Command Prompt for Visual Studio` ahol ugyanúgy futtathatja `csc` parancsot. 
+**C#** : Elérhető a Windows és a Visual Studio Community edition keresztül vagy a elérhető egy `Developer Command Prompt for Visual Studio` ahol ugyanúgy futtathatja `csc` parancsot. 
 
 **Java**: A dsvm-hez és a készlet az elérési utat a Linux és a Windows kiadását openjdk csomagját érhető el. Beírhatja `javac` vagy `java` parancsot a Windows parancssorból vagy a Java használata Linux bash felületet. 
 
 **NODE.js**: node.js érhető el a dsvm-hez és a készlet az elérési utat a Linux és a Windows kiadását. Beírhatja `node` vagy `npm` parancsot a parancssorban a Windows vagy Linux node.js eléréséhez a bash felületet. Windows a Node.js-eszközök Visual Studio-bővítmény biztosít egy grafikus IDE való fejlesztés a node.js-alkalmazás telepítve van. 
 
-**F#**: Elérhető a Windows és a Visual Studio Community edition keresztül vagy a elérhető egy `Developer Command Prompt for Visual Studio` ahol ugyanúgy futtathatja `fsc` parancsot. 
+**F#** : Elérhető a Windows és a Visual Studio Community edition keresztül vagy a elérhető egy `Developer Command Prompt for Visual Studio` ahol ugyanúgy futtathatja `fsc` parancsot. 
 
 

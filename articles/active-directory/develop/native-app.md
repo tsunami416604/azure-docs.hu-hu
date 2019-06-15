@@ -18,17 +18,17 @@ ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6bf24124c4b072a64ef59500b2f723ff6abbb0e
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65545845"
 ---
 # <a name="native-apps"></a>A natív alkalmazások
 
 A natív alkalmazások olyan alkalmazások, amelyek egy felhasználó nevében webes API-hívás. Ebben a forgatókönyvben épül az OAuth 2.0 engedélyezési kód engedélyezési típusának nyilvános ügyfél, 4.1 szakaszában leírtak szerint a [OAuth 2.0 ismertetőjének](https://tools.ietf.org/html/rfc6749). A natív alkalmazás az OAuth 2.0 protokoll használatával szerzi be a felhasználó hozzáférési jogkivonatot. Ez a jogkivonat a kérelemben a webes API-t, amely engedélyezi a felhasználó, és adja vissza a kívánt erőforrást elküldi.
 
-## <a name="diagram"></a>Diagram
+## <a name="diagram"></a>Ábra
 
 ![Natív alkalmazás webes API-Diagram](./media/authentication-scenarios/native_app_to_web_api.png)
 
@@ -50,7 +50,7 @@ Az AD hitelesítési Kódtárai használja, ha a protokoll részletei az alábbi
 
 Tekintse meg a Kódminták natív alkalmazás webes API-forgatókönyvekhez. És térjen vissza később gyakran – gyakran hozzáadjuk az új mintát. [Webes API a natív alkalmazás](sample-v1-code.md#desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api).
 
-## <a name="app-registration"></a>Appok regisztrálása
+## <a name="app-registration"></a>Alkalmazásregisztráció
 
 Alkalmazás regisztrálása az Azure AD-1.0-s verziójú végpont, lásd: [alkalmazás regisztrálása](quickstart-register-app.md).
 

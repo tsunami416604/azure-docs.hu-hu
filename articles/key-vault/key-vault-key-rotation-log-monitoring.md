@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
 ms.openlocfilehash: 20a170963ff4a8ff9cb69d3397e66e12c1047d16
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65561190"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Állítsa be az Azure Key Vault kulcsforgatással és vizsgálattal
 
-## <a name="introduction"></a>Bemutatás
+## <a name="introduction"></a>Bevezetés
 
 Miután egy kulcstartót, elkezdheti a kulcsok és titkos kulcsok tárolására használja. Az alkalmazások többé nem kell megőrizni a kulcsok vagy titkos adatait, de lehetőség igényelni azokat a tárolóból igény szerint. Key vault lehetővé teszi a kulcsok és titkos kódok frissítése az alkalmazás, amely nyit meg, hogy a kulcs és titkos kódok kezelése szánt viselkedésének módosítása nélkül.
 
@@ -95,7 +95,7 @@ Először regisztrálnia kell az alkalmazást az Azure Active Directoryval. Ezut
 
     ![Nyissa meg az alkalmazások az Azure Active Directoryban](./media/keyvault-keyrotation/azure-ad-application.png)
 
-4. A **létrehozás**, hagyja meg az alkalmazás típusát, **webalkalmazás / API** és nevezze el az alkalmazást. Adja meg az alkalmazás egy **bejelentkezési URL-**. Az URL-címet a demóba bármit is lehet.
+4. A **létrehozás**, hagyja meg az alkalmazás típusát, **webalkalmazás / API** és nevezze el az alkalmazást. Adja meg az alkalmazás egy **bejelentkezési URL-** . Az URL-címet a demóba bármit is lehet.
 
     ![Hozzon létre az alkalmazás regisztrálása](./media/keyvault-keyrotation/create-app.png)
 

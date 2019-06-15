@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
 ms.openlocfilehash: 7e8043badbc0accd38ad618a7d455729ab6606b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60644335"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>SharePoint-farm biztonsági mentése az Azure-ba
@@ -46,7 +46,7 @@ Ha a SharePoint-farm konfigurált SQL Server-aliasokkal megadott SQL Server-adat
 Bár a teljesítmény számos tényezőtől, például a SharePoint-farm mérete attól függ, általános útmutatásként egy DPM-kiszolgáló is 25 TB SharePoint-farm védelméhez.
 
 ### <a name="dpm-update-rollup-5"></a>A DPM 5. kumulatív frissítése
-Az Azure-bA a SharePoint-farm védelmének megkezdéséhez telepíteni szeretné a DPM-kumulatív frissítés 5-ös vagy újabb. 5. kumulatív frissítése lehetővé teszi az Azure-bA a SharePoint-farm védelméhez, ha a farm SQL AlwaysOn használatára van konfigurálva.
+Az Azure-bA a SharePoint-farm védelmének megkezdéséhez telepíteni szeretné a DPM-kumulatív frissítés 5-ös vagy újabb. 5\. kumulatív frissítése lehetővé teszi az Azure-bA a SharePoint-farm védelméhez, ha a farm SQL AlwaysOn használatára van konfigurálva.
 További információkért lásd a következő blogbejegyzésben, amely bemutatja a post [DPM 5. kumulatív](https://blogs.technet.com/b/dpm/archive/2015/02/11/update-rollup-5-for-system-center-2012-r2-data-protection-manager-is-now-available.aspx)
 
 ### <a name="whats-not-supported"></a>Nem támogatott műveletek
@@ -139,7 +139,7 @@ Miután konfigurálta a DPM és a korábbiakban leírtak a SharePoint-farm, Shar
     ![Online_replica](./media/backup-azure-backup-sharepoint/online-replication.png)
 13. Tekintse át a beállításokat a a **összefoglalás** lapon, és kattintson a **csoport létrehozása**. A védelmi csoport létrehozása után látni fogja a sikert jelző üzenet.
 
-    ![Összegzés](./media/backup-azure-backup-sharepoint/summary.png)
+    ![Összefoglalás](./media/backup-azure-backup-sharepoint/summary.png)
 
 ## <a name="restore-a-sharepoint-item-from-disk-by-using-dpm"></a>Állítsa vissza a SharePoint-elem lemezről DPM használatával
 A következő példában a *helyreállítás SharePoint-elem* véletlenül törölve lett, és kell helyreállítani.

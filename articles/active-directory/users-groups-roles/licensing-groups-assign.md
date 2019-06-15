@@ -16,10 +16,10 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8a54d1ad3ab809f2a2f8df6ae0e30b1b061c2be1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60471332"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Licencek hozzárendelése a felhasználók által az Azure Active Directory biztonságicsoport-tagság
@@ -33,7 +33,7 @@ Ebben a példában a bérlő tartalmazza-e nevű biztonsági csoport **HR részl
 > 
 > A licenc-hozzárendelések bármely felhasználó felhasználás helyének megadása nélkül örökli a könyvtár helye. Ha több helyen felhasználóval rendelkezik, azt javasoljuk, hogy mindig állítsa a felhasználási hely része a felhasználói létrehozásának folyamatát, amely biztosítja a licenc-hozzárendelés eredménye (pl. keresztül az AAD Connect-konfiguráció) – Azure AD-ben mindig helyes, és a felhasználók nem kapnak szolgáltatások, a helyeken, amelyek nem engedélyezettek.
 
-## <a name="step-1-assign-the-required-licenses"></a>1. lépés: A szükséges licencek hozzárendelése
+## <a name="step-1-assign-the-required-licenses"></a>1\. lépés: A szükséges licencek hozzárendelése
 
 1. Jelentkezzen be a [ **Azure AD felügyeleti központ** ](https://aad.portal.azure.com) egy licenc rendszergazdai fiókkal. Licencek kezeléséhez, a fiók egy licencek adminisztrátora, a felhasználó rendszergazda vagy a globális rendszergazda kell lennie.
 
@@ -57,7 +57,7 @@ Ebben a példában a bérlő tartalmazza-e nevű biztonsági csoport **HR részl
 
 Ha licenceket hozzárendelni a csoporthoz, az Azure AD dolgozza fel az adott csoport összes meglévő tag. Ez a folyamat eltarthat egy ideig, az a csoport mérete változó. A következő lépés ismerteti győződjön meg arról, hogy a folyamat véget ért, és döntse el, ha további figyelmet a problémák megoldásához szükséges.
 
-## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>2. lépés: A hozzárendelés kezdeti befejeződésének ellenőrzése
+## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>2\. lépés: A hozzárendelés kezdeti befejeződésének ellenőrzése
 
 1. Lépjen a **az Azure Active Directory** > **csoportok**. Válassza ki a csoportot, amely a licencek lettek hozzárendelve.
 
@@ -79,7 +79,7 @@ Ha licenceket hozzárendelni a csoporthoz, az Azure AD dolgozza fel az adott cso
 
    [Ebben a szakaszban olvasható](licensing-group-advanced.md#use-audit-logs-to-monitor-group-based-licensing-activity) tudhat meg többet hogyan auditnaplók segítségével elemezheti a Csoportalapú licencelés által végrehajtott módosításokat.
 
-## <a name="step-3-check-for-license-problems-and-resolve-them"></a>3. lépés: Kapcsolatos problémák ellenőrzése és a megoldásukkal
+## <a name="step-3-check-for-license-problems-and-resolve-them"></a>3\. lépés: Kapcsolatos problémák ellenőrzése és a megoldásukkal
 
 1. Lépjen a **Azure Active Directory** > **csoportok**, és keresse meg a csoportot, amely a licencek lettek hozzárendelve.
 2. A csoport panelen válassza ki a **licencek**. Az értesítés a panel tetején látható, hogy 10 olyan felhasználót, hogy nem sikerült hozzárendelni a licencet. Nyissa meg a csoport licencelési hibás állapotú felhasználók listájának megtekintéséhez.

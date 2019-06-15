@@ -17,10 +17,10 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 087b52bd603e8aed6078ab340e84c1f6bd0e8082
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60748490"
 ---
 # <a name="create-a-vm-classic-with-multiple-nics-using-powershell"></a>PowerShell-lel több hálózati adapterrel rendelkező virtuális gép (klasszikus) létrehozása
@@ -49,7 +49,7 @@ A háttérbeli virtuális gépek létrehozása a következő erőforrások függ
 * **Storage-fiók adatlemezek**. A jobb teljesítmény érdekében az adatbázis-kiszolgálók a adatlemezét szemben – tartós állapotú meghajtót (SSD) technológiát, amely megköveteli a premium storage-fiók fogja használni. Győződjön meg arról, hogy telepíti központilag a prémium szintű tárolást támogató Azure-helyen.
 * **Rendelkezésre állási csoport**. Egyetlen rendelkezésre állási beállítása, biztosítása érdekében a virtuális gépek legalább egyikének működik, és karbantartási futtató összes adatbázis-kiszolgáló megjelenik.
 
-### <a name="step-1---start-your-script"></a>1. lépés – a parancsfájl futtatásához
+### <a name="step-1---start-your-script"></a>1\. lépés – a parancsfájl futtatásához
 Letöltheti a teljes PowerShell-parancsfájlt használja [Itt](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-ps.ps1). Módosítsa a parancsfájl futtatásához az alábbi lépésekkel.
 
 1. A meglévő erőforráscsoportot, a fent telepített alapján az alábbi változók értékeinek módosítása [Előfeltételek](#prerequisites).
@@ -74,7 +74,7 @@ Letöltheti a teljes PowerShell-parancsfájlt használja [Itt](https://raw.githu
     $numberOfVMs           = 2
     ```
 
-### <a name="step-2---create-necessary-resources-for-your-vms"></a>2. lépés – a virtuális gépek számára szükséges erőforrások létrehozása
+### <a name="step-2---create-necessary-resources-for-your-vms"></a>2\. lépés – a virtuális gépek számára szükséges erőforrások létrehozása
 Új felhőalapú szolgáltatás és a egy storage-fiókját az adatlemezeket az összes virtuális gép létrehozásához szükséges. Is kell egy képet, és a egy helyi rendszergazdai fiók megadása a virtuális gépek számára. Ezek az erőforrások létrehozásához hajtsa végre az alábbi lépéseket:
 
 1. Új felhőszolgáltatás hozható létre.
@@ -112,7 +112,7 @@ Letöltheti a teljes PowerShell-parancsfájlt használja [Itt](https://raw.githu
     $cred = Get-Credential -Message "Enter username and password for local admin account"
     ```
 
-### <a name="step-3---create-vms"></a>3. lépés – a virtuális gépek létrehozása
+### <a name="step-3---create-vms"></a>3\. lépés – a virtuális gépek létrehozása
 Szeretné használni egy hurkot hozhat létre, és a szükséges hálózati adapterek és virtuális gépek létrehozása a hurok belül tetszőleges számú virtuális gépeket. A hálózati adapterek és virtuális gépek létrehozásához hajtsa végre az alábbi lépéseket.
 
 1. Indítsa el a `for` hozhatnak létre egy virtuális Gépet és két hálózati adapterrel, ahányszor csak szükség esetén ismételje meg a hurok értéke alapján a `$numberOfVMs` változó.
@@ -181,7 +181,7 @@ Szeretné használni egy hurkot hozhat létre, és a szükséges hálózati adap
     }
     ```
 
-### <a name="step-4---run-the-script"></a>4. lépés: a parancsfájl futtatása
+### <a name="step-4---run-the-script"></a>4\. lépés: a parancsfájl futtatása
 Most, hogy a letöltött és módosított a szkriptet, szükség szerint, a parancsfájl runt, több hálózati adapterrel rendelkező virtuális gépek háttér-adatbázis létrehozása.
 
 1. Mentse a parancsfájlt, és futtathatja a **PowerShell** parancssort, vagy **PowerShell ISE-ben**. A kezdeti kimenetének, látni fogja, ahogy az alábbi.
@@ -197,7 +197,7 @@ Most, hogy a letöltött és módosított a szkriptet, szükség szerint, a para
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
 
-### <a name="step-5---configure-routing-within-the-vms-operating-system"></a>5. lépés – a virtuális gép operációs rendszerén belül útválasztás konfigurálása
+### <a name="step-5---configure-routing-within-the-vms-operating-system"></a>5\. lépés – a virtuális gép operációs rendszerén belül útválasztás konfigurálása
 
 Az Azure DHCP egy alapértelmezett átjáró a virtuális géphez csatolt első (elsődleges) hálózati adapterhez rendeli. Az Azure nem rendel hozzá alapértelmezett átjárót a virtuális géphez csatolt további (másodlagos) hálózati adapterekhez. Alapértelmezés szerint ezért nem lehetséges a kommunikáció olyan erőforrásokkal, amelyek a másodlagos hálózati adaptert tartalmazó alhálózaton kívül vannak. A másodlagos hálózati adapterek kommunikálhatnak az alhálózatukon kívül található erőforrásokkal. Konfigurálja az útválasztást a másodlagos hálózati adapterrel, tekintse meg a következő cikkeket:
 

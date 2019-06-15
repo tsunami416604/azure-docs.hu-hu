@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/20/2018
 ms.author: marayerm
 ms.openlocfilehash: aa42d6b898a3cc474575f6c8dae65ff420fc8e30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60457266"
 ---
 # <a name="storage-explorer-accessibility"></a>Storage Explorer – kisegítő lehetőségek
@@ -58,8 +58,8 @@ A téma beállítása a legtöbb felhasználói felületi elemek színének mód
 Parancs       | Billentyűparancs
 --------------|--------------------
 Új ablakban    | **Vezérlő + Shift + N**
-Szerkesztő bezárása  | **Control+F4**
-Kilépés          | **Vezérlő + Shift + W**
+Zárja be a szerkesztőt  | **Control+F4**
+Lépjen ki a          | **Vezérlő + Shift + W**
 
 ### <a name="navigation-commands"></a>Navigációs parancsok
 
@@ -67,7 +67,7 @@ Parancs                | Billentyűparancs
 -----------------------|----------------------
 Fókusz tovább Panel       | **F6**
 Fókusz előző Panel   | **Shift+F6**
-Intéző               | **Control+Shift+E**
+Explorer               | **Control+Shift+E**
 Fiókkezelés     | **Control+Shift+A**
 Váltógomb oldalsó sáv        | **Vezérlő + B**
 Tevékenységnapló           | **Control+Shift+L**
@@ -89,14 +89,14 @@ Parancs | Billentyűparancs
 --------|--------------------
 Vissza    | **Alt + Balra nyíl**
 Továbbítás | **Alt + Jobbra nyíl**
-Fel      | **ALT + fel nyíl**
+Felfelé      | **ALT + fel nyíl**
 
 ### <a name="editor-commands"></a>Editor parancsok
 
 Parancs | Billentyűparancs
 --------|------------------
 Másolás    | **Vezérlő + C**
-Kivágás     | **Control+X**
+Kivágása     | **Control+X**
 Beillesztés   | **Control+V**
 Frissítés  | **Vezérlő + R**
 
@@ -105,7 +105,7 @@ Frissítés  | **Vezérlő + R**
 Parancs                | Billentyűparancs
 -----------------------|------------------
 Váltógomb fejlesztői eszközök | **F12**
-Újratöltés                 | **Alt+Control+R**
+Töltse be újra                 | **Alt+Control+R**
 
 [0]: ./media/vs-azure-tools-storage-explorer-accessibility/Zoom.png
 [1]: ./media/vs-azure-tools-storage-explorer-accessibility/HighContrast.png

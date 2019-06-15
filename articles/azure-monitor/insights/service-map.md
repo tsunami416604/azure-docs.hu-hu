@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
 ms.openlocfilehash: 09755922da78a3e856c491c01ce9f34f50063d71
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606507"
 ---
 # <a name="using-service-map-solution-in-azure"></a>A Service Map megoldást használ az Azure-ban
@@ -45,7 +45,7 @@ A Service Map elérése a Log Analytics-munkaterület az Azure Portalon, és vá
 
 ## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Használati esetek: Győződjön meg arról, az informatikai folyamatok függőségi figyelembe
 
-### <a name="discovery"></a>Detektálás
+### <a name="discovery"></a>Felderítés
 A Service Map automatikusan felépít egy közös függőségek térképe referencia a kiszolgálók, folyamatok és a külső szolgáltatások. Felderíti és a térképek összes TCP függőséget, meglepő kapcsolatok, a távoli külső rendszerek függenek, és a hagyományos sötét területeihez, a hálózaton, például az Active Directory függőségek azonosításához. A Service Map felderíti a sikertelen hálózati kapcsolatokat, a felügyelt rendszerekről létesíteni, segítve a potenciális server Virtual Network szolgáltatás hibás, a szolgáltatás-kimaradás és a hálózati problémák azonosítását.
 
 ### <a name="incident-management"></a>incidenskezelés
@@ -160,10 +160,10 @@ Sikertelen kapcsolatok együtt jelennek meg a folyamatok és a számítógépek,
 
 Sikertelen kapcsolatok segítségére lehetnek a hibakeresésben, migrálásának ellenőrzése, biztonsági elemzés és a teljes architekturális ismertetése ismertetése. Sikertelen kapcsolatok néha érintetlen, de gyakran közvetlenül a problémát, például egy feladatátvételi környezetet hirtelen váljon nem érhető el, vagy éppen nem lehet felvenni a kapcsolatot a felhőbe történő migrálás után két alkalmazásrétegek mutassanak.
 
-## <a name="client-groups"></a>Ügyfélcsoportok
+## <a name="client-groups"></a>Ügyfélcsoport
 Ügyfél csoportjai mezőkbe a térképen, amelyek az ügyfélgépek, amelyek nem rendelkeznek a függőségi ügynököt. Egyetlen ügyfél csoport jelöli az ügyfelek egy egyedi folyamat vagy a gépen.
 
-![Ügyfélcsoportok](media/service-map/client-groups.png)
+![Ügyfélcsoport](media/service-map/client-groups.png)
 
 Tekintse meg a kiszolgálók egy ügyfélcsoportba tartozó IP-címét, válassza ki a csoportot. A csoport tartalmát szerepelnek a **ügyfél tulajdonságai** ablaktáblán.
 
@@ -255,7 +255,7 @@ Windows:
 
 Linux:
 - Processor(*)\\processzoridő
-- Memory(*)\\Foglalt Memória %
+- Memory(*)\\foglalt memória %
 - Hálózati Adapter(*)\\küldött bájtok/s
 - Hálózati Adapter(*)\\fogadott bájtok/mp
 
@@ -431,7 +431,7 @@ ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | proj
 ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>A parancssorban keresse meg az "sql" összes folyamat
-ServiceMapProcess_CL |} ahol CommandLine_s contains_cs "sql" |} összegzés arg_max(TimeGenerated, *) erőforrás-Azonosító szerint
+ServiceMapProcess_CL |} ahol CommandLine_s contains_cs "sql" |} Összegzés arg_max(TimeGenerated, *) erőforrás-azonosító szerint
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Keresse meg a gép (legutóbbi rekord) erőforrás szerint
 search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId

@@ -9,10 +9,10 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
 ms.openlocfilehash: db7cc556525ab57f14984232bf1797764865fca3
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606255"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Az Azure Cosmos DB Table .NET API: Töltse le és kibocsátási megjegyzések
@@ -79,20 +79,20 @@ A Microsoft biztosít értesítési legalább **12 hónapig** kivonása egy SDK-
 
 A `Microsoft.Azure.CosmosDB.Table` függvénytár jelenleg elérhető .NET-keretrendszer csak, és a karbantartási módban van, és hamarosan elavulttá válik. Új szolgáltatások és funkciók és optimalizálási lehetőségek csak hozzáadódnak a .NET Standard kódtár [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table), mert az ilyen frissítése a javasolt [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table).
 
-A [WindowsAzure.Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) előzetes csomag elavult. 2018. November 15. a WindowsAzure.Storage-PremiumTable SDK-t kivezetjük, mely arra kéri, a kivont SDK nem fog tudni. 
+A [WindowsAzure.Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) előzetes csomag elavult. 2018\. November 15. a WindowsAzure.Storage-PremiumTable SDK-t kivezetjük, mely arra kéri, a kivont SDK nem fog tudni. 
 
 Az Azure Cosmos DB egy kivont SDK használatával bármilyen kérelmeket a szolgáltatás által a rendszer elutasítja.
 <br/>
 
 | Version | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
-| [2.1.0](#2.1.0) |2019. január 22.|2020. április 01. |
-| [2.0.0](#2.0.0) |2018. szeptember 26.|2020. március 01. |
-| [1.1.3](#1.1.3) |2018. július 17.|2019. december 01. |
-| [1.1.1](#1.1.1) |2018. március 26.|2019. december 01. |
-| [1.1.0](#1.1.0) |2018. február 21.|2019. december 01. |
-| [1.0.0](#1.0.0) |2017. november 15.|2019. november 15. |
-| 0.9.0-Preview |2017. november 11. |2019. november 11. |
+| [2.1.0](#2.1.0) |2019\. január 22.|2020\. április 01. |
+| [2.0.0](#2.0.0) |2018\. szeptember 26.|2020\. március 01. |
+| [1.1.3](#1.1.3) |2018\. július 17.|2019\. december 01. |
+| [1.1.1](#1.1.1) |2018\. március 26.|2019\. december 01. |
+| [1.1.0](#1.1.0) |2018\. február 21.|2019\. december 01. |
+| [1.0.0](#1.0.0) |2017\. november 15.|2019\. november 15. |
+| 0.9.0-Preview |2017\. november 11. |2019\. november 11. |
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -114,7 +114,7 @@ használja a Microsoft.Azure.CosmosDB.Table NuGet-csomagot próbál, ha a probl�
     
 * Az előnyben részesített NuGet Csomagkezelő eszközt használja, telepítse a Microsoft.Azure.Storage.Common NuGet-csomag Microsoft.Azure.CosmosDB.Table telepítése előtt.
 
-## <a name="faq"></a>gyakori kérdésekben
+## <a name="faq"></a>GYIK
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

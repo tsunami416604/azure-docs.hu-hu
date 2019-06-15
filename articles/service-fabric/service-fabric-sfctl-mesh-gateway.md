@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: 27cfe380e5988f17ca79c430cde7defc7f7bc440
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60839079"
 ---
 # <a name="sfctl-mesh-gateway"></a>sfctl mesh átjárója
@@ -29,7 +29,7 @@ GET és delete háló az átjáró-erőforrásokat.
 |Parancs|Leírás|
 | --- | --- |
 | delete | Az átjáró-erőforrás törlése. |
-| lista | Az átjáró-erőforrásokat sorolja fel. |
+| list | Az átjáró-erőforrásokat sorolja fel. |
 | Show | Lekérdezi a megadott nevű Gateway-erőforráshoz. |
 
 ## <a name="sfctl-mesh-gateway-delete"></a>sfctl-háló átjáró törlése

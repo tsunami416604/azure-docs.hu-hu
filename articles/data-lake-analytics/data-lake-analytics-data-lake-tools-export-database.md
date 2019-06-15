@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.openlocfilehash: fe28aa8b88f557d4bbcdabf1de1c4bc6491743ce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60628540"
 ---
 # <a name="export-a-u-sql-database"></a>U-SQL-adatbázis exportálása
@@ -26,7 +26,7 @@ Fejlesztésekor és fejlesztési-tesztelési környezetet az U-SQL-lekérdezése
 
 ## <a name="export-steps"></a>Az exportálási lépéseket
 
-### <a name="step-1-export-the-database-in-server-explorer"></a>1. lépés: A Server Explorerben adatbázis exportálása
+### <a name="step-1-export-the-database-in-server-explorer"></a>1\. lépés: A Server Explorerben adatbázis exportálása
 
 Minden Data Lake Analytics-fiók, amely rendelkezik engedélyekkel a Server Explorer szerepelnek. Az adatbázis exportálása:
 
@@ -37,7 +37,7 @@ Minden Data Lake Analytics-fiók, amely rendelkezik engedélyekkel a Server Expl
 
      Ha a **exportálása** menüpont nem érhető el, újra kell [frissítse az eszközt a legfrissebb kiadás](https://aka.ms/adltoolsvs).
 
-### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>2. lépés: Az exportálandó objektumok konfigurálása
+### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>2\. lépés: Az exportálandó objektumok konfigurálása
 
 Ha nagy méretű adatbázisok csak kis részét kell, konfigurálhatja úgy, hogy az exportálási varázslóban exportálandó objektumok egy részét. 
 
@@ -45,7 +45,7 @@ Az exportálási művelet befejeződött, egy U-SQL-feladat futtatásával. Ezé
 
 ![Adatbázis exportálása varázsló – objektumok exportálása kiválasztása](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard.png)
 
-### <a name="step-3-check-the-objects-list-and-other-configurations"></a>3. lépés: Ellenőrizze az objektumok és más konfigurációk
+### <a name="step-3-check-the-objects-list-and-other-configurations"></a>3\. lépés: Ellenőrizze az objektumok és más konfigurációk
 
 Ebben a lépésben ellenőrizheti a kiválasztott objektumok a **exportálási objektumlistához** mezőbe. Ha nincsenek hibák, válassza ki a **előző** visszaléphet, és megfelelően konfigurálja az exportálandó objektumokat.
 
@@ -61,7 +61,7 @@ Az Exportálás cél egyéb beállításai is konfigurálhatók. Konfiguráció 
 
 ![Adatbázis exportálása varázsló – objektumok lista exportálása és egyéb konfigurációk](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard-configuration.png)
 
-### <a name="step-4-check-the-export-results"></a>4. lépés: Az exportálási eredmények ellenőrzése
+### <a name="step-4-check-the-export-results"></a>4\. lépés: Az exportálási eredmények ellenőrzése
 
 Ha exportálása befejeződött, megtekintheti az exportált eredmények a napló ablak a varázslóban. Az alábbi példa bemutatja, hogyan találhatja meg az exportált U-SQL parancsfájl és adatbázis-erőforrásokat, szerelvényeket, további fájlok és a mintaadatok többek között:
 

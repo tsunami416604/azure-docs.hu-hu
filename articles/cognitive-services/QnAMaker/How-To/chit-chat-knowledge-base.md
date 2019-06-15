@@ -12,10 +12,10 @@ ms.date: 05/10/2019
 ms.author: tulasim
 ms.custom: seodec18
 ms.openlocfilehash: 5d410e1015b751743c171adabda1d5bcbe68b491
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540998"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Csevegési Chit Tudásbázis hozzáadása
@@ -31,7 +31,7 @@ A felhasználó lekérdezése `When is your birthday?`, minden egyes személy re
 <!-- added quotes so acrolinx doesn't score these sentences -->
 |Személy|Példa|
 |--|--|
-|Professzionális|Kor valóban nekem nem vonatkozik.|
+|Professional|Kor valóban nekem nem vonatkozik.|
 |Rövid|Nem igazán rendelkezem-kor.|
 |Okos|Én vagyok kora ingyenes.|
 |Ápolásáért|Nem rendelkezem-kor.|

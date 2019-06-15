@@ -11,10 +11,10 @@ ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.topic: article
 ms.date: 11/14/2018
 ms.openlocfilehash: a413261d251c8dfc1de9209168ee8137b85009f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60531825"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Az Azure Scheduler-feladatok az ismétlődések és a speciális ütemezések létrehozása
@@ -63,7 +63,7 @@ Az alapszintű ütemezés létrehozása a [Azure Scheduler REST API](/rest/api/s
 
 Ez a táblázat magas szintű áttekintést nyújt a fő JSON-elemek ismétlődések és a feladatok ütemezésének beállításakor használható. 
 
-| Elem | Szükséges | Leírás | 
+| Elem | Kötelező | Leírás | 
 |---------|----------|-------------|
 | **startTime** | Nem | A dátum/idő karakterlánc-érték [ISO 8601 formátumú](https://en.wikipedia.org/wiki/ISO_8601) , amely meghatározza a feladat első indításakor az alapszintű ütemezés szerint. <p>Komplex ütemezések a feladat nem indul korábban, mint **startTime**. | 
 | **recurrence** | Nem | A feladat futtatásakor tartozó ismétlődési szabályokat. A **ismétlődési** objektum támogatja ezeket az elemeket: **gyakorisága**, **időköz**, **ütemezés**, **száma**, és **endTime**. <p>Ha használja a **ismétlődési** elemben is használnia kell a **gyakorisága** elem, míg más **ismétlődési** elemek egyike sem kötelező. |

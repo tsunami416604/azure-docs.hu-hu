@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
 ms.openlocfilehash: 78edeb0c418f5c426771d241464d389f8a632e96
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65463999"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Exportálhatja az adatokat az Azure IoT Central
@@ -36,7 +36,7 @@ Ha nem rendelkezik egy meglévő Event Hubs és a Service Bus exportálása, kö
 ## <a name="create-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
 
 1. Hozzon létre egy [új Event Hubs-névtér az Azure Portalon](https://ms.portal.azure.com/#create/Microsoft.EventHub). További a [Azure Event Hubs docs](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
-2. Válasszon előfizetést. 
+2. Válasszon egy előfizetést. 
 
     > [!Note] 
     > Most már exportálhatja az adatokat más előfizetésekre, amelyek **nem azonos** azzal, az utólagos elszámolású IoT Central alkalmazáshoz. Ebben az esetben a kapcsolati karakterlánc használatával csatlakozik.
@@ -45,7 +45,7 @@ Ha nem rendelkezik egy meglévő Event Hubs és a Service Bus exportálása, kö
 ## <a name="create-service-bus-namespace"></a>A Service Bus-névtér létrehozása
 
 1. Hozzon létre egy [új Service Bus-névteret, az Azure Portalon](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5) . További a [Azure Service Bus docs](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal).
-2. Válasszon előfizetést. 
+2. Válasszon egy előfizetést. 
 
     > [!Note] 
     > Most már exportálhatja az adatokat más előfizetésekre, amelyek **nem azonos** azzal, az utólagos elszámolású IoT Central alkalmazáshoz. Ebben az esetben a kapcsolati karakterlánc használatával csatlakozik.

@@ -15,10 +15,10 @@ ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
 ms.openlocfilehash: ef695d913c73f0a4266b20f21f1008108b85b4d0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60734206"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Egy DRM-mel a content protection rendszert a hozzáférés-vezérléssel 
@@ -329,7 +329,7 @@ Regisztrálta és konfigurálta az egérmutatót alkalmazást az Azure ad-ben, a
 
 3. Az alkalmazás-jegyzékfájl frissítése, így groupMembershipClaims tulajdonság értéke "groupMembershipClaims": "All".
 
-4. Az Azure AD-alkalmazás, amely a lejátszó web app, a szakaszban szereplő **egyéb alkalmazások engedélyei**, adja hozzá az erőforrás-alkalmazás, amely az 1. lépésben lett hozzáadva. A **delegált engedély**válassza **hozzáférés [resource_name]**. Ez a beállítás hozzáférést biztosít a webes alkalmazás létrehozásához szükséges engedéllyel hozzáférési jogkivonatok, amelyek az erőforrás-alkalmazás elérésére. Erre a webalkalmazás helyi és a telepített verziójához, ha a Visual Studio és az Azure-webalkalmazás fejlesztése.
+4. Az Azure AD-alkalmazás, amely a lejátszó web app, a szakaszban szereplő **egyéb alkalmazások engedélyei**, adja hozzá az erőforrás-alkalmazás, amely az 1. lépésben lett hozzáadva. A **delegált engedély**válassza **hozzáférés [resource_name]** . Ez a beállítás hozzáférést biztosít a webes alkalmazás létrehozásához szükséges engedéllyel hozzáférési jogkivonatok, amelyek az erőforrás-alkalmazás elérésére. Erre a webalkalmazás helyi és a telepített verziójához, ha a Visual Studio és az Azure-webalkalmazás fejlesztése.
 
 Az Azure AD által kiállított JWT az egérmutató erőforrás eléréséhez használt jogkivonat.
 

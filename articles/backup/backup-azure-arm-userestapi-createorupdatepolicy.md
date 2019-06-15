@@ -11,10 +11,10 @@ ms.date: 08/21/2018
 ms.author: pullabhk
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
 ms.openlocfilehash: 657a777da0e984a145c1c617a6194bf4ef56306e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60648805"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Hozzon létre az Azure Recovery Services biztonsági mentési szabályzatok REST API használatával
@@ -50,10 +50,10 @@ A `{policyName}` és `{vaultName}` szerepelnek az URI-t. További információ a
 
 Például az Azure virtuális gépek biztonsági mentését a szabályzat létrehozásához a következők a kérelem törzsében összetevői.
 
-|Name (Név)  |Szükséges  |Típus  |Leírás  |
+|Name (Név)  |Kötelező  |Típus  |Leírás  |
 |---------|---------|---------|---------|
 |properties     |   True (Igaz)      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource tulajdonságai        |
-|tags     |         | Object        |  Erőforráscímkék       |
+|címkék     |         | Object        |  Erőforráscímkék       |
 
 A kérelem törzsében szereplő definíciók teljes listájáért tekintse meg a [biztonsági mentési szabályzat REST API-dokumentumban](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate).
 
@@ -152,7 +152,7 @@ A szabályzat szerint:
 > [!IMPORTANT]
 > Az ütemezési és megőrzési időformátumok csak DateTime támogatja. Önálló időformátum nem támogatják.
 
-## <a name="responses"></a>Válaszok
+## <a name="responses"></a>Responses
 
 A biztonsági mentési szabályzat létrehozása és frissítése az egy [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy a művelet létrehoz egy másik művelet, külön-külön nyomon kell követni.
 

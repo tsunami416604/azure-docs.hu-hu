@@ -15,10 +15,10 @@ ms.author: rolyon
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1755d627473b0ae47bbc4bc74a3f0d2210e5372b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60440613"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Az Azure AD Privileged Identity Management (PIM) üzembe helyezése
@@ -32,7 +32,7 @@ Ez az útmutató lépésről lépésre ismerteti, megtervezheti az üzembe helye
 > 
 > Általános javaslatok, és ha azok a alkalmazni az adott nagyvállalati igényeknek csak akkor kell megvalósítania.
 
-## <a name="step-1-learn-about-pim"></a>1. lépés További tudnivalók a PIM
+## <a name="step-1-learn-about-pim"></a>1\.lépés További tudnivalók a PIM
 
 Az Azure AD Privileged Identity Management (PIM) segít a kiemelt jogosultságú rendszergazdai szerepkörök kezelése az Azure ad-ben, Azure-erőforrások és más Microsoft Online Services. Egy olyan világban, ahol az emelt szintű identitások társítva, vagy elfelejti a PIM biztosít megoldások, például igény szerinti elérése, a kérelem-jóváhagyási munkafolyamatokat és a teljes körűen integrált hozzáférési felülvizsgálatok így azonosíthatja, tárhat fel, és az emelt szintű rosszindulatú tevékenységek megakadályozása szerepkörök valós időben. A szervezeten belül a kiemelt szerepkörök kezelése a PIM telepítése azonban nagymértékben csökkenti a kockázatokat közben felszínre hozza a kiemelt szerepkörök tevékenységeit kapcsolatos értékes információkat.
 
@@ -85,7 +85,7 @@ További információkért lásd: [Mi az Azure AD Privileged Identity Management
 
 További információkért lásd: [szerepkörök nem kezelheti a PIM](pim-roles.md).
 
-## <a name="step-2-plan-your-deployment"></a>2. lépés Az üzembe helyezés megtervezése
+## <a name="step-2-plan-your-deployment"></a>2\.lépés Az üzembe helyezés megtervezése
 
 Ez a szakasz tárgyalja, hogy mit kell tennie a szervezet a PIM telepítése előtt. Ez elengedhetetlen, kövesse az utasításokat, és azok végigvezeti Önt a szabott emelt szintű identitások a szervezet igényeinek leginkább megfelelő csomagot létrehozni ebben a szakaszban a fogalmak értelmezését.
 
@@ -149,11 +149,11 @@ Kövesse az alábbi lépéseket az Azure AD-szerepkörökhöz tartozó minimáli
 
 1. Minden más Azure AD-szerepkörök tekintse át a hozzárendelések listáját, azonosíthatja a rendszergazdák, akik már nem szükséges a szerepkör, és azokat eltávolítsa a hozzárendeléseket.
 
-3. és 4 automatizálását, a hozzáférési felülvizsgálat függvény PIM belül használhat. Leírt lépések végrehajtásával [az Azure AD-szerepkörök hozzáférési felülvizsgálat indítása a PIM](pim-how-to-start-security-review.md), beállíthatja a hozzáférési felülvizsgálat minden Azure AD-szerepkörhöz, amely egy vagy több tagja van.
+3\. és 4 automatizálását, a hozzáférési felülvizsgálat függvény PIM belül használhat. Leírt lépések végrehajtásával [az Azure AD-szerepkörök hozzáférési felülvizsgálat indítása a PIM](pim-how-to-start-security-review.md), beállíthatja a hozzáférési felülvizsgálat minden Azure AD-szerepkörhöz, amely egy vagy több tagja van.
 
 ![Hozzáférési felülvizsgálat létrehozása](./media/pim-deployment-plan/create-access-review.png)
 
-A felülvizsgálatot állítsa be **tagok (saját)**. Ez küld egy e-mailt el a szerepkör tagjai az összes használhassa őket, ellenőrizze, hogy szükségük van-e a hozzáférést. Emellett kapcsolja **a jóváhagyás oka szükséges** speciális beállításai között szereplő, hogy a felhasználók is állapot miért szükséges a szerepkör. Ezen információ alapján lesz távolítsa el a felhasználókat a szükségtelen szerepkörök, és a globális rendszergazdák esetén a részletes rendszergazdai szerepkörök delegálása.
+A felülvizsgálatot állítsa be **tagok (saját)** . Ez küld egy e-mailt el a szerepkör tagjai az összes használhassa őket, ellenőrizze, hogy szükségük van-e a hozzáférést. Emellett kapcsolja **a jóváhagyás oka szükséges** speciális beállításai között szereplő, hogy a felhasználók is állapot miért szükséges a szerepkör. Ezen információ alapján lesz távolítsa el a felhasználókat a szükségtelen szerepkörök, és a globális rendszergazdák esetén a részletes rendszergazdai szerepkörök delegálása.
 
 A hozzáférési felülvizsgálatok az e-mailek értesítendő személyeket és az azok a szerepkörök hozzáférés felülvizsgálata támaszkodnak. Ha a privilegizált fiókok, amelyek nem rendelkeznek társított e-mailek, ügyeljen arra, töltse fel azokat a másodlagos e-mail mező. További információkért lásd: [az Azure AD proxyAddresses attribútum](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
 
@@ -186,7 +186,7 @@ Fontos rangsorolására védelme az Azure AD-szerepkörök, amelyek a legtöbb e
 1. Biztonsági olvasó
 1. Szolgáltatás-rendszergazda
 1. Számlázási rendszergazda
-1. Skype Vállalati verzió rendszergazdája
+1. Skype vállalati rendszergazda
 
 > [!TIP]
 > :heavy_check_mark: **A Microsoft javasolja** kezelhetők a globális rendszergazdák és a PIM használatával az első lépés, azok, amelyekre a teheti meg, a legtöbb kárt Ha sérül a biztonsági rendszergazdák.
@@ -252,7 +252,7 @@ A PIM-megoldások megvalósításának előtt tanácsos a PIM beállításokat a
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Kritikus fontosságú előfizetéseket tulajdonosa | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Az előfizetés további tulajdonosok folyamatokhoz | 1 óra | None | n/a | 3 hónap |
 | Felhasználói hozzáférés rendszergazdája kevésbé fontos előfizetések | :heavy_check_mark: | :heavy_check_mark: | :x: | None | 1 óra | None | n/a | 3 hónap |
-| Virtuális gépek közreműködője | :x: | :heavy_check_mark: | :x: | None | 3 óra | None | n/a | 6 hónapra |
+| Virtuális gépek Közreműködője | :x: | :heavy_check_mark: | :x: | None | 3 óra | None | n/a | 6 hónapra |
 
 A következő táblázat ismerteti az egyes beállításoknak.
 
@@ -270,7 +270,7 @@ A következő táblázat ismerteti az egyes beállításoknak.
 | Aktív lejárata | Aktív szerepkör-hozzárendeléssel, az Azure-erőforrások szerepköreihez tartozó ez időszak konfigurálása után lejár. 15 nap, 1 hónap, a 3 hónapos, 6 havi, 1 év közül választhat, vagy állandóan aktív. |
 | Jogosult lejárata | Egy jogosult szerepkör-hozzárendelés az Azure-erőforrások szerepköreihez tartozó ez időszak konfigurálása után lejár. 15 nap, 1 hónap, a 3 hónapos, 6 havi, 1 év közül választhat, vagy állandó jogosultság. |
 
-## <a name="step-3-implement-your-solution"></a>3. lépés A megoldás megvalósítása
+## <a name="step-3-implement-your-solution"></a>3\. lépés. A megoldás megvalósítása
 
 Alapját a megfelelő tervezést, amelyen üzembe helyezése sikeresen megtörtént az Azure Active Directory-alkalmazás alapja.  Intelligent security és az integráció, amely leegyszerűsíti előkészítés sikeres telepítések az idő csökkentése mellett biztosít.  Ez a kombináció biztosítja, hogy az alkalmazás integrálva van a könnyű ugyanakkor állásidő a végfelhasználók számára.
 
@@ -340,7 +340,7 @@ A PIM telepítése a felhasználók számára a kiemelt szerepkörök további l
 > [!TIP]
 > :heavy_check_mark: **A Microsoft javasolja** , hogy állítsa be a segélyszolgálat-támogatás csapattal időt megtudhatja, hogyan azokat a PIM munkafolyamat (Ha a szervezete egy belső IT-támogatási csapat). Adja meg azokat a megfelelő dokumentáció, valamint a kapcsolattartási adatokat.
 
-### <a name="move-to-production"></a>Helyezze át az éles környezetbe
+### <a name="move-to-production"></a>Átállás éles üzemre
 
 Ha a tesztelés nem sikeres, és a teljes PIM átállni éles üzemre újraindításához ismételje meg a lépéseket a tesztelési fázisban az egyes szerepkörök a PIM konfigurációjában meghatározott összes felhasználója számára. A PIM szolgáltatásra az Azure AD-szerepkörök a szervezetek gyakran tesztelése, és megkezdik a PIM azon globális rendszergazdák teszteléshez és egyéb szerepköröket a PIM bevezetéséről előtt. Mindeközben Azure-beli erőforráshoz, szervezetek általában tesztelése, és megkezdik a PIM egyszerre csak egy Azure-előfizetéssel.
 
@@ -353,7 +353,7 @@ Nem sikerült a PIM igény szerint az éles környezetben működik, ha a vissza
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. Nyissa meg **az Azure AD Privileged Identity Management**.
 1. Kattintson a **Azure AD-szerepkörök** majd **szerepkörök**.
-1. Az egyes szerepkörökhöz konfigurált, kattintson a három pont (**...** ) egy jogosult hozzárendelés az összes felhasználó számára.
+1. Az egyes szerepkörökhöz konfigurált, kattintson a három pont ( **...** ) egy jogosult hozzárendelés az összes felhasználó számára.
 1. Kattintson a **állandóvá** lehetőséget a szerepkör-hozzárendelés véglegesítéséhez.
 
 #### <a name="azure-resource-roles"></a>Azure-erőforrásszerepkörök
@@ -362,10 +362,10 @@ Nem sikerült a PIM igény szerint az éles környezetben működik, ha a vissza
 1. Nyissa meg **az Azure AD Privileged Identity Management**.
 1. Kattintson a **Azure-erőforrások** és kattintson egy előfizetést, vagy szeretné visszaállítani kívánt erőforrást.
 1. Kattintson a **szerepkörök**.
-1. Az egyes szerepkörökhöz konfigurált, kattintson a három pont (**...** ) egy jogosult hozzárendelés az összes felhasználó számára.
+1. Az egyes szerepkörökhöz konfigurált, kattintson a három pont ( **...** ) egy jogosult hozzárendelés az összes felhasználó számára.
 1. Kattintson a **állandóvá** lehetőséget a szerepkör-hozzárendelés véglegesítéséhez.
 
-## <a name="step-4-next-steps-after-deploying-pim"></a>4. lépés A PIM telepítése után a következő lépések
+## <a name="step-4-next-steps-after-deploying-pim"></a>4\. lépés. A PIM telepítése után a következő lépések
 
 Sikeresen üzembe helyezése a PIM éles környezetben egy jelentős lépés a szervezet védelme tekintetében a rendszerjogosultságú identitásokat. A PIM telepítésének származik, amelyet használnia kell a biztonsági és megfelelőségi további PIM-funkciók.
 

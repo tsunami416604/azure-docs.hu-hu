@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: f98cdcab2d108f8dd9d40e3770498ad17b2a8a88
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65799615"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-website"></a>A Video Indexer webhelyet nyelvi modell testreszabása
@@ -144,7 +144,7 @@ A video Indexer nyelvi modelleket, a tényleges javításokat felhasználók ala
 
    Keresse meg a ", átirat módosításokat" fájlban az egyes nyelvi modelljeit, kattintson rá a megnyitásához. 
 
-    ![Átiratmódosításokból származó](./media/customize-language-model/from-transcript-edits.png)
+    ![Szerkessze a szövegben](./media/customize-language-model/from-transcript-edits.png)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 33becd46747f957cce67fb7b2ace170a9aa402ff
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606934"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Műszaki specifikációkról és a StorSimple-eszköz megfelelőségének
@@ -42,7 +42,7 @@ Az EBOD ház egy 580 W PCM, és elsődleges ház egy 764 W PCM használja. Az al
 | Energiagazdálkodási tényező javítása |> 95 %-os névleges bemeneti feszültség |> 95 %-os névleges bemeneti feszültség |
 | Harmonikus |Megfelel-e EN61000-3-2 |Megfelel-e EN61000-3-2 |
 | Kimenet |5 voltos készenléti feszültség \@ 2.0 A |5 voltos készenléti feszültség \@ 2.7 A |
-| + 5 VOLTOS \@ 42 A |+ 5 VOLTOS \@ 40 A | |
+| \+ 5 VOLTOS \@ 42 A |\+ 5 VOLTOS \@ 40 A | |
 | +12V \@ 38 A |+12V \@ 38 A | |
 | A gyakran moduláris |Igen |Igen |
 | Kapcsolók és LED-EK |AC be-/ kikapcsolási kapcsoló és a négy állapotát jelző LED-EK |AC be-/ kikapcsolási kapcsoló és a hat állapotát jelző LED-EK |
@@ -104,7 +104,7 @@ Az alábbi táblázat a ház milliméterben és hüvelyk méretét.
 
 A konfigurációtól függően egy teljesen betöltött elsődleges ház is 33 kgs a 21 mérjük, és Felkészült rá két személyek igényli.
 
-| Rendszerház | Súlyozás |
+| Rendszerház | Tömeg |
 | --- | --- |
 | Maximális súly (konfigurációjától függ) |30 kg – 33 kg |
 | Üres (nincs felszerelt meghajtók) |21 – 23 kg |
@@ -117,7 +117,7 @@ Ez a szakasz felsorolja a ház környezettel kapcsolatos előírásoknak. A hőm
 
 | Rendszerház | Környezeti hőmérséklet-tartomány | Környezeti relatív páratartalom | Maximális nedves tartályának |
 | --- | --- | --- | --- |
-| Működik |5 C – 35 C (41° F - 95° F) |80 %-os 20 %-os nem-kondenzációs- |28°C (82°F) |
+| Működési |5 C – 35 C (41° F - 95° F) |80 %-os 20 %-os nem-kondenzációs- |28°C (82°F) |
 | Nem működő |-40 C - 70° C (40° F - 158° F) |5% - 100% non-condensing |29°C (84°F) |
 
 ### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Légmozgás, tengerszint, megváltani, rezgés, tájolást, biztonsági és EMC

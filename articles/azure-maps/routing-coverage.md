@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 0991a0df8d34ddbcebf3d4097c0219b47793120b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65779937"
 ---
 # <a name="azure-maps-routing-coverage"></a>Az Azure Maps útválasztási lefedettség
@@ -95,10 +95,10 @@ Az alábbi táblázatban az Azure Maps útválasztási lefedettség adatait.
 | Kolumbia                       |        ✓       |         ✓            |             |
 | Costa Rica                     |        ✓       |                      |             |
 | Kuba                           |        ✓       |                      |             |
-| Dominika                       |        ✓       |                      |             |
+| Dominikai Közösség                       |        ✓       |                      |             |
 | Dominikai Köztársaság             |        ✓       |                      |             |
 | Ecuador                        |        ✓       |                      |             |
-| El Salvador                    |        ✓       |                      |             |
+| Salvador                    |        ✓       |                      |             |
 | Francia Guyana                  |        ✓       |                      |             |
 | Grenada                        |        ✓       |                      |             |
 | Guatemala                      |        ✓       |                      |             |
@@ -112,15 +112,15 @@ Az alábbi táblázatban az Azure Maps útválasztási lefedettség adatait.
 | Paraguay                       |        ✓       |                      |             |
 | Peru                           |        ✓       |         ✓            |             |
 | Saint Kitts és Nevis            |        ✓       |                      |             |
-| Saint Lucia                      |        ✓       |                      |             |
+| St. Lucia                      |        ✓       |                      |             |
 | Saint Vincent és Grenadine-szigetek       |        ✓       |                      |             |
 | Suriname                       |        ✓       |                      |             |
 | Trinidad és Tobago              |        ✓       |                      |             |
 | Egyesült Államok                  |        ✓       |         ✓            |     ✓      | 
-| + Amerikai Szamoa                |        ✓       |                      |             |
-| + Észak-Mariana-szigetek      |        ✓       |                      |             |
+| \+ Amerikai Szamoa                |        ✓       |                      |             |
+| \+ Észak-Mariana-szigetek      |        ✓       |                      |             |
 | +Puerto Rico                   |        ✓       |                      |             |
-| + EGYESÜLT ÁLLAMOK Virgin-szigetek           |        ✓       |                      |             |
+| \+ EGYESÜLT ÁLLAMOK Virgin-szigetek           |        ✓       |                      |             |
 | Uruguay                        |        ✓       |         ✓            |     ✓      | 
 | Venezuela                      |        ✓       |                      |             |
 
@@ -130,7 +130,7 @@ Az alábbi táblázatban az Azure Maps útválasztási lefedettség adatait.
 | Ország/régió                 | Útválasztás         | Forgalom-Útválasztás | Teherautó Útválasztás |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Ausztrália                      |        ✓       |         ✓            |     ✓       |
-| + Karácsony-sziget              |        ✓       |                      |             |
+| \+ Karácsony-sziget              |        ✓       |                      |             |
 | Brunei                         |        ✓       |         ✓            |             |
 | Kambodzsa                       |        ✓       |                      |             |
 | Fidzsi                           |        ✓       |                      |             |
@@ -139,7 +139,7 @@ Az alábbi táblázatban az Azure Maps útválasztási lefedettség adatait.
 | India                          |        ✓       |         ✓            |             |
 | Indonézia                      |        ✓       |         ✓            |             |
 | Korea                          |        Ø       |                      |             |
-| Laosz                           |        ✓       |                      |             |
+| Laoszi                           |        ✓       |                      |             |
 | Makaó (KKT)                      |        ✓       |         ✓            |             |
 | Malajzia                       |        ✓       |         ✓            |             |
 | Mianmar                        |        ✓       |                      |             |
@@ -165,17 +165,17 @@ Az alábbi táblázatban az Azure Maps útválasztási lefedettség adatait.
 | Bulgária                       |        ✓       |         ✓            |     ✓      | 
 | Horvátország                        |        ✓       |         ✓            |     ✓      |
 | Ciprus                         |        ✓       |                      |             |
-| Csehország                 |        ✓       |         ✓            |     ✓      |
+| Cseh Köztársaság                 |        ✓       |         ✓            |     ✓      |
 | Dánia                        |        ✓       |         ✓            |     ✓      |
-| + Feröer-szigetek                 |        ✓       |                      |             |
+| \+ Feröer-szigetek                 |        ✓       |                      |             |
 | Észtország                        |        ✓       |         ✓            |     ✓      |
 | Finnország                        |        ✓       |         ✓            |     ✓      |
 | Franciaország                         |        ✓       |         ✓            |     ✓      | 
 | +Guadeloupe                    |        ✓       |                      |             |
-| + Martinique                    |        ✓       |                      |             |
-| + Saint Barthélemy                |        ✓       |                      |             |
+| \+ Martinique                    |        ✓       |                      |             |
+| \+ Saint Barthélemy                |        ✓       |                      |             |
 | +St. Martin                    |        ✓       |                      |             |
-| + Saint Pierre és Miquelon         |        ✓       |                      |             |
+| \+ Saint Pierre és Miquelon         |        ✓       |                      |             |
 | Grúzia                        |        ✓       |                      |             |
 | Németország                        |        ✓       |         ✓            |     ✓      | 
 | Görögország                         |        ✓       |         ✓            |     ✓      |  
@@ -196,7 +196,7 @@ Az alábbi táblázatban az Azure Maps útválasztási lefedettség adatait.
 | Montenegró                     |        ✓       |                      |     ✓      | 
 | Hollandia                    |        ✓       |         ✓            |     ✓      | 
 | +Aruba                         |        ✓       |                      |             | 
-| + Hollandia Karib-szigetek         |        ✓       |                      |             |
+| \+ Hollandia Karib-szigetek         |        ✓       |                      |             |
 | +Curaçao                       |        ✓       |                      |             |
 | +Sint Maarten                  |        ✓       |                      |             |
 | Norvégia                         |        ✓       |         ✓            |     ✓      | 
@@ -217,11 +217,11 @@ Az alábbi táblázatban az Azure Maps útválasztási lefedettség adatait.
 | Egyesült Királyság                 |        ✓       |         ✓            |     ✓      | 
 | +Anguilla                      |        ✓       |                      |             |
 | +Bermuda                       |        ✓       |                      |             |
-| + Brit Virgin-szigetek        |        ✓       |                      |             |
-| + Kajmán-szigetek                |        ✓       |                      |             |
-| + Gibraltár                     |        ✓       |         ✓            |             | 
+| \+ Brit Virgin-szigetek        |        ✓       |                      |             |
+| \+ Kajmán-szigetek                |        ✓       |                      |             |
+| \+ Gibraltár                     |        ✓       |         ✓            |             | 
 | +Montserrat                    |        ✓       |                      |             |
-| + Turks-és Caicos-szigetek      |        ✓       |                      |             |
+| \+ Turks-és Caicos-szigetek      |        ✓       |                      |             |
 | Vatikánváros                   |        ✓       |         ✓            |             |
 | Man-sziget                    |        ✓       |                      |             |
 

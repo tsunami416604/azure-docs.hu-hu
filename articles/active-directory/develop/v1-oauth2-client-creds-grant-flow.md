@@ -19,10 +19,10 @@ ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9d734db7fbedaf3e3f3cd71c31f9391a2237f5b4
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65545247"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Szolgáltatások közötti hívások ügyfél-hitelesítő adatok (közös titkos kulcsot vagy tanúsítvány) használatával
@@ -59,10 +59,10 @@ A közös titkos kulcsot használja, amikor egy szolgáltatások közötti hozz�
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| grant_type |szükséges |Adja meg a kért engedélyezési típus. Ügyfélhitelesítő adatok folyamatokban értéke nem lehet **client_credentials**. |
-| client_id |szükséges |Itt adhatja meg az Azure AD a hívó webszolgáltatás ügyfél-azonosító. A hívó alkalmazás ügyfél-azonosító, ebben található az a [az Azure portal](https://portal.azure.com), kattintson a **Azure Active Directory**, kattintson a **alkalmazásregisztrációk**, arra az alkalmazásra. A client_id van a *alkalmazás azonosítója* |
-| client_secret |szükséges |Adjon meg egy kulcsot, a hívó webes szolgáltatás- vagy démonalkalmazásban alkalmazás Azure AD-ben regisztrált. Hozzon létre egy kulcsot az Azure Portalon, kattintson a **Azure Active Directory**, kattintson a **alkalmazásregisztrációk**, kattintson az alkalmazást, majd **beállítások**, kattintson a **kulcsok** , és adjon hozzá egy kulcsot.  URL-kódolása ebben titkos megadásakor azt. |
-| erőforrás |szükséges |Adja meg az Alkalmazásazonosító URI-t a fogadó webszolgáltatás. Az Alkalmazásazonosító URI-t, az Azure Portalon kattintson **Azure Active Directory**, kattintson a **alkalmazásregisztrációk**, kattintson a szolgáltatásalkalmazás, majd **beállítások** és  **Tulajdonságok**. |
+| grant_type |Szükséges |Adja meg a kért engedélyezési típus. Ügyfélhitelesítő adatok folyamatokban értéke nem lehet **client_credentials**. |
+| client_id |Szükséges |Itt adhatja meg az Azure AD a hívó webszolgáltatás ügyfél-azonosító. A hívó alkalmazás ügyfél-azonosító, ebben található az a [az Azure portal](https://portal.azure.com), kattintson a **Azure Active Directory**, kattintson a **alkalmazásregisztrációk**, arra az alkalmazásra. A client_id van a *alkalmazás azonosítója* |
+| client_secret |Szükséges |Adjon meg egy kulcsot, a hívó webes szolgáltatás- vagy démonalkalmazásban alkalmazás Azure AD-ben regisztrált. Hozzon létre egy kulcsot az Azure Portalon, kattintson a **Azure Active Directory**, kattintson a **alkalmazásregisztrációk**, kattintson az alkalmazást, majd **beállítások**, kattintson a **kulcsok** , és adjon hozzá egy kulcsot.  URL-kódolása ebben titkos megadásakor azt. |
+| resource |Szükséges |Adja meg az Alkalmazásazonosító URI-t a fogadó webszolgáltatás. Az Alkalmazásazonosító URI-t, az Azure Portalon kattintson **Azure Active Directory**, kattintson a **alkalmazásregisztrációk**, kattintson a szolgáltatásalkalmazás, majd **beállítások** és  **Tulajdonságok**. |
 
 #### <a name="example"></a>Példa
 A következő HTTP POST-kérések egy [hozzáférési jogkivonat](access-tokens.md) számára a https://service.contoso.com/ webes szolgáltatás. A `client_id` azonosítja a webszolgáltatás, amelyet a hozzáférési jogkivonatot kér.
@@ -80,11 +80,11 @@ A service to service hozzáférési jogkivonat kérése tanúsítvánnyal az al�
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| grant_type |szükséges |Adja meg a kért választípus. Ügyfélhitelesítő adatok folyamatokban értéke nem lehet **client_credentials**. |
-| client_id |szükséges |Itt adhatja meg az Azure AD a hívó webszolgáltatás ügyfél-azonosító. A hívó alkalmazás ügyfél-azonosító, ebben található az a [az Azure portal](https://portal.azure.com), kattintson a **Azure Active Directory**, kattintson a **alkalmazásregisztrációk**, arra az alkalmazásra. A client_id van a *alkalmazás azonosítója* |
-| client_assertion_type |szükséges |Az értéknek kell lennie `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |szükséges | Egy helyességi feltétel (egy JSON Web Token) létrehozására és aláírására a tanúsítványt igénylő regisztrált hitelesítő adatként az alkalmazáshoz. További információ [hitelesítő tanúsítvány](active-directory-certificate-credentials.md) megtudhatja, hogyan regisztrálhat a tanúsítvány és a helyességi feltétel formátumát.|
-| erőforrás | szükséges |Adja meg az Alkalmazásazonosító URI-t a fogadó webszolgáltatás. Az Alkalmazásazonosító URI-t, az Azure Portalon kattintson **Azure Active Directory**, kattintson a **alkalmazásregisztrációk**, kattintson a szolgáltatásalkalmazás, majd **beállítások** és  **Tulajdonságok**. |
+| grant_type |Szükséges |Adja meg a kért választípus. Ügyfélhitelesítő adatok folyamatokban értéke nem lehet **client_credentials**. |
+| client_id |Szükséges |Itt adhatja meg az Azure AD a hívó webszolgáltatás ügyfél-azonosító. A hívó alkalmazás ügyfél-azonosító, ebben található az a [az Azure portal](https://portal.azure.com), kattintson a **Azure Active Directory**, kattintson a **alkalmazásregisztrációk**, arra az alkalmazásra. A client_id van a *alkalmazás azonosítója* |
+| client_assertion_type |Szükséges |Az értéknek kell lennie `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion |Szükséges | Egy helyességi feltétel (egy JSON Web Token) létrehozására és aláírására a tanúsítványt igénylő regisztrált hitelesítő adatként az alkalmazáshoz. További információ [hitelesítő tanúsítvány](active-directory-certificate-credentials.md) megtudhatja, hogyan regisztrálhat a tanúsítvány és a helyességi feltétel formátumát.|
+| resource | Szükséges |Adja meg az Alkalmazásazonosító URI-t a fogadó webszolgáltatás. Az Alkalmazásazonosító URI-t, az Azure Portalon kattintson **Azure Active Directory**, kattintson a **alkalmazásregisztrációk**, kattintson a szolgáltatásalkalmazás, majd **beállítások** és  **Tulajdonságok**. |
 
 Figyelje meg, hogy paraméterei szinte teljesen megegyezik a kérés által közös titkos kulcsot is azzal a különbséggel, hogy a titkos ügyfélkódot paraméter váltotta fel két paramétert: egy client_assertion_type és client_assertion.
 
@@ -110,7 +110,7 @@ Sikerességi válasz tartalmaz egy JSON OAuth 2.0-válaszban az alábbi paramét
 | expires_in |Mennyi ideig a hozzáférési jogkivonat érvénytelen (másodpercben). |
 | expires_on |A hozzáférési jogkivonat lejáratának időpontja. A dátum jelenik meg a másodpercek számát, 1970-01-01T0:0:0Z UTC a lejárati időpontig. Ez az érték a gyorsítótárazott jogkivonatok élettartama meghatározására szolgál. |
 | not_before |Az időt, amelyből a hozzáférési jogkivonat használhatóvá válik. A dátum jelenik meg a másodpercek számát, 1970-01 – amíg a token érvényességi ideje (UTC) 01T0:0:0Z.|
-| erőforrás |Az Alkalmazásazonosító URI-t a fogadó webszolgáltatás. |
+| resource |Az Alkalmazásazonosító URI-t a fogadó webszolgáltatás. |
 
 #### <a name="example-of-response"></a>Példa a válasz
 Az alábbi példa bemutatja egy web Service hozzáférési jogkivonatot kér sikeres válasz.

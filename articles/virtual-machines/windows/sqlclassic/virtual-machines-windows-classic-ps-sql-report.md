@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
 ms.openlocfilehash: 6339b49d0bc9c635457f305dad7b1a075327a1dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60609843"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>Natív üzemmódú jelentéskészítő kiszolgálót futtató Azure-beli virtuális gép létrehozása a PowerShell-lel
@@ -43,7 +43,7 @@ Ez a témakör azt ismerteti, és végigvezeti a telepítési és a egy SQL Serv
   * [Windows PowerShell indítása a Windows Serveren](https://docs.microsoft.com/powershell/scripting/setup/starting-windows-powershell)
   * [Első lépések a Windows PowerShell-lel](https://technet.microsoft.com/library/hh857337.aspx)
 
-## <a name="step-1-provision-an-azure-virtual-machine"></a>1. lépés: Egy Azure virtuális gép üzembe helyezése
+## <a name="step-1-provision-an-azure-virtual-machine"></a>1\. lépés: Egy Azure virtuális gép üzembe helyezése
 1. Keresse meg az Azure Portalon.
 2. Kattintson a **virtuális gépek** a bal oldali panelen.
    
@@ -56,7 +56,7 @@ Ez a témakör azt ismerteti, és végigvezeti a telepítési és a egy SQL Serv
     ![új virtuális gépet a katalógusból](./media/virtual-machines-windows-classic-ps-sql-report/IC692020.gif)
 5. Kattintson a **SQL Server 2014 RTM Standard – Windows Server 2012 R2** és kattintson a Tovább nyílra.
    
-    ![tovább](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
+    ![Tovább](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
    
     Ha a Reporting Services adatvezérelt előfizetések funkció van szüksége, válassza a **SQL Server 2014 RTM Enterprise Windows Server 2012 R2**. Az SQL Server-kiadások és támogatásáról további információkért lásd: [SQL Server 2012 kiadásai által támogatott funkciók](https://msdn.microsoft.com/library/cc645993.aspx#Reporting).
 6. Az a **virtuálisgép-konfiguráció** lapon, a következő mezők szerkesztése:
@@ -79,12 +79,12 @@ Ez a témakör azt ismerteti, és végigvezeti a telepítési és a egy SQL Serv
      
      * **HTTP**: Az alapértelmezett nyilvános és magánhálózati port **80-as**. Vegye figyelembe, hogy ha nem a 80-as, magánhálózati portot módosítsa **$HTTPport = 80** a http-szkriptben.
      * **HTTPS**: Az alapértelmezett nyilvános és magánhálózati port **443-as**. Biztonsági szempontból ajánlott, hogy módosítsa a magánhálózati portot, és konfigurálja a tűzfalat, és a jelentéskészítő kiszolgáló a magánhálózati port használatára. A végpontok további információkért lásd: [hogyan állítsa be kommunikációt egy virtuális géppel](../classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Vegye figyelembe, hogy ha nem a 443-as portot használja a paraméter módosítani **$HTTPsport = 443-as** a HTTPS-szkriptben.
-   * Kattintson a Tovább gombra. ![tovább](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
+   * Kattintson a Tovább gombra. ![Tovább](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 8. A varázsló utolsó oldalán, tartsa meg az alapértelmezett **Virtuálisgép-ügynök telepítése** kiválasztott. Ebben a témakörben leírt lépéseket nem használja a Virtuálisgép-ügynök, de ha azt tervezi, hogy a virtuális Gépet, a Virtuálisgép-ügynök és a kiterjesztések lehetővé teszi CM javíthatja azt.  A Virtuálisgép-ügynök további információkért lásd: [Virtuálisgép-ügynök és -bővítmények – 1. rész](https://azure.microsoft.com/blog/2014/04/11/vm-agent-and-extensions-part-1/). Az alapértelmezett telepített kiterjesztéseket ad futó egyik, a "BGINFO" bővítményt, amely a virtuális gép asztalához, például a belső IP-cím és a szabad lemezterület a rendszer-információkat jeleníti meg.
-9. Kattintson a Kész gombra. ![OK](./media/virtual-machines-windows-classic-ps-sql-report/IC660122.gif)
+9. Kattintson a Kész gombra. ![ok](./media/virtual-machines-windows-classic-ps-sql-report/IC660122.gif)
 10. A **állapot** megjeleníti a virtuális gép **indítása (kiépítés)** jelenik majd meg, és kiépítése folyamat során **futó** kiépített és készen áll a használatra a virtuális gép esetén.
 
-## <a name="step-2-create-a-server-certificate"></a>2. lépés: Hozzon létre egy kiszolgálói tanúsítványt
+## <a name="step-2-create-a-server-certificate"></a>2\. lépés: Hozzon létre egy kiszolgálói tanúsítványt
 > [!NOTE]
 > Ha nincs szüksége HTTPS a jelentéskészítő kiszolgálón, akkor **hagyja ki a 2. lépés** , és keresse meg a **konfigurálása a jelentéskészítő kiszolgáló és a HTTP-szkripttel**. A HTTP-parancsfájl segítségével gyorsan konfigurálása a jelentéskészítő kiszolgáló és a jelentéskészítő kiszolgáló használatra kész lesz.
 
@@ -141,7 +141,7 @@ Egy önaláírt tanúsítványt hozott létre a virtuális gépen a virtuális g
 
 Ha egy önaláírt SSL-tanúsítványt használ, a tanúsítványon szereplő névvel már megegyezik a virtuális gép állomásnevét. Ezért a DNS-ben, a gép már regisztrálva van globálisan, és bármely ügyfél részéről hozzáférhető.
 
-## <a name="step-3-configure-the-report-server"></a>3. lépés: A jelentéskészítő kiszolgáló konfigurálása
+## <a name="step-3-configure-the-report-server"></a>3\. lépés: A jelentéskészítő kiszolgáló konfigurálása
 Ez a szakasz végigvezeti a virtuális gép konfigurálása a Reporting Services natív üzemmódú jelentéskészítő kiszolgálót. A jelentéskészítő kiszolgáló konfigurálása a következő módszerek egyikét használhatja:
 
 * A szkript használatával a jelentéskészítő kiszolgáló konfigurálása
@@ -520,7 +520,7 @@ Ha nem szeretné a jelentéskészítő kiszolgáló konfigurálása a PowerShell
 8. A bal oldali ablaktáblán kattintson a **Report Manager URL-cím**. Hagyja meg az alapértelmezett **virtuális könyvtár** , **jelentések** kattintson **alkalmaz**.
 9. Kattintson a **kilépési** gombra kattintva zárja be a Reporting Services Configuration Manager.
 
-## <a name="step-4-open-windows-firewall-port"></a>4. lépés: Windows tűzfal Port megnyitása
+## <a name="step-4-open-windows-firewall-port"></a>4\. lépés: Windows tűzfal Port megnyitása
 > [!NOTE]
 > Ha a parancsfájlok a jelentéskészítő kiszolgáló konfigurálása, kihagyhatja az ebben a szakaszban. A parancsfájl tartalmazza a tűzfalport megnyitása egy lépésben. Az alapértelmezett volt a HTTP-hez a 80-as és 443-as portot a HTTPS-hez.
 > 

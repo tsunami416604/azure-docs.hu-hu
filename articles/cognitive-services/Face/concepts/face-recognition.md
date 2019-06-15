@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
 ms.openlocfilehash: fa38c492530cb8938e49bc15e13fdd39ed5b6f1c
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65890881"
 ---
 # <a name="face-recognition-concepts"></a>Arcok felismerése fogalmak
@@ -37,7 +37,7 @@ A beszédfelismerést műveletek elsősorban a következő adatstruktúrák hasz
 
 Ez a szakasz részletesen korábban leírt adatstruktúrák négy felismerés műveletek használatát. Minden egyes felismerés művelet széles körű ismertetését lásd: [áttekintése](../Overview.md).
 
-### <a name="verify"></a>Megerősítés
+### <a name="verify"></a>Ellenőrzés
 
 A [ellenőrizze](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) művelet vesz igénybe a face ID DetectedFace vagy PersistedFace és a egy másik face ID vagy egy személy objektumot, és meghatározza, hogy ugyanazt az embert tartoznak. Ha egy személy objektumot adja át, akkor lehetősége van átadni egy is lehet PersonGroup, amelyhez a személy tartozik, a teljesítmény javítása a.
 

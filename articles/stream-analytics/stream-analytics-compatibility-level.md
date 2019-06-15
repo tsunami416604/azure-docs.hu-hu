@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/2/2019
 ms.openlocfilehash: c1b2875e6899d2301a4c4b564882214dc7bc4981
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65205463"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Az Azure Stream Analytics-feladatok kompatibilitási szintje
@@ -51,7 +51,7 @@ Amikor frissíti a kompatibilitási szintet, a T-SQL nyelvű fordítón belülre
 
 ## <a name="compatibility-level-12-preview"></a>Kompatibilitási szint 1.2-es (előzetes verzió)
 
-1.2-es kompatibilitási szinten a következő jelentős változások történtek:
+1\.2-es kompatibilitási szinten a következő jelentős változások történtek:
 
 ### <a name="geospatial-functions"></a>Térinformatikai funkciók
 
@@ -101,9 +101,9 @@ Hiba történt a felhasználó által definiált függvények eredményt "rendsz
 
 **1.2-es szint:** Tömb- és típusok kulcstulajdonságként már nem támogatottak.
 
-## <a name="compatibility-level-11"></a>1.1-es kompatibilitási szint
+## <a name="compatibility-level-11"></a>1\.1-es kompatibilitási szint
 
-1.1-kompatibilitási szinten a következő jelentős változások történtek:
+1\.1-kompatibilitási szinten a következő jelentős változások történtek:
 
 ### <a name="service-bus-xml-format"></a>Service Bus XML-formátuma
 

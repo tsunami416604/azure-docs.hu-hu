@@ -9,10 +9,10 @@ ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 990b13d362b796f5e71f1bd41eb35fce9720fff4
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65835149"
 ---
 # <a name="deploy-opc-vault-from-scratch"></a>OPC-tároló létrehozása az alapoktól
@@ -79,7 +79,7 @@ A parancsfájlok mappa tartalmaz néhány a gyakori feladatok parancsprogramokat
 
 A szkriptek keresése a környezeti változók beállítása. Globális beállítása a környezeti változókat az operációs rendszer, vagy "env-változók-telepítés" a parancsprogramot használja, a parancsfájlok mappában.
 
-### <a name="sandbox"></a>Védőfal
+### <a name="sandbox"></a>Sandbox
 
 A parancsfájlok azt feltételezik, hogy konfigurálta a fejlesztési környezetet a .NET Core és a Docker. Kerülje a .NET Core, telepítése, és csak a Docker telepítheti és parancssori paraméter `--in-sandbox` (vagy a rövid űrlapot `-s`), például:
 

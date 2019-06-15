@@ -9,10 +9,10 @@ ms.date: 04/10/2019
 ms.author: absha
 ms.custom: mvc
 ms.openlocfilehash: e144214a58f9fe383cf4edd878554792d9d6a6f9
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64947166"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>HTTP-kérelmek és válaszfejlécek Azure Application gatewayjel – Azure portal újraírása
@@ -21,7 +21,7 @@ Ez a cikk bemutatja, hogyan konfigurálhatja az Azure portal használatával egy
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Szüksége lesz egy Application Gateway v2 SKU példány ebben a cikkben szereplő lépések végrehajtásához. A fejlécek újraírását a v1-termékváltozat nem támogatott. Ha nem rendelkezik a v2 szintű Termékváltozatot, hozzon létre egy [Application Gateway v2 szintű Termékváltozatot](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps) példány megkezdése előtt.
 
@@ -97,7 +97,7 @@ Ebben a példában egy átirányítási URL-cím a háttér-alkalmazás által k
 
    - A **kis-és nagybetűket**válassza **nem**.
 
-   - Az a **operátor** listáról válassza ki **egyenlő (=)**.
+   - Az a **operátor** listáról válassza ki **egyenlő (=)** .
 
    - Adjon meg egy Reguláriskifejezés-mintának. Ebben a példában a mintát fogjuk használni `(https?):\/\/.*azurewebsites\.net(.*)$`.
 

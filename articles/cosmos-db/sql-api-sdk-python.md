@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
 ms.openlocfilehash: 9903339cbf0958893fb0d11a8c1b6ab7d156aae7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60626791"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB Python SDK-t az SQL API-hoz: Kibocsátási megjegyzések és erőforrások
@@ -153,34 +153,34 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 
 | Version | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
-| [3.0.2](#3.0.2) |2018. november 15. |--- |
+| [3.0.2](#3.0.2) |2018\. november 15. |--- |
 | [3.0.1](#3.0.1) |Oct 04, 2018 |--- |
-| [2.3.3](#2.3.3) |2018. Szeptembertől 08. |--- |
+| [2.3.3](#2.3.3) |2018\. Szeptembertől 08. |--- |
 | [2.3.2](#2.3.2) |08 2018. május |--- |
-| [2.3.1](#2.3.1) |2017. december 21. |--- |
-| [2.3.0](#2.3.0) |2017. november 10. |--- |
-| [2.2.1](#2.2.1) |2017. szeptember 29 |--- |
-| [2.2.0](#2.2.0) |2017. május 10. |--- |
+| [2.3.1](#2.3.1) |2017\. december 21. |--- |
+| [2.3.0](#2.3.0) |2017\. november 10. |--- |
+| [2.2.1](#2.2.1) |2017\. szeptember 29 |--- |
+| [2.2.0](#2.2.0) |2017\. május 10. |--- |
 | [2.1.0](#2.1.0) |01, 2017. május |--- |
-| [2.0.1](#2.0.1) |2016. október 30. |--- |
-| [2.0.0](#2.0.0) |2016. szeptember 29-én |--- |
-| [1.9.0](#1.9.0) |2016. július 07. |--- |
-| [1.8.0](#1.8.0) |2016. június 14-én |--- |
-| [1.7.0](#1.7.0) |2016. április 26. |--- |
-| [1.6.1](#1.6.1) |2016. április 08 |--- |
-| [1.6.0](#1.6.0) |2016. március 29-én |--- |
-| [1.5.0](#1.5.0) |2016. január 03. |--- |
-| [1.4.2](#1.4.2) |2015. október 06. |--- |
-| 1.4.1 |2015. október 06. |--- |
-| [1.2.0](#1.2.0) |2015. augusztus 06. |--- |
-| [1.1.0](#1.1.0) |2015. július 09. |--- |
-| [1.0.1](#1.0.1) |2015. május 25. |--- |
-| [1.0.0](#1.0.0) |2015. április 07. |--- |
-| 0.9.4-prelease |2015. január 14-én |2016. február 29-én |
-| 0.9.3-prelease |2014. december 09 |2016. február 29-én |
-| 0.9.2-prelease |2014. november 25. |2016. február 29-én |
-| 0.9.1-prelease |2014. szeptember 23. |2016. február 29-én |
-| 0.9.0-prelease |2014. augusztus 21-én |2016. február 29-én |
+| [2.0.1](#2.0.1) |2016\. október 30. |--- |
+| [2.0.0](#2.0.0) |2016\. szeptember 29-én |--- |
+| [1.9.0](#1.9.0) |2016\. július 07. |--- |
+| [1.8.0](#1.8.0) |2016\. június 14-én |--- |
+| [1.7.0](#1.7.0) |2016\. április 26. |--- |
+| [1.6.1](#1.6.1) |2016\. április 08 |--- |
+| [1.6.0](#1.6.0) |2016\. március 29-én |--- |
+| [1.5.0](#1.5.0) |2016\. január 03. |--- |
+| [1.4.2](#1.4.2) |2015\. október 06. |--- |
+| 1.4.1 |2015\. október 06. |--- |
+| [1.2.0](#1.2.0) |2015\. augusztus 06. |--- |
+| [1.1.0](#1.1.0) |2015\. július 09. |--- |
+| [1.0.1](#1.0.1) |2015\. május 25. |--- |
+| [1.0.0](#1.0.0) |2015\. április 07. |--- |
+| 0.9.4-prelease |2015\. január 14-én |2016\. február 29-én |
+| 0.9.3-prelease |2014\. december 09 |2016\. február 29-én |
+| 0.9.2-prelease |2014\. november 25. |2016\. február 29-én |
+| 0.9.1-prelease |2014\. szeptember 23. |2016\. február 29-én |
+| 0.9.0-prelease |2014\. augusztus 21-én |2016\. február 29-én |
 
 ## <a name="faq"></a>GYIK
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]

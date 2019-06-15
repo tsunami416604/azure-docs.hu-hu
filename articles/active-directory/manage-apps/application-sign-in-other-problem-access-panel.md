@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 51e486e8eb2fef04c1b876dff3de644dda4aaf2e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65781133"
 ---
 # <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>A hozzáférési panelen alkalmazáshoz való bejelentkezésnél
@@ -467,7 +467,7 @@ Egyszeri bejelentkezés az alkalmazás konfigurálásához kövesse az alábbi l
 
 8. Válassza ki a módot **jelszóalapú bejelentkezés.**
 
-9. Adja meg a **bejelentkezési URL-**. Ez az URL-CÍMÉT, írja be a felhasználók a felhasználónevével és jelszavával bejelentkezni. Győződjön meg arról, a bejelentkezési mezők láthatók az URL-címen.
+9. Adja meg a **bejelentkezési URL-** . Ez az URL-CÍMÉT, írja be a felhasználók a felhasználónevével és jelszavával bejelentkezni. Győződjön meg arról, a bejelentkezési mezők láthatók az URL-címen.
 
 10. Felhasználók hozzárendelése az alkalmazáshoz.
 

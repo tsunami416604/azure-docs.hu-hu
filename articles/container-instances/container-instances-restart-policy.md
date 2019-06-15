@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
 ms.openlocfilehash: 06872eefd0d500a22214109ad5055dd236b5a6ac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60608126"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Tárolóalapú feladatok futtatása az újraindítási házirendek
@@ -26,7 +26,7 @@ A példákban Ez a cikk a használati bemutatni az Azure CLI. Rendelkeznie kell 
 
 Amikor létrehoz egy [tárolócsoport](container-instances-container-groups.md) az Azure Container Instancesben, kiválaszthat egyet a három újraindítási házirend-beállításokat.
 
-| Újraindítási házirend   | Leírás |
+| Újraindítási szabályzat   | Leírás |
 | ---------------- | :---------- |
 | `Always` | A tárolócsoport tárolók mindig újra lesz indítva. Ez a **alapértelmezett** beállítást alkalmazza, amikor nincs újraindítási szabályzata van megadva a tároló létrehozásakor. |
 | `Never` | A tárolócsoport tárolók soha nem újra lesz indítva. A tárolók legfeljebb egyszer futtatni. |

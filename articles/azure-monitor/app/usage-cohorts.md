@@ -14,10 +14,10 @@ ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
 ms.openlocfilehash: 263316028e7b35a1a515322dddc4ee867011dcac
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65604099"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights kohorszok
@@ -136,7 +136,7 @@ Kohorszok és szűrők eltérőek. Tegyük fel, hogy a felhasználók az Egyesü
 * A kohorsz a következő verziót minden eseményt a felhasználók, akik egy vagy több esemény az Egyesült Királyság, a jelenlegi időtartományban által küldött jeleníti meg. Ha akkor feloszthatja az ország vagy régió szerint, valószínűleg megjelenik számos országban és régióban.
 * A szűrők verzió csak az egyesült királyságbeli események jeleníti meg. Azonban akkor feloszthatja az ország vagy régió szerint, ha csak az Egyesült Királyság látja.
 
-## <a name="learn-more"></a>Tudnivalók a modellalapú alkalmazások létrehozásáról
+## <a name="learn-more"></a>Részletek
 
 * [Analytics lekérdezési nyelve](https://go.microsoft.com/fwlink/?linkid=856587)
 * [Felhasználók, munkamenetek, események](usage-segmentation.md)

@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: virtual-machines-linux
 manager: jeconnoc
 ms.openlocfilehash: 31ef53abcf9b416500ee70e42cc3cbd12cb11f35
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65159540"
 ---
 # <a name="preview-create-a-new-image-version-from-an-existing-image-version-using-azure-image-builder"></a>Előzetes verzió: Hozzon létre egy új lemezkép verziója az Azure az Image Builder használatával meglévő lemezkép verziója

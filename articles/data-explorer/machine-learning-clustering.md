@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.openlocfilehash: bc72cc21ab525ec82d9ce4b24e80ce82d92a5d21
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65233493"
 ---
 # <a name="machine-learning-capability-in-azure-data-explorer"></a>Machine learning-funkció az Azure Data Explorer
@@ -111,7 +111,7 @@ demo_clustering1
 | SegmentId | Count | Százalék | Régió | ScaleUnit | DeploymentId | ServiceHost |
 |-----------|-------|------------------|--------|-----------|----------------------------------|--------------------------------------|
 | 0 | 639 | 65.7407407407407 | Eau | su7 | b5d1d4df547d4a04ac15885617edba57 | e7f60c5d-4944-42b3-922a-92e98a8e7dec |
-| 1. | 94 | 9.67078189300411 | scus | su5 | 9dbd1b161d5b4779a73cf19a7836ebd6 |  |
+| 1 | 94 | 9.67078189300411 | scus | su5 | 9dbd1b161d5b4779a73cf19a7836ebd6 |  |
 | 2 | 82 | 8.43621399176955 | ncus | su1 | e24ef436e02b4823ac5d5b1465a9401e |  |
 | 3 | 68 | 6.99588477366255 | scus | su3 | 90d3d2fc7ecc430c9621ece335651a01 |  |
 | 4 | 55 | 5.65843621399177 | weu | su4 | be1d6d7ac9574cbc9a22cb8ee20f16fc |  |
@@ -132,10 +132,10 @@ demo_clustering1
 | evaluate basket()
 ```
 
-| SegmentId | Count | Százalék | Régió | ScaleUnit | DeploymentId | Tracepoint | ServiceHost |
+| SegmentId | Darabszám | Százalék | Régió | ScaleUnit | DeploymentId | Tracepoint | ServiceHost |
 |-----------|-------|------------------|--------|-----------|----------------------------------|------------|--------------------------------------|
 | 0 | 639 | 65.7407407407407 | Eau | su7 | b5d1d4df547d4a04ac15885617edba57 |  | e7f60c5d-4944-42b3-922a-92e98a8e7dec |
-| 1. | 642 | 66.0493827160494 | Eau | su7 | b5d1d4df547d4a04ac15885617edba57 |  |  |
+| 1 | 642 | 66.0493827160494 | Eau | su7 | b5d1d4df547d4a04ac15885617edba57 |  |  |
 | 2 | 324 | 33.3333333333333 | Eau | su7 | b5d1d4df547d4a04ac15885617edba57 | 0 | e7f60c5d-4944-42b3-922a-92e98a8e7dec |
 | 3 | 315 | 32.4074074074074 | Eau | su7 | b5d1d4df547d4a04ac15885617edba57 | 16108 | e7f60c5d-4944-42b3-922a-92e98a8e7dec |
 | 4 | 328 | 33.7448559670782 |  |  |  | 0 |  |
@@ -174,7 +174,7 @@ demo_clustering1
 | SegmentId | CountA | CountB | PercentA | PercentB | PercentDiffAB | Régió | ScaleUnit | DeploymentId | Tracepoint |
 |-----------|--------|--------|----------|----------|---------------|--------|-----------|----------------------------------|------------|
 | 0 | 639 | 21 | 65.74 | 1.7 | 64.04 | Eau | su7 | b5d1d4df547d4a04ac15885617edba57 |  |
-| 1. | 167 | 544 | 17.18 | 44.16 | 26.97 | scus |  |  |  |
+| 1 | 167 | 544 | 17.18 | 44.16 | 26.97 | scus |  |  |  |
 | 2 | 92 | 356 | 9.47 | 28.9 | 19.43 |  |  |  | 10007007 |
 | 3 | 90 | 336 | 9.26 | 27.27 | 18.01 |  |  |  | 10007006 |
 | 4 | 82 | 318 | 8.44 | 25.81 | 17.38 | ncus | su1 | e24ef436e02b4823ac5d5b1465a9401e |  |
@@ -197,7 +197,7 @@ and ServiceHost == "e7f60c5d-4944-42b3-922a-92e98a8e7dec", "Problem", "Normal")
 
 A diagram lehetővé teszi számunkra, hogy a megnövekedett keddi délután az volt az adott szegmens, módszerével észlelt alóli kivételek miatt a `diffpatterns` beépülő modult.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az Azure Data Explorer Machine Learning beépülő modulok hasznosak számos forgatókönyv esetében. A `autocluster` és `basket` felügyeletlen tanulási algoritmus és a könnyen használható megvalósításához. `Diffpatterns` megvalósítja a tanulási algoritmus felügyelt, és bár összetettebb, legyen az RCA differenciálás szegmensek kibontása a hatékonyabb.
 

@@ -15,10 +15,10 @@ ms.date: 03/05/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 96acb2e7af797f2777cc751417f50eb21faa46da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60202949"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Hogyan telepítse és konfigurálja az SAP HANA (nagyméretű példányok) az Azure-ban
@@ -149,7 +149,7 @@ A különböző köteteket, a másik nagyméretű HANA-példányok termékválto
 
 A tároló kötetek elnevezési szabályai az alábbi táblázatban láthatók:
 
-| Tárterület-használat | Csatlakozási név | Kötet neve | 
+| Tárhelyhasználat | Csatlakozási név | Kötet neve | 
 | --- | --- | ---|
 | HANA-adatok | /hana/data/SID/mnt0000\<m> | Storage IP:/hana_data_SID_mnt00001_tenant_vol |
 | HANA-napló | /hana/log/SID/mnt0000\<m> | Storage IP:/hana_log_SID_mnt00001_tenant_vol |

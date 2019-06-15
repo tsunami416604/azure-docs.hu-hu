@@ -10,10 +10,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.openlocfilehash: abb2a89f41340e8e2e26fa36cc20b790341618d0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60763228"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Valós idejű Twitter-vélemények elemzése az Azure Stream Analytics szolgáltatásban
@@ -49,7 +49,7 @@ A mintaalkalmazás eseményeket hoz létre, és leküldi azokat egy Azure-esemé
 ### <a name="create-an-event-hub-namespace-and-event-hub"></a>Eseményközpont-névtér és eseményközpont létrehozása
 Ebben az eljárásban először hozzon létre egy eseményközpont-névteret, és ezután hozzáadhat új eseményközpont adott névtérhez. Eseményközpont-névtér logikailag csoportosítják a kapcsolódó esemény bus példányok szolgálnak. 
 
-1. Jelentkezzen be az Azure Portalon, és kattintson a **erőforrás létrehozása** > **IOT-** > **Eseményközpont**. 
+1. Jelentkezzen be az Azure Portalon, és kattintson a **erőforrás létrehozása** > **IOT-**  > **Eseményközpont**. 
 
 2. Az a **névtér létrehozása** panelen adja meg például a névtér nevét `<yourname>-socialtwitter-eh-ns`. A névtér bármilyen nevet használhat, de a név érvényes URL-cím lehet, és Azure-ban egyedinek kell lennie. 
     
@@ -198,7 +198,7 @@ Az alábbi eljárás mindkét módszerénél dokumentumok.
 
 Most, hogy a tweet események vannak twitteren valós idejű streamelési, állíthat be egy Stream Analytics-feladat ezek az események valós idejű elemzését.
 
-1. Az Azure Portalon kattintson a **erőforrás létrehozása** > **IOT-** > **Stream Analytics-feladat**.
+1. Az Azure Portalon kattintson a **erőforrás létrehozása** > **IOT-**  > **Stream Analytics-feladat**.
 
 2. Nevezze el a feladat `socialtwitter-sa-job` és a egy előfizetést, erőforráscsoportot és helyet adja meg.
 

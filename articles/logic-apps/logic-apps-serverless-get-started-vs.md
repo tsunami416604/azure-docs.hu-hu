@@ -11,10 +11,10 @@ ms.custom: vs-azure
 ms.topic: article
 ms.date: 04/25/2019
 ms.openlocfilehash: fb071ac056355a056e5333284808417a258515de
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65467453"
 ---
 # <a name="build-your-first-serverless-app-with-azure-logic-apps-and-azure-functions---visual-studio"></a>Az Azure Logic Apps és az Azure Functions – a Visual Studio az első kiszolgáló nélküli alkalmazás létrehozása
@@ -88,7 +88,7 @@ Első lépésként hozzon létre egy [Azure erőforráscsoport-projekt](../azure
    > [!TIP]
    > Olyan esetekben, ha nem szeretné előre telepítsen a megoldás az Azure-erőforráscsoportban, használhatja az üres **logikai alkalmazás** sablon, amely egyszerűen létrehoz egy üres logikai alkalmazást.
 
-1. Az a **erről a helyről sablon megjelenítése** listáról válassza ki **Azure gyors üzembe helyezés (github.com/Azure/azure-quickstart-templates)**.
+1. Az a **erről a helyről sablon megjelenítése** listáról válassza ki **Azure gyors üzembe helyezés (github.com/Azure/azure-quickstart-templates)** .
 
 1. A Keresés mezőbe írja be a "logikai alkalmazás" szűrőként. Az eredmények közül válassza ki az ezzel a sablonnal: **101-logic-app-and-function-app**
 

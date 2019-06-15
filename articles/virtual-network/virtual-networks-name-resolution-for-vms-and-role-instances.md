@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
 ms.openlocfilehash: e0f3de95cfd4a18294e5e8e2adcf3b52a7487dbb
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65411360"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Erőforrások az Azure virtual networkök névfeloldása
@@ -55,7 +55,7 @@ Nyilvános DNS-nevek feloldása, valamint az Azure belső névfeloldást biztos�
 >
 >
 
-### <a name="features"></a>Funkciók
+### <a name="features"></a>Szolgáltatások
 
 Az Azure által biztosított névfeloldást a következő szolgáltatásokat tartalmazza:
 * A könnyű használatra. Semmilyen beállítást nem kell megadni.
@@ -88,15 +88,15 @@ Az alapértelmezett Windows DNS-ügyfél rendelkezik egy beépített DNS-gyorsí
 
 Számos különböző DNS-gyorsítótárazást (például dnsmasq) elérhető csomagokat. A következő rendszerek leggyakoribb disztribúciói dnsmasq telepítése:
 
-* **Ubuntu (használ resolvconf)**:
+* **Ubuntu (használ resolvconf)** :
   * Telepítse a dnsmasq csomagot `sudo apt-get install dnsmasq`.
-* **SUSE (használ netconf)**:
+* **SUSE (használ netconf)** :
   * Telepítse a dnsmasq csomagot `sudo zypper install dnsmasq`.
   * Engedélyezze a dnsmasq szolgáltatást a `systemctl enable dnsmasq.service`. 
   * Indítsa el a dnsmasq szolgáltatást a `systemctl start dnsmasq.service`. 
   * Szerkesztés **/etc/sysconfig/network/config**, és módosítsa *NETCONFIG_DNS_FORWARDER = ""* való *dnsmasq*.
   * A resolv.conf frissítése `netconfig update`, hogy a gyorsítótár állítja be a helyi DNS-feloldási.
-* **CentOS (használ NetworkManager)**:
+* **CentOS (használ NetworkManager)** :
   * Telepítse a dnsmasq csomagot `sudo yum install dnsmasq`.
   * Engedélyezze a dnsmasq szolgáltatást a `systemctl enable dnsmasq.service`.
   * Indítsa el a dnsmasq szolgáltatást a `systemctl start dnsmasq.service`.
@@ -154,7 +154,7 @@ DNS-továbbítást is lehetővé teszi a DNS-feloldási virtuális hálózatok k
 
 ![Virtuális hálózatok közötti DNS ábrája](./media/virtual-networks-name-resolution-for-vms-and-role-instances/inter-vnet-dns.png)
 
-Az Azure által biztosított névfeloldást használ, amikor Azure Dynamic Host Configuration Protocol (DHCP) biztosít olyan belső DNS-utótagot (**. internal.cloudapp.net**) minden egyes virtuális géphez. Ennek az utótagnak állomásnév-feloldás lehetővé teszi, mivel a gazdagép neve rekordokat a **internal.cloudapp.net** zóna. Ha saját név feloldása megoldást használ, ennek az utótagnak nincs megadva virtuális gépekhez, mivel ez rontja más DNS-architektúrákat (például a tartományhoz csatlakoztatott forgatókönyv). Ehelyett az Azure biztosít a nem működő helyőrző (*reddog.microsoft.com*).
+Az Azure által biztosított névfeloldást használ, amikor Azure Dynamic Host Configuration Protocol (DHCP) biztosít olyan belső DNS-utótagot ( **. internal.cloudapp.net**) minden egyes virtuális géphez. Ennek az utótagnak állomásnév-feloldás lehetővé teszi, mivel a gazdagép neve rekordokat a **internal.cloudapp.net** zóna. Ha saját név feloldása megoldást használ, ennek az utótagnak nincs megadva virtuális gépekhez, mivel ez rontja más DNS-architektúrákat (például a tartományhoz csatlakoztatott forgatókönyv). Ehelyett az Azure biztosít a nem működő helyőrző (*reddog.microsoft.com*).
 
 Szükség esetén a PowerShell vagy az API segítségével meghatározhatja a belső DNS-utótag:
 

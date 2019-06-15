@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 3/14/2019
 ms.author: absha
 ms.openlocfilehash: 72ee9123ad959c0c7240d4f7a906adc1a4dd1a93
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60831723"
 ---
 # <a name="create-certificates-for-whitelisting-backend-with-azure-application-gateway"></a>Engedélyezési háttér-tanúsítványok létrehozása az Azure Application Gateway segítségével
 
-Teljes körű SSL végrehajtásához az application gateway az engedélyezési listára kell hitelesítést/megbízható legfelső szintű tanúsítványok feltöltésével háttérpéldányokkal igényel. V1 Termékváltozatot, esetén hitelesítési tanúsítványokra szükség, mivel a esetén v2 szintű Termékváltozatot, megbízható legfelső szintű tanúsítványok szükségesek az engedélyezési tanúsítványok
+Teljes körű SSL végrehajtásához az application gateway az engedélyezési listára kell hitelesítést/megbízható legfelső szintű tanúsítványok feltöltésével háttérpéldányokkal igényel. A V1 termékváltozat esetében hitelesítési tanúsítványokra, míg a V2 termékváltozat esetében megbízható főtanúsítványokra van szükség a tanúsítványok engedélyezési listára való felvételéhez.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -61,11 +61,11 @@ Az SSL-tanúsítvány a exportálja a nyilvános kulcs .cer fájlt (ne a titkos 
 
 7. A tanúsítvány exportálása sikeresen megtörtént.
 
-   ![Sikeres](./media/certificates-for-backend-authentication/success.png)
+   ![Siker](./media/certificates-for-backend-authentication/success.png)
 
    Az exportált tanúsítványt ehhez hasonlóan néz ki:
 
-   ![Exportálva](./media/certificates-for-backend-authentication/exported.png)
+   ![Exportált](./media/certificates-for-backend-authentication/exported.png)
 
 8. Nyissa meg a Jegyzettömbben az exportált tanúsítványt, ha valami hasonló ebben a példában láthatja. A kék szakaszában az application gateway feltöltött adatokat tartalmazza. A Jegyzettömb alkalmazásban nyissa meg a tanúsítványt, és nem tűnik ehhez hasonló, általában ez azt jelenti, hogy nem exportált, használja a Base-64 kódolású X.509 (. CER) formátumban. Emellett ha egy másik szöveges szerkesztő használni kívánt, ismerje meg, hogy egyes szerkesztők megjelentetni nem kívánt formázása a háttérben. Ez problémákat, ha ezt a tanúsítványt a szöveget az Azure-bA feltöltött hozhat létre.
 

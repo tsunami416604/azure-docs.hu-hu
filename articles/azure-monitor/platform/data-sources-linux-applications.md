@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.openlocfilehash: ea74440a5c8a9a2584e742ec72ccf888b6bb5ad9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60628914"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Linux-alkalmazások az Azure Monitor teljesítményszámlálók gyűjtése 
@@ -52,7 +52,7 @@ A bejegyzések a hitelesítési fájl az alábbi táblázat ismerteti.
 |:--|:--|
 | Port | Az aktuális port figyel a MySQL-példányt jelöli. Port 0 jelzi, hogy a következő tulajdonságok alapértelmezett példány. |
 | Bind-Address| Aktuális MySQL bind-cím. |
-| felhasználónév| MySQL-felhasználó használata az MySQL server-példány figyeléséhez használt. |
+| username| MySQL-felhasználó használata az MySQL server-példány figyeléséhez használt. |
 | Base64 kódolású jelszó| A Base64 kódolású figyelési MySQL-felhasználó jelszavát. |
 | AutoUpdate| Megadja, hogy a módosításokat a my.cnf fájl ismételt vizsgálata, és felülírja a MySQL OMI hitelesítési fájlt, a MySQL OMI szolgáltató frissítésekor. |
 
@@ -116,26 +116,26 @@ Ezeket a jogosultságokat a következő grant-parancsok futtatásával is megadh
 
 Ha megfelelően konfigurált adatokat küldeni az Azure Monitor Linuxhoz készült Log Analytics-ügynököket, konfigurálnia kell a teljesítményszámlálók adatait szeretné gyűjteni.  Ismertetett eljárással [az Azure monitorban Windows és Linux rendszerű teljesítmény adatforrások](data-sources-performance-counters.md) az az alábbi táblázat a számlálókat.
 
-| Objektumnév | Számláló neve |
+| Objektum neve | Számláló neve |
 |:--|:--|
 | MySQL-adatbázis | Lemezterület (bájt) |
 | MySQL-adatbázis | Táblák |
-| MySQL-kiszolgáló | Megszakadt kapcsolat százalékos aránya |
-| MySQL-kiszolgáló | Kapcsolat használat százalékos aránya |
-| MySQL-kiszolgáló | Lemezterület-használat (bájt) |
-| MySQL-kiszolgáló | A tábla teljes vizsgálat százalékos aránya |
-| MySQL-kiszolgáló | InnoDB Pufferkészletben találati százalékos aránya |
-| MySQL-kiszolgáló | InnoDB puffer készlet használat százalékos aránya |
-| MySQL-kiszolgáló | InnoDB puffer készlet használat százalékos aránya |
-| MySQL-kiszolgáló | Kulcs gyorsítótárbeli találatok százalékos aránya |
-| MySQL-kiszolgáló | Kulcs gyorsítótár használata százalékos aránya |
-| MySQL-kiszolgáló | Kulcs gyorsítótár írási százalékos aránya |
-| MySQL-kiszolgáló | Lekérdezés gyorsítótár-találatok Pct |
-| MySQL-kiszolgáló | A lekérdezési gyorsítótár szilva Pct |
-| MySQL-kiszolgáló | Lekérdezés gyorsítótár használata százalékos aránya |
-| MySQL-kiszolgáló | Táblák gyorsítótárának találati százalékos aránya |
-| MySQL-kiszolgáló | Tábla gyorsítótár használata százalékos aránya |
-| MySQL-kiszolgáló | Tábla zárolási versenyt százalékos aránya |
+| MySQL Server | Megszakadt kapcsolat százalékos aránya |
+| MySQL Server | Kapcsolat használat százalékos aránya |
+| MySQL Server | Lemezterület-használat (bájt) |
+| MySQL Server | A tábla teljes vizsgálat százalékos aránya |
+| MySQL Server | InnoDB Pufferkészletben találati százalékos aránya |
+| MySQL Server | InnoDB puffer készlet használat százalékos aránya |
+| MySQL Server | InnoDB puffer készlet használat százalékos aránya |
+| MySQL Server | Kulcs gyorsítótárbeli találatok százalékos aránya |
+| MySQL Server | Kulcs gyorsítótár használata százalékos aránya |
+| MySQL Server | Kulcs gyorsítótár írási százalékos aránya |
+| MySQL Server | Lekérdezés gyorsítótár-találatok Pct |
+| MySQL Server | A lekérdezési gyorsítótár szilva Pct |
+| MySQL Server | Lekérdezés gyorsítótár használata százalékos aránya |
+| MySQL Server | Táblák gyorsítótárának találati százalékos aránya |
+| MySQL Server | Tábla gyorsítótár használata százalékos aránya |
+| MySQL Server | Tábla zárolási versenyt százalékos aránya |
 
 ## <a name="apache-http-server"></a>Apache HTTP Server 
 Ha az Apache HTTP Server észlel a számítógépen a omsagent csomag telepítésekor a rendszer, a teljesítményfigyelés-szolgáltató az Apache HTTP Server automatikusan települ. Ez a szolgáltató támaszkodik egy Apache-modul, amely ahhoz, hogy hozzáférhessen a teljesítményadatokat az Apache HTTP Server be kell tölteni. A modul tölthetők be a következő paranccsal:
@@ -152,7 +152,7 @@ sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 
 Ha megfelelően konfigurált adatokat küldeni az Azure Monitor Linuxhoz készült Log Analytics-ügynököket, konfigurálnia kell a teljesítményszámlálók adatait szeretné gyűjteni.  Ismertetett eljárással [az Azure monitorban Windows és Linux rendszerű teljesítmény adatforrások](data-sources-performance-counters.md) az az alábbi táblázat a számlálókat.
 
-| Objektumnév | Számláló neve |
+| Objektum neve | Számláló neve |
 |:--|:--|
 | Apache HTTP Server | Foglalt feldolgozók |
 | Apache HTTP Server | Inaktív feldolgozók |

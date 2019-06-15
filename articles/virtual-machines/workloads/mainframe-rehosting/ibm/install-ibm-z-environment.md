@@ -9,10 +9,10 @@ editor: edprice
 tags: ''
 keywords: ''
 ms.openlocfilehash: 2f5520213e7d8792c89f5445d470987323173dc3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60859341"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>IBM zD & T fejlesztési-tesztelési környezet telepítése az Azure-ban
@@ -58,7 +58,7 @@ Ez a cikk bemutatja, hogyan állíthat be Z fejlesztési és tesztelési környe
 
 3. Látható, az SSH hitelesítő adatainak lekérése a **áttekintése** a virtuális gép paneljén a **Connect** gombra. Válassza ki a **SSH** lapra, és az SSH-bejelentkezési parancs másolása a vágólapra.
 
-4. Jelentkezzen be egy [Bash rendszerhéjat](/azure/cloud-shell/quickstart) , a helyi Számítógépről, majd illessze be a parancsot. A képernyő lesz **ssh\<felhasználóazonosító\>\@\<IP-cím\>**. Ha a rendszer kéri a hitelesítő adatait, adja meg azokat a kezdőkönyvtára kapcsolatot létesíteni.
+4. Jelentkezzen be egy [Bash rendszerhéjat](/azure/cloud-shell/quickstart) , a helyi Számítógépről, majd illessze be a parancsot. A képernyő lesz **ssh\<felhasználóazonosító\>\@\<IP-cím\>** . Ha a rendszer kéri a hitelesítő adatait, adja meg azokat a kezdőkönyvtára kapcsolatot létesíteni.
 
 ## <a name="copy-the-installation-file-to-the-server"></a>Másolja a fájlt a kiszolgálóra
 

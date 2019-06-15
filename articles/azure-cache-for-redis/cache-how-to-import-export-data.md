@@ -12,14 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
-origin.date: 07/31/2017
-ms.date: 02/27/2019
-ms.author: v-junlch
+ms.date: 07/31/2017
+ms.author: yegu
 ms.openlocfilehash: dfa8b47ced70386efa1daa44af318f1da55f49e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60542246"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Adatok importálása és exportálása az Azure Cache redis
@@ -100,16 +99,16 @@ Exportálás lehetővé teszi, hogy a Redis a Redis-kompatibilis RDB-fájl(ok) f
 ## <a name="importexport-faq"></a>Importálási/exportálási – gyakori kérdések
 Ez a szakasz tartalmazza az Import/Export szolgáltatás – gyakori kérdések.
 
-- [Milyen díjszabási szint esetében használhatja az importálási/exportálási?](#what-pricing-tiers-can-use-importexport)
-- [E importálhat adatokat bármely Redis-kiszolgáló?](#can-i-import-data-from-any-redis-server)
-- [RDB-fájlba való verziók is importálhat?](#what-rdb-versions-can-i-import)
-- [A gyorsítótár érhető el az importálási/exportálási művelet során?](#is-my-cache-available-during-an-importexport-operation)
-- [Használható Redis-fürttel az importálási/exportálási?](#can-i-use-importexport-with-redis-cluster)
-- [Hogyan működik a importálási/exportálási beállítása egy egyéni adatbázisok?](#how-does-importexport-work-with-a-custom-databases-setting)
-- [Miben különbözik importálási/exportálási Redis megőrzési funkciója?](#how-is-importexport-different-from-redis-persistence)
-- [Automatizálhatja a PowerShell, a parancssori felület vagy a más felügyeleti ügyfelek importálási/exportálási?](#can-i-automate-importexport-using-powershell-cli-or-other-management-clients)
-- [Az importálási/exportálási művelet során időtúllépési hiba kapott. Mit jelent?](#i-received-a-timeout-error-during-my-importexport-operation-what-does-it-mean)
-- [Az Azure Blob Storage-adatok exportálásakor hibaüzenetet kapok. mi történt?](#i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened)
+* [Milyen díjszabási szint esetében használhatja az importálási/exportálási?](#what-pricing-tiers-can-use-importexport)
+* [E importálhat adatokat bármely Redis-kiszolgáló?](#can-i-import-data-from-any-redis-server)
+* [RDB-fájlba való verziók is importálhat?](#what-rdb-versions-can-i-import)
+* [A gyorsítótár érhető el az importálási/exportálási művelet során?](#is-my-cache-available-during-an-importexport-operation)
+* [Használható Redis-fürttel az importálási/exportálási?](#can-i-use-importexport-with-redis-cluster)
+* [Hogyan működik a importálási/exportálási beállítása egy egyéni adatbázisok?](#how-does-importexport-work-with-a-custom-databases-setting)
+* [Miben különbözik importálási/exportálási Redis megőrzési funkciója?](#how-is-importexport-different-from-redis-persistence)
+* [Automatizálhatja a PowerShell, a parancssori felület vagy a más felügyeleti ügyfelek importálási/exportálási?](#can-i-automate-importexport-using-powershell-cli-or-other-management-clients)
+* [Az importálási/exportálási művelet során időtúllépési hiba kapott. Mit jelent?](#i-received-a-timeout-error-during-my-importexport-operation-what-does-it-mean)
+* [Az Azure Blob Storage-adatok exportálásakor hibaüzenetet kapok. mi történt?](#i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened)
 
 ### <a name="what-pricing-tiers-can-use-importexport"></a>Milyen díjszabási szint esetében használhatja az importálási/exportálási?
 Importálási/exportálási csak a prémium tarifacsomagban érhető el.
@@ -127,8 +126,8 @@ Igen, mellett a Redis-példány az Azure gyorsítótár-ból exportált adatok i
 Az Azure Cache redis RDB-fájlból való importálása be keresztül RDB 7-es verzió támogatja.
 
 ### <a name="is-my-cache-available-during-an-importexport-operation"></a>A gyorsítótár érhető el az importálási/exportálási művelet során?
-- **Exportálás** - gyorsítótárak is elérhető marad, és továbbra is használja a gyorsítótár-exportálási művelet során.
-- **Importálása** - gyorsítótárak elérhetetlenné válnak, amikor az importálási művelet elindulása és az importálási művelet befejeződésekor elérhető lesz.
+* **Exportálás** - gyorsítótárak is elérhető marad, és továbbra is használja a gyorsítótár-exportálási művelet során.
+* **Importálása** - gyorsítótárak elérhetetlenné válnak, amikor az importálási művelet elindulása és az importálási művelet befejeződésekor elérhető lesz.
 
 ### <a name="can-i-use-importexport-with-redis-cluster"></a>Használható Redis-fürttel az importálási/exportálási?
 Igen, és meg is importálási-exportálási fürtözött gyorsítótár és a egy nem fürtözött gyorsítótár között. Redis-fürttel óta [csak támogatja az adatbázis-0](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering), a 0 kivételével adatbázisokban adatokat nem importálja. Fürtözött gyorsítótárazott adatok importálásakor a kulcsokat a fürt a szegmensek között terjeszti.
@@ -136,10 +135,10 @@ Igen, és meg is importálási-exportálási fürtözött gyorsítótár és a e
 ### <a name="how-does-importexport-work-with-a-custom-databases-setting"></a>Hogyan működik a importálási/exportálási beállítása egy egyéni adatbázisok?
 Egyes tarifacsomagok rendelkezik másik [adatbázisok korlátai](cache-configure.md#databases), így nincsenek néhány szempontot, ha konfigurálta az egyéni értéket importálásakor a `databases` beállítása gyorsítótár létrehozása során.
 
-- Az ennél alacsonyabb tarifacsomagra importálásakor `databases` az szinttel, amelyet exportált korlát:
-  - Ha használja az alapértelmezett száma `databases`, amely minden árképzési szint esetében 16, nem történik adatvesztés.
-  - Ha egyéni számos használ `databases` , hogy esik a határokon belül, amelyhez importál, a szint nem áll adat elveszett.
-  - Ha az exportált adatok egy adott adatbázisban, amely túllépi a korlátot, az új szinten, a rendszer nem importálja azokat magasabb adatbázisokból származó adatok.
+* Az ennél alacsonyabb tarifacsomagra importálásakor `databases` az szinttel, amelyet exportált korlát:
+  * Ha használja az alapértelmezett száma `databases`, amely minden árképzési szint esetében 16, nem történik adatvesztés.
+  * Ha egyéni számos használ `databases` , hogy esik a határokon belül, amelyhez importál, a szint nem áll adat elveszett.
+  * Ha az exportált adatok egy adott adatbázisban, amely túllépi a korlátot, az új szinten, a rendszer nem importálja azokat magasabb adatbázisokból származó adatok.
 
 ### <a name="how-is-importexport-different-from-redis-persistence"></a>Miben különbözik importálási/exportálási Redis megőrzési funkciója?
 Az Azure Cache a Redis megőrzési funkciója lehetővé teszi, hogy megőrizheti a Redis az Azure Storage-ban tárolt adatokkal. Amikor az adatmegőrzés be van állítva, Azure Cache redis továbbra is fennáll az Azure Cache pillanatképét redis lemezt egy konfigurálható biztonsági mentési gyakoriság alapján a Redis bináris formátumban. Ha egy katasztrofális esemény történik, amely letiltja az elsődleges és replika gyorsítótár, a gyorsítótár adatainak visszaállítása használatával automatikusan a legutóbbi pillanatképet. További információkért lásd: [adatok megőrzését egy prémium szintű Azure Cache Redis konfigurálása](cache-how-to-premium-persistence.md).
@@ -162,7 +161,7 @@ Exportálás csak lapblobként tárolt RDB-fájlok működik. Más blobtípusok 
 ## <a name="next-steps"></a>További lépések
 Ismerje meg, hogyan használja a további prémiumszintű gyorsítótár funkcióival.
 
-- [Bevezetés az Azure Cache redis Cache prémium szint](cache-premium-tier-intro.md)    
+* [Bevezetés az Azure Cache redis Cache prémium szint](cache-premium-tier-intro.md)    
 
 <!-- IMAGES -->
 [cache-settings-import-export-menu]: ./media/cache-how-to-import-export-data/cache-settings-import-export-menu.png
@@ -177,6 +176,3 @@ Ismerje meg, hogyan használja a további prémiumszintű gyorsítótár funkci�
 [cache-import-choose-blobs]: ./media/cache-how-to-import-export-data/cache-import-choose-blobs.png
 [cache-import-blobs]: ./media/cache-how-to-import-export-data/cache-import-blobs.png
 [cache-import-data-import-complete]: ./media/cache-how-to-import-export-data/cache-import-data-import-complete.png
-
-
-<!-- Update_Description: update metedata properties -->

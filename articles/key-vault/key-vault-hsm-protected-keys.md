@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: barclayn
 ms.openlocfilehash: 1ae94718aa41c58f4d5e397942492ad8ed643ae3
-ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65556204"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Generate and transfer HSM-védelemmel ellátott és hogyan lehet az Azure Key Vault-kulcsok
@@ -70,15 +70,15 @@ Az alábbi öt lépést használatával fog létrehozni, és a kulcs átvitele a
 * [4. lépés: A kulcs előkészítése az átvitelre](#step-4-prepare-your-key-for-transfer)
 * [5. lépés: A kulcs átvitele az Azure Key Vault](#step-5-transfer-your-key-to-azure-key-vault)
 
-## <a name="step-1-prepare-your-internet-connected-workstation"></a>1. lépés: Az internetre kapcsolódó munkaállomás előkészítése
+## <a name="step-1-prepare-your-internet-connected-workstation"></a>1\. lépés: Az internetre kapcsolódó munkaállomás előkészítése
 
 Első lépésként hajtsa végre az alábbi eljárásokat az internethez csatlakoztatott munkaállomáson.
 
-### <a name="step-11-install-azure-powershell"></a>1.1. lépés: Az Azure PowerShell telepítése
+### <a name="step-11-install-azure-powershell"></a>1\.1. lépés: Az Azure PowerShell telepítése
 
 Az internetkapcsolattal rendelkező munkaállomáson, a töltse le és telepítse az Azure PowerShell-modult, amely tartalmazza a parancsmagok az Azure Key Vault kezeléséhez. A telepítési utasításokért lásd: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview).
 
-### <a name="step-12-get-your-azure-subscription-id"></a>1.2. lépés: Az Azure előfizetés-azonosító beszerzése
+### <a name="step-12-get-your-azure-subscription-id"></a>1\.2. lépés: Az Azure előfizetés-azonosító beszerzése
 
 Indítsa el az Azure PowerShell-munkamenetet, és jelentkezzen be Azure-fiókjába a következő parancs használatával:
 
@@ -94,7 +94,7 @@ A kimenetben keresse meg azt az előfizetést, használhatja az Azure Key Vault 
 
 Ne zárja be az Azure PowerShell-ablakot.
 
-### <a name="step-13-download-the-byok-toolset-for-azure-key-vault"></a>1.3. lépés: Az Azure Key Vault a BYOK eszközkészlet letöltése
+### <a name="step-13-download-the-byok-toolset-for-azure-key-vault"></a>1\.3. lépés: Az Azure Key Vault a BYOK eszközkészlet letöltése
 
 Nyissa meg a Microsoft Download Center és [az Azure Key Vault BYOK eszközkészlet letöltésére](https://www.microsoft.com/download/details.aspx?id=45345) a földrajzi régió vagy Azure példányát. Az alábbi információk segítségével azonosíthatja a csomag nevét, letöltése és a megfelelő SHA-256-csomag kivonata:
 
@@ -162,7 +162,7 @@ KeyVault-BYOK-Tools-Australia.zip
 CD0FB7365053DEF8C35116D7C92D203C64A3D3EE2452A025223EEB166901C40A
 
 - - -
-[**Az Azure Government:**](https://azure.microsoft.com/features/gov/)
+[**Az Azure Government:** ](https://azure.microsoft.com/features/gov/)
 
 KeyVault-BYOK-Tools-USGovCloud.zip
 
@@ -228,15 +228,15 @@ Az eszközkészlet a következőket tartalmazza:
 
 Másolja a csomagot egy USB-meghajtó vagy más hordozható tárolóeszközre.
 
-## <a name="step-2-prepare-your-disconnected-workstation"></a>2. lépés: A kapcsolat nélküli munkaállomás előkészítése
+## <a name="step-2-prepare-your-disconnected-workstation"></a>2\. lépés: A kapcsolat nélküli munkaállomás előkészítése
 
 A második lépés hajtsa végre a következő eljárások a munkaállomáson, amely nem csatlakozik a hálózathoz (az interneten vagy belső hálózaton).
 
-### <a name="step-21-prepare-the-disconnected-workstation-with-ncipher-nshield-hsm"></a>2.1. lépés: A kapcsolat nélküli munkaállomáson az nCipher nShield HSM előkészítése
+### <a name="step-21-prepare-the-disconnected-workstation-with-ncipher-nshield-hsm"></a>2\.1. lépés: A kapcsolat nélküli munkaállomáson az nCipher nShield HSM előkészítése
 
 Telepítse az nCipher egy Windows-számítógépen, és a egy nCipher nShield HSM majd csatlakoztatni a számítógép.
 
-Győződjön meg arról, hogy az nCipher eszközök az elérési úthoz (**%nfast_home%\bin**). Írja be például a következőket:
+Győződjön meg arról, hogy az nCipher eszközök az elérési úthoz ( **%nfast_home%\bin**). Írja be például a következőket:
 
   ```cmd
   set PATH=%PATH%;"%nfast_home%\bin"
@@ -244,7 +244,7 @@ Győződjön meg arról, hogy az nCipher eszközök az elérési úthoz (**%nfas
 
 További információkért lásd: a HSM nShield mellékelt felhasználói útmutatót.
 
-### <a name="step-22-install-the-byok-toolset-on-the-disconnected-workstation"></a>2.2. lépés: A kapcsolat nélküli munkaállomáson a BYOK eszközkészlet telepítése
+### <a name="step-22-install-the-byok-toolset-on-the-disconnected-workstation"></a>2\.2. lépés: A kapcsolat nélküli munkaállomáson a BYOK eszközkészlet telepítése
 
 Másolja a BYOK eszközkészletcsomagot az USB-meghajtóra vagy egyéb hordozható tárolóeszköz, és tegye a következőket:
 
@@ -252,15 +252,15 @@ Másolja a BYOK eszközkészletcsomagot az USB-meghajtóra vagy egyéb hordozhat
 2. A mappából futtassa a vcredist_x64.exe.
 3. Kövesse az utasításokat a telepítés a Visual C++ futtatókörnyezeti összetevők Visual Studio 2013-hoz készült.
 
-## <a name="step-3-generate-your-key"></a>3. lépés: A kulcs létrehozásához
+## <a name="step-3-generate-your-key"></a>3\. lépés: A kulcs létrehozásához
 
 A harmadik lépést hajtsa végre a következő eljárások a kapcsolat nélküli munkaállomáson. E lépés elvégzése után a HSM inicializálási módban kell lennie. 
 
-### <a name="step-31-change-the-hsm-mode-to-i"></a>3.1. lépés: A HSM mód megváltoztatása "I"
+### <a name="step-31-change-the-hsm-mode-to-i"></a>3\.1. lépés: A HSM mód megváltoztatása "I"
 
 Ha nCipher nShield Edge, módosíthatja a módot használ: 1. Jelölje ki a szükséges módot az üzemmód gomb használatával. 2. Néhány másodpercen belül tartsa lenyomva a Törlés gomb egy pár másodpercet. Ha módosítja a módot, az új mód LED villogó leállítja, és megvilágítottnak marad. Az állapot LED szabálytalan flash előfordulhat, hogy néhány másodpercet, és rendszeresen, amikor az eszköz készen áll majd tokenkódot. Ellenkező esetben az eszköz továbbra is az aktuális módban, a megfelelő módot LED bekapcsolásával.
 
-### <a name="step-32-create-a-security-world"></a>3.2. lépés: Biztonsági világ létrehozása
+### <a name="step-32-create-a-security-world"></a>3\.2. lépés: Biztonsági világ létrehozása
 
 Indítson el egy parancssort, és futtassa az nCipher új világot létrehozó programját.
 
@@ -277,11 +277,11 @@ Ezután tegye a következőket:
 
 * Készítsen biztonsági másolatot a világfájlról. Biztonságos és védi a világfájlról, a rendszergazdai kártyák és a PIN-kódok, és győződjön meg arról, hogy egyetlen személy nem rendelkezik-e egynél több kártyához való hozzáférést.
 
-### <a name="step-33-change-the-hsm-mode-to-o"></a>3.3. lépés: A HSM mód megváltoztatása "O'
+### <a name="step-33-change-the-hsm-mode-to-o"></a>3\.3. lépés: A HSM mód megváltoztatása "O'
 
 Ha nCipher nShield Edge, módosíthatja a módot használ: 1. Jelölje ki a szükséges módot az üzemmód gomb használatával. 2. Néhány másodpercen belül tartsa lenyomva a Törlés gomb egy pár másodpercet. Ha módosítja a módot, az új mód LED villogó leállítja, és megvilágítottnak marad. Az állapot LED szabálytalan flash előfordulhat, hogy néhány másodpercet, és rendszeresen, amikor az eszköz készen áll majd tokenkódot. Ellenkező esetben az eszköz továbbra is az aktuális módban, a megfelelő módot LED bekapcsolásával.
 
-### <a name="step-34-validate-the-downloaded-package"></a>3.4. lépés: A letöltött csomag ellenőrzése
+### <a name="step-34-validate-the-downloaded-package"></a>3\.4. lépés: A letöltött csomag ellenőrzése
 
 Ez a lépés nem kötelező, azonban ajánlott, így ellenőrizheti, hogy a következő:
 
@@ -355,7 +355,7 @@ A parancsfájl ellenőrzi az aláírói láncot egészen a nShield legfelső szi
 
 Most már készen áll egy új kulcsot létrehozni.
 
-### <a name="step-35-create-a-new-key"></a>3.5. lépés: Új kulcs létrehozása
+### <a name="step-35-create-a-new-key"></a>3\.5. lépés: Új kulcs létrehozása
 
 Hozzon létre egy kulcsot az nCipher nShield használatával **Kulcslétrehozási** program.
 
@@ -369,7 +369,7 @@ Ez a parancs futtatásakor használja a következő utasításokat:
 * Értékét cserélje *contosokey* számára a **ident** és **plainname** rendelkező bármilyen karakterlánc típusú értéket. Az adminisztratív terhek minimalizálása és a hibák kockázatának csökkentése érdekében azt javasoljuk, hogy mindkettőhöz azonos értéket használjon. A **ident** értéknek kell szerepelnie, csak számokat, kötőjeleket és kisbetűket tartalmazhat.
 * A pubexp üresen (alapértelmezett) ebben a példában, de megadhat specifikus értékeket. További információkért lásd: a [nCipher dokumentációját.](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based)
 
-Ez a parancs egy tokenekre bontott kulcsfájlt hoz létre az %NFAST_KMDATA%\local mappában, neve **key_simple_**, majd a **ident** , amely a parancsban megadott. Például: **key_simple_contosokey**. Ez a fájl egy titkosított kulcsot tartalmaz.
+Ez a parancs egy tokenekre bontott kulcsfájlt hoz létre az %NFAST_KMDATA%\local mappában, neve **key_simple_** , majd a **ident** , amely a parancsban megadott. Például: **key_simple_contosokey**. Ez a fájl egy titkosított kulcsot tartalmaz.
 
 Készítsen biztonsági másolatot a tokenekre bontott Kulcsfájlról egy biztonságos helyre.
 
@@ -380,11 +380,11 @@ Készítsen biztonsági másolatot a tokenekre bontott Kulcsfájlról egy bizton
 
 Most már készen áll a kulcs átvitele az Azure Key Vaultban.
 
-## <a name="step-4-prepare-your-key-for-transfer"></a>4. lépés: A kulcs előkészítése az átvitelre
+## <a name="step-4-prepare-your-key-for-transfer"></a>4\. lépés: A kulcs előkészítése az átvitelre
 
 A negyedik lépést hajtsa végre a következő eljárások a kapcsolat nélküli munkaállomáson.
 
-### <a name="step-41-create-a-copy-of-your-key-with-reduced-permissions"></a>4.1. lépés: Hozzon létre egy másolatot a kulcsról korlátozott engedélyekkel
+### <a name="step-41-create-a-copy-of-your-key-with-reduced-permissions"></a>4\.1. lépés: Hozzon létre egy másolatot a kulcsról korlátozott engedélyekkel
 
 Nyisson meg egy új parancssort, és módosítsa az aktuális könyvtárban, a kicsomagolt, ahol a BYOK zip-fájl helyét. A kulcs kapcsolatos engedélyek korlátozásához a parancsot a parancssorba, futtassa a következők egyikét, attól függően, a földrajzi régió vagy Azure példányát:
 
@@ -453,7 +453,7 @@ Előfordulhat, hogy megvizsgálja a következő parancsokat az nCipher nShield s
         "%nfast_home%\bin\kmfile-dump.exe" "%NFAST_KMDATA%\local\key_xferacld_contosokey"
   Ezek a parancsok futtatásakor cserélje le contosokey ugyanazt az értéket a megadott **3.5. lépés: Hozzon létre egy új kulcsot** származó a [hozhatja létre a kulcsot](#step-3-generate-your-key) . lépés.
 
-### <a name="step-42-encrypt-your-key-by-using-microsofts-key-exchange-key"></a>4.2. lépés: A kulcs titkosítása a Microsoft kulcscserekulcs használatával
+### <a name="step-42-encrypt-your-key-by-using-microsofts-key-exchange-key"></a>4\.2. lépés: A kulcs titkosítása a Microsoft kulcscserekulcs használatával
 
 Futtassa a következő parancsokat, földrajzi régió vagy az Azure példány egyikét:
 
@@ -514,11 +514,11 @@ Ez a parancs futtatásakor használja a következő utasításokat:
 
 Amikor ez befejeződik, megjelenik **eredménye: SIKERES** már van egy új fájlt a jelenlegi mappában a következő névvel: KeyTransferPackage -*ContosoFirstHSMkey*.byok
 
-### <a name="step-43-copy-your-key-transfer-package-to-the-internet-connected-workstation"></a>4.3. lépés: A kulcsátviteli csomag másolása az internetre kapcsolódó munkaállomásra
+### <a name="step-43-copy-your-key-transfer-package-to-the-internet-connected-workstation"></a>4\.3. lépés: A kulcsátviteli csomag másolása az internetre kapcsolódó munkaállomásra
 
 USB-meghajtóra vagy egyéb hordozható tárolóeszköz használatával másolja a kimeneti fájlt az előző lépésben (KeyTransferPackage-ContosoFirstHSMkey.byok) az internetre kapcsolódó munkaállomáson.
 
-## <a name="step-5-transfer-your-key-to-azure-key-vault"></a>5. lépés: A kulcs átvitele az Azure Key Vault
+## <a name="step-5-transfer-your-key-to-azure-key-vault"></a>5\. lépés: A kulcs átvitele az Azure Key Vault
 
 Ez az utolsó lépés az internethez csatlakozó munkaállomáson használja a [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) parancsmag, amely az Azure Key Vault HSM-be a kapcsolat nélküli munkaállomásról másolt kulcsátviteli csomag feltöltéséhez:
 

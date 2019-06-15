@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
 ms.openlocfilehash: fa2de14ada5d24531dfecc7f2f709a87f39ea6cb
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65826439"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Az Azure NetApp Files hálózattervezési irányelvei
@@ -31,7 +31,7 @@ Az Azure NetApp fájlok kötetek úgy tervezték, hogy egy speciális célú nev
 
 NetApp fájlokat az Azure-hálózat tervezése során meg kell ismernie néhány megfontolandó szempont.
 
-### <a name="constraints"></a>Megkötések
+### <a name="constraints"></a>Korlátozások
 
 Az alábbi funkciók jelenleg nem támogatott a NetApp Azure-fájlok: 
 
@@ -54,7 +54,7 @@ A következő táblázat ismerteti a NetApp fájlokat az Azure által támogatot
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
 |    A helyi virtuális hálózat kötetre kapcsolat    |    Igen    |         |
 |    Kapcsolat a kötethez társított virtuális hálózaton (ugyanabban a régióban)    |    Igen    |         |
-|    Kötethez társított virtuális hálózaton (régió vagy globális társviszony-létesítés) közötti kapcsolat    |    Nem    |    Egyik sem    |
+|    Kötethez társított virtuális hálózaton (régió vagy globális társviszony-létesítés) közötti kapcsolat    |    Nem    |    None    |
 |    Kapcsolat egy kötetre keresztül ExpressRoute-átjáró    |    Igen    |         |
 |    Kapcsolat a helyszíni és a kötet a küllő virtuális hálózat ExpressRoute-átjáró és a virtuális hálózatok közötti társviszony az átjárói átvitel    |    Nem    |    Hozzon létre egy meghatalmazott alhálózatot az agyi virtuális hálózat (az Azure VNet-átjáró)    |
 |    Kapcsolat a helyszíni és a egy küllő virtuális hálózatok közötti VPN-átjárón keresztül a kötet    |    Igen    |         |
@@ -95,7 +95,7 @@ A következő ábra szemlélteti egy natív Azure-környezetben:
 
 Alapszintű forgatókönyv létrehozása vagy csatlakozás az Azure Files-NetApp köteten az azonos virtuális hálózaton található virtuális gép (VM) a. Virtuális hálózat 2. a fenti ábrán 1. kötet jön létre egy meghatalmazott alhálózatot, és az alapértelmezett alhálózat csatlakoztathatók a virtuális gép 1.
 
-### <a name="vnet-peering"></a>VNet-társviszony
+### <a name="vnet-peering"></a>Társviszony létesítése virtuális hálózatok között
 
 Ha további virtuális hálózatok ugyanabban a régióban, amely a többi összes erőforrásokhoz való hozzáférésre van szükségük, a virtuális hálózatok hitelesítéssel lehet csatlakozni [virtuális hálózatok közötti társviszony](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) biztonságos kapcsolat az Azure infrastruktúráján keresztül. 
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: d80a58f1886ecc1ca2a735881fc5822f2fc0c53b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60826145"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Hozzáférés az Azure Media Services API Azure AD-hitelesítés  
@@ -32,7 +32,7 @@ A Media Services támogatja a [Azure Active Directory (Azure AD)-alapú hiteles�
 Ez a dokumentum áttekintést a Media Services API elérése REST vagy a .NET API-k használatával.
 
 > [!NOTE]
-> 2018. június 1. hozzáférés-vezérlési engedélyezési kivezettük.
+> 2018\. június 1. hozzáférés-vezérlési engedélyezési kivezettük.
 
 ## <a name="access-control"></a>Hozzáférés-vezérlés
 

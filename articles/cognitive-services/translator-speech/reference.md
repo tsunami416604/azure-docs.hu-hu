@@ -12,10 +12,10 @@ ms.date: 05/18/2018
 ms.author: v-jansko
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 3493f6d25461836d8f6e48ce4213b0f5b78b6372
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60539179"
 ---
 # <a name="translator-speech-api"></a>Translator Speech API
@@ -31,7 +31,7 @@ Translator Speech API, az ügyfél és a kiszolgáló közötti kétirányú kom
 ## <a name="1-getting-started"></a>1. Első lépések
 A Translator Text API kell eléréséhez [Regisztráljon a Microsoft Azure](translator-speech-how-to-signup.md).
 
-## <a name="2-authentication"></a>2. Authentication
+## <a name="2-authentication"></a>2. Hitelesítés
 
 Az előfizetési kulcs használatával hitelesíteni. A Translator Speech API-hitelesítés két módot támogat:
 
@@ -70,7 +70,7 @@ Ha a kapcsolat létrejött, az ügyfél kezdődik, hang, a szolgáltatás folyam
 
 Hangbemenet hullám hang formátumban van (HULLÁM, vagy több gyakran nevezik WAV miatt a fájlnév kiterjesztése). Az ügyfélalkalmazás egy csatorna, aláírt 16 bites PCM hang: 16 kHz mintát kell adatfolyam. Az ügyfél részére első készlete a WAV-fejléc tartalmazza. A 44 bájtos fejléc esetében egy csatornán aláírt 16 bites PCM stream, 16 kHz mintát a következő:
 
-|Offset|Value|
+|Offset|Érték|
 |:---|:---|
 |0 - 3|"RIFF"|
 |4 - 7|0|
@@ -166,14 +166,14 @@ Amikor egy ügyfélalkalmazás hang streamelés befejeződött, és az utolsó v
 
 ### <a name="parameters"></a>Paraméterek
 
-|Paraméter|Value|Leírás|Paraméter típusa|Adattípus|
+|Paraméter|Érték|Leírás|Paraméter típusa|Adattípus|
 |:---|:---|:---|:---|:---|
-|API-verzió|1.0|Az ügyfél által kért API-verzió. Engedélyezett értékek a következők: `1.0`.|lekérdezés   |string|
-|forrás:|(üres)   |Meghatározza a bejövő beszéd nyelvét. Az érték a nyelv azonosítók egyike a `speech` hatókörhöz. a válasz a nyelvek API.|lekérdezés|string|
+|api-version|1.0|Az ügyfél által kért API-verzió. Engedélyezett értékek a következők: `1.0`.|lekérdezés   |string|
+|from|(üres)   |Meghatározza a bejövő beszéd nyelvét. Az érték a nyelv azonosítók egyike a `speech` hatókörhöz. a válasz a nyelvek API.|lekérdezés|string|
 |erre:|(üres)|Meghatározza az átírt szöveget a lefordítandó nyelvét. Az érték a nyelv azonosítók egyike a `text` hatókörhöz. a válasz a nyelvek API.|lekérdezés|string|
 |funkciókkal|(üres)   |Az ügyfél által kiválasztott funkciók vesszővel elválasztott készletét. Elérhető funkciók:<ul><li>`TextToSpeech`: Megadja, hogy a szolgáltatás kell a lefordított hang, a végső lefordított mondatra.</li><li>`Partial`: Itt adhatja meg, hogy a szolgáltatás köztes felismerési eredményeket kell visszaadnia, míg a hanganyag adatfolyam-e a szolgáltatáshoz.</li><li>`TimingInfo`: Itt adhatja meg, hogy a szolgáltatás a társított minden egyes felismerés időzítési információkkal kell visszaadnia.</li></ul>Például egy ügyfél kellene megadnia `features=partial,texttospeech` részleges eredményeket, és a szöveg-hang transzformációs, de nincs időadatokat fogadásához. Vegye figyelembe, hogy a végső eredmények mindig továbbított az ügyfélnek.|lekérdezés|string|
 |Hang|(üres)|Milyen hangalapú használatához a fordítást, szöveg-hang transzformációs rendereléshez azonosítja. Értéke a válaszban a nyelvek API szövegfelolvasás hatókörből hangalapú azonosítók közül. Ha egy hang nincs megadva a rendszer automatikusan az válasszon egy Ha a szöveg-hang transzformációs szolgáltatás engedélyezve van.|lekérdezés|string|
-|Formátum|(üres)|Itt adhatja meg a szolgáltatás által visszaadott szöveg-hang transzformációs audio-adatfolyam formátuma. Az elérhető lehetőségek:<ul><li>`audio/wav`: Hullám audio-adatfolyam. Ügyfél használja a WAV-fejléc hangformátum megfelelően értelmezni. WAV hang-szöveg-hang transzformációs a 16 bites, egyetlen csatorna PCM 24kHz vagy 16kHz mintavételi arány.</li><li>`audio/mp3`: Audio MP3-adatfolyam.</li></ul>Az alapértelmezett szint a `audio/wav`.|lekérdezés|string|
+|format|(üres)|Itt adhatja meg a szolgáltatás által visszaadott szöveg-hang transzformációs audio-adatfolyam formátuma. Az elérhető lehetőségek:<ul><li>`audio/wav`: Hullám audio-adatfolyam. Ügyfél használja a WAV-fejléc hangformátum megfelelően értelmezni. WAV hang-szöveg-hang transzformációs a 16 bites, egyetlen csatorna PCM 24kHz vagy 16kHz mintavételi arány.</li><li>`audio/mp3`: Audio MP3-adatfolyam.</li></ul>Az alapértelmezett szint a `audio/wav`.|lekérdezés|string|
 |ProfanityAction    |(üres)    |Itt adhatja meg, hogyan kezelje a szolgáltatás a profanities ismeri el a speech. Érvényes műveletek a következők:<ul><li>`NoAction`: Mivel profanities marad.</li><li>`Marked`: A jelölő profanities helyén. Lásd: `ProfanityMarker` paramétert.</li><li>`Deleted`: Profanities törlődnek. Például ha a szó `"jackass"` úgy viselkedik, mint a vulgáris, a kifejezés `"He is a jackass."` lesz `"He is a .".`</li></ul>Alapértelmezés szerint meg van jelölve.|lekérdezés|string|
 |ProfanityMarker|(üres)    |Megadja, hogy észlelt profanities mikor kezeli `ProfanityAction` értékre van állítva `Marked`. Az érvényes beállítások a következők:<ul><li>`Asterisk`: Profanities cserélése karakterlánc `***`. Például ha a szó `"jackass"` úgy viselkedik, mint a vulgáris, a kifejezés `"He is a jackass."` lesz `"He is a ***.".`</li><li>`Tag`: Káromkodás egy cenzúrázása XML-címke veszi körül. Például ha a szó `"jackass"` úgy viselkedik, mint a vulgáris, a kifejezés `"He is a jackass."` lesz `"He is a <profanity>jackass</profanity>."`.</li></ul>A mező alapértelmezett értéke: `Asterisk`.|lekérdezés|string|
 |Engedélyezés|(üres)  |Az ügyfél tulajdonosi jogkivonat értékét adja meg. Használja az előtag `Bearer` értékét követi a `access_token` a hitelesítési jogkivonat-szolgáltatás által visszaadott értéket.|header   |string|
@@ -187,7 +187,7 @@ Amikor egy ügyfélalkalmazás hang streamelés befejeződött, és az utolsó v
 
 ### <a name="response-messages"></a>Parancsválasz-üzeneteket
 
-|HTTP-állapotkód|Ok|Válaszmodellje|Fejlécek|
+|HTTP-állapotkód|Reason|Válaszmodellje|Fejlécek|
 |:--|:--|:--|:--|
 |101    |WebSocket-frissítés.|Modell Példaérték <br/> Objektum {}|X-RequestId<br/>Hibaelhárítás céljából a kérelem azonosító érték.<br/>string|
 |400    |Hibás kérés. Ellenőrizze, hogy biztosítsa azok érvényes bemeneti paramétereket. A válasz objektum tartalmazza a hiba részletes leírását.|||

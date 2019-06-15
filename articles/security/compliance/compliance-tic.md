@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
 ms.openlocfilehash: bb186ab2700b147bee3a7dd81474409ccafb76fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60607920"
 ---
 # <a name="trusted-internet-connections-guidance"></a>Megbízható internetes kapcsolatok útmutató
@@ -63,8 +63,8 @@ A fő követelmény, hogy biztosítsa a TIC referenciaarchitektúra való megfel
 
 Az Azure IaaS TIC megfelelőségi van osztva a két fő lépést:
 
-- 1. lépés: Konfiguráció.
-- 2. lépés: Naplózás.
+- 1\. lépés: Konfiguráció.
+- 2\. lépés: Naplózás.
 
 ### <a name="azure-iaas-tic-compliance-configuration"></a>Az Azure IaaS TIC megfelelőségi: Konfiguráció
 

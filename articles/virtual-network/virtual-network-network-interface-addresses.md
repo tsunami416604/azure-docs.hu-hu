@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: kumud
 ms.openlocfilehash: 4582f7be8e48e493a1adcb8ffc6c3a8bfe43a58e
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65506379"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Hozzáadása, módosítása vagy törlése az Azure-beli hálózati adapter IP-címek
@@ -63,7 +63,7 @@ Hozzáadhat több [privát](#private) és [nyilvános](#public) [IPv4](#ipv4) sz
 
 |Eszköz|Parancs|
 |---|---|
-|CLI|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
+|parancssori felület|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/add-aznetworkinterfaceipconfig)|
 
 ## <a name="change-ip-address-settings"></a>IP-cím beállításainak módosítása
@@ -84,7 +84,7 @@ Előfordulhat, hogy kell az IPv4-cím, a hozzárendelési módszer módosítás�
 
 |Eszköz|Parancs|
 |---|---|
-|CLI|[az network nic ip-config update](/cli/azure/network/nic/ip-config)|
+|parancssori felület|[az network nic ip-config update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
 
 ## <a name="remove-ip-addresses"></a>Távolítsa el az IP-címek
@@ -100,7 +100,7 @@ Eltávolíthatja [privát](#private) és [nyilvános](#public) IP-címek a hál�
 
 |Eszköz|Parancs|
 |---|---|
-|CLI|[az network nic ip-config delete](/cli/azure/network/nic/ip-config)|
+|parancssori felület|[az network nic ip-config delete](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Remove-AzNetworkInterfaceIpConfig](/powershell/module/az.network/remove-aznetworkinterfaceipconfig)|
 
 ## <a name="ip-configurations"></a>IP-konfigurációk
@@ -129,7 +129,7 @@ Egy elsődleges IP-konfiguráció mellett egy hálózati adapter rendelkezhet nu
 
 A következő típusú IP-címeket rendelhet egy [IP-konfiguráció](#ip-configurations):
 
-### <a name="private"></a>Privát
+### <a name="private"></a>Magánjellegű
 
 Privát [IPv4](#ipv4) címét engedélyezése másik virtuális hálózathoz vagy más kapcsolattal rendelkező hálózatokban lévő erőforrásokkal kommunikálni a virtuális gép. Egy virtuális gépet nem lehet elérhető a bejövő, és nem képes a virtuális gép kimenő kommunikációra az egy privát [IPv6](#ipv6) cím, egy kivétellel. A virtuális gépek az Azure load balancer IPv6-cím használatával kommunikálhat. További információkért lásd: [részleteit és az IPv6 korlátozások](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#details-and-limitations).
 
@@ -143,7 +143,7 @@ Nincsenek olyan forgatókönyvekben, ahol azt a virtuális gép operációs rend
 1. Győződjön meg arról, hogy a virtuális gép egy cím fogadja az Azure DHCP-kiszolgálók. Ha már rendelkezik, állítsa vissza az IP-cím hozzárendelését a operációs rendszerben a DHCP, és indítsa újra a virtuális gépet.
 2. Állítsa le (szabadítsa fel) a virtuális gépet.
 3. Módosítsa az IP-címet az IP-konfiguráció Azure-ban.
-4. Virtuális gép elindítása.
+4. A virtuális gép elindításához.
 5. [Manuálisan konfigurálnia a](virtual-network-multiple-ip-addresses-portal.md#os-config) a másodlagos IP-címeket az operációs rendszer (és belül is az elsődleges IP-cím Windows belül) egyeznie beállítása Azure-ban.
 
 Az előző lépések, Azure-ban, és a egy virtuális gép operációs rendszerében a hálózati adapterhez rendelt magánhálózati IP-cím szerint változatlan marad. Nyomon követéséhez az előfizetésben, amely a manuálisan beállított IP-címek egy operációs rendszerből a virtuális gépek, fontolja meg a Azure-beli hozzáadását [címke](../azure-resource-manager/resource-group-using-tags.md) a virtuális gépekhez. Használhatja a "IP-cím hozzárendelése: Statikus", például. Így megtalálhatja a virtuális gépek az előfizetésben, amely a manuálisan beállított IP-címét az operációs rendszeren belül.
@@ -170,7 +170,7 @@ Dinamikus magánhálózati IPv4- és IPv6-alapú (nem kötelező) címek alapér
 - **Csak nyilvános**: Az Azure egyedi tartományból a címet rendel minden egyes Azure-régióban. Ha szeretné megtudni, melyik címtartományok egyes régiókban vannak rendelve, lásd: [a Microsoft Azure adatközpont IP-címtartományait](https://www.microsoft.com/download/details.aspx?id=41653). A cím módosíthatja, ha egy virtuális gép van leállítva (felszabadítva), majd újra elindult. Nyilvános IPv6-cím nem rendelhető hozzá egy IP-konfigurációt vagy hozzárendelési módszer használatával.
 - **Csak privát**: Az Azure fenntart minden egyes alhálózat címtartományának első négy címét, és a címek nem osztja ki. Az Azure az alhálózat címtartományának egyik erőforrásához rendeli hozzá a következő elérhető címet. Például, ha az alhálózat címtartománya 10.0.0.0/16, és a 10.0.0.0.4-10.0.0.14 közötti címek már hozzá lettek rendelve (a .0–.3 címek fenn vannak tartva), az Azure az erőforráshoz rendeli a 10.0.0.15 címet. Az alapértelmezett lefoglalási módszer a dinamikus. Kiosztás után a dinamikus IP-címek csak a hálózati adapter törlésekor, a virtuális hálózaton belüli másik alhálózatra történő kiosztáskor vagy a kiosztási módszer statikusra váltása és másik IP-cím megadása esetén szabadulnak fel. Alapértelmezés szerint, amikor a lefoglalási módszert dinamikusról statikusra váltja, az Azure statikus címként osztja ki az előzőleg dinamikusan kiosztott címet. Hozzárendelhet egy magánhálózati IPv6-címet, a dinamikus hozzárendelési módszer használatával.
 
-### <a name="static"></a>Statikus tartalom
+### <a name="static"></a>Statikus
 
 (Opcionális) egy nyilvános vagy magánhálózati statikus IPv4-címet rendelhet egy IP-konfigurációt. Nem rendelhető hozzá egy statikus nyilvános vagy magánhálózati IPv6-címet az IP-konfigurációjához. Milyen az Azure hozzárendeli az statikus nyilvános IPv4-címeket kapcsolatos további információkért lásd: [nyilvános IP-címek](virtual-network-public-ip-address.md).
 
@@ -194,7 +194,7 @@ Nulla vagy egy privát rendelhet [IPv6](#ipv6) egy másodlagos IP-konfiguráció
 
 Nyilvános IPv6-cím nem rendelhető hozzá egy elsődleges vagy másodlagos IP-konfigurációhoz.
 
-## <a name="skus"></a>Termékváltozatok
+## <a name="skus"></a>SKU-k
 
 Az alapszintű vagy standard termékváltozatú nyilvános IP-cím jön létre. Termékváltozat különbségek kapcsolatos további információkért lásd: [nyilvános IP-címek kezelése](virtual-network-public-ip-address.md).
 
@@ -204,7 +204,7 @@ Az alapszintű vagy standard termékváltozatú nyilvános IP-cím jön létre. 
 ## <a name="next-steps"></a>További lépések
 Hozzon létre egy virtuális gépet másik IP-konfigurációval, olvassa el a következő cikkeket:
 
-|Feladat|Eszköz|
+|Tevékenység|Eszköz|
 |---|---|
 |Több hálózati adapterrel rendelkező virtuális gép létrehozása|[Parancssori felület](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 |Hozzon létre egy egyetlen hálózati adapterrel rendelkező virtuális több IPv4-cím|[Parancssori felület](virtual-network-multiple-ip-addresses-cli.md), [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|

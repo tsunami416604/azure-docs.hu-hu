@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/28/2018
 ms.author: spelluru
 ms.openlocfilehash: bd62624406adb006fdcd7d59f72db3fb5e1848a0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60421801"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Az Azure Relay-metrikák az Azure Monitor (előzetes verzió)
@@ -41,7 +41,7 @@ Az idő függvényében segítségével figyelheti a mérőszámokat a [az Azure
 
 ![][1]
 
-Metrikák a névtér keresztül közvetlenül is elérheti. Ehhez válassza ki a névteret, és kattintson a **metrikák (előnézet)**. 
+Metrikák a névtér keresztül közvetlenül is elérheti. Ehhez válassza ki a névteret, és kattintson a **metrikák (előnézet)** . 
 
 Dimenziók támogató metrikákhoz a kívánt dimenzió értékkel kell szűrni.
 
@@ -60,16 +60,16 @@ Az összes értékeihez kapnak az Azure Monitor percenként. Az idő részletess
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| Sikert jelző Figyelőkapcsolatokra (előzetes verzió) | Az Azure Relay egy megadott időszakban végrehajtott sikeres figyelő kapcsolatok száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
-|Figyelőkapcsolatokra-Ügyfélhibái (előzetes verzió)|Figyelő kapcsolatok használata esetén egy meghatározott időtartamon belül az ügyfél-hibák száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
-|Figyelőkapcsolatokra-Kiszolgálóhibái (előzetes verzió)|A figyelő kapcsolatok egy meghatározott időtartamon belül a kiszolgáló hibák száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+| Sikert jelző Figyelőkapcsolatokra (előzetes verzió) | Az Azure Relay egy megadott időszakban végrehajtott sikeres figyelő kapcsolatok száma. <br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Figyelőkapcsolatokra-Ügyfélhibái (előzetes verzió)|Figyelő kapcsolatok használata esetén egy meghatározott időtartamon belül az ügyfél-hibák száma.<br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Figyelőkapcsolatokra-Kiszolgálóhibái (előzetes verzió)|A figyelő kapcsolatok egy meghatározott időtartamon belül a kiszolgáló hibák száma.<br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
 |Sikert jelző feladói kapcsolatokra (előzetes verzió)|Egy megadott időszakban végrehajtott sikeres küldő kapcsolatok száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
-|Feladói kapcsolatokra-Ügyfélhibái (előzetes verzió)|Küldő kapcsolatok használata esetén egy meghatározott időtartamon belül az ügyfél-hibák száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
-|Feladói kapcsolatokra-Kiszolgálóhibái (előzetes verzió)|Küldő kapcsolatok használata esetén egy meghatározott időtartamon belül kiszolgálóhibáinak száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
-|Figyelőkapcsolatokra-TotalRequests (előzetes verzió)|Egy megadott időszakban figyelő kapcsolatok teljes száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
-|Feladói kapcsolatokra-TotalRequests (előzetes verzió)|A kapcsolati kérelmek egy meghatározott időtartamon belül a feladó által végzett.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Feladói kapcsolatokra-Ügyfélhibái (előzetes verzió)|Küldő kapcsolatok használata esetén egy meghatározott időtartamon belül az ügyfél-hibák száma.<br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Feladói kapcsolatokra-Kiszolgálóhibái (előzetes verzió)|Küldő kapcsolatok használata esetén egy meghatározott időtartamon belül kiszolgálóhibáinak száma.<br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Figyelőkapcsolatokra-TotalRequests (előzetes verzió)|Egy megadott időszakban figyelő kapcsolatok teljes száma.<br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Feladói kapcsolatokra-TotalRequests (előzetes verzió)|A kapcsolati kérelmek egy meghatározott időtartamon belül a feladó által végzett.<br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
 |Aktív kapcsolatai (előzetes verzió)|Egy adott időszakban aktív kapcsolatok száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
-|Aktív figyelői (előzetes verzió)|Egy adott időszakban aktív figyelők száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Aktív figyelői (előzetes verzió)|Egy adott időszakban aktív figyelők száma.<br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
 |ListenerDisconnects (előzetes verzió)|Egy meghatározott időtartamon belül a leválasztott figyelők száma.<br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
 |SenderDisconnects (előzetes verzió)|Egy meghatározott időtartamon belül a leválasztott feladók száma.<br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
 

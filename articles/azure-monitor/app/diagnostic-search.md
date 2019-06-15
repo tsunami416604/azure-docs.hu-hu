@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: mbullwin
 ms.openlocfilehash: dfbaabd3d27804909334a7a370bcc89115e625c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60900059"
 ---
 # <a name="using-search-in-application-insights"></a>Az Application Insights keresés használata
@@ -114,7 +114,7 @@ Teljes szavakat, nem a karakterláncrész keresése. Speciális karakterek adni 
 
 | string | van *nem* által észlelt | Ezek találja |
 | --- | --- | --- |
-| HomeController.About |kezdőlap<br/>tartományvezérlő<br/>ki | homecontroller<br/>névjegy<br/>"homecontroller.about"|
+| HomeController.About |Kezdőlap<br/>tartományvezérlő<br/>ki | homecontroller<br/>tudnivalók<br/>"homecontroller.about"|
 |Egyesült Államok|UNI<br/>TED|Egyesült<br/>állapotok<br/>Egyesült Államok és<br/>"Egyesült Államok"
 
 Az alábbiakban a keresési kifejezéseket is használhatja:
@@ -166,4 +166,4 @@ Automatikusan azt ne naplózza a POST data, de használhat [TrackTrace vagy a na
 * [Összetett lekérdezéseket írni az Analyticsben](../../azure-monitor/log-query/get-started-portal.md)
 * [Naplók és egyéni telemetriát küldjön az Application Insightsba](../../azure-monitor/app/asp-net-trace-logs.md)
 * [Állítsa be a rendelkezésre állás és a válaszképesség tesztek](../../azure-monitor/app/monitor-web-app-availability.md)
-* [hibaelhárítással](../../azure-monitor/app/troubleshoot-faq.md)
+* [Hibaelhárítás](../../azure-monitor/app/troubleshoot-faq.md)

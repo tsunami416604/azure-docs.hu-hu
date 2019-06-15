@@ -9,10 +9,10 @@ ms.date: 03/19/2018
 ms.author: robb
 ms.subservice: ''
 ms.openlocfilehash: bbc5aaf02f4ab4388e816faaf8df536770f3302a
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65205633"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Az Azure Monitoring REST API-forgatókönyv
@@ -98,7 +98,7 @@ Használja a [Azure Monitor metrikadefiníciók REST API-val](https://docs.micro
 
 **Módszer**: GET
 
-**Kérés URI-ja**: https:\/\/management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{a(z) resourceGroupName}*/szolgáltatók/*{resourceProviderNamespace}* / *{a(z) resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions?api-version=*{} apiVersion}*
+**Kérés URI-ja**: https:\/\/management.azure.com/subscriptions/ *{subscriptionId}* /resourceGroups/ *{a(z) resourceGroupName}* /szolgáltatók/ *{resourceProviderNamespace}* / *{a(z) resourceType}* / *{resourceName}* /providers/microsoft.insights/metricDefinitions?api-version= *{} apiVersion}*
 
 Ha például lekérdezheti az Azure Storage-fiókhoz tartozó metrikadefiníciók, a kérelem lenne a következőképpen jelenik meg:
 
@@ -242,7 +242,7 @@ A metrika neve "értéke" (nem a "localizedValue") használja a szűrési kérel
 
 **Módszer**: GET
 
-**Kérés URI-ja**: https\://management.azure.com/subscriptions/*{előfizetés azonosítója}*/resourceGroups/*{erőforrás-csoport-neve}*/szolgáltatók/*{} erőforrás-szolgáltató – namespace}*/*{erőforrástípus}*/*{erőforrás neve}*/providers/microsoft.insights/metrics? metricnames =*{metrika}*& timespan =*{starttime és endtime}*& $filter =*{szűrő}*& resultType = metaadatok & api-version = *{apiVersion}*
+**Kérés URI-ja**: https\://management.azure.com/subscriptions/ *{előfizetés azonosítója}* /resourceGroups/ *{erőforrás-csoport-neve}* /szolgáltatók/ *{} erőforrás-szolgáltató – namespace}* / *{erőforrástípus}* / *{erőforrás neve}* /providers/microsoft.insights/metrics? metricnames = *{metrika}* & timespan = *{starttime és endtime}* & $filter = *{szűrő}* & resultType = metaadatok & api-version = *{apiVersion}*
 
 Például lettek kibocsátva a "API-név dimenzió" a "Tranzakció" metrika ahol dimenzió értékek listájának beolvasása a GeoType dimenzió = "Elsődleges" a megadott időtartományban a kérés a következő lenne:
 
@@ -315,7 +315,7 @@ A metrika neve "értéke" (nem a "localizedValue") használja a szűrési kérel
 
 **Módszer**: GET
 
-**Kérés URI-ja**: https://management.azure.com/subscriptions/ *{előfizetés azonosítója}*/resourceGroups/*{erőforrás-csoport-neve}*/szolgáltatók/*{erőforrás-szolgáltató – namespace}* / *{erőforrástípus}*/*{erőforrás neve}*/providers/microsoft.insights/metrics?metricnames=*{metrika}*& időtartam =*{starttime és endtime}*& $filter =*{szűrő}*& időköz =*{timeGrain}*& összesítési =*{} aggreation}*& api-version =*{apiVersion}*
+**Kérés URI-ja**: https://management.azure.com/subscriptions/ *{előfizetés azonosítója}* /resourceGroups/ *{erőforrás-csoport-neve}* /szolgáltatók/ *{erőforrás-szolgáltató – namespace}* / *{erőforrástípus}* / *{erőforrás neve}* /providers/microsoft.insights/metrics?metricnames= *{metrika}* & időtartam = *{starttime és endtime}* & $filter = *{szűrő}* & időköz = *{timeGrain}* & összesítési = *{} aggreation}* & api-version = *{apiVersion}*
 
 Például beolvasni az első 3 API-k, csökkenő érték szerint a "Tranzakciók" 5 perc széles során, a GeotType lett-e az "elsődleges", a kérelem a következő lenne:
 
@@ -394,7 +394,7 @@ Használja a [Azure Monitor metrikadefiníciók REST API-val](https://msdn.micro
 
 **Módszer**: GET
 
-**Kérés URI-ja**: https:\/\/management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{a(z) resourceGroupName}*/szolgáltatók/*{resourceProviderNamespace}* / *{a(z) resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions?api-version=*{} apiVersion}*
+**Kérés URI-ja**: https:\/\/management.azure.com/subscriptions/ *{subscriptionId}* /resourceGroups/ *{a(z) resourceGroupName}* /szolgáltatók/ *{resourceProviderNamespace}* / *{a(z) resourceType}* / *{resourceName}* /providers/microsoft.insights/metricDefinitions?api-version= *{} apiVersion}*
 
 Például egy Azure Logic App metrikadefinícióinak lekéréséhez a kérelem lenne a következőképpen jelenik meg:
 
@@ -467,7 +467,7 @@ Miután a rendelkezésre álló metrikadefinícióinak ismertek, ezt követően 
 
 **Módszer**: GET
 
-**Kérés URI-ja**: https://management.azure.com/subscriptions/ *{előfizetés azonosítója}*/resourceGroups/*{erőforrás-csoport-neve}*/szolgáltatók/*{erőforrás-szolgáltató – namespace}* / *{erőforrástípus}*/*{erőforrás neve}*/providers/microsoft.insights/metrics?$filter=*{szűrő}*& api-version =*{apiVersion}*
+**Kérés URI-ja**: https://management.azure.com/subscriptions/ *{előfizetés azonosítója}* /resourceGroups/ *{erőforrás-csoport-neve}* /szolgáltatók/ *{erőforrás-szolgáltató – namespace}* / *{erőforrástípus}* / *{erőforrás neve}* /providers/microsoft.insights/metrics?$filter= *{szűrő}* & api-version = *{apiVersion}*
 
 Például lekérdezheti az RunsSucceeded metrika adatpontok az adott időtartományt és a egy metrikaindítójának aggregációs időköze 1 óra, a kérelem a következő lesz a következő:
 
@@ -605,13 +605,13 @@ A fenti kóddal, a használandó erőforrás-azonosító a kívánt Azure-erőfo
 
 Az alábbi listában néhány példa az erőforrás azonosítója formátumokat a különböző Azure-erőforrásokat tartalmazza:
 
-* **IoT Hub** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Devices/IotHubs/*{iot-hub-name}*
-* **Elastic SQL Pool** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Sql/servers/*{pool-db}*/elasticpools/*{sql-pool-name}*
-* **SQL Database (v12)** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Sql/servers/*{server-name}*/databases/*{database-name}*
-* **A Service Bus** -/subscriptions/*{előfizetés azonosítója}*/resourceGroups/*{erőforrás-csoport-neve}*/providers/Microsoft.ServiceBus/*{namespace}* / *{servicebus-name}*
-* **A Virtual machine scale sets** -/subscriptions/*{előfizetés azonosítója}*/resourceGroups/*{erőforrás-csoport-neve}*/providers/Microsoft.Compute/virtualMachineScaleSets/ *{virtuális gép neve}*
-* **Virtuális gépek** -/subscriptions/*{előfizetés azonosítója}*/resourceGroups/*{erőforrás-csoport-neve}*/providers/Microsoft.Compute/virtualMachines/*{virtuális gép neve}*
-* **Az Event Hubs** -/subscriptions/*{előfizetés azonosítója}*/resourceGroups/*{erőforrás-csoport-neve}*/providers/Microsoft.EventHub/namespaces/*{} az eventhub-namespace}*
+* **IoT Hub** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Devices/IotHubs/ *{iot-hub-name}*
+* **Elastic SQL Pool** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Sql/servers/ *{pool-db}* /elasticpools/ *{sql-pool-name}*
+* **SQL Database (v12)** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Sql/servers/ *{server-name}* /databases/ *{database-name}*
+* **A Service Bus** -/subscriptions/ *{előfizetés azonosítója}* /resourceGroups/ *{erőforrás-csoport-neve}* /providers/Microsoft.ServiceBus/ *{namespace}* / *{servicebus-name}*
+* **A Virtual machine scale sets** -/subscriptions/ *{előfizetés azonosítója}* /resourceGroups/ *{erőforrás-csoport-neve}* /providers/Microsoft.Compute/virtualMachineScaleSets/ *{virtuális gép neve}*
+* **Virtuális gépek** -/subscriptions/ *{előfizetés azonosítója}* /resourceGroups/ *{erőforrás-csoport-neve}* /providers/Microsoft.Compute/virtualMachines/ *{virtuális gép neve}*
+* **Az Event Hubs** -/subscriptions/ *{előfizetés azonosítója}* /resourceGroups/ *{erőforrás-csoport-neve}* /providers/Microsoft.EventHub/namespaces/ *{} az eventhub-namespace}*
 
 Számos megközelítés lehetséges a beolvasása az erőforrás-azonosító, beleértve az Azure erőforrás-kezelő, a kívánt erőforrást megtekintése az Azure Portalon, és a PowerShell vagy az Azure CLI használatával.
 

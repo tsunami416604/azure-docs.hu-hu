@@ -14,10 +14,10 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
 ms.openlocfilehash: 3865bb10346c4a55adbf94a7df225eacf2c11252
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65519132"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Növekményes másolása az adatok másolása eszköz használatával LastModifiedDate alapján új és módosított fájlok
@@ -63,7 +63,7 @@ A Blob storage előkészítése az oktatóanyaghoz elvégezhesse ezeket a lépé
    
    ![Új adat-előállító hibaüzenete](./media/tutorial-copy-data-tool/name-not-available-error.png)
 
-   Ha a név értékével kapcsolatos hibaüzenet kap, adjon meg másik nevet az adat-előállítóhoz. Például: _**sajátneve**_**ADFTutorialDataFactory**. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+   Ha a név értékével kapcsolatos hibaüzenet kap, adjon meg másik nevet az adat-előállítóhoz. Például: _**sajátneve**_ **ADFTutorialDataFactory**. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
 3. Válassza ki az Azure **előfizetés** található, amely fog létrehozni az új adat-előállító. 
 4. **Erőforráscsoport:** hajtsa végre a következő lépések egyikét:
      

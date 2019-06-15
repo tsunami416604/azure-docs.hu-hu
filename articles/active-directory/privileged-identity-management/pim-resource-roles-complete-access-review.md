@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aee8ac3c2638ede559f8a1f9c51f2d6e62604998
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65602295"
 ---
 # <a name="complete-an-access-review-of-azure-resource-roles-in-pim"></a>A PIM az Azure-erőforrásszerepkörök hozzáférési felülvizsgálat befejezése
@@ -44,7 +44,7 @@ A hozzáférési felülvizsgálat részletei panelen számos kezelése, tekintse
 ### <a name="stop"></a>Leállítás
 Minden hozzáférési felülvizsgálatok a befejező dátum rendelkezik, de használhatja a **leállítása** gomb korai befejezéséhez. Minden felhasználó, aki még nem fejeződött be a felülvizsgálatot, az időpontig nem fog tudni a felülvizsgálat leállítása után fejezze be. Felülvizsgálat nem indítható újra, miután van állítva.
 
-### <a name="reset"></a>Visszaállítás
+### <a name="reset"></a>Alaphelyzetbe állítás
 Alaphelyzetbe állíthatja a hozzáférési felülvizsgálat rajta az összes döntések eltávolítása. Miután ezzel alaphelyzetbe állítja a hozzáférési felülvizsgálat, minden felhasználó be vannak-e megjelölve felülvizsgálatát újra. 
 
 ### <a name="apply"></a>Alkalmaz

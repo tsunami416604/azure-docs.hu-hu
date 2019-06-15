@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/20/2017
 ms.author: suhuruli
 ms.openlocfilehash: e700250a6ebcdb82f99c1b460a510811d7ceb96c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60719940"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>A Windows fejlesztői gépen a Linux Service Fabric-fürt beállítása
@@ -104,7 +104,7 @@ Egy helyi Docker-tároló beállításához és egy service fabric-fürt rajta v
     docker logs sftestcluster
     ```
 
-6. 5. lépés sikeres befejezése után léphet ``http://localhost:19080`` a Windows, és elvileg látnia kell a Service Fabric Explorert. Ezen a ponton csatlakozik a fürthöz, minden olyan eszközökkel, a Windows fejlesztői gépen, és a kijelölt Linux Service Fabric-fürtök üzembe helyezése. 
+6. 5\. lépés sikeres befejezése után léphet ``http://localhost:19080`` a Windows, és elvileg látnia kell a Service Fabric Explorert. Ezen a ponton csatlakozik a fürthöz, minden olyan eszközökkel, a Windows fejlesztői gépen, és a kijelölt Linux Service Fabric-fürtök üzembe helyezése. 
 
     > [!NOTE]
     > Az Eclipse beépülő modul jelenleg nem támogatott a Windows rendszeren. 

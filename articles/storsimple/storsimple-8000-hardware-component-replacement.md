@@ -16,10 +16,10 @@ ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: e05a37122647d4979089f0ba00b1fc15f9b84b0f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60321732"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>A StorSimple 8000 sorozatú eszköz a hardverkomponensek cseréje
@@ -46,7 +46,7 @@ A következő táblázat ismerteti az ezekben az oktatóanyagokban használt biz
 | ![Olvasható utasítások ikon](./media/storsimple-hardware-component-replacement/ReadInstructions.png) |**Először olvassa el az összes utasításokat** | |
 | ![Tipp veszély ikon](./media/storsimple-hardware-component-replacement/TipHazard.png) |**Veszély tipp** | |
 
-### <a name="before-you-begin"></a>Előzetes teendők
+### <a name="before-you-begin"></a>Előkészületek
 Ismerje meg az eszköz és a biztonsági ikonok a jelen oktatóanyagban használt biztonsági információ. Lépjen a [biztonságosan telepítéséhez, és a StorSimple-eszköz üzemeltetéséhez](storsimple-safety.md) teljes körű információkat. Ne feledje el áttekinteni a [biztonsági óvintézkedések](storsimple-safety.md#handling-precautions) előtt, a StorSimple-eszköz kezeléséhez.
 
 Mielőtt megkísérli cserélje le egy összetevő, vegye figyelembe a következőket.
@@ -106,8 +106,8 @@ Az elsődleges ház és a EBOD ház is rendelkezik a meghajtó szolgáltatója m
 |:--- |:--- |
 | 1 |PCM 0 |
 | 2 |PCM 1 |
-| 3 |0. vezérlő |
-| 4 |1. vezérlő |
+| 3 |Vezérlő 0 |
+| 4 |Vezérlő 1 |
 
 ![Az eszköz EBOD ház beépülő modulok csatlakozópanel meghibásodása](./media/storsimple-hardware-component-replacement/IC769599.png)
 

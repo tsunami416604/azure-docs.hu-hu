@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: be8c7fcebca224196d9eac7d22387989b1bdfd46
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60371924"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-users"></a>Első számlázási tulajdonosi jogokat, más felhasználók az Azure-előfizetések
@@ -35,7 +35,7 @@ Ez a cikk a Microsoft vevői szerződés számlázási fiók vonatkozik. [Ellen�
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
+2. A Keresés **Cost Management és számlázás**.
 
    ![Költségkezelés + számlázás az Azure portál keresési bemutató képernyőkép](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
@@ -64,7 +64,7 @@ Ez a cikk a Microsoft vevői szerződés számlázási fiók vonatkozik. [Ellen�
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
+2. A Keresés **Cost Management és számlázás**.
 
    ![Költségkezelés + számlázás az Azure portál keresési bemutató képernyőkép](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
@@ -81,20 +81,20 @@ Ez a cikk a Microsoft vevői szerződés számlázási fiók vonatkozik. [Ellen�
    |---------|---------|
    |Kérelem dátuma|Ha az átviteli kérelem elküldésének dátuma|
    |Címzett|A felhasználót, hogy a számlázási tulajdonosi kérelmet küldött e-mail-címe|
-   |Lejárati dátum|A dátum, amikor a kérelem lejár|
-   |status|Az átadási kérelem állapota|
+   |Lejárat dátuma|A dátum, amikor a kérelem lejár|
+   |Állapot|Az átadási kérelem állapota|
 
     Az átadási kérelem a következő állapotok egyike lehet:
 
-   |status|Meghatározás|
+   |Állapot|Meghatározás|
    |---------|---------|
-   |Folyamatban|A felhasználó még nem fogadja az átviteli kérelem|
+   |Folyamatban van|A felhasználó még nem fogadja az átviteli kérelem|
    |Feldolgozás|A felhasználó az átviteli kérelem jóváhagyva. A felhasználó által kiválasztott előfizetések számlázási első átkerülnek a számla szakasz|
-   |Befejezve| A számlázás a felhasználó által kiválasztott előfizetések átkerül a számla szakasz|
+   |Befejeződött| A számlázás a felhasználó által kiválasztott előfizetések átkerül a számla szakasz|
    |Befejeződött hibákkal|A vonatkozó kérelem befejeződött, de az egyes előfizetések, a felhasználó által kiválasztott számlázási nem helyezhető át.|
    |Elévült|A felhasználó nem fogadja el a kérelmet az idő és lejárt|
    |Megszakítva|Valaki hozzáférő az átviteli kérelem a kérelem meg lett szakítva|
-   |Elutasítva|A felhasználó elutasította az átviteli kérelem|
+   |Elutasított|A felhasználó elutasította az átviteli kérelem|
 
 6. Válassza ki a átviteli kérést, a részletek megtekintéséhez. Az átviteli részleteit megjelenítő oldalon az alábbi információkat jeleníti meg:
    <!-- Todo - Add a screenshot -->
@@ -116,7 +116,7 @@ A következő szakasz az előfizetések átvitele további információkat tarta
 
 Az előfizetés Azure-szolgáltatások folyamatosan futó megszakítás nélkül. A Microsoft csak a számlázást, a felhasználó által átvitele Azure-előfizetések átmenet.
 
-### <a name="disabled-subscriptions"></a>Letiltott előfizetések
+### <a name="disabled-subscriptions"></a>Letiltott előfizetés
 
 Letiltott előfizetésekbe nem helyezhető át. Az előfizetések a számlázási tulajdonosi aktív állapotban kell lennie.
 
@@ -159,7 +159,7 @@ SaaS-termékek az előfizetés átadása nem történik. Kérje meg a felhaszná
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>A Microsoft Ügyfélszerződéséhez való hozzáférés ellenőrzése
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással
+## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
 
 Ha segítségre van szüksége, kell [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: juliako
 ms.openlocfilehash: ebcda6026f79bc88df91471d8be88316ba57bfc6
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65411372"
 ---
 # <a name="streaming-endpoint-origin-errors"></a>Streamelési végpontot (forrás) hibák 
@@ -48,7 +48,7 @@ A kérelem nem engedélyezett a következő okok egyike miatt:
 |MPE_ENC_ENCRYPTION_REQUIRED |0x8088021E |Titkosításra szükség a tartalomhoz, Objektumtovábbítási szabályzat megadása kötelező a kimeneti formátum. |
 |MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY |0x8088024D |Titkosítás nem módosíthatók a kézbesítési szabályzat-beállítások állítja be. |
 
-## <a name="404-not-found"></a>404 Nem található
+## <a name="404-not-found"></a>404 – Nem található
 
 A művelet megpróbálta hatókör olyan erőforrást, amely már nem létezik. Ha például az erőforrás már törölve lett.
 

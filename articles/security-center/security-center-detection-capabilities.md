@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 12/2/2018
 ms.author: rkarlin
 ms.openlocfilehash: 8cd76909c9ce15a97de4ea5af3b21ac120058dd3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60705871"
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Az Azure Security Center észlelési funkciói
 Ebben a dokumentumban megismerkedhet az Azure Security Center speciális észlelési funkciót, amely segít azonosítani a Microsoft Azure-erőforrások – Windows és Linux - irányuló aktív fenyegetéseket, és a gyors reagálás lehetőségeibe elemzéseket biztosít.
 
-A speciális észlelési funkciók az Azure Security Center Standard rétegben érhetők el. Az ingyenes próbaverzió is elérhető. A választott tarifacsomagról a [Biztonsági szabályzat](tutorial-security-policy.md) beállításainál frissíthet. A díjszabással kapcsolatos további tudnivalókért keresse fel a [Security Center oldalát](https://azure.microsoft.com/pricing/details/security-center/).
+A speciális észlelési funkciók az Azure Security Center Standard rétegben érhetők el. Ennek létezik egy ingyenesen elérhető próbaverziója. A választott tarifacsomagról a [Biztonsági szabályzat](tutorial-security-policy.md) beállításainál frissíthet. A díjszabással kapcsolatos további tudnivalókért keresse fel a [Security Center oldalát](https://azure.microsoft.com/pricing/details/security-center/).
 
 
 ## <a name="responding-to-todays-threats"></a>Reagálás a napjainkban felmerülő fenyegetésekre

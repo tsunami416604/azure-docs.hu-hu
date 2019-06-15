@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: shlo
 ms.openlocfilehash: 09f80f69857ae17a0136229fe9bf13d4f63e7096
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65151075"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Hozzon létre egy eseményindítót, amely egy ütemezés szerint futtatja a folyamatot
@@ -44,7 +44,7 @@ Létrehozhat egy **ütemezési eseményindító** ütemezni egy folyamat futtat�
 3. Az a **új eseményindító** lapon, tegye a következőket: 
 
     1. Ellenőrizze, hogy **ütemezés** van kiválasztva a **típus**. 
-    2. Adja meg a kezdő dátum és idő a trigger **Start dátuma (UTC)**. Időintervallumként az aktuális dátum és idő alapértelmezés szerint. 
+    2. Adja meg a kezdő dátum és idő a trigger **Start dátuma (UTC)** . Időintervallumként az aktuális dátum és idő alapértelmezés szerint. 
     3. Adja meg **ismétlődési** az eseményindító. (Minden percenként, óránként, naponta, hetente, és havonta) a legördülő listából válassza ki egy értéket. A mezőben adja meg a Szorzó. Jelölje be például, ha azt szeretné, hogy az eseményindító esetében 15 percenként egyszer futtatni, akkor **minden perc**, és adja meg **15** a szövegmezőben. 
     4. Az a **záró** mező, ha nem szeretné, hogy adja meg az eseményindító területén válassza a befejező dátum/idő **nem teljes**. Adja meg egy záró dátum idő **dátum**, és adja meg a záró dátum és idő, és kattintson a **alkalmaz**. Minden egyes folyamatfuttatás költséggel jár. Ha teszteli, előfordulhat, hogy szeretne biztosítani, hogy a folyamat akkor aktiválódik, csak néhány alkalommal. Arról is győződjön meg, hogy elegendő idő áll rendelkezésre a folyamat futtatásához a közzététel időpontja és a befejezés időpontja között. Az eseményindító csak a Data Factoryban való közzététel után lesz aktív, a felhasználói felületen történő mentéskor még nem.
 

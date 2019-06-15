@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: iainfou
 ms.openlocfilehash: e974c47d1dfb04f66b622c64a7143d00de87c4cb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60467544"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Szerepköralapú hozzáférés-vezérlés és az Azure Active Directory-identitásokkal használatával az Azure Kubernetes Service-fürt erőforrásokhoz való hozzáférés vezérlése
@@ -20,7 +20,7 @@ Az Azure Kubernetes Service (AKS) beállítható úgy, hogy a felhasználók hit
 
 Ez a cikk bemutatja, hogyan használhatja az Azure AD biztonságicsoport-tagság férhet hozzá a névterek és a fürt erőforrásai az AKS-fürtben Kubernetes RBAC használatával. Példa csoportok és felhasználók jönnek létre az Azure ad-ben, majd a szerepkörök és RoleBindings jönnek létre az AKS-fürtöt hozhat létre és -erőforrások megtekintése a megfelelő engedélyek megadására.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk feltételezi, hogy egy meglévő AKS-fürtöt az Azure AD-integrációval engedélyezve van. Ha egy AKS-fürtre van szüksége, tekintse meg [integrálása az Azure Active Directory az aks-sel][azure-ad-aks-cli].
 

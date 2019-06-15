@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: magoedte
 ms.openlocfilehash: c7c0d2e3fb818f74a65502674188c523d23729e8
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606741"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights-összekötő felügyeleti megoldás (elavult)
@@ -142,7 +142,7 @@ Perspektíva összetevők frissülnek, attól függően, a keresési lekérdezé
 
 Application Insights-összekötő panelek úgy tervezték, hogy lehetővé teszi a kiválasztott Application Insights alkalmazáshoz forgáspont *használhatja az Azure Portalon*. A megoldás magas szintű felügyeleti platform, amely segít egy alkalmazás hibaelhárításával foglalkozó szakaszt is használhatja. Amikor megjelenik a csatlakoztatott alkalmazások valamelyikében egy potenciális problémát, vagy részletes elemzéseket készíthet, a Log Analytics-keresést is, vagy Ön is kimutatás, közvetlenül az Application Insights alkalmazást az.
 
-Forgáspont, kattintson a három pontra (**...** ), amely akkor jelenik meg az egyes sorok végén található, és válassza ki **nyissa meg az Application Insights**.
+Forgáspont, kattintson a három pontra ( **...** ), amely akkor jelenik meg az egyes sorok végén található, és válassza ki **nyissa meg az Application Insights**.
 
 >[!NOTE]
 >**Nyissa meg az Application Insights** nem érhető el az Azure Portalon.

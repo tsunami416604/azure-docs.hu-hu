@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/23/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 8ceb84ab9e9c41ff6a9cbde62571fb12ae67d790
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65596078"
 ---
 # <a name="durable-functions-20-preview-azure-functions"></a>Durable Functions 2.0 – előzetes verzió (az Azure Functions)
@@ -26,7 +26,7 @@ Durable Functions az Azure Functions szolgáltatása általánosan elérhető (a
 > [!NOTE]
 > Durable Functions 2.0 kiadás, amely jelenleg ezen előzetes verziójú funkciók tartoznak egy **kiadás az alfa minőségi** a több kompatibilitástörő változásokat. Az Azure Functions tartós kiterjesztési csomagot hoz létre található formájában verzióival nuget.org webhelyen **2.0.0-alpha**. Ezek a buildek nem megfelelő az éles számítási feladatokat, és későbbi kiadásokban további kompatibilitástörő változásokat tartalmazhat.
 
-## <a name="breaking-changes"></a>Meghibásodást okozó változások
+## <a name="breaking-changes"></a>Kompatibilitástörő változások
 
 Durable Functions 2.0 számos kompatibilitástörő változásokat jelennek meg. Meglévő alkalmazások kódmódosítás nélkül Durable Functions 2.0-val kompatibilis nem várt. Ez a szakasz néhány változását ismerteti:
 
@@ -154,8 +154,8 @@ Entitás-támogatás magában foglalja a több API-t. Egy van egy új API defini
 Egy entitás egy művelet végrehajtását ezekről a tagokról meghívhatja a környezeti objektumon (`IDurableEntityContext` a .NET-ben):
 
 * **OperationName**: a művelet nevét olvassa be.
-* **GetInput\<T >**: a bemeneti adatok beolvasása a művelethez.
-* **GetState\<T >**: az entitás aktuális állapotát.
+* **GetInput\<T >** : a bemeneti adatok beolvasása a művelethez.
+* **GetState\<T >** : az entitás aktuális állapotát.
 * **SetState**: frissíti az entitás állapotát.
 * **SignalEntity**: egyirányú üzenetet küld az entitáshoz.
 * **Önkiszolgáló**: lekérdezi az entitás azonosítója.
@@ -172,7 +172,7 @@ Kevesebb korlátozott, mint a vezénylések műveletek a következők:
 
 Tartós entitásokat is elindítható a normál funkciók segítségével a `orchestrationClient` kötés (`IDurableOrchestrationClient` a .NET-ben). A következő módszereket támogatja:
 
-* **ReadEntityStateAsync\<T >**: beolvassa egy entitás állapotát.
+* **ReadEntityStateAsync\<T >** : beolvassa egy entitás állapotát.
 * **SignalEntityAsync**: egyirányú üzenetet küld egy entitás, és megvárja, hogy a várólistán lévő el.
 
 Ezek a metódusok teljesítmény rangsorolhatja konzisztencia keresztül: `ReadEntityStateAsync` térhet vissza a régi értéket, és `SignalEntityAsync` adhatnak vissza, mielőtt befejezte a műveletet. Ezzel szemben a vezénylések megismernie entitások (következő) módon erősen konzisztens.
@@ -183,7 +183,7 @@ Vezénylések férhetnek hozzá a context objektumot használatával. Ezek egyir
 
 * **SignalEntity**: egyirányú üzenetet küld az entitáshoz.
 * **CallEntityAsync**: egy üzenetet küld egy entitás, és megvárja, amíg egy választ, amely jelzi, hogy a művelet befejeződött.
-* **CallEntityAsync\<T >**: egy üzenetet küld egy entitás, és megvárja, amíg egy választ, amely tartalmazza a T. típusú eredményt
+* **CallEntityAsync\<T >** : egy üzenetet küld egy entitás, és megvárja, amíg egy választ, amely tartalmazza a T. típusú eredményt
 
 Kétirányú kommunikáció használatakor az olyan kivételek, a művelet végrehajtása közben lépett fel is továbbítják a hívó vezénylési és rethrown. Ezzel szemben a fire és elfelejt használatakor az kivételek nem érvényesek.
 

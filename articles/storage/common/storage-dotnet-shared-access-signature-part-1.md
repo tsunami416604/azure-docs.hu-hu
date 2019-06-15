@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 8bee0426f171b0fdb7793d18c352649928fdb2e8
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65907196"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Közös hozzáférésű jogosultságkódok (SAS) használata
@@ -89,7 +89,7 @@ SAS-tokeneket és a fiók SAS tartalmazza néhány gyakori paramétereket, és i
 * **Storage-erőforrások.** Tárolási erőforrások, amelynek is adhat hozzáférést egy olyan SAS a következők:
   * Tárolók és blobok
   * Fájlmegosztásokat és fájlokat
-  * Várólisták
+  * Üzenetsorok
   * Táblák és táblaentitások tartományát.
 
 ### <a name="parameters-for-an-account-sas-token"></a>Egy fiók SAS-token paraméterek
@@ -113,13 +113,13 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&s
 | --- | --- | --- |
 | Blob URI |`https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt` |A blob-cím. Vegye figyelembe, hogy HTTPS használatát javasoljuk. |
 | Storage services verziója |`sv=2015-04-05` |Tárolási szolgáltatások 2012-02-12-es verzió, és később, ez a paraméter azt jelzi, verziót kell használni. |
-| Kezdő időpont |`st=2015-04-29T22%3A18%3A26Z` |A megadott UTC időben. Ha azt szeretné, hogy a SAS azonnal érvényes legyen, hagyja ki a kezdési időpontot. |
-| Lejárat időpontja |`se=2015-04-30T02%3A23%3A26Z` |A megadott UTC időben. |
+| Kezdési idő |`st=2015-04-29T22%3A18%3A26Z` |A megadott UTC időben. Ha azt szeretné, hogy a SAS azonnal érvényes legyen, hagyja ki a kezdési időpontot. |
+| Lejárati idő |`se=2015-04-30T02%3A23%3A26Z` |A megadott UTC időben. |
 | Resource |`sr=b` |Egy blobot az erőforrás. |
 | Engedélyek |`sp=rw` |A SAS által adott engedélyek Read (r) tartalmazza, és írás (w). |
 | IP-címtartomány |`sip=168.1.5.60-168.1.5.70` |Az IP-címek tartománya, amelyből a rendszer egy kérelmet fogad. |
 | Protocol |`spr=https` |Csak a HTTPS PROTOKOLLT használó kérelmek engedélyezettek. |
-| Aláírás |`sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D` |A blob való hozzáférés engedélyezésére használja. Az aláírás az egy HMAC-val egy karakterlánc-bejelentkezési és a kulcsot az SHA256 algoritmust a számított, és ezután a Base64-kódolással kódolva. |
+| aláírás |`sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D` |A blob való hozzáférés engedélyezésére használja. Az aláírás az egy HMAC-val egy karakterlánc-bejelentkezési és a kulcsot az SHA256 algoritmust a számított, és ezután a Base64-kódolással kódolva. |
 
 ### <a name="account-sas-uri-example"></a>Fiók SAS URI-t – példa
 

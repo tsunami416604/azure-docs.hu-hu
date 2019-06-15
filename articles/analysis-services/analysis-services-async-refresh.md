@@ -9,10 +9,10 @@ ms.date: 05/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 63b64df457af5b7d3d2bd5901f73d89ccd3c913a
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65506976"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>A REST API-val aszinkron Adatfrissítés
@@ -23,7 +23,7 @@ Adatfrissítés műveletek számos tényező befolyásolja, többek között az 
 
 A REST API az Azure Analysis Services lehetővé teszi, hogy a data-frissítési műveletek aszinkron módon kell elvégezni. A REST API-val, az ügyfélalkalmazások hosszú ideig futó HTTP-kapcsolatok nem szükséges. Megbízhatóság, például az automatikus újrapróbálkozásokat és kötegelt véglegesítéseket más beépített funkcióit is vannak.
 
-## <a name="base-url"></a>Alap URL-cím
+## <a name="base-url"></a>Alap URL-címe
 
 Az alap URL-cím ezt a formátumot követi:
 
@@ -188,8 +188,8 @@ A szinkronizálási művelet állapotának ellenőrzéséhez használja a GET-ve
 
 - 0: Replikálás alatt. Adatbázisfájlok replikálva egy célmappát.
 - 1: Rehidratálása. Az adatbázis csak olvasható server-példány a van folyamatban rehydrated.
-- 2: Elkészült. A szinkronizálási művelet sikeresen befejeződött.
-- 3: Sikertelen. A szinkronizálási művelet sikertelen volt.
+- 2: Befejeződött. A szinkronizálási művelet sikeresen befejeződött.
+- 3: Nem sikerült. A szinkronizálási művelet sikertelen volt.
 - 4: Véglegesítése. A szinkronizálási művelet befejeződött, de működik-e törléshez szükséges lépéseket.
 
 ## <a name="code-sample"></a>Kódminta
@@ -203,7 +203,7 @@ A szinkronizálási művelet állapotának ellenőrzéséhez használja a GET-ve
 
 A kódminta használ [szolgáltatásnév](#service-principal) hitelesítést.
 
-### <a name="service-principal"></a>Szolgáltatásnév
+### <a name="service-principal"></a>Egyszerű szolgáltatás
 
 Lásd: [szolgáltatásnév létrehozása – Azure portal](../active-directory/develop/howto-create-service-principal-portal.md) és [szolgáltatásnév hozzáadása kiszolgálói rendszergazdai szerepkörhöz](analysis-services-addservprinc-admins.md) további információ az egyszerű szolgáltatás beállítása és a szükséges engedélyeket az Azure-AS . Miután végrehajtotta a lépéseket, hajtsa végre az alábbi kiegészítő lépéseket:
 

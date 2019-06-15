@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
 ms.openlocfilehash: 819f6ee4ab079361279a567bceeb74c33fe14186
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60952383"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Az Azure Monitor naplóira teljesítményének figyelése
@@ -76,7 +76,7 @@ Töltse le, és módosítsa a sablon üzembe helyezése egy fürtöt, amely a le
 
 Most, hogy hozzáadta a Log Analytics-ügynököket, lépjen a átváltunk a Log Analytics-portálon választhat, mely teljesítményszámlálókat szeretné gyűjteni.
 
-1. Az Azure Portalon nyissa meg az erőforráscsoport, amelyben létrehozta a Service Fabric-elemzés megoldás. Válassza ki **ServiceFabric\<nameOfLog AnalyticsWorkspace\>**.
+1. Az Azure Portalon nyissa meg az erőforráscsoport, amelyben létrehozta a Service Fabric-elemzés megoldás. Válassza ki **ServiceFabric\<nameOfLog AnalyticsWorkspace\>** .
 
 2. Kattintson a **Log Analytics** elemre.
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 88cbd942413757388278d69d728d407271e4c4a3
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606391"
 ---
 # <a name="core-reports-from-verizon"></a>Alapvető jelentések a Verizontól
@@ -27,9 +27,9 @@ ms.locfileid: "65606391"
 
 A Verizon alapvető jelentések a kezelés portálján a Verizon profilok, a CDN az alábbi jelentések a használati minták láthatja:
 
-* Sávszélesség
+* A sávszélesség
 * Átvitt adatok
-* Találatok
+* Találatok száma
 * Gyorsítótárak Allapota
 * Gyorsítótárbeli találatok arányát
 * IPV4/IPV6 Data Transferred
@@ -50,7 +50,7 @@ A Verizon alapvető jelentések a kezelés portálján a Verizon profilok, a CDN
 
 4. Ha azt szeretné, exportálhatja az adatokat az Excel-formátumban, kattintson a fenti Excelben ikonra a **Go** gombra.
 
-## <a name="bandwidth"></a>Sávszélesség
+## <a name="bandwidth"></a>A sávszélesség
 A sávszélesség-jelentést a graph és az adatok táblázatként, amely azt jelzi, hogy a CDN sávszélesség-használat a HTTP és HTTPS egy adott idő alatt (Mbps) áll. A sávszélesség-használat összes POP vagy egy adott POP tekintheti meg. Ez a jelentés lehetővé teszi a forgalomnövekedések és a POP-disztribúciója megtekintését.
 
 Az a **Élcsomópontok** listáról válassza ki **összes Élcsomópontok** , tekintse meg a forgalmat az összes csomóponton, vagy válasszon ki egy adott régióban.
@@ -96,7 +96,7 @@ Lejárt gyorsítótárbeli találatok csökkentése érdekében állítsa be az 
   
   * A Cache-Control: s-maxage
   * A Cache-Control: max-age
-  * Elévül
+  * Lejár
 * TCP_MISS: Ez az állapot azt jelzi, hogy a gyorsítótárazott verziót, a kért objektum nem található a legközelebbi az ügyfélnek a jelenléti pont. Az eszköz az eredeti kiszolgálóra vagy-forráskiszolgáló pajzs kérik. Ha a forráskiszolgáló és a forráskiszolgáló pajzs ad vissza egy eszköz, az ügyfélprogram és az ügyfél és a peremhálózati kiszolgáló gyorsítótárazza. Ellenkező esetben nem – 200-as állapotkódot (például 403 Tiltott vagy 404-es nem található) adja vissza.
 * TCP_EXPIRED_HIT: Ez az állapot, amikor az ügyfél egy kérelem egy eszköz és a egy lejárt TTL célzó kiszolgálása közvetlenül a jelenléti pontra Irányíthatja a rendszer jelenti. Például, ha az eszköz által a max-age lejárt. 
   

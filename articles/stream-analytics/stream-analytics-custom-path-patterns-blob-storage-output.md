@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
 ms.openlocfilehash: e06313cf83768421bedc6c7baddd30c2ef2e4846
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65789421"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Az Azure Stream Analytics egyéni blob kimeneti particionálása
@@ -74,7 +74,7 @@ A következő formátumban specifikátor jogkivonatok használhatók önállóan
 
 |Specifikátor formátu.   |Leírás   |Eredmények példa időben 2018-01-02T10:06:08|
 |----------|-----------|------------|
-|{datetime:yyyy}|Az év négyjegyű számként.|2018.|
+|{datetime:yyyy}|Az év négyjegyű számként.|2018\.|
 |{datetime:MM}|01-től 12 hónap|01|
 |{datetime:M}|Hónap 1 és 12|1|
 |{datetime:dd}|01-31 nap|02|

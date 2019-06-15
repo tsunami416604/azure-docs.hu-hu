@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: dc2126276e3e8e0d35ce8ed1f835544386659eff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60736181"
 ---
 # <a name="url-rewrite-custom-forwarding-path"></a>URL-átírás (egyéni továbbítási útvonal)
@@ -50,7 +50,7 @@ Például, hogy olvassa el a második sorban, ha azt van arról, hogy a bejövő
 | www\.contoso.com/foo/**bar** | /foo/\*                  | /**bar**   | /fwd/**bar**   | /foo/**bar**   | /foo/bar/**bar**   |
 
 
-## <a name="optional-settings"></a>Nem kötelező beállítások
+## <a name="optional-settings"></a>Választható beállítások
 Nincsenek további nem kötelező beállításokat is megadhat az adott útválasztási szabály beállítások:
 
 * **Konfigurációs gyorsítótár** – Ha le van tiltva, vagy nincs megadva, majd a kérelmek, amelyek megfelelnek a útválasztási szabály nem próbálja meg használni a gyorsítótárazott tartalmat, és ehelyett mindig beolvassa a háttérbeli. Tudjon meg többet [bejárati ajtajának gyorsítótárazást](front-door-caching.md).

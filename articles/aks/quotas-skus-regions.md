@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: iainfou
 ms.openlocfilehash: 8d4ed8f791858747814972bcf16a9672a7f12610
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65901461"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Kvóták, korlátozások a virtuális gép mérete és régiók rendelkezésre állása az Azure Kubernetes Service (AKS)
@@ -45,7 +45,7 @@ AKS-fürt egyes csomópontjaihoz például vCPU- és memóriahasználatot szám�
 
 További információ a Virtuálisgép-típusok és a számítási erőforrások: [az Azure-beli virtuális gépek méretei][vm-skus].
 
-## <a name="region-availability"></a>Regionális elérhetőség
+## <a name="region-availability"></a>Régiónkénti elérhetőség
 
 A teljes lista arról, hova üzembe helyezése és futtatása a fürtök, lásd: [AKS-régiók rendelkezésre állása][region-availability].
 

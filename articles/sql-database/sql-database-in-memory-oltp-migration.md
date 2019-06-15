@@ -13,10 +13,10 @@ ms.reviewer: MightyPen
 manager: craigg
 ms.date: 11/07/2018
 ms.openlocfilehash: 03e5540e34cd99d2b201bc763f13b42c7fa20bf7
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65785313"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>Az SQL Database az alkalmazás teljesítményének javításához használja In-Memory OLTP
@@ -29,7 +29,7 @@ ms.locfileid: "65785313"
 
 Kövesse az alábbi lépéseket a meglévő adatbázisban In-Memory OLTP elfogadására.
 
-## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>1. lépés: Győződjön meg arról, a prémium és üzletileg kritikus szintű adatbázist használ
+## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>1\. lépés: Győződjön meg arról, a prémium és üzletileg kritikus szintű adatbázist használ
 
 A memóriában tárolt OLTP-k csak a prémium és üzletileg kritikus szintű adatbázisok használata támogatott. A memóriában támogatott, ha a visszaadott eredmény: 1 (0):
 
@@ -41,7 +41,7 @@ SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
 
 
 
-## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>2. lépés: Az In-Memory OLTP áttelepítendő objektumok azonosítása
+## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>2\. lépés: Az In-Memory OLTP áttelepítendő objektumok azonosítása
 SSMS tartalmaz egy **tranzakciós teljesítmény Hibaelemzés áttekintése** jelentést, amely egy adatbázis egy aktív számítási feladatok vonatkozóan futtathat le. A jelentés azonosítja, táblák és tárolt eljárások, amelyek a deduplikációra kijelölt In-Memory OLTP való migráláshoz.
 
 Az ssms-ben, a jelentés létrehozásához:
@@ -51,7 +51,7 @@ Az ssms-ben, a jelentés létrehozásához:
 
 További információkért lásd: [táblázat vagy tárolt eljárás kell használatát. A memóriában tárolt OLTP-k meghatározása](https://msdn.microsoft.com/library/dn205133.aspx).
 
-## <a name="step-3-create-a-comparable-test-database"></a>3. lépés: Egy hasonló teszt adatbázis létrehozása
+## <a name="step-3-create-a-comparable-test-database"></a>3\. lépés: Egy hasonló teszt adatbázis létrehozása
 Tegyük fel, hogy a jelentés azt jelzi, hogy az adatbázis rendelkezik, melyekhez hasznos lenne alakít át egy memóriaoptimalizált tábla. Azt javasoljuk, hogy először tesztelje a jelzés tesztelésével megerősítéséhez.
 
 Az éles adatbázis egy tesztelési másolatot van szüksége. A test-adatbázis ugyanazon a szinten szolgáltatási szint, az éles adatbázis kell lennie.
@@ -67,7 +67,7 @@ Tesztelés megkönnyítése a Teljesítménybeállítások az adatbázis tesztel
         MEMORY_OPTIMIZED_ELEVATE_TO_SNAPSHOT = ON;
    ```
 
-## <a name="step-4-migrate-tables"></a>4. lépés: Táblák áttelepítése
+## <a name="step-4-migrate-tables"></a>4\. lépés: Táblák áttelepítése
 Kell létrehozni, és töltse ki a vizsgálni kívánt tábla memóriaoptimalizált másolatát. Létrehozhat használatával:
 
 * A hasznos memória optimalizálási varázsló az ssms-ben.
@@ -151,7 +151,7 @@ A migrálási lépések a következők:
 4. Nevezze át a régi tárolt eljárás sp_rename szintaxis használatával. Vagy egyszerűen dobja el azt.
 5. A szerkesztett hozzon létre ELJÁRÁST a T-SQL-szkript futtatásához.
 
-## <a name="step-6-run-your-workload-in-test"></a>6. lépés: A számítási feladatok futtatásához tesztelés
+## <a name="step-6-run-your-workload-in-test"></a>6\. lépés: A számítási feladatok futtatásához tesztelés
 A számítási feladatok futtatásához a teszt-adatbázis, amely hasonló az éles adatbázis a futó számítási feladatokra. Ez a teljesítmény nyereség érhető el, hogy a táblák és tárolt eljárások számára memóriabeli funkciójának használatát kiderül.
 
 A számítási feladatok nagyobb attribútumai a következők:
@@ -163,7 +163,7 @@ Testre szabni, és a tesztelési számítási feladatok futtatásához, fontolja
 
 Hálózati késés minimalizálása érdekében futtassa a tesztet az azonos Azure földrajzi régióban, ahol az adatbázis található.
 
-## <a name="step-7-post-implementation-monitoring"></a>7. lépés: Megvalósítás utáni figyelése
+## <a name="step-7-post-implementation-monitoring"></a>7\. lépés: Megvalósítás utáni figyelése
 Vegye figyelembe, hogy az éles környezetben a memórián belüli megvalósításokban teljesítmény hatásainak figyelése:
 
 * [Memóriabeli tárolás monitorozása](sql-database-in-memory-oltp-monitoring.md).

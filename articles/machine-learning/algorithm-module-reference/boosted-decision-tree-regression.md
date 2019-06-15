@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 67e54f10074ee566ce974dbd27485904bfe0a653
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65411550"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>Gyorsított regressziós döntési fa modul
@@ -47,7 +47,7 @@ További információkért tanulmányozza a következő cikkeket:
   
 -  [https://research.microsoft.com/apps/pubs/default.aspx?id=132652](https://research.microsoft.com/apps/pubs/default.aspx?id=132652)  
 
-    A Microsoft Research: Az, hogy LambdaMART LambdaRank RankNet: Áttekintése. J.C. szerint Burges.
+    Microsoft Research: Az, hogy LambdaMART LambdaRank RankNet: Áttekintése. J.C. szerint Burges.
 
 Kiemelési metódus színátmenet is használható a besorolási problémákat a megfelelő adatveszteség funkcióval rendelkező regressziós csökkentésével. A gyorsított fa megvalósítása fájlosztályozási feladatokhoz kapcsolatos további információkért lásd: [két osztályú súlyozott döntési fa](./two-class-boosted-decision-tree.md).  
 

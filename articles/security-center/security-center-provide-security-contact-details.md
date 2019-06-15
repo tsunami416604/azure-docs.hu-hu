@@ -15,24 +15,24 @@ ms.workload: na
 ms.date: 1/9/2018
 ms.author: rkarlin
 ms.openlocfilehash: b6babf7d5d5a0f5796efa9418044366c6a135ed9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60909278"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>Az Azure Security Center biztonsági kapcsolattartói adatok megadása
 Az Azure Security Center javasolni fogja, hogy Ön biztonsági kapcsolattartói adatok megadása az Azure-előfizetése, ha még nem tette. A Microsoft arra használja ezt az információt, hogy kapcsolatba lépjen Önnel, ha a Microsoft Security Response Center (MSRC) azt észleli, hogy egy jogosulatlan vagy illetéktelen fél hozzáfért az Ön ügyféladataihoz. MSRC hajt végre, válassza ki a biztonsági figyelése az Azure-hálózat és az infrastruktúra, és harmadik felektől származó threat intelligence és visszaélések panaszok kap.
 
-Egy e-mailben értesítést küld a napi első előfordulása a riasztások, és csak a magas súlyossági szintű riasztások. Az e-mail-beállítások kizárólag előfizetési szabályok esetében konfigurálhatóak. Egy előfizetésen belüli erőforráscsoportok örökli ezeket a beállításokat. 
+A rendszer a nagyon súlyos riasztások napi első előfordulásakor e-mailes értesítést küld. Az e-mail-beállítások kizárólag előfizetési szabályok esetében konfigurálhatóak. Az előfizetésben lévő erőforráscsoportok megöröklik ezeket a beállításokat. 
 
-Riasztási e-mail értesítések küldését:
-- Csak a magas súlyossági szintű riasztások
-- Napi riasztások típus szerint a egyetlen e-mail címzettje számára  
+A riasztási e-mail értesítések küldésére vonatkozó szabályok:
+- Csak a magas súlyosságú riasztások esetében
+- Naponta egyetlen e-mail-címzettnek riasztástípusonként  
 - Legfeljebb 3 e-mail-üzeneteket egyetlen fogadó érkeznek egy egyetlen nap alatt
-- Minden e-mailt egy riasztást, nem a riasztások összesítést tartalmaz
+- Mindegyik e-mail-üzenet egyetlen riasztást tartalmaz, nem a riasztások összesítését.
  
-Például egy RDP-támadás riasztást már küldött e-mailbe, esetén nem fog kapni egy másik e-mail-üzenet kapcsolatos ugyanazon a napon, egy RDP-támadás akkor is, ha egy másik a riasztás akkor aktiválódik. 
+Ha például egy RDP-támadásról már kapott e-mail-üzenetet, RDP-támadásokról aznap már nem kap majd riasztást, még ha egy újabb riasztás aktiválódik is. 
  
 
 > [!NOTE]

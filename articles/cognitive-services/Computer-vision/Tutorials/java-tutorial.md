@@ -12,10 +12,10 @@ ms.author: kefre
 ms.custom: seodec18
 ms.date: 04/30/2019
 ms.openlocfilehash: a22308e0c7ff924205f715692d011a4572b2bdb8
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65232631"
 ---
 # <a name="use-computer-vision-features-with-the-rest-api-and-java"></a>Számítógépes Látástechnológia funkciók a REST API-t és a Java használata
@@ -63,8 +63,8 @@ Importálja a **cognitive-services-java-computer-vision-tutorial-master.zip** f�
 1. A NetBeansben kattintson a **Fájl** > **Projekt importálása** > **ZIP-fájlból...** lehetőségre. Megjelenik a **Projektek importálása ZIP-fájlból** párbeszédpanel.
 1. A **ZIP-fájl:** mezőben a **Tallózás** gombra kattintva keresse meg a **cognitive-services-java-computer-vision-tutorial-master.zip** fájlt, majd kattintson a **Megnyitás** gombra.
 1. Kattintson a **Projektek importálása ZIP-fájlból** párbeszédpanel **Importálás** elemére.
-1. A **Projektek** panelen bontsa ki a **ComputerVision** > **Forráscsomagok** > **&lt;Alapértelmezett csomag&gt;** elemet. 
-   A NetBeans egyes verzióiban **src** elem jelenhet meg a **Forráscsomagok** > **&lt;Alapértelmezett csomag&gt;** helyett. Ebben az esetben bontsa ki az **src** területet.
+1. A **Projektek** panelen bontsa ki a **ComputerVision** > **Forráscsomagok** >  **&lt;Alapértelmezett csomag&gt;** elemet. 
+   A NetBeans egyes verzióiban **src** elem jelenhet meg a **Forráscsomagok** >  **&lt;Alapértelmezett csomag&gt;** helyett. Ebben az esetben bontsa ki az **src** területet.
 1. Kattintson duplán a **MainFrame.java** elemre a fájl a NetBeans szerkesztőben való megnyitásához. Megjelenik a **MainFrame.java** fájl **Tervezés** lapja.
 1. A Java forráskód megtekintéséhez kattintson a **Forrás** lapra.
 

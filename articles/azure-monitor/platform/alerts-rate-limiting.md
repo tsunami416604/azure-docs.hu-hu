@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 3/12/2018
 ms.author: dukek
-ms.component: alerts
+ms.subservice: alerts
 ms.openlocfilehash: 11fd6a2c58671cc5d0bcf0593239eb9e62aca834
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60346648"
 ---
 # <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>Értékelje a bejegyzések a hangalapú, SMS, e-mailek, az Azure-alkalmazások leküldéses értesítései és webhook korlátozása
@@ -35,3 +35,4 @@ A sebesség korlát küszöbértékek a következők:
 * Tudjon meg többet [SMS-riasztás viselkedése](alerts-sms-behavior.md).
 * Get- [tevékenységnapló-riasztások áttekintése](alerts-overview.md), és a riasztások fogadása.  
 * Ismerje meg, hogyan [riasztások konfigurálása, ha a szolgáltatás állapotával kapcsolatos értesítés közzétételekor](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+

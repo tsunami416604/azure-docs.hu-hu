@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: yegu
 ms.openlocfilehash: 6960c21091e0bc01c198e713c0c276984566ac41
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65786081"
 ---
 # <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Bevezetés az Azure Cache redis Cache prémium szint
@@ -50,7 +50,7 @@ A Basic vagy Standard szintű létrehozott gyorsítótárak elérhetők a nyilv�
 
 További információkért lásd: [annak a virtuális hálózat támogatásának konfigurálása prémium szintű Azure Cache-gyorsítótárhoz Redis](cache-how-to-premium-vnet.md).
 
-## <a name="importexport"></a>Importálás/exportálás
+## <a name="importexport"></a>Import/Export
 Importálás/exportálás szolgáltatás egy Azure Cache, amely lehetővé teszi, hogy az adatok az Azure Cache által importálása és exportálása az Azure Cache Redis adatbázis (RDB) pillanatkép egy prémium szintű gyorsítótár, a redis Azure Cache redis adatok importálása és exportálása a Redis-felügyeleti művelethez egy lapblob egy Azure Storage-fiókban. Ez lehetővé teszi, hogy migrálása másik Azure Cache a Redis-példány között, vagy töltse fel a gyorsítótárat az adatokat, mielőtt használja.
 
 Importálás ahhoz, hogy a Redis-kompatibilis RDB-fájl(ok) minden bármilyen felhőben vagy a környezetben, beleértve a Linux, Windows vagy bármely más szolgáltatónál, például az Amazon Web Services és a többi futó Redis futó Redis-kiszolgálóról is használható. A rendszer egyszerűen hozzon létre egy gyorsítótárat az adatokkal előre feltöltött adatok importálása. Az importálási folyamat során az Azure Cache redis RDB-fájlba való fájlokat az Azure storage-ból betölti a memóriába, és majd szúrja be a kulcsokat a gyorsítótárba.

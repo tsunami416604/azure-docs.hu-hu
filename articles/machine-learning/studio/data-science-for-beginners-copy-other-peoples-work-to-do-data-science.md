@@ -11,14 +11,14 @@ ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
 ms.openlocfilehash: 8bacc3940cebaf9c62179cee0788e5903e56a310
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60751820"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Más emberek munkájának lemásolása az adatelemzéshez
-## <a name="video-5-data-science-for-beginners-series"></a>5. Videó: Adatelemzés kezdőknek sorozat
+## <a name="video-5-data-science-for-beginners-series"></a>5\. Videó: Adatelemzés kezdőknek sorozat
 A kereskedelmi titkok, az adatelemzés egyik hamarosan más személyeknek az Ön helyett ezt a munkát. Az Azure AI-katalógusban a saját machine learning-kísérlet használandó fürtözési algoritmust példát talál.
 
 > [!IMPORTANT]
@@ -35,11 +35,11 @@ A lehető leghatékonyabban a sorozat, tekintse meg az összes. [Nyissa meg a vi
 ## <a name="other-videos-in-this-series"></a>Ez a sorozat egyéb videók
 *Adatelemzés kezdőknek* egy gyors bevezetőt az öt rövid videóban a rendszer.
 
-* 1. Videó: [A 5 kérdés adatelemzés választ ad](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 perc 14 mp)*
-* 2. Videó: [Az adatelemzés készen áll az adatok?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 perc 56 másodperc)*
-* 3. Videó: [Tegyen fel kérdést az adatok a válasz](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 perc 17 másodperc)*
-* 4. Videó: [Egy egyszerű modellel válasz előrejelzése](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 perc 42 másodperc)*
-* 5. Videó: Más emberek munkájának lemásolása az adatelemzéshez
+* 1\. Videó: [A 5 kérdés adatelemzés választ ad](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 perc 14 mp)*
+* 2\. Videó: [Az adatelemzés készen áll az adatok?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 perc 56 másodperc)*
+* 3\. Videó: [Tegyen fel kérdést az adatok a válasz](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 perc 17 másodperc)*
+* 4\. Videó: [Egy egyszerű modellel válasz előrejelzése](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 perc 42 másodperc)*
+* 5\. Videó: Más emberek munkájának lemásolása az adatelemzéshez
 
 ## <a name="transcript-copy-other-peoples-work-to-do-data-science"></a>A szövegben: Más emberek munkájának lemásolása az adatelemzéshez
 Üdvözli az a sorozat ötödik videó "Adatelemzés kezdőknek."
@@ -52,7 +52,7 @@ A kereskedelmi titkok, az adatelemzés egyik hamarosan más személyeknek az Ön
 
 A Microsoft rendelkezik egy felhőalapú szolgáltatás nevű [Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning-studio/) , hogy nyugodtan meghívhatjuk ingyenesen kipróbálható. Is tartalmaz a munkaterület kísérletezhet a különböző gépi tanulási algoritmusok és azokat, ha a megoldás dolgozott ki van, webszolgáltatásként is elindíthatja.
 
-Ez a szolgáltatás részeként valami nevű a  **[Azure AI-katalógusban](https://gallery.azure.ai/)**. Erőforrások, köztük az Azure Machine Learning Studio-kísérletek, vagy a modellek, amelyek személyek beépített és mások számára is viszonyított gyűjteményét tartalmazza. Ezek a kísérletek módon egy nagyszerű gondolkodási és mások számára a saját megoldások a kezdéshez bonyolult feladatát. Mindenki az Üdvözöljük, böngésszen.
+Ez a szolgáltatás részeként valami nevű a  **[Azure AI-katalógusban](https://gallery.azure.ai/)** . Erőforrások, köztük az Azure Machine Learning Studio-kísérletek, vagy a modellek, amelyek személyek beépített és mások számára is viszonyított gyűjteményét tartalmazza. Ezek a kísérletek módon egy nagyszerű gondolkodási és mások számára a saját megoldások a kezdéshez bonyolult feladatát. Mindenki az Üdvözöljük, böngésszen.
 
 ![Azure AI katalógus](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/azure-ai-gallery.png)
 

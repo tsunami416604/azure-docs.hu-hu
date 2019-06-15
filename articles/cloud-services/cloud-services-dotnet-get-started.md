@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 3082ca34f2bcb71dd7aa02b4539899997374cfc0
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65595159"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Ismerkedés az Azure Cloud Services szolgáltatással és az ASP.NET keretrendszerrel
@@ -236,7 +236,7 @@ Az Azure-tárfiók kapcsolati sztringjeinek tárolása a webes- és a feldolgoz�
 2. Kattintson a **Beállítások** fülre. A **Szolgáltatás konfigurációja** legördülő mezőben válassza a **Felhő** elemet.
 
     ![Felhő konfigurálása](./media/cloud-services-dotnet-get-started/sccloud.png)
-3. Jelölje ki a **StorageConnectionString** bejegyzést, és megjelenik egy három pontot (**...**) ábrázoló gomb a sor jobb oldali végén. Kattintson a három pontot ábrázoló gombra a **Create Storage Account Connection String** (Tárfiók kapcsolati sztringjének létrehozása) párbeszédpanel megnyitásához.
+3. Jelölje ki a **StorageConnectionString** bejegyzést, és megjelenik egy három pontot ( **...** ) ábrázoló gomb a sor jobb oldali végén. Kattintson a három pontot ábrázoló gombra a **Create Storage Account Connection String** (Tárfiók kapcsolati sztringjének létrehozása) párbeszédpanel megnyitásához.
 
     ![A Kapcsolati sztring létrehozása mező megnyitása](./media/cloud-services-dotnet-get-started/opencscreate.png)
 4. A **Create Storage Connection String** (Tárfiók kapcsolati sztringjének létrehozása) párbeszédpanelen kattintson a **Your subscription** (Saját előfizetés) elemre, válassza a korábban létrehozott tárfiókot, majd kattintson az **OK** gombra. Ha még nincs bejelentkezve, a rendszer az Azure-fiókja hitelesítő adatait kéri.

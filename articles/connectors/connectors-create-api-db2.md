@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 08/23/2018
 tags: connectors
 ms.openlocfilehash: 7785d1788e8d5e9b432a8189345f293ebf05ef7c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60314075"
 ---
 # <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>Az Azure Logic Apps IBM DB2-erőforrások kezelése
@@ -42,7 +42,7 @@ Az IBM DB2-összekötő ezen adatbázis műveleteket, amelyeket a megfelelő mű
 
 | Adatbázis-művelet | Összekötő-művelet |
 |--------------------|------------------|
-| Lista adatbázistáblák | Táblák beolvasása |
+| Lista adatbázistáblák | Táblák lekérése |
 | SELECT használatával egy sor olvasása | Sor beolvasása |
 | VÁLASSZA a minden sorok olvasása | Sorok beolvasása |
 | Adjon hozzá egy sort INSERT használatával | Sor beszúrása |
@@ -87,7 +87,7 @@ A kapcsolat beállításához, adja meg az alábbi kapcsolati adatokat, amikor a
 |----------|----------|-------------|
 | **Csatlakozás helyszíni átjárón keresztül** | Nem | Csak a helyi kapcsolatok vonatkozik. |
 | **Kapcsolat neve** | Igen | A hálózati kapcsolatot, például "MyLogicApp – DB2-kapcsolat" nevét |
-| **Kiszolgáló** | Igen | A cím vagy alias kettőspont port számát a DB2-kiszolgáló, például a "myDB2server.cloudapp.net:50000" <p><p>**Megjegyzés**: Ez az érték egy TCP/IP-címet jelölő vagy alias, vagy IPv4- vagy IPv6 formátumban, majd egy kettőspontot és a egy TCP/IP-port száma. |
+| **Server** | Igen | A cím vagy alias kettőspont port számát a DB2-kiszolgáló, például a "myDB2server.cloudapp.net:50000" <p><p>**Megjegyzés**: Ez az érték egy TCP/IP-címet jelölő vagy alias, vagy IPv4- vagy IPv6 formátumban, majd egy kettőspontot és a egy TCP/IP-port száma. |
 | **Adatbázis** | Igen | Az adatbázis neve <p><p>**Megjegyzés**: Ez az érték a DRDA relációs adatbázis nevét (RDBNAM) jelölő: <p>-DB2 z/os fogad egy 16 bájtos karakterláncot, ahol az adatbázis egy "A – z/os IBM DB2-höz" hely nevezik. <br>-DB2 i-18-többbájtos karakterlánc, ahol az adatbázis nevezik, fogadja el a egy "az IBM DB2-höz i" relációs adatbázis. <br>-DB2 LUW számára egy 8 bájtos-karakterláncot fogad el. |
 | **Felhasználónév** | Igen | A felhasználónév, az adatbázis <p><p>**Megjegyzés**: Ez az érték egy karakterláncot, amelynek hossza alapján az adott adatbázis: <p><p>-DB2 z/os egy 8 bájtos-karakterláncot fogad el. <br>-DB2 i fogad egy 10 – többbájtos karakterlánc esetében. <br>-A Linux vagy UNIX DB2 egy 8 bájtos-karakterláncot fogad el. <br>-DB2 a Windows-30 bájtos-karakterláncot fogad el. |
 | **Jelszó** | Igen | A Database jelszavát |
@@ -107,7 +107,7 @@ A kapcsolat létrehozása, előtt már rendelkeznie kell a telepített helyszín
 |----------|----------|-------------|
 | **Csatlakozás helyszíni átjárón keresztül** | Igen | Érvényes, ha azt szeretné, hogy egy helyszíni kapcsolat, és bemutatja a helyi kapcsolat tulajdonságai. |
 | **Kapcsolat neve** | Igen | A hálózati kapcsolatot, például "MyLogicApp – DB2-kapcsolat" nevét | 
-| **Kiszolgáló** | Igen | A cím vagy alias kettőspont port számát a DB2-kiszolgáló, például a "myDB2server:50000" <p><p>**Megjegyzés**: Ez az érték egy TCP/IP-címet jelölő vagy alias, vagy IPv4- vagy IPv6 formátumban, majd egy kettőspontot és a egy TCP/IP-port száma. |
+| **Server** | Igen | A cím vagy alias kettőspont port számát a DB2-kiszolgáló, például a "myDB2server:50000" <p><p>**Megjegyzés**: Ez az érték egy TCP/IP-címet jelölő vagy alias, vagy IPv4- vagy IPv6 formátumban, majd egy kettőspontot és a egy TCP/IP-port száma. |
 | **Adatbázis** | Igen | Az adatbázis neve <p><p>**Megjegyzés**: Ez az érték a DRDA relációs adatbázis nevét (RDBNAM) jelölő: <p>-DB2 z/os fogad egy 16 bájtos karakterláncot, ahol az adatbázis egy "A – z/os IBM DB2-höz" hely nevezik. <br>-DB2 i-18-többbájtos karakterlánc, ahol az adatbázis nevezik, fogadja el a egy "az IBM DB2-höz i" relációs adatbázis. <br>-DB2 LUW számára egy 8 bájtos-karakterláncot fogad el. |
 | **Hitelesítés** | Igen | A hálózati kapcsolatot, például "Alapszintű" hitelesítési típusát <p><p>**Megjegyzés**: Válassza ki ezt az értéket a listából, amely tartalmazza az alapszintű vagy Windows (Kerberos). |
 | **Felhasználónév** | Igen | A felhasználónév, az adatbázis <p><p>**Megjegyzés**: Ez az érték egy karakterláncot, amelynek hossza alapján az adott adatbázis: <p><p>-DB2 z/os egy 8 bájtos-karakterláncot fogad el. <br>-DB2 i fogad egy 10 – többbájtos karakterlánc esetében. <br>-A Linux vagy UNIX DB2 egy 8 bájtos-karakterláncot fogad el. <br>-DB2 a Windows-30 bájtos-karakterláncot fogad el. |

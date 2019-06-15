@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
 ms.openlocfilehash: 34dad39e3784dd0bc73e3be108d6b31d4f479a1e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60543146"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Áttelepítése IaaS-erőforrások klasszikusból Azure Resource Manager-Azure CLI-vel
@@ -35,7 +35,7 @@ Azonosíthatja a sorrendet, amelyben lépéseket kell végrehajtani egy áttelep
 
 ![Képernyőkép a migrálási lépésekről](../windows/media/migration-classic-resource-manager/migration-flow.png)
 
-## <a name="step-1-prepare-for-migration"></a>1. lépés: Az áttelepítés előkészítése
+## <a name="step-1-prepare-for-migration"></a>1\. lépés: Előkészületek a migráláshoz
 Az alábbiakban néhány ajánlott eljárást, amely azt javasoljuk, áttelepítése IaaS-erőforrásokat a klasszikusból a Resource Managernek kipróbálása:
 
 * Olvassa el a [nem támogatott konfigurációk vagy szolgáltatások listája](../windows/migration-classic-resource-manager-overview.md). Nem támogatott konfigurációkat és funkciókat használó virtuális gépekkel rendelkezik, azt javasoljuk, hogy várja meg a szolgáltatás vagy a konfigurációs támogatás később jelentjük be. Azt is megteheti távolítsa el ezt a funkciót, vagy helyezze át ki, hogy konfigurációja engedélyezze az áttelepítést, ha azt az igényeinek megfelelő.
@@ -48,7 +48,7 @@ Az alábbiakban néhány ajánlott eljárást, amely azt javasoljuk, áttelepít
 > 
 > 
 
-## <a name="step-2-set-your-subscription-and-register-the-provider"></a>2. lépés: Állítsa be az előfizetést, és regisztrálja a szolgáltatót
+## <a name="step-2-set-your-subscription-and-register-the-provider"></a>2\. lépés: Állítsa be az előfizetést, és regisztrálja a szolgáltatót
 Áttelepítési forgatókönyvek esetén szükséges, állítsa be a környezetet, mind a klasszikus és Resource Manager. [Azure CLI telepítése](../../cli-install-nodejs.md) és [válassza ki az előfizetését](/cli/azure/authenticate-azure-cli).
 
 Jelentkezzen be a fiókjába.
@@ -78,7 +78,7 @@ Most váltson a parancssori felület a `asm` mód.
 
     azure config mode asm
 
-## <a name="step-3-make-sure-you-have-enough-azure-resource-manager-virtual-machine-vcpus-in-the-azure-region-of-your-current-deployment-or-vnet"></a>3. lépés: Ellenőrizze, hogy elegendő az Azure Resource Manager virtuális gépének vcpu-k a jelenlegi üzemelő példány vagy virtuális hálózat Azure-régióban
+## <a name="step-3-make-sure-you-have-enough-azure-resource-manager-virtual-machine-vcpus-in-the-azure-region-of-your-current-deployment-or-vnet"></a>3\. lépés: Ellenőrizze, hogy elegendő az Azure Resource Manager virtuális gépének vcpu-k a jelenlegi üzemelő példány vagy virtuális hálózat Azure-régióban
 Váltson át kell ehhez a lépéshez `arm` mód. Ehhez a következő paranccsal.
 
 ```
@@ -96,7 +96,7 @@ Miután elkészült ellenőrzése ebben a lépésben, válthat vissza a `asm` m�
     azure config mode asm
 
 
-## <a name="step-4-option-1---migrate-virtual-machines-in-a-cloud-service"></a>4. lépés: 1. lehetőség – felhőszolgáltatás virtuális gépek Migrálása
+## <a name="step-4-option-1---migrate-virtual-machines-in-a-cloud-service"></a>4\. lépés: 1. lehetőség – felhőszolgáltatás virtuális gépek Migrálása
 A cloud services listájának lekérése a következő paranccsal, és ezután válassza ki a felhőalapú szolgáltatás, amely a migrálni kívánt. Vegye figyelembe, hogy a beállítást, ha a cloud service-ben a virtuális gépek egy virtuális hálózaton, vagy ha webes vagy feldolgozói szerepkörök rendelkeznek, hibaüzenetet kap.
 
     azure service list
@@ -135,7 +135,7 @@ Az előkészített konfiguráció megfelelőnek tűnik, ha előre, és végleges
 
 
 
-## <a name="step-4-option-2----migrate-virtual-machines-in-a-virtual-network"></a>4. lépés: 2. lehetőség – a virtuális hálózatban lévő virtuális gépek Migrálása
+## <a name="step-4-option-2----migrate-virtual-machines-in-a-virtual-network"></a>4\. lépés: 2. lehetőség – a virtuális hálózatban lévő virtuális gépek Migrálása
 Válassza ki az áttelepíteni kívánt virtuális hálózat. Vegye figyelembe, hogy ha a virtuális hálózat nem támogatott konfigurációval webes/feldolgozói szerepkörök vagy a virtuális gépeket tartalmaz, kap egy érvényesítési hibaüzenet.
 
 A virtuális hálózatok a következő paranccsal lépjen be az előfizetés.
@@ -146,7 +146,7 @@ A kimenet következőhöz hasonlóan fog kinézni:
 
 ![Képernyőkép – a teljes virtuális hálózat neve, kiemelve a parancssorban.](../media/virtual-machines-linux-cli-migration-classic-resource-manager/vnet.png)
 
-A fenti példában a **virtualNetworkName** teljes neve **"Csoport classicubuntu16 classicubuntu16"**.
+A fenti példában a **virtualNetworkName** teljes neve **"Csoport classicubuntu16 classicubuntu16"** .
 
 Először is ellenőrizheti, hogy áttelepítheti a virtuális hálózat, a következő paranccsal:
 
@@ -166,7 +166,7 @@ Az előkészített konfiguráció megfelelőnek tűnik, ha előre, és végleges
 
     azure network vnet commit-migration <virtualNetworkName>
 
-## <a name="step-5-migrate-a-storage-account"></a>5. lépés: Egy tárfiók migrálása
+## <a name="step-5-migrate-a-storage-account"></a>5\. lépés: Egy tárfiók migrálása
 Miután elkészült a virtuális gépek migrálása, javasoljuk, hogy telepít át, a storage-fiókot.
 
 A következő parancs segítségével a tárfiók migrálásának előkészítése

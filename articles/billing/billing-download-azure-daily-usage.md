@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: 520d3f6a45b44ba2023dee34642f796689f48221
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60918986"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Megtekintése és letöltése az Azure-használat és költségek
@@ -77,7 +77,7 @@ Ha a Microsoft vevői szerződéssel rendelkezik, az Azure-használat és költs
 ### <a name="download-usage-for-billed-charges"></a>Számlázott díjak a használati adatok letöltése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
+2. A Keresés **Cost Management és számlázás**.
 3. Válassza ki a számlázási profilt. A hozzáférést, attól függően szükség lehet először ki kell választania egy számlázási fiókot.
 4. Válassza ki a **Számlák** elemet.
 5. A számla rács megkeresi a letölteni kívánt használati tartozó számla.
@@ -94,7 +94,7 @@ Ha a Microsoft vevői szerződéssel rendelkezik, az Azure-használat és költs
 Hónap elejétől számított használati is letöltheti az aktuális elszámolási időszakban. Ezek a használati díjak, amely már a még nem számlázzuk.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
+2. A Keresés **Cost Management és számlázás**.
 3. Válassza ki a számlázási profilt. A hozzáférést, attól függően szükség lehet először ki kell választania egy számlázási fiókot.
 4. Az a **áttekintése** panelen keresse meg a letöltési hivatkozások a hónap elejétől számított díjakat alatt.
 5. Válassza ki **Azure-használat és költségek**.

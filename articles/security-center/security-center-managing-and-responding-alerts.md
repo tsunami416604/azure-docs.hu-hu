@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 11/22/2018
 ms.author: rkarlin
 ms.openlocfilehash: 582912160c8ed514401be3522e52dcc6eb45d263
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65235758"
 ---
 # <a name="managing-and-responding-to-security-alerts-in-azure-security-center"></a>Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben
 Ez a dokumentum segít az Azure Security Center biztonsági riasztások kezelésére és a riasztásokra való válaszadásra szolgáló funkcióinak használatában.
 
 > [!NOTE]
-> A speciális észlelések eléréséhez frissítsen az Azure Security Center Standard verzióra. Az ingyenes próbaverzió is elérhető. A frissítéshez a [Biztonsági szabályzat](tutorial-security-policy.md) beállításnál válassza ki a kívánt tarifacsomagot. További információkért lásd: [Az Azure Security Center díjszabása](security-center-pricing.md).
+> A speciális észlelések eléréséhez frissítsen az Azure Security Center Standard verzióra. Ennek létezik egy ingyenesen elérhető próbaverziója. A frissítéshez a [Biztonsági szabályzat](tutorial-security-policy.md) beállításnál válassza ki a kívánt tarifacsomagot. További információkért lásd: [Az Azure Security Center díjszabása](security-center-pricing.md).
 >
 >
 
@@ -65,7 +65,7 @@ Az oldal alsó részén találhatók az egyes riasztások részletei. Rendezés�
 >
 
 
-### <a name="alert-severity"></a>Riasztás fontossága
+### <a name="alert-severity"></a>Riasztás súlyossága
 
 -   **Magas**: Nincs nagy valószínűséggel, hogy az erőforrás biztonsága sérül. Meg kell megvizsgáljuk azt azonnal. A Security Center megbízható rendelkezik, mindkét az illető ártó szándékkal és a megállapításokat, a riasztás kiadására szolgál. Ha például egy riasztást, amely észleli az ismert kártékony eszköz például a Mimikatz, a hitelesítő adatok ellopását használt gyakori eszköz végrehajtása. 
 -   **Közepes**: Ennek oka valószínűleg egy gyanús tevékenységet, amelyek azt jelzik, hogy egy erőforrás biztonsága sérül.

@@ -17,10 +17,10 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 312658bd653d94f3e1a32204b3c5ae4ae290558e
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65832749"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Hozzáférés új csomag létrehozása az Azure ad-ben tagjogosultság-kezelés (előzetes verzió)
@@ -98,7 +98,7 @@ Az a **erőforrás-szerepkörökkel** lapon, válassza ki az erőforrásokat a h
 
 1. Kattintson a **tovább**.
 
-## <a name="policy"></a>Házirend
+## <a name="policy"></a>Szabályzat
 
 Az a **házirend** lapon hoz létre az első házirend, akik kérheti a hozzáférés csomag és a is jóváhagyása és a lejárati beállítások megadásához. Később további házirendeket, hogy a felhasználók a hozzáférés csomag kérést a saját jóváhagyás és a lejárati beállítások további csoportokat is létrehozhat. A szabályzat létrehozása később is beállíthatja.
 
@@ -112,7 +112,7 @@ Az a **házirend** lapon hoz létre az első házirend, akik kérheti a hozzáf�
 
 [!INCLUDE [Entitlement management policy](../../../includes/active-directory-entitlement-management-policy.md)]
 
-## <a name="review--create"></a>Áttekintés + létrehozás
+## <a name="review--create"></a>Felülvizsgálat + létrehozás
 
 Az a **tekintse át + létrehozása** lapon áttekintheti a beállításokat, és ellenőrizze az esetleges érvényesítési hibákat.
 

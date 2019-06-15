@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/10/2019
 ms.author: sajagtap
 ms.openlocfilehash: cf1dc352068747ab2f77beec8802407d15699d17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60607154"
 ---
 # <a name="language-support-for-content-moderator-api"></a>Nyelvi támogatás a Content Moderator API
@@ -29,11 +29,11 @@ ms.locfileid: "60607154"
 | -------------------- |-------------|--------|---------------------|---|
 | Arabic (Romanized)   | afrikaans   | arab   | arab | |
 | Balinese | albán | kínai (egyszerűsített)    | dán | |
-| bengáli | amhara | kínai (hagyományos)     | holland | |
+| bengáli | Amhara | kínai (hagyományos)     | holland | |
 | Buginese | arab | cseh                     | Angol | |
 | Buhid | örmény | dán                     | finn | |
-| Carian | asszámi | holland                     | francia | |
-| kínai (egyszerűsített) | Azeri | Angol  | Görög (modern) | |
+| Carian | Angol (kanadai) | holland                     | francia | |
+| kínai (egyszerűsített) | Azerbaijani | Angol  | Görög (modern) | |
 | kínai (hagyományos) | Bangla – Banglades | finn  | olasz | |
 | Templom (Szláv) | Bangla – India | francia     | koreai | |
 | Kopt | baszk | német                      | norvég | |
@@ -41,17 +41,17 @@ ms.locfileid: "60607154"
 | Divehi | Bosnyák – cirill | magyar      | portugál | |
 | holland | Bosnyák – Latin | olasz             | román | |
 | Angol | (Creole) | Breton [nem GeoPol] | japán  | orosz |
-| fárszi | bolgár | koreai                        | szlovák | |
+| Fárszi | bolgár | koreai                        | szlovák | |
 | francia | katalán | norvég                        | spanyol ||
 | német | Közép-ázsiai Kurd | lengyel        | török | |
 | görög | Cseroki | portugál | | |
-| haiti | kínai (egyszerűsített) | román | | |
+| Haiti | kínai (egyszerűsített) | román | | |
 | héber | Kínai (hagyományos) – Hongkong (KKT) | orosz | | |
 | hindi | Kínai (hagyományos) – Tajvan | Szerb cirill | | |
 | Hmong | horvát | Szerb Latin | | |
 | magyar | cseh | szlovák | | |
 | olasz | dán | spanyol | | |
-| japán | dari | svéd | | |
+| japán | Dari | svéd | | |
 | koreai | holland | török | | |
 | Ázsiai Kurd (arab) | Angol | | | |
 | Ázsiai Kurd (latin betűs) | észt | | | |
@@ -62,82 +62,82 @@ ms.locfileid: "60607154"
 | Lydian | grúz | | | |
 | Mycenaean (görög) | német | | | |
 | Nko | görög | | | |
-| norvég (bokmal) | gudzsaráti | | | |
-| norvég (nynorsk) |  hausza | | | |
+| Norvég (Bokmal) | gudzsaráti | | | |
+| Norwegian (Nynorsk) |  Hausza | | | |
 | Régi (Perzsa) | héber | | | |
-| pasto | hindi | | | |
+| Pashto | hindi | | | |
 | lengyel | magyar | | | |
 | portugál | izlandi | | | |
-| pandzsábi | igbo | | | |
+| pandzsábi | Igbo | | | |
 | Rejang | indonéz | | | |
-| orosz | inuktitut | | | |
+| orosz | Inuktitut | | | |
 | Santali | ír | | | |
-| Sasak | xhosza | | | |
-| Saurashtra | zulu | | | |
+| Sasak | isiXhosa | | | |
+| Saurashtra | isiZulu | | | |
 | szerb (cirill betűs) | olasz | | | |
 | szerb (latin betűs) | japán | | | |
-| sinhala | kannada | | | |
+| Szingaléz | kannada | | | |
 | szlovén | kazak | | | |
-| spanyol | khmer | | | |
-| svéd | quiché | | | |
-| Sylheti | kinyarvanda | | | |
-| szír | szuahéli | | | |
-| Tagbanwa | kónkáni | | | |
+| spanyol | Khmer | | | |
+| svéd | Quiché | | | |
+| Sylheti | Kinyarwanda | | | |
+| Szír | szuahéli | | | |
+| Tagbanwa | Konkani | | | |
 | Tai (Nua) | koreai | | | |
 | Tamashek | kirgiz | | | |
-| török | lao | | | |
+| török | Lao | | | |
 | Ugaritic | lett | | | |
-| üzbég (cirill betűs) | litván | | | |
-| üzbég (latin betűs) | luxemburgi | | | |
-| Vai | macedón | | | |
-| ji | maláj | | | |
+| Uzbek (Cyrillic) | litván | | | |
+| Uzbek (Latin) | Luxemburgi | | | |
+| Vai | Macedón | | | |
+| Yi | maláj | | | |
 | Zhuang, Chuang | malajálam | | | |
 | | máltai | | | |
 | | maori | | | |
-| | maráthi | | | |
+| | marathi | | | |
 | | mongol | | | |
-| | nepáli | | | |
+| | Nepáli | | | |
 | | Norvég (bokmal) | | | |
-| | norvég (nynorsk) | | | |
-| | odia | | | |
-| | pasto | | | |
+| | Norwegian (Nynorsk) | | | |
+| | Odia | | | |
+| | Pashto | | | |
 | | perzsa | | | |
 | | lengyel | | | |
 | | Portugál – Brazília | | | |
 | | Portugál – Portugália | | | |
 | | Pulaar | | | |
 | | pandzsábi | | | |
-| | pandzsábi (Pakisztán) | | | |
-| | kecsua (Peru) | | | |
+| | Pandzsábi (Pakisztán) | | | |
+| | Quechua (Peru) | | | |
 | | román | | | |
 | | orosz | | | |
-| | skót gael | | | |
+| | Skót gael | | | |
 | | szerb (cirill betűs) | | | |
 | | Szerb (cirill, Bosznia-Hercegovina) | | | |
 | | szerb (latin betűs) | | | |
 | | Északi | | | |
-| | északi szeszotó | | | |
-| | setswana | | | |
-| | szindhi | | | |
-| | sinhala | | | |
+| | Északi Szeszotó | | | |
+| | Setswana | | | |
+| | Szindhi | | | |
+| | Szingaléz | | | |
 | | szlovák | | | |
 | | szlovén | | | |
 | | spanyol | | | |
 | | svéd | | | |
-| | tadzsik | | | |
+| | Tadzsik | | | |
 | | tamil | | | |
 | | tatár | | | |
 | | telugu | | | |
 | | thai | | | |
-| | tigrinya | | | |
+| | Tigrinya | | | |
 | | török | | | |
-| | türkmen | | | |
+| | Türkmén | | | |
 | | ukrán | | | |
 | | urdu | | | |
-| | ujgur | | | |
-| | üzbég | | | |
+| | Ujgur | | | |
+| | Uzbek | | | |
 | | Valenciai | | | |
 | | vietnami | | | |
 | | walesi | | | |
-| | wolof | | | |
-| | joruba | | | |
+| | Volof | | | |
+| | Yoruba | | | |

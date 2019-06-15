@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/27/2018
 ms.author: magoedte
 ms.openlocfilehash: 2e3e39ef24d82393d981c0ce276b3338419e0b2d
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65521770"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>Hibaelhárítás az Azure Monitor for containers szolgáltatásban
@@ -34,7 +34,7 @@ Manuálisan is biztosíthat a ezt a szerepkört az Azure Portalon a következő 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 2. Az Azure Portal bal felső sarkában kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Kubernetes**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza ki **Azure Kubernetes**.
 3. Kubernetes-fürtök listájában válassza ki azt a listából.
-2. Kattintson a bal oldali menüből **hozzáférés-vezérlés (IAM)**.
+2. Kattintson a bal oldali menüből **hozzáférés-vezérlés (IAM)** .
 3. Válassza ki **+ Hozzáadás** szerepkör-hozzárendelés hozzáadása, és válassza ki a **figyelési metrikákat közzétevő** szerepkör és a **válassza ki** mezőbe írja be **AKS** , a szűrő csak a fürtöket az eredményeket engedélyezéseihez definiálva az előfizetésben. Válassza ki azt a listából a létrehozott fürtre jellemző.
 4. Válassza ki **mentése** befejeződik, a szerepkör hozzárendelése. 
 

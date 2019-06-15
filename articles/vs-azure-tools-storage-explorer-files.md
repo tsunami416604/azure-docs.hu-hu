@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
 ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60456726"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>A Storage Explorer használata az Azure File Storage szolgáltatással
@@ -203,7 +203,7 @@ A következő lépések bemutatják, hogyan kezelhetők a fájlok (és mappák) 
 
         ![Fájlok feltöltése](media/vs-azure-tools-storage-explorer-files/image18.png)
         
-        b. A **Fájlok feltöltése** párbeszédpanelen válassza a **Fájlok** szövegbeviteli mező jobb oldalán lévő, három pontot (**…**) ábrázoló gombot a feltölteni kívánt fájl(ok) kiválasztásához.
+        b. A **Fájlok feltöltése** párbeszédpanelen válassza a **Fájlok** szövegbeviteli mező jobb oldalán lévő, három pontot ( **…** ) ábrázoló gombot a feltölteni kívánt fájl(ok) kiválasztásához.
 
         ![Fájlok hozzáadása](media/vs-azure-tools-storage-explorer-files/image19.png)
 
@@ -215,7 +215,7 @@ A következő lépések bemutatják, hogyan kezelhetők a fájlok (és mappák) 
 
         ![Mappa feltöltése menü](media/vs-azure-tools-storage-explorer-files/image20.png)
 
-        b. A **Mappa feltöltése** párbeszédpanelen a **Mappa** szövegbeviteli mező jobb oldalán lévő, három pontot (**…**) ábrázoló gombbal válassza ki a mappát, amelynek a tartalmát fel kívánja tölteni.
+        b. A **Mappa feltöltése** párbeszédpanelen a **Mappa** szövegbeviteli mező jobb oldalán lévő, három pontot ( **…** ) ábrázoló gombbal válassza ki a mappát, amelynek a tartalmát fel kívánja tölteni.
 
         c. Igény szerint megadhat egy célmappát, amelybe a kiválasztott mappa tartalma fel lesz töltve. Ha a célmappa nem létezik, a rendszer létrehozza.
 

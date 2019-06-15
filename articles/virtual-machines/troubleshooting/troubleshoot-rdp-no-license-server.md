@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
 ms.openlocfilehash: 550b971602d1736e0ba3981a5b7ca546862ea034
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60318952"
 ---
 # <a name="remote-desktop-license-server-isnt-available-when-you-connect-to-an-azure-vm"></a>Távoli asztali licenckiszolgáló nem érhető el, amikor csatlakozik az Azure virtuális Gépekhez
@@ -63,7 +63,7 @@ Ez a probléma megoldásához [készítsen biztonsági másolatot az operációs
 
     Ha nem sikerül a virtuális géphez felügyeleti munkamenet használatával, használhatja a [Azure-beli virtuális gépek soros konzolja](serial-console-windows.md) eléri a virtuális Gépet a következő:
 
-    1. A soros konzol eléréséhez kiválasztásával **támogatás és hibaelhárítás** > **soros konzol (előzetes verzió)**. A szolgáltatás engedélyezve van a virtuális gépen, a virtuális gép sikeresen csatlakoztathatja.
+    1. A soros konzol eléréséhez kiválasztásával **támogatás és hibaelhárítás** > **soros konzol (előzetes verzió)** . A szolgáltatás engedélyezve van a virtuális gépen, a virtuális gép sikeresen csatlakoztathatja.
 
     2. Hozzon létre egy új csatorna a CMD-példányhoz. Adja meg **CMD** elindítja a csatornát, és kérje le a csatorna nevét.
 
@@ -127,6 +127,6 @@ Ez a probléma megoldásához [készítsen biztonsági másolatot az operációs
 
 4. Ha a távoli asztali licenckiszolgálót be állítva és kifogástalan állapotú, ügyeljen arra, hogy a távoli asztali licenckiszolgáló aktiválva van-e az ügyféllicencek.
 
-## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással
+## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
 
 Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a megoldott probléma.

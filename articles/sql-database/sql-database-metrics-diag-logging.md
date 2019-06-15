@@ -13,10 +13,10 @@ ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 089f5335a65151c9c576346995f0bee34b5d10b4
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65791897"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database-metrikák és diagnosztikai naplózás
@@ -411,7 +411,7 @@ Az Azure SQL Analytics használja, ha az adathasználat Adatbetöltési a megold
 
 Figyelés elérhető telemetriai adatokat az Azure SQL Database, a rugalmas készletek és a felügyelt példány van leírása az alábbiakban található. Az SQL Analytics belül gyűjtött figyelési telemetriai is használható a saját egyéni elemzési és a fejlesztési használó [Azure Monitor log-lekérdezések](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) nyelv.
 
-## <a name="basic-metrics"></a>Alapmetrikák
+## <a name="basic-metrics"></a>Alapvető metrikák
 
 Tekintse meg az alapvető metrikák részleteit az alábbi táblázatok erőforrás szerint.
 
@@ -428,7 +428,7 @@ Tekintse meg az alapvető metrikák részleteit az alábbi táblázatok erőforr
 
 |**Erőforrás**|**Metrikák**|
 |---|---|
-|Azure SQL Database|Napló írási DTU százalékos értéke, dtu-k használt, DTU-korlát, processzor, fizikai adatok olvasási százalékos aránya, százalékos aránya, a sikeres/sikertelen/letiltott tűzfalkapcsolatok, munkamenetek százaléka, feldolgozók százalékos aránya, storage, tárolási százalékos aránya, XTP tárolási százalékos aránya, és holtpontok |
+|Azure SQL-adatbázis|Napló írási DTU százalékos értéke, dtu-k használt, DTU-korlát, processzor, fizikai adatok olvasási százalékos aránya, százalékos aránya, a sikeres/sikertelen/letiltott tűzfalkapcsolatok, munkamenetek százaléka, feldolgozók százalékos aránya, storage, tárolási százalékos aránya, XTP tárolási százalékos aránya, és holtpontok |
 
 ## <a name="basic-logs"></a>Alapszintű naplók
 
@@ -445,9 +445,9 @@ Elérhető az összes napló telemetriai adatait az alábbi táblázatban szerep
 |ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT.SQL |
 |Category|A kategória nevét. Mindig: ResourceUsageStats |
 |Resource|Az erőforrás neve |
-|Erőforrástípus|Az erőforrástípus neve. Mindig: MANAGEDINSTANCES |
-|Előfizetés-azonosító|Az adatbázis-előfizetés GUID azonosítója |
-|Erőforráscsoport|Az adatbázis az erőforráscsoport neve |
+|ResourceType|Az erőforrástípus neve. Mindig: MANAGEDINSTANCES |
+|SubscriptionId|Az adatbázis-előfizetés GUID azonosítója |
+|ResourceGroup|Az adatbázis az erőforráscsoport neve |
 |LogicalServerName_s|A felügyelt példány neve |
 |ResourceId|Erőforrás-URI |
 |SKU_s|Felügyelt példány termékváltozat |
@@ -471,9 +471,9 @@ Elérhető az összes napló telemetriai adatait az alábbi táblázatban szerep
 |Category|A kategória nevét. Mindig: QueryStoreRuntimeStatistics |
 |OperationName|A művelet neve. Mindig: QueryStoreRuntimeStatisticsEvent |
 |Resource|Az erőforrás neve |
-|Erőforrástípus|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
-|Előfizetés-azonosító|Az adatbázis-előfizetés GUID azonosítója |
-|Erőforráscsoport|Az adatbázis az erőforráscsoport neve |
+|ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
+|SubscriptionId|Az adatbázis-előfizetés GUID azonosítója |
+|ResourceGroup|Az adatbázis az erőforráscsoport neve |
 |LogicalServerName_s|Az adatbázis a kiszolgáló neve |
 |ElasticPoolName_s|Az adatbázis, ha van ilyen, a rugalmas készlet neve |
 |DatabaseName_s|Az adatbázis neve |
@@ -522,9 +522,9 @@ Tudjon meg többet [Query Store futásidejű statisztikai adatok](https://docs.m
 |Category|A kategória nevét. Mindig: QueryStoreWaitStatistics |
 |OperationName|A művelet neve. Mindig: QueryStoreWaitStatisticsEvent |
 |Resource|Az erőforrás neve |
-|Erőforrástípus|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
-|Előfizetés-azonosító|Az adatbázis-előfizetés GUID azonosítója |
-|Erőforráscsoport|Az adatbázis az erőforráscsoport neve |
+|ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
+|SubscriptionId|Az adatbázis-előfizetés GUID azonosítója |
+|ResourceGroup|Az adatbázis az erőforráscsoport neve |
 |LogicalServerName_s|Az adatbázis a kiszolgáló neve |
 |ElasticPoolName_s|Az adatbázis, ha van ilyen, a rugalmas készlet neve |
 |DatabaseName_s|Az adatbázis neve |
@@ -560,9 +560,9 @@ Tudjon meg többet [Query Store várjon statisztikai adatok](https://docs.micros
 |Category|A kategória nevét. Mindig: Hibák |
 |OperationName|A művelet neve. Mindig: ErrorEvent |
 |Resource|Az erőforrás neve |
-|Erőforrástípus|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
-|Előfizetés-azonosító|Az adatbázis-előfizetés GUID azonosítója |
-|Erőforráscsoport|Az adatbázis az erőforráscsoport neve |
+|ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
+|SubscriptionId|Az adatbázis-előfizetés GUID azonosítója |
+|ResourceGroup|Az adatbázis az erőforráscsoport neve |
 |LogicalServerName_s|Az adatbázis a kiszolgáló neve |
 |ElasticPoolName_s|Az adatbázis, ha van ilyen, a rugalmas készlet neve |
 |DatabaseName_s|Az adatbázis neve |
@@ -589,9 +589,9 @@ Tudjon meg többet [SQL Server-hibaüzenetek](https://msdn.microsoft.com/library
 |Category|A kategória nevét. Mindig: DatabaseWaitStatistics |
 |OperationName|A művelet neve. Mindig: DatabaseWaitStatisticsEvent |
 |Resource|Az erőforrás neve |
-|Erőforrástípus|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
-|Előfizetés-azonosító|Az adatbázis-előfizetés GUID azonosítója |
-|Erőforráscsoport|Az adatbázis az erőforráscsoport neve |
+|ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
+|SubscriptionId|Az adatbázis-előfizetés GUID azonosítója |
+|ResourceGroup|Az adatbázis az erőforráscsoport neve |
 |LogicalServerName_s|Az adatbázis a kiszolgáló neve |
 |ElasticPoolName_s|Az adatbázis, ha van ilyen, a rugalmas készlet neve |
 |DatabaseName_s|Az adatbázis neve |
@@ -618,9 +618,9 @@ Tudjon meg többet [adatbázis-wait statisztika](https://docs.microsoft.com/sql/
 |Category|A kategória nevét. Mindig: Időtúllépések |
 |OperationName|A művelet neve. Mindig: TimeoutEvent |
 |Resource|Az erőforrás neve |
-|Erőforrástípus|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
-|Előfizetés-azonosító|Az adatbázis-előfizetés GUID azonosítója |
-|Erőforráscsoport|Az adatbázis az erőforráscsoport neve |
+|ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
+|SubscriptionId|Az adatbázis-előfizetés GUID azonosítója |
+|ResourceGroup|Az adatbázis az erőforráscsoport neve |
 |LogicalServerName_s|Az adatbázis a kiszolgáló neve |
 |ElasticPoolName_s|Az adatbázis, ha van ilyen, a rugalmas készlet neve |
 |DatabaseName_s|Az adatbázis neve |
@@ -641,9 +641,9 @@ Tudjon meg többet [adatbázis-wait statisztika](https://docs.microsoft.com/sql/
 |Category|A kategória nevét. Mindig: blokkok |
 |OperationName|A művelet neve. Mindig: BlockEvent |
 |Resource|Az erőforrás neve |
-|Erőforrástípus|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
-|Előfizetés-azonosító|Az adatbázis-előfizetés GUID azonosítója |
-|Erőforráscsoport|Az adatbázis az erőforráscsoport neve |
+|ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
+|SubscriptionId|Az adatbázis-előfizetés GUID azonosítója |
+|ResourceGroup|Az adatbázis az erőforráscsoport neve |
 |LogicalServerName_s|Az adatbázis a kiszolgáló neve |
 |ElasticPoolName_s|Az adatbázis, ha van ilyen, a rugalmas készlet neve |
 |DatabaseName_s|Az adatbázis neve |
@@ -665,9 +665,9 @@ Tudjon meg többet [adatbázis-wait statisztika](https://docs.microsoft.com/sql/
 |Category|A kategória nevét. Mindig: Holtpontok |
 |OperationName|A művelet neve. Mindig: DeadlockEvent |
 |Resource|Az erőforrás neve |
-|Erőforrástípus|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
-|Előfizetés-azonosító|Az adatbázis-előfizetés GUID azonosítója |
-|Erőforráscsoport|Az adatbázis az erőforráscsoport neve |
+|ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
+|SubscriptionId|Az adatbázis-előfizetés GUID azonosítója |
+|ResourceGroup|Az adatbázis az erőforráscsoport neve |
 |LogicalServerName_s|Az adatbázis a kiszolgáló neve |
 |ElasticPoolName_s|Az adatbázis, ha van ilyen, a rugalmas készlet neve |
 |DatabaseName_s|Az adatbázis neve |
@@ -685,9 +685,9 @@ Tudjon meg többet [adatbázis-wait statisztika](https://docs.microsoft.com/sql/
 |ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT.SQL |
 |Category|A kategória nevét. Mindig: AutomaticTuning |
 |Resource|Az erőforrás neve |
-|Erőforrástípus|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
-|Előfizetés-azonosító|Az adatbázis-előfizetés GUID azonosítója |
-|Erőforráscsoport|Az adatbázis az erőforráscsoport neve |
+|ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
+|SubscriptionId|Az adatbázis-előfizetés GUID azonosítója |
+|ResourceGroup|Az adatbázis az erőforráscsoport neve |
 |LogicalServerName_s|Az adatbázis a kiszolgáló neve |
 |LogicalDatabaseName_s|Az adatbázis neve |
 |ElasticPoolName_s|Az adatbázis, ha van ilyen, a rugalmas készlet neve |

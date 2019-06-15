@@ -3,8 +3,8 @@ title: Az Azure Service Fabric Docker Compose előzetes központi telepítés
 description: Az Azure Service Fabric Docker Compose formátumban, hogy egyszerűbb legyen a Service Fabricet használja meglévő tárolók vezénylésére fogad el. Ez a támogatás jelenleg előzetes verzióban érhető el.
 services: service-fabric
 documentationcenter: .net
-author: rockboyfor
-manager: digimobile
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
 ms.service: service-fabric
@@ -12,14 +12,13 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-origin.date: 02/23/2018
-ms.date: 04/29/2019
-ms.author: v-yeche
+ms.date: 2/23/2018
+ms.author: aljo, subramar
 ms.openlocfilehash: da86ed9a3e6979bd1dc05aef6ef70c7b8533a8c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60948834"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Docker-Compose üzembe helyezési támogatás az Azure Service Fabric (előzetes verzió)
@@ -139,8 +138,8 @@ Ezekkel az erőforrás-korlátok, a fürt beállítása a leírtak szerint [Serv
 ### <a name="ports-section"></a>Portok szakaszában
 
 A Service Fabric-szolgáltatást figyelő által használt portok szakaszában adja meg a http vagy https protokollt. Ez biztosítja, hogy a végpont protokoll megfelelően van közzétéve, hogy a fordított proxy továbbítja a kérelmeket az elnevezési szolgáltatással:
-* Irányíthatja a nem biztonságos Service Fabric Compose szolgáltatások, adja meg a **/http**. Ha például- **"80:80 / http"**.
-* Irányíthatja a biztonságos Service Fabric Compose szolgáltatások, adja meg a **/https**. Ha például- **"443:443 / https"**.
+* Irányíthatja a nem biztonságos Service Fabric Compose szolgáltatások, adja meg a **/http**. Ha például- **"80:80 / http"** .
+* Irányíthatja a biztonságos Service Fabric Compose szolgáltatások, adja meg a **/https**. Ha például- **"443:443 / https"** .
 
 > [!NOTE]
 > A Service Fabric a Service Fabric figyelő helyes URL-cím regisztrálása csak a /http és /https portok szakasz szintaxisa.  Ha a Docker compose file szintaxissal programozott módon érvényesítése, az érvényesítési hiba okozhatja.
@@ -166,5 +165,3 @@ Bár ez a modell rugalmasságot nyújt, is tervezzük ahol típusok a következ�
 
 * Olvassa a a [Service Fabric-alkalmazásmodell](service-fabric-application-model.md)
 * [A Service Fabric parancssori felület használatának első lépései](service-fabric-cli.md)
-
-<!-- Update_Description: wording update -->

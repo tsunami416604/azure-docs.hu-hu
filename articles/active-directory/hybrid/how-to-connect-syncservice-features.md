@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: be67a6f287e2d6e77070928cbe12542857696011
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60347540"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Az Azure AD Connect szinkronizálási szolgáltatás funkciók
@@ -49,7 +49,7 @@ Az alábbi beállításokat konfigurálhatja `Set-MsolDirSyncFeature`:
 Miután engedélyezte a funkciót, akkor nem lehet letiltani újra.
 
 > [!NOTE]
-> 2016. augusztus 24. a funkció *duplikált attribútummal kapcsolatos rugalmasság* alapértelmezés szerint engedélyezve van az új Azure AD-címtár. Ez a funkció is lehet egyik tagján jelennek meg és engedélyezve van ez a dátum előtt létrehozott címtárakat a. E-mail-értesítést fog kapni, amikor a címtár beszerzése a szolgáltatás nincs engedélyezve.
+> 2016\. augusztus 24. a funkció *duplikált attribútummal kapcsolatos rugalmasság* alapértelmezés szerint engedélyezve van az új Azure AD-címtár. Ez a funkció is lehet egyik tagján jelennek meg és engedélyezve van ez a dátum előtt létrehozott címtárakat a. E-mail-értesítést fog kapni, amikor a címtár beszerzése a szolgáltatás nincs engedélyezve.
 > 
 > 
 

@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.openlocfilehash: b00eb12092838746f4bfe16f00eac55df9224b09
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65607228"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Az Azure Stream Analytics-adatok hibák
@@ -161,7 +161,7 @@ Lásd: [Azure Stream Analytics hibáinak elhárítása a diagnosztikai naplók](
 
 * OK: Az alkalmazás és érkezés időpontja közötti különbség nagyobb, mint érkezési tolerancia frissítéskibocsátási időszak.
 * A megadott Portal értesítése: Nem
-* Diagnosztikai naplózási szint: Tájékoztatás
+* Diagnosztikai naplózási szint: Információ
 * Napló részletei
    * Alkalmazás és érkezés időpontja. 
    * Akár néhány kilobájt tényleges adattartalma.
@@ -176,7 +176,7 @@ Lásd: [Azure Stream Analytics hibáinak elhárítása a diagnosztikai naplók](
 
 * OK: Az alkalmazás és érkezés időpontja közötti különbség nagyobb, mint 5 perc.
 * A megadott Portal értesítése: Nem
-* Diagnosztikai naplózási szint: Tájékoztatás
+* Diagnosztikai naplózási szint: Információ
 * Napló részletei
    * Alkalmazás és érkezés időpontja. 
    * Akár néhány kilobájt tényleges adattartalma.
@@ -191,7 +191,7 @@ Lásd: [Azure Stream Analytics hibáinak elhárítása a diagnosztikai naplók](
 
 * OK: Esemény nem működik megfelelően a meghatározott sorrendben tolerancia ablakban tekinthető.
 * A megadott Portal értesítése: Nem
-* Diagnosztikai naplózási szint: Tájékoztatás
+* Diagnosztikai naplózási szint: Információ
 * Napló részletei
    * Akár néhány kilobájt tényleges adattartalma.
 

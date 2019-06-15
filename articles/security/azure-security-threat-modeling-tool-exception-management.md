@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 7d881454eb857080f1178f228a1f7bec36cae178
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610710"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>Biztonsági keret: Kivételek kezelése |} Megoldások 
@@ -30,7 +30,7 @@ ms.locfileid: "60610710"
 
 ## <a id="servicedebug"></a>WCF - ne tartalmazza serviceDebug csomópont konfigurációs fájlban
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
 | **SDL Phase**               | Felépítés |  
@@ -54,7 +54,7 @@ Tiltsa le a hibakeresési információkat a szolgáltatásban. A eltávolítás�
 
 ## <a id="servicemetadata"></a>WCF - ne tartalmazza serviceMetadata csomópont konfigurációs fájlban
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
 | **SDL Phase**               | Felépítés |  
@@ -65,7 +65,7 @@ Tiltsa le a hibakeresési információkat a szolgáltatásban. A eltávolítás�
 
 ## <a id="exception"></a>Győződjön meg arról, hogy a megfelelő kivételkezelés történik-e az ASP.NET webes API-ban
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
 | **SDL Phase**               | Felépítés |  
@@ -183,7 +183,7 @@ Ellenőrizze a kivételes kezelésének további részleteiért hivatkozások sz
 
 ## <a id="messages"></a>Nem teszik elérhetővé a hibaüzeneteket biztonsági részletei
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -194,7 +194,7 @@ Ellenőrizze a kivételes kezelésének további részleteiért hivatkozások sz
 
 ## <a id="default"></a>Alapértelmezett hibakezelési oldal implementálása
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -205,7 +205,7 @@ Ellenőrizze a kivételes kezelésének további részleteiért hivatkozások sz
 
 ## <a id="deployment"></a>Állítsa be az üzembe helyezési módszer a kereskedelmi az IIS-ben
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Környezet |  
@@ -216,7 +216,7 @@ Ellenőrizze a kivételes kezelésének további részleteiért hivatkozások sz
 
 ## <a id="fail"></a>Kivételek biztonságosan kell-e sikertelen
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/19/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 53a262af421dd986e6b70af173a6e8b3f7c06f64
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60527298"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>Az XPath környezeti változóban tegye elérhetővé a szerepkör konfigurációs beállításai
@@ -29,7 +29,7 @@ Ezek az értékek XPath keresztül is érhetők el a [Microsoft.WindowsAzure.Ser
 ## <a name="app-running-in-emulator"></a>Emulátor-ben futó alkalmazás
 Azt jelzi, hogy az alkalmazás futtatása az emulátorral.
 
-| Typo | Példa |
+| Típus | Példa |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/Deployment/@emulated" |
 | Kód |var x = RoleEnvironment.IsEmulated; |
@@ -37,7 +37,7 @@ Azt jelzi, hogy az alkalmazás futtatása az emulátorral.
 ## <a name="deployment-id"></a>Üzemelő példány azonosítója
 Az üzemelő példány azonosítója a példány kérdezi le.
 
-| Typo | Példa |
+| Típus | Példa |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/Deployment/@id" |
 | Kód |var deploymentId = RoleEnvironment.DeploymentId; |
@@ -45,7 +45,7 @@ Az üzemelő példány azonosítója a példány kérdezi le.
 ## <a name="role-id"></a>Szerepkör-azonosító
 Lekéri a jelenlegi szerepkör-példány azonosítója.
 
-| Typo | Példa |
+| Típus | Példa |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/@id" |
 | Kód |var azonosítója = RoleEnvironment.CurrentRoleInstance.Id; |
@@ -53,7 +53,7 @@ Lekéri a jelenlegi szerepkör-példány azonosítója.
 ## <a name="update-domain"></a>Frissítési tartomány
 A frissítési tartomány a példány kérdezi le.
 
-| Typo | Példa |
+| Típus | Példa |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/@updateDomain" |
 | Kód |var ud = RoleEnvironment.CurrentRoleInstance.UpdateDomain; |
@@ -61,7 +61,7 @@ A frissítési tartomány a példány kérdezi le.
 ## <a name="fault-domain"></a>Tartalék tartomány
 A tartalék tartomány példány kérdezi le.
 
-| Typo | Példa |
+| Típus | Példa |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/@faultDomain" |
 | Kód |var fd = RoleEnvironment.CurrentRoleInstance.FaultDomain; |
@@ -69,7 +69,7 @@ A tartalék tartomány példány kérdezi le.
 ## <a name="role-name"></a>Szerepkörnév
 A példányok szerepkör nevét kéri le.
 
-| Typo | Példa |
+| Típus | Példa |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/@roleName" |
 | Kód |var rname = RoleEnvironment.CurrentRoleInstance.Role.Name; |
@@ -77,7 +77,7 @@ A példányok szerepkör nevét kéri le.
 ## <a name="config-setting"></a>Konfigurációs beállítás
 A megadott konfigurációs beállítás értékét kérdezi le.
 
-| Typo | Példa |
+| Típus | Példa |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/ConfigurationSettings/ConfigurationSetting[@name='Setting1']/@value" |
 | Kód |var beállítás RoleEnvironment.GetConfigurationSettingValue("Setting1"); = |
@@ -85,7 +85,7 @@ A megadott konfigurációs beállítás értékét kérdezi le.
 ## <a name="local-storage-path"></a>Helyi tároló elérési útja
 A helyi elérési útja a példány kérdezi le.
 
-| Typo | Példa |
+| Típus | Példa |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/LocalResources/LocalResource[@name='LocalStore1']/@path" |
 | Kód |var localResourcePath = RoleEnvironment.GetLocalResource("LocalStore1"). RootPath; |
@@ -93,7 +93,7 @@ A helyi elérési útja a példány kérdezi le.
 ## <a name="local-storage-size"></a>Helyi tároló mérete
 A helyi tároló a példány méretének kérdezi le.
 
-| Typo | Példa |
+| Típus | Példa |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/LocalResources/LocalResource[@name='LocalStore1']/@sizeInMB" |
 | Kód |var localResourceSizeInMB = RoleEnvironment.GetLocalResource("LocalStore1").MaximumSizeInMegabytes; |
@@ -101,7 +101,7 @@ A helyi tároló a példány méretének kérdezi le.
 ## <a name="endpoint-protocol"></a>Protokoll végpontja
 A végpont protokoll-példány kérdezi le.
 
-| Typo | Példa |
+| Típus | Példa |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/Endpoints/Endpoint[@name='Endpoint1']/@protocol" |
 | Kód |var prot = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"]. Protokoll; |
@@ -109,7 +109,7 @@ A végpont protokoll-példány kérdezi le.
 ## <a name="endpoint-ip"></a>Végpont IP
 Lekérdezi a megadott végpont IP-címét.
 
-| Typo | Példa |
+| Típus | Példa |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/Endpoints/Endpoint[@name='Endpoint1']/@address" |
 | Kód |var cím = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"]. IPEndpoint.Address |
@@ -117,7 +117,7 @@ Lekérdezi a megadott végpont IP-címét.
 ## <a name="endpoint-port"></a>Végponti port
 A végponti port példány kérdezi le.
 
-| Typo | Példa |
+| Típus | Példa |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/Endpoints/Endpoint[@name='Endpoint1']/@port" |
 | Kód |var port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"]. IPEndpoint.Port; |

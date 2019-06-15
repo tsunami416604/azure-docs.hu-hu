@@ -13,10 +13,10 @@ ms.reviewer: jrasnik
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: ce559e50d5a34ebad9113f0e21dcb732adc40dd2
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65233792"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Eseményfájl célkódja az SQL Database bővített események
@@ -54,7 +54,7 @@ Ez a témakör egy kétfázisú kódmintát mutat be:
   
   * A modulok parancsai például - tartalmaznak **New-AzStorageAccount**.
 
-## <a name="phase-1-powershell-code-for-azure-storage-container"></a>1. fázis: PowerShell-kódot az Azure Storage-tárolók
+## <a name="phase-1-powershell-code-for-azure-storage-container"></a>1\. fázis: PowerShell-kódot az Azure Storage-tárolók
 
 A PowerShell az 1. fázisa az kétfázisú munkafüzetkód-példát.
 
@@ -234,7 +234,7 @@ Now shift to the Transact-SQL portion of the two-part code sample!';
 
 Jegyezze fel a néhány névvel ellátott értékek, amelyek a PowerShell-parancsfájl kinyomtat végződik. A 2. fázis, a következő Transact-SQL parancsfájl, szerkesztenie kell ezeket az értékeket.
 
-## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>2. fázis: A Transact-SQL kód által használt Azure Storage-tároló
+## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>2\. fázis: A Transact-SQL kód által használt Azure Storage-tároló
 
 * Ez a kódminta 1 fázisában futtatta egy PowerShell-példaszkript egy Azure Storage-tároló létrehozása.
 * Ezután a 2. fázis, a következő Transact-SQL parancsfájl kell a tárolót használja.

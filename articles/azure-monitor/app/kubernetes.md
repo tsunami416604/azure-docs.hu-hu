@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: alkaplan
 ms.openlocfilehash: c94d589875195207ec6f71c35ad077cac281fda5
-ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65555838"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Nulla instrumentation alkalmazásfigyelés kubernetes üzemeltetett alkalmazások
@@ -34,7 +34,7 @@ Az Azure Monitor mostantól service háló tech a Kubernetes-fürtön kívül, a
 - Egy [Application Insights-erőforrás](create-new-resource.md)
 - A szolgáltatás rácsvonal rendelkezik. Ha a fürt nem rendelkezik telepített Istio, megtudhatja hogyan [telepítheti és használhatja az Azure Kubernetes Service Istio](https://docs.microsoft.com/azure/aks/istio-install).
 
-## <a name="capabilities"></a>Képességek
+## <a name="capabilities"></a>Funkciók
 
 Nulla rendszerállapot-alkalmazásfigyelést Kubernetes üzemeltetett alkalmazások használatával fogja tudni használni:
 
@@ -78,7 +78,7 @@ A szolgáltatás-hálón kívül futó alkalmazások nem érinti.
 3. Edit *application-insights-istio-mixer-adapter-deployment.yaml*
     - az érték szerkesztése *ISTIO_MIXER_PLUGIN_AI_INSTRUMENTATIONKEY* környezeti változó tartalmazza a kialakítási kulcsot, az Application Insights-erőforrást az Azure Portalon, a telemetriai adatokat tartalmazza.
     - Szükség esetén szerkessze értékét *ISTIO_MIXER_PLUGIN_WATCHLIST_NAMESPACES* környezeti változót, amelynek szeretné engedélyezni a figyelést névterek vesszővel elválasztott listáját tartalmazza. Hagyja üresen a mezőt az összes névterek figyelése.
-4. Alkalmazása *minden* alatt található fájl YAML *src/kubernetes/* a következő futtatásával (belül továbbra is kell */src/kubernetes/*):
+4. Alkalmazása *minden* alatt található fájl YAML *src/kubernetes/* a következő futtatásával (belül továbbra is kell */src/kubernetes/* ):
 
    ```console
    kubectl apply -f .
@@ -97,7 +97,7 @@ A szolgáltatás-hálón kívül futó alkalmazások nem érinti.
 ### <a name="view-application-insights-telemetry"></a>Az Application Insights telemetria megtekintése
 
 - Hozzon létre egy minta kérelmet, győződjön meg arról, hogy figyelése megfelelően működik-e az alkalmazás.
-- 3. és 5 percen belül akkor kezdenek telemetriai adatok jelennek meg az Azure Portalon. Ügyeljen arra, hogy tekintse meg a *Alkalmazástérkép* szakaszában az Application Insights-erőforrást a portálon.
+- 3\. és 5 percen belül akkor kezdenek telemetriai adatok jelennek meg az Azure Portalon. Ügyeljen arra, hogy tekintse meg a *Alkalmazástérkép* szakaszában az Application Insights-erőforrást a portálon.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -130,7 +130,7 @@ Alább a hibaelhárítási folyamat során a telemetriai adatok nem jelenik meg,
    ```
    Keresse meg a hibákat, különösen vonatkozó folytatott kommunikáció *applicationinsightsadapter* adapter.
 
-## <a name="faq"></a>gyakori kérdésekben
+## <a name="faq"></a>GYIK
 
 A projekt előrehaladását legújabb információkért látogasson el a [Istio Mixer projekt Githubhoz készült Application Insights adapter](https://github.com/Microsoft/Application-Insights-Istio-Adapter/blob/master/SETUP.md#faq).
 

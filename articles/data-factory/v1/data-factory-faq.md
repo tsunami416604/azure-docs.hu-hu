@@ -14,10 +14,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 518e3fa842c5283dc20a6111773bd55451f026b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60486850"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Az Azure Data Factory – gyakori kérdések
@@ -69,7 +69,7 @@ Igen. Használja a **áthelyezése** gombra a data factory panel az alábbi ábr
 ### <a name="what-are-the-compute-environments-supported-by-data-factory"></a>Mik azok a Data Factory által támogatott számítási környezetek?
 Az alábbi táblázat a Data Factory és a rajtuk futó tevékenységek által támogatott számítási környezetek listáját tartalmazza.
 
-| Számítási környezet | tevékenységek |
+| Számítási környezet | activities |
 | --- | --- |
 | [Igény szerinti HDInsight-fürt](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) vagy [a saját HDInsight-fürt](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) |[DotNet](data-factory-use-custom-activities.md), [Hive](data-factory-hive-activity.md), [Pig](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), [Hadoop Streamelési](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
@@ -151,7 +151,7 @@ A következő példában, csak be kell **külső** igaz értékre az **dataset1*
 Ha egy másik adat-előállító egy olyan folyamattal, amely a dataset4 (az 1. a data factory 2. folyamat elő), megjelölése dataset4 külső adatkészlettel, mert az adatkészlet különböző adat-előállító (DataFactory1, nem DataFactory2) által előállított.  
 
 **DataFactory2**    
-1. folyamat: dataset4 -> activity4 dataset5 ->
+1\. folyamat: dataset4 -> activity4 dataset5 ->
 
 Ha az external tulajdonság megfelelően van beállítva, győződjön meg arról, hogy létezik-e a bemeneti adatokat a bemeneti adatkészlet definíciójában megadott helyen.
 

@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
 ms.openlocfilehash: 23b5967782cf237ed5af2b802aabbbf9c2f781e7
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62114210"
 ---
 # <a name="add-authentication-to-your-apache-cordova-app"></a>Hitelesítés hozzáadása az Apache Cordova-alkalmazáshoz
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Ebben az oktatóanyagban hozzáadja a todolist gyorsútmutató-projekt Apache Cordova támogatott identitásszolgáltatóval a hitelesítést. Ez az oktatóanyag alapján a [A Mobile Apps használatának első lépései] oktatóanyaggal, amely először el kell végeznie.
 
 ## <a name="register"></a>Regisztrálja az alkalmazást a hitelesítéshez, és konfigurálja az App Service-ben

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
 ms.openlocfilehash: 7cbffdd40e574c7e906a9388b70ca9d32fd84649
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60198961"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>A Cloud Foundry Azure-ral való integrálása
@@ -48,7 +48,7 @@ Alapértelmezés szerint az Azure alapszintű load balancer bejövő CF API-alka
 ### <a name="azure-standard-load-balancer-"></a>Az Azure Standard Load Balancer *
 Az Azure Load Balancer 4. szintű terheléselosztó. A forgalmat egy elosztott terhelésű készlet szolgáltatás példányai között osztja szolgál. A standard verzióban biztosít [speciális szolgáltatások](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) az alapszintű verzióra. Például: 1. A háttérkiszolgáló-készlet maximális korlátját 100 jelenik meg, hogy 1000 virtuális gépet.  2. A végpontok mostantól támogatja a több rendelkezésre állási csoportok helyett egyetlen rendelkezésre állási csoportban.  3. További funkciók, például magas rendelkezésre ÁLLÁSÚ portok, gazdagabb monitorozási adatok, és így tovább. Ha az Azure rendelkezésre állási zónában telepít át, a standard load balancer szükség. Egy új központi telepítés kapcsán azt javasoljuk, hogy az Azure Standard Load Balancer kipróbálása. 
 
-## <a name="3-authentication"></a>3. Authentication 
+## <a name="3-authentication"></a>3. Hitelesítés 
 [Cloud Foundry felhasználói fiók és a hitelesítési](https://docs.cloudfoundry.org/concepts/architecture/uaa.html) a központi identitáskezelő szolgáltatást nyújt a CF-hez és különböző összetevőjét. [Az Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) szolgáltatás a Microsoft több-bérlős felhőalapú címtár és Identitáskezelés felügyeleti szolgáltatás. Alapértelmezés szerint a Cloud Foundry hitelesítéshez UAA szolgál ki. Speciális beállítás UAA is támogatja az Azure AD egy külső felhasználó tárolóként. Az Azure AD-felhasználók hozzáférhetnek a Cloud Foundry használata az LDAP-azonosítót fog kérni, a Cloud Foundry-fiók nélkül. Az alábbi lépéseket követve [konfigurálása az Azure ad-ben a PCF UAA](https://docs.pivotal.io/p-identity/1-6/azure/index.html).
 
 ## <a name="4-data-storage-for-cloud-foundry-runtime-system"></a>4. Adattárolás a Cloud Foundry futásidejű rendszer esetében

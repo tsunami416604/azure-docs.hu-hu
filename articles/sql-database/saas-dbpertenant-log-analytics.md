@@ -13,10 +13,10 @@ ms.reviewer: billgib
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 6380488faa9a4554df5df5ea67e11dbeb8853fff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61390559"
 ---
 # <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-sql-database-saas-app"></a>Beállítása és használata az Azure Monitor naplóira egy több-bérlős SQL Database SaaS-alkalmazással
@@ -57,7 +57,7 @@ Az OMS-munkaterületeket mostantól Log Analytics-munkaterületeknek nevezzük. 
 
 1. Most indítsa el a terhelésgenerátor egy szimulált terhelés futtathatók a bérlők számára.
 
-    a. Állítsa be **$DemoScenario = 2**, _normál intenzitású terhelés (nagyjából 30 DTU)_.
+    a. Állítsa be **$DemoScenario = 2**, _normál intenzitású terhelés (nagyjából 30 DTU)_ .
 
     b. A szkript futtatásához nyomja le az F5.
 
@@ -83,7 +83,7 @@ Ebben a gyakorlatban nyissa meg az Azure Portalon, és tekintse meg az adatbázi
 
    ![Nyissa meg a Log Analytics-munkaterület](media/saas-dbpertenant-log-analytics/log-analytics-open.png)
 
-1. Válassza ki a munkaterületet nevű _wtploganalytics -&lt;felhasználói&gt;_.
+1. Válassza ki a munkaterületet nevű _wtploganalytics -&lt;felhasználói&gt;_ .
 
 1. Válassza ki **áttekintése** a log analytics megoldás megnyitásához az Azure Portalon.
 

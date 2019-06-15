@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 85110126f9bdec225b1644860814cd89832132a1
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65073589"
 ---
 # <a name="connection-libraries-for-azure-database-for-postgresql---single-server"></a>Az Azure Database for PostgreSQL – egyetlen kiszolgáló csatlakozási kódtárak
@@ -24,7 +24,7 @@ PostgreSQL-kiszolgálóhoz való kapcsolódáshoz használt legtöbb nyelvi klie
 | Python | [psycopg](http://initd.org/psycopg/) | DB API 2.0-kompatibilis | [Letöltés](http://initd.org/psycopg/download/) |
 | PHP | [php-pgsql](https://secure.php.net/manual/en/book.pgsql.php) | Adatbázis-bővítmény | [Telepítés](https://secure.php.net/manual/en/pgsql.installation.php) |
 | Node.js | [PG npm-csomag](https://www.npmjs.com/package/pg) | Tiszta JavaScript nem blokkoló ügyfél | [Telepítés](https://www.npmjs.com/package/pg) |
-| Java | [JDBC](https://jdbc.postgresql.org/) | 4. típus JDBC-illesztőprogram | [Letöltés](https://jdbc.postgresql.org/download.html)  |
+| Java | [JDBC](https://jdbc.postgresql.org/) | 4\. típus JDBC-illesztőprogram | [Letöltés](https://jdbc.postgresql.org/download.html)  |
 | Ruby | [PG gem](https://deveiate.org/code/pg/) | Ruby-kapcsolat | [Letöltés](https://rubygems.org/downloads/pg-0.20.0.gem) |
 | Indítás | [Package pq](https://godoc.org/github.com/lib/pq) | Pure Go postgres illesztőprogramot | [Telepítés](https://github.com/lib/pq/blob/master/README.md) |
 | C\#ÉS .NET | [Npgsql](https://www.npgsql.org/) | Az ADO.NET-szolgáltató | [Letöltés](https://www.microsoft.com/net/) |

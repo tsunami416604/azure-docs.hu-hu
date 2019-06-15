@@ -18,10 +18,10 @@ ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 683664b3172cb12ba6adf6c8006e9685a6d1ec35
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540292"
 ---
 # <a name="service-to-service-apps"></a>Szolgáltatások – alkalmazások
@@ -36,7 +36,7 @@ Szolgáltatások – alkalmazások lehet egy démon, vagy a kiszolgáló alkalma
 
     Ebben a forgatókönyvben tegyük fel, hogy a felhasználó a natív alkalmazások hitelesítette, és a natív alkalmazásnak kell webes API-hívás. Az Azure AD kibocsát egy JWT jogkivonat a webes API meghívásához. Ha a webes API meghívása egy másik alsóbb rétegbeli webes API-t, a alapú meghatalmazásos folyamat használhatja a felhasználói identitás delegálásához, és a második szintű webes API hitelesítésére.
 
-## <a name="diagram"></a>Diagram
+## <a name="diagram"></a>Ábra
 
 ![Démon, vagy az webes API-diagram](./media/authentication-scenarios/daemon_server_app_to_web_api.png)
 
@@ -61,7 +61,7 @@ A folyamat az alábbiak ismertetik feltételezi, hogy a felhasználó hitelesít
 
 Tekintse meg a Kódminták démon vagy kiszolgálói alkalmazás webes API-forgatókönyvekhez. És a új mintát gyakran hozzáadása során gyakran készítsen biztonsági ellenőrzést. [Kiszolgáló vagy alkalmazás démon a webes API-hoz](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
 
-## <a name="app-registration"></a>Appok regisztrálása
+## <a name="app-registration"></a>Alkalmazásregisztráció
 
 * Egyetlen bérlő – az alkalmazás azonosítóját és a delegált felhasználó identitás esetben a démon, vagy server alkalmazást regisztrálni kell ugyanabban a címtárban az Azure ad-ben. A webes API elérhetővé engedélykészletet, amelyek segítségével korlátozhatja a démon, vagy az erőforrásokhoz való hozzáférése konfigurálható. Ha egy meghatalmazott felhasználói identitástípus használatban van, a kiszolgálói alkalmazás kell válassza ki a kívánt engedélyekkel a "Engedélyeket az egyéb alkalmazások" legördülő menüből az Azure Portalon. Ebben a lépésben nincs szükség, ha az identitás alkalmazástípus használatban van.
 * Több-bérlős-First, a démon vagy kiszolgálói alkalmazás jelzi a megfelelő működéséhez szükséges engedélyekkel van konfigurálva. Szükséges engedélyek listája egy párbeszédpanel jelenik meg, amikor egy felhasználó vagy rendszergazda a célkönyvtárban duplikátum beleegyezésével az alkalmazáshoz, ami lehetővé teszi a szervezet számára elérhető. Egyes alkalmazások csak a felhasználói szintű engedélyeket, amelyeket a szervezet bármely felhasználója jóváhagyhat van szükségük. Más alkalmazások szükséges rendszergazdai engedélyekkel, amelyek a szervezet egy felhasználója nem járulhatnak hozzá. Csak egy könyvtár rendszergazda engedélyezheti, hogy ez a jogosultsági szint szükséges alkalmazásokat. Amikor a felhasználó vagy rendszergazda hozzájárul, mind a webes API-k a címtárban van regisztrálva.

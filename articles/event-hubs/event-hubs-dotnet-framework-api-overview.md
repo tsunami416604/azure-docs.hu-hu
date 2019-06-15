@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: shvija
 ms.openlocfilehash: f56882d2d73c85434c6f81972a06e5ea9ccdff99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60822047"
 ---
 # <a name="event-hubs-net-framework-api-overview"></a>Event Hubs .NET-keretrendszer API – áttekintés
@@ -26,7 +26,7 @@ Ez a cikk összefoglaltuk a kulcsot az Azure Event Hubs [.NET-keretrendszer ügy
 
 A következő felügyeleti műveletek végrehajtásához rendelkeznie kell **kezelés** engedélyek az Event Hubs-névtér:
 
-### <a name="create"></a>Létrehozás
+### <a name="create"></a>Hozzon létre
 
 ```csharp
 // Create the event hub
@@ -35,7 +35,7 @@ ehd.PartitionCount = SampleManager.numPartitions;
 await namespaceManager.CreateEventHubAsync(ehd);
 ```
 
-### <a name="update"></a>Frissítés
+### <a name="update"></a>frissítés
 
 ```csharp
 var ehd = await namespaceManager.GetEventHubAsync(eventHubName);

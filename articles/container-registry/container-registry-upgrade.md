@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: danlep
 ms.openlocfilehash: a5099feee34eb5497b68987485412e29ad5d5365
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60480340"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Klasszikus tároló-beállításjegyzék frissítése
@@ -37,7 +37,7 @@ Felügyelt beállításjegyzék tárterületét az alábbi előnyöket nyújtja:
 
 Az ACR képtárolás a további részletekért lásd: [képtárolás tárolót az Azure Container Registry](container-registry-storage.md).
 
-## <a name="migration-considerations"></a>Az áttelepítés szempontjai
+## <a name="migration-considerations"></a>Migrálási szempontok
 
 Amikor frissít egy klasszikus beállításjegyzék egy felügyelt beállításjegyzéket, az Azure egy tárfiókba, Azure által kezelt kell másolnia összes meglévő tárolórendszerkép az ACR-létrehozott storage-fiókból az előfizetésében. A beállításjegyzék méretétől függően a folyamat eltarthat néhány percig akár néhány órát. Költségbecslési célokat a várt a migrálási idő körülbelül 0,5 GB / perc.
 

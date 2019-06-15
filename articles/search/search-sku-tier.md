@@ -11,10 +11,10 @@ ms.date: 05/08/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 00422209302bbcc2139be4f6b490f0bb2816c051
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65539278"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Válasszon egy tarifacsomagot az Azure Search
@@ -170,7 +170,7 @@ S3 és az S3 HD élvezik azonos nagy kapacitású infrastruktúrával, de külö
 
 Optimalizált tárterületekkel, L1 és L2, alkalmazásokhoz ideálisak nagy mennyiségű adat követelményeknek, de a viszonylag kevés végfelhasználók számára, amikor minimálisra csökkentik a Lekérdezések késése nem a legmagasabb prioritást.  
 
-|  | L1 | 2. |  |  |  |  |  |
+|  | L1 | 2\. |  |  |  |  |  |
 |--|----|----|--|--|--|--|--|
 | Partíció mérete|  1 TB | 2 TB |  |  |  |  |  |
 | index és indexelő korlátok| 10 | 10 |  |  |  |  |  |
@@ -189,7 +189,7 @@ Az index mérete határozza meg, hogy kell [hozzon létre egyet](search-create-i
 > Annak ellenére, hogy a jövőbeli igényeit, az indexeket és a storage becslése esetlegességét is gondolja, érdemes ezzel. Ha egy réteg kapacitása elemről kiderül, hogy túl alacsony, a magasabb szintű új szolgáltatások kiépítése kell, majd [töltse be újra az indexek](search-howto-reindex.md). Nincs nem a helyszíni frissítését egy másikra a Termékváltozat-szolgáltatásával.
 >
 
-### <a name="step-1-develop-rough-estimates-by-using-the-free-tier"></a>1. lépés: Durva becslést fejlesztése az ingyenes csomag használatával
+### <a name="step-1-develop-rough-estimates-by-using-the-free-tier"></a>1\. lépés: Durva becslést fejlesztése az ingyenes csomag használatával
 
 Kapacitásának becsléséhez egyik lehetőség, hogy indítsa el az ingyenes szinttel. Ne feledje, hogy az ingyenes szolgáltatást kínál legfeljebb három indexre, 50 MB tárhelyet, és az indexelési idő 2 perc. Ez egy előre jelzett index mérete, ezek a korlátozások a becslésbe kihívást jelenthet. Itt látható, amely elvégezhető:
 
@@ -199,7 +199,7 @@ Kapacitásának becsléséhez egyik lehetőség, hogy indítsa el az ingyenes sz
 
 Ha a minta helyi képviselőjéhez, és 10 százaléka, a teljes adatforrásra, egy 30 MB-os index KB. 300 MB válik, ha az összes dokumentum indexelt. Előzetes szám képességekkel, double (fejlesztési és éles környezetek) két indexeket a költségvetéshez összeg lehet. Ez lehetővé teszi a tárolási követelmények 600 MB összesen. Ez a követelmény egyszerűen teljesül által az alapszintű csomag, így hiba lép érvénybe.
 
-### <a name="step-2-develop-refined-estimates-by-using-a-billable-tier"></a>2. lépés: A becslések finomított fejlesztése a számlázható szint szerint kalkuláljuk használatával
+### <a name="step-2-develop-refined-estimates-by-using-a-billable-tier"></a>2\. lépés: A becslések finomított fejlesztése a számlázható szint szerint kalkuláljuk használatával
 
 Egyes ügyfelek inkább a dedikált erőforrások, amelyek nagyobb mintavételi és feldolgozási időt és majd fejlesztése index mennyisége, mérete és a lekérdezés kötetek valósághű becslése a fejlesztés során történő indításához. Kezdetben a szolgáltatás a legjobb-találgatásos becslés alapján van kiépítve. Ezt követően az alkalmazásfejlesztési projekt kiforrottá, mivel csapatok általában tudja, hogy a meglévő szolgáltatás felett vagy alatt várható éles számítási kapacitást.
 

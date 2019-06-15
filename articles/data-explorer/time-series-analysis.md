@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
 ms.openlocfilehash: 7415e13a445a73af197362c6cfbd3a865a2fea02
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65604051"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Az Azure Data Explorer idősoros elemzés
@@ -34,7 +34,7 @@ Az eredményül kapott tábla időbélyegző-oszlopa, három környezetfüggő d
 
 |   |   |   |   |   |
 | --- | --- | --- | --- | --- |
-|   | Időbélyeg | BrowserVer | OsVer | Ország/régió |
+|   | TimeStamp | BrowserVer | OsVer | Ország/régió |
 |   | 2016-08-25 09:12:35.4020000 | Chrome 51.0 | Windows 7 | Egyesült Királyság |
 |   | 2016-08-25 09:12:41.1120000 | Chrome 52.0 | Windows 10 |   |
 |   | 2016-08-25 09:12:46.2300000 | Chrome 52.0 | Windows 7 | Egyesült Királyság |
@@ -142,9 +142,9 @@ demo_series3
 
 |   |   |   |   |
 | --- | --- | --- | --- |
-|   | időszakok | Pontszámok | nap |
+|   | időszakok | Pontszámok | days |
 |   | 84 | 0.820622786055595 | 7 |
-|   | 12 | 0.764601405803502 | 1. |
+|   | 12 | 0.764601405803502 | 1 |
 
 A függvény a napi és heti szezonalitás észleli. A napi kisebb, mint a heti pontszámmodell, mivel hétvégi napok különböznek a weekdays is.
 

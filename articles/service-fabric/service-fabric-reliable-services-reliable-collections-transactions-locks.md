@@ -15,10 +15,10 @@ ms.workload: required
 ms.date: 5/1/2017
 ms.author: aljo
 ms.openlocfilehash: 9785a09a3ac3e119507b4ac28075d887c7edc619
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60774063"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Tranzakciók és az Azure Service Fabric Reliable Collections zárolási mód
@@ -75,10 +75,10 @@ Frissítési zárolás egy aszimmetrikus zárolási megakadályozható, hogy egy
 
 A zárolás kompatibilitási mátrix az alábbi táblázatban található:
 
-| Kérelem \ kapnak | None | Közös | Frissítés | Kizárólagos |
+| Kérelem \ kapnak | None | Megosztott | frissítés | Kizárólagos |
 | --- |:--- |:--- |:--- |:--- |
-| Közös |Ütközés |Ütközés |Ütközés |Ütközés |
-| Frissítés |Ütközés |Ütközés |Ütközés |Ütközés |
+| Megosztott |Ütközés |Ütközés |Ütközés |Ütközés |
+| frissítés |Ütközés |Ütközés |Ütközés |Ütközés |
 | Kizárólagos |Ütközés |Ütközés |Ütközés |Ütközés |
 
 A megbízható gyűjtemények API-k időtúllépési argumentum holtpont észlelési szolgál.

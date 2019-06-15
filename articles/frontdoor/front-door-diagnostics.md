@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
 ms.openlocfilehash: 16770ea0a320b3d9f081cc21a102ab050a6467f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60736784"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>Figyelési metrikák és naplók Azure bejárati ajtajának Service-ben
@@ -31,14 +31,14 @@ Metrikák egyik újdonsága az egyes Azure-erőforrásokhoz, amelyek lehetővé 
 
 | Metrika | Metrika megjelenített neve | Unit (Egység) | Dimenziók | Leírás |
 | --- | --- | --- | --- | --- |
-| RequestCount | Kérelmek száma | Darabszám | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Bejárati ajtajának által kiszolgált ügyfélkérések száma.  |
+| RequestCount | Kérelmek száma | Count | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Bejárati ajtajának által kiszolgált ügyfélkérések száma.  |
 | RequestSize | Kérés mérete | Bájt | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Az ügyfelek által az bejárati ajtajának kérések küldött bájtok száma. |
 | ResponseSize | Válasz mérete | Bájt | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Az ügyfelek számára a bejárati ajtajának válaszokat, küldött bájtok száma. |
 | TotalLatency | Teljes késés | Ezredmásodperc | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Az idő alapján az ügyfél kérése bejárati ajtajának által fogadott, mindaddig, amíg az ügyfél arra vonatkozik, a bejárati ajtajának válasz utolsó bájtját számítja ki. |
-| BackendRequestCount | Háttér-kérések száma | Darabszám | HttpStatus</br>HttpStatusGroup</br>Háttérszolgáltatás | A bejárati ajtajának háttérkomponenseinek küldött kérelmek száma. |
-| BackendRequestLatency | Háttérbeli késleltetése | Ezredmásodperc | Háttérszolgáltatás | Az az időpont alapján számítja ki, ha a kérés által küldött bejárati ajtó a háttérrendszerhez mindaddig, amíg a bejárati ajtajának kapott válasz utolsó bájtját a háttérrendszerből. |
-| BackendHealthPercentage | Háttérkiszolgáló állapotadatainak százalékos aránya | Százalék | Háttérszolgáltatás</br>BackendPool | Sikeres állapotjelentés aránya mintavételek a bejárati ajtajának háttérkomponenseinek. |
-| WebApplicationFirewallRequestCount | Web Application Firewall kérések száma | Darabszám | PolicyName</br>RuleName</br>Műveletek | Az alkalmazás réteg biztonsági bejárati ajtó által feldolgozott ügyfél-kérések száma. |
+| BackendRequestCount | Háttér-kérések száma | Count | HttpStatus</br>HttpStatusGroup</br>Háttér | A bejárati ajtajának háttérkomponenseinek küldött kérelmek száma. |
+| BackendRequestLatency | Háttérbeli késleltetése | Ezredmásodperc | Háttér | Az az időpont alapján számítja ki, ha a kérés által küldött bejárati ajtó a háttérrendszerhez mindaddig, amíg a bejárati ajtajának kapott válasz utolsó bájtját a háttérrendszerből. |
+| BackendHealthPercentage | Háttérkiszolgáló állapotadatainak százalékos aránya | Százalék | Háttér</br>BackendPool | Sikeres állapotjelentés aránya mintavételek a bejárati ajtajának háttérkomponenseinek. |
+| WebApplicationFirewallRequestCount | Web Application Firewall kérések száma | Count | PolicyName</br>RuleName</br>Műveletek | Az alkalmazás réteg biztonsági bejárati ajtó által feldolgozott ügyfél-kérések száma. |
 
 ## <a name="activity-log"></a>Tevékenységnaplók
 

@@ -11,10 +11,10 @@ ms.date: 08/03/2018
 ms.author: pullabhk
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
 ms.openlocfilehash: 8a47d3cf346d7961e9f8b1c4fa615a2faa6b1da0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60646775"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Egy Azure virtuális gép biztonsági mentése a Azure Backup – REST API-n keresztül
@@ -41,7 +41,7 @@ A POST URI rendelkezik `{subscriptionId}`, `{vaultName}`, `{vaultresourceGroupNa
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01
 ```
 
-#### <a name="responses"></a>Válaszok
+#### <a name="responses"></a>Responses
 
 A "frissítés" művelet egy [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy a művelet létrehoz egy másik művelet, külön-külön nyomon kell követni.
 
@@ -108,7 +108,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 A *első* URI rendelkezik a szükséges paramétereket. Nincsenek további kérelem törzsében van szükség.
 
-#### <a name="responses"></a>Válaszok
+#### <a name="responses"></a>Responses
 
 |Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
@@ -208,7 +208,7 @@ A következő kérés törzse egy védett elem létrehozásához szükséges tul
 
 A `{sourceResourceId}` van a `{virtualMachineId}` a fent említett a [lista védhető elemek válasz](#example-responses-1).
 
-#### <a name="responses"></a>Válaszok
+#### <a name="responses"></a>Responses
 
 A védett elem létrehozása egy [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy a művelet létrehoz egy másik művelet, külön-külön nyomon kell követni.
 
@@ -319,7 +319,7 @@ A következő kérés törzse egy védett elem biztonsági másolatának aktivá
 }
 ```
 
-### <a name="responses"></a>Válaszok
+### <a name="responses"></a>Responses
 
 Van egy igény szerinti biztonsági mentésének elindítása egy [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy a művelet létrehoz egy másik művelet, külön-külön nyomon kell követni.
 
@@ -439,7 +439,7 @@ A `{containerName}` és `{protectedItemName}` áll össze [fent](#responses-1). 
 DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2016-12-01
 ```
 
-### <a name="responses"></a>Válaszok
+### <a name="responses"></a>Responses
 
 *Törlés* védelem egy [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy a művelet létrehoz egy másik művelet, külön-külön nyomon kell követni.
 

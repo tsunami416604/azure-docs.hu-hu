@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: ffbf30f2bfdf0a175513a8d2b9182b35c39f6aae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60761709"
 ---
 # <a name="managing-media-services-entities-with-rest"></a>A Media Services REST-tel entitáskezelésről  
@@ -34,7 +34,7 @@ Microsoft Azure Media Services egy olyan REST-alapú szolgáltatás, OData v3 é
 Ez a témakör bemutatja, hogyan a REST-tel az Azure Media Services-entitások kezelését.
 
 >[!NOTE]
-> 2017. április 1-től kezdődően a fiókokban a 90 napnál régebbi Feladat rekordok automatikusan törölve lesznek, a kapcsolódó Művelet rekordokkal egyetemben, még ha a rekordok összesített száma nem is éri el a maximális kvótát. Például 2017. április 1. feladat rekordot a régebbi, mint a 2016. December 31-én fiókjában automatikusan törölve lesznek. Ha a feladatok/műveletek adatainak archiválásához van szüksége, használhatja a jelen témakörben található kódot.
+> 2017\. április 1-től kezdődően a fiókokban a 90 napnál régebbi Feladat rekordok automatikusan törölve lesznek, a kapcsolódó Művelet rekordokkal egyetemben, még ha a rekordok összesített száma nem is éri el a maximális kvótát. Például 2017. április 1. feladat rekordot a régebbi, mint a 2016. December 31-én fiókjában automatikusan törölve lesznek. Ha a feladatok/műveletek adatainak archiválásához van szüksége, használhatja a jelen témakörben található kódot.
 
 ## <a name="considerations"></a>Megfontolandó szempontok  
 

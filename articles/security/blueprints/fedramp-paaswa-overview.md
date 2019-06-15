@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: jomolesk
 ms.openlocfilehash: 46c72191ee17f63311b041d798cccec279e4b000
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60585981"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-for-fedramp"></a>Azure biztonsági és megfelelőségi terv: PaaS Web Application for FedRAMP
@@ -74,7 +74,7 @@ A [útmutatást és javaslatokat](#guidance-and-recommendations) szakasz ASE tov
 
 **Azure Web App**: [Az Azure App Service](https://docs.microsoft.com/azure/app-service/) lehetővé teszi ügyfeleink számára hozhat létre és üzemeltethet webalkalmazásokat az általuk választott programozási nyelven infrastruktúra kezelése nélkül. Automatikus méretezést és magas rendelkezésre állást kínál, támogatja a Windows és a Linux rendszert is, valamint lehetővé teszi az automatikus üzembe helyezéseket a GitHub, az Azure DevOps vagy bármely egyéb Git-adattár használatával.
 
-### <a name="virtual-network"></a>Virtual Network
+### <a name="virtual-network"></a>Virtuális hálózat
 Az architektúra egy 10.200.0.0/16 címtere a privát virtuális hálózat határozza meg.
 
 **Hálózati biztonsági csoportok**: [Hálózati biztonsági csoportok (NSG-k)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) tartalmazza a hozzáférés-vezérlési listák, amelyek engedélyezik vagy megtagadják a forgalmat egy virtuális hálózaton belül. Az NSG-ket egy alhálózatot vagy az egyes Virtuálisgép-szintű forgalom védelmére használható. Az alábbi NSG-k léteznek:
@@ -92,10 +92,10 @@ Az NSG-k mindegyike rendelkezik az adott portokhoz és protokollokhoz meg, hogy 
 
 **Az Azure Load Balancer**: [Az Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) lehetővé teszi az alkalmazások méretezése és magas rendelkezésre állású szolgáltatások létrehozása. Load Balancer bejövő, valamint a kimenő forgatókönyveket teszi lehetővé, és alacsony késleltetésű, nagy teljesítményű, és akár több milliónyi összes TCP és UDP-alkalmazás méretezhető.
 
-### <a name="data-in-transit"></a>Az átvitt adatok
+### <a name="data-in-transit"></a>Átvitt adatok
 Az Azure és az Azure adatközpontok bemenő kommunikáció alapértelmezés szerint titkosítja. Az Azure Portalon az Azure Storage összes tranzakció HTTPS-kapcsolaton keresztül történik.
 
-### <a name="data-at-rest"></a>Inaktív adat
+### <a name="data-at-rest"></a>Inaktív adatok
 Az architektúra a titkosítás, az adatbázis naplózási és más intézkedéseket az inaktív adatok védi.
 
 **Az Azure Storage**: Rest-követelményeket, a titkosított adatok kielégítése érdekében minden [Azure Storage](https://azure.microsoft.com/services/storage/) használ [a Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption).

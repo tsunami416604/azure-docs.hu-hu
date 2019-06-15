@@ -17,10 +17,10 @@ ms.subservice: manage-apps
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7af05769861f98ec192789d90f8a61f5b6638d1d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65783293"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD Application Proxy: Verziókiadások előzményei
@@ -38,7 +38,7 @@ Az Azure AD Application Proxy Connector letöltése |  [Töltse le a legújabb �
 
 ### <a name="release-status"></a>Kiadási állapot
 
-2018. szeptember 20.: Kiadás dátuma: letöltés
+2018\. szeptember 20.: Kiadás dátuma: letöltés
 
 ### <a name="new-features-and-improvements"></a>Új funkciók és fejlesztések
 
@@ -56,7 +56,7 @@ Az Azure AD Application Proxy Connector letöltése |  [Töltse le a legújabb �
 
 ### <a name="release-status"></a>Kiadási állapot
 
-2018. január 19. óta: Kiadás dátuma: letöltés
+2018\. január 19. óta: Kiadás dátuma: letöltés
 
 ### <a name="fixed-issues"></a>Hibák kijavítva:
 
@@ -66,7 +66,7 @@ Az Azure AD Application Proxy Connector letöltése |  [Töltse le a legújabb �
 
 ### <a name="release-status"></a>Kiadási állapot 
 
-2017. május 25.: Kiadás dátuma: letöltés 
+2017\. május 25.: Kiadás dátuma: letöltés 
 
 ### <a name="new-features-and-improvements"></a>Új funkciók és fejlesztések 
 
@@ -76,7 +76,7 @@ Az Azure AD Application Proxy Connector letöltése |  [Töltse le a legújabb �
 
 ### <a name="release-status"></a>Kiadási állapot
 
-2017. április 15.: Kiadás dátuma: letöltés
+2017\. április 15.: Kiadás dátuma: letöltés
 
 ### <a name="new-features-and-improvements"></a>Új funkciók és fejlesztések
 

@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.openlocfilehash: 8f55b6dfb7b5bc9eda675aca4ed80a66b8a25a7f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60445770"
 ---
 # <a name="handle-duplicate-data-in-azure-data-explorer"></a>Az Azure Data Explorer duplikált adatok kezelése
@@ -115,7 +115,7 @@ A következő példa ezt a módszert ábrázolja:
     .alter-merge table DeviceEventsAll policy retention softdelete = 1d
     ```
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Adatdeduplikáció többféle módon lehet kezelni. Értékelje ki a beállításokat, gondosan meg, hogy a megfelelő módszert a vállalati fiók ára és teljesítménye, figyelembe véve.
 

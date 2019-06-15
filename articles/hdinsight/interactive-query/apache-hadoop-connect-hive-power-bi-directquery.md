@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.openlocfilehash: fb4e16c8be5344c5b9947758b6a09845b470196d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65800992"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-azure-hdinsight"></a>A Microsoft Power BI közvetlen lekérdezés használatával az Azure HDInsight interaktív lekérdezés Apache Hive-adatok megjelenítése
@@ -27,7 +27,7 @@ Kihasználhatja a [Apache Hive ODBC-illesztő](../hadoop/apache-hadoop-connect-h
 Mielőtt végrehajtaná ezt a cikket, a következőkkel kell rendelkeznie:
 
 * **HDInsight-fürt**. Lehet, hogy a fürt egy HDInsight-fürtöt az Apache Hive, vagy egy újonnan kiadott interaktív lekérdezési fürt. Fürtök létrehozása, lásd: [fürt létrehozása](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
-* **[A Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)**. Letöltheti a másolatot a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=45331).
+* **[A Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)** . Letöltheti a másolatot a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=45331).
 
 ## <a name="load-data-from-hdinsight"></a>A HDInsight adatok betöltése
 

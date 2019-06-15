@@ -17,10 +17,10 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 627dab0cb23800664c5fb5b3df9c61f5071d4b87
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65545402"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Démon alkalmazás, amely meghívja a webes API-k – helyezze át az éles környezetbe
@@ -51,15 +51,15 @@ Az alábbiakban néhány további hivatkozásokat:
 - Más minták és oktatóanyagok:
   - [a Microsoft-identitás-platform-konzol-démon](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) funkciókat egy egyszerű .NET Core démon konzolalkalmazást, amely jelennek meg a felhasználók a Microsoft Graph lekérdezése egy bérlő.
 
-    ![topológia](media/scenario-daemon-app/daemon-app-sample.svg)
+    ![topology](media/scenario-daemon-app/daemon-app-sample.svg)
 
     Egyazon mintából is szemlélteti a változat tanúsítványokkal.
 
-    ![topológia](media/scenario-daemon-app/daemon-app-sample-with-certificate.svg)
+    ![topology](media/scenario-daemon-app/daemon-app-sample-with-certificate.svg)
 
   - [Microsoft-Identity-platform-ASPNET-WebApp-Daemon](https://github.com/Azure-Samples/microsoft-identity-platform-aspnet-webapp-daemon) funkciók, amelyek az adatok a Microsoft Graph használatával egy felhasználó nevében helyett az alkalmazás identitását az ASP.NET MVC webalkalmazás. A minta is a rendszergazdai jóváhagyás folyamatát mutatja be.
 
-    ![topológia](media/scenario-daemon-app/damon-app-sample-web.svg)
+    ![topology](media/scenario-daemon-app/damon-app-sample-web.svg)
 
 ### <a name="python"></a>Python
 

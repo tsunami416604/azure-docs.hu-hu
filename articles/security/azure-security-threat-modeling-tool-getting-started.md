@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
 ms.openlocfilehash: 6315e6d39a3b68854beb6563d075e3c79ca93a69
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610753"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>A Threat Modeling Tool – első lépések
 
-A Microsoft Threat Modeling eszköz 2018 jelent meg, a végleges verzió 2018 szeptember egy szabad  **[kattintson-letöltési](https://aka.ms/threatmodelingtool)**. A kézbesítési mechanizmus a változás lehetővé teszi számunkra az küldje le a legújabb javítások és hibajavítások az ügyfelek számára minden alkalommal, amikor megnyitják az eszközt, így könnyebben karbantartásáról és használatáról.
+A Microsoft Threat Modeling eszköz 2018 jelent meg, a végleges verzió 2018 szeptember egy szabad  **[kattintson-letöltési](https://aka.ms/threatmodelingtool)** . A kézbesítési mechanizmus a változás lehetővé teszi számunkra az küldje le a legújabb javítások és hibajavítások az ügyfelek számára minden alkalommal, amikor megnyitják az eszközt, így könnyebben karbantartásáról és használatáról.
 Ez a cikk végigvezeti az első lépései a Microsoft SDL fenyegetés megközelítés modellezés, és bemutatja, hogyan fejleszthet nagyszerű modelljei a biztonsági folyamat egy vázaként eszközének használata.
 
 Ez a cikk a meglévő ismeretek a modellezés megközelítés SDL fenyegetés épül. Tekintse át, a **[Threat Modeling webalkalmazások](https://msdn.microsoft.com/library/ms978516.aspx)** és a egy archivált verzióját **[tárhat fel biztonsági hibára derült megközelítéssel a STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** Az MSDN-cikkben 2006 közzé.
@@ -79,14 +79,14 @@ Amelyben a folyamatot az első fenyegetések modellezése fejlesztéséhez.
 > - Ezek használt parancsok küldését ezen a webalkalmazás-kiszolgáló – a kör
 > - A webalkalmazás-kiszolgáló (két párhuzamos vonalak) adatbázis van tanácsadás
 
-Milyen Ricardo mutatott Cristina egy rövid a DFD  **[adatfolyam-Diagram](https://en.wikipedia.org/wiki/Data_flow_diagram)**. A Threat Modeling Tool lehetővé teszi, hogy a felhasználók számára a bizalmi kapcsolat határain mutatja, hogy hol különböző entitások vezérlőelem a piros pontozott vonal jelzi. Például a rendszergazdák igényelnek az Active Directory rendszer hitelesítés céljára, ezért az Active Directory a hatókörükön kívüli.
+Milyen Ricardo mutatott Cristina egy rövid a DFD  **[adatfolyam-Diagram](https://en.wikipedia.org/wiki/Data_flow_diagram)** . A Threat Modeling Tool lehetővé teszi, hogy a felhasználók számára a bizalmi kapcsolat határain mutatja, hogy hol különböző entitások vezérlőelem a piros pontozott vonal jelzi. Például a rendszergazdák igényelnek az Active Directory rendszer hitelesítés céljára, ezért az Active Directory a hatókörükön kívüli.
 
 > Cristina: Úgy tűnik megfelelő a számomra. Mi a helyzet a fenyegetések?
 > Ricardo: Szeretnék, megjelenítése.
 
 ## <a name="analyzing-threats"></a>Fenyegetések elemzésével
 
-Miután a nézet az ikon menü kijelölésből (fájl nagyítóüveg), az alapértelmezett sablon alapján létrehozott fenyegetéseket a Threat Modeling Tool található listájára vették, amely használja az SDL néven ismert megközelítés kattint  **[ STRIDE (hamisítást, illetéktelen módosítás, adatok kiadásáról, Letagadhatóság, szolgáltatásmegtagadás és jogok kiterjesztése)](https://en.wikipedia.org/wiki/STRIDE_(security))**. A cél pedig az, hogy a szoftver a fenyegetéseket, amely 6 kategóriákban is található egy előre jelezhető készletét származik.
+Miután a nézet az ikon menü kijelölésből (fájl nagyítóüveg), az alapértelmezett sablon alapján létrehozott fenyegetéseket a Threat Modeling Tool található listájára vették, amely használja az SDL néven ismert megközelítés kattint  **[ STRIDE (hamisítást, illetéktelen módosítás, adatok kiadásáról, Letagadhatóság, szolgáltatásmegtagadás és jogok kiterjesztése)](https://en.wikipedia.org/wiki/STRIDE_(security))** . A cél pedig az, hogy a szoftver a fenyegetéseket, amely 6 kategóriákban is található egy előre jelezhető készletét származik.
 
 Ez a módszer van, a ház biztosítása úgy, hogy minden egyes ajtó- és zárolási mechanizmussal rendelkezik helyben riasztórendszerként hozzáadása vagy rekord feloldása után a tolvaj előtt.
 

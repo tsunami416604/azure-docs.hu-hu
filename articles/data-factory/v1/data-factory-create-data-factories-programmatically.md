@@ -14,10 +14,10 @@ ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: ea0094624727ca1395a1276e7968ac1c74b750e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60487282"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Létrehozása, figyelése és kezelése az Azure data factoryt az Azure Data Factory .NET SDK használatával
@@ -139,7 +139,7 @@ A másolási tevékenység végzi az adatok továbbítását az Azure Data Facto
         </appSettings>
     </configuration>
     ```
-5. Az App.Config fájlban frissítse a értékeit  **&lt;Alkalmazásazonosító&gt;**,  **&lt;jelszó&gt;**,  **&lt;előfizetés ID&gt;**, és **&lt;bérlőazonosító&gt;** a saját értékeire.
+5. Az App.Config fájlban frissítse a értékeit  **&lt;Alkalmazásazonosító&gt;** ,  **&lt;jelszó&gt;** ,  **&lt;előfizetés ID&gt;** , és **&lt;bérlőazonosító&gt;** a saját értékeire.
 6. Adja hozzá a következő **használatával** utasításokat a **Program.cs** fájlt a projektben.
 
     ```csharp

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
 ms.openlocfilehash: a57393918992019844e2ff4ccc13d671f0b90ed5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60900400"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Az Application Insights szolgáltatásból a Power BI hírcsatorna
@@ -42,7 +42,7 @@ Telepítés [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 ### <a name="export-an-analytics-query"></a>Analytics-lekérdezések exportálása
 1. [Nyissa meg a Analytics és a lekérdezés írása](../../azure-monitor/log-query/get-started-portal.md).
 2. Tesztelje, és pontosítsa a lekérdezést, mindaddig, amíg az eredmények elégedett. Győződjön meg arról, hogy a lekérdezés megfelelően fut az Analyticsben exportálás előtt.
-3. Az a **exportálása** menüben válassza a **Power bi-ban (M)**. Mentse a fájlt.
+3. Az a **exportálása** menüben válassza a **Power bi-ban (M)** . Mentse a fájlt.
    
     ![Képernyőkép, Analytics, az Exportálás menü kiemelésével](./media/export-power-bi/analytics-export-power-bi.png)
 4. A Power BI Desktopban, válassza ki a **adatok lekérése** > **üres lekérdezés**. Ezt követően a Lekérdezésszerkesztő alatt **nézet**válassza **speciális szerkesztő**.

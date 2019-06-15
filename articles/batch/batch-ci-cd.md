@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
 ms.openlocfilehash: a811a9cb1b124aff7c64d25cf71a1b84bff0c173
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65541753"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Azure folyamatok használatával hozhat létre és HPC-megoldások üzembe helyezése
@@ -26,7 +26,7 @@ Ebben a példában a rendszer létrehoz egy build és kibocsátásában üzembe 
 
 ![A folyamat üzembe helyezési folyamatot bemutató ábra.](media/batch-ci-cd/DeploymentFlow.png)
 
-### <a name="setup"></a>Telepítés
+### <a name="setup"></a>Beállítás
 
 A jelen cikkben ismertetett lépések követéséhez szüksége van egy Azure DevOps-szervezet és a egy csoportprojektet.
 
@@ -361,7 +361,7 @@ Ebben a példában fogunk dolgozni a **hpc-alkalmazás** mappát. A **hpc-alkalm
 > [!NOTE]
 > Ha egy ügyfélalkalmazás segítségével hajtsa végre az HPC Batch-alkalmazás, az adott alkalmazáshoz külön builddefiníció létrehozása szeretné. Útmutatók a számos annak a [Azure folyamatok](https://docs.microsoft.com/azure/devops/pipelines/get-started/index?view=azure-devops) dokumentációját.
 
-## <a name="continuous-deployment"></a>Folyamatos telepítés
+## <a name="continuous-deployment"></a>Folyamatos üzembe helyezés
 
 Az Azure folyamatok is telepítheti az alkalmazást, és az alapul szolgáló infrastruktúra. [Folyamatok felszabadítása](https://docs.microsoft.com/azure/devops/pipelines/release) az a komponens, amely lehetővé teszi a folyamatos üzembe helyezést, és a kibocsátási folyamat automatizálható.
 
@@ -418,13 +418,13 @@ Nincsenek érintett infrastruktúra telepítése több lépésből áll. Rendelk
     * **A művelet**: Erőforráscsoport létrehozása vagy frissítése
     * **Erőforráscsoport**: $(resourceGroupName)
     * **Hely**: $(location)
-    * **Template**: $(System.ArtifactsDirectory)/**{YourAzureRepoArtifactSourceAlias}**/arm-templates/storageAccount.json
+    * **Template**: $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/storageAccount.json
     * **Bírálja felül a Sablonparaméterek**: - accountName $(storageAccountName)
 
 1. A verziókövetési rendszerekből az összetevők feltöltése a Storage-fiókban. Van egy Azure-folyamat tevékenységet végezni. Ez a feladat részeként a tárolási fiók tároló URL-címe és a SAS-Token is lehet használt kimeneti adattípus Azure folyamatokban változóhoz. Ez azt jelenti, hogy az ügynök fázis során felhasználhatók.
 
     Adja hozzá a **Azure fájlmásolás** feladatot, és állítsa be a következő tulajdonságokat:
-    * **Source:** $(System.ArtifactsDirectory)/**{YourAzureRepoArtifactSourceAlias}**/arm-templates/
+    * **Source:** $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/
     * **Az Azure kapcsolattípus**: Azure Resource Manager
     * **Azure-előfizetés:** Válassza ki a megfelelő Azure-előfizetést
     * **Cél típusa**: Azure-blob
@@ -441,7 +441,7 @@ Nincsenek érintett infrastruktúra telepítése több lépésből áll. Rendelk
     * **A művelet**: Erőforráscsoport létrehozása vagy frissítése
     * **Erőforráscsoport**: $(resourceGroupName)
     * **Hely**: $(location)
-    * **Template**: $(System.ArtifactsDirectory)/**{YourAzureRepoArtifactSourceAlias}**/arm-templates/deployment.json
+    * **Template**: $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/deployment.json
     * **Bírálja felül a Sablonparaméterek**: ```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
 
 Általános gyakorlat, hogy az Azure Key Vault-feladatokat. Ha az egyszerű szolgáltatás (kapcsolat az Azure-előfizetéshez) rendelkezik egy megfelelő hozzáférési szabályzatok beállítása, titkos kódok tölthet le az Azure Key Vault, és változókat a folyamatban használhatók. A titkos kód nevét és a kapcsolódó érték fog szerepelni. Például sshPassword a titkos kulcs és a kiadási definíció a $(sshPassword) sikerült lehet hivatkozni.

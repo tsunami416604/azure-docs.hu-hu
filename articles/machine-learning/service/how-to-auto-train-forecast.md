@@ -11,10 +11,10 @@ ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.openlocfilehash: c7f4b6d8aa614a460772fb7af11f9b83dc3fc979
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65800818"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatikus – train idősorozat-előrejelzési modell
@@ -81,7 +81,7 @@ Automatizált gépi tanulási feladatok előrejelzés, használja az idősorozat
 
 A `AutoMLConfig` objektuma határozza meg a beállításokat és a egy automatizált machine learning feladatot a szükséges adatokat. Regressziós problémaként hasonlóan megadhat standard képzési paraméterek tevékenység típusa, a betanítási adatok, az ismétlések száma és a kereszt-ellenőrzés száma. Az előrejelzési feladatok, nincsenek további paramétereket kell megadni, amelyek befolyásolják a kísérletet. A következő táblázat az egyes paraméterek és azok használatát ismerteti.
 
-| Param | Leírás | Szükséges |
+| Param | Leírás | Kötelező |
 |-------|-------|-------|
 |`time_column_name`|Itt adhatja meg a dátum/idő oszlop a bemeneti adatok az idősor és annak gyakoriságát adatcsatornához.|✓|
 |`grain_column_names`|Az egyes adatsorozat-csoportok meghatározása a bemeneti adatok neve. Időfelbontási szint nincs definiálva, ha az adatkészlet adatforrásmérete egy idősorozat.||

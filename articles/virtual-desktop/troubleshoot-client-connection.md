@@ -8,10 +8,10 @@ ms.topic: troubleshoot
 ms.date: 04/08/2019
 ms.author: v-chjenk
 ms.openlocfilehash: f88dee579e44a01dc1a7404ef6a670de34063552
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65833574"
 ---
 # <a name="remote-desktop-client-connections"></a>Távoli asztali ügyfélkapcsolatok
@@ -135,7 +135,7 @@ Kövesse az alábbi általános hibaelhárítási utasításokat az ügyfél csa
     Time              : <Timestampt>
     ```
 
-### <a name="error-oaddusertogroupfailed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32errornosuchmember"></a>Hiba: O_ADD_USER_TO_GROUP_FAILED / nem sikerült hozzáadni a felhasználói csoporthoz ≤username≥ = Remote Desktop Users =. Indoklás: Win32.ERROR_NO_SUCH_MEMBER
+### <a name="error-oaddusertogroupfailed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32errornosuchmember"></a>Hiba: O_ADD_USER_TO_GROUP_FAILED / nem sikerült hozzáadni a felhasználói csoporthoz ≤username≥ = Remote Desktop Users =. OK: Win32.ERROR_NO_SUCH_MEMBER
 
 **OK:** Virtuális gép nem csatlakozik a tartományban, ahol felhasználói objektum.
 

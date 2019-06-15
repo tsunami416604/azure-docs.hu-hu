@@ -9,10 +9,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.openlocfilehash: 64856d53168a7676cf279da2d8675ce81e1985f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60447874"
 ---
 # <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>Adatok másolása az Azure az adatkezelőt az Azure Data Factory használatával 
@@ -46,7 +46,7 @@ Ez a cikk bemutatja, hogyan adatok betöltése az Amazon S3 az Adatkezelőben az
 
     **Beállítás**  | **Mező leírása**
     |---|---|
-    | **Name (Név)** | Adja meg a data Factory egy globálisan egyedi nevet. Ha a hibaüzenet *"adat-előállító nevét \"LoadADXDemo\" nem érhető el"*, adja meg a data Factory egy másik nevet. A Data Factory-összetevők elnevezési szabályait, lásd: [Data Factory elnevezési szabályait](/azure/data-factory/naming-rules).|
+    | **Name (Név)** | Adja meg a data Factory egy globálisan egyedi nevet. Ha a hibaüzenet *"adat-előállító nevét \"LoadADXDemo\" nem érhető el"* , adja meg a data Factory egy másik nevet. A Data Factory-összetevők elnevezési szabályait, lásd: [Data Factory elnevezési szabályait](/azure/data-factory/naming-rules).|
     | **Előfizetés** | Válassza ki az Azure-előfizetés, amelyben az adat-előállító létrehozásához. |
     | **Erőforráscsoport** | Válassza ki **új létrehozása** , és adja meg egy új erőforráscsoport nevét. Válassza ki **meglévő**, ha rendelkezik egy meglévő erőforráscsoportot. |
     | **Verzió** | Válassza ki **V2** |
@@ -158,7 +158,7 @@ Az Azure Data Explorer új társított szolgáltatás másolja az adatokat az Az
     * A második leképezés következik be, amikor a táblázatos adatok Azure Data Explorer be lett töltve. Leképezés a következők szerint történik [CSV-leképezési szabályok](/azure/kusto/management/mappings#csv-mapping). Vegye figyelembe, hogy akkor is, ha a forrásadatok nem CSV formátumban, ADF rendelkezik konvertálni az adatokat egy táblázatos formátumra, leképezés CSV ezért ezen a ponton csak megfelelő leképezés.
         * A **Azure Data Explorer (Kusto) fogadó tulajdonságok** adja hozzá a megfelelő **Adatbetöltési megfeleltetés neve** (nem kötelező) úgy, hogy az oszlop-hozzárendelés is használható.
         * Ha **Adatbetöltési megfeleltetés neve** nincs megadva, meghatározott "by-name" leképezési rendelés **oszlop-hozzárendelések** szakaszban történik. Ha "by-name" leképezés nem sikerül, Azure adatkezelő megpróbálja betöltheti az adatokat (maps által-pozíciója az alapértelmezett) "oszlop alapján pozíciója" sorrendben.
-    * Válassza ki **tovább**
+    * Kattintson a **Tovább** gombra.
 
     ![Cél adatkészlet oszlop-hozzárendelés](media/data-factory-load-data/destination-dataset-column-mapping.png)
 

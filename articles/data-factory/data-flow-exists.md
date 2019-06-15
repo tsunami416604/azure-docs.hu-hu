@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.openlocfilehash: b98b7afb21f2f50d44ba93ed793b6efb20f75164
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65235982"
 ---
 # <a name="mapping-data-flow-exists-transformation"></a>Az adatfolyam-leképezés létezik átalakítása
@@ -23,7 +23,7 @@ Az Exists átalakítás átalakítást, amely a szolgáltatás leáll vagy az ad
 
 A második adatforrás az Exists választhatja, hogy az adatfolyam összehasonlításával értékek Stream 1 elleni Stream 2.
 
-1. forrásból származó és a forrás 2 értékük megtekintéséhez elleni Exists vagy nem létezik, válassza ki az oszlopot.
+1\. forrásból származó és a forrás 2 értékük megtekintéséhez elleni Exists vagy nem létezik, válassza ki az oszlopot.
 
 ## <a name="multiple-exists-conditions"></a>Több létezik feltételek
 

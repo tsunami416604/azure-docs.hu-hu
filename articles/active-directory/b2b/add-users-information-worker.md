@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e8606a0d4e203e1a910a5cd15ca83a622f5286bd
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65812535"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Milyen a szervezetben a felhasználók egy alkalmazáshoz vendégfelhasználókat is meghívhat
@@ -35,11 +35,11 @@ Vendég után felhasználói van adva a címtárban az Azure AD-ben az alkalmaz�
 Miután egy alkalmazást az önkiszolgáló működésre van konfigurálva, alkalmazástulajdonosok használatával saját hozzáférési Panel a megosztani kívánt alkalmazás Vendég felhasználó meghívása. A Vendég felhasználó nem feltétlenül hozzá kell adni az Azure AD-előre. 
 
 1. Nyissa meg a hozzáférési Panel a `https://myapps.microsoft.com`.
-2. Az alkalmazás pontjára, kattintson a három pontra (**...** ), majd válassza ki **kezelés alkalmazás**.
+2. Az alkalmazás pontjára, kattintson a három pontra ( **...** ), majd válassza ki **kezelés alkalmazás**.
  
    ![A kezelés alkalmazás almenü a Salesforce alkalmazás ábrázoló képernyőfelvétel](media/add-users-iw/access-panel-manage-app.png)
  
-3. Válassza ki a felhasználók lista tetején **+**.
+3. Válassza ki a felhasználók lista tetején **+** .
    
    ![Tagok hozzáadása az alkalmazáshoz tartozó a pluszjelre ábrázoló képernyőfelvétel](media/add-users-iw/access-panel-manage-app-add-user.png)
    
@@ -62,7 +62,7 @@ Miután egy alkalmazást az önkiszolgáló működésre van konfigurálva, az a
    
    ![Képernyőfelvétel: hol kell válasszon ki egy csoportot a saját csoportok alapján](media/add-users-iw/access-panel-groups-i-own.png)
    
-5. A tagok listájának tetején válassza **+**.
+5. A tagok listájának tetején válassza **+** .
    
    ![Képernyőfelvétel a plusz a tagoknak a csoportba való felvételekor:](media/add-users-iw/access-panel-groups-add-member.png)
    

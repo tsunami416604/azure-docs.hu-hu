@@ -13,10 +13,10 @@ ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 02/20/2019
 ms.openlocfilehash: 1318cd3d1c0c51889cc70b6836d06d6d6ee70c24
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60387406"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>SQL-hitelesítéshez használandó Azure Active Directory-hitelesítéssel
@@ -60,7 +60,7 @@ A következő magas szintű ábra összefoglalja az Azure AD-hitelesítés haszn
 
 ![aad-hitelesítés diagramja][1]
 
-A következő diagram azt jelzi, az összevonási megbízhatósági és birtokosi kapcsolat, amelyek lehetővé teszik, hogy az ügyfél csatlakozik egy adatbázishoz, ha elküldi egy token. A jogkivonatot az Azure AD által hitelesített, és az adatbázis által megbízhatónak tartott. 1-es ügyfél hozhat létre egy Azure Active Directory natív felhasználókkal vagy egy Azure AD összevont felhasználókkal. 2. ügyfél jelöli egy lehetséges megoldást, beleértve az importált felhasználók; Ebben a példában egy összevont Azure Active Directory az AD FS az Azure Active Directoryval szinkronizált származik. Fontos megérteni, hogy egy adatbázist az Azure AD-hitelesítés használatához, hogy a szolgáltatási előfizetés társítva az Azure ad-ben. Az SQL Server kiszolgálót az Azure SQL Database vagy az SQL Data Warehouse létrehozása az ugyanahhoz az előfizetéshez kell használni.
+A következő diagram azt jelzi, az összevonási megbízhatósági és birtokosi kapcsolat, amelyek lehetővé teszik, hogy az ügyfél csatlakozik egy adatbázishoz, ha elküldi egy token. A jogkivonatot az Azure AD által hitelesített, és az adatbázis által megbízhatónak tartott. 1-es ügyfél hozhat létre egy Azure Active Directory natív felhasználókkal vagy egy Azure AD összevont felhasználókkal. 2\. ügyfél jelöli egy lehetséges megoldást, beleértve az importált felhasználók; Ebben a példában egy összevont Azure Active Directory az AD FS az Azure Active Directoryval szinkronizált származik. Fontos megérteni, hogy egy adatbázist az Azure AD-hitelesítés használatához, hogy a szolgáltatási előfizetés társítva az Azure ad-ben. Az SQL Server kiszolgálót az Azure SQL Database vagy az SQL Data Warehouse létrehozása az ugyanahhoz az előfizetéshez kell használni.
 
 ![előfizetés-kapcsolat][2]
 

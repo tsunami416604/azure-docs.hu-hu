@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: wesmc
 ms.openlocfilehash: 72d7956036404d13849f7c2b08f9df4210f12aa7
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65597273"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry Pi csatlakoztatása Azure IoT hubhoz (Node.js)
@@ -230,7 +230,7 @@ A Pi kapcsolja be a micro USB-kábelen keresztül és a tápegység. Az Ethernet
    nano config.json
    ```
 
-   ![Konfigurációs fájl](./media/iot-hub-raspberry-pi-kit-node-get-started/6-config-file.png)
+   ![A konfigurációs fájl](./media/iot-hub-raspberry-pi-kit-node-get-started/6-config-file.png)
 
    Nincsenek a két elem konfigurálhatja ezt a fájlt. Az első egy `interval`, amely megadja, hogy az időtartam alatt a felhőbe küldött üzenetek között (ezredmásodpercben). A második az egyik `simulatedData`, azaz az e használni a szimulált érzékelői adatokat, vagy nem logikai érték.
 

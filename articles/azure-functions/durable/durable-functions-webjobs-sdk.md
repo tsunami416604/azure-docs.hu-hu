@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 39a757900b4307d702a0ce0ce1c20694418aa8dd
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65872824"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Webjobs-feladatok, Durable Functions futtatása
@@ -53,9 +53,9 @@ Ez a cikk bemutatja, hogyan hozhat létre a WebJobs SDK 2.x project (Azure Funct
 
 Durable Functions, webjobs-feladatok futtatásához, először létre kell hoznia egy konzolalkalmazást. A WebJobs SDK projekt érhető el csak console app telepített megfelelő NuGet-csomagokkal.
 
-A Visual Studio **új projekt** párbeszédpanelen jelölje ki **Windows klasszikus Asztalialkalmazás** > **Console App (.NET Framework)**. A következő projektfájlban a `TargetFrameworkVersion` lehet `v4.6.1`.
+A Visual Studio **új projekt** párbeszédpanelen jelölje ki **Windows klasszikus Asztalialkalmazás** > **Console App (.NET Framework)** . A következő projektfájlban a `TargetFrameworkVersion` lehet `v4.6.1`.
 
-A Visual Studio is rendelkezik a webjobs-feladat projektsablon, amellyel kiválasztásával **felhőalapú** > **Azure WebJob (.NET Framework)**. Ez a sablon telepíti a csomagok száma, amelyek némelyike nem feltétlenül szükségesek.
+A Visual Studio is rendelkezik a webjobs-feladat projektsablon, amellyel kiválasztásával **felhőalapú** > **Azure WebJob (.NET Framework)** . Ez a sablon telepíti a csomagok száma, amelyek némelyike nem feltétlenül szükségesek.
 
 ## <a name="install-nuget-packages"></a>NuGet-csomagok telepítése
 
@@ -125,7 +125,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="functions"></a>Funkciók
+## <a name="functions"></a>Functions
 
 Durable Functions a webjobs-feladatok kontextusában Durable Functions némileg eltér az Azure Functions kontextusában. Fontos tisztában lenni a különbségek a kód írása.
 
@@ -139,7 +139,7 @@ A WebJobs SDK nem támogatja a következő Azure Functions-szolgáltatásairól:
 
 A WebJobs SDK-projektben egy függvény metódusnév a függvény nevét. A `FunctionName` attribútuma csak az Azure Functions szolgál.
 
-### <a name="http-trigger"></a>HTTP-eseményindító
+### <a name="http-trigger"></a>HTTP eseményindító
 
 A WebJobs SDK-val nem rendelkezik egy HTTP-eseményindítóval. A mintaprojekt vezénylési ügyfél egy időzítő indítófeltételt használja:
 
@@ -222,7 +222,7 @@ Ez a cikk bemutatja, hogyan hozhat létre a WebJobs SDK 2.x projekt. Ha az Ön e
 
 A fő változást jelent meg a .NET-keretrendszer helyett a .NET Core használata. A WebJobs SDK-val 3.x-projekt létrehozásához a ugyanezek az utasítások érvényesek, a következő kivételektől eltekintve:
 
-1. Hozzon létre egy .NET Core-konzolalkalmazást. A Visual Studio **új projekt** párbeszédpanelen jelölje ki **.NET Core** > **Console App (.NET Core)**. Soubor projektu azt jelenti, hogy `TargetFramework` van `netcoreapp2.x`.
+1. Hozzon létre egy .NET Core-konzolalkalmazást. A Visual Studio **új projekt** párbeszédpanelen jelölje ki **.NET Core** > **Console App (.NET Core)** . Soubor projektu azt jelenti, hogy `TargetFramework` van `netcoreapp2.x`.
 
 1. Válassza ki a végleges verziót a WebJobs SDK-t a következő csomagok 3.x:
 

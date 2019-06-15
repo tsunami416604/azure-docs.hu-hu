@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: virtual-machines-linux
 manager: jeconnoc
 ms.openlocfilehash: cf8264cbad3c5c88c58cff3b95cb5c68adf0686c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65538292"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Előzetes verzió: Az Azure az Image Builder-sablon létrehozása 
@@ -59,7 +59,7 @@ A hely az a régió, ahol létrejön az egyéni rendszerképet. Az Image Builder
 - USA 2. keleti régiója
 - USA nyugati középső régiója
 - USA nyugati régiója
-- USA 2. nyugati régiója
+- USA nyugati régiója, 2.
 
 
 ```json
@@ -76,7 +76,7 @@ Ez az opcionális szakasz segítségével győződjön meg arról, hogy a függ�
 
 További információkért lásd: [meghatározása az erőforrás-függőségek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson).
 
-## <a name="identity"></a>Azonosító
+## <a name="identity"></a>Identitás
 Alapértelmezés szerint a szkriptek használatával, vagy a fájlok másolása több helyről, például a GitHub és az Azure storage az Image Builder támogatja. Ezek használatához nyilvánosan hozzáférhetőnek kell lenniük.
 
 Azure User-Assigned felügyelt identitást, Ön által meghatározott használatával hozzáférést az Image Builder Azure Storage, mindaddig, amíg a kapott "Storage-Blobadatok olvasója" legalább az Azure storage-fiókban. Ez azt jelenti, hogy nem kell, hogy a storage-blobokat kívülről elérhető-e, vagy a telepítő SAS-tokeneket.
@@ -112,7 +112,7 @@ Az API-t igényel a "forrás típusa", amely meghatározza a forrás lemezkép b
 
 Az Azure az Image Builder csak támogatja a közzétett Red Hat Enterprise Linux 7.x bináris DVD ISO, előzetes verzióra. Az Image Builder támogatja:
 - RHEL 7.3. 
-- 7.4 RHEL 
+- 7\.4 RHEL 
 - RHEL 7.5 
  
 ```json

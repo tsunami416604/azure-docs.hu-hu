@@ -14,10 +14,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/08/2019
 ms.openlocfilehash: ed94677eea91e3543dced9825a1372f60550a524
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65073617"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Mi az Azure SQL Database szolgáltatás
@@ -39,11 +39,11 @@ Az alábbi ábra ezt a három üzembehelyezési modellt mutatja be:
 
 Az SQL Database kódbázisa közös a [Microsoft SQL Server adatbázismotorjáéval](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation). A Microsoft felhőt előnyben részesítő stratégiájának jegyében az SQL Server új lehetőségei először az SQL Database-ben jelentek meg, és csak aztán magában az SQL Serverben. Ennek a hozzáállásnak köszönhetően az SQL Server legújabb lehetőségei a karbantartás és frissítés terhei nélkül állnak az Ön rendelkezésére úgy, hogy az új funkciókat már több millió adatbázison tesztelték. A bejelentett új funkciókról az alábbi helyeken kaphat tájékoztatást:
 
-- **[Az SQL Database az Azure ütemterve](https://azure.microsoft.com/roadmap/?category=databases)**:
+- **[Az SQL Database az Azure ütemterve](https://azure.microsoft.com/roadmap/?category=databases)** :
 
   Ismerje meg, mi az új és újdonságokat helye.
 
-- **[Az Azure SQL Database blog](https://azure.microsoft.com/blog/topics/database)**:
+- **[Az Azure SQL Database blog](https://azure.microsoft.com/blog/topics/database)** :
 
   Az a hely, ahol az SQL Server csapatának tagjai kapcsolatos SQL Database újdonságairól és funkcióiról.
 
@@ -110,20 +110,20 @@ Azure-beli rendelkezésre állási zónák a magas rendelkezésre állású prob
 
 Sőt, az az Azure iparági vezető 99,99 %-os rendelkezésre állási szolgáltatás szolgáltatásiszint-szerződés [(SLA)](https://azure.microsoft.com/support/legal/sla/), Microsoft által felügyelt adatközpontok globális hálózata működteti, teszi lehetővé, hogy alkalmazása a 24/7. Az Azure platform teljes körű minden adatbázis kezeli, és nincs adatvesztés és a magas százalékos adatok rendelkezésre állását garantálja. Az Azure automatikusan kezeli a javításokat, a biztonsági mentéseket, a replikációt, a hibaészlelést, a háttérben álló lehetséges hardver-, szoftver- vagy hálózati hibákat, a hibajavítások telepítését, a feladatátvételeket, adatbázis-frissítéseket és az egyéb karbantartási műveleteket. A standard szintű rendelkezésre állás a számítási és tárolási rétegek elkülönítését foglalja magában. Prémium szintű rendelkezésre állás integrálása a számítási és tárolási teljesítmény egyetlen csomóponton, és majd megvalósítása az Always On rendelkezésre állási csoportok valójában hasonló technológia érhető el. Teljes az Azure SQL Database magas rendelkezésre állású lehetőségeit, lásd: [SQL adatbázis-elérhetőségi](sql-database-high-availability.md). Az SQL Database ezen felül olyan beépített funkciókkal szolgálja [az üzletmenet folytonosságát és a globális méretezhetőséget](sql-database-business-continuity.md), mint például a következők:
 
-- **[Automatikus biztonsági mentések](sql-database-automated-backups.md)**:
+- **[Automatikus biztonsági mentések](sql-database-automated-backups.md)** :
 
   SQL Database automatikusan készít teljes, differenciális és tranzakciónapló biztonsági mentései az Azure SQL Database-adatbázisok ahhoz, hogy bármely időpontra visszaállítása. Az önálló adatbázis és a készletezett adatbázisokat konfigurálhatja az SQL Database-adatbázis teljes biztonsági mentések hosszú távú megőrzés az Azure Storage tárolja. Felügyelt példány esetén is elvégezheti a csak másolatot biztonsági másolatok hosszú távú adatmegőrzés.
 
-- **[Időponthoz visszaállítás](sql-database-recovery-using-backups.md)**:
+- **[Időponthoz visszaállítás](sql-database-recovery-using-backups.md)** :
 
   Az összes SQL Database változatokhoz minden olyan Azure SQL Database-adatbázis automatikus biztonsági mentések megőrzési időszakon belül bármely időpontra történő helyreállítás támogatja.
-- **[Aktív georeplikáció](sql-database-active-geo-replication.md)**:
+- **[Aktív georeplikáció](sql-database-active-geo-replication.md)** :
 
   Önálló adatbázis és a készletezett adatbázisok lehetővé teszi legfeljebb négy olvasható másodlagos adatbázis konfigurálását akár a az azonos vagy globálisan elosztott Azure-beli adatközpontok.  Ha például egy SaaS-alkalmazás nagyszámú egyidejű csak olvasási tranzakciót kiszolgáló katalógus-adatbázisra épül, akkor az aktív georeplikáció által növelhető az olvashatóság, és megszűnik az elsődleges adatbázis magas olvasási terhelése miatti szűk keresztmetszet. A felügyelt példányok esetén használja az automatikus feladatátvételi csoportok.
-- **[Automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md)**:
+- **[Automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md)** :
 
   Az összes SQL-adatbázis központi telepítési beállítások lehetővé teszik a feladatátvételi csoportok segítségével magas rendelkezésre állást és terheléselosztást kínáljon globális léptékben, beleértve a transzparens georeplikációt és feladatátvételét a Nagy adatkészleteken, adatbázisok, rugalmas készletek és a felügyelt példányok. Feladatátvételi csoportok többletterhelést elhagyó minden az összetett figyelés, Útválasztás és feladatátvétel vezénylési az SQL Database minimális felügyelet engedélyezése a globálisan elosztott SaaS-alkalmazások létrehozását.
-- **[Zónaredundáns adatbázisok](sql-database-high-availability.md)**:
+- **[Zónaredundáns adatbázisok](sql-database-high-availability.md)** :
 
   SQL Database segítségével kiépítése prémium vagy üzleti foglalja magába, vagy a rugalmas készletek több rendelkezésre állási zónák között. Mivel ezek az adatbázisok és a rugalmas készletek több redundáns replikával rendelkeznek a magas rendelkezésre állás érdekében, e replikák több rendelkezésre állási zónában történő elhelyezése nagyobb rugalmasságot biztosít, beleértve az adatközpont méretezési hibáiból az adatvesztés nélküli, automatikus helyreállítás lehetőségét is.
 
@@ -191,16 +191,16 @@ Az SQL Database rendszeres ellenőrzéseken vesz részt és számos megfelelős�
 
 Az SQL Database egyszerűbbé és hatékonyabbá teszi az alkalmazások létrehozását és karbantartását. Az SQL Database lehetővé teszi, hogy arra koncentrálhasson, amit legjobban tud: kiváló alkalmazások készítésére. Az SQL Database-ben a már meglévő eszközeivel és szakértelmével dolgozhat és fejleszthet.
 
-- **[Az Azure Portalon](https://portal.azure.com/)**:
+- **[Az Azure Portalon](https://portal.azure.com/)** :
 
   A webes alkalmazás kezelése az Azure-szolgáltatásokhoz
-- **[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)**:
+- **[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)** :
 
   Egy ingyenes, letölthető ügyféloldali alkalmazás bármilyen SQL infrastruktúra kezelésére az SQL Servertől az SQL Database
-- **[Az SQL Server Data Tools a Visual Studióban](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)**:
+- **[Az SQL Server Data Tools a Visual Studióban](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)** :
 
   Egy ingyenes, letölthető ügyféloldali alkalmazás SQL Server relációs adatbázisok, Azure SQL Database-adatbázisok, Integration Services-csomagok, Analysis Services adatmodellek és Reporting Services-jelentések fejlesztéséhez.
-- **[Visual Studio Code](https://code.visualstudio.com/docs)**:
+- **[Visual Studio Code](https://code.visualstudio.com/docs)** :
 
   Egy ingyenes, letölthető, nyílt forráskódú Kódszerkesztő Windows, macOS és Linux rendszerekre, amely támogatja a bővítményeket, beleértve a [mssql bővítményt](https://aka.ms/mssql-marketplace) a Microsoft SQL Server, az Azure SQL Database és az SQL Data Warehouse lekérdezéséhez.
 

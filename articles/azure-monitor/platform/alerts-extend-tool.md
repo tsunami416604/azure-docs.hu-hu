@@ -9,10 +9,10 @@ ms.date: 06/04/2018
 ms.author: vinagara
 ms.subservice: alerts
 ms.openlocfilehash: 9d734f74c4e12b369e46c15dcb9d01a8185dddd6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60431116"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>Riasztások kiterjesztése a Log Analytics az Azure-riasztások
@@ -22,7 +22,7 @@ A riasztások szolgáltatása az OMS-portálon váltja fel az Azure-riasztások 
 - Programozott módon az API-val AlertsVersion.  
 
 > [!NOTE]
-> Microsoft automatikusan kiterjeszti az Azure Government OMS portál példányok az Azure Alerts szolgáltatáshoz, a Log Analytics létrehozott riasztások 2019. március 1., a rendszeres módon indítása. Ha problémába ütközik létrehozása [Műveletcsoportok](../../azure-monitor/platform/action-groups.md), használjon [javítási lépések](alerts-extend-tool.md#troubleshooting) beolvasni a Műveletcsoportok jönnek létre automatikusan. 2019. március 15-ig ezeket a lépéseket használhatja az Azure Government OMS-portálon.
+> Microsoft automatikusan kiterjeszti az Azure Government OMS portál példányok az Azure Alerts szolgáltatáshoz, a Log Analytics létrehozott riasztások 2019. március 1., a rendszeres módon indítása. Ha problémába ütközik létrehozása [Műveletcsoportok](../../azure-monitor/platform/action-groups.md), használjon [javítási lépések](alerts-extend-tool.md#troubleshooting) beolvasni a Műveletcsoportok jönnek létre automatikusan. 2019\. március 15-ig ezeket a lépéseket használhatja az Azure Government OMS-portálon.
 
 ## <a name="option-1-initiate-from-the-operations-management-suite-portal"></a>Option 1: Az Operations Management Suite portálján kezdeményez
 Az alábbi lépéseket a munkaterületre vonatkozó riasztások kiterjesztése az Operations Management Suite portálján az Azure Government-felhőbeli a ismertetik.  

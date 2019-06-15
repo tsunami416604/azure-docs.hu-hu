@@ -19,10 +19,10 @@ ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 005e5c92a16760d8eec5dc37526f4b1f2dbd751c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540534"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Útmutató: Az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában
@@ -123,7 +123,7 @@ Az alábbi, a folyamat az ügyfél kért alkalmazások –
 
 ![Ügyfél kért alkalmazások folyamat](./media/howto-app-gallery-listing/customer-request.png)
 
-## <a name="timelines"></a>Idősorok
+## <a name="timelines"></a>Idősor
 
 A folyamat a tőzsdei a SAML 2.0 vagy WS-Fed alkalmazás a katalógus ütemtervét 7 – 10 munkanapon.
 

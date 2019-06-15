@@ -12,10 +12,10 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: d6601f57d87b518b2061df64174818432b822755
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60515326"
 ---
 # <a name="bing-speech-websocket-protocol"></a>A Bing Speech WebSocket protokoll
@@ -55,7 +55,7 @@ Date: Wed, 17 Aug 2016 15:03:52 GMT
 
 Szükséges összes beszédalapú kéréseket a [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) titkosítást. Titkosítatlan beszédalapú kéréseket használata nem támogatott. A következő TLS-verziót támogatja:
 
-* TLS 1.2
+* A TLS 1.2
 
 ### <a name="connection-identifier"></a>Kapcsolat azonosítója
 
@@ -80,13 +80,13 @@ A következő fejléc-információkat hozzáférés a jogkivonatokhoz szükség.
 
 | Name (Név) | Formátum | Leírás |
 |----|----|----|
-| OCP-Apim-Subscription-Key | ASCII | Előfizetési kulcs |
+| OCP-Apim-Subscription-Key | ASCII | Az előfizetési kulcs |
 
 A jogkivonat-szolgáltatás adja vissza, mint a JWT jogkivonat `text/plain`. A JWT átadott majd egy `Base64 access_token` , mint a kézfogás- *engedélyezési* előtaggal van ellátva a sztring fejlécet `Bearer`. Példa:
 
 `Authorization: Bearer [Base64 access_token]`
 
-### <a name="cookies"></a>Cookie-k
+### <a name="cookies"></a>A cookie-k
 
 Az ügyfelek *kell* támogatja a HTTP-cookie-k a megadott [RFC 6265](https://tools.ietf.org/html/rfc6265).
 
@@ -98,10 +98,10 @@ Az ügyfelek *kell* támogatja a standard átirányítási módszerek által meg
 
 Az ügyfelek *kell* beszédszolgáltatás megfelelő végpont használata. A végpont mód és a nyelvi alapul. A táblázatban néhány példa látható.
 
-| Mód | Útvonal | Szolgáltatás URI-ja |
+| Mód | Útvonal | Szolgáltatás-URI |
 | -----|-----|-----|
 | Interaktív | /speech/recognition/interactive/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
-| Beszélgetés | /speech/recognition/conversation/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US |
+| beszélgetés | /speech/recognition/conversation/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US |
 | Diktálás | /speech/recognition/dictation/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR |
 
 További információkért lásd: a [szolgáltatás URI](../GetStarted/GetStartedREST.md#service-uri) lapot.
@@ -150,7 +150,7 @@ A fő, a szolgáltatásoknak az ügyfél által küldött üzenetek `speech.conf
 
 A következő fejlécek az összes ügyfél által kezdeményezett szükségesek.
 
-| Fejléc | Value |
+| Fejléc | Érték |
 |----|----|
 | Útvonal | Ebben a dokumentumban meghatározottak szerint az üzenet elérési út |
 | X-RequestId | A "no-dash" formátumban UUID |
@@ -179,7 +179,7 @@ Az ügyfelek *kell* küldése egy `speech.config` azokat a csatlakozást beszéd
 
 #### <a name="required-message-headers"></a>Szükséges fejlécek
 
-| Fejléc neve | Value |
+| Fejléc neve | Érték |
 |----|----|
 | Útvonal | `speech.config` |
 | X-időbélyeg | Ügyfél UTC óra ISO 8601 formátumú időbélyeg |
@@ -219,7 +219,7 @@ A system.version eleme a `speech.config` üzenet a beszéd, az ügyfélalkalmaz�
 
 | Mező | Leírás | Használat |
 |-|-|-|
-| os.platform | Az operációs rendszer platform, amely az alkalmazást, például, a Windows, Android, iOS vagy Linux |Szükséges |
+| os.platform | Az operációs rendszer platform, amely az alkalmazást, például, a Windows, Android, iOS vagy Linux |Kötelező |
 | os.name | Az operációs rendszer termék nevében, például a Debian vagy a Windows 10-es | Szükséges |
 | os.Version | A képernyőn az operációs rendszer verziójának *major.minor.build.branch* | Szükséges |
 
@@ -250,7 +250,7 @@ Beszédszolgáltatás használja az első `audio` üzenet, amely tartalmaz egy e
 
 A következő fejléceket szükség az összes `audio` üzeneteket.
 
-| Fejléc         |  Value     |
+| Fejléc         |  Érték     |
 | ------------- | ---------------- |
 | Útvonal | `audio` |
 | X-RequestId | A "no-dash" formátumban UUID |
@@ -509,9 +509,9 @@ A `Connection` metrika megadja az ügyfél kapcsolódási kísérleteit részlet
 | Mező | Leírás | Használat |
 | ----- | ----------- | ----- |
 | Name (Név) | `Connection` | Szükséges |
-| Azonosító | A kapcsolat-értéket, amely használták a *X-ConnectionId* a kapcsolódási kérelem fejléce | Szükséges |
-| Indítás | Az idő, amikor az ügyfél küldött-e a kapcsolódási kérelem | Szükséges |
-| Vége | Az idő, amikor az ügyfelet, hogy a kapcsolat sikeresen létrejött-e értesítést kapott, vagy hiba esetekben, el lett utasítva, elutasítva, vagy nem sikerült | Szükséges |
+| Azonosító | A kapcsolat-értéket, amely használták a *X-ConnectionId* a kapcsolódási kérelem fejléce | Kötelező |
+| Indítás | Az idő, amikor az ügyfél küldött-e a kapcsolódási kérelem | Kötelező |
+| vége | Az idő, amikor az ügyfelet, hogy a kapcsolat sikeresen létrejött-e értesítést kapott, vagy hiba esetekben, el lett utasítva, elutasítva, vagy nem sikerült | Kötelező |
 | Hiba | A következő hiba történt, ha van ilyen leírása. A kapcsolat nem volt sikeres, ha az ügyfelek kell hagyja ki ezt a mezőt. Ez a mező hossza legfeljebb 50 karakter hosszú lehet. | Hiba történt az esetekben nincs egyéb megadva szükséges |
 
 A hiba leírása legfeljebb 50 karakter hosszú lehet kell lennie, és ideális egyikének kell lennie a következő táblázatban felsorolt értékeket. Ha a hibajelzést kiváltó körülmény nem egyezik az alábbi értékek egyikére, ügyfelek használhatják-e a hibajelzést kiváltó körülmény tömör leírása használatával [CamelCasing](https://en.wikipedia.org/wiki/Camel_case) szóköz nélkül. A képes titkosítottan küldeni egy *telemetriai* üzenet a szolgáltatásban, így csak átmeneti kapcsolatot igényel, vagy ideiglenes hibaállapotok jelenteni lehet a a *telemetriai* üzenet. A hibák *véglegesen* ügyfelet kapcsolatot a szolgáltatás letiltása megakadályozza, hogy a az ügyfél bármilyen üzenetet küld a szolgáltatást, beleértve a *telemetriai* üzenetek.
@@ -524,7 +524,7 @@ A hiba leírása legfeljebb 50 karakter hosszú lehet kell lennie, és ideális 
 | NoResources | Az ügyfél a kapcsolat tett kísérlet során elfogyott a néhány helyi erőforrás (például memóriája). |
 | Tiltott | Az ügyfél nem tudott kapcsolódni a szolgáltatáshoz, mivel a szolgáltatás által visszaadott HTTP `403 Forbidden` a WebSocket frissítésére irányuló kérelem az állapotkódot. |
 | Nem engedélyezett | Az ügyfél nem tudott kapcsolódni a szolgáltatáshoz, mivel a szolgáltatás által visszaadott HTTP `401 Unauthorized` a WebSocket frissítésére irányuló kérelem az állapotkódot. |
-| Hibás kérés | Az ügyfél nem tudott kapcsolódni a szolgáltatáshoz, mivel a szolgáltatás által visszaadott HTTP `400 Bad Request` a WebSocket frissítésére irányuló kérelem az állapotkódot. |
+| BadRequest | Az ügyfél nem tudott kapcsolódni a szolgáltatáshoz, mivel a szolgáltatás által visszaadott HTTP `400 Bad Request` a WebSocket frissítésére irányuló kérelem az állapotkódot. |
 | ServerUnavailable | Az ügyfél nem tudott kapcsolódni a szolgáltatáshoz, mivel a szolgáltatás által visszaadott HTTP `503 Server Unavailable` a WebSocket frissítésére irányuló kérelem az állapotkódot. |
 | Kiszolgálóhibái | Az ügyfél nem tudott kapcsolódni a szolgáltatáshoz, mivel a szolgáltatás által visszaadott egy `HTTP 500` állapotkód belső hiba történt a frissítési WebSocket-kérés. |
 | Időtúllépés | Az ügyfél-kapcsolódási kérelem túllépte az időkorlátot a szolgáltatás válaszára nélkül. A *záró* mező tartalmazza az idő, amikor az ügyfél túllépte az időkorlátot, és várakozik a kapcsolatot. |
@@ -549,8 +549,8 @@ A *záró* idő értékét a `Microphone` metrika rögzíti az idő, amikor az �
 | Mező | Leírás | Használat |
 | ----- | ----------- | ----- |
 | Name (Név) | Mikrofon | Szükséges |
-| Indítás | Az idő, amikor az ügyfél a mikrofon vagy más hang stream hangbemenet első lépéseiben vagy eseményindító kapott a kulcsszó spotter | Szükséges |
-| Vége | Az idő, amikor az ügyfél leállt, a mikrofon- vagy audióanyagot stream használatára | Szükséges |
+| Indítás | Az idő, amikor az ügyfél a mikrofon vagy más hang stream hangbemenet első lépéseiben vagy eseményindító kapott a kulcsszó spotter | Kötelező |
+| vége | Az idő, amikor az ügyfél leállt, a mikrofon- vagy audióanyagot stream használatára | Szükséges |
 | Hiba | A következő hiba történt, ha van ilyen leírása. A mikrofon műveletek sikeres volt, ha az ügyfelek kell hagyja ki ezt a mezőt. Ez a mező hossza legfeljebb 50 karakter hosszú lehet. | Hiba történt az esetekben nincs egyéb megadva szükséges |
 
 ### <a name="metric-listeningtrigger"></a>A metrika `ListeningTrigger`
@@ -570,7 +570,7 @@ Használja az alábbi példák útmutatóul a rögzítés *Start* és *záró* i
 | ----- | ----------- | ----- |
 | Name (Név) | ListeningTrigger | Optional |
 | Indítás | Az idő, amikor az ügyfél figyel-e eseményindító elindítása | Szükséges |
-| Vége | Az idő, amikor az ügyfél figyel-e eseményindító befejeződött | Szükséges |
+| vége | Az idő, amikor az ügyfél figyel-e eseményindító befejeződött | Szükséges |
 | Hiba | A következő hiba történt, ha van ilyen leírása. Ha a trigger művelet sikeres volt, az ügyfelek kell hagyja ki ezt a mezőt. Ez a mező hossza legfeljebb 50 karakter hosszú lehet. | Hiba történt az esetekben nincs egyéb megadva szükséges |
 
 #### <a name="sample-message"></a>Mintaüzenet

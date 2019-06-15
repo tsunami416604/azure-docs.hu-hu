@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/16/2019
 ms.author: tomsh
 ms.openlocfilehash: 8bafc4a95ca9af4567ed70c190a72f3b351da47c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60611525"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Az Azure Service Fabric ajánlott biztonsági eljárások
@@ -101,7 +101,7 @@ Ha a fürt nem biztonságos, bárki név nélkül csatlakozhat a fürthöz, és 
 
 X.509-tanúsítványok használatával kapcsolatos további tudnivalókért lásd: [Service Fabric-fürt hozzáadása vagy eltávolítása tanúsítványai](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security-update-certs-azure).
 
-## <a name="configure-security-policies"></a>Biztonsági szabályzatok beállítása
+## <a name="configure-security-policies"></a>Biztonsági szabályzatok konfigurálása
 A Service Fabric is biztosítja az alkalmazások által használt erőforrásokat. Erőforrások, például a könyvtárak, fájlok és a tanúsítványokat tárolja a felhasználói fiókok alapján az alkalmazás központi telepítésekor. A szolgáltatás révén futó alkalmazások biztonságát egymástól, még akkor is, a közös üzemeltetési környezetben.
 
 -   Az Active Directory tartományi csoport vagy felhasználó használata: Egy Active Directory-felhasználó vagy csoport-fiókja alatt a hitelesítő adatokat a szolgáltatás fut. Győződjön meg arról, az Active Directory a helyszíni belül a tartomány és a nem az Azure Active Directory használatára. A tartomány egyéb erőforrásainak, amely engedélyekkel rendelkezik egy tartományi felhasználó vagy csoport használatával eléréséhez. Ha például erőforrásokat, például fájlmegosztásokat.
@@ -139,10 +139,10 @@ A tanúsítványt az SSL-tanúsítványok az Azure-ban az alábbi követelménye
 -   A tanúsítvány tulajdonosnevének egyeznie kell a tartomány nevét, a felhőalapú szolgáltatás eléréséhez használt.
 
     - A cloud Services eléréséhez használandó egyéni tartománynév beszerezni.
-    - Egy hitelesítésszolgáltató, amely megfelel a szolgáltatást egyéni tartománynév tulajdonosnévvel rendelkező tanúsítványt kérhet. Például, ha az egyéni tartománynév __contoso__**.com**, a tanúsítványt a hitelesítésszolgáltatótól kell rendelkeznie a tulajdonos neve **. contoso.com** vagy __www__ **. contoso.com**.
+    - Egy hitelesítésszolgáltató, amely megfelel a szolgáltatást egyéni tartománynév tulajdonosnévvel rendelkező tanúsítványt kérhet. Például, ha az egyéni tartománynév __contoso__ **.com**, a tanúsítványt a hitelesítésszolgáltatótól kell rendelkeznie a tulajdonos neve **. contoso.com** vagy __www__ **. contoso.com**.
 
     >[!NOTE]
-    >Nem szerezheti be egy SSL-tanúsítványt egy hitelesítésszolgáltatóból számára a __cloudapp__**.net** tartományhoz.
+    >Nem szerezheti be egy SSL-tanúsítványt egy hitelesítésszolgáltatóból számára a __cloudapp__ **.net** tartományhoz.
 
 -   A tanúsítvány legalább 2048 bites titkosítást kell használnia.
 

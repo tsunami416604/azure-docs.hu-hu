@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/07/2019
 ms.author: spelluru
 ms.openlocfilehash: f761af3a5a3f08e4da89d8869aea5d666ecd69d0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60868248"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet társított költségek nyomon követése
@@ -91,7 +91,7 @@ A havi költségek trend fejlesztőlaborokban lévő funkcióval láthatja, hogy
 4. Válassza ki **Konfigurace a zásady** a bal oldali menüben.
 5. Válassza ki **költségek erőforrás szerint** a a **költségek nyomon követése** szakaszban a bal oldali menüben. Láthatja, hogy az egyes erőforrások társított egy tesztlabor társított költségek. 
 
-    ![Díjak erőforrások szerint](./media/devtest-lab-configure-cost-management/cost-by-resource.png)
+    ![Költségek erőforrás szerint](./media/devtest-lab-configure-cost-management/cost-by-resource.png)
 
 Ez a funkció révén könnyedén azonosíthatja az erőforrást, amely költségek a legtöbb, hogy műveleteket végezhet a labor-kiadások csökkentése érdekében. Például egy virtuális gép költsége a virtuális gép mérete alapján. Minél nagyobb a virtuális gép, további mérete a költségeket. Megtalálhatja egy virtuális Gépet és a tulajdonosa, így az tudni, miért van szükség az ilyen Virtuálisgép-méretet a virtuális gép tulajdonosa beszélgethet és a egy alkalom, hogy csökkentse a méretét van-e.
 

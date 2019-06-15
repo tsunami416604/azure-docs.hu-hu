@@ -11,10 +11,10 @@ ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 467c323a0b669e70e12f801fd8fdd6df119e793d
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65595913"
 ---
 # <a name="query-examples-using-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>Példák Lucene-keresési "teljes" szintaxis (speciális lekérdezések az Azure Search) használatával lekérdezése
@@ -67,7 +67,7 @@ Illessze be az URL-címet REST-ügyfél ellenőrzésként, valamint a dokumentum
   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=*
   ```
 
-A lekérdezési karakterlánc **`search=*`**, van egy nem meghatározott keresés egyenértékű, NULL értékű vagy üres keresés. A legegyszerűbb keresést végezhet.
+A lekérdezési karakterlánc **`search=*`** , van egy nem meghatározott keresés egyenértékű, NULL értékű vagy üres keresés. A legegyszerűbb keresést végezhet.
 
 Ha szükséges, hozzáadhat **`$count=true`** az URL-címet a keresési feltételeknek megfelelő a dokumentumok számát adja vissza. Egy üres Keresés karakterlánc ez az index (körülbelül 2800-i állások esetén) szereplő összes dokumentumot.
 
@@ -81,7 +81,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 Minden ebben a cikkben szereplő példák adja meg a **queryType = full** keresési paramétert, amely azt jelzi, hogy a teljes szintaxis kezeli a Lucene lekérdezéselemző. 
 
-## <a name="example-1-query-scoped-to-a-list-of-fields"></a>1. példa: A lekérdezés hatókörét arra a mezők listája
+## <a name="example-1-query-scoped-to-a-list-of-fields"></a>1\. példa: A lekérdezés hatókörét arra a mezők listája
 
 Az első példa nem Lucene-specifikus, de azt vezethet, vezessen be az első lekérdezés alapvető fogalom: hatókör mezőben. Ebben a példában a teljes lekérdezés és a válasz csak néhány bizonyos mezők hatóköröket. Hogyan építse fel olvasható JSON-választ, hogy akkor fontos, ha az eszköz csak a Postman vagy a keresési explorer. 
 
@@ -116,7 +116,7 @@ Ez a lekérdezés válasza az alábbi képernyőfelvételhez hasonlóan kell kin
 
 Előfordulhat, hogy észrevette a keresési pontszámtól a válaszban. 1 egységes pontszámok fordulhat elő, esetén nincs rank, vagy mert a keresés nem volt a teljes szöveges keresés, vagy mert a feltétel nem lett alkalmazva. A feltétel nem null értékű Search sorok visszatérhet tetszőleges sorrendben. Is tartalmazó tényleges keresési feltételeknek, látni fogja a keresési pontszámok jelentéssel bíró értékekké fejlesztheti tovább.
 
-## <a name="example-2-fielded-search"></a>2. példa Fielded keresése
+## <a name="example-2-fielded-search"></a>2\. példa Fielded keresése
 
 Teljes Lucene-szintaxis egy adott mezőben hatókörkezelési külön keresési kifejezések támogatja. Ebben a példában a kifejezés vezető őket, de nem kezdő üzleti az adatfeliratokat keres.
 
@@ -153,7 +153,7 @@ A megadott mező **fieldName:searchExpression** kell lennie egy kereshető mező
 > [!NOTE]
 > A fenti példában, hogy nem kellett használni a `searchFields` paramétere, mert a lekérdezés minden egyes részét explicit módon megadott mező neve van. Azonban továbbra is használhatja a `searchFields` paramétert, ha egy lekérdezést, ahol egy adott mező egyes részeit is meghatározhat, és a többi több mező lehet alkalmazni szeretné. Például a lekérdezés `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` egyezni `senior NOT junior` csak a `business_title` mező, míg az "external" egyezni a `posting_type` mező. A megadott mező neve **fieldName:searchExpression** mindig elsőbbséget élvez a `searchFields` paramétert, ezért az ebben a példában ez nincs szükségünk `business_title` a a `searchFields` paraméter.
 
-## <a name="example-3-fuzzy-search"></a>3. példa: intelligens keresést
+## <a name="example-3-fuzzy-search"></a>3\. példa: intelligens keresést
 
 Teljes Lucene-szintaxis az intelligens keresés a feltételeket, amelyek hasonló konstrukció megfelelő is támogatja. Ehhez az intelligens keresést, fűzze hozzá a hullámos vonallal `~` szimbólum egy egyetlen szó, és a egy nem kötelező paraméter, a 0. és 2 közötti értéket, amely megadja a Szerkesztés végén. Ha például `blue~` vagy `blue~1` kék blues és integrációs adna vissza.
 
@@ -184,7 +184,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 > Az intelligens-lekérdezések [elemzett](search-lucene-query-architecture.md#stage-2-lexical-analysis). Lekérdezési típusokra hiányos feltételeket (előtag lekérdezés, helyettesítő karaktert tartalmazó lekérdezés, regex lekérdezés, az intelligens lekérdezés) kerülnek közvetlenül a lekérdezés fában, az elemzési fázis kihagyásával. Az egyetlen átalakítás hiányos lekérdezési kifejezések végrehajtott lowercasing van.
 >
 
-## <a name="example-4-proximity-search"></a>4. példa: közelségi keresésre
+## <a name="example-4-proximity-search"></a>4\. példa: közelségi keresésre
 Közelségi keresés segítségével keresse meg a feltételeket, amelyek egymáshoz közel egy dokumentumban. Egy hullámos vonallal beszúrása "~" kifejezés végén jel követ szavak, amelyek a közelségi határ létrehozása száma. Például "Szálloda repülőtér" ~ 5 megtalálja a a feltételek Szálloda és repülőtér belül minden más 5 szó egy dokumentumban.
 
 ### <a name="partial-query-string"></a>Részleges lekérdezési karakterlánc
@@ -208,7 +208,7 @@ Próbálja ki újra eltávolítása a szavak közötti "vezető elemző" kifejez
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~0
 ```
 
-## <a name="example-5-term-boosting"></a>5. példa: kiemelési távú
+## <a name="example-5-term-boosting"></a>5\. példa: kiemelési távú
 Kifejezés kiemelési prioritása nagyobb, ha a gyorsított időszak alatt, dokumentum, amely nem tartalmazza a kisbetűs viszonyított tartalmazza a dokumentum hivatkozik. Jelentősen növelheti a kifejezés, használja a beszúrási jellel "^", a keresett kifejezés végén boost tényezővel (szám) szimbólum. 
 
 ### <a name="full-urls"></a>Teljes URL-címek
@@ -236,7 +236,7 @@ Fontolja meg a relevanciaprofil, amely serkenti az megfelel egy bizonyos mezőbe
 Authentication beállítását a, minél nagyobb a boost tényező, több megfelelő kifejezés lesznek más keresési feltételek viszonyítva. Alapértelmezés szerint a boost tényező: 1. Bár a boost tényező pozitívnak kell lennie, 1-nél kisebb (például 0.2-es) lehet.
 
 
-## <a name="example-6-regex"></a>6. példa: Regex
+## <a name="example-6-regex"></a>6\. példa: Regex
 
 Keresés reguláris kifejezés közötti útjaiban perjeleket a "/", a dokumentált tartalma alapján egyezést talál az [RegExp osztály](https://lucene.apache.org/core/4_10_2/core/org/apache/lucene/util/automaton/RegExp.html).
 
@@ -260,7 +260,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 > Regex-lekérdezések [elemzett](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis). Az egyetlen átalakítás hiányos lekérdezési kifejezések végrehajtott lowercasing van.
 >
 
-## <a name="example-7-wildcard-search"></a>7. példa: helyettesítő karakteres keresés
+## <a name="example-7-wildcard-search"></a>7\. példa: helyettesítő karakteres keresés
 Általában felismerhető szintaxist használhat több (\*) vagy egy (?) karakter helyettesítő karakteres kereséssel. Vegye figyelembe, hogy a Lucene lekérdezéselemző használatát a szimbólumok egyetlen kifejezés, és a egy kifejezés nem támogatja.
 
 ### <a name="partial-query-string"></a>Részleges lekérdezési karakterlánc

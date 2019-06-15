@@ -13,10 +13,10 @@ ms.date: 09/18/2018
 ms.reviewer: nimolnar
 ms.author: mbullwin
 ms.openlocfilehash: a7efe663a75fa29a31e7157c5eab24c2973a3758
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60699322"
 ---
 # <a name="local-forwarder-preview"></a>Helyi továbbító (előzetes verzió)
@@ -35,7 +35,7 @@ Helyi továbbító Windows alatt fut, a legegyszerűbb módja van: telepítse a 
 
 > [!NOTE]
 > A helyi továbbító szolgáltatás a .NET-keretrendszer 4.7 legalább igényel. Ha nem rendelkezik .NET-keretrendszer 4.7 a szolgáltatás fogja telepítése, de nem indul el. A .NET-keretrendszer legújabb verzióját eléréséhez **[a .NET-keretrendszer letöltési oldalán](
-https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_source=getdotnet&utm_medium=referral)**.
+https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_source=getdotnet&utm_medium=referral)** .
 
 1. Töltse le a LF Karakterrel. WindowsServiceHost.zip fájlt a [helyi továbbító kiadás oldalon](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases) a Githubon.
 
@@ -146,7 +146,7 @@ systemctl enable localforwarder
 systemctl start localforwarder
 ```
 
-* A szolgáltatás figyelésére vizsgálatával **.log* a /home/SAMPLE_USER/LOCALFORWARDER_DIR könyvtárban található fájlok.
+* A szolgáltatás figyelésére vizsgálatával * *.log* a /home/SAMPLE_USER/LOCALFORWARDER_DIR könyvtárban található fájlok.
 
 ### <a name="mac"></a>Mac
 Helyi továbbító a MacOS is működhet, azonban jelenleg nem hivatalosan támogatott.
@@ -177,7 +177,7 @@ host.Stop();
 
 ## <a name="monitoring-local-forwarder"></a>Helyi továbbító figyelése
 
-Nyomok írt a fájlrendszer mellett a végrehajtható fájl, amely a helyi továbbítója fut (keressen **.log* fájlok). Elhelyezhet egy fájlt nevű *NLog.config* mellett a végrehajtható fájlt, adja meg az alapértelmezett helyett a saját konfigurációjával. Lásd: [dokumentáció](https://github.com/NLog/NLog/wiki/Configuration-file#configuration-file-format) formátumban leírását.
+Nyomok írt a fájlrendszer mellett a végrehajtható fájl, amely a helyi továbbítója fut (keressen * *.log* fájlok). Elhelyezhet egy fájlt nevű *NLog.config* mellett a végrehajtható fájlt, adja meg az alapértelmezett helyett a saját konfigurációjával. Lásd: [dokumentáció](https://github.com/NLog/NLog/wiki/Configuration-file#configuration-file-format) formátumban leírását.
 
 Ha nincsenek konfigurációs fájl áll rendelkezésre (Ez az alapértelmezett beállítás), a helyi továbbító fogja használni az alapértelmezett konfiguráció, amely található [Itt](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/blob/master/src/Common/NLog.config).
 

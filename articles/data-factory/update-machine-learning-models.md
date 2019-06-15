@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
 ms.openlocfilehash: 8f1320db0af85f6c83a9daf8e17a691336c9b251
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60335478"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Az Azure Machine Learning-modellek frissítése az Update-erőforrástevékenység
@@ -59,7 +59,7 @@ A következő JSON-kódrészlet definiál egy Azure Machine Learning Batch Execu
 
 | Tulajdonság                      | Leírás                              | Szükséges |
 | :---------------------------- | :--------------------------------------- | :------- |
-| név                          | A folyamat a tevékenység neve     | Igen      |
+| name                          | A folyamat a tevékenység neve     | Igen      |
 | description                   | A tevékenység leírása leíró szöveg.  | Nem       |
 | type                          | Az Azure Machine Learning Update Resource-tevékenységek, a tevékenység típusa van **AzureMLUpdateResource**. | Igen      |
 | linkedServiceName             | Az Azure Machine Learning társított szolgáltatás updateResourceEndpoint tulajdonsága tartalmaz. | Igen      |

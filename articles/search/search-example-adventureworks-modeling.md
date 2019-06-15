@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: chstone
 ms.openlocfilehash: 6d5d01dfbbcfda56818f5c38b06117a87e021445
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61291908"
 ---
 # <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>Példa: Az Azure Search az AdventureWorks készlet adatbázis minta
@@ -43,7 +43,7 @@ A probléma megoldása nem mozdítani az célindex ProductModel táblához. Ezze
 
 ## <a name="use-a-collection-data-type"></a>Az adatgyűjtési adattípusa
 
-A "megfelelő módszer" egy keresési-séma-szolgáltatás, amely nem rendelkezik közvetlen párhuzamos az adatbázis-modell használatához: **Collection(Edm.String)**. Egy gyűjtemény típusa használatos, ha önálló karakterláncokra, nem pedig egy nagyon hosszú listáját (szimpla) karakterlánc. Ha a címkék vagy a kulcsszavak, használja a mező egy gyűjtemény típusa.
+A "megfelelő módszer" egy keresési-séma-szolgáltatás, amely nem rendelkezik közvetlen párhuzamos az adatbázis-modell használatához: **Collection(Edm.String)** . Egy gyűjtemény típusa használatos, ha önálló karakterláncokra, nem pedig egy nagyon hosszú listáját (szimpla) karakterlánc. Ha a címkék vagy a kulcsszavak, használja a mező egy gyűjtemény típusa.
 
 Többértékű index mezőinek definiálásával **Collection(Edm.String)** "szín", "méretben" és "image", a kiegészítő információkat nem megőrzött, a többnyelvűséget és a szűrési szennyező az ismétlődő bejegyzéseket az index. Ehhez hasonlóan az aggregátumfüggvények alkalmazni a numerikus termék mezők, az indexelés **minListPrice** helyett minden egyetlen termék **listPrice**.
 

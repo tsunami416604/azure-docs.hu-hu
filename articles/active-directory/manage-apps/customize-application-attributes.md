@@ -16,10 +16,10 @@ ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc3aea059b6ac4244ea440d26717562e83fdbd09
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65824912"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Az SaaS-alkalmazásokhoz az Azure Active Directory-attribútumleképezések testreszabása Felhasználókiépítés
@@ -86,7 +86,7 @@ Ezt a tulajdonságot, valamint attribútum-leképezések is támogatja a követk
 
 Alkalmazások, például a ServiceNow, a Box és a G Suite, a kiválasztott számú támogatja az objektumok és a felhasználói objektumok létrehozására. Objektumok is tartalmaz a csoport tulajdonságai, például a megjelenített nevek és e-mail-aliasokat, és a csoport tagjai.
 
-![Azonnali szervizelés](./media/customize-application-attributes/24.png)
+![ServiceNow](./media/customize-application-attributes/24.png)
 
 Csoportos kiépítését lehet szükség esetén engedélyezhető vagy letiltható az eszközcsoport-leképezés szerinti kiválasztásával **leképezések**, és a beállítás **engedélyezve** a kívánt beállítást, a **attribútumleképezés** képernyő.
 
@@ -105,7 +105,7 @@ Azonban egyes alkalmazások támogatják az egyéni attribútumokat, és az Azur
 Alkalmazások és rendszerek, amelyek támogatják az attribútumlista testre szabhatja a következők:
 
 * Salesforce
-* Azonnali szervizelés
+* ServiceNow
 * Munkanap
 * Az Azure Active Directory ([Azure AD Graph API alapértelmezett attribútumok](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity) és egyéni címtárbővítmények támogatottak)
 * Támogató alkalmazások [SCIM 2.0](https://tools.ietf.org/html/rfc7643), ahol az attribútumok meghatározott a [core séma](https://tools.ietf.org/html/rfc7643) hozzá kell adni

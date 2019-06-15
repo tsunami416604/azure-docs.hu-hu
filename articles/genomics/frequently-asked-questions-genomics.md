@@ -10,10 +10,10 @@ ms.service: genomics
 ms.topic: article
 ms.date: 12/07/2017
 ms.openlocfilehash: 2bcbf9d145d9b8b5a3c42893235906d24516405c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65792619"
 ---
 # <a name="microsoft-genomics-common-questions"></a>A Microsoft Genomics: Gyakori kérdések
@@ -21,7 +21,7 @@ ms.locfileid: "65792619"
 Ez a cikk a leggyakoribb lekérdezések, előfordulhat, hogy rendelkezik a Microsoft Genomics kapcsolódó sorolja fel. A Microsoft Genomics szolgáltatásba további információkért lásd: [Mi a Microsoft Genomics?](overview-what-is-genomics.md). Hibaelhárítással kapcsolatos további információkért lásd: a [hibaelhárítási útmutatója](troubleshooting-guide-genomics.md). 
 
 ## <a name="what-is-the-microsoft-genomics-service-gatk-4-promotion"></a>Mi a Microsoft Genomics szolgáltatás GATK 4 előléptetés?
-2019. június 30-ig a Microsoft Genomics szolgáltatásba 20 WGS fut GATK4 költségek nélkül kínál. Ez az ajánlat register részt [Itt](https://aka.ms/msgatk4). 
+2019\. június 30-ig a Microsoft Genomics szolgáltatásba 20 WGS fut GATK4 költségek nélkül kínál. Ez az ajánlat register részt [Itt](https://aka.ms/msgatk4). 
 
 ### <a name="what-are-the-common-issues-i-might-encounter-while-running-the-microsoft-genomics-service-gatk4-promotion"></a>Mik azok a gyakori problémák jutok előfordulhat, hogy a futtatásakor a Microsoft Genomics szolgáltatás GATK4 támogatása
 Itt látható az esetleg felmerülő gyakori hibák és a megoldást ajánlott alkalmazni:
@@ -91,7 +91,7 @@ msgen tisztában van azzal a konfigurációs fájlok a következő formátumban:
 
   |Parancssori argumentum            | A konfigurációs fájl sora |
   |:-------------                   |:-------------                 |
-  |`-u/--api-url-base https://url`  | *api_url_base:https://url*    |
+  |`-u/--api-url-base https://url`  | *api_url_base: https://url*    |
   |`-k/--access-key KEY`            | *access_key:KEY*              |      
   |`-pa/--process-args R=B37m1`     | *process_args:R-b37m1*        |  
 
