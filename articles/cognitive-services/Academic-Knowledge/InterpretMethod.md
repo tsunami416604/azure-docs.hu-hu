@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
 ms.openlocfilehash: b679f1da0ada3e61fca79cdb985a43dc445877ce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61338452"
 ---
 # <a name="interpret-method"></a>Módszer értelmezése
@@ -31,7 +31,7 @@ Ahhoz, hogy az interaktív élményt, meghívhatja ezt a módszert ismételten u
 
 Name (Név)     | Érték | Kötelező?  | Leírás
 ---------|---------|---------|---------
-**Lekérdezés**    | Szöveges karakterlánc | Igen | Felhasználó által megadott lekérdezés.  Ha teljes értéke 1, lekérdezés létrehozni lekérdezési automatikus kiegészítését javaslatok előtagjaként is értelmezhető.        
+**query**    | Szöveges karakterlánc | Igen | Felhasználó által megadott lekérdezés.  Ha teljes értéke 1, lekérdezés létrehozni lekérdezési automatikus kiegészítését javaslatok előtagjaként is értelmezhető.        
 **model**    | Szöveges karakterlánc | Nem  | A lekérdezni kívánt modell neve.  Jelenleg az alapértelmezett érték *legújabb*.        
 **Hajtsa végre** | 0 vagy 1 | Nem<br>Alapértelmezés: 0  | 1 azt jelenti, hogy automatikus kiegészítését javaslatok jönnek létre a szintaxis és a grafikon adatai alapján.         
 **count**    | Szám | Nem<br>Alapértelmezés: 10 | Maximális száma értelmezéseket ad vissza.         
@@ -44,7 +44,7 @@ Name (Név)     | Érték | Kötelező?  | Leírás
 
 Name (Név)     | Leírás
 ---------|---------
-**Lekérdezés** |A *lekérdezés* paraméter a kérelemből.
+**query** |A *lekérdezés* paraméter a kérelemből.
 **értelmezése** |Az egyező felhasználói bevitel ellen a nyelvtani 0 vagy több különböző módon tömbje.
 **interpretations[x].logprob**  |A relatív természetes logaritmusát valószínűsége értelmezése. Nagyobb értékek nagy valószínűséggel.
 **interpretations[x].parse**  |XML-karakterlánc, amely megjeleníti a lekérdezés minden egyes részét értelmezését.

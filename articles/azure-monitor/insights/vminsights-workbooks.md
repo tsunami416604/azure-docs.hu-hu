@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 04/05/2019
 ms.author: magoedte
 ms.openlocfilehash: 90c236347380bb5d5e51db56d0f431d2659a7258
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61387158"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Interaktív jelentések létrehozása az Azure Monitor-munkafüzetekkel
@@ -33,7 +33,7 @@ Munkafüzetek is hasznos forgatókönyvek például:
 
 A virtuális gépek az Azure Monitor tartalmaz a kezdéshez több munkafüzetek, és a következő táblázat összefoglalja azokat.
 
-| Munkafüzet | Leírás | Hatókör |
+| A munkafüzet | Leírás | Scope |
 |----------|-------------|-------|
 | Teljesítmény | Biztosít egy testre szabható verzióját a felső N listázása és a diagramok megtekintése egyetlen munkafüzetben, amely minden, a Log Analytics-teljesítményszámlálók, amelyeken engedélyezve.| Ipari méretekben |
 | Teljesítményszámlálók | A felső N diagram nézet több széles teljesítményszámlálók. | Ipari méretekben |
@@ -57,7 +57,7 @@ A munkafüzet függetlenül szerkeszthető diagramokat, táblázatokat, szöveg,
 
 3. Válasszon ki egy virtuális gépet a listából.
 
-4. A virtuális gép lapon található a **figyelés** szakaszban jelölje be **Insights (előzetes verzió)**.
+4. A virtuális gép lapon található a **figyelés** szakaszban jelölje be **Insights (előzetes verzió)** .
 
 5. Válassza ki a virtuális gép insights oldalon **teljesítmény** vagy **Maps** lapot, majd **nézet munkafüzetek** a hivatkozásból az oldalon. 
 
@@ -173,7 +173,7 @@ Paraméterek, amelyek jelenleg támogatott négy különböző típusa van:
 
 ### <a name="using-a-text-parameter"></a>Egy szöveges paraméter használatával
 
-Az érték, közvetlenül a lekérdezésben az escape-karaktersorozat vagy idézése váltja fel a felhasználó begépeli a szövegmezőben. A szükséges érték karakterlánc, ha a lekérdezés kell rendelkeznie a paraméter idézőjeleket (például **'{parameter}'**).
+Az érték, közvetlenül a lekérdezésben az escape-karaktersorozat vagy idézése váltja fel a felhasználó begépeli a szövegmezőben. A szükséges érték karakterlánc, ha a lekérdezés kell rendelkeznie a paraméter idézőjeleket (például **'{parameter}'** ).
 
 A szöveg paraméter lehetővé teszi, hogy egy szövegmező, bárhol használható az értéket. Lehet, hogy a táblázat neve, oszlopnév, függvénynév, operátor, stb.  A szöveg paraméter típusa van egy beállítás **alapértelmezett érték beolvasása elemzési lekérdezésből**, amely lehetővé teszi, hogy a munkafüzet szerzője-t használni az alapértelmezett érték az adott szöveg mezőben feltöltéséhez.
 

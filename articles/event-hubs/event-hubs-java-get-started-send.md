@@ -11,10 +11,10 @@ ms.custom: seodec18
 ms.date: 04/15/2019
 ms.author: shvija
 ms.openlocfilehash: 0487cac6a0cf7d37befdf0d7cfab33ad6a62cf7f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60822909"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-java"></a>Események küldése vagy események fogadása az Azure Event Hubs Java használatával
@@ -187,7 +187,7 @@ Az EventProcessorHost használatához rendelkeznie [Azure Storage-fiók] [Azure 
    
     ![Hozzáférési kulcsok lekérése](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
 
-    1. kulcs értékét egy ideiglenes helyre másolja. Az oktatóanyag későbbi részében használni fogja.
+    1\. kulcs értékét egy ideiglenes helyre másolja. Az oktatóanyag későbbi részében használni fogja.
 
 ### <a name="create-a-java-project-using-the-eventprocessor-host"></a>Java-projekt létrehozása az EventProcessor Hosttal
 
@@ -206,7 +206,7 @@ A Java ügyféloldali kódtár, az Event Hubs szolgáltatás a Maven-projektekhe
 </dependency>
 ```
 
-A különböző típusú összeállítási környezetekhez explicit módon szerezhet be a legutóbb kiadott JAR-fájlokat a [Maven központi tárházból] [https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22].  
+A különböző típusú összeállítási környezetekhez explicit módon szerezhet be a legutóbb kiadott JAR-fájlokat a [Maven központi tárházból] [https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22 ].  
 
 1. A következő mintában először hozzon létre egy új Maven-projektet egy konzol/felületalkalmazáshoz a kedvenc Java-fejlesztőkörnyezetében. Az osztály neve `ErrorNotificationHandler`.     
    

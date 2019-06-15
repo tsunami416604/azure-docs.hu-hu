@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: bwren
 ms.openlocfilehash: 0e5b9b43e528b37fd994f9131f145abadb33c53b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61425936"
 ---
 # <a name="viewing-and-analyzing-log-data-in-azure-monitor"></a>Az Azure Monitor log-adatok megtekintésére és elemzésére
@@ -55,7 +55,7 @@ A következő beállítások még nem érhető el a Log Analytics-erőforrás n�
 ## <a name="firewall-requirements"></a>Tűzfalra vonatkozó követelmények
 A böngészőben a következő címek eléréséhez a Log Analytics hozzáférésre van szüksége.  Ha a böngésző tűzfalon keresztül fér hozzá az Azure Portalon, engedélyeznie kell ezeket a címeket a hozzáférést.
 
-| URI | IP | Portok |
+| URI-t | IP | Portok |
 |:---|:---|:---|
 | portal.loganalytics.io | Dinamikus | 80,443 |
 | api.loganalytics.io    | Dinamikus | 80,443 |

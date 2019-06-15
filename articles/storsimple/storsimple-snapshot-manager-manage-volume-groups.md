@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
 ms.openlocfilehash: e84bc790ac577796e91be010deecc8c5cea1b010
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60303098"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64699712"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>Létrehozása és kezelése a StorSimple Snapshot Manager használata
 ## <a name="overview"></a>Áttekintés
@@ -53,7 +53,7 @@ Kattintva a **kötet csoportok** csomópontra, a **eredmények** panel megjelen�
 | Name (Név) |A **neve** oszlop tartalmazza a kötet csoport neve. |
 | Alkalmazás |A **alkalmazások** az oszlopban látható a VSS-írók jelenleg telepítve van és fut a Windows-gazdagépen. |
 | Kiválasztva |A **kijelölt** oszlop a mennyiségi csoportban található kötetek számát jeleníti meg. Nulla (0) azt jelzi, hogy nincs alkalmazás társítva a köteteket a kötet csoportban. |
-| Importálva |A **importált** oszlop importált kötetek számát jeleníti meg. Ha a beállítása **igaz**, ez az oszlop azt jelzi, hogy egy kötetcsoport importált az Azure Portalról, és nem jött létre a StorSimple Snapshot Managerben. |
+| Importált |A **importált** oszlop importált kötetek számát jeleníti meg. Ha a beállítása **igaz**, ez az oszlop azt jelzi, hogy egy kötetcsoport importált az Azure Portalról, és nem jött létre a StorSimple Snapshot Managerben. |
 
 > [!NOTE]
 > A StorSimple Snapshot Manager kötet csoport is megjelenik a a **biztonsági mentési házirendek** lap az Azure Portalon.

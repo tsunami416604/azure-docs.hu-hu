@@ -16,10 +16,10 @@ ms.date: 11/30/2018
 ms.author: cephalin;dariac
 ms.custom: seodec18
 ms.openlocfilehash: db8445ec2b3dd8bdefa661d7f186e720c6fada09
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62130109"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Alkalmazás üzembe helyezése az Azure App Service-be FTP/S
@@ -115,6 +115,6 @@ Az Azure App Service támogatja az aktív és passzív mód használatával csat
 
 Összetettebb központi telepítési forgatókönyvek esetén próbálja meg [üzembe helyezése az Azure-ban a Git](deploy-local-git.md). Git-alapú üzembe helyezés az Azure lehetővé teszi a verziókezeléshez, a csomag-visszaállítás, az MSBuild és egyéb.
 
-## <a name="more-resources"></a>További erőforrások
+## <a name="more-resources"></a>További források
 
 * [Az Azure App Service üzembe helyezési hitelesítő adatok](deploy-configure-credentials.md)

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 03/14/2019
 ms.author: alkohli
 ms.openlocfilehash: e5713af737a6d9d190814b4155a8e772deea06bc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60630316"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>A StorSimple Virtual Array – bevezetés
@@ -37,12 +37,12 @@ A virtuális tömb támogatja az iSCSI- vagy Server Message Block (SMB) protokol
 
 A következő táblázat összefoglalja a StorSimple Virtual Array fontos jellemzőit.
 
-| Szolgáltatás | StorSimple Virtual Array |
+| Funkció | StorSimple Virtual Array |
 | --- | --- |
 | Telepítési követelmények |Használja a virtualizálási infrastruktúrában (Hyper-V vagy VMware) |
 | Rendelkezésre állás |Egyetlen csomópont |
 | Teljes kapacitás (beleértve a felhő) |Akár 64 TB felhasználható kapacitás virtuális tömbönként |
-| Helyi kapacitás |6.4-es TB felhasználható kapacitás a virtuális tömb (kell kiépíteni a merevlemez-terület 500 GB – 8 TB) / 390 GB |
+| Helyi kapacitás |6\.4-es TB felhasználható kapacitás a virtuális tömb (kell kiépíteni a merevlemez-terület 500 GB – 8 TB) / 390 GB |
 | Natív protokollok |iSCSI- vagy SMB |
 | Helyreállítási időre vonatkozó célkitűzés (RTO) |iSCSI: kevesebb mint 2 percet méretétől függetlenül |
 | Helyreállítási időkorlát (RPO) |Napi biztonsági mentésekhez, és igény szerinti biztonsági mentéseket |
@@ -62,7 +62,7 @@ A StorSimple összekapcsolja a felhasználókat és kiszolgálók az Azure stora
 
 A következő táblázat néhány fontos előnye, hogy a StorSimple Virtual Array megoldás biztosítja.
 
-| Szolgáltatás | Előny |
+| Funkció | Előny |
 | --- | --- |
 | Transzparens integráció |A virtuális tömb támogatja az iSCSI- vagy az SMB protokoll. Az adatok áthelyezése a helyi szinten és a felhő szintjén között, zökkenőmentes és a felhasználó számára. |
 | Alacsonyabb tárolási költségek |A StorSimple használatakor az aktuális igények figyelembevételével a leggyakrabban használt gyakori elérésű adatok elegendő helyi tároló üzembe helyezése. Tárolási igények, növelhető, a StorSimple rétegek ritkán használt adatok költséghatékony felhőbeli tárhelyén. Az adatok deduplikált, és a tömörített további a tárhellyel kapcsolatos követelmények és költségek csökkentése érdekében a felhőbe való elküldése előtt. |
@@ -87,7 +87,7 @@ Több egyidejű felhasználók férhetnek hozzá a virtuális tömböt, ha az ö
 
 A StorSimple Virtual Array nem alkalmas a magas rendelkezésre állást igénylő számítási feladatokhoz. A virtuális tömb egy egyetlen csomóponttal rendelkező eszköz, amely során állásidő lép, amikor a szoftverfrissítések telepítése. A rendszergazdák a karbantartási időszak 30 perces évenként 3 - 4 alkalommal kell terveznie.
 
-## <a name="workflows"></a>Munkafolyamatok
+## <a name="workflows"></a>A munkafolyamatok
 
 A StorSimple Virtual Array a következő munkafolyamatok különösen alkalmas kiterjedt:
 

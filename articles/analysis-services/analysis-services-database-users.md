@@ -9,10 +9,10 @@ ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 462625ce61f4538aa0769667648e07cc6307cbb3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61023610"
 ---
 # <a name="manage-database-roles-and-users"></a>Adatbázis-szerepkörök és a felhasználók kezelése
@@ -134,7 +134,7 @@ Sorszűrők határozza meg, hogy mely sorokat egy táblában egy adott szerepkö
   
 Sorszűrők definiálható csak olvasható, és olvasási szerepkörökhöz tartozó és a folyamat engedélyeket. Alapértelmezés szerint ha egy adott tábla nincs definiálva a sorszűrőt tagok lekérdezheti a tábla összes sorát, ha egy másik tábla keresztszűrés vonatkozik.
   
- Sorszűrők egy DAX-képlet, amely értéket kell adnia egy igaz vagy hamis értéket, hogy lekérdezhetők legyenek, hogy az adott szerepkör tagjai sorok megadásához szükséges. A DAX-képlet nem szereplő sorok nem kérdezhető le. Például a következő sor Customers tábla szűri a kifejezés, *ügyfelek [Ország] = "USA" =*, az értékesítési szerepkör tagjai csak tekintheti meg az ügyfeleknek az USA-ban.  
+ Sorszűrők egy DAX-képlet, amely értéket kell adnia egy igaz vagy hamis értéket, hogy lekérdezhetők legyenek, hogy az adott szerepkör tagjai sorok megadásához szükséges. A DAX-képlet nem szereplő sorok nem kérdezhető le. Például a következő sor Customers tábla szűri a kifejezés, *ügyfelek [Ország] = "USA" =* , az értékesítési szerepkör tagjai csak tekintheti meg az ügyfeleknek az USA-ban.  
   
 A megadott sort és a hozzá tartozó sorok Sorszűrők vonatkoznak. A tábla több kapcsolattal rendelkezik, a szűrők a kapcsolat aktív biztonsági vonatkoznak. Sorszűrők vannak szakít az egyéb kapcsolódó táblát, például meghatározott sor kiemelik:  
   
@@ -146,7 +146,7 @@ A megadott sort és a hozzá tartozó sorok Sorszűrők vonatkoznak. A tábla t�
   
  Az eredő hatás tagok sornyi adatot, ahol egy az USA-ban, a termékkategória kerékpárokat, pedig az év 2016 lekérdezheti. Felhasználók nem tudják lekérdezni a tranzakciók kívül az Amerikai Egyesült Államok, tranzakciók, amelyek nem kerékpárokat, vagy a tranzakció nem a 2016-ban, ha azok egy másik szerepkör, amely engedélyezi ezeket az engedélyeket.
   
- Használhatja a szűrő *=FALSE()*, egy egész tábla összes sorát hozzáférését.
+ Használhatja a szűrő *=FALSE()* , egy egész tábla összes sorát hozzáférését.
 
 ## <a name="next-steps"></a>További lépések
 

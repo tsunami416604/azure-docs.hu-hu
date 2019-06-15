@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: hrasheed
 ms.openlocfilehash: 5e384520c1b8d6cf5e3b182bbddf41a5f4f7f8f6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64707831"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Futó Azure HDInsight az Apache Spark-feladatok hibakereséséhez
@@ -24,7 +24,7 @@ Az alábbiakkal kell rendelkeznie:
 
 * Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Apache Spark-fürt megléte a HDInsightban. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md).
-* Meg kell kezdeni a notebook futó  **[gépi tanulás: Az élelmiszer-ellenőrzési adatok MLLib segítségével prediktív elemzési](apache-spark-machine-learning-mllib-ipython.md)**. Ez a jegyzetfüzet futtatásához útmutatást kövesse a hivatkozást.  
+* Meg kell kezdeni a notebook futó  **[gépi tanulás: Az élelmiszer-ellenőrzési adatok MLLib segítségével prediktív elemzési](apache-spark-machine-learning-mllib-ipython.md)** . Ez a jegyzetfüzet futtatásához útmutatást kövesse a hivatkozást.  
 
 ## <a name="track-an-application-in-the-yarn-ui"></a>Nyomon követheti az alkalmazás a YARN felhasználói felületén
 1. Nyissa meg a YARN felhasználói felületén. Kattintson a **Yarn** alatt **fürt irányítópultjai**.
@@ -41,7 +41,7 @@ Az alábbiakkal kell rendelkeznie:
     Az ilyen alkalmazások, melyeket a Jupyter notebookokból származó, az állapot mindig van **FUTÓ** a notebook bezárásáig.
 3. Az alkalmazás a nézetben végezhet részletes elemzést tovább ismerje meg az alkalmazás és a naplók (stdout/stderr) társított tárolókat. A Spark felhasználói felületen indítsa el a hivatkozási megfelelő kattintva a **követési URL-cím**lent látható módon. 
    
-    ![Tárolónaplók letöltése](./media/apache-spark-job-debugging/download-container-logs.png)
+    ![Töltse le a tároló naplóit](./media/apache-spark-job-debugging/download-container-logs.png)
 
 ## <a name="track-an-application-in-the-spark-ui"></a>Nyomon követheti az alkalmazások a Spark felhasználói felület
 A Spark felhasználói felületén részletezhető le a Spark-feladatok, amelyek a rendszer létrehozta az alkalmazás korábban megkezdése.
@@ -80,7 +80,7 @@ A Spark felhasználói felületén részletezhető le a Spark-feladatok, amelyek
      * Scala-verzió
      * A fürthöz társított Eseménynapló könyvtár
      * Az alkalmazás végrehajtó magok száma
-     * Stb.
+     * Etc.
 
 ## <a name="find-information-about-completed-jobs-using-the-spark-history-server"></a>Információ a befejezett feladatok használata a Spark-Előzménykiszolgáló
 Ha egy feladat befejeződött, a feladat információi a Spark-Előzménykiszolgáló a rendszer megőrzi.

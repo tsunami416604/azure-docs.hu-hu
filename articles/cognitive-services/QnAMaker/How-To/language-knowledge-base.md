@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: tulasim
 ms.openlocfilehash: f6c317cc1281a5a9bc18a2057fa12b7b61bb7689
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61371902"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>Nyelvi támogatás a Tudásbázis-tartalmat a QnA Maker
@@ -34,7 +34,7 @@ A nyelvet a rendszer automatikusan felismeri a tartalom kibontása közben adatf
 
 4. Válassza ki **mezők** testkb részleteit bemutató szakaszt.
 
-    ![Válasszon mezőket](../media/qnamaker-how-to-language-kb/selectfields.png)
+    ![Mezők kiválasztása](../media/qnamaker-how-to-language-kb/selectfields.png)
 
 5. Jelölje be a **Analyzer** nyelvre vonatkozó részletek megtekintéséhez.
 

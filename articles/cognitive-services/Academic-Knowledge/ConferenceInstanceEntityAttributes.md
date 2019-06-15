@@ -11,21 +11,21 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
 ms.openlocfilehash: 183a307159adb5dfdb248eb0cf4862462a626db6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60498746"
 ---
 # <a name="conference-instance-entity"></a>Konferencia példány entitás
 
 <sub> * A következő attribútumok konferencia példány entitás jellemzőek. (Folyó évi = "4") </sub>
 
-Name (Név)    |Leírás                            |Typo       | Műveletek
+Name (Név)    |Leírás                            |Típus       | Műveletek
 ------- | ------------------------------------- | --------- | ----------------------------
 Azonosító      |Entitásazonosító                              |Int64      |Egyenlő
 CIN SZÁM     |Normalizált konferencia-példány neve ({ConferenceSeriesNormalizedName} {ConferenceInstanceYear})        |String     |Egyenlő
-DCN     |Konferencia példány megjelenített neve ({ConferenceSeriesName}: {ConferenceInstanceYear})       |String     |nincs
+DCN     |Konferencia példány megjelenített neve ({ConferenceSeriesName}: {ConferenceInstanceYear})       |String     |Egyik sem
 CIL-HEZ     |A konferencia-példány helye    |String     |Egyenlő,<br/>StartsWith
 CISD    |A konferencia példány kezdő dátuma  |Dátum       |Egyenlő,<br/>IsBetween
 CIED    |A konferencia-példány a záró dátum    |Dátum       |Egyenlő,<br/>IsBetween
@@ -37,8 +37,8 @@ CD-RŐL. T    |A konferencia példány esemény címe   |Dátum       |Egyenlő,
 CD-RŐL. D    |A konferencia példány esemény dátuma    |Dátum       |Egyenlő,<br/>IsBetween
 PCS.CN  |A példány konferencia adatsorozat neve |String     |Egyenlő
 PCS.CId |A példány konferencia sorozat azonosítója |Int64    |Egyenlő
-Másolat      |Konferencia összes idézetet példányszám           |Int32      |nincs  
-ECC     |Konferencia összes becsült idézetet példányszám |Int32      |nincs
+CC      |Konferencia összes idézetet példányszám           |Int32      |Egyik sem  
+ECC     |Konferencia összes becsült idézetet példányszám |Int32      |Egyik sem
 
 
 ## <a name="extended-metadata-attributes"></a>Kiterjesztett attribútumok metaadatok ##

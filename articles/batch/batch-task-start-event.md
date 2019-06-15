@@ -2,7 +2,7 @@
 title: Az Azure Batch-feladat indítása esemény |} A Microsoft Docs
 description: Referencia a Batch-feladat indítása esemény.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -10,14 +10,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-origin.date: 04/20/2017
-ms.date: 05/15/2018
-ms.author: v-junlch
+ms.date: 04/20/2017
+ms.author: lahugh
 ms.openlocfilehash: d50a0a7082e409084fd966370934a638ca9bb013
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60549869"
 ---
 # <a name="task-start-event"></a>Tevékenység indítása esemény
@@ -84,5 +83,3 @@ ms.locfileid: "60549869"
 |Elem neve|Típus|Megjegyzések|
 |------------------|----------|-----------|
 |RetryCount|Int32|A száma a feladat rendelkezik lett rendszer megpróbálja újból végrehajtani a Batch szolgáltatás által. Rendszer megpróbálja újból végrehajtani a feladatot, ha kilép, egy nullától eltérő kilépési kóddal, legfeljebb a megadott MaxTaskRetryCount|
-
-<!-- Update_Description: update metedata properties -->

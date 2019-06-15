@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: 675e37120b06af3add58b564495f22875647a0fa
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62105649"
 ---
 # <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>Figyelése és felügyelete az Azure Logic Apps Slack
@@ -56,7 +56,7 @@ Választ kaphat a Slack-fiókjával, és egyéb műveleteket hajthat végre elé
    Műveletek listája alatt válassza ki a kívánt művelet.
 
    Lépések közötti művelet hozzáadása, helyezze az egérmutatót a nyíl lépések között. 
-   Válassza a plusz jelre (**+**), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
+   Válassza a plusz jelre ( **+** ), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
 
 1. Ha kéri, jelentkezzen be a Slack, jelentkezzen be a Slack-munkaterületre. 
 

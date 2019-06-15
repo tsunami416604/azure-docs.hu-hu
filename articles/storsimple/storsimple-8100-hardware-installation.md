@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: b367b6e7126a442dc68646ff52a29c955f50b798
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60631169"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>Kicsomagolása, állványra csatlakoztatást és a StorSimple 8100 sorozatú eszköz kábelezése
@@ -62,7 +62,7 @@ Ezután kövesse az alábbi lépéseket az eszköz kicsomagolása.
    * a soros hozzáféréshez 1 sorozat – USB-átalakító
    * 1 hamisíthatatlan T10 csavarhúzóra
    * 4 QSFP-az-SFP + adapter 10 GbE hálózati adapterek való használatra
-   * 1. állvány-csatlakoztatási kit (2 ügyféloldali rails rendelkező csatlakoztatásával hardver)
+   * 1\. állvány-csatlakoztatási kit (2 ügyféloldali rails rendelkező csatlakoztatásával hardver)
    * Első lépések a dokumentáció
      
      Ha Ön nem kapott az elemek a fent felsorolt [forduljon a Microsoft Support](storsimple-8000-contact-microsoft-support.md).
@@ -202,9 +202,9 @@ Támogatja a zónaredundáns vezérlő feladatátvétele, kábelezése az eszkö
    |Címke | Leírás |
    |----- | ----------- |
    | A    | Helyi Internet-hozzáféréssel rendelkező hálózat |
-   | B    | 0. vezérlő |
+   | B    | Vezérlő 0 |
    | C    | PCM 0 |
-   | D    | 1. vezérlő |
+   | D    | Vezérlő 1 |
    | E    | PCM 1 |
    | F, G | Hosts |
    | 0-5  | Hálózati illesztők |

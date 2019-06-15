@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: 59d2277bd99fac1e8357c1b0d7336ca7451bf8dc
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62122881"
 ---
 # <a name="how-to-use-azure-cli-and-the-iot-extension-to-manage-the-iot-hub-device-provisioning-service"></a>Azure CLI-vel és az IoT-bővítmény használata az IoT Hub Device Provisioning Service kezelése
@@ -25,15 +25,15 @@ Ebben az oktatóanyagban, először hajtsa végre az Azure CLI-vel és az IoT-b�
 
 ## <a name="installation"></a>Telepítés 
 
-### <a name="step-1---install-python"></a>1. lépés – A Python telepítése
+### <a name="step-1---install-python"></a>1\. lépés – A Python telepítése
 
 [Python 2.7x vagy Python 3.x](https://www.python.org/downloads/) szükséges.
 
-### <a name="step-2---install-the-azure-cli"></a>2. lépés – az Azure CLI telepítése
+### <a name="step-2---install-the-azure-cli"></a>2\. lépés – az Azure CLI telepítése
 
 Kövesse a [– telepítési utasítások](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) állíthatja be az Azure CLI-vel a környezetben. Legalább az Azure CLI 2.0.24-es verzióját kell vagy újabb. A verziószámot az `az –version` paranccsal ellenőrizheti. Ez a verzió támogatja az „az” bővítményparancsokat, és ebben a verzióban került bevezetésre a Knack parancskeretrendszer. Windows rendszeren a legegyszerűbb megoldás a telepítésre az [MSI](https://aka.ms/InstallAzureCliWindows) letöltése és telepítése.
 
-### <a name="step-3---install-iot-extension"></a>3. lépés – Az IoT-bővítmény telepítése
+### <a name="step-3---install-iot-extension"></a>3\. lépés – Az IoT-bővítmény telepítése
 
 [Az IoT-bővítmény fontos (readme) fájlja](https://github.com/Azure/azure-iot-cli-extension) több módszert is ismertet a bővítmény telepítésére. A legegyszerűbb módszer az `az extension add --name azure-cli-iot-ext` futtatása. A telepítés után az `az extension list` paranccsal ellenőrizheti az aktuálisan telepített bővítményeket, az `az extension show --name azure-cli-iot-ext` paranccsal pedig megtekintheti az IoT-bővítmény adatait. A bővítményt az `az extension remove --name azure-cli-iot-ext` paranccsal távolíthatja el.
 

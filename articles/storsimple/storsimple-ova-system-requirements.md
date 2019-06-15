@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 01/11/2019
 ms.author: alkohli
 ms.openlocfilehash: a6bea2b5447435930cb0e1f80073a11007e80415
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60629305"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>A StorSimple virtuális tömb rendszerkövetelményei
@@ -94,13 +94,13 @@ A következő táblázat sorolja fel a portot, amelyet meg kell nyitni a tűzfal
 
 | **Port száma<sup>1</sup>** | **És leskálázása** | **Port hatókör** | **Kötelező** | **Megjegyzések** |
 | --- | --- | --- | --- | --- |
-| TCP 80-AS (HTTP) |Ki |WAN |Nem |Kimenő port szolgál az Internet-hozzáférés frissítések lekéréséhez. <br></br>A kimenő webalkalmazás-proxy a felhasználó által konfigurálható. |
-| TCP 443 (HTTPS) |Ki |WAN |Igen |Kimenő port szolgál a felhőbeli adatok eléréséhez. <br></br>A kimenő webalkalmazás-proxy a felhasználó által konfigurálható. |
-| UDP 53 (DNS) |Ki |WAN |Bizonyos esetekben; Tekintse meg a megjegyzéseit. |Csak akkor, ha egy internetes DNS-kiszolgálót használ, a port szükség. <br></br> Vegye figyelembe, hogy ha egy fájlkiszolgáló üzembe helyezésének, javasoljuk, helyi DNS-kiszolgáló használatával. |
-| UDP 123 (NTP) |Ki |WAN |Bizonyos esetekben; Tekintse meg a megjegyzéseit. |Csak akkor, ha egy internetes NTP-kiszolgálót használ, a port szükség.<br></br> Vegye figyelembe, hogy ha egy fájlkiszolgáló üzembe helyezésének, javasoljuk, hogy idő szinkronizálása az Active Directory-tartományvezérlők. |
-| TCP 80-AS (HTTP) |Eleme ennek |LAN |Igen |Ez a helyi felhasználói felület a StorSimple eszközön a helyi felügyeleti a bejövő portot. <br></br> Vegye figyelembe, hogy a helyi felhasználói felület elérése HTTP protokollon keresztül automatikusan átirányítja a HTTPS. |
-| TCP 443 (HTTPS) |Eleme ennek |LAN |Igen |Ez a helyi felhasználói felület a StorSimple eszközön a helyi felügyeleti a bejövő portot. |
-| TCP 3260 (iSCSI) |Eleme ennek |LAN |Nem |Ezen a porton keresztül iSCSI adatok elérésére szolgál. |
+| TCP 80-AS (HTTP) |ki |WAN |Nem |Kimenő port szolgál az Internet-hozzáférés frissítések lekéréséhez. <br></br>A kimenő webalkalmazás-proxy a felhasználó által konfigurálható. |
+| TCP 443 (HTTPS) |ki |WAN |Igen |Kimenő port szolgál a felhőbeli adatok eléréséhez. <br></br>A kimenő webalkalmazás-proxy a felhasználó által konfigurálható. |
+| UDP 53 (DNS) |ki |WAN |Bizonyos esetekben; Tekintse meg a megjegyzéseit. |Csak akkor, ha egy internetes DNS-kiszolgálót használ, a port szükség. <br></br> Vegye figyelembe, hogy ha egy fájlkiszolgáló üzembe helyezésének, javasoljuk, helyi DNS-kiszolgáló használatával. |
+| UDP 123 (NTP) |ki |WAN |Bizonyos esetekben; Tekintse meg a megjegyzéseit. |Csak akkor, ha egy internetes NTP-kiszolgálót használ, a port szükség.<br></br> Vegye figyelembe, hogy ha egy fájlkiszolgáló üzembe helyezésének, javasoljuk, hogy idő szinkronizálása az Active Directory-tartományvezérlők. |
+| TCP 80-AS (HTTP) |A |LAN |Igen |Ez a helyi felhasználói felület a StorSimple eszközön a helyi felügyeleti a bejövő portot. <br></br> Vegye figyelembe, hogy a helyi felhasználói felület elérése HTTP protokollon keresztül automatikusan átirányítja a HTTPS. |
+| TCP 443 (HTTPS) |A |LAN |Igen |Ez a helyi felhasználói felület a StorSimple eszközön a helyi felügyeleti a bejövő portot. |
+| TCP 3260 (iSCSI) |A |LAN |Nem |Ezen a porton keresztül iSCSI adatok elérésére szolgál. |
 
 <sup>1</sup> nincs bejövő portokat kell megnyitni a nyilvános interneten.
 

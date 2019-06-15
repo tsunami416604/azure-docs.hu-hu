@@ -12,17 +12,17 @@ ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 1838dbb627a6dec46f817101fc1d0cca0961ef77
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64574177"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>ClearDB MySQL-adatbázisok használata az Azure App Service szolgáltatásban – gyakori kérdések
 Ez a GYIK használatával, és az Azure Web Appshez az adatbázisok a ClearDB MySQL vásárlásával kapcsolatos gyakori kérdésekre ad választ.
 
 > [!IMPORTANT]
-> 2018. június 13. a ClearDB továbbítjuk jelenleg a számlázás alapját a Microsoft a ClearDB közvetlen számlázási modellt az Azure-alapú ügyfelek. Ebben a cikkben található információk már elavult. Már nem sikerült létrehozni vagy frissíteni a ClearDB-adatbázis, amely az Azure-ban lett létrehozva.
+> 2018\. június 13. a ClearDB továbbítjuk jelenleg a számlázás alapját a Microsoft a ClearDB közvetlen számlázási modellt az Azure-alapú ügyfelek. Ebben a cikkben található információk már elavult. Már nem sikerült létrehozni vagy frissíteni a ClearDB-adatbázis, amely az Azure-ban lett létrehozva.
 >
 > További részletek és a következő lépések: [átvált a ClearDB-service-csomagok](https://w2.cleardb.net/important-change-of-billing-notice-for-all-azure-cleardb-service-plans/).
 

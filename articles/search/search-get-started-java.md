@@ -10,10 +10,10 @@ ms.date: 08/26/2018
 ms.author: jjed
 ms.custom: seodec2018
 ms.openlocfilehash: d16f20e3c2dfa3d670006e44f0072a3871d41c3f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61289801"
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Bevezetés az Azure Search használatába Java nyelven
@@ -81,7 +81,7 @@ Minden további fájlmódosítás és utasításfuttatás az ebben a mappában l
 2. A **Select root directory** (Gyökérkönyvtár kiválasztása) ablakban keresse meg a mintafájlokat tartalmazó mappát. Válassza ki a .project mappát tartalmazó mappát. A projektnek kiválasztott elemként meg kell jelennie a **Projects** (Projektek) listán.
    
     ![][12]
-3. Kattintson a **Befejezés** gombra.
+3. Kattintson a **Befejezés**gombra.
 4. A **Project Explorer** (Projektböngésző) segítségével megtekintheti és szerkesztheti a fájlokat. Ha az még nincs megnyitva, kattintson a **Window** (Ablak)  > **Show View** (Nézet megjelenítése)  > **Project Explorer** (Projektböngésző) lehetőségre, vagy nyissa meg a megfelelő parancsikonnal.
 
 ## <a name="configure-the-service-url-and-api-key"></a>A szolgáltatás URL-címének és API-kulcsának konfigurálása
@@ -102,7 +102,7 @@ Minden további fájlmódosítás és utasításfuttatás az ebben a mappában l
    
     ![][7]
 6. A következő oldalon adja meg a Tomcat telepítési könyvtárát. Windows rendszerű számítógépeken ez valószínűleg a következő lesz: C:\Program Files\Apache Software Foundation\Tomcat *verzió*.
-7. Kattintson a **Befejezés** gombra.
+7. Kattintson a **Befejezés**gombra.
 8. Válassza ki a **Window** (Ablak)  > **Preferences** (Beállítások)  > **Java** > **Installed JREs** (Telepített JRE-k)  > **Add** (Hozzáadás) lehetőséget.
 9. Az **Add JRE** (JRE hozzáadása) panelen válassza ki a **Standard VM** elemet.
 10. Kattintson a **tovább**.

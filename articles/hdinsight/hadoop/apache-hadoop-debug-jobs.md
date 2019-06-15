@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
 ms.openlocfilehash: f96171e1c75676a185edf4a1901ef65b7181135a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64720993"
 ---
 # <a name="analyze-apache-hadoop-logs"></a>Apache Hadoop-naplók elemzése
@@ -32,7 +32,7 @@ Amikor létrehoz egy HDInsight-fürtöt, hat táblára automatikusan létrejönn
 * ambariserverlog
 * ambariagentlog
 
-A tábla fájlnevek **u\<ClusterName > DDMonYYYYatHHMMSSsss\<táblanév >**.
+A tábla fájlnevek **u\<ClusterName > DDMonYYYYatHHMMSSsss\<táblanév >** .
 
 Ezek a táblák a következő mezőket tartalmazzák:
 
@@ -41,13 +41,13 @@ Ezek a táblák a következő mezőket tartalmazzák:
 * eventTimestamp
 * Gazdagép
 * MALoggingHash
-* Üzenet
+* Message
 * N
 * PreciseTimeStamp
 * Szerepkör
 * RowIndex
 * Bérlő
-* IDŐBÉLYEG
+* TIMESTAMP
 * TraceLevel
 
 ### <a name="tools-for-accessing-the-logs"></a>A naplók eléréséhez szükséges eszközök
@@ -225,7 +225,7 @@ Bizonyos hibaüzenetek sikerült is látható az Azure Portalon kezelheti a HDIn
 * **Kockázatcsökkentési**: Az előfizetésében erőforrásokat szabadíthat fel, vagy növelje az előfizetés számára elérhető erőforrások, és próbálja meg ismét létrehozni a fürtöt.
 
 ### <a id="InternalErrorRetryRequest"></a>InternalErrorRetryRequest
-* **Leírás**: Belső kiszolgálóhiba történt. Ismételje meg a kérelmet.  
+* **Leírás**: A kiszolgáló belső hibába ütközött. Ismételje meg a kérelmet.  
 * **Kockázatcsökkentési**: Ismételje meg a kérelmet.
 
 ### <a id="InvalidAzureStorageLocation"></a>InvalidAzureStorageLocation

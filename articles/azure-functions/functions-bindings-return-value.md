@@ -8,14 +8,13 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-origin.date: 01/14/2019
-ms.date: 03/04/2019
-ms.author: v-junlch
+ms.date: 01/14/2019
+ms.author: cshoe
 ms.openlocfilehash: 4ccfe192eaea94cb9b199bd3c6f0bdacf1685519
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61437718"
 ---
 # <a name="using-the-azure-function-return-value"></a>Az Azure-függvény visszaadott értékének használata
@@ -24,8 +23,8 @@ Ez a cikk bemutatja, hogyan visszatérési értékek a munka egy függvényen be
 
 Visszatérési értékkel nyelveken hozhasson létre függvény [kimeneti kötésének](./functions-triggers-bindings.md#binding-direction) , a visszaadott érték:
 
-- C# osztálytár, a alkalmazni a kimeneti kötés attribútum a metódus visszatérési értéke.
-- Más nyelven, állítsa be a `name` tulajdonság *function.json* való `$return`.
+* C# osztálytár, a alkalmazni a kimeneti kötés attribútum a metódus visszatérési értéke.
+* Más nyelven, állítsa be a `name` tulajdonság *function.json* való `$return`.
 
 Ha több kimeneti kötést, a visszaadott értékének használata csak az egyik.
 
@@ -33,11 +32,11 @@ C# és a C#-szkript, adatokat küldeni a kimeneti kötés egyéb módjai a köve
 
 Tekintse meg a nyelvspecifikus példa a visszaadott érték használatát:
 
-- [C#](#c-example)
-- [C# script (.csx)](#c-script-example)
-- [F#](#f-example)
-- [JavaScript](#javascript-example)
-- [Python](#python-example)
+* [C#](#c-example)
+* [C# script (.csx)](#c-script-example)
+* [F#](#f-example)
+* [JavaScript](#javascript-example)
+* [Python](#python-example)
 
 ## <a name="c-example"></a>C#-példa
 
@@ -170,4 +169,3 @@ def main(input: azure.functions.InputStream) -> str:
 
 > [!div class="nextstepaction"]
 > [Az Azure Functions kötés hibáinak kezelése](./functions-bindings-errors.md)
-

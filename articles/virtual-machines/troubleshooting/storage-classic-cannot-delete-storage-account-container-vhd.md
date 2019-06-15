@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
 ms.openlocfilehash: 35f8a766c6d260e23ff854284d5b8ee047e64b42
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64926228"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Hagyományos tároló erőforrás törlésével kapcsolatos hibák elhárítása
@@ -99,7 +99,7 @@ A portálon, a két megközelítés a törlésre kijelölt blobok listáját fü
 #### <a name="azure-powershell"></a>Azure PowerShell 
 Ha a felhasználó úgy dönt, hogy törli a PowerShell használatával, azt a következő hibát eredményez. 
 
-> <span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"**</span>
+> <span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"** </span>
 > 
 > <span style="color:red">Remove-AzureStorageBlob : A távoli kiszolgáló hibát adott vissza: (412) itt jelenleg a BLOB bérletét, és nem a bérlet Azonosítóját a kérésben megadott... HTTP-állapotkód: 412 - HTTP hibaüzenet: Jelenleg a címbérlet a blob és a kérésben megadott nincs bérlet azonosítója.</span>
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: ramamill
 ms.openlocfilehash: 9694c682f171ab715812b05fed2064c9bbcd36b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60600417"
 ---
 # <a name="manage-vmware-vcenter-server"></a>VMware vCenter-kiszolgáló kezelése
@@ -98,7 +98,7 @@ Az IP-cím frissül, amint Site Recovery-összetevők indul el a virtuális gép
 ## <a name="migrate-few-protected-virtual-machines-to-a-new-vcenter"></a>Egy új vCenter néhány védett virtuális gépek áttelepítése
 
 > [!NOTE]
-> Ez a szakasz akkor alkalmazható, csak ha végzi az áttelepítést a védett virtuális gépek néhány új vCenter. Ha azt szeretné, hogy a virtuális gépek új készletét védelmét egy új vcenter [adhatja hozzá új vCenter adatait a konfigurációs kiszolgáló](#add-vmware-server-to-the-vault) és kezdődhet  **[engedélyezni a védelmet](vmware-azure-tutorial.md#enable-replication)**.
+> Ez a szakasz akkor alkalmazható, csak ha végzi az áttelepítést a védett virtuális gépek néhány új vCenter. Ha azt szeretné, hogy a virtuális gépek új készletét védelmét egy új vcenter [adhatja hozzá új vCenter adatait a konfigurációs kiszolgáló](#add-vmware-server-to-the-vault) és kezdődhet  **[engedélyezni a védelmet](vmware-azure-tutorial.md#enable-replication)** .
 
 Néhány virtuális gépek áthelyezése új vCenter:
 
@@ -108,7 +108,7 @@ Néhány virtuális gépek áthelyezése új vCenter:
 4. Most a által áttelepített virtuális gépek védelme [kiválasztása a vcenter-kiszolgáló, ha engedélyezte a védelmet](vmware-azure-tutorial.md#enable-replication).
 
 > [!TIP]
-> Ha az áttelepítés alatt álló virtuális gépek száma **magasabb** , hogy megőrzi a régi vcenter-kiszolgáló, a virtuális gépek száma frissítése a az itt megadott utasítások szerint új vcenter-kiszolgáló IP-címét. Néhány virtuális gépek, amelyek megmaradnak a régi vcenter [tiltsa le a replikációt](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure); [adhatja hozzá új vCenter adatait a konfigurációs kiszolgáló](#add-vmware-server-to-the-vault), és kezdje el  **[engedélyezni a védelmet](vmware-azure-tutorial.md#enable-replication)**.
+> Ha az áttelepítés alatt álló virtuális gépek száma **magasabb** , hogy megőrzi a régi vcenter-kiszolgáló, a virtuális gépek száma frissítése a az itt megadott utasítások szerint új vcenter-kiszolgáló IP-címét. Néhány virtuális gépek, amelyek megmaradnak a régi vcenter [tiltsa le a replikációt](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure); [adhatja hozzá új vCenter adatait a konfigurációs kiszolgáló](#add-vmware-server-to-the-vault), és kezdje el  **[engedélyezni a védelmet](vmware-azure-tutorial.md#enable-replication)** .
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 

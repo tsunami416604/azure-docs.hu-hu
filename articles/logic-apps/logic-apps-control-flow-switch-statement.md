@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/08/2018
 ms.openlocfilehash: 2a3f8ee5cba3110d392555fad78c1cb2513b5d4e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60683134"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Switch-utasítások, amely alapján az adott értékekre Azure Logic Apps munkafolyamat-műveletek létrehozása
@@ -45,7 +45,7 @@ Például tegyük fel, hogy egy logikai alkalmazást, amely a különböző lép
 
 1. Ebben a példában adjon hozzá egy kapcsoló utasítást a végén a munkafolyamat-minta. Válassza ki az utolsó lépés után **új lépés**.
 
-   Ha szeretne hozzáadni egy switch utasítás lépések közötti, vigye az egérmutatót a nyíl felett oda, ahol a switch utasítás hozzá szeretné. Válassza ki a **plusz jelre** (**+**), amely akkor jelenik meg, majd válassza a **művelet hozzáadása**.
+   Ha szeretne hozzáadni egy switch utasítás lépések közötti, vigye az egérmutatót a nyíl felett oda, ahol a switch utasítás hozzá szeretné. Válassza ki a **plusz jelre** ( **+** ), amely akkor jelenik meg, majd válassza a **művelet hozzáadása**.
 
 1. A Keresés mezőbe írja be "kapcsoló" szűrőként. Ez a művelet kiválasztása: **Switch - vezérlő**
 
@@ -68,8 +68,8 @@ Például tegyük fel, hogy egy logikai alkalmazást, amely a különböző lép
 
    | Kis # | **SelectedOption** | Műveletek |
    |--------|--------------------|--------|
-   | 1. eset | **Hagyja jóvá** | Adja hozzá az Outlook **e-mail küldése** művelet csak akkor, ha a jóváhagyó kijelölve az RSS-elem részleteinek megadása **jóváhagyás**. |
-   | 2. eset | **Elutasítás** | Adja hozzá az Outlook **e-mail küldése** műveletet, hogy az RSS-elem el lett utasítva, más jóváhagyók értesítésére. |
+   | 1\. eset | **Hagyja jóvá** | Adja hozzá az Outlook **e-mail küldése** művelet csak akkor, ha a jóváhagyó kijelölve az RSS-elem részleteinek megadása **jóváhagyás**. |
+   | 2\. eset | **Elutasítás** | Adja hozzá az Outlook **e-mail küldése** műveletet, hogy az RSS-elem el lett utasítva, más jóváhagyók értesítésére. |
    | Alapértelmezett | None | Nincs szükség műveletre. Ebben a példában a **alapértelmezett** funkcióban üres mert **SelectedOption** csak két pontot tartalmaz. |
    |||
 

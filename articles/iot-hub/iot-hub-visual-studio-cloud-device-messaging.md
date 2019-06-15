@@ -5,14 +5,13 @@ author: shizn
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-origin.date: 01/07/2018
-ms.date: 05/06/2019
+ms.date: 01/07/2018
 ms.author: xshi
 ms.openlocfilehash: ab3c02d7207bca70a90df8aa08c73c1484cd635d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61440631"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>A Visual Studio Cloud Explorer használatával az eszközön, és az IoT Hub közötti üzenetek küldése és fogadása
@@ -49,10 +48,14 @@ A Cloud Explorer az összetevőt a Visual Studio telepítőjének csak támogatj
 
     ![Kattintson a fiók kezelése](media/iot-hub-visual-studio-cloud-device-messaging/click-account-management.png)
 
-1. Kattintson a **fiókok kezelése** a Cloud Explorerben.
-1. Kattintson a **-fiók hozzáadása...**  az Azure-ban először jelentkezzen be az új ablakban.
-1. Miután bejelentkezett, megjelenik az Azure-előfizetési lista. Válassza ki az Azure-előfizetések megtekintése, és kattintson a kívánt **alkalmaz**.
-1. Bontsa ki a **az előfizetés** > **IoT-központok** > **az IoT Hub**, az IoT Hub csomópont alatt megjelenik az eszközlista.
+
+2. Kattintson a **fiókok kezelése** a Cloud Explorerben.
+
+3. Kattintson a **-fiók hozzáadása...**  az Azure-ban először jelentkezzen be az új ablakban.
+
+4. Miután bejelentkezett, megjelenik az Azure-előfizetési lista. Válassza ki az Azure-előfizetések megtekintése, és kattintson a kívánt **alkalmaz**.
+
+5. Bontsa ki a **az előfizetés** > **IoT-központok** > **az IoT Hub**, az IoT Hub csomópont alatt megjelenik az eszközlista.
 
     ![Eszközök listája](media/iot-hub-visual-studio-cloud-device-messaging/device-list.png)
 
@@ -64,11 +67,11 @@ Az eszközről az IoT hubnak küldött üzenetek monitorozásához kövesse az a
 
     ![D2C üzenet Monitorozásának megkezdése](media/iot-hub-visual-studio-cloud-device-messaging/start-monitoring-d2c-message.png)
 
-1. A figyelt üzenetek megjelennek a **az IoT Hub** tesztkimenet ablaktáblán.
+2. A figyelt üzenetek megjelennek a **az IoT Hub** tesztkimenet ablaktáblán.
 
     ![Figyelési D2C állapotüzenetének eredménye](media/iot-hub-visual-studio-cloud-device-messaging/monitor-d2c-message-result.png)
 
-1. Leállíthatja a figyelést, kattintson a jobb gombbal az IoT Hub-vagy eszközt, és válassza ki **Stop Monitoring D2C üzenet**.
+3. Leállíthatja a figyelést, kattintson a jobb gombbal az IoT Hub-vagy eszközt, és válassza ki **Stop Monitoring D2C üzenet**.
 
 ## <a name="send-cloud-to-device-messages"></a>Üzenetküldés a felhőből az eszközökre
 
@@ -78,8 +81,9 @@ Küldjön üzenetet az IoT hubhoz az eszközt, kövesse az alábbi lépéseket:
 
     ![C2D üzenet küldése](media/iot-hub-visual-studio-cloud-device-messaging/send-c2d-message.png)
 
-1. Adja meg a beviteli mezőbe.
-1. Az eredmények megjelennek a **az IoT Hub** tesztkimenet ablaktáblán.
+2. Adja meg a beviteli mezőbe.
+
+3. Az eredmények megjelennek a **az IoT Hub** tesztkimenet ablaktáblán.
 
     ![Küldés C2D állapotüzenetének eredménye](media/iot-hub-visual-studio-cloud-device-messaging/send-c2d-message-result.png)
 

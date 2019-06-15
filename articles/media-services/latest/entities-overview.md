@@ -13,10 +13,10 @@ ms.date: 04/08/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 28c880e8709074d808a41d9920361eaa2b20ecc4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60732365"
 ---
 # <a name="filtering-ordering-paging-of-media-services-entities"></a>A Media Services entitások szűrési, rendezési, stránkování
@@ -57,7 +57,7 @@ Az alábbi táblázat bemutatja, hogyan a szűrés és rendezés beállítások 
 |Name (Név)|Szűrés|Rendelés|
 |---|---|---|
 |id|||
-|név|eq, gt, lt| Növekvő vagy csökkenő sorrendben|
+|name|eq, gt, lt| Növekvő vagy csökkenő sorrendben|
 |properties.alternateId |EQ||
 |properties.assetId |EQ||
 |Properties.Container |||
@@ -144,7 +144,7 @@ Az alábbi táblázat mutatja, hogy ezek a beállítások alkalmazhatók a [Tart
 |Name (Név)|Szűrés|Rendelés|
 |---|---|---|
 |id|||
-|név|Eq, ne, a ge, le, gt, lt|Növekvő vagy csökkenő sorrendben|
+|name|Eq, ne, a ge, le, gt, lt|Növekvő vagy csökkenő sorrendben|
 |Properties.created |Eq, ne, a ge, le, gt, lt|Növekvő vagy csökkenő sorrendben|
 |properties.description |Eq, ne, a ge, le, gt, lt||
 |properties.lastModified|Eq, ne, a ge, le, gt, lt|Növekvő vagy csökkenő sorrendben|
@@ -178,7 +178,7 @@ Az alábbi táblázat mutatja, hogy ezek a beállítások alkalmazhatók a [fela
 
 | Name (Név)    | Szűrés                        | Rendelés |
 |---------|-------------------------------|-------|
-| név                    | EQ            | Növekvő vagy csökkenő sorrendben|
+| name                    | EQ            | Növekvő vagy csökkenő sorrendben|
 | Properties.state        | eq, ne        |                         |
 | Properties.created      | gt, lt, -le, a ge| Növekvő vagy csökkenő sorrendben|
 | properties.lastModified | gt, lt, -le, a ge | Növekvő vagy csökkenő sorrendben| 
@@ -226,7 +226,7 @@ Az alábbi táblázat bemutatja, hogyan lehet alkalmazni ezeket a beállítások
 |Name (Név)|Szűrés|Rendelés|
 |---|---|---|
 |id |||
-|név|Eq, ne, a ge, le, gt, lt|Növekvő vagy csökkenő sorrendben|
+|name|Eq, ne, a ge, le, gt, lt|Növekvő vagy csökkenő sorrendben|
 |properties.alternativeMediaId  |||
 |properties.assetName   |||
 |properties.contentKeys |||
@@ -265,7 +265,7 @@ Az alábbi táblázat bemutatja, hogyan lehet alkalmazni ezeket a beállítások
 |Name (Név)|Szűrés|Rendelés|
 |---|---|---|
 |id|||
-|név|Eq, ne, a ge, le, gt, lt|Növekvő vagy csökkenő sorrendben|
+|name|Eq, ne, a ge, le, gt, lt|Növekvő vagy csökkenő sorrendben|
 |properties.commonEncryptionCbcs|||
 |properties.commonEncryptionCenc|||
 |Properties.created |Eq, ne, a ge, le, gt, lt|Növekvő vagy csökkenő sorrendben|
@@ -292,7 +292,7 @@ while (currentPage.NextPageLink != null)
 
 További példák: [Streamelési házirendek – lista](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
 
-## <a name="transform"></a>Átalakítás
+## <a name="transform"></a>átalakítási
 
 ### <a name="filteringordering"></a>Szűrés és rendezés
 
@@ -300,7 +300,7 @@ Az alábbi táblázat mutatja, hogy ezek a beállítások alkalmazhatók a [alak
 
 | Name (Név)    | Szűrés                        | Rendelés |
 |---------|-------------------------------|-------|
-| név                    | EQ            | Növekvő vagy csökkenő sorrendben|
+| name                    | EQ            | Növekvő vagy csökkenő sorrendben|
 | Properties.created      | gt, lt, -le, a ge| Növekvő vagy csökkenő sorrendben|
 | properties.lastModified | gt, lt, -le, a ge | Növekvő vagy csökkenő sorrendben|
 

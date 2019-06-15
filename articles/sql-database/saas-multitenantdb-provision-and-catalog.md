@@ -13,10 +13,10 @@ ms.reviewer: billgib,andrela,stein
 manager: craigg
 ms.date: 09/24/2018
 ms.openlocfilehash: d29baaad6090cea5eb31f5f50bba444cb3771155
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61485984"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Egy több-bérlős Azure SQL-szilánkokra osztott adatbázis használó SaaS-alkalmazás az új bérlők kiépítése és katalógusba
@@ -161,7 +161,7 @@ Szeretné megtudni, hogyan a Wingtip alkalmazás valósít meg olyan megosztott 
    - **$VenueType** = **blues**, az előre beállított helyszíntípusok egyike: blues, tánc, tánc, jazz, dzsúdó, motorsport, többcélú, opera, rockzene, futball (kisbetűk, szóközök nélkül).
    - **$DemoScenario** = **1**, hogy más bérlők felhasználóival megosztott adatbázist az új bérlő kiépítéséhez.
 
-2. Adjon hozzá egy töréspontot ehhez vigye a kurzort bárhol a arról, hogy a sor 38, sor: *Új bérlő "*, és nyomja le az **F9**.
+2. Adjon hozzá egy töréspontot ehhez vigye a kurzort bárhol a arról, hogy a sor 38, sor: *Új bérlő "* , és nyomja le az **F9**.
 
    ![töréspont](media/saas-multitenantdb-provision-and-catalog/breakpoint.png)
 
@@ -169,7 +169,7 @@ Szeretné megtudni, hogyan a Wingtip alkalmazás valósít meg olyan megosztott 
 
 4. Miután a parancsfájl végrehajtása a töréspont leáll, nyomja le az ENTER **F11** lépéssel beilleszti a kódba.
 
-   ![hibakeresés](media/saas-multitenantdb-provision-and-catalog/debug.png)
+   ![Hibakeresés](media/saas-multitenantdb-provision-and-catalog/debug.png)
 
 5. A szkript végrehajtását nyomkövetési használatával a **Debug** menüpontok, **F10** és **F11**, vagy be a meghívott függvényeken keresztül. lépésre.
 
@@ -201,7 +201,7 @@ Most már a parancsfájl folyamat bemutatására egy bérlő létrehozása a saj
    - **$VenueType** = **foci**, az előre beállított helyszíntípusok egyike: blues, tánc, tánc, jazz, dzsúdó, motorsport, többcélú, opera, rockzene, futball (kisbetű, szóközök nélkül).
    - **$DemoScenario** = **2**, az új bérlő kiépítéséhez a saját adatbázisába.
 
-2. Adjon hozzá egy új töréspontot ehhez vigye a kurzort bárhol a arról, hogy a sor 57, sor:  *& &nbsp;$PSScriptRoot\New-TenantAndDatabase "*, nyomja le az ENTER **F9**.
+2. Adjon hozzá egy új töréspontot ehhez vigye a kurzort bárhol a arról, hogy a sor 57, sor:  *& &nbsp;$PSScriptRoot\New-TenantAndDatabase "* , nyomja le az ENTER **F9**.
 
    ![töréspont](media/saas-multitenantdb-provision-and-catalog/breakpoint2.png)
 

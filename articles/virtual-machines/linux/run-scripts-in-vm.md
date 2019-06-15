@@ -9,10 +9,10 @@ ms.date: 05/02/2018
 ms.topic: article
 manager: carmonm
 ms.openlocfilehash: 3881a6d0ee1139fa481908f09b6e96efda24a5cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60542543"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>Szkriptek futtatása a Linux rendszerű virtuális gép
@@ -29,7 +29,7 @@ A [egyéni szkriptek futtatására szolgáló bővítmény](../extensions/custom
 * PowerShell-parancsprogram futtatásával a Windows-gépeken, és a Bash-szkript a Linux rendszerű gépeken.
 * Hasznos üzembe helyezést követő konfiguráció, Szoftvertelepítés, és egyéb konfigurációs vagy a felügyeleti feladatokat.
 
-## <a name="run-command"></a>Parancsfuttatás
+## <a name="run-command"></a>A parancs futtatása
 
 A [futtatása paranccsal](run-command.md) funkció lehetővé teszi, hogy a virtuális gép és a felügyelet és a hibaelhárítás parancsfájlok segítségével, és elérhető még ha a gép nem érhető el, például ha a Vendég tűzfala nem rendelkezik az RDP vagy SSH-port Nyissa meg.
 

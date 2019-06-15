@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 12/18/2018
 ms.openlocfilehash: 2aa98c3958f1dffeb8adbad5e91a11f397d4a9fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61035729"
 ---
 # <a name="in-memory-sample"></a>A memóriában minta
@@ -406,7 +406,7 @@ A P2 tarifacsomag adatbázist, a várható nagyjából kilenc alkalommal a telje
 
 - Lásd: [közös munkaterhelési mintákat és az áttelepítés szempontjai](https://msdn.microsoft.com/library/dn673538.aspx) (amely azt ismerteti, ahol In-Memory OLTP gyakran biztosít jelentős teljesítménynövekedést munkaterhelési mintákat)
 
-#### <a name="application-design"></a>Alkalmazás-tervezés
+#### <a name="application-design"></a>Az alkalmazás kialakítása
 
 - [Memóriában tárolt OLTP-k (memóriabeli optimalizálás)](https://msdn.microsoft.com/library/dn133186.aspx)
 

@@ -11,14 +11,14 @@ ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
 ms.openlocfilehash: 9165e51d07cf97756408c7f73720931abe067bb2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60751579"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>Válasz előrejelzése egy egyszerű modell segítségével
-## <a name="video-4-data-science-for-beginners-series"></a>4. Videó: Adatelemzés kezdőknek sorozat
+## <a name="video-4-data-science-for-beginners-series"></a>4\. Videó: Adatelemzés kezdőknek sorozat
 Ismerje meg, hogyan hozhat létre egy egyszerű regressziós modell előre jelezni az adatelemzés kezdőknek videó 4 egy gyémánt árát. Azt fogjuk rajzoljon egy regressziós modellt a célként megadott adatokkal.
 
 A lehető leghatékonyabban a sorozat, tekintse meg az összes. [Nyissa meg a videók listájában](#other-videos-in-this-series)
@@ -31,11 +31,11 @@ A lehető leghatékonyabban a sorozat, tekintse meg az összes. [Nyissa meg a vi
 ## <a name="other-videos-in-this-series"></a>Ez a sorozat egyéb videók
 *Adatelemzés kezdőknek* egy gyors bevezetőt az öt rövid videóban a rendszer.
 
-* 1. Videó: [A 5 kérdés adatelemzés választ ad](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 perc 14 mp)*
-* 2. Videó: [Az adatelemzés készen áll az adatok?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 perc 56 másodperc)*
-* 3. Videó: [Tegyen fel kérdést az adatok a válasz](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 perc 17 másodperc)*
-* 4. Videó: Válasz előrejelzése egy egyszerű modell segítségével
-* 5. Videó: [Más emberek munkájának lemásolása az adatelemzéshez való másolása](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 perc 18 másodperc)*
+* 1\. Videó: [A 5 kérdés adatelemzés választ ad](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 perc 14 mp)*
+* 2\. Videó: [Az adatelemzés készen áll az adatok?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 perc 56 másodperc)*
+* 3\. Videó: [Tegyen fel kérdést az adatok a válasz](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 perc 17 másodperc)*
+* 4\. Videó: Válasz előrejelzése egy egyszerű modell segítségével
+* 5\. Videó: [Más emberek munkájának lemásolása az adatelemzéshez való másolása](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 perc 18 másodperc)*
 
 ## <a name="transcript-predict-an-answer-with-a-simple-model"></a>A szövegben: Válasz előrejelzése egy egyszerű modell segítségével
 Üdvözli a negyedik videót a "Data Science a kezdők" sorozat. Ezt az eszközt hogy fog egy egyszerű modellt és előrejelzést.

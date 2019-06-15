@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: b8bb3db58538263ea60520d4537a76c6ebb6abf7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d3e1995682569e5ef7b356bd85ad6c7dba6cdbdb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112517"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64689491"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Az IaaS-erőforrások klasszikusból Azure Resource Manager az áttelepítés tervezése
 Azure Resource Manager számos nagyszerű funkciókat biztosít, rendkívül fontos tervezze meg, hogy zökkenőmentességét sure dolgot a migrálási folyamat elkezdésekor. Tervezési idő kiadások biztosítja, hogy nem problémák merülnek fel migrálási tevékenységek végrehajtása közben.
@@ -114,9 +114,9 @@ A következő számos, a nagyobb áttelepítések a felmerült problémák volta
 
 - **A rendelkezésre állási csoportok** – virtuális hálózat (vNet) az Azure Resource Manager, a klasszikus üzembe helyezési (azaz a felhőszolgáltatás) lévő virtuális gépek minden kell egy rendelkezésre állási csoportban, vagy a virtuális gépek áttelepítése az összes nem lehet minden rendelkezésre állási csoportban. Kellene több rendelkezésre állási csoporthoz a felhőszolgáltatás nem kompatibilis az Azure Resource Manager és leállítják a migrálás.  Ezenkívül nem lehet néhány virtuális gépet egy rendelkezésre állási csoportban, és nem egy rendelkezésre állási csoportban lévő virtuális gépeket. Ennek megoldásához kell kijavítani, vagy a felhőszolgáltatás átütemezésével.  Tervezi ennek megfelelően, mivel ez időigényes lehet.
 
-- **Webes/feldolgozói szerepkör központi telepítések** – Cloud Services webes és feldolgozói szerepköröket tartalmazó nem telepíthetők át az Azure Resource Manager. A webes/feldolgozói szerepkörök el kell távolítani a virtuális hálózat az áttelepítés megkezdése előtt.  Egy tipikus megoldási lehetőség térni webes/feldolgozói szerepkörpéldányok külön klasszikus virtuális hálózat ExpressRoute-kapcsolatcsoport is kapcsolódó, vagy a kód át (az túlmutat a jelen dokumentum az adott vitafórum) újabb PaaS App Services. Volt ismételt üzembe helyezése eset, hozzon létre egy új klasszikus virtuális hálózat, áthelyezés és ismételt üzembe helyezése a webes/feldolgozói szerepkörök, hogy új virtuális hálózatra, majd törölje a központi telepítések áthelyezett virtuális hálózatból. Nincs szükség a kód módosítására. Az új [virtuális hálózatok közötti Társviszony](../../virtual-network/virtual-network-peering-overview.md) képesség is használható együtt a webes/feldolgozói szerepköröket tartalmazó klasszikus virtuális hálózat társviszonyba állítása és egyéb ugyanabban a régióban az Azure például a virtuális hálózat alatt álló virtuális hálózatok migrálása (**, nem telepíthetők át a virtuális társhálózatok virtuális hálózati migrálás befejezése után**), ezért így ugyanazokat a lehetőségeket a teljesítmény adatvesztés nélkül, és nem késés és sávszélesség-büntetések. Igény szerinti hozzáadásával megadott [virtuális hálózatok közötti Társviszony](../../virtual-network/virtual-network-peering-overview.md), webes/feldolgozói szerepkör központi telepítések most már könnyedén enyhíthető, és nem blokkolja a migrálás az Azure Resource Manager.
+- **Webes/feldolgozói szerepkör központi telepítések** – Cloud Services webes és feldolgozói szerepköröket tartalmazó nem telepíthetők át az Azure Resource Manager. A webes/feldolgozói szerepkörök el kell távolítani a virtuális hálózat az áttelepítés megkezdése előtt.  Egy tipikus megoldási lehetőség térni webes/feldolgozói szerepkörpéldányok külön klasszikus virtuális hálózat ExpressRoute-kapcsolatcsoport is kapcsolódó, vagy a kód át (az túlmutat a jelen dokumentum az adott vitafórum) újabb PaaS App Services. Volt ismételt üzembe helyezése eset, hozzon létre egy új klasszikus virtuális hálózat, áthelyezés és ismételt üzembe helyezése a webes/feldolgozói szerepkörök, hogy új virtuális hálózatra, majd törölje a központi telepítések áthelyezett virtuális hálózatból. Nincs szükség a kód módosítására. Az új [virtuális hálózatok közötti Társviszony](../../virtual-network/virtual-network-peering-overview.md) képesség is használható együtt a webes/feldolgozói szerepköröket tartalmazó klasszikus virtuális hálózat társviszonyba állítása és egyéb ugyanabban a régióban az Azure például a virtuális hálózat alatt álló virtuális hálózatok migrálása ( **, nem telepíthetők át a virtuális társhálózatok virtuális hálózati migrálás befejezése után**), ezért így ugyanazokat a lehetőségeket a teljesítmény adatvesztés nélkül, és nem késés és sávszélesség-büntetések. Igény szerinti hozzáadásával megadott [virtuális hálózatok közötti Társviszony](../../virtual-network/virtual-network-peering-overview.md), webes/feldolgozói szerepkör központi telepítések most már könnyedén enyhíthető, és nem blokkolja a migrálás az Azure Resource Manager.
 
-- **Az Azure erőforrás-kezelő kvótái** – Azure-régiók külön kvóták és korlátokkal rendelkeznek a klasszikus és az Azure Resource Manager. Annak ellenére, hogy az áttelepítési forgatókönyvben új hardver nem vett *(azt Ön felcserélése meglévő virtuális gépek klasszikusból Azure Resource Manager)*, az Azure erőforrás-kezelő kvótái továbbra is kell teljesülniük, amelynek elegendő a kapacitása előtt áttelepítés megkezdéséhez. Az alábbiakban a jelentős korlátokat úgy tapasztaltuk problémákat okozhat.  Emelje a kvóta támogatási jegy megnyitása.
+- **Az Azure erőforrás-kezelő kvótái** – Azure-régiók külön kvóták és korlátokkal rendelkeznek a klasszikus és az Azure Resource Manager. Annak ellenére, hogy az áttelepítési forgatókönyvben új hardver nem vett *(azt Ön felcserélése meglévő virtuális gépek klasszikusból Azure Resource Manager)* , az Azure erőforrás-kezelő kvótái továbbra is kell teljesülniük, amelynek elegendő a kapacitása előtt áttelepítés megkezdéséhez. Az alábbiakban a jelentős korlátokat úgy tapasztaltuk problémákat okozhat.  Emelje a kvóta támogatási jegy megnyitása.
 
     > [!NOTE]
     > Ezek a korlátok kell áttelepíteni a jelenlegi környezet ugyanabban a régióban kell emelni.
@@ -132,7 +132,7 @@ A következő számos, a nagyobb áttelepítések a felmerült problémák volta
 
     Az aktuális Azure erőforrás-kezelő kvótái, az Azure PowerShell legújabb verzióját a következő parancsokkal ellenőrizheti.
     
-    [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+    [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
     **COMPUTE** *(magok, a rendelkezésre állási csoportok)*
 

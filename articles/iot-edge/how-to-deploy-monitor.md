@@ -11,10 +11,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: 69ba0a882c0e52e7c0d063b8f77e7a0fe22526a1
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62126364"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Üzembe helyezés és monitorozás az Azure portal használatával nagy mennyiségű IoT Edge-modulok
@@ -50,13 +50,13 @@ Ikereszközök és címkékkel kapcsolatos további információkért lásd: [ik
 
 Vannak egy központi telepítést hozhat létre öt lépést. A következő szakaszok egyenként végig. 
 
-### <a name="step-1-name-and-label"></a>1. lépés: Név és címke
+### <a name="step-1-name-and-label"></a>1\. lépés: Név és címke
 
 1. Adjon meg egy egyedi nevet, amely legfeljebb 128 kisbetűk használata a központi telepítés. Kerülje a tárolóhelyek és a következő érvénytelen karaktereket: `& ^ [ ] { } \ | " < > /`.
 1. Címkék, kulcs-érték párok nyomon követéséhez az üzemelő példányok is hozzáadhat. Például **HostPlatform** és **Linux**, vagy **verzió** és **3.0.1-es**.
 1. Válassza ki **tovább** áthelyezése két lépést. 
 
-### <a name="step-2-add-modules-optional"></a>2. lépés: (Nem kötelező) modulok hozzáadása
+### <a name="step-2-add-modules-optional"></a>2\. lépés: (Nem kötelező) modulok hozzáadása
 
 Amelyek egy központi telepítést adhat hozzá két típusa van. Az első az alapján az Azure-szolgáltatások, például a Storage-fiók vagy a Stream Analytics modul. A második pedig a saját kód használata modul. Több modul mindkét központi telepítés is hozzáadhat. 
 
@@ -95,13 +95,13 @@ Egyéni kód hozzáadása modulként, vagy manuálisan adja hozzá az Azure-szol
 
 Ha már konfigurált összes modult, válassza ki a **tovább** szeretne váltani a harmadik lépése.
 
-### <a name="step-3-specify-routes-optional"></a>3. lépés: Adja meg az útvonalakat (nem kötelező)
+### <a name="step-3-specify-routes-optional"></a>3\. lépés: Adja meg az útvonalakat (nem kötelező)
 
 Útvonalak megadása, hogyan modulok kommunikálnak egymással egy telepítésben található. A varázsló lehetővé teszi, hogy alapértelmezés szerint egy útvonal neve **útvonal** és meghatározott, **FROM /* be felső $**, ami azt jelenti, kimenetét kapcsolt modulok üzeneteket az IoT hubnak küldött.  
 
 Hozzáadása vagy frissítése az útvonalak származó adatokkal [útvonalak deklarálja](module-composition.md#declare-routes), majd **tovább** továbbra is a felülvizsgálati szakaszban.
 
-### <a name="step-4-specify-metrics-optional"></a>4. lépés: Adja meg a metrikák (nem kötelező)
+### <a name="step-4-specify-metrics-optional"></a>4\. lépés: Adja meg a metrikák (nem kötelező)
 
 Metrikák adja meg az eszköz lehet, hogy jelentéseket küldhetnek vissza alkalmazása konfigurációjának tartalma eredményeként állapotait összesítő számát.
 
@@ -116,7 +116,7 @@ SELECT deviceId FROM devices
   WHERE properties.reported.lastDesiredStatus.code = 200
 ```
 
-### <a name="step-5-target-devices"></a>5. lépés: Céleszközök
+### <a name="step-5-target-devices"></a>5\. lépés: Céleszközök
 
 Az eszközökről a tags tulajdonság használatával a kívánt eszközök, amelyek megkapják a központi telepítés céljaként. 
 
@@ -126,7 +126,7 @@ Több központi telepítést megcélozhatnak ugyanarra az eszközre, mivel egy p
 1. Adjon meg egy **feltétel cél** meghatározni, hogy mely eszközök érinteni fog a központi telepítés. A feltétel device twin címkék alapján vagy az ikereszköz jelentett tulajdonságait, és meg kell egyeznie a kifejezés formátuma. Ha például `tags.environment='test'` vagy `properties.reported.devicemodel='4000x'`. 
 1. Válassza ki **tovább** , továbbléphet az utolsó lépés.
 
-### <a name="step-6-review-deployment"></a>6. lépés: Üzembe helyezés áttekintése
+### <a name="step-6-review-deployment"></a>6\. lépés: Tekintse át a központi telepítés
 
 Tekintse át a telepítési adatokat, majd válassza a **küldés**.
 

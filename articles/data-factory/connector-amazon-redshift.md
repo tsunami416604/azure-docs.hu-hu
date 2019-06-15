@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
 ms.openlocfilehash: 9e1dde57dc1903e87704bd55fb0b942b7cc349e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61262208"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával az Amazon Redshift
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](v1/data-factory-amazon-redshift-connector.md)
 > * [Aktuális verzió](connector-amazon-redshift.md)
 
@@ -126,7 +126,7 @@ Adatok másolása az Amazon Redshift, állítsa be a forrás típusaként a más
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **AmazonRedshiftSource** | Igen |
-| query |Az egyéni lekérdezés segítségével olvassa el az adatokat. Például: válassza ki * from tábla. |Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. Például: válassza ki * from tábla. |Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 | redshiftUnloadSettings | A tulajdonságcsoport Amazon Redshift eltávolítása használatakor. | Nem |
 | s3LinkedServiceName | -To-be – használja az ideiglenes tárolóként az Amazon S3 hivatkozik egy "az AmazonS3" típusú társított szolgáltatás neve megadásával. | Igen, ha a MEMÓRIÁBÓL használatával |
 | bucketName | Adja meg, az S3 gyűjtőt átmeneti adatok tárolására. Ha nincs megadva, a Data Factory szolgáltatás állít elő, akkor automatikusan.  | Igen, ha a MEMÓRIÁBÓL használatával |

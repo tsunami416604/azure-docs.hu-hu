@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/06/2016
 ms.author: hkanna
 ms.openlocfilehash: e7659cca9081834d41f64ef0fbd8ea3686044bfd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60633964"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>Biztonsági mentési célként StorSimple veeammel
@@ -319,8 +319,8 @@ Az alábbi ábrán egy tipikus kötetet a biztonsági mentési feladat hozzáren
 | Gyakorisága, illetve biztonsági mentési típusa | Korlátlan | Növekményes (1-5 nap)  |   
 |---|---|---|
 | Heti (1 – 4 hét) | Szombat | Hétfőtől péntekig |
-| Havonta  | Szombat  |   |
-| Évente | Szombat  |   |
+| Havi  | Szombat  |   |
+| Éves ütemezéshez | Szombat  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-backup-job"></a>StorSimple-kötetek hozzárendelése a Veeam biztonsági mentési feladat
@@ -393,14 +393,14 @@ Az alábbi táblázat bemutatja, hogyan futtathatók a helyi és a StorSimple-le
 
 Elforgatás GFS heti, havi és éves ütemterv
 
-| Hét | Korlátlan | 1. nap növekményes | 2. napon növekményes | Növekményes naponta 3 | Növekményes naponta 4 | Növekményes nap 5 |
+| Hét | Korlátlan | 1\. nap növekményes | 2\. napon növekményes | Növekményes naponta 3 | Növekményes naponta 4 | Növekményes nap 5 |
 |---|---|---|---|---|---|---|
 | 1 hét | Helyi RAID kötetre  | Helyi RAID kötetre | Helyi RAID kötetre | Helyi RAID kötetre | Helyi RAID kötetre | Helyi RAID kötetre |
 | 2 hét | A StorSimple hét 2 – 4 |   |   |   |   |   |
 | 3 hét | A StorSimple hét 2 – 4 |   |   |   |   |   |
 | 4 hét | A StorSimple hét 2 – 4 |   |   |   |   |   |
-| Havonta | A StorSimple havi |   |   |   |   |   |
-| Évente | StorSimple évente  |   |   |   |   |   |
+| Havi | A StorSimple havi |   |   |   |   |   |
+| Éves ütemezéshez | StorSimple évente  |   |   |   |   |   |
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-copy-job"></a>StorSimple-kötetek hozzárendelése a Veeam másolási feladat
 

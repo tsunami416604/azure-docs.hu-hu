@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/06/2019
 ms.author: magoedte
 ms.openlocfilehash: 9194d5fe6553607ac5a0bb4e133da97f53790984
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61424754"
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>Az Automation-Runbook egy naplót a Log Analytics keresési eredmény művelet végrehajtása
@@ -38,7 +38,7 @@ A művelet végrehajtása a egy eseményt, és a egy runbookot, a napló keresé
 
 1. Az Azure Portalon kattintson a **minden szolgáltatás** válassza **Log Analytics**.  
 2. Válassza ki a Log Analytics-munkaterületre.
-3. Válassza ki a munkaterület **naplók (klasszikus)**.  
+3. Válassza ki a munkaterület **naplók (klasszikus)** .  
 4. A naplóbeli keresés lapon hajtsa végre a naplók keresése.  
 5. A napló keresési eredmények között kattintson a három pont egy mezőt, és az előugró ablakban válassza a balra **művelet végrehajtása a**.<br><br> ![Válassza ki a művelet eltarthat keresési eredmény](./media/take-action/log-search-takeaction-menuoption.png) 
 6. Válassza ki **futtathat runbookot** , és válassza ki a runbook futtatását.  Minden runbook választhat a Log Analytics-munkaterülethez társított Automation-fiókban.  Vegye figyelembe a következőket:

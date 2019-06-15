@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: 9accb41cdb4d780bf137d6872cca022226f902e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61443095"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>A távoli figyelési megoldásgyorsító a szerepköralapú hozzáférés-vezérlés konfigurálása
@@ -25,7 +25,7 @@ Ha először telepíti a távoli figyelési megoldás, olyan két szerepkör is 
 
 A felhasználói a **rendszergazdai** szerepkör a megoldáshoz, többek között a következő engedélyeket az alábbi teljes hozzáféréssel rendelkezik. A felhasználó a **csak olvasható** szerepkör csak lesz hozzáférése a megoldás megtekintéséhez.
 
-| Engedély            | Adminisztratív körzet | Csak olvasási engedély |
+| Engedély            | rendszergazda | Csak olvasási engedély |
 |----------------       |-------|-----------|
 | Megoldás megtekintése         | Igen   | Igen       |
 | Riasztás frissítése         | Igen   | Nem        |
@@ -57,7 +57,7 @@ Egy Azure Active Directory-alkalmazás tulajdonosa, mint az Azure portal haszná
 
 1. Keresse meg a **vállalati alkalmazás** a megoldás az Azure Portalon. Egyszer, a lista szűréséhez beállításával **alkalmazástípus** való **minden alkalmazás**. Keresse meg az alkalmazás által alkalmazás nevére. Az alkalmazás nevét a távoli figyelési megoldás neve. Az alábbi képernyőképen a megoldást és az alkalmazás megjelenített nevek a következők **contoso-rm4**.
 
-    ![Vállalati alkalmazás](media/iot-accelerators-remote-monitoring-rbac/appregistration.png)
+    ![A vállalati alkalmazás](media/iot-accelerators-remote-monitoring-rbac/appregistration.png)
 
 1. Ellenőrizze, hogy az alkalmazás ezután parancsra kattintva Ön az alkalmazás tulajdonosának **tulajdonosok**. Az alábbi képernyőképen **Contoso rendszergazdai** tulajdonosa a **contoso-rm4** alkalmazás:
 
@@ -91,7 +91,7 @@ A következő lépések bemutatják, hogyan szerepkör hozzáadása az Azure Act
 
 1. Keresse meg a **alkalmazásregisztráció** a megoldás az Azure Portalon. Az alkalmazás nevét a távoli figyelési megoldás neve. Az alábbi képernyőképen a megoldást és az alkalmazás megjelenített nevek a következők **contoso-rm4**.
 
-    ![Appok regisztrálása](media/iot-accelerators-remote-monitoring-rbac/appregistration2.png)
+    ![Alkalmazásregisztráció](media/iot-accelerators-remote-monitoring-rbac/appregistration2.png)
 
 1. Válassza ki az alkalmazását, és kattintson a **Manifest**. Láthatja, hogy a két meglévő [alkalmazás-szerepkörök](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles) az alkalmazáshoz meghatározott:
 

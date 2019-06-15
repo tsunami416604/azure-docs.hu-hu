@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
 ms.openlocfilehash: 69df9eff85d96c9cc6ca7fa1d3aabd2c54fae416
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60583862"
 ---
 # <a name="deploy-multiple-guest-executables"></a>Több futtatható vendégalkalmazás üzembe helyezése
@@ -28,7 +28,7 @@ Ez az útmutató bemutatja, hogyan helyezhet üzembe egy egy Node.js kezelőfel�
 
 A Visual Studio segítségével a több futtatható vendégalkalmazás tartalmazó alkalmazáscsomagot előállításához. Lásd: [meglévő alkalmazás becsomagolása a Visual Studio használatával](service-fabric-deploy-existing-app.md). Miután hozzáadta az első Vendég végrehajtható fájlt, kattintson jobb gombbal az alkalmazásprojektre, és válassza ki a **Hozzáadás -> új Service Fabric-szolgáltatás** hozzáadása a második Vendég végrehajtható projektet a megoldáshoz. Megjegyzés: Ha a forrás a Visual Studio-projekt mutató hivatkozást választja, a Visual Studio-megoldás létrehozása fog ellenőrizze, hogy az alkalmazáscsomag naprakészen a forrás változásainak. 
 
-## <a name="samples"></a>Példák
+## <a name="samples"></a>Minták
 * [Minta csomagolás és a egy futtatható vendégalkalmazás üzembe helyezése](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Minta két Vendég végrehajtható fájlok (C# és nodejs) keresztül kommunikáljon az elnevezési szolgáltatásban REST használatával](https://github.com/Azure-Samples/service-fabric-containers)
 

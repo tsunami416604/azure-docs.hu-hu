@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: sajagtap
 ms.openlocfilehash: c1d4ef640e2ae072dacba7a665b6689e3224c55c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60607254"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>Tartalom-jóváhagyás ellenőrzések, a munkafolyamatok és a feladatok
@@ -29,7 +29,7 @@ Tekintsük át a tartalmat töltenek fel a vizsgálóeszközt és alatt jelenik 
 
 Lásd: a [felülvizsgálati eszköz útmutató](./review-tool-user-guide/review-moderated-images.md) felülvizsgálatok létrehozásának első lépései, vagy tekintse meg a [REST API-útmutató](./try-review-api-review.md) megtudhatja, hogyan ehhez programozott módon.
 
-## <a name="workflows"></a>Munkafolyamatok
+## <a name="workflows"></a>A munkafolyamatok
 
 Egy munkafolyamat, felhőalapú testre szabott szűrheti a tartalom. A munkafolyamatok számos különböző módon tartalom szűrése és a megfelelő a megfelelő műveletet szolgáltatás képes csatlakozni. A Content Moderator összekötőjével munkafolyamat automatikusan moderálás címkékkel és hozhat létre értékelések elküldött tartalommal.
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.openlocfilehash: 9245d4c01816d26e262b1c8bd35015e2a6a9558c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60550546"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Azure Resource Manager-erőforráscsoportok kezelése az Azure CLI-vel
@@ -27,7 +27,7 @@ Más cikkek erőforráscsoportok kezeléséről:
 - [Az Azure-erőforráscsoportok kezelése az Azure portal használatával](./manage-resources-portal.md)
 - [Azure-erőforráscsoportok kezelése az Azure PowerShell használatával](./manage-resources-powershell.md)
 
-## <a name="what-is-a-resource-group"></a>Az erőforráscsoportok ismertetése
+## <a name="what-is-a-resource-group"></a>Mi az erőforráscsoport
 
 Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. Az erőforráscsoport tartalmazhatja a megoldás összes erőforrását, vagy csak azokat az erőforrásokat, amelyeket Ön egy csoportként szeretne kezelni. A szervezet számára legideálisabb elosztás alapján eldöntheti, hogyan szeretné elosztani az erőforrásokat az erőforráscsoportok között. Általánosságban elmondható adjon hozzá erőforrásokat, azonos életciklussal ugyanabban az erőforráscsoportban, így könnyen telepítése, frissítése és csoportként törölheti őket.
 
@@ -47,7 +47,7 @@ read location &&
 az group create --name $resourceGroupName --location $location
 ```
 
-## <a name="list-resource-groups"></a>Erőforráscsoportok listázása
+## <a name="list-resource-groups"></a>Erőforráscsoportok listázásához
 
 A következő CLI-példaszkript az előfizetéshez tartozó erőforráscsoportok listája.
 

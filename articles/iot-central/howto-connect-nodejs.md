@@ -9,17 +9,17 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 5497e4956fbdc74eced302867c33a66d07d6a184
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60888941"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Az Azure IoT Central-alkalmazást (Node.js) egy általános ügyfél-alkalmazás csatlakoztatása
 
 Ez a cikk azt ismerteti, hogyan eszköz a fejlesztők egy általános Node.js-alkalmazást képviselő valós eszközöknek a Microsoft Azure IoT Central alkalmazáshoz csatlakozhat.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
@@ -34,11 +34,11 @@ Az Azure IoT Central-alkalmazás lesz szüksége a következő mérések, eszkö
 
 Adja hozzá a következő telemetriát a **mérések** oldalon:
 
-| Megjelenítendő név | Mezőnév  | Egység | Min | Max | Tizedesjegyek |
+| Megjelenített név | Mezőnév  | Egység | Min | Max | Tizedesjegyek |
 | ------------ | ----------- | ----- | --- | --- | -------------- |
 | Hőmérséklet  | hőmérséklet | F     | 60  | 110 | 0              |
 | Páratartalom     | páratartalom    | %     | 0   | 100 | 0              |
-| Pressure     | pressure    | kPa   | 80  | 110 | 0              |
+| Kiürítése     | pressure    | kPa   | 80  | 110 | 0              |
 
 > [!NOTE]
 > A telemetriai adatok mérték adattípusa lebegőpontos szám.
@@ -49,7 +49,7 @@ Adja meg a mezők neve pontosan, ahogy az a tábla az eszköz sablonba be. Ha a 
 
 Adja hozzá a következő állapotot a **mérések** oldalon:
 
-| Megjelenítendő név | Mezőnév  | 1. érték | Megjelenítendő név | 2. érték | Megjelenítendő név |
+| Megjelenített név | Mezőnév  | 1 érték | Megjelenített név | Az érték 2 | Megjelenített név |
 | ------------ | ----------- | --------| ------------ | ------- | ------------ | 
 | Ventilátor mód     | fanmode     | 1       | Fut      | 0       | Leállítva      |
 
@@ -62,7 +62,7 @@ Adja meg a mezők neve pontosan, ahogy az a tábla az eszköz sablonba be. A mez
 
 Adja hozzá a következő esemény a **mérések** oldalon:
 
-| Megjelenítendő név | Mezőnév  | Severity |
+| Megjelenített név | Mezőnév  | Severity |
 | ------------ | ----------- | -------- |
 | Életbe  | melegedjen túl    | Hiba    |
 
@@ -73,7 +73,7 @@ Adja hozzá a következő esemény a **mérések** oldalon:
 
 Adja hozzá a következő eszköztulajdonságokat a **tulajdonságok** oldalon:
 
-| Megjelenítendő név        | Mezőnév        | Adattípus |
+| Megjelenített név        | Mezőnév        | Adattípus |
 | ------------------- | ----------------- | --------- |
 | Sorozatszám       | serialNumber      | szöveg      |
 | Eszköz gyártója | gyártó      | szöveg      |
@@ -84,7 +84,7 @@ A mezők nevét adja meg a pontosan az eszköz sablonba be a táblázatban láth
 
 Adja hozzá a következő **szám** beállításait a **beállítások** oldalon:
 
-| Megjelenítendő név    | Mezőnév     | Egység | Tizedesjegyek | Min | Max  | Kezdeti |
+| Megjelenített név    | Mezőnév     | Egység | Tizedesjegyek | Min | Max  | Kezdeti |
 | --------------- | -------------- | ----- | -------- | --- | ---- | ------- |
 | Sebesség ventilátor       | fanSpeed       | rpm   | 0        | 0   | 3000 | 0       |
 | Megadott hőmérséklet | setTemperature | F     | 0        | 20  | 200  | 80      |
@@ -95,13 +95,13 @@ Adja meg a mező neve pontosan a eszköz sablonba a táblázatban látható mód
 
 Adja hozzá a következő parancsot a **parancsok** oldalon:
 
-| Megjelenítendő név    | Mezőnév     | Alapértelmezett időtúllépés | Adattípus |
+| Megjelenített név    | Mezőnév     | Alapértelmezett időtúllépés | Adattípus |
 | --------------- | -------------- | --------------- | --------- |
-| Visszaszámlálás       | Visszaszámlálás      | 30              | szám    |
+| visszaszámlálás       | Visszaszámlálás      | 30              | szám    |
 
 Az alábbi beviteli mező hozzáadása a visszaszámlálási parancsot:
 
-| Megjelenítendő név    | Mezőnév     | Adattípus | Érték |
+| Megjelenített név    | Mezőnév     | Adattípus | Érték |
 | --------------- | -------------- | --------- | ----- |
 | A darabszám      | countFrom      | szám    | 10    |
 

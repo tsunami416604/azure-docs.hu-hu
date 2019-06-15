@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 1a61de6b0b6f73e112dd69108272ded3a67497e8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60516712"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Kezelését erőforrás-használat és a terhelés a Service Fabric-metrikák
@@ -37,7 +37,7 @@ Tegyük fel, hogy szeretné-e a bevezetés írása, és a szolgáltatás telepí
 | --- | --- | --- | --- | --- |
 | PrimaryCount |0 |0 |1 |Magas |
 | ReplicaCount |0 |1 |1 |Közepes |
-| Darabszám |1 |1 |1 |Alacsony |
+| Count |1 |1 |1 |Alacsony |
 
 
 Alapszintű számítási feladatokat az alapértelmezett mérőszámok adja meg a fürt munkahelyi finomat eloszlása. A következő példában lássuk, mi történik, ha hozunk létre két szolgáltatást, és az alapértelmezett metrikáit terheléselosztási támaszkodnak. Az első szolgáltatás az állapotalapú szolgáltatás három partícióval rendelkező, és a egy cél replika három méretének beállítása. A második service az állapotmentes szolgáltatás, amely egy partíciót és három példányszámot.
@@ -143,7 +143,7 @@ Megjegyzés: Ha csak át szeretné használni az alapértelmezett mérőszámok,
 
 Most vegyünk át ezeket a beállításokat a részletesebben mindegyike, és beszélni a viselkedés, amely hatással van.
 
-## <a name="load"></a>Betöltés
+## <a name="load"></a>betöltés
 Pontján metrikák meghatározása, hogy néhány terhelés jelölik. *Betöltés* mennyi egy metrika által felhasznált néhány szolgáltatáspéldány vagy egy adott csomópont a replika van. Betöltés szinte bármely ponton konfigurálható. Példa:
 
   - Betöltés a szolgáltatás létrehozásakor lehet definiálni. Ezt nevezzük _alapértelmezett betöltési_.

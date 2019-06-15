@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: glenga
 ms.openlocfilehash: c07a42349fbd81a46b1b7cd9bcad1978f891a6b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60733777"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions közzétételét az Azure Event Grid (előzetes verzió)
@@ -250,19 +250,19 @@ Tekintse meg a naplókat, a függvény, amely az Azure Portalon létrehozott.
 
 Az alábbi lista ismerteti az életciklus-események séma:
 
-* **`id`**: Az event grid-esemény egyedi azonosítója.
-* **`subject`**: Az esemény tárgya elérési útja. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` lesz `Running`, `Completed`, `Failed`, és `Terminated`.  
-* **`data`**: Durable Functions-specifikus paramétereket.
-  * **`hubName`**: [TaskHub](durable-functions-task-hubs.md) nevét.
-  * **`functionName`**: Az orchestrator függvény neve.
-  * **`instanceId`**: Durable Functions instanceId.
-  * **`reason`**: A követési esemény társított további adatokat. További információkért lásd: [(az Azure Functions) Durable Functions-diagnosztika](durable-functions-diagnostics.md)
-  * **`runtimeStatus`**: Vezénylési futásidejű állapot. Fut, befejezett, sikertelen, meg lett szakítva.
-* **`eventType`**: "orchestratorEvent"
-* **`eventTime`**: Esemény időpontja (UTC).
-* **`dataVersion`**: Az életciklus-esemény séma verziója.
-* **`metadataVersion`**:  A metaadatok verziója.
-* **`topic`**: Event grid témakör erőforrás.
+* **`id`** : Az event grid-esemény egyedi azonosítója.
+* **`subject`** : Az esemény tárgya elérési útja. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` lesz `Running`, `Completed`, `Failed`, és `Terminated`.  
+* **`data`** : Durable Functions-specifikus paramétereket.
+  * **`hubName`** : [TaskHub](durable-functions-task-hubs.md) nevét.
+  * **`functionName`** : Az orchestrator függvény neve.
+  * **`instanceId`** : Durable Functions instanceId.
+  * **`reason`** : A követési esemény társított további adatokat. További információkért lásd: [(az Azure Functions) Durable Functions-diagnosztika](durable-functions-diagnostics.md)
+  * **`runtimeStatus`** : Vezénylési futásidejű állapot. Fut, befejezett, sikertelen, meg lett szakítva.
+* **`eventType`** : "orchestratorEvent"
+* **`eventTime`** : Esemény időpontja (UTC).
+* **`dataVersion`** : Az életciklus-esemény séma verziója.
+* **`metadataVersion`** :  A metaadatok verziója.
+* **`topic`** : Event grid témakör erőforrás.
 
 ## <a name="how-to-test-locally"></a>Helyi tesztelése
 

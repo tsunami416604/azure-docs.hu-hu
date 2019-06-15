@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako;anilmur
 ms.openlocfilehash: c168182f0b34329ed3e72e90ce86456dfbe210ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61217191"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Többszörös átviteli sebességű streamek létrehozása az Azure Media Services élő streamelési funkciójával
 
 > [!NOTE]
-> 2018. május 12., az élő csatornák indítása fogja többé nem támogatja a RTP/MPEG-2 adatátviteli stream betöltési protokollját. Telepítse át a RTP/MPEG-2 RTMP vagy darabolt MP4 (Smooth Streaming) betöltési protokollokra.
+> 2018\. május 12., az élő csatornák indítása fogja többé nem támogatja a RTP/MPEG-2 adatátviteli stream betöltési protokollját. Telepítse át a RTP/MPEG-2 RTMP vagy darabolt MP4 (Smooth Streaming) betöltési protokollokra.
 
 ## <a name="overview"></a>Áttekintés
 Az Azure Media Services (AMS), egy **csatorna** élőben közvetített tartalmak feldolgozási folyamat képviseli. A **csatorna** bemeneti élő Streamek kap a két módszer egyikével:
@@ -75,7 +75,7 @@ Az alábbi táblázat azt ismerteti, hogy az egyes csatornaállapotok esetében 
 | Leállítva |Leállítva |Nem |
 
 ### <a name="automatic-shut-off-for-unused-channels"></a>Automatikus leállítási a fel nem használt csatornákat.
-2016. január 25-én kezdve a Media Services egyik tagján jelennek meg automatikusan leállítja a csatornát (valós idejű kódolás funkcióval engedélyezve), hogy a frissítés után nem futott már nem használt állapotban hosszabb ideig. Ez a csatorna, amely nem rendelkezik aktív programokkal, és amelyek nem érkezett meg a hosszabb ideig hírcsatorna egy bemeneti közreműködői vonatkozik.
+2016\. január 25-én kezdve a Media Services egyik tagján jelennek meg automatikusan leállítja a csatornát (valós idejű kódolás funkcióval engedélyezve), hogy a frissítés után nem futott már nem használt állapotban hosszabb ideig. Ez a csatorna, amely nem rendelkezik aktív programokkal, és amelyek nem érkezett meg a hosszabb ideig hírcsatorna egy bemeneti közreműködői vonatkozik.
 
 A használaton kívüli időszakra vonatkozó küszöbértéket névlegesen 12 óra, de változhat.
 
@@ -258,7 +258,7 @@ Az élő kódoló beállítható úgy, hogy váltson át egy befutókép, és a 
 ### <a name="duration"></a>Időtartam
 A lappal időtartama másodpercben. Azt nem nulla értékű pozitív számnak kell a lappal megkezdéséhez. Ha van egy folyamatos lappal, és a egy időtartamot a nulla van megadva, majd a folyamatos befutó befejeződik.
 
-### <a name="insert-slate-on-ad-marker"></a>Befutó vagy hirdetésjelző beszúrása
+### <a name="insert-slate-on-ad-marker"></a>Hirdetésjelző beszúrása
 Ha igaz értékű, ez a beállítás konfigurálása az élő kódoló egy befutókép beszúrása egy ad break során. Az alapértelmezett érték: igaz. 
 
 ### <a id="default_slate"></a>Alapértelmezett befutókép eszközazonosító

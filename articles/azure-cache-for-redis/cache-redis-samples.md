@@ -12,14 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache
 ms.devlang: multiple
 ms.topic: article
-origin.date: 01/23/2017
-ms.date: 02/27/2019
-ms.author: v-junlch
+ms.date: 01/23/2017
+ms.author: yegu
 ms.openlocfilehash: 73c771ab18d1cc2944298818c1cab90eb2f277ff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60829803"
 ---
 # <a name="azure-cache-for-redis-samples"></a>Azure Cache for Redis-minták
@@ -32,14 +31,14 @@ A [Helló, világ](https://github.com/rustd/RedisSamples/tree/master/HelloWorld)
 
 Ez a példa bemutatja, hogyan lehet:
 
-- Használja a különböző kapcsolati lehetőségek
-- Olvasási és írási objektumokat, és a gyorsítótárból a szinkron és aszinkron műveletek használatával
-- Visszatérési értékek megadott kulcsok a Redis MGET/MSET parancsok használatával
-- A Redis tranzakciós műveletek végrehajtása
-- A Redis használata sorolja fel, és rendezett készleteket
-- Store JsonConvert objektumszerializáló használata .NET-objektumokká
-- Használhatja a Redis csoportokat címkézés megvalósítása
-- A Redis-fürt használata
+* Használja a különböző kapcsolati lehetőségek
+* Olvasási és írási objektumokat, és a gyorsítótárból a szinkron és aszinkron műveletek használatával
+* Visszatérési értékek megadott kulcsok a Redis MGET/MSET parancsok használatával
+* A Redis tranzakciós műveletek végrehajtása
+* A Redis használata sorolja fel, és rendezett készleteket
+* Store JsonConvert objektumszerializáló használata .NET-objektumokká
+* Használhatja a Redis csoportokat címkézés megvalósítása
+* A Redis-fürt használata
 
 További információkért lásd: a [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) dokumentációja a Githubon, és további használati forgatókönyvek esetén tekintse meg a [StackExchange.Redis.Tests](https://github.com/StackExchange/StackExchange.Redis/tree/master/tests) egységteszteket.
 
@@ -53,8 +52,8 @@ A [használata Azure Cache redis egy horizontális felskálázási csatlakozópa
 ## <a name="azure-cache-for-redis-customer-query-sample"></a>Az Azure Cache Redis ügyfél lekérdezés minta
 Ez a minta bemutatja a összehasonlítja teljesítménye között gyorsítótár származó adatok egységes elérésével és az adatok elérése az adatmegőrzés storage-ból. Ez a példa két projektet tartalmaz.
 
-- [Hogyan Azure Cache redis a jobb teljesítmény érdekében az adatokat bemutató](https://github.com/rustd/RedisSamples/tree/master/RedisCacheCustomerQuerySample)
-- [Az adatbázis és a gyorsítótár szeretne a bemutatóra kezdőérték](https://github.com/rustd/RedisSamples/tree/master/SeedCacheForCustomerQuerySample)
+* [Hogyan Azure Cache redis a jobb teljesítmény érdekében az adatokat bemutató](https://github.com/rustd/RedisSamples/tree/master/RedisCacheCustomerQuerySample)
+* [Az adatbázis és a gyorsítótár szeretne a bemutatóra kezdőérték](https://github.com/rustd/RedisSamples/tree/master/SeedCacheForCustomerQuerySample)
 
 ## <a name="aspnet-session-state-and-output-caching"></a>Az ASP.NET munkamenet-állapot és a kimeneti gyorsítótárazás
 A [használata Azure Cache redis ASP.NET SessionState és OutputCache](https://github.com/rustd/RedisSamples/tree/master/SessionState_OutputCaching) minta azt ismerteti, hogyan, hogy az Azure Cache redis használni az ASP.NET munkamenet- és kimeneti gyorsítótár használatával a SessionState és OutputCache szolgáltatók redis .
@@ -70,6 +69,4 @@ A [Retwis](https://github.com/SyntaxC4-MSFT/retwis) minta a Redis "Hello World".
 
 ## <a name="bandwidth-monitor"></a>A sávszélesség-figyelő
 A [sávszélesség figyelő](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor) minta lehetővé teszi, hogy az ügyfélen használt sávszélesség figyelése. A sávszélesség mérését, futtassa a mintát a gyorsítótár ügyfélszámítógépen, a gyorsítótár-hívások, és figyelje meg a sávszélesség a sávszélesség-figyelő minta által jelentett.
-
-<!-- Update_Description: update metedata properties -->
 

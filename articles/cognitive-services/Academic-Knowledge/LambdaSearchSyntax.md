@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
 ms.openlocfilehash: 4d4c540e00794bfdf1df265457798cc13530c828
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61337788"
 ---
 # <a name="lambda-search-syntax"></a>Lambda keresési szintaxis
@@ -33,13 +33,13 @@ FollowEdge(params string[] edgeTypes)
 > [!NOTE]
 > Ha azt nem érdeklik a követendő edge(s) típusainak, egyszerűen hagyja el *FollowEdge()* két csomópont között: a lekérdezés az összes lehetséges élek végigvezetik a két csomópont között.
 
-A bejárási műveletek egy csomóponton keresztül végrehajtandó adható meg *VisitNode()*, azt jelenti, hogy ezen a csomóponton leállítása és az aktuális elérés úton vissza eredményként, vagy böngészhet a gráf továbbra is.  A számbavételi típussal *művelet* kétféle típusú műveletek meghatározása: *Action.Return* és *Action.Continue*. Az ilyen enum érték közvetlenül átadható *VisitNode()*, vagy kombinálhatja őket a bitenkénti- és az operátorral 'és'. Amikor a rendszer kombinálja a két művelet, az azt jelenti, hogy mindkét műveleteket hajtja végre. Megjegyzés: ne használjon bitenként- vagy operátor "|}" műveletek. Ezt a lekérdezést, hogy bármit visszaszolgáltatása nélkül felmondhatja miatt. A rendszer kihagyja *VisitNode()* két közötti *FollowEdge()* hívások feltétel nélkül megismerése után egy csomópont továbbítótól a gráf lekérdezése okoz.
+A bejárási műveletek egy csomóponton keresztül végrehajtandó adható meg *VisitNode()* , azt jelenti, hogy ezen a csomóponton leállítása és az aktuális elérés úton vissza eredményként, vagy böngészhet a gráf továbbra is.  A számbavételi típussal *művelet* kétféle típusú műveletek meghatározása: *Action.Return* és *Action.Continue*. Az ilyen enum érték közvetlenül átadható *VisitNode()* , vagy kombinálhatja őket a bitenkénti- és az operátorral 'és'. Amikor a rendszer kombinálja a két művelet, az azt jelenti, hogy mindkét műveleteket hajtja végre. Megjegyzés: ne használjon bitenként- vagy operátor "|}" műveletek. Ezt a lekérdezést, hogy bármit visszaszolgáltatása nélkül felmondhatja miatt. A rendszer kihagyja *VisitNode()* két közötti *FollowEdge()* hívások feltétel nélkül megismerése után egy csomópont továbbítótól a gráf lekérdezése okoz.
 
 ```
 VisitNode(Action action, IEnumerable<string> select = null)
 ```
 
-A *VisitNode()*, is átadható egy lambda kifejezés típusa *kifejezés\<Func\<INode, a művelet\>\>*, amely fogadja az *INode* és a egy bejárási művelet adja vissza:
+A *VisitNode()* , is átadható egy lambda kifejezés típusa *kifejezés\<Func\<INode, a művelet\>\>* , amely fogadja az *INode* és a egy bejárási művelet adja vissza:
 
 ```
 VisitNode(Expression<Func<INode, Action>> action, IEnumerable<string> select = null)
@@ -65,11 +65,11 @@ Jelzi, ha az aktuális csomópont van a megadott nevű mező.
 
 ##### <a name="string-getstring-fieldname"></a>karakterlánc (karakterlánc mezőnév) beolvasása
 
-Működik, mint az *egyszerre GetField\<karakterlánc\>(mezőnév)*. Azonban nem azt throw kivételeket, ha a mező nem található, egy üres string("") Ehelyett adja vissza.
+Működik, mint az *egyszerre GetField\<karakterlánc\>(mezőnév)* . Azonban nem azt throw kivételeket, ha a mező nem található, egy üres string("") Ehelyett adja vissza.
 
 ##### <a name="bool-hasstring-fieldname"></a>logikai rendelkezik (mezőnév karakterlánc)
 
-Jelzi, hogy az adott tulajdonság megtalálható-e az aktuális csomópont. Ugyanaz, mint a *ContainsField(fieldName)*.
+Jelzi, hogy az adott tulajdonság megtalálható-e az aktuális csomópont. Ugyanaz, mint a *ContainsField(fieldName)* .
 
 ##### <a name="bool-hasstring-fieldname-string-value"></a>logikai rendelkezik (karakterlánc mezőnév, karakterlánc-érték)
 

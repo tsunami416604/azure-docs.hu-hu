@@ -13,10 +13,10 @@ ms.date: 05/15/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
 ms.openlocfilehash: 7c1f47c9b88bd68b326b3c8923ba5b81d425c3e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60900710"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>Telemetria környezet: Application Insights-adatmodell
@@ -24,7 +24,7 @@ ms.locfileid: "60900710"
 Előfordulhat, hogy minden szereplő telemetriai elem egy szigorú típusmegadású környezet mezőket. Minden mező lehetővé teszi, hogy egy adott figyelési forgatókönyv. Az egyéni tulajdonságok gyűjteményén használatával egyéni vagy alkalmazásspecifikus környezetfüggő adatok tárolására.
 
 
-## <a name="application-version"></a>Alkalmazás verziószáma
+## <a name="application-version"></a>Alkalmazás verziója
 
 Az alkalmazás helyi mező adatait, mindig az alkalmazás, amely a telemetriai adatokat küldenek. Alkalmazás verziója szolgál az alkalmazás viselkedése, és a központi telepítéseket, a korrelációs trend változások elemzéséhez.
 
@@ -38,7 +38,7 @@ Az ügyféleszköz IP-címét. IPv4 és IPv6 használata támogatott. Telemetria
 Maximális hossz: 46
 
 
-## <a name="device-type"></a>Eszköztípus
+## <a name="device-type"></a>Eszköz típusa
 
 Ez a mező eredetileg használták a a végfelhasználó számára az alkalmazás által használt eszköz típusának jelöléséhez. Elsősorban az JavaScript telemetriai megkülönböztethetők az eszköztípus-ma használt kiszolgálóoldali telemetria az eszközzel a "böngésző" írja be a "PC".
 
@@ -73,7 +73,7 @@ Szintetikus forrás nevére. Az alkalmazás egyes telemetriáját tüntetheti sz
 Maximális hossz: 1024
 
 
-## <a name="session-id"></a>Munkamenet-azonosító
+## <a name="session-id"></a>A munkamenet-azonosító
 
 Munkamenet-azonosító – a felhasználó és az alkalmazás közötti interakció példányát. A munkamenet-környezet mező adatait, mindig a végfelhasználó kapcsolatban. Telemetriai adatokat a szolgáltatásból küldött, a munkamenet környezetében tárgya a felhasználó által kezdeményezett a műveletet a szolgáltatásban.
 

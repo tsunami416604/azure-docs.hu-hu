@@ -11,10 +11,10 @@ ms.date: 07/30/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.openlocfilehash: 93c24f88fcd6a002493933ef71c5c80bd2ff8c10
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62120179"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Adatok műveletek végrehajtása az Azure Logic Appsben
@@ -518,7 +518,7 @@ Ha inkább a kódszerkesztőben nézetben dolgozik, másolja a példa **kiválas
    * Lépések közötti művelet hozzáadása, vigye az egérmutatót a csatlakozó mutató nyílra, megjelenik a plusz jelre (+). 
    Válassza a plusz jelre, majd válassza ki **művelet hozzáadása**.
 
-3. A Keresés mezőbe írja be "kijelölése" szűrőként. A műveletek listából válassza a következő műveletet: **Kiválasztás**
+3. A Keresés mezőbe írja be "kijelölése" szűrőként. A műveletek listából válassza a következő műveletet: **Select**
 
    ![A "Kiválasztás" művelet kiválasztása](./media/logic-apps-perform-data-operations/select-select-action.png)
 

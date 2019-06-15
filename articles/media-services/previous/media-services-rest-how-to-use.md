@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako;johndeu
 ms.openlocfilehash: fbdd9325f50e1bcb271b7ca47b9ccd3361d0d27e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64687061"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>A Media Services REST API áttekintése 
@@ -74,7 +74,7 @@ A következő olyan opcionális fejlécek:
 | Fejléc | Típus | Érték |
 | --- | --- | --- |
 | Dátum |RFC 1123 dátuma |A kérelem időbélyege |
-| Elfogadás |Tartalom típusa |A kért tartalom típusa a válaszhoz, például a következő:<p> -application/json;odata=verbose<p> - application/atom+xml<p> Válaszok különböző tartalom típusa, például egy blob fetch előfordulhat, ahol a sikeres válasz tartalmazza a blob adatfolyamot, a hasznos. |
+| Fogadja el |Tartalom típusa |A kért tartalom típusa a válaszhoz, például a következő:<p> -application/json;odata=verbose<p> - application/atom+xml<p> Válaszok különböző tartalom típusa, például egy blob fetch előfordulhat, ahol a sikeres válasz tartalmazza a blob adatfolyamot, a hasznos. |
 | Accept-Encoding |Gzip, deflate |A GZIP- és a DEFLATE kódolást, ha alkalmazható. Megjegyzés: A nagyméretű erőforrásokra a Media Services figyelmen kívül hagyhatja ezt a fejlécet és noncompressed adatokat adja vissza. |
 | Accept-Language |"en", "es" és így tovább. |Adja meg a kívánt nyelvet a válaszhoz. |
 | Fogadja el karakterkészlet |Például a "UTF-8" karakterkészlet típusa |Alapértelmezett érték az UTF-8. |

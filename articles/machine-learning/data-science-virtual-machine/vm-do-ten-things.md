@@ -18,10 +18,10 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
 ms.openlocfilehash: f30c241feced3031d9ed9791c27c6bb1e1e99efb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60365979"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tíz dolog, amire alkalmas a Windows Data Science virtuális gépen
@@ -403,7 +403,7 @@ Ha az adatok Azure Blob storage-ban található, is közvetlenül beolvashatja a
 
 ![Adatforrás hozzáadása párbeszédpanel képernyőképe](./media/vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
-A Visual Studióban olvassa el az adatokat blob storage-ból, hajtsa végre az egyes adatkezelés, Funkciók tervezése és kimeneti adatok vagy az Azure Data Lake, vagy az Azure Blob Storage. Ha az adatok blob storage-ban hivatkozik, használja **wasb: / /**; Ha az adatokat az Azure Data Lake használata hivatkozik **swbhdfs: / /**
+A Visual Studióban olvassa el az adatokat blob storage-ból, hajtsa végre az egyes adatkezelés, Funkciók tervezése és kimeneti adatok vagy az Azure Data Lake, vagy az Azure Blob Storage. Ha az adatok blob storage-ban hivatkozik, használja **wasb: / /** ; Ha az adatokat az Azure Data Lake használata hivatkozik **swbhdfs: / /**
 
 ![Képernyőkép a lekérdezés a WASB bejegyzéshez vannak kiemelve](./media/vm-do-ten-things/USQL_Read_Blob_v2.PNG)
 

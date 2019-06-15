@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
 ms.openlocfilehash: 99e043adeac9a43432fb1eba85527b561c477354
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64570563"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Első lépésekhez készült útmutató Azure-fejlesztőknek
@@ -158,7 +158,7 @@ Az Azure tárolók használata az alkalmazásokban több módszert is biztosít.
 
 Nagyon fontos tudni, hogy nem csak az alkalmazásokat használó, hanem az erőforrásokhoz való jogosulatlan hozzáférés elkerülése érdekében. Az Azure az alkalmazás-ügyfelek hitelesítésére több módszert is biztosít.
 
-- **Az Azure Active Directory (Azure AD)**: A Microsoft több-bérlős, felhőalapú identitás- és hozzáférés szolgáltatás. Hozzáadhat egyszeri bejelentkezést (SSO) az alkalmazások és az Azure AD integrálásával. Könyvtár tulajdonságai elérheti, ha közvetlenül az Azure AD Graph API vagy a Microsoft Graph API használatával. Azure AD-támogatás a OAuth2.0 engedélyezési keretrendszer és az Open ID Connect integrálható a natív HTTP, illetve a REST-végpontok és a multiplatform az Azure AD-hitelesítési kódtárak használatával.
+- **Az Azure Active Directory (Azure AD)** : A Microsoft több-bérlős, felhőalapú identitás- és hozzáférés szolgáltatás. Hozzáadhat egyszeri bejelentkezést (SSO) az alkalmazások és az Azure AD integrálásával. Könyvtár tulajdonságai elérheti, ha közvetlenül az Azure AD Graph API vagy a Microsoft Graph API használatával. Azure AD-támogatás a OAuth2.0 engedélyezési keretrendszer és az Open ID Connect integrálható a natív HTTP, illetve a REST-végpontok és a multiplatform az Azure AD-hitelesítési kódtárak használatával.
 
   > **Mikor érdemes használni**: Ha szeretne biztosítani egy egyszeri Bejelentkezéses felhasználói élmény, Graph-alapú adatok, vagy tartományi felhasználók hitelesítésére.
   > 
@@ -281,7 +281,7 @@ Az Azure erőforrás-kezelő használatával megjelenítheti az erőforrásokat,
 
 Ha engedélyezi a hozzáférést az Azure-erőforrásokkal, mindig ajánlott az egy adott feladat végrehajtásához szükséges minimális jogosultságokkal rendelkező felhasználók számára.
 
-- **Szerepköralapú hozzáférés-vezérlés (RBAC)**: Az Azure-ban is hozzáférést biztosít a felhasználói fiókok (egyszerű) a megadott hatókörben: előfizetés, erőforráscsoport vagy egyes erőforrásokat. Az RBAC lehetővé teszi az erőforráscsoport üzembe helyezzen egy erőforráscsoportban, és engedélyek egy adott felhasználó vagy csoport számára. Azt is lehetővé teszi, hogy csak a célként megadott erőforráscsoportja tartozó erőforrásokhoz való hozzáférés korlátozásához. A hozzáférést egy egyetlen erőforrást, például a virtuális gép vagy a virtuális hálózat. Hozzáférés biztosításához szerepkör a felhasználó, csoport vagy egyszerű szolgáltatás hozzárendelése. Számos előre definiált szerepkörök állnak rendelkezésre, és azt is megadhatja a saját egyéni szerepkörökkel. További tudnivalókért lásd: [Mi a szerepköralapú hozzáférés-vezérlés (RBAC)?](../../role-based-access-control/overview.md).
+- **Szerepköralapú hozzáférés-vezérlés (RBAC)** : Az Azure-ban is hozzáférést biztosít a felhasználói fiókok (egyszerű) a megadott hatókörben: előfizetés, erőforráscsoport vagy egyes erőforrásokat. Az RBAC lehetővé teszi az erőforráscsoport üzembe helyezzen egy erőforráscsoportban, és engedélyek egy adott felhasználó vagy csoport számára. Azt is lehetővé teszi, hogy csak a célként megadott erőforráscsoportja tartozó erőforrásokhoz való hozzáférés korlátozásához. A hozzáférést egy egyetlen erőforrást, például a virtuális gép vagy a virtuális hálózat. Hozzáférés biztosításához szerepkör a felhasználó, csoport vagy egyszerű szolgáltatás hozzárendelése. Számos előre definiált szerepkörök állnak rendelkezésre, és azt is megadhatja a saját egyéni szerepkörökkel. További tudnivalókért lásd: [Mi a szerepköralapú hozzáférés-vezérlés (RBAC)?](../../role-based-access-control/overview.md).
 
   > **Mikor érdemes használni**: Ha részletes hozzáférés-vezérlést kell, a felhasználók és csoportok, vagy amikor szüksége van, hogy a felhasználó az előfizetés tulajdonosa.
   > 
@@ -291,7 +291,7 @@ Ha engedélyezi a hozzáférést az Azure-erőforrásokkal, mindig ajánlott az 
 
   > **Mikor érdemes használni**: Amikor a rendszer programozott módon az Azure-erőforrások kezelése vagy alkalmazásokhoz hozzáférést biztosít. További információkért lásd: [hozzon létre egy Active Directory-alkalmazás és egyszerű szolgáltatás](../../active-directory/develop/howto-create-service-principal-portal.md).
 
-#### <a name="tags"></a>Címkék
+#### <a name="tags"></a>Tags
 
 Az Azure Resource Manager lehetővé teszi egyéni címkék hozzárendelése az egyes erőforrásokhoz. Címkék olyan kulcs-érték párok, akkor lehet hasznos, amikor szüksége van a számlázási vagy figyelési erőforrások rendezéséhez. A címkék nyomon követésére erőforrások több erőforráscsoporthoz lehetőséget biztosíthat. A címkék a portálon, az Azure Resource Manager-sablon, vagy programozott módon, a REST API-t, az Azure CLI vagy a PowerShell használatával rendelhet hozzá. Több címkét rendelhet az egyes erőforrások. További tudnivalókért lásd: [az Azure-erőforrások rendszerezése címkék használatával](../../resource-group-using-tags.md).
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pabutler
 ms.openlocfilehash: a22a2ebe870280ddcdf18c037141b92894742400
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935026"
 ---
 <a name="how-to-fill-out-the-storefront-details-form"></a>Hogyan kell kitölteni a kirakat részletek képernyő
@@ -39,7 +39,7 @@ Válassza ki az iparág legjobb igazított az alkalmazást. Az alkalmazás több
 
 Válassza ki, amely az alkalmazás a kategóriák. Válasszon ki legalább egy kategóriát, és legfeljebb három. Gondosan választható, mert az ügyfelek az appsource-on a kategóriák alapján kereshet
 
-### <a name="app-type"></a>Alkalmazástípus
+### <a name="app-type"></a>Alkalmazás típusa
 
 Válassza ki a próbaverziót, amely az alkalmazás lehetővé teszi az appsource-ban.
 **Ingyenes** azt jelenti, hogy az alkalmazás díjmentes. **Próbaverzió** azt jelenti, hogy az ügyfelek is kipróbálják az alkalmazását az appsource-ban egy rövid ideig. **A próbaverzió kérése** azt jelenti, hogy az ügyfelek is igényelje az alkalmazás az appsource-ból.

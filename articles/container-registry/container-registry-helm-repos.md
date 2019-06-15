@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: iainfou
 ms.openlocfilehash: ba0e1386d67e920f1805d244f9042044bb462ec9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62109851"
 ---
 # <a name="use-azure-container-registry-as-a-helm-repository-for-your-application-charts"></a>Azure Container Registry vagy a Helm használata az alkalmazás diagramok
@@ -25,7 +25,7 @@ Ez a cikk bemutatja, hogyan használható egy Helm-diagram az Azure Container Re
 > [!IMPORTANT]
 > Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A jelen cikkben ismertetett lépések végrehajtásához a következő előfeltételeknek kell teljesülniük:
 

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: f93152ae3db926fb989c219d1e515abaf0281bf4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60372185"
 ---
 # <a name="understand-the-charges-on-your-microsoft-customer-agreements-invoice"></a>A Microsoft Ügyfélszerződéséhez számlán a költségek ismertetése
@@ -52,8 +52,8 @@ Ez a cikk a Microsoft vevői szerződés számlázási fiók vonatkozik. [Ellen�
     |Termékcsalád     | Például a virtuális gépek számítási és az Azure SQL database-adatbázis termékkategória|
     |Termék sku     | A termék példányát azonosító egyedi kódot |
     |Mennyiség     |  A tranzakciók mennyiségét      |
-    |Számlázási szakasz     | Az ebben a szakaszban az billing invoice profil megjelenik a tranzakció |
-    |Számlázási profil     | A tranzakció megjelenik-e a számlán a számlázási profilja |
+    |Számla szakasz     | Az ebben a szakaszban az billing invoice profil megjelenik a tranzakció |
+    |Számlázási profilja     | A tranzakció megjelenik-e a számlán a számlázási profilja |
 
 5. Keresés a tranzakciók, a számla szűréséhez azonosítója.
 

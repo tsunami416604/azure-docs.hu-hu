@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 284d0e888b89d340088f770af22c026a861a4685
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610727"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Biztonsági keret: Konfigurációkezelés |} Megoldások 
@@ -36,7 +36,7 @@ ms.locfileid: "60610727"
 
 ## <a id="csp-js"></a>Tartalmak biztonsági szabályzat (CSP) megvalósítása, és beágyazott javascript letiltása
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -68,7 +68,7 @@ Example: var str="alert(1)"; eval(str);
 
 ## <a id="xss-filter"></a>Böngésző XSS szűrő engedélyezése
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -79,7 +79,7 @@ Example: var str="alert(1)"; eval(str);
 
 ## <a id="trace-deploy"></a>Az ASP.NET-alkalmazások le kell tiltania az nyomkövetéséhez és üzembe helyezés előtt
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -90,7 +90,7 @@ Example: var str="alert(1)"; eval(str);
 
 ## <a id="js-trusted"></a>Hozzáférés külső JavaScript-kódok csak megbízható forrásból származó
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -101,7 +101,7 @@ Example: var str="alert(1)"; eval(str);
 
 ## <a id="ui-defenses"></a>Győződjön meg arról, hogy hitelesített ASP.NET-lapok építhet be felhasználói felület Redressing, vagy kattintson az emelési védelem
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -136,7 +136,7 @@ Web.config kódot, amely ugyanabban a tartományban lapok csak kell Keretes hely
 
 ## <a id="cors-aspnet"></a>Győződjön meg arról, hogy csak megbízható források engedélyezettek, ha a CORS engedélyezve van az ASP.NET-webalkalmazások
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -167,7 +167,7 @@ Vegye figyelembe, hogy rendkívül fontos győződjön meg arról, hogy a lista 
 
 ## <a id="validate-aspnet"></a>Az ASP.NET-lapok ValidateRequest attribútum engedélyezése
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -193,18 +193,18 @@ Vegye figyelembe, hogy az ellenőrzési kérés funkció nem támogatott, és ne
 
 ## <a id="local-js"></a>JavaScript-könyvtárak legújabb verzióit helyileg üzemeltetett használata
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | <p>Standard JavaScript-könyvtárak, JQuery kell használnia segítségével a fejlesztők jóváhagyott JavaScript kódtárak, amelyek nem rendelkeznek ismert biztonsági hibára derült verzióit. Bevált gyakorlat, hogy a kódtárak legtöbb legújabb verzióját használja, mivel az ismert biztonsági rések felderítéséhez, a régebbi verziókban biztonsági javításokat tartalmazzák.</p><p>Ha a legutóbbi kiadás nem használható miatt kompatibilitás érdekében az alábbi minimális verziók kell használni.</p><p>Elfogadható minimális verziója:</p><ul><li>**JQuery**<ul><li>1.7.1 JQuery</li><li>JQueryUI 1.10.0</li><li>JQuery 1.9 ellenőrzése</li><li>JQuery Mobile 1.0.1</li><li>2.99 JQuery ciklus</li><li>JQuery DataTables 1.9.0-s</li></ul></li><li>**AJAX-vezérlőelem eszközkészlet**<ul><li>AJAX-vezérlőelem eszközkészlet 40412</li></ul></li><li>**Az ASP.NET Web Forms- és Ajax**<ul><li>Az ASP.NET Web Forms- és Ajax 4</li><li>ASP.NET Ajax 3.5</li></ul></li><li>**ASP.NET MVC**<ul><li>ASP.NET MVC 3.0</li></ul></li></ul><p>Soha nem minden JavaScript-kódtár betöltése külső helyeket, például a nyilvános CDN</p>|
+| **Lépések** | <p>Standard JavaScript-könyvtárak, JQuery kell használnia segítségével a fejlesztők jóváhagyott JavaScript kódtárak, amelyek nem rendelkeznek ismert biztonsági hibára derült verzióit. Bevált gyakorlat, hogy a kódtárak legtöbb legújabb verzióját használja, mivel az ismert biztonsági rések felderítéséhez, a régebbi verziókban biztonsági javításokat tartalmazzák.</p><p>Ha a legutóbbi kiadás nem használható miatt kompatibilitás érdekében az alábbi minimális verziók kell használni.</p><p>Elfogadható minimális verziója:</p><ul><li>**JQuery**<ul><li>1\.7.1 JQuery</li><li>JQueryUI 1.10.0</li><li>JQuery 1.9 ellenőrzése</li><li>JQuery Mobile 1.0.1</li><li>2\.99 JQuery ciklus</li><li>JQuery DataTables 1.9.0-s</li></ul></li><li>**AJAX-vezérlőelem eszközkészlet**<ul><li>AJAX-vezérlőelem eszközkészlet 40412</li></ul></li><li>**Az ASP.NET Web Forms- és Ajax**<ul><li>Az ASP.NET Web Forms- és Ajax 4</li><li>ASP.NET Ajax 3.5</li></ul></li><li>**ASP.NET MVC**<ul><li>ASP.NET MVC 3.0</li></ul></li></ul><p>Soha nem minden JavaScript-kódtár betöltése külső helyeket, például a nyilvános CDN</p>|
 
 ## <a id="mime-sniff"></a>Automatikus elemzés MIME letiltása
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -269,7 +269,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 ## <a id="standard-finger"></a>Távolítsa el a Windows Azure webhelyek ujjlenyomat elkerülése érdekében a szabványos server fejlécek
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -280,7 +280,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 ## <a id="firewall-db"></a>A Windows tűzfal konfigurálása a hozzáféréshez
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
 | **SDL Phase**               | Felépítés |  
@@ -291,7 +291,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 ## <a id="cors-api"></a>Győződjön meg arról, hogy csak megbízható források engedélyezettek, ha a CORS engedélyezve van az ASP.NET Web API
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
 | **SDL Phase**               | Felépítés |  
@@ -387,7 +387,7 @@ public class ResourcesController : ApiController
 }
 ```
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
 | **SDL Phase**               | Felépítés |  
@@ -479,7 +479,7 @@ A CORS egy vezérlő vagy a művelet letiltásához használja a [DisableCors] a
 
 ## <a id="config-sensitive"></a>Webes API a konfigurációs fájlok bizalmas adatokat tartalmazó szakaszok titkosítása
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
 | **SDL Phase**               | Környezet |  
@@ -490,7 +490,7 @@ A CORS egy vezérlő vagy a művelet letiltásához használja a [DisableCors] a
 
 ## <a id="admin-strong"></a>Győződjön meg arról, hogy az összes felügyeleti felületeiről biztosított erős hitelesítő adatokkal
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT-eszköz | 
 | **SDL Phase**               | Környezet |  
@@ -501,7 +501,7 @@ A CORS egy vezérlő vagy a művelet letiltásához használja a [DisableCors] a
 
 ## <a id="unknown-exe"></a>Győződjön meg arról, hogy ismeretlen kód nem hajtható végre, az eszközökön
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT-eszköz | 
 | **SDL Phase**               | Felépítés |  
@@ -512,7 +512,7 @@ A CORS egy vezérlő vagy a művelet letiltásához használja a [DisableCors] a
 
 ## <a id="partition-iot"></a>Az operációs rendszer és az AppLocker-bites az IoT-eszközök további partíciók titkosítása
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT-eszköz | 
 | **SDL Phase**               | Felépítés |  
@@ -523,7 +523,7 @@ A CORS egy vezérlő vagy a művelet letiltásához használja a [DisableCors] a
 
 ## <a id="min-enable"></a>Győződjön meg arról, hogy csak a minimális szolgáltatásokat és funkciókat engedélyezve vannak-e az eszközökön
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT-eszköz | 
 | **SDL Phase**               | Környezet |  
@@ -534,7 +534,7 @@ A CORS egy vezérlő vagy a művelet letiltásához használja a [DisableCors] a
 
 ## <a id="field-bit-locker"></a>Az operációs rendszer és az AppLocker-bites mező IoT-átjáró további partíciók titkosítása
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT helyszíni átjáró | 
 | **SDL Phase**               | Környezet |  
@@ -545,7 +545,7 @@ A CORS egy vezérlő vagy a művelet letiltásához használja a [DisableCors] a
 
 ## <a id="default-change"></a>Győződjön meg arról, hogy az alapértelmezett bejelentkezési hitelesítő adatokat a helyszíni átjáró az módosítják a telepítés során
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT helyszíni átjáró | 
 | **SDL Phase**               | Környezet |  
@@ -556,7 +556,7 @@ A CORS egy vezérlő vagy a művelet letiltásához használja a [DisableCors] a
 
 ## <a id="cloud-firmware"></a>Győződjön meg arról, hogy a Felhőátjáró valósít meg egy folyamatot, hogy a csatlakoztatott eszközök belső vezérlőprogramjának naprakészen tartása
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT Cloud Gateway | 
 | **SDL Phase**               | Felépítés |  
@@ -567,7 +567,7 @@ A CORS egy vezérlő vagy a művelet letiltásához használja a [DisableCors] a
 
 ## <a id="controls-policies"></a>Győződjön meg arról, hogy eszközök rendelkeznek-e a szervezeti szabályzatok szerint konfigurált végponti biztonsági vezérlőket
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Gép megbízhatósági kapcsolat határán | 
 | **SDL Phase**               | Környezet |  
@@ -578,7 +578,7 @@ A CORS egy vezérlő vagy a művelet letiltásához használja a [DisableCors] a
 
 ## <a id="secure-keys"></a>Győződjön meg, hogy az Azure storage hozzáférési kulcsok biztonságos felügyeletéhez
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
 | **SDL Phase**               | Környezet |  
@@ -589,7 +589,7 @@ A CORS egy vezérlő vagy a művelet letiltásához használja a [DisableCors] a
 
 ## <a id="cors-storage"></a>Győződjön meg arról, hogy csak megbízható források engedélyezettek, ha a CORS engedélyezve van az Azure storage
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
 | **SDL Phase**               | Felépítés |  
@@ -600,7 +600,7 @@ A CORS egy vezérlő vagy a művelet letiltásához használja a [DisableCors] a
 
 ## <a id="throttling"></a>A szolgáltatás szabályozása a WCF szolgáltatás engedélyezése
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
 | **SDL Phase**               | Felépítés |  
@@ -623,7 +623,7 @@ Az alábbiakban látható egy példa konfiguráció látható sávszélesség-sz
 
 ## <a id="info-metadata"></a>WCF-adatokhoz való illetéktelen hozzáférés, metaadatok keresztül
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
 | **SDL Phase**               | Felépítés |  

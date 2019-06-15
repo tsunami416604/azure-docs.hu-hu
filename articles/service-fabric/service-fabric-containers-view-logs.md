@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/15/2018
 ms.author: aljo
 ms.openlocfilehash: 0408010a49b8ec83aa02c74887139f663788ad80
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60881492"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>A Service Fabric-tároló szolgáltatás naplók megtekintése
@@ -29,12 +29,12 @@ Tárolónaplók használatával lehet elérni [Service Fabric Explorer](service-
 
 Tárolónaplók találhatók, amely a container service-példány fut fürtcsomóponton. Tegyük fel, a webes előtér-tároló, a naplók lekérése az [mintaalkalmazás Linux szavazási](service-fabric-quickstart-containers-linux.md). A fanézetben bontsa ki a **fürt**>**alkalmazások**>**VotingType**>**fabric: / Voting / azurevotefront**.  Ezután bontsa ki a partíció (d1aa737e-f22a-e347-be16-eec90be24bc1, ebben a példában), és tekintse meg, hogy a tároló fut-e a fürtcsomópont *_lnxvm_0*.
 
-A faszerkezetes nézetben található a kódcsomag a *_lnxvm_0* csomópont kibontásával **csomópontok**>**_lnxvm_0**>**fabric: / Voting**  > **azurevotfrontPkg**>**Kódcsomagok**>**kód**.  Válassza ki a **Tárolónaplók** beállítást a tároló naplóinak megjelenítése.
+A faszerkezetes nézetben található a kódcsomag a *_lnxvm_0* csomópont kibontásával **csomópontok**> **_lnxvm_0**>**fabric: / Voting**  > **azurevotfrontPkg**>**Kódcsomagok**>**kód**.  Válassza ki a **Tárolónaplók** beállítást a tároló naplóinak megjelenítése.
 
 ![Service Fabric platform][Image1]
 
 ## <a name="access-the-logs-of-a-dead-or-crashed-container"></a>Halott vagy összeomlott tároló a naplók elérése
-6.2-es kezdődően lehet is beolvasni a naplókat a kézbesíthetetlen vagy összeomlott tároló használatával [REST API-k](/rest/api/servicefabric/sfclient-index) vagy [Service Fabric parancssori felület (SFCTL)](service-fabric-cli.md) parancsokat.
+6\.2-es kezdődően lehet is beolvasni a naplókat a kézbesíthetetlen vagy összeomlott tároló használatával [REST API-k](/rest/api/servicefabric/sfclient-index) vagy [Service Fabric parancssori felület (SFCTL)](service-fabric-cli.md) parancsokat.
 
 ### <a name="set-container-retention-policy"></a>Tárolómegőrzési szabályzat megadása
 A tárolóindítási hibák diagnosztizálásának elősegítése céljából a Service Fabric (6.1-es vagy újabb verzió esetén) támogatja a megszakadt működésű vagy el sem induló tárolók megőrzését. Ez a szabályzat az **ApplicationManifest.xml** fájlban állítható be az alábbi kódrészletben látható módon:

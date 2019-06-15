@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: 73aab0750d97981d6684d04415683435bbd28797
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: be00f8338430452faa8bd5a20d9e2ddfcbb9d09d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980414"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64701293"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>A PowerShell használata Azure virtuális gép által használt operációsrendszer-lemez módosítása
 
 Ha rendelkezik egy meglévő virtuális Gépet, de szeretne váltani a lemezt egy biztonsági mentési lemez vagy egy másik operációsrendszer-lemez, az Azure PowerShell használatával az operációsrendszer-lemez felcserélése. Nem kell törölnie kell, és hozza létre újra a virtuális Gépet. Akkor is használhatja egy felügyelt lemezt egy másik erőforráscsoportban, mindaddig, amíg még nincs használatban.
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 A virtuális gép stopped\deallocated kell, majd a felügyelt lemez az erőforrás-Azonosítójára kicserélhető a különböző felügyelt lemez az erőforrás-azonosítója.
 

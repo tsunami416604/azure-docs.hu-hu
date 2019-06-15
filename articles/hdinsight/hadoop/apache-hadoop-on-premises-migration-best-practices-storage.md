@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
 ms.openlocfilehash: c62a5384edf66fd9309bc7afcb50ada48e3fca7d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64691523"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>A helyszíni Apache Hadoop-fürtök áttelepítése Azure HDInsight - storage ajánlott eljárásai
@@ -73,13 +73,13 @@ keytool -list -v -keystore /path/to/jre/lib/security/cacerts
 
 További információkért tekintse át a következő cikkeket:
 
-- [Az Azure storage használata az Azure HDInsight-fürtökkel](../hdinsight-hadoop-use-blob-storage.md)
+- [Az Azure Storage és az Azure HDInsight-fürtök együttes használata](../hdinsight-hadoop-use-blob-storage.md)
 - [Az Azure Storage skálázhatósági és teljesítménycéljai](../../storage/common/storage-scalability-targets.md)
 - [A Microsoft Azure Storage teljesítmény- és skálázhatósági ellenőrzőlistája](../../storage/common/storage-performance-checklist.md)
 - [Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)
 - [Az Azure Portal tárfiók figyelése](../../storage/common/storage-monitor-storage-account.md)
 
-### <a name="azure-data-lake-storage-gen1"></a>1. generációs Azure Data Lake Storage
+### <a name="azure-data-lake-storage-gen1"></a>1\. generációs Azure Data Lake Storage
 
 Az Azure Data Lake Storage valósítja meg a HDFS- és POSIX stílusú hozzáférés-vezérlési modellből. Az aad-vel az első osztályú integrációs finom részletes hozzáférés-vezérlést biztosít. Adatok tárolására alkalmas, vagy hogy nagymértékben párhuzamos elemzések futtatására mérete nincs korlátozva van.
 
@@ -88,7 +88,7 @@ További információkért tekintse át a következő cikkeket:
 - [Data Lake Storage HDInsight-fürtök létrehozása az Azure portal használatával](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
 - [Data Lake Storage használata az Azure HDInsight-fürtök](../hdinsight-hadoop-use-data-lake-store.md)
 
-### <a name="azure-data-lake-storage-gen2"></a>2. generációs Azure Data Lake Storage
+### <a name="azure-data-lake-storage-gen2"></a>2\. generációs Azure Data Lake Storage
 
 Az Azure Data Lake Storage Gen2 a a legújabb tárolási megoldás. Egy Hadoop-kompatibilis fájl rendszer végponttal közvetlenül az Azure Blob Storage-bA integrált Azure Data Lake Storage első generációja a legfontosabb funkcióit, egyesíti. Ez a fejlesztés megbízhatósága és teljesítménye általában csak a helyszíni fájlrendszerek kapcsolódó objektumtár a méretezési csoport és a költség előnyeit ötvözi.
 

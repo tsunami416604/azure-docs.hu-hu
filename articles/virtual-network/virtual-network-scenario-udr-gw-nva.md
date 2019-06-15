@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
 ms.openlocfilehash: 1bdc485dfb352144e8a8d0fb75965cbb78288e2c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64575579"
 ---
 # <a name="virtual-appliance-scenario"></a>Virtuális berendezés forgatókönyv
@@ -42,11 +42,11 @@ A megoldás az alábbi tűzfal virtuális berendezések használja a szegélyhá
 ## <a name="considerations"></a>Megfontolandó szempontok
 A környezet azt fent kifejtettük, az Azure-ban elérhető különböző funkcióit még ma, az alábbiak szerint telepítheti.
 
-* **Virtuális hálózat (VNet)**. Egy Azure virtuális hálózat hasonlóan zajlik, egy helyszíni hálózat funkcionál, és a egy vagy több alhálózatot forgalom elkülönítése és a kockázatok elkülönítésének osztható.
+* **Virtuális hálózat (VNet)** . Egy Azure virtuális hálózat hasonlóan zajlik, egy helyszíni hálózat funkcionál, és a egy vagy több alhálózatot forgalom elkülönítése és a kockázatok elkülönítésének osztható.
 * **Virtuális berendezés**. Számos partnerünk adja meg a virtuális készülékek az Azure Marketplace-en, amely a fent leírt három tűzfalak is használható. 
-* **Felhasználó által megadott útvonalak (UDR)**. Útvonaltáblák udr-EK és a egy virtuális hálózaton belüli csomagok szabályozásához az Azure-hálózatok által használt is tartalmazhat. Ezek útvonaltáblák alhálózatokra alkalmazható. A legújabb funkciókat az Azure-ban egyik lehetővé teszi egy útválasztási táblázatot az átjáró-alhálózat biztonságosabbá teszi az összes forgalmat a az Azure virtuális hálózat a hibrid kapcsolat virtuális készülékre továbbítja a alkalmazni.
+* **Felhasználó által megadott útvonalak (UDR)** . Útvonaltáblák udr-EK és a egy virtuális hálózaton belüli csomagok szabályozásához az Azure-hálózatok által használt is tartalmazhat. Ezek útvonaltáblák alhálózatokra alkalmazható. A legújabb funkciókat az Azure-ban egyik lehetővé teszi egy útválasztási táblázatot az átjáró-alhálózat biztonságosabbá teszi az összes forgalmat a az Azure virtuális hálózat a hibrid kapcsolat virtuális készülékre továbbítja a alkalmazni.
 * **IP-továbbítás**. Alapértelmezés szerint az Azure hálózati motor továbbítsa a csomagokat a virtuális hálózati adapterek (NIC) csak akkor, ha a csomag cél IP-cím megegyezik a hálózati adapter IP-cím. Ezért ha egy udr-t, hogy egy csomagot kell küldeni egy adott virtuális berendezésre, az Azure hálózati motor adott csomag volna eldobni. Annak érdekében, hogy a csomag egy virtuális Géphez (az ebben az esetben egy virtuális készüléken), amely nem a tényleges cél a csomag számára kézbesíti a rendszer, kell engedélyeznie a virtuális készülék IP-továbbítást.
-* **Hálózati biztonsági csoportok (NSG-k)**. Az alábbi példában nem derül NSG-k használatát, de használhat NSG-ket az alhálózatok és/vagy a hálózati adapterek ebben a megoldásban alkalmazott kívüli alhálózatok és a hálózati adapterek a forgalom további szűréséhez.
+* **Hálózati biztonsági csoportok (NSG-k)** . Az alábbi példában nem derül NSG-k használatát, de használhat NSG-ket az alhálózatok és/vagy a hálózati adapterek ebben a megoldásban alkalmazott kívüli alhálózatok és a hálózati adapterek a forgalom további szűréséhez.
 
 ![IPv6-kapcsolatot](./media/virtual-network-scenario-udr-gw-nva/figure01.png)
 

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 04/06/2018
 ms.author: rapatchi
 ms.openlocfilehash: c33ecce5610dbef0dce13aa95f04ae4f0620603b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60950347"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Az Eclipse Service Fabric beépülő moduljának Java alkalmazásfejlesztése
@@ -42,7 +42,7 @@ Telepítse az Eclipse Neon vagy újabb verzióját az [Eclipse webhelyéről](ht
 
 A Service Fabric beépülő modul telepítéséhez az Eclipse-ben lépjen a **Help** > **Install New Software** (Súgó > Új szoftver telepítése) területre.
 1. Az a **együttműködve** mezőbe írja be a https:\//dl.microsoft.com/eclipse.
-2. Kattintson a **Hozzáadás** parancsra.
+2. Kattintson a **Hozzáadás**lehetőségre.
 
    ![Az Eclipse Service Fabric beépülő modulja][sf-eclipse-plugin-install]
 3. Válassza ki a Service Fabric beépülő modult, majd kattintson a **Next** (Tovább) gombra.

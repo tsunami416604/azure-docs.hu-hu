@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: e9fc8351b5e9a4f2274f0906d4071f86dcbcff26
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60640633"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Az Azure virtuálisgép-ügynök telepítése kapcsolat nélküli módban 
@@ -39,12 +39,12 @@ Az alábbi lépések segítségével Virtuálisgép-ügynök telepítése kapcso
 > [!NOTE]
 > A Virtuálisgép-ügynök telepítése kapcsolat nélküli módban automatizálható.
 > Ehhez használja a [Azure virtuális gép helyreállítási parancsfájlok](https://github.com/Azure/azure-support-scripts/blob/master/VMRecovery/ResourceManager/README.md). Ha az Azure virtuális gép helyreállítási parancsfájlok használatát választja, használhatja az alábbi eljárást:
-> 1. 1. lépés kihagyása az érintett virtuális gép operációsrendszer-lemez egy helyreállítási virtuális Géphez csatolni a parancsfájlok használatával.
+> 1. 1\. lépés kihagyása az érintett virtuális gép operációsrendszer-lemez egy helyreállítási virtuális Géphez csatolni a parancsfájlok használatával.
 > 2. 2 – 10 kockázatcsökkentő alkalmazandó lépésekkel.
 > 3. Ugorjon a 11. lépés a parancsfájlok használatával építse újra a virtuális gép.
 > 4. Hajtsa végre a 12. lépés.
 
-### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>1. lépés: Adatlemezként egy másik virtuális Géphez a virtuális gép operációsrendszer-lemez csatolása
+### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>1\. lépés: Adatlemezként egy másik virtuális Géphez a virtuális gép operációsrendszer-lemez csatolása
 
 1.  Törölje a virtuális Gépet. Ügyeljen arra, hogy válassza ki a **tartsa a lemezek** lehetőséget a virtuális gép törlésekor.
 
@@ -52,7 +52,7 @@ Az alábbi lépések segítségével Virtuálisgép-ügynök telepítése kapcso
 
 3.  Csatlakozzon a hibaelhárító virtuális Géphez. Nyissa meg **számítógép-kezelés** > **lemez kezelése**. Győződjön meg arról, hogy online állapotban-e az operációsrendszer-lemez és, hogy a meghajtóbetűjelek lemezpartícióinak legyenek-e rendelve.
 
-### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>2. lépés: Az Azure Virtuálisgép-ügynök telepítése az operációsrendszer-lemez módosítása
+### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>2\. lépés: Az Azure Virtuálisgép-ügynök telepítése az operációsrendszer-lemez módosítása
 
 1.  Végezzen egy távoli asztali kapcsolatot a hibaelhárító virtuális Géphez.
 

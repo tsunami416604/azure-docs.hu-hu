@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 manager: timlt
 ms.openlocfilehash: eccc4100c89c971e264b9b915cd17b9f5ce4477b
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617444"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64405874"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz (Python)
 
@@ -35,13 +35,13 @@ A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz 
 - Telemetriai adatokat, amely tartalmazza az eszköz összegyűjti a következő mérési:
   - Páratartalom
   - Hőmérséklet
-  - Pressure
+  - Kiürítése
   - Magnetométer (X, Y, a – Z)
   - Érzékelőből (X, Y, a – Z)
   - Giroszkóp (X, Y, a – Z)
 - Beállítások
   - Feszültségérzékelő
-  - Aktuális
+  - Jelenlegi
   - Sebesség ventilátor
   - Integrációs modul váltógombot.
 - Tulajdonságok
@@ -94,24 +94,24 @@ A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz 
 
 Numerikus beállításai
 
-| Megjelenített név | Mező neve | Egység | Tizedeshelyek | Minimális | Maximum | Kezdeti |
+| Display name | Mező neve | Egység | Tizedeshelyek | Minimális | Maximum | Kezdeti |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Feszültségérzékelő      | setVoltage | V | 0              | 0       | 240     | 0       |
-| Aktuális      | setCurrent | Teljesítménytényező  | 0              | 0       | 100     | 0       |
+| Jelenlegi      | setCurrent | Teljesítménytényező  | 0              | 0       | 100     | 0       |
 | Sebesség ventilátor    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
 A beállítások ki-/ bekapcsolása
 
-| Megjelenített név | Mező neve | A szöveg | Ki a szöveg | Kezdeti |
+| Display name | Mező neve | A szöveg | Ki a szöveg | Kezdeti |
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | activateIR | ON      | KI      | Ki     |
 
 ### <a name="properties"></a>Tulajdonságok
 
-| Typo            | Megjelenített név | Mező neve | Adattípus |
+| Típus            | Display name | Mező neve | Adattípus |
 | --------------- | ------------ | ---------- | --------- |
 | Eszköztulajdonság | Die száma   | dieNumber  | szám    |
-| Szöveg            | Földrajzi egység     | location   | –       |
+| Text            | Location egység     | location   | –       |
 
 ## <a name="next-steps"></a>További lépések
 

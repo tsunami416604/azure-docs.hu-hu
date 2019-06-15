@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.openlocfilehash: f72d49a3ab204ce64eb89d0f05630b640c138e0a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61390228"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Linux rendszerű VHD letöltése az Azure-ból
@@ -72,7 +72,7 @@ A VHD-fájl letöltéséhez, létre kell hoznia egy [közös hozzáférésű jog
 2.  Válassza ki az operációsrendszer-lemez a virtuális gép, és kattintson **exportálása**.
 3.  Kattintson a **URL-címet generálni**.
 
-    ![URL-cím generálása](./media/download-vhd/export-generate.png)
+    ![URL-címet generálni](./media/download-vhd/export-generate.png)
 
 ## <a name="download-vhd"></a>Töltse le a virtuális merevlemez
 

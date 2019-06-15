@@ -8,10 +8,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: 6c09b509399647f4cacbc96427200da5a1b00ac9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61000751"
 ---
 # <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>A data catalog és adategységeket való hozzáférés biztonságossá tétele
@@ -28,7 +28,7 @@ A hozzáférést egy felhasználó vagy csoport az adatkatalógust, valamint eng
     ![a Data catalog – beállítások](media/data-catalog-how-to-secure-catalog/data-catalog-settings.png)
 2. A beállítások lapon bontsa ki a **katalógus felhasználói** szakaszban.
     ![Felhasználók – a katalógus hozzáadása](media/data-catalog-how-to-secure-catalog/data-catalog-add-button.png)
-3. Kattintson a **Hozzáadás** parancsra.
+3. Kattintson a **Hozzáadás**lehetőségre.
 4. Adja meg a teljes **felhasználónév** neve vagy a **biztonsági csoport** a az Azure Active Directory (AAD) társított a katalógusban. Vesszővel (', '), hozzáadásakor az elválasztó több mint egy felhasználónak vagy csoportnak.
     ![Katalógus felhasználói - felhasználók vagy csoportok](media/data-catalog-how-to-secure-catalog/data-catalog-users-groups.png)
 5. Nyomja meg **ENTER** vagy **lapon** a szövegmezőben jelölje ki. 

@@ -11,15 +11,15 @@ ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: seodec18
 ms.openlocfilehash: 0421ec62d25bbfaba2909d16498cac5afd038a53
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60737278"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Az Azure Functions az Azure Cosmos DB-kötéseket 1.x
 
-> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> [!div class="op_single_selector" title1="Válassza ki az Azure Functions futtatókörnyezettel, használja a verzióját: "]
 > * [1-es verzió](functions-bindings-cosmosdb.md)
 > * [2-es verzió](functions-bindings-cosmosdb-v2.md)
 
@@ -191,7 +191,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | (Nem kötelező) A kapcsolati karakterláncot a szolgáltatásnak, amely tartalmazza a bérletek gyűjteményének tartalmazó alkalmazásbeállítás neve. Ha nincs megadva, a `connectionStringSetting` értéket használja. Ez a paraméter értéke a portálon a kötés létrehozásakor automatikusan. A bérletek gyűjteménye kapcsolati karakterláncára írási engedéllyel kell rendelkeznie.|
 |**leaseDatabaseName** |**LeaseDatabaseName** | (Nem kötelező) A database csatlakoztatásához használt bérletek tárolásához használni kívánt gyűjtemény neve. Ha nincs megadva, az értékét a `databaseName` beállítást használja. Ez a paraméter értéke a portálon a kötés létrehozásakor automatikusan. |
 |**leaseCollectionName** | **leaseCollectionName** | (Nem kötelező) A használt bérletek tárolásához használni kívánt gyűjtemény neve. Ha nincs megadva, az érték `leases` szolgál. |
-|**CreateLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | (Nem kötelező) Ha a beállítása `true`, a bérletek gyűjteménye automatikusan létrejön, amikor még nem létezik. Az alapértelmezett érték `false`. |
+|**createLeaseCollectionIfNotExists** | **createLeaseCollectionIfNotExists** | (Nem kötelező) Ha a beállítása `true`, a bérletek gyűjteménye automatikusan létrejön, amikor még nem létezik. Az alapértelmezett érték `false`. |
 |**leasesCollectionThroughput**| **leasesCollectionThroughput**| (Nem kötelező) A Kérelemegységek rendel a bérletek gyűjteménye létrehozásakor mennyisége határozza meg. Ez a beállítás csak használhatók, amikor nem `createLeaseCollectionIfNotExists` értékre van állítva `true`. Ez a paraméter értéke automatikusan, a kötés létrehozásakor a portál használatával.
 |**leaseCollectionPrefix**| **leaseCollectionPrefix**| (Nem kötelező) Érték beállítása esetén azt ad hozzá egy előtagot a bérletek a bérletek gyűjteményének ennél a függvénynél, hatékonyan lehetővé teszi két különálló Azure Functions, az ugyanazon a bérletek gyűjteményének megosztása más előtagok használatával létrehozott.
 |**feedPollDelay**| **feedPollDelay**| (Nem kötelező) Ha a készlet, azt határozza meg, ezredmásodpercben, a késleltetés között egy partíciót a hírcsatorna az új módosításokat a lekérdezések összes aktuális változtatások vannak ürítve. Alapértelmezés szerint 5000 (5 másodperces).

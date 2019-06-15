@@ -10,10 +10,10 @@ ms.date: 12/21/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9682b9b832a8fd7374cb84e8cc6faad69df15945
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61333865"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Hitelesítés a egy privát Docker regisztrációs adatbázist
@@ -36,7 +36,7 @@ A beállításjegyzék eléréséhez, a token által használt `az acr login` é
 
 Használatával `az acr login` biztosít az Azure-identitások [szerepköralapú hozzáférés-](../role-based-access-control/role-assignments-portal.md). Bizonyos esetekben érdemes lehet, hogy jelentkezzen be a beállításjegyzék a saját egyéni identitás az Azure AD-ben. Szolgáltatások közötti forgatókönyvek esetén, vagy nem kívánja az egyes hozzáférés kezelése a munkacsoport igényeinek kezeléséhez is bejelentkezhet a következővel egy [-identitás az Azure-erőforrások](container-registry-authentication-managed-identity.md).
 
-## <a name="service-principal"></a>Szolgáltatásnév
+## <a name="service-principal"></a>Egyszerű szolgáltatás
 
 Ha egy [szolgáltatásnév](../active-directory/develop/app-objects-and-service-principals.md) a regisztrációs adatbázisba, az alkalmazás vagy szolgáltatás használhatja azt hitelesítésre távfelügyelt. Az egyszerű szolgáltatások engedélyezése [szerepköralapú hozzáférés-](../role-based-access-control/role-assignments-portal.md) egy regisztrációs adatbázisba, és több szolgáltatásnevek hozzárendelhet egy regisztrációs adatbázisba. Több szolgáltatásnevek lehetővé teszik a különböző alkalmazások különböző hozzáférés meghatározásához.
 

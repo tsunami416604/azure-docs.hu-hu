@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: v-sharos
 ms.openlocfilehash: 8ad3f09bf46caf426b2008b583ebd2ff78522462
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60302517"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64713066"
 ---
 # <a name="troubleshoot-an-operational-storsimple-device"></a>Működési StorSimple-eszköz hibaelhárítása
 > [!NOTE]
@@ -45,9 +45,9 @@ A varázsló nem jelszó adatgyűjtési és -eszköz regisztrációja kapcsolato
 ## <a name="errors-that-occur-during-subsequent-runs-of-the-setup-wizard"></a>A telepítő varázsló későbbi futtatások során felmerülő hibák
 A következő táblázat ismerteti a hibák fordulhatnak elő, amikor futtatja a egy működési eszközön telepítővarázsló, a hibák lehetséges okát, és javasolt műveletek a problémák megoldásához. 
 
-| Nem. | Hiba vagy feltétel | A lehetséges okok | Javasolt művelet |
+| Nem. | Hiba vagy feltétel | Lehetséges okok | Javasolt művelet |
 |:--- |:--- |:--- |:--- |
-| 1 |350032. hiba: Az eszköz már inaktiválva van. |Ez a hiba jelenik meg a varázsló futtatásakor az inaktivált eszközön. |A további lépésekért [forduljon a Microsoft ügyfélszolgálatához](storsimple-contact-microsoft-support.md). Inaktivált eszköz nem állítható. Ebben a szolgáltatásban. A gyári beállítások visszaállítását akkor lehet szükség, az eszköz újra aktiválása előtt. |
+| 1 |350032\. hiba: Az eszköz már inaktiválva van. |Ez a hiba jelenik meg a varázsló futtatásakor az inaktivált eszközön. |A további lépésekért [forduljon a Microsoft ügyfélszolgálatához](storsimple-contact-microsoft-support.md). Inaktivált eszköz nem állítható. Ebben a szolgáltatásban. A gyári beállítások visszaállítását akkor lehet szükség, az eszköz újra aktiválása előtt. |
 | 2 |Invoke-hcssetupwizard: parancsmagot ERROR_INVALID_FUNCTION (kivétel HRESULT: 0x80070001) |A DNS-kiszolgáló frissítése sikertelen. DNS-beállításainak globálisak, és minden engedélyezett hálózati adaptert érvényesek. |A felület engedélyezéséhez és a DNS-beállítások alkalmazásához újra. Ez előfordulhat, hogy zavarja a hálózat többi engedélyezett adapterek, mivel ezek a beállítások globális. |
 | 3 |Az eszköz úgy tűnik, hogy a StorSimple Manager szolgáltatás portálon elérhető nem lesz, de meg a minimális telepítés befejezéséhez és a konfiguráció mentéséhez, a művelet sikertelen lesz. |Kezdeti beállítás során a webalkalmazás-proxy nem volt konfigurálva, annak ellenére, hogy hiba történt egy tényleges proxykiszolgáló helyen. |Használja a [Test-HcsmConnection parancsmaggal] [ 2] keresse meg a hibát. [Forduljon a Microsoft Support](storsimple-contact-microsoft-support.md) Ha nem sikerül, a probléma elhárításához. |
 | 4 |Invoke-hcssetupwizard: parancsmagot Érték nem a várt tartományba esik. |Alhálózati maszk ezt a hibát eredményez. Lehetséges okok a következők: <ul><li> Az alhálózati maszk nem található vagy üres.</li><li>Az Ipv6-előtag formátuma nem megfelelő.</li><li>A felület felhőalapú, de az átjáró nem hiányzik vagy helytelen.</li></ul>Vegye figyelembe, hogy a DATA 0 automatikusan felhőképes, ha a telepítővarázsló keresztül lehet konfigurálni. |Annak megállapításához, a probléma, 0.0.0.0 vagy 256.256.256.256 alhálózatot használja, és tekintse meg a kimenetet. Adja meg a megfelelő értékeit az alhálózati maszk, az átjáró és az Ipv6-előtagot, igény szerint. |

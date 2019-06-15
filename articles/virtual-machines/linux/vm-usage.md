@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
 ms.openlocfilehash: d3e6d3c534a9295b76043dc8a6e01b9c1bb1496e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60743207"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Az Azure virtuális gép használatának megismerése
@@ -42,7 +42,7 @@ Első lépésként [a használati adatok letöltése](https://docs.microsoft.com
 | Consumed Service (Használt szolgáltatás)   | Az Azure platformszolgáltatás, amely használt.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | "Microsoft.Compute"                                                                                                                                                                                                                                                                                                                                              |
 | Erőforráscsoport     | Az az erőforráscsoport, amelyben az üzembe helyezett erőforrás fut. További információkért lásd: [Azure Resource Manager áttekintése.](https://docs.microsoft.com/azure/virtual-machines/linux/vm-usage)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |    "MyRG"                                                                                                                                                                                                                                                                                                                                                        |
 | Instance ID (Példányazonosító)        | Az erőforrás azonosítója. Az azonosító tartalmazza az erőforrás számára a létrehozáskor megadott nevet. A virtuális gépek esetében a példány Azonosítóját fogja tartalmazni, a SubscriptionId, ResourceGroupName és VMName (vagy a méretezési csoport skálázási készlet használati neve).                                                                                                                                                                                                                                                                                                                                                                                                                    | "/ előfizetés/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx / resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1"<br><br>vagy<br><br>"/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1”                                                                                           |
-| Címkék               | Az erőforráshoz hozzárendelt címkét. Használjon címkéket, hogy a számlázási rekordok csoportosítására. Ismerje meg, hogyan [címkézése a virtuális gépek.](tag.md) Ez a tulajdonság erőforrás-kezelő virtuális gép esetében elérhető csak.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | "{"myDepartment":"RD","myUser":"myName"}"                                                                                                                                                                                                                                                                                                                        |
+| Tags               | Az erőforráshoz hozzárendelt címkét. Használjon címkéket, hogy a számlázási rekordok csoportosítására. Ismerje meg, hogyan [címkézése a virtuális gépek.](tag.md) Ez a tulajdonság erőforrás-kezelő virtuális gép esetében elérhető csak.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | "{"myDepartment":"RD","myUser":"myName"}"                                                                                                                                                                                                                                                                                                                        |
 | Additional Info (További információ)    | Szolgáltatásspecifikus metaadatok láthatók. A virtuális gépek esetében feltöltünk a mezőben további információkat a következő adatokat: <ul><li>Lemezkép típusa-specifikus kép, amely futtatta. Keresse meg a teljes listát a támogatott karakterláncokat alábbi lemezképek típusai alapján.</li><li>Szolgáltatás típusa: mérete központilag.</li><li>VMName: a virtuális gép nevét. Ez a mező csak akkor van feltöltve, a méretezési csoport virtuális gépeinek. Ha a virtuális gép nevét, a méretezési csoport beállítása virtuális gépekhez, találhatja meg, hogy a fenti Példányazonosító karakterlánc.</li><li>UsageType: Megadja a vásárlói használati típusát.<ul><li>ComputeHR a számítási óra felhasználás a mögöttes virtuális gép, például a standard D1 v2.</li><li>ComputeHR_SW a prémium szintű szoftverhasználati díj, ha a virtuális gép által használt premium szoftvereit, például a Microsoft R Server.</li></ul></li></ul>    | Virtual Machines {"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR"}<br><br>Virtual Machine Scale Sets {"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"myVM1", "UsageType":"ComputeHR"}<br><br>Premium Software {"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"} |
 
 ## <a name="image-type"></a>Lemezkép típusa
@@ -64,7 +64,7 @@ Az egyes rendszerképek az Azure katalógusában a kép típusa töltse be a tov
   - A Windows Server BYOL 
   - A Windows Server előzetes verzió 
 
-## <a name="service-type"></a>Szolgáltatás típusa
+## <a name="service-type"></a>Service Type
 A szolgáltatás típusú mező a további adatok mezőben felel meg a pontos üzembe helyezett Virtuálisgép-méretet. Prémium szintű tárolós virtuális gépek (SSD-alapú) és a nem prémium szintű tárolós virtuális gépek (HDD-alapú) díjszabása megegyezik. Telepít egy SSD-alapú mérete, mint például a Standard\_DS2\_v2-ben nem SSD méretének megtekintéséhez ("Standard\_D2\_v2 virtuális gép") a mérőszám alkategóriája oszlop és az SSD-méret ("szabványos\_DS2\_ v2 ") a további adatok mezőben.
 
 ## <a name="region-names"></a>Régió neve
@@ -72,8 +72,8 @@ A régió neve, töltse be a használat részleteiről az erőforrás helyének 
 
 |    **Erőforrás-kezelő régió neve**       |    **A használat részleteiről erőforrás helye**    |
 |--------------------------|------------------------------------------|
-|    australiaeast         |    Ausztrália keleti régiója                               |
-|    australiasoutheast    |    Délkelet-Ausztrália                          |
+|    Kelet-Ausztrália         |    Ausztrália keleti régiója                               |
+|    Délkelet-Ausztrália    |    Délkelet-Ausztrália                          |
 |    brazilsouth           |    Dél-Brazília                              |
 |    CanadaCentral         |    Közép-Kanada                            |
 |    CanadaEast            |    Kelet-Kanada                               |
@@ -101,9 +101,9 @@ A régió neve, töltse be a használat részleteiről az erőforrás helyének 
 |    ukwest                |    Az Egyesült Királyság nyugati régiója                               |
 |    USDoDCentral          |    US DoD – Középső régió                        |
 |    USDoDEast             |    US DoD – Kelet                           |
-|    USGovArizona          |    USA-beli államigazgatás – Arizona                         |
+|    USGovArizona          |    USGov Arizona                         |
 |    usgoviowa             |    USGov Iowa                            |
-|    USGovTexas            |    USA-beli államigazgatás – Texas                           |
+|    USGovTexas            |    USGov Texas                           |
 |    usgovvirginia         |    USGov Virginia                        |
 |    westcentralus         |    USA nyugati középső régiója                       |
 |    westeurope            |    Nyugat-Európa                           |

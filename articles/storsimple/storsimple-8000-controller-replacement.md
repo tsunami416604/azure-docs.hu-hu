@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: dd2f6fcc9b2f5d716566e91e89487969613d1005
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61482870"
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>Cserélje le a StorSimple eszköz vezérlő modul
@@ -79,12 +79,12 @@ Ha az egyik vezérlő a Microsoft Azure StorSimple-eszköz nem sikerül, kövess
 
 #### <a name="to-remove-a-single-failed-controller-module"></a>Egyetlen eltávolítása sikertelen volt a vezérlő modul
 1. Az Azure Portalon keresse meg a StorSimple-Eszközkezelő szolgáltatást, kattintson a **eszközök**, és kattintson a figyelni kívánt eszköz nevét.
-2. Lépjen a **figyelő > hardverállapot**. 0. vezérlő vagy a vezérlő 1 állapotát kell piros, ami egy hibát jelez.
+2. Lépjen a **figyelő > hardverállapot**. 0\. vezérlő vagy a vezérlő 1 állapotát kell piros, ami egy hibát jelez.
    
    > [!NOTE]
    > Az egyetlen tartományvezérlő helyettesíti a hibás vezérlők, mindig a készenléti állapotban lévő vezérlőnek.
    
-3. 1. ábra és a következő táblázat segítségével keresse meg a hibás vezérlők modul.
+3. 1\. ábra és a következő táblázat segítségével keresse meg a hibás vezérlők modul.
    
     ![Az eszköz elsődleges ház modulok csatlakozópanel meghibásodása](./media/storsimple-controller-replacement/IC740994.png)
    
@@ -94,8 +94,8 @@ Ha az egyik vezérlő a Microsoft Azure StorSimple-eszköz nem sikerül, kövess
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |PCM 1 |
-   | 3 |0. vezérlő |
-   | 4 |1. vezérlő |
+   | 3 |Vezérlő 0 |
+   | 4 |Vezérlő 1 |
 4. A hibás tartományvezérlőre távolítsa el az összes csatlakoztatott hálózati kábel adatok portot. Ha egy 8600-as modellt használja, is távolítsa el a SAS-kábel, amely a vezérlő csatlakozni az EBOD-vezérlő.
 5. Kövesse a [egy vezérlő eltávolítása](#remove-a-controller) a hibás vezérlők eltávolítása.
 6. Telepítse a gyári helyettesítő ugyanaz a tárolóhely, amelyről a hibás vezérlők el lett távolítva. Ez elindítja az egyetlen tartományvezérlő helyettesítő logikát. További információkért lásd: [egyetlen vezérlő cseréje logikai](#single-controller-replacement-logic).
@@ -159,7 +159,7 @@ Ez a munkafolyamat kötelező, amikor mindkét vezérlő a Microsoft Azure StorS
 A következő eljárás használatával távolítsa el a hibás vezérlő modul a StorSimple-eszköz.
 
 > [!NOTE]
-> Az alábbi ábrákon 0. vezérlő vonatkoznak. 1. vezérlő ezek akkor vonható vissza.
+> Az alábbi ábrákon 0. vezérlő vonatkoznak. 1\. vezérlő ezek akkor vonható vissza.
 
 
 #### <a name="to-remove-a-controller-module"></a>Egy tartományvezérlő modul eltávolítása

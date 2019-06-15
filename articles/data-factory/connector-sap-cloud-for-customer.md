@@ -3,21 +3,20 @@ title: Adatok másolása Azure blobból vagy az SAP-felhő ügyfél az Azure Dat
 description: Megtudhatja, hogyan másolhat adatokat az ügyfél a támogatott fogadó adattárakba SAP-felhő (vagy) támogatott forrás adattárakból származó SAP-felhő ügyfél Data Factory használatával.
 services: data-factory
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: linda33wj
+manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 04/17/2018
-ms.date: 04/22/2019
-ms.author: v-jay
+ms.date: 04/17/2018
+ms.author: jingwang
 ms.openlocfilehash: e4625b934f9e1cf98254f3dee59f9c26e8e16fb5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60578708"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Azure Data Factory használatával az ügyfél (C4C) SAP-felhő adatok másolása
@@ -59,7 +58,7 @@ A következő tulajdonságok SAP-felhő az ügyfélszolgálat társított támog
     "properties": {
         "type": "SapCloudForCustomer",
         "typeProperties": {
-            "url": "https://<tenantname>.crm.ondemand.cn/sap/c4c/odata/v1/c4codata/" ,
+            "url": "https://<tenantname>.crm.ondemand.com/sap/c4c/odata/v1/c4codata/" ,
             "username": "<username>",
             "password": {
                 "type": "SecureString",

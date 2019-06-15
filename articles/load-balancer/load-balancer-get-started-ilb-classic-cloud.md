@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: genli
 ms.openlocfilehash: 361322ded68f7c8305c4f976847d4bcb82f7e595
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60626162"
 ---
 # <a name="get-started-creating-an-internal-load-balancer-classic-for-cloud-services"></a>Bevezetés a belső terheléselosztó (klasszikus) felhőszolgáltatásokhoz történő létrehozásába
@@ -39,7 +39,7 @@ A belső terheléselosztó konfigurációját be kell állítania az alábbi min
 > [!IMPORTANT]
 > Az alábbi lépések futtatásának előfeltétele, hogy a felhőtelepítéshez már létre legyen hozva egy virtuális hálózat. A belső terheléselosztás létrehozásához szüksége lesz a virtuális hálózat és az alhálózat nevére.
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 Nyissa meg a felhőtelepítéshez szükséges szolgáltatáskonfigurációs fájlt (.cscfg) a Visual Studióban, és a hálózat konfigurálásához adja hozzá a következő szakaszt az utolsó „`</Role>`” elem alatt, hogy létrehozhassa a belső terheléselosztást.
 
@@ -67,7 +67,7 @@ Adja meg a hálózat konfigurációs fájljához szükséges értékeket, hogy l
 
 A terheléselosztó sémájával kapcsolatos további információkért lásd: [Add load balancer](https://msdn.microsoft.com/library/azure/dn722411.aspx) (Terheléselosztó hozzáadása).
 
-### <a name="step-2"></a>2. lépés
+### <a name="step-2"></a>2\. lépés
 
 Ha végpontokat szeretne hozzáadni a belső terheléselosztáshoz, módosítsa a szolgáltatásdefiníciós fájlt (.csdef). Szerepkörpéldány létrehozásakor a szolgáltatásdefiníciós fájl hozzáadja a szerepkörpéldányokat a belső terheléselosztáshoz.
 

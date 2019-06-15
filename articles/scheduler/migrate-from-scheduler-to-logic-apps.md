@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/20/2018
 ms.openlocfilehash: 25ed66fd75301475542dbac8e8a01670ee37563c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60531774"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Az Azure Scheduler-feladatok migrálása az Azure Logic Apps
@@ -102,7 +102,7 @@ Manuálisan futtassa, vagy egy egyszeri feladat eseményindítót, küldjön egy
 
 Például a Postman alkalmazással, akkor is hozzon létre egy POST kérést beállításokkal a következő mintához hasonló, és válassza **küldése** a kérés.
 
-| Kérelem metódusa | URL-cím | Törzs | Fejlécek |
+| Kérelmi metódus | URL-cím | Törzs | Fejlécek |
 |----------------|-----|------|---------| 
 | **POST** | <*végpont-URL-címe*> | **nyers** <p>**JSON(application/json)** <p>Az a **nyers** adja meg a hasznos adatokat szeretne küldeni a kérésben. <p>**Megjegyzés**: Ezt a beállítást, automatikusan konfigurálja a **fejlécek** értékeket. | **kulcs**: Content-Type <br>**Érték**: application/json
  |||| 
@@ -159,7 +159,7 @@ Az alábbiakban az egyéb módon testre szabhatja a feladatok.
 
 Szabályozhatja az művelet megkísérli újra futtatni a logikai alkalmazás az időszakos meghibásodások esetén, beállíthatja a [újrapróbálkozási szabályzat](../logic-apps/logic-apps-exception-handling.md#retry-policies) minden művelet beállításai, például:
 
-1. Nyissa meg a műveletet (**...** ) menüre, és válassza ki **beállítások**.
+1. Nyissa meg a műveletet ( **...** ) menüre, és válassza ki **beállítások**.
 
    ![Nyissa meg a művelet beállításai](./media/migrate-from-scheduler-to-logic-apps/action-settings.png)
 
@@ -179,9 +179,9 @@ Az Azure Schedulerben Ha az alapértelmezett művelet nem sikerül futtatni, egy
 
    ![Párhuzamos művelet hozzáadása](./media/migrate-from-scheduler-to-logic-apps/add-parallel-action.png)
 
-1. Az alternatív műveletet, nyissa meg a (**...** ) menüre, és válassza ki **konfigurálása futtassa**.
+1. Az alternatív műveletet, nyissa meg a ( **...** ) menüre, és válassza ki **konfigurálása futtassa**.
 
-   ![Esemény utáni futtatás konfigurálása](./media/migrate-from-scheduler-to-logic-apps/configure-run-after.png)
+   ![Esemény utáni Futtatás konfigurálása](./media/migrate-from-scheduler-to-logic-apps/configure-run-after.png)
 
 1. Törölje a jelölését a **sikeres** tulajdonság. Válassza ki ezeket a tulajdonságokat: **sikertelen**, **kimarad**, és **túllépte az időkorlátot**
 

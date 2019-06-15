@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: v-sharos@microsoft.com
 ms.openlocfilehash: 63906e65acb8e8aa836e6e59714bddca24ea21eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60630187"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>A StorSimple 8000 sorozat: a hibrid felhőalapú tárolási megoldás
@@ -36,7 +36,7 @@ Tárolási felügyeleten felül a StorSimple adatvédelmi funkciók engedélyez�
 ## <a name="why-use-storsimple"></a>A StorSimple miért érdemes használni?
 A következő táblázat néhány fontos előnye, hogy a Microsoft Azure StorSimple biztosít.
 
-| Szolgáltatás | Előny |
+| Funkció | Előny |
 | --- | --- |
 | Transzparens integráció |Használja az iSCSI protokoll alapfeladatokat tárolólétesítmények adatok mutat. Ez biztosítja, hogy az adatközpont, a felhőben tárolt adatok, vagy a távoli kiszolgálókon úgy tűnik, hogy egyetlen helyen kell tárolni. |
 | Alacsonyabb tárolási költségek |Foglalja le a megfelelő helyi vagy felhőbeli tárhely aktuális igények figyelembevételével, és kiterjeszti a felhőalapú tárolás csak szükség esetén. Ez tovább csökkenti a tárolási követelmények és költségek ugyanazokat az adatokat (a deduplikáció) redundáns verziói kiküszöbölése révén, és a tömörítéssel. |
@@ -209,13 +209,13 @@ A StorSimple elvégezhető feladatok összefoglalása a lenti táblázatban lát
 | --- | --- | --- | --- | --- |
 | Együttműködés |Fájlmegosztás |Igen | |Az összes verzió |
 | Együttműködés |Elosztott fájlmegosztás |Igen | |Az összes verzió |
-| Együttműködés |SharePoint |Igen* |Csak a helyileg rögzített kötetekhez támogatott |2. frissítés vagy újabb |
+| Együttműködés |SharePoint |Igen* |Csak a helyileg rögzített kötetekhez támogatott |2\. frissítés vagy újabb |
 | Archiválás |Egyszerű fájlba az Archiválás |Igen | |Az összes verzió |
-| Virtualizáció |Virtual machines (Virtuális gépek) |Igen* |Csak a helyileg rögzített kötetekhez támogatott |2. frissítés vagy újabb |
-| Adatbázis |SQL |Igen* |Csak a helyileg rögzített kötetekhez támogatott |2. frissítés vagy újabb |
-| Videó felügyelet |Videó felügyelet |Igen* |Támogatott, ha a StorSimple-eszköz csak a számítási feladatok vannak kijelölve |2. frissítés vagy újabb |
-| Backup |Elsődleges célhely biztonsági mentés |Igen* |Támogatott, ha a StorSimple-eszköz csak a számítási feladatok vannak kijelölve |3. frissítés vagy újabb |
-| Backup |Másodlagos cél biztonsági mentés |Igen* |Támogatott, ha a StorSimple-eszköz csak a számítási feladatok vannak kijelölve |3. frissítés vagy újabb |
+| Virtualizáció |Virtual machines (Virtuális gépek) |Igen* |Csak a helyileg rögzített kötetekhez támogatott |2\. frissítés vagy újabb |
+| Adatbázis |SQL |Igen* |Csak a helyileg rögzített kötetekhez támogatott |2\. frissítés vagy újabb |
+| Videó felügyelet |Videó felügyelet |Igen* |Támogatott, ha a StorSimple-eszköz csak a számítási feladatok vannak kijelölve |2\. frissítés vagy újabb |
+| Backup |Elsődleges célhely biztonsági mentés |Igen* |Támogatott, ha a StorSimple-eszköz csak a számítási feladatok vannak kijelölve |3\. frissítés vagy újabb |
+| Backup |Másodlagos cél biztonsági mentés |Igen* |Támogatott, ha a StorSimple-eszköz csak a számítási feladatok vannak kijelölve |3\. frissítés vagy újabb |
 
 *Igen&#42; -megoldás irányelvek és korlátozások kell alkalmazni.*
 
@@ -273,7 +273,7 @@ A Microsoft Azure StorSimple megoldás üzembe helyezése előtt javasoljuk, hog
 | felhőalapú tárolás titkosítási kulcsa |Jelszó vagy egy kulcsot a StorSimple-eszköz használja a titkosított adatokat a felhőbe a eszköz által küldött elérésére. |
 | fürttámogató frissítés |Szoftverfrissítések egy feladatátvevő fürtben lévő kiszolgálók kezelése, hogy a frissítések minimális, vagy nincs hatással a szolgáltatás rendelkezésre állása. |
 | DataPath |Funkcionális egység közötti csatlakoztatott adatokat feldolgozó műveleteket végrehajtó gyűjteménye. |
-| inaktiválás |Egy állandó művelet, amely a StorSimple-eszköz és a kapcsolódó felhőalapú szolgáltatás közötti kapcsolat megszakad. Felhőbeli pillanatképekkel az eszköz ezen folyamat után továbbra is, és is klónozta vagy vész-helyreállítási használt. |
+| inaktiválása |Egy állandó művelet, amely a StorSimple-eszköz és a kapcsolódó felhőalapú szolgáltatás közötti kapcsolat megszakad. Felhőbeli pillanatképekkel az eszköz ezen folyamat után továbbra is, és is klónozta vagy vész-helyreállítási használt. |
 | lemez tükrözés |Logikai lemez-kötetek a külön, rögzített replikációs meghajtók valós idejű folyamatos rendelkezésre állás biztosítása érdekében. |
 | dinamikus lemez-tükrözés |A dinamikus lemezek a logikai lemez kötet replikálása. |
 | a dinamikus lemezek |Egy kötet lemezformátum, amely a logikai lemezkezelő (LDM) használatával tárolhatja és kezelheti az adatokat több fizikai lemezek között. Szabadítson fel helyet adja meg a dinamikus lemezek is javasolt. |

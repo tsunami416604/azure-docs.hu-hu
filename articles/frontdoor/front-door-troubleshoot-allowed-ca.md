@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 09/23/2018
 ms.author: sharadag
 ms.openlocfilehash: 5cf94079dcd68887d9725ffbe9124f9b6c897dd0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60736156"
 ---
 # <a name="allowed-certificate-authorities-for-enabling-custom-https-on-azure-front-door-service"></a>Hitelesítésszolgáltatók engedélyezett az Azure bejárati ajtajának Service egyéni HTTPS engedélyezése
@@ -76,7 +76,7 @@ A következő CAs engedélyezettek a saját tanúsítvány létrehozásakor:
 - TrustAsia TLS RSA CA
 - SSL-Hitelesítésszolgáltatói VeriSign osztály 3 bővített ellenőrzés
 - A VeriSign osztály 3 bővített ellenőrzés SSL kiszolgáló által Kezdeményezett hitelesítésszolgáltató
-- 3. a VeriSign osztály nyilvános elsődleges hitelesítésszolgáltató - G5
+- 3\. a VeriSign osztály nyilvános elsődleges hitelesítésszolgáltató - G5
 - A VeriSign nemzetközi kiszolgáló CA - 3 osztályban
 - VeriSign Time Stamping Service Root
 - A VeriSign univerzális legfelső szintű hitelesítésszolgáltató

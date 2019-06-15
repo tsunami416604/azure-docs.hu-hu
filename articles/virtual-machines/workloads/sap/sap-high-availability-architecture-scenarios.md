@@ -18,10 +18,10 @@ ms.date: 01/21/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 37f5040585681a53743fb3426b7f7ffac36de51c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60936279"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Magas rendelkezésre állású architektúra és forgatókönyvek az SAP NetWeaver számára
@@ -350,7 +350,7 @@ A következő szakaszok ismertetik az összes három kritikus fontosságú SAP r
 
 Általában nincs szükség egy adott magas rendelkezésre állású megoldás esetében az SAP-kiszolgáló és a párbeszédpanel alkalmazáspéldányok. Magas rendelkezésre állás, a redundancia, és Azure-beli virtuális gépek különböző példányainak alkalmazáspéldányok párbeszédpanelen konfigurálja. Az SAP-alkalmazás legalább két példányt az Azure-beli virtuális gépek két példánya telepítve kell lennie.
 
-![1. ábra: Magas rendelkezésre állású SAP-alkalmazáskiszolgáló][sap-ha-guide-figure-2000]
+![1\. ábra: Magas rendelkezésre állású SAP-alkalmazáskiszolgáló][sap-ha-guide-figure-2000]
 
 _**1. ábra:** Magas rendelkezésre állású SAP-alkalmazáskiszolgáló_
 
@@ -369,7 +369,7 @@ A frissítési és tartalék tartományok, amelyek segítségével az Azure rend
 Ha telepít néhány SAP alkalmazáskiszolgáló-példányok saját dedikált virtuális gépeken, feltéve, hogy van-e öt frissítési tartománnyal, a következő képen látható jelenik meg. Rendelkezésre állási csoporton belül frissítési és tartalék tartományok tényleges maximális száma a későbbiekben változhatnak:
 
 ![2. ábra: Magas rendelkezésre állás az SAP-alkalmazáskiszolgálók egy Azure rendelkezésre állási csoportban][planning-guide-figure-3000]
-_**2. ábra:** Magas rendelkezésre állás az SAP-alkalmazáskiszolgálók egy Azure rendelkezésre állási beállítása_
+ _**2. ábra:** Magas rendelkezésre állás az SAP-alkalmazáskiszolgálók egy Azure rendelkezésre állási beállítása_
 
 További információkért lásd: [Azure-beli Windows virtuális gépek rendelkezésre állásának kezelése][azure-virtual-machines-manage-availability].
 
@@ -417,7 +417,7 @@ A Red Hat-fürt keretrendszer használatával az SAP ASCS/SCS példányhoz fürt
 
 Az adatbázis-kezelő egy SAP-rendszerrel is szerepel egy egyetlen kapcsolattartási pontja. Kell egy magas rendelkezésre állású megoldás megvédheti azokat. A következő ábrán látható egy SQL Server AlwaysOn magas rendelkezésre állású megoldás az Azure-ban, a Windows Server feladatátvételi fürtszolgáltatási és az Azure belső terheléselosztó. Az SQL Server AlwaysOn adathoz és naplófájlhoz az adatbázis-kezelő replikálja a saját DBMS-replikációval történik. Ebben az esetben a fürt megosztott lemezt, amely egyszerűbbé teszi a teljes telepítés nem szükséges.
 
-![3. ábra: Az SQL Server AlwaysOn egy magas rendelkezésre állású SAP DBMS – példa][sap-ha-guide-figure-2003]
+![3\. ábra: Az SQL Server AlwaysOn egy magas rendelkezésre állású SAP DBMS – példa][sap-ha-guide-figure-2003]
 
 _**3. ábra:** Az SQL Server AlwaysOn egy magas rendelkezésre állású SAP DBMS – példa_
 

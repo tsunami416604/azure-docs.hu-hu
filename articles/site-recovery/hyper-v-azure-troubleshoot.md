@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/14/2019
 ms.author: rajanaki
 ms.openlocfilehash: a7fcd4deb0446577af310ff5380ffddf05ba87be
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64719817"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Hyper-V hibaelhárítása az Azure-replikáció és feladatátvétel
@@ -35,7 +35,7 @@ Ha a Hyper-V virtuális gépek védelmének engedélyezésekor problémákat tap
     - [Ellenőrizze](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) , hogy rendelkezik-e a legújabb verzióra.
     - [Tartsa](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) integrációs szolgáltatások naprakész.
     
-## <a name="replication-issues"></a>Replikációjával kapcsolatos problémák
+## <a name="replication-issues"></a>Replikációs problémák
 
 Kezdeti és folyamatos replikálási hibáinak elhárítása a következőképpen:
 
@@ -145,7 +145,7 @@ Az alkalmazáskonzisztens pillanatkép a virtuális Gépen található alkalmaz�
 
 Az összes Hyper-V replikáció eseményt naplózza a Hyper-V-VMMS\Admin naplóban található **alkalmazások és szolgáltatásnaplók** > **Microsoft** > **Windows**. Emellett engedélyezheti egy elemzési naplóját a Hyper-V virtuális gépek felügyeleti szolgáltatás a következő:
 
-1. Győződjön meg arról, az elemzési és hibakeresési naplók tekinthetik meg az eseménynaplóban. Ahhoz, hogy a naplók az eseménynaplóban elérhető, kattintson a **nézet** > **elemzési és hibakeresési naplók megjelenítése.**. Megjelenik az elemzési naplóját **Hyper-V-VMMS**.
+1. Győződjön meg arról, az elemzési és hibakeresési naplók tekinthetik meg az eseménynaplóban. Ahhoz, hogy a naplók az eseménynaplóban elérhető, kattintson a **nézet** > **elemzési és hibakeresési naplók megjelenítése.** . Megjelenik az elemzési naplóját **Hyper-V-VMMS**.
 2. Az a **műveletek** ablaktáblán kattintson a **napló engedélyezése**. 
 
     ![Napló engedélyezése](media/hyper-v-azure-troubleshoot/enable-log.png)

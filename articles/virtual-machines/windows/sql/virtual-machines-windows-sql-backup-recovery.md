@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
 ms.openlocfilehash: ab239d0546508d74874c6b6be03f6afc06b08fa7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60563417"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Biztonsági mentés és visszaállítás Azure-beli SQL Server-alapú virtuális gépeken
@@ -69,7 +69,7 @@ További információ az SQL virtuális gépek automatikus biztonsági mentés k
 - **Központi felügyeleti és monitorozási**: Központilag kezelhető az összes, a biztonsági mentések, beleértve a más számítási feladatok, amely az Azure Backup támogatja az Azure-ban egyetlen irányítópultról.
 - **Készített biztonsági mentési és adatmegőrzési szabályzat**: Hozzon létre standard biztonsági mentési házirendek rendszeres biztonsági. Évig fenntartása a biztonsági mentések megőrzési házirendeket hoz létre.
 - **Támogatja az SQL Always**: Észlelése és a egy SQL Server Always On konfigurációs védelme, és figyelembe veszi a biztonsági mentési rendelkezésre állási csoport biztonsági mentési preferenciáját.
-- **15 perces Helyreállításipont-célkitűzés (RPO)**: Konfigurálja az legfeljebb 15 percenként SQL tranzakciós naplók biztonsági mentését.
+- **15 perces Helyreállításipont-célkitűzés (RPO)** : Konfigurálja az legfeljebb 15 percenként SQL tranzakciós naplók biztonsági mentését.
 - **Időponthoz kötött visszaállítás pont**: A portál használatával egy adott időpontra adatbázisok helyreállításához időben manuálisan állítsa vissza a teljes, különbségi több nélkül, és biztonsági másolataihoz.
 - **E-mailes riasztásokhoz hibák összesített**: Az esetleges hibák összevont e-mail-értesítések beállítása.
 - **Szerepköralapú hozzáférés-vezérlés**: Határozza meg, aki kezelheti biztonsági mentési és visszaállítási műveleteket a portálon keresztül.

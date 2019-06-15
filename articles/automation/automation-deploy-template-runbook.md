@@ -11,10 +11,10 @@ ms.topic: conceptual
 manager: carmonm
 keywords: PowerShell, a runbook, json, az azure automation
 ms.openlocfilehash: 2008ba697665baa0e8cf73564ec31d6267425404
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61073746"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>Azure Resource Manager-sablon üzembe helyezése Azure Automation PowerShell-runbookban
@@ -238,7 +238,7 @@ Láthatja, hogy az új storage-fiók létrejött-e a következő parancs futtat�
 Get-AzureRmStorageAccount
 ```
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ennyi az egész! Most már az Azure Automation és az Azure Storage és a Resource Manager-sablonok segítségével az Azure-erőforrások üzembe helyezése.
 

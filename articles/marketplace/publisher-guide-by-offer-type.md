@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/13/2018
 ms.author: qianw211
 ms.openlocfilehash: e7867d5ea95cd3142a6f617a5554858b7a72cbc9
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64937667"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Közzétételi útmutató ajánlattípusok szerint
@@ -33,7 +33,7 @@ Az Azure Marketplace-ajánlat típusok az alábbi táblázatban láthatók.
 
 | **Csomag típusa**    | **Leírás**  |
 | :------------------- | :-------------------|
-| [**Virtual machines (Virtuális gépek)**](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) | Virtuális berendezés az előfizetéshez társított az ügyfelek központi telepítéséhez használja a virtuális gép ajánlat típusát. |
+| [**Virtual machines (Virtuális gépek)** ](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) | Virtuális berendezés az előfizetéshez társított az ügyfelek központi telepítéséhez használja a virtuális gép ajánlat típusát. |
 | [**Megoldássablonok**](https://docs.microsoft.com/azure/marketplace/marketplace-solution-templates) | A megoldás sablontípus-ajánlat akkor használja, ha a megoldáshoz szükséges további telepítési és konfigurációs automation túl egy egyszerű virtuális Gépet. |
 | [**Felügyelt alkalmazások**](https://docs.microsoft.com/azure/marketplace/marketplace-managed-apps) | Használja az Azure-alkalmazás: az ajánlat alkalmazástípus kezelése, ha az alábbi feltételek szükségesek: <br> <ul> <li> Vagy egy előfizetés-alapú megoldás üzembe helyezése egy virtuális gép vagy a teljes IaaS-alapú megoldás segítségével az ügyfelek számára. </li> <li>Ön vagy az ügyfél szükséges, hogy a megoldás egy partner kezeli-e. </li> <ul> |
 | [**SaaS-alkalmazásokhoz**](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) | Az SaaS-alkalmazás ajánlattípus használatával engedélyezhető az ügyfelek a SaaS-alapú, technikai megoldás egy előfizetés vásárlása. |

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
 ms.openlocfilehash: 99f2d9fb7c9a74e57eff3cd0b007fcee459cab88
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62098701"
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>A Xamarin.Forms-alkalmazás leküldéses értesítések hozzáadása
@@ -232,7 +232,7 @@ Az első két lépés elengedhetetlen, csak akkor, amikor az emulátor tesztelt.
 2. Google-fiók hozzáadása az Android-eszközre kattintva **alkalmazások** > **beállítások** > **fiók hozzáadása**. Ezután kövesse az utasításokat, vegyen fel egy meglévő Google-fiókot az eszközön, vagy hozzon létre egy újat.
 3. A Visual Studióban vagy a Xamarin Studióban, kattintson a jobb gombbal a **Droid** projektre, és kattintson a **beállítás kezdőprojektként**.
 4. Kattintson a **futtatása** a projekt buildjének elkészítéséhez, és indítsa el az alkalmazást az Android-eszköz vagy az emulátoron.
-5. Az alkalmazásban írjon be egy feladatot, és kattintson a plusz (**+**) ikonra.
+5. Az alkalmazásban írjon be egy feladatot, és kattintson a plusz ( **+** ) ikonra.
 6. Győződjön meg arról, hogy értesítés érkezik, amikor új elem kerül.
 
 ## <a name="configure-and-run-the-ios-project-optional"></a>Konfigurálja és futtassa az iOS-projektre (nem kötelező)
@@ -326,7 +326,7 @@ Az alkalmazás most már frissül, és támogatja a leküldéses értesítéseke
    > [!NOTE]
    > Az alkalmazásból explicit módon el kell fogadnia a leküldéses értesítések. Ezt a kérelmet csak akkor történik meg, amely az alkalmazás első alkalommal.
 
-3. Az alkalmazásban írjon be egy feladatot, és kattintson a plusz (**+**) ikonra.
+3. Az alkalmazásban írjon be egy feladatot, és kattintson a plusz ( **+** ) ikonra.
 4. Győződjön meg arról, hogy értesítést kap, és kattintson **OK** az értesítés elvetéséhez.
 
 ## <a name="configure-and-run-windows-projects-optional"></a>Konfigurálja és futtassa a Windows-projektek (nem kötelező)
@@ -398,7 +398,7 @@ Ez a szakasz olyan fut a Xamarin.Forms WinApp és WinPhone81 projektek Windows-e
 
 1. A Visual Studióban kattintson a jobb gombbal egy Windows-projektet, és kattintson a **beállítás kezdőprojektként**.
 2. Nyomja le a **Run** (Futtatás) gombot a projekt felépítéséhez és az alkalmazás elindításához.
-3. Az alkalmazásban írjon be egy nevet az új beállíthatnánk, és kattintson a plusz (**+**) ikonra kattintva adja hozzá.
+3. Az alkalmazásban írjon be egy nevet az új beállíthatnánk, és kattintson a plusz ( **+** ) ikonra kattintva adja hozzá.
 4. Győződjön meg arról, hogy értesítés érkezik, az elem hozzáadásakor.
 
 ## <a name="next-steps"></a>További lépések

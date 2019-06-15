@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: sogup
 ms.openlocfilehash: aa953440f03137f3359276bc9e06cb0c73f0ab4a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61219286"
 ---
 # <a name="manage-azure-vm-backups"></a>Azure-beli virtuális gépek biztonsági mentésének kezelése
@@ -132,7 +132,7 @@ Virtuális gép védelmének visszaállításához:
 
     ![Sikeresen megtörtént a védett virtuális gépek jelző üzenet](./media/backup-azure-manage-vms/success-message.png)
 
-## <a name="delete-backup-data"></a>biztonsági mentési adatok törlése
+## <a name="delete-backup-data"></a>Biztonsági mentési adatok törlése
 
 Virtuális gép biztonsági mentési adatok során törölheti a **biztonsági mentés leállítása** feladat vagy a biztonsági mentési feladat befejeződése után. Biztonsági mentési adatok törlése előtt tartsa szem előtt ezeket az adatokat:
 

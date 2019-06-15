@@ -10,14 +10,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 04/23/2018
-ms.date: 04/17/2019
-ms.author: v-junlch
+ms.date: 4/23/2018
+ms.author: victorh
 ms.openlocfilehash: ee0267146140d095487b293331a7de493ba151c6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61361952"
 ---
 # <a name="azure-application-gateway-url-path-based-routing-overview"></a>Az Azure Application Gateway URL-címalapú útválasztás áttekintése
@@ -101,5 +100,3 @@ A PathBasedRouting szabály kódrészlete:
 ## <a name="next-steps"></a>További lépések
 
 Miután elsajátította az URL-alapú tartalom-átirányításról szóló ismereteket, látogasson el [az URL-alapú átirányítást használó alkalmazásátjáró létrehozását bemutató témakörhöz](tutorial-url-route-powershell.md).
-
-<!-- Update_Description: update metedata properties -->

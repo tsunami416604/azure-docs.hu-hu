@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.openlocfilehash: 84c5dbcf5073ba8c0ae662af019cde590a9adf10
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64686649"
 ---
 # <a name="web-sdk-supported-browsers"></a>A webes SDK által támogatott böngészők
@@ -29,7 +29,7 @@ if(!atlas.isSupported()) {
 }
 ```
 
-## <a name="desktop"></a>Asztal
+## <a name="desktop"></a>Asztali
 
 Az Azure Maps Web SDK a következő asztali böngészők használatát támogatja:
 
@@ -40,7 +40,7 @@ Az Azure Maps Web SDK a következő asztali böngészők használatát támogatj
 
 Lásd még: [régebbi böngészők cél](#Target-Legacy-Browsers) a cikk későbbi részében.
 
-## <a name="mobile"></a>Mobiltelefon
+## <a name="mobile"></a>mobil
 
 Az Azure Maps Web SDK a következő mobilböngészők használatát támogatja:
 

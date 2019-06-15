@@ -13,10 +13,10 @@ ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 6332555c1a176a06004ddfeee513844ad5875c30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61484454"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Több-bérlős SaaS-adatbázis bérlős minták
@@ -33,8 +33,8 @@ Regisztrálásáért bérleti kell fizetnie, minden bérlő az SaaS alkalmazás-
 
 Az előfizetési időszak *bérlős modell* bérlők tárolt adatok hivatkozik:
 
-- *Single-bérlős:*&nbsp; Minden adatbázis csak egyetlen bérlő adatait tárolja.
-- *Több-bérlős:*&nbsp; Minden adatbázis tárolja az adatokat külön több bérlő (az adatok védelmét szolgáló mechanizmusok).
+- *Single-bérlős:* &nbsp; Minden adatbázis csak egyetlen bérlő adatait tárolja.
+- *Több-bérlős:* &nbsp; Minden adatbázis tárolja az adatokat külön több bérlő (az adatok védelmét szolgáló mechanizmusok).
 - A hibrid bérlős modellek is elérhetők.
 
 ## <a name="b-how-to-choose-the-appropriate-tenancy-model"></a>B. A megfelelő bérlős modell kiválasztása
@@ -47,9 +47,9 @@ Az előfizetési időszak *bérlős modell* bérlők tárolt adatok hivatkozik:
     - Tárolás az összesítést.
     - Számítási feladatok.
 
-- **Bérlő elszigetelése:**&nbsp; Az adatok elkülönítését és a teljesítmény (akár egy bérlői számítási feladatot befolyásolja mások).
+- **Bérlő elszigetelése:** &nbsp; Az adatok elkülönítését és a teljesítmény (akár egy bérlői számítási feladatot befolyásolja mások).
 
-- **Bérlőnkénti költség:**&nbsp; Adatbázis-költségek.
+- **Bérlőnkénti költség:** &nbsp; Adatbázis-költségek.
 
 - **Fejlesztési bonyolultsága:**
     - Séma módosításait.
@@ -61,7 +61,7 @@ Az előfizetési időszak *bérlős modell* bérlők tárolt adatok hivatkozik:
     - Helyreállítás egy bérlőt.
     - Vészhelyreállítás.
 
-- **A testreszabhatóság:**&nbsp; Egyszerű, amelyek vagy séma testreszabásokat alátámasztó bérlőspecifikus vagy osztály-specifikus-bérlőben.
+- **A testreszabhatóság:** &nbsp; Egyszerű, amelyek vagy séma testreszabásokat alátámasztó bérlőspecifikus vagy osztály-specifikus-bérlőben.
 
 A bérleti vitafórum összpontosít a *adatok* réteg.  Fontolja meg egy kis ideig, de a *alkalmazás* réteg.  Az alkalmazási rétegre egy monolitikus entitás számít.  Ha az alkalmazás sok kis összetevőből, Ön által választott bérlős modell módosulhat.  Néhány összetevőt, mint a többi eltérően sikerült kezelnie egyaránt bérlős és a tárolási technológiát vagy a használt platform.
 
@@ -126,9 +126,9 @@ Egy másik elérhető egyik számos bérlők egy több-bérlős adatbázisban t�
 
 #### <a name="tenant-isolation-is-sacrificed"></a>Bérlők elkülönítését elpusztítják van
 
-*Adatok:*&nbsp; Egy több-bérlős adatbázis feltétlenül elpusztítást bérlők elkülönítését.  Az adatok több bérlő több adatbázis együtt tárolódik.  Fejlesztési győződjön meg arról, hogy a lekérdezések soha nem teszi közzé az egynél több bérlő adatait.  Az SQL Database támogatja [sorszintű biztonság][docu-sql-svr-db-row-level-security-947w], amely kényszerítheti, hogy egy lekérdezés által visszaadott adatok egyetlen új bérlő tartozni.
+*Adatok:* &nbsp; Egy több-bérlős adatbázis feltétlenül elpusztítást bérlők elkülönítését.  Az adatok több bérlő több adatbázis együtt tárolódik.  Fejlesztési győződjön meg arról, hogy a lekérdezések soha nem teszi közzé az egynél több bérlő adatait.  Az SQL Database támogatja [sorszintű biztonság][docu-sql-svr-db-row-level-security-947w], amely kényszerítheti, hogy egy lekérdezés által visszaadott adatok egyetlen új bérlő tartozni.
 
-*Feldolgozás:*&nbsp; Egy több-bérlős adatbázis számítási és tárolási erőforrások az összes bérlőre kiterjedő fájlmegosztások.  Az adatbázis teljes intézkedéseket végrehajtása biztosításához figyelhető.  Az Azure rendszerben viszont nem beépített lehet figyelni, vagy az ezek által használt erőforrások egy adott bérlő kezelése rendelkezik.  Ezért a több-bérlős adatbázis végzi a fertőzésnek fokozott mértékben kitett, hajt végre, amikor zajos szomszédok, ahol a számítási feladatok egy overactive bérlő hatással van a teljesítmény biztosítása érdekében a többi bérlő ugyanabban az adatbázisban.  További figyelési alkalmazásszintű sikerült a bérlői szintű teljesítmény figyelése.
+*Feldolgozás:* &nbsp; Egy több-bérlős adatbázis számítási és tárolási erőforrások az összes bérlőre kiterjedő fájlmegosztások.  Az adatbázis teljes intézkedéseket végrehajtása biztosításához figyelhető.  Az Azure rendszerben viszont nem beépített lehet figyelni, vagy az ezek által használt erőforrások egy adott bérlő kezelése rendelkezik.  Ezért a több-bérlős adatbázis végzi a fertőzésnek fokozott mértékben kitett, hajt végre, amikor zajos szomszédok, ahol a számítási feladatok egy overactive bérlő hatással van a teljesítmény biztosítása érdekében a többi bérlő ugyanabban az adatbázisban.  További figyelési alkalmazásszintű sikerült a bérlői szintű teljesítmény figyelése.
 
 #### <a name="lower-cost"></a>Alacsonyabb költségek
 

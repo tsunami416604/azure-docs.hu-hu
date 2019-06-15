@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: d0ef9f34d6b657a063e50b0f144197c41905e809
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60949164"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>A Service Fabric állapotmonitorozásának bemutatása
@@ -211,7 +211,7 @@ A [rendszerállapot-jelentések](https://docs.microsoft.com/dotnet/api/system.fa
 * **RemoveWhenExpired**. Logikai érték beolvasása. Ha igaz értékű, az lejárt állapotjelentés automatikusan törlődik a health Store adatbázisban, és a jelentés nem érinti az entitás állapotának kiértékelését. Használható a jelentés egy megadott időtartam elteltéig csak érvényességét, és a jelentéskészítő nem kell explicit módon is kapcsolhatja ki. Jelentések törlése a health store-ból is használható (például egy figyelő módosul, és leállítja a jelentéseknek az előző forrás és tulajdonság). Egy jelentés bármely korábbi állapotba a a health store adatbázisból kiürítéséhez RemoveWhenExpired együtt egy rövid TimeToLive küldésére. Ha az értéke HAMIS, a lejárt jelentés a állapotának kiértékelését a hiba számít. A False (hamis) érték jelzi a health Store adatbázisban számára, hogy a forrás jelentést kell rendszeresen ezt a tulajdonságot. Ha nem, majd kell valamilyen hiba történt a figyelő. A figyelő állapota az esemény hibát a mérlegeli rögzített.
 * **SequenceNumber**. Pozitív egésznek kell lennie a folyamatosan növekvő konkurenciával kell, a jelentések sorrendet jelöli. Akkor használják a health Store adatbázisban észleli a hálózati késések vagy egyéb problémák miatt későn érkező elavult jelentéseket. Egy jelentés nem fogadja el, ha a feladatütemezés szám kisebb vagy egyenlő a legtöbb nemrég alkalmazva az ugyanahhoz az entitáshoz, a forrás és a tulajdonság száma. Ha nincs megadva, automatikusan létrejön a sorozatszámot. Fontos a sorozatszám csak akkor, ha a jelentéskészítési állapotváltozáskor helyezni. Ebben a helyzetben a forrás van szüksége, ne feledje, akkor küldi el a jelentéseket, és biztosíthatja az adatok a feladatátvételkor a helyreállításhoz.
 
-Négy megtalálhatja információk – SourceId, entitásának azonosítója, tulajdonság vagy HealthState--szükségesek minden jelentés. A SourceId karakterlánc nem engedélyezett előtaggal kezdődik "**rendszer.**", amely jelentéseket a rendszer számára van fenntartva. Ugyanahhoz az entitáshoz a ugyanolyan forráshoz és a tulajdonság csak egy jelentés van. Több jelentést is ugyanazt a forrás és tulajdonság fedjék át egymást, vagy az ügyféloldalon health (ha azok vannak kötegelni) vagy az egészségügyi ügyféloldali tárolja. A csere sorozatszámok; alapján (az újabb sorozatszámok) új jelentések lecserélik a régebbi jelentések.
+Négy megtalálhatja információk – SourceId, entitásának azonosítója, tulajdonság vagy HealthState--szükségesek minden jelentés. A SourceId karakterlánc nem engedélyezett előtaggal kezdődik "**rendszer.** ", amely jelentéseket a rendszer számára van fenntartva. Ugyanahhoz az entitáshoz a ugyanolyan forráshoz és a tulajdonság csak egy jelentés van. Több jelentést is ugyanazt a forrás és tulajdonság fedjék át egymást, vagy az ügyféloldalon health (ha azok vannak kötegelni) vagy az egészségügyi ügyféloldali tárolja. A csere sorozatszámok; alapján (az újabb sorozatszámok) új jelentések lecserélik a régebbi jelentések.
 
 ### <a name="health-events"></a>A Szolgáltatásállapot-események
 Belsőleg, a health Store adatbázisban tartja [hálózatállapot-események](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthevent), amelyek a jelentések, illetve további metaadatokat kapcsolatos összes információt tartalmaznak. A metaadatok lett megadva a jelentés az egészségügyi ügyfél időpontját és azt a kiszolgálói oldalon módosításának idejét tartalmazza. A Szolgáltatásállapot-események által visszaadott [állapotlekérdezések](service-fabric-view-entities-aggregated-health.md#health-queries).

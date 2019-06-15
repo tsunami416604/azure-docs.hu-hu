@@ -9,10 +9,10 @@ ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 861c2e86d623c46c14366f19457d1f689386a316
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64577345"
 ---
 # <a name="firewall-tables-overview"></a>Tűzfal táblák áttekintése
@@ -26,7 +26,7 @@ A következő táblázat ismerteti a paramétereket a tűzfalszabály.
 | Tulajdonság | Részletek |
 | ---------| --------|
 | **Name (Név)** | Egy név, amely egyedileg azonosítja a tűzfalszabályt, és a célra. |
-| **Priority (Prioritás)** | Egy 100 és 4096 folyamatban van a legmagasabb prioritású 100 közötti szám. Szabályok feldolgozása prioritási sorrendben történik. Ha az adatforgalom több szabály egyezést, a szabály feldolgozása leáll. Ennek eredményeképpen kisebb prioritásokat lehet, magasabb prioritású szabályok azonos attribútumokkal rendelkező meglévő szabályok nem feldolgozása.  Körültekintően ütköző szabályok elkerülése érdekében. |
+| **prioritás** | Egy 100 és 4096 folyamatban van a legmagasabb prioritású 100 közötti szám. Szabályok feldolgozása prioritási sorrendben történik. Ha az adatforgalom több szabály egyezést, a szabály feldolgozása leáll. Ennek eredményeképpen kisebb prioritásokat lehet, magasabb prioritású szabályok azonos attribútumokkal rendelkező meglévő szabályok nem feldolgozása.  Körültekintően ütköző szabályok elkerülése érdekében. |
 | **Állapot nyomon követése** | Követési lehet állapot nélküli (Magánfelhő, Internet vagy VPN) vagy állapotalapú (nyilvános IP-cím).  |
 | **Protocol (Protokoll)** | Lehetőségek a következők bármely, TCP vagy UDP. Ha arra van szüksége, használatára. |
 | **Direction (Irány)** | Megadja, hogy a szabály a bejövő vagy a kimenő adatforgalomra vonatkozik. |
@@ -53,12 +53,12 @@ További szabályokat a fordított irányú adatforgalmat szükséges lehet.  A 
 
 Következő alapértelmezett szabályokat minden tűzfal táblán jönnek létre.
 
-|Prioritás|Name (Név)|Állapot nyomon követése|Direction|Forgalomtípus|Protocol|Forrás|Forrásport|Cél|Célport|Műveletek|
+|Prioritás|Name (Név)|Állapot nyomon követése|Direction|Forgalomtípus|Protocol|source|Forrásport|Cél|Célport|Műveletek|
 |--------|----|--------------|---------|------------|--------|------|-----------|-----------|----------------|------|
-|65000|allow-all-to-internet|Állapotalapú|Kimenő|Nyilvános IP- vagy internetes forgalom|Összes|Bármelyik|Bármelyik|Bármelyik|Bármelyik|Engedélyezés|
-|65001|deny-all-from-internet|Állapotalapú|Bejövő|Nyilvános IP- vagy internetes forgalom|Összes|Bármelyik|Bármelyik|Bármelyik|Bármelyik|Megtagadás|
-|65002|allow-all-to-intranet|Állapot nélküli|Kimenő|A Magánfelhő belső vagy a VPN-forgalom|Összes|Bármelyik|Bármelyik|Bármelyik|Bármelyik|Engedélyezés|
-|65003|allow-all-from-intranet|Állapot nélküli|Bejövő|A Magánfelhő belső vagy a VPN-forgalom|Összes|Bármelyik|Bármelyik|Bármelyik|Bármelyik|Engedélyezés|
+|65000|allow-all-to-internet|Állapotalapú|Kimenő|Nyilvános IP- vagy internetes forgalom|Összes|Bármely|Bármely|Bármely|Bármely|Engedélyezés|
+|65001|deny-all-from-internet|Állapotalapú|Bejövő|Nyilvános IP- vagy internetes forgalom|Összes|Bármely|Bármely|Bármely|Bármely|Megtagadás|
+|65002|allow-all-to-intranet|Állapot nélküli|Kimenő|A Magánfelhő belső vagy a VPN-forgalom|Összes|Bármely|Bármely|Bármely|Bármely|Engedélyezés|
+|65003|allow-all-from-intranet|Állapot nélküli|Bejövő|A Magánfelhő belső vagy a VPN-forgalom|Összes|Bármely|Bármely|Bármely|Bármely|Engedélyezés|
 
 ## <a name="next-steps"></a>További lépések
 

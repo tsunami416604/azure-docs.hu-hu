@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: crdun
 ms.openlocfilehash: 8f014f1cb40e1a629d1989f00805fc91015a3ae9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62119303"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>A felügyelt ügyfelek használata az Azure Mobile Apps-alkalmazásokhoz
@@ -249,7 +249,7 @@ Egy valós alkalmazásban az előző példához hasonló lekérdezések használ
 
 
 ### <a name="selecting"></a>kézikönyv: Egyes oszlopok kiválasztásához
-Megadhatja, amely tulajdonságainak beállítása való hozzáadásával a keresési eredmények között szerepeljen egy [Kiválasztás] záradék a lekérdezés. Ha például a következő kód bemutatja, hogyan válassza ki egy mezőt, és válassza ki, és több mező formázása:
+Megadhatja, amely tulajdonságainak beállítása való hozzáadásával a keresési eredmények között szerepeljen egy [Select] záradék a lekérdezés. Ha például a következő kód bemutatja, hogyan válassza ki egy mezőt, és válassza ki, és több mező formázása:
 
 ```csharp
 // Select one field -- just the Text
@@ -657,7 +657,7 @@ Kezdeményezési felhasználói hitelesítést az Active Directory Authenticatio
    * Cserélje le **INSERT-SZOLGÁLTATÓ – Itt** , amelyben az alkalmazás kiosztása a bérlő nevével. A formátum https://login.microsoftonline.com/contoso.onmicrosoft.com. Ez az érték lehet másolni az Azure Active Directory tartományi lapról a [Azure Portal].
    * Cserélje le **INSERT-erőforrás-azonosító – Itt** az ügyfél-Azonosítóját a mobile Apps-háttéralkalmazást. Az ügyfél-Azonosítót a szerezheti be a **speciális** lapjára **Azure Active Directory-beállítások** a portálon.
    * Cserélje le **INSERT-ügyfél-azonosító – Itt** és az ügyfél-Azonosítót a natív ügyfélalkalmazás fájlból kimásolt.
-   * Cserélje le **INSERT-REDIRECT-URI-Itt** a hellyel */.auth/login/done* végpontról, a HTTPS-sémát. Ez az érték legyen hasonló *https://contoso.azurewebsites.net/.auth/login/done*.
+   * Cserélje le **INSERT-REDIRECT-URI-Itt** a hellyel */.auth/login/done* végpontról, a HTTPS-sémát. Ez az érték legyen hasonló *https://contoso.azurewebsites.net/.auth/login/done* .
 
      Az egyes platformokra vonatkozó szükséges kódot a következőképpen:
 
@@ -1063,7 +1063,7 @@ public class MyHandler : DelegatingHandler
 [OrderByDescending]: https://msdn.microsoft.com/library/azure/dn250568(v=azure.10).aspx
 [ReadAsync]: https://msdn.microsoft.com/library/azure/mt691741(v=azure.10).aspx
 [igénybe]: https://msdn.microsoft.com/library/azure/dn250574(v=azure.10).aspx
-[Kiválasztás]: https://msdn.microsoft.com/library/azure/dn250569(v=azure.10).aspx
+[Select]: https://msdn.microsoft.com/library/azure/dn250569(v=azure.10).aspx
 [Skip]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
 [UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
 [Felhasználói azonosító]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx

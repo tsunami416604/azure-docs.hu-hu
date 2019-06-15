@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 67f72c5b396bc935f7bec34bc8a52f63131649b1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4b0cd88cbb3729a3e81aeb5d6f43f417c8cb2f17
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904474"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64682765"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC Extension for Linux (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -34,7 +34,7 @@ DSCForLinux bővítmény közzétett és a Microsoft támogatja. A bővítmény 
 - A Linux rendszerű virtuális gépre (telepítése ExtensionAction) egyéni DSC-modulok telepítése
 - Távolítsa el a Linuxos virtuális gép (ExtensionAction eltávolítása) egyéni DSC-modulok
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -42,7 +42,7 @@ DSCForLinux bővítmény közzétett és a Microsoft támogatja. A bővítmény 
 
 A DSC Linux-bővítményt az összes támogatja a [az Azure által támogatott Linux-disztribúciók](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) kivételével:
 
-| Disztribúció | Verzió |
+| Disztribúció | Version |
 |---|---|
 | Debian | Az összes verzió |
 | Ubuntu| 18.04 |

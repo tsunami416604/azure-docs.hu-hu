@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
 ms.openlocfilehash: 9e7a5772dd1e10abf43eddf0548833d625ecfb24
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60742121"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>IP-cím-típusok és lefoglalási módszereket (klasszikus) Azure-ban
@@ -87,7 +87,7 @@ Azure-beli [az Application gateway](../application-gateway/application-gateway-i
 ### <a name="at-a-glance"></a>Áttekintés
 Az alábbi táblázat a lehetséges lefoglalási módszereket (dinamikus/statikus), és lehetővé teszi több nyilvános IP-címek kiosztása az egyes erőforrástípusok.
 
-| Erőforrás | Dinamikus | Statikus | Több IP-cím |
+| Resource | Dinamikus | Statikus | Több IP-cím |
 | --- | --- | --- | --- |
 | Felhőszolgáltatás |Igen |Igen |Igen |
 | IaaS virtuális gép vagy PaaS szerepkörpéldányt |Igen |Nem |Nem |
@@ -137,7 +137,7 @@ Hozzárendelhet egy magánhálózati IP-címet az [Azure Internal Load Balancer]
 ### <a name="at-a-glance"></a>Áttekintés
 Az alábbi táblázat a lehetséges lefoglalási módszereket (dinamikus/statikus), és lehetővé teszi több magánhálózati IP-címek hozzárendelése az egyes erőforrástípusok.
 
-| Erőforrás | Dinamikus | Statikus | Több IP-cím |
+| Resource | Dinamikus | Statikus | Több IP-cím |
 | --- | --- | --- | --- |
 | Virtuális gép (az egy *önálló* felhőalapú szolgáltatás, vagy a virtuális hálózat) |Igen |Igen |Igen |
 | PaaS szerepkörpéldányt (az egy *önálló* felhőalapú szolgáltatás, vagy a virtuális hálózat) |Igen |Nem |Nem |
@@ -162,7 +162,7 @@ A legtöbb esetben a nyilvános IP-címek használata ingyenes. Egy névleges d�
 ## <a name="differences-between-resource-manager-and-classic-deployments"></a>Resource Manager és klasszikus üzembe helyezés közötti különbségek
 Alább az IP-címzési szolgáltatásainak a Resource Manager és a klasszikus üzemi modell összehasonlítása.
 
-|  | Erőforrás | Klasszikus | Resource Manager |
+|  | Resource | Klasszikus | Resource Manager |
 | --- | --- | --- | --- |
 | **Nyilvános IP-cím** |***VM*** |Egy ILPIP (csak dinamikus) néven |Egy nyilvános IP-Címek (dinamikus vagy statikus) néven |
 |  ||Egy IaaS-beli virtuális Gépen vagy egy PaaS szerepkörpéldányok hozzárendelve |A virtuális gép hálózati adapterhez hozzárendelt |

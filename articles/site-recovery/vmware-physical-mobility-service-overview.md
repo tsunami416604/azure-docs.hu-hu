@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: 929a4e4366c9e94ed4e1915406914991624f6baa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60565554"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Tudnivalók a mobilitási szolgáltatás VMware virtuális gépek és fizikai kiszolgálókhoz
@@ -185,7 +185,7 @@ Microsoft-ASR\_UA\*SLES12-64\*release.tar.gz | SUSE Linux Enterprise Server 12 S
 Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP3
 Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP4
 Microsoft-ASR\_UA\*OL6-64\*release.tar.gz | Oracle Enterprise Linux 6.4, 6.5-ös
-Microsoft-ASR\_UA\*UBUNTU-14.04-64\*release.tar.gz | 14.04-es Ubuntu Linux
+Microsoft-ASR\_UA\*UBUNTU-14.04-64\*release.tar.gz | 14\.04-es Ubuntu Linux
 Microsoft-ASR\_UA\*UBUNTU-16.04-64\*release.tar.gz | Ubuntu Linux 16.04 LTS server
 Microsoft-ASR_UA\*DEBIAN7-64\*release.tar.gz | Debian 7
 Microsoft-ASR_UA\*DEBIAN8-64\*release.tar.gz | Debian 8

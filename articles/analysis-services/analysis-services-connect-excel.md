@@ -9,17 +9,17 @@ ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 5c46d4e4d23744cf07ccf7857a33990bf405a6a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61023257"
 ---
 # <a name="connect-with-excel"></a>Kapcsolódás Excellel
 
 Miután létrehozott egy kiszolgálót, és üzembe helyezett egy táblázatos modellhez, az ügyfelek csatlakozhat és megkezdje az adatok. 
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A fiók, akkor jelentkezzen be a modell az adatbázis-szerepkörhöz kell tartoznia, legalább olvasási engedéllyel. További információ: [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md). 
 

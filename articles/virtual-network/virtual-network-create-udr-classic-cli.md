@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
 ms.openlocfilehash: e1b8bb3544a08b60564ceb5bd7e1666214059e09
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60743921"
 ---
 # <a name="control-routing-and-use-virtual-appliances-classic-using-the-azure-cli"></a>Vezérelheti az útválasztást és a virtuális készülékek (klasszikus) használatával az Azure parancssori felület használata
@@ -72,8 +72,8 @@ Az útvonaltábla és útvonal szükséges a fenti forgatókönyv alapján az el
    
     Paraméterek:
    
-   * **-l (vagy --location)**. Az Azure régióban, ahol létrejön az új NSG-t. A mi esetünkben *westus*.
-   * **-n (vagy --name)**. Az új NSG neve. A mi esetünkben *NSG-FrontEnd*.
+   * **-l (vagy --location)** . Az Azure régióban, ahol létrejön az új NSG-t. A mi esetünkben *westus*.
+   * **-n (vagy --name)** . Az új NSG neve. A mi esetünkben *NSG-FrontEnd*.
 3. Futtassa a következő parancsot az útvonaltáblában a háttérbeli alhálózat (192.168.2.0/24) felé irányuló összes forgalmat útvonal létrehozása a **FW1** VM (192.168.0.4):
 
     ```azurecli
@@ -89,9 +89,9 @@ Az útvonaltábla és útvonal szükséges a fenti forgatókönyv alapján az el
    
     Paraméterek:
    
-   * **-r (vagy--route-table-neve)**. Az útvonaltábla, ahova a rendszer hozzáadja az útvonal neve. A mi esetünkben *UDR-FrontEnd*.
-   * **-a (vagy --address-prefix)**. Az alhálózat, amelyben a csomagok felé irányuló címelőtag. A mi esetünkben *192.168.2.0/24*.
-   * **-t (vagy--next-hop-type)**. Objektum forgalom típusának megfelelő küld. Lehetséges értékek a következők *VirtualAppliance*, *VirtualNetworkGateway*, *VNETLocal*, *Internet*, vagy *None*.
+   * **-r (vagy--route-table-neve)** . Az útvonaltábla, ahova a rendszer hozzáadja az útvonal neve. A mi esetünkben *UDR-FrontEnd*.
+   * **-a (vagy --address-prefix)** . Az alhálózat, amelyben a csomagok felé irányuló címelőtag. A mi esetünkben *192.168.2.0/24*.
+   * **-t (vagy--next-hop-type)** . Objektum forgalom típusának megfelelő küld. Lehetséges értékek a következők *VirtualAppliance*, *VirtualNetworkGateway*, *VNETLocal*, *Internet*, vagy *None*.
    * **-p (vagy--next-hop-ip-address**). Következő ugrás IP-címét. A mi esetünkben *192.168.0.4*.
 4. A következő parancsot a létrehozott útválasztási táblázat hozzárendelése a **előtérbeli** alhálózat:
 
@@ -114,7 +114,7 @@ Az útvonaltábla és útvonal szükséges a fenti forgatókönyv alapján az el
    
     Paraméterek:
    
-   * **-t (vagy--vnet-name)**. A VNet neve, ahol az alhálózaton-e. A mi esetünkben *TestVNet*.
+   * **-t (vagy--vnet-name)** . A VNet neve, ahol az alhálózaton-e. A mi esetünkben *TestVNet*.
    * **-n (vagy--subnet-name**. Az útválasztási táblázat hozzáadódik az alhálózat neve. A mi esetünkben *FrontEnd*.
 
 ## <a name="create-the-udr-for-the-back-end-subnet"></a>Az udr-t, a háttérbeli alhálózat létrehozása

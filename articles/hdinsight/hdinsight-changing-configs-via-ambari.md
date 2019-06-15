@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
 ms.openlocfilehash: f0db36fa380d0d1bb7f2b581c4bf8fa1abfaadaf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60698826"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Az Apache Ambari használata a HDInsight-fürt konfigurációjának optimalizálása
@@ -57,7 +57,7 @@ A NameNode Java. generace módosítása:
 
 1. A módosítások mentéséhez kattintson a zöld a **mentése** gombra a konfiguráció képernyő felső részén.
 
-    ![Változtatások mentése](./media/hdinsight-changing-configs-via-ambari/save-changes.png)
+    ![Módosítások mentése](./media/hdinsight-changing-configs-via-ambari/save-changes.png)
 
 ## <a name="apache-hive-optimization"></a>Az Apache Hive-optimalizálás
 
@@ -204,7 +204,7 @@ A rendelkezésre álló tömörítési típusok a következők:
 
     d. Adja meg a tulajdonság hozzáadása ablak `mapred.map.output.compression.codec` kulcsként és `org.apache.hadoop.io.compress.SnappyCodec` értékeként.
 
-    e. Kattintson a **Hozzáadás** parancsra.
+    e. Kattintson a **Hozzáadás**lehetőségre.
 
     ![Egyéni Hive-tulajdonság](./media/hdinsight-changing-configs-via-ambari/hive-custom-property.png)
 
@@ -269,7 +269,7 @@ A következő szakaszokban további Hive kapcsolatos optimalizálást is megadha
 
 A Hive, az alapértelmezett illesztési típus egy *shuffle illesztési*. A Hive speciális leképező olvassa a bemeneti, és egy illesztési kulcs/érték pár köztes fájlok küldik. Hadoop rendezi, és egyesíti a párok a shuffle szakaszban. Ebben a szakaszban shuffle drága. Válassza a jobb oldali illesztési adatai alapján jelentősen javíthatja a teljesítményt.
 
-| Csatlakozás típusa | Mikor: | Hogyan | Hive-beállítások | Megjegyzések |
+| Összekapcsolás típusa | mikor | Hogyan | Hive-beállítások | Megjegyzések |
 | -- | -- | -- | -- | -- |
 | Shuffle illesztés | <ul><li>Alapértelmezett választás</li><li>Mindig működik.</li></ul> | <ul><li>A tábla egyik részét olvassa be</li><li>Gyűjtők és illesztési kulcs rendezése</li><li>Minden egyes csökkentse egy gyűjtő küld</li><li>Csatlakozás a csökkentse oldalon történik</li></ul> | Nincs jelentős Hive beállítása szükséges | Minden alkalommal működik |
 | Térkép illesztés | <ul><li>Egy tábla illeszkednek a memóriában</li></ul> | <ul><li>Beolvassa a kis táblák memória kivonatoló táblába</li><li>A nagy méretű fájl keresztül Streamek</li><li>Minden egyes rekord kivonattábla csatlakozik</li><li>Önálló eseményleképező szerint vannak illesztések</li></ul> | `hive.auto.confvert.join=true` | Rendkívül gyors, de korlátozott |

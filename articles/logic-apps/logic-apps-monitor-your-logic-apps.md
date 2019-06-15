@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
 ms.openlocfilehash: 80776f9284752e8554486cb458096ccc9319949e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61324392"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Állapot figyelése, állítsa be a diagnosztikai naplózás, és kapcsolja be a riasztásokat az Azure Logic Apps
@@ -139,7 +139,7 @@ Pontosítsa a lekérdezést egy szűrő hozzáadásával, válassza ki a **+ Hoz
    Ebben a példában a "status" szót a sikertelen események megtalálásához **AzureDiagnostics**.
    Itt a szűrő a **status_s** már be van jelölve.
 
-   ![Szűrő kiválasztása](media/logic-apps-monitor-your-logic-apps/log-search-add-filter.png)
+   ![Válassza ki a szűrő](media/logic-apps-monitor-your-logic-apps/log-search-add-filter.png)
 
 7. A bal oldali sávon válassza ki a szűrő értéket használja, és válassza a kívánt **alkalmaz**.
 

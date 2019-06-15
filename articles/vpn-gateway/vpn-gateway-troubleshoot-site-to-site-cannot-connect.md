@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 01729971169011002fa4231f043f82f105f81cdc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3919243569035be41293ddc97c76a9f964cda7cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60458178"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64688502"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Hibaelhárítás: Az Azure site-to-site VPN-kapcsolat nem lehet csatlakozni, és nem működik
 
@@ -41,13 +41,13 @@ Ellenőrizze az Azure VPN gateway típusa.
     
     ![Az átjáró – áttekintés](media/vpn-gateway-troubleshoot-site-to-site-cannot-connect/gatewayoverview.png)
 
-### <a name="step-1-check-whether-the-on-premises-vpn-device-is-validated"></a>1. lépés Ellenőrizze, hogy a rendszer érvényesíti a helyszíni VPN-eszköz
+### <a name="step-1-check-whether-the-on-premises-vpn-device-is-validated"></a>1\.lépés Ellenőrizze, hogy a rendszer érvényesíti a helyszíni VPN-eszköz
 
 1. Ellenőrizze, hogy használ-e egy [ellenőrzött VPN-eszköz és az operációs rendszer verziója](vpn-gateway-about-vpn-devices.md#devicetable). Ha az eszköz nem ellenőrzött VPN-eszközt, akkor előfordulhat, hogy lépjen kapcsolatba az eszköze gyártójával e kompatibilitási probléma.
 
 2. Győződjön meg arról, hogy a VPN-eszköz megfelelően van-e konfigurálva. További információkért lásd: [az eszköz konfigurációs mintáinak szerkesztése](vpn-gateway-about-vpn-devices.md#editing).
 
-### <a name="step-2-verify-the-shared-key"></a>2. lépés A megosztott kulcs ellenőrzése
+### <a name="step-2-verify-the-shared-key"></a>2\.lépés A megosztott kulcs ellenőrzése
 
 Hasonlítsa össze a helyszíni VPN-eszközét, az Azure Virtual Network VPN, győződjön meg arról, hogy a kulcsok egyeznek, a megosztott kulcsot. 
 
@@ -73,27 +73,27 @@ A klasszikus üzemi modell:
 
     Get-AzureVNetGatewayKey -VNetName -LocalNetworkSiteName
 
-### <a name="step-3-verify-the-vpn-peer-ips"></a>3. lépés Ellenőrizze a VPN-társ IP-címek
+### <a name="step-3-verify-the-vpn-peer-ips"></a>3\. lépés. Ellenőrizze a VPN-társ IP-címek
 
 -   Az IP-definíció a a **helyi hálózati átjáró** objektumot az Azure-ban meg kell egyeznie a helyszíni eszközök IP-cím.
 -   Az Azure-átjáró IP-definíciót, amely a helyi eszközön van beállítva, meg kell egyeznie a Azure-átjáró IP-cím.
 
-### <a name="step-4-check-udr-and-nsgs-on-the-gateway-subnet"></a>4. lépés Az átjáró alhálózatán található UDR és NSG-kkel ellenőrizze
+### <a name="step-4-check-udr-and-nsgs-on-the-gateway-subnet"></a>4\. lépés. Az átjáró alhálózatán található UDR és NSG-kkel ellenőrizze
 
 Keressen, és távolítsa el a felhasználó által meghatározott útválasztás (UDR) vagy a hálózati biztonsági csoportok (NSG-k) az átjáró-alhálózat, majd ellenőrizze az eredményt. Ha a probléma megoldódott, ellenőrizze a beállításokat, az URD vagy az NSG-t a alkalmazni.
 
-### <a name="step-5-check-the-on-premises-vpn-device-external-interface-address"></a>5. lépés Ellenőrizze a helyszíni VPN-eszköz külső adapter címe
+### <a name="step-5-check-the-on-premises-vpn-device-external-interface-address"></a>5\. lépés. Ellenőrizze a helyszíni VPN-eszköz külső adapter címe
 
 - Ha az Internet felé néző IP-cím a VPN-eszköz szerepel a **helyi hálózati** definíciója az Azure-ban, időnként szétkapcsolások tapasztalhat.
 - Az eszköz külső adapternek kell lennie, közvetlenül az interneten. Nincs hálózati címfordítás vagy a tűzfal az interneten és az eszköz közötti lehet.
 - Konfigurálja a tűzfalat, hogy rendelkezik egy virtuális IP-címet a fürtözés, a fürt megszüntetése, és tegye elérhetővé a VPN-berendezés közvetlenül, egy nyilvános felülete, amely az átjáró úgy csatlakozhatnak a.
 
-### <a name="step-6-verify-that-the-subnets-match-exactly-azure-policy-based-gateways"></a>6. lépés Ellenőrizze, hogy az alhálózatok pontosan egyezik-e (az Azure házirendalapú átjárók)
+### <a name="step-6-verify-that-the-subnets-match-exactly-azure-policy-based-gateways"></a>6\. lépés Ellenőrizze, hogy az alhálózatok pontosan egyezik-e (az Azure házirendalapú átjárók)
 
 -   Győződjön meg arról, hogy a virtuális hálózati címét (tárolóhelyeit) felel meg pontosan az Azure virtuális hálózat és a helyszíni definíciók között.
 -   Győződjön meg arról, hogy az alhálózatok közötti pontosan egyezik-e a **helyi hálózati átjáró** és a helyszíni a helyszíni hálózat definíciói.
 
-### <a name="step-7-verify-the-azure-gateway-health-probe"></a>7. lépés Ellenőrizze az Azure-átjáró állapotadat-mintavétel
+### <a name="step-7-verify-the-azure-gateway-health-probe"></a>7\. lépés Ellenőrizze az Azure-átjáró állapotadat-mintavétel
 
 1. Nyissa meg az állapotfigyelő mintavételező keresse a következő URL-címet:
 
@@ -102,9 +102,12 @@ Keressen, és távolítsa el a felhasználó által meghatározott útválasztá
 2. Kattintson végig a tanúsítványfigyelmeztetésre.
 3. Ha választ kap, a VPN-átjáró megfelelő számít. Ha nem kap választ, az átjáró nem feltétlenül működik megfelelően, vagy az átjáró-alhálózatot a hálózati biztonsági csoportok okozza a problémát. A következő szöveg egy mintaválasz:
 
-    &lt;?xml version="1.0"?>  <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">Primary Instance: GatewayTenantWorker_IN_1 GatewayTenantVersion: 14.7.24.6 < / string&gt;
+    ```xml
+    <?xml version="1.0"?>
+    <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">Primary Instance: GatewayTenantWorker_IN_1 GatewayTenantVersion: 14.7.24.6</string>
+    ```
 
-### <a name="step-8-check-whether-the-on-premises-vpn-device-has-the-perfect-forward-secrecy-feature-enabled"></a>8. lépés Ellenőrizze, hogy a helyszíni VPN-eszköz rendelkezik-e a titkosságvédelem szolgáltatás engedélyezve van
+### <a name="step-8-check-whether-the-on-premises-vpn-device-has-the-perfect-forward-secrecy-feature-enabled"></a>8\. lépés Ellenőrizze, hogy a helyszíni VPN-eszköz rendelkezik-e a titkosságvédelem szolgáltatás engedélyezve van
 
 A titkosságvédelem funkció leválasztásának problémákat okozhat. Ha a VPN-eszköz titkosságvédelem engedélyezve van, a funkció letiltásához. Frissítse a VPN gateway IPsec-házirend.
 

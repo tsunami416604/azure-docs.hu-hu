@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: bwren
 ms.openlocfilehash: 974a3391c592a1caf7bdcc6d9e01032f0c73aaa6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61461816"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>Egyéni mezőket hozhat létre a Log Analytics-munkaterületet az Azure monitorban
@@ -45,7 +45,7 @@ A következő szakaszok az eljárás az egyéni mezőt hoz létre.  Ez a cikk al
 > Az egyéni mező fel van töltve, mert a megadott feltételnek megfelelő rekordok kerülnek a Log Analytics-munkaterülethez, így csak megjelenik egyéni mező létrehozása után összegyűjtött rekordokkal.  Az egyéni mező nem lehet hozzáadni rekordokat, amelyek már szerepel az adattárban a létrehozásakor.
 > 
 
-### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>1. lépés – azonosíthatja a bejegyzéseket, amelyek az egyéni mező
+### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>1\. lépés – azonosíthatja a bejegyzéseket, amelyek az egyéni mező
 Az első lépéseként azonosítani az egyéni mező lekéri a rekordokat.  Kezdjen egy [standard naplólekérdezés](../log-query/log-query-overview.md) és a egy rekordot, hogy működjön a modellt, amely az Azure Monitor megtudhatja, majd válassza.  Megadhatja, hogy fog adatokat nyerhet ki az egyéni mezők, amikor a **mező kinyerése varázsló** van megnyitva, ahol ellenőrzése és finomítsa a feltétel.
 
 1. Lépjen a **naplók** , és egy [lekérdezése a rekordok](../log-query/log-query-overview.md) , amely lesz az egyéni mező.
@@ -54,14 +54,14 @@ Az első lépéseként azonosítani az egyéni mező lekéri a rekordokat.  Kezd
 4. A **mező kinyerése varázsló** meg van nyitva, és a kiválasztott rekord jelenik meg a **fő példa** oszlop.  Az egyéni mező azokat a rekordokat, ugyanazokat az értékeket a tulajdonságokat, amelyeket kiválasztott a meghatározva.  
 5. Ha az érték nem pontosan mit szeretne, válassza ki a szűkítheti a feltételek további mezőket.  Annak érdekében, hogy módosítja a mezőt a feltételek pontos értékeit, szakítsa meg és válassza ki a kívánt feltételeknek megfelelő másik rekordot.
 
-### <a name="step-2---perform-initial-extract"></a>2. lépés – kezdeti kinyerési végrehajtani.
+### <a name="step-2---perform-initial-extract"></a>2\. lépés – kezdeti kinyerési végrehajtani.
 A rekordokat, amelyek az egyéni mező azonosítása, után meg kell határoznia a kinyerni kívánt adatok.  A log Analytics ezen információk használatával hasonló rekordok a hasonló minták azonosításához.  Ezt követően az lépésben lesz ellenőrzik az eredményeket, és további részleteket az elemzés használata a Log Analytics nyújt.
 
 1. Jelölje ki a minta-rekordot, amely az egyéni mező feltölteni kívánt szöveg.  Ezután megjelenik egy párbeszédablak, a mezőben adja meg a nevét és adattípusát, és a kezdeti kivonat végrehajtásához.  A karakterek  **\_CF** automatikusan hozzá lesznek fűzve.
 2. Kattintson a **kinyerése** összegyűjtött rekordok elemzés végrehajtásához.  
 3. A **összefoglalás** és **keresési eredmények** szakaszok a kivonatot eredményeinek megjelenítéséhez, így vizsgálhatja meg az adatok pontosságát.  **Összefoglalás** jeleníti meg a rekordok és a egy száma az egyes azonosított az adatértékek azonosításához használt feltételeket.  **Keresési eredmények** részletes listáját a feltételeknek megfelelő rekordokat tartalmazza.
 
-### <a name="step-3--verify-accuracy-of-the-extract-and-create-custom-field"></a>3. lépés – a kinyerés pontosságának ellenőrzéséhez és egyéni mező létrehozása
+### <a name="step-3--verify-accuracy-of-the-extract-and-create-custom-field"></a>3\. lépés – a kinyerés pontosságának ellenőrzéséhez és egyéni mező létrehozása
 Miután elvégezte a kezdeti kivonat, a Log Analytics megjeleníti az eredményeket, amely már begyűjtött adatok alapján.  Ha az eredmények pontos keresés majd is létrehozhat az egyéni mező nincs további munkahelyi.  Ha nem, majd pontosíthatja az eredményeket, hogy a Log Analytics javíthatja a saját logikáját.
 
 1. Ha bármilyen érték szerepel a kezdeti kivonat nem megfelelőek, majd kattintson a **szerkesztése** rekord, és válassza ki egy pontatlan melletti ikonra **kiemelés módosítása** annak érdekében, hogy módosítsa a kijelölést.

@@ -9,10 +9,10 @@ ms.date: 09/24/2018
 ms.author: anantr
 ms.subservice: alerts
 ms.openlocfilehash: cb93f38c05156d7ab5acb89ffff810949583e507
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60551873"
 ---
 # <a name="manage-alert-instances"></a>Riasztáspéldányok kezelése
@@ -36,7 +36,7 @@ Az a [egységes riasztások kezelőfelület](https://aka.ms/azure-alerts-overvie
  
 1. Kerül a **minden riasztás** oldal, ahol láthatja a riasztási példányok ki felsorolt Azure-ban. Ha a riasztási értesítéshez hamarosan még a portálra, használhatja a rendelkezésre álló szűkítheti a a meghatározott riasztási eseményről a szűrők. (**Megjegyzés**: Ha bármelyik súlyossági sávra kattintva a lap kapott, a lista lesz az adott súlyossági előre szűrt megnyitja, ha). A szűrők érhető el az előző lapon szereplőkkel most is szűrheti a beállítási szolgáltatás figyelése (például metrikák Platform), figyelési feltétel (aktivált vagy feloldása), súlyosság, (új/nyugtázva/zárt) riasztás állapota vagy az intelligens csoport azonosítója.
 
-   ![Minden riasztás](media/alerts-managing-alert-instances/all-alerts.jpg)
+   ![Az összes riasztás](media/alerts-managing-alert-instances/all-alerts.jpg)
 
    > [!NOTE]
    >  Ha bármelyik súlyossági sávra kattintva a lap kapott, a lista lesz előre szűrt esetében, amikor ezen az oldalon, megnyitja.

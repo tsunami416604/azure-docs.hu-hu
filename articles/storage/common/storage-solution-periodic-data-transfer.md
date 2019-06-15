@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 8f106674c1b1ec90477c7c030dc55085fcf10656
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60729919"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>Rendszeres adatforgalom-megoldások
@@ -52,10 +52,10 @@ Az alábbi táblázat a legfontosabb képességei a különbségeket foglalja ö
 
 ### <a name="continuous-data-ingestion-over-network"></a>Folyamatos adatbetöltés hálózaton keresztül
 
-| Szolgáltatás                                       | Data Box Gateway | Data Box Edge   | Azure Data Factory        |
+| Funkció                                       | Data Box Gateway | Data Box Edge   | Azure Data Factory        |
 |----------------------------------|-----------------------------------------|--------------------------|---------------------------|
 | Helyigény                                   | Virtuális eszköz             | Fizikai eszköz          | Az Azure Portalon, az ügynök a helyi szolgáltatás                                                            |
-| Hardver                                      | A hipervizor            | A Microsoft által biztosított    | NA                                                            |
+| Hardver                                      | A hipervizor            | A Microsoft által biztosított    | n/a                                                            |
 | Az első telepítés munkamennyiség                          | Alacsony (< 30 perc.)            | Közepes (~ összekapcsolhatja óra) | Nagy (~ nap)                                                 |
 | Adatformátum                                   | Azure Blobs, Azure Files   | Azure Blobs, Azure Files | [70-nél több adatösszekötők támogatja az adattárak és formátumok](https://docs.microsoft.com/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)|
 | Üzem előtti adatfeldolgozás                           | Nem                         | Igen, Edge számítási    | Igen                                                           |

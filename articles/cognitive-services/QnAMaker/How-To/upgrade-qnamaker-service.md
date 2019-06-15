@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: tulasim
 ms.openlocfilehash: cb38fdcfa8cbbfa0b90141c2de2280ff1ef08c3b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61372356"
 ---
 # <a name="share-or-upgrade-your-qna-maker-service"></a>Megosztás vagy a QnA Maker szolgáltatás frissítése
@@ -29,8 +29,8 @@ A QnA Maker több Azure-erőforrásokat hoz létre. Annak érdekében, hogy csö
 |Szolgáltatás|Megosztás|
 |--|--|
 |Cognitive Services|X|
-|App Service-csomag|✔|
-|App Service|X|
+|App service-csomag|✔|
+|App Service-ben|X|
 |Application Insights|✔|
 |Keresési szolgáltatás|✔|
 

@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: banders
 ms.openlocfilehash: 11d3deb029ef0d8478844b64c54db7982ed1091e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64570984"
 ---
 # <a name="change-your-azure-pay-as-you-go-subscription-to-a-different-offer"></a>Az Azure használatalapú fizetéses előfizetésre váltani egy másik ajánlatra
@@ -30,7 +30,7 @@ Mint egy [utólagos elszámolású](https://azure.microsoft.com/offers/ms-azr-00
 
 ## <a name="whats-supported"></a>Mit támogat:
 
-| Ettől: | Művelet |
+| Forrás | Cél |
 | --- | --- |
 | Utólagos, használatalapú fizetés |[Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/) |
 | Utólagos, használatalapú fizetés |[Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/) |

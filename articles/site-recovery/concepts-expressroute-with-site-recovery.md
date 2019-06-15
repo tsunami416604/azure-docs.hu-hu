@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/18/2019
 ms.author: mayg
 ms.openlocfilehash: bf4cce8a224db81b8db7fae6a69b8b578bb3d47a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60772303"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Az Azure Site Recovery az Azure ExpressRoute
@@ -21,7 +21,7 @@ A Microsoft Azure ExpressRoute használatával kiterjesztheti helyszíni hálóz
 
 Ez a cikk bemutatja, hogyan használhatja az Azure ExpressRoute az Azure Site Recovery vész-helyreállítási és a migráláshoz.
 
-## <a name="expressroute-circuits"></a>ExpressRoute-kapcsolatcsoportok
+## <a name="expressroute-circuits"></a>Az ExpressRoute-Kapcsolatcsoportok
 
 ExpressRoute-kapcsolatcsoport a helyszíni infrastruktúra és a egy kapcsolatszolgáltatón keresztül a Microsoft-felhőszolgáltatások közötti logikai kapcsolatot jelöli. Több ExpressRoute-Kapcsolatcsoportok rendezheti. Minden kapcsolatnak az azonos vagy eltérő régiókban is lehetnek, és a helyszíni eredetű különböző kapcsolatszolgáltatók keresztül lehet csatlakoztatni. További információ az ExpressRoute-Kapcsolatcsoportok [Itt](../expressroute/expressroute-circuit-peerings.md).
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: cherylmc
 ms.openlocfilehash: a2d714cae187e4ebcf2eefd37c61484dc48495e0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62105962"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Helyek közötti kapcsolat létrehozása az Azure Portal használatával (klasszikus)
@@ -33,7 +33,7 @@ A helyek közötti VPN-átjárókapcsolat használatával kapcsolat hozható lé
 
 ![Helyek közötti VPN Gateway létesítmények közötti kapcsolathoz – diagram](./media/vpn-gateway-howto-site-to-site-classic-portal/site-to-site-diagram.png)
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A konfigurálás megkezdése előtt győződjön meg a következő feltételek teljesüléséről:
 
@@ -166,7 +166,7 @@ Ebben a lépésben beállítja a megosztott kulcsot, és létrehozza a kapcsolat
 > Ez a lépés jelenleg az Azure Portalon nem érhető el. A műveletekhez az Azure PowerShell-parancsmagjainak Service Management (SM) verzióját kell használnia.
 >
 
-### <a name="step-1-connect-to-your-azure-account"></a>1. lépés Csatlakozás az Azure-fiókhoz
+### <a name="step-1-connect-to-your-azure-account"></a>1\.lépés Csatlakozás az Azure-fiókhoz
 
 1. Nyissa meg emelt szintű jogosultságokkal a PowerShell konzolt, és csatlakozzon a fiókjához. A következő példa segít a kapcsolódásban:
 
@@ -184,7 +184,7 @@ Ebben a lépésben beállítja a megosztott kulcsot, és létrehozza a kapcsolat
    Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"
    ```
 
-### <a name="step-2-set-the-shared-key-and-create-the-connection"></a>2. lépés A megosztott kulcs beállítása és a kapcsolat létrehozása
+### <a name="step-2-set-the-shared-key-and-create-the-connection"></a>2\.lépés A megosztott kulcs beállítása és a kapcsolat létrehozása
 
 A PowerShell és a klasszikus üzemi modell használatakor a portálon található erőforrások neve néha nem egyezik azzal, amelyet az Azure elvár a PowerShell használatakor. Az alábbi lépések segítségével exportálhatja a hálózati konfigurációs fájlt a nevek pontos értékeinek lekéréséhez.
 

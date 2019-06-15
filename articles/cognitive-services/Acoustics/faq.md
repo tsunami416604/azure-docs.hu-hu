@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: resources
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 3426681aad19bbe01c0f7e88ca16e79c0b490c36
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1f2b4d25b39e9b3ebc6659e736d47640964251dc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61335330"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64693880"
 ---
 # <a name="project-acoustics-frequently-asked-questions"></a>Projekt Akusztika – gyakori kérdések
 
@@ -27,7 +27,7 @@ A projekt Akusztika suite beépülő modulokat a rendszer egy Akusztika, amely k
 
 Letöltheti a [Akusztika Unity Project beépülő modul](https://www.microsoft.com/download/details.aspx?id=57346) vagy a [projekt Akusztika Unreal beépülő modul](https://www.microsoft.com/download/details.aspx?id=58090).
 
-## <a name="does-project-acoustics-support-x-platform"></a>Nem támogatja a projekt Akusztika <x> platform?
+## <a name="does-project-acoustics-support-ltxgt-platform"></a>Nem támogatja a projekt Akusztika &lt;x&gt; platform?
 
 A projekt Akusztika haladásával eszközplatform-támogatás a vásárlók igényei alapján. Forduljon hozzánk bizalommal a [projekt Akusztika fórumok](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics) további platformok a támogatással kapcsolatos események beküldéséhez.
 

@@ -13,14 +13,14 @@ ms.date: 02/12/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: fe253feca6a22ee0177082e178f897c5b634bb3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61257196"
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factory használatával az SFTP-kiszolgálóról
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](data-factory-sftp-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-sftp.md)
 
@@ -174,7 +174,7 @@ A **typeProperties** szakasz eltér az egyes adatkészlet. Az adatkészlet-típu
 | --- | --- | --- |
 | folderPath |Sub mappa elérési útját. Használja az escape-karaktert "\" a karakterláncban szereplő speciális karakterek. Tekintse meg a minta a társított szolgáltatás és adatkészlet-definíciók példákat.<br/><br/>Ennek a tulajdonságnak kombinálhatja **partitionBy** szeretné, hogy a mappa elérési utak alapján szelet kezdő és záró dátum-idő. |Igen |
 | fileName |Adja meg a fájl nevét a **folderPath** Ha azt szeretné, hogy a tábla egy adott fájlra a mappában. Ha nem ad meg semmilyen értéket ehhez a tulajdonsághoz, a tábla a mappában lévő összes fájlt mutat.<br/><br/>Ha a fájlnév nincs megadva a kimeneti adatkészletek, a létrehozott fájl neve a következő lenne ebben a formátumban: <br/><br/>`Data.<Guid>.txt` (Példa: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nem |
-| fileFilter |Adjon meg egy szűrőt használt összes fájlja helyett a folderPath lévő fájlok egy adott sorkészletét jelölik ki.<br/><br/>Engedélyezett értékek a következők: `*` (több karakter) és `?` (egyetlen karakter).<br/><br/>1. példa: `"fileFilter": "*.log"`<br/>2. példa: `"fileFilter": 2014-1-?.txt"`<br/><br/> a bemeneti adatkészlethez FileShare fileFilter akkor. Ez a tulajdonság a HDFS nem támogatott. |Nem |
+| fileFilter |Adjon meg egy szűrőt használt összes fájlja helyett a folderPath lévő fájlok egy adott sorkészletét jelölik ki.<br/><br/>Engedélyezett értékek a következők: `*` (több karakter) és `?` (egyetlen karakter).<br/><br/>1\. példa: `"fileFilter": "*.log"`<br/>2\. példa: `"fileFilter": 2014-1-?.txt"`<br/><br/> a bemeneti adatkészlethez FileShare fileFilter akkor. Ez a tulajdonság a HDFS nem támogatott. |Nem |
 | partitionedBy |Adjon meg egy dinamikus folderPath, az idősorozat-adatok filename partitionedBy használható. Ha például folderPath paraméteres az adatok minden óra. |Nem |
 | format | A következő formátumtípusokat támogatja: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság alatt formátumot az alábbi értékek egyikére. További információkért lásd: [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [Json formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquetformátum](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszokat. <br><br> Ha azt szeretné, hogy **, a fájlok másolása a-rendszer** közötti fájlalapú tárolók (bináris másolat), hagyja ki a format szakaszban mindkét bemeneti és kimeneti adatkészlet-definíciókban. |Nem |
 | compression | Adja meg a típus és az adatok tömörítési szintje. Támogatott típusok a következők: **A GZip**, **Deflate**, **BZip2**, és **ZipDeflate**. Támogatott szintek a következők: **Optimális** és **leggyorsabb**. További információkért lásd: [fájl- és tömörítési formátumok az Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
@@ -188,7 +188,7 @@ Az előző szakaszban ismertetett módon, a dinamikus folderPath, fájlnevét, p
 
 Time series adatkészleteket, az ütemezés és a szeletek kapcsolatos további információkért lásd: [adatkészletek létrehozása](data-factory-create-datasets.md), [ütemezés és végrehajtás](data-factory-scheduling-and-execution.md), és [folyamatok létrehozása](data-factory-create-pipelines.md) cikkeket.
 
-#### <a name="sample-1"></a>1. példa:
+#### <a name="sample-1"></a>1\. példa:
 
 ```json
 "folderPath": "wikidatagateway/wikisampledataout/{Slice}",
@@ -199,7 +199,7 @@ Time series adatkészleteket, az ütemezés és a szeletek kapcsolatos további 
 ```
 Ebben a példában {szelet} helyére a változó értékét, a Data Factory rendszer SliceStart (YYYYMMDDHH) formátumban megadva. Indítsa el a szelet időpontja a SliceStart hivatkozik. A folderPath eltér az egyes szeletekhez. Példa: wikidatagateway/wikisampledataout/2014100103 vagy wikidatagateway/wikisampledataout/2014100104.
 
-#### <a name="sample-2"></a>2. példa:
+#### <a name="sample-2"></a>2\. példa:
 
 ```json
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",

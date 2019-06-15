@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 7c2e3b2bea7ddef3dfbf69f85b499d9a60158689
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60585014"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Ismerkedés az Elastic Database-eszközökkel
@@ -92,7 +92,7 @@ Töltse le és futtassa a mintát, kövesse az alábbi lépéseket:
 
 5. Ügyféloldali kódtár képességeivel kapcsolatos további tudnivalókért kísérletezhet a különböző lehetőségeit. Vegye figyelembe a lépéseket, hogy az alkalmazás a konzol kimenete, és nyugodtan a kód a háttérben.
    
-    ![Előrehaladás][4]
+    ![Folyamatban van][4]
 
 Gratulálunk! Sikeresen létrehozott és az első szilánkokra osztott alkalmazás SQL Database Elastic Database-eszközök használatával futtassa. A Visual Studio vagy SQL Server Management Studio használatával csatlakozhat az SQL Database, és gyors tekintse meg a szegmensek, amelyek a minta létrehozása. Láthatja, hogy új minta bontott adatbázisokat és a egy szegmenstérkép-kezelő adatbázis, amely a minta hozott létre.
 

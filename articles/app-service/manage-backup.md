@@ -16,10 +16,10 @@ ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 7e697329e83b530157e490b04f5155d28d243bb6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61271704"
 ---
 # <a name="back-up-your-app-in-azure"></a>Adatok biztonsági mentése az Azure-ban
@@ -32,7 +32,7 @@ Az alkalmazás biztonsági másolatból történő visszaállítását informác
 ## <a name="what-gets-backed-up"></a>Mi a mentendő
 App Service-ben is biztonsági másolatot a következő adatokat egy Azure storage-fiókot és egy tároló, amely az alkalmazások a konfigurált. 
 
-* Alkalmazás-beállítások
+* Alkalmazások konfigurálása
 * Fájl tartalma
 * A kapcsolódó adatbázis
 

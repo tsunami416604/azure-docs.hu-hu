@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 08/20/2018
 ms.author: pabutler
 ms.openlocfilehash: 6113c10cd152a22bd31e7212d86925b0c2107e58
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938413"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>Hozzon létre egy virtuálisgép-ajánlat technikai eszközök
 
 Ez a szakasz végigvezeti létrehozásáról és konfigurálásáról a technikai eszközök esetében a virtuális gép (VM) az ajánlat az Azure Marketplace-en.  Virtuális gép két összetevőkből áll: a megoldás virtuális merevlemez (VHD) és a kapcsolódó opcionális adatlemezeket.  
 
-- *Virtuális merevlemezek (VHD)*, amely tartalmazza az operációs rendszer és a megoldás, amely központilag telepíti az Azure Marketplace-ajánlat a. A folyamat, a virtuális merevlemez előkészítésére eltér attól függően, hogy-e egy Linux-alapú, Windows-alapú, vagy egy egyéni-alapú virtuális Gépet.
+- *Virtuális merevlemezek (VHD)* , amely tartalmazza az operációs rendszer és a megoldás, amely központilag telepíti az Azure Marketplace-ajánlat a. A folyamat, a virtuális merevlemez előkészítésére eltér attól függően, hogy-e egy Linux-alapú, Windows-alapú, vagy egy egyéni-alapú virtuális Gépet.
 - *Adatlemezek* dedikált, állandó tároló virtuális gép jelölik. Tegye *nem* a megoldás virtuális merevlemez használata (például a `C:` meghajtó) az állandó adatok tárolására.
 
 Virtuálisgép-rendszerkép tartalmaz egy operációsrendszer-lemezt és nulla vagy több adatlemezeket. Lemezenként egy virtuális merevlemez szükséges. Még az üres lemezekhez hozható létre egy virtuális Merevlemezt.

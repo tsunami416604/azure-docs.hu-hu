@@ -13,10 +13,10 @@ ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
 ms.openlocfilehash: d09adbfa7cb2782d710ef3116cbd7bc68ee247b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61417583"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>Az SQL Database teljesítménnyel kapcsolatos javaslatok
@@ -77,9 +77,9 @@ Ez a javaslat alkalmazása, után lehetővé teszi a kényszerített paramétere
 
 A "Schema probléma megoldásához" javaslat jelenik meg, ha az Azure SQL Database szolgáltatás megjegyzések anomáliát séma kapcsolatos SQL hibák száma, amelyek az SQL-adatbázisban történik. Az alábbi táblázat a séma problémáinak kapcsolódó hibákat:
 
-| SQL-hibakód | Üzenet |
+| SQL-hibakód | Message |
 | --- | --- |
-| 201 |Eljárás vagy függvény "*"paramétert vár:*", amely nem lett megadva. |
+| 201 |Eljárás vagy függvény " *"paramétert vár:* ", amely nem lett megadva. |
 | 207 |Érvénytelen oszlopnév "*". |
 | 208 |Érvénytelen objektum neve "*". |
 | 213 |Oszlop neve vagy a megadott értékek száma nem egyezik tábla definíciójában. |

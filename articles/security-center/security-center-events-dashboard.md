@@ -14,25 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/05/2017
 ms.author: rkarlin
-ms.openlocfilehash: 01f6da4f5ad6b618c444949fce8d2b7aa3367e17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: bc0fd83bd45e7c5c671b387d124cdddc75244ade
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60705173"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64573522"
 ---
 # <a name="monitoring-and-processing-security-events-in-azure-security-center"></a>Figyelés és az Azure Security Centerben a biztonsági események feldolgozása
 Az események irányítópultja egy áttekintést nyújt az idő függvényében, és a figyelmet igénylő jelentős események listája összegyűjtött biztonsági események száma.  
 
 > [!NOTE]
-> Ez a funkció használatához a munkaterület legyen a Log Analytics 2-es verzió fut, és a Security Center Standard szintű. Tekintse meg a Security Center [díjszabását ismertető lapon](security-center-pricing.md) további információ a Standard szintre.
->
->
+> Biztonsági események irányítópultja a 2019. július 31-én megszűnik. További információkat és más szolgáltatások: [a Security Center nyugdíjazási szolgáltatásokat (július 2019)](security-center-features-retirement-july2019.md#menu_events).
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="what-is-a-security-event"></a>Mit jelent a biztonsági eseményt?
 A Security Center használja a Microsoft Monitoring Agent a gyűjtése a különböző biztonsági konfigurációkat, és eseményként kapcsolódó gépekről származó, és ezeket az eseményeket az Ön munkaterületeire tárolja. Az ilyen adatok többek között: operációs rendszer naplói (Windows-eseménynaplók), futó folyamatok, és a Security Center integrált biztonsági megoldások eseményeit. A Microsoft Monitoring Agent az összeomlási memóriaképeket is átmásolja a munkaterületeire.
+
+## <a name="requirements"></a>Követelmények
+Ez a funkció használatához a munkaterület legyen a Log Analytics 2-es verzió fut, és a Security Center Standard szintű. Tekintse meg a Security Center [díjszabását ismertető lapon](security-center-pricing.md) további információ a Standard szintre.
 
 ## <a name="events-processed-dashboard"></a>A feldolgozott események irányítópult
 Fér hozzá a **események** a Security Center főmenüjébe, vagy a Security Center irányítópultján **áttekintése** panelen.  

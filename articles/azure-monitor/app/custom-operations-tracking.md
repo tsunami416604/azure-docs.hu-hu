@@ -13,10 +13,10 @@ ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
 ms.openlocfilehash: ae6e0e186f5cc0c9e3f0cd02d45d57c079eb3539
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60900889"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Application Insights .NET SDK-val egyéni műveletek követése
@@ -170,7 +170,7 @@ public async Task Enqueue(string payload)
 }
 ```
 
-#### <a name="process"></a>Feldolgozás
+#### <a name="process"></a>Process
 ```csharp
 public async Task Process(BrokeredMessage message)
 {
@@ -229,8 +229,8 @@ Tároló-üzenetsorok támogatják a HTTP API-t, mert az üzenetsorhoz minden m�
 
 Ez a példa bemutatja, hogyan nyomon követheti a `Enqueue` műveletet. A következőket teheti:
 
- - **Újrapróbálkozások összekapcsolását (ha vannak)**: Az összes rendelkeznek egy közös szülő, amely rendelkezik a `Enqueue` műveletet. Ellenkező esetben ezek még nyomon követi a bejövő kérelem gyermekeiként. Ha több logikai kérelmeket az üzenetsorban, nehéz megtalálni a hívást eredményezett az újrapróbálkozásokat lehet.
- - **Vesse össze a Storage-naplók (ha szükséges)**: Ezek Ön is vonatkozhatnak, és az Application Insights telemetria.
+ - **Újrapróbálkozások összekapcsolását (ha vannak)** : Az összes rendelkeznek egy közös szülő, amely rendelkezik a `Enqueue` műveletet. Ellenkező esetben ezek még nyomon követi a bejövő kérelem gyermekeiként. Ha több logikai kérelmeket az üzenetsorban, nehéz megtalálni a hívást eredményezett az újrapróbálkozásokat lehet.
+ - **Vesse össze a Storage-naplók (ha szükséges)** : Ezek Ön is vonatkozhatnak, és az Application Insights telemetria.
 
 A `Enqueue` művelet egy szülő művelet (például a bejövő HTTP-kérést) gyermekét. A HTTP-függőségi hívás gyermekobjektuma a `Enqueue` művelet és a unoka a bejövő kérelem:
 
@@ -335,7 +335,7 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
 }
 ```
 
-#### <a name="process"></a>Feldolgozás
+#### <a name="process"></a>Process
 
 A következő példában egy bejövő üzenet követi nyomon módon hasonlóan a bejövő HTTP-kérelem:
 

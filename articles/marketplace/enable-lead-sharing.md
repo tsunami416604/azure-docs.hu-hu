@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
 ms.openlocfilehash: 9aecef81547131e6f843fdd55db259d2c4299c9c
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938678"
 ---
 # <a name="enable-lead-sharing"></a>Érdeklődő megosztásának engedélyezése
@@ -21,7 +21,7 @@ Annak biztosítása, hogy lead felügyelet engedélyezve van a nyilvántartásba
 | Storefront | Célközönség |
 |:--- |:--- |
 | AppSource | Üzleti ügyfeleink |
-| Azure Piactér | Az összes ügyfél |
+| Azure Piactér | Minden ügyfél |
 
 Az érdeklődők hasznosság alapját adja meg a kapcsolódó értékesítési mozdulatok a mező értékesítési munkatársak számára az alábbi táblázatban felsorolt kampányt, és további információ az alkalmazás vagy az ajánlat hajt végre:
 

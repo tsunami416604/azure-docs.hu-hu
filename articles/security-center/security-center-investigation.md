@@ -14,15 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 6ba21c6eacd5b72d13706c08f0cc9883ccc91388
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 55def52d248babd439227cdcd4170c0a3ca91bb1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60704758"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64569824"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Incidensek és riasztások vizsgálata az Azure Security Centerben (előzetes verzió)
 Ez a dokumentum segítséget nyújt a biztonsági incidensek és riasztások vizsgálatához az Azure Security Center vizsgálati funkciójának használatával.
+
+> [!NOTE]
+> A riasztások és incidensek hibavizsgálati felület a 2019. július 31-én megszűnik. További információkat és más szolgáltatások: [a Security Center nyugdíjazási szolgáltatásokat (július 2019)](security-center-features-retirement-july2019.md#menu_investigate).
 
 ## <a name="what-is-investigation-in-security-center"></a>Mit jelent a vizsgálat a Security Centerben?
 A Security Center Vizsgálat szolgáltatásával osztályozhatja a potenciális [biztonsági incidenseket](https://docs.microsoft.com/azure/security-center/security-center-incident), feltérképezheti a hatókörüket, és azonosíthatja a kiváltó okokat.

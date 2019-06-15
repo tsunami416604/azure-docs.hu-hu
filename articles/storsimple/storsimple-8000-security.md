@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 734b0cf9373ea98ab33c06b45ad53b46a3355dd6
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62117025"
 ---
 # <a name="storsimple-security-and-data-protection"></a>A StorSimple biztonsági és adatvédelmi
@@ -256,7 +256,7 @@ Az alábbi táblázat néhány kapcsolatos kérdéseket és válaszokat biztons�
 * [A szolgáltatásadat-titkosítási kulcs módosítása](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 * [A CHAP konfigurálása a StorSimple eszköz](storsimple-8000-configure-chap.md)
 
-**K:** Szeretnék megadni a StorSimple Snapshot Manager jelszavát egy gazdagépre, amely a StorSimple-eszköz csatlakozik, de a jelszó nem érhető el. Mi a teendő?
+**K:** Szeretnék megadni a StorSimple Snapshot Manager jelszavát egy gazdagépre, amely a StorSimple-eszköz csatlakozik, de a jelszó nem érhető el. Mire használhatom?
 
 **V:** Ha elfelejtette a jelszavát, akkor hozzon létre egy újat. Ezt követően feltétlenül összes meglévő felhasználót tájékoztatja, hogy a jelszó megváltozott, és, hogy azok frissítenie kell az ügyfelek az új jelszóval. Útmutatás Ugrás:
 

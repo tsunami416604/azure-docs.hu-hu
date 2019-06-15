@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: af09ea39f373d518d5600e3fa46adc378fd9236d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61442536"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>A távoli monitorozási megoldásgyorsító áttekintése
@@ -102,7 +102,7 @@ A [tárolási adapter mikroszolgáltatás](https://github.com/Azure/remote-monit
 
 Értékek a gyűjteményekben vannak rendszerezve. Egyéni értékeket dolgozhat, vagy teljes gyűjtemények beolvasni. Összetett adatstruktúrákat szerializálni az ügyfelek és felügyelt egyszerű szöveges tartalom.
 
-A szolgáltatás egy RESTful végpontot biztosít a kulcs-érték párok CRUD-műveletek. értékek
+A szolgáltatás egy RESTful végpontot biztosít a kulcs-érték párok CRUD-műveletek. Értékek
 
 ### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 

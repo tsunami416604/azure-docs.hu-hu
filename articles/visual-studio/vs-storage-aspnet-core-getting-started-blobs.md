@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/07/2017
 ms.author: casoper
 ms.openlocfilehash: f8de7f7a263a087abb16ed48d05b2cae9834b4ad
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62110524"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Ismerkedés az Azure Blob storage és a Visual Studio csatlakoztatott szolgáltatásainak (ASP.NET-mag)
@@ -51,7 +51,7 @@ Ez a szakasz végigvezeti a fejlesztési környezet beállítása. Ez magában f
 
     ![Képernyőfelvétel a Visual Studio új projekt párbeszédpanel](./media/vs-storage-aspnet-core-getting-started-blobs/new-project.png)
 
-1. Az a **új ASP.NET Core-webalkalmazás** párbeszédpanelen jelölje ki **.NET Core** > **ASP.NET Core 2.0** > **webalkalmazás () Model-View-Controller)**. Ezután kattintson az **OK** gombra.
+1. Az a **új ASP.NET Core-webalkalmazás** párbeszédpanelen jelölje ki **.NET Core** > **ASP.NET Core 2.0** > **webalkalmazás () Model-View-Controller)** . Ezután kattintson az **OK** gombra.
 
     ![Képernyőfelvétel az új ASP.NET Core-webalkalmazás párbeszédpanel](./media/vs-storage-aspnet-core-getting-started-blobs/new-mvc.png)
 

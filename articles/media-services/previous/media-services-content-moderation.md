@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
 ms.openlocfilehash: eb16f5e1e72e5a9379ad530ab9677adba2ccbbcd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61465677"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Az Azure Media Content Moderator segítségével lehetséges a felnőtt és szexuális tartalom észlelése 
@@ -60,7 +60,7 @@ A kimenet JSON az alábbi elemeket tartalmazza:
 |Elem|Leírás|
 |---|---|
 | start |A kezdési idejét az első esemény a "órajelben." |
-| időtartam |A "órajelben.", a részlet hossza |
+| Időtartam |A "órajelben.", a részlet hossza |
 | interval |Az időszak mindegyik esemény bejegyzése a részlet a "órajelben." |
 | [események](#events-json-elements) |Minden egyes esemény egy videoklip lejátszása jelöli, és minden klip tartalmaz kulcsképek észlelt, és nyomon követett időt töltött belül. Az események egy tömb. A külső tömb egy időintervallumot jelöl. A belső tömb 0 vagy több eseményből áll, amelyek az adott időpontban történtek.|
 
@@ -72,7 +72,7 @@ A kimenet JSON az alábbi elemeket tartalmazza:
 | adultScore | Felnőtt tartalom pontszámmal való, 0,00 való 0.99 terjedő skálán konfidencia-pontszám. |
 | racyScore | Megbízhatósági pontszám lehetséges fajgyűlölő tartalom 0,00 való 0.99 terjedő skálán. |
 | index | az első keret-től a keret index index utolsó keret index. |
-| időbélyeg | A keret "órajelben." a helye |
+| timestamp | A keret "órajelben." a helye |
 | shotIndex | A szülő elejtett index. |
 
 

@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 04/05/2017
 ms.author: zachal
 ms.openlocfilehash: 24a37d352413ff9ac55ce8e189691988383950f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60203992"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64728454"
 ---
 # <a name="using-virtual-machine-scale-sets-with-the-azure-dsc-extension"></a>Virtuális gép méretezési csoportokat használ az Azure DSC-bővítmény
 [Virtual Machine Scale Sets](virtual-machine-scale-sets-overview.md) együtt a [Azure Desired State Configuration (DSC)](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) Bővítménykezelő. A Virtual machine scale sets kényelmesen üzembe helyezése és kezelése nagy számú virtuális gépet, és rugalmasan méretezheti és betölteni a válaszban. DSC konfigurálása a virtuális gépek online állapotba kerül, amikor futnak az üzemi célú szoftverek váló szolgál.

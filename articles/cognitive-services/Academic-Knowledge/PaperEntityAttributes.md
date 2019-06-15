@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
 ms.openlocfilehash: 92844b5faf691b67617c9f3424a1322aa05429bb
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64875735"
 ---
 # <a name="paper-entity"></a>A tanulmány entitás
@@ -29,8 +29,8 @@ Ti      |A tanulmány címe                                        |String     |
 L       |Tanulmány nyelvkód elválasztva "\@\@\@"          |String     |Egyenlő
 I       |A tanulmány év                                         |Int32      |Egyenlő,<br/>IsBetween
 D       |A tanulmány dátuma                                         |Dátum       |Egyenlő,<br/>IsBetween
-Másolat      |Idézetet száma                                     |Int32      |nincs  
-ECC     |Becsült idézetet száma                           |Int32      |nincs
+CC      |Idézetet száma                                     |Int32      |Egyik sem  
+ECC     |Becsült idézetet száma                           |Int32      |Egyik sem
 AA.AuN  |Szerző neve                                        |String     |Egyenlő,<br/>StartsWith
 AA.AuId |Szerző azonosítója                                          |Int64      |Egyenlő
 AA.AfN  |Szerző kapcsolat neve                            |String     |Egyenlő,<br/>StartsWith
@@ -44,7 +44,7 @@ C.CN    |Konferencia az adatsorozat neve                             |String    
 C.CId   |Konferencia sorozat azonosítója                               |Int64      |Egyenlő
 RId     |Hivatkozott tanulmányok azonosítója                              |Int64]    |Egyenlő
 W       |A tanulmány címe és absztrakt szavakat                |String]   |Egyenlő
-E       |Kiterjesztett metaadatok (lásd az alábbi táblázatot)                |String     |nincs  
+E       |Kiterjesztett metaadatok (lásd az alábbi táblázatot)                |String     |Egyik sem  
         
 
 
@@ -66,7 +66,7 @@ I       | Probléma - napló probléma
 FP      | FirstPage - tanulmány első oldalán
 LP      | LastPage - tanulmány utolsó oldalán
 DOI     | Digital Object Identifier
-Másolat      | Idézetet környezetek – hivatkozott tanulmány listája azonosítóhoz tartozó és a megfelelő környezettel a tanulmány (például: [{123: ["a hivatkozott tanulmány 123 lépésközt barna foxes ismert", "a Lusta kutyák egy korábbi misnomer, ahogyan a papír 123"]})
+CC      | Idézetet környezetek – hivatkozott tanulmány listája azonosítóhoz tartozó és a megfelelő környezettel a tanulmány (például: [{123: ["a hivatkozott tanulmány 123 lépésközt barna foxes ismert", "a Lusta kutyák egy korábbi misnomer, ahogyan a papír 123"]})
 IA      | Fordított absztrakt
 IA.IndexLength| Az index (absztrakt a word száma) lévő elemek száma
 IA.InvertedIndex| Absztrakt szavak és az eredeti absztrakt megfelelő pozícióját (például: [{"a": [0, 15, 30]}, {"barna": [1]}, {"fox":[2]}])

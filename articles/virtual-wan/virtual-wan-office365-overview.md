@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 9/24/2018
 ms.author: cherylmc
 ms.openlocfilehash: cb91c1364a91c101ecf8362acd7aab01440143fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60458587"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64685269"
 ---
 # <a name="office-365-control-plane-in-virtual-wan"></a>Office 365-vezérlősík a Virtual WAN-ban
 
@@ -26,7 +26,7 @@ Virtuális WAN ügyfelek SDWAN jelölje ki az eszközöket az O365 Internet kisc
 Ezzel a funkcióval virtuális WAN az ügyfelek most már adhatja meg, amelyek megbíznak a közvetlen internet kiscsoportos Office 365-forgalom kategória. Megbízható Office 365 forgalom lesz hálózatukról proxyk és a legközelebbi Microsoft POP közvetlenül a felhasználó helyről útvonal. Ezzel elkerülhető a forgalom vissza-behúzásának és haj pining, így optimális felhasználói élmény biztosítása és mentése a WAN költségeket. 
 
 ### <a name="what-are-the-office-365-traffic-categories"></a>Mik azok az Office 365-forgalom kategória?
-Az Office 365-végpontok hálózati címek és alhálózatok képviseli. Lehet, hogy végpontok URL-címeket, IP-cím vagy IP-címtartományokat. URL-címeket lehet például egy teljes *account.office.net*, vagy egy helyettesítő karaktert tartalmazó URL-címet, például **. office365.com*. Három kategóriába - végpontok elkülönítik **optimalizálása**, **engedélyezése**, és **alapértelmezett**azok kritikusság alapján. További részleteket a végpont kategóriák [Itt](https://docs.microsoft.com/office365/enterprise/office-365-network-connectivity-principles#BKMK_Categories).
+Az Office 365-végpontok hálózati címek és alhálózatok képviseli. Lehet, hogy végpontok URL-címeket, IP-cím vagy IP-címtartományokat. URL-címeket lehet például egy teljes *account.office.net*, vagy egy helyettesítő karaktert tartalmazó URL-címet, például * *. office365.com*. Három kategóriába - végpontok elkülönítik **optimalizálása**, **engedélyezése**, és **alapértelmezett**azok kritikusság alapján. További részleteket a végpont kategóriák [Itt](https://docs.microsoft.com/office365/enterprise/office-365-network-connectivity-principles#BKMK_Categories).
 
 ### <a name="which-office-365-traffic-category-is-recommended-by-microsoft-for-direct-internet-breakout"></a>Mely Office 365-forgalom kategória közvetlen internet kiscsoportos a Microsoft által ajánlott?
 A **optimalizálása** kategória a kritikus fontosságú hálózati végpontokat, és kötelező SSL break megkerülése, és vizsgálja meg, és más hálózati biztonsági eszközöket. Közvetlen Internet kimenő felhasználók közelében kell rendelkeznie. Ezeket a végpontokat, amelyek a leginkább bizalmas hálózati teljesítmény, a késés és a rendelkezésre állási Office 365-forgatókönyvek képviseli. Ebbe a kategóriába URL-címek és IP-alhálózatok egy meghatározott készletével dedikált Office 365 alapvető számítási feladatok, például az Exchange Online, SharePoint online-hoz, a Skype vállalati Online és a Microsoft Teams-kulcs (sorrendjéről ~ 10) kis készletét tartalmazza. 

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: f05e3e85d36ffc23a193a6771a0271c71b2f8544
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60631906"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>A StorSimple 8000 sorozat szoftver, magas rendelkezésre állást és hálózati követelményei
@@ -61,16 +61,16 @@ A választható StorSimple-összetevők (a StorSimple Snapshot Manager és a Sto
 
 A StorSimple-eszköz egy zárolt eszközt. Azonban portokat kell megnyitni az iSCSI, a felhő és a felügyeleti forgalom a tűzfalat. A következő táblázat felsorolja a portot, amelyet meg kell nyitni a tűzfalon. Ebben a táblázatban *a* vagy *bejövő* hivatkozik a irányát, amelyről a bejövő ügyfélkérelmek hozzáférjen eszközéhez. *Ki* vagy *kimenő* hivatkozik, amelyben a StorSimple-eszköz kívülről, adatokat küld a központi telepítés meghaladja a irány: például kimenő internetkapcsolattal.
 
-| Port száma<sup>1,2</sup> | És leskálázása | Port hatókör | Szükséges | Megjegyzések |
+| Port száma<sup>1,2</sup> | És leskálázása | Port hatókör | Kötelező | Megjegyzések |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP)<sup>3</sup> |Ki |WAN |Nem |<ul><li>Kimenő port szolgál az Internet-hozzáférés frissítések lekéréséhez.</li><li>A kimenő webalkalmazás-proxy a felhasználó által konfigurálható.</li><li>Ahhoz, hogy a Rendszerfrissítések, ezt a portot is nyitva kell lennie a vezérlő fix IP-címek számára.</li></ul> |
-| TCP 443 (HTTPS)<sup>3</sup> |Ki |WAN |Igen |<ul><li>Kimenő port szolgál a felhőbeli adatok eléréséhez.</li><li>A kimenő webalkalmazás-proxy a felhasználó által konfigurálható.</li><li>Ahhoz, hogy a Rendszerfrissítések, ezt a portot is nyitva kell lennie a vezérlő fix IP-címek számára.</li><li>Ezt a portot is használja mindkét vezérlő a szemétgyűjtési.</li></ul> |
-| UDP 53 (DNS) |Ki |WAN |Bizonyos esetekben; Tekintse meg a megjegyzéseit. |Csak akkor, ha egy internetes DNS-kiszolgálót használ, a port szükség. |
-| UDP 123 (NTP) |Ki |WAN |Bizonyos esetekben; Tekintse meg a megjegyzéseit. |Csak akkor, ha egy internetes NTP-kiszolgálót használ, a port szükség. |
-| TCP 9354 |Ki |WAN |Igen |Kimenő portot használják a StorSimple-eszközt a StorSimple-Eszközkezelő szolgáltatással való kommunikációra. |
-| 3260 (iSCSI) |Eleme ennek |LAN |Nem |Ezen a porton keresztül iSCSI adatok elérésére szolgál. |
-| 5985 |Eleme ennek |LAN |Nem |Bejövő port szolgál a StorSimple Snapshot Manager kommunikálni a StorSimple-eszköz.<br>Ezt a portot is használatos, amikor távolról csatlakozik Windows PowerShell storsimple-höz készült HTTP protokollon keresztül. |
-| 5986 |Eleme ennek |LAN |Nem |Ezt a portot használja, amikor távolról csatlakozik Windows PowerShell storsimple-höz készült HTTPS-kapcsolaton keresztül. |
+| TCP 80 (HTTP)<sup>3</sup> |ki |WAN |Nem |<ul><li>Kimenő port szolgál az Internet-hozzáférés frissítések lekéréséhez.</li><li>A kimenő webalkalmazás-proxy a felhasználó által konfigurálható.</li><li>Ahhoz, hogy a Rendszerfrissítések, ezt a portot is nyitva kell lennie a vezérlő fix IP-címek számára.</li></ul> |
+| TCP 443 (HTTPS)<sup>3</sup> |ki |WAN |Igen |<ul><li>Kimenő port szolgál a felhőbeli adatok eléréséhez.</li><li>A kimenő webalkalmazás-proxy a felhasználó által konfigurálható.</li><li>Ahhoz, hogy a Rendszerfrissítések, ezt a portot is nyitva kell lennie a vezérlő fix IP-címek számára.</li><li>Ezt a portot is használja mindkét vezérlő a szemétgyűjtési.</li></ul> |
+| UDP 53 (DNS) |ki |WAN |Bizonyos esetekben; Tekintse meg a megjegyzéseit. |Csak akkor, ha egy internetes DNS-kiszolgálót használ, a port szükség. |
+| UDP 123 (NTP) |ki |WAN |Bizonyos esetekben; Tekintse meg a megjegyzéseit. |Csak akkor, ha egy internetes NTP-kiszolgálót használ, a port szükség. |
+| TCP 9354 |ki |WAN |Igen |Kimenő portot használják a StorSimple-eszközt a StorSimple-Eszközkezelő szolgáltatással való kommunikációra. |
+| 3260 (iSCSI) |A |LAN |Nem |Ezen a porton keresztül iSCSI adatok elérésére szolgál. |
+| 5985 |A |LAN |Nem |Bejövő port szolgál a StorSimple Snapshot Manager kommunikálni a StorSimple-eszköz.<br>Ezt a portot is használatos, amikor távolról csatlakozik Windows PowerShell storsimple-höz készült HTTP protokollon keresztül. |
+| 5986 |A |LAN |Nem |Ezt a portot használja, amikor távolról csatlakozik Windows PowerShell storsimple-höz készült HTTPS-kapcsolaton keresztül. |
 
 <sup>1</sup> nincs bejövő portokat kell megnyitni a nyilvános interneten.
 

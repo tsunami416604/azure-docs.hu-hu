@@ -17,21 +17,21 @@ ms.reviewer: ajayanti1
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f96a7ad1c67fab9354daaafa129d15dfbff12064
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64729375"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>Termékek neveit és szolgáltatási csomag azonosítók licencelése
 
-Ha-licencek kezelése [az Azure Portalon](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) vagy a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com), láthatja, hogy a termék nevét, amely a következőhöz hasonló *Office 365 nagyvállalati E3 csomag*. 1.0-s verzió PowerShell-parancsmagok használata esetén a termék azonosított konkrét, de kevésbé felhasználóbarát név használatával: *ENTERPRISEPACK*. A PowerShell 2.0-s verziójú parancsmagok vagy a Microsoft Graph, amikor a termék azonosított GUID értéket: *6fd2c87f-b296-42f0-b197-1e91e994b900*. A következő táblázat a leggyakrabban használt Microsoft online service termékek és különböző azonosító értékekre. Ezek a táblák kitöltését és pontos csak kezdődően ez a cikk utolsó frissítésének dátuma. A Microsoft nem kívánja frissíteni őket az újonnan felvett szolgáltatások rendszeres időközönként.
+Ha-licencek kezelése [az Azure Portalon](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) vagy a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com), láthatja, hogy a termék nevét, amely a következőhöz hasonló *Office 365 nagyvállalati E3 csomag*. 1\.0-s verzió PowerShell-parancsmagok használata esetén a termék azonosított konkrét, de kevésbé felhasználóbarát név használatával: *ENTERPRISEPACK*. A PowerShell 2.0-s verziójú parancsmagok vagy a Microsoft Graph, amikor a termék azonosított GUID értéket: *6fd2c87f-b296-42f0-b197-1e91e994b900*. A következő táblázat a leggyakrabban használt Microsoft online service termékek és különböző azonosító értékekre. Ezek a táblák kitöltését és pontos csak kezdődően ez a cikk utolsó frissítésének dátuma. A Microsoft nem kívánja frissíteni őket az újonnan felvett szolgáltatások rendszeres időközönként.
 
 - **Terméknév**: A felügyeleti portálokat használt
 - **Karakterlánc-azonosító**: 1.0-s verzió PowerShell-parancsmagokat használják, amikor műveleteket hajt végre a licenceket
 - **GUID**: Azure AD Graph és Microsoft Graph által használt GUID
 - **Szolgáltatási csomagok foglalt**: Szolgáltatáscsomagok a termék, amely megegyezik a karakterlánc-azonosító és a GUID listája
-- **Szolgáltatási csomagok része (rövid nevek)**: Service-csomagok (rövid név) a termék, amely megegyezik a karakterlánc-azonosító és a GUID listája
+- **Szolgáltatási csomagok része (rövid nevek)** : Service-csomagok (rövid név) a termék, amely megegyezik a karakterlánc-azonosító és a GUID listája
 
 >[!NOTE]
 >Ezek az információk helyességét 2019. április 15-től.

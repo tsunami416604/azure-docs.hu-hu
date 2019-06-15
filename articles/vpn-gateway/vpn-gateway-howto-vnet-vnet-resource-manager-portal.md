@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 12/03/2018
 ms.author: cherylmc
 ms.openlocfilehash: 94b32595cf2c884ccfd1362f6c8d03f542aabfc5
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62128381"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>A virtuális hálózatok közötti VPN gateway-kapcsolat konfigurálása az Azure portal használatával
@@ -190,7 +190,7 @@ Miután mind a TestVNet1, mind a TestVNet4 virtuális hálózati átjárójának
 
      - Válassza ki a virtuális hálózati átjárót, amelyhez szeretné csatlakoztatni.
 
-     - **Megosztott kulcs (PSK)**: Ebben a mezőben adjon meg egy megosztott kulcsot a kapcsolat. A kulcsot generálhatja, vagy saját maga is létrehozhatja. Helyek közötti kapcsolaton keresztül a kulcs megegyezik a helyszíni eszközhöz és a virtuális hálózati átjáró kapcsolatának. A fogalom itt is hasonló, kivéve, hanem egy VPN-eszközre, a másik virtuális hálózati átjáró csatlakozik.
+     - **Megosztott kulcs (PSK)** : Ebben a mezőben adjon meg egy megosztott kulcsot a kapcsolat. A kulcsot generálhatja, vagy saját maga is létrehozhatja. Helyek közötti kapcsolaton keresztül a kulcs megegyezik a helyszíni eszközhöz és a virtuális hálózati átjáró kapcsolatának. A fogalom itt is hasonló, kivéve, hanem egy VPN-eszközre, a másik virtuális hálózati átjáró csatlakozik.
     
 4. Válassza ki **OK** a módosítások mentéséhez.
 

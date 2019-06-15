@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 01/14/2019
 ms.openlocfilehash: c96f2dc2b44ea2118d9f0dd6c988017efcba5800
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60556974"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Adatbázisok biztonsági mentése egy több-bérlős SaaS-alkalmazás helyreállítása geo-visszaállítás használatával
@@ -80,7 +80,7 @@ A Vészhelyreállítási szkripteket a jelen oktatóanyagban használt érhetők
 ## <a name="review-the-healthy-state-of-the-application"></a>Az alkalmazás kifogástalan állapotának áttekintése
 A helyreállítási folyamat megkezdése előtt tekintse át az alkalmazás normál kifogástalan állapotát.
 
-1. A böngészőben nyissa meg a Wingtip Tickets eseményközpontot (http://events.wingtip-dpt.&lt; felhasználó&gt;. trafficmanager.net, cserélje le &lt;felhasználói&gt; az üzemelő példány felhasználói értékkel).
+1. A böngészőben nyissa meg a Wingtip Tickets eseményközpontot (http://events.wingtip-dpt.&lt ; felhasználó&gt;. trafficmanager.net, cserélje le &lt; felhasználói&gt; az üzemelő példány felhasználói értékkel).
     
    Görgessen a lap aljára, és figyelje meg, hogy a katalógus-kiszolgáló nevét és helyét a láblécben. A hely az a régió, amelyben az alkalmazás üzembe helyezésekor.    
 
@@ -200,7 +200,7 @@ Az alkalmazás végpont le van tiltva a Traffic Managerben, amíg az alkalmazás
  
     ![A helyreállítási folyamat](media/saas-dbpertenant-dr-geo-restore/events-hub-tenants-offline-in-recovery-region.png)    
 
-  * Ha megnyit egy bérlő események lapot közvetlenül a bérlő kapcsolat nélküli módban, az oldal egy bérlő offline értesítés jeleníti meg. Ha például a Contoso Concert Hall offline állapotban, ha megpróbálja megnyitni http://events.wingtip-dpt.&lt; felhasználó&gt;.trafficmanager.net/contosoconcerthall.
+  * Ha megnyit egy bérlő események lapot közvetlenül a bérlő kapcsolat nélküli módban, az oldal egy bérlő offline értesítés jeleníti meg. Ha például a Contoso Concert Hall offline állapotban, ha megpróbálja megnyitni http://events.wingtip-dpt.&lt ; felhasználó&gt;.trafficmanager.net/contosoconcerthall.
 
     ![A helyreállítási folyamat](media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
 
@@ -266,7 +266,7 @@ Ebben a feladatban frissítenie a visszaállított bérlői adatbázisok közül
 
 3. Hajtsa végre a parancsfájlt, válassza ki az F5.
 
-4. Frissítse a Contoso Concert Hall események lapot (http://events.wingtip-dpt.&lt; felhasználó&gt;.trafficmanager.net/contosoconcerthall), és figyelje meg, hogy az esemény komolyan Strauss hiányzik.
+4. Frissítse a Contoso Concert Hall események lapot (http://events.wingtip-dpt.&lt ; felhasználó&gt;.trafficmanager.net/contosoconcerthall), és figyelje meg, hogy az esemény komolyan Strauss hiányzik.
 
 Ezen a ponton az oktatóanyagban helyreállította az alkalmazásról, így most már fut a helyreállítási régióban. Kiépített egy új bérlőt a helyreállítási régióban, és a módosított adatokat a visszaállított bérlők valamelyikének.  
 
@@ -299,7 +299,7 @@ A folyamat:
 
 A bérlői adatbázisokat kell fogalommeghatározás igénylő számának korlátozásához, 1 – 3. lépéseket az azonnal kell elvégezni.  
 
-4. lépés csak akkor történik meg, ha a katalógust a helyreállítási régióban leállás során nem módosított. A katalógus frissül, ha új bérlők számára, vagy ha bármilyen adatbázis vagy készlet konfigurációjának módosításakor a helyreállítási régióban.
+4\. lépés csak akkor történik meg, ha a katalógust a helyreállítási régióban leállás során nem módosított. A katalógus frissül, ha új bérlők számára, vagy ha bármilyen adatbázis vagy készlet konfigurációjának módosításakor a helyreállítási régióban.
 
 Fontos, hogy a 7. lépés minimális hatására a bérlők és nem történik adatvesztés. E cél eléréséhez, a folyamat a georeplikációt használ.
 
@@ -311,7 +311,7 @@ Alkalmazások kell írni az újrapróbálkozási logika, győződjön meg arról
 
 Miután egy adatbázis fogalommeghatározás van, a másodlagos adatbázist a helyreállítási régióban lehet törölni. Az adatbázis az eredeti régióban majd támaszkodik újra geo-visszaállítás a DR-védelem.
 
-8. lépésben a helyreállítási régióban, így a helyreállítási és -készletek, erőforrások törlődnek.
+8\. lépésben a helyreállítási régióban, így a helyreállítási és -készletek, erőforrások törlődnek.
 
 ## <a name="run-the-repatriation-script"></a>A hazatelepítési parancsfájl futtatása
 Tegyük fel, a szolgáltatáskimaradás elhárítása után fog állni, és a hazatelepítési parancsfájl futtatásához.
@@ -330,7 +330,7 @@ Ha követte az oktatóanyag, a a parancsfájl azonnali újraaktiválja a Fabrika
 
     A helyreállítási szkript futtatásához egy új PowerShell-ablakban válassza ki az F5. Hazatelepítési több percet vesz igénybe, és a PowerShell-ablakban figyelhető.
 
-3. A parancsfájl futása közben az események eseményközpontba oldal frissítése (http://events.wingtip-dpt.&lt; felhasználó&gt;. trafficmanager.net).
+3. A parancsfájl futása közben az események eseményközpontba oldal frissítése (http://events.wingtip-dpt.&lt ; felhasználó&gt;. trafficmanager.net).
 
     Figyelje meg, hogy a bérlők számára online állapotúak és elérhetők a folyamat során.
 

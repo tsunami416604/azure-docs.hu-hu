@@ -13,11 +13,11 @@ ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cc6ca29af1866c5d26d3b73b26121451440c4dac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306653"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64511797"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>A Twilio-kötést az Azure Functions
 
@@ -406,7 +406,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**name**|**name**| A Twilio SMS-üzenetben a függvény kódját a használt változó neve. |
 |**accountSid**|**accountSidSetting**| **AccountSidSetting**| Ez az érték TwilioAccountSid kell állítani a Twilio-fiók Sid például tartalmazó alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett alkalmazás beállítása a név "AzureWebJobsTwilioAccountSid". |
 |**authToken**|**authTokenSetting**|**AuthTokenSetting**| Ez az érték TwilioAccountAuthToken kell állítani a Twilio hitelesítési jogkivonat például tartalmazó alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett alkalmazás beállítása a név "AzureWebJobsTwilioAuthToken". |
-|**A**| NA – adja meg a kódot | **Címzett**| Ez az érték a telefonszámot, amelyet elküld a SMS szöveg értéke.|
+|**to**| NA – adja meg a kódot | **Címzett**| Ez az érték a telefonszámot, amelyet elküld a SMS szöveg értéke.|
 |**from**|**from** | **A**| Ez az érték a telefonszámot, amelyet az SMS szöveges is küld értéke.|
 |**body**|**body** | **Törzs**| Ez az érték használható az SMS-üzenetben keményen code, ha nem szeretne dinamikusan állítsa a függvény a kódban. |  
 

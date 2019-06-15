@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
 ms.openlocfilehash: 89896fab7b1c359007ed23d4f9d9771e366ca68a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60937027"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Útmutató az Azure-beli virtuális gépeken futó SAP HANA biztonsági mentéséhez
@@ -207,7 +207,7 @@ A teszt rendszer esetében az SQL-utasítás kimenete szinte teljesen az adatok 
 
 A HANA Studio biztonsági mentési konzol lehetővé teszi egy HANA biztonsági másolatok maximális méretének korlátozására. Minta a környezetben, a szolgáltatás lehetővé teszi egy 230 GB-os biztonsági mentési fájl helyett több kisebb biztonsági mentési fájlokat beolvasni. Kisebb fájlméretet jelentős hatással van a teljesítményre (a kapcsolódó cikkben [SAP HANA az Azure Backup a fájlok szintjére](sap-hana-backup-file-level.md)).
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 A vizsgálati eredmények az alábbi táblázatokban és hátrányai megoldások biztonsági mentése az Azure-beli virtuális gépeken futó SAP HANA-adatbázis alapján.
 

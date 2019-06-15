@@ -13,10 +13,10 @@ ms.workload: identity
 ms.date: 04/05/2019
 ms.author: dugill
 ms.openlocfilehash: ae405d5dd99a0e2acced924ccccab292b4489cde
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61063245"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Erőforrás-kezelő használata hitelesítési API az előfizetések hozzáféréséhez
@@ -287,13 +287,13 @@ A gyakran használt beépített szerepkör-azonosítók a következők:
 | --- | --- |
 | Olvasó |acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 | Közreműködő |b24988ac-6180-42a0-ab88-20f7382dd24c |
-| Virtuális gépek közreműködője |d73bb868-a0df-4d4d-bd69-98a00b01fccb |
+| Virtuális gépek Közreműködője |d73bb868-a0df-4d4d-bd69-98a00b01fccb |
 | Virtuális hálózati közreműködő |b34d265f-36f7-4a0d-a4d4-e158ca92e90f |
 | Tárfiók-közreműködő |86e8f5dc-a6e9-4c67-9d15-de283e8eac25 |
-| Webhelyek közreműködője |de139f84-1756-47ae-9be6-808fbbe84772 |
-| Webes tarifacsomagok közreműködője |2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
-| SQL Server közreműködője |6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
-| SQL-adatbázisok közreműködője |9b7fa17d-e63e-47b0-bb0a-15c516ac86ec |
+| Webhelyek Közreműködője |de139f84-1756-47ae-9be6-808fbbe84772 |
+| Webes Tarifacsomagok Közreműködője |2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
+| Az SQL Server Közreműködője |6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
+| SQL-Adatbázisok Közreműködője |9b7fa17d-e63e-47b0-bb0a-15c516ac86ec |
 
 ### <a name="assign-rbac-role-to-application"></a>RBAC szerepkör hozzárendelése alkalmazáshoz
 Rendelkezik a megfelelő RBAC-szerepkörök hozzárendelése az egyszerű szolgáltatás használatával minden, amit a [erőforrás-kezelő szerepkör-hozzárendelés létrehozása](https://docs.microsoft.com/rest/api/authorization/roleassignments) API-t.

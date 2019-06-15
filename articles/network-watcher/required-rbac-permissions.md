@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: kumud
 ms.openlocfilehash: 8c8fe6125d9c638fedadc3d299ff0ac0d601fd61
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64685693"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Szerepköralapú hozzáférés-vezérlési engedélyekkel kell használnia a Network watcherről
@@ -33,7 +33,7 @@ Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi, hogy cs
 | Microsoft.Network/networkWatchers/write                             | Létrehozni vagy frissíteni a network watchert                             |
 | Microsoft.Network/networkWatchers/delete                            | A hálózati figyelő törlése                                       |
 
-## <a name="nsg-flow-logs"></a>NSG-folyamat-naplók
+## <a name="nsg-flow-logs"></a>NSG-Folyamatnaplók
 
 | Műveletek                                                              | Name (Név)                                                           |
 | ---------                                                           | -------------                                                  |
@@ -48,7 +48,7 @@ Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi, hogy cs
 | Microsoft.Network/networkWatchers/queryTroubleshootResult/action    | Lekérdezési eredmények kapcsolat teszt hibáinak elhárítása                |
 | Microsoft.Network/networkWatchers/troubleshoot/action               | Futtassa a kapcsolat tesztelése hibaelhárítása                             |
 
-## <a name="connection-monitor"></a>Kapcsolatfigyelő
+## <a name="connection-monitor"></a>A kapcsolatfigyelő
 
 | Műveletek                                                              | Name (Név)                                                           |
 | ---------                                                           | -------------                                                  |

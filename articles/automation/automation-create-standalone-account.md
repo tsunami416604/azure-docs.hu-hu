@@ -10,10 +10,10 @@ ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: cdffc339bee1f5456e4eeb619e566b1f9c34b143
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61076793"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Önálló Azure Automation-fiók létrehozása
@@ -89,7 +89,7 @@ Az Azure Portalon egy Azure Automation-fiók létrehozásához hajtsa végre az 
 
 Ha befejeződött az Automation-fiók létrehozása, számos erőforrás automatikusan létrejön. A létrehozás után ezek a runbookok biztonságosan törölhető, ha nem szeretné tartani őket. A futtató fiókok, a runbook-fiókjába való hitelesítéséhez használható, és kell hagyni, ha nem hoz létre egy másik, vagy nincs szükség rájuk. Az alábbi táblázat a futtató fiókhoz kapcsolódó erőforrásokat foglalja össze.
 
-| Erőforrás | Leírás |
+| Resource | Leírás |
 | --- | --- |
 | AzureAutomationTutorial forgatókönyv |Grafikus mintarunbook, amely bemutatja, hogyan kell a futtató fiókkal hitelesítést végezni. A runbook lekéri az összes Resource Manager-erőforrásokat. |
 | AzureAutomationTutorialScript forgatókönyv |PowerShell-mintarunbook, amely bemutatja, hogyan kell a futtató fiókkal hitelesítést végezni. A runbook lekéri az összes Resource Manager-erőforrásokat. |
@@ -99,7 +99,7 @@ Ha befejeződött az Automation-fiók létrehozása, számos erőforrás automat
 
 Az alábbi táblázat a klasszikus futtató fiókhoz kapcsolódó erőforrásokat foglalja össze.
 
-| Erőforrás | Leírás |
+| Resource | Leírás |
 | --- | --- |
 | AzureClassicAutomationTutorial forgatókönyv |Grafikus mintarunbook. A runbook összes klasszikus virtuális gép lekéri az előfizetéshez a klasszikus futtató fiók (tanúsítvány) segítségével. Majd megjeleníti a virtuális gépek nevét és állapotát. |
 | AzureClassicAutomationTutorial parancsprogram-forgatókönyv |PowerShell-mintarunbook. A runbook összes klasszikus virtuális gép lekéri az előfizetéshez a klasszikus futtató fiók (tanúsítvány) segítségével. Majd megjeleníti a virtuális gépek nevét és állapotát. |

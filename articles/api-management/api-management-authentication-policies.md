@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
 ms.openlocfilehash: c0f8da779ca656cf357c418b8766a53307643695
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64708795"
 ---
 # <a name="api-management-authentication-policies"></a>Az API Management a hitelesítési házirendek
@@ -49,7 +49,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
   
 ### <a name="elements"></a>Elemek  
   
-|Name (Név)|Leírás|Szükséges|  
+|Name (Név)|Leírás|Kötelező|  
 |----------|-----------------|--------------|  
 |hitelesítés – alapszintű|A gyökérelem.|Igen|  
   
@@ -57,7 +57,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
   
 |Name (Név)|Leírás|Szükséges|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
-|felhasználónév|Adja meg a felhasználónevet a alapszintű hitelesítés.|Igen|–|  
+|username|Adja meg a felhasználónevet a alapszintű hitelesítés.|Igen|–|  
 |password|Az alapszintű hitelesítés jelszava.|Igen|–|  
   
 ### <a name="usage"></a>Használat  
@@ -89,7 +89,7 @@ Ebben a példában ügyféltanúsítvány erőforrás neve azonosítja.
 
 ### <a name="elements"></a>Elemek  
   
-|Name (Név)|Leírás|Szükséges|  
+|Name (Név)|Leírás|Kötelező|  
 |----------|-----------------|--------------|  
 |hitelesítés – tanúsítvány|A gyökérelem.|Igen|  
   
@@ -124,7 +124,7 @@ Ebben a példában ügyféltanúsítvány erőforrás neve azonosítja.
   
 ### <a name="elements"></a>Elemek  
   
-|Name (Név)|Leírás|Szükséges|  
+|Name (Név)|Leírás|Kötelező|  
 |----------|-----------------|--------------|  
 |authentication-managed-identity |A gyökérelem.|Igen|  
   
@@ -132,7 +132,7 @@ Ebben a példában ügyféltanúsítvány erőforrás neve azonosítja.
   
 |Name (Név)|Leírás|Szükséges|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
-|erőforrás|karakterlánc. Az Alkalmazásazonosító URI-t a cél webes API-t (védett erőforrás) az Azure Active Directoryban.|Igen|–|  
+|resource|karakterlánc. Az Alkalmazásazonosító URI-t a cél webes API-t (védett erőforrás) az Azure Active Directoryban.|Igen|–|  
 |output-token-variable-name|karakterlánc. Neve a környezeti változó, amelyek megkapják a token értékét egy objektumtípust, `string`.|Nem|–|  
 |ignore-error|Logikai érték. Ha beállítása `true`, a házirend folyamat továbbra is fut, még akkor is, ha a hozzáférési jogkivonat nem érik.|Nem|false|  
   

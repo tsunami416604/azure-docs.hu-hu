@@ -16,25 +16,25 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: d1f24c3661a23496d1873f12ce46083bf5258269
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61435508"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>Hozzárendelési hibák elhárítása a Cloud Services telepítése során az Azure szolgáltatásban
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Amikor példányok egy Felhőszolgáltatásban üzembe helyezni, vagy adja hozzá az új webes vagy feldolgozói szerepkör példányai, a Microsoft Azure számítási erőforrásokat foglal le. Kap időnként hibák, ezek a műveletek végrehajtásakor, még mielőtt eléri az Azure-előfizetés korlátaival. Ez a cikk ismerteti a gyakori hibák némelyike okait, és lehetséges javítási javasol. Az információk is hasznosak lehetnek a szolgáltatások központi telepítésének tervezése során.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ### <a name="background--how-allocation-works"></a>Háttér – foglalási működése
-Az Azure-adatközpontokban lévő kiszolgálók fürtökre vannak particionálva. Új cloud service-foglalási kérelem több fürtön kísérlet történik. Amikor az első példány van üzembe helyezve, egy felhőszolgáltatáshoz (előkészítési vagy termelési), a felhőalapú szolgáltatás, amely egy fürt beolvasása rögzítve. A felhőszolgáltatás további telepítések ugyanazon a fürtön fog történni. Ebben a cikkben azt fog hivatkozni, ez, "fürt rögzített". 1. ábra alább látható a kis-és a egy normál foglalási, amely több fürtön; kísérlet történik 2. ábra szemlélteti a kis-és a egy elkülönített, amely rendelkezik rögzített fürt 2-re, mert a meglévő felhőalapú szolgáltatás CS_1 üzemeltető.
+Az Azure-adatközpontokban lévő kiszolgálók fürtökre vannak particionálva. Új cloud service-foglalási kérelem több fürtön kísérlet történik. Amikor az első példány van üzembe helyezve, egy felhőszolgáltatáshoz (előkészítési vagy termelési), a felhőalapú szolgáltatás, amely egy fürt beolvasása rögzítve. A felhőszolgáltatás további telepítések ugyanazon a fürtön fog történni. Ebben a cikkben azt fog hivatkozni, ez, "fürt rögzített". 1\. ábra alább látható a kis-és a egy normál foglalási, amely több fürtön; kísérlet történik 2. ábra szemlélteti a kis-és a egy elkülönített, amely rendelkezik rögzített fürt 2-re, mert a meglévő felhőalapú szolgáltatás CS_1 üzemeltető.
 
 ![Foglalási diagramja](./media/cloud-services-allocation-failure/Allocation1.png)
 
 ### <a name="why-allocation-failure-happens"></a>Miért foglalási hiba történik
-Egy foglalási kérelem rögzítve van egy fürthöz, ha van egy ingyenes erőforrások megkereséséhez, mivel a rendelkezésre álló erőforráskészletet korlátozódik, a fürt hibás magasabb esélyét. Továbbá ha a foglalási kérelem rögzítve van egy fürthöz, de a fürt nem támogatja a kért erőforrás típusát, a kérelem sikertelen lesz akkor is, ha a fürt rendelkezik ingyenes erőforrás. 3. ábra alább az esetet, ahol egy rögzített felosztás meghiúsul, mert az csak jelölt fürtnek nincs szabad erőforrás mutatja be. 4. ábra mutatja be az esetben, ahol egy rögzített felosztás meghiúsul, mert a csak jelölt fürt nem támogatja a kért Virtuálisgép-méret, annak ellenére, hogy a fürt rendelkezik ingyenes erőforrások.
+Egy foglalási kérelem rögzítve van egy fürthöz, ha van egy ingyenes erőforrások megkereséséhez, mivel a rendelkezésre álló erőforráskészletet korlátozódik, a fürt hibás magasabb esélyét. Továbbá ha a foglalási kérelem rögzítve van egy fürthöz, de a fürt nem támogatja a kért erőforrás típusát, a kérelem sikertelen lesz akkor is, ha a fürt rendelkezik ingyenes erőforrás. 3\. ábra alább az esetet, ahol egy rögzített felosztás meghiúsul, mert az csak jelölt fürtnek nincs szabad erőforrás mutatja be. 4\. ábra mutatja be az esetben, ahol egy rögzített felosztás meghiúsul, mert a csak jelölt fürt nem támogatja a kért Virtuálisgép-méret, annak ellenére, hogy a fürt rendelkezik ingyenes erőforrások.
 
 ![Rögzített foglalási hiba](./media/cloud-services-allocation-failure/Allocation2.png)
 

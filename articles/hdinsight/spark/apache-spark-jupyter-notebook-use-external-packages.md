@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: hrasheed
 ms.openlocfilehash: 6af25b95aa3a38c4a2e9f3bd8147604dccae0abb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64715149"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Külső csomagok használata Jupyter notebookok a HDInsight az Apache Spark-fürtök
@@ -32,7 +32,7 @@ Az alábbiakkal kell rendelkeznie:
 * Apache Spark-fürt megléte a HDInsightban. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md).
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>Külső csomagok használata Jupyter notebookokkal
-1. Az [Azure portál](https://portal.azure.com/) kezdőpultján kattintson a Spark-fürthöz tartozó csempére (ha rögzítette azt a kezdőpulton). A fürtöt a következő helyről is megkeresheti: **Browse All (Összes tallózása)** > **HDInsight Clusters** (HDInsight-fürtök).   
+1. Az [Azure portál](https://portal.azure.com/) kezdőpultján kattintson a Spark-fürthöz tartozó csempére (ha rögzítette azt a kezdőpulton). A fürtöt a következő helyről is megkeresheti: **Browse All (Összes tallózása)**  > **HDInsight Clusters** (HDInsight-fürtök).   
 
 1. A Spark-fürt panelén kattintson a **Quick Links** (Gyorshivatkozások) lehetőségre, majd a **Cluster Dashboard** (Fürt irányítópultja) panelen a **Jupyter Notebook** elemre. Ha a rendszer felkéri rá, adja meg a fürthöz tartozó rendszergazdai hitelesítő adatokat.
 
@@ -67,7 +67,7 @@ Az alábbiakkal kell rendelkeznie:
    
     ![Külső csomagok használata Jupyter notebook](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "külső csomagok használata Jupyter notebook")
    
-    c. Fűz össze adatokat a három, egymástól kettősponttal (**:**).
+    c. Fűz össze adatokat a három, egymástól kettősponttal ( **:** ).
    
         com.databricks:spark-csv_2.10:1.4.0
 

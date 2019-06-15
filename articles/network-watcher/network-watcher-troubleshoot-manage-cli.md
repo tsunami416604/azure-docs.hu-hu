@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: kumud
 ms.openlocfilehash: 0974c242533ff122d75979acc5eb158ec36c179d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64699593"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli"></a>Virtuális hálózati átjáró és az Azure Network Watcher Azure CLI-vel kapcsolatok hibaelhárítása
@@ -33,7 +33,7 @@ A Network Watcher számos funkciót kínál a ismertetése az Azure-ban a háló
 
 Ebben a cikkben szereplő lépések végrehajtásához kell [telepítse az Azure parancssori felület Mac, Linux és Windows (CLI)](/cli/azure/install-azure-cli).
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a forgatókönyv azt feltételezi, hogy már követte a lépéseket a [hozzon létre egy Network Watcher](network-watcher-create.md) egy Network Watcher létrehozásához.
 

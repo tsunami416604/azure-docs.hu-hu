@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
 ms.openlocfilehash: 1ec7fd4116aa848a9c431df386997cb23f405f1b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64925412"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Bevezetés a hálózati biztonsági csoportok csoportforgalom naplózása
@@ -73,7 +73,7 @@ Forgalmi naplók az alábbi tulajdonságokat tartalmazzák:
 
 ## <a name="nsg-flow-logs-version-2"></a>NSG-Folyamatnaplók 2-es verzió
 
-2. verzióját a naplók vezet be a folyamat állapota. Konfigurálhatja a Folyamatnaplók melyik verzióját megjelenhet. A folyamat-naplók engedélyezésére, lásd: [engedélyezése NSG csoportforgalom naplózása](network-watcher-nsg-flow-logging-portal.md).
+2\. verzióját a naplók vezet be a folyamat állapota. Konfigurálhatja a Folyamatnaplók melyik verzióját megjelenhet. A folyamat-naplók engedélyezésére, lásd: [engedélyezése NSG csoportforgalom naplózása](network-watcher-nsg-flow-logging-portal.md).
 
 Folyamat állapota *B* keletkezik, amikor egy olyan folyamatot kezdeményez. Folyamat állapota *C* és teljesítményfolyamati állapot *E* folytatása, a flow és a flow-lezárást, illetve megjelölése állapotok vannak. Mindkét *C* és *E* állapotok forgalom a sávszélesség-információkat tartalmaznak.
 
@@ -103,7 +103,7 @@ A következő szöveget, amelyek egy folyamat napló. Amint láthatja, nincsenek
 > [!NOTE]
 > Az értékek a **flowTuples* tulajdonság egy vesszővel tagolt lista.
  
-### <a name="version-1-nsg-flow-log-format-sample"></a>1. verziójának NSG folyamat napló formátuma minta
+### <a name="version-1-nsg-flow-log-format-sample"></a>1\. verziójának NSG folyamat napló formátuma minta
 ```json
 {
     "records": [
@@ -212,7 +212,7 @@ A következő szöveget, amelyek egy folyamat napló. Amint láthatja, nincsenek
         ,
         ...
 ```
-### <a name="version-2-nsg-flow-log-format-sample"></a>2. verzió NSG folyamat napló formátuma minta
+### <a name="version-2-nsg-flow-log-format-sample"></a>2\. verzió NSG folyamat napló formátuma minta
 ```json
  {
     "records": [

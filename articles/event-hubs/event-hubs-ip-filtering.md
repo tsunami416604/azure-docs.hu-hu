@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: spelluru
 ms.openlocfilehash: ccb2fa7b0805b332957513c52c0c1051d068d2cc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60821666"
 ---
 # <a name="use-firewall-rules"></a>Tűzfalszabályok
@@ -72,7 +72,7 @@ Sablon paraméterei:
 > Nincsenek Megtagadás szabályok lehetséges, amíg az Azure Resource Manager-sablon rendelkezik-e beállítva alapértelmezett művelet **"Engedélyezés"** amely nem korlátozza a kapcsolatokat.
 > Amikor a virtuális hálózathoz vagy a tűzfalak szabályokat, hogy módosítania kell a ***"defaultAction"***
 > 
-> forrás:
+> from
 > ```json
 > "defaultAction": "Allow"
 > ```

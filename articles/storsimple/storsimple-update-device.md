@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: v-sharos
 ms.openlocfilehash: d973a16c121a1e8ebee10826d135bcbb33ef748c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61409934"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>A StorSimple 8000 sorozatú eszköz frissítése
@@ -84,22 +84,22 @@ Ha a alkalmazni a karbantartási módú frissítések van szüksége, kapni fog 
 > 
 > 
 
-### <a name="step-1-connect-to-the-serial-console-a-namestep1"></a>1. lépés: Csatlakozás soros konzolon <a name="step1">
+### <a name="step-1-connect-to-the-serial-console-a-namestep1"></a>1\. lépés: Csatlakozás soros konzolon <a name="step1">
 Első lépésként használja egy alkalmazás, például a PuTTY a soros konzol eléréséhez. Az alábbi eljárás ismerteti, hogyan PuTTY a soros konzoljához való csatlakozáshoz.
 
 [!INCLUDE [storsimple-use-putty](../../includes/storsimple-use-putty.md)]
 
-### <a name="step-2-enter-maintenance-mode-a-namestep2"></a>2. lépés: Adja meg a karbantartási mód <a name="step2">
+### <a name="step-2-enter-maintenance-mode-a-namestep2"></a>2\. lépés: Adja meg a karbantartási mód <a name="step2">
 Miután csatlakozott a konzolon, határozza meg, hogy vannak-e a frissítések telepítését, és adja meg a karbantartási módban, hogy telepítse őket.
 
 [!INCLUDE [storsimple-enter-maintenance-mode](../../includes/storsimple-enter-maintenance-mode.md)]
 
-### <a name="step-3-install-your-updates-a-namestep3"></a>3. lépés: A frissítések telepítése <a name="step3">
+### <a name="step-3-install-your-updates-a-namestep3"></a>3\. lépés: A frissítések telepítése <a name="step3">
 Ezután telepítse a frissítéseket.
 
 [!INCLUDE [storsimple-install-maintenance-mode-updates](../../includes/storsimple-install-maintenance-mode-updates.md)]
 
-### <a name="step-4-exit-maintenance-mode-a-namestep4"></a>4. lépés: Kilépés a karbantartási módból <a name="step4">
+### <a name="step-4-exit-maintenance-mode-a-namestep4"></a>4\. lépés: Kilépés a karbantartási módból <a name="step4">
 Végül kilépett a karbantartási módból.
 
 [!INCLUDE [storsimple-exit-maintenance-mode](../../includes/storsimple-exit-maintenance-mode.md)]

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/21/2018
 tags: connectors
 ms.openlocfilehash: 7146e59eabf9e30fa263f957f1c546414ad0fe26
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60952603"
 ---
 # <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Keresse meg a hírkeresési Bing Search és az Azure Logic Apps
@@ -89,7 +89,7 @@ Az Azure Logic Apps- [művelet](../logic-apps/logic-apps-overview.md#logic-app-c
    ![Művelet felvétele](./media/connectors-create-api-bing-search/add-action.png)
 
    Meglévő lépések közötti művelet hozzáadása, vigye az egérmutatót a csatlakozó nyílra. 
-   Válassza a plusz jelre (**+**), amely akkor jelenik meg, és válassza **művelet hozzáadása**.
+   Válassza a plusz jelre ( **+** ), amely akkor jelenik meg, és válassza **művelet hozzáadása**.
 
 3. A Keresés mezőbe írja be a "Bing search" szűrőként.
 Jelölje ki az elvégzendő műveletek listájában.

@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: e8b735780f4ed3402845d9d401f8e37701b9a1a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60836926"
 ---
 # <a name="sfctl-mesh-service"></a>sfctl mesh szolgáltatás
@@ -28,7 +28,7 @@ Szolgáltatás részleteinek és a szolgáltatások listája egy alkalmazás-er�
 
 |Parancs|Leírás|
 | --- | --- |
-| lista | A szolgáltatás erőforrásainak listája. |
+| list | A szolgáltatás erőforrásainak listája. |
 | Show | Lekérdezi a szolgáltatás-erőforrás a megadott névvel. |
 
 ## <a name="sfctl-mesh-service-list"></a>sfctl-háló szolgáltatás listája

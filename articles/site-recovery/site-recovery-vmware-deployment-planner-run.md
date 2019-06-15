@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: mayg
 ms.openlocfilehash: 3a6c9e50804db573395984b8ba38838eb15b0792
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61276735"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Futtassa az Azure Site Recovery Deployment Planner a VMware-vészhelyreállításhoz az Azure-bA
@@ -108,23 +108,23 @@ A rendszer egyszer, a profilkészítési művelet elején rögzíti virtuálisg�
 
 A profilkészítési parancs számos fájlt létrehoz a profilkészítési könyvtárban. Ezeket ne törölje, mert az hatással lenne a jelentésre.
 
-#### <a name="example-1-profile-vms-for-30-days-and-find-the-throughput-from-on-premises-to-azure"></a>1. példa: Profilkészítés virtuális gépekről 30 napon keresztül, valamint a helyszín és az Azure közötti átviteli sebesség meghatározása
+#### <a name="example-1-profile-vms-for-30-days-and-find-the-throughput-from-on-premises-to-azure"></a>1\. példa: Profilkészítés virtuális gépekről 30 napon keresztül, valamint a helyszín és az Azure közötti átviteli sebesség meghatározása
 ```
 ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Directory “E:\vCenter1_ProfiledData” -Server vCenter1.contoso.com -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -NoOfDaysToProfile  30  -User vCenterUser1 -StorageAccountName  asrspfarm1 -StorageAccountKey Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
 ```
 
-#### <a name="example-2-profile-vms-for-15-days"></a>2. példa Profilkészítés virtuális gépekről 15 napon keresztül
+#### <a name="example-2-profile-vms-for-15-days"></a>2\. példa Profilkészítés virtuális gépekről 15 napon keresztül
 
 ```
 ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Directory “E:\vCenter1_ProfiledData” -Server vCenter1.contoso.com -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -NoOfDaysToProfile  15  -User vCenterUser1
 ```
 
-#### <a name="example-3-profile-vms-for-60-minutes-for-a-quick-test-of-the-tool"></a>3. példa: Profilkészítés virtuális gépekről 60 perc alatt az eszköz gyors teszteléséhez
+#### <a name="example-3-profile-vms-for-60-minutes-for-a-quick-test-of-the-tool"></a>3\. példa: Profilkészítés virtuális gépekről 60 perc alatt az eszköz gyors teszteléséhez
 ```
 ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Directory “E:\vCenter1_ProfiledData” -Server vCenter1.contoso.com -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -NoOfMinutesToProfile 60  -User vCenterUser1
 ```
 
-#### <a name="example-4-profile-vms-for-2-hours-for-a-proof-of-concept"></a>4. példa: Profilkészítés virtuális gépekről 2 óra alatt megvalósíthatósági vizsgálathoz
+#### <a name="example-4-profile-vms-for-2-hours-for-a-proof-of-concept"></a>4\. példa: Profilkészítés virtuális gépekről 2 óra alatt megvalósíthatósági vizsgálathoz
 ```
 ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Directory “E:\vCenter1_ProfiledData” -Server vCenter1.contoso.com -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -NoOfHoursToProfile 2 -User vCenterUser1
 ```
@@ -174,39 +174,39 @@ Alapértelmezés szerint az eszköz, és legfeljebb 1000 virtuális gépet jelen
 <add key="MaxVmsSupported" value="1000"/>
 ```
 
-#### <a name="example-1-generate-a-report-with-default-values-when-the-profiled-data-is-on-the-local-drive"></a>1. példa: Jelentés készítése az alapértelmezett értékekkel, ha a profilkészítés során létrehozott adatok a helyi meghajtón találhatóak
+#### <a name="example-1-generate-a-report-with-default-values-when-the-profiled-data-is-on-the-local-drive"></a>1\. példa: Jelentés készítése az alapértelmezett értékekkel, ha a profilkészítés során létrehozott adatok a helyi meghajtón találhatóak
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”
 ```
 
-#### <a name="example-2-generate-a-report-when-the-profiled-data-is-on-a-remote-server"></a>2. példa Jelentés készítése, ha a profilkészítés során létrehozott adatok távoli kiszolgálón találhatóak
+#### <a name="example-2-generate-a-report-when-the-profiled-data-is-on-a-remote-server"></a>2\. példa Jelentés készítése, ha a profilkészítés során létrehozott adatok távoli kiszolgálón találhatóak
 A felhasználónak olvasási/írási hozzáféréssel kell rendelkeznie a távoli könyvtárhoz.
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Server vCenter1.contoso.com -Directory “\\PS1-W2K12R2\vCenter1_ProfiledData” -VMListFile “\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
 ```
 
-#### <a name="example-3-generate-a-report-with-a-specific-bandwidth-and-goal-to-complete-ir-within-specified-time"></a>3. példa: Jelentés készítése megadott sávszélességgel és a megadott időn belül Határidejű befejezésére az
+#### <a name="example-3-generate-a-report-with-a-specific-bandwidth-and-goal-to-complete-ir-within-specified-time"></a>3\. példa: Jelentés készítése megadott sávszélességgel és a megadott időn belül Határidejű befejezésére az
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -Bandwidth 100 -GoalToCompleteIR 24
 ```
 
-#### <a name="example-4-generate-a-report-with-a-5-percent-growth-factor-instead-of-the-default-30-percent"></a>4. példa: Jelentés készítése 5%-os növekedési tényezővel az alapértelmezett 30% helyett
+#### <a name="example-4-generate-a-report-with-a-5-percent-growth-factor-instead-of-the-default-30-percent"></a>4\. példa: Jelentés készítése 5%-os növekedési tényezővel az alapértelmezett 30% helyett
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -GrowthFactor 5
 ```
 
-#### <a name="example-5-generate-a-report-with-a-subset-of-profiled-data"></a>5. példa: Jelentés létrehozása a profilkészítés során használt adatok egy részéből
+#### <a name="example-5-generate-a-report-with-a-subset-of-profiled-data"></a>5\. példa: Jelentés létrehozása a profilkészítés során használt adatok egy részéből
 Tegyük fel, hogy van 30 napnyi adata, amelyet a profilkészítés során hozott létre, de csak 20 napról szeretne jelentést készíteni.
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt” -StartDate  01-10-2017:12:30 -EndDate 01-19-2017:12:30
 ```
 
-#### <a name="example-6-generate-a-report-for-5-minute-rpo"></a>6. példa: Jelentés készítése 5 perces helyreállítási időkorláttal
+#### <a name="example-6-generate-a-report-for-5-minute-rpo"></a>6\. példa: Jelentés készítése 5 perces helyreállítási időkorláttal
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -DesiredRPO 5
 ```
 
-#### <a name="example-7-generate-a-report-for-south-india-azure-region-with-indian-rupee-and-specific-offer-id"></a>7. példa: Jelentés létrehozása a Dél-India Azure-régióhoz indiai rúpia pénznemmel és adott Ajánlatazonosítóval
+#### <a name="example-7-generate-a-report-for-south-india-azure-region-with-indian-rupee-and-specific-offer-id"></a>7\. példa: Jelentés létrehozása a Dél-India Azure-régióhoz indiai rúpia pénznemmel és adott Ajánlatazonosítóval
 
 Vegye figyelembe, hogy az előfizetés-azonosító szükséges a jelentés egy adott pénznemben.
 ```

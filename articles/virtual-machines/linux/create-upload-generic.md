@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: szark
-ms.openlocfilehash: e032f9a9772232d3a57a9672dc6c601354ecad43
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1ef273b65bb3a8b8536d27c70e8ba05e74faa39b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60327966"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64702486"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Információk a által támogatott Disztribúciók
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -45,7 +45,7 @@ Ez a cikk általános útmutatást az Azure-ban futó Linux-disztribúció össz
 
 ## <a name="general-linux-installation-notes"></a>Általános Linux telepítési jegyzetek
 * A Hyper-V virtuális merevlemez (VHDX) formátum nem támogatott az Azure-ban, csak *rögzített VHD*.  A lemez konvertálása Hyper-V kezelője segítségével VHD formátumú, vagy a [Convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd) parancsmagot. Ha VirtualBox használ, válassza ki a **rögzített méretű** ahelyett, hogy az alapértelmezett (dinamikusan kiosztott) a lemez létrehozásakor.
-* Az Azure csak az 1. generációs virtuális gépeket támogatja. 1. generációs virtuális gép a VHDX-re a VHD-fájl formátumát és a rögzített méretű lemezekké dinamikusan bővülő alakíthatja. Egy virtuálisgép-generáció nem módosítható. További információkért lásd: [kell hozhatok létre 1 vagy 2. generációs virtuális gépek a Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)
+* Az Azure csak az 1. generációs virtuális gépeket támogatja. 1\. generációs virtuális gép a VHDX-re a VHD-fájl formátumát és a rögzített méretű lemezekké dinamikusan bővülő alakíthatja. Egy virtuálisgép-generáció nem módosítható. További információkért lásd: [kell hozhatok létre 1 vagy 2. generációs virtuális gépek a Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)
 * A VHD számára engedélyezett maximális mérete 1,023 GB.
 * Az javasoljuk, hogy használjon standard partíciók ahelyett, hogy logikai kötet-kezelő (LVM) sok telepítés az alapértelmezett Linux rendszer telepítésekor. Standard partíciók használatával a rendszer működésében LVM neve nem felel meg a klónozott virtuális gépeket, különösen akkor, ha egy operációsrendszer-lemez minden eddiginél egy másik azonos virtuális Géphez van csatolva a hibaelhárításhoz. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) használnak, az adatlemezeket.
 * Kernel támogatása csatlakoztatni UDF fájlrendszerek szükség. Első rendszerindításkor az Azure-ban az üzembe helyezési konfiguráció átadódik a Linux rendszerű virtuális gép, amely csatolva van a Vendég UDF-formátumú adathordozó használatával. Az Azure Linux-ügynök csatlakoztatnia kell az UDF-fájlrendszer, olvassa el a konfigurációját, és a virtuális gép.
@@ -74,7 +74,7 @@ A mechanizmus az initrd vagy initramfs rendszerkép újraépítése a terjeszté
 ### <a name="resizing-vhds"></a>Virtuális merevlemezek átméretezése
 Azure-beli virtuális Merevlemezek lemezképeihez rendelkeznie kell egy virtuális méret 1 MB igazítva.  Általában megfelelően igazodnak a Hyper-V használatával létrehozott virtuális merevlemezeket.  A VHD-t a nincs megfelelően igazítva, ha egy a következőhöz hasonló hibaüzenet jelenhet meg, amikor megpróbál létrehozni egy képet a VHD-ből.
 
-* A virtuális merevlemez http://<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd rendelkezik egy nem támogatott virtuális méret 21475270656 bájt. A mérete (a MB-ban) egész számnak kell lennie.
+* A virtuális merevlemez http:\//\<mystorageaccount >.blob.core.windows.net/vhds/MyLinuxVM.vhd rendelkezik egy nem támogatott virtuális méret 21475270656 bájt. A mérete (a MB-ban) egész számnak kell lennie.
 
 Ebben az esetben méretezze át a virtuális gép vagy a Hyper-V Manager konzol használatával, vagy a [átméretezése-VHD](https://technet.microsoft.com/library/hh848535.aspx) PowerShell-parancsmagot.  Ha nem Windows-környezetben, azt javasoljuk, `qemu-img` átalakítása (ha szükséges), és méretezze át a VHD-t.
 
@@ -125,7 +125,7 @@ Ebben az esetben méretezze át a virtuális gép vagy a Hyper-V Manager konzol 
 
 A Linux Integration Services (LIS) illesztőprogramokat, a Hyper-V és az Azure közvetlenül a felsőbb szintű Linux-kernel van hozzájárult. Terjesztések, amelyek tartalmazzák a legutóbbi Linux-Kernelverzió (például 3.x) már elérhető ezeket az illesztőprogramokat, vagy ellenkező esetben biztosítson backported verziói ezeket az illesztőprogramokat a kernelt.  Ezeket az illesztőprogramokat folyamatosan változik a felsőbb rétegbeli kernel, az új javításokat és szolgáltatásokat, ezért javasoljuk, ha lehetséges fut egy [által támogatott terjesztési](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , amely tartalmazza ezeket a javításokat és frissítéseket.
 
-Ha egy Red Hat Enterprise Linux verziók 6.0-6.3-változatot futtatja, akkor telepítenie kell a [Hyper-V LIS legújabb illesztőprogramjait](https://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409). 6.4 + RHEL (és származékai) kezdve a LIS illesztőprogramokat a kernel már megtalálhatók, és ezért semmilyen további telepítési csomagok szükségesek.
+Ha egy Red Hat Enterprise Linux verziók 6.0-6.3-változatot futtatja, akkor telepítenie kell a [Hyper-V LIS legújabb illesztőprogramjait](https://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409). 6\.4 + RHEL (és származékai) kezdve a LIS illesztőprogramokat a kernel már megtalálhatók, és ezért semmilyen további telepítési csomagok szükségesek.
 
 Ha egy egyéni kernel szükség, azt javasoljuk egy újabb rendszermag-verzió (például a 3.8-as +). Disztribúciók vagy szállítók, akik a saját rendszermag fenntartása meg kell rendszeresen backport LIS illesztőprogramokat a felsőbb rétegbeli kernel, az egyéni kernel.  Akkor is, ha egy viszonylag új kernel verziója már használ, erősen ajánlott szerinti nyomon követést bármely felső javítja a LIS illesztőprogramok és backport őket igény szerint. A helyek LIS illesztőprogram forrásfájljainak vannak megadva a [MAINTAINERS](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/MAINTAINERS) fájlt a Linux kernel forrás fa:
 ```

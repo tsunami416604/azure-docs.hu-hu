@@ -12,10 +12,10 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: ffe2760c004db24d503ee381b8752c875c286fca
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62105836"
 ---
 # <a name="get-started-with-the-mailchimp-connector"></a>A MailChimp-összekötő használatának első lépései
@@ -28,7 +28,7 @@ Logikai alkalmazások létrehozása a MailChimp, akkor először létre kell hoz
 
 | Tulajdonság | Szükséges | Leírás |
 | --- | --- | --- |
-| Jogkivonat |Igen |MailChimpes hitelesítő adatok megadása |
+| Jogkivonat |Igen |Mailchimpes hitelesítő adatok megadása |
 
 > [!INCLUDE [Steps to create a connection to MailChimp](../../includes/connectors-create-api-mailchimp.md)]
 > 

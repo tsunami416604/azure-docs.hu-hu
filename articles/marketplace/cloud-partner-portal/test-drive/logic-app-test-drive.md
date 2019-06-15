@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 3dc5642541f411acc93301f6bb9828e901aba449
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64940007"
 ---
 <a name="logic-app-test-drive"></a>Logikai alkalmazás kipróbálása
@@ -61,11 +61,11 @@ Töltse ki a következő szakaszban a Test Drive logikai alkalmazás konfigurál
 
 ![Tesztkonfiguráció meghajtó technikai](./media/azure-resource-manager-test-drive/howtopub5_logicapp.png)
 
-- **Régió** - *[kötelező mező]* választott régió, ahol válasszon a Ha a meghajtó a logikai alkalmazás tesztelése erőforrások vannak üzembe helyezve.
+- **Régió** -  *[kötelező mező]* választott régió, ahol válasszon a Ha a meghajtó a logikai alkalmazás tesztelése erőforrások vannak üzembe helyezve.
 
     *Megjegyzés:* Ha a logikai alkalmazás minden olyan egyéni erőforrás, amely egy régióban vannak tárolva, győződjön meg arról, adott régióban itt ki van jelölve. A legjobb módja az, hogy **teljesen helyileg, az Azure-előfizetést a portálon, a logikai alkalmazás üzembe helyezése, és ellenőrizze, hogy működik-e** itt írása előtt.
 
-- **Maximális párhuzamos Tesztverzió** - *[kötelező mező]* Test Drive-példányok, amelyek már központilag telepítve és Várakozás a kiválasztott régiónként eléréséhez. Ügyfelek azonnal hozzáférhetnek a Tesztverzió várnia a központi telepítés helyett.
+- **Maximális párhuzamos Tesztverzió** -  *[kötelező mező]* Test Drive-példányok, amelyek már központilag telepítve és Várakozás a kiválasztott régiónként eléréséhez. Ügyfelek azonnal hozzáférhetnek a Tesztverzió várnia a központi telepítés helyett.
 
     *Megjegyzés:* Ha egy webináriumra/class adat. Ha szeretné a tanulóknak, hogy kipróbálás N számú futnak, javasoljuk, hogy közzé N számú a gyakori elérésű példányok és majd ezt követően az osztály több mint tennie, térjen vissza a normál gyakori elérésű-példányok számát.
 
@@ -77,7 +77,7 @@ Töltse ki a következő szakaszban a Test Drive logikai alkalmazás konfigurál
 
 - **Logikai alkalmazás neve - megszüntetése** *[kötelező mező]* írja be a logikai alkalmazás nevét a megszüntetés a Test Drive létrehozott összes erőforrást. Ellenőrizze, hogy a fájl mentésekor a fenti erőforráscsoportban.
 
-- **Információ - hozzáférés** *[kötelező mező]* után az ügyfél lekéri a Test Drive, a hozzáférési információk jelennek-e meg a számukra. Ezeket az utasításokat úgy van kialakítva, hogy a hasznos a kimeneti paraméterek a Test Drive Resource Manager-sablon megosztása. Adja meg a kimeneti paraméterek, használja a kapcsos zárójelek (például **{{outputname}}**), és azok kerül beillesztésre megfelelően a helyen. (HTML karakterlánc-formátum ajánlott Itt jelennek meg az előtér).
+- **Információ - hozzáférés** *[kötelező mező]* után az ügyfél lekéri a Test Drive, a hozzáférési információk jelennek-e meg a számukra. Ezeket az utasításokat úgy van kialakítva, hogy a hasznos a kimeneti paraméterek a Test Drive Resource Manager-sablon megosztása. Adja meg a kimeneti paraméterek, használja a kapcsos zárójelek (például **{{outputname}}** ), és azok kerül beillesztésre megfelelően a helyen. (HTML karakterlánc-formátum ajánlott Itt jelennek meg az előtér).
 
 ### <a name="test-drive-deployment-subscription-details"></a>Tesztelés üzembe helyezési előfizetés részletei
 
@@ -88,7 +88,7 @@ Az utolsó szakaszban adja meg, hogy tud érvénybe léptetni a Tesztverzió aut
 **Az Azure előfizetés-azonosító** *[kötelező mező]* Ez hozzáférést biztosít az Azure-szolgáltatások és az Azure Portalon. Az előfizetés, ahol készüljön jelentés, erőforrás-használat és a szolgáltatás számlázása. Ha Ön még nem rendelkezik egy **külön** Tesztverzió az Azure-előfizetés csak, kérjük lépjen tovább, és hozzon létre egyet. Az Azure-előfizetés azonosítókat megkereséséhez az Azure Portalra jelentkezik be, és ellenőrizheti, hogy az előfizetések, a bal oldali menüben.
 (Példa: "a83645ac-1234-5ab6-6789-1h234g764ghty")
 
-![Azure-előfizetések](./media/azure-resource-manager-test-drive/subdetails2.png)
+![Az Azure-előfizetések](./media/azure-resource-manager-test-drive/subdetails2.png)
 
 **Azure AD-bérlő azonosítója** *[kötelező mező]* Ha a bérlő Azonosítóját már rendelkezésre álló tulajdonságok, azt alább találhatja\> címtár-azonosító
 
@@ -119,7 +119,7 @@ Kattintson a Mentés gombra. Az utolsó lépés, hogy az Alkalmazásazonosítót
 Adott használjuk az alkalmazás üzembe helyezéséhez az előfizetéshez, hozzá kell adnunk a az alkalmazás az előfizetés közreműködője. A következő útmutatót: ezek a következők alatt:
 
 1. Az előfizetések panelen keresse meg, és válassza ki a megfelelő előfizetést, amely csak a Test Drive használja.
-1. Kattintson a **hozzáférés-vezérlés (IAM)**.
+1. Kattintson a **hozzáférés-vezérlés (IAM)** .
 1. Kattintson a **szerepkör-hozzárendelések** fülre.  ![Az Azure Active Directory, új egyszerű hozzáférés-vezérlés hozzáadása](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
 1. Kattintson a **szerepkör-hozzárendelés hozzáadása**.
 1. Állítsa be a szerepkört, **közreműködői**.
