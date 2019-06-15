@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/21/2019
-ms.openlocfilehash: 3ecdf62cfed7d70873f3dc752bfacd134e367a90
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 2f3d9eeca1404fcae121ae5fead222cbde4037b1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388957"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059261"
 ---
 # <a name="what-is-an-azure-machine-learning-service-workspace"></a>Mi az az Azure Machine Learning szolgáltatás munkaterület?
 
@@ -32,16 +32,16 @@ Az ábrán egy munkaterület a következő összetevők:
 
 + A munkaterület tartalmazhat [Notebook virtuális gépek](quickstart-run-cloud-notebook.md), felhőbeli erőforrások konfigurálása az Azure Machine Learning futtatásához szükséges Python-környezetet.
 + [Felhasználói szerepkörök](how-to-assign-roles.md) lehetővé teszi a munkaterület megosztása más felhasználók, csoportok vagy projektekhez.
-+ [Számítási céljainak](concept-azure-machine-learning-architecture.md#compute-target) a kísérletek futtatásához használt.
++ [Számítási céljainak](concept-azure-machine-learning-architecture.md#compute-targets) a kísérletek futtatásához használt.
 + A munkaterület létrehozásakor [kapcsolódó erőforrások](#resources) is jönnek létre az Ön számára.
-+ [Kísérletek](concept-azure-machine-learning-architecture.md#experiment) a modellek létrehozásához használja a betanítási Futtatás vannak.  Hozhat létre és futtathat kísérleteket az
++ [Kísérletek](concept-azure-machine-learning-architecture.md#experiments) a modellek létrehozásához használja a betanítási Futtatás vannak.  Hozhat létre és futtathat kísérleteket az
     + A [az Azure Machine Learning SDK Pythonhoz készült](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
     + A [machine learning-kísérletek (előzetes verzió) automatikus](how-to-create-portal-experiments.md) szakaszban az Azure Portalon.
     + A [vizuális felhasználói felületet (előzetes verzió)](ui-concept-visual-interface.md).
-+ [A folyamatok](concept-azure-machine-learning-architecture.md#pipeline) képzés és a modell átképezési újrafelhasználható munkafolyamatok.
-+ [Az adatkészletek](concept-azure-machine-learning-architecture.md#dataset) támogatás a felügyeleti modell betanítási és a folyamat létrehozásához használja az adatok.
-+ Ha már rendelkezik egy modell számára telepíteni kívánja, létrehozhat egy [regisztrált modell](concept-azure-machine-learning-architecture.md#model-registry).
-+ A regisztrált modell és a egy pontozó szkript használatával létrehozhat egy [üzembe helyezési](concept-azure-machine-learning-architecture.md#image-registry).
++ [A folyamatok](concept-azure-machine-learning-architecture.md#ml-pipelines) képzés és a modell átképezési újrafelhasználható munkafolyamatok.
++ [Az adatkészletek](concept-azure-machine-learning-architecture.md#datasets-and-datastores) támogatás a felügyeleti modell betanítási és a folyamat létrehozásához használja az adatok.
++ Ha már rendelkezik egy modell számára telepíteni kívánja, létrehozhat egy regisztrált modell.
++ A regisztrált modell és a egy pontozó szkript használatával létrehozhat egy [üzembe helyezési](concept-azure-machine-learning-architecture.md#deployment).
 
 ## <a name="tools-for-workspace-interaction"></a>Nástroje Pro munkaterület interakció
 

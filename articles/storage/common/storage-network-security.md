@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 56a25c95d9bc01078b3eff3729a8a693ee3cf510
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65520256"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Az Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
@@ -229,7 +229,7 @@ Adja meg az engedélyezett internetes használatával címtartományok [CIDR-jel
    > [!NOTE]
    > Kis címtartományok használatával "/ 31" vagy "/ 32" előtag méretei nem támogatottak. Ezek a tartományok egyedi IP-cím szabályok használatával kell konfigurálni.
 
-Csak engedélyezett IP-hálózati szabályok **nyilvános interneten** IP-címeket. IP-címtartományok, magánhálózatok számára fenntartott (ahogyan az az [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) az IP-szabályok nem engedélyezett. Magánhálózatokat közé tartozik a címek kezdődő _10.*_, _172.16. *_ - _172.31. *_, és _192.168. *_.
+Csak engedélyezett IP-hálózati szabályok **nyilvános interneten** IP-címeket. IP-címtartományok, magánhálózatok számára fenntartott (ahogyan az az [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) az IP-szabályok nem engedélyezett. Magánhálózatokat közé tartozik a címek kezdődő _10.*_ , _172.16. *_  - _172.31. *_ , és _192.168. *_ .
 
    > [!NOTE]
    > IP-hálózati szabályok nem befolyásolják a az azonos Azure-régióban a storage-fiók érkező kérelmek esetén. Használat [virtuális hálózati szabályok](#grant-access-from-a-virtual-network) ugyanabban a régióban kérelem engedélyezéséhez.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e1fa72f8c7edf76ec46663fd62ee40a3a16e8cd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: ff59b93603af61fd8ea571966a3c43a06929ae04
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60414953"
+ms.locfileid: "67113474"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Hozzon létre egy rugalmas hozzáférés-vezérlési felügyeleti stratégia az Azure Active Directoryval
 
@@ -37,8 +37,8 @@ Ez a dokumentum biztosít egy szervezet stratégiák útmutatást biztosít hiba
 Ez a dokumentum négy fő takeaways szerepelnek:
 
 * Kerülje a rendszergazdai fiókzárolási vészelérési fiókok használatával.
-* Az MFA felhasználónkénti MFA Hitelesítést ahelyett, hogy a feltételes hozzáférés (CA) használatával hajtja végre.
-* Csökkenti a felhasználó zárolási több feltételes hozzáférés (CA) vezérlők használatával.
+* Feltételes hozzáféréssel (CA) használ az MFA felhasználónkénti MFA helyett megvalósításához.
+* Csökkenti a felhasználó zárolási több feltételes hozzáféréssel (CA) vezérlők használatával.
 * Csökkenti a felhasználó zárolási több hitelesítési módszert, vagy minden felhasználó számára megfelelő kiépítésével.
 
 ## <a name="before-a-disruption"></a>Mielőtt egy megszakítása
@@ -269,4 +269,4 @@ Ha a szervezet az felhasználónkénti MFA örökölt házirendek, akkor érdeme
 * [Vállalati Windows Hello – Üzembehelyezési útmutató](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
   * [Tájékoztató a jelszavakról – a Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
 * [Mik azok a feltételek az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
-* [Mik a hozzáférés-vezérlés az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)
+* [Mik azok a hozzáférés-vezérlés az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)

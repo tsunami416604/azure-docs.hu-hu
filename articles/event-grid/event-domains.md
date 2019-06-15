@@ -8,10 +8,10 @@ ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.openlocfilehash: 61821caa2450096bdbdde3461316ad21a82f6f18
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66304302"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Event Grid-témakörök kezelésére szolgáló esemény tartományok ismertetése
@@ -101,7 +101,7 @@ Az alábbiakban a korlátok és kvóták kapcsolatos esemény tartományok:
 
 - esemény száma 100 000 kapcsolatos témakörök 
 - Azure-előfizetésenként 100 esemény tartományok 
-- a témakör egy esemény tartományban 500 eseményfeliratkozások
+- 500 esemény-feliratkozás témakörönként egy eseménytartományban
 - 50 tartományi hatókör előfizetések 
 - összesen 5 000 esemény második feldolgozási sebességét (tartományba)
 

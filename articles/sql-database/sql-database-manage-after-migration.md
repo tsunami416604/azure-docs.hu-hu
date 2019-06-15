@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 02/13/2019
 ms.openlocfilehash: 73bc2d9889727a1633986e12642bd06cf2714632
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66357330"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Új adatbázis a felhőben – Azure SQL Database-ben az egyetlen vagy készletezett adatbázisok kezelése
@@ -267,7 +267,7 @@ Az Azure Portalon az adatbázis kiválasztásával és a diagram az Áttekintés
 
 ![Figyelés diagramra](./media/sql-database-manage-after-migration/monitoring-chart.png)
 
-![2. diagram csoportosítási figyelése](./media/sql-database-manage-after-migration/chart.png)
+![2\. diagram csoportosítási figyelése](./media/sql-database-manage-after-migration/chart.png)
 
 Ez a diagram is konfigurálhatja riasztások erőforrás szerint. Ezek a riasztások lehetővé teszik az e-mailt ügyfélerőforrás-feltételek válaszolni, HTTPS vagy HTTP-végponton írási vagy egy műveletet. További információkért lásd: [riasztásokat hozhat létre](sql-database-insights-alerts-portal.md).
 

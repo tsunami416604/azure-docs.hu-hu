@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: v-chjenk
 ms.openlocfilehash: b3032aa796b3c79572bbf8b2beb85efc252ff73b
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66497536"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-profiltárolók és Azure Files
@@ -67,7 +67,7 @@ Az S2D-fürt szükséges az operációs rendszer, amely javítani, frissítve, �
 
 ## <a name="fslogix-profile-containers"></a>FSLogix profil tárolók
 
-2018. November 19. [Microsoft megszerzett FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/). FSLogix kihívásaira számos profil tároló. Kulcs többek között a következők:
+2018\. November 19. [Microsoft megszerzett FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/). FSLogix kihívásaira számos profil tároló. Kulcs többek között a következők:
 
 - **Teljesítmény:** A [FSLogix profil tárolók](https://fslogix.com/products/profile-containers) nagy teljesítményű és megoldása teljesítményproblémát, amelyekkel korábban letiltotta a gyorsítótáras exchange üzemmódot.
 - **OneDrive:** Nélkül FSLogix profil tárolók a OneDrive vállalati verzióba nem állandó RDSH vagy VDI-környezetekben nem támogatott. [OneDrive vállalati verzió és minden FSLogix ajánlott eljárások](https://fslogix.com/products/technical-faqs/284-onedrive-for-business-and-fslogix-best-practices) ismerteti, hogyan használják. További információkért lásd: [használja a Szinkronizáló ügyfél virtuális asztali](https://docs.microsoft.com/deployoffice/rds-onedrive-business-vdi).
@@ -77,7 +77,7 @@ A beszerzési óta a Microsoft lépések FSLogix profil tárolók meglévő felh
 
 ## <a name="azure-files-integration-with-azure-active-directory"></a>Az Azure Files integrációja az Azure Active Directory
 
-FSLogix teljesítményadatainak tárolók és szolgáltatások a felhő előnyeit. 2018. szeptember 24., a Microsoft Azure Files meghirdetett nyilvános előzetes verziója [támogatása az Azure Active Directory-hitelesítés az Azure Files](https://azure.microsoft.com/blog/azure-active-directory-integration-for-smb-access-now-in-public-preview/). Kielégítésével költségeket és az adminisztratív terhelést, az Azure Active Directory-hitelesítés az Azure Files felhasználói profilok az új virtuális asztali Windows-szolgáltatás prémium szintű megoldás is.
+FSLogix teljesítményadatainak tárolók és szolgáltatások a felhő előnyeit. 2018\. szeptember 24., a Microsoft Azure Files meghirdetett nyilvános előzetes verziója [támogatása az Azure Active Directory-hitelesítés az Azure Files](https://azure.microsoft.com/blog/azure-active-directory-integration-for-smb-access-now-in-public-preview/). Kielégítésével költségeket és az adminisztratív terhelést, az Azure Active Directory-hitelesítés az Azure Files felhasználói profilok az új virtuális asztali Windows-szolgáltatás prémium szintű megoldás is.
 
 ## <a name="best-practices-for-windows-virtual-desktop"></a>Ajánlott eljárások a Windows virtuális asztal
 

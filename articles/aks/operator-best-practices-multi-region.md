@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: lastcoolnameleft
 ms.openlocfilehash: 4afc1231e6c9fa49c04c7bf6dfe26ee5eb87cc31
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66475163"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az üzleti folytonossági és vészhelyreállítási recovery az Azure Kubernetes Service (AKS)
@@ -57,7 +57,7 @@ A TRAFFIC Manager DNS-keresések hajt végre, és adja vissza egy felhasználó 
 
 A végpontok és útválasztási beállításáról további információért lásd: [a földrajzi forgalom-útválasztási módszer konfigurálása a Traffic Manager használatával](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-configure-geographic-routing-method).
 
-### <a name="layer-7-application-routing-with-azure-front-door-service"></a>7. rétegbeli alkalmazás útválasztás az Azure bejárati ajtajának szolgáltatás
+### <a name="layer-7-application-routing-with-azure-front-door-service"></a>7\. rétegbeli alkalmazás útválasztás az Azure bejárati ajtajának szolgáltatás
 
 A TRAFFIC Manager DNS (3. réteg) alakzat forgalom használ. [Az Azure bejárati ajtajának szolgáltatás](https://docs.microsoft.com/azure/frontdoor/front-door-overview) HTTP/HTTPS (7. réteg) útválasztási lehetőséget biztosít. Az Azure bejárati ajtajának Service további szolgáltatásai többek között, SSL megszüntetése, az egyéni tartomány, webalkalmazás-tűzfal, URL-újraíró és munkamenet-affinitás. Tekintse át, melyik megoldás a legmegfelelőbb van az alkalmazás forgalmának igényeit.
 

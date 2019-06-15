@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: ergreenl
 ms.openlocfilehash: e961b6c4b97103668c591e319a81d20f533b4acb
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66246374"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Biztonságos LDAP (LDAPS-t) az Azure AD Domain Services felügyelt tartomány konfigurálása
@@ -51,7 +51,7 @@ A következő irányelveket kiszolgálónként érvényes tanúsítványt beszer
 
 <br>
 
-## <a name="task-1---obtain-a-certificate-for-secure-ldap"></a>1. feladat – tanúsítvány beszerzése biztonságos LDAP-hoz
+## <a name="task-1---obtain-a-certificate-for-secure-ldap"></a>1\. feladat – tanúsítvány beszerzése biztonságos LDAP-hoz
 Az első feladat magában foglalja a felügyelt tartomány secure LDAP-hozzáférését használt tanúsítvány beszerzésével. Erre két lehetősége van:
 
 * Szerezzen be egy tanúsítványt nyilvános Hitelesítésszolgáltatótól vagy vállalati hitelesítésszolgáltató.

@@ -1,25 +1,25 @@
 ---
 title: Az Azure Database for MySQL Server-naplók
-description: Az Azure Database-ben elérhető naplók a MySQL és a különböző naplózási szintek engedélyezésének paramétereket ismerteti.
+description: A lassú lekérdezések naplóinak elérhető az Azure Database MySQL és a különböző naplózási szintek engedélyezésének paramétereket ismerteti.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2019
-ms.openlocfilehash: c5087a038e31c4819ef1ef173bb32faa41e04c97
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/29/2019
+ms.openlocfilehash: 1a8956d40ef30e8d52fbdded3448019e14ab16a5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60525844"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062402"
 ---
-# <a name="server-logs-in-azure-database-for-mysql"></a>Kiszolgálói naplók az Azure Database for MySQL-hez
-Az Azure Database for MySQL-hez a lassú lekérdezések naplója a felhasználók számára érhető el. A tranzakciós naplóba való hozzáférés nem támogatott. A lassú lekérdezések naplója segítségével azonosíthatja a szűk keresztmetszeteket hibaelhárításhoz. 
+# <a name="slow-query-logs-in-azure-database-for-mysql"></a>Lassú lekérdezések naplók az Azure Database for MySQL-hez
+Az Azure Database for MySQL-hez a lassú lekérdezések naplója a felhasználók számára érhető el. A tranzakciós naplóba való hozzáférés nem támogatott. A lassú lekérdezések naplója segítségével azonosíthatja a szűk keresztmetszeteket hibaelhárításhoz.
 
 A MySQL lassú lekérdezések naplója kapcsolatos további információkért tekintse meg a MySQL referencia manuális [lassú lekérdezési szakasz](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html).
 
-## <a name="access-server-logs"></a>Hozzáférés a kiszolgálói naplókhoz
-A listában, és az Azure-adatbázis le az MySQL server-naplók az Azure Portalon, és az Azure CLI használatával.
+## <a name="access-slow-query-logs"></a>Hozzáférés a lassú lekérdezések naplói
+Listán, és töltse le az Azure Database for MySQL lassú lekérdezések naplóinak, az Azure Portalon, és az Azure CLI használatával.
 
 Az Azure Portalon válassza ki az Azure Database for MySQL-kiszolgálóhoz. Alatt a **figyelés** szakaszban kattintson a **kiszolgálónaplók** lapot.
 
@@ -30,8 +30,7 @@ Naplók létrehozás legfeljebb hét napig érhetők el. Naplók összesített m
 
 Naplók vannak-e forgatni minden 24 órás vagy azt 7 GB, amelyik először bekövetkezik.
 
-
-## <a name="configure-logging"></a>Naplózás konfigurálása 
+## <a name="configure-slow-query-logging"></a>Lassú lekérdezések naplózásának konfigurálásához 
 A lassú lekérdezések naplója alapértelmezés szerint le van tiltva. Annak engedélyezéséhez állítsa slow_query_log ON.
 
 Egyéb úgy módosíthatja a paraméterek a következők:
@@ -73,10 +72,10 @@ A következő táblázat ismerteti, mi az egyes naplókhoz. A kimeneti módszert
 | `rows_sent_s` | Elküldött sorok száma |
 | `rows_examined_s` | Vizsgált sorok száma |
 | `last_insert_id_s` | [last_insert_id](https://dev.mysql.com/doc/refman/8.0/en/information-functions.html#function_last-insert-id) |
-| `insert_id_s` | Id beszúrása |
+| `insert_id_s` | ID beszúrása |
 | `sql_text_s` | Teljes lekérdezést |
 | `server_id_s` | A kiszolgáló azonosítója |
-| `thread_id_s` | Id vlákna |
+| `thread_id_s` | ID vlákna |
 | `\_ResourceId` | Erőforrás-URI |
 
 ## <a name="next-steps"></a>További lépések

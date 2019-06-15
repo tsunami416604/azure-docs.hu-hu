@@ -8,16 +8,20 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 30882899e5be4101ae3d77f9840d8bdef567e53f
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 8c7bb080b350742d0722cdb4e07b82a6881ba05b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66676983"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073672"
 ---
 # <a name="accessing-the-vmware-solution-by-cloudsimple-portal-from-azure-portal"></a>Az Azure Portalról CloudSimple portál által a VMware megoldás elérése
 
 Egyszeri bejelentkezés támogatása a CloudSimple portáljához való hozzáférésre. Az Azure Portalra való bejelentkezés után hozzáférhet a CloudSimple portál anélkül, hogy jelentkezzen be újra. Az első alkalommal kéri, hogy engedélyezze CloudSimple portál eléréséhez a [CloudSimple szolgáltatás engedélyezésével](#consent-to-cloudsimple-service-authorization-application) alkalmazás.  Az engedélyezés egy egyszeri művelet történik.
+
+## <a name="before-you-begin"></a>Előkészületek
+
+Csak a builtin rendelkező felhasználók **tulajdonosa** és **közreműködői** szerepkörök elérheti CloudSimple portált.  A szerepkörök az előfizetésben kell konfigurálni.  A szerepkör ellenőrzése a további információkért lásd: [szerepkör-hozzárendelések megtekintése](https://docs.microsoft.com/azure/role-based-access-control/check-access) cikk.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 

@@ -17,10 +17,10 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: edf5f2b681123243f55b1c2bf19a500e68171c0e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66165739"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Hogyan építheti ki az SQL Servert futtató virtuális gépek az Azure PowerShell használatával
@@ -64,10 +64,10 @@ $StorageName = $ResourceGroupName + "storage"
 $StorageSku = "Premium_LRS"
 ```
 
-### <a name="network-properties"></a>Hálózat tulajdonságai
+### <a name="network-properties"></a>Hálózati tulajdonságok
 A hálózat a virtuális gép által használandó tulajdonságainak definiálásához. 
 
-- Hálózati adapter
+- Hálózati illesztő
 - TCP/IP-címkiosztási módszer
 - Virtuális hálózat neve
 - Virtuális alhálózat neve
@@ -427,7 +427,7 @@ Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName
 ## <a name="next-steps"></a>További lépések
 A virtuális gép létrehozása után is:
 
-- Kapcsolódás a virtuális géphez RDP-vel
+- Csatlakozzon a virtuális géphez, RDP-vel
 - SQL Server-beállítások konfigurálása a portálon a virtuális gép, többek között:
    - [Tárolási beállítások](virtual-machines-windows-sql-server-storage-configuration.md) 
    - [Automatizált felügyeleti feladatokat](virtual-machines-windows-sql-server-agent-extension.md)

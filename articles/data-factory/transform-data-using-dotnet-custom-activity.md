@@ -11,16 +11,16 @@ ms.date: 11/26/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: ea409d6705d0146e9cb32ba11e6b785cf527739c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8076ae81b111aa6b524b7e286ed15ca0661d748b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66165967"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062111"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](v1/data-factory-use-custom-activities.md)
 > * [Aktuális verzió](transform-data-using-dotnet-custom-activity.md)
 
@@ -102,9 +102,9 @@ A következő táblázat ismerteti a neveket és leírásokat erre a tevékenys�
 
 | Tulajdonság              | Leírás                              | Szükséges |
 | :-------------------- | :--------------------------------------- | :------- |
-| név                  | A folyamat a tevékenység neve     | Igen      |
+| name                  | A folyamat a tevékenység neve     | Igen      |
 | description           | A tevékenység leírása leíró szöveg.  | Nem       |
-| típus                  | Egyéni tevékenység, a tevékenység típusa van **egyéni**. | Igen      |
+| type                  | Egyéni tevékenység, a tevékenység típusa van **egyéni**. | Igen      |
 | linkedServiceName     | Társított szolgáltatás az Azure Batch szolgáltatásban. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk.  | Igen      |
 | A parancs               | Az egyéni alkalmazás futtatandó parancsot. Ha az alkalmazás már az Azure Batch-készlet csomópont elérhető, a resourceLinkedService és a folderPath lehet hagyni. Például megadhatja a parancsot kell `cmd /c dir`, amelyeket a Batch-készlet Windows csomópont natív módon támogat. | Igen      |
 | resourceLinkedService | Az Azure Storage társított szolgáltatás az egyéni alkalmazást tároló Storage-fiókhoz | nem&#42;       |
@@ -301,7 +301,7 @@ Activity Error section:
 Ha szeretné az alsóbb rétegbeli tevékenység stdout.txt tartalmának felhasználására, beszerezheti a fájl elérési útját a stdout.txt kifejezésben "\@activity('MyCustomActivity').output.outputs [0]".
 
 > [!IMPORTANT]
-> - A activity.json linkedServices.json és datasets.json a Batch-feladat a futtatókörnyezet mappában vannak tárolva. Ebben a példában a activity.json linkedServices.json és datasets.json vannak tárolva "https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/" elérési út. Szükség esetén meg kell törölnie őket külön.
+> - A activity.json linkedServices.json és datasets.json a Batch-feladat a futtatókörnyezet mappában vannak tárolva. Ebben a példában a activity.json linkedServices.json és datasets.json vannak tárolva `"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` elérési útja. Szükség esetén meg kell törölnie őket külön.
 > - A társított szolgáltatások, amelyek a helyi Integration Runtime a bizalmas adatokat, például kulcsokat vagy jelszavakat titkosítja a helyi Integration Runtime annak biztosítása érdekében a hitelesítő adatok marad az ügyfél határozza meg magánhálózati környezetben. Néhány időérzékeny mezőinek hiányzó lehet, amikor ezzel a módszerrel az egyéni alkalmazás kódjában hivatkozik. Használja a SecureString a extendedProperties helyett társított szolgáltatásra mutató hivatkozást, ha szükséges.
 
 ## <a name="pass-outputs-to-another-activity"></a>Pass egy másik tevékenység kimenete
@@ -342,7 +342,7 @@ A következő táblázat ismerteti a Data Factory V2 egyéni tevékenységei és
 |Hogyan egyéni logikát van definiálva.      |Azáltal, hogy egy végrehajtható fájl      |Egy .NET-DLL-fájl végrehajtása      |
 |Az egyéni logikát végrehajtási környezetbe      |Windows vagy Linux rendszeren      |Windows (.NET-keretrendszer 4.5.2-es verziója)      |
 |Szkriptek végrehajtása      |Parancsfájlok közvetlenül (például "cmd /c echo hello world" Windows virtuális gépeken) végrehajtása támogatja      |Szükséges végrehajtása a .NET-DLL-ben      |
-|Adatkészlet szükséges      |Választható      |Összekapcsolja a tevékenységek információkezelési és -átadási szükséges      |
+|Adatkészlet szükséges      |Optional      |Összekapcsolja a tevékenységek információkezelési és -átadási szükséges      |
 |A tevékenység át adatokat egyéni logikát      |ReferenceObjects (LinkedServices és adatkészletek) és ExtendedProperties (egyéni tulajdonságok)      |ExtendedProperties (egyéni tulajdonságokat), bemeneti és kimeneti adatkészletek      |
 |Az egyéni logikát információk lekéréséhez      |Elemzi a activity.json linkedServices.json és a végrehajtható fájl ugyanabban a mappában tárolt datasets.json      |.NET SDK-val (a .NET 4.5.2-es. képkocka) keresztül      |
 |Naplózás      |Az STDOUT közvetlenül ír      |Végrehajtási naplózó dll .NET-ben      |

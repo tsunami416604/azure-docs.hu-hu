@@ -10,10 +10,10 @@ ms.date: 06/10/2018
 ms.author: raynew
 ms.custom: include file
 ms.openlocfilehash: 371cbcc50b574f95e8d9ba4efe79058b2b25a8ba
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66127729"
 ---
 **Configuration/Process server-követelmények**
@@ -23,7 +23,7 @@ ms.locfileid: "66127729"
 **HARDVERBEÁLLÍTÁSOK** | 
 Processzormagok | 8 
 RAM | 16 GB
-Lemezek száma | 3., beleértve az operációs rendszer lemez, a folyamatkiszolgálói gyorsítótárlemez és az adatmegőrzési meghajtó a feladat-visszavételhez 
+Lemezek száma | 3\., beleértve az operációs rendszer lemez, a folyamatkiszolgálói gyorsítótárlemez és az adatmegőrzési meghajtó a feladat-visszavételhez 
 Szabad lemezterület (folyamatkiszolgálói gyorsítótár) | 600 GB
 Szabad területe (adatmegőrzési lemez) | 600 GB
  | 
@@ -35,7 +35,7 @@ Csoportházirendek | Ezek a szabályzatok csoport nem engedélyezi: <br> -Hozzá
 IIS | – Nincs már meglévő alapértelmezett webhelye <br> – Nincs már létező webhely vagy alkalmazás 443-as porton <br>-Engedélyezése [a névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Engedélyezése [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) beállítás 
 | 
 **HÁLÓZATI BEÁLLÍTÁSOK** | 
-IP-cím típusa | Statikus tartalom 
+IP-cím típusa | Statikus 
 Portok | 443 (vezérlőcsatorna-vezénylés)<br>9443 (Adatátvitel) 
 Hálózati adapter típusa | VMXNET3 (Ha a konfigurációs kiszolgáló VMware virtuális gép)
  |

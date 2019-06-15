@@ -9,10 +9,10 @@ ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 265a1cf0a8a5e1e099a4ec7a9f0d674e0c474dd4
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65190100"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Egy prémium szintű Azure fájlmegosztás létrehozása
@@ -47,8 +47,8 @@ Minden tárfióknak egy Azure-erőforráscsoporthoz kell tartoznia. Az erőforr�
 1. Ezután adja meg a tárfiók nevét. A választott névnek az Azure-on belül egyedinek kell lennie. A név 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat.
 1. Válassza ki a tárfiókja helyét, vagy használja az alapértelmezett helyet.
 1. A **teljesítmény** kiválasztása **prémium**.
-1. Válassza ki **fióktípus** válassza **FileStorage (előzetes verzió)**.
-1. Hagyja **replikációs** , az alapértelmezett értékre való beállítása **helyileg redundáns tárolás (LRS)**.
+1. Válassza ki **fióktípus** válassza **FileStorage (előzetes verzió)** .
+1. Hagyja **replikációs** , az alapértelmezett értékre való beállítása **helyileg redundáns tárolás (LRS)** .
 
     ![Fájlmegosztás prémium szintű storage-fiók létrehozása](media/storage-how-to-create-premium-fileshare/premium-files-storage-account.png)
 
@@ -59,7 +59,7 @@ Miután létrejött a tárfiók típusú erőforrást, keresse meg azt.
 
 ### <a name="create-a-premium-file-share"></a>Prémium szintű fájlmegosztás létrehozása
 
-1. A bal oldali menüben, a tárfiók, görgessen a **Fájlszolgáltatás** területen, majd válassza ki **fájlok (előzetes verzió)**.
+1. A bal oldali menüben, a tárfiók, görgessen a **Fájlszolgáltatás** területen, majd válassza ki **fájlok (előzetes verzió)** .
 1. Válassza ki **+ fájlmegosztás** egy prémium szintű fájlmegosztás létrehozásához.
 1. Adja meg a fájlmegosztás nevét és a egy kívánt kvótát, majd válassza ki **létrehozás**.
 

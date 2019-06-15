@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: danlep
 ms.openlocfilehash: bdf88657c11bdb5ab5bcde97c155780328065c7e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65954471"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR-feladatok leírása: YAML
@@ -79,36 +79,36 @@ az configure --defaults acr=myregistry
 
 Feladat tulajdonságai általában tetején jelennek meg egy `acr-task.yaml` fájlt, és a lépések végrehajtásának teljes egészében vonatkozó globális tulajdonságok vannak. Ezek a globális tulajdonságok némelyike belül egy adott lépés felülbírálható.
 
-| Tulajdonság | Típus | Választható | Leírás | Támogatott felülbírálása | Alapértelmezett érték |
+| Tulajdonság | Típus | Optional | Leírás | Támogatott felülbírálása | Alapértelmezett érték |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
-| `version` | string | Igen | A következő verziója a `acr-task.yaml` az ACR-feladatok szolgáltatás által elemzett fájlok. ACR-feladatok nagy hangsúlyt fektet a előző verziókkal való kompatibilitás megőrzése érdekében, miközben ez az érték engedélyezi ACR feladatok fenntartja a kompatibilitást belül egy meghatározott verzióra. Ha nincs megadva, alapértelmezés szerint a legújabb verzióra. | Nem | Egyik sem |
+| `version` | string | Igen | A következő verziója a `acr-task.yaml` az ACR-feladatok szolgáltatás által elemzett fájlok. ACR-feladatok nagy hangsúlyt fektet a előző verziókkal való kompatibilitás megőrzése érdekében, miközben ez az érték engedélyezi ACR feladatok fenntartja a kompatibilitást belül egy meghatározott verzióra. Ha nincs megadva, alapértelmezés szerint a legújabb verzióra. | Nem | None |
 | `stepTimeout` | Int (másodperc) | Igen | Egy lépés futtathatja másodperc maximális számát. Ha a tulajdonság egy tevékenység van megadva, alapértelmezett beállítása `timeout` minden lépést tulajdonságát. Ha a `timeout` tulajdonság meg van adva egy lépésben, ez a beállítás felülbírálja a tulajdonság a tevékenységhez. | Igen | 600 (10 perc) |
 | `workingDirectory` | string | Igen | A tároló futásidőben munkakönyvtár. Ha a tulajdonság egy tevékenység van megadva, alapértelmezett beállítása `workingDirectory` minden lépést tulajdonságát. Ha meg van adva egy lépésben, ez a beállítás felülbírálja a tulajdonság a tevékenységhez. | Igen | `$HOME` |
-| `env` | [string, string,...] | Igen |  A karakterláncok tömbje `key=value` formátuma, hogy a feladat a környezeti változókat határozhat meg. Ha a tulajdonság egy tevékenység van megadva, alapértelmezett beállítása `env` minden lépést tulajdonságát. Ha meg van adva egy lépésben, ez a beállítás felülbírálja a feladat örökli a környezeti változók. | Egyik sem |
-| `secrets` | [titkos, titkos kulcsot,...] | Igen | A tömb [titkos](#secret) objektumokat. | Egyik sem |
-| `networks` | [hálózati, hálózati,...] | Igen | A tömb [hálózati](#network) objektumokat. | Egyik sem |
+| `env` | [string, string,...] | Igen |  A karakterláncok tömbje `key=value` formátuma, hogy a feladat a környezeti változókat határozhat meg. Ha a tulajdonság egy tevékenység van megadva, alapértelmezett beállítása `env` minden lépést tulajdonságát. Ha meg van adva egy lépésben, ez a beállítás felülbírálja a feladat örökli a környezeti változók. | None |
+| `secrets` | [titkos, titkos kulcsot,...] | Igen | A tömb [titkos](#secret) objektumokat. | None |
+| `networks` | [hálózati, hálózati,...] | Igen | A tömb [hálózati](#network) objektumokat. | None |
 
-### <a name="secret"></a>titkos
+### <a name="secret"></a>secret
 
 A titkos kód objektum a következő tulajdonságokkal rendelkezik.
 
-| Tulajdonság | Típus | Választható | Leírás | Alapértelmezett érték |
+| Tulajdonság | Típus | Optional | Leírás | Alapértelmezett érték |
 | -------- | ---- | -------- | ----------- | ------- |
-| `id` | string | Nem | A titkos kulcs azonosítóját. | Egyik sem |
-| `keyvault` | string | Igen | Az Azure Key Vault titkos URL-címe. | Egyik sem |
-| `clientID` | string | Igen | Az ügyfél-azonosítója a felhasználó által hozzárendelt felügyelt identitás az Azure-erőforrásokhoz. | Egyik sem |
+| `id` | string | Nem | A titkos kulcs azonosítóját. | None |
+| `keyvault` | string | Igen | Az Azure Key Vault titkos URL-címe. | None |
+| `clientID` | string | Igen | Az ügyfél-azonosítója a felhasználó által hozzárendelt felügyelt identitás az Azure-erőforrásokhoz. | None |
 
-### <a name="network"></a>hálózat
+### <a name="network"></a>network
 
 A hálózati objektum a következő tulajdonságokkal rendelkezik.
 
-| Tulajdonság | Típus | Választható | Leírás | Alapértelmezett érték |
+| Tulajdonság | Típus | Optional | Leírás | Alapértelmezett érték |
 | -------- | ---- | -------- | ----------- | ------- | 
-| `name` | string | Nem | A hálózat nevét. | Egyik sem |
-| `driver` | string | Igen | Az illesztőprogram, a hálózat kezeléséhez. | Egyik sem |
-| `ipv6` | logikai | Igen | IPv6 hálózatra engedélyezve van-e. | `false` |
-| `skipCreation` | logikai | Igen | Hálózati teszthálózatban kell-e. | `false` |
-| `isDefault` | logikai | Igen | A hálózat-e egy alapértelmezett hálózati biztosított az Azure Container Registryvel | `false` |
+| `name` | string | Nem | A hálózat nevét. | None |
+| `driver` | string | Igen | Az illesztőprogram, a hálózat kezeléséhez. | None |
+| `ipv6` | bool | Igen | IPv6 hálózatra engedélyezve van-e. | `false` |
+| `skipCreation` | bool | Igen | Hálózati teszthálózatban kell-e. | `false` |
+| `isDefault` | bool | Igen | A hálózat-e egy alapértelmezett hálózati biztosított az Azure Container Registryvel | `false` |
 
 ## <a name="task-step-types"></a>Lépés tevékenységtípust
 
@@ -135,7 +135,7 @@ steps:
 
 A `build` lépés típusát a következő táblázatban a következő paramétereket támogatja. A `build` lépés típusát is támogatja az összes build beállításának a [docker build](https://docs.docker.com/engine/reference/commandline/build/) parancsot, mint például `--build-arg` buildelés változók beállítása.
 
-| Paraméter | Leírás | Választható |
+| Paraméter | Leírás | Optional |
 | --------- | ----------- | :-------: |
 | `-t` &#124; `--image` | Meghatározza a teljesen minősített `image:tag` , az összeállított rendszerképet.<br /><br />A feladat belső ellenőrzések funkcióteszteket, például képek használhatók, nem az összes rendszerkép szükséges `push` egy regisztrációs adatbázisba. Azonban egy feladat a végrehajtás belüli lemezkép példányt, a lemezkép kell hivatkozni egy nevet.<br /><br />Ellentétben `az acr build`, ACR-feladatok futtatása nem biztosít alapértelmezett leküldéses működését. ACR-feladatokat, az alapértelmezett forgatókönyv feltételezi, hogy hozhat létre, ellenőrizze, majd a rendszerkép leküldése lehetővé teszi. Lásd: [leküldéses](#push) igény szerint létrehozott leküldéses lemezképek kapcsolatban. | Igen |
 | `-f` &#124; `--file` | Adja meg a docker-fájlban átadott `docker build`. Ha nincs megadva, az alapértelmezett a környezet gyökérkönyvtárában található docker-fájlban feltételezzük. Adjon meg egy docker-fájlban, át kell adnia a fájlnevet a környezet gyökeréhez viszonyítva. | Igen |
@@ -147,26 +147,26 @@ A `build` lépés az alábbi tulajdonságokat támogatja. Ezeket a tulajdonságo
 
 | | | |
 | -------- | ---- | -------- |
-| `detach` | logikai | Választható |
-| `disableWorkingDirectoryOverride` | logikai | Választható |
-| `entryPoint` | string | Választható |
-| `env` | [string, string,...] | Választható |
-| `expose` | [string, string,...] | Választható |
-| `id` | string | Választható |
-| `ignoreErrors` | logikai | Választható |
-| `isolation` | string | Választható |
-| `keep` | logikai | Választható |
-| `network` | objektum | Választható |
-| `ports` | [string, string,...] | Választható |
-| `pull` | logikai | Választható |
-| `repeat` | int | Választható |
-| `retries` | int | Választható |
-| `retryDelay` | Int (másodperc) | Választható |
-| `secret` | objektum | Választható |
-| `startDelay` | Int (másodperc) | Választható |
-| `timeout` | Int (másodperc) | Választható |
-| `when` | [string, string,...] | Választható |
-| `workingDirectory` | string | Választható |
+| `detach` | bool | Optional |
+| `disableWorkingDirectoryOverride` | bool | Optional |
+| `entryPoint` | string | Optional |
+| `env` | [string, string,...] | Optional |
+| `expose` | [string, string,...] | Optional |
+| `id` | string | Optional |
+| `ignoreErrors` | bool | Optional |
+| `isolation` | string | Optional |
+| `keep` | bool | Optional |
+| `network` | objektum | Optional |
+| `ports` | [string, string,...] | Optional |
+| `pull` | bool | Optional |
+| `repeat` | int | Optional |
+| `retries` | int | Optional |
+| `retryDelay` | Int (másodperc) | Optional |
+| `secret` | objektum | Optional |
+| `startDelay` | Int (másodperc) | Optional |
+| `timeout` | Int (másodperc) | Optional |
+| `when` | [string, string,...] | Optional |
+| `workingDirectory` | string | Optional |
 
 ### <a name="examples-build"></a>Példák: létrehozása
 
@@ -219,12 +219,12 @@ A `push` lépés az alábbi tulajdonságokat támogatja. Ezeket a tulajdonságok
 
 | | | |
 | -------- | ---- | -------- |
-| `env` | [string, string,...] | Választható |
-| `id` | string | Választható |
-| `ignoreErrors` | logikai | Választható |
-| `startDelay` | Int (másodperc) | Választható |
-| `timeout` | Int (másodperc) | Választható |
-| `when` | [string, string,...] | Választható |
+| `env` | [string, string,...] | Optional |
+| `id` | string | Optional |
+| `ignoreErrors` | bool | Optional |
+| `startDelay` | Int (másodperc) | Optional |
+| `timeout` | Int (másodperc) | Optional |
+| `when` | [string, string,...] | Optional |
 
 ### <a name="examples-push"></a>Példák: leküldéses
 
@@ -264,26 +264,26 @@ A `cmd` lépés típusát támogatja a következő tulajdonságokkal:
 
 | | | |
 | -------- | ---- | -------- |
-| `detach` | logikai | Választható |
-| `disableWorkingDirectoryOverride` | logikai | Választható |
-| `entryPoint` | string | Választható |
-| `env` | [string, string,...] | Választható |
-| `expose` | [string, string,...] | Választható |
-| `id` | string | Választható |
-| `ignoreErrors` | logikai | Választható |
-| `isolation` | string | Választható |
-| `keep` | logikai | Választható |
-| `network` | objektum | Választható |
-| `ports` | [string, string,...] | Választható |
-| `pull` | logikai | Választható |
-| `repeat` | int | Választható |
-| `retries` | int | Választható |
-| `retryDelay` | Int (másodperc) | Választható |
-| `secret` | objektum | Választható |
-| `startDelay` | Int (másodperc) | Választható |
-| `timeout` | Int (másodperc) | Választható |
-| `when` | [string, string,...] | Választható |
-| `workingDirectory` | string | Választható |
+| `detach` | bool | Optional |
+| `disableWorkingDirectoryOverride` | bool | Optional |
+| `entryPoint` | string | Optional |
+| `env` | [string, string,...] | Optional |
+| `expose` | [string, string,...] | Optional |
+| `id` | string | Optional |
+| `ignoreErrors` | bool | Optional |
+| `isolation` | string | Optional |
+| `keep` | bool | Optional |
+| `network` | objektum | Optional |
+| `ports` | [string, string,...] | Optional |
+| `pull` | bool | Optional |
+| `repeat` | int | Optional |
+| `retries` | int | Optional |
+| `retryDelay` | Int (másodperc) | Optional |
+| `secret` | objektum | Optional |
+| `startDelay` | Int (másodperc) | Optional |
+| `timeout` | Int (másodperc) | Optional |
+| `when` | [string, string,...] | Optional |
+| `workingDirectory` | string | Optional |
 
 Ezeket a tulajdonságokat az információk a [feladat lépés tulajdonságai](#task-step-properties) című szakaszát.
 
@@ -362,29 +362,29 @@ A standard használatával `docker run` lemezkép a referencia-egyezmény `cmd` 
 
 Minden lépés típusát támogatja a megfelelő ehhez a típushoz több tulajdonságát. Az alábbi táblázat az összes rendelkezésre álló lépés tulajdonság határozza meg. Nem minden lépés esetében támogatja az összes tulajdonság. Ezek a tulajdonságok közül melyik érhetők el az egyes lépés, olvassa el a [cmd](#cmd), [hozhat létre](#build), és [leküldéses](#push) típus szakaszok lépést.
 
-| Tulajdonság | Típus | Választható | Leírás | Alapértelmezett érték |
+| Tulajdonság | Típus | Optional | Leírás | Alapértelmezett érték |
 | -------- | ---- | -------- | ----------- | ------- |
-| `detach` | logikai | Igen | Hogy a tároló kell lehet leválasztani futtatásakor. | `false` |
-| `disableWorkingDirectoryOverride` | logikai | Igen | Hogy letiltandó-e `workingDirectory` felülírása funkciót. Ezzel együtt `workingDirectory` a munkakönyvtárban a tároló teljes körű irányítása. | `false` |
-| `entryPoint` | string | Igen | Felülbírálja a `[ENTRYPOINT]` egy lépés tároló. | Egyik sem |
-| `env` | [string, string,...] | Igen | A karakterláncok tömbje `key=value` formátuma, hogy a lépés a környezeti változókat határozhat meg. | Egyik sem |
-| `expose` | [string, string,...] | Igen | A tárolóból érhetők el portok tömbje. |  Egyik sem |
+| `detach` | bool | Igen | Hogy a tároló kell lehet leválasztani futtatásakor. | `false` |
+| `disableWorkingDirectoryOverride` | bool | Igen | Hogy letiltandó-e `workingDirectory` felülírása funkciót. Ezzel együtt `workingDirectory` a munkakönyvtárban a tároló teljes körű irányítása. | `false` |
+| `entryPoint` | string | Igen | Felülbírálja a `[ENTRYPOINT]` egy lépés tároló. | None |
+| `env` | [string, string,...] | Igen | A karakterláncok tömbje `key=value` formátuma, hogy a lépés a környezeti változókat határozhat meg. | None |
+| `expose` | [string, string,...] | Igen | A tárolóból érhetők el portok tömbje. |  None |
 | [`id`](#example-id) | string | Igen | A lépés a feladatütemezés belül egyedileg azonosítja. A feladatütemezés más lépései egy lépés hivatkozhat `id`, mint a függőség ellenőrzése az ilyen `when`.<br /><br />A `id` egyben a futó tároló nevét. A feladat egyéb tárolókban futó folyamatok olvassa el a `id` a DNS-állomás név, vagy például eléréséhez a docker-naplók [id],. | `acb_step_%d`, ahol `%d` a lépés fentről lefelé a YAML-fájl 0-alapú indexe |
-| `ignoreErrors` | logikai | Igen | Jelölje meg a sikeres, függetlenül attól, hogy a tároló végrehajtása során egy hiba történt a lépést kell-e. | `false` |
+| `ignoreErrors` | bool | Igen | Jelölje meg a sikeres, függetlenül attól, hogy a tároló végrehajtása során egy hiba történt a lépést kell-e. | `false` |
 | `isolation` | string | Igen | A tároló elkülönítési szintjét. | `default` |
-| `keep` | logikai | Igen | E tároló a lépés végrehajtása után meg kell őrizni. | `false` |
-| `network` | objektum | Igen | Egy hálózatot, amelyben a tároló fut azonosítja. | Egyik sem |
-| `ports` | [string, string,...] | Igen | Portok, a tárolóból a gazdagépre közzétett tömbje. |  Egyik sem |
-| `pull` | logikai | Igen | -E a tároló egy lekéréses kényszerítése minden gyorsítótárazási viselkedés megakadályozása végrehajtása előtt. | `false` |
-| `privileged` | logikai | Igen | Kell védett módban a tároló fut-e. | `false` |
+| `keep` | bool | Igen | E tároló a lépés végrehajtása után meg kell őrizni. | `false` |
+| `network` | objektum | Igen | Egy hálózatot, amelyben a tároló fut azonosítja. | None |
+| `ports` | [string, string,...] | Igen | Portok, a tárolóból a gazdagépre közzétett tömbje. |  None |
+| `pull` | bool | Igen | -E a tároló egy lekéréses kényszerítése minden gyorsítótárazási viselkedés megakadályozása végrehajtása előtt. | `false` |
+| `privileged` | bool | Igen | Kell védett módban a tároló fut-e. | `false` |
 | `repeat` | int | Igen | Ismételje meg a tároló végrehajtásának való próbálkozások száma. | 0 |
 | `retries` | int | Igen | Ha egy tárolót a végrehajtása sikertelen bejelentkezési kísérletet az újrapróbálkozások száma. Egy újrapróbálkozási kísérlet csak történik, ha a tároló kilépési kódja nullától eltérő. | 0 |
 | `retryDelay` | Int (másodperc) | Igen | A késleltetés másodpercben. a tároló végrehajtásának újrapróbálkozások között. | 0 |
-| `secret` | objektum | Igen | Egy Azure Key Vault titkos kulcsából, vagy az Azure-erőforrások felügyelt identitás azonosítja. | Egyik sem |
+| `secret` | objektum | Igen | Egy Azure Key Vault titkos kulcsából, vagy az Azure-erőforrások felügyelt identitás azonosítja. | None |
 | `startDelay` | Int (másodperc) | Igen | Egy tároló végrehajtási késleltető másodpercek száma. | 0 |
 | `timeout` | Int (másodperc) | Igen | Legfeljebb ennyi másodpercig lépés előtt leállt lehet végrehajtani. | 600 |
-| [`when`](#example-when) | [string, string,...] | Igen | Egy vagy több lépést jelentenek a tevékenység egy lépés függőségi konfigurálja. | Egyik sem |
-| `user` | string | Igen | A felhasználónév vagy a tároló egyedi azonosítója | Egyik sem |
+| [`when`](#example-when) | [string, string,...] | Igen | Egy vagy több lépést jelentenek a tevékenység egy lépés függőségi konfigurálja. | None |
+| `user` | string | Igen | A felhasználónév vagy a tároló egyedi azonosítója | None |
 | `workingDirectory` | string | Igen | Beállítja a munkakönyvtárban történő egy lépésben. Alapértelmezés szerint ACR feladatok, a munkakönyvtárban gyökérkönyvtár hoz létre. Azonban ha a build számos lépést tartalmaz, korábbi lépések megoszthatja összetevők későbbi lépésekben munkakönyvtára megadásával. | `$HOME` |
 
 ### <a name="examples-task-step-properties"></a>Példák: A feladat lépés tulajdonságai

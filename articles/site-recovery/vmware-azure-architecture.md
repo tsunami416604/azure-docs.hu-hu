@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: raynew
 ms.openlocfilehash: f1fdbd143093beb9736e86b24b76843ad82b89f2
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66418377"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware – Azure vészhelyreállítási recovery architektúrájáról
@@ -78,9 +78,9 @@ Miután replikáció be van állítva, és futtat egy vészhelyreállítási pr�
     * **Feladat-visszavételi szabályzat**: A helyszíni helyre történő újbóli replikáláshoz, egy feladat-visszavételi szabályzatra van szükség. Ez a szabályzat létrehozásakor egy replikációs házirendet a helyszínről az Azure-ban automatikusan létrejön.
 4. Miután az összetevő a következő helyen, feladat-visszavétel három művelet történik:
 
-    - 1. fázis: Az Azure virtuális gépek ismételt védelme, így azok replikálása az Azure-ból a helyszíni VMware virtuális gépek vissza a.
-    -  2. fázis: Feladatátvétel futtatása a helyszíni helyre.
-    - 3. fázis: Számítási feladatok sikertelenek voltak vissza, miután újból engedélyezi a helyszíni virtuális gépek replikációját.
+    - 1\. fázis: Az Azure virtuális gépek ismételt védelme, így azok replikálása az Azure-ból a helyszíni VMware virtuális gépek vissza a.
+    -  2\. fázis: Feladatátvétel futtatása a helyszíni helyre.
+    - 3\. fázis: Számítási feladatok sikertelenek voltak vissza, miután újból engedélyezi a helyszíni virtuális gépek replikációját.
     
  
 **VMware-feladat-visszavétel az Azure-ból**

@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/05/2019
+ms.date: 06/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 156bb4cbf43dc71627f9db785dba574f25139285
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: b1591f4f1e96bbb2bffb80a2c652963faa5dca5b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66733830"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077646"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA infrastruktúrakonfigurációk és -műveletek az Azure-ban
 Ez a dokumentum útmutatást nyújt az Azure-infrastruktúra konfigurálása és SAP HANA rendszereit az Azure-beli natív virtuális gépek (VM) üzembe helyezett működő. A dokumentum az SAP HANA kibővített M128s VM-termékváltozat konfigurációs információkat is tartalmaz. Ez a dokumentum nem célja, hogy cserélje le a standard szintű SAP dokumentációját, amely magában foglalja az alábbi tartalommal:
@@ -66,6 +66,11 @@ A termelési forgatókönyvekhez használható Azure-beli Virtuálisgép-típuso
 - Az Azure parancssori felület.
 
 Az Azure virtuális gép Services révén teljes telepített SAP HANA-platform is telepítheti a [SAP-felhőplatform](https://cal.sap.com/). A telepítés menetét a [üzembe helyezése az SAP S/4HANA vagy BW/4hana-t az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h) vagy az automation kiadott [Itt](https://github.com/AzureCAT-GSI/SAP-HANA-ARM).
+
+>[!IMPORTANT]
+> M208xx_v2 virtuális gépeket használ, ügyeljen arra, a SUSE Linux-rendszerképek kiválasztása az Azure-beli Virtuálisgép-lemezkép-katalógus kell. Annak érdekében, hogy olvassa el a részleteket, olvassa el a cikket [memóriahasználatra optimalizált virtuális gépek méretei](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series). Red Hat még nem támogatott a virtuális gépek Mv2 termékcsalád HANA használata. Az, hogy támogatást nyújt a Red Hat-verziók HANA futtatásához az a 4. kérdés/CY2019 Mv2 Virtuálisgép-család az aktuális tervezése 
+> 
+
 
 ### <a name="storage-configuration-for-sap-hana"></a>Az SAP Hana tárolási konfigurációt
 A tárolási konfigurációk és az SAP HANA az Azure-ban használandó tárolási típus, olvassa el a dokumentumot [SAP HANA az Azure virtuális gépek tárolási konfigurációk](./hana-vm-operations-storage.md)

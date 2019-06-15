@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
 ms.openlocfilehash: 5c4fa2260b00043e016748010528926b1b9d74a3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64726531"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio"></a>– Első lépések az R programozási nyelv, az Azure Machine Learning Studióban
@@ -61,7 +61,7 @@ Machine Learning studióban R-parancsfájlok futtathatók a [R-szkript végrehaj
 
 *1. ábra A Machine Learning Studio környezet az R-szkript végrehajtása modul kiválasztva megjelenítése.*
 
-1. ábra hivatkozó, nézzük meg a legfontosabb elemei a Machine Learning Studio-környezetben való munkához némelyike a [R-szkript végrehajtása] [ execute-r-script] modul.
+1\. ábra hivatkozó, nézzük meg a legfontosabb elemei a Machine Learning Studio-környezetben való munkához némelyike a [R-szkript végrehajtása] [ execute-r-script] modul.
 
 * A modul a kísérletben a középső ablaktáblán jelennek meg.
 * A jobb oldali panel felső részén egy ablakban megtekintheti és szerkesztheti az R-szkriptek tartalmazza.  
@@ -179,7 +179,7 @@ Ezen a ponton a kísérlet várható megjelenése a 3. ábra.
 
 #### <a name="check-on-the-data"></a>Az adatok ellenőrzése
 
-Nézzük meg, az adatok betöltése a kísérletbe sikerült rendelkezik. A kísérletben, válassza ki a kimenete a **cadairydata.csv adatkészlet** válassza **megjelenítése**. 4. ábra hasonló üzenet jelenik meg.  
+Nézzük meg, az adatok betöltése a kísérletbe sikerült rendelkezik. A kísérletben, válassza ki a kimenete a **cadairydata.csv adatkészlet** válassza **megjelenítése**. 4\. ábra hasonló üzenet jelenik meg.  
 
 ![A cadairydata.csv adatkészlet összefoglalása](./media/r-quickstart/fig4.png)
 
@@ -323,7 +323,7 @@ Készíthető egy R-adathalmaz tartalmának a eredmény Dataset1 porton kereszt�
 maml.mapOutputPort('cadairydata')
 ```
 
-Miután a kísérletet, válassza ki a Dataset1 eredmény kimeneti portra, és válassza ki **Visualize**. 6. ábra hasonló üzenet jelenik meg.
+Miután a kísérletet, válassza ki a Dataset1 eredmény kimeneti portra, és válassza ki **Visualize**. 6\. ábra hasonló üzenet jelenik meg.
 
 ![A kimenet a kaliforniai tejelő adatok a Vizualizáció](./media/r-quickstart/fig7.png)
 
@@ -390,7 +390,7 @@ str(cadairydata) # Check the result
 maml.mapOutputPort('cadairydata')
 ```
 
-Nézzük hajtsa végre ezt a kódot, és tekintse meg a kimeneti naplót a R-parancsfájl. 9. ábra jelenik meg a vonatkozó adatokat a naplófájlból.
+Nézzük hajtsa végre ezt a kódot, és tekintse meg a kimeneti naplót a R-parancsfájl. 9\. ábra jelenik meg a vonatkozó adatokat a naplófájlból.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -712,7 +712,7 @@ cadairydata$Time <- as.POSIXct(strptime(paste(as.character(cadairydata$Year), "-
 str(cadairydata) # Check the results
 ```
 
-Most tekintse meg a naplót. 15. ábra hasonlónak kell lennie.
+Most tekintse meg a naplót. 15\. ábra hasonlónak kell lennie.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -930,7 +930,7 @@ outframe
 
 A kód első sorára bonyolult egy kicsit, és néhány magyarázata is segítenek megérteni azt. Belülről kifelé működik az alábbiakkal:
 
-1. A "**[[**"argumentummal üzemeltető"**1**" összefüggéseket, a késedelmes jelentések vektor kiválasztja az első elem FTB objektum listáját.
+1. A " **[[** "argumentummal üzemeltető"**1**" összefüggéseket, a késedelmes jelentések vektor kiválasztja az első elem FTB objektum listáját.
 2. A `do.call()` függvény vonatkozik a `rbind()` keresztül a lista elemeinek függvény által visszaadott `lapply()`.
 3. A `data.frame()` függvény típusú értékké konvertál, az eredmény által előállított `do.call()` dataframe való.
 
@@ -1094,7 +1094,7 @@ Ez létrehozza a következő.
 
 Ez tűnik jobb. A feltételek mindegyike jelentős. (2E) – 16 értéke azonban az alapértelmezett érték, és nem kell túl komolyan venni.  
 
-Megerősítést tesztként tekintsük California tejtermelésre adatok idő sorozat rajzot a trend görbéjű látható. A következő kódot az Azure Machine Learning studióban hozzáadott [R-szkript végrehajtása] [ execute-r-script] (nem az RStudio) modell a modell létrehozásához, és győződjön meg arról, egy diagram. 23. ábra jelenik meg az eredményt.
+Megerősítést tesztként tekintsük California tejtermelésre adatok idő sorozat rajzot a trend görbéjű látható. A következő kódot az Azure Machine Learning studióban hozzáadott [R-szkript végrehajtása] [ execute-r-script] (nem az RStudio) modell a modell létrehozásához, és győződjön meg arról, egy diagram. 23\. ábra jelenik meg az eredményt.
 
 ```R
 milk.lm <- lm(Milk.Prod ~ Time + I(Month.Count^3), data = cadairytrain)

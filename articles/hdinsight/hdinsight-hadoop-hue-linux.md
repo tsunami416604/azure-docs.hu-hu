@@ -9,19 +9,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: b0354803a117e8e2c2382ae888bde94a502f24c6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 74ccf2af2d379b3c1966543885df6ebe5cf0f47a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724574"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059428"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Telepítse, és a Hue használata a HDInsight Hadoop-fürtök
 
 Útmutató a HDInsight-fürtökön a Hue telepítése és irányíthatja a kérelmeket a Hue-Alagútkezelés használata.
-
-> [!IMPORTANT]  
-> A dokumentum lépéseinek elvégzéséhez egy Linux-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="what-is-hue"></a>Mit jelent a Hue?
 A hue olyan Apache Hadoop-fürt folytatott kommunikációhoz használható webalkalmazás-típusokhoz. A Hue használata a Hadoop-fürt (HDInsight-fürtök esetén WASB) társított tárhely, tallózással, Hive-feladatok és a Pig-parancsfájlok futtatásához, és így tovább. A Hue telepítése egy HDInsight Hadoop-fürtön a következő összetevők érhetők el.
@@ -64,9 +61,9 @@ Ez a szakasz a fürt az Azure portal használatával üzembe helyezésekor a par
    * **NÉV**: Adjon egy rövid nevet a parancsprogram-művelet.
    * **SZKRIPT URI**: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
    * **A FŐ**: Jelölje be ezt a beállítást.
-   * **FELDOLGOZÓ**: Hagyja üresen.
-   * **ZOOKEEPER**: Hagyja üresen.
-   * **PARAMÉTEREK**: Hagyja üresen.
+   * **FELDOLGOZÓ**: Hagyja üresen a mezőt.
+   * **ZOOKEEPER**: Hagyja üresen a mezőt.
+   * **PARAMÉTEREK**: Hagyja üresen a mezőt.
 3. Alsó részén a **Parancsfájlműveletek**, használja a **kiválasztása** gombra a konfiguráció mentéséhez. Végül a **kiválasztása** gomb alsó részén a **opcionális konfigurációs** panel opcionális konfigurációs adatok mentéséhez.
 4. A fürt kiépítése a leírtak szerint folytassa [Provision HDInsight-fürtök a linuxon futó](hdinsight-hadoop-provision-linux-clusters.md).
 

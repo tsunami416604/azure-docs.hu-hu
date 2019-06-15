@@ -11,10 +11,10 @@ ms.date: 05/02/2019
 ms.author: mcarter
 ms.custom: seodec2018
 ms.openlocfilehash: b881a645a42d92407aa39d0f4896629f799e6928
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66426923"
 ---
 # <a name="add-suggestions-or-autocomplete-to-your-azure-search-application"></a>Az Azure Search-alkalmazás javaslata vagy az automatikus kiegészítés hozzáadása
@@ -164,7 +164,7 @@ Nyissa meg a **HomeController.cs** fájlt a tartományvezérlők a könyvtárban
 
 Először is Észreveheti a nevű osztály tetején módszer `InitSearch`. Ezzel a módszerrel hoz létre a HTTP-index hitelesített ügyfelek az Azure Search szolgáltatásba. További információkért lásd: [használata az Azure Search .NET-alkalmazásból](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
 
-41. sorban figyelje meg, hogy a javaslat funkciót. -Alapú, a [DocumentsOperationsExtensions.Suggest metódus](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet).
+41\. sorban figyelje meg, hogy a javaslat funkciót. -Alapú, a [DocumentsOperationsExtensions.Suggest metódus](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet).
 
 ```csharp
 public ActionResult Suggest(bool highlights, bool fuzzy, string term)
@@ -198,7 +198,7 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
 
 A Suggest függvény két paramétert vesz fel, amelyek meghatározzák, hogy a rendszer a találatok kiemeléseit adja vissza, vagy intelligens egyeztetést használ a keresési kifejezés bevitele mellett. A módszer létrehoz egy [SuggestParameters objektum](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters?view=azure-dotnet), amelyet majd átad a javaslat API. A rendszer az eredményt ezután JSON-kifejezéssé alakítja, hogy meg lehessen jeleníteni az ügyfélnek.
 
-69. sor figyelje meg, hogy az automatikus kiegészítés funkció. -Alapú, a [DocumentsOperationsExtensions.Autocomplete metódus](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet).
+69\. sor figyelje meg, hogy az automatikus kiegészítés funkció. -Alapú, a [DocumentsOperationsExtensions.Autocomplete metódus](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet).
 
 ```csharp
 public ActionResult AutoComplete(string term)
@@ -282,7 +282,7 @@ var suggestUri = "https://" + searchServiceName + ".search.windows.net/indexes/"
 var autocompleteUri = "https://" + searchServiceName + ".search.windows.net/indexes/" + indexName + "/docs/autocomplete?api-version=" + apiVersion;
 ```
 
-148. sorban, talál egy parancsfájlt, amely meghívja a `autocompleteUri`. Az első hívás `suggestUri` 39 sor van.
+148\. sorban, talál egy parancsfájlt, amely meghívja a `autocompleteUri`. Az első hívás `suggestUri` 39 sor van.
 
 > [!Note]
 > Így a szolgáltatás REST-hívások JavaScript érhető el itt a REST API egy kényelmes bemutató, de nem kell értelmezni a bevált gyakorlat vagy javaslat. Egy API-kulcs és a egy parancsfájlban végpont felvétele megnyílik a szolgáltatás akár szolgáltatásmegtagadási támadásokat bárki olvashatja a parancsfájl ki ezeket az értékeket. A biztonságos JavaScript tanulási célokra használandó, miközben talán lévő üzemeltetett az ingyenes szolgáltatás, az indexeket használatát javasoljuk a Java vagy C# indexelés és a lekérdezési műveletek az éles kódban. 

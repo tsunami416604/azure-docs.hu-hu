@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: Mingfeiy;willzhan;Juliako
 ms.openlocfilehash: dfb82e91b0f65b85d34b7e20d57ed9929469321f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61232572"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>A castLabs használata a Widevine-licencek közvetítéséhez az Azure Media Servicesbe 
@@ -58,9 +58,9 @@ A következő táblázat ismerteti az AMS JWT jogkivonat.
 | Kiállító | A kiválasztott kiállítók karakterláncra Secure Token Service (STS) |
 | --- | --- |
 | Célközönség |A használt STS célközönség karakterláncra |
-| Igénylések |A jogcímek készlete |
+| jogcímek |A jogcímek készlete |
 | NotBefore |Indítsa el a jogkivonat érvényessége |
-| Elévül |A token érvényességének vége |
+| Lejár |A token érvényességének vége |
 | SigningCredentials |A kulcs, amelyet használ PlayReady licenckiszolgáló, castLabs licenckiszolgáló telepítése és az STS, annak oka az lehet szimmetrikus vagy aszimmetrikus kulccsal. |
 
 ### <a name="jwt-token-in-castlabs"></a>A castLabs JWT-jogkivonat
@@ -71,7 +71,7 @@ A következő táblázat ismerteti a castLabs JWT jogkivonat.
 | --- | --- |
 | optData |Önnel kapcsolatos információkat tartalmazó JSON-karakterláncot. |
 | CRT |Az eszköz adatait tartalmazó JSON-karakterláncot a licencelési adatokat és a lejátszás jogok. |
-| IAT |Az aktuális dátum és epoch. |
+| iat |Az aktuális dátum és epoch. |
 | jti |Ez a token (jogkivonat minden csak egyszer használhatók fel a castLabs rendszerben) kapcsolatos egyedi azonosítója. |
 
 ## <a name="sample-solution-setup"></a>Mintául szolgáló megoldás – telepítés

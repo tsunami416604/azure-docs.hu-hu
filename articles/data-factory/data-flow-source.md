@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 51c1ea7b554178f7fb3f264bf731ffd5872ceea2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 5b53819c1d30f6cd62c5941d4b44d70a4996daad
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66234548"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67117884"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Forrás átalakításában adatfolyam-leképezés 
 
@@ -65,13 +65,13 @@ Válassza ki az átalakítás az oszlopnevek később módosíthatja. A származ
 
 Az a **optimalizálása** lapon láthatja a forrás átalakításkor az egy **forrás** partíció típusa. Ez a beállítás csak akkor, ha a forrás az Azure SQL Database érhető el. Ennek az az oka a Data Factory megpróbál kapcsolatok párhuzamos, nagy lekérdezések futtatásához az SQL Database-forrás.
 
-![Forrás partícióbeállítások](media/data-flow/sourcepart2.png "particionálása")
+![Forrás partícióbeállítások](media/data-flow/sourcepart3.png "particionálása")
 
 Nem kell az adatok particionálása az SQL Database-forrás, de hasznos, ha nagy lekérdezések partíciókat. A partíció alapja egy olyan oszlop vagy egy lekérdezés.
 
 ### <a name="use-a-column-to-partition-data"></a>Használja az adatok particionálására egy oszlop
 
-A forrás táblából válasszon ki egy oszlopot, partícióhoz a. A kapcsolatok maximális számát is beállíthatja.
+A forrás táblából válasszon ki egy oszlopot, partícióhoz a. A partíciók számát is megadhatja.
 
 ### <a name="use-a-query-to-partition-data"></a>Az adatok particionálása lekérdezés használata
 
@@ -84,9 +84,39 @@ Válassza ki a beállítások a forrás található fájlok kezeléséhez.
 ![Az új forrásbeállítások](media/data-flow/source2.png "új beállításai")
 
 * **Helyettesítő karaktert tartalmazó elérési út**: A forrásmappából válasszon, amely egy mintának megfelelő fájlok. Ez a beállítás felülbírál bármely fájl az adatkészlet-definícióban.
+
+Helyettesítő példák:
+
+* ```*``` Bármely karakter jelöl
+* ```**``` A rekurzív directory beágyazási jelöli
+* ```?``` Egy karaktert váltja fel
+* ```[]``` Több karaktert a zárójelek között szerepel
+
+* ```/data/sales/**/*.csv``` Az összes csv-fájlok alatt /data/sales beolvasása
+* ```/data/sales/20??/**``` Lekérdezi a 20 századi minden fájl
+* ```/data/sales/2004/*/12/[XY]1?.csv``` Az összes csv-fájlok lekéri az 2004. december kezdve az X vagy Y 2 számjegyű előtagja
+
+A kötettárolóhoz kell adni az adatkészletben. A helyettesítő karaktereket tartalmazó cím ezért is tartalmaznia kell abból a gyökérmappából, a mappa elérési útja.
+
 * **Fájlok listája**: Ez egy olyan fájlt. Hozzon létre egy szövegfájlt, amely relatív elérési út feldolgozandó fájlok listáját tartalmazza. A szövegfájl mutasson.
 * **Tároló neve oszlop**: A forrásfájl neve Store az adatok egy oszlopban. Adjon meg egy új nevet a fájl karakterlánc tárolására.
 * **A művelet befejezését követően**: Kiválasztása után az adatok folyamatfuttatási jogosultságot, törölje a forrás-fájlt, vagy helyezze át a forrásfájl nem történik semmi. a forrás-fájllal. Az áthelyezés utakat relatív.
+
+Forrásfájljainak áthelyezése egy másik hely utófeldolgozás, először válassza ki "Áthelyezése" file művelet. Ezután adja meg a "feladó" könyvtár. Ha nem használ semmilyen helyettesítő karakterek az elérési úthoz, majd a "feladó" beállítás lesz a forrásmappa ugyanabban a mappában.
+
+Ha például van egy helyettesítő karakterrel megadott forrás elérési útja:
+
+```/data/sales/20??/**/*.csv```
+
+Megadhatja "feladó"
+
+```/data/sales```
+
+És a "záró", mint
+
+```/backup/priorSales```
+
+Ebben az esetben minden alkönyvtár /data/sales alkatrészekből, amelyek alapján kerülnek /backup/priorSales viszonyítva.
 
 ### <a name="sql-datasets"></a>SQL-adatkészletek
 

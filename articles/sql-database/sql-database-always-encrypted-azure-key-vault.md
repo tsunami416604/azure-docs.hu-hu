@@ -14,10 +14,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: bcda6ac723101d6a907a10c5163ae1baf0ad2214
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66168138"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: Bizalmas adatok védelmét, és tárolja a titkosítási kulcsokat az Azure Key Vaultban
@@ -160,13 +160,13 @@ Az oktatóanyag bemutatja, hogy a kulcsokat az Azure Key Vaultban.
 
 ![A főkulcs konfiguráció](./media/sql-database-always-encrypted-azure-key-vault/master-key-configuration.png)
 
-### <a name="validation"></a>Érvényesítés
+### <a name="validation"></a>Ellenőrzés
 Most titkosítani az oszlopokat, vagy később futtatni egy PowerShell-parancsfájl mentése. A jelen oktatóanyag esetében válassza ki a **most gombra a folytatáshoz** kattintson **tovább**.
 
-### <a name="summary"></a>Összegzés
+### <a name="summary"></a>Összefoglalás
 Győződjön meg arról, hogy a beállítások helyességét, és kattintson a **Befejezés** az Always Encrypted a telepítés befejezéséhez.
 
-![Összegzés](./media/sql-database-always-encrypted-azure-key-vault/summary.png)
+![Összefoglalás](./media/sql-database-always-encrypted-azure-key-vault/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>Ellenőrizze a varázsló műveletek
 A varázsló befejezése után az adatbázis beállítása az Always Encrypted. A varázsló a következő műveletek végre:

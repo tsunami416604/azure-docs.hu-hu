@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3f21f552add551ac2434618b184eb18c53ad5be
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 21136046bad8cb58432de367f0de06d1d0457eec
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66752235"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083790"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Rendszergazdai szerepkörök az Azure Active Directory felügyeleti feladat
 
@@ -288,7 +288,7 @@ Egyéni vezérlők kezeléséhez | Feltételes hozzáférésű rendszergazda | B
 Nevesített helyek kezelése | Feltételes hozzáférésű rendszergazda | Biztonsági rendszergazda
 Használati feltételek kezelése | Feltételes hozzáférésű rendszergazda | Biztonsági rendszergazda
 Az összes konfiguráció olvasása | Biztonsági olvasó | Biztonsági rendszergazda
-Olvasási nevesített helyek | Biztonsági olvasó | Feltételes hozzáférés rendszergazdai, biztonsági rendszergazda
+Olvasási nevesített helyek | Biztonsági olvasó | Feltételes hozzáférésű rendszergazda, a biztonsági rendszergazda
 
 ## <a name="security---identity-security-score"></a>Biztonság – identitás biztonsági pontszám
 

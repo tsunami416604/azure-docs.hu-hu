@@ -17,10 +17,10 @@ ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, n
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1ccac719c78ce2844a8dd37a80445e11baa4a488
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65962875"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Miért frissíti a Microsoft identity platform (2.0-s verzió)?
@@ -148,7 +148,7 @@ A DNS-név hozzáadására irányuló kérelem sikertelen lesz, ha a következő
 * Az új átirányítási URL-cím teljes DNS-neve nem egyezik a meglévő átirányítási URL-cím DNS-nevét.
 * Az új átirányítási URL-cím teljes DNS-neve nem a meglévő átirányítási URL-cím altartomány.
 
-#### <a name="example-1"></a>1. példa
+#### <a name="example-1"></a>1\. példa
 
 Ha az alkalmazás átirányítási URL-Címének `https://login.contoso.com`, adhat hozzá egy átirányítási URL-címet, ahol a DNS-név pontosan egyezik, az alábbi példában látható módon:
 
@@ -158,7 +158,7 @@ Vagy tekintse meg a DNS-altartományára, az alábbi példában látható módon
 
 `https://new.login.contoso.com`
 
-#### <a name="example-2"></a>2. példa
+#### <a name="example-2"></a>2\. példa
 
 Ha szeretné, hogy rendelkezik `login-east.contoso.com` és `login-west.contoso.com` , átirányítási URL-címek, hozzá kell adnia azokat átirányítási URL-EK, a következő sorrendben:
 

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 01/23/2019
+ms.date: 06/11/2019
 ms.author: diberry
-ms.openlocfilehash: 2bb50f985b99a3fb62e7b8a61bb0f9ce2dd402e1
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 569b33d299f52f0da50d8a8992420754aa85b533
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522006"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062170"
 ---
 # <a name="what-is-language-understanding-luis"></a>Mi a Language Understanding (LUIS)?
 
@@ -101,7 +101,7 @@ A LUIS eszközöket és verziókezelést, valamint a többi LUIS-szerzővel val�
 Mivel a LUIS egy REST API, bármely olyan termékkel, szolgáltatással vagy keretrendszerrel használható, amely HTTP-kéréseket hoz létre. Az alábbi lista tartalmazza a főbb, LUIS szolgáltatással használható Microsoft-termékeket és -szolgáltatásokat.
 
 A LUIS leggyakoribb ügyfélalkalmazása:
-* A [Web app bot](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-3.0) gyorsan létrehoz egy LUIS-kompatibilis csevegőrobotot, amely szövegbevitel útján kommunikál a felhasználóval. A [Bot Framework][bot-framework] [3.x](https://github.com/Microsoft/BotBuilder) vagy [4.x](https://github.com/Microsoft/botbuilder-dotnet) verzióját használja a teljes körű, robotokkal kapcsolatos szolgáltatások biztosításához.
+* A [Web app bot](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0) gyorsan létrehoz egy LUIS-kompatibilis csevegőrobotot, amely szövegbevitel útján kommunikál a felhasználóval. Használja a [Bot Framework] [ bot-framework] verzió [4.x](https://github.com/Microsoft/botbuilder-dotnet) teljes bot biztosítása érdekében.
 
 Eszközök a LUIS robotokkal való gyors és egyszerű használatához:
 * [A LUIS CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) az NPM-csomag létrehozási és -előrejelzés vagy egy különálló parancssori eszközt, vagy import biztosít. 

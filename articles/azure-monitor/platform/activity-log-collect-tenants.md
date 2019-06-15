@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: magoedte
 ms.openlocfilehash: d8cea59cd0bbeff410f585693cb7ffed82fd9327
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66248159"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants"></a>Az Azure-tevékenységnaplóinak gyűjtése az Azure Monitor szolgáltatásba az Azure Active Directory-bérlők
@@ -49,7 +49,7 @@ A forgatókönyvben használt Azure-erőforrások az alábbi követelményekkel 
 
 
 
-## <a name="step-1---create-an-event-hub"></a>1. lépés – Eseményközpont létrehozása
+## <a name="step-1---create-an-event-hub"></a>1\. lépés – Eseményközpont létrehozása
 
 <!-- Follow the steps in [how to create an Event Hubs namespace and Event Hub](../../event-hubs/event-hubs-create.md) to create your event hub. -->
 
@@ -74,7 +74,7 @@ A forgatókönyvben használt Azure-erőforrások az alábbi követelményekkel 
 9. Őrizze meg az eseményközpont nevét és az eseményközpont elsődleges vagy másodlagos kapcsolati sztringjét egy ideiglenes helyen, például a Jegyzettömbben. A logikai alkalmazásnak szüksége van ezekre az értékekre.  Az eseményközpont kapcsolati sztringjének használhatja a **RootManageSharedAccessKey** kapcsolati karakterláncot, vagy létrehozhat egy másikat.  A használt kapcsolati sztringnek az `Endpoint=sb://` elemmel kell kezdődnie, és egy **Kezelés** hozzáférési szabályzatot tartalmazó szabályzathoz kell tartoznia.
 
 
-## <a name="step-2---export-activity-logs-to-event-hub"></a>2. lépés – Tevékenységnaplók exportálása az eseményközpontba
+## <a name="step-2---export-activity-logs-to-event-hub"></a>2\. lépés – Tevékenységnaplók exportálása az eseményközpontba
 
 A tevékenységnapló streamelésének engedélyezéséhez válasszon ki egy eseményközpont-névteret, valamint egy megosztott elérési szabályzatot a névtér számára. Az első új tevékenységnapló-esemény bekövetkeztekor létre fog jönni egy eseményközpont abban a névtérben. 
 
@@ -94,7 +94,7 @@ Olyan eseményközpont-névteret is használhat, amely más előfizetésben van,
 
 <!-- Follow the steps in [stream the Azure Activity Log to Event Hubs](../../azure-monitor/platform/activity-logs-stream-event-hubs.md) to configure a log profile that writes activity logs to an event hub. -->
 
-## <a name="step-3---create-logic-app"></a>3. lépés – Logikai alkalmazás létrehozása
+## <a name="step-3---create-logic-app"></a>3\. lépés – Logikai alkalmazás létrehozása
 
 Miután a vizsgálati naplók az event hubs írás, hozzon létre egy logikai alkalmazást, a naplók gyűjtése az eseményközpontból, és a Log Analytics-munkaterületre.
 
@@ -312,7 +312,7 @@ A [Azure Log Analytics Data Collector](https://docs.microsoft.com/connectors/azu
 
 10. Kattintson a **Mentés** gombra a logikai alkalmazás módosításainak mentéséhez.
 
-## <a name="step-4---test-and-troubleshoot-the-logic-app"></a>4. lépés – A logikai alkalmazás tesztelése és hibaelhárítása
+## <a name="step-4---test-and-troubleshoot-the-logic-app"></a>4\. lépés – A logikai alkalmazás tesztelése és hibaelhárítása
 Ha elkészült a munkafolyamat, a tervezőben való teszteléssel ellenőrizheti, hogy hiba nélkül működik-e.
 
 A Logic App Designerben kattintson a **Futtatás** gombra a logikai alkalmazás teszteléséhez. A logikai alkalmazásban minden lépésnél egy állapotikon látható, amelyeknél a zöld körön belüli fehér pipa jelzi a sikert.
@@ -321,7 +321,7 @@ A Logic App Designerben kattintson a **Futtatás** gombra a logikai alkalmazás 
 
 Ha meg szeretné tekinteni az egyes lépések részletes adatait, kattintson a lépés nevére annak kibontásához. Kattintson a **Nyers bemenetek megjelenítése** és a **Nyers kimenetek megjelenítése** lehetőségekre a lépéseknél fogadott és elküldött adatok további információinak megtekintéséhez.
 
-## <a name="step-5---view-azure-activity-log-in-log-analytics"></a>5. lépés – Azure-tevékenységnapló megtekintése a Log Analyticsben
+## <a name="step-5---view-azure-activity-log-in-log-analytics"></a>5\. lépés – Azure-tevékenységnapló megtekintése a Log Analyticsben
 Az utolsó lépés a Log Analytics-munkaterület ellenőrzése, hogy meggyőződjön arról, hogy az adatok gyűjtése a várakozásoknak megfelelően történik.
 
 1. Az Azure Portal bal felső sarkában kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.

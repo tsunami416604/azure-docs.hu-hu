@@ -9,10 +9,10 @@ ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: b993b34f81298b40c8849084380b2d1770708351
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66482362"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS virtuális gépek és a felügyelt és nem felügyelt prémium szintű lemezek – gyakori kérdések
@@ -253,7 +253,7 @@ Az idő, amikor létre lett hozva egy felügyelt lemezt az Azure Portalon, az Az
 
 **Hogyan titkosíthatja a 2017. június 10. előtt létrehozott lemezek?**
 
-2017. június 10. meglévő felügyelt lemezekre írt új adat automatikusan titkosítva lesznek. Is tervezzük meglévő adatok titkosításához, és a titkosítás a háttérben aszinkron módon történik. Most már meglévő adatokat kell titkosítani, ha a lemez másolatának létrehozása. Új lemez titkosítva lesz.
+2017\. június 10. meglévő felügyelt lemezekre írt új adat automatikusan titkosítva lesznek. Is tervezzük meglévő adatok titkosításához, és a titkosítás a háttérben aszinkron módon történik. Most már meglévő adatokat kell titkosítani, ha a lemez másolatának létrehozása. Új lemez titkosítva lesz.
 
 * [A felügyelt lemezek másolása az Azure CLI használatával](../articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
 * [A felügyelt lemezek másolása a PowerShell használatával](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
@@ -322,7 +322,7 @@ Nem kell frissíteni a meglévő Azure-eszközök létrehozása, csatlakoztatás
 |-----------------|---------------------------------------------------|
 |Azure PowerShell | A verziószám 4.1.0 verzióra: 2017 június kiadás vagy újabb|
 |Azure CLI v1     | A verziószám 0.10.13: 2017 május kiadás vagy újabb|
-|Azure CLI v2     | 2.0.12-es verziószám: 2017 július kiadás vagy újabb|
+|Azure CLI v2     | 2\.0.12-es verziószám: 2017 július kiadás vagy újabb|
 |AzCopy           | A verziószám 6.1.0: 2017 június kiadás vagy újabb|
 
 **Támogatottak a P4 és a P6 szintű lemezméretek nem felügyelt lemezek és lapblobok esetében?**

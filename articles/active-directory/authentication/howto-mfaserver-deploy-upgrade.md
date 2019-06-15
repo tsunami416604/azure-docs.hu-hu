@@ -11,18 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c01c7a22800d633696382687feb7090a4ed8b60
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dcafa3e2f2665e84856b80cc0911d2e83df1aa65
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60358327"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057340"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>A legújabb Azure multi-factor Authentication-kiszolgáló frissítése
 
 Ez a cikk végigvezeti a folyamat frissítése az Azure multi-factor Authentication (MFA)-kiszolgáló 6.0-s vagy újabb. Ha a frissítés a PhoneFactor ügynökről régi verziója van szüksége, tekintse meg [frissítés a PhoneFactor ügynökről az Azure multi-factor Authentication-kiszolgáló](howto-mfaserver-deploy-upgrade-pf.md).
 
 Ha frissít a 6.x-es vagy régebbi v7.x, vagy újabb, az összes összetevő váltson .NET 2.0-s .NET 4.5-ös verzióját. Az összes összetevő is frissítésére van szükség a Microsoft Visual C++ 2015 újraterjeszthető 1 vagy újabb verziója. Az MFA-kiszolgáló telepítője telepíti ezeket az összetevőket x86 és x64 verziója, ha még nincsenek telepítve. Ha a felhasználói portál és a Mobile App Web Service futtatni eltérő kiszolgálókra, azok a csomagok telepítése ezen összetevők frissítése előtt szüksége. A Microsoft Visual C++ 2015 Redistributable legfrissebb a kereshet a [Microsoft Download Center](https://www.microsoft.com/download/). 
+
+> [!IMPORTANT]
+> 2019\. július 1-től a Microsoft már nem szavatolnak MFA-kiszolgáló az új üzembe helyezésekhez. Új felhasználókat szeretné a felhasználóktól többtényezős hitelesítést kell használnia a felhőalapú Azure multi-factor Authentication. Meglévő ügyfeleink, akik aktiválták az MFA-kiszolgáló előtt július 1 lesz a legújabb verzió, a jövőbeli frissítések letöltéséhez és a szokásos módon aktiváló hitelesítő adatok előállítása.
 
 Egyetlen pillantással frissítési lépések:
 

@@ -11,10 +11,10 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
 ms.openlocfilehash: 832be20f78d1e88a3bb6d1c25c7aaf5d7354e857
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66753978"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Dokumentumok indexelése az Azure Blob Storage, az Azure Search szolgáltatással
@@ -38,7 +38,7 @@ Beállíthat egy Azure Blob Storage indexelő használatával:
 
 Itt bemutatjuk a folyamatot a REST API használatával.
 
-### <a name="step-1-create-a-data-source"></a>1. lépés: Adatforrás létrehozása
+### <a name="step-1-create-a-data-source"></a>1\. lépés: Adatforrás létrehozása
 Egy adatforrás indexelése, az adatokat, és a házirendek hatékony azonosításához az adatok (az új, módosított vagy törölt sor) módosítása eléréséhez szükséges hitelesítő adatok megadása Egy adatforrás több indexelők az ugyanazt a keresési szolgáltatást használhatják.
 
 A blob-indexelés, az adatforrást a következő szükséges tulajdonságokat kell rendelkeznie:
@@ -77,7 +77,7 @@ További információ a megosztott tároló eléréséhez aláírások című t�
 > [!NOTE]
 > Ha SAS-hitelesítő adatokat használja, szüksége lesz az adatforrás hitelesítő adatainak frissítése rendszeresen történik, hogy a lejárati idejük megújított jogosultságkódokkal. Ha lejár az SAS-hitelesítő adatokat, az indexelő hasonló hibaüzenettel meghiúsul `Credentials provided in the connection string are invalid or have expired.`.  
 
-### <a name="step-2-create-an-index"></a>2. lépés: Index létrehozása
+### <a name="step-2-create-an-index"></a>2\. lépés: Index létrehozása
 Az index egy dokumentumot, az attribútumokat, adja meg a mezőket, és egyéb szerkezetek, amelyek formázhatja a keresési élmény.
 
 Hozzon létre egy kereshető indexet a következőképpen `content` tárolására blobok kinyert szöveget mező:   
@@ -96,7 +96,7 @@ Hozzon létre egy kereshető indexet a következőképpen `content` tárolásár
 
 Indexek létrehozásával kapcsolatos további információkért lásd: [Index létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index)
 
-### <a name="step-3-create-an-indexer"></a>3. lépés: Indexelő létrehozása
+### <a name="step-3-create-an-indexer"></a>3\. lépés: Indexelő létrehozása
 Az indexelő adatforráshoz kapcsolódik a cél keresési indexhez, és biztosít az Adatfrissítés automatizálásához ütemezés szerint.
 
 Az index és az adatforrás létrehozása után készen áll az indexelő létrehozása:

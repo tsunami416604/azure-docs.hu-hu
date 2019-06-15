@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 19/02/2019
 ms.author: v-mohabe
 ms.openlocfilehash: fe8ceb8c196f7329027502847fba481169458d86
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65966785"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Bevezetés az Azure Security Center Standard a fokozott biztonság
@@ -57,7 +57,7 @@ Standard egy előfizetést, vagy a munkaterület frissítése:
    >
    >
 
-## <a name="onboard-non-azure-computers"></a>Nem Azure-beli számítógépek előkészítése
+## <a name="onboard-non-azure-computers"></a>Nem Azure-beli számítógépek felvétele
 A Security Center a nem Azure-számítógépek biztonsági állapotát is képes monitorozni, azonban ehhez elő kell készítenie ezeket az erőforrásokat. Nem Azure-beli számítógépeket is hozzáadhat a **bevezetés** panel vagy a **számítási** panelen. Végigvezetjük a két módszert.
 
 ### <a name="add-new-non-azure-computers-from-getting-started"></a>Az új nem Azure-beli számítógépek hozzáadása **első lépések**
@@ -65,7 +65,7 @@ A Security Center a nem Azure-számítógépek biztonsági állapotát is képes
 1. Lépjen vissza **bevezetés**.   
 2. Válassza a **Bevezetés** lapot.
 
-   ![Nem Azure](./media/security-center-onboarding/non-azure.png)
+   ![Non-Azure](./media/security-center-onboarding/non-azure.png)
 
 3. Kattintson az **Új nem Azure-beli számítógépek hozzáadása** pont alatt található **Konfigurálás** elemre. Megjelenik a Log Analytics-munkaterületek listája. Ha van ilyen, a lista tartalmazza azt az alapértelmezett munkaterületet is, amelyet a Security Center hozott létre, amikor az automatikus kiépítés engedélyezve volt. Válassza ki ezt a munkaterületet, vagy egy másik használni kívánt munkaterületet.
 

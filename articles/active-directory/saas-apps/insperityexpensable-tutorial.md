@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: b049b6526b0053c79b313d3d51a94a7706d5f93c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dd0c35d23541512e1ed021a57526ac50f7a68e26
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60271105"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100150"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insperity-expensable"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Insperity ExpensAble
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Insperity ExpensAble konfigurálásához hozzá kell
 
 **Adja hozzá a Insperity ExpensAble a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

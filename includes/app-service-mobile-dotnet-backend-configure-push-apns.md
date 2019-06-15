@@ -5,13 +5,13 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 83a0adf98298225b52d3b4fdfa2ca861ebb70bb9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66140700"
 ---
-**.NET-háttérrendszert (C#)**:
+**.NET-háttérrendszert (C#)** :
   
 1. A Visual Studióban kattintson a jobb gombbal a kiszolgálói projektet, és kattintson a **NuGet-csomagok kezelése**, keressen `Microsoft.Azure.NotificationHubs`, majd kattintson a **telepítése**. Ez telepíti a Notification Hubs kódtárat az értesítések küldése a háttérrendszerből.
 2. A háttérrendszer a Visual Studio-projektben nyissa meg a **tartományvezérlők** > **TodoItemController.cs**. A fájl elejéhez adja hozzá a következő `using` utasítást:

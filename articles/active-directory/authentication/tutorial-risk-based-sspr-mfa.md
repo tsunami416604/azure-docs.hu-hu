@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35039dc05103ac6528f668fd76e1372ed7cc0708
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 17cea353df0337b062b89cd440f79f7869450f8d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60357383"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113204"
 ---
 # <a name="tutorial-use-risk-events-to-trigger-multi-factor-authentication-and-password-changes"></a>Oktatóanyag: Kockázati események eseményindító multi-factor Authentication és a jelszó módosítására használata
 
 Az oktatóanyagban az Azure Active Directory (Azure AD) Identity Protectiont fogjuk engedélyezni, amely az Azure AD Premium P2 szolgáltatása, és sokkal több, mint egy egyszerű monitorozási és jelentéskészítési eszköz. A vállalat identitásainak védelme érdekében konfigurálhat olyan kockázatalapú szabályzatokat, amelyek automatikusan reagálnak a kockázatos viselkedési mintákra. Ezekkel a szabályzatokkal automatikusan blokkolható vagy kezdeményezhető a helyreállítás, beleértve a jelszómódosítások és a többtényezős hitelesítés kikényszerítését.
 
-Az Azure AD Identity Protection-szabályzatok a meglévő feltételes hozzáférési szabályzatok mellett extra biztonsági rétegként használhatóak. Bár lehet, hogy a felhasználók soha nem viselkednek majd kockázatosan és aktiválják a szabályzatokat, rendszergazdaként nyugodt lehet, hogy gondoskodott a védelemről.
+Az Azure AD Identity Protection házirendek egy plusz védelmi réteget mellett a meglévő feltételes hozzáférési szabályzatokat is használható. Bár lehet, hogy a felhasználók soha nem viselkednek majd kockázatosan és aktiválják a szabályzatokat, rendszergazdaként nyugodt lehet, hogy gondoskodott a védelemről.
 
 Kockázateseményeket kiváltó elemek lehetnek például a következők:
 
@@ -73,7 +73,7 @@ A Microsoft kutatókkal, a bűnüldözési hatóságokkal, különféle belső b
 1. A **Hozzáférés** területen válassza a **Hozzáférés engedélyezése**, majd a **Jelszómódosítás megkövetelése** lehetőséget.
 1. Kattintson a Kiválasztás gombra.
 1. Állítsa a Házirend érvényesítése beállítást **Be** értékre.
-1. Kattintson a **Mentés** gombra.
+1. Kattintson a **Save** (Mentés) gombra
 
 ### <a name="enable-risk-based-multi-factor-authentication"></a>Kockázatalapú többtényezős hitelesítés engedélyezése
 
@@ -85,7 +85,7 @@ A legtöbb felhasználó viselkedése normális, amely követhető, és amikor e
 1. A **Hozzáférés** területen válassza a **Hozzáférés engedélyezése**, majd a **Többtényezős hitelesítés megkövetelése** lehetőséget.
 1. Kattintson a Kiválasztás gombra.
 1. Állítsa a Házirend érvényesítése beállítást **Be** értékre.
-1. Kattintson a **Mentés** gombra.
+1. Kattintson a **Save** (Mentés) gombra
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

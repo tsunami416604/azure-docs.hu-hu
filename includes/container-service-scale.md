@@ -4,12 +4,12 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: 2ed74a4ba19af3a441bcf26a48890f033e6c365f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: a4af53e035929a44f74a95b8e9897cb1dc0c6d8e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66151683"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66814836"
 ---
 [!INCLUDE [ACS deprecation](container-service-deprecation.md)]
 
@@ -29,7 +29,7 @@ Módosíthatja a DC/OS, Docker Swarm vagy Kubernetes-fürtben ügynökcsomópont
 
 ## <a name="scale-with-the-azure-cli"></a>Méretezés az Azure CLI-vel
 
-Győződjön meg arról, hogy Ön [telepítve](/cli/azure/install-az-cli2) a legfrissebb Azure CLI és a egy Azure-fiókkal jelentkezett be (`az login`).
+[Az Azure CLI telepítése](/cli/azure/install-azure-cli) , és jelentkezzen be az Azure-fiók `az login`.
 
 ### <a name="see-the-current-agent-count"></a>Az ügynökök aktuális számának megtekintése
 A jelenleg a fürtben lévő ügynökök számának megtekintéséhez futtassa az `az acs show` parancsot. Ez megjeleníti a fürtkonfigurációt. Az alábbi parancs például a `myResourceGroup` erőforráscsoportban lévő `containerservice-myACSName` nevű tárolószolgáltatás konfigurációját jeleníti meg:

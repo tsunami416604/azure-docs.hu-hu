@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
-ms.openlocfilehash: b62b35320ba1f4473e9b3a039d181d6a2fb58257
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: 9dd7f7d07b34ed3c1076b46c0bf5185d6c8cd31a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66743620"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074228"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle Virtuálisgép-rendszerképek és azok üzembe helyezését, a Microsoft Azure
 
@@ -32,7 +32,7 @@ Jelenleg az elérhető rendszerképek listájának lekéréséhez futtassa a kö
 az vm image list --publisher oracle -o table --all
 ```
 
-2019. május kezdődően a következő rendszerképek érhetők el:
+2019\. május kezdődően a következő rendszerképek érhetők el:
 
 ```bash
 Offer                   Publisher    Sku                     Urn                                                          Version
@@ -68,6 +68,18 @@ Oracle az Azure-ban futó Oracle DB 12.1 Standard és Enterprise kiadás támoga
 ### <a name="attached-disk-configuration-options"></a>Csatlakoztatott lemez konfigurációs beállítások
 
 Csatlakoztatott lemezek az Azure Blob storage szolgáltatás támaszkodnak. Minden standard szintű lemezes elméleti legfeljebb körülbelül 500 bemeneti/kimeneti műveletek másodpercenként (IOPS) alkalmas állapotban. Prémium szintű lemez ajánlat részesíti előnyben, kiemelkedő teljesítményű adatbázisokat számítási feladatokhoz, és érhet el akár 5000 iops-érték lemezenként. Egyetlen is használhatja, ha, amely megfelel a sorozatot. Azonban a hatékony IOPS-teljesítmény javításához, ha több csatlakoztatott lemezek használatát, adathalmazainak elosztva, és ezután használhatja az Oracle automatikus Storage szolgáltatásfelügyelet (ASM). Lásd: [Oracle automatikus Storage áttekintése](https://www.oracle.com/technetwork/database/index-100339.html) Oracle ASM adott bővebben. Telepítése és a egy Linux rendszerű Azure virtuális gépen Oracle ASM konfigurálása egy példa: a [telepítése és az Oracle automatikus Tároláskezelés konfigurálása](configure-oracle-asm.md) oktatóanyag.
+
+### <a name="shared-storage-configuration-options"></a>Megosztott tároló konfigurációs beállítások
+
+NetApp Azure Files úgy lett kialakítva, a core követelményeinek nagy teljesítményű számítási feladatokhoz, például adatbázisok a felhőben futó, és itt;
+- Az Azure natív megosztott NFS tárolási szolgáltatás vagy Oracle-feladatok futtatásához a virtuális gép natív NFS-ügyfelet, vagy az Oracle dNFS
+- A való életből vett IOPS tartomány igényeknek megfelelően méretezhető teljesítményszintek
+- Közel valós idejű adatelérés
+- Magas rendelkezésre állás, a nagyfokú tartósság és a nagy mennyiségű, az üzletmenet szempontjából kritikus fontosságú üzleti számítási feladatokhoz (például SAP és Oracle) által jellemzően igényelt kezelhetőség
+- Gyors és hatékony biztonsági mentés és helyreállítás elérése érdekében a legtöbb agresszív RTO és RPO SLA
+
+Ezeket a képességeket is lehetséges, mert NetApp fájlokat az Azure-alapú környezetben az Azure data center – natív Azure szolgáltatásként futtató NetApp® ONTAP® teljes mértékben flash rendszereken. Ez egy ideális adatbázis tárolási technológia, amely üzembe helyezhető és hasonlóan más az Azure tárolási lehetőségeinek felhasznált. Lásd: [Azure NetApp fájlok dokumentáció](https://docs.microsoft.com/azure/azure-netapp-files/) hogyan helyezheti üzembe és Azure NetApp fájlok NFS-kötetek eléréséhez további tájékoztatást. Lásd: [Oracle az Azure üzembe helyezési ajánlott eljárás az útmutató használatával Azure NetApp fájlokat](https://www.netapp.com/us/media/tr-4780.pdf) az Oracle-adatbázis, az Azure Files-NetApp működő kapcsolatos ajánlott eljárásokat mutatják.
+
 
 ## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle alkalmazás valós fürt (Oracle RAC)
 Oracle jogosultságifiók-tanúsítványok célja a több csomópontos fürt helyi konfigurációkban egyetlen csomópont a hiba elhárításához. Két helyszíni technológia, amely nem natív, rendkívül nagy kapacitású nyilvános felhő környezeteiben támaszkodik: hálózati csoportos küldéses és a megosztott lemez. Ha az adatbázis-megoldástól igényel Oracle jogosultságifiók-tanúsítványok az Azure-ban, szüksége van-e külső gyártótól származó szoftverrel, hogy ezek a technológiák =. Az Oracle jogosultságifiók-tanúsítványok további információkért lásd: a [FlashGrid SkyCluster oldal](https://www.flashgrid.io/oracle-rac-in-azure/).

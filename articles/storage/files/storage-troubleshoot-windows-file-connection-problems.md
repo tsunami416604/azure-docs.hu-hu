@@ -10,10 +10,10 @@ ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 7bc7f3631748f4ac74a76e9e67aa2aef2c8f9a71
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66480321"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>A Windows Azure Files-problémák hibaelhárítása
@@ -30,7 +30,7 @@ Fájlmegosztást megkísérlésekor a következő hiba jelenhet meg:
 
 - Az 5-ös rendszerhiba fordult elő. A hozzáférés megtagadva.
 
-### <a name="cause-1-unencrypted-communication-channel"></a>1. ok: Nem titkosított kommunikációs csatornát
+### <a name="cause-1-unencrypted-communication-channel"></a>1\. ok: Nem titkosított kommunikációs csatornát
 
 Biztonsági okokból az Azure-fájlmegosztások kapcsolatok le lesznek tiltva, ha a kommunikációs csatornát nincs titkosítva, és ha a csatlakozási kísérlet nem ugyanabban az adatközpontban az Azure-fájlmegosztások-ket. Titkosítatlan kapcsolat az adatközpontokon belül is blokkolhatók, ha a [biztonságos átvitelre van szükség](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) beállítás engedélyezve van a tárfiókon. Egy titkosított kommunikációs csatornát csak akkor, ha a felhasználó ügyfél operációs rendszere támogatja az SMB-titkosításra van megadva.
 
@@ -41,7 +41,7 @@ A Windows 8, Windows Server 2012 és egyes rendszerek újabb verzióit egyeztetn
 1. Csatlakozás ügyfélről, amely támogatja az SMB-titkosítás (a Windows 8, Windows Server 2012 vagy újabb), vagy csatlakozzon a virtuális gépről az Azure-fájlmegosztás használt Azure storage-fiókban, ugyanabban az adatközpontban.
 2. Ellenőrizze a [biztonságos átvitelre van szükség](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) beállítás le van tiltva a tárfiókban, ha az ügyfél nem támogatja az SMB-titkosítás.
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>2. ok: Virtuális hálózat vagy a tűzfal-szabályok engedélyezve vannak a storage-fiók 
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>2\. ok: Virtuális hálózat vagy a tűzfal-szabályok engedélyezve vannak a storage-fiók 
 
 Ha a virtuális hálózat (VNET) és -tűzfalszabályok konfigurálása a storage-fiók, hálózati forgalom megtagadja a hozzáférést, kivéve, ha az ügyfél IP-cím vagy a virtuális hálózati hozzáférés engedélyezett.
 
@@ -58,7 +58,7 @@ Amikor egy fájlmegosztás csatlakoztatása a helyszíni, illetve egy másik ada
 - A 67-es rendszerhiba fordult elő. A hálózatnév nem található.
 - A 87-es rendszerhiba fordult elő. A paraméter helytelen.
 
-### <a name="cause-1-port-445-is-blocked"></a>1. ok: 445-ös port le van tiltva.
+### <a name="cause-1-port-445-is-blocked"></a>1\. ok: 445-ös port le van tiltva.
 
 Rendszerhiba: 53-as vagy 67-es rendszerhiba akkor fordulhat elő, ha az Azure Files-adatközpont a kimenő kommunikáció 445-ös port le van tiltva. Tekintse meg, hogy a 445-ös port elérésének engedélyezése vagy letiltása az internetszolgáltatók összegzését, lépjen a [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx).
 
@@ -98,7 +98,7 @@ Sikeres csatlakozás esetén a következő kimenetet kell látnia:
 #### <a name="solution-1---use-azure-file-sync"></a>1 – használja az Azure File Sync megoldás
 Az Azure File Sync is alakítja át a helyszíni Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Az Azure File Sync 443-as porton keresztül működik, és így használható áthidaló elérni az Azure Filest ügyfelektől, amelyek a 445-ös blokkolva van. [Ismerje meg, hogyan állíthatja be az Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-extend-servers).
 
-#### <a name="solution-2---use-vpn"></a>2. VPN használatát megoldás
+#### <a name="solution-2---use-vpn"></a>2\. VPN használatát megoldás
 A megadott tárfiókhoz VPN beállításával a forgalom fog áthaladni egy biztonságos alagúton, nem pedig az interneten keresztül. Kövesse a [utasításokat követve VPN Hálózatának beállítása](https://github.com/Azure-Samples/azure-files-samples/tree/master/point-to-site-vpn-azure-files
 ) a Windows Azure-fájlok eléréséhez.
 
@@ -109,7 +109,7 @@ Az IT-részleg vagy megnyitni a 445-ös kimenő Internetszolgáltató [Azure IP-
 Az Azure Files SMB mellett REST is támogatja. REST-alapú elérését a 443-as (szabványos tcp-)-en keresztül működik. Nincsenek különböző eszközöket REST API használatával írt, amelyek lehetővé teszik a felhasználói felület gazdag. [Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) az egyik közülük. [Letöltés és a Storage Explorer telepítése](https://azure.microsoft.com/features/storage-explorer/) és csatlakozni a fájlmegosztáshoz, az Azure Files alapját. Is [PowerShell](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-powershell) amely is felhasználó REST API-t.
 
 
-### <a name="cause-2-ntlmv1-is-enabled"></a>2. ok: NTLMv1 engedélyezve van
+### <a name="cause-2-ntlmv1-is-enabled"></a>2\. ok: NTLMv1 engedélyezve van
 
 Rendszerhiba: 53-as vagy rendszerhiba: 87 akkor fordulhat elő, ha NTLMv1 kommunikáció engedélyezve van az ügyfélen. Az Azure Files csak NTLMv2-alapú hitelesítést támogatja. A kevésbé biztonságos ügyfél engedélyezett NTLMv1 kellene hoz létre. Ezért kommunikációja blokkolva van az Azure Files számára. 
 
@@ -144,13 +144,13 @@ Ha a felhasználó Azure-fájlmegosztások a portálon, a következő hiba jelen
 Engedélyezési hiba  
 Nem rendelkezik hozzáféréssel 
 
-### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>1. ok: A felhasználói fiók nem rendelkezik a tárfiókhoz való hozzáférést
+### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>1\. ok: A felhasználói fiók nem rendelkezik a tárfiókhoz való hozzáférést
 
 ### <a name="solution-for-cause-1"></a>1 OK megoldás
 
 Tallózással keresse meg a tárfiókot, ahol az Azure-fájlmegosztás, kattintson a **hozzáférés-vezérlés (IAM)** , és ellenőrizze a felhasználói fiók rendelkezik-e a tárfiókhoz való hozzáférést. További tudnivalókért lásd: [hogyan tegye biztonságossá tárfiókját, a szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac).
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>2. ok: Virtuális hálózat vagy a tűzfal-szabályok engedélyezve vannak a storage-fiók
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>2\. ok: Virtuális hálózat vagy a tűzfal-szabályok engedélyezve vannak a storage-fiók
 
 ### <a name="solution-for-cause-2"></a>Megoldás ok 2
 

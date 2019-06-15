@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: e3e0e9ae4a1939aad9ab2ae42a1b51b1b00e2462
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: a61c2577f79f32f97fe2ef10a2ac67fdbbc1feda
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62101494"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073735"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>Az Azure Storage méretezhetőségi és teljesítménycéljai storage-fiókok
 
@@ -43,6 +43,9 @@ Az alkalmazás eléri a korlátot, mi partíció képes kezelni a számítási f
 
 Az Azure Files és az Azure File Sync a méretezéshez és teljesítményhez célokon további információkért lásd: [Azure Files méretezhetőségi és teljesítménycéljai](../files/storage-files-scale-targets.md).
 
+> [!IMPORTANT]
+> Tárfiókok korlátai megosztások a alkalmazni. Méretezés akár a storage-fiókok maximális száma csak akkor megvalósítható, ha csak egy megosztás tárfiókonként.
+
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
 ### <a name="premium-files-scale-targets"></a>Prémium files tárolók skálázása
@@ -53,27 +56,7 @@ Példa: Egyetlen megosztása 100 000 IOPS érhető el, és egyetlen fájl akár 
 
 #### <a name="premium-file-share-limits"></a>Prémium szintű fájl megosztási korlátozások
 
-> [!IMPORTANT]
-> Tárfiókok korlátai megosztások a alkalmazni. Méretezés akár a storage-fiókok maximális száma csak akkor megvalósítható, ha csak egy megosztás tárfiókonként.
-
-|Terület  |Cél  |
-|---------|---------|
-|Üzembe helyezett min. méret                        |100 GiB      |
-|Maximális méret kiépítve                        |100 TiB      |
-|Minimális méret növelése vagy csökkentése    |1 GiB      |
-|Alapkonfiguráció IOPS    |1 GIB-ra legfeljebb 100 000 IOPS|
-|Tartalékkapacitás IOPS    |3 x IOPS száma legfeljebb 100 000 GiB|
-|Kilépő üzenetek gyakorisága         |60 MiB/s + 0,06 * kiosztott GiB        |
-|Bejövő forgalom| 40 MiB/s + 0,04 * kiosztott GiB |
-|A pillanatképek maximális száma        |200       |
-
-#### <a name="premium-file-limits"></a>Prémium szintű fájlokra vonatkozó korlátok
-
-|Terület  |Cél  |
-|---------|---------|
-|Méret                  |1 TiB         |
-|Fájlonkénti maximális iops-érték     |5000         |
-|Egyidejű kezeli    |2,000         |
+[!INCLUDE [storage-files-premium-scale-targets](../../../includes/storage-files-premium-scale-targets.md)]
 
 ### <a name="azure-file-sync-scale-targets"></a>Az Azure File Sync méretezési célok
 

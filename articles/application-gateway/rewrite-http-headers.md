@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/29/2019
 ms.author: absha
 ms.openlocfilehash: 9160d300270bf1ab5043bee632d27bcc4b7bf332
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66476032"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>Az Application Gateway HTTP-fejlécek újraírása
@@ -20,7 +20,7 @@ ms.locfileid: "66476032"
 
 HTTP-fejlécek engedélyezése egy ügyfél és kiszolgáló át egy kérelem vagy válasz további információkat. Ezek a fejlécek újraírásával végezheti a fontos feladatok, például a biztonsággal kapcsolatos üzenetfejlécének mezői például HSTS / X-XSS-védelem hozzáadása, eltávolítása, amelyek bizalmas információkat fedhet válasz üzenetfejlécének mezői és portok adatait a eltávolítása X-továbbított – a fejlécek.
 
-Application Gateway lehetővé teszi hozzá, távolíthatja el vagy frissítse a HTTP-kérelmek és válaszfejlécek történt a kérelem és válasz-csomagok áthelyezése az ügyfél és a háttér-készletek között. És ez lehetővé teszi, hogy adja meg annak érdekében, hogy csak bizonyos feltételek teljesülése esetén, a rendszer a megadott fejlécek újraírja feltételeket.
+Az Application Gateway lehetővé teszi HTTP-kérelmek és -válaszok fejlécének hozzáadását, eltávolítását vagy frissítését, miközben a kérelem- és válaszcsomagok az ügyfél és a háttérkészlet között mozognak. Ezenkívül lehetővé teszi feltételek megadását, hogy a megadott fejlécek átírására csak ezen feltételek teljesülése esetén legyen lehetőség.
 
 Az Application Gateway támogatja több [kiszolgálói változók](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#server-variables) , amellyel további információt a kérelmek és válaszok tárolja. Ez megkönnyíti az hozhat létre hatékony újraírási szabályok.
 

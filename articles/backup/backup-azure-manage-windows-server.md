@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 8/21/2018
 ms.author: raynew
 ms.openlocfilehash: f7d97866bb3ae895f83fff248ceec2e83dd60bf9
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66688909"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services-tárolók figyelése és kezelése
@@ -34,7 +34,7 @@ Riasztások figyelése, vagy megtekintheti a felügyeleti adatait egy Recovery S
 
 2. Kattintson a portál **minden szolgáltatás**.
 
-   ![1. lépés-lista megnyitása a Recovery Services-tárolók](./media/backup-azure-manage-windows-server/open-rs-vault-list.png)
+   ![1\. lépés-lista megnyitása a Recovery Services-tárolók](./media/backup-azure-manage-windows-server/open-rs-vault-list.png)
 
 3. Az a **minden szolgáltatás** párbeszédpanelen írja be **Recovery Services**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Ha a **Recovery Services-tárolók** lehetőség jelenik meg, kattintson rá a Recovery Services-tárolók listájának megnyitásához az előfizetésében.
 

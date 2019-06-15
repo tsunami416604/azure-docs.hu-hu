@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
 ms.openlocfilehash: 2433f4b3563cc8b301d1815cccf5ab24406e8662
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66111472"
 ---
 # <a name="azure-relay-faqs"></a>Az Azure Relay – gyakori kérdések
@@ -47,15 +47,15 @@ A Relay díjszabással kapcsolatos részletes információkért lásd: a [hibrid
 ### <a name="how-am-i-billed-for-hybrid-connections"></a>Hogyan kell fizetnem a hibrid kapcsolatokhoz?
 Az alábbiakban három számlázási példaforgatókönyvek hibrid kapcsolatok:
 
-*   1. forgatókönyv:
+*   1\. forgatókönyv:
     *   Rendelkezik egy egyetlen figyelője működik, például a Hibridkapcsolat-kezelő telepítve van és fut folyamatosan az egész hónapon egy példánya.
     *   A kapcsolat a hónap során 3 GB adatot továbbít. 
     *   A teljes díj összege az 5 USD.
-*   2. forgatókönyv:
+*   2\. forgatókönyv:
     *   Rendelkezik egy egyetlen figyelője működik, például a Hibridkapcsolat-kezelő telepítve van és fut folyamatosan az egész hónapon egy példánya.
     *   10 GB adatot továbbít a kapcsolaton, a hónap során.
     *   A teljes díj összege $7.50. Ez a kapcsolat és az első 5 GB-os $5 + $2,50 a további 5 GB adat.
-*   3. forgatókönyv:
+*   3\. forgatókönyv:
     *   Két olyan példányt, és a Hybrid Connections Manager telepítve van és fut folyamatosan az egész hónapban, a B rendelkezik.
     *   A kapcsolat a hónap során 3 GB adatot továbbít.
     *   A hónap során a B kapcsolaton 6 GB adatot továbbít.

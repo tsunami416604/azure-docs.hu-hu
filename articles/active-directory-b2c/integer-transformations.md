@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 976cf55dd8f1c11d1ea605b25086fa644afec980
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66510801"
 ---
 # <a name="integer-claims-transformations"></a>Egész szám jogcím-átalakítás
@@ -29,7 +29,7 @@ Hosszú adattípus alakít át egy karakterlánc típusú adatokat.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | Bemeneti jogcím | hosszú | A ClaimType alakítandó karakterlánc. |
+| Bemeneti jogcím | Bemeneti jogcím | long | A ClaimType alakítandó karakterlánc. |
 | OutputClaim | outputClaim | string | A takar, amelyek a ClaimsTransformation meghívása után jön létre. |
 
 Ebben a példában a `numericUserId` hosszú érték típusú jogcímet alakítja át egy `UserId` jogcím-karakterlánc típusú értéket.
