@@ -3,20 +3,20 @@ title: Docker-tároló beállításai
 titleSuffix: Language Understanding - Azure Cognitive Services
 description: A LUIS tároló futtatási környezetet segítségével konfigurálható a `docker run` parancssori argumentumokat. A LUIS rendelkezik néhány választható beállítások mellett számos szükséges beállításokat.
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.author: diberry
-ms.openlocfilehash: afd29c1689d6d467a42a7c3c60f9a1dccd1a66f0
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 06/11/2019
+ms.author: dapine
+ms.openlocfilehash: 4a9f7762b7960c74acad8203f70bc1e7c7cbd90f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242618"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063218"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Language Understanding Docker-tárolók konfigurálása 
 
@@ -67,7 +67,7 @@ Ez a beállítás a következő helyen található:
 Ne felejtse el bevenni a `luis/v2.0` útválasztási az URL-cím, az alábbi táblázatban látható módon:
 
 
-|Szükséges| Name (Név) | Adattípus | Leírás |
+|Kötelező| Name (Név) | Adattípus | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Billing` | Karakterlánc | A számlázás végpont URI azonosítója<br><br>Példa:<br>`Billing=https://westus.api.cognitive.microsoft.com/luis/v2.0` |
 

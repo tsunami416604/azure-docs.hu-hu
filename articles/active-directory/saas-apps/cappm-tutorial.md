@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 464c6c6b554f093e0192641284dafe39cb2908ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 34fdc3d97f6b4e785a9c6ec3d33e199978373d2c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60281816"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105870"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ca-ppm"></a>Oktatóanyag: A hitelesítésszolgáltató PPM az Azure Active Directory-integráció
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a hitelesítésszolgáltató PPM konfigurálásához h
 
 **Hitelesítésszolgáltató PPM hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

@@ -3,20 +3,20 @@ title: Tárolók telepítése és futtatása
 titleSuffix: Text Analytics -  Azure Cognitive Services
 description: Hogyan letöltése, telepítése és -tárolókat futtathat szövegelemzési az bemutató oktatóanyag.
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 05/28/2019
-ms.author: diberry
-ms.openlocfilehash: f9f68b74c09bf0122ba856680a60bdb14ffa868f
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.date: 06/10/2019
+ms.author: dapine
+ms.openlocfilehash: fc9e2b6e5ab2d2103cab2681fe603c1ca9b725c8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306530"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069217"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Telepítse és futtassa a Text Analytics tárolók
 
@@ -48,9 +48,9 @@ A következő táblázat ismerteti a minimális és ajánlott, processzormagot l
 
 | Tároló | Minimális | Ajánlott | TPS<br>(Minimum, Maximum)|
 |-----------|---------|-------------|--|
-|Kulcsszókeresés | 1 mag, 2 GB memória | 1 mag, 4 GB memória |15, 30|
+|Kulcskifejezések kinyerése | 1 mag, 2 GB memória | 1 mag, 4 GB memória |15, 30|
 |Nyelvfelismerés | 1 mag, 2 GB memória | 1 mag, 4 GB memória |15, 30|
-|Hangulatelemzés | 1 mag, 2 GB memória | 1 mag, 4 GB memória |15, 30|
+|Véleményelemzés | 1 mag, 2 GB memória | 1 mag, 4 GB memória |15, 30|
 
 * Egyes maghoz kell lennie legalább 2.6-os gigahertz (GHz) vagy gyorsabb.
 * TPS - tranzakció / másodperc
@@ -65,7 +65,7 @@ Tárolórendszerképek szövegelemzési Microsoft Tárolóregisztrációs adatb�
 |-----------|------------|
 |Kulcskifejezések kinyerése | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
 |Nyelvfelismerés | `mcr.microsoft.com/azure-cognitive-services/language` |
-|Hangulatelemzés | `mcr.microsoft.com/azure-cognitive-services/sentiment` |
+|Véleményelemzés | `mcr.microsoft.com/azure-cognitive-services/sentiment` |
 
 Használja a [ `docker pull` ](https://docs.docker.com/engine/reference/commandline/pull/) paranccsal töltse le a tárolórendszerkép Microsoft Tárolóregisztrációs adatbázisból.
 

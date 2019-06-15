@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ca35e1c6966365fab1a53fe9674a8f361422eea
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 0cd6f3a97e96f22ee32ff8f84b234e806f23e945
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65899741"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67104194"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-directions-on-microsoft"></a>Oktatóanyag: Az utasításokat a Microsoft Azure Active Directory-integráció
 
@@ -53,7 +53,7 @@ Irányban integrációjának konfigurálása a Microsoft Azure AD-be, szüksége
 
 **Adja hozzá a Microsoft irányban a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -200,7 +200,7 @@ Nincs művelet elem Microsoft irányban történő felhasználókiépítés konf
 
 Egy hozzárendelt felhasználó megpróbál bejelentkezni a Microsoft a hozzáférési panelen megjelenő utasításokat, ha a megjelenő utasításokat a Microsoft ellenőrzi, hogy létezik-e a felhasználó. Ha nincs felhasználói fiók elérhető még, a utasításokat a Microsoft automatikusan létre.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 631f65ff042c2f1d241626d5f480eae9a8b216a9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 750a403340e5bdbfbce1d566d2d1d6e6ba84fcf2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705039"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67085856"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler"></a>Oktatóanyag: Zscaler szolgáltatással az Azure Active Directory-integráció
 
@@ -55,7 +55,7 @@ Az Azure AD integrálása a Zscaler konfigurálásához hozzá kell Zscaler a ga
 
 **Zscaler hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

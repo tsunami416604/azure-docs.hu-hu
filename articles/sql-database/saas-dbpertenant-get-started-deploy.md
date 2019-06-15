@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: bbb67845922dd9a3b2a78f76bf25d73bace98a82
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66240125"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Üzembe helyezése és megismerése a több-bérlős SaaS-alkalmazás a bérlőnkénti adatbázis mintát használ, az SQL Database szolgáltatással
@@ -117,7 +117,7 @@ Egy központi **Eseményközpont** lap mutató hivatkozásokat biztosít a bérl
 
 2. Válassza ki **Fabrikam Jazz Club** a az Eseményközpontot.
 
-    ![Események](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
+    ![Events](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
 
 ### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 

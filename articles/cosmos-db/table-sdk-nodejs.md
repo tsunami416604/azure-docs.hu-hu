@@ -9,10 +9,10 @@ ms.date: 11/20/2018
 author: wmengmsft
 ms.author: wmeng
 ms.openlocfilehash: b849db465bb9a30456e9f93f9439c53cb26c9e52
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66480173"
 ---
 # <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Az Azure Cosmos DB Table API a node.js-ben: Kibocsátási megjegyzések és erőforrások
@@ -46,7 +46,7 @@ A Microsoft legalább értesítést küldenek **12 hónapig** kivonása egy SDK-
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
-| [1.0.0](#1.0.0) |2017. november 15. |--- |
+| [1.0.0](#1.0.0) |2017\. november 15. |--- |
 
 ## <a name="faq"></a>GYIK
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]

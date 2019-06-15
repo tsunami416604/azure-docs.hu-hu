@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: de2b60ef280ceebdc97ea7dfc208df1cea3956c0
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b3358ad473ede9e8d78a835e8c68e690e5340638
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699879"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67090099"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spaceiq"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező SpaceIQ
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a SpaceIQ konfigurálásához hozzá kell SpaceIQ a ka
 
 **SpaceIQ hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

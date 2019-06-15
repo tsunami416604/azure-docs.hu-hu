@@ -11,16 +11,16 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: b6f95607c7cfc574d647be3046cef4a4b61906f6
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65861754"
 ---
 # <a name="using-transactions-in-sql-data-warehouse"></a>Az SQL Data Warehouse olyan tranzakciók használatával
 Tippek a tranzakciók végrehajtása az Azure SQL Data Warehouse-megoldások fejlesztése.
 
-## <a name="what-to-expect"></a>Amire számíthat
+## <a name="what-to-expect"></a>Mi várható?
 Hiányol, mert az SQL Data Warehouse támogatja a tranzakciókat az adatraktár-számítási feladat részeként. Azonban kell biztosítják az SQL Data Warehouse teljesítményét nagy mennyiségű egyes funkciók korlátozva az SQL Server képest. Ez a cikk kiemeli a különbségeket, és felsorolja a többi. 
 
 ## <a name="transaction-isolation-levels"></a>Tranzakció elkülönítési szinten
@@ -38,7 +38,7 @@ A következő előfeltételek alatti táblázatban történtek:
 
 | [DWU](sql-data-warehouse-overview-what-is.md) | Cap kiszolgálónként terjesztési (GB) | Disztribúciók száma | Max. tranzakció mérete (GB) | Száma terjesztési sorok | Tranzakciónként sorok maximális száma |
 | --- | --- | --- | --- | --- | --- |
-| DW100c |1. |60 |60 |4,000,000 |240,000,000 |
+| DW100c |1 |60 |60 |4,000,000 |240,000,000 |
 | DW200c |1.5 |60 |90 |6,000,000 |360,000,000 |
 | DW300c |2.25 |60 |135 |9,000,000 |540,000,000 |
 | DW400c |3 |60 |180 |12,000,000 |720,000,000 |
@@ -59,7 +59,7 @@ A következő előfeltételek alatti táblázatban történtek:
 
 | [DWU](sql-data-warehouse-overview-what-is.md) | Cap kiszolgálónként terjesztési (GB) | Disztribúciók száma | Max. tranzakció mérete (GB) | Száma terjesztési sorok | Tranzakciónként sorok maximális száma |
 | --- | --- | --- | --- | --- | --- |
-| DW100 |1. |60 |60 |4,000,000 |240,000,000 |
+| DW100 |1 |60 |60 |4,000,000 |240,000,000 |
 | DW200 |1.5 |60 |90 |6,000,000 |360,000,000 |
 | DW300 |2.25 |60 |135 |9,000,000 |540,000,000 |
 | DW400 |3 |60 |180 |12,000,000 |720,000,000 |

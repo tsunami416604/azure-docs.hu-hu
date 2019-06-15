@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 04/23/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 40c8cb41ad3bcd46e9973a5f96134ff1bfd02fd2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 40ae634897361219c39e60d2161d3576cc44a400
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150820"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077524"
 ---
-Gyorsan hozhat létre egy Vnetet, nyisson meg egy PowerShell-konzolt, ebben a cikkben kattinthat "Kipróbálom". Állítsa be az értékeket, majd másolja és illessze be a parancsokat a konzolablakba. Az új modul és AzureRM kompatibilitási kapcsolatos további tudnivalókért lásd: [az Azure PowerShell-lel Az új modul bevezetése](/powershell/azure/new-azureps-module-az). Az modul telepítési utasításokért lásd: [Azure PowerShell telepítése](/powershell/azure/install-az-ps).
+Gyorsan hozhat létre egy Vnetet, ebben a cikkben egy PowerShell-konzol megnyitásához az Azure Cloud Shellben kattinthat "Kipróbálom". Állítsa be az értékeket, majd másolja és illessze be a parancsokat a konzolablakba. 
 
 Mindenképp ellenőrizze, hogy a létrehozott virtuális hálózat címtere nincs-e átfedésben a többi virtuális hálózat címterével, amelyekhez csatlakozni szeretne, vagy a helyszíni hálózat címterével.
 

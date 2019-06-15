@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6ad8eea21c10726b2c3eaf1e10bfd5efba4d1e48
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 13d698cfbc0241248a77fd5f3b148a9393320c64
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129626"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076021"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Az SQL Server az Azure Key Vault-integráció konfigurálása Azure-beli virtuális gépeken (Resource Manager)
 
@@ -53,25 +53,21 @@ Ha egy új SQL Server virtuális gép és a Resource Manager szeretne kiépíten
 További üzembe helyezésének részletes útmutató: [az Azure Portalon az SQL Server virtuális gép kiépítése](virtual-machines-windows-portal-sql-server-provision.md).
 
 ### <a name="existing-vms"></a>Meglévő virtuális gépek
-Meglévő SQL Server virtuális gépek esetében válassza ki az SQL Server virtuális gépet. Válassza ki a **SQL Server-konfiguráció** szakaszában a **beállítások** panelen.
+
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
+Meglévő SQL Server virtuális gépek, nyissa meg a [SQL virtuális gépek erőforrás](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource) válassza **biztonsági** alatt **beállítások**. Válassza ki **engedélyezése** Azure Key Vault-integráció engedélyezéséhez. 
 
 ![Meglévő virtuális gépek SQL AKV-integráció](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-rm-akv-existing-vms.png)
 
-Az a **SQL Server-konfiguráció** panelen kattintson a **szerkesztése** a automatikus Key Vault-integráció szakaszban gombot.
-
-![SQL AKV-integráció konfigurálása a meglévő virtuális gépek](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-rm-akv-configuration.png)
-
-Ha elkészült, kattintson a **OK** gomb alján a **SQL Server-konfiguráció** panelen a módosítások mentéséhez.
+Ha elkészült, kattintson a **alkalmaz** gomb alján a **biztonsági** lapon a módosítások mentéséhez.
 
 > [!NOTE]
 > Az itt létrehozott hitelesítő adat neve lesz rendelve egy SQL-bejelentkezési később. Ez lehetővé teszi az SQL-bejelentkezési hozzáférjen a kulcstartóhoz. 
->
->
+
 
 > [!NOTE]
 > Beállíthatja az AKV-integráció-sablon használatával. További információkért lásd: [Azure Key Vault-integráció az Azure gyorsindítási sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-keyvault-update).
-> 
-> 
+
 
 [!INCLUDE [AKV Integration Next Steps](../../../../includes/virtual-machines-sql-server-akv-next-steps.md)]
-

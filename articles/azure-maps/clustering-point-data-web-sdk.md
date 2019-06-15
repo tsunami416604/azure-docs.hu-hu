@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen
 ms.openlocfilehash: 6dbd4461e7b8382ec3c4075b9688de59678f98f5
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65957330"
 ---
 # <a name="clustering-point-data"></a>Fürtszolgáltatás pont adatait
@@ -86,7 +86,7 @@ Egér-események előfordulásakor egy rétegen fürtözött adatok pontokat tar
 
 | Tulajdonság neve | Típus | Leírás |
 |---------------|------|-------------|
-| fürt | logikai | Azt jelzi, ha a szolgáltatás egy fürt jelöli. |
+| Fürt | logikai | Azt jelzi, ha a szolgáltatás egy fürt jelöli. |
 | cluster_id | string | Egy egyedi Azonosítót a fürt, amely használható a DataSource `getClusterExpansionZoom`, `getClusterChildren`, és `getClusterLeaves` módszereket. |
 | point_count | szám | A fürt tartalmaz pontok száma. |
 | point_count_abbreviated | string | Egy karakterlánc, amely lerövidíti a `point_count` értékét, ha hosszú. (például 4000 lesz 4 KB-os) |

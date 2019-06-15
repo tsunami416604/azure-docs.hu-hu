@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
 ms.openlocfilehash: e4ada412547360f97e869d3312b65d869fa3df48
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65413715"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Az Azure Service Fabric biztonsági másolat visszaállítása
@@ -161,7 +161,7 @@ A visszaállítási API-t, meg kell adnia a _biztonsági mentés azonosítója:_
 
 Is kell választania a célpartíción leírt módon a másodlagos fürtben a [partícióséma](service-fabric-concepts-partitioning.md#get-started-with-partitioning). A fürt másik biztonsági mentés a partícióra az eredeti elveszett fürthöz partícióséma megadott helyreáll.
 
-Ha másik fürtön a Partícióazonosító `1c42c47f-439e-4e09-98b9-88b8f60800c6`, leképezheti a fürt eredeti Partícióazonosító `974bd92a-b395-4631-8a7f-53bd4ae9cf22` összehasonlítja a magas és alacsony kulcsot _előre particionálás (UniformInt64Partition)_.
+Ha másik fürtön a Partícióazonosító `1c42c47f-439e-4e09-98b9-88b8f60800c6`, leképezheti a fürt eredeti Partícióazonosító `974bd92a-b395-4631-8a7f-53bd4ae9cf22` összehasonlítja a magas és alacsony kulcsot _előre particionálás (UniformInt64Partition)_ .
 
 A _nevű particionálás_, a név-érték a rendszer összehasonlítja a célpartíción alternatív fürt azonosításához.
 

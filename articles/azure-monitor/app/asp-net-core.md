@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: mbullwin
 ms.openlocfilehash: cb7ace20fd0a59dafff3d7f8240f54c3c8e12492
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66226400"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights az ASP.NET Core-alkalmazások
@@ -121,8 +121,8 @@ A [Application Insights SDK (Software Development Kitet) az ASP.NET Core](https:
 |Http/Https | A hívások `HttpClient`. |
 |SQL | A hívások `SqlClient`. |
 |[Azure Storage](https://www.nuget.org/packages/WindowsAzure.Storage/) | Az Azure Storage-kliens indított hívások. |
-|[EventHub Client SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | 1.1.0-s verzió vagy újabb verzió. |
-|[ServiceBus Client SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| 3.0.0-s verziójával vagy újabb verzió. |
+|[EventHub Client SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | 1\.1.0-s verzió vagy újabb verzió. |
+|[ServiceBus Client SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| 3\.0.0-s verziójával vagy újabb verzió. |
 |Azure Cosmos DB | Csak automatikusan rögzíti a HTTP/HTTPS használata esetén. Az Application Insights nem rögzíti a TCP-módot. |
 
 ### <a name="performance-counters"></a>Teljesítményszámlálók

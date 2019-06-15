@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
 ms.openlocfilehash: 9c9a4b41dbb9b9acc2982ae2af1f3a611f9d3beb
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65228273"
 ---
 # <a name="copy-data-from-google-cloud-storage-using-azure-data-factory"></a>Adatok másolása a Google Cloud Storage, Azure Data Factory használatával
@@ -38,7 +38,7 @@ Pontosabban, a Google Cloud Storage-összekötő támogatja a fájlok másolása
 
 Adatok másolása a Google Cloud Storage-ból, győződjön meg arról, kapott a következő engedélyeket:
 
-- **A másolási tevékenység-végrehajtási:**: `s3:GetObject` és `s3:GetObjectVersion` objektum műveletekhez.
+- **A másolási tevékenység-végrehajtási:** : `s3:GetObject` és `s3:GetObjectVersion` objektum műveletekhez.
 - **A Data Factory grafikus felhasználói felületének létrehozásához**: `s3:ListAllMyBuckets` és `s3:ListBucket` / `s3:GetBucketLocation` gyűjtőbe műveletek engedélyek szükségesek emellett a műveletek, például a kapcsolat tesztelése, és tallózással keresse meg és nyissa meg a fájlok elérési útjainak. Ha nem szeretné ezeket az engedélyeket, hagyja ki a kapcsolat tesztelése a társított szolgáltatás létrehozása oldal, és adja meg az elérési út közvetlenül az adatkészlet beállításai.
 
 ## <a name="getting-started"></a>Első lépések
@@ -56,7 +56,7 @@ Google Cloud Storage társított szolgáltatás a következő tulajdonságok tá
 | type | A type tulajdonságot állítsa **AmazonS3**. | Igen |
 | accessKeyId | A titkos hozzáférési kulcs azonosítója. A hozzáférési kulcs és titkos kulcs találja, **Google Cloud Storage** > **beállítások** > **együttműködési**. |Igen |
 | secretAccessKey | A titkos hívóbetűje magát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
-| serviceUrl | Az egyéni S3-végpontokat, **`https://storage.googleapis.com`**. | Igen |
+| serviceUrl | Az egyéni S3-végpontokat, **`https://storage.googleapis.com`** . | Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Használhatja az Azure integrációs modul vagy a helyi integrációs modul (ha az adattár magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 Például:

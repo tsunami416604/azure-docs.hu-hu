@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/20/2019
 ms.author: rajanaki
 ms.openlocfilehash: 1d36145b2a38c0f1106b4468eab226996e270ae1
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65922177"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Az Azure – Azure replikációs a mobilitási szolgáltatás automatikus frissítése
@@ -49,7 +49,7 @@ Engedélyezheti, hogy a Site Recovery a következő módokon kezelheti a frissí
 
 Amikor engedélyezi egy virtuális gép replikációját vagy indítása [a Virtuálisgép-nézetből](azure-to-azure-quickstart.md) vagy [a recovery services-tárolót a](azure-to-azure-how-to-enable-replication.md), vagy engedélyezheti a Site Recovery-bővítmény frissítéseinek kezeléséhez, vagy kezelheti, a Site Recovery manuálisan.
 
-![Bővítmény beállításai](./media/azure-to-azure-autoupdate/enable-rep.png)
+![Bővítmény-beállítások](./media/azure-to-azure-autoupdate/enable-rep.png)
 
 ### <a name="toggle-the-extension-update-settings-inside-the-vault"></a>Váltás a bővítményt a táron belüli beállításainak frissítése
 
@@ -57,7 +57,7 @@ Amikor engedélyezi egy virtuális gép replikációját vagy indítása [a Virt
 2. A **az Azure Virtual Machines** > **bővítmény frissítési beállítások**, kapcsolja be a **kezelése lehetővé teszi a Site Recovery** be-vagy kikapcsolása. Manuálisan kezeléséhez, kapcsolja ki. 
 3. Kattintson a **Mentés** gombra.
 
-![Bővítmény frissítési beállításai](./media/azure-to-azure-autoupdate/vault-toggle.png)
+![Bővítmény frissítési beállítások](./media/azure-to-azure-autoupdate/vault-toggle.png)
 
 > [!Important]
 > Ha úgy dönt **kezelése lehetővé teszi a Site Recovery**, a beállítást alkalmazza a megfelelő tárolóban lévő összes virtuális gépet.
@@ -520,7 +520,7 @@ Ha az automatikus frissítések problémáját, látni fogja a alatt egy Hibaér
 
 Ha nem engedélyezi az automatikus frissítések, tekintse meg a következő gyakori hibák és a javasolt művelet:
 
-- **Hiba**: Nem jogosult Azure-beli futtató fiók (szolgáltatásnév) létrhozására és a Közreműködő szerepkör szolgáltatásnévhez való hozzárendelésére.
+- **Hiba**: Hozzon létre egy Azure-beli futtató fiók (szolgáltatásnév), és adja meg a közreműködő szerepkört az egyszerű szolgáltatás nem rendelkezik.
 
    **Javasolt művelet**: Győződjön meg arról, hogy a bejelentkezett fiók hozzá van rendelve közreműködő, és próbálkozzon újra. Tekintse meg a szükséges engedélyek szakaszában [a portál használatával hozzon létre egy Azure AD alkalmazás és -szolgáltatásnév erőforrások eléréséhez](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) engedélyek hozzárendelése a további információt.
  

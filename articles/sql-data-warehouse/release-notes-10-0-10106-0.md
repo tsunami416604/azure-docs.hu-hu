@@ -11,10 +11,10 @@ ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.openlocfilehash: 9e5f10c2b4c2108626db79ad9821a8b07e57a2e3
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66417713"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Az Azure SQL Data Warehouse kibocsátási megjegyzései
@@ -29,7 +29,7 @@ Példa a kimenetre: ![Az SQL Data Warehouse-verzió](./media/release-notes/sql_d
 
 Az Azure SQL DW használata az azonosított, erősítse meg, amely a kiadási dátum alkalmazták.
 
-## <a name="may-2019"></a>2019. május
+## <a name="may-2019"></a>2019\. május
 
 | Szolgáltatás fejlesztései | Részletek |
 | --- | --- |
@@ -40,7 +40,7 @@ Az Azure SQL DW használata az azonosított, erősítse meg, amely a kiadási d�
 |**Gyorsítótár-(előzetes verzió) eredménye**|Eredményhalmaz gyorsítótárazás lehetővé teszi, hogy miközben idő-elemzés az üzleti adatelemzők és jelentéskészítő felhasználók azonnali lekérdezések válaszidejét. További információkért lásd:</br> - [ALTER DATABASE (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest)</br> - [Az ALTER DATABASE SET beállításai (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)</br> - [SET RESULT SET CACHING (Transact-SQL)](/sql/t-sql/statements/set-result-set-caching-transact-sql?view=azure-sqldw-latest)</br> - [SET Statement (Transact-SQL)](/sql/t-sql/statements/set-statements-transact-sql)</br> - [sys.databases (Transact-SQL)](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?view=azure-sqldw-latest)|
 |**Rendezett fürtözött oszlopcentrikus index (előzetes verzió)**|Oszlopcentrikus kulcsfontosságú, és a hatékony lekérdezése a nagy mennyiségű adat tárolásához. Minden táblához, osztja fel a bejövő adatok sorcsoportok és a egy sorcsoport űrlapok minden oszlop egy szegmens lemezre vonatkozóan.  Rendezett fürtözött oszlopcentrikus indexek további optimalizálhatja a lekérdezés végrehajtása hatékony szegmens eltávolítási engedélyezésével.   További információkért lásd:</br> -  [(Az Azure SQL Data Warehouse) tábla létrehozása](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest)</br> -  [CREATE COLUMNSTORE INDEX (Transact-SQL)](/sql/t-sql/statements/create-columnstore-index-transact-sql?view=azure-sqldw-latest).|
 
-## <a name="march-2019"></a>2019. március
+## <a name="march-2019"></a>2019\. március
 
 | Szolgáltatás fejlesztései | Részletek |
 | --- | --- |
@@ -58,7 +58,7 @@ Az Azure SQL DW használata az azonosított, erősítse meg, amely a kiadási d�
 | --- | --- |
 | | |
 
-## <a name="january-2019"></a>2019. január
+## <a name="january-2019"></a>2019\. január
 
 ### <a name="service-improvements"></a>Szolgáltatás fejlesztései
 
@@ -76,7 +76,7 @@ Az Azure SQL DW használata az azonosított, erősítse meg, amely a kiadási d�
 |Egyik sem | |
 | | |
 
-## <a name="december-2018"></a>2018. december
+## <a name="december-2018"></a>2018\. december
 
 ### <a name="service-improvements"></a>Szolgáltatás fejlesztései
 
@@ -88,7 +88,7 @@ Az Azure SQL DW használata az azonosított, erősítse meg, amely a kiadási d�
 |**Oszlopcentrikus háttér egyesítése**|Alapértelmezés szerint az Azure SQL Data Warehouse (Azure SQL DW) adatokat tárol Oszlopalapú formátum nevű micro partícióval rendelkező [naplóbájtot](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md). Egyes esetekben memória miatt indexnél korlátozza a build vagy az adatok betöltési idő, előfordulhat, hogy tömöríti a naplóbájtot kevesebb mint 1 millió sor optimális mérete. Törlések miatt is válnak Naplóbájtot töredezett. Kis- és töredezett naplóbájtot a nagyobb memóriát, valamint a nem elég hatékony lekérdezés-végrehajtás eredményez. Ezzel a kiadással az Azure SQL DW a oszlopcentrikus háttér-karbantartási feladat egyesíti a kis tömörített naplóbájtot jobban memória, és a lekérdezés végrehajtása gyorsabb, nagyobb naplóbájtot létrehozásához.
 | | |
 
-## <a name="october-2018"></a>2018. október
+## <a name="october-2018"></a>2018\. október
 
 ### <a name="service-improvements"></a>Szolgáltatás fejlesztései
 

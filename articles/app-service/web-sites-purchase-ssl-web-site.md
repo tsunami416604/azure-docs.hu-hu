@@ -16,10 +16,10 @@ ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 0febb8fadd973b67ed232d6094d85894fb383d14
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65955709"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Vásárlása és konfigurálása az Azure App Service SSL-tanúsítvány
@@ -50,7 +50,7 @@ Használja az alábbi táblázat segítségével konfigurálja a tanúsítványt
 | Beállítás | Leírás |
 |-|-|
 | Name (Név) | Az App Service-tanúsítvány rövid nevét. |
-| Csupasz tartománynevet tartalmazó állomásnév | Ha megadja a gyökértartomány, kap egy tanúsítványt, amely biztonságossá teszi a *mindkét* a legfelső szintű tartomány és a `www` altartomány. Biztonságos bármely altartomány csak, adja meg itt az altartomány teljesen minősített tartományneve (például `mysubdomain.contoso.com`). |
+| Naked Domain Host Name | Ha megadja a gyökértartomány, kap egy tanúsítványt, amely biztonságossá teszi a *mindkét* a legfelső szintű tartomány és a `www` altartomány. Biztonságos bármely altartomány csak, adja meg itt az altartomány teljesen minősített tartományneve (például `mysubdomain.contoso.com`). |
 | Előfizetés | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
 | Erőforráscsoport | Az erőforráscsoport, amely tartalmazza a tanúsítványt. Egy új erőforráscsoport használata, vagy válassza ki ugyanazt az erőforráscsoportot, az App Service-alkalmazást. |
 | Tanúsítványváltozat | Határozza meg a tanúsítványt szeretne létrehozni, hogy egy normál tanúsítványt, vagy [helyettesítő tanúsítvány](https://wikipedia.org/wiki/Wildcard_certificate). |
@@ -75,7 +75,7 @@ Az a **Key Vault-állapot** kattintson **Key Vault-tárház** hozzon létre egy 
 | Location egység | Válassza ki ugyanazt a helyet, az App Service-alkalmazást. |
 | Tarifacsomag | További információ: [Azure Key Vault díjszabását](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Hozzáférési szabályzatok| Határozza meg az alkalmazások és az engedélyezett hozzáférést a tároló-erőforrások. Beállíthatja, később ismertető [több alkalmazások hozzáférést key vault](../key-vault/key-vault-group-permissions-for-apps.md). |
-| Virtuális hálózati hozzáférés | Tároló hozzáférés korlátozása az egyes Azure virtuális hálózatokhoz. Beállíthatja, később ismertető [konfigurálása az Azure Key Vault tűzfalak és virtuális hálózatok](../key-vault/key-vault-network-security.md) |
+| Virtual Network Access | Tároló hozzáférés korlátozása az egyes Azure virtuális hálózatokhoz. Beállíthatja, később ismertető [konfigurálása az Azure Key Vault tűzfalak és virtuális hálózatok](../key-vault/key-vault-network-security.md) |
 
 Miután kiválasztotta a tárolót, zárja be a **Key Vault-tárház** lapot. A **Store** beállítás sikeres végrehajtás esetén egy zöld pipának kell megjelennie. Ne zárja be az oldal a következő lépéshez.
 
@@ -97,9 +97,9 @@ Válassza ki **App Service-ellenőrzés**. Mivel a webalkalmazás már leképezv
 
 ## <a name="bind-certificate-to-app"></a>Tanúsítvány kötése az alkalmazáshoz
 
-Az a  **[az Azure portal](https://portal.azure.com/)**, a bal oldali menüben válassza ki a **App Services** > **\<your_ alkalmazás >**.
+Az a  **[az Azure portal](https://portal.azure.com/)** , a bal oldali menüben válassza ki a **App Services** >  **\<your_ alkalmazás >** .
 
-Az alkalmazás a bal oldali navigációs sávján válassza **SSL-beállítások** > **privát tanúsítványokat (.pfx)** > **App Service-tanúsítvány importálása**.
+Az alkalmazás a bal oldali navigációs sávján válassza **SSL-beállítások** > **privát tanúsítványokat (.pfx)**  > **App Service-tanúsítvány importálása**.
 
 ![Helyezze be a tanúsítvány importálása képe](./media/app-service-web-purchase-ssl-web-site/ImportCertificate.png)
 
@@ -113,9 +113,9 @@ Használja az alábbi táblázat segítségével konfigurálja a kötés a **SSL
 
 | Beállítás | Leírás |
 |-|-|
-| Állomásnév | Az SSL-kötés hozzáadása a tartomány neve. |
+| Gazdanév | Az SSL-kötés hozzáadása a tartomány neve. |
 | Privát tanúsítvány ujjlenyomata | Kösse a tanúsítványt. |
-| SSL-típus | <ul><li>**SNI SSL** – több SNI-alapú SSL-kötés adható hozzá. Ez a beállítás lehetővé teszi, hogy több SSL-tanúsítvány biztosítson védelmet több tartomány számára ugyanazon az IP-címen. A legtöbb modern böngésző (beleértve az Internet Explorert, a Chrome-ot, a Firefox-ot és az Operát) támogatja az SNI-t (átfogóbb böngészőtámogatási információkat a [Kiszolgálónév jelzése](https://wikipedia.org/wiki/Server_Name_Indication) című szakaszban talál).</li><li>**IP-based SSL** (IP-alapú SSL) – Csak egy IP-alapú SSL-kötés adható hozzá. Ez a beállítás csak egy SSL-tanúsítványnak engedélyezi egy dedikált nyilvános IP-cím védelmét. Miután konfigurálta a kötés, kövesse a [a rekord újbóli leképezése az IP SSL-hez](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl). </li></ul> |
+| SSL Type | <ul><li>**SNI SSL** – több SNI-alapú SSL-kötés adható hozzá. Ez a beállítás lehetővé teszi, hogy több SSL-tanúsítvány biztosítson védelmet több tartomány számára ugyanazon az IP-címen. A legtöbb modern böngésző (beleértve az Internet Explorert, a Chrome-ot, a Firefox-ot és az Operát) támogatja az SNI-t (átfogóbb böngészőtámogatási információkat a [Kiszolgálónév jelzése](https://wikipedia.org/wiki/Server_Name_Indication) című szakaszban talál).</li><li>**IP-based SSL** (IP-alapú SSL) – Csak egy IP-alapú SSL-kötés adható hozzá. Ez a beállítás csak egy SSL-tanúsítványnak engedélyezi egy dedikált nyilvános IP-cím védelmét. Miután konfigurálta a kötés, kövesse a [a rekord újbóli leképezése az IP SSL-hez](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl). </li></ul> |
 
 ## <a name="verify-https-access"></a>HTTPS-hozzáférés ellenőrzése
 
@@ -161,7 +161,7 @@ A megújítási művelet befejeződése után kattintson a **szinkronizálási**
 
 [!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
-## <a name="more-resources"></a>További erőforrások
+## <a name="more-resources"></a>További források
 
 * [HTTPS kényszerítése](app-service-web-tutorial-custom-ssl.md#enforce-https)
 * [A TLS 1.1/1.2 kényszerítése](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions)

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/08/2017
 ms.author: tomfitz
 ms.openlocfilehash: 5ed3a0a57dad61a5fe783790eba4cb89ce19c660
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66128653"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok numerikus függvények
@@ -40,7 +40,7 @@ A Resource Manager az alábbi funkciókat biztosít az egész számok használat
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="add"></a>hozzáadás
+## <a name="add"></a>add
 `add(operand1, operand2)`
 
 A két megadott egész számoknak az összegét adja vissza.
@@ -228,7 +228,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="float" />
 
-## <a name="float"></a>lebegőpontos
+## <a name="float"></a>float
 `float(arg1)`
 
 Konvertálja az értéket egy lebegőpontos szám. Ez a függvény csak amikor egyéni paraméterek átadása egy alkalmazást, például a logikai alkalmazás használja.
@@ -322,7 +322,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="max" />
 
-## <a name="max"></a>max.
+## <a name="max"></a>max
 `max (arg1)`
 
 A maximális érték egész számok tömbje vagy egészek vesszővel elválasztott listáját adja vissza.
@@ -504,7 +504,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| modResult | Int | 1. |
+| modResult | Int | 1 |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
@@ -591,7 +591,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="sub" />
 
-## <a name="sub"></a>Sub
+## <a name="sub"></a>sub
 `sub(operand1, operand2)`
 
 A két megadott egész szám a a kivonási adja vissza.

@@ -7,10 +7,10 @@ ms.date: 4/9/2019
 ms.topic: article
 ms.service: security
 ms.openlocfilehash: 017a26d5672f666d4d8eaf629a0f53fe0cfe517f
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963229"
 ---
 # <a name="secure-azure-computing-architecture"></a>Az Azure számítástechnikai architektúrájának védelme
@@ -157,7 +157,7 @@ Ez az architektúra azt javasoljuk, mert megfelelnek-e SCCA követelményeknek. 
             - Ez az alhálózat, virtuális gépek és szolgáltatások VDMS használt telepítve vannak.
         - Nem megbízható és megbízható alhálózatok
             - Ezen alhálózatok, ahol a virtuális készülékek üzembe vannak helyezve.
-        - Átjáróalhálózat
+        - Átjáró alhálózata
             - Ez az alhálózat, ahol az ExpressRoute-átjárót telepíti.
 - Felügyeleti helyettesítő be virtuális gépek
     - A környezet sávon kívüli felügyelethez használhatók.
@@ -169,7 +169,7 @@ Ez az architektúra azt javasoljuk, mert megfelelnek-e SCCA követelményeknek. 
     - Automation során alkalmazott, ezek táblák alagút kényszerítése minden forgalmat irányítson a virtuális készüléken keresztül.
 - Azure-terheléselosztók – Standard Termékváltozat
     - Adatforgalom elosztását a berendezések használhatók.
-- Hálózati biztonsági csoportok
+- Network security groups (Hálózati biztonsági csoportok)
     - Szabályozhatja, hogy mely típusú forgalom bizonyos végpontokra továbbítható használhatók.
 
 
