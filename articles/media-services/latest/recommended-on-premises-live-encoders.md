@@ -6,15 +6,15 @@ keywords: kódolás; kódolók; adathordozó
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 01/17/2019
+ms.date: 06/12/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 50b22cefccf620d7b79202a5c432e2e6a4e3e3be
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 1bede8ff7c33988a4e11a84d3a51ca098a608f33
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65550055"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055277"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Ajánlott élő streamelési kódolók
 
@@ -24,7 +24,7 @@ Az Azure Media Services egy [élő esemény](https://docs.microsoft.com/rest/api
 
   > [!NOTE]
   > Valamely áteresztő módszer használata a leggazdaságosabb élő közvetítést végezni.
-
+ 
 * A helyszíni élő kódoló egy egyféle sávszélességű adatfolyamot küld az élő esemény, amely engedélyezve van a valós idejű kódolás a Media Services a következő formátumok egyikében: RTMP vagy Smooth Streaming (darabolt MP4). Az élő esemény végez a bejövő egyszeres átviteli sebességű streamet, és többféle sávszélességű (adaptív) video-adatfolyamot élő kódolás.
 
 Valós idejű kódolás a Media Services használatával kapcsolatos részletes információkért lásd: [élő adások online közvetítése a Media Services v3](live-streaming-overview.md).
@@ -127,7 +127,7 @@ Kövesse a lépéseket, mint a [átmenő élő esemény ellenőrzési](#pass-thr
 
 ### <a name="email-your-recorded-settings"></a>Az e-mail a rögzített beállítások
 
-Végül az e-mail a rögzített beállítások és archív paramétereket, az Azure Media Services élő amsstreaming@microsoft.com , egy értesítés, hogy az összes önkiszolgáló ellenőrzési ellenőrzések. Is bármely követések kapcsolattartási adatait. Az Azure Media Services team, ha bármilyen kérdése van, erről a folyamatról fordulnia.
+Végül az e-mail a rögzített beállítások és archív paramétereket, az Azure Media Services élő amslived@microsoft.com , egy értesítés, hogy az összes önkiszolgáló ellenőrzési ellenőrzések. Is bármely követések kapcsolattartási adatait. Az Azure Media Services team, ha bármilyen kérdése van, erről a folyamatról fordulnia.
 
 ## <a name="next-steps"></a>További lépések
 

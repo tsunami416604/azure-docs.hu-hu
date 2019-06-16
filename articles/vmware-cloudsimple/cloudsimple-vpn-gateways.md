@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9b2630614e549181f4dd2f4e79871c4594d09201
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: c9689a468e8784eb4ec3590011e02a37d92d6b9c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496871"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083402"
 ---
 # <a name="vpn-gateways-overview"></a>VPN-átjárók áttekintése
 
@@ -45,25 +45,25 @@ Site-to-site VPN-kapcsolat biztonságos kapcsolatot létesíteni a következő a
 
 Site-to-site VPN-kapcsolat biztonságos kapcsolatot létesíteni a következő alapértelmezett titkosítási paramétereket használja.  Ha a helyszíni VPN-eszköz kapcsolatot hoz létre, az alábbi paramétereket a helyszíni VPN-átjáró által támogatott bármelyikét használhatja.
 
-#### <a name="phase-1-proposals"></a>1. fázis javaslatok
+#### <a name="phase-1-proposals"></a>1\. fázis javaslatok
 
 | Paraméter | Javaslat: 1 | Javaslat 2 | Javaslat 3 |
 |-----------|------------|------------|------------|
 | IKE verziószám | IKEv1 | IKEv1 | IKEv1 |
 | Encryption | AES 128 | AES 256 | AES 256 |
 | Kivonatoló algoritmus| SHA 256 | SHA 256 | SHA 1 |
-| Diffie-Hellman csoport (DH-csoport) | 1 | 1 | 1 |
+| Diffie-Hellman csoport (DH-csoport) | 2 | 2 | 2 |
 | Élettartam | 28 800 másodperc | 28 800 másodperc | 28 800 másodperc |
 | Adatok mérete | 4 GB | 4 GB | 4 GB |
 
 
-#### <a name="phase-2-proposals"></a>2. fázis javaslatok 
+#### <a name="phase-2-proposals"></a>2\. fázis javaslatok 
 
 | Paraméter | Javaslat: 1 | Javaslat 2 | Javaslat 3 |
 |-----------|------------|------------|------------|
 | Encryption | AES 128 | AES 256 | AES 256 |
 | Kivonatoló algoritmus| SHA 256 | SHA 256 | SHA 1 |
-| Tökéletes előre csoport-sérülés utáni Titkosságvédelmi (PFS-csoport) | Egyik sem | Nincsenek | Egyik sem |
+| Tökéletes előre csoport-sérülés utáni Titkosságvédelmi (PFS-csoport) | None | Nincsenek | None |
 | Élettartam | 1,800 másodperc | 1,800 másodperc | 1,800 másodperc |
 | Adatok mérete | 4 GB | 4 GB | 4 GB |
 

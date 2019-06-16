@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
 ms.openlocfilehash: 12eea032c37c8d737ae004d622b72536195c4444
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65977570"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Az Azure monitorozási ügynökök 
@@ -25,7 +25,7 @@ A Microsoft Azure több módszert is biztosít a különböző típusú adatok g
 
 * Az Azure Diagnostics bővítmény
 * Log Analytics-ügynököket a Linux és Windows
-* Dependency Agent
+* Függőségi ügynök
 
 Ez a cikk ahhoz, hogy melyik támogatni fogja az IT service management vagy általános a figyelési követelmények meghatározása őket, és azok képességeinek közötti különbségeket mutatja be.  
 
@@ -37,7 +37,7 @@ Ha szeretné, gyűjtése:
 * Előre definiált operációs rendszer teljesítményszámlálók és az eseménynaplókat, vagy amelyek gyűjtésére is megadhat. 
 * Összes kérelem és/vagy egy IIS-webkiszolgálón a sikertelen kérelmek
 * .NET-alkalmazás nyomkövetési kimeneti naplók
-* Windows esemény-nyomkövetés (ETW) eseményei 
+* Esemény-nyomkövetés Windows (ETW)-események 
 * Alkalmazásnapló-események gyűjtése a syslog  
 * összeomlási memóriaképek, 
 
@@ -69,7 +69,7 @@ Korábban, a több Azure-szolgáltatások kötegelve is a *Operations Management
 * Konfigurációs változások követése a [Azure Automation Change Tracking and Inventory](../../automation/change-tracking.md).
 * Azure-szolgáltatások például [Application Insights](https://docs.microsoft.com/azure/application-insights/) és [az Azure Security Center](https://docs.microsoft.com/azure/security-center/), amelyek natív módon tárolja az adatokat közvetlenül a Log Analytics.  
 
-## <a name="dependency-agent"></a>Dependency Agent
+## <a name="dependency-agent"></a>Függőségi ügynök
 A függőségi ügynök fejlesztette ki a Service Map megoldást, amely eredetileg nem célja a Microsoft részeként. [A Service Map](../insights/service-map.md) és [-beli virtuális gépek az Azure Monitor](../insights/vminsights-overview.md) használatához a függőségi ügynököt Windows és Linux rendszerű virtuális gépek és a virtuális futó folyamatok detektált adatok gyűjtése a Log Analytics-ügynök integrálható gép és a külső folyamatok függőségeit. Ez tárolja ezeket az adatokat a Log Analytics-munkaterületen, és megjeleníti a felderített összekapcsolt összetevőket.
 
 Ezeket az ügynököket a virtuális gép figyelése valamilyen kombinációját szükség lehet. Az ügynökök is telepíthető egymás mellett az Azure-bővítmény, azonban a Linux, a Log Analytics-ügynököket *kell* telepíthető telepítési ellenkező esetben az első sikertelen lesz. 

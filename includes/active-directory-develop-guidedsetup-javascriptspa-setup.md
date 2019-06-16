@@ -14,49 +14,49 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: a00bc7a05af9e329494a11f9bee444827cbebf38
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 5ce0f18c1ec7a0fcb6465ab20e774976552687f1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121802"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133408"
 ---
-## <a name="setting-up-your-web-server-or-project"></a>A webalkalmazás-kiszolgáló vagy a projekt beállítása
+## <a name="set-up-your-web-server-or-project"></a>A webalkalmazás-kiszolgáló vagy a projekt beállítása
 
-> Töltse le a mintaprojektet ehelyett inkább?
-> - [Töltse le a projektfájlok](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip) futtathat helyi webkiszolgálót, például a csomópont
+> Töltse le a mintaprojektet ehelyett inkább? A következő lehetőségek közül választhat:
+> 
+> - A projekt futtathat helyi webkiszolgálót Node.js, például [letölteni a projektfájlokat](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip).
 >
-> vagy
-> - (Nem kötelező) [Töltse le a Visual Studio-projekt](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip) IIS kiszolgáló futtatásához
+> - (Nem kötelező) Futtassa a projektet az IIS-kiszolgálóval való [töltse le a Visual Studio-projekt](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip).
 >
-> És folytassa a [konfigurációs lépés](#register-your-application) a kódminta konfigurálása előtt futtassa a jelentést.
+> És ezt követően a kód minta konfigurálásához, végrehajtása előtt ugorjon a [konfigurációs lépés](#register-your-application).
 
 ## <a name="prerequisites"></a>Előfeltételek
-Például egy helyi webkiszolgálót [Node.js](https://nodejs.org/en/download/), [.NET Core](https://www.microsoft.com/net/core), vagy az IIS Express integrációs [Visual Studio 2017](https://www.visualstudio.com/downloads/) ebben az oktatóanyagban futtatásához szükséges.
 
-Ha a Node.js használatával futtassa a projektet, telepítse az integrált fejlesztői Környezetig például [Visual Studio Code](https://code.visualstudio.com/download) szerkesztése a projektfájlokat.
+* Ez az oktatóanyag futtatásához kell egy helyi webkiszolgálót, például [Node.js](https://nodejs.org/en/download/), [.NET Core](https://www.microsoft.com/net/core), vagy az IIS Express integrációs [Visual Studio 2017](https://www.visualstudio.com/downloads/).
 
-Az útmutató utasításainak Node.js és a Visual Studio 2017 alapulnak, de nyugodtan használhatja a fejlesztői környezetben vagy webalkalmazás-kiszolgáló.
+* Ha a Node.js használatával futtassa a projektet, telepítenek egy integrált fejlesztőkörnyezet (IDE), például [Visual Studio Code](https://code.visualstudio.com/download), szerkesztheti a projektfájlokat.
+
+* Ez az útmutató utasításait a Node.js és a Visual Studio 2017 alapulnak, de használhatja a fejlesztői környezetben vagy webalkalmazás-kiszolgáló.
 
 ## <a name="create-your-project"></a>A projekt létrehozása
 
-> ### <a name="option-1-node-other-web-servers"></a>Option 1: Csomópont / egyéb webkiszolgáló
-> Győződjön meg arról, hogy telepítve van-e [Node.js](https://nodejs.org/en/download/), hajtsa végre az alábbi lépést:
+> ### <a name="option-1-nodejs-or-other-web-servers"></a>Option 1: NODE.js vagy más webes kiszolgálókhoz
+> Győződjön meg arról, hogy telepítve van-e [Node.js](https://nodejs.org/en/download/), majd tegye a következőket:
 > - Hozzon létre egy mappát az alkalmazások üzemeltetéséhez.
-
-<p><!-- -->
-
+>
 > ### <a name="option-2-visual-studio"></a>Option 2: Visual Studio
-> Ha Visual Studiót használja, és a egy új projektet hoz létre, kövesse az alábbi lépéseket egy új Visual Studio-megoldás létrehozása:
-> 1.    A Visual Studióban:  **Fájl > Új > Projekt**
-> 2.    A **Visual C# \Web**válassza **ASP.NET Web Application (.NET-keretrendszer)**
-> 3.    Adja meg az alkalmazás nevét, és válassza ki **OK**
-> 4.    A **új ASP.NET-webalkalmazás**válassza **üres**
+> Ha a Visual Studio használata, és a egy új projektet hoz létre, tegye a következőket:
+> 1. A Visual Studióban válassza ki a **fájl** > **új** > **projekt**.
+> 1. A **Visual C#\Web** területen válassza az **ASP.NET Web Application (.NET Framework)** (ASP.NET-webalkalmazás (.NET-keretrendszer)) lehetőséget.
+> 1. Adja meg az alkalmazás nevét, és válassza **OK**.
+> 1. A **új ASP.NET-webalkalmazás**válassza **üres**.
 
-## <a name="create-your-single-page-applications-ui"></a>Az egyoldalas alkalmazás felhasználói felület létrehozása
-1. Hozzon létre egy `index.html` fájlt a JavaScript SPA-ALKALMAZÁSOKBA. Ha a Visual Studiót használja, válassza ki a projektet (projekt gyökérmappájában), kattintson a jobb gombbal, és válassza ki: **Adjon hozzá > Új elem > HTML-oldalt** , és nevezze el index.html.
+## <a name="create-the-spa-ui"></a>Az SPA felhasználói felület létrehozása
+1. Hozzon létre egy *index.html* fájlt a JavaScript SPA-ALKALMAZÁSOKBA. Ha Visual Studio használata esetén válassza a project (projekt gyökérmappájában), kattintson a jobb gombbal, majd válassza **Hozzáadás** > **új elem** > **HTML-oldalt**, és a fájl neve *index.html*.
 
-2. Adja hozzá a következő kódot a oldalon:
+1. Az a *index.html* fájlt, adja hozzá a következő kódot:
+
    ```html
    <!DOCTYPE html>
    <html>
@@ -78,4 +78,4 @@ Az útmutató utasításainak Node.js és a Visual Studio 2017 alapulnak, de nyu
    ```
 
    > [!TIP]
-   > A fenti a parancsfájlt az MSAL.js verzióját a legújabb elérhető verzió alatt lecserélheti [MSAL.js kiadások](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases).
+   > Az előző szkriptben MSAL.js verzióját a legújabb elérhető verzió alatt lecserélheti [MSAL.js kiadások](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases).

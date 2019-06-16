@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb9a6f162a10408469669cf40b29efc6d2903944
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 612bdd2a5813237f05e9a30a0c90c3b643ece4b5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546045"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111442"
 ---
 # <a name="authentication-flows"></a>Hitelesítési folyamatok
 
@@ -51,7 +51,7 @@ További információ az MSAL.NET használatával interaktív módon beszerezni 
 
 Interaktív hívás MSAL.js további információkért olvassa el a [MSAL.js interaktív kérelmek viselkedés kérése](msal-js-prompt-behavior.md)
 
-## <a name="implicit-grant"></a>Implicit
+## <a name="implicit-grant"></a>Implicit engedélyezés
 
 Az MSAL támogatja a [OAuth 2 implicit adja meg a folyamat](v2-oauth2-implicit-grant-flow.md), amely lehetővé teszi az alkalmazásnak, hogy tokenekhez a Microsoft identity platform háttérkiszolgálóhoz végrehajtása nélkül hitelesítő adatok. Ez lehetővé teszi az alkalmazásnak, hogy jelentkezzen be a felhasználói munkamenet fenntartásához és tokenekhez más webes API-k mindezt az ügyfelet JavaScript-kódot.
 
@@ -61,7 +61,7 @@ Számos modern webalkalmazások épülnek, mint a JavaScript- vagy például az 
 
 A hitelesítési folyamat nem tartalmazza az alkalmazás-forgatókönyvek használatával Electron és a React-natív, többplatformos JavaScript keretrendszereket használó, mivel igényelnek további képességek a natív platformokhoz való együttműködéshez szükséges.
 
-## <a name="authorization-code"></a>Engedélyezési kód
+## <a name="authorization-code"></a>engedélyezési kód
 MSAL támogatja a [OAuth 2 engedélyezési kód](v2-oauth2-auth-code-flow.md), amelyek használhatók az alkalmazást, amely egy eszközön a védett erőforrások, például a webes API-k eléréséhez. Ez lehetővé teszi, hogy jelentkezzen be, és az API eléréséhez a mobil- és asztali alkalmazásokhoz. 
 
 Felhasználói bejelentkeznek a webes alkalmazások (webhelyek), amikor a webalkalmazás kap egy engedélyezési kód.  Az engedélyezési kódot a webes API-k hívásához egy token beszerzéséhez válthatók be. Az ASP.NET / ASP.NET core web apps szolgáltatásban, az egyetlen célja `AcquireTokenByAuthorizationCode` egy token hozzáadása az tokengyorsítótárral, úgy, hogy ezután használható az alkalmazás (általában a vezérlő), amely egyszerűen lekérheti az API-t a token által `AcquireTokenSilent`.
@@ -124,13 +124,13 @@ Támogatja az MSAL az [OAuth 2 eszköz kódfolyamat](v2-oauth2-device-code.md), 
 
 Az alkalmazás az eszköz hitelesítésikód-folyamata segítségével szerzi be a tokenek kifejezetten arra tervezték, ezek az eszközök/os kétlépéses folyamat. Ilyen alkalmazás például olyan iOT-eszközök vagy a parancssori eszközök (CLI) rendszeren futó alkalmazások. 
 
-![Eszközkód folyamata](media/msal-authentication-flows/device-code.png)
+![Eszköz kódfolyamat](media/msal-authentication-flows/device-code.png)
 
 1. Felhasználói hitelesítés szükség, amikor az alkalmazás egy kódot biztosít, és megkérdezi a felhasználót, nyissa meg egy URL-címet (például egy internethez csatlakozó okostelefon) egy másik eszköz használatával (például https://microsoft.com/devicelogin), ahol a felhasználó felszólítást kap a kódot. Hogy megtörtént, a weblap irányítja a felhasználót egy normál hitelesítési módszer, beleértve a beleegyezést kérő és a multi-factor Authentication hitelesítés, amennyiben szükséges keresztül.
 
 2. Sikeres hitelesítést követően a parancssori alkalmazást fog kapni a szükséges jogkivonatok, biztonsági csatornán keresztül történik, és fogja használni, a szükséges API-hívások végrehajtásához.
 
-### <a name="constraints"></a>Megkötések
+### <a name="constraints"></a>Korlátozások
 
 - Eszköz kódfolyamat csak nyilvános ügyfélalkalmazások számára érhető el.
 - Amikor hozhat létre, amely a nyilvános ügyfélalkalmazás kell átadni a szolgáltató:
@@ -146,7 +146,7 @@ Az MSAL integrált Windows-hitelesítés (IWA) támogatja az asztali, vagy egy t
 1. Integrált Windows-hitelesítést használó tokenbeolvasás.
 2. Használja a jogkivonatot, hogy az erőforrás kéréseket.
 
-### <a name="constraints"></a>Megkötések
+### <a name="constraints"></a>Korlátozások
 
 Támogatja a IWA **az összevont** csak a felhasználókra.  A felhasználók az Active Directoryban létrehozott, és az Azure Active Directory által támogatott. A felhasználók közvetlenül az Azure AD-ben nélkül AD biztonsági hozott létre (**felügyelt** felhasználók) a hitelesítési folyamat nem használható. Ez a korlátozás nem befolyásolja a [felhasználónév/jelszó folyamat](#usernamepassword).
 
@@ -190,7 +190,7 @@ Ez az beállításának kompatibilis.
 - felhasználók, akik kell tennie a többtényezős hitelesítés nem lesz lehetősége bejelentkezni (mivel nem lett a beavatkozás nélküli)
 - Felhasználók nem tudják az egyszeri bejelentkezés
 
-### <a name="constraints"></a>Megkötések
+### <a name="constraints"></a>Korlátozások
 
 Kivéve a [integrált Windows-hitelesítés megkötések](#integrated-windows-authentication), a következő korlátozások is érvényesek:
 

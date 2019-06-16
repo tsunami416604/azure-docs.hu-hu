@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 0beac64ceb0bbf729d2f6d0f6a0ca8d5af499f42
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1c8bdd0ca715b6dfd00dc9876a074c61711990af
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725433"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67117810"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Az Azure HDInsight kibocsátási megjegyzései
 
@@ -22,7 +22,7 @@ Ez a cikk a kapcsolatos információkat nyújt a **legutóbbi** Azure HDInsight 
 > [!IMPORTANT]  
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információkért lásd: [HDInsight versioning cikk](hdinsight-component-versioning.md).
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az Azure HDInsight a legnépszerűbb szolgáltatások nagyvállalati ügyfelek körében a nyílt forráskódú Apache Spark és Apache Hadoop analytics az Azure-ban egyike.
 
@@ -45,7 +45,7 @@ Az összes HDInsight 4.0 összetevők hivatalos Apache verzióját az alábbi t�
 - Apache Pig 0.16.0
 - Az Apache Ranger 0.7.0
 - Az Apache csúszka 0.92.0
-- Apache Spark 2.3.1
+- Apache Spark 2.3.2
 - Apache Sqoop 1.4.7
 - Az Apache TEZ 0.9.1
 - Az Apache Zeppelin 0.8.0

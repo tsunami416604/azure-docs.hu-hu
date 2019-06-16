@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8ff026743ccda0a47ce176db51dbc7913376f46
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 8bc292be68879a608df6662418bb9f59c758f660
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65987995"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106318"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bersin"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Bersin
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Bersin konfigurálásához hozzá kell Bersin a kata
 
 **A katalógus Bersin adhat hozzá**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -189,7 +189,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű Bersin hoz létre. Együttműködik a [Bersin támogatási csapatának](mailto:USBersinServiceClient@deloitte.com) a felhasználók hozzáadása a Bersin platform vagy a tartományban, amelyhez hozzá kell adni egy engedélyezési listája a Bersin platform. Ha a tartomány a csapata által hozzáadott, a Bersin platform automatikusan kiépítve felhasználók. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

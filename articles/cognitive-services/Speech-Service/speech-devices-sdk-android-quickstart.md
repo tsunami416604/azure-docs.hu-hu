@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: bd0160073898a5a83af2e7b2bba2dba007c04513
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 5bebdd77afb9e9c77624ea4266ca217567dbf143
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66425662"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072390"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>Gyors útmutató: A beszédfelismerés Devices SDK-val mintaalkalmazás futtatásának androidon
 
@@ -37,7 +37,7 @@ A beszédfelismerés eszközök SDK használata előtt kell:
 
 * Az első egy [beszédszolgáltatások Azure-előfizetés kulcsa](get-started.md)
 
-* Ha szeretné használni a beszélgetés Beszédátírási kell használnia egy [. kör alakú mikrofon eszköz](get-speech-devices-sdk.md) és a szolgáltatás jelenleg csak az "en-US" és "zh-CN" régiókban, "centralus" és "eastasia" érhető el. Ezen beszélgetés Beszédátírási használandó régiók egyikében speech kulccsal kell rendelkeznie.
+* Ha szeretné használni a beszélgetés Beszédátírási kell használnia egy [. kör alakú mikrofon eszköz](get-speech-devices-sdk.md) , és ez a funkció jelenleg csak az "en-US" és "zh-CN" régiókban, "centralus" és "eastasia" érhető el. Ezen beszélgetés Beszédátírási használandó régiók egyikében speech kulccsal kell rendelkeznie.
 
 * Ha azt tervezi, használja a beszédszolgáltatások azonosítása céljából leképezések (műveletek) a felhasználó utterances, szüksége lesz egy [intelligens hangfelismerési szolgáltatás (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) előfizetés. A LUIS és szándékfelismerés kapcsolatos további tudnivalókért lásd: [ismeri fel a LUIS, beszédfelismerés leképezések C# ](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp).
 

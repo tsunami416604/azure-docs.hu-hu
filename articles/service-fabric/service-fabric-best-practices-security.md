@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 69e51f23980aa1d4225f2e5062470f94e5ca9008
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 4888ea8473c50b8774add7a930612c585fc9cbde
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66753786"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074345"
 ---
 # <a name="azure-service-fabric-security"></a>Az Azure Service Fabric biztonsága 
 
@@ -205,7 +205,13 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 [Azt javasoljuk, hogy végrehajtja-e egy iparági szabványnak megfelelő konfigurációt, amely széles körben ismert és tesztelt, például a biztonsági előírások alapterv létrehozása saját maga helyett](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines); ezek a virtuális gép kiépítési beállítás Méretezési csoportokat, hogy Azure Desired State Configuration (DSC) bővítmény kezelő, a virtuális gépek konfigurálni, mivel azok online állapotba kerül, így az üzemi célú szoftverek futnak.
 
 ## <a name="azure-firewall"></a>Azure Firewall
-[Az Azure tűzfal az egy felügyelt, felhőalapú és hálózati biztonsági szolgáltatás, amely védelmet nyújt az Azure Virtual Network-erőforrások. Teljes állapot-nyilvántartó tűzfal beépített magas rendelkezésre állás és méretezhetőség korlátlan felhőalapú szolgáltatásként is. ](https://docs.microsoft.com/azure/firewall/overview); Ez lehetővé teszi a kimenő HTTP-vagy Https forgalmat egy megadott listán szereplő teljes tartománynevek (FQDN) például a helyettesítő karakterek használata korlátozza. Ehhez a szolgáltatáshoz nem szükséges SSL-lezárás. A javasolt, hogy kihasználhatja [Azure tűzfal FQDN címkék](https://docs.microsoft.com/azure/firewall/fqdn-tags) Windows-frissítések, és a Microsoft Windows Update hálózati forgalom engedélyezéséhez végpontjait a tűzfal is áthaladhat. [Üzembe helyezése sablon használatával Azure tűzfal](https://docs.microsoft.com/azure/firewall/deploy-template) Microsoft.Network/azureFirewalls erőforrás Sablondefiníció egy minta biztosít. Két, a Service Fabric-alkalmazások közös tűzfalszabályok, hogy lehetővé tegyék a fürt hálózati kommunikálni * jövőben a Microsoft, és a * servicefabric.azure.com; Windows-frissítéseket és a Service Fabric számítási virtuálisgép-bővítmény kód lekérni.
+[Az Azure tűzfal az egy felügyelt, felhőalapú és hálózati biztonsági szolgáltatás, amely védelmet nyújt az Azure Virtual Network-erőforrások. Teljes állapot-nyilvántartó tűzfal beépített magas rendelkezésre állás és méretezhetőség korlátlan felhőalapú szolgáltatásként is. ](https://docs.microsoft.com/azure/firewall/overview); Ez lehetővé teszi a kimenő HTTP-vagy Https forgalmat egy megadott listán szereplő teljes tartománynevek (FQDN) például a helyettesítő karakterek használata korlátozza. Ehhez a szolgáltatáshoz nem szükséges SSL-lezárás. A javasolt, hogy kihasználhatja [Azure tűzfal FQDN címkék](https://docs.microsoft.com/azure/firewall/fqdn-tags) Windows-frissítések, és a Microsoft Windows Update hálózati forgalom engedélyezéséhez végpontjait a tűzfal is áthaladhat. [Üzembe helyezése sablon használatával Azure tűzfal](https://docs.microsoft.com/azure/firewall/deploy-template) Microsoft.Network/azureFirewalls erőforrás Sablondefiníció egy minta biztosít. A Service Fabric-alkalmazások általános tűzfalszabályokat, hogy lehetővé teszi az alábbiak a fürtök virtuális hálózat:
+
+- *download.microsoft.com
+- *servicefabric.azure.com
+- *.core.windows.net
+
+Ezek a tűzfal-szabályok az engedélyezett kimenő hálózati biztonsági csoportok, mint a virtuális hálózatból érkező engedélyezett célhelyek magában foglalja a ServiceFabric- és tárolási, egészítenek ki.
 
 ## <a name="tls-12"></a>A TLS 1.2
 [TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
@@ -243,6 +249,18 @@ Alapértelmezés szerint a Windows Defender víruskereső Windows Server 2016 te
 
 > [!NOTE]
 > Tekintse meg a kártevőirtó dokumentációjában a konfigurációs szabályok, ha nem használja a Windows Defender. A Windows Defender Linux rendszeren nem támogatott.
+
+## <a name="platform-isolation"></a>Platform elkülönítés
+Alapértelmezés szerint a Service Fabric-alkalmazások hozzáférhetnek a Service Fabric-futtatókörnyezet, amely különböző képernyőkön az ügyfélrendszer: [környezeti változók](service-fabric-environment-variables-reference.md) Fájlelérési utak a gazdagépen a kérelemnek megfelelő mutató és Fabric fájlok, amely elfogadja a kérelmeket az alkalmazás-specifikus, és az ügyfél folyamatközi kommunikáció végpont Fabric vár használatával hitelesíti magát az alkalmazást, amely tanúsítványt. A az eshetőségre, hogy a szolgáltatást futtatja, maga nem megbízható kód, tanácsos a SF futtatókörnyezete – való hozzáférés letiltása, ha explicit módon szükséges. A futtatókörnyezet a hozzáférést az alkalmazásjegyzékben házirendek szakaszában az alábbi nyilatkozatot segítségével távolítja el: 
+
+```xml
+<ServiceManifestImport>
+    <Policies>
+        <ServiceFabricRuntimeAccessPolicy RemoveServiceFabricRuntimeAccess="true"/>
+    </Policies>
+</ServiceManifestImport>
+
+```
 
 ## <a name="next-steps"></a>További lépések
 

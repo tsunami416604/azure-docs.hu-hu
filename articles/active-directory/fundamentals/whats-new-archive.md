@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e55d11fa44aca65e2d4e487852bd242a4ba75a5f
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 43b5a051913ac762fe6b5a0ad11776ae911df864
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474180"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110366"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Újdonságok archívuma? az Azure Active Directoryban
 
@@ -34,7 +34,7 @@ A Mi új kibocsátási megjegyzések-információkat biztosít Önnek kapcsolatb
 
 ---
 
-## <a name="october-2018"></a>2018. október
+## <a name="october-2018"></a>2018\. október
 
 ### <a name="azure-ad-logs-now-work-with-azure-log-analytics-public-preview"></a>Az Azure AD naplókat mostantól működik az Azure Log Analytics (nyilvános előzetes verzió)
 
@@ -88,7 +88,7 @@ További információkért lásd: [egy egyéni tartománynév törlése](https:/
 
 ---
 
-## <a name="september-2018"></a>2018. szeptember
+## <a name="september-2018"></a>2018\. szeptember
  
 ### <a name="updated-administrator-role-permissions-for-dynamic-groups"></a>A dinamikus csoportok esetében frissültek a rendszergazdai szerepkör engedélyei
 
@@ -177,7 +177,7 @@ A dinamikus tagsági szabályok egyéni bővítménytulajdonságok használatáv
 
 ---
 
-### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Azure AD-beli alkalmazásalapú feltételes hozzáférés – a jóváhagyott ügyfélalkalmazások listája új alkalmazásokkal bővült
+### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Új jóváhagyott ügyfélalkalmazások az Azure AD alkalmazásalapú feltételes hozzáférés
 
 **Írja be:** Tervezett változtatás  
 **Szolgáltatás kategóriája:** Feltételes hozzáférés  
@@ -191,7 +191,7 @@ A következő alkalmazások olyan listájában [jóváhagyott ügyfélalkalmazá
 
 További információkért lásd:
 
-- [Az Azure AD, alkalmazásalapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
+- [Az Azure AD alkalmazásalapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
 
@@ -213,7 +213,7 @@ További információkért lásd: [a Windows 7, 8 és 8.1 jelszóátállítás e
 **Szolgáltatás kategóriája:** Hitelesítések (Bejelentkezések)  
 **A termék szolgáltatás:** Felhasználók hitelesítése
 
-2018. November 15., kezdve az Azure AD leáll, az alkalmazások korábban használt hitelesítési kódok elfogadásával. Ez a változás segítséget nyújt ahhoz, hogy az Azure AD az OAuth-specifikációnak megfelelően, és alkalmazza a v1 és v2 végpontokon.
+2018\. November 15., kezdve az Azure AD leáll, az alkalmazások korábban használt hitelesítési kódok elfogadásával. Ez a változás segítséget nyújt ahhoz, hogy az Azure AD az OAuth-specifikációnak megfelelően, és alkalmazza a v1 és v2 végpontokon.
 
 Ha az alkalmazás újból felhasználja a jogkivonatok lekérésére, több erőforrás-engedélyezési kódokat, javasoljuk, hogy a kód használatával egy frissítési jogkivonat lekérése, és a frissítési jogkivonat használatával más erőforrások kiegészítő jogkivonatok beszerzéséhez. Engedélyezési kód csak egyszer használhatók fel, de frissítési biztonsági jogkivonat használható többször több erőforrást. Egy alkalmazás, amely megpróbálja újból felhasználhatja a hitelesítési kódot az OAuth hitelesítésikód-folyamata során invalid_grant hiba lép fel.
 
@@ -271,7 +271,7 @@ A frissített nézet bekapcsolásához kattintson a **próbálja ki az új funkc
 
 ---
 
-## <a name="august-2018"></a>2018. augusztus
+## <a name="august-2018"></a>2018\. augusztus
 
 ### <a name="changes-to-azure-active-directory-ip-address-ranges"></a>Módosultak az Azure Active Directory-beli IP-címtartományok
 
@@ -297,7 +297,7 @@ Javasoljuk, hogy nem távolítja a régi IP-címtartományokat, mindaddig, amíg
 **Szolgáltatás kategóriája:** Hitelesítések (Bejelentkezések)  
 **A termék szolgáltatás:** Felhasználók hitelesítése
 
-2018. November 15., kezdve az Azure AD leáll, az alkalmazások korábban használt hitelesítési kódok elfogadásával. Ez a változás segítséget nyújt ahhoz, hogy az Azure AD az OAuth-specifikációnak megfelelően, és alkalmazza a v1 és v2 végpontokon.
+2018\. November 15., kezdve az Azure AD leáll, az alkalmazások korábban használt hitelesítési kódok elfogadásával. Ez a változás segítséget nyújt ahhoz, hogy az Azure AD az OAuth-specifikációnak megfelelően, és alkalmazza a v1 és v2 végpontokon.
 
 Ha az alkalmazás újból felhasználja a jogkivonatok lekérésére, több erőforrás-engedélyezési kódokat, javasoljuk, hogy a kód használatával egy frissítési jogkivonat lekérése, és a frissítési jogkivonat használatával más erőforrások kiegészítő jogkivonatok beszerzéséhez. Engedélyezési kód csak egyszer használhatók fel, de frissítési biztonsági jogkivonat használható többször több erőforrást. Egy alkalmazás, amely megpróbálja újból felhasználhatja a hitelesítési kódot az OAuth hitelesítésikód-folyamata során invalid_grant hiba lép fel.
 
@@ -395,7 +395,7 @@ Egy választható nyilvános előzetes kiadásról. Google összevonási kapcsol
 
 ---
 
-## <a name="july-2018"></a>2018. július
+## <a name="july-2018"></a>2018\. július
 
 ### <a name="improvements-to-azure-active-directory-email-notifications"></a>Az Azure Active Directory értesítő e-mailjeinek fejlesztései
 
@@ -439,7 +439,7 @@ Ezekkel az új képességekkel kapcsolatos további információkért lásd: blo
 
 ---
 
-### <a name="conditional-access-information-added-to-the-azure-ad-sign-ins-report"></a>Az Azure AD bejelentkezési jelentése feltételes hozzáférési adatokkal bővült
+### <a name="conditional-access-information-added-to-the-azure-ad-sign-ins-report"></a>Az Azure AD bejelentkezési jelentések hozzáadott feltételes hozzáférési adatok
 
 **Írja be:** Új szolgáltatás  
 **Szolgáltatás kategóriája:** Jelentéskészítés  
@@ -473,7 +473,7 @@ Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS integrá
 
 ---
  
-### <a name="new-user-provisioning-saas-app-integrations---july-2018"></a>2018. július – új felhasználókiépítési funkció az SaaS-alkalmazás-integrációkban
+### <a name="new-user-provisioning-saas-app-integrations---july-2018"></a>2018\. július – új felhasználókiépítési funkció az SaaS-alkalmazás-integrációkban
 
 **Írja be:** Új szolgáltatás  
 **Szolgáltatás kategóriája:** Alkalmazások kiépítése  
@@ -597,7 +597,7 @@ Mobilalkalmazás-értesítés csak be kell kapcsolni, szabályzata előírja a k
 
 ---
 
-## <a name="june-2018"></a>2018. június
+## <a name="june-2018"></a>2018\. június
 
 ### <a name="change-notice-security-fix-to-the-delegated-authorization-flow-for-apps-using-azure-ad-activity-logs-api"></a>Módosítási értesítés: A delegált engedélyezési folyamat használata az Azure AD tevékenység naplók API-alkalmazások biztonsági javítás
 
@@ -707,13 +707,13 @@ További információkért lásd: [Azure Active Directory használati feltétele
 
 ---
 
-### <a name="new-custom-conditional-access-policy-template-created-during-terms-of-use-creation"></a>A létrehozás használata során létrehozott új "egyéni" feltételes hozzáférési szabályzat sablon
+### <a name="new-custom-conditional-access-policy-template-created-during-terms-of-use-creation"></a>Új "egyéni" feltételes hozzáférési szabályzat sablon a létrehozás használata során létrehozott
 
 **Írja be:** Új szolgáltatás  
 **Szolgáltatás kategóriája:** Használati feltételek  
 **A termék szolgáltatás:** Szabályozás
 
-A használati feltételeket tartalmazó fájl létrehozása során "egyéni" feltételes hozzáférési házirend új sablont is létrejön. Az új csoportházirend-sablon lehetővé teszi a használati feltételek létrehozása, és azonnal folytassa a feltételes hozzáférési szabályzat létrehozása panelen anélkül, hogy manuálisan keresse meg a portálon keresztül.
+A használati feltételeket tartalmazó fájl létrehozása során egy új "egyéni" feltételes hozzáférési szabályzat sablont is létrejön. Az új csoportházirend-sablon lehetővé teszi a használati feltételek létrehozása, és azonnal folytassa a feltételes hozzáférési szabályzat létrehozása panelen anélkül, hogy manuálisan keresse meg a portálon keresztül.
 
 További információkért lásd: [Azure Active Directory használati feltételek funkció](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
 
@@ -757,7 +757,7 @@ További információ a nyilvános előzetes verzióban: a [Azure ad-ben delegá
 
 ---
 
-## <a name="may-2018"></a>2018. május
+## <a name="may-2018"></a>2018\. május
 
 ### <a name="expressroute-support-changes"></a>Az ExpressRoute-támogatás módosításai
 
@@ -891,7 +891,7 @@ Az alkalmazás szerepeltetése az Azure AD-alkalmazásgyűjtemény ajánlati kap
 **Szolgáltatás kategóriája:** Egyéb  
 **A termék szolgáltatás:** Címtár
  
-Új, részletes útmutató Azure Active Directory (Azure AD), beleértve az önkiszolgáló jelszó-visszaállítás (SSPR), üzembe helyezésével kapcsolatos egyszeri bejelentkezést (SSO), a feltételes hozzáférés (CA), -alkalmazásproxyval, a felhasználók átadásához, az Active Directory összevonási szolgáltatások (ADFS) Az átmenő hitelesítés (ESP), és az AD FS a Jelszókivonat-szinkronizálás (nál).
+Új, lépésenkénti útmutatást üzembe helyezése az Azure Active Directory (Azure AD), beleértve az önkiszolgáló jelszó-visszaállítást (SSPR), egyszeri bejelentkezés (SSO), a feltételes hozzáféréssel (CA),-alkalmazásproxyval, a felhasználók átadásához, az Active Directory összevonási szolgáltatások (ADFS), Az átmenő hitelesítés (ESP), és az AD FS a Jelszókivonat-szinkronizálás (nál).
 
 Az üzembe helyezési útmutatók megtekintéséhez nyissa meg a [identitás üzembe helyezési útmutatók](https://aka.ms/DeploymentPlans) adattárat a Githubon. Az üzembe helyezési útmutatók visszajelzést megadásához használja a [központi telepítési csomag visszajelzési űrlap](https://aka.ms/deploymentplanfeedback). Ha az üzembe helyezési útmutatók kapcsolatban bármilyen kérdése van, írjon nekünk az [IDGitDeploy](mailto:idgitdeploy@microsoft.com).
 
@@ -933,13 +933,13 @@ A hozzáférési felülvizsgálatok a csoportok és alkalmazások most már ált
 **Szolgáltatás kategóriája:** Hitelesítések (Bejelentkezések)  
 **A termék szolgáltatás:** Felhasználók hitelesítése
  
-Be- és 2018. április 25. után létrehozott alkalmazások már nem igényelhetnek egy **id_token** használatával a **lekérdezés** response_mode.  Ekkor az Azure AD beágyazott OIDC előírásoknak, és segítséget nyújt az alkalmazások támadási felület csökkentése.  2018. április 25. előtt létrehozott alkalmazások nincs letiltva a használatával a **lekérdezés** együtt, egy response_type response_mode **id_token**.  A hiba, az aad-ből, id_token kérésekor **AADSTS70007: "query" érték nem támogatott a "response_mode" jogkivonat kérése során**.
+Be- és 2018. április 25. után létrehozott alkalmazások már nem igényelhetnek egy **id_token** használatával a **lekérdezés** response_mode.  Ekkor az Azure AD beágyazott OIDC előírásoknak, és segítséget nyújt az alkalmazások támadási felület csökkentése.  2018\. április 25. előtt létrehozott alkalmazások nincs letiltva a használatával a **lekérdezés** együtt, egy response_type response_mode **id_token**.  A hiba, az aad-ből, id_token kérésekor **AADSTS70007: "query" érték nem támogatott a "response_mode" jogkivonat kérése során**.
 
 A **töredék** és **form_post** response_modes továbbra is működni – Ha létrehozni új alkalmazás objektumok (például az alkalmazásproxy-használat), győződjön meg, hogy ezek response_modes egyikének használata előtt, hozhatnak létre egy Új alkalmazás.  
 
 ---
  
-## <a name="april-2018"></a>2018. április 
+## <a name="april-2018"></a>2018\. április 
 
 ### <a name="azure-ad-b2c-access-token-are-ga"></a>Az Azure AD B2C hozzáférési tokent is általánosan elérhető
 
@@ -1034,7 +1034,7 @@ Mostantól megadhatja, mely kívánt megosztás és együttműködés az Azure A
 
 Ez segít, hogy ki férhet hozzá az erőforrásokat, miközben lehetővé teszi a zökkenőmentes felhasználói élmény engedélyezett.
 
-A B2B-együttműködés funkció az összes Azure Active Directory-ügyfelek számára érhető el, és használható együtt a feltételes hozzáférés és az identity protection az Azure AD prémium szintű szolgáltatások pontosabban szabályozhatja a mikor és hogyan külső üzleti felhasználói bejelentkeznek a és hozzáférést szerezzenek.
+A B2B-együttműködés funkció az összes Azure Active Directory-ügyfelek számára érhető el, és használható együtt a prémium szintű Azure AD szolgáltatások, mint a feltételes hozzáférés és az identity protection pontosabban szabályozhatja a mikor és hogyan külső üzleti felhasználói bejelentkeznek a és hozzáférést szerezzenek.
 
 További információkért lásd: [engedélyezési és blokkolási Segítségkérések B2B-felhasználók az adott szervezetek](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-allow-deny-list).
 
@@ -1086,7 +1086,7 @@ Ha egy alkalmazás, amely szerepel az a [Azure Marketplace-en](https://azuremark
  
 Korábban, az Azure Active Directory-felhasználó kiépítési összekötőket az olyan SaaS-alkalmazások (például Salesforce, ServiceNow és a Box) használó ügyfelek sikerült teljesítménycsökkenést tapasztal, ha az Azure AD-bérlőt tartalmazott több mint 100 000 összevont felhasználók és csoportok, és meghatározni, hogy mely felhasználókat kell létrehozni felhasználó és csoport-hozzárendelések használta.
 
-2018. április 2. fontos teljesítményjavítás üzembe helyezése az Azure AD létesítési szolgáltatás, amely nagy mértékben csökkentheti az Azure Active Directory és a cél SaaS-alkalmazások közötti kezdeti szinkronizálás végrehajtásához szükséges idő a.
+2018\. április 2. fontos teljesítményjavítás üzembe helyezése az Azure AD létesítési szolgáltatás, amely nagy mértékben csökkentheti az Azure Active Directory és a cél SaaS-alkalmazások közötti kezdeti szinkronizálás végrehajtásához szükséges idő a.
 
 Ennek eredményeképpen a számos ügyfél, amely eddig szinkronizálások az alkalmazásoknak a tartott, hány nap vagy soha nem fejeződött be, most belül percek vagy órák során hiba.
 
@@ -1106,7 +1106,7 @@ További információkért lásd: [az Azure AD-jelszó visszaállítása a bejel
 
 ---
 
-## <a name="march-2018"></a>2018. március
+## <a name="march-2018"></a>2018\. március
  
 ### <a name="certificate-expire-notification"></a>Tanúsítvány lejárati értesítés
 
@@ -1137,7 +1137,7 @@ További információkért lásd: [Mi az Azure AD B2B együttműködés?](https:
  
 ---
 
-### <a name="restrict-browser-access-using-intune-managed-browser-with-azure-ad-application-based-conditional-access-for-ios-and-android"></a>Az Azure AD-beli alkalmazásalapú feltételes hozzáférési iOS és Android rendszerhez készült Intune Managed Browser használatával böngésző-hozzáférés korlátozása
+### <a name="restrict-browser-access-using-intune-managed-browser-with-azure-ad-application-based-conditional-access-for-ios-and-android"></a>Az Intune Managed Browser használatával az Azure-ral böngésző-hozzáférés korlátozása AD-beli alkalmazásalapú feltételes hozzáférés iOS és Android rendszerhez
 
 **Írja be:** Új szolgáltatás  
 **Szolgáltatás kategóriája:** Feltételes hozzáférés  
@@ -1147,7 +1147,7 @@ További információkért lásd: [Mi az Azure AD B2B együttműködés?](https:
 
 **Az Intune Managed Browser egyszeri bejelentkezés:** Az alkalmazottak használhatja az egyszeri bejelentkezés natív ügyfelek (például a Microsoft Outlook) és az Intune Managed Browser összes az Azure AD-hez csatlakozó alkalmazást.
 
-**Az Intune Managed Browser feltételes hozzáférést támogató:** Most már megkövetelheti az alkalmazottak az alkalmazásalapú feltételes hozzáférési szabályzatokkal az Intune Managed browser használatára.
+**Az Intune Managed Browser feltételes hozzáférést támogató:** Most már megkövetelheti az alkalmazottak használatát az Intune Managed browser-beli alkalmazásalapú feltételes hozzáférési szabályzatok segítségével.
 
 További információ erről a [blogbejegyzés](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/15/the-intune-managed-browser-now-supports-azure-ad-sso-and-conditional-access/).
 
@@ -1313,7 +1313,7 @@ További információkért lásd: [megismerheti az Azure AD-alkalmazásproxy ös
  
 ---
 
-## <a name="february-2018"></a>2018. február
+## <a name="february-2018"></a>2018\. február
  
 ### <a name="improved-navigation-for-managing-users-and-groups"></a>Továbbfejlesztett navigáció a felhasználók és csoportok kezelése
 
@@ -1494,7 +1494,7 @@ Ebben a kiadásban a következő frissítéseket és a változások rendelkezik:
 
 ---
  
-### <a name="applications-supporting-intune-app-protection-policies-added-for-use-with-azure-ad-application-based-conditional-access"></a>Azure AD-beli alkalmazásalapú feltételes hozzáférés használata a támogató Intune alkalmazásvédelmi szabályzatokat a hozzáadott alkalmazások
+### <a name="applications-supporting-intune-app-protection-policies-added-for-use-with-azure-ad-application-based-conditional-access"></a>Az Azure használatával kapcsolatban, Intune alkalmazásvédelmi szabályzatokat támogató alkalmazások AD-beli alkalmazásalapú feltételes hozzáférés
 
 **Írja be:** Megváltozott funkció  
 **Szolgáltatás kategóriája:** Feltételes hozzáférés  
@@ -1513,7 +1513,7 @@ A következő alkalmazások szerint február végétől lesznek hozzáadva:
 További információkért lásd:
 
 - [Jóváhagyott alkalmazás megkövetelése](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
-- [Az Azure AD, alkalmazásalapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
+- [Az Azure AD alkalmazásalapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
 
@@ -1527,7 +1527,7 @@ Amikor megjelennek a használati feltételeket, rákattinthat a **megtekintésse
 
 ---
  
-## <a name="january-2018"></a>2018. január
+## <a name="january-2018"></a>2018\. január
  
 ### <a name="new-federated-apps-available-in-azure-ad-app-gallery"></a>Új összevont alkalmazások érhetők el az Azure AD-alkalmazásgyűjtemény 
 
@@ -1604,7 +1604,7 @@ További információkért lásd: [saját alkalmazások biztonságos bejelentkez
 **Szolgáltatás kategóriája:** Azure AD  
 **A termék szolgáltatás:** Címtár
  
-2018. január 8. a PhoneFactor-webportál visszavontuk. Az MFA-kiszolgáló felügyeletéhez használt ezen a portálon, de ezekhez a függvényekhez rendelkezik át lett helyezve az Azure Portalon a portal.azure.com webhelyen. 
+2018\. január 8. a PhoneFactor-webportál visszavontuk. Az MFA-kiszolgáló felügyeletéhez használt ezen a portálon, de ezekhez a függvényekhez rendelkezik át lett helyezve az Azure Portalon a portal.azure.com webhelyen. 
 
 Az MFA konfigurálása a következő helyen található: **Az Azure Active Directory \> MFA-kiszolgáló**
  
@@ -1631,7 +1631,7 @@ További információkért lásd:
 
 ---
 
-## <a name="december-2017"></a>2017. december
+## <a name="december-2017"></a>2017\. december
 
 ### <a name="terms-of-use-in-the-access-panel"></a>Használati feltételek a hozzáférési panelen
 
@@ -1763,7 +1763,7 @@ További információkért lásd: [Privileged Identity Management (előzetes ver
 
 ---
  
-## <a name="november-2017"></a>2017. november
+## <a name="november-2017"></a>2017\. november
  
 ### <a name="access-control-service-retirement"></a>Access Control szolgáltatás kivonása
 
@@ -1793,11 +1793,11 @@ Használja ezt az állapotot még ma, hozzáférés le lesz tiltva. Az előzetes
 
 Keresse meg ezt a funkciót, és a közelgő blogok és kibocsátási megjegyzések további információt. 
 
-További információkért lásd: [feltételes hozzáférés az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal).
+További információkért lásd: [az Azure AD feltételes hozzáférési](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal).
  
 ---
 
-### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Azure AD-beli alkalmazásalapú feltételes hozzáférés – a jóváhagyott ügyfélalkalmazások listája új alkalmazásokkal bővült
+### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Új jóváhagyott ügyfélalkalmazások az Azure AD alkalmazásalapú feltételes hozzáférés
 
 **Írja be:** Tervezett változtatás  
 **Szolgáltatás kategóriája:** Feltételes hozzáférés  
@@ -1811,7 +1811,7 @@ A következő alkalmazások olyan listájában [jóváhagyott ügyfélalkalmazá
 További információkért lásd:
 
 - [Jóváhagyott alkalmazás megkövetelése](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
-- [Az Azure AD, alkalmazásalapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
+- [Az Azure AD alkalmazásalapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
 
@@ -1842,7 +1842,7 @@ További információkért lásd: [a helyszíni integrációs](https://docs.micr
 
 ---
 
-### <a name="azure-ad-app-based-conditional-access"></a>Az Azure AD, alkalmazásalapú feltételes hozzáférés 
+### <a name="azure-ad-app-based-conditional-access"></a>Az Azure AD alkalmazásalapú feltételes hozzáférés 
  
 **Írja be:** Új szolgáltatás  
 **Szolgáltatás kategóriája:** Azure AD  
@@ -1888,7 +1888,7 @@ További információkért lásd: [eszközök kezelése az Azure portal használ
 
 ---
 
-### <a name="support-for-macos-as-a-device-platform-for-azure-ad-conditional-access"></a>MacOS-eszköz platformként az Azure AD feltételes hozzáférés támogatása 
+### <a name="support-for-macos-as-a-device-platform-for-azure-ad-conditional-access"></a>Azure AD feltételes hozzáférés támogatása MacOS-eszköz platform 
 
 **Írja be:** Új szolgáltatás    
 **Szolgáltatás kategóriája:** Feltételes hozzáférés  
@@ -1898,7 +1898,7 @@ Most már belefoglalhat (vagy kizárása) MacOS rendszerű eszköz platform felt
 
 - **Regisztrálhat és kezelhet a macOS-eszközök Intune-nal.** Más platformokon, például iOS és Android rendszerhez hasonló, a vállalati portál alkalmazás érhető el a macOS-hez egységes regisztrációk ehhez. Az új céges portál alkalmazás macOS-hez készült segítségével egy eszközöm Intune-nal, és regisztrálja az Azure ad-ben.
 - **Győződjön meg arról, macOS-eszközök a vállalat megfelelőségi szabályzatok az Intune-ban definiált formátumhoz.** Az Intune-ban az Azure Portalon mostantól beállíthat is macOS-eszközök megfelelőségi szabályzatainak. 
-- **Alkalmazásokhoz való hozzáférés korlátozása csak a megfelelő MacOS rendszerű eszközökhöz az Azure AD-ben.** MacOS feltételes hozzáférési szabályzat szerzői megegyezik egy különálló eszköz platform lehetőséget. Most már hozhat létre macOS-specifikus feltételes hozzáférési szabályzatok beállítása az Azure-ban a megcélzott alkalmazáshoz.
+- **Alkalmazásokhoz való hozzáférés korlátozása csak a megfelelő MacOS rendszerű eszközökhöz az Azure AD-ben.** MacOS feltételes hozzáférési szabályzat szerzői megegyezik egy különálló eszköz platform lehetőséget. Most már hozhat létre macOS-specifikus feltételes hozzáférési házirendeket a megcélzott alkalmazáshoz a készlet az Azure-ban.
 
 További információkért lásd:
 
@@ -1942,7 +1942,7 @@ Az Azure AD felügyeleti központban az alábbi műveleteket hajthatja végre:
  
 ---
 
-### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Azure AD-beli alkalmazásalapú feltételes hozzáférés – a jóváhagyott ügyfélalkalmazások listája új alkalmazásokkal bővült
+### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Új jóváhagyott ügyfélalkalmazások az Azure AD alkalmazásalapú feltételes hozzáférés
  
 **Írja be:** Megváltozott funkció  
 **Szolgáltatás kategóriája:** Feltételes hozzáférés  
@@ -1956,7 +1956,7 @@ A következő alkalmazások listájának hozzáadott [jóváhagyott ügyfélalka
 További információkért lásd:
 
 - [Jóváhagyott alkalmazás megkövetelése](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
-- [Az Azure AD, alkalmazásalapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
+- [Az Azure AD alkalmazásalapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
 
@@ -1966,9 +1966,9 @@ További információkért lásd:
 **Szolgáltatás kategóriája:** Feltételes hozzáférés  
 **A termék szolgáltatás:** Identitás-biztonság és védelem
  
-Most már használhatja "vagy" (a kijelölt feltételek egyikének megkövetelése) a feltételes hozzáférés-vezérlést. Ez a funkció segítségével szabályzatok létrehozása a "vagy" közötti hozzáférés-vezérlést. Ez a funkció segítségével például olyan szabályzatot, amely egy felhasználó jelentkezhet be a multi-factor Authentication szolgáltatás használata "vagy" a megfelelő eszköz lehet szükséges.
+Most már használhatja "vagy" (a kijelölt feltételek egyikének megkövetelése) feltételes hozzáférés-vezérlők. Ez a funkció segítségével szabályzatok létrehozása a "vagy" közötti hozzáférés-vezérlést. Ez a funkció segítségével például olyan szabályzatot, amely egy felhasználó jelentkezhet be a multi-factor Authentication szolgáltatás használata "vagy" a megfelelő eszköz lehet szükséges.
 
-További információkért lásd: [szabályozza az Azure AD feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-controls).
+További információkért lásd: [szabályozza az Azure AD feltételes hozzáférési](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-controls).
  
 ---
 
@@ -1984,7 +1984,7 @@ Az alapul szolgáló valós idejű észlelését működik minden alkalommal, am
  
 ---
  
-## <a name="october-2017"></a>2017. október
+## <a name="october-2017"></a>2017\. október
 
 ### <a name="deprecate-azure-ad-reports"></a>Az Azure AD-jelentések kivezetjük
 
@@ -2099,7 +2099,7 @@ További információkért lásd: [egy külső alkalmazás az Azure ad-ben a fel
  Az új felügyeleti konzol, a két új API-kkal való áttérés részeként az Azure Active Directory érhetők el naplók. Az új API-készletet biztosít gazdagabb szűrési és rendezési funkció részletesebb naplózás és a bejelentkezési tevékenységek biztosítása mellett. Az adatok korábban már elérhető a biztonsági jelentések mostantól elérhetők az Identity Protection kockázati események API-k a Microsoft Graph.
 
 
-## <a name="september-2017"></a>2017. szeptember
+## <a name="september-2017"></a>2017\. szeptember
 
 ### <a name="hotfix-for-identity-manager"></a>A gyorsjavítás az Identity Managerhez
 
@@ -2107,7 +2107,7 @@ További információkért lásd: [egy külső alkalmazás az Azure ad-ben a fel
 **Szolgáltatás kategóriája:** Identity Manager  
 **A termék szolgáltatás:** Identitás-életciklus-felügyelete  
 
-2017. szeptember 25, az Identity Manager 2016 Service Pack 1 (build 4.4.1642.0) gyorsjavítás kumulatív csomag érhető el. Ez a kumulatív csomag:
+2017\. szeptember 25, az Identity Manager 2016 Service Pack 1 (build 4.4.1642.0) gyorsjavítás kumulatív csomag érhető el. Ez a kumulatív csomag:
 
 - Oldja fel a problémákat, és fejlesztéseket.
 - Az összesítő frissítés, amely lecseréli az összes Identity Manager 2016 Service Pack 1 frissítés akár build 4.4.1459.0 Identity Manager 2016. 

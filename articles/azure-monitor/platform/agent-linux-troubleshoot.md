@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: b79f8a44f0fc38dd7e5f9ae7e3ac1fe6e9f6b7b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 83f9cc050694344cdc5f4f5a2070bc875fcba3d9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60776033"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071655"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>A Linuxhoz készült Log Analytics-ügynök hibáinak elhárítása 
 
@@ -187,6 +187,33 @@ Alább a kimeneti beépülő modult, állítsa vissza a következő szakasz elt�
 
 ## <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>Probléma: Lásd: 500 és 404-es hiba történt a naplófájl a közvetlenül az előkészítés után
 Ez az egy ismert probléma, amely akkor fordul elő, a Log Analytics-munkaterület az első Linux adatok feltöltése. Ez nem befolyásolja a adat rangsorát elküldött vagy service felhasználói élményt.
+
+
+## <a name="issue-you-see-omiagent-using-100-cpu"></a>Probléma: 100 %-ot használó omiagent lát
+
+### <a name="probable-causes"></a>Lehetséges okok
+Egy regressziós nss-pem-csomagban lévő [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-5.el7.x86_64.rpm.html) okozott egy súlyos teljesítménybeli problémát, hogy jelent meg már megtörtént, sokkal merülnek fel a Redhat/Centos 7.x disztribúciók. További információ a problémáról, ellenőrizze az alábbi dokumentációt: Programhiba [1667121 teljesítmény regressziós a libcurl](https://bugzilla.redhat.com/show_bug.cgi?id=1667121).
+
+Teljesítménnyel kapcsolatos hibák nem fordulhat elő, folyamatosan, és ezek nagyon nehéz reprodukálnia. Ha ilyen probléma omiagent a parancsfájl omiHighCPUDiagnostics.sh, amely összegyűjti a omiagent híváslánca, amikor egy bizonyos küszöbértéket meghaladó kell használnia.
+
+1. A parancsprogram letöltése <br/>
+`wget https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/tools/LogCollector/source/omiHighCPUDiagnostics.sh`
+
+2. Diagnosztika futtatása 24 órán át, a 30 %-os Processzor-küszöbérték <br/>
+`bash omiHighCPUDiagnostics.sh --runtime-in-min 1440 --cpu-threshold 30`
+
+3. Hívási verem omiagent_trace fájlban lesz írhatók, ha láthatja, hogy számos a Curl és NSS függvényhívások, kövesse az alábbi lépéseket.
+
+### <a name="resolution-step-by-step"></a>Feloldási (lépésről lépésre)
+
+1. A nss-pem-csomag frissítése [v1.0.3-5.el7_6.1](https://centos.pkgs.org/7/centos-updates-x86_64/nss-pem-1.0.3-5.el7_6.1.x86_64.rpm.html). <br/>
+`sudo yum upgrade nss-pem`
+
+2. Ha nem érhető el a frissítéshez nss-pem (többnyire akkor fordul elő, a Centos), majd alacsonyabbra 7.29.0-46 mutató curl. Ha véletlenül "frissítés a yum használatával" futtatása, majd a curl 7.29.0-51 frissül és a probléma akkor történik meg újra. <br/>
+`sudo yum downgrade curl libcurl`
+
+3. Indítsa újra az OMI a következő: <br/>
+`sudo scxadmin -restart`
 
 ## <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>Probléma: Nem jelennek meg adatok az Azure Portalon
 
@@ -399,7 +426,7 @@ sudo sh ./onboard_agent.sh --purge
 
 Reonboard használata után továbbra is a `--purge` lehetőség
 
-## <a name="log-analytics-agent-extension-in-the-azure-portal-is-marked-with-a-failed-state-provisioning-failed"></a>Log Analytics-ügynök bővítmény az Azure Portalon a hibás állapotban van megjelölve: Kiépítés sikertelen
+## <a name="log-analytics-agent-extension-in-the-azure-portal-is-marked-with-a-failed-state-provisioning-failed"></a>Log Analytics-ügynök bővítmény az Azure Portalon a hibás állapotban van megjelölve: Nem sikerült üzembe helyezni
 
 ### <a name="probable-causes"></a>Lehetséges okok
 * Log Analytics-ügynököket el lett távolítva az operációs rendszer

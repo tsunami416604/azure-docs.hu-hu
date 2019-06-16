@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 876e9f95c5f1cdca3e0b41a16d77aee52fccb837
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 414b2862d91f54ed5df96e4e814c7a634dfc7cbe
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60271883"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100122"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insider-track"></a>Oktatóanyag: Az Azure Active Directory integrációja az Insider nyomon követése
 
@@ -53,7 +53,7 @@ Konfigurálása az Azure AD integrálása a Insider nyomon követése, hozzá ke
 
 **Adja hozzá a belső nyomon követése a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

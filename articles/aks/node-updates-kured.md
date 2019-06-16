@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 1702d9558e27452006a2f015fd3312ac19362871
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: aee793dcfc5040b4a5f0f29fdae3247a5647e257
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65849870"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055639"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Linux-csomópontok az Azure Kubernetes Service (AKS) biztonsági és a kernel-frissítések alkalmazása
 
@@ -58,12 +58,13 @@ Ha nem továbbra is ugyanazt a Kubernetes-verziót egy frissítési esemény sor
 
 ```console
 kubectl apply -f https://github.com/weaveworks/kured/releases/download/1.2.0/kured-1.2.0-dockerhub.yaml
+```
 
-You can also configure additional parameters for `kured`, such as integration with Prometheus or Slack. For more information about additional configuration parameters, see the [kured installation docs][kured-install].
+A további paramétereket is konfigurálhat `kured`, például az integráció az Prometheus és Slack. További konfigurációs paraméterekkel kapcsolatos további információkért lásd: a [kured telepítési docs][kured-install].
 
-## Update cluster nodes
+## <a name="update-cluster-nodes"></a>Frissítse a fürtcsomópontokat
 
-By default, Linux nodes in AKS check for updates every evening. If you don't want to wait, you can manually perform an update to check that `kured` runs correctly. First, follow the steps to [SSH to one of your AKS nodes][aks-ssh]. Once you have an SSH connection to the Linux node, check for updates and apply them as follows:
+Alapértelmezés szerint a Linux-csomópontokat az aks-ben keressen frissítéseket minden este. Ha nem szeretné megvárni, ellenőrizze, hogy a frissítés manuális módszerrel is elvégezheti `kured` megfelelően fut-e. Először kövesse a lépéseket a [az AKS-csomópontok egyikére SSH][aks-ssh]. Miután az SSH-kapcsolatot a Linux-csomópontra, keressen frissítéseket, és alkalmazhatja ezeket a következőképpen:
 
 ```console
 sudo apt-get update && sudo apt-get upgrade -y

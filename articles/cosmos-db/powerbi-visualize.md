@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: sngun
 ms.openlocfilehash: 76531de279dfe6e9b73b3895f0ef63c4c88b63cd
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65979012"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Azure Cosmos DB-adatok megjelenítése Power BI-összekötő használatával
@@ -78,7 +78,7 @@ Fogja a Mexikói adatok lekérését az Azure Cosmos DB-fiókot és egy interakt
 
 3. Válassza ki a **kezdőlap** menüszalagra, majd kattintson a **adatok lekérése**.  A **adatok lekérése** ablak meg kell jelennie.
 
-4. Kattintson a **Azure**válassza **Azure Cosmos DB (bétaverzió)**, és kattintson a **Connect**. 
+4. Kattintson a **Azure**válassza **Azure Cosmos DB (bétaverzió)** , és kattintson a **Connect**. 
 
     ![A Power BI Desktop - adatok beolvasása a Power BI-összekötő](./media/powerbi-visualize/power_bi_connector_pbigetdata.png)   
 

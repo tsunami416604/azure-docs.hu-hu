@@ -1,8 +1,8 @@
 ---
-title: A feltételes hozzáférés az Azure Active Directory (Azure AD) az örökölt hitelesítési blokkolása |} A Microsoft Docs
+title: Az Azure Active Directory (Azure AD) feltételes hozzáférés az örökölt hitelesítési blokkolása |} A Microsoft Docs
 description: Ismerje meg, hogyan javíthatja biztonsági helyzetét blokkolja az örökölt hitelesítés használata az Azure AD feltételes hozzáférés.
 services: active-directory
-keywords: feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-vel, biztonságos hozzáférés a vállalati erőforrásokhoz, feltételes hozzáférési szabályzatok
+keywords: Feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-ben a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési szabályzatok
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -18,19 +18,19 @@ ms.date: 03/25/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fa7bc84558d2b794a569261ce3dd2db5d54493f
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: a638b501ea04db787ca366aa015850d94eb475ee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917408"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112707"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Útmutató: Örökölt hitelesítés letiltása az Azure AD feltételes hozzáférés   
 
 A felhasználók egyszerűen hozzáférhetnek számára a felhőalapú alkalmazások, Azure Active Directory (Azure AD) széles hitelesítési protokollok, beleértve az örökölt hitelesítési támogatja. Azonban régebbi protokollokra nem támogatják a többtényezős hitelesítés (MFA). MFA sok környezetben a közös követelmény, hogy a cím adatokkal való visszaélés. 
 
 
-A környezet örökölt hitelesítés letiltása a bérlő védelmi javítása érdekében készen áll, a feltételes hozzáférés a cél végezheti el. Ez a cikk azt ismerteti, hogy hogyan konfigurálhat feltételes hozzáférési szabályzatok letiltása örökölt hitelesítés a bérlő számára.
+A környezet örökölt hitelesítés letiltása a bérlő védelmi javítása érdekében készen áll, a cél végezheti el a feltételes hozzáférés. Ez a cikk azt ismerteti, hogy hogyan konfigurálhat feltételes hozzáférési szabályzatokat, amelyek a bérlő számára az örökölt hitelesítés letiltása.
 
 
 
@@ -38,7 +38,7 @@ A környezet örökölt hitelesítés letiltása a bérlő védelmi javítása �
 
 Ez a cikk azt feltételezi, hogy Ön ismeri a: 
 
-- A [alapvető fogalmait](overview.md) az Azure AD feltételes hozzáférés 
+- A [alapvető fogalmait](overview.md) Azure AD feltételes hozzáférés 
 - A [ajánlott eljárások](best-practices.md) a feltételes hozzáférési szabályzatok konfigurálása az Azure Portalon
 
 
@@ -55,7 +55,7 @@ Egyetlen többtényezős hitelesítés (például felhasználónév és jelszó)
 
 Hogyan megakadályozhatja az elérését a bérlői erőforrásokhoz örökölt hitelesítést használó alkalmazások? A javaslat, hogy csak letiltja a feltételes hozzáférési szabályzattal együtt. Szükség esetén engedélyezi a csak bizonyos felhasználók és a megfelelő hálózati helyeket az örökölt hitelesítési alapuló alkalmazások használatához.
 
-Az első többtényezős hitelesítés befejezése után a rendszer érvényesíti a feltételes hozzáférési szabályzatokat. Ezért a feltételes hozzáférés nem célja az első sor védelmi például-szolgáltatásmegtagadásos (DDoS-) támadások, de használhat fel ezeket az eseményeket (például a bejelentkezési kockázati szintet, helyét a kérelmet, és így tovább) érkező általi hozzáférés megállapításához.
+Feltételes hozzáférési szabályzatai érvényben vannak, az első többtényezős hitelesítés befejezése után. Ezért a feltételes hozzáférés nem célja az első sor védelmi például-szolgáltatásmegtagadásos (DDoS-) támadások, de használhat fel ezeket az eseményeket (például a bejelentkezési kockázati szintet, helyét a kérelmet, és így tovább) érkező általi hozzáférés megállapításához.
 
 
 
@@ -81,7 +81,7 @@ Ha a szervezet számára az örökölt hitelesítés letiltása, valószínűleg
 
 - Minden felhasználó
 
-- Minden felhőalkalmazás
+- Minden felhőalapú alkalmazásra
 
 - Hozzáférés letiltása
  
@@ -140,6 +140,6 @@ Ha letiltja az örökölt hitelesítési ügyfelek vonatkozó feltétellel, az e
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha nem ismeri még a feltételes hozzáférési szabályzatok konfigurálása, lásd: [többtényezős hitelesítés az Azure Active Directory feltételes hozzáférés az adott alkalmazások](app-based-mfa.md) példaként.
+- Ha nem ismeri még a feltételes hozzáférési szabályzatok konfigurálása, lásd: [többtényezős hitelesítés konkrét alkalmazások esetén az Azure Active Directory feltételes hozzáférés](app-based-mfa.md) példaként.
 
 - Modern hitelesítés nélküli támogatásával kapcsolatos további információkért lásd: [Office 2013 és az Office 2016 ügyfélalkalmazások számára a modern hitelesítés működéséről](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) 

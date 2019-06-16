@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
 ms.openlocfilehash: 7889f223b607912fd88c798b31ec028f97dfbbd6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60812936"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>A LUIS-alkalmazás a kifejezés szolgáltatásai
@@ -46,7 +46,7 @@ Kifejezés lista létrehozása, ha az alkalmazás szavak vagy kifejezések, amel
 
 Miután megadta az néhány szavakat vagy kifejezéseket, a **javasoljuk** kapcsolódó értékek keresése a szolgáltatás. A kifejezés listaértékek való felvétele előtt tekintse át a kapcsolódó értékeket.
 
-|Listatípus|Cél|
+|Lista típusa|Cél|
 |--|--|
 |Cserélhető|A szinonimák vagy szavak, amikor a listában egy másik szóban változik, rendelkezik az azonos szándékot, és az entitások kinyeréséhez.|
 |Nem cserélhető|Az alkalmazás több, mint általában más szavakat azon a nyelven jellemző alkalmazás szakszavakat.|

@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: a02983c5019870e8b17db48184b2f238a82f8a40
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66510585"
 ---
 # <a name="localization"></a>Honosítás
@@ -54,7 +54,7 @@ A **honosítási** elem a következő XML-elemeket tartalmazza
 
 A **SupportedLanguages** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | DefaultLanguage | Igen | Honosított erőforrások alapértelmezés szerint használandó nyelvet. |
 | MergeBehavior | Nem | Egy enumerálási együtt bármely takar egyesítendő értékek szerepelnek a szülő házirend ugyanezzel az azonosítóval. Akkor használja ezt az attribútumot, ha alap szabályzatban megadott jogcím felülírja. A lehetséges értékek: `Append`, `Prepend`, vagy `ReplaceAll`. A `Append` az érték határozza meg, hogy a jelenlegi adatgyűjtés sémaelemhez hozzáadódik a szülő házirendben megadott gyűjtemény végéhez. A `Prepend` az érték határozza meg, hogy ezen adatok gyűjtését a szülő házirendben megadott gyűjtemény előtt kell adni. A `ReplaceAll` az érték határozza meg, hogy a szülő házirendben meghatározott adatgyűjtés figyelmen kívül lehet hagyni, inkább az aktuális házirendben definiált adatok használatával. |
@@ -94,7 +94,7 @@ A **LocalizedCollections** elem a következő elemeket tartalmazza:
 
 A **LocalizedCollection** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Elemtípus | Igen | Egy takar elemet vagy egy felhasználói felület elem a házirend-fájl hivatkozik. |
 | ElementId | Igen | Egy karakterlánc, amely már tartalmaz egy hivatkozást egy jogcímtípust akkor használatos, ha az ClaimsSchema szakaszban definiált **ElementType** egy takar értékre van állítva. |
@@ -108,7 +108,7 @@ A **LocalizedCollection** elem a következő elemeket tartalmazza:
 
 A **elem** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | Text | Igen | A megjelenített felhasználóbarát mezőnevét karakterlánc, hogy megjelenjen-e a felhasználó a felhasználói felületen ezt a lehetőséget választja. |
 | Érték | Igen | A karakterlánc jogcím társított Ez a beállítás értéke. |
@@ -144,7 +144,7 @@ A **LocalizedStrings** elem a következő elemeket tartalmazza:
 
 A **LocalizedString** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | Elemtípus | Igen | A hivatkozás egy jogcím típusú elem vagy egy felhasználói felület elem a házirendben. A lehetséges értékek: `ClaimType`, `UxElement`, `ErrorMessage`, `Predicate`, vagy a. A `ClaimType` honosítani az egyik jogcím attribútumait, a karakterlánc megadott értéket használja. A `UxElement` honosítani a felhasználói felületi elemekre a elemtípusú megadott egyik értéket használja. A `ErrorMessage` honosítása, a rendszer hibaüzenetek a elemtípusú megadott értéket használja. A `Predicate` honosítani az egyik érték szolgál a [predikátum](predicates.md) hibaüzeneteket, a karakterlánc megadott módon. A `InputValidation` honosítani az egyik érték szolgál a [PredicateValidation](predicates.md) hibaüzenetek a elemtípusú megadott csoportban. |
 | ElementId | Igen | Ha **ElementType** értékre van állítva `ClaimType`, `Predicate`, vagy `InputValidation`, ez az elem már az ClaimsSchema szakaszban meghatározott jogcím típusa hivatkozást tartalmaz. | 

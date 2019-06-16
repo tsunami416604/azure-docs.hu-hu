@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 05/31/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 89539509e759da7f041ce0216397b1a9c8ff1f16
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 2c54f7192827376bb157915738ee781f45433267
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66753090"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059223"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
@@ -108,6 +108,16 @@ A szkript két függvényt, amely betölteni, és futtassa a modell tartalmazza:
 * `init()`: Általában ez a függvény a modellben tölt be egy globális objektum. Ez a függvény fut, csak egyszer, amikor a Docker-tárolót, a webszolgáltatás elindult.
 
 * `run(input_data)`: Ez a függvény egy értéket a bemeneti adatok alapján előre jelezni a modellt használ. Bemenetek és kimenetek a futtató szerializálást és deszerializálás általában használni JSON. Nyers bináris adatok is együttműködik. A modellhez való elküldése előtt, vagy az ügyfél való visszatérés előtt alakíthatja át az adatokat.
+
+#### <a name="what-is-getmodelpath"></a>Mit jelent a get_model_path?
+Amikor regisztrál egy modellt, adja meg a beállításjegyzékben a modell kezelésére használt modell nevét. Az API, amely visszaadja az elérési útját a helyi fájlrendszerben modell fájl(ok) get_model_path ezt a nevet fogja használni. Ha regisztrál egy mappa vagy fájl gyűjteménye, az API-t az elérési utat a könyvtárba, amely tartalmazza azokat a fájlokat adja vissza.
+
+Ha regisztrálja a modellt, akkor adjon meg egy nevet, amely megfelel, ahol a modell kerül, helyileg vagy a szolgáltatás üzembe helyezése során.
+
+Az alábbi példában vissza fog térni egy elérési utat egy egyetlen fájl neve "sklearn_mnist_model.pkl" (amely regisztrálva lett az a név "sklearn_mnist")
+```
+model_path = Model.get_model_path('sklearn_mnist')
+``` 
 
 #### <a name="optional-automatic-swagger-schema-generation"></a>(Nem kötelező) A Swagger-séma automatikus létrehozása
 
@@ -248,7 +258,9 @@ Ebben a példában a konfiguráció a következő elemeket tartalmazza:
 * A [bejegyzés parancsfájl](#script), amely a telepített szolgáltatásnak küldött webes kérések kezelésére szolgál
 * A conda-fájlt, amely leírja a következtetésekhez szükséges Python-csomagok
 
-InferenceConfig funkciójával kapcsolatos további információkért lásd: a [speciális konfiguráció](#advanced-config) szakaszban.
+InferenceConfig funkciójával kapcsolatos további információkért lásd: a [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) referencia osztály.
+
+Az egyéni Docker-rendszerkép használata következtetésekhez konfigurációs információkért lásd: [modell üzembe helyezése egy egyéni Docker-rendszerkép használatával hogyan](how-to-deploy-custom-docker-image.md).
 
 ### <a name="3-define-your-deployment-configuration"></a>3. Az üzembe helyezési konfiguráció definiálása
 
@@ -265,6 +277,15 @@ Az alábbi táblázat mutatja be, az egyes számítási célnak üzembe helyezé
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
 A következő szakaszok bemutatják, hogyan hozhat létre a telepítési konfigurációt, és, amellyel a webszolgáltatás üzembe helyezése.
+
+### <a name="optional-profile-your-model"></a>Nem kötelező: A modell kiértékelése
+A modell szolgáltatás a telepítés előtt érdemes profilt, hogy optimális CPU és memória-követelmények meghatározása.
+Ez az SDK-t vagy a CLI-n keresztül teheti meg.
+
+További információ az SDK-dokumentáció itt megtekinthet: https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-
+
+A modellekre profilkészítés eredményei egy Futtatás objektum vannak rendelkezésre.
+A modell profil séma a részletekről itt található: https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py
 
 ## <a name="deploy-to-target"></a>Tároló üzembe helyezése
 
@@ -492,54 +513,6 @@ print(service.state)
 print(service.get_logs())
 ```
 
-<a id="advanced-config"></a>
-
-## <a name="advanced-settings"></a>Speciális beállítások 
-
-**<a id="customimage"></a> Egyéni alapszintű rendszerkép használata**
-
-Belsőleg InferenceConfig hoz létre egy Docker-rendszerképet, amely tartalmazza a modell és egyéb eszközök számára a szolgáltatás szükséges. Ha nincs megadva, alapértelmezett alapképet szolgál.
-
-A következtetésekhez konfigurációval használandó kép létrehozásakor, a kép a következő követelményeknek kell megfelelnie:
-
-* Ubuntu 16.04 vagy nagyobb.
-* Conda 4.5. # vagy nagyobb.
-* Python 3.5-ös verzióját. # vagy 3.6. #.
-
-Egyéni rendszerkép használatához állítsa a `base_image` tulajdonság a következtetésekhez konfigurációját, hogy a cím a kép. Az alábbi példa bemutatja, hogyan mindkét egy nyilvános és privát Azure Container Registry rendszerkép használatához:
-
-```python
-# use an image available in public Container Registry without authentication
-inference_config.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
-
-# or, use an image available in a private Container Registry
-inference_config.base_image = "myregistry.azurecr.io/mycustomimage:1.0"
-inference_config.base_image_registry.address = "myregistry.azurecr.io"
-inference_config.base_image_registry.username = "username"
-inference_config.base_image_registry.password = "password"
-```
-
-Az alábbi képen URI-k a Microsoft által rendelkezésre bocsátott rendszerképek találhatók, és egy felhasználó vagy a jelszó érték megadása nélkül használható:
-
-* `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda`
-* `mcr.microsoft.com/azureml/onnxruntime:v0.4.0`
-* `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-cuda10.0-cudnn7`
-* `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-tensorrt19.03`
-
-Ezek a lemezképek használatához állítsa a `base_image` , az URI-t a listából. Állítsa be `base_image_registry.address` való `mcr.microsoft.com`.
-
-> [!IMPORTANT]
-> Microsoft-lemezképek, amelyek CUDA vagy TensorRT csak a Microsoft Azure-szolgáltatásokra kell használni.
-
-A saját rendszerképek feltöltése egy Azure Container registrybe további információkért lásd: [az első rendszerkép leküldése egy privát Docker-tárolójegyzék](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli).
-
-Ha a modell tanítása az Azure Machine Learning COMPUTE számítási, a __1.0.22 verzió vagy annál nagyobb__ , az Azure Machine Learning SDK-lemezkép létrehozása betanítás során. A következő példa bemutatja, hogyan használhatja ezt a képet:
-
-```python
-# Use an image built during training with SDK 1.0.22 or greater
-image_config.base_image = run.properties["AzureML.DerivedImageName"]
-```
-
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Az üzembe helyezett webszolgáltatáshoz törölheti `service.delete()`.
 A regisztrált modell törléséhez használja `model.delete()`.
@@ -547,6 +520,7 @@ A regisztrált modell törléséhez használja `model.delete()`.
 További információkért lásd: a dokumentáció a [WebService.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--), és [Model.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
 
 ## <a name="next-steps"></a>További lépések
+* [Egyéni Docker-rendszerkép használata modell üzembe helyezése](how-to-deploy-custom-docker-image.md)
 * [Üzembe helyezés hibáinak elhárítása](how-to-troubleshoot-deployment.md)
 * [Biztonságos SSL-lel az Azure Machine Learning-webszolgáltatások](how-to-secure-web-service.md)
 * [Webszolgáltatásként üzembe helyezett gépi Tanulási modell felhasználása](how-to-consume-web-service.md)

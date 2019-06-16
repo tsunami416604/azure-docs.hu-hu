@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/2/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0095a825f5582dc795f5bebdcf08be07a92946e
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 721e0c40ec2e02dabee0681e01fea4182b906183
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65900404"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67104645"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coralogix"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Coralogix
 
@@ -206,7 +206,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű Coralogix hoz létre. Együttműködik a [Coralogix támogatási csapatának](mailto:info@coralogix.com) a felhasználók hozzáadása az Coralogix platformon. Kell létrehozni, és aktiválja a felhasználók egyszeri bejelentkezés használata előtt.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a MyApps portálról segítségével tesztelheti.
 

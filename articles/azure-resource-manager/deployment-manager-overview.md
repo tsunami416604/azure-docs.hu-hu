@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 52b132b45bd90d7d21bb072e9a94d8588d5cf301
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: 6a25444f0207ec5eceb029c5d31d222a31813e22
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66431168"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066819"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Biztonságos üzembe helyezési eljárások az Azure Deployment Manager (nyilvános előzetes verzió) engedélyezése
 
 A szolgáltatás számos régióban üzembe helyezheti, és ellenőrizze, hogy az egyes régiókban a várt módon fut, az Azure Deployment Manager segítségével egy szakaszos bevezetést a szolgáltatás koordinálja. Ugyanúgy, mint bármely Azure-telepítéshez, az erőforrásokat a szolgáltatáshoz a határoz meg [Resource Manager-sablonok](resource-group-authoring-templates.md). Miután létrehozta a sablonokat, a Deployment Manager a topológia a szolgáltatáshoz, és hogyan azt kell történni használhatja.
 
-Deployment Manager funkciója a Resource Manager. Üzembe helyezés során a képességekkel bővíti. Használat Deployment Manager, ha rendelkezik olyan összetett szolgáltatás, amelynek számos régióban üzembe helyezni. A szolgáltatás kibocsátásának előkészítésével a régiókban történő üzembe helyezés előtt azonosíthat potenciális problémákat. Ha már nincs szüksége egy szakaszos bevezetést, a felesleges óvintézkedéseket, használja a standard [központi telepítési beállítások](resource-group-template-deploy-portal.md) a Resource Managerhez. Deployment Manager zökkenőmentesen integrálható az összes meglévő külső eszközökkel, amelyek támogatják a Resource Manager-környezetek, például a folyamatos integrációt és folyamatos készregyártás (CI/CD) ajánlatok. 
+Deployment Manager funkciója a Resource Manager. Üzembe helyezés során a képességekkel bővíti. Használat Deployment Manager, ha rendelkezik olyan összetett szolgáltatás, amelynek számos régióban üzembe helyezni. A szolgáltatás kibocsátásának előkészítésével a régiókban történő üzembe helyezés előtt azonosíthat potenciális problémákat. Ha már nincs szüksége egy szakaszos bevezetést, a felesleges óvintézkedéseket, használja a standard [központi telepítési beállítások](resource-group-template-deploy-portal.md) a Resource Managerhez. Deployment Manager zökkenőmentesen integrálható az összes meglévő külső eszközökkel, amelyek támogatják a Resource Manager-környezetek, például a folyamatos integrációt és folyamatos készregyártás (CI/CD) ajánlatok.
 
 Az Azure Deployment Manager szolgáltatás előzetes verzióban. Segítsen jobbá tenni a funkció azáltal, hogy [visszajelzés](https://aka.ms/admfeedback).
 
@@ -31,7 +31,12 @@ Deployment Manager használatához szüksége négy fájlok létrehozásához:
 
 A bevezetési sablon üzembe helyezése előtt telepíti a topológia sablont.
 
-Az Azure Deployment Manager REST API-referenciában találhat [Itt](https://docs.microsoft.com/rest/api/deploymentmanager/).
+További források:
+
+- A [Azure Deployment Manager REST API-referencia](https://docs.microsoft.com/rest/api/deploymentmanager/).
+- [Oktatóanyag: Az Azure Deployment Manager használata a Resource Manager-sablonok](./deployment-manager-tutorial.md).
+- [Oktatóanyag: Állapot-ellenőrzés használata az Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).
+- [Az Azure Deployment Manager minta](https://github.com/Azure-Samples/adm-quickstart).
 
 ## <a name="identity-and-access"></a>Identitás- és hozzáférés-kezelés
 
@@ -191,7 +196,7 @@ A bevezetési sablont hoz létre a bináris fájlok, üzembe kell helyeznie a sz
 
 ### <a name="steps"></a>Lépések
 
-Meghatározhat egy lépés előtt vagy után a központi telepítési művelet végrehajtásához. Jelenleg csak a `wait` érhetők el a és a "healthCheck" lépést. 
+Meghatározhat egy lépés előtt vagy után a központi telepítési művelet végrehajtásához. Jelenleg csak a `wait` érhetők el a és a "healthCheck" lépést.
 
 A várakozási lépés felfüggeszti a telepítés folytatása előtt. Lehetővé teszi, hogy ellenőrizze, hogy a szolgáltatás a következő szolgáltatás egység üzembe helyezése előtt várt módon fut-e. Az alábbi példa bemutatja egy várakozási lépés általános formátumát.
 
@@ -262,13 +267,13 @@ További információkért lásd: [kibocsátások sablonreferenciája](/azure/te
 
 ## <a name="parameter-file"></a>Alkalmazásparaméter-fájlt
 
-A paraméter két fájlt hoz létre. Egy alkalmazásparaméter-fájlt a szolgáltatás topológia telepítésekor használatos, és a másik a bevezetési központi telepítéshez használt. Nincsenek az kell, hogy egyes értékek azonosak mindkét paraméter fájlban.  
+A paraméter két fájlt hoz létre. Egy alkalmazásparaméter-fájlt a szolgáltatás topológia telepítésekor használatos, és a másik a bevezetési központi telepítéshez használt. Nincsenek az kell, hogy egyes értékek azonosak mindkét paraméter fájlban.
 
 ## <a name="containerroot-variable"></a>containerRoot változó
 
 A rendszerverzióval ellátott telepítések esetén a összetevők módosításokat az új verziók elérési útját. Lehet, hogy az első futtatásakor egy központi telepítést az elérési út `https://<base-uri-blob-container>/binaries/1.0.0.0`. Érdemes lehet másodszor `https://<base-uri-blob-container>/binaries/1.0.0.1`. Deployment Manager egyszerűbbé teszi a megfelelő Útvonalgyökér első a jelenlegi üzemelő példány használatával az `$containerRoot` változó. Ez az érték minden egyes verziójában módosítja, és nem ismeri az üzembe helyezés előtt.
 
-Használja a `$containerRoot` változó a sablon üzembe helyezése az Azure-erőforrások alkalmazásparaméter-fájlt. Központi telepítéskor ezzel a változóval tényleges a bevezetés értékeivel váltja fel. 
+Használja a `$containerRoot` változó a sablon üzembe helyezése az Azure-erőforrások alkalmazásparaméter-fájlt. Központi telepítéskor ezzel a változóval tényleges a bevezetés értékeivel váltja fel.
 
 Kibocsátás közben, hozzon létre például egy összetevő forrás a bináris összetevők.
 

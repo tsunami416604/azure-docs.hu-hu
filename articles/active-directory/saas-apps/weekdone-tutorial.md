@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: d067d36ea41f80648fcb06fe3b0e51e4f5b3a1a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 43ade2035e6f831f9d665d2b53dabb3afb96f41d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65865241"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67087358"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-weekdone"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Weekdone
 
@@ -55,7 +55,7 @@ Az Azure AD integrálása a Weekdone konfigurálásához hozzá kell Weekdone a 
 
 **Weekdone hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -198,7 +198,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó Weekdone jön létre. We
 >[!NOTE]
 >Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [Weekdone ügyfél-támogatási csapatának](mailto:hello@weekdone.com).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

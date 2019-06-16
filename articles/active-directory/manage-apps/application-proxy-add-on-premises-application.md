@@ -12,12 +12,12 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82c7b698f655b82ba95f66127f27a921def02cde
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 11bb99ada76131000f49be5a1216a1bb71fbb88a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66472993"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108711"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: A távoli hozzáféréshez alkalmazásproxyn keresztül a helyszíni alkalmazás hozzáadása az Azure Active Directoryban
 
@@ -70,7 +70,7 @@ A TLS 1.2 engedélyezése:
 2. Indítsa újra a kiszolgálót.
 
 >[!Important] 
-> Ügyfeleink kategóriaelső a titkosítás megadásához igyekszünk frissítések az alkalmazásproxy-szolgáltatás csak a TLS 1.2 protokoll való hozzáférés korlátozására. A változások fokozatosan bevezetjük az ügyfelek számára, akik csak a TLS 1.2 protokoll használata, és nem jelenik meg semmilyen hatással a változás ügyfél készültségi alapján. 2019. augusztus 31-ig befejezi a TLS 1.0 és 1.1 elavult, és ügyfelek fel a változásra előzetes értesítést fog kapni. Előkészítése e változás ügyeljen arra, hogy minden ügyfél-kiszolgáló és a böngésző-kiszolgáló kombinációját frissítve lett, hogy a TLS 1.2 használatával alkalmazásproxy-szolgáltatás kapcsolat fenntartását. Ezek közé tartozik az ügyfelek használják a felhasználók az alkalmazásproxyn keresztül közzétett alkalmazások eléréséhez. Tekintse meg a előkészítése [TLS 1.2-es Office 365-ben](https://support.microsoft.com/help/4057306/preparing-for-tls-1-2-in-office-365) hasznos hivatkozások és erőforrások.
+> Ügyfeleink kategóriaelső a titkosítás megadásához igyekszünk frissítések az alkalmazásproxy-szolgáltatás csak a TLS 1.2 protokoll való hozzáférés korlátozására. A változások fokozatosan bevezetjük az ügyfelek számára, akik csak a TLS 1.2 protokoll használata, és nem jelenik meg semmilyen hatással a változás ügyfél készültségi alapján. 2019\. augusztus 31-ig befejezi a TLS 1.0 és 1.1 elavult, és ügyfelek fel a változásra előzetes értesítést fog kapni. Előkészítése e változás ügyeljen arra, hogy minden ügyfél-kiszolgáló és a böngésző-kiszolgáló kombinációját frissítve lett, hogy a TLS 1.2 használatával alkalmazásproxy-szolgáltatás kapcsolat fenntartását. Ezek közé tartozik az ügyfelek használják a felhasználók az alkalmazásproxyn keresztül közzétett alkalmazások eléréséhez. Tekintse meg a előkészítése [TLS 1.2-es Office 365-ben](https://support.microsoft.com/help/4057306/preparing-for-tls-1-2-in-office-365) hasznos hivatkozások és erőforrások.
 
 ## <a name="prepare-your-on-premises-environment"></a>A helyszíni környezet előkészítése
 
@@ -93,7 +93,7 @@ Előfordulhat, hogy a telepítve van, ha már használja az Application Proxy co
 
 A következő URL-hozzáférés engedélyezése:
 
-| URL | Hogyan használja fel azokat |
+| URL-cím | Hogyan használja fel azokat |
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | Az összekötő és az alkalmazásproxy-felhőszolgáltatás közötti kommunikáció |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Az Azure az alábbi URL-címek segítségével tanúsítványok. |

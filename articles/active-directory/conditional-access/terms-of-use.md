@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1abae0a454e17e8f633f68bc5853bfb4a4b24d14
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 0534613a9df3177290e9b4b57e9830fe62f9741a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383177"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112128"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Az Azure Active Directory – használati feltételek
 
@@ -122,12 +122,12 @@ A használati feltételek dokumentuma véglegesítése után a következő eljá
    | **Az összes vendégek felhőalkalmazások elérése** | Feltételes hozzáférési szabályzat jön létre minden Vendég és az összes felhőalapú alkalmazásokba. Ez a szabályzat milyen hatással van az Azure Portalon. Miután ez elkészült, akkor szükség lehet kijelentkezés és bejelentkezés. |
    | **Az összes felhasználó számára a felhőalkalmazások elérése** | Feltételes hozzáférési szabályzat jön létre minden felhasználó és az összes felhőalapú alkalmazásokba. Ez a szabályzat milyen hatással van az Azure Portalon. Ennek létrehozása után kijelentkezés és bejelentkezés szükséges fogjuk. |
    | **Egyéni szabályzat** | Válassza ki a felhasználók, csoportok és alkalmazások, amelyek a használati feltételek érvényesek. |
-   | **Feltételes hozzáférési szabályzat létrehozása később** | A használati feltételek az engedélyezési vezérlői listában fognak szerepelni a feltételes hozzáférési szabályzat létrehozásakor. |
+   | **Feltételes hozzáférési szabályzat létrehozása később** | A használati feltételek az engedélyezési vezérlői listában megjelennek a feltételes hozzáférési szabályzat létrehozásakor. |
 
    >[!IMPORTANT]
-   >A feltételes hozzáférési szabályzat vezérlői (beleértve a használati feltételeket) nem támogatják a szolgáltatásfiókokra irányuló kényszerítést. Javasoljuk, hogy zárjon ki minden szolgáltatásfiókot a feltételes hozzáférési szabályzatból.
+   >Feltételes hozzáférési szabályzat vezérlői (beleértve a használati feltételeket) nem támogatja a kényszerítési szolgáltatásfiókok. Azt javasoljuk, hogy zárjon ki minden szolgáltatásfiókot a feltételes hozzáférési szabályzatot.
 
-    Egyéni feltételes hozzáférési szabályzatok lehetővé teszik a részletes használati feltételek, egy adott felhőalapú alkalmazások vagy felhasználók csoportja. További információkért lásd: [a rövid útmutató: Felhőbeli alkalmazások elérése előtt el kell fogadni a használati feltételeket tartalmazó fájl szükséges](require-tou.md).
+    Egyéni feltételes hozzáférési szabályzatok engedélyezése részletes használati feltételek, egy adott felhőalapú alkalmazások vagy felhasználók csoportja. További információkért lásd: [a rövid útmutató: Felhőbeli alkalmazások elérése előtt el kell fogadni a használati feltételeket tartalmazó fájl szükséges](require-tou.md).
 
 1. Kattintson a **Create** (Létrehozás) gombra.
 
@@ -302,12 +302,12 @@ Alapértelmezés szerint a törölt felhasználók 30 napig még törölt állap
 
 ## <a name="policy-changes"></a>A szabályzatok változásai
 
-A feltételes hozzáférési szabályzatok azonnal hatályba lépnek. Ha ez történik, a rendszergazda "Szomorú felhők" vagy "A tokenekkel kapcsolatos problémák az Azure AD" indul el. A rendszergazda kell jelentkezzen ki, és jelentkezzen be újra annak érdekében, hogy megfelelhessen az új szabályzatnak.
+Feltételes hozzáférési szabályzatok azonnal hatályba lépnek. Ha ez történik, a rendszergazda "Szomorú felhők" vagy "A tokenekkel kapcsolatos problémák az Azure AD" indul el. A rendszergazda kell jelentkezzen ki, és jelentkezzen be újra annak érdekében, hogy megfelelhessen az új szabályzatnak.
 
 > [!IMPORTANT]
 > Az érintett felhasználóknak újra be kell jelentkezniük, hogy megfelelhessenek az új szabályzatnak, ha:
 >
-> - egy feltételes hozzáférési szabályzat van engedélyezve a használati feltételekhez
+> - egy feltételes hozzáférési szabályzata engedélyezve van a használati feltételek
 > - létrehoztak újabb használati feltételeket
 
 ## <a name="b2b-guests-preview"></a>B2B-vendégek (előzetes verzió)
@@ -367,7 +367,7 @@ V: A használati feltételeket a bejelentkezési élmény során aktiválódik.
 V: Feltételes hozzáférési szabályzatot a modern hitelesítést használó vállalati alkalmazásokhoz hozhat létre. Bővebb információ: [vállalati alkalmazások](./../manage-apps/view-applications-portal.md).
 
 **K: Egy adott felhasználó vagy alkalmazás is hozzáadhatok több használati feltételeket?**<br />
-V: Igen, több feltételes hozzáférési szabályzatok létrehozásával adott csoportokhoz vagy alkalmazásokhoz. Ha egy felhasználó több használati hatókörébe esik, el kell fogadniuk egy használati feltételek egyszerre.
+V: Igen, ha több feltételes hozzáférési házirendek adott csoportokhoz vagy alkalmazásokhoz. Ha egy felhasználó több használati hatókörébe esik, el kell fogadniuk egy használati feltételek egyszerre.
 
 **K: Mi történik, ha a felhasználó elutasítja a használati feltételeket?**<br />
 V: A felhasználó hozzáférése az alkalmazáshoz való hozzáférés le van tiltva. Jelentkezzen be újra, és fogadja el a feltételeket ahhoz, hogy a hozzáférést a felhasználónak kell.
@@ -384,4 +384,4 @@ V: Használati feltételek használja az alábbi végpontok a hitelesítéshez: 
 ## <a name="next-steps"></a>További lépések
 
 - [Rövid útmutató: Felhőbeli alkalmazások elérése előtt el kell fogadni a használati feltételeket tartalmazó fájl megkövetelése](require-tou.md)
-- [A feltételes hozzáféréssel kapcsolatos ajánlott eljárások az Azure Active Directoryban](best-practices.md)
+- [Ajánlott eljárások az Azure Active Directory feltételes hozzáférés](best-practices.md)

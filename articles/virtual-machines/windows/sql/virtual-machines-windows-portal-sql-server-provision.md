@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: bb051d37f3a1dd82d7d46bfe8b22c2ba1251be85
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 6723adb3fb8987a127eee419c9ac188c7a33d50b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129877"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076128"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Az Azure Portalon Windows SQL Server virtuális gép kiépítése
 
@@ -37,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Az SQL Server virtuális gép létrehozásakor több előre konfigurált lemezképek közül választhat a virtuálisgép-katalógus. A következő lépések bemutatják, hogyan lehet az SQL Server 2017-rendszerképek egyikét választhatja ki.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) a saját fiókjával.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) fiókjával.
 
 1. Az Azure Portalon kattintson az **Erőforrás létrehozása** gombra. A portál megnyitja az **Új** ablakot.
 
@@ -98,7 +98,7 @@ Az a **alapjai** lapra, adja meg a következő információkat:
     1. Az a **kép** listáról válassza ki _ingyenes SQL Server-licenc: SQL Server 2017 Developer Windows Server 2016 rendszeren_.  
     1. Válassza ki a **méretének módosítása** a a **mérete** , a virtuális gépre, majd válassza a **a2-es alapszintű** ajánlat. Ügyeljen arra, hogy miután végzett az minden olyan váratlan költségek megelőzése érdekében az erőforrások törlése. Az éles számítási feladatok esetében ajánlott gépméretekért és -konfigurációkért tekintse meg [az SQL Server teljesítményének Azure Virtual Machines szolgáltatásbeli növelésével kapcsolatos ajánlott eljárásokat](virtual-machines-windows-sql-performance.md).
 
-    ![Példány részletei](media/quickstart-sql-vm-create-portal/basics-instance-details.png)
+    ![Példány adatai](media/quickstart-sql-vm-create-portal/basics-instance-details.png)
 
 > [!IMPORTANT]
 > A **Méret kiválasztása** ablakban megjelenő, becsült havi költségek nem tartalmazzák az SQL Server licencelési költségeit. Ez a becslés a önálló virtuális gép költségét. SQL Server Express és Developer kiadásai esetében ez a becslés a teljes becsült költség. Más kiadások esetében tekintse meg a [Windows rendszerű virtuális gépek árképzését ismertető oldalt](https://azure.microsoft.com/pricing/details/virtual-machines/windows/), és válassza ki az SQL Server megfelelő kiadását. További tájékoztatás a [az SQL Server Azure virtuális gépek díjszabási útmutatóját](virtual-machines-windows-sql-server-pricing-guidance.md) és [virtuális gépek méretei](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -141,15 +141,15 @@ Az a **hálózatkezelés** lapra, konfigurálja a hálózati beállításokat.
 
 #### <a name="monitoring"></a>Figyelés
 
-Az a **figyelés** fülre, konfigurálhatja a felügyeletet és automatikus leállítás. 
+Az a **figyelés** fülre, konfigurálhatja a felügyeletet és autoshutdown. 
 
 * Az Azure segítségével **rendszerindító figyelési** ugyanazt a tárfiókot az alapértelmezés szerint kijelölt a virtuális gép számára. Ezeket a beállításokat itt, valamint engedélyezésével módosíthatja **operációs rendszer Vendég diagnosztikai**. 
-* Engedélyezheti a **rendszer hozzárendelt felügyelt identitás** és **automatikus leállítási** ezen a lapon. 
+* Engedélyezheti a **rendszer hozzárendelt felügyelt identitás** és **autoshutdown** ezen a lapon. 
 
 ![SQL virtuális gép beállítások](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-management.png)
 
 
-## <a name="3-configure-sql-server-settings"></a>3. Az SQL Server beállításainak konfigurálása
+## <a name="3-configure-sql-server-settings"></a>3. SQL Server-beállítások konfigurálása
 
 Az a **SQL Server-beállítások** fülre, adott beállításait és optimalizálási lehetőségeit az SQL Server konfigurálása. Az SQL Server konfigurálható beállítások a következők:
 
@@ -166,7 +166,7 @@ Az a **SQL Server-beállítások** fülre, adott beállításait és optimalizá
 | [Az R Services (speciális elemzések)](#r-services-advanced-analytics) |
 
 
-### <a name="connectivity"></a>Kapcsolatok
+### <a name="connectivity"></a>Kapcsolat
 
 Az **SQL kapcsolatok** alatt adja meg, milyen típusú hozzáférést szeretne az ezen a virtuális gépen futó SQL Server-példányhoz. Ez a bemutató céljából, jelölje be a **nyilvános (internet)** kapcsolatok engedélyezéséhez az SQL Server a gépek és szolgáltatások az interneten. Ezt a lehetőséget választja, az Azure automatikusan úgy konfigurálja a tűzfalat és a hálózati biztonsági csoportot, hogy a forgalmat a kiválasztott porton.
 
@@ -188,7 +188,7 @@ Ha nem szeretné engedélyezni az adatbázis-alrendszerhez az interneten kereszt
 
 ### <a name="authentication"></a>Hitelesítés
 
-Ha SQL Server-hitelesítésre van szüksége, kattintson az **Engedélyezés** lehetőségre az **SQL-hitelesítés** alatt.
+Ha az SQL Server-hitelesítés van szüksége, kattintson a **engedélyezése** alatt **SQL-hitelesítés** a a **SQL Server-beállítások** fülre.
 
 ![SQL Server-hitelesítés](./media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-authentication.png)
 
@@ -199,13 +199,12 @@ Ha engedélyezi az SQL Server-hitelesítést, adjon meg egy **bejelentkezési ne
 
 Ha nem engedélyezi az SQL Server-hitelesítést, akkor a helyi virtuális gépen lévő rendszergazdai fiók használatával is csatlakozhat az SQL Server-példányhoz.
 
-![SQL Server-hitelesítés](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-authentication.png)
 
 ### <a name="azure-key-vault-integration"></a>Azure Key Vault-integráció
 
-Ha biztonsági titkokat az Azure-ban szeretne titkosítva tárolni, kattintson az **Azure key vault integration** (Azure Key Vault-integráció) elemre, majd az **Enable** (Engedélyezés) elemre.
+Szeretné tárolni a biztonsági titkokat az Azure-ban a titkosításhoz, válassza ki a **SQL Server-beállítások**, és görgessen le a **az Azure key vault-integráció**. Válassza ki **engedélyezése** , és töltse ki a kért adatokat. 
 
-![Azure Key Vault-integráció](media/virtual-machines-windows-ps-sql-keyvault/azure-sql-arm-akv.png)
+![Azure Key Vault-integráció](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-akv.png)
 
 A következő táblázat tartalmazza az Azure Key Vault-integráció konfigurálásához szükséges paramétereket.
 
@@ -220,7 +219,7 @@ További információkért lásd: [Configure Azure Key Vault Integration for SQL
 
 ### <a name="storage-configuration"></a>Tároló konfigurálása
 
-A **tárolási konfigurációt**válassza **konfigurációjának módosítása** tárolási követelmények megadásához.
+Az a **SQL Server-beállítások** lap **tárolási konfigurációt**válassza **konfigurációjának módosítása** tárolási követelmények megadásához.
 
 
 > [!NOTE]
@@ -239,7 +238,7 @@ A **Storage optimized for** (Tároló optimalizálási módja) területen válas
 
 ![SQL Virtuálisgép-tároló konfigurációja](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-storage-configuration.png)
 
-### <a name="sql-server-license"></a>SQL Server-licenc
+### <a name="sql-server-license"></a>SQL Server License
 Ha Ön egy frissítési garanciával rendelkező ügyfél, használhat a [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) a saját SQL Server-licencét, és az erőforrások mentéséhez. 
 
 ![SQL virtuális gép licenc](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-license.png)
@@ -264,17 +263,19 @@ Az SQL automatikus biztonsági mentésének engedélyezésekor konfigurálhatja 
 * Rendszeradatbázisok biztonsági mentése
 * Biztonsági mentések ütemezésének konfigurálása
 
-A biztonsági mentés titkosításához kattintson az **Engedélyezés** elemre. Ezután adja meg a **Jelszót**. Az Azure a biztonsági mentések titkosításához létrehoz egy tanúsítványt, amelyet a megadott jelszóval véd.
+A biztonsági mentés titkosításához kattintson az **Engedélyezés** elemre. Ezután adja meg a **Jelszót**. Az Azure a biztonsági mentések titkosításához létrehoz egy tanúsítványt, amelyet a megadott jelszóval véd. Alapértelmezés szerint az ütemezés automatikusan lett beállítva, de létrehozhat egy manuális ütemezés kiválasztásával **manuális**. 
+
+![SQL virtuális gép automatikus biztonsági másolatai](media/virtual-machines-windows-portal-sql-server-provision/automated-backup.png)
 
 További információk: [Automated Backup for SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-automated-backup.md) (Az SQL Server automatikus biztonsági mentése Azure virtuális gépeken).
 
 
 ### <a name="r-services-advanced-analytics"></a>Az R Services (speciális elemzések)
 
-Lehetősége van ahhoz, hogy [SQL Server R Services (Advanced Analytics)](/sql/advanced-analytics/r/sql-server-r-services/). Ez a beállítás lehetővé teszi, hogy az SQL Server 2017 továbbfejlesztett elemzéseinek használatára. Kattintson az **Engedélyezés** elemre az **SQL Server beállításai** ablakban.
+Lehetősége van ahhoz, hogy [SQL Server R Services (Advanced Analytics)](/sql/advanced-analytics/r/sql-server-r-services/). Ez a beállítás lehetővé teszi, hogy az SQL Server 2017 továbbfejlesztett elemzéseinek használatára. Válassza ki **engedélyezése** a a **SQL Server beállításai** ablak.
 
 
-## <a name="4-review--create"></a>4. Áttekintés + létrehozás
+## <a name="4-review--create"></a>4. Felülvizsgálat + létrehozás
 
 Az a **tekintse át + létrehozása** lapon tekintse át az összefoglalást, és válassza ki **létrehozás** hozhat létre SQL Server, erőforráscsoport és erőforrások virtuális Géphez megadott.
 

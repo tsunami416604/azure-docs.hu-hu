@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/25/2017
-ms.openlocfilehash: ef2507a15579ea3d145bfe37df281e2c044d181c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7554f0739626520153196472a790ab672a932331
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722334"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066217"
 ---
 # <a name="debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Az Apache Spark-alkalmazások hibakeresését helyileg vagy távolról egy HDInsight-fürtön az Azure-eszközkészlet ssh-n keresztül az IntelliJ-hez
 
@@ -26,7 +26,7 @@ Ebben a cikkben részletes útmutatást nyújt a használatára a HDInsight-eszk
 * **HDInsight SSH szolgáltatás a felhasználónév és jelszó felügyeleti**. További információkért lásd: [HDInsight (az Apache Hadoop) SSH használatával csatlakozhat](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) és [az SSH-bújtatással való eléréséről az Ambari webes felhasználói felület, JobHistory, NameNode, az Apache Oozie és egyéb webes felület...](https://docs.microsoft.com/azure/hdinsight/hdinsight-linux-ambari-ssh-tunnel). 
  
 ## <a name="learn-how-to-perform-local-run-and-debugging"></a>Ismerje meg, hogyan hajtsa végre a helyi Futtatás és hibakeresés
-### <a name="scenario-1-create-a-spark-scala-application"></a>1. forgatókönyv: Spark Scala-alkalmazás létrehozása 
+### <a name="scenario-1-create-a-spark-scala-application"></a>1\. forgatókönyv: Spark Scala-alkalmazás létrehozása 
 
 1. Indítsa el az IntelliJ IDEA-t, majd hozzon létre egy projektet. A **New Project** (Új projekt) párbeszédablakban hajtsa végre az alábbi lépéseket:
 
@@ -62,7 +62,7 @@ Ebben a cikkben részletes útmutatást nyújt a használatára a HDInsight-eszk
 
    b. Az a **projekt SDK** legördülő listában válassza **Java 1.8-as** a **Spark 2.x** fürt, vagy válasszon **Java 1.7-es** a **Spark 1.x**  fürt.
 
-   c. Az a **Spark-verzió** legördülő listából válassza ki, a Scala-projekt létrehozása varázsló együttműködik a megfelelő verziójú Spark SDK és a Scala SDK-val. Ha a spark-fürt verziója korábbi, mint a 2.0-s, jelölje be **Spark 1.x**. Ellenkező esetben válassza **Spark-2.x.** Ez a példa a következő verziót használja: **Spark 2.0.2 (Scala 2.11.8)**.
+   c. Az a **Spark-verzió** legördülő listából válassza ki, a Scala-projekt létrehozása varázsló együttműködik a megfelelő verziójú Spark SDK és a Scala SDK-val. Ha a spark-fürt verziója korábbi, mint a 2.0-s, jelölje be **Spark 1.x**. Ellenkező esetben válassza **Spark-2.x.** Ez a példa a következő verziót használja: **Spark 2.0.2 (Scala 2.11.8)** .
 
    d. Válassza a **Finish** (Befejezés) elemet.
 
@@ -73,9 +73,9 @@ A helyi Spark Scala-alkalmazások egy Windows-számítógépen futtatja, miközb
 
 Ez a hiba megoldásához [a végrehajtható fájl letöltése](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) egy olyan helyre, például **C:\WinUtils\bin**. Adja hozzá a környezeti változó **HADOOP_HOME**, és állítsa be a változó értékét **C:\WinUtils**.
 
-### <a name="scenario-2-perform-local-run"></a>2. forgatókönyv: Hajtsa végre a helyi Futtatás
+### <a name="scenario-2-perform-local-run"></a>2\. forgatókönyv: Hajtsa végre a helyi Futtatás
 1. Nyissa meg a **SparkCore_wasbloTest** parancsfájl, és kattintson a jobb gombbal a parancsprogram-szerkesztő, majd válassza ki, **futtassa a '[Spark-feladat] XXX'** végrehajtásához a helyi Futtatás.
-1. Egyszer helyi futtatás befejeződött, megjelenik a kimeneti fájlba menti az aktuális Projektböngészőben **adatok** > **__alapértelmezett__**.
+1. Egyszer helyi futtatás befejeződött, megjelenik a kimeneti fájlba menti az aktuális Projektböngészőben **adatok** >  **__alapértelmezett__** .
 
     ![Helyi futtatás eredménye](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-result.png)
 1. Az alapértelmezett helyi futtatási konfigurációs automatikusan végrehajtásakor a helyi Futtatás és helyi hibakeresési eszközeivel állított be. Nyissa meg a konfigurációs **[a Spark on HDInsight] XXX** a jobb felső sarokban látható a **[a Spark on HDInsight] XXX** már létrehozott **Apache Spark on HDInsight**. Váltson **helyileg futtassa** fülre.
@@ -84,22 +84,22 @@ Ez a hiba megoldásához [a végrehajtható fájl letöltése](https://public-re
     - [A környezeti változók](#prerequisite-for-windows): Ha már beállította a rendszer környezeti változó **HADOOP_HOME** való **C:\WinUtils**, azt is automatikusan észleli, hogy nem kell manuálisan adja hozzá.
     - [WinUtils.exe hely](#prerequisite-for-windows): Ha nem állított be a rendszer környezeti változót, annak helye a gombra kattintva.
     - Egyszerűen kiválaszthatja a két lehetőség közül választhat, és ezek nem szükségesek MacOS és Linux rendszeren.
-1. Beállíthatja a konfigurációt kézzel a helyi Futtatás és helyi hibakeresési elvégzése előtt is. Az előző képernyőképen látható, válassza a pluszjelet (**+**). Válassza ki a **Apache Spark on HDInsight** lehetőséget. Adja meg az adatokat **neve**, **Main osztály neve** mentéséhez, majd kattintson a helyi Futtatás gombra.
+1. Beállíthatja a konfigurációt kézzel a helyi Futtatás és helyi hibakeresési elvégzése előtt is. Az előző képernyőképen látható, válassza a pluszjelet ( **+** ). Válassza ki a **Apache Spark on HDInsight** lehetőséget. Adja meg az adatokat **neve**, **Main osztály neve** mentéséhez, majd kattintson a helyi Futtatás gombra.
 
-### <a name="scenario-3-perform-local-debugging"></a>3. forgatókönyv: Hajtsa végre a helyi hibakeresés
+### <a name="scenario-3-perform-local-debugging"></a>3\. forgatókönyv: Hajtsa végre a helyi hibakeresés
 1. Nyissa meg a **SparkCore_wasbloTest** szkriptet, set töréspontokat a kiválasztott.
 1. Kattintson a jobb gombbal a parancsprogram-szerkesztő, és válassza ki a lehetőséget **Debug a(z) [a Spark on HDInsight] XXX "** helyi Hibakeresés végrehajtásához.   
 
 
 
 ## <a name="learn-how-to-perform-remote-run-and-debugging"></a>Ismerje meg, hogyan hajtsa végre a távoli Futtatás és hibakeresés
-### <a name="scenario-1-perform-remote-run"></a>1. forgatókönyv: Hajtsa végre a távoli Futtatás
+### <a name="scenario-1-perform-remote-run"></a>1\. forgatókönyv: Hajtsa végre a távoli Futtatás
 
 1. Hozzáférés a **konfigurációk szerkesztése** menüben kattintson az ikonra a jobb felső sarokban. Ebből a menüből hozzon létre, vagy a távoli hibakeresésre vonatkozó konfigurációk szerkesztése.
 
    ![Konfigurációk szerkesztése](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-edit-configurations.png) 
 
-1. Az a **Futtatás és hibakeresés konfigurációk** párbeszédpanelen jelölje ki a plusz jelre (**+**). Válassza ki a **Apache Spark on HDInsight** lehetőséget.
+1. Az a **Futtatás és hibakeresés konfigurációk** párbeszédpanelen jelölje ki a plusz jelre ( **+** ). Válassza ki a **Apache Spark on HDInsight** lehetőséget.
 
    ![Új konfiguráció hozzáadása](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-add-new-Configuration.png)
 1. Váltson **távolról futtatni a fürt** fülre. Adja meg az adatokat **neve**, **Spark-fürt**, és **Main osztály neve**. Kattintson a **(távoli hibakeresés) speciális konfiguráció**. Az eszköz támogatja a hibakeresési **végrehajtóval**. A **numExectors**, az alapértelmezett értéke 5. Szeretné jobban nem beállíthat egy 3-nál nagyobb.
@@ -122,7 +122,7 @@ Ez a hiba megoldásához [a végrehajtható fájl letöltése](https://public-re
 
 
 
-### <a name="scenario-2-perform-remote-debugging"></a>2. forgatókönyv: Távoli hibakeresés végrehajtása
+### <a name="scenario-2-perform-remote-debugging"></a>2\. forgatókönyv: Távoli hibakeresés végrehajtása
 1. Állítsa be a használhatatlanná tévő pontok, és kattintson a **távoli hibakeresési** ikonra. Távoli beküldése az a különbség, hogy az SSH felhasználónév/jelszó kell konfigurálni.
 
    ![Válassza ki a hibakeresés ikon](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-icon.png)
@@ -131,7 +131,7 @@ Ez a hiba megoldásához [a végrehajtható fájl letöltése](https://public-re
 
    ![Hibakeresés lap](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debugger-tab.png)
 
-### <a name="scenario-3-perform-remote-debugging-and-bug-fixing"></a>3. forgatókönyv: Hajtsa végre a távoli hibakeresés és a hiba kijavítása
+### <a name="scenario-3-perform-remote-debugging-and-bug-fixing"></a>3\. forgatókönyv: Hajtsa végre a távoli hibakeresés és a hiba kijavítása
 1. Állítsa be a két használhatatlanná tévő pont, és válassza a **Debug** ikonra kattintva indítsa el a távoli hibakeresési folyamatot.
 
 1. A kód az első jelentős pontot megáll, és a paraméter és a változó információk láthatók a **változók** ablaktáblán. 
@@ -174,7 +174,6 @@ Ez a hiba megoldásához [a végrehajtható fájl letöltése](https://public-re
 ### <a name="tools-and-extensions"></a>Eszközök és bővítmények
 * [IntelliJ-hez készült Azure eszközkészlet használata egy HDInsight-fürtön az Apache Spark-alkalmazások létrehozása](apache-spark-intellij-tool-plugin.md)
 * [IntelliJ-hez készült Azure eszközkészlet használata Apache Spark-alkalmazások VPN-en keresztül távolról](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [HDInsight Tools for IntelliJ with hortonworks – tesztkörnyezet használata](../hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
 * [HDInsight Tools használata az Azure Toolkit for Eclipse Apache Spark-alkalmazások létrehozásához](../hdinsight-apache-spark-eclipse-tool-plugin.md)
 * [Az Apache Zeppelin notebookok használata a HDInsight Apache Spark-fürt](apache-spark-zeppelin-notebook.md)
 * [Notebookokhoz elérhető kernelek Jupyter a HDInsight az Apache Spark-fürt](apache-spark-jupyter-notebook-kernels.md)

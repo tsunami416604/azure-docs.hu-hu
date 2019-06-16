@@ -6,19 +6,19 @@ ms.service: automation
 ms.subservice: shared-resources
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/13/2019
+ms.date: 06/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fa7f5d3fb38eb1dbca51dec9b73dca3c998436aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 54ebe7df9523a863ae14bc55c6ae4c9635468755
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60500350"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063467"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Az Azure Automationben modulokkal kezelése
 
-Az Azure Automation lehetővé teszi a PowerShell-modulok importálásához az Automation-fiókját a PowerShell-alapú runbookok által használható. Ezek a modulok lehet egyéni modulok létrehozott, a PowerShell-galériából, vagy az AzureRM- és Az modulok az Azure-hoz.
+Az Azure Automation lehetővé teszi a PowerShell-modulok importálásához az Automation-fiókját a PowerShell-alapú runbookok által használható. Ezek a modulok lehet egyéni modulok létrehozott, a PowerShell-galériából, vagy az AzureRM- és Az modulok az Azure-hoz. Az Automation-fiók létrehozásakor bizonyos rendszer importálja a alapértelmezés szerint.
 
 ## <a name="import-modules"></a>Modulok importálása
 
@@ -50,6 +50,22 @@ Modul importálása a PowerShell-galériából, lépjen a https://www.powershell
 Közvetlenül az Automation-fiókját a PowerShell-galériából történő is importálhat modulok. Válassza ki az Automation-fiók **modulok** alatt **megosztott erőforrások**. A modulok oldalon kattintson a **Tallózás a katalógusban**. Megnyílik a **Tallózás a katalógusban** lapot. Keresés a PowerShell-galériából, a modul ezen a lapon. Válassza ki a modul importálása, és kattintson a kívánt **importálása**. Az a **importálása** kattintson **OK** az importálási folyamat elindításához.
 
 ![PowerShell-galériából importálás az Azure Portalon](../media/modules/gallery-azure-portal.png)
+
+## <a name="delete-modules"></a>Modul törlése
+
+Ha egy modul problémája van, vagy egy modul korábbi verziójának visszaállítása van szüksége, törölheti az Automation-fiókjából. Nem lehet törölni az eredeti verzió a [modulok alapértelmezett](#default-modules) , amely importált egy Automation-fiók létrehozásakor. Ha törli a modult egy újabb verziója-e a [modulok alapértelmezett](#default-modules) telepítve van, ez lesz az alkalmazásfrissítéseket a verzióra, amely az Automation-fiók használatával telepített. Ellenkező esetben az Automation-fiók törlése modult törlődni fog.
+
+### <a name="azure-portal"></a>Azure Portal
+
+Az Azure Portalon lépjen az Automation-fiókját, és válassza ki **modulok** alatt **megosztott erőforrások**. Válassza ki az eltávolítani kívánt modul. Az a **modul** oldal, clcick **törlése**. Ha ez a modul az egyik a [modulok alapértelmezett](#default-modules) azt vissza lesz állítva a verzióra, amely az Automation-fiók létrehozásakor jelen volt.
+
+### <a name="powershell"></a>PowerShell
+
+Egy PowerShell-modul eltávolításához futtassa a következő parancsot:
+
+```azurepowershell-interactive
+Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName>
+```
 
 ## <a name="internal-cmdlets"></a>Belső parancsmagok
 
@@ -209,6 +225,37 @@ Javasoljuk, hogy amikor szerzőként összeállít egy PowerShell-modul használ
 * A modul kell lehet teljes egészében egy xcopy-képes csomag. Azure Automation-modulokat az Automation próbakörnyezetekbe oszlanak meg, amikor a forgatókönyveket végre kell hajtani. A modulok kell működniük a gazdagéptől futnak. Meg kell tudni Zip beállítása és a egy csomag és normális működtetésére, amikor egy másik gazdagép PowerShell környezetébe importálja azt. Ahhoz, hogy ez megtörténjen a modul a modul mappákon kívül semmilyen fájl nem függenek. Ez a mappa az a mappa, a modul importálása az Azure Automationbe modulmappán. A modul is nem függhet egy gazdagép bármilyen egyedi beállításjegyzék-beállításokat, mint például állítsa be ezeket a beállításokat, a termék telepítésekor. A modulban lévő összes fájlt egy elérési utat kell kevesebb mint 140 karakter. Legfeljebb 140 keresztül bármilyen elérési utak a runbook importálása problémák miatt. Ha ez az ajánlott eljárás nem követik, a modul nem használható az Azure Automationben.  
 
 * Ha a hivatkozó [Az Azure Powershell-modulok](/powershell/azure/new-azureps-module-az?view=azps-1.1.0) a modult, ellenőrizze, nem is hivatkozó `AzureRM`. A `Az` modul nem használható együtt a `AzureRM` modulok. `Az` a runbookok támogatott, de alapértelmezés szerint nincsenek importálva. További információ a `Az` modulok és szempontokat vegye figyelembe, hogy tekintse meg a [házirendmodul-támogatás Az Azure Automation](../az-modules.md).
+
+## <a name="default-modules"></a>Alapértelmezett modulok
+
+Az alábbi táblázat a modulok egy Automation-fiók létrehozásakor alapértelmezés szerint importált. A modulok alábbi őket az importált újabb verzióit is rendelkezhet, de az eredeti verzió nem lehet eltávolítani az Automation-fiók akkor is, ha törli egy újabb verziója.
+
+|a modul neve|Version|
+|---|---|
+| AuditPolicyDsc | 1.1.0.0 |
+| Azure | 1.0.3 |
+| Azure.Storage | 1.0.3 |
+| AzureRM.Automation | 1.0.3 |
+| AzureRM.Compute | 1.2.1 |
+| AzureRM.Profile | 1.0.3 |
+| AzureRM.Resources | 1.0.3 |
+| AzureRM.Sql | 1.0.3 |
+| AzureRM.Storage | 1.0.3 |
+| ComputerManagementDsc | 5.0.0.0 |
+| GPRegistryPolicyParser | 0.2 |
+| Microsoft.PowerShell.Core | 0 |
+| Microsoft.PowerShell.Diagnostics |  |
+| Microsoft.PowerShell.Management |  |
+| Microsoft.PowerShell.Security |  |
+| Microsoft.PowerShell.Utility |  |
+| Microsoft.WSMan.Management |  |
+| Orchestrator.AssetManagement.Cmdlets | 1 |
+| PSDscResources | 2.9.0.0 |
+| SecurityPolicyDsc | 2.1.0.0 |
+| StateConfigCompositeResources | 1 |
+| xDSCDomainjoin | 1.1 |
+| xPowerShellExecutionPolicy | 1.1.0.0 |
+| xRemoteDesktopAdmin | 1.1.0.0 |
 
 ## <a name="next-steps"></a>További lépések
 

@@ -9,10 +9,10 @@ ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 7cbb934b87440d23e65fce53d7da40c5ffbd3150
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65597073"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
@@ -133,7 +133,7 @@ Az eredmények megjelenítése a fürt megosztott kötetei szolgáltatás:
 
 ### <a name="file-system-features"></a>Fájlrendszer-szolgáltatásokat
 
-| Szolgáltatás | Támogatás állapota | Megjegyzések |
+| Funkció | Támogatás állapota | Megjegyzések |
 |---------|----------------|-------|
 | Hozzáférés-vezérlési listák (ACL) | Teljes mértékben támogatott. | Windows hozzáférés-vezérlési listák az Azure File Sync megmaradnak, és kényszeríti a Windows Server server végpontokon. Windows hozzáférés-vezérlési listák (még nem) támogatja az Azure Files, ha a fájlok érhetők el közvetlenül a felhőben. |
 | Rögzített hivatkozások | Kihagyva | |
@@ -178,9 +178,9 @@ Olyan kötetek, amelyek nem rendelkeznek a felhőbeli rétegezés engedélyezve 
 ### <a name="distributed-file-system-dfs"></a>Az elosztott fájlrendszer (DFS)
 Az Azure File Sync kompatibilisek az elosztott Fájlrendszerbeli névtereket (DFS-N) és az elosztott fájlrendszer replikációs szolgáltatása (DFS-R) támogatja.
 
-**Az elosztott Fájlrendszerbeli névtereket (DFS-N)**: Az Azure File Sync teljes mértékben a DFS-N-kiszolgálókon támogatott. Egy vagy több DFS-N tagokat a kiszolgálói végpontot és a felhőbeli végpont közötti adatszinkronizálás az Azure File Sync ügynök telepíthető. További információkért lásd: [az elosztott Fájlrendszerbeli névterek áttekintése](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview).
+**Az elosztott Fájlrendszerbeli névtereket (DFS-N)** : Az Azure File Sync teljes mértékben a DFS-N-kiszolgálókon támogatott. Egy vagy több DFS-N tagokat a kiszolgálói végpontot és a felhőbeli végpont közötti adatszinkronizálás az Azure File Sync ügynök telepíthető. További információkért lásd: [az elosztott Fájlrendszerbeli névterek áttekintése](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview).
  
-**Elosztott fájlrendszer replikációs szolgáltatása (DFS-R)**: Mivel a DFS-R és az Azure File Sync mindkét replikációs megoldások, a legtöbb esetben azt javasoljuk, és cserélje le a DFS-R az Azure File Sync használatával. Van azonban számos forgatókönyv, ahol szeretne, használja a DFS-R és az Azure File Sync együtt:
+**Elosztott fájlrendszer replikációs szolgáltatása (DFS-R)** : Mivel a DFS-R és az Azure File Sync mindkét replikációs megoldások, a legtöbb esetben azt javasoljuk, és cserélje le a DFS-R az Azure File Sync használatával. Van azonban számos forgatókönyv, ahol szeretne, használja a DFS-R és az Azure File Sync együtt:
 
 - Az Azure File Sync üzembe helyezésének áttelepítése a DFS-R-telepítésből. További információkért lásd: [áttelepítheti egy elosztott fájlrendszer replikációs szolgáltatása (DFS-R) környezetet az Azure File Sync](storage-sync-files-deployment-guide.md#migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync).
 - Nem minden helyszíni kiszolgáló, amelyekre szüksége van egy példányát az adatokat közvetlenül az internethez való csatlakoztathatók.
@@ -230,7 +230,7 @@ Az Azure File Sync nem működik az ismert:
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Egyéb hierarchikus tárolás (HSM) megoldások
 Nincs más HSM-megoldások az Azure File Sync használatával kell használni.
 
-## <a name="region-availability"></a>Regionális elérhetőség
+## <a name="region-availability"></a>Régiónkénti elérhetőség
 Az Azure File Sync csak az alábbi régiókban érhető el:
 
 | Régió | Adatközpont helye |
@@ -254,15 +254,15 @@ Az Azure File Sync csak az alábbi régiókban érhető el:
 | USA déli középső régiója | Texas |
 | Dél-India | Csennai |
 | Délkelet-Ázsia | Szingapúr |
-| Egyesült Királyság déli régiója | London |
-| Egyesült Királyság nyugati régiója | Cardiff |
+| Az Egyesült Királyság déli régiója | London |
+| Az Egyesült Királyság nyugati régiója | Cardiff |
 | USA Arizona állam (előzetes verzió) | Arizona |
 | USA-beli államigazgatás – Texas (előzetes verzió) | Texas |
 | USA-beli államigazgatás – Virginia (előzetes verzió) | Virginia |
 | Nyugat-Európa | Hollandia |
 | USA nyugati középső régiója | Wyoming |
 | USA nyugati régiója | Kalifornia |
-| USA 2. nyugati régiója | Washington |
+| USA nyugati régiója, 2. | Washington |
 
 Az Azure File Sync támogatja, és a Storage Sync Service ugyanabban a régióban található Azure-fájlmegosztások csak való szinkronizálását.
 
@@ -298,15 +298,15 @@ Georedundáns tárolás és az Azure File Sync feladatátvételi integrációjá
 | USA déli középső régiója    | USA északi középső régiója   |
 | Dél-India         | Közép-India      |
 | Délkelet-Ázsia      | Kelet-Ázsia          |
-| Egyesült Királyság déli régiója            | Egyesült Királyság nyugati régiója            |
-| Egyesült Királyság nyugati régiója             | Egyesült Királyság déli régiója           |
-| US Gov Arizona      | US Gov Texas       |
-| US Gov Iowa         | US Gov Virginia    |
-| US Gov Virgini      | US Gov Texas       |
+| Az Egyesült Királyság déli régiója            | Az Egyesült Királyság nyugati régiója            |
+| Az Egyesült Királyság nyugati régiója             | Az Egyesült Királyság déli régiója           |
+| USA-beli államigazgatás – Arizona      | USA-beli államigazgatás – Texas       |
+| US Gov Iowa         | USA-beli államigazgatás – Virginia    |
+| US Gov Virgini      | USA-beli államigazgatás – Texas       |
 | Nyugat-Európa         | Észak-Európa       |
-| USA nyugati középső régiója     | USA 2. nyugati régiója          |
+| USA nyugati középső régiója     | USA nyugati régiója, 2.          |
 | USA nyugati régiója             | USA keleti régiója            |
-| USA 2. nyugati régiója           | USA nyugati középső régiója    |
+| USA nyugati régiója, 2.           | USA nyugati középső régiója    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Az Azure File Sync ügynökének frissítési szabályzata
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

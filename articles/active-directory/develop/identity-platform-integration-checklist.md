@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev
-ms.openlocfilehash: 0d44e5d9f0d1ed893a16c318e3cfa0ee1bfc123b
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 0acef783b4877b5b1787f142aec6cc3588293f83
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823350"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111458"
 ---
 # <a name="microsoft-identity-platform-integration-checklist"></a>A Microsoft identity platform integrációs ellenőrzőlista
 
@@ -45,20 +45,20 @@ A következő ellenőrzőlista segítségével győződjön meg arról, hogy az 
 |---|---|
 | ![Jelölőnégyzet](./media/active-directory-integration-checklist/checkbox-two.svg) | Ellenőrizze, hogy naprakész állapotban, amellyel regisztrálja és kezeli az alkalmazásokat a fiókhoz társított információkat. |
 
-### <a name="branding"></a>Védjegyezés
+### <a name="branding"></a>Védjegyzési
 
 |   |   |
 |---|---|
 | ![Jelölőnégyzet](./media/active-directory-integration-checklist/checkbox-two.svg) | Csatlakozhat a [védjegyzési útmutató alkalmazások](howto-add-branding-in-azure-ad-apps.md). |
 | ![Jelölőnégyzet](./media/active-directory-integration-checklist/checkbox-two.svg) | Adjon meg egy közérthető nevet és embléma az alkalmazáshoz. Ez az információ jelenik meg az alkalmazás beleegyezést kérő üzenetet. Ellenőrizze, hogy a védjegy és embléma a vállalati/product képviselője, hogy a felhasználók megalapozott döntéseket hozhat. Győződjön meg arról, hogy nem használ megsértése bármely védjegye. |
 
-### <a name="privacy"></a>Adatvédelem
+### <a name="privacy"></a>Személyes adatok védelme
 
 |   |   |
 |---|---|
 | ![Jelölőnégyzet](./media/active-directory-integration-checklist/checkbox-two.svg) | Az alkalmazás használati és az adatvédelmi nyilatkozat mutató hivatkozásokat tartalmaznak. |
 
-### <a name="security"></a>Biztonsági
+### <a name="security"></a>Biztonság
 
 |   |   |
 |---|---|
@@ -70,7 +70,7 @@ A következő ellenőrzőlista segítségével győződjön meg arról, hogy az 
 | ![Jelölőnégyzet](./media/active-directory-integration-checklist/checkbox-two.svg) | Győződjön meg arról, hogy az alkalmazás a legalacsonyabb jogosultsági engedélyt kér. Csak az alkalmazása feltétlenül szükséges engedélyekkel, és csak akkor kérjen szüksége lesz rájuk. Megismerheti a különböző [típusú engedélyeket](v1-permissions-and-consent.md#types-of-permissions). Csak az Alkalmazásengedélyek; szükség esetén használja delegált engedélyeket használ, ahol csak lehetséges. A Microsoft Graph-engedélyek teljes listáját lásd: Ez [engedélyek referencia](https://docs.microsoft.com/graph/permissions-reference). |
 | ![Jelölőnégyzet](./media/active-directory-integration-checklist/checkbox-two.svg) | Ha egy API-t a Microsoft identity platform biztonságáról, gondosan végiggondoljon az engedélyeket kell elérhetővé tennie. Fontolja meg, mi a megoldás a megfelelő részletességgel, és mely eke rendszergazdai jóváhagyásra van szükség. Ellenőrizze a bejövő jogkivonatot az várt engedélyek engedélyezési döntések meghozatala előtt. |
 
-### <a name="implementation"></a>Implementáció
+### <a name="implementation"></a>Megvalósítás
 
 |   |   |
 |---|---|

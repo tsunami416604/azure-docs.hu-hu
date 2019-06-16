@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: b18c4c039b615c7c88268b6e668df9f7fec9fabf
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: 414573a90e5a7b7de845b65e6e88715a26024f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66687925"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67125788"
 ---
 # <a name="copy-data-from-amazon-s3-buckets-by-using-azcopy"></a>Adatok másolása az Amazon S3 gyűjtő AzCopy használatával
 
@@ -49,6 +49,9 @@ Az AWS-hozzáférési kulcsot és titkos hívóbetűje gyűjthet, és állítsa 
 ## <a name="copy-objects-directories-and-buckets"></a>Objektumok, könyvtárak és gyűjtők másolása
 
 Az AzCopy használja a [URL blokk Put](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) API-t, így közvetlenül az AWS S3 és a tároló kiszolgálók közötti adatokat másolja. Ezek a másolási műveletek ne használja a hálózati sávszélesség számítógép.
+
+> [!IMPORTANT]
+> Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Ha úgy dönt, hogy az S3 gyűjtő adat eltávolításához a másolási műveletek után, ügyeljen arra, hogy ellenőrizze, hogy az adatok megfelelően másolta a tárfiók az adatok eltávolítása előtt.
 
 ### <a name="copy-an-object"></a>Egy objektum másolása
 

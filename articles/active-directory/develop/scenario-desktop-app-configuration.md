@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc0042d6392891e8282c563afea2212031a0f49a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: f0224c215c1d5f6e0c36402926a594dcd79d2af0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121884"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057237"
 ---
 # <a name="desktop-app-that-calls-web-apis---code-configuration"></a>Asztali alkalmazás, hogy a hívások webes API-k – helykódot
 
@@ -45,7 +45,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
-Ha szeretne használni az interaktív hitelesítéshez, ahogy fent látható, szeretné-e használni a `.WithRedirectUri` módosító:
+Ha szeretne használni az interaktív hitelesítéshez vagy eszköz kód Flow, ahogy fent látható, szeretné-e használni a `.WithRedirectUri` módosító:
 
 ```CSharp
 IPublicClientApplication app;
@@ -96,7 +96,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-### <a name="learn-more"></a>Tudnivalók a modellalapú alkalmazások létrehozásáról
+### <a name="learn-more"></a>Részletek
 
 További az MSAL.NET asztali alkalmazás konfigurálása:
 

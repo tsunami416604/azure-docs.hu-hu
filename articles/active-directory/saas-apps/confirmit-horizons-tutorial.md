@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 8fce2451c915eb4480f6068667350da80e5cf7c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6127f149141db275c4b13c25fd6fbd0241b3e404
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60280829"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105041"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confirmit-horizons"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Confirmit szintek
 
@@ -55,7 +55,7 @@ Az Azure AD integrálása a Confirmit szintek konfigurálásához hozzá kell Co
 
 **A katalógus Confirmit szintek hozzáadásához hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

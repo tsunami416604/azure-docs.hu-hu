@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
 ms.openlocfilehash: af4c3829c8b12bfcaae0602dde8f459de7e50f3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60754302"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "67120513"
 ---
 - **Rendelés részletei**. Egy rendelést hoznak létre, a szállítási cím, e-mail-címét és a felhasználó kapcsolattartási adatait tárolja az Azure Portalon. A mentett információk a következők:
   - Kapcsolattartó neve

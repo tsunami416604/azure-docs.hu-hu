@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea1e47939913435b5b7040c0e6d01b1208d709d3
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 355e61fdfd9847e54a4bd13ac3b0f2d416c05812
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962901"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111961"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>A Microsoft identity platform hozzáférési jogkivonatok
 
@@ -39,9 +39,9 @@ Az alábbi részekből megtudhatja, hogyan erőforrás ellenőrzése és belül 
 
 ## <a name="sample-tokens"></a>Minta jogkivonatok
 
-1.0-s és 2.0-s verziójú jogkivonatok hasonlóan néz ki, és számos, ugyanazon jogcímeket tartalmaznak. Az egyes például itt.
+1\.0-s és 2.0-s verziójú jogkivonatok hasonlóan néz ki, és számos, ugyanazon jogcímeket tartalmaznak. Az egyes például itt.
 
-### <a name="v10"></a>1.0-s verzió
+### <a name="v10"></a>1\.0-s verzió
 
 ```
 eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSIsImtpZCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSJ9.eyJhdWQiOiJlZjFkYTlkNC1mZjc3LTRjM2UtYTAwNS04NDBjM2Y4MzA3NDUiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9mYTE1ZDY5Mi1lOWM3LTQ0NjAtYTc0My0yOWYyOTUyMjIyOS8iLCJpYXQiOjE1MzcyMzMxMDYsIm5iZiI6MTUzNzIzMzEwNiwiZXhwIjoxNTM3MjM3MDA2LCJhY3IiOiIxIiwiYWlvIjoiQVhRQWkvOElBQUFBRm0rRS9RVEcrZ0ZuVnhMaldkdzhLKzYxQUdyU091TU1GNmViYU1qN1hPM0libUQzZkdtck95RCtOdlp5R24yVmFUL2tES1h3NE1JaHJnR1ZxNkJuOHdMWG9UMUxrSVorRnpRVmtKUFBMUU9WNEtjWHFTbENWUERTL0RpQ0RnRTIyMlRJbU12V05hRU1hVU9Uc0lHdlRRPT0iLCJhbXIiOlsid2lhIl0sImFwcGlkIjoiNzVkYmU3N2YtMTBhMy00ZTU5LTg1ZmQtOGMxMjc1NDRmMTdjIiwiYXBwaWRhY3IiOiIwIiwiZW1haWwiOiJBYmVMaUBtaWNyb3NvZnQuY29tIiwiZmFtaWx5X25hbWUiOiJMaW5jb2xuIiwiZ2l2ZW5fbmFtZSI6IkFiZSAoTVNGVCkiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMjIyNDcvIiwiaXBhZGRyIjoiMjIyLjIyMi4yMjIuMjIiLCJuYW1lIjoiYWJlbGkiLCJvaWQiOiIwMjIyM2I2Yi1hYTFkLTQyZDQtOWVjMC0xYjJiYjkxOTQ0MzgiLCJyaCI6IkkiLCJzY3AiOiJ1c2VyX2ltcGVyc29uYXRpb24iLCJzdWIiOiJsM19yb0lTUVUyMjJiVUxTOXlpMmswWHBxcE9pTXo1SDNaQUNvMUdlWEEiLCJ0aWQiOiJmYTE1ZDY5Mi1lOWM3LTQ0NjAtYTc0My0yOWYyOTU2ZmQ0MjkiLCJ1bmlxdWVfbmFtZSI6ImFiZWxpQG1pY3Jvc29mdC5jb20iLCJ1dGkiOiJGVnNHeFlYSTMwLVR1aWt1dVVvRkFBIiwidmVyIjoiMS4wIn0=.D3H6pMUtQnoJAGq6AHd
@@ -49,7 +49,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEps
 
 Megtekintheti az 1.0-s verziójú jogkivonatot [JWT.ms](https://jwt.ms/#access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSIsImtpZCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSJ9.eyJhdWQiOiJlZjFkYTlkNC1mZjc3LTRjM2UtYTAwNS04NDBjM2Y4MzA3NDUiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9mYTE1ZDY5Mi1lOWM3LTQ0NjAtYTc0My0yOWYyOTUyMjIyOS8iLCJpYXQiOjE1MzcyMzMxMDYsIm5iZiI6MTUzNzIzMzEwNiwiZXhwIjoxNTM3MjM3MDA2LCJhY3IiOiIxIiwiYWlvIjoiQVhRQWkvOElBQUFBRm0rRS9RVEcrZ0ZuVnhMaldkdzhLKzYxQUdyU091TU1GNmViYU1qN1hPM0libUQzZkdtck95RCtOdlp5R24yVmFUL2tES1h3NE1JaHJnR1ZxNkJuOHdMWG9UMUxrSVorRnpRVmtKUFBMUU9WNEtjWHFTbENWUERTL0RpQ0RnRTIyMlRJbU12V05hRU1hVU9Uc0lHdlRRPT0iLCJhbXIiOlsid2lhIl0sImFwcGlkIjoiNzVkYmU3N2YtMTBhMy00ZTU5LTg1ZmQtOGMxMjc1NDRmMTdjIiwiYXBwaWRhY3IiOiIwIiwiZW1haWwiOiJBYmVMaUBtaWNyb3NvZnQuY29tIiwiZmFtaWx5X25hbWUiOiJMaW5jb2xuIiwiZ2l2ZW5fbmFtZSI6IkFiZSAoTVNGVCkiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMjIyNDcvIiwiaXBhZGRyIjoiMjIyLjIyMi4yMjIuMjIiLCJuYW1lIjoiYWJlbGkiLCJvaWQiOiIwMjIyM2I2Yi1hYTFkLTQyZDQtOWVjMC0xYjJiYjkxOTQ0MzgiLCJyaCI6IkkiLCJzY3AiOiJ1c2VyX2ltcGVyc29uYXRpb24iLCJzdWIiOiJsM19yb0lTUVUyMjJiVUxTOXlpMmswWHBxcE9pTXo1SDNaQUNvMUdlWEEiLCJ0aWQiOiJmYTE1ZDY5Mi1lOWM3LTQ0NjAtYTc0My0yOWYyOTU2ZmQ0MjkiLCJ1bmlxdWVfbmFtZSI6ImFiZWxpQG1pY3Jvc29mdC5jb20iLCJ1dGkiOiJGVnNHeFlYSTMwLVR1aWt1dVVvRkFBIiwidmVyIjoiMS4wIn0=.D3H6pMUtQnoJAGq6AHd).
 
-### <a name="v20"></a>2.0-s verzió
+### <a name="v20"></a>2\.0-s verzió
 
 ```
 eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSJ9.eyJhdWQiOiI2ZTc0MTcyYi1iZTU2LTQ4NDMtOWZmNC1lNjZhMzliYjEyZTMiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3L3YyLjAiLCJpYXQiOjE1MzcyMzEwNDgsIm5iZiI6MTUzNzIzMTA0OCwiZXhwIjoxNTM3MjM0OTQ4LCJhaW8iOiJBWFFBaS84SUFBQUF0QWFaTG8zQ2hNaWY2S09udHRSQjdlQnE0L0RjY1F6amNKR3hQWXkvQzNqRGFOR3hYZDZ3TklJVkdSZ2hOUm53SjFsT2NBbk5aY2p2a295ckZ4Q3R0djMzMTQwUmlvT0ZKNGJDQ0dWdW9DYWcxdU9UVDIyMjIyZ0h3TFBZUS91Zjc5UVgrMEtJaWpkcm1wNjlSY3R6bVE9PSIsImF6cCI6IjZlNzQxNzJiLWJlNTYtNDg0My05ZmY0LWU2NmEzOWJiMTJlMyIsImF6cGFjciI6IjAiLCJuYW1lIjoiQWJlIExpbmNvbG4iLCJvaWQiOiI2OTAyMjJiZS1mZjFhLTRkNTYtYWJkMS03ZTRmN2QzOGU0NzQiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhYmVsaUBtaWNyb3NvZnQuY29tIiwicmgiOiJJIiwic2NwIjoiYWNjZXNzX2FzX3VzZXIiLCJzdWIiOiJIS1pwZmFIeVdhZGVPb3VZbGl0anJJLUtmZlRtMjIyWDVyclYzeERxZktRIiwidGlkIjoiNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3IiwidXRpIjoiZnFpQnFYTFBqMGVRYTgyUy1JWUZBQSIsInZlciI6IjIuMCJ9.pj4N-w_3Us9DrBLfpCt
@@ -74,7 +74,7 @@ Jogcím jelen, csak akkor, ha egy érték létezik, és töltse fel. Így az alk
 
 ### <a name="header-claims"></a>Fejléc jogcímek
 
-|Igénylés | Formátum | Leírás |
+|Jogcím | Formátum | Leírás |
 |--------|--------|-------------|
 | `typ` | Karakterlánc - mindig "JWT" | Azt jelzi, hogy a jogkivonat jwt-t.|
 | `nonce` | String | Ismétlésének támadások elleni védelmére szolgáló egyedi azonosítója. Az erőforrást rögzítheti replays elleni védelem érdekében ezt az értéket. |
@@ -84,7 +84,7 @@ Jogcím jelen, csak akkor, ha egy érték létezik, és töltse fel. Így az alk
 
 ### <a name="payload-claims"></a>Hasznos adat jogcímek
 
-| Igénylés | Formátum | Leírás |
+| Jogcím | Formátum | Leírás |
 |-----|--------|-------------|
 | `aud` | Az Alkalmazásazonosító URI-karakterláncot | A jogkivonat az illetékes címzett azonosítja. A hozzáférési jogkivonatokban a célközönségét az alkalmazás Alkalmazásazonosító, az Azure Portalon az alkalmazáshoz rendelt. Az alkalmazás kell érvényesíteni ezt az értéket, és elutasítja a tokent, ha az érték nem egyezik. |
 | `iss` | Az STS-URI-karakterláncot | Azonosítja a biztonsági jogkivonat-szolgáltatás (STS) hoz létre, és a jogkivonatot, és az Azure AD-bérlővel, amelyben a felhasználó hitelesítési adja vissza. Ha a kiállított biztonsági jogkivonat v2.0 jogkivonat (lásd a `ver` jogcím), belül véget ér. az URI-t `/v2.0`. A GUID, amely azt jelzi, hogy a felhasználó Microsoft-fiók fogyasztói felhasználója `9188040d-6c67-4c5b-b112-36a304b66dad`. Az alkalmazás, amely bejelentkezhet az alkalmazásba, ha van ilyen bérlők korlátozni a jogcím GUID részének kell használni. |
@@ -117,9 +117,9 @@ Jogcím jelen, csak akkor, ha egy érték létezik, és töltse fel. Így az alk
 
 #### <a name="v10-basic-claims"></a>Alapszintű jogcímek 1.0-s verzió
 
-A következő jogcímek 1.0-s verziójú jogkivonatok, ha van ilyen fog szerepelni, de nem szerepelnek a 2.0-s verziójú jogkivonatok alapértelmezés szerint. 2.0-s verziójú, és meg kell ezeket a jogcímek használata, tanúsítványkérelmeket használatával [választható jogcímek](active-directory-optional-claims.md).
+A következő jogcímek 1.0-s verziójú jogkivonatok, ha van ilyen fog szerepelni, de nem szerepelnek a 2.0-s verziójú jogkivonatok alapértelmezés szerint. 2\.0-s verziójú, és meg kell ezeket a jogcímek használata, tanúsítványkérelmeket használatával [választható jogcímek](active-directory-optional-claims.md).
 
-| Igénylés | Formátum | Leírás |
+| Jogcím | Formátum | Leírás |
 |-----|--------|-------------|
 | `ipaddr`| String | Az IP-cím a felhasználó hitelesítést hajtottak végre. |
 | `onprem_sid`| A karakterlánc [biztonsági azonosító formátuma](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | Azokban az esetekben, ahol a felhasználó rendelkezik-e egy a helyszíni hitelesítéshez ezt az igényt a SID biztosít. Használhat `onprem_sid` engedélyezési az örökölt alkalmazások számára.|
@@ -233,12 +233,12 @@ Frissítési jogkivonatok érvénytelenítve, vagy tetszőleges időpontban, kü
 |   | Jelszó-alapú cookie-k | Jelszavas tokent | Nem-jelszó-alapú cookie-k | Nem – jelszavas tokent | Bizalmas ügyfél jogkivonat |
 |---|-----------------------|----------------------|---------------------------|--------------------------|---------------------------|
 | Jelszó lejárata | Aktív marad | Aktív marad | Aktív marad | Aktív marad | Aktív marad |
-| Felhasználó jelszavát | Visszavonva | Visszavonva | Aktív marad | Aktív marad | Aktív marad |
-| Felhasználó végrehajtja az SSPR | Visszavonva | Visszavonva | Aktív marad | Aktív marad | Aktív marad |
-| Rendszergazdai jelszó alaphelyzetbe állítása | Visszavonva | Visszavonva | Aktív marad | Aktív marad | Aktív marad |
-| Felhasználó visszavonja a frissítési biztonsági jogkivonat [PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) | Visszavonva | Visszavonva | Visszavonva | Visszavonva | Visszavonva |
-| Rendszergazdai a bérlőhöz tartozó összes frissítési biztonsági jogkivonat visszahívja azokat [PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) | Visszavonva | Visszavonva |Visszavonva | Visszavonva | Visszavonva |
-| [Egyszeri kijelentkezéshez](v1-protocols-openid-connect-code.md#single-sign-out) a weben | Visszavonva | Aktív marad | Visszavonva | Aktív marad | Aktív marad |
+| Felhasználó jelszavát | Revoked | Revoked | Aktív marad | Aktív marad | Aktív marad |
+| Felhasználó végrehajtja az SSPR | Revoked | Revoked | Aktív marad | Aktív marad | Aktív marad |
+| Rendszergazdai jelszó alaphelyzetbe állítása | Revoked | Revoked | Aktív marad | Aktív marad | Aktív marad |
+| Felhasználó visszavonja a frissítési biztonsági jogkivonat [PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) | Revoked | Revoked | Revoked | Revoked | Revoked |
+| Rendszergazdai a bérlőhöz tartozó összes frissítési biztonsági jogkivonat visszahívja azokat [PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) | Revoked | Revoked |Revoked | Revoked | Revoked |
+| [Egyszeri kijelentkezéshez](v1-protocols-openid-connect-code.md#single-sign-out) a weben | Revoked | Aktív marad | Revoked | Aktív marad | Aktív marad |
 
 > [!NOTE]
 > Egy "jelszó nem-alapú" Bejelentkezés az egyik, a felhasználó nem írja be a jelszót, hogy álljon a. A face használata esetén például a Windows Hello, egy FIDO-kulcs vagy egy PIN-kódot.

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 5/5/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c4928050f945ac88dd1f86e2a13b5d26d385e55a
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: c765c3e29166358f3504949136a67d8d0db96be8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190010"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078148"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Az Azure Files méretezhetőségi és teljesítménycéljai
 
@@ -42,16 +42,18 @@ Példa: Egyetlen megosztása 100 000 IOPS érhető el, és egyetlen fájl akár 
 
 ### <a name="premium-filestorage-account-limits"></a>Prémium szintű FileStorage korlátai
 
-Prémium szintű fájlmegosztások vannak kiépítve nevű speciális tárfiók **filestorage (előzetes verzió)**. Ez a fiók rendelkezik, mint a normál fájlmegosztásokhoz használt tárfiók némileg eltérő méretezési célokat. A tárolási fiók méretezési célokat, tekintse meg a tábla a [az Azure storage-fiók méretezési célok](#azure-storage-account-scale-targets) szakaszban.
+Prémium szintű fájlmegosztások vannak kiépítve nevű speciális tárfiók **filestorage (előzetes verzió)** . Ez a fiók rendelkezik, mint a normál fájlmegosztásokhoz használt tárfiók némileg eltérő méretezési célokat. A tárolási fiók méretezési célokat, tekintse meg a tábla a [az Azure storage-fiók méretezési célok](#azure-storage-account-scale-targets) szakaszban.
 
 > [!IMPORTANT]
 > Tárfiókok korlátai megosztások a alkalmazni. Méretezés akár a storage-fiókok maximális száma csak akkor megvalósítható, ha csak egy megosztás tárfiókonként.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
+[!INCLUDE [storage-files-premium-scale-targets](../../../includes/storage-files-premium-scale-targets.md)]
+
 ## <a name="azure-file-sync-scale-targets"></a>Az Azure File Sync méretezési célok
 
-Az Azure File Sync rendelkezik megpróbáltuk lehető legnagyobb mértékben tervezhet a korlátlan használat, ez azonban nem mindig lehetséges. Az alábbi táblázat azt jelzi, hogy tesztelés határain, és mely tárolók ténylegesen szigorú korlátozásokat:
+Az Azure File Sync a cél az korlátlan használat úgy lett kialakítva, de a korlátlan használat értéke nem mindig lehetséges. Az alábbi táblázat azt jelzi, hogy a Microsoft-tesztelés határain és is jelzi, hogy mely célok a szigorú korlátozásokat:
 
 [!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
@@ -92,7 +94,7 @@ Ha a kiszolgáló új végpont létrehozása az Azure File Sync ügynök nem tö
 | Töltse fel az átviteli sebesség | másodpercenként 30 objektumok |
 | Teljes átviteli sebesség * | másodpercenként 60 objektumok |
 
-* Ha felhőbeli rétegezés engedélyezve van, akkor valószínű, hogy tekintse át az adatokat a rendszer letölti a fájlt csak néhány jobb teljesítményt. Az Azure File Sync csak letölti az adatokat a gyorsítótárban tárolt fájlok, a végpontok bármelyikét, módosításakor. Rétegzett vagy újonnan létrehozott fájlokhoz az ügynök nem tölti le a fájl adatait, és inkább csak szinkronizálja a névtér összes kiszolgálói végpontot. Az ügynök is támogatja a részleges letöltés rétegzett fájlok, a felhasználó által elért. 
+\* Ha felhőbeli rétegezés engedélyezve van, akkor valószínű, hogy tekintse át az adatokat a rendszer letölti a fájlt csak néhány jobb teljesítményt. Az Azure File Sync csak letölti az adatokat a gyorsítótárban tárolt fájlok, a végpontok bármelyikét, módosításakor. Rétegzett vagy újonnan létrehozott fájlokhoz az ügynök nem tölti le a fájl adatait, és inkább csak szinkronizálja a névtér összes kiszolgálói végpontot. Az ügynök is támogatja a részleges letöltés rétegzett fájlok, a felhasználó által elért. 
 
 > [!Note]  
 > A fenti számok nem állnak arra utalhat, hogy a teljesítmény, amely fog tapasztalni. A tényleges teljesítmény több tényezőtől függ, ez a szakasz elején leírt módon.

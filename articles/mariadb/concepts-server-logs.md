@@ -5,21 +5,21 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 04/29/2019
-ms.openlocfilehash: 8a78a9b8f0772a83e45ac2b926878e61e6ee2e61
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.date: 06/12/2019
+ms.openlocfilehash: 7a517be49a249b0b73c901137381bd05946aa4cc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926333"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065705"
 ---
-# <a name="server-logs-in-azure-database-for-mariadb"></a>Kiszolgálói naplók az Azure Database for MariaDB
+# <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Lassú lekérdezések naplók az Azure Database for MariaDB
 Az Azure Database for MariaDB a lassú lekérdezések naplója a felhasználók számára érhető el. A tranzakciós naplóba való hozzáférés nem támogatott. A lassú lekérdezések naplója segítségével azonosíthatja a szűk keresztmetszeteket hibaelhárításhoz.
 
 A lassú lekérdezések naplója kapcsolatos további információkért lásd: MariaDB dokumentációját [lassú lekérdezések naplója](https://mariadb.com/kb/en/library/slow-query-log-overview/).
 
-## <a name="access-server-logs"></a>Hozzáférés a kiszolgálói naplókhoz
-Listán, és töltse le az Azure Database for MariaDB naplóit az Azure Portalon, és az Azure CLI használatával.
+## <a name="access-slow-query-logs"></a>Hozzáférés a lassú lekérdezések naplói
+Listán, és töltse le az Azure Database for MariaDB lassú lekérdezések naplóinak, az Azure Portalon, és az Azure CLI használatával.
 
 Az Azure Portalon válassza ki az Azure Database for MariaDB-kiszolgáló. Alatt a **figyelés** szakaszban kattintson a **kiszolgálónaplók** lapot.
 
@@ -30,7 +30,7 @@ Naplók létrehozás legfeljebb hét napig érhetők el. Naplók összesített m
 
 Naplók vannak-e forgatni minden 24 órás vagy azt 7 GB, amelyik először bekövetkezik.
 
-## <a name="configure-logging"></a>Naplózás konfigurálása
+## <a name="configure-slow-query-logging"></a>Lassú lekérdezések naplózásának konfigurálásához
 A lassú lekérdezések naplója alapértelmezés szerint le van tiltva. Annak engedélyezéséhez állítsa slow_query_log ON.
 
 Egyéb úgy módosíthatja a paraméterek a következők:
@@ -75,7 +75,7 @@ A következő táblázat ismerteti, mi az egyes naplókhoz. A kimeneti módszert
 | `insert_id_s` | ID beszúrása |
 | `sql_text_s` | Teljes lekérdezést |
 | `server_id_s` | Kiszolgáló azonosítója |
-| `thread_id_s` | Szálazonosító |
+| `thread_id_s` | ID vlákna |
 | `\_ResourceId` | Erőforrás-URI |
 
 ## <a name="next-steps"></a>További lépések

@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: mstephen
 ms.openlocfilehash: 65cc63b32afcc565f1901c4df2893ad103ec0da3
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66234910"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Engedélyezze az Active Directory Domain Servicest az Azure portal használatával
@@ -29,7 +29,7 @@ ms.locfileid: "66234910"
 Tekintse át a [Hálózati megfontolások az Azure Active Directory Domain Services-hez](network-considerations.md) című dokumentumot.
 
 
-## <a name="task-2-configure-network-settings"></a>2. feladat: a hálózati beállítások konfigurálása
+## <a name="task-2-configure-network-settings"></a>2\. feladat: a hálózati beállítások konfigurálása
 A következő konfigurációs feladat, hogy hozzon létre egy Azure virtuális hálózat és a egy dedikált alhálózatán. Engedélyezze az Azure Active Directory Domain Services-t a virtuális hálózatának ezen az alhálózatán. Előfordulhat, hogy válasszon ki egy meglévő virtuális hálózatot, és hozzon létre a dedikált alhálózatán.
 
 1. Kattintson a **virtuális hálózati** , válasszon ki egy virtuális hálózatot.

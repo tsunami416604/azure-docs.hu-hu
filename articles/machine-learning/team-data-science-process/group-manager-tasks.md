@@ -11,10 +11,10 @@ ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 85a4aca0c4b80eaab1f43bcbec33dc9cf37aa655
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65950094"
 ---
 # <a name="tasks-for-a-group-manager-on-a-data-science-team-project"></a>A data science csapatprojekt csoportvezető feladatai
@@ -86,7 +86,7 @@ Miután bejelentkezett, kattintson a **új fiók létrehozása** jobb felső sar
 Írja be az adatokat, amely a létrehozandó Azure-fejlesztési és üzemeltetési szolgáltatás a **-fiók létrehozása** varázsló a következő értékeket:
 
 - **Kiszolgáló URL-címe**: Cserélje le *mysamplegroup* saját *kiszolgálónév*. Annak a kiszolgálónak az URL-cím lesz: *https://\<servername\>. visualstudio.com*.
-- **Kezelés a kód használatával:** Válassza ki  **_Git_**.
+- **Kezelés a kód használatával:** Válassza ki  **_Git_** .
 - **Projekt neve:** Adja meg *GroupCommon*.
 - **Rendszerezheti munkahelyi használatával:** Válasszon *Agilis*.
 - **A projektek tárolni:** Válasszon egy földrajzi helyet. Ebben a példában lehetőséget választjuk *USA déli középső Régiójában*.

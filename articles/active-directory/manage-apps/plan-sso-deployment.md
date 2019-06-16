@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29569302d20e23c95b6508a5b58c7ed96e005885
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: bd8cebbd7c60715bc90412d9f53458edfee6c56d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66499249"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108204"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Egy egyszeri bejelentkezés üzembe helyezésének megtervezése
 
@@ -146,7 +146,7 @@ MCAS kapcsolatos információkért tekintse meg a [áttekintése a Microsoft Clo
 
 A feltételes hozzáférés segítségével automatizálhatja a felhőbeli alkalmazások feltételek alapján döntést hozhasson a hozzáférésről.
 
-Az első többtényezős hitelesítés befejezése után a rendszer érvényesíti a feltételes hozzáférési szabályzatokat. Feltételes hozzáférés, ezért nem készült, mint egy első sor védelmi forgatókönyvek-szolgáltatásmegtagadásos (DDoS-) támadások, például, de használhatja ezeket az eseményeket a jelek általi hozzáférés megállapításához. Ha például a bejelentkezési kockázat szintjének helyét a kérelmet, és így tovább is használható. Feltételes hozzáféréssel kapcsolatos további információkért lásd: [az Áttekintés](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access) és a [telepítési tervének](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access).
+Feltételes hozzáférési szabályzatai érvényben vannak, az első többtényezős hitelesítés befejezése után. Feltételes hozzáférés, ezért nem készült, mint egy első sor védelmi forgatókönyvek-szolgáltatásmegtagadásos (DDoS-) támadások, például, de használhatja ezeket az eseményeket a jelek általi hozzáférés megállapításához. Ha például a bejelentkezési kockázat szintjének helyét a kérelmet, és így tovább is használható. Feltételes hozzáféréssel kapcsolatos további információkért lásd: [az Áttekintés](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access) és a [telepítési tervének](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access).
 
 ## <a name="azure-sso-technical-requirements"></a>Egyszeri bejelentkezés az Azure technikai követelmények
 
@@ -236,11 +236,11 @@ A szerepkör mindig használata a legkevesebb engedélyek érhetők el a szüks�
 
 | Személy| Szerepkörök | Az Azure AD-szerepkörhöz (ha szükséges) |
 |--------|-------|-----------------------------|
-| Ügyfélszolgálati rendszergazdai | 1. rétegbeli támogatása | Egyik sem |
+| Ügyfélszolgálati rendszergazdai | 1\. rétegbeli támogatása | None |
 | Identitás-rendszergazda | Konfigurálja és hibakeresése során problémák hatással van az Azure ad-ben | Globális rendszergazda |
-| Alkalmazás-rendszergazda | Felhasználói igazolási alkalmazásban, a konfigurációt a engedélyekkel rendelkező felhasználók | Egyik sem |
+| Alkalmazás-rendszergazda | Felhasználói igazolási alkalmazásban, a konfigurációt a engedélyekkel rendelkező felhasználók | None |
 | Infrastruktúra-rendszergazda | Tanúsítvány helyettesítő tulajdonosa | Globális rendszergazda |
-| Üzleti tulajdonosa/projektmenedzsment | Felhasználói igazolási alkalmazásban, a konfigurációt a engedélyekkel rendelkező felhasználók | Egyik sem |
+| Üzleti tulajdonosa/projektmenedzsment | Felhasználói igazolási alkalmazásban, a konfigurációt a engedélyekkel rendelkező felhasználók | None |
 
 Azt javasoljuk, [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) (PIM) számára a szerepkörök további naplózást, ellenőrzési és hozzáférési tekintse át a directory engedélyekkel rendelkező felhasználók számára.
 

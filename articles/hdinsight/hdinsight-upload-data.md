@@ -9,10 +9,10 @@ ms.custom: hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 0dbd5a886e2369d29a568eca47dda5558f43c8cd
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66479138"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>A HDInsight Apache Hadoop-feladatok adatok feltöltése
@@ -97,8 +97,8 @@ Az Azure Data Factory szolgáltatás nem egy teljes körűen felügyelt szolgál
 |Tárolási típus|Dokumentáció|
 |----|----|
 |Azure Blob Storage|[Adatok másolása, vagy az Azure Blob storage-ból az Azure Data Factory használatával](../data-factory/connector-azure-blob-storage.md)|
-|1. generációs Azure Data Lake Storage|[Adatok másolása, vagy az Azure Data Lake Storage Gen1 Azure Data Factory használatával](../data-factory/connector-azure-data-lake-store.md)|
-|2. generációs Azure Data Lake Storage |[Adatok betöltése az Azure Data Lake Storage Gen2 az Azure Data Factoryvel](../data-factory/load-azure-data-lake-storage-gen2.md)|
+|1\. generációs Azure Data Lake Storage|[Adatok másolása, vagy az Azure Data Lake Storage Gen1 Azure Data Factory használatával](../data-factory/connector-azure-data-lake-store.md)|
+|2\. generációs Azure Data Lake Storage |[Adatok betöltése az Azure Data Lake Storage Gen2 az Azure Data Factoryvel](../data-factory/load-azure-data-lake-storage-gen2.md)|
 
 ### <a id="sqoop"></a>Apache Sqoop
 A Sqoop az eszköz a Hadoop és relációs adatbázisok közötti adatátvitelhez. Adatokat importálhat egy relációsadatbázis-kezelő rendszerének (RDBMS), például SQL Server, MySQL és a Hadoop elosztott fájlrendszer (HDFS), az Oracle, az adatok átalakítása a Hadoop MapReduce- vagy Hive-, és majd exportálja az adatokat egy RDBMS be újra, használhatja azt.

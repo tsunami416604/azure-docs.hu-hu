@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/19/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 34857108cf7f0580c380ffbd4bbcedb5cd5a807a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 6fc00bf0dfb83f349da91989a579f31be2027ff0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245029"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071683"
 ---
 # <a name="overview-of-azure-activity-log"></a>Az Azure-tevékenységnapló áttekintése
 
@@ -30,10 +30,10 @@ Nincs egyetlen tevékenység napló minden egyes Azure-előfizetés. A kívülr�
 
 
 > [!NOTE]
-> Az Azure-tevékenységnapló elsősorban az Azure Resource Manager-tevékenységek szól. A klasszikus/RDFE modellel ugresources nem követi nyomon. Néhány klasszikus erőforrástípusok rendelkezik egy proxykiszolgáló erőforrás-szolgáltató az Azure Resource Manager (például Microsoft.ClassicCompute). Klasszikus erőforrástípust Azure Resource Manageren keresztül ezek proxy erőforrás-szolgáltatók használata kezelheti, ha a műveletek a tevékenységnaplóban jelennek meg. Egy klasszikus erőforrástípus kívül az Azure Resource Manager-proxyk dolgozhat, ha a műveletek csak a műveleti napló elszámolni. A műveleti napló egy külön szakaszban a portál tallózható.
+> Az Azure-tevékenységnapló elsősorban az Azure Resource Manager-tevékenységek szól. A klasszikus/RDFE modellt használó erőforrások nem követi nyomon. Néhány klasszikus erőforrástípusok rendelkezik egy proxykiszolgáló erőforrás-szolgáltató az Azure Resource Manager (például Microsoft.ClassicCompute). Klasszikus erőforrástípust Azure Resource Manageren keresztül ezek proxy erőforrás-szolgáltatók használata kezelheti, ha a műveletek a tevékenységnaplóban jelennek meg. Egy klasszikus erőforrástípus kívül az Azure Resource Manager-proxyk dolgozhat, ha a műveletek csak a műveleti napló elszámolni. A műveleti napló egy külön szakaszban a portál tallózható.
 
 ## <a name="activity-log-retention"></a>Tevékenység napló megőrzése
-Tevékenységnapló-események 90 napig tárolódnak. Az adatok tárolásához hosszabb ideig [gyűjteni az Azure monitorban](activity-log-collect.md) vagy [exportálhatja, és a storage vagy az Event Hubs](activity-log-export.md).
+Létrehozása után a tevékenységnapló-bejegyzései a rendszer nem módosított vagy törölt a rendszer. Ezenkívül nem módosítja őket a felületen vagy programozás útján. Tevékenységnapló-események 90 napig tárolódnak. Az adatok tárolásához hosszabb ideig [gyűjteni az Azure monitorban](activity-log-collect.md) vagy [exportálhatja, és a storage vagy az Event Hubs](activity-log-export.md).
 
 ## <a name="view-the-activity-log"></a>A tevékenységnapló megtekintése
 Az összes erőforrás a tevékenységnapló megtekintése a **figyelő** menü az Azure Portalon. Egy adott erőforráshoz, a tevékenységnapló megtekintése a **tevékenységnapló** lehetőség az adott erőforrás menüben. Tevékenységnapló rögzíti a PowerShell, CLI vagy REST API-t is lekérhet.  Lásd: [megtekintése és lekérése az Azure-tevékenység naplózása](activity-log-view.md).

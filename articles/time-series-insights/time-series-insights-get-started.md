@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1018b449047e40a67ea843e8506fb43f6e1093a6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 9e074282b477fe620170cd8672dc3d050fce6afe
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239055"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061640"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Új Time Series Insights-környezet létrehozása az Azure Portalon
 
@@ -51,7 +51,7 @@ Kövesse az alábbi lépéseket, olyan környezetet hozhat létre:
    Tarifacsomag | S1 | Válassza ki a szükséges teljesítményt. Legalacsonyabb költségek, és alapszintű kapacitás válassza az S1.
    Kapacitás | 1 | A bejövő forgalom, a tárolási kapacitás és a költsége a kiválasztott Termékváltozat vonatkozik szorzó kapacitása.  A környezet kapacitása a létrehozást követően módosítható. Legalacsonyabb költségek válassza az 1 kapacitását. 
   
-1. Ellenőrizze **rögzítés az irányítópulton** legjobb könnyedén elérheti a Time Series-környezetet a jövőben.
+1. Ellenőrizze **rögzítés az irányítópulton** is egyszerűen hozzáférhet a jövőben a Time Series-környezetet.
 
    ![A Time Series Insights rögzítése az irányítópulton](media/time-series-insights-get-started/3-pin-create.png)
 

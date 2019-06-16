@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6112facfc0c10d7a0a0495cd778fa6c3cb6130a7
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 79ffb31dd41e600344d341d17e07ad13d5fcd7f8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962151"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111098"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>A felhasználók és a Microsoft Graph hívása Androidos alkalmazásokból
 
@@ -50,11 +50,11 @@ Ebben a példában a Microsoft Authentication library for Android (MSAL) Outlook
 * Az interaktív telepítés Android Studiót használ.
 * 16 vagy újabb Android megadása kötelező (19 + ajánlott).
 
-## <a name="library"></a>Szalagtár
+## <a name="library"></a>Erőforrástár
 
 Ez az útmutató a következő hitelesítési tárat használja:
 
-|Szalagtár|Leírás|
+|Erőforrástár|Leírás|
 |---|---|
 |[com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)|Microsoft Authentication Library (MSAL)|
 
@@ -74,7 +74,7 @@ Ebben az oktatóanyagban létrehoz egy új projektet. Ha ehelyett töltse le a b
 
 Két módon regisztrálhatja alkalmazását, a következő két szakasz leírtak szerint.
 
-### <a name="register-your-app"></a>Alkalmazás regisztrálása
+### <a name="register-your-app"></a>Az alkalmazás regisztrálása
 
 1. Nyissa meg a [az Azure portal](https://aka.ms/MobileAppReg) > Válasszon `New registration`. 
 2. Adjon meg egy **neve** az alkalmazás > `Register`. **Ne állítson be egy átirányítási URI-t ezen a ponton**. 
@@ -178,7 +178,7 @@ Két módon regisztrálhatja alkalmazását, a következő két szakasz leírtak
 
 ### <a name="add-msal-to-your-project"></a>Az MSAL hozzáadása a projekthez
 
-1. Az Android Studióban válassza a **Gradle-szkriptek** > **build.gradle (modul: alkalmazás)**.
+1. Az Android Studióban válassza a **Gradle-szkriptek** > **build.gradle (modul: alkalmazás)** .
 2. A **függőségek**, illessze be a következő kódot:
 
     ```gradle  

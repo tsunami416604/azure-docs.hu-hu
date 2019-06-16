@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: 46be01c57be0e4f5fa74f8e8b0d91db3d78f441c
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: d4acc620fb2a4c41615c745516e5ccfafd59d848
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480411"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057947"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Leképezési adatok folyamatok teljesítmény és finomhangolás – útmutató
 
@@ -41,7 +41,7 @@ Kattintson erre az ikonra a végrehajtási terv és a későbbi teljesítménypr
 
 ## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Az Azure SQL Database és az Azure SQL Data warehouse-bA optimalizálása
 
-![Forrás-rész](media/data-flow/sourcepart2.png "rész forrás")
+![Forrás-rész](media/data-flow/sourcepart3.png "rész forrás")
 
 ### <a name="partition-your-source-data"></a>Az adatforrás-adatok particionálása
 
@@ -122,8 +122,8 @@ Kattintson erre az ikonra a végrehajtási terv és a későbbi teljesítménypr
 * Elkerülése érdekében számítási csomópont erőforrásokat, ne az alapértelmezett vagy explicit particionálási sémát ADF, amely optimalizálja a teljesítmény, és vegye fel a kimeneti mappa fájljainak egy későbbi másolási tevékenység, amely egyesíti az összes, a rész a folyamat új egyetlen a fájl. Ezzel a technikával alapvetően elkülöníti a művelet a fájl egyesítése átalakítás, és csak "kimenet egyetlen fájl a" ugyanazt az eredményt éri el.
 
 ## <a name="next-steps"></a>További lépések
-Az adatfolyam cikkekben talál:
+Tekintse meg a többi adatfolyam cikkeket a teljesítménnyel kapcsolatos:
 
-- [Az a folyamat áttekintése](concepts-data-flow-overview.md)
+- [Adatfolyamok optimalizálása lap](concepts-data-flow-optimize-tab.md)
 - [Data Flow tevékenység](control-flow-execute-data-flow-activity.md)
 - [Az adatfolyam teljesítményének figyelése](concepts-data-flow-monitoring.md)

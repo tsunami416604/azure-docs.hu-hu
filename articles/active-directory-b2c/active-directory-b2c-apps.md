@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e4a9931fa6e2edf8989036eb8dbfbef3638cbbe0
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 9ae2894f9f442bca1e6029b7e7d8e07824abf7fb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66507521"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051739"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Az Active Directory B2C-ben használható alkalmazások típusok
 
@@ -98,7 +98,7 @@ Webes API-k számos különböző típusú, beleértve a webalkalmazásokat, asz
 6. A `access_token` és `refresh_token` visszakerülnek a webkiszolgálón.
 7. A webes API-k hívása a `access_token` az engedélyeztetési fejléc.
 8. A webes API érvényesíti a jogkivonatot.
-9. A webkiszolgáló biztonságos adatokat küld vissza.
+9. A webes alkalmazás biztonságos adatokat küld vissza.
 
 Ha többet szeretne tudni a hitelesítési kódokról, frissítési jogkivonatokról, valamint a jogkivonatok lekérésének lépéseiről, olvasson az [OAuth 2.0-protokollról](active-directory-b2c-reference-oauth-code.md).
 

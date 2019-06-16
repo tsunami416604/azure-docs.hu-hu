@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 1a1acde81baa596e71b7e39763b0464c8de2fb86
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 929d5d7a8e2b45aeb4ef71e4599cfcf23be83088
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244174"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67096607"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netdocuments"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező NetDocuments
 
@@ -224,7 +224,7 @@ NetDocuments, esetén kiépítése a manuális feladat.
     >[!NOTE]
     >Az Azure Active Directory fióktulajdonos mielőtt aktívvá válik, győződjön meg arról, hogy a fiók mutató hivatkozást tartalmazó e-mailt fog kapni. Bármely más NetDocuments felhasználói fiók létrehozása eszközöket használhatja, vagy API-k által biztosított NetDocuments üzembe helyezni az Azure Active Directory felhasználói fiókokat.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

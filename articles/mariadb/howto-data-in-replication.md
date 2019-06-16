@@ -6,16 +6,16 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 3897c402e45962836880ccebbeb252d189188d3c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 39c5efee0958fdfc8fa647f5acaf929f559f7bf7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61038585"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065651"
 ---
 # <a name="how-to-configure-azure-database-for-mariadb-data-in-replication"></a>Azure Database MariaDB-adatok a replikáció konfigurálása
 
-Ebben a cikkben megtudhatja, hogyan állítható be adatok a replikáció az Azure Database for MariaDB-szolgáltatás által a master és a replika kiszolgálók konfigurálása az. Adatok a replikáció lehetővé teszi, hogy a fő MariaDB-kiszolgáló, a helyszínen futó virtuális gépeket vagy adatbázis-szolgáltatások az Azure Database for MariaDB szolgáltatás egy replika az egyéb felhőszolgáltatók által üzemeltetett adatai szinkronizálva. 
+Ebben a cikkben megtudhatja, hogyan állítható be adatok a replikáció az Azure Database for MariaDB-szolgáltatás által a master és a replika kiszolgálók konfigurálása az. Adatok a replikáció lehetővé teszi, hogy a fő MariaDB-kiszolgáló, a helyszínen futó virtuális gépeket vagy adatbázis-szolgáltatások az Azure Database for MariaDB szolgáltatás egy replika az egyéb felhőszolgáltatók által üzemeltetett adatai szinkronizálva. Hogy recommanded, konfigurálja az adatok a replikáció [globális Tranzakcióazonosító](https://mariadb.com/kb/en/library/gtid/) 10.2 esetén a fölérendelt kiszolgáló verzió vagy újabb.
 
 Ez a cikk azt feltételezi, hogy legalább némi tapasztalattal a MariaDB-kiszolgálókra és adatbázisokra.
 
@@ -116,7 +116,16 @@ Az alábbi lépéseket előkészítése, és konfigurálja a MariaDB futó kiszo
    Az eredmények hasonló kell lennie. Mindenképpen jegyezze fel a bináris fájl neve, a későbbi lépésekben fog használni.
 
    ![Fő állapotinformáció](./media/howto-data-in-replication/masterstatus.png)
+   
+6. Első GTID pozíció (nem kötelező, replikáció GTID a szükséges)
+
+   A függvény futtatása [ `BINLOG_GTID_POS` ](https://mariadb.com/kb/en/library/binlog_gtid_pos/) parancs használatával beszerezheti az GTID pozíciója a összehangolására binlog fájl neve és eltolását.
+  
+    ```sql
+    select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);
+    ```
  
+
 ## <a name="dump-and-restore-master-server"></a>Memóriakép és a fölérendelt kiszolgáló visszaállítása
 
 1. Minden adatbázis főkiszolgálóról memóriakép
@@ -142,10 +151,16 @@ Az alábbi lépéseket előkészítése, és konfigurálja a MariaDB futó kiszo
 
    Minden replikációs adatokat a függvény a tárolt eljárásokat kell elvégeznie. Található összes eljárást annak [adatokat a replikálási tárolt eljárások](reference-data-in-stored-procedures.md). A tárolt eljárások a MySQL-rendszerhéj vagy a MySQL Workbench környezetben is futtatható.
 
-   Két kiszolgálók összekapcsolása, és indítsa el a replikációt, jelentkezzen be a cél replikakiszolgáló MariaDB szolgáltatás az Azure-DB-ben, és a külső példány állítja be a főkiszolgáló. Ennek segítségével történik a `mysql.az_replication_change_master` tárolt eljárást az Azure DB for MariaDB-kiszolgáló.
+   Két kiszolgálók összekapcsolása, és indítsa el a replikációt, jelentkezzen be a cél replikakiszolgáló MariaDB szolgáltatás az Azure-DB-ben, és a külső példány állítja be a főkiszolgáló. Ennek segítségével történik a `mysql.az_replication_change_master` vagy `mysql.az_replication_change_master_with_gtid` tárolt eljárást az Azure DB for MariaDB-kiszolgáló.
 
    ```sql
    CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
+   ```
+   
+   vagy
+   
+   ```sql
+   CALL mysql.az_replication_change_master_with_gtid('<master_host>', '<master_user>', '<master_password>', 3306, '<master_gtid_pos>', '<master_ssl_ca>');
    ```
 
    - master_host: hostname of the master server
@@ -153,6 +168,7 @@ Az alábbi lépéseket előkészítése, és konfigurálja a MariaDB futó kiszo
    - master_password: a főkiszolgáló jelszavát
    - master_log_file: futását bináris naplófájl neve `show master status`
    - master_log_pos: futását bináris naplójának pozíciója `show master status`
+   - master_gtid_pos: Futását GTID pozíciója `select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);`
    - master_ssl_ca: Hitelesítésszolgáltatói tanúsítvány környezet. Ha nem használ SSL, üres karakterláncot adja át.
        - Javasoljuk, hogy ezt a paramétert a átadhatja egy változóként. Az alábbiakban talál további információt.
 
@@ -199,6 +215,10 @@ Az alábbi lépéseket előkészítése, és konfigurálja a MariaDB futó kiszo
 
    Ha állapotát `Slave_IO_Running` és `Slave_SQL_Running` "yes" és az értékét `Seconds_Behind_Master` "0", a replikálás működik jól. `Seconds_Behind_Master` azt jelzi, hogyan késői a replikát. Ha az értéke nem "0", az azt jelenti, hogy a replika frissítések feldolgozása. 
 
+4. Frissítés felel meg a kiszolgálói változókat, hogy az adatok a replikáció több biztonságos (csak akkor nélkül GTID replikációhoz szükséges)
+    
+    MariaDB natív replikációs korlátozás miatt kell beállítani [ `sync_master_info` ](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info) és [ `sync_relay_log_info` ](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info) replikációs GTID nélkül a változókat. Hogy recommand, ellenőrizze, hogy az alárendelt kiszolgáló `sync_master_info` és `sync_relay_log_info` változók, és módosítsa őket zásoktól `1` Ha azt szeretné, hogy az adatok a replikáció stabil.
+    
 ## <a name="other-stored-procedures"></a>Más tárolt eljárások
 
 ### <a name="stop-replication"></a>Replikáció leállítása

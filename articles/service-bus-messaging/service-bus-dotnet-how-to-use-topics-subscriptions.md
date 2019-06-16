@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/15/2019
 ms.author: aschhab
 ms.openlocfilehash: 2ca8f0e34b63802453c8876f878b531e78e66d76
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65991771"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Bevezetés a Service Bus-üzenettémák használatába
@@ -390,7 +390,7 @@ Az elküldött üzenetek fogadásához hozzon létre egy másik .NET Core-konzol
     ```
 9. Futtassa a programot, majd ellenőrizze ismét a portálon. Figyelje meg, hogy a **Üzenetek száma** és a **Jelenlegi** értéke most **0**.
    
-    ![Témakör hossza][topic-message-receive]
+    ![A témakör hossza][topic-message-receive]
 
 Gratulálunk! A .NET Standard kódtár használatával létrehozott egy üzenettémát és egy előfizetést, elküldött 10 üzenetet, és fogadta is azokat.
 

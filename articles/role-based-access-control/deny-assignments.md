@@ -11,27 +11,40 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/13/2019
+ms.date: 06/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 497571a65510f806d7d7994c9dc37f9a00b65a5f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 432703b5acb4cd56dac9b25edf99165ca26b0aa0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60197136"
+ms.locfileid: "67118272"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>Megismerheti az Azure-erőforrások hozzárendelések megtagadása
 
-Szerepkör-hozzárendelés, hasonlóan egy *hozzárendelés megtagadása* rendeli egy sor megtagadási műveletek egy felhasználó, csoport vagy szolgáltatásnév céljából megtagadja a hozzáférést egy adott hatókörben. Megtagadási hozzárendelések letiltása a felhasználók számára az adott Azure-erőforrás műveleteket végrehajtani, akkor is, ha a szerepkör-hozzárendelés hozzáférést biztosít számukra. Néhány erőforrás-szolgáltatók az Azure-ban most már tartalmazza a hozzárendelések tiltása.
-
-Bizonyos értelemben a hozzárendelések eltérnek szerepkör-hozzárendelések tiltása. Megtagadási hozzárendelések rendszerbiztonsági tagok kizárása, és megakadályozza az öröklési gyermek hatókörhöz. Megtagadási hozzárendelések is alkalmazni kell [hagyományos előfizetés-adminisztrátor](rbac-and-directory-admin-roles.md) hozzárendelések.
+Szerepkör-hozzárendelés, hasonlóan egy *hozzárendelés megtagadása* rendeli egy sor megtagadási műveletek egy felhasználó, csoport vagy szolgáltatásnév céljából megtagadja a hozzáférést egy adott hatókörben. Megtagadási hozzárendelések letiltása a felhasználók számára az adott Azure-erőforrás műveleteket végrehajtani, akkor is, ha a szerepkör-hozzárendelés hozzáférést biztosít számukra.
 
 Ez a cikk azt ismerteti, hogyan megtagadása a hozzárendelések vannak definiálva.
 
-> [!NOTE]
-> Jelenleg az egyetlen módszer, hozzáadhatja a saját megtagadási hozzárendelések van Azure-tervek használatával. További információkért lásd: [Azure tervezetek erőforrászárat az új erőforrások védelmét](../governance/blueprints/tutorials/protect-new-resources.md).
+## <a name="how-deny-assignments-are-created"></a>Hogyan megtagadása a hozzárendelések jönnek létre.
+
+Megtagadási hozzárendelések létrehozása és felügyelete az Azure-erőforrások védelmét. Ha például az Azure-tervek és az Azure felügyelt alkalmazások használata megtagadása-hozzárendeléseket a rendszer által felügyelt erőforrások védelmét. További információkért lásd: [Azure tervezetek erőforrászárat az új erőforrások védelmét](../governance/blueprints/tutorials/protect-new-resources.md).
+
+## <a name="compare-role-assignments-and-deny-assignments"></a>Hasonlítsa össze a szerepkör-hozzárendelések és a hozzárendelés elutasítása
+
+Megtagadási hozzárendelések kövesse hasonló mintát hozzárendelések megtagadása, de néhány eltérés is rendelkezik.
+
+| Képesség | Szerepkör-kijelölés | Hozzárendelés elutasítása |
+| --- | --- | --- |
+| Hozzáférés biztosítása | :heavy_check_mark: |  |
+| Hozzáférés megtagadása |  | :heavy_check_mark: |
+| Közvetlenül hozható létre | :heavy_check_mark: |  |
+| A alkalmazni a hatókörben | :heavy_check_mark: | :heavy_check_mark: |
+| Rendszerbiztonsági tagok kizárása |  | :heavy_check_mark: |
+| Gyermek hatókörök öröklődés megakadályozása |  | :heavy_check_mark: |
+| A alkalmazni [hagyományos előfizetés-adminisztrátor](rbac-and-directory-admin-roles.md) hozzárendelések |  | :heavy_check_mark: |
 
 ## <a name="deny-assignment-properties"></a>Hozzárendelés tulajdonságait megtagadása
 
@@ -54,14 +67,24 @@ Ez a cikk azt ismerteti, hogyan megtagadása a hozzárendelések vannak definiá
 > | `ExcludePrincipals[i].Type` | Nem | String] | Objektumtípusok ExcludePrincipals [i] .id által képviselt tömbje. |
 > | `IsSystemProtected` | Nem | Boolean | Itt adhatja meg, hogy ez megtagadása hozzárendelés hozta létre az Azure és a nem szerkeszthető vagy törölhető. Jelenleg az összes elutasítása hozzárendelések a védett rendszer. |
 
-## <a name="system-defined-principal"></a>A rendszer által definiált egyszerű
+## <a name="the-all-principals-principal"></a>Az összes rendszerbiztonsági tag egyszerű
 
-A támogatási hozzárendelések megtagadása a **rendszer általi egyszerű** fejlődéséből. Ez az egyszerű felhasználók, csoportok, a szolgáltatásnevek és az Azure AD-címtár felügyelt identitások jelöli. Ha az egyszerű szolgáltatásnév azonosítója nem nulla GUID `00000000-0000-0000-0000-000000000000` és egyszerű típus `SystemDefined`, az egyszerű jelöli az összes rendszerbiztonsági tag. `SystemDefined` kombinálva `ExcludePrincipals` megtagadni az egyes felhasználók kivételével az összes rendszerbiztonsági tagok. `SystemDefined` a következő korlátozások vonatkoznak:
+A támogatási megtagadása hozzárendelések, a rendszer által meghatározott nevű egyszerű *összes rendszerbiztonsági tag* fejlődéséből. Ez az egyszerű felhasználók, csoportok, a szolgáltatásnevek és az Azure AD-címtár felügyelt identitások jelöli. Ha az egyszerű szolgáltatásnév azonosítója nem nulla GUID `00000000-0000-0000-0000-000000000000` és egyszerű típus `SystemDefined`, az egyszerű jelöli az összes rendszerbiztonsági tag. Az Azure PowerShell-lel kimeneti összes rendszerbiztonsági tag a következőhöz hasonlóan néz ki:
+
+```azurepowershell
+Principals              : {
+                          DisplayName:  All Principals
+                          ObjectType:   SystemDefined
+                          ObjectId:     00000000-0000-0000-0000-000000000000
+                          }
+```
+
+Minden rendszerbiztonsági tagok kombinálva `ExcludePrincipals` megtagadni az egyes felhasználók kivételével az összes rendszerbiztonsági tagok. Összes rendszerbiztonsági tag a következő korlátozások vonatkoznak:
 
 - Csak a felhasznált `Principals` és nem használható `ExcludePrincipals`.
 - `Principals[i].Type` meg kell `SystemDefined`.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Megtekintése az Azure portal segítségével Azure-erőforrások hozzárendelések megtagadása](deny-assignments-portal.md)
+* [Listában elutasítása hozzárendelések Azure-erőforrások az Azure portal használatával](deny-assignments-portal.md)
 * [Megismerheti az Azure-erőforrások szerepkör-definíciók](role-definitions.md)

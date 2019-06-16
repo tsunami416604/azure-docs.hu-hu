@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: d02ec23e7e6ce936fdbcce63d1394e3a8681c65b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3c4eab02ed0c7c09fe9b5893bbaaf7cbe1c8028f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65867337"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67090914"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Silverback
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Silverback konfigurálásához hozzá kell Silverbac
 
 **Silverback hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -217,7 +217,7 @@ Ahhoz, hogy az Azure AD-felhasználók Silverback jelentkezzen be, akkor ki kell
 
     c. A **Vezetéknév** szöveget adja meg például a felhasználó vezetékneve **Simon**.
 
-    d. A **E-mail cím** szöveget adja meg az e-mailt, például a felhasználó **Brittasimon@contoso.com**.
+    d. A **E-mail cím** szöveget adja meg az e-mailt, például a felhasználó **Brittasimon@contoso.com** .
 
     e. Az a **jelszó** szöveget adja meg a jelszót.
 
@@ -228,7 +228,7 @@ Ahhoz, hogy az Azure AD-felhasználók Silverback jelentkezzen be, akkor ki kell
 > [!NOTE]
 > Ha nem szeretné manuálisan létrehozni a minden felhasználó engedélyezése a **dinamikus felhasználó létrehozása** alatt jelölőnégyzet **rendszergazdai** > **hitelesítési szolgáltató**.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

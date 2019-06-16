@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: b2ab07e40ac2652d97e912f8c7bd3b8893bfc114
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: e11446b961727663961e4d3fa295a9b7f64860c9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61438755"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059670"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Event Grid-trigger az Azure Functions szolgáltatáshoz
 
@@ -402,11 +402,11 @@ Előfizetés létrehozása használatával [az Azure CLI](https://docs.microsoft
 
 A parancs használatához a végponti URL-cím, amely meghívja a függvényt. Az alábbi példa bemutatja a verzió-specifikus URL-minta:
 
-#### <a name="version-2x-runtime"></a>2.x verziójú futtatókörnyezet verziója
+#### <a name="version-2x-runtime"></a>2\.x verziójú futtatókörnyezet verziója
 
     https://{functionappname}.azurewebsites.net/runtime/webhooks/eventgrid?functionName={functionname}&code={systemkey}
 
-#### <a name="version-1x-runtime"></a>1.x futtatókörnyezet verziója
+#### <a name="version-1x-runtime"></a>1\.x futtatókörnyezet verziója
 
     https://{functionappname}.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName={functionname}&code={systemkey}
 
@@ -414,7 +414,7 @@ A rendszer kulcs egy engedélyezési kulcsot, amely egy Event Grid-triggert a v�
 
 Íme egy példa, amely feliratkozik egy blob storage-fiók (az a rendszer kulcs helyőrzője):
 
-#### <a name="version-2x-runtime"></a>2.x verziójú futtatókörnyezet verziója
+#### <a name="version-2x-runtime"></a>2\.x verziójú futtatókörnyezet verziója
 
 ```azurecli
 az eventgrid resource event-subscription create -g myResourceGroup \
@@ -425,7 +425,7 @@ az eventgrid resource event-subscription create -g myResourceGroup \
 --endpoint https://mystoragetriggeredfunction.azurewebsites.net/runtime/webhooks/eventgrid?functionName=imageresizefunc&code=<key>
 ```
 
-#### <a name="version-1x-runtime"></a>1.x futtatókörnyezet verziója
+#### <a name="version-1x-runtime"></a>1\.x futtatókörnyezet verziója
 
 ```azurecli
 az eventgrid resource event-subscription create -g myResourceGroup \
@@ -442,13 +442,13 @@ Előfizetés létrehozásával kapcsolatos további információkért lásd: [a 
 
 A rendszer kulcs kaphat (HTTP GET) a következő API-val:
 
-#### <a name="version-2x-runtime"></a>2.x verziójú futtatókörnyezet verziója
+#### <a name="version-2x-runtime"></a>2\.x verziójú futtatókörnyezet verziója
 
 ```
 http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgrid_extension?code={masterkey}
 ```
 
-#### <a name="version-1x-runtime"></a>1.x futtatókörnyezet verziója
+#### <a name="version-1x-runtime"></a>1\.x futtatókörnyezet verziója
 
 ```
 http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextensionconfig_extension?code={masterkey}
@@ -535,7 +535,7 @@ Például egy eszközzel [Postman](https://www.getpostman.com/) vagy [curl](http
     http://localhost:7071/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}
     ```
 
-  * 1.x használatra:
+  * 1\.x használatra:
 
     ```
     http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={FUNCTION_NAME}
@@ -555,7 +555,7 @@ Az Event Grid eseményindító függvény végrehajtása, és a naplók az aláb
 
 ## <a name="local-testing-with-ngrok"></a>Helyi ngrok tesztelésével
 
-Egy Event Grid eseményindító helyi tesztelése egy másik úgy, hogy automatizálja a HTTP-kapcsolat az Internet és a fejlesztési számítógép között. Megteheti, hogy egy nyílt forráskódú eszköz nevű [ngrok](https://ngrok.com/):
+Egy Event Grid eseményindító helyi tesztelése egy másik úgy, hogy automatizálja a HTTP-kapcsolat az Internet és a fejlesztési számítógép között. Megteheti, hogy egy eszköz, például [ngrok](https://ngrok.com/):
 
 1. [Hozzon létre egy ngrok végpontot](#create-an-ngrok-endpoint).
 1. [Az Event Grid eseményindító függvény futtatása](#run-the-event-grid-trigger-function).

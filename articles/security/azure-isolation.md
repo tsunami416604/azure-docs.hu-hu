@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: b8142551d9c20c18d83c256b3f07a0deb291577c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66147658"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Elkülönítés az Azure nyilvános felhő
-##  <a name="introduction"></a>Bemutatás
+##  <a name="introduction"></a>Bevezetés
 ### <a name="overview"></a>Áttekintés
 Segít a jelenlegi és jövőbeli Azure ügyfelek ismertetése, és felhasználja az elérhető különböző biztonsági funkciókat és körülvevő az Azure platform, Microsoft kifejlesztett egy sorozatát tanulmányok, biztonsági áttekintéseket, ajánlott eljárások és Ellenőrzőlistákat.
 A témakörök tartomány és teljes mértékű tekintetében, és rendszeresen frissül. Ez a dokumentum a sorozat része, a következő absztrakt szakaszban foglaltak szerint.
@@ -223,7 +223,7 @@ Tűzfalak létrehozása és a egy IP-címtartományt definiálása a megbízhat�
 
 IP-storage-adatok védelme biztosítható legyen a jogosulatlan felhasználóktól egy hálózati mechanizmust, amely foglal le egy dedikált vagy dedikált IP-tárolási forgalom-alagúton keresztül.
 
-### <a name="encryption"></a>Titkosítás
+### <a name="encryption"></a>Encryption
 Az Azure a következő típusú adatok védelme érdekében titkosítási kínál:
 -   Titkosítás az átvitel során
 

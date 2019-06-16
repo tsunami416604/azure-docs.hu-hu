@@ -13,12 +13,12 @@ ms.date: 01/25/2019
 ms.author: joflore
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e277f31dcf2627959b88d58f325fb4dad024a00
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 44a64611d4e31767b4705f41e47234af7b0848c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66001191"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112225"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>kézikönyv: Az Azure Active Directoryban a feltételes hozzáférés üzembe helyezésének megtervezése
 
@@ -55,16 +55,16 @@ A következő példa sablon használatával a szervezet számára feltételes ho
 
 |Amikor *ez* történik:|Tegye *ez*:|
 |-|-|
-|Hozzáférési kísérlet történik:<br>– Ha egy felhőalkalmazás*<br>– felhasználók és csoportok szerint*<br>Használatával:<br>-Feltétel 1 (például kívül vállalati hálózatával)<br>-Feltétel 2 (például eszközplatformok)|Az alkalmazás elérésének letiltása|
-|Hozzáférési kísérlet történik:<br>– Ha egy felhőalkalmazás*<br>– felhasználók és csoportok szerint*<br>Használatával:<br>-Feltétel 1 (például kívül vállalati hálózatával)<br>-Feltétel 2 (például eszközplatformok)|Hozzáférést biztosít a (és):<br>-1. követelmény (például a többtényezős hitelesítés)<br>– 2. követelmény (például az eszközök megfelelőségének)|
-|Hozzáférési kísérlet történik:<br>– Ha egy felhőalkalmazás*<br>– felhasználók és csoportok szerint*<br>Használatával:<br>-Feltétel 1 (például kívül vállalati hálózatával)<br>-Feltétel 2 (például eszközplatformok)|Hozzáférést biztosít a (vagy):<br>-1. követelmény (például a többtényezős hitelesítés)<br>– 2. követelmény (például az eszközök megfelelőségének)|
+|Hozzáférési kísérlet történik:<br>– Ha egy felhőalkalmazás *<br>– felhasználók és csoportok szerint*<br>Használatával:<br>-Feltétel 1 (például kívül vállalati hálózatával)<br>-Feltétel 2 (például eszközplatformok)|Az alkalmazás elérésének letiltása|
+|Hozzáférési kísérlet történik:<br>– Ha egy felhőalkalmazás *<br>– felhasználók és csoportok szerint*<br>Használatával:<br>-Feltétel 1 (például kívül vállalati hálózatával)<br>-Feltétel 2 (például eszközplatformok)|Hozzáférést biztosít a (és):<br>-1. követelmény (például a többtényezős hitelesítés)<br>– 2. követelmény (például az eszközök megfelelőségének)|
+|Hozzáférési kísérlet történik:<br>– Ha egy felhőalkalmazás *<br>– felhasználók és csoportok szerint*<br>Használatával:<br>-Feltétel 1 (például kívül vállalati hálózatával)<br>-Feltétel 2 (például eszközplatformok)|Hozzáférést biztosít a (vagy):<br>-1. követelmény (például a többtényezős hitelesítés)<br>– 2. követelmény (például az eszközök megfelelőségének)|
 
-Minimális **ebben az esetben** határozza meg a rendszerbiztonsági tag (**akik**), amely megpróbál hozzáférni egy felhőalkalmazás (**mi**). Ha szükséges, is belefoglalhatja **hogyan** hozzáférési kísérlet történik. A feltételes hozzáférés, az elemek, amelyek meg ki, mi történik, és hogyan feltételek nevezzük. További információkért lásd: [feltételek Mik az Azure Active Directory feltételes hozzáférés?](conditions.md) 
+Minimális **ebben az esetben** határozza meg a rendszerbiztonsági tag (**akik**), amely megpróbál hozzáférni egy felhőalkalmazás (**mi**). Ha szükséges, is belefoglalhatja **hogyan** hozzáférési kísérlet történik. A feltételes hozzáférés, az elemek, amelyek meg ki, mi történik, és hogyan feltételek nevezzük. További információkért lásd: [Mik azok a feltételek az Azure Active Directory feltételes hozzáférés?](conditions.md) 
 
 A **majd ehhez**, meghatározhatja a választ a szabályzat egy hozzáférési feltételnek. A válaszban letiltása, vagy adjon hozzáférést a további követelményeket, például a többtényezős hitelesítés (MFA). Egy teljes körű áttekintése: [azt szabályozza, Mik azok a hozzáférés az Azure Active Directory feltételes hozzáférés?](controls.md)  
  
 
-A hozzáférés-vezérlés feltételekhez való kötésével hozhat létre feltételes hozzáférési szabályzatot.
+A hozzáférés-vezérlést a feltételek kombinációja a feltételes hozzáférési szabályzatot jelöli.
 
 ![OK és válasz](./media/plan-conditional-access/51.png)
 
@@ -193,7 +193,7 @@ Egyes szervezetek teszt bérlővel rendelkezik erre a célra. Azonban nehézkes 
 
 A tesztelési terv esetében lényeges, hogy a várt eredményt és a tényleges eredmények összehasonlítását. Mindig rendelkeznie kell egy valami teszteléshez formálisság. Az alábbi táblázat ismerteti a tesztelési példák. Módosítsa a forgatókönyveket és a várt eredményt miként vannak konfigurálva a feltételes hozzáférési szabályzatok alapján.
 
-|Házirend |Forgatókönyv |Várt eredmény | Eredmény |
+|Szabályzat |Forgatókönyv |Várt eredmény | Eredmény |
 |---|---|---|---|
 |[Többtényezős hitelesítés munkahelyen kívül](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Engedélyezett a felhasználók bejelentkeznek *alkalmazás* során megbízható helyen lévő / működik|A többtényezős hitelesítés nem kéri a felhasználót| |
 |[Többtényezős hitelesítés munkahelyen kívül](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Engedélyezett a felhasználók bejelentkeznek *alkalmazás* során nem megbízható helyen lévő / működik|Felhasználói MFA a rendszer kéri, és sikeresen bejelentkezhet| |
@@ -211,18 +211,18 @@ Feltételes hozzáférési szabályzatok kezelése a manuális feladat. Az Azure
 ![Feltételes hozzáférés](media/plan-conditional-access/03.png)
 
 
-Ha azt szeretné, további információ a feltételes hozzáférési szabályzatokat hozhat létre, olvassa el [többtényezős hitelesítés megkövetelése az Azure Active Directory feltételes hozzáférés az adott alkalmazások](app-based-mfa.md). Ez a rövid útmutató segítségével:
+Ha azt szeretné, további információ a feltételes hozzáférési szabályzatokat hozhat létre, olvassa el [megkövetelése MFA konkrét alkalmazások esetén az Azure Active Directory feltételes hozzáférés](app-based-mfa.md). Ez a rövid útmutató segítségével:
 
 - Megismerkedhet a felhasználói felületen.
-- A feltételes hozzáférés működését első benyomást beolvasása. 
+- A feltételes hozzáférés működése első benyomást beolvasása. 
 
 
 ### <a name="evaluate-a-simulated-sign-in"></a>Egy szimulált bejelentkezési kiértékelése
 
-Most, hogy konfigurálta a feltételes hozzáférési szabályzatot, érdemes ellenőriznie, hogy a várt módon működik-e. Első lépésként, a feltételes hozzáférés használata a [mi történik, ha házirend eszközzel](what-if-tool.md) egy jelentkezzen be a tesztfelhasználó szimulálásához. A szimuláció megbecsüli a bejelentkezésnek a szabályzatokra gyakorolt hatását, és létrehoz egy szimulációs jelentést.
+Most, hogy a feltételes hozzáférési szabályzat van beállítva, érdemes tudni, hogy a várt módon működik-e azt. Első lépésként, a feltételes hozzáférés használata a [mi történik, ha házirend eszközzel](what-if-tool.md) egy jelentkezzen be a tesztfelhasználó szimulálásához. A szimuláció megbecsüli a bejelentkezésnek a szabályzatokra gyakorolt hatását, és létrehoz egy szimulációs jelentést.
 
 >[!NOTE]
-> Bár egy szimulált Futtatás biztosít a hatás benyomást feltételes hozzáférési szabályzattal rendelkezik, nem cserélje le tényleges tesztfuttatás.
+> Egy szimulált Futtatás egy feltételes hozzáférési szabályzat hatásának benyomást biztosít, miközben nem helyettesíti a tényleges tesztfuttatás.
 
 
 ### <a name="test-your-policy"></a>A házirend tesztelése

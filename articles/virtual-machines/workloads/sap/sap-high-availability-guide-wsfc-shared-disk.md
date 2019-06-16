@@ -18,10 +18,10 @@ ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 987cd1e5860b0fe340ba8a5163d844bec29b541c
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65205102"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
@@ -210,7 +210,7 @@ Az Azure Load Balancer szolgáltatás biztosít egy *belső load balancer* az Az
 
 Helyezze üzembe a belső terheléselosztó, amely tartalmazza a fürt csomópontjai az erőforráscsoportban. Ezt követően konfigurálja a belső terheléselosztó portok továbbítási szabályok a mintavétel használatával minden szükséges port. Az ügyfelek csatlakozhatnak keresztül a virtuális gazdagép nevét. A DNS-kiszolgáló szünteti meg a fürt IP-címét, és a belső load balancer kezeli port továbbítja a fürt aktív csomópontja.
 
-![1. ábra: Windows feladatátvevő fürtszolgáltatás konfigurálása az Azure-ban egy megosztott lemez nélküli][sap-ha-guide-figure-1001]
+![1\. ábra: Windows feladatátvevő fürtszolgáltatás konfigurálása az Azure-ban egy megosztott lemez nélküli][sap-ha-guide-figure-1001]
 
 _**1. ábra:** A Windows Server feladatátvételi fürtszolgáltatás konfigurációs az Azure-ban anélkül, hogy egy megosztott lemez_
 
@@ -231,13 +231,13 @@ Az SAP ASCS/SCS példányhoz a következő összetevőket tartalmazza:
     \\\\< ASCS/SCS virtuális gazdagép neve > \sapmnt\\&lt;SID&gt;\SYS\....
 
 
-![2. ábra: Folyamatok fájlstruktúra és globális gazdagép sapmnt fájlmegosztás, az SAP ASCS/SCS példányhoz][sap-ha-guide-figure-8001]
+![2\. ábra: Folyamatok fájlstruktúra és globális gazdagép sapmnt fájlmegosztás, az SAP ASCS/SCS példányhoz][sap-ha-guide-figure-8001]
 
 _**2. ábra:** Folyamatok fájlstruktúra és globális gazdagép sapmnt fájlmegosztás, az SAP ASCS/SCS példányhoz_
 
 Egy magas rendelkezésre állású beállítást, a fürt SAP ASCS/SCS-példányok. Használjuk a *fürtözött megosztott lemezeket* (meghajtó S, ebben a példában), helyezze az SAP ASCS/SCS és globális SAP fájlokat.
 
-![3. ábra: Az SAP ASCS/SCS magas rendelkezésre ÁLLÁS architektúra közös lemezzel][sap-ha-guide-figure-8002]
+![3\. ábra: Az SAP ASCS/SCS magas rendelkezésre ÁLLÁS architektúra közös lemezzel][sap-ha-guide-figure-8002]
 
 _**3. ábra:** Az SAP ASCS/SCS magas rendelkezésre ÁLLÁS architektúra közös lemezzel_
 
@@ -248,7 +248,7 @@ _**3. ábra:** Az SAP ASCS/SCS magas rendelkezésre ÁLLÁS architektúra közö
 >
 
 
-![4. ábra: Az SAP ASCS/SCS magas rendelkezésre ÁLLÁS architektúra közös lemezzel][sap-ha-guide-figure-8003]
+![4\. ábra: Az SAP ASCS/SCS magas rendelkezésre ÁLLÁS architektúra közös lemezzel][sap-ha-guide-figure-8003]
 
 _**4. ábra:** Az SAP ASCS/SCS magas rendelkezésre ÁLLÁS architektúra közös lemezzel_
 
@@ -266,7 +266,7 @@ Fürt megosztott erőforrás létrehozásához:
 
 További információk [az SIOS DataKeeper](https://us.sios.com/products/datakeeper-cluster/).
 
-![5. ábra: A Windows Server feladatátvételi fürtszolgáltatás konfigurációs az Azure-ban az SIOS DataKeeper][sap-ha-guide-figure-1002]
+![5\. ábra: A Windows Server feladatátvételi fürtszolgáltatás konfigurációs az Azure-ban az SIOS DataKeeper][sap-ha-guide-figure-1002]
 
 _**5. ábra:** Windows feladatátvevő fürtszolgáltatás konfigurálása az Azure-ban az SIOS DataKeeper_
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: fe8f97368531ed572083834256d84cd1ed6dd8a1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c3ef5362c4d97b8d805212f9cf813c7bc9c8c18c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687224"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059449"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>Egyéni Apache Hive-kódtárak hozzáadása a HDInsight-fürt létrehozásakor
 
@@ -39,9 +39,6 @@ A **Linux-alapú fürtök**: [https://hdiconfigactions.blob.core.windows.net/lin
 
 A **Windows-alapú fürtök**: [https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
 
-> [!IMPORTANT]  
-> A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
-
 **Követelmények**
 
 * A parancsfájlokat egyszerre kell alkalmazni a **Átjárócsomópontokhoz** és **munkavégző csomópontok**.
@@ -50,7 +47,7 @@ A **Windows-alapú fürtök**: [https://hdiconfigactions.blob.core.windows.net/s
 
 * A storage-fiókot tartalmazó jar-fájlok a könyvtárban **kell** csatolható a HDInsight-fürt létrehozása során. Azt kell az alapértelmezett tárfiókot, vagy egy fiók során hozzáadott __opcionális konfigurációs__.
 
-* A WASB-elérési út a tárolóhoz, a Script Action paraméterként kell megadni. Például, ha a JAR-fájlok kivételével nevű tárolóban tárolt **libs** a storage-fiók nevű **mystorage**, a paraméter lehet **wasb://libs\@ mystorage.BLOB.Core.Windows.NET/**.
+* A WASB-elérési út a tárolóhoz, a Script Action paraméterként kell megadni. Például, ha a JAR-fájlok kivételével nevű tárolóban tárolt **libs** a storage-fiók nevű **mystorage**, a paraméter lehet **wasb://libs\@ mystorage.BLOB.Core.Windows.NET/** .
 
   > [!NOTE]  
   > Jelen dokumentum céljából feltételezzük, hogy már létrehozott egy tárfiókot, a blob-tárolóba, és feltölti a fájlokat.
@@ -76,9 +73,9 @@ A **Windows-alapú fürtök**: [https://hdiconfigactions.blob.core.windows.net/s
 
    * **FELDOLGOZÓ**: Jelölje be ezt a beállítást.
 
-   * **ZOOKEEPER**: Hagyja üresen.
+   * **ZOOKEEPER**: Hagyja üresen a mezőt.
 
-   * **PARAMÉTEREK**: Adja meg a WASB-cím a tároló és a storage-fiókhoz, amely tartalmazza a JAR-fájlok kivételével. Ha például **wasb://libs\@mystorage.blob.core.windows.net/**.
+   * **PARAMÉTEREK**: Adja meg a WASB-cím a tároló és a storage-fiókhoz, amely tartalmazza a JAR-fájlok kivételével. Ha például **wasb://libs\@mystorage.blob.core.windows.net/** .
 
 3. Alsó részén a **Parancsfájlműveletek**, használja a **kiválasztása** gombra a konfiguráció mentéséhez.
 

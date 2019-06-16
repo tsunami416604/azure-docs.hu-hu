@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/23/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 20f0d6a88fead155225cff69ab89635de587a46d
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 3cffd2de0763ea6984b64b965ce1214951d3d569
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66455185"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056484"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Hány VPN-ügyfélvégpont lehet a pont–hely konfigurációban?
 
@@ -40,11 +40,11 @@ A következő ügyféloldali operációs rendszerek támogatottak:
 
 Az Azure pont – hely VPN-beállítások három típusát támogatja:
 
-* Secure Socket Tunneling Protocol (SSTP). Az SSTP a Microsoft jogvédett, SSL-alapú megoldása, amely képes átjutni a tűzfalakon, mivel a legtöbb tűzfal nyitva hagyja az SSL által használt 443-as TCP-portot.
+* Secure Socket Tunneling Protocol (SSTP). Az SSTP a Microsoft jogvédett SSL-alapú megoldás, amely behatolásának tűzfalak, mivel a legtöbb tűzfal nyitva a kimenő TCP-portot használja a 443-as SSL.
 
-* OpenVPN. OpenVPN SSL-alapú megoldás, amely behatolásának tűzfalak, mivel a legtöbb tűzfal nyitva a 443-as SSL által használt TCP-portot is.
+* OpenVPN. OpenVPN SSL-alapú megoldás, amely behatolásának tűzfalak, mivel a legtöbb tűzfal nyitva a kimenő TCP-portot használja a 443-as SSL is.
 
-* IKEv2 VPN. Az IKEv2 VPN egy szabványalapú IPsec VPN-megoldás, amely az 500-as és 4500-as UDP-portokat, valamint a következő IP-protokollt használja: 50. A tűzfalak ezeket a portokat nem mindig nyitják meg, ezért elképzelhető, hogy az IKEv2 VPN nem képes átjutni egyes proxykon és tűzfalakon.
+* IKEv2 VPN. Az IKEv2 VPN egy szabványalapú IPsec VPN megoldást, amely nem az 500-as és 4500-as kimeneti UDP-portok és IP-protokoll. 50. A tűzfalak ezeket a portokat nem mindig nyitják meg, ezért elképzelhető, hogy az IKEv2 VPN nem képes átjutni egyes proxykon és tűzfalakon.
 
 ### <a name="if-i-restart-a-client-computer-configured-for-point-to-site-will-the-vpn-automatically-reconnect"></a>Ha újraindítok egy pont–hely kapcsolat használatára konfigurált ügyfélszámítógépet, a VPN automatikusan újracsatlakozik?
 
@@ -80,9 +80,9 @@ A Windows 10 vagy a Server 2016 előkészítése az IKEv2 használatára:
 
    | Operációs rendszer verziója | Dátum | Szám/hivatkozás |
    |---|---|---|
-   | Windows Server 2016<br>Windows 10, 1607-es verzió | 2018. január 17. | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
-   | Windows 10, 1703-as verzió | 2018. január 17. | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
-   | A Windows 10 1709-es verzió | 2018. március 22. | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
+   | Windows Server 2016<br>Windows 10, 1607-es verzió | 2018\. január 17. | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
+   | Windows 10, 1703-as verzió | 2018\. január 17. | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
+   | A Windows 10 1709-es verzió | 2018\. március 22. | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |
 
 2. Adja meg a beállításkulcs értékét. Hozza létre a „HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload” REG_DWORD kulcsot a beállításjegyzékben, vagy állítsa az értékét 1-re.

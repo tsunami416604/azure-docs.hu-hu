@@ -9,10 +9,10 @@ ms.reviewer: jasonh
 ms.topic: howto
 ms.date: 05/09/2019
 ms.openlocfilehash: 5b5b83fe0028e43ca35bf883b29cb71bad6ca2c8
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66253691"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Hozzon létre, és az Azure HDInsight vállalati biztonsági csomag fürtök konfigurálása
@@ -304,7 +304,7 @@ Győződjön meg arról, hogy a tanúsítvány telepítve van-e a számítógép
 
         | Tulajdonság | Érték |
         |---|---|
-        | Source | Bármely |
+        | source | Bármely |
         | Forrásporttartományok | * |
         | Cél | Bármely |
         | Célporttartomány | 636 |
@@ -353,7 +353,7 @@ Ebben a lépésben a következő előfeltételek teljesülésére van szükség:
     1. Kattintson a **egyéni (méret, beállítások, alkalmazások)** .
     2. Adja meg, hogy kívánt szakasz 1 **alapjai**. Ügyeljen arra, hogy a **fürt típusa** van **Spark 2.3-as (HDI 3.6)** és a **erőforráscsoport** van **HDIFabrikam-CentralUS**
 
-    1. 2. szakasz alatt **biztonság és a hálózatkezelés**, kövesse az alábbi lépéseket:
+    1. 2\. szakasz alatt **biztonság és a hálózatkezelés**, kövesse az alábbi lépéseket:
         1. Kattintson a **engedélyezve** alatt **vállalati biztonsági csomag**.
         1. Kattintson a **fürt rendszergazdai felhasználói** , és válassza ki a **HDIAdmin** , amely a helyi rendszergazda felhasználó a korábban létrehozott fiókot. Kattintson a **Kiválasztás** gombra.
 

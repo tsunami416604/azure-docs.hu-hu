@@ -16,10 +16,10 @@ ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 666430a11fb95871eb601b2a38eb7b97ad16119f
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66498949"
 ---
 # <a name="app-service-networking-features"></a>Az App Service hálózatkezelési szolgáltatások
@@ -46,8 +46,8 @@ Bármely adott használati esetekhez lehet megoldani a problémát néhány mód
  
 | Bejövő alkalmazási helyzetek | Funkció |
 |---------------------|-------------------|
-| Az alkalmazás IP-alapú SSL igények támogatása | alkalmazás-címet |
-| Nem megosztott, az alkalmazás dedikált bejövő címe | alkalmazás-címet |
+| Az alkalmazás IP-alapú SSL igények támogatása | Alkalmazás-címet |
+| Nem megosztott, az alkalmazás dedikált bejövő címe | Alkalmazás-címet |
 | Az alkalmazás jól definiált címek készletéből elérésének korlátozása | Korlátozza a hozzáférést |
 | Tegye elérhetővé a magánhálózati IP-címek a virtuális hálózatomban saját alkalmazás | ILB ASE </br> A Szolgáltatásvégpontok az Application Gateway |
 | Az alkalmazás az egy virtuális hálózatban található erőforrások elérésének korlátozása | Service Endpoints – szolgáltatásvégpont </br> ILB ASE |

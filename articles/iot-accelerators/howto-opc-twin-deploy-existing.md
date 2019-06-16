@@ -8,42 +8,43 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 6bdfeefc366734aa10dbaccec69bac8e0b41103f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6eeca062bdc17ec207910b9ba4aa8cea4048f849
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61451301"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080507"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>Az OPC-Ikereszköz egy meglévő projekt üzembe helyezése
 
-Az OPC-Twin-modul az IoT Edge-ben fut, és számos biztonsági szolgáltatások biztosít az OPC-Twin és beállításjegyzék-szolgáltatásokhoz. 
+Az OPC-Twin-modul az IoT Edge-ben fut, és számos biztonsági szolgáltatások biztosít az OPC-Twin és beállításjegyzék-szolgáltatásokhoz.
 
 Az OPC-Twin micro szolgáltatás lehetővé teszi a feldolgozó kezelők és a egy OPC Ikereszköz IoT Edge-modul segítségével a gyárban OPC UA eszközök közötti kommunikáció. A micro szolgáltatás OPC UA szolgáltatások (Tallózás, olvasási, írási és végrehajtási) a REST API-n keresztül tesz elérhetővé. 
 
 Az OPC UA-eszköz beállításjegyzék mikroszolgáltatás regisztrált OPC UA-alkalmazások és azok végpontjait hozzáférést biztosít. Kezelők és a rendszergazdák regisztrálhat és új OPC UA-alkalmazások regisztrációját és keresse meg a meglévőket, beleértve azok végpontjait. Alkalmazás-és végpont-felügyeleten kívül a beállításjegyzék szolgáltatás regisztrált OPC Ikereszköz IoT Edge-modulok is összegyűjti. A szolgáltatás API-t biztosít edge modul funkcióinak, például vezérlő elindítása vagy leállítása folyamatban van a kiszolgáló felderítése (keresési szolgáltatások) vagy az OPC-Twin micro szolgáltatással elérhető új végpont a párok aktiválása.
 
-A modul középpontjában a felügyelő identitását. A felügyelő kezeli a végpont ikereszköz, amely megfelel az OPC UA-kiszolgálói végpontot, amelyek akkor aktiválódnak, a megfelelő OPC UA-beállításjegyzék API használatával. Ez a végpont párok OPC UA JSON az OPC UA bináris üzenetekről, amelyeken a felügyelt endpoint állapot-nyilvántartó biztonságos csatornán keresztül érkeznek be a felhőben futó OPC Ikereszköz micro szolgáltatásból származó fordítja le. A felügyelő is felderítési szolgáltatást nyújt, amelyek eszköz-felderítési eseményeket küldeni az OPC UA eszköz bevezetési szolgáltatásnak feldolgozásra, ahol ezek az események eredményez frissítések az OPC UA-beállításjegyzékbe.  Ez a cikk bemutatja, hogyan helyezhet üzembe egy meglévő projekt az OPC-Twin-modul. 
+A modul középpontjában a felügyelő identitását. A felügyelő kezeli a végpont ikereszköz, amely megfelel az OPC UA-kiszolgálói végpontot, amelyek akkor aktiválódnak, a megfelelő OPC UA-beállításjegyzék API használatával. Ez a végpont párok OPC UA JSON az OPC UA bináris üzenetekről, amelyeken a felügyelt endpoint állapot-nyilvántartó biztonságos csatornán keresztül érkeznek be a felhőben futó OPC Ikereszköz micro szolgáltatásból származó fordítja le. A felügyelő is felderítési szolgáltatást nyújt, amelyek eszköz-felderítési eseményeket küldeni az OPC UA eszköz bevezetési szolgáltatásnak feldolgozásra, ahol ezek az események eredményez frissítések az OPC UA-beállításjegyzékbe.  Ez a cikk bemutatja, hogyan helyezhet üzembe egy meglévő projekt az OPC-Twin-modul.
 
 > [!NOTE]
 > Üzembe helyezés részleteit és az utasítások további információkért lásd: a GitHub [tárház](https://github.com/Azure/azure-iiot-opc-twin-module).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ellenőrizze, hogy a PowerShell és [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/install-az-ps) bővítmények telepítve.   Ha Ön még nem tette még, klónozza a GitHub-adattárban.  Nyisson meg egy parancssort vagy a terminált, és futtassa:
+Ellenőrizze, hogy a PowerShell és [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/install-az-ps) bővítmények telepítve. Ha már még nem tette, klónozza a GitHub-adattárban. A PowerShellben futtassa a következő parancsokat:
 
-```bash
-git clone --recursive https://github.com/Azure/azure-iiot-components 
+```powershell
+git clone --recursive https://github.com/Azure/azure-iiot-components.git
 cd azure-iiot-components
 ```
 
 ## <a name="deploy-industrial-iot-services-to-azure"></a>Helyezze üzembe az Azure ipari IoT-szolgáltatások
 
-1. A parancssor megnyitása vagy terminálon futtassa:
+1. A PowerShell-munkamenetben futtassa:
 
-   ```bash
-   deploy
-   ```
+    ```powershell
+    set-executionpolicy -ExecutionPolicy Unrestricted -Scope Process
+    .\deploy.cmd
+    ```
 
 2. Kövesse az utasításokat, rendelje hozzá az erőforráscsoporthoz az üzemelő példány nevét és a egy nevet a webhelyhez.   A szkript üzembe helyezi a mikroszolgáltatásokhoz, és az erőforrás-csoportba az Azure-előfizetésben az Azure platform függősége.  A parancsfájl is regisztrál egy alkalmazást az Azure Active Directory (AAD) bérlő OAUTH-alapú hitelesítés támogatásához.  Üzembe helyezés több percet vesz igénybe.  Milyen jelennének meg a megoldás sikeresen üzembe helyezése után egy példát:
 
@@ -77,11 +78,12 @@ Az üzembe helyezési parancsfájl megpróbálja két AAD-alkalmazás regisztrá
 
 Csak a szolgáltatások és a függőségek helyett egy teljes körű bemutatót is telepítheti.  Az összes egy bemutatót a három OPC UA-kiszolgálók, az OPC-Twin-modul, az összes mikroszolgáltatásokhoz és egy mintául szolgáló webalkalmazást tartalmaz.  Az bemutatási célokra szolgál.
 
-1. Győződjön meg arról, hogy egy klónozott tárház (lásd fent). Nyissa meg a tárházat és a Futtatás gyökérkönyvtárában található egy parancssorba vagy terminálba:
+1. Győződjön meg arról, hogy egy klónozott tárház (lásd fent). Nyissa meg egy PowerShell-parancssort a tárházat és a Futtatás gyökérkönyvtárában található:
 
-   ```bash
-   deploy -type demo
-   ```
+    ```powershell
+    set-executionpolicy -ExecutionPolicy Unrestricted -Scope Process
+    .\deploy -type demo
+    ```
 
 2. Kövesse az utasításokat az erőforráscsoport és a egy nevet a webhelyhez hozzárendelése egy új nevet.  Sikeresen üzembe helyezését követően a szkript a webes alkalmazás végpontjának URL-CÍMÉT jeleníti meg.
 
@@ -89,55 +91,55 @@ Csak a szolgáltatások és a függőségek helyett egy teljes körű bemutatót
 
 A szkript a következő paramétereket fogadja:
 
-```bash
+```powershell
 -type
 ```
 
 A típusú telepítés (virtuális gép, helyi, bemutató)
 
-```bash
+```powershell
 -resourceGroupName
 ```
 
 Lehet egy meglévő vagy új erőforráscsoport nevét.
 
-```bash
+```powershell
 -subscriptionId
 ```
 
 Nem kötelező megadni, ahol erőforrásokat üzembe helyezve az előfizetés-azonosító.
 
-```bash
+```powershell
 -subscriptionName
 ```
 
 Vagy az előfizetés nevét.
 
-```bash
+```powershell
 -resourceGroupLocation
 ```
 
 Nem kötelező; az erőforráscsoport helyét. Ha meg van adva, megpróbálja ezen a helyen hozzon létre egy új erőforráscsoportot.
 
-```bash
+```powershell
 -aadApplicationName
 ```
 
-Regisztrálja alatt az AAD-alkalmazás nevét. 
+Regisztrálja alatt az AAD-alkalmazás nevét.
 
-```bash
+```powershell
 -tenantId
 ```
 
 AAD-bérlő használatához.
 
-```bash
+```powershell
 -credentials
 ```
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megtanulhatta, hogyan helyezhet üzembe egy meglévő projekt OPC Ikereszköz, Íme a javasolt következő lépésre:
+Most, hogy hogyan helyezhet üzembe egy meglévő projekt OPC Ikereszköz bemutattuk, Íme a javasolt következő lépésre:
 
 > [!div class="nextstepaction"]
 > [Az OPC-ügyfél és az OPC-PLC biztonságos kommunikáció](howto-opc-vault-deploy-existing-client-plc-communication.md)

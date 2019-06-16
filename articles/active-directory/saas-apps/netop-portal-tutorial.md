@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 0bbd13a29b8d01f64ca68c35b751b0adf0a76c58
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 751de509d17b05c2515261eeb7c036ae345986fc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65743816"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67096295"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netop-portal"></a>Oktatóanyag: Az Azure Active Directory-integráció Netop portállal
 
@@ -52,7 +52,7 @@ Az Azure AD-be Netop portál integráció konfigurálásához, hozzá kell Netop
 
 **Netop portál hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -154,7 +154,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Netop portállal, hajtsa vé
 
 ### <a name="configure-netop-portal-single-sign-on"></a>Netop portál egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálása **Netop portál** oldalon kell a letöltött **összevonási metaadatainak XML** és a bejelentkezési URL-cím az Azure Portalról. 3. lépés a dokumentáció utasításait [Itt](https://kb.netop.com/assets/netop_portal_adfs_and_azure_ad_integration.pdf) NetOp portál konfigurálása az Azure AD-hitelesítés.
+Az egyszeri bejelentkezés konfigurálása **Netop portál** oldalon kell a letöltött **összevonási metaadatainak XML** és a bejelentkezési URL-cím az Azure Portalról. 3\. lépés a dokumentáció utasításait [Itt](https://kb.netop.com/assets/netop_portal_adfs_and_azure_ad_integration.pdf) NetOp portál konfigurálása az Azure AD-hitelesítés.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -211,7 +211,7 @@ Ebben a szakaszban engedélyezze Britta Simon Netop portálra a hozzáférés bi
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű Netop portálon hoz létre. Együttműködve [Netop portál támogatási csapatának](mailto:casemanager@netop.com) a felhasználók hozzáadása az Netop portál platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

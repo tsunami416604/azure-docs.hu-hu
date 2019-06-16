@@ -17,12 +17,12 @@ ms.date: 05/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3208afc7ec18013c6e70e148995d33114cf7e06c
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 760eb5a37a09687cd98ca7abbdcb0bc42667f830
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66513662"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107626"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Bejelentkezési tevékenységre vonatkozó jelentések hibakódjai 
 
@@ -107,7 +107,7 @@ Szoftveresen is segítségével végezheti el a bejelentkezési adatokat a [repo
 |50128|Érvénytelen tartománynév - információ a bérlő-azonosító nem található vagy a kérelem, vagy hallgatólagos által a megadott hitelesítő adatokat.|
 |50129|Eszköz nem áll munkahelyhez csatlakoztatott - **munkahelyi csatlakoztatás** szükséges regisztrálni az eszközt.|
 |50130|Jogcím értéke nem értelmezhető ismert hitelesítési módszert.|
-|50131|Különböző feltételes hozzáférési hibákban használatos. Például Rossz Windows-eszközállapot, a kérés gyanús tevékenység miatt blokkolva, a hozzáférési szabályzattal és a biztonsági szabályzattal kapcsolatos döntések.|
+|50131|Különböző feltételes hozzáférési hibákban használni. Például Rossz Windows-eszközállapot, a kérés gyanús tevékenység miatt blokkolva, a hozzáférési szabályzattal és a biztonsági szabályzattal kapcsolatos döntések.|
 |50132|A hitelesítő adatok vissza lettek vonva az alábbi okok miatt:<ul><li>Az SSO-összetevő érvénytelen vagy lejárt</li><li>A munkamenet nem elég friss az alkalmazáshoz</li><li>A rendszer csendes bejelentkezési kérelmet küldött, de a felhasználó Azure AD-munkamenete érvénytelen vagy lejárt.</li></ul>|
 |50133|A jelszó lejárta vagy nemrégi módosítása miatt a munkamenet érvénytelen.|
 |50135|Jelszó módosítása miatt a fiók kockázati megadása kötelező.|
@@ -133,8 +133,8 @@ Szoftveresen is segítségével végezheti el a bejelentkezési adatokat a [repo
 |52004|A felhasználó nem járult hozzá a LinkedIn-erőforrásokhoz való hozzáféréshez. |
 |53000|A feltételes hozzáférési szabályzathoz megfelelő eszköz szükséges, és az eszköz nem megfelelő. A felhasználónak regisztrálnia kell az eszközét az Intune-ban például egy jóváhagyott MDM-szolgáltató rendelkezik.|
 |53001|A feltételes hozzáférési szabályzathoz tartományhoz csatlakoztatott eszköz szükséges, és az eszköz nincs tartományhoz csatlakoztatva. Rendelkezik felhasználói használata egy tartományhoz csatlakoztatott eszköz.|
-|53002|A használt alkalmazás nem feltételes hozzáféréshez jóváhagyott alkalmazás. A felhasználónak a jóváhagyott alkalmazások listáján szereplő alkalmazást kell használnia a hozzáféréshez.|
-|53003|A hozzáférés blokkolva a feltételes hozzáférési szabályzatok miatt.|
+|53002|Nem használt alkalmazás feltételes hozzáféréshez jóváhagyott alkalmazáshoz. A felhasználónak a jóváhagyott alkalmazások listáján szereplő alkalmazást kell használnia a hozzáféréshez.|
+|53003|Feltételes hozzáférési szabályzatok miatt le van tiltva a hozzáférés.|
 |53004|A tartalom elérése előtt a felhasználónak el kell végeznie a többtényezős hitelesítés regisztrációs folyamatát. A felhasználónak regisztrálnia kell többtényezős hitelesítésre.|
 |65001|Az X alkalmazás nem rendelkezik engedéllyel az Y alkalmazás eléréséhez, vagy az engedély vissza lett vonva. Vagy: a felhasználó vagy a rendszergazda nem egyezett bele az alkalmazás X azonosítóval való használatába. Küldjön egy interaktív engedélyezési kérést ehhez a felhasználóhoz és erőforráshoz. Vagy a felhasználó vagy a rendszergazda nem egyezett bele az alkalmazás segítségével azonosító x küldjön egy engedélyezési kérést a bérlő rendszergazdájának alkalmazás nevében: Y erőforrás: Z.|
 |65004|A felhasználó elutasította az alkalmazáshoz való hozzáférés jóváhagyását. Kérje meg a felhasználót, hogy jelentkezzen be újra, és hagyja jóvá az alkalmazást|

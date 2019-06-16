@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 5/7/2019
+ms.date: 6/13/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 421f255353a3cf0b6cc000677c91d0f8c84cbc73
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: c90e466bb7798fae3008dd72a4a4a0e2a0e7a0b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540609"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67125768"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Az Azure File Sync ügynök kibocsátási megjegyzései
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. A Windows Server-telepítéseket az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -23,24 +23,33 @@ A jelen cikk az Azure File Sync ügynök támogatott verzióinak kibocsátási m
 ## <a name="supported-versions"></a>Támogatott verziók
 Az Azure File Sync ügynök alábbi verziói támogatottak:
 
-| Mérföldkő | Az ügynök verziószáma | Kiadás dátuma | Állapot |
+| Mérföldkő | Az ügynök verziószáma | Kiadási dátum | Állapot |
 |----|----------------------|--------------|------------------|
-| 2019. május kumulatív - [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 2019. május 7. | Támogatott (ajánlott verzió) |
-| 6-os verziója Engedje - [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 2019. április 21-én. | Támogatott |
-| Április a 2019 -. kumulatív frissítés [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 2019. április 4. | Támogatott |
-| Március a 2019 -. kumulatív frissítés [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 2019. március 7. | Támogatott |
-| V5-ös verziója Engedje - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 2019. február 12. | Támogatott |
-| Január a 2019 -. kumulatív frissítés [KB4481059](https://support.microsoft.com/help/4481059)| 4.3.0.0 | 2019. január 14. | Támogatott |
-| 2018. decemberi kumulatív - [KB4459990](https://support.microsoft.com/help/4459990)| 4.2.0.0 | 2018. december 10. | Támogatott |
-| A 2018. december kumulatív frissítés | 4.1.0.0 | 2018. december 4. | Támogatott |
-| V4 kiadás | 4.0.1.0 | 2018. november 13. | Támogatott |
-| 2018 szeptember. kumulatív frissítés | 3.3.0.0 | 2018. szeptember 24. | Támogatott – az ügynök verziójának érvényessége 2019. július 19. |
-| 2018 augusztus. kumulatív frissítés | 3.2.0.0 | 2018. augusztus 15. | Támogatott – az ügynök verziójának érvényessége 2019. július 19. |
-| Általános elérhetőség | 3.1.0.0 | 2018. július 19. | Támogatott – az ügynök verziójának érvényessége 2019. július 19. |
+| Június a 2019 -. kumulatív frissítés [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 2019\. június 13. | Támogatott (ajánlott verzió) |
+| 2019\. május kumulatív - [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 2019\. május 7. | Támogatott |
+| 6-os verziója Engedje - [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 2019\. április 21-én. | Támogatott |
+| Április a 2019 -. kumulatív frissítés [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 2019\. április 4. | Támogatott |
+| Március a 2019 -. kumulatív frissítés [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 2019\. március 7. | Támogatott |
+| V5-ös verziója Engedje - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 2019\. február 12. | Támogatott |
+| Január a 2019 -. kumulatív frissítés [KB4481059](https://support.microsoft.com/help/4481059)| 4.3.0.0 | 2019\. január 14. | Támogatott |
+| 2018\. decemberi kumulatív - [KB4459990](https://support.microsoft.com/help/4459990)| 4.2.0.0 | 2018\. december 10. | Támogatott |
+| A 2018. december kumulatív frissítés | 4.1.0.0 | 2018\. december 4. | Támogatott |
+| V4 kiadás | 4.0.1.0 | 2018\. november 13. | Támogatott |
+| 2018 szeptember. kumulatív frissítés | 3.3.0.0 | 2018\. szeptember 24. | Támogatott – az ügynök verziójának érvényessége 2019. július 19. |
+| 2018 augusztus. kumulatív frissítés | 3.2.0.0 | 2018\. augusztus 15. | Támogatott – az ügynök verziójának érvényessége 2019. július 19. |
+| Általános elérhetőség | 3.1.0.0 | 2018\. július 19. | Támogatott – az ügynök verziójának érvényessége 2019. július 19. |
 | Lejárt ügynökök | 1.1.0.0 - 3.0.13.0 | – | Ügynökök verzióinak lejárt nem támogatott – 2018. október 1. |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Az Azure File Sync ügynökének frissítési szabályzata
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-6200"></a>Ügynök verziója 6.2.0.0
+Az alábbi kibocsátási megjegyzések olyan verziójára 6.2.0.0 az Azure File Sync ügynök 2019. június 13. Ezek a megjegyzések kibocsátási megjegyzéseinek kiegészítéséül verzió 6.0.0.0 kívül vannak.
+
+Ebben a kiadásban megoldott problémák listája:  
+- Miután létrehozta a kiszolgálói végpont, magas CPU-használat jelentkezhet, ha a háttérben visszaírási fájlok letöltése a kiszolgálóra
+- Szinkronizálás és a felhőbeli rétegezés műveletek sikertelenek lehetnek ECS_E_SERVER_CREDENTIAL_NEEDED hiba miatt a jogkivonat lejárati
+- Egy fájl meghiúsulhat, ha a fájl letöltése az URL-cím fenntartott karaktereket tartalmaz. 
 
 ## <a name="agent-version-6100"></a>Ügynök verziója 6.1.0.0
 Az alábbi kibocsátási megjegyzések olyan verziójára 6.1.0.0 az Azure File Sync ügynök 2019. május 6. Ezek a megjegyzések kibocsátási megjegyzéseinek kiegészítéséül verzió 6.0.0.0 kívül vannak.

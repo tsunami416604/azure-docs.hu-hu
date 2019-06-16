@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: micflan
 ms.custom: ''
 ms.openlocfilehash: 717c0f110ebbeee53e2c9b9207350385288d57c3
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65991387"
 ---
 # <a name="understand-and-work-with-scopes"></a>A hatókörök ismertetése és használata
@@ -154,14 +154,14 @@ Az Azure Portalon a Cost Management minden nézetek az alábbiak egy **hatókör
 
 A Cost Management API-k használatakor, hogy a hatókör fontos. Az alábbi információk segítségével hozhat létre a megfelelő hatókörben URI-t a Cost Management API-k.
 
-### <a name="billing-accounts"></a>Számlázási fiókok
+### <a name="billing-accounts"></a>Számlázási fiók
 
 1. Nyissa meg az Azure Portalt, és navigáljon arra **Költségkezelés + számlázás** a szolgáltatások listájában.
 2. Válassza ki **tulajdonságok** számlázási fiók menüjében.
 3. Másolja ki a számlázási fiók azonosítóját.
 4. A hatókör van: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}"`
 
-### <a name="billing-profiles"></a>Számlázási profilok
+### <a name="billing-profiles"></a>A számlázás profilok
 
 1. Nyissa meg az Azure Portalt, és navigáljon arra **Költségkezelés + számlázás** a szolgáltatások listájában.
 2. Válassza ki **számlázási profilok** számlázási fiók menüjében.
@@ -170,7 +170,7 @@ A Cost Management API-k használatakor, hogy a hatókör fontos. Az alábbi info
 5. Másolja át a számlázási fiók és számlázás profil azonosítók.
 6. A hatókör van: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}"`
 
-### <a name="invoice-sections"></a>Számlaszakaszok
+### <a name="invoice-sections"></a>Számla szakaszok
 
 1. Nyissa meg az Azure Portalt, és navigáljon arra **Költségkezelés + számlázás** a szolgáltatások listájában.
 2. Válassza ki **szakaszok számlázása** számlázási fiók menüjében.
@@ -218,7 +218,7 @@ A Cost Management API-k használatakor, hogy a hatókör fontos. Az alábbi info
 4. Másolja ki az erőforrást azonosító mező értékét.
 5. A hatókör van: `"/subscriptions/{id}/resourceGroups/{name}"`
 
-A Cost Management jelenleg támogatott [Azure globális](https://management.azure.com) és [Azure Government](https://management.usgovcloudapi.net). Az Azure Government kapcsolatos további információkért lásd: [Azure globális és a kormányzati API végpontok](../azure-government/documentation-government-developer-guide.md#endpoint-mapping)_._
+A Cost Management jelenleg támogatott [Azure globális](https://management.azure.com) és [Azure Government](https://management.usgovcloudapi.net). Az Azure Government kapcsolatos további információkért lásd: [Azure globális és a kormányzati API végpontok](../azure-government/documentation-government-developer-guide.md#endpoint-mapping) _._
 
 ## <a name="next-steps"></a>További lépések
 

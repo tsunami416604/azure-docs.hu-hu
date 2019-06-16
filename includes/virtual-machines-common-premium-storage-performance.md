@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ee721558e0e643a4b5fdcfa4cf0fe9c2195fa479
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7a37c9d51541c279a6b820641b6eb46175aa8413
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64736971"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "67113541"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Az Azure premium storage: nagy teljesítményű rendszer tervezése
 
@@ -98,7 +98,7 @@ Ezután mérje maximális teljesítmény-követelmények az alkalmazás teljes �
 | Min. Késés | | | |
 | Átlagos késés | | | |
 | Legfeljebb CPU | | | |
-| Átlagos processzorhasználat | | | |
+| Átlagos CPU | | | |
 | Legfeljebb Memory (Memória) | | | |
 | Átlagos memória | | | |
 | Várólistájának mélysége | | | |
@@ -114,7 +114,7 @@ A legjobb módszer az alkalmazás teljesítmény-követelmények mérheti, hogy 
 
 A teljesítményszámlálók processzor, memória, és minden egyes logikai lemez és a kiszolgáló fizikai lemez érhetők el. Ha prémium szintű tárolólemezeket a virtuális gép használja, a fizikai lemez számlálók prémium szintű storage lemezek, és logikai lemez számlálók a premium storage-lemezekkel létrehozott minden kötet esetében. A lemezeket, az alkalmazás számítási feladatait futtató értékeit kell rögzíteni. Ha a logikai és fizikai lemezek között egy-egy leképezést, olvassa el a fizikai lemez számlálók; Ellenkező esetben tekintse meg a logikai lemez számlálókat. Linux rendszeren a iostat parancs lemez- és CPU-kihasználtság jelentést hoz létre. A lemezhasználati jelentés biztosít a fizikai eszközön vagy a partíció statisztikai. Ha egy adatbázis-kiszolgáló, az adatok és a naplók a különálló lemezek rendelkezik, ezeket az adatokat a két lemez összegyűjtése Alábbi táblázat ismerteti a számlálók lemezek, a processzor és memória:
 
-| Számláló | Leírás | PerfMon | iostat |
+| A számláló | Leírás | PerfMon | iostat |
 | --- | --- | --- | --- |
 | **Iops-t vagy a tranzakció / másodperc** |Ki a tároló lemez másodpercenkénti i/o-kérések száma. |Lemezolvasások/mp <br> Lemezírások/mp |tps <br> r/s <br> w/s |
 | **Lemez olvasása és írása** |% Olvasási és írási műveleteket a lemezen végzett. |% Olvasási kihasználtsága (%) <br> A(z) % lemezre írási ideje |r/s <br> w/s |
@@ -178,10 +178,10 @@ Ha egy alkalmazás, amely lehetővé teszi, hogy módosítani az i/o-mérete, ha
 
 | Alkalmazás követelményeinek | I/o-mérete | IO | Throughput/Bandwidth |
 | --- | --- | --- | --- |
-| Maximális IOPS-érték |8 KB |5000 |40 MB / s |
+| Maximális iops-érték |8 KB |5,000 |40 MB / s |
 | Maximális átviteli sebesség |1024 KB |200 |200 MB / s |
 | Maximális átviteli sebesség és a magas iops-érték |64 KB |3,200 |200 MB / s |
-| Maximális iops-érték és nagy átviteli sebesség |32 KB |5000 |160 MB / s |
+| Maximális iops-érték és nagy átviteli sebesség |32 KB |5,000 |160 MB / s |
 
 Iops-t és a egy egyetlen prémium szintű tárolólemez maximális értéke magasabb sávszélesség, amelyet több prémium szintű lemezek csíkozott együtt. Például stripe két P30 lemez beolvasni egy 10 000 IOPS kombinált iops-érték vagy egy összesített átviteli sebesség 400 MB / másodperc. A következő szakaszban leírtak kell használnia a virtuális gép méretét, amely támogatja a kombinált lemez IOPS és átviteli sebesség.
 
@@ -236,7 +236,7 @@ Az Azure Premium Storage általánosan elérhető nyolc adatlemez-méretet és a
 | Prémium szintű lemezek típusa  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
 | Lemezméret           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1024 GiB (1 TiB)    | 2048 GiB (2 TiB)    | 4095 GiB (4 TiB)    | 8192 GiB (8 TiB)    | 16384 giB (16 TiB)    | 32 767 giB (32 TiB)    |
-| IOPS-érték lemezenként       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500              | 15 000              | 20,000              |
+| IOPS-érték lemezenként       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500              | 15,000              | 20,000              |
 | Adattovábbítás lemezenként | 25 MiB másodpercenként  | 50 MiB másodpercenként  | 100 MiB másodpercenként |125 MiB másodpercenként | Másodpercenként 150 MiB | 200 MiB másodpercenként | 250 MiB másodpercenként | 250 MiB másodpercenként | 480 MiB másodpercenként | 750 MiB másodpercenként | 750 MiB másodpercenként |
 
 Hány lemezek határozza meg, hogy a lemez méretét a választott. Egyetlen P50 lemez vagy több P10 lemezt használhat az alkalmazás követelményeinek kielégítése érdekében. Amikor a választás az alább felsorolt fiókok és jogosultságok figyelembe.
@@ -271,7 +271,7 @@ Fontos a megfelelő lemezek készlete, a gyorsítótár engedélyezése. E lehet
 
 | **Lemez típusa** | **Alapértelmezett az ügyfélgyorsítótár beállítása** |
 | --- | --- |
-| Operációsrendszer-lemez |ReadWrite |
+| Operációsrendszer-lemez |Az olvasási és írási |
 | Adatlemez |ReadOnly |
 
 Az alábbiakban az adatlemezeket, ajánlott lemez gyorsítótárazási beállításai
@@ -280,7 +280,7 @@ Az alábbiakban az adatlemezeket, ajánlott lemez gyorsítótárazási beállít
 | --- | --- |
 | None |Gazdagép-gyorsítótár sem csak írási és írási műveltekből lemezek konfigurálása. |
 | ReadOnly |Csak olvasható gazdagép-gyorsítótár konfigurálása az olvasási és írási-olvasási lemezek. |
-| ReadWrite |Gazdagép-gyorsítótár konfigurálja az olvasási és írási csak akkor, ha az alkalmazás megfelelően kezeli a gyorsítótárazott adatok írását szükség esetén állandó lemezt. |
+| Az olvasási és írási |Gazdagép-gyorsítótár konfigurálja az olvasási és írási csak akkor, ha az alkalmazás megfelelően kezeli a gyorsítótárazott adatok írását szükség esetén állandó lemezt. |
 
 *ReadOnly*  
 A Premium Storage-adatok gyorsítótárazása lemezek ReadOnly konfigurálásával érhet el alacsony olvasási késés, és nagyon magas olvasási IOPS és átviteli sebesség lekérése az alkalmazáshoz. Ez a két okok miatt

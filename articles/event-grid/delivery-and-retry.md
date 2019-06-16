@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: spelluru
 ms.openlocfilehash: b4bfdd3e9cdf99314dc55907ba163adc6cd39423
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65952883"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid az üzenetek kézbesítését, és próbálkozzon újra
@@ -74,7 +74,7 @@ A következő HTTP-válaszkódot adja meg, hogy az esemény kézbesítési kís�
 
 - 400 Hibás kérés
 - 401-es nem engedélyezett
-- 404 Nem található
+- 404 – Nem található
 - 408 kérés időtúllépése
 - 413 kérelem az entitás túl nagy
 - 414 URI túl hosszú

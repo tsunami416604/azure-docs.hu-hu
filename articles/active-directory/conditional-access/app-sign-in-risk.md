@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – Azure Active Directory feltételes hozzáférés a munkamenet kockázata észlelésekor elérésének letiltása |} A Microsoft Docs
+title: Rövid útmutató – hozzáférés letiltása az Azure Active Directory feltételes hozzáférés a munkamenet kockázata észlelésekor |} A Microsoft Docs
 description: Ebben a rövid útmutatóban megismerheti, hogy hogyan konfigurálhat egy Azure Active Directory (Azure AD) feltételes hozzáférési szabályzat blokkolja a bejelentkezések alapján a munkamenet kockázatok.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5defdf2d33d32042775271fe01aba377687ae75
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f8de4e785bbe2496ca38b33512da1c85f9ff76f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60413434"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112780"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Gyors útmutató: Letiltja a hozzáférést az Azure Active Directory feltételes hozzáférés a munkamenet kockázata észlelésekor  
 
@@ -32,7 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-- **Hozzáférés az Azure AD Premium P2 kiadás** – amíg feltételes hozzáférés az Azure AD Premium P1 képesség, mivel ez a rövid útmutató példahelyzet Identity Protection egy P2 kiadás kell.
+- **Hozzáférés az Azure AD Premium P2 kiadás** -közben a feltételes hozzáférés egy Azure AD Premium P1 képesség, mivel ebben a rövid útmutatóban a forgatókönyv szüksége van az Identity Protection egy P2 kiadás kell.
 
 - **Identity Protection** – ebben a rövid útmutatóban példahelyzet Identity Protection engedélyezni kell. Ha nem ismeri az Identity Protection használatának engedélyezése, [engedélyezése az Azure Active Directory Identity Protection](../identity-protection/enable.md).
 
@@ -53,20 +53,20 @@ Ez a lépés célja, győződjön meg arról, hogy a teszt fiók hozzáférhesse
 
 Ebben a rövid útmutatóban a forgatókönyvet használja a bejelentkezési Tor böngészőből létrehozni egy észlelt **névtelen IP-címekről történő bejelentkezések** kockázati esemény. A kockázati esemény kockázati szintje közepes. A kockázati esemény válaszolni a bejelentkezési kockázati feltétellel közepes beállítása. Éles környezetben a bejelentkezési kockázati feltétellel kell beállítania, vagy a magas, közepes és magas.
 
-Ez a szakasz bemutatja, hogyan hozhat létre a feltételes hozzáférési szabályzat. Állítsa be a szabályzat:
+Ez a szakasz bemutatja, hogyan hozhat létre feltételes hozzáférési szabályzatot. Állítsa be a szabályzat:
 
-| Beállítás | Value |
+| Beállítás | Érték |
 | --- | --- |
 | Felhasználók és csoportok | Alain Charon  |
-| Felhőalkalmazások | Minden felhőalkalmazás |
+| Felhőalkalmazások | Minden felhőalapú alkalmazásra |
 | Bejelentkezési kockázat | Közepes |
-| Hozzáférés | Hozzáférés letiltása |
+| Támogatás | Hozzáférés letiltása |
 
 ![Szabályzat létrehozása](./media/app-sign-in-risk/130.png)
 
 **A feltételes hozzáférési szabályzat konfigurálása:**
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com) globális, biztonsági vagy feltételes hozzáférés rendszergazdájaként.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) globális rendszergazdai, biztonsági rendszergazdai vagy feltételes hozzáférési rendszergazdájaként.
 
 1. Az Azure Portalon, a bal oldali navigációs sávon kattintson **Azure Active Directory**.
 
@@ -114,11 +114,11 @@ Ez a szakasz bemutatja, hogyan hozhat létre a feltételes hozzáférési szabá
 
 1. Kattintson a **feltételek**.
 
-   ![Hozzáférés-szabályozás](./media/app-sign-in-risk/19.png)
+   ![Hozzáférés-vezérlés](./media/app-sign-in-risk/19.png)
 
 1. Az a **feltételek** oldalon:
 
-   ![Bejelentkezés kockázati szintje](./media/app-sign-in-risk/21.png)
+   ![Bejelentkezési kockázati szint](./media/app-sign-in-risk/21.png)
 
    1. Kattintson a **bejelentkezési kockázat**.
 
@@ -132,7 +132,7 @@ Ez a szakasz bemutatja, hogyan hozhat létre a feltételes hozzáférési szabá
 
 1. Az a **hozzáférés-vezérlés** területén kattintson **Grant**.
 
-   ![Hozzáférés-szabályozás](./media/app-sign-in-risk/10.png)
+   ![Hozzáférés-vezérlés](./media/app-sign-in-risk/10.png)
 
 1. Az a **Grant** oldalon:
 
@@ -144,13 +144,13 @@ Ez a szakasz bemutatja, hogyan hozhat létre a feltételes hozzáférési szabá
 
 1. Az a **házirend engedélyezése** területén kattintson **a**.
 
-   ![Házirend engedélyezése](./media/app-sign-in-risk/18.png)
+   ![Szabályzat engedélyezése](./media/app-sign-in-risk/18.png)
 
 1. Kattintson a **Create** (Létrehozás) gombra.
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Egy szimulált bejelentkezési kiértékelése
 
-Most, hogy konfigurálta a feltételes hozzáférési szabályzatot, érdemes ellenőriznie, hogy a várt módon működik-e. Első lépésként, a feltételes hozzáférés használata a **mi történik, ha házirend eszközzel** egy jelentkezzen be a tesztfelhasználó szimulálásához. A szimuláció megbecsüli a bejelentkezésnek a szabályzatokra gyakorolt hatását, és létrehoz egy szimulációs jelentést.  
+Most, hogy a feltételes hozzáférési szabályzat van beállítva, érdemes tudni, hogy a várt módon működik-e azt. Első lépésként, a feltételes hozzáférés használata a **mi történik, ha házirend eszközzel** egy jelentkezzen be a tesztfelhasználó szimulálásához. A szimuláció megbecsüli a bejelentkezésnek a szabályzatokra gyakorolt hatását, és létrehoz egy szimulációs jelentést.  
 
 Futtatásakor a **mi történik, ha a házirend-eszköz** ebben a forgatókönyvben a **közepes kockázati szint hozzáférésének blokkolása** alatt kell szerepelnie **érvényes szabályzatok**.
 
@@ -160,7 +160,7 @@ Futtatásakor a **mi történik, ha a házirend-eszköz** ebben a forgatókönyv
 
 1. Az a [feltételes hozzáférés – szabályzatok](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) lapon, a felső menüben kattintson **mi történik, ha**.  
 
-   ![What If](./media/app-sign-in-risk/14.png)
+   ![mi van, ha](./media/app-sign-in-risk/14.png)
 
 1. Kattintson a **felhasználói**, jelölje be **Alan Charon** a a **felhasználók** lapon, és kattintson a **kiválasztása**.
 
@@ -172,7 +172,7 @@ Futtatásakor a **mi történik, ha a házirend-eszköz** ebben a forgatókönyv
 
 1. Kattintson a **mi történik, ha**.
 
-## <a name="test-your-conditional-access-policy"></a>A feltételes hozzáférési szabályzat tesztelése
+## <a name="test-your-conditional-access-policy"></a>A feltételes hozzáférési házirend tesztelése
 
 Az előző szakaszban megtanulhatta egy szimulált bejelentkezési kiértékelése. A szimuláció mellett is érdemes tesztelnie győződjön meg arról, hogy az elvárt módon működik, a feltételes hozzáférési szabályzatot.
 

@@ -1,8 +1,8 @@
 ---
 title: Ajánlott eljárások az Azure Active Directory feltételes hozzáférés |} A Microsoft Docs
-description: Tudnivalók ismertetése, és mi ennek során kerülje a feltételes hozzáférési szabályzatok konfigurálásakor.
+description: Tudnivalók ismertetése, és mi kerülje ennek során a feltételes hozzáférési szabályzatok konfigurálásakor.
 services: active-directory
-keywords: feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-vel, biztonságos hozzáférés a vállalati erőforrásokhoz, feltételes hozzáférési szabályzatok
+keywords: Feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-ben a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési szabályzatok
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -18,12 +18,12 @@ ms.date: 01/25/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67811e03bfa87a991b9eeb6f80ddddd87f781335
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 8e7b77376989031dc1697d155cccf59954233a85
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305738"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112659"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Ajánlott eljárások az Azure Active Directory feltételes hozzáférés
 
@@ -109,7 +109,7 @@ Minden bejelentkezéshez az Azure Active Directory kiértékeli az összes szab�
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>Feltételes hozzáférés az Exchange ActiveSync szolgáltatással működik?
 
-Igen, használhatja az Exchange ActiveSync feltételes hozzáférési szabályzat egyes [korlátozások](https://docs.microsoft.com/azure/active-directory/conditional-access/conditional-access-for-exo-and-spo#exchange-activesync). 
+Igen, használhatja az Exchange ActiveSync feltételes hozzáférési szabályzat egyes [korlátozások](https://docs.microsoft.com/azure/active-directory/conditional-access/conditional-access-for-exo-and-spo). 
 
 ### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Hogyan kell konfigurálnia a feltételes hozzáférés az Office 365-alkalmazások?
 
@@ -117,7 +117,7 @@ Office 365-alkalmazások vannak összekapcsolva, mert azt javasoljuk hozzárende
 
 Közös összekapcsolt alkalmazások közé tartozik a Microsoft Flow, a Microsoft Planner, Microsoft Teams, Office 365 Exchange Online, az Office 365 SharePoint Online és az Office 365 Yammer.
 
-Fontos a felhasználói tevékenységeket, például a többtényezős hitelesítést, amikor egy munkamenet vagy a feladat kezdetétől érvényesül hozzáférésének igénylő szabályzatainak. Ha nem, akkor felhasználók nem fog tudni végezzünk el néhány feladatot az alkalmazáson belül. Például ha van szüksége a multi-factor authentication a nem felügyelt eszközök férhessenek hozzá a SharePoint, de nem e-mailt, az e-mail-címét a felhasználója nem lehet csatlakozni a SharePoint-fájlok, egy üzenet. További információ a cikkben található [függőségei Mik az Azure Active Directory feltételes hozzáférés?](service-dependencies.md).
+Fontos a felhasználói tevékenységeket, például a többtényezős hitelesítést, amikor egy munkamenet vagy a feladat kezdetétől érvényesül hozzáférésének igénylő szabályzatainak. Ha nem, akkor felhasználók nem fog tudni végezzünk el néhány feladatot az alkalmazáson belül. Például ha van szüksége a multi-factor authentication a nem felügyelt eszközök férhessenek hozzá a SharePoint, de nem e-mailt, az e-mail-címét a felhasználója nem lehet csatlakozni a SharePoint-fájlok, egy üzenet. További információ a cikkben található [Mik az Azure Active Directory feltételes hozzáférés függőségei?](service-dependencies.md).
 
 
 
@@ -183,5 +183,5 @@ További információkért lásd: [az Azure Portalon klasszikus szabályzatok Mi
 
 Ha meg szeretné ismerni:
 
-- Egy feltételes hozzáférési szabályzat konfigurálása, olvassa el [többtényezős hitelesítés megkövetelése az Azure Active Directory feltételes hozzáférés az adott alkalmazások](app-based-mfa.md).
+- Egy feltételes hozzáférési szabályzat konfigurálása, olvassa el [megkövetelése MFA konkrét alkalmazások esetén az Azure Active Directory feltételes hozzáférés](app-based-mfa.md).
 - Hogyan tervezi a feltételes hozzáférési szabályzatokat, [a feltételes hozzáférés üzembe helyezés az Azure Active Directory tervezése](plan-conditional-access.md).

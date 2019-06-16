@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 2001b849e9c43d552889475ca237c52b141f3f04
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 32eb2c47ed46aed8e2e3755a83437a21391295c5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306267"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67122965"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Az Azure Red Hat OpenShift – gyakori kérdések
 
@@ -49,9 +49,13 @@ Lásd: [Azure Red Hat OpenShift virtuálisgép-méretek](supported-resources.md#
 
 Alapértelmezés szerint titkosítás inaktív állapotban van. Az Azure Storage-platform automatikusan titkosítja az adatokat, mielőtt megőrzése és dekódolja az adatokat lekérés előtt. Lásd: [Azure Storage Service Encryption az inaktív adatok](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) részleteiről.
 
-## <a name="can-i-use-prometheusgrafana-to-monitor-containers-and-manage-capacity"></a>Használhatok Prometheus/Grafana tárolók monitorozását és kezelését a kapacitást?
+## <a name="can-i-use-prometheusgrafana-to-monitor-my-applications"></a>Prometheus/Grafana használatával figyelheti az alkalmazásaimat?
 
-Nem, nem az aktuális időpontban.
+Igen, telepíthet Prometheus a névtér és a figyelő alkalmazásait a névtérben.
+
+## <a name="can-i-use-prometheusgrafana-to-monitor-metrics-related-to-cluster-health-and-capacity"></a>Prometheus/Grafana használatával figyelheti a fürt állapotának és a kapacitás kapcsolatos metrikákat?
+
+Nem, nem aktuális időpontban.
 
 ## <a name="is-the-docker-registry-available-externally-so-i-can-use-tools-such-as-jenkins"></a>A Docker-beállításjegyzék kívülről, így az eszközök, például a Jenkins használható érhetők el?
 
@@ -80,3 +84,7 @@ Nem. Minden erőforrás, beleértve a fürt fő futtassa az ügyfél-előfizeté
 ## <a name="is-open-service-broker-for-azure-osba-supported"></a>Az Open Service Broker for Azure (OSBA) támogatott?
 
 Igen. Az Azure Red Hat OpenShift OSBA is használhatja. Lásd: [Open Service Broker for Azure](https://github.com/Azure/open-service-broker-azure#openshift-project-template) további információt.
+
+## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Az egy másik előfizetésben található virtuális hálózat társviszonyt próbál azonban első `Failed to get vnet CIDR` hiba.
+
+Az előfizetés, amely rendelkezik a virtuális hálózat, ügyeljen arra, hogy regisztrálja `Microsoft.ContainerService` -szolgáltató `az provider register -n Microsoft.ContainerService --wait` 

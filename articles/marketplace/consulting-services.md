@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
 ms.openlocfilehash: 225a4936bbbb8d068caa0ee2a3280c395dbd490e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65964113"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Tanácsadási szolgáltatások az Azure Marketplace és appsource-ban
@@ -149,7 +149,7 @@ Példák:
 
 Ajánlat leírása és összefoglalók ajánlat áttekintése, ha a csapat hatálya a következő feltételeknek:
 
-|Csomag típusa  |Kötelező |Ajánlott  |
+|Csomag típusa  |Szükséges |Ajánlott  |
 |---------|---------|---------|
 |**Értékelés**    |   Egy többnapos vagy több hét értékelések részletes napirend tartalmazzák, és mi adjuk a terméket az ügyfél várható      |    Az ajánlat a felső keresési keresőmotor-optimalizálás kulcsszavas összefoglaló optimalizálása     |
 |**Briefing**    |   Mi adjuk a terméket az ügyfél várható. Ne feledje, hogy Briefing személyesen kell kínáljuk. Ha meg van adva egy virtuális szolgáltatást, válasszon egy másik ajánlatra típusa    |  Az ajánlat a felső keresési keresőmotor-optimalizálás kulcsszavas összefoglaló optimalizálása       |
@@ -166,7 +166,7 @@ Cloud Partner Portalon adhat hozzá a tőzsdei használatával formázás [Markd
 * ### <a name="space-for-heading-ex-spaceagendadeliverables"></a>Fejléc-terület (például: ###(space)Agenda/Deliverables)
 * Sortörés fejléc után
 * ** = félkövér 
-* * Dőltre állítása ajánlat-összefoglaló
+* \* Dőltre állítása ajánlat-összefoglaló
 
 
 ## <a name="next-steps"></a>További lépések

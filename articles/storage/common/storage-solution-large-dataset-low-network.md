@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 4c4ac9489b9613b2eeaf26a3df9f4cbc664a1026
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60730690"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Adatok áthelyezése az alacsony vagy nincs hálózati sávszélesség a nagyméretű adathalmazok
@@ -53,11 +53,11 @@ Az alábbi táblázat a legfontosabb képességei a különbségeket foglalja ö
 |    Kezdeti telepítési idővel               |    Alacsony <br>(15 perc)            |    Alacsony – mérsékelt <br> (< 30 perc)               |    Mérsékelt<br>(1 – 2 óra)               |    A bonyolult mérsékelt<br>(változó) |
 |    Odesílání dat do Azure               |    Igen                          |    Igen                                           |    Igen                                   |    Igen                                 |
 |    Adatok exportálása az Azure-ból           |    Nem                           |    Nem                                            |    Nem                                    |    Igen                                 |
-|    Titkosítás                       |    128 bites AES                  |    256 bites AES                                   |    256 bites AES                           |    128 bites AES                         |
+|    Encryption                       |    128 bites AES                  |    256 bites AES                                   |    256 bites AES                           |    128 bites AES                         |
 |    Hardver                         |     Microsoft által biztosított          |    Microsoft által biztosított                            |    Microsoft által biztosított                    |    A megadott ügyfél                   |
 |    Hálózati illesztő                |    USB 3.1/SATA                 |    RJ 45, SFP+                                   |    RJ45, QSFP+                           |    SATA II/SATA III.                    |
 |    Partnerintegráció              |    Néhány                         |    [Magas](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [Magas](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    Néhány                                |
-|    Szállítás                         |    A Microsoft által felügyelt            |    A Microsoft által felügyelt                             |    A Microsoft által felügyelt                     |    Felügyelt ügyfél                    |
+|    A szállítási                         |    A Microsoft által felügyelt            |    A Microsoft által felügyelt                             |    A Microsoft által felügyelt                     |    Felügyelt ügyfél                    |
 | Akkor használja, ha az adatok áthelyezése         |Egy kereskedelmi határán belül|Egy kereskedelmi határán belül|Egy kereskedelmi határán belül|Például az USA, Európa földrajzi határokon keresztül történő|
 |    Díjszabás                          |    [Díjszabás](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [Díjszabás](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Díjszabás](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Díjszabás](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 

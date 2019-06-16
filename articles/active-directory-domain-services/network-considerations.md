@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 05/22/2010
 ms.author: mstephen
 ms.openlocfilehash: 1f21d71bba01eb4bec24dbb558a126ecbbd78bbf
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66246944"
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Hálózati megfontolások az Azure AD tartományi szolgáltatások
@@ -69,7 +69,7 @@ A következő portokat szükségesek az Azure AD Domain Services szolgáltatásh
 | 443 | Kötelező |Az Azure AD-bérlőhöz való szinkronizálás |
 | 5986 | Kötelező | A tartomány kezelése |
 | 3389 | Kötelező | A tartomány kezelése |
-| 636 | Választható | Biztonságos LDAP (LDAPS) elérését a felügyelt tartományhoz |
+| 636 | Optional | Biztonságos LDAP (LDAPS) elérését a felügyelt tartományhoz |
 
 **443-as (szinkronizálás az Azure ad-vel)**
 * Az Azure AD-címtár szinkronizálása a felügyelt tartomány szolgál.

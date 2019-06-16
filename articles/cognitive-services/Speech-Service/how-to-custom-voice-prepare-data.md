@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 18e1bb486c47baf7648a74e31451e2db73f72250
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 23ba45804632163cc5de41ac2353091b7cf850c1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65156859"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063194"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>Hozzon létre egy egyéni beszédfelismerési adatok előkészítése
 
@@ -49,7 +49,7 @@ Egyes kimondott szöveg és a megfelelő átiratok kétféleképpen felvételek 
 Egy jó hangtípusú előállításához, hozzon létre csendes szoba magas színvonalú mikrofon a felvételt. Egységes kötet, és beszéljen sebességét, beszéd térközt és kifejező mannerisms beszéd elengedhetetlenek.
 
 > [!TIP]
-> Hozzon létre egy hang éles környezetben, azt javasoljuk egy professzionális felvétel studio és a hangalapú szakembereket használja. További információkért lásd: [hogyan rögzítése a voice-minták az egyéni beszédfelismerési](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/record-custom-voice-samples).
+> Hozzon létre egy hang éles környezetben, azt javasoljuk egy professzionális felvétel studio és a hangalapú szakembereket használja. További információkért lásd: [hogyan rögzítése a voice-minták az egyéni beszédfelismerési](record-custom-voice-samples.md).
 
 ### <a name="audio-files"></a>Hangfájlok
 

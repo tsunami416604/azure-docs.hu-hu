@@ -6,18 +6,18 @@ documentationcenter: ''
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/21/2018
+ms.date: 06/12/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: sasubram
+ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5db5eb9c0e0493d906345892fcc5f2872a3e0e14
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 81aad3ef9a4a53532d19fdb81bc48fc50931d49c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65812462"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056059"
 ---
 # <a name="add-b2b-collaboration-guest-users-without-an-invitation-link-or-email"></a>B2B együttműködés egy meghívót hivatkozás vagy e-mailek nélküli vendégfelhasználók hozzáadása
 
@@ -29,7 +29,7 @@ Ez az új módszer volt elérhető, mielőtt sikerült-e vendégfelhasználók m
 2. A gazdagép szervezet rendszergazdájának [beállítja a szabályzatok](delegate-invitations.md) , amelyek engedélyezik a Sam azonosíthatja és más felhasználók felvétele az erőforráspartner-szervezet (Litware). (Sam hozzá kell adni a **Vendég meghívója** szerepkör.)
 3. Most Sam adhat hozzá más felhasználók Litware, a WoodGrove könyvtár, csoportokat vagy alkalmazásokat anélkül, hogy beváltani a meghívót. Ha a Sam Litware az enumerálás megfelelő jogosultságokkal rendelkezik, ez automatikusan megtörténik.
  
-Az eredeti módszer továbbra is működik. Van azonban egy kis eltérés viselkedés. Ha a PowerShell segítségével, azt láthatja, hogy a meghívott Vendég fiókkal most már rendelkezik egy **PendingAcceptance** állapota azonnal megjelenítése helyett **elfogadva**. Bár az állapot Függőben, a vendégfelhasználó továbbra is jelentkezzen be és egy e-mailben meghívást hivatkozásra kattintás nélkül az alkalmazás eléréséhez. A függőben lévő állapot azt jelenti, hogy a felhasználó még nem volt a [élmény hozzájárulás](redemption-experience.md#privacy-policy-agreement), ahol elfogadják az adatvédelmi szabályzat feltételeit a meghívó szervezetet. A vendégfelhasználónak a jóváhagyást kérő képernyőt látja, első bejelentkezéskor. 
+Az eredeti módszer továbbra is működik. Van azonban egy kis eltérés viselkedés. Ha a PowerShell segítségével, azt láthatja, hogy a meghívott Vendég fiókkal most már rendelkezik egy **PendingAcceptance** állapota azonnal megjelenítése helyett **elfogadva**. Bár az állapot Függőben, a vendégfelhasználó továbbra is jelentkezzen be és egy e-mailben meghívást hivatkozásra kattintás nélkül az alkalmazás eléréséhez. A függőben lévő állapot azt jelenti, hogy a felhasználó még nem volt a [élmény hozzájárulás](redemption-experience.md#consent-experience-for-the-guest), ahol elfogadják az adatvédelmi szabályzat feltételeit a meghívó szervezetet. A vendégfelhasználónak a jóváhagyást kérő képernyőt látja, első bejelentkezéskor. 
 
 A könyvtár felhasználó meghívása, ha a vendégfelhasználó kell-e az erőforrás bérlőspecifikus Azure portal eléréséhez közvetlen URL-címe (például https://portal.azure.com/ *resourcetenant*. onmicrosoft.com) megtekintéséhez, és fogadja el az adatvédelmi szabályzat feltételeit.
 

@@ -15,12 +15,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: bdeba401e99ad16555b9f6ea00017fc525302983
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bc5266bc37a0b58913feb08452e173949b64c112
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61457863"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061610"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Leküldéses értesítések küldése az Azure Notification Hubs és a node.js használatával
 
@@ -106,7 +106,7 @@ A `GcmService` objektum tartalmazza a `send` leküldéses értesítések küldé
 - **Hasznos adat** – az üzenet JSON vagy nyers karakterlánc adattartalma.
 - **A visszahívás** – a visszahívási függvény.
 
-Az adattartalom formátuma további információkért lásd: a **adattartalom** szakaszában a [GCM-kiszolgáló végrehajtási](https://developer.android.com/google/gcm/server.html#payload) dokumentumot.
+Az adattartalom formátuma további információkért lásd: a **adattartalom** szakaszában a [GCM-kiszolgáló végrehajtási](https://developers.google.com/cloud-messaging/) dokumentumot.
 
 A következő kódban a `GcmService` példány által elérhetővé tett a `NotificationHubService` minden regisztrált ügyfél leküldéses értesítés küldéséhez.
 
@@ -198,9 +198,9 @@ notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
 A fenti példa kódrészletek építsenek szolgáltatás infrastruktúrát a leküldéses értesítések kézbesíthetők az eszközök széles köréhez teszi lehetővé. Most, hogy megismerte a Notification Hubs használata a node.js alapjait, az alábbi hivatkozásokból tudhat meg többet hogyan terjesztheti ki további ezeket a képességeket.
 
 - Lásd az MSDN-referencia a [Azure Notification Hubs](https://msdn.microsoft.com/library/azure/jj927170.aspx).
-- Látogasson el a [Az Azure SDK a Node] tárházban a Githubon további minták és megvalósítási részletei.
+- Látogasson el a [Node-hoz készült Azure SDK] tárházban a Githubon további minták és megvalósítási részletei.
 
-[Az Azure SDK a Node]: https://github.com/WindowsAzure/azure-sdk-for-node
+[Node-hoz készült Azure SDK]: https://github.com/WindowsAzure/azure-sdk-for-node
 [Next Steps]: #nextsteps
 [What are Service Bus Topics and Subscriptions?]: #what-are-service-bus-topics
 [Create a Service Namespace]: #create-a-service-namespace

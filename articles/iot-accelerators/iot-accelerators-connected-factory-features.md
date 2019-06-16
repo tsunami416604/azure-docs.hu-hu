@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 03/08/2019
+ms.date: 06/10/2019
 ms.author: dobett
-ms.openlocfilehash: 25812e10b4c2b90aa4f40c38610c30a26ab11d9d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2a11640959a8c7fdd0d238aba92698eb47934969
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61449997"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080450"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>Mi az csatlakoztatott gyári IoT-megoldásgyorsítók?
 
@@ -65,7 +65,4 @@ Csatlakoztatott gyár a következő szolgáltatásokat tartalmazza:
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az előre konfigurált csatlakoztatott gyár megoldás a következő cikkek elolvasásával:
-
-* [Előre konfigurált csatlakoztatott gyár megoldás – bemutató](iot-accelerators-connected-factory-sample-walkthrough.md)
-* [Átjáró telepítése csatlakoztatott gyárhoz]( iot-accelerators-connected-factory-gateway-deployment.md)
+Az Okosgyár-megoldásgyorsító kapcsolatos további információkért tekintse meg a rövid útmutatóban [ipari IoT-eszközök kezeléséhez felhőalapú megoldások](quickstart-connected-factory-deploy.md).

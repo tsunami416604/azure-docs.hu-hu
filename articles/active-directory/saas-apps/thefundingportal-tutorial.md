@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 4f7edd13c07d24d5d5a12fb9973083db44f0211f
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: c5f33dc047dcd99a688cf2ad5bbc81e112fb61bf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901807"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088795"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-the-funding-portal"></a>Oktatóanyag: Támogatás a portál az Azure Active Directory-integráció
 
@@ -53,7 +53,7 @@ Az Azure AD-be, a támogatás portál integráció konfigurálásához, hozzá k
 
 **A támogatás portál hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -214,7 +214,7 @@ Ebben a szakaszban engedélyezze Britta Simon ad hozzáférést, a támogatás p
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű megteremteni a portálon hoz létre. Együttműködve [megteremteni a portál támogatási csapatának](mailto:info@regenteducation.com) felhasználót is hozzáadhat a támogatás a portál platform. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

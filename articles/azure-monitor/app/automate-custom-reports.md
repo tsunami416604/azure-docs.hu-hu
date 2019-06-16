@@ -9,15 +9,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/25/2018
+ms.date: 05/20/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: f57d80adc7c77f2d874d13a68214cd638a2ac2a0
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: f22cb620bf8cf56110bec60a4dd809066393a8ff
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957288"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067661"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Az Azure Application Insights-adatokat tartalmazó egyéni jelentések automatizálása
 
@@ -33,7 +33,7 @@ Minden egyes vállalat a jelentéskészítési olyan egyedi igényekkel rendelke
 * Jelentések az érdekelt felekkel, akik nem rendelkeznek a portálon erőforrások eléréséhez.
 
 > [!NOTE] 
-> Az Application Insights Heti összefoglaló e-mail nem engedélyezte a testreszabás, és ezt megszüntetjük az alábbi egyéni lehetőségek értéke. 2018. június 11. az elmúlt Heti összefoglaló e-mailben küldi el. Állítsa be a hasonló egyéni jelentések (használja az alábbi javasolt lekérdezés) az alábbi lehetőségek közül.
+> Az Application Insights Heti összefoglaló e-mail nem engedélyezte a testreszabás, és ezt megszüntetjük az alábbi egyéni lehetőségek értéke. 2018\. június 11. az elmúlt Heti összefoglaló e-mailben küldi el. Állítsa be a hasonló egyéni jelentések (használja az alábbi javasolt lekérdezés) az alábbi lehetőségek közül.
 
 ## <a name="to-automate-custom-report-emails"></a>Egyéni jelentések e-mailek automatizálása
 
@@ -92,7 +92,7 @@ availabilityResults
 
    ![Hozzon létre egy új funkció képernyőképe](./media/automate-custom-reports/function-app-03.png)
 
-5. Válassza ki a  **_Application Insights ütemezett összefoglaló sablon_**.
+5. Válassza ki a  **_Application Insights ütemezett összefoglaló sablon_** .
 
      > [!NOTE]
      > Alapértelmezés szerint a függvényalkalmazások jönnek létre az verze modulu runtime 2.x. Meg kell [Azure Functions runtime célverzió](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) 1.x az Application Insights használata ütemezett összefoglaló sablont.
@@ -120,7 +120,7 @@ availabilityResults
      > [!NOTE]
      > Ha a SendGrid-fiók nem rendelkezik, hozzon létre egyet. SendGrid-dokumentáció az Azure Functions [Itt](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid). Ha csak szeretné, amely minimális elmagyarázza, és a SendGrid beállítása, és ez a cikk végén található elérhető API-kulcs létrehozása. 
 
-9. Válassza ki **integráció** és a kimenetek kattintson **SendGrid ($return)**.
+9. Válassza ki **integráció** és a kimenetek kattintson **SendGrid ($return)** .
 
      ![Kimenet képernyőképe](./media/automate-custom-reports/function-app-09.png)
 

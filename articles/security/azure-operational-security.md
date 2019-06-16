@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: ab5b50433b85416ff471546171998e992293b0ea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bb0726fdddf6d20a9c8c5f20d6cec0cae68322ce
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60586994"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67119265"
 ---
 # <a name="azure-operational-security"></a>Az Azure működési biztonság
 ## <a name="introduction"></a>Bevezetés
@@ -224,7 +224,7 @@ A hálózati biztonsági naplózás létfontosságú a hálózati biztonsági r�
 
 A Network Watcher jelenleg a következő képességekkel rendelkezik:
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview">Auditnaplók</a>**-hálózatok konfigurációjának részeként végrehajtott műveleteket a rendszer naplózza. Ezek a naplók tekinthetnek meg az Azure Portalon, vagy használja a Microsoft eszközök, például a Power bi-ban vagy harmadik féltől származó eszközökkel. Auditnaplók – a portal, PowerShell, CLI és Rest API-val érhetők el. A naplók riasztásaihoz további információkért tekintse meg a naplózási műveletek a Resource Managerben. Auditnaplók minden hálózati erőforrásokon végzett műveletek érhetők el.
+-   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview">Auditnaplók</a>** -hálózatok konfigurációjának részeként végrehajtott műveleteket a rendszer naplózza. Ezek a naplók tekinthetnek meg az Azure Portalon, vagy használja a Microsoft eszközök, például a Power bi-ban vagy harmadik féltől származó eszközökkel. Auditnaplók – a portal, PowerShell, CLI és Rest API-val érhetők el. A naplók riasztásaihoz további információkért tekintse meg a naplózási műveletek a Resource Managerben. Auditnaplók minden hálózati erőforrásokon végzett műveletek érhetők el.
 
 
 -   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview">IP-folyamat ellenőrzése </a>**  – ellenőrzi, hogy egy csomag engedélyezett vagy megtagadott (cél IP-cím, forrásoldali IP-cím, Célport, forrásoldali portszám és protokoll) folyamat információk 5-ször több csomag paraméterei alapján. Ha a csomag a hálózati biztonsági csoport van, a szabály és a hálózati biztonsági csoport, amely a csomagot adja vissza.
@@ -307,7 +307,7 @@ Az Azure AD naplózási jelentés eseményei 180 napig maradnak meg.
 
 Tárolja az ügyfeleknek saját [események naplózása](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-audit-events) hosszabb megőrzési időszakok, a Reporting API-val használható rendszeresen lekérni a naplózási események egy külön tárolóba.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ez a cikk összesítések, a személyes adatok védelme és biztonságossá tétele az adatokat, miközben nagy szoftverek, amelyek segítenek a szervezet informatikai infrastruktúrájának kezelésére. Microsoft tisztában van vele, hogy azok entrust-másoknak adataikat, amikor a megbízhatósági szigorú biztonsági igényel. A Microsoft szigorú megfelelőségi és biztonsági szabályokat követ, a kódolástól kezdve egészen a szolgáltatások üzemeltetéséig. Biztonságossá tétele és az adatok védelme a Microsoft prioritást jelent.
 

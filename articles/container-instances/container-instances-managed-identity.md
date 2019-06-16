@@ -9,10 +9,10 @@ ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
 ms.openlocfilehash: ac0a84aa3121c6ebb91860c96c0f6692827c8a3f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66152328"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Felügyelt identitások használata Azure Container Instances szolgáltatásban
@@ -83,7 +83,7 @@ az keyvault secret set --name SampleSecret --value "Hello Container Instances!" 
 
 Folytassa a következő példák eléréséhez a Key Vault használatával a felhasználó által hozzárendelt vagy rendszer által hozzárendelt felügyelt identitás, az Azure Container Instances szolgáltatásban.
 
-## <a name="example-1-use-a-user-assigned-identity-to-access-azure-key-vault"></a>1. példa: Az Azure Key Vault elérése érdekében a felhasználó által hozzárendelt identitás használatára
+## <a name="example-1-use-a-user-assigned-identity-to-access-azure-key-vault"></a>1\. példa: Az Azure Key Vault elérése érdekében a felhasználó által hozzárendelt identitás használatára
 
 ### <a name="create-an-identity"></a>Hozzon létre egy azonosítót
 
@@ -170,7 +170,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-A Key Vault hitelesíteni, és olvassa el a titkos kód mostantól használhatja a hozzáférési jogkivonat. Ügyeljen arra, hogy az URL-címben a kulcstartó nevét (*https://mykeyvault.vault.azure.net/...*):
+A Key Vault hitelesíteni, és olvassa el a titkos kód mostantól használhatja a hozzáférési jogkivonat. Ügyeljen arra, hogy az URL-címben a kulcstartó nevét ( *https://mykeyvault.vault.azure.net/...* ):
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"
@@ -182,7 +182,7 @@ A válasz a következőhöz hasonlóan néz ki a titkos kulcs megjelenítése. A
 {"value":"Hello Container Instances!","contentType":"ACIsecret","id":"https://mykeyvault.vault.azure.net/secrets/SampleSecret/xxxxxxxxxxxxxxxxxxxx","attributes":{"enabled":true,"created":1539965967,"updated":1539965967,"recoveryLevel":"Purgeable"},"tags":{"file-encoding":"utf-8"}}
 ```
 
-## <a name="example-2-use-a-system-assigned-identity-to-access-azure-key-vault"></a>2. példa Azure Key Vault elérése érdekében a rendszer által hozzárendelt identitás használatára
+## <a name="example-2-use-a-system-assigned-identity-to-access-azure-key-vault"></a>2\. példa Azure Key Vault elérése érdekében a rendszer által hozzárendelt identitás használatára
 
 ### <a name="enable-a-system-assigned-identity-on-a-container-group"></a>A tárolócsoport egy rendszer által hozzárendelt identitás engedélyezése
 

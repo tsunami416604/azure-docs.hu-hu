@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: raynew
-ms.openlocfilehash: bac61342f39821b6181a6a0e61bf0b11fb311007
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 06a7623fed0205d927fca9406469737faeda3a4b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239349"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076791"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure virtuális gépek biztonsági mentése Recovery Services-tárolóban
 
@@ -70,6 +70,9 @@ Ezenkívül van néhány dolgot, amely a bizonyos körülmények között szüks
  Miután a tároló létrejött, megjelenik a Recovery Services-tárolók listája. Ha nem látja a tárolót, válassza ki a **frissítése**.
 
 ![A Backup-tárolók listája](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
+
+> [!NOTE]
+> Az Azure Backup szolgáltatás létrehoz egy külön erőforráscsoportot (nem a virtuális gép erőforráscsoportja) pillanatkép, a névadási tárolására **AzureBackupRG_geography_number** (Példa: AzureBackupRG_northeurope_1). Ebben az erőforráscsoportban lévő adatok lesznek megőrizve a időtartam napban megadott *megőrzése azonnali helyreállítási pillanatképének* szakaszban az Azure virtuális gép biztonsági mentési házirend.  Egy zárolás alkalmazza ezt az erőforráscsoportot, a biztonsági mentési hibáját okozhatja.
 
 ### <a name="modify-storage-replication"></a>Tárreplikáció módosítása
 

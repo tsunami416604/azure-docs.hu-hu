@@ -6,14 +6,14 @@ author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 04/19/2019
-ms.openlocfilehash: 0582fa8b26bee05e4d2948037cc39a71ed656fce
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.topic: overview
+ms.date: 06/12/2019
+ms.openlocfilehash: b7228fdf1bb67ff8029412174a883a3a0b123cfc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243954"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67126204"
 ---
 # <a name="what-is-enterprise-security-package-in-azure-hdinsight"></a>Mi az az Azure HDInsight vállalati biztonsági csomag
 
@@ -21,10 +21,9 @@ Múltbeli időpont, az Azure HDInsight támogatott csak egyetlen felhasználó: 
 
 Létrehozhat egy HDInsight-fürtöt a vállalati biztonsági csomag (ESP), amely egy Active Directory-tartományhoz csatlakozik. Konfigurálhatja a vállalati alkalmazottak, akik hitelesíthetnek az Azure Active Directoryban való bejelentkezéshez a HDInsight-fürt listáját. Egyetlen a vállalaton kívülre bejelentkezés vagy a HDInsight-fürt eléréséhez. 
 
-A vállalati rendszergazda konfigurálhatja szerepköralapú hozzáférés-vezérlés (RBAC) az Apache Hive-biztonsághoz használatával [Apache Ranger](https://hortonworks.com/apache/ranger/). RBAC konfigurálása korlátozza az adatok elérése csak akkor szükséges. Végül a rendszergazda naplózhatja az alkalmazottak és bármely változtatást a hozzáférés-vezérlési házirendeket adatelérési. A rendszergazda egy magas szintű a vállalati erőforrásokat, majd érheti el.
+A vállalati rendszergazda konfigurálhatja szerepköralapú hozzáférés-vezérlés (RBAC) az Apache Hive-biztonsághoz használatával [Apache Ranger](https://ranger.apache.org/). RBAC konfigurálása korlátozza az adatok elérése csak akkor szükséges. Végül a rendszergazda naplózhatja az alkalmazottak és bármely változtatást a hozzáférés-vezérlési házirendeket adatelérési. A rendszergazda egy magas szintű a vállalati erőforrásokat, majd érheti el.
 
-> [!NOTE]  
-> Az Apache Oozie engedélyezve van a ESP-fürtökön. Hozzáférhet az Oozie webes felület, engedélyezze a felhasználók [tunneling](../hdinsight-linux-ambari-ssh-tunnel.md).
+Az Apache Oozie engedélyezve van a ESP-fürtökön. Hozzáférhet az Oozie webes felület, engedélyezze a felhasználók [tunneling](../hdinsight-linux-ambari-ssh-tunnel.md).
 
 Vállalati biztonság négy fő alappillérét tartalmazza: szegélyhálózat-alapú biztonság, hitelesítés, engedélyezés és titkosítás.
 
@@ -43,25 +42,22 @@ Ezzel a beállítással a vállalat alkalmazottai jelentkezhetnek be a fürtcsom
 ## <a name="authorization"></a>Engedélyezés
 Amely a legtöbb vállalat kövesse az ajánlott eljárás, hogy így arról, hogy nem minden alkalmazott rendelkezik-e az összes vállalati erőforrásokhoz való hozzáférést. Hasonlóképpen a rendszergazda meghatározhatja a szerepköralapú hozzáférés-vezérlési házirendeket, a fürt erőforrásaihoz. 
 
-Például, a rendszergazda konfigurálhatja az [Apache Ranger](https://hortonworks.com/apache/ranger/) keretrendszert, hogy beállítsa a Hive hozzáférés-vezérlés házirendjét. Ez a funkció biztosítja, hogy alkalmazottai érhessék el csak annyi adathoz kell lenniük a munkájuk sikerességéhez. A fürthöz SSH-hozzáférés csak a rendszergazda is korlátozódik.
+Például, a rendszergazda konfigurálhatja az [Apache Ranger](https://ranger.apache.org/) keretrendszert, hogy beállítsa a Hive hozzáférés-vezérlés házirendjét. Ez a funkció biztosítja, hogy alkalmazottai érhessék el csak annyi adathoz kell lenniük a munkájuk sikerességéhez. A fürthöz SSH-hozzáférés csak a rendszergazda is korlátozódik.
 
 ## <a name="auditing"></a>Naplózás
 A fürt erőforrásainak és az adatok hozzáférésének naplózása szükség, nyomon követéséhez az illetéktelen vagy nem szándékos hozzáférések az erőforrásokhoz. Olyan fontos, mint a HDInsight-fürt erőforrásainak védelme a jogosulatlan felhasználók és az adatok védelme. 
 
 A rendszergazda megtekintheti és jelentheti az összes hozzáférést a HDInsight-fürt erőforrásainak és az adatokat. A rendszergazda megtekintheti és jelentheti a hozzáférés-vezérlési házirendeket, az Apache Ranger által támogatott végpontokban létrehozott összes módosítást. 
 
-ESP HDInsight fürtök a jól ismert Apache Ranger felhasználói Felületet használja a keresésre a naplókban. A háttérben a Ranger használ [Apache Solr](https://hortonworks.com/apache/solr/) tárolására, és a keresésre a naplókban.
+ESP HDInsight fürtök a jól ismert Apache Ranger felhasználói Felületet használja a keresésre a naplókban. A háttérben a Ranger használ [Apache Solr](http://lucene.apache.org/solr/) tárolására, és a keresésre a naplókban.
 
 ## <a name="encryption"></a>Encryption
 Az adatok védelmének fontos értekezlet szervezeti biztonsági és megfelelőségi követelményeknek. Adatok elérésének korlátozásával illetéktelen alkalmazottak, együtt kell titkosítás. 
 
-A HDInsight-fürtök az Azure Blob storage és az Azure Data Lake Storage Gen1 és Gen2 – támogatási transzparens kiszolgálóoldali mindkét adattárak [az adatok titkosítása az](../../storage/common/storage-service-encryption.md) inaktív. Biztonságos HDInsight-fürtök zökkenőmentesen működnek a kiszolgálóoldali titkosítást az adatok képesség inaktív.
+A HDInsight-fürtök esetén az Azure Blob storage és az Azure Data Lake Storage Gen1 és Gen2, mindkét adattárak támogatja a transzparens kiszolgálóoldali [az adatok titkosítása az](../../storage/common/storage-service-encryption.md) inaktív. Biztonságos HDInsight-fürtök zökkenőmentesen működnek a kiszolgálóoldali titkosítást az adatok képesség inaktív.
 
 ## <a name="next-steps"></a>További lépések
 
 * [ESP HDInsight-fürtök tervezése](apache-domain-joined-architecture.md)
 * [ESP HDInsight-fürtök konfigurálása](apache-domain-joined-configure.md)
 * [ESP a HDInsight-fürtök kezelése](apache-domain-joined-manage.md)
-* [ESP az Apache Hive-házirendek a HDInsight-fürtök konfigurálása](apache-domain-joined-run-hive.md)
-* [SSH használata a HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)
-

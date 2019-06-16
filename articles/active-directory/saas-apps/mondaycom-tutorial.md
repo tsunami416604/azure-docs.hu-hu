@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc142bf02a44ea85861f4cc648fd7ee8602c7520
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 08108a1718ee917a317b4864de81959ae139eaa5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65896875"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097016"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mondaycom"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező monday.com
 
@@ -80,7 +80,7 @@ Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelen
 
 Az Azure AD egyszeri bejelentkezés az monday.com tesztelése és konfigurálása, hogy a következő építőelemeit kell elvégeznie:
 
-| Feladat | Leírás |
+| Tevékenység | Leírás |
 | --- | --- |
 | **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)** | Lehetővé teszi a felhasználók a funkció használatához. |
 | **[Monday.com egyszeri bejelentkezés konfigurálása](#configure-mondaycom-single-sign-on)** | Az egyszeri bejelentkezési beállításainak konfigurálása az alkalmazásban. |
@@ -154,7 +154,7 @@ Ebben a szakaszban konfigurálnia az Azure AD egyszeri bejelentkezés az Azure P
 
        ![A kezelés felhasználói jogcímek](common/new-attribute-details.png)
 
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** panel alatt **SAML-aláíró tanúsítvány**, jelölje be **letöltése** melletti **tanúsítvány (Base64)**. Válassza ki a letöltési lehetőséget igényei alapján. Mentse a tanúsítványt a számítógépen.
+1. Az a **állítsa be egyszeri bejelentkezést az SAML** panel alatt **SAML-aláíró tanúsítvány**, jelölje be **letöltése** melletti **tanúsítvány (Base64)** . Válassza ki a letöltési lehetőséget igényei alapján. Mentse a tanúsítványt a számítógépen.
 
     ![A tanúsítvány (Base64) a letöltési lehetőséget](common/certificatebase64.png)
 
@@ -186,7 +186,7 @@ Ebben a szakaszban hozzon létre egy tesztfelhasználót Britta Simon nevű az A
 
     1. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    1. Az a **felhasználónév** mezőbe írja be **brittasimon\@\<a vállalati tartomány >.\< bővítmény >**. Ha például **brittasimon\@contoso.com**.
+    1. Az a **felhasználónév** mezőbe írja be **brittasimon\@\<a vállalati tartomány >.\< bővítmény >** . Ha például **brittasimon\@contoso.com**.
 
     1. Válassza ki a **Show jelszó** jelölőnégyzetet. Írja le az értéket, a megjelenő a **jelszó** mezőbe.
 
@@ -224,7 +224,7 @@ Ebben a szakaszban Ön hozzáférést Britta Simon monday.com így ő Azure egys
 
 Ebben a szakaszban egy Britta Simon nevű felhasználót a monday.com alkalmazásban jön létre. Monday.com támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó már nem létezik az monday.com, egy új jön létre a hitelesítés után.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban a az Azure AD egyszeri bejelentkezés beállításai a saját alkalmazások portál segítségével tesztelnie.
 

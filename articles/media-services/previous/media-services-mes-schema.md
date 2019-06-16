@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 837235e04ce190a4481e1f19789d8e9ff9cb7578
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61131581"
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard-séma
@@ -38,7 +38,7 @@ Határozza meg egy kódolási beállításkészletet.
 
 | Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| **Verzió**<br/><br/> Kötelező |**xs: tizedes tört** |Az előre megadott verzió. Az alábbi korlátozások érvényesek: xs:fractionDigits érték = "1" és a xs:minInclusive érték például = "1" **verzió = "1.0"**. |
+| **Verzió**<br/><br/> Szükséges |**xs: tizedes tört** |Az előre megadott verzió. Az alábbi korlátozások érvényesek: xs:fractionDigits érték = "1" és a xs:minInclusive érték például = "1" **verzió = "1.0"** . |
 
 ## <a name="Encoding"></a> Kódolás
 Sorozata, a következő elemeket tartalmazza:  
@@ -61,7 +61,7 @@ Sorozata, a következő elemeket tartalmazza:
 | **TwoPass**<br/><br/> minOccurs="0" |**xs:boolean** |Jelenleg csak egy pass-kódolás használata támogatott. |
 | **KeyFrameInterval**<br/><br/> minOccurs="0"<br/><br/> **default="00:00:02"** |**xs:time** |Meghatározza, hogy másodperces egység IDR keretek közötti rögzített távolság. Más néven a Képcsoporttal időtartama. Lásd: **SceneChangeDetection** szabályozni, hogy a kódoló ezt az értéket is eltérnek. |
 | **SceneChangeDetection**<br/><br/> minOccurs="0"<br/><br/> default=”false” |**xs: logikai** |Ha értéke igaz, kódoló megpróbálja észlelni a jelenet módosítása a videóban, és a egy IDR keret szúr be. |
-| **Bonyolultsága**<br/><br/> minOccurs="0"<br/><br/> default="Balanced" |**xs:string** |Azt szabályozza, a kompromisszum közötti kódolás sebességének és videó minősége. A következő értékek egyike lehet: **Sebesség**, **elosztott terhelésű**, vagy **minősége**<br/><br/> Alapértelmezett: **Elosztott terhelésű** |
+| **Bonyolultsága**<br/><br/> minOccurs="0"<br/><br/> default="Balanced" |**xs:string** |Azt szabályozza, a kompromisszum közötti kódolás sebességének és videó minősége. A következő értékek egyike lehet: **Sebesség**, **elosztott terhelésű**, vagy **minősége**<br/><br/> alapértelmezett érték: **Elosztott terhelésű** |
 | **SyncMode**<br/><br/> minOccurs="0" | |A szolgáltatás egy későbbi kiadásban lesz közzétéve. |
 | **H264Layers**<br/><br/> minOccurs="0" |[H264Layers](media-services-mes-schema.md#H264Layers) |A réteggyűjteménynek kimeneti videót. |
 
@@ -135,7 +135,7 @@ Milyen értékek érvényesek az egyes profilok kapcsolatos részletekért lásd
 
 | Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| **csatornák**<br/><br/> minOccurs="0" |**xs: int** |A kódolt hang csatornák száma. Az érvényes beállítások a következők: 1, 2, 5, 6, 8.<br/><br/> Alapértelmezett: 2. |
+| **csatornák**<br/><br/> minOccurs="0" |**xs: int** |A kódolt hang csatornák száma. Az érvényes beállítások a következők: 1, 2, 5, 6, 8.<br/><br/> alapértelmezett érték: 2. |
 | **Érvénytelen a SamplingRate**<br/><br/> minOccurs="0" |**xs: int** |A hang mintavételi ráta, Hz megadott. |
 | **Átviteli sebesség**<br/><br/> minOccurs="0" |**xs: int** |A használják, amikor a hang-, kódolási megadva kbit/s sávszélességű. |
 
@@ -160,7 +160,7 @@ Hang kodek|Részletek
 
 | Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| **FileName** |**xs:string** |A kimeneti fájl neve.<br/><br/> Az alábbi táblázatban ismertetett makrók használatával hozhat létre a kimeneti fájl nevét. Példa:<br/><br/> **"Kimenetek": [{"Fájlnevet": "{Basename}*{feloldási}*{sávszélességű} .mp4", "Formátum": {"Type": "MP4Format"}}]** |
+| **FileName** |**xs:string** |A kimeneti fájl neve.<br/><br/> Az alábbi táblázatban ismertetett makrók használatával hozhat létre a kimeneti fájl nevét. Példa:<br/><br/> **"Kimenetek": [{"Fájlnevet": "{Basename} *{feloldási}* {sávszélességű} .mp4", "Formátum": {"Type": "MP4Format"}}]** |
 
 ### <a name="macros"></a>Makrók
 
@@ -180,7 +180,7 @@ Hang kodek|Részletek
 
 | Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| **Kezdés** |**xs:string** | |
+| **Start** |**xs:string** | |
 | **Lépés** |**xs:string** | |
 | **Címtartomány** |**xs:string** | |
 | **PreserveResolutionAfterRotation** |**xs:boolean** |Részletesebb leírását lásd a következő szakaszban: [PreserveResolutionAfterRotation](media-services-mes-schema.md#PreserveResolutionAfterRotation) |

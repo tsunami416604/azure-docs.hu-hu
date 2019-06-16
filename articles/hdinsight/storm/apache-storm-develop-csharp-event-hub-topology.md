@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: b02945197b20c7fe704d0f8cfa9201a5b9cbc292
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7f4db76fe2a302dd5acce01b456ef3b676b187c6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690945"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078271"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Dolgozza fel az Azure Event hubs Eseményközpontokból a HDInsight-alapú Apache Storm (C#)
 
@@ -38,7 +38,7 @@ A Microsoft.SCP.Net.SDK NuGet-csomagot a projekthez használt telepítve a HDIns
 > [!IMPORTANT]  
 > A példában a jelen dokumentum vár egy HDInsight 3.5-ös és 3.6-fürt.
 >
-> A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. 
 
 C#-topológiák is kell céloznia a .NET 4.5-ös verzióját.
 
@@ -137,8 +137,8 @@ Event Hubs szolgáltatás ebben a példában az adatforrás. Az "Event hub létr
 
    | Name (Név) | Engedélyek |
    | --- | --- |
-   | szerkesztő |Küldés |
-   | olvasó |Figyelés |
+   | író |Küldés |
+   | Olvasó |Figyelés |
 
     ![Képernyőkép a fájlmegosztás hozzáférési házirendek ablak](./media/apache-storm-develop-csharp-event-hub-topology/sas.png)
 

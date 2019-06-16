@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2019
 ms.openlocfilehash: 0086327661df637dc0ae60208ed9424b4610ef0e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65969492"
 ---
 # <a name="limits-in-azure-cosmos-db"></a>Az Azure Cosmos DB korlátok
@@ -156,7 +156,7 @@ A következő táblázat felsorolja a vonatkozó korlátozásokat az [próbálja
 | Resource | Alapértelmezett korlát |
 | --- | --- |
 | A próbaidőszak alatt | 30 nap (lehet újítani tetszőleges számú alkalommal) |
-| A tárolók száma előfizetésenként (SQL, a Gremlin Table API) maximális száma | 1. |
+| A tárolók száma előfizetésenként (SQL, a Gremlin Table API) maximális száma | 1 |
 | Tárolók maximális száma előfizetésenként (MongoDB API-val) | 3 |
 | Tároló egységenkénti maximális adatátviteli sebesség | 5000 |
 | Megosztott átviteli adatbázisonkénti maximális átviteli sebesség | 20000 |

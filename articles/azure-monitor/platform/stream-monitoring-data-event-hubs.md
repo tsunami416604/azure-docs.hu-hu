@@ -1,19 +1,19 @@
 ---
 title: Stream Azure monitorozási adatok az Event hubs szolgáltatásba
 description: Ismerje meg, hogyan streamelése az eseményközpontba, az adatok importálása egy partneri SIEM-vagy elemzőeszköz Azure-beli monitorozási adatait.
-author: johnkemnetz
+author: nkiest
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/01/2018
-ms.author: johnkem
+ms.author: nikiest
 ms.subservice: ''
-ms.openlocfilehash: 72d744808d6b52ccd151645c97005bfdfe1a5541
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 8a4de244d0fa07bfc162625f577015317fca7e6a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243456"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069332"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Stream Azure monitorozási adatok felhasználásra egy eseményközpontba egy külső eszközzel
 
@@ -43,8 +43,8 @@ Mielőtt elkezdené, kell [hozzon létre egy Event Hubs-névtér és az esemény
 * Átviteli egységek száma az event hubs átviteli Méretezés növelése teszi lehetővé. A partíciók számának fogyasztás párhuzamosíthatja több ügyfél között teszi lehetővé. Megteheti, hogy egy partíció legfeljebb 20MBps vagy körülbelül másodpercenként 20 000 üzenetet. Attól függően, az eszközt, az adatok felhasználása valószínűleg vagy nem támogatja a több partícióról származó felhasználása. Ha nem biztos kapcsolatos beállítása a partíciók számát, azt javasoljuk négy partícióval.
 * Azt javasoljuk, hogy üzenetmegőrzés beállíthatja az eseményközpontban, és 7 nap. Ha a felhasználó-eszköz számára több mint egy nap leáll, ez biztosítja, hogy az eszköz folytathatja a munkát, ahol abbahagyta (események legfeljebb 7 napos).
 * Az eseményközpont az alapértelmezett felhasználói csoport használatát javasoljuk. Hiba esetén nem kell más felhasználói csoportok létrehozásához, vagy egy különálló fogyasztói csoportot használnak, kivéve, ha azt tervezi, hogy két különböző eszközökkel ugyanazokat az adatokat az azonos event hubs használata.
-* Az Azure tevékenységnaplójának kiválasztjuk az Event Hubs-névtér és az Azure Monitor létrehoz egy eseményközpontot az adott névtérben "insights-logs-operationallogs." nevű Minden olyan napló esetében, vagy választhat egy meglévő eseményközponton (így újból felhasználhatja az insights-logs-operationallogs ugyanazon eseményközpont), vagy rendelkezik log kategória szerinti event hub létrehozása az Azure Monitor.
-* Általában 5671, 5672, és a portot kell megnyitni a gépen az eseményközpontból érkező adatok felhasználásához.
+* Az Azure tevékenységnaplójának kiválasztjuk az Event Hubs-névtér és az Azure Monitor létrehoz egy eseményközpontot az adott névtérben "insights-logs-operational-logs." nevű Minden olyan napló esetében, vagy választhat egy meglévő eseményközponton (így újból felhasználhatja az insights-logs-operational-logs azonos eseményközpont), vagy rendelkezik log kategória szerinti event hub létrehozása az Azure Monitor.
+* Általában 5671, 5672, és a kimenő portot kell megnyitni a gépen, vagy a virtuális hálózat az eseményközpontból érkező adatok felhasználásához.
 
 Emellett tekintse át a [Azure Event Hubs – gyakori kérdések](../../event-hubs/event-hubs-faq.md).
 

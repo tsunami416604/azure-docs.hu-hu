@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 351cb7ba2d7a55300a0ace999792a498cf72ebbb
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: aed18cd33078d6af65e749cf9dd4950087b6b72c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475264"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063898"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Gyors útmutató: Űrlap felismerő modellek betanítása és űrlap adatokat nyerhet ki a REST API-val a curl használatával
 
@@ -52,7 +52,7 @@ Először is kell egy Azure Storage-blobba betanítási adatok egy készletét. 
 A képernyő felismerő modell betanításához az Azure blob-tárolóban a dokumentumok használatával, hívja a **betanításához** API, amely a cURL-parancs futtatásával a következő. Futtassa a parancsot, mielőtt a módosítások:
 
 1. Cserélje le `<Endpoint>` az űrlap felismerő előfizetési kulcs beszerzett a végponttal. Az űrlap felismerő erőforráson található **áttekintése** fülre.
-1. Cserélje le `<SAS URL>` a egy Azure Blob storage-tároló megosztott hozzáférhetnek a betanítási adatok helye jogosultságkód (SAS) URL-CÍMÉT.  
+1. Cserélje le `<SAS URL>` a egy Azure Blob storage-tároló megosztott hozzáférhetnek a betanítási adatok helye jogosultságkód (SAS) URL-CÍMÉT. (Beolvasni az SAS URL-CÍMRE kattintva a közös hozzáférésű Jogosultságkód a beállítások menüben a storage-fiók és a "készítése SAS és kapcsolati karakterlánc". Ez azt mutatja, a Blob service SAS URL-címet. Az URL-cím módosítása után .net containername hozzáadásával /, és mielőtt? sv = az URL-cím, például:.blob.core.windows.net/ < name_of_your_container > /? sv =... Ez az a SAS URL-címet használni.)
 1. Cserélje le `<subscription key>` az előfizetés az előző lépésben kimásolt kulccsal.
 
 ```bash
@@ -108,7 +108,7 @@ Ezután fog dokumentum elemzése és bontsa ki a kulcs-érték párok és tábl�
 
 1. Cserélje le `<Endpoint>` az űrlap felismerő előfizetési kulcs beszerzett a végponttal. Az űrlap felismerő erőforráson található **áttekintése** fülre.
 1. Cserélje le `<modelID>` , hogy az az előző szakaszban azonosítójú modell.
-1. Cserélje le `<path to your form>` való az űrlapot a fájl elérési útja. Például c:\temp\file.pdf. 
+1. Cserélje le `<path to your form>` az elérési útját az űrlap (például C:\temp\file.pdf).
 1. Cserélje le `<file type>` az a fájl típusa. Támogatott típusok: pdf-, kép/jpeg, kép-vagy png.
 1. A `<subscription key>` helyére írja be az előfizetési kulcsot.
 

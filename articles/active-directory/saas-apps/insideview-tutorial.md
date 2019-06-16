@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 0fdabd237fa128326673d84e889387d03f184b00
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2149b8410104b39652b176895a31b42e094265f5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236581"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100091"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező InsideView
 
@@ -94,7 +94,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés InsideView, ezeket a
 
 2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válasszon **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése:
 
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezés módszer kiválasztása](common/select-saml-option.png)
 
 3. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon válassza ki a **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel:
 
@@ -143,13 +143,13 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés InsideView, ezeket a
 
     1. Nyissa meg az Azure Portalról letöltött nyers tanúsítványt. A tanúsítvány tartalmának másolása a vágólapra, és illessze be a tartalmát a **STS tanúsítvány** mezőbe.
 
-    1. Az a **Crm azonosító Felhasználóleképezés** mezőbe írja be **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**.
+    1. Az a **Crm azonosító Felhasználóleképezés** mezőbe írja be **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** .
 
-    1. Az a **Crm E-mail leképezési** mezőbe írja be **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**.
+    1. Az a **Crm E-mail leképezési** mezőbe írja be **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** .
 
-    1. Az a **Crm Utónév leképezési** mezőbe írja be **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**.
+    1. Az a **Crm Utónév leképezési** mezőbe írja be **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** .
 
-    1. Az a **Crm lastName leképezési** mezőbe írja be **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**.  
+    1. Az a **Crm lastName leképezési** mezőbe írja be **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname** .  
 
     1. Kattintson a **Mentés** gombra.
 
@@ -212,7 +212,7 @@ Felhasználók vagy kapcsolattartók létrehozása InsideView, lépjen kapcsolat
 > [!NOTE]
 > Bármely felhasználói fiók létrehozása az eszközzel, vagy az Azure AD-felhasználói fiókok kiépítése InsideView által biztosított API-t.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Most szüksége az Azure AD egyszeri bejelentkezési konfigurációjának tesztelése a hozzáférési Panel használatával.
 

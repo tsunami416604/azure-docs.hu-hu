@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 04/12/2019
+ms.date: 06/11/2019
 ms.author: alkohli
-ms.openlocfilehash: cd4d84d6698ddeda2fb00a8452fbe8cd02771e4b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 6e1870093dc89856e093267172418e9c7330c479
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60755508"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080567"
 ---
 # <a name="what-is-azure-data-box-edge"></a>Mi az Azure Data Box Edge? 
 
@@ -34,7 +34,7 @@ Az Azure Data Box Edge egy mesterséges intelligenciára épülő peremhálózat
     - A szükséges adatok csoportosítása és átvitele a felhőbe mélyebb elemzésre.
     - Az IoT-események elemzése és reagálás rájuk 
 
-- **Azure Machine Learning-következtetés** – A Data Box Edge használatával Machine Learning- (ML-) modelleket futtathat a gyors eredmények elérése érdekében, amelyeket még azelőtt használhat fel, hogy az adatok a felhőbe kerülnének. A rendszer a teljes adatkészlet átvitelét elvégzi ML-modellek folyamatos újratanítása és fejlesztése érdekében.
+- **Azure Machine Learning-következtetés** – A Data Box Edge használatával Machine Learning- (ML-) modelleket futtathat a gyors eredmények elérése érdekében, amelyeket még azelőtt használhat fel, hogy az adatok a felhőbe kerülnének. A teljes adatkészlet is átkerül a újratanítás, és javíthatja a gépi Tanulási modelleket továbbra is. További információ az Azure ML hardver használatával gyorsított modellek az Databox Edge-eszközön: [hardver üzembe helyezése az Azure gépi Tanulási modellek gyorsított Databox Edge](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
 
 - **Adatátvitel az Azure-ba hálózaton keresztül** – A Data Box Edge használatával könnyedén és gyorsan vihet át adatot az Azure-ba további számítási feladatok vagy elemzések elvégzéséhez, illetve archiválás céljából. 
 
@@ -61,7 +61,7 @@ A Data Box Edge az alábbi képességekkel rendelkezik:
 |Gyors hozzáférés     | Az eszközön helyi gyorsítótár található, amellyel gyorsabban elérhetők a legutóbb használt fájlok.|
 |Offline feltöltés     | A kapcsolat nélküli mód támogatja az offline feltöltési forgatókönyveket.|
 |Adatfrissítés     | Lehetőség van a helyi fájlok legújabb változatra való frissítésére a felhőből.|
-|Titkosítás    | A BitLocker támogatja az adatok helyi titkosítását és biztonságos átvitelét a felhőbe *https*-en keresztül.       |
+|Encryption    | A BitLocker támogatja az adatok helyi titkosítását és biztonságos átvitelét a felhőbe *https*-en keresztül.       |
 |Rugalmasság     | Beépített hálózati rugalmasság.        |
 
 

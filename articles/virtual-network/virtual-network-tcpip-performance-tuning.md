@@ -29,10 +29,10 @@ ms.author:
 - btalb
 - prachank
 ms.openlocfilehash: ad1a5b69e4ec7b44c0e61a5ddd2c06633464d31a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66235001"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Az Azure virtuális gépek TCP/IP-teljesítményhangolása
@@ -206,7 +206,7 @@ A méretezési tényező is egy beállítást, amely az operációs rendszer leh
 
 `TCP window size = TCP window size in bytes \* (2^scale factor)`
 
-3. és a egy 65 535 ablak méretének kiszámítása ablak méretezési tényező a következő:
+3\. és a egy 65 535 ablak méretének kiszámítása ablak méretezési tényező a következő:
 
 `65,535 \* (2^3) = 262,140 bytes`
 
@@ -237,7 +237,7 @@ Ezek a hatékony TCP beállításait `AutoTuningLevel`:
 | | | | |
 |-|-|-|-|
 |**AutoTuningLevel**|**Méretezési faktor**|**Skálázási szorzót**|**A képlet<br/>maximális méretének kiszámítása**|
-|Letiltva|Nincsenek|Nincsenek|Ablakméret|
+|Letiltva|None|None|Ablakméret|
 |Korlátozott|4|2^4|Ablakméret * (2 ^ 4)|
 |Erősen korlátozott|2|2^2|Ablakméret * (2 ^ 2)|
 |Normál|8|2^8|Ablakméret * (2 ^ 8)|

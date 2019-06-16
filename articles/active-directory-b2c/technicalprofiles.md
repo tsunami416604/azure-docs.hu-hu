@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: f712634c83fa290ab24d5e8437a82d5f93af0b7f
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66512285"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
@@ -106,7 +106,7 @@ A **TechnicalProfile** a következő elemeket tartalmazza:
 
 A **protokoll** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | Name (Név) | Igen | A technikai profil részeként használt Azure AD B2C által támogatott érvényes protokoll neve. A lehetséges értékek: `OAuth1`, `OAuth2`, `SAML2`, `OpenIdConnect`, `WsFed`, `WsTrust`, `Proprietary`, `session management`, `self-asserted`, vagy `None`. |
 | Kezelő | Nem | Ha a protokoll nevét beállítása `Proprietary`, adja meg a szerelvény meghatározásához a protokoll-leíró Azure AD B2C által használt teljes nevét. |
@@ -172,7 +172,7 @@ A **InputClaims** elem tartalmazza a következő elemet:
 
 A **bemeneti jogcím** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Igen | A szabályzat vagy a szülő házirend fájl ClaimsSchema szakasz már definiálva egy jogcímtípust azonosítóját. |
 | DefaultValue érték | Nem | Hozzon létre egy jogcímet, ha a jogcímek ClaimTypeReferenceId által jelzett használandó alapértelmezett értéket, hogy az eredményül kapott a jogcímet, egy bemeneti jogcím használhatják a technikai profil nem létezik. |
@@ -243,7 +243,7 @@ A **ValidationTechnicalProfiles** elem tartalmazza a következő elemet:
 
 A **ValidationTechnicalProfile** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | ReferenceId | Igen | A házirend vagy szülő házirend fájlt már definiált egy technikai profil azonosítója. |
 
@@ -259,7 +259,7 @@ A **SubjectNamingInfo** tartalmazza a következő attribútumot:
 
 A **IncludeTechnicalProfile** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | ReferenceId | Igen | A házirend vagy szülő házirend fájlt már definiált egy technikai profil azonosítója. |
 
@@ -267,7 +267,7 @@ A **IncludeTechnicalProfile** elem tartalmazza a következő attribútumot:
 
 A **UseTechnicalProfileForSessionManagement** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | ReferenceId | Igen | A házirend vagy szülő házirend fájlt már definiált egy technikai profil azonosítója. |
 
