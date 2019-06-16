@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: kumud
 ms.openlocfilehash: 8a8feb0f12fbf5eadcddf239ff2e13c058a566fe
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64693300"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Hozzáadása, módosítása vagy virtuális hálózati alhálózat törlése
 
 Ismerje meg, hogyan hozzáadása, módosítása vagy törlése a virtuális hálózat alhálózatán. Egy virtuális hálózaton üzembe helyezett összes Azure-erőforrást a rendszer üzembe helyezi egy virtuális hálózat alhálózatán. Ha most ismerkedik a virtuális hálózatok, többet is megtudhat a velük kapcsolatos a [virtuális hálózatok áttekintése](virtual-networks-overview.md) vagy; Ehhez hajtsa végre egy [oktatóanyag](quick-create-portal.md). Létrehozásához, módosításához vagy a virtuális hálózat törlése, lásd: [virtuális hálózat kezelése](manage-virtual-network.md).
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

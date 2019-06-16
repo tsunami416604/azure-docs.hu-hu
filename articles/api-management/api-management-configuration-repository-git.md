@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
 ms.openlocfilehash: c371333dcc7db0b60ffa5f94d6e2d55ae500a4f6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66241187"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Mentse, és a Git használatával az API Management-szolgáltatás konfigurációjának beállítása
@@ -163,7 +163,7 @@ Minden mappa tartalmazhat egy vagy több fájlt, és olykor egy vagy több mapp�
 
 | Fájltípus | Cél |
 | --- | --- |
-| json |Konfigurációs információkat az adott entitás |
+| JSON |Konfigurációs információkat az adott entitás |
 | html |Entitás, a fejlesztői portál gyakran megjelenik leírásai |
 | xml |Házirend-utasítások |
 | CSS |A fejlesztői portál testreszabása stíluslapok |

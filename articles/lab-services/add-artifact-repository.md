@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: c1e74efa9cf99e8510ea17aedc840ce3b0731c3b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 7ff036fbdf3ae9360bed8d728b9bec3a1937b70a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64916679"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808250"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>A DevTest Labs szolgáltatásban létrehozott tesztkörnyezet egy összetevőtárban hozzáadása
-DevTest Labs lehetővé teszi, hogy adjon meg egy időben, a virtuális gép létrehozása, vagy a virtuális gép létrehozása után egy virtuális Gépet hozzáadni kívánt összetevőt. Az összetevő egy eszköz és a egy virtuális Gépre telepíteni kívánt alkalmazás lehet. Összetevők egy JSON-fájlt a betöltött GitHub vagy a VSTS Git-adattárból vannak definiálva. 
+DevTest Labs lehetővé teszi, hogy adjon meg egy időben, a virtuális gép létrehozása, vagy a virtuális gép létrehozása után egy virtuális Gépet hozzáadni kívánt összetevőt. Az összetevő egy eszköz és a egy virtuális Gépre telepíteni kívánt alkalmazás lehet. Összetevők egy JSON-fájlt a betöltött GitHub vagy az Azure DevOps Git-adattárból vannak definiálva. 
 
 A [nyilvános összetevőtárral](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts), DevTest Labs által karbantartott, számos gyakori eszközöket biztosít a Windows és Linux is. Ez a tárház mutató hivatkozás automatikusan hozzáadódik a labor. Az eszközöket, amelyek nem érhetők el a nyilvános összetevőtárral hozhat létre saját összetevőtárban. Egyéni összetevők létrehozásával kapcsolatos további információkért lásd: [egyéni összetevők létrehozása](devtest-lab-artifact-author.md).
 

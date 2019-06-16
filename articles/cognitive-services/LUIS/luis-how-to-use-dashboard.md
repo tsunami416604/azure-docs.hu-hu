@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/22/2019
 ms.author: diberry
 ms.openlocfilehash: 055d113a2bc77f8de1b4b881718007c869470532
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66236941"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Az irányítópult használata az alkalmazás fejlesztéséhez
@@ -34,7 +34,7 @@ Az irányítópult a három problémák vannak:
 |--|--|--|
 |Adatok egyenetlenségének|-|Ez akkor fordul elő, ha a példa kimondott szöveg mennyiségét jelentősen eltér. Rendelkeznie kell az összes leképezések _nagyjából_ példa utterances – kivéve a nincs szándék azonos számú. 10 – 15 % utterances teljes mennyiségét, az alkalmazás csak azt kell rendelkeznie.<br><br> Ha az adatok imbalanced, de a szándék pontossága meghatározott küszöbérték fölött van, ez egyenetlenségének nem verziószámú problémát.<br><br>**Start - probléma az lehet a más problémák eredendő okát.**|
 |Nem egyértelmű előrejelzések|Narancssárga|Ez akkor fordul elő, amikor a felső célt és a következő leképezés pontszámok kellően közel, hogy azok előfordulhat, hogy tükrözés a következő képzési miatt [negatív mintavételi](luis-how-to-train.md#train-with-all-data) vagy beszédszándék hozzá további példa kimondott szöveg. |
-|Helytelen előrejelzések|Vörös|Ez akkor fordul elő, amikor egy példa utterance (kifejezés) nem előre jelzett a címkézett célja (a leképezés van).|
+|Helytelen előrejelzések|Piros|Ez akkor fordul elő, amikor egy példa utterance (kifejezés) nem előre jelzett a címkézett célja (a leképezés van).|
 
 A szín kék megfelelő előrejelzéseket jelöli.
 

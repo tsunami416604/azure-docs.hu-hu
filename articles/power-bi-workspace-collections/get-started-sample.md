@@ -9,10 +9,10 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.openlocfilehash: 6cf78bf9c83df0a1255c14499bbd2036a2be5ed6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64714505"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Ismerkedés a Power BI-Munkaterületcsoportok minta
@@ -49,7 +49,7 @@ Vegyük végig a Visual Studio fejlesztési környezet beállítása a mintaalka
 8. Másolja ki és mentse az újonnan létrehozott **munkaterület-Azonosítót** a cikk későbbi részében használni. Után a **munkaterület-Azonosítót** van létrehozva, akkor is megtalálhatják azt a **az Azure portal**.
 
     ![Munkaterület-Azonosítót az Azure Portalon](media/get-started-sample/workspace-id.png)
-9. Azokat a PBIX-fájl importálása az **munkaterület**, lehetőséggel **6. Import PBIX Desktop-fájlt egy meglévő munkaterületet,**. Ha nem rendelkezik egy PBIX-fájl hasznos, letöltheti a [kiskereskedelmi elemzési minta pbix-fájlt](https://go.microsoft.com/fwlink/?LinkID=780547).
+9. Azokat a PBIX-fájl importálása az **munkaterület**, lehetőséggel **6. Import PBIX Desktop-fájlt egy meglévő munkaterületet,** . Ha nem rendelkezik egy PBIX-fájl hasznos, letöltheti a [kiskereskedelmi elemzési minta pbix-fájlt](https://go.microsoft.com/fwlink/?LinkID=780547).
 10. Ha a rendszer kéri, adjon meg egy rövid nevet a **adatkészlet**.
 
 A következőhöz hasonló választ kell megjelennie:
@@ -140,7 +140,7 @@ A **nézet** kezeli a Power BI megjelenítésének **jelentések** és a egy Pow
 
 | Rész | Leírás |
 | --- | --- |
-| Cím |A jelentés neve. |
+| Beosztás |A jelentés neve. |
 | A lekérdezési karakterlánc |A jelentés azonosítója mutató hivatkozás |
 ```cshtml
 <div id="reports-nav" class="panel-collapse collapse">
@@ -170,7 +170,7 @@ Report.cshtml: Állítsa be a **Model.AccessToken**, és a Lambda kifejezésnek 
 </div>
 ```
 
-### <a name="controller"></a>Vezérlő
+### <a name="controller"></a>tartományvezérlő
 
 **DashboardController.cs**: Létrehoz egy PowerBIClient megadásának egy **alkalmazás-jogkivonatára**. Egy JSON webes jogkivonat (JWT) hoz létre a **aláíró kulcs** beolvasni a **hitelesítő adatok**. A **hitelesítő adatok** segítségével hozzon létre egy példányt **PowerBIClient**. Ha már van egy példányát **PowerBIClient**, GetReports() és GetReportsAsync() hívása.
 

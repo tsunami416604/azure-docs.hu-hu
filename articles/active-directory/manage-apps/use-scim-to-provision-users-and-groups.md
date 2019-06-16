@@ -17,10 +17,10 @@ ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a62f44783d63131812794a4b55f0e9f9f3b45f27
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66742479"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>A rendszer a tartományok közötti Identity Management (SCIM) használatával automatikus kiépítésére a felhasználók és csoportok alkalmazásokhoz az Azure Active Directoryból
@@ -35,7 +35,7 @@ A fő Ez a cikk célja az SCIM 2.0-s, amely az Azure AD a katalógusban nem szer
  
 
 >[!IMPORTANT]
->2018. December 18. utolsó frissítés az Azure AD SCIM megvalósítási viselkedését. Mi változott a további információkért lásd: [SCIM 2.0 protokoll megfelelőség az Azure AD-felhasználó kiépítési szolgáltatás](application-provisioning-config-problem-scim-compatibility.md).
+>2018\. December 18. utolsó frissítés az Azure AD SCIM megvalósítási viselkedését. Mi változott a további információkért lásd: [SCIM 2.0 protokoll megfelelőség az Azure AD-felhasználó kiépítési szolgáltatás](application-provisioning-config-problem-scim-compatibility.md).
 
 ![][0]
 *1. ábra: Egy alkalmazás vagy identitás tároló, amely megvalósítja az SCIM való üzembe helyezést, az Azure Active Directoryból*
@@ -665,7 +665,7 @@ A legegyszerűbb módja egy SCIM-végpontot, amely az Azure ad-ből kiépítési
    ![][2]
    *6. ábra: Létrehozás az Azure Portalon konfigurálása*
     
-1. Az a **bérlői URL-cím** mezőben adja meg az interneten közzétett URL-cím és port a SCIM-végpont. A bejegyzés a következőképpen fog kinézni http://testmachine.contoso.com:9000 vagy a http://\<ip-cím >: 9000 /, ahol \<ip-cím > az internetről elérhető IP cím. 
+1. Az a **bérlői URL-cím** mezőben adja meg az interneten közzétett URL-cím és port a SCIM-végpont. A bejegyzés a következőképpen fog kinézni http://testmachine.contoso.com:9000 vagy a http://\< ip-cím >: 9000 /, ahol \< ip-cím > az internetről elérhető IP cím. 
 
 1. Ha az SCIM-végpont egy OAuth tulajdonosi jogkivonat egy Azure AD-től eltérő kiállítótól van szüksége, majd másolja a szükséges OAuth tulajdonosi jogkivonat a választható **titkos jogkivonat** mező. 
 1. Válassza ki **kapcsolat tesztelése** szeretné, hogy az Azure Active Directory megpróbál csatlakozni az SCIM-végpont. Ha a kísérlet sikertelen, hiba információk jelennek meg.  
@@ -823,7 +823,7 @@ Az Internet Information Services szolgáltatás üzemeltetéséhez, a fejlesztő
    ```
 
 ### <a name="handling-endpoint-authentication"></a>Kezelési végpont hitelesítés
-Az Azure Active Directoryból kérések az OAuth 2.0 tulajdonosi jogkivonat tartalmazzák.   Minden olyan szolgáltatás, a kérelem fogadása a kibocsátó, hogy az Azure Active Directory a várt Azure Active Directory-bérlő az Azure Active Directory Graph web Service Access kell hitelesíteni.  A jogkivonat a kibocsátó iss jogcím, például a "iss" által azonosított: "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/".  Ebben a példában a jogcímérték základní adresa https://sts.windows.net, azonosítja az Azure Active Directory, a kibocsátó relatív cím szegmens, cbb1a5ac-f33b-45fa-9bf5-f37db0fed422, az Azure Active Directory-bérlő egyedi azonosítója amely a token adtak ki.  A jogkivonatot az Azure Active Directory Graph webes szolgáltatás van kiadva, akkor a szolgáltatáshoz, 00000002-0000-0000-c000-000000000000 azonosítóját kell legyen a token aud jogcím értékét.  Egyetlen új bérlő regisztrált alkalmazások jelenhet meg ugyanaz `iss` jogcím SCIM-kérelmeket.
+Az Azure Active Directoryból kérések az OAuth 2.0 tulajdonosi jogkivonat tartalmazzák.   Minden olyan szolgáltatás, a kérelem fogadása a kibocsátó, hogy az Azure Active Directory a várt Azure Active Directory-bérlő az Azure Active Directory Graph web Service Access kell hitelesíteni.  A jogkivonat a kibocsátó iss jogcím, például a "iss" által azonosított: "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/ ".  Ebben a példában a jogcímérték základní adresa https://sts.windows.net , azonosítja az Azure Active Directory, a kibocsátó relatív cím szegmens, cbb1a5ac-f33b-45fa-9bf5-f37db0fed422, az Azure Active Directory-bérlő egyedi azonosítója amely a token adtak ki.  A jogkivonatot az Azure Active Directory Graph webes szolgáltatás van kiadva, akkor a szolgáltatáshoz, 00000002-0000-0000-c000-000000000000 azonosítóját kell legyen a token aud jogcím értékét.  Egyetlen új bérlő regisztrált alkalmazások jelenhet meg ugyanaz `iss` jogcím SCIM-kérelmeket.
 
 SCIM szolgáltatás létrehozásához a Microsoft által biztosított a CLI-kódtárakat használó fejlesztők hitelesíteni tudja a kéréseket az Azure Active Directoryból a Microsoft.Owin.Security.ActiveDirectory csomag segítségével az alábbi lépéseket: 
 
@@ -1316,9 +1316,9 @@ Az Azure Active Directoryban két típusú erőforrásokat az SCIM-webszolgálta
 
 Felhasználói erőforrásokat azonosítja a séma azonosító `urn:ietf:params:scim:schemas:extension:enterprise:2.0:User`, amely tartalmazza a protokoll-meghatározása: https://tools.ietf.org/html/rfc7643.  Az alapértelmezett leképezést a felhasználó attribútumait az Azure Active Directory felhasználói attribútumok biztosítunk az 1.  
 
-Felhasználóicsoport-erőforrások azonosítja a séma azonosító `urn:ietf:params:scim:schemas:core:2.0:Group`. 2. táblázat az alapértelmezett leképezést az attribútumok a csoportok az Azure Active Directory csoport erőforrások attribútumait mutatja.  
+Felhasználóicsoport-erőforrások azonosítja a séma azonosító `urn:ietf:params:scim:schemas:core:2.0:Group`. 2\. táblázat az alapértelmezett leképezést az attribútumok a csoportok az Azure Active Directory csoport erőforrások attribútumait mutatja.  
 
-### <a name="table-1-default-user-attribute-mapping"></a>1. táblázat: Alapértelmezett felhasználói attribútumleképezés
+### <a name="table-1-default-user-attribute-mapping"></a>1\. táblázat: Alapértelmezett felhasználói attribútumleképezés
 
 | Az Azure Active Directory-felhasználó | "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User" |
 | --- | --- |
@@ -1340,7 +1340,7 @@ Felhasználóicsoport-erőforrások azonosítja a séma azonosító `urn:ietf:pa
 | Telefonszám – |phoneNumbers [típus eq "work"] .value |
 | felhasználó-PrincipalName |userName |
 
-### <a name="table-2-default-group-attribute-mapping"></a>2. táblázat: Alapértelmezett csoport attribútumleképezés
+### <a name="table-2-default-group-attribute-mapping"></a>2\. táblázat: Alapértelmezett csoport attribútumleképezés
 
 | Azure Active Directory-csoport | urn: ietf:params:scim:schemas:core:2.0:Group |
 | --- | --- |

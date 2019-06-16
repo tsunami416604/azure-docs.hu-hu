@@ -8,17 +8,17 @@ ms.date: 05/23/2019
 ms.author: dharmas
 ms.reviewer: sngun
 ms.openlocfilehash: f930b5c478cc880952b4559be4c6647b260efcf2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66243490"
 ---
 # <a name="globally-scale-provisioned-throughput"></a>Kiosztott átviteli sebesség globális skálázása 
 
 Az Azure Cosmos DB kiosztott átviteli sebesség jelenik meg kérelem egység/másodperc (RU/mp vagy többes számú kérelemegység formájában). Mindkét olvasási költsége mérjük, illetve írási műveleteket végeznek az Cosmos-tároló, a következő képen látható módon:
 
-![Kérelemegység](./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png)
+![Kérelemegységek](./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png)
 
 Telepíthet egy Cosmos-tároló vagy egy Cosmos-adatbázis a RUs. Egy tároló kiosztott Kérelemegységek érhetők el kizárólag az adott tárolón végrehajtott műveletek. Az adatbázisok kiosztott Kérelemegységek (kivéve a kizárólag kiosztott Kérelemegységek tartalmazó összes tárolót) adatbázison belüli összes tárolók között vannak megosztva.
 

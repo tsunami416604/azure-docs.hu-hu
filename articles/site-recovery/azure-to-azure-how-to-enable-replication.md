@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/29/2018
 ms.author: asgang
 ms.openlocfilehash: 86bd41d518006b0601a5c9d18e5429f76d5a4fc5
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64926623"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Azure virtuális gépek replikálása másik Azure-régióba
@@ -54,8 +54,8 @@ Engedélyezze a replikációt. Ez az eljárás feltételezi, hogy az elsődleges
        - Testre szabhatja az erőforrás-csoport beállításokat.
        - A céloldali erőforráscsoport helye lehet bármelyik Azure-régióban, kivéve a régiót, amelyben a forrás virtuális gépek futnak.
    - **Cél virtuális hálózattal**: Alapértelmezés szerint a Site Recovery a célrégióban a név egy "asr" utótaggal rendelkező új virtuális hálózatot hoz létre. Ez a Forráshálózat leképezve, és minden jövőbeli védelemhez használt. [További](site-recovery-network-mapping-azure-to-azure.md) információk a hálózatleképezésről.
-   - **Cél tárfiókok (a forrás virtuális gép nem használ felügyelt lemezeket)**: Alapértelmezés szerint a Site Recovery létrehoz egy új céltárfiók, a forrás virtuális gép tárkonfigurációt mimicking. Storage-fiók már létezik, a rendszer újra.
-   - **Replikált felügyelt lemezek (a forrás virtuális gép felügyelt lemezeket használ)**: Site Recovery új replika felügyelt lemezeket hoz létre a célrégióban a forrás virtuális gép felügyelt lemezeinek azokkal az azonos tártípusban (Standard vagy prémium) tükrözik, mert a forrásoldali virtuális gép felügyelt lemez.
+   - **Cél tárfiókok (a forrás virtuális gép nem használ felügyelt lemezeket)** : Alapértelmezés szerint a Site Recovery létrehoz egy új céltárfiók, a forrás virtuális gép tárkonfigurációt mimicking. Storage-fiók már létezik, a rendszer újra.
+   - **Replikált felügyelt lemezek (a forrás virtuális gép felügyelt lemezeket használ)** : Site Recovery új replika felügyelt lemezeket hoz létre a célrégióban a forrás virtuális gép felügyelt lemezeinek azokkal az azonos tártípusban (Standard vagy prémium) tükrözik, mert a forrásoldali virtuális gép felügyelt lemez.
    - **Gyorsítótár tárfiókjai**: Site recoverynek extra storage-fiókkal, amelynek neve a gyorsítótárban a forrásrégióban. Történik a forrásoldali virtuális gép az összes módosítást a nyomon követett és a gyorsítótárfiókba azokat a célhelyre történő replikálása előtt küldött.
    - **Cél rendelkezésre állási csoportok**: Alapértelmezés szerint a Site Recovery létrehoz egy új rendelkezésre állási csoportot a célrégióban az "asr" utótaggal a nevében, a virtuális gépek rendelkezésre állási csoport a forrásrégióban részét képező. Ha a Site Recovery által már létrehozott rendelkezésre állási csoport már létezik, a rendszer újra.
    - **Cél rendelkezésre állási zónák**: Alapértelmezés szerint a Site Recovery zóna száma azonos a célrégióban a forrás régiójára rendeli, ha a célrégióban támogatja a rendelkezésre állási zónák.

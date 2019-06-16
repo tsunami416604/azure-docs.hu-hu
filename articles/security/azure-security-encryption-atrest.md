@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/07/2019
 ms.author: barclayn
 ms.openlocfilehash: d0974b98975b8f7d09760be964024f92e9690a4e
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65596383"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Az Azure Data Encryption inaktív
@@ -258,7 +258,7 @@ Kiszolgálói titkosítás támogatása jelenleg az SQL szolgáltatás transzpar
 |                                  | **Kiszolgálóoldali szolgáltatás által felügyelt kulccsal**     | **Kiszolgálóoldali használata a Key Vault az ügyfél által felügyelt**             | **Ügyféloldali használatával az ügyfél által felügyelt**      |
 | **Mesterséges Intelligencia és gépi tanulás**      |                    |                    |                    |
 | Azure Search                     | Igen                | -                  | -                  |
-| Azure Machine Learning Service   | Igen                | -                  | -                  |
+| Azure Machine Learning szolgáltatás   | Igen                | -                  | -                  |
 | Azure Machine Learning Studio    | Igen                | Az előzetes RSA 2048-bites | -               |
 | Power BI                         | Igen                | -                  | -                  |
 | **Elemzés**                    |                    |                    |                    |
@@ -271,7 +271,7 @@ Kiszolgálói titkosítás támogatása jelenleg az SQL szolgáltatás transzpar
 | Azure Data Lake Store            | Igen                | Igen, RSA 2048-bites  | -                  |
 | **Számítás**                      |                    |                    |                    |
 | Virtuális gépek                 | -                  | Igen, RSA 2048-bites  | -                  |
-| Virtuálisgép-méretezési csoport        | -                  | Igen, RSA 2048-bites  | -                  |
+| Virtuálisgép-méretezési csoportot        | -                  | Igen, RSA 2048-bites  | -                  |
 | **Adatbázisok**                    |                    |                    |                    |
 | SQL Server on Virtual Machines   | Igen                | Igen, RSA 2048-bites  | Igen                |
 | Azure SQL Database               | Igen                | Igen, RSA 2048-bites  | Igen                |
@@ -287,7 +287,7 @@ Kiszolgálói titkosítás támogatása jelenleg az SQL szolgáltatás transzpar
 | Azure Active Directory tartományi szolgáltatások | Igen          | Igen, RSA 2048-bites  | -                  |
 | **Integráció**                  |                    |                    |                    |
 | Service Bus                      | Igen                | -                  | Igen                |
-| Eseményrács                       | Igen                | -                  | -                  |
+| Event Grid                       | Igen                | -                  | -                  |
 | API Management                   | Igen                | -                  | -                  |
 | **IoT-szolgáltatások**                 |                    |                    |                    |
 | IoT Hub                          | -                  | -                  | Igen                |
@@ -296,7 +296,7 @@ Kiszolgálói titkosítás támogatása jelenleg az SQL szolgáltatás transzpar
 | **Media**                        |                    |                    |                    |
 | Media Services                   | Igen                | -                  | Igen                |
 | **Storage**                      |                    |                    |                    |
-| Blobtároló                     | Igen                | Igen, RSA 2048-bites  | Igen                |
+| Blob Storage                     | Igen                | Igen, RSA 2048-bites  | Igen                |
 | Disk Storage                     | Igen                | -                  | -                  |
 | Managed Disk Storage             | Igen                | -                  | -                  |
 | File Storage                     | Igen                | Igen, RSA 2048-bites  | -                  |

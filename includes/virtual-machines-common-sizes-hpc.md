@@ -9,10 +9,10 @@ ms.date: 04/26/2019
 ms.author: azcspmt;jonbeck;cynthn;amverma
 ms.custom: include file
 ms.openlocfilehash: 9b4bdee19c883252e7de140ac7b19babd43d1df8
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66755165"
 ---
 Az Azure H-sorozatú virtuális gépek (VM) úgy tervezték, hogy a vezetői szintű teljesítményt, méretezhetőséget MPI, és optimalizálhatja a költségeket különböző valós HPC számítási feladatok esetében.
@@ -25,7 +25,7 @@ HB és a hibrid kapcsolat virtuális gépek funkciója 100 Gb/s Mellanox EDR Inf
 
 H-sorozatú virtuális gépek magas CPU-használati vagy nagy méretű memóriát biztosít alapvető által vezérelt alkalmazásokhoz vannak optimalizálva. H-sorozatú virtuális gépek szolgáltatás 8 és 16 Intel Xeon E5-2667 v3 processzor-mag, 7 vagy 14 GB RAM, processzormagonként, és nem Hyper-Threading technológia. H-sorozat funkciók 56 Gb/s Mellanox FDR InfiniBand egy nem blokkoló fat a fa RDMA egységes teljesítményt konfigurációját. H-sorozatú virtuális gépek támogatják az Intel MPI 5.x és MS-MPI.
 
-## <a name="hb-series"></a>HB sorozat
+## <a name="hb-series"></a>HB-sorozat
 
 ACU: 199-216
 
@@ -39,7 +39,7 @@ Prémium szintű Storage gyorsítótárazást: Támogatott
 
 <br>
 
-## <a name="hc-series"></a>HC sorozat
+## <a name="hc-series"></a>HC-sorozat
 
 ACU: 297-315
 

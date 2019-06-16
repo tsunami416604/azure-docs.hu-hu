@@ -15,10 +15,10 @@ ms.date: 01/15/2019
 ms.author: jgao
 ms.custom: include file
 ms.openlocfilehash: 8c5347b412475b86222acabb76b88baaceb7645a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66129003"
 ---
 ## <a name="quickstarts-and-tutorials"></a>Rövid útmutatók és oktatóanyagok
@@ -33,7 +33,7 @@ Az alábbi rövid útmutatók és oktatóanyagok segítségével megismerheti, h
     |[A Visual Studio Code használata](../articles/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code.md)|Sablonok létrehozása és szerkesztése a Visual Studio Code használatával, és a sablonok üzembe helyezése az Azure Cloud Shell-lel.|
     |[A Visual Studio használata](../articles/azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)|Sablonok létrehozása, szerkesztése és üzembe helyezése a Visual Studióval.|
 
-- Oktatóprogramok
+- Oktatóanyagok
 
     |Beosztás|Leírás|
     |------|-----|

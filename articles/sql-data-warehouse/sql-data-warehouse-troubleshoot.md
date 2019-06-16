@@ -11,10 +11,10 @@ ms.date: 4/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 02591185914f3b04a70af3b7c5d607f4a2865806
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65154266"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Hibaelhárítás az Azure SQL Data warehouse-bA
@@ -24,7 +24,7 @@ Ez a cikk a gyakori hibaelhárítási kérdések listája.
 | Probléma                                                        | Megoldás:                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | "NT AUTHORITY\NÉVTELEN bejelentkezés" felhasználó bejelentkezése sikertelen volt. (A Microsoft SQL Server, a hiba: 18456) | Ez a hiba akkor fordul elő, amikor egy AAD-felhasználót úgy próbál csatlakozni a master adatbázisban, de nem rendelkezik egy felhasználót a főadatbázisban.  A probléma, vagy adja meg az SQL Data Warehouse kívánt kapcsolat időpontban csatlakozni, vagy adja hozzá a felhasználót a master adatbázishoz.  Lásd: [biztonsági áttekintése] [ Security overview] további részleteivel. |
-| Az egyszerű "MyUserName" kiszolgálója nem érhetik el a "master" adatbázis aktuális biztonsági környezetében. Nem lehet megnyitni a felhasználói alapértelmezett adatbázist. A bejelentkezés nem sikerült. "MyUserName" felhasználó bejelentkezése sikertelen volt. (A Microsoft SQL Server, a hiba: 916) | Ez a hiba akkor fordul elő, amikor egy AAD-felhasználót úgy próbál csatlakozni a master adatbázisban, de nem rendelkezik egy felhasználót a főadatbázisban.  A probléma, vagy adja meg az SQL Data Warehouse kívánt kapcsolat időpontban csatlakozni, vagy adja hozzá a felhasználót a master adatbázishoz.  Lásd: [biztonsági áttekintése] [ Security overview] további részleteivel. |
+| Az egyszerű "MyUserName" kiszolgálója nem érhetik el a "master" adatbázis aktuális biztonsági környezetében. Nem lehet megnyitni a felhasználói alapértelmezett adatbázist. A bejelentkezés sikertelen volt. "MyUserName" felhasználó bejelentkezése sikertelen volt. (A Microsoft SQL Server, a hiba: 916) | Ez a hiba akkor fordul elő, amikor egy AAD-felhasználót úgy próbál csatlakozni a master adatbázisban, de nem rendelkezik egy felhasználót a főadatbázisban.  A probléma, vagy adja meg az SQL Data Warehouse kívánt kapcsolat időpontban csatlakozni, vagy adja hozzá a felhasználót a master adatbázishoz.  Lásd: [biztonsági áttekintése] [ Security overview] további részleteivel. |
 | CTAIP hiba                                                  | Ez a hiba akkor fordulhat elő, egy bejelentkezés létrehozása után az SQL server főadatbázisában, de nem az SQL Data Warehouse-adatbázisban.  Ha ezt a hibát tapasztal, vessen egy pillantást a [biztonsági áttekintése] [ Security overview] cikk.  Ez a cikk bemutatja, hogyan hozhat létre a bejelentkezést és felhasználót a master, majd egy felhasználó létrehozása az SQL Data Warehouse-adatbázis. |
 | Tűzfal által blokkolva                                          | Az Azure SQL Database által védett kiszolgáló és az adatbázis adatbázisszintű tűzfalakra, győződjön meg arról, hogy csak ismert IP-címek rendelkezik hozzáféréssel egy adatbázishoz. A tűzfalak biztonságosak alapértelmezett, ami azt jelenti, hogy explicit módon engedélyeznie kell, és IP-címet vagy címtartományt, mielőtt az csatlakozna.  A tűzfal hozzáférés konfigurálásához kövesse [kiszolgálói tűzfal-hozzáférés konfigurálása az ügyfél IP-] [ Configure server firewall access for your client IP] a a [utasításokat kiépítés] [Provisioning instructions]. |
 | Eszköz vagy az illesztőprogram nem tud csatlakozni                           | Az SQL Data Warehouse használatát javasolja [SSMS][SSMS], [SSDT a Visual Studio][SSDT for Visual Studio], vagy [sqlcmd] [ sqlcmd] az adatok lekérdezéséhez. Az illesztőprogramok és csatlakozás az SQL Data Warehouse további információkért lásd: [illesztőprogramok az Azure SQL Data Warehouse] [ Drivers for Azure SQL Data Warehouse] és [csatlakozhat az Azure SQL Data Warehouse] [ Connect to Azure SQL Data Warehouse] cikkeket. |

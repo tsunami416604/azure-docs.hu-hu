@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 05/21/2019
 ms.author: tomfitz
 ms.openlocfilehash: dcad4b988f37d46a0b843fbf905e18011bc4e313
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65990765"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Erőforrás-funkciók az Azure Resource Manager-sablonok
@@ -506,7 +506,7 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-## <a name="resourcegroup"></a>resourceGroup
+## <a name="resourcegroup"></a>Erőforráscsoport
 
 `resourceGroup()`
 
@@ -719,7 +719,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | differentSubOutput | Karakterlánc | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | nestedResourceOutput | Karakterlánc | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
 
-## <a name="subscription"></a>előfizetés
+## <a name="subscription"></a>előfizetést
 
 `subscription()`
 

@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: shlo
 ms.openlocfilehash: 6b74f217d296b5de8886f608b1bc92e908b5d8b4
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64866480"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Adatkészleteket az Azure Data Factoryban
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](v1/data-factory-create-datasets.md)
 > * [Aktuális verzió](concepts-datasets-linked-services.md)
 
@@ -69,9 +69,9 @@ A következő táblázat ismerteti a fenti JSON-tulajdonságok:
 
 Tulajdonság | Leírás | Szükséges |
 -------- | ----------- | -------- |
-név | Az adatkészlet nevét. Lásd: [Azure Data Factory – elnevezési szabályok](naming-rules.md). |  Igen |
+name | Az adatkészlet nevét. Lásd: [Azure Data Factory – elnevezési szabályok](naming-rules.md). |  Igen |
 type | Az adatkészlet típusa. Adja meg a Data Factory által támogatott típusú (például: AzureBlob, AzureSqlTable). <br/><br/>További információkért lásd: [típus](#dataset-type). | Igen |
-struktúra | Az adatkészlet sémája. További információkért lásd: [adathalmaz-séma](#dataset-structure-or-schema). | Nem |
+structure | Az adatkészlet sémája. További információkért lásd: [adathalmaz-séma](#dataset-structure-or-schema). | Nem |
 typeProperties | A típus tulajdonságokat különböznek az egyes (például: Az Azure Blob, az Azure SQL-tábla). További információ a támogatott típusok és a hozzájuk tartozó tulajdonságok: [adatkészlettípus](#dataset-type). | Igen |
 
 ### <a name="data-flow-compatible-dataset"></a>Data flow kompatibilis adatkészlet
@@ -114,9 +114,9 @@ A következő táblázat ismerteti a fenti JSON-tulajdonságok:
 
 Tulajdonság | Leírás | Szükséges |
 -------- | ----------- | -------- |
-név | Az adatkészlet nevét. Lásd: [Azure Data Factory – elnevezési szabályok](naming-rules.md). |  Igen |
+name | Az adatkészlet nevét. Lásd: [Azure Data Factory – elnevezési szabályok](naming-rules.md). |  Igen |
 type | Az adatkészlet típusa. Adja meg a Data Factory által támogatott típusú (például: AzureBlob, AzureSqlTable). <br/><br/>További információkért lásd: [típus](#dataset-type). | Igen |
-séma | Az adatkészlet sémája. További információkért lásd: [kompatibilis adatkészletek adatfolyam](#dataset-type). | Nem |
+schema | Az adatkészlet sémája. További információkért lásd: [kompatibilis adatkészletek adatfolyam](#dataset-type). | Nem |
 typeProperties | A típus tulajdonságokat különböznek az egyes (például: Az Azure Blob, az Azure SQL-tábla). További információ a támogatott típusok és a hozzájuk tartozó tulajdonságok: [adatkészlettípus](#dataset-type). | Igen |
 
 
@@ -184,8 +184,8 @@ Tulajdonság | Leírás | Szükséges
 -------- | ----------- | --------
 név | Az oszlop neve. | Igen
 type | Az oszlop adattípusát. A Data Factory a következő, köztes adattípusokat támogatja mint a megengedett értékek: **Int16, Int32, Int64, egyetlen, Double, tizedes tört, Byte [], logikai érték, karakterlánc, Guid, dátum és idő, Datetimeoffset és időtartam** | Nem
-kulturális környezet | . NET-alapú kulturális környezetet használni, amikor a típus a .NET-típus: `Datetime` vagy `Datetimeoffset`. A mező alapértelmezett értéke: `en-us`. | Nem
-Formátum | Formázó karakterlánc típus egy .NET-típus esetén használandó: `Datetime` vagy `Datetimeoffset`. Tekintse meg [egyéni dátum- és időformátum karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) a dátum és idő formázása. | Nem
+culture | . NET-alapú kulturális környezetet használni, amikor a típus a .NET-típus: `Datetime` vagy `Datetimeoffset`. A mező alapértelmezett értéke: `en-us`. | Nem
+format | Formázó karakterlánc típus egy .NET-típus esetén használandó: `Datetime` vagy `Datetimeoffset`. Tekintse meg [egyéni dátum- és időformátum karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) a dátum és idő formázása. | Nem
 
 ### <a name="example"></a>Példa
 Tegyük fel a következő példában a forrás Blob adatok CSV formátumban, és három oszlopot tartalmaz: a felhasználói azonosítóját, nevét és lastlogindate. Azok Int64, típusú karakterlánc, és a dátum és idő napja a héten francia rövidített használatával egyéni dátum és idő formátumban.
@@ -211,7 +211,7 @@ Az alábbi irányelvek segítenek megérteni, mikor struktúra információval, 
 ## <a name="create-datasets"></a>Adatkészletek létrehozása
 A következő eszközök és SDK-k használatával adatkészleteket is létrehozhat: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [REST API-val](quickstart-create-data-factory-rest-api.md), Azure Resource Manager-sablon és az Azure Portalon
 
-## <a name="current-version-vs-version-1-datasets"></a>1. verzió az adatkészletek és a jelenlegi verzió
+## <a name="current-version-vs-version-1-datasets"></a>1\. verzió az adatkészletek és a jelenlegi verzió
 
 Az alábbiakban a Data Factory és a Data Factory 1. verziójának adatkészletek közötti különbségeket:
 

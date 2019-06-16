@@ -10,10 +10,10 @@ ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.date: 05/13/2019
 ms.openlocfilehash: 45eeb20e5c572ddd98244b2e751322fcce1d4b76
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65597196"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Statikus eredmények beállításával próbaadatokat rendelkező logikai alkalmazások tesztelése
@@ -38,7 +38,7 @@ Például ha úgy állítja be az Outlook 365-höz készült statikus eredménye
 
 1. A művelet, ha szeretne statikus eredmények beállítása kövesse az alábbi lépéseket: 
 
-   1. A művelet jobb felső sarokban, válassza a három pontra (*...* ) gombra, és válassza **statikus eredmény**, például:
+   1. A művelet jobb felső sarokban, válassza a három pontra ( *...* ) gombra, és válassza **statikus eredmény**, például:
 
       ![Válassza ki a "Statikus eredménye" > "Statikus eredmény engedélyezése"](./media/test-logic-apps-mock-data-static-results/select-static-result.png)
 

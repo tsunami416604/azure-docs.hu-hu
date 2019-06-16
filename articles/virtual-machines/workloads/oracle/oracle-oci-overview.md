@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: 711fce9627537e68171c3b170121900d6b14ca1e
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: 8827feaf1d541edc7c0b54d8af951ddab79c5aaa
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66743650"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808619"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Oracle-alkalmazási megoldások integrálása a Microsoft Azure és az Oracle-felhő-infrastruktúra (előzetes verzió)
 
@@ -45,7 +45,7 @@ Alkalmazások futtatása a több felhőre kiterjedő konfigurációban a követk
 * Kiskereskedelmi Oracle-alkalmazásokhoz
 * Oracle Hyperion pénzügyi adatok kezelésére
 
-Az alábbi ábrán az a csatlakoztatott megoldás magas szintű áttekintése. Az egyszerűség kedvéért a diagram csak egy alkalmazásrétegbe és a egy adatrétegbeli jeleníti meg. Az alkalmazás architecutre függően a megoldás további szinten a webes szint például lehetnek az Azure-ban. További információkért tekintse meg a következő szakaszok.
+Az alábbi ábrán az a csatlakoztatott megoldás magas szintű áttekintése. Az egyszerűség kedvéért a diagram csak egy alkalmazásrétegbe és a egy adatrétegbeli jeleníti meg. Az alkalmazásarchitektúra függően a megoldás további szinten a webes szint például lehetnek az Azure-ban. További információkért tekintse meg a következő szakaszok.
 
 ![Az Azure OCI megoldás áttekintése](media/oracle-oci-overview/crosscloud.png)
 

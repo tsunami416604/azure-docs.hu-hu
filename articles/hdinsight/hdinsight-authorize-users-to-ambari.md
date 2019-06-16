@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: maxluk
 ms.openlocfilehash: 69ae1bd05b64912b3d53ca88b468a72a90ff5a74
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64718315"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Az Apache Ambari Views használatának engedélyezése felhasználók számára
@@ -28,7 +28,7 @@ Ha még nem tette meg, hajtsa végre a [ezek az utasítások](./domain-joined/ap
 
 ## <a name="access-the-ambari-management-page"></a>Az Ambari felügyeleti lap megnyitása
 
-Beolvasásához a **Ambari lapját** a a [Apache Ambari webes Kezelőfelületen](hdinsight-hadoop-manage-ambari.md), keresse meg a **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`**. Adja meg a fürt rendszergazdai felhasználónevet és jelszót, amelyet a fürt létrehozásakor megadott. Az Ambari irányítópultról majd **kezelése az Ambari** alá a **rendszergazdai** menüben:
+Beolvasásához a **Ambari lapját** a a [Apache Ambari webes Kezelőfelületen](hdinsight-hadoop-manage-ambari.md), keresse meg a **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** . Adja meg a fürt rendszergazdai felhasználónevet és jelszót, amelyet a fürt létrehozásakor megadott. Az Ambari irányítópultról majd **kezelése az Ambari** alá a **rendszergazdai** menüben:
 
 ![Az Ambari kezelése](./media/hdinsight-authorize-users-to-ambari/manage-ambari.png)
 

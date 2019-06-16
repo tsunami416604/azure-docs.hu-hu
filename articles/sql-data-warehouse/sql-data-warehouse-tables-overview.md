@@ -11,10 +11,10 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 06bdd21363aee8202ce7178f157f01a5c26e3a52
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65851588"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse táblák tervezése
@@ -43,7 +43,7 @@ Az SQL Data Warehouse, a szervezet a táblák megjelenítése (tény), a (dimenz
 | WideWorldImportersDW tábla  | Tábla típusa | SQL Data Warehouse |
 |:-----|:-----|:------|:-----|
 | Város | Dimenzió | wwi.DimCity |
-| Sorrend | (Tény) | wwi.FactOrder |
+| Rendelés | (Tény) | wwi.FactOrder |
 
 
 ## <a name="table-persistence"></a>Tábla adatmegőrzés 
@@ -92,7 +92,7 @@ A tábla kategória határozza meg, melyik lehetőség kiválasztása a terjeszt
 |:---------------|:--------------------|
 | (Tény)           | Használja a kivonatoló terjesztési fürtözött oszlopcentrikus indexszel rendelkező. Javítja a teljesítményt, ha a két kivonattáblák csatlakoznak a terjesztési ugyanabban az oszlopban. |
 | Dimenzió      | Replikált táblák kisebb használja. Ha táblákat tárolásához minden számítási csomóponton túl nagy, használja a kivonatoló elosztott. |
-| Fájlok másolása folyamatban        | Használjon ciklikus időszeletelést az átmeneti tárolási tábla. A CTAS terhelés gyors. Amint az adatok az előkészítési táblában lévő, használja az INSERT... Válassza ki az adatok áthelyezése az termelési táblákba. |
+| Előkészítés        | Használjon ciklikus időszeletelést az átmeneti tárolási tábla. A CTAS terhelés gyors. Amint az adatok az előkészítési táblában lévő, használja az INSERT... Válassza ki az adatok áthelyezése az termelési táblákba. |
 
 ## <a name="table-partitions"></a>Táblapartíciók
 Particionált tábla tárolja, és a táblázat sorait az adattartomány alapján műveleteket hajt végre. Például egy táblázat sikerült kell particionálni, naponta, hónap vagy év szerint. Javíthatja a lekérdezési teljesítmény keresztül partíció eltávolítási, amely korlátozza a lekérdezés megvizsgálja, az adatok egy partíción belül. Emellett akkor is fenntartható a partíció közötti váltás az adatokat. Az adatokat az SQL Data Warehouse már terjesztve van, mert túl sok partíció lelassíthatja a lekérdezések teljesítményét. További információkért lásd: [particionálási útmutató](sql-data-warehouse-tables-partition.md).  Amikor táblába partícióváltás particionálja, amelyek nem üresek, érdemes lehet a TRUNCATE_TARGET opcióhoz a [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) utasítást, ha a meglévő adatok csonkolva lesznek. Az alábbi kódot a kapcsolókat az átalakított napi adatokat a SalesFact felülírják a meglévő adatokat. 

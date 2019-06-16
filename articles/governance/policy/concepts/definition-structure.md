@@ -9,10 +9,10 @@ ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 91dd1ebc457bfeed5c9e8d0d62ecc23740ca5d8d
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65979550"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
@@ -379,7 +379,7 @@ Ehelyett használja a [if()](../../../azure-resource-manager/resource-group-temp
 
 A módosított szabályzatot szabállyal `if()` hosszát ellenőrzi **neve** beolvasásának megkísérlése előtt egy `substring()` a 3-nál kevesebb karaktert tartalmazó értéket. Ha **neve** túl rövid, a "nem kezdve abc" érték helyett visszaadott és képest **abc**. Egy erőforrás, amelynek rövid neve nem kezdődhet **abc** a szabály továbbra is sikertelen, de már nem hibát okoz a kiértékelés során.
 
-### <a name="effect"></a>Hatás
+### <a name="effect"></a>Következmény
 
 Az Azure Policy hatása a következő típusokat támogatja:
 
@@ -460,7 +460,7 @@ Ez a házirend a szabály a példa a `resourceGroup` erőforrás függvény a **
 }
 ```
 
-## <a name="aliases"></a>Aliasnevek
+## <a name="aliases"></a>Aliasok
 
 Aliasok tulajdonság használatával az erőforrástípushoz konkrét tulajdonságok eléréséhez. Az aliasok lehetővé teszi korlátozása, milyen értékeket, vagy a feltételek az erőforrás-tulajdonságok megengedettek. Minden egyes alias képez le egy adott erőforrás típusát különböző API-verzióit szereplő elérési utakat. Szabályzat-kiértékelés során a házirendmotor lekérdezi, hogy API-verzió tulajdonság elérési útját.
 
@@ -505,7 +505,7 @@ Az aliasok rendelkezésre álló számos rendelkezik egy olyanra, amely egy "nor
 
 A "normál" alias egyetlen értékként a mezőt jelöl. Ez a mező esetén pontosan egyezik összehasonlítást forgatókönyveket értékek teljes készletét kell lenniük pontosan a meghatározott, nincs több nem.
 
-A **[\*]** alias-szal a tömb egyes elemei értékét, és minden eleme megadott tulajdonságainak képest. Ez a megközelítés lehetővé teszi a hasonlítsa össze az elem tulajdonságainak "Ha egyik sem", "Ha", vagy a "Ha az összes," forgatókönyveket. Használatával **ipRules [\*]**, például szeretné érvényesítése, amely minden _művelet_ van _Megtagadás_, azonban nem aggódniuk hány szabályok vagy milyen IP-_érték_ van. A minta a szabály ellenőrzi, minden egyezések **ipRules [\*] .value** való **10.0.4.1** , és alkalmazza a **effectType** csak akkor, ha nem, legalább egy egyezést talál:
+A **[\*]** alias-szal a tömb egyes elemei értékét, és minden eleme megadott tulajdonságainak képest. Ez a megközelítés lehetővé teszi a hasonlítsa össze az elem tulajdonságainak "Ha egyik sem", "Ha", vagy a "Ha az összes," forgatókönyveket. Használatával **ipRules [\*]** , például szeretné érvényesítése, amely minden _művelet_ van _Megtagadás_, azonban nem aggódniuk hány szabályok vagy milyen IP-_érték_ van. A minta a szabály ellenőrzi, minden egyezések **ipRules [\*] .value** való **10.0.4.1** , és alkalmazza a **effectType** csak akkor, ha nem, legalább egy egyezést talál:
 
 ```json
 "policyRule": {

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
 ms.openlocfilehash: 85a8ddf4ce87d7ac8ce460c0aff56311a2ea4578
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540694"
 ---
 # <a name="upgrade-to-the-latest-azure-search-service-rest-api-version"></a>Frissítse a legújabb Azure Search szolgáltatás REST API-verzióra
@@ -39,7 +39,7 @@ Verzióját 2019-05-06-a az Azure Search szolgáltatás REST API általánosan e
 
 Több előzetes funkciók kiadása a általánosan elérhető frissítés egybe. Tekintse át az új előzetes verziójú funkciók listáját, tekintse meg [Search REST api-verzió a 2019-05-06-Preview](search-api-preview.md).
 
-## <a name="breaking-changes"></a>Meghibásodást okozó változások
+## <a name="breaking-changes"></a>Kompatibilitástörő változások
 
 Az alábbi funkciókat tartalmazó meglévő kódot megszakítja az api-version = a 2019-05-06.
 

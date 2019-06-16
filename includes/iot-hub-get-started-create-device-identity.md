@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 40a5416f15b0e2d66d6ce4b4787573560ee4af00
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: b2bce9788006a564def9bd8c1375a85dc4184b67
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66156406"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66814901"
 ---
 ## <a name="create-a-device-identity"></a>Eszközidentitás létrehozása
 
-Ebben a szakaszban az Azure CLI eszközidentitás létrehozása ehhez az oktatóanyaghoz használja. Az Azure CLI telepítve van a [Azure Cloud Shell](~/articles/cloud-shell/overview.md), vagy beállíthatja a [telepítheti helyileg](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Az eszközazonosítókban különbözőnek számítanak a kis- és nagybetűk.
+Ebben a szakaszban az Azure CLI eszközidentitás létrehozása ehhez az oktatóanyaghoz használja. Az Azure CLI telepítve van a [Azure Cloud Shell](~/articles/cloud-shell/overview.md), vagy beállíthatja a [az Azure parancssori felület helyi telepítése](/cli/azure/install-azure-cli). Az eszközazonosítókban különbözőnek számítanak a kis- és nagybetűk.
 
 1. Futtassa a következő parancsot a parancssori környezetben, ahol használ az Azure CLI-vel az IoT-bővítmény telepítéséhez:
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/02/2019
 ms.author: v-mohabe
 ms.openlocfilehash: 4a8a241df38c258dc1747f04c6079d29ee25b3ae
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65968863"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Adaptív alkalmazásvezérlők az Azure Security Centerben
@@ -47,7 +47,7 @@ Az adaptív alkalmazásvezérlők segítségével meghatározhatja egy adott alk
 
 Megjelenik az **Adaptív alkalmazásvezérlők** oldal.
 
-![vezérlők](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
+![controls](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
 
 A **Virtuális gépek csoportjai** szakaszban három lap található:
 

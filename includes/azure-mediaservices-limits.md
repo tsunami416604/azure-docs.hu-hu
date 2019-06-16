@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: de3fd8dc0d45ea10e64af8e2258682a9e98639dc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66116339"
 ---
 >[!NOTE]
@@ -37,7 +37,7 @@ ms.locfileid: "66116339"
 
 <sup>2</sup>ezt az értéket tartalmazza a sorba állított, befejezett, aktív és a visszavont feladatokat. A törölt feladatokat nem tartalmazza. Törölheti a régi feladatokat **IJob.Delete** vagy a **törlése** HTTP-kérés.
 
-2017. április 1. a fiókban 90 napnál régebbi feladat rekordot automatikusan törlődik, és a kapcsolódó bejegyzések. Az automatikus törlés akkor fordul elő, akkor is, ha a rekordok száma nem éri a maximális kvótát. A feladatok és tevékenységek információkat archiválni, használja a kódot ismertetett [a Media Services .NET SDK-eszközök kezelése](../articles/media-services/previous/media-services-dotnet-manage-entities.md).
+2017\. április 1. a fiókban 90 napnál régebbi feladat rekordot automatikusan törlődik, és a kapcsolódó bejegyzések. Az automatikus törlés akkor fordul elő, akkor is, ha a rekordok száma nem éri a maximális kvótát. A feladatok és tevékenységek információkat archiválni, használja a kódot ismertetett [a Media Services .NET SDK-eszközök kezelése](../articles/media-services/previous/media-services-dotnet-manage-entities.md).
 
 <sup>3</sup>egy kérést lista feladat entitások, legfeljebb 1000 feladatok kérelmenként adja vissza. Az összes elküldött feladatot nyomon, használja a top vagy lekérdezések folytassa leírtak szerint [OData rendszerlekérdezési beállításait](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7)).
 

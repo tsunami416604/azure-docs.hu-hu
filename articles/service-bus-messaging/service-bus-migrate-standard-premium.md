@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
 ms.openlocfilehash: 65c207b4d03e7d156c8c871a3642601fd0489ead
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65991423"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>A prémium szint meglévő standard szintű Azure Service Bus-névterek áttelepítése
@@ -35,7 +35,7 @@ Egyes megjegyezni pontok:
 - Áttelepítés által támogatott **1000 entitás / üzenetkezelési egység** a prémium szint. Azonosíthatja a hány üzenetkezelési egység van szüksége, kezdje a jelenlegi standard névtérben rendelkező entitások száma. 
 - Nem lehet közvetlenül áttelepít **alapszintű csomag** való **premier szintű**, azonban az alapszintű, standard első és a standard, Premium, a következő lépésben a migrálással közvetve úgy van.
 
-## <a name="migration-steps"></a>Migrálási lépések
+## <a name="migration-steps"></a>A migrálás lépései
 Az áttelepítési folyamat egyes feltételek tartoznak. Ismerje meg az alábbi lépéseket a hibázás lehetőségét csökkentése érdekében. Ezeket a lépéseket a migrálási folyamatot körvonalazzák, és a következő szakaszok a témakör részletesen láthatók.
 
 1. Hozzon létre egy új névteret.

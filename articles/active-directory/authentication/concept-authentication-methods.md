@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f0bcaf356108984baf473cdef8c18c5561343cd9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66119368"
 ---
 # <a name="what-are-authentication-methods"></a>Mik a hitelesítési módszerek?
@@ -30,12 +30,12 @@ A Microsoft nyomatékosan javasolja a rendszergazdák engedélyezés felhasznál
 | --- | --- |
 | Jelszó | Többtényezős hitelesítés és az SSPR |
 | Biztonsági kérdések | SSPR Only |
-| E-mail cím | SSPR Only |
-| Microsoft Authenticator alkalmazás | Többtényezős hitelesítés és az SSPR nyilvános előzetes verzió |
+| E-mail-cím | SSPR Only |
+| A Microsoft Authenticator alkalmazás | Többtényezős hitelesítés és az SSPR nyilvános előzetes verzió |
 | OATH-token hardver | A többtényezős hitelesítés és az SSPR nyilvános előzetes verzió |
 | SMS | Többtényezős hitelesítés és az SSPR |
 | Hanghívás | Többtényezős hitelesítés és az SSPR |
-| Alkalmazásjelszavak | Bizonyos esetekben csak a többtényezős hitelesítés |
+| Alkalmazásjelszók | Bizonyos esetekben csak a többtényezős hitelesítés |
 
 ![Használja a bejelentkezési képernyőn hitelesítési módszerek](media/concept-authentication-methods/overview-login.png)
 
@@ -61,40 +61,40 @@ Biztonsági kérdések használatakor javasoljuk egy másik módszerrel együtt 
 ### <a name="predefined-questions"></a>Előre definiált kérdések
 
 * Melyik városban ismerkedett meg az első házastársával/párjával?
-* Melyik településen találkoztak a szülei?
-* Melyik városban lakik a legközelebbi rokona?
-* Az édesapja melyik városban született?
-* Melyik városban volt az első munkahelye?
+* Melyik városban volt találkoztak a szülei?
+* Melyik városban nem a legközelebbi rokona?
+* Melyik városban született az édesapja?
+* Melyik városban volt az első munkaköre?
 * Melyik városban született az édesanyja?
-* Hol töltötte a 2000. év újévét?
-* Mi a vezetékneve és az utóneve a kedvenc középiskolai tanárának?
-* Milyen felsőoktatási intézménybe jelentkezett, de nem vették fel?
-* Hogy hívták a helyet, ahol az első lakodalmát tartották?
+* Melyik városban volt az év újévét 2000?
+* Mi az a középiskolában a kedvenc tanárának vezetékneve?
+* Milyen felsőoktatási intézménybe jelentkezett a alkalmazni, de nem vették fel?
+* Mi a neve, amelyben az első lakodalmát tartották tárolt hely?
 * Mi az apja második utóneve?
 * Mi a kedvenc étele?
-* Anyai nagyanyja vezeték- és keresztneve?
+* Anyai nagyanyja vezeték Mi a vezetékneve és neve?
 * Mi az édesanyja második utóneve?
 * Mi a legidősebb testvérének születési éve és hónapja? (Példa: 1985. November)
 * Mi a második utóneve a legidősebb testvérének?
-* Mi a vezetékneve és az utóneve az apai nagyapjának?
+* Mi az az apai nagyapa és Vezetéknév?
 * Mi a második utóneve a legfiatalabb testvérének?
-* Melyik iskolában végezte el a hatodik osztályt?
-* Mi volt a vezetékneve és az utóneve a legjobb gyerekkori barátjának?
-* Mi volt a vezetékneve és az utóneve az első szerelmének?
+* Melyik iskolában végezte el a hatodik?
+* Mi volt az első és az utóneve a legjobb gyerekkori barátjának?
+* Mi volt az első és az utóneve az első szerelmének?
 * Mi volt a kedvenc általános iskolai tanárának vezetékneve?
-* Mi volt az első autója vagy motorkerékpárja márkája és típusa?
+* Mi volt a és az első autója vagy motorkerékpár modelljének?
 * Hogy hívták az első iskoláját?
-* Mi a neve annak a kórháznak, ahol született?
-* Milyen utcában lakott gyermekkorában?
-* Hogy hívják a gyermekkori példaképét?
-* Kedvenc plüssállatának neve?
+* Mi volt a neve annak a kórháznak, ahol született?
+* Hogy hívták az utca, utcában lakott gyermekkorában?
+* Mi volt a neve, a gyermekkori példaképét?
+* Mi volt a kedvenc plüssállatának neve?
 * Mi volt az első háziállatának neve?
 * Mi volt a beceneve gyerekkorában?
 * Mi volt a kedvenc sportja a középiskolában?
-* Mi volt az első munkaköre?
+* Mi volt az első feladat?
 * Mi volt a gyerekkori telefonszámának utolsó négy számjegye?
-* Gyerekkorában mi szeretett volna lenni, ha majd felnő?
-* Ki a leghíresebb ember, akivel életében találkozott?
+* Ha Ön volt fiatal, mi volt? Ha felnő
+* Aki nem a leghíresebb ember életében találkozott?
 
 Az előre definiált biztonsági kérdések lefordított és a felhasználó a böngésző nyelve alapján Office 365 nyelveken a teljes körű honosítva.
 
@@ -113,13 +113,13 @@ Egyéni biztonsági kérdések maximális hossza 200 karakternél hosszabb.
 * Bármely karakterkészlet segítségével határozza meg a kérdéseket és válaszokat, beleértve a Unicode-karaktereket.
 * A megadott kérdések száma nagyobb vagy egyenlő, amelyek korábban regisztrálásához szükséges kérdések száma kell lennie.
 
-## <a name="email-address"></a>E-mail cím
+## <a name="email-address"></a>E-mail-cím
 
 E-mail-cím áll rendelkezésre **csak az Azure AD önkiszolgáló jelszó-visszaállítási**.
 
 A Microsoft azt javasolja, hogy egy e-mail-fiókot, amely nincs szüksége a felhasználó Azure AD jelszó használatát.
 
-## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator alkalmazás
+## <a name="microsoft-authenticator-app"></a>A Microsoft Authenticator alkalmazás
 
 A Microsoft Authenticator alkalmazás egy további, az Azure ad-ben munkahelyi vagy iskolai Microsoft-fiókja biztonsági szintet biztosít.
 

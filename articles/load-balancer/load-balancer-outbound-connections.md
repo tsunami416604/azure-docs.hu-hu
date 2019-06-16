@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: kumud
 ms.openlocfilehash: f9742d14fc14230f2424d005aa6aa8b1db3cece4
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65967733"
 ---
 # <a name="outbound-connections-in-azure"></a>Az Azure kimenő kapcsolatainak
@@ -40,7 +40,7 @@ Egyszerre több [kimenő forgatókönyveket](#scenarios). Igény szerint kombin�
 
 Az Azure Load Balancer és kapcsolódó erőforrások explicit módon definiálva vannak használatakor [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).  Az Azure jelenleg a kimenő kapcsolat az Azure Resource Manager-erőforrások eléréséhez három különböző módszert biztosít. 
 
-| Termékváltozatok | Forgatókönyv | Módszer | IP-protokollok | Leírás |
+| SKU-k | Forgatókönyv | Módszer | IP-protokollok | Leírás |
 | --- | --- | --- | --- | --- |
 | Szabványos, alapszintű | [1. Virtuális gép (vagy anélkül terheléselosztó) példány szintű nyilvános IP-címmel](#ilpip) | Port folyamatnak álcázott nem használja az SNAT, | TCP, UDP, ICMP, ESP | Az Azure használ a nyilvános IP-cím rendelt IP-konfigurációja, a példány hálózati adapteren. A példány érhető el minden rövid élettartamú port rendelkezik. A Standard Load Balancer használatakor használjon [kimenő szabályok](load-balancer-outbound-rules-overview.md) explicit módon határozhatja meg a kimenő kapcsolatok |
 | Szabványos, alapszintű | [2. Nyilvános Load Balancer társított virtuális gép (nem példány szintű nyilvános IP-cím-példányon)](#lb) | Port (PAT) folyamatnak álcázott az SNAT használatával a terheléselosztó előtérrendszer | TCP, UDP |Az Azure több magánhálózati IP-címek osztanak meg a nyilvános terheléselosztó előtérrendszer nyilvános IP-címét. Az Azure az előtérrendszer a PAT-rövid élettartamú port használja. |
@@ -77,7 +77,7 @@ Kimenő kapcsolatok a Load Balancer alapszintű állapotának monitorozásához 
 Ebben a forgatókönyvben a virtuális gép nem része egy nyilvános terheléselosztó-készlet (és nem egy Standard Load Balancer belső készlet része), és nem rendelkezik egy ILPIP-cím rendelve. Ha a virtuális Gépet hoz létre egy kimenő folyam, Azure lefordítja a kimenő folyamat egy nyilvános IP-forráscím privát forrás IP-címét. A kimenő flow használt nyilvános IP-cím nem konfigurálható, és nem számítanak bele az előfizetéshez tartozó nyilvános IP-erőforráskorlátot. A nyilvános IP-cím nem tartozik, és nem lehet foglalt. Újbóli telepítése a virtuális gép vagy a rendelkezésre állási csoportban vagy virtuálisgép-méretezési csoportot, ha a nyilvános IP-cím elérhető lesz, és a egy új nyilvános IP-cím kért. Ebben a forgatókönyvben ne használja az engedélyezési IP-címeket. Ehelyett használjon egy másik két forgatókönyv ahol, explicit módon deklarálja a kimenő forgatókönyv és a kimenő kapcsolat használandó nyilvános IP-cím.
 
 >[!IMPORTANT] 
->Ebben a forgatókönyvben azt is vonatkozik, amikor __csak__ egy belső alapszintű terheléselosztó van csatolva. 3. forgatókönyv van __nem érhető el__ amikor egy belső Standard Load Balancer egy virtuális Géphez van csatlakoztatva.  Explicit módon létre kell hoznia [1. forgatókönyv](#ilpip) vagy [2. forgatókönyv](#lb) Standard belső terheléselosztó használata mellett.
+>Ebben a forgatókönyvben azt is vonatkozik, amikor __csak__ egy belső alapszintű terheléselosztó van csatolva. 3\. forgatókönyv van __nem érhető el__ amikor egy belső Standard Load Balancer egy virtuális Géphez van csatlakoztatva.  Explicit módon létre kell hoznia [1. forgatókönyv](#ilpip) vagy [2. forgatókönyv](#lb) Standard belső terheléselosztó használata mellett.
 
 Azure-port folyamatnak álcázott használja az SNAT ([PAT](#pat)) Ez a függvény végrehajtásához. Ez a forgatókönyv hasonlít a [2. forgatókönyv](#lb), azzal a különbséggel ott nem használt IP-cím nem szabályozza. Ez a tartalék forgatókönyv esetében, ha 1. és 2 forgatókönyvek nem létezik. Ebben a forgatókönyvben nem ajánlott, ha azt szeretné, hogy a kimenő cím felett. Ha a kimenő kapcsolatokat az alkalmazás kritikus része, egy másik forgatókönyv kell választania.
 

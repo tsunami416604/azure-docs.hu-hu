@@ -16,10 +16,10 @@ ms.date: 11/10/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c61313190615c2f30a7d37202bc0f9bcf14d800
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66112880"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Felügyelt identitások az Azure-erőforrások konfigurálása-beli virtuális gépen az Azure CLI használatával
@@ -35,7 +35,7 @@ Ebben a cikkben az Azure CLI használatával megismerheti, hogyan hajthat végre
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha még nem ismeri a felügyelt identitások Azure-erőforrások számára, tekintse meg a [áttekintés szakaszban](overview.md). **Ne feledje el áttekinteni a [különbség a rendszer által hozzárendelt, és a felhasználó által hozzárendelt felügyelt identitás](overview.md#how-does-it-work)**.
+- Ha még nem ismeri a felügyelt identitások Azure-erőforrások számára, tekintse meg a [áttekintés szakaszban](overview.md). **Ne feledje el áttekinteni a [különbség a rendszer által hozzárendelt, és a felhasználó által hozzárendelt felügyelt identitás](overview.md#how-does-it-work)** .
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
 - Három lehetősége van a CLI-példaszkriptek futtatásához:
     - Használat [Azure Cloud Shell](../../cloud-shell/overview.md) az Azure Portalon (lásd a következő szakaszban).
@@ -110,7 +110,7 @@ az vm update -n myVM -g myResourceGroup --set identity.type="none"
 > [!NOTE]
 > Ha a felügyelt identitás (elavult) a Virtuálisgép-bővítmény Azure-erőforrások kiépítése, el kell távolítania a [vm-bővítmény törlése az](https://docs.microsoft.com/cli/azure/vm/). További információkért lásd: [áttelepítése a Virtuálisgép-bővítmény az Azure IMDS hitelesítéshez](howto-migrate-vm-extension.md).
 
-## <a name="user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás
+## <a name="user-assigned-managed-identity"></a>felhasználó által hozzárendelt felügyelt identitás
 
 Ebben a szakaszban megtudhatja hogyan adhat hozzá, és távolítsa el a felhasználó által hozzárendelt felügyelt identitás az Azure CLI használatával Azure virtuális.
 
@@ -118,7 +118,7 @@ Ebben a szakaszban megtudhatja hogyan adhat hozzá, és távolítsa el a felhasz
 
 Egy felhasználó által hozzárendelt identitással hozzárendelése egy virtuális Gépet annak létrehozásakor, a fióknak rendelkeznie kell a [virtuális gépek Közreműködője](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) és [felügyelt identitások üzemeltetője](/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkör-hozzárendeléseket. Nincsenek további Azure AD-címtár szerepkör-hozzárendelések szükségesek.
 
-1. Ezt a lépést kihagyhatja, ha már rendelkezik egy használni kívánt erőforráscsoportot. Hozzon létre egy [erőforráscsoport](~/articles/azure-resource-manager/resource-group-overview.md#terminology) tartalmazási és telepítéséhez, a felhasználó által hozzárendelt felügyelt identitást, használatával [az csoport létrehozása](/cli/azure/group/#az-group-create). Ne felejtse el a `<RESOURCE GROUP>` és `<LOCATION>` paraméterek értékeit a saját értékeire cserélni. : 
+1. Ezt a lépést kihagyhatja, ha már rendelkezik egy használni kívánt erőforráscsoportot. Hozzon létre egy [erőforráscsoport](~/articles/azure-resource-manager/resource-group-overview.md#terminology) tartalmazási és telepítéséhez, a felhasználó által hozzárendelt felügyelt identitást, használatával [az csoport létrehozása](/cli/azure/group/#az-group-create). Ne felejtse el a `<RESOURCE GROUP>` és `<LOCATION>` paraméterek értékeit a saját értékeire cserélni. :
 
    ```azurecli-interactive 
    az group create --name <RESOURCE GROUP> --location <LOCATION>

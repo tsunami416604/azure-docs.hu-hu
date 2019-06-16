@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
 ms.openlocfilehash: 951bd74c67c77c944a17e41646c4fe49ef46b33f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64725666"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>A vállalati biztonsági csomaggal HDInsight-fürtök kezelése
@@ -97,7 +97,7 @@ Biztonság és a felhasználó elkülönítési fontosak egy HDInsight-fürt a v
 |Apache Spark|Interaktív feladatok és lekérdezésekkel, a PySpark interaktív|<ul><li>[Beeline](#beeline)</li><li>[A Zeppelin a Livyvel](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Hive-nézet](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power bi-ban](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |Apache Spark|Batch-forgatókönyv – a Spark-submit, PySpark|<ul><li>[Livy](../spark/apache-spark-livy-rest-interface.md)</li></ul>|
 |Az interaktív lekérdezések (LLAP)|Interaktív|<ul><li>[Beeline](#beeline)</li><li>[Hive-nézet](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power bi-ban](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
-|Bármelyik|Egyéni alkalmazás telepítése|<ul><li>[A Parancsfájlműveletek](../hdinsight-hadoop-customize-cluster-linux.md)</li></ul>|
+|Bármely|Egyéni alkalmazás telepítése|<ul><li>[A Parancsfájlműveletek](../hdinsight-hadoop-customize-cluster-linux.md)</li></ul>|
 
    > [!NOTE]  
    > A vállalati biztonsági csomag telepítve van és támogatott Jupyter nem áll.

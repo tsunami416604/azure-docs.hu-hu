@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
 ms.openlocfilehash: 80bb7af0f7ed20336ab08d4f3ca9639057b9c67f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65149756"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Ismert problémák és hibaelhárítás az Azure Machine Learning szolgáltatás
@@ -61,7 +61,7 @@ Kép készítése hiba a webszolgáltatás üzembe helyezésekor. Megkerülő me
 
 Ha az erőforrásigények `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`, a Termékváltozat módosítása a virtuális gépek, hogy a rendszer több memória áll rendelkezésre a központi telepítésben használja.
 
-## <a name="fpgas"></a>FPGA-k
+## <a name="fpgas"></a>FPGA-kban
 
 Nem lesz képes FPGA-kban a modellek üzembe helyezése, amíg nem kérte, és az FPGA kvóta jóvá lett hagyva. Hozzáférés kérése, töltse ki az űrlap kvóta: https://aka.ms/aml-real-time-ai
 
