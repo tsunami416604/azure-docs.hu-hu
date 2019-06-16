@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: lahugh
 ms.custom: include file
-ms.openlocfilehash: 7196a2ea794c1d17a2c55c05accb447d83929972
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 5c35cbfbd2e9d0a1655d05c1116d293fb78c9eb7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145740"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133307"
 ---
 Ez a szakasz a virtuálisgép-méretek régebbi generációs szoftvereknél jobban információkat biztosít. Ezeket a méreteket továbbra is támogatottak, de nem kap további kapacitást. Nincsenek újabb vagy alternatív méret általánosan elérhető. Tekintse meg [méretek a Windows virtuális gépek az Azure-ban](../articles/virtual-machines/windows/sizes.md) vagy [az Azure-ban Linux rendszerű virtuális gépek méretei](../articles/virtual-machines/linux/sizes.md) , válassza ki a virtuális gép méretét, amely a legjobb igényeinek.  
 
@@ -31,10 +31,10 @@ Prémium szintű Storage gyorsítótárazást:  Nem támogatott
 
 Az alapszintű rétegméretek elsődlegesen a fejlesztési számítási feladatokhoz és olyan egyéb alkalmazásokhoz valók, amelyekhez nincs szükség terheléselosztásra, automatikus skálázásra vagy memóriaigényes virtuális gépekre.
 
-|Méret – Méret\név | vCPU |Memória|Hálózati adapterek (max)|Ideiglenes lemez max. mérete |Legfeljebb az adatlemezeket (egyenként 1023 GB)|Legfeljebb IOPS (300 lemezenként)|
+|Méret – Méret\név | vCPU |Memory (Memória)|Hálózati adapterek (max)|Ideiglenes lemez max. mérete |Legfeljebb az adatlemezeket (egyenként 1023 GB)|Legfeljebb IOPS (300 lemezenként)|
 |---|---|---|---|---|---|---|
-|A0\Basic_A0|1.|768 MB|2| 20 GB|1.|1x300|
-|A1\Basic_A1|1.|1,75 GB|2| 40 GB |2|2x300|
+|A0\Basic_A0|1|768 MB|2| 20 GB|1|1x300|
+|A1\Basic_A1|1|1,75 GB|2| 40 GB |2|2x300|
 |A2\Basic_A2|2|3,5 GB|2| 60 GB|4|4x300|
 |A3\Basic_A3|4|7 GB|2| 120 GB |8|8x300|
 |A4\Basic_A4|8|14 GB|2| 240 GB |16|16x300|
@@ -51,10 +51,10 @@ Prémium szintű Storage:  Nem támogatott
 
 Prémium szintű Storage gyorsítótárazást:  Nem támogatott
 
-| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (HDD): GiB | Adatlemezek max. száma | Adatlemezek max. teljesítménye: IOPS | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps)  |
+| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (HDD): GiB | Adatlemezek max. száma | Adatlemezek max. teljesítménye: IO | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps)  |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_A0&nbsp;<sup>1</sup> |1. |0.768 |20 |1. |1x500 |2 / 100 |
-| Standard_A1 |1. |1.75 |70 |2 |2x500 |2 / 500  |
+| Standard_A0&nbsp;<sup>1</sup> |1 |0.768 |20 |1 |1x500 |2 / 100 |
+| Standard_A1 |1 |1.75 |70 |2 |2x500 |2 / 500  |
 | Standard_A2 |2 |3.5 |135 |4 |4x500 |2 / 500 |
 | Standard_A3 |4 |7 |285 |8 |8x500 |2 / 1000 |
 | Standard_A4 |8 |14 |605 |16 |16x500 |4 / 2000 |
@@ -78,7 +78,7 @@ Prémium szintű Storage gyorsítótárazást:  Nem támogatott
 
 Az A8–A11- és a H-sorozat méretei más néven *nagy számítási igényű példányokként* ismertek. Az ezeket a méreteket futtató hardver a nagy számítási és hálózatigényű alkalmazások futtatására lett kialakítva és optimalizálva, ide értve a nagy teljesítményű feldolgozási (HPC) fürtalkalmazásokat, a modellezést és a szimulációkat. Az A8–A11-sorozat Intel Xeon E5-2670 @ 2,6 GHz-es, a H-sorozat pedig Intel Xeon E5-2667 v3 @ 3,2 GHz-es processzorokat használ.  
 
-| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (HDD): GiB | Adatlemezek max. száma | Adatlemezek max. teljesítménye: IOPS | Hálózati adapterek maximális száma|
+| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (HDD): GiB | Adatlemezek max. száma | Adatlemezek max. teljesítménye: IO | Hálózati adapterek maximális száma|
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_A8&nbsp;<sup>1</sup> |8 |56 |382 |32 |32x500 |2 |
 | Standard_A9&nbsp;<sup>1</sup> |16 |112 |382 |64 |64x500 |4 |
@@ -99,9 +99,9 @@ Prémium szintű Storage:  Nem támogatott
 
 Prémium szintű Storage gyorsítótárazást:  Nem támogatott
 
-| Méret         | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / olvasási MBps / írási MBps | Adatlemezek max. száma / átviteli sebesség: IOPS | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
+| Méret         | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / olvasási MBps / írási MBps | Adatlemezek max. száma / átviteli sebesség: IO | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_D1  | 1.         | 3.5         | 50             | 3000 / 46 / 23                                           | 4 / 4x500                         | 2 / 500                 |
+| Standard_D1  | 1         | 3.5         | 50             | 3000 / 46 / 23                                           | 4 / 4x500                         | 2 / 500                 |
 | Standard_D2  | 2         | 7           | 100            | 6000 / 93 / 46                                           | 8 / 8x500                         | 2 / 1000                     |
 | Standard_D3  | 4         | 14          | 200            | 12000 / 187 / 93                                         | 16 / 16x500                         | 4 / 2000                     |
 | Standard_D4  | 8         | 28          | 400            | 24000 / 375 / 187                                        | 32 / 32x500                       | 8 / 4000                     |
@@ -120,7 +120,7 @@ Prémium szintű Storage:  Nem támogatott
 
 Prémium szintű Storage gyorsítótárazást:  Nem támogatott
 
-| Méret         | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / olvasási MBps / írási MBps | Adatlemezek max. száma / átviteli sebesség: IOPS | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
+| Méret         | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / olvasási MBps / írási MBps | Adatlemezek max. száma / átviteli sebesség: IO | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_D11 | 2         | 14          | 100            | 6000 / 93 / 46                                           | 8 / 8x500                         | 2 / 1000                     |
 | Standard_D12 | 4         | 28          | 200            | 12000 / 187 / 93                                         | 16 / 16x500                         | 4 / 2000                     |
@@ -143,7 +143,7 @@ Prémium szintű Storage gyorsítótárazást:  Támogatott
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Gyorsítótárazott és ideiglenes tárolás max. átviteli sebessége IOPS / MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS1 |1. |3.5 |7 |4 |4,000 / 32 (43) |3,200 / 32 |2 / 500 |
+| Standard_DS1 |1 |3.5 |7 |4 |4,000 / 32 (43) |3,200 / 32 |2 / 500 |
 | Standard_DS2 |2 |7 |14 |8 |8,000 / 64 (86) |6,400 / 64 |2 / 1000 |
 | Standard_DS3 |4 |14 |28 |16 |16,000 / 128 (172) |12,800 / 128 |4 / 2000 |
 | Standard_DS4 |8 |28 |56 |32 |32,000 / 256 (344) |25,600 / 256 |8 / 4000 |
@@ -172,4 +172,47 @@ Prémium szintű Storage gyorsítótárazást:  Támogatott
 <sup>1</sup> a maximális lemezteljesítményét (IOPS vagy MBps) a DS sorozat virtuális gép is lehet a száma, mérete és szétosztottsága befolyásolhatja a csatolt lemezek mennyisége.  További információkért lásd: [magas teljesítmény-központú tervezés](../articles/virtual-machines/windows/premium-storage-performance.md).   
 <sup>2</sup> Virtuálisgép-család is futtathatja a következő Processzor egyikét: 2.2-es GHz-es Intel E5-2660 Xeon®, v2 2,4 GHz-es Intel Xeon® E5-2673 v3 (Haswell) vagy XEON® 2,3 GHz-es Intel E5-2673 v4 (Broadwell)  
 
+<br>
+
+### <a name="gs-series"></a>GS sorozat 
+
+ACU: 180 - 240 <sup>1</sup>
+
+Prémium szintű Storage:  Támogatott
+
+Prémium szintű Storage gyorsítótárazást:  Támogatott
+
+| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Gyorsítótárazott és ideiglenes tárolás max. átviteli sebessége IOPS / MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
+|---|---|---|---|---|---|---|---|
+| Standard_GS1 |2 |28 |56 |8 |10,000 / 100 (264) |5,000 / 125 |2 / 2000 |
+| Standard_GS2 |4 |56 |112 |16 |20,000 / 200 (528) |10,000 / 250 |2 / 4000 |
+| Standard_GS3 |8 |112 |224 |32 |40,000 / 400 (1,056) |20,000 / 500 |4 / 8000 |
+| Standard_GS4&nbsp;<sup>3</sup> |16 |224 |448 |64 |80,000 / 800 (2,112) |40,000 / 1,000 |8 / 16000 |
+| Standard_GS5&nbsp;<sup>2,&nbsp;3</sup> |32 |448 |896 |64 |160,000 / 1,600 (4,224) |80,000 / 2,000 |8 / 20000 |
+
+<sup>1</sup> a maximális lemezteljesítményét (IOPS vagy MBps) és a GS sorozatú virtuális gépek előfordulhat, hogy lehet a száma, mérete és szétosztottsága befolyásolhatja a csatolt lemezek mennyisége. További információkért lásd: [magas teljesítmény-központú tervezés](../articles/virtual-machines/windows/premium-storage-performance.md).
+
+<sup>2</sup> példány elkülönítve egyetlen ügyfél számára dedikált hardveren üzemel.
+
+<sup>3</sup> core elérhető méretek korlátozott.
+
+<br>
+
+### <a name="g-series"></a>G-sorozat
+
+ACU: 180 - 240
+
+Prémium szintű Storage:  Nem támogatott
+
+Prémium szintű Storage gyorsítótárazást:  Nem támogatott
+
+| Méret         | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / olvasási MBps / írási MBps | Adatlemezek max. száma / átviteli sebesség: IO | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
+|--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
+| Standard_G1  | 2         | 28          | 384            | 6000 / 93 / 46                                           | 8 / 8x500                       | 2 / 2000                     |
+| Standard_G2  | 4         | 56          | 768            | 12000 / 187 / 93                                         | 16 / 16 x 500                       | 2 / 4000                     |
+| Standard_G3  | 8         | 112         | 1,536          | 24000 / 375 / 187                                        | 32 / 32 x 500                     | 4 / 8000                |
+| Standard_G4  | 16        | 224         | 3,072          | 48000 / 750 / 375                                        | 64 / 64 x 500                     | 8 / 16000          |
+| Standard G5&nbsp;<sup>1</sup> | 32        | 448         | 6,144          | 96000 / 1500 / 750                                       | 64 / 64 x 500                     | 8 / 20000           |
+
+<sup>1</sup> példány elkülönítve egyetlen ügyfél számára dedikált hardveren üzemel.
 <br>

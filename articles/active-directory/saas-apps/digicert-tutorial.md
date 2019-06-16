@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce35c2ed61e2c55383de8b7ee491526796438418
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5aded5e6435be1fd4b2794a3a2ce0918bcbc1164
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65862997"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67104228"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-digicert"></a>Oktatóanyag: Az Azure Active Directory-integráció, a DigiCert
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a DigiCert konfigurálásához szüksége DigiCert hoz
 
 **A DigiCert hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -213,7 +213,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy a DigiCert Britta Simon nevű felhasználó hoz létre. Együttműködve [DigiCert támogatási csapatának](mailto:support@digicert.com) a felhasználók hozzáadása a DigiCert platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

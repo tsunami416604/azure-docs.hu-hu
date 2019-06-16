@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b648b8458c7f91cae6edb079fbd2ac78553dd969
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 01a70bfbb169090fbdf4b5f8e00af6895f69c964
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65903230"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091921"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-netweaver"></a>Oktatóanyag: Az Azure Active Directory-integráció az SAP netweaver megoldással
 
@@ -54,7 +54,7 @@ Konfigurálja az integráció az SAP NetWeaver az Azure AD-be, szüksége SAP Ne
 
 **SAP NetWeaver hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -196,7 +196,7 @@ Konfigurálja az Azure AD egyszeri bejelentkezés az SAP netweaver megoldással,
 
     ![image](./media/sapnetweaver-tutorial/nameidattribute1.png)
 
-    b. Az a **átalakítási** listáról válassza ki **ExtractMailPrefix()**.
+    b. Az a **átalakítási** listáról válassza ki **ExtractMailPrefix()** .
 
     c. Az a **paraméter 1** listáról válassza ki **user.userprinicipalname**.
 
@@ -353,7 +353,7 @@ Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezést az 
 
 Ebben a szakaszban egy Britta Simon nevű SAP NetWeaver a felhasználó hoz létre. A házon belül SAP szakértői csapat működik, vagy a felhasználók hozzáadása az SAP NetWeaver platformon, a szervezet SAP partnerrel együttműködve.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 1. Miután az identitásszolgáltató az Azure AD lett aktiválva, próbálja alatt ellenőrizze az egyszeri bejelentkezési URL-cím elérése (hiba fog kérés nem felhasználónév és jelszó)
 

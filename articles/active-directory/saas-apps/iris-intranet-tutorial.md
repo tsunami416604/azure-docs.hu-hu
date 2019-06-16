@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 93fd14d1148ce29731087cba5cd20f5ff1bcd4a2
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: b57222d2857110817ff62d3a455690a662073cc6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65897983"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099701"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iris-intranet"></a>Oktatóanyag: Az Azure Active Directory integrációja az Iris Intranet
 
@@ -55,7 +55,7 @@ Iris intranetes integrálása az Azure AD beállítása, hozzá kell Iris intran
 
 **Iris intranetes hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -176,7 +176,7 @@ Ebben a szakaszban engedélyezze Britta Simon használandó Azure egyszeri bejel
 
 Ebben a szakaszban egy Britta Simon nevű felhasználó az Iris intranetes jön létre. IRIS intranetes támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó már nem létezik az Iris intranetes, egy új jön létre a hitelesítés után.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

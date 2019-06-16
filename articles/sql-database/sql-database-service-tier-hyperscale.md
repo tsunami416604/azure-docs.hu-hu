@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: 0fe098bd644762fb291eb623a7b41cd987c7fa26
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: a953af3d9cd5a6748b79465a59b4a4284e58714c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779189"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070131"
 ---
 # <a name="hyperscale-service-tier-for-up-to-100-tb"></a>Akár 100 TB kapacitású szolgáltatási szintjei
 
@@ -111,7 +111,7 @@ Rövid idő alatt működésbe felfelé és lefelé csak olvasható számítási
 
 Nagy kapacitású adatbázis hozható létre a [az Azure portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) vagy [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create). Nagy kapacitású adatbázisok használatával érhetők el csak a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).
 
-A következő T-SQL-parancsot egy nagy kapacitású adatbázist hoz létre. Meg kell adnia a edition és a szolgáltatás célja a `CREATE DATABASE` utasítást.
+A következő T-SQL-parancsot egy nagy kapacitású adatbázist hoz létre. Meg kell adnia a edition és a szolgáltatás célja a `CREATE DATABASE` utasítást. Tekintse meg a [erőforráskorlátok](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier) érvényes szolgáltatási célkitűzések listáját.
 
 ```sql
 -- Create a HyperScale Database
@@ -146,8 +146,8 @@ Ha vissza kell állítania egy Azure SQL Database rendkívüli DB, egy régióba
 1. Ha Ön még nem rendelkezik egy megfelelő kiszolgálóra van, hozzon létre egy SQL Database-kiszolgáló a célrégióban.  Ez a kiszolgáló ugyanahhoz az előfizetéshez, amely az eredeti (forrás) kiszolgáló helyvezérlőhöz kell tartoznia.
 2. Kövesse az utasításokat a [geo-visszaállítás](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#geo-restore) a témakör az oldal az Azure SQL Database-adatbázisok automatikus biztonsági másolatokból való visszaállítással.
 
-#### <a name="notes-on-geo-restores-of-a-hyperscale-database"></a>A geo-visszaállítás egy nagy kapacitású adatbázis megjegyzések
-Mivel a forrás és cél külön régióban, az adatbázis nem oszthat meg pillanatkép-tároláshoz a forrás-adatbázis nem geo visszaállítás, amely rendkívül gyorsan befejeződhessen látható módon.  A geo-visszaállítás rendkívül nagy adatbázisok esetén lesz egy mérete az adatok a művelet akkor is, ha a cél a georeplikált tárolás a párosított régióban.  Ez azt jelenti, hogy ezt a geo-visszaállítás időt vesz igénybe a visszaállított adatbázis méretével arányos.  Ha a cél a párosított régióban, a másolási egy adatközpontban, ami jelentősen gyorsabb, mint a távolsági másolatot az interneten keresztül, de ez továbbra is másolja az összes bit.
+> [!NOTE]
+> Mivel a forrás és cél külön régióban, az adatbázis nem oszthat meg pillanatkép-tároláshoz a forrás-adatbázis nem geo visszaállítás, amely rendkívül gyorsan befejeződhessen látható módon.  A geo-visszaállítás rendkívül nagy adatbázisok esetén lesz egy mérete az adatok a művelet akkor is, ha a cél a georeplikált tárolás a párosított régióban.  Ez azt jelenti, hogy ezt a geo-visszaállítás időt vesz igénybe a visszaállított adatbázis méretével arányos.  Ha a cél a párosított régióban, a másolási egy adatközpontban, ami jelentősen gyorsabb, mint a távolsági másolatot az interneten keresztül, de ez továbbra is másolja az összes bit.
 
 ## <a name=regions></a>Az elérhető régiók
 
@@ -173,11 +173,11 @@ Jelenleg az Azure SQL Database rendkívüli szinten érhető el a következő r�
 - Dél-Afrika északi régiója
 - USA déli középső régiója
 - Délkelet-Ázsia
-- Egyesült Királyság déli régiója
-- Egyesült Királyság nyugati régiója
+- Az Egyesült Királyság déli régiója
+- Az Egyesült Királyság nyugati régiója
 - Nyugat-Európa
 - USA nyugati régiója
-- USA 2. nyugati régiója
+- USA nyugati régiója, 2.
 
 Ha azt szeretné, nagy kapacitású adatbázis létrehozásához, amely nem szerepel a támogatott régióban, küldhet egy előkészítési kérelmet az Azure Portalon keresztül. Folyamatban van, bontsa ki a listát a támogatott régiók ezért ellenőrizze, hogy vissza legújabb régió listája.
 
@@ -225,7 +225,7 @@ Ezek azok a nagy kapacitású szolgáltatási réteg GA kezdődően az aktuális
 
 | Probléma | Leírás |
 | :---- | :--------- |
-| A biztonsági másolatok kezelése ablak esetében a logikai kiszolgáló nem jelenik meg a rendkívül nagy adatbázisok az SQL Serverből lesznek szűrve ->  | Nagy kapacitású rendelkezik egy külön metódusba biztonsági mentések kezeléséhez, és mint ilyen a hosszú távú adatmegőrzési és az idő a biztonsági mentés megőrzési beállításait pont csak akkor érvényesíthetők / érvénytelenné válnak. Ennek megfelelően a nagy kapacitású adatbázisok nem jelennek meg a biztonsági mentés kezelése ablak. |
+| Egy logikai kiszolgáló a biztonsági másolatok kezelése ablak nem jelenik meg a rendkívül nagy adatbázisok az SQL Serverből lesznek szűrve  | Nagy kapacitású rendelkezik egy külön metódusba biztonsági mentések kezeléséhez, és mint ilyen a hosszú távú adatmegőrzési és az idő a biztonsági mentés megőrzési beállításait pont csak akkor érvényesíthetők / érvénytelenné válnak. Ennek megfelelően a nagy kapacitású adatbázisok nem jelennek meg a biztonsági mentés kezelése ablak. |
 | Adott időpontnak megfelelő helyreállítás | Adatbázis áttelepítése, a nagy kapacitású szolgáltatási rétegben, miután egy-időponthoz az áttelepítés előtt visszaállítás nem támogatott.|
 | Állítsa vissza a nem – nagy kapacitású DB Hypserscale és fordítva | Nagy kapacitású adatbázis nem állítható vissza egy nagy kapacitású nem adatbázisba, és nem is, nem nagy kapacitású adatbázis visszaállítása egy nagy kapacitású adatbázisba.|
 | Ha egy adatbázisfájl növekedésével az áttelepítést egy aktív számítási feladatok során, és átlép egy fájl határ az 1 TB-os, az áttelepítés sikertelen | Megoldások: <br> – Ha lehetséges, telepítse át az adatbázis nincs frissítés futó számítási feladat esetén.<br> – Próbálkozzon újra az áttelepítést, a sikeres lesz, amíg az 1 TB-os határ nem áthaladnak a migrálás során.|

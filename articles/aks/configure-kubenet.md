@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/03/2019
 ms.author: iainfou
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: cde7d692e8bb37e874c6e55e5584d96e3b13af31
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 94a6ce87cf313fe283631e594a63f210c775c7a1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497193"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808572"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Hálózatkezelés a saját IP-címtartományok Azure Kubernetes Service (AKS) kubenet használata
 
@@ -62,7 +62,7 @@ A következő alapvető számítások a különbség a hálózati modellek össz
 
 ### <a name="virtual-network-peering-and-expressroute-connections"></a>Virtuális hálózatok közötti társviszony és ExpressRoute-kapcsolatok
 
-A helyszíni kapcsolatot, mindkettő *kubenet* és *Azure-CNI* hálózati módszer használható [Azure virtuális hálózatok közötti társviszony] [ vnet-peering]vagy [az ExpressRoute-kapcsolatok][express-route]. Tervezze meg gondosan megakadályozására között átfedés van, és helytelen forgalom-útválasztást, az IP-címtartományok. Például használja a túl sok a helyszíni hálózathoz egy *10.0.0.0/8* -címtartományt, amely az ExpressRoute-kapcsolaton keresztül hirdeti meg. Azt javasoljuk, hogy hozzon létre például az AKS-fürtök a címtartományon kívül az Azure virtual network alhálózatokra *172.26.0.0/16*.
+A helyszíni kapcsolatot, mindkettő *kubenet* és *Azure-CNI* hálózati módszer használható [Azure virtuális hálózatok közötti társviszony] [ vnet-peering]vagy [az ExpressRoute-kapcsolatok][express-route]. Tervezze meg gondosan megakadályozására között átfedés van, és helytelen forgalom-útválasztást, az IP-címtartományok. Például használja a túl sok a helyszíni hálózathoz egy *10.0.0.0/8* -címtartományt, amely az ExpressRoute-kapcsolaton keresztül hirdeti meg. Azt javasoljuk, hogy hozzon létre például az AKS-fürtök a címtartományon kívül az Azure virtual network alhálózatokra *172.16.0.0/16*.
 
 ### <a name="choose-a-network-model-to-use"></a>Válassza ki a használandó hálózati modellt
 
@@ -92,15 +92,15 @@ A használatának első lépései *kubenet* és a saját virtuális hálózat al
 az group create --name myResourceGroup --location eastus
 ```
 
-Ha nem rendelkezik egy meglévő virtuális hálózatot és alhálózatot használni, hozzon létre a hálózati erőforrásokhoz a [az network vnet létrehozása] [ az-network-vnet-create] parancsot. A következő példában a virtuális hálózat neve *myVnet* a cím előtagja *10.0.0.0/8*. Egy alhálózat létre van hozva elnevezett *myAKSSubnet* a címelőtaggal rendelkező *10.240.0.0/16*.
+Ha nem rendelkezik egy meglévő virtuális hálózatot és alhálózatot használni, hozzon létre a hálózati erőforrásokhoz a [az network vnet létrehozása] [ az-network-vnet-create] parancsot. A következő példában a virtuális hálózat neve *myVnet* a cím előtagja *192.168.0.0/16*. Egy alhálózat létre van hozva elnevezett *myAKSSubnet* a címelőtaggal rendelkező *192.168.1.0/24*.
 
 ```azurecli-interactive
 az network vnet create \
     --resource-group myResourceGroup \
     --name myAKSVnet \
-    --address-prefixes 10.0.0.0/8 \
+    --address-prefixes 192.168.0.0/16 \
     --subnet-name myAKSSubnet \
-    --subnet-prefix 10.240.0.0/16
+    --subnet-prefix 192.168.1.0/24
 ```
 
 ## <a name="create-a-service-principal-and-assign-permissions"></a>Egyszerű szolgáltatás létrehozása és az engedélyek hozzárendelése
@@ -150,7 +150,7 @@ A következő IP-címtartományok is vannak meghatározva, a fürt létrehozása
 
 * A *--pod-cidr* kell lennie a nem használt más részében lévő a hálózati környezet nagy címtér. A tartományba beletartozik minden helyszíni hálózati tartományok csatlakoztatása, illetve szeretne csatlakozni, az Azure virtuális hálózatok az Express Route vagy helyek közötti VPN-kapcsolat használatával.
     * Ez a címtartomány elég nagy csomópontok várhatóan fel kell lennie. Ez a címtartomány nem módosítható, ha több címet van szüksége további csomópontokat a fürt üzembe helyezése után.
-    * A pod IP-címtartomány segítségével hozzárendelni egy */24* címtér a fürt egyes csomópontjaihoz. A következő példában a *--pod-cidr* , *192.168.0.0/16* rendeli hozzá az első fürtcsomópont *192.168.0.0/24*, a második csomópont *192.168.1.0/24*, és a harmadik csomópont *192.168.2.0/24*.
+    * A pod IP-címtartomány segítségével hozzárendelni egy */24* címtér a fürt egyes csomópontjaihoz. A következő példában a *--pod-cidr* , *10.244.0.0/16* rendeli hozzá az első fürtcsomópont *10.244.0.0/24*, a második csomópont *10.244.1.0/24*, és a harmadik csomópont *10.244.2.0/24*.
     * A fürt skálázását követve rugalmasan méretezhető, vagy frissítéseket az Azure platform egy pod IP-címtartományt rendelni minden új csomópont továbbra is.
     
 * A *– docker-híd cím* lehetővé teszi, hogy az AKS-csomópontok és a mögöttes felügyeleti platform közötti kommunikációra. Az IP-címet nem lehet a virtuális hálózati IP-címtartomány a fürt, és ne használja a hálózaton található más címtartományok átfedésben.
@@ -163,7 +163,7 @@ az aks create \
     --network-plugin kubenet \
     --service-cidr 10.0.0.0/16 \
     --dns-service-ip 10.0.0.10 \
-    --pod-cidr 192.168.0.0/16 \
+    --pod-cidr 10.244.0.0/16 \
     --docker-bridge-address 172.17.0.1/16 \
     --vnet-subnet-id $SUBNET_ID \
     --service-principal <appId> \

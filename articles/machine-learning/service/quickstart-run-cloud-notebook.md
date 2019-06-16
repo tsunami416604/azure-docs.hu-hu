@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3e360b019a0c275c5ce0f9986fabd5dfc847f130
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: f47735a6e41ae14cb439e10803b82c0dbd3e64d7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "66015279"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67115030"
 ---
 # <a name="quickstart-use-a-cloud-based-notebook-server-to-get-started-with-azure-machine-learning"></a>Gyors útmutató: Ismerkedés az Azure Machine Learning felhőalapú notebook server használatával
 
@@ -84,10 +84,12 @@ Miután a virtuális gép fut, használja a **Notebook virtuális gépek** szaka
 
 1. Válassza ki **01.run-experiment.ipynb** a notebook megnyitásához.
 
+1. Ha egy "Kernel nem található" riasztás jelenik meg, válassza ki a kernel **Python 3.6 - AzureML** (körülbelül ebben az esetben lefelé a listában) és állítsa be a kernelbe.
+
 1. Kattintson az első kódcella, és válassza ki **futtatása**.
 
     > [!NOTE]
-    > Kód cellák előtt zárójelek közé van. Ha a zárójelek üres (__[]__), a kódot még nem futott. A kód futtatásakor megjelenik egy csillag (__[*]__). Miután befejeződött a kódot, számos **[1]** jelenik meg.  A számot jelzi, hogy a sorrendet, amelyben a cellák futott.
+    > Kód cellák előtt zárójelek közé van. Ha a zárójelek üres ( __[]__ ), a kódot még nem futott. A kód futtatásakor megjelenik egy csillag ( __[*]__ ). Miután befejeződött a kódot, számos **[1]** jelenik meg.  A számot jelzi, hogy a sorrendet, amelyben a cellák futott.
     >
     > Használat **a Shift + Enter** futtatásához egy cella parancsikonja.
 

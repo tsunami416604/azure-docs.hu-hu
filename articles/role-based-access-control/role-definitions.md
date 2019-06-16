@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/06/2019
+ms.date: 06/07/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 04ceac3b06972687ef6cdeac4dad1f07fea611cb
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 00501ec72dff99f93fa04944c5ab733fce38ce21
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754889"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074010"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Megismerheti az Azure-erőforrások szerepkör-definíciók
 
@@ -225,7 +225,7 @@ Beépített szerepkör rendelkezik `AssignableScopes` állítsa be a legfelső s
 | Szerepkör-hozzárendelés egy előfizetés érhető el | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e"` |
 | Szerepkör-hozzárendelés két előfizetéssel érhető el | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e", "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"` |
 | Szerepkör-hozzárendelés csak a hálózati erőforrás-csoport érhető el | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network"` |
-| Szerepkör-hozzárendelés az összes hatókör érhető el | `"/"` |
+| Szerepkör-hozzárendelés az összes hatókör érhető el (csak a beépített szerepkörök vonatkozik) | `"/"` |
 
 További információ `AssignableScopes` tekintse meg az egyéni szerepkörökhöz [egyéni szerepkörök az Azure-erőforrások](custom-roles.md).
 

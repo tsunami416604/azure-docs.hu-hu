@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: c922556417ac92cc3667927fc8f846ace960a14a
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935882"
 ---
 # <a name="security-frame-authorization--mitigations"></a>Biztonsági keret: Engedélyezési |} Megoldások 
@@ -43,7 +43,7 @@ ms.locfileid: "64935882"
 
 ## <a id="acl-restricted-access"></a>Győződjön meg arról, hogy a megfelelő ACL-eket vannak konfigurálva a jogosulatlan hozzáférés korlátozása az eszközön tárolt adatok
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Gép megbízhatósági kapcsolat határán | 
 | **SDL Phase**               | Környezet |  
@@ -54,7 +54,7 @@ ms.locfileid: "64935882"
 
 ## <a id="sensitive-directory"></a>Győződjön meg arról, hogy az érzékeny felhasználó-specifikus alkalmazás tartalmát a rendszer felhasználói profil könyvtárban tárolja
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Gép megbízhatósági kapcsolat határán | 
 | **SDL Phase**               | Környezet |  
@@ -65,7 +65,7 @@ ms.locfileid: "64935882"
 
 ## <a id="deployed-privileges"></a>Győződjön meg arról, hogy a telepített alkalmazások a legkevesebb jogosultsággal futnak
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Gép megbízhatósági kapcsolat határán | 
 | **SDL Phase**               | Környezet |  
@@ -76,7 +76,7 @@ ms.locfileid: "64935882"
 
 ## <a id="sequential-logic"></a>Egymást követő lépést ahhoz, ha üzleti logikai folyamatok feldolgozása vonatkozóan
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -87,7 +87,7 @@ ms.locfileid: "64935882"
 
 ## <a id="rate-enumeration"></a>Mechanizmus enumerálás megelőzése érdekében korlátozza arány megvalósítása
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -98,7 +98,7 @@ ms.locfileid: "64935882"
 
 ## <a id="principle-least-privilege"></a>Győződjön meg arról, hogy megfelelő engedély van beállítva, és a legalacsonyabb jogosultságok elvét az azt követő
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -109,7 +109,7 @@ ms.locfileid: "64935882"
 
 ## <a id="logic-request-parameters"></a>Üzleti logika és a resource access felhasználását engedélyezési döntésekhez nem kell a bejövő kérelem paraméterei alapján
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -128,7 +128,7 @@ Most egy esetleges támadó is védelmet, és nem módosítsa az alkalmazás mű
 
 ## <a id="enumerable-browsing"></a>Győződjön meg arról, hogy a tartalom és erőforrások nem enumerálható vagy elérhetők közötti választásra tallózása
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -139,7 +139,7 @@ Most egy esetleges támadó is védelmet, és nem módosítsa az alkalmazás mű
 
 ## <a id="privileged-server"></a>Győződjön meg arról, hogy alacsonyabb szintű fiókok használják-e csatlakozni az adatbázis-kiszolgáló
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
 | **SDL Phase**               | Felépítés |  
@@ -150,7 +150,7 @@ Most egy esetleges támadó is védelmet, és nem módosítsa az alkalmazás mű
 
 ## <a id="rls-tenants"></a>Sor szintű biztonsági RLS megakadályozhatja, hogy a bérlők egymás adataihoz hozzáférjenek megvalósítása
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
 | **SDL Phase**               | Felépítés |  
@@ -163,7 +163,7 @@ Vegye figyelembe, hogy az RLS-a-beépített adatbázis-szolgáltatásként egyar
 
 ## <a id="sysadmin-users"></a>SysAdmin (rendszergazda) szerepkörrel kell rendelkeznie az érvényes szükséges felhasználók
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
 | **SDL Phase**               | Felépítés |  
@@ -174,7 +174,7 @@ Vegye figyelembe, hogy az RLS-a-beépített adatbázis-szolgáltatásként egyar
 
 ## <a id="cloud-least-privileged"></a>Alacsonyabb szintű jogkivonatok használatával Felhőbeli átjárón
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT Cloud Gateway | 
 | **SDL Phase**               | Környezet |  
@@ -185,7 +185,7 @@ Vegye figyelembe, hogy az RLS-a-beépített adatbázis-szolgáltatásként egyar
 
 ## <a id="sendonly-sas"></a>Egy csak küldési engedélyeket SAS-kulcsot használ a tokenek létrehozásához
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure-eseményközpont | 
 | **SDL Phase**               | Felépítés |  
@@ -196,7 +196,7 @@ Vegye figyelembe, hogy az RLS-a-beépített adatbázis-szolgáltatásként egyar
 
 ## <a id="access-tokens-hub"></a>Ne használjon, amely közvetlen hozzáférést biztosíthat az Eseményközpont hozzáférési jogkivonatok
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure-eseményközpont | 
 | **SDL Phase**               | Felépítés |  
@@ -207,7 +207,7 @@ Vegye figyelembe, hogy az RLS-a-beépített adatbázis-szolgáltatásként egyar
 
 ## <a id="sas-minimum-permissions"></a>Csatlakozás az Eseményközponthoz a minimálisan szükséges jogosultsággal rendelkező SAS-kulcsok használata
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure-eseményközpont | 
 | **SDL Phase**               | Felépítés |  
@@ -218,7 +218,7 @@ Vegye figyelembe, hogy az RLS-a-beépített adatbázis-szolgáltatásként egyar
 
 ## <a id="resource-docdb"></a>Csatlakozás a Cosmos DB-hez, amikor csak lehetséges erőforrás-jogkivonatok használatával
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Az Azure Document DB-ről | 
 | **SDL Phase**               | Felépítés |  
@@ -229,7 +229,7 @@ Vegye figyelembe, hogy az RLS-a-beépített adatbázis-szolgáltatásként egyar
 
 ## <a id="grained-rbac"></a>Azure-előfizetéshez az RBAC használatával részletes hozzáférés-vezérlést engedélyezése
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Az Azure megbízhatósági kapcsolat határán | 
 | **SDL Phase**               | Felépítés |  
@@ -240,7 +240,7 @@ Vegye figyelembe, hogy az RLS-a-beépített adatbázis-szolgáltatásként egyar
 
 ## <a id="cluster-rbac"></a>Az RBAC használatával fürtműveletek ügyfél elérésének korlátozása
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Service Fabric megbízhatósági kapcsolat határán | 
 | **SDL Phase**               | Környezet |  
@@ -251,7 +251,7 @@ Vegye figyelembe, hogy az RLS-a-beépített adatbázis-szolgáltatásként egyar
 
 ## <a id="modeling-field"></a>Biztonsági modellezési mező biztonság használható, és ahol szükséges
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Dynamics CRM | 
 | **SDL Phase**               | Felépítés |  
@@ -262,7 +262,7 @@ Vegye figyelembe, hogy az RLS-a-beépített adatbázis-szolgáltatásként egyar
 
 ## <a id="portal-security"></a>Hajtsa végre a biztonsági modellezési figyelembe vételével, amely a biztonsági modell a portál eltér a többi CRM portál fiókok
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Dynamics CRM-portál | 
 | **SDL Phase**               | Felépítés |  
@@ -273,7 +273,7 @@ Vegye figyelembe, hogy az RLS-a-beépített adatbázis-szolgáltatásként egyar
 
 ## <a id="permission-entities"></a>Az Azure Table Storage entitástartományának a minden részletre kiterjedő engedély megadása
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
 | **SDL Phase**               | Felépítés |  
@@ -284,7 +284,7 @@ Vegye figyelembe, hogy az RLS-a-beépített adatbázis-szolgáltatásként egyar
 
 ## <a id="rbac-azure-manager"></a>Szerepköralapú hozzáférés-vezérlés (RBAC) az Azure storage-fiókba az Azure Resource Manager engedélyezése
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
 | **SDL Phase**               | Felépítés |  
@@ -295,7 +295,7 @@ Vegye figyelembe, hogy az RLS-a-beépített adatbázis-szolgáltatásként egyar
 
 ## <a id="rooting-detection"></a>Implicit függetlenítés vagy észlelési telepítés végrehajtása
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Mobileszköz ügyfél | 
 | **SDL Phase**               | Felépítés |  
@@ -306,7 +306,7 @@ Vegye figyelembe, hogy az RLS-a-beépített adatbázis-szolgáltatásként egyar
 
 ## <a id="weak-class-wcf"></a>A WCF gyenge Osztályhivatkozása
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
 | **SDL Phase**               | Felépítés |  
@@ -343,7 +343,7 @@ A `<behaviorExtensions/>` elem a WCF konfigurációs fájl az alábbi arra utas�
 
 ## <a id="wcf-authz"></a>WCF-megvalósítása engedélyezési vezérlő
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
 | **SDL Phase**               | Felépítés |  
@@ -391,7 +391,7 @@ return result;
 
 ## <a id="authz-aspnet"></a>Megfelelő engedélyezési mechanizmus megvalósításához az ASP.NET Web API
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
 | **SDL Phase**               | Felépítés |  
@@ -442,7 +442,7 @@ public class CustomController : ApiController
 
 ## <a id="device-permission"></a>Hajtsa végre az eszköz engedélyezési ellenőrzések, ha támogatja a különböző műveleteket, amelyek különböző jogosultsági szintek igényelnek
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT-eszköz | 
 | **SDL Phase**               | Felépítés |  
@@ -453,7 +453,7 @@ public class CustomController : ApiController
 
 ## <a id="field-permission"></a>Hajtsa végre a helyszíni átjáró engedélyezési ellenőrzések, ha támogatja a különböző műveleteket, amelyek különböző jogosultsági szintek igényelnek
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT helyszíni átjáró | 
 | **SDL Phase**               | Felépítés |  

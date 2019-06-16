@@ -11,18 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7e9ca9fa26e9744eb0a9bfafe692a096825b0b5
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 05d21910d1b3601346fbd038cbc25f8f2be61f99
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357052"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110697"
 ---
 # <a name="building-secure-workstations"></a>Biztonságos munkaállomások készítése
 
 Biztonságos, elkülönített munkaállomások különösen fontosak bizalmas szerepkörök, például a rendszergazdák, fejlesztők és üzemeltetők a kritikus szolgáltatások biztonságát. Számos további biztonsági vezérlők és biztosítékok sikertelen, vagy nem hatása, ha az alapul szolgáló ügyfél munkaállomás biztonsága sérült a biztonsága.
 
 Ez a dokumentum ismerteti, milyen buildeléséhez részletes részletes utasításokat, beleértve a biztonsági vezérlőket indítása beállítása biztonságos ügyfél munkaállomás. Az ilyen típusú munkaállomások esetenként egy emelt hozzáférési szintű munkaállomásokat (PAW), amely ebben a leírásban használt, és építeni nevezzük. Az útmutató azonban úgy tűnik, a szolgáltatás kezelése a felhőalapú technológia, és Windows 10RS5, Microsoft Defender ATP-ben, az Azure Active Directory és az Intune kezdődően bevezetett biztonsági képességek jelennek meg.
+
+> [!NOTE]
+> Ez a cikk leírja a biztonságos munkaállomás és az fontos fogalma. Ha már ismeri a fogalom, és szeretné hagyni a központi telepítés, kérjük, olvassa el [hogyan helyezhet üzembe egy biztonságos munkaállomás](https://docs.microsoft.com/azure/active-directory/devices/howto-azure-managed-workstation).
 
 ## <a name="why-securing-workstation-access-is-important"></a>Miért munkaállomás hozzáférés biztonságossá tétele fontos
 

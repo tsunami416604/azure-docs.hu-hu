@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/07/2017
 ms.author: victorh
 ms.openlocfilehash: 10f115b64f0bd3f7e557da2bedbf3327d0ef483d
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62122307"
 ---
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Az Application Gateway és az Azure Security Center közötti integráció áttekintése
@@ -38,7 +38,7 @@ Kattintson a kapcsolódó webalkalmazási tűzfal megnyílik egy új oldalt, az 
 
 Navigáljon a **minden szolgáltatás** > **biztonság + identitás** > **a Security Center** és a **Security Center – áttekintés**, kattintson a **alkalmazások**. A **a Security Center - alkalmazások**, a tábla tartalmazza, amelyeket a Security Center észleli az előfizetésében.
 
-![webalkalmazás][3]
+![Webalkalmazások][3]
 
 A webalkalmazás egy kritikus probléma kattintva a **alkalmazás biztonsági állapota** lapot. Az alábbi képen, a webalkalmazási tűzfal által nem védett webalkalmazás. 
 

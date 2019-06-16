@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 02/25/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: fd68edcc727ab08ed9d3ba765bbe795e88de5fc9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bf004f07558ae1f252a6bd26b4fd59ea9e4eea6e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60391314"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069272"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Oktatóanyag: Az Azure Resource Manager-sablon-üzembehelyezések biztonságos összetevők
 
@@ -75,9 +75,9 @@ Töltse le a [BACPAC-fájlba](https://armtutorials.blob.core.windows.net/sqlexte
 
     * **Előfizetés**: Válassza ki az Azure-előfizetését.
     * **Erőforráscsoport**: Válassza ki **új létrehozása** , és adjon meg egy nevet. Egy erőforráscsoportot az Azure-erőforrások tárolója felügyeleti erre a célra. Ebben az oktatóanyagban a tárfiók és az Azure SQL Database használhatja ugyanazt az erőforráscsoportot. Jegyezze fel az erőforráscsoport neve, szüksége lesz rá az Azure SQL Database később az oktatóanyagok létrehozásakor.
-    * **Hely**: Válasszon régiót. Ha például **USA középső RÉGIÓJA**. 
+    * **Hely**: Válassza ki a régiót. Ha például **USA középső RÉGIÓJA**.
     * **Tárfiók típusa**: használja az alapértelmezett értéket, amely **Standard_LRS**.
-    * **Hely**: Használja az alapértelmezett értéket, amely **[resourceGroup () .location]**. Ez azt jelenti, hogy a tárfiók használata az erőforráscsoport helyét.
+    * **Hely**: Használja az alapértelmezett értéket, amely **[resourceGroup () .location]** . Ez azt jelenti, hogy a tárfiók használata az erőforráscsoport helyét.
     * **Elfogadom a feltételeket és a fenti lépések feltételek**: (kiválasztva)
 3. Válassza a **Beszerzés** lehetőséget.
 4. Válassza ki az értesítési ikonra (Harang ikon) a központi telepítési állapotának megtekintéséhez a portál jobb felső sarokban.
@@ -87,7 +87,7 @@ Töltse le a [BACPAC-fájlba](https://armtutorials.blob.core.windows.net/sqlexte
 
 ### <a name="create-a-blob-container"></a>Blobtároló létrehozása
 
-Egy Blob-tárolóba van szükség a fájlok feltöltése előtt. 
+Egy Blob-tárolóba van szükség a fájlok feltöltése előtt.
 
 1. A megnyitáshoz válassza ki a tárfiókot. Csak egy storage-fiókot az erőforráscsoportban szereplő gondoskodnak. A tárfiók nevét az alábbi képernyőképen látható egy eltér.
 
@@ -99,8 +99,8 @@ Egy Blob-tárolóba van szükség a fájlok feltöltése előtt.
 3. Válassza ki **+ tároló** hozzon létre egy új tárolót, a lista elejéről.
 4. Írja be a következő értékeket:
 
-    * **Név**: Adja meg **sqlbacpac**. 
-    * **Nyilvános hozzáférés szintje**: használja az alapértelmezett értéket **privát (nincs névtelen hozzáférés)**.
+    * **Név**: Adja meg **sqlbacpac**.
+    * **Nyilvános hozzáférés szintje**: használja az alapértelmezett értéket **privát (nincs névtelen hozzáférés)** .
 5. Kattintson az **OK** gombra.
 6. Válassza ki **sqlbacpac** megnyitásához az újonnan létrehozott tárolóban.
 
@@ -237,7 +237,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban üzembe helyezett egy SQL Server, SQL-adatbázis és a SAS-jogkivonat használatával egy BACPAC-fájlba importálni. Annak megismeréséhez, hogyan lehet Azure-erőforrásokat több régióban üzembe helyezni, és hogyan alkalmazhat biztonságos üzembehelyezési gyakorlatokat, tekintse meg a következőt:
+Ebben az oktatóanyagban üzembe helyezett egy SQL Server, SQL-adatbázis és a SAS-jogkivonat használatával egy BACPAC-fájlba importálni. Ismerje meg, hogyan hozhat létre folyamatos fejlesztése és üzembe helyezése Resource Manager-sablonok az Azure-folyamatot, lásd:
 
 > [!div class="nextstepaction"]
-> [Az Azure Deployment Manager használata](./resource-manager-tutorial-deploy-vm-extensions.md)
+> [Folyamatos integráció az Azure-folyamattal](./resource-manager-tutorial-use-azure-pipelines.md)

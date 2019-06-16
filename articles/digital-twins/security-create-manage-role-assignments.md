@@ -10,10 +10,10 @@ ms.date: 12/26/2018
 ms.author: lyrana
 ms.custom: seodec18
 ms.openlocfilehash: 72155799971760e9ddc93746dceafb1ea554d88b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66162119"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Létrehozása és kezelése az Azure digitális Twins szerepkör-hozzárendelések
@@ -39,12 +39,12 @@ Minden egyes szerepkör-hozzárendelés megfelel a következő-definíciót:
 
 Az alábbi táblázat ismerteti az egyes tulajdonságokat:
 
-| Attribútum | Name (Név) | Szükséges | Típus | Leírás |
+| Attribútum | Name (Név) | Kötelező | Típus | Leírás |
 | --- | --- | --- | --- | --- |
 | roleId | Szerepkör-definíció azonosítója | Igen | String | A kívánt szerepkör-hozzárendelés egyedi azonosítója. Keresse meg a szerepkör-definíciók és azok azonosító lekérdezésekor a rendszer API-t, vagy tekintse át az alábbi táblázat szerint. |
 | objectId | Objektumazonosító | Igen | String | Az Azure Active Directory azonosítója, azonosítója vagy tartománynév számára. Milyen vagy akikkel a szerepkör-hozzárendelés hozzá van rendelve. A szerepkör-hozzárendelés vzhledem ke svému társított typu kell formázni. Az a `DomainName` objectId objectIdType, kell kezdődnie az `“@”` karakter. |
 | objectIdType | Objektumtípus azonosítója | Igen | String | Milyen típusú használt objektumazonosító. Lásd: **ObjectIdTypes támogatott** alatt. |
-| path | Terület elérési útja | Igen | String | A teljes elérési útvonal a `Space` objektum. Például: `/{Guid}/{Guid}`. Ha egy azonosítót a szerepkör-hozzárendelést a teljes grafikon van szüksége, adja meg `"/"`. Ezt a karaktert jelöli meg a legfelső szintű, de a használata nem ajánlott. A minimális jogosultság elvének mindig követik. |
+| elérési út | Terület elérési útja | Igen | String | A teljes elérési útvonal a `Space` objektum. Például: `/{Guid}/{Guid}`. Ha egy azonosítót a szerepkör-hozzárendelést a teljes grafikon van szüksége, adja meg `"/"`. Ezt a karaktert jelöli meg a legfelső szintű, de a használata nem ajánlott. A minimális jogosultság elvének mindig követik. |
 | tenantId | Bérlőazonosító | Változó | String | A legtöbb esetben az Azure Active Directory-bérlő azonosítója. Nem engedélyezett a `DeviceId` és `TenantId` ObjectIdTypes. Szükséges `UserId` és `ServicePrincipalId` ObjectIdTypes. A tartománynév ObjectIdType esetén nem kötelező. |
 
 ### <a name="supported-role-definition-identifiers"></a>Támogatott szerepkör-definíció azonosítók

@@ -9,10 +9,10 @@ ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
 ms.openlocfilehash: 050d3314345e64e3d69a07367a0e9acc318fa106
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66271576"
 ---
 | Resource | Alapértelmezett korlát | Felső korlát |
@@ -29,7 +29,7 @@ ms.locfileid: "66271576"
 | Resource | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
 | Az Azure app-leküldés | 10 azure app-műveletek száma műveletcsoport. | Az ügyfélszolgálat. |
-| Email | Műveletcsoport 1000 e-mail műveletek. További tájékoztatás a [sebessége korlátozza az információk](../articles/azure-monitor/platform/alerts-rate-limiting.md). | Az ügyfélszolgálat. |
+| E-mail | Műveletcsoport 1000 e-mail műveletek. További tájékoztatás a [sebessége korlátozza az információk](../articles/azure-monitor/platform/alerts-rate-limiting.md). | Az ügyfélszolgálat. |
 | ITSM | 10 ITSM-műveletek műveletcsoport. | Az ügyfélszolgálat. | 
 | Logikai alkalmazás | 10 logic app-műveletek a műveletcsoport. | Az ügyfélszolgálat. |
 | Forgatókönyv | Műveletcsoport 10 runbook műveletek. | Az ügyfélszolgálat. |

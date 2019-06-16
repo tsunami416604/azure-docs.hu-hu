@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1d2c587129f9f9f09c8f3871748449dc7b1755b
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 9ce9c0c6d4f9002b061afd2ad09f02266d452979
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474030"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109262"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>A Jelszókivonat-szinkronizálás az Azure Active Directory összevonási áttelepítésére
 
@@ -155,7 +155,7 @@ A **InsideCorporateNetwork** jogcím nem érhető el, miután a tartományok ala
 
 Nevesített helyek konfigurálása, frissítenie kell az összes olyan feltételes hozzáférési szabályzatok belefoglalása vagy kizárása a hálózati konfigurált **minden megbízható hely** vagy **MFA megbízható IP-címek** helyezendő értékek tükrözik az új nevesített helyek.
 
-További információ a **hely** azzal a feltételes hozzáférés feltétellel, lásd: [Active Directory feltételes hozzáférés helyek](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations).
+További információ a **hely** azzal a feltételes hozzáférés feltétellel, lásd: [helyeket az Active Directory feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations).
 
 #### <a name="hybrid-azure-ad-joined-devices"></a>Hibrid Azure AD-hez csatlakoztatott eszközök
 
@@ -224,7 +224,7 @@ A megoldás tervezett. Most már valósíthat meg azt. Megvalósítás az alább
 * Közvetlen egyszeri bejelentkezés előkészítése.
 * A bejelentkezési mód módosítása a Jelszókivonat-szinkronizálás és a közvetlen egyszeri bejelentkezés engedélyezése.
 
-### <a name="step-1-enable-password-hash-synchronization"></a>1. lépés: Jelszókivonat-szinkronizálás engedélyezése
+### <a name="step-1-enable-password-hash-synchronization"></a>1\. lépés: Jelszókivonat-szinkronizálás engedélyezése
 
 A megoldás első lépése, hogy a Jelszókivonat-szinkronizálás engedélyezése az Azure AD Connect varázsló használatával. A Jelszókivonat-szinkronizálás az engedélyezhető a környezetekben, amelyek összevonási opcionális szolgáltatása. A hitelesítési folyamat nincs hatással van. Ebben az esetben az Azure AD Connect indul el anélkül, hogy befolyásolná a felhasználók, akik az összevonási használatával írja alá jelszókivonatok szinkronizálása.
 
@@ -259,7 +259,7 @@ Győződjön meg arról, hogy a Jelszókivonat-szinkronizálás megfelelően mű
 
 Problémák hibaelhárításával [Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás hibaelhárítása](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-troubleshoot-password-hash-synchronization).
 
-### <a name="step-2-prepare-for-seamless-sso"></a>2. lépés: Közvetlen egyszeri bejelentkezés előkészítése
+### <a name="step-2-prepare-for-seamless-sso"></a>2\. lépés: Közvetlen egyszeri bejelentkezés előkészítése
 
 Közvetlen egyszeri bejelentkezés használata az eszközök hozzá kell adnia egy Azure AD URL-cím felhasználók intranetes zóna beállításait az Active Directoryban egy csoportházirend használatával.
 
@@ -270,7 +270,7 @@ A lépéseket követve [bevezetése](https://docs.microsoft.com/azure/active-dir
 > [!IMPORTANT]
 > A módosítás elvégzése nem módosítja az Azure AD a felhasználói bejelentkezés módját. Fontos azonban alkalmazni ezt a konfigurációt az összes eszközre, mielőtt folytatja a műveletet. Azokon az eszközökön, ez a konfiguráció még nem kapott bejelentkező felhasználóknak egyszerűen szükséges beírjanak egy felhasználónevet és jelszót, hogy jelentkezzen be Azure ad-ben.
 
-### <a name="step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso"></a>3. lépés: A bejelentkezési módszer módosításához a Jelszókivonat-szinkronizálás és a közvetlen egyszeri bejelentkezés engedélyezése
+### <a name="step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso"></a>3\. lépés: A bejelentkezési módszer módosításához a Jelszókivonat-szinkronizálás és a közvetlen egyszeri bejelentkezés engedélyezése
 
 A bejelentkezési mód módosítása a Jelszókivonat-szinkronizálás és közvetlen egyszeri bejelentkezés engedélyezése két lehetősége van.
 

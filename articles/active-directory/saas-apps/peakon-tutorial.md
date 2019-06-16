@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: a98ec0d460e050f8158ffee1262dd85f0cd07d9a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b093a26848701254ad674081037c266f1fb012b2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65869850"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094720"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Peakon
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Peakon konfigurálásához hozzá kell Peakon a kata
 
 **Peakon hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -242,7 +242,7 @@ Peakon, esetén kiépítése a manuális feladat.
 
     c. Kattintson a **létrehozás alkalmazott**.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

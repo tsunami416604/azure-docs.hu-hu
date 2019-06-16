@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: raynew
 ms.openlocfilehash: 94f410b7bd3b7c2eb3d7d6a9316323092010338e
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66418332"
 ---
 # <a name="configuration-server-requirements-for-vmware-disaster-recovery-to-azure"></a>Konfigurációs kiszolgáló követelményei a VMware-vészhelyreállításhoz az Azure-bA
@@ -38,7 +38,7 @@ A VMware virtuális gépek vészhelyreállítása az Azure-bA a konfigurációs 
 --- | ---
 Processzormagok | 8 
 RAM | 16 GB
-Lemezek száma | 3., beleértve az operációs rendszer lemez, a folyamatkiszolgálói gyorsítótárlemez és az adatmegőrzési meghajtó a feladat-visszavételhez 
+Lemezek száma | 3\., beleértve az operációs rendszer lemez, a folyamatkiszolgálói gyorsítótárlemez és az adatmegőrzési meghajtó a feladat-visszavételhez 
 Szabad lemezterület (folyamatkiszolgálói gyorsítótár) | 600 GB
 Szabad területe (adatmegőrzési lemez) | 600 GB
 

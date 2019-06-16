@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: bea7106bd0c3317fe71de201f219c151471e8208
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 27fa0567eefbb50907c0ed6952333230e874c21d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704894"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099034"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-confluence"></a>Oktatóanyag: Az Azure Active Directory-integráció az való összefolyás felett Kantega SSO-val
 
@@ -53,7 +53,7 @@ Az Azure AD-be való összefolyás felett Kantega SSO-integráció konfigurálá
 
 **Kantega egyszeri Bejelentkezéssel való összefolyás felett az hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -212,7 +212,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása az való összefolyás felet
 
     b. Kattintson a **tovább**.
 
-1. Kattintson a **Befejezés** gombra.
+1. Kattintson a **Befejezés**gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforconfluence-tutorial/addon11.png)
 

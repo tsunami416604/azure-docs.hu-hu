@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: e1bc99cdc089050fbfa931bbbc7b9a6a316a3a75
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 8699533cd64e6b1778c5e78b8c51eb1efe518c75
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240175"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67126212"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>HDInsight-fürt konfigurálása Enterprise Security Package-dzsel az Azure Active Directory Domain Services használatával
 
@@ -27,7 +27,7 @@ Ebből a cikkből elsajátíthatja egy HDInsight-fürt konfigurálása ESP az Az
 ## <a name="enable-azure-ad-ds"></a>Engedélyezze az Azure AD-DS-ben
 
 > [!NOTE]  
-> Csak a bérlői rendszergazdák a jogosultság az Azure AD-tartományi szolgáltatások engedélyezése. Ha a fürttárolóhoz-e az Azure Data Lake Storage (ADLS) Gen1 és Gen2, le kell tiltania a multi-factor Authentication (MFA) csak a felhasználók számára, aki a fürtöt alapszintű Kerberos-hitelesítés használatával kell. Használhat [megbízható IP-címek](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) vagy [feltételes hozzáférési](../../active-directory/conditional-access/overview.md) többtényezős hitelesítés letiltása adott felhasználókra vonatkozóan csak amikor érnek el a HDInsight-fürt virtuális hálózat IP-címtartományt. Ha használja a feltételes hozzáférés győződjön meg arról, hogy az AD a szolgáltatási végpont engedélyezve van a HDInsight virtuális hálózaton.
+> Csak a bérlői rendszergazdák a jogosultság az Azure AD-tartományi szolgáltatások engedélyezése. Ha a fürttárolóhoz-e az Azure Data Lake Storage (ADLS) Gen1 és Gen2, le kell tiltania a multi-factor Authentication (MFA) csak a felhasználók számára, aki a fürtöt alapszintű Kerberos-hitelesítés használatával kell. Használhat [megbízható IP-címek](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) vagy [feltételes hozzáférési](../../active-directory/conditional-access/overview.md) többtényezős hitelesítés letiltása adott felhasználókra vonatkozóan csak amikor érnek el a HDInsight-fürt virtuális hálózat IP-címtartományt. Ha használ feltételes hozzáférési győződjön meg arról, hogy, hogy az AD-szolgáltatásvégpont engedélyezve van a HDInsight virtuális hálózaton.
 >
 > Ha a fürt tároló Azure Blob Storage (WASB), ne tiltsa le az MFA.
 

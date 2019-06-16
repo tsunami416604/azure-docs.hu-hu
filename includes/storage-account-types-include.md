@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/23/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: d4f57eca89cbb68d61546c6d5ce5bcd04f9256e7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: d96e69fb526cff633c78e9ac8a1679762014cd4b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66114935"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67132996"
 ---
 Az Azure Storage számos különböző típusú tárfiókok kínál. Egyes támogatja a különböző funkciókat, és rendelkezik a saját díjszabási modell. Milyen típusú fiókot, amely a legjobb alkalmazásait a tárfiók létrehozása előtt, fontolja meg a különbségeket. A tárfiókok típusai a következők:
 
@@ -25,20 +25,20 @@ Az Azure Storage számos különböző típusú tárfiókok kínál. Egyes támo
 
 A következő táblázat a tárfiókok típusait és azok képességeinek:
 
-| Tárfiók típusa | Támogatott szolgáltatások                       | Támogatott teljesítményszintek      | Támogatott elérési szint         | Replikációs beállítások               | Üzemi modell<sup>1</sup> | Encryption<sup>2</sup> |
+| Tárfiók típusa | Támogatott szolgáltatások                       | Támogatott teljesítményszintek      | Támogatott elérési szint         | Replikációs beállítások               | Üzemi modell<div role="complementary" aria-labelledby="deployment-model"><sup>1</sup></div> | Encryption<div role="complementary" aria-labelledby="encryption"><sup>2</sup></div> |
 |----------------------|------------------------------------------|-----------------------------|--------------------------------|-----------------------------------|------------------------------|------------------------|
-| Általános célú V2   | BLOB, fájl, várólista, tábla és lemez       | Standard, Premium<sup>5</sup> | Gyakori és ritka elérésű, archív<sup>3</sup> | LRS, ZRS<sup>4</sup>, GRS, RA-GRS | Resource Manager             | Titkosítva              |
-| Általános célú V1   | BLOB, fájl, várólista, tábla és lemez       | Standard, Premium<sup>5</sup> | –                            | LRS, GRS, RA-GRS                  | Resource Manager, klasszikus    | Titkosítva              |
-| Blokkblob-tárolás   | BLOB (blokkblobok és hozzáfűző blobok csak) | Prémium                       | –                            | LRS                               | Resource Manager             | Titkosítva              |
-| FileStorage (előzetes verzió)   | Csak a fájlok | Prémium                       | –                            | LRS                               | Resource Manager             | Titkosítva              |
-| Blob Storage         | BLOB (blokkblobok és hozzáfűző blobok csak) | Standard                      | Gyakori és ritka elérésű, archív<sup>3</sup> | LRS, GRS, RA-GRS                  | Resource Manager             | Titkosítva              |
+| Általános célú V2   | BLOB, fájl, várólista, tábla és lemez       | Standard, Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | Gyakori, ritka elérésű, archív tárolási szint<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS, GRS, RA-GRS, ZRS<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div> | Resource Manager             | Titkosított              |
+| Általános célú V1   | BLOB, fájl, várólista, tábla és lemez       | Standard, Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | –                            | LRS, GRS, RA-GRS                  | Resource Manager, klasszikus    | Titkosított              |
+| Blokkblob-tárolás   | BLOB (blokkblobok és hozzáfűző blobok csak) | Prémium                       | –                            | LRS                               | Resource Manager             | Titkosított              |
+| FileStorage (előzetes verzió)   | Csak a fájlok | Prémium                       | –                            | LRS                               | Resource Manager             | Titkosított              |
+| Blob Storage         | BLOB (blokkblobok és hozzáfűző blobok csak) | Standard                      | Gyakori, ritka elérésű, archív tárolási szint<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS, GRS, RA-GRS                  | Resource Manager             | Titkosított              |
 
-<sup>1</sup>ajánlott az Azure Resource Manager üzemi modell használatával. Storage-fiókok a klasszikus üzemi modell használatával továbbra is hozhatja létre az egyes helyeken, és a létező klasszikus fiók továbbra is támogatottak. További információkért lásd: [Azure Resource Manager és klasszikus üzembe helyezési: Üzembe helyezési modellek és az erőforrások állapotának ismertetése](../articles/azure-resource-manager/resource-manager-deployment-model.md).
+<div id="deployment-model"><sup>1</sup>ajánlott az Azure Resource Manager üzemi modell használatával. Storage-fiókok a klasszikus üzemi modell használatával továbbra is hozhatja létre az egyes helyeken, és a létező klasszikus fiók továbbra is támogatottak. További információkért lásd: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model">Azure Resource Manager és klasszikus üzembe helyezési: Üzembe helyezési modellek és az erőforrások állapotának ismertetése</a>.</div>
 
-<sup>2</sup>összes storage-fiók használatával történő Storage Service Encryption (SSE) inaktív adatok titkosítását. További információkért lásd: [Azure Storage Service Encryption az inaktív adatok](../articles/storage/common/storage-service-encryption.md).
+<div id="encryption"><sup>2</sup>összes storage-fiók használatával történő Storage Service Encryption (SSE) inaktív adatok titkosítását. További információkért lásd: <a href="https://docs.microsoft.com/azure/storage/common/storage-service-encryption">Azure Storage Service Encryption az inaktív adatok</a>.</div>
 
-<sup>3</sup>az archív szinten érhető el, csak egy egyedi BLOB szintjén nem a storage-fiók szintjén. Csak blokkblobok és hozzáfűző blobok archiválhatók. További információkért lásd: [Azure Blob storage: A gyakran és ritkán használt adatok, és az archív tárolási szintek](../articles/storage/blobs/storage-blob-storage-tiers.md).
+<div id="archive"><sup>3</sup>az archív szinten érhető el, csak egy egyedi BLOB szintjén nem a storage-fiók szintjén. Csak blokkblobok és hozzáfűző blobok archiválhatók. További információkért lásd: <a href="https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers">Azure Blob storage: A gyakran és ritkán használt adatok, és az archív tárolási szintek</a>.</div>
 
-<sup>4</sup>zónaredundáns tárolás (ZRS) csak a standard szintű, általános célú v2-tárfiókok esetén érhető el. A ZRS kapcsolatos további információkért lásd: [zónaredundáns tárolás (ZRS): Azure Storage magas rendelkezésre állású alkalmazások](../articles/storage/common/storage-redundancy-zrs.md). Más replikációs beállításokkal kapcsolatos további információkért lásd: [Azure Storage replikáció](../articles/storage/common/storage-redundancy.md).
+<div id="zone-redundant-storage"><sup>4</sup>zónaredundáns tárolás (ZRS) csak a standard szintű, általános célú v2-tárfiókok esetén érhető el. A ZRS kapcsolatos további információkért lásd: <a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs">zónaredundáns tárolás (ZRS): Azure Storage magas rendelkezésre állású alkalmazások</a>. Más replikációs beállításokkal kapcsolatos további információkért lásd: <a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy">Azure Storage replikáció</a>.</div>
 
-<sup>5</sup> prémium szintű teljesítményt, általános célú v2 és általános célú v1-fiókok csak a lemez- és BLOB érhető el.
+<div id="premium-performance"><sup>5</sup>prémium szintű teljesítményt, általános célú v2 és általános célú v1-fiókok csak a lemez- és BLOB érhető el.</div>

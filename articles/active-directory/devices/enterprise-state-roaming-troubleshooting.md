@@ -19,12 +19,12 @@ ms.author: joflore
 ms.reviewer: tanning
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cce60769ffae399062a50e1b2c28c1cd6e49a47e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0b74be0dda8e5c79987479393ad0d8ef5c3bdd16
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60353176"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110669"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Az Azure Active Directoryban hibaelhárítási Enterprise State Roaming beállítások
 
@@ -87,7 +87,7 @@ Bizonyos körülmények között az Enterprise State Roaming sikertelen lehet sz
 
 **Lehetséges probléma**: Szinkronizálás meghiúsulhat, ha a rendszergazda konfigurálja az Active Directory összevonási szolgáltatások multi-factor Authentication feltételes hozzáférési szabályzatot, és az eszközön a hozzáférési jogkivonat lejár. Győződjön meg arról, hogy jelentkezzen be, és jelentkezzen ki, használja a Microsoft Passport for Work PIN-kód, vagy fejezze be a multi-factor Authentication az Office 365-höz hasonló más Azure-szolgáltatások használata közben.
 
-### <a name="event-viewer"></a>Eseménynapló
+### <a name="event-viewer"></a>Az Eseménynapló
 
 Speciális hibaelhárításhoz, az Eseménynapló használható hibaüzenetek megkereséséhez. Ezek az alábbi táblázat ismerteti. Az eseményeket az Eseménynapló területen található > alkalmazások és szolgáltatásnaplók > **Microsoft** > **Windows** > **SettingSync Azure-beli** és identitással kapcsolatos problémáinak szinkronizálási **Microsoft** > **Windows** > **AAD**.
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: e02c0b86cd542b3ea12914e35a6577cf4e9b43d8
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66161315"
 ---
 A metrikák az eszköz és a hibaelhárítási problémák bizonyos esetekben a teljesítmény figyelésére is megtekintheti.
@@ -57,7 +57,7 @@ Az alábbi lépéseket a kiválasztott eszköz metrikák diagram létrehozásáh
 
 6. Ha most szeretné tekinteni néhány példányok csak a táblázat összefoglalja, szűrheti az adatokat. Például ebben az esetben, ha szeretné a hálózati átviteli sebesség csak a két csatlakoztatott hálózati adaptereket lát az eszközén, is szűrhetőek felületeken. Válassza ki **szűrő hozzáadása** , és adja meg a szűréshez hálózati adapter neve.
 
-    ![Szűrő hozzáadása](media/data-box-edge-gateway-view-metrics/view-metrics-6.png)
+    ![szűrő hozzáadása](media/data-box-edge-gateway-view-metrics/view-metrics-6.png)
 
 7. Sikerült is rögzíti az irányítópulton egyszerűen hozzáférhetnek a diagramot.
 

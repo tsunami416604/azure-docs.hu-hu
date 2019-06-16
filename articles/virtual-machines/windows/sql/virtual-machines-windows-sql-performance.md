@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 09/26/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c1f40c62fce61ba16dfdf289d54cd19c3739ce21
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 3fda34e46ddb7ea17c98795ad6632841b79764eb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393769"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076915"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Teljesítmény-irányelvek az SQL Server Azure Virtual Machines szolgáltatásban
 
@@ -55,7 +55,7 @@ További információ a *hogyan* és *miért* ahhoz, hogy ezek az optimalizáci�
 * **Az SQL Server Enterprise Edition**: DS3_v2 vagy újabb
 * **Az SQL Server Standard és Web kiadások**: DS2_v2 vagy újabb
 
-[DSv2 sorozat](../sizes-general.md#dsv2-series) virtuális gépeket támogatja a premium storage, amely a legjobb teljesítmény érdekében javasoljuk. A méretek ajánlott Íme az alapkonfigurációkat, de a tényleges mérete, válassza ki a számítási feladat igényeinek függ. DSv2 sorozatú virtuális gépek olyan általános célú virtuális gépek, amelyek jók a különböző számítási feladatok, míg más méretekről adott munkaterhelés-típusok vannak optimalizálva. Ha például a [M-sorozat](../sizes-memory.md#m-series) kínálja a legnagyobb vCPU-számot és a memória a legnagyobb SQL Server munkaterhelésekhez. A [GS-sorozat](../sizes-memory.md#gs-series) és [DSv2-sorozat 11-15](../sizes-memory.md#dsv2-series-11-15) nagy memóriakövetelményei vannak optimalizálva. E sorozat mindkét is rendelkezésre állnak a [core méretek korlátozott](../../windows/constrained-vcpu.md), pénzt menti számítási feladatokkal és alacsonyabb számítási igényekre. A [Ls-sorozat](../sizes-storage.md) gépek magas lemez-adatátviteli és i/o vannak optimalizálva. Fontos, fontolja meg az adott SQL Server számítási és a alkalmazni egy Virtuálisgép-sorozatok és a méret a választott.
+[DSv2 sorozat](../sizes-general.md#dsv2-series) virtuális gépeket támogatja a premium storage, amely a legjobb teljesítmény érdekében javasoljuk. A méretek ajánlott Íme az alapkonfigurációkat, de a tényleges mérete, válassza ki a számítási feladat igényeinek függ. DSv2 sorozatú virtuális gépek olyan általános célú virtuális gépek, amelyek jók a különböző számítási feladatok, míg más méretekről adott munkaterhelés-típusok vannak optimalizálva. Ha például a [M-sorozat](../sizes-memory.md#m-series) kínálja a legnagyobb vCPU-számot és a memória a legnagyobb SQL Server munkaterhelésekhez. A [GS-sorozat](../sizes-previous-gen.md#gs-series) és [DSv2-sorozat 11-15](../sizes-memory.md#dsv2-series-11-15) nagy memóriakövetelményei vannak optimalizálva. E sorozat mindkét is rendelkezésre állnak a [core méretek korlátozott](../../windows/constrained-vcpu.md), pénzt menti számítási feladatokkal és alacsonyabb számítási igényekre. A [Ls-sorozat](../sizes-storage.md) gépek magas lemez-adatátviteli és i/o vannak optimalizálva. Fontos, fontolja meg az adott SQL Server számítási és a alkalmazni egy Virtuálisgép-sorozatok és a méret a választott.
 
 ## <a name="storage-guidance"></a>Storage útmutatója
 

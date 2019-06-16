@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.openlocfilehash: c5bd40741ec0fe047f98b4b4431819d90e188385
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66128662"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Központi telepítési funkciók az Azure Resource Manager-sablonok 
@@ -33,7 +33,7 @@ Erőforrások, erőforráscsoportok vagy előfizetések lekérjük az értékeke
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="deployment"></a>üzemelő példány
+## <a name="deployment"></a>üzembe helyezés
 `deployment()`
 
 A jelenlegi üzembe helyezési művelet adatait adja vissza.
@@ -158,7 +158,7 @@ Egy előfizetés-szintű sablont, amely a központi telepítési függvényt has
 
 <a id="parameters" />
 
-## <a name="parameters"></a>paraméterek
+## <a name="parameters"></a>parameters
 `parameters(parameterName)`
 
 A paraméter értékét adja vissza. A megadott paraméternév a sablon a Paraméterek szakaszban kell definiálni.
@@ -254,11 +254,11 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| stringOutput | String | 1. lehetőséget |
-| intOutput | Int | 1. |
+| stringOutput | String | 1\. lehetőséget |
+| intOutput | Int | 1 |
 | objectOutput | Object | {"egy": "a", "2": "b"} |
 | arrayOutput | Tömb | [1, 2, 3] |
-| crossOutput | String | 1. lehetőséget |
+| crossOutput | String | 1\. lehetőséget |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 

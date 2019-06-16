@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23669671c9aec2ebad8e03e06a0ea1b139214cad
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 0b830f0760b768826b2d937b4a8b2ffbd8e9e2a2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65902839"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091670"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-bydesign"></a>Oktatóanyag: Az Azure Active Directory-integráció az SAP Business Bydesignnal
 
@@ -54,7 +54,7 @@ Konfigurálja az integráció az SAP Business bydesign megoldással az Azure AD-
 
 **SAP Business bydesign megoldással hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -125,7 +125,7 @@ Konfigurálja az Azure AD egyszeri bejelentkezés az SAP Business Bydesignnal, h
 
     a. Válassza ki **átalakítási** , egy **forrás**.
 
-    b. Az a **átalakítási** legördülő listában válassza **ExtractMailPrefix()**.
+    b. Az a **átalakítási** legördülő listában válassza **ExtractMailPrefix()** .
 
     c. Az a **paraméter 1** legördülő listára, válassza ki a példányhoz használni kívánt felhasználói attribútum. Például ha az attribútum értékét a ExtensionAttribute2 tárolt az EmployeeID használandó egyedi felhasználói azonosítóként, majd válassza ki user.extensionattribute2.
 
@@ -245,7 +245,7 @@ Ebben a szakaszban egy SAP Business bydesign megoldással Britta Simon nevű fel
 > [!NOTE]
 > Győződjön meg arról, hogy NameID értékének egyeznie kell a felhasználónév mező az SAP Business bydesign megoldással platformon.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

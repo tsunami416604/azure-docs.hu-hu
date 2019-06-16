@@ -17,12 +17,12 @@ ms.date: 01/30/2019
 ms.author: joflore
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c4aa4d3a4425c93cb495d27d0fe38d329ddea7a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9c61c62555b3712983d7eb5c1478ed193730ed9b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60351892"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110575"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>kézikönyv: Elavult eszközök kezelése az Azure ad-ben
 
@@ -54,7 +54,7 @@ Mivel az elavult eszközök regisztrált eszközökként vannak meghatározva, a
 
 A tevékenység-időbélyegző kiértékelését egy eszközről érkező hitelesítési kísérlet váltja ki. Az Azure AD az alábbi esetekben értékeli ki a tevékenység-időbélyegzőt:
 
-- Aktiválódik egy [felügyelt eszközöket](../conditional-access/require-managed-devices.md) vagy [jóváhagyott ügyfélalkalmazásokat](../conditional-access/app-based-conditional-access.md) igénylő feltételes hozzáférési szabályzat.
+- Egy feltételes hozzáférési szabályzatok igénylő [felügyelt eszközök](../conditional-access/require-managed-devices.md) vagy [jóváhagyott ügyfélalkalmazások](../conditional-access/app-based-conditional-access.md) aktiválódott-e.
 
 - A hálózaton vannak aktív, Windows 10 rendszerű, az Azure AD-hez csatlakoztatott vagy a hibrid Azure AD-hez csatlakoztatott eszközök. 
 

@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: 'Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s '
-ms.openlocfilehash: 693abccd7e54a1dfef92cd57a715ac96bfd56a8c
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 53571fdd7c5a93fef4df0832253542a5a6dfbec5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66234005"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058543"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -36,24 +36,26 @@ Jelenleg az Azure fejlesztői, szóközök works hibakeresése egyetlen példán
 
 ## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>"Nem sikerült létrehozni az Azure fejlesztési tárolóhelyek vezérlő" hiba
 
+### <a name="reason"></a>Reason
 Előfordulhat, hogy ezt a hibaüzenetet, ha probléma merül fel a vezérlő létrehozása. Ha ez egy átmeneti hiba, törölje és hozza létre újra a tartományvezérlőt a javítást.
 
-### <a name="try"></a>Próbálja ki:
+### <a name="try"></a>Kipróbálás
 
-A vezérlő törléséhez használja az Azure fejlesztési tárolóhelyek CLI. Nem alkalmas a Visual Studio vagy a Cloud Shellben. A AZDS parancssori felületének telepítéséhez, először telepítse az Azure CLI-vel, és futtassa ezt a parancsot:
+A vezérlő törlése:
+
+```bash
+azds remove -g <resource group name> -n <cluster name>
+```
+
+Az Azure fejlesztési tárolóhelyek CLI vezérlő törölni kell használnia. Nem alkalmas a Visual Studióból egy vezérlő törlése. Is telepíthető az Azure fejlesztési tárolóhelyek CLI az Azure Cloud shellben, az Azure Cloud Shell egy tartományvezérlő nem lehet törölni.
+
+Ha nem rendelkezik az Azure fejlesztési tárolóhelyek CLI, először a következő paranccsal telepítheti majd a vezérlő törlése:
 
 ```cmd
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
 
-És futtassa ezt a parancsot a vezérlő törlése:
-
-```cmd
-azds remove -g <resource group name> -n <cluster name>
-```
-
-A vezérlő újbóli létrehozása a parancssori felület vagy a Visual Studio elvégezhető. Kövesse az utasításokat az oktatóanyagok, mint ha első alkalommal indítása.
-
+A vezérlő újbóli létrehozása a parancssori felület vagy a Visual Studio elvégezhető. Tekintse meg a [fejlesztői csapat](quickstart-team-development.md) vagy [fejlesztés a .NET Core](quickstart-netcore-visualstudio.md) rövid útmutatók, példák.
 
 ## <a name="error-service-cannot-be-started"></a>Hiba történt "szolgáltatás nem indítható."
 
@@ -408,4 +410,7 @@ azds controller create --name my-controller --target-name MyAKS --resource-group
 ## <a name="enabling-dev-spaces-failing-when-windows-node-pools-are-added-to-an-aks-cluster"></a>Fejlesztői, szóközök sikertelen, ha Windows csomópontkészletek adnak hozzá egy AKS-fürt engedélyezése
 
 ### <a name="reason"></a>Reason
-Jelenleg az Azure fejlesztési tárolóhelyek célja, hogy Linux-podok és csak a csomópontok futnak. Jelenleg nem engedélyezhető Windows csomópontkészletek egy AKS-fürtöt az Azure fejlesztési szóközöket.
+Jelenleg az Azure fejlesztési tárolóhelyek célja, hogy Linux-podok és csak a csomópontok futnak. Ha egy AKS-fürtöt Windows csomópontkészletek, biztosítania kell, hogy az Azure fejlesztési tárolóhelyek podok csak ütemezett a Linux-csomópontok. Egy Azure-fejlesztési tárolóhelyek pod futtatásához egy Windows-csomópont van ütemezve, akkor a pod nem indul el, és fejlesztési tárolóhelyek engedélyezése sikertelen lesz.
+
+### <a name="try"></a>Kipróbálás
+[Adjon hozzá egy mellékíz](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) az AKS-fürt Linux biztosításához a podok nem ütemezett futtatásához egy Windows-csomóponton.

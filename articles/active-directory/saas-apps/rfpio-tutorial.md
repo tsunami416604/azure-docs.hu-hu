@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 176e0c80b4b1c70c3f49a35ae04d6233bc080f43
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 63d7b6af8ff76c890b98c29ded0e8bdc637b45dd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687819"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67092849"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező RFPIO
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása a RFPIO konfigurálásához hozzá kell RFPIO a katal�
 
 **RFPIO hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

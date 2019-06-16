@@ -2,7 +2,7 @@
 title: Mi a mi Ha eszközt az Azure Active Directory feltételes hozzáférés?
 description: Ismerje meg, hogyan képes megérteni a feltételes hozzáférési szabályzatokat a hatását a környezetben.
 services: active-directory
-keywords: feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-vel, biztonságos hozzáférés a vállalati erőforrásokhoz, feltételes hozzáférési szabályzatok
+keywords: Feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-ben a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési szabályzatok
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -18,12 +18,12 @@ ms.date: 11/20/2018
 ms.author: joflore
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6271c7a99e82fb1fff2815167b0149c74212f260
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6a0f1fa0630a58054a138b730141b982af427475
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60354338"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111923"
 ---
 # <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Mi a mi Ha eszközt az Azure Active Directory feltételes hozzáférés?
 
@@ -33,7 +33,7 @@ Ez a cikk bemutatja, hogyan használhatja ezt az eszközt a feltételes hozzáf�
 
 ## <a name="what-it-is"></a>Mi ez?
 
-A **feltételes hozzáférés Lehetőségelemzési házirend eszközzel** lehetővé teszi, hogy a feltételes hozzáférési szabályzatokat az adott környezet hatásának megismerése. Nem szükséges manuálisan végrehajtott bejelentkezésekkel tesztelni a szabályzatokat, az eszköz használatával egy szimulált felhasználói bejelentkezést értékelhet ki. A szimuláció megbecsüli a bejelentkezésnek a szabályzatokra gyakorolt hatását, és létrehoz egy szimulációs jelentést. A jelentés nem tartalmazza csak alkalmazott feltételes hozzáférési szabályzatok is [klasszikus szabályzatok](policy-migration.md#classic-policies) ha vannak ilyenek.    
+A **feltételes hozzáférés Lehetőségelemzési házirend eszközzel** lehetővé teszi, hogy a feltételes hozzáférési szabályzatokat az adott környezet hatásának megismerése. Nem szükséges manuálisan végrehajtott bejelentkezésekkel tesztelni a szabályzatokat, az eszköz használatával egy szimulált felhasználói bejelentkezést értékelhet ki. A szimuláció megbecsüli a bejelentkezésnek a szabályzatokra gyakorolt hatását, és létrehoz egy szimulációs jelentést. A jelentés nem tartalmazza csak alkalmazott feltételes hozzáférési szabályzatokat, hanem [klasszikus szabályzatok](policy-migration.md#classic-policies) ha vannak ilyenek.    
 
 A mi Ha eszközök azt is lehetővé teszi a gyors határozza meg a szabályzatokban, amelyek egy adott felhasználó a alkalmazni. Használhatja a információkat, például ha a probléma elhárításához van szüksége.  
 
@@ -86,11 +86,11 @@ Az IP-cím egy IPv4-címmel referenciaszámítógépnek a [helyfeltétel](locati
 
 ### <a name="device-platforms"></a>Eszközplatformok
 
-Ez a beállítás utánozza a [eszköz platformok feltétel](conditions.md#device-platforms) és egyenértékű jelöli **minden platformon (beleértve a nem támogatottakat)**. 
+Ez a beállítás utánozza a [eszköz platformok feltétel](conditions.md#device-platforms) és egyenértékű jelöli **minden platformon (beleértve a nem támogatottakat)** . 
 ### <a name="client-apps"></a>Ügyfélalkalmazások
 
 Ez a beállítás utánozza a [ügyfél alkalmazások feltétel](conditions.md#client-apps).
-Alapértelmezés szerint a beállítás hatására az összes házirend kellene értékelését **böngésző** vagy **mobilalkalmazások és asztali ügyfelek** vagy külön-külön vagy mindkettő kiválasztva. Azt is észleli házirendeket kikényszerítő **Exchange ActiveSync (EAS)**. Ez a beállítás kiválasztásával szűkítheti:
+Alapértelmezés szerint a beállítás hatására az összes házirend kellene értékelését **böngésző** vagy **mobilalkalmazások és asztali ügyfelek** vagy külön-külön vagy mindkettő kiválasztva. Azt is észleli házirendeket kikényszerítő **Exchange ActiveSync (EAS)** . Ez a beállítás kiválasztásával szűkítheti:
 
 - **Böngésző** értékelheti ki az összes szabályzat, legalább **böngésző** kiválasztott. 
 
@@ -102,7 +102,7 @@ Alapértelmezés szerint a beállítás hatására az összes házirend kellene 
 Ez a beállítás utánozza a [bejelentkezési kockázati feltétellel](conditions.md#sign-in-risk).   
 
 
-## <a name="evaluation"></a>Próbaverzió 
+## <a name="evaluation"></a>Értékelés 
 
 Az értékelés indításához kattintson **mi történik, ha**. Az értékelés eredménye nyújt egy jelentést, amely a következőkből áll: 
 
@@ -123,8 +123,8 @@ A házirendekben, amelyek nem érvényesek a felhasználói listán is, és is m
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha azt szeretné tudni, hogyan lehet feltételes hozzáférési szabályzat konfigurálása, lásd: [többtényezős hitelesítés megkövetelése az Azure Active Directory feltételes hozzáférés az adott alkalmazások](app-based-mfa.md).
+- Ha azt szeretné tudni, hogyan lehet feltételes hozzáférési szabályzat konfigurálása, lásd: [megkövetelése MFA konkrét alkalmazások esetén az Azure Active Directory feltételes hozzáférés](app-based-mfa.md).
 
-- Ha kész feltételes hozzáférési szabályzatokat konfigurálni a környezetében, tekintse át [az Azure Active Directory feltételes hozzáféréssel kapcsolatos ajánlott eljárásait](best-practices.md). 
+- Ha készen áll a környezetre vonatkozó feltételes hozzáférési szabályzatok konfigurálására, tekintse meg a [gyakorlati tanácsok az Azure Active Directory feltételes hozzáférés](best-practices.md). 
 
 - Ha azt szeretné, hogy klasszikus szabályzatok migrálása, lásd: [az Azure Portalon klasszikus szabályzatok Migrálása](policy-migration.md)  

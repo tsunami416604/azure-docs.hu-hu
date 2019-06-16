@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: e81cc1b3d80afd39a74c3046b1f8020e0a524ae4
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 7078a1a5edc310c799690f0f7236dd0947e3290b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237376"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059196"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Rendszeres biztonsági mentése és visszaállítása az Azure Service Fabricben 
 > [!div class="op_single_selector"]
@@ -55,7 +55,7 @@ A Service Fabric egy érhet el a következő funkciók kapcsolatos rendszeres bi
 - A biztonsági mentések (későbbi) megőrzési kezelése
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Service Fabric-fürtön a Fabric verziója 6.2 vagy újabb. A Windows Server létre kell hozni a fürtöt. Ebben [cikk](service-fabric-cluster-creation-via-arm.md) létrehozás a Service Fabric-fürt Azure-erőforrás-sablon használatával.
+* Service Fabric-fürtön a Fabric 6.4 verzió vagy újabb. Ebben [cikk](service-fabric-cluster-creation-via-arm.md) létrehozás a Service Fabric-fürt Azure-erőforrás-sablon használatával.
 * X.509-tanúsítvány a titkos kulcsok tárolási való csatlakozáshoz szükséges titkosítási biztonsági másolatok tárolására. Tekintse meg [cikk](service-fabric-cluster-creation-via-arm.md) szeretné elsajátítani, vagy hozzon létre egy X.509 tanúsítvány.
 * Service Fabric Reliable Stateful alkalmazás használatával a Service Fabric SDK 3.0-s verzió vagy újabb. Alkalmazások .NET Core 2.0, kérelmet kell kialakítani, Service Fabric SDK verziója 3.1-es vagy újabb.
 * Hozzon létre az Azure Storage-fiók alkalmazás biztonsági mentések tárolására.

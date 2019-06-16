@@ -14,10 +14,10 @@ ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 39b359ef7feeaec541ba17e98a5d1e9b74c6403a
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65958000"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-directory"></a>Zárja be a munkahelyi vagy iskolai fiókkal, egy nem felügyelt címtárban
@@ -39,7 +39,7 @@ A fiók megszüntetése előtt ellenőrizze a következő elemek:
 > [!WARNING]
 > A fiók megszüntetése nem vonható vissza. Ha megszünteti a fiókot, az összes személyes adatot törlődni fog. Már nem kell fiókját és adatait a fiókjához való hozzáférést.
 
-## <a name="close-your-account"></a>Fiók megszüntetése
+## <a name="close-your-account"></a>A fiók megszüntetése
 
 Zárja be egy nem felügyelt munkahelyi vagy iskolai fiókját, kövesse az alábbi lépéseket:
 

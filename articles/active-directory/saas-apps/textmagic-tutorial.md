@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: c919d02a72565f42c125e6d123b48e2cedaea508
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 1184e282c8dc52cb616bcc47068d96fe61651da9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407979"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088877"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TextMagic
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása a TextMagic konfigurálásához hozzá kell TextMagic 
 
 **TextMagic hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -116,10 +116,10 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés TextMagic, hajtsa v�
 
     | Name (Név) |   Adatforrás-attribútum| Névtér  |
     | --------------- | --------------- | --------------- |
-    | Vállalati | user.companyname | https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | Keresztnév               | user.givenname |  https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | Vezetéknév            | user.surname |  https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | telefon               | user.telephonenumber |  https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Vállalati | user.companyname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Keresztnév               | user.givenname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Vezetéknév            | user.surname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Telefonszám               | user.telephonenumber |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | | |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
@@ -166,13 +166,13 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés TextMagic, hajtsa v�
 
     ![TextMagic konfiguráció](./media/textmagic-tutorial/config2.png)
 
-    a. A **identitásszolgáltató Entitásazonosító:** szövegmezőjébe illessze be az értéket, **az Azure AD-azonosító**, Azure Portalról másolt.
+    a. A **identitásszolgáltató Entitásazonosító:**  szövegmezőjébe illessze be az értéket, **az Azure AD-azonosító**, Azure Portalról másolt.
 
-    b. A **identitásszolgáltató egyszeri bejelentkezési URL-cím:** szövegmező, illessze be az értéket a **bejelentkezési URL-cím**, az Azure Portalról másolt.
+    b. A **identitásszolgáltató egyszeri bejelentkezési URL-cím:**  szövegmező, illessze be az értéket a **bejelentkezési URL-cím**, az Azure Portalról másolt.
 
-    c. A **identitásszolgáltató SLO URL-cím:** szövegmezőjébe illessze be az értéket, **kijelentkezési URL-címe**, Azure Portalról másolt.
+    c. A **identitásszolgáltató SLO URL-cím:**  szövegmezőjébe illessze be az értéket, **kijelentkezési URL-címe**, Azure Portalról másolt.
 
-    d. Nyissa meg a **base-64 kódolású tanúsítvány** a Jegyzettömbben az Azure-portálról letöltött, másolja a tartalmát a vágólapra, és illessze be azt a **x509 nyilvános tanúsítvány:** szövegmezőbe.
+    d. Nyissa meg a **base-64 kódolású tanúsítvány** a Jegyzettömbben az Azure-portálról letöltött, másolja a tartalmát a vágólapra, és illessze be azt a **x509 nyilvános tanúsítvány:**  szövegmezőbe.
 
     e. Kattintson a **Save** (Mentés) gombra.
 
@@ -194,7 +194,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be **brittasimon@yourcompanydomain.extension**. Például: BrittaSimon@contoso.com
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon@yourcompanydomain.extension** . Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
@@ -231,7 +231,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 Alkalmazás által támogatott **csak az idő felhasználókiépítés** , miután a felhasználók hitelesítésére, az alkalmazás automatikusan létrejön. Írja be az adatokat a rendszer az alárendelt fiók aktiválására szolgáló első bejelentkezéskor egyszer kell.
 Nincs meg ebben a szakaszban a művelet elem.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

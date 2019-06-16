@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: 7fd9ae3ab1f50dc91118ba11bc357a0f6dc0e771
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 628a96c4e912341226d67a7ed8f241194e7b7825
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141046"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080036"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Entitástípusok és a LUIS felhasználási célját
 
@@ -47,7 +47,7 @@ Entitások az utterance (kifejezés) lekérni kívánt adatok. Ez lehet a nevét
 |Kimondott szöveg|Entitás|Adatok|
 |--|--|--|
 |A New York-i 3 jegyek megvásárlása|Előre összeállított száma<br>Location.Destination|3<br>New York|
-|London, New York-i jegyet vásárolni március 5|Location.Origin<br>Location.Destination<br>Előre összeállított datetimeV2|New York<br>London<br>2018. március 5.|
+|London, New York-i jegyet vásárolni március 5|Location.Origin<br>Location.Destination<br>Előre összeállított datetimeV2|New York<br>London<br>2018\. március 5.|
 
 ## <a name="entities-are-optional-but-highly-recommended"></a>Entitások nem kötelező, de a erősen ajánlott
 
@@ -94,11 +94,11 @@ Entitások kinyerhetők a machine learning, amely lehetővé teszi a LUIS, és f
 
 Az entitás ki kell olvasni, miután az Entitásadatok információ egyetlen egységként jelölt, vagy más entitásokkal az információk az ügyfélalkalmazás egységet kombinálva.
 
-|Machine-learned|Jelölheti meg|Oktatóanyag|Példa<br>Válasz|Entitástípus|Cél|
+|Machine-learned|Jelölheti meg|Oktatóanyag|Példa<br>Válasz|Entitás típusa|Cél|
 |--|--|--|--|--|--|
 |✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**Összetett**](#composite-entity)|A csoportosítási entitások, függetlenül attól, entitás típusa.|
 |||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**lista**](#list-entity)|Elemek listáját és a szinonimákat a pontos egyezés egyeztetése ki kell olvasni.|
-|Vegyes||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Pattern.any**](#patternany-entity)|Az entitás ahol entitás végén tekintve nehéz lenne meghatározni.|
+|Mixed||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Pattern.any**](#patternany-entity)|Az entitás ahol entitás végén tekintve nehéz lenne meghatározni.|
 |||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**Előre összeállított**](#prebuilt-entity)|Már betanított különböző típusú adatok kinyeréséhez.|
 |||[✔](luis-quickstart-intents-regex-entity.md)|[✔](luis-concept-data-extraction.md#regular-expression-entity-data)|[**Reguláris kifejezés**](#regular-expression-entity)|Reguláris kifejezés használatával összevetheti a szöveget.|
 |✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**Simple**](#simple-entity)|Egyetlen fogalma az szót vagy kifejezést tartalmaz.|
@@ -108,6 +108,30 @@ Egyetlen gép megismert entitások kell példa megcímkézzen kell megjelölni. 
 Pattern.any entitások kell kell megjelölni a [minta](luis-how-to-model-intent-pattern.md) sablon példákat, nem a felhasználó szándékának példák. 
 
 Vegyes entitások entitás észlelési módszerek kombinációját használják.
+
+## <a name="machine-learned-entities-use-context"></a>Gép megismert entitások környezet használata
+
+Gép megismert entitások tanuljon a környezetben, az utterance (kifejezés). Jelentős így elhelyezési változata a példa kimondott szöveg. 
+
+## <a name="non-machine-learned-entities-dont-use-context"></a>Nem gép megismert entitások környezetben ne használjon.
+
+A következő nem gépen megismert entitások nem utterance (kifejezés) környezeti során figyelembe entitások megfelelő: 
+
+* [Előre összeállított entitások](#prebuilt-entity)
+* [Regex entitások](#regular-expression-entity)
+* [Entitások listája](#list-entity) 
+
+Ezek az entitások nem igénylik a címkézési vagy a modell betanításához. Miután hozzá, vagy adja meg az entitást, az entitások ki kell olvasni. A rendszer a kompromisszummal jár, hogy ezeket az entitásokat is lehet overmatched, ahol összefüggésben volt figyelembe venni, ha az egyezés lenne nem történtek-e. 
+
+Az entitások listája az új modellek gyakran történik. Hozhat létre, és a egy lista entitással modell tesztelése, azonban amikor közzétesszük a modellt, és lekérdezéseket fogadjon a végpont, akkor vegye figyelembe a a modell van overmatching környezet hiánya miatt. 
+
+Ha azt szeretné, egyeztetheti a szavakat vagy kifejezéseket, és figyelembe kell venni a környezetben, két lehetősége van. Az első, hogy egy egyszerű entitás párosítva a kifejezések listáját. A kifejezéslista az egyező nem használható, de ehelyett segítségével jel viszonylag hasonló szavakat (felcserélhetők lista). Kifejezés listáját változatok helyett pontos egyezésűnek kell rendelkeznie, ha a lista entitás használata egy szerepkört, az alábbiakban.
+
+### <a name="context-with-non-machine-learned-entities"></a>Nem gép megismert entitások-környezet
+
+Ha azt szeretné, hogy az utterance (kifejezés) nem gépen megismert entitások számít, hogy a környezetében, használjon [szerepkörök](luis-concept-roles.md).
+
+Ha rendelkezik egy nem gép megtanult entitás például [előre összeállított entitások](#prebuilt-entity), [regex](#regular-expression-entity) entitások vagy [lista](#list-entity) entitásban, amely meghaladja a kívánt példány van egyeztetéséhez, fontolja meg egy entitás létrehozása a két szerepkört. Egy szerepkör rögzítik, amit keres, és a egy szerepkör milyen nem keres rögzíti. A példa utterances címkével kell mindkét verziót kell.  
 
 ## <a name="composite-entity"></a>Összetett entitást
 
@@ -133,8 +157,9 @@ Lista entitások mellett azok szinonimáit kapcsolódó szavakat rögzített, le
 Az entitás egy jó fér el, ha a szöveges adatokat:
 
 * Olyan ismert.
+* Nem változnak gyakran. Gyakran változtassa meg a listában, vagy szeretné, hogy önálló bontsa ki a lista kell, ha egy egyszerű entitás, súlyozott kifejezések listájával, jobb választás. 
 * A készlet nem haladja meg a LUIS maximális [határait](luis-boundaries.md) ezen entitástípus esetében.
-* A kimondott szöveg egy része pontosan megegyezik egy szinonimával vagy a kanonikus névvel. A LUIS túli szöveg pontos egyezés a lista nem használ. Amely szerint elnevezéseket és más változata létezik egy lista entitással nincs feloldva. Kezelheti a változatok, fontolja meg egy [minta](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) választható szöveg szintaxissal.
+* A kimondott szöveg egy része pontosan megegyezik egy szinonimával vagy a kanonikus névvel. A LUIS túli szöveg pontos egyezés a lista nem használ. Intelligens egyező, kis, származtató, elnevezéseket és más változata létezik egy lista entitással nincs feloldva. Kezelheti a változatok, fontolja meg egy [minta](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) választható szöveg szintaxissal.
 
 ![lista entitás](./media/luis-concept-entities/list-entity.png)
 
@@ -158,10 +183,11 @@ Az alábbi táblázat minden egyes sor az utterance (kifejezés) két verziója 
 
 |Kimondott szöveg|
 |--|
-|"A Man akik tévesen His Feleségemmel volt-e egy Hat és a egy American által írt ebben az évben egyéb klinikai ellenőrző?<br>Volt **a Man akik tévesen His Feleségemmel Hat és más klinikai ellenőrző** -amerikai által írt ebben az évben?|
-|`Was Half Asleep in Frog Pajamas written by an American this year?`<br>`Was **Half Asleep in Frog Pajamas** written by an American this year?`|
-|`Was The Particular Sadness of Lemon Cake: A Novel written by an American this year?`<br>`Was **The Particular Sadness of Lemon Cake: A Novel** written by an American this year?`|
-|`Was There's A Wocket In My Pocket! written by an American this year?`<br>`Was **There's A Wocket In My Pocket!** written by an American this year?`|
+|Az ember akik tévesen His Feleségemmel Hat és más klinikai ellenőrző élményéért-amerikai ebben az évben?<br><br>Volt **a Man akik tévesen His Feleségemmel Hat és más klinikai ellenőrző** -amerikai által írt ebben az évben?|
+|Az Amerikai által írt ebben az évben béka Pajamas a fele alvó állapotban volt?<br><br>Volt **fél alvó állapotban lévő béka Pajamas** -amerikai által írt ebben az évben?|
+|Az adott Szomorúság kisfejű tortaszelet lett: Egy új, az Amerikai által írt ebben az évben?<br><br>Volt **az adott Szomorúság kisfejű tortaszelet: Egy új** -amerikai által írt ebben az évben?|
+|Kapott, a saját zsebébe tenni egy Wocket van! az Amerikai által írt ebben az évben?<br><br>Volt **a saját zsebébe tenni egy Wocket van!** az Amerikai által írt ebben az évben?|
+||
 
 ## <a name="prebuilt-entity"></a>Előre összeállított entitások
 
@@ -225,6 +251,18 @@ Az entitás az a jó, mikor igazítása:
 
 [Oktatóanyag](luis-quickstart-intents-regex-entity.md)<br>
 [Entitás példa JSON-válasz](luis-concept-data-extraction.md#regular-expression-entity-data)<br>
+
+Előfordulhat, hogy több, mint a megfelelő várt reguláris kifejezések felel meg. Ez például a numerikus szót, például a megfelelő `one` és `two`. Ilyen például a következő reguláris kifejezés, amely megfelel a számot, `one` együtt más számokat:
+
+```javascript
+(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*
+``` 
+
+A regex kifejezés is megegyezik, ezek a számok, mint például végződhet szavakat `phone`. Annak érdekében, hogy az ehhez hasonló problémák megoldásához, győződjön meg arról, hogy a következő reguláris kifejezésre illeszkedik veszi a számla word határok. A következő reguláris kifejezést használja a word határok használatára ebben a példában a következő reguláris kifejezésre:
+
+```javascript
+\b(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*\b
+```
 
 ## <a name="simple-entity"></a>Egyszerű entitás 
 

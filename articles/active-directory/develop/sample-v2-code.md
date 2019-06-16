@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4efe7fabb503cbfdc855d46ffea24dda2cb9c05f
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: 327111182a4ad8958f2d852a88ba0608d8510c51
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65849941"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055907"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>A Microsoft identity platform Kódminták (v2.0-végpontra)
 
@@ -47,7 +47,7 @@ Az alapszintű forgatókönyv az egyes minta ismertetése: [típusú alkalmazás
 
 Ezek a minták ismertetik, hogyan írhat egy védett Microsoft identity platform egyoldalas alkalmazás. Ezek a minták a MSAL.js változata valamelyikével:
 
-| Platform | Leírás | Összekapcsolás |
+| Platform | Leírás | Hivatkozás |
 | -------- | --------------------- | -------- |
 | ![A JavaScript](media/sample-v2-code/logo_js.png) [JavaScript (msal.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | A Microsoft Graph hívások |[javascript-graphapi-web-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2) |
 | ![A JavaScript](media/sample-v2-code/logo_js.png) [JavaScript (msal.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | Meghívja a B2C-vel |[b2c-javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) |
@@ -61,7 +61,7 @@ A következő példák bemutatják, webalkalmazások, amelyek a felhasználók. 
 
 | Platform | Csak a felhasználó bejelentkezik | Képes bejelentkeztetni a felhasználókat, és a Microsoft Graph-hívások |
 | -------- | ------------------- | --------------------------------- |
-| ![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.1 | [Az ASP.NET Core-WebApp jelentkezik be a felhasználók oktatóanyag](https://aka.ms/aspnetcore-webapp-sign-in) | Ugyanazt a mintát a [ASP.NET Core-webalkalmazás hívja a Microsoft Graph](https://aka.ms/aspnetcore-webapp-call-msgraph) fázis |
+| ![ASP.NET-mag](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.2 | [Az ASP.NET Core-WebApp jelentkezik be a felhasználók oktatóanyag](https://aka.ms/aspnetcore-webapp-sign-in) | Ugyanazt a mintát a [ASP.NET Core-webalkalmazás hívja a Microsoft Graph](https://aka.ms/aspnetcore-webapp-call-msgraph) fázis |
 | ![ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [Az ASP.NET a rövid útmutató](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[msgraph-training-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
 | ![Node.js](media/sample-v2-code/logo_nodejs.png)  |                   | [NODE.js – rövid útmutató](https://github.com/azureadquickstarts/appmodelv2-webapp-openidconnect-nodejs) |
 | ![Ruby](media/sample-v2-code/logo_ruby.png) |                   | [msgraph-training-rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp) |
@@ -86,7 +86,7 @@ A következő példák bemutatják egy alkalmazás, amely a Microsoft Graph API 
 | Ügyfélalkalmazás | Platform | A folyamat/engedélyezés | A Microsoft Graph hívások |
 | ------------------ | -------- | ---------- | -------------------- |
 | Konzol | ![.NET Core](media/sample-v2-code/logo_NETcore.png)</p> ASP.NET  | [Ügyfél-hitelesítő adatok](msal-authentication-flows.md#client-credentials) | [dotnetcore-daemon-v2](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2) |
-| Webalkalmazás | ![ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET  | [Ügyfél-hitelesítő adatok](msal-authentication-flows.md#client-credentials) | [dotnet-daemon-v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2) |
+| Web app | ![ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET  | [Ügyfél-hitelesítő adatok](msal-authentication-flows.md#client-credentials) | [dotnet-daemon-v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2) |
 
 ## <a name="headless-applications"></a>Távfelügyelt alkalmazások
 
@@ -98,11 +98,12 @@ A következő minta bemutatja egy webes böngésző nélkül futó nyilvános ü
 
 ## <a name="web-apis"></a>Webes API-k
 
-A következő minta bemutatja, hogyan védheti meg a webes API-t a Microsoft identity platform végponttal. Az API-t a WPF-alkalmazás által történik, de minden olyan alkalmazás is meghívható. A webes API a Microsoft Graph is meghívja.
+A következő minták bemutatja, hogyan védheti meg a webes API-t a Microsoft identity platform végponttal, és hogyan hívhat meg egy alsóbb rétegbeli API-t a webes API-ból.
 
 | Platform | Sample |
 | -------- | ------------------- |
-| ![.NET/C#](media/sample-v2-code/logo_NET.png) | A (szolgáltatás) WebAPI [dotnet-natív-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph) |
+| ![ASP.NET-mag](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.2 | ASP.NET Core Web API (szolgáltatás), [dotnet-natív-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph)  |
+| ![ASP.NET](media/sample-v2-code/logo_NET.png)</p>ASP.NET, MVC | Webes API-t (szolgáltatás), [ms-identity-aspnet-webapi-onbehalfof](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof) |
 
 ## <a name="other-microsoft-graph-samples"></a>Más Microsoft Graph-minták
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 57d80394c89072a0d0a2c87a378942c32ade6844
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 678f4e52fd8d3adf802bd89a1cc07ff585e696ef
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60278296"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67101806"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gaggleamp"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező GaggleAMP
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása a GaggleAMP konfigurálásához hozzá kell GaggleAMP 
 
 **GaggleAMP hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -133,7 +133,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés GaggleAMP, hajtsa v�
 
 ### <a name="configure-gaggleamp-single-sign-on"></a>GaggleAMP egyszeri bejelentkezés konfigurálása
 
-1. Egy másik böngészőben példányában, nyissa meg a SAML SSO lapot az Ön által a Gaggle támogatási csoportjának létrehozott (például: *https://accounts.gaggleamp.com/saml_configurations/oXH8sQcP79dOzgFPqrMTyw/edit*).
+1. Egy másik böngészőben példányában, nyissa meg a SAML SSO lapot az Ön által a Gaggle támogatási csoportjának létrehozott (például: *https://accounts.gaggleamp.com/saml_configurations/oXH8sQcP79dOzgFPqrMTyw/edit* ).
 
 2. Az a **SAML SSO** lapon, a következő lépésekkel:  
    

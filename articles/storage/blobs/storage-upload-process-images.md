@@ -10,25 +10,25 @@ ms.date: 11/26/2018
 ms.author: normesta
 ms.reviewer: seguler
 ms.custom: mvc
-ms.openlocfilehash: e5be86f9f7fbaedeb8fbb10b89926644dcf8aac2
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 612c0b48faac365623fe36d6d2435c1c79566d9b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65835131"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071328"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Oktatóanyag: Képadatok feltöltése a felhőbe az Azure Storage segítségével
 
 Ez az oktatóanyag egy sorozat első része. Ebben az oktatóanyagban megtudhatja, hogyan helyezhet üzembe egy webalkalmazást, amely az Azure Storage ügyféloldali kódtárat használja tölthet fel képeket a storage-fiók. Ha elkészült, rendelkezni fog a egy webalkalmazást, amely tárolja, és megjeleníti a rendszerképeket az Azure storage-ból.
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
-![Képek tároló nézete](media/storage-upload-process-images/figure2.png)
+![Képméretező alkalmazás a .NET-ben](media/storage-upload-process-images/figure2.png)
 
 # <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
-![Képek tároló nézete](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![Kép méret alkalmazás Node.js V2-ben](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 # <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
-![Képek tároló nézete](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![A Node.js V10 kép méret alkalmazás](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 
@@ -211,7 +211,7 @@ A webalkalmazás teszteléséhez nyissa meg a közzétett alkalmazás URL-címé
 
 Válassza ki a **fényképek feltöltése** régiót válassza ki, és töltsön fel egy fájlt, vagy egy fájl húzza a régió. Sikeres feltöltés esetén a kép eltűnik. A **létrehozott miniatűrök** szakasz üres marad, amíg ez a témakör későbbi részében teszteljük.
 
-![ImageResizer alkalmazás](media/storage-upload-process-images/figure1.png)
+![A .NET-ben fényképek feltöltése](media/storage-upload-process-images/figure1.png)
 
 A mintakód a `UploadFiletoStorage` a feladat a *Storagehelper.cs* fájllal a képek a *lemezképek* tárolón belül a tárfiók tárfiókkulcsait a [ UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) metódust. A következő mintakód tartalmazza a `UploadFiletoStorage` műveletet.
 
@@ -254,7 +254,7 @@ Az előző feladatban használt osztályok és módszerek a következők:
 
 Válassza ki **fájl kiválasztása** jelöljön ki egy fájlt, majd kattintson a **kép feltöltése**. A **létrehozott miniatűrök** szakasz üres marad, amíg ez a témakör későbbi részében teszteljük. 
 
-![Képfeltöltő alkalmazás](media/storage-upload-process-images/upload-app-nodejs.png)
+![A Node.js v2-ben fényképek feltöltése](media/storage-upload-process-images/upload-app-nodejs.png)
 
 A mintakódban a `post` útvonal felelős a képek blobtárolóba való feltöltéséért. Az útvonal modulok használatával segíti a feltöltés feldolgozását:
 
@@ -318,7 +318,7 @@ router.post('/', uploadStrategy, (req, res) => {
 
 Válassza ki **fájl kiválasztása** jelöljön ki egy fájlt, majd kattintson a **kép feltöltése**. A **létrehozott miniatűrök** szakasz üres marad, amíg ez a témakör későbbi részében teszteljük. 
 
-![Képfeltöltő alkalmazás](media/storage-upload-process-images/upload-app-nodejs.png)
+![A Node.js V10 fényképek feltöltése](media/storage-upload-process-images/upload-app-nodejs.png)
 
 A mintakódban a `post` útvonal felelős a képek blobtárolóba való feltöltéséért. Az útvonal modulok használatával segíti a feltöltés feldolgozását:
 
@@ -400,7 +400,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com). A bal oldali men�
 
 Ellenőrizze, hogy a kép megjelenik-e a tárolóban.
 
-![Képek tároló nézete](media/storage-upload-process-images/figure13.png)
+![Képek tároló az Azure Portal listája](media/storage-upload-process-images/figure13.png)
 
 ## <a name="test-thumbnail-viewing"></a>Miniatűr megtekintésének tesztelése
 
@@ -413,13 +413,13 @@ A Fájlkereső a válasszon ki egy fájlt, és válassza ki **feltöltése**.
 Lépjen vissza az alkalmazásba és ellenőrizze, hogy a **thumbnails** tárolóba feltöltött kép látható-e.
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
-![Képek tároló nézete](media/storage-upload-process-images/figure2.png)
+![.NET-lemezkép méret alkalmazás jelenik meg új rendszerképpel](media/storage-upload-process-images/figure2.png)
 
 # <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
-![Képek tároló nézete](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![NODE.js-V2 kép méret alkalmazás jelenik meg új rendszerképpel](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 # <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
-![Képek tároló nézete](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![NODE.js V10 kép méret alkalmazás jelenik meg új rendszerképpel](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 

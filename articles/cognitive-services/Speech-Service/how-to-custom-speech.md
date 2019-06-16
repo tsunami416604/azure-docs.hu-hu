@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: ab33feb1ffdbced193afaba8f52719b3c215652f
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: f9b9fc0a2939f601cbddafb6ac400130e794da2b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65511117"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67060891"
 ---
 # <a name="what-is-custom-speech"></a>Mi az egyéni beszédfelismerési?
 
@@ -29,7 +29,7 @@ Ez az ábra a Custom Speech-portál alkotóelemeit emeli ki. Az alábbi hivatkoz
 
 ![A Custom Speech-portál alkotó különböző összetevői emeli ki.](./media/custom-speech/custom-speech-overview.png)
 
-1. [Fizessen elő és hozzon létre egy projektet](#set-up-your-azure-account) – Azure-fiók létrehozása, és feliratkozhat a beszédszolgáltatások. Ez az egységesített előfizetés hozzáférést biztosít a hang-szöveg, szöveg-hang transzformációs, beszédalapú fordítási és a custom speech-portál. Ezután beszédszolgáltatások előfizetését használja, hozzon létre az első egyéni beszéd-projekt.
+1. [Fizessen elő és hozzon létre egy projektet](#set-up-your-azure-account) – Azure-fiók létrehozása, és feliratkozhat a beszédszolgáltatások. Ez az egységesített előfizetés hozzáférést biztosít a hang-szöveg, szöveg-hang transzformációs, beszédalapú fordítási és a Custom Speech-portál. Ezután beszédszolgáltatások előfizetését használja, hozzon létre az első egyéni beszéd-projekt.
 
 2. [Tesztadatok feltöltése](how-to-custom-speech-test-data.md) -feltöltési Tesztadatok (hangfájlokat) értékelheti ki a Microsoft hang-szöveg transzformációs szánt az alkalmazásokat, eszközöket és termékeket.
 
@@ -52,7 +52,7 @@ Miután létrehozott egy Azure-fiók és a egy beszédszolgáltatások előfizet
 
 1. Az beszédszolgáltatások előfizetési kulcs lekérése az Azure Portalról.
 2. Jelentkezzen be a [Custom Speech-portál](https://aka.ms/custom-speech).
-3. Válassza ki a kell dolgozni az előfizetés és creat egy beszéd-projektet.
+3. Válassza ki az előfizetést, és hozzon létre egy beszéd projektet kell.
 4. Ha szeretné módosítani az előfizetés, használja a **fogaskerék** ikonra a felső navigációs menüben található.
 
 ## <a name="how-to-create-a-project"></a>A projekt létrehozása

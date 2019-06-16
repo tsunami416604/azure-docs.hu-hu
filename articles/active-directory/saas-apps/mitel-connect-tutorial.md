@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 611867cf5606d5a1078706e1c0f67f673a7fa500
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: b656bbb7c5924f14b300f0352551530bb47f2a53
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66254599"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097115"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect"></a>Oktatóanyag: Mitel MiCloud csatlakoztatása az Azure Active Directory-integráció
 
@@ -215,7 +215,7 @@ Hozzon létre egy felhasználót a MiCloud csatlakozáshoz fiók az alábbi adat
 
 **MEGJEGYZÉS:** A felhasználó MiCloud csatlakozáshoz felhasználónév a felhasználó e-mail-címre az Azure-ban azonosnak kell lennie.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni fogja az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

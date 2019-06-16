@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 99439c2b6bd4fdd271dda7a49850c5b6f44330b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2d30d044a26e6a092eba267f223be9b10c3a238b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66165585"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075824"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>Automatikus biztonsági mentés az SQL Server 2014 virtuális gépeken (Resource Manager)
 
@@ -77,21 +77,19 @@ Az Azure portal segítségével a konfigurálása az automatikus biztonsági men
 
 Az Azure portal segítségével automatikus biztonsági mentés konfigurálása a Resource Manager-alapú üzemi modellben létrehozott egy új SQL Server 2014 virtuális gépet.
 
-Az a **SQL Server-beállítások** ablaktáblán válassza előbb **automatikus biztonsági mentés**. Az alábbi Azure-portál képernyőképe látható a **SQL automatikus biztonsági mentés** beállításait.
+Az a **SQL Server-beállítások** fülre, görgessen le a **automatikus biztonsági mentés** válassza **engedélyezése**. A megőrzési időtartamot, és a storage-fiókot, valamint titkosításának engedélyezésével, rendszer-adatbázisok biztonsági mentése, és a egy biztonsági mentési ütemezés konfigurálását is megadhat.  Az alábbi Azure-portál képernyőképe látható a **SQL automatikus biztonsági mentés** beállításait.
 
 ![SQL automatikus biztonsági mentés konfigurálása az Azure Portalon](./media/virtual-machines-windows-sql-automated-backup/azure-sql-arm-autobackup.png)
 
 ## <a name="configure-existing-vms"></a>Meglévő virtuális gép konfigurálása
 
-Meglévő SQL Server virtuális gépek esetében válassza ki az SQL Server virtuális gépet. Válassza ki a **SQL Server-konfiguráció** szakaszban a virtuális gép **beállítások**.
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
+Meglévő SQL Server virtuális gépek, keresse meg a [SQL virtuális gépek erőforrás](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource) majd **biztonsági mentések**. 
 
 ![SQL automatikus biztonsági mentés a meglévő virtuális gépek](./media/virtual-machines-windows-sql-automated-backup/azure-sql-rm-autobackup-existing-vms.png)
 
-Az a **SQL Server-konfiguráció** ablaktáblán kattintson a **szerkesztése** gomb az automatikus biztonsági mentés szakaszban.
-
-![Meglévő virtuális gépek számára az SQL automatikus biztonsági mentés konfigurálása](./media/virtual-machines-windows-sql-automated-backup/azure-sql-rm-autobackup-configuration.png)
-
-Ha elkészült, kattintson a **OK** gomb alján a **SQL Server-konfiguráció** beállításait a módosítások mentéséhez.
+Ha elkészült, kattintson a **alkalmaz** gomb alján a **biztonsági mentések** lapon a módosítások mentéséhez.
 
 Ha első alkalommal engedélyezi automatikus biztonsági mentés, akkor az Azure az SQL Server IaaS-ügynök úgy konfigurálja a háttérben. Ebben az időszakban az Azure Portalon nem jelenik meg, hogy az automatikus biztonsági mentés konfigurálva van-e. Várjon néhány percet az ügynök telepítve van, úgy konfigurálni. Ezt követően az Azure-portálon jelenik meg az új beállítások.
 
@@ -119,7 +117,7 @@ $resourcegroupname = "resourcegroupname"
 
 Ha az SQL Server IaaS-ügynök bővítmény telepítve van, megjelenik az "SqlIaaSAgent" vagy "SQLIaaSExtension" jelenik. **ProvisioningState** esetében a kiterjesztést is jelenítsen meg a "sikeres üzenet".
 
-Ha van telepítve, vagy nem telepítése sikertelen volt, a következő paranccsal telepítheti. A virtuális gép nevére és erőforráscsoportjára csoporton felül is meg kell adnia a régió (**$region**), amely a virtuális gép található.
+Ha van telepítve, vagy nem telepítése sikertelen volt, a következő paranccsal telepítheti. A virtuális gép nevére és erőforráscsoportjára csoporton felül is meg kell adnia a régió ( **$region**), amely a virtuális gép található.
 
 ```powershell
 $region = "EASTUS2"
@@ -156,7 +154,7 @@ FullBackupWindowHours       :
 LogBackupFrequency          : 
 ```
 
-A kimenet mutatja, hogy ha **engedélyezése** értékre van állítva **false (hamis)**, akkor el kell automatikus biztonsági mentés engedélyezése. A jó hír az, hogy engedélyezze, és ugyanúgy, mint az automatikus biztonsági mentés konfigurálása. További információ a következő szakaszban talál.
+A kimenet mutatja, hogy ha **engedélyezése** értékre van állítva **false (hamis)** , akkor el kell automatikus biztonsági mentés engedélyezése. A jó hír az, hogy engedélyezze, és ugyanúgy, mint az automatikus biztonsági mentés konfigurálása. További információ a következő szakaszban talál.
 
 > [!NOTE] 
 > Ha a módosítás után azonnal ellenőrizze a beállításokat, lehetséges, hogy kap vissza a régi konfigurációs értékeket. Várjon néhány percet, és ellenőrizze a beállításokat, győződjön meg arról, hogy a módosítások lettek alkalmazva a újra.

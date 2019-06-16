@@ -1,17 +1,17 @@
 ---
 title: Figyelés az Azure Database for MariaDB
 description: Ez a cikk ismerteti a monitorozási és riasztási az Azure Database for MariaDB, többek között a Processzor, a storage és a kapcsolat statisztikai mérőszámait.
-author: rachel-msft
-ms.author: raagyema
+author: andrela
+ms.author: ajlam
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 04/29/2019
-ms.openlocfilehash: babe2ac55953940370daa0731463ed6ed8988502
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 06/12/2019
+ms.openlocfilehash: 8625441f836256028362fc327873383f5b46620c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "64925911"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065746"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Figyelés az Azure Database for MariaDB
 A kiszolgálók adatainak segítségével hibaelhárítása és optimalizálhatja a számítási feladatok számára. Azure Database for MariaDB különböző mérőszámokat, amelyek a kiszolgáló viselkedését betekintést biztosít.
@@ -36,13 +36,27 @@ Ezek a metrikák az Azure Database for MariaDB érhetők el:
 |serverlog_storage_limit|Log storage maximális|Bájt|A maximális kiszolgálói naplók tárolásához, ehhez a kiszolgálóhoz.|
 |storage_limit|Tárolási kapacitása|Bájt|Ez a kiszolgáló maximális tárterülete.|
 |active_connections|Az aktív kapcsolatok|Count|A kiszolgáló aktív kapcsolatok száma.|
-|connections_failed|Sikertelen kapcsolatok|Count|Nem sikerült a kiszolgálóval létesített kapcsolatok száma.|
+|connections_failed|Sikertelen kapcsolatok|Darabszám|Nem sikerült a kiszolgálóval létesített kapcsolatok száma.|
 |network_bytes_egress|Kimenő hálózat|Bájt|Kimenő hálózati forgalom az aktív kapcsolatok között.|
 |network_bytes_ingress|Bejövő hálózat|Bájt|Hálózati az aktív kapcsolatok között.|
 
 ## <a name="server-logs"></a>Kiszolgálói naplók
+
 Engedélyezheti a naplózást a kiszolgáló a lassú lekérdezések. Ezek a naplók keresztül is elérhetőek az Azure diagnosztikai naplók a Azure Monitor naplók, az Event Hubs és a Storage-fiókot. Naplózásával kapcsolatos további tudnivalókért látogasson el a [kiszolgálónaplók](concepts-server-logs.md) lapot.
 
+## <a name="query-store"></a>Lekérdezéstár
+
+[Query Store](concepts-query-store.md) nyilvános előzetes verziójú funkció, amely nyomon követi a lekérdezési teljesítményt idő többek között lekérdezés futásidejének statisztikai adatait, és várjon eseményeket. A funkció továbbra is fennáll, lekérdezés futásidejű teljesítményadatait a a **mysql** séma. Szabályozhatja, hogy a gyűjtemény és az adatok különböző konfigurációs belül keresztül.
+
+## <a name="query-performance-insight"></a>Lekérdezési terheléselemző
+
+[Lekérdezési Terheléselemző](concepts-query-performance-insight.md) Query Store az Azure Portalon elérhető képi megjelenítésekhez együtt működik. Ezekbe a diagramokba engedélyezése elsődlegeskulcs-lekérdezések azonosíthatja, hogy hatással lehet a teljesítményre. Lekérdezési Terheléselemző nyilvános előzetes verzióban érhető el, és elérhető a **intelligens teljesítmény** az Azure Database for MariaDB kiszolgáló portáloldalán szakaszában.
+
+## <a name="performance-recommendations"></a>Teljesítménnyel kapcsolatos javaslatok
+
+A [teljesítménnyel kapcsolatos javaslatok](concepts-performance-recommendations.md) szolgáltatás lehetőségeket biztosít a számítási feladatok teljesítményének javítása azonosítja. Teljesítménnyel kapcsolatos javaslatok a nyilvános előzetes verziója biztosít, amelyek a számítási feladatok teljesítményének javítása érdekében új indexek létrehozására vonatkozó javaslatok. Index ajánlások előállításához, a szolgáltatás figyelembe veszi különféle adatbázis jellemzőit, beleértve a séma- és a számítási feladatok Query Store által jelentett módon. Után minden teljesítmény javaslat megvalósítása, ügyfelek kell teljesítménytesztelési ezeket a módosításokat hatásának vizsgálatában.
+
 ## <a name="next-steps"></a>További lépések
+
 - Elérése és exportálása a metrikák az Azure Portalon, a REST API vagy a parancssori felület használatával kapcsolatos további információkért lásd: a [Azure metrikáinak áttekintésében](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
   - Lásd: [riasztások beállítása](howto-alert-metric.md) riasztás létrehozása a metrika az útmutatást.

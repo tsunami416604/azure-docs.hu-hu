@@ -16,19 +16,19 @@ ms.workload: infrastructure
 ms.date: 04/19/2019
 ms.author: haroldw
 ms.openlocfilehash: af6746e7246b8783e5bdbef34cf1b57427aa7ebb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60771277"
 ---
 # <a name="troubleshoot-openshift-deployment-in-azure"></a>Az Azure-ban az OpenShift telepítés hibaelhárítása
 
 Nem sikerült az OpenShift-fürt üzembe helyezése, ha az Azure portal nyújt hibakimenet. Lehet, hogy a kimenet nehezen olvasható, így nehéz a probléma meghatározásához. Ez a kimenet a kilépési kód 3, 4 vagy 5 gyors vizsgálat. A következő információkat tartalmazza az alábbi három kilépési kódot:
 
-- 3. kilépési kód: A Red Hat-előfizetés felhasználónév / jelszó vagy a szervezeti azonosító / aktiválási kulcs helytelen
-- 4. kilépési kód: A Red Hat-készlet azonosítója nem megfelelő, vagy a jogosultságok nem állnak rendelkezésre
-- 5. kilépési kód: Nem sikerült kiépíteni a Docker vékony tárolókészlet kötetét
+- 3\. kilépési kód: A Red Hat-előfizetés felhasználónév / jelszó vagy a szervezeti azonosító / aktiválási kulcs helytelen
+- 4\. kilépési kód: A Red Hat-készlet azonosítója nem megfelelő, vagy a jogosultságok nem állnak rendelkezésre
+- 5\. kilépési kód: Nem sikerült kiépíteni a Docker vékony tárolókészlet kötetét
 
 Más kilépési kódok csatlakozni a állomásokkal keresztül az ssh naplófájljainak megtekintéséhez.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 0ce92abda9652351712f086ab24aff8575d84c8d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 08f0f1c1e9bbfcd27f97cd58fa6c6e40f448f9f5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65904506"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094638"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-performancecentre"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező PerformanceCentre
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a PerformanceCentre konfigurálásához hozzá kell Pe
 
 **PerformanceCentre hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -226,7 +226,7 @@ Ez a szakasz célja PerformanceCentre Britta Simon nevű felhasználó létrehoz
     
     c. Kattintson a **Save** (Mentés) gombra. 
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

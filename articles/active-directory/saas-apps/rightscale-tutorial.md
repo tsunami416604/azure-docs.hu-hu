@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: aef06c94d8a2fe8cbaf7768d275959a20942a21e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 53799b62da043b7680f010e1eaaf0d9243f07dd5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813378"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67093075"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>Oktatóanyag: Az Azure Active Directory-integráció a Rightscale
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Rightscale konfigurálásához hozzá kell Rightscal
 
 **Rightscale hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -215,7 +215,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű Rightscale hoz létre. Együttműködve [Rightscale ügyfél-támogatási csapatának](mailto:support@rightscale.com) a felhasználók hozzáadása a Rightscale platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

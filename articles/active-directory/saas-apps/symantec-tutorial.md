@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b9fdc6bf46cff1f3a38d40a4e7abad5bfe56c47
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 95ce68547ca13d2395fcd447990c42c48c04eb5f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65866381"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67089386"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>Oktatóanyag: Az Azure Active Directory-integráció Symantec webes biztonsági szolgáltatás (VSS)
 
@@ -56,7 +56,7 @@ Az Azure AD-be a Symantec webes biztonsági szolgáltatás (VSS) integráció ko
 
 **A Symantec a webes biztonsági szolgáltatás (VSS) hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -68,7 +68,7 @@ Az Azure AD-be a Symantec webes biztonsági szolgáltatás (VSS) integráció ko
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Symantec webes biztonsági szolgáltatás (VSS)**, jelölje be **Symantec webes biztonsági szolgáltatás (VSS)** eredmény panelen kattintson a **Hozzáadás** gombra kattintva adhat hozzá a az alkalmazás.
+4. A Keresés mezőbe írja be a **Symantec webes biztonsági szolgáltatás (VSS)** , jelölje be **Symantec webes biztonsági szolgáltatás (VSS)** eredmény panelen kattintson a **Hozzáadás** gombra kattintva adhat hozzá a az alkalmazás.
 
      ![Symantec webes biztonsági szolgáltatás (VSS) a találatok listájában](common/search-new-app.png)
 
@@ -152,11 +152,11 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezés hozzáférést biztosít a Symantec webes biztonsági szolgáltatás (VSS) használja.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Symantec webes biztonsági szolgáltatás (VSS)**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Symantec webes biztonsági szolgáltatás (VSS)** .
 
     ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-2. Az alkalmazások listáját, írja be, és válassza ki **Symantec webes biztonsági szolgáltatás (VSS)**.
+2. Az alkalmazások listáját, írja be, és válassza ki **Symantec webes biztonsági szolgáltatás (VSS)** .
 
     ![A Symantec a webes biztonsági szolgáltatás (VSS) hivatkozásra az alkalmazások listáját](common/all-applications.png)
 
@@ -181,7 +181,7 @@ Ebben a szakaszban egy Britta Simon a Symantec webhelyén biztonsági szolgálta
 > [!NOTE]
 > Kattintson a [Itt](https://www.bing.com/search?q=my+ip+address&qs=AS&pq=my+ip+a&sc=8-7&cvid=29A720C95C78488CA3F9A6BA0B3F98C5&FORM=QBLH&sp=1) a gépet a nyilvános IP-cím.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni fogja az egyszeri bejelentkezés funkció most, hogy konfigurálta a WSS fiókkal az Azure AD a SAML-hitelesítés.
 

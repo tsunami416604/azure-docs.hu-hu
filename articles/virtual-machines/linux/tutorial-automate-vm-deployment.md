@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2543ffb20c4e7da840201cfd3be04505515458a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8a65b7becc4ec60290670819799e9f8731d55058
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60478776"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67114257"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Oktatóanyag – Cloud-init használata az Azure-ban először induló linuxos virtuális gépek testreszabásához
 
@@ -45,7 +45,7 @@ A cloud-init különböző disztribúciókon is működik. Például nem kell az
 
 A partnereinkkel dolgozunk rajta, hogy egyre több általuk biztosított Azure-rendszerkép tartalmazza a cloud-init eszközt. Az alábbi táblázat a cloud-init jelenlegi elérhetőségét ismerteti az Azure-platformrendszerképeken:
 
-| Alias | Közzétevő | Ajánlat | SKU | Version |
+| Alias | Kiadó | Ajánlat | SKU | Version |
 |:--- |:--- |:--- |:--- |:--- |
 | UbuntuLTS |Canonical |UbuntuServer |16.04-LTS |legújabb |
 | UbuntuLTS |Canonical |UbuntuServer |14.04.5-LTS |legújabb |
@@ -110,7 +110,7 @@ Mielőtt létrehozhatna egy virtuális gépet, létre kell hoznia egy erőforrá
 az group create --name myResourceGroupAutomate --location eastus
 ```
 
-Most hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az-vm-create) paranccsal. Használja a `--custom-data` paramétert a cloud-init konfigurációs fájl megadásához. Adja meg a *cloud-init.txt* konfiguráció teljes elérési útját, ha az aktuális munkakönyvtáron kívülre mentette. Az alábbi példa egy *myAutomatedVM* nevű virtuális gépet hoz létre:
+Most hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az-vm-create) paranccsal. Használja a `--custom-data` paramétert a cloud-init konfigurációs fájl megadásához. Adja meg a *cloud-init.txt* konfiguráció teljes elérési útját, ha az aktuális munkakönyvtáron kívülre mentette. Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre:
 
 ```azurecli-interactive
 az vm create \

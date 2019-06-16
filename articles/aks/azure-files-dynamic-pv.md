@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 9771c110e277d67bee329fe62434b18a01189476
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: ed9be9f3ecc7a14a0aa0210ee34f9323126be085
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65072225"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061096"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dinamikusan létrehozása, és a egy tartós kötet használata az Azure Files Azure Kubernetes Service (AKS)
 
@@ -35,7 +35,7 @@ Tárolási osztály hogyan jön létre egy Azure-fájlmegosztás meghatározás�
 * *Standard_RAGRS* – standard írásvédett georedundáns tárolás (RA-GRS)
 
 > [!NOTE]
-> Azure Files jelenleg csak a standard szintű storage használata. Ha Premium storage szolgáltatást használja, a kötet nem tudja üzembe helyezése.
+> Az Azure Files a premium storage támogatja az AKS-fürtben Kubernetes 1.13 vagy újabb rendszerű.
 
 Az Azure Files számára a Kubernetes storage osztályai további információkért lásd: [Kubernetes Storage osztályai][kubernetes-storage-classes].
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: nitinme
 ms.openlocfilehash: fccc036a5e0422508f7ebc3370a4b5faa5176dc2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66124774"
 ---
 A Bing támogatja a találatok kiemelése, amely jelöli meg lekérdezési kifejezéseket (vagy más feltételek, a Bing talál megfelelő) az egyes, a megjelenítési karakterláncot. Ha például egy weboldal `name`, `displayUrl`, és `snippet` mezők lehet megjelölni a lekérdezési kifejezéseket.

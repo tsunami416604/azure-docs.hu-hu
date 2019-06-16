@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: article
 ms.date: 5/03/2019
 ms.author: alkarche, glenga
-ms.openlocfilehash: 07c7d7fb682708bf813820440d9c790c28b1f3e5
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 55cce60ab3d1cda3cb870afd2f6214f917a04189
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65834601"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063276"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Oktatóanyag: függvények integrálása az Azure-beli virtuális hálózathoz
 
@@ -113,7 +113,7 @@ A virtuális hálózatban lévő virtuális gépen futó WordPress-webhely most 
 
     ![A hálózati szolgáltatás konfigurálásához állapota](./media/functions-create-vnet/Networking-1.png)
 
-1. Válassza ki a virtuális hálózati integráció lapon **hozzáadása virtuális hálózathoz (előzetes verzió)**.
+1. Válassza ki a virtuális hálózati integráció lapon **hozzáadása virtuális hálózathoz (előzetes verzió)** .
 
     ![Adja hozzá a virtuális hálózati integráció előzetes verzió](./media/functions-create-vnet/networking-2.png)
 
@@ -137,7 +137,7 @@ A függvényalkalmazás most már elérheti a virtuális hálózat a WordPress-w
 
 A VNet-integráció engedélyezve van hozzon létre egy proxyt a függvényalkalmazásban, úgy, hogy a virtuális hálózatban futó virtuális gép kérelmeket továbbítsa.
 
-1. A függvényalkalmazásban, jelölje be a **proxyk** > **+**, majd használja az ábra alatti táblázatban a proxykiszolgáló beállításait:
+1. A függvényalkalmazásban, jelölje be a **proxyk** >  **+** , majd használja az ábra alatti táblázatban a proxykiszolgáló beállításait:
 
     ![A proxy-beállítások megadása](./media/functions-create-vnet/create-proxy.png)
 
@@ -170,4 +170,4 @@ Prémium szintű csomagot futó függvények, web apps-csomagok PremiumV2 ugyana
 > [!div class="nextstepaction"]
 > [További információ a hálózatkezelési funkciók beállításait](./functions-networking-options.md)
 
-[Prémium szintű csomag]: functions-scale.md#premium-plan-public-preview
+[Prémium szintű csomag]: functions-scale.md#premium-plan

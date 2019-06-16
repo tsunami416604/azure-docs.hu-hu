@@ -8,10 +8,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
 ms.openlocfilehash: d0d68263485c5ab6e57a349317b1975862470cc2
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64721518"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Caffe elosztott deep learning az Azure HDInsight Spark használata
@@ -36,7 +36,7 @@ A feladatnak a négy lépésben történik:
 
 Mivel a HDInsight egy PaaS-megoldás, kínál nagyszerű platformot szolgáltatások – így egyszerűen az egyes feladatok elvégzéséhez. Ebben a blogbejegyzésben találhat használt funkcióinak egyike a nevezzük [Script Action](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux), amellyel rendszerhéjparancsokat szabhatja testre a fürtcsomópontok (átjárócsomóponthoz, munkavégző csomópont vagy élcsomópont) hajthat végre.
 
-## <a name="step-1--install-the-required-dependencies-on-all-the-nodes"></a>1. lépés:  Az összes csomóponton a szükséges függőségek telepítése
+## <a name="step-1--install-the-required-dependencies-on-all-the-nodes"></a>1\. lépés:  Az összes csomóponton a szükséges függőségek telepítése
 
 Első lépésként telepítse a függőségeket kell. A Caffe-hely és [CaffeOnSpark hely](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn) kínál néhány hasznos wiki a függőségek telepítése a Spark a YARN módot. HDInsight Spark is használ a YARN módot. Azonban hozzá kell néhány további függőségek HDInsight platformon. Ehhez egy parancsfájlművelettel, és futtassa az átjárócsomópontokhoz és a feldolgozó csomópontokat. A parancsprogram-művelet körülbelül 20 percet vesz igénybe, ezeket a függőségeket is függenek más csomagokat. Az egy helyre, amely hozzáférhető annak a HDInsight-fürthöz, például egy GitHub-helyre vagy az alapértelmezett BLOB storage-fiók akkor kell helyezni.
 
@@ -68,7 +68,7 @@ Első lépésként mindössze futtathatja a parancsprogram-művelet a fürtre k�
 ![Szkriptműveletek függőségek telepítése](./media/apache-spark-deep-learning-caffe/Script-Action-1.png)
 
 
-## <a name="step-2-build-caffe-on-apache-spark-for-hdinsight-on-the-head-node"></a>2. lépés: Épülnek Caffe Apache Spark for HDInsight az átjárócsomóponthoz
+## <a name="step-2-build-caffe-on-apache-spark-for-hdinsight-on-the-head-node"></a>2\. lépés: Épülnek Caffe Apache Spark for HDInsight az átjárócsomóponthoz
 
 A második lépéseként, az átjárócsomópont Caffe buildet, és a lefordított tárak a feldolgozó csomópontokat, majd terjesztheti. Ebben a lépésben kell [ssh, az átjárócsomópont](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix). Ezt követően kell követnie a [CaffeOnSpark összeállítása folyamatban](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn). Alább a parancsfájl segítségével CaffeOnSpark készíthet néhány további lépést van. 
 
@@ -145,7 +145,7 @@ Valószínűleg látni teszt hiba esetén a végső CaffeOnSpark ellenőrzését
     Tests: succeeded 6, failed 1, canceled 0, ignored 0, pending 0
     *** 1 TEST FAILED ***
 
-## <a name="step-3-distribute-the-required-libraries-to-all-the-worker-nodes"></a>3. lépés: A feldolgozó csomópontok, a szükséges kódtárak terjesztése
+## <a name="step-3-distribute-the-required-libraries-to-all-the-worker-nodes"></a>3\. lépés: A feldolgozó csomópontok, a szükséges kódtárak terjesztése
 
 A következő lépés az, hogy a tárak elosztása (alapvetően a könyvtárak a CaffeOnSpark/caffe-nyilvános/terjesztése/lib/és CaffeOnSpark/caffe-hozzárendelése/terjesztése/lib /), az összes csomóponton. A 2. lépés a tárak elhelyezése a BLOB storage, és ebben a lépésben másolja azt a fő csomópontból és a feldolgozó csomópontok használhatja parancsfájlműveletekkel.
 
@@ -158,7 +158,7 @@ Ellenőrizze, hogy kell a megfelelő helyre pont adott a fürthöz)
 
 A 2. lépésben, akkor helyezi azt a BLOB storage, amely elérhető az összes csomóponthoz, mivel ebben a lépésben, egyszerűen másolja a csomópontokon.
 
-## <a name="step-4-compose-a-caffe-model-and-run-it-in-a-distributed-manner"></a>4. lépés: Caffe modell összeállítása és elosztott módon futtathatja
+## <a name="step-4-compose-a-caffe-model-and-run-it-in-a-distributed-manner"></a>4\. lépés: Caffe modell összeállítása és elosztott módon futtathatja
 
 Caffe telepítve van az előző lépések futtatása után. A következő lépés az írási modell Caffe. 
 

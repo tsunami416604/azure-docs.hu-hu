@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 851b9ab3604e851bcaf4f22d031c51558b15e0e6
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 2f86dfd414309e8420dc19c92c1cd20c40a5a13a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65826005"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108183"
 ---
 # <a name="managing-access-to-apps"></a>Alkalmazásokhoz való hozzáférés kezelése
 Folyamatban lévő hozzáférés-kezelés, használati értékelő és jelentéskészítési továbbra is kihívást jelenthet, miután az alkalmazás integrálva van a szervezet identitáskezelő rendszerbe. Sok esetben a rendszergazdák vagy a segélyszolgálat kell elvégeznie az alkalmazásokhoz való hozzáférés kezelése a folyamatban lévő aktív szerepet. Egyes esetekben hozzárendelést egy általános vagy részlegszintű informatikai csapat történik. Gyakran előfordul, a hozzárendelés döntést célja, hogy az üzleti döntéshozó, azok révén az informatikai előtt jóváhagyásra van szükség a delegálható a hozzárendelést.  Integráció a meglévő automatikus identitás- és hozzáférés felügyeleti rendszer, mint a szerepköralapú hozzáférés-vezérlés (RBAC) vagy attribútum-szerepköralapú hozzáférés-vezérlés (ABAC) más szervezetek befektetni. Az integráció és a szabály fejlesztés általában a speciális és költséges lehet. Monitoring, vagy mindkét felügyeleti megközelítés a reporting saját külön, költséges és bonyolult befektetése jelenti.
@@ -51,7 +51,7 @@ Az Azure AD-alkalmazások, mint például a Salesforce lehet előre konfigurált
 
 Ebben az esetben az összes hozzárendelt felhasználó lenne automatikusan üzembe helyezve a Salesforce-hoz, a szerepkör-hozzárendelés frissülnek a Salesforce-ban különböző csoportokhoz való hozzáadásuk. Felhasználók lenne képes felderíteni és hozzáférni a Salesforce keresztül a Microsoft alkalmazás-hozzáférési panelen, az Office web ügyfelek számára, vagy akár szervezeti Salesforce bejelentkezési oldalra lépjen. A rendszergazdák egyszerűen megtekintheti a használati és a hozzárendelés állapotát az Azure AD-jelentéskészítés lenne.
 
-A rendszergazdák azonban [Azure AD feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md) az egyes szerepkörök hozzáférési házirendjeinek beállítása. Ezek a szabályzatok lehetnek hozzáférés a vállalati környezetben, és még a multi-factor Authentication szolgáltatás- vagy eszközkövetelmények különféle esetekben hozzáférés eléréséhez kívül engedélyezett-e.
+A rendszergazdák azonban [Azure AD feltételes hozzáférési](../active-directory-conditional-access-azure-portal.md) az egyes szerepkörök hozzáférési házirendjeinek beállítása. Ezek a szabályzatok lehetnek hozzáférés a vállalati környezetben, és még a multi-factor Authentication szolgáltatás- vagy eszközkövetelmények különféle esetekben hozzáférés eléréséhez kívül engedélyezett-e.
 
 ## <a name="next-steps"></a>További lépések
 * [Feltételes hozzáféréssel rendelkező alkalmazások védelme](../active-directory-conditional-access-azure-portal.md)

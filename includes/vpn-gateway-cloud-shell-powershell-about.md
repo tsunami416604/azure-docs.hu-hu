@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f6af5e5e42a16548b1997845ea5076ddd4dd3be5
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 01358d13d30358a9950cbe35622df065fc5a6de5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735932"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133785"
 ---
 Ez a cikk a PowerShell-parancsmagok. A parancsmagok futtatásához használhatja az Azure Cloud Shell egy interaktív rendszerhéj-környezetet az Azure-ban üzemeltetett és a böngészőn keresztül használja. Az Azure Cloud Shell az Azure PowerShell-parancsmagok, előtelepített tartalmaz.
 
@@ -29,4 +29,4 @@ Az Azure Cloud Shell indíthatja el:
 
 **Helyileg futtatja a Powershellt**
 
-Ugyanígy telepítenie és az Azure PowerShell-parancsmagok helyileg futtathatja a számítógépen. PowerShell-parancsmagok gyakran frissülnek. Ha nem a legújabb verziót futtatja, az útmutatóban megadott értékek sikertelenek lehetnek. Helyileg futtatja a PowerShell verziójának megkereséséhez használja a `Get-Module -ListAvailable Az` parancsmagot. Tekintse meg telepíteni vagy frissíteni, [Azure PowerShell-modul telepítéséhez](/powershell/azure/install-az-ps).
+Ugyanígy telepítenie és az Azure PowerShell-parancsmagok helyileg futtathatja a számítógépen. PowerShell-parancsmagok gyakran frissülnek. Ha nem a legújabb verziót futtatja, az útmutatóban megadott értékek sikertelenek lehetnek. Azure PowerShell-lel a számítógépre telepített verziók megkereséséhez használja a `Get-Module -ListAvailable Az` parancsmagot. Tekintse meg telepíteni vagy frissíteni, [Azure PowerShell-modul telepítéséhez](/powershell/azure/install-az-ps).

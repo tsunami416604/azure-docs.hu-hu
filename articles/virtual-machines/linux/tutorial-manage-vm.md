@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 270479061ad40fdda9db06571ad4ef24b00d6c4d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fdb01802ec5b20ce57955a4e74e9de8108f4d96d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66171841"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077016"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Oktatóanyag: Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI-vel
 
@@ -54,7 +54,7 @@ Az erőforráscsoport meghatározására a virtuális gép létrehozásakor vagy
 
 Hozzon létre egy virtuális gépet az [az vm create](https://docs.microsoft.com/cli/azure/vm) paranccsal. 
 
-Virtuális gép létrehozásakor több lehetőség is rendelkezésre áll, például az operációsrendszer-lemezkép, a lemezméretezés vagy a rendszergazdai hitelesítő adatok. Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre, mely Ubuntu Server rendszert futtat. Ezen a virtuális gépen létrehozunk egy *azureuser* nevű felhasználói fiókot, illetve SSH-kulcsokat generálunk, ha még nem léteznek a kulcsok alapértelmezett helyén (*~/.ssh*):
+Virtuális gép létrehozásakor több lehetőség is rendelkezésre áll, például az operációsrendszer-lemezkép, a lemezméretezés vagy a rendszergazdai hitelesítő adatok. Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre, mely Ubuntu Server rendszert futtat. Ezen a virtuális gépen létrehozunk egy *azureuser* nevű felhasználói fiókot, illetve SSH-kulcsokat generálunk, ha még nem léteznek a kulcsok alapértelmezett helyén ( *~/.ssh*):
 
 ```azurecli-interactive
 az vm create \
@@ -155,14 +155,14 @@ A virtuális gép mérete a virtuális gép által elérhető számítási erőf
 
 Az alábbi táblázat a méreteket használati esetek alapján kategorizálja.  
 
-| Típus                     | Méretek           |    Leírás       |
+| Típus                     | Gyakori méretek           |    Leírás       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Általános célú](sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Kiegyensúlyozott processzor-memória arány. Ideális választás fejlesztéshez/teszteléshez, valamint kis- és közepes méretű alkalmazásokhoz és adatkezelési megoldásokhoz.  |
-| [Számításra optimalizált](sizes-compute.md)   | Fs, F             | Magas processzor-memória arány a processzor javára. Megfelelő választás a közepes forgalmú alkalmazásokhoz, hálózati berendezésekhez és kötegelt folyamatokhoz.        |
-| [Memóriaoptimalizált](../virtual-machines-windows-sizes-memory.md)    | Esv3, Ev3, M, GS, G, DSv2, DS, Dv2, D   | Magas memória-mag arány a memória javára. Ideális választás relációs adatbázisokhoz, közepes és nagy gyorsítótárakhoz, memóriában végzett elemzésekhez.                 |
-| [Tárolásra optimalizált](../virtual-machines-windows-sizes-storage.md)      | Ls                | Magas lemez-adatátviteli és I/O-műveleti jellemzők. Ideális Big Data-, SQL- és NoSQL-adatbázisok esetén.                                                         |
-| [GPU](sizes-gpu.md)          | NV, NC            | Specializált virtuális gépek nagy terhelést jelentő grafikus rendereléshez és videószerkesztéshez.       |
-| [Nagy teljesítmény](sizes-hpc.md) | H, A8-11          | Leghatékonyabb processzorral rendelkező virtuális gépeink, választható nagy átviteli sebességű hálózati adapterekkel (RDMA). 
+| [Általános célú](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Kiegyensúlyozott processzor-memória arány. Ideális választás fejlesztéshez/teszteléshez, valamint kis- és közepes méretű alkalmazásokhoz és adatkezelési megoldásokhoz.  |
+| [Számításra optimalizált](sizes-compute.md)   | Fsv2          | Magas processzor-memória arány a processzor javára. Megfelelő választás a közepes forgalmú alkalmazásokhoz, hálózati berendezésekhez és kötegelt folyamatokhoz.        |
+| [Memóriaoptimalizált](sizes-memory.md)    | Az Esv3, Ev3, M, DSv2, a Dv2  | Magas memória-mag arány a memória javára. Ideális választás relációs adatbázisokhoz, közepes és nagy gyorsítótárakhoz, memóriában végzett elemzésekhez.                 |
+| [Tárolásra optimalizált](sizes-storage.md)      | Lsv2, Ls              | Magas lemez-adatátviteli és I/O-műveleti jellemzők. Ideális Big Data-, SQL- és NoSQL-adatbázisok esetén.                                                         |
+| [GPU](sizes-gpu.md)          | NV, NVv2, NC, NCv2, NCv3, ND            | Specializált virtuális gépek nagy terhelést jelentő grafikus rendereléshez és videószerkesztéshez.       |
+| [Nagy teljesítmény](sizes-hpc.md) | H        | Leghatékonyabb processzorral rendelkező virtuális gépeink, választható nagy átviteli sebességű hálózati adapterekkel (RDMA). |
 
 
 ### <a name="find-available-vm-sizes"></a>Elérhető virtuálisgép-méretek keresése
@@ -281,7 +281,7 @@ ode                DisplayStatus    Level
 PowerState/running  VM running       Info
 ```
 
-## <a name="management-tasks"></a>Kezelési feladatok
+## <a name="management-tasks"></a>Felügyeleti feladatok
 
 A virtuális gépek életciklusa során szükség lehet felügyeleti feladatok futtatására, például a virtuális gép indítására, leállítására vagy törlésére. Emellett előfordulhat, hogy szkripteket is szeretne létrehozni az ismétlődő vagy összetett feladatok automatizálására. Az Azure CLI használatával számos gyakori felügyeleti feladat futtatható a parancssorból vagy szkriptek segítségével. 
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00f6a5878d1afe35b9e155425275466ecfa07de9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 655a02e41311e6842351287e3615639c3cc95e0e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813340"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67093339"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quantum-workplace"></a>Oktatóanyag: Quantum munkahelyi Azure Active Directory-integráció
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása a Quantum munkahelyi konfigurálásához hozzá kell Q
 
 **Quantum munkahelyi hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -174,7 +174,7 @@ Ebben a szakaszban engedélyezze Britta Simon Quantum munkahelyi hozzáférés b
 
 Ebben a szakaszban egy Britta Simon nevű Quantum munkahelyi felhasználó hoz létre. Együttműködve [Quantum munkahelyi támogatási csapatának](mailto:support@quantumworkplace.com) a felhasználók hozzáadása a Quantum munkahelyi platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

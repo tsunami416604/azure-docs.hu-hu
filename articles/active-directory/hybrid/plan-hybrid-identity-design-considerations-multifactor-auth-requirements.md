@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dabb381c16aa107e41c1d556e61e020b8c6a6c3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 4743195fc79d43571ec79a13b8518edc7e81379b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60455737"
+ms.locfileid: "67109295"
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás a multi-factor authentication követelményeinek meghatározása
 A világon a mobilitás, a felhasználói adatokat és alkalmazásokat a felhőben, és bármilyen eszközről Ez az információ biztonságossá tétele vált a kiemelkedő.  Minden nap van egy új főcíme kapcsolatos biztonsági incidensek.  Bár a nincs garancia arra, ilyen adatszivárgás elleni, a többtényezős hitelesítés, ezeket az adatszivárgás megakadályozása érdekében biztonsági réteget biztosít.

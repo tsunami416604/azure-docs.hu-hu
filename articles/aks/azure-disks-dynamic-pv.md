@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: iainfou
 ms.openlocfilehash: 334e56db97213206d9ab7ed5ef4d1d96ab9325d6
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65956473"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dinamikusan létrehozása és a egy tartós kötet használata Azure-lemezek az Azure Kubernetes Service (AKS)
@@ -88,7 +88,7 @@ persistentvolumeclaim/azure-managed-disk created
 
 ## <a name="use-the-persistent-volume"></a>Használja a tartós kötet
 
-Ha a tartós kötet jogcím létrejött, és sikeresen üzembe lett helyezve a lemez lehet létrehozni egy pod a lemez elérésére. A következő jegyzékfájl hoz létre egy alapszintű NGINX-pod a tartós kötet jogcím nevű használó *azure managed disk* csatlakoztatása az Azure-lemez elérési útja a `/mnt/azure`. A Windows Server tárolók (jelenleg előzetes verzióban az aks-ben), adja meg egy *mountPath* használjon, például a Windows-elérési út egyezmény *"D:"*.
+Ha a tartós kötet jogcím létrejött, és sikeresen üzembe lett helyezve a lemez lehet létrehozni egy pod a lemez elérésére. A következő jegyzékfájl hoz létre egy alapszintű NGINX-pod a tartós kötet jogcím nevű használó *azure managed disk* csatlakoztatása az Azure-lemez elérési útja a `/mnt/azure`. A Windows Server tárolók (jelenleg előzetes verzióban az aks-ben), adja meg egy *mountPath* használjon, például a Windows-elérési út egyezmény *"D:"* .
 
 Hozzon létre egy fájlt `azure-pvc-disk.yaml`, és másolja a következő jegyzékfájlban.
 

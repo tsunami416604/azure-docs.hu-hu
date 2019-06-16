@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/13/2019
+ms.date: 06/12/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: db9424ff4ddd2663ae1342294181dc885c6ed937
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 7e670410b93439e23e1018f6646c5e0edc04b9bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479555"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67116425"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Mi a szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-erőforrások?
 
@@ -108,10 +108,7 @@ Tehát mi történik, ha több átfedő szerepkör-hozzárendeléseket? RBAC-add
 
 ## <a name="deny-assignments"></a>Megtagadás-hozzárendelések
 
-Korábban az RBAC csak megengedő, megtagadás nélküli modell volt, de az RBAC jelenleg korlátozott módon támogatja a megtagadás-hozzárendeléseket. Szerepkör-hozzárendelés, hasonlóan egy *hozzárendelés megtagadása* rendeli egy sor megtagadási műveletek egy felhasználó, csoport, szolgáltatásnevet vagy felügyelt identitás céljából megtagadja a hozzáférést egy adott hatókörben. Szerepkör-hozzárendelés határozza meg azon műveletek, amelyek *engedélyezett*, míg egy megtagadási hozzárendelés határozza meg azon műveletek, amelyek *nem engedélyezett*. Vagyis a megtagadás-hozzárendelések akkor is meggátolják, hogy a felhasználók elvégezzék a megadott műveleteket, ha egy szerepkör-hozzárendelés hozzáférést nyújt azokhoz. A megtagadás-hozzárendelések elsőbbséget élveznek a szerepkör-hozzárendelésekkel szemben. További információkért lásd: [megismerése az Azure-erőforrások hozzárendelések megtagadása](deny-assignments.md) és [megtekintése az Azure portal segítségével Azure-erőforrások hozzárendelések megtagadása](deny-assignments-portal.md).
-
-> [!NOTE]
-> Jelenleg az egyetlen módszer, hozzáadhatja a saját megtagadási hozzárendelések van Azure-tervek használatával. További információkért lásd: [Azure tervezetek erőforrászárat az új erőforrások védelmét](../governance/blueprints/tutorials/protect-new-resources.md).
+Korábban az RBAC csak megengedő, megtagadás nélküli modell volt, de az RBAC jelenleg korlátozott módon támogatja a megtagadás-hozzárendeléseket. Szerepkör-hozzárendelés, hasonlóan egy *hozzárendelés megtagadása* rendeli egy sor megtagadási műveletek egy felhasználó, csoport, szolgáltatásnevet vagy felügyelt identitás céljából megtagadja a hozzáférést egy adott hatókörben. Szerepkör-hozzárendelés határozza meg azon műveletek, amelyek *engedélyezett*, míg egy megtagadási hozzárendelés határozza meg azon műveletek, amelyek *nem engedélyezett*. Vagyis a megtagadás-hozzárendelések akkor is meggátolják, hogy a felhasználók elvégezzék a megadott műveleteket, ha egy szerepkör-hozzárendelés hozzáférést nyújt azokhoz. A megtagadás-hozzárendelések elsőbbséget élveznek a szerepkör-hozzárendelésekkel szemben. További információkért lásd: [megismerése az Azure-erőforrások hozzárendelések megtagadása](deny-assignments.md).
 
 ## <a name="how-rbac-determines-if-a-user-has-access-to-a-resource"></a>Hogyan határozza meg az RBAC, hogy egy felhasználó rendelkezik-e hozzáféréssel egy erőforráshoz?
 

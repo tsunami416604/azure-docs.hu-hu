@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan;juliako
 ms.openlocfilehash: 5c86a49cd9dc26f724de12ed2e5e77e645e4ab53
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61466595"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>Hibrid DRM-alrendszer kialakítása 
@@ -96,37 +96,37 @@ Az előző szakaszban a magyarázatokat alapján, az alábbi öt hibrid forgató
 
 |**Tartalom üzemeltetési & forrás**|**DRM-titkosítás**|**DRM-licenckézbesítés**|**Konfigurálja a tartalomkulcs**|**Objektumtovábbítási szabályzat konfigurálása**|**Minta**|
 |---|---|---|---|---|---|
-|AMS|AMS|AMS|Igen|Igen|1. példa|
-|AMS|AMS|Külső|Igen|Igen|2. példa|
-|AMS|Külső|AMS|Igen|Nem|3. példa|
-|AMS|Külső|Külső|Nem|Nem|4. példa|
+|AMS|AMS|AMS|Igen|Igen|1\. példa|
+|AMS|AMS|Külső|Igen|Igen|2\. példa|
+|AMS|Külső|AMS|Igen|Nem|3\. példa|
+|AMS|Külső|Külső|Nem|Nem|4\. példa|
 |Külső|Külső|AMS|Igen|Nem|    
 
 A minták a PlayReady-védelmet a DASH és smooth Streaming formátumba esetében működik. A Videó URL-címek az alábbi olyan smooth streaming URL-címeket. A megfelelő DASH URL-címek lekérése, csak hozzáfűzése "(formátum = mpd-time-csf)". Használhatja a [az azure media player tesztelése](https://aka.ms/amtest) ellenőrzéséhez egy böngészőben. Lehetővé teszi a streamelési protokoll szeretne használni, mely technológiai területen konfigurálja. IE11 és a Microsoft Edge a Windows 10-es támogatja a PlayReady eme. További információkért lásd: [a vizsgálati eszköz részleteit](https://blogs.msdn.microsoft.com/playready4/2016/02/28/azure-media-test-tool/).
 
-### <a name="sample-1"></a>1. példa
+### <a name="sample-1"></a>1\. példa
 
 * Forrás (alap) URL-címe: https://willzhanmswest.streaming.mediaservices.windows.net/1efbd6bb-1e66-4e53-88c3-f7e5657a9bbd/RussianWaltz.ism/manifest 
 * PlayReady LA_URL (DASH és smooth): https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/ 
 * Widevine LA_URL (DASH): https://willzhanmswest.keydelivery.mediaservices.windows.net/Widevine/?kid=78de73ae-6d0f-470a-8f13-5c91f7c4 
 * FairPlay LA_URL (HLS): https://willzhanmswest.keydelivery.mediaservices.windows.net/FairPlay/?kid=ba7e8fb0-ee22-4291-9654-6222ac611bd8 
 
-### <a name="sample-2"></a>2. példa
+### <a name="sample-2"></a>2\. példa
 
 * Forrás (alap) URL-címe: https://willzhanmswest.streaming.mediaservices.windows.net/1a670626-4515-49ee-9e7f-cd50853e41d8/Microsoft_HoloLens_TransformYourWorld_816p23.ism/Manifest 
 * PlayReady LA_URL (DASH és smooth): http://willzhan12.cloudapp.net/PlayReady/RightsManager.asmx 
 
-### <a name="sample-3"></a>3. példa
+### <a name="sample-3"></a>3\. példa
 
 * Forrás URL-címe: https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500.ism/manifest 
 * PlayReady LA_URL (DASH és smooth): https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/ 
 
-### <a name="sample-4"></a>4. példa
+### <a name="sample-4"></a>4\. példa
 
 * Forrás URL-címe: https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500.ism/manifest 
 * PlayReady LA_URL (DASH és smooth): https://willzhan12.cloudapp.net/playready/rightsmanager.asmx 
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Összefoglalva az Azure Media Services DRM összetevők rugalmasak, használhatja őket egy hibrid forgatókönyvben megfelelően konfigurálja a tartalomkulcs és állít be objektumtovábbítási szabályzatot, ebben a témakörben leírtak szerint.
 

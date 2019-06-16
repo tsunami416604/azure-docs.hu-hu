@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 14-04-2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fa59dff1fcc39cdccc8f74c8a71857ad7367f1b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: e62557e946717097cf7031c2a5a7c313ee0a8693
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917716"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100314"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-cloudsuite"></a>Oktatóanyag: Az Azure Active Directory integrációja az Infor CloudSuite
 
@@ -55,7 +55,7 @@ Az Azure AD integrálása a Infor CloudSuite konfigurálásához hozzá kell Inf
 
 **Infor CloudSuite hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

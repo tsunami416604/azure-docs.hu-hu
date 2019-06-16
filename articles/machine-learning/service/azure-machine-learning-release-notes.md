@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2dd397e879dd76cabd119a3cbedff34041be2d13
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 9e7441ab9503919fbf1d0890ce69f04259f38986
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66298484"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065770"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
@@ -24,6 +24,51 @@ Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.
 + Az Azure Machine Learning [ **adat-előkészítési SDK**](https://aka.ms/data-prep-sdk)
 
 Lásd: [kapcsolatos ismert problémák listája](resource-known-issues.md) ismert hibák és a lehetséges megoldások megismeréséhez.
+
+## <a name="2019-06-10"></a>2019-06-10
+
+### <a name="azure-machine-learning-sdk-for-python-v1043"></a>Az Azure Machine Learning SDK for Python v1.0.43
+
++ **Új funkciók**
+  + Most már az Azure Machine Learning népszerű gép tanulási és elemzési keretrendszer Scikit további osztályú támogatási szolgáltatásokat biztosít. Használatával [ `SKLearn` estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py), felhasználók könnyedén betanítása és Scikit további modellek üzembe helyezése.
+    + Ismerje meg, hogyan [futtassa a hiperparaméter finomhangolása a Scikit-további HyperDrive használatával](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb).
+  + Támogatás hozzáadva a ModuleStep létrehozása újrahasznosítható számítási egységek kezelése modul és ModuleVersion osztályok együtt folyamatokban.
+  + ACI problémák megoldásához segítséget mostantól támogatják az állandó scoring_uri frissítéseken keresztül. A scoring_uri FQDN változik IP-címről. A Dns-névcímke teljes tartományneve az dns_name_label deploy_configuration beállításával konfigurálható. 
+  + Automatizált machine learning-új funkciók:
+    + Az előrejelzési STL featurizer
+    + KMeans fürtszolgáltatás funkció kezdik engedélyezve van
+  + Jóváhagyások AmlCompute kvóta most vált gyorsabb! Most a folyamat egy küszöbértéken belül a kvóta kérelmek jóváhagyása automatizálta azt. További információ a kvóták működéséről további [kvóták kezelése](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas).
+ 
+
++ **Előzetes verziójú funkciók**
+    + Integráció a [MLflow](https://mlflow.org) nyomon követése az azureml-mlflow csomag 1.0.0-s ([példa notebookok](https://aka.ms/azureml-mlflow-examples)).
+    + Küldje el a Jupyter notebook számít. [API dokumentációja](https://docs.microsoft.com/python/api/azureml-contrib-notebook/azureml.contrib.notebook?view=azure-ml-py)
+    + Nyilvános előzetes verziója [adatok eltéréseket detector használatával](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift?view=azure-ml-py) keresztül azureml-contrib-datadrift csomag ([példa notebookok](https://aka.ms/azureml-datadrift-example)). Adatok eltéréseket az egyik a leggyakoribb okok ahol rontja a pontosság idővel. Azt történik, ha adatok kiszolgált modellek éles környezetben eltér az adatokat, amelyek a modell tanított volt. AML adatok eltéréseket detector használatával segít vásárlóinak felfedezni figyelése adatokat eltéréseket, és riasztást küld, amikor eltéréseket észlel. 
+
++ **Használhatatlanná tévő változásai**
+
++ **Hibajavítások és kapcsolatos fejlesztések**
+  + RunConfiguration betölteni, és mentse a fájl teljes elérési út megadását az előző viselkedés teljes biztonsági kompatibilitási támogatja.
+  + Hozzáadja a gyorsítótárazás az ServicePrincipalAuthentication, alapértelmezés szerint ki van kapcsolva.
+  + Engedélyezze az azonos metrika neve alatt található több ábra naplózását.
+  + Most már megfelelően importálható a azureml.core osztály Model (`from azureml.core import Model`).
+  + A folyamat lépések `hash_path` paraméter elavult. Viselkedés az ujjlenyomat-teljes forráskönyvtár, kivéve a .amlignore vagy .gitignore felsorolt fájlokat.
+  + A folyamat csomagok különböző `get_all` és `get_all_*` metódusok elavultak érvénytelenítve `list` és `list_*`, illetve.
+  + azureml.Core.get_run többé nem kell az eredeti futtatási típus visszaküldése előtt importálni kívánt osztályokat.
+  + Javítva lett egy probléma, ahol egyes hívások webszolgáltatás Update nem aktiválódtak egy frissítést.
+  + Időtúllépés kiértékelése AKS problémák megoldásához segítséget 5ms és 300000ms között kell lennie. A megengedett maximális pontozási kérelmek scoring_timeout_ms 1 perc, 5 perc bumped.
+  + Most már LocalWebservice objektumok `scoring_uri` és `swagger_uri` tulajdonságait.
+  + Áthelyezett kimenetek címtár létrehozása és a kimeneti könyvtár feltöltése a felhasználó folyamaton kívül. Futtatási előzmények SDK minden felhasználói folyamat futtatása engedélyezett. Ez kell feloldhatónak lennie bizonyos szinkronizálási elosztott képzési által tapasztalt problémák futtatja.
+  + Az azureml naplót kell írni a felhasználói folyamat nevét a neve most folyamat nevét (csak elosztott betanítása) és PID tartalmazza.
+
+### <a name="azure-machine-learning-data-prep-sdk-v115"></a>Az Azure Machine Learning adat-előkészítési SDK v1.1.5
+
++ **Hibajavítások és kapcsolatos fejlesztések**
+  + Értelmezett dátum/idő értékek, amelyek 2 számjegyű év formátumban frissítve lett a tartomány érvényes éves Windows előfordulhat, hogy kiadási megfelelően. A tartomány 1950-2049 a megváltozott a 1930-2029.
+  + Olvasásakor a fájl- és a beállítás `handleQuotedLineBreaks=True`, `\r` , egy új sor lesznek kezelve.
+  + Kijavítva a hiba kiváltó `read_pandas_dataframe` bizonyos esetekben meghiúsul.
+  + Továbbfejlesztett teljesítmény az `get_profile`.
+  + Továbbfejlesztett hibaüzenetek.
 
 ## <a name="2019-05-28"></a>2019-05-28
 
@@ -513,7 +558,7 @@ Az Azure Portalon az Azure Machine Learning szolgáltatás rendelkezik a követk
 ### <a name="azure-machine-learning-sdk-for-python-v0174"></a>Az Azure Machine Learning SDK for Python v0.1.74
 
 + **Használhatatlanná tévő változásai** 
-  * * Workspace.compute_targets, adattárolók, kísérletek, képek, modellek és *problémák megoldásához segítséget* tulajdonságok módszer helyett. Helyettesítse be például *Workspace.compute_targets()* a *Workspace.compute_targets*.
+  * \* Workspace.compute_targets, adattárolók, kísérletek, képek, modellek és *problémák megoldásához segítséget* tulajdonságok módszer helyett. Helyettesítse be például *Workspace.compute_targets()* a *Workspace.compute_targets*.
   * *Run.get_context* helyteleníti *Run.get_submitted_run*. Az utóbbi módszer a következő kiadásokban törlődni fog.
   * *PipelineData* osztály most vár egy adattár-objektumot datastore_name egy paraméter helyett. Ehhez hasonlóan *folyamat* default_datastore_name helyett default_datastore fogad el.
 
@@ -569,7 +614,7 @@ Lásd: [kapcsolatos ismert problémák listája](resource-known-issues.md) ismer
 
 + **HyperDrive**
   * Különböző HyperDrive hibajavítások a Bayes, a javított teljesítménye, metrikák hívások beolvasása. 
-  * 1.9 Tensorflow 1.10 verzióról 
+  * 1\.9 Tensorflow 1.10 verzióról 
   * Docker-rendszerkép optimalizálást a hidegindítás. 
   * Feladatok megfelelő állapota most jelentést, még akkor is, ha azok kilépési hibakód: 0 kivételével. 
   * RunConfig attribútum érvényesítése, az SDK-t. 

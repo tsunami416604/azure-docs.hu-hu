@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: f0cdd28be8c6e7390aa26fdc2dfbf32ec5542c2d
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: cba13012bf165a097bd1382da8ef9897b0584d28
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233911"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066876"
 ---
 # <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Oktatóanyag: Alkalmazáscsoportok kezelése Windows virtuális asztal előzetes verzió
 
@@ -73,7 +73,7 @@ Mielőtt elkezdené, [letöltése és importálása a Windows virtuális asztal 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtudhatta, hogyan hozzon létre az alkalmazás, távoli alkalmazások való feltöltéséhez és hozzárendelhet felhasználókat az alkalmazáscsoportnak. Bejelentkezés Windows virtuális asztal kapcsolatos további információkért folytassa a csatlakozás a Windows virtuális asztal útmutatók.
+Ebben az oktatóanyagban megtudhatta, hogyan hozzon létre az alkalmazás, távoli alkalmazások való feltöltéséhez és hozzárendelhet felhasználókat az alkalmazáscsoportnak. Megtudhatja, hogyan hozhat létre egy érvényesítési gazdagép készletet, amely lehetővé teszi a szolgáltatásfrissítések, mielőtt megvalósítaná azokat az éles környezetben figyelése, tekintse meg a gazdagép készlet létrehozása a service-oktatóanyag frissítések ellenőrzése.
 
-- [Csatlakozás a távoli asztali ügyfél Windows 7 és Windows 10 rendszeren](connect-windows-7-and-10.md)
-- [Csatlakozás a Windows virtuális asztal előzetes webes ügyféllel](connect-web.md)
+> [!div class="nextstepaction"]
+> [Szolgáltatás frissítések oktatóanyag ellenőrzése gazdagép-készlet létrehozása](./create-validation-host-pool.md)

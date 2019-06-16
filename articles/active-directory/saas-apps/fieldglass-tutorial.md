@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a2c66eba95f286dfa7a84c05c66c14768629312
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a9c97ba19a680ece37ae4e3b4fa5257169f0842c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60278973"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102679"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fieldglass"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Fieldglass
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Fieldglass konfigurálásához hozzá kell Fieldglas
 
 **Fieldglass hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

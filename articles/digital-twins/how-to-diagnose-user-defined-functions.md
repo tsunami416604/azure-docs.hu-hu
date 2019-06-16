@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: stefanmsft
 ms.custom: seodec18
-ms.openlocfilehash: 455e78c63960103f5facae764aff3d2b3b2a590d
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: 4d772b8cad64f138d93d91e87f6e6364c5a5d602
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735199"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808894"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Az Azure digitális Twins felhasználó által definiált függvények hibakeresése
 
@@ -34,7 +34,7 @@ Ennek számos naplózási, elemzési és diagnosztikai eszközök állnak rendel
 Az Azure digitális Twins támogatja a hatékony naplózás, figyelés és elemzés. Megoldások fejlesztők használhatják az Azure Monitor naplók, diagnosztikai naplók, tevékenységeket tartalmazó naplók és egyéb szolgáltatásokat az IoT-alkalmazás összetett figyelési igényeinek támogatása. Naplózási beállítások kombinálhatók, kérdezheti le vagy rekordokat jelenít meg több szolgáltatás és a részletes naplózást biztosít számos szolgáltatás számára.
 
 * Az Azure digitális Twins adott naplózási konfiguráció, olvassa el a [figyelés és naplózás konfigurálása](./how-to-configure-monitoring.md).
-* Tekintse át a a [Azure Monitor](../azure-monitor/overview.md) megismerheti a hatékony naplókeresési beállítások engedélyezve az Azure Monitor áttekintése.
+* Tekintse át a [Azure Monitor](../azure-monitor/overview.md) megismerheti a hatékony naplókeresési beállítások engedélyezve az Azure Monitor áttekintése.
 * Tekintse át a [gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások](../azure-monitor/platform/diagnostic-logs-overview.md) diagnosztikai beállítások konfigurálásának lépései az Azure digitális Twins az Azure Portal, az Azure CLI vagy a Powershellen keresztül.
 
 A beállítása után válassza ki az összes naplókategóriák, metrikák, és hatékony Azure Monitor log analytics-munkaterületek használatával támogatja a hibakeresési munkája alapján lesz.

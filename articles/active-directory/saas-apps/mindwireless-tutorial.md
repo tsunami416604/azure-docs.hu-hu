@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 2fce8b628798ef38889f64d9409bf586a85463b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2c320944e952dbea74c41ffd3471143f6713585b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65871851"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097378"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindwireless"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező mindWireless
 
@@ -52,7 +52,7 @@ Az Azure AD integrálása a mindWireless konfigurálásához hozzá kell mindWir
 
 **MindWireless hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -212,7 +212,7 @@ Ebben a szakaszban engedélyezze Britta Simon használja az Azure egyszeri bejel
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű mindWireless hoz létre. Együttműködve [mindWireless támogatási csoportjának](mailto:sdulloor@mindwireless.com) a felhasználók hozzáadása az mindWireless platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

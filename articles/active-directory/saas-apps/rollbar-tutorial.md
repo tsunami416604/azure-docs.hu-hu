@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 5c3546dbadf64786b398610c19ee7f8e9e740d51
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: d76f4e9d61d8fd210fe9332084f9f44d19e54eed
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956837"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67092677"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező BUKÓÍV
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a BUKÓÍV konfigurálásához hozzá kell BUKÓÍV a 
 
 **Bukóív hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -245,7 +245,7 @@ Ahhoz, hogy az Azure AD-felhasználók BUKÓÍV bejelentkezni, akkor ki kell ép
 
 1. Felhasználó felkérést kap, és elfogadása után a rendszer akkor jönnek létre.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

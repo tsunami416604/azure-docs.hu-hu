@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Database felügyelt példány az SQL Server-példány migrálása |} A Microsoft Docs
-description: Ismerje meg, hogyan telepíthet át egy SQL Server-példányt az Azure SQL Database felügyelt példány.
+title: Adatbázis áttelepítése az SQL Server-példány az Azure SQL Database – felügyelt példány |} A Microsoft Docs
+description: Ismerje meg, hogyan adatbázis áttelepítése az Azure SQL Database – felügyelt példány az SQL Server-példányról.
 services: sql-database
 ms.service: sql-database
 ms.subservice: migration
@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: douglas, carlrab
 manager: craigg
 ms.date: 02/11/2019
-ms.openlocfilehash: 1460b595e8887fc932d5be335ae51b07a000b9fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9fe6ab797eaa325ad802702e95f5a0e5b8e4fef4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61315560"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070424"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Az SQL Server-példány migrálása az Azure SQL Database felügyelt példánya
 
@@ -46,12 +46,35 @@ Ha néhány jelentett problémák elhárítását, amelyek nem törlődnek a fel
 
 - Ha az operációs rendszer vagy a fájlrendszerben, például telepítés harmadik féltől származó és egyéni ugyanahhoz a virtuális géphez, az SQL Server-ügynökök közvetlen elérésére van szüksége.
 - Ha továbbra is nem támogatott funkciók, például a FileStream a szigorú függőségi / filetable objektum, a PolyBase és a kereszt-példány tranzakció.
-- Ha feltétlenül szükség maradjon az SQL Server egy adott verzióját (2012-példányhoz).
+- Ha feltétlenül szükséges ahhoz, hogy az SQL Server egy adott verzió (2012-példányhoz).
 - Ha a számítási követelményeket sokkal alacsonyabb, hogy a felügyelt példány kínál (1 virtuális magot, példányhoz) és adatbázis-konszolidáció nem elfogadható megoldás.
+
+Ha az összes azonosított migrálásblokkolók és folytatás a migrálás felügyelt példányra, vegye figyelembe, hogy néhány változását hatással lehet a számítási feladatok teljesítményére megoldása:
+- Kötelező a teljes helyreállítási modell és a normál automatikus biztonsági mentés ütemezése hatással lehet a teljesítményre a számítási feladatok vagy a karbantartási és ETL-műveletek, ha rendszeresen használt egyszerű vagy Tömegesen naplózott modell, vagy igény szerinti biztonsági mentés leállt.
+- Másik kiszolgálón vagy adatbázisban szintekhez például nyomkövetési jelzők vagy a kompatibilitási szintek
+- Új funkciók, például az átlátható adatbázis-titkosítást (TDE) vagy az automatikus feladatátvételi csoportot használ hatással lehet a CPU- és i/o-kihasználtsága.
+
+A felügyelt példány garantált 99,99 %-os rendelkezésre állást a kritikus esetekhez, még akkor is, így ezek a szolgáltatások által okozott terhelés nem tiltható le. További információkért lásd: [az oka, hogy az SQL Server és a felügyelt példány különböző teljesítményt okozhat](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/).
+
+### <a name="create-performance-baseline"></a>Teljesítmény alapterv létrehozása
+
+Ha az eredeti SQL Server-kiszolgálón futó számítási feladat felügyelt példányon a számítási feladatok teljesítményének összehasonlítására van szüksége, az összehasonlításhoz használandó teljesítmény alapkonfigurációjának kell. Egyes kell mérni az SQL Server-példányon paraméterek a következők: 
+- [Az SQL Server-példányon CPU-használat figyeléséhez](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131) és jegyezze fel az átlagos és kiugró CPU-használat.
+- [Az SQL Server-példány figyelése](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-memory-usage) és döntse el, például a pufferkészletben, különböző összetevői által használt memória mennyisége csomag gyorsítótárát, oszloptár készlet, [In-memory OLTP](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017)stb. Emellett keresse meg lap várható élettartama közötti memória teljesítményszámláló átlagos és kiugró kihasználtsággal értékét.
+- Lemez I/O figyelheti a forrás SQL Server példány használatával [sys.dm_io_virtual_file_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) nézet vagy [teljesítményszámlálók](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-disk-usage).
+- Számítási feladatok és a lekérdezési teljesítmény vagy az SQL Server-példány figyelése dinamikus felügyeleti nézetek vagy a Query Store leírásában, ha az SQL Server 2016 + verzióról végez áttelepítést. Átlagos időtartam és a Processzor terhelését a számítási feladatok őket összehasonlítani a lekérdezések, amelyek a felügyelt példányt futtat az a legfontosabb lekérdezések azonosítása.
+
+> [!Note]
+> Ha bármilyen probléma láthatja, hogy az a számítási feladatok SQL Server-kiszolgálón például a magas CPU-használatot, állandó memóriaterhelés, a tempdb vagy parametrization problémák, érdemes megpróbálni a problémák megoldásához véve az alapkonfiguráció és a migrálás előtt a forrás SQL Server jelenlegi példányában. Minden olyan új rendszer migh problémákat váratlan eredményekhez vezethet, és bármely teljesítmény összehasonlítása érvénytelenítéséhez áttelepítése tudja.
+
+Pénznembeli díjváltozása ezt a tevékenységet, meg kell rendelkeznie dokumentálni átlagos és maximális értékei CPU, memória és IO kihasználtsága a forrás rendszeren, valamint átlagos és maximális időtartama és CPU-használat a meghatározó és a legfontosabb lekérdezéseket a számítási feladatok. Ezeket az értékeket később kell használni a teljesítménnyel, a forrás SQL-kiszolgáló terhelése felügyelt példányon a számítási feladat teljesítményét.
 
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>Az optimálisan méretezett felügyelt példány üzembe helyezése
 
-Felügyelt példány személyre szabott tervezi, hogy a felhőbe helyezheti át a helyszíni számítási feladatokhoz. Azt mutatja be egy [új vásárlási modell](sql-database-service-tiers-vcore.md) , amely nagyobb rugalmasságot biztosít a számítási feladatokat az erőforrások a megfelelő szint kiválasztásával. A helyszíni világ Ön szokták méretezési ezeket a feladatokat a fizikai Processzormagok és i/o-sávszélességet. A felügyelt példány vásárlási modell típusán alapuló virtuális maggal, vagy a "virtuális maggal," további tárterületet és i/o elérhető külön-külön. A Virtuálismag-modell egy egyszerűbb módszert és a használt felhőalapú számítási követelmények megértésére helyszíni még ma. Az új modell lehetővé teszi méretezése a cél-környezetet a felhőben.
+Felügyelt példány személyre szabott tervezi, hogy a felhőbe helyezheti át a helyszíni számítási feladatokhoz. Azt mutatja be egy [új vásárlási modell](sql-database-service-tiers-vcore.md) , amely nagyobb rugalmasságot biztosít a számítási feladatokat az erőforrások a megfelelő szint kiválasztásával. A helyszíni világ Ön szokták méretezési ezeket a feladatokat a fizikai Processzormagok és i/o-sávszélességet. A felügyelt példány vásárlási modell típusán alapuló virtuális maggal, vagy a "virtuális maggal," további tárterületet és i/o elérhető külön-külön. A Virtuálismag-modell egy egyszerűbb módszert és a használt felhőalapú számítási követelmények megértésére helyszíni még ma. Az új modell lehetővé teszi méretezése a cél-környezetet a felhőben. Néhány általános irányelveket, amelyek segíthetnek a megfelelő szolgáltatási szint és a jellemzők kiválasztása ebben a témakörben találhatók:
+- [Az SQL Server-példányon CPU-használat figyeléséhez](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131) és ellenőrzés mennyi számítási teljesítményt jelenleg használja (a dinamikus felügyeleti nézetekkel, az SQL Server Management Studio vagy más monitorozási eszközök használatával). Telepíthet egy felügyelt példányt, amely megegyezik a magok száma, amelyek használ SQL Serveren, vegye figyelembe, hogy processzorjellemzői igényelhet, megfelelő skálázását kellene [Virtuálisgép-jellemző, ahol a felügyelt példány telepítve van-e](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#hardware-generation-characteristics).
+- Ellenőrizze a rendelkezésre álló memória mennyiségét, az SQL Server-példányon, és válassza a [a szolgáltatási rétegben, amely rendelkezik a megfelelő memória](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#hardware-generation-characteristics). Oldal élettartamára meghatározni az SQL Server-példányon mérésére hasznos lenne [szükség van további memória](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Do-you-need-more-memory-on-Azure-SQL-Managed-Instance/ba-p/563444).
+- A fájl alrendszer választhatnak az általános célú és az üzletileg kritikus szolgáltatási csomagok között az IO-késés mérjük.
 
 Választhat a számítási és tárolási erőforrások üzembe helyezéskor idő, majd az alkalmazást a állásidejét, anélkül ezt követően módosítsa azt a [az Azure portal](sql-database-scale-resources.md):
 
@@ -111,18 +134,52 @@ A rövid útmutató, amely az adatbázis biztonsági másolatának visszaállít
 
 > [!VIDEO https://www.youtube.com/embed/RxWYojo_Y3Q]
 
+
 ## <a name="monitor-applications"></a>Alkalmazások figyelése
 
-Nyomon követheti az alkalmazások működését és teljesítményét az áttelepítés után. A felügyelt példány néhány módosítást csak akkor engedélyezett, ha a [adatbázis kompatibilitási szintje módosítva lett](https://docs.microsoft.com/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database). Az Azure SQL Database-adatbázis-migrálás eredeti kompatibilitási szintje tartja a legtöbb esetben. Ha egy felhasználói adatbázis kompatibilitási szintje 100 vagy magasabb az áttelepítés előtt, akkor változatlan marad az áttelepítés után. Ha egy felhasználói adatbázis kompatibilitási szintje 90 a frissített adatbázis, az áttelepítés előtt volt a kompatibilitási szint értéke 100, amely a felügyelt példány a legalacsonyabb támogatott kompatibilitási szint. Rendszer-adatbázisok kompatibilitási szintje 140.
+Miután befejezte a migrálás felügyelt példányra, érdemes nyomon követni az alkalmazás viselkedését és a számítási feladatok teljesítményére. Ez a folyamat a következő tevékenységeket tartalmazza:
+- [Hasonlítsa össze a felügyelt példányon futó számítási feladat teljesítményét](#compare-performance-with-the-baseline) együtt a [meghatározása, hogy a forrás SQL Server létrehozott](#create-performance-baseline).
+- Folyamatosan [figyelheti a számítási feladat teljesítményét](#monitor-performance) azonosíthatja a potenciális problémákat és javítása.
 
-A migrálás kockázatainak csökkentése érdekében módosítsa az adatbázis-kompatibilitási szint csak azután alkalmazásteljesítmény-figyelő. Használja Query Store előtt és után az adatbázis kompatibilitási szint módosítása, a számítási feladatok teljesítményére kapcsolatos információk lekérése, amint azt az optimális eszközként [teljesítmény stabilitását tartsa a frissítés során az SQL Server újabb verzióra](https://docs.microsoft.com/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade).
+### <a name="compare-performance-with-the-baseline"></a>Az alapkonfiguráció teljesítmény összehasonlítása
 
-Miután egy teljes körűen felügyelt platformon, igénybe az SQL Database szolgáltatás részeként automatikusan biztosított előnyöket. Például a biztonsági mentések létrehozását a felügyelt példány nincs – a szolgáltatás hajtja végre biztonsági mentés meg automatikusan. Ön már nem kell aggódnia a ütemezheti, véve, és felügyelheti a biztonsági mentések. Felügyelt példány lehetővé teszi a belül a megőrzési időszak segítségével bármely időpontra visszaállítása [mutasson az idő Recovery (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore). Ezenkívül nem kell aggódnia, magas rendelkezésre állás kialakítása [magas rendelkezésre állású](sql-database-high-availability.md) jön létre.
+Az első tevékenység, amely a sikeres áttelepítés után azonnal érvénybe kell, hogy az alapszintű számítási teljesítmény és a számítási feladatok teljesítményének összehasonlítására. Ezt a tevékenységet az a célja, hogy erősítse meg, hogy a felügyelt példányon a számítási feladatok teljesítményére megfelel az igényeinek. 
 
-A biztonság megszilárdítása, fontolja meg néhány elérhető funkcióját:
+Adatbázis-migrálás felügyelt példányra a legtöbb esetben megőrzi az adatbázis-beállítások és az eredeti kompatibilitási szinten. Az eredeti beállítások megmaradnak, ahol csak lehetséges, néhány teljesítmény romlását, mint a forráson az SQL Server kockázatának csökkentése érdekében. Ha egy felhasználói adatbázis kompatibilitási szintje 100 vagy magasabb az áttelepítés előtt, akkor változatlan marad az áttelepítés után. Ha egy felhasználói adatbázis kompatibilitási szintje 90 a frissített adatbázis, az áttelepítés előtt volt a kompatibilitási szint értéke 100, amely a felügyelt példány a legalacsonyabb támogatott kompatibilitási szint. Rendszer-adatbázisok kompatibilitási szintje 140. Mivel a migrálás felügyelt példányra tényleges áttelepítése a legújabb verziójú SQL Server Database Engine, érdemes figyelembe vennie, hogy szeretne-e újra tesztelje az egyes knál teljesítménybeli problémák elkerülése érdekében a számítási feladatok teljesítményére.
 
-- Az Azure Active Directory-hitelesítést az adatbázis szintjén
-- Használat [speciális biztonsági funkciói](sql-database-security-overview.md) például [naplózási](sql-database-managed-instance-auditing.md), [fenyegetésészlelés](sql-database-advanced-data-security.md), [sorszintű biztonság](https://docs.microsoft.com/sql/relational-databases/security/row-level-security), és [dinamikus adatmaszkolás](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking) ) biztonságossá tétele a-példány.
+Egy előfeltétel győződjön meg arról, hogy befejeződött a következő tevékenységeket:
+- A beállítások a beállítások a forrás SQL Server-példány a felügyelt példány igazítása különböző példány, adatbázis, temdb beállítások és konfigurációk a vizsgálatot. Győződjön meg arról, hogy nem módosult-beállítások, például a kompatibilitási szintek és a titkosítás az első teljesítmény összehasonlítása futtatása előtt, vagy fogadja el a kockázat, hogy az új funkcióit, hogy engedélyezve van hatással lehetnek egyes lekérdezések. A migrálás kockázatainak csökkentése érdekében módosítsa az adatbázis-kompatibilitási szint csak azután alkalmazásteljesítmény-figyelő.
+- Alkalmazzon [tárolási gyakorlati előírásai általános célú](https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525) például előre lefoglalása a fájlokat, a jobb teljesítmény és méretét.
+- További információ a [környezetben előfordulhat, hogy a felügyelt példány és az SQL Server teljesítményének különbségeit különbségek kulcs]( https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/) és azonosíthatja a kockázatokat, amelyek hatással lehetnek a teljesítményt.
+- Győződjön meg arról, hogy az engedélyezett Query Store és a felügyelt példány az automatikus hangolás tartsa. Ezek a funkciók lehetővé teszik számítási teljesítmény mérésére, és automatikusan kijavítani a lehetséges teljesítményproblémák. Ismerje meg, hogyan használandó Query Store az optimális eszköz az előtt és után az adatbázis kompatibilitási szint módosítása, a számítási feladatok teljesítményére kapcsolatos információk lekérése a [teljesítmény stabilitását tartsa a frissítés során újabb SQL Server-verzióra](https://docs.microsoft.com/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade).
+Miután előkészítette a környezetet, amely hasonló, mint a helyszíni környezetben, a lehetséges elindíthatja a számítási feladatok és mérhetik a teljesítményt. Mérési folyamatot tartalmaznia kell a ugyanazokat a paramétereket, amelyek akkor mérni [teljesítménnyel, a számítási feladatok mértékek létrehozása a forrás SQL Server közben](#create-performance-baseline).
+Ennek eredményeképpen kell hasonlítsa össze az alapkonfiguráció teljesítmény paramétereket, és azonosítani a kritikus fontosságú különbségeket.
+
+> [!NOTE]
+> Sok esetben akkor nem tudná a felügyelt példány és az SQL Server pontosan megfelelő teljesítmény eléréséhez. A felügyelt példánynak egy SQL Server adatbázismotor, de az infrastruktúra és a felügyelt példányon a magas rendelkezésre állású konfiguráció vezethet be néhány különbség. Várt, hogy bizonyos lekérdezések gyorsabbá válik, míg más lassabb lehet. Összehasonlító célja, győződjön meg arról, hogy a felügyelt példányon a számítási feladatok teljesítményére egyezik-e a teljesítmény az SQL Server (átlag), és azonosíthatja a teljesítmény bármely kritikus lekérdezéseket, amelyek nem egyeznek az eredeti teljesítmény vannak.
+
+A teljesítmény összehasonlítás eredménye a következő lehet:
+- Felügyelt példányon a számítási feladatok teljesítményére van igazítva, vagy még jobb, amely az SQL Server számítási feladatok teljesítményére. Ebben az esetben sikeresen meggyőződött róla, hogy létrejött-e a migrálás.
+- A teljesítménymutatók és az a számítási feladatok során jól működik, néhány kivétellel csökkentett teljesítményű lekérdezések többsége. Ebben az esetben kell különbségeket, és a fontosságuk azonosításához. Ha van néhány fontos csökkentett teljesítményű lekérdezések, meg kell vizsgálni az alapul szolgáló SQL-tervekben módosítják, vagy a lekérdezések elérte-e bizonyos erőforráskorlátok. Kockázatcsökkentési ebben az esetben lehet alkalmazni megpróbálkozna a kritikus lekérdezéseket (például a módosított kompatibilitási szint, az örökölt cardinality estimator) vagy közvetlenül, vagy terv útmutatók, használatával építse újra, vagy hozzon létre a statisztikák és az indexek, amelyek hatással lehetnek a csomagok. 
+- A lekérdezések többsége lassabb, mint a forráson az SQL Server felügyelt példányon. Ebben az esetben próbálkozzon a különbség a kiváltó okának azonosításához [néhány erőforrás korlát elérése]( sql-database-managed-instance-resource-limits.md#instance-level-resource-limits) , például i/o-korlátok, a memória felső korlátja, példány log költési korlát, stb. Ha okozhat a különbség az erőforrás-korlátozások nélkül, próbálja meg módosítani az adatbázis kompatibilitási szintje, vagy adatbázis-beállítások módosítása, például az örökölt számosságbecslési funkciójával, és indítsa újra a teszt. Tekintse át a felügyelt példány vagy a Query Store nézetek által biztosított javaslatok azonosításához, hogy a teljesítmény közleményében szerepelt lekérdezéseket.
+
+> [!IMPORTANT]
+> Felügyelt példány rendelkezik beépített automatikus csomagjavító funkció, amely alapértelmezés szerint engedélyezve van. Ez a funkció biztosítja, hogy megfelelően működtek az illessze be a lekérdezések nem lenne a jövőben csökken. Győződjön meg arról, hogy ez a funkció engedélyezve van, és hogy végrehajtott a munkaterhelés túl hosszú ahhoz a régi beállításokkal, és engedélyezze a felügyelt példány az alapszintű teljesítményt és a terveket az új beállítások módosítása előtt.
+
+Módosítsa a paraméterek közül, vagy frissítse a szolgáltatási szintek csoportba történő átszervezését az optimális konfigurációhoz, amíg meg nem jelenik a számítási feladatok teljesítményére, amely a legjobban az igényeinek.
+
+### <a name="monitor-performance"></a>Teljesítmény figyelése
+
+Miután egy teljes körűen felügyelt platformon, és ellenőrizte, hogy számítási feladat teljesítményét megfelelő, az SQL Server számítási feladatok teljesítményére, igénybe előnyei az SQL Database szolgáltatás részeként automatikusan biztosított. 
+
+Akkor is, ha az áttelepítés során nem hajtani néhány módosítást a felügyelt példány, nincsenek nagy eséllyel, akkor kapcsolja be az új funkcióit egy kihasználásához a legújabb adatbázis motor fejlesztései a példány működése közben. Néhány módosítást csak egyszer vannak engedélyezve a [adatbázis kompatibilitási szintje módosítva lett](https://docs.microsoft.com/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database).
+
+
+Például a biztonsági mentések létrehozását a felügyelt példány nincs – a szolgáltatás hajtja végre biztonsági mentés meg automatikusan. Ön már nem kell aggódnia a ütemezheti, véve, és felügyelheti a biztonsági mentések. Felügyelt példány lehetővé teszi a belül a megőrzési időszak segítségével bármely időpontra visszaállítása [mutasson az idő Recovery (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore). Ezenkívül nem kell aggódnia, magas rendelkezésre állás kialakítása [magas rendelkezésre állású](sql-database-high-availability.md) jön létre.
+
+A biztonság megszilárdítása, érdemes lehet [Azure Active Directory-hitelesítéssel](sql-database-security-overview.md), [naplózási](sql-database-managed-instance-auditing.md), [fenyegetésészlelés](sql-database-advanced-data-security.md), [sorszintű biztonság](https://docs.microsoft.com/sql/relational-databases/security/row-level-security), és [dinamikus adatmaszkolás](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking) ).
+
+Mellett olyan fejlett felügyeleti és biztonsági funkciókat, a felügyelt példány biztosít a speciális eszközöket, amelyek segíthetnek [figyelése és finomhangolása a számítási feladatok](sql-database-monitor-tune-overview.md). [Az Azure SQL analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) lehetővé teszi, hogy a felügyelt példányok nagy készletének a figyelése, centralizálható a nagy számú példány és adatbázisok figyelésére. [Az automatikus hangolás](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction) a felügyelt példány folyamatosan figyeli a végrehajtási statisztika SQL terv teljesítményét, és automatikusan kijavítani az azonosított teljesítményével kapcsolatos problémákat.
 
 ## <a name="next-steps"></a>További lépések
 

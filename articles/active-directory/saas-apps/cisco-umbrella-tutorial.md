@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a1b0763e33607367939476ca155040295de864c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 255af92dfecdf891568d7d57c17512bb178a51e5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60281669"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105566"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>Oktatóanyag: Cisco összevonó az Azure Active Directory-integráció
 
@@ -53,7 +53,7 @@ Cisco összevonó integrálása az Azure AD beállítása, hozzá kell Cisco ös
 
 **Cisco összevonó hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

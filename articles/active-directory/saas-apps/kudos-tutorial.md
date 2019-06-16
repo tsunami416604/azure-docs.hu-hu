@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 00492ba379a4b4d8ae7437d18f9b2880dae03e44
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 50f6762c8046850da1e4541f2ccb7688542f7d54
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917452"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098471"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kudos"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Kudos
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Kudos konfigurálásához hozzá kell Kudos a katal�
 
 **Kudos hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

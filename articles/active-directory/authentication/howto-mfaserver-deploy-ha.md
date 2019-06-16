@@ -11,16 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ddf0885ce7615e06b78eccbd6424e63cc6103c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 43154e428c3208f5d990688554407777d09f2f1b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60358722"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056026"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Azure multi-factor Authentication-kiszolgáló magas rendelkezésre állás konfigurálása
 
 Magas rendelkezésre állást biztosít az Azure MFA-kiszolgáló telepítéssel eléréséhez szüksége több MFA-kiszolgáló telepítése. Ez a szakasz az Azure MFS Server-telepítéséhez, a magas rendelkezésre állású célok eléréséhez egy elosztott terhelésű tervezési információkat biztosít.
+
+> [!IMPORTANT]
+> 2019\. július 1-től a Microsoft már nem szavatolnak MFA-kiszolgáló az új üzembe helyezésekhez. Új felhasználókat szeretné a felhasználóktól többtényezős hitelesítést kell használnia a felhőalapú Azure multi-factor Authentication. Meglévő ügyfeleink, akik aktiválták az MFA-kiszolgáló előtt július 1 lesz a legújabb verzió, a jövőbeli frissítések letöltéséhez és a szokásos módon aktiváló hitelesítő adatok előállítása.
 
 ## <a name="mfa-server-overview"></a>MFA-kiszolgáló – áttekintés
 

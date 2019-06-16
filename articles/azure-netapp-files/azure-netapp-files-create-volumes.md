@@ -12,20 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 4/23/2019
+ms.date: 6/6/2019
 ms.author: b-juche
-ms.openlocfilehash: 53b2742cf92f3a3df346ba3557c718b8d7a11a4e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 657bacc153b5721d5a9f34792eaf4796cb477755
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719438"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808880"
 ---
 # <a name="create-a-volume-for-azure-netapp-files"></a>Kötet létrehozása az Azure NetApp Files számára
 
 Minden kapacitás készlet legfeljebb 500 kötetek. A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába. NetApp Azure Files támogatja az SMBv3- és NFS-kötetek. 
 
-## <a name="before-you-begin"></a>Előzetes teendők 
+## <a name="before-you-begin"></a>Előkészületek 
 A cikk előfeltételeinek részeként korábban már be kellett állítania egy kapacitáskészletet.   
 [Kapacitás készlet beállítása](azure-netapp-files-set-up-capacity-pool.md)   
 Egy alhálózatot az Azure Files-NetApp delegálni.  
@@ -90,34 +90,36 @@ Egy alhálózatot az Azure Files-NetApp delegálni.
 
 NetApp Azure Files SMBv3 köteteket támogatja. Az Active Directory-kapcsolatok létrehozása az SMB-kötet hozzáadása előtt kell. 
 
+### <a name="requirements-for-active-directory-connections"></a>Az Active Directory-kapcsolatok követelményei
+
+ Az Active Directory kapcsolatok követelményei a következők: 
+
+* A rendszergazdai fiók használata kell tudni számítógépfiókok létrehozása a szervezeti egység (OU) elérési úton, amely fog használni.  
+
+* Megfelelő portok nyitva a megfelelő Windows Active Directory (AD) kiszolgálón kell lennie.  
+    A szükséges portok a következők: 
+
+    |     Szolgáltatás           |     Port     |     Protocol     |
+    |-----------------------|--------------|------------------|
+    |    AD-webszolgáltatások    |    9389      |    TCP           |
+    |    DNS                |    53        |    TCP           |
+    |    DNS                |    53        |    UDP           |
+    |    ICMPv4             |    –       |    Echo Reply    |
+    |    Kerberos           |    464       |    TCP           |
+    |    Kerberos           |    464       |    UDP           |
+    |    Kerberos           |    88        |    TCP           |
+    |    Kerberos           |    88        |    UDP           |
+    |    LDAP               |    389       |    TCP           |
+    |    LDAP               |    389       |    UDP           |
+    |    LDAP               |    3268      |    TCP           |
+    |    NetBIOS-név       |    138       |    UDP           |
+    |    SAM/LSA            |    445       |    TCP           |
+    |    SAM/LSA            |    445       |    UDP           |
+    |    A Secure LDAP        |    636       |    TCP           |
+    |    A Secure LDAP        |    3269      |    TCP           |
+    |    a W32Time            |    123       |    UDP           |
+
 ### <a name="create-an-active-directory-connection"></a>Az Active Directory-kapcsolat létrehozása
-
-1. Győződjön meg arról, hogy megfelel-e a következő requiements: 
-
-    * A rendszergazdai fiók használata kell tudni számítógépfiókok létrehozása a szervezeti egység (OU) elérési úton, amely fog használni.
-    * Megfelelő portok nyitva a megfelelő Windows Active Directory (AD) kiszolgálón kell lennie.  
-        A szükséges portok a következők: 
-
-        |     Szolgáltatás           |     Port     |     Protocol     |
-        |-----------------------|--------------|------------------|
-        |    AD-webszolgáltatások    |    9389      |    TCP           |
-        |    DNS                |    53        |    TCP           |
-        |    DNS                |    53        |    UDP           |
-        |    ICMPv4             |    –       |    Echo Reply    |
-        |    Kerberos           |    464       |    TCP           |
-        |    Kerberos           |    464       |    UDP           |
-        |    Kerberos           |    88        |    TCP           |
-        |    Kerberos           |    88        |    UDP           |
-        |    LDAP               |    389       |    TCP           |
-        |    LDAP               |    389       |    UDP           |
-        |    LDAP               |    3268      |    TCP           |
-        |    NetBIOS-név       |    138       |    UDP           |
-        |    SAM/LSA            |    445       |    TCP           |
-        |    SAM/LSA            |    445       |    UDP           |
-        |    Secure LDAP        |    636       |    TCP           |
-        |    Secure LDAP        |    3269      |    TCP           |
-        |    a W32Time            |    123       |    UDP           |
-
 
 1. A NetApp fiókból, kattintson a **Active Directory kapcsolatok**, majd kattintson a **csatlakozzon**.  
 
@@ -125,10 +127,10 @@ NetApp Azure Files SMBv3 köteteket támogatja. Az Active Directory-kapcsolatok 
 
 2. Az Join Active Directory ablakban adja meg a következő információkat:
 
-    * **Elsődleges DNS**   
-        Ez a tartomány tartományvezérlő IP-címét az előnyben részesített Active Directory Domain Services használata az Azure NetApp fájlokkal. 
-    * **Secondary DNS**  
-        Ez a tartomány tartományvezérlő IP-címét a másodlagos Active Directory Domain Services használata az Azure NetApp fájlokkal. 
+    * **Elsődleges DNS**  
+        Ez az a DNS-ben az Active Directory-tartományhoz való csatlakozás és az SMB hitelesítési műveletekhez szükséges. 
+    * **Másodlagos DNS**   
+        Ez az a másodlagos DNS-kiszolgáló neve redundáns szolgáltatások biztosításához. 
     * **Tartomány**  
         Ez a tartomány nevét az Active Directory Domain Services, amely csatlakozni szeretne.
     * **SMB-kiszolgáló (számítógép-fiók) előtag**  
@@ -142,7 +144,7 @@ NetApp Azure Files SMBv3 köteteket támogatja. Az Active Directory-kapcsolatok 
         Ez az a szervezeti egység (OU), ahol létrejön az SMB-kiszolgálói számítógépfiókhoz LDAP elérési útját. Azt jelenti, OU = az második szint, szervezeti egység = első szintjét. 
     * Hitelesítő adatait, beleértve a **felhasználónév** és **jelszó**
 
-    ![Csatlakozás Active Directory-címtárhoz](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
+    ![Az Active Directory JOIN](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
 
 3. Kattintson a **Csatlakozás** parancsra.  
 
@@ -204,5 +206,5 @@ NetApp Azure Files SMBv3 köteteket támogatja. Az Active Directory-kapcsolatok 
 ## <a name="next-steps"></a>További lépések  
 
 * [Csatlakoztatni vagy leválasztani egy kötet a Windows vagy Linux rendszerű virtuális gépekhez](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
-* [Az NFS-kötet exportálási vonatkozó házirend konfigurálása](azure-netapp-files-configure-export-policy.md)
+* [Exportálási szabályzat konfigurálása NFS-kötethez](azure-netapp-files-configure-export-policy.md)
 * [Virtuális hálózat integrációja Azure-szolgáltatások ismertetése](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)

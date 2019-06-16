@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 8ebd871c314d3ecbc0c89e6c9081926558b181fd
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 59155b41906ffd401b971bee1248a225d0c33657
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65237091"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072454"
 ---
 # <a name="text-to-speech-rest-api"></a>Szöveg-hang transzformációs REST API-val
 
@@ -52,17 +52,17 @@ A `voices/list` végpont lehetővé teszi, hogy egy adott régióban végponton 
 | USA keleti régiója | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA 2. keleti régiója | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Közép-Franciaország | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| India középső régiója | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Közép-India | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Kelet-Japán | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Korea középső régiója | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA északi középső régiója | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Észak-Európa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA déli középső régiója | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Délkelet-Ázsia | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Egyesült Királyság déli régiója | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Az Egyesült Királyság déli régiója | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Nyugat-Európa | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA nyugati régiója | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| USA 2. nyugati régiója | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA nyugati régiója, 2. | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 
 ### <a name="request-headers"></a>Kérelemfejlécek
 
@@ -70,9 +70,9 @@ Ez a táblázat felsorolja a szükséges és választható fejlécek a szöveg-h
 
 | Fejléc | Leírás | Kötelező / választható |
 |--------|-------------|---------------------|
-| `Authorization` | Egy engedélyezési jogkivonatot előzi meg a word `Bearer`. További információért lásd: [Hitelesítés](#authentication). | Kötelező |
+| `Authorization` | Egy engedélyezési jogkivonatot előzi meg a word `Bearer`. További információért lásd: [Hitelesítés](#authentication). | Szükséges |
 
-### <a name="request-body"></a>Kérelem törzse
+### <a name="request-body"></a>A kérés törzse
 
 A szervezet nem szükséges a `GET` a végpontnak küldött kérelmek.
 
@@ -164,11 +164,11 @@ Ez a táblázat felsorolja a szükséges és választható fejlécek a szöveg-h
 | `Authorization` | Egy engedélyezési jogkivonatot előzi meg a word `Bearer`. További információért lásd: [Hitelesítés](#authentication). | Kötelező |
 | `Content-Type` | A megadott szöveg a tartalom típusát határozza meg. Elfogadott érték: `application/ssml+xml`. | Szükséges |
 | `X-Microsoft-OutputFormat` | A hangkimeneti formátum meghatározása. Elfogadott értékek teljes listáját lásd: [hang kimenetek](#audio-outputs). | Szükséges |
-| `User-Agent` | Az alkalmazás neve. A megadott érték legfeljebb 255 karakter hosszú lehet. | Kötelező |
+| `User-Agent` | Az alkalmazás neve. A megadott érték legfeljebb 255 karakter hosszú lehet. | Szükséges |
 
 ### <a name="audio-outputs"></a>Hang kimenetek
 
-Ez a lista az egyes kérelmek, a küldött támogatott hangformátumok a `X-Microsoft-OutputFormat` fejléc. Minden egyes magában foglalja egy átviteli sebesség és a kódolási típusként. A Speech Services támogatja a 24 KHz, 16 KHz, és 8 KHz hang adja vissza.
+Ez a lista az egyes kérelmek, a küldött támogatott hangformátumok a `X-Microsoft-OutputFormat` fejléc. Minden egyes magában foglalja egy átviteli sebesség és a kódolási típusként. A Speech Services támogatja a 24 kHz, 16 kHz, és 8 kHz hang kimenete.
 
 |||
 |-|-|
@@ -181,9 +181,9 @@ Ez a lista az egyes kérelmek, a küldött támogatott hangformátumok a `X-Micr
 | `audio-24khz-48kbitrate-mono-mp3` | |
 
 > [!NOTE]
-> Ha a kiválasztott hang- és kimeneti formátum különböző átviteli sebességet, a hanganyag szükség szerint módosítva a felbontása. Azonban nem támogatja a 24khz beszédhangot `audio-16khz-16kbps-mono-siren` és `riff-16khz-16kbps-mono-siren` kimeneti formátumot.
+> Ha a kiválasztott hang- és kimeneti formátum különböző átviteli sebességet, a hanganyag szükség szerint módosítva a felbontása. Azonban nem támogatja a 24 kHz beszédhangot `audio-16khz-16kbps-mono-siren` és `riff-16khz-16kbps-mono-siren` kimeneti formátumot.
 
-### <a name="request-body"></a>Kérelem törzse
+### <a name="request-body"></a>A kérés törzse
 
 A szervezet minden egyes `POST` kérelem érkezik [Speech összefoglaló Markup Language (SSML)](speech-synthesis-markup.md). SSML lehetővé teszi a hang- és a szöveg-hang transzformációs szolgáltatás által visszaadott szintetizált nyelvének kiválasztását. Támogatott beszédhangot teljes listáját lásd: [nyelvi támogatás](language-support.md#text-to-speech).
 

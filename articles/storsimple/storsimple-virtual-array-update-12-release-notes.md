@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/29/2019
 ms.author: alkohli
 ms.openlocfilehash: ea7e4801dfaad533403c0f927a03735ae409cc52
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66420603"
 ---
 # <a name="storsimple-virtual-array-update-12-release-notes"></a>A StorSimple Virtual Array frissítés 1.2-es kibocsátási megjegyzései
@@ -20,13 +20,13 @@ A következő kiadási megjegyzések a kritikus fontosságú megoldatlan problé
 
 A kibocsátási megjegyzésekben folyamatosan frissülnek. Ahogy ismertté kritikus fontosságú problémáit, a rendszer hozzáadja azokat. A StorSimple Virtual Array üzembe helyezése, előtt alaposan tekintse át a kibocsátási megjegyzésekben található információkat.
 
-1.2-es frissítés felel meg a szoftververzió **10.0.10311.0**.
+1\.2-es frissítés felel meg a szoftververzió **10.0.10311.0**.
 
 > [!IMPORTANT]
 > - Azok zavart okozó frissítések, és indítsa újra az eszközt. I/o van folyamatban, ha az eszköz leállást. A csomagokat, használja a frissítés részletes utasításokért ugorjon [frissítése 1.2 letöltése](#download-update-12).
-> - 1.2-es frissítés érhető el, hogy az Azure Portalon csak akkor, ha az eszköz fut-e frissítés 1.0 és 1.1.
+> - 1\.2-es frissítés érhető el, hogy az Azure Portalon csak akkor, ha az eszköz fut-e frissítés 1.0 és 1.1.
 
-## <a name="whats-new-in-update-12"></a>1.2-es frissítés újdonságai
+## <a name="whats-new-in-update-12"></a>1\.2-es frissítés újdonságai
 
 Ez a frissítés a következő hibajavításokat tartalmaz:
 

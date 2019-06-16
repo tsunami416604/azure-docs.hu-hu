@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c17c055b79b8b90bd56a1dcd6472cf74d2512137
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 0243a3e0ed83abc1edead5ecece4fd5c6ff1cad9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901779"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67089165"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TalentLMS
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása a TalentLMS konfigurálásához hozzá kell TalentLMS 
 
 **TalentLMS hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -139,7 +139,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés TalentLMS, hajtsa v�
 
     ![Fiók & beállítások](./media/talentlms-tutorial/IC777296.png "fiók & beállításai")
 
-1. Kattintson a **egyszeri bejelentkezés (SSO)**,
+1. Kattintson a **egyszeri bejelentkezés (SSO)** ,
 
 1. Az egyszeri bejelentkezés szakaszban hajtsa végre az alábbi lépéseket:
 
@@ -242,7 +242,7 @@ Ahhoz, hogy az Azure AD-felhasználók TalentLMS bejelentkezni, akkor ki kell é
 > [!NOTE]
 > Bármely más TalentLMS felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését TalentLMS által biztosított API-k.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

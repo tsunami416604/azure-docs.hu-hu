@@ -14,12 +14,12 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 706a826d1b256e95e459d2a44cdb13ee56c70599
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 969d08888002c97453cb2af18f42371227676597
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60352376"
+ms.locfileid: "67109481"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Az Azure AD Connect testreszabott telepítése
 Az Azure AD Connect **Custom settings** (Egyéni beállítások) menüje akkor használható, ha részletesebb beállításokra van szükség a telepítéshez. Akkor van rá szükség, ha több erdővel rendelkezik vagy ha választható szolgáltatásokat kíván konfigurálni, amelyeket a gyorstelepítés nem tartalmaz. Minden olyan esetben szükséges, ahol a [**gyorstelepítés**](how-to-connect-install-express.md) beállítás nem megfelelő az üzemelő példányhoz vagy a topológiához.
@@ -177,7 +177,7 @@ A képernyő segítségével beállíthatja a választható szolgáltatásokat a
 | Jelszókivonat szinkronizálása |Amennyiben az összevonás megoldást választotta a bejelentkezéshez, engedélyezheti ezt a beállítást. A jelszókivonat-szinkronizálás ezt követően használható másodlagos beállításként. További információk: [Jelszókivonat szinkronizálása](how-to-connect-password-hash-synchronization.md). </br></br>Ha az átmenő hitelesítést választotta, ez a beállítás is engedélyezhető, hogy támogassa a régebbi ügyfelek biztonsági mentési lehetőségként történő használatát. További információk: [Jelszókivonat szinkronizálása](how-to-connect-password-hash-synchronization.md).|
 | Jelszóvisszaíró |A jelszóvisszaíró engedélyezésével az Azure AD szolgáltatásban végrehajtott jelszómódosítások visszaíródnak a helyszíni címtárba. További részletekért lásd: [A jelszókezelés első lépései](../authentication/quickstart-sspr.md). |
 | Group writeback (Csoportvisszaíró) |Amennyiben használja az **Office 365 Csoportok** szolgáltatást, ezeket a csoportokat szerepeltetheti a helyszíni Active Directory szolgáltatásban is. Ez a beállítás kizárólag akkor elérhető, ha az Exchange jelen van a helyszíni Active Directory szolgáltatásban. További információkért lásd: [Csoportvisszaíró](how-to-connect-preview.md#group-writeback). |
-| Eszközvisszaíró |A használatával visszaírhatja az Azure AD-eszközobjektumokat a helyszíni Active Directory szolgáltatásba feltételes hozzáférésű forgatókönyvekhez. További információkért lásd: [Eszközvisszaírás engedélyezése az Azure AD Connectben](how-to-connect-device-writeback.md). |
+| Eszközvisszaíró |Lehetővé teszi használatával visszaírhatja az Azure ad-vel a helyszíni Active Directory feltételes hozzáférési forgatókönyvek. További információkért lásd: [Eszközvisszaírás engedélyezése az Azure AD Connectben](how-to-connect-device-writeback.md). |
 | Directory extension attribute sync (Címtárbővítmény-attribútumok szinkronizálása) |A címtárbővítmény-attribútumok szinkronizálásának engedélyezésével a megadott attribútumok szinkronizálva lesznek az Azure AD szolgáltatásba. További információkért lásd: [Címtárbővítmények](how-to-connect-sync-feature-directory-extensions.md). |
 
 ### <a name="azure-ad-app-and-attribute-filtering"></a>Azure AD app and attribute filtering (Azure AD alkalmazás- és attribútumszűrés)

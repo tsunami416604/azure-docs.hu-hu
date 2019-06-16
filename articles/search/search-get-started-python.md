@@ -1,7 +1,7 @@
 ---
 title: 'Gyors útmutató: Python és a REST API-k – Azure Search szolgáltatásban'
 description: Hozzon létre, betöltését és a Python, a Jupyter notebookok és az Azure Search REST API-index lekérdezése.
-ms.date: 05/23/2019
+ms.date: 06/11/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 99b4ec0be8e9fa631c5081edd42474ea89dc5dc3
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: c519cbd151ac3008593e3309930db4e9a9414e51
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244790"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056644"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-jupyter-python-notebooks"></a>Gyors útmutató: Jupyter Python notebookok használatával egy Azure Search-index létrehozása
 > [!div class="op_single_selector"]
@@ -88,22 +88,19 @@ Ebben a feladatban indíthat egy Jupyter notebookot, és győződjön meg arról
 
    Ellentétben az index üres gyűjteményt adja vissza ezt a választ: `{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
 
-> [!Tip]
-> Egy ingyenes szolgáltatás, az Ön legfeljebb három indexek, indexelők és adatforrások. Ez a rövid útmutató létrehoz egy. Győződjön meg arról, hogy a hely az új objektumokat hozhat létre, mielőtt továbblép bármely.
-
 ## <a name="1---create-an-index"></a>1 – Index létrehozása
 
 A portál használata, az index léteznie kell a szolgáltatás adatok betöltése előtt. Ebben a lépésben használja a [Index REST API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) paranccsal küldje le a szolgáltatást az indexsémát.
 
 Az index szükséges elemek közé tartozik a nevét, a mezők gyűjteményét és a egy kulcsot. A mezők gyűjteménye határozza meg a szerkezete egy *dokumentum*. Minden mező rendelkezik egy név, típus és attribútumok, amelyek meghatározzák, hogyan használja a mezőt (például, hogy-e teljes szöveges kereshető, szűrhető vagy lekérhető a keresési eredmények között). Index, egyes típusú mezők belül `Edm.String` kijelölt a *kulcs* dokumentum identitás.
 
-Ez az index neve "hotels-py" és a Meződefiníciók lentebb látható. A nagyobb része ["Hotels" index](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) használt egyéb forgatókönyvek. Hogy vágott ebben a rövid útmutatóban kihagytuk.
+Ez az index neve "hotels-quickstart" és a Meződefiníciók lentebb látható. A nagyobb része ["Hotels" index](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) használt egyéb forgatókönyvek. Hogy vágott ebben a rövid útmutatóban kihagytuk.
 
 1. A következő cellába illessze be az alábbi példa a sémát adjon meg egy cellában. 
 
     ```python
     index_schema = {
-       "name": "hotels-py",  
+       "name": "hotels-quickstart",  
        "fields": [
          {"name": "HotelId", "type": "Edm.String", "key": "true", "filterable": "true"},
          {"name": "HotelName", "type": "Edm.String", "searchable": "true", "filterable": "false", "sortable": "true", "facetable": "false"},
@@ -236,10 +233,10 @@ Küldje le a dokumentumokat, használja a HTTP POST-kérelmet az index URL-cím 
     }
     ```   
 
-2. Egy másik cellába állítson össze a kérelmet. A POST-kérelemhez célozza meg, a szállodák-py index docs gyűjteményét, majd leküldi az előző lépésben meghatározott dokumentumok.
+2. Egy másik cellába állítson össze a kérelmet. A POST-kérelemhez célozza meg, a szállodák-quickstart index docs gyűjteményét, majd leküldi az előző lépésben meghatározott dokumentumok.
 
    ```python
-   url = endpoint + "indexes/hotels-py/docs/index" + api_version
+   url = endpoint + "indexes/hotels-quickstart/docs/index" + api_version
    response  = requests.post(url, headers=headers, json=documents)
    index_content = response.json()
    pprint(index_content)
@@ -253,56 +250,63 @@ Küldje le a dokumentumokat, használja a HTTP POST-kérelmet az index URL-cím 
 
 Ez a lépés bemutatja, hogyan kérdezhet le egy index használatával a [Search dokumentumok REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
+1. Egy cellába, adjon meg egy lekérdezési kifejezés, amely végrehajt egy üres keresés (keresési = *), az unranked listájának visszaadása (Keresés a pontszám = 1.0) tetszőleges dokumentumok. Alapértelmezés szerint az Azure Search egyszerre 50 egyezést adja vissza. Strukturált, mint ez a lekérdezés egy teljes dokumentum szerkezete és értékeket ad vissza. Adja hozzá a $count = true összes dokumentum számbavétele az eredményeket.
 
-1. Adja meg a lekérdezés egy új cellára. Az alábbi példa a használati "hotels" és "Wi-Fi" keres. Azt adja vissza egy *száma* egyeznek, dokumentumok és *kiválasztja* mezőket a keresési eredmények tartalmazzák.
+   ```python
+   searchstring = '&search=*&$count=true'
+   ```
+
+1. Egy új cellába adja meg az alábbi példa a feltételek "hotels" és "Wi-Fi" a kereséshez. Adja hozzá a $select, adja meg a keresési eredmények szerepeltetendő mezőket.
 
    ```python
    searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
    ```
 
-2. Egy másik cellába állítson össze egy kérelmet. A GET kérelem a docs-gyűjteményt a szállodák-py index célozza, és csatolja az előző lépésben megadott lekérdezés.
+1. Egy másik cellába állítson össze egy kérelmet. A GET kérelem a docs-gyűjtemény a szállodák-quickstart index célozza, és csatolja az előző lépésben megadott lekérdezés.
 
    ```python
-   url = endpoint + "indexes/hotels-py/docs" + api_version + searchstring
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
    response  = requests.get(url, headers=headers, json=searchstring)
    query = response.json()
    pprint(query)
    ```
 
-3. Minden lépés futtatásához. Eredmények a következő kimenet hasonlóan kell kinéznie. 
+1. Minden lépés futtatásához. Eredmények a következő kimenet hasonlóan kell kinéznie. 
 
     ![Keresés az indexekben](media/search-get-started-python/search-index.png "keresés az indexekben")
 
-4. Próbálja meg néhány további lekérdezést példák betekintést nyerhet a szintaxis. A következő példákban cserélje le a keresési karakterlánc, és futtassa újból a keresési kérelmet. 
+1. Próbálja meg néhány további lekérdezést példák betekintést nyerhet a szintaxis. A következő példákban cserélje le a keresési karakterlánc, és futtassa újból a keresési kérelmet. 
 
    Szűrő alkalmazásához: 
 
    ```python
-   searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description'
+   searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description,Rating'
    ```
 
    Végezze el a felső két eredmény:
 
    ```python
-   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description'
+   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description,Category'
    ```
 
     Egy adott mezőben Rendezés:
 
    ```python
-   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince'
+   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince, Tags'
    ```
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása 
 
-Ha már nincs szüksége lesz rá az index törölni kell. Egy ingyenes szolgáltatás három indexre korlátozódik. Előfordulhat, hogy törölni kívánja azt nem használja aktívan, hogy helyet biztosítson a többi indexekkel.
+Ha már nincs szüksége lesz rá az index törölni kell. Egy ingyenes szolgáltatás három indexre korlátozódik. Ön nem használja aktívan, hogy helyet biztosítson a többi indexek törölni kell.
+
+Objektumok törlése a legegyszerűbben a portálon keresztül, de mivel Python gyors üzembe helyezés, a következő szintaxist poskytne ugyanaz az eredmény:
 
    ```python
-  url = endpoint + "indexes/hotels-py" + api_version
+  url = endpoint + "indexes/hotels-quickstart" + api_version
   response  = requests.delete(url, headers=headers)
    ```
 
-Index törlése ellenőrizheti, ha a meglévő indexeket listájának visszaadása. Ha a "Hotels"-py eltűnt, majd ismeri a kérelem sikeres volt.
+Index törlése ellenőrizheti a létező indexek listájának lekérésekor. Ha a "Hotels" – rövid útmutató eltűnt, majd ismeri a kérelem sikeres volt.
 
 ```python
 url = endpoint + "indexes" + api_version + "&$select=name"

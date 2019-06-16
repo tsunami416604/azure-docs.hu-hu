@@ -5,10 +5,10 @@ ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 11-20-2018
 ms.openlocfilehash: 05820cc5f7b7d61d83f73ea5b62b05f8712e0997
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66156230"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Virtuális gép mérete rugalmasan fenntartott VM-példányok
@@ -30,9 +30,9 @@ Az alábbi példák a méretek és arányok használata a DSv2-sorozat tábla.
 
  A fenntartott VM-példány méretének hol az arány vagy az a sorozat további méretek képest relatív erőforrás-igényű 8 Standard_DS4_v2 vásárolhat.
 
-- 1. forgatókönyv: Standard_DS1_v2 nyolc futtatása az 1-es méretű virtuális gépeken. A foglalási kedvezményt a virtuális gépek összes nyolc vonatkozik.
-- 2. forgatókönyv: Standard_DS2_v2 két futtatása az egyes 2-es méretű virtuális gépeken. Egy Standard_DS3_v2 is futtathatja a 4-es méretű virtuális Gépet. A rendszer a teljes erőforrás-igényű 2 + 2 + 4 = 8. Ezért a foglalási kedvezményt mind a három virtuális gépek vonatkozik.
-- 3. forgatókönyv: Futtassa egy Standard_DS5_v2 16-es. A foglalási kedvezményt a virtuális gép fele a számítási költségek vonatkozik.
+- 1\. forgatókönyv: Standard_DS1_v2 nyolc futtatása az 1-es méretű virtuális gépeken. A foglalási kedvezményt a virtuális gépek összes nyolc vonatkozik.
+- 2\. forgatókönyv: Standard_DS2_v2 két futtatása az egyes 2-es méretű virtuális gépeken. Egy Standard_DS3_v2 is futtathatja a 4-es méretű virtuális Gépet. A rendszer a teljes erőforrás-igényű 2 + 2 + 4 = 8. Ezért a foglalási kedvezményt mind a három virtuális gépek vonatkozik.
+- 3\. forgatókönyv: Futtassa egy Standard_DS5_v2 16-es. A foglalási kedvezményt a virtuális gép fele a számítási költségek vonatkozik.
 
 A következő szakaszok show, milyen méretek a következők az azonos méretű adatsorozat-csoport a fenntartott VM-példány vásárlásakor optimalizált példány mérete rugalmasságot.
 
@@ -40,7 +40,7 @@ A következő szakaszok show, milyen méretek a következők az azonos méretű 
 
 | Méret | Arány|
 |---|---|
-| Standard_B1s | 1. |
+| Standard_B1s | 1 |
 |Standard_B2s|4|
 
 További információkért lásd: [a B sorozat – adatlöket-kezelés virtuálisgép-méretek](../articles/virtual-machines/windows/b-series-burstable.md).
@@ -49,7 +49,7 @@ További információkért lásd: [a B sorozat – adatlöket-kezelés virtuáli
 
 | Méret | Arány|
 |---|---|
-| Standard_B1ms |1.|
+| Standard_B1ms |1|
 |Standard_B2ms|4|
 |Standard_B4ms|8|
 |Standard_B8ms|16|
@@ -60,7 +60,7 @@ További információkért lásd: [a B sorozat – adatlöket-kezelés virtuáli
 
 | Méret | Arány|
 |---|---|
-| Standard_D1|1.|
+| Standard_D1|1|
 |Standard_D2|2|
 |Standard_D3|4|
 |Standard_D4|8|
@@ -71,7 +71,7 @@ További információkért lásd: [virtuálisgép-méretek előző generációs 
 
 | Méret | Arány|
 |---|---|
-| Standard_D11|1.|
+| Standard_D11|1|
 |Standard_D12|2|
 |Standard_D13|4|
 |Standard_D14|8|
@@ -82,7 +82,7 @@ További információkért lásd: [virtuálisgép-méretek előző generációs 
 
 | Méret | Arány|
 |---|---|
-|Standard_DS1|1.|
+|Standard_DS1|1|
 |Standard_DS2|2|
 |Standard_DS3|4|
 |Standard_DS4|8|
@@ -93,7 +93,7 @@ További információkért lásd: [virtuálisgép-méretek előző generációs 
 
 | Méret | Arány|
 |---|---|
-|Standard_DS11|1.|
+|Standard_DS11|1|
 |Standard_DS12|2|
 |Standard_DS13|4|
 |Standard_DS14|8|
@@ -104,7 +104,7 @@ További információkért lásd: [virtuálisgép-méretek előző generációs 
 
 | Méret | Arány|
 |---|---|
-|Standard_DS1_v2|1.|
+|Standard_DS1_v2|1|
 |Standard_DS2_v2|2|
 |Standard_DS3_v2|4|
 |Standard_DS4_v2|8|
@@ -116,8 +116,8 @@ További információkért lásd: [virtuálisgép-méretek előző generációs 
 
 | Méret | Arány|
 |---|---|
-|Standard_DS11_v2|1.|
-|Standard_DS11-1_v2|1.|
+|Standard_DS11_v2|1|
+|Standard_DS11-1_v2|1|
 |Standard_DS12_v2|2|
 |Standard_DS12-1_v2|2|
 |Standard_DS12-2_v2|2|
@@ -135,7 +135,7 @@ További információkért lásd: [virtuálisgép-méretek előző generációs 
 
 | Méret | Arány|
 |---|---|
-|Standard_D2s_v3|1.|
+|Standard_D2s_v3|1|
 |Standard_D4s_v3|2|
 |Standard_D8s_v3|4|
 |Standard_D16s_v3|8|
@@ -148,7 +148,7 @@ További információkért lásd: [általános célú virtuális gépek méretei
 
 | Méret | Arány|
 |---|---|
-|Standard_D1_v2|1.|
+|Standard_D1_v2|1|
 |Standard_D2_v2|2|
 |Standard_D3_v2|4|
 |Standard_D4_v2|8|
@@ -160,7 +160,7 @@ További információkért lásd: [virtuálisgép-méretek előző generációs 
 
 | Méret | Arány|
 |---|---|
-|Standard_D11_v2|1.|
+|Standard_D11_v2|1|
 |Standard_D12_v2|2|
 |Standard_D13_v2|4|
 |Standard_D14_v2|8|
@@ -172,7 +172,7 @@ További információkért lásd: [virtuálisgép-méretek előző generációs 
 
 | Méret | Arány|
 |---|---|
-| Standard_D2_v3|1.|
+| Standard_D2_v3|1|
 |Standard_D4_v3|2|
 |Standard_D8_v3|4|
 |Standard_D16_v3|8|
@@ -185,7 +185,7 @@ További információkért lásd: [általános célú virtuális gépek méretei
 
 | Méret | Arány|
 |---|---|
-|Standard_E2s_v3|1.|
+|Standard_E2s_v3|1|
 |Standard_E4s_v3|2|
 |Standard_E4-2s_v3|2|
 |Standard_E8s_v3|4|
@@ -208,7 +208,7 @@ További információkért lásd: [memóriahasználatra optimalizált virtuális
 
 | Méret | Arány|
 |---|---|
-| Standard_E2_v3|1.|
+| Standard_E2_v3|1|
 |Standard_E4_v3|2|
 |Standard_E8_v3|4|
 |Standard_E16_v3|8|
@@ -222,7 +222,7 @@ További információkért lásd: [memóriahasználatra optimalizált virtuális
 
 | Méret | Arány|
 |---|---|
-| Standard_F1|1.|
+| Standard_F1|1|
 |Standard_F2|2|
 |Standard_F4|4|
 |Standard_F8|8|
@@ -234,7 +234,7 @@ További információkért lásd: [virtuálisgép-méretek előző generációs 
 
 | Méret | Arány|
 |---|---|
-| Standard_F1s|1.|
+| Standard_F1s|1|
 |Standard_F2s|2|
 |Standard_F4s|4|
 |Standard_F8s|8|
@@ -246,7 +246,7 @@ További információkért lásd: [virtuálisgép-méretek előző generációs 
 
 | Méret | Arány|
 |---|---|
-|Standard_F2s_v2|1.|
+|Standard_F2s_v2|1|
 |Standard_F4s_v2|2|
 |Standard_F8s_v2|4|
 |Standard_F16s_v2|8|
@@ -260,7 +260,7 @@ További információkért lásd: [számításra optimalizált virtuális gépek
 
 | Méret | Arány|
 |---|---|
-| Standard_H8|1.|
+| Standard_H8|1|
 |Standard_H16|2|
 
 További információkért lásd: [nagy teljesítményű számítási Virtuálisgép-méretek](../articles/virtual-machines/windows/sizes-hpc.md).
@@ -269,7 +269,7 @@ További információkért lásd: [nagy teljesítményű számítási Virtuális
 
 | Méret | Arány|
 |---|---|
-| Standard_H8m|1.|
+| Standard_H8m|1|
 |Standard_H16m|2|
 
 További információkért lásd: [nagy teljesítményű számítási Virtuálisgép-méretek](../articles/virtual-machines/windows/sizes-hpc.md).
@@ -278,7 +278,7 @@ További információkért lásd: [nagy teljesítményű számítási Virtuális
 
 | Méret | Arány|
 |---|---|
-| Standard_L4s|1.|
+| Standard_L4s|1|
 |Standard_L8s|2|
 |Standard_L16s|4|
 |Standard_L32s|8|
@@ -289,7 +289,7 @@ További információkért lásd: [tárolásra optimalizált virtuális gépek m
 
 | Méret | Arány|
 |---|---|
-| Standard m64s|1.|
+| Standard m64s|1|
 |Standard_M128s|2|
 
 További információkért lásd: [memóriahasználatra optimalizált virtuális gépek méretei](../articles/virtual-machines/windows/sizes-memory.md#m-series).
@@ -298,7 +298,7 @@ További információkért lásd: [memóriahasználatra optimalizált virtuális
 
 | Méret | Arány|
 |---|---|
-| Standard_M16s|1.|
+| Standard_M16s|1|
 |Standard m32s|2|
 
 További információkért lásd: [memóriahasználatra optimalizált virtuális gépek méretei](../articles/virtual-machines/windows/sizes-memory.md#m-series).
@@ -307,9 +307,9 @@ További információkért lásd: [memóriahasználatra optimalizált virtuális
 
 | Méret | Arány|
 |---|---|
-|Standard m8ms|1.|
-|Standard_M8-2ms|1.|
-|Standard_M8-4ms|1.|
+|Standard m8ms|1|
+|Standard_M8-2ms|1|
+|Standard_M8-4ms|1|
 |Standard_M16ms|2|
 |Standard_M16-4ms|2|
 |Standard_M16-8ms|2|
@@ -323,7 +323,7 @@ További információkért lásd: [memóriahasználatra optimalizált virtuális
 
 | Méret | Arány|
 |---|---|
-| Standard m32ls|1.|
+| Standard m32ls|1|
 |Standard m64ls|2|
 
 További információkért lásd: [memóriahasználatra optimalizált virtuális gépek méretei](../articles/virtual-machines/windows/sizes-memory.md#m-series).
@@ -332,9 +332,9 @@ További információkért lásd: [memóriahasználatra optimalizált virtuális
 
 | Méret | Arány|
 |---|---|
-| Standard_M64ms|1.|
-|Standard_M64-16ms|1.|
-|Standard_M64-32ms|1.|
+| Standard_M64ms|1|
+|Standard_M64-16ms|1|
+|Standard_M64-32ms|1|
 |Standard m 128 MS|2|
 |Standard_M128-32ms|2|
 |Standard_M128-64ms|2|
@@ -345,7 +345,7 @@ További információkért lásd: [memóriahasználatra optimalizált virtuális
 
 | Méret | Arány|
 |---|---|
-| Standard_NC6|1.|
+| Standard_NC6|1|
 |Standard_NC12|2|
 |Standard_NC24|4|
 
@@ -355,7 +355,7 @@ További információkért lásd: [GPU-optimalizált virtuális gépek méretei]
 
 | Méret | Arány|
 |---|---|
-| Standard_NC6s_v2|1.|
+| Standard_NC6s_v2|1|
 |Standard_NC12s_v2|2|
 |Standard_NC24s_v2|4|
 
@@ -365,7 +365,7 @@ További információkért lásd: [GPU-optimalizált virtuális gépek méretei]
 
 | Méret | Arány|
 |---|---|
-| Standard_NC6s_v3|1.|
+| Standard_NC6s_v3|1|
 |Standard_NC12s_v3|2|
 |Standard_NC24s_v3|4|
 
@@ -375,7 +375,7 @@ További információkért lásd: [GPU-optimalizált virtuális gépek méretei]
 
 | Méret | Arány|
 |---|---|
-| Standard_ND6s|1.|
+| Standard_ND6s|1|
 |Standard_ND12s|2|
 |Standard_ND24s|4|
 
@@ -385,7 +385,7 @@ További információkért lásd: [GPU-optimalizált virtuális gépek méretei]
 
 | Méret | Arány|
 |---|---|
-| Standard_NV6|1.|
+| Standard_NV6|1|
 |Standard_NV12|2|
 |Standard_NV24|4|
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d74cc1665867568032bb1343e4f2c26c50fe15a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 3b2c765778fc2bdd8425cc3f375831c0d317e753
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65770189"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100891"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>Oktatóanyag: HubSpot az Azure Active Directory-integráció
 
@@ -79,7 +79,7 @@ Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelen
 
 Az Azure AD egyszeri bejelentkezés az HubSpot tesztelése és konfigurálása, hogy a következő építőelemeit kell elvégeznie:
 
-| Feladat | Leírás |
+| Tevékenység | Leírás |
 | --- | --- |
 | **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)** | Lehetővé teszi a felhasználók a funkció használatához. |
 | **[HubSpot egyszeri bejelentkezés konfigurálása](#configure-hubspot-single-sign-on)** | Az egyszeri bejelentkezési beállításainak konfigurálása az alkalmazásban. |
@@ -123,7 +123,7 @@ Ebben a szakaszban konfigurálnia az Azure AD egyszeri bejelentkezés HubSpot az
 
     ![További URL-címek Set kapcsoló](common/metadata-upload-additional-signon.png)
 
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** ablaktáblán, a a **SAML-aláíró tanúsítvány** szakaszban jelölje be **letöltése** melletti **tanúsítvány (Base64)**. Válassza ki a letöltési lehetőséget igényei alapján. Mentse a tanúsítványt a számítógépen.
+1. Az a **állítsa be egyszeri bejelentkezést az SAML** ablaktáblán, a a **SAML-aláíró tanúsítvány** szakaszban jelölje be **letöltése** melletti **tanúsítvány (Base64)** . Válassza ki a letöltési lehetőséget igényei alapján. Mentse a tanúsítványt a számítógépen.
 
     ![A tanúsítvány (Base64) a letöltési lehetőséget](common/certificatebase64.png)
 
@@ -183,7 +183,7 @@ Ebben a szakaszban hozzon létre egy tesztfelhasználót Britta Simon nevű az A
 
     1. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    1. Az a **felhasználónév** mezőbe írja be **brittasimon\@\<a vállalati tartomány >.\< bővítmény\>**. Ha például **brittasimon\@contoso.com**.
+    1. Az a **felhasználónév** mezőbe írja be **brittasimon\@\<a vállalati tartomány >.\< bővítmény\>** . Ha például **brittasimon\@contoso.com**.
 
     1. Válassza ki a **Show jelszó** jelölőnégyzetet. Írja le az értéket, a megjelenő a **jelszó** mezőbe.
 
@@ -252,7 +252,7 @@ Történő HubSpot lévő felhasználói fiók kiépítése:
     > [!NOTE]
     > A felhasználó aktiválása után a felhasználó elfogadja a meghívást.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban a az Azure AD egyszeri bejelentkezés beállításai a saját alkalmazások portál segítségével tesztelnie.
 

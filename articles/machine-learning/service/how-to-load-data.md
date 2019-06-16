@@ -13,10 +13,10 @@ ms.reviewer: jmartens
 ms.date: 02/22/2019
 ms.custom: seodec18
 ms.openlocfilehash: fef3281f1f4e727b58878439e3f6456fee3b6241
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66752937"
 ---
 # <a name="load-and-read-data-with-the-azure-machine-learning-data-prep-sdk"></a>Betölteni, és az Azure Machine Learning Data Prep SDK-adatok olvasása
@@ -157,12 +157,12 @@ dflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2')
 dflow.head(5)
 ```
 
-| |1. oszlop|Column2|Column3|4. oszlopig|Column5|Column6|Column7|Column8| | |
+| |1\. oszlop|Column2|Column3|4\. oszlopig|Column5|Column6|Column7|Column8| | |
 |-|-------|-------|-------|-------|-------|-------|-------|-------|-|-|
 |0|None|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|None| |
 |1|None|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|None| |
 |2|None|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|None| |
-|3|Rang|Beosztás|Studio|Világszerte|Hazai / %|1. oszlop|Tengerentúli / %|Column2|Év ^| |
+|3|Rang|Beosztás|Studio|Világszerte|Hazai / %|1\. oszlop|Tengerentúli / %|Column2|Év ^| |
 |4|1|Profilkép|Fox|2788|760.5|0.273|2027.5|0.727|2009 ^|5|
 
 A kimenet mutatja, hogy az adatokat, a második táblázatban volt-e a fejlécek előtt három üres sor. A `read_excel()` függvény kihagyja a sorokat, és a fejlécek használata nem kötelező paramétereket tartalmaz. Futtassa a következő kódot, hagyja ki az első három sort, és a fejlécek a negyedik sor használja.
@@ -171,7 +171,7 @@ A kimenet mutatja, hogy az adatokat, a második táblázatban volt-e a fejlécek
 dflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2', use_column_headers=True, skip_rows=3)
 ```
 
-||Rang|Beosztás|Studio|Világszerte|Hazai / %|1. oszlop|Tengerentúli / %|Column2|Év ^|
+||Rang|Beosztás|Studio|Világszerte|Hazai / %|1\. oszlop|Tengerentúli / %|Column2|Év ^|
 |------|------|------|-----|------|-----|-------|----|-----|-----|
 |0|1|Profilkép|Fox|2788|760.5|0.273|2027.5|0.727|2009 ^|
 |1|2|Titanic|Par.|2186.8|658.7|0.301|1528.1|0.699|1997 ^|
@@ -199,7 +199,7 @@ dflow = dprep.read_fwf('./data/fixed_width_file.txt',
                           header=dprep.PromoteHeadersMode.NONE)
 ```
 
-||1. oszlop|Column2|Column3|4. oszlopig|Column5|Column6|Column7|Column8|Column9|
+||1\. oszlop|Column2|Column3|4\. oszlopig|Column5|Column6|Column7|Column8|Column9|
 |------|------|------|-----|------|-----|-------|----|-----|----|
 |0|010000|99999|HAMIS NORVÉGIA|NO|NO_1|ENRS|Column7|Column8|Column9|
 |1|010003|99999|HAMIS NORVÉGIA|NO|NO|ENSO||||

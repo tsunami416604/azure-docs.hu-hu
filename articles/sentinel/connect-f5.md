@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
 ms.openlocfilehash: d018ce4164c50f5d21c8ab3e833bba7055ad9753
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66385052"
 ---
 # <a name="connect-your-f5-appliance"></a>Csatlakozás az F5 készülék
@@ -32,7 +32,7 @@ Csatlakozhat az Azure-Sentinel bármely F5 készülék Syslog CEF, a naplófájl
 > [!NOTE]
 > Adatokat a munkaterület, amely futtatja az Azure-Sentinel a földrajzi helyen kell tárolni.
 
-## <a name="step-1-connect-your-f5-appliance-using-an-agent"></a>1. lépés: Csatlakozás az F5 készülék-ügynök használatával
+## <a name="step-1-connect-your-f5-appliance-using-an-agent"></a>1\. lépés: Csatlakozás az F5 készülék-ügynök használatával
 
 Az F5 berendezés csatlakozik Azure Sentinel-, az ügynököt egy dedikált gépre telepíti kell (virtuális gép vagy a helyszínen) a készüléket és a Sentinel-Azure közötti kommunikáció támogatásához. Az ügynök automatikusan vagy manuálisan telepítheti. Automatikus központi telepítési csak akkor használható, ha dedikált számítógépe egy új virtuális Gépet hoz létre az Azure-ban. 
 
@@ -99,7 +99,7 @@ Ha nem használja az Azure, ügynököt manuálisan telepíti az Azure-Sentinel 
   3. A megfelelő sémát használ a Log Analytics az F5 események, keresse meg **CommonSecurityLog**.
 
  
-## <a name="step-2-forward-f5-logs-to-the-syslog-agent"></a>2. lépés: F5 naplókat továbbítani a Syslog-ügynök
+## <a name="step-2-forward-f5-logs-to-the-syslog-agent"></a>2\. lépés: F5 naplókat továbbítani a Syslog-ügynök
 
 Syslog-üzeneteket az Azure-munkaterülethez a Syslog-ügynökön keresztül a CEF-formátumban továbbítani F5 konfigurálása:
 
@@ -111,7 +111,7 @@ Nyissa meg az F5 [alkalmazás biztonsági eseménynaplózás konfigurálásához
   - Állítsa be a **létesítmény** megfelelően állítsa be a Syslog-ügynök (alapértelmezés szerint az ügynök megadja ezt **local4**).
   - Beállíthatja a **lekérdezés-karakterlánc maximális mérete** állítsa be az ügynök mérete.
 
-## <a name="step-3-validate-connectivity"></a>3. lépés: Kapcsolat ellenőrzése
+## <a name="step-3-validate-connectivity"></a>3\. lépés: Kapcsolat ellenőrzése
 
 Upwards of mindaddig, amíg megjelennek a Log Analytics indítása a naplók 20 percig is eltarthat. 
 

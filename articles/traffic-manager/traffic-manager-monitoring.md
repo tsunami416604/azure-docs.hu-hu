@@ -2,20 +2,20 @@
 title: Az Azure Traffic Manager végpont figyelése |} A Microsoft Docs
 description: Ez a cikk azt segítenek megérteni, hogyan Traffic Manager segítségével végpont monitorozása és feladatátvétele automatikus végpont magas rendelkezésre állású alkalmazások üzembe helyezése az Azure-ügyfelek
 services: traffic-manager
-author: KumudD
+author: asudbring
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
-ms.author: kumud
-ms.openlocfilehash: 083bdf9c5aec640fbbd7757b307ac47178e0b14b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 7aee68ef41b696549aa1db4386d467b55cd2d981
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60329921"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071072"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager végpont figyelése
 
@@ -74,7 +74,7 @@ Végpont a figyelő állapota, hogy a végpont állapotát jeleníti meg a Traff
 | Enabled |Enabled |Online |A végpont számítógép megfigyelés alatt áll, és kifogástalan. Ez a DNS-válaszok tartalmazza, és képes forgalom fogadására. |
 | Enabled |Enabled |Csökkentett teljesítmény |Végpont-figyelési állapot-ellenőrzések sikertelenek. A végpont nem érhető el a DNS-válaszok, és nem érkezik forgalom. <br>Egy kivétel ebben a végpontok összes állapotromlást, ha ebben az esetben ezek mindegyike számítanak a lekérdezésekre adott válaszok a visszaadandó).</br>|
 | Enabled |Enabled |CheckingEndpoint |A végpont figyel, de az első vizsgálat eredményeit még nem lett érkezett. CheckingEndpoint csak átmeneti állapot, amely közvetlenül a hozzáadásával vagy egy végpontot a profilt az engedélyezése után általában akkor fordul elő. Ebben az állapotban a végpont DNS-válaszok szerepel, és képes forgalom fogadására. |
-| Enabled |Enabled |Leállítva |Nem fut a felhőalapú szolgáltatás, vagy a webes alkalmazás, amely a végpontra mutat. Ellenőrizze a felhőalapú szolgáltatás vagy a webes alkalmazás beállításait. Ez is történhet, ha a végpont típusa beágyazott végpont, és a gyermek le van tiltva vagy inaktív. <br>A leállított állapotú végpont nem áll felügyelet. Ez nem szerepel a DNS-válaszok, és nem érkezik a forgalom. Egy kivétel ebben a végpontok összes állapotromlást, ha ebben az esetben ezek mindegyike minősülnek kell visszaadni a lekérdezésekre adott válaszok.</br>|
+| Enabled |Enabled |Leállítva |Nem fut a webalkalmazást, amely a végpontra mutat. Ellenőrizze a webalkalmazás-beállítások. Ez is történhet, ha a végpont típusa beágyazott végpont, és a gyermek le van tiltva vagy inaktív. <br>A leállított állapotú végpont nem áll felügyelet. Ez nem szerepel a DNS-válaszok, és nem érkezik a forgalom. Egy kivétel ebben a végpontok összes állapotromlást, ha ebben az esetben ezek mindegyike minősülnek kell visszaadni a lekérdezésekre adott válaszok.</br>|
 
 Hogyan kerül kiszámításra az szolgáltatásvégpont-figyelő állapota a beágyazott végpontokat kapcsolatos részletekért lásd: [beágyazott Traffic Manager-profilok](traffic-manager-nested-profiles.md).
 
@@ -98,6 +98,7 @@ A profil a figyelő állapota konfigurált profil állapota és összes végpont
 A TRAFFIC Manager rendszeresen ellenőrzi minden végponton, beleértve a nem megfelelő állapotú végpontok állapotát. A TRAFFIC Manager észleli, ha a végpont kifogástalan állapotú lesz, és vonja vissza az elforgatás.
 
 A végpont állapota nem megfelelő, ha a következő események bármelyike előfordul:
+
 - Ha a monitorozási protokoll HTTP vagy HTTPS:
     - Nem 200-as értékű választ, vagy egy választ, amely nem tartalmazza a megadott állapot tartomány a **állapot állapotkód-tartományok várható** (beleértve a különböző 2xx kódot, vagy 301/302 átirányítási) beállításnál érkezik.
 - Ha a monitorozási protokoll TCP: 
@@ -151,8 +152,6 @@ További információkért lásd: [a Traffic Manager forgalom-útválasztási m�
 > Ez a viselkedés következménye, hogy ha a Traffic Manager állapot-ellenőrzések nem megfelelően vannak konfigurálva, az jelenhet meg a forgalom-útválasztási is, ha a Traffic Manager a *van* megfelelően működik. Azonban ebben az esetben végponti feladatátvétel nem fordulhat elő, ami hatással van az általános rendelkezésre állását. Fontos ellenőrizni, hogy a profil egy Online állapota, nem egy csökkentett teljesítményű állapot látható-e. Az Online állapot azt jelzi, hogy a Traffic Manager állapot-ellenőrzések várt módon működnek-e.
 
 Nem sikerült állapot-ellenőrzések hibaelhárítással kapcsolatos további információkat lásd: [hibaelhárítási csökkentett teljesítményű állapotban van az Azure Traffic Manager](traffic-manager-troubleshooting-degraded.md).
-
-
 
 ## <a name="next-steps"></a>További lépések
 

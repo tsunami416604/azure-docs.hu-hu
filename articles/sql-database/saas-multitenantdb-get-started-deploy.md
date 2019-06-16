@@ -13,10 +13,10 @@ ms.reviewer: billgib, stein
 manager: craigg
 ms.date: 10/16/2018
 ms.openlocfilehash: 350e67f5a1e7e1eab7abe27a6ca851ed2420af84
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65978525"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Üzembe helyezése és megismerése a horizontálisan skálázott több-bérlős alkalmazás
@@ -58,7 +58,7 @@ Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételekne
 ### <a name="plan-the-names"></a>A nevek megtervezése
 
 Ez a szakasz a lépések adjon meg egy *felhasználói* érték, amely annak biztosítása érdekében, erőforrásnevek globálisan egyedi, és a egy nevet a *erőforráscsoport* központi telepítés által létrehozott összes erőforrást tartalmazó az alkalmazás. Nevű személy *Reino Finley*, javasoljuk, hogy:
-- *Felhasználó:* **af1***(rövidítése, és egy számjegy.   Használjon egy másik értéket (pl. af2) másodszor az alkalmazás telepítésekor.)*
+- *Felhasználó:* **af1** *(rövidítése, és egy számjegy. Használjon egy másik értéket (pl. af2) másodszor az alkalmazás telepítésekor.)*
 - *Erőforráscsoport:* **wingtip-mt-af1** *(wingtip-mt azt jelzi, hogy ez az a horizontálisan skálázott több-bérlős alkalmazást. A felhasználó neve af1 hozzáfűzése utal. az erőforráscsoport nevét a benne található erőforrást neveinek.)*
 
 Most válassza ki a nevét, és írja le. 
@@ -125,19 +125,19 @@ Minden helyszín kap egy testreszabott webappot az események listázása és je
 Egy központi **Eseményközpont** weblapra mutató hivatkozásokat biztosít az adott környezetben a bérlők számára. Kövesse az alábbi lépéseket tapasztalhat a **Eseményközpont** weblapon és a egy egyéni web app:
 
 1. Nyissa meg a **Eseményközpont** a böngészőben:
-   - http://events.wingtip-mt.&lt; felhasználó&gt;. trafficmanager.net &nbsp; *(cserélje le &lt;felhasználói&gt; az üzemelő példány felhasználói értékkel.)*
+   - http://events.wingtip-mt.&lt ; felhasználó&gt;. trafficmanager.net &nbsp; *(cserélje le &lt; felhasználói&gt; az üzemelő példány felhasználói értékkel.)*
 
      ![eseményközpont](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
 2. Kattintson a **Fabrikam Jazz Club** elemre az **eseményközpontban**.
 
-   ![Események](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
+   ![Events](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
 
 ### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
 Bejövő kérelmek elosztását, a Wingtip alkalmazás által használt [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Az események lapról, az egyes bérlők számára az URL-CÍMÉT a bérlő nevét tartalmazza. Minden egyes URL-cím tartalmazza az adott felhasználó értékét is. Minden egyes URL-cím obeys a megjelenített formátum a következő lépésekkel:
 
-- http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip-mt.&lt ;user&gt;.trafficmanager.net/*fabrikamjazzclub*
 
 1. Az események alkalmazás kielemzi a az URL-címből. A bérlő neve *fabrikamjazzclub* az előző példában URL-címben.
 2. Az alkalmazás ezután kivonatolja a bérlőneve, hozzon létre egy kulcsot egy katalógus használatával eléréséhez [szilánkleképezés-kezelés](sql-database-elastic-scale-shard-map-management.md).

@@ -3,18 +3,18 @@ title: Új eszköztípus definiálása az Azure IoT Centralban | Microsoft Docs
 description: Ez az oktatóanyag bemutatja, hogy szerkesztőként hogyan definiálhat új eszköztípust az Azure IoT Central alkalmazásban. Meghatározza a típus telemetriáját, állapotát, tulajdonságait és beállításait.
 author: dominicbetts
 ms.author: dobett
-ms.date: 01/28/2019
+ms.date: 06/07/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 884381cc3b9aaeec29f5697485cd90c28b2bd97e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 54884728533aeff0472ed99660be00478227fbcd
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60748479"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056779"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Oktatóanyag: Az Azure IoT Central alkalmazásban egy új eszköztípus definiálása
 
@@ -132,7 +132,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy új **Csatlakoztat
 
      | Beállítás              | Érték         |
      | -------------------- | -----------   |
-     | Megjelenítendő név         | Hőmérséklet   |
+     | Megjelenített név         | Hőmérséklet   |
      | Mezőnév           | hőmérséklet   |
      | Egység                | F             |
      | Min                  | 60            |
@@ -174,7 +174,7 @@ Események segítségével határozza meg, amely az eszköz küld, amikor nincs 
 
      | Beállítás              | Érték             |
      | -------------------- | -----------       |
-     | Megjelenítendő név         | Ventilátormotor-hiba   |
+     | Megjelenített név         | Ventilátormotor-hiba   |
      | Mezőnév           | fanmotorerr       |
      | Severity             | Hiba             |
 
@@ -212,7 +212,7 @@ Események segítségével határozza meg, amely az eszköz küld, amikor nincs 
 
      | Beállítás              | Érték             |
      | -------------------- | -----------       |
-     | Megjelenítendő név         | Ventilátor mód          |
+     | Megjelenített név         | Ventilátor mód          |
      | Mezőnév           | fanmode           |
      | Érték                | 1                 |
      | Felirat megjelenítése        | Üzemel         |
@@ -257,7 +257,7 @@ A beállítások, a tulajdonságok és a parancsok az eszközsablonban meghatár
 
     | Mező                | Érték           |
     | -------------------- | -----------     |
-    | Megjelenítendő név         | Megadott hőmérséklet |
+    | Megjelenített név         | Megadott hőmérséklet |
     | Mezőnév           | setTemperature  |
     | Mértékegység      | F               |
     | Tizedesjegyek       | 1               |
@@ -287,7 +287,7 @@ A beállítások, a tulajdonságok és a parancsok az eszközsablonban meghatár
 
     | Mező                | Érték                |
     | -------------------- | -------------------- |
-    | Megjelenítendő név         | Location egység             |
+    | Megjelenített név         | Location egység             |
     | Mezőnév           | location             |
     | Kezdeti érték        | Seattle, WA          |
     | Leírás          | Eszközhely      |
@@ -304,7 +304,7 @@ A beállítások, a tulajdonságok és a parancsok az eszközsablonban meghatár
 
     | Mező                | Érték                   |
     | -------------------- | ----------------------- |
-    | Megjelenítendő név         | Utolsó szervizelés dátuma       |
+    | Megjelenített név         | Utolsó szervizelés dátuma       |
     | Mezőnév           | serviceDate             |
     | Kezdeti érték        | 1/1/2019                |
     | Leírás          | Utolsó szervizelés           |
@@ -321,7 +321,7 @@ A beállítások, a tulajdonságok és a parancsok az eszközsablonban meghatár
 
     | Mező                | Érték                   |
     | -------------------- | ----------------------- |
-    | Megjelenítendő név         | Belső vezérlőprogram verziója        |
+    | Megjelenített név         | Belső vezérlőprogram verziója        |
     | Mezőnév           | firmwareVersion         |
     | Adattípus            | szöveg                    |
     | Leírás          | A légkondicionáló belső vezérlőprogramjának verziója |
@@ -336,7 +336,7 @@ A beállítások, a tulajdonságok és a parancsok az eszközsablonban meghatár
 
     | Mező                | Érték                   |
     | -------------------- | ----------------------- |
-    | Megjelenítendő név         | Sorozatszám           |
+    | Megjelenített név         | Sorozatszám           |
     | Mezőnév           | serialNumber            |
     | Adattípus            | szöveg                    |
     | Leírás          | A légkondicionáló sorozatszáma  |
@@ -360,7 +360,7 @@ A _parancsok_ használatával engedélyezheti, hogy az operátor közvetlenül a
 
     | Mező                | Érték           |
     | -------------------- | -----------     |
-    | Megjelenítendő név         | Echo parancs    |
+    | Megjelenített név         | Echo parancs    |
     | Mezőnév           | echo            |
     | Alapértelmezett időtúllépés      | 30              |
     | Megjelenítés típusa         | szöveg            |
@@ -386,7 +386,7 @@ Most már meghatározta a **Légkondicionálóját csatlakoztatott** eszköz-sab
 
     | Beállítás      | Érték       |
     | ------------ | ----------- |
-    | Cím        | Hőmérséklet |
+    | Beosztás        | Hőmérséklet |
     | Időtartomány   | Az elmúlt 30 perc |
     | Mértékek     | Hőmérséklet (válasszon **láthatósági** melletti **hőmérséklet**) |
 
@@ -398,7 +398,7 @@ Most már meghatározta a **Légkondicionálóját csatlakoztatott** eszköz-sab
 
     | Beállítás      | Érték       |
     | ------------ | ----------- |
-    | Cím        | Motor események ventilátor |
+    | Beosztás        | Motor események ventilátor |
     | Időtartomány   | Az elmúlt 30 perc |
     | Mértékek     | Motor hiba ventilátor (válasszon **látható-e** melletti **ventilátor Motor hiba**) |
 
@@ -410,7 +410,7 @@ Most már meghatározta a **Légkondicionálóját csatlakoztatott** eszköz-sab
 
     | Beállítás      | Érték       |
     | ------------ | ----------- |
-    | Cím        | Ventilátor mód |
+    | Beosztás        | Ventilátor mód |
     | Időtartomány   | Az elmúlt 30 perc |
     | Mértékek | Mód ventilátor (válasszon **látható-e** melletti **ventilátor mód**) |
 
@@ -424,7 +424,7 @@ Most már meghatározta a **Légkondicionálóját csatlakoztatott** eszköz-sab
 
     | Beállítás                 | Érték         |
     | ----------------------- | ------------- |
-    | Cím                   | Eszköztulajdonságok |
+    | Beosztás                   | Eszköztulajdonságok |
     | Beállítások és tulajdonságok | Megadott hőmérséklet<br/>Sorozatszám<br/>Belső vezérlőprogram verziója |
 
     Beállítások és a korábban definiált tulajdonságok a **beállításait és tulajdonságait** lapok láthatók **elérhető oszlopok**.

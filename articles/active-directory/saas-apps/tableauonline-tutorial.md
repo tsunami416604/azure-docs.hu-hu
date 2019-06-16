@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 352ad9473a1c1a9360ddceb720ff968f4e97e012
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 5e405dc4ea323a6869207de53b7577ee960924eb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65889242"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67089236"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>Oktatóanyag: A Tableau Online az Azure Active Directory-integráció
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Tableau Online konfigurálásához hozzá kell Table
 
 **Adja hozzá a Tableau Online a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -235,7 +235,7 @@ Ebben a szakaszban egy a Tableau Online Britta Simon nevű felhasználó hoz lé
 
 3. Kattintson a **felhasználók hozzáadása**.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

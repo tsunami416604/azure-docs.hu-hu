@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 05/23/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: b97fb1956c75332c40e242484b9d94419a45eb92
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 19ced9767d77b0d7bfcec6f01425ab1089a55d54
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242561"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069228"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>CI-/CD-folyamat beállítása az Azure Cosmos DB Emulator buildelési feladatával az Azure DevOpsban
 
@@ -48,6 +48,9 @@ Most, hogy a bővítmény települt, jelentkezzen be az Azure DevOps-fiókjába,
    ![Válassza ki a csapatprojektet, az adattárat és az ágat a buildfolyamathoz.](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
 
 3. Végül válassza ki a buildfolyamathoz használni kívánt sablont. Ebben az oktatóanyagban az **ASP.NET** sablont választjuk. 
+
+> [!NOTE]
+> Az ügynökkészlet ki kell választania a CI a Docker a Windows telepítve van, kivéve, ha a telepítés történik, manuálisan egy korábbi feladatban a CI részeként kell rendelkeznie. Lásd: [a Microsoft saját ügynökei](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml) ügynökként kijelölt cikke; javasoljuk, hogy a kezdéshez `Hosted VS2017` vagy `Hosted VS2019`. 
 
 Most már van buildfolyamatunk, amelyet beállíthatunk az Azure Cosmos DB emulátor buildelési feladatának használatára. 
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 713ca571a4321eded82cbc9db56dae7616126e2a
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 08f084bc0231bceeaf2c7d87dc0a160cdf188978
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65902399"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67090983"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-settling-music"></a>Oktatóanyag: Zene rendezése az Azure Active Directory-integráció
 
@@ -54,7 +54,7 @@ Konfigurálása az Azure AD integrálása a Settling zene, hozzá kell Settling 
 
 **Zene Settling hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -211,7 +211,7 @@ Ebben a szakaszban engedélyezze Britta Simon használja az Azure egyszeri bejel
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű Settling zene hoz létre. Együttműködve [zene ügyfél-támogatási csapatának stabilizálódási](https://rakurakuseisan.jp/) a felhasználók hozzáadása az Settling zene platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
 ms.date: 05/22/2019
-ms.openlocfilehash: 20e84482b31c4da991f3fdc9c7bbf6ee0e7f902a
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 776f79d7f32cf23943ecab4133e055993d30c7cd
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299102"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075062"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Az Azure Logic Apps díjszabási modell
 
@@ -89,7 +89,7 @@ Miután letiltja az egy logikai alkalmazást, a jelenleg futó példányok eltar
 
 ## <a name="integration-accounts"></a>Integration-fiókok
 
-Használatalapú díjszabás vonatkozik [integrációs fiókok](logic-apps-enterprise-integration-create-integration-account.md) , ismerje meg, fejlesztheti és tesztelheti a [B2B- és EDI](logic-apps-enterprise-integration-b2b.md) és [XML-feldolgozás](logic-apps-enterprise-integration-xml.md) szolgáltatások Azure Logic Apps nélkül További költség.
+A rögzített díjszabási modell vonatkozik [integrációs fiókok](logic-apps-enterprise-integration-create-integration-account.md) , ismerje meg, fejlesztheti és tesztelheti a [B2B- és EDI](logic-apps-enterprise-integration-b2b.md) és [XML-feldolgozás](logic-apps-enterprise-integration-xml.md) szolgáltatások Azure Logic Apps nélkül További költség.
 Egy integrációs fiókban rendelkezhet minden egyes Azure-régióban. Minden integrációs fiók adott is tárolhatja [összetevők számú](../logic-apps/logic-apps-limits-and-config.md), többek között a kereskedelmi partnerek, szerződések, térképeket, sémákat, szerelvényeket, tanúsítványok, kötegkonfigurációk és így tovább.
 
 Az Azure Logic Apps ingyenes, alapszintű és standard szintű integrációs fiókok kínál. Az alapszintű és Standard szinten által támogatott a Logic Apps szolgáltatásiszint-szerződés (SLA), míg az ingyenes szint nem támogatja a szolgáltatásiszint-szerződés és a korlátozások vonatkoznak az átviteli sebesség és a használat.

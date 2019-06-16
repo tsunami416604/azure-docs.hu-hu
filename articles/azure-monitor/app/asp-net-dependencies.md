@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
 ms.openlocfilehash: 479b810c5a66917bde5754d32991fb489ea26c9b
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66299281"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Függőségi nyomkövetés az Azure Application insights szolgáltatásban 
@@ -35,8 +35,8 @@ Application Insights SDK-k a .NET és .NET Core keretrendszerhez tartozik `Depen
 |WCF-hívások| Csak automatikusan rögzíti a Http-alapú kötések használata.|
 |SQL | A hívások `SqlClient`. Lásd: [ez](##advanced-sql-tracking-to-get-full-sql-query) lekérdezése SQL rögzítéséhez.  |
 |[Az Azure storage (Blob, tábla, üzenetsor)](https://www.nuget.org/packages/WindowsAzure.Storage/) | Az Azure Storage-kliens indított hívások. |
-|[EventHub Client SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | 1.1.0-s verzió vagy újabb verzió. |
-|[ServiceBus Client SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| 3.0.0-s verziójával vagy újabb verzió. |
+|[EventHub Client SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | 1\.1.0-s verzió vagy újabb verzió. |
+|[ServiceBus Client SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| 3\.0.0-s verziójával vagy újabb verzió. |
 |Azure Cosmos DB | Csak automatikusan rögzíti a HTTP/HTTPS használata esetén. Az Application Insights nem rögzíti a TCP-módot. |
 
 

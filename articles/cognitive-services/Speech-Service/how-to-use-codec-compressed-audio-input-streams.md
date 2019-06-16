@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: amishu
-ms.openlocfilehash: 41a55eca321cbe1bfa23a889b8e3ce7c701ce769
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 8717dad27786450e4275c9fd91523c0e9379f375
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65468049"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073060"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>A beszédfelismerés SDK-val hangbemenet kodekkel tömörített
 
@@ -23,6 +23,7 @@ A beszédfelismerés SDK **tömörített hang bemeneti Stream** API lehetővé t
 
 > [!IMPORTANT]
 > Tömörített hang streamelési csak a támogatott C++, C#, és a Java használatával linuxon (Ubuntu 16.04, Ubuntu 18.04, Debian 9).
+> Beszéd SDK 1.4.0-s verzió vagy újabb verziója szükséges.
 
 A PCM/wav a által speech dokumentációjában talál.  Wav/PCM, kívül a következő kodek tömörített bemeneti formátumokat támogatja:
 

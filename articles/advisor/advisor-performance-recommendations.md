@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
 ms.openlocfilehash: 8fdae1e12e56dcbcb56941726b0c089ad59b8fc8
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66254646"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Az Azure Advisorral az Azure-alkalmazások teljesítményének növelése
@@ -106,7 +106,7 @@ Az Advisor felismeri, hogy a forgalom egy régióban, amely jelenleg nem törté
 
 Az Azure Advisor azonosítja, használja az alapértelmezett indexelési szabályzat, de hasznos lenne a számítási feladatok mintájának alapuló egyéni indexelési házirendet az, Cosmos DB-tárolók. Az alapértelmezett indexelési szabályzat indexeli az összes tulajdonság, de explicit befoglalt, sem a kizárt elérési utak lekérdezési szűrőben használt egyéni indexelési szabályzat használata csökkentheti a fenntartott egységek és az indexelés felhasznált tárterület. [További információ a házirendek index módosítása](https://aka.ms/cosmosdb/modify-index-policy)
 
-## <a name="configure-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Az Azure Cosmos DB lekérdezés lapmérete (MaxItemCount) mínusz 1-nek konfigurálása 
+## <a name="configure-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Az Azure Cosmos DB lekérdezési lapméretének (MaxItemCount) beállítása -1 értékre 
 
 Az Azure Advisor azonosítja az Azure Cosmos DB-tárolók, amelyek a lekérdezés méretének 100 használ, és gyorsabban vizsgálatok egy oldalméret-1 javasoljuk. [További tudnivalók a maximális elemek száma](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
 

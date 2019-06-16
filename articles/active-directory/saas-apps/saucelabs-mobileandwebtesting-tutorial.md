@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 41b35324ccca8cf40edbc53ed25a2d8615a9294e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8933cb90672e49305cd0fb7dc5e4f8f04f94093e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813630"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091559"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>Oktatóanyag: Az Azure Active Directory-integráció az mártás Labs - mobil- és webalkalmazás tesztelése
 
@@ -54,7 +54,7 @@ Konfigurálja az integrációt, mártás Labs -, mobil- és webes tesztelése az
 
 **Adja hozzá a mártás Labs - mobil- és webes tesztelése a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -204,7 +204,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó mártás Labs - mobil- �
 > [!Note]
 > Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [mártás Labs - mobil- és webes tesztelés támogatási csoportjának](mailto:support@saucelabs.com).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

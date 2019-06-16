@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8db7e2588b03807a42f82fd0fcd4e71855e55c1d
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 8babf2a6a4f4a15c6d2979ea0d5ce558dfb0cd6a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66426322"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052150"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Oktatóanyag: Hibrid Azure Active Directoryhoz csatlakoztatott eszközök kézi konfigurálása
 
@@ -139,7 +139,7 @@ Az `Initialize-ADSyncDomainJoinedComputerSync` parancsmag:
 
 * Az Active Directory PowerShell-modul és az Azure Active Directory Domain Services (Azure AD DS) eszközöket használ. Ezek az eszközök a tartományvezérlőn futó Active Directory webszolgáltatások támaszkodnak. Az Active Directory webszolgáltatások Windows Server 2008 R2 vagy újabb rendszerű tartományvezérlőkön támogatott.
 * Az MSOnline PowerShell modul 1.1.166.0-s csak támogatja. Ez a modul letöltéséhez használjon [ezt a hivatkozást](https://msconfiggallery.cloudapp.net/packages/MSOnline/1.1.166.0/).
-* Ha az Azure Active Directory tartományi szolgáltatások eszközei nincsenek telepítve, `Initialize-ADSyncDomainJoinedComputerSync` sikertelen lesz. Az Azure AD DS eszközök keresztül Kiszolgálókezelő alatt telepítheti **funkciók** > **távoli kiszolgálófelügyelet eszközei** > **szerepkör-felügyeleti eszközök** .
+* Ha az Active Directory tartományi szolgáltatások eszközei nincsenek telepítve, `Initialize-ADSyncDomainJoinedComputerSync` sikertelen lesz. Telepítheti az AD DS eszközök keresztül Kiszolgálókezelő alatt **funkciók** > **távoli kiszolgálófelügyelet eszközei** > **szerepkör-felügyeletieszközök**.
 
 A Windows Server 2008 vagy korábbi verzióit futtató tartományvezérlők a következő szkript használatával a szolgáltatáskapcsolódási pont létrehozása. Többerdős konfiguráció esetén a következő szkript használatával a szolgáltatáskapcsolódási pont létrehozása minden olyan erdőben, amennyiben a számítógép létezik.
 

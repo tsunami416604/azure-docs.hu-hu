@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;kumud
-ms.openlocfilehash: a4ae997398c85dc99af8711f1c6ce4e743592d73
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 07bff578b27df13c65eb912a64b6a44b97175d37
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939894"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051670"
 ---
 # <a name="traffic-analytics"></a>Forgalmi elemzések
 
@@ -42,7 +42,7 @@ Azure virtuális hálózatokkal rendelkezik NSG-Folyamatnaplók, bejövő inform
 
 ## <a name="key-components"></a>A legfontosabb összetevők
 
-- **Hálózati biztonsági csoport (NSG)**: A biztonsági szabályok, amelyek engedélyezik vagy megtagadják a hálózati forgalmat egy Azure virtuális hálózathoz csatlakozó erőforrások listáját tartalmazza. Az NSG-k társíthatóak alhálózatokhoz, egyedi virtuális gépekhez (klasszikus) vagy virtuális gépekhez (Resource Manager) kapcsolt hálózati adapterekhez (NIC). További információkért lásd: [hálózati biztonsági csoportok áttekintése](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Hálózati biztonsági csoport (NSG)** : A biztonsági szabályok, amelyek engedélyezik vagy megtagadják a hálózati forgalmat egy Azure virtuális hálózathoz csatlakozó erőforrások listáját tartalmazza. Az NSG-k társíthatóak alhálózatokhoz, egyedi virtuális gépekhez (klasszikus) vagy virtuális gépekhez (Resource Manager) kapcsolt hálózati adapterekhez (NIC). További információkért lásd: [hálózati biztonsági csoportok áttekintése](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Hálózati biztonsági csoport (NSG) folyamatnaplóit**: Lehetővé teszi keresztül a hálózati biztonsági csoport bejövő és kimenő IP-forgalom kapcsolatos információk megtekintéséhez. NSG-folyamat naplók json formátumban íródtak, és a hálózati Adaptert a folyamat vonatkozik egy szabály alapon, bejövő és kimenő folyamatok megjelenítése, 5-ször több információt a folyamat (forrás és a cél IP-cím forrás és a cél-port és protokoll), és ha a forgalmat a rendszer engedélyezte vagy az elutasított. NSG-Folyamatnaplók kapcsolatos további információkért lásd: [NSG-Folyamatnaplók](network-watcher-nsg-flow-logging-overview.md).
 - **Log Analytics**: Azure-szolgáltatás figyelési adatait gyűjti és tárolja az adatokat egy központi tárházban. Ezek az adatok lehetnek események, teljesítményadatok vagy az Azure API segítségével biztosított egyéni adatok. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz. Alkalmazások figyelése, mint például a hálózati teljesítmény figyelése és a traffic analytics felhasználásával történik az Azure Monitor naplóira alapjaként. További információkért lásd: [naplózza az Azure Monitor](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Log Analytics-munkaterület**: Az Azure Monitor-naplók, Azure-fiókra vonatkozó adatok tárolására egy példányát. További információ a Log Analytics-munkaterületek: [hozzon létre egy Log Analytics-munkaterület](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
@@ -87,12 +87,19 @@ A traffic analytics használhat NSG-k, a következő támogatott régiók egyik�
 A Log Analytics-munkaterület léteznie kell a következő régióban:
 * Közép-Kanada
 * USA nyugati középső régiója
-* USA nyugati régiója, 2.
 * USA keleti régiója
+* USA 2. keleti régiója
+* USA déli középső régiója
+* USA nyugati régiója
+* USA nyugati régiója, 2.
+* USA középső régiója
 * Közép-Franciaország
+* Észak-Európa
 * Nyugat-Európa
 * Az Egyesült Királyság déli régiója
+* Kelet-Ausztrália
 * Délkelet-Ausztrália
+* Kelet-Ázsia
 * Délkelet-Ázsia
 * Korea középső régiója
 * Közép-India

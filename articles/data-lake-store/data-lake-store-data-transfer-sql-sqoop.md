@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 7d3283b03d15278d1f7fd42a72b154dab1a442b4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60878766"
 ---
 # <a name="copy-data-between-azure-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Adatok másolása az Azure Data Lake Storage Gen1 és a Sqoop használata Azure SQL database között
@@ -94,7 +94,7 @@ Egy HDInsight-fürt már elérhető a Sqoop-csomagokat. Ha konfigurálta a HDIns
 
         sqoop-import --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table1 --target-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1
 
-1. Győződjön meg arról, hogy az adatokat a Data Lake Storage Gen1 fiók át lett adva. Futtassa az alábbi parancsot:
+1. Győződjön meg arról, hogy az adatokat a Data Lake Storage Gen1 fiók át lett adva. Futtassa a következő parancsot:
 
         hdfs dfs -ls adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/
 
@@ -107,7 +107,7 @@ Egy HDInsight-fürt már elérhető a Sqoop-csomagokat. Ha konfigurálta a HDIns
         -rwxrwxrwx   0 sshuser hdfs         13 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00002
         -rwxrwxrwx   0 sshuser hdfs         18 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00003
 
-    Minden egyes **. rész – m -*** fájl megfelel egy sort a forrástábla **Table1**. A rész - m - tartalmát is megtekintheti * fájlok ellenőrzése.
+    Minden egyes **. rész – m -** * fájl megfelel egy sort a forrástábla **Table1**. A rész - m - tartalmát is megtekintheti * fájlok ellenőrzése.
 
 
 ### <a name="export-data-from-data-lake-storage-gen1-into-azure-sql-database"></a>Data Lake Storage Gen1 adatok exportálása az Azure SQL Database-be

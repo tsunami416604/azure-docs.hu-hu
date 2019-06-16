@@ -11,22 +11,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/13/2019
+ms.date: 06/07/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 25f0258b9e6b11e505bd48222dfbca176f963a5e
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.openlocfilehash: d88462f705a89d02ab69700d0c15669deb44da98
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921047"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058204"
 ---
 # <a name="custom-roles-for-azure-resources"></a>Egyéni szerepkörök az Azure-erőforrásokhoz
 
 Ha a [beépített szerepkörök az Azure-erőforrások](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, saját egyéni szerepköröket is létrehozhat. Csakúgy, mint a beépített szerepkörök felhasználók, csoportok és szolgáltatásnevek előfizetés, erőforráscsoport és erőforrás-hatókörök is egyéni szerepkörök hozzárendelése.
 
-Egyéni szerepkörök az Azure Active Directory (Azure AD) könyvtárban tárolja, és előfizetések között megoszthatók. Minden könyvtár lehet akár **5000** egyéni szerepkörök. (A speciális felhőkben, mint például az Azure Government, Azure Germany és Azure China 21Vianet, a korlát a 2000 egyéni szerepkörök.) Egyéni szerepkörök az Azure PowerShell, az Azure CLI vagy a REST API használatával is létrehozható.
+Egyéni szerepkörök az Azure Active Directory (Azure AD) könyvtárban tárolja, és előfizetések között megoszthatók. Minden könyvtár lehet akár **5000** egyéni szerepkörök. (A speciális felhőkben, mint az Azure Government, az Azure Germany és az Azure China 21Vianet, az egyéni szerepkörök száma 2000-re van korlátozva.) Egyéni szerepkörök az Azure PowerShell, az Azure CLI vagy a REST API használatával is létrehozható.
 
 ## <a name="custom-role-example"></a>Egyéni szerepkör-példa
 
@@ -100,16 +100,16 @@ Egy egyéni biztonsági szerepkört a következő tulajdonságokkal rendelkezik.
 | `NotActions` | Nem | String] | Karakterláncok tömbje, amely meghatározza a felügyeleti műveleteket, amelyek ki vannak zárva az engedélyezett a `Actions`. További információkért lásd: [NotActions](role-definitions.md#notactions). |
 | `DataActions` | Nem | String] | Karakterláncok tömbje, amely meghatározza, mely adatműveletekre, amely a szerepkör lehetővé teszi, hogy végrehajtani ahhoz, hogy az adatok az objektumon belül. További információkért lásd: [DataActions (előzetes verzió)](role-definitions.md#dataactions-preview). |
 | `NotDataActions` | Nem | String] | Karakterláncok tömbje, amely a kizárt Adatműveletek meghatározza az engedélyezett a `DataActions`. További információkért lásd: [NotDataActions (előzetes verzió)](role-definitions.md#notdataactions-preview). |
-| `AssignableScopes` | Igen | String] | Karakterláncok tömbje, amely meghatározza, hogy az egyéni szerepkör-hozzárendelés érhető a hatókörök. Jelenleg nem állítható be a legfelső szintű hatókörhöz (`"/"`) vagy egy felügyeleti csoport hatóköre. További információkért lásd: [AssignableScopes](role-definitions.md#assignablescopes) és [az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../governance/management-groups/index.md#custom-rbac-role-definition-and-assignment). |
+| `AssignableScopes` | Igen | String] | Karakterláncok tömbje, amely meghatározza, hogy az egyéni szerepkör-hozzárendelés érhető a hatókörök. Egyéni szerepkörök esetében jelenleg nem lehet beállítani `AssignableScopes` a legfelső szintű hatókörhöz (`"/"`) vagy egy felügyeleti csoport hatóköre. További információkért lásd: [AssignableScopes](role-definitions.md#assignablescopes) és [az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../governance/management-groups/index.md#custom-rbac-role-definition-and-assignment). |
 
 ## <a name="who-can-create-delete-update-or-view-a-custom-role"></a>Ki is létrehozása, törlése, frissítése, vagy egy egyéni szerepkör megtekintéséhez
 
 Akárcsak a beépített szerepkörök a `AssignableScopes` tulajdonság határozza meg, hogy a szerepkör-hozzárendelés érhető a hatókörök. A `AssignableScopes` tulajdonsága egy egyéni szerepkört is szabályozza, akik létrehozása, törlése, módosítása vagy az egyéni szerepkör megtekintéséhez.
 
-| Feladat | Művelet | Leírás |
+| Tevékenység | Művelet | Leírás |
 | --- | --- | --- |
 | Egyéni szerepkör létrehozása/törlése | `Microsoft.Authorization/ roleDefinitions/write` | Ez a művelet az összes engedéllyel rendelkező felhasználók a `AssignableScopes` az egyéni szerepkör létrehozhatja (vagy törölheti) használja ezeket az egyéni szerepkörök. Például [tulajdonosok](built-in-roles.md#owner) és [felhasználói rendszergazdák](built-in-roles.md#user-access-administrator) előfizetések, erőforráscsoportok és erőforrásokat. |
-| Egyéni szerepkör frissítése | `Microsoft.Authorization/ roleDefinitions/write` | Ez a művelet az összes engedéllyel rendelkező felhasználók a `AssignableScopes` az egyéni szerepkör frissítheti ezeket az egyéni szerepkörök. Például [tulajdonosok](built-in-roles.md#owner) és [felhasználói rendszergazdák](built-in-roles.md#user-access-administrator) előfizetések, erőforráscsoportok és erőforrásokat. |
+| Egyéni szerepkörök frissítése | `Microsoft.Authorization/ roleDefinitions/write` | Ez a művelet az összes engedéllyel rendelkező felhasználók a `AssignableScopes` az egyéni szerepkör frissítheti ezeket az egyéni szerepkörök. Például [tulajdonosok](built-in-roles.md#owner) és [felhasználói rendszergazdák](built-in-roles.md#user-access-administrator) előfizetések, erőforráscsoportok és erőforrásokat. |
 | Egyéni szerepkör megtekintése | `Microsoft.Authorization/ roleDefinitions/read` | Ez a művelet egy hatókörben engedéllyel rendelkező felhasználók megtekinthetik az adott hatókörben hozzárendelés elérhető egyéni szerepkört. Összes beépített szerepkört engedélyezése egyéni szerepkörök hozzárendelés elérhető legyen. |
 
 ## <a name="next-steps"></a>További lépések

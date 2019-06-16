@@ -7,12 +7,12 @@ ms.author: nakhanha
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: b2b3d1ac0a7c0e917f87be1dd131120f63a70f8e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b245661ab8f26c1f529a049d326d2c72838c7a17
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142813"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056726"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Integráció az Apache Spark és Apache Hive, a Hive Warehouse-összekötő
 
@@ -20,7 +20,7 @@ Az Apache Hive-adatraktár Connector (WEBMAG) egy könyvtár, amely lehetővé t
 
 A Hive-Warehouse-összekötő lehetővé teszi, hogy a Hive és a Spark hatékony big-data alkalmazások fejlesztése az egyedi funkciókat. Az Apache Hive kínál, amelyek atomi, Consistent, Isolated és tartós (sav) adatbázis-tranzakciók támogatása. További információ az ACID és Hive-tranzakciók: [Hive-tranzakciók](https://cwiki.apache.org/confluence/display/Hive/Hive+Transactions). Hive is biztosít az Apache Ranger és alacsony késést analitikai feldolgozása nem érhető el, az Apache Spark révén részletes biztonsági vezérlők.
 
-Apache Spark Streaming egy strukturált API, amely lehetővé teszi a közvetítés funkció nem érhető el az Apache Hive rendelkezik. A Hortonworks Data Platform (HDP) 3.0-es verziótól kezdve az Apache Spark és Apache Hive rendelkezik külön metaadattárakat, amely is megnehezítik együttműködés. A Hive-Warehouse-összekötő megkönnyíti a Spark- és Hive együtt használja. Az üzemeltethető WEBMAG library tölt be adatokat LLAP démonok Spark végrehajtóval párhuzamosan, így hatékonyabb és skálázható, mint a Spark, Hive standard JDBC kapcsolat segítségével.
+Apache Spark Streaming egy strukturált API, amely lehetővé teszi a közvetítés funkció nem érhető el az Apache Hive rendelkezik. HDInsight 4.0 kezdve Apache Spark 2.3.1 és Apache Hive 3.1.0 rendelkezik külön metaadattárakat, amely is megnehezítik együttműködés. A Hive-Warehouse-összekötő megkönnyíti a Spark- és Hive együtt használja. Az üzemeltethető WEBMAG library tölt be adatokat LLAP démonok Spark végrehajtóval párhuzamosan, így hatékonyabb és skálázható, mint a Spark, Hive standard JDBC kapcsolat segítségével.
 
 ![Architektúra](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
 
@@ -231,7 +231,7 @@ Hozhat létre, amelyek a localhost porton 9999 egy Hive-táblába egy Spark stre
     1. Kattintson a Hive szolgáltatást a fürtöt a **Hive**.
         ![ranger-házirendet alkalmazása előtt bemutató táblázat](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
     1. Kattintson a a **maszkolás** fülre, majd **új házirend hozzáadása** ![szabályzatok listája](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
-    1. Adja meg a kívánt szabályzat nevét. Adatbázis kiválasztása: **Alapértelmezett**, Hive-táblába: **bemutató**, Hive-oszlop: **neve**, felhasználó: **rsadmin2**, hozzáférési típusok: **kiválasztása**, és **Részleges maszk: utolsó 4 megjelenítése** származó a **maszkolás beállítás kijelölése** menü. Kattintson a **Hozzáadás** parancsra.
+    1. Adja meg a kívánt szabályzat nevét. Adatbázis kiválasztása: **Alapértelmezett**, Hive-táblába: **bemutató**, Hive-oszlop: **neve**, felhasználó: **rsadmin2**, hozzáférési típusok: **kiválasztása**, és **Részleges maszk: utolsó 4 megjelenítése** származó a **maszkolás beállítás kijelölése** menü. Kattintson a **Hozzáadás**lehetőségre.
                 ![szabályzatok listája](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. A tábla tartalmának megtekintése újra. Alkalmazása a ranger-házirendet, után látható az oszlop csak az utolsó négy karakter.
 
@@ -239,5 +239,5 @@ Hozhat létre, amelyek a localhost porton 9999 egy Hive-táblába egy Spark stre
 
 ## <a name="next-steps"></a>További lépések
 
-* [HDInsight interaktív lekérdezés használata](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-interactive-query-get-started)
+* [Az interaktív lekérdezés használata HDInsighttal](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-interactive-query-get-started)
 * [Példák a használata a Hive-Warehouse-összekötő használatával a Zeppelin Livy, spark-submit szkripttel, és a pyspark](https://community.hortonworks.com/articles/223626/integrating-apache-hive-with-apache-spark-hive-war.html)

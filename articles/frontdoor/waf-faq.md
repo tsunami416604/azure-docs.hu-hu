@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/02/2019
+ms.date: 06/10/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 05d01851d0a3dc9df6c396e862ce93defd957c70
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 91ee8b6e614cf12deccd1429ad67323c277954a0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61461969"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061478"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall"></a>Gyakori kérdések az Azure webalkalmazás-tűzfal
 
@@ -31,9 +31,6 @@ Application Gateway- vagy Azure bejárati ajtajának szolgáltatások üzemeltet
 ## <a name="what-is-waf-for-azure-front-door-service"></a>Mi az Azure bejárati ajtajának szolgáltatás WAF? 
 
 Az Azure bejárati ajtajának egy nagy mértékben skálázható, globálisan elosztott alkalmazások és a tartalomkézbesítési hálózat. Azure WAF, ha a bejárati ajtó, integrálva szolgáltatásmegtagadásos – leállítja, célzott támadásokat alkalmazás az Azure-hálózat peremén, megközelíti a támadás forrásokból, mielőtt belép a virtuális hálózat védelmet nyújt teljesítmény feláldozása nélkül.
-
-## <a name="how-will-i-be-charged-for-azure-waf-for-front-door"></a>Hogyan kell fizetnem az Azure WAF for bejárati ajtajának?
-A nyilvános előzetes verzióban ingyenesen bejárati ajtajának WAF használatát. Vegye figyelembe, hogy bejárati ajtajának díj extra. Bejárati ajtajának szolgáltatás díjszabása [Itt](https://azure.microsoft.com/pricing/details/frontdoor/).
 
 ## <a name="does-azure-waf-support-https"></a>Azure WAF támogatja a HTTPS?
 

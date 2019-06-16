@@ -16,12 +16,12 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 504c1bdeb05ecb6372be0edf023c480acac8a8a7
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 7ee8802aeb2a760e255ab4f5e99010dfedc45e0d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956844"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108303"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Egy Microsoft-alkalmazásba történő bejelentkezésnél
 
@@ -512,7 +512,7 @@ Alkalmazás-hozzáférés blokkolva lesz, mert a megfelelő engedélyekkel a jó
 
 ### <a name="perform-administrator-level-consent-operation-for-any-application"></a>Rendszergazdai jóváhagyás művelet bármely alkalmazás
 
--   A **csak a V1-alkalmazásmodell használatával fejlesztett alkalmazások**, kényszerítheti a rendszergazdai szintű jóváhagyást hozzáadásával történjen "**? rendszergazdai parancssorból =\_hozzájárulás**" végére egy alkalmazás a bejelentkezési URL-CÍMÉT.
+-   A **csak a V1-alkalmazásmodell használatával fejlesztett alkalmazások**, kényszerítheti a rendszergazdai szintű jóváhagyást hozzáadásával történjen " **? rendszergazdai parancssorból =\_hozzájárulás**" végére egy alkalmazás a bejelentkezési URL-CÍMÉT.
 
 -   A **bármilyen alkalmazást fejleszteni a V2-alkalmazásmodell használatával**, kényszerítheti a rendszergazdai jóváhagyás alatt utasításai alapján történjen a **engedélyeket kérhet a directory-rendszergazda** szakaszában [a rendszergazdai jóváhagyás végpont használatával](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
 

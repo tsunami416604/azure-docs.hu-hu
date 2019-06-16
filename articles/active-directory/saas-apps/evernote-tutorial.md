@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 2ce05e904484a6d773a0132734208b87e161f960
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4185e9f5e1b411f95afacb80499db048769ea27b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60279709"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102968"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-evernote"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Evernote
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Evernote konfigurálásához hozzá kell Evernote a 
 
 **Evernote hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, a bal oldali navigációs panelen, kattintson a **Azure Active Directory** ikonra.
+1. Az a  **[az Azure portal](https://portal.azure.com)** , a bal oldali navigációs panelen, kattintson a **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -125,7 +125,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Evernote, hajtsa vé
 
     a. Válassza ki a **bejelentkezési SAML-válasz és -előfeltétel** beállításhoz tartozó **aláírási beállítás**.
 
-    b. Kattintson a **Mentés** gombra.
+    b. Kattintson a **Save** (Mentés) gombra
 
 8. Az a **Evernote beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
 
@@ -145,7 +145,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Evernote, hajtsa vé
 
     ![Rendszergazda-konzol](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
 
-3. Az a **"Felügyeleti konzol"**, lépjen a **"Security"** válassza **"egyszeri"**
+3. Az a **"Felügyeleti konzol"** , lépjen a **"Security"** válassza **"egyszeri"**
 
     ![Egyszeri bejelentkezés – beállítás](./media/evernote-tutorial/tutorial_evernote_sso.png)
 
@@ -220,11 +220,11 @@ Evernote, esetén kiépítése a manuális feladat.
 
 1. Jelentkezzen be rendszergazdaként a Evernote vállalati webhely.
 
-2. Kattintson a **"Felügyeleti konzol"**.
+2. Kattintson a **"Felügyeleti konzol"** .
 
     ![Rendszergazda-konzol](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
 
-3. Az a **"Felügyeleti konzol"**, lépjen a **"Felhasználó hozzáadása"**.
+3. Az a **"Felügyeleti konzol"** , lépjen a **"Felhasználó hozzáadása"** .
 
     ![Add-testUser](./media/evernote-tutorial/create_aaduser_0001.png)
 

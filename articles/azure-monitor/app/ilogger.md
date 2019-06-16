@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.author: cithomas
-ms.openlocfilehash: fd5a16334fff0319d7993fb2403a48d1777f6bce
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 0691c35661a6d185a6aa5ed3383ad600653359d3
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955344"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058598"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>A .NET Core ILogger naplókhoz ApplicationInsightsLoggerProvider
 
@@ -106,6 +106,9 @@ public class ValuesController : ControllerBase
 ```
 
 ### <a name="capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps"></a>Az ASP.NET Core-alkalmazások a Startup.cs és Program.cs ILogger naplók rögzítése
+
+> [!NOTE]
+> Az ASP.NET Core 3.0-s és újabb már nem beszúrható `ILogger` a Startup.cs és a program.cs fájlban. Lásd: https://github.com/aspnet/Announcements/issues/353 további részletekért.
 
 Az új ApplicationInsightsLoggerProvider rögzítheti az alkalmazás-indítási folyamatban korai származó naplók. Bár ApplicationInsightsLoggerProvider automatikusan engedélyezve van az Application Insights (verzió 2.7.0-beta3 kezdve), akkor nincs egy kialakítási kulcs beállítása felfelé mindaddig, amíg a folyamat későbbi részében. Ezért csak naplózza a **vezérlő**/ egyéb osztályok fog rögzíthetők. Kezdve minden napló rögzítéséhez **Program.cs** és **Startup.cs** önmagában, külön engedélyeznie kell egy kialakítási kulcsot a ApplicationInsightsLoggerProvider. Ezenkívül *TelemetryConfiguration* telepítése nem teljes mértékben be való bejelentkezéskor **Program.cs** vagy **Startup.cs** magát. Ezért ezeket a naplókat használó InMemoryChannel, nincs mintavételezése esetén, és nincs normál telemetriai inicializálók vagy a processzorok minimális konfigurációban fog működni.
 
@@ -450,7 +453,7 @@ Ha TraceTelemetry elküldése mindig szeretne használni, használja az ebben a 
 
 Az Application Insights bővítményt, az Azure Web Apps a régi szolgáltatót használja. A szűrési szabályokat a módosíthatja a *appsettings.json* fájlt az alkalmazás. Az új szolgáltató kihasználásához használatához buildelés kialakítási NuGet függőség véve a SDK-val. Ez a cikk is frissülnek, amikor a bővítményt, az új szolgáltató használatára vált.
 
-### <a name="im-using-the-standalone-package-microsoftextensionsloggingapplicationinsights-and-enabling-application-insights-provider-by-calling-builderaddapplicationinsightsikey-is-there-an-option-to-get-an-instrumentation-key-from-configuration"></a>A különálló csomag Microsoft.Extensions.Logging.ApplicationInsights használatával és az Application Insights-szolgáltató engedélyezése meghívásával **builder. AddApplicationInsights("ikey")**. Kialakítási kulcs beszerzése a konfigurációs lehetőség van?
+### <a name="im-using-the-standalone-package-microsoftextensionsloggingapplicationinsights-and-enabling-application-insights-provider-by-calling-builderaddapplicationinsightsikey-is-there-an-option-to-get-an-instrumentation-key-from-configuration"></a>A különálló csomag Microsoft.Extensions.Logging.ApplicationInsights használatával és az Application Insights-szolgáltató engedélyezése meghívásával **builder. AddApplicationInsights("ikey")** . Kialakítási kulcs beszerzése a konfigurációs lehetőség van?
 
 
 Program.cs és appsettings.json módosítsa a következőképpen:

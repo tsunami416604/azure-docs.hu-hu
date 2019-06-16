@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12970e2df1d54212682ebb79f2354c4c9e712a34
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 22421d88d5d0b426b641c04cd8797c26d216c502
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813680"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67086690"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wrike"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Wrike
 
@@ -56,7 +56,7 @@ Az Azure AD integrálása a Wrike konfigurálásához hozzá kell Wrike a katal�
 
 **Wrike hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -189,7 +189,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó Wrike jön létre. Wrike
 >[!Note]
 >Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Wrike támogatási csapatának](mailto:support@team.wrike.com).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

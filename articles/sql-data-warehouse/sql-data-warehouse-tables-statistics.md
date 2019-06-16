@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019
 ms.openlocfilehash: c5043d99dd130bc7dc7b35eaa5ecadf11d7644db
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65851527"
 ---
 # <a name="table-statistics-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse Táblastatisztika
@@ -46,7 +46,7 @@ SET AUTO_CREATE_STATISTICS ON
 
 Ezek az utasítások aktiválják a statisztikák automatikus létrehozását:
 
-- KIVÁLASZTÁS
+- SELECT
 - INSERT-SELECT
 - CTAS
 - UPDATE
@@ -77,7 +77,7 @@ Frissítse a statisztikai adatokat ajánlások a következők:
 
 |||
 |-|-|
-| **Statisztikák frissítések gyakorisága**  | Konzervatív: Naponta </br> Miután betöltése vagy az adatok átalakítása |
+| **Statisztikák frissítések gyakorisága**  | Konzervatív: Napi </br> Miután betöltése vagy az adatok átalakítása |
 | **Mintavételezés** |  Kevesebb mint 1 milliárd sorral, használja az alapértelmezett mintavételi (20 %-os). </br> Több mint 1 milliárd sorral mintavételi két %-os használata. |
 
 Az első kérdéseket tehet fel, ha a lekérdezés még hibaelhárítási egyik, **"Naprakészek a statisztikák?"**

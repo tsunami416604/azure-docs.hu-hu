@@ -1,6 +1,6 @@
 ---
-title: Hogyan – megkövetelése felügyelt eszközök az Azure Active Directory feltételes hozzáféréssel felhőalapú alkalmazás eléréséhez |} A Microsoft Docs
-description: Ismerje meg, amely a felügyelt eszközök igényel a felhőalapú alkalmazások elérésének Azure Active Directory (Azure AD) eszközalapú feltételes hozzáférési szabályzatok konfigurálása.
+title: Hogyan – megkövetelése felügyelt eszközök számára a felhőalapú alkalmazás-hozzáférés az Azure Active Directory feltételes hozzáférés |} A Microsoft Docs
+description: Útmutató Azure Active Directory (Azure AD) eszközalapú feltételes hozzáférési szabályzatok konfigurálhatók, amely a felügyelt eszközök igényel a felhőalapú alkalmazás eléréséhez.
 services: active-directory
 documentationcenter: ''
 author: MicrosoftGuyJFlo
@@ -17,12 +17,12 @@ ms.date: 06/14/2018
 ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75f55f1058537da255a2611f544239f693615678
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 459dd981b73ae840b3fc61bd0cc83ecefb1cf393
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60354746"
+ms.locfileid: "67112145"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>kézikönyv: A felügyelt eszközök szükségesek a feltételes hozzáféréssel felhőalapú alkalmazás-hozzáférés
 
@@ -33,7 +33,7 @@ Ez a cikk azt ismerteti, hogy hogyan konfigurálhat feltételes hozzáférési s
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A felügyelt eszközök megkövetelése a cloud app access ties **Azure AD feltételes hozzáférés** és **Azure AD eszközkezeléséről** együtt. Ha Ön még nem ismeri a következő területeken, olvassa el a következő témakörök először:
+A felügyelt eszközök megkövetelése a cloud app access ties **Azure AD feltételes hozzáférési** és **Azure AD eszközkezeléséről** együtt. Ha Ön még nem ismeri a következő területeken, olvassa el a következő témakörök először:
 
 - **[Az Azure Active Directory feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md)**  – Ez a cikk ismerteti a feltételes hozzáférés és a kapcsolódó terminológia fogalmi áttekintése.
 
@@ -112,5 +112,5 @@ Megfelelőként megjelölt eszköz akkor feltételezheti, hogy:
 
 ## <a name="next-steps"></a>További lépések
 
-Eszközalapú feltételes hozzáférési szabályzat konfigurálása a környezetében, előtt meg kell vessen egy pillantást a [ajánlott eljárások az Azure Active Directory feltételes hozzáférés](best-practices.md).
+Eszközalapú feltételes hozzáférési szabályzat konfigurálása a környezetében, előtt meg kell vessen egy pillantást a [gyakorlati tanácsok az Azure Active Directory feltételes hozzáférés](best-practices.md).
 

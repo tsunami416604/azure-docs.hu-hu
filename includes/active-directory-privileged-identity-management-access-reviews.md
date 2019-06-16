@@ -9,10 +9,10 @@ ms.date: 04/29/2019
 ms.author: rolyon
 ms.custom: include file
 ms.openlocfilehash: 364d4a11772e6bb72e2e258503f3cce49dc61453
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66112259"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>Hozzon létre egy vagy több hozzáférési felülvizsgálatok
@@ -53,11 +53,11 @@ ms.locfileid: "66112259"
     - **A kijelölt felhasználók** -használja ezt a beállítást, ha nem ismeri ki hozzá kell férnie. Ezzel a beállítással a felülvizsgálat hozzárendelheti egy erőforrás tulajdonosa vagy a csoport kezelőjének végrehajtásához.
     - **Tagok (saját)** -használja ezt a beállítást szeretné, hogy a felhasználók, ellenőrizze a saját szerepkör-hozzárendeléseket.
 
-### <a name="upon-completion-settings"></a>A befejezést követő művelet beállításai
+### <a name="upon-completion-settings"></a>Befejezést követő művelet beállításai
 
 1. Adja meg, mi történik, a felülvizsgálat befejezése után, bontsa ki a **befejezést követő művelet beállításai** szakaszban.
 
-    ![A befejezést követő művelet beállításai](./media/active-directory-privileged-identity-management-access-reviews/upon-completion-settings.png)
+    ![Befejezést követő művelet beállításai](./media/active-directory-privileged-identity-management-access-reviews/upon-completion-settings.png)
 
 1. Ha szeretne automatikusan remove hozzáférést a felhasználók számára, hogy el lett utasítva, **eredmények automatikus alkalmazása az erőforrás** való **engedélyezése**. Ha szeretné manuálisan alkalmazza az eredményeket, ha a felülvizsgálatot követően, állítsa a kapcsolót **letiltása**.
 

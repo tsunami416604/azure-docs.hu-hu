@@ -1,5 +1,5 @@
 ---
-title: Az Azure AD-telepítési ellenőrzőlista
+title: Azure AD-üzembehelyezési ellenőrzőlista
 description: Az Azure Active Directory szolgáltatás telepítési ellenőrzőlista
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b0844030d069fba40bfd2fdf55252d8b9e3b1c2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: e668a5238859d8cd8c2a7797200a12197ce72be9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235131"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110476"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Az Azure Active Directory szolgáltatás üzembe helyezési útmutató
 
@@ -37,7 +37,7 @@ Licenceléssel kapcsolatos további információ található a következő lapok
 * [Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
 * [Az Azure AD B2B licencelési útmutató](../b2b/licensing-guidance.md)
 
-## <a name="phase-1-build-a-foundation-of-security"></a>1. fázis: Biztonsági épít
+## <a name="phase-1-build-a-foundation-of-security"></a>1\. fázis: Biztonsági épít
 
 Ebben a fázisban a rendszergazdák alapkonfiguráció biztonsági funkciók az Azure AD, hogy importálni, vagy normál felhasználói fiókok létrehozása előtt hozzon létre egy biztonságos, és könnyen használható foundation engedélyezése. Ez a alapvető fázis, a kezdetektől biztonságosabb állapotban van, és, hogy a végfelhasználók csak kell bevezetni új fogalmakat egyszer biztosítja.
 
@@ -58,7 +58,7 @@ Ebben a fázisban a rendszergazdák alapkonfiguráció biztonsági funkciók az 
 | [A multi-factor authentication és a jelszó módosítására a kockázati események használatával](../authentication/tutorial-risk-based-sspr-mfa.md) | Aktiválhat eseményeket, mint például a többtényezős hitelesítés, jelszó-visszaállítás és a bejelentkezési kockázat alapján blokkolásának-automatizálás engedélyezése. | Prémium szintű Azure AD P2 |
 | [A hiperkonvergens regisztráció önkiszolgáló jelszó-visszaállítás és az Azure AD multi-factor Authentication (előzetes verzió) engedélyezése](../authentication/concept-registration-mfa-sspr-converged.md) | Lehetővé teszi a felhasználók regisztráljanak az Azure multi-factor Authentication és az önkiszolgáló jelszó-visszaállítás egy közös élményének. | Prémium szintű Azure AD P1 |
 
-## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>2. fázis: Felhasználók importálása, -szinkronizálás engedélyezése és eszközök kezelése
+## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>2\. fázis: Felhasználók importálása, -szinkronizálás engedélyezése és eszközök kezelése
 
 Ezután hozzáadjuk az alapítvány meghatározni 1. fázis importálása, hogy a felhasználók és engedélyezésével a szinkronizálás vendéghozzáférés tervezése és előkészítése további funkciók támogatásához.
 
@@ -73,7 +73,7 @@ Ezután hozzáadjuk az alapítvány meghatározni 1. fázis importálása, hogy 
 | [Döntse el, az eszközkezelési stratégiától](../devices/overview.md) | Döntse el, eszközökre vonatkozó teszi a szervezet. Vállalati megadott regisztrálása való csatlakozás, saját eszközök használata a vs vs. | |
 | [Windows Hello for Business a szervezetében üzembe helyezi](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | Felkészülés a Windows Hello használata jelszó nélküli hitelesítése | |
 
-## <a name="phase-3-manage-applications"></a>3. fázis: Alkalmazások kezelése
+## <a name="phase-3-manage-applications"></a>3\. fázis: Alkalmazások kezelése
 
 Továbbra is az előző fázisok épülnek, mint hogy áttelepítését és integrálását az Azure ad-vel jelölt alkalmazások azonosítása, és ezeknek az alkalmazásoknak a telepítés befejezéséhez.
 
@@ -83,9 +83,9 @@ Továbbra is az előző fázisok épülnek, mint hogy áttelepítését és inte
 | [A katalógus támogatott SaaS-alkalmazások integrálása](../manage-apps/add-application-portal.md) | Az Azure AD egy katalógus, amely több ezer előre integrált alkalmazások rendelkezik. A szervezete az alkalmazások néhány valószínűleg a katalógusban elérhető közvetlenül az Azure Portalról. | Azure AD Free |
 | [Az alkalmazásproxy használatával a helyszíni alkalmazások integrálása](../manage-apps/application-proxy-add-on-premises-application.md) | Az alkalmazásproxy lehetővé teszi, hogy a felhasználók hozzáférhessenek a helyszíni alkalmazásokhoz bejelentkezik az Azure AD-fiókja. | Azure AD Basic |
 
-## <a name="phase-4-audit-privileged-identities-complete-an-access-review-and-manage-user-lifecycle"></a>4. fázis: Emelt szintű identitások naplózása, a hozzáférési felülvizsgálat befejezése és a felhasználói életciklus kezelése
+## <a name="phase-4-audit-privileged-identities-complete-an-access-review-and-manage-user-lifecycle"></a>4\. fázis: Emelt szintű identitások naplózása, a hozzáférési felülvizsgálat befejezése és a felhasználói életciklus kezelése
 
-4. fázis rendszergazdák kényszerítése a legalacsonyabb jogosultsági elveket, felügyeleti, az első a hozzáférési felülvizsgálatok elvégzése, illetve engedélyezni kívánja gyakori felhasználói életciklus-feladatok automatizálása megkeresheti.
+4\. fázis rendszergazdák kényszerítése a legalacsonyabb jogosultsági elveket, felügyeleti, az első a hozzáférési felülvizsgálatok elvégzése, illetve engedélyezni kívánja gyakori felhasználói életciklus-feladatok automatizálása megkeresheti.
 
 | Tevékenység | Részletek | Licenc szükséges |
 | ---- | ------ | ---------------- |

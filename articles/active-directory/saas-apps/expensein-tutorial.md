@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/31/2019
+ms.date: 06/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b849e63b758dca777df2be682b28bc4e10e58330
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 7c09542013dff3a18965d1070216a938c26a144e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66481130"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102839"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>Oktatóanyag: ExpenseIn integrálása az Azure Active Directoryval
 
@@ -57,15 +57,15 @@ Az Azure AD integrálása a ExpenseIn konfigurálásához hozzá kell ExpenseIn 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Konfigurálás és tesztelés az Azure AD SSO nevű tesztfelhasználó használata ExpenseIn **b Simon**. Az SSO működjön kell ExpenseIn az Azure AD-felhasználót és a kapcsolódó felhasználó közötti hivatkozás kapcsolatot hozhat létre.
+Konfigurálás és tesztelés az Azure AD SSO nevű tesztfelhasználó használata ExpenseIn **B.Simon**. Az SSO működjön kell ExpenseIn az Azure AD-felhasználót és a kapcsolódó felhasználó közötti hivatkozás kapcsolatot hozhat létre.
 
 Az Azure AD SSO ExpenseIn tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
 
 1. **[Az Azure AD SSO konfigurálása](#configure-azure-ad-sso)**  ahhoz, hogy ez a funkció használatát a felhasználók számára.
 2. **[Konfigurálja a ExpenseIn](#configure-expensein)**  alkalmazás oldalán az egyszeri bejelentkezési beállításainak konfigurálására.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés a b Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  b Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre ExpenseIn tesztfelhasználót](#create-expensein-test-user)**  van egy megfelelője a b Simon ExpenseIn, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés az B.Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  B.Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre ExpenseIn tesztfelhasználót](#create-expensein-test-user)**  van egy megfelelője a B.Simon ExpenseIn, amely kapcsolódik az Azure AD felhasználói ábrázolása.
 6. **[Egyszeri bejelentkezés tesztelése](#test-sso)**  ellenőrzése, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO konfigurálása
@@ -101,41 +101,51 @@ Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyez�
 
 ### <a name="configure-expensein"></a>ExpenseIn konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be ExpenseIn rendszergazdaként.
+1. Automatizálhatja a ExpenseIn konfigurációra, telepítenie kell **saját alkalmazások biztonságos bejelentkezési böngészőbővítmény** kattintva **a bővítmény telepítése**.
 
-2. Kattintson a **rendszergazdai** majd lépjen az oldal felső részén **egyszeri bejelentkezés** kattintson **Hozzáadás szolgáltató**.
+    ![Saját alkalmazások kiterjesztése](common/install-myappssecure-extension.png)
+
+2. A felvett bővítmény a böngészőre, kattintson a **telepítő ExpenseIn** fog irányítja át a ExpenseIn alkalmazás. Itt adja meg a rendszergazdai hitelesítő adataival bejelentkezni ExpenseIn. A webböngésző-bővítmény automatikusan konfigurálja az alkalmazást, és 3 – 5. lépések automatizálásához.
+
+    ![Konfiguráció beállítása](common/setup-sso.png)
+
+3. Ha azt szeretné, manuálisan állíthatja be az ExpenseIn, nyisson meg egy új böngészőablakban, és jelentkezzen be rendszergazdaként vállalati ExpenseIn webhelyét, és hajtsa végre az alábbi lépéseket:
+
+4. Kattintson a **rendszergazdai** majd lépjen az oldal felső részén **egyszeri bejelentkezés** kattintson **Hozzáadás szolgáltató**.
 
      ![ExpenseIn konfiguráció](./media/expenseIn-tutorial/config01.png)
 
-3. Az a **új identitásszolgáltató** előugró ablakban hajtsa végre az alábbi lépéseket:
+5. Az a **új identitásszolgáltató** előugró ablakban hajtsa végre az alábbi lépéseket:
 
     ![ExpenseIn konfiguráció](./media/expenseIn-tutorial/config02.png)
 
     a. Az a **szolgáltatónevet** szöveg írja be a nevét, mint például az ex: Azure.
 
-    b. Az a **cél URL-cím** szöveg mezőbe illessze be az értékét **bejelentkezési URL-cím**, az Azure Portalról másolt.
+    b. Válassza ki **Igen** , **szolgáltató Intitated bejelentkezés engedélyezése**.
 
-    c. Az a **kibocsátó** szöveg mezőbe illessze be az értékét **az Azure AD-azonosító**, az Azure Portalról másolt.
+    c. Az a **cél URL-cím** szöveg mezőbe illessze be az értékét **bejelentkezési URL-cím**, az Azure Portalról másolt.
 
-    d. A Jegyzettömb alkalmazásban nyissa meg a tanúsítvány (Base64), másolja a tartalmat, és illessze be a **tanúsítvány** szövegmezőben.
+    d. Az a **kibocsátó** szöveg mezőbe illessze be az értékét **az Azure AD-azonosító**, az Azure Portalról másolt.
 
-    e. Kattintson a **Create** (Létrehozás) gombra.
+    e. A Jegyzettömb alkalmazásban nyissa meg a tanúsítvány (Base64), másolja a tartalmat, és illessze be a **tanúsítvány** szövegmezőben.
+
+    f. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ebben a szakaszban az Azure Portalon b Simon nevű tesztfelhasználó fog létrehozni.
+Ebben a szakaszban az Azure Portalon B.Simon nevű tesztfelhasználó fog létrehozni.
 
 1. Az Azure Portal bal oldali panelén válassza **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 1. Válassza ki **új felhasználó** a képernyő tetején.
 1. Az a **felhasználói** tulajdonságok, kövesse az alábbi lépéseket:
-   1. A **Név** mezőbe írja a következőt: `B. Simon`.  
-   1. Az a **felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `BrittaSimon@contoso.com`.
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. Az a **felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
    1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
    1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban b Simon által biztosított hozzáférés ExpenseIn Azure egyszeri bejelentkezés használatához engedélyeznie kell.
+Ebben a szakaszban B.Simon által biztosított hozzáférés ExpenseIn Azure egyszeri bejelentkezés használatához engedélyeznie kell.
 
 1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
 1. Az alkalmazások listájában jelölje ki a **ExpenseIn**.
@@ -147,7 +157,7 @@ Ebben a szakaszban b Simon által biztosított hozzáférés ExpenseIn Azure egy
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. Az a **felhasználók és csoportok** párbeszédablakban válassza **b Simon** a felhasználók listájából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+1. Az a **felhasználók és csoportok** párbeszédablakban válassza **B.Simon** a felhasználók listájából, majd kattintson a **kiválasztása** gombra a képernyő alján.
 1. Ha a SAML helyességi feltétel, a szerepkör értéket vár a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználóhoz a listából, és kattintson a **kiválasztása** gombra a képernyő alján.
 1. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
@@ -171,7 +181,7 @@ Ahhoz, hogy az Azure AD-felhasználók ExpenseIn bejelentkezni, akkor ki kell é
 
     b. A **Vezetéknév** szöveget adja meg például a felhasználó vezetékneve **Simon**.
 
-    c. A **E-mail** szöveget adja meg az e-mailt, például a felhasználó `B. Simon@contoso.com`.
+    c. A **E-mail** szöveget adja meg az e-mailt, például a felhasználó `B.Simon@contoso.com`.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
 

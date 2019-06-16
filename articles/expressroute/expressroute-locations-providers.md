@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/31/2019
+ms.date: 06/11/2019
 ms.author: jaredr80
-ms.openlocfilehash: c443d4705da83a43af10763f633f340b1eab69d3
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
-ms.translationtype: MT
+ms.openlocfilehash: f7006a8162aab87bc36f3dae034f10daa3f37ac1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66478158"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67115457"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -92,14 +92,14 @@ Az alábbi táblázatban a kapcsolati helyek és az egyes helyekhez tartozó szo
 | **Dubai2** | du datamena | Az Egyesült Arab Emírségek északi régiója | du datamena, Orixcom |
 | **Dublin** | Equinix | Észak-Európa | Colt, eir, Equinix, Interxion, Megaport |
 | **Frankfurt** | Interxion | n/a | DE-CIX, Interxion |
-| **Hongkong (KKT)** | Equinix | Kelet-Ázsia | Aryaka Networks, British Telecom, China Telecom Global, Equinix, Megaport, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Verizon |
+| **Hongkong (KKT)** | Equinix | Kelet-Ázsia | Aryaka Networks, British Telecom, Chief Telecom, China Telecom Global, Equinix, Megaport, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Verizon |
 | **Johannesburg** | Teraco | Dél-Afrika északi régiója | Internet Solutions – Cloud Connect, Liquid Telecom, Teraco |
 | **Kuala Lumpur** | TIME dotCom | n/a | TIME dotCom |
 | **Las Vegas** | Kapcsoló | n/a | CenturyLink Cloud Connect, Megaport |
 | **London** | Equinix | Az Egyesült Királyság déli régiója | AT&T NetBond, British Telecom, Colt, Equinix, InterCloud, Internet Solutions – Cloud Connect, Interxion, Jisc, Level 3 Communications, Megaport, MTN, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Telehouse – KDDI, Telenor, Telia Carrier, Verizon, Vodafone, Zayo |
 | **London2** | Telehouse | Az Egyesült Királyság déli régiója | IX Reach, Equinix |
 | **Los Angeles** | CoreSite | n/a | CoreSite, Equinix, Megaport, Neutrona Networks, NTT, Zayo |
-| **Marseille** |Interxion | Dél-Franciaország | Interxion |
+| **Marseille** |Interxion | Dél-Franciaország | Interxion, Jaguar hálózati |
 | **Melbourne** | NextDC | Délkelet-Ausztrália | AARNet, Devoli, Equinix, Megaport, NEXTDC, Optus, Telstra Corporation, TPG Telecom |
 | **Miami** | Equinix | n/a | C3ntro+, Equinix, Megaport, Neutrona Networks |
 | **Montreal** | Cologix | n/a | Bell Canada, Cologix, Telus, Zayo |
@@ -180,29 +180,30 @@ Ha a kapcsolatszolgáltató nincs felsorolva az előző szakaszokban, akkor is l
 | **Hely** | **Exchange** | **Kapcsolatszolgáltatók** |
 | --- | --- | --- |
 | **Amszterdam** | Equinix, Telecity | BICS, CloudXpress, Eurofiber, Fastweb S.p.A, Gulf Bridge International, MainOne, Nianet, Post, Proximus, TDC Erhverv, Telecom Italia Sparkle, Telia |
+| **Atlanta** | Equinix| Kastély korona
 | **Fokváros** | Teraco | MTN |
-| **Chicago** | Equinix | Lightower, átfogó vállalati, Windstream |
-| **Dallas** | Equinix, Megaport | Axtel, a távközlési C3ntro Cox üzleti adatok Foundry, átfogó vállalati, Transtelco |
+| **Chicago** | Equinix | Korona kastély, átfogó vállalati, Windstream |
+| **Dallas** | Equinix, Megaport | Axtel, a távközlési C3ntro Cox korona sáncoláskor üzleti adatok Foundry, átfogó vállalati, Transtelco |
 | **Frankfurt** | Telecity | BICS, Cinia, Nianet, QSC AG |
 | **Hamburg** | Equinix | Cinia |
 | **Hongkong (KKT)** | Equinix | Vezető, Macroview Telecom |
 | **Johannesburg** | Teraco | MTN |
 | **London** | BICS, Equinix, euNetworks, Telecity | Bezeq International Ltd., CoreAzure, Epsilon Telecommunications Limited, Exponential E, HSO, NexGen Networks, Proximus, Tamares Telecom, Zain |
-| **Los Angeles** | Equinix |Spectrum Enterprise, Transtelco |
+| **Los Angeles** | Equinix |Korona kastély, átfogó vállalati, Transtelco |
 | **Madrid** | Level3 | Zertia |
 | **Montreal** | Cologix, Equinix | Airgate Technologies, Inc. 1., Rogers, Zirro Cogeco társ |
-| **New York** |Equinix, Megaport | Altice Business, Lightower, Spectrum Enterprise, Webair |
+| **New York** |Equinix, Megaport | Altice Business, Crown Castle, Spectrum Enterprise, Webair |
 | **Párizs** | Equinix | Proximus |
 | **Quebec város** | Megaport | Fibrenoire |
 | **Sao Paula** | Equinix | Venha Pra Nuvem |
 | **Seattle** |Equinix | Alaska Communications |
-| **Szilícium-völgy** |Equinix | Cox Business, Enterprise spektrumú, Windstream |
+| **Szilícium-völgy** |Coresite, Equinix | Cox Business, Spectrum Enterprise, Windstream, X2nsat Inc. |
 | **Szingapúr** |Equinix |1CLOUDSTAR, BICS, Epsilon Telecommunications Limited, LGA Telecom, United Information Highway (UIH) |
 | **Slough** | Equinix | HSO|
 | **Sydney** | Megaport | Macquarie Telecom Group|
 | **Tokió** | Equinix | ARTERIA Networks Corporation, BroadBand Tower, Inc. |
-| **Toronto** | Equinix | Airgate Technologies, Inc. 1., IVedha Inc, Rogers, Thinktel, Zirro Cogeco társ|
-| **Washington DC** |Equinix | Altice üzleti, BICS, Cox üzleti, BTt kommunikációs Inc, epszilon távközlési korlátozott, Lightower, a Masergy, Windstream |
+| **Toronto** | Equinix, Megaport | Airgate Technologies Inc., Beanfield Metroconnect, Cogeco társ 1, IVedha Inc, Rogers, Thinktel, Zirro|
+| **Washington DC** |Equinix | Altice üzleti, BICS, Cox üzleti, korona kastély, BTt kommunikációs Inc epszilon távközlési korlátozott, a Masergy, Windstream |
 
 ## <a name="expressroute-system-integrators"></a>ExpressRoute-rendszerintegrátorok
 A privát kapcsolatok igény szerinti beállítása nehéz feladat lehet, a hálózat méretétől függően. A következő táblában felsorolt rendszerintegrátorok bármelyike segítségére lehet az ExpressRoute üzembe helyezésében.

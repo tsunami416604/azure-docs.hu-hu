@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 7fab3b05429e430b444c2a14213c524fbf19a01d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66171661"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>A VMware virtuális gépek vészhelyreállítására használt konfigurációs kiszolgáló kezelése
@@ -154,13 +154,13 @@ A kiszolgáló frissítése a következőképpen:
     ![Update](./media/vmware-azure-manage-configuration-server/update2.png)
 3. Töltse le a frissítést telepítő a konfigurációs kiszolgálón.
 
-    ![Frissítés](./media/vmware-azure-manage-configuration-server/update1.png)
+    ![frissítés](./media/vmware-azure-manage-configuration-server/update1.png)
 
 4. A telepítő futtatásához kattintson duplán.
 5. A telepítő észleli a gépen futó verziója. Kattintson a **Igen** a frissítés elindításához.
 6. A frissítés befejezése után ellenőrzi a kiszolgáló konfigurációját.
 
-    ![Frissítés](./media/vmware-azure-manage-configuration-server/update3.png)
+    ![frissítés](./media/vmware-azure-manage-configuration-server/update3.png)
 
 7. Kattintson a **Befejezés** gombra kattintva zárja be a telepítőt.
 8. Frissítse a Site Recovery-összetevőit rest, tekintse meg a [frissítéssel kapcsolatos](https://aka.ms/asr_vmware_upgrades).
@@ -189,14 +189,14 @@ Futtassa a telepítőfájlt az alábbiak szerint:
 |/InstallLocation|Kötelező|Az összetevők telepítési mappája| A számítógép bármely mappája|
 |/MySQLCredsFilePath|Kötelező|A fájl elérési útja, amelyen a MySQL-kiszolgáló hitelesítő adatai tárolva vannak|A fájlnak az alább megadott formátumúnak kell lennie|
 |/VaultCredsFilePath|Kötelező|A tároló hitelesítőadat-fájljának elérési útja|Érvényes fájlelérési út|
-|/EnvType|Szükséges|Védeni kívánt környezet típusa |VMware<br>NonVMware|
+|/EnvType|Kötelező|Védeni kívánt környezet típusa |VMware<br>NonVMware|
 |/PSIP|Kötelező|A replikációs adatátvitelhez használni kívánt hálózati adapter IP-címe| Bármilyen érvényes IP-cím|
 |/CSIP|Kötelező|Annak a hálózati adapternek az IP-címe, amelyen a konfigurációs kiszolgáló figyel| Bármilyen érvényes IP-cím|
-|/PassphraseFilePath|Szükséges|A jelszófájl teljes elérési útja|Érvényes fájlelérési út|
-|/BypassProxy|Választható|Megadja, hogy a konfigurációs kiszolgáló proxy nélkül csatlakozik az Azure-hoz.|Az érték beszerzése innen: Venu|
-|/ProxySettingsFilePath|Választható|Proxybeállítások (Az alapértelmezett proxyhoz hitelesítés vagy egyéni proxy szükséges).|A fájlnak az alább megadott formátumúnak kell lennie|
-|DataTransferSecurePort|Választható|Az adatreplikációhoz használni kívánt PSIP-port száma| Érvényes portszám (az alapértelmezett érték 9433)|
-|/SkipSpaceCheck|Választható|Gyorsítótárlemez terület-ellenőrzésének kihagyása| |
+|/PassphraseFilePath|Kötelező|A jelszófájl teljes elérési útja|Érvényes fájlelérési út|
+|/BypassProxy|Optional|Megadja, hogy a konfigurációs kiszolgáló proxy nélkül csatlakozik az Azure-hoz.|Az érték beszerzése innen: Venu|
+|/ProxySettingsFilePath|Optional|Proxybeállítások (Az alapértelmezett proxyhoz hitelesítés vagy egyéni proxy szükséges).|A fájlnak az alább megadott formátumúnak kell lennie|
+|DataTransferSecurePort|Optional|Az adatreplikációhoz használni kívánt PSIP-port száma| Érvényes portszám (az alapértelmezett érték 9433)|
+|/SkipSpaceCheck|Optional|Gyorsítótárlemez terület-ellenőrzésének kihagyása| |
 |/AcceptThirdpartyEULA|Kötelező|Ez a jelölő a külső féltől származó végfelhasználói licencszerződés elfogadását jelzi| |
 |/ShowThirdpartyEULA|Optional|Külső felektől származó végfelhasználói licenszszerződés megjelenítése. Bemenetként való megadása esetén figyelmen kívül hagyja a többi paramétert.| |
 

@@ -16,10 +16,10 @@ ms.date: 05/28/2019
 ms.author: barclayn
 ms.custom: azlog
 ms.openlocfilehash: 9f7d482b088003e3800debb2db9f6f26bda1672a
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66298173"
 ---
 # <a name="azure-log-integration-faq"></a>Az Azure Log Integration – gyakori kérdések
@@ -27,7 +27,7 @@ ms.locfileid: "66298173"
 Ebben a cikkben megválaszolunk Azure Log Integration kapcsolatos gyakori kérdések (GYIK).
 
 >[!IMPORTANT]
-> Az Azure Log integration szolgáltatás 06/15/2019 elavulttá válik. 2018. június 27. AzLog letöltések letiltottuk. Mi a teendő mozgatása előre tekintse át a hozzászólás útmutatást [SIEM-eszközök integrálása az Azure monitor](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Az Azure Log integration szolgáltatás 06/15/2019 elavulttá válik. 2018\. június 27. AzLog letöltések letiltottuk. Mi a teendő mozgatása előre tekintse át a hozzászólás útmutatást [SIEM-eszközök integrálása az Azure monitor](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 Az Azure Log Integration szolgáltatása egy Windows operációs rendszer, amellyel az Azure-erőforrások nyers naplóinak integrálása a helyszíni biztonsági biztonságiadat- és eseménykezelés (SIEM) felügyeleti rendszerek. Ez az integráció az egységesített irányítópult kínál az összes eszközt, a helyszíni vagy a felhőben. Ezután összesíteni, összekapcsolását, elemzése, és az alkalmazásokkal kapcsolatos biztonsági események a riasztást.
 

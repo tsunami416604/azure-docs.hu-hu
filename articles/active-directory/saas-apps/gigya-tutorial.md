@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: c3a2a92eb01943ab87c12d3ffefc4999cd9ff518
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 4c9925e11325c87598f90af1b677246eca805e6b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898727"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67101709"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gigya"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Gigya
 
@@ -52,7 +52,7 @@ Az Azure AD integrálása a Gigya konfigurálásához hozzá kell Gigya a katal�
 
 **Gigya hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -224,7 +224,7 @@ Ahhoz, hogy az Azure AD-felhasználók Gigya szolgáltatásba való bejelentkez�
     > Az Azure Active Directory fióktulajdonos mielőtt aktívvá válik, győződjön meg arról, hogy a fiók mutató hivatkozást tartalmazó e-mailt fog kapni.
     > 
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

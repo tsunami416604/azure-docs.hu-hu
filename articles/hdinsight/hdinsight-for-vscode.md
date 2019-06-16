@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.openlocfilehash: d114a1e62ae0d28e7d4a3ad453d5d7bd3e1d5b7a
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66427685"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Az Azure HDInsight Tools for Visual Studio Code használata
@@ -284,12 +284,12 @@ Miután elküldött egy Python-feladatot, a naplók küldése megjelennek a **ki
 
 <a id="triggerlivyconf"></a>**Hogy miként indítható el livy-konfiguráció**
 
-1. módszer  
+1\. módszer  
 1. Lépjen a menüsoron **fájl** > **beállítások** > **beállítások**.  
 2. Az a **keresés a beállításokban** szövegmezőben adja meg **HDInsight feladat Sumission: Livy-Conf**.  
 3. Válassza ki **Szerkesztés a settings.json** a releváns keresési eredmény.
 
-2. módszer   
+2\. módszer   
 Fájl elküldése, figyelje meg, hogy a .vscode mappa automatikusan bekerül a munkahelyi mappa. Annak a livy-konfiguráció kattintva **.vscode\settings.json**.
 
 + A Projektbeállítások között:

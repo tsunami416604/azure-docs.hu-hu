@@ -11,16 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 277001faf988e5d201a65c9e4112263f226b3db5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bcb1bf4996e381db933eac91135093a101e504bb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60358344"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055981"
 ---
 # <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>Frissítés a PhoneFactor ügynökről az Azure Multi-Factor Authentication-kiszolgálóra
 
 A PhoneFactor-ügynök 5.x verziójáról az Azure Multi-Factor Authentication-kiszolgálóra való frissítéshez először távolítsa el a PhoneFactor-ügynököt és a kapcsolódó összetevőket. A Multi-Factor Authentication-kiszolgáló és kapcsolódó összetevői ezután telepíthetők.
+
+> [!IMPORTANT]
+> 2019\. július 1-től a Microsoft már nem szavatolnak MFA-kiszolgáló az új üzembe helyezésekhez. Új felhasználókat szeretné a felhasználóktól többtényezős hitelesítést kell használnia a felhőalapú Azure multi-factor Authentication. Meglévő ügyfeleink, akik aktiválták az MFA-kiszolgáló előtt július 1 lesz a legújabb verzió, a jövőbeli frissítések letöltéséhez és a szokásos módon aktiváló hitelesítő adatok előállítása.
 
 ## <a name="uninstall-the-phonefactor-agent"></a>A PhoneFactor-ügynök eltávolítása
 

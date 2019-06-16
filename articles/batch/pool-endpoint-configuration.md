@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: lahugh
-ms.openlocfilehash: a6c2c343b13b77048c772cb1e5c2ba06cf8add50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9b6b28b9f55623fbdff6ab80c889141c8815600f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60616857"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071533"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Konfigurálhatja vagy letilthatja a távoli hozzáférést az Azure Batch-készlet számítási csomópontjain
 
@@ -27,7 +27,7 @@ A végpont-konfiguráció áll egy vagy több [hálózati címfordítás (NAT) c
 Minden egyes NAT a készletkonfiguráció tartalmaz egy vagy több [hálózati biztonsági csoport (NSG) szabályai](/rest/api/batchservice/pool/add#networksecuritygrouprule). Minden NSG-szabály engedélyezi, vagy megtagadja a bizonyos hálózati forgalmat a végponthoz. Dönthet úgy, hogy engedélyezi vagy megtagadja a minden forgalmat a forgalom által azonosított egy [szolgáltatáscímke](../virtual-network/security-overview.md#service-tags) (például az "Internet"), vagy adott IP-címekről vagy alhálózatokról érkező forgalmat.
 
 ### <a name="considerations"></a>Megfontolandó szempontok
-* A készlet végpont-konfiguráció a készlet része [hálózati konfiguráció](/rest/api/batchservice/pool/add#NetworkConfiguration). A hálózati konfiguráció szükség esetén belefoglalhatja csatlakozni szeretne a készlet beállításait egy [az Azure virtual network](batch-virtual-network.md). Ha beállította a készlet az egy virtuális hálózatot, virtuális hálózatban lévő címekre vonatkozó beállításokat használó NSG-szabályok is létrehozhat.
+* A készlet végpont-konfiguráció a készlet része [hálózati konfiguráció](/rest/api/batchservice/pool/add#networkconfiguration). A hálózati konfiguráció szükség esetén belefoglalhatja csatlakozni szeretne a készlet beállításait egy [az Azure virtual network](batch-virtual-network.md). Ha beállította a készlet az egy virtuális hálózatot, virtuális hálózatban lévő címekre vonatkozó beállításokat használó NSG-szabályok is létrehozhat.
 * Beállíthatja több NSG-szabályok, NAT-készletet konfigurálásakor. A szabályokat a rendszer prioritás szerinti sorrendben ellenőrzi. Amint talál egy érvényes szabályt, nem vizsgálja, hogy a többi szabálynak megfelel-e a forgalom.
 
 

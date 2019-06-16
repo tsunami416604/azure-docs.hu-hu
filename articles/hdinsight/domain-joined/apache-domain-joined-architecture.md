@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/29/2019
-ms.openlocfilehash: 168a73ced039b9bced9a6aae6a138468b345b19d
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.date: 06/11/2019
+ms.openlocfilehash: 46eb90d2ec9902a9b5b7830063d0a6164ae948dd
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66391687"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061121"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>A HDInsight vállalati biztonsági csomag használata
 
@@ -63,9 +63,9 @@ Használatával a helyszíni Active Directory vagy az IaaS virtuális gépek ön
 
 Ha összevonási használatban van, és a jelszókivonatokat megfelelően szinkronizálva lesznek, de hitelesítési hibák azért kapta, ellenőrizze, ha felhőalapú jelszavas hitelesítés engedélyezve van a PowerShell szolgáltatás egyszerű. Ha nem, be kell állítani egy [kezdőlap Kezdőtartomány felderítése (HRD) házirend](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) az Azure AD-bérlője számára. Ellenőrizze és állítsa be a HRD-szabályzattal:
 
-1. Az Azure AD PowerShell modul telepítése.
+1. Az előzetes verzió telepítése [Azure AD PowerShell-modul](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2).
 
-   ```
+   ```powershell
    Install-Module AzureADPreview
    ```
 
@@ -73,22 +73,36 @@ Ha összevonási használatban van, és a jelszókivonatokat megfelelően szinkr
 
 3. Ellenőrizze, hogy ha a Microsoft Azure PowerShell szolgáltatásnév már létrejött.
 
-   ```
-   $powershellSPN = Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
+   ```powershell
+   Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
    ```
 
-4. Ha még nem létezik (azaz ha `($powershellSPN -eq $null)`), majd hozza létre a szolgáltatásnevet.
+4. Ha még nem létezik, majd az egyszerű szolgáltatás létrehozása.
 
-   ```
+   ```powershell
    $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
    ```
 
 5. Hozzon létre, és csatolja a szabályzatot a szolgáltatásnévnek.
 
-   ```
-   $policy = New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuth -Type HomeRealmDiscoveryPolicy
+   ```powershell
+    # Determine whether policy exists
+    Get-AzureADPolicy | Where {$_.DisplayName -eq "EnableDirectAuth"}
 
-   Add-AzureADServicePrincipalPolicy -Id $powershellSPN.ObjectId -refObjectID $policy.ID
+    # Create if not exists
+    $policy = New-AzureADPolicy `
+        -Definition @('{"HomeRealmDiscoveryPolicy":{"AllowCloudPasswordValidation":true}}') `
+        -DisplayName "EnableDirectAuth" `
+        -Type "HomeRealmDiscoveryPolicy"
+
+    # Determine whether a policy for the service principal exist
+    Get-AzureADServicePrincipalPolicy `
+        -Id $powershellSPN.ObjectId
+    
+    # Add a service principal policy if not exist
+    Add-AzureADServicePrincipalPolicy `
+        -Id $powershellSPN.ObjectId `
+        -refObjectID $policy.ID
    ```
 
 ## <a name="next-steps"></a>További lépések
