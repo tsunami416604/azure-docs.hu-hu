@@ -16,10 +16,10 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 086161b73e2a3e07df835394dc26082e12fbd434
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963979"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Kiépítés és megszüntetés SaaS-alkalmazásokhoz az Azure Active Directory felhasználói automatizálása
@@ -91,7 +91,7 @@ Információk általános az SCIM megvalósító alkalmazások összekapcsolása
 
 Az Azure Active Directory portál segítségével konfigurálhatja az Azure AD létesítési szolgáltatás egy kijelölt alkalmazás.
 
-1. Nyissa meg a  **[Azure Active Directory portálon](https://aad.portal.azure.com)**.
+1. Nyissa meg a  **[Azure Active Directory portálon](https://aad.portal.azure.com)** .
 
 1. Válassza ki **vállalati alkalmazások** a bal oldali ablaktáblán. Az összes konfigurált alkalmazások listájának megjelenítése.
 
@@ -179,7 +179,7 @@ Ha egy adott felhasználó nem lehet hozzáadni, frissített vagy törölt a cé
 
 Ezek a hibák megoldható, hogy az érintett felhasználónak attribútumértékei módosítani a forrásrendszerben, vagy az attribútumleképezések nem az ütközéseket okozhat.   
 
-### <a name="quarantine"></a>Karantén
+### <a name="quarantine"></a>Karanténba helyezés
 
 Ha a legtöbb vagy az összes a egységesen a célrendszer ellen indított hívások (például meghajtóbetűjeleket érvénytelen rendszergazdai hitelesítő adatok) hiba miatt sikertelen, a létesítési feladat halad "karanténba helyezése" állapotba. Ebben az állapotban lévő jelzi a [összesítő jelentés kiépítés](check-status-user-account-provisioning.md) , és ha az Azure Portalon konfigurált értesítő e-mailen keresztül. 
 

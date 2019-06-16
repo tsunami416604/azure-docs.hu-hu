@@ -13,10 +13,10 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 51ad6ea2abcc18b985e9c45fbfb1ffba98fb2c1f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66113084"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Az Azure AD-alkalmazásproxy-összekötők ismertetése
@@ -34,7 +34,7 @@ Az alkalmazásproxy sikeres üzembe helyezéséhez legalább egy összekötő sz
 ### <a name="windows-server"></a>Windows server
 A Windows Server 2012 R2 rendszerű kiszolgáló van szüksége, vagy később is telepíthető, amely az Application Proxy connector. A kiszolgáló csatlakozni az Azure-ban az alkalmazásproxy-szolgáltatásokat, és a helyszíni alkalmazásokat, amelyek az Ön közzétételi kell.
 
-A windows server a TLS 1.2 engedélyezve van az alkalmazásproxy-összekötő telepítése előtt rendelkeznie kell. 1.5.612.0 régebbi verziót a meglévő összekötők továbbra is a korábbi verziói a TLS további értesítésig működni fog. A TLS 1.2 engedélyezése:
+A windows server a TLS 1.2 engedélyezve van az alkalmazásproxy-összekötő telepítése előtt rendelkeznie kell. 1\.5.612.0 régebbi verziót a meglévő összekötők továbbra is a korábbi verziói a TLS további értesítésig működni fog. A TLS 1.2 engedélyezése:
 
 1. Állítsa be a következő beállításkulcsokat:
     
@@ -91,7 +91,7 @@ Fontos, hogy elegendő a kapacitása kezelni a várt forgalom mennyisége össze
 
 Általános, annál több felhasználó rendelkezik, a nagyobb egy gépre lesz szüksége. Alább egy táblát, amely röviden ismerteti a mennyiségi és kezelhetik a különböző gépek várható késés. Vegye figyelembe az összes-alapú a várt tranzakció egy második (TPS) helyett felhasználó óta használati minták eltérőek lehetnek, és terhelés előrejelzése nem használható. Is lesz a válaszok és a háttérrendszer alkalmazás válaszideje alapján különbségeket – válasz nagyobb méretek és a lassabb válaszidőket egy alacsonyabb maximális TPS eredményez. Javasoljuk továbbá, további gépeket kellene, hogy a gépek között a elosztott terhelés mindig nyújt elegendő puffer. A további kapacitást biztosítja, hogy magas rendelkezésre állás és rugalmasság.
 
-|Magok|RAM|Várható késés (MS) – P99|Maximális TPS|
+|Processzormagok|RAM|Várható késés (MS) – P99|Maximális TPS|
 | ----- | ----- | ----- | ----- |
 |2|8|325|586|
 |4|16|320|1150|

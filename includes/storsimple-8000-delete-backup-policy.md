@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: b7a86963c657524fa91c4eb824ced1a495391f3f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66172176"
 ---
 #### <a name="to-delete-a-storsimple-backup-policy"></a>A StorSimple biztonsági mentési szabályzat törlése
@@ -21,7 +21,7 @@ ms.locfileid: "66172176"
 
 3. Meg kell adnia megerősítést. Ne feledje, hogy egy biztonsági mentési szabályzat törlése törli a társított biztonsági másolatok. Kattintson a **Igen** törlése.
 
-    ![Törlés jóváhagyása](./media/storsimple-8000-delete-backup-policy/deletebupol2.png)
+    ![Törlés megerősítése](./media/storsimple-8000-delete-backup-policy/deletebupol2.png)
 
 A biztonsági mentési szabályzatok listája frissülni fog a házirendek új listájának megjelenítéséhez.
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8eec05507cd66e2b856e3110bfb60f24c87dfdf7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bb088af37133269977c1f8ae9a5ad19a3b3e4513
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60283858"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106771"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>Oktatóanyag: Ív közzétételi – egyszeri bejelentkezés az Azure Active Directory-integráció
 
@@ -54,7 +54,7 @@ Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri b
 
 **Ív közzétételi - katalógusból, egyszeri bejelentkezés hozzáadása hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -129,8 +129,8 @@ Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Az
     | ---------------| --------------- |    
     | Keresztnév | user.givenname |
     | Vezetéknév | user.surname |
-    | e-mail | user.mail |
-    | csoportok | user.assignedroles |
+    | email | user.mail |
+    | groups | user.assignedroles |
 
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.

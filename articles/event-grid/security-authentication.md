@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
 ms.openlocfilehash: 87cfce6045ce84f83ca651472635227547c26ee9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66117019"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid biztonsági és hitelesítés 
@@ -37,7 +37,7 @@ Ha bármilyen más típusú végpont, például egy HTTP-eseményindító-alapú
 
 1. **(Programozott) ValidationCode kézfogás**: Ha a végpont szabályozhatja a forráskódot, ezt a módszert javasoljuk. Esemény-előfizetés létrehozása idején az Event Grid egy előfizetés érvényesítési esemény küld a végponthoz. Ez az esemény sémája hasonlít bármilyen más Event Grid-esemény. Ez az esemény adatok részének tartalmaz egy `validationCode` tulajdonság. Az alkalmazás ellenőrzi, hogy az érvényesítési kérelmet egy várt esemény-előfizetés, és az érvényesítési kódot az Event Gridbe ad. A kézfogás mechanizmus az összes Event Grid-verziót támogatja.
 
-2. **ValidationURL kézfogás (manuális)**: Bizonyos esetekben nem férhet hozzá a forráskódot a végpont a ValidationCode kézfogás megvalósításához. Például, ha egy külső szolgáltatást használ (például [Zapier](https://zapier.com) vagy [IFTTT](https://ifttt.com/)), hogy programozott módon nem tud reagálni az érvényesítési kóddal.
+2. **ValidationURL kézfogás (manuális)** : Bizonyos esetekben nem férhet hozzá a forráskódot a végpont a ValidationCode kézfogás megvalósításához. Például, ha egy külső szolgáltatást használ (például [Zapier](https://zapier.com) vagy [IFTTT](https://ifttt.com/)), hogy programozott módon nem tud reagálni az érvényesítési kóddal.
 
    Verzió 2018-05-01-preview verziótól kezdődően Event Grid egy manuális érvényesítésre kézfogás támogatja. Ha egy SDK-t, vagy az eszközt, amely API verzió 2018-05-01-preview egy esemény-előfizetést hoz létre, vagy később, az Event Grid küld egy `validationUrl` az előfizetés érvényesítése esemény részén található adatok a tulajdonság. A kézfogás elvégzéséhez, keresse meg az eseményadatokat, és manuálisan az URL egy GET kérelmet küldeni. Is használhatja, vagy a REST-ügyféllel, vagy a böngészőjében.
 
@@ -204,7 +204,7 @@ Event Grid két beépített szerepkörrel biztosít esemény-előfizetések keze
 
 Is [ezeket a szerepköröket hozzárendelni egy felhasználóhoz vagy csoporthoz](../role-based-access-control/quickstart-assign-role-user-portal.md).
 
-**EventGrid EventSubscription Közreműködője (minta)**: Event Grid-előfizetés műveletek kezelése
+**EventGrid EventSubscription Közreműködője (minta)** : Event Grid-előfizetés műveletek kezelése
 
 ```json
 [
@@ -240,7 +240,7 @@ Is [ezeket a szerepköröket hozzárendelni egy felhasználóhoz vagy csoporthoz
 ]
 ```
 
-**EventGrid EventSubscription olvasója (minta)**: olvassa el az Event Grid-előfizetések
+**EventGrid EventSubscription olvasója (minta)** : olvassa el az Event Grid-előfizetések
 
 ```json
 [

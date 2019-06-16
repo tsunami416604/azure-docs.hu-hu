@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: cenkd;juliako
 ms.openlocfilehash: 68eeb40e905d089601208d9fc181042c7b434843
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65956797"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Szűrők és dinamikus jegyzékek
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Media Services által használt verzióját:"]
 > * [2-es verzió](media-services-dynamic-manifest-overview.md)
 > * [3-as verzió](../latest/filters-dynamic-manifest-overview.md)
 
-2.17 kiadástól kezdve, a Media Services lehetővé teszi az eszközök szűrőket határozhat meg. Ezeket a szűrőket, amelyek lehetővé teszik az ügyfelek úgy dönteni, hogy többek között a kiszolgálóoldali szabályok: lejátszani egy videót (a teljes videó lejátszása) helyett csak egy részét, vagy adja meg, hogy az ügyfél eszköz képes-e kezelni (hang- és beállításkészletben csak egy részhalmazát összes verzió helyett, amelyek az eszköz társítva). Ez a szűrés az eszközök a gazdafájlon keresztül **dinamikus Manifest**, amelyek létrejönnek a videó továbbításához a felhasználói kérésre megadott szűrő(k) alapján.
+2\.17 kiadástól kezdve, a Media Services lehetővé teszi az eszközök szűrőket határozhat meg. Ezeket a szűrőket, amelyek lehetővé teszik az ügyfelek úgy dönteni, hogy többek között a kiszolgálóoldali szabályok: lejátszani egy videót (a teljes videó lejátszása) helyett csak egy részét, vagy adja meg, hogy az ügyfél eszköz képes-e kezelni (hang- és beállításkészletben csak egy részhalmazát összes verzió helyett, amelyek az eszköz társítva). Ez a szűrés az eszközök a gazdafájlon keresztül **dinamikus Manifest**, amelyek létrejönnek a videó továbbításához a felhasználói kérésre megadott szűrő(k) alapján.
 
 Ez a témakör ismerteti a gyakori forgatókönyvek, amelyben szűrők használatával lehet előnyös, ha az ügyfelek, mutató hivatkozásokat talál, amelyek bemutatják, hogyan hozhat létre programozott módon a szűrőket.
 

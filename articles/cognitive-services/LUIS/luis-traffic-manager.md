@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 02/08/2019
 ms.author: diberry
 ms.openlocfilehash: 31d8f54cb05bdbba7fe05249527db3dd50385087
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66123545"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>A Microsoft Azure Traffic Manager használatával kezelheti a végpont kvóta kulcsok
@@ -100,7 +100,7 @@ Az USA keleti Régiójában Traffic Manager-profil létrehozásához több lép�
     |Konfigurációs paraméter|Változó neve vagy értéke|Cél|
     |--|--|--|
     |-Végpontneve|a Luis-kelet-végpont|A profil alatt jelenik meg a végpont neve|
-    |-TrafficManagerProfile|$eastprofile|1. lépésben létrehozott profil objektummal|
+    |-TrafficManagerProfile|$eastprofile|1\. lépésben létrehozott profil objektummal|
     |-Type|ExternalEndpoints|További információkért lásd: [Traffic Manager-végpont][traffic-manager-endpoints] |
     |-Cél|eastus.API.cognitive.microsoft.com|Ez az a tartomány a LUIS-végpont.|
     |-EndpointLocation|"eastus"|A végpont régió|
@@ -169,7 +169,7 @@ Az USA nyugati RÉGIÓJA Traffic Manager-profil létrehozásához kövesse az al
     |Konfigurációs paraméter|Változó neve vagy értéke|Cél|
     |--|--|--|
     |-Végpontneve|a Luis-Nyugat-végpont|A profil alatt jelenik meg a végpont neve|
-    |-TrafficManagerProfile|$westprofile|1. lépésben létrehozott profil objektummal|
+    |-TrafficManagerProfile|$westprofile|1\. lépésben létrehozott profil objektummal|
     |-Type|ExternalEndpoints|További információkért lásd: [Traffic Manager-végpont][traffic-manager-endpoints] |
     |-Cél|westus.API.cognitive.microsoft.com|Ez az a tartomány a LUIS-végpont.|
     |-EndpointLocation|"westus"|A végpont régió|
@@ -308,7 +308,7 @@ A szülő Traffic Manager-profil létrehozása, és két gyermek Traffic Manager
     A sikeres válasz a rendszer ugyanazt a választ, mint 3. lépés.
 
 ### <a name="powershell-variables"></a>PowerShell változók
-A korábbi szakaszokban létrehozott három PowerShell változók: `$eastprofile`, `$westprofile`, `$parentprofile`. Ezeket a változókat használják a Traffic Manager konfigurációja a vége felé. Ha úgy döntött, nem hozza létre a változókat, vagy elfelejtette, vagy a PowerShell-ablakhoz túllépi az időkorlátot, a PowerShell-parancsmagot használhatja  **[Get-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile)**, hogy a profil beolvasása újra, és rendelje hozzá egy a változó. 
+A korábbi szakaszokban létrehozott három PowerShell változók: `$eastprofile`, `$westprofile`, `$parentprofile`. Ezeket a változókat használják a Traffic Manager konfigurációja a vége felé. Ha úgy döntött, nem hozza létre a változókat, vagy elfelejtette, vagy a PowerShell-ablakhoz túllépi az időkorlátot, a PowerShell-parancsmagot használhatja  **[Get-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile)** , hogy a profil beolvasása újra, és rendelje hozzá egy a változó. 
 
 Cserélje le a csúcsos zárójelpárban van, a cikkek `<>`, a három profil van szüksége a megfelelő értékekkel. 
 

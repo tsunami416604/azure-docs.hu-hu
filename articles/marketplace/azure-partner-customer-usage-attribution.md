@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: 09ce4cdc6ab4556f0ba68507bb23d09e02ae0357
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 45d575488db8d740069fba961203842899024747
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66296812"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66807193"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Az Azure-partnererőforrások ügyfelek általi használatának nyomon követése
 
@@ -267,11 +267,13 @@ Ez a sablon telepítésekor lehet azonosítani a telepítés,-e a Microsoft \<PA
 
 ## <a name="get-support"></a>Támogatás kérése
 
-Ha a jelentés vagy jelentkezzen be a Partnerközpontba problémát tapasztal, hozzon létre egy támogatási kérést Itt a Partnerközpont támogatási csapatával: [https://partner.microsoft.com/en-US/support](https://partner.microsoft.com/support)
+Nincsenek a fennálló problémák függően két támogatási csatornákat.
+
+Ha problémába ütközik a Partner Center, például az ügyfél használati tesznek elérhetővé; ilyenek a jelentés jelenjenek meg, vagy szolgáltatásba, hozzon létre egy támogatási kérést Itt a Partnerközpont támogatási csapatával: [https://partner.microsoft.com/en-US/support](https://partner.microsoft.com/support)
 
 ![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 
-Ha segítségre van szüksége a Marketplace-en bevezetési és/vagy az ügyfél használati tesznek elérhetővé; ilyenek, kövesse az alábbi lépéseket.
+Ha segítségre van szüksége a Marketplace-en bevezetési és/vagy az ügyfél használati attribution általában például hogyan állítható be az ügyfél használati tesznek elérhetővé; ilyenek, kövesse az alábbi lépéseket:
 
 1. Nyissa meg a [támogatási oldal](https://go.microsoft.com/fwlink/?linkid=844975).
 

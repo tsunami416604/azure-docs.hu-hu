@@ -12,15 +12,15 @@ ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
 ms.openlocfilehash: 5762e934d7735dd9617cefc1f56105823d74312f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61342982"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64511834"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Az Azure Functions az Azure Cosmos DB-kötéseket 2.x
 
-> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> [!div class="op_single_selector" title1="Válassza ki az Azure Functions futtatókörnyezettel, használja a verzióját: "]
 > * [1-es verzió](functions-bindings-cosmosdb.md)
 > * [2-es verzió](functions-bindings-cosmosdb-v2.md)
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69dac57118d7876ba08a562f5478b19465b37e07
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: 670319eb3fb79742d2946f5fc45ca8904e8c1dd9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65441471"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105960"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-braze"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Braze
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása a Braze konfigurálásához hozzá kell Braze a katal�
 
 **Braze hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -125,7 +125,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Braze, hajtsa végre
 
     | Name (Név) | Adatforrás-attribútum|
     | -----| --------------- |
-    | e-mailben | user.userprincipalname |
+    | email | user.userprincipalname |
     | first_name| user.givenname|
     | last_name| user.surname|
     | bejelentkezés| user.mail|
@@ -220,7 +220,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű Braze hoz létre. Együttműködve [Braze támogatási csapatának](mailto:support@braze.com) a felhasználók hozzáadása az Braze platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

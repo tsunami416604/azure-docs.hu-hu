@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
 ms.openlocfilehash: c98e59cd0e547381d6b173b3a4b91c3a3e27b3a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60771719"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Oracle Data Guard megvalósítása az Azure-beli Linuxos virtuális gépen 
@@ -678,7 +678,7 @@ SQL>
 A telepítés és konfigurálás a Data Guard Oracle Linux rendszeren végzett.
 
 
-## <a name="delete-the-virtual-machine"></a>A virtuális gép törlése
+## <a name="delete-the-virtual-machine"></a>Törölje a következő virtuális gépet:
 
 Ha már nincs szüksége a virtuális Gépet, a következő paranccsal eltávolítható az erőforráscsoport, a virtuális gép és minden kapcsolódó erőforrás:
 

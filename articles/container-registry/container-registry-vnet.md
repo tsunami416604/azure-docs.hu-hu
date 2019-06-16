@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: danlep
-ms.openlocfilehash: 15b67218b129b5e017e67651587c389af412d7a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dc08fd5cc4abbf5d16f9d49874ec2c70cace165b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60867418"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067969"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Azure-beli virtuális hálózathoz vagy a tűzfal-szabályok használata Azure container registry való hozzáférés korlátozása
 
@@ -216,7 +216,7 @@ Továbbra is [ellenőrizze a beállításjegyzék elérését](#verify-access-to
 
 ## <a name="allow-access-from-an-ip-address"></a>Engedélyezze a hozzáférést egy IP-cím
 
-Ebben a szakaszban konfigurálhatja a tárolóregisztrációs adatbázisba, engedélyezze a hozzáférést egy alhálózatot az Azure-beli virtuális hálózathoz. Az Azure CLI-vel és az Azure portal használatával ugyanazokból a lépésekből állnak rendelkezésre.
+Ebben a szakaszban a tárolóregisztrációs adatbázisba, hogy engedélyezze a hozzáférést egy adott IP-cím vagy tartomány konfigurálása. Az Azure CLI-vel és az Azure portal használatával ugyanazokból a lépésekből állnak rendelkezésre.
 
 ### <a name="allow-access-from-an-ip-address---cli"></a>Engedélyezze a hozzáférést egy IP-cím – CLI
 

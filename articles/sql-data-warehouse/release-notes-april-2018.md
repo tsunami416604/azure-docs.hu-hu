@@ -11,13 +11,13 @@ ms.date: 07/23/2018
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.openlocfilehash: 5fd2d5e2022cc1cf552ee7b525dcc484cc718f1f
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65912240"
 ---
-# <a name="whats-new-in-azure-sql-data-warehouse-april-2018"></a>Mi az új Azure SQL Data warehouse? 2018. április
+# <a name="whats-new-in-azure-sql-data-warehouse-april-2018"></a>Mi az új Azure SQL Data warehouse? 2018\. április
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek a 2018 április.
 
 ## <a name="ability-to-truncate-a-partition-before-a-switch"></a>Lehetővé teszi, hogy csonkolja a partíció egy kapcsoló előtt

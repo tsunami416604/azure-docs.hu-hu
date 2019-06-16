@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 05/07/2019
 ms.author: banders
 ms.openlocfilehash: b2452580eaecc0ab922f8e7db48676f70831a8ca
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66126843"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Nagyvállalati Szerződés fenntartási költségeket és használat beszerzése
@@ -45,7 +45,7 @@ Két adatkészletet összehasonlítása:
 | Foglalás beszerzések | Ebben a nézetben érhető el.<br><br>  Úgy szerezheti be az adatok szűrése ChargeType = &quot;beszerzési&quot;. <br><br> Tekintse meg reservationid értékhez vagy ReservationName tudni, hogy melyik foglalás a díjat.  | Ez a nézet nem alkalmazható. <br><br> Beszerzési költségek amortizált adatok nincsenek megadva. |
 | effectivePrice | A tulajdonság értéke nulla, amely lekérdezi a foglalási kedvezményt használatra. | Óraalapú elszámolással költsége a foglalást, amely rendelkezik a foglalási kedvezményt használat értéke. |
 | A fel nem használt foglalás (biztosít a foglalás nem használható egy nap alatt órák számát és a veszteség részének pénzügyi értékét) | Ebben a nézetben nem alkalmazható. | Ebben a nézetben érhető el.<br><br> Ezen adatok beolvasásához, szűrjön az ChargeType = &quot;UnusedReservation&quot;.<br><br>  Tekintse meg reservationid értékhez vagy ReservationName tudni, hogy melyik foglalás volt eredményeztek. Ez az, hogy mekkora a Foglalás volt adattisztítást a napon.  |
-| Egységár (az árlista erőforrás díj) | Szabad | Szabad |
+| Egységár (az árlista erőforrás díj) | Elérhető | Elérhető |
 
 Más Azure-használati adatok elérhető információk megváltozott:
 
@@ -94,7 +94,7 @@ Az Azure Portalon lépjen [Költségkezelés + számlázás](https://portal.azur
 2. Kattintson a **használat és költségek**.
 3. Kattintson a **Letöltés** gombra.  
 ![Példa: hol kell töltse le a fürt megosztott kötetei szolgáltatás használati adatokat az Azure Portalon](./media/billing-understand-reserved-instance-usage-ea/portal-download-csv.png)
-4. A **használati adatok letöltése + költségek** alatt **használati részletek 2-es verzió** , jelölje be **minden költséget (használati és vásárlások)** és majd kattintson a Letöltés gombra. Ismételje meg a műveletet **amortizált költségek (használati és vásárlások)**.
+4. A **használati adatok letöltése + költségek** alatt **használati részletek 2-es verzió** , jelölje be **minden költséget (használati és vásárlások)** és majd kattintson a Letöltés gombra. Ismételje meg a műveletet **amortizált költségek (használati és vásárlások)** .
 
 A CSV-fájlok letöltésével beszerzett tartalmaznak tényleges költségek és az amortizált költségek.
 
@@ -104,7 +104,7 @@ Az alábbi szakaszok olyan gyakori feladatokat, amelyek a legtöbb ember foglal�
 
 ### <a name="get-reservation-purchase-costs"></a>Első foglalás beszerzési költségek
 
-Foglalás beszerzési költségek tényleges költségek adatok érhetők el. Állítson be szűrőt _ChargeType beszerzési =_. Tekintse meg ProductOrderID meghatározni, melyik foglalásrendelés, a vásárlás szól.
+Foglalás beszerzési költségek tényleges költségek adatok érhetők el. Állítson be szűrőt _ChargeType beszerzési =_ . Tekintse meg ProductOrderID meghatározni, melyik foglalásrendelés, a vásárlás szól.
 
 ### <a name="get-underutilized-reservation-quantity-and-costs"></a>Gyenge kihasználtságú foglalási mennyiség és költségek
 
@@ -147,7 +147,7 @@ A fenntartott példányok költségei érhető [előnézeti módot az Azure cost
 
 A alkalmazni annak érdekében, hogy a díjakkal egy foglalás vagy költséghelyi típus szerint. Csoportosítás foglalás nevére kattintva megtekintheti a foglalások bontásban költségeket.
 
-## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 

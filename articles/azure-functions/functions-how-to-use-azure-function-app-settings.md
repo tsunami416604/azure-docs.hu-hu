@@ -12,10 +12,10 @@ ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 92ca09040836dfc55a9d709b12a0ee01192d6bac
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65957390"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Az Azure Portalon a függvényalkalmazás kezelése 
@@ -26,7 +26,7 @@ A kezdéshez nyissa meg a [az Azure portal](https://portal.azure.com) , és jele
 
 ![A funkció áttekintése az Azure Portalon](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 
-Minden, amit a függvényalkalmazás kezelése – áttekintés lapon, különösen is lépjen a **[Alkalmazásbeállítások](#settings)** és **[platformfunkciók](#platform-features)**.
+Minden, amit a függvényalkalmazás kezelése – áttekintés lapon, különösen is lépjen a **[Alkalmazásbeállítások](#settings)** és **[platformfunkciók](#platform-features)** .
 
 ## <a name="settings"></a>nastavení aplikace
 
@@ -42,7 +42,7 @@ Egy beállítás hozzáadásához válassza **új Alkalmazásbeállítás** , é
 
 Egy függvényalkalmazás helyileg fejlesztésekor ezeket az értékeket a local.settings.json soubor projektu karbantartása.
 
-## <a name="platform-features"></a>A platform szolgáltatásai
+## <a name="platform-features"></a>Platformfunkciók
 
 ![Függvény app platform szolgáltatásai lapon.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
 

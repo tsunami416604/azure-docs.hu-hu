@@ -9,10 +9,10 @@ ms.date: 02/24/2019
 ms.topic: troubleshooting
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 1930d5fc9dafe7d480302ded9b4e5a86f55a7669
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65964533"
 ---
 # <a name="azure-spatial-anchors-support-options"></a>Térbeli horgonyok az Azure-támogatással kapcsolatos lehetőségekről
@@ -31,8 +31,8 @@ Az Azure térbeli horgonyok nyissa meg a technikai támogatási jegyet az Azure 
 
 1. Ha a támogatási jegy mezők befejezése: 
 
-- Probléma típusa: Műszaki
-- Szolgáltatás: Térbeli fixpontok
+- Probléma típusa: Technikai
+- Szolgáltatás: Spatial Anchors
 
 ![Az Azure portal támogatási jegy mezők](./media/spatial-anchor-support3.png)
 

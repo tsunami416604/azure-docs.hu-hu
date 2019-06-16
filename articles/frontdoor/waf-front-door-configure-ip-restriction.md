@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 88c5c284f26203ff3d6c39810a7b2810c1ebbc5a
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: 73ef16aeb9a6014e98c0d40314bc174c6b5bf307
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66743164"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808350"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door-service"></a>Az IP-korlátozási szabály egy webalkalmazási tűzfallal rendelkező Azure bejárati ajtajának szolgáltatás konfigurálása
 Ez a cikk bemutatja, hogyan konfigurálása IP-korlátozási szabályok a webalkalmazási tűzfal (WAF) Azure bejárati ajtajának szolgáltatás az Azure CLI, Azure PowerShell vagy az Azure Resource Manager-sablon használatával.
@@ -62,7 +62,7 @@ az network waf-policy custom-rule create \
   --name IPAllowListRule \
   --priority 1 \
   --rule-type MatchRule \
-  --match-condition RemoteAddr IPMatch "<ip-address-range-1>","<ip-address-range-2>" \
+  --match-condition RemoteAddr IPMatch ("<ip-address-range-1>","<ip-address-range-2>") \
   --action Allow \
   --resource-group <resource-group-name> \
   --policy-name IPAllowPolicyExampleCLI
@@ -138,7 +138,7 @@ A következő példában cserélje le a *ip-cím-tartomány-1*, *ip-cím-tartom�
 $IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
 -MatchVariable  RemoteAddr `
 -OperatorProperty IPMatch `
--MatchValue ["ip-address-range-1", "ip-address-range-2"]
+-MatchValue "ip-address-range-1", "ip-address-range-2"
 ```
 Hozzon létre egy IP-cím *összes feltételnek megfelelő* szabály a következő paranccsal:
 ```powershell

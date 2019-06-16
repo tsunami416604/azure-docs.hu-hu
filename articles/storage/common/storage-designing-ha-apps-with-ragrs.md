@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: 5f8d8d96e15fe3b59cb288a9a1cf6c547312fe67
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65951315"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>RA-GRS használatával magas rendelkezésre állású alkalmazások tervezése
@@ -202,12 +202,12 @@ Az alábbi táblázat egy példát, hogy mi történne, ha egy alkalmazott tagja
 | **idő** | **Tranzakció**                                            | **Replikáció**                       | **Utolsó szinkronizálás időpontja** | **Eredmény** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | Tranzakció válasz: <br> Alkalmazott beszúrása <br> az elsődleges entitás |                                   |                    | Elsődleges – beszúrni egy tranzakció<br> még nem replikált. |
-| T1       |                                                            | A tranzakció <br> replikálja a<br> másodlagos | T1 | Tranzakciós A másodlagos replikálja. <br>Utolsó szinkronizálás időpontja frissítve.    |
-| T2       | "B" tranzakció<br>Frissítés<br> Alkalmazott entitás<br> az elsődleges  |                                | T1                 | Tranzakció írt elsődleges, a B<br> még nem replikált.  |
-| T3       | Transaction C:<br> Frissítés <br>rendszergazda<br>a szerepkör-entitás<br>elsődleges |                    | T1                 | Tranzakció írt elsődleges, C<br> még nem replikált.  |
-| *T4*     |                                                       | Tranzakció C <br>replikálja a<br> másodlagos | T1         | Tranzakció replikálja a másodlagos C.<br>Nincs frissítve, mert LastSyncTime <br>tranzakció B még nem replikálódott.|
+| T1       |                                                            | A tranzakció <br> replikálja a<br> Másodlagos | T1 | Tranzakciós A másodlagos replikálja. <br>Utolsó szinkronizálás időpontja frissítve.    |
+| T2       | "B" tranzakció<br>frissítés<br> Alkalmazott entitás<br> az elsődleges  |                                | T1                 | Tranzakció írt elsődleges, a B<br> még nem replikált.  |
+| T3       | Transaction C:<br> frissítés <br>Rendszergazda<br>a szerepkör-entitás<br>Elsődleges |                    | T1                 | Tranzakció írt elsődleges, C<br> még nem replikált.  |
+| *T4*     |                                                       | Tranzakció C <br>replikálja a<br> Másodlagos | T1         | Tranzakció replikálja a másodlagos C.<br>Nincs frissítve, mert LastSyncTime <br>tranzakció B még nem replikálódott.|
 | *T5*     | Entitások olvasása <br>a másodlagos                           |                                  | T1                 | A régi értéket alkalmazott <br> entitás, mert a tranzakció B nem <br> még replikált. Az új értéket kap<br> rendszergazdai szerepkör entitás mert C<br> replikálja. Utolsó szinkronizálás időpontja még nem.<br> lett frissítve, mert a tranzakció B<br> még nem replikálódnak. Azt is megadhatja, hogy a<br>rendszergazdai szerepkör entitás nem konzisztens <br>mivel az entitás dátum/idő után <br>a legutóbbi szinkronizálás időpontja. |
-| *T6*     |                                                      | B tranzakció<br> replikálja a<br> másodlagos | T6                 | *T6* – C keresztül minden tranzakciónak kell <br>lettek replikálva, a legutóbbi szinkronizálás időpontja<br> frissül. |
+| *T6*     |                                                      | B tranzakció<br> replikálja a<br> Másodlagos | T6                 | *T6* – C keresztül minden tranzakciónak kell <br>lettek replikálva, a legutóbbi szinkronizálás időpontja<br> frissül. |
 
 Ebben a példában feltételeztük az ügyfél vált, amennyiben az olvasó T5, a másodlagos régióból. Sikeresen tudja olvasni a **rendszergazdai szerepkör** entitás jelenleg, de az entitás tartalmazza a replikája nem konzisztens a száma a rendszergazdák számának értékét **alkalmazott** entitások számára jelenleg megjelölve a rendszergazdák a másodlagos régióban. Az ügyfél egyszerűen jelenjenek meg ezt az értéket, és annak a kockázata, hogy-e nem biztosítottak elegendő információt. Másik megoldásként az ügyfél kísérletet határozza meg, amely a **rendszergazdai szerepkör** egy potenciálisan inkonzisztens állapotban van, mert a frissítések sorrendje nem azért történt, és majd tájékoztatja a felhasználót az a tény.
 

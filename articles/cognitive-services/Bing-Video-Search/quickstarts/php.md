@@ -10,19 +10,19 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: 50c39594aeb014860d25b2f2cc791ebfec14b572
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fb02e569cb764405abc1e69f3ca0c8c3710860ed
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61473331"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "67134936"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Gyors útmutató: Keressen videókat a Bing Video Search REST API és a PHP használatával
 
 Ez a rövid útmutató segítségével első hívását, a Bing Videókeresési API és a keresési eredményeket a JSON-válasz megtekintéséhez. Az egyszerű JavaScript-alkalmazás egy HTTP-videókeresési lekérdezést küld az API-t, és a válasz megjeleníti. Bár ez az alkalmazás JavaScript nyelven van megírva, és használja a Node.js, az API-ját egy REST-alapú webszolgáltatás szinte bármelyik programozási nyelvével kompatibilis.
 A mintakód úgy lett megírva, hogy PHP 5.6 alatt működjön.
 
-Az API-k technikai részleteit az [API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) című részben tekintheti meg.
+Az API-k technikai részleteit az [API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference) című részben tekintheti meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,7 +32,7 @@ Az API-k technikai részleteit az [API-referencia](https://docs.microsoft.com/re
 
 ## <a name="running-the-application"></a>Az alkalmazás futtatása
 
-A [Bing Video Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) a Bing keresőmotor videótalálatait adja vissza.
+A [Bing Video Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) a Bing keresőmotor videótalálatait adja vissza.
 
 1. Gondoskodjon róla, hogy a biztonságos HTTP támogatása a kódhoz tartozó megjegyzésben megadottak szerint engedélyezve legyen a `php.ini` fájlban.
 2. Hozzon létre egy új PHP-projektet a kedvenc IDE-környezetében vagy szerkesztőjében.

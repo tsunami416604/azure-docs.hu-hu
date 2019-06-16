@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: absha
 ms.openlocfilehash: 47fe6a5247622e3ad3b3720955068580e0329913
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64947191"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-powershell"></a>Újraírási HTTP-kérelmek és válaszfejlécek Azure Application gatewayjel – Azure PowerShell-lel
@@ -20,7 +20,7 @@ Ez a cikk bemutatja, hogyan konfigurálhatja az Azure PowerShell használatával
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 - Azure PowerShell, a jelen cikkben ismertetett lépések végrehajtásához helyileg futtatni szeretné. Emellett Az 1.0.0-s verziójának modul rendelkeznie kell, vagy újabb verziója szükséges. Futtatás `Import-Module Az` , majd `Get-Module Az` , amelyen telepítve van a verzió meghatározásához. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-az-ps) ismertető cikket. A PowerShell-verzió ellenőrzése után futtassa az `Login-AzAccount` parancsot az Azure-hoz való kapcsolódáshoz.
 - Szüksége lesz egy Application Gateway v2 SKU példány. A fejlécek újraírását a v1-termékváltozat nem támogatott. Ha nem rendelkezik a v2 szintű Termékváltozatot, hozzon létre egy [Application Gateway v2 szintű Termékváltozatot](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps) példány megkezdése előtt.

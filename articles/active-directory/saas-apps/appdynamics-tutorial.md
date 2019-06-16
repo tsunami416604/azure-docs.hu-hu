@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6b8edf2627ade23fc6d1125afbabc34a1d9d21b
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: a3d0a8151610658d8302d90f9a3cb3159a877925
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65900238"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106865"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>Oktatóanyag: Az appdynamics segítségével az Azure Active Directory-integráció
 
@@ -55,7 +55,7 @@ Az AppDynamics integrálása az Azure AD beállítása, hozzá kell AppDynamics 
 
 **AppDynamics hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -212,7 +212,7 @@ Ez a szakasz célja az AppDynamics Britta Simon nevű felhasználó létrehozás
 >[!Note]
 >Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [AppDynamics ügyfél-támogatási csapatának](https://www.appdynamics.com/support/).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

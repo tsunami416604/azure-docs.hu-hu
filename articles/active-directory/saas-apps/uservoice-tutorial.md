@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: dbd7189b1761a9ea88ce32dae3d7b45a88301ff6
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: c0c259d3d05232aa70016771e2a2bce7622730a0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65905633"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67087638"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>Oktatóanyag: Az Azure Active Directory-integráció a uservoice-on
 
@@ -53,7 +53,7 @@ Konfigurálhatja az Azure AD integrálása a uservoice-on, hozzá kell uservoice
 
 **UserVoice hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -146,7 +146,7 @@ Konfigurálja az Azure AD egyszeri bejelentkezés a uservoice-on, hajtsa végre 
    
     ![Felhasználói hitelesítés szerkesztése](./media/uservoice-tutorial/ic777521.png "felhasználói hitelesítés szerkesztése")
    
-    a. Kattintson a **egyszeri bejelentkezés (SSO)**.
+    a. Kattintson a **egyszeri bejelentkezés (SSO)** .
  
     b. Illessze be a **bejelentkezési URL-cím** érték, amely az Azure Portalról történő másolta a **SSO távoli bejelentkezési** szövegmezőbe.
 
@@ -239,7 +239,7 @@ Ahhoz, hogy jelentkezzen be a uservoice-hoz az Azure AD-felhasználók, akkor ki
 > [!NOTE]
 > Bármely más UserVoice felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését UserVoice által biztosított API-k.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

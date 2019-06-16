@@ -19,10 +19,10 @@ ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ed4e7559ff6c3b76bbdf49b538ffebf3ad09cc58
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66001217"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Alkalmazás-hitelesítési tanúsítvány hitelesítő adatai
@@ -51,9 +51,9 @@ A helyességi feltétel számítási, használhatja egy a többhöz [JSON Web To
 | `iss` | Kiállító: a client_id (az ügyfél szolgáltatás alkalmazás azonosítója) kell lennie. |
 | `jti` | GUID-ja: a JWT azonosító |
 | `nbf` | Nem előtt: az a dátum előtt, amely a token nem használható. Az idő 1970. január 1. a jelenik meg a másodpercek számát (1970-01-01T0:0:0Z) (UTC), amíg a token lett kiállítva. |
-| `sub` | Tárgy: Megegyezik a `iss`, kell lennie a client_id (az ügyfél szolgáltatás alkalmazás azonosítója) |
+| `sub` | Tulajdonos: Megegyezik a `iss`, kell lennie a client_id (az ügyfél szolgáltatás alkalmazás azonosítója) |
 
-### <a name="signature"></a>Aláírás
+### <a name="signature"></a>aláírás
 
 Az aláírás számított a tanúsítvány alkalmazása leírtak szerint a [JSON Web Token RFC7519 specifikáció](https://tools.ietf.org/html/rfc7519)
 

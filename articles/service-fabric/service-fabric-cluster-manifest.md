@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 11/12/2018
 ms.author: dekapur
 ms.openlocfilehash: ae7fbef864634e47866de13384871a98b8ce4675
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65209705"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Egy különálló Windows-fürt konfigurációs beállításai
 Ez a cikk ismerteti, amely megadható önálló Azure Service Fabric-fürt konfigurációs beállításainak a *ClusterConfig.json* fájlt. Ez a fájl lesz használatával adhatja meg a fürt csomópontjai, biztonsági konfigurációkat, valamint a hálózati topológia hibatűrési és frissítési tartományokba tekintetében.  Miután módosítása, vagy a konfigurációs beállítások hozzáadása, választhatja [önálló fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md) vagy [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
 
-Ha Ön [a különálló Service Fabric-csomag letöltése](service-fabric-cluster-creation-for-windows-server.md#downloadpackage), ClusterConfig.json mintákat is szerepelnek. A mintákat, amelyek a nevük "DevCluster" ugyanarra a gépre, logikai csomópontok használatával minden három csomóponttal rendelkező fürt létrehozása. Ezek a csomópontok ki legalább egy kell megjelölni egy elsődleges csomóponthoz. Az ilyen típusú fürt hasznos fejlesztési-tesztelési környezetre. Nem támogatott éles fürtként. A mintákat, amelyek a nevük "MultiMachine" Súgó, termelési szintű fürtök létrehozását, az egyes csomópontok egy külön számítógépen. Az ilyen fürtök elsődleges csomópontok száma alapján a fürt [megbízhatósági szint](#reliability). 5.7, API-verzió 05 – 2017, a kiadásban eltávolítottuk a megbízhatósági szintű tulajdonság. Ehelyett a kód a legtöbb optimalizált megbízhatósági szint a fürthöz tartozó számítja ki. Ne próbálja meg egy értéket ehhez a tulajdonsághoz 5.7-es verzió frissítésétől kezdve.
+Ha Ön [a különálló Service Fabric-csomag letöltése](service-fabric-cluster-creation-for-windows-server.md#downloadpackage), ClusterConfig.json mintákat is szerepelnek. A mintákat, amelyek a nevük "DevCluster" ugyanarra a gépre, logikai csomópontok használatával minden három csomóponttal rendelkező fürt létrehozása. Ezek a csomópontok ki legalább egy kell megjelölni egy elsődleges csomóponthoz. Az ilyen típusú fürt hasznos fejlesztési-tesztelési környezetre. Nem támogatott éles fürtként. A mintákat, amelyek a nevük "MultiMachine" Súgó, termelési szintű fürtök létrehozását, az egyes csomópontok egy külön számítógépen. Az ilyen fürtök elsődleges csomópontok száma alapján a fürt [megbízhatósági szint](#reliability). 5\.7, API-verzió 05 – 2017, a kiadásban eltávolítottuk a megbízhatósági szintű tulajdonság. Ehelyett a kód a legtöbb optimalizált megbízhatósági szint a fürthöz tartozó számítja ki. Ne próbálja meg egy értéket ehhez a tulajdonsághoz 5.7-es verzió frissítésétől kezdve.
 
 * ClusterConfig.Unsecure.DevCluster.json és ClusterConfig.Unsecure.MultiMachine.json bemutatják, hogyan hozhat létre egy nem biztonságos, tesztelési vagy éles fürtöt jelölik.
 
@@ -110,7 +110,7 @@ A metaadatok leírását, a fürt diagnosztikai és a telepítés megfelelően �
 }
 ```
 
-### <a name="security"></a>Biztonsági
+### <a name="security"></a>Biztonság
 A biztonsági szakaszban szükség egy biztonságos önálló Service Fabric-fürtön. Az alábbi kódrészlet egy részét ez a szakasz bemutatja:
 
 ```json

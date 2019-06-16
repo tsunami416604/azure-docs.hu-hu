@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 8cd89b21e80662ec50746e0c7721a5544cfbce30
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64717503"
 ---
 # <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Windows Powershellen keresztül az Azure Data Box peremhálózati eszköz kezelése
@@ -43,7 +43,7 @@ Ez a cikk a következő eljárásokat tartalmazza:
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
-IoT Edge-tanúsítványokat az IoT Edge-eszköz és előfordulhat, hogy csatlakozzon hozzá az alsóbb rétegbeli eszközök közötti biztonságos kapcsolatot is feltölthet. Három IoT Edge-tanúsítvány (*.pem* formátumban), telepítenie kell:
+IoT Edge-tanúsítványokat az IoT Edge-eszköz és előfordulhat, hogy csatlakozzon hozzá az alsóbb rétegbeli eszközök közötti biztonságos kapcsolatot is feltölthet. Három IoT Edge-tanúsítvány ( *.pem* formátumban), telepítenie kell:
 
 - Legfelső szintű Hitelesítésszolgáltatói tanúsítványt vagy a tulajdonos, CA
 - Eszköz Hitelesítésszolgáltatói tanúsítvány

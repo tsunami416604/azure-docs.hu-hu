@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 86354caced6ab46a1847bca994f4dd3eb7f279cc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8f52b0c8de3bcc89bd7051a896d3ed15e856e7e5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813350"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67090057"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartvidio"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező smartvid.io
 
@@ -52,7 +52,7 @@ Az Azure AD integrálása a smartvid.io konfigurálásához hozzá kell smartvid
 
 **Smartvid.io hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -177,7 +177,7 @@ Ebben a szakaszban engedélyezze Britta Simon használja az Azure egyszeri bejel
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű smartvid.io hoz létre. Együttműködve [smartvid.io támogatási csapatának](mailto:vgorsky@smartvid.io) a felhasználók hozzáadása az smartvid.io platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

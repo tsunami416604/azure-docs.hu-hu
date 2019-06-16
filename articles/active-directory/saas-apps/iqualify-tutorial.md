@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 95c24f74e9af4443db994a6655a82108de18efdd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f7ca163b93a68525e80018051baa626bc378c200
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60270742"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099774"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>Oktatóanyag: Az Azure Active Directory integrációja az LMS iQualify
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása iQualify segítségével a konfigurálása, hozzá kel
 
 **IQualify LMS hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -139,7 +139,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés iQualify LMS, hajtsa
 
     | Name (Név) | Adatforrás-attribútum|
     | --- | --- |
-    | e-mail | user.userprincipalname |
+    | email | user.userprincipalname |
     | first_name | user.givenname |
     | last_name | user.surname |
     | person_id | "attribútum" |

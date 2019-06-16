@@ -11,10 +11,10 @@ author: MayMSFT
 ms.reviewer: larryfr
 ms.date: 05/02/2019
 ms.openlocfilehash: 4476bdd902f054683fa544dc44b548689f3a1881
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66241884"
 ---
 # <a name="version-and-manage-your-dataset-definitions"></a>Verzió és az adatkészlet-definíciókban kezelése
@@ -102,7 +102,7 @@ dataset.head(5)
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>ID</th>
+      <th>azonosító</th>
       <th>Letartóztatás</th>
       <th>Szélesség</th>
       <th>Hosszúság</th>
@@ -170,7 +170,7 @@ ds_def_old.head(5)
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>ID</th>
+      <th>azonosító</th>
       <th>Eset száma</th>
       <th>Dátum</th>
       <th>Letiltás</th>

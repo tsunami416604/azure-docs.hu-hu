@@ -14,16 +14,16 @@ ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fc6e31afbb7ced4699afef38b67b637914198e4
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f95c0596d7a2b55867cdb7ed9355006500e89242
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192416"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065496"
 ---
-# <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>PowerShell forgatókönyvek Csoportalapú licenceléshez az Azure ad-ben
+# <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Az Azure AD-ben Csoportalapú licencelés PowerShell és a Graph példák
 
-A Csoportalapú licencelés összes funkciójának keresztül érhető el a [az Azure portal](https://portal.azure.com), és a PowerShell és a Microsoft Graph-támogatása jelenleg korlátozott. Vannak azonban néhány hasznos feladatot, használja a meglévő végrehajtható [MSOnline PowerShell-parancsmagok](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) és a Microsoft Graph. Ez a dokumentum mi minden lehetséges példákat.
+A Csoportalapú licencelés összes funkciójának keresztül érhető el a [az Azure portal](https://portal.azure.com), és jelenleg a PowerShell és a Microsoft Graph támogatási korlátozva csak olvasható műveletekhez. Vannak azonban néhány hasznos feladatot, használja a meglévő végrehajtható [MSOnline PowerShell-parancsmagok](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) és a Microsoft Graph. Ez a dokumentum mi minden lehetséges példákat.
 
 > [!NOTE]
 > Parancsmagok futtatása előtt győződjön meg arról, hogy kapcsolódni a szervezet először futtassa a `Connect-MsolService`  parancsmagot.

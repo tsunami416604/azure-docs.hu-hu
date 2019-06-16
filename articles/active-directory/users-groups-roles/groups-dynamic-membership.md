@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5a0e0508babdd9ae703e38d58b079ab5fa16f68c
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66397876"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Az Azure Active Directory a dinamikus tagsági szabályok
@@ -243,7 +243,7 @@ Használható – egy olyan feltétel alkalmazására egy, vagy az összes elem 
 * -bármely (elégedett az eredménnyel ha legalább egy elem a gyűjteményben lévő megegyezik a feltétel)
 * -az összes (teljesülnek, ha a gyűjteményben lévő összes elem a feltételnek megfelelő)
 
-#### <a name="example-1"></a>1. példa
+#### <a name="example-1"></a>1\. példa
 
 assignedplans parancsmagot, amely felsorolja a felhasználóhoz rendelt minden szolgáltatáscsomag többértékű tulajdonság. A következő kifejezés lehetőséget választja, az Exchange Online (2. csomag) service-csomag (a GUID értéket), amely egyben az engedélyezési állapotot rendelkező felhasználók számára:
 
@@ -253,7 +253,7 @@ user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df
 
 Egy szabály például a segítségével minden felhasználó csoport számára, akikkel az Office 365-höz (vagy más Microsoft Online Services) funkció engedélyezve van. Ezután alkalmazhat házirendeket vannak beállítva a csoporthoz.
 
-#### <a name="example-2"></a>2. példa
+#### <a name="example-2"></a>2\. példa
 
 A következő kifejezés bármely service-csomag, amely társítva van az Intune szolgáltatással ("SCO" szolgáltatásnév alapján azonosított) rendelkező minden felhasználó számára lehetőséget választja:
 

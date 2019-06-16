@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 10/13/2017
 ms.author: vidarmsft
 ms.openlocfilehash: 11ff7066019654ce2771bce242f3431d10da44ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66150531"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Automatizált vész-helyreállítási megoldás StorSimple található fájlmegosztások az Azure Site Recovery használatával
@@ -61,10 +61,10 @@ Egyes összetevői által a helyszíni környezetben kell lenniük ahhoz, hogy t
 ### <a name="set-up-active-directory-and-dns-replication-optional"></a>Az Active Directory és DNS-replikálás beállítása (nem kötelező)
 Ha meg szeretné védeni a gépek Active Directory és DNS futnak, így elérhetők a DR-helyen, kell explicit módon védeni őket (úgy, hogy a fájlkiszolgálók érhetők el a hitelesítést a feladatátvételt követően). Az ügyfél a helyszíni környezet összetettsége alapján két ajánlott lehetőség van.
 
-#### <a name="option-1"></a>1. lehetőség
+#### <a name="option-1"></a>1\. lehetőség
 Ha az ügyfél rendelkezik egy kis számú alkalmazást, a teljes egyetlen tartományvezérlő a helyszíni hely és lesz majd a domain controller gép replikálása egy másodlagos Azure Site Recovery replikációs használatát javasoljuk a teljes helyre feladatátvétele a webhely (Ez a megfelelő hely – hely és a hely – Azure).
 
-#### <a name="option-2"></a>2. lehetőség
+#### <a name="option-2"></a>2\. lehetőség
 Ha az ügyfél nagy számú az alkalmazások, Active Directory-erdő fut, és néhány alkalmazások egyszerre lesz sikertelen, akkor azt javasoljuk, hogy a DR webhelyen további tartományvezérlő beállításának (vagy egy másodlagos helyre vagy az Azure-ban).
 
 Tekintse meg [automatizált Vészhelyreállítási megoldást az Active Directory és DNS az Azure Site Recovery](../site-recovery/site-recovery-active-directory.md) utasításokat, ha egy tartományvezérlőt a DR webhelyen elérhetővé. Ez a dokumentum a többi feltételezzük egy tartományvezérlő nem érhető el a DR-helyen.
@@ -171,16 +171,16 @@ A helyreállítási terv hozhat létre fájlmegosztást a feladatátvételi foly
 1. Az automation-fiókban kattintson **változók** &gt; **változó hozzáadása** , és adja hozzá a következő változókat. Kiválaszthatja, hogy ezek az eszközök titkosításához. Ezeket a változókat a helyreállítási terv megadott. Ha a helyreállítási terv, amely a következő lépésben létrehozza név TestPlan, majd a változók kell TestPlan StorSimRegKey, TestPlan-AzureSubscriptionName, és így tovább.
 
    - **BaseUrl**: Az Azure-felhő erőforrás-kezelő URL-címét. Első használatával **Get-AzEnvironment |} Select-Object Name, ResourceManagerUrl** parancsmagot.
-   - *RecoveryPlanName***-ResourceGroupName**: A Resource Manager-csoport, amely a StorSimple-erőforrás.
-   - * RecoveryPlanName ***- ManagerName**: A StorSimple-erőforrás, amely a StorSimple-eszköz rendelkezik.
-   - * RecoveryPlanName ***- eszköznév**: A StorSimple-eszköz, amelyen feladatátvételt kell végrehajtani.
-   - *RecoveryPlanName***-DeviceIpAddress**: Az eszköz IP-címét (Ez található a **eszközök** lapon a StorSimple-Eszközkezelő szakasz &gt; **beállítások** &gt; **hálózati** &gt; **DNS-beállítások** csoport).
-   - *RecoveryPlanName***-VolumeContainers**: Az eszköz, amelyet kell végrehajtani a feladatátvételt; kötettárolók egy vesszővel tagolt karakterlánc például: volcon1, volcon2, volcon3.
-   - *RecoveryPlanName***-TargetDeviceName**: A StorSimple felhőalapú készülék, amelyre a tárolók vannak feladatátvételt kell végrehajtani.
-   - *RecoveryPlanName***-TargetDeviceIpAddress**: Az eszköznek az IP-címét (Ez található a **virtuális gép** szakasz &gt; **beállítások** csoport &gt; **hálózatkezelés** lap).
-   - * RecoveryPlanName ***- StorageAccountName**: A storage-fióknevet, amely a parancsfájl (melynek futtathatók a feladatátvételen átesett virtuális gép) tárolhatja. Ez lehet bármely storage-fiók, amely ideiglenesen tárolja a parancsfájl lemezterületet rendelkezik.
-   - *RecoveryPlanName***-StorageAccountKey**: A fenti tárfiók hozzáférési kulcsára.
-   - * RecoveryPlanName ***- VMGUIDS**: Esetén a virtuális gép védelmét, az Azure Site Recovery egy egyedi azonosítója, amely részletezi a feladatátvételen átesett virtuális gép rendel minden virtuális gép. A VMGUID beszerzéséhez válassza ki a **Recovery Services** fülre, és **védett elem** &gt; **védelmi csoportok** &gt;  **Gépek** &gt; **tulajdonságok**. Ha több virtuális gépet, majd a GUID hozzáadása vesszővel elválasztva karakterláncként.
+   - *RecoveryPlanName* **-ResourceGroupName**: A Resource Manager-csoport, amely a StorSimple-erőforrás.
+   - \* RecoveryPlanName * **- ManagerName**: A StorSimple-erőforrás, amely a StorSimple-eszköz rendelkezik.
+   - \* RecoveryPlanName * **- eszköznév**: A StorSimple-eszköz, amelyen feladatátvételt kell végrehajtani.
+   - *RecoveryPlanName* **-DeviceIpAddress**: Az eszköz IP-címét (Ez található a **eszközök** lapon a StorSimple-Eszközkezelő szakasz &gt; **beállítások** &gt; **hálózati** &gt; **DNS-beállítások** csoport).
+   - *RecoveryPlanName* **-VolumeContainers**: Az eszköz, amelyet kell végrehajtani a feladatátvételt; kötettárolók egy vesszővel tagolt karakterlánc például: volcon1, volcon2, volcon3.
+   - *RecoveryPlanName* **-TargetDeviceName**: A StorSimple felhőalapú készülék, amelyre a tárolók vannak feladatátvételt kell végrehajtani.
+   - *RecoveryPlanName* **-TargetDeviceIpAddress**: Az eszköznek az IP-címét (Ez található a **virtuális gép** szakasz &gt; **beállítások** csoport &gt; **hálózatkezelés** lap).
+   - \* RecoveryPlanName * **- StorageAccountName**: A storage-fióknevet, amely a parancsfájl (melynek futtathatók a feladatátvételen átesett virtuális gép) tárolhatja. Ez lehet bármely storage-fiók, amely ideiglenesen tárolja a parancsfájl lemezterületet rendelkezik.
+   - *RecoveryPlanName* **-StorageAccountKey**: A fenti tárfiók hozzáférési kulcsára.
+   - \* RecoveryPlanName * **- VMGUIDS**: Esetén a virtuális gép védelmét, az Azure Site Recovery egy egyedi azonosítója, amely részletezi a feladatátvételen átesett virtuális gép rendel minden virtuális gép. A VMGUID beszerzéséhez válassza ki a **Recovery Services** fülre, és **védett elem** &gt; **védelmi csoportok** &gt;  **Gépek** &gt; **tulajdonságok**. Ha több virtuális gépet, majd a GUID hozzáadása vesszővel elválasztva karakterláncként.
 
      Például, ha a helyreállítási terv neve nem fileServerpredayRP majd a **változók**, **kapcsolatok** és **tanúsítványok** lapon meg kell jelennie a következő hozzáadása után az eszközök.
 
@@ -361,5 +361,5 @@ Kapacitástervezés épül fel, ha legalább két fontos folyamatok:
   > Futtassa újra a helyreállítási tervet, a készülék feladatátvétel befejezése után.
 
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Azure Site Recovery használatával létrehozhat egy fájlkiszolgáló virtuális gép teljes automatizált Vészhelyreállítási terv a StorSimple-storage-ban üzemeltetett fájlmegosztások kellene. Bárhonnan másodpercen belül is kezdeményezhető a feladatátvétel esetén a megszakítás és letöltheti az alkalmazás néhány perc alatt ütembe helyezheti.

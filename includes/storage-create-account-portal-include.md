@@ -9,10 +9,10 @@ ms.date: 05/06/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 56545b02c35d68455497c93582073c73d6c75da5
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66114634"
 ---
 Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozásához az Azure Portalon:
@@ -30,10 +30,10 @@ Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozás
 
    |Mező  |Érték  |
    |---------|---------|
-   |Telepítési modell     |Resource Manager         |
+   |Üzemi modell     |Resource Manager         |
    |Teljesítmény     |Standard         |
-   |Fiók típusa     |StorageV2 (általános célú v2)         |
-   |Replikálás     |Georedundáns írásvédett tárolás (RA-GRS)         |
+   |Fióktípus     |StorageV2 (általános célú v2)         |
+   |Replikáció     |Írásvédett georedundáns tárolás (RA-GRS)         |
    |Hozzáférési szint     |Gyakori         |
 
 1. A tárfiók beállításainak áttekintéséhez és a fiók létrehozásához válassza a **Felülvizsgálat + létrehozás** elemet.

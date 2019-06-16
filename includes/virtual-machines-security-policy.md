@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: c44b39effdc6d8fcdc144915ec7b51489e3798cd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66145860"
 ---
 Fontos a futtatott alkalmazások biztonságát a virtuális gép (VM). A virtuális gépek védelme is tartalmazhat, egy vagy több Azure-szolgáltatásokat és funkciókat, mind a biztonságos hozzáférés a virtuális gépek és az adatok biztonságos tárolását. Ez a cikk nyújt információt, amely lehetővé teszi a virtuális gép és az alkalmazások biztonságának megőrzéséhez.
@@ -23,7 +23,7 @@ A modern fenyegetések világának felhőalapú környezetek dinamikus növelés
 
 A Security Center – igény hozzáférés való zárolását, így a bejövő forgalom az Azure virtuális gépekre, csökkentve a támadásokkal szembeni sérülékenységet ugyanakkor könnyű hozzáférést biztosít arra, hogy szükség esetén a virtuális gépekhez csatlakozhat a virtuális gép üzembe helyezésének egyaránt alkalmazhatók. Just-in-time engedélyezve van, és a egy felhasználó egy virtuális Géphez való hozzáférést igényel, ha a Security Center ellenőrzi, milyen engedélyekkel a felhasználó rendelkezik a virtuális gép. Ha a megfelelő engedélyekkel rendelkeznek, a kérés jóváhagyást, és a Security Center automatikusan konfigurálja a hálózati biztonsági csoportok (NSG) lehetővé teszi a kijelölt port bejövő forgalmát egy korlátozott ideig. Az időszak lejárta után a Security Center visszaállítja az NSG-k korábbi állapotába. 
 
-## <a name="encryption"></a>Titkosítás
+## <a name="encryption"></a>Encryption
 
 Bővített [Windows virtuális gép](../articles/virtual-machines/windows/encrypt-disks.md) és [Linux rendszerű virtuális gép](../articles/virtual-machines/linux/encrypt-disks.md) biztonsági és megfelelőségi, virtuális lemezeket az Azure-ban is titkosíthatók. Windows virtuális gépek a virtuális lemezek vannak titkosítása a BitLocker használatával. Linux rendszerű virtuális gépek a virtuális lemezek titkosítása inaktív-dm-crypt. 
 

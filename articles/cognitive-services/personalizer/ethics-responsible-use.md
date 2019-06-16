@@ -2,19 +2,20 @@
 title: Etikai és felelős használatát – Personalizer
 titleSuffix: Azure Cognitive Services
 description: Ezen irányelvek célja annak megakadályozása, hogy személyre szabása megvalósítása oly módon, amely segítséget nyújt vállalata és a szolgáltatás a megbízhatósági kapcsolat létrehozása. Győződjön meg arról, kutatási szüneteltetése, ismerje meg, és a személyre az emberek életét hatását a szándékos. Ha kétségei vannak, kérjen útmutatást.
+services: cognitive-services
 author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 05/07/2019
+ms.date: 06/12/2019
 ms.author: edjez
-ms.openlocfilehash: 437dc1fba2502602109483aa9d6f25b4265af26f
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: a5bdee7ec99367d004260bd77e3b0695a1877dd6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239898"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055516"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Útmutató a Personalizer felelős megvalósítása
 

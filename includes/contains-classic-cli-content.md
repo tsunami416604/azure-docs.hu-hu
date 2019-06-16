@@ -4,18 +4,17 @@ description: fájl belefoglalása
 author: sptramer
 ms.author: sttramer
 manager: carmonm
-ms.date: 06/12/2018
+ms.date: 06/05/2019
 ms.topic: include
 ms.custom: include file
-ms.openlocfilehash: 6f4f8882952dbc4da64c3f7d601be59abd49601b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: b833ae69c0edf3e85bebbb5b78ea514a0c81e5c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66122186"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66814852"
 ---
 > [!IMPORTANT]
 > Jelen cikk tartalmához az Azure klasszikus CLI szükséges. Ez az Azure CLI egy régebbi verziója, amely csak a klasszikus Azure üzemi modellel használható.
 >
-> A klasszikus CLI-t telepítheti a modern Azure CLI mellett is, azonban az új szkriptekhez és üzembe helyezésekhez az Azure CLI használatát javasoljuk.
-> A klasszikus telepítéséhez tekintse meg [Az Azure klasszikus parancssori felületének telepítése](/cli/azure/install-classic-cli) című cikket; az aktuális CLI telepítéséhez pedig [Az Azure CLI telepítése](/cli/azure/install-azure-cli) című cikket.
+> A klasszikus parancssori felület telepítése: [a klasszikus Azure CLI telepítése](/cli/azure/install-classic-cli) és Azure Resource Manageren alapuló üzemelő példányok esetében az aktuális Azure CLI telepítése, lásd: [Azure CLI telepítése](/cli/azure/install-azure-cli).

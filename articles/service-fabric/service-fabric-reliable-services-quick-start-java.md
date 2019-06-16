@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
 ms.openlocfilehash: 6bf8c632a7513d018745bc74aa0a1db95a39af8b
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62130126"
 ---
 # <a name="get-started-with-reliable-services"></a>Ismerkedés a Reliable Services használatával
@@ -166,7 +166,7 @@ Az alkalmazás most már két szolgáltatást: a HelloWorld állapotmentes szolg
 
 Az állapotalapú szolgáltatások a ugyanazon belépési pontok állapotmentes szolgáltatás rendelkezik. A fő különbség a rendelkezésre állási állapot-szolgáltató állapota megbízható tárolását is. A Service Fabric egy állam adatbázisszolgáltatói implementációt, amely a Reliable State Manager keresztül replikált adatok struktúrák létrehozását teszi lehetővé a Reliable Collections nevű tartalmaz. Egy állapotalapú Reliable Services alapértelmezés szerint ez szolgáltatóját használja.
 
-Nyissa meg a HelloWorldStateful.java **HelloWorldStateful src ->**, amely tartalmazza a következő RunAsync metódusában:
+Nyissa meg a HelloWorldStateful.java **HelloWorldStateful src ->** , amely tartalmazza a következő RunAsync metódusában:
 
 ```java
 @Override

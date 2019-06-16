@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: jingwang
 ms.openlocfilehash: 6056df9aa9079887bfb06ca20ad564eb52baff38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60546572"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Adatok másolása a Salesforce-hoz, és az Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](v1/data-factory-salesforce-connector.md)
 > * [Aktuális verzió](connector-salesforce.md)
 
@@ -238,7 +238,7 @@ Adatok másolása a Salesforce-hoz, állítsa a fogadó típusa a másolási tev
 | writeBehavior | Az írási viselkedésének a művelethez.<br/>Engedélyezett értékek a következők **beszúrása** és **Upsert**. | Nem (alapértelmezés szerint a Insert) |
 | externalIdFieldName | A külsőazonosító-mező az upsert művelet neve. A megadott mezőt kell definiálni a Salesforce-objektum külsőazonosító-mezőjeként"". A megfelelő bemeneti adatokat, nem tartalmazhat NULL értékeket. | Igen, az "Upsert" |
 | writeBatchSize | A sorok száma az egyes kötegekben lévő a Salesforce-hoz írt adatok. | Nem (az alapértelmezett érték 5 000) |
-| ignoreNullValues | Azt jelzi, hogy a bemeneti adatok NULL értéket figyelmen kívül a írási művelet során.<br/>Engedélyezett értékek a következők **igaz** és **hamis**.<br>- **Igaz**: Hagyja meg az adatokat a rendeltetési objektum változatlan marad, amikor ezt teszi, hogy egy upsert vagy frissítési műveletben. Helyezze be egy meghatározott alapértelmezett értéket, amikor ezt teszi, hogy egy insert művelet.<br/>- **FALSE (hamis)**: Ekkor egy upsert vagy frissítési műveletben, frissítse az adatokat a rendeltetési objektumban NULL. NULL érték szúrható, amikor ezt teszi, hogy egy insert művelet. | Nem (az alapértelmezett érték FALSE (hamis)) |
+| ignoreNullValues | Azt jelzi, hogy a bemeneti adatok NULL értéket figyelmen kívül a írási művelet során.<br/>Engedélyezett értékek a következők **igaz** és **hamis**.<br>- **Igaz**: Hagyja meg az adatokat a rendeltetési objektum változatlan marad, amikor ezt teszi, hogy egy upsert vagy frissítési műveletben. Helyezze be egy meghatározott alapértelmezett értéket, amikor ezt teszi, hogy egy insert művelet.<br/>- **FALSE (hamis)** : Ekkor egy upsert vagy frissítési műveletben, frissítse az adatokat a rendeltetési objektumban NULL. NULL érték szúrható, amikor ezt teszi, hogy egy insert művelet. | Nem (az alapértelmezett érték FALSE (hamis)) |
 
 **Példa: A másolási tevékenység fogadó Salesforce-ban**
 
@@ -317,23 +317,23 @@ Adatok másolása a Salesforce-ból, ha a Data Factory-közbenső adattípusok a
 |:--- |:--- |
 | Auto Number |String |
 | Checkbox |Boolean |
-| Currency |Decimal |
-| Date |DateTime |
-| Date/Time |DateTime |
-| Email |String |
-| Id |String |
+| Currency (Pénznem) |Decimal |
+| Dátum |DateTime |
+| Dátum/idő |DateTime |
+| E-mail |String |
+| Azonosító |String |
 | Lookup Relationship |String |
 | Multi-Select Picklist |String |
-| Number |Decimal |
-| Percent |Decimal |
-| Phone |String |
+| Szám |Decimal |
+| Százalék |Decimal |
+| Telefonszám |String |
 | Picklist |String |
 | Text |String |
 | Text Area |String |
 | Text Area (Long) |String |
 | Text Area (Rich) |String |
 | Text (Encrypted) |String |
-| URL |String |
+| URL-cím |String |
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység, Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: d5cc15b0b6ef673396be0cf5bce7ca79cc676b35
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3c2c77d4d6c816b23b86a7daea7cf5f20e98262d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60280083"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67103614"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edigitalresearch"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező eDigitalResearch
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a eDigitalResearch konfigurálásához hozzá kell eDi
 
 **EDigitalResearch hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

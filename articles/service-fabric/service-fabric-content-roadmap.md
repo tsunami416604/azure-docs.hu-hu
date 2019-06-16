@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 12/08/2017
 ms.author: atsenthi
 ms.openlocfilehash: a95baeb60ddff38e2aa1e36e7728c012d9d44930
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540705"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Így biztosan ismerje meg a Service Fabric?
@@ -84,7 +84,7 @@ Alapértelmezés szerint a Service Fabric üzembe helyezi, és aktiválja a szol
 ### <a name="reliable-actors"></a>Reliable Actors
 A Reliable Services-ra épülő a [Reliable Actor](service-fabric-reliable-actors-introduction.md) keretrendszer áll-e alkalmazás-keretrendszer, amely megvalósítja a virtuális Aktor mintában szereplő tervezési minta alapján. A Reliable Actors keretrendszerben független egység a számítási műveletek és az állapot nevű actors egyszálas végrehajtási használ. A Reliable Actor-keretrendszert biztosít az actors kommunikációt épül, és előre beállított állapot megőrzését és a horizontális felskálázást konfigurációk.
 
-### <a name="aspnet-core"></a>ASP.NET Core
+### <a name="aspnet-core"></a>ASP.NET-mag
 Integrálható a Service Fabric [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) , webes és API-alkalmazások kialakításához első osztályú programozási modellt.  ASP.NET Core a Service Fabric két különböző módon használható:
 
 - Az üzemeltetett és a Vendég végrehajtható fájlja. Ez elsősorban meglévő ASP.NET Core-alkalmazások futtatását a Service Fabric programkód módosítása nélkül.

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 11/15/2018
 ms.author: kumud;anavin
 ms.openlocfilehash: 56474ee56051c3b0b7482e81b0174b7945537654
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64694713"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>Hozzon létre egy virtuális hálózati társviszony - másik üzembe helyezési modellel, ugyanahhoz az előfizetéshez
@@ -31,8 +31,8 @@ A virtuális hálózatok közötti társviszony létrehozásához szükséges l�
 |Azure üzembehelyezési modell  | Azure-előfizetés  |
 |--------- |---------|
 |[Mindkét Resource Manager](tutorial-connect-virtual-networks-portal.md) |Azonos|
-|[Mindkét Resource Manager](create-peering-different-subscriptions.md) |Eltérő|
-|[Egy Resource Manager, egy klasszikus](create-peering-different-deployment-models-subscriptions.md) |Eltérő|
+|[Mindkét Resource Manager](create-peering-different-subscriptions.md) |Különböző|
+|[Egy Resource Manager, egy klasszikus](create-peering-different-deployment-models-subscriptions.md) |Különböző|
 
 A virtuális hálózatok közötti társviszony nem hozható létre, a klasszikus üzemi modellel üzembe helyezett két virtuális hálózat között. Ha a klasszikus üzemi modellel létrehozott, mindkét virtuális hálózatok csatlakoztatása van szüksége, használhatja az Azure [VPN-átjáró](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) össze a virtuális hálózatok.
 

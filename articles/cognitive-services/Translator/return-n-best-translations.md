@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-pawal
 ms.openlocfilehash: 27138fc82515983bb07df845e1204fe04dff915a
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66389677"
 ---
 # <a name="how-to-return-n-best-translations"></a>Legjobb N fordítások visszaállítása
@@ -38,11 +38,11 @@ Az aláírás az:
 | Paraméter | Leírás |
 |:---|:---|
 | appId | **Szükséges** az engedélyezési fejléc használata esetén a appid mezőt üresen hagyja más esetben adja meg egy karakterlánc, amely tartalmazza a "Tulajdonos" + "" + a hozzáférési jogkivonatot.|
-| text | **Szükséges** egy karakterlánc, amely a fordítandó szöveg. A szöveg mérete nem haladhatja meg a 10000 karakternél.|
+| szöveg | **Szükséges** egy karakterlánc, amely a fordítandó szöveg. A szöveg mérete nem haladhatja meg a 10000 karakternél.|
 | from | **Szükséges** egy karakterlánc, amely a fordítandó szöveg nyelvkódja. |
 | erre: | **Szükséges** karakterláncként lefordítani a szöveget a nyelvi kódot. |
 | maxTranslations | **Szükséges** egy int való visszatéréshez fordítások maximális számát jelöli. |
-| Beállítások | **Nem kötelező** TranslateOptions egy objektum, amely tartalmazza az alább felsorolt értékeket. Minden nem kötelező, és alapértelmezés szerint a leggyakrabban használt beállításait.
+| options | **Nem kötelező** TranslateOptions egy objektum, amely tartalmazza az alább felsorolt értékeket. Minden nem kötelező, és alapértelmezés szerint a leggyakrabban használt beállításait.
 
 * Kategória: Az egyetlen támogatott, és az alapértelmezett beállítás "általános".
 * ContentType: Az egyetlen támogatott, és az alapértelmezett beállítás "text/plain".
