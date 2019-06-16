@@ -11,10 +11,10 @@ ms.date: 04/24/2017
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 0779e4a93230a90b8eee76f1898154c1a5b82661
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66508727"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Forgatókönyv: A felhasználói bevitel auditáló REST API-val jogcím cseréje az Azure AD B2C felhasználói interakciósorozatban szereplő integrálása
@@ -41,7 +41,7 @@ Ellenőrizzük, hogy a profil szerkesztése a felhasználó által megadott név
 - Az Azure AD B2C-bérlő egy helyi fiók regisztrálási-regisztrálási vagy bejelentkezési, végrehajtásához leírtak szerint konfigurálva [bevezetés](active-directory-b2c-get-started-custom.md).
 - REST API-végpont használatával kommunikálhat. Ebben a bemutatóban beállítottuk a bemutató webhely nevű [WingTipGames](https://wingtipgamesb2c.azurewebsites.net/) egy REST API-szolgáltatást.
 
-## <a name="step-1-prepare-the-rest-api-function"></a>1. lépés: Készítse elő a REST API-függvénye
+## <a name="step-1-prepare-the-rest-api-function"></a>1\. lépés: Készítse elő a REST API-függvénye
 
 > [!NOTE]
 > REST API-függvények, a telepítő nem ez a cikk foglalkozik. [Az Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) biztosít egy kiváló eszközkészlet RESTful szolgáltatás létrehozásához a felhőben.
@@ -75,7 +75,7 @@ return request.CreateResponse(HttpStatusCode.OK);
 
 A IEF vár a `userMessage` jogcímet, amelyet az Azure-függvény adja vissza. Ez a jogcím megjelenik egy karakterláncként a felhasználónak, ha az érvényesítés sikertelen, például ha az előző példában 409 ütközés állapotot adott vissza.
 
-## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworkextensionsxml-file"></a>2. lépés: A TrustFrameworkExtensions.xml fájlban technikai profil RESTful API jogcímcsere konfigurálása
+## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworkextensionsxml-file"></a>2\. lépés: A TrustFrameworkExtensions.xml fájlban technikai profil RESTful API jogcímcsere konfigurálása
 
 Egy technikai profil a RESTful szolgáltatás kívánt exchange teljes konfigurációját. Nyissa meg a TrustFrameworkExtensions.xml fájlt, és adja hozzá a következő XML-részletet belül a `<ClaimsProviders>` elemet.
 
@@ -111,7 +111,7 @@ Egy technikai profil a RESTful szolgáltatás kívánt exchange teljes konfigur�
 
 A `InputClaims` elem definiálja a jogcímeket, amely a REST-szolgáltatás, a IEF kapnak. Ebben a példában a jogcím tartalmát `givenName` küld a REST szolgáltatás `playerTag`. Ebben a példában a IEF nem várt vissza jogcímeket. Ehelyett azt a válaszra vár a REST-szolgáltatás és a állapotkódok, amely alapján működik.
 
-## <a name="step-3-include-the-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-to-validate-the-user-input"></a>3. lépés: Tartalmazza a RESTful szolgáltatás jogcímcsere önellenőrzött technikai profilban, ahol szeretné a felhasználói bevitel ellenőrzése
+## <a name="step-3-include-the-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-to-validate-the-user-input"></a>3\. lépés: Tartalmazza a RESTful szolgáltatás jogcímcsere önellenőrzött technikai profilban, ahol szeretné a felhasználói bevitel ellenőrzése
 
 Az ellenőrzési lépés leggyakoribb használatát egy felhasználói interakció szerepel. Összes műveletet, amikor a felhasználó várhatóan információk megadása a rendszer *önálló kiszolgáló által megerősített technikai profilok*. Ebben a példában hozzáadjuk az érvényesítés az önkiszolgáló Asserted ProfileUpdate műszaki profilba. Ez a műszaki profilja, amelyet a függő entitásonkénti (RP) házirendfájl `Profile Edit` használja.
 
@@ -121,7 +121,7 @@ Az önellenőrzött technikai profilban jogcímcsere hozzáadása:
 2. Tekintse át a konfigurációt, a technikai profil. Figyelje meg, hogy a felhasználó exchange számít, ha jogcímeket meg kell adnia annak a felhasználónak (a bemeneti jogcímek), és visszaküldi az önellenőrzött szolgáltató (kimeneti jogcímek) vár jogcímeket.
 3. Keresse meg `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate`, és figyelje meg, hogy ez a profil hívja meg, a vezénylési lépés 5 `<UserJourney Id="ProfileEdit">`.
 
-## <a name="step-4-upload-and-test-the-profile-edit-rp-policy-file"></a>4. lépés: Töltse fel, és a profil szerkesztése RP házirend fájl tesztelése
+## <a name="step-4-upload-and-test-the-profile-edit-rp-policy-file"></a>4\. lépés: Töltse fel, és a profil szerkesztése RP házirend fájl tesztelése
 
 1. Töltse fel a TrustFrameworkExtensions.xml fájl új verzióját.
 2. Használat **Futtatás most** a profil szerkesztése RP házirendfájl teszteléséhez.

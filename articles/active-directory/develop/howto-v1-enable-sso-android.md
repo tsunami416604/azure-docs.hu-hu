@@ -18,10 +18,10 @@ ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eb11a4a926c676d37a0bf6be456e3b831a5d8357
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65962639"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Útmutató: Az ADAL használatával Android alkalmazások közötti SSO engedélyezése
@@ -108,7 +108,7 @@ A követendő lépések a következők:
 2. Hozzon létre új átirányítási URI-t, és adja meg, hogy az alkalmazás és az alkalmazás regisztrációját
 3. Az Android-jegyzékfájlban a megfelelő engedélyek beállítása
 
-#### <a name="step-1-enable-broker-mode-in-your-application"></a>1. lépés: Az alkalmazás a közvetítő mód engedélyezése
+#### <a name="step-1-enable-broker-mode-in-your-application"></a>1\. lépés: Az alkalmazás a közvetítő mód engedélyezése
 
 Lehetővé teszi, hogy az alkalmazás a közvetítő használata be van kapcsolva a "beállítások" vagy a kezdeti beállítás a hitelesítési példány létrehozásakor. Ehhez az alkalmazásban:
 
@@ -116,7 +116,7 @@ Lehetővé teszi, hogy az alkalmazás a közvetítő használata be van kapcsolv
 AuthenticationSettings.Instance.setUseBroker(true);
 ```
 
-#### <a name="step-2-establish-a-new-redirect-uri-with-your-url-scheme"></a>2. lépés: Új átirányítási URI az az URL-séma létrehozása
+#### <a name="step-2-establish-a-new-redirect-uri-with-your-url-scheme"></a>2\. lépés: Új átirányítási URI az az URL-séma létrehozása
 
 Annak érdekében, hogy győződjön meg arról, hogy a megfelelő alkalmazás fogad a visszaadott a hitelesítő adatok tokeneket és ott van szükség győződjön meg arról, az alkalmazásnak a hívás úgy, hogy az Android operációs rendszer ellenőrizheti. Az Android operációs rendszer a tanúsítvány kivonata használ, a Google Play áruházban. Ez a tanúsítvány kivonata nem lehet megtévesztésre egy engedélyezetlen alkalmazás. Az URI-ját a közvetítő alkalmazás, valamint a Microsoft biztosítja, hogy a megfelelő alkalmazáshoz a jogkivonatok lesznek visszaadva. Egy egyedi átirányítási URI-ja regisztrálni kell az alkalmazás.
 
@@ -128,7 +128,7 @@ ex: *msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D*
 
 A regisztráció segítségével regisztrálhatja az átirányítási URI-t a [az Azure portal](https://portal.azure.com/). További információ az Azure AD-alkalmazás regisztrációjának: [integrálása az Azure Active Directoryval](active-directory-how-to-integrate.md).
 
-#### <a name="step-3-set-up-the-correct-permissions-in-your-application"></a>3. lépés: Az alkalmazás a megfelelő engedélyek beállítása
+#### <a name="step-3-set-up-the-correct-permissions-in-your-application"></a>3\. lépés: Az alkalmazás a megfelelő engedélyek beállítása
 
 A közvetítő alkalmazás Android hitelesítő adatok kezelése a különböző alkalmazások az Android operációs rendszer fiókkezelő funkcióját használja. Annak érdekében, hogy a közvetítő használata az Android a alkalmazásjegyzékbe AccountManager fiókokat engedélyekkel kell rendelkeznie. Ezek az engedélyek tárgyalja részletesen ismertetjük a [Google Account Manager itt található dokumentáció](https://developer.android.com/reference/android/accounts/AccountManager.html)
 

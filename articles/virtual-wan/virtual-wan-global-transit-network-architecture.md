@@ -9,10 +9,10 @@ ms.date: 05/20/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand global transit network architecture as it relates to Virtual WAN.
 ms.openlocfilehash: 114d11f98c6181a03f5ce52527b5e2efea468c42
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65965985"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Globális tranzit hálózati architektúra és a virtuális WAN
@@ -37,14 +37,14 @@ Ebben a modellben egy adott küllőre is lehet:
 
 * Virtuális hálózat (Vnetek)
 * Fizikai fiókiroda-helyhez
-* Távoli felhasználó
+* A távoli felhasználó
 * Internet
 
 ![küllős topológiájú globális átvitel diagramja](./media/virtual-wan-global-transit-network-architecture/architecture.png)
 
 **2. ábra: Hub-and-spoke**
 
-2. ábrán látható, a logikai nézetében a globális hálózat, ahol a földrajzilag elosztott felhasználók, a fizikai helyeken és a virtuális hálózatok vannak összekapcsolva egy felhőalapú hálózati központon keresztül. Ez az architektúra lehetővé teszi, hogy a hálózati végpontok közötti logikai egyugrásos átvitel kapcsolat. A küllők köti össze a hub különböző hálózati hasonló Azure-szolgáltatásokat az ExpressRoute és site-to-típusú VPN ágak fizikai, virtuális hálózatok közötti társviszony-létesítés virtuális hálózatok és a pont – hely VPN-t a távoli felhasználók számára.
+2\. ábrán látható, a logikai nézetében a globális hálózat, ahol a földrajzilag elosztott felhasználók, a fizikai helyeken és a virtuális hálózatok vannak összekapcsolva egy felhőalapú hálózati központon keresztül. Ez az architektúra lehetővé teszi, hogy a hálózati végpontok közötti logikai egyugrásos átvitel kapcsolat. A küllők köti össze a hub különböző hálózati hasonló Azure-szolgáltatásokat az ExpressRoute és site-to-típusú VPN ágak fizikai, virtuális hálózatok közötti társviszony-létesítés virtuális hálózatok és a pont – hely VPN-t a távoli felhasználók számára.
 
 ## <a name="crossregion"></a>Régiók közötti kapcsolat
 

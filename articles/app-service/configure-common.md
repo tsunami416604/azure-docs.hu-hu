@@ -17,10 +17,10 @@ ms.date: 04/25/2017
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: bcc970375120f76e4ec8a90f487d251296f92dba
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65957910"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>App Service-alkalmazások konfigurálása az Azure Portalon
@@ -31,7 +31,7 @@ Ez a témakör azt ismerteti, hogyan web apps, mobil háttérrendszer vagy API-a
 
 Az App Service-ben például a környezeti változók alkalmazásbeállításokat kell használnia. Az a [Azure Portal], keresse meg az alkalmazás lapját. Az alkalmazás bal oldali menüben kattintson a **konfigurációs** > **Alkalmazásbeállítások**.
 
-![Alkalmazásbeállítások](./media/configure-common/open-ui.png)
+![Nastavení aplikace](./media/configure-common/open-ui.png)
 
 Az ASP.NET és az ASP.NET Core-fejlesztőknek beállítás Alkalmazásbeállítások az App Service-ben hasonlóak állítja be őket `<appSettings>` a *Web.config*, de az értékeket az App Service-ben, bírálja felül az *Web.config*. Fejlesztői beállítások (pl. helyi MySQL-jelszó) megmaradhat *Web.config*, de éles titkos kulcsokat (például az Azure-beli MySQL database jelszó) biztonságos App Service-ben. Ugyanazt a kódot a fejlesztési beállításokat használja, amikor helyileg hibakeresést, és az éles titkos kulcsok az Azure-ban üzembe helyezett használ.
 
@@ -92,7 +92,7 @@ Alkalmazásbeállítások van, a következő JSON-formátum:
 
 Az a [Azure Portal], keresse meg az alkalmazás lapját. Az alkalmazás bal oldali menüben kattintson a **konfigurációs** > **Alkalmazásbeállítások**.
 
-![Alkalmazásbeállítások](./media/configure-common/open-ui.png)
+![Nastavení aplikace](./media/configure-common/open-ui.png)
 
 Az ASP.NET és az ASP.NET Core-fejlesztőknek beállítás kapcsolati karakterláncok az App Service-ben hasonlóak állítja be őket `<connectionStrings>` a *Web.config*, de az App Service-ben megadott értékeket, bírálja felül az *Web.config*. Fejlesztői beállítások (például egy adatbázis-fájl) megmaradhat *Web.config* és éles titkos kulcsokat (például SQL-adatbázis-hitelesítő adatok) biztonságos App Service-ben. Ugyanazt a kódot a fejlesztési beállításokat használja, amikor helyileg hibakeresést, és az éles titkos kulcsok az Azure-ban üzembe helyezett használ.
 

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.openlocfilehash: 0942d5ba7b31ddb2c0dec5fe979f1331d1bf3bfd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66136983"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata az App Service-ben és az Azure Functions
@@ -285,11 +285,11 @@ Az alkalmazás felügyelt identitással rendelkezik definiált két környezeti 
 
 A **MSI_ENDPOINT** egy helyi URL-cím, amelyről az alkalmazás jogkivonatokat kérhetnek. Erőforrás egy token beszerzéséhez hajtsa végre egy HTTP GET kérés ehhez a végponthoz, többek között a következő paraméterekkel:
 
-> |Paraméternév|Eleme ennek|Leírás|
+> |Paraméter neve|A|Leírás|
 > |-----|-----|-----|
-> |erőforrás|Lekérdezés|Az AAD erőforrás URI-t az erőforrás számára, ami egy token beszerzése. Ez lehet egy a [Azure-szolgáltatások, hogy a támogatás az Azure AD-hitelesítés](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) vagy bármely egyéb erőforrás URI-t.|
-> |API-verzió|Lekérdezés|A használt jogkivonat API-verzió. "2017-09-01" jelenleg az egyetlen támogatott verzió.|
-> |titkos|Fejléc|A MSI_SECRET környezeti változó értékét. Ez a fejléc segítségével mérsékelhetik a kiszolgálóoldali kérések hamisítása (SSRF) használatos.|
+> |resource|Lekérdezés|Az AAD erőforrás URI-t az erőforrás számára, ami egy token beszerzése. Ez lehet egy a [Azure-szolgáltatások, hogy a támogatás az Azure AD-hitelesítés](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) vagy bármely egyéb erőforrás URI-t.|
+> |api-version|Lekérdezés|A használt jogkivonat API-verzió. "2017-09-01" jelenleg az egyetlen támogatott verzió.|
+> |secret|Fejléc|A MSI_SECRET környezeti változó értékét. Ez a fejléc segítségével mérsékelhetik a kiszolgálóoldali kérések hamisítása (SSRF) használatos.|
 > |ClientID|Lekérdezés|(Nem kötelező) A felhasználó által hozzárendelt identitás használt azonosítója. Ha nincs megadva, a rendszer által hozzárendelt identitás szolgál.|
 
 Sikeres 200 OK válasz tartalmaz egy JSON-törzse a következő tulajdonságokkal:
@@ -298,7 +298,7 @@ Sikeres 200 OK válasz tartalmaz egy JSON-törzse a következő tulajdonságokka
 > |-------------|----------|
 > |access_token|A kért hozzáférési jogkivonatot. A hívó webszolgáltatás a jogkivonat használatával hitelesítik magukat a fogadó webszolgáltatás.|
 > |expires_on|A hozzáférési jogkivonat lejáratának időpontja. A dátum jelenik meg a másodpercek számát, 1970-01-01T0:0:0Z UTC a lejárati időpontig. Ez az érték a gyorsítótárazott jogkivonatok élettartama meghatározására szolgál.|
-> |erőforrás|Az Alkalmazásazonosító URI-t a fogadó webszolgáltatás.|
+> |resource|Az Alkalmazásazonosító URI-t a fogadó webszolgáltatás.|
 > |token_type|Typ tokenu értékét jelöli. Az egyetlen, amely támogatja az Azure ad-ben típus tulajdonosi. További információ a tulajdonosi jogkivonatokat: [az OAuth 2.0 engedélyezési keretrendszer: Tulajdonosi jogkivonat-használat (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt).|
 
 Ez a válasz megegyezik a [válasza az AAD-service-to-service hozzáférési jogkivonat kérése](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: b657ee32e76dd90671f7e91337ced01b925889a1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66161140"
 ---
 Minden olyan eszközökkel kapcsolatos problémákat tapasztal, létrehozhat egy támogatási csomagot a rendszer naplókat. Support használja ezt a csomagot a problémák elhárításához. Kövesse az alábbi lépéseket egy támogatási csomag létrehozásához:
@@ -31,7 +31,7 @@ Minden olyan eszközökkel kapcsolatos problémákat tapasztal, létrehozhat egy
 
     Használt paraméterek a következők:
 
-    - `-Path` -Adja meg a hálózat vagy a támogatási csomag másolása helyi elérési útja. (kötelező)
+    - `-Path` -Adja meg a hálózat vagy a támogatási csomag másolása helyi elérési útja. (szükséges)
     - `-Credential` -Adja meg a hitelesítő adatokat a védett elérési úthoz való hozzáférésre.
     - `-Zip` -Adjon meg egy zip-fájl létrehozásához.
     - `-Include` – Megadhatja, hogy az összetevők szerepeltetni a támogatási csomagot. Ha nincs megadva, `Default` feltételezi.

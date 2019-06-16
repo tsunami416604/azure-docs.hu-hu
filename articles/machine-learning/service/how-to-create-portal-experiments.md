@@ -12,10 +12,10 @@ manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/2019
 ms.openlocfilehash: a2a281fda9272fb794692becb0ca08f3cf791458
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65990142"
 ---
 # <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Hozzon létre, és Fedezze fel az automatikus machine learning-kísérletek az Azure Portalon (előzetes verzió)
@@ -60,7 +60,7 @@ Válassza ki a kísérlet létrehozása gombra való feltöltéséhez a követke
 
     Mező|Leírás
     ---|---
-    A számítás neve| Adjon meg egy egyedi nevet, amely azonosítja a számítási környezet.
+    Számítási neve| Adjon meg egy egyedi nevet, amely azonosítja a számítási környezet.
     Virtuális gép mérete| Válassza ki a virtuális gép méretét a számítási.
     További beállítások| *Minimális csomópont*: Adja meg a számítási csomópontok minimális száma. Az AML számítási csomópontok minimális száma: 0. Engedélyezi a profilkészítési adatok, 1 vagy több csomópontot kell rendelkeznie. <br> *Maximális csomópont*: Adja meg a számítási csomópontok maximális számát. Az alapértelmezett érték 6-AML számítási csomópontokat.
 
@@ -103,9 +103,9 @@ Válassza ki a kísérlet létrehozása gombra való feltöltéséhez a követke
     Speciális beállítások|Leírás
     ------|------
     Elsődleges metrika| A modell pontozása használt fő metrikát. [További információk a metrikákról modell](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#explore-model-metrics).
-    Kilépési feltételek| Ha ezek a feltételek bármelyike teljesül, a betanítási feladat befejeződik, teljes befejezése előtt. <br> *Betanítási feladat idő (percekben)*: Mennyi ideig, hogy a betanítási feladat futtatásához.  <br> *Az ismétlések maximális száma*: (Az ismétlések) folyamatok tesztelése a betanítási feladat az a maximális számát. A feladat nem fut. több, mint a megadott számú ismétlését. <br> *A metrika pontszám küszöbérték*:  Minimális metrika pontszám összes folyamatokhoz. Ez biztosítja, hogy ha egy meghatározott célhoz metrika szeretne elérni, akkor nem több időt az szükséges, mint a betanítási feladat.
+    Kilépési feltételek| Ha ezek a feltételek bármelyike teljesül, a betanítási feladat befejeződik, teljes befejezése előtt. <br> *Betanítási feladat idő (percekben)* : Mennyi ideig, hogy a betanítási feladat futtatásához.  <br> *Az ismétlések maximális száma*: (Az ismétlések) folyamatok tesztelése a betanítási feladat az a maximális számát. A feladat nem fut. több, mint a megadott számú ismétlését. <br> *A metrika pontszám küszöbérték*:  Minimális metrika pontszám összes folyamatokhoz. Ez biztosítja, hogy ha egy meghatározott célhoz metrika szeretne elérni, akkor nem több időt az szükséges, mint a betanítási feladat.
     Előfeldolgozása| Válassza ki az engedélyezni vagy letiltani az előfeldolgozási automatizált gépi tanulás által végzett. Előfeldolgozási tartalmaz Adattisztítás automatikus, előkészítése és átalakítási szintetikus szolgáltatások létrehozásához. [Tudjon meg többet az előfeldolgozási](#preprocess).
-    Érvényesítés| Válassza ki a keresztellenőrzési beállítások használata a betanítási feladat. [Tudjon meg többet közötti érvényesítési](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#cross-validation-split-options).
+    Ellenőrzés| Válassza ki a keresztellenőrzési beállítások használata a betanítási feladat. [Tudjon meg többet közötti érvényesítési](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#cross-validation-split-options).
     Egyidejűség| Válassza ki a Többmagos számítási használatakor szeretne Többmagos korlátokat.
     Letiltott algoritmus| Válassza ki a betanítási feladat a kizárni kívánt algoritmusokat.
 
@@ -213,7 +213,7 @@ Automatizált ML nyújtanak segítséget a modell üzembe helyezésével kódír
 
     A modell azonosíthatja a leírását, amely magában foglalja a futtatási azonosító, az iteráció száma, a következő formátumban: *< Run_ID > _ < Iteration_number > _Model*
 
-    ![Modellek: Lemezkép létrehozása](media/how-to-create-portal-experiments/model-create-image.png)
+    ![Modellek: Rendszerkép létrehozása](media/how-to-create-portal-experiments/model-create-image.png)
 
 1. Adja meg a lemezkép nevét. 
 1. Válassza ki a **Tallózás** feltölteni a korábban letöltött pontozófájl (scoring.py) "Pontozási File" mező melletti gombra.
@@ -225,7 +225,7 @@ Automatizált ML nyújtanak segítséget a modell üzembe helyezésével kódír
       >[!Important]
       > Fájlnevek kell lennie a 32 karakter hosszú lehet és kell és végén alfanumerikus karaktereket. Tartalmazhat kötőjeleket, aláhúzásjeleket, pontokat és számok és betűk között. Nem tartalmazhat szóközöket.
 
-    ![Lemezkép létrehozása](media/how-to-create-portal-experiments/create-image.png)
+    ![Rendszerkép létrehozása](media/how-to-create-portal-experiments/create-image.png)
 
 1. Válassza ki a lemezkép létrehozásának elindításához a "Létrehozás" gombra. Ez eltarthat néhány percig, miután befejezte, egy üzenet jelenik meg a felső sávon található.
 1. Nyissa meg a "Rendszerképek" lapot, a lemezkép számára telepíteni kívánja melletti jelölőnégyzetet, és válassza a "Központi telepítés létrehozása". [További információ a központi telepítések](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where).

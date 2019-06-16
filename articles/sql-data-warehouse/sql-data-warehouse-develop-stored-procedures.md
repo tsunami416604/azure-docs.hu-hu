@@ -11,16 +11,16 @@ ms.date: 04/02/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 200433d95d62edf2e878e58e5089a6baff290775
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65850582"
 ---
 # <a name="using-stored-procedures-in-sql-data-warehouse"></a>Tárolt eljárások az SQL Data Warehouse használata
 Tippek a tárolt eljárások végrehajtása az Azure SQL Data Warehouse-megoldások fejlesztése.
 
-## <a name="what-to-expect"></a>Amire számíthat
+## <a name="what-to-expect"></a>Mi várható?
 
 Az SQL Data Warehouse az SQL Server támogatja a T-SQL-funkciók használt számos. Vannak még fontosabb, kibővített szolgáltatások, amelyek segítségével maximalizálhatja a teljesítményt, hogy a megoldás.
 
@@ -39,7 +39,7 @@ Tárolt eljárások a más tárolt eljárások hívása, vagy a dinamikus SQL-ut
 
 SQL Data Warehouse támogat egy legfeljebb nyolc beágyazási szinttel. Ez némileg eltér az SQL Serverhez. A beágyazott szint az SQL Server 32.
 
-1. szintű beágyazása a legfelső szintű tárolt eljáráshívási adatbázisnak felel meg.
+1\. szintű beágyazása a legfelső szintű tárolt eljáráshívási adatbázisnak felel meg.
 
 ```sql
 EXEC prc_nesting

@@ -9,10 +9,10 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 499aeccdf00980eeb66ac6ee06e45267fd515143
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66145885"
 ---
 Megosztott kép katalógusok lehetővé teszik a megosztás képek RBAC használatával. Az RBAC használatával megoszthatja a bérlőn kívüli lemezképeket a bérlőn belül, és akár egyéni felhasználók számára. De ha meg szeretné osztani a lemezképek kívül az Azure-bérlőhöz, ipari méretekben, hozzunk létre egy alkalmazás regisztrációját a megosztás megkönnyítése érdekében.  Az alkalmazásregisztráció használatával engedélyezheti a összetettebb megosztási helyzetek, például: 
@@ -38,9 +38,9 @@ Hozzon létre egy alkalmazás regisztrálása a lemezkép gyűjtemény-erőforr�
 
 Adjon engedélyt az alkalmazásnak regisztrációs megosztott lemezkép-katalógus használatával.
 1. Az Azure Portalon válassza ki a megosztott lemezkép-katalógusban, hogy meg szeretné osztani egy másik bérlőben.
-1. Válassza ki **válassza ki a hozzáférés-vezérlés (IAM)**, majd a **szerepkör-hozzárendelés hozzáadása** kiválasztása *Hozzáadás*. 
+1. Válassza ki **válassza ki a hozzáférés-vezérlés (IAM)** , majd a **szerepkör-hozzárendelés hozzáadása** kiválasztása *Hozzáadás*. 
 1. A **szerepkör**válassza **olvasó**.
-1. A **hozzáférés hozzárendelése:**, hagyja meg az **az Azure AD-felhasználó, csoport vagy szolgáltatásnév**.
+1. A **hozzáférés hozzárendelése:** , hagyja meg az **az Azure AD-felhasználó, csoport vagy szolgáltatásnév**.
 1. A **válassza**, típus *myGalleryApp* , és jelölje ki, amikor az megjelenik a listában. Amikor elkészült, válassza ki a **mentése**.
 
 
@@ -54,9 +54,9 @@ https://login.microsoftonline.com/<Tenant 2 ID>/oauth2/authorize?client_id=<Appl
 
 Az a [az Azure portal](https://portal.azure.com) jelentkezzen be a bérlő 2 és az alkalmazás regisztrációs hozzáférést biztosíthat az erőforráscsoportot kívánja a virtuális gép létrehozásához.
 
-1. Válassza ki az erőforráscsoportot, majd **hozzáférés-vezérlés (IAM)**. A **szerepkör-hozzárendelés hozzáadása** kiválasztása **Hozzáadás**. 
+1. Válassza ki az erőforráscsoportot, majd **hozzáférés-vezérlés (IAM)** . A **szerepkör-hozzárendelés hozzáadása** kiválasztása **Hozzáadás**. 
 1. A **szerepkör**, típus **közreműködői**.
-1. A **hozzáférés hozzárendelése:**, hagyja meg az **az Azure AD-felhasználó, csoport vagy szolgáltatásnév**.
+1. A **hozzáférés hozzárendelése:** , hagyja meg az **az Azure AD-felhasználó, csoport vagy szolgáltatásnév**.
 1. A **kiválasztása** típus *myGalleryApp* majd válassza ki, amikor az megjelenik a listában. Amikor elkészült, válassza ki a **mentése**.
 
 > [!NOTE]

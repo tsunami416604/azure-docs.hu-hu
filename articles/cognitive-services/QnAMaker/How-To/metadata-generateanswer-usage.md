@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: tulasim
 ms.openlocfilehash: b18d47b4b09c6fa9c4d5f0ef87d7ebe73f151c60
-ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66693240"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Válasz a GenerateAnswer API és a metaadatok
@@ -78,7 +78,7 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 
 JSON-törzse többféle beállításokkal rendelkezik:
 
-|JSON-törzse tulajdonság|Kötelező|Típus|Cél|
+|JSON-törzse tulajdonság|Szükséges|Típus|Cél|
 |--|--|--|--|
 |`question`|Szükséges|string|Egy felhasználó kérdést kell küldeni a tudásbázist.|
 |`top`|Nem kötelező|egész szám|A kimenetben: rangsorolt eredmények száma. Az alapértelmezett érték az 1.|

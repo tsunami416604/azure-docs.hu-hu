@@ -8,10 +8,10 @@ ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
 ms.openlocfilehash: 9b6089aa828b5667f100c1a8cbff3e69345e4512
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66150429"
 ---
 # <a name="azure-key-vault-managed-storage-account---powershell"></a>Az Azure Key Vaultban felügyelt tárfiók – PowerShell
@@ -46,7 +46,7 @@ Az alábbi példa bemutatja, hogyan kezelheti a tárfiók kulcsait a Key Vault t
 ## <a name="authorize-key-vault-to-access-to-your-storage-account"></a>A tárfiók eléréséhez a Key Vault engedélyezése
 
 > [!IMPORTANT]
-> Az Azure AD-bérlő minden regisztrált alkalmazás biztosít egy  **[szolgáltatásnév](/azure/active-directory/develop/developer-glossary#service-principal-object)**, amely funkcionál az alkalmazás azonosítóját. Az egyszerű szolgáltatás Alkalmazásazonosítója használt adná más Azure-erőforrások hozzáférési szerepköralapú hozzáférés-vezérlés (RBAC) révén. Mivel a Key Vault egy Microsoft-alkalmazásba, előre regisztrált összes az Azure AD bérlő alatt ugyanazon Alkalmazásazonosítóval, minden egyes Azure-felhőben lévő:
+> Az Azure AD-bérlő minden regisztrált alkalmazás biztosít egy  **[szolgáltatásnév](/azure/active-directory/develop/developer-glossary#service-principal-object)** , amely funkcionál az alkalmazás azonosítóját. Az egyszerű szolgáltatás Alkalmazásazonosítója használt adná más Azure-erőforrások hozzáférési szerepköralapú hozzáférés-vezérlés (RBAC) révén. Mivel a Key Vault egy Microsoft-alkalmazásba, előre regisztrált összes az Azure AD bérlő alatt ugyanazon Alkalmazásazonosítóval, minden egyes Azure-felhőben lévő:
 > - Az Azure government felhőben az Azure AD-bérlőt használja Alkalmazásazonosító `7e7c393b-45d0-48b1-a35e-2905ddf8183c`.
 > - Az Azure nyilvános felhő, és minden más Azure AD-bérlőt használja Alkalmazásazonosító `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`.
 

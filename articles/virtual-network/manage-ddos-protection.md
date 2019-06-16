@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
 ms.openlocfilehash: 53185caa6a0492702035041a893f20a78cf1ea4d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65911244"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Kezelheti az Azure DDoS Protection szabványos az Azure portal használatával
@@ -31,7 +31,7 @@ Mielőtt bármelyik befejezése lépéseket ebben az oktatóanyagban, jelentkezz
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="create-a-ddos-protection-plan"></a>DDoS elleni védelmi terv létrehozása
+## <a name="create-a-ddos-protection-plan"></a>A DDoS protection-díjcsomag létrehozása
 
 A DDoS protection-díjcsomag határozza meg, amelyeken engedélyezve van, előfizetések között a DDoS protection-szabvány virtuális hálózatok. Beállíthatja, hogy a szervezet és a hivatkozás virtuális hálózatok több előfizetést, a csomagot egy DDoS elleni védelmi tervet. A DDoS Protection-Díjcsomag maga is egy előfizetést, a terv létrehozása közben kiválasztott társítva. A DDoS elleni védelmi tervhez működik, régiók és -előfizetések között. Példa –, és hozhat létre a terv régió kelet-USA #1. előfizetés mutató hivatkozás a bérlőn. A csomagot is össze virtuális hálózatok különböző régiókban lévő más előfizetésekből származó a bérlőn belüli. Az előfizetés a terv társítva a csomag, valamint a kerettúllépési díjfizetést tesz szükségessé, havi ismétlődő számla tekintetében abban az esetben a védett nyilvános IP-címek száma meghaladja a 100. A DDoS-díjszabás további információkért lásd: [díjszabás](https://azure.microsoft.com/pricing/details/ddos-protection/).
 
@@ -189,7 +189,7 @@ Forgalmi naplók fog rendelkezni a következő mezőket:
 - Forrás IP-címe
 - Cél IP-címe
 - Forrásport 
-- Célhely portja 
+- Célport 
 - Protokoll típusa 
 - Kockázatcsökkentési során végrehajtott műveletek
 

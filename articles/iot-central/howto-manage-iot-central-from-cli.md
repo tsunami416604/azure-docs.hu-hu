@@ -9,10 +9,10 @@ ms.date: 02/07/2019
 ms.topic: conceptual
 manager: philmea
 ms.openlocfilehash: 9e5d842cece316bc9c53e1e8583f40a0f222b91d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66151962"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>IoT-központ kezelése az Azure CLI
@@ -53,10 +53,10 @@ Ezek a parancsok a keleti régiójában, az alkalmazás a először hozzon létr
 | Paraméter         | Leírás |
 | ----------------- | ----------- |
 | resource-group    | Az erőforráscsoport, amely tartalmazza az alkalmazást. Ennek az erőforráscsoportnak már léteznie kell az előfizetésben. |
-| hely          | Ez a parancs alapértelmezés szerint használja az erőforráscsoport helyét. Jelenleg az IoT Central alkalmazáshoz hozhat létre a **USA keleti RÉGIÓJA**, **USA nyugati RÉGIÓJA**, **Észak-Európa**, vagy **Nyugat-Európa** régióban. |
-| név              | Az Azure Portalon az alkalmazás neve. |
+| location          | Ez a parancs alapértelmezés szerint használja az erőforráscsoport helyét. Jelenleg az IoT Central alkalmazáshoz hozhat létre a **USA keleti RÉGIÓJA**, **USA nyugati RÉGIÓJA**, **Észak-Európa**, vagy **Nyugat-Európa** régióban. |
+| name              | Az Azure Portalon az alkalmazás neve. |
 | subdomain         | Az altartomány az alkalmazás URL-címét. A példában az alkalmazás URL-cím van https://mysubdomain.azureiotcentral.com. |
-| termékváltozat               | Jelenleg az egyetlen érték **S1** (standard szintű). Lásd: [Azure IoT Central díjszabás](https://azure.microsoft.com/pricing/details/iot-central/). |
+| sku               | Jelenleg az egyetlen érték **S1** (standard szintű). Lásd: [Azure IoT Central díjszabás](https://azure.microsoft.com/pricing/details/iot-central/). |
 | sablon          | Az alkalmazás sablont szeretné használni. További információkért lásd az alábbi táblázatot: |
 | megjelenítendő neve      | Az alkalmazás a felhasználói felületen megjelenített neve. |
 

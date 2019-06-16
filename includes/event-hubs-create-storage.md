@@ -9,10 +9,10 @@ ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: b84b0a8e09bf739ce62dee167ff751b491765c66
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66154554"
 ---
 ### <a name="create-a-storage-account-for-event-processor-host"></a>Tárfiók létrehozása az Event Processor Host számára
@@ -22,7 +22,7 @@ Az Event Processor Host egy intelligens ügynök, amely leegyszerűsíti az esem
 
 2. Válassza a **Storage** elemet, majd a **Tárfiók – blob, fájl, tábla, üzenetsor** lehetőséget.
    
-    ![Tárolási fiók kiválasztása](./media/event-hubs-create-storage/create-storage1.png)
+    ![Tárfiók kiválasztása](./media/event-hubs-create-storage/create-storage1.png)
 
 3. A **Tárfiók létrehozása** oldalon hajtsa végre az alábbi lépéseket: 
 

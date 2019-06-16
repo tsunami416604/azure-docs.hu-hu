@@ -11,10 +11,10 @@ ms.date: 09/30/2017
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: b3b896b2c423f2f9155ddb7803e59e719bd027cf
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66510722"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>A felhasználói adatbevitel auditáló REST API-val jogcím cseréje az Azure AD B2C felhasználói interakciósorozatban szereplő integrálása
@@ -56,7 +56,7 @@ Ez az útmutató a .NET-keretrendszer webes API, a felhasználói bevitel érvé
 ## <a name="prerequisites"></a>Előfeltételek
 A lépések elvégzéséhez a [Ismerkedés az egyéni szabályzatok](active-directory-b2c-get-started-custom.md) cikk.
 
-## <a name="step-1-create-an-aspnet-web-api"></a>1. lépés: Az ASP.NET webes API létrehozása
+## <a name="step-1-create-an-aspnet-web-api"></a>1\. lépés: Az ASP.NET webes API létrehozása
 
 1. A Visual Studióban hozzon létre egy projektet kiválasztásával **fájl** > **új** > **projekt**.
 
@@ -74,9 +74,9 @@ A lépések elvégzéséhez a [Ismerkedés az egyéni szabályzatok](active-dire
 
 6. A projekt létrehozásához válassza az **OK** lehetőséget.
 
-## <a name="step-2-prepare-the-rest-api-endpoint"></a>2. lépés: Készítse elő a REST API-végpont
+## <a name="step-2-prepare-the-rest-api-endpoint"></a>2\. lépés: Készítse elő a REST API-végpont
 
-### <a name="step-21-add-data-models"></a>2.1. lépés: Adatmodell hozzáadása
+### <a name="step-21-add-data-models"></a>2\.1. lépés: Adatmodell hozzáadása
 A modellek felel meg a bemeneti jogcímek között, és a kimeneti jogcím-adatok a REST-alapú service-ben. A kód beolvassa a bemeneti adatok deszerializálása során a bemeneti jogcímek között modell egy JSON-karakterlánc egy C#-objektumot (a modell) által. Az ASP.NET web API automatikusan deserializes a kimeneti jogcímek modell vissza a JSON és a szerializált adatok ezután ír a HTTP-válaszüzenet törzsében.
 
 Hozzon létre egy modell a bemeneti jogcímek között az alábbiak szerint:
@@ -133,7 +133,7 @@ Hozzon létre egy modell a bemeneti jogcímek között az alábbiak szerint:
     }
     ```
 
-### <a name="step-22-add-a-controller"></a>2.2. lépés: Vezérlő hozzáadása
+### <a name="step-22-add-a-controller"></a>2\.2. lépés: Vezérlő hozzáadása
 A webes API-hoz egy _vezérlő_ olyan objektum, amely HTTP-kéréseket. A vezérlő adja vissza a kimeneti jogcímek, vagy az első név nem érvényes, ha egy ütköző HTTP-hibaüzenetet jelez.
 
 1. A Solution Explorer (Megoldáskezelő) ablakában kattintson a jobb gombbal a **Controllers** (Vezérlők) mappára, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **Controller** (Vezérlő) gombra.
@@ -203,7 +203,7 @@ A webes API-hoz egy _vezérlő_ olyan objektum, amely HTTP-kéréseket. A vezér
     }
     ```
 
-## <a name="step-3-publish-the-project-to-azure"></a>3. lépés: A projekt közzététele az Azure-ban
+## <a name="step-3-publish-the-project-to-azure"></a>3\. lépés: A projekt közzététele az Azure-ban
 1. A Megoldáskezelőben kattintson a jobb gombbal a **Contoso.AADB2C.API** projektre, és válassza ki **közzététel**.
 
     ![A Microsoft Azure App Service-ben való közzététele](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-1.png)
@@ -226,7 +226,7 @@ A webes API-hoz egy _vezérlő_ olyan objektum, amely HTTP-kéréseket. A vezér
 
 6. Másolja a web app URL-címet.
 
-## <a name="step-4-add-the-new-loyaltynumber-claim-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>4. lépés: Az új `loyaltyNumber` jogcímet a TrustFrameworkExtensions.xml fájl sémája
+## <a name="step-4-add-the-new-loyaltynumber-claim-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>4\. lépés: Az új `loyaltyNumber` jogcímet a TrustFrameworkExtensions.xml fájl sémája
 A `loyaltyNumber` jogcím még nem határozott meg a sémában. Adja hozzá belül definícióját a `<BuildingBlocks>` elemet, amely elején annak a *TrustFrameworkExtensions.xml* fájlt.
 
 ```xml
@@ -241,7 +241,7 @@ A `loyaltyNumber` jogcím még nem határozott meg a sémában. Adja hozzá bel�
 </BuildingBlocks>
 ```
 
-## <a name="step-5-add-a-claims-provider"></a>5. lépés: A jogcímeket szolgáltató hozzáadása
+## <a name="step-5-add-a-claims-provider"></a>5\. lépés: A jogcímeket szolgáltató hozzáadása
 Minden jogcím-szolgáltatói rendelkeznie kell egy vagy több technikai profilok, amelyek meghatározzák a végpontok és a jogcímszolgáltató folytatott kommunikációhoz szükséges protokollok.
 
 Jogcím-szolgáltatóktól rendelkezhet több technikai profil különböző okok miatt. Például több technikai profil definiálhatók a jogcímszolgáltató több protokollt is támogat, végpontok különböző képességekkel is rendelkeznek, vagy hogy kiadásokban is tartalmazhat, amely számos különböző biztonsági szintek jogcímeket. Egy felhasználói interakciósorozatban szereplő, de nem a másik bizalmas jogcímeket kiadni elfogadható lehet.
@@ -297,7 +297,7 @@ Keresse meg a `<ClaimsProviders>` csomópontot, majd adja hozzá a következő X
 </ClaimsProvider>
 ```
 
-## <a name="step-6-add-the-loyaltynumber-claim-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>6. lépés: Adja hozzá a `loyaltyNumber` jogcím a függő entitás házirendfájlt, így az a jogcím megkap az alkalmazás
+## <a name="step-6-add-the-loyaltynumber-claim-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>6\. lépés: Adja hozzá a `loyaltyNumber` jogcím a függő entitás házirendfájlt, így az a jogcím megkap az alkalmazás
 Szerkessze a *SignUpOrSignIn.xml* függő entitásonkénti (RP) fájlt, és módosítsa a TechnicalProfile azonosító = "PolicyProfile" elemet, adja hozzá a következő: `<OutputClaim ClaimTypeReferenceId="loyaltyNumber" />`.
 
 Miután az új jogcímet ad hozzá, a függő entitás kód a következőhöz hasonló:
@@ -323,7 +323,7 @@ Miután az új jogcímet ad hozzá, a függő entitás kód a következőhöz ha
 </TrustFrameworkPolicy>
 ```
 
-## <a name="step-7-upload-the-policy-to-your-tenant"></a>7. lépés: A szabályzat feltöltése a bérlőhöz
+## <a name="step-7-upload-the-policy-to-your-tenant"></a>7\. lépés: A szabályzat feltöltése a bérlőhöz
 
 1. Az a [az Azure portal](https://portal.azure.com), váltson át a [az Azure AD B2C-bérlője kontextusában](active-directory-b2c-navigate-to-b2c-context.md), majd nyissa meg **Azure AD B2C-vel**.
 
@@ -339,7 +339,7 @@ Miután az új jogcímet ad hozzá, a függő entitás kód a következőhöz ha
 
 7. Ismételje meg az előző lépés SignUpOrSignIn.xml-fájllal.
 
-## <a name="step-8-test-the-custom-policy-by-using-run-now"></a>8. lépés: Az egyéni házirend tesztelése a Futtatás most
+## <a name="step-8-test-the-custom-policy-by-using-run-now"></a>8\. lépés: Az egyéni házirend tesztelése a Futtatás most
 1. Válassza ki **Azure AD B2C-beállítások**, majd lépjen **identitás-kezelőfelületi keretrendszer**.
 
     > [!NOTE]

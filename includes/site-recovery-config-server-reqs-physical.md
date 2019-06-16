@@ -10,10 +10,10 @@ ms.date: 09/03/2018
 ms.author: raynew
 ms.custom: include file
 ms.openlocfilehash: afeae4af9b41bf434b26833a3bd927118a4697ae
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66160356"
 ---
 **A fizikai kiszolgáló replikációjához Configuration/Process server-követelményei**
@@ -23,7 +23,7 @@ ms.locfileid: "66160356"
 **HARDVERBEÁLLÍTÁSOK** | 
 Processzormagok | 8 
 RAM | 16 GB
-Lemezek száma | 3., beleértve az operációs rendszer lemez, a folyamatkiszolgálói gyorsítótárlemez és az adatmegőrzési meghajtó a feladat-visszavételhez 
+Lemezek száma | 3\., beleértve az operációs rendszer lemez, a folyamatkiszolgálói gyorsítótárlemez és az adatmegőrzési meghajtó a feladat-visszavételhez 
 Szabad lemezterület (folyamatkiszolgálói gyorsítótár) | 600 GB
 Szabad területe (adatmegőrzési lemez) | 600 GB
  | 
@@ -33,7 +33,7 @@ Operációs rendszer területi beállítása | Angol (en-us)
 Windows Server-szerepkörök | Ezek a szerepkörök nem engedélyezi: <br> - Active Directory tartományi szolgáltatások <br>– Internet Information Services <br> - Hyper-V 
 Csoportházirendek | Ezek a szabályzatok csoport nem engedélyezi: <br> -Hozzáférés megakadályozása a parancssorba. <br> -A beállításjegyzék szerkesztőeszközeihez való hozzáférés letiltása. <br> -Megbízhatósági logika fájlmellékletekhez. <br> – Kapcsolja be a parancsfájl végrehajtása. <br> [További információ](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
 IIS | – Nincs már létező alapértelmezett webhelye <br> – Nincs már létező webhely vagy alkalmazás 443-as porton <br>-Engedélyezése [a névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Engedélyezése [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) beállítás.
-IP-cím típusa | Statikus tartalom 
+IP-cím típusa | Statikus 
 | 
 **HOZZÁFÉRÉSI BEÁLLÍTÁSOK** | 
 MYSQL | A konfigurációs kiszolgáló MySQL kell telepíteni. Manuálisan is telepítheti, vagy üzembe helyezés során a Site Recovery is telepíthet. A Site Recovery telepítése, ellenőrizze, hogy elérje a gép http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi.

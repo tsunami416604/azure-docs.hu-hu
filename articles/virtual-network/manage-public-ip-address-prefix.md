@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: anavin
 ms.openlocfilehash: 26d8ee34c735cab8f1033a9aad897ec0b1bed524
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65952681"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Létrehozása, módosítása vagy törlése egy nyilvános IP-cím előtagja
@@ -57,7 +57,7 @@ Nyilvános IP-címelőtagokat díj rendelkezik. További információkért lásd
 
 |Eszköz|Parancs|
 |---|---|
-|CLI|[az network public-IP-előtag létrehozása](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create)|
+|parancssori felület|[az network public-IP-előtag létrehozása](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create)|
 |PowerShell|[New-AzPublicIpPrefix](/powershell/module/az.network/new-azpublicipprefix)|
 
 ## <a name="create-a-static-public-ip-address-from-a-prefix"></a>Hozzon létre egy statikus nyilvános IP-címet az előtag
@@ -72,13 +72,13 @@ Miután létrehozta az előtag, az előtag a statikus IP-címeket kell létrehoz
    |---|---|---|
    |Name (Név)|Igen|A nyilvános IP-cím nevére, válassza ki az erőforráscsoporton belül egyedinek kell lennie.|
    |Üresjárat időkorlátja (perc)|Nem|Hány perc a TCP- vagy HTTP-kapcsolat nyitva tartása anélkül, hogy az ügyfelek életben tartási üzenetek küldéséhez. |
-   |DNS-névcímke|Nem|(Között az összes előfizetés és az összes ügyfél) a nevét a hoz létre az Azure-régión belül egyedinek kell lennie. Az Azure automatikusan regisztrálja a nevét és IP-cím a DNS-ben úgy csatlakozhat a nevű erőforrás. Azure hozzáfűz egy alapértelmezett alhálózat például *location.cloudapp.azure.com* (ahol a helye az választja) nevet ad meg, hozhat létre teljesen minősített DNS-neve. További információkért lásd: [használata az Azure DNS az Azure nyilvános IP-címet](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).|
+   |DNS name label|Nem|(Között az összes előfizetés és az összes ügyfél) a nevét a hoz létre az Azure-régión belül egyedinek kell lennie. Az Azure automatikusan regisztrálja a nevét és IP-cím a DNS-ben úgy csatlakozhat a nevű erőforrás. Azure hozzáfűz egy alapértelmezett alhálózat például *location.cloudapp.azure.com* (ahol a helye az választja) nevet ad meg, hozhat létre teljesen minősített DNS-neve. További információkért lásd: [használata az Azure DNS az Azure nyilvános IP-címet](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).|
 
 Másik lehetőségként használhatja a parancssori felület és a--public-ip-előtag (CLI) az alábbi parancsok PS és - PublicIpPrefix (PS) paramétereket, hozzon létre egy nyilvános IP-cím erőforrás. 
 
 |Eszköz|Parancs|
 |---|---|
-|CLI|[az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)|
+|parancssori felület|[az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)|
 |PowerShell|[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress?view=azps-2.0.0)|
 
 ## <a name="view-or-delete-a-prefix"></a>Megtekintése és törlése előtag
@@ -93,7 +93,7 @@ Másik lehetőségként használhatja a parancssori felület és a--public-ip-el
 
 |Eszköz|Parancs|
 |---|---|
-|CLI|[az network public-IP-előtag lista](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-list) nyilvános IP-címeinek listáját, hogy [az network public-IP-előtag show](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show) ; beállítások megjelenítése [az network public-IP-előtag frissítés](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-update) frissítése; [az network public-IP-előtag delete](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-delete) törlése|
+|parancssori felület|[az network public-IP-előtag lista](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-list) nyilvános IP-címeinek listáját, hogy [az network public-IP-előtag show](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show) ; beállítások megjelenítése [az network public-IP-előtag frissítés](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-update) frissítése; [az network public-IP-előtag delete](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-delete) törlése|
 |PowerShell|[Get-AzPublicIpPrefix](/powershell/module/az.network/get-azpublicipprefix) és egy nyilvános IP-címobjektumot, beállítások megtekintéséhez [Set-AzPublicIpPrefix](/powershell/module/az.network/set-azpublicipprefix) ;-beállítások frissítése [Remove-AzPublicIpPrefix](/powershell/module/az.network/remove-azpublicipprefix) törlése|
 
 ## <a name="permissions"></a>Engedélyek

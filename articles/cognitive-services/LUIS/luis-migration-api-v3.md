@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/22/2019
 ms.author: diberry
 ms.openlocfilehash: b7b4e25c78ef08bdf9a7c2f3faf96725fc5f5fc8
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66123888"
 ---
 # <a name="preview-migrate-to-api-version-3x--for-luis-apps"></a>Előzetes verzió: API-verzió át 3.x LUIS-alkalmazások
@@ -160,7 +160,7 @@ A v2-ben a `entities` tömböt adott vissza az előre jelzett entitásokat az eg
 
 Az alábbi példában: fontolja meg az utterance (kifejezés), amely tartalmazza a szöveg, amelyet `Yellow Bird Lane`. Ez a szöveg várhatóan meghalad egy egyéni `Location` entitás szerepe `Destination`.
 
-|Szöveg utterance (kifejezés)|Entitás neve|Szerepkör neve|
+|Szöveg utterance (kifejezés)|Entitás neve|Szerepkörnév|
 |--|--|--|
 |`Yellow Bird Lane`|`Location`|`Destination`|
 
@@ -275,7 +275,7 @@ Az előző utterance (kifejezés), használja az utterance (kifejezés) `him` mu
 
 Az előrejelzési válasz tartalmazza a külső entitások, az összes többi előre jelzett entitást, mert meg van határozva a kérés.  
 
-#### <a name="resolution"></a>Feloldás
+#### <a name="resolution"></a>Megoldás:
 
 A _választható_ `resolution` a válaszban visszalépési tulajdonság értéket ad vissza, az előrejelzési válaszként, lehetővé teszi, hogy adja át a külső entitáshoz társított metaadatokat, majd megkapni. 
 

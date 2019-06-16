@@ -9,10 +9,10 @@ ms.date: 4/30/2019
 ms.author: shants
 ms.custom: include file
 ms.openlocfilehash: c2931fa410cf92755a5df5b7129dcf93de900930
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66155924"
 ---
 Azure rendszeres időközönként frissíti a megbízhatóságának, teljesítményének és a gazda-infrastruktúrát, a virtuális gépek biztonságának javítása érdekében platformja. Ezek a frissítések célját címtartományok a javítás az üzemeltetési környezetben frissítése hálózati összetevők vagy hardver leszerelése szoftverösszetevőket. 

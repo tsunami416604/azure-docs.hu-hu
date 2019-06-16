@@ -9,10 +9,10 @@ ms.date: 05/17/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: ab55441650085f6ca89f05613fe74dd4ae3cba54
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66128868"
 ---
 1. Egy erőforrást vagy erőforráscsoportot, címkéinek megtekintéséhez keres az áttekintésben meglévő címkéit. Ha eddig még nem vett fel címkéket, a lista üres.
@@ -46,7 +46,7 @@ Tömegesen rendelhet hozzá címkéket, hogy több erőforrást:
 
      ![Címkék hozzárendelése](./media/resource-manager-tag-resources/assign-tags.png)
 
-1. Után minden nevét és értékét, válassza ki a **+**. Ha elkészült, válassza **hozzárendelése**.
+1. Után minden nevét és értékét, válassza ki a **+** . Ha elkészült, válassza **hozzárendelése**.
 
      ![Válassza ki a hozzárendelése](./media/resource-manager-tag-resources/select-assign.png)
 

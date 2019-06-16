@@ -13,10 +13,10 @@ ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e34e6257b4800387470cdc1b7d624bf3ebd1d3e6
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65989226"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-microsoft-identity-platform"></a>Egyszeri bejelentkezés nem katalógusból származó alkalmazásokhoz a Microsoft identity platform konfigurálása
@@ -64,7 +64,7 @@ Az alkalmazás így hozzáadásával előre integrált alkalmazások, elérhető
 - **Jelszóalapú**
 - **A csatolt**
 
-![Egyszeri bejelentkezési mód kiválasztása](./media/configure-single-sign-on-non-gallery-applications/select-a-single-sign-on-method.png)
+![Egyszeri bejelentkezés módszer kiválasztása](./media/configure-single-sign-on-non-gallery-applications/select-a-single-sign-on-method.png)
 
 Ezek a beállítások kapcsolatos további információkért tekintse meg a következő szakaszok a jelen cikk.
 
@@ -78,7 +78,7 @@ Ezen a lapon öt különböző fejlécek rendelkezik:
 
 | Címsor száma | Fejléc neve | Ezt a címsort összefoglalását lásd: |
 | --- | --- | --- |
-| 1. | **Alapszintű SAML-konfigurációja** | [Adja meg az alapszintű SAML-konfigurációja](#enter-basic-saml-configuration) |
+| 1 | **Alapszintű SAML-konfigurációja** | [Adja meg az alapszintű SAML-konfigurációja](#enter-basic-saml-configuration) |
 | 2 | **Felhasználói attribútumok és jogcímek** | [Tekintse át, vagy a SAML-jogkivonatban kiadott jogcímek testreszabása](#review-or-customize-the-claims-issued-in-the-saml-token) |
 | 3 | **SAML-aláíró tanúsítvány** | [Felülvizsgálat tanúsítvány lejárati dátum, állapot és e-mail-értesítés](#review-certificate-expiration-data-status-and-email-notification) |
 | 4 | **Állítsa be a \<alkalmazás neve >** | [Cél-alkalmazás beállítása](#set-up-target-application) |
@@ -125,7 +125,7 @@ Az alábbi két mező szükség:
 
 A következő három mezőt nem kötelező:
 
-- **Bejelentkezési URL-cím (SP által kezdeményezett csak)**. Ez azt jelzi, hogy a felhasználó itt, jelentkezzen be az alkalmazás. Ha az alkalmazás által végrehajtott SP által kezdeményezett egyszeri Bejelentkezést, majd amikor a felhasználók az URL-címet, az SP elvégzi szükséges átirányítást az Azure AD-hitelesítést, és jelentkezzen be a felhasználó. Ha megadja ezt a mezőt, az Azure AD az URL-cím használatával indítsa el az alkalmazást, az Office 365 és az Azure AD hozzáférési Panel. Ha kihagyja ezt a mezőt, az Azure AD inkább hajt végre identitásszolgáltató által kezdeményezett bejelentkezési – Office 365-höz, az Azure AD hozzáférési Panel vagy az Azure AD egyszeri bejelentkezési URL-címet az alkalmazás elindítása során (amely másolhatja a **irányítópult** lap).
+- **Bejelentkezési URL-cím (SP által kezdeményezett csak)** . Ez azt jelzi, hogy a felhasználó itt, jelentkezzen be az alkalmazás. Ha az alkalmazás által végrehajtott SP által kezdeményezett egyszeri Bejelentkezést, majd amikor a felhasználók az URL-címet, az SP elvégzi szükséges átirányítást az Azure AD-hitelesítést, és jelentkezzen be a felhasználó. Ha megadja ezt a mezőt, az Azure AD az URL-cím használatával indítsa el az alkalmazást, az Office 365 és az Azure AD hozzáférési Panel. Ha kihagyja ezt a mezőt, az Azure AD inkább hajt végre identitásszolgáltató által kezdeményezett bejelentkezési – Office 365-höz, az Azure AD hozzáférési Panel vagy az Azure AD egyszeri bejelentkezési URL-címet az alkalmazás elindítása során (amely másolhatja a **irányítópult** lap).
 
 - **Továbbítási állapot**. A továbbítási állapot SAML-arra utasítani az alkalmazás hol irányítsa át a felhasználókat a hitelesítés után is megadhat. Az értéke általában egy URL-címe vagy URL-cím elérési útja, amely egy adott helyen az alkalmazáson belül.
 
@@ -141,7 +141,7 @@ Megtekintését és szerkesztését a jogcímek küldése az alkalmazásnak az S
 
 - Nyissa meg a **felhasználói attribútumok & jogcímek** címsor, és válassza ki a **szerkesztése** ikonra. A **felhasználói attribútumok & jogcímek** lap jelenik meg.
 
-![Felhasználói attribútumok és jogcímek](./media/configure-single-sign-on-non-gallery-applications/user-attributes-and-claims.png)
+![Felhasználói attribútumokról és jogcímekről](./media/configure-single-sign-on-non-gallery-applications/user-attributes-and-claims.png)
 
 A két okból az SAML-jogkivonatban kiadott jogcímek szerkesztése lehet szükség:
 
@@ -183,7 +183,7 @@ Az alkalmazás egy új felhasználó vagy csoport hozzárendelése:
 
 1. Az alkalmazás oldalsávon válassza **felhasználók és csoportok**. A  **\<alkalmazás neve >-felhasználók és csoportok** lap, amely hozzárendelt felhasználók és csoportok aktuális listáját jeleníti meg.
 2. Válassza ki **felhasználók hozzáadása**. A **hozzáadása hozzárendelések** lap jelenik meg.
-3. Válassza ki **felhasználók és csoportok (\<szám > kijelölt)**. A **felhasználók és csoportok** elérhető felhasználók és csoportok listáját tartalmazó lap jelenik meg,.
+3. Válassza ki **felhasználók és csoportok (\<szám > kijelölt)** . A **felhasználók és csoportok** elérhető felhasználók és csoportok listáját tartalmazó lap jelenik meg,.
 4. Típus vagy görgessen lefelé, keresse meg a felhasználót vagy csoportot szeretne hozzárendelni a listából.
 5. Válassza ki a felhasználó vagy csoport, amelyet szeretne hozzáadni, és válassza ki a **kiválasztása** gombra. A **felhasználók és csoportok** lap eltűnik.
 6. Az a **hozzáadása hozzárendelések** lapon jelölje be **hozzárendelése**. A  **<application name> -felhasználók és csoportok** lap jelenik meg a listában szereplő további felhasználóival.
@@ -213,7 +213,7 @@ Válassza ezt a beállítást, konfigurálhat [jelszóalapú egyszeri bejelentke
 
 Miután kiválasztotta **jelszóalapú**, adja meg az alkalmazás webes bejelentkezési oldal URL-CÍMÉT kéri.
 
-![Jelszóalapú egyszeri bejelentkezés](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
+![Jelszavas egyszeri bejelentkezés](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
 
 Majd hajtsa végre az alábbi lépéseket:
 

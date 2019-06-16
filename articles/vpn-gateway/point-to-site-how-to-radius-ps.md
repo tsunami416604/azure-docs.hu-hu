@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: cherylmc
 ms.openlocfilehash: 1096c120b4e7731fabd574c4096e70fe02b6272d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66147002"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>RADIUS-hitelesítés használatával virtuális hálózathoz pont – hely kapcsolat konfigurálása: PowerShell
@@ -80,7 +80,7 @@ A példaértékek használatával létrehozhat egy tesztkörnyezetet, vagy a seg
 * **Előfizetés:** Ha több előfizetéssel rendelkezik, győződjön meg arról, hogy a megfelelőt használja-e.
 * **Erőforráscsoport: TestRG**
 * **Hely: USA keleti RÉGIÓJA**
-* **DNS-kiszolgáló: IP-cím** a névfeloldáshoz virtuális hálózatához használni kívánt DNS-kiszolgáló. (választható)
+* **DNS-kiszolgáló: IP-cím** a névfeloldáshoz virtuális hálózatához használni kívánt DNS-kiszolgáló. (nem kötelező)
 * **Átjáró neve: Vnet1GW**
 * **Nyilvános IP-név: VNet1GWPIP**
 * **VpnType: Útvonalalapú**

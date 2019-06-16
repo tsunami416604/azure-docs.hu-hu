@@ -9,10 +9,10 @@ ms.date: 02/13/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: afd4836229c60ebef1536d4fa1ca4206a492e56d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66150322"
 ---
 Önaláírt főtanúsítvány létrehozása után exportálja a főtanúsítvány nyilvános kulcsú .cer fájlját (ne a titkos kulcsot). Később fogja feltölteni ezt a fájlt az Azure-bA. A következő lépések segítségével exportálhatja a az önaláírt főtanúsítványhoz tartozó .cer fájlt:
@@ -40,7 +40,7 @@ ms.locfileid: "66150322"
    ![Siker](./media/vpn-gateway-certificates-export-public-key-include/success.png)
 8. Az exportált tanúsítványt ehhez hasonlóan néz ki:
 
-   ![Exportálva](./media/vpn-gateway-certificates-export-public-key-include/exported.png)
+   ![Exportált](./media/vpn-gateway-certificates-export-public-key-include/exported.png)
 9. Nyissa meg a Jegyzettömbben az exportált tanúsítványt, ha valami hasonló ebben a példában láthatja. A kék szakaszában az Azure-bA feltöltött adatokat tartalmazza. A Jegyzettömb alkalmazásban nyissa meg a tanúsítványt, és nem tűnik ehhez hasonló, általában ez azt jelenti, hogy nem exportált, használja a Base-64 kódolású X.509 (. CER) formátumban. Emellett ha egy másik szöveges szerkesztő használni kívánt, ismerje meg, hogy egyes szerkesztők megjelentetni nem kívánt formázása a háttérben. Ez problémákat, ha ezt a tanúsítványt a szöveget az Azure-bA feltöltött hozhat létre.
 
    ![Nyissa meg a Jegyzettömbben](./media/vpn-gateway-certificates-export-public-key-include/notepad.png)

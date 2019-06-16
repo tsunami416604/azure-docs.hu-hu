@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/1/2019
 ms.author: mlottner
 ms.openlocfilehash: 85e342f08e5402e50e5b0dfd1fe2df90337f29ca
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66254292"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Az IoT Edge-eszközön a biztonsági modul üzembe helyezése
@@ -70,7 +70,7 @@ Használja az alábbi lépéseket egy ASC IoT biztonsági modul telepítéséhez
 
 Hozzon létre egy IoT Edge üzembe helyezése az Azure Security Center az IoT három lépésből áll. A következő szakaszok egyenként végig. 
 
-#### <a name="step-1-add-modules"></a>1. lépés: Modulok hozzáadása
+#### <a name="step-1-add-modules"></a>1\. lépés: Modulok hozzáadása
 
 1. Az a **modulok hozzáadása** lapon **üzembe helyezési modulok** területen kattintson a **AzureSecurityCenterforIoT**. 
    
@@ -134,13 +134,13 @@ Hozzon létre egy IoT Edge üzembe helyezése az Azure Security Center az IoT h�
    
 1. Kattintson a **tovább**.
 
-#### <a name="step-2-specify-routes"></a>2. lépés: Útvonalak megadása 
+#### <a name="step-2-specify-routes"></a>2\. lépés: Útvonalak megadása 
 
 1. Az a **útvonalak megadása** lapra, és állítsa a **ASCForIoTToIoTHub** átirányítása **"származó/üzenetek/modulok/azureiotsecurity/\* be felső $"** , kattintson **Tovább**.
 
    ![Útvonalak megadása](media/howto/edge-onboarding-9.png)
 
-#### <a name="step-3-review-deployment"></a>3. lépés: Tekintse át a központi telepítés
+#### <a name="step-3-review-deployment"></a>3\. lépés: Tekintse át a központi telepítés
 
 1. Az a **tekintse át a központi telepítési** fülre, tekintse át a telepítési adatokat, majd válassza ki **küldés** a telepítés befejezéséhez.
 

@@ -14,10 +14,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: f0612a688bb1e0fd79325b9a1f9b43731a210d10
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66399241"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>Az Azure SQL Database georeplikációja és a feladatátvétel az Azure-SSIS integrációs modul konfigurálása
@@ -28,7 +28,7 @@ Georeplikáció és feladatátvétel az SQL Database kapcsolatos további inform
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="scenario-1---azure-ssis-ir-is-pointing-to-read-write-listener-endpoint"></a>1. forgatókönyv – Azure-SSIS integrációs modul mutat-e írási-olvasási figyelői végpont
+## <a name="scenario-1---azure-ssis-ir-is-pointing-to-read-write-listener-endpoint"></a>1\. forgatókönyv – Azure-SSIS integrációs modul mutat-e írási-olvasási figyelői végpont
 
 ### <a name="conditions"></a>Feltételek
 
@@ -44,7 +44,7 @@ Ez a szakasz vonatkozik, az alábbi feltételek teljesülése esetén:
 
 Amikor feladatátvételt hajt végre, nem látja, az Azure-SSIS integrációs modult. Az Azure-SSIS integrációs modul automatikusan csatlakozik az új elsődleges, a feladatátvételi csoport.
 
-## <a name="scenario-2---azure-ssis-ir-is-pointing-to-primary-server-endpoint"></a>2. forgatókönyv – Azure-SSIS integrációs modul mutató elsődleges kiszolgálói végpont
+## <a name="scenario-2---azure-ssis-ir-is-pointing-to-primary-server-endpoint"></a>2\. forgatókönyv – Azure-SSIS integrációs modul mutató elsődleges kiszolgálói végpont
 
 ### <a name="conditions"></a>Feltételek
 
@@ -101,7 +101,7 @@ A következő szakaszok ismertetik részletesebben ezeket a lépéseket.
 
 3. Indítsa újra az integrációs modul.
 
-## <a name="scenario-3---attaching-an-existing-ssisdb-ssis-catalog-to-a-new-azure-ssis-ir"></a>3. forgatókönyv – egy új Azure-SSIS integrációs modul egy meglévő SSISDB (SSIS-katalógus) csatolása
+## <a name="scenario-3---attaching-an-existing-ssisdb-ssis-catalog-to-a-new-azure-ssis-ir"></a>3\. forgatókönyv – egy új Azure-SSIS integrációs modul egy meglévő SSISDB (SSIS-katalógus) csatolása
 
 Amikor egy ADF vagy az Azure-SSIS integrációs modul katasztrófa történik az aktuális régióban, az SSISDB tartja dolgozik egy új Azure-SSIS integrációs modul egy új régióban is felvehető.
 

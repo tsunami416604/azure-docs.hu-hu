@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: 695591fedfacb34742335a6e9d6ca32a9c77eb7e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66148551"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Hitelesítés a Stream Analytics használatával az Azure Data Lake Storage Gen1 felügyelt identitások használatával
@@ -180,7 +180,7 @@ Ez a funkció nem támogatja a következőket:
 
 1. **Több-bérlős hozzáférés**: Az egyszerű szolgáltatás egy adott Stream Analytics-feladat létrehozása az Azure Active Directory-bérlővel, amelyen a feladat lett létrehozva, és nem használható olyan erőforrások, amelyek egy másik Azure Active Directory-bérlőben található találhatók. Ezért csak használhatja MSI ADLS általános 1 erőforrást, amely az Azure Stream Analytics-feladat, ugyanazon az Azure Active Directory a bérlőn belül. 
 
-2. **[Felhasználói hozzárendelt identitás](../active-directory/managed-identities-azure-resources/overview.md)**: nem támogatott. Ez azt jelenti, hogy a felhasználó nem sikerül a saját a Stream Analytics-feladat által használt egyszerű szolgáltatásának megadása. Az egyszerű szolgáltatás Azure Stream Analytics hozza létre.
+2. **[Felhasználói hozzárendelt identitás](../active-directory/managed-identities-azure-resources/overview.md)** : nem támogatott. Ez azt jelenti, hogy a felhasználó nem sikerül a saját a Stream Analytics-feladat által használt egyszerű szolgáltatásának megadása. Az egyszerű szolgáltatás Azure Stream Analytics hozza létre.
 
 ## <a name="next-steps"></a>További lépések
 

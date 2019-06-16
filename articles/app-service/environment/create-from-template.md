@@ -15,10 +15,10 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: bdf722ffa7a7c499ff256392886e0f229f27c7a5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66137081"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Az ASE létrehozása Azure Resource Manager-sablon használatával
@@ -69,12 +69,12 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 Az ASE létrehozását egy órát vesz igénybe. Ezután az ASE megjelenik-e a listában, az ASE az előfizetés, amely kiváltotta az üzembe helyezés a portálon.
 
 ## <a name="upload-and-configure-the-default-ssl-certificate"></a>Töltse fel, és az "alapértelmezett" SSL-tanúsítvány konfigurálása
-SSL-tanúsítvány az ASE társítva kell lennie az "alapértelmezett" SSL-tanúsítvány, amely alkalmazások SSL-kapcsolat létesítésére szolgál. Ha az ASE alapértelmezett DNS-utótag *belső contoso.com*, kapcsolatot https://some-random-app.internal-contoso.com érvényes SSL-tanúsítvány szükséges **.internal-contoso.com*. 
+SSL-tanúsítvány az ASE társítva kell lennie az "alapértelmezett" SSL-tanúsítvány, amely alkalmazások SSL-kapcsolat létesítésére szolgál. Ha az ASE alapértelmezett DNS-utótag *belső contoso.com*, kapcsolatot https://some-random-app.internal-contoso.com érvényes SSL-tanúsítvány szükséges * *.internal-contoso.com*. 
 
 Szerezze be egy érvényes SSL-tanúsítvány használatával a belső tanúsítványszolgáltatót, vásárol egy tanúsítványt külső kiállítótól vagy egy önaláírt tanúsítvány használatával. Az SSL-tanúsítvány forrásától függetlenül a következő tanúsítvány attribútumok megfelelően kell konfigurálni:
 
-* **Tulajdonos**: Ezt az attribútumot állítsa **.az-gyökér-domain-here.com*.
-* **Tulajdonos alternatív neve**: Ennek az attribútumnak tartalmaznia kell mindkét **.az-gyökér-domain-here.com* és **.az-gyökér-domain-here.com*. Az SCM/Kudu helyhez társított SSL-kapcsolatok használata a képernyő címének *your-app-name.scm.your-root-domain-here.com*.
+* **Tulajdonos**: Ezt az attribútumot állítsa * *.az-gyökér-domain-here.com*.
+* **Tulajdonos alternatív neve**: Ennek az attribútumnak tartalmaznia kell mindkét * *.az-gyökér-domain-here.com* és * *.az-gyökér-domain-here.com*. Az SCM/Kudu helyhez társított SSL-kapcsolatok használata a képernyő címének *your-app-name.scm.your-root-domain-here.com*.
 
 Az érvényes SSL-tanúsítványt az aktuális két további előkészítő lépések szükségesek. Konvertálja/mentse az SSL-tanúsítványt .pfx fájlként. Ne feledje, hogy a .pfx-fájlt kell összes köztes és főtanúsítványok. Jelszóval gondoskodjon a védelméről.
 
@@ -154,7 +154,7 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 
 A módosítás alkalmazása ASE előtér / körülbelül 40 percet vesz igénybe. Például két előtérrendszerek használó alapértelmezett méretű ASE a sablon körülbelül egy óra és 20 percet vesz igénybe végrehajtásához. A sablon futása közben az ASE nem skálázhatja.  
 
-A sablon befejezését követően az ILB ASE alkalmazások HTTPS-kapcsolaton keresztül érhető el. A kapcsolatok biztonságosak, az alapértelmezett SSL-tanúsítvány használatával. Az alapértelmezett SSL-tanúsítványt használt az ILB ASE alkalmazásokat az alkalmazás nevét, valamint az alapértelmezett állomásnév együttes használatával foglalkozik. Ha például https://mycustomapp.internal-contoso.com használja az alapértelmezett SSL-tanúsítványt **.internal-contoso.com*.
+A sablon befejezését követően az ILB ASE alkalmazások HTTPS-kapcsolaton keresztül érhető el. A kapcsolatok biztonságosak, az alapértelmezett SSL-tanúsítvány használatával. Az alapértelmezett SSL-tanúsítványt használt az ILB ASE alkalmazásokat az alkalmazás nevét, valamint az alapértelmezett állomásnév együttes használatával foglalkozik. Ha például https://mycustomapp.internal-contoso.com használja az alapértelmezett SSL-tanúsítványt * *.internal-contoso.com*.
 
 Csakúgy, mint a nyilvános több-bérlős szolgáltatás rendszeren futtatott alkalmazások, azonban a fejlesztők konfigurálhatja az egyes alkalmazások egyéni állomásnevek. Egyedi SNI SSL-tanúsítványok kötései az egyes alkalmazások is konfigurálhatja.
 

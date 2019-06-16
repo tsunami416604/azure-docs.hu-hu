@@ -16,10 +16,10 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 70ca1e2f4fd831619cc3cd443d98018a35f4e1ef
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963076"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Oktatóanyag: -Jelentések automatikus felhasználói fiók kiépítése
@@ -37,7 +37,7 @@ Ez a cikk bemutatja, hogyan ellenőrizheti az üzembe helyezés állapotát az f
 
 * **API naplózása** – Azure Active Directory is kínál, amely lehetővé teszi a programozott lekéréséhez a részletes üzembe helyezési naplók naplózási API. Lásd: [API-referencia az Azure Active Directory naplózási](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) az adott használatával az API dokumentációjában. Ez a cikk nem tárgyalja kifejezetten az API használatát, amíg azt a kiépítés események, které jsou zaznamenány v auditovacím protokolu típusú részletesen.
 
-### <a name="definitions"></a>Definíciók
+### <a name="definitions"></a>Meghatározások
 
 Ebben a cikkben alább meghatározott, az alábbi feltételek:
 
@@ -69,7 +69,7 @@ Az üzembe helyezési összefoglaló jelentés jelenik meg a a **kiépítési** 
 
 Az üzembe helyezési összefoglaló jelentés kell lennie a helyi rendszergazdák áttekintés a létesítési feladat működési állapotának az ellenőrzéséhez.
 
- ![Összefoglaló jelentés](./media/check-status-user-account-provisioning/summary_report.PNG)
+ ![Összesítő jelentés](./media/check-status-user-account-provisioning/summary_report.PNG)
 
 ## <a name="provisioning-audit-logs"></a>Üzembe helyezési naplók
 A kiépítési szolgáltatás által végzett tevékenységek tárolja, amely az Azure AD naplóit, amely lehet megtekinteni a **Auditnaplók** lapjára az **fiók üzembe helyezésének** kategória. Esemény típusú naplózott tevékenységek a következők:

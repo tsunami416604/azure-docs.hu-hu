@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: cherylmc
 ms.openlocfilehash: b590dabbe4b2c6526f2c602aeed64667348eefa9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66113959"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Hozzon létre és telepítse a VPN-ügyfélkonfigurációs fájlok az Azure natív Tanúsítványalapú hitelesítés P2S konfiguráció
@@ -94,7 +94,7 @@ Használja az alábbi lépéseket Mac natív VPN-ügyfél konfigurálása a tan�
 
    A **felület** értéke "VPN" és a **VPN-típust** értéke "IKEv2". Adjon meg egy nevet a profilnak a a **szolgáltatásnév** mezőbe, majd kattintson a **létrehozás** a VPN-ügyfél-csatlakozási profil létrehozásához.
 
-   ![hálózat](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
+   ![network](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
 4. Az a **általános** mappába, az a **VpnSettings.xml** fájlt, másolja a **VpnServer** címke értéke. Illessze be ezt az értéket a **kiszolgálócím** és **távoli azonosítója** mezőket a profil.
 
    ![Kiszolgálóadatok](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
@@ -109,7 +109,7 @@ Használja az alábbi lépéseket Mac natív VPN-ügyfél konfigurálása a tan�
    ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. Az a **helyi azonosítója** mezőben adja meg azt a tanúsítványt (a 6. lépés). Ebben a példában a "ikev2Client.com". Kattintson a **alkalmaz** gombra kattintva mentse a módosításokat.
 
-   ![alkalmaz](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
+   ![Alkalmazása](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
 9. Az a **hálózati** párbeszédpanelen kattintson a **alkalmaz** összes módosítások mentéséhez. Kattintson a **Connect** elindításához a P2S-kapcsolat az Azure vnetre.
 
 ## <a name="linuxgui"></a>Linux (strongSwan GUI)
