@@ -4,21 +4,21 @@ description: Ismerje meg, hogyan IoT Edge-eszközök és a modulok működhet a 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/30/2019
+ms.date: 06/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 74d2601c2319ccad9cc980b83894a3242705aa46
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4f3e5c1566271573b43e24a1749b42daa7530555
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148122"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051948"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>Az IoT Edge-eszközök, a modulok és a gyermek eszközök bővített offline képességekről
 
-Az Azure IoT Edge az IoT Edge-eszközök bővített offline műveleteket támogatja, és lehetővé teszi, hogy a gyermek nem peremhálózati eszközökön offline műveletek túl. Mindaddig, amíg az IoT Edge-eszköz csatlakoztatása az IoT hubhoz, egy lehetőség volt-e, és az alárendelt eszközök továbbra is szakaszos függvény vagy nincs internetkapcsolat. 
+Az Azure IoT Edge az IoT Edge-eszközök bővített offline műveleteket támogatja, és lehetővé teszi az IoT Edge gyermek eszközökön offline műveletek túl. Mindaddig, amíg az IoT Edge-eszköz csatlakoztatása az IoT hubhoz, egy lehetőség volt-e, és az alárendelt eszközök továbbra is szakaszos függvény vagy nincs internetkapcsolat. 
 
 
 ## <a name="how-it-works"></a>Működés
@@ -27,19 +27,19 @@ IoT Edge-eszköz kapcsolat nélküli módba kerül, amikor az IoT Edge hubot a h
 
 Az alábbi példa bemutatja, hogyan egy IoT Edge-forgatókönyvet a kapcsolat nélküli üzemmódban működik:
 
-1. **IoT Edge-eszköz konfigurálása.**
+1. **Eszközök konfigurálása**
 
-   IoT Edge-eszközök automatikusan offline képességeiről engedélyezve van. Ezt a képességet más IoT-eszközökkel való kiterjesztéséhez kell deklarálja a szülő-gyermek kapcsolatot, az eszközöket az IoT Hub között. 
+   IoT Edge-eszközök automatikusan offline képességeiről engedélyezve van. Ezt a képességet más IoT-eszközökkel való kiterjesztéséhez kell deklarálja a szülő-gyermek kapcsolatot, az eszközöket az IoT Hub között. Ezután konfigurálnia a gyermek eszközök megbízható hozzárendelt szülő eszközükön, és irányíthatja az eszközről a felhőbe való kommunikáció keretében a szülő átjáróként. 
 
-2. **Szinkronizálás az IoT hubbal.**
+2. **Az IoT Hub szinkronizálása**
 
    Legalább egyszer az IoT Edge-futtatókörnyezet a telepítés után az IoT Edge-eszköz online állapotban kell lennie az IoT Hub szinkronizáláshoz. A szinkronizálás az IoT Edge-eszköz lesz rendelve gyermek eszközök adatait. Az IoT Edge-eszköz is biztonságosan frissíti a helyi gyorsítótárat offline műveletek engedélyezése és beállításait a helyi tárhely a telemetriai üzeneteket kérdezi le. 
 
-3. **Kapcsolat nélküli módba.**
+3. **Kapcsolat nélküli módba**
 
    Az IoT hubról leválasztott gyermekek IoT-eszközökről, az IoT Edge-eszköz és az üzembe helyezett modulok működhet határozatlan időre. Modulok és a gyermek eszköz indítása, és indítsa újra az IoT Edge hubot közben történő offline állapotban van. Az IoT Hub felső kötött telemetriai helyben tárolódnak. Kommunikációs modulok vagy gyermek IoT-eszközök között közvetlen metódusok vagy az üzenetek változatlan marad. 
 
-4. **Újra és szinkronizálja újra az IoT hubbal.**
+4. **Újra és szinkronizálja újra az IoT hubbal**
 
    Miután visszaállította a kapcsolatot az IoT Hub, IoT Edge-eszközön újra szinkronizálja. Helyileg tárolt üzenetek tárolt is ugyanabban a sorrendben érkeznek. A modulok kívánt és a jelentett tulajdonságok és az eszközök közötti eltérések egyeztetve. Az IoT Edge-eszköz frissíti a módosításokat a csoporthoz hozzárendelt gyermek IoT-eszközök.
 
@@ -49,28 +49,30 @@ A jelen cikkben ismertetett kiterjesztett offline lehetőségek állnak rendelke
 
 A kapcsolat nélküli kiterjesztett technikai támogatás érhető el minden olyan régióban, ahol az IoT Hub érhető el, **kivételével** USA keleti RÉGIÓJA.
 
-Csak az Edge IoT-eszközök gyermek eszközöket adhat hozzá. 
+Gyermek-eszközök csak az IoT Edge-eszközöket adhat hozzá. 
 
 IoT Edge-eszközök és a hozzárendelt gyermek eszközeik működhet határozatlan ideig offline állapotban van, az egyszeri, a kezdeti szinkronizálást követően. Üzenetek tárolása azonban az élettartam (TTL) beállítás, és a rendelkezésre álló lemezterület, az üzenetek tárolására szolgáló idő függ. 
 
-## <a name="set-up-an-iot-edge-device"></a>IoT Edge-eszköz beállítása
+## <a name="set-up-parent-and-child-devices"></a>Szülő és gyermek eszközök beállítása
 
-Az IoT Edge-eszköz gyermek IoT-eszközökön a kiterjesztett offline lehetőségek bővítése céljából kell deklarálni, a szülő-gyermek kapcsolatba az Azure Portalon.
+Az IoT Edge-eszköz gyermek IoT-eszközökön a kiterjesztett offline lehetőségek bővítése céljából végezze el a két lépést kell. Először is deklarálni a szülő-gyermek kapcsolatok az Azure Portalon. Második a szülő eszköz és bármely gyermek eszközök közötti megbízhatósági kapcsolat létrehozásához, majd haladjon végig a szülő átjáróként eszközről a felhőbe való kommunikáció konfigurálása a. 
 
 ### <a name="assign-child-devices"></a>Gyermek-eszközök hozzárendelése
 
-Gyermek eszközök bármely nem peremhálózati eszköz, a egy IoT-központban regisztrált lehet. Szülő eszközök több gyermek eszköz rendelkezhet, de egy gyermek eszköz legfeljebb egy szülő. Gyermek eszközök beállítása egy edge-eszközön három lehetőség áll rendelkezésre:
+Gyermek az eszközök lehetnek bármely IoT Edge eszköz regisztrált azonos IoT hubon. Szülő eszközök rendelkezhet több gyermek eszközt, de csak akkor van egy szülő gyermek eszköz. Gyermek eszközök beállítása egy edge-eszközön három lehetőség áll rendelkezésre: az Azure CLI használatával az Azure Portalon keresztül, vagy használja az IoT Hub szolgáltatási SDK-val. 
+
+A következő szakaszok példái milyen eszközhöz adhat meg a szülő-gyermek kapcsolat a meglévő IoT-eszközök az IoT Hub. Ha próbál létrehozni új eszközidentitások gyermeke eszközök, tekintse meg [hitelesítése egy alsóbb rétegbeli eszközök Azure IoT hubra](how-to-authenticate-downstream-device.md) további információt.
 
 #### <a name="option-1-iot-hub-portal"></a>Option 1: Az IoT Hub portálon
 
- A szülő-gyermek kapcsolat létrehozásával új eszköz vagy az eszköz részleteit tartalmazó oldalra, vagy a szülő IoT Edge-eszköz vagy az alárendelt IoT-eszköz is kezelheti. 
+A szülő-gyermek kapcsolat eszközhöz adhat meg egy új eszköz létrehozása során. Vagy a meglévő eszközök esetében a kapcsolat az eszköz részleteit megjelenítő oldalon vagy a szülő IoT Edge-eszköz vagy az alárendelt IoT-eszköz is deklarálja. 
 
    ![Gyermek eszközöket kezelheti az IoT Edge-eszköz részleteit tartalmazó oldalra](./media/offline-capabilities/manage-child-devices.png)
 
 
 #### <a name="option-2-use-the-az-command-line-tool"></a>Option 2: Használja a `az` parancssori eszköz
 
-Használatával a [Azure parancssori felület](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) a [IoT-bővítmény](https://github.com/azure/azure-iot-cli-extension) (v0.7.0 vagy újabb), a szülő-gyermek típusú kapcsolatokat kezelheti a [device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) alárendelt parancsok. Az alábbi példában azt gyermek eszközöket az IoT Edge-eszköz az agyban eszközöket rendeljen az összes nem IoT Edge egy lekérdezés futtatásával. 
+Használatával a [Azure parancssori felület](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) a [IoT-bővítmény](https://github.com/azure/azure-iot-cli-extension) (v0.7.0 vagy újabb), a szülő-gyermek típusú kapcsolatokat kezelheti a [device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) almenüpontok. Az alábbi példa egy lekérdezést használ az agyban az alárendelt az eszközöket az IoT Edge-eszköz lehet minden IoT Edge-eszközök hozzárendelése. 
 
 ```shell
 # Set IoT Edge parent device
@@ -95,23 +97,33 @@ az iot hub device-identity add-children \
 
 Módosíthatja a [lekérdezés](../iot-hub/iot-hub-devguide-query-language.md) válassza ki az eszközöket egy másik részét. A parancs eltarthat néhány másodpercig, ha rengeteg eszközök adja meg.
 
-#### <a name="option-3-use-iot-hub-service-sdk"></a>3. lehetőség: Use IoT Hub Service SDK 
+#### <a name="option-3-use-iot-hub-service-sdk"></a>3\. lehetőség: Use IoT Hub Service SDK 
 
 Végül szülő-gyermek típusú kapcsolatokat használatával programozott módon kezelheti C#, Java vagy Node.js IoT Hub szolgáltatási SDK-t. Íme egy [példa a gyermeke eszköz hozzárendelése](https://aka.ms/set-child-iot-device-c-sharp) használatával a C# SDK-t.
 
-### <a name="specifying-dns-servers"></a>DNS-kiszolgálók megadása 
+### <a name="set-up-the-parent-device-as-a-gateway"></a>Állítsa be a szülő eszközt átjáróként
 
-Robusztusság javítása érdekében azt javasoljuk, adja meg, hogy a környezetében használt DNS-kiszolgáló címei. Tekintse át a [ehhez a hibaelhárításról szóló cikk a két lehetőség](troubleshoot.md#resolution-7).
+Transzparens átjáróként, ahol a gyermek eszköz saját azonosítóval rendelkezik az IoT Hub, de a szülő-n keresztül a felhőn keresztül kommunikál egy szülő-gyermek kapcsolat is felfoghatók. A biztonságos kommunikáció érdekében a gyermek eszköz képesnek kell lennie ellenőrizni, hogy a szülő eszköz megbízható forrásból származik-e. Ellenkező esetben a harmadik féltől megszemélyesíteni a szülők és kommunikációs intercept rosszindulatú eszközök beállítása sikerült. 
+
+A bizalmi kapcsolat létrehozásának egyik módja a következő cikkek részletesen ismertetjük: 
+* [A transzparens átjáróként működő IoT Edge-eszköz konfigurálása](how-to-create-transparent-gateway.md)
+* [Egy alárendelt (gyermek) eszköz csatlakoztatása az Azure IoT Edge-átjáró](how-to-connect-downstream-device.md)
+
+## <a name="specify-dns-servers"></a>Adja meg a DNS-kiszolgálók 
+
+Robusztusság javítása érdekében azt javasoljuk, adja meg, hogy a környezetében használt DNS-kiszolgáló címei. A két lehetőség jelenik meg [állítsa be a DNS-kiszolgáló a hibaelhárítási cikk](troubleshoot.md#resolution-7).
 
 ## <a name="optional-offline-settings"></a>Nem kötelező offline beállítások
 
-Ha várhatóan gyűjteni az eszközök mennyi ideig offline időszakokban létrehozott összes üzenetet, konfigurálja az IoT Edge hubot, hogy az összes üzenetet tárolhat. Nincsenek a két változik, hogy végezhet IoT Edge hubot hosszú távú tárolási engedélyezéséhez. Először is növelheti time to live beállítás. Adja hozzá a további lemezterületet üzenetek tárolására. 
+Az eszközök kapcsolat nélküli módba, ha az szülő IoT Edge-eszközön tárolja, amíg a kapcsolat helyreállt az összes eszköz – felhő üzeneteket. The IoT Edge hub module manages the storage and forwarding of offline messages. Olyan eszközöknél, előfordulhat, hogy kapcsolat nélküli módba a hosszabb ideig a teljesítmény optimalizálása két IoT Edge hub beállításainak konfigurálásával. 
+
+Először növelje élő beállítása úgy, hogy az IoT Edge hub az eszköz újracsatlakoztatása dlouhé üzeneteket fogja megőrizni a időt. Adja hozzá a további lemezterületet üzenetek tárolására. 
 
 ### <a name="time-to-live"></a>Élettartam
 
 Time to live beállítás rendszer mennyi ideig (másodpercben), amely egy üzenetet várhat után járjon le szállítani kell. Az alapértelmezett érték a 7200 másodperc (két óra). Egy egész szám típusú változó, amely körülbelül 2 milliárd maximális értéke csak korlátozza a maximális értéket. 
 
-Ez a beállítás az IoT Edge hub, amely tárolja az ikermodul kívánt tulajdonságot. Segítségével konfigurálhatja az Azure Portalon, az a **speciális Edge-futtatókörnyezet-beállítások konfigurálása** szakaszt, vagy közvetlenül a központi telepítésben lévő jegyzékfájl. 
+Ez a beállítás az IoT Edge hub, amely tárolja az ikermodul kívánt tulajdonságot. Az Azure Portalon, vagy közvetlenül a manifest nasazení konfigurálhatja. 
 
 ```json
 "$edgeHub": {
@@ -165,4 +177,8 @@ Ugyanitt találhat további információt a beállítások létrehozása [docker
 
 ## <a name="next-steps"></a>További lépések
 
-A kiterjesztett offline műveletek engedélyezése a [transzparens átjáró](how-to-create-transparent-gateway.md) forgatókönyveket.
+További információ a szülő-gyermek-eszköz kapcsolatok esetében transzparens átjáró beállítása: 
+
+* [A transzparens átjáróként működő IoT Edge-eszköz konfigurálása](how-to-create-transparent-gateway.md)
+* [Az Azure IoT hubra egy alsóbb rétegbeli eszköz hitelesítéséhez](how-to-authenticate-downstream-device.md)
+* [Egy alárendelt eszköz csatlakoztatása az Azure IoT Edge-átjáró](how-to-connect-downstream-device.md)

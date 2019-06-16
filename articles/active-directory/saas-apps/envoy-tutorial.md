@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 590e7e301b33fdab4122c4b776ebc52f6ed92b08
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e0f5de59d0a0188db4eac68c428de3818c12b303
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65862766"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67103139"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envoy"></a>Oktatóanyag: Az Envoy az Azure Active Directory-integráció
 
@@ -55,7 +55,7 @@ Az Envoy integrálása az Azure AD beállítása, hozzá kell Envoy a galériáb
 
 **Az Envoy hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -214,7 +214,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Nincs művelet elem Envoy történő felhasználókiépítés konfigurálása. Hozzárendelt felhasználóval próbál bejelentkezni az Envoy a hozzáférési panelen, amikor az Envoy ellenőrzi, hogy a felhasználó létezik-e. Ha nincs felhasználói fiók elérhető még, a Envoy automatikusan létre.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

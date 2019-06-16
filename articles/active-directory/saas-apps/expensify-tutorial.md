@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 802b71aa73e01378f161e62ec4c22d8b470955c3
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 926c22c6512ae083712185a5f235737fb48ab9bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898798"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102819"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-expensify"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Expensify
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Expensify konfigurálásához hozzá kell Expensify 
 
 **Expensify hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -195,7 +195,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű Expensify hoz létre. Együttműködve [Expensify ügyfél-támogatási csapatának](mailto:help@expensify.com) a felhasználók hozzáadása az Expensify platformon.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

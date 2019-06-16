@@ -6,15 +6,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
-ms.topic: article
+ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 04b331f3b63ad6400b4bb8efcd053d04ac88989b
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 2a02b56c2fa0f99166cfde0f0089273ed2af4cb9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595843"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073214"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Gyors útmutató: Rendellenességek észlelése az Anomáliadetektálási detector használatával REST API használatával az idősoros adatokat, ésC# 
 
@@ -61,7 +61,7 @@ Ez a rövid útmutató segítségével indítsa el a rendellenességek észlelé
 
 2. Változók létrehozása az előfizetési kulcs és a végpontot. Az alábbiakban az URI-k rendellenességek észlelése is használhat. Ezek hozzá lesznek fűzve a később, hozhat létre az API-Szolgáltatásvégpont URL-címeket.
 
-    |Észlelési módszer  |URI  |
+    |Észlelési módszer  |URI-T  |
     |---------|---------|
     |Batch-észlelés    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
     |A legújabb adatok ponton észlelése     | `/anomalydetector/v1.0/timeseries/last/detect`        |

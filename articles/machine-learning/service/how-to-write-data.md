@@ -13,10 +13,10 @@ ms.reviewer: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
 ms.openlocfilehash: 6206ad1a7356221bf94134e5d293c27d778cc187
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66752870"
 ---
 # <a name="write-and-configure-data--with-the-azure-machine-learning-data-prep-sdk"></a>Írási és az adatokat az Azure Machine Learning Data Prep SDK konfigurálása
@@ -63,7 +63,7 @@ t.head(5)
 
 Példa a kimenetre:
 
-| | 1. oszlop | Column2 | Column3 | 4. oszlopig | Column5 | Column6 | Column7 | Column8 | Column9 |
+| | 1\. oszlop | Column2 | Column3 | 4\. oszlopig | Column5 | Column6 | Column7 | Column8 | Column9 |
 | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
 |0| 10000.0 | 99999.0 | None | NO | NO | ENRS | NaN | NaN | NaN |   
 |1| 10003.0 | 99999.0 | None | NO | NO | ENSO | NaN | NaN | NaN |   
@@ -88,7 +88,7 @@ written_files.head(5)
 
 Példa a kimenetre:
 
-| | 1. oszlop | Column2 | Column3 | 4. oszlopig | Column5 | Column6 | Column7 | Column8 | Column9 |
+| | 1\. oszlop | Column2 | Column3 | 4\. oszlopig | Column5 | Column6 | Column7 | Column8 | Column9 |
 | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
 |0| 10000.0 | 99999.0 | HIBA | NO | NO | ENRS | NaN    | NaN | NaN |   
 |1| 10003.0 | 99999.0 | HIBA | NO | NO | ENSO |    NaN | NaN | NaN |   
@@ -111,7 +111,7 @@ written_files.head(5)
 
 A fenti kód a kimenetet eredményez:
 
-| | 1. oszlop | Column2 | Column3 | 4. oszlopig | Column5 | Column6 | Column7 | Column8 | Column9 |
+| | 1\. oszlop | Column2 | Column3 | 4\. oszlopig | Column5 | Column6 | Column7 | Column8 | Column9 |
 | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
 |0| 10000.0 | 99999.0 | BadData | NO | NO | ENRS | NaN  | NaN | NaN |   
 |1| 10003.0 | 99999.0 | BadData | NO | NO | ENSO |  NaN | NaN | NaN |   
@@ -139,7 +139,7 @@ written_parquet_files.head(5)
 
 A fenti kód a kimenetet eredményez:
 
-|   | 1. oszlop | Column2 | Column3 | 4. oszlopig | Column5 | Column6 | Column7 | Column8 | Column9 |
+|   | 1\. oszlop | Column2 | Column3 | 4\. oszlopig | Column5 | Column6 | Column7 | Column8 | Column9 |
 | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |-------- |
 |0| 10000.0 | 99999.0 | MiscreantData | NO | NO | ENRS | MiscreantData | MiscreantData | MiscreantData |
 |1| 10003.0 | 99999.0 | MiscreantData | NO | NO | ENSO | MiscreantData | MiscreantData | MiscreantData |   

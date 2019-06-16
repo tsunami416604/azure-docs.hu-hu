@@ -1,19 +1,19 @@
 ---
 title: 'Gyors útmutató: Lekérdezés Apache HBase az Azure HDInsight – Apache Phoenixhez'
-description: Ismerje meg, az Apache Phoenix használata a HDInsight. Emellett ismerje meg, telepítése és beállítása az SQLLine a számítógépen szeretne csatlakozni a HDInsight HBase-fürtöt.
+description: Ebben a rövid útmutatóban elsajátíthatja az Apache Phoenix használata a HDInsight. Emellett ismerje meg, telepítése és beállítása az SQLLine a számítógépen szeretne csatlakozni a HDInsight HBase-fürtöt.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: quickstart
-ms.date: 05/08/2019
+ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 46606a991ce878a3335c2c605a4040c9520d5128
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
-ms.translationtype: MT
+ms.openlocfilehash: fd812698ef68a4077b7de6a612392d30d195ec39
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596199"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076293"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-apache-phoenix"></a>Gyors útmutató: Lekérdezés az Apache HBase az Azure HDInsight az Apache Phoenixhez
 
@@ -126,10 +126,3 @@ Ebből a gyors útmutatóból megtudhatta, hogyan az Apache Phoenix használata 
 
 > [!div class="nextstepaction"]
 > [A HDInsight Apache Phoenixhez](../hdinsight-phoenix-in-hdinsight.md)
-
-## <a name="see-also"></a>Lásd még:
-
-* [Az SQLLine manuális](http://sqlline.sourceforge.net/#manual).
-* [Az Apache Phoenix nyelvtani](https://phoenix.apache.org/language/index.html).
-* [Az Apache Phoenix kevesebb mint 15 perc alatt](https://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html)
-* [HDInsight HBase áttekintése](./apache-hbase-overview.md)

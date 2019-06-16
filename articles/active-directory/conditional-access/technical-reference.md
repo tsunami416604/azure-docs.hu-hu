@@ -1,6 +1,6 @@
 ---
-title: Az Azure Active Directory feltételes hozzáférési beállítások referenciája |} A Microsoft Docs
-description: A támogatott beállítások áttekintést kaphat az Azure Active Directory feltételes hozzáférési házirendben.
+title: Az Azure Active Directory feltételes hozzáférés-beállítások referenciája |} A Microsoft Docs
+description: A támogatott beállítások áttekintést kaphat egy Azure Active Directory feltételes hozzáférési szabályzat.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fae09b5aeed05dfb09f2b998de805ef0607e7f39
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 5919eebccad8d7f9e048ae07be296eaaaf8428eb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823546"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112109"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Az Azure Active Directory feltételes hozzáférés beállításainak ismertetése
 
@@ -67,13 +67,13 @@ Feltételes hozzáférési szabályzatot rendelhet a következő felhőalapú al
 - Az Office 365 SharePoint Online
 - Office 365 Yammer
 - Office Delve
-- Office Sway
+- Az Office Sway
 - Outlook-csoportok
 - Project Online
 - Skype Vállalati online verzió
 - Virtuális magánhálózat (VPN)
 - Visual Studio App Center
-- Windows Defender ATP
+- A Windows Defender ATP
 
 ### <a name="other-applications"></a>Más alkalmazások
 
@@ -140,8 +140,8 @@ A bővítmény telepítéséről automatikusan Chrome böngészők, hozzon létr
 
 |    |    |
 | --- | --- |
-| `Path` | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| Name (Név) | 1. |
+| Útvonal | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
+| Name (Név) | 1 |
 | Típus | REG_SZ (String) |
 | Adatok | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx |
 
@@ -149,8 +149,8 @@ Támogatja a Chrome **7 és Windows 8.1**, hozza létre a következő beállít�
 
 |    |    |
 | --- | --- |
-| `Path` | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| Name (Név) | 1. |
+| Útvonal | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
+| Name (Név) | 1 |
 | Típus | REG_SZ (String) |
 | Adatok | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
 
@@ -168,7 +168,7 @@ Ez a beállítás hatással van a hozzáférési kísérletek a következő mobi
 | --- | --- | --- |
 | Dynamics CRM-alkalmazás | Dynamics CRM | A Windows 10, Windows 8.1, iOS és Android |
 | Mail/naptár/személyek alkalmazást, az Outlook 2016, az Outlook 2013 (a modern hitelesítést)| Az Office 365 Exchange online-hoz | Windows 10 |
-| MFA- és helyszabályzat alkalmazásokhoz. Eszköz alapú szabályzatok nem támogatottak.| Bármely saját alkalmazások app service| Android és iOS |
+| MFA- és helyszabályzat alkalmazásokhoz. Eszköz alapú szabályzatok nem támogatottak.| Bármely saját alkalmazások app service| Android és IOS rendszerhez |
 | Microsoft Teams-szolgáltatások – ez vezérli a minden szolgáltatás, amely támogatja a Microsoft Teams és minden az ügyfélalkalmazások – Windows Desktop, iOS, Android, WP és webes ügyféllel | Microsoft Teams | A Windows 10, Windows 8.1, Windows 7, iOS, Android és macOS |
 | Office 2016-alkalmazásokat, Office 2013 (a modern hitelesítést), a onedrive vállalati verzió szinkronizálása ügyfél (lásd: [megjegyzések](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)) | Az Office 365 SharePoint Online | Windows 8.1, Windows 7 |
 | Office 2016-os, univerzális Office-alkalmazásokat, Office 2013 (a modern hitelesítést), onedrive-on a Szinkronizáló ügyfél (lásd: [megjegyzések](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), az Office-csoportok támogatása a jövőben tervezünk, SharePoint-alkalmazások támogatása a jövőben tervezünk | Az Office 365 SharePoint Online | Windows 10 |
@@ -188,7 +188,7 @@ Ez a beállítás hatással van a hozzáférési kísérletek a következő mobi
 
 Kiválasztásával **más ügyfelek**, megadhat egy feltételt, amely hatással van a levelezési protokollok IMAP, MAPI, a jelenléti pontra Irányíthatja, SMTP és ne a modern hitelesítést használó régebbi Office-alkalmazások például az alapszintű hitelesítést használó alkalmazásokhoz.  
 
-![Egyéb ügyfelek](./media/technical-reference/11.png)
+![Más ügyfelek](./media/technical-reference/11.png)
 
 További információkért lásd: [ügyfélalkalmazás](conditions.md#client-apps).
 
@@ -200,7 +200,7 @@ A feltételes hozzáférési házirendben megkövetelheti, hozzáférési kísé
 
 Ez a beállítás a következő ügyfél-alkalmazásokra vonatkozik:
 
-- Microsoft Azure Information Protection
+- A Microsoft Azure Information Protection
 - Microsoft Bookings
 - Microsoft Edge
 - Microsoft Excel

@@ -1,44 +1,42 @@
 ---
 title: Azure-előfizetésekre vonatkozó számlás fizetés |} A Microsoft Docs
 description: Ismerteti, hogyan lehet Azure-előfizetésekre vonatkozó számlás fizetés
-services: ''
 documentationcenter: ''
-author: genlin
+author: bandersmsft
 manager: jureid
-editor: ''
 tags: billing
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 06/06/2019
 ms.author: banders
-ms.openlocfilehash: 7caa7df3817c51d63dfa2838e4223d3fba88e529
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 7af8789d61069f37d34d07653177e839caf35304
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827375"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076514"
 ---
 # <a name="pay-azure-subscription-by-invoice"></a>Azure-előfizetés számlás fizetés
 
 Ha számla ellenében, ez azt jelenti, a számla invoice 30 napon belül kell fizetnie. Lesz jogosult az Azure-előfizetését a számlás fizetés, küldje el az Azure-támogatási kérést. Miután jóváhagyják a kérelmét, átválthat a számlázás használatalapú előfizetés a a [az Azure portal](https://portal.azure.com).
 
 > [!IMPORTANT]
-> * A Számlás fizetés csak üzleti fiókok számár érhető el.
+> * Számlás fizetés csak vállalati fiókok esetében érhető el.
 > * Az összes ki nem egyenlített díjakat használatalapú számlához való váltása előtt kell fizetnie.
-> * Ha számlás fizetésre vált, később már nem válthat vissza hitel- vagy bankkártyás fizetésre.
+> * Miután használatalapú számlázás, nem válthat vissza a hitelkártya vagy bankkártya kártya fizetési.
 
 ## <a name="request-to-pay-by-invoice"></a>A számla ellenében irányuló kérelem
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). Válassza ki **súgó + támogatás** > **új támogatási kérelem**.
 
-    ![Súgó és támogatás gomb](./media/billing-how-to-pay-by-invoice/help-and-support.png)
+    ![Súgó és támogatás hivatkozás](./media/billing-how-to-pay-by-invoice/help-and-support.png)
 
-2. Válassza ki a **Számlázás** problématípust, válassza ki azt az előfizetést, amelynél számlával szeretne fizetni, válasszon egy támogatási csomagot, majd válassza a **Tovább** lehetőséget.
+2. Válassza ki **számlázási** , a **Problématípus**. A *Problématípus* a támogatási kérelem kategória. Válassza ki az előfizetést, amelyhez hozzá szeretné számla ellenében, egy támogatási csomagot, majd válassza ki és **tovább**.
 
-3. Válassza a **Számlás fizetés** lehetőséget a **Probléma típusa** mezőben.
+3. Válassza a **Számlás fizetés** lehetőséget a **Probléma típusa** mezőben. A *Problématípus* a támogatási kérelem alkategória.
 
 4. Adja meg a következő információkat a **részletek** mezőbe, majd válassza ki **tovább**.
 
@@ -65,8 +63,8 @@ Ha számla ellenében, ez azt jelenti, a számla invoice 30 napon belül kell fi
          (New quota) Requested cores:
          Specific region & series of Subscription:
 
-    - A **cégnév** és **cím vállalati** egyeznie kell az Ön által megadott információkat az Azure-fiók.  Megtekintheti, vagy frissítheti az adatokat, lásd: [módosítása az Azure-fiók profiladatait](billing-how-to-change-azure-account-profile.md).
-    - Hozzá kell adnia a számlázási forduljon az Azure Portalon előtt jóvá kell hagyni a kreditkorlátot. A kapcsolattartási adatok kulcsoszlopnak kapcsolódnia kell a Kötelezettségkezelő vagy a pénzügyi részleg a cég. A számlázási ügyfél frissítését, [Azure Account Center](https://account.azure.com/Profile).
+    - A **cégnév** és **cím vállalati** meg kell egyeznie az Ön által megadott információkat az Azure-fiók. Megtekintheti, vagy frissítheti az adatokat, lásd: [módosítása az Azure-fiók profiladatait](billing-how-to-change-azure-account-profile.md).
+    - Hozzá kell adnia a számlázási kapcsolattartási adatokat az Azure Portalon előtt a kreditkorlát jóvá kell hagyni. A kapcsolattartási adatok kulcsoszlopnak kapcsolódnia kell a Kötelezettségkezelő vagy a pénzügyi részleg a cég. A számlázási adatok frissítése, lépjen a [Azure Account Center](https://account.azure.com/Profile).
 
 5. Ellenőrizze a kapcsolattartási adatokat és a kívánt kapcsolatfelvételi módot, majd kattintson a **Létrehozás** lehetőségre.
 
@@ -87,6 +85,9 @@ Ha jóváhagyja, a számla ellenében, átválthat az Azure-előfizetés a szám
 
     ![Képernyőkép a fizetés számla gomb](./media/billing-how-to-pay-by-invoice/pay-by-invoice.png)
 
-## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítség Kapcsolat
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+
+## <a name="next-steps"></a>További lépések
+- Ha szükséges, a számlázási kapcsolattartási adatok frissítése a [Azure Account Center](https://account.azure.com/Profile).

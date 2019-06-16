@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 11ebaec75b1220f39fe059ea7825cdccafda2f5d
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66735616"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Az Azure Maps mobilitási lefedettség
@@ -47,7 +47,7 @@ Az alábbi táblázatban lefedettség adatait az Azure Maps a mobilitási szolg�
 | Puerto Rico | A San Juan |
 | Uruguay | Montevideoi, Punta del Este |
 | Az Amerikai Egyesült Államok | <p>Albany (NY), a Albuquerque (NM), a rögzítést (AK), Appleton-Oshkosh-Neenah (WI), Asheville (NC), (NÉZD) Athén, Atlantában (Georgia), (TX) Austin, Bakersfield (CA), Baltimore), Bellevue (CS), a Berkshire megye (MA), a Birmingham (AL), a Bloomington (India), a Boise (azonosító) Boston () MA), Boulder (CO) Brevard megye (FL), a Buffalo (NY), a Butte (MT), a zöld Cod), központ megye (PA) rendelkeznek, Champaign-Urbana (Illinois), Charleston (SC), Charleston (WV), Charlotte (NC), Charlottesville (VA), Chattanooga (TN), Cheyenne (WY), Chicagói (Illinois), Cincinnati (NÉZD), Citrusfélékről megye (FL), Cleveland (NÉZD), Coachella Valley (CA), Colorado rugó (CO), Columbia (TN), (NÉZD) Amerika felfedezésének, Úrnapja (TX), Dallas/tovább (TX) értékű, daytoni (NÉZD), Delaware, Denver (CO), Des Moines (IA), Detroit (MI), Duluth (MN), El Paso (TX), (vagy Eugene ), Fairbanks (AK), Budapest (ND), Fayetteville (NC), Flagstaff (AZ), tűzköves (MI) Fort Collins (CO), Fort Wayne (India), Fresno (CA), Gainesville (FL), Grand Elágazásoknak (ND), Grand Rapids (MI), a zöld Bay (WI), a Greensboro (NC), a Greenville (SC), a Gunnison (CO), a Hampton utak (VA ), Hanford (CA), Hartford (z), Hernando megye (FL), Honoluluban (nagy), Houston (TX), Humboldt megye (CA), Huntsville (AL), Indianapolisi (India), Ithaca (NY), Jackson (MS), Jackson (TN), Jacksonville – St. John's megye (FL), a Johnson város (TN), Jonesboro (AR) Joplin (hónap), Juneau (AK), Kalamazoo (MI), céges város (hónap), Kauai (nagy), Ketchum (azonosító), Knoxville (TN), Lafayette (India), Lancaster (PA), Lansing (MI), Las Vegas (NV), Lawrence (kapcsolatok), Lee megye (FL), Lexington (KY), Lincoln megye (vagy), a Little Rock (AR), Los Angeles-i) CA), Louisville-i (KY), Madison (WI), McAllen (TX), Memphis (TN), Miami (FL), Milwaukee/Waukeshai (WI), Minneapolisi – St. Paul (MN), Missoula (MT), Modesto (Amerikai Egyesült Államok), Moline (Illinois), Monroe megye (PA), Montgomery (AL), Morgantown (WV), Nashville (TN), Navajo nemzet), Új Haven (z), New Orleansben (LA), NYC-Jersey), Ocala (FL), Okaloosa megye (FL), Oklahoma város (OK), Omaha (NE), (FL) Orlandóban, Panama város (FL), Pensacola (FL), Peoria (Illinois), Philadelphia (PA), Phoenix (AZ), Pittsburgh (PA), (ME) Portland, (vagy) Portland, Racine (WI), Raleigh (NC), Redding (CA), Reno & tó Tahoe (NV), Roanoke Valley VA - Lynchburg, Rochesteri (NY), Sziklás hegyi nemzeti Park), a támadó Valley (vagy), (vagy) Roseburg, Roseville (CA), Sacramentói (CA), Salem (vagy), só Lake város (UT), San Antonio (TX), a San Diego) CA), San Luis Obispo (CA), a Santa Barbara (CA), a Santa Fe (NM), a Sarasota (FL), a Savannah (elérhetővé tétel GA), a Seacoast régió (NH), Seattle-Tata-Bellevue (CS), SF Bay (CA) területen, Sioux város (IA), Sioux hányadik (SD), Sitka (AK), Spokane (CS), Springfield (Illinois), Springfield (háttértár), St. George (UT), St. Louis (hónap), Stockton (CA), Syracuse-Utica (NY), Tallahassee (FL), Tampai Szentpétervár (FL), Terre Haute (India), Toledo (NÉZD), Topeka (kapcsolatok), bejárás város (MI), Tucson (AZ), Tulsa (OK), Vermont, Victorville (CA), a Volusia megye (FL), a Waco (TX), Washington (DC), Waterbury (z), Wichita (kapcsolatok), Wilmington (NC), Yakima (CS), York megye (PA), Yuma megye (AZ)</p>|
-| + EGYESÜLT ÁLLAMOK Virgin-szigetek | USA Virgin-szigetek * |
+| \+ EGYESÜLT ÁLLAMOK Virgin-szigetek | USA Virgin-szigetek * |
 
 
 ## <a name="asia-pacific"></a>Ázsia és a Csendes-óceáni térség
@@ -90,8 +90,8 @@ Az alábbi táblázatban lefedettség adatait az Azure Maps a mobilitási szolg�
 | Észtország   | Estonia* |   
 | Finnország   | Hämeenlinna, Helsinki, Joensuu, Jyväskylä, Kajaani, Kouvola - Kotka, Kuopio, Lappeenranta, Mikkeli, Oulu, Seinäjoki, Tampere, Turku, Vaasa|
 | Franciaország    | <p>Amberieu-en – Bugey, Amiens, Angers, Annecy, Annonay, Arras, Aubenas, Bayonne, Besançon, Blois, Bordeaux, Boulogne sur egyesítése, Brest, Briançon, Cannes-ban, Châlons-en – pezsgő, Chartres, Clermont-Ferrand, Colmar, a Dax, Dijon, Grenoble, Haguenau, La Rochelle, Le Mans fókuszt, Lille, Lorient, Lyon, Mac számítógépek, Marseille & Provence, részletesen ismerteti, Millau, Mont-Németország – Marsan, Montpellier, Mulhouse, Nancy, Nantes, már jól néz kis, Nimes, Normandy, Nyons, Párizs, Poitiers, Privas, Quimper, Rennes, Saint Malo, Saint-Étienne, Saint-Nazaire, Saintes, Sarrebourg, Sete, Strasbourgban, Tarbes, magyar, bemutatók</P> | 
-| + Francia Guyana | Cayenne |
-| + Új-Kaledónia | Nouméa  |
+| \+ Francia Guyana | Cayenne |
+| \+ Új-Kaledónia | Nouméa  |
 | Grúzia | Tbiliszi | 
 | Németország | <p>Berlin, Brandenburg, Bremen & Niedersachsen, Cologne, Eisenach, Frankfurt, Hamburg, Karlsruhe, Mainz, München - Munich, Rhein-Neckar Region, Rhein-Ruhr Region, Stuttgart, Titisee-Neustadt, Ulm</P> | 
 | Görögország | <p>Athén, Arta, Amorgos, Chania, korfui, Híosz Kos, Heraklion, Ioannina, Kavala, Kalamata, Komotini, Kos, Larissa, Meganisi, Mykonos, Patra, Rethimno, Rodoszon, Santorini, Serres, Syros, Tinos, Thesszaloniki, Veria, Volos, Xanthi </P> |

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: c034e12c372e0514fa6cbb1f35af48cbdb4bf865
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 642af77d62b88d2e22748c55b901a31bbc0db9b9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65865265"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67087328"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező vxMaintain
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a vxMaintain konfigurálásához hozzá kell vxMaintai
 
 **VxMaintain hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -184,7 +184,7 @@ Ebben a szakaszban engedélyezze Britta Simon használja az Azure egyszeri bejel
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű vxMaintain hoz létre. Együttműködve [vxMaintain támogatási csapatának](https://www.hubspot.com/company/contact) a felhasználók hozzáadása az vxMaintain platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

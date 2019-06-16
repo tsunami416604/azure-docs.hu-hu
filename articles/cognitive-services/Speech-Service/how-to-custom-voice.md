@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 8cf9dc6cbfc96448462aac3a64807f8beb6036ad
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 016dcf32f2f846e43362f17bc9f4627113908352
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65156911"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075151"
 ---
-# <a name="get-started-with-custom-voice"></a>Egyéni beszédfelismerési használatának első lépései
+# <a name="get-started-with-custom-voice"></a>Bevezetés a Custom Voice szolgáltatásba
 
 Egyedi Hangüzenetek online eszközöket, amelyek lehetővé teszik, hogy hozzon létre egy könnyen felismerhető névre, egy-az-maga nemében egyedülálló hang, a saját márkáját. Első lépésként mindössze szemponttal hangfájlok és a kapcsolódó beszédátírás. Kövesse az alábbi hivatkozásokat, egy egyéni szöveg-hang transzformációs élmény létrehozásának megkezdéséhez.
 
@@ -29,13 +29,13 @@ Az alábbi ábrán kiemeli azon lépéseket, az egyéni beszédfelismerési port
 
 ![Egyéni beszédfelismerési architektúra ábrája](media/custom-voice/custom-voice-diagram.png)
 
-1.  [Fizessen elő és hozzon létre egy projektet](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice?branch=release-build-cogserv-speech-services#set-up-your-azure-account) – Azure-fiók létrehozása, és hozzon létre egy beszédszolgáltatások előfizetést. Ez az egységesített előfizetés hozzáférést biztosít a hang-szöveg, szöveg-hang transzformációs, beszédalapú fordítási és az egyéni beszédfelismerési portálon. Ezután beszédszolgáltatások előfizetését használja, hozzon létre az első egyéni beszédfelismerési projektet.
+1.  [Fizessen elő és hozzon létre egy projektet](#set-up-your-azure-account) – Azure-fiók létrehozása, és hozzon létre egy beszédszolgáltatások előfizetést. Ez az egységesített előfizetés hozzáférést biztosít a hang-szöveg, szöveg-hang transzformációs, beszédalapú fordítási és az egyéni beszédfelismerési portálon. Ezután beszédszolgáltatások előfizetését használja, hozzon létre az első egyéni beszédfelismerési projektet.
 
-2.  [Adatok feltöltése](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font?branch=release-build-cogserv-speech-services#upload-your-datasets) -adatok (hang- és szöveget) feltöltése az egyéni beszédfelismerési portal vagy az egyéni beszédfelismerési API használatával. A portálról vizsgálja meg, és írásmódja pontszámokat és jel zaj arányok kiértékeléséhez. További információkért lásd: [adatok előkészítése az egyéni beszédfelismerési](how-to-custom-voice-prepare-data.md).
+2.  [Adatok feltöltése](how-to-custom-voice-create-voice.md#upload-your-datasets) -adatok (hang- és szöveget) feltöltése az egyéni beszédfelismerési portal vagy az egyéni beszédfelismerési API használatával. A portálról vizsgálja meg, és írásmódja pontszámokat és jel zaj arányok kiértékeléséhez. További információkért lásd: [adatok előkészítése az egyéni beszédfelismerési](how-to-custom-voice-prepare-data.md).
 
-3.  [A modell betanítását](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font?branch=release-build-cogserv-speech-services#build-your-voice-font) – használja az adatok egy egyéni szövegfelolvasás modell létrehozásához. A modell különböző nyelveken betaníthatja. Képzés, miután teszteli a modellt, és ha már elégedett az eredménnyel, a modell is telepítheti.
+3.  [A modell betanítását](how-to-custom-voice-create-voice.md#build-your-custom-voice-model) – használja az adatok egy egyéni szövegfelolvasás modell létrehozásához. A modell különböző nyelveken betaníthatja. Képzés, miután teszteli a modellt, és ha már elégedett az eredménnyel, a modell is telepítheti.
 
-4.  [A modell üzembe helyezése](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font?branch=release-build-cogserv-speech-services#create-and-use-a-custom-endpoint) – hozzon létre egy egyéni végpontot a szövegfelolvasás modell, és a termékek, eszközök és alkalmazások beszédszintézishez vele.
+4.  [A modell üzembe helyezése](how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint) – hozzon létre egy egyéni végpontot a szövegfelolvasás modell, és a termékek, eszközök és alkalmazások beszédszintézishez vele.
 
 ## <a name="set-up-your-azure-account"></a>Az Azure-fiók
 
@@ -55,7 +55,7 @@ Miután létrehozott egy Azure-fiók és a egy beszédszolgáltatások előfizet
 
 Tartalom, például az adatokat, modelleket, tesztek és végpontok vannak szervezve **projektek** az egyéni beszédfelismerési portálon. Minden projekt az adott ország/nyelv és a létrehozni kívánt hang tartalmazzák. Például előfordulhat, hogy hozzon létre egy projektet a ügyfélszolgálatával Csevegés robotok az Egyesült államokbeli (en-US) angol használó a női hangot.
 
-Az első-projekt létrehozásához válassza a **Text-to-Speech/egyéni beszédfelismerési** lapfülre, majd kattintson a **új projekt**. Kövesse az utasításokat a varázsló által biztosított a projekt létrehozásához. Miután létrehozott egy projektet, négy lapján jelenik meg: **Adatok**, **képzési**, **tesztelés**, és **üzembe helyezési**. A megadott hivatkozásokon találhat [további lépések](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice?branch=release-build-cogserv-speech-services#next-steps) megtudhatja, hogyan használhatja az egyes lapokon.
+Az első-projekt létrehozásához válassza a **Text-to-Speech/egyéni beszédfelismerési** lapfülre, majd kattintson a **új projekt**. Kövesse az utasításokat a varázsló által biztosított a projekt létrehozásához. Miután létrehozott egy projektet, négy lapján jelenik meg: **Adatok**, **képzési**, **tesztelés**, és **üzembe helyezési**. A megadott hivatkozásokon találhat [további lépések](#next-steps) megtudhatja, hogyan használhatja az egyes lapokon.
 
 ## <a name="next-steps"></a>További lépések
 

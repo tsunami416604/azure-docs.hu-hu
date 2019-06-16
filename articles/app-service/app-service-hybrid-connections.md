@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 40ff05e9fbc00747145c653878010ad9da0c37ec
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 4b125649dee51680625ac5a92b31bdc9f6830529
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653390"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069477"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Az Azure App Service hibrid kapcsolatai #
 
@@ -41,7 +41,6 @@ Amikor az alkalmazás egy DNS-kérelmet, amely megfelel a konfigurált hibrid ka
 > [!NOTE]
 > Ez azt jelenti, hogy lehetőleg mindig használja a hibrid kapcsolat egy DNS-neve. Néhány ügyfél szoftver nem egy DNS-címkeresés Ha a végpont; ezek helyett használja az IP-címet.
 >
-
 
 ### <a name="app-service-hybrid-connection-benefits"></a>App Service hibrid kapcsolat előnyei ###
 
@@ -140,8 +139,8 @@ Egy vagy több hibrid kapcsolat hozzáadása a HCM:
 2. Válassza ki **konfigurálása egy másik hibrid kapcsolat**.
 ![Képernyőkép az új hibrid kapcsolatok konfigurálása][8]
 
-1. Jelentkezzen be az Azure-fiókjával.
-1. Válasszon előfizetést.
+1. Jelentkezzen be az Azure-fiókjába a hibrid kapcsolatok érhető el az előfizetések beolvasása. A HCM nem továbbra is használhatja az Azure-fiókját ezen felüli méretezhetőséget. 
+1. Válasszon egy előfizetést.
 1. Válassza ki a hibrid kapcsolatok a HCM továbbítani kívánt.
 ![Képernyőkép a hibrid kapcsolatok][9]
 
@@ -226,7 +225,9 @@ Az állapot "Csatlakoztatva", azt jelenti, hogy legalább egy HCM, hogy a hibrid
 
 Az elsődleges célja, hogy az ügyfelek nem tudnak csatlakozni a végpont az oka, hogy a végpont IP-cím helyett egy DNS-név lett megadva. Ha az alkalmazás nem érhető el a kívánt végpontot, és egy IP-címet használva, váltson a HCM futtató kiszolgáló, amely a gazdagépen érvényes DNS-név használatával. Emellett ellenőrizze, hogy a gazdagépen, amelyen a HCM fut megfelelően feloldja a DNS-nevét. Győződjön meg arról, hogy nincs-e kapcsolat a gazdagép a HCM futtató kiszolgáló, a hibrid kapcsolat végpontja.  
 
-Az App Service-ben a tcpping eszköz a speciális eszközök (Kudu) konzolról is hívható. Ez az eszköz eláruljuk, ha hozzáfér a TCP-végpont, de azt nem mondja el, ha egy hibrid kapcsolat végpontja hozzáféréssel rendelkezik. Az eszköz a konzolon, a hibrid kapcsolat végponton való használatakor csak megerősíti, hogy a gazdagép: port kombinációját használja.  
+Az App Service-ben a **tcpping** parancssori eszköz a speciális eszközök (Kudu) konzolról is elindítható. Ez az eszköz eláruljuk, ha hozzáfér a TCP-végpont, de azt nem mondja el, ha egy hibrid kapcsolat végpontja hozzáféréssel rendelkezik. Az eszköz a konzolon, a hibrid kapcsolat végponton való használatakor csak megerősíti, hogy a gazdagép: port kombinációját használja.  
+
+Ha a parancssori ügyfele a végponthoz, tesztelheti a kapcsolat az alkalmazás-konzolon. Hozzáférés a webes kiszolgálói végpontot tesztelheti például a curl használatával.
 
 ## <a name="biztalk-hybrid-connections"></a>Hibrid kapcsolatok a BizTalk szolgáltatásokban ##
 

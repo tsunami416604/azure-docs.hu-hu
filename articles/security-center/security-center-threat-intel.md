@@ -14,15 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: f1e238890b777e2816648ec407e2581f636d1c12
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 36201bad64e5516375afe1ec9ce141c3fd311d48
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60906128"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64574353"
 ---
 # <a name="security-alerts-map-and-threat-intelligence"></a>Biztonsági riasztások térképe és fenyegetések felderítése
 Ez a cikk segít az Azure Security Center biztonsági riasztások térkép és biztonsági eseményalapú fenyegetésészlelési térkép biztonsággal kapcsolatos problémák elhárításához.
+
+> [!NOTE]
+> A biztonsági *események* Dokumentumtérkép gomb a 2019. július 31-én megszűnik. További információkat és más szolgáltatások: [a Security Center nyugdíjazási szolgáltatásokat (július 2019)](security-center-features-retirement-july2019.md#menu_securityeventsmap).
+
 
 ## <a name="how-the-security-alerts-map-works"></a>Működik, hogy a biztonsági riasztások leképezése
 A Security Center biztosít, és a egy térképet, amelynek segítségével azonosíthatja a környezetre leselkedő biztonsági fenyegetéseket. Például azonosíthatja egy adott számítógép egy botnet része-e, és ahol a fenyegetés származik. Számítógépek akkor válhatnak egy botnet csomópontjává, ha a támadók telepítenek kártevők, amelyek titokban kommunikál a parancs és vezérlés, amely a botnet kezelése. 

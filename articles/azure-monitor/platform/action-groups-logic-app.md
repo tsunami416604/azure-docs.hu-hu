@@ -9,10 +9,10 @@ ms.date: 07/18/2018
 ms.author: dukek
 ms.subservice: alerts
 ms.openlocfilehash: a33c6f6621e7fc7944bc116b27e5f26de88f77d9
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66389565"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Hogyan összetett műveletek indítása az Azure Monitor riasztások
@@ -140,7 +140,7 @@ A következő alkalommal, amikor egy riasztást a műveletcsoport meghívja a lo
 Az Azure Service Health-bejegyzések a tevékenységnapló részét képezik. A riasztás létrehozása a folyamat hasonlít a [tevékenységnapló-riasztás létrehozása](#create-an-activity-log-alert-administrative), de néhány módosítással:
 
 - 1 – 7. lépései megegyeznek.
-- 8. lépés használja a következő hasznosadat-minta a HTTP-kérés eseményindító:
+- 8\. lépés használja a következő hasznosadat-minta a HTTP-kérés eseményindító:
 
     ```json
     {
@@ -221,14 +221,14 @@ Az Azure Service Health-bejegyzések a tevékenységnapló részét képezik. A 
 
        !["A Service Health hamis feltétel post művelet"](media/action-groups-logic-app/service-health-false-condition-post-action.png "szolgáltatás állapotát a feltétel hamis post művelet")
 
-- 15. lépés megegyezik. Kövesse az utasításokat a logikai alkalmazás mentéséhez és a műveletcsoport frissítéséhez.
+- 15\. lépés megegyezik. Kövesse az utasításokat a logikai alkalmazás mentéséhez és a műveletcsoport frissítéséhez.
 
 ## <a name="create-a-metric-alert"></a>Metrikariasztás létrehozása
 
 A metrikariasztás létrehozása a folyamat hasonlít a [tevékenységnapló-riasztás létrehozása](#create-an-activity-log-alert-administrative), de néhány módosítással:
 
 - 1 – 7. lépései megegyeznek.
-- 8. lépés használja a következő hasznosadat-minta a HTTP-kérés eseményindító:
+- 8\. lépés használja a következő hasznosadat-minta a HTTP-kérés eseményindító:
 
     ```json
     {
@@ -289,7 +289,7 @@ A metrikariasztás létrehozása a folyamat hasonlít a [tevékenységnapló-ria
 
       !["Riasztás false (hamis) metrikai feltétel post művelet"](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "Metrikaalapú riasztási hamis feltétel post művelet")
 
-- 15. lépés megegyezik. Kövesse az utasításokat a logikai alkalmazás mentéséhez és a műveletcsoport frissítéséhez.
+- 15\. lépés megegyezik. Kövesse az utasításokat a logikai alkalmazás mentéséhez és a műveletcsoport frissítéséhez.
 
 ## <a name="calling-other-applications-besides-microsoft-teams"></a>Más alkalmazások mellett a Microsoft Teams hívása
 A Logic Apps rendelkezik, amelyekkel az eseményindító műveletek számos az alkalmazások és adatbázisok különböző összekötőket. A Slack, az SQL Server, Oracle, a Salesforce, néhány példa azt szemlélteti. Összekötők kapcsolatos további információkért lásd: [logikai alkalmazás-összekötők](../../connectors/apis-list.md).  

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 83a5d4c1d9c0475609a506fbfe6ae23bd9e236fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 837ba4043fe27c15f75c4d401878dfdb3328b82f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65865505"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67087594"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-versal"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Zményes
 
@@ -53,7 +53,7 @@ Az Azure ad-ben Zményes integráció konfigurálásához, hozzá kell Zményes 
 
 **Zményes hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -188,7 +188,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű Zményes hoz létre. Kövesse a [tesztfelhasználó létrehozása egy SAML](https://support.versal.com/hc/articles/115011672887-Creating-a-SAML-test-user) támogatási útmutató Britta Simon a szervezetben lévő felhasználó létrehozásához. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt Zményes aktiválva. 
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a webhelyre beágyazva Zményes tanfolyam segítségével tesztelnie.
 Tekintse át a [szervezeti tanfolyamok beágyazás](https://support.versal.com/hc/en-us/articles/203271866-Embedding-organizational-courses) **SAML egyszeri bejelentkezés** támogatása az útmutató utasításokat Zményes tanfolyam beágyazásával támogatásával az Azure ad egyszeri bejelentkezés. 

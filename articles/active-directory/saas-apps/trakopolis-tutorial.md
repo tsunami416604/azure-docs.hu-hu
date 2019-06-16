@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 66fb18542fe35c586af11139dff3cd5dfb7bde73
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 1316e3274b851c41af21b94847ed16491310e908
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65905600"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088351"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trakopolis"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Trakopolis
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Trakopolis konfigurálásához hozzá kell Trakopoli
 
 **Trakopolis hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -184,7 +184,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű Trakopolis hoz létre. Együttműködve [Trakopolis támogatási csoportjának](mailto:support@cantelematics.com) a felhasználók hozzáadása az Trakopolis platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

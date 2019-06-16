@@ -16,12 +16,12 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4169b15304afe1ecc4af9c5354798b29ad9dba38
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8611338acf7a1299e9c3a4f5347fb633604254e7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64571355"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110397"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Az Azure AD hozzáférési felülvizsgálatok felhasználók ki vannak zárva a feltételes hozzáférési szabályzatok kezelése
 
@@ -32,11 +32,11 @@ Az ideális világában a minden felhasználó követnie a hozzáférési szabá
 
 ## <a name="why-would-you-exclude-users-from-policies"></a>Miért érdemes lenne kizár a házirendek felhasználók?
 
-INFORMATIKAI rendszergazdaként használhat [Azure AD feltételes hozzáférés](../conditional-access/overview.md) a felhasználóktól többtényezős hitelesítést (MFA), vagy jelentkezzen be egy megbízható hálózat vagy az eszköz használatával történő hitelesítéshez. Az üzembe helyezés tervezése, során, ismerje meg, hogy egyes ezek a követelmények nem teljesíthetők összes felhasználó. Például, amely nem része a belső hálózaton távoli irodából dolgozó felhasználók vannak, vagy nincs a vezető, akinek használ egy régi telefonszám, amely nem támogatott. Az üzleti megköveteli, hogy ezek a felhasználók tenni, hogy jelentkezzen be, és a munka elvégzéséhez, ezért azok nem tartoznak a feltételes hozzáférési szabályzatokat.
+INFORMATIKAI rendszergazdaként használhat [Azure AD feltételes hozzáférési](../conditional-access/overview.md) a felhasználóktól többtényezős hitelesítést (MFA), vagy jelentkezzen be egy megbízható hálózat vagy az eszköz használatával történő hitelesítéshez. Az üzembe helyezés tervezése, során, ismerje meg, hogy egyes ezek a követelmények nem teljesíthetők összes felhasználó. Például, amely nem része a belső hálózaton távoli irodából dolgozó felhasználók vannak, vagy nincs a vezető, akinek használ egy régi telefonszám, amely nem támogatott. Az üzleti megköveteli, hogy ezek a felhasználók tenni, hogy jelentkezzen be, és a munka elvégzéséhez, ezért azok nem tartoznak a feltételes hozzáférési szabályzatokat.
 
 Másik példaként használható [nevesített helyek](../conditional-access/location-condition.md) a feltételes hozzáférés konfigurálása megyék és régióban, amelyről nem szeretné, hogy a felhasználók a bérlőhöz való hozzáféréshez.
 
-![Névvel ellátott helyek](./media/conditional-access-exclusion/named-locations.png)
+![Nevesített helyek](./media/conditional-access-exclusion/named-locations.png)
 
 Bizonyos esetekben azonban felhasználók rendelkezhet egy indokolt, ezek a blokkolt országokból/régiókból származó bejelentkezni. Ha például felhasználók előfordulhat, hogy utazás közben dolgoztak munkahelyi vagy személyes okokból. Ebben a példában a feltételes hozzáférési szabályzat blokkolja ezen országok vagy régiók rendelkezhet egy dedikált felhőbeli biztonsági csoport a felhasználókat, akik nem tartoznak a szabályzat alól. Felhasználók, akiknek hozzáférésre van szükségük, utazás közben is hozzáadhat magukat a csoportba történő [az Azure AD önkiszolgáló csoportkezelés](../users-groups-roles/groups-self-service-management.md).
 
@@ -97,7 +97,7 @@ Most már létrehozhat egy feltételes hozzáférési szabályzatot, amely a kiz
 
 Nézzük terjed ki a két példa, ahol a hozzáférési felülvizsgálatok használhatja a feltételes hozzáférési szabályzatok kizárások kezelése.
 
-## <a name="example-1-access-review-for-users-accessing-from-blocked-countriesregions"></a>1. példa: Hozzáférési felülvizsgálat letiltott országokból/régiókból származó elérő felhasználók számára
+## <a name="example-1-access-review-for-users-accessing-from-blocked-countriesregions"></a>1\. példa: Hozzáférési felülvizsgálat letiltott országokból/régiókból származó elérő felhasználók számára
 
 Tegyük fel, hogy a feltételes hozzáférési szabályzatot, hogy bizonyos országokban vagy régiókban blokkok hozzáférését. Ez magában foglalja egy csoportot, amely ki van zárva a szabályzat alól. Íme egy ajánlott hozzáférési felülvizsgálat, ahol a csoport tagjai nyilvánosan lektorálhatók.
 
@@ -118,7 +118,7 @@ Tegyük fel, hogy a feltételes hozzáférési szabályzatot, hogy bizonyos orsz
 
     ![Hozzáférési felülvizsgálat létrehozása](./media/conditional-access-exclusion/create-access-review-1.png)
 
-## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>2. példa Az örökölt hitelesítési elérő felhasználók számára a hozzáférési felülvizsgálat
+## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>2\. példa Az örökölt hitelesítési elérő felhasználók számára a hozzáférési felülvizsgálat
 
 Tegyük fel, hogy a feltételes hozzáférési szabályzatot, hogy blokkolja az örökölt hitelesítéssel és a régebbi ügyfél felhasználók számára hozzáférést. Ez magában foglalja egy csoportot, amely ki van zárva a szabályzat alól. Íme egy ajánlott hozzáférési felülvizsgálat, ahol a csoport tagjai nyilvánosan lektorálhatók.
 

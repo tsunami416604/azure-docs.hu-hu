@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66a75ee7746d0ab04b505544f91f2905fa392902
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6f6feceff234bed51bcf6adf34f51313fa348d77
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60358658"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056047"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Felhasználói portál az Azure Multi-Factor Authentication-kiszolgálóhoz
 
@@ -27,6 +27,9 @@ A felhasználók a szokványos felhasználónevükkel és jelszavukkal jelentkez
 A felhasználói portálhoz rendszergazdák állíthatók be, akik az új felhasználók hozzáadására és a meglévő felhasználók frissítésére vonatkozó engedélyt kaphatnak.
 
 A felhasználói portált a környezettől függően érdemes lehet az Azure Multi-Factor Authentication-kiszolgálóval megegyező kiszolgálóra, illetve egy másik, internetkapcsolattal rendelkező kiszolgálóra telepíteni.
+
+> [!IMPORTANT]
+> 2019\. július 1-től a Microsoft már nem szavatolnak MFA-kiszolgáló az új üzembe helyezésekhez. Új felhasználókat szeretné a felhasználóktól többtényezős hitelesítést kell használnia a felhőalapú Azure multi-factor Authentication. Meglévő ügyfeleink, akik aktiválták az MFA-kiszolgáló előtt július 1 lesz a legújabb verzió, a jövőbeli frissítések letöltéséhez és a szokásos módon aktiváló hitelesítő adatok előállítása.
 
 ![MFA kiszolgáló felhasználói portál bejelentkezési oldalán](./media/howto-mfaserver-deploy-userportal/portal.png)
 
@@ -66,7 +69,7 @@ A felhasználói portál üzembe helyezéséhez kövesse az alábbi lépéseket:
    > [!NOTE]
    > Ez az SSL-tanúsítvány általában egy nyilvánosan aláírt SSL-tanúsítvány.
 
-4. Nyisson meg egy webböngészőt valamelyik számítógépről, és lépjen arra az URL-címre, ahol a felhasználói portál telepítve van (például: https://mfa.contoso.com/MultiFactorAuth)). Győződjön meg arról, hogy nem látható tanúsítvánnyal kapcsolatos figyelmeztetés vagy hiba.
+4. Nyisson meg egy webböngészőt valamelyik számítógépről, és lépjen arra az URL-címre, ahol a felhasználói portál telepítve van (például: https://mfa.contoso.com/MultiFactorAuth) ). Győződjön meg arról, hogy nem látható tanúsítvánnyal kapcsolatos figyelmeztetés vagy hiba.
 
 ![MFA-kiszolgáló felhasználói portáljának telepítése](./media/howto-mfaserver-deploy-userportal/install.png)
 
@@ -105,7 +108,7 @@ A felhasználói portál az Azure Multi-Factor Authentication-kiszolgálótól e
     * Keresse meg a **https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx** értéket, és módosítsa ezt a helyőrző URL-címet arra a címre, amelyre a Web Service SDK-t telepítette a 2. lépésben.
     * Mentse a Web.Config fájlt, és zárja be a Jegyzettömböt.
 
-6. Nyisson meg egy webböngészőt valamelyik számítógépről, és lépjen arra az URL-címre, ahol a felhasználói portál telepítve van (például: https://mfa.contoso.com/MultiFactorAuth)). Győződjön meg arról, hogy nem látható tanúsítvánnyal kapcsolatos figyelmeztetés vagy hiba.
+6. Nyisson meg egy webböngészőt valamelyik számítógépről, és lépjen arra az URL-címre, ahol a felhasználói portál telepítve van (például: https://mfa.contoso.com/MultiFactorAuth) ). Győződjön meg arról, hogy nem látható tanúsítvánnyal kapcsolatos figyelmeztetés vagy hiba.
 
 Ha kérdései vannak az SSL-tanúsítvány IIS-kiszolgálón történő konfigurálásáról, olvassa el [Az SSL beállítása az IIS-en](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) cikket.
 

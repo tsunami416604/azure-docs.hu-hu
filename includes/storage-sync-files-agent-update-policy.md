@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: tamram
-ms.openlocfilehash: 4f59f68c1598f737ea7cb3a0e8046fc0779ed9d3
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 57ba55ce284030a4103077553b0dcfce01a93678
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66113810"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67125754"
 ---
 Az Azure File Sync ügynök rendszeresen adhat hozzá új funkciókat, és problémák megoldására frissül. Azt javasoljuk, hogy konfigurálja a Microsoft Update elérhető az Azure File Sync ügynök le a frissítéseket.
 
@@ -31,7 +31,7 @@ Négy jóváhagyott és tesztelt módon az Azure File Sync ügynök frissítése
 #### <a name="automatic-agent-lifecycle-management"></a>Automatikus ügynök-életciklus-felügyelete
 Az ügynök 6-os verzió a file sync csapat egy ügynök automatikus frissítési funkció vezetett be. Válassza ki a két mód közül választhat, és adja meg a karbantartási időszak, amelyben a frissítés lehetséges a kiszolgálón. Ez a funkció célja segítséget megadásával vagy egy megakadályozza, hogy az ügynököt a lejárati vízoldalon ügynök életciklus-felügyeletének, vagy maradjon egy gördülékeny, ami lehetővé teszi a aktuális beállítás.
 1. A **alapértelmezett beállítás** megkísérli az ügynököt a lejárati elkerülése érdekében. Az ügynök közzétett lejárati dátumának 21 napban az ügynök megpróbálja helyi frissítése. Olyan megkísérli a lejárat előtt, és a kiválasztott karbantartási időszakban 21 napban hetente egyszer el is indítja. **Ez a beállítás nem szükségtelenné teszi reguláris a Microsoft Update-javítások véve.**
-2. Szükség esetén választhat, hogy az ügynök automatikusan frissíti magát, amint elérhetővé válik az új ügynök verzióját. Ez is fordulhat elő, a kijelölt karbantartási időszak alatt, és lehetővé teszi a kiszolgáló számára, hogy új szolgáltatásait és fejlesztéseit, amint azok általánosan elérhetővé válnak. Ez az az ajánlott, megbízható beállítása, amely jelentős ügynökverziók, valamint a rendszeres frissítés javítások a kiszolgálóhoz biztosít.
+2. Igény szerint kiválaszthatja, hogy az ügynök automatikusan frissíti magát, amint elérhetővé válik egy új ügynök verziója (fürtözött kiszolgálók jelenleg nem vonatkozik). Ez a frissítés fog fordulhat elő, a kijelölt karbantartási időszak alatt, és lehetővé teszi a kiszolgáló számára, hogy új szolgáltatásait és fejlesztéseit, amint azok általánosan elérhetővé válnak. Ez az az ajánlott, megbízható beállítása, amely jelentős ügynökverziók, valamint a rendszeres frissítés javítások a kiszolgálóhoz biztosít. Minden ügynök, amely a jelenleg általánosan elérhető minőségét. Ezt a beállítást, ha a Microsoft eszközmegfelelőségre fogja, hogy a legújabb ügynök verziója. Fürtözött kiszolgálók ki vannak zárva. Fokozatos bevezetéssel befejeződése után az ügynök is válnak elérhetővé a [Microsoft Download Center](https://go.microsoft.com/fwlink/?linkid=858257) aka.ms/AFS/agent.
 
 #### <a name="agent-lifecycle-and-change-management-guarantees"></a>Az ügynök életciklusát, és módosítsa a felügyeleti garanciák
 Az Azure File Sync egy felhőalapú szolgáltatás, amely folyamatosan a új szolgáltatásait és fejlesztéseit mutatja be. Ez azt jelenti, hogy egy adott Azure File Sync ügynök verziója csak korlátozott ideig csak támogatható. Az üzembe helyezés megkönnyítéséhez a következő szabályok garantálja a elegendő időt és értesítési megfelelően agent frissítések/frissítése a változáskezelési folyamatot a:

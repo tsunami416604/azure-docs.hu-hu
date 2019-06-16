@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: db646c48c1332f986840d54127729c766ffb6dd7
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: c13c6ab180a172c034d25ac84781f5d3f83ae186
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920331"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67086644"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workstars"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Workstars
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Workstars konfigurálásához hozzá kell Workstars 
 
 **Workstars hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -154,7 +154,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Workstars, hajtsa v�
     
     e. Az a **távoli kijelentkezési URL-címe** szövegmezőjébe illessze be az értéket, **kijelentkezési URL-címe**, az Azure Portalról másolt. 
 
-    f. Válassza ki **Névazonosító** , **E-mail (alapértelmezett)**.
+    f. Válassza ki **Névazonosító** , **E-mail (alapértelmezett)** .
 
     g. Kattintson a **Megerősítés** gombra.
 

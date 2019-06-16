@@ -4,16 +4,16 @@ ms.author: diberry
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/24/2019
-ms.openlocfilehash: b1889230e9abfbafbdeddcbf4f4c1f74fc3f8843
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 79e9dbc1edd830093d1d90d10350b8fb018492de
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66125145"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063980"
 ---
-Az űrlap kérelmek, a vállalat és a felhasználói forgatókönyvet, amelynek a tároló használni kívánt információkat. Miután elküldte, az Azure Cognitive Services-csapat áttekinti az űrlap győződjön meg arról, hogy megfelel a feltételeknek a privát tárolóregisztrációs adatbázis eléréséhez.
+Az űrlap kérelmek, a vállalat és a felhasználói forgatókönyvet, amelynek a tároló használni kívánt információkat. Miután elküldte az űrlapot, az Azure Cognitive Services-csapat áttekinti, győződjön meg arról, hogy megfelel a feltételeknek a privát tárolóregisztrációs adatbázis eléréséhez.
 
 > [!IMPORTANT]
-> Egy a képernyőn egy Microsoft-fiók (MSA) vagy az Azure Active Directory (Azure AD)-fiókjához társított e-mail-címet kell használnia.
+> Társított a képernyőn egy Microsoft-fiók (MSA) vagy az Azure Active Directory (Azure AD-) fiók egy e-mail-címet kell használnia.
 
-Ha jóváhagyja a kérést, majd egy e-mailt kap az utasítások a szerezze be a hitelesítő adatokat, és a privát tárolóregisztrációs adatbázis eléréséhez.
+Ha jóváhagyja a kérelmét, kapni fog egy e-mailt az utasításokat, amelyek bemutatják, hogyan szerezze be a hitelesítő adatokat, és a privát tárolóregisztrációs adatbázis eléréséhez.

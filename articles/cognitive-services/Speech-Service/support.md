@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: fc03db268ab05c6718fb323bc30574a36d0ca092
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4099bc7bfce6de620504e03be3afc5392281d8d8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138154"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072377"
 ---
 # <a name="support-and-help-options"></a>Támogatás és Súgó
 
@@ -64,7 +64,7 @@ A stack Overflow az előnyben részesített csatorna fejlesztéssel kapcsolatos 
 
 Ha nem talál választ a problémára felvétellel, küldje el a Stack Overflow egy másik kérdést. Használja a következő címkék egyikét, ha Ön a kérdés megfogalmazásához:
 
-|Összetevő/terület  |Címkék  |
+|Összetevő/terület  |Tags  |
 |---------|---------|
 |Beszédfelismerés |[[microsoft-cognitive+speech-to-text]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
 |Beszédszintézishez |[[a microsoft-cognitive + szöveg-,-beszéd átalakítás]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
@@ -83,9 +83,9 @@ Ha nem talál választ a problémára felvétellel, küldje el a Stack Overflow 
 A minták gyakran feladja a nyílt forráskódú. Kérdések és problémák, hozzon létre egy *probléma* a megfelelő GitHub-adattárában. A lekéréses kérelem túl is nyújt. Az alábbi lista tartalmazza a minta tárház mutató hivatkozásokat:
 
 * [Beszéd SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues)
-* [Devices SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
+* [Speech Devices SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
 
-Hozzon létre egy hibajelentéseit funkcióra vonatkozó kérést, vagy kérje meg egy általános kérdés és megoszthatók az ajánlott eljárások. Hibajelentéseire kövesse a megadott sablon:
+Hozzon létre egy hibajelentéseit funkcióra vonatkozó kérést, vagy általános kérdés feltevése és megoszthatók az ajánlott eljárások. Hibajelentéseire kövesse a megadott sablon:
 
 **A hiba leírása**
 

@@ -11,16 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acbf27ca6f5b58d5c3cebb28698304c130381a7a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2ad2b3075ae9d5ccd7e32f039fbbbc8583cde73c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60414919"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055954"
 ---
 # <a name="advanced-scenarios-with-azure-multi-factor-authentication-and-third-party-vpn-solutions"></a>Speciális forgatókönyvek az Azure multi-factor Authentication és a külső VPN-megoldások
 
 Az Azure multi-factor Authentication segítségével zökkenőmentesen együttműködnek a különböző külső VPN-megoldások. Ez a cikk a Cisco® ASA VPN-berendezés, Citrix NetScaler SSL VPN-berendezés és a Juniper hálózatok biztonságos hozzáférés/Pulse Secure Csatlakozás biztonságos SSL VPN-berendezés összpontosít. Létrehozott konfigurációs útmutatók három gyakori készülék megoldása érdekében. A multi-factor Authentication-kiszolgáló legtöbb RADIUS, az LDAP, az IIS vagy AD FS jogcímalapú hitelesítést használó más rendszerekkel integrálhatja. További információk a [MFA-kiszolgáló konfigurációk](howto-mfaserver-deploy.md#next-steps).
+
+> [!IMPORTANT]
+> 2019\. július 1-től a Microsoft már nem szavatolnak MFA-kiszolgáló az új üzembe helyezésekhez. Új felhasználókat szeretné a felhasználóktól többtényezős hitelesítést kell használnia a felhőalapú Azure multi-factor Authentication. Meglévő ügyfeleink, akik aktiválták az MFA-kiszolgáló előtt július 1 lesz a legújabb verzió, a jövőbeli frissítések letöltéséhez és a szokásos módon aktiváló hitelesítő adatok előállítása.
 
 ## <a name="cisco-asa-vpn-appliance-and-azure-multi-factor-authentication"></a>Cisco ASA VPN-berendezés és az Azure multi-factor Authentication
 Az Azure multi-factor Authentication integrálható a Cisco® ASA VPN-berendezés további biztonságot nyújt a Cisco AnyConnect® VPN-bejelentkezések és a portál elérésére.  RADIUS vagy LDAP protokollt használhat.  Válassza ki a következők egyikét a részletes részletes konfigurációs útmutatók letöltéséhez.

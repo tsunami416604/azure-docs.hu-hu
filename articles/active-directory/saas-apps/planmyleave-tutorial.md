@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 8581b7f940aceca4e3ab85e44f83bf0bebb1b6f5
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: d1192d3606dfbbf54a8177c2369a9cae8871d92b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65904084"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094398"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-planmyleave"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező PlanMyLeave
 
@@ -55,7 +55,7 @@ Az Azure AD integrálása a PlanMyLeave konfigurálásához hozzá kell PlanMyLe
 
 **PlanMyLeave hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -210,7 +210,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó PlanMyLeave jön létre.
 > [!NOTE]
 > Hozzon létre egy felhasználót manuálisan kell, ha kapcsolatba kell [PlanMyLeave támogatási csapatának](mailto:support@planmyleave.com).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

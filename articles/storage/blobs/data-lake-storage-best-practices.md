@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: 8b39866b990812913924118c564a5e93f898b1cb
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 7cfe19614b2107161dcce9c80690333212162045
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939466"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061311"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2 használatának ajánlott eljárásai
 
@@ -26,7 +26,7 @@ Az Azure Data Lake Storage Gen2 POSIX hozzáférés-vezérlés az Azure Active D
 
 ### <a name="use-security-groups-versus-individual-users"></a>Egyéni felhasználók és biztonsági csoportok használata
 
-Big Data típusú adatok az Data Lake Storage Gen2 WWhen, akkor valószínű, hogy az egyszerű szolgáltatás használja például az adatok Azure HDInsight-szolgáltatások engedélyezése. Azonban lehetnek olyan esetekben, ahol egyéni felhasználók számára, valamint az adatok hozzáférésre van szükségük. Minden esetben határozottan fontolja meg az Azure Active Directory használatával [biztonsági csoportok](../common/storage-auth-aad.md) helyett egyéni felhasználók számára a fájlok és könyvtárak.
+Ha big Data típusú adatok Data Lake Storage Gen2 dolgozik, valószínű, hogy az egyszerű szolgáltatás használja például az adatok Azure HDInsight-szolgáltatások engedélyezése. Azonban lehetnek olyan esetekben, ahol egyéni felhasználók számára, valamint az adatok hozzáférésre van szükségük. Minden esetben határozottan fontolja meg az Azure Active Directory használatával [biztonsági csoportok](../common/storage-auth-aad.md) helyett egyéni felhasználók számára a fájlok és könyvtárak.
 
 Engedélyek hozzárendelése egy biztonsági csoportot, után felhasználók hozzáadása és eltávolítása a csoportból Data Lake Storage Gen2-re frissítéseket nem igényel. Ezzel is biztosíthatja nem haladhatja meg a hozzáférés-vezérlési lista (ACL) egy hozzáférés-vezérlési bejegyzések maximális száma. Ez a szám jelenleg 32, (beleértve a négy POSIX-stílusú ACL-eket mindig társított minden fájl és könyvtár): a tulajdonos, a tulajdonoscsoport, a maszk és más. Minden könyvtár rendelkezhet a kétféle ACL-t, a hozzáférési ACL-t és az alapértelmezett ACL-t, összesen 64 hozzáférés-vezérlési bejegyzéseit. Ezen ACL-lel kapcsolatos további információkért lásd: [hozzáférés-vezérlés az Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).
 
@@ -40,7 +40,7 @@ Az Azure Active Directory-szolgáltatásnevek általában használják a szolgá
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>Az Azure-szolgáltatásokhoz a Data Lake Storage Gen2 tűzfal engedélyezése
 
-Data Lake Storage Gen2 ne tudják bekapcsolni a tűzfalat, és korlátozza a hozzáférést csak Azure-szolgáltatásokkal, javasoljuk, hogy korlátozza a vektor külső támadásokat, amely támogatja. Tűzfal a storage-fiók az Azure Portalon keresztül is engedélyezhető a **tűzfal** > **tűzfal engedélyezése (bekapcsolva)** > **Azure-szolgáltatásokhozvalóhozzáférésengedélyezése** beállítások.
+Data Lake Storage Gen2 ne tudják bekapcsolni a tűzfalat, és korlátozza a hozzáférést csak Azure-szolgáltatásokkal, javasoljuk, hogy korlátozza a vektor külső támadásokat, amely támogatja. Tűzfal a storage-fiók az Azure Portalon keresztül is engedélyezhető a **tűzfal** > **tűzfal engedélyezése (bekapcsolva)**  > **Azure-szolgáltatásokhozvalóhozzáférésengedélyezése** beállítások.
 
 Databricks az előzetes verziójú funkció használatát az Azure Databricks-fürtöket ad hozzá egy virtuális hálózatot, amely előfordulhat, hogy engedélyezi a hozzáférést a Storage-tűzfalon keresztül igényli. A funkció engedélyezéséhez, helyezze el egy támogatási kérést.
 

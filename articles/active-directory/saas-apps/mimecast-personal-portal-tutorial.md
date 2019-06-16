@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed7d8d1a2c2f8c515fa520f6701068e4655cad35
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bfafa1157619e151f97fcf9c8a410a0644354b80
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65871932"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097383"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>Oktatóanyag: Az Azure Active Directory-integráció Mimecast személyes portállal
 
@@ -53,7 +53,7 @@ Az Azure AD-be Mimecast személyes portál integráció konfigurálásához, hoz
 
 **Mimecast személyes portál hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -107,7 +107,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Mimecast személyes portáll
 
     a. Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címe: 
 
-    | Régió  |  Value | 
+    | Régió  |  Érték | 
     | --------------- | --------------- | 
     | Európa          | `https://eu-api.mimecast.com/login/saml`|
     | Egyesült Államok   | `https://us-api.mimecast.com/login/saml`|
@@ -117,7 +117,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Mimecast személyes portáll
 
     b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe:
 
-    | Régió  |  Value | 
+    | Régió  |  Érték | 
     | --------------- | --------------- |
     | Európa          | `https://eu-api.mimecast.com/sso/<accountcode>`|
     | Egyesült Államok   | `https://us-api.mimecast.com/sso/<accountcode>`|    
@@ -127,7 +127,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Mimecast személyes portáll
 
     c. Az a **válasz URL-cím** szövegmezőbe írja be egy URL-címe: 
 
-    | Régió  |  Value | 
+    | Régió  |  Érték | 
     | --------------- | --------------- | 
     | Európa          | `https://eu-api.mimecast.com/login/saml`|
     | Egyesült Államok   | `https://us-api.mimecast.com/login/saml`|
@@ -278,7 +278,7 @@ Szeretne regisztrálni egy tartományban, felhasználók létrehozása előtt.
 >[!NOTE]
 >Mimecast személyes portál felhasználói fiók létrehozása eszközöket és Mimecast személyes portál által biztosított API-k segítségével az Azure AD-felhasználói fiókok kiépítése.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

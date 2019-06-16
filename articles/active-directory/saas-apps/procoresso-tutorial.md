@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4be92cae0042da7341b716a6c3c497b6248eed6a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ca6863a6b02e867afd732ce1662136051b8afec8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65745020"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67093667"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Oktatóanyag: Az Azure Active Directory-integráció Procore SSO-val
 
@@ -54,7 +54,7 @@ Procore SSO integrálása az Azure AD beállítása, hozzá kell Procore SSO a g
 
 **Procore SSO hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -224,7 +224,7 @@ Kérjük, kövesse az alábbi lépéseket Procore tesztfelhasználó létrehozá
     
     ![Egyszeri bejelentkezés konfigurálása](./media/procoresso-tutorial/Procore_user_save.png)
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -15,10 +15,10 @@ ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 15b3fb4ae483e5b0e4f930d0dc08de6d198d0e5f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61128967"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>HANA-oldali monitorozás és hibaelhárítás
@@ -54,7 +54,7 @@ Az alábbi riasztásokat utalhat a Processzor-erőforrás problémák:
 
 Azt tapasztalhatja, hogy magas CPU-felhasználás az SAP HANA Database, az alábbi lehetőségek közül:
 
-- 5. riasztási (gazdagép CPU-használat) jelenik meg, a jelenlegi és volt ügyfeleinktől CPU-használat
+- 5\. riasztási (gazdagép CPU-használat) jelenik meg, a jelenlegi és volt ügyfeleinktől CPU-használat
 - A megjelenített CPU-használat az Áttekintés képernyő
 
 ![CPU-használat megjelenik az áttekintő képernyő](./media/troubleshooting-monitoring/image3-cpu-usage.png)
@@ -94,10 +94,10 @@ Tekintse meg a [SAP HANA-hibáinak elhárítása: A memóriával kapcsolatos pro
 Tekintse meg [SAP Megjegyzés #2081065 – SAP HANA hálózati hibaelhárítási](https://launchpad.support.sap.com/#/notes/2081065) , és végezze el a hibaelhárítási lépések az SAP-Jegyzetnek a hálózaton.
 
 1. Kiszolgáló és az ügyfél közötti üzenetváltás idő elemzéséhez.
-  A. Az SQL-parancsfájl futtatása [ _HANA\_hálózati\_ügyfelek_](https://launchpad.support.sap.com/#/notes/1969700)_._
+  A. Az SQL-parancsfájl futtatása [ _HANA\_hálózati\_ügyfelek_](https://launchpad.support.sap.com/#/notes/1969700) _._
   
 2. Csomópontok kommunikációs elemzése.
-  A. SQL-parancsfájl futtatása [ _HANA\_hálózati\_szolgáltatások_](https://launchpad.support.sap.com/#/notes/1969700)_._
+  A. SQL-parancsfájl futtatása [ _HANA\_hálózati\_szolgáltatások_](https://launchpad.support.sap.com/#/notes/1969700) _._
 
 3. Linux-parancs futtatása **ifconfig** (a kimenet mutatja, ha a csomag veszteségeiért is megjelenhetnek).
 4. Linux-parancs futtatása **tcpdump**.

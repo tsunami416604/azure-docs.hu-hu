@@ -17,10 +17,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c5eff7925599931104440213112ce288fd521b61
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66473776"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Távoli hozzáférés a Sharepointhoz, az Azure AD-alkalmazásproxy engedélyezése
@@ -39,7 +39,7 @@ Ez a cikk azt feltételezi, hogy már rendelkezik a SharePoint 2013-as vagy úja
 
 * A közzétett URL-cím SSL szükség van. Az SSL is szükséges a belső URL-cím annak érdekében, hogy hivatkozásokat küldött/leképezve megfelelően.
 
-## <a name="step-1-configure-kerberos-constrained-delegation-kcd"></a>1. lépés: Configure Kerberos Constrained Delegation (KCD)
+## <a name="step-1-configure-kerberos-constrained-delegation-kcd"></a>1\. lépés: Configure Kerberos Constrained Delegation (KCD)
 
 Windows-hitelesítést használó helyszíni alkalmazások akkor érhető el, egyszeri bejelentkezés (SSO) a Kerberos hitelesítési protokoll és a Kerberos által korlátozott delegálás (KCD) szolgáltatás. KCD, ha konfigurálva van, lehetővé teszi, hogy egy felhasználó egy Windows-jogkivonat beszerzése az Application Proxy connector akkor is, ha a felhasználó még nem jelentkezett be a Windows közvetlenül. KCD kapcsolatos további információkért lásd: [Kerberos által korlátozott delegálás áttekintése](https://technet.microsoft.com/library/jj553400.aspx).
 
@@ -110,7 +110,7 @@ Konfigurálja a Kerberos, minden összekötő géphez ismételje meg a következ
   
    ![A delegálási beállítások](./media/application-proxy-integrate-with-sharepoint-server/delegation-box2.png)
 
-## <a name="step-2-configure-azure-ad-proxy"></a>2. lépés: Az Azure AD-Proxy konfigurálása
+## <a name="step-2-configure-azure-ad-proxy"></a>2\. lépés: Az Azure AD-Proxy konfigurálása
 
 Most, hogy konfigurálta a kcd Szolgáltatáshoz, készen áll az Azure AD Application Proxy konfigurálása.
 
@@ -135,7 +135,7 @@ Most, hogy konfigurálta a kcd Szolgáltatáshoz, készen áll az Azure AD Appli
 
 3. Az alkalmazás beállításának befejezéséhez, nyissa meg a **felhasználók és csoportok** szakaszt, és hozzárendelhet felhasználókat az alkalmazás eléréséhez. 
 
-## <a name="step-3-configure-sharepoint-to-use-kerberos-and-azure-ad-proxy-urls"></a>3. lépés: Kerberos és az Azure AD alkalmazásproxy URL-címek használata a SharePoint konfigurálása
+## <a name="step-3-configure-sharepoint-to-use-kerberos-and-azure-ad-proxy-urls"></a>3\. lépés: Kerberos és az Azure AD alkalmazásproxy URL-címek használata a SharePoint konfigurálása
 
 Következő lépés, hogy a SharePoint webalkalmazás új zónához, Kerberos és a megfelelő másodlagos címek hozzárendelésének engedélyezése a SharePoint a kezeli a bejövő kéréseket a belső URL-CÍMRE elküldött konfigurált kiterjesztése, és az azokra mutató hivatkozásokat tartalmaz a külső URL-cím számára készült.
 
@@ -163,7 +163,7 @@ Következő lépés, hogy a SharePoint webalkalmazás új zónához, Kerberos é
 
     ![Javítsa ki a másodlagos címek leképezése](./media/application-proxy-integrate-with-sharepoint-server/alternate-access3.png)
 
-## <a name="step-4-ensure-that-an-https-certificate-is-configured-for-the-iis-site-of-the-extranet-zone"></a>4. lépés: Győződjön meg arról, hogy egy HTTPS-tanúsítványt az IIS-webhely, az extranetes zóna konfigurálása
+## <a name="step-4-ensure-that-an-https-certificate-is-configured-for-the-iis-site-of-the-extranet-zone"></a>4\. lépés: Győződjön meg arról, hogy egy HTTPS-tanúsítványt az IIS-webhely, az extranetes zóna konfigurálása
 
 A SharePoint konfigurációs van most már befejeződött, de mivel a belső URL-címét az extranetes zóna <https://SharePoint/>, tanúsítványt kell állítani ezen a helyen.
 

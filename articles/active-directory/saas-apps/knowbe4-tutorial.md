@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 829e0c08191e3eeba9dc410dda74502dc9ada327
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 5fa4badb1183170bd7265e95c90775675eccfc34
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65897865"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098612"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-knowbe4-security-awareness-training"></a>Oktatóanyag: Az Azure Active Directory-integráció KnowBe4 biztonsági tudatosság képzésekkel
 
@@ -55,7 +55,7 @@ Konfigurálása az Azure AD integrálása a KnowBe4 biztonsági tudatosság kép
 
 **KnowBe4 biztonsági tájékoztatás képzési hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -195,7 +195,7 @@ Nincs meg ebben a szakaszban a művelet elem. Új felhasználó jön létre az K
 > [!NOTE]
 > Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [KnowBe4 biztonsági tájékoztatás képzési támogatási csapatának](mailto:support@KnowBe4.com).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

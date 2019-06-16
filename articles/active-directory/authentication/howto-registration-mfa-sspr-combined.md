@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cafe81a1b5ab6d26e71eff05e355d2ed79c4d5e7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: d006bd36cc8f8c84fb13bae43702a3e472f8876a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66119385"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113296"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Kombinált engedélyezése biztonsági információk regisztrációs (előzetes verzió)
 
@@ -51,9 +51,9 @@ Ha konfigurálta a zónákhoz való társításának listája a hely az Internet
 * [https://mysignins.microsoft.com](https://mysignins.microsoft.com)
 * [https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com)
 
-## <a name="conditional-access-policies-for-combined-registration"></a>Egyesített regisztrációs vonatkozó feltételes hozzáférési szabályzatok
+## <a name="conditional-access-policies-for-combined-registration"></a>Egyesített regisztrációs feltételes hozzáférési szabályzatai
 
-Annak biztosítása, mikor és hogyan az Azure multi-factor Authentication és az önkiszolgáló jelszó-visszaállítás felhasználók Regisztráljon most már minden lehetséges a feltételes hozzáférési szabályzat felhasználói műveletek. Az előzetes verziójú funkció érhető el a szervezetek számára, akik engedélyezték a [kombinált regisztrációs előzetes](../authentication/concept-registration-mfa-sspr-combined.md). Ez a funkció engedélyezett a felhasználók regisztráljanak az Azure multi-factor Authentication és a egy központi helyről, például a megbízható hálózati helyekkel SSPR a HR-előkészítés során haszált szervezetek lehet. Feltételes hozzáférés a megbízható helyek létrehozásával kapcsolatos további információkért tekintse meg a cikket [a helyfeltétel Mi az Azure Active Directory feltételes hozzáférés?](../conditional-access/location-condition.md#named-locations)
+Annak biztosítása, mikor és hogyan az Azure multi-factor Authentication és az önkiszolgáló jelszó-visszaállítás felhasználók Regisztráljon most már minden lehetséges a feltételes hozzáférési szabályzat felhasználói műveletek. Az előzetes verziójú funkció érhető el a szervezetek számára, akik engedélyezték a [kombinált regisztrációs előzetes](../authentication/concept-registration-mfa-sspr-combined.md). Ez a funkció engedélyezett a felhasználók regisztráljanak az Azure multi-factor Authentication és a egy központi helyről, például a megbízható hálózati helyekkel SSPR a HR-előkészítés során haszált szervezetek lehet. Feltételes hozzáférés a megbízható helyek létrehozásával kapcsolatos további információkért tekintse meg a cikket [Mi az a hely feltétel, az Azure Active Directory feltételes hozzáférés?](../conditional-access/location-condition.md#named-locations)
 
 ### <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Hozzon létre egy megbízható helyről regisztráció megkövetelése
 
@@ -92,4 +92,4 @@ A következő szabályzatot a kijelölt felhasználókkal, akik próbál meg reg
 
 [Hibaelhárítási kombinált biztonsági adatok regisztrálása](howto-registration-mfa-sspr-combined-troubleshoot.md)
 
-[Mi a helyfeltétel az Azure Active Directory feltételes hozzáférés?](../conditional-access/location-condition.md)
+[Mi az a hely feltétel, az Azure Active Directory feltételes hozzáférés?](../conditional-access/location-condition.md)

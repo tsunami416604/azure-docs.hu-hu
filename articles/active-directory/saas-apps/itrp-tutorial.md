@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 626163bb512b7b3b651d016f21fc465c398a01e6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: c3be09c998399cdca886f207bf5fc621bf51d8dd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236742"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099600"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező ITRP
 
@@ -94,7 +94,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés ITRP, ezeket a lép�
 
 2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válasszon **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése:
 
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezés módszer kiválasztása](common/select-saml-option.png)
 
 3. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon válassza ki a **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel:
 
@@ -242,7 +242,7 @@ Hozzon létre egy felhasználói fiókot, az alábbi lépéseket kell végrehajt
 > [!NOTE]
 > Bármely felhasználói fiók létrehozása az eszközzel, vagy az Azure AD-felhasználói fiókok kiépítése ITRP által biztosított API-t.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Most szüksége az Azure AD egyszeri bejelentkezési konfigurációjának tesztelése a hozzáférési Panel használatával.
 

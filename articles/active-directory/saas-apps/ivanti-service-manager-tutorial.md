@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9130717f7846c81bee2bf4892a13fcf6042257c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5e0ca336fd2ca24a7fe2fbc0d2d693c4f793362f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60269723"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099525"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ivanti-service-manager-ism"></a>Oktatóanyag: Az Azure Active Directory-integráció Ivanti Service Manager (ISM)
 
@@ -54,7 +54,7 @@ Az Azure AD-be Ivanti Service Manager (ISM)-integráció konfigurálása szüks�
 
 **Ivanti Service Manager (ISM) hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -172,11 +172,11 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 Ebben a szakaszban engedélyezze Britta Simon Ivanti Service Manager (ISM) nyújtó Azure egyszeri bejelentkezés használatára.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Ivanti Service Manager (ISM)**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Ivanti Service Manager (ISM)** .
 
     ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Ivanti Service Manager (ISM)**.
+2. Az alkalmazások listájában jelölje ki a **Ivanti Service Manager (ISM)** .
 
     ![A Ivanti Service Manager (ISM) hivatkozásra az alkalmazások listáját](common/all-applications.png)
 

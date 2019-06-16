@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 655f8555f9e7fb04d69f35048b7fdec0fb1cebce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f12b564ac2827cae98e9029fc9c6ce20862fa6ea
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65871502"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67096832"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moxi-engage"></a>Oktatóanyag: Moxi léphet az Azure Active Directory-integráció
 
@@ -52,7 +52,7 @@ Konfigurálása az Azure AD integrálása a Moxi léphet, hozzá kell Moxi léph
 
 **Adja hozzá a Moxi léphet a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -182,7 +182,7 @@ Ebben a szakaszban engedélyezze Britta Simon Moxi végezhetnek a hozzáférés 
 
 Ebben a szakaszban egy Britta Simon nevű Moxi léphet a felhasználó hoz létre. Együttműködve [ügyfélszolgálathoz Moxi léphet](mailto:support@moxiworks.com) a felhasználók hozzáadása az Moxi léphet platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

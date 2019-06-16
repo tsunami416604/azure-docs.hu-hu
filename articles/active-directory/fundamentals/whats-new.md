@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6a66aefec69a0551f85b11a380c90d1915bd776
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: f57b0189708f48d1dc403ce778f5f9693b6dc702
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474206"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110379"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Újdonságok az Azure Active Directoryban?
 
@@ -39,7 +39,7 @@ Ezen a lapon havonta frissül, így rendszeresen ellenőrizni. Ha a keresett ele
 
 ---
 
-## <a name="may-2019"></a>2019. május
+## <a name="may-2019"></a>2019\. május
 
 ### <a name="service-change-future-support-for-only-tls-12-protocols-on-the-application-proxy-service"></a>A szolgáltatás módosítása: Az alkalmazásproxy-szolgáltatás csak a TLS 1.2 protokoll jövőbeli támogatása
 
@@ -145,7 +145,7 @@ További információkért lásd: a [kockázatos felhasználók API-referenciado
 **Szolgáltatás kategóriája:** Vállalati alkalmazások  
 **A termék szolgáltatás:** 3. integráció
 
-2019. május tettünk elérhetővé az alkalmazáskatalógusban támogatja az összevonási 21-én új alkalmazásokról:
+2019\. május tettünk elérhetővé az alkalmazáskatalógusban támogatja az összevonási 21-én új alkalmazásokról:
 
 [Freedcamp](https://docs.microsoft.com/azure/active-directory/saas-apps/freedcamp-tutorial), [valós hivatkozások](https://docs.microsoft.com/azure/active-directory/saas-apps/real-links-tutorial), [Kianda](https://app.kianda.com/sso/OpenID/AzureAD/), [egyszerű bejelentkezési](https://docs.microsoft.com/azure/active-directory/saas-apps/simple-sign-tutorial), [Braze](https://docs.microsoft.com/azure/active-directory/saas-apps/braze-tutorial), [Displayr](https://docs.microsoft.com/azure/active-directory/saas-apps/displayr-tutorial), [Templafy](https://docs.microsoft.com/azure/active-directory/saas-apps/templafy-tutorial), [Marketo értékesítési léphet](https://toutapp.com/login), [ACLP](https://docs.microsoft.com/azure/active-directory/saas-apps/aclp-tutorial), [OutSystems](https://docs.microsoft.com/azure/active-directory/saas-apps/outsystems-tutorial), [Meta4 globális HR](https://docs.microsoft.com/azure/active-directory/saas-apps/meta4-global-hr-tutorial), [Quantum munkahelyi](https://docs.microsoft.com/azure/active-directory/saas-apps/quantum-workplace-tutorial), [kobalt](https://docs.microsoft.com/azure/active-directory/saas-apps/cobalt-tutorial), [WebMethods API felhőalapú elemében](https://docs.microsoft.com/azure/active-directory/saas-apps/webmethods-integration-cloud-tutorial), [RedFlag](https://pocketstop.com/redflag/), [Whatfix](https://docs.microsoft.com/azure/active-directory/saas-apps/whatfix-tutorial), [Vezérlő](https://docs.microsoft.com/azure/active-directory/saas-apps/control-tutorial), [JOBHUB](https://docs.microsoft.com/azure/active-directory/saas-apps/jobhub-tutorial), [NEOGOV](https://docs.microsoft.com/azure/active-directory/saas-apps/neogov-tutorial), [Foodee](https://docs.microsoft.com/azure/active-directory/saas-apps/foodee-tutorial), [MyVR](https://docs.microsoft.com/azure/active-directory/saas-apps/myvr-tutorial)
 
@@ -339,7 +339,7 @@ További információkért lásd: [szinkronizálási hibák elhárítását](htt
 
 ---
 
-### <a name="increased-security-using-the-app-protection-based-conditional-access-policy-in-azure-ad-public-preview"></a>Nagyobb biztonság az alkalmazásvédelmi alkalmazásalapú feltételes hozzáférési szabályzat segítségével az Azure ad-ben (nyilvános előzetes verzió)
+### <a name="increased-security-using-the-app-protection-based-conditional-access-policy-in-azure-ad-public-preview"></a>Nagyobb biztonság az app protection-alapú feltételes hozzáférési szabályzat segítségével az Azure ad-ben (nyilvános előzetes verzió)
 
 **Írja be:** Új szolgáltatás  
 **Szolgáltatás kategóriája:** Feltételes hozzáférés  
@@ -357,7 +357,7 @@ További információkért lásd: [kötelezővé tétele az alkalmazásvédelmi 
 
 ---
 
-### <a name="new-support-for-azure-ad-single-sign-on-and-conditional-access-in-microsoft-edge-public-preview"></a>Új támogatás az Azure ad egyszeri bejelentkezést és feltételes hozzáférés a Microsoft Edge (nyilvános előzetes verzió)
+### <a name="new-support-for-azure-ad-single-sign-on-and-conditional-access-in-microsoft-edge-public-preview"></a>Az Azure AD egyszeri bejelentkezést és feltételes hozzáférés a Microsoft Edge (nyilvános előzetes verzió) az új támogatása
 
 **Írja be:** Új szolgáltatás  
 **Szolgáltatás kategóriája:** Feltételes hozzáférés  
@@ -369,7 +369,7 @@ Beállítását és kezelését, az eszközök és alkalmazások feltételes hoz
 
 ---
 
-## <a name="march-2019"></a>2019. március
+## <a name="march-2019"></a>2019\. március
 
 ### <a name="identity-experience-framework-and-custom-policy-support-in-azure-active-directory-b2c-is-now-available-ga"></a>Identitás-kezelőfelületi keretrendszer és az egyéni házirend támogatása az Azure Active Directory B2C jelenleg elérhető (GA)
 
@@ -477,7 +477,7 @@ További információ az új **Auditnaplók** lapon találhat [naplózott tevék
 **Szolgáltatás kategóriája:** Feltételes hozzáférés  
 **A termék szolgáltatás:** Identitásbiztonság és -védelem
 
-Megakadályozza, hogy a rendszergazdák véletlenül zárolás maguk ki saját bérlők helytelenül konfigurált feltételes hozzáférési házirendek érdekében létrehoztuk az Azure portal új figyelmeztetések és a frissített útmutatást. Az új útmutató kapcsolatos további információkért lásd: [függőségei Mik az Azure Active Directory feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/service-dependencies).
+Megakadályozza, hogy a rendszergazdák véletlenül zárolás maguk ki saját bérlők helytelenül konfigurált feltételes hozzáférési házirendek érdekében létrehoztuk az Azure portal új figyelmeztetések és a frissített útmutatást. Az új útmutató kapcsolatos további információkért lásd: [Mik az Azure Active Directory feltételes hozzáférés függőségei](https://docs.microsoft.com/azure/active-directory/conditional-access/service-dependencies).
 
 ---
 
@@ -529,7 +529,7 @@ Ha a feltételes hozzáférési szabályzatokat a korábban már használta az e
 
 ---
 
-## <a name="february-2019"></a>2019. február
+## <a name="february-2019"></a>2019\. február
 
 ### <a name="configurable-azure-ad-saml-token-encryption-public-preview"></a>Konfigurálható az Azure AD SAML-jogkivonat titkosítása (nyilvános előzetes verzió) 
 
@@ -647,7 +647,7 @@ A sablonok használatával kapcsolatos további információkért lásd: [Azure 
 
 ---
 
-## <a name="january-2019"></a>2019. január
+## <a name="january-2019"></a>2019\. január
 
 ### <a name="active-directory-b2b-collaboration-using-one-time-passcode-authentication-public-preview"></a>Egyszeri jelszó-hitelesítés (nyilvános előzetes verzió) használatával az Active Directory B2B-együttműködés
 
@@ -735,7 +735,7 @@ További információkért lásd: [PIM az Azure-erőforrások szerepköreihez ta
 
 ---
 
-## <a name="novemberdecember-2018"></a>2018. november/December
+## <a name="novemberdecember-2018"></a>2018\. november/December
 
 ### <a name="users-removed-from-synchronization-scope-no-longer-switch-to-cloud-only-accounts"></a>Felhasználók eltávolítva szinkronizálási hatókör nem hosszabb kapcsoló csak felhőalapú fiókok
 

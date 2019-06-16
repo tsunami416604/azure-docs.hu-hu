@@ -12,10 +12,10 @@ ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
 ms.openlocfilehash: e2f0f1e7ac8f510c4ff5be7933c55278fef74694
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60715522"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>Technikai útmutató a Cortana Intelligence Megoldássablon prediktív karbantartás a légi közlekedésben
@@ -171,10 +171,10 @@ Az alábbi lépéseket leírja, hogyan csatlakozhat az SQL-adatbázis, amely a m
    
    Szüksége lesz **adatbázis-kiszolgáló nevét, adatbázisnév, felhasználónév és jelszó** áthelyezése a következő lépések előtt. Az alábbiakban útmutató, hogyan találhatja meg azokat a lépéseket.
    
-   * Egyszer **"Azure SQL Database"** a megoldássablon az ábra a színe zöldre vált, kattintson rá, és kattintson a **"Nyitott"**.
+   * Egyszer **"Azure SQL Database"** a megoldássablon az ábra a színe zöldre vált, kattintson rá, és kattintson a **"Nyitott"** .
    * Egy új böngészőlapon vagy-ablakban, amely megjeleníti az Azure portal oldalán láthatja. Kattintson a **"Erőforráscsoportok"** bal oldali panelen.
-   * Válassza ki az előfizetést, a megoldás üzembe helyezése használja, és válassza **"YourSolutionName\_ResourceGroup"**.
-   * Az új pop ki panelen, kattintson a ![SQL ikon](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-sql.png) ikonra az adatbázis eléréséhez. Ez az ikon mellett van az adatbázis nevét (például **"pmaintenancedb"**), és a **adatbázis-kiszolgáló neve** a Server name tulajdonság van felsorolva, és hasonlóan kell kinéznie  **YourSolutionName.database.windows.net**.
+   * Válassza ki az előfizetést, a megoldás üzembe helyezése használja, és válassza **"YourSolutionName\_ResourceGroup"** .
+   * Az új pop ki panelen, kattintson a ![SQL ikon](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-sql.png) ikonra az adatbázis eléréséhez. Ez az ikon mellett van az adatbázis nevét (például **"pmaintenancedb"** ), és a **adatbázis-kiszolgáló neve** a Server name tulajdonság van felsorolva, és hasonlóan kell kinéznie  **YourSolutionName.database.windows.net**.
    * Az adatbázis **felhasználónév** és **jelszó** ugyanaz, mint a felhasználónév és jelszó korábban rögzíti a megoldás üzembe helyezése során.
 2. Frissítse az adatforrást a ritka elérésű útvonal fájlját a Power BI Desktopban.
    
@@ -182,8 +182,8 @@ Az alábbi lépéseket leírja, hogyan csatlakozhat az SQL-adatbázis, amely a m
      
      ![Lekérdezések szerkesztése](./media/cortana-analytics-technical-guide-predictive-maintenance/edit-queries.png)
    * Látni fogja a két táblázat **RemainingUsefulLife** és **PMResult**. Válassza ki az első táblázat, és kattintson a ![lekérdezési beállítások ikon](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-query-settings.png) melletti **"Forrás"** alatt **alkalmazott lépések** a jobb oldali **"Lekérdezés beállításai"** panel. Hagyja figyelmen kívül a megjelenő figyelmeztető üzeneteket.
-   * Cserélje le a kiugró ablakban **"Kiszolgáló"** és **"Adatbázis"** a saját kiszolgáló és az adatbázis nevét, és kattintson a **"OK"**. A kiszolgáló nevét, győződjön meg arról, adja meg az 1433-as porton (**YourSolutionName.database.windows.net, 1433-as**). Hagyja meg az adatbázis mező **pmaintenancedb**. Figyelmen kívül hagyhatja a figyelmeztetéseket, a képernyőn megjelenő.
-   * A következő kiugró ablakban, a két lehetőség a bal oldali panelen láthatja (**Windows** és **adatbázis**). Kattintson a **"Adatbázis"**, töltse ki a **'Felhasználónév'** és **'Password'** (azt a felhasználónevet és jelszót, amikor először üzembe helyezte a megoldást és létrehozott egy Azure SQL-adatbázis). A ***válassza ki, melyik szintre legyenek érvényesek a beállítások***, ellenőrizze az adatbázis-szintű beállítás. Kattintson a **"Csatlakozás"**.
+   * Cserélje le a kiugró ablakban **"Kiszolgáló"** és **"Adatbázis"** a saját kiszolgáló és az adatbázis nevét, és kattintson a **"OK"** . A kiszolgáló nevét, győződjön meg arról, adja meg az 1433-as porton (**YourSolutionName.database.windows.net, 1433-as**). Hagyja meg az adatbázis mező **pmaintenancedb**. Figyelmen kívül hagyhatja a figyelmeztetéseket, a képernyőn megjelenő.
+   * A következő kiugró ablakban, a két lehetőség a bal oldali panelen láthatja (**Windows** és **adatbázis**). Kattintson a **"Adatbázis"** , töltse ki a **'Felhasználónév'** és **'Password'** (azt a felhasználónevet és jelszót, amikor először üzembe helyezte a megoldást és létrehozott egy Azure SQL-adatbázis). A ***válassza ki, melyik szintre legyenek érvényesek a beállítások***, ellenőrizze az adatbázis-szintű beállítás. Kattintson a **"Csatlakozás"** .
    * Kattintson a második táblázat **PMResult** kattintson ![navigációs ikonja](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-navigation.png) melletti **"Forrás"** alatt **alkalmazott lépések** a jobb oldali **"Lekérdezés beállításai"** panelen, és frissítse a kiszolgáló és az adatbázis nevének, mint a fenti lépéseket, és kattintson az OK gombra.
    * Miután, interaktív van az előző oldalra, zárja be az ablakot. Egy üzenet jelenik meg – kattintson **alkalmaz**. Végül kattintson a **mentése** gombra kattintva mentse a módosításokat. A Power BI-fájl most létesített kapcsolat a kiszolgálóval. Ha a Vizualizációk üres, győződjön meg arról, törölje a jelet a választott beállításokat, a Vizualizációk adatok megjelenítése a jelmagyarázat jobb felső sarkában a radír ikonra kattintva. A frissítés gomb használatával új adatokat tükrözik a vizualizációt. Kezdetben csak látható a kezdőérték-adatok a Vizualizációk az adat-előállító 3 óránként ütemezett módon. 3 óra után látni fogja a Vizualizációk megjelennek, amikor az adatok frissítése új előrejelzéseket.
 3. (Nem kötelező) A ritka elérésű útvonal irányítópult közzététele [online a Power BI](https://www.powerbi.com/). Vegye figyelembe, hogy ezt a lépést kell egy Power BI-fiók (vagy Office 365-fiókkal).

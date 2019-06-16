@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: security
 ms.reviewer: rochiou
 ms.openlocfilehash: 6f92c609cbc9c5ba7d5d185b369bbf0a9d798a3e
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66743095"
 ---
 # <a name="azure-services-by-fedramp-and-dod-cc-srg-audit-scope"></a>Azure-szolgáltatások a FedRAMP- és DoD CC SRG hatókör naplózása
@@ -42,7 +42,7 @@ Ez a cikk releváns felhőalapú szolgáltatások részletes listáját Azure-ba
 | [Az Azure Active Directory (ingyenes és alapszintű)](https://azure.microsoft.com/services/active-directory/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Az Azure Active Directory (prémium P1 és P2)](https://azure.microsoft.com/services/active-directory/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) |  |  |  | :heavy_check_mark: |
-| [Az Azure Active Directory Domain Servicesben](https://azure.microsoft.com/services/active-directory-ds/) | |  |  | :heavy_check_mark: |
+| [Azure Active Directory Domain Services](https://azure.microsoft.com/services/active-directory-ds/) | |  |  | :heavy_check_mark: |
 | [Az Azure komplex veszélyforrások elleni védelem](https://azure.microsoft.com/features/azure-advanced-threat-protection/) |  | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Azure Advisor](https://azure.microsoft.com/services/advisor/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Az Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |

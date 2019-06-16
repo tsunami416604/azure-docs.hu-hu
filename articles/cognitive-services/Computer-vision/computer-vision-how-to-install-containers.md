@@ -3,20 +3,20 @@ title: Hogyan telepítheti és futtathatja a tárolók – Computer Vision
 titlesuffix: Azure Cognitive Services
 description: Hogyan letöltése, telepítése és a Computer Vision-tárolókat futtathat az bemutató oktatóanyag.
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: article
-ms.date: 05/28/2019
-ms.author: diberry
+ms.date: 06/10/2019
+ms.author: IEvangelist
 ms.custom: seodec18
-ms.openlocfilehash: 10e5060c06e1ebc591c7245ae588b5352a3328ca
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 49e3af546ffcf5be47c73bfe633223a4d968d887
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66302825"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67060925"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Telepítse és futtassa a szöveg felismerése tárolók
 
@@ -30,7 +30,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Szöveg felismerése tárolók használata előtt a következő előfeltételeknek kell megfelelnie:
 
-|Kötelező|Cél|
+|Szükséges|Cél|
 |--|--|
 |Docker-motor| A Docker-motor telepítve van szüksége egy [gazdaszámítógép](#the-host-computer). A docker csomagokat biztosít, a Docker-környezet konfigurálása a [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), és [Linux](https://docs.docker.com/engine/installation/#supported-platforms). A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> **A Windows**, a Docker Linux-tárolók támogatása is kell konfigurálni.<br><br>|
 |Docker-ismeretek | A Docker fő fogalmaira, például a beállításjegyzékek, adattárak, tárolók, és tárolórendszerképeket, valamint alapszintű ismerete alapvető ismeretekkel kell `docker` parancsokat.| 
@@ -63,7 +63,7 @@ Core és a memória felel meg a `--cpus` és `--memory` beállítások, amelyek 
 
 Szöveg ismeri fel a tárolórendszerképeket érhetők el. 
 
-| Tároló | Adattár |
+| Tároló | Tárház |
 |-----------|------------|
 |Szövegének felismerése | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
 

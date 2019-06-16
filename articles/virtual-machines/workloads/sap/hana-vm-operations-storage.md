@@ -17,13 +17,13 @@ ms.date: 06/05/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d062b6fff9693d5bda75edd65b8fe88d834eff57
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66735511"
 ---
-# <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Az SAP HANA az Azure virtuális gépek tárolási konfigurációk
+# <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure-beli virtuális gépek tárkonfigurációi
 
 Az Azure biztosít a különböző típusú tárolóhelyek, hogy az SAP HANA futtató Azure virtuális gépek kiválóan alkalmasak. Az Azure storage típusát, amely a hasonló központi telepítések listának az SAP HANA lehessen venni: 
 

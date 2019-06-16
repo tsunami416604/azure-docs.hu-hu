@@ -16,10 +16,10 @@ ms.date: 08/29/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: cbf6a44f1a3210906ec7ab0d04eecb997bc2c470
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65412814"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Alkalmazások hibaelhárítása az Azure App Service használatával a Visual Studio-
@@ -684,7 +684,7 @@ Emellett nem kell használnia az ASP.NET vagy `System.Diagnostics` le adatfolyam
 Webkiszolgáló-naplók elemzésével kapcsolatos további információkért lásd a következőket:
 
 * [LogParser](https://www.microsoft.com/download/details.aspx?id=24659)<br/>
-  Egy eszköz a adatok megtekintése a webkiszolgáló-naplókkal (*.log* fájlok).
+  Egy eszköz a adatok megtekintése a webkiszolgáló-naplókkal ( *.log* fájlok).
 * [Hibaelhárítási IIS teljesítménybeli problémák vagy az alkalmazáshibák LogParser használatával](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   Bevezetés a naplóelemző eszköz, amellyel webkiszolgáló-naplók elemzése.
 * [Blogbejegyzések által Robert McMurray LogParser használatával](https://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>

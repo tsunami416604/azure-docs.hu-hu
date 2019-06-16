@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/11/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3717ed095c162255b0c0cdf09cac13fe2033979a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9ff3748213d8449704f7b1001469eb8f7a224498
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60260569"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098074"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-learning"></a>Oktatóanyag: A LinkedIn Learning az Azure Active Directory-integráció
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása a LinkedIn Learning konfigurálásához hozzá kell Li
 
 **LinkedIn Learning hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -127,7 +127,7 @@ A LinkedIn Learning konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa 
     
     | Name (Név) | Adatforrás-attribútum |
     | ---------------| --------------- |
-    | e-mail  | user.mail  |
+    | email  | user.mail  |
     | Szervezeti egység  | user.department  |
     | Keresztnév  | user.givenname  |
     | Vezetéknév  | user.surname  |

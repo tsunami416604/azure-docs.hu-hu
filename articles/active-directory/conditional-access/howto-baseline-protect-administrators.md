@@ -1,6 +1,6 @@
 ---
 title: Alapvető házirendet az Azure Active Directory-rendszergazdák – a többtényezős hitelesítés megkövetelése
-description: Feltételes hozzáférési szabályzat segítségével a rendszergazdák számára a többtényezős hitelesítés megkövetelése
+description: A többtényezős hitelesítés megkövetelése a rendszergazdák feltételes hozzáférési szabályzat
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1ce48126c3e8867ac7f2696d8cf7db992a9a60a
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 4f8b7f281ad5ed8424110696544ffdb49e50ce59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003281"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112430"
 ---
 # <a name="baseline-policy-require-mfa-for-admins"></a>Alapvető házirendet: MFA megkövetelése rendszergazdáktól
 
@@ -30,7 +30,7 @@ Kiemelt jogosultságú fiókok hozzáféréssel rendelkező felhasználó ugyano
 * Feltételes hozzáférésű rendszergazda
 * Biztonsági rendszergazda
 * Ügyfélszolgálati adminisztrátor / rendszergazdai jelszó
-* Számlázási adminisztrátor
+* Számlázási rendszergazda
 * Felhasználói adminisztrátor
 
 Követően a rendszergazdák házirend szükséges többtényezős hitelesítés engedélyezése, a fenti kilenc rendszergazdai szerepköröket kell regisztrálni a multi-factor Authentication az Authenticator alkalmazás használatával. MFA-regisztráció befejezése után a rendszergazdák hajthatok végre MFA minden egyetlen alkalommal be kell.

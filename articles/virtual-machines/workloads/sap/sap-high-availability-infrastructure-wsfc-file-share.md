@@ -18,10 +18,10 @@ ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e1c6b1d55a4fbc673980908a981a9a96c869bee9
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65409615"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>SAP magas rendelkezésre állás egy Windows feladatátvevő fürt és -fájlmegosztást az SAP ASCS/SCS-példányok Azure-infrastruktúra előkészítése
@@ -323,7 +323,7 @@ Az Azure Resource Manager-sablon üzembe helyezéséhez a Scale-Out File Server 
 
 Azt javasoljuk, hogy a Managed Disks szolgáltatást.
 
-![1. ábra: Felhasználói felület képernyő felügyelt lemezekkel rendelkező Scale-Out File Server Resource Manager-sablon][sap-ha-guide-figure-8010]
+![1\. ábra: Felhasználói felület képernyő felügyelt lemezekkel rendelkező Scale-Out File Server Resource Manager-sablon][sap-ha-guide-figure-8010]
 
 _**1. ábra**: Felhasználói felület képernyő felügyelt lemezekkel rendelkező Scale-Out File Server Resource Manager-sablon_
 
@@ -337,7 +337,7 @@ A sablonban tegye a következőket:
 
 Az Azure Resource Manager-sablon üzembe helyezéséhez a közvetlen tárolóhelyek és a nem felügyelt lemezek Azure Scale-Out File Server érhető el az [GitHub][arm-sofs-s2d-non-managed-disks].
 
-![2. ábra: Felhasználói felület képernyő a felügyelt lemezek nélkül Scale-Out File Server Azure Resource Manager-sablon][sap-ha-guide-figure-8011]
+![2\. ábra: Felhasználói felület képernyő a felügyelt lemezek nélkül Scale-Out File Server Azure Resource Manager-sablon][sap-ha-guide-figure-8011]
 
 _**2. ábra**: Felhasználói felület képernyő a felügyelt lemezek nélkül Scale-Out File Server Azure Resource Manager-sablon_
 

@@ -3,17 +3,17 @@ title: Létrehozása és kezelése az Azure IoT központi alkalmazás eseménysz
 description: Az Azure IoT Central esemény szabályok lehetővé teszik az eszközök, közel valós időben figyelheti és automatikusan követve indíthatók el műveletek, például egy e-mailt küldhet a szabály aktiválásakor.
 author: ankitscribbles
 ms.author: ankitgup
-ms.date: 02/20/2019
+ms.date: 06/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: a2bce535d8612eca565970d4c530a27efb356334
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 4754e6b571845d286ef22014f87b86fae2f6633d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65464533"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053033"
 ---
 # <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Hozzon létre egy esemény szabályt és az Azure IoT központi alkalmazás-értesítések beállítása
 
@@ -55,7 +55,7 @@ A feltétel a feltételeknek, a szabály által figyelt határozza meg.
 
 1. Válassza ki azt az eseményt, amely szeretné figyelni a mérési legördülő listából. Ebben a példában **ventilátor Motor hiba** esemény lett kiválasztva.
 
-   ![Feltétel](media/howto-create-event-rules/condition_filled_out1.png)
+   ![Állapot](media/howto-create-event-rules/condition_filled_out1.png)
 
 1. Igény szerint is beállíthat **száma** , **összesítési** , és adja meg a megfelelő küszöbértéket.
 

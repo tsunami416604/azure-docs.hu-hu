@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf8e7fed30a9b25b2960e3321eca5c4398911f35
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 7e236d3142ba4410b6942f9e8069e1429aae5378
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236247"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108425"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Hálózati topológia szempontjai Azure Active Directory Application Proxy használatával
 
@@ -86,7 +86,7 @@ Az összekötő a célalkalmazás közelében helyezze az ügyfél hálózatán.
 
 Ha az összekötő kell a tartományvezérlőre egy üzemel, ez a minta azért előnyösebb. Legtöbb ügyfelünk akkor használja ezt a mintát, mivel a legtöbb forgatókönyvhöz jól működik. Ez a minta mintával 2 a szolgáltatás és az összekötő közötti forgalom optimalizálása érdekében is kombinálhatók.
 
-### <a name="pattern-2-take-advantage-of-expressroute-with-microsoft-peering"></a>2. minta: A Microsoft társviszony-létesítési ExpressRoute előnyeit
+### <a name="pattern-2-take-advantage-of-expressroute-with-microsoft-peering"></a>2\. minta: A Microsoft társviszony-létesítési ExpressRoute előnyeit
 
 Ha az ExpressRoute állítsa be a Microsoft társviszony-létesítés, használhatja a gyorsabb ExpressRoute-kapcsolat Application Proxy és az összekötő közötti forgalom. Az összekötő továbbra is a hálózat, az alkalmazás közelében van.
 
@@ -176,5 +176,5 @@ Ebben az esetben egy másik változatot használatával is használni. Ha legtö
 
 - [Alkalmazásproxy engedélyezése](application-proxy-add-on-premises-application.md)
 - [Egyszeri bejelentkezés engedélyezése](application-proxy-configure-single-sign-on-with-kcd.md)
-- [Feltételes hozzáférés engedélyezése](application-proxy-integrate-with-sharepoint-server.md)
+- [Feltételes hozzáférési házirend engedélyezése](application-proxy-integrate-with-sharepoint-server.md)
 - [Problémák merültek fel az alkalmazásproxy használatával](application-proxy-troubleshoot.md)

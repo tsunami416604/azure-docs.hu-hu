@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 7f0b467284872f3d936984741c6d092705008a5a
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: ba6d137a7eb5fc2c56bfc39aa8f831d76411fb46
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025922"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67060854"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Emberi címkével beszédátírás létrehozása
 
@@ -78,7 +78,7 @@ Az alábbi normalizálási szabályok beszédátírás automatikusan érvényese
 | A pi készül 3,14 | a pi körülbelül három pont egy négy |
 $3,14 költségei| három tizennégy költségei |
 
-## <a name="mandarin-chinese-zh-cn"></a>Mandarin kínai (zh-cn)
+## <a name="mandarin-chinese-zh-cn"></a>Mandarin kínai (zh-CN)
 
 Mandarin kínai Audio emberi címkével beszédátírás UTF-8 kódolású a bájtsorrendjelző mutató kell lennie. Kerülje a teljes szélességű írásjelek karakterek használatát. Ezek a karakterek szerepelhetnek véletlenül a az adatelőkészítés szövegszerkesztő programokban vagy scrape weblapokról származó adatokat. Ha ezek a karakterek is szerepelnek, ügyeljen arra, hogy frissítse azokat a megfelelő teljes szélességű helyettesítés.
 

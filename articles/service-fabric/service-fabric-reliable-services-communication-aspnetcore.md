@@ -15,10 +15,10 @@ ms.workload: required
 ms.date: 10/12/2018
 ms.author: vturecek
 ms.openlocfilehash: 638c06e1854504dcb7ff34b1d9df56694556c421
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64939793"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>Az ASP.NET Core, az Azure Service Fabric Reliable Services
@@ -62,9 +62,9 @@ A szolgáltatás osztály kapcsolatból származtatott kapcsolatot képviseli eg
 A `ICommunicationListener` Kestrel és a HTTP.sys megvalósítások az `Microsoft.ServiceFabric.AspNetCore.*` NuGet-csomagok hasonló felhasználási minták rendelkezik. Azonban azok minden webkiszolgálóhoz adott némileg különböző műveleteket végezni. 
 
 Mindkét kommunikációs figyelőket adjon meg egy konstruktort, amely a következő argumentumot:
- - **`ServiceContext serviceContext`**: Ez a `ServiceContext` objektum, amely a futó szolgáltatással kapcsolatos információkat tartalmazza.
- - **`string endpointName`**: Azt a nevet, egy `Endpoint` ServiceManifest.xml a konfigurációt. Azt az elsősorban, ahol a két kommunikációs figyelőket eltérőek. A HTTP.sys *igényel* egy `Endpoint` konfigurációs, míg a Kestrel nem.
- - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`**: Ez az egy lambda, amely alkalmazza, a hozhatja létre, és adja vissza egy `IWebHost`. Ez lehetővé teszi, hogy konfigurálását `IWebHost` azt szokásosan tenné az ASP.NET Core alkalmazás módja. A lambda biztosít egy URL-címet, amely akkor jön létre az Ön számára, attól függően, a Service Fabric integrációs lehetőségeket használja, és a `Endpoint` konfigurációs adnia. Majd módosíthatja vagy adott URL-cím használatával a webkiszolgáló elindításához.
+ - **`ServiceContext serviceContext`** : Ez a `ServiceContext` objektum, amely a futó szolgáltatással kapcsolatos információkat tartalmazza.
+ - **`string endpointName`** : Azt a nevet, egy `Endpoint` ServiceManifest.xml a konfigurációt. Azt az elsősorban, ahol a két kommunikációs figyelőket eltérőek. A HTTP.sys *igényel* egy `Endpoint` konfigurációs, míg a Kestrel nem.
+ - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`** : Ez az egy lambda, amely alkalmazza, a hozhatja létre, és adja vissza egy `IWebHost`. Ez lehetővé teszi, hogy konfigurálását `IWebHost` azt szokásosan tenné az ASP.NET Core alkalmazás módja. A lambda biztosít egy URL-címet, amely akkor jön létre az Ön számára, attól függően, a Service Fabric integrációs lehetőségeket használja, és a `Endpoint` konfigurációs adnia. Majd módosíthatja vagy adott URL-cím használatával a webkiszolgáló elindításához.
 
 ## <a name="service-fabric-integration-middleware"></a>A Service Fabric-integráció közbenső
 A `Microsoft.ServiceFabric.AspNetCore` NuGet-csomag tartalmazza a `UseServiceFabricIntegration` metódust a `IWebHostBuilder` , amely hozzáadja a Service Fabric – figyelembe közbenső szoftverek. A közbenső szoftver konfigurálja a Kestrel vagy a HTTP.sys `ICommunicationListener` regisztrálni egy egyedi URL-címe a Service Fabric elnevezési szolgáltatásban. Ezután ellenőrzi a ügyfélkérések győződjön meg, hogy az ügyfelek csatlakoznak a megfelelő szolgáltatást. 
@@ -479,7 +479,7 @@ Amikor az interneten vannak kitéve, állapotmentes szolgáltatás használja eg
 |  |  | **Megjegyzések** |
 | --- | --- | --- |
 | Webkiszolgáló | Kestrel | A kestrel az előnyben részesített webkiszolgáló, mert különböző Windows és Linux támogatott. |
-| Port konfigurálása | statikus | A jól ismert statikus port lehet beállítani a `Endpoints` ServiceManifest.xml, például a 80-as HTTP vagy HTTPS-hez a 443-as konfigurációját. |
+| Port konfigurálása | Statikus | A jól ismert statikus port lehet beállítani a `Endpoints` ServiceManifest.xml, például a 80-as HTTP vagy HTTPS-hez a 443-as konfigurációját. |
 | ServiceFabricIntegrationOptions | None | Használja a `ServiceFabricIntegrationOptions.None` lehetőséget a Service Fabric-integráció közbenső szoftverek, konfigurálásakor, hogy a szolgáltatás nem próbálja meg egy egyedi azonosítót a bejövő kérelmeket. Az alkalmazás külső felhasználók nem fognak ismerni az egyedi azonosító adatokat, amely az közbenső szoftvert használ. |
 | Példányszám | -1 | A tipikus használati esetek, a példányok száma beállítást kell megadni *-1*. Ez történik, hogy az egy példány érhető el az összes csomóponton, hogy a forgalom fogadására a terheléselosztótól. |
 
@@ -506,7 +506,7 @@ Ha több kívülről elérhetővé tett szolgáltatások ugyanazokat a csomópon
 | Webkiszolgáló | Kestrel | Bár a HTTP.sys belső állapotmentes szolgáltatások esetében, a Kestrel az a legjobb kiszolgáló, hogy egy gazdagép megosztani több szolgáltatáspéldány.  |
 | Port konfigurálása | dinamikusan kiosztott | Állapotalapú szolgáltatás több replika előfordulhat, hogy ossza meg egy gazdafolyamat vagy a gazda operációs rendszer, és így kell egyedi portokat. |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | Dinamikus portok hozzárendelés Ez a beállítás megakadályozza, hogy a korábban ismertetett garanciafeltételeknek identitás probléma. |
-| InstanceCount | bármilyen | A beállítás példányszám állítható bármilyen érték a szolgáltatás működtetéséhez szükséges. |
+| InstanceCount | Bármely | A beállítás példányszám állítható bármilyen érték a szolgáltatás működtetéséhez szükséges. |
 
 ### <a name="internal-only-stateful-aspnet-core-service"></a>Csak belső állapotalapú ASP.NET Core-szolgáltatás
 Állapotalapú szolgáltatások, amelyek a fürtön belül csak meghívni a dinamikusan hozzárendelt portok segítségével biztosítja több szolgáltatások közötti együttműködést. Azt javasoljuk, hogy a következő konfigurációt:

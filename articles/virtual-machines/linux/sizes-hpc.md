@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: 32b0f467f11cf8cb0a04657006cb5a86b11e27e9
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 003a14174ff65bab253f27a458d4f3e2c0a1a6db
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66755159"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070003"
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>Nagy teljesítményű számítási virtuálisgép-méretek
 
@@ -72,7 +72,7 @@ Az Azure Marketplace-en számos Linux-disztribúció, amelyek támogatják az RD
 
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]  
 
-  InfiniBand, MPI, beállításának engedélyezésével kapcsolatos további részletekért lásd: [engedélyezése InfiniBand](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband-with-sriov).
+  InfiniBand, MPI, beállításának engedélyezésével kapcsolatos további részletekért lásd: [engedélyezése InfiniBand](../workloads/hpc/enable-infiniband.md).
 
 
 ### <a name="cluster-configuration-options"></a>Fürt konfigurációs lehetőségek
@@ -107,5 +107,5 @@ Az Azure Linuxos HPC virtuális gépeken, amely az RDMA hálózati használatáv
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ annak beállítása, optimalizálásában és méretezésében [HPC számítási feladatok](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc) az Azure-ban.
+- További információ annak beállítása, optimalizálásában és méretezésében [HPC számítási feladatok](../workloads/hpc/configure.md) az Azure-ban.
 - Tudjon meg többet [Azure számítási egységek (ACU)](acu.md) Azure-termékváltozatok hasonlítsa össze a számítási teljesítményt nyújt segítséget.

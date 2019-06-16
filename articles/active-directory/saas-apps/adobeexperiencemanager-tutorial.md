@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb066ce346d56b9b879a5e3cdcf30e7da77d94fe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 81032fbad21b18b0b7ca2e7662b0c4b4b6c10901
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65859319"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107281"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>Oktatóanyag: Az Azure Active Directory-integráció az Adobe Experience Manager
 
@@ -55,7 +55,7 @@ Az Azure AD-be Adobe Experience Manager-integráció konfigurálása szüksége 
 
 **Az Adobe Experience Manager hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -182,7 +182,7 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] konfigurálásához haj
 
     ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin4.png)
 
-    a. Az a **elérési** mezőbe írja be **/**.
+    a. Az a **elérési** mezőbe írja be **/** .
 
     b. Az a **Identitásszolgáltató URL-cím** mezőbe írja be a **bejelentkezési URL-cím** , az Azure Portalról másolt érték.
 
@@ -259,7 +259,7 @@ Ebben a szakaszban egy Britta Simon Adobe Experience Manager nevű felhasználó
 
 Ha szeretné manuálisan létrehozni a felhasználók, a [Adobe Experience Manager ügyfélszolgálathoz](https://helpx.adobe.com/support/experience-manager.html) a felhasználók hozzáadása az Adobe Experience Manager platformon.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

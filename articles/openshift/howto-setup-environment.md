@@ -9,12 +9,12 @@ ms.date: 05/10/2019
 ms.topic: conceptual
 ms.service: openshift
 manager: jeconnoc
-ms.openlocfilehash: f0ef421d7954aa33cf69e7de2f4902a86ed8b580
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 21ccd7b2919714610dbd51c62701c4bb32d330d6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306409"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808833"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Az Azure Red Hat OpenShift fejlesztői környezetének beállítása
 
@@ -22,7 +22,7 @@ Alkalmazások létrehozását és futtatását a Microsoft Azure Red Hat OpenShi
 
 * Az Azure fenntartott virtuálisgép-példányok vásárolhat.
 * Verzió 2.0.65 telepítése (vagy magasabb) az Azure CLI-vel (vagy az Azure Cloud Shell használata).
-* Regisztráljon a `openshiftmanagedcluster` szolgáltatás és a társított erőforrás-szolgáltatók.
+* Regisztráljon a `AROGA` szolgáltatás és a társított erőforrás-szolgáltatók.
 * Hozzon létre egy Azure Active Directory (Azure AD) bérlő.
 * Hozzon létre egy Azure AD alkalmazás-objektum.
 * Hozzon létre egy Azure AD-felhasználót.
@@ -55,7 +55,7 @@ Másik lehetőségként használhatja a [Azure Cloud Shell](https://docs.microso
 
 ## <a name="register-providers-and-features"></a>Regisztrálja a szolgáltatók és funkciók
 
-A `Microsoft.ContainerService openshiftmanagedcluster` funkció, `Microsoft.Solutions`, és `Microsoft.Network` szolgáltatók az előfizetéshez, az első Azure Red Hat OpenShift-fürt üzembe helyezése előtt manuálisan kell regisztrálni.
+A `Microsoft.ContainerService AROGA` funkció, `Microsoft.Solutions`, `Microsoft.Compute`, `Microsoft.Storage`, `Microsoft.KeyVault` és `Microsoft.Network` szolgáltatók az előfizetéshez, az első Azure Red Hat OpenShift-fürt üzembe helyezése előtt manuálisan kell regisztrálni.
 
 A szolgáltatók és a szolgáltatások manuálisan kell regisztrálnia, használja az alábbi utasításokat követve egy Bash rendszerhéjból, ha telepítette a parancssori felület vagy az Azure Cloud Shell (Bash) munkamenet az Azure Portalon:
 
@@ -65,10 +65,10 @@ A szolgáltatók és a szolgáltatások manuálisan kell regisztrálnia, haszná
     az account set --subscription <SUBSCRIPTION ID>
     ```
 
-1. A Microsoft.ContainerService openshiftmanagedcluster funkció regisztrálása:
+1. A Microsoft.ContainerService AROGA funkció regisztrálása:
 
     ```bash
-    az feature register --namespace Microsoft.ContainerService -n openshiftmanagedcluster
+    az feature register --namespace Microsoft.ContainerService -n AROGA
     ```
 
 1. A Microsoft.Storage szolgáltató regisztrálásához:

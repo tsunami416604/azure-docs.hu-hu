@@ -14,14 +14,14 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: bda3df3ce869d7717f572f72c38472e7eae4a0ef
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60567214"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Adatok importálására és az Azure Cosmos DB az Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](data-factory-azure-documentdb-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-azure-cosmos-db.md)
 
@@ -124,7 +124,7 @@ Ha forrás típusa másolási tevékenység esetén **DocumentDbCollectionSource
 
 | **Tulajdonság** | **Leírás** | **Megengedett értékek** | **Kötelező** |
 | --- | --- | --- | --- |
-| query |Adja meg a lekérdezés adatokat olvasni. |Lekérdezés-karakterlánc, az Azure Cosmos DB által támogatott. <br/><br/>Például: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nem <br/><br/>Ha nincs megadva, az SQL-utasítást, amely hajtja végre: `select <columns defined in structure> from mycollection` |
+| lekérdezés |Adja meg a lekérdezés adatokat olvasni. |Lekérdezés-karakterlánc, az Azure Cosmos DB által támogatott. <br/><br/>Például: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nem <br/><br/>Ha nincs megadva, az SQL-utasítást, amely hajtja végre: `select <columns defined in structure> from mycollection` |
 | nestingSeparator |Jelzi, hogy a dokumentum van beágyazva speciális karakter |Bármely karakter. <br/><br/>Azure Cosmos DB a NoSQL-alapú tárolót a JSON-dokumentumok, amelyben beágyazott struktúrák engedélyezettek. Az Azure Data Factory lehetővé teszi, hogy a felhasználó nestingSeparator, amely használatával a hierarchia jelölésére "." a fenti példákban. Az elválasztó, a másolási tevékenység hoz létre három gyermeket elem "Name" objektum először, középső és az utolsó, "Name.First", "Name.Middle" és "Name.Last" tábla definíciójában. |Nem |
 
 **DocumentDbCollectionSink** támogatja a következő tulajdonságokkal:

@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb421442a7b45f3cd5925fd1475a0a69053c3113
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 27f5a7d8bb6dc347414d84d8cf536f1c2d7a9910
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66473384"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109343"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Összevonási áttelepíteni az Azure Active Directory átmenő hitelesítéshez
 
@@ -144,7 +144,7 @@ A **InsideCorporateNetwork** jogcím nem érhető el, a tartományok alakulnak �
 
 Nevesített helyek konfigurálása, frissítenie kell az összes olyan feltételes hozzáférési szabályzatok belefoglalása vagy kizárása a hálózati konfigurált **minden megbízható hely** vagy **MFA megbízható IP-címek** helyezendő értékek tükrözik az új nevesített helyek.
 
-További információ a **hely** azzal a feltételes hozzáférés feltétellel, lásd: [Active Directory feltételes hozzáférés helyek](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations).
+További információ a **hely** azzal a feltételes hozzáférés feltétellel, lásd: [helyeket az Active Directory feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations).
 
 #### <a name="hybrid-azure-ad-joined-devices"></a>Hibrid Azure AD-hez csatlakoztatott eszközök
 
@@ -218,7 +218,7 @@ A megoldás tervezett. Most már valósíthat meg azt. Megvalósítás az alább
 * Közvetlen egyszeri bejelentkezés előkészítése.
 * A bejelentkezési mód módosítása átmenő hitelesítésének és közvetlen egyszeri bejelentkezés engedélyezése.
 
-### <a name="step-1-prepare-for-seamless-sso"></a>1. lépés: Közvetlen egyszeri bejelentkezés előkészítése
+### <a name="step-1-prepare-for-seamless-sso"></a>1\. lépés: Közvetlen egyszeri bejelentkezés előkészítése
 
 Közvetlen egyszeri bejelentkezés használata az eszközök hozzá kell adnia egy Azure AD URL-cím felhasználók intranetes zóna beállításait az Active Directoryban egy csoportházirend használatával.
 
@@ -229,7 +229,7 @@ A lépéseket követve [bevezetése](https://docs.microsoft.com/azure/active-dir
 > [!IMPORTANT]
 > A módosítás elvégzése nem módosítja az Azure AD a felhasználói bejelentkezés módját. Fontos azonban alkalmazni ezt a konfigurációt az összes eszközre, mielőtt folytatja a műveletet. Azokon az eszközökön, ez a konfiguráció még nem kapott bejelentkező felhasználóknak egyszerűen szükséges beírjanak egy felhasználónevet és jelszót, hogy jelentkezzen be Azure ad-ben.
 
-### <a name="step-2-change-the-sign-in-method-to-pass-through-authentication-and-enable-seamless-sso"></a>2. lépés: A bejelentkezési módszer módosításához az átmenő hitelesítést, és közvetlen egyszeri bejelentkezés engedélyezése
+### <a name="step-2-change-the-sign-in-method-to-pass-through-authentication-and-enable-seamless-sso"></a>2\. lépés: A bejelentkezési módszer módosításához az átmenő hitelesítést, és közvetlen egyszeri bejelentkezés engedélyezése
 
 A bejelentkezési mód módosítása az átmenő hitelesítést, és közvetlen egyszeri bejelentkezés engedélyezése két lehetősége van.
 

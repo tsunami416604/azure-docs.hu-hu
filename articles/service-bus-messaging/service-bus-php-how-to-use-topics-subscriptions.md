@@ -14,12 +14,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: f0ae734ac8814cc605ce03756fde5545c77c837d
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 18aeaccef724ba94a9c18240fb77ea33897e8d26
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65992068"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063877"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Service Bus-üzenettémák és előfizetések használata PHP
 
@@ -51,7 +51,23 @@ A PHP-alkalmazás létrehozása, amely hozzáfér az Azure Blob service egyetlen
 Ez a cikk ismerteti, amely nem hívható meg helyileg egy PHP-alkalmazáson belül, vagy egy Azure webes szerepkör, feldolgozói szerepkör vagy webhelyén belül futó service szolgáltatásait használja.
 
 ## <a name="get-the-azure-client-libraries"></a>Az Azure-ügyfél-kódtárak beszerzése
-[!INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
+
+### <a name="install-via-composer"></a>Composer-n keresztül telepítése
+1. Hozzon létre egy fájlt **composer.json** a projekt gyökérkönyvtárában található és adja hozzá a következő kódot:
+   
+    ```json
+    {
+      "require": {
+        "microsoft/windowsazure": "*"
+      }
+    }
+    ```
+2. Töltse le **[composer.phar] [composer-phar]** a projekt gyökérkönyvtárában.
+3. Nyisson meg egy parancssort, és hajtsa végre a következő parancsot a projekt gyökérkönyvtárában
+   
+    ```
+    php composer.phar install
+    ```
 
 ## <a name="configure-your-application-to-use-service-bus"></a>A Service Bus-alkalmazás konfigurálása
 A Service Bus API-k használata:
@@ -67,7 +83,7 @@ Az alábbi példa bemutatja, hogyan foglalhat bele a szalaghibák fájlt, és hi
 > 
 
 ```php
-require_once 'vendor\autoload.php';
+require_once 'vendor/autoload.php';
 use WindowsAzure\Common\ServicesBuilder;
 ```
 

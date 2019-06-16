@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: ae0b8bb6dec4b129a4965426789819e119a25c53
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 82097b075ab86c4de5ab45e3110c9bc192ac7edb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991500"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097351"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Oktatóanyag: Meta hálózatok összekötő az Azure Active Directory-integráció
 
@@ -54,7 +54,7 @@ Meta hálózatok összekötő integrálása az Azure AD beállításához szüks
 
 **Meta hálózatok összekötő hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -127,13 +127,13 @@ Konfigurálja az Azure AD egyszeri bejelentkezés Meta hálózatok összekötőv
     
 7. Emellett a fent Meta hálózatok összekötőalkalmazás vár néhány további attribútumok vissza SAML-válasz átadni. A a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen a következő lépésekkel adja hozzá a SAML-jogkivonat attribútumot, ahogyan az alábbi táblázatban:
     
-    | Name (Név) | Forrásattribútum | Névtér|
+    | Name (Név) | Adatforrás-attribútum | Névtér|
     | ---------------| --------------- | -------- |
     | Keresztnév | user.givenname | |
     | Vezetéknév | user.surname | |
     | e-mail cím| user.mail| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
-    | név | user.userprincipalname| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
-    | telefon | user.telephonenumber | |
+    | name | user.userprincipalname| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
+    | Telefonszám | user.telephonenumber | |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
@@ -268,7 +268,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó Meta hálózatok összek
 >[!Note]
 >Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Meta hálózatokhoz csatlakozó ügyfél-támogatási csapatának](mailto:support@metanetworks.com).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: chakdan
 ms.openlocfilehash: 5ab817c65ab562f37b456cc3589624c1876084f0
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66428194"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>A Windows fejlesztési környezet kialakítása Service Fabric Mesh-alkalmazások létrehozásához
@@ -109,7 +109,7 @@ Miután telepítette a futtatókörnyezet, az SDK-k, a Visual Studio tools, Dock
     ```
 5. Ha a szolgáltatás cluster manager eszköz fut (megjelenik a tálcán), kattintson a jobb gombbal, és kattintson a **helyi fürt elindításához**.
 
-![1. ábra – a helyi fürt indítása](./media/service-fabric-mesh-howto-setup-developer-environment-sdk/start-local-cluster.png)
+![1\. ábra – a helyi fürt indítása](./media/service-fabric-mesh-howto-setup-developer-environment-sdk/start-local-cluster.png)
 
 Készen áll a Service Fabric Mesh-alkalmazások létrehozására!
 

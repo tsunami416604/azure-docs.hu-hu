@@ -7,17 +7,16 @@ ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: WenJason
-ms.author: v-jay
+author: oslake
+ms.author: moslake
 ms.reviewer: genemi,ayolubek, jrasnick
-manager: digimobile
-origin.date: 03/12/2019
-ms.date: 04/08/2019
+manager: craigg
+ms.date: 03/12/2019
 ms.openlocfilehash: 9704acee2ca8bad7437ae22ff5041e2253916dce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66160806"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Az Azure SQL Database DNS-alias
@@ -116,7 +115,7 @@ Jelenleg a DNS alias a következő korlátozások vonatkoznak:
   - A táblanaplózás elavult.
   - Azt javasoljuk, hogy áthelyezi [Blobnaplózás](sql-database-auditing.md).
 
-## <a name="related-resources"></a>Kapcsolódó erőforrások
+## <a name="related-resources"></a>Kapcsolódó források (lehet, hogy a cikkek angol nyelvűek)
 
 - [Az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése](sql-database-business-continuity.md), beleértve a vész-helyreállítási.
 

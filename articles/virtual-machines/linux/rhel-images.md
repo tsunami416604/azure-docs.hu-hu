@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/18/2019
+ms.date: 6/6/2019
 ms.author: borisb
-ms.openlocfilehash: fb3c0e46324a22bdd95bf7d93c28e69c195927e8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b40f62a90dbe7c822b95476abe6ec25cf3fb21d6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60542441"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070032"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Red Hat Enterprise Linux-rendszerképeket az Azure-ban
 Ez a cikk ismerteti az elérhető Red Hat Enterprise Linux (RHEL) rendszerképek mellett saját elnevezési és adatmegőrzési szabályzatok az Azure piactéren.
@@ -63,9 +63,9 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-RAW:lat
 > Általánosságban véve a meghatározásához a legújabb verziók összehasonlítása szabályainak követi a [compareto metódus végrehajtása metódus](https://msdn.microsoft.com/library/a5ts8tb6.aspx).
 
 ### <a name="current-naming-convention"></a>Aktuális elnevezési egyezmény
-Az összes jelenleg közzétett RHEL-lemezképek a használatalapú modellt használja, és csatlakozik [Red Hat frissítési infrastruktúrához (RHUI) az Azure-ban](https://aka.ms/rhui-update). RHUI tervezési korlátai miatt egy új elnevezési konvenciót RHEL 7 rendszerű rendszerképek elfogadott. Az RHEL-6 családba tartozó elnevezési jelenleg még nem változott.
+Az összes jelenleg közzétett RHEL-lemezképek a használatalapú modellt használja, és csatlakozik [Red Hat frissítési infrastruktúrához (RHUI) az Azure-ban](https://aka.ms/rhui-update). Egy új elnevezési konvenciót elfogadott RHEL 7, amelyben a lemez particionálási séma családba tartozó képek (nyers, LVM) van megadva a termékváltozat a helyett. Az RHEL-lemezkép verziója tartalmazza vagy 7-nyers vagy 7-LVM. Az RHEL-6 családba tartozó elnevezési jelenleg még nem változott.
 
-A korlátozás van az a tény, hogy amikor egy nem szelektív `yum update` vonatkozóan egy virtuális gép fut RHUI csatlakozik, az RHEL-verzió frissül a legfrissebb a jelenlegi család. További információkért lásd: [ezt a hivatkozást](https://aka.ms/rhui-update). Előfordulhat, hogy emiatt a keveredési, amikor egy RHEL 7.2 üzembe helyezett rendszerképet RHEL 7.6 válik a frissítés után. Továbbra is telepíthet egy régebbi rendszerképből explicit módon adja meg a szükséges verzió a fenti példákban szemléltetett módon. Ha nincs megadva a szükséges verzió új RHEL 7 lemezkép kiépítése során, majd a legújabb rendszerképet lesznek üzembe helyezve.
+Ezt az elnevezési konvenciót RHEL 7 kép termékváltozatok 2 típusú lesz: SKU-k, hogy az alverzió, és az SKU-k, amelyek nem. Ha azt szeretné, 7-LVM Termékváltozat vagy a 7-nyers használja, megadhatja az RHEL-alverzió, verziójában telepíteni kívánja. Ha úgy dönt, hogy a "legutóbbi" verzió, akkor lesz kiépítve RHEL kisebb legújabb kiadása.
 
 >[!NOTE]
 > Az RHEL for SAP képkészlet az RHEL-verzió rögzített marad. Mint ilyen az elnevezési konvenciót termékváltozatban egy adott verziót is tartalmazza.
@@ -73,28 +73,65 @@ A korlátozás van az a tény, hogy amikor egy nem szelektív `yum update` vonat
 >[!NOTE]
 > RHEL 6 képkészlet nem lett áthelyezve, az új nevezéktannak.
 
+## <a name="extended-update-support-eus"></a>A kiterjesztett támogatásának (EUS)
+Április 2019, az RHEL-lemezképek rendelkezésre állnak, amely kapcsolódik a kiterjesztett frissítés támogatása (EUS) tárházak alapértelmezés szerint. További részleteket az RHEL EUS [Red Hat-dokumentáció](https://access.redhat.com/articles/rhel-eus).
+
+Útmutatást nyújt a virtuális gép váltani EUS és EUS támogatási életciklusa végét záró dátumok kapcsolatos további részletekért érhetők el [Itt](https://aka.ms/rhui-update#rhel-eus-and-version-locking-rhel-vms).
+
+>[!NOTE]
+> EUS RHEL kiegészítő funkciók a nem támogatott. Ez azt jelenti, hogy telepít egy csomagot, amely általában a RHEL kiegészítő funkciók csatorna érhető el, ha nem tudja ehhez a EUS. A Red Hat kiegészítő funkciók életciklusáról részletes [Itt](https://access.redhat.com/support/policy/updates/extras/).
+
+### <a name="for-customers-that-want-to-use-eus-images"></a>Ügyfelek számára, EUS lemezképeket használni szeretne:
+Ügyfelek EUS tárházak csatlakoztatott rendszerképek használni kívánt kell használnia, amely egy RHEL alverziószámát a termékváltozat tartalmazza az RHEL-lemezkép. Ezek a lemezképek lesz nyers particionált (azaz nem LVM).
+
+Például előfordulhat, hogy tekintse meg a következő 2 RHEL 7.4 lemezkép érhető el:
+```bash
+RedHat:RHEL:7-RAW:7.4.2018010506
+RedHat:RHEL:7.4:7.4.2019041718
+```
+Ebben az esetben `RedHat:RHEL:7.4:7.4.2019041718` csatolva lesz a EUS tárházak alapértelmezés szerint és `RedHat:RHEL:7-RAW:7.4.2018010506` alapértelmezés szerint nem EUS tárházak legyen csatolva.
+
+### <a name="for-customers-that-dont-want-to-use-eus-images"></a>Ügyfelek számára, hogy nem szeretné használni a EUS lemezképek:
+Ha nem szeretné használni, amely alapértelmezés szerint csatlakozik EUS képet, az üzembe helyezés alverziószámát a termékváltozat nem tartalmaz egy képet.
+
+#### <a name="rhel-images-with-eus"></a>EUS az RHEL-lemezképek
+Az alábbi táblázat az RHEL-lemezképekhez, amelyek tartalmazzák a termékváltozat alverzió fog alkalmazni.
+
+>[!NOTE]
+> A írása idején csak az RHEL 7.4 és a későbbi alverziót rendelkezik EUS támogatja. EUS már nem támogatott az RHEL < = 7.3.
+
+Alverzió |EUS képen példa              |EUS állapota                                                   |
+:-------------|:------------------------------|:------------------------------------------------------------|
+7\.4 RHEL      |RedHat:RHEL:7.4:7.4.2019041718 | Képek április 2019 közzé, és később lesz EUS alapértelmezés szerint|
+RHEL 7.5      |RedHat:RHEL:7.5:7.5.2019060305 | Képek június 2019 közzé, és később lesz EUS alapértelmezés szerint |
+RHEL 7.6      |RedHat:RHEL:7.6:7.6.2019052206 | Képek közzétett 2019. május, és később lesz EUS alapértelmezés szerint  |
+RHEL 8.0      |–                            | Nincs EUS jelenleg jelenleg elérhető lemezképek                 |
+
+
+## <a name="list-of-rhel-images-available"></a>Rendelkezésre álló RHEL-lemezképek listája
 Az alábbi ajánlatok a következők általános felhasználású jelenleg rendelkezésre álló termékváltozatok a következők:
 
 Ajánlat| SKU | Particionálás | Kiépítés | Megjegyzések
 :----|:----|:-------------|:-------------|:-----
-RHEL | 7 – NYERS | RAW | Linux-ügynök | RHEL 7 operációsrendszer-lemezképek
-| | 7-LVM | LVM | Linux-ügynök | RHEL 7 operációsrendszer-lemezképek
-| | 7-RAW-CI | RAW-CI | Cloud-init | RHEL 7 operációsrendszer-lemezképek
-| | 6.7 | RAW | Linux-ügynök | RHEL 6.7 lemezképek, a régi elnevezési egyezmény
-| | 6.8 | RAW | Linux-ügynök | Azonos RHEL 6.8, a fentiek szerint
-| | 6.9 | RAW | Linux-ügynök | Ugyanezt a fentiek szerint RHEL 6.9.
-| | 6.10 | RAW | Linux-ügynök | Azonos RHEL 6.10, a fentiek szerint
-| | 7.2 | RAW | Linux-ügynök | Ugyanezt a fentiek szerint RHEL 7.2
-| | 7.3 | RAW | Linux-ügynök | Ugyanezt a fentiek szerint RHEL 7.3.
-| | 7.4 | RAW | Linux-ügynök | Azonos RHEL 7.4, a fentiek szerint
-| | 7.5 | RAW | Linux-ügynök | Ugyanezt a fentiek szerint RHEL 7.5
-RHEL-SAP | 7.4 | LVM | Linux-ügynök | 7.4 RHEL for SAP HANA és az üzleti alkalmazások
-| | 7.5 | LVM | Linux-ügynök | 7.5 RHEL for SAP HANA és az üzleti alkalmazások
-RHEL-SAP-HANA | 6.7 | RAW | Linux-ügynök | RHEL 6.7 az SAP Hana-hoz
-| | 7.2 | LVM | Linux-ügynök | Az RHEL 7.2 az SAP Hana-hoz
-| | 7.3 | LVM | Linux-ügynök | RHEL for SAP HANA 7.3.
-RHEL-SAP-APPS | 6.8 | RAW | Linux-ügynök | 6.8 RHEL for SAP Business Applications
-| | 7.3 | LVM | Linux-ügynök | 7.3 RHEL for SAP Business Applications
+RHEL          | 7 – NYERS    | RAW    | Linux-ügynök | RHEL 7 családba tartozó képek. <br> Nincs csatolva EUS tárházakba alapértelmezés szerint.
+|             | 7-LVM    | LVM    | Linux-ügynök | RHEL 7 családba tartozó képek. <br> Nincs csatolva EUS tárházakba alapértelmezés szerint.
+|             | 7-RAW-CI | RAW-CI | Cloud-init  | RHEL 7 családba tartozó képek. <br> Nincs csatolva EUS tárházakba alapértelmezés szerint.
+|             | 6.7      | RAW    | Linux-ügynök | RHEL 6.7 lemezképek, a régi elnevezési egyezmény
+|             | 6.8      | RAW    | Linux-ügynök | Azonos RHEL 6.8, a fentiek szerint
+|             | 6.9      | RAW    | Linux-ügynök | Ugyanezt a fentiek szerint RHEL 6.9.
+|             | 6.10     | RAW    | Linux-ügynök | Azonos RHEL 6.10, a fentiek szerint
+|             | 7.2      | RAW    | Linux-ügynök | Ugyanezt a fentiek szerint RHEL 7.2
+|             | 7.3      | RAW    | Linux-ügynök | Ugyanezt a fentiek szerint RHEL 7.3.
+|             | 7.4      | RAW    | Linux-ügynök | Ugyanaz a fentiek szerint RHEL 7.4-hez. <br> Csatolt EUS adattárak tól április 2019 alapértelmezés szerint
+|             | 7.5      | RAW    | Linux-ügynök | Ugyanaz a fentiek szerint RHEL 7.5-hez. <br> Csatolt EUS adattárak tól június 2019 alapértelmezés szerint
+|             | 7.6      | RAW    | Linux-ügynök | Ugyanaz a fentiek szerint RHEL 7.6-hez. <br> Csatolt EUS tárházak 2019. május kezdődően alapértelmezés szerint
+RHEL-SAP      | 7.4      | LVM    | Linux-ügynök | 7\.4 RHEL for SAP HANA és az üzleti alkalmazások
+|             | 7.5      | LVM    | Linux-ügynök | 7\.5 RHEL for SAP HANA és az üzleti alkalmazások
+RHEL-SAP-HANA | 6.7      | RAW    | Linux-ügynök | RHEL 6.7 az SAP Hana-hoz
+|             | 7.2      | LVM    | Linux-ügynök | Az RHEL 7.2 az SAP Hana-hoz
+|             | 7.3      | LVM    | Linux-ügynök | RHEL for SAP HANA 7.3.
+RHEL-SAP-APPS | 6.8      | RAW    | Linux-ügynök | 6\.8 RHEL for SAP Business Applications
+|             | 7.3      | LVM    | Linux-ügynök | 7\.3 RHEL for SAP Business Applications
 
 ### <a name="old-naming-convention"></a>Régi elnevezési egyezmény
 A RHEL 7 operációsrendszer-lemezképeket és az RHEL 6 operációsrendszer-lemezképek pillanatáig az elnevezési konvenciót módosítása azt fent kifejtettük tartozó termékváltozatokat használt verzióját.

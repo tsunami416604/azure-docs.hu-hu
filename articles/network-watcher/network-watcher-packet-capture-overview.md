@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 4cfbfc4bed5438ed901fca86d8c2939d3860c68e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8ef9da86377ac6f1b012cb0ebfd9d6866bc0c620
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64684158"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061591"
 ---
 # <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Bevezetés az Azure Network Watcher változó csomagrögzítés
 
-Network Watcher változó csomagrögzítés csomagrögzítési munkamenetet, és a virtuális gépről érkező forgalom nyomon létrehozását teszi lehetővé. Csomag rögzítési alapján diagnosztizálhatja a hálózat rendellenességek mindkét reaktív és proactivity. Más használati módjai többek között, hálózati statisztika, azonosítsa a hálózati behatolásokat, hibakeresése, ügyfél-kiszolgáló közötti kommunikációt, és még sok más információk összegyűjtéséhez.
+Network Watcher változó csomagrögzítés csomagrögzítési munkamenetet, és a virtuális gépről érkező forgalom nyomon létrehozását teszi lehetővé. A csomagrögzítés segítségével diagnosztizálhatja a hálózat rendellenességeket, proaktív és reaktív is. Más használati módjai többek között, hálózati statisztika, azonosítsa a hálózati behatolásokat, hibakeresése, ügyfél-kiszolgáló közötti kommunikációt, és még sok más információk összegyűjtéséhez.
 
 A csomagrögzítés egy virtuálisgép-bővítmény, amely keretében a Network Watcher távoli elindult. Ez a funkció egyszerűsíti a csomagrögzítés értékes időt takarít meg használni kívánt virtuális gépet manuálisan futó terhe. A csomagrögzítés is elindítható a portal, PowerShell, CLI vagy REST API használatával. Például hogyan csomagrögzítés is elindítható a virtuális gép riasztások van. Szűrők a rögzítési munkamenet rögzíti a forgalmat a figyelni kívánt biztosítására szolgálnak. Szűrők alapulnak (protokoll, helyi IP-cím, távoli IP-cím, helyi port és a távoli port) 5-ször több információt. A rögzített adatok tárolódnak a helyi lemez vagy egy storage-blobba. A 10 csomagrögzítési munkamenetet régiónként és előfizetésenként korlátozva van. Ez a korlátozás csak azokra a munkamenetek, és nem vonatkozik a mentett csomag rögzítési fájlokat helyileg, a virtuális gép vagy a storage-fiókban.
 

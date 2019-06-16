@@ -6,20 +6,18 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 05/29/2019
-ms.openlocfilehash: 6fecd2278ddad4de3a2cff9035d60083101e873e
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
-ms.translationtype: MT
+ms.topic: overview
+ms.date: 06/12/2019
+ms.openlocfilehash: d24686a094c524c5ce913eee4b711daf1c60100d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393842"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67130621"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Mi a Machine Learning-szolgáltatások az Azure HDInsight
 
 Microsoft Machine Learning-kiszolgáló telepítési beállításként érhető el, az Azure HDInsight-fürtök létrehozásakor. A fürt típusát, amely ezt a lehetőséget biztosít nevezzük **ML szolgáltatásokkal**. Ez a képesség nyújt, az adatszakértők, statisztikusok és R-programozók skálázható, igény szerinti hozzáféréssel rendelkező elosztott elemzési a HDInsight módszereket.
-
-[!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 
 Machine Learning szolgáltatások a HDInsight betölti az Azure Blob vagy a Data Lake storage gyakorlatilag bármilyen méretű adatkészletek a legújabb funkciókat az R-alapú elemzési nyújt. Machine Learning-szolgáltatások fürt nyílt forráskódú R épül, mivel az R-alapú alkalmazásokat fejleszt kihasználhatják a 8000-es + nyílt forráskódú R csomagok. A feladatok az ScaleR, a Microsoft big data analytics csomag is rendelkezésre állnak.
 

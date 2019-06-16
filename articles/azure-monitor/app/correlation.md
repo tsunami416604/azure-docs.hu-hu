@@ -9,15 +9,15 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: 565f08f0c69aef393a9296f3cce90570a3f0bc2c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 030259f7773435760c09afd25ca674b63bb1b3ca
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60901119"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073237"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Az Application Insights telemetriai korreláció
 
@@ -35,7 +35,7 @@ Minden kimenő művelet, például egy másik összetevő, HTTP-hívás által j
 
 Az elosztott logikai művelet nézet használatával hozhat létre `operation_Id`, `operation_parentId`, és `request.id` a `dependency.id`. Ezek a mezők is meghatározhat, a telemetriai adatok hívások okozati sorrendjét.
 
-A mikroszolgáltatás-alapú környezetben összetevők hívásláncait különböző tárolási elemek ugorhat. Minden összetevő az Application Insights a saját kialakítási kulcsot is lehet. Telemetriai adatok beolvasása a logikai művelethez, minden tároló adott elemére adatokat kérdezhet le. Ha hatalmas tárolási elemek száma, szüksége lesz egy érhető el, és tekintse meg a következő tárolási helyét. Az Application Insights adatmodell határozza meg a probléma megoldásához két mező: `request.source` és `dependency.target`. Az első mező azonosítja az a komponens, amely a függőségi kérelem kezdeményezett, és a második azonosítja, hogy mely összetevőt adja vissza a válasz a függőségi hívás.
+A mikroszolgáltatás-alapú környezetben összetevők hívásláncait különböző tárolási elemek ugorhat. Minden összetevő az Application Insights a saját kialakítási kulcsot is lehet. A logikai művelet a telemetriai adatok lekéréséhez az Application Insights UX minden tárolási elem adatait kérdezi le. Ha hatalmas tárolási elemek száma, szüksége lesz egy érhető el, és tekintse meg a következő tárolási helyét. Az Application Insights adatmodell határozza meg a probléma megoldásához két mező: `request.source` és `dependency.target`. Az első mező azonosítja az a komponens, amely a függőségi kérelem kezdeményezett, és a második azonosítja, hogy mely összetevőt adja vissza a válasz a függőségi hívás.
 
 ## <a name="example"></a>Példa
 
@@ -51,12 +51,12 @@ Elemezheti az eredményül kapott telemetriai adatokat egy lekérdezés futtatá
 
 Az eredmények között, vegye figyelembe, hogy az összes telemetriai elem megosztani a legfelső szintű `operation_Id`. Ha egy Ajax-hívás érkezett az oldal, egy új egyedi azonosító (`qJSXU`) van rendelve a függőségi telemetria és az azonosítója, a oldalmegtekintés `operation_ParentId`. A kiszolgálói kérelem majd használja az Ajax azonosítója `operation_ParentId`.
 
-| itemType   | név                      | ID (Azonosító)           | operation_ParentId | operation_Id |
+| itemType   | name                      | azonosító           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | pageView   | Tőzsdei lap                |              | STYz               | STYz         |
-| függőség | GET /Home/Stock           | qJSXU        | STYz               | STYz         |
-| kérelem    | GET Home/készlet            | KqKwlrSt9PA= | qJSXU              | STYz         |
-| függőség | /Api/stock/value beolvasása      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
+| Függőség | GET /Home/Stock           | qJSXU        | STYz               | STYz         |
+| request    | GET Home/készlet            | KqKwlrSt9PA= | qJSXU              | STYz         |
+| Függőség | /Api/stock/value beolvasása      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
 
 Ha a hívás `GET /api/stock/value` kérés érkezett egy külső szolgáltatásnak, érdemes figyelembe venni, hogy a kiszolgáló identitását, tehát beállíthatja a `dependency.target` mezőt megfelelően. Ha a külső szolgáltatás nem támogatja a figyelés, `target` beállítása a szolgáltatás a gazdagép nevét (például `stock-prices-api.com`). Azonban, ha a szolgáltatás egy előre meghatározott HTTP-fejléc felismerésével azonosítja magát `target` tartalmazza a felügyeltszolgáltatás-identitás, amely lehetővé teszi, hogy az Application Insights hozhat létre egy elosztott nyomkövetést ehhez lekérdezi a telemetriát a szolgáltatástól.
 

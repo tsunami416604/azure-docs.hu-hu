@@ -9,10 +9,10 @@ ms.date: 12/21/2018
 ms.author: cynthn;davberg
 ms.custom: include file
 ms.openlocfilehash: ca0c45b5d74140e0398595070df71da669caab53
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66160082"
 ---
 Az Azure számítási egységek (ACU) fogalmát biztosítja az Azure-termékváltozatok számítási (CPU) teljesítmény összehasonlítása. Így könnyebben választhatja ki a teljesítményigényeinek leginkább megfelelő termékváltozatot.  Az ACU jelenlegi standard alapjaként a Kisméretű (Standard_A1) virtuális gép 100-as értéket képvisel, és a többi termékváltozat értéke ehhez képest jelöli, hogy mennyivel gyorsabban futtatja az adott termékváltozat a standard teljesítménytesztet. 
@@ -52,7 +52,7 @@ Az Azure számítási egységek (ACU) fogalmát biztosítja az Azure-termékvál
 | [L8s_v2 - L80s_v2](../articles/virtual-machines/windows/sizes-storage.md) |150 - 175** | 2:1 |
 | [M](../articles/virtual-machines/virtual-machines-windows-sizes-memory.md) | 160 - 180 | 2:1\*\*\* |
 
-* ACUs Intel® Turbo technológia használatával növelik a Processzor, és adja meg a teljesítmény növelését.  A teljesítmény növelése mennyisége a Virtuálisgép-méretet, a számítási feladatok és az ugyanazon a gazdagépen futó számítási feladatoktól függően változhat.
+\* ACUs Intel® Turbo technológia használatával növelik a Processzor, és adja meg a teljesítmény növelését.  A teljesítmény növelése mennyisége a Virtuálisgép-méretet, a számítási feladatok és az ugyanazon a gazdagépen futó számítási feladatoktól függően változhat.
 
 ** ACUs AMD® Boost technology használatával növelik a Processzor, és adja meg a teljesítmény növelését.  A teljesítmény növelése mennyisége a Virtuálisgép-méretet, a számítási feladatok és az ugyanazon a gazdagépen futó számítási feladatoktól függően változhat.
 

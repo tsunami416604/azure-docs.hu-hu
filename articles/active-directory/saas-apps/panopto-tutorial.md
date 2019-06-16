@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 23830d6ae2ba020a77402d3e2b7acc2f50f75733
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 027876e3d8d669d2ab41d37e24f4171c2349adaa
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65869893"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67095014"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panopto"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Panopto
 
@@ -55,7 +55,7 @@ Az Azure AD integrálása a Panopto konfigurálásához hozzá kell Panopto a ka
 
 **Panopto hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -215,7 +215,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó Panopto jön létre. Pan
 >Eszközt is használhat bármilyen más Panopto felhasználói fiók létrehozása, vagy az Azure AD-felhasználói fiókok kiépítése Panopto által biztosított API-k.
 >
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

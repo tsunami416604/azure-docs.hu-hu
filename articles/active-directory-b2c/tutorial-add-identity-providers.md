@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 76e12dc6bf9bcb50dc58e7730f3a08dd6a9d4440
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: ceae908b37c825721a42c49db4503382eb35c71c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66512191"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055096"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Oktatóanyag: Identitásszolgáltató hozzáadása az alkalmazásait az Azure Active Directory B2C-vel
 
@@ -46,7 +46,7 @@ Bejelentkezés engedélyezése a felhasználók számára az Azure ad-ből, meg 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Győződjön meg arról, hogy használja az Azure AD-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és kiválasztása az Azure AD-bérlő tartalmazó könyvtárra.
-3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **alkalmazásregisztrációk**.
+3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **alkalmazásregisztrációk (örökölt)** .
 4. Válassza az **Új alkalmazás regisztrálása** elemet.
 5. Adja meg az alkalmazás nevét. Például: `Azure AD B2C App`.
 6. Az a **alkalmazástípus**válassza `Web app / API`.
@@ -106,7 +106,7 @@ Miután létrehozta az alkalmazást a hozzáadni kívánt identitásszolgáltat�
     Például: `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`.
 
 8. A **ügyfél-azonosító**, adja meg a korábban feljegyzett Alkalmazásazonosító és a **titkos Ügyfélkód**, adja meg a korábban feljegyzett kulcs értékét.
-9. Szükség esetén adjon meg egy értéket **Domain_hint**. Például: `ContosoAD`. 
+9. Szükség esetén adjon meg egy értéket **Domain_hint**. Például: `ContosoAD`. Tartomány mutatók (https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal) irányelvek, a hitelesítési kérelmet egy alkalmazás részét képező vannak. Gyorsítsa fel a felhasználó bejelentkezési oldalra összevont IdP használható. Ezek segítségével egy több-bérlős alkalmazás a felhasználó gyorsabban rögtön az a vállalati arculattal vagy a bérlő Azure AD bejelentkezési oldala.
 10. Kattintson az **OK** gombra.
 11. Válassza ki **ezen identitásszolgáltató jogcímeinek hozzárendelése** és állítsa be a következő jogcímek:
     

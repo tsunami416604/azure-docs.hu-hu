@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: kumud,steveesp, mareat
 ms.openlocfilehash: 9d74e53c754367ecfa63642514db93354fcadf25
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65153727"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Virtuális gép hálózati sávszélesség
@@ -35,7 +35,7 @@ Az Azure virtual machines rendelkeznie kell egy, hanem több, a hálózati adapt
 
 ## <a name="expected-network-throughput"></a>Várt hálózati teljesítmény
 
-Az Azure-ban részletes-várt kimenő adatátviteli és az egyes virtuális gép mérete által támogatott hálózati adapterek száma [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Virtuálisgép-méretek. Válassza ki a típusát, például az általános célú, majd válassza ki a méret-sorozat az eredményül kapott oldalon, mint a Dv2 sorozat. Minden sorozatot a hálózatkezelés című, az utolsó oszlopban specifikációk tartalmazó táblázat található **hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps)**. 
+Az Azure-ban részletes-várt kimenő adatátviteli és az egyes virtuális gép mérete által támogatott hálózati adapterek száma [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Virtuálisgép-méretek. Válassza ki a típusát, például az általános célú, majd válassza ki a méret-sorozat az eredményül kapott oldalon, mint a Dv2 sorozat. Minden sorozatot a hálózatkezelés című, az utolsó oszlopban specifikációk tartalmazó táblázat található **hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps)** . 
 
 Az átviteli sebesség korlát vonatkozik a virtuális géphez. Átviteli sebesség nem érinti a következő tényezőktől függ:
 - **Hálózati adapterek száma**: A sávszélesség korlátja minden kimenő forgalom a virtuális gépből épül.

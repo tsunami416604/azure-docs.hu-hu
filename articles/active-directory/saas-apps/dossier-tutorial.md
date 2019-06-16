@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 9e56f37c84890b6e679e9739bc772e67a1b7e53f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2feb65384e8586b30840a37a66aaee5375881c22
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60280502"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67103934"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dossier"></a>Oktatóanyag: Dokumentáció az Azure Active Directory-integráció
 
@@ -53,7 +53,7 @@ Dokumentáció az Azure AD-be integráció konfigurálásához, hozzá kell doku
 
 **Dokumentáció hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

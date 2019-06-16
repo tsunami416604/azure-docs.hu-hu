@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6036d428de89d160e58ae1ab7fe3c619e2b577d4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7f1d36cf3760c790f18d4fbc3d902a1365c49ae0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60273817"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100603"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-idid-manager"></a>Oktatóanyag: IDiD Manager az Azure Active Directory-integráció
 
@@ -53,7 +53,7 @@ IDiD Manager integrálása az Azure AD beállítása, hozzá kell iDiD Manager a
 
 **IDiD Manager hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

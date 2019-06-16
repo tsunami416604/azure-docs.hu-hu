@@ -11,18 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5f37873b51d6257ffec3ada10be886995f7f5d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4b38918dc6b80539ef8852aa408cda501958c9b1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60358877"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057441"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Azure Multi-Factor Authentication-kiszolgáló konfigurálása az AD FS-sel való használathoz Windows Serveren
 
 Ha Active Directory összevonási szolgáltatásokat (AD FS-t) használ, és szeretne védelmet biztosítani a felhőnek vagy a helyszíni erőforrásoknak, konfigurálhat egy Azure Multi-Factor Authentication-kiszolgálót, és beállíthatja, hogy az együttműködjön az AD FS-sel. Ezzel aktiválja a kétlépéses ellenőrzést a nagy értékű végpontokon.
 
 Ebben a cikkben azt mutatjuk be, hogyan használja az Azure Multi-Factor Authentication-kiszolgálót az AD FS-sel Windows Server 2012 R2 vagy Windows Server 2016 rendszeren. További információkért olvassa el a [cikket, amely leírja, hogy hogyan biztosítson védelmet a felhőnek és helyszíni erőforrásainak az Azure Multi-Factor Authentication-kiszolgáló és az AD FS 2.0 segítségével](howto-mfaserver-adfs-2.md).
+
+> [!IMPORTANT]
+> 2019\. július 1-től a Microsoft már nem szavatolnak MFA-kiszolgáló az új üzembe helyezésekhez. Új felhasználókat szeretné a felhasználóktól többtényezős hitelesítést kell használnia a felhőalapú Azure multi-factor Authentication. Meglévő ügyfeleink, akik aktiválták az MFA-kiszolgáló előtt július 1 lesz a legújabb verzió, a jövőbeli frissítések letöltéséhez és a szokásos módon aktiváló hitelesítő adatok előállítása.
 
 ## <a name="secure-windows-server-ad-fs-with-azure-multi-factor-authentication-server"></a>A Windows Server AD FS védelme az Azure Multi-Factor Authentication-kiszolgálóval
 
@@ -147,7 +150,7 @@ A felhőszolgáltatás biztosításához állítson be egy jogcímszabályt, hog
 
     ![Átalakítási Jogcímszabály varázslóban hozzáadása](./media/howto-mfaserver-adfs-2012/configurewizard.png)
 
-9. Kattintson a **Befejezés** gombra. Zárja be az AD FS felügyeleti konzolt.
+9. Kattintson a **Befejezés**gombra. Zárja be az AD FS felügyeleti konzolt.
 
 ## <a name="troubleshooting-logs"></a>Hibaelhárítási naplók
 

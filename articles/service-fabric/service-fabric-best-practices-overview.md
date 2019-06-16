@@ -15,17 +15,17 @@ ms.workload: NA
 ms.date: 04/24/2019
 ms.author: pepogors
 ms.openlocfilehash: 051d6b1129724ce4e8a67bde4e56ebe61cd832f3
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65231382"
 ---
 # <a name="azure-service-fabric-application-and-cluster-best-practices"></a>Az Azure Service Fabric-alkalmazás és fürt kapcsolatos ajánlott eljárások
 
 Az Azure Service Fabric-alkalmazások és -fürtök felügyelete a sikeres, erősen ajánlott az éles környezetben; megbízhatóságának optimalizálása hajt végre műveleteket vannak Ebben a dokumentumban meghatározott műveletek elvégzéséhez, és válassza ki az egyik a [minták Service Fabric-fürt az Azure-sablonok](https://github.com/Azure-Samples/service-fabric-cluster-templates) megkezdése a gyártási megoldás tervezése, vagy módosíthatja a meglévő sablont, és építse be ezeket az eljárásokat.
 
-## <a name="security"></a>Biztonsági 
+## <a name="security"></a>Biztonság 
 
 * [Biztonsági védelmének bevált gyakorlata](service-fabric-best-practices-security.md)
 

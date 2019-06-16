@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edfc1f0b2d49510926cfbc306dacf6715225c5c1
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 104c208c1e651f67679327fa8c7a56b65c33fd24
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65897836"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098176"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>Oktatóanyag: Az Azure Active Directory-integráció Learningpool törvénynek
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Learningpool Act konfigurálásához hozzá kell Lea
 
 **Learningpool Act hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -229,7 +229,7 @@ A felhasználóknak kell létrehozni a [Learningpool Act támogatási csapatána
 > [!NOTE]
 > API-k által Learningpool ACT aad-ben a felhasználói fiókok kiépítését vagy bármely más Learningpool Act felhasználói fiók létrehozása eszközöket használhatja.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

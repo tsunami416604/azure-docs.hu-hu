@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: 1bcadc18172535649a0ceb482939ca6a75477e25
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: ab74c331bdc8b72612aa848688e1de080314337a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66170729"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133702"
 ---
 ### <a name="what-is-expressroute-direct"></a>Mi az az ExpressRoute közvetlen?
 
@@ -28,9 +28,8 @@ Az ExpressRoute Direct közvetlen csatlakozást tesz lehetővé az ügyfelek sz�
 A rendelkezésre álló portok dinamikus lesz, és a kapacitás megtekintéséhez PowerShell elérhető lesz. Helyek tartalmazzák és *rendelkezésre állása alapján változhatnak*:
 
 * Amszterdam
-* Canberra
 * Chicago
-* Washington DC
+* Washington, D.C.
 * Dallas 
 * Hongkong (KKT)
 * London

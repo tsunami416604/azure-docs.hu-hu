@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: ded5854c5e669ab1982641169f13a9cb400d5d6d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: b7a522aaf35303bbd87e7aafe65b1302f1b98bc0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65891476"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67095333"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagerduty"></a>Oktatóanyag: Az Azure Active Directory-integráció a pagerduty segítségével
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a PagerDuty konfigurálásához hozzá kell PagerDuty 
 
 **PagerDuty hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -236,7 +236,7 @@ PagerDuty, esetén kiépítése a manuális feladat.
     >[!NOTE]
     >Minden felvett felhasználók Felkérjük egy PagerDuty-fiók létrehozásához.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

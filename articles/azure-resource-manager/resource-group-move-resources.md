@@ -4,14 +4,14 @@ description: Azure Resource Manager segítségével az erőforrások áthelyezé
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/17/2019
+ms.date: 06/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 046b8e75be0247f335bcf1d29117f5900b70aeb6
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: bb7715a7eaa2cb499ed80b78130571f315ef0c95
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66477247"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083541"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -88,7 +88,6 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * Logic Apps
 * Machine Learning - webszolgáltatások helyezheti át egy erőforráscsoport ugyanabban az előfizetésben, de nem egy másik előfizetésben található Machine Learning Studióban. Egyéb Machine Learning-erőforrások áthelyezhetők, előfizetések között.
 * A Managed Disks – felügyelt lemezek a rendelkezésre állási zónák nem helyezhető át másik előfizetésbe
-* Felügyelt identitás - felhasználó által hozzárendelt
 * Media Services
 * Győződjön meg arról, hogy új előfizetésbe való áthelyezését figyelője – nem lehet [előfizetési kvóták](../azure-subscription-service-limits.md#monitor-limits)
 * Notification Hubs
@@ -141,6 +140,7 @@ Az alábbi lista nem lehet áthelyezni egy új erőforráscsoportot és egy elő
 * ExpressRoute
 * A Lab Services – osztályterem-tesztkörnyezetek nem lehet áthelyezni egy új erőforráscsoportot vagy előfizetést. DevTest Labs szolgáltatásban egy új erőforráscsoport ugyanabban az előfizetésben, de az előfizetések között nem helyezheti át.
 * Felügyelt alkalmazások
+* Felügyelt identitás - felhasználó által hozzárendelt
 * Microsoft Genomics
 * Biztonság
 * Site Recovery

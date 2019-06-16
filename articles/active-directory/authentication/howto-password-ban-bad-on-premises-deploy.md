@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 256215b1976598b961ada7210e5ee92c9f72d440
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 4c22c9c202e6de3b31b99803dce4a07d38287a92
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506876"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057285"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD jelszóvédelem üzembe helyezése
 
@@ -36,6 +36,7 @@ Után a szolgáltatás ésszerű rendszervizsgálati módban futott, válthat a 
 
 ## <a name="deployment-requirements"></a>Központi telepítésére vonatkozó követelmények
 
+* Licencelési követelményei című cikkben találja az Azure AD jelszóvédelem [rossz jelszavak, a szervezet számára](concept-password-ban-bad.md#license-requirements).
 * Minden tartományvezérlő, amely a tartományvezérlő-ügynök szolgáltatást a telepített Azure AD jelszóvédelem futtatnia kell a Windows Server 2012 vagy újabb verziója. Ez a követelmény nem jelenti azt, hogy az Active Directory-tartományban vagy erdőben is kell lennie a Windows Server 2012 tartomány vagy erdő működési szintjén. Az említett [tervezési alapelvek](concept-password-ban-bad-on-premises.md#design-principles), nem minimális működési vagy FFL vagy a tartományvezérlő-ügynök vagy a proxy futtatandó szoftverekhez szükséges.
 * Minden olyan gép, amely a tartományvezérlő-ügynökszolgáltatás telepítve a .NET 4.5-ös verzióját kell rendelkeznie.
 * Összes gép, amely a proxy szolgáltatást, a telepített Azure AD jelszóvédelem futtatnia kell a Windows Server 2012 R2 vagy újabb verziója.
@@ -100,7 +101,7 @@ Nincsenek Azure AD jelszóvédelem két szükséges telepítők. Az elérhető a
      Az eredmény meg kell jelennie egy **állapot** "Üzemelni."
 
 1. A proxy regisztrálása.
-   * 3. lépés befejezése után a proxy szolgáltatás fut a gépen. De a szolgáltatás még nem rendelkezik a szükséges hitelesítő adatokat az Azure AD-kommunikációhoz. Az Azure AD-regisztrációs szükség:
+   * 3\. lépés befejezése után a proxy szolgáltatás fut a gépen. De a szolgáltatás még nem rendelkezik a szükséges hitelesítő adatokat az Azure AD-kommunikációhoz. Az Azure AD-regisztrációs szükség:
 
      `Register-AzureADPasswordProtectionProxy`
 

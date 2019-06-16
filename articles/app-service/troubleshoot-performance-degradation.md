@@ -18,10 +18,10 @@ ms.date: 08/03/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 2d17991854f13f889c4e8c3a8c6f18e933655546
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62128449"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Az Azure App Service szolgáltatásban lassú teljesítménybeli problémáinak hibaelhárítása
@@ -63,7 +63,7 @@ A metrikák, amelyeket érdemes az alkalmazás figyelése néhány
 * Átlagos memória-munkakészlet
 * Átlagos válaszidő
 * CPU-idő
-* Memória-munkakészlet
+* Memória-Munkakészlet
 * Kérelmek
 
 ![alkalmazás teljesítményének monitorozása](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
@@ -136,7 +136,7 @@ Az App Service diagnosztikái eléréséhez keresse meg az App Service-alkalmaz�
 #### <a name="use-the-kudu-debug-console"></a>A Kudu hibakereső konzol használata
 App Service-ben tartalmaz egy hibakeresési konzolt, amely a hibakeresés, felfedezését, fájlok, valamint a környezet kapcsolatos információk lekérése JSON végpontjainak feltöltése is használhat. Ez a konzol nevezzük a *Kudu konzol* vagy a *SCM irányítópultján* az alkalmazáshoz.
 
-Ezt az irányítópultot elérheti a hivatkozás a **https://&lt;az alkalmazás neve >.scm.azurewebsites.net/**.
+Ezt az irányítópultot elérheti a hivatkozás a **https://&lt;az alkalmazás neve >.scm.azurewebsites.net/** .
 
 Néhány dolog, ami a Kudu biztosít a következők:
 

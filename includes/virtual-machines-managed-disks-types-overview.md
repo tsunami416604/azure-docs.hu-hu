@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d2daafa6bf5f9a28ad2b61a97e7a8bd2246ae18d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 4abf50e11070f2060309ae9b9cd045c874a2c52e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147835"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133267"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Milyen lemeztípusok érhetők el az Azure-ban?
 
@@ -29,11 +29,11 @@ Az alábbi táblázat összehasonlítja a ultranagy solid-állam-meghajtók (SSD
 |Forgatókönyv   |I/o-igényes számítási feladatokhoz például az SAP HANA, felső szintű adatbázisok (például SQL, Oracle) és egyéb tranzakció – (nagy erőforrásigényű) számítási feladatokat.   |Éles, teljesítményérzékeny számítási feladatok   |Webkiszolgálók, kisebb terhelésű vállalati alkalmazások és a fejlesztés + tesztelés   |Biztonsági mentés, nem kritikus fontosságú, alkalmi hozzáférést   |
 |Lemezméret   |65 536 gibibájtnak (GiB) (előzetes verzió)   |– 32 767 giB    |– 32 767 giB   |– 32 767 giB   |
 |Maximális átviteli sebesség   |2000 MiB/s (előzetes verzió)   |900 MiB/s   |750 MiB/s   |500 MiB/s   |
-|Maximális IOPS-érték   |160,000 (előzetes verzió)   |20,000   |6,000   |2,000   |
+|Maximális iops-érték   |160,000 (előzetes verzió)   |20,000   |6,000   |2,000   |
 
 ## <a name="ultra-ssd-preview"></a>Ultranagy SSD (előzetes verzió)
 
-Azure ultranagy SSD (előzetes verzió) az Azure IaaS virtuális gépek nagy teljesítményű, magas iops-érték és egységes közel valós idejű lemezes tárolás biztosításához. Néhány ultranagy SSD további előnyei a következők dinamikusan megváltoztathatja a teljesítmény, a lemez és a számítási feladatok, a virtuális gépek újraindítása nélkül. Ultranagy SSD adatok-igényes számítási feladatokhoz, például az SAP HANA, a felső szintű adatbázisok és a tranzakciós adatokat használó munkaterhelések vannak kialakítva. Ultranagy SSD csak akkor használható, az adatlemezeket. Operációsrendszer-lemezek, prémium szintű SSD-k használatát javasoljuk.
+Azure ultranagy SSD (előzetes verzió) az Azure IaaS virtuális gépek nagy átviteli sebességet, magas iops-érték és egységes közel valós idejű lemezes tárolást kínál. Néhány ultranagy SSD további előnyei a következők dinamikusan megváltoztathatja a teljesítmény, a lemez és a számítási feladatok, a virtuális gépek újraindítása nélkül. Ultranagy SSD-k adatokat-igényes számítási feladatokhoz, például az SAP HANA, a felső szintű adatbázisok és a tranzakciós adatokat használó munkaterhelések vannak kialakítva. Ultranagy SSD csak akkor használható, az adatlemezeket. Operációsrendszer-lemezek, prémium szintű SSD-k használatát javasoljuk.
 
 ### <a name="performance"></a>Teljesítmény
 
@@ -73,7 +73,8 @@ Előzetes verzióban az ultranagy SSD:
 - Csak a gen/DS v3-as virtuális gépek támogatottak
 - Az adatlemezeket és a csak 4k támogatási fizikai szektormérettel csak elérhetők  
 - Csak üres lemezként hozható létre  
-- Jelenleg kizárólag telepíthető Azure Resource Manager-sablonok, CLI és a python SDK használatával.
+- Jelenleg kizárólag telepíthető Azure Resource Manager-sablonok, CLI, PowerShell és a Python SDK használatával.
+- Az Azure Portalon (még) nem telepíthető.
 - Még nem támogatja pillanatképeit, virtuális gép lemezképek, a rendelkezésre állási csoportok, a virtual machine scale sets és az Azure disk encryption.
 - Még nem támogatja az Azure Backup vagy az Azure Site Recovery-integráció.
 - A [legtöbb előzetes verziók](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), ez a funkció nem használható éles számítási feladatok esetében csak az általánosan (elérhetővé tétel GA).

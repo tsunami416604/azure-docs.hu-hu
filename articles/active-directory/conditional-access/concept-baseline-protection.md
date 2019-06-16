@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca062f4024bb5b0946812e00c8ccc1254b56d333
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 39a591a335d022ef7b2b99fdec930ddf0496cd47
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003296"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112592"
 ---
 # <a name="what-are-baseline-policies"></a>Mik azok az eredeti szabályzatok?
 
@@ -26,7 +26,7 @@ Egyéni feltételes hozzáférési szabályzatok kezelése egy prémium szintű 
 
 ## <a name="baseline-policies"></a>Alapvető szabályzatok
 
-![Alapkonfiguráció feltételes hozzáférési szabályzatokat az Azure Portalon](./media/concept-baseline-protection/conditional-access-baseline-policies.png)
+![Feltételes hozzáférés alapkonfiguráció szabályzatokat az Azure Portalon](./media/concept-baseline-protection/conditional-access-baseline-policies.png)
 
 Nincsenek négy alapvető szabályzatok, ami lehetővé teszi a szervezetek számára:
 
@@ -49,7 +49,7 @@ A power és így hozzáférhet a rendszergazdai fiókok, mert kezelje őket gond
 * Feltételes hozzáférésű rendszergazda
 * Biztonsági rendszergazda
 * Ügyfélszolgálati adminisztrátor / rendszergazdai jelszó
-* Számlázási adminisztrátor
+* Számlázási rendszergazda
 * Felhasználói adminisztrátor
 
 Ha a szervezete ezeket a fiókokat a parancsfájlokban vagy a kódot használja, fontolja meg, és cserélje le őket az [felügyelt identitások](../managed-identities-azure-resources/overview.md). Ideiglenes Áthidaló megoldásként a referenciakonfiguráció házirendből zárhat ki egyedi felhasználói fiókokhoz.

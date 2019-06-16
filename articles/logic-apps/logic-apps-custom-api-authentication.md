@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
 ms.openlocfilehash: 555083235aff08476e82f0daa81203b66591f3cc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66167275"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Az Azure Logic Apps egyéni API-k biztonságos hívások
@@ -43,7 +43,7 @@ Ezzel a módszerrel az általános lépései a következők:
 
 3. Vegye fel az alkalmazásazonosítót a logikai alkalmazás definíciójának.
 
-#### <a name="part-1-create-an-azure-ad-application-identity-for-your-logic-app"></a>1. rész: Hozzon létre egy Azure AD alkalmazás-azonosítót a logikai alkalmazás
+#### <a name="part-1-create-an-azure-ad-application-identity-for-your-logic-app"></a>1\. rész: Hozzon létre egy Azure AD alkalmazás-azonosítót a logikai alkalmazás
 
 A logikai alkalmazás hitelesítése az Azure ad-ben a az Azure AD alkalmazás-identitást használja. Csak akkor állítsa be ezt az identitást a címtár egy alkalommal. Például akkor lehet váltani, ugyanazzal az identitással használata a logic apps annak ellenére, hogy minden egyes logikai alkalmazás egyedi azonosítók is létrehozhat. Állítsa be ezeket az identitásokat az Azure Portalon, vagy használjon [PowerShell](#powershell).
 
@@ -108,7 +108,7 @@ Ez a feladat Azure Resource Managerben a PowerShell használatával is elvégezh
 
 További információ megtudhatja, hogyan [egyszerű szolgáltatás létrehozása erőforrások eléréséhez a PowerShell használatával](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
-#### <a name="part-2-create-an-azure-ad-application-identity-for-your-web-app-or-api-app"></a>2. rész: Hozzon létre egy Azure AD alkalmazás-azonosítót a webalkalmazás vagy API-alkalmazás
+#### <a name="part-2-create-an-azure-ad-application-identity-for-your-web-app-or-api-app"></a>2\. rész: Hozzon létre egy Azure AD alkalmazás-azonosítót a webalkalmazás vagy API-alkalmazás
 
 Ha a webalkalmazás vagy API-alkalmazás már üzembe helyezte, kapcsolja be a hitelesítést, és az alkalmazásazonosító létrehozása az Azure Portalon. Egyéb esetben [kapcsolja be a hitelesítést, ha telepít egy Azure Resource Manager-sablonnal](#authen-deploy). 
 
@@ -126,7 +126,7 @@ Ha a webalkalmazás vagy API-alkalmazás már üzembe helyezte, kapcsolja be a h
 
 4. A **Hitelesítés/Engedélyezés** lapon kattintson a **Mentés** gombra.
 
-Most meg kell keresnie az identitása, amelyhez társítva van a webalkalmazás vagy API-alkalmazás az ügyfél Azonosítóját és bérlőazonosítóját. 3. rész azonosítóit a részletekben fogja használni. Így továbbra is az ezeket a lépéseket az Azure Portalon.
+Most meg kell keresnie az identitása, amelyhez társítva van a webalkalmazás vagy API-alkalmazás az ügyfél Azonosítóját és bérlőazonosítóját. 3\. rész azonosítóit a részletekben fogja használni. Így továbbra is az ezeket a lépéseket az Azure Portalon.
 
 **Identita aplikace ügyfél-azonosítója és bérlő azonosítója a webalkalmazás vagy API-alkalmazás keresése az Azure Portalon**
 
@@ -180,7 +180,7 @@ Automatikus telepítése egy üres webalkalmazást és a egy logikai alkalmazás
 
 [![Üzembe helyezés az Azure-ban](media/logic-apps-custom-api-authentication/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-custom-api%2Fazuredeploy.json)
 
-#### <a name="part-3-populate-the-authorization-section-in-your-logic-app"></a>3. rész: A hitelesítési szakaszában a logikai alkalmazás feltöltése
+#### <a name="part-3-populate-the-authorization-section-in-your-logic-app"></a>3\. rész: A hitelesítési szakaszában a logikai alkalmazás feltöltése
 
 Az előző sablon már rendelkezik az engedélyezési szakaszban állítsa be, de ha közvetlenül a logikai alkalmazás szerzői műveletek, akkor tartalmaznia kell a teljes körű engedéllyel szakaszt.
 
@@ -234,7 +234,7 @@ Az a **engedélyezési** szakaszban, ezt a sort:
 
 `{"type": "clientcertificate", "password": "password", "pfx": "long-pfx-key"}`
 
-| Elem | Szükséges | Leírás | 
+| Elem | Kötelező | Leírás | 
 | ------- | -------- | ----------- | 
 | type | Igen | A hitelesítési típus. Az ügyfél SSL-tanúsítványok, az értéknek kell lennie `ClientCertificate`. | 
 | password | Igen | A jelszót az ügyféltanúsítvány (PFX-fájl) eléréséhez | 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: ffb5da8abd9673d4922aeb4854b3dfa80349f284
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 60cd043c34ba2aee365c59feb38cc9dd02d45746
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65902215"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67089044"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TargetProcess
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása a TargetProcess konfigurálásához hozzá kell Target
 
 **TargetProcess hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -141,7 +141,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés TargetProcess, hajts
 
 4. A felső menüben kattintson **telepítő**.
 
-    ![Telepítés](./media/target-process-tutorial/tutorial_target_process_05.png)
+    ![Beállítás](./media/target-process-tutorial/tutorial_target_process_05.png)
 
 5. Kattintson a **beállítások** fülre.
 
@@ -223,7 +223,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó TargetProcess jön létr
 > [!Note]
 > Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [TargetProcess támogatási csoportjának](mailto:support@targetprocess.com).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e2326a14c2f1215960d496dfab4c7f6832da2a3
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: d9fc2cb6e3aa23ffef03dc129f1f8cea520d1025
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65473451"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105256"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cobalt"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező kobalt
 
@@ -54,7 +54,7 @@ Az Azure AD-be kobalt integráció konfigurálásához, hozzá kell kobalt a kat
 
 **Kobalt hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -119,7 +119,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés kobalt, hajtsa végr
 
     | Name (Név) | Adatforrás-attribútum|
     | ---------------| --------- |
-    | Levelezés | user.mail |
+    | Mail | user.mail |
     | Othermail | user.othermail |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
@@ -212,7 +212,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű kobalt hoz létre. Együttműködve [kobalt támogatási csapatának](https://www.cobalt.net/support/) a felhasználók hozzáadása az kobalt platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

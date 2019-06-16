@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 060492d2ed551ed0e90aaf3c1a373572c0c0ab73
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: b8e208c8e5f1136ef5029e03b59a2f09e113dc3f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66307513"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67096344"
 ---
 # <a name="tutorial-integrate-neogov-with-azure-active-directory"></a>Oktatóanyag: NEOGOV integrálása az Azure Active Directoryval
 
@@ -84,16 +84,16 @@ Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyez�
     
     | Környezet | Az URL-minta |
     | -- | -- |
-    | Üzemi | `https://www.neogov.com/` |
-    | Védőfal | `https://www.uat.neogov.net/` |
+    | Production | `https://www.neogov.com/` |
+    | Sandbox | `https://www.uat.neogov.net/` |
     | | |
 
     b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:
 
     | Környezet | Az URL-minta |
     | -- | -- |
-    | Üzemi | `https://login.neogov.com/authentication/saml/consumer` |
-    | Védőfal | `https://login.uat.neogov.net/authentication/saml/consumer` |
+    | Production | `https://login.neogov.com/authentication/saml/consumer` |
+    | Sandbox | `https://login.uat.neogov.net/authentication/saml/consumer` |
     | | |
 
 1. NEOGOV alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg, hol **nameidentifier** le van képezve a **user.userprincipalname**. NEOGOV alkalmazás vár **nameidentifier** a leképezendő **user.objectid**, így kell szerkesztenie a attribútumleképezés kattintva **szerkesztése** ikonra, és módosítsa a Attribútumleképzés.

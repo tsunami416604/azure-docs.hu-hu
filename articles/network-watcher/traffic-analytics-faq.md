@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: kumud
-ms.openlocfilehash: 88acfebcc6dd8489703014d790f09313ab9302ec
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: e4e9ef4f3a50aeac4db4d2cc2f2b6cbafcc47268
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939910"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051635"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>A TRAFFIC Analytics – gyakori kérdések
 
@@ -95,12 +95,19 @@ A traffic analytics használhat NSG-k, a következő támogatott régiók egyik�
 A Log Analytics-munkaterület léteznie kell a következő régióban:
 - Közép-Kanada
 - USA nyugati középső régiója
+- USA nyugati régiója
 - USA nyugati régiója, 2.
+- USA déli középső régiója
+- USA középső régiója
 - USA keleti régiója
+- USA 2. keleti régiója
 - Közép-Franciaország
 - Nyugat-Európa
+- Észak-Európa
 - Az Egyesült Királyság déli régiója
+- Kelet-Ausztrália
 - Délkelet-Ausztrália
+- Kelet-Ázsia
 - Délkelet-Ázsia 
 - Korea középső régiója
 - Közép-India

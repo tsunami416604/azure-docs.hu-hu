@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 5df666dc2bd574c168d6b5f65dd6a909564a921f
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64868429"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Igény szerinti tartalomtovábbítás az Azure Portal használatával
@@ -61,7 +61,7 @@ A streamvégpont elindítása:
 Ha a Media Services használatával kíván videókat streamelni, fel kell töltenie a forrásvideókat, különböző bitsebességekre kell kódolnia azokat, majd közzé kell tennie az eredményt. Ez a rész a folyamat első lépését írja le. 
 
 1. Az [Azure-portálon](https://portal.azure.com/) válassza ki Azure Media Services-fiókját.
-2. Válassza a **Settgings (Beállítások)** > **Assets (Objektumok)** lehetőséget. Ezután válassza ki a **Feltöltés** gombot.
+2. Válassza a **Settgings (Beállítások)**  > **Assets (Objektumok)** lehetőséget. Ezután válassza ki a **Feltöltés** gombot.
    
     ![Fájlok feltöltése](./media/media-services-portal-vod-get-started/media-services-upload.png)
    
@@ -84,7 +84,7 @@ Annak érdekében, hogy kihasználhassa a dinamikus csomagolást, kódolja több
 Kódolás a Media Encoder Standard használatával az Azure Portalon:
 
 1. Az [Azure-portálon](https://portal.azure.com/) válassza ki Azure Media Services-fiókját.
-2. Válassza a **Settgings (Beállítások)** > **Assets (Objektumok)** lehetőséget. Válassza ki a kódolni kívánt objektumot.
+2. Válassza a **Settgings (Beállítások)**  > **Assets (Objektumok)** lehetőséget. Válassza ki a kódolni kívánt objektumot.
 3. Válassza ki a **Kódolás** gombot.
 4. Az **Objektum kódolása** ablakban válassza a **Media Encoder Standard** feldolgozóeszközt, és egy beállításkészletet. A beállításkészletekkel kapcsolatos információkért lásd a [sávszélességi skála automatikus létrehozását](media-services-autogen-bitrate-ladder-with-mes.md) és a [Media Encoder Standard előre beállított feladatait](media-services-mes-presets-overview.md) ismertető részeket. Fontos, hogy a bemeneti videóhoz legmegfelelőbb beállításkészlet legyen kiválasztva. Ha például tudja, hogy a bemeneti videó felbontása 1920 &#215; 1080 képpont, akkor választhatja a **H264 Multiple Bitrate 1080p** beállításkészletet. Ha a videó alacsony (640 &#215; 360) felbontású, ne használja a **H264 Multiple Bitrate 1080p** beállításkészletet.
    
@@ -132,7 +132,7 @@ A lokátor lejárati idejének módosításához használjon [REST API](https://
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>Az objektum portál segítségével történő közzététele
 1. Az [Azure-portálon](https://portal.azure.com/) válassza ki Azure Media Services-fiókját.
-2. Válassza a **Settgings (Beállítások)** > **Assets (Objektumok)** lehetőséget. Válassza ki a közzétenni kívánt objektumot.
+2. Válassza a **Settgings (Beállítások)**  > **Assets (Objektumok)** lehetőséget. Válassza ki a közzétenni kívánt objektumot.
 3. Válassza ki a **Közzététel** gombot.
 4. Válassza ki a lokátor típusát.
 5. Válassza a **Hozzáadás** lehetőséget.

@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 7a0e628eed861767d1eeb50b0ded7bb3d8807328
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 3ea41a16f79f903b5ff7d2b93f74f7d3d2a0dd83
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66271584"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133864"
 ---
 Megosztott lemezkép-katalógus szolgáltatása segít kialakítani a struktúra és a szervezet a felügyelt rendszerképek körül. Megosztott kép katalógusok adja meg:
 
 - Képek felügyelt globális replikálását.
 - Verziókezelés és a könnyebb kezelhetőség képek csoportosítása.
-- Magas rendelkezésre állású képek a Zónaredundáns Társzolgáltatási (ZRS) fiókokkal a rendelkezésre állási zónákat támogató régiók. A ZRS nagyobb rugalmasság a zónaszintű meghibásodásokkal szemben kínál.
+- Magas rendelkezésre állású képek a Zónaredundáns Társzolgáltatási (ZRS) fiókokkal a rendelkezésre állási zónákat támogató régiók. A ZRS ellenállóbbá teszi a lemezképeket a zónán belüli hibákkal szemben.
 - Előfizetések között, és még az Active Directory (AD) bérlő, az RBAC használatával között megosztást.
 - Az üzemelő példányok, az egyes régiókban kép replikákkal rendelkező méretezése.
 
@@ -78,15 +78,15 @@ Forrásrégiók az alábbi táblázatban láthatók. Az összes nyilvános régi
 
 | Forrás régiók |
 |---------------------|-----------------|------------------|-----------------|
-| Ausztrália középső régiója   | USA középső RÉGIÓJA – EUAP | Korea középső régiója    | Egyesült Királyság 2. déli régiója      |
-| Ausztrália 2. középső régiója | Kelet-Ázsia       | Korea déli régiója      | Az Egyesült Királyság nyugati régiója         |
-| Kelet-Ausztrália      | USA keleti régiója         | USA északi középső régiója | USA nyugati középső régiója |
-| Délkelet-Ausztrália | USA 2. keleti régiója       | Észak-Európa     | Nyugat-Európa     |
-| Dél-Brazília        | USA 2. keleti régiója – EUAP  | USA déli középső régiója | Nyugat-India      |
-| Közép-Kanada      | Közép-Franciaország  | Dél-India      | USA nyugati régiója         |
-| Kelet-Kanada         | Dél-Franciaország    | Délkelet-Ázsia   | USA nyugati régiója         |
-| Közép-India       | Kelet-Japán      | Egyesült Királyság északi régiója         | USA nyugati régiója, 2.       |
-| USA középső régiója          | Nyugat-Japán      | Az Egyesült Királyság déli régiója         |                 |
+| Ausztrália középső régiója   | USA középső RÉGIÓJA – EUAP | Korea középső régiója    | USA nyugati középső régiója |
+| Ausztrália 2. középső régiója | Kelet-Ázsia       | Korea déli régiója      | Nyugat-Európa     |
+| Kelet-Ausztrália      | USA keleti régiója         | USA északi középső régiója | Nyugat-India      |
+| Délkelet-Ausztrália | USA 2. keleti régiója       | Észak-Európa     | USA nyugati régiója         |
+| Dél-Brazília        | USA 2. keleti régiója – EUAP  | USA déli középső régiója | USA nyugati régiója, 2.       |
+| Közép-Kanada      | Közép-Franciaország  | Dél-India      |                 |
+| Kelet-Kanada         | Dél-Franciaország    | Délkelet-Ázsia   |                 |
+| Közép-India       | Kelet-Japán      | Az Egyesült Királyság déli régiója         |                 |
+| USA középső régiója          | Nyugat-Japán      | Az Egyesült Királyság nyugati régiója          |                 |
 
 
 
@@ -214,11 +214,11 @@ Lemezkép-katalógusában a megosztott erőforrás-sablonok használatával is l
  
  A. Igen. A képek lehet típusú alapján 3 forgatókönyv közül választhat.
 
- 1. forgatókönyv: Ha egy felügyelt rendszerképet, majd létrehozhat egy rendszerképet definíció- és lemezkép verziója azt.
+ 1\. forgatókönyv: Ha egy felügyelt rendszerképet, majd létrehozhat egy rendszerképet definíció- és lemezkép verziója azt.
 
- 2. forgatókönyv: Ha általánosított nem felügyelt rendszerkép, létrehozhat egy felügyelt rendszerképet belőle, és majd hozzon létre belőle egy rendszerkép definíciójában és lemezkép verziója. 
+ 2\. forgatókönyv: Ha általánosított nem felügyelt rendszerkép, létrehozhat egy felügyelt rendszerképet belőle, és majd hozzon létre belőle egy rendszerkép definíciójában és lemezkép verziója. 
 
- 3. forgatókönyv: Ha egy virtuális Merevlemezt a helyi fájlrendszerbe is van, akkor szüksége töltse fel a VHD-t, hozzon létre egy felügyelt rendszerképet, majd hozhat létre és definíció és származó lemezkép verziója.
+ 3\. forgatókönyv: Ha egy virtuális Merevlemezt a helyi fájlrendszerbe is van, akkor szüksége töltse fel a VHD-t, hozzon létre egy felügyelt rendszerképet, majd hozhat létre és definíció és származó lemezkép verziója.
 - Windows virtuális gépek a virtuális merevlemez esetén olvassa el [általános VHD feltöltése](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed).
 - Ha a VHD-t egy Linux virtuális gép számára, lásd: [VHD feltöltése](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)
 

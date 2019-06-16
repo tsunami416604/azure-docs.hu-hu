@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 764ad8f1ca19238e1986d1d187d19c405963a832
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ac476e2a66f7fd1d315adb37258917b3ff47373f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65868856"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67093470"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-purecloud-by-genesys"></a>Oktatóanyag: PureCloud Genesys által az Azure Active Directory-integráció
 
@@ -52,7 +52,7 @@ Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri b
 
 **Által Genesys PureCloud hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -146,7 +146,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés által Genesys PureC
 
     | Name (Név) | Adatforrás-attribútum|
     | ---------------| --------------- |
-    | E-mail-cím | user.userprinicipalname |
+    | E-mail | user.userprinicipalname |
     | Cégnév | `Your organization name` |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
@@ -282,7 +282,7 @@ Ahhoz, hogy az Azure AD-felhasználók által Genesys PureCloud jelentkezzen be,
     
     c. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

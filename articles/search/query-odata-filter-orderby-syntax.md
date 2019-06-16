@@ -1,7 +1,7 @@
 ---
-title: A szűrők és order by záradékok – Azure Search OData-kifejezések szintaxisa
-description: Szűrő és order by kifejezés OData-szűrőszintaxis Azure Search-lekérdezésekhez.
-ms.date: 05/02/2019
+title: OData nyelvi áttekintése – Azure Search
+description: OData nyelvi áttekintése szűrők, válassza ki, és rendezés az Azure Search-lekérdezéseket.
+ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,309 +19,217 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b1f77a9e0a3308098e5f6c699f2fc79e5c437f17
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 166c23088fe0388199ca51efde05153bb5697e38
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024266"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063703"
 ---
-# <a name="odata-expression-syntax-for-filters-and-order-by-clauses-in-azure-search"></a>A szűrők és az Azure Search szolgáltatásban az order by záradékok OData-kifejezések szintaxisa
+# <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-search"></a>OData-nyelv áttekintés `$filter`, `$orderby`, és `$select` az Azure Search szolgáltatásban
 
-Az Azure Search az OData-kifejezések szintaxisa a egy részét támogatja **$filter** és **$orderby** kifejezéseket. Szűrési kifejezésekben értékeli ki a lekérdezés-elemzés, search az egyes mezők neve vagy indexe vizsgálatok során használt egyezési feltételek hozzáadása során. Order by kifejezésnek alkalmazza a rendszer egy utólagos feldolgozási lépést keresztül egy eredményhalmaz. Szűrők és a order by kifejezésnek szerepelnek a lekérdezési kérést, és független az OData-szűrőszintaxis tartja a [egyszerű](query-simple-syntax.md) vagy [teljes](query-lucene-syntax.md) lekérdezési szintaxist használja egy **keresési** a paraméter. Ez a cikk a szűrők és a rendezési kifejezésben használt OData-kifejezések dokumentációja nyújt.
+Az Azure Search az OData-kifejezések szintaxisa a egy részét támogatja **$filter**, **$orderby**, és **$select** kifejezéseket. Szűrési kifejezésekben értékeli ki a lekérdezés-elemzés, search az egyes mezők neve vagy indexe vizsgálatok során használt egyezési feltételek hozzáadása során. Order by kifejezésnek alkalmazza a rendszer egy utólagos feldolgozási lépést az eredményhalmaz rendezze a visszaadott dokumentumok keresztül. Válassza kifejezések határozza meg, mely a dokumentum mezőket az eredményhalmaz tartalmazza. Ezek a kifejezések szintaxisát különbözik a [egyszerű](query-simple-syntax.md) vagy [teljes](query-lucene-syntax.md) lekérdezési szintaxist használ a **keresési** paraméter, de nincs átfedés szintaxisának mezők hivatkozik.
 
-## <a name="filter-syntax"></a>Szintaxis szűrése
+Ez a cikk áttekintést OData kifejezés nyelve szűrőket, az order by és select kifejezéseket. A nyelv "alulról felfelé", kezdve a legalapvetőbb elemeket, és gyakorta jelennek meg. A legfelső szintű minden paraméter szintaxisa egy külön cikkben ismertetett:
 
-A **$filter** kifejezés önálló, teljes körűen kifejezett lekérdezésként hajtható végre, vagy pontosítsa a lekérdezést, amely olyan további paraméterekkel rendelkezik. Az alábbi példák bemutatják, néhány főbb forgatókönyvek megvalósítását. Az első példában a szűrő az anyag a lekérdezés.
+- [$filter szintaxis](search-query-odata-filter.md)
+- [$orderby szintaxis](search-query-odata-orderby.md)
+- [$select szintaxis](search-query-odata-select.md)
 
+OData kifejezések köre a egyszerű nagy mértékben összetett, megtekinthetik azonban az összes megosztása a szokványos elemeket. Az Azure Search egy OData-kifejezésnek legalapvetőbb részei a következők:
 
-```POST
-POST /indexes/hotels/docs/search?api-version=2019-05-06
-    {
-      "filter": "(baseRate ge 60 and baseRate lt 300) or hotelName eq 'Fancy Stay'"
-    }
-```
+- **Mező elérési utak**, ami az index meghatározott mezőkre hivatkozhatnak.
+- **Állandók**, amely egy bizonyos adatok típusú konstans értékek.
 
-Egy másik gyakori használati eset Kombinált szűrők értékkorlátozás, ahol a szűrő csökkenti a lekérdezési felületének egy felhasználó-központú értékkorlátozó navigációs választott beállítás alapján:
+> [!NOTE]
+> Különbözik terminológiai az Azure Search szolgáltatásban a [OData-szabványt](https://www.odata.org/documentation/) több módon is. Hívjuk a **mező** neve az Azure Search egy **tulajdonság** OData, és ehhez hasonlóan a **mező elérési útja** és **útvonal**. Egy **index** tartalmazó **dokumentumok** az Azure Search hivatkozik, amely általában a, az OData- **entitáskészlet** tartalmazó **entitások**. Az Azure Search-terminológia használja ezt a hivatkozást.
 
-```POST
-POST /indexes/hotels/docs/search?api-version=2019-05-06
-    {
-      "search": "test",
-      "facets": [ "tags", "baseRate,values:80|150|220" ],
-      "filter": "rating eq 3 and category eq 'Motel'"
-    }
-```
+## <a name="field-paths"></a>A mező elérési utak
 
-### <a name="filter-operators"></a>Szűrési operátorokhoz  
+A következő EBNF ([kiterjesztett Backus-Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) határozza meg a nyelvtani, a mező elérési utak.
 
-- Logikai operátorok (és, vagy sem).  
-
-- Összehasonlítási kifejezésekben (`eq, ne, gt, lt, ge, le`). A sztring-összehasonlítások megkülönböztetik a kis- és nagybetűket.  
-
-- Támogatott állandók [Entity Data Model](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) (EDM) típusok (lásd: [által támogatott adattípusokkal &#40;Azure Search&#41; ](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) támogatott típusok listája). Gyűjtemény típusú állandók használata nem támogatott.  
-
-- Mező nevére hivatkozik. Csak `filterable` mezőt a szűrőkifejezésekben is használható.  
-
-- `any` Paraméterek nélkül. Ez teszteli, hogy típusú mező `Collection(Edm.String)` elemeket tartalmaz.  
-
-- `any` és `all` korlátozott lambda kifejezés támogatásával. 
-    
-  -   `any/all` támogatottak a típusú mezők `Collection(Edm.String)`. 
-    
-  -   `any` csak akkor használható, az egyszerű egyenlőségi kifejezés vagy egy `search.in` függvény. Egyszerű kifejezések például állhat egyetlen mezőt és a egy konstans érték összehasonlítását `Title eq 'Magna Carta'`.
-    
-  -   `all` csak akkor használható, az egyszerű egyenlótlenség kifejezések vagy egy `not search.in`.   
-
-- A térinformatikai függvények `geo.distance` és `geo.intersects`. A `geo.distance` függvényt ad vissza a távolságot adja meg kilométerben két pont között, egy egy mezőt, és a egy folyamatban van egy állandó átadott szűrő részeként. A `geo.intersects` függvény igaz értéket ad vissza egy adott időpontra van egy adott sokszög belül, amelyben a pont egy mezőt, és a sokszög egy szűrő részeként átadott konstansként van megadva.  
-
-  A sokszög az egy kétdimenziós felület tárolt pontok sorozataként meghatározása egy határoló csörögni (lásd az alábbi példát). A sokszög kell zárni, tehát az első és utolsó pont csoportok azonosnak kell lennie. [Egy sokszög pontjainak járásával sorrendben kell](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
-
-  `geo.distance` az Azure Search kilométerben távolságot adja vissza. Ez eltér más szolgáltatásokkal, amelyek támogatják az OData térinformatikai műveleteket, amelyeket általában mérőszámok távolságot adja vissza.  
-
-  > [!NOTE]  
-  >  Ha geo.distance szűrőt használ, a távolság egy állandó használatakor a függvény által visszaadott össze kell hasonlítania `lt`, `le`, `gt`, vagy `ge`. Az operátorok `eq` és `ne` távokat összehasonlítása nem támogatott. Például ez az egy megfelelő használatának geo.distance: `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`.  
-
-- A `search.in` függvény azt teszteli-e egy adott karakterlánc típusú megegyezik egy adott értékek listáját. Azt is segítségével bármely vagy összes gyűjtemény karakterlánc típusú értékeket az adott listáját egyetlen érték összehasonlítására. A mező és a lista minden egyes érték közötti egyenlőségi határozza meg a kis-és nagybetűket módon, ugyanúgy mint a `eq` operátor. Ezért, például egy kifejezést `search.in(myfield, 'a, b, c')` egyenértékű `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`, azzal a különbséggel, hogy `search.in` sokkal jobb teljesítményt eredményez. 
-
-   Az első paraméterként a `search.in` függvény a sztring mezőhivatkozásnak (vagy egy karakterlánc-gyűjtemény mezők abban az esetben tartomány változó ahol `search.in` használnak egy `any` vagy `all` kifejezés). 
-  
-   A második paraméter megadása az értékek, szóközöket és/vagy a vesszővel elválasztott listáját tartalmazó karakterlánc. 
-  
-   A harmadik paramétere egy karakterláncot, ahol minden karaktert a karakterlánc, vagy ez a karakterlánc részét úgy viselkedik, mint az elválasztó elemzésekor a második paraméterben szereplő értékek listáját. Eltérő szóközöket és vesszőket elválasztók használható, mert a tartalmazzák-e ezeket a karaktereket kell, ha egy nem kötelező harmadik paramétert is megadhat `search.in`. 
-
-  > [!NOTE]   
-  > Bizonyos helyzetekben szükséges összehasonlítása egy mezőt egy állandó értékek nagy számú ellen. Például biztonsági elrejtés végrehajtása szűrőkkel szükség lehet összehasonlítása a dokumentum azonosító mező ellen, amelyhez a kérelmező felhasználó van olvasási hozzáférést azonosítók listáját. Ilyen esetekben erősen javasoljuk a `search.in` függvényt egy bonyolultabb vagy műveletet egyenlőség kifejezések helyett. Például `search.in(Id, '123, 456, ...')` helyett `Id eq 123 or Id eq 456 or ....`. 
-  >
-  > Ha `search.in`, várható másodperc törtrésze válaszideje, amikor a második paraméter több száz vagy ezer értékek listáját tartalmazza. Ne feledje, hogy van-e explicit adhat át elemek száma korlátlan `search.in`, bár továbbra is korlátozza a kérelem maximális méretét. Azonban a késési értékek számának növekedésével növekszik.
-
-- A `search.ismatch` függvény kiértékeli a keresési lekérdezésnek egy szűrőkifejezés részeként. Az eredményhalmaz a dokumentumokat, a keresési lekérdezésnek megfelelő lesznek visszaadva. Ez a függvény a következő túlterhelésekkel érhetők el:
-  - `search.ismatch(search)`
-  - `search.ismatch(search, searchFields)`
-  - `search.ismatch(search, searchFields, queryType, searchMode)`
-
-  Ahol: 
-  
-  - `search`: a keresési lekérdezés (akár [egyszerű](query-simple-syntax.md) vagy [teljes](query-lucene-syntax.md) lekérdezés szintaxisa). 
-  - `queryType`: "egyszerű" vagy "teljes", alapértelmezett értéke "Simple". Itt adhatja meg, milyen lekérdezési nyelv használták a `search` paraméter.
-  - `searchFields`: a keresés, kereshető mezőket vesszővel elválasztott listája alapértelmezés szerint az összes kereshető mezőt az indexben.    
-  - `searchMode`: "bármely" vagy "all", az alapértelmezett érték "bármely". Azt jelzi, hogy a keresési feltételeket egy részének vagy egészének egyeztetni annak érdekében, hogy a dokumentum, amely száma.
-
-  A fenti paraméterek egyenértékűek a megfelelő [keresse a kérelem paramétereinek](https://docs.microsoft.com/rest/api/searchservice/search-documents).
-
-- A `search.ismatchscoring` működni, mint a `search.ismatch` működik, dokumentumok, amely megfelel a keresési lekérdezés paraméterként igaz értéket ad vissza. Az egymás közötti különbség, hogy a relevancia alapján pontszámot rendelni az egyező dokumentumok a `search.ismatchscoring` lekérdezés hozzájárul a teljes dokumentum pontszám, a kis-és `search.ismatch`, a dokumentumok pontszámát nem módosítható. Ez a függvény a következő túlterhelésekkel érhetők el paraméterek azonosak `search.ismatch`:
-  - `search.ismatchscoring(search)`
-  - `search.ismatchscoring(search, searchFields)`
-  - `search.ismatchscoring(search, searchFields, queryType, searchMode)`
-
-  A `search.ismatch` és `search.ismatchscoring` funkciók egymással, és a többi a szűrő algebra teljes merőleges. Ez azt jelenti, hogy mindkét függvény is használható ugyanazon a szűrőkifejezést. 
-
-### <a name="geospatial-queries-and-polygons-spanning-the-180th-meridian"></a>A térinformatikai lekérdezések és a 180th délkörének átfedés poligonok  
- Számos térinformatikai lekérdezés kidolgozásában egy lekérdezést, amely magában foglalja a (közel az Dátumvonali) 180th délkörének kódtárak, mint off-limits vagy egy megkerülő megoldás, például a sokszög felosztása két, egyet a hosszúság egyik oldalán igényel.  
-
- Az Azure Search szolgáltatásban 180 fokos hosszúsági tartalmazó térinformatikai lekérdezések fog a várt módon működik-e a lekérdezés alakzat téglalap alakú, és a koordináták a szélességi és hosszúsági mentén rácsos elrendezés igazítás (például `geo.intersects(location, geography'POLYGON((179 65,179 66,-179 66,-179 65,179 65))'`). Ellenkező esetben nem téglalap vagy nem igazított alakzatok, fontolja meg a vegyes sokszög megközelítés.  
-
-<a name="bkmk_limits"></a>
-
-## <a name="filter-size-limitations"></a>Szűrő fájlméretre vonatkozó korlátozások 
-
- A méret és összetettségét, melyet elküldhet az Azure Search szűrőkifejezésekben korlátozva van. A korlátok nagyjából a szűrőkifejezést záradékai száma alapulnak. Jó tapasztalatok, hogy ha több száz szolgáló szerződéses klauzulák, áll: a korlát veszélye. Azt javasoljuk, hogy az alkalmazás úgy, hogy azt nem generál korlátlan méretű szűrők tervezése.  
-
-
-## <a name="filter-examples"></a>Példák a szűrők  
-
- Keresse meg azt az alapdíj mellett minden hotels kisebb, mint 200 USD értékű, vagy afölött 4 értékelése:  
+<!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
 ```
-$filter=baseRate lt 200.0 and rating ge 4
+field_path ::= identifier('/'identifier)*
+
+identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 ```
 
- Keresse meg az összes hotels "Roach amelyben" kivételével, amely rendelkezik lett felújított 2010 óta:  
+Egy interaktív szintaxisdiagramja is érhető el:
+
+> [!div class="nextstepaction"]
+> [Azure Search OData szintaxisdiagramja](https://azuresearch.github.io/odata-syntax-diagram/#field_path)
+
+> [!NOTE]
+> Lásd: [OData kifejezés szintaxisának referenciája az Azure Search](search-query-odata-syntax-reference.md) a teljes EBNF számára.
+
+A mező elérési útja épül fel egy vagy több **azonosítók** perjellel elválasztva. Minden azonosító, amely karaktersorozatot kell egy ASCII betűvel vagy aláhúzásjellel kezdődő, és csak ASCII betűket, számokat és aláhúzásjeleket tartalmazhat. A betűk a felső - és kisbetűs is lehetnek.
+
+Identifikátor. olvassa el, vagy a nevével, egy mezőt, és a egy **tartomány változót** kontextusában egy [gyűjtemény kifejezés](search-query-odata-collection-operators.md) (`any` vagy `all`) egy szűrő. A tartomány változót olyan, mintha egy változó, amely az aktuális elem a gyűjtemény jelöli. Összetett gyűjtemények esetében a változó jelöli a objektumot, ezért a mező elérési utak segítségével a változó alárendelt mezőkre hivatkozhatnak. Ez a hasonló számos programozási nyelvet a felépítését.
+
+Példák a mező elérési utak az alábbi táblázatban láthatók:
+
+| Mező elérési útja | Leírás |
+| --- | --- |
+| `HotelName` | Az index egy legfelső szintű mezőre hivatkozik |
+| `Address/City` | Hivatkozik az `City` az optimálisnál mezőt az indexben; egy összetett mező `Address` típusú `Edm.ComplexType` ebben a példában |
+| `Rooms/Type` | Hivatkozik az `Type` az optimálisnál mezőt az indexben; egy összetett gyűjtemény mező `Rooms` típusú `Collection(Edm.ComplexType)` ebben a példában |
+| `Stores/Address/Country` | Hivatkozik az `Country` az optimálisnál mezőjében a `Address` az optimálisnál mezőt az indexben; egy összetett gyűjtemény mező `Stores` típusú `Collection(Edm.ComplexType)` és `Address` típusú `Edm.ComplexType` ebben a példában |
+| `room/Type` | Hivatkozik az `Type` az optimálisnál mezőjében a `room` tartomány változót, például a szűrési kifejezés `Rooms/any(room: room/Type eq 'deluxe')` |
+| `store/Address/Country` | Hivatkozik az `Country` az optimálisnál mezőjében a `Address` az optimálisnál mezőjében a `store` tartomány változót, például a szűrőkifejezésben szereplő `Stores/any(store: store/Address/Country eq 'Canada')` |
+
+A mező elérési útja értelmében a környezettől függően eltérő. A szűrők, a mező elérési útja, értékére hivatkozik egy *egypéldányos* az aktuális dokumentumon belüli egy mező. Más környezetekben például **$orderby**, **$select**, vagy a [teljes Lucene szintaxisú fielded keresési](query-lucene-syntax.md#bkmk_fields), a mező elérési útja maga mezőre hivatkozik. Ez a különbség a mező elérési utak használatát szűrők néhány következményekkel jár.
+
+Fontolja meg a mező elérési útja `Address/City`. A szűrőt Ez vonatkozik az aktuális dokumentumon, például a "San Francisco" egységes városát. Ezzel szemben a `Rooms/Type` hivatkozik a `Type` az optimálisnál mezőjét számos termek (például a "standard" az első hely, a "deluxe", a második hely, és így tovább). Mivel `Rooms/Type` nem hivatkozik egy *egypéldányos* alárendelt mező `Type`, közvetlenül a szűrő nem használható. Ehelyett szoba typu szűréséhez használja a [lambda kifejezésnek](search-query-odata-collection-operators.md) tartomány változó ehhez hasonló:
+
+    Rooms/any(room: room/Type eq 'deluxe')
+
+Ebben a példában a tartomány változót `room` jelenik meg a `room/Type` mező elérési útja. Ezzel a módszerrel `room/Type` az aktuális dokumentumon belüli aktuális észlelnek a helyiségben típusára utal. Ez az egyetlen példánya a `Type` alárendelt mezőt, így közvetlenül a szűrőben is használható.
+
+### <a name="using-field-paths"></a>A mező elérési utak használata
+
+A mező elérési utak, sok paraméter szerepel a [Azure Search API](https://docs.microsoft.com/rest/api/searchservice/). A következő táblázat felsorolja minden olyan helyen, ahol is használhatók, valamint a használatuk korlátozások:
+
+| API | Paraméter neve | Korlátozások |
+| --- | --- | --- |
+| [Hozzon létre](https://docs.microsoft.com/rest/api/searchservice/create-index) vagy [frissítés](https://docs.microsoft.com/rest/api/searchservice/update-index) Index | `suggesters/sourceFields` | None |
+| [Hozzon létre](https://docs.microsoft.com/rest/api/searchservice/create-index) vagy [frissítés](https://docs.microsoft.com/rest/api/searchservice/update-index) Index | `scoringProfiles/text/weights` | Csak **kereshető** mezők |
+| [Hozzon létre](https://docs.microsoft.com/rest/api/searchservice/create-index) vagy [frissítés](https://docs.microsoft.com/rest/api/searchservice/update-index) Index | `scoringProfiles/functions/fieldName` | Csak **szűrhető** mezők |
+| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `search` Amikor `queryType` van `full` | Csak **kereshető** mezők |
+| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `facet` | Csak **kategorizálható** mezők |
+| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `highlight` | Csak **kereshető** mezők |
+| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `searchFields` | Csak **kereshető** mezők |
+| [Javasoljon](https://docs.microsoft.com/rest/api/searchservice/suggestions) és [automatikus kiegészítés](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `searchFields` | Csak részét képező mezőkre hivatkozhatnak egy [javaslattevő](index-add-suggesters.md) |
+| [Keresés](https://docs.microsoft.com/rest/api/searchservice/search-documents), [javaslat](https://docs.microsoft.com/rest/api/searchservice/suggestions), és [automatikus kiegészítés](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `$filter` | Csak **szűrhető** mezők |
+| [Keresés](https://docs.microsoft.com/rest/api/searchservice/search-documents) és [javaslat](https://docs.microsoft.com/rest/api/searchservice/suggestions) | `$orderby` | Csak **rendezhető** mezők |
+| [Keresés](https://docs.microsoft.com/rest/api/searchservice/search-documents), [javaslat](https://docs.microsoft.com/rest/api/searchservice/suggestions), és [keresése](https://docs.microsoft.com/rest/api/searchservice/lookup-document) | `$select` | Csak **lekérhető** mezők |
+
+## <a name="constants"></a>Állandók
+
+OData állandót a konstans értékek egy adott [Entity Data Model](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) (EDM) típus. Lásd: [által támogatott adattípusokkal](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) az Azure Search szolgáltatásban a támogatott típusok listáját. Állandók gyűjtemény típusok nem támogatottak.
+
+Az alábbi táblázat állandókat az Azure Search által támogatott adattípusokat mindegyike esetében:
+
+| Adattípus | Példa állandók |
+| --- | --- |
+| `Edm.Boolean` | `true`, `false` |
+| `Edm.DateTimeOffset` | `2019-05-06T12:30:05.451Z` |
+| `Edm.Double` | `3.14159`, `-1.2e7`, `NaN`, `INF`, `-INF` |
+| `Edm.GeographyPoint` | `geography'POINT(-122.131577 47.678581)'` |
+| `Edm.GeographyPolygon` | `geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'` |
+| `Edm.Int32` | `123`, `-456` |
+| `Edm.Int64` | `283032927235` |
+| `Edm.String` | `'hello'` |
+
+A következő EBNF ([kiterjesztett Backus-Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) határozza meg a szintaxis a fenti táblázatban szereplő állandókat többsége esetében. A térinformatikai típusok szintaxis található [OData térinformatikai funkciók az Azure Search](search-query-odata-geo-spatial-functions.md).
+
+<!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
 ```
-$filter=hotelName ne 'Roach Motel' and lastRenovationDate ge 2010-01-01T00:00:00Z
+constant ::=
+    string_literal
+    | date_time_offset_literal
+    | integer_literal
+    | float_literal
+    | boolean_literal
+    | 'null'
+
+string_literal ::= "'"([^'] | "''")*"'"
+
+date_time_offset_literal ::= date_part'T'time_part time_zone
+
+date_part ::= year'-'month'-'day
+
+time_part ::= hour':'minute(':'second('.'fractional_seconds)?)?
+
+zero_to_fifty_nine ::= [0-5]digit
+
+digit ::= [0-9]
+
+year ::= digit digit digit digit
+
+month ::= '0'[1-9] | '1'[0-2]
+
+day ::= '0'[1-9] | [1-2]digit | '3'[0-1]
+
+hour ::= [0-1]digit | '2'[0-3]
+
+minute ::= zero_to_fifty_nine
+
+second ::= zero_to_fifty_nine
+
+fractional_seconds ::= integer_literal
+
+time_zone ::= 'Z' | sign hour':'minute
+
+sign ::= '+' | '-'
+
+/* In practice integer literals are limited in length to the precision of
+the corresponding EDM data type. */
+integer_literal ::= digit+
+
+float_literal ::=
+    sign? whole_part fractional_part? exponent?
+    | 'NaN'
+    | '-INF'
+    | 'INF'
+
+whole_part ::= integer_literal
+
+fractional_part ::= '.'integer_literal
+
+exponent ::= 'e' sign? integer_literal
+
+boolean_literal ::= 'true' | 'false'
 ```
 
- Keresse meg az összes hotels alap arány kisebb, mint 200 USD értékű, amely rendelkezik lett felújított 2010, a dátumból/időből konstans, amely tartalmazza az időzóna-információk a csendes-óceáni téli idő óta:  
+Egy interaktív szintaxisdiagramja is érhető el:
+
+> [!div class="nextstepaction"]
+> [Azure Search OData szintaxisdiagramja](https://azuresearch.github.io/odata-syntax-diagram/#constant)
+
+> [!NOTE]
+> Lásd: [OData kifejezés szintaxisának referenciája az Azure Search](search-query-odata-syntax-reference.md) a teljes EBNF számára.
+
+## <a name="building-expressions-from-field-paths-and-constants"></a>A mező elérési útja és konstansok épület kifejezések
+
+Mező elérési útja és konstansok részei a legalapvetőbb egy OData-kifejezésnek, de már teljes kifejezések magukat. Valójában a **$select** az Azure Search paraméter nem semmi, de a mező elérési utak, vesszővel elválasztott listáját és **$orderby** nem sokkal bonyolultabb, mint **$select**. Ha rendelkezik típusú mező `Edm.Boolean` az indexben, még akkor is írhat egy szűrőt, amely nem, de az a mező elérési útja. Az állandókat `true` és `false` hasonlóképpen érvényes szűrők vannak.
+
+Azonban a legtöbbször kell több összetett kifejezések, amelyek egynél több mező és állandó hivatkoznak. Ezek a kifejezések paraméter függően különböző módon épülnek.
+
+A következő EBNF ([kiterjesztett Backus-Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) határozza meg a nyelvtani a **$filter**, **$orderby**, és **$select** paramétereket. Ezek épülnek fel, tekintse meg a mező elérési útja és konstansok egyszerűbb kifejezések:
+
+<!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
 ```
-$filter=baseRate lt 200 and lastRenovationDate ge 2010-01-01T00:00:00-08:00
+filter_expression ::= boolean_expression
+
+order_by_expression ::= order_by_clause(',' order_by_clause)*
+
+select_expression ::= '*' | field_path(',' field_path)*
 ```
 
- Keresse meg az összes "Hotels", amely rendelkezik a várakozást a csomagban foglalt, és ne engedélyezze a fogyasztási:  
+Egy interaktív szintaxisdiagramja is érhető el:
 
-```
-$filter=parkingIncluded and not smokingAllowed
-```
+> [!div class="nextstepaction"]
+> [Azure Search OData szintaxisdiagramja](https://azuresearch.github.io/odata-syntax-diagram/#filter_expression)
 
- \- VAGY –  
+> [!NOTE]
+> Lásd: [OData kifejezés szintaxisának referenciája az Azure Search](search-query-odata-syntax-reference.md) a teljes EBNF számára.
 
-```
-$filter=parkingIncluded eq true and smokingAllowed eq false
-```
+A **$orderby** és **$select** paraméterek a következők mindkét egyszerűbb kifejezések vesszővel tagolt listája. A **$filter** paramétere egy logikai kifejezés, amelyet az egyszerűbb az alkifejezések. Ezeket az alkifejezések kombinálják, mint például a logikai operátorral egymáshoz csatolt [ `and`, `or`, és `not` ](search-query-odata-logical-operators.md), mint például a összehasonlító operátorok [ `eq`, `lt`, `gt`, és így tovább](search-query-odata-comparison-operators.md), és a gyűjtemény operátorok például [ `any` és `all` ](search-query-odata-collection-operators.md).
 
- Keresse meg az összes hotels engedélyezhető illetve ideiglenes közé tartozik és rendelkezik minősítéssel az 5-ből:  
+A **$filter**, **$orderby**, és **$select** paraméterek teljesítménykezelési részletesebben az alábbi cikkeket:
 
-```
-$filter=(category eq 'Luxury' or parkingIncluded eq true) and rating eq 5
-```
-
- Keresse meg a "Wi-Fi" címkével ellátott összes hotels (ahol minden egyes Szálloda tároló Collection(Edm.String) mezőt címkékkel rendelkezik):  
-
-```
-$filter=tags/any(t: t eq 'wifi')
-```
-
- Keresse meg az összes hotels "amelyben" címke nélkül:  
-
-```
-$filter=tags/all(t: t ne 'motel')
-```
-
- Az összes "Hotels" bármely címke található:  
-
-```
-$filter=tags/any()
-```
-
-Keresse meg, amelyek nem rendelkeznek a címkék az összes hotels:  
-
-```
-$filter=not tags/any()
-```
-
-
- Keresse meg az összes hotels belül (amennyiben hely Edm.GeographyPoint típusú mező a) megadott hivatkozási pont 10 kilométerben:  
-
-```
-$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10
-```
-
- Egy adott nézőpont sokszög fürtkezelőben összes hotels (ahol hely Edm.GeographyPoint típusú mező a) található. Vegye figyelembe, hogy bezárja-e a sokszög (az első és utolsó pont csoportok azonosnak kell lennie), és [szerepelnie kell a pontok járásával sorrendben](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
-
-```
-$filter=geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
-```
-
- Keresse meg vagy amelyeknek nincs értéke "description" mező a "Hotels", vagy értéket explicit módon van beállítva a null:  
-
-```
-$filter=description eq null
-```
-
-Keresse meg az összes "Hotels" nevű "Roach amelyben" vagy "Költségvetés hotel" egyenlő). Kifejezések tartalmazhatnak szóközt, amelynek egy alapértelmezett elválasztó. A harmadik paramétereként karakterlánc egy másik elválasztó szimpla idézőjelben specicfy teszi lehetővé:  
-
-```
-$filter=search.in(name, 'Roach motel,Budget hotel', ',')
-```
-
-Egyenlő vagy Roach amelyben található összes "Hotels" nevű "vagy"Költségvetés hotel"elválasztva ' |}"):  
-
-```
-$filter=search.in(name, 'Roach motel|Budget hotel', '|')
-```
-
-Keresse meg a címke "Wi-Fi" vagy "készlet" összes "Hotels":  
-
-```
-$filter=tags/any(t: search.in(t, 'wifi, pool'))
-```
-
-Címkék-gyűjteményekben, például "fűtött törülköző állványt" vagy "hajszárító tartalmaz" kifejezések egyezés található. 
-
-```
-$filter=tags/any(t: search.in(t, 'heated towel racks,hairdryer included', ','))
-```
-
-Az összes hotels nélkül a címke "amelyben" és "kézi" nem található:  
-
-```
-$filter=tags/all(t: not search.in(t, 'motel, cabin'))
-```
-
-Keresse meg az "i partszakasz" szót tartalmazó dokumentumokat. Ez a szűrő-lekérdezés megegyezik egy [keresési kérelmet](https://docs.microsoft.com/rest/api/searchservice/search-documents) a `search=waterfront`.
-
-```
-$filter=search.ismatchscoring('waterfront')
-```
-
-Keresse meg a dokumentumot a word "hostel" és a nagyobb vagy egyenlő "amelyben" szót tartalmazó dokumentumok vagy 4 minősítés és minősítés megegyezik az 5. Vegye figyelembe, a kérelem nem fejezik nélkül a `search.ismatchscoring` függvény.
-
-```
-$filter=search.ismatchscoring('hostel') and rating ge 4 or search.ismatchscoring('motel') and rating eq 5
-```
-
-Keresse meg a dokumentumok szó nélkül "engedélyezhető".
-
-```
-$filter=not search.ismatch('luxury') 
-```
-
-Keresse meg a dokumentumok minősítési értéknek 5 vagy "óceán view" kifejezés helyett szerepel. A `search.ismatchscoring` lekérdezés hajtani, csak a mező alapján `hotelName` és `description`.
-Vegye figyelembe, hogy a vagy műveletet csak a második záradék egyező dokumentumok túl vissza kell - minősítéssel rendelkező hotels 5 egyenlő. Hogy ezeket a dokumentumokat egyértelmű legyen nem felel meg a kifejezés a pontozott részeit, akkor adja vissza a pontszám nullánál.
-
-```
-$filter=search.ismatchscoring('"ocean view"', 'description,hotelName') or rating eq 5
-```
-
-Dokumentumok keresése, ahol a feltételek "hotel" és "repülőtér" Szálloda leírásában egymástól 5 szó belül, és ahol fogyasztási nem engedélyezett. Ez a lekérdezés használ a [teljes Lucene lekérdezési nyelv](query-lucene-syntax.md).
-
-```
-$filter=search.ismatch('"hotel airport"~5', 'description', 'full', 'any') and not smokingAllowed 
-```
-
-## <a name="order-by-syntax"></a>Az Order by szintaxis
-
-A **$orderby** paraméter az űrlap legfeljebb 32 kifejezések vesszővel tagolt listáját fogadja el `sort-criteria [asc|desc]`. A rendezési feltételek lehet nevét egy `sortable` Pole nebo hívása célpontjának a `geo.distance` vagy a `search.score` funkciók. Használhat `asc` vagy `desc` explicit módon kell megadni a rendezési sorrendet. Az alapértelmezett iránya növekvő.
-
-Ha több dokumentumot rendezési ugyanezeket a feltételeket és `search.score` függvény nem szolgál (például akkor, ha egy numerikus szerinti rendezés `rating` mező és három dokumentumok összes rendelkezik egy minősítése 4), ties oszlanak dokumentum pontszám szerint csökkenő sorrendben. A dokumentum pontszámok azonosak (például, ha nincs megadva a kérelemben szereplő teljes szöveges keresési lekérdezés), majd a kapcsolt dokumentumok relatív sorrendjének esetén meghatározatlan.
- 
-Több rendezési feltételt is megadhat. Kifejezések sorrendjét a végső rendezési sorrend határozza meg. Például csökkenő pontszám, kiegészítve a minősítést, szerint rendezheti a szintaxis lenne `$orderby=search.score() desc,rating desc`.
-
-A szintaxist a `geo.distance` a **$orderby** van ugyanaz, mint az **$filter**. Használata esetén `geo.distance` a **$orderby**, amelyekre vonatkozik a mező típusúnak kell lennie `Edm.GeographyPoint` kell lennie, és `sortable`.  
-
-A szintaxist a `search.score` a **$orderby** van `search.score()`. A függvény `search.score` nem használ paramétereket.  
- 
-
-## <a name="order-by-examples"></a>Az Order by példák
-
-Alapdíj szerint növekvő rendezés hotels:
-
-```
-$orderby=baseRate asc
-```
-
-A "Hotels" minősítés, majd az alapdíj mellett szerint növekvő szerint csökkenő rendezés (ne feledje, hogy a növekvő sorrendben az alapértelmezett):
-
-```
-$orderby=rating desc,baseRate
-```
-
-A "Hotels" minősítés, akkor az adott fordítani a távolság szerint növekvő szerint csökkenő rendezési:
-
-```
-$orderby=rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
-```
-
-Rendezés csökkenő sorrendben search.score és minősítése, majd a növekvő sorrendben távolság szerint az adott koordinátáit, így között két hotels azonos besorolású, a legközelebbire legyen az első hotels:
-
-```
-$orderby=search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
-```
-<a name="bkmk_unsupported"></a>
-
-## <a name="unsupported-odata-syntax"></a>Nem támogatott OData-szűrőszintaxis
-
--   Aritmetikai kifejezések  
-
--   Függvények (és a térinformatikai függvények metszi saját távolság kivételével)  
-
--   `any/all` tetszőleges lambda-kifejezésekkel  
+- [Az Azure Search OData $filter-szintaxis](search-query-odata-filter.md)
+- [Az Azure Search OData $orderby-szintaxis](search-query-odata-orderby.md)
+- [Az Azure Search OData $select-szintaxis](search-query-odata-select.md)
 
 ## <a name="see-also"></a>Lásd még  
 
-+ [Jellemzőalapú navigáció az Azure Search szolgáltatásban](search-faceted-navigation.md) 
-+ [Szűrők az Azure Search szolgáltatásban](search-filters.md) 
-+ [Dokumentumok keresése &#40;az Azure Search szolgáltatás REST API-ja&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) 
-+ [Lucene lekérdezési szintaxis](query-lucene-syntax.md)
-+ [Az Azure Search egyszerű lekérdezési szintaxis](query-simple-syntax.md)   
+- [Jellemzőalapú navigáció az Azure Search szolgáltatásban](search-faceted-navigation.md)
+- [Szűrők az Azure Search szolgáltatásban](search-filters.md)
+- [Dokumentumok keresése &#40;az Azure Search szolgáltatás REST API-ja&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Lucene lekérdezési szintaxis](query-lucene-syntax.md)
+- [Az Azure Search egyszerű lekérdezési szintaxis](query-simple-syntax.md)

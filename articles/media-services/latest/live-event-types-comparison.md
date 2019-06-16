@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: juliako
-ms.openlocfilehash: 9952a7bbac1eb79de0d3425f839e3bd30196844e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: bd4899374c06246ddd4d5fa81d0f6e3a6a1e7017
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322284"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075005"
 ---
 # <a name="live-event-types-comparison"></a>Élő esemény típusok összehasonlítása
 
@@ -26,9 +26,9 @@ Az Azure Media Services egy [élő esemény](https://docs.microsoft.com/rest/api
 
 ## <a name="types-comparison"></a>Típusok összehasonlítása 
 
-Az alábbi táblázat az élő esemény kétféle funkcióit hasonlítja össze.
+Az alábbi táblázat az élő esemény típusok funkcióit hasonlítja össze.
 
-| Szolgáltatás | Az átmenő élő esemény | Szabványos élő esemény |
+| Funkció | Az átmenő élő esemény | Standard szintű vagy Premium1080p élő esemény |
 | --- | --- | --- |
 | Egyféle sávszélességű bemeneti bitsebességekre a felhőben van kódolva. |Nem |Igen |
 | Az hozzájárulásra hírcsatorna maximális képfelbontás |4 KB-os (4096 × 2160 60 keretek/s) |1080p (1920 x 1088 30 keretek/s)|
@@ -42,7 +42,8 @@ Az alábbi táblázat az élő esemény kétféle funkcióit hasonlítja össze.
 | Támogatott videó bitová hloubka obrázku, bemeneti és kimeneti|Legfeljebb 10 bites többek között HDR 10/HLG|8 bites|
 | Támogatott bemeneti hangkodekek|AAC-LC, HE-AAC v1, HE-AAC v2|AAC-LC, HE-AAC v1, HE-AAC v2|
 | Támogatott kimeneti hangkodekek|Ugyanaz, mint a bemenet|AAC-LC|
-| Kimeneti videó videó maximális felbontás|Ugyanaz, mint a bemenet|720p (30 képkocka/másodperc)|
+| Kimeneti videó videó maximális felbontás|Ugyanaz, mint a bemenet|Standard – 720p Premium1080p - 1080p|
+| A bemeneti videó maximális sebessége|60 képkocka/másodperc|Standard szintű vagy Premium1080p – 30 képkocka/másodperc|
 | A bemeneti protokollok|RTMP, töredékes MP4 (Smooth Streaming)|RTMP, töredékes MP4 (Smooth Streaming)|
 | Ár|Tekintse meg a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/media-services/) , majd kattintson a "Élő videó" lap|Tekintse meg a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/media-services/) , majd kattintson a "Élő videó" lap|
 | Maximálisan engedélyezett futási idő| 24 x 365 nap órája és élő lineáris | Akár 24 óra|
@@ -50,18 +51,18 @@ Az alábbi táblázat az élő esemény kétféle funkcióit hasonlítja össze.
 | Befutók beillesztésének támogatását|Nem|Nem|
 | API-n keresztül jelzés ad támogatása| Nem|Nem|
 | Jelzés keresztül SCTE – 35 sávon üzeneteket ad támogatása|Igen|Igen|
-| Lehetővé teszi a csatorna közreműködői rövid leállások helyreállítása|Igen|Nem (élő esemény elkezdi slating másodperc 6 + bemeneti adatok nélkül)|
+| Lehetővé teszi a csatorna közreműködői rövid leállások helyreállítása|Igen|Részleges|
 | Nem egységes bemeneti GOPs támogatása|Igen|Nem – bemeneti kell kijavítása Képcsoporttal időtartama|
-| Változó keret arány bevitel támogatása|Igen|Nem – bemeneti képkockasebessége kell rögzíteni. Kisebb módosításokat kívánalmakhoz, például magas mozgásban lévő adatoknak egyaránt jelenetek során. De a hozzájárulás hírcsatorna nem dobható el a képkockasebességet (például, hogy a 15 keretek/másodperc).|
+| Változó keret arány bevitel támogatása|Igen|Nem – bemeneti képkockasebessége kell rögzíteni. Kisebb módosításokat kívánalmakhoz, például magas mozgásban lévő adatoknak egyaránt jelenetek során. De a hozzájárulás hírcsatorna nem dobható el a képkockasebességet (például 15-re képkocka/másodperc).|
 | Automatikus – gyors élő esemény, amikor a bevitel hírcsatorna elvész.|Nem|Ha nem fut LiveOutput 12 óra elteltével|
 
 ## <a name="system-presets"></a>Rendszer-készletek
 
-Élő kódolás használatakor (amikor az élő esemény beállítása **Standard**), a kódolási előbeállítás határozza meg, hogyan van többféle bitsebességbe vagy rétegbe kódolva a bejövő stream. Jelenleg az egyetlen megengedett érték a készlet *Default720p* (alapértelmezett).
+A felbontásra és bitsebességre való átkódolása az élő kódoló kimenetében található határozza meg a [presetName](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencoding). Ha használja egy **Standard** live encoder (LiveEventEncodingType.Standard), majd a *Default720p* előbeállítás 6 feloldási/átviteli sebesség párok az alábbiakban egy halmazát határozza meg. Egyéb esetben, ha a használatával egy **Premium1080p** live encoder (LiveEventEncodingType.Premium1080p), akkor a *Default1080p* előre beállított specifiesthe kimeneti feloldási/átviteli sebesség párok készletét. 
 
-**Default720p** lesz a videó kódolandó a következő 6 rétegek.
+### <a name="output-video-streams-for-default720p"></a>Video-adatfolyamokat kimeneti Default720p
 
-### <a name="output-video-stream"></a>Kimeneti videót Stream
+**Default720p** lesz a bemeneti videó kódolandó a következő 6 rétegek.
 
 | Átviteli sebesség | Szélesség | Magasság | MaxFPS | Profil | Kimeneti Stream neve |
 | --- | --- | --- | --- | --- | --- |
@@ -73,11 +74,27 @@ Az alábbi táblázat az élő esemény kétféle funkcióit hasonlítja össze.
 | 200 |340 |192 |30 |Magas |Video_340x192_200kbps |
 
 > [!NOTE]
-> Ha egyéni élő kódolási előbeállítást kell használnia, írjon az amshelp@microsoft.com címre. Meg kell adnia a felbontás és a bitsebesség kívánt táblázatát. Győződjön meg arról, hogy csak egy réteg 720p sebességű, és hogy legfeljebb 6 réteg van.
+> Ha testre szabhatja a élő kódolási előbeállítás van szüksége, nyisson egy támogatási jegyet az Azure Portalon keresztül. Meg kell adnia a felbontás és a bitsebesség kívánt táblázatát. Győződjön meg arról, hogy csak egy réteg 720p sebességű, és hogy legfeljebb 6 réteg van. Is megadhatja, hogy az élő kódolók olyan szabványos készlet kérő.
 
-### <a name="output-audio-stream"></a>Kimeneti Audio Stream
+### <a name="output-video-streams-for-default1080p"></a>Video-adatfolyamokat kimeneti Default1080p
 
-Hang, sztereó AAC-LC, 128 kb/s, mintavételi ráta 48 kHz van kódolva.
+**Default1080p** lesz a bemeneti videó kódolandó a következő 6 rétegek.
+
+| Átviteli sebesség | Szélesség | Magasság | MaxFPS | Profil | Kimeneti Stream neve |
+| --- | --- | --- | --- | --- | --- |
+| 5500 |1920 |1080 |30 |Magas |Video_1920x1080_5500kbps |
+| 3000 |1280 |720 |30 |Magas |Video_1280x720_3000kbps |
+| 1600 |960 |540 |30 |Magas |Video_960x540_1600kbps |
+| 800 |640 |360 |30 |Magas |Video_640x360_800kbps |
+| 400 |480 |270 |30 |Magas |Video_480x270_400kbps |
+| 200 |320 |180 |30 |Magas |Video_320x180_200kbps |
+
+> [!NOTE]
+> Ha testre szabhatja a élő kódolási előbeállítás van szüksége, nyisson egy támogatási jegyet az Azure Portalon keresztül. Meg kell adnia a felbontás és a bitsebesség kívánt táblázatát. Győződjön meg arról, hogy csak egy réteg 1080 p, és legfeljebb 6 rétegek. Is megadhatja, hogy az élő kódolók olyan Premium1080p egy készletet kér.
+
+### <a name="output-audio-stream-for-default720p-and-default1080p"></a>Kimeneti Audio Stream Default720p és Default1080p
+
+Mindkét *Default720p* és *Default1080p* sztereó AAC-LC, 128 kb/s, mintavételi ráta 48 kHz a készletek, hang kódolása.
 
 ## <a name="next-steps"></a>További lépések
 

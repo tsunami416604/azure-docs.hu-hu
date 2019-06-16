@@ -10,12 +10,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha, glenga
-ms.openlocfilehash: 46b1e5c99dd86fed6f87ac3b8f0ff6555187899b
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: fa82725174645a0e5f1d957d8423c97547682542
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65833526"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065482"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Az Azure Functions PowerShell fejlesztői útmutatója
 
@@ -60,7 +60,7 @@ A projekt gyökerében van egy megosztott [ `host.json` ](functions-host-json.md
 
 Bizonyos kötések meglétének megkövetelése egy `extensions.csproj` fájlt. Kötési bővítményeket, a szükséges [verzió 2.x](functions-versions.md) , a Functions futtatókörnyezete vannak meghatározva a `extensions.csproj` fájlt, a tényleges függvénytárfájlok a `bin` mappát. Ha helyileg fejlesztésével, akkor meg kell [regisztrálja a kötési bővítményeket](functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles). Amikor fejlesztéséről az Azure Portalon, a regisztrációt, készen áll.
 
-A PowerShell a Függvényalkalmazások, szükség esetén előfordulhat, egy `profile.ps1` amely akkor fut, amikor a függvényalkalmazás futni kezd (más néven ismert egy  *[hidegindítási](#cold-start)*. További információkért lásd: [PowerShell profil](#powershell-profile).
+A PowerShell a Függvényalkalmazások, szükség esetén előfordulhat, egy `profile.ps1` amely akkor fut, amikor a függvényalkalmazás futni kezd (más néven ismert egy  *[hidegindítási](#cold-start)* . További információkért lásd: [PowerShell profil](#powershell-profile).
 
 ## <a name="defining-a-powershell-script-as-a-function"></a>Függvényében, egy PowerShell-parancsprogram meghatározása
 
@@ -84,7 +84,7 @@ $TriggerMetadata.sys
 | Tulajdonság   | Description                                     | Típus     |
 |------------|-------------------------------------------------|----------|
 | utcNow     | Amikor UTC formátumban, a függvény lett elindítva        | DateTime |
-| Metódus neve | A függvény, amely aktiválva neve     | string   |
+| MethodName | A függvény, amely aktiválva neve     | string   |
 | RandGuid   | Ez a függvény végrehajtása egy egyedi GUID azonosítót | string   |
 
 A metaadatok különböző minden típusú trigger rendelkezik. Ha például a `$TriggerMetadata` a `QueueTrigger` tartalmazza a `InsertionTime`, `Id`, `DequeueCount`, többek között. Az üzenetsor eseményindító metaadatok további információért látogasson el a [eseményindítók hivatalos dokumentációját](functions-bindings-storage-queue.md#trigger---message-metadata). Ellenőrizze a dokumentációban található a [eseményindítók](functions-triggers-bindings.md) megtekintéséhez, mi a lépés a trigger metaadatok belül dolgozik.
@@ -133,9 +133,9 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 Az alábbiakban érvényes paramétereket a hívó `Push-OutputBinding`:
 
-| Name (Név) | Típus | Pozíció | Leírás |
+| Name (Név) | Típus | Beosztás | Leírás |
 | ---- | ---- |  -------- | ----------- |
-| **`-Name`** | String | 1. | A kimeneti kötés neve szeretné beállítani. |
+| **`-Name`** | String | 1 | A kimeneti kötés neve szeretné beállítani. |
 | **`-Value`** | Object | 2 | A kimeneti kötés értékét szeretné beállítani, amely láncból a ByValue. |
 | **`-Clobber`** | SwitchParameter | nevű | (Nem kötelező) Megadása esetén kényszeríti az értéket a megadott kimeneti kötés állítható be. | 
 
@@ -242,9 +242,9 @@ Bejelentkezés a PowerShell-funkciók rendszeres PowerShell naplózási hasonló
 | ------------- | -------------- |
 | Hiba | **`Write-Error`** |
 | Figyelmeztetés | **`Write-Warning`**  | 
-| Tájékoztatás | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Tájékoztatás | Ír _információk_ webhelyszintű naplózás. |
+| Információ | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Információ | Ír _információk_ webhelyszintű naplózás. |
 | Hibakeresés | **`Write-Debug`** |
-| Híváslánc | **`Write-Progress`** <br /> **`Write-Verbose`** |
+| Nyomkövetés | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
 Ezek a parancsmagok mellett a folyamat számára írt semmit a rendszer átirányítja a `Information` naplózási szint és az alapértelmezett PowerShell formázással jelennek meg.
 
@@ -253,7 +253,7 @@ Ezek a parancsmagok mellett a folyamat számára írt semmit a rendszer átirán
 
 ### <a name="configure-the-function-app-log-level"></a>A függvény alkalmazás naplózási szint konfigurálása
 
-Functions lehetővé teszi a küszöbértéket, szabályozhatja a módon függvények ír a naplókba megkönnyíti meghatározása. Összes nyomkövetési konzolon küszöbértéke beállításához használja a `logging.logLevel.default` tulajdonságot a [ `host.json` fájl][host.json referencia]. Ez a beállítás minden függvény a függvényalkalmazásban vonatkozik.
+Az Azure Functions lehetővé teszi a küszöbértéket, szabályozhatja a módon függvények ír a naplókba megkönnyíti meghatározása. Összes nyomkövetési konzolon küszöbértéke beállításához használja a `logging.logLevel.default` tulajdonságot a [ `host.json` fájl][host.json referencia]. Ez a beállítás minden függvény a függvényalkalmazásban vonatkozik.
 
 Az alábbi példa a függvények részletes naplózás engedélyezése a küszöbértéket, de a küszöbértéket nevű függvény hibakeresési naplózást engedélyező `MyFunction`:
 
@@ -598,7 +598,7 @@ Az Azure Functions fejlesztése során a [kiszolgáló nélküli üzemeltetési 
 
 ### <a name="bundle-modules-instead-of-using-install-module"></a>Csomag modulok használata helyett `Install-Module`
 
-A rendszer a parancsfájlt minden hívás. Kerülje a `Install-Module` a parancsfájlban. Helyette használjon `Save-Module` közzététele, hogy a függvény nem rendelkezik pazarlom az időt a modul letöltése előtt. Ha kiküszöbölik negatív hatással vannak a függvények, érdemes megfontolni a függvényalkalmazást, hogy egy [App Service-csomag](functions-scale.md#app-service-plan) beállítása *folyamatos* vagy egy [prémium szintű csomag](functions-scale.md#premium-plan-public-preview).
+A rendszer a parancsfájlt minden hívás. Kerülje a `Install-Module` a parancsfájlban. Helyette használjon `Save-Module` közzététele, hogy a függvény nem rendelkezik pazarlom az időt a modul letöltése előtt. Ha kiküszöbölik negatív hatással vannak a függvények, érdemes megfontolni a függvényalkalmazást, hogy egy [App Service-csomag](functions-scale.md#app-service-plan) beállítása *folyamatos* vagy egy [prémium szintű csomag](functions-scale.md#premium-plan).
 
 ## <a name="next-steps"></a>További lépések
 

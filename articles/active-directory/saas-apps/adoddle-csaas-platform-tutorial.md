@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 828de7e3e91a0ccdc123dc893dce158d644c5d38
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: aa82bf6e1dab87c21335b9cfb8f889549535c14a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813225"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107244"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adoddle-csaas-platform"></a>Oktatóanyag: Adoddle cSaas Platform az Azure Active Directory-integráció
 
@@ -55,7 +55,7 @@ Az Azure AD integrálása a Adoddle cSaas Platform konfigurálásához hozzá ke
 
 **Adoddle cSaas Platform hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -180,7 +180,7 @@ Ebben a szakaszban engedélyezze Britta Simon Adoddle cSaas Platform, a hozzáf�
 
 Ebben a szakaszban egy Britta Simon nevű felhasználó Adoddle cSaas Platform jön létre. Adoddle cSaas Platform által támogatott **just-in-time-kiépítés**, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó már nem létezik az Adoddle cSaas Platform, amikor megpróbálja elérni Adoddle cSaas Platform egy új jön létre.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

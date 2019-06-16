@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: baaa7b1068e13863293e0968cb0bf1ffb198882b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4d5bceff004d1cc6ddac4046a2ddcd0b5f0b5e73
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60487231"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072516"
 ---
 # <a name="speech-to-text-rest-api"></a>Hang-szöveg transzformációs REST API-val
 
@@ -164,7 +164,7 @@ A `RecognitionStatus` mező tartalmazza ezeket az értékeket:
 > [!NOTE]
 > Ha a hanganyag csak káromkodás tartalmaz, és a `profanity` lekérdezési paraméter értéke `remove`, a szolgáltatás nem ad vissza egy beszéd eredményt.
 
-A `detailed` formátuma azonos adatokat tartalmaz a `simple` formájában, valamint a `NBest`, felismerés ugyanaz az eredmény az alternatív értelmezések listáját. Ezeket az eredményeket a legnagyobb valószínűséggel sorrendje valószínűleg legalább az első bejegyzés ugyanaz, mint a fő felismerés eredményét.  Használatakor a `detailed` formátumban, `DisplayText` verzióként `Display` az egyes eredményez a `NBest` listája.
+A `detailed` formátuma azonos adatokat tartalmaz a `simple` formájában, valamint a `NBest`, felismerés ugyanaz az eredmény az alternatív értelmezések listáját. Ezeket az eredményeket a legkisebb valószínűséggel rangsora a legnagyobb valószínűséggel. Az első bejegyzés ugyanaz, mint a fő felismerés eredményét.  Használatakor a `detailed` formátumban, `DisplayText` verzióként `Display` az egyes eredményez a `NBest` listája.
 
 Az egyes objektumok a `NBest` lista a következőket tartalmazza:
 

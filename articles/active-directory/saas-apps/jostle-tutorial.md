@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6304f4afa05850ced8b88bb81c0f94e4a31fb5be
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c3d3aab2d61f5ae2e2e5e7654e25405c4a23407a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60264334"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099172"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jostle"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Jostle
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Jostle konfigurálásához hozzá kell Jostle a kata
 
 **Jostle hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

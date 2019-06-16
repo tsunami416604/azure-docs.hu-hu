@@ -8,22 +8,22 @@ ms.topic: article
 ms.date: 06/05/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: e45fe20e93d81c1cfd1f868b40f76743558758bb
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 30ebfec88182684f8e852808e978a51854389898
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754946"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073422"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues"></a>Hozzáférés egy alkalmazás hitelesítése az Azure Active Directoryval, blobok és üzenetsorok
 
 Azure Active Directory (Azure AD) használatával az Azure Blob storage és Queue storage egyik legfőbb előnye az, hogy a hitelesítő adatok már nem kell tárolni a kódban. Ehelyett az OAuth 2.0 hozzáférési jogkivonatban is kérhet a Microsoft identity platform (korábbi nevén az Azure AD). Az Azure AD akkor hitelesíti a rendszerbiztonsági tag (felhasználó, csoport vagy szolgáltatásnév) az alkalmazás futtatása. Ha a hitelesítés sikeres, az Azure AD az alkalmazáshoz a hozzáférési jogkivonatot ad vissza, és az alkalmazás használhatja a hozzáférési jogkivonatot az Azure Blob storage és Queue storage kérelmek hitelesítéséhez.
 
-Ez a cikk bemutatja a natív alkalmazás vagy a hitelesítés a webalkalmazás konfigurálása az Azure ad-ben. A kód példa funkciók .NET, de más nyelv használata hasonló megközelítést.
+Ez a cikk bemutatja, hogyan konfigurálhatja a natív alkalmazás vagy webalkalmazás-hitelesítéshez és a Microsoft identity platform 2.0. A kód példa funkciók .NET, de más nyelv használata hasonló megközelítést. A Microsoft identity platform 2.0 kapcsolatos további információkért lásd: [a Microsoft identity platform (2.0-s verzió) – áttekintés](../../active-directory/develop/v2-overview.md).
 
 Az OAuth 2.0 kód engedélyezési folyamatával áttekintését lásd: [hozzáférés engedélyezése az Azure Active Directory webes alkalmazásokhoz az OAuth 2.0-kód használatával adja meg a folyamat](../../active-directory/develop/v2-oauth2-auth-code-flow.md).
 
-## <a name="assign-an-rbac-role-to-an-azure-ad-security-principal"></a>Az RBAC szerepkör hozzárendelése egy Azure AD rendszerbiztonsági tag
+## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>Szerepkör hozzárendelése egy Azure AD rendszerbiztonsági tag
 
 Hitelesítést végezni az Azure Storage-alkalmazás a rendszerbiztonsági tag, először konfigurálnia kell a rendszerbiztonsági tag szerepköralapú hozzáférés-vezérlés (RBAC) beállításait. Az Azure Storage határozza meg a beépített RBAC-szerepkör, amely magában foglalja a tárolók és a várólisták engedélyeit. Az RBAC szerepkör van rendelve egy rendszerbiztonsági tag, amikor a rendszerbiztonsági tag hozzáférést ennek az erőforrásnak. További információkért lásd: [kezelés hozzáférési jogosultsága ahhoz, hogy az RBAC Azure Blob és üzenetsor adatok](storage-auth-aad-rbac.md).
 
@@ -54,13 +54,25 @@ Ezután adja meg az alkalmazás engedélyeit az Azure Storage API-k meghívásá
 
     ![Tároló ábrázoló engedélyeinek képernyőképe](media/storage-auth-aad-app/registered-app-permissions-1.png)
 
-1. A **milyen engedélyeket igényel az alkalmazás?** , vegye figyelembe, hogy a rendelkezésre álló engedély típusa **delegált engedélyek**. Ez a beállítás alapértelmezés szerint meg van jelölve.
+1. A **milyen engedélyeket igényel az alkalmazás?** , ellenőrizze, hogy a rendelkezésre álló engedély típusa **delegált engedélyek**. Ez a beállítás alapértelmezés szerint meg van jelölve.
 1. Az a **engedélyek kiválasztása** szakaszában a **kérelem API-engedélyek** ablaktáblán jelölje be a jelölőnégyzetet a **user_impersonation**, majd kattintson a **hozzáadása engedélyek**.
 1. A **API-engedélyek** panelen most már látható, hogy az Azure AD-alkalmazást a Microsoft Graph és az Azure Storage is hozzáfér. Engedélyek a Microsoft Graph automatikusan, ha az alkalmazás regisztrálása az Azure ad-ben.
 
     ![Képernyőfelvétel: regisztrálja Alkalmazásengedélyek](media/storage-auth-aad-app/registered-app-permissions-2.png)
 
-## <a name="libraries-for-token-acquisition"></a>-Kódtárak a token beszerzése
+## <a name="create-a-client-secret"></a>Ügyfél titkos kulcs létrehozása
+
+Az alkalmazásnak kell ügyfélkódot identitása igazolásához a jogkivonat kérése során. A titkos ügyfélkulcsot hozzáadásához kövesse az alábbi lépéseket:
+
+1. Keresse meg az alkalmazás regisztrációját az Azure Portalon.
+1. Válassza ki a **tanúsítványok és titkos kulcsok** beállítás.
+1. A **ügyfél titkos kódok**, kattintson a **új titkos ügyfélkulcsot** hozhat létre egy új titkos kulcsot.
+1. Adja meg a titkos kulcs leírását, és válassza ki a kívánt lejárati időközét.
+1. Az új titkos kód közvetlenül egy biztonságos helyre másolja. A teljes érték jelenik meg, hogy csak egyszer.
+
+    ![Ábrázoló képernyőkép titkos Ügyfélkód](media/storage-auth-aad-app/client-secret.png)
+
+## <a name="client-libraries-for-token-acquisition"></a>Klienskódtárak token beszerzése
 
 Miután az alkalmazás regisztrálása és megadta annak ezt az adatok Azure Blob storage és Queue storage elérésére jogosult, kód is hozzáadhat egy rendszerbiztonsági tag hitelesíteni, és a egy OAuth 2.0 jogkivonat beszerzése az alkalmazás. Hitelesítéséhez, és beszerezni a jogkivonatot, vagy az egyik használhatja a [a Microsoft identity platform hitelesítési tárak](../../active-directory/develop/reference-v2-libraries.md) vagy egy másik olyan nyílt forráskódú kódtár, amely támogatja az OpenID Connect 1.0. Az alkalmazás a hozzáférési jogkivonat egy Azure Blob storage és Queue storage kérelem engedélyezéséhez használhatja.
 
@@ -70,10 +82,13 @@ Amelyhez-jogkivonatok beszerzésének támogatott forgatókönyvek listája: a [
 
 A kód példa bemutatja, hogyan kaphat hozzáférési tokent az Azure ad-ből. A hozzáférési jogkivonatot a megadott felhasználó hitelesítéséhez és majd a blokkblob létrehozására irányuló kérelem engedélyezéséhez használatos. A minta működéséhez hajtsa végre a fenti szakaszokban ismertetett lépéseket.
 
-> [!NOTE]
-> Az Azure Storage-fiók tulajdonosai akkor nem lesznek automatikusan hozzárendelve engedélyeket az adatok eléréséhez. Kell explicit módon saját magának egy RBAC szerepkör hozzárendelése az Azure Storage. Az előfizetés, erőforráscsoport, tárfiók, vagy a tároló vagy üzenetsor szintjén rendelhet.
->
-> Például a storage-fiók tulajdonosa, és a saját felhasználói identitás, futtassa a mintakódot, hozzá kell rendelnie az RBAC-szerepkör a Blobadatok Közreműködője saját magának. Ellenkező esetben a hívást a blob létrehozása sikertelen lesz, és HTTP-állapotkód: 403 (tiltott). További információkért lásd: [kezelés hozzáférési jogosultsága ahhoz, hogy az RBAC tárolási adatok](storage-auth-aad-rbac.md).
+A jogkivonat kéréséhez, a következő értékeket az alkalmazás regisztrációját a lesz szüksége:
+
+- Az Azure AD-tartomány neve. Ezt az értéket beolvasni a **áttekintése** az Azure Active Directory lapján.
+- A bérlő (vagy a könyvtár) azonosítója. Ezt az értéket beolvasni a **áttekintése** az alkalmazás regisztrációs lapján.
+- Az ügyfél (vagy alkalmazás) azonosítója. Ezt az értéket beolvasni a **áttekintése** az alkalmazás regisztrációs lapján.
+- Az ügyfél átirányítási URI. Ezt az értéket beolvasni a **hitelesítési** beállításait az alkalmazás regisztrációját.
+- A titkos ügyfélkulcsot értéke. Ez az érték beolvasása, amelyre korábban kimásolt azt a helyet.
 
 ### <a name="well-known-values-for-authentication-with-azure-ad"></a>Az Azure AD-hitelesítés az ismert értékek
 
@@ -85,7 +100,7 @@ A Microsoft nyilvános felhő, az alapszintű Azure AD-szolgáltatót a követke
 
 `https://login.microsoftonline.com/<tenant-id>/`
 
-A bérlő Azonosítóját az Azure AD-bérlő, a hitelesítéshez használandó azonosítja. A Bérlőazonosító lekéréséhez kövesse a szakaszában ismertetett lépéseket **a Bérlőazonosító beszerzése az Azure Active Directory**.
+A bérlő Azonosítóját az Azure AD-bérlő, a hitelesítéshez használandó azonosítja. Azt is nevezzük a címtár-azonosító A Bérlőazonosító lekéréséhez lépjen a **áttekintése** az Azure Portalon az alkalmazás regisztrációs lapján, és másolja az értéket onnan.
 
 #### <a name="storage-resource-id"></a>Storage erőforrás-azonosító
 
@@ -93,25 +108,22 @@ Az Azure Storage erőforrás-azonosítója használatával, amelyek engedélyezi
 
 `https://storage.azure.com/`
 
-### <a name="get-the-tenant-id-for-your-azure-active-directory"></a>A Bérlőazonosító beszerzése az Azure Active Directory
+### <a name="create-a-storage-account-and-container"></a>Hozzon létre egy tárfiókot és tárolót
 
-A Bérlőazonosító lekéréséhez kövesse az alábbi lépéseket:
+A mintakód futtatásához, hozzon létre egy tárfiókot, mint az Azure Active Directory ugyanazon az előfizetésen belül. Ezután hozzon létre egy tárolót a storage-fiókon belül. A mintakód létrehoz egy blokkblobot ebben a tárolóban.
 
-1. Az Azure Portalon válassza ki az Active Directoryban.
-2. Kattintson a **Tulajdonságok** elemre.
-3. Másolja a megadott GUID értéket a **címtár-azonosító**. Ennek az értéknek is nevezik a bérlő azonosítója.
+Ezután explicit módon hozzárendelheti az **Storage-Blobadatok Közreműködője** szerepkört ahhoz a felhasználói fiókhoz, amely alatt futni fog a mintakódot. Az Azure Portalon a szerepkör hozzárendelése, lásd: [hozzáférést biztosít az Azure blob és üzenetsor az adatokat az RBAC az Azure Portalon](storage-auth-aad-rbac-portal.md).
 
-![Képernyőfelvétel: hogyan kell másolni a bérlő azonosítója](./media/storage-auth-aad-app/aad-tenant-id.png)
+> [!NOTE]
+> Amikor létrehoz egy Azure Storage-fiókot, akkor nem lesznek automatikusan hozzárendelve engedélyeket az eléréséhez az Azure AD-n keresztül adatokat. Kell explicit módon saját magának egy RBAC szerepkör hozzárendelése az Azure Storage. Az előfizetés, erőforráscsoport, tárfiók, vagy a tároló vagy üzenetsor szintjén rendelhet.
 
-## <a name="set-up-a-basic-web-app-to-authenticate-to-azure-ad"></a>Állítsa be egy alapszintű alkalmazást az Azure AD-hitelesítésre
+### <a name="create-a-web-application-that-authorizes-access-to-blob-storage-with-azure-ad"></a>Hozzon létre egy webalkalmazást, amely engedélyezi a hozzáférést a Blob storage, Azure AD-vel
 
-Ha az alkalmazás eléri az Azure storage, azt, nem pedig a felhasználó nevében. Ez a Kódpélda próbálkozzon, egy webes kell alkalmazás, amely arra kéri a felhasználót bejelentkezhet egy Azure AD-identitás segítségével. Letöltheti ezt [példakód](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2) , amely az Azure AD-fiókjával végzi a hitelesítést alapszintű webalkalmazás teszteléséhez.
+Ha az alkalmazás eléri az Azure Storage, azt, nem pedig a felhasználó nevében, ami azt jelenti, hogy a blob és üzenetsor erőforrásaihoz hozzáférnek, a bejelentkezett felhasználó engedélyeivel használatával. Ez a Kódpélda próbálkozzon, egy webalkalmazást, amely kéri a felhasználót, jelentkezzen be az Azure AD identitás van szükség. Hozzon létre egy saját, vagy a Microsoft által biztosított mintaalkalmazás használja.
 
-### <a name="completed-sample"></a>Befejezett minta
+A befejezett minta-webalkalmazáshoz, amely tokenbeolvasás és a egy blob létrehozása az Azure Storage segítségével érhető el a [GitHub](http://aka.ms/aadstorage). Felülvizsgálata és a befejezett mintakódot futtató példakódok megértéséhez hasznos lehet. Az elkészült mintát futtatásával kapcsolatos útmutatásért lásd: részre [nézet, és futtassa az elkészült mintát](#view-and-run-the-completed-sample).
 
-Ebben a cikkben látható minta kód teljes működő verziója letölthető a [GitHub](http://aka.ms/aadstorage). Felülvizsgálata és a teljes minta futtatása a hitelesítésikód-példák megértéséhez hasznos lehet.
-
-### <a name="add-references-and-using-statements"></a>Mutató hivatkozásokat tudjon felvenni, és utasításokkal  
+#### <a name="add-references-and-using-statements"></a>Mutató hivatkozásokat tudjon felvenni, és utasításokkal  
 
 A Visual Studióból telepítse az Azure Storage ügyféloldali kódtárat. Az a **eszközök** menüjében válassza **Nuget-Csomagkezelő**, majd **Package Manager Console**. Írja be a következő parancsokat a konzolablakban a szükséges csomagok telepítéséhez az Azure Storage ügyféloldali kódtára a .NET-hez készült be:
 
@@ -123,13 +135,12 @@ Install-Package Microsoft.Azure.Storage.Common
 Ezután adja hozzá a következő using utasításokat a HomeController.cs fájlba:
 
 ```csharp
-using System;
 using Microsoft.Identity.Client; //MSAL library for getting the access token
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
 ```
 
-### <a name="create-a-block-blob"></a>Egy blokkblob létrehozása
+#### <a name="create-a-block-blob"></a>Egy blokkblob létrehozása
 
 Adja hozzá az alábbi kódrészlet egy blokkblob létrehozása:
 
@@ -143,7 +154,7 @@ private static async Task<string> CreateBlob(string accessToken)
     // Replace the URL below with your storage account URL
     CloudBlockBlob blob =
         new CloudBlockBlob(
-            new Uri("https://<storage-account>.blob.core.windows.net/sample-container/Blob1.txt"),
+            new Uri("https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt"),
             storageCredentials);
     await blob.UploadTextAsync("Blob created by Azure AD authenticated user.");
     return "Blob successfully created";
@@ -164,17 +175,11 @@ x-ms-version: 2017-11-09
 Authorization: Bearer eyJ0eXAiOnJKV1...Xd6j
 ```
 
-### <a name="get-an-oauth-token-from-azure-ad"></a>Az OAuth jogkivonat beszerzése az Azure ad-ből
+#### <a name="get-an-oauth-token-from-azure-ad"></a>Az OAuth jogkivonat beszerzése az Azure ad-ből
 
 Ezután adjon meg egy metódust, amely az Azure ad-ből tokent kér. A kért jogkivonatot lesz a felhasználó nevében, és a GetTokenOnBehalfOfUser módszert használjuk.
 
-A jogkivonat kéréséhez, szüksége lesz a következő értékeket az alkalmazás a regisztrációt a
-
-- Bérlő (vagy a könyvtár) azonosítója
-- Ügyfél (vagy alkalmazás) azonosítója
-- Ügyfél átirányítási URI
-
-Ne feledje, hogy ha éppen bejelentkezett, és a egy jogkivonatot a kért a `storage.azure.com` erőforrás, szüksége lesz a felhasználó a felhasználói felület, ahol a felhasználók engedélyezhetik, hogy egy műveletet, a felhasználók nevében jelenthet. Megkönnyítése érdekében, hogy szeretne-e a tényleges a `MsalUiRequiredException` és bővítik igénylése felhasználói beleegyezés, az alábbi példában látható módon:
+Ne feledje, hogy ha a legutóbb bejelentkezett, és a egy jogkivonatot a kért a `storage.azure.com` erőforrás, szüksége lesz a felhasználó a felhasználói felület, ahol a felhasználók engedélyezhetik, hogy egy műveletet, a felhasználók nevében jelenthet. Megkönnyítése érdekében, hogy szeretne-e a tényleges a `MsalUiRequiredException` és bővítik igénylése felhasználói beleegyezés, az alábbi példában látható módon:
 
 ```csharp
 public async Task<IActionResult> Blob()
@@ -195,7 +200,9 @@ public async Task<IActionResult> Blob()
 }
 ```
 
-Hozzájárulás az a folyamat egy felhasználó egy alkalmazást, hogy a felhasználók nevében védett erőforrások eléréséhez engedély. A Microsoft identity platform 2.0 támogatja a növekményes jóváhagyás, ami azt jelenti, hogy a rendszerbiztonsági tag minimális engedélykészletet kezdetben igényelheti és engedélyek hozzáadása idővel, igény szerint. Amikor a kód egy hozzáférési jogkivonatot kér, adja meg az alkalmazás által igényelt egy adott időpontban szerint az engedélyek hatóköre a `scope` paraméter. A következő metódust a hitelesítési tulajdonságokat növekményes hozzájárulás kérése hoz létre:
+Hozzájárulás az a folyamat egy felhasználó egy alkalmazást, hogy a felhasználók nevében védett erőforrások eléréséhez engedély. A Microsoft identity platform 2.0 támogatja a növekményes jóváhagyás, ami azt jelenti, hogy a rendszerbiztonsági tag minimális engedélykészletet kezdetben igényelheti és engedélyek hozzáadása idővel, igény szerint. Amikor a kód egy hozzáférési jogkivonatot kér, adja meg az alkalmazás által igényelt egy adott időpontban szerint az engedélyek hatóköre a `scope` paraméter. Növekményes hozzájárulási kapcsolatos további információkért lásd: részre **növekményes és a dinamikus hozzájárulási** a [miért frissítse a Microsoft identity platform (2.0-s verzió)?](../../active-directory/develop/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent).
+
+A következő metódust a hitelesítési tulajdonságokat növekményes hozzájárulás kérése hoz létre:
 
 ```csharp
 private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalConsent(string[] scopes, MsalUiRequiredException ex)
@@ -225,6 +232,66 @@ private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalCons
     return properties;
 }
 ```
+
+## <a name="view-and-run-the-completed-sample"></a>Megtekintheti, és a befejezett minta futtatása
+
+Futtassa a mintaalkalmazást, először klónoznia, vagy töltse le [GitHub](http://aka.ms/aadstorage). Frissítse az alkalmazást a következő szakaszokban leírtak szerint.
+
+### <a name="provide-values-in-the-settings-file"></a>Adja meg a beállítások fájlban
+
+Ezután frissítse a *appsettings.json* fájlt a saját értékeire a következőképpen:
+
+```json
+{
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    "Domain": "<azure-ad-domain-name>.onmicrosoft.com",
+    "TenantId": "<tenant-id>",
+    "ClientId": "<client-id>",
+    "CallbackPath": "/signin-oidc",
+    "SignedOutCallbackPath ": "/signout-callback-oidc",
+
+    // To call an API
+    "ClientSecret": "<client-secret>"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}
+```
+
+### <a name="update-the-storage-account-and-container-name"></a>Frissítés a storage-fiók és tároló neve
+
+Az a *HomeController.cs* fájlt, frissítse az URI-t, amely hivatkozik a blokkblobok használata a tárfiók és tároló neve:
+
+```csharp
+CloudBlockBlob blob = new CloudBlockBlob(
+                      new Uri("https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt"),
+                      storageCredentials);
+```
+
+### <a name="enable-implicit-grant-flow"></a>Implicit engedélyezési folyamat engedélyezése
+
+A minta futtatásához szükség lehet az alkalmazás regisztrációját a típusú implicit engedélyezés folyamat konfigurálásához. Kövesse az alábbi lépéseket:
+
+1. Keresse meg az alkalmazás regisztrációját az Azure Portalon.
+1. A kezelés területen válassza ki a **hitelesítési** beállítás.
+1. A **speciális beállítások**, a a **típusú Implicit engedélyezés** részen jelölje be a jelölőnégyzeteket, engedélyezheti a hozzáférési jogkivonatok és azonosító-jogkivonatokat, az alábbi képen látható módon:
+
+    ![Képernyőfelvétel: a beállítások implicit engedélyezési folyamat engedélyezése](media/storage-auth-aad-app/enable-implicit-grant-flow.png)
+
+### <a name="update-the-port-used-by-localhost"></a>Frissítés a portot használják a localhost
+
+A minta futtatásakor, hogy az átirányítási URI használata az alkalmazás regisztrációját a megadott frissíteni szeretné tapasztalhatja a *localhost* futásidőben hozzárendelt port. Az átirányítási URI-t, a hozzárendelt port használatára való frissítéséhez kövesse az alábbi lépéseket:
+
+1. Keresse meg az alkalmazás regisztrációját az Azure Portalon.
+1. A kezelés területen válassza ki a **hitelesítési** beállítás.
+1. A **átirányítási URI-k**, szerkessze a portot, úgy, hogy a mintaalkalmazás által használt az alábbi képen látható módon:
+
+    ![Képernyőfelvétel: az alkalmazás regisztrációs átirányítási URI-k](media/storage-auth-aad-app/redirect-uri.png)
 
 ## <a name="next-steps"></a>További lépések
 

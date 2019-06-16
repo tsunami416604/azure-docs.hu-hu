@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/29/2019
 ms.author: bwren
 ms.openlocfilehash: 4c7e1225a8da1e20bc90986d1530b781f7f2c11a
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66357583"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Az Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
@@ -25,7 +25,7 @@ ms.locfileid: "66357583"
 
 
 > [!NOTE]
-> Az ajánlott módszer, telepítése és konfigurálása az Office 365-megoldás az engedélyezése a [Office 365-összekötő](../../sentinel/connect-office-365.md) a [Azure Sentinel-](../../sentinel/overview.md) helyett ebben a cikkben ismertetett lépések. Ez az az Office 365-megoldás egy továbbfejlesztett konfigurációs felület a frissített verzióját. Naplók az Azure AD connect, használja a [Azure Sentinel az Azure AD-összekötő](../../sentinel/connect-azure-active-directory.md), amely biztosítja, mint az Office 365 felügyeleti naplók gazdagabb naplóadatokat. 
+> Az ajánlott módszer, telepítése és konfigurálása az Office 365-megoldás az engedélyezése a [Office 365-összekötő](../../sentinel/connect-office-365.md) a [Azure Sentinel-](../../sentinel/overview.md) helyett ebben a cikkben ismertetett lépések. Ez az az Office 365-megoldás egy továbbfejlesztett konfigurációs felület a frissített verzióját. Az Azure AD-naplók csatlakoztatásához használja az [Azure Sentinel Azure AD-összekötőt](../../sentinel/connect-azure-active-directory.md), amely az Office 365 felügyeleti naplóinál részletesebb adatokat biztosít. 
 >
 > Ha Ön [előkészítése Azure-Sentinel](../../sentinel/quickstart-onboard.md), adja meg a Log Analytics-munkaterületet, amely a telepített Office 365-megoldást. Miután engedélyezte az összekötőt, a megoldás a munkaterületen elérhető lesz, és telepítette a megfelelő figyelési megoldások használt teljesen megegyezik.
 >

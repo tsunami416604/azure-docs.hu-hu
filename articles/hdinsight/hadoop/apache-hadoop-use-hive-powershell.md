@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 108a3e7d899eef4ca78ae7507bf4852b861e74d5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 243713d7961c911cdda93d3d680a952d424da22b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722183"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078364"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>PowerShell-lel, az Apache Hive-lekérdezések futtatása
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -28,9 +28,6 @@ Ez a dokumentum azt szemlélteti, az Azure PowerShell használata az Azure-erőf
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * Egy Linux-alapú Apache Hadoop a HDInsight-fürt verziója 3.4-es vagy nagyobb.
-
-  > [!IMPORTANT]  
-  > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * Egy ügyfél az Azure PowerShell használatával.
 
@@ -60,7 +57,7 @@ A következő lépések bemutatják, hogyan használja ezeket a parancsmagokat f
 
         .\hivejob.ps1
 
-    A parancsfájl futtatásakor kéri, adja meg a fürt neve és a HTTPS-/ fürt rendszergazdai hitelesítő adataival. Előfordulhat, hogy is kérni, jelentkezzen be az Azure-előfizetéshez.
+    A parancsfájl futtatásakor kéri, adja meg a fürt neve és a HTTPS-/ fürt rendszergazdai hitelesítő adataival. Előfordulhat, hogy is kérni, jelentkezzen be az Azure-előfizetésében.
 
 3. A feladat befejezése után, akkor hasonló információt ad vissza a következő szöveget:
 
@@ -101,7 +98,7 @@ Get-AzHDInsightJobOutput `
 
 Ez a parancsmag a feladat feldolgozása közben STDERR írt adatokat adja vissza.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Látható, az Azure PowerShell Hive-lekérdezések futtatása HDInsight-fürtben, a feladat állapotának figyelése és lekérése a kimeneti egyszerű módszert biztosít.
 

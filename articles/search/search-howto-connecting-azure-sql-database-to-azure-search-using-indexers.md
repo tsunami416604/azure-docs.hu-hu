@@ -11,10 +11,10 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
 ms.openlocfilehash: 59a45791676f62f42763e0e834d327b0c0c4106d
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66755100"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Csatlakozás és a tartalom az Azure Search-indexelők használatával Azure SQL Database indexelése
@@ -290,7 +290,7 @@ SQL-indexelő több konfigurációs beállítást tesz elérhetővé:
 | Beállítás | Adattípus | Cél | Alapértelmezett érték |
 | --- | --- | --- | --- |
 | queryTimeout |string |Beállítja az SQL-lekérdezés-végrehajtás időkorlátja |5 perc ("00: 05:00") |
-| disableOrderByHighWaterMarkColumn |logikai |Hatására az SQL-lekérdezést használja a magas vízjelbe beleszámított házirend hagyja az ORDER BY záradékban. Lásd: [magas Vízjelbe beleszámított házirend](#HighWaterMarkPolicy) |false |
+| disableOrderByHighWaterMarkColumn |bool |Hatására az SQL-lekérdezést használja a magas vízjelbe beleszámított házirend hagyja az ORDER BY záradékban. Lásd: [magas Vízjelbe beleszámított házirend](#HighWaterMarkPolicy) |false |
 
 Ezek a beállítások szerepelnek a `parameters.configuration` az indexelő definíciója az objektumot. Például állítsa be a lekérdezés időkorlátja 10 perc, hozzon létre vagy frissítse az indexelő a következő beállításokkal:
 

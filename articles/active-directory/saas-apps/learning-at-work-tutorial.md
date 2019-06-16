@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fd941e2c6d4b830bea6458e74fd27123b25efdf
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 06dfb8bf39dfa1f31ce5e017bf61cdb083ccb8ad
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65897820"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098190"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-at-work"></a>Oktatóanyag: A munkahelyi Learning az Azure Active Directory-integráció
 
@@ -53,7 +53,7 @@ Tanulási integrációjának konfigurálása az Azure AD-be munkahelyi, hozzá k
 
 **Adja hozzá a munkahelyi Learning a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -185,7 +185,7 @@ Ebben a szakaszban engedélyezze Britta Simon ehhez biztosítson hozzáférést 
 
 Ebben a szakaszban egy munkahelyi Learning Britta Simon nevű felhasználó hoz létre. Együttműködve [tanulás egy munkahelyi támogatási csapatának](https://www.learninga-z.com/site/contact/support) felhasználót is hozzáadhat a munkahelyi platform Tanulásért. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 0b1f414cadfeb0762e069acc40b37e0dde992502
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: f39cfa37ca6b88828d0ab948387429b5a3a2267f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65904541"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094737"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peoplecart"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Peoplecart
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Peoplecart konfigurálásához hozzá kell Peoplecar
 
 **Peoplecart hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -185,7 +185,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű Peoplecart hoz létre. Együttműködve [Peoplecart támogatási csapatának](https://peoplecart.com/ContactUs.aspx) a felhasználók hozzáadása az Peoplecart platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

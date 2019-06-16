@@ -7,20 +7,19 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/05/2019
-ms.custom: seodec18
-ms.openlocfilehash: 52db8217cc1e1f84d25ab896be9b42db3bf6bd81
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/11/2019
+ms.openlocfilehash: 09a5c77c770f7709b90d4959da5be9134b0f0ad9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60771950"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077687"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Állítsa be a riasztásokat az Azure Stream Analytics-feladatok
 
 Fontos figyelése az Azure Stream Analytics-feladat annak érdekében, hogy a feladat folyamatosan futó gond nélkül. Ez a cikk ismerteti a gyakori szituációhoz kínál olyan figyelendő riasztásokat állíthat be. 
 
-Szabályok a metrikák a portálon keresztül is beállítható, és konfigurálhatók [programozott módon](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a) műveletnaplók adatokon.
+Meghatározhat szabályokat metrikákhoz műveletnaplók adatokból a portálon keresztül, valamint [programozott módon](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a).
 
 ## <a name="set-up-alerts-in-the-azure-portal"></a>Az Azure Portal értesítések beállítása
 
@@ -30,7 +29,7 @@ A következő példa bemutatja, hogyan állítható be a riasztások, a feladat 
 
 2. Az a **feladat** lapon, keresse meg a **figyelés** szakaszban.  
 
-3. Válassza ki **metrikák**, és kattintson a **Új riasztási szabály**.
+3. Válassza ki **metrikák**, majd **Új riasztási szabály**.
 
    ![Az Azure portal Stream Analytics riasztások beállítása](./media/stream-analytics-set-up-alerts/stream-analytics-set-up-alerts.png)  
 
@@ -38,7 +37,7 @@ A következő példa bemutatja, hogyan állítható be a riasztások, a feladat 
 
    ![Válassza ki a Stream Analytics-riasztásból jel neve](./media/stream-analytics-set-up-alerts/stream-analytics-condition-signal.png)  
 
-5. Alatt **jellogika konfigurálása**, módosítsa **Eseményszint** való **összes** , és módosítsa **állapota** való **sikertelen** . Hagyja **esemény kezdeményezője** üres, és kattintson a **kész**.
+5. Alatt **jellogika konfigurálása**, módosítsa **Eseményszint** való **összes** , és módosítsa **állapota** való **sikertelen** . Hagyja **esemény kezdeményezője** üres, és válassza ki **kész**.
 
    ![A Stream Analytics-riasztásból jellogika konfigurálása](./media/stream-analytics-set-up-alerts/stream-analytics-configure-signal-logic.png) 
 

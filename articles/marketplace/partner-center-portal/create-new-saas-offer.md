@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 897634ac0c30b4a2cc496c225965f465a94fe4e9
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: f2787cd74525e7676befb133a6106ce83d9c2a20
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66751895"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072631"
 ---
 # <a name="create-a-new-saas-offer"></a>Hozzon létre egy új SaaS-ajánlat
 
@@ -72,12 +72,12 @@ Keresztül a Microsoft értékesítési biztosít jobb ügyfél-felderítési é
 
 Annak érdekében, hogy a szoftver listában, mint a szoftverszolgáltatások (SaaS) kínál a kereskedelmi Piactéri a Partner Center, a következő feltételeknek kell teljesülniük:
 
-- Az ajánlat az Azure-ügyfelek kompatibilisnek kell lennie. (Gyakran SaaS-alkalmazásokat is a legjobb teljesítmény és kompatibilitási üzemeltetett Azure-ban, de ez nem kötelező.) 
 - Az ajánlat kell használnia [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) az identitáskezeléshez és hitelesítéshez.
 - Az ajánlat kell használnia [SaaS teljesítése API-k](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) integrálása az Azure piactéren.
+- A szélesebb körű követelményeket lásd a [SaaS ajánlat közzétételi útmutató](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide).
 
-#### <a name="billing-infrastructure-costs"></a>A számlázás az infrastruktúrára fordítandó költségeket.
-SaaS-ajánlatok esetében, a közzétevőként figyelembe kell venni az Azure-infrastruktúra használati díjak és szoftver-licencelési díjak egyetlen költség elemként. A költségek jelenik meg az ügyfél havi fix keretösszegek előtt. Azure-infrastruktúra használati felügyelt, és közvetlenül Önnek, a partner számlázzuk. Az ügyfél nem fogja látni a tényleges infrastruktúra használati díjak. A kiadók általában a szoftver licenc díjszabása Azure-infrastruktúra használati díjak kötegeléséhez tilthatók le. 
+#### <a name="saas-on-azure-billing-infrastructure-costs"></a>Az Azure-számlázásról infrastruktúra költségein SaaS
+Az SaaS-ajánlat az Azure-ban üzemeltetett, ha, a közzétevőként figyelembe kell venni az Azure-infrastruktúra használati díjak és szoftver-licencelési díjak egyetlen költség elemként. A költségek jelenik meg az ügyfél havi fix keretösszegek előtt. Azure-infrastruktúra használati felügyelt, és közvetlenül Önnek, a partner számlázzuk. Az ügyfél nem fogja látni a tényleges infrastruktúra használati díjak. A kiadók általában a szoftver licenc díjszabása Azure-infrastruktúra használati díjak kötegeléséhez tilthatók le. 
 
 Szoftver-licencelési díjat a havi, ismétlődő hely alapú előfizetés átalánydíj jelennek meg, és nem díjköteles, vagy használatalapú.
 

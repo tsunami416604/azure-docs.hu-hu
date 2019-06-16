@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: danlep
-ms.openlocfilehash: b6e26bfa476c5c13e6e478f40c39978af61d83e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d62dd6c65975d63a0127bb5dd1c62cd741b59ac6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60427020"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67068003"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Az Azure Container Registry-szerepkörök és engedélyek
 
@@ -23,11 +23,11 @@ Az Azure Container Registry szolgáltatás támogat egy Azure-szerepkörök, eng
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
 | Tulajdonos | X | X | X | X | X | X |  |  
 | Közreműködő | X | X | X |  X | X | X |  |  
-| Olvasó | X |  |  | X |  |  |  |
+| Olvasó | X |  |  |  |  |  |  |
 | AcrPush |  |  | X | X | |  |  |  
 | AcrPull |  |  |  | X |  |  |  |  
 | AcrDelete |  |  |  |  | X |  |  |
-| ACR-lemezképaláíró |  |  |  |  |  |  | X |
+| AcrImageSigner |  |  |  |  |  |  | X |
 
 ## <a name="differentiate-users-and-services"></a>Különbséget tenni a felhasználók és szolgáltatások
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc4d96b900090cd217b4b49b1af2f09762c0da84
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 78d259c0354a1519fa57633a68a1dcfa5a183890
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407022"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105698"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>Oktatóanyag: Az Azure Active Directory-integráció Cezanne HR szoftverrel
 
@@ -53,7 +53,7 @@ Az Azure AD-be a HR-szoftver Cezanne integráció konfigurálásához, kell Ceza
 
 **Cezanne HR szoftver hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -156,7 +156,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Cezanne HR szoftverrel, hajt
 
     d. A a **biztonsági jogkivonat szolgáltatás végpontját** szövegmezőjébe illessze be az értéket, **bejelentkezési URL-cím** az Azure Portalról másolt.
 
-    e. Adja meg a felhasználói azonosító attribútum neve szövegmező `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    e. Adja meg a felhasználói azonosító attribútum neve szövegmező `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
     f. Kattintson a **feltöltése** ikonra, töltse fel az Azure Portalról letöltött tanúsítványt.
 
@@ -265,7 +265,7 @@ Ahhoz, hogy az Azure AD-felhasználók Cezanne HR szoftver-ba való bejelentkez�
 
     ![Felhasználói](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "felhasználó")
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -9,10 +9,10 @@ ms.date: 04/25/2019
 ms.author: anantr
 ms.component: alerts
 ms.openlocfilehash: 6e97826499842a257f6402bd5268edc4cd6a486e
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66734933"
 ---
 # <a name="action-rules-preview"></a>Műveleti szabályokban (előzetes verzió)
@@ -104,7 +104,7 @@ Végül az a következő adatokat, a művelet szabály konfigurálása
 
 ## <a name="example-scenarios"></a>Példaforgatókönyvek
 
-### <a name="scenario-1-suppression-of-alerts-based-on-severity"></a>1. forgatókönyv: A riasztások súlyosság alapján letiltása
+### <a name="scenario-1-suppression-of-alerts-based-on-severity"></a>1\. forgatókönyv: A riasztások súlyosság alapján letiltása
 
 A Contoso biztosítani szeretné a saját előfizetés "ContosoSub" minden hétvégi belül minden virtuális gép összes Sev4 riasztásaihoz értesítéseinek elrejtése.
 
@@ -115,7 +115,7 @@ A Contoso biztosítani szeretné a saját előfizetés "ContosoSub" minden hétv
     * Erőforrástípus = "Virtual Machines"
 * Az ismétlődési tiltási beállítása heti, és ellenőrzi a "Szombat" és "Vasárnap"
 
-### <a name="scenario-2-suppression-of-alerts-based-on-alert-context-payload"></a>2. forgatókönyv: A riasztás környezete (tartalom) alapuló riasztások letiltása
+### <a name="scenario-2-suppression-of-alerts-based-on-alert-context-payload"></a>2\. forgatókönyv: A riasztás környezete (tartalom) alapuló riasztások letiltása
 
 A Contoso biztosítani szeretné az összes bejelentkezéshez, az "Számítógép-01" riasztások értesítéseinek elrejtése az "ContosoSub" határozatlan ideig mert karbantartás keresztül fogja.
 
@@ -126,7 +126,7 @@ A Contoso biztosítani szeretné az összes bejelentkezéshez, az "Számítógé
     * Riasztás környezete (tartalom) tartalmazza a "Számítógép-01"
 * Mellőzés beállítása "múlva (mindig)"
 
-### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>3. forgatókönyv: Műveletcsoport meg van határozva egy erőforráscsoportot
+### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>3\. forgatókönyv: Műveletcsoport meg van határozva egy erőforráscsoportot
 
 Contoso definiált [előfizetés szintjén metrikariasztás](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor), csak a kifejezetten a saját erőforráscsoport "ContosoRG" által előállított riasztásokat kiváltó műveletek határozhatók meg szeretne.
 
@@ -162,9 +162,9 @@ A legjobb emelés naplóriasztások művelet szabályokkal, azt javasoljuk, hogy
 
     A. Miután egy művelet szabály konfigurálása során meghatározott hatókör, láthatja az átfedésben lévő ugyanabban a hatókörben (ha vannak) művelet szabályok listáját. Ez átfedésben a következő lehetőségek egyike lehet:
     * Pontos egyezés: Például a művelet szabály definiálása és az átfedésben lévő művelet szabály van ugyanahhoz az előfizetéshez.
-    * Egy részére: Például a definiálása művelet szabály egy adott előfizetés van, és az átfedésben lévő művelet szabály egy erőforráscsoportot az előfizetésen belül.
-    * Felülbírálja: Például a művelet szabály határoz meg egy erőforráscsoportot, pedig az átfedésben lévő művelet szabály, amely tartalmazza az erőforráscsoport az előfizetésben.
-    * Metszettel: Például a műveleti szabály definiálása a "VM1" és "VM2", pedig az átfedésben lévő művelet szabály a "VM2" és "Vm3 virtuális gép".
+    * Részhalmaz: Például a definiálása művelet szabály egy adott előfizetés van, és az átfedésben lévő művelet szabály egy erőforráscsoportot az előfizetésen belül.
+    * Bővített halmaz: Például a művelet szabály határoz meg egy erőforráscsoportot, pedig az átfedésben lévő művelet szabály, amely tartalmazza az erőforráscsoport az előfizetésben.
+    * Metszet: Például a műveleti szabály definiálása a "VM1" és "VM2", pedig az átfedésben lévő művelet szabály a "VM2" és "Vm3 virtuális gép".
 
     ![Egymást átfedő műveleti szabályokban](media/alerts-action-rules/action-rules-overlapping.png)
 
@@ -172,9 +172,9 @@ A legjobb emelés naplóriasztások művelet szabályokkal, azt javasoljuk, hogy
 
     A. A célként megadott erőforrás a riasztási szabály határozza meg, ha a műveleti szabályokban, amely alatt az "Actions" szakaszban kattintson a "Nézet konfigurált műveleteket" reagálhat rájuk ugyanabban a hatókörben (ha van) listáját láthatja. Ez a lista a következő esetekben a hatókör alapján van feltöltve:
     * Pontos egyezés: Például a riasztási szabály definiálása és a művelet szabály van ugyanahhoz az előfizetéshez.
-    * Egy részére: Például definiálása a riasztási szabály egy adott előfizetés, pedig a művelet a szabály az erőforráscsoport az előfizetésben.
-    * Felülbírálja: Például ez a riasztási szabály, határoz meg egy erőforráscsoportot, és a művelet szabály, amely tartalmazza az erőforráscsoport az előfizetésben van.
-    * Metszettel: Például a "VM1" és "VM2" Ez a riasztási szabály határoz meg, és a művelet szabály "VM2" és "Vm3 virtuális gép".
+    * Részhalmaz: Például definiálása a riasztási szabály egy adott előfizetés, pedig a művelet a szabály az erőforráscsoport az előfizetésben.
+    * Bővített halmaz: Például ez a riasztási szabály, határoz meg egy erőforráscsoportot, és a művelet szabály, amely tartalmazza az erőforráscsoport az előfizetésben van.
+    * Metszet: Például a "VM1" és "VM2" Ez a riasztási szabály határoz meg, és a művelet szabály "VM2" és "Vm3 virtuális gép".
     
     ![Egymást átfedő műveleti szabályokban](media/alerts-action-rules/action-rules-alert-rule-overlapping.png)
 

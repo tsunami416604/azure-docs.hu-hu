@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 195e7bf21fe1f6017705883f2ec692c182f15375
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.openlocfilehash: 013e477b66d2772698ce5c9cc61a59f8a5a04a5a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65560597"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094884"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>Oktatóanyag: Az Azure Active Directory-integráció Pega rendszerekkel
 
@@ -95,7 +95,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Pega rendszerekkel, hajtsa v
 
 2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válasszon **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése:
 
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezés módszer kiválasztása](common/select-saml-option.png)
 
 3. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon válassza ki a **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel:
 
@@ -180,7 +180,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Pega rendszerekkel, hajtsa v
 
 1. Az egyszeri bejelentkezés konfigurálásához a **Pega rendszerek** oldalán, a rendszergazdai fiók egy másik böngészőablakban jelentkezzen be a Pega portálra.
 
-2. Válassza ki **létrehozása** > **SysAdmin (rendszergazda)** > **hitelesítési szolgáltatás**:
+2. Válassza ki **létrehozása** > **SysAdmin (rendszergazda)**  > **hitelesítési szolgáltatás**:
 
     ![Válassza ki a hitelesítési szolgáltatás](./media/pegasystems-tutorial/tutorial_pegasystems_admin.png)
     
@@ -234,7 +234,7 @@ Ebben a szakaszban az Azure Portalon Britta Simon nevű tesztfelhasználó fog l
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be **brittasimon @\<vállalati_tartomány >.\< bővítmény >**. (Például BrittaSimon@contoso.com.)
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon @\<vállalati_tartomány >.\< bővítmény >** . (Például BrittaSimon@contoso.com.)
 
     c. Válassza ki **Show jelszó**, és jegyezze fel az értéket, amely szerepel a **jelszó** mezőbe.
 
@@ -270,7 +270,7 @@ Ebben a szakaszban Britta Simon Pega rendszerek számára a hozzáférés biztos
 
 Ezután szüksége Britta Simon Pega rendszerekben nevű felhasználó létrehozásához. Együttműködik a [Pega rendszerek támogatási csoportjának](https://www.pega.com/contact-us) a felhasználók létrehozásához.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Most szüksége az Azure AD egyszeri bejelentkezési konfigurációjának tesztelése a hozzáférési Panel használatával.
 

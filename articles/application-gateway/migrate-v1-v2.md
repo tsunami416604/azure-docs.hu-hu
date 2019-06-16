@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/5/2019
+ms.date: 6/12/2019
 ms.author: victorh
-ms.openlocfilehash: 44d5ce3e194c873a564039934f518cb3a0e142e3
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 2387f2546afa9d5af2cb909a1e6a2179548e3b5a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497182"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053330"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrálása az Azure Application Gateway webalkalmazási tűzfal v1, v2 és
 
@@ -96,7 +96,7 @@ A szkript futtatása:
      $appgw.Id
      ```
 
-   * **subnetAddressRange: [String]:  Szükséges** – Ez egy új alhálózatot, amely tartalmazza az új v2-átjáró a foglalt le (vagy lefoglalni kívánt) IP-címterét. Ez a CIDR jelölésrendszer szerint kell megadni. Példa: 10.0.0.0/24. Nem kell előzetesen létre ezt az alhálózatot. A parancsfájl létrehozza, ha még nem létezik.
+   * **subnetAddressRange: [String]:  Szükséges** – Ez egy új alhálózatot, amely tartalmazza az új v2-átjáró a hozzárendelte (vagy lefoglalni kívánt) IP-címterét. Ez a CIDR jelölésrendszer szerint kell megadni. Példa: 10.0.0.0/24. Nem kell előzetesen létre ezt az alhálózatot. A parancsfájl létrehozza, ha még nem létezik.
    * **appgwName: [String]: Nem kötelező**. Ez egy karakterláncérték, adja meg a nevet az új Standard_v2 vagy WAF_v2 átjáró használatára. Ha ez a paraméter nincs megadva, a meglévő v1 átjárója nevére a utótaggal együtt használható *_v2* hozzáfűzve.
    * **sslCertificates: [PSApplicationGatewaySslCertificate]: Nem kötelező**.  Az új v2-átjáróra, amely képviseli az SSL-tanúsítványokat a v1 átjáró PSApplicationGatewaySslCertificate objektumok vesszővel elválasztott listáját kell feltölteni. Az SSL-tanúsítvány konfigurálva az a szabványos v1 vagy a v1-gateway WAF mindegyike esetében hozzon létre egy új PSApplicationGatewaySslCertificate objektum keresztül a `New-AzApplicationGatewaySslCertificate` parancsot az itt látható. Az elérési utat kell az SSL-tanúsítvány fájl- és a jelszót.
 
@@ -117,11 +117,11 @@ A szkript futtatása:
 
       PSApplicationGatewayTrustedRootCertificate objektumlisták létrehozásához lásd: [New-AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0).
    * **privateIpAddress: [String]: Nem kötelező**. Egy adott személyes IP-címet, amely az új v2 átjáróhoz társítani szeretné.  Ez rendel az új v2-átjáró ugyanazon virtuális hálózatban kell lennie. Ha nincs megadva, a parancsfájl egy magánhálózati IP-címet a v2 átjáró foglal le.
-    * **publicIpResourceId: [String]: Nem kötelező**. Az egy nyilvános IP-cím erőforrás az előfizetésében, amelyet szeretne lefoglalni az új v2 átjáróhoz resourceId. Ha nincs megadva, a parancsfájl lefoglal új nyilvános IP-cím ugyanabban az erőforráscsoportban. A v2-átjáró neve a *- IP* hozzáfűzve.
+    * **publicIpResourceId: [String]: Nem kötelező**. Az egy nyilvános IP-cím (a standard Termékváltozat) erőforrás az előfizetésében, amelyet szeretne lefoglalni az új v2 átjáróhoz resourceId. Ha nincs megadva, a parancsfájl lefoglal új nyilvános IP-cím ugyanabban az erőforráscsoportban. A v2-átjáró neve a *- IP* hozzáfűzve.
    * **validateMigration: [váltson]: Nem kötelező**. Használja ezt a paramétert, ha azt szeretné, hogy a parancsfájl a v2-átjáró létrehozása és a konfiguráció másolása után összehasonlító ellenőrzések néhány alapvető konfiguráció beállítása. Alapértelmezés szerint nem lehet érvényesíteni történik.
    * **enableAutoScale: [váltson]: Nem kötelező**. Használja ezt a paramétert, ha azt szeretné, hogy a parancsfájl automatikus skálázás engedélyezéséhez az új v2-átjáró létrehozása után. Alapértelmezés szerint le van tiltva az automatikus skálázás. Mindig manuálisan engedélyezheti azt később az újonnan létrehozott v2 átjáró.
 
-1. Futtassa a parancsfájlt a megfelelő paraméterekkel.
+1. Futtassa a parancsfájlt a megfelelő paraméterekkel. 5 – 7 percet igénybe vehet.
 
     **Példa**
 
@@ -176,7 +176,11 @@ Nem. Az Azure PowerShell-szkript csak áttelepíti a konfigurációt. Tényleges
 
 ### <a name="is-the-new-v2-gateway-created-by-the-azure-powershell-script-sized-appropriately-to-handle-all-of-the-traffic-that-is-currently-served-by-my-v1-gateway"></a>Van az új v2-átjáróhoz, az Azure PowerShell-szkript által létrehozott megfelelő a méretezése kezeli az összes jelenleg a v1-átjáró által kiszolgált hálózati forgalom?
 
-Az Azure PowerShell-szkript egy új v2 átjárót hoz létre egy megfelelő méretet, a meglévő V1-átjárón a forgalom kezeléséhez. Az automatikus skálázás alapértelmezés szerint le van tiltva, de engedélyezheti az automatikus skálázás, a parancsfájl futtatásakor.
+Az Azure PowerShell-szkript egy új v2 átjárót hoz létre egy megfelelő méretet, a meglévő v1-átjárón a forgalom kezeléséhez. Az automatikus skálázás alapértelmezés szerint le van tiltva, de engedélyezheti az automatikus skálázás, a parancsfájl futtatásakor.
+
+### <a name="i-configured-my-v1-gateway--to-send-logs-to-azure-storage-does-the-script-replicate-this-configuration-for-v2-as-well"></a>Konfiguráltam az Azure storage-naplók elküldése a v1 átjáróm. A parancsfájl replikálása nem ezt a konfigurációt, valamint a v2?
+
+Nem. A parancsfájl nem replikálja a v2-ben Ez a konfiguráció. Hozzá kell adnia a folyamatnapló-konfiguráció külön-külön az áttelepített v2-átjáróra.
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Néhány problémákba ütközik a parancsfájl futtattam. Hogyan kaphatok segítséget?
   

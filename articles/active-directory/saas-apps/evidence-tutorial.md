@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e331ea54a290bc794b04bb0d8e0ea653ef12bc19
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: ffee3b8fa1d152ce94513353c5c178adb5e3cc77
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898826"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102941"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-evidencecom"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Evidence.com
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Evidence.com konfigurálásához hozzá kell Evidenc
 
 **Evidence.com hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -207,7 +207,7 @@ Az Azure AD-felhasználók tudnak bejelentkezni azok ki kell építeni az Eviden
 
 5. A **E-mail cím** hozzáadott felhasználó egyeznie kell a felhasználónévvel a felhasználók számára szeretne hozzáférést biztosítani Azure AD-ben. Ha a felhasználónév és e-mail cím nem ugyanazt az értéket a szervezetben, használhatja a **Evidence.com > attribútumok > egyszeri bejelentkezés** szakaszban az Azure Portal a nameidenitifer Evidence.com küldött lehet módosítani a e-mail-cím.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

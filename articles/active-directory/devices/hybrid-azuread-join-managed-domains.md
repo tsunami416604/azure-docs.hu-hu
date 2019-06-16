@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f9daeb5e0de9c53f16efff46e02015acfa7c521
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: 6ea885dfd1dd38e0811606cd67bf0a1730b0c824
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734596"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110640"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Oktatóanyag: Hibrid Azure Active Directory-csatlakozás a felügyelt tartományok konfigurálása
 
@@ -26,7 +26,7 @@ Hasonló módon a felhasználó számára egy eszköz a védeni kívánt is hasz
 - Hibrid Azure AD-csatlakozás
 - Azure AD-regisztráció
 
-Az Azure AD-be való bevonással maximalizálható a felhasználók munkahatékonysága, köszönhetően az egyszeri bejelentkezésnek (SSO), amely a felhőbeli és a helyszíni erőforrásokhoz is hozzáférést nyújt. Ugyanakkor a felhőbeli és a helyszíni erőforrások hozzáférése külön [feltételes hozzáférésekkel](../active-directory-conditional-access-azure-portal.md) is biztosítható.
+Az Azure AD-be való bevonással maximalizálható a felhasználók munkahatékonysága, köszönhetően az egyszeri bejelentkezésnek (SSO), amely a felhőbeli és a helyszíni erőforrásokhoz is hozzáférést nyújt. Egy időben, hozzáférés gondoskodhat a felhőbeli és helyszíni erőforrások [feltételes hozzáférési](../active-directory-conditional-access-azure-portal.md).
 
 Ebben az oktatóanyagban megismerheti, hogyan konfigurálhatja a hibrid Azure AD-csatlakozás AD-tartományhoz csatlakoztatott számítógépeket eszközök felügyelt környezetben. 
 
@@ -160,7 +160,7 @@ A **Get-MSolDevice** parancsmag használatához a következők szükségesek:
 
 - Egy objektumot a **Eszközazonosító** , amely megfelel a Windows ügyfél léteznie kell Azonosítójával.
 - A **DeviceTrustType** beállítás értékének **tartományhoz csatlakoztatottnak** kell lennie. Ez egyenértékű az Azure AD-portál Eszközök oldalán található **Hibrid Azure AD-hez csatlakoztatott** értékkel.
-- A feltételes hozzáférésű eszközöknél az **Engedélyezve** beállításhoz az **Igaz** értéket kell megadni, a **DeviceTrustLevel** beállításhoz pedig a **Felügyelt** értéket.
+- Az érték **engedélyezve** kell lennie **igaz** és **DeviceTrustLevel** kell lennie **felügyelt** feltételes hozzáférés az által használt eszközök.
 
 **A szolgáltatás részleteinek ellenőrzése:**
 

@@ -18,10 +18,10 @@ ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 5edd3e51e83b5ab324d1e110a1882b20d935a9b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60833067"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>"502 Hibás átjáró" és "503 a szolgáltatás nem érhető el" az Azure App Service-ben HTTP-hibáinak elhárítása
@@ -62,7 +62,7 @@ A metrikák, amelyeket érdemes az alkalmazás figyelése néhány
 * Átlagos memória-munkakészlet
 * Átlagos válaszidő
 * CPU-idő
-* Memória-munkakészlet
+* Memória-Munkakészlet
 * Kérelmek
 
 ![502 Hibás átjáró és a 503 a szolgáltatás nem érhető el a HTTP-hibák megoldása felé alkalmazás monitorozása](./media/app-service-web-troubleshoot-HTTP-502-503/1-monitor-metrics.png)
@@ -83,7 +83,7 @@ Az App Service diagnosztikái eléréséhez keresse meg az App Service-alkalmaz�
 #### <a name="use-the-kudu-debug-console"></a>A Kudu hibakereső konzol használata
 App Service-ben tartalmaz egy hibakeresési konzolt, amely a hibakeresés, felfedezését, fájlok, valamint a környezet kapcsolatos információk lekérése JSON végpontjainak feltöltése is használhat. Ezt nevezzük a *Kudu konzol* vagy a *SCM irányítópultján* az alkalmazáshoz.
 
-Ezt az irányítópultot elérheti a hivatkozás a **https://&lt;az alkalmazás neve >.scm.azurewebsites.net/**.
+Ezt az irányítópultot elérheti a hivatkozás a **https://&lt;az alkalmazás neve >.scm.azurewebsites.net/** .
 
 Néhány dolog, ami a Kudu biztosít a következők:
 

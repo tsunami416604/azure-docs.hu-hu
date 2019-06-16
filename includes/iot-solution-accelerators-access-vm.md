@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: db1af4f046bd8849fddee299e949d6edbdaae86a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 8d1f0f6ae3ffc123f1ae8318a6fbce4a9a3024fa
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66143399"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66814868"
 ---
 ## <a name="access-the-virtual-machine"></a>Hozzáférés a virtuális gép
 
-Az alábbi lépések az a `az` parancsot az Azure Cloud Shellben. Igény szerint is [Azure CLI 2.0 telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) a fejlesztést a gépet, és helyileg futtassa a parancsokat.
+Az alábbi lépéseket az Azure CLI használata az Azure Cloud Shellben. Igény szerint is [az Azure CLI telepítése](/cli/azure/install-azure-cli) a fejlesztést a gépet, és helyileg futtassa a parancsokat.
 
 A következő lépések bemutatják, hogyan konfigurálhatja az Azure virtuális gépen, hogy **SSH** hozzáférést. Látható lépései azt feltételezik a megoldásgyorsító a kiválasztott **contoso-szimuláció** – ezt az értéket cserélje le az üzemelő példány neve:
 

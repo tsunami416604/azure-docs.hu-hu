@@ -10,10 +10,10 @@ ms.reviewer: deli, klam, LADocs
 ms.topic: conceptual
 ms.date: 05/25/2019
 ms.openlocfilehash: 44944955019fcf81fb0d296592577e2b00a15928
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66299502"
 ---
 # <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-sliding-window-trigger-in-azure-logic-apps"></a>Létrehozhatja, ütemezheti és ismétlődő feladatok és munkafolyamatok futtatása az Azure Logic Apps késleltetett ablak eseményindítót a
@@ -53,7 +53,7 @@ Ez az eseményindító és az ismétlődési eseményindító közötti különb
 
    | Tulajdonság | Kötelező | JSON-név | Típus | Leírás |
    |----------|----------|-----------|------|-------------|
-   | **Intervallum** | Igen | interval | Integer | Pozitív egész szám, amely leírja, hogy milyen gyakran a munkafolyamat futtatása gyakorisága alapján. Az alábbiakban a minimális és maximális időközönként: <p>– Óra: 1 – 12 000 óra </br>– Perc: 1 – 72,000 perc </br>-Másodperc: 1 – 9,999,999 másodperc<p>Például ha a időköz 6, és a gyakoriság "Hour", majd az ismétlődést, 6 óránként. |
+   | **Intervallum** | Igen | interval | Egész szám | Pozitív egész szám, amely leírja, hogy milyen gyakran a munkafolyamat futtatása gyakorisága alapján. Az alábbiakban a minimális és maximális időközönként: <p>– Óra: 1 – 12 000 óra </br>– Perc: 1 – 72,000 perc </br>-Másodperc: 1 – 9,999,999 másodperc<p>Például ha a időköz 6, és a gyakoriság "Hour", majd az ismétlődést, 6 óránként. |
    | **Gyakoriság** | Igen | frequency | String | Az időegység, az Ismétlődés: **Második**, **perc**, vagy **óra** |
    ||||||
 

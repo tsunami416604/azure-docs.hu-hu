@@ -2,7 +2,7 @@
 title: Mik azok a feltételek az Azure Active Directory feltételes hozzáférés? | Microsoft Docs
 description: Ismerje meg, hogyan feltételek használatával az Azure Active Directory feltételes hozzáférési szabályzat aktiválása.
 services: active-directory
-keywords: feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-vel, biztonságos hozzáférés a vállalati erőforrásokhoz, feltételes hozzáférési szabályzatok
+keywords: Feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-ben a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési szabályzatok
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -18,12 +18,12 @@ ms.date: 05/17/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2caedeb5cd4d0f920ffa49b33b0dca8bea9938cb
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 83263b3536100ce16819002c833754d18ac12816
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65861547"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112597"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Mik azok a feltételek az Azure Active Directory feltételes hozzáférés?
 
@@ -73,7 +73,7 @@ Szervezetek számára az alábbiak közül választhat:
 > [!NOTE]
 > Konkrét alkalmazások kizárhat a szabályzat alól. Ezek az alkalmazások azonban továbbra is a alkalmazni szabályzatokat az elért szolgáltatások is.
 
-**Felhasználói műveletek** felhasználó által végrehajtott feladatokat. Csak a jelenleg támogatott művelet **regisztrálja biztonsági információit (előzetes verzió)**, amely lehetővé teszi, hogy a feltételes hozzáférési szabályzatot a felhasználók számára engedélyezettek a kombinált regisztrációs próbál meg regisztrálni a biztonsági állapotuk kikényszerítésére információk. További információ a cikkben található [engedélyezése biztonsági információk regisztrációs (előzetes verzió) együttes](../authentication/howto-registration-mfa-sspr-combined.md).
+**Felhasználói műveletek** felhasználó által végrehajtott feladatokat. Csak a jelenleg támogatott művelet **regisztrálja biztonsági információit (előzetes verzió)** , amely lehetővé teszi, hogy a feltételes hozzáférési szabályzatot a felhasználók számára engedélyezettek a kombinált regisztrációs próbál meg regisztrálni a biztonsági állapotuk kikényszerítésére információk. További információ a cikkben található [engedélyezése biztonsági információk regisztrációs (előzetes verzió) együttes](../authentication/howto-registration-mfa-sspr-combined.md).
 
 ## <a name="sign-in-risk"></a>Bejelentkezési kockázat
 
@@ -113,7 +113,7 @@ Az eszköz Eszközállapot-feltételt nem tartalmazza a hibrid Azure AD-hoz csat
 
 Ez az állapot akkor hasznos, ha a szabályzat csak további munkamenetek biztonsága nem felügyelt eszközről kell alkalmazni. Ha például csak a Microsoft Cloud App Security munkamenet-vezérlő érvényesítési Ha egy eszköz nem felügyelt. 
 
-## <a name="locations"></a>Helyszínek
+## <a name="locations"></a>Helyek
 
 A helyek, ahol kísérlet történt a kapcsolat alapján feltételeket adhat meg. 
 
@@ -125,7 +125,7 @@ Gyakori alkalmazási esetei ezt az állapotot a következő védelmi szabályzat
 
 - Hozzáférés letiltása a felhasználók bizonyos országokban vagy régiókban a szolgáltatás elérésére. 
 
-További információkért lásd: [a helyfeltétel Mi az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations).
+További információkért lásd: [Mi az a hely feltétel, az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations).
 
 
 ## <a name="client-apps"></a>Ügyfélalkalmazások
@@ -168,7 +168,7 @@ Bejelölheti a **Exchange ActiveSync-ügyfelek** ha:
 
 - Nem kell más házirendben konfigurált feltételeknek. Azonban ez az állapot csak a alkalmazni hatókörének szűkíthető [által támogatott platformok](technical-reference.md#device-platform-condition).
  
-    ![Házirend alkalmazása csak a támogatott platformokra](./media/conditions/33.png)
+    ![Házirend alkalmazása csak a támogatott platformok](./media/conditions/33.png)
 
 
 Ha a hozzáférés blokkolva van-e mert egy [felügyelt eszközök](require-managed-devices.md) van szükség esetén az érintett felhasználók beolvasása egyetlen e-mail, amely segítséget nyújt számukra az Intune-nal. 
@@ -184,13 +184,13 @@ Ezzel a beállítással a felhasználók és csoportok csak célba. Nem támogat
 
 - [Az Azure Active Directory feltételes hozzáférés beállítása a SharePoint Online és Exchange online-hoz](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-no-modern-authentication).
  
-- [Az Azure Active Directory, alkalmazásalapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). 
+- [Az Azure Active Directory alapján az alkalmazásalapú feltételes hozzáférési](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). 
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-- Feltételes hozzáférési szabályzat konfigurálása, lásd: [a rövid útmutató: Többtényezős hitelesítés az Azure Active Directory feltételes hozzáférés az adott alkalmazások](app-based-mfa.md).
+- Feltételes hozzáférési szabályzat konfigurálása, lásd: [a rövid útmutató: Többtényezős hitelesítés konkrét alkalmazások esetén az Azure Active Directory feltételes hozzáférés](app-based-mfa.md).
 
-- Feltételes hozzáférési házirendjei a környezet konfigurálásához tekintse meg a [ajánlott eljárások az Azure Active Directory feltételes hozzáférés](best-practices.md). 
+- Feltételes hozzáférési házirendjei a környezet konfigurálásához tekintse meg a [gyakorlati tanácsok az Azure Active Directory feltételes hozzáférés](best-practices.md). 
 

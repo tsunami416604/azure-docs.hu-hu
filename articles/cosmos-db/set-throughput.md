@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: rimman
-ms.openlocfilehash: f30155c0fbdbdd93ab4ffc3ae85ef2ad62b188c9
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: ce059e542ee7bfa67e899b4923e3410e13e4930e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389249"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067505"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Átviteli sebesség kiosztása tárolókra és adatbázisokra
 
@@ -87,7 +87,7 @@ Az SDK-k használatával programozott módon lekérni a tárolók és a egy adat
 
 Ha a .NET SDK használatával a [DocumentClient.ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) módszer lehetővé teszi, hogy a minimális átviteli sebesség, tárolók és a egy adatbázis beolvasása. 
 
-A kiosztott átviteli sebesség, tárolók és a egy adatbázis bármikor skálázhatja. 
+A kiosztott átviteli sebesség, tárolók és a egy adatbázis bármikor skálázhatja. Egy skálázási művelet az átviteli sebesség növelése érdekében hajtja végre, amikor a rendszer feladatokat szükséges erőforrások kiépítése miatt hosszabb ideig is eltarthat. Ellenőrizheti az Azure Portalon vagy programozott módon, az SDK-k segítségével a skálázási művelet állapotát. A .net SDK használata esetén a skálázási művelet állapotának használatával megtekintheti a `DocumentClient.ReadOfferAsync` metódust.
 
 ## <a name="comparison-of-models"></a>Modellek összehasonlítása
 

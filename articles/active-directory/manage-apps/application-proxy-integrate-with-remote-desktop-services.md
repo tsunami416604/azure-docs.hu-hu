@@ -16,12 +16,12 @@ ms.author: mimart
 ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 621ca9a7a55f86a92f0c809b6e220245f47dfd39
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: d6ca64e2de5734c567173fc735776074f4c87fbc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66233713"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108461"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Az Azure AD-alkalmazásproxy a távoli asztal közzététele
 
@@ -57,6 +57,8 @@ Az RDS-példány üzembe a távoli asztali webes szerepkör és a távoli asztal
 - Ha a közzététel a távoli asztali webes ajánlott az azonos belső és külső teljes Tartománynevet használja. Ha a belső és külső teljes tartománynevek eltér majd le kell tiltania fejléc fordítási kérelmek az ügyfél érvénytelen kapcsolatok fogadása. 
 
 - Az Internet Explorer a távoli asztali szolgáltatások ActiveX bővítmény engedélyezéséhez.
+
+- Az Azure ad-ben előhitelesítési folyamat a felhasználók csak csatlakozhatnak hozzájuk a közzétett erőforrások a **RemoteApp- és asztali** ablaktáblán. Felhasználók nem tudnak csatlakozni egy asztali használatával a **csatlakozhat távoli Számítógépekhez** ablaktáblán.
 
 ## <a name="deploy-the-joint-rds-and-application-proxy-scenario"></a>A közös a távoli asztali szolgáltatások és -Proxy forgatókönyv megvalósításához
 
@@ -127,7 +129,7 @@ A következő cikkben ismertetett konfigurációs van, a felhasználók számár
 | Előhitelesítés    | Windows 7/10 az Internet Explorer + RDS ActiveX-bővítmény használata |
 | Átengedés | Minden más operációs rendszer, amely támogatja a Microsoft távoli asztal alkalmazás |
 
-Az előhitelesítési folyamat további biztonsági előnyöket kínál, mint a csatlakoztatott folyamatot. Az előhitelesítési használhatja az Azure AD hitelesítési szolgáltatások, mint az egyszeri bejelentkezés, a feltételes hozzáférés és a kétlépéses ellenőrzést a helyszíni erőforrásokhoz. Akkor is győződjön meg arról, hogy csak hitelesített forgalom éri el a hálózat.
+Az előhitelesítési folyamat további biztonsági előnyöket kínál, mint a csatlakoztatott folyamatot. Az előhitelesítési használhatja az Azure AD hitelesítési szolgáltatások, mint az egyszeri bejelentkezést, a feltételes hozzáférés és a kétlépéses ellenőrzés a helyszíni erőforrásokhoz. Akkor is győződjön meg arról, hogy csak hitelesített forgalom éri el a hálózat.
 
 Átmenő hitelesítés használatához van ebben a cikkben felsorolt lépések csak két módosításai:
 1. A [közzététel a távoli asztali állomás végpont](#publish-the-rd-host-endpoint) 1. lépés, állítsa az előhitelesítési módszer **csatlakoztatott**.

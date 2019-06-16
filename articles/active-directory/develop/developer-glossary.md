@@ -19,10 +19,10 @@ ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 314d7a8e8cf6837e2b22446ba23fee03d539bf35
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66235353"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>A Microsoft identity platform fejlesztői szószedet
@@ -54,7 +54,7 @@ Amikor, regisztrálni vagy frissíteni az alkalmazás a [az Azure portal][AZURE-
 
 További információkért lásd: [alkalmazás és egyszerű szolgáltatási objektumok][AAD-App-SP-Objects].
 
-## <a name="application-registration"></a>Alkalmazás regisztrálása
+## <a name="application-registration"></a>alkalmazásregisztráció
 
 Annak érdekében, hogy egy alkalmazás integrálható, és delegálása az Azure AD identitáskezelési és hozzáférés-kezelési funkciók, regisztrálni kell egy Azure AD-vel [bérlői](#tenant). Ha regisztrálja az alkalmazás Azure AD-vel, meg van adva egy identitás-konfigurációt az alkalmazásnak, lehetővé téve, hogy az Azure AD integrálása és funkciók használata, mint például:
 
@@ -64,11 +64,11 @@ Annak érdekében, hogy egy alkalmazás integrálható, és delegálása az Azur
 
 Lásd: [alkalmazások integrálása az Azure Active Directory] [ AAD-Integrating-Apps] további részletekért.
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>hitelesítés
 
 A művelet egy entitás alapján biztosít az identitás- és hozzáférés-vezérlési szolgáltatásnév létrehozásához a jogosult hitelesítő adatok, nehéz. Során egy [OAuth2 engedélyezést](#authorization-grant) például a felek hitelesítéséhez, vagy a szerepkör tölti [erőforrás tulajdonosa](#resource-owner) vagy [ügyfélalkalmazás](#client-application), attól függően, a a támogatás használt.
 
-## <a name="authorization"></a>Engedélyezési
+## <a name="authorization"></a>authorization
 
 A törvény, egy hitelesített biztonsági megoldást valósíthatunk egyszerű engedély megadására. Az Azure AD programozási modellben két alapvető használati eset létezik:
 

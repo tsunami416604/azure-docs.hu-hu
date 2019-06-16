@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: saurse
-ms.openlocfilehash: d8a1d261808eb8f97d1e0dab78b767b37ae6802f
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: 2c2ed46ed6e4a5d6663387777d3425d18b50500e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66743143"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67060215"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent"></a>A Microsoft Azure Recovery Services-(MARS-) ügynök hibaelhárítása
 
@@ -41,9 +41,29 @@ Azt javasoljuk, hogy hajtsa végre az alábbi érvényesítési, mielőtt haszn�
 
 ## <a name="invalid-vault-credentials-provided"></a>Megadott tárhitelesítő adatok érvénytelenek
 
-| A hiba részletei | Lehetséges okok | Ajánlott műveletek |
-| ---     | ---     | ---    |
-| **Hiba történt** </br> *A tároló megadott hitelesítő adatai érvénytelenek. A fájl sérült, vagy nem nem rendelkezik a legújabb hitelesítő adatok a helyreállítási szolgáltatáshoz hozzárendelt. (Azonosító: 34513)* | <ul><li> A tároló hitelesítő adatai érvénytelenek. (azt jelenti, azok letöltése megtörtént a regisztráció előtt legfeljebb 48 óra).<li>A MARS-ügynök nem tudja fájlok letöltése a Windows Temp könyvtárában. <li>A tároló hitelesítő adatai vannak egy hálózati helyre. <li>A TLS 1.0 le van tiltva.<li> Egy konfigurált proxykiszolgálón blokkolja a kapcsolatot. <br> |  <ul><li>Töltse le a tár új hitelesítő adatait. (**Megjegyzés**: Ha több tároló hitelesítő adatfájljait a korábban letöltött, csak a legújabb letöltött fájl nem érvényes 48 órán belül.) <li>Indítsa el a **IE** > **beállítás** > **Internetbeállítások** > **biztonsági**  >  **Internet**. Majd **Egyéni szint**, amíg meg nem látja a fájl letöltése szakasz görgessen. Válassza ki **engedélyezése**.<li>Akkor is lehet ezeken a webhelyeken hozzáadása az Internet Explorer [megbízható helyek](https://docs.microsoft.com/azure/backup/backup-configure-vault#verify-internet-access).<li>Módosítsa a beállításokat, egy proxykiszolgáló használatára. Adja meg a proxy adatait. <li> A dátum és idő egyezik a gépen.<li>Ha hibaüzenet jelenik meg, hogy a fájlok letöltése nem engedélyezettek, valószínű, hogy nincsenek-e egy nagy mennyiségű fájlt a C:/Windows/Temp könyvtárba.<li>C:/Windows/Temp nyissa meg, és ellenőrizze, hogy vannak-e több mint 60 000 vagy 65,000 .tmp kiterjesztésű fájlt. Ha vannak, ezeket a fájlokat törli.<li>Győződjön meg arról, hogy a .NET-keretrendszer 4.6.2-es. <li>Ha PCI-megfelelőség miatt le van tiltva a TLS 1.0, tekintse meg a [hibaelhárítási lap](https://support.microsoft.com/help/4022913). <li>Ha a kiszolgálón telepített víruskereső szoftver, a következő fájlok kizárása a víruskeresés: <ul><li>CBengine.exe<li>CSC.exe, amely kapcsolódik a .NET-keretrendszer. A CSC.exe minden .NET-verzió, amely a kiszolgálón van telepítve van. Az érintett kiszolgálón .NET-keretrendszer összes verziójához kötött CSC.exe fájlok kizárása. <li>Ideiglenes mappa vagy a gyorsítótár helyét. <br>*Az ideiglenes mappát vagy a gyorsítótár elérési útjához alapértelmezett helye a C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.<br><li>A bin mappa: C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
+**Chybová zpráva**: A tároló megadott hitelesítő adatai érvénytelenek. A fájl sérült, vagy nem nem rendelkezik a legújabb hitelesítő adatok a helyreállítási szolgáltatáshoz hozzárendelt. (Azonosító: 34513)
+
+| Ok | Javasolt művelet |
+| ---     | ---    |
+| **A tároló hitelesítő adatai érvénytelenek.** <br/> <br/> Tároló hitelesítő adatfájljait esetleg sérült, vagy esetleg elévült (azaz letöltött regisztrációs ideje előtt legfeljebb 48 óra)| Töltse le az új hitelesítő adat a Recovery Services-tárolót az Azure Portalon (lásd: *6. lépés* alatt [ **töltse le a MARS-ügynök** ](https://docs.microsoft.com/azure/backup/backup-configure-vault#download-the-mars-agent) szakaszban), és végezze el az alábbi: <ul><li> Ha már telepítve és regisztrálva a Microsoft Azure Backup ügynököt, majd nyissa meg a Microsoft Azure Backup ügynök MMC konzolt, és válassza a **kiszolgáló regisztrálása** a műveletpanelen az újonnan letöltött a regisztráció befejezéséhez hitelesítő adatok <br/> <li> Ha új telepítése nem sikerült majd telepítse újra az új hitelesítő adatokkal</ul> **Megjegyzés**: Ha több tároló hitelesítő adatfájljait a korábban letöltött, csak a legújabb letöltött fájl nem érvényes 48 órán belül. Ezért javasoljuk, hogy friss új tároló hitelesítőadat-fájljának letöltése.
+| **Proxy Server/tűzfal blokkolja a <br/>vagy <br/>nincs internetkapcsolat** <br/><br/> Ha a gép vagy a proxykiszolgáló korlátozott Internet-hozzáféréssel rendelkezik majd anélkül, hogy a szükséges URL-címek listázása a regisztráció sikertelen lesz.| A probléma megoldásához hajtsa végre az alábbi:<br/> <ul><li> Az informatikai csapat a rendszer ne legyen internetkapcsolat használata<li> Ha nem kell proxykiszolgálót, majd győződjön meg arról, a proxy-beállítás nincs bejelölve, az ügynök regisztrálása során, ellenőrizze a proxy beállítások jelennek [Itt](#verifying-proxy-settings-for-windows)<li> Ha van tűzfal /-proxy kiszolgáló, a hálózatkezelésért felelős csapat, győződjön meg arról, hogy alábbi URL-címek és IP oldja meg a munkahelyi rendelkezik hozzáféréssel<br/> <br> **URLs**<br> - *www.msftncsi.com* <br>-  *.Microsoft.com* <br> -  *.WindowsAzure.com* <br>-  *.microsoftonline.com* <br>-  *.windows.net* <br>**IP-cím**<br> - *20.190.128.0/18* <br> - *40.126.0.0/18* <br/></ul></ul>Próbálja meg ismét regisztrálni a fenti hibaelhárítási lépések végrehajtása után
+| **Víruskereső szoftver blokkolja a** | Ha a kiszolgálón telepített víruskereső szoftver, szükséges kizárási szabályokat felvenni a következő fájlok a a víruskeresési vizsgálatból: <br/><ui> <li> *CBengine.exe* <li> *CSC.exe*<li> Ideiglenes mappát az alapértelmezett hely a *C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch* <li> Bin mappában *C:\Program Files\Microsoft Azure Recovery Services Agent\Bin*
+
+### <a name="additional-recommendations"></a>További javaslatok
+- Lépjen a *C:/Windows/Temp* , és ellenőrizze, hogy vannak-e több mint 60 000 vagy 65,000 .tmp kiterjesztésű fájlt. Ha vannak, ezeket a fájlokat törli.
+- Győződjön meg arról, a gép dátum és idő helyi időzóna egyezéseit
+- Győződjön meg, hogy a [következő](backup-configure-vault.md#verify-internet-access) helyek kerülnek IE megbízható helyek
+
+### <a name="verifying-proxy-settings-for-windows"></a>Windows proxybeállításainak ellenőrzése
+
+- Töltse le **psexec** a [Itt](https://docs.microsoft.com/sysinternals/downloads/psexec)
+- Futtassa a következő parancsot `psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe"` parancsot rendszergazda jogú parancssorból:
+- Ekkor elindul *az Internet Explorer* ablak
+- Lépjen a *eszközök* -> *Internetbeállítások* -> *kapcsolatok* -> *LAN-beállítások*
+- Ellenőrizze a proxybeállítások *rendszer* fiók
+- Ha nincs proxy van konfigurálva, és proxy részletes információkat, majd távolítsa el a részleteket
+-   Ha proxy van konfigurálva, és helytelenek a proxy adatait, majd győződjön meg róla *Proxy IP* és *port* részletek pontosak.
+- Bezárás *az Internet Explorer*
 
 ## <a name="unable-to-download-vault-credential-file"></a>Nem sikerült letölteni a tároló hitelesítőadat-fájlja
 
@@ -85,34 +105,31 @@ Ha ütemezett biztonsági mentések nem lekérése automatikusan, amíg a manuá
 
 - Ellenőrizze az Online biztonsági mentés állapotának beállítása **engedélyezése**. Ellenőrizze, hogy az állapot hajtsa végre az alábbi:
 
-  - Lépjen a **vezérlőpultot** > **felügyeleti eszközök** > **Feladatütemező**.
-    - Bontsa ki a **Microsoft**, és válassza ki **Online biztonsági mentés**.
+  - Nyissa meg **Feladatütemező** csomópontot **Microsoft**, és válassza ki **Online biztonsági mentés**.
   - Kattintson duplán a **Microsoft-OnlineBackup**, és nyissa meg a **eseményindítók** fülre.
-  - Győződjön meg arról, ha az állapot értéke **engedélyezve**. Ha nem, válassza ki a **szerkesztése**, és válassza ki a **engedélyezve** jelölőnégyzetet, majd kattintson **OK**.
+  - Győződjön meg arról, ha az állapot értéke **engedélyezve**. Ha nem fut, majd válassza ki **szerkesztése** > **engedélyezve** jelölőnégyzetet, majd kattintson **OK**.
 
-- Győződjön meg, hogy a feladat futtatásához a kiválasztott felhasználói fiók vagy **rendszer** vagy **a helyi Rendszergazdák csoport** a kiszolgálón. A felhasználói fiók ellenőrzéséhez nyissa meg a **általános** fülre és ellenőrizze a **biztonsági beállítások**.
+- Győződjön meg, hogy a feladat futtatásához a kiválasztott felhasználói fiók vagy **rendszer** vagy **a helyi Rendszergazdák csoport** a kiszolgálón. A felhasználói fiók ellenőrzéséhez nyissa meg a **általános** fülre és ellenőrizze a **biztonsági** beállítások.
 
-- Tekintse meg, ha a PowerShell 3.0-s vagy újabb verziója telepítve van-e a kiszolgálón. A PowerShell-verziójának ellenőrzéséhez futtassa a következő parancsot, és ellenőrizze, hogy a *fő* verziószáma 3-nál nagyobb vagy egyenlő.
+- Győződjön meg arról, a PowerShell 3.0-s vagy újabb verziója telepítve van a kiszolgálón. A PowerShell-verziójának ellenőrzéséhez futtassa a következő parancsot, és ellenőrizze, hogy a *fő* verziószáma 3-nál nagyobb vagy egyenlő.
 
   `$PSVersionTable.PSVersion`
 
-- A következő elérési út része-e a *PSMODULEPATH* környezeti változót.
+- Győződjön meg arról, a következő elérési út része a *PSMODULEPATH* környezeti változó
 
   `<MARS agent installation path>\Microsoft Azure Recovery Services Agent\bin\Modules\MSOnlineBackup`
 
-- Ha a PowerShell végrehajtási szabályzata a *LocalMachine* van beállítva a korlátozott, a PowerShell-parancsmag, amely elindítja a biztonsági mentési feladat sikertelen lehet. Futtassa az alábbi parancsokat emelt jogosultságszintű módban, és a végrehajtási házirend beállítására vagy *Unrestricted* vagy *RemoteSigned*.
+- Ha a PowerShell végrehajtási szabályzata a *LocalMachine* van beállítva a korlátozott, a PowerShell-parancsmag, amely elindítja a biztonsági mentési feladat sikertelen lehet. Futtassa az alábbi parancsokat emelt jogosultságszintű módban, és a végrehajtási házirend beállítására vagy *Unrestricted* vagy *RemoteSigned*
 
   `PS C:\WINDOWS\system32> Get-ExecutionPolicy -List`
 
   `PS C:\WINDOWS\system32> Set-ExecutionPolicy Unrestricted`
 
-- Győződjön meg, hogy a kiszolgáló újra lett indítva a backup-ügynök telepítése után
+- Gondoskodjon, hogy nem hiányzik vagy sérült állapotba kerül **PowerShell** modul **MSonlineBackup**. Abban az esetben minden olyan fájl hiányzik vagy sérült, oldja meg a probléma hajtsa végre az alábbi:
 
-- Gondoskodjon, hogy nem hiányzik vagy sérült állapotba kerül **PowerShell** modul **MSonlineBackup**. Szükség esetén minden olyan fájl hiányzik vagy sérült, oldja meg a probléma hajtsa végre az alábbi:
-
-  - Másolja a MSOnlineBackup mappájában található a MARS-ügynök működik megfelelően, hogy egy másik gépen (Windows 2008 R2) *(C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules)* elérési útja.
+  - Másolja az MSOnlineBackup mappát a MARS-ügynök működik megfelelően, hogy bármely gépről *(C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules)* elérési útja.
   - Illessze be ezt a problémás gép elérési útja *(C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules)* .
-  - Ha **MSOnlineBackup** mappa már létezik-e a gépen, beillesztése és cseréje a tartalomfájlokat, azon belül.
+  - Ha **MSOnlineBackup** mappa már létezik a gépen, illessze be vagy cserélje le a tartalomfájlokat, azon belül.
 
 
 > [!TIP]

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: alkohli
 ms.openlocfilehash: c2803ba598895834bb197f4a06ff0635354fcaca
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64680898"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Fejlesztés a C# áthelyezni a fájlokat a Data Box Edge IoT Edge-modul
@@ -98,28 +98,28 @@ Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
     1. Válassza ki azt a mappát, ahol a megoldást létre szeretné hozni.
     2. Adja meg a megoldás nevét, vagy fogadja el az alapértelmezett **EdgeSolution** nevet.
     
-        ![1. új megoldás létrehozása](./media/data-box-edge-create-iot-edge-module/create-new-solution-1.png)
+        ![1\. új megoldás létrehozása](./media/data-box-edge-create-iot-edge-module/create-new-solution-1.png)
 
     3. A modul sablonjaként válassza a **C# modult**.
     4. Az alapértelmezett modulnév cserélje le a hozzárendelni kívánt név, ebben az esetben **FileCopyModule**.
     
-        ![2. új megoldás létrehozása](./media/data-box-edge-create-iot-edge-module/create-new-solution-2.png)
+        ![2\. új megoldás létrehozása](./media/data-box-edge-create-iot-edge-module/create-new-solution-2.png)
 
     5. Adja meg a tároló-beállításjegyzékbe, amelyet az előző szakaszban a lemezképtárból, az első modulhoz. Cserélje le a **localhost:5000** értéket a bejelentkezési kiszolgáló kimásolt értékére.
 
         Néz ki a végső karakterláncban `<Login server name>/<Module name>`. Ebben a példában a karakterlánc van: `mycontreg2.azurecr.io/filecopymodule`.
 
-        ![3. új megoldás létrehozása](./media/data-box-edge-create-iot-edge-module/create-new-solution-3.png)
+        ![3\. új megoldás létrehozása](./media/data-box-edge-create-iot-edge-module/create-new-solution-3.png)
 
 4. Lépjen a **fájl > mappa megnyitása**.
 
-    ![4. új megoldás létrehozása](./media/data-box-edge-create-iot-edge-module/create-new-solution-4.png)
+    ![4\. új megoldás létrehozása](./media/data-box-edge-create-iot-edge-module/create-new-solution-4.png)
 
 5. Keresse meg, és mutasson a **EdgeSolution** korábban létrehozott mappába. A VS Code-ablak betölti az IoT Edge megoldás munkaterület öt legfelső szintű összetevőit. Nem fogja módosítani a **.vscode** mappában **.gitignore** fájl **.env** fájlt, és a **deployment.template.json** ebben a cikkben.
     
     Az egyetlen olyan összetevő, amely módosítja az a modulokat mappa. Ebben a mappában megtalálja a C#-kódot a modul és a Docker-fájlok a modul, mint a tárolórendszerkép létrehozásához.
 
-    ![5. új megoldás létrehozása](./media/data-box-edge-create-iot-edge-module/create-new-solution-5.png)
+    ![5\. új megoldás létrehozása](./media/data-box-edge-create-iot-edge-module/create-new-solution-5.png)
 
 ### <a name="update-the-module-with-custom-code"></a>A modul módosítása egyéni kóddal
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 60ec322758a3c3b83e7b24cfba37daaec02fc4c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: df1d70f895e2e0a81344cf2a4e8e2d9963c951fa
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60273940"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100582"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>Oktatóanyag: Az Azure Active Directory-integráció Igloo szoftverrel
 
@@ -54,7 +54,7 @@ Az Azure AD-be Igloo szoftver integráció konfigurálásához, kell Igloo szoft
 
 **Igloo szoftver hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

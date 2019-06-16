@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 132711249ffde4a9c49bc997d8c4ebe4d9c74948
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 4f9fff41e4b9043c271d656583fb8b9a11ff3a7a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872544"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052782"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>Gyors útmutató: Beállítása és lekérése a titkos kulcs Azure Key vault használatával a .NET-webalkalmazás
 
@@ -174,7 +174,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --s
 Az alkalmazás futtatásakor meg kell jelennie a titkos kulcs lekért értékének. Az előző parancsban szereplő, még az alkalmazás identitását szolgáltatás engedélyeket ad ehhez **első** és **lista** a kulcstartóra vonatkozó műveleteket.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs szüksége, törölje az erőforráscsoportot, virtuális gép és minden kapcsolódó erőforrás. Ehhez válassza ki az erőforráscsoportot a virtuális Gépet, majd válassza a **törlése**.
+Ha már nincs szüksége, törölje az erőforráscsoportot, virtuális gép és minden kapcsolódó erőforrás. Ehhez válassza ki az erőforráscsoportot, a kulcstartó, és válassza ki **törlése**.
 
 Törölje a key vault használatával a [az keyvault törlése](https://docs.microsoft.com/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-delete) parancsot:
 

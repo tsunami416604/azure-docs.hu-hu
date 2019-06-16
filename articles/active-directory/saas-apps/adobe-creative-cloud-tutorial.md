@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35bd52904ab081e41cb43a346288234c18a7f43b
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 9650389d8ec641af1db0652dd09fbd7f06223956
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65899087"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107351"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>Oktatóanyag: Az Adobe Creative Cloud az Azure Active Directory-integráció
 
@@ -53,7 +53,7 @@ Az Adobe Creative Cloud szolgáltatásban integrálása az Azure AD beállítás
 
 **Az Adobe Creative Cloud szolgáltatásban hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -122,7 +122,7 @@ Konfigurálja az Azure AD egyszeri bejelentkezés az Adobe Creative Cloud, hajts
     |----- | --------- |
     | FirstName | user.givenname |
     | LastName | user.surname |
-    | E-mail-cím | user.mail
+    | E-mail | user.mail
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
@@ -253,7 +253,7 @@ Ahhoz, hogy jelentkezzen be Adobe Creative Cloud az Azure AD-felhasználók, akk
    * Az asztali alkalmazás segédprogram belül > jelentkezzen be
    * Az alkalmazáson belül > Súgó > jelentkezzen be
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
