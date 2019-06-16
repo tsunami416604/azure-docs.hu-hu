@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: annahar
 ms.openlocfilehash: 9654fd66faa1f745f25494e8b54625a92eb1745b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66111625"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>Terheléselosztás több IP-konfiguráció PowerShell-lel
@@ -54,7 +54,7 @@ A következő cikkben ismertetett forgatókönyvben eléréséhez az alábbi lé
     New-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset" -Location "West Central US"
     ```
 
-4. Kövesse az utasításokat lépéseket 3 – 5 a [Windows virtuális gép létrehozása](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json) cikk egyetlen hálózati adapterrel. a virtuális gép létrehozásának előkészítése 6.1-es lépés végrehajtása, és használja a következő lépés 6.2 helyett:
+4. Kövesse az utasításokat lépéseket 3 – 5 a [Windows virtuális gép létrehozása](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json) cikk egyetlen hálózati adapterrel. a virtuális gép létrehozásának előkészítése 6\.1-es lépés végrehajtása, és használja a következő lépés 6.2 helyett:
 
     ```powershell
     $availset = Get-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset"

@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 03/12/2019
 ms.author: shvija
-ms.openlocfilehash: 7b5a62f81238d1ae2b627c395613066350b36efe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 15912ce2e100a4317e775d72972ca6eacfac0d42
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60343443"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080539"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Virtuális hálózati Szolgáltatásvégpontok használata az Azure Event hubs szolgáltatással
 
@@ -71,13 +71,13 @@ Sablon paraméterei:
 
 * **namespaceName**: Event Hubs-névtér.
 * **vnetRuleName**: A létrehozandó virtuális hálózati szabály neve.
-* **virtualNetworkingSubnetId**: A virtuális hálózat alhálózatához; teljesen minősített erőforrás-kezelő elérési útja Ha például `subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` az alapértelmezett alhálózat egy virtuális hálózat.
+* **virtualNetworkingSubnetId**: A virtuális hálózat alhálózatához; teljesen minősített erőforrás-kezelő elérési útja Ha például `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` az alapértelmezett alhálózat egy virtuális hálózat.
 
 > [!NOTE]
 > Nincsenek Megtagadás szabályok lehetséges, amíg az Azure Resource Manager-sablon rendelkezik-e beállítva alapértelmezett művelet **"Engedélyezés"** amely nem korlátozza a kapcsolatokat.
 > Amikor a virtuális hálózathoz vagy a tűzfalak szabályokat, hogy módosítania kell a ***"defaultAction"***
 > 
-> forrás:
+> from
 > ```json
 > "defaultAction": "Allow"
 > ```

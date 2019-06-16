@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/15/2018
 ms.openlocfilehash: 506076e2d9b171e1ec1ff604519cbbfbe4339e87
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66733066"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Az Azure Logic Apps és Microsoft Flow munkafolyamat-definíciós nyelv-funkciók dokumentációja
@@ -109,7 +109,7 @@ Gyűjtemények, általában tömbök, karakterláncok és egyes esetekben szót�
 | [első](../logic-apps/workflow-definition-language-functions-reference.md#first) | Az első elem visszaadása egy gyűjteményt. |
 | [Metszet](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Vissza, amely rendelkezik *csak* a gyakori elemek a megadott gyűjtemények között. |
 | [Elem](../logic-apps/workflow-definition-language-functions-reference.md#item) | Ismétlődő műveletet keresztül egy tömb, belül vissza az aktuális elem a tömbben a művelet aktuális iteráció során. |
-| [csatlakozás](../logic-apps/workflow-definition-language-functions-reference.md#join) | Adja vissza, amely rendelkezik *összes* elemet a tömb a megadott karakter választja el. |
+| [join](../logic-apps/workflow-definition-language-functions-reference.md#join) | Adja vissza, amely rendelkezik *összes* elemet a tömb a megadott karakter választja el. |
 | [last](../logic-apps/workflow-definition-language-functions-reference.md#last) | Az utolsó elem visszaadása egy gyűjteményt. |
 | [Hossza](../logic-apps/workflow-definition-language-functions-reference.md#length) | A tömb vagy karakterlánc elemek számának visszaadása. |
 | [skip](../logic-apps/workflow-definition-language-functions-reference.md#skip) | A gyűjtemény elejéről eltávolítandó elemek, és vissza *összes többi* elemek. |
@@ -1008,7 +1008,7 @@ body('Get_user')
 
 <a name="bool"></a>
 
-### <a name="bool"></a>logikai
+### <a name="bool"></a>bool
 
 A logikai értéket verziót adja vissza.
 
@@ -1813,7 +1813,7 @@ first(createArray(0, 1, 2))
 
 <a name="float"></a>
 
-### <a name="float"></a>lebegőpontos
+### <a name="float"></a>float
 
 Egy karakterlánc verziót lebegőpontos szám átalakítása egy tényleges lebegőpontos számot.
 E funkció használatához csak akkor, ha egyéni paraméterek átadása egy alkalmazáshoz, például egy logikai alkalmazásban vagy folyamatban.
@@ -2953,7 +2953,7 @@ or(equals(1, 2), equals(1, 3))
 
 <a name="parameters"></a>
 
-### <a name="parameters"></a>paraméterek
+### <a name="parameters"></a>parameters
 
 A munkafolyamat-definíció leírt paraméter értékének visszaadása.
 
@@ -4287,7 +4287,7 @@ Az eredmény tömb azokkal a csomópontokkal, amelyek megfelelnek a következő 
 
 *2. példa*
 
-1. példa az alábbi, ebben a példában megkeresi a megfelelő csomópontok a `<count></count>` csomópontot, és hozzáadja az adott csomópont értékei a `sum()` függvény:
+1\. példa az alábbi, ebben a példában megkeresi a megfelelő csomópontok a `<count></count>` csomópontot, és hozzáadja az adott csomópont értékei a `sum()` függvény:
 
 `xpath(xml(parameters('items')), 'sum(/produce/item/count)')`
 

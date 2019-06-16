@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 39b7d251f1d6d75ac22d50f1b62a3581f9d343c7
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 0cf318161bff8950280fc5a8b007e08ef683ad18
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65890372"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67090772"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>Oktatóanyag: Az Azure Active Directory integrációja az Shmoop az iskolák
 
@@ -55,7 +55,7 @@ Az Azure AD-be az iskola Shmoop integráció konfigurálásához, hozzá kell Sh
 
 **Az iskolák Shmoop hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -125,7 +125,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Shmoop az iskolák, 
 
     | Name (Név) |  Adatforrás-attribútum|
     | --------- | --------------- |
-    | szerepkör      | user.assignedroles |
+    | role      | user.assignedroles |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
@@ -211,7 +211,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó Shmoop az iskolák jön 
 > [!NOTE]
 > Ha manuálisan hozzon létre egy felhasználót van szüksége, lépjen kapcsolatba a [Shmoop az iskolák támogatási csoportjának](mailto:support@shmoop.com).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

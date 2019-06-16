@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.openlocfilehash: 17c0d19ad0c4a846d5f75905fe9072f2fe0e0f78
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66386768"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>A központi felhasználói felület konfigurálása
@@ -148,7 +148,7 @@ A következő konfiguráció látható, ha rákattint **speciális konfiguráci�
 
 A következő konfigurációk láthatók, ha rákattint **speciális konfigurációk megjelenítése**.  
 
-|1. oszlop  |Column2  |
+|1\. oszlop  |Column2  |
 |---------|---------|
 |Keresési mező szöveg helyőrzője   | Megjelenik a keresési mezőbe megelőzően a bemeneti szöveg.        |
 |Cím hivatkozás URL-címe    |A cím hivatkozás céljához.         |

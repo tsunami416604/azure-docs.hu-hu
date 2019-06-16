@@ -2,35 +2,60 @@
 title: Több példány Azure-erőforrások üzembe helyezése |} A Microsoft Docs
 description: A másolási műveletek és tömbök használata az Azure Resource Manager-sablon újrafuttathatja többször erőforrások üzembe helyezésekor.
 services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-editor: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/01/2019
+ms.date: 06/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 05b68fde30587967f65ee362344eea9a258f89a7
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 99fd4215de4dd118558acc008fcfa6490ea0093d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205972"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66807380"
 ---
-# <a name="deploy-more-than-one-instance-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Egynél több példányát egy erőforrást vagy tulajdonság frissítése az Azure Resource Manager-sablonok üzembe helyezése
+# <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Erőforrás, tulajdonság vagy változó iteráció az Azure Resource Manager-sablonokban
 
-Ez a cikk bemutatja, hogyan pedig ismétlést állítunk be az Azure Resource Manager-sablon egynél több példányának erőforrás létrehozásához. Ha meg kell adnia e egy erőforrás üzembe van helyezve egyáltalán, lásd: [feltétel elem](resource-group-authoring-templates.md#condition).
+Ez a cikk bemutatja, hogyan hozhat létre egy erőforrás, változó vagy tulajdonság egynél több példányát az Azure Resource Manager-sablonban. Több példány létrehozásához adja hozzá a `copy` objektum, melyet a sablon.
 
-Foglalkozó oktatóanyagért lásd: [oktatóanyag: létrehozása a Resource Manager-sablonokkal több erőforráspéldány létrehozásával](./resource-manager-tutorial-create-multiple-instances.md).
+Ha egy erőforrást használ, a másolási objektum formátuma a következő:
 
+```json
+"copy": {
+    "name": "<name-of-loop>",
+    "count": <number-of-iterations>,
+    "mode": "serial" <or> "parallel",
+    "batchSize": <number-to-deploy-serially>
+}
+```
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Ha egy változót vagy a tulajdonságot használja, a másolási objektum formátuma a következő:
+
+```json
+"copy": [
+  {
+      "name": "<name-of-loop>",
+      "count": <number-of-iterations>,
+      "input": <values-for-the-property-or-variable>
+  }
+]
+```
+
+Mindkét használja ez a cikk részletesen ismerteti. Foglalkozó oktatóanyagért lásd: [oktatóanyag: létrehozása a Resource Manager-sablonokkal több erőforráspéldány létrehozásával](./resource-manager-tutorial-create-multiple-instances.md).
+
+Ha meg kell adnia e egy erőforrás üzembe van helyezve egyáltalán, lásd: [feltétel elem](resource-group-authoring-templates.md#condition).
+
+## <a name="copy-limits"></a>Másolja a korlátok
+
+Adja meg az ismétlések száma, megad egy értéket a count tulajdonság. A szám legfeljebb 800.
+
+A szám nem lehet negatív szám. Ha telepít egy sablont, amely a REST API-verzió **2019-05-10** vagy újabb, beállíthatja száma nulla. A REST API korábbi verziói nem támogatják a száma nulla. Jelenleg az Azure CLI vagy a PowerShell nem támogatja a nulla, a count, azonban, hogy támogatni fogja egy későbbi kiadásban.
+
+A számláló a korlátok ugyanazok, hogy egy erőforrás, változó vagy tulajdonság használják-e.
 
 ## <a name="resource-iteration"></a>Erőforrás iteráció
 
-Ha egy vagy több erőforrás-példányok létrehozásához, el kell döntenie üzembe helyezés során, adjon hozzá egy `copy` elem az erőforrás típusát. A másolási elemben adja meg a ciklus nevét és iterációinak számát. A hibaszám értéke pozitív egész számnak kell lennie, és nem lehet több mint 800. 
+Ha egy vagy több erőforrás-példányok létrehozásához, el kell döntenie üzembe helyezés során, adjon hozzá egy `copy` elem az erőforrás típusát. A másolási elemben adja meg a ismétlési és a egy nevet a hurok számát.
 
 Az erőforrás létrehozandó többször fogadja a következő formátumban:
 
@@ -71,7 +96,7 @@ Hozza létre ezeket a neveket:
 * storage1
 * storage2.
 
-Az indexérték eltolásához megadhat egy értéket a copyIndex() függvényben. Végrehajtásához az ismétlések száma továbbra is a másolási eleme van megadva, de copyIndex értékét ellensúlyozza a megadott értéket. Tehát a következő példa:
+Az indexérték eltolásához megadhat egy értéket a copyIndex() függvényben. Az ismétlések száma továbbra is a másolási eleme van megadva, de copyIndex értékét ellensúlyozza a megadott értéket. Tehát a következő példa:
 
 ```json
 "name": "[concat('storage', copyIndex(1))]",
@@ -156,7 +181,7 @@ Másolás használatával a beágyazott sablonokkal kapcsolatos további inform�
 Több érték a tulajdonság az erőforrás létrehozásához adja hozzá a `copy` a Tulajdonságok elem a tömbben. Ezt a tömböt tartalmaz objektumokat, és minden objektum rendelkezik a következő tulajdonságokkal:
 
 * név – hozhat létre több értékeit a tulajdonság neve
-* szám – a létrehozni kívánt értékek száma. A hibaszám értéke pozitív egész számnak kell lennie, és nem lehet több mint 800.
+* szám – a létrehozni kívánt értékek száma.
 * bemenet - olyan objektum, amely a tulajdonság hozzárendelése értékeket tartalmazza.  
 
 Az alábbi példa bemutatja, hogyan alkalmazhatja a `copy` dataDisks tulajdonsághoz, a virtuális gépen:

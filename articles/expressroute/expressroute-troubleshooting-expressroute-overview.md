@@ -9,10 +9,10 @@ ms.date: 09/26/2017
 ms.author: rambala
 ms.custom: seodec18
 ms.openlocfilehash: 888f4dedf2fda0f54297d42a5f813abf73ded748
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66117906"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Az ExpressRoute-kapcsolat ellenőrzése
@@ -47,7 +47,7 @@ Az ExpressRoute-kapcsolat modell (Cloud Exchange közös elhelyezés, pontok kö
 6.  Virtuális hálózat (VNet) átjáró
 7.  Az Azure-beli virtuális eszközön COMPUTE
 
-A Cloud Exchange közös elhelyezés vagy a pontok közötti Ethernet-kapcsolat kapcsolati modellek használata esetén az ügyfél peremhálózati útválasztója (2) a BGP társviszony-létesítés (5) Msee-hozzák létre. 3. és 4 hálózati pontokat szeretne továbbra is létezik, de lehet némileg átlátszó, 2. rétegbeli eszközök.
+A Cloud Exchange közös elhelyezés vagy a pontok közötti Ethernet-kapcsolat kapcsolati modellek használata esetén az ügyfél peremhálózati útválasztója (2) a BGP társviszony-létesítés (5) Msee-hozzák létre. 3\. és 4 hálózati pontokat szeretne továbbra is létezik, de lehet némileg átlátszó, 2. rétegbeli eszközök.
 
 A-bármely (IPVPN) kapcsolat modellt használja, ha a PEs (MSEE kapcsolódó) (4) szeretné létrehozni a BGP-társviszonyt az Msee (5). Útvonalak majd térjen vissza az ügyfél hálózati az IPVPN szolgáltatás szolgáltató hálózaton keresztül továbbítja.
 
@@ -266,7 +266,7 @@ A Microsoft társviszony-létesítési konfiguráció részletei lekéréséhez 
     Get-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************"
 
 > [!IMPORTANT]
-> 3. rétegbeli társviszonyok a szolgáltató által beállított, ha a portálon vagy a PowerShell segítségével az ExpressRoute-társviszony beállítása felülírja a szolgáltatás-szolgáltató beállításait. A szolgáltató oldalán társviszony-létesítési beállítások alaphelyzetbe állítását igényli a támogatása a service provider. Az ExpressRoute-társviszony csak akkor módosítsa, ha biztos, hogy a szolgáltató biztosítja a csak a 2. rétegbeli szolgáltatásokat!
+> 3\. rétegbeli társviszonyok a szolgáltató által beállított, ha a portálon vagy a PowerShell segítségével az ExpressRoute-társviszony beállítása felülírja a szolgáltatás-szolgáltató beállításait. A szolgáltató oldalán társviszony-létesítési beállítások alaphelyzetbe állítását igényli a támogatása a service provider. Az ExpressRoute-társviszony csak akkor módosítsa, ha biztos, hogy a szolgáltató biztosítja a csak a 2. rétegbeli szolgáltatásokat!
 >
 >
 

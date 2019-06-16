@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/25/2018
 ms.openlocfilehash: fbb2458e73330a09124c00cebe3eb7bcaba5408d
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65951498"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Bevezetés az Azure SQL Database időbeli Verziózású táblák használatába
@@ -33,7 +33,7 @@ Ebben a forgatókönyvben az adatbázis-modell nagyon egyszerű – felhasznál�
 
 Szerencsére a nem kell minden erőfeszítés helyezni az alkalmazást, hogy a tevékenység adatainak kezelése. Az időbeli Verziózású táblák Ez a folyamat automatizált - webhely a tervezés során több időt az adatok elemzése, maga összpontosíthat teljes rugalmasságot biztosít. A következőket kell tennie dolog, hogy ellenőrizze, hogy **WebSiteInfo** tábla van konfigurálva, [historikus rendszerverzióval ellátott](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_0). A pontos lépések, hogy az időbeli Verziózású táblák ebben a forgatókönyvben az alábbiakban tekintheti át.
 
-## <a name="step-1-configure-tables-as-temporal"></a>1. lépés: Historikus táblák konfigurálása
+## <a name="step-1-configure-tables-as-temporal"></a>1\. lépés: Historikus táblák konfigurálása
 Attól függően, hogy kezdve az új fejlesztési vagy meglévő alkalmazás frissítéséhez fog historikus táblák létrehozása vagy módosíthatja a meglévőket historikus attribútumok hozzáadásával. Általános esetben az lehet, két vegyesen. Hajtsa végre ezeket a művelet használatával [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) (SSMS), [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) (SSDT) vagy más Transact-SQL fejlesztési eszköz.
 
 > [!IMPORTANT]
@@ -106,7 +106,7 @@ ON dbo.WebsiteUserInfoHistory
 WITH (DROP_EXISTING = ON); 
 ```
 
-## <a name="step-2-run-your-workload-regularly"></a>2. lépés: Rendszeresen futtassa a számítási feladatok
+## <a name="step-2-run-your-workload-regularly"></a>2\. lépés: Rendszeresen futtassa a számítási feladatok
 A fő időbeli Verziózású táblák előnye, hogy nem kell módosítani, vagy módosítsa oly módon, amely a change tracking végrehajtani a webhely. Létrehozása után a Historikus táblák transzparens módon megőrizni sor korábbi verziók, minden alkalommal, amikor módosításokat végez az adatok. 
 
 Ebben a konkrét esetben automatikus változáskövetés használatához, csak frissítsük oszlop **PagesVisited** minden alkalommal, amikor egy felhasználó befejezi a munkamenetet a webhelyen:
@@ -120,7 +120,7 @@ Fontos, és figyelje meg, hogy a frissítés lekérdezés nem kell tudnia a pont
 
 ![TemporalArchitecture](./media/sql-database-temporal-tables/AzureTemporal5.png)
 
-## <a name="step-3-perform-historical-data-analysis"></a>3. lépés: Hajtsa végre az előzményadatok elemzése
+## <a name="step-3-perform-historical-data-analysis"></a>3\. lépés: Hajtsa végre az előzményadatok elemzése
 Most már engedélyezve van a historikus rendszerverzió, előzményadatok elemzése esetén távolabbi, csak egy lekérdezést. Ez a cikk néhány példát, amely gyakori helyzetek elemzés – minden részleteket ismerhet meg, különböző lehetőségek bevezetett biztosít a [FOR SYSTEM_TIME](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_3) záradékban.
 
 A felső 10 felhasználóra megtekintett weblapok kezdődően egy órával ezelőtt történt száma alapján rendezve megtekintéséhez futtassa a lekérdezést:

@@ -10,10 +10,10 @@ ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
 ms.openlocfilehash: a1bb5534d2f98a4e5143038ab1d5fbbcc76184fe
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66133190"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Előkészítése az Update Management, Change Tracking és Inventory megoldásainak
@@ -65,7 +65,7 @@ A Frissítésfelügyeleti vagy a Change Tracking és Inventory megoldásainak sz
 
 Az Automation-fiókjában keresse meg és válassza **mentett keresések** alatt **általános**. A két mentett keresések, ezek a megoldások által használt az alábbi táblázatban láthatók:
 
-|Name (Név)     |Category  |Aliasnév  |
+|Name (Név)     |Category  |Alias  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  Change Tracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Frissítések        | Updates__MicrosoftDefaultComputerGroup         |

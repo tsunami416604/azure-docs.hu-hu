@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: v-pawal
 ms.openlocfilehash: cb15ae375f412a66b9d7939b6a580ebb95f2f7a8
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66515100"
 ---
 # <a name="customize-your-text-translations"></a>A szöveg fordítások testreszabása
@@ -59,7 +59,7 @@ További információt a rendelkezésre álló adatok alapján testreszabási k�
 ## <a name="collaborative-translations-framework"></a>Együttműködésen alapuló fordítások keretrendszer
 
 > [!NOTE]
-> 2018. február 1. AddTranslation() és AddTranslationArray() nem lesznek elérhetők a Translator Text API V2.0 való használatra. Ezek a metódusok sikertelen lesz, és semmi sem lesz írva. A Translator Text API 3.0-s verzió nem támogatja ezeket a metódusokat.
+> 2018\. február 1. AddTranslation() és AddTranslationArray() nem lesznek elérhetők a Translator Text API V2.0 való használatra. Ezek a metódusok sikertelen lesz, és semmi sem lesz írva. A Translator Text API 3.0-s verzió nem támogatja ezeket a metódusokat.
 
 ## <a name="next-steps"></a>További lépések
 

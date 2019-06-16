@@ -12,10 +12,10 @@ ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
 ms.openlocfilehash: f0faad91e9e3ff9384dcae57ed27c21fa21946b5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64573773"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>A prediktív karbantartási megoldásokat az Azure AI útmutatója
@@ -229,11 +229,11 @@ Az adatok előkészítési erőfeszítéseket eddig tárgyalt folyamatban vannak
 
 | Eszközazonosító | Time | \<Oszlopok funkció > | Címke |
 | ---- | ---- | --- | --- |
-| A123 |1. napi | . . . | . |
-| A123 |2. napon | . . . | . |
+| A123 |1\. napi | . . . | . |
+| A123 |2\. napon | . . . | . |
 | ...  |...   | . . . | . |
-| B234 |1. napi | . . . | . |
-| B234 |2. napon | . . . | . |
+| B234 |1\. napi | . . . | . |
+| B234 |2\. napon | . . . | . |
 | ...  |...   | . . . | . |
 
 Az utolsó lépés funkciófejlesztési a **címkézés** a cél változó. Ez a folyamat szolgáltatás a modellezési technika függ. Viszont a modellezési módszer az üzleti probléma megoldására és a rendelkezésre álló adatok jellegétől függ. A következő szakaszban tárgyalt címkézést.
@@ -291,7 +291,7 @@ Itt a kérdés van: "Mi a valószínűsége annak, hogy egy eszköz meghiúsul a
 
 ![5. ábra Hiba ideje előrejelzési többosztályos osztályozási címkék](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png) 5. ábra. Hiba ideje előrejelzési többcsoportos besorolási címkézés
 
-Itt a kérdés van: "Mi a valószínűsége annak, hogy az eszköz meghiúsul a következő alapvető ok/probléma miatt időegységben X _P<sub>i</sub>_?" ahol _i_ kiválthatja a száma. A kérdés, a Címke X rekordokat egy eszköz, a meghibásodás előtt válaszolnia "alapvető ok miatt sikertelen about _P<sub>i</sub>_" (címke = _P<sub>i</sub>_). Minden más rögzíti, hogy "normál" címke (label = 0). Ez a módszer a címkék is kategorikus (lásd a 6. ábra).
+Itt a kérdés van: "Mi a valószínűsége annak, hogy az eszköz meghiúsul a következő alapvető ok/probléma miatt időegységben X _P<sub>i</sub>_ ?" ahol _i_ kiválthatja a száma. A kérdés, a Címke X rekordokat egy eszköz, a meghibásodás előtt válaszolnia "alapvető ok miatt sikertelen about _P<sub>i</sub>_ " (címke = _P<sub>i</sub>_ ). Minden más rögzíti, hogy "normál" címke (label = 0). Ez a módszer a címkék is kategorikus (lásd a 6. ábra).
 
 ![6. ábra Alapvető ok többosztályos osztályozási címkék előrejelzési](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png) 6. ábra. Alapvető ok előrejelzési többcsoportos besorolási címkézés
 
@@ -327,7 +327,7 @@ Ez a szakasz ismerteti az időfüggő split megvalósításához ajánlott eljá
 
 Tegyük fel, az időbélyegzővel események például a különféle érzékelőktől származó mérések adatfolyam. Adja meg a funkciók és címkék a tanítási és tesztelési példák több esemény tartalmazó időkereteknek keresztül. Például a bináris osztályozási funkciói elmúlt események alapján hozzon létre, és címkék alapján az "X" egységet jövőbeli időpontot a jövőbeni események létrehozása (a következő szakaszokban talál a [jellemzőkiemelés](#feature-engineering) és a modellezési technikák). A címkézési időkereten egy példa, így később, mint az időkeretet funkcióját származnak.
 
-Időfüggő felosztása, válasszon egy _képzés a megszakítási idő T<sub>c</sub>_  , amikor egy modell betanításához hiperparaméterek lehetőségeire az előzményadatok T akár a<sub>c</sub>. Jövőbeli címkék, amely nem T kiszivárgását elkerülése érdekében<sub>c</sub> a betanítási adatok, válassza ki a legújabb képzési példák címke, x idő előtt T egységek<sub>c</sub>. 7. ábra a példában minden egyes négyzeten egy rekordot a az adatkészlet, ahol funkciók és címkék számítja ki a fent leírt módon. Az ábra bemutatja a rekordokat, amelyek kell képzés és egy tesztelési X = 2 és W = 3:
+Időfüggő felosztása, válasszon egy _képzés a megszakítási idő T<sub>c</sub>_  , amikor egy modell betanításához hiperparaméterek lehetőségeire az előzményadatok T akár a<sub>c</sub>. Jövőbeli címkék, amely nem T kiszivárgását elkerülése érdekében<sub>c</sub> a betanítási adatok, válassza ki a legújabb képzési példák címke, x idő előtt T egységek<sub>c</sub>. 7\. ábra a példában minden egyes négyzeten egy rekordot a az adatkészlet, ahol funkciók és címkék számítja ki a fent leírt módon. Az ábra bemutatja a rekordokat, amelyek kell képzés és egy tesztelési X = 2 és W = 3:
 
 ![7. ábra Bináris osztályozás felosztást időfüggő](./media/cortana-analytics-playbook-predictive-maintenance/time-dependent-split-for-binary-classification.png) 7. ábra. Bináris osztályozás felosztást időfüggő
 

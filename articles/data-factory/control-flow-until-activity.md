@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 ms.openlocfilehash: 5a053ab213390a12c5d2051a802a1fa98279c344
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66155171"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>UNTIL tevékenység az Azure Data Factoryban
@@ -55,12 +55,12 @@ Until tevékenység ugyanazokat a funkciókat nyújtja, amely egy do-until ciklu
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
 name | Neve a `Until` tevékenység. | String | Igen
-típus | Meg kell **mindaddig, amíg**. | String | Igen
+type | Meg kell **mindaddig, amíg**. | String | Igen
 kifejezés | IGAZ vagy hamis kifejezés | Kifejezés.  | Igen
-időtúllépés | A do-until ciklus időtúllépés történik a megadott időpont után. | karakterlánc. `d.hh:mm:ss` (vagy) `hh:mm:ss`. Az alapértelmezett érték: 7 nap. Maximális érték: 90 napig. | Nem
+timeout | A do-until ciklus időtúllépés történik a megadott időpont után. | karakterlánc. `d.hh:mm:ss` (vagy) `hh:mm:ss`. Az alapértelmezett érték: 7 nap. Maximális érték: 90 napig. | Nem
 Tevékenységek | Mindaddig, amíg a kifejezés eredménye végrehajtott tevékenységek `true`. | Tevékenységek tömbje. |  Igen
 
-## <a name="example-1"></a>1. példa
+## <a name="example-1"></a>1\. példa
 
 > [!NOTE]
 > Ez a szakasz a JSON-definíciók és minta PowerShell-parancsokat a folyamat futtatása biztosít. A részletes utasításokat követve hozzon létre egy Data Factory-folyamatot az Azure PowerShell és a JSON-definíciók bemutatóért lásd: [oktatóanyag: adat-előállító létrehozása az Azure PowerShell-lel](quickstart-create-data-factory-powershell.md).
@@ -116,7 +116,7 @@ Ebben a példában a folyamat két tevékenységet tartalmaz: **Mindaddig, amíg
 
 ```
 
-## <a name="example-2"></a>2. példa 
+## <a name="example-2"></a>2\. példa 
 Ebben a példában szereplő folyamat adatokat másol a kimeneti mappa egy hurokba, és a egy bemeneti mappa. A hurok ér véget, amikor ismételje meg a paraméter értékét HAMIS értékre van állítva, vagy egy perc után időtúllépés.   
 
 ### <a name="pipeline-with-until-activity-adfv2quickstartpipelinejson"></a>Until tevékenység (Adfv2QuickStartPipeline.json) rendelkező folyamat

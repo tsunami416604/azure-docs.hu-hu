@@ -18,10 +18,10 @@ ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f9958356cae3c486ecf68e280f33d63c6a537b14
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66235266"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Használható az MSAL az országos felhőkörnyezet
@@ -59,7 +59,7 @@ Ha nem rendelkezik egy Azure Government-előfizetéssel, hozzon létre egy [ingy
 
 ## <a name="javascript"></a>JavaScript
 
-### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
+### <a name="step-1-register-your-application"></a>1\. lépés: Alkalmazás regisztrálása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.us/).
     
@@ -76,7 +76,7 @@ Ha nem rendelkezik egy Azure Government-előfizetéssel, hozzon létre egy [ingy
 1. A **speciális beállítások**alatt **típusú Implicit engedélyezés**, jelölje be a **azonosító-jogkivonatokat** és **hozzáférési jogkivonatokat** jelölőnégyzeteket. Azonosító-jogkivonatokat és hozzáférési tokenek szükség, mert ez az alkalmazás a felhasználók és a egy API-t kell.
 1. Kattintson a **Mentés** gombra.
 
-### <a name="step-2--set-up-your-web-server-or-project"></a>2. lépés:  A webalkalmazás-kiszolgáló vagy a projekt beállítása
+### <a name="step-2--set-up-your-web-server-or-project"></a>2\. lépés:  A webalkalmazás-kiszolgáló vagy a projekt beállítása
 
 - [Töltse le a projektfájlok](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip) egy helyi webkiszolgálót, például a csomópont számára.
 
@@ -86,11 +86,11 @@ Ha nem rendelkezik egy Azure Government-előfizetéssel, hozzon létre egy [ingy
 
 Folytassa a [konfigurálása a JavaScript SPA](#step-4-configure-your-javascript-spa) a kódminta konfigurálása, futtatása előtt.
 
-### <a name="step-3-use-the-microsoft-authentication-library-to-sign-in-the-user"></a>3. lépés: A Microsoft-hitelesítési tár segítségével a felhasználók bejelentkeztetése
+### <a name="step-3-use-the-microsoft-authentication-library-to-sign-in-the-user"></a>3\. lépés: A Microsoft-hitelesítési tár segítségével a felhasználók bejelentkeztetése
 
 Kövesse lépéseket a [JavaScript oktatóanyag](tutorial-v2-javascript-spa.md#create-your-project) létrehozása a projekthez, és integrálása az MSAL bejelentkezni a felhasználó.
 
-### <a name="step-4-configure-your-javascript-spa"></a>4. lépés: A JavaScript SPA konfigurálása
+### <a name="step-4-configure-your-javascript-spa"></a>4\. lépés: A JavaScript SPA konfigurálása
 
 Az a `index.html` projekt beállítása során létrehozott fájlt, adja hozzá az alkalmazás regisztrációs adatok. Adja meg a következő kódot a felül található a `<script></script>` címkék törzsében a `index.html` fájlt:
 

@@ -9,10 +9,10 @@ ms.date: 11/20/2018
 author: wmengmsft
 ms.author: wmeng
 ms.openlocfilehash: c98cd6054b2e48f4c0c886528653e6d3fda96a34
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66480197"
 ---
 # <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>Az Azure Cosmos DB Table API a Javához készült: Kibocsátási megjegyzések és erőforrások
@@ -46,7 +46,7 @@ A Microsoft legalább értesítést küldenek **12 hónapig** kivonása egy SDK-
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
-| [1.0.0](#1.0.0) |2017. november 15. |--- |
+| [1.0.0](#1.0.0) |2017\. november 15. |--- |
 
 ## <a name="faq"></a>GYIK
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]

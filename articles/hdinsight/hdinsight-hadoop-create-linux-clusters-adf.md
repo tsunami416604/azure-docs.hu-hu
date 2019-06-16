@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.openlocfilehash: 37c9a11b806ff49fce27120d03f67182037dc693
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64726884"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Oktatóanyag: Az Azure Data Factory használatával HDInsight igény szerinti Apache Hadoop-fürtök létrehozása
@@ -262,7 +262,7 @@ Ebben a szakaszban két társított szolgáltatást belül az adat-előállító
     | Fürt nevének előtagja | Adja meg egy értéket, amely az előtaggal fog a data factory által létrehozott összes fürttípusok a. |
     |Előfizetés |A legördülő listából válassza ki előfizetését.|
     | Erőforráscsoport kiválasztása | Válassza ki a létrehozott erőforráscsoportot a korábban használt PowerShell-parancsfájl részeként.|
-    |Válasszon régiót | A legördülő listából válassza ki a régiót.|
+    |Válassza ki a régiót | A legördülő listából válassza ki a régiót.|
     | Az operációs rendszer típusa/fürt SSH-felhasználónév | Adjon meg egy SSH-felhasználónév gyakran `sshuser`. |
     | Az operációs rendszer típusa/fürt SSH-jelszó | Adjon meg egy jelszót az SSH-felhasználó |
     | Operációs rendszer típusa/fürt felhasználó neve | Adjon meg egy fürthöz, gyakran `admin`. |

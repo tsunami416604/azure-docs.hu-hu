@@ -9,10 +9,10 @@ ms.date: 05/22/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 7abd0ac3d95825594dffe385bccc1672d0f71c5f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66142564"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Támogatott adatforrások az Azure Analysis Services
@@ -92,7 +92,7 @@ Csatlakozás helyszíni erőforrásait és Azure-AS-kiszolgálóhoz szükséges 
 
 ## <a name="specifying-a-different-provider"></a>Adjon meg egy másik szolgáltató
 
-Az Azure Analysis Services adatmodellek szükség lehet különböző adatszolgáltatók bizonyos adatforrásokhoz való kapcsolódáskor. Bizonyos esetekben a táblázatos modellek használatával natív szolgáltatók, például az SQL Server Native Client (SQLNCLI11) adatforráshoz csatlakozik hibát adhat vissza. Ha natív szolgáltatók eltérő SQLOLEDB használja, hibaüzenet jelenhet meg: **A szolgáltató nincs regisztrálva a "SQLNCLI11.1"**. Vagy, ha egy DirectQuery-modell helyszíni adatforráshoz csatlakozik, és natív szolgáltató használata, hibaüzenet jelenik: **Hiba történt a létrehozásakor OLE DB sorban állítsa be. Helytelen szintaxis közelében "LIMIT"**.
+Az Azure Analysis Services adatmodellek szükség lehet különböző adatszolgáltatók bizonyos adatforrásokhoz való kapcsolódáskor. Bizonyos esetekben a táblázatos modellek használatával natív szolgáltatók, például az SQL Server Native Client (SQLNCLI11) adatforráshoz csatlakozik hibát adhat vissza. Ha natív szolgáltatók eltérő SQLOLEDB használja, hibaüzenet jelenhet meg: **A szolgáltató nincs regisztrálva a "SQLNCLI11.1"** . Vagy, ha egy DirectQuery-modell helyszíni adatforráshoz csatlakozik, és natív szolgáltató használata, hibaüzenet jelenik: **Hiba történt a létrehozásakor OLE DB sorban állítsa be. Helytelen szintaxis közelében "LIMIT"** .
 
 Egy helyszíni SQL Server Analysis Services táblázatos modell az Azure Analysis Services áttelepítésekor lehet módosítania kell a szolgáltatót.
 

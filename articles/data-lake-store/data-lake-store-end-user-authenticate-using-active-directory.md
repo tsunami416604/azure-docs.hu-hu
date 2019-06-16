@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 4c2b774c304e46f9fc68f3beaf64218e614ecad1
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66234059"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Végfelhasználói hitelesítés az Azure Data Lake Storage Gen1 Azure Active Directory használatával
@@ -72,7 +72,7 @@ Az alkalmazás az Azure AD közvetlenül biztosíthat felhasználói hitelesít�
 * Delegált engedélyek beállítása
 
 
-## <a name="step-1-create-an-active-directory-native-application"></a>1. lépés: Az Active Directory natív alkalmazás létrehozása
+## <a name="step-1-create-an-active-directory-native-application"></a>1\. lépés: Az Active Directory natív alkalmazás létrehozása
 
 Létrehozhat és konfigurálhat egy natív Azure AD-alkalmazást, a végfelhasználói hitelesítés a Data Lake Storage Gen1 Azure Active Directory használatával. Útmutatásért lásd: [hozzon létre egy Azure AD-alkalmazást](../active-directory/develop/howto-create-service-principal-portal.md).
 
@@ -80,7 +80,7 @@ A hivatkozás utasításait, miközben mindenképpen jelölje ki **natív** alka
 
 ![Webalkalmazás létrehozása](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-create-native-app.png "natív alkalmazás létrehozása")
 
-## <a name="step-2-get-application-id-and-redirect-uri"></a>2. lépés: Alkalmazás Azonosítójának lekéréséhez és átirányítási URI
+## <a name="step-2-get-application-id-and-redirect-uri"></a>2\. lépés: Alkalmazás Azonosítójának lekéréséhez és átirányítási URI
 
 Lásd: [alkalmazás Azonosítójának lekéréséhez](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in) lekérni az alkalmazás azonosítója.
 
@@ -95,7 +95,7 @@ Az átirányítási URI azonosító lekéréséhez kövesse az alábbi lépések
 3. Másolja a megjelenített érték.
 
 
-## <a name="step-3-set-permissions"></a>3. lépés: Engedélyek beállítása
+## <a name="step-3-set-permissions"></a>3\. lépés: Engedélyek beállítása
 
 1. Az Azure Portalon, válassza ki a **Azure Active Directory**, kattintson a **alkalmazásregisztrációk**, majd keresse meg és kattintson a létrehozott natív Azure AD-alkalmazást.
 

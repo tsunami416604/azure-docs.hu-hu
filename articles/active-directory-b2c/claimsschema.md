@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: e09c4530fc6dce00e6d807908c7de598422a440b
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66511849"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
@@ -69,7 +69,7 @@ A **DefaultPartnerClaimTypes** tartalmazhatja a következő elemet:
 
 A **protokoll** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | Name (Név) | Igen | Azure AD B2C által támogatott érvényes protokoll neve. Lehetséges értékek:  OAuth1, az OAuth2, egy SAML2, OpenIdConnect, WsFed vagy WsTrust. |
 | PartnerClaimType | Igen | A jogcím típusa használni kívánt nevét. |
@@ -104,7 +104,7 @@ Ennek eredményeképpen az Azure AD B2C által kiállított JWT jogkivonat bocs�
 
 A **maszk** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | `Type` | Igen | Az igényt maszk típusa. A lehetséges értékek: `Simple` vagy `Regex`. A `Simple` érték azt jelzi, hogy egy egyszerű szöveges maszkot a vezető része egy karakterlánc jogcím van hozzárendelve. A `Regex` érték azt jelzi, hogy a teljes karakterlánc jogcím van hozzárendelve egy reguláris kifejezést.  Ha a `Regex` érték van megadva, nem kötelező attribútum kell definiálni a reguláris kifejezés használata. |
 | `Regex` | Nem | Ha **`Type`** értékre van állítva `Regex`, adja meg a reguláris kifejezés használata.
@@ -144,7 +144,7 @@ Az identitás-kezelőfelületi keretrendszer Ez a beállítás csak az első bet
 
 A **korlátozás** elemet tartalmazhatnak a következő attribútumot:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | MergeBehavior | Nem | Egy takar egy szülő szabályzatban ugyanezzel az azonosítóval rendelkező értékeket egyesítési módját. Akkor használja ezt az attribútumot, ha felülírja az alap szabályzatban megadott jogcím. A lehetséges értékek: `Append`, `Prepend`, vagy `ReplaceAll`. A `Append` értéke a szülő házirendben megadott gyűjtemény végére hozzáfűzni adatok gyűjteménye. A `Prepend` értéke a szülő házirendben megadott gyűjtemény előtt az új adatok gyűjteménye. A `ReplaceAll` értéke figyelmen kívül lesz hagyva a szülő házirendben megadott adatok gyűjteménye. |
 
@@ -159,7 +159,7 @@ A **korlátozás** elem a következő elemeket tartalmazza:
 
 A **enumerálás** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | Text | Igen | A megjelenítendő karakterlánc, amely a felhasználói felületen ezt a lehetőséget választja a felhasználó számára látható. |
 |Érték | Igen | A jogcím értéke, amely ezzel a beállítással társítva van. |

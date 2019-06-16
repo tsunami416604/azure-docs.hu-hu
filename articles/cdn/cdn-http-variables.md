@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/09/2018
 ms.author: magattus
 ms.openlocfilehash: d572da27cee33cf546933e55a59c27dac4c1efd9
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66475203"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Az Azure CDN szabálymotorral HTTP változói
@@ -53,7 +53,7 @@ A következő táblázat ismerteti a támogatott HTTP-változókat. Üres érté
 | Lekérdezési karakterlánc | a(z) % {is_args} | Ez a változó értéke megfelelően, hogy a kérelem tartalmaz-e a lekérdezési karakterlánc változik.<br /><br />-Lekérdezési karakterlánc:?<br />– Nincs lekérdezési karakterlánc: NULL | ? |
 | Lekérdezési karakterlánc paramétereként található | %{is_amp} | Ez a változó értéke megfelelően, hogy a kérés tartalmaz-e legalább egy lekérdezési karakterlánc paramétereként változik.<br /><br />-Paraméter találhatók: &<br />-Nincsenek paraméterei: NULL | & |
 | Lekérdezési karakterlánc paraméter értéke | a(z) % {arg_&lt;paraméter&gt;} | A lekérdezési karakterlánc paraméter által azonosított megfelelő értéket adja vissza a &lt;paraméter&gt; kifejezés. | Példa: <br />%{arg_language}<br /><br />Minta lekérdezésikarakterlánc-paramétert: <br />?language=en<br /><br />Érték példa: en |
-| Lekérdezési karakterlánc értéke | a(z) % {query_string} | A kérelem URL-címben meghatározott teljes lekérdezési karakterlánc értékét jelöli. |1. kulcs = 1. érték & 2. kulcs = érték2 & key3 = val3 |
+| Lekérdezési karakterlánc értéke | a(z) % {query_string} | A kérelem URL-címben meghatározott teljes lekérdezési karakterlánc értékét jelöli. |1\. kulcs = 1. érték & 2. kulcs = érték2 & key3 = val3 |
 | Hivatkozó tartomány | %{referring_domain} | Azt jelzi, hogy a tartományt a hivatkozó kérés fejlécében. | <www.google.com> |
 | Régió (kérelmező) | a(z) % {geo_region} | Azt jelzi, hogy az igénylő a régióban (például állam/megye) annak alfanumerikus rövidítése. | CA |
 | Kérelem fejlécének értéke | %{http_RequestHeader} | A kérelem fejlécében RequestHeader kifejezés által azonosított megfelelő értéket adja vissza. <br /><br />Ha a kérelem fejlécében neve tartalmaz egy kötőjellel (például felhasználói ügynök), cserélje le az aláhúzás (például User_Agent).| Példa: % {http_Connection}<br /><br />Mintaérték: Keep-Alive | 

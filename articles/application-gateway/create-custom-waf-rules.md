@@ -8,10 +8,10 @@ ms.service: application-gateway
 ms.date: 6/5/2019
 ms.author: victorh
 ms.openlocfilehash: bb8c50664261814c7d994c9b879972b1e8b846e4
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66689031"
 ---
 # <a name="create-and-use-web-application-firewall-custom-rules"></a>Létrehozhat és használhat egyéni szabályok a webalkalmazási tűzfal
@@ -25,7 +25,7 @@ Ez a cikk bemutatja, néhány példa egyéni szabály létrehozása és használ
 
 ![WAF engedélyezése][fig1]
 
-## <a name="example-1"></a>1. példa
+## <a name="example-1"></a>1\. példa
 
 Tudja, hogy van egy robot nevű *evilbot* , hogy szeretné-e a webhely bejárás letiltására. Ebben az esetben lesz a felhasználói ügynök letiltása *evilbot* a kérelem fejlécében.
 
@@ -125,7 +125,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
   }
 ```
 
-## <a name="example-2"></a>2. példa
+## <a name="example-2"></a>2\. példa
 
 A tartomány 198.168.5.4/24 az IP-címekről érkező összes kérés szeretné.
 
@@ -177,7 +177,7 @@ Itt látható a megfelelő JSON:
 
 Megfelelő CRS szabály: `SecRule REMOTE_ADDR "@ipMatch 192.168.5.4/24" "id:7001,deny"`
 
-## <a name="example-3"></a>3. példa
+## <a name="example-3"></a>3\. példa
 
 Ebben a példában a felhasználói ügynök letiltani kívánt *evilbot*, és a tartomány 192.168.5.4/24 a forgalmat. Ehhez hozzon létre két külön egyezési feltételei, és helyezze őket mindkét ugyanaz a szabály. Ez biztosítja mindkét *evilbot* a felhasználói ügynök fejlécében **és** IP-címeket a tartomány 192.168.5.4/24 le vannak tiltva.
 
@@ -249,7 +249,7 @@ Itt látható a megfelelő JSON:
   } 
 ```
 
-## <a name="example-4"></a>4. példa
+## <a name="example-4"></a>4\. példa
 
 Ebben a példában a letiltása, ha a kérés kívül esik az IP-címtartományt szeretne *192.168.5.4/24*, vagy a böngészőazonosító sztring nem *chrome* (azaz a felhasználó nem használja a Chrome böngészőben). Mivel a logikai használ **vagy**, a két feltétel külön szabályok vannak, az alábbi példában látható módon. *tartozó SajátSzabály1* és *SajátSzabály2 szabály alkalmazására* egyaránt meg kell egyeznie az adatforgalmat.
 
@@ -336,7 +336,7 @@ $rule2 = New-AzApplicationGatewayFirewallCustomRule `
   }
 ```
 
-## <a name="example-5"></a>5. példa
+## <a name="example-5"></a>5\. példa
 
 Egyéni SQLI letiltani kívánt. Azon logika óta Íme **vagy**, és minden érték a a *RequestUri*, minden, a *MatchValues* is lehet vesszővel elválasztott listáját.
 

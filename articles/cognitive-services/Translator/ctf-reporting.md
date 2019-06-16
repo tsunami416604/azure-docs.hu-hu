@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-pawal
 ms.openlocfilehash: 166c152828a91889d7d1d7eb6f8c03dac48172f5
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66389375"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>A Collaborative Translation Framework (CTF) jelentéskészítés használata
@@ -22,7 +22,7 @@ ms.locfileid: "66389375"
 > [!NOTE]
 > Tato metoda se zamítá. Nem érhető a 3.0-s verzió, a Translator Text API.
 > 
-> Az együttműködésen alapuló fordítások Framework (CTF), 2.0-s verziójú, a Translator Text API, a korábban elérhető volt elavult 2018. február 1. A AddTranslation és AddTranslationArray funkciók lehetővé teszik a felhasználók engedélyezhetik a javításokat az együttműködésen alapuló fordítás keretrendszeren keresztül. 2018. január 31. után két függvényekhez nem fogadta el új mondat jelentkezés, és a felhasználók hibaüzenetet kapnak. Ezek a függvények visszavontuk, és nem pótolhatók.
+> Az együttműködésen alapuló fordítások Framework (CTF), 2.0-s verziójú, a Translator Text API, a korábban elérhető volt elavult 2018. február 1. A AddTranslation és AddTranslationArray funkciók lehetővé teszik a felhasználók engedélyezhetik a javításokat az együttműködésen alapuló fordítás keretrendszeren keresztül. 2018\. január 31. után két függvényekhez nem fogadta el új mondat jelentkezés, és a felhasználók hibaüzenetet kapnak. Ezek a függvények visszavontuk, és nem pótolhatók.
 
 Az együttműködési Translation Framework (CTF) Reporting API CTF áruházbeli statisztikák és a tényleges tartalmat adja vissza. Ez az API eltér a GetTranslations() metódus mert azt:
 * A fordított tartalomban és a számuk csak a fiókból (appId vagy az Azure Marketplace-fiók) adja vissza.

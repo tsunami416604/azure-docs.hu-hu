@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan, dwgeo
 ms.openlocfilehash: bc939011f87f03ef1de7e728fc52fc0c9887dd31
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935405"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>Offline FairPlay Streaming iOS-hez 
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Media Services által használt verzióját:"]
 > * [3-as verzió](../latest/offline-fairplay-for-ios.md)
 > * [2-es verzió](media-services-protect-hls-with-offline-fairplay.md)
 
@@ -207,7 +207,7 @@ A következő gyakori kérdések hibaelhárítási segítséget nyújtanak:
 - **Miért, továbbra is játssza le a hang, videó nélkül csak kapcsolat nélküli üzemmódban után adhatok hozzá a csak hangfájlt tartalmazó = false?** Attól függően, a tartalomkézbesítési hálózat (CDN) gyorsítótár fő tervezési a tartalom előfordulhat, hogy gyorsítótárazza. A gyorsítótár kiürítése.
 - **FPS offline üzemmód is támogatott az iOS 11 iOS 10-es mellett?** Igen. Az iOS 10-es és az iOS 11-et FPS kapcsolat nélküli módban támogatott.
 - **Miért nem találom a dokumentum "Offline lejátszási a FairPlay Streaming és HTTP Live Streaming" FPS Server SDK-ban?** FPS Server SDK 4-es verzió, mivel ez a dokumentum egyesítve volt a "FairPlay Streaming programozási útmutatója."
-- **Mi nem az utolsó paraméter alakítson ki FPS offline módra a következő API-t?**
+- **Mi nem az utolsó paraméter alakítson ki FPS offline módra a következő API-t?** 
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
     Ez az API dokumentációjáért lásd: [FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration metódus](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet). A paraméter jelöli a kapcsolat nélküli bérleti egységet óra idejére.
@@ -244,7 +244,7 @@ Boot.xml mintafájl:
 </HLSMoviePackage>
 ```
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Ez a dokumentum tartalmaz a következő lépéseket és információkat FPS kapcsolat nélküli módban végrehajtásához használhatja:
 
 * A Media Services content protection konfigurálása a Media Services .NET API-n keresztül a Media Services dinamikus FairPlay-titkosítás és a FairPlay-licencekkel történő kézbesítés konfigurálja.

@@ -16,19 +16,19 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 929977913fdbf0c6f59d69ec536a2638bca7b97c
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 341f5a30fe03de4c69b5a7e18703931988d2d185
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65232738"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063632"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Oktatóanyag: Leküldéses értesítések küldése Android-eszközök Azure Notification Hubs és a Google Cloud Messaging (elavult)
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 > [!WARNING]
-> 2018. április 10. a Google Google Cloud Messaging (GCM) már elavult. A GCM-kiszolgáló és az ügyfél API-k elavultak, és törlődni fog, amint 2019. május 29. További információkért lásd: [GCM és az FCM gyakran ismételt kérdések](https://developers.google.com/cloud-messaging/faq).
+> 2018\. április 10. a Google Google Cloud Messaging (GCM) már elavult. A GCM-kiszolgáló és az ügyfél API-k elavultak, és törlődni fog, amint 2019. május 29. További információkért lásd: [GCM és az FCM gyakran ismételt kérdések](https://developers.google.com/cloud-messaging/faq).
 
 ## <a name="overview"></a>Áttekintés
 
@@ -110,7 +110,7 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
 
 ### <a name="updating-the-projects-androidmanifestxml"></a>A projekt AndroidManifest.xml frissítése
 
-1. A GCM támogatásának biztosításához hozzon létre egy Példányazonosító-figyelő szolgáltatást a kódban, amely a [regisztrációs jogkivonatok lekérésére](https://developers.google.com/cloud-messaging/android/client#sample-register) szolgál a [Google példányazonosító API-jával](https://developers.google.com/instance-id/). Ebben az oktatóanyagban az osztály neve `MyInstanceIDService`.
+1. A GCM támogatásának biztosításához hozzon létre egy Példányazonosító-figyelő szolgáltatást a kódban, amely a [regisztrációs jogkivonatok lekérésére](https://developers.google.com/cloud-messaging/) szolgál a [Google példányazonosító API-jával](https://developers.google.com/instance-id/). Ebben az oktatóanyagban az osztály neve `MyInstanceIDService`.
 
     Adja hozzá az alábbi szolgáltatásdefiníciót az AndroidManifest.xml fájlhoz, az `<application>` címkén belül. Cserélje le a `<your package>` helyőrzőt az `AndroidManifest.xml` fájl felső részén látható tényleges csomagnévre.
   
@@ -144,7 +144,7 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
     ```
 4. Az `</application>` címke alatt vegye fel az alábbi kötelező GCM-engedélyeket. Cserélje le a `<your package>` helyőrzőt az `AndroidManifest.xml` fájl felső részén látható csomagnévre.
 
-    További információk ezekről az engedélyekről: [GCM-ügyfélalkalmazás beállítása Androidhoz](https://developers.google.com/cloud-messaging/android/client#manifest).
+    További információk ezekről az engedélyekről: [GCM-ügyfélalkalmazás beállítása Androidhoz](https://developers.google.com/cloud-messaging/).
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>

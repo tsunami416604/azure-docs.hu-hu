@@ -14,10 +14,10 @@ ms.workload: NA
 ms.date: 03/22/2019
 ms.author: aljo
 ms.openlocfilehash: c31fc43729bcb58c755959db0c8bc5185b8197f4
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66471409"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-windows"></a>A Windows Azure Service Fabric-fürtcsomópont lemeztitkosítás engedélyezve 
@@ -61,7 +61,7 @@ A virtuálisgép-méretezési csoportot a lemez titkosítási előzetes regisztr
 2. Telepítse a legújabb verzióját a [Azure CLI-vel](/cli/azure/install-azure-cli), amely rendelkezik az új titkosítási parancsait.
 3. Telepítse a legújabb verzióját a [Azure SDK-t az Azure PowerShell](https://github.com/Azure/azure-powershell/releases) kiadás. A virtuális gép méretezési csoport engedélyezése az Azure Disk Encryption parancsmagok a következők ([beállítása](/powershell/module/az.compute/set-azvmssdiskencryptionextension)) titkosítási, lekérése ([első](/powershell/module/az.compute/get-azvmssvmdiskencryption)) titkosítási állapotát, és távolítsa el ([letiltása](/powershell/module/az.compute/disable-azvmssdiskencryption)) a méretezési csoport titkosításának példány beállítása.
 
-| Parancs | Version |  Source  |
+| Parancs | Version |  source  |
 | ------------- |-------------| ------------|
 | Get-AzVmssDiskEncryptionStatus   | 1.0.0 vagy újabb | Az.Compute |
 | Get-AzVmssVMDiskEncryptionStatus   | 1.0.0 vagy újabb | Az.Compute |

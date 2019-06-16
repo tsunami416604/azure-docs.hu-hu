@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
 ms.openlocfilehash: 56aa06ade50f6c0eb1467b1295cbebb907023398
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65209379"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Telepítse és konfigurálja az Azure-beli Linuxos virtuális gép kapcsolódni a távoli asztal
@@ -106,7 +106,7 @@ Hitelesítés után a xfce asztali környezet betöltése, és a következő pé
 Ha a helyi RDP-ügyfél a hálózati szintű hitelesítés (NLA) használ, szükség lehet, hogy kapcsolati beállítás letiltása. XRDP jelenleg nem támogatja a NLA. Alternatív támogató NLA, mint például az RDP-megoldások is megtekintheti [FreeRDP](https://www.freerdp.com).
 
 
-## <a name="troubleshoot"></a>Az eszköz nem tudta a várt módon befejezni a szinkronizálást. A probléma megoldásának módjáról erre az üzenetre kattintva tájékozódhat.
+## <a name="troubleshoot"></a>Hibaelhárítás
 Ha a Linux virtuális Gépet egy távoli asztali ügyfél nem tud csatlakozni, használja a `netstat` a Linux rendszerű virtuális gépen, győződjön meg arról, hogy a virtuális gép figyel az RDP-kapcsolatok a következő:
 
 ```bash

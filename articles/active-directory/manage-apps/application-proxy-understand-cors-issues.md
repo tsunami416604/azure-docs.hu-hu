@@ -12,10 +12,10 @@ ms.date: 05/23/2019
 ms.author: celested
 ms.reviewer: japere
 ms.openlocfilehash: 2b6adcf4231aa44a4f28d277e963efa16de8af81
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66399341"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Megismerheti, és az Azure Active Directory Application Proxy CORS hiba elhárításához nyújthatnak segítséget
@@ -85,7 +85,7 @@ Az eredményül kapott alkalmazás URL-címeket hatékonyan feloldani a CORS-hib
 - https:\//corswebclient-contoso.msappproxy.net/CORSWebService
 - https:\//corswebclient-contoso.msappproxy.net/CORSWebClient
 
-### <a name="option-3-update-http-headers"></a>3. lehetőség: HTTP-fejlécek frissítése
+### <a name="option-3-update-http-headers"></a>3\. lehetőség: HTTP-fejlécek frissítése
 
 Egyéni HTTP-válaszfejléc hozzáadása az eltérő eredetű kérés megfelelően a web service. Webhely Internet Information Services (IIS), az IIS-kezelő használatával módosítsa a fejléc:
 
@@ -106,11 +106,11 @@ X-AspNet-Version: 4.0.30319\
 X-Powered-By: ASP.NET\
 Content-Length: 17
 
-### <a name="option-4-modify-the-app"></a>4. lehetőség: Az alkalmazás módosítása
+### <a name="option-4-modify-the-app"></a>4\. lehetőség: Az alkalmazás módosítása
 
 Módosíthatja az alkalmazások a CORS támogatására az Access-Control-Allow-Origin fejléc, a megfelelő értékekre hozzáadásával. A fejléc hozzáadása módja függ az alkalmazás nyelv. A kód megváltoztatása lehetőség legalább ajánlott, mivel a legtöbb beavatkozást igényel.
 
-### <a name="option-5-extend-the-lifetime-of-the-access-token"></a>5. lehetőség: A hozzáférési jogkivonat élettartama kiterjesztése
+### <a name="option-5-extend-the-lifetime-of-the-access-token"></a>5\. lehetőség: A hozzáférési jogkivonat élettartama kiterjesztése
 
 CORS-problémák nem oldható fel, például ha az alkalmazás átirányítja a felhasználókat az *login.microsoftonline.com* hitelesítést, és a hozzáférési jogkivonat lejár. A CORS hívja, akkor sikertelen lesz. Ebben a forgatókönyvben a megoldás az, nehogy azt a felhasználói munkamenet során lejár, a hozzáférési jogkivonat élettartama kiterjesztése. Ezzel kapcsolatos további információkért lásd: [konfigurálható jogkivonatok élettartamának, az Azure ad-ben](../develop/active-directory-configurable-token-lifetimes.md).
 

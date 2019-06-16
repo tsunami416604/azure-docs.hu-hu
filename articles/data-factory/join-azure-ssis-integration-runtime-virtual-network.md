@@ -13,10 +13,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: 6978b83e66f58e468d9f98394904861c8a4d8bd0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66152768"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Egy Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz
@@ -110,7 +110,7 @@ További információ: [névfeloldás saját DNS-kiszolgálót használó](../vi
 ### <a name="nsg"></a> Hálózati biztonsági csoport
 Ha egy hálózati biztonsági csoport (NSG) megvalósítása az Azure-SSIS integrációs modul által használt alhálózat van szüksége, a bejövő/kimenő forgalom engedélyezése az alábbi portokon keresztül: 
 
-| Direction | Átviteli protokoll | Source | Forrás porttartomány | Célhely | Célporttartomány | Megjegyzések |
+| Direction | Átviteli protokoll | source | Forrás porttartomány | Cél | Célporttartomány | Megjegyzések |
 |---|---|---|---|---|---|---|
 | Bejövő | TCP | AzureCloud<br/>(vagy nagyobb hatókör, például az Internet) | * | VirtualNetwork | 29876-os, a 29877-es portot (ha az integrációs modul csatlakoztatása egy Azure Resource Managerbeli virtuális hálózat) <br/><br/>10100, 20100, 30100-as portokat (ha az integrációs modul csatlakoztatása egy klasszikus virtuális hálózat)| A Data Factory szolgáltatás használ a ezeket a portokat a virtuális hálózatban, az Azure-SSIS integrációs modul csomópontján folytatott kommunikációhoz. <br/><br/> Egy alhálózat-szintű NSG-t hoz létre, vagy sem, hogy Data Factory mindig konfigurálja a hálózati biztonsági csoportok, amelyek az Azure-SSIS integrációs modult. a virtuális gépekhez csatlakoztatott hálózati adapterek (NIC) szintjén Csak az Data Factory IP-címek a megadott porton érkező bejövő forgalmat a NIC-szintű NSG által engedélyezett. Akkor is, ha megnyitja ezeket a portokat az internetes forgalmat az alhálózatok, IP-címek, amelyek nem a Data Factory IP-címek érkező forgalom le van tiltva, a hálózati adapterek szintjén. |
 | Kimenő | TCP | VirtualNetwork | * | AzureCloud<br/>(vagy nagyobb hatókör, például az Internet) | 443 | A virtuális hálózatban, az Azure-SSIS integrációs modul csomópontján el az Azure-szolgáltatások, például az Azure Storage és az Azure Event Hubs ezen a porton. |
@@ -185,7 +185,7 @@ Virtuális hálózat konfigurálása előtt, akkor csatlakozhat egy Azure-SSIS i
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 
-1. Válassza ki **további szolgáltatások**. Állítson be szűrőt, és válassza ki **virtuális hálózatok (klasszikus)**. 
+1. Válassza ki **további szolgáltatások**. Állítson be szűrőt, és válassza ki **virtuális hálózatok (klasszikus)** . 
 
 1. Állítson be szűrőt, és válassza ki a virtuális hálózat a listában. 
 

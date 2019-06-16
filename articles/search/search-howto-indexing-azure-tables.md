@@ -11,10 +11,10 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
 ms.openlocfilehash: bca7c1b9ffe7ac0ab82f4287bba201a78fbf726a
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66755082"
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>Az Azure Search szolgáltatással az Azure Table storage indexelése
@@ -30,7 +30,7 @@ Az Azure Table storage-indexelő beállítása a forrásanyagok használata:
 
 Itt bemutatjuk a folyamatot a REST API-val. 
 
-### <a name="step-1-create-a-datasource"></a>1. lépés: Adatforrás létrehozása
+### <a name="step-1-create-a-datasource"></a>1\. lépés: Adatforrás létrehozása
 
 Egy adatforrás indexelni, a az adatokat, és a házirendeket, amelyek lehetővé teszik az Azure Search hatékony azonosításához az adatok módosítása eléréséhez szükséges hitelesítő adatok megadása
 
@@ -76,7 +76,7 @@ További információ a megosztott tároló eléréséhez aláírásokat, lásd:
 > [!NOTE]
 > Ha a közös hozzáférésű jogosultságkód hitelesítő adatokat használja, szüksége lesz az adatforrás hitelesítő adatainak frissítése rendszeresen megújított jogosultságkódokkal lejárati idejük elkerülése érdekében. Ha a közös hozzáférésű jogosultságkód hitelesítő adatai lejárnak, az indexelő hibaüzenettel meghiúsul egy hasonló "A kapcsolati karakterláncban megadott hitelesítő adatok érvénytelenek, vagy lejárt."  
 
-### <a name="step-2-create-an-index"></a>2. lépés: Index létrehozása
+### <a name="step-2-create-an-index"></a>2\. lépés: Index létrehozása
 Az index egy dokumentumot, az attribútumot, adja meg a mezőket, és egyéb szerkezetek, amelyek formázhatja a keresési élmény.
 
 Index létrehozása:
@@ -95,7 +95,7 @@ Index létrehozása:
 
 Indexek létrehozásával kapcsolatos további információkért lásd: [a Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
-### <a name="step-3-create-an-indexer"></a>3. lépés: Indexelő létrehozása
+### <a name="step-3-create-an-indexer"></a>3\. lépés: Indexelő létrehozása
 Az indexelő a cél keresési indexhez datasource csatlakozik, és biztosítja az Adatfrissítés automatizálásához ütemezés szerint. 
 
 Az index és az adatforrás létrehozása után készen áll az indexelő létrehozása:

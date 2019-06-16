@@ -9,10 +9,10 @@ ms.date: 11/26/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: d9b7296a116ebd06542a53087afbd083dbd3a7eb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64696745"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Az Azure File Sync proxy- és tűzfalbeállításai
@@ -63,7 +63,7 @@ Gépre kiterjedő proxy beállításainak konfigurálásához kövesse az alább
      C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config  
      C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
 
-   - Adja hozzá a < system.net > szakasz a machine.config fájlok (alább a < system.serviceModel > szakaszban).  127.0.01:8888 módosítsa az IP-cím és a proxykiszolgáló portját. 
+   - Adja hozzá a < system.net > szakasz a machine.config fájlok (alább a < system.serviceModel > szakaszban).  127\.0.01:8888 módosítsa az IP-cím és a proxykiszolgáló portját. 
      ```
       <system.net>
         <defaultProxy enabled="true" useDefaultCredentials="true">

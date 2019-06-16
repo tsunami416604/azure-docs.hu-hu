@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: mstephen
 ms.openlocfilehash: 47c9553b4191fe6dbae8d92d75dfae83f191a063
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66234851"
 ---
 # <a name="bind-to-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>Kötést létrehozni biztonságos LDAP (LDAPS) használatával az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
@@ -28,7 +28,7 @@ ms.locfileid: "66234851"
 Teljes [4. feladat – konfigurálja a felügyelt tartomány elérését az internetről érkező DNS](active-directory-ds-ldaps-configure-dns.md).
 
 
-## <a name="task-5-bind-to-the-managed-domain-over-ldap-using-ldpexe"></a>5. feladat: LDAP használatával LDP.exe keresztül kötést létrehozni a felügyelt tartományhoz
+## <a name="task-5-bind-to-the-managed-domain-over-ldap-using-ldpexe"></a>5\. feladat: LDAP használatával LDP.exe keresztül kötést létrehozni a felügyelt tartományhoz
 Használhatja az LDP.exe eszközt, amely tartalmazza a Távoli kiszolgálófelügyelet eszközei csomag kötést létrehozni, és az LDAP kereshet.
 
 Először nyissa meg az LDP, és csatlakozzon ahhoz a felügyelt tartományhoz. Kattintson a **kapcsolat** kattintson **Connect...**  menüjében. Adja meg a felügyelt tartomány DNS-tartománynév. Adja meg a kapcsolatokhoz használandó portot. Az LDAP-kapcsolatokat használja a 389-es portot. LDAPS-kapcsolatok esetén a 636-os portot használja. Kattintson a **OK** a felügyelt tartományhoz csatlakoztatására szolgáló gomb.
@@ -46,7 +46,7 @@ Válassza ki **nézet**, majd válassza ki **fa** menüjében. Az Alap DN mezőt
 További információ - [LDAP-lekérdezés alapjai](https://technet.microsoft.com/library/aa996205.aspx)
 
 
-## <a name="task-6-lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet"></a>6. feladat: Zárolását, így a felügyelt tartomány secure LDAP-hozzáférését az interneten keresztül
+## <a name="task-6-lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet"></a>6\. feladat: Zárolását, így a felügyelt tartomány secure LDAP-hozzáférését az interneten keresztül
 > [!NOTE]
 > Ha LDAPS-t a hozzáférést a felügyelt tartomány nincs engedélyezve az interneten keresztül, hagyja ki ezt a konfigurációs feladatot.
 >

@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: mstephen
 ms.openlocfilehash: 295a991e610e76971413a2abdba1e2fcc5f9eba6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66246689"
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Szinkronizálás az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
@@ -60,7 +60,7 @@ A következő objektumok vagy attribútumok nincsenek szinkronizálva az Azure A
 ## <a name="how-specific-attributes-are-synchronized-to-your-managed-domain"></a>Hogyan adott attribútumok legyenek szinkronizálva a felügyelt tartomány
 A következő táblázat néhány gyakori attribútumok és ismerteti, hogyan akkor a rendszer szinkronizálja a felügyelt tartományra.
 
-| A felügyelt tartomány attribútum | Source | Megjegyzések |
+| A felügyelt tartomány attribútum | source | Megjegyzések |
 |:--- |:--- |:--- |
 | EGYSZERŰ FELHASZNÁLÓNÉV |A felhasználó UPN attribútum az Azure AD-bérlőben |Az egyszerű felhasználónév attribútum az Azure AD-bérlőből szinkronizálása a felügyelt tartományra van. Ezért jelentkezzen be a felügyelt tartományra a legmegbízhatóbb módszer az UPN-használ. |
 | SAMAccountName |Felhasználó mailNickname attribútum az Azure AD-bérlővel, vagy automatikusan generált |A SAMAccountName attribútum forrása a mailNickname attribútum az Azure AD-bérlőben. Ha több felhasználói fiók rendelkezik az azonos mailNickname attribútum, a SAMAccountName, automatikusan létrehozott. Ha a felhasználó mailNickname vagy UPN-előtagja hosszabb 20 karakternél, a SAMAccountName jön létre automatikusan SAMAccountName attribútumok a 20 karakterszámot kielégítéséhez. |
@@ -88,7 +88,7 @@ Az alábbi táblázat mutatja be, hogyan adott attribútumok az Azure AD-bérlő
 | mailNickname |msDS-AzureADMailNickname |
 | mailNickname |SAMAccountName (néha lehet automatikusan létrehozott) |
 | mobil |mobil |
-| objektumazonosító |msDS-AzureADObjectId |
+| oid |msDS-AzureADObjectId |
 | onPremiseSecurityIdentifier |tartományvezérlőjére |
 | passwordPolicies |userAccountControl (állítja be, vagy törli a DONT_EXPIRE_PASSWORD bites) |
 | physicalDeliveryOfficeName |physicalDeliveryOfficeName |
@@ -109,7 +109,7 @@ Az alábbi táblázat mutatja be, hogyan adott attribútumok az Azure AD-bérlő
 | displayName |SAMAccountName (néha lehet automatikusan létrehozott) |
 | levelezés |levelezés |
 | mailNickname |msDS-AzureADMailNickname |
-| objektumazonosító |msDS-AzureADObjectId |
+| oid |msDS-AzureADObjectId |
 | onPremiseSecurityIdentifier |tartományvezérlőjére |
 | securityEnabled |groupType |
 

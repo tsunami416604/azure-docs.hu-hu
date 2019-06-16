@@ -18,10 +18,10 @@ ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: fe9b70d74e326166afae366becc47fbcc8b2ea56
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66120284"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>Az SAP NetWeaver több biztonsági AZONOSÍTÓVAL konfigurációjának létrehozása
@@ -89,7 +89,7 @@ A teljes fekvő két magas rendelkezésre állású SAP-rendszerek a következő
 ## <a name="prepare-the-infrastructure"></a>Az infrastruktúra előkészítése
 Az infrastruktúra előkészítése, egy további SAP ASCS/SCS-példányt is telepíthet a következő paraméterekkel:
 
-| Paraméternév | Érték |
+| Paraméter neve | Érték |
 | --- | --- |
 | SAP ASCS/SCS SID |PR1-lb-ascs |
 | Az SAP DBMS belső load balancer | PR5 |
@@ -108,7 +108,7 @@ További SAP ASCS/SCS-példányok a meglévő WSFC-fürtben két csomópont tele
 | Virtuális gépi szerepkör | Virtuális gép állomásneve | Statikus IP-cím |
 | --- | --- | --- |
 | 1-től fürtcsomópont ASCS/SCS példányhoz |pr1-ascs-0 |10.0.0.10 |
-| 2. fürtcsomópont ASCS/SCS példányhoz |PR1-ascs-1 |10.0.0.9 |
+| 2\. fürtcsomópont ASCS/SCS példányhoz |PR1-ascs-1 |10.0.0.9 |
 
 ### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance-on-the-dns-server"></a>Hozzon létre egy virtuális nevet a fürtözött SAP ASCS/SCS példányhoz a DNS-kiszolgálón
 

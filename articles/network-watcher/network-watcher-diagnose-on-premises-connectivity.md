@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
 ms.openlocfilehash: 05335cb6949928244e10641ebe82008275830e67
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66754069"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>VPN-átjárók helyszíni kapcsolatok diagnosztizálása
@@ -41,18 +41,18 @@ Azure és helyszíni között helyek közötti kapcsolat konfigurálása szeretn
 
 Részletes részletes útmutató egy helyek közötti konfiguráció funkcionáló találhatók: [Virtuális hálózat létrehozása helyek közötti kapcsolattal az Azure Portalon](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 
-Az egyik fontos konfigurációs lépés konfigurálja az IPSec-kommunikáció paramétereket, a helyszíni hálózat és az Azure közötti kapcsolat megszakadása vezet bármely hibás. 1. fázis a következő IPsec paraméterek támogatása jelenleg az Azure VPN-átjárók vannak konfigurálva. Vegye figyelembe, ahogy korábban említettük, ezek a beállítások nem módosíthatók.  Ahogy az alábbi táblázatban látható, az Azure VPN Gateway átjárók által támogatott titkosítási algoritmusokat AES256, az AES128 és a 3DES.
+Az egyik fontos konfigurációs lépés konfigurálja az IPSec-kommunikáció paramétereket, a helyszíni hálózat és az Azure közötti kapcsolat megszakadása vezet bármely hibás. 1\. fázis a következő IPsec paraméterek támogatása jelenleg az Azure VPN-átjárók vannak konfigurálva. Vegye figyelembe, ahogy korábban említettük, ezek a beállítások nem módosíthatók.  Ahogy az alábbi táblázatban látható, az Azure VPN Gateway átjárók által támogatott titkosítási algoritmusokat AES256, az AES128 és a 3DES.
 
 ### <a name="ike-phase-1-setup"></a>Az IKE 1. fázis beállítása
 
 | **Tulajdonság** | **Házirendalapú** | **Útvonalalapú és Standard vagy nagy teljesítményű VPN gateway** |
 | --- | --- | --- |
 | IKE verziószám |IKEv1 |IKEv2 |
-| Diffie-Hellman Group |2. csoport (1024 bites) |2. csoport (1024 bites) |
+| Diffie-Hellman Group |2\. csoport (1024 bites) |2\. csoport (1024 bites) |
 | Hitelesítési módszer |Előre megosztott kulcs |Előre megosztott kulcs |
 | Titkosítási algoritmusok |AES256 AES128 3DES |AES256 3DES |
 | Kivonatoló algoritmus |SHA1(SHA128) |SHA1(SHA128), SHA2(SHA256) |
-| 1. fázisú biztonsági társítás (SA) Élettartam (idő) |28 800 másodperc |10 800 másodperc |
+| 1\. fázisú biztonsági társítás (SA) Élettartam (idő) |28 800 másodperc |10 800 másodperc |
 
 Felhasználóként, a FortiGate konfigurálásához szükséges lenne, egy példa konfigurációja találhatók [GitHub](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/fortigate_show%20full-configuration.txt). Tudtuk nélkül konfigurálta az SHA-512 használata a kivonatoló algoritmusként FortiGate. Mert ez az algoritmus nem egy támogatott algoritmust a csoportházirend-alapú kapcsolatokhoz, a VPN-kapcsolat működik.
 

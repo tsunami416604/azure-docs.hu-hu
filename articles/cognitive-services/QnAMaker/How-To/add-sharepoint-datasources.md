@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: tulasim
 ms.openlocfilehash: e479cf1729b7dcd2ed2f2470f2a935bdf94af80b
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65954967"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>A Tudásbázis egy védett Sharepoint-adatforrás hozzáadása
@@ -99,7 +99,7 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 -->
 ### <a name="grant-access-from-the-azure-active-directory-admin-center"></a>Az Azure Active Directory felügyeleti központban való hozzáférés engedélyezése
 
-1. Az Active Directory-kezelő jelentkezik be az Azure Portalon, és megnyílik  **[vállalati alkalmazások](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)**. 
+1. Az Active Directory-kezelő jelentkezik be az Azure Portalon, és megnyílik  **[vállalati alkalmazások](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)** . 
 
 1. Keresse meg `QnAMakerPortalSharepoint` válassza ki a QnA Maker alkalmazást. 
 

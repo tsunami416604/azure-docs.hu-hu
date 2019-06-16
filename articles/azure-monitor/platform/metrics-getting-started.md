@@ -9,10 +9,10 @@ ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
 ms.openlocfilehash: 3306e888970d99132d17d4ccf967f074302412ca
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65595449"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Ismerkedés az Azure Metrikaböngésző
@@ -32,7 +32,7 @@ Metrikadiagram, az erőforrás, erőforráscsoport, előfizetés vagy az Azure M
 
 1. Az erőforrás-választó, válassza ki azt az erőforrás, amelynek meg szeretné tekinteni a metrikákat. (Az erőforrás előre kiválasztott, ha megnyitotta **metrikák** keretén belül egy adott erőforrás).
 
-    > ![Válasszon erőforrást](./media/metrics-getting-started/resource-picker.png)
+    > ![Erőforrás kiválasztása](./media/metrics-getting-started/resource-picker.png)
 
 2. Az egyes erőforrásokat válasszon ki egy névteret. A névtér csak egy módja metrikák rendszerezheti, hogy könnyen megtalálhassa őket. Ha például tárfiókban elérhető metrikák fájlok, táblák, Blobok és üzenetsorok tárolására szolgáló különálló névterek. Számos erőforrástípusok csak egy névtérrel rendelkezzen.
 
@@ -45,7 +45,7 @@ Metrikadiagram, az erőforrás, erőforráscsoport, előfizetés vagy az Azure M
 > [!NOTE]
 > Használja a **metrika hozzáadása** gombra, és ismételje meg ezeket a lépéseket, ha szeretné megtekinteni a több metrikát a diagram ugyanaz megjelennek. Egyetlen nézetben több diagramot, válassza a **Hozzáadás diagram** felül gombra.
 
-## <a name="select-a-time-range"></a>Időtartomány megadása
+## <a name="select-a-time-range"></a>Jelöljön ki egy időtartományt
 
 Alapértelmezés szerint a diagram bemutatja a metrikák adatait a legutóbbi 24 óra. Használja a **időválasztó** panelen módosíthatja az időtartományt, nagyítás vagy kicsinyítés a diagramon. 
 

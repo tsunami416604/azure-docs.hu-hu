@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 06879164c6f72891b734da077c667c6f90448fe4
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66512969"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predikátumok és PredicateValidations
@@ -156,7 +156,7 @@ A **PredicateGroups** elem tartalmazza a következő elemet:
 
 A **PredicateGroup** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | Azonosító | Igen | A predikátum csoport használt azonosító.  |
 
@@ -169,7 +169,7 @@ A **PredicateGroup** elem a következő elemeket tartalmazza:
 
 A **PredicateReferences** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | MatchAtLeast | Nem | Itt adhatja meg, hogy az értéknek meg kell felelnie legalább, hogy számos predikátum el kell fogadni a bemenet-definíciói. |
 
@@ -181,7 +181,7 @@ A **PredicateReferences** elem a következő elemeket tartalmazza:
 
 A **PredicateReference** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | Azonosító | Igen | A predikátum érvényesítési használt azonosító.  |
 

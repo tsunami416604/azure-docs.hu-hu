@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
 ms.openlocfilehash: a5fab3e2bf9908fa35cf5f5485df3116b7718d8c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66125894"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure diagnosztikai naplók
@@ -73,7 +73,7 @@ A naplók tárolásához egy storage-fiók használatához kövesse az alábbi l
  
 2. Válassza ki **archiválás tárfiókba**, majd **CoreAnalytics**. 
 
-2. A **megőrzés (nap)**, válassza ki a megőrzési napok számát. Egy nulla napnyi adatmegőrzéshez határozatlan ideig tárolja a naplókat. 
+2. A **megőrzés (nap)** , válassza ki a megőrzési napok számát. Egy nulla napnyi adatmegőrzéshez határozatlan ideig tárolja a naplókat. 
 
     ![Portál – diagnosztikai naplók](./media/cdn-diagnostics-log/04_Diagnostics-logs-storage.png) 
 
@@ -176,7 +176,7 @@ Próbál hozzáférni a core analytics-adatok egy Azure storage-fiókból, szük
 2.  Keresse meg a storage-fiók
 3.  Bontsa ki a **Blobtárolók** csomópont alatt ezt a tárfiókot.
 4.  Válassza ki a tárolót nevű *insights-logs-coreanalytics*.
-5.  Eredmények megjelenítése fel a jobb oldali ablaktáblán, mint az első szintű, kezdve a *resourceId =*. Folytassa az egyes fenyegetési kijelölését, amíg meg nem találja a fájl *PT1H.json*. Az elérési út egy ismertetése: [Blob elérési út formátuma](cdn-azure-diagnostic-logs.md#blob-path-format).
+5.  Eredmények megjelenítése fel a jobb oldali ablaktáblán, mint az első szintű, kezdve a *resourceId =* . Folytassa az egyes fenyegetési kijelölését, amíg meg nem találja a fájl *PT1H.json*. Az elérési út egy ismertetése: [Blob elérési út formátuma](cdn-azure-diagnostic-logs.md#blob-path-format).
 6.  Minden egyes blob *PT1H.json* fájlt jelöli az elemzési naplók egy adott CDN-végpont vagy az egyéni tartomány egy órán keresztül.
 7.  A séma a JSON-fájl tartalmát, a core analytics naplók szakasz sémája ismerteti.
 
@@ -195,9 +195,9 @@ Alapvető elemzési naplók óránként jönnek létre, és az adatokat gyűjt, 
 |Erőforráscsoport neve |Az erőforrás nevét, amely a CDN-erőforrások tartoznak.|
 |Profilnév |A CDN-profil neve|
 |Végpont neve |A CDN-végpont neve|
-|év|  Az év, például 2017 négyjegyű ábrázolása|
-|hónap| A hónapok sorszáma kétjegyű ábrázolása. 01 január =... 12. December =|
-|nap|   A hónap napját kétjegyű ábrázolása|
+|Év|  Az év, például 2017 négyjegyű ábrázolása|
+|Hónap| A hónapok sorszáma kétjegyű ábrázolása. 01 január =... 12. December =|
+|Nap|   A hónap napját kétjegyű ábrázolása|
 |PT1H.json| Tényleges JSON-fájlt az elemzési adatok tárolására|
 
 ### <a name="exporting-the-core-analytics-data-to-a-csv-file"></a>A core analytics-adatok exportálása CSV-fájlba
@@ -238,59 +238,59 @@ Kövesse az alábbi lépéseket az Azure Monitor figyelési megoldás hozzáadá
 
 2. Az a **új** lap **Marketplace**válassza **figyelés + felügyelet**.
 
-    ![Marketplace](./media/cdn-diagnostics-log/14_Marketplace.png)
+    ![Piactér](./media/cdn-diagnostics-log/14_Marketplace.png)
 
 3. Az a **figyelés + felügyelet** lapon jelölje be **összes**.
 
-    ![Összes megjelenítése](./media/cdn-diagnostics-log/15_See-all.png)
+    ![Az összes megtekintése](./media/cdn-diagnostics-log/15_See-all.png)
 
 4. Keresse meg a CDN a keresőmezőbe.
 
-    ![Összes megjelenítése](./media/cdn-diagnostics-log/16_Search-for.png)
+    ![Az összes megtekintése](./media/cdn-diagnostics-log/16_Search-for.png)
 
 5. Válassza ki **az Azure CDN – egyszerűsített analitika**. 
 
-    ![Összes megjelenítése](./media/cdn-diagnostics-log/17_Core-analytics.png)
+    ![Az összes megtekintése](./media/cdn-diagnostics-log/17_Core-analytics.png)
 
 6. Miután kiválasztotta **létrehozás**, a rendszer felkéri hozzon létre egy új Log Analytics-munkaterületet, vagy használjon egy meglévőt. 
 
-    ![Összes megjelenítése](./media/cdn-diagnostics-log/18_Adding-solution.png)
+    ![Az összes megtekintése](./media/cdn-diagnostics-log/18_Adding-solution.png)
 
 7. Válassza ki a előtt létrehozott munkaterülethez. Majd hozzá kell egy automation-fiókot.
 
-    ![Összes megjelenítése](./media/cdn-diagnostics-log/19_Add-automation.png)
+    ![Az összes megtekintése](./media/cdn-diagnostics-log/19_Add-automation.png)
 
 8. A következő képernyőn látható az automation-fiók ki kell töltenie űrlap. 
 
-    ![Összes megjelenítése](./media/cdn-diagnostics-log/20_Automation.png)
+    ![Az összes megtekintése](./media/cdn-diagnostics-log/20_Automation.png)
 
 9. Az automation-fiók létrehozását követően készen áll a megoldás hozzáadása. Válassza a **Létrehozás** gombot.
 
-    ![Összes megjelenítése](./media/cdn-diagnostics-log/21_Ready.png)
+    ![Az összes megtekintése](./media/cdn-diagnostics-log/21_Ready.png)
 
 10. A megoldás már hozzá van adva a munkaterülethez. Térjen vissza az Azure portal Irányítópultjára.
 
-    ![Összes megjelenítése](./media/cdn-diagnostics-log/22_Dashboard.png)
+    ![Az összes megtekintése](./media/cdn-diagnostics-log/22_Dashboard.png)
 
     Válassza ki a létrehozott nyissa meg a munkaterületet a Log Analytics-munkaterületet. 
 
 11. Válassza ki a **OMS-portálon** csempére kattintva tekintse meg az új megoldásokat.
 
-    ![Összes megjelenítése](./media/cdn-diagnostics-log/23_workspace.png)
+    ![Az összes megtekintése](./media/cdn-diagnostics-log/23_workspace.png)
 
 12. A portál a következő képernyőhöz hasonlóan kell kinéznie:
 
-    ![Összes megjelenítése](./media/cdn-diagnostics-log/24_OMS-solution.png)
+    ![Az összes megtekintése](./media/cdn-diagnostics-log/24_OMS-solution.png)
 
     Válassza ki az egyik csempét az adatok számos nézet megtekintéséhez.
 
-    ![Összes megjelenítése](./media/cdn-diagnostics-log/25_Interior-view.png)
+    ![Az összes megtekintése](./media/cdn-diagnostics-log/25_Interior-view.png)
 
     További csempék jelölő egyéni nézeteket az adatokban, hogy jobbra vagy balra görgetve. 
 
     Válassza ki az egyik csempét az adatokkal kapcsolatos további részletek megtekintéséhez.
 
-     ![Összes megjelenítése](./media/cdn-diagnostics-log/26_Further-detail.png)
+     ![Az összes megtekintése](./media/cdn-diagnostics-log/26_Further-detail.png)
 
 ### <a name="offers-and-pricing-tiers"></a>Az ajánlatok és tarifacsomagok
 
@@ -353,7 +353,7 @@ Az alábbi táblázat az alapvető elérhető metrikáinak listája látható az
 | EgressCacheUncacheable | Kimenő adatforgalom az eszközök, amelyek ebben az esetben az eszköz Cache-Control és/vagy a lejárat fejlécek alapján a gyorsítótárba. Azt jelzi, hogy azt nem gyorsítótárazza a POP- vagy HTTP-ügyfél által. | Igen | Igen | Nem |
 | EgressCacheOthers | Kimenő adatátvitel más gyorsítótár-forgatókönyvekhez. | Nem | Igen | Nem |
 
-* Kimenő adatátviteli forgalom CDN POP-kiszolgálókról továbbítja az ügyfélnek hivatkozik.
+\* Kimenő adatátviteli forgalom CDN POP-kiszolgálókról továbbítja az ügyfélnek hivatkozik.
 
 
 ### <a name="schema-of-the-core-analytics-logs"></a>A core analytics naplók sémája 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 5/19/2019
 ms.author: monhaber
 ms.openlocfilehash: 25ed9cb624474d5da56d385f4e9c155918ec8eab
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66428330"
 ---
 # <a name="azure-security-policies-monitored-by-security-center"></a>A Security Center által figyelt Azure biztonsági szabályzatok
@@ -79,7 +79,7 @@ A beépített szabályzatokat, a Security Center által figyelt kapcsolatos tov�
 |\[Előzetes verzió]: Tulajdonosi engedélyekkel rendelkező elavult fiókokat el kell távolítani az előfizetésből|Elavult fiókok tulajdonosi engedélyekkel rendelkező el kell távolítani az előfizetésből. Elavult fiókokat a rendszer letiltotta a bejelentkezés.|
 |\[Előzetes verzió]: Elavult fiókokat el kell távolítani az előfizetésből|Elavult fiókokat el kell távolítani az előfizetésekből. Elavult fiókokat a rendszer letiltotta a bejelentkezés.|
 |\[Előzetes verzió]: Tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből|Tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani, hogy megkezdhesse az engedélyek hozzáférések megelőzése céljából.|
-|\[Előzetes verzió]: Írási rendelkező külső fiókok engedélyeit el kell távolítani az előfizetésből|Rendelkező külső fiókok írási engedélyek el kell távolítani az előfizetésből a nem monitorozott hozzáférések megelőzése céljából.|
+|\[Előzetes verzió]: Írási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből|Rendelkező külső fiókok írási engedélyek el kell távolítani az előfizetésből a nem monitorozott hozzáférések megelőzése céljából.|
 |\[Előzetes verzió]: Olvasási jogosultsággal rendelkező külső fiókokat el kell távolítani az előfizetésből|Amely rendelkezik olvasási engedéllyel a külső fiókokat el kell távolítani az előfizetést nem monitorozott hozzáférések megelőzése céljából.|
 
 

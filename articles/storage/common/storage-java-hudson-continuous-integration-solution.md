@@ -10,10 +10,10 @@ ms.date: 02/28/2017
 ms.author: seguler
 ms.subservice: common
 ms.openlocfilehash: 4b47af857fada453e36fcb0c23e6d89e5ad90e42
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65154347"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Az Azure Storage szolgáltatás használata Hudson folyamatos integrációs megoldással
@@ -111,7 +111,7 @@ Utasítás céljából először azt kell hozzon létre egy feladatot, amely tö
 8. Kattintson a **alapértelmezés szerint az új tároló nyilvánosságra** ebben a példában. (Ha szeretne egy privát tároló használatára, szüksége való hozzáférés engedélyezése a közös hozzáférésű jogosultságkód létrehozása. Ez a cikk nem foglalkozik. További információ a közös hozzáférésű jogosultságkódok [használatával a közös hozzáférésű Jogosultságkódok (SAS)](../storage-dotnet-shared-access-signature-part-1.md).)
 9. [Opcionális] Kattintson a **tiszta tároló feltöltése előtt** Ha azt szeretné, hogy a tároló tartalmát törölni kell, mielőtt feltöltésekor a rendszer a build-összetevőket (ne jelölje ezt, ha nem szeretné, hogy a tároló tartalmának törlése).
 10. A **összetevők lista feltöltéséhez**, adja meg **szöveg/*.txt**.
-11. A **feltöltött összetevők közös virtuális elérési út**, adja meg **${hozhat létre\_azonosító} / ${hozhat létre\_NUMBER}**.
+11. A **feltöltött összetevők közös virtuális elérési út**, adja meg **${hozhat létre\_azonosító} / ${hozhat létre\_NUMBER}** .
 12. Kattintson a **mentése** a beállítások mentéséhez.
 13. A Hudson irányítópultján kattintson **hozhat létre most** futtatásához **MyJob**. Vizsgálja meg a konzol kimenete az állapotát. Az Azure Storage-állapotüzenetek fog szerepelni a konzol kimenete feltölteni a build-összetevőket a felépítés utáni művelet indításakor.
 14. A feladat sikeres telepítést vizsgálja meg a build-összetevőket a nyilvános blob megnyitásával.
@@ -134,7 +134,7 @@ A következő lépések bemutatják, hogyan konfigurálhatja egy lépést, amely
 1. Az a **hozhat létre** szakaszban kattintson a feladat-konfiguráció **felépítési lépés hozzáadása** , és válassza **töltse le az Azure Blob storage-ból**.
 2. A **tárfióknevet**, válassza ki a használandó tárfiókot.
 3. A **Tárolónév**, adja meg a tároló, amelyben a blobokat letölteni kívánt nevét. Környezeti változókat is használhat.
-4. A **blobnév**, adja meg a blob nevét. Környezeti változókat is használhat. Is használhatja egy csillagot helyettesítő karakter a kezdeti betűjét a blob nevének megadása után. Ha például **projekt\\*** kellene megadnia kezdődő összes BLOB **projekt**.
+4. A **blobnév**, adja meg a blob nevét. Környezeti változókat is használhat. Is használhatja egy csillagot helyettesítő karakter a kezdeti betűjét a blob nevének megadása után. Ha például **projekt\\** * kellene megadnia kezdődő összes BLOB **projekt**.
 5. [Opcionális] A **letöltési mappa elérési útját**, adja meg az elérési utat a Hudson számítógépen, ahol szeretné tölteni a fájlokat az Azure Blob storage-ból. A környezeti változók is használható. (Ha nem ad meg értéket **letöltési mappa elérési útját**, a feladatok munkaterület a fájlok az Azure Blob storage-ból letöltött.)
 
 Ha további elemek szeretné tölteni az Azure Blob storage-ból, létrehozhat további létrehozási lépések.
@@ -153,7 +153,7 @@ A következő a Blob szolgáltatás-összetevők áttekintést nyújt.
   
     (A fenti formátum a nyilvános Azure felhő vonatkozik. Egy másik Azure-felhőben használja, ha a végpont belül használja a [az Azure Portal](https://portal.azure.com) meghatározni az URL-végpontot.)
   
-    A fenti formátumban `storageaccount` pedig a tárfiók nevét `container_name` a tároló nevét jelöli, és `blob_name` rendre a blob nevét jelöli. A tároló nevének belül használhat több elérési útnak perjellel elválasztva **/**. A példa tároló neve ebben az oktatóanyagban **MyJob**, és **${hozhat létre\_azonosító} / ${hozhat létre\_szám}** használták a közös virtuális elérési utat, a blob URL-Címének kellene eredményez a a következő képernyőn:
+    A fenti formátumban `storageaccount` pedig a tárfiók nevét `container_name` a tároló nevét jelöli, és `blob_name` rendre a blob nevét jelöli. A tároló nevének belül használhat több elérési útnak perjellel elválasztva **/** . A példa tároló neve ebben az oktatóanyagban **MyJob**, és **${hozhat létre\_azonosító} / ${hozhat létre\_szám}** használták a közös virtuális elérési utat, a blob URL-Címének kellene eredményez a a következő képernyőn:
   
     `http://example.blob.core.windows.net/myjob/2014-05-01_11-56-22/1/hello.txt`
 

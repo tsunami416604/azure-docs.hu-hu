@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec18
 ms.openlocfilehash: df05bd984667283b0ccc143ba14fff6b35d69144
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66753177"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált Machine Learning-kísérletek konfigurálása a Pythonban
@@ -306,7 +306,7 @@ Ebben a példában, vegye figyelembe:
 
 Használja az alábbi 2 illesztett modell az első lépés az API-k segítségével ismerje meg jobban az.  Lásd: [minta Jegyzetfüzet](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).
 
-+ 1. API: `get_engineered_feature_names()` visszafejtett neveinek listáját adja vissza.
++ 1\. API: `get_engineered_feature_names()` visszafejtett neveinek listáját adja vissza.
 
   Használat
   ```python
@@ -322,7 +322,7 @@ Használja az alábbi 2 illesztett modell az első lépés az API-k segítségé
   >[!Note]
   >Feladathoz használni 'timeseriestransformer' = 'előrejelzés", más használata"datatransformer' "regressziós" vagy "osztályozás" feladathoz.
 
-+ 2. API: `get_featurization_summary()` featurization bemeneti szolgáltatások összegzését adja vissza.
++ 2\. API: `get_featurization_summary()` featurization bemeneti szolgáltatások összegzését adja vissza.
 
   Használat
   ```python

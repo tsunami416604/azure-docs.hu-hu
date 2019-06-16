@@ -11,10 +11,10 @@ ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 2b5e9bfe6eaa9b84e259d941760792635a2994f4
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66512839"
 ---
 # <a name="relyingparty"></a>RelyingParty
@@ -102,7 +102,7 @@ A `DefaultUserJourney` elem azt határozza meg egy hivatkozást, amely általáb
 
 A **DefaultUserJourney** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | ReferenceId | Igen | A házirend a felhasználói út azonosítója. További információkért lásd: [felhasználói utak](userjourneys.md) |
 
@@ -168,7 +168,7 @@ További információkért lásd: [konfigurálása a felhasználói felület din
 
 A **TechnicalProfile** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- | 
 | Azonosító | Igen | Az értéknek kell lennie `PolicyProfile`. |
 
@@ -185,7 +185,7 @@ A **TechnicalProfile** a következő elemeket tartalmazza:
 
 A **protokoll** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Name (Név) | Igen | A technikai profil részeként használt Azure AD B2C által támogatott érvényes protokoll neve. A lehetséges értékek: `OpenIdConnect` vagy `SAML2`. A `OpenIdConnect` értékét jelöli az OpenID Connect 1.0 protokoll standard OpenID foundation specifikációnak megfelelően. A `SAML2` OASIS specifikációnak megfelelően a SAML 2.0 protokoll standard jelöli. Éles környezetben ne használja a SAML-jogkivonat. |
 
@@ -213,7 +213,7 @@ Az a **SubjectNameingInfo** elemben meghatározhatja, hogy a jogkivonat tárgyá
 
 A **SubjectNamingInfo** elem tartalmazza a következő attribútumot:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | ClaimType | Igen | Egy hivatkozást egy kimenő jogcímet **PartnerClaimType**. A kimeneti jogcímek definiálni kell a függő entitás házirend **OutputClaims** gyűjtemény. |
 

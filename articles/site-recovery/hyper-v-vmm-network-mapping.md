@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: raynew
 ms.openlocfilehash: d2f7f83654f397cc6b93adbbebc25193155bcedb
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66399375"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Az Azure-bA Hyper-V virtuális gép vész-helyreállítási hálózatleképezés előkészítése
@@ -114,9 +114,9 @@ Ezekkel a beállításokkal tekintse át mi történik, néhány lehetséges for
 
 **Forgatókönyv** | **Eredmény**
 ---|---
-2. virtuális gép hálózati tulajdonságait a feladatátvételt követően nem változik. | VM-1 marad a forrás-hálózathoz csatlakozik.
-2. virtuális gép hálózati tulajdonságait a feladatátvételt követően megváltoznak, és le van választva. | 1. virtuális gép le van választva.
-2. virtuális gép hálózati tulajdonságait a feladatátvételt követően megváltoznak, és VMNetwork2-Chicago csatlakozik. | Ha VMNetwork2-Chicago nincs leképezve, 1. virtuális gép le lesz választva.
+2\. virtuális gép hálózati tulajdonságait a feladatátvételt követően nem változik. | VM-1 marad a forrás-hálózathoz csatlakozik.
+2\. virtuális gép hálózati tulajdonságait a feladatátvételt követően megváltoznak, és le van választva. | 1\. virtuális gép le van választva.
+2\. virtuális gép hálózati tulajdonságait a feladatátvételt követően megváltoznak, és VMNetwork2-Chicago csatlakozik. | Ha VMNetwork2-Chicago nincs leképezve, 1. virtuális gép le lesz választva.
 Hálózatleképezés VMNetwork1-Chicago, változik. | VM-1 VMNetwork1-Chicago most leképezve a hálózathoz fog csatlakozni.
 
 

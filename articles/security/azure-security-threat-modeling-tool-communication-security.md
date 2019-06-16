@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 8534f30c17208e77adfa47ea41506a3a61d3548d
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62121323"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Biztonsági keret: Kommunikációs biztonság |} Megoldások 
@@ -40,7 +40,7 @@ ms.locfileid: "62121323"
 
 ## <a id="comm-ssltls"></a>Biztonságos kommunikáció SSL/TLS eseményközpontba
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure-eseményközpont | 
 | **SDL Phase**               | Felépítés |  
@@ -51,7 +51,7 @@ ms.locfileid: "62121323"
 
 ## <a id="priv-aspnet"></a>Ellenőrizze a jogosultsággal, és ellenőrizze, hogy az egyéni szolgáltatásokat vagy az ASP.NET-lapok tiszteletben CRM a biztonság
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Dynamics CRM | 
 | **SDL Phase**               | Felépítés |  
@@ -62,7 +62,7 @@ ms.locfileid: "62121323"
 
 ## <a id="sqlserver-factory"></a>Az adatkezelési átjáró használata az Azure Data Factory a helyszíni SQL Server kapcsolódáshoz
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Data Factory | 
 | **SDL Phase**               | Környezet |  
@@ -73,7 +73,7 @@ ms.locfileid: "62121323"
 
 ## <a id="identity-https"></a>Gondoskodjon arról, hogy minden forgalmat az identitás-kiszolgálót HTTPS-kapcsolaton keresztül
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Identity Server | 
 | **SDL Phase**               | Környezet |  
@@ -84,7 +84,7 @@ ms.locfileid: "62121323"
 
 ## <a id="x509-ssltls"></a>Ellenőrizze az X.509 SSL, a TLS és DTLS kapcsolat hitelesítéséhez használt tanúsítványok
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -95,7 +95,7 @@ ms.locfileid: "62121323"
 
 ## <a id="ssl-appservice"></a>Egyéni tartomány SSL-tanúsítvány konfigurálása az Azure App Service-ben
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -106,7 +106,7 @@ ms.locfileid: "62121323"
 
 ## <a id="appservice-https"></a>Az összes forgalom kényszerített az Azure App Service-HTTPS-kapcsolaton keresztül
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -139,7 +139,7 @@ Ez a szabály működik visszaadó HTTP-állapotkód 301 (Állandó átirányít
 
 ## <a id="http-hsts"></a>HTTP szigorú Transport Security (HSTS) engedélyezése
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -150,7 +150,7 @@ Ez a szabály működik visszaadó HTTP-állapotkód 301 (Állandó átirányít
 
 ## <a id="sqlserver-validation"></a>Győződjön meg, hogy az SQL server-kapcsolat titkosítási és a tanúsítvány érvényesítése
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
 | **SDL Phase**               | Felépítés |  
@@ -161,7 +161,7 @@ Ez a szabály működik visszaadó HTTP-állapotkód 301 (Állandó átirányít
 
 ## <a id="encrypted-sqlserver"></a>Az SQL server titkosított kommunikáció kényszerítése
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
 | **SDL Phase**               | Felépítés |  
@@ -172,7 +172,7 @@ Ez a szabály működik visszaadó HTTP-állapotkód 301 (Állandó átirányít
 
 ## <a id="comm-storage"></a>Gondoskodjon arról, hogy az Azure Storage-kommunikáció HTTPS-kapcsolaton keresztül
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
 | **SDL Phase**               | Környezet |  
@@ -183,7 +183,7 @@ Ez a szabály működik visszaadó HTTP-állapotkód 301 (Állandó átirányít
 
 ## <a id="md5-https"></a>Blob letöltése, ha nem lehet engedélyezni a HTTPS után MD5-kivonat ellenőrzése
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
 | **SDL Phase**               | Felépítés |  
@@ -194,7 +194,7 @@ Ez a szabály működik visszaadó HTTP-állapotkód 301 (Állandó átirányít
 
 ## <a id="smb-shares"></a>Győződjön meg, hogy az átvitel közbeni adatok titkosítását az Azure-fájlmegosztások az SMB 3.0 kompatibilis ügyfél használatával
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Mobileszköz ügyfél | 
 | **SDL Phase**               | Felépítés |  
@@ -205,7 +205,7 @@ Ez a szabály működik visszaadó HTTP-állapotkód 301 (Állandó átirányít
 
 ## <a id="cert-pinning"></a>Tanúsítvány rögzítését megvalósítása
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
 | **SDL Phase**               | Felépítés |  
@@ -282,18 +282,18 @@ namespace CertificatePinningExample
 
 ## <a id="https-transport"></a>HTTPS engedélyezése – biztonságos átvitel csatorna
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
 | **SDL Phase**               | Felépítés |  
-| **Megfelelő technológiák** | 3. NET-keretrendszer |
+| **Megfelelő technológiák** | 3\. NET-keretrendszer |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_transport_security_enabled) |
 | **Lépések** | Az alkalmazás konfigurációjában kell győződjön meg arról, hogy bizalmas adatokat az elérésére használja a HTTPS.<ul><li>**MAGYARÁZAT:** Ha egy alkalmazás kezeli a bizalmas adatokat, és üzenet-titkosítást használ, majd azt csak engedélyezni kell a kommunikáció egy titkosított átviteli csatornán keresztül.</li><li>**JAVASLATOK:** Győződjön meg arról, hogy a HTTP-n le van tiltva, és lehetővé teszi ehelyett HTTPS átviteli. Helyettesítse be például a `<httpTransport/>` az `<httpsTransport/>` címke. Ne támaszkodjon kizárólag egy hálózati konfigurációt (tűzfal) garantálja, hogy az alkalmazás csak biztonságos csatornán keresztül elérhetők. Egy világnézeti szempontjából az alkalmazás nem szabad függenie a hálózat és a biztonságot.</li></ul><p>A gyakorlati szempontjából a hálózat biztonságának beállítása felelős személyek nem mindig követik nyomon az alkalmazás biztonsági követelményeinek megfelelően Modellezhet.</p>|
 
 ## <a id="message-protection"></a>WCF: EncryptAndSign üzenetbiztonsági védelmi szintjének beállítása
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
 | **SDL Phase**               | Felépítés |  
@@ -322,7 +322,7 @@ string GetData(int value);
 
 ## <a id="least-account-wcf"></a>WCF: A WCF-szolgáltatás futtatásához egy alacsonyabb szintű fiók használata
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
 | **SDL Phase**               | Felépítés |  
@@ -333,7 +333,7 @@ string GetData(int value);
 
 ## <a id="webapi-https"></a>Összes forgalom kényszerített webes API-k HTTPS-kapcsolaton keresztül
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
 | **SDL Phase**               | Felépítés |  
@@ -374,7 +374,7 @@ public class ValuesController : ApiController
  
 ## <a id="redis-ssl"></a>Győződjön meg arról, hogy van-e kommunikációt az Azure Cache redis SSL-en keresztül
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Cache for Redis | 
 | **SDL Phase**               | Felépítés |  
@@ -387,7 +387,7 @@ Vegye figyelembe, hogy a Redis célja, hogy a belső megbízható környezetek m
 
 ## <a id="device-field"></a>Eszköz biztonságossá tételéhez és a helyszíni átjárók közötti kommunikációhoz
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT helyszíni átjáró | 
 | **SDL Phase**               | Felépítés |  
@@ -398,7 +398,7 @@ Vegye figyelembe, hogy a Redis célja, hogy a belső megbízható környezetek m
 
 ## <a id="device-cloud"></a>Biztonságos eszköz és átjáró közötti kommunikációhoz SSL/TLS segítségével
 
-| Cím                   | Részletek      |
+| Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT Cloud Gateway | 
 | **SDL Phase**               | Felépítés |  
