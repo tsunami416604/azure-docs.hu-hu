@@ -5,19 +5,23 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 03/18/2019
+ms.date: 06/07/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a89a5d753eaa241b11eb4c7eed9500c9715d405d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 9d8482fdf8e914801fb77e2ab1712145fa3ccea0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150775"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077486"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Mi a különbség egy Azure-beli virtuális hálózati átjáró (VPN Gateway) és egy Azure Virtual WAN-beli VPNGateway között?
 
 A Virtual WAN nagy léptékben biztosít helyek közötti kapcsolatokat, és kifejlesztése során elsősorban az átviteli sebességet, a méretezhetőséget és a könnyű használatot tartották szem előtt. Az ExpressRoute és a pont-hely kapcsolati funkciók jelenleg csak előzetes verzióban érhetők el. CPE eszközök autoprovision ágban, és csatlakozzon az Azure virtuális WAN. Ezek az eszközök az SD-WAN- és a VPN-partnerek egyre bővülő körétől szerezhetők be. Tekintse meg a [előnyben részesített partnerek listája](https://go.microsoft.com/fwlink/p/?linkid=2019615).
+
+### <a name="what-is-a-branch-connection-to-azure-virtual-wan"></a>Mi az Azure virtuális WAN ág kapcsolatot?
+
+Azure virtuális WAN, és az ág eszközről egy kapcsolat két aktív/aktív IPSec-alagutak tevődik össze.
 
 ### <a name="which-device-providers-virtual-wan-partners-are-supported-at-launch-time"></a>A program indításakor mely eszközszolgáltatók (Virtual WAN-partnerek) támogatottak?
 
@@ -45,7 +49,7 @@ Igen, a Virtual WAN bevezetésével új Resource Manager-erőforrások válnak e
 
 ### <a name="how-many-vpn-devices-can-connect-to-a-single-hub"></a>Hány VPN-eszköz csatlakoztatható egyetlen központhoz?
 
-Virtuális központonként legfeljebb 1000 kapcsolat támogatott. Mindegyik kapcsolathoz kettő aktív–aktív konfigurációjú alagút tartozik. Az alagutak végpontja egy Azure Virtual Hub VPN Gateway.
+Legfeljebb 1000 kapcsolatok száma virtuális központ támogatottak. Mindegyik kapcsolathoz kettő aktív–aktív konfigurációjú alagút tartozik. Az alagutak végpontja egy Azure Virtual Hub VPN Gateway.
 
 ### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>A helyszíni VPN-eszköz több központhoz is csatlakoztatható?
 
@@ -105,7 +109,7 @@ Igen.
 
 ### <a name="how-is-virtual-wan-different-from-the-existing-azure-virtual-network-gateway"></a>Miben különbözik a Virtual WAN szolgáltatás a már létező Azure virtuális hálózati átjárótól?
 
-A virtuális hálózati (VPN-) átjáró legfeljebb 30 alagutat támogat. Kapcsolatokhoz nagy mennyiségű VPN-forgalmat bonyolító Virtual WAN használata javasolt. A rendszer legfeljebb 1000 ágak közötti kapcsolatot támogat, és központonként 2 Gb/s sebességet biztosít a nyugati középső kivételével minden régióban. A nyugati középső régióban 20 Gb/s sebesség érhető el. A többi régióban a jövőben tervezzük bevezetni a 20 Gb/s-ot. A kapcsolatok aktív-aktív alagútnak minősülnek a helyszíni VPN-eszköz és a virtuális központ között. Régiónként egy központtal rendelkezhet, ami azt jelenti, hogy 1000-nél is több ágat csatlakoztathat a központok között.
+A virtuális hálózati (VPN-) átjáró legfeljebb 30 alagutat támogat. Kapcsolatokhoz nagy mennyiségű VPN-forgalmat bonyolító Virtual WAN használata javasolt. 2 GB/s, kivéve az USA nyugati középső régiójában minden régió esetében az agyban legfeljebb 1000 fiókirodai kapcsolatok csatlakozni tudjon. A nyugati középső régióban 20 Gb/s sebesség érhető el. A többi régióban a jövőben tervezzük bevezetni a 20 Gb/s-ot. A kapcsolatok aktív-aktív alagútnak minősülnek a helyszíni VPN-eszköz és a virtuális központ között. Egy eseményközpont régiónként, ami azt jelenti, hogy a kapcsolódás több mint 1000 ágak hubok között lehet.
 
 ### <a name="how-is-virtual-wan-supporting-sd-wan-devices"></a>Hogyan van virtuális WAN SD-WAN eszközök támogatására?
 
@@ -118,6 +122,14 @@ Nem, a Virtual WAN nem igényli minden hely esetében az ExpressRoute használat
 ### <a name="is-there-a-network-throughput-limit-when-using-azure-virtual-wan"></a>Az Azure Virtual WAN használatakor vonatkozik korlátozás a hálózat átviteli sebességére?
 
 Az ágak száma központonként/régiónként legfeljebb 1000 kapcsolat lehet, és a központban 2 Gb/s sebesség érhető el. Kivétel az USA nyugati középső régiója, ahol a 20 Gb/s is elérhető. A többi régióban a jövőben tervezzük bevezetni a 20 Gb/s-ot.
+
+### <a name="how-many-vpn-connections-does-a-virtual-wan-hub-support"></a>Hány VPN-kapcsolatok támogatja egy virtuális WAN központ?
+
+Az Azure virtuális WAN hub egyszerre legfeljebb 1000 S2S kapcsolat és 10 000 P2S-kapcsolatokkal támogathat.
+
+### <a name="what-is-the-total-vpn-throughput-of-a-vpn-tunnel-and-a-connection"></a>Mi az a teljes VPN átviteli egy VPN-alagúton és a egy kapcsolatot?
+
+A teljes VPN átviteli egy hub legfeljebb 20 GB/s, a kiválasztott skálázási egység alapján van. Átviteli sebesség meglévő összes kapcsolat osztozik.
 
 ### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>A Virtual WAN szolgáltatás lehetővé teszi a helyszíni eszközök számára több internetszolgáltató párhuzamos használatát, vagy egyszerre csak egy VPN-alagutat támogat?
 

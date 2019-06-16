@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11cc42f9ed7e427620b22ce65365183bc62cc0be
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 58d535c7f19adec470f1fbc9b8d88429ea6e0e26
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65884584"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107521"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-4me"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező 4me
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása a 4me konfigurálásához hozzá kell 4me a katalógus
 
 **4me hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -108,7 +108,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés 4me, hajtsa végre a
 
     a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:
 
-    | Környezet| URL|
+    | Környezet| URL-cím|
     |---|---|
     | ÉLES KÖRNYEZETBEN | `https://<SUBDOMAIN>.4me.com`|
     | QA| `https://<SUBDOMAIN>.4me.qa`|
@@ -116,7 +116,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés 4me, hajtsa végre a
 
     b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím:
 
-    | Környezet| URL|
+    | Környezet| URL-cím|
     |---|---|
     | ÉLES KÖRNYEZETBEN | `https://<SUBDOMAIN>.4me.com`|
     | QA| `https://<SUBDOMAIN>.4me.qa`|
@@ -253,7 +253,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó 4me jön létre. 4me tá
 > [!Note]
 > Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [4me támogatási csapatának](mailto:support@4me.com).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

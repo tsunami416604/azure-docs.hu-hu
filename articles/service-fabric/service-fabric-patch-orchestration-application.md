@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
 ms.openlocfilehash: ccc0399b6ac886ec8d9ef7d207c3539f1d078070
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65951987"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>A Windows operációs rendszer a Service Fabric-fürtben
 
 > 
 > [!IMPORTANT]
-> 1.2-es verziója. * nem támogatott a 2019. április 30. történik. Frissítsen a legújabb verzióra.
+> 1\.2-es verziója. * nem támogatott a 2019. április 30. történik. Frissítsen a legújabb verzióra.
 
 
 [Azure virtuális gép méretezési csoport automatikus operációs rendszer lemezkép frissítéseinek](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) az ajánlott eljárás, megtartja az operációs rendszerek javítani az Azure-ban, és a Patch Orchestration Application (POA) szolgáltatás hálók RepairManager Systems service – burkolója amely lehetővé teszi, hogy-alapú konfigurációs operációs rendszer javítási ütemezése nem Azure-beli üzemeltetett fürtök esetén. POA nem Azure-beli üzemeltetett fürtök esetén nem kötelező, de a frissítési tartományok szerint javítás telepítésének ütemezése szükség javítások a Service Fabric-fürtök gazdagépek üzemkimaradás nélkül.
@@ -229,7 +229,7 @@ A JSON-mezőt az alábbiakban tekintheti át.
 
 Mező | Értékek | Részletek
 -- | -- | --
-OperationResult | 0 – sikeres<br> 1 – sikeres hibákkal<br> 2 – nem sikerült<br> 3 – megszakítva<br> 4 – megszakítva időkorlát | Azt jelzi, hogy általános művelet (általában egy vagy több frissítés telepítését) eredményét.
+Operationresult adatokat a | 0 – sikeres<br> 1 – sikeres hibákkal<br> 2 – nem sikerült<br> 3 – megszakítva<br> 4 – megszakítva időkorlát | Azt jelzi, hogy általános művelet (általában egy vagy több frissítés telepítését) eredményét.
 Eredménykód | Ugyanaz, mint az operationresult adatokat a | Ebben a mezőben azt jelzi, hogy egyedi frissítés telepítési művelet eredményét.
 OperationType | 1 – telepítés<br> 0 – keresse meg és töltse le.| Telepítés a, amelyek akkor jelennek meg az eredményeket alapértelmezés szerint csak OperationType.
 WindowsUpdateQuery | Alapértelmezett érték a "IsInstalled = 0" |Windows update frissítések kereséséhez használt lekérdezés. További információkért lásd: [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
@@ -293,7 +293,7 @@ A NodeAgentNTService hoz létre [feladatok javítása](https://docs.microsoft.co
 
    Ha továbbra is több, majd találhatók, jelentkezzen be a problémát Windows eseménynaplók kapcsolatos adott virtuális gép/virtuális gépek. A fent említett a javítási feladat csak ezek végrehajtó alárendelt állapota is van:
 
-      ExecutorSubState | Részlet
+      ExecutorSubState | Részletek
     -- | -- 
       None=1 |  Azt is jelenti, hogy egy folyamatban lévő műveletet, a csomópont nem található. Lehetséges állapotok közötti átmenetet.
       DownloadCompleted=2 | Magában foglalja a letöltési művelet sikeres, a részleges befejeződött hiba vagy sikertelen.
@@ -447,19 +447,19 @@ A rendszergazdák beavatkozhat kell, és határozza meg, miért érdemes az alka
 >[!NOTE]
 > Verzió 1.4.0-s kezdve kibocsátási megjegyzések és kiadásokban található GitHub kiadására [oldal](https://github.com/microsoft/Service-Fabric-POA/releases/).
 
-### <a name="version-110"></a>1.1.0-s verzió
+### <a name="version-110"></a>1\.1.0-s verzió
 - Nyilvános kiadása
 
-### <a name="version-111"></a>1.1.1-es
+### <a name="version-111"></a>1\.1.1-es
 - Kijavítva a hiba a SetupEntryPoint, NodeAgentService NodeAgentNTService telepítését megakadályozó.
 
-### <a name="version-120"></a>1.2.0-s vagy annál újabb verzió
+### <a name="version-120"></a>1\.2.0-s vagy annál újabb verzió
 
 - Hibajavítások kerülő rendszer indítsa újra a munkafolyamatot.
 - Hibajavítás a létrehozásakor erőforrás-kezelő feladatot, mely állapota miatt ellenőrizze a javítási feladatok előkészítése során nem a várt módon történik.
 - Windows POANodeSvc Service automatikus késleltetett automatikus módosítani az indítási módja.
 
-### <a name="version-121"></a>1.2.1-es
+### <a name="version-121"></a>1\.2.1-es
 
 - Hibajavítás a fürt skálázási munkafolyamatban. Szemétgyűjtési gyűjtemény logikai POA javítási tevékenységek nem létező csomóponthoz tartozó vezetett be.
 
@@ -475,10 +475,10 @@ A rendszergazdák beavatkozhat kell, és határozza meg, miért érdemes az alka
 - Módosult az automatikus frissítések letiltása logikáját. Ez kijavítja a hibát, az automatikus frissítések nem első letiltottuk a Server 2016 vagy újabb.
 - A speciális alkalmazási helyzetek POA, mind a mikroszolgáltatások paraméteres elhelyezési korlátozás.
 
-### <a name="version-131"></a>1.3.1 verzió
+### <a name="version-131"></a>1\.3.1 verzió
 - Ahol POA 1.3.0 nem fog működni a Windows Server 2012 R2 vagy alacsonyabb, mert hiba történt az automatikus frissítések letiltása a rögzítési regressziós. 
 - Hiba kijavítása, ahol InstallWindowsOSOnlyUpdates konfigurációs mindig ki van TRUE.
 - Változó alapértelmezett értéke InstallWindowsOSOnlyUpdates FALSE.
 
-### <a name="version-132"></a>1.3.2 verzió
+### <a name="version-132"></a>1\.3.2 verzió
 - Egy probléma, amely befolyásolja a csomópont a javítási életciklus, abban az esetben, ha az aktuális csomópont nevét részhalmaza nevű csomópont kijavítása. Az ilyen csomópontokon, lehetséges, a javítás hiányzik, vagy újraindítás függőben. 

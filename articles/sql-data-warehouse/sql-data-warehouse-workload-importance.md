@@ -11,10 +11,10 @@ ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.openlocfilehash: 0147977307ec22134777d6c3e8242a4191362ada
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66233841"
 ---
 # <a name="azure-sql-data-warehouse-workload-importance"></a>Az Azure SQL Data Warehouse számítási feladatok fontossági
@@ -42,10 +42,10 @@ Az alapvető fontosságú a forgatókönyvben az értékesítési és időjárá
 Vegye figyelembe az alábbi példában:
 
 V1 aktívan fut, és jelölje ki adatokat SalesFact.
-2. negyedévi várólistára végrehajtásához Q1 Várakozás van állítva.  Ez el lett küldve, 9-kor, és be SalesFact partíció kapcsoló új adatokat próbál.
-3. negyedévi 9-kor: 01 elküldésekor, és válassza az SalesFact adatok szeretné.
+2\. negyedévi várólistára végrehajtásához Q1 Várakozás van állítva.  Ez el lett küldve, 9-kor, és be SalesFact partíció kapcsoló új adatokat próbál.
+3\. negyedévi 9-kor: 01 elküldésekor, és válassza az SalesFact adatok szeretné.
 
-Ha v2 és a 3. negyedévi rendelkezik ugyanolyan fontosságúként kezeli, és továbbra is végrehajtja az 1., 3. negyedévi megkezdi a végrehajtása. 2. negyedévi továbbra is a SalesFact kizárólagos zárolást várja.  Ha 2. negyedévi, mint 3. negyedévi magasabb fontossági, 3. negyedévi megvárja, amíg a 2. negyedévi, végrehajtási megkezdése előtt befejeződött.
+Ha v2 és a 3. negyedévi rendelkezik ugyanolyan fontosságúként kezeli, és továbbra is végrehajtja az 1., 3. negyedévi megkezdi a végrehajtása. 2\. negyedévi továbbra is a SalesFact kizárólagos zárolást várja.  Ha 2. negyedévi, mint 3. negyedévi magasabb fontossági, 3. negyedévi megvárja, amíg a 2. negyedévi, végrehajtási megkezdése előtt befejeződött.
 
 ### <a name="non-uniform-requests"></a>Nem egységes kérelmek
 
@@ -53,11 +53,11 @@ Egy másik forgatókönyv, ahol fontos segíthet lekérdezési igények figyelem
   
 Vegye figyelembe az alábbi példa a DW500c:
 
-1., 2. negyedévi, 3. negyedévi és 4. kérdés smallrc lekérdezések futnak.
-5. kérdés a mediumrc erőforrásosztályhoz van elküldött 9-kor.
-6. kérdés smallrc erőforrásosztályhoz van elküldött 9-kor: 01.
+1\., 2. negyedévi, 3. negyedévi és 4. kérdés smallrc lekérdezések futnak.
+5\. kérdés a mediumrc erőforrásosztályhoz van elküldött 9-kor.
+6\. kérdés smallrc erőforrásosztályhoz van elküldött 9-kor: 01.
 
-Mivel az 5. kérdés mediumrc, két egyidejű helyet foglalnak le van szükség.  5. kérdés várnia kell, amíg a futó lekérdezések végrehajtásához két.  Azonban a futó lekérdezések (1., 4) egyik befejeződése után 6. kérdés van ütemezve, azonnal arra az esetre, mert az erőforrások végrehajtsák a lekérdezést.  Ha 5. kérdés magasabb fontossági, mint a 6. kérdés, a 6. kérdés megvárja, amíg a 5. kérdés megkezdheti végrehajtása előtt fut-e.
+Mivel az 5. kérdés mediumrc, két egyidejű helyet foglalnak le van szükség.  5\. kérdés várnia kell, amíg a futó lekérdezések végrehajtásához két.  Azonban a futó lekérdezések (1., 4) egyik befejeződése után 6. kérdés van ütemezve, azonnal arra az esetre, mert az erőforrások végrehajtsák a lekérdezést.  Ha 5. kérdés magasabb fontossági, mint a 6. kérdés, a 6. kérdés megvárja, amíg a 5. kérdés megkezdheti végrehajtása előtt fut-e.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d4b154b8ce55c381f1398c696bc439067dccfab
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: bdfd19d9a0e928e26ad6f01ba4b9c3f493aacb0c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65899747"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107166"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alibaba-cloud-service-role-based-sso"></a>Oktatóanyag: Az Alibaba Felhőszolgáltatás (Role-based SSO) az Azure Active Directory-integráció
 
@@ -54,7 +54,7 @@ Az Alibaba felhőszolgáltatás (Role-based SSO) az Azure AD-be integráció kon
 
 **Az Alibaba Felhőszolgáltatás (Role-based SSO) hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -66,7 +66,7 @@ Az Alibaba felhőszolgáltatás (Role-based SSO) az Azure AD-be integráció kon
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Alibaba Felhőszolgáltatás (Role-based SSO)**, jelölje be **Alibaba Felhőszolgáltatás (Role-based SSO)** eredmény panelen kattintson a **Hozzáadás** gombra kattintva adhat hozzá a az alkalmazás.
+4. A Keresés mezőbe írja be a **Alibaba Felhőszolgáltatás (Role-based SSO)** , jelölje be **Alibaba Felhőszolgáltatás (Role-based SSO)** eredmény panelen kattintson a **Hozzáadás** gombra kattintva adhat hozzá a az alkalmazás.
 
     ![Az Alibaba Felhőszolgáltatás (Role-based SSO) a találatok listájában](common/search-new-app.png)
 
@@ -282,11 +282,11 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezést a hozzáférés biztosításával az Alibaba felhőszolgáltatáshoz (Role-based SSO) használatára.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Alibaba Felhőszolgáltatás (Role-based SSO)**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Alibaba Felhőszolgáltatás (Role-based SSO)** .
 
     ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Alibaba Felhőszolgáltatás (Role-based SSO)**.
+2. Az alkalmazások listájában jelölje ki a **Alibaba Felhőszolgáltatás (Role-based SSO)** .
 
     ![Az Alibaba Felhőszolgáltatás (szerepkör-alapú egyszeri bejelentkezés) hivatkozásra az alkalmazások listáját](common/all-applications.png)
 
@@ -313,7 +313,7 @@ Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezést a h
 
 Ebben a szakaszban egy Britta Simon nevű Alibaba felhőszolgáltatásban (Role-based SSO) felhasználói hoz létre. Együttműködve [Alibaba Felhőszolgáltatás (Role-based SSO) támogatási csoportjának](https://www.aliyun.com/service/) a felhasználók hozzáadása az Alibaba Felhőszolgáltatás (Role-based SSO) platform. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 A fenti konfigurációk elvégzése után tesztelje az Alibaba Felhőszolgáltatás (Role-based SSO) az alábbi lépéseket:
 

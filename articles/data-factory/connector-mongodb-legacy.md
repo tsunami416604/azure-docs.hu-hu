@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
 ms.openlocfilehash: 86dcd39ad7b9f1e207e9254ec72698db3998bbd6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61400474"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával MongoDB
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](v1/data-factory-on-premises-mongodb-connector.md)
 > * [Aktuális verzió](connector-mongodb.md)
 
@@ -178,12 +178,12 @@ Az adatok másolása a mongodb-hez, amikor a következő hozzárendeléseket has
 |:--- |:--- |
 | Binary |Byte[] |
 | Boolean |Boolean |
-| Date |DateTime |
+| Dátum |DateTime |
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
 | ObjectID |String |
-| String |String |
+| Karakterlánc |String |
 | UUID |Guid |
 | Object |Renormalized be simítja egybe az oszlopok, "_" beágyazott elválasztóként |
 

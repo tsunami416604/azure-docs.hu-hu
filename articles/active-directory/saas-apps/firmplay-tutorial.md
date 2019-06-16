@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: dc1d7032f80babf8686397ae4dcf0043f456acbd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2bdc3a13582f079cc9325ef1c6949c3ae10138eb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60278656"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102521"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>Oktatóanyag: FirmPlay – a személyzeti osztályon dolgozók Ügyfélképviseletben és az Azure Active Directory-integráció
 
@@ -53,7 +53,7 @@ FirmPlay – az Azure ad-ben, a személyzeti osztályon dolgozók Ügyfélképvi
 
 **Adja hozzá a FirmPlay - alkalmazott Ügyfélképviseletben a személyzeti osztályon katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

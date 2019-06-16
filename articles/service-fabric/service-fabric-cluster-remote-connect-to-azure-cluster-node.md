@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 03/23/2018
 ms.author: aljo
 ms.openlocfilehash: 4cc2d6355a0147c33048f1c2c27a3648b9223db4
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62110923"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Távoli kapcsolódás a virtuálisgép-méretezési készlet példányt vagy egy fürt csomópontja
@@ -28,7 +28,7 @@ A következő lépéseket egy IP-címet és portot, amelyen a távoli példányh
 
 1. A bejövő NAT-szabályokat a távoli asztal protokoll (RDP) beolvasása.
 
-    Általában mindegyik a fürt megadott csomóponttípus rendelkezik a saját virtuális IP-cím és a egy dedikált load balancert. Alapértelmezés szerint a terheléselosztó egy csomóponttípus neve a következő formátumban: *LB-{fürt neve} – {csomóponttípus}*; például *LB-mycluster-FrontEnd*. 
+    Általában mindegyik a fürt megadott csomóponttípus rendelkezik a saját virtuális IP-cím és a egy dedikált load balancert. Alapértelmezés szerint a terheléselosztó egy csomóponttípus neve a következő formátumban: *LB-{fürt neve} – {csomóponttípus}* ; például *LB-mycluster-FrontEnd*. 
     
     A terheléselosztó az Azure portal oldalán válassza **beállítások** > **bejövő NAT-szabályok**: 
 

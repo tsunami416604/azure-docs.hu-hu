@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: anroth
 ms.openlocfilehash: 3cb67b57f406774b4bcaf57c24b8e7741068ced6
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66497312"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>A Custom Vision besorolás létrehozása
@@ -70,7 +70,7 @@ Annak érdekében, hogy hatékonyan modellje betanításához, használja a kép
 * Háttér
 * a Vizualizáció stílusa
 * személy vagy csoportosított subject(s)
-* Méret
+* size
 * type
 
 Ezenkívül győződjön meg arról, mind a betanító kép a következő feltételeknek:

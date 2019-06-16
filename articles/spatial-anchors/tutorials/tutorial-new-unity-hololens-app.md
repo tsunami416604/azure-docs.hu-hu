@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 05/14/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3c125c54c1e0a70cdec19af912b17759d82a9936
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: c831e8fdacf5103619374605dd980ab1f6735047
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969467"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "67135309"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Oktatóanyag: Azure térbeli horgonyok használatával új HoloLens Unity-alkalmazás létrehozásának részletes útmutatóját
 
@@ -38,7 +38,7 @@ Először beállítjuk a projekt és a Unity jelenet:
 7. Mentse a üres alapértelmezett jelenet egy új fájl használatával: **Fájl** > **Mentés másként**.
 8. Nevezze el az új jelenetet **fő** , és nyomja le az **mentése** gombra.
 
-**a Projektbeállítások között beállítása**
+**A Projektbeállítások között beállítása**
 
 Most már értékre állítjuk néhány Unity project beállításait, hogy segítsen a cél a Windows Holographic SDK-fejlesztéshez. 
 
@@ -77,7 +77,7 @@ Szükségünk ahhoz, hogy a Unity tudja, hogy szeretne exportálni az alkalmazá
 
 **a parancsfájl létrehozása**
 1. Az a **projekt** panelen hozzon létre egy új mappát **parancsfájlok**alatt a **eszközök** mappát. 
-2. Kattintson jobb gombbal a mappára, majd válassza ki **létrehozás >**,  **C# parancsfájl**. Ez a cím **AzureSpatialAnchorsScript**. 
+2. Kattintson jobb gombbal a mappára, majd válassza ki **létrehozás >** ,  **C# parancsfájl**. Ez a cím **AzureSpatialAnchorsScript**. 
 3. Lépjen a **GameObject** -> **hozzon létre üres**. 
 4. Válassza ki, majd a a **vizsgáló** nevezze át a **GameObject** való **MixedRealityCloud**. Válassza ki **összetevő felvétele** , és keresse meg és adja hozzá a **AzureSpatialAnchorsScript**.
 

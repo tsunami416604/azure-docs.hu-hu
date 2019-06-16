@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: c904ac9d4c59a467dd8402ec44682c3cbd03fd8d
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66511539"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
@@ -35,7 +35,7 @@ Szeretne felvenni a függvénylistában jogcímek átalakítása használható a
 
 A **ClaimsTransformation** elem tartalmazza a következő attribútumokat:
 
-| Attribútum |Kötelező | Leírás |
+| Attribútum |Szükséges | Leírás |
 | --------- |-------- | ----------- |
 | Azonosító |Igen | A jogcím-átalakítást egyedi azonosításához használt azonosító. Az azonosító az egyéb XML-elemeket a házirendben hivatkozik. |
 | TransformationMethod | Igen | Az átalakítási módszerek a jogcímek átalakítását. Minden egyes jogcím-átalakítást saját értékekkel rendelkezik. Tekintse meg a [jogcím-átalakítási referencia](#claims-transformations-reference) teljes listáját az elérhető értékek. |
@@ -77,7 +77,7 @@ A **InputClaims** elem tartalmazza a következő elemet:
 
 A **bemeneti jogcím** elem tartalmazza a következő attribútumokat:
 
-| Attribútum |Szükséges | Leírás |
+| Attribútum |Kötelező | Leírás |
 | --------- | ----------- | ----------- |
 | ClaimTypeReferenceId |Igen | A hivatkozás egy már az ClaimsSchema szakaszban, a szabályzatban meghatározott takar. |
 | TransformationClaimType |Igen | Egy azonosító való hivatkozáshoz egy átalakítás jogcím típusa. Minden egyes jogcím-átalakítást saját értékekkel rendelkezik. Tekintse meg a [jogcím-átalakítási referencia](#claims-transformations-reference) teljes listáját az elérhető értékek. |
@@ -92,7 +92,7 @@ A **InputParameters** elem tartalmazza a következő elemet:
 
 #### <a name="inputparameter"></a>InputParameter
 
-| Attribútum | Kötelező |Leírás |
+| Attribútum | Szükséges |Leírás |
 | --------- | ----------- |----------- |
 | Azonosító | Igen | A jogcím átalakítási metódus paramétereként hivatkozás azonosítója. Minden egyes jogcím átalakítási metódus saját értékekkel rendelkezik. Tekintse meg a jogcímek átalakítása tábla teljes listáját az elérhető értékek. |
 | Adattípus | Igen | A data paraméter, például a karakterláncot, logikai érték beolvasása, Int vagy dátum és idő alapján a DataType enumerálása az egyéni házirend XML-séma típusa. Ez a típus aritmetikai műveletek megfelelő végrehajtásához használatos. Minden egyes jogcím-átalakítást saját értékekkel rendelkezik. Tekintse meg a [jogcím-átalakítási referencia](#claims-transformations-reference) teljes listáját az elérhető értékek. |

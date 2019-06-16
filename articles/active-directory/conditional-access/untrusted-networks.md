@@ -2,7 +2,7 @@
 title: Többtényezős hitelesítés (MFA) megkövetelése a hozzáféréshez a nem megbízható hálózatok az Azure Active Directory (Azure AD) feltételes hozzáférés hogyan |} A Microsoft Docs
 description: Ismerje meg, hogyan egy feltételes hozzáférési szabályzat konfigurálása az Azure Active Directoryban (Azure AD) való hozzáférési kísérleteket a nem megbízható hálózatokon.
 services: active-directory
-keywords: feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-vel, biztonságos hozzáférés a vállalati erőforrásokhoz, feltételes hozzáférési szabályzatok
+keywords: Feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-ben a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési szabályzatok
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -18,12 +18,12 @@ ms.date: 12/10/2018
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebf8cb1c3b49975356389c7c9444aff319326f74
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: fa9760c44df13c33687c279478935600325dd085
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60301123"
+ms.locfileid: "67111865"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Útmutató: Többtényezős hitelesítés megkövetelése a hozzáféréshez a nem megbízható hálózatokhoz, a feltételes hozzáférés   
 
@@ -35,7 +35,7 @@ Ez a cikk a feltételes hozzáférési szabályzatot, amely többtényezős Hite
 
 Ez a cikk azt feltételezi, hogy Ön ismeri a: 
 
-- A [alapvető fogalmait](overview.md) az Azure AD feltételes hozzáférés 
+- A [alapvető fogalmait](overview.md) Azure AD feltételes hozzáférés 
 - A [ajánlott eljárások](best-practices.md) a feltételes hozzáférési szabályzatok konfigurálása az Azure Portalon
 
 

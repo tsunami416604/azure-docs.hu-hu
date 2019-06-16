@@ -15,10 +15,10 @@ ms.date: 12/03/2018
 ms.author: cephalin;dariagrigoriu
 ms.custom: seodec18
 ms.openlocfilehash: 384f709bb32f973efec39518eaa895e25136fe23
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66390638"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Folyamatos üzembe helyezés az Azure App Service-ben
@@ -44,7 +44,7 @@ Csak egyszer engedélyezése a GitHub kell. Ha a felhasználó már jogosult, eg
 
 Az a **Build szolgáltató** lapon válassza ki a build-szolgáltatót, és kattintson > **Folytatás**.
 
-### <a name="option-1-use-app-service-kudu-build-server"></a>1. lehetőség: használata App Service Kudu-buildelési kiszolgáló
+### <a name="option-1-use-app-service-kudu-build-server"></a>1\. lehetőség: használata App Service Kudu-buildelési kiszolgáló
 
 Az a **konfigurálása** lapra, jelölje be a szervezet, tárházat, és az ágat, ahonnan a folyamatos üzembe helyezés. Ha befejezte, kattintson a **Folytatás**.
 
@@ -58,7 +58,7 @@ A következő oldalon hozzáférést az App Service használatával a szervezet 
 
 A szervezet ekkor látnia kell a "Szervezet" listájában a **konfigurálása** az üzembe helyezési központ lapon.
 
-### <a name="option-2-use-azure-pipelines-preview"></a>2. lehetőség: az Azure-folyamatok (előzetes verzió) használata
+### <a name="option-2-use-azure-pipelines-preview"></a>2\. lehetőség: az Azure-folyamatok (előzetes verzió) használata
 
 > [!NOTE]
 > Az App Service a szükséges Azure-folyamatok létrehozására a szervezet az Azure DevOps-szolgáltatásokkal, az Azure-fiókkal kell rendelkeznie szerepe **tulajdonos** az Azure-előfizetésében.
@@ -114,11 +114,11 @@ Az a **Build szolgáltató** lapon válassza ki a build-szolgáltatót, és katt
 > [!NOTE]
 > Ha egy már meglévő Azure DevOps-szolgáltatásokkal szervezet, amely nem szerepel a használni kívánt, kell [az Azure DevOps-szolgáltatásokkal szervezet összekapcsolása az Azure-előfizetés](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
 
-### <a name="option-1-use-app-service-kudu-build-server"></a>1. lehetőség: használata App Service Kudu-buildelési kiszolgáló
+### <a name="option-1-use-app-service-kudu-build-server"></a>1\. lehetőség: használata App Service Kudu-buildelési kiszolgáló
 
 Az a **konfigurálása** lapra, jelölje be a szervezet az Azure DevOps-szolgáltatásokkal, projekt, tárház és ágat, ahonnan a folyamatos üzembe helyezés. Ha befejezte, kattintson a **Folytatás**.
 
-### <a name="option-2-use-azure-devops-services-continuous-delivery"></a>2. lehetőség: használja a folyamatos készregyártás az Azure DevOps-szolgáltatásokkal
+### <a name="option-2-use-azure-devops-services-continuous-delivery"></a>2\. lehetőség: használja a folyamatos készregyártás az Azure DevOps-szolgáltatásokkal
 
 > [!NOTE]
 > Az App Service a szükséges Azure-folyamatok létrehozására a szervezet az Azure DevOps-szolgáltatásokkal, az Azure-fiókkal kell rendelkeznie szerepe **tulajdonos** az Azure-előfizetésében.

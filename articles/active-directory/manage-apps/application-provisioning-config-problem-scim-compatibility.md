@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a9a0e595d2120d3cdccd42c502a83de9d5ed3ff4
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963170"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Ismert problémák és megoldásaik az SCIM 2.0 protokoll megfelelőség az Azure AD-felhasználó kiépítési szolgáltatás
@@ -38,10 +38,10 @@ Ez a cikk a kiépítési szolgáltatás megfeleljen az SCIM 2.0 protokollt, és 
 
 | **SCIM 2.0 házirendnek való megfeleléssel** |  **Rögzített?** | **Javítsa ki a dátum**  |  
 |---|---|---|
-| Az Azure AD szükséges "/ scim" kell lennie az alkalmazás által az SCIM-végpont URL-címe  | Igen  |  2018. december 18. | 
-| A bővítményattribútumok használata pont "."jelöléssel attribútum neve helyett kettőspont előtt":" jelöléssel |  Igen  | 2018. december 18.  | 
-|  A Patch kéréseknek többértékű attribútumok érvénytelen elérési út szűrési szintaxist tartalmaz | Igen  |  2018. december 18.  | 
-|  Létrehozási kérelmek csoportosítása tartalmaz egy érvénytelen séma URI | Igen  |  2018. december 18.  |  
+| Az Azure AD szükséges "/ scim" kell lennie az alkalmazás által az SCIM-végpont URL-címe  | Igen  |  2018\. december 18. | 
+| A bővítményattribútumok használata pont "."jelöléssel attribútum neve helyett kettőspont előtt":" jelöléssel |  Igen  | 2018\. december 18.  | 
+|  A Patch kéréseknek többértékű attribútumok érvénytelen elérési út szűrési szintaxist tartalmaz | Igen  |  2018\. december 18.  | 
+|  Létrehozási kérelmek csoportosítása tartalmaz egy érvénytelen séma URI | Igen  |  2018\. december 18.  |  
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>A szolgáltatások javítások leírt automatikusan alkalmazza a már meglévő SCIM alkalmazásomat?
 

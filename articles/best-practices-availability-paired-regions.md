@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/28/2019
 ms.author: raynew
 ms.openlocfilehash: 5ed9dc595c537d8a923d3eb056dcb002cf225f7c
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66427118"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Üzleti folytonosság és vészhelyreállítás recovery (BCDR): Azure – párosított régiók
@@ -24,7 +24,7 @@ Minden egyes Azure-régió párban áll egy regionális párokból érdemes egy�
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 
-1. ábra – az Azure regionális párok
+1\. ábra – az Azure regionális párok
 
 | Földrajzi hely | Párosított régiók |  |
 |:--- |:--- |:--- |
@@ -54,7 +54,7 @@ Minden egyes Azure-régió párban áll egy regionális párokból érdemes egy�
 | Az USA kormányzata |US Gov Iowa |USA-beli államigazgatás – Virginia |
 | Az USA kormányzata |USA-beli államigazgatás – Virginia |USA-beli államigazgatás – Texas |
 
-1. táblázat – Azure regionális párok leképezése
+1\. táblázat – Azure regionális párok leképezése
 
 - Nyugat-Indiát, csak egy irányban párosítva van. Nyugat-Indiát, a másodlagos régióba Dél-India, Dél-India másodlagos régióba azonban közép-India.
 - Dél-brazíliai régióban egy egyedülálló megoldás, mert kívül a saját földrajzi régió párban áll. Dél-Brazília másodlagos régió az USA déli középső Régiójában. USA déli középső Régiójában a másodlagos régió nem Dél-brazíliai régióban.
@@ -66,14 +66,14 @@ Minden egyes Azure-régió párban áll egy regionális párokból érdemes egy�
 Javasoljuk, hogy úgy beállítani, hogy üzleti folytonossági vészhelyreállítás (BCDR) számára, hogy az Azure-elkülönítési és rendelkezésre állás házirendek regionális párok között. Több aktív régiók támogató alkalmazások esetében azt javasoljuk használatával régió párban mindkét régióban, ahol csak lehetséges. Ez biztosítja az optimális rendelkezésre állását, alkalmazások és a egy esetleges vészhelyzet esetén kis méretben helyreállítási idő. 
 
 ## <a name="an-example-of-paired-regions"></a>Egy példa párosított régiók
-2. ábra alább látható egy képzeletbeli alkalmazást, amely a regionális párokból érdemes használja a vész-helyreállítási. A zöld számok jelölje ki a régiók közötti tevékenységek három Azure-szolgáltatások (Azure számítási, tárolási és adatbázis-) és azok miként vannak konfigurálva a régiók közötti replikálására. Az üzembe helyezést több párosított régióra egyedi előnyeit a narancssárga számok ki vannak emelve.
+2\. ábra alább látható egy képzeletbeli alkalmazást, amely a regionális párokból érdemes használja a vész-helyreállítási. A zöld számok jelölje ki a régiók közötti tevékenységek három Azure-szolgáltatások (Azure számítási, tárolási és adatbázis-) és azok miként vannak konfigurálva a régiók közötti replikálására. Az üzembe helyezést több párosított régióra egyedi előnyeit a narancssárga számok ki vannak emelve.
 
 ![Párosított régió előnyt áttekintése](./media/best-practices-availability-paired-regions/PairedRegionsOverview2.png)
 
-2. ábra – elméleti Azure regionális párokból érdemes
+2\. ábra – elméleti Azure regionális párokból érdemes
 
 ## <a name="cross-region-activities"></a>Régiók közötti tevékenységek
-2. ábra az említett.
+2\. ábra az említett.
 
 ![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure Compute (IaaS)** – további számítási erőforrásokat előzetesen győződjön meg, hogy az erőforrások elérhetők egy másik régióban egy katasztrófa során kell kiépítenie. További információkért lásd: [műszaki útmutatást az Azure rugalmassága](resiliency/resiliency-technical-guidance.md).
 
@@ -84,7 +84,7 @@ Javasoljuk, hogy úgy beállítani, hogy üzleti folytonossági vészhelyreáll�
 ![Erőforrás-kezelő](./media/best-practices-availability-paired-regions/4Green.png) **Azure Resource Manager** – Resource Manager természetüknél fogva biztosítják azok logikai elkülönítését összetevők régiók között elosztva. Ez azt jelenti, hogy egy adott régióban logikai hibák kevésbé valószínű, hogy egy másik hatással.
 
 ## <a name="benefits-of-paired-regions"></a>Párosított régiók előnyei
-2. ábra az említett.  
+2\. ábra az említett.  
 
 ![Elkülönítés](./media/best-practices-availability-paired-regions/5Orange.png)
 **fizikai elkülönítése** – Ha lehetséges, az Azure legalább 300 mérföld kellő mértékű elkülönítése a regionális párok adatközpontok részesíti előnyben, bár ez nem praktikus, vagy lehetséges az összes régióban. A fizikai adatközpontban működnek elkülönítése csökkenti a természeti katasztrófák, zavargások, áramkimaradások vagy fizikai hálózat fennakadásai mindkét régióban egyszerre valószínűségét. Elkülönítés a korlátok (földrajzi méret, teljesítmény és a hálózati infrastruktúra elérhetőségét, szabályzat, stb.) földrajzi helyen belül van.  

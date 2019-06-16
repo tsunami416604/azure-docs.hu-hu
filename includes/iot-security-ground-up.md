@@ -9,10 +9,10 @@ ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: b952763378de562f35c2e1ecaf49c56f0145c559
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66166310"
 ---
 # <a name="security-for-internet-of-things-iot-from-the-ground-up"></a>Biztonsági eszközök internetes hálózatához (IoT) létrehozása az alapoktól
@@ -23,7 +23,7 @@ Ez a cikk bemutatja, hogyan az IoT-megoldásgyorsítók adjon meg egy biztonság
 
 A megoldásgyorsítók egyedi funkciókat kínálnak, a márka kiépítését, csatlakozik és egyszerű és átlátható IoT-eszközökről származó adatok tárolására, és az összes, a legtöbb biztonságos. Ez a cikk az Azure IoT megoldás megoldásgyorsítók biztonsági funkciók megvizsgálja, és üzembe helyezési stratégiáknak felelnek annak biztosítása érdekében a biztonsági, adatvédelmi és megfelelőségi kihívások foglalkozik.
 
-## <a name="introduction"></a>Bemutatás
+## <a name="introduction"></a>Bevezetés
 
 A dolgok Internete (IoT) a jövőben azonnali vállalkozások ajánlat és a való életből vett lehetőségek csökkentheti a költségeket, növelheti a bevételt és a vállalkozás átalakítására hulláma. Számos vállalat azonban is szívesen üzembe helyezése IoT biztonsági, adatvédelmi és megfelelőségi szempontok miatt a szervezetben. Egy nagyobb pont aggodalomra ad okot a egyedi-e az IoT infrastruktúra, amely egyesíti az internetes és a fizikai világ együtt, ezek két világ egyes kockázatokat főneveket származik. Az IoT biztonsági vonatkozik, eszközökön futó kódot sértetlenségének biztosítása eszköz- és felhasználói hitelesítést biztosító eszközök (valamint eszközök által létrehozott adatok) törölje tulajdonjogának meghatározása és folyamatban van az internetes és a fizikai támadások rugalmas.
 

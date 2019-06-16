@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 19d9624c5bb60f47ef4bfa1b0629327780c2a9c7
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: d2d0bbc7a6e1c680434041d1b9d55e39a96b6f44
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901862"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67090364"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>Oktatóanyag: Kisebb fejlesztések az Azure Active Directory-integráció
 
@@ -53,7 +53,7 @@ Kisebb fejlesztések integrálása az Azure AD beállítása, hozzá kell kis fe
 
 **Kisebb fejlesztések hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -229,13 +229,13 @@ Kisebb fejlesztések jelentkezzen be az Azure AD-felhasználók engedélyezésé
 
     b. Adja meg a **Vezetéknév** például a felhasználó **Simon**.
 
-    c. Adja meg a **E-mail** például a felhasználó **brittasimon@contoso.com**.
+    c. Adja meg a **E-mail** például a felhasználó **brittasimon@contoso.com** .
 
     d. Azt is beállíthatja, adja meg a személyes üzenet a **értesítő** mezőbe. Ha nem szeretne az értesítés elküldéséhez, akkor törölje ezt a jelölőnégyzetet.
 
     e. Kattintson a **felhasználók létrehozása**.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

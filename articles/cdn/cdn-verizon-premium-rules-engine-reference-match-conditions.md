@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
 ms.openlocfilehash: 5197fdfe78b1b091de713754967f58157cc4a1b3
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66481654"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>Szabálymotor Verizon prémium szintű Azure CDN a feltételeknek megfelelő
@@ -804,7 +804,7 @@ Legfontosabb tudnivalókat:
 - Az edge CNAME URL-cím URL-cím összehasonlítása előtt a CDN URL-címre van átírása.
 
     Például a következő két URL egyaránt mutasson az adott objektum, és ezért tudja az ugyanazon URL-címet:
-     - A CDN URL-címe: http://wpc.0001.&lt; tartomány&gt;/800001/CustomerOrigin/path/asset.htm
+     - A CDN URL-címe: http://wpc.0001.&lt ; tartomány&gt; /800001/CustomerOrigin/path/asset.htm
      - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
     
     További információ:
@@ -909,7 +909,7 @@ Legfontosabb tudnivalókat:
 
 - Adja meg a lekérdezési karakterlánc paraméter több értéket határoló egyenként a szóköz. Amikor egy kérés a megadott név-érték párok kombinációk egyikét tartalmazza a match feltétel teljesül.
 
-   - 1. példa:
+   - 1\. példa:
 
      - Konfigurálás:
 
@@ -921,7 +921,7 @@ Legfontosabb tudnivalókat:
     
        Parameter1=ValueB
 
-   - 2. példa
+   - 2\. példa
 
      - Konfigurálás: 
 

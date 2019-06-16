@@ -7,18 +7,18 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: pabutler
-ms.openlocfilehash: b8113552edf9dd2f886b5752b2ebc69afc0fda08
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: fff89dd8a17aaf6d45462edeaa22f1d2efc8d02b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942385"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064306"
 ---
 # <a name="view-the-publishing-status-of-azure-marketplace-and-appsource-offers"></a>Az Azure Marketplace és AppSource ajánlatokat közzétételi állapotának megtekintése
 
 Miután létrehozott egy ajánlatra, és különösen a közzétételi folyamat során, az ajánlat állapotát megtekintheti a Cloud Partner portálra.  A teljes közzétételi állapot érhető el a [ **összes kínál** ](../portal-tour/cpp-all-offers-page.md) és [ **jóváhagyások** ](../portal-tour/cpp-approvals-page.md) a portál oldalain.  Az alábbi Állapotjelzők egyik ajánlatok üzenet.  
 
-|            status              |   Leírás                                                           |
+|            Állapot              |   Leírás                                                           |
 |            ------              |   -----------                                                           |
 | **-**                          | Az ajánlat létre lett hozva, de a közzétételi folyamat még nem kezdődött meg.            |
 | **A közzététel folyamatban**        | Az ajánlat a közzétételi folyamat lépéseit korongot működik.   |
@@ -39,7 +39,7 @@ A következő példában **állapot** a tanácsadási szolgáltatást, és a jel
 
 ![A tanácsadási szolgáltatást bemutató hiba állapota lap](./media/consulting-service-error.png)
 
-Az Azure-alkalmazások utolsó példában állapotánál egy kritikus fontosságú Microsoft tekintse át a probléma.  Gyakori elérésű, tekintse át a problémával kapcsolatos részletes információkat tartalmaz a VSTS-elemre mutató hivatkozást tartalmaz.  További információkért lásd: [közzététele az Azure application ajánlat](cpp-publish-offer.md).
+Az Azure-alkalmazások utolsó példában állapotánál egy kritikus fontosságú Microsoft tekintse át a probléma.  Az Azure DevOps-elem, tekintse át a problémával kapcsolatos részletes információkat tartalmaz a gyakori elérésű hivatkozást tartalmaz.  További információkért lásd: [közzététele az Azure application ajánlat](cpp-publish-offer.md).
 
 ![Tekintse át a probléma megjelenítő Azure-alkalmazáshoz lapja](../azure-applications/media/status-tab-ms-review.png)
 

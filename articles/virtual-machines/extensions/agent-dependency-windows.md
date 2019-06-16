@@ -1,6 +1,6 @@
 ---
 title: Figyelőfüggőség a Windows Azure virtuális gépi bővítmény |} A Microsoft Docs
-description: Telepítse az Azure Monitor függőségi ügynököt Windows virtuális gép, virtuálisgép-bővítmények használatával.
+description: Windows virtuális gépen az Azure Monitor függőségi ügynök telepítése a virtuális gépi bővítmény használatával.
 services: virtual-machines-windows
 documentationcenter: ''
 author: mgoedtel
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 2cdde2f9dbba9676ba8a4d35ed6b79940668d684
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 34dd872db199a4c10e9f321457188b7f7642944d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65521772"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67120225"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>Figyelőfüggőség a Windows Azure virtuális gépi bővítmény
 
@@ -36,7 +36,7 @@ A Windows Azure virtuális gép függőségi ügynök bővítményt is futtathat
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-A következő JSON Azure Windows virtuális gép az Azure virtuális gép függőségi ügynök bővítmény sémáját jeleníti meg. 
+A következő JSON-beli Windows virtuális gépen az Azure virtuális gép függőségi ügynök bővítmény sémáját mutatja.
 
 ```json
 {
@@ -83,13 +83,13 @@ A következő JSON Azure Windows virtuális gép az Azure virtuális gép függ�
 | type | DependencyAgentWindows |
 | typeHandlerVersion | 9.5 |
 
-## <a name="template-deployment"></a>Sablon telepítése
+## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. Az előző szakaszban részletes JSON-sémájában az Azure Resource Manager-sablon használható az Azure virtuális gép függőségi ügynök bővítmény futtatásához az Azure Resource Manager-sablon telepítése során. 
+Az Azure Resource Manager-sablonok az Azure Virtuálisgép-bővítmények telepítheti. Az előző szakaszban az Azure Resource Manager-sablon részletes JSON-sémájában segítségével az Azure virtuális gép függőségi ügynök bővítmény futtathat egy Azure Resource Manager-sablon telepítése során.
 
-A JSON-t egy virtuálisgép-bővítményt a virtuális gép típusú erőforrást belülre, vagy elhelyezve, a legfelső szintű vagy a legfelső szintű Resource Managerből származó JSON-sablon. A JSON-fájllal való elhelyezését hatással van az erőforrás nevét, és írja be az értékét. További információkért lásd: [állítsa be a nevét és típusát gyermekerőforrásait](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources). 
+A JSON-t egy virtuálisgép-bővítményt a virtuális gép típusú erőforrást is ágyazható. Másik lehetőségként elhelyezhet a legfelső szintű vagy a legfelső szintű Resource Managerből származó JSON-sablon. A JSON-fájllal való elhelyezését hatással van az erőforrás nevét, és írja be az értékét. További információkért lásd: [állítsa be a nevét és típusát gyermekerőforrásait](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources).
 
-Az alábbi példa azt feltételezi, hogy a függőségi ügynök bővítményt a virtuális gép típusú erőforrást van beágyazva. A bővítmény erőforrás beágyazása, ha a JSON az kerül a `"resources": []` objektum a virtuális gép.
+Az alábbi példa azt feltételezi, hogy a függőségi ügynök bővítményt a virtuális gép típusú erőforrást van beágyazva. Ha a bővítmény erőforrás egymásba ágyazni a JSON kerül a `"resources": []` objektum a virtuális gép.
 
 
 ```json
@@ -110,7 +110,7 @@ Az alábbi példa azt feltételezi, hogy a függőségi ügynök bővítményt a
 }
 ```
 
-Helyezi el a JSON-bővítmény a sablonban gyökérmappájában, amikor az erőforrás neve a szülő virtuális gép egy hivatkozást tartalmaz, és a típus a beágyazott konfigurációját tükrözi. 
+Ha a JSON-bővítmény a sablonban gyökérmappájában helyez, a az erőforrás neve tartalmaz egy hivatkozást a szülő virtuális gép. A típus a beágyazott konfigurációját tükrözi.
 
 ```json
 {
@@ -132,7 +132,7 @@ Helyezi el a JSON-bővítmény a sablonban gyökérmappájában, amikor az erőf
 
 ## <a name="powershell-deployment"></a>PowerShell környezetben végzett telepítés
 
-A `Set-AzVMExtension` parancs a függőségi ügynök virtuálisgép-bővítmény egy meglévő virtuális gépek üzembe helyezéséhez használható. A parancs futtatása előtt a nyilvános és privát konfigurációk kell egy PowerShell kivonattábla kell tárolni. 
+Használhatja a `Set-AzVMExtension` parancsot a függőségi ügynök virtuálisgép-bővítmény egy meglévő virtuális gépek üzembe helyezéséhez. Futtassa a parancsot, a nyilvános és privát konfigurációk kell egy PowerShell kivonattábla kell tárolni.
 
 ```powershell
 
@@ -147,9 +147,9 @@ Set-AzVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
 
 ## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
 
-### <a name="troubleshoot"></a>Az eszköz nem tudta a várt módon befejezni a szinkronizálást. A probléma megoldásának módjáról erre az üzenetre kattintva tájékozódhat.
+### <a name="troubleshoot"></a>Hibaelhárítás
 
-Bővítmény központi telepítések állapotát lehet adatokat beolvasni az Azure Portalról, és az Azure PowerShell-modul segítségével. Adott Virtuálisgép-bővítmények központi telepítési állapotának megtekintéséhez futtassa a következő parancsot az Azure PowerShell modullal.
+Bővítmény központi telepítések állapotát lehet adatokat beolvasni az Azure Portalról, és az Azure PowerShell-modul segítségével. Adott Virtuálisgép-bővítmények központi telepítési állapotának megtekintéséhez futtassa a következő parancsot az Azure PowerShell modullal:
 
 ```powershell
 Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
@@ -163,4 +163,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Monitoring.DependencyAgent\
 
 ### <a name="support"></a>Támogatás
 
-Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a a [MSDN Azure-ban és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) , és válassza ki a Get-támogatást. Azure-támogatási használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a a [MSDN Azure-ban és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Vagy egy Azure-támogatási esemény fájl is. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) válassza **támogatás**. Azure-támogatási használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).

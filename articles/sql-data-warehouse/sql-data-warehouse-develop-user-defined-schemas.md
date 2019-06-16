@@ -11,10 +11,10 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 7e22dc69a9da1d9b5a8c0ff13f73769b1ed4514a
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65861726"
 ---
 # <a name="using-user-defined-schemas-in-sql-data-warehouse"></a>Az SQL Data Warehouse használatával a felhasználó által definiált sémák
@@ -47,7 +47,7 @@ Ha már használt sémák majd néhány lehetőségek állnak rendelkezésére:
 3. A régi sémanevek megőrzése a táblán egy extra sémában újra létre kell hoznia a régi séma struktúra nézetek alkalmazásával.
 
 > [!NOTE]
-> 3. lehetőség az első vizsgálat a legtöbb viszont lehetőség tűnhet. Azonban az ördögöt, a részleteket. Nézetek az SQL Data Warehouse csak olvasható. Bármilyen adatokat vagy a tábla módosítása kell az alaptábla végre a rendszer. 3. lehetőség nézetek réteget is bevezeti a rendszerbe. Ez néhány további gondolkodási biztosíthat használatakor nézetek az architektúrához már érdemes.
+> 3\. lehetőség az első vizsgálat a legtöbb viszont lehetőség tűnhet. Azonban az ördögöt, a részleteket. Nézetek az SQL Data Warehouse csak olvasható. Bármilyen adatokat vagy a tábla módosítása kell az alaptábla végre a rendszer. 3\. lehetőség nézetek réteget is bevezeti a rendszerbe. Ez néhány további gondolkodási biztosíthat használatakor nézetek az architektúrához már érdemes.
 > 
 > 
 

@@ -6,13 +6,13 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: eb68421c4f62d94eedf266a0c34a0e276eacc4a6
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.date: 06/10/2019
+ms.openlocfilehash: b85277a4238351b6448c2cf29676ae3d8c118385
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479278"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077203"
 ---
 # <a name="scale-hdinsight-clusters"></a>HDInsight-fürtök méretezése
 
@@ -21,6 +21,9 @@ HDInsight biztosítja a rugalmasságot felkínálva a lehetőséget az növelhet
 Ha időszakos kötegelt feldolgozás, a HDInsight-fürt is vertikálisan fel néhány percet, hogy a művelet előtt, hogy a fürt elegendő memória- és CPU-teljesítmény.  Később Miután befejeződött a feldolgozás, és a használati újra leáll, vertikális kevesebb munkavégző csomópontot a HDInsight-fürt.
 
 Fürt horizontális fel-manuálisan az alábbi módszerek egyikének használatával, vagy használjon [automatikus skálázási](hdinsight-autoscale-clusters.md) beállítások, a rendszer automatikusan méretezése felfelé és lefelé a CPU, memória és más metrikákkal.
+
+> [!NOTE]  
+> Csak 3.1.3 verziójú HDInsight-fürtök vagy újabb verziója támogatott. Ha biztos benne, hogy a fürt verziója, a Tulajdonságok lapon ellenőrizheti.
 
 ## <a name="utilities-to-scale-clusters"></a>Fürtök méretezése segédprogramok
 
@@ -47,6 +50,50 @@ Ezen módszerek bármelyikével, skálázhatja a HDInsight-fürt felfelé vagy l
 Ha Ön **hozzáadása** nem lesz hatással a futó HDInsight-fürthöz (vertikális felskálázási), a folyamatban lévő vagy futó feladatok csomópontok. Új feladatok biztonságosan küldheti a skálázási művelet végrehajtása közben. A skálázási művelet bármilyen okból meghiúsul, ha a hibát hagyja a egy működési állapotot a fürt automatikusan elvégezhető.
 
 Ha Ön **eltávolítása** csomópont (vertikális leskálázási), minden folyamatban lévő vagy futó feladatok lesz meghibásodik, a skálázási művelet befejeződése után. Ez a hiba okozza a szolgáltatások újraindítása a méretezés során. Is annak a kockázata, hogy a fürt beszerezheti a elakadt a csökkentett mód a Manuális méretezés művelet során.
+
+Az adatcsomópontok száma módosításának hatása az egyes támogatott a HDInsight-fürt eltérő:
+
+* Apache Hadoop
+
+    Zökkenőmentesen lehet növelni egy Hadoop-fürtöt, amely a folyamatban lévő vagy futó feladatok befolyásolása nélkül fut-e a munkavégző csomópontok számát. Új feladatok is lehet beküldeni, amíg a művelet folyamatban van. A skálázási művelet hibák szabályosan kezeli, úgy, hogy a fürt minden esetben működőképes állapotban marad.
+
+    Ha egy Hadoop-fürtöt az adatcsomópontok száma csökkentésével vertikálisan leskálázni, a fürtben a szolgáltatások újra lesz indítva. Ez a viselkedés hatására összes futó és a függőben lévő feladatok meghiúsulhatnak, a skálázási művelet befejezése után. A feladatok újból elküldheti, azonban a művelet befejeződése után.
+
+* Apache HBase
+
+    Zökkenőmentesen adja hozzá vagy távolíthat el csomópontokat a HBase-fürt futás közben. Regionális kiszolgáló automatikusan kiegyensúlyozott vannak a skálázási művelet befejezése néhány percen belül. Azonban, manuálisan is eloszthatja a regionális kiszolgálók jelentkezik be a fürt átjárócsomópontjával, és a egy parancssori ablakot a következő parancsokat futtatni:
+
+    ```bash
+    pushd %HBASE_HOME%\bin
+    hbase shell
+    balancer
+    ```
+
+    A HBase-rendszerhéj használata további információkért lásd: [Ismerkedés a HDInsight Apache HBase-példát](hbase/apache-hbase-tutorial-get-started-linux.md).
+
+* Apache Storm
+
+    Zökkenőmentesen adja hozzá vagy távolít el a Storm-fürt adatcsomópontok futás közben. Azonban a skálázási művelet a sikeres telepítést követően szüksége lesz a topológia újraegyensúlyozására.
+
+    Az újraegyensúlyozás két módon is elvégezhető:
+
+  * A Storm webes felhasználói felületen
+  * Parancssori felület (CLI) eszköz
+
+    Tekintse meg a [Apache Storm-dokumentáció](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) további részletekért.
+
+    A Storm webes felhasználói felületen a HDInsight-fürtön érhető el:
+
+    ![HDInsight Storm méretezési újraegyensúlyozási](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+
+    Íme egy példa a Storm-topológia újraegyensúlyozására CLI-parancsot:
+
+    ```cli
+    ## Reconfigure the topology "mytopology" to use 5 worker processes,
+    ## the spout "blue-spout" to use 3 executors, and
+    ## the bolt "yellow-bolt" to use 10 executors
+    $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
+    ```
 
 ## <a name="how-to-safely-scale-down-a-cluster"></a>Biztonságosan le egy fürt méretezése
 
@@ -140,13 +187,13 @@ Ha a Hive távozott mögött ideiglenes fájlok, majd manuálisan távolíthatja
 1. Hive-szolgáltatások leállítása és lekérdezések és a feladat befejeződött.
 2. A fent található az ideiglenes könyvtár tartalmának `hdfs://mycluster/tmp/hive/` , ha bármelyik fájl tartalmaz:
 
-    ```
+    ```bash
     hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
     ```
 
     Itt látható egy mintakimenet, ha a fájlok léteznek:
 
-    ```
+    ```output
     sshuser@hn0-scalin:~$ hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
     drwx------   - hive hdfs          0 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c
     drwx------   - hive hdfs          0 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c/_tmp_space.db
@@ -160,7 +207,7 @@ Ha a Hive távozott mögött ideiglenes fájlok, majd manuálisan távolíthatja
 
     Például szolgáló parancssor fájlok eltávolítása a HDFS-ből:
 
-    ```
+    ```bash
     hadoop fs -rm -r -skipTrash hdfs://mycluster/tmp/hive/
     ```
 
@@ -173,7 +220,6 @@ Három feldolgozó csomópontot fenntartása költségesebb, mint a vertikális 
 #### <a name="run-the-command-to-leave-safe-mode"></a>Futtassa a parancsot, hogy a csökkentett mód
 
 Az utolsó lehetőség, hagyja üresen a csökkentett mód parancs végrehajtása. Ha tudja, hogy HDFS megadása a csökkentett mód oka Hive korrigáljuk fájlreplikáció miatt, csökkentett üzemmódban hagyja a következő parancsot futtathatja:
-
 
 ```bash
 hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
@@ -201,4 +247,3 @@ Régiókiszolgálók automatikusan kiegyensúlyozott van egy skálázási művel
 
 * [Az Azure HDInsight-fürtök automatikus méretezése](hdinsight-autoscale-clusters.md)
 * [Az Azure HDInsight bemutatása](hadoop/apache-hadoop-introduction.md)
-* [Fürtök méretezése](hdinsight-administer-use-portal-linux.md#scale-clusters)

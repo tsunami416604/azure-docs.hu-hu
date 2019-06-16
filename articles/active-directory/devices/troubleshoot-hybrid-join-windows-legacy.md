@@ -16,12 +16,12 @@ ms.date: 04/23/2018
 ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce1d2aaed85f61e2e18f696d749219a1b951c862
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: a68e5a12333e1ee9e920b69599796164534e3c25
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474268"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110535"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Hibaelhárítás az Azure Active Directory hibrid csatlakoztatott régebbi verziójú eszközök 
 
@@ -59,7 +59,7 @@ Ez a cikk nyújt hibaelhárítási útmutatót a potenciális problémák megold
 
 - Győződjön meg arról, hogy [KB4284842](https://support.microsoft.com/help/4284842) van telepítve, Windows 7 SP1 vagy Windows Server 2008 R2 SP1 esetén. A frissítés megakadályozza, hogy az ügyfél-hozzáférési adatvesztés miatt a későbbi hitelesítési hibák védett kulcsokhoz jelszó módosítása után.
 
-## <a name="step-1-retrieve-the-registration-status"></a>1. lépés: A regisztrációs állapot lekérése 
+## <a name="step-1-retrieve-the-registration-status"></a>1\. lépés: A regisztrációs állapot lekérése 
 
 **A regisztrációs állapotának ellenőrzése:**  
 
@@ -74,7 +74,7 @@ Ez a parancs megjelenít egy párbeszédpanelt, amely biztosítja a join állapo
 ![A munkahelyi csatlakoztatás Windows esetében](./media/troubleshoot-hybrid-join-windows-legacy/01.png)
 
 
-## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>2. lépés: A hibrid Azure AD join állapot értékelése 
+## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>2\. lépés: A hibrid Azure AD join állapot értékelése 
 
 Ha az eszköz nem volt a hibrid Azure AD-hez, megpróbálhatja hibrid Azure AD-csatlakozás ehhez a "Csatlakozás" gombra kattintva. Hibrid Azure AD-csatlakozás ehhez a kísérlet meghiúsul, ha a hiba részleteit jelenik meg.
 

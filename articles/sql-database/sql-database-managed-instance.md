@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: 46c6972e20df69da236c151516d7d889f9db6084
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: c09dd990bb377672cb34ebd73a5aa9e59bbc067f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62098546"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070388"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Speciális biztonsági adatokat, a virtuális hálózatok és a közel 100 %-os kompatibilitást SQL Database használata
 
@@ -54,7 +54,7 @@ A felügyelt példány ötvözi a legjobb funkciókat, Azure SQL Database és SQ
 
 A felügyelt példányok legfontosabb funkcióit az alábbi táblázatban láthatók:
 
-|Szolgáltatás | Leírás|
+|Funkció | Leírás|
 |---|---|
 | SQL Server-verzió létrehozása / | SQL Server Database Engine (poslední stabilní) |
 | Automatikus biztonsági másolatok kezelése | Igen |
@@ -78,7 +78,7 @@ A [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md
 A Virtuálismag-modell választhat hardver generációja.
 
 - **Gen4** logikai processzorok alapuló Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzor, a csatlakoztatott SSD fizikai mag, 7 GB RAM-MAL / core és a számítási méret közötti 24, és 8 virtuális maggal.
-- **Gen5** logikai processzorok alapuló Intel E5-2673 v4 (Broadwell) 2.3 GHz-es processzorokkal, NVMe SSD, a hyper-threaded logikai mag, gyors, és 8 és 80 magok közötti méretek számítási.
+- **Gen5** logikai processzorok alapuló Intel E5-2673 v4 (Broadwell) 2.3 GHz-es processzorokkal, NVMe SSD, a hyper-threaded logikai mag, gyors és a 4-es és 80 magok közötti méretek számítási.
 
 További információ a különbség a hardvergenerációk [felügyelt példány erőforráskorlátok](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
 
@@ -240,5 +240,5 @@ Az alábbi táblázat Transact SQL-n keresztül elérhető számos tulajdonság,
 - Virtuális hálózati konfigurációval kapcsolatos további információkért lásd: [felügyelt példányok Vnetjének konfigurálásával](sql-database-managed-instance-connectivity-architecture.md).
 - Ha a rövid útmutató, amely létrehoz egy felügyelt példányt, és visszaállít egy adatbázist egy biztonsági mentési fájlból, lásd: [felügyelt példány létrehozása](sql-database-managed-instance-get-started.md).
 - Áttelepítés az Azure Database Migration Service (DMS) használatával foglalkozó oktatóanyagért lásd: [DMS használatával példány migrálása felügyelt](../dms/tutorial-sql-server-to-managed-instance.md).
-- A speciális hibaelhárítási beépített intelligenciával felügyelt példány adatbázis-teljesítmény figyelését: [figyelése Azure SQL Database az Azure SQL Analytics használatával](../azure-monitor/insights/azure-sql.md)
+- A speciális hibaelhárítási beépített intelligenciával felügyelt példány adatbázis-teljesítmény figyelését: [figyelése Azure SQL Database az Azure SQL Analytics](../azure-monitor/insights/azure-sql.md).
 - Díjszabási információkért tekintse meg a [SQL Database felügyelt példány díjszabása](https://azure.microsoft.com/pricing/details/sql-database/managed/).

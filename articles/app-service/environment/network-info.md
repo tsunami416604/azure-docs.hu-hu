@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: b29dec76fb6b1f9883c5c594d4719c9f3032089e
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 3f80f3c6be747cf84aa9d8b2c386c0568a7511ad
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514628"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069381"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment hálózati szempontjai #
 
@@ -58,24 +58,32 @@ Kisebbre vagy nagyobbra méretezhetők, ha hozzáadja az új szerepköröket a m
 
 ### <a name="ase-inbound-dependencies"></a>ASE bejövő függőségek ###
 
-Az ASE bejövő hozzáférést függőségei vannak:
+Csak a működéséhez az ASE az ASE-t a következő portokat kell nyitva van szükség:
 
 | Használat | Forrás | Cél |
 |-----|------|----|
 | Kezelés | App Service management addresses | ASE alhálózat: 454, 455 |
 |  Belső ASE-kommunikáció | ASE alhálózat: Minden port | ASE alhálózat: Minden port
-|  Lehetővé teszi az Azure load balancer bejövő | Azure Load Balancer | ASE alhálózat: Minden port
-|  Az alkalmazás IP-címek | Alkalmazás-címek | ASE alhálózat: Minden port
+|  Lehetővé teszi az Azure load balancer bejövő | Azure Load Balancer | ASE alhálózat: 16001
 
-A bejövő felügyeleti forgalmak parancs és vezérlés figyelése mellett az ASE biztosít. Ezt a forgalmat a forrás-címek szerepelnek a [ASE felügyeleti címek] [ ASEManagement] dokumentumot. A hálózati biztonsági konfiguráció engedélyezi a hozzáférést a 454 és a 455 portot az összes IP-címekről származó kell. Ha letiltja a hozzáférést a ezt a címet, az ASE nem megfelelő állapotú lesz, és ezután lesz felfüggesztve.
+Nincsenek 2 más portok port beolvasási, 7654 és 1221, nyissa meg tud jeleníteni. Az IP-címet, semmi további válaszoljon rá. Ha megfelelő blokkolható. 
+
+A bejövő felügyeleti forgalmak parancs és vezérlés figyelése mellett az ASE biztosít. Ezt a forgalmat a forrás-címek szerepelnek a [ASE felügyeleti címek] [ ASEManagement] dokumentumot. A hálózati biztonsági beállításokat kell engedélyezze a hozzáférést a 454 és a 455 portot az ASE kezelési címeit. Ha letiltja a hozzáférést a ezt a címet, az ASE nem megfelelő állapotú lesz, és ezután lesz felfüggesztve. A TCP-forgalom, amely porton 454 és a 455 kell lépjen vissza az azonos virtuális IP-cím a, vagy az aszimmetrikus útválasztás problémát kell. 
 
 Az ASE-alhálózatra belül számos, a belső összetevő folytatott kommunikációhoz használt portokat és módosíthatják. Ehhez szükséges összes port az ASE alhálózat elérni az ASE-alhálózatra. 
 
-Az Azure load balancer és az ASE-alhálózatra közötti kommunikációhoz a minimálisan portokat kell megnyitni a 454, 455 és 16001. Életben tartási forgalom között a terheléselosztó és az ASE a 16001 port szolgál. ILB ASE környezetben használja, akkor csak a 454, 455, 16001 lefelé forgalom zárolhatja portokat.  Ha külső ASE környezetben használja, majd meg kell figyelembe kell venni a szokásos alkalmazások hozzáférési portok.  Ha címek alkalmazást használ, meg kell nyitnia azt összes portja.  Amikor egy cím hozzá van rendelve egy adott alkalmazást, a terheléselosztó portok nem ismert, előzetesen HTTP és HTTPS-forgalom küldéséhez az ASE-t fogja használni.
+Az Azure load balancer és az ASE-alhálózatra közötti kommunikációhoz a minimálisan portokat kell megnyitni a 454, 455 és 16001. Életben tartási forgalom között a terheléselosztó és az ASE a 16001 port szolgál. ILB ASE környezetben használja, akkor csak a 454, 455, 16001 lefelé forgalom zárolhatja portokat.  Ha külső ASE környezetben használja, majd meg kell figyelembe kell venni a szokásos alkalmazások hozzáférési portok.  
 
-Ha az alkalmazás a kijelölt IP-címeket használ, az alkalmazások az ASE-alhálózathoz rendelt IP-címekről érkező forgalom szeretne.
+Szüksége van ahhoz, hogy az a többi porton legyenek az alkalmazás portok:
 
-A TCP-forgalom, amely porton 454 és a 455 kell lépjen vissza az azonos virtuális IP-cím a, vagy az aszimmetrikus útválasztás problémát kell. 
+| Használat | Portok |
+|----------|-------------|
+|  HTTP/HTTPS  | 80, 443 |
+|  FTP/FTPS    | 21, 990, 10001-10020 |
+|  A Visual Studio távoli hibakeresés  |  4020, 4022, 4024 |
+|  Webszolgáltatás üzembe helyezése | 8172 |
+
+Ha az alkalmazás portokat letiltja, az ASE-t továbbra is működőképesek, de az alkalmazás nem lehet.  Ha a külső ASE app rendelt IP-címeket használ, szüksége lesz az alkalmazások az ASE-alhálózattal, az ASE portál látható portokon rendelt IP-címekről érkező forgalom engedélyezéséhez > IP-címek lapra.
 
 ### <a name="ase-outbound-dependencies"></a>Kimenő ASE-függőségek ###
 
@@ -83,15 +91,15 @@ A kimenő hozzáféréshez az ASE több külső rendszerek függ. Ezeket a rends
 
 Az ASE ki internetes elérhető címek a következő portokon kommunikál:
 
-| Port | Felhasználások |
+| Felhasználások | Portok |
 |-----|------|
-| 53 | DNS |
-| 123 | NTP |
-| 80/443 | CRL-t, Windows-frissítéseket, a Linux függőségeket, az Azure-szolgáltatások |
-| 1433 | Azure SQL | 
-| 12000 | Figyelés |
+| DNS | 53 |
+| NTP | 123 |
+| 8CRL, a Windows-frissítéseket, a Linux-függőségeket, a Azure-szolgáltatások | 80/443 |
+| Azure SQL | 1433 | 
+| Figyelés | 12000 |
 
-Kimenő függőségek teljes listáját, amely leírja a dokumentumban felsorolt [App Service Environment-környezet kimenő forgalom meghatározott sémákra kelljen](./firewall-integration.md). Ha az ASE elveszítette a hozzáférését annak függőségeit, a rendszer nem működik. Ebben az esetben elég hosszú az ASE fel van függesztve. 
+A kimenő függőségek szerepelnek a dokumentum leírja [App Service Environment-környezet kimenő forgalom meghatározott sémákra kelljen](./firewall-integration.md). Ha az ASE elveszítette a hozzáférését annak függőségeit, a rendszer nem működik. Ebben az esetben elég hosszú az ASE fel van függesztve. 
 
 ### <a name="customer-dns"></a>Customer DNS ###
 
@@ -165,12 +173,12 @@ A szükséges NSG-t, az ASE függvénynek, bejegyzései adatforgalom engedélyez
 
 A DNS-port nem kell hozzáadni, a DNS-forgalom NSG-szabályok nem érvényesek. Ezeket a portokat nem tartalmazzák a portokkal, amelyeken az alkalmazások sikeres használata szükséges. A szokásos alkalmazások hozzáférési portok a következők:
 
-| Használat | Forrás | Cél |
-|----------|---------|-------------|
-|  HTTP/HTTPS  | Felhasználó által konfigurálható |  80, 443 |
-|  FTP/FTPS    | Felhasználó által konfigurálható |  21, 990, 10001-10020 |
-|  A Visual Studio távoli hibakeresés  |  Felhasználó által konfigurálható |  4020, 4022, 4024 |
-|  Webszolgáltatás üzembe helyezése | Felhasználó által konfigurálható | 8172 |
+| Használat | Portok |
+|----------|-------------|
+|  HTTP/HTTPS  | 80, 443 |
+|  FTP/FTPS    | 21, 990, 10001-10020 |
+|  A Visual Studio távoli hibakeresés  |  4020, 4022, 4024 |
+|  Webszolgáltatás üzembe helyezése | 8172 |
 
 A bejövő és kimenő követelményeket figyelembe kell venni, amikor az NSG-k az NSG-t az ebben a példában is látható hasonlóan kell kinéznie. 
 

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
 ms.openlocfilehash: 73b185eabc77d293328b1251a4af1aafffc5f319
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65236355"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-cím-típusok és lefoglalási módszerek az Azure-ban
@@ -50,7 +50,7 @@ Az Azure Resource Manager szolgáltatásban a [nyilvános IP-cím](virtual-netwo
 
 A nyilvános IP-címek IPv4- vagy IPv6-címekkel jönnek létre. A nyilvános IPv6-címek csak internetkapcsolattal rendelkező terheléselosztókhoz rendelhetők hozzá.
 
-### <a name="sku"></a>Termékváltozat
+### <a name="sku"></a>SKU
 
 A nyilvános IP-címek a következő termékváltozatok valamelyikével jönnek létre:
 
@@ -114,7 +114,7 @@ Megadhat egy DNS-tartománynév címkét a nyilvános IP-cím erőforráshoz, am
 ### <a name="dns-best-practices"></a>DNS-ajánlott eljárások
 Ha minden eddiginél szeretne áttelepíteni egy másik régióba, nem telepíthetők át a nyilvános IP-cím teljes Tartománynevét. Ajánlott eljárásként a teljes tartománynév használatával hozzon létre egy Azure-beli nyilvános IP-címre mutató egyéni tartományi CNAME-rekord. Ha szeretne váltani egy másik nyilvános IP-cím van szüksége, ehhez szükség lesz a CNAME-rekord manuálisan frissíteni az új címmel a teljes tartománynév helyett egy frissítést. Használhat [Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address) vagy egy külső DNS-szolgáltatót a DNS-rekord. 
 
-### <a name="virtual-machines"></a>Virtuális gépek
+### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 
 A nyilvános IP-címet társíthatja [Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rendszerű virtuális géphez, ha hozzárendeli a **hálózati adapteréhez**. Hozzárendelhet egy dinamikus vagy egy statikus nyilvános IP-címet a virtuális gépekhez. Tudjon meg többet [az IP-címek hálózati adapterekhez való hozzárendeléséről](virtual-network-network-interface-addresses.md).
 
@@ -133,9 +133,9 @@ A nyilvános IP-címet társíthatja egy [Azure Application Gateway átjáróval
 ### <a name="at-a-glance"></a>Egy pillantásra
 A következő táblázat bemutatja azokat a konkrét tulajdonságokat, amelyekkel a nyilvános IP-címek legfelsőbb szintű erőforráshoz társíthatók, továbbá a lehetséges használható kiosztási módszereket (dinamikus vagy statikus).
 
-| Legfelső szintű erőforrás | IP-cím társítása | Dinamikus | Statikus tartalom |
+| Legfelső szintű erőforrás | IP-cím társítása | Dinamikus | Statikus |
 | --- | --- | --- | --- |
-| Virtuális gép |Hálózati adapter |Igen |Igen |
+| Virtuális gép |Hálózati illesztő |Igen |Igen |
 | Internetkapcsolattal rendelkező terheléselosztó |Előtér-konfiguráció |Igen |Igen |
 | VPN-átjáró |Átjáró IP-konfigurációja |Igen |Nem |
 | Alkalmazásátjáró |Előtér-konfiguráció |Igen (csak V1) |Igen (csak V2) |
@@ -162,7 +162,7 @@ Két módszer van, amellyel a magánhálózati IP-címek lefoglalhatók:
 - **A dinamikus**: Az Azure hozzárendeli a következő elérhető hozzárendelt vagy nem lefoglalt IP-cím az alhálózat címtartományának. Például az Azure a 10.0.0.10 címet rendeli hozzá egy új erőforráshoz, ha a 10.0.0.4–10.0.0.9 címek már más erőforrásokhoz lettek rendelve. Az alapértelmezett lefoglalási módszer a dinamikus. Kiosztás után a dinamikus IP-címek csak a hálózati adapter törlésekor, a virtuális hálózaton belüli másik alhálózatra történő kiosztáskor vagy a kiosztási módszer statikusra váltása és másik IP-cím megadása esetén szabadulnak fel. Alapértelmezés szerint, amikor a lefoglalási módszert dinamikusról statikusra váltja, az Azure statikus címként osztja ki az előzőleg dinamikusan kiosztott címet.
 - **Statikus**: Válassza ki, és rendelje hozzá az összes nem hozzárendelt vagy nem lefoglalt IP-cím az alhálózat címtartományának. Ha például az alhálózat címtartománya 10.0.0.0/16, és a 10.0.0.4–10.0.0.9 címek már más erőforrásokhoz lettek rendelve, a 10.0.0.10–10.0.255.254 tartományból rendelhet hozzá tetszőleges címet. A statikus címek csak egy hálózati adapter törlése esetén szabadulnak fel. Amennyiben a kiosztási módszert dinamikusra váltja, az Azure az előzőleg hozzárendelt statikus IP-címeket dinamikus IP-címként osztja ki akkor is, ha a cím nem az alhálózat címtartományának következő elérhető címe. A cím akkor is megváltozik, ha a hálózati adapter ugyanazon a virtuális hálózaton belül egy másik alhálózathoz lesz kiosztva, de ahhoz, hogy a hálózati adaptert egy másik alhálózathoz ossza ki, a kiosztási módszert először statikusról dinamikusra kell váltani. Miután hozzárendelte a hálózati adaptert egy másik alhálózathoz, a kiosztási módszer visszaváltható statikusra, és hozzárendelhet egy IP-címet az új alhálózat címtartományából.
 
-### <a name="virtual-machines"></a>Virtuális gépek
+### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 
 Egy vagy több magánhálózati IP-cím egy vagy több [Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rendszerű virtuális gép **hálózati adapteréhez** van rendelve. A lefoglalási módszert minden magánhálózati IP-cím esetében meghatározhatja dinamikusként vagy statikusként is.
 
@@ -181,9 +181,9 @@ Hozzárendelhet egy magánhálózati IP-címet az [Azure Internal Load Balancer]
 ### <a name="at-a-glance"></a>Egy pillantásra
 A következő táblázat bemutatja azokat a konkrét tulajdonságokat, amelyekkel a magánhálózati IP-címek legfelsőbb szintű erőforráshoz társíthatók, továbbá a lehetséges használható kiosztási módszereket (dinamikus vagy statikus).
 
-| Legfelső szintű erőforrás | IP-cím társítása | Dinamikus | Statikus tartalom |
+| Legfelső szintű erőforrás | IP-cím társítása | Dinamikus | Statikus |
 | --- | --- | --- | --- |
-| Virtuális gép |Hálózati adapter |Igen |Igen |
+| Virtuális gép |Hálózati illesztő |Igen |Igen |
 | Terheléselosztó |Előtér-konfiguráció |Igen |Igen |
 | Alkalmazásátjáró |Előtér-konfiguráció |Igen |Igen |
 

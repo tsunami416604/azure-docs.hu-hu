@@ -13,16 +13,18 @@ ms.devlang: na
 ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: aa58d0405176a63ff9d1cc25b572f3f3754dbbdc
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: bf21e8cb69091c222b73bb939b3a36caf097c299
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66238854"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144158"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Oktatóanyag: Az Azure Deployment Manager használata a Resource Manager-sablonok (nyilvános előzetes verzió)
 
-Ebből a cikkből megtudhatja, hogyan helyezheti üzembe alkalmazásait több régióban az [Azure Deployment Manager](./deployment-manager-overview.md) használatával. Deployment Manager használatához szeretne létrehozni a két sablon:
+Ebből a cikkből megtudhatja, hogyan helyezheti üzembe alkalmazásait több régióban az [Azure Deployment Manager](./deployment-manager-overview.md) használatával. Ha inkább a gyorsabb megközelítés [Azure Deployment Manager rövid](https://github.com/Azure-Samples/adm-quickstart) hoz létre a szükséges konfigurációk az előfizetésében, és személyre szabható összetevők egy alkalmazás több régióban üzembe helyezheti. Ez a rövid útmutató feladatot hajt végre, ez az oktatóanyag azonban nem.
+
+Deployment Manager használatához szeretne létrehozni a két sablon:
 
 * **Topológiasablon**: Az alkalmazást alkotó Azure-erőforrásokat és a telepítési helyüket írja le.
 * **Bevezetési sablon**: Az alkalmazások telepítése során végrehajtandó lépéseket írja le.
@@ -44,7 +46,10 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * Az újabb verzió üzembe helyezése
 > * Az erőforrások eltávolítása
 
-Az Azure Deployment Manager REST API-referenciában találhat [Itt](https://docs.microsoft.com/rest/api/deploymentmanager/).
+További források:
+
+* A [Azure Deployment Manager REST API-referencia](https://docs.microsoft.com/rest/api/deploymentmanager/).
+* [Oktatóanyag: Állapot-ellenőrzés használata az Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 

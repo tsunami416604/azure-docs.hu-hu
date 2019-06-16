@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 01/25/2019
 ms.author: aljo
 ms.openlocfilehash: 3bc67d7fdc582b6d45596b152bb5d58e41152a46
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66428114"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Windows rendszeren
@@ -338,7 +338,7 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 ### <a name="configure-cluster-wide-credentials"></a>Fürtre kiterjedő hitelesítő adatainak konfigurálása
 
-6.3 futásidejű verziótól kezdődően a Service Fabric lehetővé teszi alkalmazások által használható alapértelmezett adattár hitelesítő fürtre kiterjedő hitelesítő adatainak konfigurálása.
+6\.3 futásidejű verziótól kezdődően a Service Fabric lehetővé teszi alkalmazások által használható alapértelmezett adattár hitelesítő fürtre kiterjedő hitelesítő adatainak konfigurálása.
 
 Engedélyezheti vagy letilthatja a szolgáltatást a `UseDefaultRepositoryCredentials` attribútumot `ContainerHostPolicies` ApplicationManifest.xml és a egy `true` vagy `false` értéket.
 

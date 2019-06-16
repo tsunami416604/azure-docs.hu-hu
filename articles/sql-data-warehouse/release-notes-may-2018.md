@@ -11,16 +11,16 @@ ms.date: 07/23/2018
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.openlocfilehash: eb933e8085ec956be713a18602b8baff9c87084b
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65912201"
 ---
-# <a name="whats-new-in-azure-sql-data-warehouse-may-2018"></a>Mi az új Azure SQL Data warehouse? 2018. május 
+# <a name="whats-new-in-azure-sql-data-warehouse-may-2018"></a>Mi az új Azure SQL Data warehouse? 2018\. május 
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek a 2018 május. 
 
-## <a name="gen-2-instances"></a>2. generációs gyűjtések példányok
+## <a name="gen-2-instances"></a>2\. generációs gyűjtések példányok
 ![ALT](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/2528b41b-f09f-45b1-aa65-fc60d562d3bd.png) Azure SQL Data Warehouse számítási optimalizált Gen2 szint szabványait új teljesítményét a felhőbeli adattárház. Ügyfelek mostantól akár ötször jobb lekérdezési teljesítményt, a négyszer további egyidejűség és ötször nagyobb számítási teljesítményt az aktuális generációjában képest. Most már képes kiszolgálni a egyetlen fürthöz, a legmagasabb minden olyan felhőalapú adattárház szolgáltatás 128 lekérdezést.
 
 Tekintse meg a [Turbocharge felhőalapú analytics az Azure SQL Data Warehouse](https://azure.microsoft.com/blog/turbocharge-cloud-analytics-with-azure-sql-data-warehouse/) blogbejegyzésben Rohan Kumar, vállalati alelnöke, az Azure-adatokból.

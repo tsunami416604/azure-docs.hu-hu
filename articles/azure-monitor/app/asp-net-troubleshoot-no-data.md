@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: cf818756f583974a8a9b53a9a0cce31dd93d042b
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 23d7b0626dba5a88c100868907ecf868a895fc9e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299299"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059612"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Adathiány hibaelhárítása – Application Insights .NET-hez
 ## <a name="some-of-my-telemetry-is-missing"></a>Láthatók a telemetriai adatok némelyike hiányzik
@@ -232,6 +232,27 @@ Kövesse az alábbi utasításokat a keretrendszer hibaelhárítási naplók rö
 3. Indítsa újra a folyamatot úgy, hogy ezek az új beállítások mértékének növelése SDK
 
 4. Amikor végzett, visszaállítás ezeket a módosításokat.
+
+
+## <a name="PerfView"></a> A PerfView naplók összegyűjtése
+[A PerfView](https://github.com/Microsoft/perfview) egy ingyenes diagnosztika és Teljesítményelemzés eszköz, amely segít azonosítani a CPU, memória és egyéb problémák begyűjthetik és a több forrásból származó diagnosztikai információkat jelenítenek meg.
+
+Az Application Insights SDK naplózása helyi hibaelhárítási naplók EventSource, amely szerint a PerfView rögzíthetők.
+
+Naplók gyűjtése, töltse le a PerfView, és futtassa a következő parancsot:
+```cmd
+PerfView.exe collect /onlyProviders=*Microsoft-ApplicationInsights-* -MaxCollectSec:300
+```
+
+Ezeket a paramétereket szükség szerint módosíthatja.
+
+- **MaxCollectSec**. A PerfView határozatlan ideig fut, és a kiszolgáló teljesítményét befolyásoló elkerülése érdekében a paraméter értéke.
+- **OnlyProviders**. Ez csak gyűjteni az SDK-val való beállítása. Ez a lista a meghatározott vizsgálatok alapján szabhatja testre. 
+
+
+További információ
+- [A PerfView teljesítmény-nyomkövetés rögzítése](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView).
+- [Application Insights Eseményforrásai](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
 
 ## <a name="still-not-working"></a>Még mindig nem működik...
 * [Application Insights-fórum](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)

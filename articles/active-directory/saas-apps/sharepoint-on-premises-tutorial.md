@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 8e85f390ee5ff74f02cb95fa4dcf1dfc1a35dad1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 21c10e142802914bcf3292ef7f25066675e6cdd1
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699862"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67143917"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Oktatóanyag: Az Azure Active Directory-integráció a helyszíni SharePoint
 
@@ -53,9 +53,12 @@ Az Azure AD-be a helyszíni SharePoint-integráció konfigurálásához, hozzá 
 
 **Helyszíni SharePoint-hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
+
+    > [!NOTE]   
+    > Az elem nem állnak rendelkezésre, ha azt is megnyithatja a rögzített keresztül **minden szolgáltatás** a bal oldali navigációs panel tetején lévő hivatkozásra. A következő áttekintésében a **Azure Active Directory** hivatkozás található a **identitás** szakasz vagy kereshető a szűrő szövegmezőbe használatával.
 
 2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
 
@@ -65,7 +68,7 @@ Az Azure AD-be a helyszíni SharePoint-integráció konfigurálásához, hozzá 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **helyszíni SharePoint-**, jelölje be **helyszíni SharePoint-** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **helyszíni SharePoint-** , jelölje be **helyszíni SharePoint-** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![A helyi Sharepointot a találatok listájában](common/search-new-app.png)
 
@@ -230,7 +233,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Vállalati alkalmazások panelen](./media/sharepoint-on-premises-tutorial/appregistrations.png)
 
-2. Írja be a keresőmezőbe, és válassza ki **helyszíni SharePoint-**.
+2. Írja be a keresőmezőbe, és válassza ki **helyszíni SharePoint-** .
 
     ![A helyi Sharepointot a találatok listájában](./media/sharepoint-on-premises-tutorial/appsearch.png)
 
@@ -248,7 +251,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 6. Kattintson a **hozzáadása** , majd **API kiválasztása**.
 
-    ![API-hozzáférés](./media/sharepoint-on-premises-tutorial/required_permissions.png)
+    ![API Access](./media/sharepoint-on-premises-tutorial/required_permissions.png)
 
 7. Adja hozzá mindkettőt **Windows Azure Active Directory** és **Microsoft Graph API**, de ez csak akkor lehetséges, válassza ki egyenként.
 
@@ -331,11 +334,11 @@ Ebben a forgatókönyvben nyújtanak, van egy nyílt forráskódú megoldást [A
 
 ### <a name="assign-the-azure-ad-security-group-in-the-azure-portal"></a>Az Azure Portalon az Azure AD biztonsági csoport hozzárendelése
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **helyszíni SharePoint-**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **helyszíni SharePoint-** .
 
     ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-2. Az alkalmazások listáját, írja be, és válassza ki **helyszíni SharePoint-**.
+2. Az alkalmazások listáját, írja be, és válassza ki **helyszíni SharePoint-** .
 
     ![A helyszíni SharePoint-hivatkozás alkalmazásainak listájában](common/all-applications.png)
 

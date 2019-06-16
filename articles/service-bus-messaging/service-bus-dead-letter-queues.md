@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/21/2019
 ms.author: aschhab
 ms.openlocfilehash: af67b27dacf3bb86c2dd5c878a2751e027a53acb
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66003125"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>A Service Bus kézbesíthetetlen levelek sorai áttekintése
@@ -43,12 +43,12 @@ Az üzenet a közvetítő által lekérdezi áthelyezték, két tulajdonságokka
 
 Alkalmazások a saját kódokat adhat meg a `DeadLetterReason` tulajdonság, de a rendszer beállítja a következő értékeket.
 
-| Feltétel | DeadLetterReason | DeadLetterErrorDescription |
+| Állapot | DeadLetterReason | DeadLetterErrorDescription |
 | --- | --- | --- |
-| Mindig |HeaderSizeExceeded |Ez az adatfolyam méretének kvótája túl lett lépve. |
+| Mindig |HeaderSizeExceeded |A stream méretkvótája túl lett lépve. |
 | ! TopicDescription.<br />EnableFilteringMessagesBeforePublishing és SubscriptionDescription.<br />EnableDeadLetteringOnFilterEvaluationExceptions |exception.GetType().Name |exception.Message |
-| EnableDeadLetteringOnMessageExpiration |TTLExpiredException |Az üzenet lejárt, és a kapcsolat megszakadásának lettered volt. |
-| SubscriptionDescription.RequiresSession |A munkamenet-azonosító null értékű. |A munkamenet engedélyezve entitás nem teszi lehetővé egy üzenet, amelynek a munkamenet-azonosító null értékű. |
+| EnableDeadLetteringOnMessageExpiration |TTLExpiredException |Az üzenet lejárt, és a kézbesítetlenek üzenetek közé került. |
+| SubscriptionDescription.RequiresSession |A munkamenet-azonosító null értékű. |A munkamenet engedélyezett entitása nem engedélyezi az olyan üzeneteket, amelyek munkamenet-azonosítója null értékű. |
 | ! kézbesítetlen levelek várólistája |MaxTransferHopCountExceeded |Null |
 | Explicit kapcsolat megszakadásának megnevezéséhez alkalmazás |Alkalmazás által megadott |Alkalmazás által megadott |
 

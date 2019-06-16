@@ -5,18 +5,24 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 4dcbaf159fce6b5f5495a6a25a2a3420cad9e5e8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 06/11/2019
+ms.openlocfilehash: 0fc4eb90d9bed3877b4618fd839d9e8bf1608718
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65067261"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063742"
 ---
 # <a name="supported-postgresql-database-versions"></a>PostgreSQL-adatbázis támogatott verziók
 A Microsoft célja, hogy támogatja a PostgreSQL-motor n-2 verzióit az Azure Database for PostgreSQL – egyetlen kiszolgáló. A verziók lenne, az aktuális főbb verzióhoz az Azure-ban (n) és a két előző főbb verzió (-2).
 
 Azure Database for postgresql-hez jelenleg az alábbi verzióit támogatja:
+
+## <a name="postgresql-version-112"></a>11,2 PostgreSQL-verzió
+Tekintse meg a [PostgreSQL dokumentációja](https://www.postgresql.org/docs/11/static/release-11-2.html) tudhat meg többet a fejlesztések és javítások kisebb ebben a verzióban.
+
+>[!NOTE]
+> 11-es verzió PostgreSQL előzetes verzióban érhető el. Létrehozás az Azure portal használatával támogatása tesszük elérhetővé, és előfordulhat, hogy még nem érhető el a régióban. Használhatja a [Azure CLI-vel](quickstart-create-server-database-azure-cli.md) Postgres 11 kiszolgálót hoz létre bármely régióban. Például: `az postgres server create -g group -n server -u username -p password -l westeurope --sku-name GP_Gen5_2 --version 11`.
 
 ## <a name="postgresql-version-107"></a>PostgreSQL-verzió 10.7
 Tekintse meg a [PostgreSQL dokumentációja](https://www.postgresql.org/docs/10/static/release-10-7.html) tudhat meg többet a fejlesztések és javítások kisebb ebben a verzióban.

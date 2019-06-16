@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.openlocfilehash: 607f85c10183366e88d597d84090f49fc30aff48
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64687968"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Machine Learning-szolgáltatások az Azure HDInsight-fürt kezelése
@@ -30,7 +30,7 @@ Ebből a cikkből megismerheti, hogyan kezelheti a Machine Learning Services meg
 
 A Machine Learning-szolgáltatások HDInsight-fürt több párhuzamos felhasználó számára az élcsomóponthoz, amelyen az RStudio közösségi verziója fut. további felhasználók hozzáadásával engedélyezheti. HDInsight-fürt létrehozásakor két felhasználót kell megadnia, egy HTTP-felhasználót és egy SSH-felhasználót:
 
-![1. párhuzamos felhasználó](./media/r-server-hdinsight-manage/concurrent-users-1.png)
+![1\. párhuzamos felhasználó](./media/r-server-hdinsight-manage/concurrent-users-1.png)
 
 - **Fürt bejelentkezési felhasználóneve**: HTTP-felhasználó a létrehozott HDInsight-fürtöket védő HDInsight-átjárón át történő hitelesítéshez. A HTTP-felhasználó használatos az Apache Ambari felhasználói felületén, Apache Hadoop YARN felhasználói felületén, valamint más Felhasználóifelület-összetevőknek eléréséhez.
 - **Secure Shell- (SSH-) felhasználónév**: SSH-felhasználó, aki a fürtöt biztonságos felületen keresztül éri el. Ez a felhasználó a Linux rendszerben az összes főcsomópont, munkavégző csomópont és élcsomópont felhasználója. Így Secure Shellt használhat a távoli fürt bármely csomópontjának elérésére.
@@ -49,11 +49,11 @@ A fürt határcsomópontjához az RStudio fut, mert több lépésből áll itt:
 2. További Linux-felhasználók hozzáadása az élcsomópontban
 3. Az RStudio Community verziójának használata a létrehozott felhasználóval
 
-### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>1. lépés: A létrehozott SSH-felhasználó használata az élcsomópontra való bejelentkezéshez
+### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>1\. lépés: A létrehozott SSH-felhasználó használata az élcsomópontra való bejelentkezéshez
 
 Kövesse az utasításokat, [HDInsight (az Apache Hadoop) SSH-val csatlakozhat](../hdinsight-hadoop-linux-use-ssh-unix.md) az élcsomópont eléréséhez. A Machine Learning-szolgáltatások HDInsight-fürt az élcsomópont címe a következő `CLUSTERNAME-ed-ssh.azurehdinsight.net`.
 
-### <a name="step-2-add-more-linux-users-in-edge-node"></a>2. lépés: További Linux-felhasználók hozzáadása az élcsomópontban
+### <a name="step-2-add-more-linux-users-in-edge-node"></a>2\. lépés: További Linux-felhasználók hozzáadása az élcsomópontban
 
 Felhasználó élcsomóponthoz adásához hajtsa végre a következő parancsokat:
 
@@ -65,11 +65,11 @@ Felhasználó élcsomóponthoz adásához hajtsa végre a következő parancsoka
 
 Az alábbi képernyőfelvételen a kimenetek.
 
-![3. párhuzamos felhasználó](./media/r-server-hdinsight-manage/concurrent-users-2.png)
+![3\. párhuzamos felhasználó](./media/r-server-hdinsight-manage/concurrent-users-2.png)
 
 Amikor a rendszer "aktuális Kerberos-jelszót:", csak nyomja meg az **Enter** figyelmen kívül hagyja azt. A `useradd` parancs `-m` kapcsolója jelzi, hogy a rendszer létrehoz egy kezdőmappát a felhasználó számára, amely szükséges az RStudio Community verziójához.
 
-### <a name="step-3-use-rstudio-community-version-with-the-user-created"></a>3. lépés: Az RStudio Community verziójának használata a létrehozott felhasználóval
+### <a name="step-3-use-rstudio-community-version-with-the-user-created"></a>3\. lépés: Az RStudio Community verziójának használata a létrehozott felhasználóval
 
 Az RStudio eléréséhez https://CLUSTERNAME.azurehdinsight.net/rstudio/. Ha első alkalommal a fürt létrehozása után naplózás, adja meg a fürt rendszergazdai hitelesítő adataival követ a létrehozott SSH-felhasználónál használt. Ha ez nem az első bejelentkezés, csak adja meg a hitelesítő adatokat a létrehozott SSH-felhasználót.
 

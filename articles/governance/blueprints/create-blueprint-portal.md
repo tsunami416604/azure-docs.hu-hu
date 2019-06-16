@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: acee2aabe94f5d015562bd697d08f657895d3b02
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 97d0615fcc4f86c295441ec6a0eb8b86ba6b11b5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65789476"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059696"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Gyors útmutató: Definiálása és hozzárendelése egy tervezet a portálon
 
@@ -70,11 +70,11 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
 
    1. Változás **típus** való **beépített**. A **keresési**, adja meg **címke**.
 
-   1. A szűrés végrehajtásához kattintson a **Keresésen** kívülre. Válassza ki **címke és címke alapértelmezett értékének alkalmazása erőforráscsoportok**.
+   1. A szűrés végrehajtásához kattintson a **Keresésen** kívülre. Válassza ki **címke és címke alapértelmezett értékének hozzáfűzése erőforráscsoportok**.
 
    1. Válassza ki **Hozzáadás** az összetevő hozzáadása a tervezethez.
 
-1. Jelölje ki a szabályzat-hozzárendelés sort **címke és címke alapértelmezett értékének alkalmazása erőforráscsoportok**.
+1. Jelölje ki a szabályzat-hozzárendelés sort **címke és címke alapértelmezett értékének hozzáfűzése erőforráscsoportok**.
 
 1. A lehívandó összetevő paramétereket biztosít a tervezetdefiníciót részeként az ablak megnyílik, és lehetővé teszi, hogy az összes hozzárendelés (statikus paraméterek) paraméterek alapján állítja be a tervezet helyett hozzárendelés (dinamikus paraméterek) alatt. Ebben a példában a tervezet-hozzárendelés során dinamikus paramétereket használja, így hagyja az alapértelmezett beállításokat, és válassza ki **Mégse**.
 

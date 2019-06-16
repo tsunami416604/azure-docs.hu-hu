@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
 ms.openlocfilehash: a79753a897a62e194a759c23a9c0acc45c5f36c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66159136"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>Storsimple-höz készült szerepköralapú hozzáférés-vezérlés
@@ -165,7 +165,7 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
 
 A hozzáférés a szerepkör-hozzárendelés hatókörébe tartozó erőforrásból, erőforráscsoportból vagy előfizetésből biztosítható. Ha hozzáférést biztosít, hogy a gyermek öröklik a szülő csomópontban biztosított hozzáférést figyelembe kell vennie. További információért ugorjon [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md).
 
-1. Lépjen a **hozzáférés-vezérlés (IAM)**. Kattintson a **+ Hozzáadás** az Access control panelen.
+1. Lépjen a **hozzáférés-vezérlés (IAM)** . Kattintson a **+ Hozzáadás** az Access control panelen.
 
     ![Hozzáférés RBAC-szerepkör hozzáadása](./media/storsimple-8000-role-based-access-control/rbac-add-role.png)
 

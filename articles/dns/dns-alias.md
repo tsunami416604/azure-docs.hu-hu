@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/7/2019
 ms.author: victorh
-ms.openlocfilehash: ff71eb7d1386226e29b3f0846e0894a553f978e5
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 0d52e84ba027f902cebf543ae019b5e4b53400b7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754232"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059685"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Az Azure DNS-alias a rekordok áttekintése
 
@@ -53,7 +53,7 @@ Ez a forgatókönyv hasonlít az előzőre. Például egy alkalmazás áthelyez�
 
 ### <a name="host-load-balanced-applications-at-the-zone-apex"></a>Elosztott terhelésű alkalmazások üzemeltetését a zóna legfelső pontján
 
-A DNS protokoll megakadályozza, hogy a CNAME-rekordokat a zóna legfelső pontján hozzárendelését. Például ha a tartománya a contoso.com; hozhat létre CNAME-rekordokat a somelable.contoso.com; azonban nem hozhat létre CNAME contoso.com magát.
+A DNS protokoll megakadályozza, hogy a CNAME-rekordokat a zóna legfelső pontján hozzárendelését. Például ha a tartománya a contoso.com; hozhat létre CNAME-rekordokat a somelabel.contoso.com; azonban nem hozhat létre CNAME contoso.com magát.
 Ez a korlátozás problémát jelent, a kérelmek terheléselosztással rendelkező alkalmazástulajdonosok mögött [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Egy CNAME rekord létrehozása a Traffic Manager-profil használatával van szüksége, mivel már nem lehet a zóna felső pontja a Traffic Manager-profilt mutassanak.
 
 Ez zárhatók alias rekordok használatával. Ellentétben a CNAME-rekordokat alias-rekordok jönnek létre a zóna legfelső pontján és alkalmazástulajdonosok szolgál, a zóna felső pontja rekord átirányítása egy Traffic Manager-profil, amely rendelkezik a külső végpontokat. Alkalmazástulajdonos mutasson az azonos Traffic Manager-profilt, amely a DNS-zóna más tartományban szolgál.

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: de2f1009c574d9768330d4e6a38a219ba1f81daa
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: c3e77a8ec46ae18cb9daa855d842969cc2ba4bb9
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237956"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137245"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Adatok előkészítése az egyéni beszéd
 
@@ -44,7 +44,7 @@ Minden egyes feltöltött adatkészlet meg kell felelnie az Ön által választo
 Miután feltöltötte az adatkészlet, több lehetőség közül választhat:
 
 * Navigálhat a **tesztelés** lapra, és vizuálisan megvizsgálják a csak az audio- és audio- és emberi címkével beszédátírási adatokat.
-* Navigálhat a **képzési** lap és USA hang + emberi beszédátírási adatok vagy a kapcsolódó szöveges adatok egy egyéni modell betanításához.
+* Navigálhat a **képzési** lapra, és hang + emberi beszédátírási adatok és a kapcsolódó szöveges adatok használata egy egyéni modell betanításához.
 
 ## <a name="audio-data-for-testing"></a>Tesztelési hívásaiból
 
@@ -138,11 +138,11 @@ Standard kiejtés, a felhasználók lép fel vagy használata nélkül nem szokv
 
 Az egyes példák a kimondott utterance (kifejezés) és a egy egyéni kiejtés Ez tartalmazza:
 
-| Használja a beszélt űrlap | Felismert/megjelenített képernyő |
+| Felismert/megjelenített képernyő | Használja a beszélt űrlap |
 |--------------|--------------------------|
-| három c p o | 3CPO |  
-| c n t k | CNTK |
-| i háromszoros e | IEEE |
+| 3CPO | három c p o |  
+| CNTK | c n t k |
+| IEEE | i háromszoros e |
 
 A beszédből kinyert képernyő az a betűvel fonetikus során. Betűvel, szavak, szótagokat határoznak vagy mindhárom kombinációja állhat.
 
@@ -150,7 +150,7 @@ Testre szabott írásmódja (en-US) angol és német (de-DE) érhető el. Ez a t
 
 | Nyelv | Területi beállítás | Karakterek |
 |----------|--------|------------|
-| angol | en-US | a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
+| Angol | en-US | a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
 | német | de-DE | ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
 
 Ez a táblázat segítségével győződjön meg arról, hogy a kapcsolódó adatfájlt kiejtés megfelelően van formázva. Írásmódja fájlok kicsik, és nem lehet hosszabb néhány Tudásbázis.
@@ -158,7 +158,7 @@ Ez a táblázat segítségével győződjön meg arról, hogy a kapcsolódó ada
 | Tulajdonság | Érték |
 |----------|-------|
 | Szövegkódolás | UTF-8 Anyagjegyzék (ANSI is támogatott angol nyelven) |
-| minden sorában kiejtés száma | 1. |
+| minden sorában kiejtés száma | 1 |
 | Maximális fájlméret | 1 MB (ingyenes szint 1 KB) |
 
 ## <a name="next-steps"></a>További lépések

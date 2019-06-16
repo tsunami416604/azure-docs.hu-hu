@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 15fa9095b8169dc1545c796421be91e89652e1c1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: c87685673052d2cfbc961d3bb717c9cd274872af
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66165878"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059236"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Hozzon létre, és a egy machine learning-folyamat futtatása az Azure Machine Learning-SDK használatával
 
@@ -53,7 +53,7 @@ A folyamat futtatásához szükséges erőforrások létrehozásához:
 
 * Konfigurálja a `DataReference` él, vagy elérhető adattárolót az adatok az objektum.
 
-* Állítsa be a [számítási céljainak](concept-azure-machine-learning-architecture.md#compute-target) az a folyamat lépései futtathatók.
+* Állítsa be a [számítási céljainak](concept-azure-machine-learning-architecture.md#compute-targets) az a folyamat lépései futtathatók.
 
 ### <a name="set-up-a-datastore"></a>Egy adattár beállítása
 Egy adattár tárolja az adatokat a folyamat eléréséhez. Az egyes munkaterületeken tartozik egy alapértelmezett adattárhoz. További adattárainak regisztrálhat. 
@@ -296,7 +296,7 @@ A folyamat elküldésekor Azure Machine Learning szolgáltatás ellenőrzi az eg
 > [!IMPORTANT]
 > Akadályozni, hogy a fájlok a pillanatkép kiterjed, hozzon létre egy [.gitignore](https://git-scm.com/docs/gitignore) vagy `.amlignore` fájlt a könyvtárban, és hozzá tud adni a fájlokat. A `.amlignore` fájlt használja ugyanazt a szintaxist, és trendeket a [.gitignore](https://git-scm.com/docs/gitignore) fájlt. Ha mindkét fájl létezik, a `.amlignore` fájl élvez elsőbbséget.
 >
-> További információkért lásd: [pillanatképek](concept-azure-machine-learning-architecture.md#snapshot).
+> További információkért lásd: [pillanatképek](concept-azure-machine-learning-architecture.md#snapshots).
 
 ```python
 # Submit the pipeline to be run

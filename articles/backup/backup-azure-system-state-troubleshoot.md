@@ -9,16 +9,39 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: srinathvasireddy
-ms.openlocfilehash: 53b9f8fb58a6e70a4bd2cd02adb9ce824466d7de
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 8a94994d697784fb9dab8027e5a43f24c135b32c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66481594"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059730"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Rendszerállapot biztonsági mentésének hibaelhárítása
 
 Ez a cikk ismerteti a rendszerállapot biztonsági mentését használata során előforduló problémák megoldásait.
+
+## <a name="basic-troubleshooting"></a>Alapszintű hibaelhárítás
+Azt javasoljuk, hogy hajtsa végre az alábbi érvényesítési, mielőtt használatba hibáinak elhárítása a rendszerállapot biztonsági mentése:
+
+- [Győződjön meg arról a Microsoft Azure Recovery Services (MARS) ügynöke naprakész](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
+- [Győződjön meg arról, hogy a MARS-ügynök és az Azure között van hálózati kapcsolat](https://aka.ms/AB-A4dp50)
+- Győződjön meg arról, hogy a Microsoft Azure Recovery Services fut (a Szolgáltatás konzolon). Ha szükséges, indítsa újra a gépet, és próbálja meg újra a műveletet
+- [Győződjön meg arról, hogy 5-10% szabad hellyel rendelkezik az ideiglenes mappa helyén](https://aka.ms/AB-AA4dwtt)
+- [Ellenőrizze, hogy egy másik folyamat vagy víruskereső szoftver nem zavarja-e az Azure Backup működését](https://aka.ms/AB-AA4dwtk)
+- [Az ütemezett biztonsági mentés meghiúsul, de a manuális biztonsági mentés sikeres](https://aka.ms/ScheduledBackupFailManualWorks)
+- Ellenőrizze, hogy az operációs rendszer rendelkezik-e a legújabb frissítésekkel
+- [Győződjön meg, hogy a biztonsági mentés nem támogatott meghajtókkal és nem támogatott attribútumokkal rendelkező fájlok kizárva](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)
+- Győződjön meg arról, hogy a védett rendszer **rendszerórája** a megfelelő időzónára van állítva <br>
+- [Győződjön meg arról, hogy a kiszolgáló rendelkezik a .NET-keretrendszer 4.5.2-es vagy annál frissebb verziójával](https://www.microsoft.com/download/details.aspx?id=30653)<br>
+- Ha a **kiszolgálót újra regisztrálni** szeretné egy tárolóhoz, akkor: <br>
+  - Győződjön meg arról, hogy az ügynök el lett távolítva a kiszolgálóról és törölve lett a portálról <br>
+  - Használja ugyanazt a jelszót, amelyet kezdetben használt a kiszolgáló regisztrálásához <br>
+- Offline biztonsági mentés esetén ellenőrizze, hogy az Azure PowerShell verziója 3.7.0 telepítve van a forrás- és másolási számítógépen offline biztonsági mentés megkezdése előtt
+- [Figyelembe veszi, amikor biztonsági mentést ügynököt egy Azure virtuális gépen fut.](https://aka.ms/AB-AA4dwtr)
+
+### <a name="limitation"></a>Korlátozás
+- A Microsoft nem javasolja, hogy más hardverre próbáljon helyreállítást végezni a rendszerállapot-helyreállítással
+- A rendszerállapot biztonsági mentése jelenleg támogatja a "helyszíni" Windows-kiszolgálók, ez a funkció nem érhető el az Azure virtuális gépek.
 
 ## <a name="pre-requisite"></a>Előfeltétel
 

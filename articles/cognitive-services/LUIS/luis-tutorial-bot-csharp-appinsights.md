@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 06/11/2019
 ms.author: diberry
-ms.openlocfilehash: 56ceb48be9d5cc9d1cdceed7505e2e3e918a7286
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 6dbaa24df8b2917dd3f68d3851ca4662554ad00a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399660"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053267"
 ---
 # <a name="add-luis-results-to-application-insights-with-a-bot-in-c"></a>A LUIS-eredményeket ad hozzá egy robottal az Application InsightsC#
 
 Ez az oktatóanyag hozzáad a LUIS válasz információkat [Application Insights](https://azure.microsoft.com/services/application-insights/) telemetriai adatok tárolására. Miután az adatokat, kérdezhet le róla a Kusto-nyelv vagy a Power BI segítségével elemezheti, összesítése, és a jelentés a szándékok és entitások, valós idejű utterance (kifejezés). Az elemzés segít annak meghatározásában, ha kell hozzáadása vagy szerkesztése a szándékok és entitások, a LUIS-alkalmazás.
 
-A robot épül fel a Bot keretrendszer 3.x és az Azure Web app bot. A [Bot keretrendszer 4.x LUIS oktatóanyag](luis-csharp-tutorial-bf-v4.md) is rendelkezésre áll.
+A robot épül fel a Bot keretrendszer 4.x-es és az Azure Web app bot. A [Bot keretrendszer 4.x LUIS oktatóanyag](luis-csharp-tutorial-bf-v4.md) is rendelkezésre áll.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -33,7 +33,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A LUIS web app bot származó a **[előző oktatóanyagban](luis-csharp-tutorial-build-bot-framework-sample.md)** az Application Insights-e kapcsolva.
+* A LUIS web app-robot, az **tutorial](luis-csharp-tutorial-bf-v4.md)** az Application Insights-e kapcsolva.
 * [A Visual Studio 2017](https://www.visualstudio.com/downloads/) helyben telepítve a számítógépen.
 
 > [!Tip]
@@ -43,7 +43,7 @@ Ebben az oktatóanyagban kódja érhető el a [Azure-minták GitHub-adattár](ht
 
 ## <a name="review-luis-web-app-bot"></a>Tekintse át a LUIS web app bot
 
-Ez az oktatóanyag feltételezi, hogy a kódot, hogy a következőképpen néz ki: a következő vagy az, hogy végrehajtotta a [többi oktatóanyag](luis-csharp-tutorial-build-bot-framework-sample.md):
+Ez az oktatóanyag feltételezi, hogy a kódot, hogy a következőképpen néz ki: a következő vagy az, hogy végrehajtotta a [többi oktatóanyag](luis-csharp-tutorial-bf-v4.md):
 
    [!code-csharp[Web app bot with LUIS](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs "Web app bot with LUIS")]
 

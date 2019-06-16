@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 38a120747734cbe4af8804a3e7596fc11a2c2eb3
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66306666"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Az Azure Storage REST API használata
@@ -65,7 +65,7 @@ Nézzük meg a lapot a REST API-referencia a [ListContainers](/rest/api/storages
 
 **Kérelem metódusa**: GET. Ez a művelet a HTTP-metódus, mindenképp adja meg a kérelem objektum olyan osztályát. Ehhez a művelethez tartozó többi értéket tartalmazza, HEAD, PUT és DELETE, attól függően, az API-t hívja meg.
 
-**Kérés URI-ja**: https://myaccount.blob.core.windows.net/?comp=list  Ez a blob storage-végpont jön `http://myaccount.blob.core.windows.net` és az erőforrás-karakterlánc `/?comp=list`.
+**Kérés URI-ja**: https://myaccount.blob.core.windows.net/?comp=list   Ez a blob storage-végpont jön `http://myaccount.blob.core.windows.net` és az erőforrás-karakterlánc `/?comp=list`.
 
 [URI-paramétereinek](/rest/api/storageservices/List-Containers2#uri-parameters): Nincsenek további lekérdezési paraméterek ListContainers hívásakor használható. Ezeket a paramétereket néhány vannak *időtúllépési* a hívás (másodpercben), és *előtag*, szűréshez használt.
 

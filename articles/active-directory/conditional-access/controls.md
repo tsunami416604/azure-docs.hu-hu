@@ -1,8 +1,8 @@
 ---
-title: Mik a hozzáférés-vezérlés az Azure Active Directory feltételes hozzáférés? | Microsoft Docs
+title: Mik azok a hozzáférés-vezérlés az Azure Active Directory feltételes hozzáférés? | Microsoft Docs
 description: Ismerje meg, hogyan hozzáférés-vezérlés az Azure Active Directory feltételes hozzáférés során.
 services: active-directory
-keywords: feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-vel, biztonságos hozzáférés a vállalati erőforrásokhoz, feltételes hozzáférési szabályzatok
+keywords: Feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-ben a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési szabályzatok
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -18,14 +18,14 @@ ms.date: 03/23/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acc30bc18921b79be3b5e5b2ae340eab29dd5bcf
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
-ms.translationtype: MT
+ms.openlocfilehash: dd1ea7665daa6fd93a755cbdb20ebc63e3d63a94
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305755"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112559"
 ---
-# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Mik a hozzáférés-vezérlés az Azure Active Directory feltételes hozzáférés?
+# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Mik azok a hozzáférés-vezérlés az Azure Active Directory feltételes hozzáférés?
 
 A [Azure Active Directory (Azure AD) feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md), szabályozhatja, hogy jogosult felhasználók hozzáférésének a felhőalapú alkalmazások. Feltételes hozzáférési szabályzatot adja meg a válasz ("Ehhez") való indítására, a házirend ("Amikor ez megtörténik") az az oka.
 
@@ -49,7 +49,7 @@ Vezérlők két típusa van:
 
 - **Munkamenet-vezérlők** – hozzáférés korlátozása a munkameneten belül
 
-Ez a témakör ismerteti a különféle vezérlők az Azure AD feltételes hozzáférés által biztosított. 
+Ez a témakör ismerteti a különféle vezérlők az Azure AD feltételes hozzáférése által biztosított. 
 
 ## <a name="grant-controls"></a>Engedélyezési vezérlők
 
@@ -86,21 +86,21 @@ További információkért lásd: [a feltételes hozzáféréssel felhőalapú a
 
 Az Azure AD-eszköztől az eszközalapú feltételes hozzáférési szabályzatok konfigurálására egy másik lehetőség egy hibrid megkövetelése. Ez a követelmény a Windows asztali számítógépek, laptopok és a helyszíni Active Directory-tartományhoz csatlakoztatott vállalati táblagépek hivatkozik. Ha ezt a beállítást, a feltételes hozzáférési szabályzat biztosít a helyszíni Active Directory és az Azure Active Directoryhoz csatlakoztatott eszközök a hozzáférés a hozzáférési kísérletek.  
 
-További információkért lásd: [Azure Active Directory eszközalapú feltételes hozzáférési szabályzatok beállítása](require-managed-devices.md).
+További információkért lásd: [beállítása az Azure Active Directory eszközalapú feltételes hozzáférési szabályzatok](require-managed-devices.md).
 
 ### <a name="approved-client-app"></a>Jóváhagyott ügyfélalkalmazás
 
 Mivel az alkalmazottak mobileszközök mind a személyes és munkahelyi feladatokhoz, érdemes elért eszközök még abban az esetben, ha azok által nem kezelt, vállalati adatok védelme érdekében lehetősége.
 Használhat [az Intune alkalmazásvédelmi szabályzatai](https://docs.microsoft.com/intune/app-protection-policy) független a mobileszköz-kezelési (MDM) megoldásoktól a vállalati adatok védelme érdekében.
 
-A jóváhagyott ügyfélalkalmazások is egy ügyfélalkalmazás, amely megpróbálja elérni a felhőalapú alkalmazások támogatásához szükséges [az Intune alkalmazásvédelmi szabályzatai](https://docs.microsoft.com/intune/app-protection-policy). Például korlátozhatja hozzáférést az Exchange online-hoz az Outlook alkalmazást. Más néven van egy feltételes hozzáférési szabályzat megköveteli a jóváhagyott ügyfélalkalmazások [alapján az alkalmazásalapú feltételes hozzáférési szabályzat](app-based-conditional-access.md). Támogatott a jóváhagyott ügyfélalkalmazások listájának megtekintéséhez lásd: [jóváhagyott alkalmazás megkövetelése ügyfél](technical-reference.md#approved-client-app-requirement).
+A jóváhagyott ügyfélalkalmazások is egy ügyfélalkalmazás, amely megpróbálja elérni a felhőalapú alkalmazások támogatásához szükséges [az Intune alkalmazásvédelmi szabályzatai](https://docs.microsoft.com/intune/app-protection-policy). Például korlátozhatja hozzáférést az Exchange online-hoz az Outlook alkalmazást. Más néven van egy feltételes hozzáférési szabályzat megköveteli a jóváhagyott ügyfélalkalmazások [alkalmazásalapú feltételes hozzáférési szabályzat](app-based-conditional-access.md). Támogatott a jóváhagyott ügyfélalkalmazások listájának megtekintéséhez lásd: [jóváhagyott alkalmazás megkövetelése ügyfél](technical-reference.md#approved-client-app-requirement).
 
 ### <a name="app-protection-policy-preview"></a>Alkalmazásvédelmi szabályzat (előzetes verzió)
 
 Mivel az alkalmazottak mobileszközök mind a személyes és munkahelyi feladatokhoz, érdemes elért eszközök még abban az esetben, ha azok által nem kezelt, vállalati adatok védelme érdekében lehetősége.
 Használhat [az Intune alkalmazásvédelmi szabályzatai](https://docs.microsoft.com/intune/app-protection-policy) független a mobileszköz-kezelési (MDM) megoldásoktól a vállalati adatok védelme érdekében.
 
-Az alkalmazásvédelmi szabályzatot, a hozzáférés korlátozható az ügyfélalkalmazások számára, amely az Azure-bA jelentett AD rendelkezik, miután megkapta [az Intune alkalmazásvédelmi szabályzatai](https://docs.microsoft.com/intune/app-protection-policy). Például korlátozhatja hozzáférést az Exchange online-hoz az Outlook alkalmazást, amely rendelkezik az Intune alkalmazásvédelmi szabályzat. Más néven az alkalmazásvédelmi szabályzatot igénylő feltételes hozzáférési szabályzat [app protection alkalmazásalapú feltételes hozzáférési szabályzat](app-protection-based-conditional-access.md). 
+Az alkalmazásvédelmi szabályzatot, a hozzáférés korlátozható az ügyfélalkalmazások számára, amely az Azure-bA jelentett AD rendelkezik, miután megkapta [az Intune alkalmazásvédelmi szabályzatai](https://docs.microsoft.com/intune/app-protection-policy). Például korlátozhatja hozzáférést az Exchange online-hoz az Outlook alkalmazást, amely rendelkezik az Intune alkalmazásvédelmi szabályzat. Más néven az alkalmazásvédelmi szabályzatot igénylő feltételes hozzáférési szabályzat [app protection-alapú feltételes hozzáférési szabályzat](app-protection-based-conditional-access.md). 
 
 Az Azure AD-alkalmazás házirend által védett megjelölhető előtt regisztrálni kell az eszközt.
 
@@ -136,7 +136,7 @@ Ezeket a szolgáltatásokat a további információkért forduljon közvetlenül
 
 ### <a name="creating-custom-controls"></a>Egyéni vezérlők létrehozását
 
-Egyéni vezérlő létrehozására, hogy kapcsolatba kell lépni a használni kívánt szolgáltató. Minden nem Microsoft-szolgáltató saját folyamat és a követelmények, regisztráció, előfizethet, vagy ellenkező esetben a szolgáltatás részévé váltak, valamint azt, hogy szeretné-e a feltételes hozzáférés integrálása rendelkezik. Ezen a ponton a szolgáltató biztosít Önnek egy adatblokk JSON formátumban. Ezek az adatok lehetővé teszi, hogy a szolgáltató és a feltételes hozzáférés működjön együtt a bérlő számára, hoz létre az új vezérlőt, és határozza meg a feltételes hozzáférés is megadhatja, hogy ha a felhasználók sikeresen végeztek ellenőrzést-szolgáltatóval.
+Egyéni vezérlő létrehozására, hogy kapcsolatba kell lépni a használni kívánt szolgáltató. Minden nem Microsoft-szolgáltató saját folyamat és a követelmények, regisztráció, előfizethet, vagy ellenkező esetben a szolgáltatás részévé váltak, valamint azt, hogy szeretné-e a feltételes hozzáférés integrálása rendelkezik. Ezen a ponton a szolgáltató biztosít Önnek egy adatblokk JSON formátumban. Ezeket az adatokat lehetővé teszi, hogy a szolgáltató és a feltételes hozzáférés működjön együtt a bérlő számára, hoz létre az új vezérlőt, és határozza meg, honnan feltételes hozzáférést, hogy ha a felhasználók sikeres végrehajtása után a hitelesítési szolgáltatóval.
 
 Egyéni vezérlők csak akkor használható, az Identity Protection Automation szolgáltatással többtényezős hitelesítés megkövetelésével vagy a Privileged Identity Manager (PIM) szerepkörök megszerzését.
 
@@ -182,6 +182,6 @@ További tudnivalókért lásd:
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha azt szeretné tudni, hogyan lehet feltételes hozzáférési szabályzat konfigurálása, lásd: [többtényezős hitelesítés megkövetelése az Azure Active Directory feltételes hozzáférés az adott alkalmazások](app-based-mfa.md).
+- Ha azt szeretné tudni, hogyan lehet feltételes hozzáférési szabályzat konfigurálása, lásd: [megkövetelése MFA konkrét alkalmazások esetén az Azure Active Directory feltételes hozzáférés](app-based-mfa.md).
 
-- Ha kész feltételes hozzáférési szabályzatokat konfigurálni a környezetében, tekintse át [az Azure Active Directory feltételes hozzáféréssel kapcsolatos ajánlott eljárásait](best-practices.md).
+- Ha készen áll a környezetre vonatkozó feltételes hozzáférési szabályzatok konfigurálására, tekintse meg a [gyakorlati tanácsok az Azure Active Directory feltételes hozzáférés](best-practices.md).

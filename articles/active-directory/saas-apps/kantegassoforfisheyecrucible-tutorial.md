@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 16-04-2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 477271debc5f04b4ea0c71145968b29945142571
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: e363b6284b29b28b8bfc3081221e23ea1842a322
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917486"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099011"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-fisheyecrucible"></a>Oktatóanyag: Az Azure Active Directory-integráció a FishEye/tégelyt Kantega SSO-val
 
@@ -54,7 +54,7 @@ Az Azure AD-be a FishEye/tégelyt Kantega SSO-integráció konfigurálásához, 
 
 **A FishEye/tégelyt Kantega SSO hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -209,7 +209,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása az FishEye/tégelyt Kantega 
 
     b. Kattintson a **tovább**.
 
-1. Kattintson a **Befejezés** gombra.
+1. Kattintson a **Befejezés**gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforfisheyecrucible-tutorial/addon11.png)
 
@@ -303,7 +303,7 @@ Ahhoz, hogy az Azure AD-felhasználók FishEye/tégelyt bejelentkezni, akkor ki 
 
     e. Az a **jelszó megerősítése** szövegmezőbe írja be újból a felhasználó jelszavát.
 
-    f. Kattintson a **Hozzáadás** parancsra.
+    f. Kattintson a **Hozzáadás**lehetőségre.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

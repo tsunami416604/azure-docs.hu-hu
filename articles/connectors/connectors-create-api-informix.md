@@ -12,10 +12,10 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: 6004c02f190bbfcf374b3b5d2a5c478f0e52c961
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60690905"
 ---
 # <a name="get-started-with-the-informix-connector"></a>Az Informix-összekötő használatának első lépései
@@ -44,7 +44,7 @@ Ez az összekötő támogatja a következő logic app-műveletek:
 * UpdateRow
 * DeleteRow
 
-## <a name="list-tables"></a>Táblák listázása
+## <a name="list-tables"></a>Táblák listája
 Minden olyan művelet egy logikai alkalmazás létrehozásának számos, a Microsoft Azure-portálon keresztül végrehajtott lépések áll.
 
 A logikai alkalmazásban is hozzáadhat egy műveletet lista táblák Informix-adatbázisban. Ez a művelet arra utasítja az összekötő egy Informix-schema utasításban, mint például feldolgozni `CALL SYSIBM.SQLTABLES`.
@@ -58,7 +58,7 @@ A logikai alkalmazásban is hozzáadhat egy műveletet lista táblák Informix-a
 2. Az a **eseményindítók** listáról válassza ki **ismétlődési**. 
 3. Az a **ismétlődési** eseményindító területén válassza **szerkesztése**, jelölje be **gyakorisága** válassza ki a legördülő **nap**, majd válassza ki  **Intervallum** típusra **7**.  
 4. Válassza ki a **+ új lépés** mezőbe, majd válassza ki **művelet hozzáadása**.
-5. Az a **műveletek** listázása, írja be a **informix** a a **további műveletek keresése** szerkesztési mezőhöz, és válassza ki **Informix - Get-táblák (előzetes verzió)**.
+5. Az a **műveletek** listázása, írja be a **informix** a a **további műveletek keresése** szerkesztési mezőhöz, és válassza ki **Informix - Get-táblák (előzetes verzió)** .
    
    ![](./media/connectors-create-api-informix/InformixconnectorActions.png)  
 6. Az a **Informix - Get-táblák** konfigurációs panelen válassza **jelölőnégyzet** engedélyezéséhez **kapcsolódás helyszíni adatátjárón keresztül**. Figyelje meg, hogy a helyszínen a felhőből módosítsa a beállításokat.
@@ -82,12 +82,12 @@ Ez az összekötő támogatja a kapcsolatok a helyszíni adatbázis és a felhő
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| kiszolgáló |Kötelező. A TCP/IP-cím vagy aliast IPv4 vagy IPv6 formátumban, majd (pontosvesszővel tagolt) szerint a TCP/IP-port számát jelölő karakterláncot fogad el. |
-| adatbázis |Kötelező. Egy karakterláncértéket, amely a DRDA relációs adatbázis nevét (RDBNAM) fogad el. Informix-128 bájt-karakterláncot fogad el (adatbázis-IBM Informix-adatbázis neve (adatbázisnév) nevezik). |
+| server |Kötelező. A TCP/IP-cím vagy aliast IPv4 vagy IPv6 formátumban, majd (pontosvesszővel tagolt) szerint a TCP/IP-port számát jelölő karakterláncot fogad el. |
+| database |Kötelező. Egy karakterláncértéket, amely a DRDA relációs adatbázis nevét (RDBNAM) fogad el. Informix-128 bájt-karakterláncot fogad el (adatbázis-IBM Informix-adatbázis neve (adatbázisnév) nevezik). |
 | hitelesítés |Választható. Fogadja el a lista elem értéke, egyszerű vagy Windows (kerberos). |
-| felhasználónév |Kötelező. Egy karakterlánc értéket fogad el. |
+| username |Kötelező. Egy karakterlánc értéket fogad el. |
 | password |Kötelező. Egy karakterlánc értéket fogad el. |
-| átjáró |Kötelező. Egy lista elem értéket, a helyszíni átjáró az tárolócsoportot a Logic Apps használatával meghatározott jelölő fogad el. |
+| Átjáró |Kötelező. Egy lista elem értéket, a helyszíni átjáró az tárolócsoportot a Logic Apps használatával meghatározott jelölő fogad el. |
 
 ## <a name="create-the-on-premises-gateway-connection"></a>A helyszíni átjáró kapcsolat létrehozása
 Ez az összekötő hozzáférhet a helyszíni átjáró használatával helyszíni Informix-adatbázishoz. Átjáró témakörök további információt. 
@@ -128,7 +128,7 @@ Létrehozhat egy logikaialkalmazás-művelet az Informix-tábla összes sorának
 2. Az a **eseményindítók** listáról válassza ki **ismétlődési**. 
 3. Az a **ismétlődési** eseményindító területén válassza **szerkesztése**, jelölje be **gyakorisága** válassza ki a legördülő **nap**, majd válassza ki  **Intervallum** típusra **7**. 
 4. Válassza ki a **+ új lépés** mezőbe, majd válassza ki **művelet hozzáadása**.
-5. Az a **műveletek** listázása, írja be a **informix** a a **további műveletek keresése** szerkesztési mezőhöz, és válassza ki **Informix - sorok beolvasása (előzetes verzió)**.
+5. Az a **műveletek** listázása, írja be a **informix** a a **további műveletek keresése** szerkesztési mezőhöz, és válassza ki **Informix - sorok beolvasása (előzetes verzió)** .
 6. Az a **(előzetes verzió) sorok beolvasása** műveletet, válassza **kapcsolat módosítása**.
 7. Az a **kapcsolatok** konfigurációs panelen válassza **új létrehozása**. 
    
@@ -165,7 +165,7 @@ Létrehozhat egy logikaialkalmazás-művelet hozzáadása egy sort egy Informix-
 2. Az a **eseményindítók** listáról válassza ki **ismétlődési**. 
 3. Az a **ismétlődési** eseményindító területén válassza **szerkesztése**, jelölje be **gyakorisága** válassza ki a legördülő **nap**, majd válassza ki  **Intervallum** típusra **7**. 
 4. Válassza ki a **+ új lépés** mezőbe, majd válassza ki **művelet hozzáadása**.
-5. Az a **műveletek** listázása, írja be a **informix** a a **további műveletek keresése** szerkesztési mezőhöz, és válassza ki **Informix - sor beszúrása (előzetes verzió)**.
+5. Az a **műveletek** listázása, írja be a **informix** a a **további műveletek keresése** szerkesztési mezőhöz, és válassza ki **Informix - sor beszúrása (előzetes verzió)** .
 6. Az a **(előzetes verzió) sorok beolvasása** műveletet, válassza **kapcsolat módosítása**. 
 7. Az a **kapcsolatok** konfiguráció panelen válassza ki, hogy válasszon ki egy kapcsolatot. Válassza ki például **hisdemo2**.
    
@@ -192,7 +192,7 @@ Létrehozhat egy Informix-táblában egy sor beolvasása egy logikaialkalmazás-
 2. Az a **eseményindítók** listáról válassza ki **ismétlődési**. 
 3. Az a **ismétlődési** eseményindító területén válassza **szerkesztése**, jelölje be **gyakorisága** válassza ki a legördülő **nap**, majd válassza ki  **Intervallum** típusra **7**. 
 4. Válassza ki a **+ új lépés** mezőbe, majd válassza ki **művelet hozzáadása**.
-5. Az a **műveletek** listázása, írja be a **informix** a a **további műveletek keresése** szerkesztési mezőhöz, és válassza ki **Informix - sorok beolvasása (előzetes verzió)**.
+5. Az a **műveletek** listázása, írja be a **informix** a a **további műveletek keresése** szerkesztési mezőhöz, és válassza ki **Informix - sorok beolvasása (előzetes verzió)** .
 6. Az a **(előzetes verzió) sorok beolvasása** műveletet, válassza **kapcsolat módosítása**. 
 7. Az a **kapcsolatok** konfigurációk panelen válassza a válasszon ki egy létező kapcsolatot. Válassza ki például **hisdemo2**.
    
@@ -220,7 +220,7 @@ Létrehozhat egy logikai alkalmazás műveletet, amely egy sort egy Informix-tá
 2. Az a **eseményindítók** listáról válassza ki **ismétlődési**. 
 3. Az a **ismétlődési** eseményindító területén válassza **szerkesztése**, jelölje be **gyakorisága** válassza ki a legördülő **nap**, majd válassza ki  **Intervallum** típusra **7**. 
 4. Válassza ki a **+ új lépés** mezőbe, majd válassza ki **művelet hozzáadása**.
-5. Az a **műveletek** listázása, írja be a **informix** a a **további műveletek keresése** szerkesztési mezőhöz, és válassza ki **Informix - sor frissítése (előzetes verzió)**.
+5. Az a **műveletek** listázása, írja be a **informix** a a **további műveletek keresése** szerkesztési mezőhöz, és válassza ki **Informix - sor frissítése (előzetes verzió)** .
 6. Az a **(előzetes verzió) sorok beolvasása** műveletet, válassza **kapcsolat módosítása**. 
 7. Az a **kapcsolatok** konfigurációk panelen válassza a válasszon ki egy létező kapcsolatot. Válassza ki például **hisdemo2**.
    
@@ -247,7 +247,7 @@ Létrehozhat egy logikaialkalmazás-művelet eltávolítja egy sort egy Informix
 2. Az a **eseményindítók** listáról válassza ki **ismétlődési**. 
 3. Az a **ismétlődési** eseményindító területén válassza **szerkesztése**, jelölje be **gyakorisága** válassza ki a legördülő **nap**, majd válassza ki  **Intervallum** típusra **7**. 
 4. Válassza ki a **+ új lépés** mezőbe, majd válassza ki **művelet hozzáadása**.
-5. Az a **műveletek** listázása, írja be a **informix** a a **további műveletek keresése** szerkesztési mezőhöz, és válassza ki **Informix - sor törlése (előzetes verzió)**.
+5. Az a **műveletek** listázása, írja be a **informix** a a **további műveletek keresése** szerkesztési mezőhöz, és válassza ki **Informix - sor törlése (előzetes verzió)** .
 6. Az a **(előzetes verzió) sorok beolvasása** műveletet, válassza **kapcsolat módosítása**. 
 7. Az a **kapcsolatok** konfigurációk panelen válasszon ki egy létező kapcsolatot. Válassza ki például **hisdemo2**.
    

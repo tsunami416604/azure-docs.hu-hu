@@ -12,12 +12,12 @@ ms.author: craigg
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: e1cd0d8462c31c8b843f7962f923accc6b63ae00
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a6e0adc6b4abbb58504b6f56c8def72440ad370d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61414300"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061401"
 ---
 # <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>Excel csatlakoztatása egy Azure SQL Database-adatbázis és a egy jelentés létrehozása
 
@@ -37,9 +37,9 @@ Az Excelnek is telepítve kell lennie. Ebben a cikkben a [Microsoft Excel 2016](
    ![Adatforrás kiválasztása: Excel csatlakoztatása SQL Database-adatbázishoz.](./media/sql-database-connect-excel/excel_data_source.png)
 
    Megnyílik az Adatkapcsolat varázsló.
-3. A **Kapcsolódás adatbázis-kiszolgálóhoz** párbeszédpanelen írja be annak az SQL Database adatbázisnak a **Kiszolgálónevét**, amelyhez csatlakozni szeretne <*kiszolgálónév*>**. database.windows.net** formában. Ha például **msftestserver.database.windows.net**. Szükség esetén adja meg be az adatbázis nevét. Válassza ki **OK** a hitelesítő adatok ablak megnyitásához. 
+3. A **Kapcsolódás adatbázis-kiszolgálóhoz** párbeszédpanelen írja be annak az SQL Database adatbázisnak a **Kiszolgálónevét**, amelyhez csatlakozni szeretne <*kiszolgálónév*> **. database.windows.net** formában. Ha például **msftestserver.database.windows.net**. Szükség esetén adja meg be az adatbázis nevét. Válassza ki **OK** a hitelesítő adatok ablak megnyitásához. 
 
-   ![server-name.png](media/sql-database-connect-excel/server-name.png)
+   ![Csatlakozás adatbázishoz párbeszédpanel](media/sql-database-connect-excel/server-name.png)
 
 4. Az a **SQL Server-adatbázis** párbeszédpanelen jelölje ki **adatbázis** a bal oldali oldalán, és írja be a a **felhasználónév** és **jelszó** a a SQL Database-kiszolgáló, amelyhez csatlakozni kíván. Válassza ki **Connect** megnyitásához a **kezelő**. 
 
@@ -68,7 +68,7 @@ Most, hogy létrehozta a kapcsolatot, több lehetőség közül választhat más
 
 > [!TIP]
 > Ha más Excel-munkafüzeteket és munkalapokat kapcsolódni az adatbázishoz, válassza ki a **adatok** lapot, majd **legutóbbi források** elindításához a **legutóbbi források** párbeszédpanel bezárásához. Itt válassza ki a listából a létrehozott kapcsolatot, és kattintson **nyílt**.
-> ![Legutóbbi kapcsolatok](media/sql-database-connect-excel/recent-connections.png)
+> ![Legutóbbi források párbeszédpanel](media/sql-database-connect-excel/recent-connections.png)
 
 ## <a name="create-a-permanent-connection-using-odc-file"></a>Hozzon létre egy állandó kapcsolatot .odc-fájl segítségével
 
@@ -78,7 +78,7 @@ A kapcsolat adatai véglegesen mentéséhez .odc fájl létrehozása és a kapcs
    1. Válassza ki **Továbbiak keresése** megnyitásához a **adatforrás kiválasztása** párbeszédpanel bezárásához.   
    2. Válassza ki a **+NewSqlServerConnection.odc** fájlt, és válassza ki **nyissa meg a** megnyitásához a **Adatkapcsolat varázsló**.
 
-      ![Új kapcsolat](media/sql-database-connect-excel/new-connection.png)
+      ![Új kapcsolat párbeszédpanel](media/sql-database-connect-excel/new-connection.png)
 
 2. Az a **Adatkapcsolat varázsló**, írja be a kiszolgáló nevét és az SQL-adatbázis hitelesítő adatait. Kattintson a **Tovább** gombra. 
    1. Válassza ki a legördülő menüből az adatokat tartalmazó adatbázisban. 

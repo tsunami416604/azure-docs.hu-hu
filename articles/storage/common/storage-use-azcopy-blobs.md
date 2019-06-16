@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 140f2ec6252eac2958f236b2ffb48225fa16fe2b
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: fea9e79986e45127ad4918ed62bd8bf8dc782133
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688059"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67125804"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Adatok áthelyezése az AzCopy és a Blob storage
 
@@ -191,10 +191,10 @@ Ez a szakasz tartalmazza az alábbi példák:
 
 ## <a name="synchronize-files"></a>Fájlok szinkronizálása
 
-Szinkronizálhatja a tartalmát a helyi fájlrendszerben; egy blob-tárolóba. Egy blob-tárolóba a helyi fájlrendszerbe is szinkronizálhatja a számítógépen. Szinkronizálás még csak egyirányú. Más szóval válassza ki ezen két végpontot, azaz a forrás, és melyik az a hely.
+Szinkronizálhatja a tartalmát egy helyi fájlrendszer és egy blobtárolót. Szinkronizálás még csak egyirányú. Más szóval válassza ki ezen két végpontot, azaz a forrás, és melyik az a hely.
 
 > [!NOTE]
-> A jelenlegi kiadásban az AzCopy nem szinkronizálja más források és célok között (például: A File storage vagy az Amazon Web Services (AWS) S3 gyűjtő).
+> Ebben a forgatókönyvben jelenleg csak egy hierarchikus névtér nem rendelkező fiókok esetében támogatott. A jelenlegi kiadásban az AzCopy nem szinkronizálja más források és célok között (például: A File storage vagy az Amazon Web Services (AWS) S3 gyűjtő).
 
 A `sync` parancs összehasonlítja fájlneveket, valamint utolsó módosítás az időbélyegek. Állítsa be a `--delete-destination` értékét kötelező jelző `true` vagy `prompt` a célkönyvtárban duplikátum található fájlok törléséhez, ha ezeket a fájlokat a forráskönyvtárban nem létezik.
 
@@ -203,26 +203,24 @@ Ha a `--delete-destination` jelzőt `true` AzCopy kérdés megadása nélkül t�
 > [!NOTE]
 > Véletlen törlések megakadályozása érdekében ügyeljen arra, hogy engedélyezze a [helyreállítható törlési](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) funkció használata előtt a `--delete-destination=prompt|true` jelzőt.
 
-### <a name="synchronize-a-container-to-a-local-file-system"></a>Egy tárolót a helyi fájlrendszerben szinkronizálása
+### <a name="update-a-container-with-changes-to-a-local-file-system"></a>Egy tároló frissítése a változások a helyi fájlrendszerbe
 
-Ebben az esetben a helyi fájlrendszerben lesz a forrás és a tároló a célhelyen.
+Ebben az esetben a tároló-e a cél, és a helyi fájlrendszer az a forrás.
 
 |    |     |
 |--------|-----------|
 | **Syntax** | `azcopy sync "<local-directory-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive` |
 | **Példa** | `azcopy sync "C:\myDirectory" "https://mystorageaccount.blob.core.windows.net/mycontainer" --recursive` |
-| **Példa** (hierarchikus névtér) | `azcopy sync "C:\myDirectory" "https://<storage-account-name>.dfs.core.windows.net/mycontainer" --recursive` |
 
+### <a name="update-a-local-file-system-with-changes-to-a-container"></a>Frissítse a helyi fájlrendszer egy tároló módosítása
 
-### <a name="synchronize-a-local-file-system-to-a-container"></a>Szinkronizálja a helyi fájlrendszer egy tárolóba
-
-Ebben az esetben a tároló válik a forrás és a helyi fájlrendszer az a cél.
+Ebben az esetben a helyi fájlrendszer az a cél, és a tároló a forrás.
 
 |    |     |
 |--------|-----------|
 | **Syntax** | `azcopy sync "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" "C:\myDirectory" --recursive` |
 | **Példa** | `azcopy sync "https://mystorageaccount.blob.core.windows.net/mycontainer" "C:\myDirectory" --recursive` |
-| **Példa** (hierarchikus névtér) | `azcopy sync "https://mystorageaccount.dfs.core.windows.net/mycontainer" "C:\myDirectory" --recursive` |
+|
 
 ## <a name="next-steps"></a>További lépések
 

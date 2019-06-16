@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 83027e9fbc1826de727f123afe4507c2858c49ff
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.openlocfilehash: a6c1f893757baf1e6c85420b31997a5073cff684
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65560565"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094598"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>Oktatóanyag: Szűrjön át az Azure Active Directory-integráció
 
@@ -95,7 +95,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Szűrjön át, ezeket a lép
 
 2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válasszon **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése:
 
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezés módszer kiválasztása](common/select-saml-option.png)
 
 3. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon válassza ki a **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel:
 
@@ -105,7 +105,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Szűrjön át, ezeket a lép
 
     ![Szűrjön a tartomány és URL-címeket egyetlen bejelentkezési adatait át](common/preintegrated.png)
 
-5. Ha az alkalmazás konfigurálása a Szolgáltató által kezdeményezett módban szeretne, válassza ki a **további URL-címet beállítani** és a a **bejelentkezési URL-cím** mezőbe írja be **https://percolate.com/app/login**:
+5. Ha az alkalmazás konfigurálása a Szolgáltató által kezdeményezett módban szeretne, válassza ki a **további URL-címet beállítani** és a a **bejelentkezési URL-cím** mezőbe írja be **https://percolate.com/app/login** :
 
    ![Szűrjön a tartomány és URL-címeket egyetlen bejelentkezési adatait át](common/metadata-upload-additional-signon.png)
 6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** szakaszban jelölje be a **másolási** ikonra kattintva másolja a **alkalmazás összevonási metaadatainak URL-címe** . Mentse az URL-címet.
@@ -168,7 +168,7 @@ Ebben a szakaszban az Azure Portalon Britta Simon nevű tesztfelhasználó fog l
 
     1. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    1. Az a **felhasználónév** mezőbe írja be **BrittaSimon @\<vállalati_tartomány >.\< bővítmény >**. (Például BrittaSimon@contoso.com.)
+    1. Az a **felhasználónév** mezőbe írja be **BrittaSimon @\<vállalati_tartomány >.\< bővítmény >** . (Például BrittaSimon@contoso.com.)
 
     1. Válassza ki **jelszó megjelenítése**, és jegyezze fel az értéket, amely szerepel a **jelszó** mezőbe.
 
@@ -222,7 +222,7 @@ Hozzon létre egy felhasználói fiókot, az alábbi lépéseket kell végrehajt
 
     1. Válassza ki **felhasználók létrehozása**.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Most szüksége az Azure AD egyszeri bejelentkezési konfigurációjának tesztelése a hozzáférési Panel használatával.
 

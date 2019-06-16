@@ -13,10 +13,10 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6cc0b3a9a02c023678691921100443436cdf0011
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66015474"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Meglévő helyszíni proxykiszolgálók használata
@@ -70,7 +70,7 @@ Miatt kellene csak a kimenő forgalmat, nincs szükség a tűzfalon keresztül b
 >[!NOTE]
 >Az alkalmazásproxy nem támogatja a más proxyk-hitelesítést. Az összekötő/updater hálózati szolgáltatásfiókok proxykiszolgálóhoz való csatlakozáshoz az éppen lekéri a hitelesítés nélküli képesnek kell lennie.
 
-### <a name="step-1-configure-the-connector-and-related-services-to-go-through-the-outbound-proxy"></a>1. lépés: Az összekötő és a kapcsolódó szolgáltatások haladhat végig a kimenő proxy konfigurálása
+### <a name="step-1-configure-the-connector-and-related-services-to-go-through-the-outbound-proxy"></a>1\. lépés: Az összekötő és a kapcsolódó szolgáltatások haladhat végig a kimenő proxy konfigurálása
 
 Ha WPAD engedélyezve van a környezetben, és megfelelően konfigurálta, az összekötő automatikusan felderíti a kimenő proxy server és a használata azt. Azonban explicit módon konfigurálhatja az összekötő haladhat végig egy kimenő proxy.
 
@@ -95,7 +95,7 @@ Ehhez módosítsa a C:\Program Files\Microsoft AAD alkalmazás Proxy Connector\A
 
 Ezután konfigurálja a összekötő frissítési szolgáltatást használja a proxy hasonló módosítást végez a C:\Program Files\Microsoft AAD alkalmazás Proxy Connector Updater\ApplicationProxyConnectorUpdaterService.exe.config fájlt.
 
-### <a name="step-2-configure-the-proxy-to-allow-traffic-from-the-connector-and-related-services-to-flow-through"></a>2. lépés: Az összekötő és a kapcsolódó szolgáltatások keresztül érkező adatforgalom engedélyezéséhez a proxy konfigurálása
+### <a name="step-2-configure-the-proxy-to-allow-traffic-from-the-connector-and-related-services-to-flow-through"></a>2\. lépés: Az összekötő és a kapcsolódó szolgáltatások keresztül érkező adatforgalom engedélyezéséhez a proxy konfigurálása
 
 Négy szempontot kell figyelembe venni, a kimenő proxy:
 * Proxy kimenő szabályok
@@ -106,7 +106,7 @@ Négy szempontot kell figyelembe venni, a kimenő proxy:
 #### <a name="proxy-outbound-rules"></a>Proxy kimenő szabályok
 A következő URL-hozzáférés engedélyezése:
 
-| URL | Hogyan használja fel azokat |
+| URL-cím | Hogyan használja fel azokat |
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | Az összekötő és az alkalmazásproxy-felhőszolgáltatás közötti kommunikáció |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Az Azure az alábbi URL-címek segítségével tanúsítványok |

@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f3bfe067b7a927f800f88958ee2ffca09711c10
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c012ebfb00b57079e43b74b4f6570744db980860
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65812810"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113162"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Feltételes hozzáférés B2B-együttműködés felhasználók
 
@@ -46,7 +46,7 @@ Tekintse meg az alábbi animáció megtekintéséhez a beváltási élményt:
 ### <a name="mfa-reset-for-b2b-collaboration-users"></a>Többtényezős hitelesítés a B2B-együttműködés felhasználók visszaállítása
 Jelenleg a rendszergazda megkövetelhetik B2B együttműködés koncepció be újra csak a következő PowerShell-parancsmagok használata:
 
-1. Összekapcsolás az Azure AD-vel
+1. Csatlakozás az Azure AD szolgáltatáshoz
 
    ```
    $cred = Get-Credential
@@ -77,7 +77,7 @@ Ha Contoso többtényezős hitelesítési szabályzat az App1 számítógépen, 
 
 * Day 1: Egy felhasználó van az MFA a Contoso szervezetben, és az App1, akkor nincs további MFA fér hozzá a Fabrikam kijelölt alkalmazottai üzenet jelenik meg.
 
-* 2. napon: A felhasználó érte el az alkalmazás 2 a Contoso szervezetben, így most már a Fabrikam elérésekor, akkor regisztrálnia kell a multi-factor Authentication van.
+* 2\. napon: A felhasználó érte el az alkalmazás 2 a Contoso szervezetben, így most már a Fabrikam elérésekor, akkor regisztrálnia kell a multi-factor Authentication van.
 
 Ez a folyamat zavaró lehet, és dobja el a bejelentkezési befejezések vezethet.
 
@@ -89,9 +89,9 @@ Ezért a B2B-felhasználók a multi-factor Authentication a javaslat, hogy mindi
 
 ### <a name="device-based-location-based-and-risk-based-conditional-access-for-b2b-users"></a>Eszköz-, hely- és kockázatalapú feltételes hozzáférés B2B-felhasználók
 
-Ha a Contoso eszközalapú feltételes hozzáférési szabályzatok a vállalati adatok számára engedélyezi, eszközök, amelyek nem a Contoso által felügyelt és nem felel meg a Contoso szabályzatok megakadályozta a hozzáférés.
+Ha a Contoso eszközalapú feltételes hozzáférési szabályzatok a vállalati adatok számára engedélyezi, és az a Contoso szabályzatnak nem megfelelő a Contoso által nem kezelt eszközök megakadályozta a hozzáférést.
 
-Ha a rendszer a B2B-felhasználó eszközt nem felügyeli a Contoso, a fiókpartner-szervezetek a B2B-felhasználók a hozzáférés le van tiltva a bármilyen környezetben ezek a házirendek érvényben vannak. Contoso azonban a eszközalapú feltételes hozzáférési szabályzatból kizárandó konkrét partner felhasználókat tartalmazó kizárási listákat hozhat létre.
+Ha a rendszer a B2B-felhasználó eszközt nem felügyeli a Contoso, a fiókpartner-szervezetek a B2B-felhasználók a hozzáférés le van tiltva a bármilyen környezetben ezek a házirendek érvényben vannak. Contoso azonban zárja ki őket a eszközalapú feltételes hozzáférési szabályzatot az adott partner felhasználókat tartalmazó kizárási listákat hozhat létre.
 
 #### <a name="location-based-conditional-access-for-b2b"></a>Helyalapú feltételes hozzáférés B2B-hez
 

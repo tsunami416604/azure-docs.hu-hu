@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 06/12/2019
 ms.author: juliako
-ms.openlocfilehash: f04ae727957d988e75ea0984d0005a6a140ca63f
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
-ms.translationtype: MT
+ms.openlocfilehash: 49ab52f031e24ac77a534c86061fe831bbec39ce
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66732981"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67114673"
 ---
 # <a name="live-events-and-live-outputs"></a>Élő események és élő kimenetek
 
@@ -54,14 +54,14 @@ Tekintse meg a .NET-példakód az [MediaV3LiveApp](https://github.com/Azure-Samp
 
 ![live encoding](./media/live-streaming/live-encoding.svg)
 
-Amikor élő kódolást alkalmaz a Media Services használatával, úgy konfigurálja a helyszíni élő kódolót, hogy egyféle sávszélességű videót küldjön bemeneti adatként az élő eseménynek (RTMP vagy darabolt Mp4 protokollal). Az élő esemény egy [többféle sávszélességű videóstreammé](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) kódolja ezt a bejövő egyféle sávszélességű streamet, így az olyan protokollokkal továbbítható a lejátszóeszközökre, mint az MPEG-DASH, a HLS és a Smooth Streaming. Az ilyen típusú élő események létrehozásakor adja meg a **Standard** kódolási típust (LiveEventEncodingType.Standard).
+Amikor élő kódolást alkalmaz a Media Services használatával, úgy konfigurálja a helyszíni élő kódolót, hogy egyféle sávszélességű videót küldjön bemeneti adatként az élő eseménynek (RTMP vagy darabolt Mp4 protokollal). Majd állíthat be egy élő eseményt, hogy azt kódol, hogy a bejövő egyféle sávszélességű adatfolyamot a egy [több sávszélességű video-adatfolyamot](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), és elérhetővé teszi a kimeneti lejátszás protokollok tartalomfolyamok MPEG-DASH, HLS, eszközöket és a Smooth esetében Streamelési.
 
-A bemeneti adatokat legfeljebb 1080p felbontással és 30 képkocka/másodperc képkockasebességgel továbbíthatja H.264/AVC videokodekkel és AAC (AAC-LC, HE-AACv1 vagy HE-AACv2) hangkodekkel. További részleteket [az élő események típusainak összehasonlításában](live-event-types-comparison.md) talál.
+Valós idejű kódolás használata esetén is elküldheti a hozzájárulás csak felbontásnál hírcsatorna 1080p felbontással keret válthatnak 30 képkocka/másodperc, a videó kodek H.264/AVC és AAC (AAC-LC, HE-AACv1 vagy HE-AACv2) hang kodek. Vegye figyelembe, hogy átmenő élő eseményeket is támogatja a megoldását, akár 4 K, 60 képkocka/másodperc. További részleteket [az élő események típusainak összehasonlításában](live-event-types-comparison.md) talál.
 
-Élő kódolás használatakor (amikor az élő esemény beállítása **Standard**), a kódolási előbeállítás határozza meg, hogyan van többféle bitsebességbe vagy rétegbe kódolva a bejövő stream. További információkat a [rendszerbeállítás-készletekkel](live-event-types-comparison.md#system-presets) kapcsolatos szakaszban talál.
+A felbontásra és bitsebességre való átkódolása az élő kódoló kimenetében található a beállítás határozza meg. Ha használja egy **Standard** live encoder (LiveEventEncodingType.Standard), majd a *Default720p* előbeállítás 6 feloldási/átviteli sebesség párok, 720 p 3.5Mbps 200 KB/s, 192 p le, azzal egy halmazát határozza meg. Egyéb esetben, ha a használatával egy **Premium1080p** live encoder (LiveEventEncodingType.Premium1080p), akkor a *Default1080p* előbeállítás 6 feloldási/átviteli sebesség párok, 1080 p 3.5Mbps, azzal egy halmazát határozza meg. lefelé 180 p, 200 KB/s. További információkat a [rendszerbeállítás-készletekkel](live-event-types-comparison.md#system-presets) kapcsolatos szakaszban talál.
 
 > [!NOTE]
-> Jelenleg az élő események Standard típusához az egyetlen engedélyezett előbeállítási érték a *Default720p*. Ha egyéni élő kódolási előbeállítást kell használnia, írjon az amshelp@microsoft.com címre. Meg kell adnia a felbontás és a bitsebesség kívánt táblázatát. Győződjön meg arról, hogy csak egy réteg 720p sebességű, és hogy legfeljebb 6 réteg van.
+> Ha testre szabhatja a élő kódolási előbeállítás van szüksége, nyisson egy támogatási jegyet az Azure Portalon keresztül. Meg kell adnia a felbontás és a bitsebesség kívánt táblázatát. Győződjön meg arról, hogy csak egy réteg 720 p (Ha a készlet kér egy Standard élőadás-kódoló) vagy 1080 p (ha kér egy készletet Premium1080p élőadás-kódoló), és legfeljebb 6 rétegek.
 
 ## <a name="live-event-creation-options"></a>Élő esemény-létrehozási beállítások
 
@@ -93,6 +93,14 @@ Kreatív vagy nem kreatív URL-címeket is használhat.
 
     A hozzáférési jogkivonat egyedinek kell lennie az adatközpontban. Ha az alkalmazás egy személyes URL-cím használatára van szüksége, ajánlott mindig hozzon létre egy új GUID-példányt a hozzáférési jogkivonat (újbóli használata bármely létező GUID-Azonosítót) helyett. 
 
+    A következő API-k használata a személyes URL-cím engedélyezése és a egy érvényes GUID Azonosítót a hozzáférési jogkivonat beállítása (például `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`):
+    
+    |Nyelv|Személyes URL-cím engedélyezése|Hozzáférési jogkivonat beállítása|
+    |---|---|---|
+    |REST|[properties.vanityUrl](https://docs.microsoft.com/rest/api/media/liveevents/create#liveevent)|[LiveEventInput.accessToken](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventinput)|
+    |parancssori felület|[--vanity-url](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--access-token](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
+    |.NET|[LiveEvent.VanityUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent.vanityurl?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput.AccessToken](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
+    
 ### <a name="live-ingest-url-naming-rules"></a>Élő betöltési URL-elnevezési szabályok
 
 Az alábbi *véletlenszerű* sztring egy 128 bites hexadecimális szám (amely 32 karakterből áll 0-9-ig és a-f-ig).<br/>

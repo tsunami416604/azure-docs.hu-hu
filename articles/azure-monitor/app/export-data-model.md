@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/08/2018
+ms.date: 01/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: 12025dfb93bbcfc86ae301f8fb63e7ac74697cf2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4f8fd0b317c17f142664d22291c23442dd49f970
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60898916"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053292"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights exportálási Data Model
 Ez a táblázat által küldött telemetriát tulajdonságait a [Application Insights](../../azure-monitor/app/app-insights-overview.md) SDK-k a portálra.
@@ -158,7 +158,7 @@ Az összes típusú telemetriát környezet szakasz egészül ki. Ezek a mezők 
 | internal.data.documentVersion |string | |
 | internal.data.id |string | Ha egy elem betöltött Application Insights hozzárendelt egyedi azonosítója |
 
-## <a name="events"></a>Események
+## <a name="events"></a>Events
 Egyéni események által generált [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
 
 | Útvonal | Típus | Megjegyzések |
@@ -264,14 +264,14 @@ Környezet értékek megjelenítése az ügyfél operációs rendszer és a bön
 | clientPerformance [0] urlData.host |string | |
 | [0] clientPerformance urlData.protocol |string | |
 
-## <a name="page-views"></a>Oldalmegtekintések
+## <a name="page-views"></a>Lapmegtekintések
 TrackPageView() által küldött vagy [stopTrackPage](../../azure-monitor/app/api-custom-events-metrics.md#page-views)
 
 | Útvonal | Típus | Megjegyzések |
 | --- | --- | --- |
 | [0] száma |egész szám |100 / ([mintavételi](../../azure-monitor/app/sampling.md) sebesség). Ha például 4 =&gt; 25 %. |
 | [0] durationMetric.value megtekintése |egész szám |Igény szerint hozzáadhat trackPageView() vagy startTrackPage() - érték stopTrackPage(). Nem ugyanaz, mint clientPerformance értékeket. |
-| [0] nézet neve |string |Lap címe.  Maximális hossz 250 |
+| [0] nézet neve |string |Oldalcím.  Maximális hossz 250 |
 | url megtekintése [0] |string | |
 | [0] urlData.base megtekintése |string | |
 | [0] urlData.hashTag megtekintése |string | |

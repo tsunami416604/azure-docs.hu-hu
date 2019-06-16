@@ -581,6 +581,10 @@
     - name: Biztonság
       tocHref: /azure/security/
       topicHref: /azure/security/
+      items:
+        - name: Fejlesztés
+          tocHref: /azure/security/develop/
+          topicHref: /azure/security/develop/
     - name: Security Center
       tocHref: /azure/security-center/
       topicHref: /azure/security-center/

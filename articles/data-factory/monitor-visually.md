@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: shlo
 ms.openlocfilehash: df684860cd3d1b6a002a300682ca4c6398461ba6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60716900"
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Azure-beli adat-előállítók vizuális monitorozására
@@ -43,11 +43,11 @@ A listanézetben látható a Data Factory v2 verzióban futó összes folyamat. 
 | Műveletek | Egyetlen művelettel tevékenységfuttatások megtekintéséhez. |
 | Futtatás kezdete | Folyamat-Futtatás kezdő időpontja (hh/nn/éééé, óó: pp: mm AM és PM) |
 | Időtartam | Futtatás időtartama (ÓÓ) |
-| Kiváltó | Manuális eseményindító, az ütemezési eseményindító |
-| status | Nem sikerült, a feladat végül sikerült folyamatban |
+| Által aktivált | Manuális eseményindító, az ütemezési eseményindító |
+| Állapot | Nem sikerült, a feladat végül sikerült folyamatban |
 | Paraméterek | Folyamatfuttatás paraméterei (név, érték párok) |
 | Hiba | Folyamat futásának (ha/any) hiba |
-| Futtatási azonosító | A folyamat futásának Azonosítóját |
+| Futtatás azonosítója | A folyamat futásának Azonosítóját |
 
 ![Folyamatfuttatások monitorozása](media/monitor-visually/pipeline-runs.png)
 
@@ -56,11 +56,11 @@ A listanézetben láthatók az egyes folyamatokhoz tartozó tevékenység-végre
 
 | **Oszlop neve** | **Leírás** |
 | --- | --- |
-| Műveletnév | A folyamat belül a tevékenység neve. |
-| Tevékenységtípus | A tevékenység típusa, például a másolás, HDInsightSpark, HDInsightHive, stb. |
+| Tevékenység neve | A folyamat belül a tevékenység neve. |
+| Tevékenység típusa | A tevékenység típusa, például a másolás, HDInsightSpark, HDInsightHive, stb. |
 | Futtatás kezdete | Tevékenység-végrehajtásonként kezdő dátum (hh/nn/éééé, óó: pp: mm AM és PM) |
 | Időtartam | Futtatás időtartama (ÓÓ) |
-| status | Nem sikerült, a feladat végül sikerült folyamatban |
+| Állapot | Nem sikerült, a feladat végül sikerült folyamatban |
 | Input (Bemenet) | A tevékenység bemeneti leíró JSON-tömb |
 | Kimenet | A tevékenység kimeneteiből leíró JSON-tömb |
 | Hiba | Tevékenységfuttatási hiba (ha/any) |
@@ -94,7 +94,7 @@ Rendelés folyamatfuttatásokat a az asc/desc elindításához futtassa, és sz�
 ### <a name="add-or-remove-columns"></a>Oszlopok hozzáadása vagy eltávolítása
 Kattintson a jobb gombbal a listanézet fejlécére, és válassza ki a nézetben megjeleníteni kívánt oszlopok
 
-![Oszlopok](media/monitor-visually/columns.png)
+![Columns](media/monitor-visually/columns.png)
 
 ### <a name="adjust-column-widths"></a>Oszlopszélességeinek módosítása
 Növelheti és csökkentheti a listanézet oszlopszélességeinek az egérmutatót az oszlop fejlécére

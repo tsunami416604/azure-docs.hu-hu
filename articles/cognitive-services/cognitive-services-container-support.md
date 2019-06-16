@@ -3,19 +3,19 @@ title: Tárolótámogatás
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan Docker-tárolók férhetnek közelebb a Cognitive Services az adatok.
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/28/2019
-ms.author: diberry
-ms.openlocfilehash: 3d09ee542b98e1c365aceaf86b051d706c7882d4
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.date: 06/11/2019
+ms.author: dapine
+ms.openlocfilehash: 8faa524d7d88f09835d26439b772b8d57c84cc73
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304282"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67122237"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Az Azure Cognitive Servicesben tároló támogatása
 
@@ -72,17 +72,17 @@ Az Azure Cognitive Services-tárolók meg azt az alábbi Docker-tárolókat, ame
 
 Emellett egyes tárolók támogatottak a Cognitive Services [ **teljes körű ajánlatot** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) erőforrás kulcsainak. Hozzon létre egy egyetlen Cognitive Services teljes körű erőforrást, és használja ugyanazt a számlázási kulcsot keresztül támogatott szolgáltatások a következő szolgáltatásokat:
 
-* Computer Vision
-* Face
+* Számítógépes látástechnológia
+* Arcfelismerés
 * LUIS
-* Szövegelemzések
+* Szövegelemzés
 
 ## <a name="container-availability-in-azure-cognitive-services"></a>Az Azure Cognitive Servicesben tároló elérhetősége
 
 Az Azure Cognitive Services-tárolók nyilvánosan elérhető Azure-előfizetéssel, és Docker-tárolórendszerképekhez lekérhetik a Microsoft Container Registry vagy a Docker Hubból. Használhatja a [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) paranccsal letöltheti egy tárolórendszerképet a megfelelő beállításjegyzékből.
 
 > [!IMPORTANT]
-> Jelenleg el kell végeznie a regisztrációs folyamat, amelyben adja meg, és küldje el a kérdőívet, a vállalat és a használati eset, amelyhez hozzá szeretné végrehajtani a tárolók kapcsolatos kérdése van a következő tárolók eléréséhez. Miután Ön hozzáférést és a megadott hitelesítő adatokat, majd kérheti le a tárolórendszerképeket az Arcfelismerés és szöveg felismerése tárolókhoz az Azure Container Registry által üzemeltetett egy privát tárolójegyzékben.
+> Jelenleg el kell végeznie a regisztrációs folyamat, amelyben adja meg, és küldje el a kérdőívet, a vállalat és a használati eset, amelyhez hozzá szeretné végrehajtani a tárolók kapcsolatos kérdése van a következő tárolók eléréséhez. Miután Ön hozzáférést és a megadott hitelesítő adatokat, majd is kérni a tárolórendszerképeket az Azure Container Registry által üzemeltetett egy privát tárolójegyzékben.
 > * [Anomáliadetektálási dectector](Anomaly-Detector/anomaly-detector-container-howto.md#request-access-to-the-container-registry)
 > * [Arcfelismerés](Face/face-how-to-install-containers.md)
 > * [Űrlap felismerő](form-recognizer/form-recognizer-container-howto.md#request-access-to-the-container-registry)

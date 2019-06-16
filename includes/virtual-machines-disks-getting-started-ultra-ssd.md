@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/10/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 326382339e2b4aeaa488d3d7f76b7ff35f9bc620
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 7515c061467419412608bb8103136791845ae093
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147776"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133266"
 ---
 # <a name="enable-and-deploy-azure-ultra-ssds-preview"></a>Engedélyezze és üzembe helyezése az Azure ultranagy SSD-k (előzetes verzió)
 
@@ -33,11 +33,12 @@ A válasz formáját az alábbi, ahol X a zóna használatára az USA keleti RÉ
 
 Megőrizheti a **zónák** érték azt jelenti, hogy a rendelkezésre állási zóna és a egy ultra SSD üzembe helyezéséhez szükség lesz rá.
 
-|Erőforrástípus  |Name (Név)  |Location egység  |Zónák  |Korlátozás  |Képesség  |Érték  |
+|ResourceType  |Name (Név)  |Location egység  |Zóna  |Korlátozás  |Képesség  |Érték  |
 |---------|---------|---------|---------|---------|---------|---------|
-|lemezek     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
+|Lemezek     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
-A parancs nem válaszol, akkor a regisztrációját, hogy a szolgáltatás még mindig vagy folyamatban lévő, vagy nincs még jóváhagyva.
+> [!NOTE]
+> A parancs nem válaszol, akkor a regisztrációját, hogy a szolgáltatás még mindig vagy folyamatban lévő, vagy nincs még jóváhagyva.
 
 Most, hogy tudja, hogy melyik zónában való üzembe helyezéséhez, kövesse az ebben a cikkben az első ultranagy SSD a telepített virtuális gépek beolvasni a telepítés lépéseit.
 

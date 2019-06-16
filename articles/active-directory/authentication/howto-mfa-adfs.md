@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0abf2eca52616638f0c4dce89691c0d4f7875106
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: a5b1838007e1be7fc1d9872516ede14c208b1f57
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60415343"
+ms.locfileid: "67113462"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>A felhőerőforrások védelme Azure Multi-Factor Authentication hitelesítéssel és AD FS-sel
 
@@ -86,10 +86,10 @@ Az első lépés az AD FS-jogcímek konfigurálása. Két jogcímszabályt hozzo
 Most, hogy megvannak a jogcímek, konfigurálhatjuk a megbízható IP-címeket.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza az **Azure Active Directory** > **Feltételes hozzáférés** > **Nevesített helyek** lehetőséget.
-3. A **Feltételes hozzáférés – Nevesített helyek** panelen válassza az  **MFA megbízható IP-címeinek konfigurálása** lehetőséget
+2. Válassza ki **Azure Active Directory** > **feltételes hozzáférési** > **nevesített helyek**.
+3. Az a **feltételes hozzáférés – nevesített helyek** panelen válassza ki **konfigurálása MFA megbízható IP-címek**
 
-   ![Azure AD – feltételes hozzáférés – nevesített helyek – MFA megbízható IP-címeinek konfigurálása](./media/howto-mfa-adfs/trustedip6.png)
+   ![Az Azure AD feltételes hozzáférés nevesített helyek konfigurálása MFA megbízható IP-címek](./media/howto-mfa-adfs/trustedip6.png)
 
 4. A Szolgáltatásbeállítások oldalon, a **megbízható IP-címek** területen jelölje be a **Többtényezős hitelesítés kihagyása az összevont felhasználók intranetről indított kérelmei esetén** elemet.  
 5. Kattintson a **mentés** gombra.

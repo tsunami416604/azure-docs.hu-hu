@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 73a19fa97a898e2c51912a18f46751e855ee0303
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c2c153d8e67ff952add177d8a98b7561c3165774
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60273327"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100385"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-impac-risk-manager"></a>Oktatóanyag: Az Azure Active Directory-integráció a IMPAC kockázati Managerrel
 
@@ -53,7 +53,7 @@ Az Azure AD-be a IMPAC kockázati Manager-integráció konfigurálása szükség
 
 **IMPAC kockázati Manager hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -111,7 +111,7 @@ IMPAC kockázati Manager az Azure AD egyszeri bejelentkezés konfigurálásához
 
     | Környezet | Az URL-minta |
     | ---------------|--------------- |
-    | Éles környezetekhez |`https://www.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
+    | Éles környezetben |`https://www.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
     | A előkészítéséhez és képzés  |`https://staging.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
     | Fejlesztéshez  |`https://dev.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
     | A QA |`https://QA.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
@@ -126,7 +126,7 @@ IMPAC kockázati Manager az Azure AD egyszeri bejelentkezés konfigurálásához
 
     | Környezet | Az URL-minta |
     | ---------------|--------------- |
-    | Éles környezetekhez |`https://www.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
+    | Éles környezetben |`https://www.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
     | A előkészítéséhez és képzés  |`https://staging.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
     | Fejlesztéshez  |`https://dev.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
     | A QA |`https://QA.riskmanager.co.nz/SSOv2/<ClientSuffix>`|

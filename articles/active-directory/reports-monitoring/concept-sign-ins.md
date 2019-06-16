@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b69dca5abddd56b29abf3e482e51b3d2a41612e7
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 81b7030d0f45222a1641e34b341885d2ecc051e3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864471"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107650"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -100,7 +100,7 @@ A jelentésben lévő adatok megfelelő szintű szűkítéséhez az alábbi alap
 - Alkalmazás
 - Bejelentkezési állapot
 - Feltételes hozzáférés
-- Date
+- Dátum
 
 ![Bejelentkezési tevékenység](./media/concept-sign-ins/04.png "Sign-in activity")
 
@@ -110,19 +110,19 @@ Az **Alkalmazás** szűrővel egy konkrét alkalmazás nevét adhatja meg.
 
 A **Bejelentkezési állapot** szűrővel az alábbi lehetőségek közül választhat:
 
-- Az összes
+- Összes
 - Sikeres
 - Hiba
 
 A **feltételes hozzáférési** szűrő lehetővé teszi, hogy válassza ki a bejelentkezéshez hitelesítésszolgáltató szabályzat állapotát:
 
-- Az összes
+- Összes
 - Nem alkalmazott
 - Siker
 - Hiba
 
 A **Dátum** szűrővel időkeretet lehet meghatározni a visszaadott adatokhoz.  
-Lehetséges értékek a következők:
+Lehetséges értékek:
 
 - 1 hónap
 - 7 nap
@@ -198,8 +198,8 @@ Az elemekre kattintva részletes információk érhetők el a bejelentkezési m�
 - Ügyfél
 - Location egység
 - IP-cím
-- Date
-- MFA szükséges
+- Dátum
+- Az MFA megadása kötelező
 - Bejelentkezési állapot
 
 > [!NOTE]

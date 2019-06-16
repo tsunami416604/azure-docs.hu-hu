@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 7596670e794c090b04f81cf6b235a4bc54c1f3c4
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: fcb09720d188150736dbe7da0c925f5762ff6a10
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800102"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072317"
 ---
 # <a name="what-is-speech-to-text"></a>Mit jelent a hang-szöveg transzformációs?
 
 Hang-szöveg transzformációs Azure Speech Services, más néven hang-szöveg transzformációs, lehetővé teszi, hogy a valós idejű beszédátírási-audiostreamek lejátszásával, szöveg, amelyet felhasználhat az alkalmazások, eszközök és eszközök, az megjelenítéséhez, és a művelet végrehajtása a parancs bemenetként. Ez a szolgáltatás ugyanazon felismerés technológia, amely a Microsoft Cortana és az Office-termékek használ, és zökkenőmentesen együttműködik a fordítás és a szöveg-hang transzformációs működteti.  Hang-szöveg transzformációs elérhető nyelvek teljes listáját lásd: [támogatott nyelvek](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#speech-to-text).
 
-Alapértelmezés szerint a hang-szöveg transzformációs szolgáltatás univerzális nyelvi modellt használja. Ez a modell a Microsoft tulajdonában lévő adatok felhasználásával lett betanított, és a felhőben üzembe helyezett. Az optimális legyen természetes nyelvi és Diktálás forgatókönyvek. Hang-szöveg transzformációs használatakor felismerése és a egy egyedi környezetben beszédátírási létrehozása, és címet a zajszint vagy iparág-specifikus szókincsből eredőket egyéni írásmódja, akusztikai és nyelvi modelleket taníthat be. 
+Alapértelmezés szerint a hang-szöveg transzformációs szolgáltatás univerzális nyelvi modellt használja. Ez a modell a Microsoft tulajdonában lévő adatok felhasználásával lett betanított, és a felhőben üzemel. Az optimális legyen természetes nyelvi és Diktálás forgatókönyvek. Hang-szöveg transzformációs használatakor felismerése és a egy egyedi környezetben beszédátírási létrehozása, és címet a zajszint vagy iparág-specifikus szókincsből eredőket egyéni írásmódja, akusztikai és nyelvi modelleket taníthat be. 
 
 Egyszerűen mikrofon hangjának rögzítéséhez, olvassa el a streamből vagy hang fájlok elérésére a Speech SDK és a REST API-k a storage-ból. A beszédfelismerés SDK/a WAV PCM 16 bites, 16 kHz/8 kHz, egyetlen – channel hangot beszédfelismerési támogatja. További hangformátumok támogatottak használatával a [hang-szöveg transzformációs REST-végpont](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) vagy a [a batch szolgáltatás beszédátírási](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats).
 
@@ -49,7 +49,7 @@ Egyszerűen mikrofon hangjának rögzítéséhez, olvassa el a streamből vagy h
 
 Útmutatók a népszerű programozási nyelvek, minden egyes, a kód futtatása kevesebb mint 10 perc múlva úgy tervezték, hogy biztosítunk. Ez a táblázat nyelv szerint vannak rendezve, beszéd SDK rövid útmutatók teljes listáját tartalmazza.
 
-| Gyors üzembe helyezés | Platform | API-referencia |
+| Első lépések | Platform | API-referencia |
 |------------|----------|---------------|
 | [C#, .NET Core](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-csharp-dotnetcore-windows) | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
 | [C#, .NET-keretrendszer](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-csharp-dotnet-windows) | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
@@ -57,7 +57,7 @@ Egyszerűen mikrofon hangjának rögzítéséhez, olvassa el a streamből vagy h
 | [C++](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-cpp-windows) | Windows | [Tallózás](https://aka.ms/csspeech/cppref)|
 | [C++](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-cpp-linux) | Linux | [Tallózás](https://aka.ms/csspeech/cppref) |
 | [Java](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-java-android) | Android | [Tallózás](https://aka.ms/csspeech/javaref) |
-| [Java](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-java-jre) | Windows, Linux | [Tallózás](https://aka.ms/csspeech/javaref) |
+| [Java](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-java-jre) | Windows, Linux, macOS | [Tallózás](https://aka.ms/csspeech/javaref) |
 | [A JavaScript, a böngésző](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-js-browser) | Böngésző, Windows, Linux, macOS | [Tallózás](https://aka.ms/AA434tv) |
 | [JavaScript, Node.js](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-js-node) | Windows, Linux, macOS | [Tallózás](https://aka.ms/AA434tv) |
 | [Objective-C](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-objectivec-ios) | iOS | [Tallózás](https://aka.ms/csspeech/objectivecref) |

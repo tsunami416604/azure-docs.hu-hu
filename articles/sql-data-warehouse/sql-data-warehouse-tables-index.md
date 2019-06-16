@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019
 ms.openlocfilehash: 158b229c2c45a14ed0fd5433d1903eca92f32401
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65851644"
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>Az SQL Data Warehouse az indexelő táblák
@@ -216,7 +216,7 @@ Miután adatokkal lettek betöltve. a táblák, a lépések végrehajtásával a
 
 ## <a name="rebuilding-indexes-to-improve-segment-quality"></a>Szegmens minőségének javítására indexek újraépítése
 
-### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>1. lépés: Azonosítsa, vagy hozzon létre felhasználói, amely használja a megfelelő erőforrás-osztály
+### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>1\. lépés: Azonosítsa, vagy hozzon létre felhasználói, amely használja a megfelelő erőforrás-osztály
 
 Azonnal a szegmens minősége javításának egyik gyors módja, hogy az index újraépítése.  A fenti nézetben által visszaadott SQL egy ALTER INDEX REBUILD utasítás, amely az indexek újraépítése segítségével adja vissza. Ha az indexek újraépítése, mindenképpen lefoglalni elegendő memóriát a munkamenetbe, amely újraépíti az index.  Ehhez a erőforrásosztályhoz építenie az indexet a tábla a javasolt minimális engedéllyel rendelkező felhasználó növelése.
 
@@ -226,7 +226,7 @@ Alább egy példát egy felhasználóhoz több memóriát lefoglalni a erőforr�
 EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 ```
 
-### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>2. lépés: Magasabb szintű erőforrás osztály felhasználóval fürtözött oszlopcentrikus indexek újraépítése
+### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>2\. lépés: Magasabb szintű erőforrás osztály felhasználóval fürtözött oszlopcentrikus indexek újraépítése
 
 Jelentkezzen be, hogy a felhasználó 1. lépés (pl. LoadUser), amely mostantól egy nagyobb erőforrásosztály használata, és hajtsa végre az ALTER INDEX utasításokat. Győződjön meg arról, hogy a felhasználó rendelkezik-e az ALTER engedéllyel a táblákat, ahol az index újraépítése folyamatban van. Ezek a példák megjelenítése a teljes oszlopcentrikus index újraépítése, illetve egy adott partíció számára. A nagyméretű táblák további gyakorlati újraépítése indexeli ugyanazon a partíción egy időben.
 
@@ -254,7 +254,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 
 Az SQL Data Warehouse az index újraépítése az-offline művelet.  Az indexek újraépítésével kapcsolatos további információkért tekintse meg az ALTER INDEX REBUILD szakasz [Oszlopcentrikus index töredezettségmentesítési](/sql/relational-databases/indexes/columnstore-indexes-defragmentation), és [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql).
 
-### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>3. lépés: Ellenőrizze a fürtözött oszlopcentrikus szegmens minősége javult.
+### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>3\. lépés: Ellenőrizze a fürtözött oszlopcentrikus szegmens minősége javult.
 
 Futtassa újból a lekérdezést a gyenge azonosított tábla szegmens minősége, és ellenőrizze a szegmens minősége javult.  Ha szegmens minősége nem javította, annak oka az lehet, hogy a sorokat a táblában nagyon nagy.  Fontolja meg egy nagyobb erőforrásosztályhoz és DWU az index újraépítésekor.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: 0b158a1d713e0de8f3d1b2672aed442fce66e724
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: be07e0f3438ea93312d4eb440e7e63b8f98e11b8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65917160"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077381"
 ---
 # <a name="what-is-the-visual-interface-for-azure-machine-learning-service"></a>Mi az Azure Machine Learning szolgáltatás a vizuális felhasználói felületet? 
 
@@ -27,7 +27,7 @@ A vizuális felhasználói felületet használja az Azure Machine Learning szolg
 + Az összetevők írási [kísérletezhet](#experiment) futtatja a munkaterületre.
 + Hozzáférés [adatkészletek](#dataset).
 + Használja a [számítási erőforrások](#compute) futtathatja a kísérletet a munkaterületen található. 
-+ Regisztráljon [modellek](concept-azure-machine-learning-architecture.md#model).
++ Regisztráljon [modellek](concept-azure-machine-learning-architecture.md#models).
 + [Üzembe helyezése](#deployment) modellek, a webszolgáltatások számítási erőforrásokat a munkaterületen.
 
 ![A vizuális felhasználói felületet áttekintése](media/ui-concept-visual-interface/overview.png)

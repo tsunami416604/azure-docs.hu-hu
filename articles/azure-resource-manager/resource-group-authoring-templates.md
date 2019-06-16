@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tomfitz
 ms.openlocfilehash: e3b8b6b969568fc15558002c268cdc4a16c2fadd
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66431238"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Megismerheti a szerkezetének és szintaxisának az Azure Resource Manager-sablonok
@@ -132,7 +132,7 @@ A paraméter a rendelkezésre álló tulajdonságok a következők:
 |:--- |:--- |:--- |
 | parameterName |Igen |A paraméter neve. Érvényes JavaScript-azonosítónak kell lennie. |
 | type |Igen |A paraméter értékének típusa. Az engedélyezett típusokkal és az értékek **karakterlánc**, **securestring**, **int**, **bool**, **objektum**, **secureObject**, és **tömb**. |
-| DefaultValue érték |Nem |A paramétert, ha a nem érték van megadva a paraméter alapértelmezett értéke. |
+| defaultValue |Nem |A paramétert, ha a nem érték van megadva a paraméter alapértelmezett értéke. |
 | allowedValues |Nem |Győződjön meg arról, hogy a megfelelő értéket adott-e, hogy a paraméter megengedett értékek tömbje. |
 | minValue |Nem |Int típusú paraméterekhez minimális értéke, ez az érték, amely naptól. |
 | maxValue |Nem |A maximális int típusú paraméterekhez, ez az érték értéke is beleértve. |

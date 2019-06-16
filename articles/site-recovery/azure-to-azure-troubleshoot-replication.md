@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.author: asgang
 ms.openlocfilehash: bf24b2d1395e128dc73361670ea93ac938574146
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66258789"
 ---
 # <a name="troubleshoot-ongoing-problems-in-azure-to-azure-vm-replication"></a>Az Azure-ról Azure-beli virtuális gép replikálása folyamatban lévő kapcsolatos problémák elhárítása
@@ -81,17 +81,17 @@ A Site Recovery replikációja, a kimenő kapcsolat az adott URL-címek vagy IP-
 
 Alább láthatók a leggyakoribb problémák
 
-#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>1. ok: Ismert hiba az SQL server 2008 és 2008 R2 
+#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>1\. ok: Ismert hiba az SQL server 2008 és 2008 R2 
 **Hogyan háríthatja el a** : Egy ismert probléma van az SQL server 2008 és 2008 R2. Olvassa el az ebben a Tudásbáziscikkben találja [Azure Site Recovery-ügynök vagy egyéb nem összetevő VSS biztonsági mentése meghiúsul, az SQL Server 2008 R2 üzemeltető kiszolgálót](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)
 
-#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-autoclose-dbs"></a>2. ok: Az Azure Site Recovery-feladatok sikertelenek AUTO_CLOSE adatbázisainak az SQL Server-példányokat bármely verzióját futtató kiszolgálókon 
+#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-autoclose-dbs"></a>2\. ok: Az Azure Site Recovery-feladatok sikertelenek AUTO_CLOSE adatbázisainak az SQL Server-példányokat bármely verzióját futtató kiszolgálókon 
 **Hogyan háríthatja el a** : Tekintse meg a KB-os [cikk](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) 
 
 
-#### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>3. ok: Ismert probléma az SQL Server 2016 és 2017.
+#### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>3\. ok: Ismert probléma az SQL Server 2016 és 2017.
 **Hogyan háríthatja el a** : Tekintse meg a KB-os [cikk](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) 
 
-#### <a name="cause-4-you-are-using-storage-spaces-direct-configuration"></a>4. ok: Storage spaces közvetlen konfigurációt használ
+#### <a name="cause-4-you-are-using-storage-spaces-direct-configuration"></a>4\. ok: Storage spaces közvetlen konfigurációt használ
 **Hogyan háríthatja el a** : Az Azure Site Recovery nem hozható létre alkalmazáskonzisztens helyreállítási pont Storage spaces közvetlen konfiguráció. Tekintse meg a cikk megfelelően [a replikációs szabályzat konfigurálása](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication-s2d-vms)
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>További okok miatt VSS kapcsolatos problémákat:

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
 ms.openlocfilehash: 4b9f007e00d0912687b723bd4f7e747da893948d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60760464"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Helyek közötti kapcsolat hozzáadása virtuális hálózathoz meglévő VPN gateway-kapcsolattal
@@ -63,7 +63,7 @@ Ellenőrizze a következő elemeket:
 5. Az a **kapcsolat hozzáadása** lap, adja meg a következő mezőket:
    
    * **név:** A kapcsolat létrehozásakor a helyhez hozzárendelni kívánt nevét.
-   * **Kapcsolat típusa:** Válassza ki **Site-to-site (IPsec)**.
+   * **Kapcsolat típusa:** Válassza ki **Site-to-site (IPsec)** .
      
      ![Hozzáadás kapcsolódási oldalán](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "hozzáadása kapcsolat lap")<br>
 

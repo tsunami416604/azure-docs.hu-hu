@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f63aebb9a9bbefe84ac36b92cd69e0d93de0ab76
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66298759"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Szinkronizálási hibák elhárítása
@@ -29,7 +29,7 @@ Hibák fordulhatnak elő, amikor a azonosító adatok szinkronizálása a Window
 
 Az Azure AD Connect legújabb verziójának \(augusztus 2016-os vagy magasabb\), a szinkronizálási hibák jelentés érhető el a [az Azure portal](https://aka.ms/aadconnecthealth) az Azure AD Connect Health szinkronizálási szolgáltatás részeként.
 
-2016. szeptember 1-től [Azure Active Directory ismétlődő attribútumok rugalmassága](how-to-connect-syncservice-duplicate-attribute-resiliency.md) funkció alapértelmezés szerint az összes engedélyezzük a *új* Azure Active Directory-bérlők. Ez a funkció automatikusan engedélyezve lesz a meglévő bérlők számára a soron következő hónapban.
+2016\. szeptember 1-től [Azure Active Directory ismétlődő attribútumok rugalmassága](how-to-connect-syncservice-duplicate-attribute-resiliency.md) funkció alapértelmezés szerint az összes engedélyezzük a *új* Azure Active Directory-bérlők. Ez a funkció automatikusan engedélyezve lesz a meglévő bérlők számára a soron következő hónapban.
 
 Az Azure AD Connect három típusú műveletek szinkronban tartja a címtárakból hajtja végre: Importálás, a szinkronizálás és exportálási. Hibák az összes művelet elvégezhető. Ez a cikk elsősorban az Azure Active Directoryba való exportálás során hibák összpontosít.
 

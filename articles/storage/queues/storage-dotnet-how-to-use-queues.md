@@ -10,30 +10,34 @@ ms.date: 05/21/2019
 ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.subservice: queues
-ms.openlocfilehash: bfa69c6904644f707626e57a6696695cf4868c50
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 44f1953d01f827db1cbb65f9029c62569425745e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236611"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077045"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Az Azure Queue Storage használatának első lépései a .NET-keretrendszerrel
+
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-check-out-samples-dotnet](../../../includes/storage-check-out-samples-dotnet.md)]
 
 ## <a name="overview"></a>Áttekintés
+
 Az Azure Queue Storage felhőbeli üzenetkezelést biztosít az alkalmazások összetevői között. A méretezhető alkalmazások tervezésekor az alkalmazás összetevői gyakran le vannak választva, hogy egymástól függetlenül lehessen őket méretezni. A Queue Storage aszinkron üzenetkezelést biztosít az alkalmazások összetevői közötti kommunikációhoz, függetlenül attól, hogy az összetevők a felhőben, asztali gépen, egy helyszíni kiszolgálón vagy egy mobileszközön futnak. A Queue Storage támogatja az aszinkron feladatok kezelését és a feldolgozási munkafolyamatok kialakítását is.
 
 ### <a name="about-this-tutorial"></a>Az oktatóanyag ismertetése
+
 Ez az oktatóanyag bemutatja, hogyan írhat .NET-kódot néhány, az Azure Queue Storage szolgáltatást használó általános forgatókönyvhöz. Az ismertetett forgatókönyvek az üzenetsorok létrehozására és törlésére, valamint az üzenetsor üzeneteinek hozzáadására, olvasására és törlésére vonatkoznak.
 
 **Becsült időtartama:** 45 perc
 
-###<a name="prerequisites"></a>Előfeltételek:
+### <a name="prerequisites"></a>Előfeltételek
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-* [Az Azure Storage .NET-hez készült ügyféloldali kódtára](https://www.nuget.org/packages/WindowsAzure.Storage/)
+* [Az Azure Storage közös ügyféloldali kódtára a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
+* [Az Azure Storage-üzenetsor ügyféloldali kódtára a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)
 * [Azure Configuration Manager a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)
 * Egy [Azure-tárfiók](../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 
@@ -41,9 +45,93 @@ Ez az oktatóanyag bemutatja, hogyan írhat .NET-kódot néhány, az Azure Queue
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
-[!INCLUDE [storage-development-environment-include](../../../includes/storage-development-environment-include.md)]
+## <a name="set-up-your-development-environment"></a>A fejlesztési környezet beállítása
+
+A következő lépésként állítsa be a fejlesztési környezetet a Visual Studióban, hogy kipróbálhassa az útmutatóban megadott példákat.
+
+### <a name="create-a-windows-console-application-project"></a>Windows-konzolalkalmazás projekt létrehozása
+
+Hozzon létre egy új Windows-konzolalkalmazást a Visual Studióban. A következő lépések bemutatják, hogyan hozzon létre egy konzolalkalmazást a Visual Studio 2019. A lépések a Visual Studio más verziói esetén is hasonlók.
+
+1. Válassza a **File** (Fájl) > **New** (Új) > **Project** (Projekt) lehetőséget.
+2. Válassza ki **Platform** > **Windows**
+3. Válassza a **Console App (.NET Framework)** (Konzolalkalmazás (.NET keretrendszer) lehetőséget
+4. Kattintson a **Tovább** gombra.
+5. Az a **projektnév** mezőben adjon meg egy nevet az alkalmazásnak
+6. Kattintson a **Létrehozás** elemre.
+
+Ebben az oktatóanyagban szereplő példák lehet hozzáadni a **Main()** módszere a Konzolalkalmazás **Program.cs** fájlt.
+
+Az Azure Storage ügyfélkódtáraival bármilyen típusú .NET-alkalmazást, beleértve egy Azure-felhő vagy -webappokat alkalmazást, és az asztali és mobil alkalmazások is használhatja. Ebben az útmutatóban az egyszerűség kedvéért egy konzolalkalmazást használunk.
+
+### <a name="use-nuget-to-install-the-required-packages"></a>A szükséges csomagok telepítése a NuGettel
+
+Kell hivatkoznia a projektben az oktatóanyag elvégzéséhez a következő három csomagok:
+
+* [A Microsoft Azure Storage közös ügyféloldali kódtára a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Ez a csomag a tárfiókja adatforrásaihoz programozás alapú hozzáférést biztosít.
+* [A Microsoft Azure Storage Queue kódtára a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/): Az ügyféloldali kódtár a Microsoft Azure Storage-üzenetsor-szolgáltatás, előfordulhat, hogy egy ügyfél által elérhető üzenetek tárolását való munkát teszi lehetővé.
+* [A Microsoft Azure Configuration Manager könyvtár a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): Ez a csomag egy osztályt biztosít a konfigurációs fájlban, függetlenül attól, hol futnak az alkalmazás kapcsolati karakterlánc elemzéséhez.
+
+NuGet használatával szerezze be ezeket a csomagokat. Kövesse az alábbi lépéseket:
+
+1. Kattintson a jobb gombbal a projektjére a **Megoldáskezelőben**, és válassza a **Manage NuGet Packages** (NuGet-csomagok kezelése) lehetőséget.
+2. Válassza ki **tallózása**
+3. Keressen rá az interneten a "Microsoft.Azure.Storage.Queue", és válassza ki **telepítése** a Storage ügyféloldali kódtár és függőségeinek telepítéséhez. Ez a várólista-függvénytár függősége szalagtárban Microsoft.Azure.Storage.Common is telepíti.
+4. Keressen rá az interneten a "Microsoft.Azure.ConfigurationManager", és válassza ki **telepítése** az Azure Configuration Manager telepítéséhez.
+
+> [!NOTE]
+> A Storage ügyféloldali kódtárak csomagok is megtalálhatók a [Azure SDK for .NET](https://azure.microsoft.com/downloads/). Azt javasoljuk azonban, telepítenie a tároló ügyfélkódtárai a Nugetből ellenőrizze, hogy mindig a legújabb verzióra.
+>
+> A .NET-keretrendszerhez készült Storage ügyfélkódtáraival ODataLib-függőségeit a nem a WCF-adatszolgáltatások a Nugeten elérhető ODataLib-csomagok által megoldott. Az ODataLib-kódtárak letölthetők közvetlenül, vagy a kódprojektje hivatkozhat rájuk a NuGeten keresztül. A tároló ügyfélkódtárai által használt konkrét ODataLib-csomagok [OData](http://nuget.org/packages/Microsoft.Data.OData/), [Edm](http://nuget.org/packages/Microsoft.Data.Edm/), és [Spatial](http://nuget.org/packages/System.Spatial/). Ezek a kódtárak az Azure Table storage osztályai használják, amíg azok szükséges függőségek a Storage ügyfélkódtárai való programozáshoz.
+
+### <a name="determine-your-target-environment"></a>A célkörnyezet meghatározása
+
+Az útmutatóban lévő példákat kétféle környezetben futtathatja:
+
+* A kódot futtathatja a felhőben, egy Azure Storage-fiókban.
+* A kódot futtathatja az Azure Storage Emulatorban is. A Storage Emulator egy helyi környezet, amely egy Azure Storage-fiókot emulál a felhőben. Az emulátor ingyenes lehetőséget biztosít a kódja tesztelésére és hibakeresésére, amíg az alkalmazása fejlesztés alatt áll. Az emulátor egy jól ismert fiókot és kulcsot használ. További információkért lásd: [Fejlesztés és tesztelés az Azure Storage Emulatorral](../common/storage-use-emulator.md).
+
+Ha egy felhőbeli tárfiókot céloz meg, akkor másolja ki a tárfiók elsődleges hívóbetűjét az Azure Portalról. További információ eléréséhez lásd: [Hozzáférési kulcsok](../common/storage-account-manage.md#access-keys).
+
+> [!NOTE]
+> A Storage Emulator megcélzásával elkerülheti az Azure Storage-hoz kapcsolódó költségeket. Ha azonban mégis egy Azure Storage-fiókot céloz meg a felhőben, az oktatóanyag végrehajtásával járó költségek elhanyagolhatóak.
+
+### <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati sztring konfigurálása
+
+Az Azure Storage ügyfélkódtáraival a .NET-támogatásnak egy tárolási kapcsolati karakterlánc használatával konfigurálja a végpontokat és tárolási szolgáltatások eléréséhez használt hitelesítő adatokat. A tárolási kapcsolati sztring egy konfigurációs fájlban tartható fenn a legjobban.
+
+A kapcsolati sztringekkel kapcsolatos további információkért lásd: [Az Azure Storage kapcsolati sztringjének konfigurálása](../common/storage-configure-connection-string.md).
+
+> [!NOTE]
+> A tárfiók kulcsa hasonlít a tárfiók rendszergazdai jelszavához. Mindig ügyeljen a tárfiók kulcsának védelmére. Ne adja ki másoknak, ne kódolja fixen és ne mentse egy mások számára elérhető egyszerű szöveges fájlban. Ha azt gyanítja, hogy a kulcs biztonsága sérült, az Azure portál segítségével generálja újra.
+
+A kapcsolati karakterlánc konfigurálásához nyissa meg a **app.config** fájlt a Megoldáskezelőből a Visual Studióban. Adja hozzá a tartalmát a **\<appSettings\>** elemet az alább látható. Cserélje le *fióknév* a tárfiók nevével és *-fiókkulcs* értékeket a fiók hozzáférési kulcsára:
+
+```xml
+<configuration>
+    <startup>
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5.2" />
+    </startup>
+    <appSettings>
+        <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key" />
+    </appSettings>
+</configuration>
+```
+
+A konfiguráció beállítása például hasonló lesz a következőhöz:
+
+```xml
+<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=GMuzNHjlB3S9itqZJHHCnRkrokLkcSyW7yK9BRbGp0ENePunLPwBgpxV1Z/pVo9zpem/2xSHXkMqTHHLcx8XRA==" />
+```
+
+A Storage Emulator célzásához használhat egy hivatkozást, amely leképezi a jól ismert fióknevet és kulcsot. Ebben az esetben a kapcsolati sztring beállítása a következő:
+
+```xml
+<add key="StorageConnectionString" value="UseDevelopmentStorage=true;" />
+```
 
 ### <a name="add-using-directives"></a>Hozzáadás irányelvekkel
+
 Adja hozzá a következő `using` irányelveket a `Program.cs` fájl elejéhez:
 
 ```csharp
@@ -64,18 +152,21 @@ A mintakódnak hitelesítenie kell a tárfiókhoz való hozzáférést. A hitele
     ![A kapcsolati sztring az Azure Portalról történő másolását bemutató képernyőkép](media/storage-dotnet-how-to-use-queues/portal-connection-string.png)
 
 ### <a name="parse-the-connection-string"></a>Kapcsolati sztring elemzése
+
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
 
 ### <a name="create-the-queue-service-client"></a>A Queue szolgáltatásügyfél létrehozása
+
 A [CloudQueueClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueueclient?view=azure-dotnet) osztály segítségével lekérheti a Queue Storage-ban tárolt üzenetsorokat. A szolgáltatásügyfél létrehozásának egyik módja:
 
 ```csharp
 CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 ```
-    
+
 Most már készen áll a Queue Storage-ból adatokat olvasó és abba adatokat író kód írására.
 
 ## <a name="create-a-queue"></a>Üzenetsor létrehozása
+
 A példa bemutatja, hogyan hozhat létre üzenetsort, ha még nem rendelkezik vele:
 
 ```csharp
@@ -94,6 +185,7 @@ queue.CreateIfNotExists();
 ```
 
 ## <a name="insert-a-message-into-a-queue"></a>Üzenet beszúrása egy üzenetsorba
+
 Ha üzenetet szeretne beszúrni egy létező üzenetsorba, először hozzon létre egy [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage?view=azure-dotnet) elemet. Ezután hívja meg az [AddMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessage?view=azure-dotnet) módszert. A **CloudQueueMessage** egy sztringből (UTF-8 formátumban) vagy egy **bájttömbből** hozható létre. Az alábbi kód létrehoz egy üzenetsort (ha még nem létezik), és beszúrja a „Hello, World” üzenetet:
 
 ```csharp
@@ -116,6 +208,7 @@ queue.AddMessage(message);
 ```
 
 ## <a name="peek-at-the-next-message"></a>Betekintés a következő üzenetbe
+
 Egy üzenetsor elején található üzenetbe anélkül is bepillanthat, hogy eltávolítaná az üzenetsorból. Ehhez hívja meg a [PeekMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.peekmessage?view=azure-dotnet) módszert.
 
 ```csharp
@@ -137,6 +230,7 @@ Console.WriteLine(peekedMessage.AsString);
 ```
 
 ## <a name="change-the-contents-of-a-queued-message"></a>Üzenetsorban található üzenet tartalmának módosítása
+
 Egy üzenetet tartalmát helyben, az üzenetsorban módosíthatja. Ha az üzenet munkafeladatot jelöl, ezzel a funkcióval frissítheti a munkafeladat állapotát. Az alábbi kód frissíti az üzenetsorban található üzenetet az új tartalommal, és a láthatósági időkorlátot további 60 másodperccel bővíti. Elmenti az üzenethez társított feladat állapotát, és az ügyfél számára további egy percet biztosít az üzenet használatának folytatására. Ezzel a technikával többlépéses munkafolyamatokat is nyomon követhet az üzenetsor üzenetein anélkül, hogy újra kéne kezdenie, ha a folyamat valamelyik lépése hardver- vagy szoftverhiba miatt meghiúsul. A rendszer általában nyilván tartja az újrapróbálkozások számát, és ha az üzenettel *n* alkalomnál többször próbálkoznak, akkor törlődik. Ez védelmet biztosít az ellen, hogy egy üzenetet minden feldolgozásakor kiváltson egy alkalmazáshibát.
 
 ```csharp
@@ -152,13 +246,14 @@ CloudQueue queue = queueClient.GetQueueReference("myqueue");
 
 // Get the message from the queue and update the message contents.
 CloudQueueMessage message = queue.GetMessage();
-message.SetMessageContent("Updated contents.");
+message.SetMessageContent2("Updated contents.", false);
 queue.UpdateMessage(message,
     TimeSpan.FromSeconds(60.0),  // Make it invisible for another 60 seconds.
     MessageUpdateFields.Content | MessageUpdateFields.Visibility);
 ```
 
 ## <a name="de-queue-the-next-message"></a>A következő üzenet kivétele az üzenetsorból
+
 A kód két lépésben távolít el egy üzenetet az üzenetsorból. A [GetMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage?view=azure-dotnet) meghívásával lekéri az üzenetsor következő üzenetét. A **GetMessage** módszerrel lekért üzenet láthatatlanná válik az adott üzenetsorban található üzeneteket olvasó többi kód számára. Alapértelmezés szerint az üzenet 30 másodpercig marad láthatatlan. Ha végleg el szeretné távolítani az üzenetet az üzenetsorból, meg kell hívnia a [DeleteMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage?view=azure-dotnet) módszert is. Az üzenetek kétlépéses eltávolítása lehetővé teszi, hogy ha a kód hardver- vagy szoftverhiba miatt nem tud feldolgozni egy üzenetet, a kód egy másik példánya megkaphassa ugyanazt az üzenetet, és újra megpróbálkozhasson a feldolgozásával. A kód a **DeleteMessage** módszert rögtön az üzenet feldolgozása után hívja meg.
 
 ```csharp
@@ -180,6 +275,7 @@ queue.DeleteMessage(retrievedMessage);
 ```
 
 ## <a name="use-async-await-pattern-with-common-queue-storage-apis"></a>Async-Await mintázat használata közös Queue Storage API-kkal
+
 Ez a példa bemutatja, hogyan használható az Async-Await mintázat a közös Queue Storage API-kkal. A minta meghívja az adott módszerek aszinkron verzióját. Az aszinkronitást az egyes módszerek *Async* utótagja jelöli. Ha Async módszert használ, az Async-Await mintázat felfüggeszti a helyi végrehajtást a hívás befejeződéséig. Ez a viselkedés lehetővé teszi, hogy az aktuális szál más feladatokkal foglalkozzon. Ennek segítségével elkerülhetők a szűk keresztmetszetek a teljesítményben, és az alkalmazás általános válaszkészsége is javul. További információk az Async-Await mintázat használatáról .NET-keretrendszerben: [Async and Await (C# and Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx) (Async és Await (C# és Visual Basic)).
 
 ```csharp
@@ -208,8 +304,9 @@ Console.WriteLine("Retrieved message with content '{0}'", retrievedMessage.AsStr
 await queue.DeleteMessageAsync(retrievedMessage);
 Console.WriteLine("Deleted message");
 ```
-    
+
 ## <a name="leverage-additional-options-for-de-queuing-messages"></a>Egyéb lehetőségek az üzenetek eltávolításához az üzenetsorból
+
 Két módon szabhatja testre az üzenetek lekérését egy üzenetsorból. Az első lehetőség az üzenetkötegek (legfeljebb 32) lekérése. A második lehetőség az, hogy beállít egy hosszabb vagy rövidebb láthatatlansági időkorlátot, így a kódnak lehetősége van hosszabb vagy rövidebb idő alatt teljesen feldolgozni az egyes üzeneteket. Az alábbi példakód a [GetMessages](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessages?view=azure-dotnet) módszer segítségével egyszerre 20 üzenetet kér le. Ezután minden üzenetet feldolgoz egy **foreach** hurok segítségével. Mindemellett a láthatatlansági időkorlátot minden üzenethez öt percre állítja be. Vegye figyelembe, hogy az 5 perc minden üzenetnél ugyanakkor kezdődik, tehát 5 perccel a **GetMessages** hívása után a nem törölt üzenetek újra láthatóvá válnak.
 
 ```csharp
@@ -231,6 +328,7 @@ foreach (CloudQueueMessage message in queue.GetMessages(20, TimeSpan.FromMinutes
 ```
 
 ## <a name="get-the-queue-length"></a>Az üzenetsor hosszának lekérése
+
 Megbecsülheti egy üzenetsorban található üzenetek számát. A [FetchAttributes](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.fetchattributes?view=azure-dotnet) módszer lekéri a Queue szolgáltatásból az üzenetsorra vonatkozó attribútumokat, amelyek között megtalálható az üzenetek száma is. Az [ApproximateMessageCount](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.approximatemessagecount?view=azure-dotnet) tulajdonság visszaadja a **FetchAttributes** módszer által lekért legutóbbi értéket a Queue szolgáltatás hívása nélkül.
 
 ```csharp
@@ -255,6 +353,7 @@ Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 ```
 
 ## <a name="delete-a-queue"></a>Üzenetsor törlése
+
 Egy üzenetsor és az összes benne foglalt üzenet törléséhez hívja meg a [Delete](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.delete?view=azure-dotnet) módszert az üzenetsor-objektumhoz.
 
 ```csharp
@@ -271,9 +370,9 @@ CloudQueue queue = queueClient.GetQueueReference("myqueue");
 // Delete the queue.
 queue.Delete();
 ```
-    
 
 ## <a name="next-steps"></a>További lépések
+
 Most, hogy már megismerte a Queue Storage alapjait, az alábbi hivatkozásokból tájékozódhat az összetettebb tárolási feladatok elvégzéséről is.
 
 * A Queue szolgáltatás elérhető API-kat részletesen ismertető referenciadokumentációjának megtekintése:

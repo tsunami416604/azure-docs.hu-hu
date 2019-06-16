@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 842c35a1575c7bcf6f547fb04d5680178b3bee78
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: c402b82b91b02f8d9619c851d09c689fd103c9fe
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730358"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67116440"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Az Azure digitális Twins Swagger dokumentációja
 
@@ -112,7 +112,7 @@ Interaktív módon az OAuth 2.0 által védett kérelmek tesztelésével kapcsol
 
     ![Az Azure AD-alkalmazásregisztrációk api hozzáadása](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)
 
-4. Az OAuth 2.0 implicit engedélyezési folyamat engedélyezése az alkalmazásjegyzék konfigurálása. Kattintson a **Manifest** az alkalmazásjegyzékben, az alkalmazás megnyitásához. Állítsa be *oauth2AllowImplicitFlow* való `true`.
+4. Az OAuth 2.0 implicit engedélyezési folyamat engedélyezése az alkalmazásjegyzék konfigurálása. Válassza ki **Manifest** az alkalmazásjegyzékben, az alkalmazás megnyitásához. Állítsa be *oauth2AllowImplicitFlow* való `true`.
 
     ![Az Azure AD implicit folyamat](../../includes/media/digital-twins-permissions/aad-app-allow-implicit-flow.png)
 
@@ -120,9 +120,9 @@ Interaktív módon az OAuth 2.0 által védett kérelmek tesztelésével kapcsol
 
 Elvégezte az Azure Active Directory eszközregisztrációs:
 
-6. Kattintson a **engedélyezés** gomb a swagger-lapon.
+6. Válassza ki a **engedélyezés** gomb a swagger-lapon.
 
-    [![Kattintson a Swagger gomb engedélyezése](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
+    [![Válassza ki a Swagger gomb engedélyezése](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
 
 7. Illessze be az Alkalmazásazonosítót a **client_id** mező.
 

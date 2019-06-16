@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop;kumud
-ms.openlocfilehash: 751a3a940dad74cbc8c7343ee70309736b381d5b
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: ee976f163bdb00511e2a8f85906aa59aaebbfa47
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66478867"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056537"
 ---
 # <a name="security-groups"></a>Biztonsági csoportok
 <a name="network-security-groups"></a>
@@ -81,6 +81,7 @@ A kibővített biztonsági szabályok megkönnyítik a virtuális hálózatok bi
 * **ServiceFabric** (csak Resource Manager): Ez a címke a ServiceFabric-szolgáltatás címelőtagjait. Ha megad *ServiceFabric* értékénél, engedélyezett vagy tiltott forgalmat ServiceFabric való. 
 * **AzureMachineLearning** (csak Resource Manager): Ez a címke a AzureMachineLearning szolgáltatás címelőtagjait. Ha megad *AzureMachineLearning* értékénél, engedélyezett vagy tiltott forgalmat a AzureMachineLearning. 
 * **BatchNodeManagement** (csak Resource Manager): Ez a címke az Azure BatchNodeManagement szolgáltatás címelőtagjait. Ha megad *BatchNodeManagement* értékénél, engedélyezett vagy tiltott forgalmat a Batch szolgáltatás a számítási csomópontokra.
+* **AzureBackup**(csak Resource Manager): Ez a címke címelőtagjait az AzureBackup szolgáltatás. Ha AzureBackup értéket ad meg, engedélyezett vagy tiltott forgalmat az AzureBackup.
 
 > [!NOTE]
 > Az Azure-szolgáltatások szolgáltatáscímkék címelőtagjait használja a megadott felhőből. 
@@ -96,19 +97,19 @@ Az Azure a következő alapértelmezett szabályokat hozza létre a létrehozott
 
 #### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|Prioritás|Source|Forrásportok|Cél|Célportok|Protocol|Access|
+|Prioritás|source|Forrásportok|Cél|Célportok|Protocol|Access|
 |---|---|---|---|---|---|---|
 |65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|Összes|Engedélyezés|
 
 #### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|Prioritás|Source|Forrásportok|Cél|Célportok|Protocol|Access|
+|Prioritás|source|Forrásportok|Cél|Célportok|Protocol|Access|
 |---|---|---|---|---|---|---|
 |65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|Összes|Engedélyezés|
 
 #### <a name="denyallinbound"></a>DenyAllInbound
 
-|Prioritás|Source|Forrásportok|Cél|Célportok|Protocol|Access|
+|Prioritás|source|Forrásportok|Cél|Célportok|Protocol|Access|
 |---|---|---|---|---|---|---|
 |65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|Összes|Megtagadás|
 
@@ -116,19 +117,19 @@ Az Azure a következő alapértelmezett szabályokat hozza létre a létrehozott
 
 #### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|Prioritás|Source|Forrásportok| Cél | Célportok | Protocol | Access |
+|Prioritás|source|Forrásportok| Cél | Célportok | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | Összes | Engedélyezés |
 
 #### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
-|Prioritás|Source|Forrásportok| Cél | Célportok | Protocol | Access |
+|Prioritás|source|Forrásportok| Cél | Célportok | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | Összes | Engedélyezés |
 
 #### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|Prioritás|Source|Forrásportok| Cél | Célportok | Protocol | Access |
+|Prioritás|source|Forrásportok| Cél | Célportok | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Összes | Megtagadás |
 
@@ -148,7 +149,7 @@ Az előző képen az *NIC1* és az *NIC2* az *AsgWeb* alkalmazásbiztonsági cso
 
 Ez a szabály az internetről a webkiszolgálókra irányuló forgalom engedélyezéséhez szükséges. Mivel az internetről bejövő forgalmat az alapértelmezett [DenyAllInbound](#denyallinbound) biztonsági szabály tiltja, az *AsgLogic* és az *AsgDb* alkalmazásbiztonsági csoportok esetében nincs szükség további szabályokra.
 
-|Prioritás|Source|Forrásportok| Cél | Célportok | Protocol | Access |
+|Prioritás|source|Forrásportok| Cél | Célportok | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 100 | Internet | * | AsgWeb | 80 | TCP | Engedélyezés |
 
@@ -156,7 +157,7 @@ Ez a szabály az internetről a webkiszolgálókra irányuló forgalom engedély
 
 Mivel az alapértelmezett [AllowVNetInBound](#allowvnetinbound) biztonsági szabály az azonos virtuális hálózaton lévő erőforrások között minden kommunikációt engedélyez, ez a szabály az összes erőforrástól érkező forgalom tiltásához szükséges.
 
-|Prioritás|Source|Forrásportok| Cél | Célportok | Protocol | Access |
+|Prioritás|source|Forrásportok| Cél | Célportok | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 120 | * | * | AsgDb | 1433 | Összes | Megtagadás |
 
@@ -164,7 +165,7 @@ Mivel az alapértelmezett [AllowVNetInBound](#allowvnetinbound) biztonsági szab
 
 Ez a szabály engedélyezi az *AsgLogic* alkalmazásbiztonsági csoportról az *AsgDb* alkalmazásbiztonsági csoportra irányuló forgalmat. A szabály prioritása magasabb a *Deny-Database-All* szabály prioritásánál. Ennek eredményeként ez a szabály a *Deny-Database-All* szabály előtt lesz kiértékelve, ezért az *AsgLogic* alkalmazásbiztonsági csoporttól érkező forgalom engedélyezve lesz, az összes többi forgalom pedig le lesz tiltva.
 
-|Prioritás|Source|Forrásportok| Cél | Célportok | Protocol | Access |
+|Prioritás|source|Forrásportok| Cél | Célportok | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 110 | AsgLogic | * | AsgDb | 1433 | TCP | Engedélyezés |
 

@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: v-pawal
 ms.topic: conceptual
 ms.openlocfilehash: 901b5312d216c241331b90a6b61d263437ab5c70
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66389294"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Egyéni a fordítót Hub munkaterületet és projektek áttelepítése
@@ -133,7 +133,7 @@ Ez a tábla között a Microsoft Translator Hub és az egyéni a fordítót a sz
 |   | Eseményközpont | Custom Translator |
 |:-----|:----:|:----:|
 |Testreszabás funkció állapota   | Általános rendelkezésre állás  | Általános rendelkezésre állás |
-| Text API-verzió  | 2. verzió    | V3  |
+| Text API-verzió  | 2\. verzió    | V3  |
 | SMT testreszabása | Igen   | Nem |
 | NMT testreszabása | Nem    | Igen |
 | Új egyesített Speech services testreszabása | Nem    | Igen |

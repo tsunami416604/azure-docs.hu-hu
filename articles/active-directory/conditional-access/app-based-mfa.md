@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – megkövetelése a többtényezős hitelesítés (MFA) az Azure Active Directory feltételes hozzáférés konkrét alkalmazások esetén |} A Microsoft Docs
+title: Rövid útmutató – többtényezős hitelesítés (MFA) szükséges konkrét alkalmazások esetén az Azure Active Directory feltételes hozzáférés |} A Microsoft Docs
 description: Ebben a rövid útmutatóban megismerheti, hogyan köthet a hitelesítési követelményeknek, az Azure Active Directory (Azure AD) feltételes hozzáférés használatával elért felhőalapú alkalmazás típusát.
 services: active-directory
 ms.service: active-directory
@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd5ab513034d6e2946dcb31f3a31dbf86f14873e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: db191587f02fa8fa8934cac7a001ea31c233cbdb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60413095"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112754"
 ---
-# <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Gyors útmutató: Többtényezős hitelesítés az Azure Active Directory feltételes hozzáférés konkrét alkalmazások esetén
+# <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Gyors útmutató: Többtényezős hitelesítés konkrét alkalmazások esetén az Azure Active Directory feltételes hozzáférés
 
 A felhasználók bejelentkezési élmény egyszerűsítése, érdemes, hogy jelentkezzen be a felhőalapú alkalmazások, a felhasználónév és jelszó használatával. Azonban sok környezet rendelkezik, amelynek tanácsos igényelnek, például a többtényezős hitelesítés (MFA) a Fiókellenőrzés erősebb egyfajta legalább néhány alkalmazással. Ez lehet például IGAZ, a szervezet e-mail rendszer vagy a HR-alkalmazások eléréséhez. Az Azure Active Directoryban (Azure AD) a cél a feltételes hozzáférési szabályzattal együtt is elérheti.
 
@@ -32,7 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Ebben a rövid útmutatóban a forgatókönyv végrehajtásához szükséges:
 
-- **Hozzáférés az Azure AD Premium Edition** – Azure AD feltételes hozzáférés egy Azure AD Premium-funkció.
+- **Hozzáférés az Azure AD Premium Edition** – Azure AD feltételes hozzáférése egy Azure AD Premium-funkció.
 
 - **Tesztfiók nevű Isabella Simonsen** – Ha nem tudja, hogyan hozzon létre egy olyan fiókot, lásd: [adja hozzá a felhőalapú felhasználók](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
@@ -49,24 +49,24 @@ Ebben a lépésben az a célja, hogy egy benyomást kell szereznie a bejelentkez
 
 ## <a name="create-your-conditional-access-policy"></a>A feltételes hozzáférési szabályzat létrehozása
 
-Ez a szakasz bemutatja, hogyan hozhat létre a feltételes hozzáférési szabályzat. Ebben a rövid útmutatóban a forgatókönyvet használja:
+Ez a szakasz bemutatja, hogyan hozhat létre feltételes hozzáférési szabályzatot. Ebben a rövid útmutatóban a forgatókönyvet használja:
 
 - Az Azure Portalon, helyőrző egy felhőalapú alkalmazás, amely a többtényezős Hitelesítést követel meg. 
 - A Mintafelhasználó a feltételes hozzáférési házirend tesztelése.  
 
 Állítsa be a szabályzat:
 
-| Beállítás | Value |
+| Beállítás | Érték |
 | --- | --- |
 | Felhasználók és csoportok | Isabella Simonsen |
 | Felhőalkalmazások | A Microsoft Azure Management |
 | Hozzáférés biztosítása | Többtényezős hitelesítés megkövetelése |
 
-![Feltételes hozzáférési szabályzat kibontva](./media/app-based-mfa/31.png)
+![Kiterjesztett feltételes hozzáférési szabályzat](./media/app-based-mfa/31.png)
 
 **A feltételes hozzáférési szabályzat konfigurálása:**
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com) globális, biztonsági vagy feltételes hozzáférés rendszergazdájaként.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) globális rendszergazdai, biztonsági rendszergazdai vagy feltételes hozzáférési rendszergazdájaként.
 
 1. Az Azure Portalon, a bal oldali navigációs sávon kattintson **Azure Active Directory**.
 
@@ -118,11 +118,11 @@ Ez a szakasz bemutatja, hogyan hozhat létre a feltételes hozzáférési szabá
 
 1. Az a **hozzáférés-vezérlés** területén kattintson **Grant**.
 
-   ![Hozzáférés-szabályozás](./media/app-based-mfa/10.png)
+   ![Hozzáférés-vezérlés](./media/app-based-mfa/10.png)
 
 1. Az a **Grant** lapon, a következő lépésekkel:
 
-   ![Hozzáférés](./media/app-based-mfa/11.png)
+   ![Támogatás](./media/app-based-mfa/11.png)
 
    1. Válassza ki **hozzáférést**.
 
@@ -132,13 +132,13 @@ Ez a szakasz bemutatja, hogyan hozhat létre a feltételes hozzáférési szabá
 
 1. Az a **házirend engedélyezése** területén kattintson **a**.
 
-   ![Házirend engedélyezése](./media/app-based-mfa/18.png)
+   ![Szabályzat engedélyezése](./media/app-based-mfa/18.png)
 
 1. Kattintson a **Create** (Létrehozás) gombra.
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Egy szimulált bejelentkezési kiértékelése
 
-Most, hogy konfigurálta a feltételes hozzáférési szabályzatot, érdemes ellenőriznie, hogy a várt módon működik-e. Első lépésként, a feltételes hozzáférés használata a Mi történik, ha a házirend eszközzel egy jelentkezzen be a tesztfelhasználó szimulálásához. A szimuláció megbecsüli a bejelentkezésnek a szabályzatokra gyakorolt hatását, és létrehoz egy szimulációs jelentést.  
+Most, hogy a feltételes hozzáférési szabályzat van beállítva, érdemes tudni, hogy a várt módon működik-e azt. Első lépésként, a feltételes hozzáférés használata a Mi történik, ha a házirend eszközzel egy jelentkezzen be a tesztfelhasználó szimulálásához. A szimuláció megbecsüli a bejelentkezésnek a szabályzatokra gyakorolt hatását, és létrehoz egy szimulációs jelentést.  
 
 A mi inicializálni a szabályzat kiértékelési eszközével, ha:
 
@@ -156,7 +156,7 @@ Kattintson a **mi történik, ha** tartalmazó szimuláció jelentést hoz létr
 
 1. Az a [feltételes hozzáférés – szabályzatok](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) lapon, a felső menüben kattintson **mi történik, ha**.  
 
-   ![What If](./media/app-based-mfa/14.png)
+   ![mi van, ha](./media/app-based-mfa/14.png)
 
 1. Kattintson a **felhasználók**válassza **Isabella Simonsen**, és kattintson a **kiválasztása**.
 
@@ -178,7 +178,7 @@ Kattintson a **mi történik, ha** tartalmazó szimuláció jelentést hoz létr
 
 1. Kattintson a **mi történik, ha**.
 
-## <a name="test-your-conditional-access-policy"></a>A feltételes hozzáférési szabályzat tesztelése
+## <a name="test-your-conditional-access-policy"></a>A feltételes hozzáférési házirend tesztelése
 
 Az előző szakaszban megtanulhatta egy szimulált bejelentkezési kiértékelése. A szimuláció mellett is érdemes tesztelnie a feltételes hozzáférési szabályzat, győződjön meg arról, hogy az elvárt módon működik.
 

@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 93386bd1fa3be88cbcdfab3d59ae07d3eb2b046d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65911922"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>A Microsoft Azure Storage ügyféloldali titkosítása és az Azure Key Vault
@@ -67,7 +67,7 @@ Egy tetszőleges címtartományt letöltése (**DownloadRange** módszerek) a ti
 
 Minden blob-típusok (blokkblobok, lapblobok és hozzáfűző blobok) is titkosítva/fejthetők vissza a séma használatával.
 
-### <a name="queues"></a>Várólisták
+### <a name="queues"></a>Üzenetsorok
 Üzenetsorbeli üzenetek esetén minden olyan a formátuma lehet, mivel az ügyféloldali kódtár, amely tartalmazza az inicializálási vektor (IV) és a titkosított tartalom titkosítási kulcs (CEK) az üzenet szövege az egyéni formátum határozza meg.
 
 Titkosítás során az ügyféloldali kódtár egy véletlenszerű IV 16 bájtos együtt egy véletlenszerű CEK 32 bájtot állít elő, és az üzenetsor üzenetszöveg ezen információk alapján boríték-titkosítást végzi. A burkolt CEK és néhány további titkosítási metaadatok ezután hozzáadódnak a titkosított üzenetsorban található üzenet. A szolgáltatás tárolja a módosított üzenet (lásd alább).

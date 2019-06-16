@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: mstephen
 ms.openlocfilehash: 1564fff8a749cc2d4db9e8e820981ba5dc1da570
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66245969"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Windows Server virtuális gépek csatlakoztatása felügyelt tartományokhoz
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan helyezhet üzembe egy Windows Server virtuális gép
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="step-1-create-a-windows-server-virtual-machine"></a>1. lépés: Hozzon létre egy Windows Server virtuális gépet
+## <a name="step-1-create-a-windows-server-virtual-machine"></a>1\. lépés: Hozzon létre egy Windows Server virtuális gépet
 A virtuális hálózatot, amelyben engedélyezte az Azure AD DS tartományhoz csatlakozó Windows virtuális gép létrehozásához tegye a következőket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
@@ -67,7 +67,7 @@ A virtuális hálózatot, amelyben engedélyezte az Azure AD DS tartományhoz cs
 10. Az üzembe helyezés befejezése után megtekintheti a virtuális Géppel kapcsolatos információkat a **áttekintése** lapot.
 
 
-## <a name="step-2-connect-to-the-windows-server-virtual-machine-by-using-the-local-administrator-account"></a>2. lépés: Csatlakozás a Windows Server virtuális gépet a helyi rendszergazdai fiók használatával
+## <a name="step-2-connect-to-the-windows-server-virtual-machine-by-using-the-local-administrator-account"></a>2\. lépés: Csatlakozás a Windows Server virtuális gépet a helyi rendszergazdai fiók használatával
 Ezután csatlakozhat a tartományhoz csatlakozni az újonnan létrehozott Windows Server virtuális gép. A virtuális gép létrehozásakor megadott, a helyi rendszergazdai hitelesítő adatok használata.
 
 A virtuális gép csatlakozik, hajtsa végre az alábbi lépéseket:
@@ -84,7 +84,7 @@ A virtuális gép csatlakozik, hajtsa végre az alábbi lépéseket:
 Ezen a ponton be kell bejelentkeznie az újonnan létrehozott Windows virtuális gépre a helyi rendszergazdai hitelesítő adataival. A következő lépés, hogy a virtuális gép csatlakoztatása a tartományhoz.
 
 
-## <a name="step-3-join-the-windows-server-virtual-machine-to-the-azure-ad-ds-managed-domain"></a>3. lépés: A Windows Server virtuális gép csatlakoztatása az Azure AD DS által felügyelt tartományhoz
+## <a name="step-3-join-the-windows-server-virtual-machine-to-the-azure-ad-ds-managed-domain"></a>3\. lépés: A Windows Server virtuális gép csatlakoztatása az Azure AD DS által felügyelt tartományhoz
 A Windows Server virtuális gép csatlakoztatása az Azure AD DS által felügyelt tartományhoz, a következő lépéseket:
 
 1. A Windows Server rendszerű virtuális gépek csatlakozni, ahogyan az "2. lépés." Az a **Start** nyissa meg **Kiszolgálókezelő**.

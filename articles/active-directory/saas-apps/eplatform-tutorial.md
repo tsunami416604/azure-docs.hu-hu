@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 5b73712e114b3542caa5aa05570d509c93df019e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 61946f77ddffe999e55acd09e3957d91c621492b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60280043"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67103238"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-eplatform"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező ePlatform
 
@@ -52,7 +52,7 @@ Az Azure AD integrálása a ePlatform konfigurálásához hozzá kell ePlatform 
 
 **EPlatform hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -125,7 +125,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés ePlatform, hajtsa v�
 
     | Name (Név) | Adatforrás-attribútum |
     | ---------------| --------------- |
-    | egyszerű felhasználónév | user.userprincipalname |
+    | upn | user.userprincipalname |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 

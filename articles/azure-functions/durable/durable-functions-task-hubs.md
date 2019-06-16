@@ -8,14 +8,13 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-origin.date: 12/07/2017
-ms.date: 02/21/2019
-ms.author: v-junlch
+ms.date: 12/07/2017
+ms.author: azfuncdf
 ms.openlocfilehash: 596eedab39ff926fcdc880c82c49ac464b7ff23b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60730267"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Feladatközpontok a tartós függvények (az Azure Functions)
@@ -30,11 +29,11 @@ Ha több függvényalkalmazás ossza meg egy tárfiókot minden függvényalkalm
 
 Egy feladat hub a következő tároló-erőforrások áll:
 
-- Egy vagy több vezérlő üzenetsorok.
-- Egy munkaelem várólistát.
-- Egy előzménytábla.
-- Példányok egy olyan táblát.
-- Egy storage-tárolót tartalmazó egy vagy több bérletet blobot.
+* Egy vagy több vezérlő üzenetsorok.
+* Egy munkaelem várólistát.
+* Egy előzménytábla.
+* Példányok egy olyan táblát.
+* Egy storage-tárolót tartalmazó egy vagy több bérletet blobot.
 
 Összes ilyen erőforrásról jönnek létre automatikusan az alapértelmezett Azure Storage-fiókban az orchestrator vagy tevékenység függvények futtatása vagy ütemezésére. A [teljesítmény és méretezhetőség](durable-functions-perf-and-scale.md) a cikk azt ismerteti, hogyan használhatók a ezeket az erőforrásokat.
 
@@ -141,5 +140,3 @@ A feladat értesítésiközpont-nevek kell betűvel kezdődhet, és csak betűkb
 
 > [!div class="nextstepaction"]
 > [Ismerje meg, hogyan kezelje a verziókezelés](durable-functions-versioning.md)
-
-<!-- Update_Description: wording update -->

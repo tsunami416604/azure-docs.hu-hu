@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: raynew
 ms.openlocfilehash: 354a68d7d4d07657baa7044566dde8b7ed77ca63
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66400069"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Fizikai kiszolgáló Azure vész-helyreállítási architektúra
@@ -69,9 +69,9 @@ Miután replikáció be van állítva, és futtatott egy vészhelyreállítási 
     - **Feladat-visszavételi szabályzat**: A helyszíni helyre történő újbóli replikáláshoz, egy feladat-visszavételi szabályzatra van szükség. Ez automatikusan hozott létre, a replikációs házirend létrehozva a helyszínről az Azure-bA.
     - **VMware-infrastruktúra**: Feladat-visszavétel VMware-infrastruktúrára van szükség. Fizikai kiszolgáló nem használható a feladat-visszavételhez.
 - Miután az összetevő a következő helyen, feladat-visszavétel három lépésben történik:
-    - 1. fázis: Az Azure virtuális gépek ismételt védelme, így azok replikálása az Azure-ból a helyszíni VMware virtuális gépek vissza a.
-    - 2. fázis: Feladatátvétel futtatása a helyszíni helyre.
-    - 3. fázis: Számítási feladatok sikertelenek voltak vissza, miután újból engedélyezi a replikációt.
+    - 1\. fázis: Az Azure virtuális gépek ismételt védelme, így azok replikálása az Azure-ból a helyszíni VMware virtuális gépek vissza a.
+    - 2\. fázis: Feladatátvétel futtatása a helyszíni helyre.
+    - 3\. fázis: Számítási feladatok sikertelenek voltak vissza, miután újból engedélyezi a replikációt.
 
 **VMware-feladat-visszavétel az Azure-ból**
 

@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e641025d49dd42125aa692925c0697235489b1db
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 2b3f4cf4099459b655fc0e370935ddc8079de810
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66307152"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073943"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Hitelesítés és engedélyezés az Azure térbeli horgonyokra mutató
 
@@ -56,7 +56,7 @@ Miután ez megtörtént, az SDK-t az exchange, a hozzáférési token-fiók kulc
 
 ## <a name="azure-ad-user-authentication"></a>Az Azure AD-felhasználói hitelesítés
 
-Alkalmazások Azure Active Directory-felhasználók, az ajánlott módszer az Azure AD-token használatára a felhasználó számára, amely szerezheti be az ADAL-kódtár használatával, a következő dokumentációban ismertetett módon: https://docs.microsoft.com/azure/active-directory/develop/v1-overview; kövesse a felsorolt lépéseket a "Gyors kezdődik" többek között:
+Alkalmazások Azure Active Directory-felhasználók, az ajánlott módszer az Azure AD-token használatára a felhasználó számára, amely szerezheti be az ADAL-kódtár használatával, a következő dokumentációban ismertetett módon: [ https://docs.microsoft.com/azure/active-directory/develop/v1-overview ](../../active-directory/develop/v1-overview.md); érdemes a következő lépésekkel a "Gyors kezdődik", többek között:
 
 1. Konfiguráció az Azure Portalon
     1.  Az alkalmazás regisztrálása az Azure AD szolgáltatásba **natív alkalmazás**. Regisztrálás részeként kell meghatározni e az alkalmazás több-bérlős kell-e, és adja meg az átirányítási URL-címek engedélyezett az alkalmazás.  
@@ -89,7 +89,7 @@ Azure térbeli horgonyok kihasználva éles alkalmazások központi telepítése
 
 Itt azt feltételezzük, hogy az alkalmazás a saját mechanizmust használ (például: Microsoft-fiókkal, a PlayFab, a Facebook, Google-azonosító, egyéni felhasználónév/jelszó stb.) a háttérszolgáltatás hitelesítésre. Miután a felhasználók hitelesítése a háttérszolgáltatásban szolgáltatás lekérő Azure AD-token Azure térbeli horgonyok a hozzáférési jogkivonatot az exchange, és térjen vissza az ügyfélalkalmazásban.
 
-Az Azure AD hozzáférési jogkivonatot lekéri az ADAL-kódtár használatával, a következő dokumentációban ismertetett módon: https://docs.microsoft.com/azure/active-directory/develop/v1-overview; meg kell a következő lépésekkel a "Gyors kezdődik", többek között:
+Az Azure AD hozzáférési jogkivonatot lekéri az ADAL-kódtár használatával, a következő dokumentációban ismertetett módon: [ https://docs.microsoft.com/azure/active-directory/develop/v1-overview ](../../active-directory/develop/v1-overview.md); meg kell a következő lépésekkel a "Gyors kezdődik", többek között:
 
 1.  Az Azure portal-konfiguráció:
     1.  Az alkalmazás regisztrálása az Azure ad-ben:

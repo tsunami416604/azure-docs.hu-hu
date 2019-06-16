@@ -1,21 +1,21 @@
 ---
 title: Ellenszolgáltatás pontszám - Personalizer
 titleSuffix: Azure Cognitive Services
-description: A ellenszolgáltatás pontszám azt jelzi, hogy mennyire a személyre szabás tetszőleges RewardActionID, a felhasználó járt. A ellenszolgáltatás pontszám értéke határozza meg az üzleti logikát, és megfigyelik a felhasználói viselkedés alapján. Personalizer, a machine learning-modellek betanítja a felhőtechnológia kiértékelése.
+description: A ellenszolgáltatás pontszám azt jelzi, hogy mennyire a személyre szabás tetszőleges RewardActionID, a felhasználó járt. A ellenszolgáltatás pontszám értéke határozza meg az üzleti logikát, és megfigyelik a felhasználói viselkedés alapján. Personalizer betanítja a gépi tanulási modellek által a felhőtechnológia kiértékelése.
 services: cognitive-services
 author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 05/13/2019
+ms.date: 06/07/2019
 ms.author: edjez
-ms.openlocfilehash: 302f1e18a23bdef9247693f84d3a924370b63f80
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: c64d43301fd173203bd1625b8d37120b71c22805
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244236"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077415"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Ellenszolgáltatás-hoz közeliek sikeres személyre szabása
 
@@ -30,6 +30,18 @@ Jutalmakat Personalizer által küldött a [ellenszolgáltatás API](https://doc
 Jutalmakat érkeznek, miután a felhasználó viselkedését történt, amely nappal később lehet. A legfeljebb ennyi idő Personalizer várakozik, amíg az esemény nem ellenszolgáltatás szerkezetűnek tekinthető, vagy egy alapértelmezett fejében van konfigurálva a [ellenszolgáltatás várakozási idő](#reward-wait-time) az Azure Portalon.
 
 Ha az adott esemény ellenszolgáltatás pontszám még nem érkezett meg a **ellenszolgáltatás várakozási idő**, akkor a **alapértelmezett ellenszolgáltatás** lépnek érvénybe. Általában a **[alapértelmezett ellenszolgáltatás](how-to-settings.md#configure-reward-settings-for-the-feedback-loop-based-on-use-case)** nullának van konfigurálva.
+
+
+## <a name="behaviors-and-data-to-consider-for-rewards"></a>Viselkedéseket és a felhőtechnológia fontolja meg az adatokat
+
+Vegye figyelembe ezeket a jelek és viselkedések ellenszolgáltatás az eredmény a környezet:
+
+* Ha a beállítás a felhasználói bevitel javaslatokért közvetlen ("erre gondolt X?").
+* Munkamenetek hossza.
+* Munkamenetek közötti ideje.
+* Vélemények elemzése a felhasználói tevékenységeket.
+* Kérdések és mini felmérések, ahol a robot megkérdezi a felhasználót, visszajelzést hasznosságát, pontosságának kapcsolatos közvetlen.
+* Válasz a riasztásokat, vagy riasztás késleltetést.
 
 ## <a name="composing-reward-scores"></a>Ellenszolgáltatás pontszámok összeállítása
 

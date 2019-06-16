@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 3ceaed2b1e27a1f5b910865f6e9d0e70ef347b71
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fbe6fe25b5ff0cd5148e3bba22dec4648399510d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60515396"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072306"
 ---
 # <a name="webhooks-for-speech-services"></a>Webhookok az beszédszolgáltatások
 
@@ -39,7 +39,7 @@ Következő lépésként hozzunk létre egy webhook.
 
 Hozzunk létre egy webhookot az-offline beszédátírási. A forgatókönyv: egy felhasználó egy hosszú ideig futó hangfájl, amelyek szeretnék lefényképezze aszinkron módon történik a Batch Beszédátírási API-val rendelkezik. 
 
-A web hook POST https:// létrehozása<region>.cris.ai/api/speechtotext/v2.1/transcriptions/hooks
+Egy POST kérést a https:// Webhookokat hozhat létre\<régió\>.cris.ai/api/speechtotext/v2.1/transcriptions/hooks.
 
 A kérelem konfigurációs paramétereket JSON-fájlként áll rendelkezésre:
 
@@ -136,7 +136,7 @@ Egy POST kérést küld a regisztrált URL-címet, ha az előfizetett esemény t
 
 Gyors teszteléséhez teheti meg az webhelyen https://bin.webhookrelay.com. Innen szerezheti be hívás URL-címek paraméterként átadni egy webhookot, a dokumentum a korábban ismertetett létrehozásához a HTTP POST használatával biztonsági másolatot.
 
-Kattintson a gyűjtő létrehozása, és kövesse a képernyőn megjelenő egy hook beszerzésére vonatkozó utasításokat. Ezen a lapon található információk segítségével regisztrálja a hook a Speech szolgáltatással. A továbbítási hasznos üzenet - válaszul beszédátírási keresi befejezése után a következő:
+Kattintson a gyűjtő létrehozása, és kövesse a képernyőn megjelenő egy hook beszerzésére vonatkozó utasításokat. Ezen a lapon található információk segítségével regisztrálja a hook a Speech szolgáltatással. A továbbítási üzenet – válasz egy beszédátírási megvalósításának – hasznos a következőképpen néz ki:
 
 ```json
 {

@@ -9,14 +9,14 @@ ms.date: 07/30/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: e4d20cd39d2a843ee1ab57a412ac668b3495fdb1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66146991"
 ---
 >[!NOTE]
->2018. július 1-től az Azure VPN Gatewayből el lett távolítva a TLS 1.0 és 1.1 támogatása. Ettől kezdve az Azure VPN Gateway csak a TLS 1.2-es verzióját támogatja. Támogatás fenntartásához, tekintse meg a [TLS1.2 támogatásának engedélyezéséhez frissítések](#tls1).
+>2018\. július 1-től az Azure VPN Gatewayből el lett távolítva a TLS 1.0 és 1.1 támogatása. Ettől kezdve az Azure VPN Gateway csak a TLS 1.2-es verzióját támogatja. Támogatás fenntartásához, tekintse meg a [TLS1.2 támogatásának engedélyezéséhez frissítések](#tls1).
 
 Ezenkívül a következő örökölt algoritmusok is elavulttá válik a TLS 2018. július 1.:
 

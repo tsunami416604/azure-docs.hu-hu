@@ -12,10 +12,10 @@ ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
 ms.openlocfilehash: c7f5fda405ca0e5ba9cf1dd0ed44c47cd3ee74b1
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65949860"
 ---
 #   <a name="text-split-cognitive-skill"></a>Szöveg felosztása cognitive szakértelem
@@ -32,7 +32,7 @@ Microsoft.Skills.Text.SplitSkill
 
 A paraméterei a kis-és nagybetűket.
 
-| Paraméternév     | Leírás |
+| Paraméter neve     | Leírás |
 |--------------------|-------------|
 | textSplitMode      | "Lapok" vagy "mondatok" | 
 | maximumPageLength | Ha textSplitMode "lapok" értékre van állítva, ez vonatkozik a mért maximális hossza `String.Length`. A minimális érték 100.  Ha a textSplitMode "lapok" értékre van állítva, az algoritmus megpróbálja a szöveg felosztása adattömbökre, amelyek mérete legfeljebb "maximumPageLength". Ebben az esetben az algoritmus fog tenni a lehető legjobb megáll a mondat mondat határok, így az adatrészlet méretének lehet valamivel kisebb, mint "maximumPageLength". | 
@@ -41,14 +41,14 @@ A paraméterei a kis-és nagybetűket.
 
 ## <a name="skill-inputs"></a>Ismeretek bemenetek
 
-| Paraméternév       | Leírás      |
+| Paraméter neve       | Leírás      |
 |----------------------|------------------|
-| text  | Szöveg felosztása karakterláncrészletet. |
+| szöveg  | Szöveg felosztása karakterláncrészletet. |
 | languageCode  | (Nem kötelező) A dokumentum nyelvkód.  |
 
 ## <a name="skill-outputs"></a>Ismeretek kimenetek 
 
-| Paraméternév     | Leírás |
+| Paraméter neve     | Leírás |
 |--------------------|-------------|
 | textItems | Egy tömb, amely a könyvtárban találhatók karakterláncrészletek. |
 

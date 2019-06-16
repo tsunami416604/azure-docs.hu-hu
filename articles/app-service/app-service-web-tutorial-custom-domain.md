@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/06/201
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1b43463537f620eb59f78184de41ec37c26b97ed
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: 89034b04c6b38c0873f890e55693c6e15e6a8d93
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66742836"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069398"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Oktatóanyag: Meglévő egyéni DNS-név leképezése az Azure App Service-ben
 
@@ -68,7 +68,7 @@ A bal oldali menüben válassza az **App Services** lehetőséget, majd válassz
 
 Megjelenik az App Service-alkalmazás felügyeleti oldala.  
 
-<a name="checkpricing"></a>
+<a name="checkpricing" aria-hidden="true"></a>
 
 ### <a name="check-the-pricing-tier"></a>A tarifacsomag ellenőrzése
 
@@ -82,7 +82,7 @@ Az alkalmazás jelenlegi tarifacsomagja kék szegéllyel van kiemelve. Győződj
 
 Ha az App Service-csomag nem az **F1** szinten van, zárja be a **Vertikális felskálázás** oldalt és folytassa a [CNAME rekord leképezése](#cname) lépéssel.
 
-<a name="scaleup"></a>
+<a name="scaleup" aria-hidden="true"></a>
 
 ### <a name="scale-up-the-app-service-plan"></a>Az App Service-csomag vertikális felskálázása
 
@@ -96,7 +96,7 @@ Amikor megjelenik a következő értesítés, a skálázási művelet befejeződ
 
 ![Skálázási művelet megerősítése](./media/app-service-web-tutorial-custom-domain/scale-notification.png)
 
-<a name="cname"></a>
+<a name="cname" aria-hidden="true"></a>
 
 ## <a name="map-your-domain"></a>Saját tartomány leképezése
 
@@ -162,7 +162,7 @@ Ha kihagyott egy lépést, vagy korábban valamit elgépelt, egy ellenőrzési h
 
 ![Ellenőrzési hiba](./media/app-service-web-tutorial-custom-domain/verification-error-cname.png)
 
-<a name="a"></a>
+<a name="a" aria-hidden="true"></a>
 
 ### <a name="map-an-a-record"></a>A rekord hozzárendelése
 
@@ -213,7 +213,7 @@ A rekordok hozzáadása után a DNS-rekordok oldala a következő példához has
 
 ![DNS-rekordok oldala](./media/app-service-web-tutorial-custom-domain/a-record.png)
 
-<a name="enable-a"></a>
+<a name="enable-a" aria-hidden="true"></a>
 
 #### <a name="enable-the-a-record-mapping-in-the-app"></a>Az A rekord hozzárendelésének engedélyezése az alkalmazásban
 
@@ -246,7 +246,7 @@ Ha kihagyott egy lépést, vagy korábban valamit elgépelt, egy ellenőrzési h
 
 ![Ellenőrzési hiba](./media/app-service-web-tutorial-custom-domain/verification-error.png)
 
-<a name="wildcard"></a>
+<a name="wildcard" aria-hidden="true"></a>
 
 ### <a name="map-a-wildcard-domain"></a>Helyettesítő karaktert tartalmazó tartomány hozzárendelése
 
@@ -310,7 +310,7 @@ Ha HTTP 404-es (nem található) hiba történik az egyéni tartomány URL-cím�
 - A konfigurált egyéni tartományból hiányzik egy A rekord és/vagy egy CNAME rekord.
 - A böngészőügyfél gyorsítótárazta a tartomány régi IP-címét. Ürítse ki a gyorsítótárat, és tesztelje ismét a DNS-feloldást. Windows-gépen az `ipconfig /flushdns` paranccsal törölheti a gyorsítótárat.
 
-<a name="virtualdir"></a>
+<a name="virtualdir" aria-hidden="true"></a>
 
 ## <a name="migrate-an-active-domain"></a>Aktív tartomány migrálása
 
@@ -326,7 +326,7 @@ A lap alján, a virtuális gyökérkönyvtár (`/`) alapértelmezés szerint a `
 
 ![A virtuális könyvtár testreszabása](./media/app-service-web-tutorial-custom-domain/customize-virtual-directory.png)
 
-A művelet befejezése után az alkalmazás a megfelelő oldalt adja vissza a gyökérútvonalon (például http://contoso.com)).
+A művelet befejezése után az alkalmazás a megfelelő oldalt adja vissza a gyökérútvonalon (például http://contoso.com) ).
 
 ## <a name="automate-with-scripts"></a>Automatizálás szkriptekkel
 

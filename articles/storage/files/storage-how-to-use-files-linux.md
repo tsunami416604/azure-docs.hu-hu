@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 375d0de60b916becc8e86a1e33cf4ed46f12c077
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: e9363f88db4fa44879eb8f6a6a04e23563c5ba44
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754833"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67125731"
 ---
 # <a name="use-azure-files-with-linux"></a>Az Azure Files használata Linux rendszerrel
 
@@ -34,22 +34,22 @@ Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használhat
 
     SMB 3.0 titkosítás támogatása a Linux kernel verziója 4.11 jelent meg, és a népszerű Linux-disztribúciókra vonatkozó régebbi kernel-verzióknál backported lett. Ez a dokumentum közzétételének időpontjában a következő disztribúciók az Azure-katalógusból támogatja a csatlakoztatáshoz szükséges beállítás van megadva a tábla fejléceit az. 
 
-* **Minimális ajánlott verzió a megfelelő csatlakozási képességeit (2.1 vagy SMB 3.0-s verziójú SMB-verzió)**    
+### <a name="minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30"></a>Minimális ajánlott verzió a megfelelő csatlakozási képességeit (2.1 vagy SMB 3.0-s verziójú SMB-verzió)
 
-    |   | SMB 2.1 <br>(Csatlakoztatása a virtuális gépek ugyanazon Azure-régióban) | SMB 3.0 <br>(Csatlakoztatása a helyszíni, a régiók közötti) |
-    | --- | :---: | :---: |
-    | Ubuntu Server | 14.04+ | 16.04+ |
-    | RHEL | 7+ | 7.5+ |
-    | CentOS | 7+ |  7.5+ |
-    | Debian | 8+ |   |
-    | openSUSE | 13.2+ | 42.3+ |
-    | SUSE Linux Enterprise Server | 12 | 12 SP3 + |
+|   | SMB 2.1 <br>(Csatlakoztatása a virtuális gépek ugyanazon Azure-régióban) | SMB 3.0 <br>(Csatlakoztatása a helyszíni, a régiók közötti) |
+| --- | :---: | :---: |
+| Ubuntu Server | 14.04+ | 16.04+ |
+| RHEL | 7+ | 7.5+ |
+| CentOS | 7+ |  7.5+ |
+| Debian | 8+ |   |
+| openSUSE | 13.2+ | 42.3+ |
+| SUSE Linux Enterprise Server | 12 | 12 SP3 + |
 
-    Ha a Linux-disztribúció nem szerepel itt, akkor ellenőrizheti, hogy a Linux kernel verziója a következő paranccsal:
+Ha a Linux-disztribúció nem szerepel itt, akkor ellenőrizheti, hogy a Linux kernel verziója a következő paranccsal:
 
-   ```bash
-   uname -r
-   ```
+```bash
+uname -r
+```
 
 * <a id="install-cifs-utils"></a>**A cifs-utils csomag telepítve van.**  
     A cifs-utils csomag is telepíthető a használata a Csomagkezelőt a Linux-disztribúció. 
@@ -75,7 +75,7 @@ Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használhat
 
     Más disztribúciókon, használja a megfelelő Csomagkezelő vagy [összeállítása forrásból](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download)
 
-* **A csatlakoztatott megosztást könyvtár engedélyeinek vonatkozó**: A példákban az engedélyt az alábbi `0777` van segítségével adjon olvasási, írási és végrehajtási engedélyek minden felhasználó számára. Más lecserélheti [chmod engedélyek](https://en.wikipedia.org/wiki/Chmod) igény szerint, azonban ez azt jelenti, hogy vélhetően a hozzáférés korlátozása. Ha más engedélyeket használ, érdemes is használ a felhasználó- és csoportazonosító, hogy a kiválasztott helyi csoportok továbbra is.
+* **A csatlakoztatott megosztást könyvtár engedélyeinek vonatkozó**: A példákban az engedélyt az alábbi `0777` van segítségével adjon olvasási, írási és végrehajtási engedélyek minden felhasználó számára. Más lecserélheti [chmod engedélyek](https://en.wikipedia.org/wiki/Chmod) igény szerint, azonban ez azt jelenti, hogy vélhetően a hozzáférés korlátozása. Ha más engedélyeket használ, érdemes is használ a felhasználó- és csoportazonosító, hogy továbbra is a helyi felhasználók és csoportok tetszőleges.
 
 > [!NOTE]
 > Ha explicit módon nem rendel dir_mode és file_mode könyvtárat és fájlnevet engedéllyel, akkor alapértelmezés szerint 0755.

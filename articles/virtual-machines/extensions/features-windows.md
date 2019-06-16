@@ -17,10 +17,10 @@ ms.date: 03/30/2018
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ce13f053c2adee6a9a347a4162b60cc6d6b40eda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66160277"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Virtuálisgép-bővítmények és szolgáltatások Windows
@@ -62,7 +62,7 @@ Annak érdekében, hogy a lehető legjobb élményt, vannak az ügynök minimál
 A Windows vendégügynöke futtat több OSE-kre, azonban a bővítmények keretrendszer van korlátozva a OSE-kre vonatkozó adott bővítmények. További információkért tekintse meg [ezt a cikket](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
 ).
 
-Néhány bővítmény nem támogatja az összes OSE-kre között, és bocsáthat *hiba kódja 51, a "Nem támogatott operációs rendszer"*. Támogatási lehetőségek az egyes bővítmény dokumentációjában.
+Néhány bővítmény nem támogatja az összes OSE-kre között, és bocsáthat *hiba kódja 51, a "Nem támogatott operációs rendszer"* . Támogatási lehetőségek az egyes bővítmény dokumentációjában.
 
 #### <a name="network-access"></a>Hálózati hozzáférés
 
@@ -260,7 +260,7 @@ Az ügynökök és a bővítmények ossza meg az azonos frissítési mechanizmus
 Ha egy frissítés érhető el, csak telepíti a rendszer a virtuális gépen, és megváltoznak a bővítmények és más virtuális gép adatmodell változásainak, mint például:
 
 - Adatlemezek
-- Kiterjesztések
+- Bővítmények
 - Rendszerindítási diagnosztika tároló
 - Vendég-operációsrendszer titkok
 - Virtuális gép mérete
@@ -291,7 +291,7 @@ Ellenőrizze, melyik verzióját használja, lásd: [e telepítve a Windows Vend
 
 #### <a name="extension-updates"></a>Bővítmény-frissítések
 
-Bővítmény frissítés érhető el, ha a Windows Vendégügynöke tölti le, és frissíti a bővítményt. Frissítések automatikus bővítmény kiadásokhoz *kisebb* vagy *gyorsjavítás*. Engedélyezve van a hibajelentések, vagy tilthatják le az bővítmények *kisebb* frissíti, amikor üzembe helyezi a bővítményt. A következő példa bemutatja, hogyan automatikus frissítése a Resource Manager-sablonnal rendelkező alverziót *autoUpgradeMinorVersion ": true,"*:
+Bővítmény frissítés érhető el, ha a Windows Vendégügynöke tölti le, és frissíti a bővítményt. Frissítések automatikus bővítmény kiadásokhoz *kisebb* vagy *gyorsjavítás*. Engedélyezve van a hibajelentések, vagy tilthatják le az bővítmények *kisebb* frissíti, amikor üzembe helyezi a bővítményt. A következő példa bemutatja, hogyan automatikus frissítése a Resource Manager-sablonnal rendelkező alverziót *autoUpgradeMinorVersion ": true,"* :
 
 ```json
     "properties": {
@@ -368,7 +368,7 @@ Az alábbi hibaelhárítási lépéseket az összes Virtuálisgép-bővítménye
 
 ### <a name="view-extension-status"></a>Bővítmény állapotának megtekintése
 
-VM-bővítmény virtuális gépek elleni futott, miután a [Get-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) a bővítmény állapotát adja vissza. *[0] részállapotok* azt mutatja, hogy a bővítmény kiépítési sikeres volt, ami azt jelenti, hogy a virtuális gép központi telepítése sikeres azt, de a bővítményt a virtuális gép végrehajtása sikertelen volt, *részállapotok [1]*.
+VM-bővítmény virtuális gépek elleni futott, miután a [Get-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) a bővítmény állapotát adja vissza. *[0] részállapotok* azt mutatja, hogy a bővítmény kiépítési sikeres volt, ami azt jelenti, hogy a virtuális gép központi telepítése sikeres azt, de a bővítményt a virtuális gép végrehajtása sikertelen volt, *részállapotok [1]* .
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status

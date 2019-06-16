@@ -4,12 +4,12 @@ ms.service: azure
 ms.topic: include
 ms.date: 05/31/2019
 ms.author: sttramer
-ms.openlocfilehash: 53810e8d3cad73b35514beab75d8f65d0ca3b3d5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4a52041f773529c2a72c8019da27d56f98b6b53d
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051098"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147460"
 ---
 ## <a name="open-azure-cloud-shell"></a>Az Azure Cloud Shell megnyitása
 
@@ -22,5 +22,5 @@ Az Azure Cloud Shell indíthatja el:
 | Beállítás | Példa vagy kapcsolat |
 |-----------------------------------------------|---|
 | Kattintson a **Kipróbálás** elemre egy kódblokk jobb felső sarkában. Ez __nem__ automatikusan szöveget másol a Cloud Shellben. | ![Példa próbálja ki az Azure Cloud Shell](./media/cloud-shell-try-it/cli-try-it.png) |
-| Nyissa meg [Azure Cloud Shell](https://shell.azure.com) a böngészőben. | <a href="https://shell.azure.com" title="Az Azure Cloud Shell indítása"><img src="https://docs.microsoft.com/azure/includes/media/cloud-shell-try-it/launchcloudshell.png" /></a> |
+| Nyissa meg [Azure Cloud Shell](https://shell.azure.com) a böngészőben. | <a href="https://shell.azure.com" title="Az Azure Cloud Shell indítása"><img name="launch-cloud-shell" src="https://docs.microsoft.com/azure/includes/media/cloud-shell-try-it/launchcloudshell.png" /></a> |
 | Az [Azure Portal](https://portal.azure.com) jobb felső sarkában található menüben kattintson a **Cloud Shell** gombra. | ![Cloud Shell gomb a Microsoft Azure Portal-on](./media/cloud-shell-try-it/cloud-shell-menu.png) |

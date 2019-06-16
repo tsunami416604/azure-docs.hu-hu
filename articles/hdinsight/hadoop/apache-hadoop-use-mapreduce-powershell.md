@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: hrasheed
-ms.openlocfilehash: 29e23d5919a953566c803f2b7825a75a2993723c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2ba8ab07edc4fd036b82c97f0ae3fb565d5eed72
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721788"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078399"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>Az Apache Hadoop MapReduce feladatok futtatása HDInsight PowerShell használatával
 
@@ -26,9 +26,6 @@ Ez a dokumentum azt szemlélteti, egy MapReduce-feladatot futtatni a Hadoop HDIn
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * **Egy Azure HDInsight (Hadoop on HDInsight)-fürt**
-
-  > [!IMPORTANT]  
-  > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * **Munkaállomás Azure PowerShell-lel**.
 

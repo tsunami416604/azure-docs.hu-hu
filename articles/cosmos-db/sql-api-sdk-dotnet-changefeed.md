@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
 ms.openlocfilehash: 2a4d636ccb03e36f7c495f3c10c90033d7c3c93c
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66417918"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET-módosítási hírcsatorna SDK processzor: Töltse le és kibocsátási megjegyzések
@@ -170,20 +170,20 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
-| [2.2.7](#2.2.7) |2019. Május 14. |--- |
-| [2.2.6](#2.2.6) |2019. január 29. |--- |
-| [2.2.5](#2.2.5) |2018. december 13. |--- |
+| [2.2.7](#2.2.7) |2019\. Május 14. |--- |
+| [2.2.6](#2.2.6) |2019\. január 29. |--- |
+| [2.2.5](#2.2.5) |2018\. december 13. |--- |
 | [2.2.4](#2.2.4) |November 29, 2018 |--- |
-| [2.2.3](#2.2.3) |2018. november 19. |--- |
-| [2.2.2](#2.2.2) |2018. október 31-ig. |--- |
-| [2.2.1](#2.2.1) |2018. október 24. |--- |
+| [2.2.3](#2.2.3) |2018\. november 19. |--- |
+| [2.2.2](#2.2.2) |2018\. október 31-ig. |--- |
+| [2.2.1](#2.2.1) |2018\. október 24. |--- |
 | [1.3.3](#1.3.3) |08 2018. május |--- |
-| [1.3.2](#1.3.2) |2018. április 18. |--- |
-| [1.3.1](#1.3.1) |2018. március 13. |--- |
-| [1.2.0](#1.2.0) |2017. október 31. |--- |
-| [1.1.1](#1.1.1) |2017. augusztus 29-én |--- |
-| [1.1.0](#1.1.0) |2017. augusztus 13. |--- |
-| [1.0.0](#1.0.0) |2017. július 07. |--- |
+| [1.3.2](#1.3.2) |2018\. április 18. |--- |
+| [1.3.1](#1.3.1) |2018\. március 13. |--- |
+| [1.2.0](#1.2.0) |2017\. október 31. |--- |
+| [1.1.1](#1.1.1) |2017\. augusztus 29-én |--- |
+| [1.1.0](#1.1.0) |2017\. augusztus 13. |--- |
+| [1.0.0](#1.0.0) |2017\. július 07. |--- |
 
 ## <a name="faq"></a>GYIK
 

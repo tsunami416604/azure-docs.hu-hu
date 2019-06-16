@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d0295162acdf358bd798e86bd7d3479f5e78d72
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: eded8eb446d36a321acf46231eee3e764ba41504
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407908"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088447"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TOPdesk – biztonságos
 
@@ -53,7 +53,7 @@ Biztonságos TOPdesk - integrációjának konfigurálása az Azure AD-be kell TO
 
 **TOPdesk - hozzáadása a katalógusból biztonságos, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -178,13 +178,13 @@ TOPdesk – az Azure AD egyszeri bejelentkezés konfigurálása biztonságos, ha
 
     a. Az Azure Portalról letöltött metaadatfájl feltöltése a **összevonási metaadatok**, kattintson a **Tallózás**.
 
-    b. A feltölteni a tanúsítványfájlt, **tanúsítvány (RSA)**, kattintson a **Tallózás**.
+    b. A feltölteni a tanúsítványfájlt, **tanúsítvány (RSA)** , kattintson a **Tallózás**.
 
-    c. A **titkos kulcs (RSA, PKCS8, DER)**, feltöltheti saját titkos kulcs, vagy felveheti a kapcsolatot [TOPdesk – biztonságos ügyfél-támogatási csapatának](https://www.topdesk.com/us/support) beolvasni a titkos kulcsot.
+    c. A **titkos kulcs (RSA, PKCS8, DER)** , feltöltheti saját titkos kulcs, vagy felveheti a kapcsolatot [TOPdesk – biztonságos ügyfél-támogatási csapatának](https://www.topdesk.com/us/support) beolvasni a titkos kulcsot.
 
     d. A kapott az TOPdesk ügyfélszolgálathoz alatt embléma fájlt feltölteni **embléma ikon**, kattintson a **Tallózás**.
 
-    e. Az a **felhasználói név attribútum** szövegmezőbe írja be `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    e. Az a **felhasználói név attribútum** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
     f. Az a **megjelenítendő név** szövegmezőbe írja be a konfiguráció nevét.
 
@@ -271,7 +271,7 @@ Esetén TOPdesk – biztonságos, kiépítés a manuális feladat.
 > [!NOTE]
 > Bármely más TOPdesk – biztonságos felhasználói fiók létrehozása eszközök vagy TOPdesk – biztonságos AAD felhasználói fiókok kiépítése által nyújtott API-kat is használhat.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

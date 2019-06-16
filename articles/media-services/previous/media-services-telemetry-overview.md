@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 8e8b493881662483e66dd835d1cc68a471b18454
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60545520"
 ---
 # <a name="azure-media-services-telemetry"></a>Az Azure Media Services-telemetria  
@@ -103,13 +103,13 @@ Időbélyeg|Időbélyeg|Automatikus időbélyeg Azure Table 2016-09-09T22:43:42.
 Típus|Típus|StreamingEndpoint
 Name (Név)|Name (Név)|StreamingEndpointRequestLog
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
-ServiceID|Szolgáltatás azonosítója|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
+ServiceID|Service ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 Állomásnév|A végpont állomásneve|builddemoserver.origin.mediaservices.windows.net
 StatusCode|Rögzíti a HTTP-állapot|200
 Eredménykód|Eredmény kódja részletei|S_OK
 RequestCount|Ilyenkor az összesítést a kérelmek száma összesen|3
 BytesSent|Küldött bájtok összesített száma|2987358
-Kiszolgáló késése|Kiszolgáló átlagos késése (tárolóval együtt)|129
+ServerLatency|Kiszolgáló átlagos késése (tárolóval együtt)|129
 E2ELatency|Átlagos végpontok közötti késés|250
 
 **Élő csatorna**
@@ -122,7 +122,7 @@ Időbélyeg|Időbélyeg|Automatikus időbélyege az Azure-tábla 2016-09-09T22:4
 Típus|Típus|Csatorna
 Name (Név)|Name (Név)|ChannelHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
-ServiceID|Szolgáltatás azonosítója|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
+ServiceID|Service ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 TrackType|Írja be a videó vagy hang/szöveg nyomon követése|a videó vagy hang
 TrackName|A track neve|a videó/audio_1
 Átviteli sebesség|Sávszélességű nyomon követése|785000
@@ -147,7 +147,7 @@ Időbélyeg|Időbélyeg|Automatikus időbélyege az Azure-tábla 2016-09-09T22:4
 Típus|Típus|Archívum
 Name (Név)|Name (Név)|ArchiveHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
-ServiceID|Szolgáltatás azonosítója|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
+ServiceID|Service ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 manifestName|Program URL-címe|asset-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4bd2-8c01-a92a2b38c9ba.ism
 TrackName|A track neve|audio_1
 TrackType|A szám típus|Hang/kép
