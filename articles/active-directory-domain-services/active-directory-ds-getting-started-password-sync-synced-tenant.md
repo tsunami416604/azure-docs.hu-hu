@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: mstephen
 ms.openlocfilehash: 37bcdcd304f702f210e755f45af71b2da10bd6e1
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66234871"
 ---
 # <a name="enable-password-synchronization-to-azure-active-directory-domain-services"></a>Jelszavak szinkronizálásának engedélyezése az Azure Active Directory Domain Services tartományi szolgáltatásokra
@@ -37,7 +37,7 @@ A folyamat lépései eltérőek a csak felhőalapú felhasználói fiókok és a
 > Ha az Azure AD-bérlő csak felhőalapú és a helyszíni AD-ből származó felhasználókkal is rendelkezik, mindkét lépéssorozatot végre kell hajtania.
 >
 
-## <a name="task-5-enable-password-synchronization-to-your-managed-domain-for-user-accounts-synced-with-your-on-premises-ad"></a>5. feladat: jelszavak szinkronizálásának engedélyezése a felügyelt tartományra a helyszíni AD-vel szinkronizált felhasználói fiókok számára
+## <a name="task-5-enable-password-synchronization-to-your-managed-domain-for-user-accounts-synced-with-your-on-premises-ad"></a>5\. feladat: jelszavak szinkronizálásának engedélyezése a felügyelt tartományra a helyszíni AD-vel szinkronizált felhasználói fiókok számára
 A szinkronizált Azure AD-bérlő a szervezet helyi címtárával való szinkronizálásra van beállítva az Azure AD Connect használatával. Az Azure AD Connect alapértelmezés szerint nem szinkronizálja az NTLM és Kerberos hitelesítő adatok kivonatait az Azure AD-val. Az Azure AD tartományi szolgáltatások használatához az Azure AD Connectet úgy kell konfigurálni, hogy szinkronizálja az NTLM- és Kerberos-hitelesítéshez szükséges hitelesítőadat-kivonatokat. Az alábbi lépésekkel engedélyezheti a helyszíni címtárból származó kivonatok Azure AD-bérlővel való szinkronizálását.
 
 > [!NOTE]

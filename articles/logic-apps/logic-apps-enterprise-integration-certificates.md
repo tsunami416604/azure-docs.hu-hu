@@ -12,10 +12,10 @@ ms.suite: integration
 ms.topic: article
 ms.date: 08/17/2018
 ms.openlocfilehash: 38bc1615c0849a33ddfa5790a66fc05d681ce339
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66167164"
 ---
 # <a name="secure-b2b-messages-with-certificates"></a>A tanúsítványok biztonságos B2B-üzenetek
@@ -89,7 +89,7 @@ A tulajdonságok megadása után a [szerződések](logic-apps-enterprise-integra
    | Tulajdonság | Érték | Leírás | 
    |----------|-------|-------------|
    | **Name (Név)** | <*tanúsítvány neve*> | A tanúsítvány neve, amely ebben a példában a "privateCert" | 
-   | **Tanúsítvány típusa** | Privát | A tanúsítvány típusa |
+   | **Tanúsítvány típusa** | Magánjellegű | A tanúsítvány típusa |
    | **Tanúsítvány** | <*certificate-file-name*> | Keresse meg és válassza ki a feltöltendő tanúsítványfájlt, válassza a mappa ikont a a **tanúsítvány** mezőbe. | 
    | **Erőforráscsoport** | <*integration-account-resource-group*> | Az integrációs fiók erőforráscsoportot, amely ebben a példában a "MyResourceGroup" | 
    | **Key Vault** | <*key-vault-name*> | Az Azure key vault neve |

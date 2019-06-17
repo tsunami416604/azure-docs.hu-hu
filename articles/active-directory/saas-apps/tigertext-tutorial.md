@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 840b1fe55556cfd853e0928164891d6b21b17cc2
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: ea3bda1dd51a7c3a2e5e3f8b669d7138898f1595
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956862"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088663"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>Oktatóanyag: Az Azure Active Directory-integráció TigerText biztonságos Messenger
 
@@ -148,7 +148,7 @@ Ebben a szakaszban hozzon létre egy tesztfelhasználót Britta Simon nevű az A
 
     1. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    1. Az a **felhasználónév** mezőbe írja be **BrittaSimon\@\<vállalati_tartomány >.\< bővítmény >**. Ha például **BrittaSimon\@contoso.com**.
+    1. Az a **felhasználónév** mezőbe írja be **BrittaSimon\@\<vállalati_tartomány >.\< bővítmény >** . Ha például **BrittaSimon\@contoso.com**.
 
     1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
@@ -184,7 +184,7 @@ Ebben a szakaszban engedélyezze Britta Simon TigerText biztonságos Messenger, 
 
 Ebben a szakaszban egy TigerText biztonságos Messenger Britta Simon nevű felhasználó hoz létre. Együttműködik a [TigerText biztonságos Messenger támogatási csapatának](mailto:prosupport@tigertext.com) Britta Simon TigerText biztonságos Messenger felhasználóként hozzáadni. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban a az Azure AD egyszeri bejelentkezés beállításai a saját alkalmazások portál segítségével tesztelnie.
 

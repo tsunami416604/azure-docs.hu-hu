@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
 ms.openlocfilehash: 421e0db48f045c5cbce52a0641902e6d2a11276e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66132460"
 ---
 ## <a name="trigger"></a>Eseményindító
@@ -723,4 +723,4 @@ Ez a szakasz ismerteti a globális konfigurációs beállításoknak a kötéshe
 |---------|---------|---------|
 |maxBatchSize|64|A ciklust a fogadás egy fogadott események maximális száma.|
 |prefetchCount|n/a|Az alapértelmezett PrefetchCount, amely az alapul szolgáló EventProcessorHost használni fog.|
-|batchCheckpointFrequency|1.|Az EventHub kurzor ellenőrzőpont létrehozása előtt feldolgozható kötegek esemény száma.|
+|batchCheckpointFrequency|1|Az EventHub kurzor ellenőrzőpont létrehozása előtt feldolgozható kötegek esemény száma.|

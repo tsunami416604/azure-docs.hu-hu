@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/02/2019
 ms.author: rkarlin
 ms.openlocfilehash: 8e711c0586ce63d4293e2fb0914bbe884b55971f
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66389963"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>A Common Event formattal külső megoldás csatlakoztatása
@@ -47,7 +47,7 @@ Az Azure Sentinel- és a CEF-berendezés közötti kapcsolatot három lépésben
 > [!NOTE]
 > Az ügynök képes gyűjteni a több forrásból, de proxy dedikált gépre kell telepíteni.
 
-## <a name="step-1-connect-to-your-cef-appliance-via-dedicated-azure-vm"></a>1. lépés: A CEF-berendezés dedikált Azure-beli Virtuálisgép-n keresztül kapcsolódni
+## <a name="step-1-connect-to-your-cef-appliance-via-dedicated-azure-vm"></a>1\. lépés: A CEF-berendezés dedikált Azure-beli Virtuálisgép-n keresztül kapcsolódni
 
 Üzembe kell helyeznie egy dedikált gépen Linux ügynök (virtuális gép vagy a helyszínen) a készüléket és a Sentinel-Azure közötti kommunikáció támogatásához. Az ügynök automatikusan vagy manuálisan telepítheti. Automatikus központi telepítési Resource Manager-sablonok alapján, és csak akkor, ha a dedikált Linux-gép egy új virtuális Gépet hoz létre az Azure-ban nem használható.
 
@@ -120,14 +120,14 @@ Ha nem használja az Azure, ügynököt manuálisan telepíti az Azure-Sentinel 
   
  A megfelelő sémát használ a Log Analytics a CEF-események, keresse meg `CommonSecurityLog`.
 
-## <a name="step-2-forward-common-event-format-cef-logs-to-syslog-agent"></a>2. lépés: Common Event Format (CEF) naplókat továbbítani a Syslog-ügynök
+## <a name="step-2-forward-common-event-format-cef-logs-to-syslog-agent"></a>2\. lépés: Common Event Format (CEF) naplókat továbbítani a Syslog-ügynök
 
 Állítsa be a Syslog-üzeneteket küldjön a CEF formátumot a Syslog-ügynök biztonsági megoldását. Ellenőrizze, hogy az ügynök konfigurációs használja ugyanazokat a paramétereket, amelyek jelennek meg. Általában az alábbiak:
 
 - 514-es port
 - Létesítmény local4
 
-## <a name="step-3-validate-connectivity"></a>3. lépés: Kapcsolat ellenőrzése
+## <a name="step-3-validate-connectivity"></a>3\. lépés: Kapcsolat ellenőrzése
 
 Upwards of mindaddig, amíg megjelennek a Log Analytics indítása a naplók 20 percig is eltarthat. 
 

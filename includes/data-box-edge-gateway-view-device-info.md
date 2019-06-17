@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/04/2019
 ms.author: alkohli
 ms.openlocfilehash: d5af557a62f4bd35c242d334c28a38c3d632f7cf
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66161177"
 ---
 1. [Kapcsolódás a PowerShell-felületünkön](#connect-to-the-powershell-interface).
@@ -47,7 +47,7 @@ ms.locfileid: "66161177"
     
     | Paraméter                             | Leírás                                                                                                                                                  |   |
     |--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
-    | rövid név                   | Az eszköz helyi webes felületén keresztül az eszköz üzembe helyezése során konfigurált rövid neve. Az alapértelmezett rövid név az eszköz sorozatszámát.  |   |
+    | Rövid név                   | Az eszköz helyi webes felületén keresztül az eszköz üzembe helyezése során konfigurált rövid neve. Az alapértelmezett rövid név az eszköz sorozatszámát.  |   |
     | a sorozatszám                   | Az eszköz gyári számát az gyári rendelt egyedi számot.                                                                             |   |
     | Modell                          | A Data Box Edge vagy az adatátjáró Box-eszköz modellje. A modell használható a Data Box-átjáró virtuális és fizikai a Data Box Edge-hez.                   |   |
     | FriendlySoftwareVersion        | A rövid karakterlánc, amely megfelel az eszköz szoftververzióján. A rövid szoftververzió preview rendszert, a Data Box Edge 1902 lehet. |   |

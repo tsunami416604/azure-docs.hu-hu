@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: anavin
 ms.openlocfilehash: cf414cf08771090990775d124e27222e51f786e2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66122012"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Egy virtuális hálózati társviszony-létesítés létrehozása – Resource Manager, a különböző előfizetések
@@ -29,7 +29,7 @@ A virtuális hálózatok közötti társviszony létrehozásához szükséges l�
 |--------- |---------|
 |[Mindkét Resource Manager](tutorial-connect-virtual-networks-portal.md) |Azonos|
 |[Egy Resource Manager, egy klasszikus](create-peering-different-deployment-models.md) |Azonos|
-|[Egy Resource Manager, egy klasszikus](create-peering-different-deployment-models-subscriptions.md) |Eltérő|
+|[Egy Resource Manager, egy klasszikus](create-peering-different-deployment-models-subscriptions.md) |Különböző|
 
 A virtuális hálózatok közötti társviszony nem hozható létre, a klasszikus üzemi modellel üzembe helyezett két virtuális hálózat között. Ha a klasszikus üzemi modellel létrehozott, mindkét virtuális hálózatok csatlakoztatása van szüksége, használhatja az Azure [VPN-átjáró](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) össze a virtuális hálózatok.
 
@@ -90,7 +90,7 @@ Az alábbi lépéseket az egyes előfizetésekhez más fiókokat kell használni
     Ebben az oktatóanyagban nincs más beállításokat használja. Minden társviszony beállításai kapcsolatos további információkért olvassa el a [kezelheti a virtuális társhálózatok](virtual-network-manage-peering.md#create-a-peering).
 22. A társviszony-létesítés létrehozott jelenik meg egy rövid várakozás kiválasztása után **OK** az előző lépésben. **Kezdeményezett** szerepel-e a **társviszony-LÉTESÍTÉS állapota** oszlopában a **myVnetAToMyVnetB** társviszony-létesítés, létrehozva. MyVnetA myVnetB, akkor már társviszonyban, de most a myVnetA myVnetB kell társviszonyt. A társviszony-létesítést mindkét irányban, lehetővé teszik az erőforrások a virtuális hálózatok egymással kommunikálni kell létrehozni.
 23. Jelentkezzen ki a portálra a Felhasználóa felhasználóként, és jelentkezzen be Felhasználób felhasználóként.
-24. Végezze el újra a myVnetB 17-21 lépéseket. 21. lépésben, nevezze el a társviszony-létesítés *myVnetBToMyVnetA*, jelölje be *myVnetA* a **virtuális hálózati**, és adja meg az Azonosítót a 10. lépés a **erőforrás-azonosító**mezőbe.
+24. Végezze el újra a myVnetB 17-21 lépéseket. 21\. lépésben, nevezze el a társviszony-létesítés *myVnetBToMyVnetA*, jelölje be *myVnetA* a **virtuális hálózati**, és adja meg az Azonosítót a 10. lépés a **erőforrás-azonosító**mezőbe.
 25. Kiválasztása után néhány másodpercig **OK** hozhat létre, a társviszony-létesítést myVnetB, a **myVnetBToMyVnetA** együtt jelenik meg az imént létrehozott társviszony **csatlakoztatva** a a**Társviszony-LÉTESÍTÉS állapota** oszlop.
 26. Jelentkezzen ki a Felhasználób portált, és jelentkezzen be a Felhasználóa felhasználóként.
 27. Végezze el ismét a 17-19. lépést. A **társviszony-LÉTESÍTÉS állapota** számára a **myVnetAToVNetB** társviszony-létesítés jelenleg is **csatlakoztatva**. A sikeresen létrejött a társviszony, miután látta, **csatlakoztatva** a a **társviszony-LÉTESÍTÉS állapota** oszlopot mindkét a társviszony-létesítés virtuális hálózatok. Bármelyik virtuális hálózatban hoz létre Azure-erőforrások immár képes az IP-címekkel kommunikálhatnak egymással. Ha Azure névfeloldási szolgáltatása alapértelmezett a virtuális hálózatok használata esetén a virtuális hálózatokban az erőforrások nem lesznek tudják feloldani a virtuális hálózatok között. Ha szeretné feloldani az egy társviszony-létesítés virtuális hálózatok között, létre kell hoznia a saját DNS-kiszolgáló. Ismerje meg, hogyan állítható be [névfeloldás saját DNS-kiszolgáló használatával](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
@@ -289,7 +289,7 @@ Ha a virtuális hálózatok különböző előfizetésekben találhatóak, és a
 4. A példa json másolásához a 2. lépés egy fájlt a számítógépen, és módosítja a kezdődő sorokat:
    - **Név**: Változás *myVnetA/myVnetAToMyVnetB* való *myVnetB/myVnetBToMyVnetA*.
    - **ID**: Cserélje le `<subscription ID>` Felhasználób az előfizetés-azonosító, és módosítsa a *myVnetB* való *myVnetA*.
-5. 3. lépés kész, bejelentkezésének az Azure-bA Felhasználób.
+5. 3\. lépés kész, bejelentkezésének az Azure-bA Felhasználób.
 6. **Nem kötelező**: Bár ebben az oktatóanyagban a virtuális gépekre nem vonatkozik, egy virtuális gép létrehozása az egyes virtuális hálózatok, és csatlakozzon egy virtuális gépről a másikra, a kapcsolat ellenőrzéséhez.
 7. **Nem kötelező**: Ebben az oktatóanyagban létrehozott erőforrások törléséhez hajtsa végre a lépések a [törölje az erőforrást](#delete) című szakaszát, az Azure portal, PowerShell vagy az Azure CLI használatával.
 

@@ -12,10 +12,10 @@ ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
 ms.openlocfilehash: 1c5712fa8bbdb158992127f8f48d810a0a9b6f79
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65603482"
 ---
 # <a name="about-custom-voice-first-virtual-assistants-preview"></a>Egyéni hang-és felhőközpontú virtuális asszisztensek előzetes tudnivalók
@@ -30,7 +30,7 @@ A közvetlen vonal beszéd- és a kapcsolódó funkciók működését, hang-és
 
 ## <a name="core-features"></a>Alapfunkciók
 
-| Category | Funkciók |
+| Category | Szolgáltatások |
 |----------|----------|
 |[Egyéni ébresztési word](speech-devices-sdk-create-kws.md) | Engedélyezheti a felhasználóknak beszélgetések kezdődniük robotokat egy egyéni kulcsszóval, például a "Hey Contoso." A feladat végrehajtását a Speech SDK-ban, amely egy egyéni ébresztési word a konfigurálható egyéni ébresztési word motorral [, itt is létrehozhat](speech-devices-sdk-create-kws.md). A közvetlen vonal beszédfelismerő csatornát magában foglalja a Szolgáltatásoldali ébresztési word annak ellenőrzése, hogy az ébresztési word aktiválás és az eszköz önálló javul.
 |[Beszédfelismerés](speech-to-text.md) | A közvetlen vonal beszédfelismerő csatornát tartalmazza a felismert szöveget egy hang-, valós idejű beszédátírási [hang-szöveg transzformációs](speech-to-text.md) Azure Speech Services. Ezt a szöveget a robot, mind az ügyfélalkalmazás számára érhető el, ahogy azt a megjelenített érzéseket.

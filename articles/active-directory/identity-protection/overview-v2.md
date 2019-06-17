@@ -17,12 +17,12 @@ ms.date: 10/03/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37c63e32f1ee9c404e8b84a6eb17bc6eec30a761
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 2b4f8caf03aad339cea3c3fcc732fc1af6086ea7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956929"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108888"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Mi az Azure Active Directory Identity Protection (frissíthetők)?
 
@@ -56,7 +56,7 @@ Azure AD Identity Protection válaszolni a fenyegetések, lehetővé teszi, hogy
 
  
 
-Az Azure AD Identity Protection az Azure Active Directory Premium P2, amely lehetővé teszi, hogy a házirendek úgy, hogy automatikusan válaszol, amikor a felhasználó identitásáról biztonsága sérül egyik szolgáltatása, vagy ha valaki más, mint a fiók tulajdonosa próbál jelentkezzen be a saját identitás. A megadott ezeket a szabályzatokat, kívül más feltételes hozzáférés-vezérlés az Azure AD képes vagy automatikus letiltása hozzáférés vagy kezdeményezési kockázatcsökkentési műveleteket, például a jelszó-visszaállítás vagy a többtényezős hitelesítés kényszerítése. Identity Protection emellett figyelési és jelentéskészítési lehetőségeket a mélyebb betekintést nyerhet a kockázatokat és a szervezet esetleges támadások. 
+Az Azure AD Identity Protection az Azure Active Directory Premium P2, amely lehetővé teszi, hogy a házirendek úgy, hogy automatikusan válaszol, amikor a felhasználó identitásáról biztonsága sérül egyik szolgáltatása, vagy ha valaki más, mint a fiók tulajdonosa próbál jelentkezzen be a saját identitás. Ezek a szabályzatok mellett más feltételes hozzáférés-vezérlés az Azure AD által biztosított automatikusan vagy blokkolhatja hozzáférés vagy kezdeményezési kockázatcsökkentési műveleteket, például a jelszó-visszaállítás vagy a többtényezős hitelesítés kényszerítése. Identity Protection emellett figyelési és jelentéskészítési lehetőségeket a mélyebb betekintést nyerhet a kockázatokat és a szervezet esetleges támadások. 
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWsS6Q]
 
@@ -69,11 +69,11 @@ Az Azure AD Identity Protection észleli az alábbi kockázati események:
 
 | Kockázati esemény típusa | Leírás | Észlelés típusa |
 | ---             | ---         | ---            |
-| Szokatlan útvonal | Jelentkezzen be a felhasználó legutóbbi bejelentkezések alapján szokatlan helyről. | Offline |
-| Névtelen IP cím | Bejelentkezés névtelen IP-címről (például: Tor böngésző, anonymizer VPN-eket). | Valós idejű |
-| Szokatlan bejelentkezési tulajdonságok | Jelentkezzen be tulajdonságai nem volt utoljára az adott felhasználó. | Valós idejű |
-| Kártevő szoftverrel összekapcsolt IP-cím | Jelentkezzen be a kártevő szoftverek társított IP-címről | Offline |
-| Kiszivárogtatott hitelesítő adatokkal | Ez a kockázati esemény azt jelzi, hogy a felhasználó érvényes hitelesítő adatai kiszivárogtak | Offline |
+| Bejelentkezés szokatlan utazás | Jelentkezzen be a felhasználó legutóbbi bejelentkezések alapján szokatlan helyről. | Offline |
+| Anonymous IP address | Bejelentkezés névtelen IP-címről (például: Tor böngésző, anonymizer VPN-eket). | Valós idejű |
+| Ismeretlen bejelentkezési tulajdonságok | Jelentkezzen be tulajdonságai nem volt utoljára az adott felhasználó. | Valós idejű |
+| Kártevő szoftver társított IP-cím | Jelentkezzen be a kártevő szoftverek társított IP-címről | Offline |
+| Kiszivárogtatott hitelesítő adatokkal | A kockázati esemény azt jelzi, hogy a felhasználó érvényes hitelesítő adatokkal rendelkezik lett kiszivárgott | Offline |
 
 
 
@@ -110,7 +110,7 @@ A felhasználói kockázat jelöli annak a valószínűsége, hogy egy adott ide
 
 A felhasználói kockázat figyelembe véve a felhasználóhoz társított összes kockázat alapján számítjuk ki:
 
-- Minden kockázatos bejelentkezés
+- Minden kockázatos bejelentkezések
 - Az összes, nem kapcsolódik egy bejelentkezési kockázati események
 - Az aktuális felhasználói kockázat
 - Kockázati szervizelési vagy elbocsátása végrehajtott összes műveletet a felhasználóra, dátum:
@@ -153,7 +153,7 @@ A példában a Contoso-alkalmazott, nézzük meg.
 
 2. Az Azure AD észleli, hogy az alkalmazott jelentkezik be egy névtelen IP-cím, egy közepes méretű bejelentkezési kockázati szint elindítása. 
 
-3. Az alkalmazott van próbálnak futtatni rajta egy MFA rendszer, mert a Contoso informatikai rendszergazda a bejelentkezési kockázat Identity Protection feltételes hozzáférési szabályzat konfigurálva. A házirend többtényezős Hitelesítést követel meg a bejelentkezést a kockázata, közepes vagy nagyobb. 
+3. Az alkalmazott van próbálnak futtatni rajta egy MFA rendszer, mert a Contoso rendszergazda beállította az Identity Protection bejelentkezési kockázat feltételes hozzáférési szabályzat. A házirend többtényezős Hitelesítést követel meg a bejelentkezést a kockázata, közepes vagy nagyobb. 
 
 4. Az alkalmazott továbbítja a többtényezős hitelesítés használatával, és fér hozzá az Exchange online-hoz, és azok felhasználói kockázati szint nem módosulnak. 
 
@@ -203,20 +203,20 @@ Identity Protection 3 szerepkört a felügyeleti tevékenységek, az üzemelő p
 További részletekért lásd: [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
 
  
-## <a name="licensing"></a>Licencelés
+## <a name="licensing"></a>Licencek
 
 >[!NOTE]
 > Az Identity Protection (frissítés) a nyilvános előzetes verzióban csak a prémium szintű Azure AD P2-ügyfeleknek lesz hozzáférése a kockázatos felhasználók jelentéshez és a kockázatos bejelentkezések jelentés.
 
 
 
-| Képesség | Azure AD Premium P2 | Azure AD Premium P1 | Az Azure AD Basic vagy ingyenes |
+| Képesség | Prémium szintű Azure AD P2 | Prémium szintű Azure AD P1 | Az Azure AD Basic vagy ingyenes |
 | --- | --- | --- | --- |
 | Felhasználói kockázati házirend | Igen | Nem | Nem |
 | Bejelentkezési kockázati házirend | Igen | Nem | Nem |
 | Kockázatos felhasználók jelentés | Teljes hozzáférés | Korlátozott mennyiségű információt | Korlátozott mennyiségű információt |
 | Kockázatos bejelentkezési jelentések | Teljes hozzáférés | Korlátozott mennyiségű információt | Korlátozott mennyiségű információt |
-| MFA-regisztrációs szabályzat | Igen | Nem | Nem |
+| Az MFA regisztrációs szabályzatának | Igen | Nem | Nem |
 
 
 

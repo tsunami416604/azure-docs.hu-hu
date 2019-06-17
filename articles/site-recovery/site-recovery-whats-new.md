@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: raynew
 ms.openlocfilehash: 50e1cb95249f0108430e978ae3ffe23b6edc778d
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66418379"
 ---
 # <a name="whats-new-in-site-recovery"></a>A Site Recovery újdonságai
@@ -23,7 +23,7 @@ Ha javaslata van a Site Recovery szolgáltatásokat, szívesen [kíváncsiak a v
 
 ## <a name="updates-march-2019"></a>Frissítések (2019. március)
 
-### <a name="update-rollup-35"></a>35. kumulatív frissítés
+### <a name="update-rollup-35"></a>35\. kumulatív frissítés
 
 [35. kumulatív frissítés](https://support.microsoft.com/en-us/help/4494485/update-rollup-35-for-azure-site-recovery) biztosít a következő frissítéseket.
 
@@ -43,7 +43,7 @@ Ha javaslata van a Site Recovery szolgáltatásokat, szívesen [kíváncsiak a v
 
 ## <a name="updates-february-2019"></a>Frissítések (2019. február)
 
-### <a name="update-rollup-34"></a>34. kumulatív frissítés 
+### <a name="update-rollup-34"></a>34\. kumulatív frissítés 
 
 [34. kumulatív frissítés](https://support.microsoft.com/help/4490016/update-rollup-34-for-azure-site-recovery) biztosít a következő frissítéseket.
 
@@ -53,7 +53,7 @@ Ha javaslata van a Site Recovery szolgáltatásokat, szívesen [kíváncsiak a v
 **A probléma javításokat/fejlesztései** | Javításai és továbbfejlesztései (leírt módon az összegző) száma.
 
 
-### <a name="update-rollup-33"></a>33. kumulatív frissítés 
+### <a name="update-rollup-33"></a>33\. kumulatív frissítés 
 
 [33. kumulatív frissítés](https://support.microsoft.com/help/4489582/update-rollup-33-for-azure-site-recovery) biztosít a következő frissítéseket.
 
@@ -167,7 +167,7 @@ Katasztrófa utáni helyreállítás az Azure virtuális gépek tekintetében a 
 
 ## <a name="updates-october-2018"></a>Frissítések (2018. október)
 
-### <a name="update-rollup-30"></a>30. kumulatív frissítés 
+### <a name="update-rollup-30"></a>30\. kumulatív frissítés 
 
 [30. kumulatív frissítés](https://support.microsoft.com/help/4468181/azure-site-recovery-update-rollup-30) biztosít a következő frissítéseket.
 
@@ -199,7 +199,7 @@ Katasztrófa utáni helyreállítás az Azure virtuális gépek tekintetében a 
 
 ## <a name="updates-august-2018"></a>Frissítések (2018 augusztus)
 
-### <a name="update-rollup-28"></a>28. kumulatív frissítés 
+### <a name="update-rollup-28"></a>28\. kumulatív frissítés 
 
 [28. kumulatív frissítés](https://support.microsoft.com/help/4460079/update-rollup-28-for-azure-site-recovery) biztosít a következő frissítéseket.
 

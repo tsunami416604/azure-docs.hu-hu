@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 50452dc5a0c2074c452878c890643f7b21591689
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65977310"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Rossz jelszavak, a szervezet számára
@@ -26,7 +26,7 @@ Iparági vezetők mondja el, hogy nem összetett, és nem révén egyszerűen/Pa
 
 A Microsoft mindig azon dolgozik, hogy egy lépéssel a számítógépes bűnözők előtt járjon. Ezért az Azure AD Identity Protection csapata folyamatosan keresse meg a gyakran használt és a feltört jelszavakat. Ezután letiltják ezeket a jelszavakat, hogy mi a globális letiltott jelszavak lista neve túl gyakori beállításkulcsoknak. Bűnözők is hasonló stratégiákat használnak a saját támadások, ezért a Microsoft nem teszi közzé a lista tartalma nyilvánosan. Ezek a sebezhető jelszavak le vannak tiltva, mielőtt azok a valódi fenyegetést Microsoft ügyfeleire vonatkozik. Az aktuális biztonsági erőfeszítések kapcsolatos további információkért tekintse meg a [a Microsoft Security Intelligence Report](https://www.microsoft.com/security/operations/security-intelligence-report).
 
-## <a name="custom-banned-password-list"></a>Letiltott jelszavak egyéni listája
+## <a name="custom-banned-password-list"></a>Egyéni le van tiltva a jelszó-lista
 
 Egyes szervezetek biztonsági egy lépéssel tovább igénybe a Microsoft által a letiltott jelszavak egyéni lista a globális letiltott jelszavak lista fölött saját testreszabások hozzáadásával lehet. Vállalati felhasználók például Contoso Ezután dönthet blokkolása a márka nevüket, a vállalatra jellemző használati vagy más elemeket tartalmazza.
 
@@ -44,7 +44,7 @@ Amikor a felhasználó módosítja, vagy a jelszó alaphelyzetbe állítása, az
 
 Akkor is, ha egy felhasználó jelszavát egy letiltott jelszavak tartalmaz, a jelszó előfordulhat, hogy továbbra is fogadja, ha a teljes jelszó nem elég erős más módon. Egy újonnan konfigurált jelszóval a következő lépéseket kell meghatározni, ha azt kell elfogad vagy elutasít általános erősségét felmérése fog áthaladni.
 
-### <a name="step-1-normalization"></a>1. lépés: Normalizálási
+### <a name="step-1-normalization"></a>1\. lépés: Normalizálási
 
 Új jelszó először halad végig egy normalizálási folyamat lépéseit követve. Ez lehetővé teszi egy kis készletét letiltott jelszavak le kell képezni egy potenciálisan gyenge jelszavakat sokkal nagyobb készlete.
 
@@ -59,7 +59,7 @@ Normalizálási két részből áll.  Először is, a nagybetűs betűket kisbet
 
 Példa: Tegyük fel, hogy a jelszó "üres" le van tiltva, és a egy felhasználó próbál módosítani a jelszavát, a "Bl@nK". Annak ellenére, hogy "Bl@nk" van normalizálási folyamat alakítja át nem kifejezetten le van tiltva, ezt a jelszót "blank", amely egy letiltott jelszavak.
 
-### <a name="step-2-check-if-password-is-considered-banned"></a>2. lépés: Annak ellenőrzése, hogy a jelszó számít le van tiltva
+### <a name="step-2-check-if-password-is-considered-banned"></a>2\. lépés: Annak ellenőrzése, hogy a jelszó számít le van tiltva
 
 #### <a name="fuzzy-matching-behavior"></a>Az intelligens egyező viselkedés
 

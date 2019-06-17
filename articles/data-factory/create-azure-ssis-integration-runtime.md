@@ -13,10 +13,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: d30ec0765627ec173f0027e49f44cb77f6b26ac6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66155197"
 ---
 # <a name="create-azure-ssis-integration-runtime-in-azure-data-factory"></a>Az Azure-SSIS integrációs modul létrehozása az Azure Data Factoryban
@@ -51,7 +51,7 @@ Amikor üzembe helyezi az Azure-SSIS integrációs modul, a az Azure Feature Pac
 
     Győződjön meg arról, hogy az Azure SQL Database server/Managed Instance még nem rendelkezik az SSISDB. Az Azure-SSIS IR üzembe helyezése nem támogatja egy meglévő SSISDB használatával.
 
-- **Az Azure Resource Managerbeli virtuális hálózat (nem kötelező)**. Rendelkeznie kell egy Azure Resource Managerbeli virtuális hálózat legalább egy, az alábbi feltételek teljesülése esetén:
+- **Az Azure Resource Managerbeli virtuális hálózat (nem kötelező)** . Rendelkeznie kell egy Azure Resource Managerbeli virtuális hálózat legalább egy, az alábbi feltételek teljesülése esetén:
 
   - A virtuális hálózati Szolgáltatásvégpontok Azure SQL Database-kiszolgáló vagy a felügyelt példányt, amely egy virtuális hálózatban lévő üzemeltetett SSISDB.
   - Szeretné csatlakoztatni a helyszíni adatokat tárolja az SSIS-csomagokat futtat az Azure-SSIS integrációs modult.
@@ -66,7 +66,7 @@ Az Azure-régióban, amelyben az ADF és Azure-SSIS integrációs modul jelenleg
 
 A következő táblázat összehasonlítja a bizonyos funkciók az Azure SQL Database-kiszolgáló és a felügyelt példányt az Azure-SSIR integrációs modul valamelyikéhez kapcsolódnak:
 
-| Szolgáltatás | önálló adatbázis és rugalmas készlet| Felügyelt példány |
+| Funkció | önálló adatbázis és rugalmas készlet| Felügyelt példány |
 |---------|--------------|------------------|
 | **Ütemezés** | SQL Server-ügynök nem érhető el.<br/><br/>Lásd: [ADF folyamat egy csomag végrehajtásának ütemezése](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity).| Felügyelt példány az ügynök nem érhető el. |
 | **Hitelesítés** | SSISDB egy tartalmazottadatbázis-felhasználó jelölő az ADF azokat a felügyelt identitáshoz bármely AAD csoport tagjaként hozhatja létre a **db_owner** szerepkör.<br/><br/>Lásd: [SSISDB létrehozása az Azure SQL Database-kiszolgálóhoz történő hitelesítés engedélyezése az Azure AD](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database). | Az ADF-felügyelt identitásnak jelölő tartalmazottadatbázis-felhasználó az SSISDB hozhat létre. <br/><br/>Lásd: [SSISDB létrehozása az Azure SQL Database felügyelt példányába történő hitelesítés engedélyezése az Azure AD](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance). |

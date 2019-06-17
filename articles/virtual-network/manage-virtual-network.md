@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
 ms.openlocfilehash: 235a82c6bba4165790c370c2641ee6cd41f10840
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64700483"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Létrehozása, módosítása vagy egy virtuális hálózat törlése
@@ -25,7 +25,7 @@ ms.locfileid: "64700483"
 
 Ismerje meg, hogyan hozhat létre és a virtuális hálózat törlése és a beállításokat, például a DNS-kiszolgálók és az IP-címtereket, meglévő virtuális hálózat. Ha most ismerkedik a virtuális hálózatok, többet is megtudhat a velük kapcsolatos a [virtuális hálózatok áttekintése](virtual-networks-overview.md) vagy; Ehhez hajtsa végre egy [oktatóanyag](quick-create-portal.md). A virtuális hálózatok alhálózatokat tartalmaznak. Ismerje meg, hogyan létrehozása, módosítása és alhálózatok törlése, lásd: [alhálózatok kezelését](virtual-network-manage-subnet.md).
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk bármely szakaszban ismertetett lépések elvégzése előtt hajtsa végre a következőket:
 
@@ -138,7 +138,7 @@ Virtuális gépek csatlakoznak a virtuális hálózat nyilvántartásba, adja me
 2. A virtuális hálózatok listájában jelölje ki a virtuális hálózatot, amelynek meg szeretné változtatni a DNS-kiszolgálók számára.
 3. Válassza ki **DNS-kiszolgálók**alatt **beállítások**.
 4. Válasszon az alábbi lehetőségek közül:
-   - **Alapértelmezett (Azure által biztosított)**: Összes erőforrás nevét, és a magánhálózati IP-címek automatikusan regisztrálja az Azure DNS-kiszolgálókra. Nevek közötti bármely virtuális hálózathoz csatlakozó erőforrás oldható meg. Ez a beállítás nevek feloldása több virtuális hálózaton nem használható. A névfeloldás virtuális hálózatok között, egy egyéni DNS-kiszolgálót kell használnia.
+   - **Alapértelmezett (Azure által biztosított)** : Összes erőforrás nevét, és a magánhálózati IP-címek automatikusan regisztrálja az Azure DNS-kiszolgálókra. Nevek közötti bármely virtuális hálózathoz csatlakozó erőforrás oldható meg. Ez a beállítás nevek feloldása több virtuális hálózaton nem használható. A névfeloldás virtuális hálózatok között, egy egyéni DNS-kiszolgálót kell használnia.
    - **Egyéni**: Az Azure korlátig egy virtuális hálózat egy vagy több kiszolgálót is hozzáadhat. DNS-kiszolgálói korlátok kapcsolatos további információkért lásd: [Azure korlátai](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic). A következő lehetőségek közül választhat:
    - **Cím hozzáadása**: A kiszolgáló hozzáadása a virtuális hálózat DNS-kiszolgálók listájához. Ezzel a beállítással a DNS-kiszolgáló is regisztrálja az Azure-ral. Ha már regisztrálta egy DNS-kiszolgálót az Azure-ral, kiválaszthatja, hogy a DNS-kiszolgáló a listában.
    - **Egy cím eltávolítása**: Mellett a kiszolgáló, amely a el kívánja távolítani, jelölje be a **...** , majd **eltávolítása**. A kiszolgáló törlésével eltávolítja a kiszolgáló csak a virtuális hálózat listából. A DNS-kiszolgáló használatára a virtuális hálózatokat Azure-ban regisztrált marad.

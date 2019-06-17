@@ -11,10 +11,10 @@ ms.date: 11/09/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: ed57a9fa3b041961ce220e8f10d9aed5e7bef60e
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66511927"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C felhasználói folyamat verziók
@@ -26,7 +26,7 @@ Az Azure Active Directory (Azure AD) B2C felhasználói folyamatok segítségév
 
 Új felhasználói folyamatokat új verziók hozzá szeretné adni. Felhasználói folyamatok egyre stabil, akkor lesz lehet ajánlott. Felhasználói folyamatok vannak megjelölve **ajánlott** Ha, hogy alaposan tesztelt. Felhasználói folyamatok minősülnek mindaddig, amíg az ajánlott megjelölve előzetes verzióban érhető el. Éles alkalmazások ajánlott felhasználói folyamat használja, de új funkció teszteléséhez elérhetővé váló egyéb verziói közül választhat. Ne használja a javasolt felhasználói folyamatok régebbi verzióit.
 
-## <a name="v1"></a>1. verzió
+## <a name="v1"></a>1\. verzió
 
 | Felhasználói folyamat | Ajánlott | Leírás |
 | --------- | ----------- | ----------- |
@@ -37,7 +37,7 @@ Az Azure Active Directory (Azure AD) B2C felhasználói folyamatok segítségév
 | Regisztráció | Nem | Lehetővé teszi, hogy a felhasználót, hogy hozzon létre egy fiókot. Ez a felhasználói folyamat használata esetén konfigurálhatja: <ul><li>[Többtényezős hitelesítés](active-directory-b2c-reference-mfa.md)</li><li>[Jogkivonat élettartama](active-directory-b2c-reference-tokens.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet-viselkedés</li><li>[Jelszó-összetettségi követelményeknek](active-directory-b2c-reference-password-complexity.md)</li></ul> |
 | Regisztráció és bejelentkezés | Igen | Lehetővé teszi, hogy a felhasználót, hogy hozzon létre egy fiókot, vagy jelentkezzen be a fiókjába. Ez a felhasználói folyamat használata esetén konfigurálhatja: <ul><li>[Többtényezős hitelesítés](active-directory-b2c-reference-mfa.md)</li><li>[Jogkivonat élettartama](active-directory-b2c-reference-tokens.md)</li><li>Jogkivonat-kompatibilitási beállítások</li><li>Munkamenet-viselkedés</li><li>[Jelszó-összetettségi követelményeknek](active-directory-b2c-reference-password-complexity.md)</li></ul>|
 
-## <a name="v2"></a>2. verzió
+## <a name="v2"></a>2\. verzió
 
 | Felhasználói folyamat | Ajánlott | Leírás |
 | --------- | ----------- | ----------- |

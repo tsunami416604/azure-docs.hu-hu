@@ -10,10 +10,10 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 7e48809537acc21edbcf12d299a333df486c258f
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66257158"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Problémák diagnosztizálása és hibaelhárítása az Azure Cosmos DB .NET SDK használata
@@ -61,7 +61,7 @@ RequestTimeout általában akkor fordul elő, közvetlen/TCP használatakor, de 
         * Ezenkívül SDK-naplókat rögzíthetők [Hívásláncfigyelő](https://github.com/Azure/azure-cosmosdb-dotnet/blob/master/docs/documentdb-sdk_capture_etl.md) további információért.
 
 ### <a name="connection-throttling"></a>Kapcsolat-szabályozás
-Kapcsolat szabályozás feltehetően egy kapcsolathoz megadott korlátot gazdagépen. 2.0-s vissza az Azure-ban futó ügyfelek találati sikerült a [Az Azure SNAT (PAT) portfogyás].
+Kapcsolat szabályozás feltehetően egy kapcsolathoz megadott korlátot gazdagépen. 2\.0-s vissza az Azure-ban futó ügyfelek találati sikerült a [Az Azure SNAT (PAT) portfogyás].
 
 ### <a name="snat"></a>Az Azure SNAT (PAT) portfogyás
 

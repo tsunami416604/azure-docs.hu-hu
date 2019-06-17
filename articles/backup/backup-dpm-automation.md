@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 1/23/2017
 ms.author: adigan
 ms.openlocfilehash: b16963265c971e604f03b51fd63f7fe411bab36e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66127757"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése DPM-kiszolgálókon a PowerShell-lel
@@ -121,7 +121,7 @@ Ez telepíti az ügynököt az összes alapértelmezett beállítást. A telepí
 
 A telepített programok listájában megjelenik az ügynököt. A telepített programok listájának megtekintéséhez, keresse fel a **Vezérlőpult** > **programok** > **programok és szolgáltatások**.
 
-![Ügynök telepítve](./media/backup-dpm-automation/installed-agent-listing.png)
+![Az ügynök telepítve van](./media/backup-dpm-automation/installed-agent-listing.png)
 
 ### <a name="installation-options"></a>Telepítési beállítások
 
@@ -140,7 +140,7 @@ Az elérhető lehetőségek a következők:
 | / "hely" s: |Az Azure Backup ügynököt a gyorsítótár mappájának elérési útja. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
 | /m |Jóváhagyja a Microsoft Update |- |
 | /nu |Nem keres frissítéseket telepítésének befejezése után |- |
-| /nap |A Microsoft Azure Recovery Services Agent eltávolítása |- |
+| /d |A Microsoft Azure Recovery Services Agent eltávolítása |- |
 | /pH |Proxy Host Address |- |
 | /po |Gazdagép proxyport száma |- |
 | /pu |Proxy állomás felhasználónév |- |

@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 04/19/2019
 ms.author: haroldw
 ms.openlocfilehash: fba29cd55f2d765faa107de3a8961032ef44deec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60771343"
 ---
 # <a name="post-deployment-tasks"></a>Üzembe helyezés utáni feladatok
@@ -83,7 +83,7 @@ Az Azure Portalon:
 
    ![Alkalmazásregisztráció](media/openshift-post-deployment/app-registration.png)
 
-6. Kattintson az 1. lépés: Válassza ki az API-t, és kattintson a **Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)**. Kattintson a **kiválasztása** alján.
+6. Kattintson az 1. lépés: Válassza ki az API-t, és kattintson a **Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)** . Kattintson a **kiválasztása** alján.
 
    ![Alkalmazásregisztráció kijelölt API](media/openshift-post-deployment/app-registration-select-api.png)
 

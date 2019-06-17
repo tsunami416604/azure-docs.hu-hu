@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
 ms.openlocfilehash: 8eac70db0c563f102dfa0e3fcece9d4604582cce
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65595678"
 ---
 # <a name="understand-iot-hub-metrics"></a>Understand IoT Hub metrics
@@ -42,69 +42,69 @@ IoT Hub által biztosított több metrikát, hogy a hub és az összes csatlakoz
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|d2c<br>.telemetry<br>.ingress.<br>allProtocol|Telemetriai üzenetet küld kísérletek|Count|Összeg|Küldését az IoT hub próbált eszköz – felhő telemetriát üzenetek száma|Nincs dimenzió|
-|d2c<br>.telemetry<br>.ingress<br>.SUCCESS|Telemetriai üzeneteket küldi|Count|Összeg|Sikerült elküldeni az IoT hub eszköz – felhő telemetriát üzenetek száma|Nincs dimenzió|
-|c2d<br>.commands<br>.egress<br>.Complete<br>.SUCCESS|A parancsok befejeződött|Count|Összeg|Az eszköz által végrehajtott művelet felhőből az eszközre irányuló parancsok száma|Nincs dimenzió|
-|c2d<br>.commands<br>.egress<br>.abandon<br>.SUCCESS|Elhagyott parancsok|Count|Összeg|Az eszköz által elhagyott felhőből az eszközre irányuló parancsok száma|Nincs dimenzió|
-|c2d<br>.commands<br>.egress<br>.Reject<br>.SUCCESS|Elutasított parancsok|Count|Összeg|Az eszköz által elutasított felhőből az eszközre irányuló parancsok száma|Nincs dimenzió|
-|eszközök<br>.totalDevices|(Elavult az) összes eszköz|Count|Összeg|Az IoT hubban regisztrált eszközök száma|Nincs dimenzió|
-|eszközök<br>.connectedDevices<br>.allProtocol|(Elavult) csatlakoztatott eszközök |Count|Összeg|Az IoT hubhoz csatlakoztatott eszközök száma|Nincs dimenzió|
-|d2c<br>.telemetry<br>.egress<br>.SUCCESS|Útválasztási: telemetriai üzenetet|Count|Összeg|Többször is sikeresen kézbesíti az üzeneteket az IoT Hub útválasztás használatával az összes végpontok száma. Ha egy üzenet van irányítva több végpontot, ez az érték minden egyes sikeres kézbesítés eggyel nő. Egy üzenet szállítják egyazon végpont több alkalommal, ha ez az érték minden egyes sikeres kézbesítés eggyel nő.|Nincs dimenzió|
-|d2c<br>.telemetry<br>.egress<br>.dropped|Útválasztási: telemetriai üzeneteket eldobása |Count|Összeg|Hányszor üzenetek kézbesíthetetlen végpontok miatt útválasztási IoT Hub által el lettek dobva. Ez az érték nem számít üzenetet tartalék útvonal, az eldobott üzenetek jelenjenek meg nem létezik.|Nincs dimenzió|
-|d2c<br>.telemetry<br>.egress<br>.Orphaned|Útválasztási: telemetriai üzeneteket árva |Count|Összeg|Hányszor üzenetek által az IoT Hub-útválasztás árva is, mert (beleértve a tartalék szabály) minden olyan útválasztási szabályok nem egyeznek. |Nincs dimenzió|
-|d2c<br>.telemetry<br>.egress<br>.Invalid|Útválasztási: telemetria inkompatibilis üzenetek|Count|Összeg|Hányszor útválasztás az IoT Hub kézbesíti az üzeneteket egy alkalmazással a végponthoz való inkompatibilitás miatt nem sikerült. Ez az érték nem tartalmazza az újrapróbálkozásokat.|Nincs dimenzió|
-|d2c<br>.telemetry<br>.egress<br>.fallback|Útválasztási: kézbesíti az üzeneteket tartalék|Count|Összeg|Hányszor útválasztás az IoT Hub-üzenetek a végponthoz társított a tartalék útvonal i.|Nincs dimenzió|
-|d2c<br>.endpoints<br>.egress<br>.eventHubs|Útválasztási: kézbesíti az üzeneteket az Eseményközpont|Count|Összeg|Hányszor sikeresen útválasztás az IoT Hub Event Hub-végpontok üzenetek érkeznek.|Nincs dimenzió|
+|d2c<br>.telemetry<br>.ingress.<br>allProtocol|Telemetriai üzenetet küld kísérletek|Count|Összes|Küldését az IoT hub próbált eszköz – felhő telemetriát üzenetek száma|Nincs dimenzió|
+|d2c<br>.telemetry<br>.ingress<br>.SUCCESS|Telemetriai üzeneteket küldi|Count|Összes|Sikerült elküldeni az IoT hub eszköz – felhő telemetriát üzenetek száma|Nincs dimenzió|
+|c2d<br>.commands<br>.egress<br>.Complete<br>.SUCCESS|A parancsok befejeződött|Count|Összes|Az eszköz által végrehajtott művelet felhőből az eszközre irányuló parancsok száma|Nincs dimenzió|
+|c2d<br>.commands<br>.egress<br>.abandon<br>.SUCCESS|Elhagyott parancsok|Darabszám|Összes|Az eszköz által elhagyott felhőből az eszközre irányuló parancsok száma|Nincs dimenzió|
+|c2d<br>.commands<br>.egress<br>.Reject<br>.SUCCESS|Elutasított parancsok|Count|Összes|Az eszköz által elutasított felhőből az eszközre irányuló parancsok száma|Nincs dimenzió|
+|eszközök<br>.totalDevices|(Elavult az) összes eszköz|Darabszám|Összes|Az IoT hubban regisztrált eszközök száma|Nincs dimenzió|
+|eszközök<br>.connectedDevices<br>.allProtocol|(Elavult) csatlakoztatott eszközök |Count|Összes|Az IoT hubhoz csatlakoztatott eszközök száma|Nincs dimenzió|
+|d2c<br>.telemetry<br>.egress<br>.SUCCESS|Útválasztási: telemetriai üzenetet|Darabszám|Összes|Többször is sikeresen kézbesíti az üzeneteket az IoT Hub útválasztás használatával az összes végpontok száma. Ha egy üzenet van irányítva több végpontot, ez az érték minden egyes sikeres kézbesítés eggyel nő. Egy üzenet szállítják egyazon végpont több alkalommal, ha ez az érték minden egyes sikeres kézbesítés eggyel nő.|Nincs dimenzió|
+|d2c<br>.telemetry<br>.egress<br>.dropped|Útválasztási: telemetriai üzeneteket eldobása |Count|Összes|Hányszor üzenetek kézbesíthetetlen végpontok miatt útválasztási IoT Hub által el lettek dobva. Ez az érték nem számít üzenetet tartalék útvonal, az eldobott üzenetek jelenjenek meg nem létezik.|Nincs dimenzió|
+|d2c<br>.telemetry<br>.egress<br>.Orphaned|Útválasztási: telemetriai üzeneteket árva |Darabszám|Összes|Hányszor üzenetek által az IoT Hub-útválasztás árva is, mert (beleértve a tartalék szabály) minden olyan útválasztási szabályok nem egyeznek. |Nincs dimenzió|
+|d2c<br>.telemetry<br>.egress<br>.Invalid|Útválasztási: telemetria inkompatibilis üzenetek|Darabszám|Összes|Hányszor útválasztás az IoT Hub kézbesíti az üzeneteket egy alkalmazással a végponthoz való inkompatibilitás miatt nem sikerült. Ez az érték nem tartalmazza az újrapróbálkozásokat.|Nincs dimenzió|
+|d2c<br>.telemetry<br>.egress<br>.fallback|Útválasztási: kézbesíti az üzeneteket tartalék|Count|Összes|Hányszor útválasztás az IoT Hub-üzenetek a végponthoz társított a tartalék útvonal i.|Nincs dimenzió|
+|d2c<br>.endpoints<br>.egress<br>.eventHubs|Útválasztási: kézbesíti az üzeneteket az Eseményközpont|Darabszám|Összes|Hányszor sikeresen útválasztás az IoT Hub Event Hub-végpontok üzenetek érkeznek.|Nincs dimenzió|
 |d2c<br>.endpoints<br>.latency<br>.eventHubs|Útválasztási: Event Hub üzenet késése|Ezredmásodperc|Átlag|Átlagos késése (MS) között az IoT hub üzenet bejövő és a bejövő üzenet be egy Eseményközpont-végpontra.|Nincs dimenzió|
-|d2c<br>.endpoints<br>.egress<br>.serviceBusQueues|Útválasztási: üzenetek kézbesítése Service Bus-üzenetsorba helyezése|Count|Összeg|Hányszor sikeresen útválasztás az IoT Hub-üzenetek i a Service Bus üzenetsor-végpontokra irányuló.|Nincs dimenzió|
+|d2c<br>.endpoints<br>.egress<br>.serviceBusQueues|Útválasztási: üzenetek kézbesítése Service Bus-üzenetsorba helyezése|Darabszám|Összes|Hányszor sikeresen útválasztás az IoT Hub-üzenetek i a Service Bus üzenetsor-végpontokra irányuló.|Nincs dimenzió|
 |d2c<br>.endpoints<br>.latency<br>.serviceBusQueues|Útválasztási: Service Bus-üzenetsor üzenet késése|Ezredmásodperc|Átlag|Átlagos késése (MS) között az IoT hub üzenet bejövő és a telemetriai üzenetet bejövő be egy Service Bus-üzenetsor végpont.|Nincs dimenzió|
-|d2c<br>.endpoints<br>.egress<br>.serviceBusTopics|Útválasztási: üzenetek kézbesítése Service Bus-témakörbe|Count|Összeg|Hányszor sikeresen útválasztás az IoT Hub-i üzenetek a Service Bus-témakör végpontokat.|Nincs dimenzió|
+|d2c<br>.endpoints<br>.egress<br>.serviceBusTopics|Útválasztási: üzenetek kézbesítése Service Bus-témakörbe|Count|Összes|Hányszor sikeresen útválasztás az IoT Hub-i üzenetek a Service Bus-témakör végpontokat.|Nincs dimenzió|
 |d2c<br>.endpoints<br>.latency<br>.serviceBusTopics|Útválasztási: Service Bus-témakör üzenet késése|Ezredmásodperc|Átlag|Átlagos késése (MS) között az IoT hub üzenet bejövő és a telemetriai üzenetet bejövő be egy Service Bus-témakör végpont.|Nincs dimenzió|
-|d2c<br>.endpoints<br>.egress<br>.builtIn<br>.events|Útválasztási: kézbesíti az üzeneteket üzenetek/események|Count|Összeg|Hányszor az IoT Hub sikeresen útválasztási üzenetek érkeznek a beépített végpont (üzenetek/események).|Nincs dimenzió|
+|d2c<br>.endpoints<br>.egress<br>.builtIn<br>.events|Útválasztási: kézbesíti az üzeneteket üzenetek/események|Count|Összes|Hányszor az IoT Hub sikeresen útválasztási üzenetek érkeznek a beépített végpont (üzenetek/események).|Nincs dimenzió|
 |d2c<br>.endpoints<br>.latency<br>.builtIn.events|Útválasztási: üzenet közel valós idejű üzenetek/események|Ezredmásodperc|Átlag|Átlagos késése (MS) között az IoT hub üzenet bejövő és a telemetriai üzenetet bejövő forgalom, a beépített végpont (üzenetek/események).|Nincs dimenzió|
-|d2c<br>.endpoints<br>.egress<br>.Storage|Útválasztási: kézbesíti az üzeneteket storage|Count|Összeg|Többször az IoT Hub sikeresen útválasztási üzenetek érkeznek tárolási végpontok száma.|Nincs dimenzió|
+|d2c<br>.endpoints<br>.egress<br>.Storage|Útválasztási: kézbesíti az üzeneteket storage|Count|Összes|Többször az IoT Hub sikeresen útválasztási üzenetek érkeznek tárolási végpontok száma.|Nincs dimenzió|
 |d2c<br>.endpoints<br>.latency<br>.Storage|Útválasztási: üzenet késése storage|Ezredmásodperc|Átlag|Átlagos késése (MS) között az IoT hub üzenet bejövő és a telemetriai üzenetet bejövő be egy storage-végponthoz.|Nincs dimenzió|
-|d2c<br>.endpoints<br>.egress<br>.Storage<br>.bytes|Útválasztási: az adatokat kézbesíti storage|Bájt|Összeg|Adatok (bájt) mennyisége az IoT Hub útválasztás kézbesíti a tárolási végpontok.|Nincs dimenzió|
-|d2c<br>.endpoints<br>.egress<br>.Storage<br>.blobs|Útválasztási: blobok kézbesíteni storage|Count|Összeg|The number of times IoT Hub routing delivered blobs to storage endpoints.|Nincs dimenzió|
-|EventGridDeliveries|Event Grid kézbesítések (előzetes verzió)|Count|Összeg|Az IoT Hub gridre bocsáthatja ki az eseményeket az Event Grid a kérelmek száma. Ez a szám a sikeres és sikertelen kérelmeket tartalmazza. Az eredmény dimenzió használatával különböző típusú válaszok számának. A hol a kérelmeket a biztosítja, az esemény típusa dimenzió használatával.|Eredmény, eseménytípus|
+|d2c<br>.endpoints<br>.egress<br>.Storage<br>.bytes|Útválasztási: az adatokat kézbesíti storage|Bájt|Összes|Adatok (bájt) mennyisége az IoT Hub útválasztás kézbesíti a tárolási végpontok.|Nincs dimenzió|
+|d2c<br>.endpoints<br>.egress<br>.Storage<br>.blobs|Útválasztási: blobok kézbesíteni storage|Count|Összes|The number of times IoT Hub routing delivered blobs to storage endpoints.|Nincs dimenzió|
+|EventGridDeliveries|Event Grid kézbesítések (előzetes verzió)|Count|Összes|Az IoT Hub gridre bocsáthatja ki az eseményeket az Event Grid a kérelmek száma. Ez a szám a sikeres és sikertelen kérelmeket tartalmazza. Az eredmény dimenzió használatával különböző típusú válaszok számának. A hol a kérelmeket a biztosítja, az esemény típusa dimenzió használatával.|Eredmény, eseménytípus|
 |EventGridLatency|Event Grid késés (előzetes verzió)|Ezredmásodperc|Átlag|Átlagos késése (MS) az IoT hub event bejövő és a belépő esemény között az Event Griddel. Ez a szám az összes eseménytípust közötti átlagos. Az esemény típusa dimenzió segítségével megtekintheti az esemény egy adott típusú késését.|EventType|
-|d2c<br>.twin<br>.Read<br>.SUCCESS|A sikeres ikerírási eszközökről|Count|Összeg|Az összes sikeres eszköz által kezdeményezett ikerírási száma.|Nincs dimenzió|
-|d2c<br>.twin<br>.Read<br>.failure|Nem sikerült az iker írási eszközökről|Count|Összeg|A teljes számát a eszköz által kezdeményezett ikerírási nem sikerült.|Nincs dimenzió|
+|d2c<br>.twin<br>.Read<br>.SUCCESS|A sikeres ikerírási eszközökről|Count|Összes|Az összes sikeres eszköz által kezdeményezett ikerírási száma.|Nincs dimenzió|
+|d2c<br>.twin<br>.Read<br>.failure|Nem sikerült az iker írási eszközökről|Count|Összes|A teljes számát a eszköz által kezdeményezett ikerírási nem sikerült.|Nincs dimenzió|
 |d2c<br>.twin<br>.Read<br>.size|Válasz mérete ikerírási eszközökről|Bájt|Átlag|Az eszköz által kezdeményezett átlagos, minimális és maximális az összes sikeres, a páros olvasási.|Nincs dimenzió|
-|d2c<br>.twin<br>.Update<br>.SUCCESS|Eszközök sikeres ikereszköz-frissítések|Count|Összeg|Az összes sikeres eszköz által kezdeményezett ikereszköz-frissítések száma.|Nincs dimenzió|
-|d2c<br>.twin<br>.Update<br>.failure|Nem sikerült az eszköz az ikereszköz-frissítések|Count|Összeg|A szám az összes eszköz által kezdeményezett ikereszköz-frissítések nem sikerült.|Nincs dimenzió|
+|d2c<br>.twin<br>.Update<br>.SUCCESS|Eszközök sikeres ikereszköz-frissítések|Count|Összes|Az összes sikeres eszköz által kezdeményezett ikereszköz-frissítések száma.|Nincs dimenzió|
+|d2c<br>.twin<br>.Update<br>.failure|Nem sikerült az eszköz az ikereszköz-frissítések|Count|Összes|A szám az összes eszköz által kezdeményezett ikereszköz-frissítések nem sikerült.|Nincs dimenzió|
 |d2c<br>.twin<br>.Update<br>.size|Ikereszköz-frissítések eszközökről mérete|Bájt|Átlag|Az eszköz által kezdeményezett átlagos, minimális és maximális méretét az összes sikeres ikereszköz frissítéseket.|Nincs dimenzió|
-|c2d<br>.Methods<br>.SUCCESS|A sikeres közvetlen metódus meghívásához|Count|Összeg|Közvetlen metódus az összes sikeres hívások száma.|Nincs dimenzió|
-|c2d<br>.Methods<br>.failure|Nem sikerült a közvetlen metódus meghívásához|Count|Összeg|A teljes számát nem sikerült a közvetlen metódust hívja.|Nincs dimenzió|
+|c2d<br>.Methods<br>.SUCCESS|A sikeres közvetlen metódus meghívásához|Darabszám|Összes|Közvetlen metódus az összes sikeres hívások száma.|Nincs dimenzió|
+|c2d<br>.Methods<br>.failure|Nem sikerült a közvetlen metódus meghívásához|Count|Összes|A teljes számát nem sikerült a közvetlen metódust hívja.|Nincs dimenzió|
 |c2d<br>.Methods<br>.requestSize|Kérés mérete közvetlen metódus meghívásához|Bájt|Átlag|Az átlagos, minimális és közvetlen metódus az összes sikeres kérelmek maximális száma.|Nincs dimenzió|
 |c2d<br>.Methods<br>.responseSize|Közvetlen megpróbálkozni a válasz mérete|Bájt|Átlag|Az átlagos, minimális és a közvetlen metódus az összes sikeres válaszok maximális száma.|Nincs dimenzió|
-|c2d<br>.twin<br>.Read<br>.SUCCESS|A sikeres ikerírási háttérrendszerből|Count|Összeg|Az összes sikeres back-end által kezdeményezett ikereszköz-olvasások száma.|Nincs dimenzió|
-|c2d<br>.twin<br>.Read<br>.failure|Nem sikerült a páros olvasási háttérrendszerből|Count|Összeg|A teljes számát a back-end által kezdeményezett ikerírási nem sikerült.|Nincs dimenzió|
+|c2d<br>.twin<br>.Read<br>.SUCCESS|A sikeres ikerírási háttérrendszerből|Count|Összes|Az összes sikeres back-end által kezdeményezett ikereszköz-olvasások száma.|Nincs dimenzió|
+|c2d<br>.twin<br>.Read<br>.failure|Nem sikerült a páros olvasási háttérrendszerből|Count|Összes|A teljes számát a back-end által kezdeményezett ikerírási nem sikerült.|Nincs dimenzió|
 |c2d<br>.twin<br>.Read<br>.size|Válasz mérete ikerírási háttérrendszerből|Bájt|Átlag|Az átlagos, minimális és maximális az összes sikeres back-end által kezdeményezett a páros olvasási.|Nincs dimenzió|
-|c2d<br>.twin<br>.Update<br>.SUCCESS|Háttér sikeres ikereszköz-frissítések|Count|Összeg|Az összes sikeres back-end által kezdeményezett ikereszköz-frissítések száma.|Nincs dimenzió|
-|c2d<br>.twin<br>.Update<br>.failure|Háttér sikertelen ikereszköz-frissítések|Count|Összeg|A teljes számát a back-end által kezdeményezett ikereszköz-frissítések nem sikerült.|Nincs dimenzió|
+|c2d<br>.twin<br>.Update<br>.SUCCESS|Háttér sikeres ikereszköz-frissítések|Darabszám|Összes|Az összes sikeres back-end által kezdeményezett ikereszköz-frissítések száma.|Nincs dimenzió|
+|c2d<br>.twin<br>.Update<br>.failure|Háttér sikertelen ikereszköz-frissítések|Count|Összes|A teljes számát a back-end által kezdeményezett ikereszköz-frissítések nem sikerült.|Nincs dimenzió|
 |c2d<br>.twin<br>.Update<br>.size|A háttérben ikereszköz-frissítések mérete|Bájt|Átlag|Az átlagos, minimális és maximális méretét az összes sikeres back-end által kezdeményezett ikereszköz frissítéseket.|Nincs dimenzió|
-|TwinQueries<br>.SUCCESS|A sikeres ikereszköz-lekérdezések|Count|Összeg|Az összes sikeres ikereszköz-lekérdezések száma.|Nincs dimenzió|
-|TwinQueries<br>.failure|Sikertelen ikereszköz-lekérdezések|Count|Összeg|Összes sikertelen ikereszköz-lekérdezések száma.|Nincs dimenzió|
+|TwinQueries<br>.SUCCESS|A sikeres ikereszköz-lekérdezések|Count|Összes|Az összes sikeres ikereszköz-lekérdezések száma.|Nincs dimenzió|
+|TwinQueries<br>.failure|Sikertelen ikereszköz-lekérdezések|Darabszám|Összes|Összes sikertelen ikereszköz-lekérdezések száma.|Nincs dimenzió|
 |TwinQueries<br>.resultSize|Ikereszköz-lekérdezések eredmény mérete|Bájt|Átlag|Az átlagos, minimális és az összes sikeres ikereszköz-lekérdezés eredményének mérete legfeljebb.|Nincs dimenzió|
-|feladatok<br>.createTwinUpdateJob<br>.SUCCESS|Ikereszköz-frissítési feladatok sikeres létrehozás|Count|Összeg|Az összes sikeres létrehozás ikereszköz-frissítési feladatok száma.|Nincs dimenzió|
-|feladatok<br>.createTwinUpdateJob<br>.failure|Sikertelen létrehozás ikereszköz-frissítési feladatok|Count|Összeg|Minden létrehozására tett sikertelen ikereszköz frissítési feladatok száma.|Nincs dimenzió|
-|feladatok<br>.createDirectMethodJob<br>.SUCCESS|Metódus meghívása feladatok sikeres létrehozás|Count|Összeg|Az összes sikeres létrehozás közvetlen metódus meghívása feladatok száma.|Nincs dimenzió|
-|feladatok<br>.createDirectMethodJob<br>.failure|Metódus meghívása feladatok sikertelen létrehozás|Count|Összeg|Összes sikertelen létrehozása a közvetlen metódus meghívása feladatok száma.|Nincs dimenzió|
-|feladatok<br>.listJobs<br>.SUCCESS|Listázhatók a feladatok sikeres hívások|Count|Összeg|Az összes sikeres hívások listázhatók a feladatok száma.|Nincs dimenzió|
-|feladatok<br>.listJobs<br>.failure|Sikertelen hívások listázhatók a feladatok|Count|Összeg|Az összes sikertelen hívás listázhatók a feladatok száma.|Nincs dimenzió|
-|feladatok<br>.cancelJob<br>.SUCCESS|Megszakított feladatok sikeres|Count|Összeg|Megszakítja a feladatot az összes sikeres hívások száma.|Nincs dimenzió|
-|feladatok<br>.cancelJob<br>.failure|Sikertelen feladat általi hóközi lemondás|Count|Összeg|Megszakítja a feladatot az összes sikertelen hívások száma.|Nincs dimenzió|
-|feladatok<br>.queryJobs<br>.SUCCESS|Feladat sikeres lekérdezések|Count|Összeg|Lekérdezés projektekhez az összes sikeres hívások száma.|Nincs dimenzió|
-|feladatok<br>.queryJobs<br>.failure|Sikertelen feladat lekérdezések|Count|Összeg|Lekérdezés projektekhez az összes sikertelen hívások száma.|Nincs dimenzió|
-|feladatok<br>.completed|Befejezett feladatok|Count|Összeg|Az összes befejezett feladatok száma.|Nincs dimenzió|
-|feladatok<br>.Failed|Sikertelen feladatok|Count|Összeg|Összes sikertelen feladatok száma.|Nincs dimenzió|
-|d2c<br>.telemetry<br>.ingress<br>.sendThrottle|Szabályozási hibák száma|Count|Összeg|Eszköz átviteli miatt szabályozási hibák számának szabályozza|Nincs dimenzió|
+|Feladatok<br>.createTwinUpdateJob<br>.SUCCESS|Ikereszköz-frissítési feladatok sikeres létrehozás|Count|Összes|Az összes sikeres létrehozás ikereszköz-frissítési feladatok száma.|Nincs dimenzió|
+|Feladatok<br>.createTwinUpdateJob<br>.failure|Sikertelen létrehozás ikereszköz-frissítési feladatok|Count|Összes|Minden létrehozására tett sikertelen ikereszköz frissítési feladatok száma.|Nincs dimenzió|
+|Feladatok<br>.createDirectMethodJob<br>.SUCCESS|Metódus meghívása feladatok sikeres létrehozás|Darabszám|Összes|Az összes sikeres létrehozás közvetlen metódus meghívása feladatok száma.|Nincs dimenzió|
+|Feladatok<br>.createDirectMethodJob<br>.failure|Metódus meghívása feladatok sikertelen létrehozás|Count|Összes|Összes sikertelen létrehozása a közvetlen metódus meghívása feladatok száma.|Nincs dimenzió|
+|Feladatok<br>.listJobs<br>.SUCCESS|Listázhatók a feladatok sikeres hívások|Count|Összes|Az összes sikeres hívások listázhatók a feladatok száma.|Nincs dimenzió|
+|Feladatok<br>.listJobs<br>.failure|Sikertelen hívások listázhatók a feladatok|Count|Összes|Az összes sikertelen hívás listázhatók a feladatok száma.|Nincs dimenzió|
+|Feladatok<br>.cancelJob<br>.SUCCESS|Megszakított feladatok sikeres|Count|Összes|Megszakítja a feladatot az összes sikeres hívások száma.|Nincs dimenzió|
+|Feladatok<br>.cancelJob<br>.failure|Sikertelen feladat általi hóközi lemondás|Count|Összes|Megszakítja a feladatot az összes sikertelen hívások száma.|Nincs dimenzió|
+|Feladatok<br>.queryJobs<br>.SUCCESS|Feladat sikeres lekérdezések|Count|Összes|Lekérdezés projektekhez az összes sikeres hívások száma.|Nincs dimenzió|
+|Feladatok<br>.queryJobs<br>.failure|Sikertelen feladat lekérdezések|Darabszám|Összes|Lekérdezés projektekhez az összes sikertelen hívások száma.|Nincs dimenzió|
+|Feladatok<br>.completed|Befejezett feladatok|Darabszám|Összes|Az összes befejezett feladatok száma.|Nincs dimenzió|
+|Feladatok<br>.Failed|Sikertelen feladatok|Darabszám|Összes|Összes sikertelen feladatok száma.|Nincs dimenzió|
+|d2c<br>.telemetry<br>.ingress<br>.sendThrottle|Szabályozási hibák száma|Count|Összes|Eszköz átviteli miatt szabályozási hibák számának szabályozza|Nincs dimenzió|
 |dailyMessage<br>QuotaUsed|Használt üzenetek teljes száma|Count|Átlag|Ma használt teljes üzenetek száma. Ez az összesített érték, amely lenullázódik: 00:00 (UTC) minden nap.|Nincs dimenzió|
-|deviceDataUsage|Eszköz teljes adathasználat|Bájt|Összeg|És bármilyen eszközről csatlakozik az IotHub átvitt bájtok száma|Nincs dimenzió|
+|deviceDataUsage|Eszköz teljes adathasználat|Bájt|Összes|És bármilyen eszközről csatlakozik az IotHub átvitt bájtok száma|Nincs dimenzió|
 |totalDeviceCount|Összes eszköz (előzetes verzió)|Count|Átlag|Az IoT hubban regisztrált eszközök száma|Nincs dimenzió|
-|Csatlakoztatva<br>Eszközök száma|Csatlakoztatott eszközök (előzetes verzió)|Count|Átlag|Az IoT hubhoz csatlakoztatott eszközök száma|Nincs dimenzió|
-|Konfigurációk|Konfiguráció-metrikák|Count|Összeg|A konfigurálási műveletek metrikái|Nincs dimenzió|
+|Csatlakoztatva<br>DeviceCount|Csatlakoztatott eszközök (előzetes verzió)|Darabszám|Átlag|Az IoT hubhoz csatlakoztatott eszközök száma|Nincs dimenzió|
+|Konfigurációk|Konfiguráció-metrikák|Count|Összes|A konfigurálási műveletek metrikái|Nincs dimenzió|
 
 ## <a name="next-steps"></a>További lépések
 

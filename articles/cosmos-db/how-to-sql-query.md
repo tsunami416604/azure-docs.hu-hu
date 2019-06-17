@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: mjbrown
 ms.openlocfilehash: 943ed63aed0f64ae6cbd62c52731c6ec73ddd0bd
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66388485"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Az Azure Cosmos DB SQL lekérdezési példák
@@ -2292,7 +2292,7 @@ Egy beágyazott lekérdezésen egyes elemei a külső tároló a belső lekérde
 - [JavaScript-specifikáció](https://www.ecma-international.org/publications/standards/Ecma-262.htm) 
 - [LINQ](/previous-versions/dotnet/articles/bb308959(v=msdn.10)) 
 - Graefe, Goetz. [Értékelés technikák nagy méretű adatbázisok lekérdezése](https://dl.acm.org/citation.cfm?id=152611). *Felmérések számítástechnika ACM* 25-én nem. 2 (1993).
-- Graefe, G. "A lekérdezés-optimalizálási kaszkádokban keretrendszer." *IEEE-adatok Eng. BULL.* 18., nem. 3 (1995).
+- Graefe, G. "A lekérdezés-optimalizálási kaszkádokban keretrendszer." *IEEE-adatok Eng. BULL.* 18\., nem. 3 (1995).
 - Tan lu, Ooi. "A lekérdezés feldolgozása a párhuzamos relációs adatbázis-rendszerek." *IEEE számítógép társadalom nyomja meg* (1994).
 - Olston, Christopher, Benjamin Reed, Utkarsh Srivastava, Ravi Kumar, and Andrew Tomkins. "A Pig Latin: Nem így külső nyelvét adatfeldolgozási." *SIGMOD* (2008).
 

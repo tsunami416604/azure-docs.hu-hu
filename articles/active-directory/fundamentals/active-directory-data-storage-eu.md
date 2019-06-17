@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e82a78953c4385f7688705d4ab3f697be9c3ddbd
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 93ac5ef5f03f800a8f90259db3e382b3bc5c5e2c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66235160"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Az Európai ügyfelek az Azure Active Directory Identity adattárolás
@@ -28,9 +28,7 @@ Azok a vásárlóknak, akik egy címet, az Európai megadott az Azure AD biztos�
     
 - Minden a kétfaktoros hitelesítés használatával telefonhívással vagy SMS származik az USA-beli adatközpontok és a globális szolgáltatók által is kapcsolódóak.
 - Leküldéses értesítések használatával a Microsoft Authenticator alkalmazás amerikai adatközpontok származik. Eszköz gyártójával konkrét szolgáltatások play és ezeket a szolgáltatásokat, talán kívül az Európai emellett is származhat.
-- Az OATH-kódok érvényesítése mindig az USA-ban történik.
-
-Az Azure multi-factor Authentication (MFA-kiszolgáló) és a felhőbeli Azure MFA gyűjtött felhasználói adatokkal kapcsolatos további információkért lásd: [Azure multi-factor Authentication felhasználói adatok gyűjtésének](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting-datacollection).
+- Az OATH-kódok érvényesítése mindig az USA-ban történik. 
 
 ## <a name="microsoft-azure-active-directory-b2c-azure-ad-b2c"></a>A Microsoft Azure Active Directory B2C-vel (az Azure AD B2C)
 

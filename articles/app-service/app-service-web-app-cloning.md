@@ -16,10 +16,10 @@ ms.date: 01/14/2016
 ms.author: aelnably
 ms.custom: seodec18
 ms.openlocfilehash: 198fedbbd1e97dcda15c9124109e50664f58f8e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66139724"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Az Azure App Service-alkalmazás klónozása a PowerShell használatával
@@ -131,7 +131,7 @@ Alkalmazásklónozás ismert korlátozások a következők:
 * Adatbázis-tartalom nem klónozták
 * Kimenő IP-címek megváltozik, ha egy másik skálázási egységre klónozása
 
-### <a name="references"></a>Hivatkozások
+### <a name="references"></a>Referencia
 * [App Service Cloning](app-service-web-app-cloning.md)
 * [Az Azure App Service-alkalmazás biztonsági mentése](manage-backup.md)
 * [Az Azure Traffic Manager előzetes verziójának támogatása az Azure Resource Manager](../traffic-manager/traffic-manager-powershell-arm.md)

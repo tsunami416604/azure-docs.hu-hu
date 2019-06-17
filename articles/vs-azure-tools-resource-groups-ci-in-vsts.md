@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
 ms.openlocfilehash: 692c075b55efd138f6d731ffae43608f141abfdc
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66019767"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Az Azure DevOps szolgáltatás használatával Azure erőforráscsoport-telepítési projektek folyamatos integráció
@@ -80,7 +80,7 @@ Az alábbi eljárások végigvezetik a folyamatos üzembe helyezés konfigurál�
       
       * Előfizetési azonosító
       * Előfizetés neve
-      * Szolgáltatásnév azonosítója
+      * Service Principal Id
       * Egyszerű szolgáltatásnév kulcsa
       * Bérlő azonosítója
    6. Adjon hozzá egy szabadon választott nevet a **előfizetés** neve mező. Ez az érték jelenik meg, később a a **Azure-előfizetés** legördülő listából válassza ki az Azure DevOps-szolgáltatásokkal. 
@@ -111,7 +111,7 @@ Az alábbi eljárások végigvezetik a folyamatos üzembe helyezés konfigurál�
    
    | Paraméter | Leírás |
    | --- | --- |
-   | -ResourceGroupLocation |A földrajzihely-értéket, ahol az erőforráscsoport megtalálható, például **eastus** vagy **: USA keleti RÉGIÓJA"**. (Adja hozzá szimpla idézőjelek között, ha nincs a hely nevét.) Lásd: [Azure-régiók](https://azure.microsoft.com/regions/) további információt. |
+   | -ResourceGroupLocation |A földrajzihely-értéket, ahol az erőforráscsoport megtalálható, például **eastus** vagy **: USA keleti RÉGIÓJA"** . (Adja hozzá szimpla idézőjelek között, ha nincs a hely nevét.) Lásd: [Azure-régiók](https://azure.microsoft.com/regions/) további információt. |
    | -ResourceGroupName |A központi telepítéshez használt erőforráscsoport neve. |
    | -UploadArtifacts |Ezt a paramétert, ha jelen van, azt jelenti, hogy összetevők, amelyek fel kell tölteni az Azure-bA a helyi rendszerről. Csak ki kell állítsa ezt a kapcsolót, ha a sablon telepítéséhez van szükség a további összetevők, amelyet szeretne a PowerShell-parancsfájllal (például konfigurációs szkripteket vagy beágyazott sablonok) szakaszban. |
    | -StorageAccountName |A fázis összetevők ehhez a központi telepítéshez használt tárfiók neve. Ez a paraméter csak akkor használható, ha az üzembe helyezési összetevők, átmeneti. Ha ez a paraméter meg van adva, egy új storage-fiók jön létre, ha a parancsfájl nem létrehozva egy korábbi központi telepítés során. Ha a paraméter van megadva, a tárfiók már léteznie kell. |
@@ -172,8 +172,8 @@ Az alábbi eljárások végigvezetik a folyamatos üzembe helyezés konfigurál�
    * Művelet – select **létrehozás vagy frissítés erőforráscsoport**
    * Erőforráscsoport – válasszon ki egy erőforráscsoportot, vagy adja meg a központi telepítés egy új erőforráscsoport nevét
    * Hely – válassza ki az erőforráscsoport helyét
-   * Sablon - adja meg az elérési útja és neve a sablon üzembe helyezni fertőző **$(Build.StagingDirectory)**, például: **$(Build.StagingDirectory/DSC-CI/azuredeploy.json)**
-   * Sablon paraméterei – adja meg az elérési útját és nevét a paramétereket használja, előtag-Beillesztés **$(Build.StagingDirectory)**, például: **$(Build.StagingDirectory/DSC-CI/azuredeploy.parameters.json)**
+   * Sablon - adja meg az elérési útja és neve a sablon üzembe helyezni fertőző **$(Build.StagingDirectory)** , például: **$(Build.StagingDirectory/DSC-CI/azuredeploy.json)**
+   * Sablon paraméterei – adja meg az elérési útját és nevét a paramétereket használja, előtag-Beillesztés **$(Build.StagingDirectory)** , például: **$(Build.StagingDirectory/DSC-CI/azuredeploy.parameters.json)**
    * Sablonparaméterek felülbírálása – adja meg vagy másolja és illessze be a következő kódot:
      
      ```    

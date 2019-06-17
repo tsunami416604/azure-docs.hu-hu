@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/18/2019
 ms.author: asgang
 ms.openlocfilehash: 54a32d7f7aa4bcab73f5828da3e7eba9d25276be
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66160301"
 ---
 # <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>Lemezek kizárása a PowerShell Azure virtuális gépek replikálása
@@ -42,7 +42,7 @@ A lemezek kizárása a replikációból, mert lehet szükség:
 
 ## <a name="how-to-exclude-disks-from-replication"></a>Hogyan zárhat ki lemezeket a replikációból
 
-Ebben a példában azt replikálni egy virtuális gépet, amely egy operációs rendszer és az USA 2. nyugati régió az USA keleti régiójában lévő három adatlemezeket. A virtuális gép neve *AzureDemoVM*. 1. lemezének kizárása, és amelyet tartsa lemezeket 2. és 3.
+Ebben a példában azt replikálni egy virtuális gépet, amely egy operációs rendszer és az USA 2. nyugati régió az USA keleti régiójában lévő három adatlemezeket. A virtuális gép neve *AzureDemoVM*. 1\. lemezének kizárása, és amelyet tartsa lemezeket 2. és 3.
 
 ## <a name="get-details-of-the-virtual-machines-to-replicate"></a>Részletek a virtuális gépek replikálásához
 
