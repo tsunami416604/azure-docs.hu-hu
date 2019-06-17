@@ -9,18 +9,18 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: philmea
-ms.openlocfilehash: 1e3ec677f2c3ce2a7f942c47269fe1f70885ac02
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 01349dbc5fe98fd69ce7219ef6f2029d7bb815d0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466468"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067908"
 ---
 # <a name="introduction-to-the-azure-iot-reference-architecture"></a>Az Azure IoT-referenciaarchitektúra bemutatása
 
 Ez a cikk a [Azure IoT-referenciaarchitektúra](https://aka.ms/iotrefarchitecture) , és bemutatja a példákkal [Azure IoT-megoldásgyorsítók](about-iot-accelerators.md) javaslatait kövesse.
 
-A nyílt forráskódú [távoli megfigyelés](iot-accelerators-remote-monitoring-sample-walkthrough.md) és [Okosgyár](iot-accelerators-connected-factory-sample-walkthrough.md) megoldásgyorsítók kövesse a referencia-architektúra javaslatok számos. A megoldásgyorsítók tanulási eszközöket, vagy a saját IoT-megoldás kiindulási pontként használható.
+A nyílt forráskódú [távoli megfigyelés](iot-accelerators-remote-monitoring-sample-walkthrough.md) és [Okosgyár](iot-accelerators-connected-factory-features.md) megoldásgyorsítók kövesse a referencia-architektúra javaslatok számos. A megoldásgyorsítók tanulási eszközöket, vagy a saját IoT-megoldás kiindulási pontként használható.
 
 ## <a name="overview"></a>Áttekintés
 

@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66403a18be8337939d457c061b07de948c3e34e8
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 5f23b20d460952ae582c292c8015851b9dc2ea98
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730874"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108162"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Közzététele az Azure AD-alkalmazásproxy használatával a helyszíni alkalmazások távoli felhasználók számára
 
@@ -65,7 +65,7 @@ A mai digitális munkaterület, a felhasználók dolgozhatnak, bárhol több alk
 * Házirend kiértékelése szolgáltatás határozza meg, hogy egy felhasználó és eszköz megfelel-e a biztonsági rendszergazda által beállított szabályzat.
 * Engedélyezheti vagy megtagadhatja a szervezeti erőforrásokhoz való hozzáférés lehetővé teszi.
 
-A proxyval az Azure AD biztosítja, hogy nyomon követése a webes alkalmazások közzétett helyszíni elérni kívánó felhasználók és a felhőben. Központi felügyeleti pontot biztosítja azokat az alkalmazásokat. Bár nem kötelező, ajánlott is az Azure AD feltételes hozzáférési házirend engedélyezése. Hogyan felhasználók hitelesítve szereznek hozzáférést feltételeinek meghatározásával, további rendelkezzenek a megfelelő személyeknek alkalmazásokhoz való hozzáférést.
+A proxyval az Azure AD biztosítja, hogy nyomon követése a webes alkalmazások közzétett helyszíni elérni kívánó felhasználók és a felhőben. Központi felügyeleti pontot biztosítja azokat az alkalmazásokat. Bár nem kötelező, ajánlott is engedélyezheti az Azure AD feltételes hozzáférés. Hogyan felhasználók hitelesítve szereznek hozzáférést feltételeinek meghatározásával, további rendelkezzenek a megfelelő személyeknek alkalmazásokhoz való hozzáférést.
 
 **Megjegyzés:** Fontos megérteni, hogy az Azure AD-alkalmazásproxy célja az, egy VPN- vagy fordított proxy helyettesítő központi (vagy távoli) felhasználók, akik hozzáférhetnek a belső erőforrásokat. Nem célja a belső felhasználók számára a vállalati hálózaton. Belső felhasználók, akik szükségtelenül használja az Application Proxy bevezethet váratlan és nem kívánatos teljesítménybeli problémák.
 

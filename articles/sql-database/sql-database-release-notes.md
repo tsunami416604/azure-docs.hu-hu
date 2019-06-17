@@ -10,12 +10,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: d527c4fed9c43e62d815078c049d4d8e6f8a46b7
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 04c19c9a8603fee46914eb94b50c4f97e34e9c42
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787715"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070218"
 ---
 # <a name="sql-database-release-notes"></a>Az SQL Database kibocsátási megjegyzései
 
@@ -23,7 +23,7 @@ Ez a cikk felsorolja az új funkciók és fejlesztések az SQL Database szolgál
 
 ## <a name="features-in-public-preview"></a>Nyilvános előzetes verzióban elérhető funkciók
 
-| Szolgáltatás | Részletek |
+| Funkció | Részletek |
 | ---| --- |
 | Az önálló adatbázisok és rugalmas készletek gyorsított adatbázis-helyreállítás | További információ: [gyorsított adatbázis-helyreállítás](sql-database-accelerated-database-recovery.md).|
 |Különböző hozzávetőleges száma|További információ: [hozzávetőleges eltérők darabszáma](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing).|
@@ -32,7 +32,6 @@ Ez a cikk felsorolja az új funkciók és fejlesztések az SQL Database szolgál
 | Rugalmas adatbázis-feladatok | További információ: [létrehozását, konfigurálását és kezelését, az elastic jobs](elastic-jobs-overview.md). |
 | Rugalmas lekérdezések | További információ: [rugalmas lekérdezés – áttekintés](sql-database-elastic-query-overview.md). |
 | Rugalmas tranzakciók | [Elosztott tranzakciók több felhőalapú adatbázisban](sql-database-elastic-transactions-overview.md). |
-| Felügyelt példányokkal rendelkező példány rendezése |További információ: [a PowerShell szolgáltatás használatával az Azure SQL Database felügyelt példány létrehozása az Azure Resource Manager-sablon](./scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md).|
 |A visszajelzés memóriabeli ideiglenes (sor mód) (a kompatibilitási szint 150)|További információ: [(sor mód) visszajelzés memóriabeli ideiglenes](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback).|
 | A Lekérdezésszerkesztő az Azure Portalon |További információ: [csatlakozás és adatok lekérdezése az Azure portal SQL-Lekérdezésszerkesztő használatával](sql-database-connect-query-portal.md).|
 | Az R services / gépi tanulás az önálló adatbázisok és rugalmas készletek |További információ: [Machine Learning-szolgáltatások az Azure SQL Database](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database).|
@@ -42,11 +41,22 @@ Ez a cikk felsorolja az új funkciók és fejlesztések az SQL Database szolgál
 |SQL Analytics|További információ: [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md).|
 |Tábla változó a Funkciófrissítéseket fordítási (a kompatibilitási szint 150)|További információ: [tábla változó a Funkciófrissítéseket fordítási](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation).|
 | A felügyelt példány fenyegetésészlelési |További információ: [fenyegetésészlelés konfigurálása az Azure SQL Database felügyelt példány](sql-database-managed-instance-threat-detection.md).|
-| Felügyelt példányok időzóna támogatása|További információkért lásd: [időzóna az Azure SQL Database felügyelt példányába](sql-database-managed-instance-timezone.md).|
 | Transzparens adattitkosítás (TDE) a Bring Your Own Key (BYOK) felügyelt példányok |További információ: [Azure SQL transzparens adattitkosítás az ügyfél által felügyelt kulcsok Azure Key vaultban: Bring Your Own Key-támogatás](transparent-data-encryption-byok-azure-sql.md).|
 | &nbsp; |
 
-## <a name="may-2019"></a>2019. május
+## <a name="june-2019"></a>Június 2019
+
+### <a name="service-improvements"></a>Szolgáltatás fejlesztései
+
+| Szolgáltatás fejlesztései | Részletek |
+| --- | --- |
+| 4 virtuális magot kapnak a felügyelt példány a Gen5 hardver generációja| További információkért lásd: https://aka.ms/four-cores-sql-mi-update. |
+| Felügyelt példány – havi Azure-kredit a Visual Studio-előfizetőknek előfizetések támogatása | További információkért lásd: https://aka.ms/sql-mi-visual-studio-subscribers. |
+|Felügyelt példány nagyobb regionális korlátok| További információkért lásd: [regionális erőforrás-korlátozások](sql-database-managed-instance-resource-limits.md#regional-resource-limitations).
+| &nbsp; |
+
+
+## <a name="may-2019"></a>2019\. május
 
 ### <a name="service-improvements"></a>Szolgáltatás fejlesztései
 
@@ -54,6 +64,8 @@ Ez a cikk felsorolja az új funkciók és fejlesztések az SQL Database szolgál
 | --- | --- |
 |Végleges változata nagy kapacitású szolgáltatásszint| További információkért lásd: [akár 100 TB kapacitású szolgáltatásszint](sql-database-service-tier-hyperscale.md) és [nagy teljesítményű, nagy kapacitású az Azure database számítási feladatok skálázása első](https://azure.microsoft.com/blog/get-high-performance-scaling-for-your-azure-database-workloads-with-hyperscale/).|
 |Kiszolgáló nélküli számítási kapacitás, amely a nyilvános előzetes verzió | További információkért lásd: [SQL Database kiszolgáló nélküli (előzetes verzió)](sql-database-serverless.md).|
+|Időzóna támogatása felügyelt példányok végleges változata |További információkért lásd: [időzóna az Azure SQL Database felügyelt példányába](sql-database-managed-instance-timezone.md).|
+|Példány rendezési a felügyelt példányok végleges változata |További információ: [a PowerShell szolgáltatás használatával az Azure SQL Database felügyelt példány létrehozása az Azure Resource Manager-sablon](./scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md).|
 | A Virtuálismag-alapú vásárlási modellt használó adatbázisok tranzakciós napló sebességet és a cél IOPS nőtt| További információkért lásd: [erőforrás korlátozza az önálló adatbázisok használata a Virtuálismag-alapú vásárlási modell](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases) és [erőforrás korlátozza az önálló adatbázisok használata a DTU-alapú vásárlási modell](https://docs.microsoft.com/azure/sql-database/sql-database-dtu-resource-limits-single-databases).
 | &nbsp; |
 
@@ -84,7 +96,7 @@ Ez a cikk felsorolja az új funkciók és fejlesztések az SQL Database szolgál
 | Időzóna támogatása felügyelt példány nyilvános előzetes verzióban érhető el| További információkért lásd: [időzóna az Azure SQL Database felügyelt példányába](sql-database-managed-instance-timezone.md). |
 | Az Azure SQL Database erőforrás-szabályozása | További információkért lásd: [az Azure SQL Database erőforrás-szabályozás](https://azure.microsoft.com/blog/resource-governance-in-azure-sql-database/). || &nbsp; |
 
-## <a name="march-2019"></a>2019. március
+## <a name="march-2019"></a>2019\. március
 
 ### <a name="service-improvements"></a>Szolgáltatás fejlesztései
 
@@ -103,7 +115,7 @@ Ez a cikk felsorolja az új funkciók és fejlesztések az SQL Database szolgál
 | Frissített PowerShell-minták az önálló adatbázisok és rugalmas készletek az.sql modul használata | További információkért lásd: [önálló adatbázisok és rugalmas készletek PowerShell-minták](sql-database-powershell-samples.md#single-database-and-elastic-pools).|
 | &nbsp; |
 
-## <a name="february-2019"></a>2019. február
+## <a name="february-2019"></a>2019\. február
 
 ### <a name="service-improvements"></a>Szolgáltatás fejlesztései
 
@@ -127,7 +139,7 @@ Ez a cikk felsorolja az új funkciók és fejlesztések az SQL Database szolgál
 |Frissített importálása és exportálása a felügyelt példány támogatás bacpac-fájlba| További információkért lásd: [importálás BACPAC a](sql-database-import.md) és [exportálása BACPAC](sql-database-export.md). |
 | &nbsp; |
 
-## <a name="january-2019"></a>2019. január
+## <a name="january-2019"></a>2019\. január
 
 ### <a name="service-improvements"></a>Szolgáltatás fejlesztései
 

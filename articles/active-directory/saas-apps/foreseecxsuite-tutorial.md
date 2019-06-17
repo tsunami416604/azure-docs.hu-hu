@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 19c2ccab6685f53ba714298f66bc8e8821b4aa02
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 86d6653aceeb7a44e3758b629d74db516235fcf8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988026"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102338"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>Oktatóanyag: A CX Suite bizonyulhat az Azure Active Directory-integráció
 
@@ -55,7 +55,7 @@ Az Azure AD-be fája CX Suite integrációjának konfigurálásához hozzá kell
 
 **Adja hozzá a CX Suite bizonyulhat a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -196,7 +196,7 @@ Ebben a szakaszban engedélyezze Britta Simon CX Suite bizonyulhat a hozzáfér�
 
 Ebben a szakaszban egy Britta Simon nevű CX Suite bizonyulhat a felhasználó hoz létre. Együttműködve [fája CX Suite támogatási csapatának](mailto:support@foresee.com) a felhasználók vagy a tartományban, amelyhez hozzá kell adni a CX Suite fája platform engedélyezési lista hozzáadása. Ha a tartomány a csapata által hozzáadott, a CX Suite fája platform automatikusan kiépítve felhasználók. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

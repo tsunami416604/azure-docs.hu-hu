@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.openlocfilehash: fd8e886a78d0689ca60d8ea7c4d16639c81d5733
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65602735"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Az Azure monitorban összesítések lekérdezések naplózását.
@@ -29,9 +29,9 @@ ms.locfileid: "65602735"
 
 Ez a cikk ismerteti az összesítő függvényektől az Azure Monitor log lekérdezések, amelyek kínálnak hasznos módszer az adatok elemzéséhez. Ezek a függvények minden dolgozni a `summarize` operátort, amelynek összesített eredmények a bemeneti tábla egy táblát hoz létre.
 
-## <a name="counts"></a>Darabszámok
+## <a name="counts"></a>Száma
 
-### <a name="count"></a>darab
+### <a name="count"></a>count
 Szűrők alkalmazása után az eredményhalmazban sorok számát. Az alábbi példa adja vissza a sorok száma a _Teljesítményoptimalizált_ táblát az elmúlt 30 percben. Az eredményt adja vissza egy adott nevű oszlopban *count_* , kivéve, ha egy adott nevét rendelje hozzá:
 
 
@@ -107,7 +107,7 @@ Heartbeat
 ## <a name="percentiles-and-variance"></a>Percentiliseinek és eltérés
 Numerikus értékek kiértékelésekor általános gyakorlat, hogy azok átlagos használatával `summarize avg(expression)`. Átlagokat rendkívüli értékek csak néhány esetben írhatók le vannak hatással. A probléma megoldásához használhatja kevésbé érzékeny funkciók például `median` vagy `variance`.
 
-### <a name="percentile"></a>Percentilis
+### <a name="percentile"></a>PERCENTILIS
 A középérték megkereséséhez használja a `percentile` függvény megadása a PERCENTILIS értékkel:
 
 ```Kusto

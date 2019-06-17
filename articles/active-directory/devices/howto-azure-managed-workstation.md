@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 242926c0821e4951d2a2bd2f858f63691baf1017
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: ae7c823b9aea262556081354a108ac9509a284ab
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66307227"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110690"
 ---
 # <a name="deploy-a-secure-workstation"></a>Egy biztonságos munkaállomás üzembe helyezése
 
@@ -102,11 +102,11 @@ Az Azure AD-eszközök csatlakoztatása a folyamat megerősítésére, keresse m
 
 Az Azure Portalon keresse meg a **Azure Active Directory** > **mobilitás (MDM és MAM)**  > **a Microsoft Intune**. Módosítsa a beállítást **MDM felhasználói hatókör** való **összes** válassza **mentése** , hogy lehetővé teszi bármely ebben a forgatókönyvben az Intune által kezelt eszköz. További információ a cikkben található [Intune-ban a rövid útmutató: A Windows 10-es eszközök automatikus regisztrációjának beállítása](https://docs.microsoft.com/Intune/quickstart-setup-auto-enrollment). Az Intune konfigurációs és megfelelőségi szabályzatok egy későbbi lépésben hozunk létre.
 
-#### <a name="azure-ad-conditional-access"></a>Azure AD feltételes hozzáférés
+#### <a name="azure-ad-conditional-access"></a>Az Azure ad-beli feltételes hozzáférés
 
-Az Azure AD feltételes hozzáférés is gondoskodnak az emelt szintű rendszergazdai feladatokkal a feltételeknek megfelelő eszközökön. Felhasználók tagjai kell, hogy meghatároztuk a **biztonságos munkaállomások felhasználóinak** csoporthoz kell adnia a multi-factor authentication végrehajtása a felhőbeli alkalmazásokhoz való bejelentkezéskor. Hogy kövesse az ajánlott eljárásokkal kapcsolatos útmutatás, és a vészelérési fiókok zárni a szabályzatból. További információ a cikkben található [vészelérési fiókok kezelése az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
+Az Azure ad-beli feltételes hozzáférés is gondoskodnak az emelt szintű rendszergazdai feladatokkal a feltételeknek megfelelő eszközökön. Felhasználók tagjai kell, hogy meghatároztuk a **biztonságos munkaállomások felhasználóinak** csoporthoz kell adnia a multi-factor authentication végrehajtása a felhőbeli alkalmazásokhoz való bejelentkezéskor. Hogy kövesse az ajánlott eljárásokkal kapcsolatos útmutatás, és a vészelérési fiókok zárni a szabályzatból. További információ a cikkben található [vészelérési fiókok kezelése az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
 
-Konfigurálható a feltételes hozzáférés az Azure Portalról, keresse meg a **Azure Active Directory** > **feltételes hozzáférési** > **új szabályzat**.
+Feltételes hozzáférés konfigurálása az Azure Portalról, keresse meg a **Azure Active Directory** > **feltételes hozzáférési** > **új szabályzat**.
 
 * **Név** – biztonságos eszköz házirend szükséges
 * Hozzárendelések
@@ -122,7 +122,7 @@ Konfigurálható a feltételes hozzáférés az Azure Portalról, keresse meg a 
       * Több vezérlő – **az összes kijelölt vezérlő megkövetelése**
 * Házirend - engedélyezése **a**
 
-Szervezetek igény szerint lenne nem elérhetik a vállalati erőforrások letiltása országok házirendeket hozhat létre. További információ a IP-helyalapú feltételes hozzáférési házirendek a cikkben található [a helyfeltétel Mi az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition)
+Szervezetek igény szerint lenne nem elérhetik a vállalati erőforrások letiltása országok házirendeket hozhat létre. A cikkben található további információ a helyalapú feltételes hozzáférési szabályzatok IP [Mi az a hely feltétel, az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition)
 
 ## <a name="intune-configuration"></a>Intune-konfiguráció
 

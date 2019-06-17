@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: f8c95b2981933764bc8d6dcf8bf57e9ab40ef53b
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 4f97f6925c482cb282324dcc1c97bbfe2a701643
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66752059"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074212"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Virtual Network támogatása a prémium szintű Azure Cache Redis konfigurálása
 Az Azure Cache redis rendelkezik másik Cache gyorsítótárazási szolgáltatások, ami rugalmasságot biztosít a gyorsítótár méretét és a szolgáltatásait, beleértve a Prémiumszintű funkciókkal, például a fürtözés, az adatmegőrzés és a virtuálishálózat-támogatást is nyújt. Virtuális hálózat egy magánhálózat a felhőben. Ha az Azure Cache Redis-példányt a virtuális hálózathoz van konfigurálva, még nem nyilvánosan címezhető és a virtuális gépek és az alkalmazások a virtuális hálózaton belül csak érhetők el. Ez a cikk ismerteti, hogyan kell egy prémium szintű Azure Cache Redis-példányt a virtuális hálózat támogatásának konfigurálása.
@@ -131,7 +131,7 @@ Nincsenek nyolc bejövő port tartományon. Bejövő kérelmek ezen tartományok
 
 | Port(s) | Direction | Átviteli protokoll | Cél | Helyi IP-cím | Távoli IP |
 | --- | --- | --- | --- | --- | --- |
-| 6379, 6380 |Bejövő |TCP |Ügyfél-kommunikációhoz a Redishez, Azure terheléselosztási | (Alhálózat redis) | (Redis alhálózat), virtuális hálózat, az Azure Load Balancer |
+| 6379, 6380 |Bejövő |TCP |Ügyfél-kommunikációhoz a Redishez, Azure terheléselosztási | (Alhálózat redis) | (Redis alhálózat), virtuális hálózat, az Azure Load Balancer <sup>2</sup> |
 | 8443 |Bejövő |TCP |A Redis a belső kommunikáció | (Alhálózat redis) |(Alhálózat redis) |
 | 8500 |Bejövő |TCP/UDP |Az Azure load balancing | (Alhálózat redis) |Azure Load Balancer |
 | 10221-10231 |Bejövő |TCP |A Redis a belső kommunikáció | (Alhálózat redis) |(Redis subnet), Azure Load Balancer |
@@ -139,6 +139,8 @@ Nincsenek nyolc bejövő port tartományon. Bejövő kérelmek ezen tartományok
 | 15000-15999 |Bejövő |TCP |Ügyfél-kommunikációhoz a Redis-fürtök, az Azure load terheléselosztás | (Alhálózat redis) |Virtual Network, Azure Load Balancer |
 | 16001 |Bejövő |TCP/UDP |Az Azure load balancing | (Alhálózat redis) |Azure Load Balancer |
 | 20226 |Bejövő |TCP |A Redis a belső kommunikáció | (Alhálózat redis) |(Alhálózat redis) |
+
+<sup>2</sup> használhatja a Szolgáltatáscímke "AzureLoadBalancer" (Resource Manager) (vagy klasszikus "AZURE_LOADBALANCER") az NSG-szabályok létrehozásához.
 
 #### <a name="additional-vnet-network-connectivity-requirements"></a>További virtuális hálózatok közötti hálózati kapcsolati követelmények
 

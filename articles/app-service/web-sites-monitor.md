@@ -16,10 +16,10 @@ ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: a5d4d13d8e60cd7f273363a9bc385098e15cbb71
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60832566"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Alkalmazások figyelése az Azure App Service-ben
@@ -53,7 +53,7 @@ Az adott kvóták, korlátozások és a különféle App Service-termékváltoza
 
 ### <a name="quota-enforcement"></a>Kvóta kényszerítése
 
-Ha egy alkalmazás nagyobb, mint a *CPU (rövid)*, *CPU (nap)*, vagy *sávszélesség* kvótát, az alkalmazás le van állítva, amíg a kvóta alaphelyzetbe állítja. Ebben az időszakban minden bejövő kérelem HTTP 403-as hibát eredményez.
+Ha egy alkalmazás nagyobb, mint a *CPU (rövid)* , *CPU (nap)* , vagy *sávszélesség* kvótát, az alkalmazás le van állítva, amíg a kvóta alaphelyzetbe állítja. Ebben az időszakban minden bejövő kérelem HTTP 403-as hibát eredményez.
 
 ![403-as hibaüzenet][http403]
 
@@ -127,7 +127,7 @@ Nincsenek két mérőszám, amely tükrözi a CPU-használat:
 
 **CPU-idő**: Az alkalmazások hasznos üzemeltetett ingyenes vagy megosztott tervek, mert a kvóták egyike használja az alkalmazás CPU percben értendő.
 
-**Processzorhasználat (%)**: Akkor hasznos, mert azok kiterjeszthető az alapszintű, Standard és prémium csomagokban üzemeltetett alkalmazásokhoz. Processzorhasználat (%) összes példányra vetítve az összesített használati jól jelzi.
+**Processzorhasználat (%)** : Akkor hasznos, mert azok kiterjeszthető az alapszintű, Standard és prémium csomagokban üzemeltetett alkalmazásokhoz. Processzorhasználat (%) összes példányra vetítve az összesített használati jól jelzi.
 
 ## <a name="metrics-granularity-and-retention-policy"></a>Metrikák és a megőrzési házirend
 Egy alkalmazás és az app service-csomag metrikáinak naplózza, és a szolgáltatás a következő granularitással és adatmegőrzési szabályzatok szerint összesítve:

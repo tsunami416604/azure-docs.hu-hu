@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
 ms.openlocfilehash: b753b565b7dae6cdc244d05d051df964eda3c6f2
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65620487"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>A Microsoft Azure Storage Explorer kibocsátási megjegyzései
@@ -27,10 +27,10 @@ Ez a cikk az Azure Storage Explorer 1.8.1 kiadás kibocsátási megjegyzései, v
 
 [A Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) egy önálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 
-## <a name="version-181"></a>1.8.1-es verzió
+## <a name="version-181"></a>1\.8.1-es verzió
 5/13/2019
 
-### <a name="download-azure-storage-explorer-181"></a>1.8.1. az Azure Storage Explorer letöltése
+### <a name="download-azure-storage-explorer-181"></a>1\.8.1. az Azure Storage Explorer letöltése
 - [Az Azure Storage Explorer 1.8.1 Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
 - [Az Azure Storage Explorer 1.8.1 Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
 - [Az Azure Storage Explorer 1.8.1 linuxhoz](https://go.microsoft.com/fwlink/?LinkId=722418)
@@ -49,7 +49,7 @@ Ez a cikk az Azure Storage Explorer 1.8.1 kiadás kibocsátási megjegyzései, v
 * Az AzCopy tölthet fel az alapján számítja ki, és állítsa be az MD5-kivonat jelző engedélyezve van. [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
 
 
-### <a name="preview-features"></a>Előnézeti funkciók
+### <a name="preview-features"></a>Előzetes állapotú szolgáltatások
 
 * Eszköz kód flow bejelentkezés már elérhető az előzetes verzióra. Az engedélyezéshez, lépjen a "Betekintő" → "Használható eszköz kód folyamat Sign-in". Azt javasoljuk, hogy minden olyan felhasználók, akik rendelkeznek üres jelentkezzen be a windows próbálkozzon ezzel a funkcióval kapcsolatos problémák, előfordulhat, hogy bizonyul megbízhatóbb formájában jelentkezzen be.
 * Az Azcopyval integrált, a Storage Explorer jelenleg érhető el az előzetes verzióra. Az engedélyezéshez nyissa meg a "Betekintő", "Használata az AzCopy a továbbfejlesztett Blob feltöltése és letöltése" →. Az Azcopyval befejezett BLOB átvitelek gyorsabb lehet, és további nagy teljesítményt nyújtva.
@@ -145,7 +145,7 @@ Ez a cikk az Azure Storage Explorer 1.8.1 kiadás kibocsátási megjegyzései, v
 * Az AzCopy tölthet fel az alapján számítja ki, és állítsa be az MD5-kivonat jelző engedélyezve van. [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
 
 
-### <a name="preview-features"></a>Előnézeti funkciók
+### <a name="preview-features"></a>Előzetes állapotú szolgáltatások
 
 * Eszköz kód flow bejelentkezés már elérhető az előzetes verzióra. Az engedélyezéshez, lépjen a "Betekintő" → "Használható eszköz kód folyamat Sign-in". Azt javasoljuk, hogy minden olyan felhasználók, akik rendelkeznek üres jelentkezzen be a windows próbálkozzon ezzel a funkcióval kapcsolatos problémák, előfordulhat, hogy bizonyul megbízhatóbb formájában jelentkezzen be.
 * Az Azcopyval integrált, a Storage Explorer jelenleg érhető el az előzetes verzióra. Az engedélyezéshez nyissa meg a "Betekintő", "Használata az AzCopy a továbbfejlesztett Blob feltöltése és letöltése" →. Az Azcopyval befejezett BLOB átvitelek gyorsabb lehet, és további nagy teljesítményt nyújtva.
@@ -185,7 +185,7 @@ Ez a cikk az Azure Storage Explorer 1.8.1 kiadás kibocsátási megjegyzései, v
 
 * Storage Explorer linuxon futó szükséges bizonyos függőségekkel, először telepíteni kell. Ellenőrizze a Storage Explorer [hibaelhárítási útmutató](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) további információt.
 
-## <a name="version-170"></a>1.7.0-ás verzió
+## <a name="version-170"></a>1\.7.0-ás verzió
 3/5/2019
 
 ### <a name="download-azure-storage-explorer-170"></a>Töltse le az Azure Storage Explorer 1.7.0
@@ -198,7 +198,7 @@ Ez a cikk az Azure Storage Explorer 1.8.1 kiadás kibocsátási megjegyzései, v
 * Mostantól módosíthatja a tulajdonos és a tulajdonoscsoport, amikor kezelik az ADLS Gen2-tároló, fájlra vagy mappára vonatkozóan.
 * A Windows a Storage Explorer frissítése a terméken belüli már növekményes telepítését. Ennek eredménye egy gyorsabb frissítési élmény. Ha inkább egy tiszta telepítését, akkor letöltheti a [telepítő](https://azure.microsoft.com/features/storage-explorer/) saját maga és manuális telepítése. #1089
 
-### <a name="preview-features"></a>Előnézeti funkciók
+### <a name="preview-features"></a>Előzetes állapotú szolgáltatások
 
 * Eszköz kód flow bejelentkezés már elérhető az előzetes verzióra. Az engedélyezéshez, lépjen a "Betekintő" → "Használható eszköz kód folyamat Sign-in". Azt javasoljuk, hogy minden olyan felhasználók, akik rendelkeznek üres jelentkezzen be a windows próbálkozzon ezzel a funkcióval kapcsolatos problémák, előfordulhat, hogy bizonyul megbízhatóbb formájában jelentkezzen be. #938
 * Az Azcopyval integrált, a Storage Explorer jelenleg érhető el az előzetes verzióra. Az engedélyezéshez nyissa meg a "Betekintő", "Használata az AzCopy a továbbfejlesztett Blob feltöltése és letöltése" →. Az Azcopyval befejezett BLOB átvitelek gyorsabb lehet, és további nagy teljesítményt nyújtva.
@@ -208,10 +208,10 @@ Ez a cikk az Azure Storage Explorer 1.8.1 kiadás kibocsátási megjegyzései, v
 * Most kiválaszthatja a blob típusú szeretne feltölteni Ha az AzCopy engedélyezve van. #1111
 * Korábban Ha engedélyezve van az ADLS Gen2 Storage-fiókhoz tartozó statikus webhelyek kiszolgálására, és ezután csatolja nevére és kulcsára, Storage Explorer lenne nem észleltük, hogy hierarchikus névtér engedélyezve lett. Ez megoldottuk. #1081
 * A blob-szerkesztőben vagy a megőrzési nap van hátra, vagy az állapot szerinti rendezés megszakadt. Ez megoldottuk. #1106
-* 1.5.0, miután Storage Explorer többé nem várta befejezése előtt nevezze át vagy másolása során sikerült létrehozni a jelentést, és illessze be a kiszolgáló oldalán másolási. Ez megoldottuk. #976
+* 1\.5.0, miután Storage Explorer többé nem várta befejezése előtt nevezze át vagy másolása során sikerült létrehozni a jelentést, és illessze be a kiszolgáló oldalán másolási. Ez megoldottuk. #976
 * A kísérleti AzCopy funkció használata esetén a parancs "Parancs másolása a vágólapra" kattintás után másolt nem volt mindig együtt is futtatható. Most az átvitelt manuálisan futtatásához szükséges összes parancs másolja. #1079
-* Korábban az ADLS Gen2 blobok nem érhető el, ha a rendszer proxy mögött. Egy új, a Storage SDK által használt hálózati könyvtárat hibáját okozta. 1.7.0-ás egy probléma megoldásához kísérlet történt, de vannak, akik továbbra is tekintse meg a problémákat. A teljes javítás egy jövőbeli frissítésben elérhető lesz. #1090
-* 1.7.0-ás, a Mentés gombra a fájl párbeszédpanel most már megfelelően megjegyzi a legutóbbi helyet, egy fájlt mentette. #16
+* Korábban az ADLS Gen2 blobok nem érhető el, ha a rendszer proxy mögött. Egy új, a Storage SDK által használt hálózati könyvtárat hibáját okozta. 1\.7.0-ás egy probléma megoldásához kísérlet történt, de vannak, akik továbbra is tekintse meg a problémákat. A teljes javítás egy jövőbeli frissítésben elérhető lesz. #1090
+* 1\.7.0-ás, a Mentés gombra a fájl párbeszédpanel most már megfelelően megjegyzi a legutóbbi helyet, egy fájlt mentette. #16
 * A Tulajdonságok panelen a Termékváltozat-szint egy Storage-fiók látható volt folyamatban van, a fiók típusa. Ez megoldottuk. #654
 * Néha lehetetlen volt a bérlet a blob, még akkor is a blob nevét helyesen adta-e. Ez megoldottuk. #1070
 
@@ -259,7 +259,7 @@ Ez a cikk az Azure Storage Explorer 1.8.1 kiadás kibocsátási megjegyzései, v
 1/9/2019
 
 ### <a name="hotfixes"></a>Gyorsjavítások
-* 1.6.1-es, az entitások hozzáadta ObjectId ADLS Gen2 hozzáférés-vezérlési listák, amelyek nem voltak a felhasználók mindig csoportok hozzáadva. Csak a csoportok, csoportok és entitások, például a vállalati alkalmazások andService rendszerbiztonsági tagok kerülnek, mivel a felhasználók kerülnek. [#1049](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1049)
+* 1\.6.1-es, az entitások hozzáadta ObjectId ADLS Gen2 hozzáférés-vezérlési listák, amelyek nem voltak a felhasználók mindig csoportok hozzáadva. Csak a csoportok, csoportok és entitások, például a vállalati alkalmazások andService rendszerbiztonsági tagok kerülnek, mivel a felhasználók kerülnek. [#1049](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1049)
 * Ha egy ADLS Gen2 tárfiók nincsenek tárolók volt, és lett csatolva nevére és kulcsára, majd Storage Explorer lenne nem észleli, hogy a Tárfiók ADLS Gen2 volt-e. Ez megoldottuk. [#1048](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1048)
 * A 1.6.0-s a másolás és beillesztés során az ütközések nem felbontása kér. Ehelyett az ütköző másolása egyszerűen sikertelen lesz. Most már az első ütköző fog megkérdezi, hogy hogyan szeretne, fel kell oldani. [#1014](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1014)
 * API-korlátozások miatt le vannak tiltva a hozzáférés kezelése párbeszédpanelen objectid azonosítójának összes érvényesítése. Ellenőrzés most csak akkor történik a felhasználói UPN-EK. [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
@@ -269,7 +269,7 @@ Ez a cikk az Azure Storage Explorer 1.8.1 kiadás kibocsátási megjegyzései, v
 * Ha a jelenlegi engedélyei egy ADLS Gen2-tárolóhoz, fájl vagy mappa nem sikerül, akkor a hiba most propertly jelenik meg a tevékenységnaplóban. [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
 * A fájlok megnyitásakor létrehozott ideiglenes útvonal lerövidítette való létrehozása egy elérési útja, amely hosszabb, mint a Windows MAX_PATH esélyének csökkentése érdekében. [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
 * A Csatlakozás párbeszédpanel megfelelően megjelenik, amikor a bejelentkezett felhasználó sem, és nincsenek erőforrások csatolt. [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
-* 1.6.0-s, a Tulajdonságok HNS Blobok és fájlok mentése szeretne kódolni minden tulajdonság értékét. Ennek következtében a szükségtelen kódolás az értékeket, amelyek csak az ASCII karaktereket tartalmaz. Értékek most csak formátumban kódolt, nem ASCII-karaktereket tartalmaznak. [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
+* 1\.6.0-s, a Tulajdonságok HNS Blobok és fájlok mentése szeretne kódolni minden tulajdonság értékét. Ennek következtében a szükségtelen kódolás az értékeket, amelyek csak az ASCII karaktereket tartalmaz. Értékek most csak formátumban kódolt, nem ASCII-karaktereket tartalmaznak. [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
 * Mappa feltöltése HNS Blob-tárolóba sikertelen lesz, ha egy SAS használtak, és a SAS nincs olvasási engedéllyel. Ez megoldottuk. [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
 * Az AzCopy átvitel megszakítása nem működött. Ez megoldottuk. [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
 * Az AzCopy sikertelen lesz, ha szeretné letölteni egy mappát egy ADLS Gen2 Blob-tárolóból, ha a mappa volt, amelynek neve szóközt. Ez megoldottuk. [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
@@ -327,7 +327,7 @@ Ez a cikk az Azure Storage Explorer 1.8.1 kiadás kibocsátási megjegyzései, v
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-161"></a>1.6.1-es verzió
+## <a name="version-161"></a>1\.6.1-es verzió
 12/18/2018
 
 ### <a name="hotfixes"></a>Gyorsjavítások
@@ -338,7 +338,7 @@ Ez a cikk az Azure Storage Explorer 1.8.1 kiadás kibocsátási megjegyzései, v
 * Ha a jelenlegi engedélyei egy ADLS Gen2-tárolóhoz, fájl vagy mappa nem sikerül, akkor a hiba most propertly jelenik meg a tevékenységnaplóban. [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
 * A fájlok megnyitásakor létrehozott ideiglenes útvonal lerövidítette való létrehozása egy elérési útja, amely hosszabb, mint a Windows MAX_PATH esélyének csökkentése érdekében. [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
 * A Csatlakozás párbeszédpanel megfelelően megjelenik, amikor a bejelentkezett felhasználó sem, és nincsenek erőforrások csatolt. [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
-* 1.6.0-s, a Tulajdonságok HNS Blobok és fájlok mentése szeretne kódolni minden tulajdonság értékét. Ennek következtében a szükségtelen kódolás az értékeket, amelyek csak az ASCII karaktereket tartalmaz. Értékek most csak formátumban kódolt, nem ASCII-karaktereket tartalmaznak. [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
+* 1\.6.0-s, a Tulajdonságok HNS Blobok és fájlok mentése szeretne kódolni minden tulajdonság értékét. Ennek következtében a szükségtelen kódolás az értékeket, amelyek csak az ASCII karaktereket tartalmaz. Értékek most csak formátumban kódolt, nem ASCII-karaktereket tartalmaznak. [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
 * Mappa feltöltése HNS Blob-tárolóba sikertelen lesz, ha egy SAS használtak, és a SAS nincs olvasási engedéllyel. Ez megoldottuk. [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
 * Az AzCopy átvitel megszakítása nem működött. Ez megoldottuk. [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
 * Az AzCopy sikertelen lesz, ha szeretné letölteni egy mappát egy ADLS Gen2 Blob-tárolóból, ha a mappa volt, amelynek neve szóközt. Ez megoldottuk. [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
@@ -396,7 +396,7 @@ Ez a cikk az Azure Storage Explorer 1.8.1 kiadás kibocsátási megjegyzései, v
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-160"></a>1.6.0-s verziójának
+## <a name="version-160"></a>1\.6.0-s verziójának
 12/5/2018
 
 ### <a name="new"></a>Új
@@ -628,7 +628,7 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-142"></a>1.4.2 verziója
+## <a name="version-142"></a>1\.4.2 verziója
 09/24/2018.
 
 ### <a name="hotfixes"></a>Gyorsjavítások
@@ -683,7 +683,7 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-141"></a>1.4.1 verzió
+## <a name="version-141"></a>1\.4.1 verzió
 08/28/2018.
 
 ### <a name="hotfixes"></a>Gyorsjavítások
@@ -800,7 +800,7 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-120"></a>1.2.0-s vagy annál újabb verzió
+## <a name="version-120"></a>1\.2.0-s vagy annál újabb verzió
 06/12/2018.
 
 ### <a name="new"></a>Új
@@ -857,7 +857,7 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-110"></a>1.1.0-s verzió
+## <a name="version-110"></a>1\.1.0-s verzió
 2018/05/09
 
 ### <a name="new"></a>Új
@@ -912,7 +912,7 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
     ```
 
 
-## <a name="version-100"></a>1.0.0-s verziójának
+## <a name="version-100"></a>1\.0.0-s verziójának
 04/16 és 2018.
 
 ### <a name="new"></a>Új
@@ -1062,7 +1062,7 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-094-and-093"></a>0.9.4 és 0.9.3-as verzió
+## <a name="version-094-and-093"></a>0\.9.4 és 0.9.3-as verzió
 2018-01-21
 
 ### <a name="new"></a>Új
@@ -1173,7 +1173,7 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-091-and-090"></a>0.9.1 és 0.9.0-s verziója
+## <a name="version-091-and-090"></a>0\.9.1 és 0.9.0-s verziója
 10/20/2017
 ### <a name="new"></a>Új
 * Azure Cosmos DB előzetes verziós támogatást:
@@ -1240,7 +1240,7 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
 
 ### <a name="fixes"></a>Javítások
 * Néhány blob esetében válassza a "replace" során egy feltöltési ütközés néha eredményez a feltöltés folyamatban van az újraindítása.
-* 0.8.15 verzióban feltöltések lenne néha – megrekedésének 99 %-ában.
+* 0\.8.15 verzióban feltöltések lenne néha – megrekedésének 99 %-ában.
 * Ha a fájlok feltöltése egy fájlmegosztásba, ha úgy döntött, hogy egy könyvtárat, amely nem történt meg feltölteni, még létezik, a feltöltés sikertelen lesz.
 * Storage Explorer helytelenül lett létrehozni a közös hozzáférésű jogosultságkódok és a tábla lekérdezések időbélyegzőket.
 
@@ -1331,7 +1331,7 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
     ```
 
 
-### <a name="version-0812-and-0811-and-0810"></a>0.8.12 és 0.8.11 és 0.8.10 verzió
+### <a name="version-0812-and-0811-and-0810"></a>0\.8.12 és 0.8.11 és 0.8.10 verzió
 04/07/2017
 
 #### <a name="new"></a>Új
@@ -1358,7 +1358,7 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
 
 #### <a name="known-issues"></a>Ismert problémák
 
-* 0.8.10 termékcsaládba, szüksége lesz az összes a hitelesítő adatok frissítése.
+* 0\.8.10 termékcsaládba, szüksége lesz az összes a hitelesítő adatok frissítése.
 * Vagy nagyítása, míg a nagyítási szint rövid ideig alaphelyzetbe állíthatja az alapértelmezett szintre.
 * A fájlok feltöltése egy időben és blobok legfeljebb 3 csoportok kellene hibákat okozhat.
 * A fiók beállítások panel jelenhet meg, hogy szeretne-e a hitelesítő adatok újbóli előfizetések szűrése érdekében.
@@ -1374,7 +1374,7 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
     ```
 
 
-### <a name="version-089-and-088"></a>0.8.9 és 0.8.8 verzió
+### <a name="version-089-and-088"></a>0\.8.9 és 0.8.8 verzió
 02/23/2017
 
 >[!VIDEO https://www.youtube.com/embed/R6gonK3cYAc?ecver=1]

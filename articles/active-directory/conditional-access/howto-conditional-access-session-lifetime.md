@@ -1,5 +1,5 @@
 ---
-title: A feltételes hozzáférés az Azure Active Directory hitelesítési munkamenet-kezelés konfigurálása
+title: Hitelesítési munkamenet-kezelés konfigurálása az Azure Active Directory feltételes hozzáférés
 description: Testre szabhatja az Azure AD hitelesítési munkamenet-konfiguráció beleértve a felhasználói bejelentkezési gyakoriság és a böngésző-munkamenet megőrzését.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8897de5ee86d20e52b948f21afaef4acf196539
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: e15cf9b2e10a581c72a5035b52be47c3e2c9dfda
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988576"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112329"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Hitelesítési munkamenet-kezelés konfigurálása a feltételes hozzáférés
 
@@ -53,9 +53,9 @@ Az Azure ad-ben alapértelmezett böngésző-munkamenet megőrzését lehetővé
 Feltételes hozzáférés egy prémium szintű Azure AD-képesség, és a prémium licencre van szükség. Ha szeretne további információ a feltételes hozzáférésről, lásd: [Mi az az Azure Active Directory feltételes hozzáférés?](overview.md#license-requirements)
 
 > [!WARNING]
-> Ha használja a [konfigurálható jogkivonat élettartama](../develop/active-directory-configurable-token-lifetimes.md) funkció jelenleg nyilvános előzetes verzióban érhető el, vegye figyelembe, hogy nem támogatjuk a ugyanazon felhasználó vagy alkalmazás kombináció két különböző szabályzatokat hoznak létre: egy ezt a szolgáltatást és a egy másik a szolgáltatás konfigurálható jogkivonat élettartama. A Microsoft tervezi a konfigurálható jogkivonat élettartama szolgáltatás kivonása. október 15-én, és cserélje le a feltételes hozzáférés hitelesítési munkamenet felügyeleti funkció.  
+> Ha használja a [konfigurálható jogkivonat élettartama](../develop/active-directory-configurable-token-lifetimes.md) funkció jelenleg nyilvános előzetes verzióban érhető el, vegye figyelembe, hogy nem támogatjuk a ugyanazon felhasználó vagy alkalmazás kombináció két különböző szabályzatokat hoznak létre: egy ezt a szolgáltatást és a egy másik a szolgáltatás konfigurálható jogkivonat élettartama. A Microsoft tervezi a konfigurálható jogkivonat élettartama szolgáltatás kivonása. November 1-jén, és cserélje le a feltételes hozzáférés hitelesítési munkamenet felügyeleti funkció.  
 
-### <a name="policy-1-sign-in-frequency-control"></a>1. szabályzat: Bejelentkezési gyakoriság vezérlő
+### <a name="policy-1-sign-in-frequency-control"></a>1\. szabályzat: Bejelentkezési gyakoriság vezérlő
 
 1. Új szabályzat létrehozása
 1. Válassza ki az ügyfél környezetben, beleértve a célként megadott felhőalapú alkalmazások az összes szükséges feltételeket.
@@ -74,7 +74,7 @@ Az Azure ad-ben regisztrált Windows eszközökre jelentkezzen be az eszköz sz�
 
 Konfigurálta a különböző bejelentkezési gyakoriság az ugyanazon böngésző-munkamenet futó különböző web Apps, a legszigorúbb házirend áfakulcs mindkét alkalmazást, mert az ugyanazon böngésző-munkamenet futó összes alkalmazás egy munkamenet-jogkivonat.
 
-### <a name="policy-2-persistent-browser-session"></a>2. szabályzat: Állandó böngésző-munkamenet
+### <a name="policy-2-persistent-browser-session"></a>2\. szabályzat: Állandó böngésző-munkamenet
 
 1. Új szabályzat létrehozása
 1. Válassza ki az összes szükséges feltételeket.
@@ -86,22 +86,22 @@ Konfigurálta a különböző bejelentkezési gyakoriság az ugyanazon böngész
 1. Válasszon ki egy értéket a legördülő listából
 1. Házirend mentése
 
-![Állandó böngésző beállított feltételes hozzáférési szabályzat](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-persistent-browser.png)
+![Állandó böngésző beállított feltételes hozzáférési házirend](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-persistent-browser.png)
 
 > [!NOTE]
 > Az Azure AD feltételes hozzáférési állandó böngésző-munkamenet-konfiguráció felülírja a "tartózkodási jelentkezett be?" a vállalati arculat megjelenítése a panel az adott felhasználó számára az Azure Portalon, ha már konfigurálta a mindkét házirend beállításával.
 
-## <a name="validation"></a>Érvényesítés
+## <a name="validation"></a>Ellenőrzés
 
 A Lehetőségelemzési eszközzel szimulálása a célalkalmazás és egyéb feltételek alapján hogyan konfigurálta a házirend a felhasználói bejelentkezés. A hitelesítési munkamenet felügyeleti vezérlők az eszköz az eredmény jelenik meg.
 
-![Mi történik, ha az eredmények eszköz feltételes hozzáférés](media/howto-conditional-access-session-lifetime/conditional-access-what-if-tool-result.png)
+![Feltételes hozzáférés What If eszközt eredmények](media/howto-conditional-access-session-lifetime/conditional-access-what-if-tool-result.png)
 
 ## <a name="policy-deployment"></a>Házirend központi telepítése
 
-Győződjön meg arról, hogy a szabályzat a várt módon működik-e, hogy az ajánlott eljárás tesztelése, mielőtt éles környezetben megvalósítaná. Ideális esetben egy tesztelési bérlőn használatával győződjön meg arról, hogy az új szabályzat helyesen működik-e. További információkért tekintse meg a cikket [ajánlott eljárások az Azure Active Directory feltételes hozzáférés](best-practices.md).
+Győződjön meg arról, hogy a szabályzat a várt módon működik-e, hogy az ajánlott eljárás tesztelése, mielőtt éles környezetben megvalósítaná. Ideális esetben egy tesztelési bérlőn használatával győződjön meg arról, hogy az új szabályzat helyesen működik-e. További információkért tekintse meg a cikket [gyakorlati tanácsok az Azure Active Directory feltételes hozzáférés](best-practices.md).
 
 ## <a name="next-steps"></a>További lépések
 
-* Ha szeretné tudni, hogy a feltételes hozzáférési szabályzat konfigurálása, tekintse meg a cikket [többtényezős hitelesítés megkövetelése az Azure Active Directory feltételes hozzáférés az adott alkalmazások](app-based-mfa.md).
-* Ha készen áll a környezetnek a feltételes hozzáférési szabályzatok konfigurálhatók, tekintse meg a cikket [ajánlott eljárások az Azure Active Directory feltételes hozzáférés](best-practices.md).
+* Ha szeretné tudni, hogy a feltételes hozzáférési szabályzat konfigurálása, tekintse meg a cikket [megkövetelése MFA konkrét alkalmazások esetén az Azure Active Directory feltételes hozzáférés](app-based-mfa.md).
+* Ha készen áll a környezetnek a feltételes hozzáférési szabályzatok konfigurálhatók, tekintse meg a cikket [gyakorlati tanácsok az Azure Active Directory feltételes hozzáférés](best-practices.md).

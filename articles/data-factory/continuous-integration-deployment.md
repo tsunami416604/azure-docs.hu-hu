@@ -13,10 +13,10 @@ ms.author: gamal
 ms.reviewer: maghan
 manager: craigg
 ms.openlocfilehash: 76962975705ff53a292f41a0a54e42c5f2991a2c
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002568"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Folyamatos integráció és teljesítés (CI/CD) az Azure Data Factoryban
@@ -936,9 +936,9 @@ Ezen feltételek mellett felülbírálhatja az alapértelmezett paraméterezés 
 }
 ```
 
-### <a name="explanation"></a>Leírás:
+### <a name="explanation"></a>Magyarázat:
 
-#### <a name="pipelines"></a>Adatcsatornák
+#### <a name="pipelines"></a>Folyamatok
     
 * A tevékenységek/typeProperties/waitTimeInSeconds elérési út minden tulajdonság van paraméterezni. Ez azt jelenti, hogy minden tevékenység egy folyamatot, amely rendelkezik a kód szintű vlastnost s `waitTimeInSeconds` (például a `Wait` tevékenység) egy számot, egy alapértelmezett névvel rendelkező paraméteres van. De azt a Resource Manager-sablon nem rendelkezik alapértelmezett értékkel. Egy kötelező bemeneti csak a Resource Manager üzembe helyezése során.
 * Hasonlóképpen, egy nevű `headers` (például egy `Web` tevékenység) típussal van paraméterezve `object` (JObject). Alapértelmezett érték, amely ugyanazt az értéket, mint a forrás gyári rendelkezik.
@@ -1205,7 +1205,7 @@ Ha a Git-integrációval együtt az adat-előállító használ, és a egy CI/CD
 
 -   **Key Vault**. Az ajánlott használatakor az Azure Key Vault-alapú társított szolgáltatásokat, a fejlesztési/tesztelési vagy éles külön kulcstartók potenciálisan tartja az előnyök egy szinttel további is igénybe vehet. Beállíthatja a külön jogosultsági szintek mindegyikük számára. Nem érdemes a termelési titkos kódokhoz való engedélyekkel kell rendelkeznie a munkacsoportja többi tagjával. Azt javasoljuk, hogy az azonos titkos kód nevét keresztül valamennyi tartsa. Ha ugyanazokat a neveket, nem kell módosul a Resource Manager-sablonok a CI/CD, mivel az, hogy módosítani kell a kulcstartó nevét, amely az egyik a Resource Manager-sablon paraméterei.
 
-## <a name="unsupported-features"></a>Nem támogatott szolgáltatások
+## <a name="unsupported-features"></a>Nem támogatott funkciók
 
 -   Az egyes erőforrások nem tehető közzé, mert a data factory-entitások egymástól függenek. Eseményindítók folyamatok függnek, a folyamatok függnek az adatkészletek és más adatcsatornákat stb. Változó függőségek követése nem könnyű feladat. Ha sikerült válassza ki az erőforrásokat manuálisan közzétenni, válassza ki a teljes készletet módosításait, amelyeket közzététel után nem várt viselkedést dolgot vezetne csak egy részhalmazát is lenne.
 

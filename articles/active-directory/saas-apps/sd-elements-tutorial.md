@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: a18971125724e6e2fdc6b37de15894efb8b9071a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9e6deb8b31559b8c5add06f1771cd69df0c1f136
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65867568"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091349"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sd-elements"></a>Oktatóanyag: Az Azure Active Directory integrációja az SD-elemek
 
@@ -53,7 +53,7 @@ SD elemek integrálása az Azure AD beállításához szüksége SD-elemek hozz�
 
 **SD-elemek hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -249,7 +249,7 @@ Ez a szakasz célja az SD-elemeket Britta Simon nevű felhasználó létrehozás
 
     ![SD elemek tesztfelhasználó létrehozása](./media/sd-elements-tutorial/tutorial_sd-elements_13.png) 
 
-    a. Az a **E-mail** szövegmezőben adja meg az e-mail címét, például a felhasználó **brittasimon@contoso.com**.
+    a. Az a **E-mail** szövegmezőben adja meg az e-mail címét, például a felhasználó **brittasimon@contoso.com** .
 
     b. Az a **Utónév** szövegmezőbe írja be például a felhasználó utónevét **Britta**.
 
@@ -259,7 +259,7 @@ Ez a szakasz célja az SD-elemeket Britta Simon nevű felhasználó létrehozás
 
     e. Kattintson a **felhasználó létrehozása**.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

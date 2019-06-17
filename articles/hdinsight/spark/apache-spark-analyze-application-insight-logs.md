@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.openlocfilehash: 45cbb26eb74dd78bf46a6b148a32a7762bb31fbc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 730ecd306bf33709ed5d9fa334b64f7cd7a482dc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696874"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066489"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Az Apache Spark on HDInsight az Application Insights-telemetrianaplók elemzése
 
@@ -26,9 +26,6 @@ Ismerje meg, hogyan használható [Apache Spark](https://spark.apache.org/) a HD
 * Egy alkalmazás, amely az Application Insights használatára van konfigurálva.
 
 * Linux-alapú HDInsight-fürt létrehozásának ismerete. További információkért lásd: [HDInsight az Apache Spark létrehozása](apache-spark-jupyter-spark-sql.md).
-
-  > [!IMPORTANT]  
-  > A dokumentum lépéseinek elvégzéséhez egy Linux-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * Egy webböngészőben.
 

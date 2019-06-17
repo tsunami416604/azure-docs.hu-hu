@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 37455c278d665d05636ec120ca91b76153e53d16
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c21a923f06a768c0a9a0f2843a24583df7a7821d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60835719"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059647"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Az Azure App Service-alkalmazások diagnosztikai célú naplózásának engedélyezése
 ## <a name="overview"></a>Áttekintés
@@ -38,7 +38,7 @@ Engedélyezheti vagy letilthatja a naplók a következő típusú:
 * **Sikertelen kérelmek nyomkövetésére vonatkozó** – részletes információk a sikertelen kérelmek, beleértve a nyomkövetés feldolgozni a kérelmet, és az egyes összetevőkben ideje használja az IIS-összetevőt. Ez akkor hasznos, ha a webhely teljesítményének javítása vagy különíteni egy adott HTTP hiba. Egy mappa jön létre minden egyes hibához az alkalmazás fájlrendszerében. Fájl adatmegőrzési szabályzatok ugyanazok, mint a részletes hibanaplózást felett.
 * **Webalkalmazás-kiszolgáló naplózási** – HTTP-tranzakciót használatával kapcsolatos információkat a [W3C bővített naplófájlformátum](/windows/desktop/Http/w3c-logging). Ez hasznos, teljes webhelymetrikák például kezelt kérések, vagy hogy hány kérésnek egy adott IP-címről számának meghatározásakor.
 
-### <a name="application-diagnostics"></a>Alkalmazásdiagnosztika
+### <a name="application-diagnostics"></a>Az Application diagnostics
 Az Application diagnostics lehetővé teszi egy webalkalmazás által létrehozott adatok rögzítését. ASP.NET-alkalmazások használhatják a [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) osztályt az alkalmazásnaplóba diagnosztikai információk naplózása. Példa:
 
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
@@ -75,7 +75,7 @@ A **webkiszolgálói naplózás**, választhat **tárolási** vagy **fájlrendsz
 
 Ha a naplók tárolása a fájlrendszer, a fájlok elérhető FTP, és letöltött Zip-archívumot, Azure parancssori felület használatával.
 
-Alapértelmezés szerint naplók nem törlődnek automatikusan (kivéve a **Application Logging (fájlrendszer)**). Naplók automatikus törléséhez állítsa be a **megőrzési ideje (nap)** mező.
+Alapértelmezés szerint naplók nem törlődnek automatikusan (kivéve a **Application Logging (fájlrendszer)** ). Naplók automatikus törléséhez állítsa be a **megőrzési ideje (nap)** mező.
 
 > [!NOTE]
 > Ha Ön [a tárfiók hozzáférési kulcsainak újragenerálása](../storage/common/storage-create-storage-account.md), alaphelyzetbe kell állítania a megfelelő naplózási konfiguráció frissített kulcsok használatához. Ehhez tegye a következőket:
@@ -93,7 +93,7 @@ Mindkét tárolási helyek naplózott események az ugyanazon alapvető adatok m
 > A tárolt adatok **a blob storage-** csak érhetők el a storage-kliens vagy olyan alkalmazás, amely közvetlenül is dolgozhat a tárolórendszerek használatával. Például a Visual Studio 2013 tartalmaz, amelyek segítségével ismerje meg a blob storage a Storage Explorer, és a HDInsight érhessék el az a blob storage-ban tárolt adatokat. Egy alkalmazás, amely hozzáfér az Azure Storage egyikének használatával is kiírhatja a [Azure SDK-k](https://azure.microsoft.com/downloads/).
 >
 
-## <a name="download"></a> kézikönyv: Letöltési naplók
+## <a name="download"></a> kézikönyv: Naplók letöltése
 Diagnosztikai adatokat tárolni az alkalmazáshoz fájlrendszerben közvetlenül az FTP használatával is elérhetők. Le is tölthetők, egy Zip-archívumot az Azure CLI használatával.
 
 A könyvtárstruktúra, a naplók vannak tárolva a következőképpen történik:
@@ -192,12 +192,12 @@ Blob storage-ba történő bejelentkezéskor adatok vesszővel elválasztott ér
 | Dátum |A dátum és időpont, amikor az esemény történt |
 | Szint |Eseményszint (például hiba, figyelmeztetés, információ) |
 | Alkalmazásnév |Az alkalmazás neve |
-| Példány azonosítója |Az esemény történt az alkalmazás példánya |
+| InstanceId |Az esemény történt az alkalmazás példánya |
 | EventTickCount |A dátum és időpont, amikor az esemény történt, osztásjelek formátumban (nagyobb pontosság) |
 | EventId |Ez az esemény esemény azonosítója<p><p>Az alapértelmezett érték 0, ha nincs megadva |
 | Pid |Folyamat azonosítója |
 | TID |Az esemény előállított szál hozzászóláslánc azonosítója |
-| Üzenet |Eseménynapló-üzenet részletei |
+| Message |Eseménynapló-üzenet részletei |
 
 A blob tárolt adatokat ehhez hasonlóan néz ki az alábbi példához:
 
@@ -205,7 +205,7 @@ A blob tárolt adatokat ehhez hasonlóan néz ki az alábbi példához:
     2014-01-30T16:36:52,Error,mywebapp,6ee38a,635266966128818593,0,3096,9,An error occurred
 
 > [!NOTE]
-> ASP.NET Core, a naplózás használatával valósítható meg a [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) szolgáltató a szolgáltatói betétek további naplófájlok a blobtárolóba. További információkért lásd: [ASP.NET Core-naplózás az Azure-ban](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#logging-in-azure).
+> ASP.NET Core, a naplózás használatával valósítható meg a [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) szolgáltató a szolgáltatói betétek további naplófájlok a blobtárolóba. További információkért lásd: [ASP.NET Core-naplózás az Azure-ban](/aspnet/core/fundamentals/logging).
 >
 >
 
@@ -221,7 +221,7 @@ Sikertelen kérelmek nyomkövetési nevű XML-fájlokban van tárolva **fr ### .
 ### <a name="detailed-error-logs"></a>Részletes hibanaplókat
 Részletes hibanaplókat olyan HTML-dokumentumok, amelyek előfordult HTTP-hibák részletes információkat biztosítanak. Egyszerűen csak a HTML-dokumentumok, mivel azok tekinthet meg webböngészővel.
 
-### <a name="web-server-logs"></a>Webkiszolgáló naplói
+### <a name="web-server-logs"></a>Webkiszolgáló-naplókkal
 A webkiszolgáló-naplók használatával formázott a [W3C bővített naplófájlformátum](/windows/desktop/Http/w3c-logging). Ez az információ egy szövegszerkesztő használatával olvashatja, vagy segédprogramok használatával például elemzett [naplóelemző](https://go.microsoft.com/fwlink/?LinkId=246619).
 
 > [!NOTE]

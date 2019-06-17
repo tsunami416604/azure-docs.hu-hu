@@ -9,18 +9,18 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: a815ec4ac97f8476403f773aeedb19ff84092b03
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 0b35ef5ca3aaa7ad4169f99e2830ebea76d2759e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66752966"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074942"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Állítsa be a modell betanítása és számítási célnak 
 
-Az Azure Machine Learning szolgáltatás a modell a különböző erőforrások vagy környezetek, együttesen a betaníthatja [ __számítási céljainak__](concept-azure-machine-learning-architecture.md#compute-target). Egy számítási célnak lehet egy helyi számítógépre vagy egy felhőalapú erőforrás, például az Azure Machine Learning COMPUTE számítási, az Azure HDInsight vagy egy távoli virtuális gépen.  Is létrehozhat a modell üzembe helyezése számítási célnak leírtak szerint [", és a modellek üzembe helyezése"](how-to-deploy-and-where.md).
+Az Azure Machine Learning szolgáltatás a modell a különböző erőforrások vagy környezetek, együttesen a betaníthatja [ __számítási céljainak__](concept-azure-machine-learning-architecture.md#compute-targets). Egy számítási célnak lehet egy helyi számítógépre vagy egy felhőalapú erőforrás, például az Azure Machine Learning COMPUTE számítási, az Azure HDInsight vagy egy távoli virtuális gépen.  Is létrehozhat a modell üzembe helyezése számítási célnak leírtak szerint [", és a modellek üzembe helyezése"](how-to-deploy-and-where.md).
 
 Hozzon létre, és kezelheti az Azure Machine Learning SDK használatával az Azure Portalon, az Azure CLI-vel vagy az Azure Machine Learning a VS Code-bővítmény számítási célt. Ha egy másik szolgáltatás (például egy HDInsight-fürtöt) használatával létrehozott számítási célnak, használhatja őket az Azure Machine Learning szolgáltatás munkaterületén csatolásával.
  
@@ -75,7 +75,7 @@ A következő kód bemutatja egy példa az egy felhasználó által felügyelt k
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/runconfig.py?name=run_user_managed)]
   
-## <a name="set-up-compute-targets-with-python"></a>Állítsa be a Python használatával számítási célnak
+## <a name="set-up-in-python"></a>A Python beállítása
 
 Használja a számítási céljainak konfigurálhatja ezeket az alábbi szakaszok:
 
@@ -271,7 +271,7 @@ except ComputeTargetException:
 print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 ```
 
-## <a name="set-up-compute-in-the-azure-portal"></a>Az Azure Portalon számítási beállítása
+## <a name="set-up-in-azure-portal"></a>Állítsa be az Azure Portalon
 
 Elérheti a számítási célokhoz, amely az Azure Portalon a munkaterülethez lesznek társítva.  A portálon is használhatja:
 
@@ -357,7 +357,7 @@ A számítási célokhoz listájának megtekintéséhez a korábban ismertetett 
 1. Válassza ki __csatolása__. 
 1. A csatolás művelet állapotának megtekintéséhez a számítási célnak a listából.
 
-## <a name="set-up-compute-with-the-cli"></a>A CLI-vel számítási beállítása
+## <a name="set-up-with-cli"></a>Állítsa be a parancssori felület
 
 A számítási célokhoz, a munkaterület használatával társított érheti el a [CLI-bővítmény](reference-azure-machine-learning-cli.md) Azure Machine Learning szolgáltatás.  A parancssori felület is használhatja:
 
@@ -367,7 +367,7 @@ A számítási célokhoz, a munkaterület használatával társított érheti el
 
 További információkért lásd: [erőforrás-kezelés](reference-azure-machine-learning-cli.md#resource-management).
 
-## <a name="set-up-compute-with-vs-code"></a>Állítsa be a számítási VS Code használatával
+## <a name="set-up-with-vs-code"></a>Állítsa be a VS Code
 
 Elérheti, létrehozása és kezelése a számítási célokhoz, a munkaterület használatával társított a [VS Code-bővítménnyel](how-to-vscode-tools.md#create-and-manage-compute-targets) Azure Machine Learning szolgáltatás.
 
@@ -384,7 +384,7 @@ Miután létrehozott egy futtatási konfigurációt, használhatja azt a kísér
 >
 > Akadályozni, hogy a fájlok a pillanatkép kiterjed, hozzon létre egy [.gitignore](https://git-scm.com/docs/gitignore) vagy `.amlignore` fájlt a könyvtárban, és hozzá tud adni a fájlokat. A `.amlignore` fájlt használja ugyanazt a szintaxist, és trendeket a [.gitignore](https://git-scm.com/docs/gitignore) fájlt. Ha mindkét fájl létezik, a `.amlignore` fájl élvez elsőbbséget.
 > 
-> További információkért lásd: [pillanatképek](concept-azure-machine-learning-architecture.md#snapshot).
+> További információkért lásd: [pillanatképek](concept-azure-machine-learning-architecture.md#snapshots).
 
 ### <a name="create-an-experiment"></a>Kísérlet létrehozása
 

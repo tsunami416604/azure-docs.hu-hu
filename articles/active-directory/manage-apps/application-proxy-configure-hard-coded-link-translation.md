@@ -17,10 +17,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b0899a127566c4d06de7d42443a956c2660a7a6d
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65956908"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Átirányítási szoftveresen kötött mutató hivatkozásokat az Azure AD-alkalmazásproxyval közzétett alkalmazások
@@ -61,7 +61,7 @@ Ez a funkció használatához a felhasználónak van szüksége, töltse le a b�
 
 További információkért, hogyan konfigurálhatja ezt a beállítást, többek között tekintse át a [MyApps böngészőbővítmény](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access#download-and-install-the-my-apps-secure-sign-in-extension) dokumentációját.
 
-### <a name="option-3-link-translation-setting"></a>3. lehetőség: Hivatkozás fordítási beállítás 
+### <a name="option-3-link-translation-setting"></a>3\. lehetőség: Hivatkozás fordítási beállítás 
 
 Ha hivatkozás címfordítás engedélyezve van, az alkalmazásproxy-szolgáltatás HTML és CSS használatával keres közzétett belső hivatkozásokat, és fordítja le őket, hogy a felhasználók egy folyamatos tapasztalatokat szerezhet. A MyApps böngészőbővítmény használatával részesíti előnyben a hivatkozás fordítási beállítás, mivel a felhasználók számára egy további, nagyobb teljesítményű működés biztosít.
 
@@ -84,7 +84,7 @@ A helyszíni alkalmazások belső hivatkozások közös két típusa van:
 - **Szoftveresen kötött belső hivatkozások** hasonló más helyszíni alkalmazások `http://expenses` vagy hasonló fájlok közzétett `http://expenses/logo.jpg`. A hivatkozás fordítási szolgáltatást szoftveresen kötött belső hivatkozások működik, és módosítja őket, hogy a külső URL-címeket, a távoli felhasználók oldhatják mutasson.
 
 Az, hogy a Application Proxy hivatkozás fordítási támogatja a beágyazott HTML-kód címkék teljes listája:
-* n
+* a
 * Hang
 * Alapja
 * Gomb
@@ -97,14 +97,14 @@ Az, hogy a Application Proxy hivatkozás fordítási támogatja a beágyazott HT
 * IFRAME-keret
 * kép
 * bemenet
-* hivatkozás
+* Hivatkozás
 * MenuItem
 * meta
 * objektum
-* parancsfájl
+* script
 * source
 * Nyomon követése
-* videó
+* Videó
 
 Ezenkívül a CSS belül az URL-cím attribútum is fordítja le.
 

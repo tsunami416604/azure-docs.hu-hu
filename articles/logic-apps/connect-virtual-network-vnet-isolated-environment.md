@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.openlocfilehash: bd1f06c93a75673f86f0c52f78cad8a60f7a1a1e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65961447"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Csatlakozás az Azure virtuális hálózatok az Azure Logic Apps integrációs service-környezet (ISE) használatával
@@ -71,7 +71,7 @@ Ezek a táblázatok ismertetik a portokat a virtuális hálózat, amely az ISE-b
 > [!IMPORTANT]
 > A belső kommunikáció belül az alhálózatokra az ISE-ben szükséges ezekhez az alhálózatokhoz belül minden portok megnyitását.
 
-| Cél | Direction | Portok | Forrás-szolgáltatáscímke | Cél-szolgáltatáscímke | Megjegyzések |
+| Cél | Direction | Portok | Forrás-szolgáltatáscímke | Cél szolgáltatáscímkéje | Megjegyzések |
 |---------|-----------|-------|--------------------|-------------------------|-------|
 | Az Azure Logic Apps-kommunikációt | Kimenő | 80 & 443 | VirtualNetwork | Internet | A külső szolgáltatás, amellyel kommunikál a Logic Apps szolgáltatás függ, hogy a port |
 | Azure Active Directory | Kimenő | 80 & 443 | VirtualNetwork | AzureActiveDirectory | |
@@ -152,16 +152,16 @@ A keresőmezőbe írja be szűrőként "integrációs szolgáltatás környezet"
 
    1. Alatt a **alhálózatok** menüben válassza ki **kezelés alhálózati konfigurációt**.
 
-      ![Alhálózati konfiguráció kezelése](./media/connect-virtual-network-vnet-isolated-environment/manage-subnet.png)
+      ![Alhálózat konfigurációjának kezelése](./media/connect-virtual-network-vnet-isolated-environment/manage-subnet.png)
 
    1. Az a **alhálózatok** panelen válassza a **alhálózati**.
 
-      ![Alhálózat felvétele](./media/connect-virtual-network-vnet-isolated-environment/add-subnet.png)
+      ![Alhálózat hozzáadása](./media/connect-virtual-network-vnet-isolated-environment/add-subnet.png)
 
    1. Az a **alhálózat hozzáadása** panelen adja meg ezt az információt.
 
       * **Név**: Az alhálózat nevét
-      * **Címtartomány (CIDR-blokk)**: Az alhálózati címtartományt a virtuális hálózat és a CIDR formátumban
+      * **Címtartomány (CIDR-blokk)** : Az alhálózati címtartományt a virtuális hálózat és a CIDR formátumban
 
       ![Adja hozzá az alhálózati adatokat](./media/connect-virtual-network-vnet-isolated-environment/subnet-details.png)
 
@@ -183,7 +183,7 @@ A keresőmezőbe írja be szűrőként "integrációs szolgáltatás környezet"
 
    Ha a központi telepítés sikeres befejezését követően az Azure ezt az értesítést jelenít meg:
 
-   ![A telepítés sikerült](./media/connect-virtual-network-vnet-isolated-environment/deployment-success.png)
+   ![Üzembe helyezés sikeres](./media/connect-virtual-network-vnet-isolated-environment/deployment-success.png)
 
    Egyéb esetben kövesse az Azure-portálutasítások az üzembe helyezés hibaelhárítása.
 

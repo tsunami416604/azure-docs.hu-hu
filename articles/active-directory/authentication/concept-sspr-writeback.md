@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 749216d3fe9164857bd4abce7ba7c766e466e7d3
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 2dbf27301e738978e7f03d2423a4d23fd63c97b5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823302"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113495"
 ---
 # <a name="what-is-password-writeback"></a>Mi a jelszóvisszaíró?
 
@@ -51,8 +51,8 @@ A jelszóvisszaíró biztosítja:
 
 A jelszóvisszaíró használandó kell rendelkeznie a következő licenccel, a bérlő egyik:
 
-* Azure AD Premium P1
-* Azure AD Premium P2
+* Prémium szintű Azure AD P1
+* Prémium szintű Azure AD P2
 * Enterprise Mobility + Security E3 vagy A3
 * Enterprise Mobility + Security E5 vagy a5 csomag
 * A Microsoft 365 E3 vagy A3
@@ -152,7 +152,6 @@ Jelszavak a rendszer visszaírja a következő helyzetekben:
    * Minden rendszergazda önkiszolgáló kényszerített módosítása jelszó művelet, például a jelszó lejárati ideje
    * Minden rendszergazda önkiszolgáló jelszó-visszaállítási származó a [jelszó-visszaállítási portál](https://passwordreset.microsoftonline.com)
    * Minden végfelhasználói rendszergazda által kezdeményezett jelszó-visszaállítás a [Azure Portalon](https://portal.azure.com)
-   * Minden végfelhasználói rendszergazda által kezdeményezett jelszó-visszaállítás a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com)
 
 ## <a name="unsupported-writeback-operations"></a>A visszaírás nem támogatott műveletek
 
@@ -162,6 +161,7 @@ A jelszóban *nem* visszaírja a következő helyzetek egyikében:
    * A végfelhasználók saját jelszó alaphelyzetbe állítása a PowerShell 1-es verzió, a 2-es vagy az Azure AD Graph API használatával
 * **A rendszergazda nem támogatott műveletek**
    * Minden végfelhasználói rendszergazda által kezdeményezett jelszó-visszaállítás a PowerShell 1-es verzió, 2-es vagy az Azure AD Graph API
+   * Minden végfelhasználói rendszergazda által kezdeményezett jelszó-visszaállítás a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com)
 
 > [!WARNING]
 > A jelölőnégyzet "felhasználónak kell változtatni a jelszót a következő bejelentkezéskor" a helyszíni Active Directory felügyeleti eszközök például az Active Directory – felhasználók és számítógépek vagy az Active Directory felügyeleti központ használata nem támogatott. Ha a jelszó módosítása a helyi ne jelölje be ezt a beállítást.

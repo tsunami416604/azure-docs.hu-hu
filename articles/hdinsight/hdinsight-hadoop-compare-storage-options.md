@@ -7,20 +7,20 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: 320b8f948d08e46c43085e174dfbe838f44bac79
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: fb25386ef9282a922866e39353d84f0e339caee7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479160"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67122138"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Az Azure HDInsight-fürtökhöz való használatra tárolási lehetőségek összehasonlítása
 
 Több különböző Azure storage-szolgáltatások HDInsight-fürtök létrehozásakor választhat:
 
 * Azure Storage
-* 2. generációs Azure Data Lake Storage
-* 1. generációs Azure Data Lake Storage
+* 2\. generációs Azure Data Lake Storage
+* 1\. generációs Azure Data Lake Storage
 
 Ez a cikk ezek tárolási típusok és a hozzájuk tartozó egyedi funkciók áttekintést nyújt.
 
@@ -28,11 +28,11 @@ A következő táblázat összefoglalja az Azure Storage szolgáltatás, amely a
 
 | Storage szolgáltatás | Fiók típusa | Namespace típusa | Támogatott szolgáltatások | Támogatott teljesítményszintek | Támogatott elérési szint | HDInsight Version (HDInsight-verzió) | Fürttípus |
 |---|---|---|---|---|---|---|---|
-|2. generációs Azure Data Lake Storage| Általános célú V2 | Hierarchikus (fájlrendszer) | Blob | Standard | Gyakori, ritka elérésű, archív tárolási szint | 3.6. + | Összes |
+|2\. generációs Azure Data Lake Storage| Általános célú V2 | Hierarchikus (fájlrendszer) | Blob | Standard | Gyakori, ritka elérésű, archív tárolási szint | 3.6. + | Összes |
 |Azure Storage| Általános célú V2 | Object | Blob | Standard | Gyakori, ritka elérésű, archív tárolási szint | 3.6. + | Összes |
 |Azure Storage| Általános célú V1 | Object | Blob | Standard | – | Összes | Összes |
 |Azure Storage| Blob Storage** | Object | Blokkblob | Standard | Gyakori, ritka elérésű, archív tárolási szint | Összes | Összes |
-|1. generációs Azure Data Lake Storage| – | Hierarchikus (fájlrendszer) | – | N/A | – | Csak 3.6. | A HBase kivételével |
+|1\. generációs Azure Data Lake Storage| – | Hierarchikus (fájlrendszer) | – | N/A | – | Csak 3.6. | A HBase kivételével |
 
 ** A HDInsight-fürtök esetén csak a másodlagos tárfiókok BlobStorage típusú is lehet.
 
@@ -45,17 +45,17 @@ Létrehozhat egy fürtöt, az elsődleges és a nem kötelező másodlagos stora
 | HDInsight Version (HDInsight-verzió) | Elsődleges tároló | A másodlagos tárhelyen | Támogatott |
 |---|---|---|---|
 | 3.6 & 4.0 | Általános célú V1, általános célú V2 | Általános célú V1, általános célú v2-ben BlobStorage (Blokkblobok) | Igen |
-| 3.6 & 4.0 | Általános célú V1, általános célú V2 | 2. generációs Data Lake Storage | Nem |
-| 3.6 & 4.0 | Általános célú V1, általános célú V2 | 1. generációs Data Lake Storage | Igen |
-| 3.6 & 4.0 | Data Lake Storage Gen2 * | 2. generációs Data Lake Storage | Igen |
+| 3.6 & 4.0 | Általános célú V1, általános célú V2 | 2\. generációs Data Lake Storage | Nem |
+| 3.6 & 4.0 | Általános célú V1, általános célú V2 | 1\. generációs Data Lake Storage | Igen |
+| 3.6 & 4.0 | Data Lake Storage Gen2 * | 2\. generációs Data Lake Storage | Igen |
 | 3.6 & 4.0 | Data Lake Storage Gen2 * | Általános célú V1, általános célú v2-ben BlobStorage (Blokkblobok) | Igen |
-| 3.6 & 4.0 | 2. generációs Data Lake Storage | 1. generációs Data Lake Storage | Nem |
-| 3.6 | 1. generációs Data Lake Storage | 1. generációs Data Lake Storage | Igen |
-| 3.6 | 1. generációs Data Lake Storage | Általános célú V1, általános célú v2-ben BlobStorage (Blokkblobok) | Igen |
-| 3.6 | 1. generációs Data Lake Storage | 2. generációs Data Lake Storage | Nem |
-| 4.0 | 1. generációs Data Lake Storage | Bármely | Nem |
+| 3.6 & 4.0 | 2\. generációs Data Lake Storage | 1\. generációs Data Lake Storage | Nem |
+| 3.6 | 1\. generációs Data Lake Storage | 1\. generációs Data Lake Storage | Igen |
+| 3.6 | 1\. generációs Data Lake Storage | Általános célú V1, általános célú v2-ben BlobStorage (Blokkblobok) | Igen |
+| 3.6 | 1\. generációs Data Lake Storage | 2\. generációs Data Lake Storage | Nem |
+| 4.0 | 1\. generációs Data Lake Storage | Bármely | Nem |
 
-* = Ez lehet egy vagy több Data Lake Storage Gen2-fiókok esetében, mindaddig, amíg azok az összes beállítás az azonos felügyelt identitás fürt elérésére használhat.
+\* = Ez lehet egy vagy több Data Lake Storage Gen2-fiókok esetében, mindaddig, amíg azok az összes beállítás az azonos felügyelt identitás fürt elérésére használhat.
 
 ## <a name="use-azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>Az Azure Data Lake Storage Gen2 használata az Azure HDInsight az Apache Hadoop-keretrendszerrel
 

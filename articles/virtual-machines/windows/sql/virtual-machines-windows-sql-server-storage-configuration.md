@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: ninarn
-ms.openlocfilehash: da850b8ff9174fa310c5247cd7e99af69db28a8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 360ffb3d2c682d6bd2344cb3ae95447ff3df278d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477417"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076881"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Tárolási konfiguráció SQL Server rendszerű virtuális gépekhez
 
@@ -67,24 +67,24 @@ Ha használja a következő Resource Manager-sablonok, két premium adatlemezek 
 
 ## <a name="existing-vms"></a>Meglévő virtuális gépek
 
-Meglévő SQL Server virtuális gépekhez módosíthatja az egyes tárolási beállításai az Azure Portalon. Válassza ki a virtuális Gépet, és nyissa meg a beállítások területen válassza ki az SQL Server Configuration. Az SQL Server-konfigurációs panelen jelenik meg a jelenlegi storage használata a virtuális gép. Minden meghajtó, amely létezik a virtuális gép ezen a diagramon jelennek meg. Minden meghajtó a ténylegesen felhasznált tárterület jeleníti meg a négy részből áll:
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-* SQL-adatok
-* SQL-napló
+Meglévő SQL Server virtuális gépekhez módosíthatja az egyes tárolási beállításai az Azure Portalon. Nyissa meg a [SQL virtuális gépek erőforrás](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource), és válassza ki **áttekintése**. Az SQL Server – Áttekintés lapon látható a virtuális gép aktuális tárolási felhasználásának. Minden meghajtó, amely létezik a virtuális gép ezen a diagramon jelennek meg. Minden meghajtó a ténylegesen felhasznált tárterület jeleníti meg a négy részből áll:
+
+* SQL data
+* SQL log
 * Egyéb (az SQL tároló)
 * Elérhető
 
-![Tárolás konfigurálása a meglévő SQL Server virtuális gép](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-existing.png)
+A tárolási beállítások módosításához válassza **konfigurálása** alatt **beállítások**. 
 
-Adjon hozzá egy új meghajtót, vagy egy meglévő meghajtó bővítése a tároló konfigurálását, kattintson a Szerkesztés hivatkozásra a diagram felett.
+![Tárolás konfigurálása a meglévő SQL Server virtuális gép](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-existing.png)
 
 Konfigurációs beállításokat látja, hogy változik, attól függően, hogy ez a funkció előtt használt. Amikor első alkalommal használja, az új meghajtó tárolási követelményeit is megadhat. Ha korábban már használta ezt a szolgáltatást meghajtó létrehozása, ha szeretné, a meghajtó tárolás kiterjesztése.
 
 ### <a name="use-for-the-first-time"></a>Az első alkalommal használja
 
 Ha most először a funkció használatát, megadhatja a tároló méretének és teljesítményének vonatkozó korlátozásokat új meghajtó. Ez a tapasztalat hasonlít a kiépítés ideje lenne megtekintéséhez. A fő különbség, hogy nincs engedélye határozza meg a számítási feladat típusát. Ez a korlátozás meggátolja, hogy a virtuális gépen a létező SQL Server-konfigurációkat megszakítása.
-
-![Az SQL Server Storage csúszkák konfigurálása](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-usage-sliders.png)
 
 Az Azure létrehozza a specifikációknak új meghajtó. Ebben a forgatókönyvben az Azure storage a következő konfigurációs feladatok hajtja végre:
 
@@ -99,13 +99,11 @@ Hogyan Azure storage-beállítások konfigurálása, a további részletekért t
 
 Ha már konfigurálta az SQL Server virtuális gép tárolása, két új beállítás bővülő tárolási kimenetei. Az első lehetőség, hogy adjon hozzá egy új meghajtót, ami növelheti a virtuális gép teljesítményi szintjét.
 
-![Adjon hozzá egy új meghajtót SQL virtuális gép](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-add-new-drive.png)
-
 Azonban a meghajtó a felvett, a teljesítmény növelése érdekében extra manuális konfigurálást kell elvégeznie.
 
 ### <a name="extend-the-drive"></a>A meghajtó bővítése
 
-Bővített tárolási a másik lehetőség, hogy a meglévő meghajtó bővítése. Ez a beállítás a meghajtó számára elérhető tárterület is nő, de nem növeli a teljesítményt. A tárolókészletekkel az oszlopok száma nem módosítható, a tárolókészlet létrehozása után. Az oszlopok számát is szétteríti a adatlemezek párhuzamos írási számát határozza meg. Ezért a hozzáadott adatlemezt nem javítható a teljesítmény. Az éppen írt adatok további tárolási megoldás biztosítása csak akkor is. Ez a korlátozás is jelenti, hogy, ha a meghajtó bővítése, az oszlopok számát határozza meg minimális számát, amelyeket hozzáadhat adatlemezeket. Tehát ha négy adatlemezt egy tárolókészletet hoz létre, az oszlopok számát is négy. Kiterjeszti a tárhely, amikor hozzá kell adnia legalább négy adatlemezt.
+Bővített tárolási a másik lehetőség, hogy a meglévő meghajtó bővítése. Ez a beállítás a meghajtó számára elérhető tárterület is nő, de nem növeli a teljesítményt. A tárolókészletekkel az oszlopok száma nem módosítható, a tárolókészlet létrehozása után. Az oszlopok számát is szétteríti a adatlemezek párhuzamos írási számát határozza meg. Ezért a hozzáadott adatlemezt nem javítható a teljesítmény. Az éppen írt adatok további tárolási megoldás biztosítása csak akkor is. Ez a korlátozás is jelenti, hogy, ha a meghajtó bővítése, az oszlopok számát határozza meg minimális számát, amelyeket hozzáadhat adatlemezeket. Tehát ha négy adatlemezt egy tárolókészletet hoz létre, az oszlopok számát is négy. Minden alkalommal, amikor kiterjeszti a storage, hozzá kell adnia legalább négy adatlemezt.
 
 ![SQL virtuális gép egy meghajtó bővítése](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-a-drive.png)
 

@@ -15,10 +15,10 @@ ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3ef1656a7e8a66092de3050a8f14c5b38e0e2e6c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62123569"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Magas rendelkezésre állás beállítása a STONITH használatával SUSE
@@ -344,7 +344,7 @@ Most támasztja szolgáltatás leállítása **csomópont2** és erőforrások �
 ## <a name="9-troubleshooting"></a>9. Hibaelhárítás
 Ez a szakasz ismerteti a néhány hiba forgatókönyveket, amelyek a telepítés során előforduló is. Előfordulhat, hogy nem feltétlenül között ezeket a problémákat.
 
-### <a name="scenario-1-cluster-node-not-online"></a>1. forgatókönyv: Fürtcsomópont nincs online állapotban
+### <a name="scenario-1-cluster-node-not-online"></a>1\. forgatókönyv: Fürtcsomópont nincs online állapotban
 A csomópontokon nem jeleníti meg a Feladatátvevőfürt-kezelő online, megpróbálhatja a következő online állapotba.
 
 Az iSCSI-szolgáltatás indítása
@@ -368,7 +368,7 @@ Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal
 Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal: 10.250.22.22,3260] successful.
 Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal: 10.250.22.21,3260] successful.
 ```
-### <a name="scenario-2-yast2-does-not-show-graphical-view"></a>2. forgatókönyv: yast2 nem grafikus nézetének megjelenítése
+### <a name="scenario-2-yast2-does-not-show-graphical-view"></a>2\. forgatókönyv: yast2 nem grafikus nézetének megjelenítése
 Ebben a dokumentumban a magas rendelkezésre állású fürt beállítása a yast2 grafikus képernyő szolgál. Ha yast2 nyissa meg a grafikus ablakban látható módon, és nem Qt hiba throw, hajtsa végre az alábbi lépéseket. A grafikus ablak nyílik meg, ha a lépést kihagyhatja.
 
 **Hiba történt**
@@ -415,7 +415,7 @@ zypper -n install libyui-qt
 ![zypper-telepítés – ligyui_part2.png](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui_part2.png) Yast2 itt nyissa meg a grafikus nézetet, mostantól látható módon képesnek kell lennie.
 ![yast2-control-center.png](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
 
-### <a name="scenario-3-yast2-does-not-high-availability-option"></a>3. forgatókönyv: yast2 does nem magas rendelkezésre állási lehetőségek
+### <a name="scenario-3-yast2-does-not-high-availability-option"></a>3\. forgatókönyv: yast2 does nem magas rendelkezésre állási lehetőségek
 A magas rendelkezésre állású beállítás lesznek láthatók a yast2 vezérlőközpont a további csomagokat telepítenie kell.
 
 Yast2 használatával > Software > szoftverkezelés > Válassza ki a következő minták
@@ -448,7 +448,7 @@ Kattintson a **tovább** amikor a telepítés befejeződött
 
 ![yast2-installation-report.png](media/HowToHLI/HASetupWithStonith/yast2-installation-report.png)
 
-### <a name="scenario-4-hana-installation-fails-with-gcc-assemblies-error"></a>4. forgatókönyv: HANA telepítése meghiúsul a gcc-szerelvények hiba
+### <a name="scenario-4-hana-installation-fails-with-gcc-assemblies-error"></a>4\. forgatókönyv: HANA telepítése meghiúsul a gcc-szerelvények hiba
 A HANA telepítése meghiúsul a következő hiba miatt.
 
 ![Hana-installation-error.png](media/HowToHLI/HASetupWithStonith/Hana-installation-error.png)
@@ -457,7 +457,7 @@ A probléma elhárításához kódtárak telepítése kell (libgcc_sl és libstd
 
 ![zypper-install-lib.png](media/HowToHLI/HASetupWithStonith/zypper-install-lib.png)
 
-### <a name="scenario-5-pacemaker-service-fails"></a>5. forgatókönyv: Támasztja szolgáltatás meghiúsul
+### <a name="scenario-5-pacemaker-service-fails"></a>5\. forgatókönyv: Támasztja szolgáltatás meghiúsul
 
 A következő hiba történt a támasztja szolgáltatás indítása során.
 
@@ -508,7 +508,7 @@ Persistent=true
 
 ![Persistent.png](media/HowToHLI/HASetupWithStonith/Persistent.png)
 
-### <a name="scenario-6-node-2-unable-to-join-the-cluster"></a>6. példa: Nem lehet csatlakozni a fürthöz a 2. csomópont
+### <a name="scenario-6-node-2-unable-to-join-the-cluster"></a>6\. példa: Nem lehet csatlakozni a fürthöz a 2. csomópont
 
 Ha a csomópont2 csatlakoztatása a meglévő fürt használatával *magas rendelkezésre állás fürt-illesztési* parancsot, a következő hiba történt.
 

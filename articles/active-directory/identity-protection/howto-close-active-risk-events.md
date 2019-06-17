@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e003aec8fa5aeab587fa07acdae3a13b370a535
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 55c56674b04c4359fba741d10176fc91e3a991eb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60453511"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109032"
 ---
 # <a name="how-to-close-active-risk-events"></a>kézikönyv: Az aktív kockázati események bezárása
 
@@ -48,9 +48,9 @@ Gombra kattintva zárja be az aktív kockázati események, a következő lehet�
 
 ## <a name="require-password-reset-with-a-user-risk-policy"></a>Felhasználói kockázati házirendet az új jelszó kérése
 
-A [felhasználói kockázati feltételes hozzáférési szabályzat](howto-user-risk-policy.md) konfigurálásával jelszómódosítást kötelezővé teheti a jelszómódosítást, ha egy adott felhasználó kockázati szintje automatikusan észlelhető. 
+Konfigurálja a [feltételes hozzáférési szabályzat felhasználói kockázat](howto-user-risk-policy.md), ha egy megadott felhasználói kockázati szint automatikusan észlelt megkövetelheti a jelszó módosítása. 
 
-![Új jelszó létrehozása](./media/howto-close-active-risk-events/13.png)
+![Másik jelszó kérése](./media/howto-close-active-risk-events/13.png)
 
 A jelszó alaphelyzetbe állítása az összes aktív kockázatok események a kapcsolódó felhasználó bezárja, majd az identitás vissza biztosítható biztonságos állapotba. Felhasználói kockázati házirendet az a következő gombra kattintva zárja be aktív kockázati események, mert ez a módszer automatizált előnyben részesített módszere. Nincs nem szükséges az érintett felhasználó és a Súgó a segélyszolgálathoz vagy a rendszergazda közötti interakció.
 
@@ -65,12 +65,12 @@ Azonban a felhasználói kockázati házirend használatával nem mindig alkalma
 
 Ha egy jelszó alaphelyzetbe állításával a felhasználói kockázati házirendet használatával nem egy beállítást, az összes kockázati események zárva a manuális jelszó alaphelyzetbe állítása a felhasználók is igénybe.
 
-![Új jelszó létrehozása](./media/howto-close-active-risk-events/04.png)
+![Másik jelszó kérése](./media/howto-close-active-risk-events/04.png)
 
 
 A kapcsolódó párbeszédpanel kétféleképpen jelszó alaphelyzetbe állítása itt:
 
-![Új jelszó létrehozása](./media/howto-close-active-risk-events/05.png)
+![Másik jelszó kérése](./media/howto-close-active-risk-events/05.png)
 
 
 **Ideiglenes jelszó létrehozása** -kódjának létrehozásával egy ideiglenes jelszót, azonnal átvihetők az identitás vissza biztonságos állapotba. Ennél a módszernél az érintett felhasználók implementálására, mert tudja, mit jelent az ideiglenes jelszó szükséges. Például küldhet az új, ideiglenes jelszót a felhasználó másodlagos e-mail cím vagy a felhasználó felettesét. Mert a jelszó ideiglenes kéri a felhasználót, hogy a jelszó módosítása során a következő bejelentkezéskor.
@@ -83,7 +83,7 @@ A kapcsolódó párbeszédpanel kétféleképpen jelszó alaphelyzetbe állítá
 
 Ha a jelszó alaphelyzetbe állítása lehetőség nem az Ön számára, is bezárhatja az összes kockázati eseményt. 
 
-![Új jelszó létrehozása](./media/howto-close-active-risk-events/03.png)
+![Másik jelszó kérése](./media/howto-close-active-risk-events/03.png)
 
 Amikor rákattint **az összes esemény elvetését**, az összes esemény bezárása és az érintett felhasználó már nem veszélyben van. Azonban ez a módszer nincs hatással a meglévő jelszót, mert azt nem állapotba hozza a kapcsolódó identitás vissza biztonságos állapotban. A metódus az előnyben részesített használati eset az aktív kockázati események törölt felhasználó. 
 
