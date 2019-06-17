@@ -113,12 +113,12 @@ Ezeket az elemeket kell kezelni, mint a bizalmas adatok és a bővítmények vé
 | publisher | Microsoft.Compute.Extensions | string |
 | type | CustomScript | string |
 | typeHandlerVersion | 2.0 | int |
-| fileUris (például:) | https://github.com/MyProject/Archive/MyPythonScript.py | tömb |
+| fileUris (például:) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
 | commandToExecute (például:) | python MyPythonScript.py \<my-param1> | string |
 | script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | string |
-| skipDos2Unix (például:) | false | logikai |
-| időbélyegző (például:) | 123456789 | 32 bites egész szám |
-| storageAccountName (e.g) | examplestorageacct | string |
+| skipDos2Unix (például:) | false | boolean |
+| timestamp (például:) | 123456789 | 32 bites egész szám |
+| storageAccountName (például:) | examplestorageacct | string |
 | storageAccountKey (például:) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
 
 ### <a name="property-value-details"></a>A tulajdonság értéke részletei
