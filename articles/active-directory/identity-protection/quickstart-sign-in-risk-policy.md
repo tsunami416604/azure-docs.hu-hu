@@ -1,8 +1,8 @@
 ---
 title: Rövid útmutató – hozzáférés letiltása az Azure Active Directory Identity Protection egy munkamenet kockázati észlelésekor |} A Microsoft Docs
-description: Ebben a rövid útmutatóban megismerheti, hogy hogyan konfigurálhat egy Azure Active Directory (Azure AD) Identity Protection bejelentkezési kockázat feltételes hozzáférési szabályzat blokkolja a bejelentkezések alapján a munkamenet kockázatok.
+description: Ebben a rövid útmutatóban megismerheti az Azure Active Directory (Azure AD) Identity Protection bejelentkezési kockázat blokkolása bejelentkezések munkamenet kockázat alapján feltételes hozzáférési szabályzat konfigurálása.
 services: active-directory
-keywords: Identitásvédelem, alkalmazások, a feltételes hozzáférés az Azure ad-ben, a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési szabályzatokat a feltételes hozzáférés
+keywords: Identitásvédelem, a feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-ben a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési szabályzatok
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -17,18 +17,18 @@ ms.date: 09/13/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f5127342f97a90103ef56efbd7465832440ec0f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: c04d1a01c0ffd69e70dfa3b88b4f3c7f4b3576d4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60381830"
+ms.locfileid: "67108808"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>Gyors útmutató: Letiltja a hozzáférést az Azure Active Directory Identity Protection egy munkamenet kockázati észlelésekor  
 
 A védett környezet megtartásához érdemes gyanús felhasználó bejelentkezésének blokkolására. Az Azure Active Directory (Azure AD) Identity Protection minden bejelentkezési elemzi, és kiszámítja a valószínűsége, hogy egy bejelentkezési kísérlet nem hajtottak végre egy felhasználói fiók jogos tulajdonosa. Annak a valószínűségét (alacsony, közepes, nagy) formájában bejelentkezési kockázati szint nevű számított érték jelzi. A bejelentkezési kockázati feltétellel beállításával konfigurálhatja a bejelentkezési kockázat feltételes hozzáférési szabályzatot, konkrét bejelentkezési kockázati szinteknek megfelelően válaszolnak. 
 
-Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a bejelentkezési kockázat feltételes hozzáférési szabályzatot, amely blokkolja a bejelentkezés során egy közepes méretű, és a fenti bejelentkezési kockázati szint észlelhető. 
+Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a feltételes hozzáférési szabályzatot, amely blokkolja a bejelentkezés során egy közepes méretű bejelentkezési kockázat és a fenti bejelentkezési kockázati szint észlelt. 
 
 ![Szabályzat létrehozása](./media/quickstart-sign-in-risk-policy/1004.png)
 
@@ -110,7 +110,7 @@ Ez a szakasz bemutatja, hogyan hozhat létre a szükséges bejelentkezési kock�
 14. A szabályzat lapján kattintson a **mentése**.  
 
 
-## <a name="test-your-conditional-access-policy"></a>A feltételes hozzáférési szabályzat tesztelése
+## <a name="test-your-conditional-access-policy"></a>A feltételes hozzáférési házirend tesztelése
 
 Ha tesztelni szeretné a szabályzatot, próbálja meg, jelentkezzen be a [az Azure portal](https://portal.azure.com) , **Alan Charon** a Tor böngészővel. A bejelentkezési kísérlet a feltételes hozzáférési szabályzat által le kell tiltani.
 
@@ -119,7 +119,7 @@ Ha tesztelni szeretné a szabályzatot, próbálja meg, jelentkezzen be a [az Az
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölje a tesztfelhasználó számára, a Tor böngészőben, és tiltsa le a bejelentkezési kockázat feltételes hozzáférési szabályzatot:
+Ha már nincs rá szükség, törölje a tesztfelhasználó számára, a tor-alapú böngészőt, és tiltsa le a feltételes hozzáférési szabályzatot bejelentkezési kockázati:
 
 - Ha nem ismeri az Azure AD-felhasználó törlése, lásd: [hozzáadása vagy törlése a felhasználók](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
 

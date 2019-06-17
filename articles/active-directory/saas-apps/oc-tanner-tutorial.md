@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 21cbef1532928d51ba0c9f11e80304933df505b1
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 8814dc9ba94ca7fa56a2225c71895520467bf05f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65891627"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67095824"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oc-tanner---appreciatehub"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező O.C. Péter - AppreciateHub
 
@@ -53,7 +53,7 @@ O.C. integrációjának konfigurálása Péter - AppreciateHub az Azure AD-be, h
 
 **O.C. hozzáadása Péter - AppreciateHub katalógusból, hajtsa végre a következő lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -197,7 +197,7 @@ Ez a szakasz célja az, hogy O.C. Britta Simon nevű felhasználó létrehozása
 
 Kérje meg a [O.C. Péter - AppreciateHub támogatási csapatának](mailto:sso@octanner.com) , amely rendelkezik nameID attribútum Britta Simon felhasználóneve megegyezik az Azure AD-felhasználó létrehozásához.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

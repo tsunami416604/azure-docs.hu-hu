@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eba63f8295fb5bebffdc8480f763c852521e331b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ae7f47fcbdf61caa95e49a34bcfd093d3370f769
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65859205"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107301"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező ADP
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a ADP konfigurálásához hozzá kell ADP a katalógus
 
 **ADP hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -169,7 +169,7 @@ Az egyszeri bejelentkezés konfigurálása **ADP** oldalán, fel kell töltenie 
 > Az alkalmazottak, akik ADP szolgáltatásait összevont hozzáférést igényelnek a ADP service-alkalmazáshoz, és ezt követően kell hozzárendelni, a felhasználók kell hozzárendelni, az adott ADP szolgáltatásba.
 A ADP képviselőjével megerősítését megérkezésekor a ADP szolgáltatás(ok) és hozzárendelése és kezelése felhasználók beállítása az adott ADP szolgáltatásokhoz való hozzáférés szabályozása.
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -296,7 +296,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ez a szakasz célja ADP Britta Simon nevű felhasználó létrehozásához. Együttműködve [ADP támogatási csapatának](https://www.adp.com/contact-us/overview.aspx) a felhasználók hozzáadása a ADP fiókban. 
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 9765af13a22a0ae9db8a45c396e7d5a32b71b79c
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 5dc2587a0c127106d5afb41e20eca43919065f1b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730328"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67118787"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Az Azure digitális Twins figyelésének konfigurálása
 
@@ -68,11 +68,11 @@ Diagnosztikai naplózás közé:
 Egy példánya számára a diagnosztikai naplók engedélyezése:
 
 1. Nyissa meg az erőforrást az Azure Portalon.
-1. Kattintson a **diagnosztikai beállítások**:
+1. Válassza ki **diagnosztikai beállítások**:
 
     [![Diagnosztikai beállítások egy](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
 
-1. Kattintson a **diagnosztika bekapcsolása** adatgyűjtéshez (Ha korábban nem engedélyezve).
+1. Válassza ki **diagnosztika bekapcsolása** adatgyűjtéshez (Ha korábban nem engedélyezve).
 1. Töltse ki a kívánt mezőket, és válassza ki, hogyan és hol adatok lesznek mentve:
 
     [![Diagnosztikai beállítások két](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
@@ -101,7 +101,7 @@ Teljes napló lekérdezése által biztosított [naplózza az Azure Monitor](../
 
     [![A log analytics](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
 
-1. Ha még nem rendelkezik egy **Log Analytics-munkaterület** példányt hozhat létre egy munkaterületet kattintva a **Hozzáadás** gombra:
+1. Ha még nem rendelkezik egy **Log Analytics-munkaterület** példány, létrehozhat egy munkaterület kiválasztásával a **Hozzáadás** gombra:
 
     [![OMS-létrehozásához](media/how-to-configure-monitoring/log-analytics-oms.png)](media/how-to-configure-monitoring/log-analytics-oms.png#lightbox)
 
@@ -114,7 +114,7 @@ Hatékony lekérdezési műveletekkel kapcsolatos további információkért lá
 > [!NOTE]
 > Események küldése során egy 5 perces késleltetés tapasztalhat **Log Analytics-munkaterület** először.
 
-Az Azure Monitor naplóira is biztosítanak a hatékony hiba- és riasztási értesítések szolgáltatásokat, amelyek kattintva tekinthet meg **diagnosztizálása és a problémák megoldásához**:
+Az Azure Monitor naplóira is biztosítanak a hatékony hiba- és riasztási értesítések szolgáltatásokat, amelyek kijelölésével tekinthet meg **diagnosztizálása és a problémák megoldásához**:
 
    [![Figyelmeztetés és hiba értesítések](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
 

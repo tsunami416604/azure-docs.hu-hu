@@ -3,17 +3,17 @@ title: Beállítja a eszköz használata az Azure IoT Central alkalmazáshoz |} 
 description: Kezelőként használata az eszköz beállítása az Azure IoT Central alkalmazáshoz.
 author: ellenfosborne
 ms.author: elfarber
-ms.date: 02/05/2019
+ms.date: 06/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: a28cf68eb449b563d93a139b830752748c448dd6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68599a539b3d79b759142d2178aa753f895ea37f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60517353"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052941"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Eszköz használata az Azure IoT központi alkalmazás beállítása
 
@@ -50,7 +50,7 @@ Miután létrehozta az eszköz beállítása, konfigurálhatja a **irányítópu
 
 1. Válassza ki az eszköz beállítása.
 
-1. Kattintson az **Irányítópult** fülre.
+1. Válassza ki az **Irányítópult** lapot.
 
 1. Válassza a **Szerkesztés** elemet.
 
@@ -73,7 +73,7 @@ Miután létrehozta az eszköz beállítása, konfigurálhatja a **irányítópu
     1. Válasszon **rács** a jobb oldali ablaktáblán.
     1. A rács adjon egy **cím**.
     1. Válassza ki az oszlopok kiválasztásával megjelenítendő **hozzáadása/eltávolítása**. A felugró panelen válassza ki a jelenjenek, és válassza a jobbra mutató nyílra, válassza ki azt az oszlopban.
-    1. Kattintson az **OK** gombra.
+    1. Válassza az **OK** gombot.
     1. Válassza a **Mentés** elemet.
 
         ![Mentse a rács](media/howto-use-device-sets/image9.png)
@@ -115,7 +115,7 @@ Miután létrehozta az eszköz beállítása, konfigurálhatja a **lista**. A **
 
     ![Oszlop kiválasztása](media/howto-use-device-sets/image12.png)
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** gombot.
 
 ## <a name="analytics"></a>Elemzés
 

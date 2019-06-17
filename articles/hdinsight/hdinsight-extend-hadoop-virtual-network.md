@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.openlocfilehash: 46fa1c5a4874508cf8e2d288a99c908744347b69
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.date: 06/04/2019
+ms.openlocfilehash: 4bfbce7dd985f3ebf67fde671d83acf30623b641
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480082"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055406"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Az Azure Virtual Network használata Azure HDInsight kiterjesztése
 
@@ -25,7 +25,7 @@ Ismerje meg, hogyan használható a HDInsight- [Azure Virtual Network](../virtua
 * Közvetlen hozzáférés [Apache Hadoop](https://hadoop.apache.org/) szolgáltatásokat, amelyek nem érhető el nyilvánosan az interneten keresztül. Ha például [Apache Kafka](https://kafka.apache.org/) API-k vagy a [Apache HBase](https://hbase.apache.org/) Java API-t.
 
 > [!IMPORTANT]  
-> 2019. február 28., miután a hálózati erőforrások (például a hálózati adapterek, LBs stb.) egy virtuális hálózaton létrehozott új fürtök esetében a HDInsight fürt azonos erőforráscsoportban jön létre. Korábban ezeket az erőforrásokat kiépített virtuális hálózat az erőforráscsoportban. Nem történik változás az aktuális futó fürtök és ezeket a virtuális hálózat nélkül létrehozott fürtök.
+> 2019\. február 28., miután a hálózati erőforrások (például a hálózati adapterek, LBs stb.) egy virtuális hálózaton létrehozott új fürtök esetében a HDInsight fürt azonos erőforráscsoportban jön létre. Korábban ezeket az erőforrásokat kiépített virtuális hálózat az erőforráscsoportban. Nem történik változás az aktuális futó fürtök és ezeket a virtuális hálózat nélkül létrehozott fürtök.
 
 ## <a name="prerequisites-for-code-samples-and-examples"></a>Kódminták és példák előfeltételei
 
@@ -223,7 +223,7 @@ Felügyelt szolgáltatásként HDInsight a HDInsight állapota nem korlátozott 
 
 ![Az Azure egyéni virtuális hálózatban létrehozott HDInsight entitásokat ábrája](./media/hdinsight-virtual-network-architecture/vnet-diagram.png)
 
-### <a id="hdinsight-ip"></a> HDInsight hálózati biztonsági csoportokkal
+### <a name="hdinsight-with-network-security-groups"></a>HDInsight hálózati biztonsági csoportokkal
 
 Ha azt tervezi, hogy használatával **hálózati biztonsági csoportok** szabályozhatja a hálózati forgalom, a HDInsight telepítése előtt a következő műveletek végrehajtásához:
 
@@ -291,11 +291,11 @@ Ha hálózati biztonsági csoportokat használ, engedélyeznie kell az Azure ál
     | &nbsp; | Dél-India | 104.211.223.67<br/>104.211.216.210 | \*:443 | Bejövő |
     | Japán | Kelet-Japán | 13.78.125.90</br>13.78.89.60 | \*:443 | Bejövő |
     | &nbsp; | Nyugat-Japán | 40.74.125.69</br>138.91.29.150 | \*:443 | Bejövő |
-    | Korea | Korea középső régiója | 52.231.39.142</br>52.231.36.209 | \*:433 | Bejövő |
+    | Korea | Korea középső régiója | 52.231.39.142</br>52.231.36.209 | \*:443 | Bejövő |
     | &nbsp; | Korea déli régiója | 52.231.203.16</br>52.231.205.214 | \*:443 | Bejövő
     | Egyesült Királyság | Az Egyesült Királyság nyugati régiója | 51.141.13.110</br>51.141.7.20 | \*:443 | Bejövő |
     | &nbsp; | Az Egyesült Királyság déli régiója | 51.140.47.39</br>51.140.52.16 | \*:443 | Bejövő |
-    | Egyesült Államok | USA középső régiója | 13.67.223.215</br>40.86.83.253 | \*:443 | Bejövő |
+    | Egyesült Államok | USA középső régiója | 13.89.171.122</br>13.89.171.124 | \*:443 | Bejövő |
     | &nbsp; | USA keleti régiója | 13.82.225.233</br>40.71.175.99 | \*:443 | Bejövő |
     | &nbsp; | USA északi középső régiója | 157.56.8.38</br>157.55.213.99 | \*:443 | Bejövő |
     | &nbsp; | USA nyugati középső régiója | 52.161.23.15</br>52.161.10.167 | \*:443 | Bejövő |
@@ -328,28 +328,29 @@ Az alábbi Resource Management-sablont hoz létre egy virtuális hálózatot, am
 
 * [Egy biztonságos Azure virtuális hálózaton és a egy HDInsight Hadoop-fürt üzembe helyezése](https://azure.microsoft.com/resources/templates/101-hdinsight-secure-vnet/)
 
-> [!IMPORTANT]  
-> Módosítsa megfelelően az Azure-régió használata ebben a példában használt IP-címeket. Ezt az információt talál a [a hálózati biztonsági csoportok és a felhasználó által megadott útvonalak HDInsight](#hdinsight-ip) szakaszban.
-
 ### <a name="azure-powershell"></a>Azure PowerShell
 
 A következő PowerShell-parancsfájl használatával hozzon létre egy virtuális hálózatot, amely korlátozza a bejövő forgalmat, és lehetővé teszi az észak-európai régióban IP-címekről érkező forgalom.
 
 > [!IMPORTANT]  
-> Módosítsa megfelelően az Azure-régió használata ebben a példában használt IP-címeket. Ezt az információt talál a [a hálózati biztonsági csoportok és a felhasználó által megadott útvonalak HDInsight](#hdinsight-ip) szakaszban.
+> Módosítsa az IP-címek `hdirule1` és `hdirule2` ebben a példában az Azure-régiót használ megfelelően. Ezt az információt talál a [a hálózati biztonsági csoportok és a felhasználó által megadott útvonalak HDInsight](#hdinsight-ip) szakaszban.
 
 ```powershell
 $vnetName = "Replace with your virtual network name"
 $resourceGroupName = "Replace with the resource group the virtual network is in"
 $subnetName = "Replace with the name of the subnet that you plan to use for HDInsight"
+
 # Get the Virtual Network object
 $vnet = Get-AzVirtualNetwork `
     -Name $vnetName `
     -ResourceGroupName $resourceGroupName
+
 # Get the region the Virtual network is in.
 $location = $vnet.Location
+
 # Get the subnet object
 $subnet = $vnet.Subnets | Where-Object Name -eq $subnetName
+
 # Create a Network Security Group.
 # And add exemptions for the HDInsight health and management services.
 $nsg = New-AzNetworkSecurityGroup `
@@ -422,8 +423,10 @@ $nsg = New-AzNetworkSecurityGroup `
         -Access Allow `
         -Priority 305 `
         -Direction Inbound `
+
 # Set the changes to the security group
 Set-AzNetworkSecurityGroup -NetworkSecurityGroup $nsg
+
 # Apply the NSG to the subnet
 Set-AzVirtualNetworkSubnetConfig `
     -VirtualNetwork $vnet `
@@ -433,14 +436,12 @@ Set-AzVirtualNetworkSubnetConfig `
 $vnet | Set-AzVirtualNetwork
 ```
 
-> [!IMPORTANT]  
-> Ez a példa bemutatja, hogyan szabályok engedélyezik a bejövő forgalmat a szükséges IP-címek hozzáadása. Nem tartalmaz egy szabályt, amely korlátozza a más forrásból származó bejövő hozzáférést.
->
-> A következő példa bemutatja, hogyan engedélyezheti az internetről érkező SSH-hozzáférés:
->
-> ```powershell
-> Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 306 -Direction Inbound
-> ```
+Ez a példa bemutatja, hogyan szabályok engedélyezik a bejövő forgalmat a szükséges IP-címek hozzáadása. Nem tartalmaz egy szabályt, amely korlátozza a más forrásból származó bejövő hozzáférést. A következő kód bemutatja, hogyan engedélyezheti az internetről érkező SSH-hozzáférés:
+
+```powershell
+Get-AzNetworkSecurityGroup -Name hdisecure -ResourceGroupName RESOURCEGROUP |
+Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 306 -Direction Inbound
+```
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -457,7 +458,7 @@ Az alábbi lépések segítségével hozzon létre egy virtuális hálózatot, a
 2. Használja a következő használatával adhat szabályokat az új hálózati biztonsági csoportot, amely engedélyezi a bejövő kommunikációt az az Azure HDInsight állapotát és a felügyeleti szolgáltatás a 443-as porton. Cserélje le `RESOURCEGROUP` az erőforráscsoport, amely tartalmazza az Azure virtuális hálózat nevére.
 
     > [!IMPORTANT]  
-    > Módosítsa megfelelően az Azure-régió használata ebben a példában használt IP-címeket. Ezt az információt talál a [a hálózati biztonsági csoportok és a felhasználó által megadott útvonalak HDInsight](#hdinsight-ip) szakaszban.
+    > Módosítsa az IP-címek `hdirule1` és `hdirule2` ebben a példában az Azure-régiót használ megfelelően. Ezt az információt talál a [a hálózati biztonsági csoportok és a felhasználó által megadott útvonalak HDInsight](#hdinsight-ip) szakaszban.
 
     ```azurecli
     az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n hdirule1 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "52.164.210.96" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 300 --direction "Inbound"
@@ -471,14 +472,12 @@ Az alábbi lépések segítségével hozzon létre egy virtuális hálózatot, a
 3. Lekérdezheti a hálózati biztonsági csoport egyedi azonosítója, használja a következő parancsot:
 
     ```azurecli
-    az network nsg show -g RESOURCEGROUP -n hdisecure --query 'id'
+    az network nsg show -g RESOURCEGROUP -n hdisecure --query "id"
     ```
 
     Ez a parancs egy értéket ad vissza az alábbi szöveghez hasonló:
 
         "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
-
-    Körüli dupla idézőjelet használni `id` a parancsban, ha nem a várt eredményt kap.
 
 4. Az alábbi parancs segítségével alkalmazhatja a hálózati biztonsági csoport egy alhálózatot. Cserélje le a `GUID` és `RESOURCEGROUP` az előző lépésben által visszaadott értékeket olyanokra cserélni. Cserélje le `VNETNAME` és `SUBNETNAME` virtuális hálózat nevére, illetve, hogy a létrehozni kívánt alhálózat neve.
 
@@ -488,14 +487,14 @@ Az alábbi lépések segítségével hozzon létre egy virtuális hálózatot, a
 
     Ez a parancs befejeződése után telepítheti a HDInsight a virtuális hálózatban.
 
-> [!IMPORTANT]  
-> Ezeket a lépéseket csak nyissa meg az Azure-felhőben HDInsight állapotát és a felügyeleti szolgáltatáshoz való hozzáférést. A HDInsight fürt a virtuális hálózaton kívül bármely más hozzáférés le lesz tiltva. Ahhoz, hogy a virtuális hálózaton kívülről való eléréshez, hozzá kell adnia a további hálózati biztonsági csoportokra vonatkozó szabályokat.
->
-> A következő példa bemutatja, hogyan engedélyezheti az internetről érkező SSH-hozzáférés:
->
-> ```azurecli
-> az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n hdirule5 --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 306 --direction "Inbound"
-> ```
+
+Ezeket a lépéseket csak nyissa meg az Azure-felhőben HDInsight állapotát és a felügyeleti szolgáltatáshoz való hozzáférést. A HDInsight fürt a virtuális hálózaton kívül bármely más hozzáférés le lesz tiltva. Ahhoz, hogy a virtuális hálózaton kívülről való eléréshez, hozzá kell adnia a további hálózati biztonsági csoportokra vonatkozó szabályokat.
+
+A következő kód bemutatja, hogyan engedélyezheti az internetről érkező SSH-hozzáférés:
+
+```azurecli
+az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 306 --direction "Inbound"
+```
 
 ## <a id="example-dns"></a> Példa: DNS-konfiguráció
 
@@ -658,7 +657,7 @@ Ezek a lépések elvégzése után a teljes tartománynevek (FQDN) használatáv
 ## <a name="next-steps"></a>További lépések
 
 * Konfigurálása a helyszíni hálózat csatlakoztatása a HDInsight egy teljes körű példa: [HDInsight csatlakoztatása a helyszíni hálózathoz](./connect-on-premises-network.md).
-* Az Azure virtuális hálózatok az Apache Hbase-fürtök konfigurálásához lásd: [Apache HBase-fürtök létrehozása az Azure virtuális hálózaton található HDInsight](hbase/apache-hbase-provision-vnet.md).
+* Az Azure virtuális hálózatok az Apache HBase-fürtök konfigurálásához lásd: [Apache HBase-fürtök létrehozása az Azure virtuális hálózaton található HDInsight](hbase/apache-hbase-provision-vnet.md).
 * Az Apache HBase-georeplikáció konfigurálása, lásd: [Apache HBase-fürt replikációja az Azure virtuális hálózatok beállítása](hbase/apache-hbase-replication.md).
 * Azure virtuális hálózataiban működő további információkért lásd: a [Azure Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md).
 

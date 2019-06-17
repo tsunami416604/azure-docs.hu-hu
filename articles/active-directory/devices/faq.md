@@ -16,12 +16,12 @@ ms.date: 03/22/2019
 ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af10596fb1ddf4a4f9eba2b8265eb77221a19f4c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e29c58c0e9a31b2eb3e3d7e237a3db8173214faf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60353125"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110650"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Az Azure Active Directory-Eszközfelügyelet – gyakori kérdések
 
@@ -49,7 +49,7 @@ Csak az alábbi eszközök vannak felsorolva **felhasználói eszközök**:
 
 ### <a name="q-i-see-the-device-record-under-the-user-info-in-the-azure-portal-and-i-see-the-state-as-registered-on-the-device-am-i-set-up-correctly-to-use-conditional-access"></a>K: A felhasználói adatokat az Azure Portalon alatt eszközrekordhoz látható. És az állapot jelenik meg, az eszköz regisztrálva. Vagyok állíthatom be megfelelően a feltételes hozzáférés?
 
-**V:** Az illesztési állapot, által megjelenített **deviceID**, kell az állapot egyező az Azure ad-ben, és megfelelnek a feltételes hozzáférés bármely értékelés által. További információkért lásd: [megkövetelése eszközök feltételes hozzáféréssel felhőalapú alkalmazás-hozzáférés felügyelt](../conditional-access/require-managed-devices.md).
+**V:** Az illesztési állapot, által megjelenített **deviceID**, kell az állapot egyező az Azure ad-ben, és bármely értékelési feltételek megfelelnek a feltételes hozzáférés. További információkért lásd: [megkövetelése eszközök feltételes hozzáféréssel felhőalapú alkalmazás-hozzáférés felügyelt](../conditional-access/require-managed-devices.md).
 
 ---
 
@@ -263,7 +263,7 @@ Hibrid Azure AD-csatlakozás az Azure ad-ben regisztrált átadta a feladatait �
 
 **Megjegyzés:**
 
-- A feltételes hozzáférési házirendben a felhasználókat kell egy [támogatott Office-verzió macOS-hez készült](../conditional-access/technical-reference.md#client-apps-condition) erőforrások eléréséhez. 
+- A feltételes hozzáférési szabályzatot kell a felhasználók egy [támogatott Office-verzió macOS-hez készült](../conditional-access/technical-reference.md#client-apps-condition) erőforrások eléréséhez. 
 
 - Az első hozzáférési próbálkozzon során a rendszer kéri a felhasználók regisztrálja az eszközt a vállalati portál használatával.
 

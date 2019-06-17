@@ -7,16 +7,16 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: overview
 ms.date: 04/15/2019
-ms.openlocfilehash: aa0d01bfbebd5279b5268bae9d161492f30b81de
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 0868ec62517144cd54760f3d951aa0e55d78b4e3
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546282"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056710"
 ---
 # <a name="hdinsight-40-overview"></a>HDInsight 4.0 – áttekintés
 
-Az Azure HDInsight a legnépszerűbb szolgáltatások nagyvállalati ügyfelek körében a nyílt forráskódú Apache Spark és Apache Hadoop analytics az Azure-ban egyike. HDInsight 4.0, az Apache Hadoop-összetevők felhőalapú terjesztett a [Hortonworks Data Platform (HDP) 3.0-s](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html). Ez a cikk az Azure HDInsight legújabb kiadásával és a frissítés menetével kapcsolatban nyújt információkat.
+Az Azure HDInsight a legnépszerűbb szolgáltatások nagyvállalati ügyfelek körében a nyílt forráskódú Apache Spark és Apache Hadoop analytics az Azure-ban egyike. HDInsight 4.0-s verzióját az Apache Hadoop-összetevők felhőalapú terjesztett. Ez a cikk az Azure HDInsight legújabb kiadásával és a frissítés menetével kapcsolatban nyújt információkat.
 
 ## <a name="whats-new-in-hdinsight-40"></a>HDInsight 4.0 újdonságai?
 

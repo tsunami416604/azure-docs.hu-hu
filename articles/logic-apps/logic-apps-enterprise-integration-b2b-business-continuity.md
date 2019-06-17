@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.date: 04/10/2017
 ms.openlocfilehash: ac29ef7f0599cc41924ba1a5a00e46b0292e7e9b
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65967744"
 ---
 # <a name="cross-region-disaster-recovery-for-b2b-integration-accounts-in-azure-logic-apps"></a>Régiók közötti vészhelyreállítása az Azure Logic Apps B2B-integrációs fiókok
@@ -112,7 +112,7 @@ Ahhoz, hogy a vész-helyreállítási bejövő üzenetek, válassza ki a duplik�
 
 6. A Keresés **X12**, és válassza ki **X12 – a hozzáadandó vagy frissítendő ellenőrzőszámok**.   
 
-   ![Ellenőrzőszámok hozzáadása vagy frissítése](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
+   ![A hozzáadandó vagy frissítendő ellenőrzőszámok](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
 
 7. Szeretne egy másodlagos régióba integrációs fiók művelet csatlakozni, válassza ki a **kapcsolat módosítása** > **új kapcsolat hozzáadása** a rendelkezésre álló integrációs fiókok listáját. Adja meg a kapcsolat nevét, és válassza ki a *másodlagos régióba integrációs fiók* a listából, és válassza a **létrehozás**. 
 
@@ -167,7 +167,7 @@ Ahhoz, hogy a vész-helyreállítási bejövő üzenetek, válassza ki a duplik�
 
 7. A Keresés **EDIFACT**, és válassza ki **EDIFACT - hozzáadandó vagy frissítendő ellenőrzőszámok**.   
 
-   ![Ellenőrzőszámok hozzáadása vagy frissítése](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
+   ![A hozzáadandó vagy frissítendő ellenőrzőszámok](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
 
 8. Szeretne egy másodlagos régióba integrációs fiók művelet csatlakozni, válassza ki a **kapcsolat módosítása** > **új kapcsolat hozzáadása** a rendelkezésre álló integrációs fiókok listáját. Adja meg a kapcsolat nevét, és válassza ki a *másodlagos régióba integrációs fiók* a listából, és válassza a **létrehozás**.
 

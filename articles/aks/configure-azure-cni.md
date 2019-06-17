@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 25ff618045c65371b1bddd8aeb32166b3e168a93
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 7fc634b064a2b5ac844e60341fedb94c14a62749
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497204"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061085"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure CNI a hálózatkezelés konfigurálását az Azure Kubernetes Service (AKS)
 
@@ -26,7 +26,7 @@ Ez a cikk bemutatja, hogyan használható *Azure CNI* hálózatkezelés hozhat l
 
 * Az AKS-fürtöt a virtuális hálózat engedélyeznie kell a kimenő internetkapcsolat.
 * Ne hozzon létre több mint egy AKS-fürt ugyanazon az alhálózaton.
-* AKS-fürt nem használhatja `169.254.0.0/16`, `172.30.0.0/16`, vagy `172.31.0.0/16` a Kubernetes szolgáltatás címtartományt.
+* AKS-fürt nem használhatja `169.254.0.0/16`, `172.30.0.0/16`, `172.31.0.0/16`, vagy `192.0.2.0/24` a Kubernetes szolgáltatás címtartományt.
 * Az AKS-fürt által használt egyszerű szolgáltatás rendelkeznie kell legalább [hálózati közreműködő](../role-based-access-control/built-in-roles.md#network-contributor) az alhálózaton belül a virtuális hálózat engedélyeit. Ha meg szeretné egy [egyéni szerepkör](../role-based-access-control/custom-roles.md) helyett használja a hálózati közreműködő szerepkört, a következő engedélyek szükségesek:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
@@ -100,7 +100,7 @@ AKS-fürt létrehozásakor a következő paraméterek a következők Azure CNI h
 * Nem lehet a fürt a virtuális hálózati IP-címtartomány
 * Nem lehet átfedésben, amellyel a fürt virtuális hálózaton is társul más virtuális hálózatokhoz
 * Nem lehet átfedésben bármilyen helyszíni IP-címek
-* Nem lehet a tartományokon belül `169.254.0.0/16`, `172.30.0.0/16`, vagy `172.31.0.0/16`
+* Nem lehet a tartományokon belül `169.254.0.0/16`, `172.30.0.0/16`, `172.31.0.0/16`, vagy `192.0.2.0/24`
 
 Bár technikailag lehetséges, adja meg a fürt egy szolgáltatás-címtartományt az adott virtuális hálózaton belül, ez nem ajánlott. Előre nem látható viselkedéshez vezethet, átfedő IP-címtartományok használatakor. További információkért lásd: a [– gyakori kérdések](#frequently-asked-questions) című szakaszát. Kubernetes-szolgáltatásokra vonatkozó további információkért lásd: [szolgáltatások] [ services] a Kubernetes dokumentációjában.
 

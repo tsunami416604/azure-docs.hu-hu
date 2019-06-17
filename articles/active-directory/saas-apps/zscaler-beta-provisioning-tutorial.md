@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: v-ant-msft
 ms.openlocfilehash: 54cf2924a94dda1d29baf048c866f019b82e1402
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59256838"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67049965"
 ---
 # <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Zscaler béta konfigurálása
 
@@ -49,7 +49,7 @@ Konfigurálja az Azure AD-felhasználók automatikus Zscaler bétaverzió, miel�
 
 **Az Azure AD alkalmazáskatalógusában Zscaler béta hozzáadásához hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -116,7 +116,7 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
     Válassza ki **Enable SCIM-Based kiépítés** lekéréséhez **alap URL-cím** és **tulajdonosi jogkivonat**, majd mentse a beállításokat. Másolás a **alap URL-cím** való **bérlői URL-cím**, és **tulajdonosi jogkivonat** való **titkos jogkivonat** az Azure Portalon.
 
-7. 5. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD Zscaler béta csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, Zscaler bétafiókjához rendszergazdai engedélyekkel rendelkező, és próbálkozzon újra.
+7. 5\. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD Zscaler béta csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, Zscaler bétafiókjához rendszergazdai engedélyekkel rendelkező, és próbálkozzon újra.
 
     ![Zscaler béta kiépítése](./media/zscaler-beta-provisioning-tutorial/test-connection.png)
 

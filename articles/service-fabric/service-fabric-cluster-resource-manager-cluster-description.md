@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 082abd89cd84fc34180f333b54664d7dddfa0ccf
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65561207"
 ---
 # <a name="describing-a-service-fabric-cluster"></a>Ismertető a service fabric-fürt
@@ -78,7 +78,7 @@ Az alábbi ábrán látható, három frissítési tartományt szétteríti a há
 ![Tartalék és frissítési tartományokba, az elhelyezési][Image3]
 </center>
 
-Vannak előnyei és hátrányai, hogy nagy számú frissítési tartomány. Több frissítési tartomány azt jelenti, a frissítés lépéseinek részletesebb, és ezért a csomópontok vagy a szolgáltatások kisebb számú érinti. Ennek eredményeképpen kevesebb szolgáltatások át kell helyeznie egyszerre, a rendszer kevesebb lemorzsolódási bemutatása. Ez általában a megbízhatóság javításához, mivel kisebb, a szolgáltatás hatással van minden olyan problémát jelent meg a frissítés során. Több frissítési tartományt is jelenti, hogy kell-e a többi csomóponton a frissítés hatásainak kezeléséhez kevesebb a rendelkezésre álló pufferbe. Például ha öt Frissítési Tartományok, a csomópontok az egyes kezelik nagyjából 20 %-a forgalmat. Megnőtt a frissítés frissítési tartományban van szüksége, ha a terhelés általában kell valahol meg. Négy fennmaradó frissítési tartomány van, mivel minden hely számára a teljes forgalom körülbelül 5 %-át kell rendelkeznie. Több frissítési tartomány azt jelenti, hogy a fürt csomópontjain kisebb puffer van szüksége. Vegyük példaként 10 frissítési tartományok inkább rendelkezett. Ebben az esetben minden UD volna csak kell kezelése körülbelül 10 %-a teljes forgalom. Ha egy frissítési útmutató részletesen bemutatja a fürt, minden egyes tartományhoz csak kell készül a teljes forgalom 1.1 % elegendő hellyel rendelkezik. További frissítési tartományok általában lehetővé teszi a csomópontok futtassa magasabb kihasználtságát, mivel kevesebb fenntartott kapacitásra van szüksége. Ugyanez igaz a tartalék tartományok.  
+Vannak előnyei és hátrányai, hogy nagy számú frissítési tartomány. Több frissítési tartomány azt jelenti, a frissítés lépéseinek részletesebb, és ezért a csomópontok vagy a szolgáltatások kisebb számú érinti. Ennek eredményeképpen kevesebb szolgáltatások át kell helyeznie egyszerre, a rendszer kevesebb lemorzsolódási bemutatása. Ez általában a megbízhatóság javításához, mivel kisebb, a szolgáltatás hatással van minden olyan problémát jelent meg a frissítés során. Több frissítési tartományt is jelenti, hogy kell-e a többi csomóponton a frissítés hatásainak kezeléséhez kevesebb a rendelkezésre álló pufferbe. Például ha öt frissítési tartományok, a csomópontok az egyes kezelik nagyjából 20 %-a forgalmat. Megnőtt a frissítés frissítési tartományban van szüksége, ha a terhelés általában kell valahol meg. Négy fennmaradó frissítési tartomány van, mivel minden hely számára a teljes forgalom körülbelül 5 %-át kell rendelkeznie. Több frissítési tartomány azt jelenti, hogy a fürt csomópontjain kisebb puffer van szüksége. Vegyük példaként 10 frissítési tartományok inkább rendelkezett. Ebben az esetben minden UD volna csak kell kezelése körülbelül 10 %-a teljes forgalom. Ha egy frissítési útmutató részletesen bemutatja a fürt, minden egyes tartományhoz csak kell készül a teljes forgalom 1.1 % elegendő hellyel rendelkezik. További frissítési tartományok általában lehetővé teszi a csomópontok futtassa magasabb kihasználtságát, mivel kevesebb fenntartott kapacitásra van szüksége. Ugyanez igaz a tartalék tartományok.  
 
 A hátránya, hogy hány frissítési tartományok, hogy a frissítések általában hosszabb időt vesz igénybe. Egy rövid idő alatt után egy frissítési tartományban befejeződött, és a következő frissítése előtt ellenőrzi a Service Fabric várakozik. Ezek az késleltetések bevezetett a frissítés előtt a frissítés előrehalad észlelését hibák engedélyezése. Az egyensúlyt a fogadható el, mert megakadályozza, hogy rossz módosítások befolyásolják a szolgáltatás túl sok egyszerre.
 
@@ -125,12 +125,12 @@ A következő fájt az elrendezést és a tartalék és frissítési tartomány 
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
-| **UD0** |R1 | | | | |1. |
-| **UD1** | |R2 | | | |1. |
-| **UD2** | | |R3 | | |1. |
-| **UD3** | | | |R4 | |1. |
-| **UD4** | | | | |R5 |1. |
-| **FDTotal** |1. |1 |1 |1 |1. |- |
+| **UD0** |R1 | | | | |1 |
+| **UD1** | |R2 | | | |1 |
+| **UD2** | | |R3 | | |1 |
+| **UD3** | | | |R4 | |1 |
+| **UD4** | | | | |R5 |1 |
+| **FDTotal** |1 |1 |1 |1 |1 |- |
 
 *Elrendezés 1*
 
@@ -141,12 +141,12 @@ Most nézzük, mi történne N6 helyett N2 kellett használtuk. Hogyan szeretné
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
-| **UD0** |R1 | | | | |1. |
-| **UD1** |R5 | | | | |1. |
-| **UD2** | | |R2 | | |1. |
-| **UD3** | | | |R3 | |1. |
-| **UD4** | | | | |R4 |1. |
-| **FDTotal** |2 |0 |1 |1 |1. |- |
+| **UD0** |R1 | | | | |1 |
+| **UD1** |R5 | | | | |1 |
+| **UD2** | | |R2 | | |1 |
+| **UD3** | | | |R3 | |1 |
+| **UD4** | | | | |R4 |1 |
+| **FDTotal** |2 |0 |1 |1 |1 |- |
 
 *Elrendezés 2*
 
@@ -157,10 +157,10 @@ Ez az elrendezés megsérti a definíció "legnagyobb különbség a" garancia a
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** | | | | | |0 |
 | **UD1** |R5 |R1 | | | |2 |
-| **UD2** | | |R2 | | |1. |
-| **UD3** | | | |R3 | |1. |
-| **UD4** | | | | |R4 |1. |
-| **FDTotal** |1. |1 |1 |1 |1. |- |
+| **UD2** | | |R2 | | |1 |
+| **UD3** | | | |R3 | |1 |
+| **UD4** | | | | |R4 |1 |
+| **FDTotal** |1 |1 |1 |1 |1 |- |
 
 *Elrendezés 3*
 
@@ -218,12 +218,12 @@ Az összes szükséges feltételek teljesülnek, mert a fürterőforrás-kezelő
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
-| **UD0** |R1 | | | | |1. |
-| **UD1** |R2 | | | | |1. |
+| **UD0** |R1 | | | | |1 |
+| **UD1** |R2 | | | | |1 |
 | **UD2** | |R3 |R4 | | |2 |
 | **UD3** | | | | | |0 |
-| **UD4** | | | | |R5 |1. |
-| **FDTotal** |2 |1. |1 |0 |1. |- |
+| **UD4** | | | | |R5 |1 |
+| **FDTotal** |2 |1 |1 |0 |1 |- |
 
 *Elrendezés 4*
 
@@ -234,11 +234,11 @@ A negyedik elrendezés és az öt TargetReplicaSetSize szeretnének vissza. N1 a
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** |– |N/A |N/A |N/A |N/A |– |
-| **UD1** |R2 | | | | |1. |
+| **UD1** |R2 | | | | |1 |
 | **UD2** | |R3 |R4 | | |2 |
-| **UD3** | | | |R1 | |1. |
-| **UD4** | | | | |R5 |1. |
-| **FDTotal** |1. |1 |1 |1 |1. |- |
+| **UD3** | | | |R1 | |1 |
+| **UD4** | | | | |R5 |1 |
+| **FDTotal** |1 |1 |1 |1 |1 |- |
 
 *Elrendezés 5*
 

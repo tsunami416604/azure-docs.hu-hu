@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/24/2019
+ms.date: 06/11/2019
 ms.author: spelluru
-ms.openlocfilehash: bdcc4349f84a35b312ecb3ad6205273b62c2e989
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 803fe6eff8804dbd407642386865fe975c8db524
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722714"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67123259"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Oktatóanyag: Osztályterem-tesztkörnyezet beállítása 
 Ebben az oktatóanyagban megtanulhatja, hogyan állíthat be egy diákok által használható virtuális gépekkel rendelkező osztályterem-tesztkörnyezetet.  
@@ -48,7 +48,7 @@ A lab tulajdonosa adhat hozzá más felhasználók számára a **tesztkörnyezet
 
         ![Osztályterem-tesztkörnyezet létrehozása](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 4. A **virtuális gép specifikációinak kiválasztására** szolgáló lapon hajtsa végre a következőket:
-    1. Válasszon **méretet** a tesztkörnyezetben létrehozott virtuális gépeknek. Jelenleg **kis**, **Közepes**, **nagy**, és **GPU** méretek használata engedélyezett.
+    1. Válasszon **méretet** a tesztkörnyezetben létrehozott virtuális gépeknek. Jelenleg **kis**, **Közepes**, **közepes (virtualizálási)** , **nagy**, és **GPU** méretek a következők engedélyezett.
     3. Válassza ki a tesztkörnyezetben a virtuális gépek létrehozásához használni kívánt **virtuálisgép-rendszerképet**. Ha egy Linuxos rendszerképet választja, megjelenik egy lehetőség, a távoli asztali kapcsolat engedélyezése. További információkért lásd: [Linux esetén a távoli asztali kapcsolat engedélyezése](how-to-enable-remote-desktop-linux.md).
     4. Kattintson a **Tovább** gombra.
 
@@ -69,9 +69,11 @@ A lab tulajdonosa adhat hozzá más felhasználók számára a **tesztkörnyezet
 
     ![Sablon konfigurálása oldal a folyamat befejeződése után](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. Az a **konfigurálása sablon** lapon, tegye a következőket: Ezeknek a lépéseknek **választható** -t az oktatóanyaghoz.
-    1. A **Csatlakozás** gomb kiválasztásával csatlakozzon a virtuálisgép-sablonhoz. Ha Linux rendszerű virtuális gép sablon, kiválaszthatja, hogy szeretné-e az SSH és a RDP-(ha az RDP engedélyezve van).
-    2. Telepítsen és konfiguráljon szoftvert a virtuálisgép-sablonon.     
-    3. Adja meg a sablon **leírását**.
+    2. A **Csatlakozás** gomb kiválasztásával csatlakozzon a virtuálisgép-sablonhoz. Ha Linux rendszerű virtuális gép sablon, kiválaszthatja, hogy szeretné-e az SSH és a RDP-(ha az RDP engedélyezve van).
+    1. Válassza ki **jelszó alaphelyzetbe állítása** a jelszót a virtuális gép számára. 
+    1. Telepítsen és konfiguráljon szoftvert a virtuálisgép-sablonon. 
+    1. **Állítsa le** a virtuális gépet.  
+    1. Adja meg a sablon **leírását**.
 9. Válassza ki a **Tovább** gombot a sablon oldalán. 
 10. A **Sablon közzététele** oldalon tegye az alábbiakat. 
     1. Jelölje be a sablon azonnali közzétételének **közzététel**.  
@@ -107,6 +109,40 @@ A lab tulajdonosa adhat hozzá más felhasználók számára a **tesztkörnyezet
 
     ![Felhasználók listája](../media/how-to-configure-student-usage/users-list-new.png)
 
+## <a name="set-quotas-for-users"></a>Kvóták beállítása a felhasználók számára
+Felhasználónként kvóták az alábbi lépéseket követve állíthatja be: 
+
+1. Válassza ki **felhasználók** a bal oldali menüben, ha az oldal már nem aktív. 
+2. Válassza ki **felhasználónként kvóta:** az eszköztáron. 
+3. Az a **felhasználónként kvóta** csoportjában adja meg kíván adni, az egyes felhasználók (student) órák száma: 
+    1. **0 óra (csak ütemezés)** . Felhasználók a saját virtuális gépek csak a megadott időszakban, vagy ha a labor tulajdonosa, kapcsolja be a virtuális gépek a számukra.
+
+        ![Nulla óra – csak az ütemezett időpont](../media/how-to-configure-student-usage/zero-hours.png)
+    1. **Felhasználónként labor órák számának**. Felhasználók virtuális gépeiken használhatják a meghatározott számú (ebben a mezőben megadott) óra **mellett az ütemezett időpont**. Ha ezt a lehetőséget választja, adja meg a **órák száma** a szövegmezőben. 
+
+        ![Felhasználónként órák száma](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
+    4. Kattintson a **Mentés** gombra. 
+5. Módosított értéke most már az eszköztáron látható: **Felhasználói kvóta: &lt;órák száma&gt;** . 
+
+    ![Kvóta felhasználó szerint](../media/how-to-configure-student-usage/quota-per-user.png)
+
+## <a name="set-a-schedule-for-the-lab"></a>A labor ütemezés beállítása
+Ha konfigurálta a felhőkvóta-beállítást a **0 óra (csak ütemezés)** , be kell egy ütemezést a tesztkörnyezethez. Ebben az oktatóanyagban az ütemezés hetente ismétlődő ütemezés szerint kell beállítani.
+
+1. Váltson a **ütemezések** lapon, és válassza ki **Hozzáadás ütemezés** az eszköztáron. 
+
+    ![Az ütemezések lapon ütemezés gomb hozzáadása](../media/how-to-create-schedules/add-schedule-button.png)
+2. Az a **Hozzáadás ütemezés** lapon, váltson **heti** tetején. 
+3. A **ütemezett nap (kötelező)** , válassza ki azokat a napokat, amelyeken az ütemezés érvénybe szeretné. A következő példában hétfőtől péntekig van kiválasztva. 
+4. Az a **a** mezőbe írja be a **ütemezett kezdési dátum** válasszon dátumot kiválasztásával, vagy a **naptár** gombra. Ez a mező kitöltése kötelező. 
+5. A **az ütemezéshez záró dátumot**adja meg vagy válassza ki a befejező dátum, amelyen a virtuális gépek vannak, le kell állítani. 
+6. A **kezdési idő**, válassza ki az időpontot, amelyeknél szeretné elindítani a virtuális gépeket. A kezdési időpontját kötelező megadni, ha nincs beállítva a leállítási ideje. Válassza ki **Remove esemény indítása** Ha meg szeretné határozni a csak a leállítási ideje. Ha a **kezdési idő** van válassza le van tiltva, **Hozzáadás indítása esemény** mellett a legördülő listából válassza ki az engedélyezéshez. 
+7. A **leállítási ideje**, válassza ki az idő, amelyeknél szeretné a virtuális gépek leállítását. A leállási idő megadása kötelező, ha a kezdési időpont nincs beállítva. Válassza ki **Remove leállási esemény** Ha adja meg a kezdő időpont csak szeretné. Ha a **leállítási ideje** van válassza le van tiltva, **Hozzáadás leállási esemény** mellett a legördülő listából válassza ki az engedélyezéshez.
+8. A **(kötelező) időzóna**, jelölje be a kezdő időzónáját, és állítsa le a megadott időpontok.  
+9. A **megjegyzések**, adja meg az ütemezés bármely leírása, illetve a megjegyzések. 
+10. Kattintson a **Mentés** gombra. 
+
+    ![Heti ütemezés](../media/how-to-create-schedules/add-schedule-page-weekly.png)
 
 ## <a name="send-an-email-with-the-registration-link"></a>A regisztrációs hivatkozást tartalmazó e-mail küldése
 

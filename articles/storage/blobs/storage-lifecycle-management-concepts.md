@@ -10,10 +10,10 @@ ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: common
 ms.openlocfilehash: ce2559f62d29c7b062cfd1ad1dcb61146adfd91c
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66001752"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Az Azure Blob storage életciklus kezelése
@@ -37,7 +37,7 @@ Az életciklus-kezelési szabályzat érhető el mindkét General Purpose v2 (GP
 
 Az életciklus felügyeleti funkció ingyenesen elérhető. A normál művelet költsége díjszabásának a [Blobok listázása](https://docs.microsoft.com/rest/api/storageservices/list-blobs) és [Blobszint beállítása](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API-hívások. Törlési művelet díjmentes. Díjszabással kapcsolatos további információkért lásd: [Blokkbob-díjszabás](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-## <a name="regional-availability"></a>Regionális elérhetőség
+## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
 Az életciklus-felügyeleti szolgáltatás az összes globális Azure-régióban érhető el.
 
@@ -167,7 +167,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 }
 ```
 
-## <a name="policy"></a>Házirend
+## <a name="policy"></a>Szabályzat
 
 Életciklus-kezelési szabályzat szabályok a JSON-dokumentumok gyűjteménye:
 
@@ -191,16 +191,16 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 A házirend szabályok gyűjteménye:
 
-| Paraméternév | Paraméter típusa | Megjegyzések |
+| Paraméter neve | Paraméter típusa | Megjegyzések |
 |----------------|----------------|-------|
 | `rules`        | A szabály objektumokból álló tömb | Legalább egy szabályt egy házirendet a szükséges. Egy szabályzatban legfeljebb 100 szabályokat definiálhat.|
 
 A házirend minden egyes szabály több paraméterekkel rendelkezik:
 
-| Paraméternév | Paraméter típusa | Megjegyzések | Kötelező |
+| Paraméter neve | Paraméter típusa | Megjegyzések | Szükséges |
 |----------------|----------------|-------|----------|
 | `name`         | String |A szabály neve legfeljebb 256 alfanumerikus karaktereket tartalmazhat. Szabály neve a kis-és nagybetűket.  Egy házirend egyedinek kell lennie. | True (Igaz) |
-| `enabled`      | Boolean | Egy nem kötelező logikai érték beolvasása, hogy ideiglenes szabály le van tiltva. Alapértelmezett érték: igaz, ha nincs beállítva. | Hamis | 
+| `enabled`      | Boolean | Egy nem kötelező logikai érték beolvasása, hogy ideiglenes szabály le van tiltva. Alapértelmezett érték: igaz, ha nincs beállítva. | False (Hamis) | 
 | `type`         | Enum érték | Az aktuális érvényes típus `Lifecycle`. | True (Igaz) |
 | `definition`   | Egy objektum, amely meghatározza az életciklus-szabály | Minden egyes definíció épül fel egy szűrő és egy műveletet. | True (Igaz) |
 
@@ -251,7 +251,7 @@ Szűrők Szabályműveletek a tárfiókban található blobok egy részhalmazár
 
 A szűrők a következők:
 
-| Szűrő neve | Szűrő típusa | Megjegyzések | Kötelező |
+| Szűrő neve | Szűrő típusa | Megjegyzések | Megadása kötelező |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Előre definiált enum értékek tömbje. | A jelenlegi kiadásban támogatja a `blockBlob`. | Igen |
 | prefixMatch | Meg kell egyeznie az előtagok karakterláncok tömbje. Minden szabály legfeljebb 10 előtagok adhatja meg. Előtag-karakterláncra tárolónévnek kell kezdődnie. Például, ha az összes BLOB alapján egyeztetni kívánt `https://myaccount.blob.core.windows.net/container1/foo/...` egy szabályban a prefixMatch van `container1/foo`. | Ha nem ad meg prefixMatch, a szabály vonatkozik a tárfiókban lévő összes BLOB.  | Nem |
@@ -266,7 +266,7 @@ A futtatási feltétel teljesülése esetén a szűrt blobok műveletek lépnek.
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | Támogatja a gyakori elérésű szint jelenleg a blobokhoz         | Nem támogatott |
 | tierToArchive | Támogatja a gyors vagy lassú elérésű szint jelenleg a blobokhoz | Nem támogatott |
-| törlés        | Támogatott                                   | Támogatott     |
+| delete        | Támogatott                                   | Támogatott     |
 
 >[!NOTE]
 >Ha egynél több művelet ugyanennek a blobnak a definiálja, életciklus-felügyelet a legkevésbé költséges művelet a blob vonatkozik. Ha például a művelet `delete` művelet olcsóbb `tierToArchive`. A művelet `tierToArchive` művelet olcsóbb `tierToCool`.
@@ -391,7 +391,7 @@ Módosítva, és rendszeresen élettartama során elért adatok esetén pillanat
 }
 ```
 
-## <a name="faq"></a>gyakori kérdésekben
+## <a name="faq"></a>GYIK
 
 **Létrehozott egy új házirendet, miért érdemes a műveleteket nem azonnali futtatása?**  
 A platform naponta egyszer fut, az életciklus-szabályzat. Után konfigurálhat egy szabályzatot, az egyes műveletek futtatása az első alkalommal akár 24 órát is igénybe vehet.  

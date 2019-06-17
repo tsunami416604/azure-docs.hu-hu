@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/24/2017
 ms.author: dekapur
 ms.openlocfilehash: ccc726f54821d316c745f6af9c63d7ed13986d79
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65761928"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Különálló fürt védelme a Windows a Windows rendszerbiztonság használatával
@@ -57,7 +57,7 @@ A minta *ClusterConfig.gMSA.Windows.MultiMachine.JSON* együtt letöltött konfi
 | ClustergMSAIdentity |Konfigurálja a csomópont a csomópont közötti biztonsághoz. A csoportosan felügyelt szolgáltatásfiók. |
 | ClusterSPN |Csoportosan felügyelt szolgáltatásfiók egyszerű Szolgáltatásnevének regisztrált|
 | ClientIdentities |Konfigurálja az ügyfél a csomópont közötti biztonsághoz. Ügyfél felhasználói fiókok tömbje. |
-| Azonosító |Adja hozzá a tartományi felhasználó, tartomány\felhasználónév ügyfél identitását. |
+| Identitás |Adja hozzá a tartományi felhasználó, tartomány\felhasználónév ügyfél identitását. |
 | IsAdmin |Adja meg, hogy a tartományi felhasználó rendszergazda ügyfél-hozzáférési és hamis értéket, az ügyfél hozzáférésének felhasználó rendelkezik-e (igaz) értékre. |
 
 > [!NOTE]
@@ -109,7 +109,7 @@ Ez a modell hamarosan elavulttá válik. Az ajánljuk, hogy a csoportosan felüg
 | WindowsIdentities |A fürt és az ügyfél identitásokat tartalmaz. |
 | ClusterIdentity |Egy gép csoportnevet domain\machinegroup, használja a csomópontok közötti biztonságának konfigurálása. |
 | ClientIdentities |Konfigurálja az ügyfél a csomópont közötti biztonsághoz. Ügyfél felhasználói fiókok tömbje. |  
-| Azonosító |Adja hozzá a tartományi felhasználó, tartomány\felhasználónév ügyfél identitását. |  
+| Identitás |Adja hozzá a tartományi felhasználó, tartomány\felhasználónév ügyfél identitását. |  
 | IsAdmin |Adja meg, hogy a tartományi felhasználó rendszergazda ügyfél-hozzáférési és hamis értéket, az ügyfél hozzáférésének felhasználó rendelkezik-e (igaz) értékre. |  
 
 [A csomópont security csomópont](service-fabric-cluster-security.md#node-to-node-security) beállítás használatával konfigurálható **ClusterIdentity** Ha azt szeretné, a gép csoportot használja az Active Directory-tartományban. További információkért lásd: [hozzon létre egy gép csoportot az Active Directory](https://msdn.microsoft.com/library/aa545347(v=cs.70).aspx).

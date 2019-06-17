@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: victorh
-ms.openlocfilehash: 7da382a644c1db92b9915f1d3f1f3a459e8893b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 2b9c8f1bb7407dd36623fd8ad68f9489172a1caf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60563364"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64712223"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS-zónák és rekordok áttekintése
 
@@ -28,7 +28,7 @@ Ezen a lapon a tartományok, a DNS-zónák és a DNS-rekordok és a rekordhalmaz
 
 ## <a name="domain-names"></a>Tartománynevek
 
-A tartománynévrendszer tartományok hierarchiájából áll. A hierarchia első eleme a „gyökértartomány”, amelynek neve egyszerűen „**.**”.  Ez alatt találhatók a legfelső szintű tartományok, mint a „com”, a „net”, az „org”, az „uk” vagy a „jp”.  Ezek alatt találhatók a másodlagos szintű tartományok, mint az „org.uk” vagy a „co.jp”. A tartomány DNS-hierarchiában globálisan elosztott, a világ különböző pontjain található DNS-névkiszolgálókra üzemelteti.
+A tartománynévrendszer tartományok hierarchiájából áll. A hierarchia első eleme a „gyökértartomány”, amelynek neve egyszerűen „ **.** ”.  Ez alatt találhatók a legfelső szintű tartományok, mint a „com”, a „net”, az „org”, az „uk” vagy a „jp”.  Ezek alatt találhatók a másodlagos szintű tartományok, mint az „org.uk” vagy a „co.jp”. A tartomány DNS-hierarchiában globálisan elosztott, a világ különböző pontjain található DNS-névkiszolgálókra üzemelteti.
 
 A tartománynév regisztrálójánál az olyan szervezet, amely lehetővé teszi, hogy vásároljon egy tartománynevet, például "contoso.com".  Tartománynév vásárlása lehetővé teszi a DNS-hierarchia a névvel, például lehetővé teszi, hogy a neve "www.contoso.com" a vállalati webhely közvetlen ellenőrzésére vonatkozó jogot. A regisztráló a gazdagép a tartományhoz, a saját névkiszolgálókat az Ön nevében, vagy adhatók meg alternatív névkiszolgálókat.
 
@@ -111,7 +111,7 @@ A több karakterláncokat, a DNS-rekord nem tévesztendő a több txt típusú r
 
 ## <a name="tags-and-metadata"></a>A címkék és a metaadatok
 
-### <a name="tags"></a>Címkék
+### <a name="tags"></a>Tags
 
 Címkék név-érték párok listáját, és vannak az Azure Resource Manager által használt erőforrások.  Az Azure Resource Manager engedélyezése az Azure-elszámolások szűrt nézeteinek címkéket használ, és lehetővé teszi, hogy a címkék olyan szükséges szabályzat beállítása. A címkékkel kapcsolatos további információért tekintse meg [Az Azure-erőforrások rendszerezése címkék használatával](../azure-resource-manager/resource-group-using-tags.md) című cikket.
 
@@ -134,7 +134,7 @@ Az Azure DNS – REST API a szintjén ETag megadott HTTP-fejlécek használata. 
 | Fejléc | Viselkedés |
 | --- | --- |
 | None |PUT mindig sikeres (nincs Etag-ellenőrzések) |
-| IF-match <etag> |PUT csak akkor sikeres, ha az erőforrás létezik, és Etagje megegyezik |
+| IF-match \<etag > |PUT csak akkor sikeres, ha az erőforrás létezik, és Etagje megegyezik |
 | IF-match * |PUT csak akkor sikeres, ha az erőforrás létezik |
 | If-none-match * |PUT csak akkor sikeres, ha az erőforrás nem létezik. |
 

@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: v-adgera
-ms.openlocfilehash: 31944c08bad503c20832ea7e4e682c0063ab0f9f
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: cd67f1065f47b758f2a7e0e5be3c60169c30273e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735036"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67116568"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Az Azure digitális Twins Postman konfigurálása
 
@@ -41,7 +41,7 @@ Az Azure Active Directory-alkalmazások, az OAuth 2.0 típusú implicit engedél
 
     [![Az Azure Active Directory alkalmazásregisztrációk api hozzáadása](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 
-1. Kattintson a **Manifest** az alkalmazásjegyzékben, az alkalmazás megnyitásához. Állítsa be *oauth2AllowImplicitFlow* való `true`.
+1. Válassza ki **Manifest** az alkalmazásjegyzékben, az alkalmazás megnyitásához. Állítsa be *oauth2AllowImplicitFlow* való `true`.
 
     [![Az Azure Active Directory implicit folyamat](media/how-to-configure-postman/implicit-flow.png)](media/how-to-configure-postman/implicit-flow.png#lightbox)
 
@@ -111,7 +111,7 @@ Az előző lépések végrehajtását követően, hogy egy hitelesített többr�
    > * Nem kell ezeket a fejléceket minden olyan részére.
    > * Ki kell választania `multipart/mixed` vagy egy másik megfelelő **Content-Type** a kérelmet.
 
-1. Végül kattintson a **küldése** a többrészes HTTP POST-kérelmet küldeni.
+1. Végül válassza **küldése** a többrészes HTTP POST-kérelmet küldeni.
 
 ## <a name="next-steps"></a>További lépések
 

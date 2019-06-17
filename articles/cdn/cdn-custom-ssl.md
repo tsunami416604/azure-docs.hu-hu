@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/18/2019
+ms.date: 06/12/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: dc43e2ad2668a7d3a808e398857cbf1d28c9aa1c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e9cca4cd113115a1acf676b46cc65dc4ed7021fa
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150853"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144070"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Oktatóanyag: HTTPS konfigurálása Azure CDN egyéni tartományon
 
@@ -50,7 +50,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Mielőtt elvégezhetné a jelen oktatóanyag lépéseit, először létre kell hoznia egy CDN-profilt, és legalább egy CDN-végpontot. További információkért lásd: [a rövid útmutató: Azure CDN-profil és -végpont létrehozása](cdn-create-new-endpoint.md).
 
-Emellett CDN-végpontjához társítania kell egy Azure CDN egyéni tartományt. További információkért lásd: [oktatóanyag: Egyéni tartomány hozzáadása az Azure CDN-végponthoz](cdn-map-content-to-custom-domain.md)
+Emellett CDN-végpontjához társítania kell egy Azure CDN egyéni tartományt. További információkért lásd: [oktatóanyag: Egyéni tartomány hozzáadása az Azure CDN-végponthoz](cdn-map-content-to-custom-domain.md) 
+
+> [!IMPORTANT]
+> A CDN által kezelt tanúsítványokkal a legfelső szintű vagy apex-tartományok nem érhetők el. Ha az Azure CDN egyéni tartományt egy legfelső szintű vagy apex tartomány, a saját eszközök használata a saját tanúsítványimportálási funkció kell használnia. 
+>
 
 ---
 
@@ -178,7 +182,7 @@ A CNAME rekordokkal kapcsolatos további információért tekintse meg a [CNAME 
 
 Ha a CNAME rekordja a megfelelő formátumban van, a DigiCert automatikusan ellenőrzi az egyéni tartománynevet, és létrehoz egy dedikált tanúsítványt. A DigitCert nem küld visszaigazoló e-mailt, és nem kell jóváhagynia a kérést. A tanúsítvány egy évig érvényes, és a lejárata előtt automatikusan megújul. Lépjen tovább a [Várakozás a propagálásra](#wait-for-propagation) részhez. 
 
-Az automatikus érvényesítés általában eltart néhány percig. Ha a tartománya egy órán belül sincs érvényesítve, nyisson meg egy támogatási jegyet.
+Az automatikus érvényesíts általában eltart néhány óra alatt. Ha nem látja a tartományban, 24 órában érvényesítve, nyisson egy támogatási jegyet.
 
 >[!NOTE]
 >Ha van egy Hitelesítésszolgáltatói engedélyezési (CAA-) rekordja a DNS-szolgáltatónál, tartalmaznia kell a DigiCertet mint érvényes hitelesítésszolgáltatót. A CAA-rekord lehetővé teszi a tartomány tulajdonosai számára, hogy megadják a DNS-szolgáltatóknál, hogy melyik hitelesítésszolgáltatók jogosultak a tartomány tanúsítványának kiállítására. Ha egy hitelesítésszolgáltató kérést kap egy CAA-rekorddal rendelkező tartomány tanúsítványának kiállítására, és a hitelesítésszolgáltató nem szerepel az engedélyezett kiállítók listáján, nem adhat ki tanúsítványt a tartománynak vagy altartománynak. További információ a CAA-rekordok kezelésével kapcsolatban: [CAA-rekordok kezelése](https://support.dnsimple.com/articles/manage-caa-record/). A CAA-rekordokhoz való eszközért lásd: [CAA-rekord segítő](https://sslmate.com/caa/).
@@ -230,17 +234,17 @@ Az alábbi táblázat a műveleti folyamatot mutatja, amely a HTTPS engedélyez�
 
 | Műveleti lépés | Műveleti allépés részletei | 
 | --- | --- |
-| 1. Kérés elküldése | Kérés elküldése |
+| 1\. Kérés elküldése | Kérés elküldése |
 | | A HTTPS-kérés küldése folyamatban van. |
 | | A HTTPS-kérés elküldése sikerült. |
-| 2. Tartományérvényesítés | A tartomány automatikusan érvényesítve lesz, ha a CNAME révén le van képezve a CDN-végpontra. Máskülönben visszaigazolási kérelem érkezik a tartomány regisztrációs rekordjában megadott e-mail-címre (WHOIS regisztráló). Kérjük, minél hamarabb igazolja vissza a tartományt. |
+| 2\. Tartományérvényesítés | A tartomány automatikusan érvényesítve lesz, ha a CNAME révén le van képezve a CDN-végpontra. Máskülönben visszaigazolási kérelem érkezik a tartomány regisztrációs rekordjában megadott e-mail-címre (WHOIS regisztráló). Kérjük, minél hamarabb igazolja vissza a tartományt. |
 | | Sikerült ellenőrizni a tartomány tulajdonjogát. |
 | | A tartomány tulajdonjogának ellenőrzési kérelme lejárt (az ügyfél valószínűleg nem válaszolt 6 napon belül). A HTTPS nem lesz engedélyezve a tartományon. * |
 | | A tartomány tulajdonjogának ellenőrzésére vonatkozó kérelem vissza lett utasítva az ügyfél által. A HTTPS nem lesz engedélyezve a tartományon. * |
-| 3. Tanúsítvány üzembe helyezése | A hitelesítésszolgáltató jelenleg azon tanúsítvány kibocsátását végzi, amely a HTTPS tartományban való engedélyezéséhez szükséges. |
+| 3\. Tanúsítvány üzembe helyezése | A hitelesítésszolgáltató jelenleg azon tanúsítvány kibocsátását végzi, amely a HTTPS tartományban való engedélyezéséhez szükséges. |
 | | A tanúsítvány kibocsátása megtörtént, és folyamatban van a CDN-hálózatban való üzembe helyezése. A folyamat akár hat órát is igénybe vehet. |
 | | Sikerült üzembe helyezni a tanúsítványt a CDN-hálózatban. |
-| 4. Befejezve | Sikerült engedélyezni a HTTPS-t a tartományban. |
+| 4\. Befejezve | Sikerült engedélyezni a HTTPS-t a tartományban. |
 
 \* Ez az üzenet csak akkor jelenik meg, ha hiba történt. 
 
@@ -282,9 +286,9 @@ Az alábbi táblázat a műveleti folyamatot mutatja, amely a HTTPS letiltásako
 
 | Műveleti folyamat | Művelet részletei | 
 | --- | --- |
-| 1. Kérés elküldése | A kérelem elküldése folyamatban van |
-| 2. Tanúsítvány megszüntetése | Tanúsítvány törlése |
-| 3. Befejezve | Tanúsítvány törölve |
+| 1\. Kérés elküldése | A kérelem elküldése folyamatban van |
+| 2\. Tanúsítvány megszüntetése | Tanúsítvány törlése |
+| 3\. Befejezve | Tanúsítvány törölve |
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 

@@ -13,13 +13,13 @@ ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
 ms.openlocfilehash: 2bc32e28ffd6dd9dab2da61078684791a04709cc
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922984"
 ---
-# <a name="configure-application-insights-profiler"></a>Az Application Insights Profiler konfigurálása
+# <a name="configure-application-insights-profiler"></a>Application Insights Profiler konfigurálása
 
 ## <a name="profiler-settings-pane"></a>Profiler beállítások panel
 
@@ -47,7 +47,7 @@ Profiler manuálisan is aktiválhatja egyetlen kattintással. Tegyük fel, hogy 
 
 A következő szakaszok bemutatják, hogyan működik a ebben a forgatókönyvben:
 
-### <a name="step-1-optional-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>1. lépés: (Nem kötelező) A webes teljesítménytesztelési elindításával forgalmat a webes alkalmazás készítése
+### <a name="step-1-optional-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>1\. lépés: (Nem kötelező) A webes teljesítménytesztelési elindításával forgalmat a webes alkalmazás készítése
 
 Ha a webalkalmazás már van a bejövő forgalmat, vagy ha csak át szeretné manuálisan létrehozni a forgalmat, kihagyhatja ezt a szakaszt, és folytassa a 2. lépés.
 
@@ -67,14 +67,14 @@ Ha a webalkalmazás már van a bejövő forgalmat, vagy ha csak át szeretné ma
 
     ![terheléses teszt folyamatban fut.][load-test-in-progress]
 
-### <a name="step-2-start-a-profiler-on-demand-session"></a>2. lépés: A Profiler igény szerinti munkamenet indítása
+### <a name="step-2-start-a-profiler-on-demand-session"></a>2\. lépés: A Profiler igény szerinti munkamenet indítása
 
 1. A terhelési teszt fut, indítsa el az Profiler rögzíthesse a hívásláncokat a webalkalmazásban fogadja betöltése közben.
 
 1. Nyissa meg a **Profiler konfigurálása** ablaktáblán.
 
 
-### <a name="step-3-view-traces"></a>3. lépés: Nyomok megtekintése
+### <a name="step-3-view-traces"></a>3\. lépés: Nyomok megtekintése
 
 Profiler végeztével kövesse a teljesítmény-nyomkövetés ablaktábla és a nézet értesítésben.
 

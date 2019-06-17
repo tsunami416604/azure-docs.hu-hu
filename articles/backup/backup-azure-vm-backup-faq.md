@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: sogup
 ms.openlocfilehash: 9d4d1db808446cb010e6551bdcec514fc550d802
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65966316"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Gyakori kérdések – biztonsági mentése Azure virtuális gépek
@@ -59,7 +59,7 @@ Key Vault elérése érdekében az Azure Backup engedélyeket biztosítanak. Adj
 ### <a name="i-migrated-vm-disks-to-managed-disks-will-my-backups-continue-to-work"></a>Felügyelt lemezeket Virtuálisgép-lemezek szeretnék áttelepíteni. A biztonsági mentések továbbra is működni fognak?
 Igen, biztonsági mentések problémamentesen működik. Hiba esetén nem kell semmit újrakonfigurálása.
 
-### <a name="why-cant-i-see-my-vm-in-the-configure-backup-wizard"></a>Miért nem látom, hogy a biztonsági mentés konfigurálása varázslóban a virtuális gépem?
+### <a name="why-cant-i-see-my-vm-in-the-configure-backup-wizard"></a>Miért nem látom a virtuális gépemet a Biztonsági mentés konfigurálása varázslóban?
 A varázsló csak sorolja fel a virtuális gépek és a tárolónak ugyanabban a régióban, és már, hogy nem készül biztonsági másolat.
 
 ### <a name="my-vm-is-shut-down-will-an-on-demand-or-a-scheduled-backup-work"></a>Virtuális gép leállt. Egy igény szerinti vagy ütemezett biztonsági mentési munkahelyi lesz?
@@ -108,7 +108,7 @@ Igen, használhatja a lemezek migrált felügyelt kódba előtt készített bizt
 - Alapértelmezés szerint a virtuális gép visszaállítási feladat létrehoz egy nem felügyelt virtuális gép.
 - Azonban állítsa vissza a lemezeket, és ezek segítségével felügyelt virtuális gép létrehozása.
 
-### <a name="how-do-i-restore-a-vm-to-a-restore-point-before-the-vm-was-migrated-to-managed-disks"></a>Hogyan állíthatok vissza virtuális gép visszaállítási pontra a virtuális gép felügyelt lemezekre történő áttelepítése előtt?
+### <a name="how-do-i-restore-a-vm-to-a-restore-point-before-the-vm-was-migrated-to-managed-disks"></a>Hogyan lehet visszaállítani egy virtuális gépet egy, a virtuális gép felügyelt lemezekre történő migrálását megelőző visszaállítási pontra?
 Alapértelmezés szerint egy virtuális gép visszaállítási feladat nem felügyelt lemezekkel rendelkező virtuális Gépet hoz létre. A felügyelt lemezekkel rendelkező virtuális gép létrehozásához:
 1. [Nem felügyelt lemezek visszaállítása](tutorial-restore-disk.md#restore-a-vm-disk).
 2. [A visszaállított lemez átalakítása felügyelt lemezek](tutorial-restore-disk.md#convert-the-restored-disk-to-a-managed-disk).

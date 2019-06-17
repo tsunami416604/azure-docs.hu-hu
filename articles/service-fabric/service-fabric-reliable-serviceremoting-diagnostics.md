@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/29/2017
 ms.author: suchiagicha
 ms.openlocfilehash: 01430c40ec9fcf1af3a463f8f86d646d15b6dd49
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64925942"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnosztikai és a Reliable Service szolgáltatás táveléréséhez alkalmazásteljesítmény-figyelés
@@ -85,16 +85,16 @@ A Reliable Services modul a következő teljesítményszámlálókkal kapcsolato
 
 | Kategória neve | Számláló neve | Leírás |
 | --- | --- | --- |
-| Service Fabric-szolgáltatási metódus |Hívás/mp |A szolgáltatás metódus meghívásainak száma másodpercenként hányszor |
+| Service Fabric-szolgáltatási metódus |Indítások/mp |A szolgáltatás metódus meghívásainak száma másodpercenként hányszor |
 | Service Fabric-szolgáltatási metódus |Hívásonkénti átlagos idő ezredmásodpercben |Ennyi ezredmásodpercig tart a metódus végrehajtásához szükséges idő |
-| Service Fabric-szolgáltatási metódus |Keletkezett kivétel/mp |Hányszor, hogy a metódus másodpercenként kivételt okozott |
+| Service Fabric-szolgáltatási metódus |Kivétel keletkezett kivétel/mp |Hányszor, hogy a metódus másodpercenként kivételt okozott |
 
 ### <a name="service-request-processing-performance-counters"></a>Szolgáltatási kérelem feldolgozása teljesítményszámlálók
 Amikor egy ügyfél keresztül a szolgáltatás proxy objektum egy metódust hív meg, a távelérés szolgáltatáshoz a hálózaton keresztül küldött kérelem üzenet eredményez. A szolgáltatás feldolgozza a kérést üzenetet, és visszaküldi a választ az ügyfél. A megbízható ServiceRemoting futásidejű tesz közzé a következő teljesítményszámlálókkal kapcsolatos szolgáltatási kérelem feldolgozása.
 
 | Kategória neve | Számláló neve | Leírás |
 | --- | --- | --- |
-| Service Fabric-szolgáltatás |Függőben lévő kérések száma |A szolgáltatás a feldolgozás alatt álló kérelmek száma |
+| Service Fabric-szolgáltatás |függőben lévő kérések száma |A szolgáltatás a feldolgozás alatt álló kérelmek száma |
 | Service Fabric-szolgáltatás |Kérelmenkénti átlagos idő ezredmásodpercben |Igénybe vett idő (ezredmásodpercben) a szolgáltatás által feldolgozott kérések |
 | Service Fabric-szolgáltatás |Kérelem deszerializálásának átlagos ideje ezredmásodpercben |(Ezredmásodpercben) szolgáltatás kérelemüzenet deszerializálása, amikor a szolgáltatás igénybe vett idő |
 | Service Fabric-szolgáltatás |Válasz szerializálásának átlagos ideje ezredmásodpercben |Időtartam (ezredmásodpercben) a szolgáltatás a szolgáltatás válaszüzenet szerializálni az ügyfélnek a válasz elküldése előtt |

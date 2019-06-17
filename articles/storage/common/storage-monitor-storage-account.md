@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 5a28d69ae5ba9f3b7eeb28b6824ad9a458832bb3
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65153635"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Az Azure Portal tárfiók figyelése
@@ -94,7 +94,7 @@ A kiválasztott metrikák **diagnosztikai** határozza meg, a metrikák elérhet
 
 Arra az esetre, amikor a küszöbértékeket a rendszer elérte a tárolási erőforrás-mérőszámok riasztásokat is létrehozhat.
 
-1. Megnyitásához a **riasztási szabályok panel**, görgessen le a **figyelés** szakaszában a **menü panel** , és válassza ki **riasztások (klasszikus)**.
+1. Megnyitásához a **riasztási szabályok panel**, görgessen le a **figyelés** szakaszában a **menü panel** , és válassza ki **riasztások (klasszikus)** .
 2. Válassza ki **metrikariasztás hozzáadása (klasszikus)** megnyitásához a **riasztási szabály hozzáadása** panel
 3. Adjon meg egy **neve** és **leírás** az Új riasztási szabály.
 4. Válassza ki a **metrika** szeretné hozzáadni egy riasztást a riasztás a **feltétel**, és a egy **küszöbérték**. A küszöbérték egység írja be a mérőszám úgy döntött, attól függően változik. Például a "count" nem egység típusú *ContainerCount*, miközben az egység a *percentnetworkerror értéket mutatnak* metrika százalékos.

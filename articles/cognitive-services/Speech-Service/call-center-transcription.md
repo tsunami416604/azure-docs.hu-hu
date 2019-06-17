@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 7d844f4d2ad77f5b7cc53275a24167e5f2e71b78
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 055d141cab8ece3fcb462573f6ed4d8941c19751
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027032"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064126"
 ---
 # <a name="speech-services-for-telephony-data"></a>A telefonos adatok beszédszolgáltatások
 
@@ -34,7 +34,7 @@ Tekintsük át néhány a technológia és a kapcsolódó szolgáltatásokat Azu
 
 ## <a name="azure-technology-for-call-centers"></a>Az Azure technológiát hívás központok
 
-Után az beszédszolgáltatások működési aspektusa elsődleges célja – amikor a alkalmazni a ügyfélszolgálatával –, a felhasználói élmény javítása érdekében. Ebben a tekintetben létezik három egyértelmű tartományok 
+A beszédszolgáltatások működési aspektusa túli elsődleges célja – ügyfélszolgálatával – alkalmazásakor, a felhasználói élmény javítása érdekében. Három egyértelmű tartományok e tekintetben létezik:
 
 * Utáni hívás analytics, batch-hívás felvételek feldolgozása 
 * A hang jelzés különböző információk kinyerése, mivel a hívás lefolyása (az folyamatban van egy neves alkalmazási helyzet vélemények) valós idejű elemzések feldolgozását és
@@ -48,7 +48,7 @@ Hogy a tartomány utáni hívás vagy a valós idejű, az Azure a felhasználói
 
 ### <a name="speech-to-text-stt"></a>Diktálás (STT) 
 
-[Hang-szöveg transzformációs](speech-to-text.md) után a szolgáltatás hívást center megoldásban a egészíti van. Alsóbb rétegbeli elemzési folyamatok átírt szöveg támaszkodhat, mivel a word Hibaarány (WER) van, rendkívül fontos. Hívás center beszédátírási kulcsfontosságú kihívása, nevezetesen egyik, a háttérzaj, amely elterjedt a ügyfélszolgálatával (például – más ügynökök, és beszéljen a háttérben), a gazdag különböző nyelvű területi beállításokhoz és dialektusok, valamint a gyenge minőségű, a tényleges telefon jel. A WER magas összefügg az akusztikai és nyelvi modelleket képzett arról, hogy egy adott területi beállításhoz tartozó, így tudja a modellt a területi beállítások testreszabása fontos. Az egyesített verzió legújabb 4.x modellek a megoldás beszédátírási pontosság és a késés is. Több tíz képzett óra akusztikai adathoz, több ezer és lexikális információk egyesített milliárd modellek a piacon elérhető, a hívás center átvezeti a legpontosabb modellek.
+[Hang-szöveg transzformációs](speech-to-text.md) után a szolgáltatás hívást center megoldásban a egészíti van. Alsóbb rétegbeli elemzési folyamatok átírt szöveg támaszkodhat, mivel a word Hibaarány (WER) van, rendkívül fontos. Hívás center beszédátírási kulcsfontosságú kihívása, nevezetesen egyik, a háttérzaj, amely elterjedt a ügyfélszolgálatával (például más ügynökök, és beszéljen a háttérben), a gazdag különböző nyelvű területi beállításokhoz és dialektusok, valamint a gyenge minőségű, a tényleges telefon jel. A WER magas összefügg az akusztikai és nyelvi modelleket képzett arról, hogy egy adott területi beállításhoz tartozó, így tudja a modellt a területi beállítások testreszabása fontos. Az egyesített verzió legújabb 4.x modellek a megoldás beszédátírási pontosság és a késés is. Több tíz képzett óra akusztikai adathoz, több ezer és lexikális információk egyesített milliárd modellek a piacon elérhető, a hívás center átvezeti a legpontosabb modellek.
 
 ### <a name="sentiment"></a>Hangulat
 Mérésére, hogy az ügyfél kellett jó élményt az egyik, a beszéd elemzését, a hívás center terület alkalmazásakor a legfontosabb területeket. A [Batch Beszédátírási API](batch-transcription.md) hangulatelemzés kiszolgálónként utterance (kifejezés) kínál. Értékek meghatározásához a vélemény a hívás az ügynökök és az ügyfél egy hívás átiratok részeként kapott összesítheti.
@@ -62,7 +62,7 @@ Egyes vállalatok kísérletezünk biztosít a lefordított szövegekben az ideg
 ### <a name="text-to-speech"></a>Szövegfelolvasás
 [Szöveg-hang transzformációs](text-to-speech.md) egy másik fontos terület, az ügyfeleknek a kommunikáló robotokat végrehajtása során. A tipikus út lesz, hogy az ügyfél beszél, beszéddel a megjelenített érzéseket szöveggé, leképezések az elemzett szöveg, választ van synthesized alapján a felismert szándékkal, és majd egy eszköz vagy illesztett az ügyfél vagy egy szintetizált válasz hozza létre. Természetesen ez összes rendelkezik gyorsan – történik, így a késés az ezekben a rendszerekben sikeres fontos összetevője. 
 
-A végpontok közötti késés viszonylag kevés, figyelembe véve a különböző technológiákkal, mint például az érintett [hang-szöveg transzformációs](speech-to-text.md), [Luis](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/), [Bot Framework](https://dev.botframework.com/), [ Szöveg-hang transzformációs](text-to-speech.md). 
+A végpontok közötti késés viszonylag kevés, figyelembe véve a különböző technológiákkal, mint például az érintett [hang-szöveg transzformációs](speech-to-text.md), [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/), [Bot Framework](https://dev.botframework.com/), [ Szöveg-hang transzformációs](text-to-speech.md). 
 
 Az új beszédhangot is rendelkezésre állnak az emberi beszédhangot megkülönböztetni. Tegye robotjait az egyedi személyiségelemző használható beszédhangot ki.
 
@@ -79,10 +79,10 @@ Most nézzük meg, a kötegelt feldolgozás és a valós idejű folyamatok besz�
 A tömeges hanganyagra lefényképezheti azt fejlesztett a [Batch Beszédátírási API](batch-transcription.md). A Batch Beszédátírási API célja nagy mennyiségű adat hang lefényképezze aszinkron módon történik. Érdemes hívásadatokat center átírás, a megoldás ezen oszlopok alapul:
 
 * **Pontosság**: Negyedik generációs egyesített modellel unsurpassed beszédátírási minőségi biztosítunk.
-* **Késés**: Tisztában vagyunk vele, hogy amikor tömeges beszédátírás, a beszédátírás szükséges gyorsan. Az átírási feladatok használatával kezdeményezett a [Batch Beszédátírási API](batch-transcription.md) , azonnal várólistára kerül, és a feladat végrehajtása után gyorsabb, mint a valós idejű beszédátírási van-e végre.
+* **Késés**: Tisztában vagyunk vele, hogy amikor tömeges beszédátírás, a beszédátírás szükséges gyorsan. Az átírási feladatok használatával kezdeményezett a [Batch Beszédátírási API](batch-transcription.md) , azonnal várólistára kerül, és miután a feladat futni kezd, gyorsabb, mint a valós idejű beszédátírási végre.
 * **Biztonság**: Tisztában vagyunk vele, hogy a hívások tartalmazhatnak bizalmas adatokat. Nyugodt lehet afelől, hogy a biztonsági egyike a összpontosítsuk. Szolgáltatásunk kapott ISO, SOC, a HIPAA, a PCI tanúsítványt.
 
-Telefonos ügyfélszolgálatok nagy tömegű hívásaiból naponta. Ha az üzleti telefonos adatokat tárol egy központi helyen, például az Azure Storage, használja a [Batch Beszédátírási API]((batch-transcription.md) aszinkron módon és beszédátírás fogadásához.
+Telefonos ügyfélszolgálatok nagy tömegű hívásaiból naponta. Ha az üzleti telefonos adatokat tárol egy központi helyen, például az Azure Storage, használhatja a [Batch Beszédátírási API](batch-transcription.md) aszinkron módon és beszédátírás fogadásához.
 
 Egy tipikus megoldás ezeket a szolgáltatásokat használja:
 
@@ -98,7 +98,7 @@ Belsőleg használjuk a fenti technológiák az ügyfél meghívja a Microsoft t
 
 Egyes vállalatok valós idejű beszélgetések lefényképezze van szükség. Valós idejű beszédátírási segítségével azonosíthatja a kulcsszavakat és keresi meg a tartalom és erőforrások a beszélgetést, hangulatát, kisegítő lehetőségek javítása, illetve az ügyfelek és az ügynököket, akik nem natív fordítások figyelésére vonatkozó aktiválása előadók.
 
-A valós idejű beszédátírási olyan esetekben, javasoljuk a [beszéd SDK](speech-sdk.md). Hang-szöveg transzformációs jelenleg elérhető [több mint 20 nyelvet](language-support.md), és az SDK-val is elérhető C++, C#, Java, Python, Node.js és Javascript. A minták érhetők el az egyes nyelvekhez [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk). A legújabb híreket és frissítéseket, lásd: [kibocsátási megjegyzések](releasenotes.md).
+A valós idejű beszédátírási olyan esetekben, javasoljuk a [beszéd SDK](speech-sdk.md). Hang-szöveg transzformációs jelenleg elérhető [több mint 20 nyelvet](language-support.md), és az SDK-val is elérhető C++, C#, Java, Python, Node.js, Objective-C és a JavaScript. A minták érhetők el az egyes nyelvekhez [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk). A legújabb híreket és frissítéseket, lásd: [kibocsátási megjegyzések](releasenotes.md).
 
 Belsőleg használjuk a fenti technológiák, azok a valós idejű Microsoft ügyfelek hívásainak elemzése.
 
@@ -110,7 +110,7 @@ Beszédszolgáltatások egyszerűen integrálható megoldásban használatával 
 
 Hangalapú vagy telefonos szolgáltatás termékekre (például Genesys vagy AudioCodes) kínálnak adatintegrációs képességeket, amelyek ahhoz, hogy a bejövő és kimenő hang csatlakoztatott egy Azure-szolgáltatáshoz jól használható. Alapvetően egy egyéni Azure-szolgáltatás biztosíthatnak egy adott illesztő határozza meg a telefonhívás munkamenetek (például a hívás Start vagy End hívja), és elérhetővé tehettük a WebSocket API-t fogadni a bejövő adatfolyam hang, a beszéd szolgáltatásokkal használt. Kimenő válaszok, például a beszélgetés átírást vagy a Bot Framework, a kapcsolatok lehetnek synthesized szöveg-beszéd átalakítás a Microsoft-szolgáltatással és a Hangalapú lejátszás céljából vissza.
 
-Egy másik helyzet lehet közvetlen SIP-integráció. Az Azure-szolgáltatások kapcsolódik a SIP-kiszolgálóhoz, így az első egy bejövő adatfolyam és a egy kimenő stream, amely a hang-szöveg és a szöveg-hang transzformációs fázis használható. Szeretne csatlakozni egy SIP-kiszolgálóhoz van kereskedelmi szoftverek ajánlatokat Ozieki SDK-t, vagy [a csapatok hívási és értekezletek API](https://docs.microsoft.com/graph/api/resources/calls-api-overview?view=graph-rest-beta) (jelenleg a bétaverziós), amely tervezték, hogy támogatja ezt a forgatókönyvet a hang-hívásokat.
+Egy másik helyzet lehet közvetlen SIP-integráció. Az Azure-szolgáltatások kapcsolódik a SIP-kiszolgálóhoz, így az első egy bejövő adatfolyam és a egy kimenő stream, amely a hang-szöveg és a szöveg-hang transzformációs fázis használható. Szeretne csatlakozni egy SIP-kiszolgálóhoz van kereskedelmi szoftverek ajánlatokat Ozeki SDK-t, vagy [a hívó csapatok és értekezletek API](https://docs.microsoft.com/graph/api/resources/calls-api-overview?view=graph-rest-beta) (jelenleg a bétaverziós), amely tervezték, hogy támogatja ezt a forgatókönyvet a hang-hívásokat.
 
 ## <a name="customize-existing-experiences"></a>Meglévő felhasználói környezetet testreszabása
 
@@ -118,7 +118,7 @@ Az Azure Speech Services nagyszerűen működik a beépített modellek, azonban 
 
 | Beszédszolgáltatás | Modell | Leírás |
 |----------------|-------|-------------|
-| Diktálás | [Akusztikai modell](how-to-customize-acoustic-models.md) | Alkalmazások, eszközök, egy egyéni akusztikai modell létrehozásához vagy eszközöket, amelyek a megadott többek között az autó vagy gyárban, mindegyike adott felvétel feltételek. Ilyenek például a ékezetes speech, adott háttér egy olyan vagy a rögzítés adott mikrofon segítségével. |
+| Speech-to-text | [Akusztikai modell](how-to-customize-acoustic-models.md) | Alkalmazások, eszközök, egy egyéni akusztikai modell létrehozásához vagy eszközöket, amelyek a megadott többek között az autó vagy gyárban, mindegyike adott felvétel feltételek. Ilyenek például a ékezetes speech, adott háttér egy olyan vagy a rögzítés adott mikrofon segítségével. |
 | | [Nyelvi modell](how-to-customize-language-model.md) | Hozzon létre egy egyéni nyelvi modell, iparág-specifikus szóhasználatának és nyelvtani, például terminológiát vagy informatikai szakkifejezéseivel beszédátírási javítása érdekében. |
 | | [Kiejtési modell](how-to-customize-pronunciation.md) | Egy egyéni írásmódja modellel meghatározhatja fonetikus formában és megjelenített egy szó vagy kifejezés. Ez hasznos testre szabott feltételek, például termékneveket vagy betűszavakat kezelése. A kezdéshez szüksége egy írásmódja fájlnevével – egy egyszerű .txt fájlt. |
 | Szövegfelolvasás | [Hangtípusok](how-to-customize-voice-font.md) | Egyéni hangtípust lehetővé teszi, hogy hozzon létre egy könnyen felismerhető névre, egy-az-maga nemében egyedülálló hang, a saját márkáját. Csak egy kis mennyiségű adatot a kezdéshez vesz igénybe. Minél több adatot ad meg, a további természetes és az emberi intelligenciára hasonlító elemeket az hangtípusú fog hang-, hogy. |

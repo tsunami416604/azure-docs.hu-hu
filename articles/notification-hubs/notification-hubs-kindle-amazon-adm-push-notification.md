@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/29/2019
 ms.author: jowargo
-ms.openlocfilehash: edd0e12460e07cfd2990cc43a9056ed06b84fb1d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: abc77ad4d06dc719ee1a89cd8fcf29d42d96b483
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926802"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147641"
 ---
 # <a name="get-started-with-notification-hubs-for-kindle-apps"></a>Ismerkedés a Notification Hubs szolgáltatással Kindle-alkalmazásokhoz
 
@@ -58,24 +58,35 @@ Ebben az oktatóanyagban kódot fog létrehozni/frissíteni az alábbi feladatok
     5. Kattintson a **Mentés** gombra.
 
         ![Új alkalmazás Alkalmazásbeküldési oldalára](./media/notification-hubs-kindle-get-started/new-app-submission-page.png) 
-2.  Váltson a lap tetején a **Mobile Ads** lapra, és kövesse az alábbi lépéseket: 
+2.  Váltson a lap tetején a **App Services** fülre.
+
+    ![App Services lap](./media/notification-hubs-kindle-get-started/app-services-tab.png)
+1. Az a **App Services** lapon görgessen le, és válassza ki **nézet Mobile Ads** a a **Mobile Ads** szakaszban. Megjelenik a **Mobile Ads** lap egy webböngésző új lapján. 
+
+    ![Mobile Ads szakasz - nézet Mobile Ads hivatkozás](./media/notification-hubs-kindle-get-started/view-mobile-ads-link.png)
+1. Az a **Mobile Ads** lapon, tegye a következőket: 
     1. Adja meg, hogy az alkalmazás irányul elsősorban gyerek 13. A jelen oktatóanyag esetében válassza ki a **nem**.
-    2. Válassza ki **elküldése**. 
+    1. Válassza ki **elküldése**. 
 
         ![A Mobile Ads lap](./media/notification-hubs-kindle-get-started/mobile-ads-page.png)
     3. Másolás a **alkalmazáskulcsot** származó a **Mobile Ads** lap. 
 
         ![Alkalmazáskulcs](./media/notification-hubs-kindle-get-started/application-key.png)
-3.  Válassza ki **alkalmazások és szolgáltatások** menü tetején, és válassza ki az alkalmazást a listából. 
+3.  Most pedig váltson a webböngésző lap, amely rendelkezik a **App Services** nyílt lapra, és kövesse az alábbi lépéseket:
+    1. Görgessen a **Device Messaging** szakaszban.     
+    1. Bontsa ki a **válassza ki a meglévő biztonsági profilt, vagy hozzon létre új**, majd válassza ki **biztonsági profil létrehozása**. 
 
-    ![Válassza ki az alkalmazást a listából](./media/notification-hubs-kindle-get-started/all-apps-select.png)
-4. Váltson a **Device Messaging** lapra, és kövesse az alábbi lépéseket: 
-    1. Válassza ki **hozzon létre egy új biztonsági profilt**.
-    2. Adjon meg egy **neve** a biztonsági profil. 
-    3. Adja meg **leírás** a biztonsági profil. 
-    4. Kattintson a **Mentés** gombra. 
-    5. Válassza ki **biztonsági profil megtekintése** az eredmény oldalon. 
-5. Most, az a **biztonsági profil** lapon, tegye a következőket: 
+        ![Hozzon létre biztonsági profil gombra](./media/notification-hubs-kindle-get-started/create-security-profile-button.png)
+    1. Adjon meg egy **neve** a biztonsági profil. 
+    2. Adja meg **leírás** a biztonsági profil. 
+    3. Kattintson a **Mentés** gombra. 
+
+        ![A biztonsági profil mentése](./media/notification-hubs-kindle-get-started/save-security-profile.png)
+    1. Válassza ki **Device Messaging engedélyezése** lehetővé teszik a biztonsági profil üzenetkezelési eszköz. 
+
+        ![Device Messaging engedélyezése](./media/notification-hubs-kindle-get-started/enable-device-messaging.png)
+    1. Ezután válassza ki **biztonsági profil megtekintése** az eredmény oldalon. 
+1. Most, az a **biztonsági profil** lapon, tegye a következőket: 
     1. Váltson a **Webbeállításainak** lapra, és másolja a **ügyfél-azonosító** és **titkos Ügyfélkód** értéket későbbi használatra. 
 
         ![Ügyfél-azonosító és titkos kulcs lekérése](./media/notification-hubs-kindle-get-started/client-id-secret.png) 
@@ -314,6 +325,36 @@ Ebben az oktatóanyagban kódot fog létrehozni/frissíteni az alábbi feladatok
         mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
     }
     ```
+## <a name="create-an-adm-object"></a>ADM – objektum létrehozása
+1 az a `MainActivity.java` fájlt, adja hozzá a következő importálási utasításokat:
+
+    ```java
+    import android.os.AsyncTask;
+    import android.util.Log;
+    import com.amazon.device.messaging.ADM;
+    ```
+2. Adja hozzá a következő kódot az `OnCreate` metódus végéhez:
+
+    ```java
+    final ADM adm = new ADM(this);
+    if (adm.getRegistrationId() == null)
+    {
+        adm.startRegister();
+    } else {
+        new AsyncTask() {
+                @Override
+                protected Object doInBackground(Object... params) {
+                    try {                         MyADMMessageHandler.getNotificationHub(getApplicationContext()).register(adm.getRegistrationId());
+                    } catch (Exception e) {
+                        Log.e("com.wa.hellokindlefire", "Failed registration with hub", e);
+                        return e;
+                    }
+                    return null;
+                }
+            }.execute(null, null, null);
+    }
+    ```
+
 
 ## <a name="add-your-api-key-to-your-app"></a>Az API-kulcs hozzáadása az alkalmazáshoz
 1. Kövesse az alábbi lépéseket az eszközök mappa hozzáadása a projekthez. 

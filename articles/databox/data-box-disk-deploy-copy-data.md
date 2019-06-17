@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: f5c498fc3f3fe051070b3565041e506bc40fceda
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 70890dcd72cadc55e56410381a94ac071b248a91
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925168"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147515"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Oktatóanyag: Adatok másolása az Azure Data Box-lemezek és ellenőrzése
 
@@ -58,11 +58,11 @@ Az alábbi lépések elvégzésével csatlakoztathatja, majd másolhatja át az 
 
     |Kijelölt tár célhelyként  |Tárfiók típusa|Átmeneti tárfiók típusa |Mappák és almappák  |
     |---------|---------|---------|------------------|
-    |Tárfiók     |A GPv1- vagy GPv2                 | NA | Egy BlockBlob <br> PageBlob <br> AzureFile        |
-    |Tárfiók     |BLOB storage-fiók         | NA | Egy BlockBlob        |
-    |Felügyelt lemezek     |NA | A GPv1- vagy GPv2         | FelügyeltLemez<ul> <li>PremiumSSD</li><li>StandardSSD</li><li>StandardHDD</li></ul>        |
-    |Tárfiók <br> Felügyelt lemezek     |A GPv1- vagy GPv2 | A GPv1- vagy GPv2         |Egy BlockBlob <br> PageBlob <br> AzureFile <br> FelügyeltLemez<ul> <li> PremiumSSD </li><li>StandardSSD</li><li>StandardHDD</li></ul>         |
-    |Tárfiók <br> Felügyelt lemezek    |BLOB storage-fiók | A GPv1- vagy GPv2         |Egy BlockBlob <br> FelügyeltLemez<ul> <li>PremiumSSD</li><li>StandardSSD</li><li>StandardHDD</li></ul>         |
+    |Tárfiók     |A GPv1- vagy GPv2                 | n/a | Egy BlockBlob <br> PageBlob <br> AzureFile        |
+    |Tárfiók     |BLOB storage-fiók         | n/a | Egy BlockBlob        |
+    |Felügyelt lemezek     |n/a | A GPv1- vagy GPv2         | ManagedDisk<ul> <li>PremiumSSD</li><li>StandardSSD</li><li>StandardHDD</li></ul>        |
+    |Tárfiók <br> Felügyelt lemezek     |A GPv1- vagy GPv2 | A GPv1- vagy GPv2         |Egy BlockBlob <br> PageBlob <br> AzureFile <br> ManagedDisk<ul> <li> PremiumSSD </li><li>StandardSSD</li><li>StandardHDD</li></ul>         |
+    |Tárfiók <br> Felügyelt lemezek    |BLOB storage-fiók | A GPv1- vagy GPv2         |Egy BlockBlob <br> ManagedDisk<ul> <li>PremiumSSD</li><li>StandardSSD</li><li>StandardHDD</li></ul>         |
 
     Egy példaként szolgáló képernyőképen egy rendelést, ahol a GPv2-tárfiókra van megadva az alább látható:
 
@@ -88,7 +88,7 @@ Az alábbi lépések elvégzésével csatlakoztathatja, majd másolhatja át az 
     
     |Paraméterek/beállítások  |Leírás |
     |--------------------|------------|
-    |Forrás            | Megadja a forráskönyvtár elérési útját.        |
+    |source            | Megadja a forráskönyvtár elérési útját.        |
     |Cél       | Megadja a célkönyvtár elérési útját.        |
     |/E                  | Átmásolja az alkönyvtárakat, az üres könyvtárakkal együtt. |
     |/MT[:N]             | Többszálas másolatokat hoz létre N szállal, ahol az N egy 1 és 128 közötti egész szám. <br>Az N alapértelmezett értéke 8.        |
@@ -250,6 +250,8 @@ Ez a választható eljárás akkor lehet hasznos, ha több lemezt használ, és 
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<configFile.json> /ResumeSession`
 
+Ha hibába ütközik a felosztás másolás eszköz használatával, folytassa a hogyan [Split másolási eszközzel kapcsolatos hibák elhárítása](data-box-disk-troubleshoot-data-copy.md).
+
 Az adatmásolás befejezése után folytathatja az adatok érvényesítéséhez. Ha a felosztás Fájlmásoló eszközt használta, kihagyhatja az érvényesítést (Split Copy eszköz ellenőrzi, valamint), és folytassa a következő oktatóanyaggal.
 
 
@@ -267,9 +269,11 @@ Ha nem másol adatokat a felosztás Fájlmásoló eszközt használja, szükség
 
     > [!TIP]
     > - Állítsa vissza az eszköz két futtatásai között.
-    > - 1. lehetőséget használja, ha a nagy méretű, kis méretű fájlokat tartalmazó adatkészletet foglalkozó (~ Tudásbázis). Ezt a beállítást csak érvényesíti a fájlokat, ellenőrzőösszeg generációs nagyon hosszú időt vehet igénybe, és a teljesítmény rendkívül lassú lehet.
+    > - 1\. lehetőséget használja, ha a nagy méretű, kis méretű fájlokat tartalmazó adatkészletet foglalkozó (~ Tudásbázis). Ezt a beállítást csak érvényesíti a fájlokat, ellenőrzőösszeg generációs nagyon hosszú időt vehet igénybe, és a teljesítmény rendkívül lassú lehet.
 
 3. Több lemez használata esetén futtassa a parancsot minden lemezen.
+
+Ha az érvényesítés közben hibák jelennek meg, tekintse meg [érvényesítési hibák elhárítása](data-box-disk-troubleshoot.md).
 
 ## <a name="next-steps"></a>További lépések
 

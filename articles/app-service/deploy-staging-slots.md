@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
 ms.openlocfilehash: 1e09eec89c683d36df49110227488a6413ed371c
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65955955"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Állítsa be átmeneti környezeteket az Azure App Service-ben
@@ -54,7 +54,7 @@ Az alkalmazásnak futnia kell a **Standard**, **prémium szintű**, vagy **elkü
 
 3. Az a **tárhely felvétele** párbeszédpanel, nevezze el a tárolóhely, és válassza ki, hogy egy másik meglévő üzembe helyezési pont az alkalmazáskonfigurációt klónozásához. Kattintson a **Hozzáadás** folytatásához.
    
-    ![Beállítások forrása](./media/web-sites-staged-publishing/ConfigurationSource1.png)
+    ![Konfiguráció forrása](./media/web-sites-staged-publishing/ConfigurationSource1.png)
    
     Minden olyan meglévő tárolóhelyről származó konfiguráció klónozhat. Beállítások, amely képes lehet klónozni Alkalmazásbeállítások, kapcsolati karakterláncok, nyelvi keretrendszer-verziókat, web sockets, HTTP-verzió és platform bitszámértékének tartalmazza.
 
@@ -96,10 +96,10 @@ Szolgáltatások jelölve egy * kell tenni a bővítőhelyre kiemelt bevezetés�
 * Közzétételi végpontjai
 * Egyéni tartománynevek
 * Privát tanúsítványok és az SSL-kötések
-* Lépték beállításai
+* Skála beállításai
 * Webjobs-feladatok ütemezők
 * Az IP-korlátozások
-* Mindig bekapcsolva
+* Folyamatos üzem
 * Beállítások protokollt (HTTP**S**, TLS-verziót, ügyfél-tanúsítványok)
 * Diagnosztikai beállítások
 * CORS
@@ -165,7 +165,7 @@ Felcserélés előnézettel, kövesse az alábbi lépéseket.
 
 2. Ha készen áll a felcserélés indítása, kattintson a **felcserélés indítása**.
 
-    1. fázis befejezése után értesítést kap arról a párbeszédpanelen. Előzetes verzió a lapozófájl-kapacitás, a forrás adatszalagot az `https://<app_name>-<source-slot-name>.azurewebsites.net`. 
+    1\. fázis befejezése után értesítést kap arról a párbeszédpanelen. Előzetes verzió a lapozófájl-kapacitás, a forrás adatszalagot az `https://<app_name>-<source-slot-name>.azurewebsites.net`. 
 
 3. Amikor készen áll a függőben lévő felcserélés befejezése, válassza ki a **felcserélés befejezése** a **felcserélési művelet** kattintson **felcserélés befejezése**.
 
@@ -195,7 +195,7 @@ Automatikus felcserélés leegyszerűsíti a DevOps-forgatókönyvekre, ahol sze
 
 Automatikus felcserélés konfigurálásához kövesse az alábbi lépéseket:
 
-1. Keresse meg az alkalmazás erőforrás-lapon. Válassza ki **üzembe helyezési pontok (előzetes verzió)** > *\<kívánt forrás >* > **Alkalmazásbeállítások**.
+1. Keresse meg az alkalmazás erőforrás-lapon. Válassza ki **üzembe helyezési pontok (előzetes verzió)**  >  *\<kívánt forrás >*  > **Alkalmazásbeállítások**.
    
 2. A **automatikus felcserélés**, jelölje be **a**, válassza ki a kívánt cél bővítőhely a **automatikus felcserélés tárolóhely**, és kattintson a **mentése** a parancssávon. 
    
@@ -238,7 +238,7 @@ Alapértelmezésben a kéréseket az alkalmazás éles URL-címe (`http://<app_n
 
 Éles forgalom irányítására automatikusan, kövesse az alábbi lépéseket:
 
-1. Az alkalmazás erőforrás-oldalon keresse meg és válassza **üzembe helyezési pontok (előzetes verzió)**.
+1. Az alkalmazás erőforrás-oldalon keresse meg és válassza **üzembe helyezési pontok (előzetes verzió)** .
 
 2. Az a **forgalom %** oszlopa a tárolóhely kívánt átirányítása, adja meg (0 és 100) közötti százalékos képviselő szeretné átirányítani teljes forgalom mennyisége. Kattintson a **Save** (Mentés) gombra.
 
@@ -272,7 +272,7 @@ Alapértelmezés szerint új pontok vannak megadva az útválasztási szabály `
 
 ## <a name="delete-slot"></a>Pont törlése
 
-Keresse meg az alkalmazás erőforrás-lapon. Válassza ki **üzembe helyezési pontok (előzetes verzió)** > *\<törlése tárolóhely >* > **áttekintése**. Kattintson a **törlése** a parancssávon.  
+Keresse meg az alkalmazás erőforrás-lapon. Válassza ki **üzembe helyezési pontok (előzetes verzió)**  >  *\<törlése tárolóhely >*  > **áttekintése**. Kattintson a **törlése** a parancssávon.  
 
 ![Üzembehelyezési pont törlése](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 

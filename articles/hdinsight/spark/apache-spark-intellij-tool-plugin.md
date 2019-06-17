@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: maxluk
-ms.openlocfilehash: 57a3ea73783af1edaee069bf2770d5c58f81772a
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 94cc41890778e842cb2e4bd6e06b90361cbef1cd
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496100"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066456"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>IntelliJ-hez készült Azure eszközkészlet használata egy HDInsight-fürtön az Apache Spark-alkalmazások létrehozása
 
@@ -183,7 +183,7 @@ Kapcsolat egy HDInsight-fürtöt a felügyelt Apache Ambari felhasználónév ha
         |Felhasználónév| Adja meg a fürthöz tartozó felhasználónevet, alapértelmezett érték a rendszergazdával.|
         |Jelszó| Adja meg a jelszót a felhasználó nevét.|
     
-        ![hivatkozás a Hdinsight-fürt párbeszédpanel](./media/apache-spark-intellij-tool-plugin/link-hdinsight-cluster-dialog.png)
+        ![hivatkozás a HdInsight-fürt párbeszédpanel](./media/apache-spark-intellij-tool-plugin/link-hdinsight-cluster-dialog.png)
 
     * **Livy-szolgáltatás**  
   
@@ -457,12 +457,12 @@ Ha a fürt foglalt, kaphat az alábbi hiba.
 
 ![Intellij jelenik meg a hiba esetén a foglalt fürt](./media/apache-spark-intellij-tool-plugin/intellij-interactive-cluster-busy-submit.png)
 
-## <a name="feedback-and-known-issues"></a>Visszajelzés és ismert problémák
+## <a name="known-issues"></a>Ismert problémák
+
 Közvetlenül a Spark kimenetek megtekintése jelenleg nem támogatott.
 
-Ha javaslata vagy visszajelzés rendelkezik, vagy ha problémákat tapasztal, amikor ez a beépülő modul használata, e-mailt küldjön hdivstool@microsoft.com.
-
 ## <a name="seealso"></a>Következő lépések
+
 * [Áttekintés: Az Apache Spark on Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="demo"></a>Bemutató
@@ -482,7 +482,6 @@ Ha javaslata vagy visszajelzés rendelkezik, vagy ha problémákat tapasztal, am
 ### <a name="tools-and-extensions"></a>Eszközök és bővítmények
 * [IntelliJ-hez készült Azure eszközkészlet használata Apache Spark-alkalmazások VPN-en keresztül távolról](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [IntelliJ-hez készült Azure eszközkészlet használata Apache Spark-alkalmazások távolról az ssh-n keresztül](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
-* [HDInsight Tools for IntelliJ with hortonworks – tesztkörnyezet használata](../hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
 * [HDInsight Tools használata az Azure Toolkit for Eclipse Apache Spark-alkalmazások létrehozásához](apache-spark-eclipse-tool-plugin.md)
 * [Az Apache Zeppelin notebookok használata a HDInsight Apache Spark-fürt](apache-spark-zeppelin-notebook.md)
 * [Notebookokhoz elérhető kernelek Jupyter a HDInsight az Apache Spark-fürt](apache-spark-jupyter-notebook-kernels.md)

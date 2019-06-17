@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 617adbcda70799aa07248945bbc27f9d95aa77a3
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65952565"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Azure Maps-hitelesítés kezelése
@@ -34,7 +34,7 @@ Miután létrehozott egy Azure Maps-fiók, kell létesítenie az Azure AD-bérl�
 
 1. Az Azure AD paneljéről, és hozzon létre egy alkalmazás regisztrációját. Adjon meg egy nevet, a regisztráció. Az a **bejelentkezési URL-** adja meg a kezdőlapon a webalkalmazás / API-t (például https:\//localhost/). Ha már rendelkezik egy regisztrált alkalmazást, folytassa a 2. lépés.
 
-    ![Appok regisztrálása](./media/how-to-manage-authentication/app-registration.png)
+    ![Alkalmazásregisztráció](./media/how-to-manage-authentication/app-registration.png)
 
     ![Alkalmazás regisztráció részletei](./media/how-to-manage-authentication/app-create.png)
 
@@ -65,7 +65,7 @@ Az Azure Maps-fiók társítása az Azure AD-bérlővel, miután egy felhasznál
 
     ![Engedélyezés RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. Az a **szerepkör-hozzárendelés hozzáadása** időszak alatt **szerepkör**, jelölje be **Azure Maps dátum olvasója (minta)**. Alatt **rendelhet hozzáféréseket**válassza **az Azure AD-felhasználó, csoport vagy szolgáltatásnév**. A **kiválasztása**, a felhasználó vagy alkalmazás kiválasztása. Kattintson a **Mentés** gombra.
+2. Az a **szerepkör-hozzárendelés hozzáadása** időszak alatt **szerepkör**, jelölje be **Azure Maps dátum olvasója (minta)** . Alatt **rendelhet hozzáféréseket**válassza **az Azure AD-felhasználó, csoport vagy szolgáltatásnév**. A **kiválasztása**, a felhasználó vagy alkalmazás kiválasztása. Kattintson a **Mentés** gombra.
 
     ![Szerepkör-hozzárendelés hozzáadása](./media/how-to-manage-authentication/add-role-assignment.png)
 
@@ -80,7 +80,7 @@ Szerepköralapú hozzáférés-vezérlés (RBAC) szerepkörök érhetők el az A
 
 Az RBAC részletes hozzáférés-vezérlést biztosít.
 
-Felhasználókat és alkalmazásokat, amelyek kapott RBAC az Azure Maps megtekintéséhez lépjen a **hozzáférés-vezérlés (IAM)**, jelölje be **szerepkör-hozzárendelések**, és szűrjön rá a **az Azure Maps**.
+Felhasználókat és alkalmazásokat, amelyek kapott RBAC az Azure Maps megtekintéséhez lépjen a **hozzáférés-vezérlés (IAM)** , jelölje be **szerepkör-hozzárendelések**, és szűrjön rá a **az Azure Maps**.
 
 ![Felhasználók és alkalmazások RBAC engedélyek megtekintése](./media/how-to-manage-authentication/how-to-view-amrbac.png)
 

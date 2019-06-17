@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 7f5996b41da68adc83c26e836c9fb1a175107337
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a0b8dbb3992808bdcb94291d876192431c72f6c2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60273807"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100347"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>Oktatóanyag: Infogix Data3Sixty szabályozása az Azure Active Directory-integráció
 
@@ -54,7 +54,7 @@ Konfigurálása az Azure AD integrálása a Infogix Data3Sixty szabályozzák, h
 
 **Adja hozzá a Infogix Data3Sixty szabályozzák a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -129,7 +129,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Infogix Data3Sixty szabályo
     | -----------| -------------- |
     | Keresztnév  | user.givenname |
     | Vezetéknév   | user.surname |
-    | felhasználónév   | user.mail    |
+    | username   | user.mail    |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 

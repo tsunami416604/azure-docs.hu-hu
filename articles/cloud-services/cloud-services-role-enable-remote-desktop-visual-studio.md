@@ -4,22 +4,20 @@ description: Az Azure cloud service-alkalmazás lehetővé teszi a távoli aszta
 services: cloud-services
 author: ghogen
 manager: douge
-editor: ''
 ms.assetid: f5727ebe-9f57-4d7d-aff1-58761e8de8c1
-ms.service: multiple
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-origin.date: 03/06/2018
-ms.date: 10/22/2018
-ms.author: v-yiso
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.custom: vs-azure
+ms.topic: conceptual
+ms.workload: azure-vs
+ms.date: 03/06/2018
+ms.author: ghogen
 ms.openlocfilehash: 924719a8371f4d41cb9ead09252d8f3d3424326a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60406446"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64717752"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Távoli asztali kapcsolat engedélyezése egy szerepkörhöz az Azure Cloud Services, a Visual Studio használatával
 
@@ -48,10 +46,8 @@ A Visual Studio 2017 15.4-es és korábbi használata esetén használhatja a **
 
    > [!Note]
    > A tanúsítványok, szüksége lesz egy távoli asztali kapcsolatot a tanúsítványokat az Azure műveletnél használó eltérnek. A távelérési tanúsítványnak titkos kulccsal kell rendelkeznie.
-   >
-   >
 
-5. Válasszon ki egy tanúsítványt a listából, vagy válasszon  **&lt;létrehozása... &gt;**. Ha létrehoz egy új tanúsítványt, adjon meg egy rövid nevet az új tanúsítványt, amikor a rendszer kéri, és válassza ki **OK**. Az új tanúsítvány megjelenik a legördülő listában.
+5. Válasszon ki egy tanúsítványt a listából, vagy válasszon  **&lt;létrehozása... &gt;** . Ha létrehoz egy új tanúsítványt, adjon meg egy rövid nevet az új tanúsítványt, amikor a rendszer kéri, és válassza ki **OK**. Az új tanúsítvány megjelenik a legördülő listában.
 
 6. Adjon meg egy felhasználónevet és jelszót. Nem használhat egy meglévő fiókot. Ne használja a "Rendszergazda" felhasználói nevet az új fiókhoz.
 

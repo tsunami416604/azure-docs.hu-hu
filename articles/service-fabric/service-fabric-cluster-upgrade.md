@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/12/2018
 ms.author: aljo
 ms.openlocfilehash: 8fa461d8c3a70d4b0d2d9973a840ffc7d1ff6470
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65472769"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>A frissítés és az Azure Service Fabric-fürt frissítése
@@ -36,7 +36,7 @@ Beállíthatja, hogy a fürt automatikus hálófrissítések fogadásához, azok
 ## <a name="fabric-upgrade-behavior-during-automatic-upgrades"></a>Fabric frissítési viselkedést automatikus frissítések során
 A Microsoft fenntartja a fabric-kódra, és a egy Azure-fürtön futó configuration. A szoftver figyelt automatikus frissítései révén igény szerint elvégzése. Ezek a frissítések lehet kódot, konfigurációs vagy mindkettőt. Ahhoz, hogy az alkalmazás romlik a, hogy ezek a frissítések miatt csak minimális hatással van, vagy nem gyakorolt hatás, a következő szakaszában, a Microsoft végzi a frissítéseket:
 
-### <a name="phase-1-an-upgrade-is-performed-by-using-all-cluster-health-policies"></a>1. fázis: Frissítés az összes fürt állapotházirendeket használatával történik
+### <a name="phase-1-an-upgrade-is-performed-by-using-all-cluster-health-policies"></a>1\. fázis: Frissítés az összes fürt állapotházirendeket használatával történik
 Ebben a fázisban a frissítéseket a egyszerre több frissítési tartományt folytatja, és az alkalmazások, a fürtben futó tovább állásidő nélkül. A fürt állapotházirendeket (csomópont állapotát, az kombinációja a fürtben futó összes alkalmazás) a frissítés során betartását.
 
 Ha a fürt állapotházirendeket nem teljesülnek, a frissítés vissza lesz állítva. Ezután e-mailt küldeni az előfizetés tulajdonosa van. Az e-mailt a következő információkat tartalmazza:
@@ -49,8 +49,8 @@ Próbálja meg hajtsa végre ugyanezt a frissítést néhány alkalommal abban a
 
 Ha a fürt állapotházirendeket teljesülnek, a frissítés sikeresnek minősül és befejezettként. Ez akkor fordulhat elő, a kezdeti frissítés, vagy a frissítési ismétlések során ebben a fázisban. Nincs nem sikeres Futtatás megerősítő e-mailt. Ez a ne küldjön túl sok e-mailek--fogad e-mailt, a szokásos kivételt kell tekinteni. Terveink szerint már a legtöbb a fürtfrissítések sikeres végrehajtásához az rendelkezésre állásának befolyásolása nélkül.
 
-### <a name="phase-2-an-upgrade-is-performed-by-using-default-health-policies-only"></a>2. fázis: Frissítés alapértelmezett egészségügyi házirendek segítségével történik
-Ebben a fázisban a házirendek úgy, hogy voltak a frissítés kezdetén kifogástalan állapotú alkalmazások száma továbbra is ugyanazt a frissítési folyamat idejére vannak beállítva. 1. fázis, mint a 2. fázis verziófrissítések több frissítési tartományt folytatható egy időben, és az alkalmazások, a fürtben futó tovább állásidő nélkül. A fürt állapotházirendeket (csomópont állapotát, az kombinációja a fürtben futó összes alkalmazás) betartsák a frissítés idejére.
+### <a name="phase-2-an-upgrade-is-performed-by-using-default-health-policies-only"></a>2\. fázis: Frissítés alapértelmezett egészségügyi házirendek segítségével történik
+Ebben a fázisban a házirendek úgy, hogy voltak a frissítés kezdetén kifogástalan állapotú alkalmazások száma továbbra is ugyanazt a frissítési folyamat idejére vannak beállítva. 1\. fázis, mint a 2. fázis verziófrissítések több frissítési tartományt folytatható egy időben, és az alkalmazások, a fürtben futó tovább állásidő nélkül. A fürt állapotházirendeket (csomópont állapotát, az kombinációja a fürtben futó összes alkalmazás) betartsák a frissítés idejére.
 
 Ha a fürt állapotának házirendek érvényben nem teljesülnek, a frissítés vissza lesz állítva. Ezután e-mailt küldeni az előfizetés tulajdonosa van. Az e-mailt a következő információkat tartalmazza:
 
@@ -62,7 +62,7 @@ Próbálja meg hajtsa végre ugyanezt a frissítést néhány alkalommal abban a
 
 Ha a fürt állapotházirendeket teljesülnek, a frissítés sikeresnek minősül és befejezettként. Ez akkor fordulhat elő, a kezdeti frissítés, vagy a frissítési ismétlések során ebben a fázisban. Nincs nem sikeres Futtatás megerősítő e-mailt.
 
-### <a name="phase-3-an-upgrade-is-performed-by-using-aggressive-health-policies"></a>3. fázis: Frissítés agresszív állapotházirendeket használatával történik
+### <a name="phase-3-an-upgrade-is-performed-by-using-aggressive-health-policies"></a>3\. fázis: Frissítés agresszív állapotházirendeket használatával történik
 Ebben a fázisban a health házirendek helyett az alkalmazások állapotát a frissítés felé egyszerűsítését szolgálja. Ebben a fázisban végül néhány fürtfrissítések. Ha a fürt lekérdezi az ebben a fázisban, van esély arra, hogy az alkalmazás akkor kerül sérült, és/vagy elveszíti a rendelkezésre állás.
 
 A két fázisban hasonlóan, 3. fázis verziófrissítések folytatható, több frissítési tartományt egyszerre.

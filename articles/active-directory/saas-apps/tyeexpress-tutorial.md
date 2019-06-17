@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: d84a7060fadcb3f3d80b7fbbff9d91f8812388b2
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 10ebe796f5aed827a4934a94d568aedbef704503
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920610"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088231"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>Oktatóanyag: Az Azure Active Directory-integráció a T & E Express
 
@@ -53,7 +53,7 @@ Az Azure AD-be olyan példá & E Express integráció konfigurálásához, hozz�
 
 **T & E Express hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -134,7 +134,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása a T & E Express, hajtsa vég
 
     ![Egyszeri bejelentkezés konfigurálása](./media/tyeexpress-tutorial/tye-SAML.png)
 
-1. Válassza ki a **Activar(Activate)** parancsát **nem** való **SI(Yes)**. Az a **Identity Provider metaadatok** szövegmezőjébe illessze be a metaadat-XML fájlok, amelyek az Azure Portalról letöltött.
+1. Válassza ki a **Activar(Activate)** parancsát **nem** való **SI(Yes)** . Az a **Identity Provider metaadatok** szövegmezőjébe illessze be a metaadat-XML fájlok, amelyek az Azure Portalról letöltött.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/tyeexpress-tutorial/tyeAdmin.png)
 

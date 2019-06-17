@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 04/26/2019
 ms.author: msfussell
 ms.openlocfilehash: 55f043effc7cdb102acea856e89c58f660d0cde5
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65237747"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Az Azure Service Fabric application tervezés – ajánlott eljárások
@@ -79,7 +79,7 @@ A Reliable Actors segítségével könnyedén hozhat létre az állapotalapú é
 - Használó más szolgáltatásokkal való kommunikáció [remoting Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication-remoting) hoz létre, és egy `ServiceProxyFactory`, majd hozza létre az előállító, a [aktorszolgáltatás](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-using) szintet és *nem*aktor szintjén.
 
 
-## <a name="application-diagnostics"></a>Alkalmazásdiagnosztika
+## <a name="application-diagnostics"></a>Az Application diagnostics
 - Hozzáadás, a teljes körű [alkalmazásnaplózás](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app) szolgáltatás hívásokban. És biztonságosabbá teszi a diagnosztikai forgatókönyvek, ahol szolgáltatások meghívása egymással. Például, ha A -> B -> C a hívás sikertelen lehet, bárhol; D -> Ha nem áll elég naplózási, meglehetősen nehéz diagnosztizálása érdekében. A szolgáltatások túl sok a beérkező hívást miatt jelentkezik, ha legalább mindenképpen hibák és figyelmeztetések naplózása.
 
 ## <a name="iot-and-messaging-applications"></a>IoT és üzenetküldő alkalmazások

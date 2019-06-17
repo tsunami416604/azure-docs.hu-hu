@@ -12,12 +12,12 @@ ms.date: 06/05/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80680de6602b26488a8bade8a69fdd85b7f83ed1
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 9246d7bd48579def171986606e88c09593029aa2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729944"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108150"
 ---
 # <a name="application-management-with-azure-active-directory"></a>Alkalmazáskezelés az Azure Active Directory használatával
 
@@ -40,8 +40,8 @@ Az alkalmazásokat, amelyek adhat hozzá négy fő típusa van a **vállalati al
 
 -   **Katalógusban nem szereplő alkalmazások** – saját alkalmazások importálása! Támogatja az egyszeri bejelentkezés más alkalmazások adja hozzá őket az Azure AD. Minden olyan webes hivatkozás azt szeretné, vagy bármilyen alkalmazás, amely egy felhasználónevet és jelszót a mezőben jelenik meg, támogatja az SAML- vagy OpenID Connect protokollok vagy támogatja az SCIM integrálható. További információkért lásd: [egyszeri bejelentkezés nem katalógusból származó alkalmazások esetében konfigurálhatja](configure-single-sign-on-non-gallery-applications.md).
 
-## <a name="manage-risk-with-conditional-access-policies"></a>Kockázatkezelés feltételes hozzáférési szabályzatokkal
-Az Azure AD egyszeri bejelentkezés (SSO) kapcsoló [feltételes hozzáférési](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) magas szintű biztonságot biztosít az alkalmazásokhoz való hozzáférésüket. A biztonsági funkciók közé tartozik a felhőméretű identitásvédelem, a kockázat-alapú hozzáférés-vezérlés, a natív többtényezős hitelesítés és a feltételes hozzáférési szabályzatok. E funkciókkal részletesen szabályozható szabályzatok állíthatók be alkalmazások vagy magasabb szintű biztonságot igénylő csoportok alapján.
+## <a name="manage-risk-with-conditional-access-policies"></a>Kockázatkezelés feltételes hozzáférési szabályzatok
+Az Azure AD egyszeri bejelentkezés (SSO) kapcsoló [feltételes hozzáférési](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) magas szintű biztonságot biztosít az alkalmazásokhoz való hozzáférésüket. Biztonsági funkciók között szerepel a felhőméretű identity protection, a kockázat-alapú hozzáférés-vezérlés, a natív a multi-factor authentication és a feltételes hozzáférési szabályzatok. E funkciókkal részletesen szabályozható szabályzatok állíthatók be alkalmazások vagy magasabb szintű biztonságot igénylő csoportok alapján.
 
 ## <a name="improve-productivity-with-single-sign-on"></a>Termelékenység növelése egyszeri bejelentkezéssel
 Az egyszeri bejelentkezés (SSO) a bejelentkezési kérések számának csökkentésével vagy a kérések kiiktatásával kiváló bejelentkezési élményt biztosít a meglévő felhasználók számára a különböző alkalmazások és az Office 365 esetében. A felhasználó egységesebb környezetet érzékel és kevésbé zavarja a sok bejelentkezési kérés és a sokféle jelszó kezelésének szükségessége. Az üzleti csoport az önkiszolgálással és a dinamikus tagsággal kezelni és engedélyezni tudja a hozzáféréseket. Az alkalmazáshoz való hozzáférések kezelésének a vállalaton belül a megfelelő emberek számára történő lehetővé tétele javítja az azonosítási rendszer biztonságát.

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: c731919baf3acc8cedfb31c088f9a0a12791251c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0a37789e7c7efeb71770ff0e8061d57e6603b6c4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717992"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67086231"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>Oktatóanyag: Zoho egy az Azure Active Directory-integráció
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Zoho egy konfigurálásához hozzá kell Zoho egy a 
 
 **Adja hozzá a Zoho egy a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -174,7 +174,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés egy Zoho, hajtsa vé
 
     a. Az a **tartománynév** szövegmező, például a contoso.com típus tartomány.
 
-    b. Kattintson a **Hozzáadás** parancsra.
+    b. Kattintson a **Hozzáadás**lehetőségre.
 
     >[!Note]
     >Miután hozzáadta a tartomány kövesse [ezek](https://www.zoho.com/one/help/admin-guide/domain-verification.html) a tartomány ellenőrzésének lépéseit. Miután a tartomány már ellenőrizve van, a saját tartománynevét a **bejelentkezési URL-** a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
@@ -252,7 +252,7 @@ Ahhoz, hogy jelentkezzen be a Zoho egy Azure AD-felhasználók, akkor ki kell é
     >[!Note]
     >Válasszon ellenőrzött tartományt a tartomány listából.
 
-    c. Kattintson a **Hozzáadás** parancsra.
+    c. Kattintson a **Hozzáadás**lehetőségre.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 

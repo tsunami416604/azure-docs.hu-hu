@@ -9,14 +9,14 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: 18dfd9eb66c1dc71ecb14bb748d9cdd6afeb00a7
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65953172"
 ---
 # <a name="how-to-annotate-data-sources"></a>Adatforrások ellátása megjegyzésekkel
-## <a name="introduction"></a>Bemutatás
+## <a name="introduction"></a>Bevezetés
 **A Microsoft Azure Data Catalog** egy teljes körűen felügyelt felhőszolgáltatás, amely egy regisztrációs és felderítőrendszert biztosít a vállalati adatforrások. Más szóval a Data Catalog szól segít az embereknek felderíteni, ismertetése és adatforrások és segítve a szervezeteket kihasználása a meglévő adatok használatával. Ha egy adatforrás regisztrálva van a Data Catalog, másolt és a szolgáltatás indexeli metaadatait, de a történetet ott nem végződhet. A Data Catalog lehetővé teszi, hogy a felhasználók a saját leíró metaadatok – például a leírások és címkék – az adatforrásból kinyert metaadatok kiegészítése, és végezze el az adatforrás érhetőbbé több ember számára.
 
 ## <a name="annotation-and-crowdsourcing"></a>Jegyzet és közösségi hozzáadása
@@ -34,9 +34,9 @@ A szempontok mindegyikének értékes, és a Data Catalog egy közösségi móds
 ## <a name="different-types-of-annotations"></a>Különböző típusú jegyzetek
 A Data Catalog jegyzetek a következő típusokat támogatja:
 
-| Megjegyzés | Megjegyzések |
+| Jegyzet | Megjegyzések |
 | --- | --- |
-| Felhasználóbarát név |Rövid nevek, az eszköz szinten, hogy az adategységeket, könnyen érthető lehet biztosítani. Rövid nevek legtöbb hasznosak, ha az alapul szolgáló objektum neve érthetetlennek, rövidített vagy más módon nem értelmezhető, a felhasználók számára. |
+| Rövid név |Rövid nevek, az eszköz szinten, hogy az adategységeket, könnyen érthető lehet biztosítani. Rövid nevek legtöbb hasznosak, ha az alapul szolgáló objektum neve érthetetlennek, rövidített vagy más módon nem értelmezhető, a felhasználók számára. |
 | Leírás |Leírását lehet megadni a adategységet és attribútum / oszlop szinteket. Leírások, amelyek ismertetik a felhasználó rövid szöveges szabad formátumú jegyzetek perspektíva az adategységhez, vagy annak használatára. |
 | Címkék (a felhasználói címkék) |Címkék lehet biztosítani a adategységet és attribútum / oszlop szinteket. A felhasználói címkék adategységek vagy attribútumok csoportosítására használható felhasználó által meghatározott címkék. |
 | Címkék (szószedet címkék) |Címkék lehet biztosítani a adategységet és attribútum / oszlop szinteket. Szószedet a címkék olyan központilag meghatározott szószedet kifejezései adategységek vagy egy közös üzleti elnevezési rendszert használó attribútumok csoportosítására használható. További információk: [How to set up the Business Glossary for Governed Tagging](data-catalog-how-to-business-glossary.md) (Az irányított címkézéshez használt üzleti szószedet összeállítása) |
@@ -57,7 +57,7 @@ Amikor kiválasztja a több táblák és nézetek, csak az oszlopok, hogy az ös
 ## <a name="annotations-and-discovery"></a>Széljegyzetek és felderítés
 Ugyanúgy, mint a Data Catalog search-index a regisztráció során az adatforrásból kinyert metaadatokat ad hozzá, a felhasználó által megadott metaadatok is indexelve van. Ez azt jelenti, hogy, hogy nem csak jegyzetek könnyebben felhasználóknak megérteni az adatokat, azok felderítése, jegyzetek is megkönnyítik a felhasználók számára történő kereséssel a feltételeket, amelyeket számukra érthető legyen a jegyzettel ellátott adategységek felderítése.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 A Data Catalog adatforrás regisztrálása lehetővé teszi az adatok felderíthető szerkezeti és leíró metaadatokat másolja az adatforrás a Catalog szolgáltatásba. Miután egy adatforrás regisztrálva lett, a felhasználók megadhatják, hogy könnyebben megtalálhatóvá és értelmezhetővé a Data Catalog-portálon.
 
 ## <a name="see-also"></a>Lásd még

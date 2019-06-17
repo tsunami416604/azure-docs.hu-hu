@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00e838dd3df417bd0b26167d5f316225520e7263
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b7be7d8b9fc9aa8b6c9c1d888744c25d710ca79a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65859007"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106502"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-workplace"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Autotask munkahelyi
 
@@ -57,7 +57,7 @@ Az Azure AD integrálása a Autotask munkahelyi konfigurálásához hozzá kell 
 
 **Autotask munkahelyi hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -215,7 +215,7 @@ Ebben a szakaszban engedélyezze Britta Simon Autotask munkahelyi hozzáférés 
 
 Ebben a szakaszban egy Britta Simon nevű Autotask munkahelyi felhasználó hoz létre. Együttműködve [Autotask munkahelyi támogatási csapatának](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) a felhasználók hozzáadása az Autotask munkahelyi platformon.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

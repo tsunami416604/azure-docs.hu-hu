@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: hrasheed
 ms.openlocfilehash: 6ec981164de0ff61b0e83d54255d046a1418ed96
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66000107"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatikus skálázása az Azure HDInsight-fürtök (előnézet)
@@ -33,7 +33,7 @@ A következő táblázat ismerteti a fürt típusát és verziókat, amelyek kom
 | HDInsight 3.6-ot az ESP | Igen | Igen | Nem | Nem | Nem | Nem | Nem |
 | HDInsight 3.6-ot az ESP | Igen | Igen | Nem | Nem | Nem | Nem | Nem |
 
-## <a name="how-it-works"></a>A szolgáltatás működése
+## <a name="how-it-works"></a>Működés
 
 Lehetősége van a terhelés-alapú méretezés, vagy a HDInsight-fürt méretezése ütemezésalapú. Betöltés-alapú méretezés módosítja egy Ön által beállított, győződjön meg, hogy optimális CPU-kihasználtság, és minimalizálja a költségeket futó tartományon belül, a fürt csomópontjainak számát.
 
@@ -221,8 +221,8 @@ A fürt állapotüzeneteket, amelyeket láthat minden mutatjuk be az alábbi lis
 
 | Fürt állapota | Magyarázat |
 |---|---|
-| Futtatás | A fürt megfelelően működik. Az összes automatikus skálázási előző tevékenység sikeresen befejeződött. |
-| Frissítés  | A fürt automatikus skálázási konfigurációjának frissítése folyamatban van.  |
+| Fut | A fürt megfelelően működik. Az összes automatikus skálázási előző tevékenység sikeresen befejeződött. |
+| Frissítése  | A fürt automatikus skálázási konfigurációjának frissítése folyamatban van.  |
 | HDInsight-konfiguráció  | Fürt vertikális felskálázás vagy vertikális leskálázási művelet folyamatban van.  |
 | Frissítési hiba  | HDInsight problémákat észlelt az automatikus skálázási konfigurációjának frissítése során. Ügyfelek eldönthetik, próbálkozzon újra a frissítést, vagy az automatikus skálázás letiltása.  |
 | Hiba  | Hiba található a fürt, és már nem használható. Törli ezt a fürtöt, és hozzon létre egy újat.  |

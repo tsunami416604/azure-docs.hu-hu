@@ -4,14 +4,14 @@ description: Látható, hogy melyik Azure-erőforrástípus támogatja a címké
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 05/10/2019
+ms.date: 06/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7ef37323fb8150e3a6b52800bfafa2585ae328c2
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 8b7e6d234984e84f5b238d657281dd8b1b9ec423
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523224"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056887"
 ---
 # <a name="tag-support-for-azure-resources"></a>Az Azure-erőforrások címkék támogatása
 Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkék](resource-group-using-tags.md). A címkével ellátott oszlop **támogatja a címkék** azt jelzi, hogy az erőforrástípust a címkével ellátott tulajdonság. A címkével ellátott oszlop **szóló jelentés a címke** azt jelzi, hogy az erőforrás típusát továbbítja a címke a jelentés.
@@ -40,10 +40,10 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | ------------- | ----------- | ----------- |
 | aadsupportcases | Nem |  Nem |
 | addsservices | Nem |  Nem |
-| ügynökök | Nem |  Nem |
+| Ügynökök | Nem |  Nem |
 | anonymousapiusers | Nem |  Nem |
 | konfiguráció | Nem |  Nem |
-| naplók | Nem |  Nem |
+| logs | Nem |  Nem |
 | jelentések | Nem |  Nem |
 | services | Nem |  Nem |
 
@@ -52,14 +52,14 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | ------------- | ----------- | ----------- |
 | Konfigurációk | Nem |  Nem |
 | generateRecommendations | Nem |  Nem |
-| javaslatok | Nem |  Nem |
+| Javaslatok | Nem |  Nem |
 | suppressions | Nem |  Nem |
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
 | ------------- | ----------- | ----------- |
 | actionRules | Nem |  Nem |
-| riasztás | Nem |  Nem |
+| riasztások | Nem |  Nem |
 | alertsList | Nem |  Nem |
 | alertsSummary | Nem |  Nem |
 | alertsSummaryList | Nem |  Nem |
@@ -70,7 +70,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
 | ------------- | ----------- | ----------- |
-| kiszolgáló | Igen | Igen |
+| Kiszolgálók | Igen | Igen |
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
@@ -239,7 +239,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | reservationOrders/felosztása | Nem |  Nem |
 | reservationOrders/lapozófájl-kapacitás | Nem |  Nem |
 | foglalások | Nem |  Nem |
-| erőforrások | Nem |  Nem |
+| Erőforrások | Nem |  Nem |
 | validateReservationOrder | Nem |  Nem |
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
@@ -301,8 +301,8 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
 | ------------- | ----------- | ----------- |
 | Képességek | Nem |  Nem |
-| lemezek | Nem |  Nem |
-| rendszerképek | Nem |  Nem |
+| Lemezek | Nem |  Nem |
+| images | Nem |  Nem |
 | osImages | Nem |  Nem |
 | osPlatformImages | Nem |  Nem |
 | publicImages | Nem |  Nem |
@@ -328,13 +328,13 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
 | ------------- | ----------- | ----------- |
 | availabilitySets | Igen | Igen |
-| lemezek | Igen | Igen |
-| rendszerképek | Igen | Igen |
+| Lemezek | Igen | Igen |
+| images | Igen | Igen |
 | restorePointCollections | Igen | Igen |
 | restorePointCollections/restorePoints | Nem |  Nem |
 | sharedVMImages | Igen | Igen |
 | sharedVMImages/versions | Igen | Igen |
-| pillanatképek | Igen | Igen |
+| snapshots | Igen | Igen |
 | virtuális gép | Igen | Igen |
 | virtualMachines/diagnosticSettings | Nem |  Nem |
 | virtualMachines/extensions | Igen | Igen |
@@ -359,13 +359,13 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | sok | Nem |  Nem |
 | Piactér | Nem |  Nem |
 | Pricesheets | Nem |  Nem |
-| termék | Nem |  Nem |
+| Termékek | Nem |  Nem |
 | ReservationDetails | Nem |  Nem |
 | ReservationRecommendations | Nem |  Nem |
 | ReservationSummaries | Nem |  Nem |
 | ReservationTransactions | Nem |  Nem |
 | Tags | Nem |  Nem |
-| Feltételek | Nem |  Nem |
+| Fogalmak | Nem |  Nem |
 | UsageDetails | Nem |  Nem |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
@@ -423,7 +423,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Riasztások | Nem |  Nem |
 | billingAccounts | Nem |  Nem |
 | Összekötők | Igen | Igen |
-| Részlegek | Nem |  Nem |
+| Szervezeti egységek | Nem |  Nem |
 | Dimenziók | Nem |  Nem |
 | enrollmentAccounts | Nem |  Nem |
 | Lekérdezés | Nem |  Nem |
@@ -451,7 +451,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
 | ------------- | ----------- | ----------- |
-| feladatok | Igen | Igen |
+| Feladatok | Igen | Igen |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
@@ -461,7 +461,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
 | ------------- | ----------- | ----------- |
-| munkaterületek | Igen | Nem |
+| Munkaterületek | Igen | Nem |
 | workspaces/virtualNetworkPeerings | Nem |  Nem |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
@@ -507,21 +507,21 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
 | ------------- | ----------- | ----------- |
-| kiszolgáló | Igen | Igen |
+| Kiszolgálók | Igen | Igen |
 | servers/recoverableServers | Nem |  Nem |
 | servers/virtualNetworkRules | Nem |  Nem |
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
 | ------------- | ----------- | ----------- |
-| kiszolgáló | Igen | Igen |
+| Kiszolgálók | Igen | Igen |
 | servers/recoverableServers | Nem |  Nem |
 | servers/virtualNetworkRules | Nem |  Nem |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
 | ------------- | ----------- | ----------- |
-| kiszolgáló | Igen | Igen |
+| Kiszolgálók | Igen | Igen |
 | kiszolgálók/tanácsadók | Nem |  Nem |
 | kiszolgálók/queryTexts | Nem |  Nem |
 | servers/recoverableServers | Nem |  Nem |
@@ -612,7 +612,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | myareas/területek/galleryitems | Nem |  Nem |
 | myareas/galleryitems | Nem |  Nem |
 | Regisztráció | Nem |  Nem |
-| erőforrások | Nem |  Nem |
+| Erőforrások | Nem |  Nem |
 | retrieveresourcesbyid | Nem |  Nem |
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
@@ -635,7 +635,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
 | ------------- | ----------- | ----------- |
-| feladatok | Igen | Igen |
+| Feladatok | Igen | Igen |
 
 ## <a name="microsoftinformationprotection"></a>Microsoft.InformationProtection
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
@@ -654,7 +654,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | alertrules | Igen | Igen |
 | automatedExportSettings | Nem |  Nem |
 | autoscalesettings beállítás | Igen | Igen |
-| alapterv | Nem |  Nem |
+| Alapkonfiguráció | Nem |  Nem |
 | calculatebaseline | Nem |  Nem |
 | Összetevők | Igen | Igen |
 | összetevő/események | Nem |  Nem |
@@ -667,7 +667,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | extendedDiagnosticSettings | Nem |  Nem |
 | logDefinitions | Nem |  Nem |
 | logprofiles | Nem |  Nem |
-| naplók | Nem |  Nem |
+| logs | Nem |  Nem |
 | metricAlerts | Igen | Igen |
 | migrateToNewPricingModel | Nem |  Nem |
 | myWorkbooks | Nem |  Nem |
@@ -714,7 +714,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
 | ------------- | ----------- | ----------- |
 | labaccounts | Igen | Igen |
-| Felhasználók | Nem |  Nem |
+| felhasználók | Nem |  Nem |
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
@@ -729,7 +729,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftloganalytics"></a>Microsoft.LogAnalytics
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
 | ------------- | ----------- | ----------- |
-| naplók | Nem |  Nem |
+| logs | Nem |  Nem |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
@@ -762,7 +762,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
 | ------------- | ----------- | ----------- |
-| munkaterületek | Igen | Igen |
+| Munkaterületek | Igen | Igen |
 | munkaterületek és számítási erőforrások | Nem |  Nem |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
@@ -776,7 +776,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | ------------- | ----------- | ----------- |
 | getEntities | Nem |  Nem |
 | managementGroups | Nem |  Nem |
-| erőforrások | Nem |  Nem |
+| Erőforrások | Nem |  Nem |
 | startTenantBackfill | Nem |  Nem |
 | tenantBackfillStatus | Nem |  Nem |
 
@@ -798,7 +798,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | offerTypes/publishers/offers/plans/configs | Nem |  Nem |
 | offerTypes/publishers/offers/plans/configs/importImage | Nem |  Nem |
 | privategalleryitems | Nem |  Nem |
-| termék | Nem |  Nem |
+| Termékek | Nem |  Nem |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
@@ -845,7 +845,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | azureFirewallFqdnTags | Nem |  Nem |
 | azureFirewalls | Igen | Nem |
 | bgpServiceCommunities | Nem |  Nem |
-| kapcsolatok | Igen | Igen |
+| Kapcsolatok | Igen | Igen |
 | ddosCustomPolicies | Igen | Igen |
 | ddosProtectionPlans | Igen | Igen |
 | dnsOperationStatuses | Nem |  Nem |
@@ -864,7 +864,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | dnszones/TXT | Nem |  Nem |
 | expressRouteCircuits | Igen  | Nem |
 | expressRouteServiceProviders | Nem |  Nem |
-| frontdoorok | Igen | Igen |
+| frontdoors | Igen | Igen |
 | frontdoorWebApplicationFirewallPolicies | Igen | Igen |
 | getDnsResourceReference | Nem |  Nem |
 | interfaceEndpoints | Igen | Igen |
@@ -911,7 +911,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | eszközök | Nem |  Nem |
 | linkTargets | Nem |  Nem |
 | storageInsightConfigs | Nem |  Nem |
-| munkaterületek | Igen | Igen |
+| Munkaterületek | Igen | Igen |
 | workspaces/dataSources | Nem |  Nem |
 | workspaces/linkedServices | Nem |  Nem |
 | munkaterületek és lekérdezési | Nem |  Nem |
@@ -922,7 +922,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | managementassociations | Nem |  Nem |
 | managementconfigurations | Igen | Igen |
 | megoldások | Igen | Igen |
-| megtekintés | Igen | Igen |
+| Nézetek | Igen | Igen |
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
@@ -973,7 +973,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftresourcegraph"></a>Microsoft.ResourceGraph
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
 | ------------- | ----------- | ----------- |
-| erőforrások | Nem |  Nem |
+| Erőforrások | Nem |  Nem |
 | subscriptionsStatus | Nem |  Nem |
 
 ## <a name="microsoftresourcehealth"></a>Microsoft.ResourceHealth
@@ -984,19 +984,19 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | childResources | Nem |  Nem |
 | események | Nem |  Nem |
 | impactedResources | Nem |  Nem |
-| értesítések | Nem |  Nem |
+| Értesítések | Nem |  Nem |
 
 ## <a name="microsoftresources"></a>Microsoft.Resources
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
 | ------------- | ----------- | ----------- |
-| üzemelő példányok | Nem |  Nem |
+| Központi telepítések | Nem |  Nem |
 | Az operations központi telepítések | Nem |  Nem |
 | Hivatkozások | Nem |  Nem |
 | notifyResourceJobs | Nem |  Nem |
 | Szolgáltatók | Nem |  Nem |
 | resourceGroups | Nem |  Nem |
-| erőforrások | Nem |  Nem |
-| előfizetés | Nem |  Nem |
+| Erőforrások | Nem |  Nem |
+| Előfizetések | Nem |  Nem |
 | Az előfizetések és szolgáltatók | Nem |  Nem |
 | előfizetés/resourceGroups | Nem |  Nem |
 | előfizetés/resourcegroups/erőforrások | Nem |  Nem |
@@ -1014,7 +1014,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
 | ------------- | ----------- | ----------- |
-| forgalom | Igen | Igen |
+| folyamatok | Igen | Igen |
 | feladatgyűjtemények | Igen | Igen |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
@@ -1027,7 +1027,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
 | ------------- | ----------- | ----------- |
 | advancedThreatProtectionSettings | Nem |  Nem |
-| riasztás | Nem |  Nem |
+| riasztások | Nem |  Nem |
 | allowedConnections | Nem |  Nem |
 | készülékek | Nem |  Nem |
 | applicationWhitelistings | Nem |  Nem |
@@ -1038,11 +1038,11 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | externalSecuritySolutions | Nem |  Nem |
 | InformationProtectionPolicies | Nem |  Nem |
 | jitNetworkAccessPolicies | Nem |  Nem |
-| figyelés | Nem |  Nem |
+| Figyelés | Nem |  Nem |
 | figyelés és kártevők elleni | Nem |  Nem |
 | figyelés és referenciakonfiguráció | Nem |  Nem |
 | figyelési/patch | Nem |  Nem |
-| házirendek | Nem |  Nem |
+| Szabályzatok | Nem |  Nem |
 | díjcsoportokkal | Nem |  Nem |
 | securityContacts | Nem |  Nem |
 | securitySolutions | Nem |  Nem |
@@ -1091,8 +1091,8 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | alkalmazások | Igen | Igen |
 | Átjárók | Igen | Igen |
 | Hálózatok | Igen | Igen |
-| titkos kódok | Igen | Igen |
-| kötetek | Igen | Igen |
+| Titkos kulcsok | Igen | Igen |
+| volumes | Igen | Igen |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
@@ -1121,7 +1121,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | managedInstances/keys | Nem | Nem |
 | managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies | Nem | Nem |
 | managedInstances/vulnerabilityAssessments | Nem | Nem |
-| kiszolgáló | Igen | Igen |
+| Kiszolgálók | Igen | Igen |
 | kiszolgálók és a rendszergazdák | Nem |  Nem |
 | servers/communicationLinks | Nem |  Nem |
 | kiszolgálók és adatbázisok | Igen (lásd az alábbi megjegyzést) | Igen |
@@ -1194,7 +1194,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
 | ------------- | ----------- | ----------- |
 | providerRegistrations | Igen | Igen |
-| erőforrások | Igen | Igen |
+| Erőforrások | Igen | Igen |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
@@ -1207,7 +1207,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |
 | ------------- | ----------- | ----------- |
-| fiók | Igen | Igen |
+| account | Igen | Igen |
 | fiók/bővítmény | Igen | Igen |
 | fiók és a projekt | Igen | Igen |
 
@@ -1225,19 +1225,19 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | apiManagementAccounts/connectionAcls | Nem |  Nem |
 | apiManagementAccounts/connections | Nem |  Nem |
 | billingMeters | Nem |  Nem |
-| tanúsítványok | Igen | Igen |
+| Tanúsítványok | Igen | Igen |
 | connectionGateways | Igen | Igen |
-| kapcsolatok | Igen | Igen |
+| Kapcsolatok | Igen | Igen |
 | customApis | Igen | Igen |
 | deletedSites | Nem |  Nem |
 | functions | Nem |  Nem |
-| hostingEnvironments | Igen | Nem |
+| hostingEnvironments | Igen | Igen |
 | hostingEnvironments/multiRolePools | Nem |  Nem |
 | hostingEnvironments/multiRolePools/instances | Nem |  Nem |
 | hostingEnvironments/workerPools | Nem |  Nem |
 | hostingEnvironments/workerPools/instances | Nem |  Nem |
 | publishingUsers | Nem |  Nem |
-| javaslatok | Nem |  Nem |
+| Javaslatok | Nem |  Nem |
 | resourceHealthMetadata | Nem |  Nem |
 | modulok | Nem |  Nem |
 | Kiszolgálófarmok | Igen | Igen |

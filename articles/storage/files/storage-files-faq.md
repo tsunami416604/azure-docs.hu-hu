@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
 ms.openlocfilehash: cdffbfd11a0f1c7d99818fa00f550965774b9b31
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65190067"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Files kapcsolatos gyakori kérdések (GYIK)
@@ -360,7 +360,7 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
     Nem. Az Azure-fájlmegosztás maximális mérete 5 Tib-ra. Ez jelenleg rögzített korlátja, amely azt nem lehet beállítani. Folyamatban van egy megoldás 100 Tib-ra a megosztás méretének növeléséhez, de ütemtervek megosztásához jelenleg nem áll rendelkezésre.
 
 * <a id="open-handles-quota"></a>
-**Hány ügyfelek hozzáférhetnek a egyszerre ugyanazt a fájlt?**   
+**Hány ügyfelek hozzáférhetnek a egyszerre ugyanazt a fájlt?**    
     Nincs egyetlen fájl 2000 megnyitott kezelőkkel-kvótát. Ha 2000 megnyitott leíróinak, egy hibaüzenet jelenik meg, amely szerint a kvóta elérése.
 
 * <a id="zip-slow-performance"></a>
