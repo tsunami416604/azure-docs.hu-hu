@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
 ms.openlocfilehash: d3cbc2d5be1f7addf833162b23c5db0786e9d361
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66297477"
 ---
 # <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Napló metrikák betanítás során fut az Azure Machine Learningben
@@ -334,9 +334,9 @@ Egy keveredési mátrixot egy osztályozási modell teljesítményét leírásá
 
 Az Azure Machine Learning osztályozási problémák, automatikusan biztosít mindegyik modellt, amely egy keveredési mátrixot. Az egyes keveredési mátrixot automatizált gépi Tanulási vörös, zöld és hibásan besorolt címkékként jelennek megfelelően osztályozott címkéket. A kör mérete az adott doboz minták számát jelöli. Emellett a szomszédos sávdiagramok minden egyes előre jelzett címke és az egyes igaz címke gyakorisága száma megtalálható. 
 
-1. példa: Egy gyenge pontosságú osztályozási modell ![gyenge pontosságú osztályozási modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion_matrix1.PNG)
+1\. példa: Egy gyenge pontosságú osztályozási modell ![gyenge pontosságú osztályozási modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion_matrix1.PNG)
 
-2. példa Nagy pontosságú (ideális) osztályozási modell ![nagy pontosságú osztályozási modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion_matrix2.PNG)
+2\. példa Nagy pontosságú (ideális) osztályozási modell ![nagy pontosságú osztályozási modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion_matrix2.PNG)
 
 
 #### <a name="precision-recall-chart"></a>Pontosság-visszahívási diagram
@@ -345,17 +345,17 @@ Az ezen a diagramon hasonlítsa össze a pontosság-visszahívási görbék egye
 
 A pontosság jelöli, hogy arra, hogy az összes példány megfelelően címkézése besorolás kifejezés. Visszaírási arra, hogy az összes példányát egy adott címkét az osztályozó által igénybe vett jelöli. A pontosság-visszahívási görbe két ezek a fogalmak közötti kapcsolatot mutatja. Ideális esetben a modell kellene pontosság 100 %-os és 100 %-os pontossággal.
 
-1. példa: Alacsony pontosság és alacsony visszaírási osztályozási modell ![alacsony pontosság és alacsony visszaírási osztályozási modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision_recall1.PNG)
+1\. példa: Alacsony pontosság és alacsony visszaírási osztályozási modell ![alacsony pontosság és alacsony visszaírási osztályozási modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision_recall1.PNG)
 
-2. példa ~ 100 % -os pontosság és a ~ 100 % -os visszaírási (ideális) osztályozási modell ![egy besorolási modell nagy pontosságú és visszaírási](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision_recall2.PNG)
+2\. példa ~ 100 % -os pontosság és a ~ 100 % -os visszaírási (ideális) osztályozási modell ![egy besorolási modell nagy pontosságú és visszaírási](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision_recall2.PNG)
 
 #### <a name="roc"></a>ROC
 
 Jellemző (vagy ROC) működő fogadó egy diagram, a megfelelő osztályozott címkék és a egy adott modell hibásan besorolt címkéit. ROC-görbe kevesebb adatot tartalmazó lehet, amikor nagy eltérés, mivel az adatkészletek képzési modellek nem jelenik meg a hamis pozitív címkéket.
 
-1. példa: Alacsony valódi címkéket és a magas false (hamis) címke osztályozási modell ![osztályozási modell a valódi címkéket alacsony és magas false (hamis) címke](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc1.PNG)
+1\. példa: Alacsony valódi címkéket és a magas false (hamis) címke osztályozási modell ![osztályozási modell a valódi címkéket alacsony és magas false (hamis) címke](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc1.PNG)
 
-2. példa Valódi címkéket magas és alacsony false (hamis) címke osztályozási modell ![valódi címkéket magas és alacsony false (hamis) címke osztályozási modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc2.PNG)
+2\. példa Valódi címkéket magas és alacsony false (hamis) címke osztályozási modell ![valódi címkéket magas és alacsony false (hamis) címke osztályozási modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc2.PNG)
 
 #### <a name="lift-curve"></a>Átemelés görbévé
 
@@ -363,9 +363,9 @@ Jellemző (vagy ROC) működő fogadó egy diagram, a megfelelő osztályozott c
 
 Lift diagramok segítségével egy osztályozási modell teljesítményének értékeléséhez. Megmutatja, hogyan sokkal jobban várható, hogy a modell egy modell nélkül képest. 
 
-1. példa: Modell hajt végre egy véletlenszerű kijelölés modell rosszabb ![egy osztályozási modell, amelyek rosszabb, mint egy véletlenszerű kiválasztása](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift_curve1.PNG)
+1\. példa: Modell hajt végre egy véletlenszerű kijelölés modell rosszabb ![egy osztályozási modell, amelyek rosszabb, mint egy véletlenszerű kiválasztása](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift_curve1.PNG)
 
-2. példa Modell jobban, mint egy véletlenszerű kijelölés modell hajt végre ![osztályozási modell, amely jobb](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift_curve2.PNG)
+2\. példa Modell jobban, mint egy véletlenszerű kijelölés modell hajt végre ![osztályozási modell, amely jobb](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift_curve2.PNG)
 
 #### <a name="gains-curve"></a>Nyereség görbévé
 
@@ -373,9 +373,9 @@ Az adatok minden egyes része egy osztályozási modell teljesítményét érté
 
 A halmozott nyereség diagram segítségével válassza ki a besorolást megszakítási használatával, amely megfelel a modellből a kívánt nyereség százalékban. Ezt az információt biztosít egy másik módszer a megnézzük a kísérő növekedési diagramon az eredményeket.
 
-1. példa: Minimális nyereség osztályozási modell ![minimális nyereség osztályozási modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains_curve1.PNG)
+1\. példa: Minimális nyereség osztályozási modell ![minimális nyereség osztályozási modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains_curve1.PNG)
 
-2. példa Jelentős nyereség osztályozási modell ![jelentős nyereség osztályozási modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains_curve2.PNG)
+2\. példa Jelentős nyereség osztályozási modell ![jelentős nyereség osztályozási modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains_curve2.PNG)
 
 #### <a name="calibration-plot"></a>Hitelesítési diagram
 
@@ -383,9 +383,9 @@ Az összes besorolási kapcsolatos problémák esetén a hitelesítési sor micr
 
 Hitelesítési rajzot a prediktív modellek magabiztosan megjelenítésére szolgál. Ezt nem: Megjeleníti az előre jelzett valószínűség és a tényleges valószínűsége közötti kapcsolat, ahol "valószínűség" jelenti a valószínűsége, hogy az adott példány néhány címke alatt tartozik. Egy jól hitelesített modell igazítja az y = x sor, ahol a szolgáltatás ésszerűen abban az előrejelzéseket. Egy túlzott confident modell igazítja az y = 0 sort, amelyben az előre jelzett valószínűség megtalálható, de nem tényleges valószínűsége.
 
-1. példa: Egy jól hitelesített modell ![ jól hitelesített modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib_curve1.PNG)
+1\. példa: Egy jól hitelesített modell ![ jól hitelesített modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib_curve1.PNG)
 
-2. példa Egy túlzott confident modell ![egy túlzott confident modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib_curve2.PNG)
+2\. példa Egy túlzott confident modell ![egy túlzott confident modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib_curve2.PNG)
 
 ### <a name="regression"></a>Regresszió
 Minden regressziós modell az automatizált gépi tanulási funkciókat az Azure Machine Learning segítségével létrehozhat, a következő diagram látható: 
@@ -400,9 +400,9 @@ Előre jelzett vs. Igaz előre jelzett érték és a egy regressziós probléma 
 
 Minden egyes futás után megjelenik egy előre jelzett és minden egyes regressziós modell igaz grafikon. Adatok védelme érdekében értékek együtt vannak binned, és a egy oszlopdiagram a diagramterület alsó részén jelenik meg minden doboz méretét. Hiba történt a margók, ahol a modell lehet ideális megoldás értékkel megjelenítő világosabb terület árnyékolása a össze lehessen hasonlítani a prediktív modellben.
 
-1. példa: Egy regressziós modellt, kis pontosságú az előrejelzések ![alacsony pontosságát az előrejelzések regressziós modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression1.PNG)
+1\. példa: Egy regressziós modellt, kis pontosságú az előrejelzések ![alacsony pontosságát az előrejelzések regressziós modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression1.PNG)
 
-2. példa Egy regressziós modellt, az előrejelzéseket a nagy pontosságú ![egy regressziós modellt, az előrejelzéseket a nagy pontosságú](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression2.PNG)
+2\. példa Egy regressziós modellt, az előrejelzéseket a nagy pontosságú ![egy regressziós modellt, az előrejelzéseket a nagy pontosságú](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression2.PNG)
 
 <a name="histo"></a>
 
@@ -410,9 +410,9 @@ Minden egyes futás után megjelenik egy előre jelzett és minden egyes regress
 
 A fennmaradó megfigyelt y – az előre jelzett y jelöli. A hibahatáron az alacsony eltérés megjelenítéséhez, például a hisztogram kell alakúak lehetnek harang görbe 0 Eszközkezelőre. 
 
-1. példa: A hibák az eltérés regressziós modell ![SA regressziós modellt a hibák az eltérés](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression3.PNG)
+1\. példa: A hibák az eltérés regressziós modell ![SA regressziós modellt a hibák az eltérés](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression3.PNG)
 
-2. példa Még több telepítési hibák regressziós modell ![hibák még több terjesztési regressziós modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression4.PNG)
+2\. példa Még több telepítési hibák regressziós modell ![hibák még több terjesztési regressziós modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression4.PNG)
 
 ### <a name="model-explain-ability-and-feature-importance"></a>A modellekre teszi azt ismertetik, és a szolgáltatás fontosság
 

@@ -9,10 +9,10 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: f3e05f213821b053f8cf6abbbc50a14e9ea62295
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66166341"
 ---
 # <a name="internet-of-things-iot-security-architecture"></a>Eszközök internetes hálózata (IoT) biztonsági architektúra
@@ -171,9 +171,9 @@ Az egyes kategóriák leírt az Azure IoT-architektúra, az ebben a példában a
 
 **(S) hamisítást**: A támadó titkosítási kulcs adatai kinyerése előfordulhat, hogy egy eszközt, vagy a szoftver vagy hardver szintjén, és ezt követően a rendszer egy másik fizikai vagy virtuális eszköz identitása alatt az eszköz a megosztottkulcs-anyag foglalt a hozzáférés. Egy jó ábra, amely kapcsolhatja be minden TV és, hogy azok az eszközök népszerű prankster távvezérlés.
 
-**Szolgáltatásmegtagadás (D)**: A rádiófrekvenciák zavarása vagy a vezetékek elvágása egy eszközt teljesen működésképtelenné tehet, vagy meggátolhat a kommunikációban. Például, egy olyan biztonsági kamera, amelynek áramellátását vagy hálózati kapcsolatát tönkretették, egyáltalán nem tud adatokat továbbítani.
+**Szolgáltatásmegtagadás (D)** : A rádiófrekvenciák zavarása vagy a vezetékek elvágása egy eszközt teljesen működésképtelenné tehet, vagy meggátolhat a kommunikációban. Például, egy olyan biztonsági kamera, amelynek áramellátását vagy hálózati kapcsolatát tönkretették, egyáltalán nem tud adatokat továbbítani.
 
-**Illetéktelen módosításának (T)**: A támadó részben vagy teljesen kicserélheti az eszközön futó szoftvert, lehetővé téve, hogy a kicserélt szoftver kihasználja az eszköz valódi azonosítóit, és hozzáférhessen a kulcshoz, vagy a kulcsot tároló létesítményhez, ha az elérhető az illegális szoftver számára. Például egy támadó kinyert megosztottkulcs-anyag elfogására és a le adatokat az eszközről, a kommunikáció elérési úttal, és cserélje le az ellopott megosztottkulcs-anyag adatokkal van hitelesítve hamis adatokat is használhatja.
+**Illetéktelen módosításának (T)** : A támadó részben vagy teljesen kicserélheti az eszközön futó szoftvert, lehetővé téve, hogy a kicserélt szoftver kihasználja az eszköz valódi azonosítóit, és hozzáférhessen a kulcshoz, vagy a kulcsot tároló létesítményhez, ha az elérhető az illegális szoftver számára. Például egy támadó kinyert megosztottkulcs-anyag elfogására és a le adatokat az eszközről, a kommunikáció elérési úttal, és cserélje le az ellopott megosztottkulcs-anyag adatokkal van hitelesítve hamis adatokat is használhatja.
 
 **(I) információk felfedése**: Ha az eszköz úgy szoftver fut, úgy szoftver vélhetően kockáztató adatok illetéktelen felek számára. Például egy támadó kinyert megosztottkulcs-anyag behelyezése maga az eszköz és a vezérlő nebo Pole átjáró vagy siphon ki információkat az átjáró közötti kommunikációs útvonal, előfordulhat, hogy használhatja.
 

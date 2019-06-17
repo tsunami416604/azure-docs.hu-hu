@@ -13,10 +13,10 @@ ms.workload: NA
 ms.date: 07/31/2018
 ms.author: saysa
 ms.openlocfilehash: 3b1e6f769d5c65065d95ac96c4ab4ed10702e5cf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61038750"
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>A Jenkins használata a fejleszthetők és helyezhetők üzembe Linuxos alkalmazások
@@ -298,9 +298,9 @@ Fejlesztési és tesztelési környezetek esetében konfigurálhatja az Azure hi
 
 1. Hozzon létre egy Azure Active Directory egyszerű szolgáltatás, és rendelje hozzá az engedélyek az Azure-előfizetésében, kövesse a [egy Azure Active Directory-alkalmazás és -szolgáltatásnév létrehozása a portál használatával](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Figyelje meg, a következőhöz:
 
-   * Miközben a témakörben leírt lépéseket követve, ügyeljen arra, hogy másolja ki és mentse a következő értékeket: *Alkalmazásazonosító*, *alkalmazáskulcsot*, *címtár-azonosító (bérlő azonosító)*, és *előfizetés-azonosító*. Szükség van rájuk a Jenkins az Azure hitelesítő adatainak konfigurálása.
+   * Miközben a témakörben leírt lépéseket követve, ügyeljen arra, hogy másolja ki és mentse a következő értékeket: *Alkalmazásazonosító*, *alkalmazáskulcsot*, *címtár-azonosító (bérlő azonosító)* , és *előfizetés-azonosító*. Szükség van rájuk a Jenkins az Azure hitelesítő adatainak konfigurálása.
    * Ha nem rendelkezik a [szükséges engedélyek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) a címtárban kell kérje meg egy rendszergazda adhat meg engedélyeket, vagy az Ön számára az egyszerű szolgáltatás létrehozása vagy konfigurálása a felügyeleti végpontja kell a a fürt a **felépítés utáni műveletekben** a feladatnak a Jenkinsben.
-   * Az a [létrehozása az Azure Active Directory-alkalmazás](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-azure-active-directory-application) a szakaszban adhatja meg minden olyan megfelelően formázott URL-CÍMÉT a **bejelentkezési URL-**.
+   * Az a [létrehozása az Azure Active Directory-alkalmazás](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-azure-active-directory-application) a szakaszban adhatja meg minden olyan megfelelően formázott URL-CÍMÉT a **bejelentkezési URL-** .
    * Az a [rendelje hozzá az alkalmazást egy szerepkörhöz](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) területen rendelhet hozzá az alkalmazás a *olvasó* szerepkör az az erőforráscsoport, a fürt számára.
 
 1. A Jenkins-feladatot, kattintson a **felépítés utáni műveletekben** fülre.

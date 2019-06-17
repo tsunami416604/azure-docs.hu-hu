@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/21/2018
 ms.author: danlep
 ms.openlocfilehash: 55c84907ab41f6da9d7a0989c68a1c1f90c5e424
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60827272"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Az Azure Container Registry tároló képtárolás
@@ -34,12 +34,12 @@ Forgatókönyvek esetén még több magas rendelkezésre állás biztosítása, 
 
 A következő táblázat ismerteti a tároló kép- és tárterületi korlátozásai helyen az Azure container registryk.
 
-| Erőforrás | Korlát |
+| Resource | Korlát |
 | -------- | :---- |
 | Adattárak | Korlátlan |
 | Képek | Korlátlan |
 | Rétegek | Korlátlan |
-| Címkék | Korlátlan|
+| Tags | Korlátlan|
 | Storage | 5 TB |
 
 Nagyon nagy mennyiségű adattárak és címkék hatással lehet a beállításjegyzék teljesítményét. Rendszeres időközönként törölje a fel nem használt adattárak, a címkék és a képek a beállításjegyzék karbantartási gyakorlatának. Beállításjegyzék erőforrásokhoz, mint az adattárak, rendszerképek és címkék törlése *nem* törlése után lehet helyreállítani. Registry erőforrás törlésével kapcsolatos további információkért lásd: [törlése az Azure Container Registry a tárolólemezképek](container-registry-delete.md).

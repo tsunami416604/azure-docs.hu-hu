@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
 ms.openlocfilehash: 90d576fd00a39f7e871cbe0922ce131dfbe38ff0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62122387"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Egyéni mintavétel létrehozása az Application Gateway a portál használatával
@@ -31,7 +31,7 @@ ms.locfileid: "62122387"
 
 Ez a cikk az Azure Portalon keresztül meglévő application gateway vegyen fel egy egyéni mintát. Az alkalmazásokat, egy adott állapotellenőrzési oldalt, vagy az alapértelmezett webalkalmazást a sikeres válasz nem biztosító alkalmazások egyéni minták hasznosak lehetnek.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ha Ön még nem rendelkezik az application gateway, keresse fel [hozzon létre egy Application Gateway](application-gateway-create-gateway-portal.md) szeretne dolgozni egy application gateway létrehozásához.
 
@@ -54,7 +54,7 @@ Mintavételezők egy kétlépéses folyamat, a portálon keresztül lehet konfig
    |**Name (Név)**|customProbe|Ez az érték egy rövid nevet a mintavétel, amely elérhető a portálon.|
    |**Protocol (Protokoll)**|HTTP- vagy HTTPS | A protokoll, amely használja az állapotmintához.|
    |**Gazdagép**|i.e contoso.com|Ez az érték a gazdagép nevét, hogy a mintavétel használt. Alkalmazható csak akkor, ha a többhelyes konfigurálva van az Application Gatewayen, ellenkező esetben használja a "127.0.0.1". Ez az érték eltér a virtuális gép állomásnevét.|
-   |**Elérési út**|/ vagy egy másik elérési utat|Egyéni mintavétel teljes URL-cím része. Érvényes elérési utat kezdődik (/). Az alapértelmezett elérési út http:\//contoso.com használja (/) |
+   |**Path**|/ vagy egy másik elérési utat|Egyéni mintavétel teljes URL-cím része. Érvényes elérési utat kezdődik (/). Az alapértelmezett elérési út http:\//contoso.com használja (/) |
    |**Időtartam (másodperc)**|30|A mintavétel gyakoriságát fut állapotának ellenőrzéséhez. Nem javasoljuk, hogy állítsa be az alacsonyabb, mint 30 másodperc.|
    |**Időkorlát (másodperc)**|30|Mennyi ideig időkorlátját vár a mintavétel. Az időkorlát kell lennie, elég nagy, hogy egy http-hívással hozható létre a háttérrendszer health-oldal az elérhető legyen.|
    |**Nem kifogástalan állapot küszöbértéke**|3|Nem megfelelő állapotú venni a sikertelen kísérletek száma. Ha az állapot-ellenőrzése sikertelen lesz a háttéralkalmazás határozza meg. nem megfelelő állapotú azonnal 0 azt jelenti, hogy küszöbértéket.|

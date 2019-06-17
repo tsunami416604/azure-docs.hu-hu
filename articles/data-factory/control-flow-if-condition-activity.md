@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 ms.openlocfilehash: 52f96b8fc2a1288c652169817a3a73d7b26caac9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66153471"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Ha a Condition tevékenység az Azure Data Factoryban
@@ -66,8 +66,8 @@ Az If Condition tevékenység ugyanazokat a funkciókat biztosítja, mint a prog
 
 Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
-név | Az if-condition tevékenység neve. | String | Igen
-típus | Meg kell **IfCondition** | String | Igen
+name | Az if-condition tevékenység neve. | String | Igen
+type | Meg kell **IfCondition** | String | Igen
 kifejezés | IGAZ vagy hamis kifejezés | Logikai érték kifejezéstípus eredménnyel | Igen
 ifTrueActivities | Ha a kifejezés értéke végrehajtott tevékenységek `true`. | Tömb | Igen
 ifFalseActivities | Ha a kifejezés értéke végrehajtott tevékenységek `false`. | Tömb | Igen

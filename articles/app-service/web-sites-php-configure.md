@@ -15,15 +15,15 @@ ms.date: 04/11/2018
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: 38e0983830c540082a915332aa4158d2af84567b
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65408881"
 ---
 # <a name="configure-php-in-azure-app-service"></a>A PHP konfigurálása az Azure App Service-ben
 
-## <a name="introduction"></a>Bemutatás
+## <a name="introduction"></a>Bevezetés
 
 Ez az útmutató bemutatja, hogyan konfigurálhatja a web apps, mobil háttérrendszerek és API-alkalmazások a beépített PHP-futtatókörnyezet [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714), adjon meg egyéni PHP-futtatókörnyezet, és engedélyezze a bővítmények. Az App Service használatához Regisztráljon a [az ingyenes próbaidőszak]. Ez az útmutató az első, érdemes először hozzon létre egy PHP-alkalmazást az App Service-ben.
 

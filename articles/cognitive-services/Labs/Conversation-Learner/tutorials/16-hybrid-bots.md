@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 07/13/2018
 ms.author: nitinme
 ms.openlocfilehash: d6af927e395532e43c7cc51c39665e2e42ac6781
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66389982"
 ---
 # <a name="how-to-use-conversation-learner-with-other-bot-building-technologies"></a>Beszélgetéstanuló használata más bot technológiák létrehozásához
@@ -114,11 +114,11 @@ Egyetlen beszélgetés Leaner modell robotokat eltérően azonosra, csak láthat
 
 ### <a name="test"></a>Tesztelés 
 
-#### <a name="scenario-1-store-is-closed"></a>1. forgatókönyv: Store le van zárva.
+#### <a name="scenario-1-store-is-closed"></a>1\. forgatókönyv: Store le van zárva.
 1. Adja meg a "üzemi". Ez az egyező szöveg kezelje, és lehetővé teszik a Beszélgetéstanuló modellre.
 2. Adja meg a "hello".  Mivel `isOpen` érték nincs megadva, a bot tudatja Önnel "Vagyok Sajnáljuk, hogy már lezárt" és a munkamenet befejezéséhez.
 
-#### <a name="scenario-2-store-is-open"></a>2. forgatókönyv: Store nyitva.
+#### <a name="scenario-2-store-is-open"></a>2\. forgatókönyv: Store nyitva.
 1. Adja meg a "áruház megnyitásához".  Ez a `isOpen` igaz értékre.
 1. Adja meg a "üzemi".
 1. Adja meg a "hello".  Mivel `isOpen` értéke igaz, a bot jelenik meg: "Mi szeretne vásárolni?"

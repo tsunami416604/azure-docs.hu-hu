@@ -9,10 +9,10 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: ''
 ms.openlocfilehash: 57212da1a8da7ee6c57faf2413b88a413df04817
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66129547"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>A vendég operációs rendszer mérőszámok küldése az Azure Monitor adattárba Windows virtuális gép (klasszikus)
@@ -21,7 +21,7 @@ ms.locfileid: "66129547"
 
 Az Azure Monitor [diagnosztikai bővítmény](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) (úgynevezett "WAD" vagy "Diagnosztika") lehetővé teszi, hogy a metrikák és a egy virtuális gép, a felhőalapú szolgáltatás vagy a Service Fabric részeként a vendég operációs rendszerek (Guest OS) naplóinak gyűjtése a fürt. A bővítmény küldhet telemetriát [számos különböző helyeken.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
 
-Ez a cikk azt ismerteti, hogyan vendég operációs rendszer Windows virtuális gép (klasszikus) teljesítmény-mérőszámok küldése az Azure Monitor metrika tárolón. 1.11-es verzió diagnosztikai kezdve írhatja metrikák közvetlenül az Azure Monitor metrikák tárol, ahol már standard platform metrikákat gyűjt. 
+Ez a cikk azt ismerteti, hogyan vendég operációs rendszer Windows virtuális gép (klasszikus) teljesítmény-mérőszámok küldése az Azure Monitor metrika tárolón. 1\.11-es verzió diagnosztikai kezdve írhatja metrikák közvetlenül az Azure Monitor metrikák tárol, ahol már standard platform metrikákat gyűjt. 
 
 Ezen a helyen tárolja őket lehetővé teszi ugyanazokat a műveleteket is platform metrikákat. Műveletek közé tartoznak a közel valós idejű riasztás, a diagram, útválasztás, a REST API-t, és a további hozzáférés. A múltban a diagnosztikai bővítmény írt, az Azure Storage, de nem az Azure Monitor adattár. 
 

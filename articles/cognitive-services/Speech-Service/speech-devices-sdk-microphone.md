@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
 ms.openlocfilehash: 63dd64e900cf68e708032569ca75ac2e8b221491
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65237001"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Beszéd eszközök SDK mikrofon tömb javaslatok
@@ -45,7 +45,7 @@ A javasolt tulajdonságok mikrofonok kiválasztásakor a következők:
 |-----------------------------------|-----------------------------------|
 | SNR                               | \> 65 dB (1 kHz signal 94 dBSPL, A-weighted noise)   |
 | Amplitúdó egyeztetése                | ± 1 dB @ 1 kHz                     |
-| Fázis egyeztetése                    | + 2° 1 kHz @                       |
+| Fázis egyeztetése                    | \+ 2° 1 kHz @                       |
 | Akusztikai túlterhelési pont (OFJ)     | \> 120 dBSPL (THD = 10%)          |
 | Átviteli sebesség                          | Minimális 24 bites                    |
 | Mintavételezési frekvencia                     | Minimum 16 kHz\*                   |
@@ -66,7 +66,7 @@ A teljesítmény a tömbök integrálva az eszköz és a rögzített nyereséget
 |  SNR                 | \> 65 dB (1 kHz signal 94 dBSPL, A-weighted noise) |
 |  Kimeneti érzékenység  | -26 dBFS/Pa @ 1 kHz (ajánlott) |
 |  Amplitúdó egyeztetése  | ± 2 dB, 200-8000 Hz |
-|  Fázis egyeztetése      | + 5°, 200-8000-es Hz |
+|  Fázis egyeztetése      | \+ 5°, 200-8000-es Hz |
 | THD%                 | Az időtartomány legfeljebb 1 %, 200-8000-es Hz, 94 dBSPL, 5. rendelés |
 |  Gyakoriság válasz  | ± 6 dB, 200-8000-es Hz lebegőpontos maszk\* |
 
@@ -80,7 +80,7 @@ Echo megszakítás speech recognition eszközök előadói tartalmazó szükség
 |-----------------------------------|-----------------------------------|
 | Lineáris kapcsolatos szempontok          | Nincs nem lineáris feldolgozása után speaker referencia, ellenkező esetben egy visszacsatolási hardveralapú referencia adatfolyam megadása kötelező  |
 | Hangszóró visszacsatolási                  | Nyújtja WASAPI, saját API-k, egyéni ALSA beépülő modult (Linux), vagy a belső vezérlőprogram csatornán keresztül biztosítja      |
-| THD%                              | 3. frekvenciáin legalább 5. ahhoz, @ 0,8 m ≤ 6.3 %, 315-500 Hz az időtartomány legfeljebb 5 % 630 – 5000 Hz 70 dBA lejátszás                 |
+| THD%                              | 3\. frekvenciáin legalább 5. ahhoz, @ 0,8 m ≤ 6.3 %, 315-500 Hz az időtartomány legfeljebb 5 % 630 – 5000 Hz 70 dBA lejátszás                 |
 | A mikrofon echo kapcsoló      | \> a mic szintre normalized ITU-T G.122 melléklet B.4 módszerrel TCLw-10 dB<br />TCLw = TCLwmeasured \+ (kimeneti érzékenységi szint – mért cél)<br />TCLw = TCLwmeasured \+ (mért szint – (-26)) |
 
 ## <a name="integration-design-architecture"></a>Integráció tervezés architektúrájának

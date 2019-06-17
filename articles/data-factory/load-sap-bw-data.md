@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: jingwang
 ms.openlocfilehash: 4cd61db3ec0e8d88c9b1c6d6ba427b120b3f1af1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66152419"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Adatmásolás az SAP Business warehouse-hoz az Azure Data Factory használatával
@@ -29,7 +29,7 @@ Ez a cikk bemutatja, hogyan lehet Azure Data Factory segítségével az SAP Busi
 
 - **Az Azure Data Factory**: Ha még nincs fiókja, kövesse a lépéseket [adat-előállító létrehozása](quickstart-create-data-factory-portal.md#create-a-data-factory).
 
-- **Az SAP BW Open Hub cél (OHD) a cél típusa "Adatbázistábla"**: Hozzon létre egy OHD, vagy ellenőrizze, hogy a OHD megfelelően van konfigurálva a Data Factory-integráció, tekintse meg a [SAP BW Open Hub cél konfigurációk](#sap-bw-open-hub-destination-configurations) című szakaszát.
+- **Az SAP BW Open Hub cél (OHD) a cél típusa "Adatbázistábla"** : Hozzon létre egy OHD, vagy ellenőrizze, hogy a OHD megfelelően van konfigurálva a Data Factory-integráció, tekintse meg a [SAP BW Open Hub cél konfigurációk](#sap-bw-open-hub-destination-configurations) című szakaszát.
 
 - **Az SAP BW-felhasználó a következő engedélyeket kell**:
 
@@ -162,7 +162,7 @@ Az adat-előállító **első lépések** lapon jelölje be **folyamat létrehoz
 
    - **HighWatermarkBlobName**: Adja meg a blob nevét, a felső küszöbértékek tárolására például `requestIdCache.txt`. A Blob storage-ban nyissa meg a megfelelő elérési útját HighWatermarkBlobPath + HighWatermarkBlobName, mint például *container/path/requestIdCache.txt*. Hozzon létre egy blob tartalmát 0.
 
-      ![Blob tartalma](media/load-sap-bw-data/blob.png)
+      ![BLOB tartalma](media/load-sap-bw-data/blob.png)
 
    - **LogicAppURL**: Ez a sablon használatával WebActivity hívja az Azure Logic Apps felső küszöbbel rendelkező érték beállításához a Blob storage-ban. Másik lehetőségként használhatja az Azure SQL Database tárolja azt. A tárolt eljárási tevékenység használatával frissítse az értéket.
 

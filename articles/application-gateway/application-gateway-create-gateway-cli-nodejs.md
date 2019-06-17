@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: victorh
 ms.openlocfilehash: 7107f45253c4f13b3378489726bf5034e104fa30
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62095982"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Application gateway létrehozása az Azure CLI-vel
@@ -38,7 +38,7 @@ Ebben a forgatókönyvben lesz:
 > [!NOTE]
 > További konfigurációs az application Gateway, beleértve az egyéni állapot-mintavételei, háttérbeli címkészlet-címeit, és a további szabályok vannak konfigurálva, az application gateway konfigurálása után, és nem a kezdeti üzembe helyezése során.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Az Azure Application Gateway a saját alhálózatában van szükség. Ha egy virtuális hálózatot hoz létre, győződjön meg arról, hogy hagyja-e elég hely a cím több alhálózattal rendelkezik. Miután telepít egy alhálózatot az application gateway, csak további az application Gateway átjárók tudnak lesz hozzáadva az alhálózathoz.
 

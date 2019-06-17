@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
 ms.openlocfilehash: bef71f210e015dc10cd6f5c0c655d0d3beee3655
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64728918"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Egy egyéni Python-kódtár használata a HDInsight az Apache Spark-fürt webhelynaplók elemzése
@@ -37,7 +37,7 @@ Ebben a szakaszban fogjuk használni a [Jupyter](https://jupyter.org) notebook t
 
 Az adatok az Apache Hive-tábla mentése után a következő szakaszban nem fog csatlakozni a Hive-tábla használatával, BI eszközök, például a Power BI és a Tableau.
 
-1. Az [Azure portál](https://portal.azure.com/) kezdőpultján kattintson a Spark-fürthöz tartozó csempére (ha rögzítette azt a kezdőpulton). A fürtöt a következő helyről is megkeresheti: **Browse All (Összes tallózása)** > **HDInsight Clusters** (HDInsight-fürtök).   
+1. Az [Azure portál](https://portal.azure.com/) kezdőpultján kattintson a Spark-fürthöz tartozó csempére (ha rögzítette azt a kezdőpulton). A fürtöt a következő helyről is megkeresheti: **Browse All (Összes tallózása)**  > **HDInsight Clusters** (HDInsight-fürtök).   
 2. A Spark-fürt panelén kattintson a **Fürt irányítópultja Dashboard** lehetőségre, majd a **Jupyter Notebook** elemre. Ha a rendszer felkéri rá, adja meg a fürthöz tartozó rendszergazdai hitelesítő adatokat.
 
    > [!NOTE]

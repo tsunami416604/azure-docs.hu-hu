@@ -9,10 +9,10 @@ ms.date: 02/01/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1aca39a7ff162aa3c42fdb3ca5999c71091ec02e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66119394"
 ---
  Az Azure Cloud Shellt használja, ha bejelentkezik az Azure-fiókhoz automatikusan "próbálja ki: kattintás után. Jelentkezzen be a helyi, nyissa meg a PowerShell-konzolt emelt szintű jogosultságokkal, és futtassa a parancsmagot való csatlakozáshoz.

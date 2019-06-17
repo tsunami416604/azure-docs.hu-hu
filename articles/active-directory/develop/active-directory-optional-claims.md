@@ -18,10 +18,10 @@ ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8c0e5035331cbe4f54926f0ae60ae0c5c31f6a9a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66119726"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Útmutató: Adja meg a választható jogcímeket, az Azure AD-alkalmazás
@@ -38,12 +38,12 @@ Bár nem kötelező jogcímeket is 1.0-s verzió és a v2.0-formátumú jogkivon
 
 **1. táblázat: Alkalmazhatósági**
 
-| Fiók típusa | 1.0-s verziójú jogkivonatok | 2.0-s verziójú jogkivonatok  |
+| Fiók típusa | 1\.0-s verziójú jogkivonatok | 2\.0-s verziójú jogkivonatok  |
 |--------------|---------------|----------------|
 | Személyes Microsoft-fiók  | –  | Támogatott|
 | Azure AD-fiók      | Támogatott | Támogatott |
 
-## <a name="v10-and-v20-optional-claims-set"></a>1.0-s és 2.0-s verziójú választható jogcímek beállítása
+## <a name="v10-and-v20-optional-claims-set"></a>1\.0-s és 2.0-s verziójú választható jogcímek beállítása
 
 Az alkalmazásokkal való használatra alapértelmezés szerint elérhető nem kötelező jogcímek készlete alább láthatók. Az egyéni opcionális jogcímek az alkalmazáshoz adni, tekintse meg a [Címtárbővítmények](#configuring-directory-extension-optional-claims), az alábbi. Jogcímek hozzáadásakor a **hozzáférési jogkivonat**, ez vonatkozik a kért hozzáférési jogkivonatok *a* az alkalmazás (webes API-k), azokat *által* az alkalmazást. Ez biztosítja, hogy az ügyfelet, az API elérése, függetlenül attól, hogy a megfelelő adatok már jelen vannak a hozzáférési jogkivonat hitelesíti a rendszer az API-t használják.
 
@@ -84,11 +84,11 @@ Ezeket a jogcímeket 1.0-s verziójú Azure AD-jogkivonatok mindig szerepel, de 
 | JWT-jogcím     | Name (Név)                            | Leírás                                | Megjegyzések |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP-cím                      | Az IP-címet az ügyfél a bejelentkezett.   |       |
-| `onprem_sid`  | Helyi biztonsági azonosító |                                             |       |
+| `onprem_sid`  | A helyszíni biztonsági azonosítója |                                             |       |
 | `pwd_exp`     | Jelszó lejárati ideje        | A dátumot/időt, amikor a jelszó lejár. |       |
 | `pwd_url`     | Jelszó URL-Címének módosítása             | Egy URL-címet, amely a felhasználó ellátogathat a jelszó módosítására.   |   |
 | `in_corp`     | Vállalati hálózaton belül        | Ha az ügyfél bejelentkezik a vállalati hálózatról jelek. Ha nem, a jogcím nem tartalmaz.   |  Ki-alapú a [megbízható IP-címek](../authentication/howto-mfa-mfasettings.md#trusted-ips) beállításokat az MFA-ban.    |
-| `nickname`    | Becenév.                        | A felhasználó, az első vagy utolsó külön további neve. | 
+| `nickname`    | Becenév                        | A felhasználó, az első vagy utolsó külön további neve. | 
 | `family_name` | Vezetéknév                       | Az utolsó neve, Vezetéknév vagy felhasználó családnév biztosít a user objektum a. <br>"family_name":"Miller" | Az MSA és aad-ben támogatott   |
 | `given_name`  | Utónév                      | Itt az első vagy az "adott" a felhasználó nevét a user objektum készletként.<br>"given_name": "Frank"                   | Az MSA és aad-ben támogatott  |
 | `upn`         | Egyszerű felhasználónév | Egy azonosítóval, a felhasználó a username_hint paraméterrel használható.  A felhasználó nem egy tartós azonosítót, és nem használható a fontos adatokat. | Lásd: [további tulajdonságok](#additional-properties-of-optional-claims) alább a jogcím-konfigurációhoz. |

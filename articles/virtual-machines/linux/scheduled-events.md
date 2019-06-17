@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
 ms.openlocfilehash: 0831f08eaa3e8e6f6a0d3f68bc50cd927167b7ba
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65507925"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Az Azure Metadata szolgáltatás: A Linux rendszerű virtuális gépeken ütemezett események
@@ -77,9 +77,9 @@ Az ütemezett eseményekről szolgáltatás nem rendszerverzióval ellátott. Ve
 
 | Version | Kiadás típusa | Régiók | Kibocsátási megjegyzések | 
 | - | - | - | - | 
-| 2017-11-01 | Általános rendelkezésre állás | Az összes | <li> Alacsony prioritású virtuális gép kiürítési "Preempt" eseménytípus támogatása<br> | 
-| 2017-08-01 | Általános rendelkezésre állás | Az összes | <li> Aláhúzás kiegészített távolítva erőforrásnevek IaaS virtuális gépekhez<br><li>Metaadatok fejléc követelmény irányuló kérések kényszerítése | 
-| 2017-03-01 | Előnézet | Az összes | <li>Kezdeti kiadás
+| 2017-11-01 | Általános rendelkezésre állás | Összes | <li> Alacsony prioritású virtuális gép kiürítési "Preempt" eseménytípus támogatása<br> | 
+| 2017-08-01 | Általános rendelkezésre állás | Összes | <li> Aláhúzás kiegészített távolítva erőforrásnevek IaaS virtuális gépekhez<br><li>Metaadatok fejléc követelmény irányuló kérések kényszerítése | 
+| 2017-03-01 | Előzetes verzió | Összes | <li>Kezdeti kiadás
 
 
 > [!NOTE] 
@@ -95,7 +95,7 @@ Felhasználó által kezdeményezett virtuális Gépet karbantartás az Azure Po
 
 Ha a virtuális gép, egy esemény típusú újraindítása `Reboot` van ütemezve. Ha egy virtuális gép, egy esemény típusa és ismételt üzembe `Redeploy` van ütemezve.
 
-## <a name="use-the-api"></a>Az API-val
+## <a name="use-the-api"></a>Az API használata
 
 ### <a name="headers"></a>Fejlécek
 Előfordulhat, hogy metaadat-szolgáltatás, meg kell adnia a fejléc `Metadata:true` annak érdekében, hogy a kérelem nem volt szándékos átirányítva. A `Metadata:true` fejlécet meg kell adni az ütemezett események irányuló kérések. Nem sikerült a fejlécet tartalmazza a kérés egy "Hibás kérés" Metadata szolgáltatás válasza eredményez.
@@ -131,7 +131,7 @@ Abban az esetben, ahol az ütemezett események, a válasz események tömbjét 
 | - | - |
 | EventId | Globálisan egyedi azonosítóját az eseményhez. <br><br> Példa: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | EventType | Ez az esemény hatására a hatás. <br><br> Értékek: <br><ul><li> `Freeze`: A virtuális gép úgy van ütemezve, szüneteltetésére néhány másodpercig. Processzor és a hálózati kapcsolat felfüggeszthető, de nem érinti a memória vagy a megnyitott fájlokat.<li>`Reboot`: A virtuális gép újraindításra van ütemezve (a nem állandó memória elvész). <li>`Redeploy`: A virtuális gép áthelyezése egy másik csomópontra van ütemezve (a rövid élettartamú lemezek elvesznek). <li>`Preempt`: Az alacsony prioritású virtuális gép törlése folyamatban van (az ideiglenes lemezek olyan elveszett eszköz).|
-| Erőforrástípus | Ez az esemény érinti erőforrás típusát. <br><br> Értékek: <ul><li>`VirtualMachine`|
+| ResourceType | Ez az esemény érinti erőforrás típusát. <br><br> Értékek: <ul><li>`VirtualMachine`|
 | További források| Ez az esemény érinti erőforrások listája. A lista tartalmaz gépeket legfeljebb egy garantáltan [frissítési tartományt](manage-availability.md), azonban nem tartalmaz a UD minden gépek. <br><br> Példa: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | Ez az esemény állapota. <br><br> Értékek: <ul><li>`Scheduled`: Ez az esemény után a megadott ideig történő futásra van ütemezve a `NotBefore` tulajdonság.<li>`Started`: Ez az esemény feldolgozása megkezdődött.</ul> Nem `Completed` vagy hasonló állapota minden eddiginél biztosítja. Az esemény már nem ad vissza az esemény befejezése.
 | NotBefore| Az idő elteltével megkezdheti a ezt az eseményt. <br><br> Példa: <br><ul><li> 19 Sep 2016 hétfő, 18:29:47 GMT  |
@@ -143,7 +143,7 @@ Minden esemény van ütemezve egy jövőbeli időpontot minimális mennyiségű 
 | - | - |
 | Rögzítése| 15 perc |
 | Újraindítás | 15 perc |
-| Újratelepítés | 10 perc |
+| Ismételt üzembe helyezés | 10 perc |
 | Megelőzik az | 30 másodperc |
 
 ### <a name="start-an-event"></a>Egy esemény indítása 

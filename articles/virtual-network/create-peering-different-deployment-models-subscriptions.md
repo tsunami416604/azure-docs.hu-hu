@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: kumud;anavin
 ms.openlocfilehash: 2cdf136a01678f7fb2e594b325cd78e8e0240c70
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64683420"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Hozzon létre egy virtuális hálózati társviszony - másik üzembe helyezési modellek és -előfizetések
@@ -28,7 +28,7 @@ A virtuális hálózatok közötti társviszony létrehozásához szükséges l�
 |Azure üzembehelyezési modell  | Azure-előfizetés  |
 |--------- |---------|
 |[Mindkét Resource Manager](tutorial-connect-virtual-networks-portal.md) |Azonos|
-|[Mindkét Resource Manager](create-peering-different-subscriptions.md) |Eltérő|
+|[Mindkét Resource Manager](create-peering-different-subscriptions.md) |Különböző|
 |[Egy Resource Manager, egy klasszikus](create-peering-different-deployment-models.md) |Azonos|
 
 A virtuális hálózatok közötti társviszony nem hozható létre, a klasszikus üzemi modellel üzembe helyezett két virtuális hálózat között. Ebben az oktatóanyagban található virtuális hálózat között ugyanabban a régióban. Ebben az oktatóanyagban ugyanabban a régióban található virtuális hálózatok is társul. Emellett társviszonyt virtuális hálózatok különböző [támogatott régiók](virtual-network-manage-peering.md#cross-region). Javasoljuk, hogy Ön feltérképezése a [társviszony-létesítés követelményei és korlátozásai](virtual-network-manage-peering.md#requirements-and-constraints) előtt társviszony-létesítés virtuális hálózatok.

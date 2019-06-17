@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
 ms.openlocfilehash: e64bf253a73df3a2f8170109dc1dfb9a59613733
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64685321"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Egy HDInsight-alkalmazás közzététele az Azure Marketplace-en
@@ -91,8 +91,8 @@ Egy HDInsight-alkalmazás közzététele:
 3. Adjon meg egy címet, és válassza ki **új megoldássablon létrehozásához**.
 4. Ha már a szervezete még nem regisztrált, válassza ki a **létrehozása fejlesztői központban lévő fiókjához és csatlakozás az Azure-program**.  További információkért lásd: [hozzon létre egy Microsoft Developer-fiókot](../marketplace/marketplace-publishers-guide.md).
 5. Válassza ki **megadása a kezdéshez néhány topológiák**. A megoldássablon az összes hozzá tartozó topológia "szülője". Egy ajánlat vagy megoldás sablonban több topológiát is megadhat. Amikor a rendszer továbbítja az ajánlat átmeneti, azt az összes hozzá tartozó topológia leküldésekor. 
-6. Adja meg a topológia nevét, és válassza ki **+**.
-7. Adja meg egy új verziót, és válassza ki **+**.
+6. Adja meg a topológia nevét, és válassza ki **+** .
+7. Adja meg egy új verziót, és válassza ki **+** .
 8. Töltse fel a .zip-fájlt, az alkalmazás csomagolása során létrehozott.  
 9. Válassza ki **kérjen minősítést**. A Microsoft hitelesítő csapata áttekinti a fájlokat, és hitelesíti a topológiát.
 

@@ -9,10 +9,10 @@ ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
 ms.openlocfilehash: ba5e0f696f54f46fb14086b542dc3b2e64155975
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66244941"
 ---
 # <a name="azure-activity-log-event-schema"></a>Az Azure tevékenységnapló eseménysémája
@@ -112,10 +112,10 @@ A kategória tartalmazza az összes rekordot létrehozni, frissítési, törlés
 ### <a name="property-descriptions"></a>A tulajdonság leírása
 | Elem neve | Leírás |
 | --- | --- |
-| Engedélyezési |Az esemény tulajdonságainak RBAC-blobját. Általában tartalmazza az "action", "szerepkör" és "hatókör" tulajdonság. |
+| authorization |Az esemény tulajdonságainak RBAC-blobját. Általában tartalmazza az "action", "szerepkör" és "hatókör" tulajdonság. |
 | Hívó |A művelet, egyszerű Felhasználónévi jogcím vagy egyszerű szolgáltatásnév jogcím alapján a rendelkezésre állási végző felhasználó e-mail címe. |
 | csatornák |A következő értékek egyikét: "Admin", "Művelet" |
-| jogcímek |A JWT jogkivonat a felhasználó vagy az alkalmazásnak, hogy ezt a műveletet az erőforrás-kezelőben hitelesítéséhez az Active Directory által használandó. |
+| claims |A JWT jogkivonat a felhasználó vagy az alkalmazásnak, hogy ezt a műveletet az erőforrás-kezelőben hitelesítéséhez az Active Directory által használandó. |
 | correlationId |Általában egy GUID Azonosítót a karakterláncként. Ugyanaz a uber művelet eseményeket, amelyek megosztása a korrelációs azonosító tartozik. |
 | description |Statikus szöveg egy esemény leírása. |
 | eventDataId |Az esemény egyedi azonosítója. |
@@ -354,7 +354,7 @@ Ez a kategória összes aktiválás az Azure-riasztások rekordot tartalmaz. Itt
 | --- | --- |
 | Hívó | Always Microsoft.Insights/alertRules |
 | csatornák | Mindig "rendszergazda, a művelet" |
-| jogcímek | Az egyszerű szolgáltatásnév (szolgáltatásnév), vagy az erőforrás típusa, a riasztás motor JSON-blobját. |
+| claims | Az egyszerű szolgáltatásnév (szolgáltatásnév), vagy az erőforrás típusa, a riasztás motor JSON-blobját. |
 | correlationId | GUID, amely a karakterlánc-formátum. |
 | description |A figyelmeztetési esemény statikus szöveges leírása. |
 | eventDataId |A figyelmeztetési esemény egyedi azonosítója. |
@@ -464,7 +464,7 @@ Ez a kategória tartalmazza a rekord a meghatározott az előfizetés automatiku
 | --- | --- |
 | Hívó | Always Microsoft.Insights/autoscaleSettings |
 | csatornák | Mindig "rendszergazda, a művelet" |
-| jogcímek | Az egyszerű szolgáltatásnév (szolgáltatásnév), vagy az erőforrás típusa, az automatikus skálázási motor JSON-blobját. |
+| claims | Az egyszerű szolgáltatásnév (szolgáltatásnév), vagy az erőforrás típusa, az automatikus skálázási motor JSON-blobját. |
 | correlationId | GUID, amely a karakterlánc-formátum. |
 | description |Az automatikus skálázási esemény statikus szöveges leírása. |
 | eventDataId |Az automatikus skálázási esemény egyedi azonosítója. |
@@ -743,10 +743,10 @@ Ez a kategória összes érvénybe művelet műveletek által végrehajtott reko
 
 | Elem neve | Leírás |
 | --- | --- |
-| Engedélyezési | Az esemény tulajdonságainak RBAC tömbje. Új erőforrások esetén ez a művelet és a kérelem kiértékelési kiváltó hatókörét. A meglévő erőforrások a művelet pedig "Microsoft.Resources/checkPolicyCompliance/read". |
+| authorization | Az esemény tulajdonságainak RBAC tömbje. Új erőforrások esetén ez a művelet és a kérelem kiértékelési kiváltó hatókörét. A meglévő erőforrások a művelet pedig "Microsoft.Resources/checkPolicyCompliance/read". |
 | Hívó | Az új erőforrások, az identity által kezdeményezett központi telepítés. A meglévő erőforrások, a Microsoft Azure házirend Insights RP GUID Azonosítóját. |
 | csatornák | Házirend-események csak a "Művelet" csatorna használatára. |
-| jogcímek | A JWT jogkivonat a felhasználó vagy az alkalmazásnak, hogy ezt a műveletet az erőforrás-kezelőben hitelesítéséhez az Active Directory által használandó. |
+| claims | A JWT jogkivonat a felhasználó vagy az alkalmazásnak, hogy ezt a műveletet az erőforrás-kezelőben hitelesítéséhez az Active Directory által használandó. |
 | correlationId | Általában egy GUID Azonosítót a karakterláncként. Ugyanaz a uber művelet eseményeket, amelyek megosztása a korrelációs azonosító tartozik. |
 | description | A négyzet nincs bejelölve, a házirend-események. |
 | eventDataId | Az esemény egyedi azonosítója. |
