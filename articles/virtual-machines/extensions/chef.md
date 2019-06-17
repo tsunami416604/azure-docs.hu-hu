@@ -70,16 +70,16 @@ A következő JSON-ra a sémát a Chef Virtuálisgép-bővítmény mutatja be. A
 
 | Name (Név) | Érték és példa | Adattípus
 | ---- | ---- | ---- 
-| apiVersion | `2017-12-01` | karakterlánc (dátum) |
+| apiVersion | `2017-12-01` | string (date) |
 | publisher | `Chef.Bootstrap.WindowsAzure` | string |
 | type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | string |
-| typeHandlerVersion | `1210.12` | karakterlánc (kétirányú) |
+| typeHandlerVersion | `1210.12` | string (double) |
 
 ### <a name="settings"></a>Beállítások
 
 | Name (Név) | Érték és példa | Adattípus | Kötelező?
 | ---- | ---- | ---- | ----
-| settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | karakterlánc (url) | I |
+| settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | I |
 | settings/bootstrap_options/validation_client_name | `myorg-validator` | string | I |
 | settings/runlist | `recipe[mycookbook::default]` | string | I |
 
