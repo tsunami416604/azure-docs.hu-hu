@@ -12,175 +12,78 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 10/16/2018
+ms.date: 06/13/2019
 ms.author: shvija
-ms.openlocfilehash: d5dc65dc225d11a996d9b9d3c329151a17321fb6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: c020a7673fe018565a6f1aeb9f7cb2124024a2c4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60343494"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67118865"
 ---
-# <a name="quickstart-create-an-event-hub-using-azure-resource-manager-template"></a>Gyors útmutató: Létrehoz egy eseményközpontot, az Azure Resource Manager-sablon használatával
+# <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>Gyors útmutató: Eseményközpont létrehozása Azure Resource Manager-sablon használatával
+
 Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
 
-Ebben a rövid útmutatóban létrehozhat egy eseményközpontba, egy Azure Resource Manager-sablon használatával. Az Azure Resource Manager-sablon használatával hozzon létre egy névteret típusú [az Event Hubs](event-hubs-what-is-event-hubs.md), és az egy eseményközponttal és a egy fogyasztói csoporton. A cikk bemutatja, hogyan határozza meg, mely erőforrások vannak telepítve, és a megadott paramétereket definiálása az üzembe helyezés végrehajtása esetén. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően. Sablonok létrehozásával kapcsolatos információkért lásd: [Azure Resource Manager-sablonok készítése][Authoring Azure Resource Manager templates]. A JSON-szintaxist és a egy sablonban használandó tulajdonságokat: [hátralékának erőforrástípusok](/azure/templates/microsoft.eventhub/allversions).
+Ebben a rövid útmutatóban létrehozhat egy eseményközpont használatával egy [Azure Resource Manager-sablon](../azure-resource-manager/resource-group-overview.md). Típusú névtér létrehozása egy Azure Resource Manager-sablon telepítése [az Event Hubs](event-hubs-what-is-event-hubs.md), és egy eseményközpont. A cikk bemutatja, hogyan határozza meg, mely erőforrások vannak telepítve, és a megadott paramétereket definiálása az üzembe helyezés végrehajtása esetén. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően. Sablonok létrehozásával kapcsolatos információkért lásd: [Azure Resource Manager-sablonok készítése][Authoring Azure Resource Manager templates]. A JSON-szintaxist és a egy sablonban használandó tulajdonságokat: [hátralékának erőforrástípusok](/azure/templates/microsoft.eventhub/allversions).
 
-> [!NOTE]
-> A teljes sablont, tekintse meg a [Event hub és a fogyasztói csoport sablon] [ Event Hub and consumer group template] a Githubon. Ez a sablon mellett az event hub-névtér és eseményközpont fogyasztói csoportot hozott létre. A legújabb sablonokért keresse fel az [Azure-gyorssablonok][Azure Quickstart Templates] gyűjteményt, és keressen az Event Hubs kifejezésre.
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="create-an-event-hub"></a>Eseményközpont létrehozása
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Ez a rövid egy [meglévő Resource Manager-sablon](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json). További sablonminták talál [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/?term=eventhub&pageNumber=1&sort=Popular).
 
-A rövid útmutató elvégzéséhez szüksége lesz egy Azure-előfizetésre. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+A sablon üzembe helyezéséhez:
 
-Ha a használni kívánt **Azure PowerShell-lel** a Resource Manager-sablon üzembe helyezéséhez [Azure PowerShell telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps).
+1. Válassza ki **kipróbálás** az az alábbi kód letiltása, és kövesse az utasításokat követve jelentkezzen be az Azure Cloud shell.
 
-Ha a használni kívánt **Azure CLI-vel** a Resource Manager-sablon üzembe helyezéséhez [Azure CLI telepítése]( /cli/azure/install-azure-cli).
+   ```azurepowershell-interactive
+   $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
+   $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+   $resourceGroupName = "${projectName}rg"
+   $templateUri = "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json"
 
-## <a name="create-the-resource-manager-template-json"></a>A Resource Manager-sablon JSON létrehozása
-Hozzon létre egy JSON-fájlt MyEventHub.json az alábbi tartalommal, és mentse egy mappába (Példa: C:\EventHubsQuickstarts\ResourceManagerTemplate).
+   New-AzResourceGroup -Name $resourceGroupName -Location $location
+   New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -projectName $projectName
 
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "eventhub-namespace-name": {
-            "type": "String"
-        },
-        "eventhub_name": {
-            "type": "String"
-        }
-    },
-    "resources": [
-        {
-            "type": "Microsoft.EventHub/namespaces",
-            "sku": {
-                "name": "Standard",
-                "tier": "Standard",
-                "capacity": 1
-            },
-            "name": "[parameters('eventhub-namespace-name')]",
-            "apiVersion": "2017-04-01",
-            "location": "East US",
-            "tags": {},
-            "scale": null,
-            "properties": {
-                "isAutoInflateEnabled": false,
-                "maximumThroughputUnits": 0
-            },
-            "dependsOn": []
-        },
-        {
-            "type": "Microsoft.EventHub/namespaces/eventhubs",
-            "name": "[concat(parameters('eventhub-namespace-name'), '/', parameters('eventhub_name'))]",
-            "apiVersion": "2017-04-01",
-            "location": "East US",
-            "scale": null,
-            "properties": {
-                "messageRetentionInDays": 7,
-                "partitionCount": 1,
-                "status": "Active"
-            },
-            "dependsOn": [
-                "[resourceId('Microsoft.EventHub/namespaces', parameters('eventhub-namespace-name'))]"
-            ]
-        }
-    ]
-}
-```
-
-## <a name="create-the-parameters-json"></a>Hozza létre a paramétereket JSON
-Hozzon létre egy Azure Resource Manager-sablonja paramétereket tartalmaz MyEventHub Parameters.json nevű JSON-fájlt. 
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-        "eventhub-namespace-name": {
-            "value": "<specify a name for the event hub namespace>"
-        },
-        "eventhub_name": {
-            "value": "<Specify a name for the event hub in the namespace>"
-        }
-  }
-}
-```
-
-
-
-## <a name="use-azure-powershell-to-deploy-the-template"></a>A sablon üzembe helyezése az Azure PowerShell használatával
-
-### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
-1. Indítsa el az Azure PowerShell-lel
-
-2. Az alábbi parancs futtatásával jelentkezzen be az Azure-ba:
-
-   ```azurepowershell
-   Login-AzAccount
-   ```
-3. Ha rendelkezik adja ki az alábbi parancsokat az aktuális előfizetési környezetet:
-
-   ```azurepowershell
-   Select-AzSubscription -SubscriptionName "<YourSubscriptionName>" 
+   Write-Host "Press [ENTER] to continue ..."
    ```
 
-### <a name="provision-resources"></a>Erőforrások kiosztása
-Az Azure PowerShell-lel erőforrások üzembe helyezése/kiépítését, váltson át a C:\EventHubsQuickStart\ARM\ mappában futtassa a következő parancsokat:
+   Eseményközpont létrehozása néhány percet vesz igénybe.
 
-> [!IMPORTANT]
-> Adja meg az Azure-erőforráscsoport nevét értékként $resourceGroupName parancsok futtatása előtt. 
+1. Válassza ki **másolási** másolása a PowerShell-parancsfájlt.
+1. Kattintson a jobb gombbal a rendszerhéj-konzolon, és válassza **beillesztési**.
 
-```azurepowershell
-$resourceGroupName = "<Specify a name for the Azure resource group>"
+## <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése
 
-# Create an Azure resource group
-New-AzResourceGroup $resourceGroupName -location 'East US'
+A telepítés ellenőrzése, vagy nyissa meg az erőforráscsoport a [az Azure portal](https://portal.azure.com), vagy használja a következő Azure PowerShell-parancsfájlt.  Ha a Cloud shellben folyamatban, nem kell másolási/futtatásakor az első sort (Read-Host).
 
-# Deploy the Resource Manager template. Specify the names of deployment itself, resource group, JSON file for the template, JSON file for parameters
-New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName $resourceGroupName -TemplateFile MyEventHub.json -TemplateParameterFile MyEventHub-Parameters.json
+```azurepowershell-interactive
+$projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
+$resourceGroupName = "${projectName}rg"
+$namespaceName = "${projectName}ns"
+
+Get-AzEventHub -ResourceGroupName $resourceGroupName -Namespace $namespaceName
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
-## <a name="use-azure-cli-to-deploy-the-template"></a>A sablon üzembe helyezése az Azure CLI használatával
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével. Ha a Cloud shellben folyamatban, nem kell másolási/futtatásakor az első sort (Read-Host).
 
-Az alábbi lépések nem szükségesek, ha a parancsokat a Cloud Shellben futtatja. Ha helyileg futtatja a CLI-t, az alábbi lépések elvégzésével jelentkezzen be az Azure-ba, és állítsa be az aktuális előfizetést:
+```azurepowershell-interactive
+$projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
+$resourceGroupName = "${projectName}rg"
 
-Az alábbi parancs futtatásával jelentkezzen be az Azure-ba:
+Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 
-```azurecli
-az login
+Write-Host "Press [ENTER] to continue ..."
 ```
-
-Állítsa be az aktuális előfizetési környezetet. A `MyAzureSub` értéket cserélje le a használni kívánt Azure-előfizetés nevére:
-
-```azurecli
-az account set --subscription <Name of your Azure subscription>
-``` 
-
-### <a name="provision-resources"></a>Erőforrások kiosztása
-Az Azure CLI-vel erőforrásokat üzembe kívánja, váltson arra a mappára, C:\EventHubsQuickStart\ARM\, és futtassa a következő parancsokat:
-
-> [!IMPORTANT]
-> Adjon meg egy nevet, az Azure-erőforráscsoportot az csoport paranccsal hozzon létre. .
-
-```azurecli
-# Create an Azure resource group
-az group create --name <YourResourceGroupName> --location eastus
-
-# # Deploy the Resource Manager template. Specify the names of resource group, deployment, JSON file for the template, JSON file for parameters
-az group deployment create --name <Specify a name for the deployment> --resource-group <YourResourceGroupName> --template-file MyEventHub.json --parameters @MyEventHub-Parameters.json
-```
-
-Gratulálunk! Az Azure Resource Manager-sablon létrehozása az Event Hubs-névtér és eseményközpont adott névtéren belül használt.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben egy Event Hubs-névteret hozott létre, és mintaalkalmazások használatával eseményeket küldött az eseményközpontba, illetve fogadott onnan. Események küldése (vagy) események fogadása az event hubs részletes utasításokért lásd: a **események küldéséhez és fogadásához** oktatóanyagok: 
+Ebben a cikkben egy Event Hubs-névteret hozott létre, és mintaalkalmazások használatával eseményeket küldött az eseményközpontba, illetve fogadott onnan. Események küldése (vagy) események fogadása az event hubs részletes utasításokért lásd: a **események küldéséhez és fogadásához** oktatóanyagok:
 
 - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
 - [.NET-keretrendszer](event-hubs-dotnet-framework-getstarted-send.md)

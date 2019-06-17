@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure services
-origin.date: 08/03/2017
-ms.date: 02/26/2019
-ms.author: v-junlch
+ms.date: 08/03/2017
+ms.author: amsriva
 ms.openlocfilehash: 46a823e4e230656b53a93a97f195d0879fd08bf2
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62122234"
 ---
 # <a name="application-gateway-ssl-policy-overview"></a>Application Gateway SSL-házirend áttekintése
@@ -65,9 +64,9 @@ Ha az igényeinek megfelelően konfigurálni kell egy előre meghatározott SSL-
  
 ### <a name="ssl-protocol-versions"></a>Az SSL protokoll verziója
 
-- Az SSL 2.0 és 3.0 le vannak tiltva minden Alkalmazásátjáró számára alapértelmezés szerint. Ezeket a protokoll-verziókat, amelyek nem konfigurálhatók.
-- Egyéni SSL-szabályzat lehetővé teszi az átjáró minimális SSL protokoll verziója jelölje ki a következő három protokoll bármelyikének: TLSv1_0, TLSv1_1, and TLSv1_2.
-- Ha nincs SSL-szabályzat megadva, az összes három protokoll (TLSv1_0, TLSv1_1 és TLSv1_2) engedélyezett.
+* Az SSL 2.0 és 3.0 le vannak tiltva minden Alkalmazásátjáró számára alapértelmezés szerint. Ezeket a protokoll-verziókat, amelyek nem konfigurálhatók.
+* Egyéni SSL-szabályzat lehetővé teszi az átjáró minimális SSL protokoll verziója jelölje ki a következő három protokoll bármelyikének: TLSv1_0, TLSv1_1, and TLSv1_2.
+* Ha nincs SSL-szabályzat megadva, az összes három protokoll (TLSv1_0, TLSv1_1 és TLSv1_2) engedélyezett.
 
 ### <a name="cipher-suites"></a>Titkosító csomagok
 
@@ -106,5 +105,3 @@ Az Application Gateway támogatja a következő, amelyből kiválaszthatja az eg
 ## <a name="next-steps"></a>További lépések
 
 Ha szeretné megtanulni egy SSL-szabályzat konfigurálása, lásd: [egy application gateway konfigurálása SSL-szabályzat](application-gateway-configure-ssl-policy-powershell.md).
-
-<!-- Update_Description: wording update -->

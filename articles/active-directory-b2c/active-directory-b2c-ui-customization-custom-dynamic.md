@@ -11,10 +11,10 @@ ms.date: 09/20/2017
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: e1abdfa8bc47f42f7373760370588c0bc41fc1dc
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66507782"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Egyéni szabályzatok használatával konfigurálja a felhasználói felület dinamikus tartalom
@@ -64,7 +64,7 @@ Ez az útmutató akkor:
 * Eltérő eredetű erőforrások megosztása (CORS) a webalkalmazás beállítása.
 * Bírálja felül a `LoadUri` elemeit képeztük le a HTML5-fájlra mutat.
 
-## <a name="step-1-create-an-aspnet-web-app"></a>1. lépés: ASP.NET-webapp létrehozása
+## <a name="step-1-create-an-aspnet-web-app"></a>1\. lépés: ASP.NET-webapp létrehozása
 
 1. A Visual Studióban hozzon létre egy projektet kiválasztásával **fájl** > **új** > **projekt**.
 
@@ -82,11 +82,11 @@ Ez az útmutató akkor:
 
 6. A projekt létrehozásához válassza az **OK** lehetőséget.
 
-## <a name="step-2-create-mvc-view"></a>2. lépés: MVC-nézet létrehozása
-### <a name="step-21-download-the-b2c-built-in-html5-template"></a>2.1. lépés: A B2C beépített HTML5-sablon letöltése
+## <a name="step-2-create-mvc-view"></a>2\. lépés: MVC-nézet létrehozása
+### <a name="step-21-download-the-b2c-built-in-html5-template"></a>2\.1. lépés: A B2C beépített HTML5-sablon letöltése
 A HTML5-alapú egyéni sablont az Azure AD B2C-vel beépített HTML5 sablonon alapul. Letöltheti a [unified.html fájl](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) vagy töltse le a sablont a [alapszintű csomagja](https://github.com/AzureADQuickStarts/B2C-AzureBlobStorage-Client/tree/master/sample_templates/wingtip). Ez a HTML5-fájl használatával hozzon létre egy egyesített regisztrálási vagy bejelentkezési oldal.
 
-### <a name="step-22-add-the-mvc-view"></a>2.2. lépés: Az MVC-nézet hozzáadása
+### <a name="step-22-add-the-mvc-view"></a>2\.2. lépés: Az MVC-nézet hozzáadása
 1. Kattintson a jobb gombbal a nézetek készletkövetést mappát, majd **Hozzáadás** > **új elem**.
 
     ![MVC-új elem hozzáadása](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-view1.png)
@@ -119,13 +119,13 @@ A HTML5-alapú egyéni sablont az Azure AD B2C-vel beépített HTML5 sablonon al
 
     ![Miután hozzáadta a HTML5 Unified.cshtml fájl](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-edit-view1.png)
 
-### <a name="step-23-change-the-background-image"></a>2.3. lépés: Háttérkép módosítása
+### <a name="step-23-change-the-background-image"></a>2\.3. lépés: Háttérkép módosítása
 
 Keresse meg a `<img>` elem, amely tartalmazza a `ID` érték *background_background_image*, majd cserélje le a `src` értéket **https://kbdevstorage1.blob.core.windows.net/asset-blobs/19889_en_1** vagy bármely más obrázek pozadí is használni szeretné.
 
 ![Az oldal háttér módosítása](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-static-background.png)
 
-### <a name="step-24-add-your-view-to-the-mvc-controller"></a>2.4. lépés: A nézet hozzáadása az MVC-vezérlő
+### <a name="step-24-add-your-view-to-the-mvc-controller"></a>2\.4. lépés: A nézet hozzáadása az MVC-vezérlő
 
 1. Nyissa meg **Controllers\HomeController.cs**, és adja hozzá az alábbi metódust: 
 
@@ -143,7 +143,7 @@ Keresse meg a `<img>` elem, amely tartalmazza a `ID` érték *background_backgro
 
 2. A webalkalmazás hibakeresése, és ellenőrizze, hogy a _egységes_ lapon érhető el (például `http://localhost:<Port number>/Home/unified`).
 
-### <a name="step-25-publish-to-azure"></a>2.5. lépés: Közzététel az Azure platformon
+### <a name="step-25-publish-to-azure"></a>2\.5. lépés: Közzététel az Azure platformon
 1. A **Megoldáskezelőben**, kattintson a jobb gombbal a **Contoso.AADB2C.UI** projektre, és válassza ki **közzététel**.
 
     ![A Microsoft Azure App Service-ben való közzététele](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-publish1.png)
@@ -167,7 +167,7 @@ Keresse meg a `<img>` elem, amely tartalmazza a `ID` érték *background_backgro
 
 5. Másolja az URL-címét a _egységes_ lap (például _https://<app_name>.azurewebsites.net/home/unified_).
 
-## <a name="step-3-configure-cors-in-azure-app-service"></a>3. lépés: A CORS konfigurálása az Azure App Service-ben
+## <a name="step-3-configure-cors-in-azure-app-service"></a>3\. lépés: A CORS konfigurálása az Azure App Service-ben
 1. Az a [az Azure portal](https://portal.azure.com/)válassza **App Services**, majd válassza ki az API-alkalmazás neve.
 
     ![API-alkalmazás kiválasztása az Azure Portalon](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-CORS1.png)
@@ -187,7 +187,7 @@ Keresse meg a `<img>` elem, amely tartalmazza a `ID` érték *background_backgro
 
     Miután kiválasztotta **mentése**, az API-alkalmazásba, fogadja el a megadott URL-címekről jövő hívásokat. 
 
-## <a name="step-4-html5-template-validation"></a>4. lépés: HTML5-alapú sablon érvényesítése
+## <a name="step-4-html5-template-validation"></a>4\. lépés: HTML5-alapú sablon érvényesítése
 A HTML5-alapú sablon készen áll a használatra. Azonban nem érhető el a a `ContentDefinition` kódot. Hozzáadása előtt `ContentDefinition` az egyéni házirend biztosítja, hogy:
 * A tartalom HTML5 megfelelő és elérhető-e.
 * A webtartalom-kiszolgáló a CORS engedélyezve van.
@@ -198,7 +198,7 @@ A HTML5-alapú sablon készen áll a használatra. Azonban nem érhető el a a `
 * A biztonságos keresztül szolgálatban tartalma **HTTPS**.
 * Használ *abszolút URL-CÍMEK*, mint például `https://yourdomain/content`, minden hivatkozások, a CSS-tartalom és a képeket.
 
-## <a name="step-5-configure-your-content-definition"></a>5. lépés: A tartalom definíció konfigurálása
+## <a name="step-5-configure-your-content-definition"></a>5\. lépés: A tartalom definíció konfigurálása
 Konfigurálása `ContentDefinition`, tegye a következőket:
 1. Nyissa meg a szabályzat alapszintű fájlt (például *TrustFrameworkBase.xml*).
 
@@ -215,7 +215,7 @@ Konfigurálása `ContentDefinition`, tegye a következőket:
     
     ![A tartalom definition](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-content-definition.png)
 
-## <a name="step-6-upload-the-policy-to-your-tenant"></a>6. lépés: A szabályzat feltöltése a bérlőhöz
+## <a name="step-6-upload-the-policy-to-your-tenant"></a>6\. lépés: A szabályzat feltöltése a bérlőhöz
 1. Az a [az Azure portal](https://portal.azure.com), váltson át a [az Azure AD B2C-bérlője kontextusában](active-directory-b2c-navigate-to-b2c-context.md), majd válassza ki **Azure AD B2C-vel**.
 
 2. Válassza ki **identitás-kezelőfelületi keretrendszer**.
@@ -228,7 +228,7 @@ Konfigurálása `ContentDefinition`, tegye a következőket:
 
 6. Töltse fel a *TrustFrameworkExtensions.xml* fájlt, és győződjön meg arról, hogy érvényesítési továbbítja.
 
-## <a name="step-7-test-the-custom-policy-by-using-run-now"></a>7. lépés: Az egyéni házirend tesztelése a Futtatás most
+## <a name="step-7-test-the-custom-policy-by-using-run-now"></a>7\. lépés: Az egyéni házirend tesztelése a Futtatás most
 1. Válassza ki **Azure AD B2C-beállítások**, majd válassza ki **identitás-kezelőfelületi keretrendszer**.
 
     >[!NOTE]
@@ -239,10 +239,10 @@ Konfigurálása `ContentDefinition`, tegye a következőket:
 
     ![A regisztrálási vagy bejelentkezési szabályzat](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo1.png)
 
-## <a name="step-8-add-dynamic-content"></a>8. lépés: Dinamikus tartalom hozzáadása
+## <a name="step-8-add-dynamic-content"></a>8\. lépés: Dinamikus tartalom hozzáadása
 Módosítsa a lekérdezési sztring paramétereként nevű alapján háttérben _campaignId_. Az RP-alkalmazás (webes és mobilalkalmazások) Azure AD B2C-t küld a paraméter. A házirend beolvassa a paramétert, és elküldi az értékét a HTML5-sablont. 
 
-### <a name="step-81-add-a-content-definition-parameter"></a>8.1. lépés: Tartalomdefiníció paraméter hozzáadása
+### <a name="step-81-add-a-content-definition-parameter"></a>8\.1. lépés: Tartalomdefiníció paraméter hozzáadása
 
 Adja hozzá a `ContentDefinitionParameters` elem az alábbiak szerint:
 1. Nyissa meg a *SignUpOrSignin* a házirend-fájlját (például *SignUpOrSignin.xml*).
@@ -261,7 +261,7 @@ Adja hozzá a `ContentDefinitionParameters` elem az alábbiak szerint:
     </RelyingParty>
     ```
 
-### <a name="step-82-change-your-code-to-accept-a-query-string-parameter-and-replace-the-background-image"></a>8.2. lépés: Módosítania kell a kódot, fogadja el a lekérdezési sztring paramétereként, és cserélje le a háttérkép
+### <a name="step-82-change-your-code-to-accept-a-query-string-parameter-and-replace-the-background-image"></a>8\.2. lépés: Módosítania kell a kódot, fogadja el a lekérdezési sztring paramétereként, és cserélje le a háttérkép
 Módosítsa a HomeController `unified` fogadja el a campaignId paraméter metódust. A metódus ezután ellenőrzi a paraméter értékét, és beállítja a `ViewData["background"]` változó ennek megfelelően.
 
 1. Nyissa meg a *Controllers\HomeController.cs* fájlt, és módosítsa a `unified` metódus adja hozzá a következő kódrészletet:
@@ -317,7 +317,7 @@ Módosítsa a HomeController `unified` fogadja el a campaignId paraméter metód
 
     ![Az oldal háttér módosítása](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo3.png)
 
-## <a name="step-9-change-the-rest-of-the-user-journey"></a>9. lépés: Módosítsa a többi felhasználói interakciósorozat
+## <a name="step-9-change-the-rest-of-the-user-journey"></a>9\. lépés: Módosítsa a többi felhasználói interakciósorozat
 Ha a **regisztráció** a bejelentkezési lapon, a böngésző megjeleníti az alapértelmezett háttérkép, a lemezkép nem meghatározott. Ez a viselkedés akkor merül fel, mert csak a regisztrálási vagy bejelentkezési oldal módosította. A helyi Vyhodnocení tartalomdefiníciók részeinek módosítása:
 1. Lépjen vissza a "2. lépésre", és tegye a következőket:
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.author: njray
 ms.openlocfilehash: fba6b5308b380b374611c09747302dbf8305dd9b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60716047"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>IBM DB2-höz pureScale Azure-beli üzembe helyezése
@@ -88,7 +88,7 @@ A GitHub-adattár DB2server.rsp, a válasz (.rsp) fájl, amely lehetővé teszi,
 | Példány tulajdonosa            | Meglévő felhasználói For példányát, felhasználónév        | DB2sdin1                                                                                              |
 | Az elkülönített felhasználói               | Meglévő felhasználót, a felhasználó neve                     | DB2sdfe1                                                                                              |
 | Fürt fájlrendszer       | A megosztott lemez partíció eszköz elérési útját            | /dev/DM-2                                                                                             |
-|                           | Csatlakozási pont                                  | /DB2sd\_1804a                                                                                         |
+|                           | Csatlakoztatási pont                                  | /DB2sd\_1804a                                                                                         |
 |                           | Megosztott adatok lemezen                         | /dev/dm-1                                                                                             |
 |                           | Csatlakoztatási pont (adatok)                           | /DB2fs/datafs1                                                                                        |
 |                           | A megosztott lemez naplója                          | /dev/dm-0                                                                                             |

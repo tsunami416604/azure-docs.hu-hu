@@ -10,10 +10,10 @@ ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
 ms.openlocfilehash: 65fe89bf775a649d5654ce739d8d18e05d3048ca
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65416131"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Felügyelt identitások Azure Logic Apps-erőforrások eléréséhez és hitelesítéséhez
@@ -132,7 +132,7 @@ Hozzáférés biztosítása a logikai alkalmazás alapértelmezett felügyelt id
 
 1. Az Azure Portalon lépjen az Azure-erőforrás, a felügyelt identitás hozzáférést hozzárendelni kívánt. 
 
-1. Az erőforrás menüben válassza ki a **hozzáférés-vezérlés (IAM)**. Az eszköztáron válassza **Hozzáadás** > **szerepkör-hozzárendelés hozzáadása**.
+1. Az erőforrás menüben válassza ki a **hozzáférés-vezérlés (IAM)** . Az eszköztáron válassza **Hozzáadás** > **szerepkör-hozzárendelés hozzáadása**.
 
    ![Szerepkör-hozzárendelés hozzáadása](./media/create-managed-service-identity/add-permissions-logic-app.png)
 

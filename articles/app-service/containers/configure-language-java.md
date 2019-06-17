@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: cf9356c2792781558c4403608ff5de0e3aaddb6a
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 9339d891e8fe895f598e1a2615fcfa66b053b3e0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66254472"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063855"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>A Linuxos Java-alkalmazás konfigurálása az Azure App Service-ben
 
@@ -480,9 +480,7 @@ App Service Linux rendszeren Java-webalkalmazások felügyelt üzemeltetési ké
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK-verziók és karbantartás
 
-Az Azure támogatott Java fejlesztői készlet (JDK) van [Zulu](https://www.azul.com/downloads/azure-only/zulu/) keresztül [Azul Systems](https://www.azul.com/).
-
-Főverzió-frissítései linuxos Azure App Service-ben új futásidejű beállítások keresztül biztosítunk. Ügyfelek frissítése a Java ezen újabb verziói az alkalmazásszolgáltatás üzemelő példányának konfigurálásával, és felelős tesztelése, és biztosítja a fő frissítés megfelel az igényeiknek.
+Azul Zulu Enterprise-buildek openjdk csomagját egy ingyenes, többplatformos, éles használatra kész eloszlása az openjdk csomagját, az Azure és az Azure Stack, amit a Microsoft és az Azul Systems. A Java használata alkalmazások készítése és az összetevők tartalmaznak. Telepítheti a JDK a [Java JDK telepítési](https://aka.ms/azure-jdks).
 
 Támogatott segítségével negyedévente automatikusan javítani a januárban, áprilisban, júliusban és minden év október a.
 
@@ -493,18 +491,6 @@ Javítások és javításokat tartalmaz olyan súlyos biztonsági réseket elér
 ### <a name="deprecation-and-retirement"></a>És a használatból való kivonást egyaránt
 
 Ha egy támogatott Java-futtatókörnyezet megszűnik, az érintett modul használatával Azure-fejlesztők számára kap elavulással kapcsolatos figyelmeztetés legalább hat hónapos előtt a futtatókörnyezet kivonják a forgalomból.
-
-### <a name="local-development"></a>Helyi fejlesztés
-
-A fejlesztők is letölthetik a éles kiadása az Azul Zulu Enterprise JDK a helyi fejlesztési [Azul a letöltési hely](https://www.azul.com/downloads/azure-only/zulu/).
-
-### <a name="development-support"></a>Fejlesztés támogatása
-
-Terméktámogatási a [Azure által támogatott Azul Zulu JDK](https://www.azul.com/downloads/azure-only/zulu/) érhető el, az Azure fejlesztésének vagy [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) együtt egy [minősített Azure-támogatási csomag](https://azure.microsoft.com/support/plans/).
-
-### <a name="runtime-support"></a>Podpora modulu Runtime
-
-A fejlesztők is [nyissa meg a probléma](/azure/azure-supportability/how-to-create-azure-support-request) az Azure-támogatási, ha rendelkezik a Azul Zulu segítségével egy [minősített támogatási csomag](https://azure.microsoft.com/support/plans/).
 
 ## <a name="next-steps"></a>További lépések
 

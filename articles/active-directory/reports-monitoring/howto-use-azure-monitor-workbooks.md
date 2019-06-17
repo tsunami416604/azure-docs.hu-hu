@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6ae14ec152975717af5d55780bcc39aa87c4b01a
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 6d461725d0d4c86ee7aa5b450d42c01ca77ffb16
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406596"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107682"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Hogyan használható az Azure Monitor-munkafüzetek a Azure Active Directory-jelentések
 
@@ -72,11 +72,11 @@ A bejelentkezési elemzési munkafüzet elérését a a **használati** szakaszb
 
 Ez a munkafüzet a következő bejelentkezési trendeket jelenít meg:
 
-- Az összes bejelentkezés
+- Összes bejelentkezés
 
 - Siker
 
-- Folyamatban lévő felhasználói művelet
+- Függőben lévő felhasználói művelet
 
 - Hiba
 
@@ -109,7 +109,7 @@ A munkafüzet a bejelentkezések, amelyek eléréséhez [örökölt hitelesíté
 
 Ez a munkafüzet a következő bejelentkezési trendeket jelenít meg:
 
-- Az összes bejelentkezés
+- Összes bejelentkezés
 
 - Siker
 
@@ -146,7 +146,7 @@ Ez a munkafüzet jeleníti meg a letiltott bejelentkezések. Minden egyes trend 
 
 - Felhasználók
 
-![Bejelentkezések feltételes hozzáféréssel](./media/howto-use-azure-monitor-workbooks/49.png)
+![Bejelentkezés feltételes hozzáféréssel](./media/howto-use-azure-monitor-workbooks/49.png)
 
 
 A letiltott bejelentkezések a részletezés a feltételes hozzáférési állapot szerint kap.
@@ -199,18 +199,18 @@ Használja a **bejelentkezések hibaelemzés** munkafüzet hibaelhárítás a k�
 
 - Bejelentkezések
 - Feltételes hozzáférési szabályzatok
-- Örökölt hitelesítés 
+- Az örökölt hitelesítés 
 
 
 A feltételes hozzáférési adatokat, a bejelentkezések elérni a **hibaelhárítás** szakaszban jelölje be **bejelentkezések örökölt hitelesítés használata**. 
 
 Ez a munkafüzet a következő bejelentkezési trendeket jelenít meg:
 
-- Az összes bejelentkezés
+- Összes bejelentkezés
 
 - Siker
 
-- Folyamatban lévő művelet
+- Függőben lévő művelet
 
 - Hiba
 

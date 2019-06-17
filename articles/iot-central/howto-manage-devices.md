@@ -3,17 +3,17 @@ title: Az Azure IoT Central-alkalmazást az eszközök felügyeletére |} A Micr
 description: Kezelőként megtudhatja, hogyan kezelheti eszközeit az Azure IoT Central alkalmazáshoz.
 author: ellenfosborne
 ms.author: elfarber
-ms.date: 01/30/2019
+ms.date: 06/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: e4746620f083996bf64e77617ec472c3d3894d91
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: a4a22cc2161af444ba2169cc2f83124e80c7ec11
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65464326"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052991"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Eszközök kezelése az Azure IoT Central alkalmazáshoz a
 
@@ -92,7 +92,7 @@ Eszközök regisztrálása az importálás alatt elindításával **nincs társ�
 
 1. Válassza ki **társítása**:
 
-    ![Eszközök társítása](./media/howto-manage-devices/unassociateddevices2a.png)
+    ![Eszközök hozzárendelése](./media/howto-manage-devices/unassociateddevices2a.png)
 
 1. A sablont a listából a rendelkezésre álló sablonok, és válasszon **társítása**.
 

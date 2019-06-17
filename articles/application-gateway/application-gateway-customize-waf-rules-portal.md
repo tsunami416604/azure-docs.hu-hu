@@ -7,10 +7,10 @@ ms.service: application-gateway
 ms.date: 2/22/2019
 ms.author: victorh
 ms.openlocfilehash: f7ffb8d6adfd4afc75618834a3fe82cf9a3d0c9f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64720379"
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-portal"></a>Webalkalmazási tűzfalszabályok az Azure Portalon keresztül testreszabása
@@ -50,7 +50,7 @@ Ha éppen letiltja a szabályok, egy teljes csoport vagy az adott szabályok ala
    2. Törölje a szabályokat, amelyek le kívánja tiltani a jelölőnégyzeteit. 
    2. Kattintson a **Mentés** gombra. 
 
-![Változtatások mentése][3]
+![Módosítások mentése][3]
 
 ## <a name="mandatory-rules"></a>A kötelező szabályok
 

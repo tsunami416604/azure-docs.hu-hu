@@ -13,16 +13,33 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 2/13/2019
-ms.openlocfilehash: f929369030b6f0a634eb2c84e33eee24af8cb6a2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: ee3aeb9f44d1b98d6307c6a72d1e4786ea1ec664
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787516"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076906"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>Az SQL Server használata Azure virtuális gép kibocsátási megjegyzései
 
 Az Azure lehetővé teszi, hogy az SQL Server beépített rendszerképpel rendelkező virtuális gép üzembe helyezése. Ez a cikk összefoglalja a új funkciókat és fejlesztéseket a legutóbbi kiadásaiban [Azure virtuális gépeken futó SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/). A cikk nem közvetlenül kapcsolódó kiadására, de az időkeretből közzétett jelentős tartalomfrissítéseket is megjeleníti. Más Azure-szolgáltatások fejlesztései, lásd: [szolgáltatási hírek](https://azure.microsoft.com/updates)
+
+## <a name="may-2019"></a>2019\. május
+
+### <a name="service-improvements"></a>Szolgáltatás fejlesztései
+
+| Szolgáltatás fejlesztései | Részletek |
+| --- | --- |
+| **Új SQL virtuális gépek felügyelete az Azure Portalon** | Most már rendelkezésre áll egy új úgy kezelheti az SQL Server virtuális gép az Azure Portalon. További információkért lásd: [felügyelete az SQL Server rendszerű virtuális gép az Azure Portalon](virtual-machines-windows-sql-manage-portal.md).  | 
+| &nbsp; | &nbsp; |
+
+### <a name="documentation-improvements"></a>Dokumentáció fejlesztései
+
+| Dokumentáció | Részletek |
+| --- | --- |
+| **Új SQL virtuális gép portál kezelése** | Számos cikkek frissítése az új SQL virtuális gép felügyeleti portáljának felületén. | 
+| &nbsp; | &nbsp; |
+
 
 ## <a name="april-2019"></a>Április 2019
 
@@ -33,11 +50,8 @@ Az Azure lehetővé teszi, hogy az SQL Server beépített rendszerképpel rendel
 | **Az SQL Server 2008/2008R2 támogatásának kiterjesztése** | [Támogatás kiterjesztése](virtual-machines-windows-sql-server-2008-eos-extend-support.md) SQL Server 2008 és az SQL Server 2008 R2 áttelepítése révén *,-van* egy Azure virtuális géphez. | 
 | &nbsp; | &nbsp; |
 
-### <a name="documentation-improvements"></a>Dokumentáció fejlesztései
 
-Egyik sem
-
-## <a name="march-2019"></a>2019. március
+## <a name="march-2019"></a>2019\. március
 
 | Szolgáltatás fejlesztései | Részletek |
 | --- | --- |
@@ -47,7 +61,7 @@ Egyik sem
 | &nbsp; | &nbsp; |
 
 
-## <a name="february-2019"></a>2019. február
+## <a name="february-2019"></a>2019\. február
 
 | Szolgáltatás fejlesztései | Részletek |
 | --- | --- |
@@ -56,7 +70,7 @@ Egyik sem
 | &nbsp; | &nbsp; |
 
 
-## <a name="december-2018"></a>2018. december
+## <a name="december-2018"></a>2018\. december
 
 | Szolgáltatás fejlesztései | Részletek |
 | --- | --- |

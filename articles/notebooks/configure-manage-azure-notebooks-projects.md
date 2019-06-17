@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/13/2019
 ms.author: kraigb
 ms.openlocfilehash: 0440e498451ee141fa03851b78418caf911d0e32
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65596746"
 ---
 # <a name="manage-and-configure-projects"></a>Projektek kezelése és konfigurálása
@@ -35,7 +35,7 @@ A projekt Azure notebookok lényegében a mögöttes Linux rendszerű virtuális
 
 Azure notebookok a mögöttes virtuális gép elindul, ha a jegyzetfüzet vagy más fájl futtatását. A kiszolgáló automatikusan menti a fájlokat, és 60 perc inaktivitás után leáll. A kiszolgáló is bármikor leállíthatja a **leállítási** parancsot (billentyűparancs: h).
 
-## <a name="compute-tier"></a>Számítási szint
+## <a name="compute-tier"></a>COMPUTE-kapacitás
 
 Alapértelmezés szerint a projektek futnak a **ingyenes számítási** szint, amely a 4 GB memóriát és 1 GB adatot visszaélések megelőzése érdekében. Ezek a korlátozások megkerülésére, és növelheti a számítási teljesítmény már kiépített egy Azure-előfizetésében lévő másik virtuális gép használatával. További információkért lásd: [Adatelemző Virtuális Gépek Használata](use-data-science-virtual-machine.md).
 

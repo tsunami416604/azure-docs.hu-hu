@@ -9,10 +9,10 @@ ms.date: 01/31/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: c0f19e3ea4f5952ac96b589fa267a2136c85e4f3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64711651"
 ---
 # <a name="monitor-azure-file-sync"></a>Az Azure File Sync monitorozása
@@ -49,7 +49,7 @@ Metrikák:
   |-|-|-|
   | Szinkronizált bájt | Átvitt adatok (feltöltési és letöltési) mérete | Szinkronizálási csoport, a kiszolgálói végpont |
   | A felhő rétegezési visszaírási | Idézni adatok mérete | Regisztrált kiszolgálók |
-  | Nem szinkronizált fájlok | Fájlok, amelyek nem szinkronizálása száma | Kiszolgálói végpont |
+  | Nem szinkronizálja a fájlokat | Fájlok, amelyek nem szinkronizálása száma | Kiszolgálói végpont |
   | Fájlok szinkronizálása | Fájlok száma (feltöltési és letöltési) átvitele | Szinkronizálási csoport, a kiszolgálói végpont |
   | Kiszolgáló online állapotát | A kiszolgálótól kapott szívverések száma | Regisztrált kiszolgálók |
 
@@ -70,10 +70,10 @@ A következő metrikák az Azure File Sync az Azure monitorban érhetők el:
 |-|-|
 | Szinkronizált bájt | Átvitt adatok (feltöltési és letöltési) mérete.<br><br>Szervezeti egység: Bájt<br>Aggregation Type: Összeg<br>Alkalmazható dimenziók: Kiszolgálói végpont nevét, szinkronizálási irány, szinkronizálási csoport neve |
 | A felhő rétegezési visszaírási | Idézni adatok mérete.<br><br>Szervezeti egység: Bájt<br>Aggregation Type: Összeg<br>A dimenzió alkalmazható: Kiszolgáló neve |
-| Nem szinkronizált fájlok | Fájlok, amelyek nem szinkronizálása száma.<br><br>Szervezeti egység: Darabszám<br>Aggregation Type: Összeg<br>Alkalmazható dimenziók: Kiszolgálói végpont nevét, szinkronizálási irány, szinkronizálási csoport neve |
-| Fájlok szinkronizálása | Fájlok száma (feltöltési és letöltési) át.<br><br>Szervezeti egység: Darabszám<br>Aggregation Type: Összeg<br>Alkalmazható dimenziók: Kiszolgálói végpont nevét, szinkronizálási irány, szinkronizálási csoport neve |
-| Kiszolgáló online állapotát | A kiszolgálótól kapott szívverések száma.<br><br>Szervezeti egység: Darabszám<br>Aggregation Type: Maximum<br>A dimenzió alkalmazható: Kiszolgáló neve |
-| Szinkronizálási munkamenet eredménye | Munkamenet eredmény szinkronizálása (1 = sikeres szinkronizálási munkamenet; 0 = sikertelen szinkronizálási munkamenet)<br><br>Szervezeti egység: Darabszám<br>Az összesítés típusa: Maximum<br>Alkalmazható dimenziók: Kiszolgálói végpont nevét, szinkronizálási irány, szinkronizálási csoport neve |
+| Nem szinkronizálja a fájlokat | Fájlok, amelyek nem szinkronizálása száma.<br><br>Szervezeti egység: Count<br>Aggregation Type: Összeg<br>Alkalmazható dimenziók: Kiszolgálói végpont nevét, szinkronizálási irány, szinkronizálási csoport neve |
+| Fájlok szinkronizálása | Fájlok száma (feltöltési és letöltési) át.<br><br>Szervezeti egység: Count<br>Aggregation Type: Összeg<br>Alkalmazható dimenziók: Kiszolgálói végpont nevét, szinkronizálási irány, szinkronizálási csoport neve |
+| Kiszolgáló online állapotát | A kiszolgálótól kapott szívverések száma.<br><br>Szervezeti egység: Count<br>Aggregation Type: Maximum<br>A dimenzió alkalmazható: Kiszolgáló neve |
+| Szinkronizálási munkamenet eredménye | Munkamenet eredmény szinkronizálása (1 = sikeres szinkronizálási munkamenet; 0 = sikertelen szinkronizálási munkamenet)<br><br>Szervezeti egység: Count<br>Az összesítés típusa: Maximum<br>Alkalmazható dimenziók: Kiszolgálói végpont nevét, szinkronizálási irány, szinkronizálási csoport neve |
 
 ## <a name="windows-server"></a>Windows Server
 

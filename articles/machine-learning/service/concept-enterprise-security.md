@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/10/2019
-ms.openlocfilehash: 9762b8cadde86a2e64f8fa74a4e794bdf1109ec4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: e9002b96467d6fa3a5c4fb03fb20bde4e1bf87a1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66151188"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059336"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatás nagyvállalati szintű biztonság
 
@@ -62,7 +62,7 @@ Az alábbi táblázat a fő Azure Machine Learning szolgáltatás műveletek és
 
 | Az Azure Machine Learning szolgáltatás művelet | Tulajdonos | Közreműködő | Olvasó |
 | ---- |:----:|:----:|:----:|
-| Munkaterület létrehozása | ✓ | ✓ | |
+| Create Workspace | ✓ | ✓ | |
 | Munkaterület megosztása | ✓ | |  |
 | Számítási létrehozása | ✓ | ✓ | |
 | Számítási csatolása | ✓ | ✓ | |
@@ -70,12 +70,12 @@ Az alábbi táblázat a fő Azure Machine Learning szolgáltatás műveletek és
 | Kísérlet futtatása | ✓ | ✓ | |
 | Futtatások/metrikáinak megtekintése | ✓ | ✓ | ✓ |
 | Modell regisztrálása | ✓ | ✓ | |
-| Lemezkép létrehozása | ✓ | ✓ | |
+| Rendszerkép létrehozása | ✓ | ✓ | |
 | Webszolgáltatás üzembe helyezése | ✓ | ✓ | |
 | Modellek/képek/megtekintése | ✓ | ✓ | ✓ |
 | Webszolgáltatás hívása | ✓ | ✓ | ✓ |
 
-Ha a beépített szerepkörök az igényeinek megfelelő, létrehozhat egyéni szerepköröket is. Vegye figyelembe, hogy a csak egyéni szerepkörök támogatjuk a munkaterület és a Machine Learning COMPUTE számítási műveletekhez. Az egyéni szerepkör előfordulhat, hogy rendelkezik olvasási, írási és engedélyek a munkaterülethez és a számítási erőforrás munkaterület törlése. Elérhetővé teheti a szerepkör egy adott munkaterület szintjén, egy adott erőforráscsoport szintjén vagy egy adott előfizetés szintjén. További információkért lásd: [felhasználók és szerepkörök az Azure Machine Learning-munkaterület kezelése](how-to-assign-roles.md)
+Ha a beépített szerepkörök az igényeinek megfelelő, létrehozhat egyéni szerepköröket is. A csak egyéni szerepkör, támogatjuk a a munkaterület és a Machine Learning COMPUTE számítási műveletekhez. Az egyéni szerepkör előfordulhat, hogy rendelkezik olvasási, írási és engedélyek a munkaterülethez és a számítási erőforrás munkaterület törlése. Elérhetővé teheti a szerepkör egy adott munkaterület szintjén, egy adott erőforráscsoport szintjén vagy egy adott előfizetés szintjén. További információkért lásd: [felhasználók és szerepkörök az Azure Machine Learning-munkaterület kezelése](how-to-assign-roles.md)
 
 ### <a name="securing-compute-and-data"></a>Számítási és adatok védelme
 Tulajdonosok és a közreműködőknek minden számítási célok és adattárakat, a munkaterülethez csatlakoztatott használhatja.  
@@ -86,7 +86,7 @@ A felügyelt identitásokból további információkért lásd: [felügyelt iden
 | Resource | Engedélyek |
 | ----- | ----- |
 | Munkaterület | Közreműködő | 
-| Tárfiók | Storage-blobadatok közreműködője | 
+| Tárfiók | Storage-Blobadatok Közreműködője | 
 | Key Vault | Kulcsok, titkos kódok, összes tanúsítványhoz hozzá | 
 | Azure Container Registry | Közreműködő | 
 | A munkaterületet tartalmazó erőforráscsoport | Közreműködő | 
@@ -94,7 +94,7 @@ A felügyelt identitásokból további információkért lásd: [felügyelt iden
 
 Javasoljuk, hogy a rendszergazdák nem visszavonni a hozzáférést, a fent említett erőforrások felügyelt identitásnak. Hozzáférés a kulcsok újraszinkronizálása művelettel állítható vissza.
 
-Az Azure Machine Learning szolgáltatás egy további alkalmazás (nevének kezdő karaktere aml-) hoz létre a közreműködője szintű hozzáféréssel az előfizetésében minden munkaterület régióhoz. Az ex. Ha rendelkezik egy munkaterületet, az USA keleti régiójában és Észak-Európában ugyanazt az előfizetést egy másik munkaterületet látni fogja az ilyen alkalmazások 2. Erre azért van szükség, így a számítási erőforrásokat az Azure Machine Learning szolgáltatás segítségével kezelheti.
+Az Azure Machine Learning szolgáltatás egy további alkalmazást hoz létre (kezdődő nevű `aml-`) a közreműködője szintű hozzáféréssel rendelkező az előfizetésében minden munkaterület régióhoz. Az ex. Ha rendelkezik egy munkaterületet, az USA keleti régiójában és Észak-Európában ugyanazt az előfizetést egy másik munkaterületet látni fogja a két alkalmazás. Erre azért van szükség, így a számítási erőforrásokat az Azure Machine Learning szolgáltatás segítségével kezelheti.
 
 
 ## <a name="network-security"></a>Hálózati biztonság
@@ -113,13 +113,15 @@ Ahhoz, hogy a saját kulcsok az Azure Blob Storage-ban tárolt adatok hogyan tov
 
 Betanítási adatok általában is tárolódik az Azure Blob storage-ban, hogy képzési számítási számára is elérhető legyen. Ez a tároló nem kezeli az Azure Machine Learning, de egy távoli fájlkiszolgáló-rendszer számítási csatlakoztatva van.
 
+A használt munkaterületét az Azure storage-fiókok a elérési kulcsainak újragenerálása információkért lásd: a [tárelérési kulcsok újragenerálása](how-to-change-storage-access-key.md) cikk.
+
 #### <a name="cosmos-db"></a>Cosmos DB
 Az Azure Machine Learning szolgáltatás egy Microsoft Azure Machine Learning szolgáltatás által kezelt előfizetésben metrikák és a Cosmos DB-hez, amely él metaadatait tárolja. Az összes, a Cosmos DB-ben tárolt adatok titkosítása a Microsoft által felügyelt kulcsok használatával.
 
 #### <a name="azure-container-registry-acr"></a>Az Azure Container Registry (ACR)
 A beállításjegyzék (ACR) az összes tárolórendszerkép titkosítása inaktív. Az Azure automatikusan titkosítja a képet a tárolás előtt, és visszafejti a működés közbeni amikor az Azure Machine Learning szolgáltatás lekéri a rendszerképet.
 
-#### <a name="machine-learning-compute"></a>Machine Learning Compute
+#### <a name="machine-learning-compute"></a>A Machine Learning Compute
 Az operációsrendszer-lemez esetében az Azure Storage szolgáltatásban tárolt minden számítási csomópont kulcsokkal van titkosítva a Microsoft kezeli az Azure Machine Learning szolgáltatás tárfiókok. A számítási rövid élettartamú, és a fürtök vertikálisan leskálázni általában vannak, ha ott nem találhatók futtatások várakozási sorba állított. A mögöttes virtuális gép eltávolítjuk és operációsrendszer-lemez törlése. Az Azure disk encryption nem támogatott a rendszerlemez számára.
 Minden virtuális gép is rendelkezik az operációs rendszer operations helyi ideiglenes lemezt. Ez a lemez is igény szerint használható a betanítási adatok készíthetők elő. Ez a lemez nincs titkosítva. Inaktív adatok titkosítását az Azure-ban működésével kapcsolatos további információkért lásd: [Azure adatok titkosítása inaktív](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest). 
 
@@ -149,7 +151,7 @@ Pontozó a kérelem részletes adatainak vannak tárolva az AppInsights, amely j
 
 ## <a name="data-flow-diagram"></a>Adatfolyam-Diagram
 
-### <a name="create-workspace"></a>Munkaterület létrehozása
+### <a name="create-workspace"></a>Create Workspace
 Az alábbi ábrán látható, a létrehozás munkaterület munkafolyamat.
 Felhasználó Azure ad-ben egyetlen Azure Machine Learning szolgáltatás támogatott ügyfelek (parancssori felület, a Python SDK-t, az Azure portal) és a megfelelő Azure Resource Manager-tokent kér.  Felhasználó ekkor meghívja a munkaterület létrehozásához Azure Resource Manager.  Az Azure Resource Manager-ügyfelek az Azure Machine Learning szolgáltatás erőforrás-szolgáltató a munkaterület kiépítése.  További erőforrások jönnek létre a munkaterület létrehozása során az ügyfél előfizetését:
 * KeyVault (a titkos kulcsokat tárolhat)

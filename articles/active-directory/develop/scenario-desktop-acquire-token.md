@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d18c92cccac6bfb0bd359767ecdb51951268735
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: ecf5b874345a94e8fd3d3a0783f8e48c7484377d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962538"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111256"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Asztali alkalmazás, amely meghívja a webes API - jogkivonat beszerzése
 
@@ -173,7 +173,7 @@ Ha egy tartományi felhasználó jelentkezzen be a tartomány vagy az Azure AD a
 AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
 ```
 
-### <a name="constraints"></a>Megkötések
+### <a name="constraints"></a>Korlátozások
 
 - Csak akkor használható AcquireTokenByIntegratedWindowsAuth (IWA) **az összevont** csak a felhasználókra, amely, a felhasználók számára létrehozott egy Active Directory és az Azure Active Directory által támogatott. Közvetlenül az aad-ben, AD biztonsági - nélkül létrehozott felhasználók **felügyelt** felhasználók – Ez a hitelesítési folyamat nem használható. Ez a korlátozás nem érinti a felhasználónév/jelszó folyamatot.
 - IWA van a .NET-keretrendszer, a .NET Core és a UWP platformokra írt alkalmazásokat
@@ -300,7 +300,7 @@ Ez a folyamat **nem ajánlott** , mert az alkalmazás a felhasználó megkérés
 > - Ehhez az MFA kívánó felhasználók nem tudják jelentkezik be (mivel nem lett a beavatkozás nélküli)
 > - Felhasználók nem tudják az egyszeri bejelentkezés
 
-### <a name="constraints"></a>Megkötések
+### <a name="constraints"></a>Korlátozások
 
 A következő korlátozások is érvényesek:
 

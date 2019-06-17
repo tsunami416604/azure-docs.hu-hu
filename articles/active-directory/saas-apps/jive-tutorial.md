@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 5073961e15b3d0dcf0df0fd97d3f8a4568f79eb5
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 7af47cf02d52abf8783eb1eb5da171b208ed07c5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65897948"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099370"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jive"></a>Oktatóanyag: Jive-beli az Azure Active Directory-integráció
 
@@ -54,7 +54,7 @@ Az Azure ad-ben a Jive-integráció konfigurálása, szüksége Jive hozzáadás
 
 **A Jive hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -214,7 +214,7 @@ Ez a szakasz célja a Jive Britta Simon nevű felhasználó létrehozásához. J
 
 Hozza létre a felhasználó manuálisan kell, ha [jive-beli ügyfél-támogatási csapatának](https://www.jivesoftware.com/services-support/) a felhasználók hozzáadása a Jive platformon.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

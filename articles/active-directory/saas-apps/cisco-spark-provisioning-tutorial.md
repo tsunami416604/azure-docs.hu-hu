@@ -12,16 +12,16 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: v-wingf
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77dab6ad0480bc1565c219766d17211995dcfc20
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8cb695fafe042c93f1b11d99296b0545e1674d9a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278412"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053645"
 ---
 # <a name="tutorial-configure-cisco-spark-for-automatic-user-provisioning"></a>Oktatóanyag: Cisco Spark konfigurálása a felhasználók automatikus átadása
 
@@ -47,7 +47,7 @@ Konfigurálja a Cisco Spark az Azure AD-felhasználók automatikus átadása, mi
 
 **Az Azure AD alkalmazáskatalógusában Cisco Spark hozzáadásához hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -137,7 +137,7 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
      }
      ```
 
-7. 5. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD Cisco Spark csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, a Cisco Spark fiókja rendelkezik rendszergazdai engedélyekkel, és próbálkozzon újra.
+7. 5\. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD Cisco Spark csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, a Cisco Spark fiókja rendelkezik rendszergazdai engedélyekkel, és próbálkozzon újra.
 
     ![Cisco Spark kiépítése](./media/cisco-spark-provisioning-tutorial/TestConnection.png)
 

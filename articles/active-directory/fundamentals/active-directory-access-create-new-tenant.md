@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fafa3974eb01b36015254307ba1a52a9bc221da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f970e9d43bc6dd67fe55ca9cdcfcae716c9f166a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60249973"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110619"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Gyors útmutató: Új bérlő létrehozása az Azure Active Directoryban
 Az Azure Active Directory (Azure AD) portált használva elvégezheti valamennyi felügyeleti feladatát, a szervezet számára új bérlő létrehozását is beleértve. 
@@ -69,6 +69,6 @@ Ha nem fogja használni az alkalmazást, törölheti a bérlőt a következő l�
 
 - Csoportok és tagok hozzáadása: [Alapszintű csoport létrehozása és tagok hozzáadása](active-directory-groups-create-azure-portal.md)
 
-- A szervezete alkalmazás- és erőforrás-hozzáférés kezelésének megkönnyítése érdekében ismerje meg a [Szerepkörön alapuló hozzáférést a Privileged Identity Management használatával](../../role-based-access-control/pim-azure-resource.md) és a [Feltételes hozzáférést](../../role-based-access-control/conditional-access-azure-management.md).
+- Ismerje meg [szerepkörön alapuló hozzáférés a Privileged Identity Management használatával](../../role-based-access-control/pim-azure-resource.md) és [feltételes hozzáférési](../../role-based-access-control/conditional-access-azure-management.md) szervezete alkalmazás- és erőforrás-hozzáférés kezelése érdekében.
 
 - Tudnivalók az Azure Active Directoryról, beleértve [az alapszintű licenceléssel, a terminológiával és a társított szolgáltatásokkal](active-directory-whatis.md) kapcsolatos információkat.

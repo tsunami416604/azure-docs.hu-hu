@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
 ms.openlocfilehash: 4418b11de4da7c69dd13ae74d94be90daadcb1f6
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66390540"
 ---
 # <a name="connect-your-fortinet-appliance"></a>Csatlakozás a Fortinet berendezés 
@@ -32,7 +32,7 @@ Csatlakozhat az Azure-Sentinel bármely Fortinet készülék Syslog CEF, a napl�
 > [!NOTE]
 > - Adatokat a munkaterület, amely futtatja az Azure-Sentinel a földrajzi helyen kell tárolni.
 
-## <a name="step-1-connect-your-fortinet-appliance-using-an-agent"></a>1. lépés: A Fortinet berendezés használatával egy ügynök csatlakoztatása
+## <a name="step-1-connect-your-fortinet-appliance-using-an-agent"></a>1\. lépés: A Fortinet berendezés használatával egy ügynök csatlakoztatása
 
 A Fortinet berendezés csatlakozni az Azure-Sentinel, dedikált gépre az ügynökök telepítéséhez szüksége (virtuális gép vagy a helyszínen) a készüléket és a Sentinel-Azure közötti kommunikáció támogatásához. Az ügynök automatikusan vagy manuálisan telepítheti. Automatikus központi telepítési csak akkor használható, ha dedikált számítógépe egy új virtuális Gépet hoz létre az Azure-ban. 
 
@@ -97,7 +97,7 @@ Ha nem használja az Azure, ügynököt manuálisan telepíti az Azure-Sentinel 
       1. Indítsa újra a Syslog-ügynök a következő paranccsal: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
       1. Győződjön meg arról, hogy nincsenek hibák az ügynöknaplóban Ez a parancs futtatásával: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
  
-## <a name="step-2-forward-fortinet-logs-to-the-syslog-agent"></a>2. lépés: A Syslog-ügynök továbbítják a Fortinet naplókat
+## <a name="step-2-forward-fortinet-logs-to-the-syslog-agent"></a>2\. lépés: A Syslog-ügynök továbbítják a Fortinet naplókat
 
 Syslog-üzeneteket az Azure-munkaterülethez a Syslog-ügynökön keresztül a CEF-formátumban továbbítani Fortinet konfigurálása:
 
@@ -123,7 +123,7 @@ Syslog-üzeneteket az Azure-munkaterülethez a Syslog-ügynökön keresztül a C
  A Fortinet események Log Analytics használja a megfelelő sémát, keresse meg `CommonSecurityLog`.
 
 
-## <a name="step-3-validate-connectivity"></a>3. lépés: Kapcsolat ellenőrzése
+## <a name="step-3-validate-connectivity"></a>3\. lépés: Kapcsolat ellenőrzése
 
 Upwards of mindaddig, amíg megjelennek a Log Analytics indítása a naplók 20 percig is eltarthat. 
 

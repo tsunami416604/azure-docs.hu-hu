@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 06/10/2018
 ms.author: jingwang
-ms.openlocfilehash: 4dee0e994c9e7be9677a8f1051481850990998e9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 49f07b4aaadfd45e9743bde58dc715230e5bc983
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66247169"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074067"
 ---
 # <a name="copy-data-from-sap-table-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával az SAP-tábla
 
@@ -29,7 +29,13 @@ Az SAP-táblából adatokat másolhatja bármely támogatott fogadó adattárba.
 
 Pontosabban az SAP-tábla összekötő támogatja:
 
-- Az adatok másolása az SAP-tábla **7.01 vagy újabb verzióját az SAP Business Suite** (a legutóbbi SAP támogatási csomag veremben lévő a 2015 évi. után kiadott) vagy **S/4HANA**.
+- Az adatok másolása az SAP-táblát:
+
+    - **SAP ECC** 7.01 vagy újabb (a legutóbbi SAP támogatási csomag veremben lévő a 2015 évi. után kiadott) verziójával
+    - **SAP BW** 7.01 vagy újabb verzióval
+    - **SAP S/4HANA**
+    - **Egyéb termékek, az SAP Business Suite** 7.01 vagy újabb verzióval 
+
 - Az adatok másolása mindkét **SAP transzparens tábla** és **nézet**.
 - Másolja az adatokat az **alapszintű hitelesítés** vagy **SNC** (biztonságos hálózati kommunikációs) Ha SNC van konfigurálva.
 - Kapcsolódás **alkalmazáskiszolgáló** vagy **Message kiszolgáló**.
@@ -66,7 +72,7 @@ SAP Business Warehouse nyissa meg Hub társított szolgáltatás a következő t
 | systemNumber | Az SAP-rendszer rendszer száma.<br/>Alkalmazható, ha csatlakozni szeretne **SAP-alkalmazáskiszolgáló**.<br/>Érték engedélyezett: kétjegyű tizedes tört egy karakterláncból. | Nem |
 | messageServer | Az SAP Üzenetkiszolgáló állomásnevét.<br/>Alkalmazható, ha csatlakozni szeretne **SAP Üzenetkiszolgáló**. | Nem |
 | messageServerService | A szolgáltatás nevének vagy portjának száma a kiszolgáló.<br/>Alkalmazható, ha csatlakozni szeretne **SAP Üzenetkiszolgáló**. | Nem |
-| Rendszerazonosító | Az SAP-rendszerhez, ahol a tábla nem található a rendszerazonosító.<br/>Alkalmazható, ha csatlakozni szeretne **SAP Üzenetkiszolgáló**. | Nem |
+| systemId | Az SAP-rendszerhez, ahol a tábla nem található a rendszerazonosító.<br/>Alkalmazható, ha csatlakozni szeretne **SAP Üzenetkiszolgáló**. | Nem |
 | logonGroup | A bejelentkezés az SAP-rendszer csoport.<br/>Alkalmazható, ha csatlakozni szeretne **SAP Üzenetkiszolgáló**. | Nem |
 | clientId | Az SAP-rendszer az ügyfél ügyfél-azonosítója.<br/>Érték engedélyezett: háromjegyű tizedes tört egy karakterláncból. | Igen |
 | language | Az SAP-rendszer által használt nyelv. | Nem (alapértelmezett érték **EN**)|
@@ -203,7 +209,7 @@ Adatok másolása az SAP-tábla, a következő tulajdonságok támogatottak.
 | type                             | A type tulajdonságot állítsa **SapTableSource**.       | Igen      |
 | Sorszám                         | A lekérdezni kívánt sorok száma.                              | Nem       |
 | rfcTableFields                   | Az SAP-táblából másolhatja a mezők. Például: `column0, column1`. | Nem       |
-| rfcTableOptions                  | Beállítások szűrése az SAP-táblában lévő sorokat. Például: `COLUMN0 EQ 'SOMEVALUE'`. | Nem       |
+| rfcTableOptions                  | Beállítások szűrése az SAP-táblában lévő sorokat. Például: `COLUMN0 EQ 'SOMEVALUE'`. Lásd a táblázat alatti további leírását. | Nem       |
 | customRfcReadTableFunctionModule | Egyéni RFC függvénymodul, amelyek segítségével adatokat olvasni az SAP-táblát. | Nem       |
 | partitionOption                  | A partíció mechanizmus SAP tábla olvasni. A támogatott lehetőségek a következők: <br/>- **Egyik sem**<br/>- **PartitionOnInt** (normál egész szám vagy nulla, például 0000012345 a bal oldali margója egész értékek)<br/>- **PartitionOnCalendarYear** ("YYYY" formátumban 4 számjegy)<br/>- **PartitionOnCalendarMonth** (6 számjegyű "YYYYMM" formátumban)<br/>- **PartitionOnCalendarDate** (8 jegy "ÉÉÉÉHHNN" formátumban) | Nem       |
 | partitionColumnName              | Az adatok particionálása az oszlop neve. | Nem       |
@@ -215,6 +221,18 @@ Adatok másolása az SAP-tábla, a következő tulajdonságok támogatottak.
 >- Ha az SAP-tábla nagy mennyiségű adatok, például több milliárd sorok, `partitionOption` és `partitionSetting` az adatok ossza fel kisebb partíciókra, ebben az esetben az adatok partíciók, és mindegyik beolvasva rendszer beolvassa az egy egyetlen SAP-kiszolgálóhoz RFC-hívás.<br/>
 >- Véve `partitionOption` , `partitionOnInt` tegyük fel, az egyes partíciók sorok számának számolható ki (összes sor közé eső *partitionUpperBound* és *partitionLowerBound*) /*maxPartitionsNumber*.<br/>
 >- Ha szeretne további másolási felgyorsítása érdekében párhuzamosan futnak a partíciók, erősen ajánlott, hogy `maxPartitionsNumber` értékét többszörösére `parallelCopies` (további információkat talál a [párhuzamos másolási](copy-activity-performance.md#parallel-copy)).
+
+A `rfcTableOptions`, például a következő gyakori SAP lekérdezés operátorok segítségével a sorok szűrése: 
+
+| Művelet | Leírás |
+| :------- | :------- |
+| EQ | Egyenlő |
+| NE | Nem egyenlő |
+| LT | Kisebb, mint |
+| LE | Kisebb, vagy egyenlő |
+| GT | Nagyobb, mint |
+| GE | Nagyobb, vagy egyenlő |
+| PÉLDÁUL A | Részeként PÉLDÁUL (Emma %) |
 
 **Példa**
 

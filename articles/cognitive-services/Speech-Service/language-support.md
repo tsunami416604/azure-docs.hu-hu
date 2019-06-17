@@ -12,10 +12,10 @@ ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: 9b8e12220f220bd8183675d13e25bdcab02707fd
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65020843"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>A beszédfelismerési szolgáltatás nyelvéhez és régiójához támogatása
@@ -60,7 +60,7 @@ A Microsoft beszédfelismerési API-t a következő nyelveket támogatja. Az egy
  cs-EDIK | thai (Thaiföld) | Nem | Nem | Nem
 
 
-## <a name="text-to-speech"></a>Text-to-speech
+## <a name="text-to-speech"></a>Szövegfelolvasás
 
 A szöveg-hang transzformációs REST API támogatja ezeket beszédhangot, amelyek mindegyike támogatja egy adott nyelvhez és dialect, területi beállítás azonosítjuk.
 

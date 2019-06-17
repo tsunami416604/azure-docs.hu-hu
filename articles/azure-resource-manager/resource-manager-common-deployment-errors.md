@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 02/15/2019
 ms.author: tomfitz
 ms.openlocfilehash: f6ebeb1d9953311ad1cb85d8ab33c83d5e92d687
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66128550"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Gyakori Azure-beli hibák az Azure Resource Manager hibaelhárítása
@@ -30,14 +30,14 @@ Ez a cikk ismerteti az Azure-beli leggyakoribb hibák, és információkat a hib
 
 ## <a name="error-codes"></a>Hibakódok
 
-| Hibakód | Kockázatcsökkentés | További információ |
+| Hibakód | Kezelés | További információ |
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | Hajtsa végre a storage-fiókok vonatkozó elnevezési korlátozás. | [Oldja meg a tárfiók neve](resource-manager-storage-account-name-errors.md) |
 | AccountPropertyCannotBeSet | Ellenőrizze a rendelkezésre álló tár fiók tulajdonságait. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
 | AllocationFailed | A fürt vagy a régiót nem rendelkezik elérhető erőforrásokat, vagy nem támogatja a kért Virtuálisgép-méretet. Próbálja megismételni a kérést később, vagy kérje meg egy másik Virtuálisgép-méretet. | [Kiépítés és foglalással kapcsolatos problémák Linux rendszerben](../virtual-machines/linux/troubleshoot-deployment-new-vm.md), [kiépítési és foglalással kapcsolatos problémák Windows](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) és [foglalási hibák elhárítása](../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | Várjon, amíg a párhuzamos művelet végrehajtásához. | |
 | AuthorizationFailed | A fióknév vagy a szolgáltatásnév nem rendelkezik megfelelő hozzáférési jogosultsággal a telepítés befejezéséhez. Ellenőrizze a fiók tartozik a szerepkör és a hozzáférés az üzembe helyezés hatálya.<br><br>Ez a hiba jelenhet meg, ha egy szükséges erőforrás-szolgáltató nincs regisztrálva. | [Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md)<br><br>[Oldja meg a regisztráció](resource-manager-register-provider-errors.md) |
-| Hibás kérés | Üzembe helyezés értékek nem egyezik a várt Resource Manager által küldött. Ellenőrizze a belső állapotüzenet a hibaelhárítás. | [Sablon hivatkozása](/azure/templates/) és [támogatott helyek](resource-group-authoring-templates.md#resource-location) |
+| BadRequest | Üzembe helyezés értékek nem egyezik a várt Resource Manager által küldött. Ellenőrizze a belső állapotüzenet a hibaelhárítás. | [Sablon hivatkozása](/azure/templates/) és [támogatott helyek](resource-group-authoring-templates.md#resource-location) |
 | Ütközés | Ön a kért művelet nem megengedett az erőforrás jelenlegi állapotában. Ha például a lemezek átméretezése engedélyezett csak a virtuális gép létrehozásakor, vagy ha a virtuális gép fel van szabadítva. | |
 | DeploymentActive | Várjon, amíg befejeződik ez az erőforráscsoport párhuzamos üzembe helyezés. | |
 | Sikertelen | A "deploymentfailed" hiba, amely nem biztosítja a részletek a hiba megoldásához szükséges általános hiba. Tekintse meg a hibaüzenet részleteiben talál egy hibakód, amely további információkat biztosít. | [Hibakód keresése](#find-error-code) |
@@ -74,7 +74,7 @@ Ez a cikk ismerteti az Azure-beli leggyakoribb hibák, és információkat a hib
 | ReservedResourceName | Adja meg az erőforrás nevét, amely nem tartalmazza a foglalt név. | [Fenntartott erőforrásnevek](resource-manager-reserved-resource-name.md) |
 | ResourceGroupBeingDeleted | Várjon, amíg a törlés befejeződik. | |
 | ResourceGroupNotFound | Ellenőrizze a központi telepítés a célként megadott erőforráscsoport nevét. Azt már léteznie kell az előfizetésben. Ellenőrizze az előfizetési környezet. | [Az Azure CLI](/cli/azure/account?#az-account-set) [PowerShell](/powershell/module/Az.Accounts/Set-AzContext) |
-| NemTalálhatóErőforrás | Az üzembe helyezés hivatkozik egy erőforrás, amely nem oldható fel. Ellenőrizze, hogy használatára a **referencia** függvényt tartalmazza a paramétereket a forgatókönyvhöz szükséges. | [Hivatkozások feloldása](resource-manager-not-found-errors.md) |
+| ResourceNotFound | Az üzembe helyezés hivatkozik egy erőforrás, amely nem oldható fel. Ellenőrizze, hogy használatára a **referencia** függvényt tartalmazza a paramétereket a forgatókönyvhöz szükséges. | [Hivatkozások feloldása](resource-manager-not-found-errors.md) |
 | ResourceQuotaExceeded | Az üzembe helyezés próbál létre erőforrásokat, amelyek a kvóta az előfizetés, erőforráscsoport vagy régió. Ha lehetséges javítsa ki infrastruktúráját arra, hogy a kvóták belül. Ellenkező esetben fontolja meg a kvóták módosítás kér. | [Oldja meg a kvóták](resource-manager-quota-errors.md) |
 | SkuNotAvailable | Válassza ki a kiválasztott hely számára rendelkezésre álló SKU (például a virtuális gép mérete). | [Oldja meg a Termékváltozat](resource-manager-sku-not-available-errors.md) |
 | StorageAccountAlreadyExists | Adjon meg egy egyedi nevet a tárfióknak. | [Oldja meg a tárfiók neve](resource-manager-storage-account-name-errors.md)  |
@@ -86,36 +86,36 @@ Ez a cikk ismerteti az Azure-beli leggyakoribb hibák, és információkat a hib
 
 ## <a name="find-error-code"></a>Hibakód keresése
 
-Hibák fogadhat két típusa van:
+Kétféle hibáról kaphat értesítést:
 
-* érvényesítési hibák
-* telepítési hibák
+* érvényesítési hiba
+* üzembehelyezési hiba
 
-Érvényesítési hibák merülnek fel az üzembe helyezés előtt meg lehet határozni forgatókönyvek. A sablonban, vagy túllépné az előfizetési kvóták erőforrásokat üzembe helyezni kívánt tartalmazzák szintaxishibáinak. Telepítési hibák merülnek fel a feltételek a központi telepítési folyamat során. Ezek tartalmazzák az elérni kívánt olyan erőforrások, amelyek párhuzamosan lesz üzembe helyezve.
+Az érvényesítési hibák olyan forgatókönyvekből adódnak, amelyek az üzembe helyezés előtt határozhatók meg. Ezek közé tartoznak a sablon szintaxishibái, vagy az olyan erőforrások üzembe helyezése, amelyek túllépik az előfizetése kvótáit. Az üzembehelyezési hibák az üzembehelyezési folyamat során lépnek fel. Ezek közé tartozik például egy olyan erőforrás elérésére tett kísérlet, amelynek az üzembe helyezése párhuzamosan zajlik.
 
-Mindkét típusú hibák, amellyel a telepítés hibáinak hibakódot adja vissza. Mindkét típusú hibák jelennek meg a [tevékenységnapló](resource-group-audit.md). Azonban érvényesítési hibák nem jelennek meg az üzembe helyezési előzmények, mert az üzembe helyezés soha nem indította el.
+Mindkét típusú hiba az üzembe helyezés hibaelhárításához használható hibakódot ad vissza. Mindkét típusú hiba megjelenik a [tevékenységnaplóban](resource-group-audit.md). Az érvényesítési hibák azonban nem jelennek meg az üzembe helyezési előzmények között, mert az üzembe helyezés el sem indult.
 
-### <a name="validation-errors"></a>Érvényesség-ellenőrzési hibák
+### <a name="validation-errors"></a>érvényesítési hibák
 
-Amikor üzembe helyezése a portálon keresztül, az értékek elküldése után látható érvényesítési hiba.
+Amikor a portálon keresztül végzi el az üzembe helyezést, az értékek megadása után jelenik meg az érvényesítési hiba.
 
 ![Hiba történt a portál érvényesítésekor megjelenítése](./media/resource-manager-common-deployment-errors/validation-error.png)
 
-Válassza ki az üzenetet, további részletekért. Az alábbi ábrán látható egy **InvalidTemplateDeployment** hiba és a egy üzenet, amely azt jelzi, hogy egy házirend központi telepítés letiltva.
+További információért válassza ki az üzenetet. Az alábbi ábrán látható egy **InvalidTemplateDeployment** hiba és a egy üzenet, amely azt jelzi, hogy egy házirend központi telepítés letiltva.
 
 ![érvényesítési részletek megjelenítése](./media/resource-manager-common-deployment-errors/validation-details.png)
 
 ### <a name="deployment-errors"></a>telepítési hibák
 
-A művelet átmennek az ellenőrzésen, de a telepítés során nem sikerül, kap egy központi telepítési hiba.
+Ha a művelet megfelel az ellenőrzés követelményeinek, de az üzembe helyezés során meghiúsul, akkor üzembehelyezési hiba jelenik meg.
 
-Alkalmazástelepítési hibakódok és üzenetek a PowerShell-lel megjelenítéséhez használja:
+Az üzembehelyezési hibakódok és üzenetek megtekintése a PowerShell-lel:
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeploymentOperation -DeploymentName exampledeployment -ResourceGroupName examplegroup).Properties.statusMessage
 ```
 
-Alkalmazástelepítési hibakódok és üzenetek az Azure CLI-vel megjelenítéséhez használja:
+Az üzembehelyezési hibakódok és üzenetek megtekintése az Azure CLI-vel:
 
 ```azurecli-interactive
 az group deployment operation list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
@@ -125,13 +125,13 @@ A portálon válassza ki az értesítést.
 
 ![által okozott hiba](./media/resource-manager-common-deployment-errors/notification.png)
 
-Akkor az üzembe helyezéssel kapcsolatos további részleteket láthat. Válassza a a hibával kapcsolatos információkat keres.
+Akkor az üzembe helyezéssel kapcsolatos további részleteket láthat. Válassza ki a beállítást, hogy többet tudjon meg a hibáról.
 
 ![nem sikerült telepíteni](./media/resource-manager-common-deployment-errors/deployment-failed.png)
 
-Megjelenik a hibaüzenet és hibakódok. Figyelje meg, hogy van két hibakódok. Az első hibakód (**"deploymentfailed"**) egy általános hiba, amely nem biztosítja a részletek a hiba megoldásához szükséges. A második hibakódot (**StorageAccountNotFound**) biztosítja a szükséges adatokat. 
+Megjelenik a hibaüzenet és a hibakódok. Figyelje meg, hogy két hibakód látható. Az első hibakód (**DeploymentFailed**) egy általános hiba, amely nem adja meg a hiba megoldásához szükséges részleteket. A második hibakód (**StorageAccountNotFound**) megadja a szükséges részleteket. 
 
-![a hiba részletei](./media/resource-manager-common-deployment-errors/error-details.png)
+![A hiba részletei](./media/resource-manager-common-deployment-errors/error-details.png)
 
 ## <a name="enable-debug-logging"></a>A hibakeresési naplózást engedélyező
 

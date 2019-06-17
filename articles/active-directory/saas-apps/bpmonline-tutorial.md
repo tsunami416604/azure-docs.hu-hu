@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e2bc30a5b856cba5f1fcca254603c35dfd3764d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 937278f6a9261ca807f934718bc108bf125f44a8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65863993"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106025"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bpmonline"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Bpm'online
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása a Bpm'online konfigurálásához hozzá kell Bpm'onlin
 
 **Bpm'online hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, a bal oldali navigációs panelen, kattintson a **Azure Active Directory** ikonra.
+1. Az a  **[az Azure portal](https://portal.azure.com)** , a bal oldali navigációs panelen, kattintson a **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -181,7 +181,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű Bpm'online hoz létre. Együttműködve [Bpm'online támogatási csapatának](mailto:support@bpmonline.com) a felhasználók hozzáadása az Bpm'online platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

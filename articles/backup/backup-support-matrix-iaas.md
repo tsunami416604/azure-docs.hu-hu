@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: raynew
 ms.openlocfilehash: ef522785d5074187871c25c54deae84b156d69b1
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66743178"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM backup-támogatási mátrixa
@@ -43,7 +43,7 @@ További információ a biztonsági mentés [használatával egy biztonsági men
 Amikor létrehoz egy Windows Azure virtuális gép biztonsági mentésének engedélyezése | Támogatott: <br/><br/> -A 2019 a Windows Server (Core Datacenter/Datacenter/Standard) <br/><br/> – Windows Server 2016 (Core Datacenter/Datacenter/Standard) <br/><br/> – Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> – Windows Server 2008 R2 (RTM és SP1 Standard)
 Amikor létrehoz egy Linux rendszerű virtuális gép biztonsági mentésének engedélyezése | Támogatott:<br/><br/> - Ubuntu Server: 18.04, 17.10, 17.04, 16.04 (LTS), 14.04 (LTS)<br/><br/> – A Red Hat: RHEL 6.7, 6.8, 6.9, 7.2, 7.3, 7.4<br/><br/> – SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3, 15 <br/><br/> -Debian: 8, 9<br/><br/> - CentOS: 6.9, 7.3<br/><br/> - Oracle Linux: 6.7, 6.8, 6.9, 7.2, 7.3
 Készítsen biztonsági másolatot egy virtuális gép leállítása vagy offline állapotú virtuális gép | Támogatott.<br/><br/> Pillanatkép az összeomlás-konzisztens csak, nem alkalmazáskonzisztens.
-Lemezek biztonsági mentése a managed disks-ba való migrálás után | Támogatott.<br/><br/> Biztonsági mentés továbbra is működni fog. Nincs szükség műveletre.
+Lemezek biztonsági mentése a managed disks-ba való migrálás után | Támogatott.<br/><br/> Biztonsági mentés továbbra is működni fog. Semmit nem kell tenni.
 Lemezek biztonsági mentése a felügyelt erőforrászárat csoport engedélyezése után | Nem támogatott.<br/><br/> Az Azure Backup nem lehet törölni a régebbi erőforrás pontokat, és a biztonsági mentések elkezdi sikertelen lehet, ha a visszaállítási pontok maximális korlátot.
 Virtuális gép biztonsági mentési szabályzat módosítása | Támogatott.<br/><br/> A virtuális gép fog készíteni az új szabályzat ütemezése és megőrzése beállításainak használatával. Adatmegőrzési beállítások vannak bővítve, ha a meglévő helyreállítási pontok megjelölve és tartani. Ha Ön csökkenti a meglévő helyreállítási pontok törli a következő tisztítási feladat, és végül törli.
 Biztonsági mentési feladatok megszakítása | Támogatott pillanatkép folyamat során.<br/><br/> Nem támogatott, ha a pillanatkép-tárolóba átvitt.

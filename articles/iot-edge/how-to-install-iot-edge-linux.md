@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: b519ed21b4d2e0e258c48bd1dc12750176281c9e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 86ca3080229f2a286e8aa4725fe13c40e2a38549
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65152854"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67054276"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Telepítse az Azure IoT Edge-futtatókörnyezet (x64) linuxon
 
@@ -26,7 +26,7 @@ További tudnivalókért lásd: [megismerheti az Azure IoT Edge-futtatókörnyez
 Ez a cikk az Ubuntu Linux x64 (Intel vagy AMD) az Azure IoT Edge-futtatókörnyezet telepítésének lépéseit sorolja fel IoT Edge-eszköz. Tekintse meg [Azure IoT Edge által támogatott rendszerek](support.md#operating-systems) AMD64 támogatott operációs rendszerek listáját.
 
 > [!NOTE]
-> A Linux-szoftver tárházakban csomagok feltételei vonatkoznak rá a licenc minden csomagban található (/ usr/megosztása/docs/*csomagnév –*). Olvassa el a licencfeltételeket, a csomag használata előtt. Az üzembe helyezése és használata a csomag jelent a feltételek elfogadása. Ha nem fogadja el a licencfeltételeket, ne használja a csomag.
+> A Linux-szoftver tárházakban csomagok feltételei vonatkoznak rá a licenc minden csomagban található (/ usr/megosztása/docs/*csomagnév –* ). Olvassa el a licencfeltételeket, a csomag használata előtt. Az üzembe helyezése és használata a csomag jelent a feltételek elfogadása. Ha nem fogadja el a licencfeltételeket, ne használja a csomag.
 
 ## <a name="register-microsoft-key-and-software-repository-feed"></a>A Microsoft kulcs és a szoftverfrissítési tárház hírcsatorna regisztrálása
 
@@ -82,6 +82,18 @@ Telepítse a Moby parancssori felület (CLI). A parancssori felület az éles k�
    ```bash
    sudo apt-get install moby-cli
    ```
+
+### <a name="verify-your-linux-kernel-for-moby-compatibility"></a>A Linux-kernel Moby kompatibilitás ellenőrzése
+
+Sok embedded eszközgyártók adjon ki kiváló eszköz lemezképek egyéni Linux-kernelek vannak, amelyek esetleg hiányzik a szükséges tároló-futtatókörnyezet kompatibilitási funkciókat tartalmaznak. Ha problémákat tapasztal, amikor telepítése az ajánlott [Moby](https://github.com/moby/moby) tároló-futtatókörnyezet, akkor előfordulhat, hogy tudni hibaelhárítás a Linux kernel konfiguráció használatával a [jelölőnégyzet-config](https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh) megadott parancsfájlt a hivatalos [Moby Github-adattár](https://github.com/moby/moby) az eszközön az alábbi parancsok futtatásával.
+
+   ```bash
+   curl -sSL https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh -o check-config.sh
+   chmod +x check-config.sh
+   ./check-config.sh
+   ```
+
+Mindezzel biztosíthatja a egy részletes kimenet, amely tartalmazza az Moby modul által használt kernel-szolgáltatások állapotát. Győződjön meg arról, hogy az összes elem mellett célszerű `Generally Necessary` és `Network Drivers` annak biztosításához, hogy a kernel teljes mértékben kompatibilis a Moby futásidejű engedélyezve vannak.  Ha azonosította a hiányzó szolgáltatásokat, előfordulhat, hogy engedélyezni kell a kernel forrásból újraépítése, és válassza ki a megfelelő rendszermag .config bekerülhetnek a kapcsolódó modulok.  Ehhez hasonlóan a kernel konfigurációs generátor például defconfig vagy menuconfig használja, ha szüksége lesz található, és megfelelő funkciók, és ennek megfelelően építse újra a kernel.  Az újonnan módosított kernel üzembe helyezett, futtassa a konfiguráció ellenőrzése újra győződjön meg arról, hogy az azonosított funkciók sikeresen engedélyezve van.
 
 ## <a name="install-the-azure-iot-edge-security-daemon"></a>Az Azure IoT Edge biztonsági démon telepítése
 
@@ -143,7 +155,7 @@ Miután megadta a kiépítési adatokat a konfigurációs fájlban, a démon új
 sudo systemctl restart iotedge
 ```
 
-### <a name="option-2-automatic-provisioning"></a>Option 2: Automatikus felhasználóátadás
+### <a name="option-2-automatic-provisioning"></a>Option 2: Az Automatikus kiépítés
 
 Automatikus kiépítésére egy eszközt, [Device Provisioning Service beállítása és lekérése a regisztrációs Eszközazonosító](how-to-auto-provision-simulated-device-linux.md). Csak olyan eszközökre, amelyeken egy platformmegbízhatósági modul (TPM) lapka automatikus üzembe helyezés működik. Például Raspberry Pi-eszközök nem biztosítja a TPM-hez alapértelmezés szerint.
 

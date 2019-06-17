@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
-ms.openlocfilehash: 1610678b0ae1d94c3f3b8f91913beceb211d08d6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7d26d4c924ba2b7116b95e0b396652e49ca1b8f2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701695"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059398"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Az Azure HDInsight az Apache Hive-lekérdezések optimalizálása
 
@@ -39,7 +39,7 @@ HDInsight méretezésével kapcsolatos további információkért lásd: [méret
 
 ## <a name="use-apache-tez-instead-of-map-reduce"></a>Az Apache Tez használhatja a Mapreduce helyett
 
-[Az Apache Tez](https://hortonworks.com/hadoop/tez/) van egy alternatív végrehajtó motorja a MapReduce-motor. Linux-alapú HDInsight-fürtök Tez alapértelmezés szerint engedélyezve van.
+[Az Apache Tez](https://tez.apache.org/) van egy alternatív végrehajtó motorja a MapReduce-motor. Linux-alapú HDInsight-fürtök Tez alapértelmezés szerint engedélyezve van.
 
 ![tez_1][image-hdi-optimize-hive-tez_1]
 
@@ -51,7 +51,7 @@ Tez gyorsabban azért, mert:
 * **Tárolók újrahasználja**. Minden alkalommal, amikor lehetséges Tez is képes újra felhasználhatja győződjön meg arról, hogy csökkenti a késés miatt folyamatban van a tárolók, a tárolókban.
 * **Folyamatos optimalizálási technikákat**. Hagyományosan optimalizálási végzett fordítási fázis során. Azonban további információt a bemeneti adatok érhető el, amelyek engedélyezik a hatékonyabb optimalizálás futásidőben. Tez folyamatos optimalizálási technikákat, amelyek lehetővé teszik, hogy a csomag további, a futásidejű fázis optimalizálása használ.
 
-További információ ezekről a fogalmakról: [Apache TEZ](https://hortonworks.com/hadoop/tez/).
+További információ ezekről a fogalmakról: [Apache TEZ](https://tez.apache.org/).
 
 Választhat, hogy bármely engedélyezve van a lekérdezés a következő paranccsal set illesztésével Tez Hive-lekérdezést:
 

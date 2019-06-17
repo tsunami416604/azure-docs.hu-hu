@@ -8,12 +8,12 @@ editor: TomSh
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: barclayn
-ms.openlocfilehash: fbc3bba3d95526277da3487cb8670c1f1a88a925
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 7d40b8f0ca05000a51e70d7a124e9cb143aa2dcf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65951768"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67127241"
 ---
 # <a name="enforce-multi-factor-authentication-mfa-for-subscription-administrators"></a>Többtényezős hitelesítés (MFA) az előfizetés adminisztrátorainak
 
@@ -44,5 +44,5 @@ Ha a felhasználói rendelkeznek az Azure Multi-Factor Authenticationt magában 
 
 ## <a name="turn-on-two-step-verification-for-users"></a>A kétlépéses ellenőrzés bekapcsolása a felhasználók számára
 
-A felsorolt eljárásokkal [igénylése a kétlépéses ellenőrzés](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-user-states) egy felhasználó vagy csoport, az Azure MFA használatának megkezdéséhez. Választhat, hogy kétlépéses ellenőrzést követel meg az összes bejelentkezéshez, vagy olyan feltételes hozzáférési szabályzatokat hoz létre, amelyek csak olyan esetekben követelnek meg kétlépéses ellenőrzést, amelyekben annak szükségét érzi.
+A felsorolt eljárásokkal [igénylése a kétlépéses ellenőrzés](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-user-states) egy felhasználó vagy csoport, az Azure MFA használatának megkezdéséhez. Dönthet úgy, hogy az összes bejelentkezés kétlépéses ellenőrzést követel, vagy a szükséges a kétlépéses ellenőrzést, csak akkor számít a dolog, hogy a feltételes hozzáférési szabályzatokat hozhat létre.
 

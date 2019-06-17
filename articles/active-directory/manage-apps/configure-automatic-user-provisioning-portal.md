@@ -16,10 +16,10 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6bf265f51f2fea16f90dd0bcf2891bd9bed5cef8
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963574"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Felhasználói fiók kiépítése az Azure Portalon a vállalati alkalmazások kezelése
@@ -56,7 +56,7 @@ A **kiépítési** ablaktábla kezdődik a **mód** menü, amely megjeleníti az
 
 Válassza ki a **automatikus** rendszergazdai hitelesítő adataival, a leképezések, elindítása és leállítása, és a szinkronizálási beállítások megadására.
 
-### <a name="admin-credentials"></a>Rendszergazdai hitelesítő adatok
+### <a name="admin-credentials"></a>Rendszergazdai hitelesítő adataival
 
 Bontsa ki a **rendszergazdai hitelesítő adataival** az Azure ad az alkalmazás felhasználókezelési API-hoz való kapcsolódáshoz szükséges hitelesítő adatok megadását. A bemeneti szükséges az alkalmazás függvényében eltérő. A hitelesítő adatok típusát és az adott alkalmazásokra vonatkozó követelmények kapcsolatos további információkért tekintse meg a [konfigurációjára vonatkozó oktatóanyag, hogy az adott alkalmazáshoz](user-provisioning.md).
 

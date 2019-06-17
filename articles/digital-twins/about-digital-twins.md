@@ -9,12 +9,12 @@ ms.service: digital-twins
 services: digital-twins
 manager: bertvanhoof
 ms.custom: mvc
-ms.openlocfilehash: 2848f9ce97c2bdad59d86031c5894219875b6059
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 41a6b040c04c3a212a7ee89897b29f5ec96048d7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60926530"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072180"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Az Azure Digital Twins áttekintése
 
@@ -34,7 +34,7 @@ Az Azure digitális Twins környezetek minden típusú vonatkozik. Csak néhány
 - Épület foglaltsága szintjeinek elemzése.
 - A legforgalmasabb pénztárgép található a tárolóban.
 
-Akármi legyen is a valós üzleti forgatókönyv, az Azure Digital Twins segítségével készíthető hozzá megfelelő digitális példány.
+Akármilyen területen is a valós vállalati forgatókönyvnek megfelelően van, nagyon valószínű egy megfelelő digitális példányt is üzembe az Azure digitális Twins keresztül.
 
 Az alábbi videó az Azure digitális Twins közelebbről vesz igénybe.
 

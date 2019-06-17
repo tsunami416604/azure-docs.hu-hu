@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: fc5215f71af45d3273da437fc796bf0d396ba3f9
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 577cb55ce381976a6d623b272b920d0d1bf2eeb9
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393515"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67143999"
 ---
-# <a name="tutorial-use-feature-flags-in-a-net-core-app"></a>Oktatóanyag: Funkciójelölők használata .NET Core-alkalmazásokban
+# <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Oktatóanyag: A szolgáltatás jelzők használata az ASP.NET Core-alkalmazás
 
 A .NET Core szolgáltatás kezelési kódtárakat bármilyen támogatást nyújt a szolgáltatás jelzők megvalósítása az egy .NET- vagy ASP.NET Core-alkalmazás. Ezek a könyvtárak engedélyezése funkció jelzők deklaratív hozzáadását a kódhoz, hogy az összes nem kell a `if` utasítás a őket manuálisan.
 
@@ -109,7 +109,7 @@ A szolgáltatás jelző értéket vár az idő előrehaladtával változik. Alap
 config.AddAzureAppConfiguration(options => {
     options.Connect(settings["ConnectionStrings:AppConfig"])
            .UseFeatureFlags(featureFlagOptions => {
-                featureFlagOptions.PollInterval = TimeSpan.FromSeconds(5);
+                featureFlagOptions.PollInterval = TimeSpan.FromSeconds(300);
            });
 });
 ```

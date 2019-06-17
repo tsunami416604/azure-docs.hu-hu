@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d31bde1a33d622c2c0b7aa716cbbbfbc8ef42ecf
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 73ca740a4dcca3bdbb1951e55df4061364a5c646
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514579"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083923"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Az Azure Active Directory rendszergazdája szerepkör engedélyei
 
@@ -91,24 +91,26 @@ A következő rendszergazdai szerepkörök érhetők el:
   [Intune-ban](https://docs.microsoft.com/intune/role-based-access-control) | Az összes Intune-ban naplózási adatok megtekintése
   [A cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Csak olvasási engedélyekkel rendelkezik, és riasztásokat kezelhet<br>Hozzon létre, és módosíthatja a fájlhasználati szabályzatok és cégirányítási műveletek engedélyezése<br> Megtekintheti a beépített jelentések adatok felügyelete alatt
 
-<!--* **[Compliance Data Administrator](#compliance-data-administrator)**: Users with this role have permissions to protect and track data in the Microsoft 365 compliance center, Microsoft 365 admin center, and Azure. Users can also manage all features within the Exchange admin center, Compliance Manager, and Teams & Skype for Business admin center and create support tickets for Azure and Microsoft 365.
+* **[Megfelelőségi adatok rendszergazdai](#compliance-data-administrator)** : Ezzel a szerepkörrel rendelkező felhasználók védelmét, és nyomon követheti a a Microsoft 365-megfelelőségi központ, a Microsoft 365 felügyeleti központ és az Azure data engedélye. A felhasználók is kezelheti az Exchange felügyeleti központban, Compliance Manager, és a Teams és a Skype for Business felügyeleti központban minden szolgáltatásokat és hozzon létre támogatási jegyeket Azure és a Microsoft 365.
 
-  In | Can do
+  A | Teheti meg
   ----- | ----------
-  [Microsoft 365 compliance center](https://protection.office.com) | Monitor compliance-related policies across Microsoft 365 services<br>Manage compliance alerts
-  [Compliance Manager](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | Track, assign, and verify your organization's regulatory compliance activities
-  [Office 365 Security & Compliance Center](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Manage data governance<br>Perform legal and data investigation<br>Manage Data Subject Request
-  [Intune](https://docs.microsoft.com/intune/role-based-access-control) | View all Intune audit data
-  [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Has read-only permissions and can manage alerts<br>Can create and modify file policies and allow file governance actions<br> Can view all the built-in reports under Data Management
--->
+  [A Microsoft 365-megfelelőségi központ](https://protection.office.com) | Megfelelőséggel kapcsolatos szabályzatok figyelése a Microsoft 365-szolgáltatásokhoz<br>Megfelelőségi riasztások kezelése
+  [Megfelelőségi Manager](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | Nyomon követheti, hozzárendelése és ellenőrzése a szervezet a jogszabályoknak való megfelelőség tevékenységek
+  [Az Office 365 Security & Compliance Centerben](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Adatirányítás kezelése<br>Jogi tudnivalók és adatok vizsgálat végrehajtása<br>Tulajdonos kérelem kezelése
+  [Intune-ban](https://docs.microsoft.com/intune/role-based-access-control) | Az összes Intune-ban naplózási adatok megtekintése
+  [A cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Csak olvasási engedélyekkel rendelkezik, és riasztásokat kezelhet<br>Hozzon létre, és módosíthatja a fájlhasználati szabályzatok és cégirányítási műveletek engedélyezése<br> Megtekintheti a beépített jelentések adatok felügyelete alatt
+
 * **[Feltételes hozzáférésű rendszergazda](#conditional-access-administrator)** : Ezzel a szerepkörrel rendelkező felhasználók képesek az Azure Active Directory feltételes hozzáférés beállításainak ellenőrzése.
   > [!NOTE]
-  > Exchange ActiveSync feltételes hozzáférési szabályzatot az Azure-beli üzembe helyezéséhez a felhasználó is egy globális rendszergazdának kell lennie.
+  > Az Azure-ban az Exchange ActiveSync feltételes hozzáférési házirend telepítése, a felhasználó is egy globális rendszergazdának kell lennie.
   
 * **[Ügyfél Ügyfélszéf hozzáférés-jóváhagyója](#customer-lockbox-access-approver)** : Kezeli a [ügyfél kulcstároló-kérelmek](https://docs.microsoft.com/office365/admin/manage/customer-lockbox-requests) a szervezetben. Azok a vásárlói kulcstároló kéréseket email értesítéseket kapni és hagyhat jóvá és kérések elutasítása a Microsoft 365 felügyeleti központban. Az ügyfél kulcstároló funkció azokat is be, és ki. Csak a globális rendszergazdák ehhez a szerepkörhöz rendelt felhasználók visszaállíthatják.
   <!--  This was announced in August of 2018. https://techcommunity.microsoft.com/t5/Security-Privacy-and-Compliance/Customer-Lockbox-Approver-Role-Now-Available/ba-p/223393-->
 
-* **[Eszközadminisztrátorok](#device-administrators)** : Ez a szerepkör csak egy további helyi rendszergazdaként a hozzárendelés érhető el [eszközbeállítások](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/). Ezzel a szerepkörrel rendelkező felhasználók minden, az Azure Active Directoryhoz csatlakoztatott Windows 10 rendszerű eszközökön a helyi gépek rendszergazdái lesznek. Nem rendelkeznek képes kezelni az Azure Active Directoryban. 
+* **[Asztali Analytics rendszergazdája](#desktop-analytics-administrator)** : A szerepkör felhasználói az asztali Analytics és az Office testreszabási & házirend szolgáltatások kezelheti. Asztali Analytics például a eszközleltár megtekintése, központi telepítési csomagok létrehozása, üzembe helyezési és egészségügyi állapotának megtekintéséhez. Az Office testreszabási & szabályzat szolgáltatáshoz Ez a szerepkör lehetővé teszi a felhasználók Office házirendek kezelése.
+
+* **[Eszköz-rendszergazdai](#device-administrators)** : Ez a szerepkör csak egy további helyi rendszergazdaként a hozzárendelés érhető el [eszközbeállítások](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/). Ezzel a szerepkörrel rendelkező felhasználók minden, az Azure Active Directoryhoz csatlakoztatott Windows 10 rendszerű eszközökön a helyi gépek rendszergazdái lesznek. Nem rendelkeznek képes kezelni az Azure Active Directoryban. 
 
 * **[Címtárolvasók](#directory-readers)** : Ez a szerepkör, amely csak az örökölt alkalmazásokat, amelyek nem támogatják hozzá kell rendelni a [hozzájárulási keretrendszer](../develop/quickstart-v1-integrate-apps-with-azure-ad.md). Ne rendeljen a felhasználók számára.
 
@@ -210,19 +212,20 @@ Emellett a felhasználó hozzáférhessen a szervezet tagjai és üzleti jelent�
   [Azure Security Center](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) | Megtekintheti biztonsági házirendek, biztonsági állapotot, szerkessze a biztonsági szabályzatok, riasztások megtekintése és javaslatok, riasztások és javaslatok elvetése
   [Az Office 365 szolgáltatás állapota](https://docs.microsoft.com/office365/enterprise/view-service-health) | Office 365-szolgáltatások állapotának megtekintése
 
-<!--* **[Security operator](#security-operator)**: Users with this role can manage alerts and have global read-only access on security-related feature, including all information in Microsoft 365 security center, Azure Active Directory, Identity Protection, Privileged Identity Management, as well as the ability to read Azure Active Directory sign-in reports and audit logs, and in Office 365 Security & Compliance Center.
+* **[Biztonsági operátor](#security-operator)** : Ezzel a szerepkörrel rendelkező felhasználók riasztások kezelése és biztonsági funkció, többek között a Microsoft 365 security Centerben az Azure Active Directory, az Identity Protection, a Privileged Identity Management és a Office 365 globális csak olvasási hozzáféréssel rendelkezik Biztonsági és megfelelőségi központban. Office 365-engedélyekkel kapcsolatos további információt [az engedélyek az Office 365 Security & Compliance Centerben](https://docs.microsoft.com/office365/securitycompliance/permissions-in-the-security-and-compliance-center).
 
-  In | Can do
+  A | Teheti meg
   --- | ---
-  [Microsoft 365 security center](https://protection.office.com) | All permissions of the Security Reader role<br>View, investigate, and respond to security threats alerts
-  Identity Protection Center | All permissions of the Security Reader role<br>Additionally, the ability to perform all Identity Protection Center operations except for resetting passwords
-  [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | All permissions of the Security Reader role
-  [Office 365 Security & Compliance Center](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | All permissions of the Security Reader role<br>View, investigate, and respond to security alerts
-  Windows Defender ATP and EDR | All permissions of the Security Reader role<br>View, investigate, and respond to security alerts
-  [Intune](https://docs.microsoft.com/intune/role-based-access-control) | All permissions of the Security Reader role
-  [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | All permissions of the Security Reader role
-  [Office 365 service health](https://docs.microsoft.com/office365/enterprise/view-service-health) | View the health of Office 365 services
--->
+  [A security center a Microsoft 365](https://protection.office.com) | A biztonsági olvasó szerepkör összes engedélyt<br>Megtekintheti, vizsgálja meg és válaszadás a biztonsági fenyegetések riasztásokra
+  Identity Protection Center | A biztonsági olvasó szerepkör összes engedélyt<br>Ezenkívül lehetővé teszi új jelszavak kivételével az összes Identity Protection Centerben műveletek végrehajtásához
+  [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | A biztonsági olvasó szerepkör összes engedélyt
+  [Az Office 365 Security & Compliance Centerben](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | A biztonsági olvasó szerepkör összes engedélyt<br>Megtekintheti, vizsgálja meg és válaszadás a biztonsági riasztásokra
+  A Windows Defender ATP-EDR | A biztonsági olvasó szerepkör összes engedélyt<br>Megtekintheti, vizsgálja meg és válaszadás a biztonsági riasztásokra
+  [Intune-ban](https://docs.microsoft.com/intune/role-based-access-control) | A biztonsági olvasó szerepkör összes engedélyt
+  [A cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | A biztonsági olvasó szerepkör összes engedélyt
+  [Az Office 365 szolgáltatás állapota](https://docs.microsoft.com/office365/enterprise/view-service-health) | Office 365-szolgáltatások állapotának megtekintése
+<!--* **[Security Operator](#security-operator)**: Users with this role can manage alerts and have global read-only access on security-related feature, including all information in Microsoft 365 security center, Azure Active Directory, Identity Protection, Privileged Identity Management.-->
+
 * **[Biztonsági olvasó](#security-reader)** : Az ehhez a szerepkörhöz tartozó felhasználók globális csak olvasási hozzáféréssel rendelkezik a biztonsági funkció, többek között a Microsoft 365 a security center, Azure Active Directory, Identity Protection, Privileged Identity Management, valamint lehetővé teszi olvassa el az Azure Active Directory bejelentkezési jelentéseit és naplóit, és az Office 365 biztonsági és megfelelőségi központban. Office 365-engedélyekkel kapcsolatos további információt [az engedélyek az Office 365 Security & Compliance Centerben](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
   A | Teheti meg
@@ -406,22 +409,6 @@ Számlázással kapcsolatos általános feladatokat, például frissítheti a fi
 | microsoft.office365.serviceHealth/allEntities/allTasks | Olvassa el, és konfigurálja az Office 365 Service Healthben. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Hozzon létre és kezelheti az Office 365 támogatási jegyeket. |
 
-### <a name="desktop-analytics-administrator"></a>Asztali Analytics rendszergazdája
-A Desktop Analytics és az Office testreszabási & házirend szolgáltatások is kezelheti. Asztali Analytics például a eszközleltár megtekintése, központi telepítési csomagok létrehozása, üzembe helyezési és egészségügyi állapotának megtekintéséhez. Az Office testreszabási & szabályzat szolgáltatáshoz Ez a szerepkör lehetővé teszi a felhasználók Office házirendek kezelése.
-
-  > [!NOTE]
-  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
-  >
-  >
-
-| **Műveletek** | **Leírás** |
-| --- | --- |
-| microsoft.azure.serviceHealth/allEntities/allTasks | Olvassa el, és konfigurálja az Azure Service Health. |
-| microsoft.azure.supportTickets/allEntities/allTasks | Létrehozhat és kezelhet az Azure támogatási jegyeket. |
-| microsoft.office365.webPortal/allEntities/basic/read | Az összes erőforrás microsoft.office365.webPortal az alapvető tulajdonságainak olvasása. |
-| microsoft.office365.desktopAnalytics/allEntities/allTasks | Asztali Analytics minden szempontjának kezeléséhez. |
-| microsoft.office365.serviceHealth/allEntities/allTasks | Olvassa el, és konfigurálja az Office 365 Service Healthben. |
-| microsoft.office365.supportTickets/allEntities/allTasks | Hozzon létre és kezelheti az Office 365 támogatási jegyeket. |
 
 ### <a name="cloud-application-administrator"></a>Felhőalkalmazás-rendszergazda
 Létrehozhat és alkalmazásregisztrációkkal és a vállalati alkalmazásokhoz az Application Proxy kivételével minden szempontjának kezeléséhez.
@@ -565,6 +552,28 @@ Megtekintheti és kezelheti a megfelelőségi konfigurációt és jelentéseket 
 | microsoft.office365.skypeForBusiness/allEntities/allTasks | Összes felügyeleti jogosultsággal a Skype vállalati online verziójához. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Hozzon létre és kezelheti az Office 365 támogatási jegyeket. |
 
+### <a name="compliance-data-administrator"></a>Megfelelőségi adatok rendszergazda
+Hoz létre, és megfelelőségi tartalmat kezel.
+
+  > [!NOTE]
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
+  >
+  >
+
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| microsoft.aad.cloudAppSecurity/allEntities/allTasks | Olvassa el, és a Microsoft Cloud App Security konfigurálása. |
+| microsoft.azure.informationProtection/allEntities/allTasks | Az Azure Information Protection minden szempontjának kezeléséhez. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Olvassa el, és konfigurálja az Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Létrehozhat és kezelhet az Azure támogatási jegyeket. |
+| microsoft.office365.webPortal/allEntities/basic/read | Az összes erőforrás microsoft.office365.webPortal az alapvető tulajdonságainak olvasása. |
+| microsoft.office365.complianceManager/allEntities/allTasks | Office 365-megfelelőségi vezető minden szempontjának kezeléséhez |
+| microsoft.office365.exchange/allEntities/allTasks | Exchange online-ban minden szempontjának kezeléséhez. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Olvassa el, és konfigurálja az Office 365 Service Healthben. |
+| microsoft.office365.sharepoint/allEntities/allTasks | Hozzon létre és az összes erőforrás törlése, és olvassa el és microsoft.office365.sharepoint az alapvető tulajdonságainak frissítése. |
+| microsoft.office365.skypeForBusiness/allEntities/allTasks | Összes felügyeleti jogosultsággal a Skype vállalati online verziójához. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Hozzon létre és kezelheti az Office 365 támogatási jegyeket. |
+
 ### <a name="conditional-access-administrator"></a>Feltételes hozzáférésű rendszergazda
 Feltételes hozzáférési képességeit is kezelheti.
 
@@ -608,6 +617,23 @@ Jóváhagyhatja a Microsoft támogatási kérések vevő szervezeti adatok elér
 | --- | --- |
 | microsoft.office365.webPortal/allEntities/basic/read | Az összes erőforrás microsoft.office365.webPortal az alapvető tulajdonságainak olvasása. |
 | microsoft.office365.lockbox/allEntities/allTasks | Office 365-ügyfél kulcstároló minden szempontjának kezeléséhez |
+
+### <a name="desktop-analytics-administrator"></a>Asztali Analytics rendszergazdája
+A Desktop Analytics és az Office testreszabási & házirend szolgáltatások is kezelheti. Asztali Analytics például a eszközleltár megtekintése, központi telepítési csomagok létrehozása, üzembe helyezési és egészségügyi állapotának megtekintéséhez. Az Office testreszabási & szabályzat szolgáltatáshoz Ez a szerepkör lehetővé teszi a felhasználók Office házirendek kezelése.
+
+  > [!NOTE]
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. További információkért lásd a fenti szerepkör leírása.
+  >
+  >
+
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Olvassa el, és konfigurálja az Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Létrehozhat és kezelhet az Azure támogatási jegyeket. |
+| microsoft.office365.webPortal/allEntities/basic/read | Az összes erőforrás microsoft.office365.webPortal az alapvető tulajdonságainak olvasása. |
+| microsoft.office365.desktopAnalytics/allEntities/allTasks | Asztali Analytics minden szempontjának kezeléséhez. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Olvassa el, és konfigurálja az Office 365 Service Healthben. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Hozzon létre és kezelheti az Office 365 támogatási jegyeket. |
 
 ### <a name="device-administrators"></a>Eszközadminisztrátorok
 Ehhez a szerepkörhöz tartozó felhasználók hozzáadódnak a helyi Rendszergazdák csoport, az Azure AD-hez csatlakoztatott eszközökön.
@@ -892,7 +918,7 @@ Olvashatja az üzeneteket és a cégük számára csak az Office 365 Üzenetköz
 | microsoft.office365.webPortal/allEntities/basic/read | Az összes erőforrás microsoft.office365.webPortal az alapvető tulajdonságainak olvasása. |
 | microsoft.office365.messageCenter/messages/read | Read messages in microsoft.office365.messageCenter. |
 
-### <a name="partner-tier1-support"></a>1. szintű partnertámogatás
+### <a name="partner-tier1-support"></a>1\. szintű partnertámogatás
 Ne használjon – általános használatra nem alkalmas.
 
   > [!NOTE]
@@ -924,7 +950,7 @@ Ne használjon – általános használatra nem alkalmas.
 | microsoft.office365.serviceHealth/allEntities/allTasks | Olvassa el, és konfigurálja az Office 365 Service Healthben. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Hozzon létre és kezelheti az Office 365 támogatási jegyeket. |
 
-### <a name="partner-tier2-support"></a>2. szintű partnertámogatás
+### <a name="partner-tier2-support"></a>2\. szintű partnertámogatás
 Ne használjon – általános használatra nem alkalmas.
 
   > [!NOTE]
@@ -1080,6 +1106,25 @@ Olvassa el a biztonsági adatokat és jelentéseket, és beállíthatja az Azure
 | microsoft.office365.protectionCenter/allEntities/read | Az Office 365 védelmi központ minden aspektusának olvasása. |
 | microsoft.office365.protectionCenter/allEntities/update | Frissítés microsoft.office365.protectionCenter található összes erőforrást. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Olvassa el, és konfigurálja az Office 365 Service Healthben. |
+
+### <a name="security-operator"></a>Biztonsági operátor
+Létrehozza és kezeli a biztonsági események.
+
+  > [!NOTE]
+  > Ez a szerepkör jogosult további Azure Active Directory-en kívül. További információkért lásd a fenti szerepkör leírása.
+  >
+  >
+
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| microsoft.aad.cloudAppSecurity/allEntities/allTasks | Olvassa el, és a Microsoft Cloud App Security konfigurálása. |
+| microsoft.aad.identityProtection/allEntities/read | Olvassa el a microsoft.aad.identityProtection található összes erőforrást. |
+| microsoft.aad.privilegedIdentityManagement/allEntities/read | Olvassa el a microsoft.aad.privilegedIdentityManagement található összes erőforrást. |
+| microsoft.azure.advancedThreatProtection/allEntities/read | Olvassa el, és az Azure AD komplex veszélyforrások elleni védelem konfigurálása. |
+| microsoft.intune/allEntities/allTasks | Az Intune minden szempontjának kezeléséhez. |
+| microsoft.office365.securityComplianceCenter/allEntities/allTasks | Olvassa el, és konfigurálja a biztonsági és megfelelőségi központban. |
+| microsoft.office365.usageReports/allEntities/read | Olvassa el az Office 365-használati jelentéseket. |
+| microsoft.windows.defenderAdvancedThreatProtection/allEntities/read | Olvassa el, és a Windows Defender komplex veszélyforrások elleni védelem konfigurálása. |
 
 ### <a name="security-reader"></a>Biztonsági olvasó
 Olvashatja az biztonsági információk és jelentések az Azure ad-ben és az Office 365.
@@ -1261,14 +1306,15 @@ B2C felhasználói folyamat attribútum rendszergazda | B2C felhasználói folya
 B2C IEF kulcskészlet rendszergazda | B2C IEF kulcskészlet rendszergazda | aaf43236-0c0d-4d5f-883a-6955382ac081
 B2C IEF szabályzat rendszergazda | B2C IEF szabályzat rendszergazda | 3edaf663-341e-4475-9f94-5c398ef6c070
 Számlázási adminisztrátor | Számlázási rendszergazda | b0f54661-2d74-4c50-afa3-1ec803f12efe
-Asztali Analytics rendszergazdája | Asztali Analytics rendszergazdája | 38a96431-2bdf-4b4c-8b6e-5d3d8abac1a4
 Felhőalkalmazás-rendszergazda | Felhőalkalmazás-rendszergazda | 158c047a-c907-4556-b7ef-446551a6b5f7
 Felhőbeli Eszközrendszergazda | Felhőbeli eszközrendszergazda | 7698a772-787b-4ac8-901f-60d6b08affd2
 Céges rendszergazda | Globális rendszergazda | 62e90394-69f5-4237-9190-012177145e10
 Szabályozási ügyintéző | Szabályozási ügyintéző | 17315797-102d-40b4-93e0-432062caca18
+Megfelelőségi adatok rendszergazda | Megfelelőségi adatok rendszergazda | e6d1a23a-da11-4be4-9570-befc86d067a7
 Feltételes hozzáférésű rendszergazda | Feltételes hozzáférésű rendszergazda | b1be1c3e-b65d-4f19-8427-f6fa0d97feb9
 CRM-Szolgáltatásadminisztrátor | Dynamics 365-rendszergazda | 44367163-eba1-44c3-98af-f5787879f96a
 Ügyfélszéf hozzáférés-jóváhagyója | Ügyfél Ügyfélszéf hozzáférés-jóváhagyója | 5c4f9dcd-47dc-4cf7-8c9a-9e4207cbfc91
+Asztali Analytics rendszergazdája | Asztali Analytics rendszergazdája | 38a96431-2bdf-4b4c-8b6e-5d3d8abac1a4
 Eszközadminisztrátorok | Eszközadminisztrátorok | 9f06204d-73c1-4d4c-880a-6edb90606fd8
 Eszköz-csatlakoztatás | Eszköz-csatlakoztatás | 9c094953-4995-41c8-84c8-3ebb9b32c93f
 Eszközkezelők | Eszközkezelők | 2b499bcd-da44-4968-8aec-78e1674fa64d
@@ -1286,8 +1332,8 @@ Licencek adminisztrátora | Licencek adminisztrátora | 4d6ac14f-3453-41d0-bef9-
 Lync-szolgáltatások rendszergazdája | Skype vállalati rendszergazda | 75941009-915a-4869-abe7-691bff18279e
 Üzenetközpont adatvédelmi olvasó | Üzenet center adatvédelmi olvasó | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 Üzenetközpont olvasó | Üzenet center-Adatolvasó | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
-1. szintű partnertámogatás | Partnerek 1. rétegbeli támogatása | 4ba39ca4-527c-499a-b93d-d9b492c50246
-2. szintű partnertámogatás | Partnerek 2. rétegbeli támogatása | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
+1\. szintű partnertámogatás | Partnerek 1. rétegbeli támogatása | 4ba39ca4-527c-499a-b93d-d9b492c50246
+2\. szintű partnertámogatás | Partnerek 2. rétegbeli támogatása | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 A Power BI-Szolgáltatásadminisztrátor | A Power BI rendszergazdája | a9ea8996-122f-4c74-9520-8edcd192826c
 A kiemelt hitelesítést rendszergazda | Rendszergazdai jogosultsággal rendelkező hitelesítés | 7be44c8a-adaf-4e2a-84d6-ab2649e08a13
 A kiemelt szerepkörű rendszergazda | Kiemelt szerepkörű rendszergazda | e8611ab8-c189-46e8-94e1-60213ab1f814
@@ -1295,6 +1341,7 @@ Jelentésolvasó | Jelentésolvasó | 4a5d8f65-41da-4de4-8968-e035b65339cf
 Keresés rendszergazda | Keresés rendszergazda | 0964bb5e-9bdb-4d7b-ac29-58e794862a40
 Keresés szerkesztő | Keresés szerkesztő | 8835291a-918c-4fd7-a9ce-faa49f0cf7d9
 Biztonsági rendszergazda | Biztonsági rendszergazda | 194ae4cb-b126-40b2-bd5b-6091b380977d
+Biztonsági operátor | Biztonsági operátor | 5f2222b1-57c3-48ba-8ad5-d4759f1fde6f
 Biztonsági olvasó | Biztonsági olvasó | 5d6b6bb7-de71-4623-b4af-96380a352509
 Szolgáltatástámogatási rendszergazda | Szolgáltatás-rendszergazda | f023fd81-a637-4b56-95fd-791ac0226033
 A SharePoint szolgáltatás-rendszergazda | SharePoint-rendszergazda | f28a1f50-f6e7-4571-818b-6a12f2af6b6c

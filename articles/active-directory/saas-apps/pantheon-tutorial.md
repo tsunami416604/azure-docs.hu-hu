@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 30f431c1806c6a0697a6b74b43f1cc35660fc85e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5e2842561a6ee16cca42e59cb42f49238849537c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65869734"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094825"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pantheon"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Pantheon
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Pantheon konfigurálásához hozzá kell Pantheon a 
 
 **Pantheon hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -209,7 +209,7 @@ Ebben a szakaszban egy felhasználói Britta Simon nevű Pantheon hoz létre. K�
 
 7. Kattintson a **Felhasználó hozzáadása** parancsra.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 1d57ec0299aa541d1642d77421e85c6fbdf070c7
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: d2c03143eca9f335c440dfcaee766e205b5c0730
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65888108"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67087148"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Wikispaces
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Wikispaces konfigurálásához hozzá kell Wikispace
 
 **Wikispaces hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -210,7 +210,7 @@ Ahhoz, hogy az Azure AD-felhasználók Wikispaces bejelentkezni, akkor ki kell �
 > [!NOTE]
 > Bármely más Wikispaces felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését Wikispaces által biztosított API-k.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

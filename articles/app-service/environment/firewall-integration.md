@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 06/11/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6ae7037ad4cd532b6661a56e6e37a88df3eb54a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6dae2d40650b9fdb8df2d3bdb74b2df78639dc11
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60766536"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058062"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service-környezet sémákra
 
@@ -30,6 +30,21 @@ Nincsenek több bejövő függőséggel, amely az ASE rendelkezik. A bejövő ke
 A kimenő ASE-függőségek szinte teljesen teljes tartományneveket, amely nem rendelkezik statikus címeket mögöttük van definiálva. A statikus címek hiánya, az azt jelenti, hogy a hálózati biztonsági csoportok (NSG) való zárolását, így a kimenő forgalmat az ASE nem használható. A címeket, hogy egy nem szabályok alapján a jelenlegi felbontás beállítása és NSG-k létrehozásához használja, amely elég gyakran módosítása. 
 
 A megoldás a kimenő címek védelme érdekében adott tűzfal eszköz, amely a kimenő forgalmat a tartománynevek alapján szabályozhatja a rejlik. Az Azure tűzfal korlátozhatja a kimenő HTTP és HTTPS-forgalom alapján a célkiszolgáló teljes Tartománynevét.  
+
+## <a name="system-architecture"></a>Rendszer-architektúra
+
+Az ASE telepítése tűzfal eszköz közötti kimenő forgalom az útvonalakat az ASE alhálózat módosítani kell. Útvonalak az IP-szintjén működik. Ha nem az útvonalakat a gondos, kényszerítheti a TCP-válasz forgalom egy másik címről forrásaként. Ezt nevezzük aszimmetrikus útválasztás, és Ez megszakítja a TCP.
+
+Úgy, hogy a bejövő forgalmat az ASE válaszolhatnak vissza kapott a forgalom azonos módon definiált útvonalakat kell lennie. Ez igaz a bejövő felügyeleti kéréseket, és IGAZ, a bejövő kérelem kéréseket.
+
+A következő szabályok a forgalmat az ASE kell szabályzatunk feltételeit
+
+* A forgalom Azure SQL, a Storage és az Eseményközpont adott tűzfal eszköz használata nem támogatott. Ez a forgalom közvetlenül ezeket a szolgáltatásokat el kell küldeni. A győződjön meg arról, hogy történik módja három szolgáltatásokért Szolgáltatásvégpontok konfigurálása. 
+* Útválasztási táblázat szabályokat, amelyek a bejövő felügyeleti forgalmat küldeni, honnan ból kell definiálni.
+* Útválasztási táblázat szabályokat, amelyek a bejövő kérelem forgalmat küldeni, honnan ból kell definiálni. 
+* Hagyja az ASE összes többi forgalom útválasztási táblázat szabály, a tűzfal eszközre küldhetők el.
+
+![Az ASE az Azure-tűzfal csatlakozási folyamat][5]
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>Az ASE Azure tűzfal konfigurálása 
 
@@ -68,8 +83,6 @@ A fenti lépések lehetővé teszi az ASE problémák nélkül. Továbbra is sze
 Ha az alkalmazások függőségei, azokat hozzá kell adni az Azure-tűzfalhoz. Lehetővé teszi a HTTP/HTTPS-forgalmat, és a hálózati szabályok minden más alkalmazás szabályok létrehozásához. 
 
 Ha ismeri a címtartományt, amely az alkalmazás kérelem forgalmának származnak, adhat hozzá, hogy az útvonaltáblához rendelt az ASE-alhálózattal. Ha a címtartomány nagy vagy nincs megadva, majd használhatja például az Application Gateway egy hálózati berendezések, hogy az útvonaltábla hozzáadása egy címet. Az Application Gateway konfigurálása az ILB ASE részleteket [az ILB ASE integrálása egy Application Gateway](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)
-
-![Az ASE az Azure-tűzfal csatlakozási folyamat][5]
 
 Ez az Application Gateway használata csak egy példa bemutatja, hogyan konfigurálható a rendszer. Ha ezt az elérési utat adott követi, majd kell útvonal hozzáadása az ASE alhálózat útvonaltáblájához, így a válasz az Application Gateway küldött forgalmat szeretné ott közvetlenül. 
 

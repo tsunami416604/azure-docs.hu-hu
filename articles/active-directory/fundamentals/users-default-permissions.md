@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0cb0fe056ff7ff4794667d6b28782daad100609f
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65921033"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Mik azok az alapértelmezett felhasználói engedélyek az Azure Active Directoryban?
@@ -50,7 +50,7 @@ A tagfelhasználók alapértelmezett engedélyeinek korlátozására az alábbi 
 Engedély | Magyarázat beállítása
 ---------- | ------------
 Felhasználók regisztrálhatják-alkalmazás | Ezt a beállítást nem megakadályozza, hogy a felhasználók az alkalmazást az alkalmazásregisztrációk hozza létre. Lehetővé teszi majd adható vissza a megadott személyeknek a alkalmazásfejlesztő szerepkör hozzáadásával.
-Munkahelyi vagy iskolai fiók és a LinkedIn összekapcsolásának engedélyezése a felhasználóknak | Ezt a beállítást nem megakadályozza, hogy a felhasználók munkahelyi vagy iskolai fiókjával kapcsolódjon a saját LinkedIn-fiók.  Lásd: [LinkedIn-fiók kapcsolatok az adatok megosztása és jóváhagyás](https://docs.microsoft.com/azure/active-directory/users-groups-roles/linkedin-user-consent) további információt.
+Lehetővé teszi a felhasználók munkahelyi vagy iskolai fiókját a Linkedinnel | Ezt a beállítást nem megakadályozza, hogy a felhasználók munkahelyi vagy iskolai fiókjával kapcsolódjon a saját LinkedIn-fiók.  Lásd: [LinkedIn-fiók kapcsolatok az adatok megosztása és jóváhagyás](https://docs.microsoft.com/azure/active-directory/users-groups-roles/linkedin-user-consent) további információt.
 Biztonsági csoportok létrehozásának képessége | Ha e beállítás értéke Nem, akkor a felhasználók nem hozhatnak létre biztonsági csoportokat. A globális rendszergazdák és felhasználói rendszergazdák is létrehozhatnak biztonsági csoportokat. További tudnivalók: [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../users-groups-roles/groups-settings-cmdlets.md).
 Office 365-csoportok létrehozásának képessége | Ha e beállítás értéke Nem, akkor a felhasználók nem hozhatnak létre Office 365-csoportokat. Ha e beállítás értéke Néhány, akkor egyes kiválasztott felhasználók létrehozhatnak Office 365-csoportokat. A globális rendszergazdák és felhasználói rendszergazdák továbbra is képesek lesznek az Office 365-csoportok létrehozásához. További tudnivalók: [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../users-groups-roles/groups-settings-cmdlets.md).
 Az Azure AD felügyeleti portálhoz való hozzáférés korlátozása | Ezt a beállítást Igen megakadályozza, hogy a felhasználók hozzáférését az Azure Active Directory csak az Azure Portalon keresztül.

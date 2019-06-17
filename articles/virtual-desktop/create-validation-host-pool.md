@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 05/08/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 91dd716a595dd56c14b3be0bf11a7b69eeb470d6
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: c9b2a593a6943fe2e9577acc61b1d5a7bcd98607
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65834127"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070661"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Oktatóanyag: Gazdagépcsoport létrehozása a szolgáltatásfrissítések érvényesítéséhez
 
@@ -71,7 +71,7 @@ Előzetes verzióban elérhető a szolgáltatásfrissítések fordulhat elő, k�
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy létrehozott egy érvényesítési gazdagép-készletet, az érvényesítési gazdagép készlet távoli alkalmazások igény szerint fel lehet tölteni. Virtuális asztali Windows-alkalmazások kezeléséről további információkért tekintse meg a kezelés alkalmazás csoportok oktatóanyag.
+Most, hogy létrehozott egy érvényesítési gazdagép-készletet, hogyan helyezheti üzembe, és csatlakozhat a Microsoft virtuális asztali erőforrások kezelésére szolgáló felügyeleti eszköz tudhat meg.
 
 > [!div class="nextstepaction"]
-> [Útmutató alkalmazások csoportok kezelése](./manage-app-groups.md)
+> [Egy felügyeleti eszköz üzembehelyezési útmutató](./manage-resources-using-ui.md)

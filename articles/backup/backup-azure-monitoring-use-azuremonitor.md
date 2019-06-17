@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 2d7c158b32c15fb8be153511136eafb73147afa6
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
-ms.translationtype: MT
+ms.openlocfilehash: 1e85b633024b5a3e85874707ae9a1f068e7a328d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734857"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808519"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>Az Azure Monitor használatával nagy mennyiségű figyelése
 
@@ -257,7 +257,7 @@ Itt az erőforrás a magát a Recovery Services-tárolót, és ezért meg kell i
 Az értesítés útján tevékenységeket tartalmazó naplók is használható, amíg ***Azure Backup szolgáltatás nyomatékosan javasolja LA használja a következő okok miatt a méretezési csoport és a nem Tevékenységnaplók figyelés***.
 
 - **Korlátozott alkalmazási helyzetek:** Csak az Azure virtuális gép biztonsági mentéseinek érvényes, és meg kell ismételni minden RS-tároló.
-- **Szélességhez definíciója:** Az ütemezett biztonsági mentési művelet nem fér el a tevékenységeket tartalmazó naplók a legújabb definíció- és igazodik a [diagnosztikai naplók](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#what-are-azure-monitor-diagnostic-logs). Az érdeklődő váratlan hatásra, az adatok szivattyúzó tevékenység log csatornán keresztül, az alább hivatkozott módosítás esetén.
+- **Szélességhez definíciója:** Az ütemezett biztonsági mentési művelet nem fér el a tevékenységeket tartalmazó naplók a legújabb definíció- és igazodik a [diagnosztikai naplók](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#what-you-can-do-with-diagnostic-logs). Az érdeklődő váratlan hatásra, az adatok szivattyúzó tevékenység log csatornán keresztül, az alább hivatkozott módosítás esetén.
 - **Tevékenység naplózási csatornába kapcsolatos problémák:** A Recovery Services-tárolók az Azure Backup műveletnaplóinak főfenékvízcsövön új modell áthelyeztük. Sajnos az áthelyezés hatással vannak a független Felhőkben Azure vizsgálati naplók létrehozása. Azure szuverén felhő felhasználók létrehozása vagy nincs konfigurálva az Azure monitoron keresztül Tevékenységnaplók riasztásokkal, ha, akkor nem aktiválódik. Emellett minden nyilvános Azure-régióban, ha egy felhasználó gyűjti Recovery Services-Tevékenységnaplók egy Log Analytics-munkaterületre említettek szerint a [Itt](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs), ezek a naplók még nem jelent.
 
 Ezért ajánlott használni Log Analytics-munkaterületet, és a riasztásra, az Azure biztonsági mentés a védett munkaterhelések.

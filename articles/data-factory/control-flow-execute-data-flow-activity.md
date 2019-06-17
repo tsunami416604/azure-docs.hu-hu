@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: c33219eacb1d3bada5630a7792f98ba33dba824e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: e75c6290474d876ca22b5888d06b1fc0e4c8cd05
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235866"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077322"
 ---
 # <a name="execute-data-flow-activity-in-azure-data-factory"></a>Data flow tevékenység végrehajtása az Azure Data Factoryban
 A végrehajtási adatok folyamat tevékenység használatával futtassa az ADF adatfolyama folyamatfuttatások hibakeresési (védőfal), és az aktivált folyamatfuttatások.
@@ -72,7 +72,7 @@ Az adatfolyam-tevékenységek a Spark-végrehajtási környezet felett van. Az a
 
 ### <a name="staging-area"></a>Átmeneti terület
 
-Ha az adatok Azure Data Warehouse-ba is elhelyezés, választania kell a Polybase kötegelt betöltés előkészítési helyet.
+Ha az adatok Azure Data Warehouse-ba is elhelyezés, választania kell a Polybase kötegelt betöltés előkészítési helyet. Az előkészítési beállításokat, amelyek csak az Azure Data Warehouse számítási feladatok alkalmazhatók.
 
 ## <a name="parameterized-datasets"></a>A paraméteres adatkészletek
 

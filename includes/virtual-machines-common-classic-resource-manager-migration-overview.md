@@ -9,10 +9,10 @@ ms.date: 04/25/2019
 ms.author: jeconnoc
 ms.custom: include file
 ms.openlocfilehash: 289912e1519a68ae607ace7766e35731af0016b9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66158270"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>A platform által támogatott áttelepítés IaaS-erőforrások klasszikusból Azure Resource Manager
@@ -99,10 +99,10 @@ Hálózati biztonsági csoportok, útválasztási táblázatokat és a fenntarto
 ## <a name="unsupported-features-and-configurations"></a>Nem támogatott funkciók és konfigurációk
 Egyes szolgáltatások és a konfiguráció jelenleg nem támogatott; a következő szakaszok ismertetik az ajánlásokat közöttük.
 
-### <a name="unsupported-features"></a>Nem támogatott szolgáltatások
+### <a name="unsupported-features"></a>Nem támogatott funkciók
 A következő funkciók jelenleg nem támogatottak. Szükség esetén távolítsa el ezeket a beállításokat, a virtuális gépek migrálása, és majd engedélyezze újra a beállításokat a Resource Manager-alapú üzemi modellben.
 
-| Erőforrás-szolgáltató | Szolgáltatás | Ajánlás |
+| Erőforrás-szolgáltató | Funkció | Ajánlás |
 | --- | --- | --- |
 | Compute | Társítatlan virtuálisgép-lemezeket. | Mögött ezek a lemezek Virtuálismerevlemez-blobokat fog települnek, ha telepít át a Storage-fiók |
 | Compute | Virtuálisgép-lemezképeket. | Mögött ezek a lemezek Virtuálismerevlemez-blobokat fog települnek, ha telepít át a Storage-fiók |

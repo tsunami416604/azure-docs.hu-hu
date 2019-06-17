@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: jingwang
 ms.openlocfilehash: ee47f464c59bd9deed98671f19cfcc6d2c3c1b39
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60546641"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával REST-végponton
@@ -287,7 +287,7 @@ Az általános REST-összekötő a következő tördelés mintát támogat:
 
 | Kulcs | Leírás |
 |:--- |:--- |
-| AbsoluteUrl | Azt jelzi, hogy az URL-cím a következő kérés kiadása. Ez lehet **vagy abszolút vagy relatív URL-**. |
+| AbsoluteUrl | Azt jelzi, hogy az URL-cím a következő kérés kiadása. Ez lehet **vagy abszolút vagy relatív URL-** . |
 | QueryParameters. *request_query_parameter* vagy QueryParameters [request_query_parameter] | "request_query_parameter" a felhasználó által definiált hivatkozik egy lekérdezési paraméter neve a következő HTTP-kérelem URL-címében. |
 | Fejlécek. *request_header* vagy fejlécek [request_header] | "request_header" a felhasználó által definiált egy fejléc neve a következő HTTP-kérelem hivatkozik. |
 

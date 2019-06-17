@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 01020a23b102c896bbeb3d8cf455afabfc164917
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 1e96431af575533566786341750e17e7a7f446e0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66165348"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076029"
 ---
 ## <a name="prepare-for-akv-integration"></a>Készítse elő az AKV-integráció
 Az Azure Key Vault-integráció konfigurálása az SQL Server virtuális gép használatához van néhány előfeltételnek: 
@@ -32,7 +32,7 @@ A következő szakaszok ismertetik ezeket az előfeltételeket és a informáci�
 [!INCLUDE [updated-for-az](./updated-for-az.md)]
 
 ### <a id="install"></a> Az Azure PowerShell telepítése
-Győződjön meg arról, hogy a legújabb Azure PowerShell SDK telepítése. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/install-az-ps) foglalkozó témakörben talál.
+Győződjön meg arról, hogy telepítette a legújabb Azure PowerShell-modul. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/install-az-ps) foglalkozó témakörben talál.
 
 ### <a id="register"></a> Alkalmazás regisztrálása az Azure Active Directoryban
 

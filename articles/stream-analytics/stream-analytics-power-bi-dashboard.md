@@ -7,16 +7,16 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.custom: seodec18
-ms.openlocfilehash: 487c142400dc2bfa6f44e17963535051af017196
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/11/2019
+ms.openlocfilehash: 0e67a56e3d723874ed93fc8dcad91e3063d923ed
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60817764"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076186"
 ---
-# <a name="tutorial-stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Oktatóanyag: Stream Analytics és a Power bi-ban: A valós idejű elemzési irányítópultok, a streamelési adatok
+# <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics és a Power bi-ban: A valós idejű elemzési irányítópultok, a streamelési adatok
+
 Az Azure Stream Analytics lehetővé teszi, hogy a vezető Üzletiintelligencia-eszközök, egy [Microsoft Power BI](https://powerbi.com/). Ebből a cikkből megtudhatja, hogyan hozzon létre Üzletiintelligencia-eszközök a Power BI kimenetként a az Azure Stream Analytics-feladatokhoz. Azt is megtudhatja, hogyan hozhat létre és használhat a valós idejű irányítópultok.
 
 Ez a cikk továbbra is a Stream Analyticsből származó [valós idejű csalásészlelés](stream-analytics-real-time-fraud-detection.md) oktatóanyag. Azt, hogy az oktatóanyagban létrehozott munkafolyamat épül, és a kimeneti Stream Analytics-feladat által észlelt rosszindulatú telefonhívásokat jelenítheti meg, hogy a Power BI hozzáadja. 
@@ -38,41 +38,31 @@ A csalások valós idejű észlelése az oktatóanyagban a kimeneti küld az Azu
 
 1. Az Azure Portalon nyissa meg a korábban létrehozott Stream Analytics-feladat. Ha a javasolt nevet használt, a feladat neve `sa_frauddetection_job_demo`.
 
-2. Válassza ki a **kimenetek** közepén a projekt irányítópultján mezőbe, majd **+ Hozzáadás**.
+2. A bal oldali menüben válassza ki a **kimenetek** alatt **feladattopológia**. Ezután válassza ki **+ Hozzáadás** válassza **Power BI** a legördülő menüből.
 
-3. A **kimeneti Alias**, adja meg `CallStream-PowerBI`. Más nevet is használhat. Ha így tesz, jegyezze fel, mert később szüksége lesz a neve. 
+3. Válassza a **+ Hozzáadás** > **Power BI** lehetőséget. Töltse ki az űrlapot a következő értékekkel, majd válassza az **Engedélyezés** lehetőséget:
 
-4. A **fogadó**válassza **Power BI**.
+   |**Beállítás**  |**Ajánlott érték**  |
+   |---------|---------|
+   |Kimeneti alias  |  CallStream-PowerBI  |
+   |Adatkészlet neve  |   sa-dataset  |
+   |Tábla neve |  fraudulent-calls  |
 
-   ![Hozzon létre egy kimenetet a Power bi-hoz](./media/stream-analytics-power-bi-dashboard/create-power-bi-ouptut.png)
+   ![Stream Analytics-kimenetben konfigurálása](media/stream-analytics-power-bi-dashboard/configure-stream-analytics-output.png)
 
-5. Kattintson a **engedélyezése**.
+   > [!WARNING]
+   > Ha a Power BI egy adatkészletet és egy táblázatot, amely azokat a Stream Analytics-feladatban megadott nevével megegyező nevet kell, felülírják a már meglévőket.
+   > Azt javasoljuk, hogy ne explicit módon hozzon létre ezzel az adatkészlettel és táblát a Power BI-fiókjában. Ezek automatikusan jönnek létre a Stream Analytics-feladat indítása és a feladat kimeneti szivattyútelepek elindítja a Power BI-bA. A feladat lekérdezés nem ad vissza eredményt, ha az adatkészlet és a táblázat nem jönnek létre.
+   >
 
-    Egy ablak, ahol megadhatja az Azure-beli hitelesítő egy munkahelyi vagy iskolai fiókot. 
-
-    ![Adja meg hitelesítő adatait a Power bi-bA a hozzáféréshez](./media/stream-analytics-power-bi-dashboard/power-bi-authorization-credentials.png)
-
-6. Adja meg hitelesítő adatait. Vegye figyelembe, és megadta a hitelesítő adatait, akkor van is jogosultságot a Streaming Analytics-feladat a Power BI terület eléréséhez.
-
-7. Amikor visszatér a **új kimenet** panelen adja meg a következőket:
-
-   * **A csoport munkaterület**: Válasszon ki egy munkaterületet, ahol szeretné létrehozni az adatkészletet a Power BI bérlőben.
-   * **Adatkészlet neve**:  Írja be a `sa-dataset` (igen) kifejezést. Más nevet is használhat. Ha így tesz, győződjön meg arról, jegyezze fel későbbi használatra.
-   * **Tábla neve**: Írja be a `fraudulent-calls` (igen) kifejezést. A Stream Analytics-feladatok a Power BI-kimenet jelenleg csak egy tábla egy adatkészlet rendelkezhet.
-
-     ![A Power BI-munkaterület adatkészletet és táblázat](./media/stream-analytics-power-bi-dashboard/create-pbi-ouptut-with-dataset-table.png)
-
-     > [!WARNING]
-     > Ha a Power BI egy adatkészletet és egy táblázatot, amely azokat a Stream Analytics-feladatban megadott nevével megegyező nevet kell, felülírják a már meglévőket.
-     > Azt javasoljuk, hogy ne explicit módon hozzon létre ezzel az adatkészlettel és táblát a Power BI-fiókjában. Ezek automatikusan jönnek létre a Stream Analytics-feladat indítása és a feladat kimeneti szivattyútelepek elindítja a Power BI-bA. A feladat lekérdezés nem ad vissza eredményt, ha az adatkészlet és a táblázat nem jönnek létre.
-     >
+4. Miután kiválasztotta az **Engedélyezés** lehetőséget, megjelenik egy előugró ablak, ahol meg kell adnia a hitelesítő adatait a Power BI-fiókja hitelesítéséhez. A sikeres hitelesítés után válassza a **Mentés** lehetőséget a beállítások mentéséhez.
 
 8. Kattintson a **Create** (Létrehozás) gombra.
 
 Az adatkészlet jön létre a következő beállításokkal:
 
-* **defaultRetentionPolicy: BasicFIFO**: Adatok FIFO, legfeljebb 200 000 sort.
-* **defaultMode: pushStreaming**: Az adatkészlet támogatja a streamelési csempék és a hagyományos jelentés-alapú Vizualizációk (más néven) leküldés).
+* **defaultRetentionPolicy: BasicFIFO** -adata FIFO, legfeljebb 200 000 sort.
+* **defaultMode: pushStreaming** -adatkészlet streamelési csempék és a jelentés-alapú hagyományos Vizualizációk (leküldés) is támogatja.
 
 Az adatkészletek jelenleg nem hozható létre más jelzővel.
 
@@ -90,54 +80,52 @@ A Power BI-adatkészletek kapcsolatos további információkért lásd: a [Power
     >[!NOTE]
     >Ha ezt tette nincs a bemeneti `CallStream` csalásészlelés oktatóanyagban helyett írja be a `CallStream` a a **FROM** és **CSATLAKOZZON** záradékok a lekérdezésben.
 
-        ```SQL
-        /* Our criteria for fraud:
-        Calls made from the same caller to two phone switches in different locations (for example, Australia and Europe) within five seconds */
+   ```SQL
+   /* Our criteria for fraud:
+   Calls made from the same caller to two phone switches in different locations (for example, Australia and Europe) within five seconds */
 
-        SELECT System.Timestamp AS WindowEnd, COUNT(*) AS FraudulentCalls
-        INTO "CallStream-PowerBI"
-        FROM "CallStream" CS1 TIMESTAMP BY CallRecTime
-        JOIN "CallStream" CS2 TIMESTAMP BY CallRecTime
+   SELECT System.Timestamp AS WindowEnd, COUNT(*) AS FraudulentCalls
+   INTO "CallStream-PowerBI"
+   FROM "CallStream" CS1 TIMESTAMP BY CallRecTime
+   JOIN "CallStream" CS2 TIMESTAMP BY CallRecTime
 
-        /* Where the caller is the same, as indicated by IMSI (International Mobile Subscriber Identity) */
-        ON CS1.CallingIMSI = CS2.CallingIMSI
+   /* Where the caller is the same, as indicated by IMSI (International Mobile Subscriber Identity) */
+   ON CS1.CallingIMSI = CS2.CallingIMSI
 
-        /* ...and date between CS1 and CS2 is between one and five seconds */
-        AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5
+   /* ...and date between CS1 and CS2 is between one and five seconds */
+   AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5
 
-        /* Where the switch location is different */
-        WHERE CS1.SwitchNum != CS2.SwitchNum
-        GROUP BY TumblingWindow(Duration(second, 1))
-        ```
+   /* Where the switch location is different */
+   WHERE CS1.SwitchNum != CS2.SwitchNum
+   GROUP BY TumblingWindow(Duration(second, 1))
+   ```
 
 4. Kattintson a **Save** (Mentés) gombra.
 
 
 ## <a name="test-the-query"></a>A lekérdezés tesztelése
+
 Ez a szakasz az opcionális de javasolt. 
 
 1. Ha a TelcoStreaming alkalmazást jelenleg nem fut, indítsa el az alábbi lépéseket:
 
-    * Nyisson meg egy parancsablakot.
+    * Nyissa meg a parancssort.
     * Lépjen abba a mappába, amelyeknél a telcogenerator.exe és a módosított telcodatagen.exe.config fájlokat.
-    * Futtassa az alábbi parancsot:
+    * Futtassa a következő parancsot:
 
        `telcodatagen.exe 1000 .2 2`
 
-2. Az a **lekérdezés** panelen kattintson a Tovább gombra a pontra a `CallStream` adja meg, és válassza ki **mintaadatok bemenetből**.
+2. Az a **lekérdezés** a Stream Analytics-feladat oldalára, kattintson a Tovább gombra a pontra a `CallStream` adja meg, és válassza ki **mintaadatok bemenetből**.
 
 3. Adja meg, hogy három perc alatt az adatokat, majd kattintson **OK**. Várjon, amíg a rendszer értesíti arról, hogy az adatok mintavételezése befejeződött.
 
-4. Kattintson a **Tesztelés** elemre, és ellenőrizze, hogy megkapja-e az eredményeket.
-
+4. Kattintson a **teszt** , és tekintse át az eredményeket.
 
 ## <a name="run-the-job"></a>A feladat futtatása
 
-1. Győződjön meg arról, hogy fut-e a TelcoStreaming alkalmazást.
+1. Ellenőrizze, hogy a TelcoStreaming alkalmazás fut-e.
 
-2. Zárja be a **lekérdezés** panelen.
-
-3. A feladat panelen kattintson a **Start**.
+2. Keresse meg a **áttekintése** lapon a Stream Analytics-feladat, és válassza **Start**.
 
     ![A Stream Analytics-feladat indítása](./media/stream-analytics-power-bi-dashboard/stream-analytics-sa-job-start-output.png)
 

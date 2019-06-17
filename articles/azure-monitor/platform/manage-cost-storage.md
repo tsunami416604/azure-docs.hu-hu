@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 06/06/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 8eeb29b2d1fe17ae5581dab81c34d5c2c635a6c2
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 3cad3722a9d0a52b1a0e66c760e948ceb3c1671c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496342"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061048"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Használat és költségek az Azure Monitor naplóira kezelése
 
@@ -108,10 +108,12 @@ Az alábbi lépéseket adatért által a munkaterületen milyen hosszú log konf
 
 ## <a name="legacy-pricing-tiers"></a>Örökölt tarifacsomagok
 
-Előfizetések, aki eddig egy Log Analytics-munkaterület és Application Insights-erőforrást, 2018. április 2. előtt, vagy 2019. február 1. előtt elindított nagyvállalati szerződéshez kapcsolódó továbbra is hozzáférhetnek a tarifacsomagok régebbi: Ingyenes, önálló (GB-onként) és a csomópontonként (OMS).  Az ingyenes díjcsomag munkaterületein napi korlátja 500 MB (kivéve az Azure Security Center által gyűjtött biztonsági adattípusok) adatbetöltés fog rendelkezni, és az adatmegőrzés legfeljebb 7 napig. Az ingyenes díjcsomag kizárólag értékelési célokra szolgál. Az önálló vagy Csomópontonkénti tarifacsomagok munkaterületek hozzáférése adatmegőrzés 2 éves. 
+Előfizetések, aki eddig egy Log Analytics-munkaterület és Application Insights-erőforrást, 2018. április 2. előtt, vagy 2019. február 1. előtt elindított nagyvállalati szerződéshez kapcsolódó továbbra is hozzáférhetnek a tarifacsomagok régebbi: **Ingyenes**, **önálló (GB-onként)** és **Csomópontonkénti (OMS)** .  Az ingyenes díjcsomag munkaterületein napi korlátja 500 MB (kivéve az Azure Security Center által gyűjtött biztonsági adattípusok) adatbetöltés fog rendelkezni, és az adatmegőrzés legfeljebb 7 napig. Az ingyenes díjcsomag kizárólag értékelési célokra szolgál. Az önálló vagy Csomópontonkénti tarifacsomagok munkaterületekre akár 2 évig fenntartása felhasználó által konfigurálható. 
 
 > [!NOTE]
 > Az OMS E1 csomag, OMS E2 csomagot vagy a System Center OMS bővítményének megvásárlásából származó jogosultságok használatához válassza a Log Analytics *Csomópontonkénti* tarifacsomag.
+
+A Log Analytics legkorábbi belépők is van hozzáférése az eredeti tarifacsomagok **Standard** és **prémium**, amely rendre kijavítása adatmegőrzés, 30 és 365 nap. 
 
 ## <a name="changing-pricing-tier"></a>A tarifacsomag módosítása
 
@@ -410,6 +412,11 @@ A második lekérdezéshez tartozó riasztás létrehozásakor – amikor több 
 Megadhat egy meglévő [műveletcsoportot](action-groups.md), illetve létrehozhat egy újat, hogy értesítést kapjon, amikor egy naplóriasztás megfelel a feltételeknek.
 
 Riasztás fogadásakor kövesse a következő szakaszban leírt lépéseket a vártnál magasabb szintű használatot okozó hibák elhárításához.
+
+## <a name="limits-summary"></a>Korlátozások összegzése
+
+Van néhány további Log Analytics-korlátok, a, amelyek a Log Analytics tarifacsomagot függenek. Ezek vannak dokumentálva [Itt](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-limits).
+
 
 ## <a name="next-steps"></a>További lépések
 

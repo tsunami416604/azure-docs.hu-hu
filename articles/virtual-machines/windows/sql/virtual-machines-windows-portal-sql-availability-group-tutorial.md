@@ -17,10 +17,10 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.openlocfilehash: d86538fca907f7181bf58ff236bba8de186641fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60593612"
 ---
 # <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>Oktatóanyag: Konfigurálása Always On rendelkezésre állási csoportot az Azure virtuális Gépen manuálisan
@@ -114,7 +114,7 @@ Az SQL Server hozzáadása a fürthöz.
 
 1. Kattintson a **tovább**.
 
-1. Kattintson a **Befejezés** gombra.
+1. Kattintson a **Befejezés**gombra.
 
    A Feladatátvevőfürt-kezelő jeleníti meg, hogy a fürt rendelkezik egy új csomópont, és felsorolja a a **csomópontok** tároló.
 
@@ -177,7 +177,7 @@ Következő lépésként állítsa a fürt kvórumát.
 
 1. Ellenőrizze a beállításokat a **megerősítő**. Kattintson a **tovább**.
 
-1. Kattintson a **Befejezés** gombra.
+1. Kattintson a **Befejezés**gombra.
 
 Egy tanúsító fájlmegosztást a fürt alapvető erőforrásai vannak konfigurálva.
 
@@ -299,7 +299,7 @@ Most már készen áll az alábbi lépéseket követve rendelkezésre állási c
 
     ![Új rendelkezésre állási csoport varázsló kezdeti adatszinkronizálás kiválasztása](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
 
-8. Az a **kezdeti adatszinkronizálás kiválasztása** lapra, jelölje be **teljes** , és adja meg egy megosztott hálózati helyre. A helyet használja a [létrehozott biztonsági másolatok megosztásáról](#backupshare). A példában volt  **\\ \\ \<első SQL-kiszolgáló\>\Backup\\**. Kattintson a **tovább**.
+8. Az a **kezdeti adatszinkronizálás kiválasztása** lapra, jelölje be **teljes** , és adja meg egy megosztott hálózati helyre. A helyet használja a [létrehozott biztonsági másolatok megosztásáról](#backupshare). A példában volt  **\\ \\ \<első SQL-kiszolgáló\>\Backup\\** . Kattintson a **tovább**.
 
    >[!NOTE]
    >Teljes szinkronizálás teljes biztonsági másolatot készít az adatbázis az SQL Server első példányát, és visszaállítja a második példány. A nagy méretű adatbázisok esetében a teljes szinkronizálás nem javasolt, mert hosszú ideig is eltarthat. Most manuálisan az adatbázis biztonsági mentése és visszaállítása, az csökkentheti `NO RECOVERY`. Ha az adatbázis már visszaállítva a `NO RECOVERY` válassza ki a második SQL Serveren a rendelkezésre állási csoport konfigurálása előtt **csak összekapcsolás**. Ha szeretné venni a biztonsági mentés a rendelkezésre állási csoport konfigurálása után, válassza a **kezdeti adatszinkronizálás kihagyása**.

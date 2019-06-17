@@ -10,12 +10,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: kasparks
-ms.openlocfilehash: 1a72225ce29b7a94f2fc402488f6b998cde0a0fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2ccac3bf9a882dc021c6c969946ad9d439a7cf5d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467986"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069688"
 ---
 # <a name="introduction-to-azure-advisor"></a>Bevezetés az Azure Advisor
 
@@ -61,7 +61,9 @@ Advisor-javaslatok, elérheti *tulajdonosa*, *közreműködői*, vagy *olvasó* 
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Milyen erőforrások Advisor nyújt ajánlásokat?
 
-Az Advisor javaslatokat tesz a virtuális gépek, a rendelkezésre állási csoportok, az application Gateway átjárók, alkalmazásszolgáltatások, SQL Server-kiszolgálók és Azure Cache redis.
+Az Advisor ajánlásokkal az Application Gateway, alkalmazásszolgáltatások, rendelkezésre állási csoportok az Azure nyilvános, Azure Cache, az Azure Data Factory áttekintése, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database for MariaDB, az Azure ExpressRoute, az Azure Cosmos dB-ben IP-címek, az SQL Data Warehouse, SQL Server-kiszolgálók, a storage-fiókok, Traffic Manager-profilok és a virtuális gépek.
+
+Az Azure Advisor is magában foglalja a javaslatainak [az Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-recommendations) előfordulhat, hogy többek között további erőforrástípusok vonatkozó javaslatokat.
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>Halassza el vagy elvetheti a javaslatot?
 

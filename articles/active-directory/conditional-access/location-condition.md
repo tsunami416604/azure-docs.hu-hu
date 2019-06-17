@@ -1,5 +1,5 @@
 ---
-title: Mi a helyfeltétel az Azure Active Directory feltételes hozzáférés? | Microsoft Docs
+title: Mi az a hely feltétel, az Azure Active Directory feltételes hozzáférés? | Microsoft Docs
 description: Megtudhatja, hogyan férhet hozzá a felhőalapú alkalmazások, a felhasználó hálózati helye alapján a hely feltétel használatával.
 services: active-directory
 ms.service: active-directory
@@ -12,14 +12,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98588e0c25439fd4988fe39e06e7042cfa9113cb
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 886118614427bea61f745e1ded28824b60225919
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305685"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112292"
 ---
-# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Mi a helyfeltétel az Azure Active Directory feltételes hozzáférés? 
+# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Mi az a hely feltétel, az Azure Active Directory feltételes hozzáférés? 
 
 A [Azure Active Directory (Azure AD) feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md), szabályozhatja, hogy jogosult felhasználók hozzáférhetnek a felhőbeli alkalmazásokat. A hely feltétel egy feltételes hozzáférési szabályzat segítségével elősegítsék a hálózati helyek, a felhasználók a hozzáférés vezérlők beállításai.
 
@@ -58,7 +58,7 @@ Egy elnevezett helye a következő összetevőket tartalmazza:
 
 Az Azure ad-ben a kapcsolódó objektum mérete konfigurálható nevesített helyek száma korlátozza. Szervezetek is 90 nevesített helyek konfigurálása, akár 1200-as IP-címtartományok egyes konfigurálva.
 
-Feltételes hozzáférési szabályzat vonatkozik az IPv4 és IPv6-forgalmat. Jelenleg nevesített helyek nem teszik lehetővé az IPv6-tartományok konfigurálását. Ez a korlátozás hatására a következő helyzetekben:
+IPv4 és IPv6-forgalmat a feltételes hozzáférési szabályzat vonatkozik. Jelenleg nevesített helyek nem teszik lehetővé az IPv6-tartományok konfigurálását. Ez a korlátozás hatására a következő helyzetekben:
 
 - Feltételes hozzáférési szabályzat nem tudja megcélozni megadott IPv6-tartományok
 - Feltételes hozzáférési szabályzat nem zárhatók ki egyedi IPV6-tartományok
@@ -145,5 +145,5 @@ API és PowerShell még nem támogatott nevesített helyek vagy feltételes hozz
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha azt szeretné tudni, hogyan lehet feltételes hozzáférési szabályzat konfigurálása, lásd: [többtényezős hitelesítés megkövetelése az Azure Active Directory feltételes hozzáférés az adott alkalmazások](app-based-mfa.md).
-- Ha kész feltételes hozzáférési szabályzatokat konfigurálni a környezetében, tekintse át [az Azure Active Directory feltételes hozzáféréssel kapcsolatos ajánlott eljárásait](best-practices.md).
+- Ha azt szeretné tudni, hogyan lehet feltételes hozzáférési szabályzat konfigurálása, lásd: [megkövetelése MFA konkrét alkalmazások esetén az Azure Active Directory feltételes hozzáférés](app-based-mfa.md).
+- Ha készen áll a környezetre vonatkozó feltételes hozzáférési szabályzatok konfigurálására, tekintse meg a [gyakorlati tanácsok az Azure Active Directory feltételes hozzáférés](best-practices.md).

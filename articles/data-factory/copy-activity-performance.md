@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/28/2019
+ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 81a5f99b0babd79af0034f684c45bfcf1bb25bd8
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 3ae6966ed3fa8ee57e0ac85fe34866dcbde0fb9e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66425620"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077250"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Másolási tevékenységek teljesítményéhez és finomhangolási útmutató
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](v1/data-factory-copy-activity-performance.md)
 > * [Aktuális verzió](copy-activity-performance.md)
 
@@ -85,7 +85,7 @@ A **adatok integrációs egység (DIU)** (korábbi nevén a Felhőbeli adatáthe
 
 | Másolja ki a forgatókönyv | Szolgáltatás által meghatározott alapértelmezett DIUs |
 |:--- |:--- |
-| Adatok másolása a fájlalapú tárolók között | 4. és a fájlok mérete és száma 32 között. |
+| Adatok másolása a fájlalapú tárolók között | 4\. és a fájlok mérete és száma 32 között. |
 | Egyéb másolási forgatókönyvek esetén | 4 |
 
 Ez az alapértelmezett felülbírálásához, adjon meg értéket a **dataIntegrationUnits** tulajdonság az alábbiak szerint. A **megengedett értékek** számára a **dataIntegrationUnits** tulajdonság **legfeljebb 256**. A **DIUs tényleges számát** egyenlő vagy kisebb, mint a beállított érték, a adatmintát attól függően, hogy a másolási művelet használ a futási időben. További információ a teljesítmény szintjét egy adott másolási forrásaként és fogadó további egységek konfigurálásakor kaphat,: a [teljesítményfigyelési](#performance-reference).
@@ -306,7 +306,7 @@ Győződjön meg arról, hogy az alapul szolgáló adattár nem túlterhelik az 
 
 A Microsoft olyan adattárakban, tekintse meg [megfigyelés és finomhangolás témakörök](#performance-reference) kifejezetten az adattárakban. Ezek a témakörök segítségével megismerheti a data store teljesítményt nyújt és a válaszidők csökkentése érdekében, és az átviteli teljesítmény.
 
-* Ha az adatok másolása **az SQL Data Warehouse a Blob storage-ból**, érdemes lehet **PolyBase** teljesítményének növelése érdekében. Lásd: [bA a PolyBase használatával az adatok betöltése az Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) részleteiről.
+* Ha az adatok másolása **származó adatok tárolása az Azure SQL Data Warehouse**, érdemes lehet **PolyBase** teljesítményének növelése érdekében. Lásd: [bA a PolyBase használatával az adatok betöltése az Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) részleteiről.
 * Ha az adatok másolása **Azure Blob/az Azure Data Lake Store a HDFS-ből**, érdemes lehet **DistCp** teljesítményének növelése érdekében. Lásd: [használja a DistCp használatával adatait átmásolhatja a HDFS](connector-hdfs.md#use-distcp-to-copy-data-from-hdfs) részleteiről.
 * Ha az adatok másolása **az Azure SQL Data Warehouse vagy az Azure BLob-vagy az Azure Data Lake Store redshiftből**, fontolja meg **UNLOAD** teljesítményének növelése érdekében. Lásd: [használata UNLOAD adatokat másol az Amazon Redshift](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift) részleteiről.
 
@@ -317,10 +317,8 @@ A Microsoft olyan adattárakban, tekintse meg [megfigyelés és finomhangolás t
 
 ### <a name="relational-data-stores"></a>Relációs adattárak
 
-* **Másolja a viselkedés**: A Tulajdonságok függően beállított **sqlSink**, a másolási tevékenység adatokat ír a céladatbázis különböző módon.
-  * Alapértelmezés szerint az adatok adatátviteli szolgáltatás által a tömeges másolási API-t az adatok beszúrása hozzáfűzése üzemmódot, amely a lehető legjobb teljesítményt biztosít.
-  * Ha a fogadó tárolt eljárás konfigurálja, az adatbázis az adatokat egy sort egy kötegelt betöltés, hanem egyszerre vonatkozik. Teljesítmény jelentősen csökken. Ha az adatkészlet túl nagy, ha lehetséges, fontolja meg, hogy használatával a **preCopyScript** tulajdonság.
-  * Ha konfigurálja a **preCopyScript** tulajdonság minden egyes másolási tevékenység futtatása, a szolgáltatás aktiválása a parancsfájl és majd illessze be az adatokat a tömeges másolási API-t használja. Például a teljes tábla felülírja a legújabb adatokkal, is megadhat egy parancsfájlt, amely először törölje az összes rekordot a forrás az új adatok tömeges-betöltés előtt.
+* **Másolja ki a viselkedést, és a teljesítmény utalás**: Többféleképpen írja az adatokat, az SQL-fogadó, és ismerje meg alaposabban [ajánlott eljárás az adatok betöltéséhez az Azure SQL Database-be](connector-azure-sql-database.md#best-practice-for-loading-data-into-azure-sql-database).
+
 * **A minta és a batch adatméret**:
   * A következő tábla sémáját másolási átviteli sebesség hatással van. Az azonos mennyiségű adatot másolni, egy nagy méretű sor mérete ad egy kis sorméret jobb teljesítményt, mert az adatbázis hatékonyabban véglegesítheti kevesebb váró adatokat.
   * A másolási tevékenység adatokat egy sorozat része kötegek szúr be. Beállíthatja a sorok számát a batch segítségével a **writeBatchSize** tulajdonság. Ha az adatok kis sorral rendelkezik, akkor lehet beállítani a **writeBatchSize** tulajdonság számára, hogy alacsonyabb batch terhelést és nagyobb átviteli sebességet a magasabb értékű. Ha az adatokat a sor mérete túl nagy, ügyeljen arra, ha növeli **writeBatchSize**. Egy magas szintű egy példány hibáját okozta. az adatbázis terhelve vezethet.

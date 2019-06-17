@@ -8,10 +8,10 @@ ms.date: 04/08/2019
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: 5490149f199c2d7887716ceae3f035527ad33961
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66170036"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Állítsa be a VMware virtuális gépek vészhelyreállítása az Azure-ban a PowerShell-lel
@@ -105,7 +105,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 Állítsa be a tárolási környezet, a Set-ASRVaultContext parancsmag használatával. Beállítása után a PowerShell-munkamenetben későbbi Azure Site Recovery-műveletek a kiválasztott tár környezetében történik.
 
 > [!TIP]
-> A legtöbb parancsmag könnyen használható aliasok az Azure Site Recovery PowerShell modul (Az.RecoveryServices modul) tartalmaz. A modul parancsmagjai utat  *\<művelet >-**AzRecoveryServicesAsr**\<objektum >* és egyenértékű aliast is beállíthat, amely formájában  *\< A művelet >-**ASR**\<objektum >*. Ebben a cikkben a parancsmag aliasok átláthatóbbá tétele.
+> A legtöbb parancsmag könnyen használható aliasok az Azure Site Recovery PowerShell modul (Az.RecoveryServices modul) tartalmaz. A modul parancsmagjai utat  *\<művelet >-**AzRecoveryServicesAsr**\<objektum >* és egyenértékű aliast is beállíthat, amely formájában  *\< A művelet >-**ASR**\<objektum >* . Ebben a cikkben a parancsmag aliasok átláthatóbbá tétele.
 
 Az alábbi példában a tároló részleteit a $vault változójával adja meg a tárolási környezetet a PowerShell-munkamenetben.
 
@@ -348,7 +348,7 @@ Szüksége lesz a felderített virtuális gépek védelme érdekében a követke
 Most már az ebben a táblázatban megadott beállításokat használja a következő virtuális gépek replikálása
 
 
-|Virtuális gép  |Folyamatkiszolgáló        |Tárfiók              |Log Storage-fiók  |Házirend           |A fiók a mobilitási szolgáltatás telepítése|Célzott erőforráscsoport  | Cél virtuális hálózata  |Cél alhálózat  |
+|Virtuális gép  |Folyamatkiszolgáló        |Tárfiók              |Log Storage-fiók  |Szabályzat           |A fiók a mobilitási szolgáltatás telepítése|Céloldali erőforráscsoport  | Cél virtuális hálózattal  |Cél alhálózat  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
 |Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |
 |CentOSVM1       |ConfigurationServer   |replicationstdstorageaccount1| –                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   

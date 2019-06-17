@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/29/2019
 ms.author: yegu
-ms.openlocfilehash: cdf0ce26ab3a8056fb40bc54ba6336b7cfd69ec0
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 6b27b27fedf622908fa5c06bd2562d9049a4366b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230112"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052055"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis – Gyakori kérdések
 Ismerje meg a válaszok a gyakori kérdésekre, minták és ajánlott eljárások az Azure Cache redis.
@@ -136,8 +136,8 @@ Ebből a táblázatból a következő következtetéseket is azt:
 | Tarifacsomag | Méret | Processzormagok | Rendelkezésre álló sávszélesség | 1 KB-os méret | 1 KB-os méret |
 | --- | --- | --- | --- | --- | --- |
 | **Standard szintű gyorsítótár mérete** | | |**Megabit / mp (Mb/s) vagy megabájt / másodperc (MB/s)** |**Második (RPS) a nem SSL-kérelemből** |**A kérelmek száma a második (RPS) SSL** |
-| C0 | 250 MB | Megosztva | 100 / 12.5  |  15,000 |   7,500 |
-| C1 |   1 GB | 1.      | 500 / 62.5  |  38,000 |  20,720 |
+| C0 | 250 MB | Megosztott | 100 / 12.5  |  15,000 |   7,500 |
+| C1 |   1 GB | 1      | 500 / 62.5  |  38,000 |  20,720 |
 | C2 | 2,5 GB | 2      | 500 / 62.5  |  41,000 |  37,000 |
 | C3 |   6 GB | 4      | 1000 / 125  | 100,000 |  90,000 |
 | C4 |  13 GB | 2      | 500 / 62.5  |  60,000 |  55,000 |
@@ -168,7 +168,7 @@ Igen, Azure Cache redis érhető el az Azure Government Cloud, Azure China 21Via
 | Felhő   | A Redis DNS-utótag            |
 |---------|---------------------------------|
 | Nyilvános  | *.redis.cache.windows.net       |
-| US Gov  | *.redis.cache.usgovcloudapi.net |
+| USA-beli államigazgatás  | *.redis.cache.usgovcloudapi.net |
 | Németország | *.redis.cache.cloudapi.de       |
 | Kína   | *.redis.cache.chinacloudapi.cn  |
 
@@ -251,7 +251,7 @@ A webhelyen felsorolt parancsok bármelyikét használhatja [Redis parancsok](ht
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> A Redis parancssori eszközök sem működik együtt az SSL-port, de egy segédprogramot használhatja például `stunnel` való biztonságos csatlakozáshoz az eszközök az SSL-port utasításait követve a [bejelentése ASP.NET munkamenetállapot-szolgáltatóját Redis előzetes verzió Kiadási](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) blogbejegyzést.
+> A Redis parancssori eszközök sem működik együtt az SSL-port, de egy segédprogramot használhatja például `stunnel` való biztonságos csatlakozáshoz az eszközök az SSL-port utasításait követve a [a Redis parancssori eszköz használata az Azure Cache redis ](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool) cikk.
 >
 >
 
@@ -403,7 +403,7 @@ void Application_Start(object sender, EventArgs e)
 ```
 
   > [!NOTE]
-  > Ez a metódus a megadott érték egy globális beállítás, az egész AppDomain érintő. Ha például egy 4 magos gépet, és szeretné beállítani *minWorkerThreads* és *minIoThreads* futási időben CPU / 50, használja **ThreadPool.SetMinThreads (200-as, 200-as)**.
+  > Ez a metódus a megadott érték egy globális beállítás, az egész AppDomain érintő. Ha például egy 4 magos gépet, és szeretné beállítani *minWorkerThreads* és *minIoThreads* futási időben CPU / 50, használja **ThreadPool.SetMinThreads (200-as, 200-as)** .
 
 * Adja meg a beállítás a szálak minimális számát, lehetőség arra is a [ *minIoThreads* vagy *minWorkerThreads* konfigurációs beállítás](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) alatt a `<processModel>` a konfigurációs elem `Machine.config`, általában a helyen található `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\`. **Ezzel a módszerrel minimális szálak számának beállítása általában nem ajánlott, egy rendszerre kiterjedő beállítás, mert.**
 

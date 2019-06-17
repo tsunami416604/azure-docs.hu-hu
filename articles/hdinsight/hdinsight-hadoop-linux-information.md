@@ -8,19 +8,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: c52574485a62b081224a36ca5deb0fdae114f9bc
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: b00630354834897793bbf357be378051bcf74698
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65859663"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059380"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Információk a HDInsight Linuxon való használatáról
 
 Az Azure HDInsight-fürtök a jól ismert Linux-környezet, az Azure-felhőben futó adja meg az Apache Hadoop. A legtöbb dolgot, használható megegyeznek a más Hadoop-a-Linux-telepítés. Ez a dokumentum felhívja, akkor célszerű tisztában lennie a konkrét különbségeket.
-
-> [!IMPORTANT]  
-> A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -55,7 +52,7 @@ Ez a parancs visszaadja a szolgáltatás leíró JSON-dokumentumok, majd [jq](ht
 
 ## <a name="remote-access-to-services"></a>Távoli szolgáltatásokhoz való hozzáférés
 
-* **Ambari (web)** - https://CLUSTERNAME.azurehdinsight.net
+* **Ambari (web)**  - https://CLUSTERNAME.azurehdinsight.net
 
     A fürt rendszergazdai felhasználónév és jelszó használatával hitelesíteni, és az Ambari, majd jelentkezzen be.
 
@@ -66,14 +63,14 @@ Ez a parancs visszaadja a szolgáltatás leíró JSON-dokumentumok, majd [jq](ht
     >
     > Az Ambari webes felület összes funkciójának használatához egy SSH-alagutat a proxy webes forgalom, a fürt fő csomópontjának. Lásd: [használata SSH-bújtatással való eléréséről az Apache Ambari web UI, ResourceManager, JobHistory, NameNode, Oozie és egyéb webes](hdinsight-linux-ambari-ssh-tunnel.md)
 
-* **Ambari (REST)** - https://CLUSTERNAME.azurehdinsight.net/ambari
+* **Ambari (REST)**  - https://CLUSTERNAME.azurehdinsight.net/ambari
 
     > [!NOTE]  
     > A fürt rendszergazdai felhasználónév és jelszó használatával hitelesíteni.
     >
     > Hitelesítés egyszerű szövegként – mindig HTTPS PROTOKOLLT használnak annak biztosítására, hogy a kapcsolat nem biztonságos.
 
-* **WebHCat (Templeton)** - https://CLUSTERNAME.azurehdinsight.net/templeton
+* **WebHCat (Templeton)**  - https://CLUSTERNAME.azurehdinsight.net/templeton
 
     > [!NOTE]  
     > A fürt rendszergazdai felhasználónév és jelszó használatával hitelesíteni.
@@ -87,7 +84,7 @@ Ez a parancs visszaadja a szolgáltatás leíró JSON-dokumentumok, majd [jq](ht
 
 További információkért lásd: a [HDInsight az Apache Hadoop-szolgáltatások által használt portok](hdinsight-hadoop-port-settings-for-services.md) dokumentumot.
 
-## <a name="file-locations"></a>Fájlok helye
+## <a name="file-locations"></a>Fájlhelyek
 
 Hadoop-kapcsolatos fájlok találhatók a fürtcsomópontokon, `/usr/hdp`. Ez a könyvtár a következő alkönyvtárakat tartalmaz:
 
@@ -288,7 +285,6 @@ Szeretné egy összetevő egy másik verzióját használni, töltse fel a verzi
 
 ## <a name="next-steps"></a>További lépések
 
-* [Áttelepítés a Windows-alapú HDInsight a Linux-alapú](hdinsight-migrate-from-windows-to-linux.md)
 * [HDInsight-fürtök kezelése az Apache Ambari REST API használatával](./hdinsight-hadoop-manage-ambari-rest-api.md)
 * [Az Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
 * [Az Apache Pig használata a HDInsight](hadoop/hdinsight-use-pig.md)

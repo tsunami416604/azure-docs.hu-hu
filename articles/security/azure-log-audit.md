@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
 ms.openlocfilehash: edadb369461bb3865dd6894c3329e7079fa9d13f
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66752552"
 ---
 # <a name="azure-logging-and-auditing"></a>Azure-naplózás
@@ -363,7 +363,7 @@ Többféleképpen négy [gyűjtése a naplók és mérőszámok az Azure-szolgá
 
 ## <a name="log-integration-with-on-premises-siem-systems"></a>A helyszíni SIEM rendszerekbe a napló integrációja
 
-Az Azure Log Integration integrálható nyers naplók az Azure-erőforrások, a helyi SIEM-rendszerbe (információk és az Információbiztonsági rendszer). 2018. június 27. AzLog letöltések letiltottuk. Mi a teendő mozgatása előre tekintse át a hozzászólás útmutatást [SIEM-eszközök integrálása az Azure monitor](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
+Az Azure Log Integration integrálható nyers naplók az Azure-erőforrások, a helyi SIEM-rendszerbe (információk és az Információbiztonsági rendszer). 2018\. június 27. AzLog letöltések letiltottuk. Mi a teendő mozgatása előre tekintse át a hozzászólás útmutatást [SIEM-eszközök integrálása az Azure monitor](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
 ![Napló integrációja diagramja](./media/azure-log-audit/azure-log-audit-fig9.png)
 

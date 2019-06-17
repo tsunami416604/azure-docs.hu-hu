@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e792551f4cac857f56454c67d527e01cb9c4281
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: b481030c5d2d8e7d5e7061cdf256a202e08d6cbf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66113123"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108787"
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Az Azure Active Directory Identity Protection által észlelt biztonsági rések
 
@@ -34,14 +34,14 @@ Az Azure multi-factor Authentication a második biztonsági szintként, felhaszn
 
 * Telefonhívás
 * Szöveges üzenet
-* Mobilalkalmazásbeli értesítés
+* Mobilalkalmazás-értesítés
 * Egyszeri Jelszavas ellenőrző kód
 
-Azt javasoljuk, hogy a felhasználói bejelentkezéseket az Azure multi-factor Authentication szükséges. A multi-factor authentication kulcsfontosságú szerepet játszik a kockázatalapú feltételes hozzáférési szabályzatok Identity Protection keresztül érhető el.
+Azt javasoljuk, hogy a felhasználói bejelentkezéseket az Azure multi-factor Authentication szükséges. A multi-factor authentication kulcsfontosságú szerepet játszik a kockázatalapú feltételes szabályzataihoz Identity Protection keresztül érhető el.
 
 További információt [az Azure Multi-Factor Authentication](../authentication/multi-factor-authentication.md) ismertetőjében talál.
 
-## <a name="unmanaged-cloud-apps"></a>Nem kezelt felhőalkalmazások
+## <a name="unmanaged-cloud-apps"></a>Nem felügyelt felhőalkalmazások
 
 A biztonsági rés segítségével azonosíthatja a nem kezelt felhőalkalmazások a szervezetben.
 
@@ -51,7 +51,7 @@ Javasoljuk, hogy a Cloud Discovery nem kezelt felhőalkalmazások felderítése,
 
 További információkért lásd: [Cloud Discovery](/cloud-app-security/set-up-cloud-discovery).
 
-## <a name="security-alerts-from-privileged-identity-management"></a>A Privileged Identity Management biztonsági riasztásai
+## <a name="security-alerts-from-privileged-identity-management"></a>A Privileged Identity Management szolgáltatástól származó biztonsági riasztások
 
 A biztonsági rés segít felderíteni, és oldja meg a szervezet emelt szintű identitások kapcsolatos riasztásokat.  
 

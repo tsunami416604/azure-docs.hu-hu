@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 33c2d211fad16a81a307a5c0f2a9d048ef07bf4d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: f58d6cbc6ec04e51e105662dff31c60ff502584c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65904201"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67093357"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>Oktatóanyag: Az Azure Active Directory-integráció Questetra BPM Suite-tal
 
@@ -53,7 +53,7 @@ Az Azure AD-be Questetra BPM Suite integrációjának konfigurálása, hozzá ke
 
 **Questetra BPM Suite hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -134,7 +134,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Questetra BPM Suite-tal, haj
    
     ![Az Azure AD egyszeri bejelentkezés][10]
 
-3. Megnyitásához a **SingleSignOnSAML** kattintson **egyszeri bejelentkezés (SAML)**. 
+3. Megnyitásához a **SingleSignOnSAML** kattintson **egyszeri bejelentkezés (SAML)** . 
    
     ![Az Azure AD egyszeri bejelentkezés][11]
 
@@ -234,7 +234,7 @@ Ez a szakasz célja Britta Simon Questetra BPM Suite nevű felhasználó létreh
     
     d. Kattintson a **új felhasználó hozzáadása**.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

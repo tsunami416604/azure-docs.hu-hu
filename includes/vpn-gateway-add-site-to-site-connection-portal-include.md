@@ -9,10 +9,10 @@ ms.date: 04/04/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 19ad4e39ca4e402c37b2cfa69c7c306b6e5a2766
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66170088"
 ---
 1. Keresse meg, és nyissa meg a virtuális hálózati átjáró lapját. A panelt többféleképpen is megtalálhatja. A VNet1GW átjáróhoz a következő módon navigálhat: **TestVNet1 -> Áttekintés -> Csatlakoztatott eszközök -> VNet1GW**.
@@ -22,7 +22,7 @@ ms.locfileid: "66170088"
 3. A **Kapcsolat hozzáadása** lapon állítsa be a kapcsolathoz tartozó értékeket.
 
    - **név:** Nevezze el a kapcsolatot.
-   - **Kapcsolat típusa:** Válassza ki **Site-to-site(IPSec)**.
+   - **Kapcsolat típusa:** Válassza ki **Site-to-site(IPSec)** .
    - **Virtuális hálózati átjáró:** Az érték rögzített, mivel erről az átjáróról csatlakozik.
    - **Helyi hálózati átjáró:** Kattintson a **helyi hálózati átjáró kiválasztása** , és válassza ki a használni kívánt helyi hálózati átjárót.
    - **Megosztott kulcs:** Az értékének egyeznie kell azzal az értékkel, amit a helyi helyszíni VPN-eszközhöz használ. A példában az abc123 értéket használtuk, de lehetséges (és javasolt) ennél összetettebb értéket használni. A legfontosabb, hogy az itt megadott értéknek egyeznie kell azzal az értékkel, amelyet a VPN-eszköz konfigurálásakor ad meg.

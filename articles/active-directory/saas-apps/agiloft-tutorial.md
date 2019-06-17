@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2aed12b085557eda4210be9c067f5cdad4cd2d1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c7d86be9196eb425a356818c47fbef1cb1c0b5b9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60284728"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107265"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Agiloft
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása a Agiloft konfigurálásához hozzá kell Agiloft a ka
 
 **Agiloft hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -175,7 +175,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Agiloft, hajtsa vég
 
     d. Nyissa meg a **base-64 kódolású tanúsítvány** a Jegyzettömbben az Azure-portálról letöltött, másolja a tartalmát a vágólapra, és illessze be azt a **identitásszolgáltató megadott X.509 tanúsítvány tartalma** szövegmezőbe.
 
-    e. Kattintson a **Befejezés** gombra.
+    e. Kattintson a **Befejezés**gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 

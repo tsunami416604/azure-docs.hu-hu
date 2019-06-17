@@ -14,14 +14,14 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 85832abeb9908dd891e3f35a0368bc35c7816a6e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66168010"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Másolja az adatokat, vagy az Azure Data Factory használatával az Azure Blob Storage-ból
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](data-factory-azure-blob-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-azure-blob-storage.md)
 
@@ -82,7 +82,7 @@ A Data factory olvasási séma adatforrásokhoz, például az Azure blob "strukt
 
 A **typeProperties** szakasz eltérő az egyes adatkészletet, és információkat nyújt a hely formátumra stb, az adatok az adattárban. A typeProperties szakasz típusú adatkészlet **AzureBlob** adatkészlet a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | folderPath |A tároló és a blob Storage-mappa elérési útja. Példa: myblobcontainer\myblobfolder\ |Igen |
 | fileName |A blob nevével. a fájlnév paraméter nem kötelező, és a kis-és nagybetűket.<br/><br/>Ha megadja a FileName paramétert, a Blobra a (beleértve a másolási) tevékenység működik.<br/><br/>Ha a fájlnév nincs megadva, példány összes BLOB bemeneti adatkészlet a folderPath tartalmazza.<br/><br/>Amikor **fileName** nincs megadva a kimeneti adatkészlet és **preserveHierarchy** nincs megadva a tevékenység fogadó, a létrehozott fájl neve a következő lenne ebben a formátumban: `Data.<Guid>.txt` (a Példa:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nem |
@@ -95,7 +95,7 @@ Az előző szakaszban ismertetett módon, megadhat egy dinamikus folderPath és 
 
 A time series adatkészleteket, az ütemezés és a szeletek további információkért lásd: [adatkészletek létrehozása](data-factory-create-datasets.md) és [ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) cikkeket.
 
-#### <a name="sample-1"></a>1. példa
+#### <a name="sample-1"></a>1\. példa
 
 ```json
 "folderPath": "wikidatagateway/wikisampledataout/{Slice}",
@@ -107,7 +107,7 @@ A time series adatkészleteket, az ütemezés és a szeletek további informáci
 
 Ebben a példában {szelet} helyére a változó értékét, a Data Factory rendszer SliceStart (YYYYMMDDHH) formátumban megadva. Indítsa el a szelet időpontja a SliceStart hivatkozik. A folderPath eltér az egyes szeletekhez. Például: wikidatagateway/wikisampledataout/2014100103 vagy wikidatagateway/wikisampledataout/2014100104
 
-#### <a name="sample-2"></a>2. példa
+#### <a name="sample-2"></a>2\. példa
 
 ```json
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
@@ -128,7 +128,7 @@ Szakaszok & definiálását tevékenységek tulajdonságainak teljes listáját 
 
 **BlobSource** támogatja a következő tulajdonságok a **typeProperties** szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
 | recursive |Azt jelzi, hogy az adatok olvasható rekurzív módon az almappákban vagy csak a megadott mappába. |(Alapértelmezett érték), true a False |Nem |
 
@@ -252,7 +252,7 @@ Tekintsük át gyorsan másolása az adatok Azure blob storage. Ez az útmutató
     4. Válassza ki az Azure storage-fiókjában.
     5. Kattintson a **tovább**.
 10. Az a **a kimeneti fájl vagy mappa kiválasztása** oldalon:  
-    1. Adja meg **mappa elérési útja** , **adfblobconnector/output / {year} / {month} / {day}**. Adja meg **lapon**.
+    1. Adja meg **mappa elérési útja** , **adfblobconnector/output / {year} / {month} / {day}** . Adja meg **lapon**.
     1. Az a **év**válassza **éééé**.
     1. Az a **hónap**, győződjön meg arról, hogy van-e állítva **MM**.
     1. Az a **nap**, győződjön meg arról, hogy van-e állítva **nn**.

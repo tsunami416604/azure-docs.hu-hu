@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45063107cdaf5ea8a720233c47e5b9007faa6d13
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: f70001a3362015332970685eb50e5e8e47dd158e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65900350"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67104893"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-competencyiq"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező CompetencyIQ
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a CompetencyIQ konfigurálásához hozzá kell Compete
 
 **CompetencyIQ hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -185,7 +185,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű CompetencyIQ hoz létre. Együttműködve [CompetencyIQ támogatási csapatának](https://www.competencyiq.com/) a felhasználók hozzáadása az CompetencyIQ platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

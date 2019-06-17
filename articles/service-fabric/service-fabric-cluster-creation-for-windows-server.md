@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 2/21/2019
 ms.author: dekapur
 ms.openlocfilehash: ed775bfca2db02b9bfddebb85bbd3f1f668cf3e0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65142698"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>A Windows Server rendszert futtató önálló fürt létrehozása
@@ -61,7 +61,7 @@ Több fürtkonfigurációs mintafájl is települ a telepítőcsomaggal. A *Clus
 
 Ebben a cikkben létrehozott fürt nem biztonságos.  Bárki csatlakozhat hozzá névtelenül és végrehajthat kezelési műveleteket, ezért az üzemben lévő fürtöket mindig X.509 tanúsítványok vagy a Windows rendszerbiztonság használatával kell védeni.  A biztonság konfigurálására csak a fürt létrehozásakor van lehetőség, a fürt létrehozása után már nem lehet engedélyezni. Frissítés a konfigurációs fájl engedélyezése [biztonsági tanúsítvány](service-fabric-windows-cluster-x509-security.md) vagy [Windows biztonsági](service-fabric-windows-cluster-windows-security.md). A Service Fabric-fürtök védelmével kapcsolatos további tudnivalókért lásd: [Fürt biztonságossá tétele](service-fabric-cluster-security.md).
 
-### <a name="step-1-create-the-cluster"></a>1. lépés: A fürt létrehozása
+### <a name="step-1-create-the-cluster"></a>1\. lépés: A fürt létrehozása
 
 #### <a name="scenario-a-create-an-unsecured-local-development-cluster"></a>„A” alkalmazási helyzet: Egy nem biztonságos helyi fejlesztési fürt létrehozása
 A Service Fabric használatával bármely helyezhető egy gép egy fejlesztési fürtöt a *ClusterConfig.Unsecure.DevCluster.json* fájlban szereplő [minták](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).
@@ -126,7 +126,7 @@ A futtatókörnyezet-csomag tölthetők, az internethez csatlakozik másik gépr
 
 *.\ClusterConfig.JSON* és *.\MicrosoftAzureServiceFabric.cab* rendre vannak a fürt konfigurációját, és a futtatókörnyezet .cab-fájl elérési útja.
 
-### <a name="step-2-connect-to-the-cluster"></a>2. lépés: Csatlakozás a fürthöz
+### <a name="step-2-connect-to-the-cluster"></a>2\. lépés: Csatlakozás a fürthöz
 Csatlakozás a fürthöz, ellenőrizheti a fürt fut, és elérhető-e. A ServiceFabric PowerShell-modul a futtatókörnyezettel együtt települ.  A fürtcsomópontok közül, vagy egy távoli számítógépről a Service Fabric-futtatókörnyezet képes csatlakozni a fürthöz.  A [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) parancsmag kiépít egy kapcsolatot a fürttel.
 
 A nem biztonságos fürtökhöz csatlakozhat, futtassa a következő PowerShell-parancsot:
@@ -152,7 +152,7 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
                      vm0      localhost       NodeType0 5.6.220.9494 0                     Up 00:02:43   00:00:00              OK
 ```
 
-### <a name="step-3-visualize-the-cluster-using-service-fabric-explorer"></a>3. lépés: A fürt megjelenítése a Service Fabric Explorerrel
+### <a name="step-3-visualize-the-cluster-using-service-fabric-explorer"></a>3\. lépés: A fürt megjelenítése a Service Fabric Explorerrel
 A [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) hatékony eszköz a fürtök megjelenítéséhez és az alkalmazások kezeléséhez.  Service Fabric Explorert a szolgáltatást, amely a fürt, amely egy böngészővel megnyitásával érhető [ http://localhost:19080/Explorer ](http://localhost:19080/Explorer).
 
 A fürt irányítópultja áttekintést nyújt a fürtről, beleértve az alkalmazások és a csomópontok állapotának összefoglalását. A csomópontnézet a fürt fizikai elrendezését mutatja. Az egyes csomópontoknál megtekintheti, hogy melyik alkalmazások kódja üzemel az adott csomóponton.
@@ -188,7 +188,7 @@ Alapértelmezés szerint a termék telemetriai adatokat a termék javítása ér
 
 * Szolgáltatások száma
 * ServiceTypes száma
-* Alkalmazásokk száma
+* Alkalmazások száma
 * ApplicationUpgrades száma
 * Feladatátvételi egységek száma
 * Inbuild feladatátvételi egységek száma

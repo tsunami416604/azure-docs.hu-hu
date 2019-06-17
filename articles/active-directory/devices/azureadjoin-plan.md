@@ -17,12 +17,12 @@ ms.date: 11/21/2018
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12d603ddbba9e36d562c8dcd6e3844af28c91255
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: fc638c515af59f6872f2dae262a6910318abdd0e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918833"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110762"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Útmutató: Az Azure AD-csatlakozás implementálásának megtervezése
 
@@ -270,17 +270,17 @@ Válassza ki a központi telepítési módszer vagy módszerek áttekintése a f
 
 Az Azure portal lehetővé teszi, hogy szabályozható az üzembe helyezés az Azure AD-hez csatlakoztatott eszközök a szervezetben. A kapcsolódó beállítások konfigurálása a **Azure Active Directory oldalon**válassza `Devices > Device settings`.
 
-### <a name="users-may-join-devices-to-azure-ad"></a>A felhasználók eszközöket csatlakoztathatnak az Azure AD-hez
+### <a name="users-may-join-devices-to-azure-ad"></a>Felhasználók eszközöket csatlakoztathatnak az Azure ad-hez
 
 Ezt a beállítást **összes** vagy **kijelölt** a telepítés hatóköre alapján, és akik számára engedélyezni állíthatja be az Azure AD a csatlakoztatott eszköz. 
 
-![A felhasználók eszközöket csatlakoztathatnak az Azure AD-hez](./media/azureadjoin-plan/01.png)
+![Felhasználók eszközöket csatlakoztathatnak az Azure ad-hez](./media/azureadjoin-plan/01.png)
 
-### <a name="additional-local-administrators-on-azure-ad-joined-devices"></a>További helyi rendszergazdák az Azure AD-tartományhoz csatlakozott eszközökön
+### <a name="additional-local-administrators-on-azure-ad-joined-devices"></a>További helyi rendszergazdák az Azure AD-hez csatlakoztatott eszközök
 
 Válasszon **kijelölt** , és kiválasztja a minden Azure AD-csatlakoztatott eszközök a helyi rendszergazdák csoporthoz hozzáadni kívánt felhasználókat. 
 
-![További helyi rendszergazdák az Azure AD-tartományhoz csatlakozott eszközökön](./media/azureadjoin-plan/02.png)
+![További helyi rendszergazdák az Azure AD-hez csatlakoztatott eszközök](./media/azureadjoin-plan/02.png)
 
 
 ### <a name="require-multi-factor-auth-to-join-devices"></a>Eszközök csatlakoztatása a többtényezős hitelesítés megkövetelése
@@ -327,7 +327,7 @@ Nincsenek három URL-címek, amelyek kapcsolódnak az MDM-konfiguráció:
 
 - MDM használati feltételeinek URL-címe
 
-- MDM-felderítési URL-cím 
+- MDM-felderítési URL-címe 
 
 - MDM megfelelőségi URL-címe
 

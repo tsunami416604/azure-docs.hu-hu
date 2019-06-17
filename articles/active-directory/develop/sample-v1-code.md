@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b14dcb5f5af971b10c83ea7fd9064a08cde3ab35
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 1858b3e8d659d8810c54cab96566d03c24c92adf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545434"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111278"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Az Azure Active Directory-Kódminták (1.0-s verziójú végpont)
 
@@ -88,7 +88,7 @@ Mobile (Android)           | ![Android / Java](media/sample-v2-code/logo_Android
 Mobile (iOS)           | ![iOS / Objective-C vagy SWIFT nyelven](media/sample-v2-code/logo_iOS.png) | Interaktív |   [nativeClient-iOS](https://github.com/azureadquickstarts/nativeclient-ios) |
 Asztal (konzol)          | ![.NET/C#](media/sample-v2-code/logo_NET.png) | Felhasználónév / jelszó </p>  Integrált Windows-hitelesítés | | [dotnet-native-headless](https://github.com/azure-samples/active-directory-dotnet-native-headless)
 Asztal (konzol)          | ![Java-konzol](media/sample-v2-code/logo_Java.png) | Felhasználónév / jelszó | | [java-native-headless](https://github.com/Azure-Samples/active-directory-java-native-headless)
-Asztal (konzol)           | ![.NET Core/C#](media/sample-v2-code/logo_NETcore.png) | Eszközkód folyamata | | [dotnet-deviceprofile](https://github.com/Azure-Samples/active-directory-dotnet-deviceprofile)
+Asztal (konzol)           | ![.NET Core/C#](media/sample-v2-code/logo_NETcore.png) | Eszköz kódfolyamat | | [dotnet-deviceprofile](https://github.com/Azure-Samples/active-directory-dotnet-deviceprofile)
 
 ## <a name="daemon-applications-accessing-web-apis-with-the-applications-identity"></a>Démon alkalmazások (webes API-k elérése az Alkalmazásidentitás)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/19/2018
 ms.author: atsenthi
-ms.openlocfilehash: 5e93bb3b206fbef6beb09b7aca6df0742a80ccf1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e5fb28b176ce14a9b871b2a6a775e0017fcc993d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60621513"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052664"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric-alkalmazás- és szolgáltatásjegyzékek
 Ez a cikk bemutatja, hogyan történik a Service Fabric-alkalmazásokat és szolgáltatásokat, hogy meghatározott és verziószámmal ApplicationManifest.xml és ServiceManifest.xml fájlokat használja.  További részletes példák: [alkalmazás és a service manifest példák](service-fabric-manifest-examples.md).  Ezek a jegyzékfájlok XML-séma leírása itt található [ServiceFabricServiceModel.xsd séma dokumentáció](service-fabric-service-model-schema.md).
@@ -96,7 +96,7 @@ A SetupEntryPoint konfigurálásáról további információkért lásd: [a ház
 </Settings>
 ```
 
-A Service Fabric-szolgáltatás **végpont** egy Service Fabric-erőforrás; példa A Service Fabric erőforrás lehet deklarált vagy módosítani a lefordított kód módosítása nélkül. A Service Fabric-erőforrások a szolgáltatásjegyzékben megadott hozzáférést szabályozható a **SecurityGroup** az alkalmazásjegyzékben. A szolgáltatásjegyzék-végponti erőforrás van definiálva, amikor a Service Fabric rendeli hozzá a portokat a fenntartott tartománya, ha a port nincs megadva explicit módon. Tudjon meg többet [megadásával vagy a végpont erőforrások felülírása](service-fabric-service-manifest-resources.md).
+A Service Fabric-szolgáltatás **végpont** egy Service Fabric-erőforrást egy példát. A Service Fabric erőforrás lehet deklarált vagy módosítani a lefordított kód módosítása nélkül. A Service Fabric-erőforrások a szolgáltatásjegyzékben megadott hozzáférést szabályozható a **SecurityGroup** az alkalmazásjegyzékben. A szolgáltatásjegyzék-végponti erőforrás van definiálva, amikor a Service Fabric rendeli hozzá a portokat a fenntartott tartománya, ha a port nincs megadva explicit módon. Tudjon meg többet [megadásával vagy a végpont erőforrások felülírása](service-fabric-service-manifest-resources.md).
 
 
 <!--
@@ -163,7 +163,11 @@ Szolgáltatásjegyzékek, például **verzió** attribútumok strukturálatlan k
 
 **Tanúsítványok** (nem ismeretlenre van állítva az előző példában) kijelenti, hogy használt tanúsítványok [beállítása HTTPS-végpontok](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service) vagy [titkosítani a titkos kulcsok az alkalmazásjegyzékben](service-fabric-application-secret-management.md).
 
-**Házirendek** (nem ismeretlenre van állítva az előző példában) ismerteti a naplógyűjtő [alapértelmezett futtató](service-fabric-application-runas-security.md), [egészségügyi](service-fabric-health-introduction.md#health-policies), és [biztonsági hozzáférési](service-fabric-application-runas-security.md) szabályzatok beállítása a alkalmazás szintjén.
+**Házirendek** (nem ismeretlenre van állítva az előző példában) ismerteti a naplógyűjtő [alapértelmezett futtató](service-fabric-application-runas-security.md), [egészségügyi](service-fabric-health-introduction.md#health-policies), és [biztonsági hozzáférési](service-fabric-application-runas-security.md) szabályzatok beállítása a alkalmazás szintjén, beleértve azt, hogy a szolgáltatás(ok) hozzáférése a Service Fabric-futtatókörnyezet.
+
+> [!NOTE] 
+> Alapértelmezés szerint Service Fabric-alkalmazások hozzáférhetnek a Service Fabric-futtatókörnyezet, amelyekhez kapcsolódóan beküldhetők alkalmazásspecifikus kérelmek és a háló és alkalmazás-specifikus fájlokat tartalmazó gazdagép elérési útjában mutató környezeti változókat a végpont formájában . Vegye figyelembe, hogy a hozzáférés letiltása, ha az alkalmazás nem megbízható kód (például amelyek a származási hely ismeretlen, vagy az alkalmazás tulajdonosa tudja a nem biztonságosnak végrehajtásához) üzemelteti. További információkért tekintse meg [ajánlott biztonsági eljárások a Service Fabric](service-fabric-best-practices-security.md#platform-isolation). 
+>
 
 **Rendszerbiztonsági tagok** (az előző példában nincs beállítva) írja le a rendszerbiztonsági tagok (felhasználók vagy csoportok) szükséges [futtatási szolgáltatások és biztonságos-szolgáltatási erőforrások](service-fabric-application-runas-security.md).  A hivatkozott rendszerbiztonsági tagok a **házirendek** szakaszokat.
 

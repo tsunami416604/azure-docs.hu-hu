@@ -1,5 +1,5 @@
 ---
-title: Feltételes hozzáférés az Azure Active Directory fejlesztői útmutatója
+title: Fejlesztői útmutató az Azure Active Directory feltételes hozzáférés
 description: Fejlesztői útmutatás és az Azure AD feltételes hozzáférési forgatókönyvek
 services: active-directory
 keywords: ''
@@ -15,24 +15,24 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0674934f7105df3874048308e98fd582d32e72bc
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 9e4e0eb830d5ede910e72ec3193cfd613561811b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962839"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111534"
 ---
-# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Feltételes hozzáférés az Azure Active Directory fejlesztői útmutatója
+# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Fejlesztői útmutató az Azure Active Directory feltételes hozzáférés
 
 Az Azure Active Directoryban (Azure AD) feltételes hozzáférés funkciójának kínál, amellyel az alkalmazás biztonságos és védelme a szolgáltatás számos módon. Feltételes hozzáférés lehetővé teszi a fejlesztők és a nagyvállalati vásárlók többféle, beleértve a szolgáltatások védelme érdekében:
 
-* Többtényezős hitelesítés
+* Multi-Factor Authentication
 * Így csak az Intune-ban regisztrált eszközök adott szolgáltatásokhoz való hozzáférést
 * Korlátozhatja a felhasználó tartózkodási helye és IP-címtartományok
 
 A feltételes hozzáférés az összes funkciójáról további információkért lásd: [feltételes hozzáférés az Azure Active Directory](../active-directory-conditional-access-azure-portal.md).
 
-Alkalmazások létrehozása az Azure ad fejlesztőknek Ez a cikk bemutatja, hogyan használhatja a feltételes hozzáférés, és is megismerkedhet a hatását, amelyek nem rendelkeznek erőforrásokhoz való hozzáférés felett, előfordulhat, hogy alkalmazza a feltételes hozzáférési szabályzatok. A cikk ismerteti a feltételes hozzáférés a alapú meghatalmazásos folyamat következményei webalkalmazások, Microsoft Graph elérése és API-k hívása is.
+Alkalmazások létrehozása az Azure ad fejlesztőknek Ez a cikk bemutatja, hogyan használhatja a feltételes hozzáférés, és azt is megtudhatja, amely nem rendelkezik erőforrások eléréséhez hatásait szabályozhatja, hogy előfordulhat, hogy alkalmazza a feltételes hozzáférési szabályzatokat. A cikk emellett ismerteti a következményei feltételes hozzáférés a alapú meghatalmazásos folyamat a web apps szolgáltatásban, a Microsoft Graph elérése és API-k hívása.
 
 Ismerete [egyetlen](quickstart-v1-integrate-apps-with-azure-ad.md) és [több-bérlős](howto-convert-app-to-be-multi-tenant.md) alkalmazásokat és [gyakori hitelesítési minták](authentication-scenarios.md) feltételezi.
 
@@ -40,16 +40,16 @@ Ismerete [egyetlen](quickstart-v1-integrate-apps-with-azure-ad.md) és [több-b�
 
 ### <a name="app-types-impacted"></a>Érintett alkalmazástípusok
 
-Leggyakoribb esetekben feltételes hozzáférés nem változtatja meg az alkalmazás viselkedését, vagy a fejlesztőtől származó módosításokat igényel. Csak bizonyos esetekben a alkalmazás közvetett módon vagy beavatkozás nélkül tokent kér egy szolgáltatáshoz, amikor egy alkalmazásban szükséges kódmódosításokat "kihívások" feltételes hozzáférés kezelésére. Elképzelhető, hogy egyszerűen egy interaktív bejelentkezési kérelem végrehajtása.
+Leggyakoribb esetekben feltételes hozzáférés nem változtatja meg az alkalmazás viselkedését, vagy a fejlesztőtől származó módosításokat igényel. Csak bizonyos esetekben a alkalmazás közvetett módon vagy beavatkozás nélkül tokent kér egy szolgáltatáshoz, amikor egy alkalmazásban szükséges kódmódosításokat kezelni a feltételes hozzáférés "kihívások". Elképzelhető, hogy egyszerűen egy interaktív bejelentkezési kérelem végrehajtása.
 
-Pontosabban a következő esetekben szükséges "kihívások" feltételes hozzáférés kezeléséhez szükséges kódot:
+Pontosabban a következő esetekben szükséges feltételes hozzáférés "kihívások" kezeléséhez szükséges kódot:
 
 * Alkalmazások a alapú meghatalmazásos folyamat végrehajtása
 * Az alkalmazások több szolgáltatásokhoz és erőforrásokhoz való hozzáférés
 * Egyoldalas alkalmazások ADAL.js használatával
 * A Web Apps erőforrás hívása
 
-Feltételes hozzáférési szabályzatok alkalmazhatók az alkalmazást, de is alkalmazható egy webes API-t az alkalmazás hozzáfér. Feltételes hozzáférési szabályzat konfigurálásával kapcsolatos további tudnivalókért lásd: [a rövid útmutató: Többtényezős hitelesítés az Azure Active Directory feltételes hozzáférés az adott alkalmazások](../conditional-access/app-based-mfa.md).
+Feltételes hozzáférési szabályzatok alkalmazhatók az alkalmazást, de is alkalmazható egy webes API-t az alkalmazás hozzáfér. Feltételes hozzáférési szabályzat konfigurálásával kapcsolatos további tudnivalókért lásd: [a rövid útmutató: Többtényezős hitelesítés konkrét alkalmazások esetén az Azure Active Directory feltételes hozzáférés](../conditional-access/app-based-mfa.md).
 
 A forgatókönyvtől függően a nagyvállalati ügyfelek fiókazonosítóját vonatkoznak, és bármikor eltávolíthatja a feltételes hozzáférési szabályzatokat. Ahhoz, hogy az alkalmazás működését, amikor egy új házirendet alkalmaznak a "kérdés" kezelési megvalósításához szüksége. Az alábbi példák bemutatják, challenge kezelését.
 
@@ -86,7 +86,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 A fejlesztők mutatták igénybe és fűzze hozzá egy új kérelmet az Azure AD-be. Ebben az állapotban passing kéri a végfelhasználó számára, amelyek szükségesek ahhoz a feltételes hozzáférési szabályzat bármely művelet elvégzésére. A következő esetekben a hiba, és hogyan lehet kigyűjteni a paraméter tulajdonságairól magyarázata.
 
-## <a name="scenarios"></a>Alkalmazási helyzetek
+## <a name="scenarios"></a>Forgatókönyvek
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -102,7 +102,7 @@ Feltételes hozzáférés forgatókönyvekben csak vonatkozik a következő info
 
 A következő részekben bemutatjuk a gyakori forgatókönyvek összetettebb. A működési elv középpontjában feltételes hozzáférési szabályzatok értékeli ki a szolgáltatás, amely rendelkezik a alkalmazni a feltételes hozzáférési szabályzat a jogkivonatot kért idő.
 
-## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>Forgatókönyv: Az alkalmazás végrehajtása a--meghatalmazásos folyamat
+## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>Forgatókönyv: A meghatalmazásos folyamatot végrehajtó alkalmazás
 
 Ebben a forgatókönyvben azt végig a helyzet, amelyben egy natív alkalmazást meghív egy webes szolgáltatás és az API is. Ez a szolgáltatás hajtja végre, "az a-meghatalmazásos" folyamat egy alsóbb rétegbeli szolgáltatás hívásához. Ebben az esetben azt alkalmazott a feltételes hozzáférési szabályzatot az alárendelt szolgáltatás (Web API 2) és egy kiszolgáló/démon alkalmazások helyett inkább egy natív alkalmazást használ. 
 

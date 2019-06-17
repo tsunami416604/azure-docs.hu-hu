@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
 ms.openlocfilehash: 951178a82e0975f5f2af71bd48cf0f931246ae37
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002125"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Állítsa be, és az AWS-költségek és a használati jelentés-integráció konfigurálása
@@ -100,7 +100,7 @@ Engedély költség Explorer konfigurálása:
 
 1. Válassza ki **szolgáltatás kiválasztása**.
 2. Adja meg **Explorer szolgáltatás költsége**.
-3. Válassza ki **költség Explorer az összes szolgáltatás műveletek (ce:\*)**. Ez a művelet ellenőrzi, hogy helyesen szerepel-e a gyűjteményben.
+3. Válassza ki **költség Explorer az összes szolgáltatás műveletek (ce:\*)** . Ez a művelet ellenőrzi, hogy helyesen szerepel-e a gyűjteményben.
 4. Válassza ki **adjon hozzá további engedélyek**.
 
 Adja hozzá az AWS-szervezetek számára engedélyt:

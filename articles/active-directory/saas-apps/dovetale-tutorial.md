@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c9f123cdc88a3af68f7c37e44f60b588f5e8b66
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9dea184a09aea0b73bceb988a14400fa1d99b87b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60280780"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67103898"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dovetale"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Dovetale
 
@@ -55,7 +55,7 @@ Az Azure AD integrálása a Dovetale konfigurálásához hozzá kell Dovetale a 
 
 **Dovetale hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -124,9 +124,9 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Dovetale, hajtsa vé
 
     | Name (Név) | Adatforrás-attribútum|
     | ---------------| --------------- |
-    | e-mail | user.mail |
+    | email | user.mail |
     | first_name | user.givenname |
-    | név | user.userprincipalname |
+    | name | user.userprincipalname |
     | last_name | user.surname |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.

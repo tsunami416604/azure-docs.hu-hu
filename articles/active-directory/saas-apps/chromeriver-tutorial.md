@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26147c26d5eaae471e5a4f93add7da2f9a0272f2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 60f1c5862fd152beaff135c442108b3694613d52
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65863363"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105840"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-chromeriver"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Chromeriver
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Chromeriver konfigurálásához hozzá kell Chromeri
 
 **Chromeriver hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -188,7 +188,7 @@ Ahhoz, hogy az Azure AD-felhasználók Chromeriver jelentkezzen be, akkor ki kel
 > [!NOTE]
 > Bármely más Chromeriver felhasználói fiók létrehozása eszközöket használhatja, vagy API-k által biztosított Chromeriver üzembe helyezni az Azure Active Directory felhasználói fiókokat.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

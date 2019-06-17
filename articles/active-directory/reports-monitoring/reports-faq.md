@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fc90d62f889bfd9f439a7e8955f049c6c979746
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 09270d89ecaff02716d9916527d21ba2c5d30716
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60437039"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107540"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Gyakori kérdések az Azure Active Directory-jelentések körül
 
@@ -150,14 +150,14 @@ Ez a cikk – gyakori kérdések az Azure Active Directory (Azure AD) jelentésk
 **V:** Feltételes hozzáférési állapot a következő értékeket veheti fel:
 
 * **Nem alkalmazott**: Ez azt jelenti, hogy hiba történt a nem a felhasználó és az alkalmazás hatókörében a feltételes hozzáférési szabályzat. 
-* **Success**: Ez azt jelenti, hogy hiba történt egy feltételes hozzáférési szabályzat és a hatókör az alkalmazás és a feltételes hozzáférési szabályzatok is sikeresen teljesül. 
+* **Sikeres**: Ez azt jelenti, hogy hiba történt egy feltételes hozzáférési szabályzat és a hatókör az alkalmazás és a feltételes hozzáférési szabályzatok is sikeresen teljesül. 
 * **Hiba**: Ez azt jelenti, hogy hiba történt egy feltételes hozzáférési szabályzat és a hatókör az alkalmazás és a feltételes hozzáférési szabályzatok nem teljesültek. 
     
 **K: Mik a feltételes hozzáférési szabályzat eredmény lehetséges értékeinek?**
 
 **V:** Feltételes hozzáférési szabályzat az alábbi eredményeket veheti fel:
 
-* **Success**: A szabályzat sikeresen teljesült.
+* **Sikeres**: A szabályzat sikeresen teljesült.
 * **Hiba**: A szabályzat nem teljesült.
 * **Nem alkalmazott**: Ez lehet, mert nem felelt meg a szabályzat feltételeit.
 * **Nincs engedélyezve a**: A letiltott állapotban házirend okozza. 

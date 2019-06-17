@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 572f8694d31728a3ca570f6ddb60475e13d71e80
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: f2d1a5a342bfe4527c15a0721a8f852a269bef67
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235590"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113518"
 ---
 # <a name="combined-security-information-registration-preview"></a>Egyesített biztonsági információk regisztrációs (előzetes verzió)
 
@@ -49,10 +49,10 @@ Kombinált regisztrációs támogatja a következő hitelesítési módszerek é
 | Microsoft Authenticator | Igen (legfeljebb 5) | Nem | Igen |
 | Más hitelesítő alkalmazást | Igen (legfeljebb 5) | Nem | Igen |
 | Hardvertoken | Nem | Nem | Igen |
-| Phone | Igen | Igen | Igen |
+| Telefonszám | Igen | Igen | Igen |
 | Másodlagos telefonszám | Igen | Igen | Igen |
 | Irodai telefon | Nem | Nem | Nem |
-| Email | Igen | Igen | Igen |
+| E-mail | Igen | Igen | Igen |
 | Biztonsági kérdések | Igen | Nem | Igen |
 | Alkalmazásjelszók | Igen | Nem | Igen |
 

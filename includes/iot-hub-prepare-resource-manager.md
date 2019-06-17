@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 74f15452c7def068403b97b11e784170835edc18
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 4eb794fa35164e3f86a5e3d6f67d446321f91f0a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66156328"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133876"
 ---
 ## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>Felkészülés az Azure Resource Manager-kérelmek hitelesítéséhez
 Használatával erőforrásokon végrehajtott összes műveletet kell hitelesítenie a [Azure Resource Manager] [ lnk-authenticate-arm] az Azure Active Directory (AD). A legegyszerűbben úgy konfigurálhatja ezt, hogy a PowerShell vagy az Azure CLI segítségével.
@@ -64,9 +64,9 @@ A következő lépések bemutatják, hogyan állítsa be a jelszó-hitelesítés
 Most már befejezte az Azure AD-alkalmazást, amely lehetővé teszi, hogy az egyéni hitelesítés létrehozása C# alkalmazás. Az oktatóanyag későbbi részében szüksége a következő értékeket:
 
 * TenantId
-* Előfizetés-azonosító
+* SubscriptionId
 * Alkalmazásazonosító
 * Jelszó
 
 [lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx
-[lnk-powershell-install]: /powershell/azure/install-Az-ps
+[lnk-powershell-install]: /powershell/azure/install-az-ps

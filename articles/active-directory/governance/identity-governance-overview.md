@@ -16,12 +16,12 @@ ms.date: 04/29/2019
 ms.author: rolyon
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1be6fc2b7d6da85778524cb8986f399c341370c1
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 4b4f1563aa0437cd45c297b95a83119318a24624
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66307049"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109592"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Mi az Azure AD Identitáskezelést?
 
@@ -68,7 +68,7 @@ Hagyományosan emelt szintű hozzáférés a fentiekben leírtak más gyártók 
 
 ![Emelt szintű hozzáférés életciklusa](./media/identity-governance-overview/privileged-access-lifecycle.png)
 
-Az Azure AD Privileged Identity Management (PIM) szabott több eszközt biztosít a hozzáférés biztosítása a rights erőforrások, az Azure ad-ben, az Azure és más Microsoft Online Services.  Az igény szerinti hozzáférés és a szerepkör módosítása a multi-factor authentication és a feltételes hozzáférés mellett az Azure AD PIM által biztosított képességek riasztási biztosít átfogó készlete cégirányítási vezérlők segítségével biztonságos (directory, a vállalati erőforrásokhoz Az Office 365 és Azure-erőforrások szerepköreihez). Hozzáférés más formáinak a szervezetek használhatják a hozzáférési felülvizsgálatok az összes felhasználó számára az ismétlődő hozzáférés tanúsításra konfigurálása a rendszergazdai szerepköröket.
+Az Azure AD Privileged Identity Management (PIM) szabott több eszközt biztosít a hozzáférés biztosítása a rights erőforrások, az Azure ad-ben, az Azure és más Microsoft Online Services.  A igény szerinti elérését, és a szerepkör módosítása a riasztások mellett a multi-factor authentication és a feltételes hozzáférés az Azure AD PIM által biztosított képességek, adjon meg egy átfogó készlete cégirányítási vezérlők segítségével biztonságos (directory, a vállalati erőforrásokhoz Az Office 365 és Azure-erőforrások szerepköreihez). Hozzáférés más formáinak a szervezetek használhatják a hozzáférési felülvizsgálatok az összes felhasználó számára az ismétlődő hozzáférés tanúsításra konfigurálása a rendszergazdai szerepköröket.
 
 ## <a name="getting-started"></a>Első lépések
 

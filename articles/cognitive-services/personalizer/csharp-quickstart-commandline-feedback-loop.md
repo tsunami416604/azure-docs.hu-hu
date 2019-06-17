@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 05/08/2019
+ms.date: 06/11/2019
 ms.author: edjez
-ms.openlocfilehash: a7f6c6fe25bf9dff2f102080f93fc1e0024ac660
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 2f2e3d01b02f7c06d69a09374528475301952179
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66478630"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055509"
 ---
 # <a name="quickstart-personalize-content-using-c"></a>Gyors útmutató: Személyre szabhatja a tartalom használatávalC# 
 
@@ -54,6 +54,7 @@ Get the latest code as a Visual Studio solution from [GitHub] (add link).
 
 1. A Visual Studióban hozzon létre egy új Visual C#-konzolalkalmazást.
 1. Personalizer library NuGet csomag telepítését. Válassza a menü **eszközök**válassza **Nuget package Manager**, majd **NuGet-csomagok kezelése megoldáshoz**.
+1. Ellenőrizze **előzetes verzió**.
 1. Válassza ki a **Tallózás** fülre, majd a a **keresési** mezőbe írja be `Microsoft.Azure.CognitiveServices.Personalizer`.
 1. Válassza ki **Microsoft.Azure.CognitiveServices.Personalizer** mikor jeleníti meg.
 1. Jelölje be a projekt neve melletti jelölőnégyzetet, és válassza ki **telepítése**.

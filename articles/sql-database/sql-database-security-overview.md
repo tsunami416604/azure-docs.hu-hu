@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 05/14/2019
-ms.openlocfilehash: af14d5eb521d531f86433712a0d6c325ae7a1cd6
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 6b9a5ca350377777beebda24e52bc678c976ad19
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258626"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070201"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL Database biztonsági lehetőségeinek áttekintése
 
@@ -100,7 +100,7 @@ Az SQL Database a mozgásban lévő adatok titkosításával védi a vásárlói
 
 Az SQL Server biztonsága ne sérüljön titkosítás (SSL/TLS) minden esetben az összes kapcsolat. Ez biztosítja, hogy az összes adat titkosítva van "átvitel" az ügyfél és kiszolgáló beállításától függetlenül között **titkosítása** vagy **TrustServerCertificate** a kapcsolati karakterláncban.
 
-Ajánlott eljárásként javasoljuk, hogy az alkalmazás kapcsolati karakterláncot, a titkosított kapcsolatot adjon meg és _**nem**_ a kiszolgálótanúsítvány megbízhatósága. Ez kényszeríti a kiszolgálói tanúsítvány ellenőrzéséhez az alkalmazás, és így megakadályozza az alkalmazás nem érinti a streameket a középső típusú támadások.
+Ajánlott eljárásként javasoljuk, hogy az alkalmazás kapcsolati karakterláncot, a titkosított kapcsolatot adjon meg és _**nem**_ a kiszolgálótanúsítvány megbízhatósága. Ez kényszeríti a kiszolgálói tanúsítvány ellenőrzése az alkalmazás, és így megakadályozza az alkalmazás nem érinti a streameket a középső típusú támadások.
 
 Például amikor az ADO.NET-illesztő használatával ez történik keresztül **Encrypt = True** és **TrustServerCertificate = False**. A kapcsolati karakterlánc lekérését az Azure Portalról, ha a helyes beállításokat fog rendelkezni.
 

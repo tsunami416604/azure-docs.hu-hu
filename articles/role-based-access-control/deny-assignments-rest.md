@@ -1,6 +1,6 @@
 ---
 title: Listában elutasítása hozzárendelések Azure-erőforrások használatával a REST API – Azure |} A Microsoft Docs
-description: Megtudhatja, hogyan listában elutasítása a felhasználók, csoportok és alkalmazások, a szerepköralapú hozzáférés-vezérlés (RBAC) használatával az Azure-erőforrások és a REST API-hozzárendeléseit.
+description: Ismerje meg, hogyan listában elutasítása a felhasználók, csoportok és alkalmazások szerepköralapú hozzáférés-vezérlés (RBAC) használatával az Azure-erőforrások és a REST API-hozzárendeléseit.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -12,22 +12,22 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 59bcf2b33d203ae216b4965b963a727a6b34ae72
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 0bc49456f5965846a2de542b4a063bab2d1838bf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60194667"
+ms.locfileid: "67118291"
 ---
 # <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>Listában elutasítása a REST API használatával az Azure erőforrás-hozzárendelések
 
-[Hozzárendelések megtagadása](deny-assignments.md) meggátolja a felhasználókat adott Azure-erőforrás műveleteket végrehajtani, akkor is, ha a szerepkör-hozzárendelés hozzáférést biztosít számukra. Ez a cikk bemutatja, hogyan használható a REST API-t listában elutasítása hozzárendelések.
+[Hozzárendelések megtagadása](deny-assignments.md) meggátolja a felhasználókat adott Azure-erőforrás műveleteket végrehajtani, akkor is, ha a szerepkör-hozzárendelés hozzáférést biztosít számukra. Ez a cikk azt ismerteti, hogyan kell felsorolni megtagadása hozzárendelések a REST API használatával.
 
 > [!NOTE]
-> Jelenleg az egyetlen módszer, hozzáadhatja a saját megtagadási hozzárendelések van Azure-tervek használatával. További információkért lásd: [Azure tervezetek erőforrászárat az új erőforrások védelmét](../governance/blueprints/tutorials/protect-new-resources.md).
+> Nem közvetlenül hozhat létre saját hozzárendelések elutasítása. Információ a nem engedélyezi a hozzárendelések jönnek létre, lásd: [hozzárendelések megtagadása](deny-assignments.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 

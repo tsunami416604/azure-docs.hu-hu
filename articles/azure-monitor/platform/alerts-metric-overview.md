@@ -7,12 +7,12 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 6138a9ff6bb6d34b09c49fa7b5dbb67cbf5eb1b6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: ce65d87142df64a9f0c27f3acdb4d6f25e86fb8a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244910"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071627"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Megismerheti, hogyan riasztást küld a metrika a munkát az Azure monitorban
 
@@ -36,6 +36,8 @@ Tegyük fel, létrehozott egy egyszerű statikus küszöbérték a metrikaalapú
 - Küszöbérték: 70
 
 Kezdve a riasztási szabály jön létre a figyelő 1 percenként fut, és az utolsó 5 percben metrikaértékek megvizsgál, és ellenőrzi, ha ezek az értékek átlaga meghaladja a 70. Ha a feltétel teljesül, amely, az átlagos százalékos Processzorhasználat az utolsó 5 percig meghaladja a 70, a riasztási szabály egy aktivált értesítés aktiválódik. Ha konfigurálta a műveletcsoport, a riasztási szabályhoz tartozó e-mailben vagy a web hook művelet, kapni fog egy aktivált értesítést is.
+
+Ha használ több feltétel több szabály, a szabály "Equal" feltételek együtt.  Ez azt jelenti, hogy a riasztás akkor aktiválódik, ha a riasztásban szereplő összes feltétel kiértékelése igaz, és oldja meg, ha a feltételek egyike már nem igaz. Az ilyen típusú riasztás például és riasztás megjelenítése, ha "90 %-nál nagyobb CPU" vagy "várólista hossza is több mint 300 elemet". 
 
 ### <a name="alert-rule-with-dynamic-condition-type"></a>Riasztási szabály a dinamikus feltétel típusa
 

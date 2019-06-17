@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 8b091ecce98a626f18fe6547445d898b6710e1a5
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65510548"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Storage-metrikák az Azure Monitorban
@@ -344,24 +344,24 @@ Az Azure Storage a következő kapacitási mérőszámot az Azure monitorban biz
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
 | BlobCapacity | A teljes használható a storage-fiókban lévő blobtárolóba. <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 <br/> Méretek: **BlobType**, és **BlobTier** ([definíció](#metrics-dimensions)) |
-| BlobCount    | A storage-fiókban tárolt blob-objektumok száma. <br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 <br/> Méretek: **BlobType**, és **BlobTier** ([definíció](#metrics-dimensions)) |
+| BlobCount    | A storage-fiókban tárolt blob-objektumok száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 <br/> Méretek: **BlobType**, és **BlobTier** ([definíció](#metrics-dimensions)) |
 | ContainerCount    | A tárfiókban lévő tárolók száma. <br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
 | IndexCapacity     | Az ADLS Gen2 hierarchikus Index által felhasznált tárterület mérete <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
 
-### <a name="table-storage"></a>Táblatároló
+### <a name="table-storage"></a>Table Storage
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
 | TableCapacity | Használja a tárfiók Table storage mennyisége. <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
 | TableCount   | A tárfiókban lévő táblák száma. <br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
-| TableEntityCount | A storage-fiókban található táblaentitások száma. <br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
+| TableEntityCount | A storage-fiókban található táblaentitások száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
 
 ### <a name="queue-storage"></a>Queue Storage
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
 | QueueCapacity | Használja a tárfiók Queue storage mennyisége. <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
-| QueueCount   | A tárfiókban lévő üzenetsorok számát. <br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
+| QueueCount   | A tárfiókban lévő üzenetsorok számát. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
 | QueueMessageCount | A storage-fiók lejárt üzenetsorbeli üzenetek száma. <br/><br/>Szervezeti egység: Count <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
 
 ### <a name="file-storage"></a>File Storage
@@ -369,8 +369,8 @@ Az Azure Storage a következő kapacitási mérőszámot az Azure monitorban biz
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
 | FileCapacity | Használja a tárfiók File storage mennyisége. <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
-| FileCount   | A storage-fiókban lévő fájlok száma. <br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
-| FileShareCount | A tárfiókban lévő fájlmegosztások a száma. <br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
+| FileCount   | A storage-fiókban lévő fájlok száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
+| FileShareCount | A tárfiókban lévő fájlmegosztások a száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
 
 ## <a name="transaction-metrics"></a>Tranzakció-mérőszámot
 
@@ -380,9 +380,9 @@ Az Azure Storage a következő tranzakció-mérőszámot az Azure monitorban biz
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| Tranzakciók | Tárolási szolgáltatás vagy a megadott API-művelet számára elküldött kérések száma. Ez az érték a sikeres és sikertelen kérések, valamint a hibára futott kérések számát tartalmazza. <br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Összeg <br/> Alkalmazható dimenziók: ResponseType, GeoType, ApiName és hitelesítés ([definíció](#metrics-dimensions))<br/> Érték. példa: 1024 |
-| Bejövő forgalom | A bejövő adatok mennyisége. Ez a szám a külső ügyfél Azure Storage-ba irányuló bejövő adatait és az Azure-on belüli bejövő adatokat egyaránt magában foglalja. <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Összeg <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 1024 |
-| Kimenő forgalom | A kimenő adatok mennyisége. Ez a szám a külső ügyfél Azure Storage-ba irányuló kimenő adatait és az Azure-on belüli kimenő adatokat egyaránt magában foglalja. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat. <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Összeg <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 1024 |
+| Tranzakciók | Tárolási szolgáltatás vagy a megadott API-művelet számára elküldött kérések száma. Ez az érték a sikeres és sikertelen kérések, valamint a hibára futott kérések számát tartalmazza. <br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Összes <br/> Alkalmazható dimenziók: ResponseType, GeoType, ApiName és hitelesítés ([definíció](#metrics-dimensions))<br/> Érték. példa: 1024 |
+| Bejövő forgalom | A bejövő adatok mennyisége. Ez a szám a külső ügyfél Azure Storage-ba irányuló bejövő adatait és az Azure-on belüli bejövő adatokat egyaránt magában foglalja. <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Összes <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 1024 |
+| Kimenő forgalom | A kimenő adatok mennyisége. Ez a szám a külső ügyfél Azure Storage-ba irányuló kimenő adatait és az Azure-on belüli kimenő adatokat egyaránt magában foglalja. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat. <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Összes <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 1024 |
 | SuccessServerLatency | Az Azure Storage által sikeresen feldolgozott kérések átlagos feldolgozási ideje. Ez az érték nem tartalmazza a SuccessE2ELatency paraméterben megadott hálózati késleltetést. <br/><br/> Szervezeti egység: Ezredmásodperc <br/> Aggregation Type: Átlag <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 1024 |
 | SuccessE2ELatency | A tárolási szolgáltatás vagy a megadott API-művelet számára elküldött sikeres kérések végpontok közötti késésének átlaga. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt. <br/><br/> Szervezeti egység: Ezredmásodperc <br/> Aggregation Type: Átlag <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 1024 |
 | Rendelkezésre állás | A társzolgáltatás vagy a megadott API-művelet rendelkezésre állási százaléka. A Rendelkezésre állás az összes számlázható kérelem értékének és a vonatkozó kérelmek számának (a nem várt hibákat eredményező kérelmeket is beleértve) a hányadosa. Minden nem várt hiba a társzolgáltatás vagy a megadott API-művelet romlik a rendelkezésre állás eredményez. <br/><br/> Szervezeti egység: Százalék <br/> Aggregation Type: Átlag <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 99.99 |
@@ -396,7 +396,7 @@ Az Azure Storage támogatja a következő dimenziókat a metrikák az Azure moni
 | **BlobType** | A Blob metrikák csak a blob típusa. A támogatott értékek a következők **BlockBlob**, **PageBlob**, és **Azure Data Lake Storage**. Hozzáfűző Blob egy BlockBlob szerepel. |
 | **BlobTier** | Az Azure storage kínál különböző elérési szint, amely a leginkább költséghatékony módon blob objektum adatok tárolását is lehetővé teszik. Bővebb információt a [Azure Storage blob szintjének](../blobs/storage-blob-storage-tiers.md). A támogatott értékek a következők: <br/> <li>**Gyakori elérésű**: Gyakori elérésű szint</li> <li>**Ritka elérésű**: Lassú elérési szint</li> <li>**Archív**: Archív szinten</li> <li>**Prémium szintű**: Prémium szintű blokkblobhoz</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: Prémium szintű lapblobok réteg típusa</li> <li>**Standard szintű**: Standard lap Blob réteg típusa</li> <li>**Untiered**: Általános célú v1 tárfiók réteg típusa</li> |
 | **GeoType** | A tranzakció elsődleges vagy másodlagos fürtből. A rendelkezésre álló értékek például **elsődleges** és **másodlagos**. Érvényes írásvédett Georedundáns redundáns Storage(RA-GRS) másodlagos bérlőtől objektumok olvasásakor. |
-| **ResponseType** | Tranzakció válasz típusa. Az elérhető értékek közé a következők tartoznak: <br/><br/> <li>**ServerOtherError**: Minden egyéb kiszolgálóoldali hiba, kivéve az ismertetett hibákat </li> <li>**ServerBusyError**: Hitelesített kérés, amely HTTP 503-as állapotkódot adott vissza. </li> <li>**ServerTimeoutError**: Hitelesített kérés, amely túllépte az időkorlátot, és HTTP 500-as állapotkódot adott vissza. Az időtúllépés egy kiszolgálóhiba miatt lépett fel. </li> <li>**AuthorizationError**: Hitelesített kérés, amely jogosulatlan adathozzáférés vagy egy engedélyezési hiba miatt hiúsult meg. </li> <li>**NetworkError**: Hitelesített kérés, amely hálózati hibák miatt hiúsult meg. Leggyakrabban akkor fordul elő, ha egy ügyfél idő előtt, az időkorlát letelte előtt zár be egy kapcsolatot. </li> <li>**ClientThrottlingError**: Ügyféloldali szabályozási hiba. </li> <li>**ClientTimeoutError**: Hitelesített kérés, amely túllépte az időkorlátot, és HTTP 500-as állapotkódot adott vissza. Ha az ügyfél hálózati időkorlátja vagy a kérés időkorlátja a tárolási szolgáltatás által várt értéknél alacsonyabbra van állítva, akkor ez egy várt időtúllépés. Máskülönben a rendszer ServerTimeoutError hibát jelent. </li> <li>**ClientOtherError**: Minden egyéb ügyféloldali hiba, kivéve az ismertetett hibákat. </li> <li>**Success**: Sikeres kérelem</li> <li> **SuccessWithThrottling**: Sikeres kérelem egy SMB-ügyfél lekérdezi az első megpróbálása a szabályozott, de sikeres próbálkozás után.</li> |
+| **ResponseType** | Tranzakció válasz típusa. Az elérhető értékek közé a következők tartoznak: <br/><br/> <li>**ServerOtherError**: Minden egyéb kiszolgálóoldali hiba, kivéve az ismertetett hibákat </li> <li>**ServerBusyError**: Hitelesített kérés, amely HTTP 503-as állapotkódot adott vissza. </li> <li>**ServerTimeoutError**: Hitelesített kérés, amely túllépte az időkorlátot, és HTTP 500-as állapotkódot adott vissza. Az időtúllépés egy kiszolgálóhiba miatt lépett fel. </li> <li>**AuthorizationError**: Hitelesített kérés, amely jogosulatlan adathozzáférés vagy egy engedélyezési hiba miatt hiúsult meg. </li> <li>**NetworkError**: Hitelesített kérés, amely hálózati hibák miatt hiúsult meg. Leggyakrabban akkor fordul elő, ha egy ügyfél idő előtt, az időkorlát letelte előtt zár be egy kapcsolatot. </li> <li>**ClientThrottlingError**: Ügyféloldali szabályozási hiba. </li> <li>**ClientTimeoutError**: Hitelesített kérés, amely túllépte az időkorlátot, és HTTP 500-as állapotkódot adott vissza. Ha az ügyfél hálózati időkorlátja vagy a kérés időkorlátja a tárolási szolgáltatás által várt értéknél alacsonyabbra van állítva, akkor ez egy várt időtúllépés. Máskülönben a rendszer ServerTimeoutError hibát jelent. </li> <li>**ClientOtherError**: Minden egyéb ügyféloldali hiba, kivéve az ismertetett hibákat. </li> <li>**Success**: Sikeres kérés</li> <li> **SuccessWithThrottling**: Sikeres kérelem egy SMB-ügyfél lekérdezi az első megpróbálása a szabályozott, de sikeres próbálkozás után.</li> |
 | **ApiName** | Művelet neve. Példa: <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> Az összes művelet nevekkel kapcsolatban lásd: [dokumentum](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
 | **Hitelesítés** | A tranzakciók használt hitelesítés típusa. Az elérhető értékek közé a következők tartoznak: <br/> <li>**AccountKey**: A tranzakció tárfiókkulcs adatokkal van hitelesítve.</li> <li>**SAS**: A tranzakció közös hozzáférésű jogosultságkódok adatokkal van hitelesítve.</li> <li>**OAuth**: A tranzakció OAuth hozzáférési tokenek adatokkal van hitelesítve.</li> <li>**Névtelen**: A tranzakció névtelenül van szükség. Ellenőrzési kérelem nem tartalmazza.</li> <li>**AnonymousPreflight**: A tranzakció ellenőrzési kérést.</li> |
 
@@ -406,7 +406,7 @@ A metrikák támogató dimenziók esetében adja meg a megfelelő mérőszámok 
 
 Az Azure Monitor felügyelt metrikákkal párhuzamos örökölt metrikák érhetők el. A támogatási azonos tárolja, amíg Azure Storage-be a szolgáltatást a régi metrikák is.
 
-## <a name="faq"></a>gyakori kérdésekben
+## <a name="faq"></a>GYIK
 
 **Új mérőszámok támogatja a klasszikus tárfiókot?**
 

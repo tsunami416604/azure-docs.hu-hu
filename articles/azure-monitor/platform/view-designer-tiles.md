@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
 ms.openlocfilehash: 9c0283081bd7245b1b886ed82ba03130a7a3bf2c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61342037"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Nézettervező csempe az Azure monitorban a referencia-útmutató
@@ -31,7 +31,7 @@ Nézettervező kapcsolatos további információkért lásd:
 
 Nézettervező csempe érhető el az alábbi táblázat ismerteti:  
 
-| Csempe | Leírás |
+| csempe | Leírás |
 |:--- |:--- |
 | [Szám](#number-tile) |Egy lekérdezés által rekordok száma. |
 | [Két szám](#two-numbers-tile) |Két különböző lekérdezéseket rekordjainak számát. |
@@ -60,7 +60,7 @@ A **szám** csempe mindkét naplófájl lekérdezés és a egy címkét a rekord
 | **Speciális** |**> Adatfolyam-ellenőrzés** |
 | Enabled |Kattintson erre a hivatkozásra, ha a csempe engedélyezni kell a adatfolyamot. Ez a megközelítés egy másik üzenet biztosít, ha az adatok nem érhetők el. Általában használatával megközelítés adja meg egy üzenetet során az ideiglenes időszak, amikor a nézet telepítve van, és az adatok elérhetővé válnak. |
 | Lekérdezés |A lekérdezés, amely elérhető a nézet adatok meghatározásához. Ha a lekérdezés eredménytelen, megjelenik egy üzenet, az érték a fő lekérdezés helyett. |
-| Üzenet |Az üzenet jelenik meg, ha az adatfolyam-ellenőrzési lekérdezés visszaadja az adatot nem. Ha ad meg semmilyen üzenet egy *értékelés folyamatban* állapotüzenet jelenik meg. |
+| Message |Az üzenet jelenik meg, ha az adatfolyam-ellenőrzési lekérdezés visszaadja az adatot nem. Ha ad meg semmilyen üzenet egy *értékelés folyamatban* állapotüzenet jelenik meg. |
 
 
 ## <a name="two-numbers-tile"></a>Két szám csempe
@@ -81,7 +81,7 @@ Ez a csempe minden két különböző naplófájl-lekérdezések és a egy címk
 | **Speciális** |**> Adatfolyam-ellenőrzés** |
 | Enabled |Kattintson erre a hivatkozásra, ha a csempe engedélyezni kell a adatfolyamot. Ez a megközelítés egy másik üzenet biztosít, ha az adatok nem érhetők el. Általában használatával megközelítés adja meg egy üzenetet során az ideiglenes időszak, amikor a nézet telepítve van, és az adatok elérhetővé válnak. |
 | Lekérdezés |A lekérdezés, amely elérhető a nézet adatok meghatározásához. Ha a lekérdezés eredménytelen, megjelenik egy üzenet, az érték a fő lekérdezés helyett. |
-| Üzenet |Az üzenet jelenik meg, ha az adatfolyam-ellenőrzési lekérdezés visszaadja az adatot nem. Ha ad meg semmilyen üzenet egy *értékelés folyamatban* állapotüzenet jelenik meg. |
+| Message |Az üzenet jelenik meg, ha az adatfolyam-ellenőrzési lekérdezés visszaadja az adatot nem. Ha ad meg semmilyen üzenet egy *értékelés folyamatban* állapotüzenet jelenik meg. |
 
 
 ## <a name="donut-tile"></a>Fánkdiagram csempe
@@ -98,14 +98,14 @@ A **Fánkdiagram** csempe egyetlen szám, amely összefoglalja a log lekérdezé
 | **fánkdiagram** |**> Center** |
 | Text |A szöveg, amely alatt a fánkdiagram belül az érték jelenik meg. |
 | Művelet |A műveletet, hogy együtt, egyetlen értékként a value tulajdonság.<ul><li>Összeg: Adja hozzá a tulajdonság értéke az összes rekord értékeit.</li><li>Százalékos aránya: A tulajdonság értéke az összes rekord összegzett értékek képest rekordokból az összegzett értékek százalékos értéke.</li></ul> |
-| A fánkdiagram közepén megjelenített eredményértékek |Kiválaszthat egy vagy több érték hozzáadása a plusz jelre (+). A lekérdezés eredményeit rögzíti a megadott tulajdonság értékek korlátozódnak. Nincsenek értékek vesznek fel, ha a lekérdezés szereplő összes rekordok. |
+| Center művelet során használt eredmény érték |Kiválaszthat egy vagy több érték hozzáadása a plusz jelre (+). A lekérdezés eredményeit rögzíti a megadott tulajdonság értékek korlátozódnak. Nincsenek értékek vesznek fel, ha a lekérdezés szereplő összes rekordok. |
 | **fánkdiagram** |**> További beállítások** |
 | Színek |Minden, a három leggyakoribb tulajdonságainak megjelenő szín. Másodlagos színe tulajdonságértékeket megadásához használja *szín leképezési speciális*. |
 | Speciális színleképezés |Megjeleníti egy adott tulajdonság értéket jelölő szín. Ha a megadott értéket az első három, a másodlagos színt helyett a standard szintű szín jelenik meg. Ha a tulajdonság nem szerepel az első három, a szín nem jelenik meg. |
 | **Speciális** |**> Adatfolyam-ellenőrzés** |
 | Enabled |Kattintson erre a hivatkozásra, ha a csempe engedélyezni kell a adatfolyamot. Ez a megközelítés egy másik üzenet biztosít, ha az adatok nem érhetők el. Általában használatával megközelítés adja meg egy üzenetet során az ideiglenes időszak, amikor a nézet telepítve van, és az adatok elérhetővé válnak. |
 | Lekérdezés |A lekérdezés, amely elérhető a nézet adatok meghatározásához. Ha a lekérdezés eredménytelen, megjelenik egy üzenet, az érték a fő lekérdezés helyett. |
-| Üzenet |Az üzenet jelenik meg, ha az adatfolyam-ellenőrzési lekérdezés visszaadja az adatot nem. Ha ad meg semmilyen üzenet egy *értékelés folyamatban* állapotüzenet jelenik meg. |
+| Message |Az üzenet jelenik meg, ha az adatfolyam-ellenőrzési lekérdezés visszaadja az adatot nem. Ha ad meg semmilyen üzenet egy *értékelés folyamatban* állapotüzenet jelenik meg. |
 
 
 ## <a name="line-chart-tile"></a>Sor diagram csempe
@@ -126,7 +126,7 @@ Ez a csempe nem egy vonaldiagramot, amely megjeleníti a log lekérdezésből sz
 | **Speciális** |**> Adatfolyam-ellenőrzés** |
 | Enabled |Kattintson erre a hivatkozásra, ha a csempe engedélyezni kell a adatfolyamot. Ez a megközelítés egy másik üzenet biztosít, ha az adatok nem érhetők el. Általában használatával megközelítés adja meg egy üzenetet során az ideiglenes időszak, amikor a nézet telepítve van, és az adatok elérhetővé válnak. |
 | Lekérdezés |A lekérdezés, amely elérhető a nézet adatok meghatározásához. Ha a lekérdezés eredménytelen, megjelenik egy üzenet, az érték a fő lekérdezés helyett. |
-| Üzenet |Az üzenet jelenik meg, ha az adatfolyam-ellenőrzési lekérdezés visszaadja az adatot nem. Ha ad meg semmilyen üzenet egy *értékelés folyamatban* állapotüzenet jelenik meg. |
+| Message |Az üzenet jelenik meg, ha az adatfolyam-ellenőrzési lekérdezés visszaadja az adatot nem. Ha ad meg semmilyen üzenet egy *értékelés folyamatban* állapotüzenet jelenik meg. |
 
 
 ## <a name="line-chart-and-callout-tile"></a>Vonal és képfelirat diagram csempe
@@ -151,7 +151,7 @@ Ez a csempe rendelkezik mindkét egy sor diagram azt mutatja, hogy a naplóból 
 | **Speciális** |**> Adatfolyam-ellenőrzés** |
 | Enabled |Kattintson erre a hivatkozásra, ha a csempe engedélyezni kell a adatfolyamot. Ez a megközelítés egy másik üzenet biztosít, ha az adatok nem érhetők el. Általában használatával megközelítés adja meg egy üzenetet során az ideiglenes időszak, amikor a nézet telepítve van, és az adatok elérhetővé válnak. |
 | Lekérdezés |A lekérdezés, amely elérhető a nézet adatok meghatározásához. Ha a lekérdezés eredménytelen, megjelenik egy üzenet, az érték a fő lekérdezés helyett. |
-| Üzenet |Az üzenet jelenik meg, ha az adatfolyam-ellenőrzési lekérdezés visszaadja az adatot nem. Ha ad meg semmilyen üzenet egy *értékelés folyamatban* állapotüzenet jelenik meg. |
+| Message |Az üzenet jelenik meg, ha az adatfolyam-ellenőrzési lekérdezés visszaadja az adatot nem. Ha ad meg semmilyen üzenet egy *értékelés folyamatban* állapotüzenet jelenik meg. |
 
 
 ## <a name="two-timelines-tile"></a>Két idősor csempe
@@ -176,7 +176,7 @@ A **két idősor** csempe oszlopdiagramként idővel két naplófájl lekérdez�
 | **Speciális** |**> Adatfolyam-ellenőrzés** |
 | Enabled |Kattintson erre a hivatkozásra, ha a csempe engedélyezni kell a adatfolyamot. Ez a megközelítés egy másik üzenet biztosít, ha az adatok nem érhetők el. Általában használatával megközelítés adja meg egy üzenetet során az ideiglenes időszak, amikor a nézet telepítve van, és az adatok elérhetővé válnak. |
 | Lekérdezés |A lekérdezés, amely elérhető a nézet adatok meghatározásához. Ha a lekérdezés eredménytelen, megjelenik egy üzenet, az érték a fő lekérdezés helyett. |
-| Üzenet |Az üzenet jelenik meg, ha az adatfolyam-ellenőrzési lekérdezés visszaadja az adatot nem. Ha ad meg semmilyen üzenet egy *értékelés folyamatban* állapotüzenet jelenik meg. |
+| Message |Az üzenet jelenik meg, ha az adatfolyam-ellenőrzési lekérdezés visszaadja az adatot nem. Ha ad meg semmilyen üzenet egy *értékelés folyamatban* állapotüzenet jelenik meg. |
 
 
 ## <a name="next-steps"></a>További lépések

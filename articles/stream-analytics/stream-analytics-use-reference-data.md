@@ -4,19 +4,19 @@ description: Ez a cikk ismerteti, hogyan használható a referenciaadatok talál
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/29/2019
-ms.openlocfilehash: 93c65429ef7581f4a7d2e268034e4056d6f000c8
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.date: 06/11/2019
+ms.openlocfilehash: 99917fa01fcdb3faf731e9d0909d67ff41222f22
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393123"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066768"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>A Stream Analytics keresések referenciaadatok használata
+
 Referenciaadatok (más néven egy keresési táblázat) egy véges adatkészlet, amely statikus vagy lassan változó természetű, használja a keresés végrehajtásához vagy korrelációját, ha az adatfolyamban. Például egy IoT-forgatókönyvet, sikerült (amelyek nem változnak gyakran) vonatkozó metaadatokat tárolnak a referenciaadatok és csatlakozik azt a valós idejű IoT-adatfolyamaiból. Az Azure Stream Analytics közel valós idejű adatfolyam-feldolgozás eléréséhez a memóriában referenciaadatok tölti be. Győződjön meg arról, hogy az Azure Stream Analytics-feladat a referenciaadatok, az általában használhat egy [referencia-adatok csatlakozzon](https://msdn.microsoft.com/library/azure/dn949258.aspx) a lekérdezésben. 
 
 Stream Analytics támogatja az Azure Blob storage és Azure SQL Database, a tárolási réteget a Referenciaadatoknál. Akkor is átalakítása, illetve hivatkozás adatokat másol az Azure Data Factory használata a Blob storage [bármely számos felhőalapú és helyszíni adattárak](../data-factory/copy-activity-overview.md).
@@ -35,7 +35,7 @@ A referenciaadatok konfigurálásához először hozzon létre egy bemeneti típ
 |Tárfiók   | Hol találhatók a BLOB storage-fiók neve. Ha a Stream Analytics-feladatot az azonos előfizetésben, kiválaszthatja a legördülő listából.   |
 |Tárfiók kulcsa   | A storage-fiókhoz társított titkos kulcs. Ez automatikusan tölti fel a rendszer-e a tárfiók ugyanahhoz az előfizetéshez tartozik, mint a Stream Analytics-feladatot.   |
 |Storage-tároló   | Tárolók biztosítják a Microsoft Azure Blob service-ben tárolt blobok logikai jellegű csoportosítását. A Blob szolgáltatáshoz feltölt egy blobot, ha meg kell adnia egy adott blob-tárolót.   |
-|Path Pattern (Elérésiút-minta)   | A megadott tárolóban található blobok helyének azonosításához használt elérési útja. Az elérési útban dönthet úgy, hogy a következő 2 változó egy vagy több példányát adhatja meg:<BR>{date}, {time}<BR>1. példa: products/{date}/{time}/product-list.csv<BR>2. példa: products/{date}/product-list.csv<BR>3. példa: product-list.csv<BR><br> Ha a blob nem létezik a megadott elérési úton, a Stream Analytics-feladat elérhető legyen, a BLOB határozatlan ideig vár.   |
+|Path Pattern (Elérésiút-minta)   | A megadott tárolóban található blobok helyének azonosításához használt elérési útja. Az elérési útban dönthet úgy, hogy a következő 2 változó egy vagy több példányát adhatja meg:<BR>{date}, {time}<BR>1\. példa: products/{date}/{time}/product-list.csv<BR>2\. példa: products/{date}/product-list.csv<BR>3\. példa: product-list.csv<BR><br> Ha a blob nem létezik a megadott elérési úton, a Stream Analytics-feladat elérhető legyen, a BLOB határozatlan ideig vár.   |
 |Dátumformátum: [opcionális]   | Ha a megadott elérési út mintája belül használta {a(z) date}, majd kiválaszthatja a dátumformátum, amelyben a blobok vannak rendszerezve a támogatott formátumok a legördülő listából.<BR>Példa: ÉÉÉÉ/hh/nn, hh/nn/éééé, stb.   |
 |[Opcionális] időformátum   | Ha a megadott elérési út mintája belül használt {time}, majd kiválaszthatja az időformátum, amelyben a blobok vannak rendszerezve a támogatott formátumok a legördülő listából.<BR>Példa: HH, ÓÓ/pp vagy HH: mm-es.  |
 |Eseményszerializációs formátum   | Annak biztosításához, hogy a lekérdezések dolgozhat várható, Stream Analytics tudnia kell, melyik szerializálási formátumot használja a bejövő adatfolyamokhoz. A Referenciaadatoknál, a támogatott formátumok a következők CSV és JSON-ban.  |
@@ -43,7 +43,7 @@ A referenciaadatok konfigurálásához először hozzon létre egy bemeneti típ
 
 ### <a name="static-reference-data"></a>Statikus referenciaadatok
 
-A referenciaadatok várhatóan nem változik, ha majd támogatása statikus hivatkozás adatokat adjon meg egy statikus útvonalat a bemeneti konfigurációban engedélyezve van. Az Azure Stream Analytics szerzi be a megadott elérési úton található blob. {date} és {Time időponttal}-behelyettesítési jogkivonatok nem szükséges. A referenciaadatok nem módosítható a Stream Analytics. Egy statikus referenciaadatok blob felülírása, ezért nem ajánlott.
+A referenciaadatok várhatóan nem változik, ha majd támogatása statikus hivatkozás adatokat adjon meg egy statikus útvonalat a bemeneti konfigurációban engedélyezve van. Az Azure Stream Analytics szerzi be a megadott elérési úton található blob. {date} és {Time időponttal}-behelyettesítési jogkivonatok nem szükséges. Mivel a referenciaadatok nem módosítható a Stream Analytics, írja felül a statikus referenciaadatok blob nem ajánlott.
 
 ### <a name="generate-reference-data-on-a-schedule"></a>Referenciaadatok ütemezés létrehozása
 
@@ -54,7 +54,7 @@ Az Azure Stream Analytics automatikus vizsgálatokat végez a frissített a refe
 > [!NOTE]
 > Jelenleg Stream Analytics-feladatok keresse meg a blob frissítés csak akkor, ha a gépek idejét az idő a blob nevében kódolású állomásra. Például a feladat megkeresi `sample/2015-04-16/17-30/products.csv` , amint lehetséges, de nem régebbi, mint 5:30-kor 2015. április 16 UTC időzónát. Akkor *soha nem* keresse meg a korábban felderített az utolsót kódolt időt egy blobot.
 > 
-> Például Miután a feladat megkeresi a blob `sample/2015-04-16/17-30/products.csv` , figyelmen kívül hagyja az 17:30-kor 2015. április 16-nál korábbi kódolt dátum fájlokat, ha egy késői érkező `sample/2015-04-16/17-25/products.csv` blob jön létre ugyanabban a tárolóban a feladat nem használja őket.
+> Például, ha a feladat megkeresi a blob `sample/2015-04-16/17-30/products.csv` , figyelmen kívül hagyja az 17:30-kor 2015. április 16-nál korábbi kódolt dátum fájlokat, ha egy késői érkező `sample/2015-04-16/17-25/products.csv` blob jön létre ugyanabban a tárolóban a feladat nem használja őket.
 > 
 > Hasonlóképpen ha `sample/2015-04-16/17-30/products.csv` , 10:03 PM 2015. április 16. csak előállított, de nincs korábbi dátummal blob nem található a tárolóban, a feladat indítása: 10:03 PM 2015. április 16. ezt a fájlt használja, és addig előző referenciaadatokat kell felhasználnia.
 > 

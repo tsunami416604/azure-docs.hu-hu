@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: amishu
-ms.openlocfilehash: e8f470647c218188705cfa65cba7077e62d1b2ac
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4573ff14c5326a47cf7b15ae2660614661d45d80
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148024"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073065"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>A beszédfelismerés SDK naplózásának engedélyezése
 
 Naplózás fájlt egy olyan opcionális szolgáltatás, beszédfelismerés SDK. A fejlesztés során naplózás további információkat és diagnosztikához kínál megoldást, a beszéd SDK alapvető összetevői. A tulajdonság beállításával engedélyezheti `Speech_LogFilename` speech-konfigurációs objektum a hely és a naplófájl nevét. Naplózás aktiválódik globálisan egy felismerő konfigurációtól való létrehozása után, és ezt követően nem lehet letiltani. A naplófájl neve nem módosítható egy futó naplózási munkamenet során.
 
 > [!NOTE]
-> Naplózás a programozási nyelvek, JavaScript kivételével az összes támogatott beszéd SDK-ban érhető el.
+> Naplózási érhető el, mivel beszéd SDK 1.4.0-s verzióját az összes támogatott programozási nyelvek, kivéve a JavaScript beszéd SDK.
 
 ## <a name="sample"></a>Sample
 

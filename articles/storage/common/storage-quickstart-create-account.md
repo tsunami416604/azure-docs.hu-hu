@@ -10,10 +10,10 @@ ms.date: 05/06/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 8375f4c54dc436ecf0694ec5f629c81d3591594d
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65234175"
 ---
 # <a name="create-a-storage-account"></a>Tárfiók létrehozása
@@ -137,7 +137,7 @@ Egy másik replikációs beállítással egy általános célú v2-tárfiók lé
 
 |Replikációs beállítás  |SkuName paraméter  |
 |---------|---------|
-|Helyileg redundáns tárolás (LRS)     |Standard szintű LRS         |
+|Helyileg redundáns tárolás (LRS)     |Standard_LRS         |
 |Zónaredundáns tárolás (ZRS)     |Standard_ZRS         |
 |Georedundáns tárolás (GRS)     |Standard_GRS         |
 |Írásvédett georedundáns tárolás (GRS)     |Standard_RAGRS         |
@@ -175,7 +175,7 @@ Egy másik replikációs beállítással egy általános célú v2-tárfiók lé
 
 |Replikációs beállítás  |sku paraméter  |
 |---------|---------|
-|Helyileg redundáns tárolás (LRS)     |Standard szintű LRS         |
+|Helyileg redundáns tárolás (LRS)     |Standard_LRS         |
 |Zónaredundáns tárolás (ZRS)     |Standard_ZRS         |
 |Georedundáns tárolás (GRS)     |Standard_GRS         |
 |Írásvédett georedundáns tárolás (GRS)     |Standard_RAGRS         |
@@ -220,7 +220,7 @@ Ha szeretné a cikkben található útmutató által létrehozott erőforrásoka
 Erőforráscsoport eltávolítása az Azure Portallal:
 
 1. Az Azure Portalon bontsa ki a bal oldalon a szolgáltatásmenüt, és válassza az **Erőforráscsoportok** lehetőséget az erőforráscsoportok listájának megjelenítéséhez.
-2. Keresse meg a törölni kívánt erőforráscsoportot, és kattintson a jobb gombbal a lista jobb oldalán lévő **Továbbiak** gombra (**...**).
+2. Keresse meg a törölni kívánt erőforráscsoportot, és kattintson a jobb gombbal a lista jobb oldalán lévő **Továbbiak** gombra ( **...** ).
 3. Válassza az **Erőforráscsoport törlése** elemet, és erősítse meg a választását.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)

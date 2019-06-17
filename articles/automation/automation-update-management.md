@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4df40febefa872fa52afdfaaf31b94dba7000af5
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
-ms.translationtype: MT
+ms.openlocfilehash: b28d590390cd1a1ef1c6651e6943ac2a7fa0af29
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729485"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075503"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -45,7 +45,7 @@ A számítógép frissítési megfelelőség szempontjából vizsgálat befejez�
 
 A frissítés megfelelőségi vizsgálat ütemezett vizsgálatokat mellett az MMA újraindítja, frissítés telepítése előtt, és a frissítés telepítése után legfeljebb 15 perccel kezdeményezik.
 
-Linux rendszerű számítógépen a megfelelőségi vizsgálat három óránként történik alapértelmezés szerint. Az MMA-ügynök újraindítása, ha a megfelelőségi vizsgálatot kezdeményez 15 percen belül.
+Linux rendszerű számítógépen a megfelelőségi vizsgálat alapértelmezés szerint történik minden órában. Az MMA-ügynök újraindítása, ha a megfelelőségi vizsgálatot kezdeményez 15 percen belül.
 
 Jelentések, hogy mennyire naprakész a számítógép az alapján, hogy milyen forrást úgy van konfigurálva, hogy a megoldás szinkronizálni. Ha a Windows-számítógép van konfigurálva, hogy a WSUS, attól függően, ha a WSUS a legutóbbi szinkronizálásra a Microsoft Update, az eredmények eltérőek lehetnek a Microsoft Updates jeleníti meg. Ez a viselkedés megegyezik a Linux rendszerű számítógépek, amelyek a nyilvános adattár helyett helyi adattárnak való jelentésre vannak konfigurálva.
 
@@ -303,7 +303,7 @@ Az Update Management a Windows-frissítések letöltése és telepítése a Wind
 
 ### <a name="pre-download-updates"></a>Előre frissítések letöltése
 
-Frissítések automatikus letöltése a csoportházirend konfigurálásához beállíthatja a [automatikus frissítések konfigurálása beállítás](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#BKMK_comp5) való **3**. Ez letölti a frissítéseket, a háttérben szükséges, de nem telepít. Ez az Update Management megőrizheti feletti ellenőrzési képességét ütemezéseket, de lehetővé teszik a frissítések letöltése az Update Management karbantartási időszakon kívül. Ez megakadályozhatja az **karbantartási időszak túllépve** az Update Management hibákat.
+Frissítések automatikus letöltése a csoportházirend konfigurálásához beállíthatja a [automatikus frissítések konfigurálása beállítás](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) való **3**. Ez letölti a frissítéseket, a háttérben szükséges, de nem telepít. Ez az Update Management megőrizheti feletti ellenőrzési képességét ütemezéseket, de lehetővé teszik a frissítések letöltése az Update Management karbantartási időszakon kívül. Ez megakadályozhatja az **karbantartási időszak túllépve** az Update Management hibákat.
 
 Akkor is állíthatja ezt a PowerShell-lel, futtassa a következő PowerShell-automatikus letöltés frissítések kívánt rendszeren.
 

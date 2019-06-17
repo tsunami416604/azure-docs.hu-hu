@@ -4,7 +4,7 @@ titlesuffix: Azure Traffic Manager
 description: Ez a cikk ismerteti a beágyazott profilok funkció az Azure Traffic Manager
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
+author: asudbring
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/22/2018
-ms.author: kumud
-ms.openlocfilehash: 6fb6b3e4476efec87b15d175d354afab777e6830
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 3c5459d0474ecd45501e634c4777fa178386183c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60330269"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071159"
 ---
 # <a name="nested-traffic-manager-profiles"></a>Beágyazott Traffic Manager-profilok
 
@@ -28,7 +28,7 @@ Minden egyes Traffic Manager-profil megadja egy forgalom-útválasztási módsze
 
 Az alábbi példák bemutatják, hogyan beágyazott Traffic Manager-profilok használatához különböző helyzetekben.
 
-## <a name="example-1-combining-performance-and-weighted-traffic-routing"></a>1. példa: "Teljesítmény" és "Súlyozott" forgalom-útválasztást kombinálása
+## <a name="example-1-combining-performance-and-weighted-traffic-routing"></a>1\. példa: "Teljesítmény" és "Súlyozott" forgalom-útválasztást kombinálása
 
 Tegyük fel, hogy telepített egy alkalmazást a következő Azure-régióban: USA nyugati RÉGIÓJA, Nyugat-Európa és Kelet-Ázsia. Traffic Manager "Teljesítmény" forgalom-útválasztási módszer használatával a felhasználó legközelebb eső régiót forgalom elosztása.
 
@@ -46,7 +46,7 @@ Ebben a konfigurációban a szülő profil keresztül irányított forgalom elos
 
 Amikor a szülő-profilt a "Teljesítmény" forgalom-útválasztási módszert használja, minden végpont hozzá kell rendelni egy helyre. A hely van hozzárendelve, amikor konfigurálja a végpontot. Válassza ki a legközelebb áll az üzembe helyezés az Azure-régióban. Az Azure-régiók értékei helyét az interneten késés tábla által támogatott. További információkért lásd: [Traffic Manager "Teljesítmény" forgalom-útválasztási módszer](traffic-manager-routing-methods.md#performance).
 
-## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>2. példa Végpont-monitorozás a beágyazott profilok
+## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>2\. példa Végpont-monitorozás a beágyazott profilok
 
 Traffic Manager folyamatosan figyeli az egyes Szolgáltatásvégpontok állapotát. A végpont állapota nem kifogástalan, ha a Traffic Manager arra utasítja a felhasználók alternatív végpontokat a szolgáltatás rendelkezésre állásának fenntartása. Ez a végpont monitorozása és feladatátvétele viselkedés vonatkozik az összes forgalom-útválasztási módszer. További információkért lásd: [Traffic Manager végpont figyelése](traffic-manager-monitoring.md). Végpont-monitorozás eltérően működik a beágyazott profilok. A beágyazott profilok a szülő-profil nem állapotellenőrzéseket hajthat végre az alárendelt közvetlenül. Ehelyett a gyermek profil végpontok állapotát rendszer kiszámítja a gyermek profil általános állapotát. Az egészségügyi információk propagálja felfelé a beágyazott profilhierarchiában. A szülő-profil az összesített állapota határozza meg, hogy a gyermek profil forgalmat használ. Tekintse meg a [– gyakori kérdések](traffic-manager-FAQs.md#traffic-manager-nested-profiles) szolgáltatásállapot-figyelést a beágyazott profilok teljes részleteiért.
 
@@ -63,7 +63,7 @@ Az alábbi ábra ezt a konfigurációt mutatja be:
 > [!NOTE]
 > A "Priority" forgalom-útválasztási módszer egyetlen végpont felé irányuló összes forgalma osztja el. Így nincs kis célú a MinChildEndpoints beállítás csak az "1" gyermekhely profilok.
 
-## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>3. példa: Rangsorolt feladatátvételi régiója "Teljesítmény" forgalom-Útválasztás
+## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>3\. példa: Rangsorolt feladatátvételi régiója "Teljesítmény" forgalom-Útválasztás
 
 Az alapértelmezett viselkedést, a "Teljesítmény" forgalom-útválasztási módszer van, ha végpontok különböző földrajzi helyeken, a végfelhasználók számára a rendszer a legalacsonyabb hálózati késéssel szempontjából a "legközelebbi" végpontra irányítja.
 
@@ -75,7 +75,7 @@ A Nyugat-Európa-végpont, mint az USA nyugati RÉGIÓJA végpont magasabb prior
 
 Minden régió esetében ismételje meg az ezt a mintát. Cserélje le a szülő-profilban szereplő összes három végpontok három alárendelt profilok, minden egyes biztosít egy rangsorolt feladatátvételi sorrendjét.
 
-## <a name="example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region"></a>4. példa: "Teljesítmény" forgalom ugyanabban a régióban több végpontok közötti útválasztás vezérlése
+## <a name="example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region"></a>4\. példa: "Teljesítmény" forgalom ugyanabban a régióban több végpontok közötti útválasztás vezérlése
 
 Tegyük fel, hogy a "teljesítmény" forgalom-útválasztási módszer egy profilt, amely egy adott régióban több végpont már használatban van. Alapértelmezés szerint a régióhoz irányított forgalom egyenletesen legyen elosztva az összes elérhető végpontok az adott régióban.
 
@@ -85,7 +85,7 @@ Több végpont hozzáadása a Nyugat-Európában, helyett azokat a végpontokat 
 
 !["Teljesítmény" forgalom-útválasztási az egyéni régión belüli forgalomelosztás][8]
 
-## <a name="example-5-per-endpoint-monitoring-settings"></a>5. példa: Végpont figyelési beállítások
+## <a name="example-5-per-endpoint-monitoring-settings"></a>5\. példa: Végpont figyelési beállítások
 
 Tegyük fel, hogy a Traffic Manager segítségével zökkenőmentesen áttelepítése egy örökölt érkező forgalmat a helyszíni webhely egy új, Azure-ban üzemeltetett felhőalapú verzióra. A régi helyhez használni kívánt a kezdőlap URI hely állapotának figyeléséhez. De az új felhőalapú verzió valósít meg egy egyéni monitorozási oldal (elérési út "/ monitor.aspx"), amely tartalmaz további ellenőrzéseket.
 

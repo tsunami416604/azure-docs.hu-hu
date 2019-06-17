@@ -17,10 +17,10 @@ ms.date: 04/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 93fae0babdee5eac87d50679fdd5b2b938c4df2e
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65236901"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Az SAP számítási feladatok az Azure tervezési és telepítési ellenőrzőlista 
@@ -183,7 +183,7 @@ Ebben a fázisban feltételezzük, hogy egy sikeres kísérleti vagy megvalósí
 11. Az egyéb ellenőrzések elvégzéséhez a számítási feladatok alkalmazása előtt a koncepció-fogalmak szakaszban felsoroltak szerint
 12. Számítási feladatok vonatkozik, ahogy jegyezze fel ezeket a rendszer az erőforrás-használat az Azure-ban, és vesse össze a régi platformját származó rekordokat. Ha látja, hogy rendelkezik-e nagyobb különbségek, módosítsa a virtuális gép méretezése a későbbiekben. Ne feledje, hogy esetén downsizing, a storage és a egy virtuális gép hálózati sávszélesség is csökken:
     1.  [Az Azure-beli Windows virtuális gépek méretei](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). 
-    2.  [Az Azure-ban Linux rendszerű virtuális gépek méretei](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) 
+    2.  [A Linux rendszerű virtuális gépek méretei az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) 
 13. Másolás rendszerfunkcióit és folyamatok működik. A célja, hogy könnyen használható a fejlesztői rendszerhez, vagy egy tesztgépen, ezért másolja, amelyek a projekt csapatok is új rendszerek gyors eléréséhez. Érdemes lehet [SAP LaMa](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+Landscape+Management+%28SAP+LaMa%29+at+a+Glance) elvégezve például eszközként.
 14. Optimalizálhatja, és gyarapítsa csapata Azure szerepkör-alapú hozzáfér, engedélyek és folyamatok érdekében győződjön meg arról, hogy rendelkezik-e a vámot szétválasztása egy oldalán. A másik oldalon szeretne biztosítani az összes csoport engedélyezve van az Azure-infrastruktúra a feladatok elvégzéséhez.
 15. A gyakorlatban, tesztelési és a dokumentum magas rendelkezésre állású és vész helyreállítási eljárásokat ahhoz, hogy a munkatársak az ilyen feladatok végrehajtásához. A hiányosságok azonosítása és alkalmazkodik az üzemelő példányokat, integrálja az Azure funkciókat
@@ -236,7 +236,7 @@ Az éles fázisokban kövesse a forgatókönyvek a korábbi fázisokban adatöss
         2.  Átlagos CPU-idő – minden egyes processzor (tehát 128 processzorok m128 virtuális gépen)
         3.  CPU-idő kernel – minden egyes processzor
         4.  CPU-idő felhasználói – minden egyes processzor
-    5.  Memória 
+    5.  Memory (Memória) 
         1.  Szabad memória
         2.  Memória lap/mp
         3.  Memória lap out/mp

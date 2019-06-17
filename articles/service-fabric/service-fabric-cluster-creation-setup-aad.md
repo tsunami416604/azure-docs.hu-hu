@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 02/15/2019
 ms.author: aljo
 ms.openlocfilehash: c02e38880fdf8e8f1a2229f009b343d6431af853
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62125136"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Az Azure Active Directory beállítása az ügyfél-hitelesítéshez
@@ -85,7 +85,7 @@ Bejelentkezés után sikeresen az Azure AD a Service Fabric Explorerben, a böng
 
 ![SFX tanúsítvány párbeszédpanel][sfx-select-certificate-dialog]
 
-#### <a name="reason"></a>Ok
+#### <a name="reason"></a>Reason
 A felhasználó nincs hozzárendelve egy szerepkörhöz az az Azure AD-fürt alkalmazást. Így az Azure AD-hitelesítés sikertelen lesz, Service Fabric-fürtön. A Service Fabric Explorer tanúsítványhitelesítés áll vissza.
 
 #### <a name="solution"></a>Megoldás
@@ -104,7 +104,7 @@ Próbáljon meg bejelentkezni az Azure AD a Service Fabric Explorerben, ha az ol
 
 ![SFX a válaszcím nem egyezik.][sfx-reply-address-not-match]
 
-#### <a name="reason"></a>Ok
+#### <a name="reason"></a>Reason
 A fürt (web) alkalmazás, amely a Service Fabric Explorer próbál meg Azure AD-val, és a kérés részeként az átirányítási visszatérési URL-címet biztosít. Az URL-cím nem szerepel az Azure AD-alkalmazás, de **válasz URL-cím** listája.
 
 #### <a name="solution"></a>Megoldás

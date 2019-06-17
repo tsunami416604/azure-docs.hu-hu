@@ -15,11 +15,11 @@ ms.workload: integration
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: ad4bf7ae97a08f89b9d82e1d4e025a5bd5d47fc1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60324697"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64696170"
 ---
 # <a name="monitor-the-health-of-azure-cdn-resources"></a>Az Azure CDN-erőforrások állapotának figyelése
   
@@ -51,7 +51,7 @@ Az Azure CDN a Resource health része a [az Azure resource health](../resource-h
 
 Állapotok kapcsolódnak az Azure CDN a resource health alább találja.
 
-|Üzenet | Javasolt művelet |
+|Message | Javasolt művelet |
 |---|---|
 |Előfordulhat, hogy egy vagy több CDN-végpontot leállított, eltávolított vagy helytelenül konfigurált | Előfordulhat, hogy egy vagy több CDN-végpontot leállított, eltávolított vagy helytelenül konfigurált.|
 |Sajnáljuk, de a CDN-kezelési szolgáltatás jelenleg nem érhető el | Látogasson vissza később állapotának frissítése; Ha a probléma tartósan fennáll, után a megoldás várható időpontjára, forduljon az ügyfélszolgálathoz.|

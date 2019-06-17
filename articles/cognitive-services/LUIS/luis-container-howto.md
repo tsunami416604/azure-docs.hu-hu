@@ -3,20 +3,20 @@ title: Docker-tárolók
 titleSuffix: Language Understanding - Azure Cognitive Services
 description: A LUIS-tároló a betanított vagy a közzétett alkalmazást tölt be egy docker-tárolót, és hozzáférést biztosít az API-végpontokat a tárolót a lekérdezés előrejelzéseket.
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/28/2019
-ms.author: diberry
-ms.openlocfilehash: 02ac7b91622a3c8fe877ea9bcbc7224a67eb0ae5
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.date: 06/11/2019
+ms.author: dapine
+ms.openlocfilehash: 68ff6a156e0d159816b184452f1f945cbce65216
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306624"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052027"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Telepítse és futtassa a LUIS docker-tárolók
  
@@ -32,7 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A LUIS-tároló futtatásához az alábbiakkal kell rendelkeznie: 
 
-|Kötelező|Cél|
+|Szükséges|Cél|
 |--|--|
 |Docker-motor| A Docker-motor telepítve van szüksége egy [gazdaszámítógép](#the-host-computer). A docker csomagokat biztosít, a Docker-környezet konfigurálása a [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), és [Linux](https://docs.docker.com/engine/installation/#supported-platforms). A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> **A Windows**, a Docker Linux-tárolók támogatása is kell konfigurálni.<br><br>|
 |Docker-ismeretek | A Docker fő fogalmaira, például a beállításjegyzékek, adattárak, tárolók, és tárolórendszerképeket, valamint alapszintű ismerete alapvető ismeretekkel kell `docker` parancsokat.| 
@@ -108,9 +108,9 @@ A bemeneti csatlakoztatási könyvtár is tartalmaz a **éles**, **átmeneti**, 
 
 |Csomag típusa|Lekérdezési API-végpont|Lekérdezés rendelkezésre állása|Alkalmazáscsomag fájlnév formátuma|
 |--|--|--|--|
-|Betanítva|GET, Post|Csak a tároló|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
-|Fájlok másolása folyamatban|GET, Post|Az Azure és a tároló|`{APPLICATION_ID}_STAGING.gz`|
-|Üzemi|GET, Post|Az Azure és a tároló|`{APPLICATION_ID}_PRODUCTION.gz`|
+|Betanított|GET, Post|Csak a tároló|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
+|Előkészítés|GET, Post|Az Azure és a tároló|`{APPLICATION_ID}_STAGING.gz`|
+|Production|GET, Post|Az Azure és a tároló|`{APPLICATION_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
 > Nem átnevezése, alter, felülírása és a LUIS-csomag fájlok kibontása.
@@ -272,8 +272,8 @@ Használja a gazdagép `https://localhost:5000`, API-k tároló.
 
 |Csomag típusa|Módszer|Útválasztás|Lekérdezési paraméterek|
 |--|--|--|--|
-|Közzétéve|[Első](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [Post](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/luis/v2.0/apps/{appId}?|q={q}<br>& előkészítés<br>[&timezoneOffset]<br>[& részletes]<br>[& log]<br>|
-|Betanítva|GET, Post|/luis/v2.0/apps/{appId}/versions/{versionId}?|q={q}<br>[&timezoneOffset]<br>[& részletes]<br>[& log]|
+|Közzétett|[Első](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [Post](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/luis/v2.0/apps/{appId}?|q={q}<br>& előkészítés<br>[&timezoneOffset]<br>[& részletes]<br>[& log]<br>|
+|Betanított|GET, Post|/luis/v2.0/apps/{appId}/versions/{versionId}?|q={q}<br>[&timezoneOffset]<br>[& részletes]<br>[& log]|
 
 A lekérdezési paraméterek konfigurálása módját és a lekérdezésekre adott válaszok adja vissza:
 

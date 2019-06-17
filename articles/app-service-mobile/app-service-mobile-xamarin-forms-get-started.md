@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: crdun
-ms.openlocfilehash: b0719f6ac2f99f9e665b1265665752dd53ccbaf0
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: b47e498754bad6917efca5b7f19f8ebce9cf0330
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242659"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062222"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Xamarin.Forms-alkalmazás létrehozása az Azure-ral
 
@@ -48,19 +48,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 A megoldás megnyitásához a Xamarinhoz készült Visual Studio Tools szükséges. Lásd a [Xamarin telepítési útmutatót][Install Xamarin]. Ha az eszközök már telepítve vannak, akkor a megoldást a következő lépesekben töltheti le és nyithatja meg:
 
-### <a name="visual-studio"></a>Visual Studio
-
-1. Nyissa meg az [Azure Portal](https://portal.azure.com/).
-
-2. A mobilalkalmazás beállítási paneljén kattintson az (Üzemelő példány alatt található) **Első lépések** > **Xamarin.Forms** elemre. A 3. lépésben kattintson az **Új alkalmazás létrehozása** lehetőségre, ha még nincs kiválasztva.  Ezután kattintson a **Letöltés** gombra.
-
-   Ez a művelet letölt egy projektet, amely tartalmazza a mobilalkalmazáshoz kapcsolódó ügyfélalkalmazást. Mentse el a tömörített projektfájlt a helyi számítógépen, és jegyezze fel a mentési helyét.
-
-3. Bontsa ki a letöltött projektet, és nyissa meg a Visual Studióban.
-
-4. Az alábbi utasításokat végrehajtva futtathatja az Androidos vagy Windowsos projekteket, és ha rendelkezik a hálózaton elérhető Mac-számítógéppel, az iOS-projektet is.
-
-### <a name="visual-studio-for-mac"></a>Visual Studio for Mac
+### <a name="visual-studio-windows-and-mac"></a>A Visual Studio (Windows és Mac)
 
 1. Nyissa meg a [az Azure portal](https://portal.azure.com/) , és keresse meg a mobilalkalmazás, amelyet Ön hozott létre. Az a `Overview` panelen keresse meg az URL-címet, amely a nyilvános végpont számára. Például: a sitename for my app name "test123" lesz https://test123.azurewebsites.net.
 

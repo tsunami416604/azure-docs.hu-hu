@@ -11,10 +11,10 @@ ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 26791aecb2ca57b31358d3385d07230c73c84904
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61474419"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>A Gen2 cache figyelése
@@ -36,8 +36,8 @@ A mátrix az alábbi forgatókönyvek a gyorsítótár-metrikák értékei alapj
 
 |                                | **Magas gyorsítótár találati százaléka** | **Alacsony gyorsítótár találati százaléka** |
 | :----------------------------: | :---------------------------: | :--------------------------: |
-| **Felhasznált gyorsítótár nagy százalékban** |          1. forgatókönyv           |          2. forgatókönyv          |
-| **Felhasznált gyorsítótár alacsony százalékos aránya**  |          3. forgatókönyv           |          4. forgatókönyv          |
+| **Felhasznált gyorsítótár nagy százalékban** |          1\. forgatókönyv           |          2\. forgatókönyv          |
+| **Felhasznált gyorsítótár alacsony százalékos aránya**  |          3\. forgatókönyv           |          4\. forgatókönyv          |
 
 **1. forgatókönyv:** A gyorsítótár optimálisan használja. [Hibaelhárítás](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) más területeken, amely előfordulhat, hogy a lekérdezések kell lelassul.
 

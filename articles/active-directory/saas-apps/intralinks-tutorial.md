@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: f72d00878e510a420b6974a7564ebc01fc09dcc3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b4a3b525cd2f9c4f28ad27154be2590fa6a96691
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60270968"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099891"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intralinks"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Intralinks
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Intralinks konfigurálásához hozzá kell Intralink
 
 **Intralinks hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

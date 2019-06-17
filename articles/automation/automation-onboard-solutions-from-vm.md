@@ -10,10 +10,10 @@ ms.service: automation
 ms.custom: mvc
 manager: carmonm
 ms.openlocfilehash: 38b5b233d21c0c5d79d7bcb6a145e6232b238b0e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66133126"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Az Azure virtuális gép felvétele az Update Management, Change Tracking and Inventory megoldásai
@@ -51,7 +51,7 @@ Ha a kiválasztott munkaterületen még nem rendelkezik a Frissítésfelügyelet
 
 Ha a kijelölt munkaterület a megoldás már tartozik, a megoldás nem újratelepítése, és a hatókör-konfiguráció nem adódik.
 
-Kattintson a három pontra (**...** ) a konfigurációkat, és válassza ki valamelyik **szerkesztése**. Az a **hatókör-konfiguráció szerkesztése** ablaktáblán válassza előbb **válassza ki a számítógépcsoportokat**. A **számítógépcsoportok** panelen látható a mentett kereséseket, a hatókör-konfiguráció létrehozásához használt.
+Kattintson a három pontra ( **...** ) a konfigurációkat, és válassza ki valamelyik **szerkesztése**. Az a **hatókör-konfiguráció szerkesztése** ablaktáblán válassza előbb **válassza ki a számítógépcsoportokat**. A **számítógépcsoportok** panelen látható a mentett kereséseket, a hatókör-konfiguráció létrehozásához használt.
 
 ## <a name="saved-searches"></a>Mentett keresések
 
@@ -59,7 +59,7 @@ Amikor számítógépet adnak az Update Management, a Change Tracking vagy a ké
 
 Lépjen a munkaterülethez. A **általános**válassza **mentett keresések**. A két mentett keresések, ezek a megoldások által használt az alábbi táblázatban láthatók:
 
-|Name (Név)     |Category  |Aliasnév  |
+|Name (Név)     |Category  |Alias  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  Change Tracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Frissítések        | Updates__MicrosoftDefaultComputerGroup         |

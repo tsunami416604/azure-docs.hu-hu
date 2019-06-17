@@ -13,16 +13,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 06/07/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78676ac2f2dcff74a27e0260a5d83e924f7c246f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6ee49ae56122fe596a4490914677d91d2f0348f6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60284959"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66807529"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Hibaelhárítás az Azure Active Directory-Tevékenységnaplók tartalomcsomag-hibái naplók 
 
@@ -39,7 +39,7 @@ A Power BI-tartalomcsomag használata az Azure Active Directory (Azure AD), eset
 
 A cikk ismerteti a lehetséges okok és a hibák kijavításához információt.
  
-## <a name="refresh-failed"></a>Nem sikerült a frissítés. 
+## <a name="refresh-failed"></a>A frissítés nem sikerült 
  
 **Hogyan ezt a hibát az illesztett**: E-mailben a Power bi-ban vagy a frissítési előzmények sikertelen állapotát. 
 
@@ -47,7 +47,7 @@ A cikk ismerteti a lehetséges okok és a hibák kijavításához információt.
 | Ok | Hogyan háríthatja el a |
 | ---   | ---        |
 | Frissítse a hibák is okozhatja, ha a hitelesítő adatait, a tartalomcsomag csatlakozó felhasználók új, de a kapcsolat beállításait a tartalomcsomag frissítése nem hiba. | A Power bi-ban keresse meg az adatkészlet, az Azure ad-ben Tevékenységnaplók irányítópultja megfelelő (**Azure Active Directory-Tevékenységnaplók**) válassza a frissítés ütemezése, majd adja meg az Azure AD hitelesítő adatait. |
-| Frissítés az alapul szolgáló tartalomcsomag az adatokkal kapcsolatos problémák miatt meghiúsulhat. | [Küldjön egy támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md).|
+| Frissítés nagy méretű adatkészletek miatt meghiúsulhat. | Az Azure AD tartalomcsomaggal a Power BI jelenleg csak kis adatkészletekhez (kevesebb mint 500,00 sorok) a Power BI szolgáltatásban időtúllépések körül bizonyos korlátozások miatt támogathat. Ha a szabályozási hibákat tapasztal, vagy ha a frissítés időtúllépési problémák miatt nem sikerül, lehet, hogy egy nagy méretű adathalmazt beolvasni kívánt. Csökkentse az időtartamot a lekérdezés, majd próbálkozzon újra.|
  
  
 ## <a name="failed-to-update-data-source-credentials"></a>Az adatforrás hitelesítő adatainak frissítése sikertelen 

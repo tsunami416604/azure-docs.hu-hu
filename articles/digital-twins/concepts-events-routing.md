@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: b7ace0718ea0fad0b746a40c90acff487ae314d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7dfda00aca403f7f95f0c56d1db28c3c609bebd2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60926300"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080659"
 ---
 # <a name="routing-events-and-messages"></a>Események és üzenetek útválasztása
 
@@ -21,7 +21,7 @@ IoT-megoldások gyakran több hatékony szolgáltatás, amely tartalmazza a tár
 
 ## <a name="route-types"></a>Útválasztási típus  
 
-Az Azure digitális Twins IoT-események integrálása más Azure-szolgáltatások vagy alkalmazások két lehetőséget kínál:
+Az Azure digitális Twins csatlakoztatása az IoT-események üzleti alkalmazások és más Azure-szolgáltatások két lehetőséget kínál:
 
 * **Útválasztási Azure digitális Twins események**: A térbeli objektum graph a módosításokat, a telemetriai adatokat fogadott, vagy a felhasználó által definiált függvény, amely létrehoz egy előre meghatározott feltételek alapján értesítést is aktiválhatja az Azure digitális Twins eseményeket. A felhasználók elküldhetik ezeket az eseményeket az [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [Azure Service Bus-üzenettémakörök](https://azure.microsoft.com/services/service-bus/), vagy [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) további feldolgozás céljából.
 

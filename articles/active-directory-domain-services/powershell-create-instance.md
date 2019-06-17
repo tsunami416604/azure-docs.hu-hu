@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: ergreenl
 ms.openlocfilehash: f2c4f73af00e0093ce98f2de37e9c3a0ba381eda
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66246854"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Engedélyezze az Azure Active Directory Domain Services PowerShell-lel
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan PowerShell-lel az Azure Active Directory (AD) Domain
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
-## <a name="task-1-install-the-required-powershell-modules"></a>1. feladat: A szükséges PowerShell-modulok telepítése
+## <a name="task-1-install-the-required-powershell-modules"></a>1\. feladat: A szükséges PowerShell-modulok telepítése
 
 ### <a name="install-and-configure-azure-ad-powershell"></a>Az Azure AD PowerShell telepítése és konfigurálása
 Kövesse a cikkben szereplő utasításokat [Azure AD PowerShell-modul telepítéséhez és az Azure AD connect](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
@@ -36,14 +36,14 @@ Kövesse a cikkben szereplő utasításokat [Azure AD PowerShell-modul telepít�
 Kövesse a cikkben szereplő utasításokat [az Azure PowerShell-modul telepítése és csatlakozás az Azure-előfizetéshez](https://docs.microsoft.com/powershell/azure/install-az-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
 
 
-## <a name="task-2-create-the-required-service-principal-in-your-azure-ad-directory"></a>2. feladat: A szükséges szolgáltatásnév létrehozása az Azure AD-címtár
+## <a name="task-2-create-the-required-service-principal-in-your-azure-ad-directory"></a>2\. feladat: A szükséges szolgáltatásnév létrehozása az Azure AD-címtár
 Írja be a következő PowerShell-parancsot az Azure AD tartományi szolgáltatásokat az Azure AD-címtár számára szükséges egyszerű szolgáltatás létrehozása.
 ```powershell
 # Create the service principal for Azure AD Domain Services.
 New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 ```
 
-## <a name="task-3-create-and-configure-the-aad-dc-administrators-group"></a>3. feladat: Hozzon létre, és az "AAD DC rendszergazdák" csoport konfigurálása
+## <a name="task-3-create-and-configure-the-aad-dc-administrators-group"></a>3\. feladat: Hozzon létre, és az "AAD DC rendszergazdák" csoport konfigurálása
 A következő feladata a felügyeleti feladatok a felügyelt tartomány delegálása használandó rendszergazdai csoport létrehozásához.
 ```powershell
 # Create the delegated administration group for AAD Domain Services.
@@ -69,14 +69,14 @@ $UserObjectId = Get-AzureADUser `
 Add-AzureADGroupMember -ObjectId $GroupObjectId.ObjectId -RefObjectId $UserObjectId.ObjectId
 ```
 
-## <a name="task-4-register-the-azure-ad-domain-services-resource-provider"></a>4. feladat: Az Azure AD tartományi szolgáltatások erőforrás-szolgáltató regisztrálása
+## <a name="task-4-register-the-azure-ad-domain-services-resource-provider"></a>4\. feladat: Az Azure AD tartományi szolgáltatások erőforrás-szolgáltató regisztrálása
 Írja be a következő PowerShell-parancsot az Azure AD tartományi szolgáltatásokhoz az erőforrás-szolgáltató regisztrálásához:
 ```powershell
 # Register the resource provider for Azure AD Domain Services with Resource Manager.
 Register-AzResourceProvider -ProviderNamespace Microsoft.AAD
 ```
 
-## <a name="task-5-create-a-resource-group"></a>5. feladat: Hozzon létre egy erőforráscsoportot
+## <a name="task-5-create-a-resource-group"></a>5\. feladat: Hozzon létre egy erőforráscsoportot
 Írja be a következő PowerShell-paranccsal hozzon létre egy erőforráscsoportot:
 ```powershell
 $ResourceGroupName = "ContosoAaddsRg"
@@ -91,7 +91,7 @@ New-AzResourceGroup `
 A virtuális hálózat és az Azure AD tartományi szolgáltatásokkal felügyelt tartományban hozhat létre az erőforráscsoportban.
 
 
-## <a name="task-6-create-and-configure-the-virtual-network"></a>6. feladat: Hozzon létre, és a virtuális hálózat konfigurálása
+## <a name="task-6-create-and-configure-the-virtual-network"></a>6\. feladat: Hozzon létre, és a virtuális hálózat konfigurálása
 Hozza létre a virtuális hálózatot, amelyben az Azure AD tartományi szolgáltatások engedélyezése. Győződjön meg arról, hogy az Azure AD tartományi szolgáltatásokhoz hozzon létre egy dedikált alhálózatán. Ne telepítse a munkaterhelési virtuális gépek az dedikált alhálózatban.
 
 Írja be a következő PowerShell-parancsok egy kijelölt alhálózatot a virtuális hálózat létrehozása az Azure AD tartományi szolgáltatásokhoz.
@@ -119,7 +119,7 @@ $Vnet=New-AzVirtualNetwork `
 ```
 
 
-## <a name="task-7-provision-the-azure-ad-domain-services-managed-domain"></a>7. feladat: Az Azure AD tartományi szolgáltatásokkal felügyelt tartományban üzembe helyezése
+## <a name="task-7-provision-the-azure-ad-domain-services-managed-domain"></a>7\. feladat: Az Azure AD tartományi szolgáltatásokkal felügyelt tartományban üzembe helyezése
 Írja be a címtár Azure AD tartományi szolgáltatások engedélyezése a következő PowerShell-parancsot:
 
 ```powershell

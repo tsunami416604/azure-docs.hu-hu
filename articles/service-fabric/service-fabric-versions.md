@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/24/2019
+ms.date: 06/10/2019
 ms.author: aljo
-ms.openlocfilehash: 606b14fba093b6ec8039c646a49bc3bf7d24eb51
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 8a548bce6da8b3bae004b0be4f6e8f09c9894025
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66296782"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67060341"
 ---
 # <a name="supported-service-fabric-versions"></a>A Service Fabric támogatott verziói
 
@@ -36,17 +36,18 @@ A következő táblázat felsorolja a Service Fabric és a támogatás záró d�
 
 | A fürt Service Fabric-futtatókörnyezet | Közvetlenül a fürt verziója frissíthető |Kompatibilis SDK-t vagy a NuGet-csomag verziója | Támogatás vége |
 | --- | --- |--- | --- |
-| Az összes fürtverziók 5.3.121 előtt | 5.1.158.* |Kisebb vagy egyenlő 2.3-as verzió |2017. január 20. |
-| 5.3.* | 5.1.158.* |Kisebb vagy egyenlő 2.3-as verzió |2017. február 24. |
-| 5.4.* | 5.1.158.* |Kisebb vagy egyenlő 2.4-es verzió |2017. május 10.       |
+| Az összes fürtverziók 5.3.121 előtt | 5.1.158.* |Kisebb vagy egyenlő 2.3-as verzió |2017\. január 20. |
+| 5.3.* | 5.1.158.* |Kisebb vagy egyenlő 2.3-as verzió |2017\. február 24. |
+| 5.4.* | 5.1.158.* |Kisebb vagy egyenlő 2.4-es verzió |2017\. május 10.       |
 | 5.5.* | 5.4.164.* |Kisebb vagy egyenlő 2.5-ös verzió |Augusztus 10,2017    |
 | 5.6.* | 5.4.164.* |Kisebb vagy egyenlő 2.6-os verzió |Október 13,2017   |
-| 5.7.* | 5.4.164.* |Kisebb vagy egyenlő 2.7-es verzió |2017. december 15.  |
-| 6.0.* | 5.6.205.* |Kisebb vagy egyenlő 2.8-as verziója |2018. március 30.     |
-| 6.1.* | 5.7.221.* |Kisebb vagy egyenlő, mint a 3.0-s verzió |2018. július 15.      |
-| 6.2.* | 6.0.232.* |Kisebb vagy egyenlő, mint 3.1-es verzióját |2018. október 26.   |
-| 6.3.* | 6.1.480.* |Kisebb vagy egyenlő 3.2-es verziója |2019. március 31-ig.  |
-| 6.4.* | 6.2.301.* |Kisebb vagy egyenlő 3.3-as verziója |Aktuális verzió, ezért nincs befejezési dátum |
+| 5.7.* | 5.4.164.* |Kisebb vagy egyenlő 2.7-es verzió |2017\. december 15.  |
+| 6.0.* | 5.6.205.* |Kisebb vagy egyenlő 2.8-as verziója |2018\. március 30.     |
+| 6.1.* | 5.7.221.* |Kisebb vagy egyenlő, mint a 3.0-s verzió |2018\. július 15.      |
+| 6.2.* | 6.0.232.* |Kisebb vagy egyenlő, mint 3.1-es verzióját |2018\. október 26.   |
+| 6.3.* | 6.1.480.* |Kisebb vagy egyenlő 3.2-es verziója |2019\. március 31-ig.  |
+| 6.4.* | 6.2.301.* |Kisebb vagy egyenlő 3.3-as verziója |2019\. szeptember 15. |
+| 6.5.* | 6.4.617.* |Kisebb vagy egyenlő 3.4-es verziójú |Aktuális verzió, ezért nincs befejezési dátum |
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
@@ -103,3 +104,4 @@ A következő táblázat felsorolja a Service Fabric és a megfelelő verziósz�
 | 6.4 CU5 | 6.4.654.9590 | 6.4.649.1 |
 | 6.4 CU6 | 6.4.658.9590 | n/a |
 | 6.4 CU7 | 6.4.664.9590 | 6.4.661.1 |
+| 6.5-ÖS RTO | 6.5.639.9590 | 6.5.435.1 |

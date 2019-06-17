@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 5/21/2019
 ms.author: cherylmc
 ms.openlocfilehash: 6b66a9cf28faccf5ba22bc016297f1d53febe533
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66157354"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Azure natív tanúsítványalapú hitelesítésének használatával virtuális hálózathoz pont – hely kapcsolat konfigurálása: Azure Portal
@@ -110,13 +110,13 @@ Az ügyfélcímkészlet megadott magánhálózati IP-címek tartománya. A pont�
 
 Kiválaszthatja az alagút típusát. A közül OpenVPN, SSTP és IKEv2. Az Android- és Linux-alapú strongSwan-ügyfél, valamint az iOS- és OS X-alapú natív IKEv2 VPN-ügyfél csak IKEv2-alagutat használ a kapcsolódáshoz. A Windows-ügyfél először az IKEv2-vel próbálkozik, majd ha azzal nem sikerült, visszavált SSTP-re. A OpenVPN ügyfele segítségével a OpenVPN alagúttípus csatlakozni.
 
-![Alagút típusa](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/tunneltype.png)
+![Alagúttípus](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/tunneltype.png)
 
 ## <a name="authenticationtype"></a>8. Hitelesítés típusának konfigurálása
 
 Válassza ki az **Azure-tanúsítvány** lehetőséget.
 
-  ![Alagút típusa](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/authenticationtype.png)
+  ![Alagúttípus](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/authenticationtype.png)
 
 ## <a name="uploadfile"></a>9. A főtanúsítvány nyilvános tanúsítványadatainak feltöltése
 
