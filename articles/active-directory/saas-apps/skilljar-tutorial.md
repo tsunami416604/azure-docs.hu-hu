@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: ea7982290cdcd51ba09ca97aa3f23086222516df
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: e4df5e259ce1cf2cd10d6ec514fa9091a6bd2d76
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65889882"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67090656"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skilljar"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Skilljar
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása a Skilljar konfigurálásához hozzá kell Skilljar a 
 
 **Skilljar hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -189,7 +189,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó Skilljar jön létre. Sk
 > [!NOTE]
 > Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [Skilljar támogatási csapatának](https://support.skilljar.com/hc/).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

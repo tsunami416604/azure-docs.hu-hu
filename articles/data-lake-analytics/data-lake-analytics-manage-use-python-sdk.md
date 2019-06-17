@@ -10,10 +10,10 @@ ms.assetid: d4213a19-4d0f-49c9-871c-9cd6ed7cf731
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.openlocfilehash: 82007c780a0c9ff3bb2e1a50a4826499f9df9c9f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60811700"
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>Python használata Azure Data Lake Analytics kezelése
@@ -24,8 +24,8 @@ Ez a cikk ismerteti az Azure Data Lake Analytics-fiókok, adatforrások, felhasz
 ## <a name="supported-python-versions"></a>Támogatott Python-verziók
 
 * Egy Python 64 bites verzióját használja.
-* Használhatja a Python elosztási címen található standard  **[Python.org letölti](https://www.python.org/downloads/)**. 
-* Sok fejlesztő található is használhatók a  **[Anaconda Python elosztási](https://www.anaconda.com/download/)**.  
+* Használhatja a Python elosztási címen található standard  **[Python.org letölti](https://www.python.org/downloads/)** . 
+* Sok fejlesztő található is használhatók a  **[Anaconda Python elosztási](https://www.anaconda.com/download/)** .  
 * Ez a cikk a Python 3.6-os verziója a normál terjesztési Python használatával készült
 
 ## <a name="install-azure-python-sdk"></a>Az Azure Python SDK telepítése
@@ -97,7 +97,7 @@ Futtassa ezt a szkriptet, ellenőrizze, hogy a modulok importálhatók.
 
 ### <a name="interactive-user-authentication-with-a-pop-up"></a>Egy előugró ablak az interaktív felhasználói hitelesítéssel
 
-A módszer nem támogatott.
+Ez a metódus nem támogatott.
 
 ### <a name="interactive-user-authentication-with-a-device-code"></a>Interaktív felhasználói hitelesítéssel rendelkező eszköz
 
@@ -115,7 +115,7 @@ credentials = ServicePrincipalCredentials(client_id = 'FILL-IN-HERE', secret = '
 
 ### <a name="noninteractive-authentication-with-api-and-a-certificate"></a>Az API-t és a egy tanúsítványt a nem interaktív hitelesítés
 
-A módszer nem támogatott.
+Ez a metódus nem támogatott.
 
 ## <a name="common-script-variables"></a>Parancsfájl-változókat
 

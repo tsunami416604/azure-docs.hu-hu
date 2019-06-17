@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 2/04/2019
 ms.author: msangapu-msft
 ms.openlocfilehash: 6b4e145a693aabbf1a00d732e2fd602e7c887a03
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65956012"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Tartalom továbbítása az Azure Storage a linuxon futó App Service-ben
@@ -62,7 +62,7 @@ az webapp config storage-account add --resource-group <group_name> --name <app_n
 
 Akkor tegye ezt bármilyen egyéb tárfiókot társítani szeretné címtárak.
 
-## <a name="verify"></a>Megerősítés
+## <a name="verify"></a>Ellenőrzés
 
 Miután egy storage-tárolót egy webalkalmazás van csatolva, ezt a következő parancs futtatásával ellenőrizheti:
 

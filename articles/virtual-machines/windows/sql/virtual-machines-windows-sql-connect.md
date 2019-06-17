@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a33525e44b2e294b7ce85c7081864dbef0856588
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 70e478ac70b7ab53f1357394f3a3cb0d92f41f00
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130810"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075790"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Csatlakozhat egy SQL Server virtuális gépet az Azure-ban
 
@@ -94,13 +94,15 @@ Server=mysqlvm;Integrated Security=true
 
 ## <a id="change"></a> Az SQL csatlakozási beállításainak módosítása
 
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
 Az SQL Server virtuális gép az Azure Portalon módosíthatja a csatlakozási beállításokat.
 
-1. Az Azure Portalon válassza ki a **virtuális gépek**.
+1. Az Azure Portalon válassza ki a **SQL virtuális gépek**.
 
 2. Válassza ki az SQL Server virtuális gép.
 
-3. A **beállítások**, kattintson a **SQL Server-konfiguráció**.
+3. A **beállítások**válassza **biztonsági**.
 
 4. Módosítsa a **SQL-kapcsolat szintje** a kötelező beállítás. Ez a terület segítségével igény szerint módosítsa az SQL Server-portot vagy az SQL-hitelesítés beállításai.
 

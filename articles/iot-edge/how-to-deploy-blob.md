@@ -10,10 +10,10 @@ ms.custom: seodec18
 ms.reviewer: arduppal
 manager: philmea
 ms.openlocfilehash: d844e81de9cfb556e91ab5c0d5a8074c822cce0a
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65990469"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Az eszköz üzembe helyezése az Azure Blob Storage, az IoT Edge-modul
@@ -157,7 +157,7 @@ Az Azure IoT Edge segítségével peremhálózati megoldásokat fejleszthet a Vi
    | ----- | ----- |
    | Select folder (Mappa kiválasztása) | Válassza ki a helyet, a Visual Studio Code a megoldás-fájlok létrehozása a fejlesztői gépen. |
    | Provide a solution name (Megoldásnév megadása) | Adjon meg egy leíró nevet a megoldáshoz, vagy fogadja el az alapértelmezett **EdgeSolution**. |
-   | Select module template (Modulsablon kiválasztása) | Válasszon **meglévő modul (adjon meg teljes URL-címe)**. |
+   | Select module template (Modulsablon kiválasztása) | Válasszon **meglévő modul (adjon meg teljes URL-címe)** . |
    | Provide a module name (Modulnév megadása) | Adja meg például az all-kisbetűk nevét, a modul **Azure BLOB Storage szolgáltatásról**.<br /><br />Fontos kisbetűs nevét az Azure Blob Storage használata az IoT Edge-modul. IoT Edge egy kis-és nagybetűket, modulok kontextusban való megnevezésekor, és a Storage SDK alapértelmezés szerint a kisbetűs. |
    | A modul adja meg a Docker-rendszerkép | Adja meg a lemezkép URI-ja: **mcr.microsoft.com/azure-blob-storage:latest** |
 

@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
 ms.openlocfilehash: 6d11961f06a75341e633c7a8963e6b83ed37cf13
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61341701"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>OpenAPI 2.0 metaadatok támogatása az Azure Functions (előzetes verzió)
 OpenAPI 2.0 (korábbi nevén Swagger) metaadatok támogatása az Azure Functions egy előzetes verziójú funkció, amely segítségével írhat egy OpenAPI 2.0-definíció függvényalkalmazás belül. Ezt a fájlt majd a függvényalkalmazás használatával is üzemeltethet.
 
 > [!IMPORTANT]
-> Az OpenAPI előzetes verziójú funkció csak ma, az 1.x futtatókörnyezetben érhető el. 1.x függvényalkalmazás létrehozásáról [itt találhat](./functions-versions.md#creating-1x-apps) további információt.
+> Az OpenAPI előzetes verziójú funkció csak ma, az 1.x futtatókörnyezetben érhető el. 1\.x függvényalkalmazás létrehozásáról [itt találhat](./functions-versions.md#creating-1x-apps) további információt.
 
 [OpenAPI metaadatait](https://swagger.io/) lehetővé teszi, hogy a függvény, amely számos egyéb szoftverek által használt REST API-t futtató. Ezek közé tartozik a Microsoft egyéb ajánlatai, mint például a PowerApps és a [Azure App Service API Apps funkcióját](../app-service/overview.md), külső fejlesztői eszközök, például a [Postman](https://www.getpostman.com/docs/importing_swagger), és [számos további csomagok](https://swagger.io/tools/).
 
@@ -36,7 +36,7 @@ Az összes OpenAPI-beállításokat lehet megadni a **API-definíció** a függv
 > [!NOTE]
 > Függvény API-definíció szolgáltatás jelenleg nem támogatott a bétaverziójú futtatókörnyezetben.
 
-Az üzemeltetett OpenAPI-definíció és a egy rövid definíció generációja engedélyezéséhez állítsa **API-definíció forrása** való **funkció (előzetes verzió)**. **Külső URL-cím** lehetővé teszi, hogy a függvény az OpenAPI-definíció, amely rendelkezik a hosted máshol.
+Az üzemeltetett OpenAPI-definíció és a egy rövid definíció generációja engedélyezéséhez állítsa **API-definíció forrása** való **funkció (előzetes verzió)** . **Külső URL-cím** lehetővé teszi, hogy a függvény az OpenAPI-definíció, amely rendelkezik a hosted máshol.
 
 ## <a name="generate-definition"></a>A dbfunctionexpression hozzon létre egy Swagger skeleton
 A sablon segítségével írhat az első OpenAPI-definíciójában. A definíció-sablon funkció hoz létre egy ritka OpenAPI-definíció használatával minden metaadat a function.json fájlban a HTTP-eseményindító függvények mindegyike esetében. Az API-jával kapcsolatban további információt adhat meg kell a [OpenAPI-specifikáció](https://swagger.io/specification/), például kérés- és sablonokat.

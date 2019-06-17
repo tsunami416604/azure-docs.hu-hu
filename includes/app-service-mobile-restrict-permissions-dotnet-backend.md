@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: b609a708a987194398c53bdf83f0d6e1f281808d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66139836"
 ---
 Alapértelmezés szerint a API-k a Mobile Apps-háttéralkalmazás névtelenül meghívható. Ezután meg kell korlátozza a hozzáférést csak a hitelesített ügyfelek.  
@@ -16,7 +16,7 @@ Alapértelmezés szerint a API-k a Mobile Apps-háttéralkalmazás névtelenül 
 * **NODE.js vissza (az Azure Portalon) záró** :  
 
     Kattintson a Mobile Apps között **könnyen kezelhető táblák** , és válassza ki a táblát. Kattintson a **engedélyeinek módosítása**válassza **hitelesített hozzáférés csak** összes engedélyeket, és kattintson a **mentése**.
-* **.NET-háttéralkalmazás (C#)**:  
+* **.NET-háttéralkalmazás (C#)** :  
 
     A kiszolgálói projektet, lépjen a **tartományvezérlők** > **TodoItemController.cs**. Adja hozzá a `[Authorize]` attribútumot a **TodoItemController** osztályhoz az alábbiak szerint. Csak a megadott metódusok való hozzáférés korlátozása, is alkalmazhat az attribútum csak azokat a módszereket az osztály helyett. Tegye közzé újra a kiszolgálói projektet.
 

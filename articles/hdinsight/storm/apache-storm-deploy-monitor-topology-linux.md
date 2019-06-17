@@ -8,21 +8,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: 8b27ad34bdc6fcbd7a1eb46515fbf33c96d02528
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c8b05886ae338bb73b0f4ddce4d02a1f1a926a45
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682897"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078245"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Üzembe helyezés és kezelés az Azure HDInsight az Apache Storm-topológiák 
 
 Ebben a dokumentumban megismerkedhet a kezeléséhez és monitorozásához [Apache Storm](https://storm.apache.org/) Storm HDInsight-fürtökön futó topológiákat.
-
-> [!IMPORTANT]  
-> A jelen cikkben ismertetett lépések a Linux-alapú Storm on HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement). 
->
-
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -159,7 +154,7 @@ A topológia újraegyensúlyozása lehetővé teszi a rendszer vizsgálja felül
 
 ## <a name="monitor-and-manage-storm-ui"></a>Figyelheti és kezelheti: A Storm felhasználói felület
 
-A HDInsight-fürtön elérhető Storm webes felhasználói felületet biztosít a futó topológiákkal való munkavégzéshez. A Storm felhasználói felületének megjelenítéséhez egy webböngészőben segítségével nyissa meg **https://CLUSTERNAME.azurehdinsight.net/stormui**, ahol **CLUSTERNAME** a fürt neve.
+A HDInsight-fürtön elérhető Storm webes felhasználói felületet biztosít a futó topológiákkal való munkavégzéshez. A Storm felhasználói felületének megjelenítéséhez egy webböngészőben segítségével nyissa meg **https://CLUSTERNAME.azurehdinsight.net/stormui** , ahol **CLUSTERNAME** a fürt neve.
 
 > [!NOTE]  
 > Ha a rendszer felkéri a felhasználónév és a jelszó megadására, a fürt létrehozásakor használt fürtrendszergazda (rendszergazda) nevét és jelszavát adja meg.
@@ -213,7 +208,7 @@ További információkért lásd: [Apache Storm UI REST API-val](https://storm.a
 
 ### <a name="base-uri"></a>Alap URI-t
 
-Az alap URI a REST API-hoz a Linux-alapú HDInsight-fürtökön érhető el, az átjárócsomópont **https:\//HEADNODEFQDN:8744/api/v1/**. A tartománynév, a fő csomópont jön létre a fürt létrehozásakor, és nem statikus.
+Az alap URI a REST API-hoz a Linux-alapú HDInsight-fürtökön érhető el, az átjárócsomópont **https:\//HEADNODEFQDN:8744/api/v1/** . A tartománynév, a fő csomópont jön létre a fürt létrehozásakor, és nem statikus.
 
 A fürt fő csomópontjának teljes tartománynevét (FQDN) a különféle módokon találja:
 

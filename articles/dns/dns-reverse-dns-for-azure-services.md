@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: victorh
 ms.openlocfilehash: e162d838cb4895841428a827b56bec28e3e16b8a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66160924"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Az Azure-ban üzemeltetett szolgáltatások fordított DNS konfigurálása
@@ -212,7 +212,7 @@ Fordított DNS tulajdonság eltávolítása egy meglévő felhőalapú szolgált
 Set-AzureService –ServiceName "contosoapp1" –Description "App1 with Reverse DNS" –ReverseDnsFqdn ""
 ```
 
-## <a name="faq"></a>gyakori kérdésekben
+## <a name="faq"></a>GYIK
 
 ### <a name="how-much-do-reverse-dns-records-cost"></a>IP-címek fenntartási fordított DNS-rekordok költség?
 

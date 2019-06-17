@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 10fb44b0e76282ad78e7687beaa2e50e819e5cd9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62110009"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Útmutató a webes és feldolgozói szerepkörök a Service Fabric állapotmentes szolgáltatások alakítása
@@ -41,7 +41,7 @@ Feldolgozói szerepkör hasonlóan egy webes szerepkörben is jelenti állapot n
 
 | **Alkalmazás** | **Támogatott** | **Áttelepítés** |
 | --- | --- | --- |
-| ASP.NET Web Forms |Nem |1. az ASP.NET Core MVC átalakítása |
+| ASP.NET Web Forms |Nem |1\. az ASP.NET Core MVC átalakítása |
 | ASP.NET, MVC |A Migrálást |Frissítés ASP.NET Core 1 MVC |
 | ASP.NET, webes API |A Migrálást |Használja a helyi kiszolgáló vagy az ASP.NET Core-1 |
 | ASP.NET Core 1 |Igen |– |

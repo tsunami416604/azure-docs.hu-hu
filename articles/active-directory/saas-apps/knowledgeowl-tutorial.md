@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.openlocfilehash: b57beb18b8bf7d82694f89e131d79d15c6fcd6bc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ab80b6efef71c71feea1359112d09bae90a7ab84
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728296"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098884"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-knowledgeowl"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező KnowledgeOwl
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása a KnowledgeOwl konfigurálásához hozzá kell Knowled
 
 **KnowledgeOwl hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -218,7 +218,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés KnowledgeOwl, hajtsa
     * Adja meg `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` be a **felhasználónév, E-mail** szövegmezőbe.
     * Adja meg `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` be a **Utónév** szövegmezőbe.
     * Adja meg `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` be a **Vezetéknév** szövegmezőbe.
-    * Kattintson a **Mentés** gombra.
+    * Kattintson a **Save** (Mentés) gombra
 
     i. Kattintson a lap alján található **Mentés** gombra.
 

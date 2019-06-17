@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: b50f98c4abaeda3ac1805b73aa18fe6c29596426
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64708688"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Tudnivalók a kulcsok, titkos kódok és tanúsítványok
@@ -181,7 +181,7 @@ IntDate és más adatok további információkért lásd: [adattípusok](#data-t
 
 #### <a name="date-time-controlled-operations"></a>Dátum-idő ellenőrzött műveletek
 
-Nem, de érvényes és a kulcs, külső lejárt a *nbf* / *exp* ablakban fog működni az **visszafejtéséhez**, **kicsomagolása**, és **ellenőrzése** operations (nem ad vissza 403, tiltott). A közösségértékek nem még érvényes állapot segítségével, hogy a kulcs kell tesztelni, mielőtt éles környezetben való használathoz. A közösségértékek használata a lejárt állapotban, hogy a helyreállítási műveletek jött létre, amikor a kulcs érvényes volt-adatokat. Ezenkívül letilthatja a hozzáférést egy kulcsot a Key Vault-szabályzatok, vagy frissítésével a *engedélyezve* a kulcsattribútum **false (hamis)**.
+Nem, de érvényes és a kulcs, külső lejárt a *nbf* / *exp* ablakban fog működni az **visszafejtéséhez**, **kicsomagolása**, és **ellenőrzése** operations (nem ad vissza 403, tiltott). A közösségértékek nem még érvényes állapot segítségével, hogy a kulcs kell tesztelni, mielőtt éles környezetben való használathoz. A közösségértékek használata a lejárt állapotban, hogy a helyreállítási műveletek jött létre, amikor a kulcs érvényes volt-adatokat. Ezenkívül letilthatja a hozzáférést egy kulcsot a Key Vault-szabályzatok, vagy frissítésével a *engedélyezve* a kulcsattribútum **false (hamis)** .
 
 Az adattípusok további információkért lásd: [adattípusok](#data-types).
 
@@ -201,7 +201,7 @@ Hozzáférés-vezérlés a Key Vault által kezelt kulcsok egy Key Vaultot, amel
 A következő is adhatók engedélyek, az egy / felhasználó / service egy tároló kulcsainak hozzáférés-vezérlési bejegyzés egyszerű rendszeresen. Ezek az engedélyek szorosan tükrözik a kulcs-objektum engedélyezett műveletek:  
 
 - Kulcskezelési műveletek engedélyeket
-  - *Első*: A nyilvános részét egy kulcsot, valamint a hozzá tartozó attribútumok olvasása
+  - *első*: A nyilvános részét egy kulcsot, valamint a hozzá tartozó attribútumok olvasása
   - *Lista*: A kulcsok vagy a key vaultban tárolt kulcs verzióinak listázása
   - *Frissítés*: Frissítse az attribútumot a kulcshoz
   - *Hozzon létre*: Új kulcsok létrehozása
@@ -260,7 +260,7 @@ Hozzáférés-vezérlés a Key vaultban felügyelt titkos kulcsok, szintjén, am
 A következő engedélyeket is használható, egyszerű alapon, az egy tároló titkos kódok hozzáférés-vezérlési bejegyzés, és szorosan tükrözik a titkos objektum engedélyezett műveletek:  
 
 - Titkoskód-kezelési műveletek vonatkozó engedélyek
-  - *Első*: Olvassa el a titkos kulcs  
+  - *első*: Olvassa el a titkos kulcs  
   - *Lista*: A titkos kulcsok vagy a Key Vaultban tárolt titkos kulcs verzióinak listázása  
   - *Állítsa be*: Titkos kulcs létrehozása  
   - *Törlés*: Titkos kulcs törlése  
@@ -330,7 +330,7 @@ Nincsenek a válaszban szereplő további csak olvasható attribútumok:
 > [!Note] 
 > Ha lejár a Key Vault-tanúsítvánnyal, címezhető kulcs és titkos kulcs működésképtelenné válhatnak.  
 
-#### <a name="tags"></a>Címkék
+#### <a name="tags"></a>Tags
 
  Kulcs – érték sztringpárok, kulcsok és titkos kódok hasonló megadott szótára ügyfél.  
 
@@ -417,7 +417,7 @@ Ha egy tanúsítási szabályzat automatikus megújítás értékre van állítv
  Egyszerű – ellenében, a titkos kulcsok a key vault, és szorosan tükör titkos objektum engedélyezett műveletek hozzáférési szabály használható a következő engedélyekkel:  
 
 - Tanúsítványkezelési műveletek vonatkozó engedélyek
-  - *Első*: A tanúsítvány bármely verzióját, illetve a jelenlegi verziójának lekérése 
+  - *első*: A tanúsítvány bármely verzióját, illetve a jelenlegi verziójának lekérése 
   - *Lista*: Az aktuális tanúsítványokat vagy tanúsítvány verzióinak listázása  
   - *Frissítés*: A tanúsítvány frissítése
   - *Hozzon létre*: Hozzon létre egy Key Vault-tanúsítvánnyal

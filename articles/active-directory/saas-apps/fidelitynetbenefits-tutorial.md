@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2b35deab4c4fb20c58e135c0de01a0aa05b1c33
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2ce37aea9e700907ebfda9aa181b7f0eb638af35
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65862670"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102733"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fidelity-netbenefits"></a>Oktatóanyag: Az Azure Active Directory integrációja az hűség NetBenefits
 
@@ -55,7 +55,7 @@ Konfigurálása az Azure AD integrálása a pontosságú NetBenefits, hozzá kel
 
 **Pontosságú NetBenefits hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -197,7 +197,7 @@ Ebben a szakaszban egy felhasználói hűség NetBenefits Britta Simon nevű hoz
 
 A dinamikus az összevonáshoz felhasználók használatával jön létre igény szerinti felhasználók átadása. A igény szerinti alapján kiépítési ügyfelek kell néhány további jogcímek hozzáadása az Azure ad-ben például a felhasználó születési dátum, stb. Ezek az adatok által biztosított a a hozzárendelt **pontosságú ügyfél Service Manager** kell a példány a dinamikus összevonás engedélyezése.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

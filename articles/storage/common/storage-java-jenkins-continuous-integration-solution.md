@@ -10,10 +10,10 @@ custom: jenkins
 ms.date: 07/31/2018
 ms.subservice: common
 ms.openlocfilehash: d9ef6f5056fdbd7187c92c98d1c884a5314c29a0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65153666"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Az Azure Storage használata Jenkins folyamatos integrációs megoldással
@@ -90,7 +90,7 @@ Oktatási célokra, először hozzon létre egy feladatot, amely több, a fájl 
     time /t >> date.txt
     ```
 
-5. Az a **felépítés utáni műveletekben** szakaszában a feladat konfigurálása, jelölje be **felépítés utáni művelet hozzáadása** válassza **összetevők feltöltése az Azure Blob storage-**.
+5. Az a **felépítés utáni műveletekben** szakaszában a feladat konfigurálása, jelölje be **felépítés utáni művelet hozzáadása** válassza **összetevők feltöltése az Azure Blob storage-** .
 6. A **tárfióknevet**, válassza ki a használandó tárfiókot.
 7. A **Tárolónév**, adja meg a tároló nevét. (A tároló fog hozható létre, ha ezt még nem létezik a build-összetevőket feltöltésekor.) Környezeti változók használata is, így ebben a példában adja meg `${JOB_NAME}` a tároló neve.
    
@@ -118,7 +118,7 @@ A következő lépések bemutatják egy lépést, amely elemek letöltése az Az
 1. Az a **hozhat létre** szakaszában a feladat konfigurálása, jelölje be **felépítési lépés hozzáadása** válassza **töltse le az Azure Blob storage-ból**.
 2. A **tárfióknevet**, válassza ki a használandó tárfiókot.
 3. A **Tárolónév**, adja meg a tároló, amelyben a blobokat letölteni kívánt nevét. Környezeti változókat is használhat.
-4. A **blobnév**, adja meg a blob nevét. Környezeti változókat is használhat. Is használhatja egy csillagot helyettesítő karakter a kezdeti betűjét a blob nevének megadása után. Ha például **projekt\\*** kellene megadnia kezdődő összes BLOB **projekt**.
+4. A **blobnév**, adja meg a blob nevét. Környezeti változókat is használhat. Is használhatja egy csillagot helyettesítő karakter a kezdeti betűjét a blob nevének megadása után. Ha például **projekt\\** * kellene megadnia kezdődő összes BLOB **projekt**.
 5. [Opcionális] A **letöltési mappa elérési útját**, ahol szeretné tölteni a fájlokat az Azure blob storage-ból a Jenkins gépen elérési útjának megadásához. A környezeti változók is használható. (Ha nem ad meg értéket **letöltési mappa elérési útját**, a feladatok munkaterület a fájlok az Azure blob storage-ból letöltött.)
 
 Ha további elemek szeretné tölteni az Azure blob storage-ból, létrehozhat további létrehozási lépések.
@@ -137,7 +137,7 @@ Ez a szakasz a Blob szolgáltatás-összetevők áttekintést nyújt.
   
     (A fenti formátum vonatkozik a globális Azure-felhőben. Egy másik Azure-felhőben használja, ha a végpont belül használja a [az Azure Portal](https://portal.azure.com) meghatározni az URL-végpontot.)
   
-    A fenti formátumban `storageaccount` pedig a tárfiók nevét `container_name` a tároló nevét jelöli, és `blob_name` rendre a blob nevét jelöli. A tároló nevének belül használhat több elérési útnak perjellel elválasztva **/**. A példa tároló neve ebben az oktatóanyagban használt **MyJob**, és **${hozhat létre\_azonosító} / ${hozhat létre\_szám}** használták a közös virtuális elérési utat, a blob URL-címet kellene eredményez a következő formátumot követi:
+    A fenti formátumban `storageaccount` pedig a tárfiók nevét `container_name` a tároló nevét jelöli, és `blob_name` rendre a blob nevét jelöli. A tároló nevének belül használhat több elérési útnak perjellel elválasztva **/** . A példa tároló neve ebben az oktatóanyagban használt **MyJob**, és **${hozhat létre\_azonosító} / ${hozhat létre\_szám}** használták a közös virtuális elérési utat, a blob URL-címet kellene eredményez a következő formátumot követi:
   
     `http://example.blob.core.windows.net/myjob/2014-04-14_23-57-00/1/hello.txt`
 

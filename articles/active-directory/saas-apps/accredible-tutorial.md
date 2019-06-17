@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f8be215f1a972539aff47347395f041d89d4e81
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ddf337cc5573b4821f279d85aa43988ff4705874
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60285237"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107436"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-accredible"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Accredible
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Accredible konfigurálásához hozzá kell Accredibl
 
 **A katalógusból Accredible hozzáadásához tegye a következőket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

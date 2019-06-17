@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 51e1fd18b52d7e215ba43be540156199fb41778e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66155908"
 ---
 #### <a name="to-attach-the-sas-cables"></a>A SAS-kábel csatolása
@@ -18,9 +18,9 @@ ms.locfileid: "66155908"
    
     **Biztonsági másolatot az elsődleges és a EBOD ház nézete**
    
-   | Felirat | Leírás |
+   | Címke | Leírás |
    |:--- |:--- |
-   | 1. |Elsődleges ház |
+   | 1 |Elsődleges ház |
    | 2 |EBOD ház |
 2. Keresse meg a sorozatszámokat, az elsődleges és a EBOD mindegyikéből. A sorozatszám matricát a háttérrendszer fülön az összes rendszerházon rögzítettek. A sorozatszámokat mindkét ház azonosnak kell lennie. [Forduljon a Microsoft Support](../articles/storsimple/storsimple-contact-microsoft-support.md) azonnal, ha a sorozatszám nem egyezik. Tekintse meg az alábbi ábrán a sorozatszám megkereséséhez.
    
@@ -28,25 +28,25 @@ ms.locfileid: "66155908"
    
     **Sorozatszám matricát helye**
    
-   | Felirat | Leírás |
+   | Címke | Leírás |
    |:--- |:--- |
-   | 1. |A ház, sszes törlése |
+   | 1 |A ház, sszes törlése |
 3. A megadott SAS-kábel használatával a EBOD ház csatlakozhat az elsődleges ház módon:
    
    1. Azonosítsa az elsődleges ház és a EBOD ház négy SAS-porttal. A SAS-porttal EBOD a elsődleges tárolóeszközön van jelölve, és a port a EBOD tárolóeszközön felel meg a SAS-kábelezés ábrán is látható, alább látható módon.
    2. A megadott SAS-kábel segítségével csatlakozzon az EBOD-port a port A.
-   3. Az EBOD 0. vezérlő portja csatlakozniuk kell az EBOD-vezérlő 0 port A. 1. vezérlő EBOD portját a port a az EBOD-vezérlő 1 csatlakozniuk. Tekintse meg a következő ábra útmutatást. 
+   3. Az EBOD 0. vezérlő portja csatlakozniuk kell az EBOD-vezérlő 0 port A. 1\. vezérlő EBOD portját a port a az EBOD-vezérlő 1 csatlakozniuk. Tekintse meg a következő ábra útmutatást. 
       
       ![Az eszköz kábelezése SAS](./media/storsimple-sas-cable-8600/HCSSAScablingforyourdevice.png)
       
       **SAS-kábelezés**
       
-      | Felirat | Leírás |
+      | Címke | Leírás |
       |:--- |:--- |
       | A |Elsődleges ház |
       | B |EBOD ház |
-      | 1. |0. vezérlő |
-      | 2 |1. vezérlő |
+      | 1 |Vezérlő 0 |
+      | 2 |Vezérlő 1 |
       | 3 |Az EBOD-vezérlő 0 |
       | 4 |Az EBOD-vezérlő 1 |
       | 5, 6 |SAS-portot az elsődleges lemezház (EBOD címkézett) |

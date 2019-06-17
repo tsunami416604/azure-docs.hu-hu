@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/20/2019
 ms.author: alkohli
 ms.openlocfilehash: a9daf1d59b03d283be999aaab559c6d60f6405dd
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65953122"
 ---
 # <a name="manage-compute-on-your-azure-data-box-edge"></a>Az Azure Data Box Edge számítások kezelése
@@ -34,7 +34,7 @@ Események akkor fordulhat elő, a felhőalapú környezetben, illetve az eszkö
 - **Ütemezett**: Nagyszerűek ezek az ütemezés szerint határozhatja meg a kezdő dátum, kezdési ideje és a gyakorisági adott válaszként.
 
 
-### <a name="add-a-trigger"></a>Adjon hozzá egy triggert
+### <a name="add-a-trigger"></a>Eseményindító hozzáadása
 
 A következő lépésekkel hozhat létre egy eseményindítót az Azure Portalon.
 
@@ -76,7 +76,7 @@ Az alábbi lépéseket egy trigger törlése az Azure Portalon.
 
 3. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra.
 
-    ![Törlés jóváhagyása](media/data-box-edge-manage-compute/add-trigger-1.png)
+    ![Törlés megerősítése](media/data-box-edge-manage-compute/add-trigger-1.png)
 
 A törlés eseményindítók frissítések listája.
 

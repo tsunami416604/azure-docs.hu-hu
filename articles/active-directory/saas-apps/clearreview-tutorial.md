@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf2576aa112d58e499f0c4a16bf8e9261114974b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0f2a0560163f9806053f49944cbec0db2b1a9de8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60281451"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105458"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>Oktatóanyag: Egyértelmű tekintse át az Azure Active Directory-integráció
 
@@ -54,7 +54,7 @@ Egyértelmű tekintse át az Azure ad-ben integráció konfigurálásához, hozz
 
 **Egyértelmű felülvizsgálat hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
