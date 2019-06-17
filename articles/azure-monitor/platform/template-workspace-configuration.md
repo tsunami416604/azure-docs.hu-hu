@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: magoedte
 ms.openlocfilehash: 0578b50952c12d4587f7a4751bc831d3134c64e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66129427"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok használatával a Log Analytics-munkaterület kezelése
@@ -44,10 +44,10 @@ Az alábbi táblázat az ebben a példában használt erőforrások API-verzió.
 
 | Resource | Erőforrás típusa | API-verzió |
 |:---|:---|:---|
-| Munkaterület   | munkaterületek    | 2017-03-15-preview |
+| Munkaterület   | Munkaterületek    | 2017-03-15-preview |
 | Keresés      | savedSearches | 2015-03-20 |
-| Adatforrás | adatforrások   | 2015. 11. 01-előzetes verzió |
-| Megoldás    | megoldások     | 2015. 11. 01-előzetes verzió |
+| Adatforrás | adatforrások   | 2015\. 11. 01-előzetes verzió |
+| Megoldás    | megoldások     | 2015\. 11. 01-előzetes verzió |
 
 ## <a name="create-a-log-analytics-workspace"></a>Log Analytics-munkaterület létrehozása
 A következő példában létrehozunk egy munkaterületet, a helyi gépen sablon használatával. A JSON-sablon csak kéri a munkaterület nevére van beállítva, és valószínűleg használni kívánt szabványos konfigurációt a környezetében, a többi paraméter alapértelmezett értéket határoz meg.  

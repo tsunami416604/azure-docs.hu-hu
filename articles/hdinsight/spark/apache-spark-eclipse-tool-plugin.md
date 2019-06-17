@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: hrasheed
-ms.openlocfilehash: 1ae585322316a9c215fc32cc2f8ffba2f332ff61
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: cd5839520a5b85f31cbe677ad6691a3d6bacd0b0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704867"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066385"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Eclipse-hez készült Azure eszközkészlet használata egy HDInsight-fürtön az Apache Spark-alkalmazások létrehozása
 
@@ -93,7 +93,7 @@ Kapcsolat egy normál fürt kezelése az Ambari felhasználónév használatáva
 ## <a name="set-up-a-spark-scala-project-for-an-hdinsight-spark-cluster"></a>Egy Spark Scala-projektet egy HDInsight Spark-fürt beállítása
 
 1. Az Eclipse IDE munkaterületen válassza ki a **fájl**válassza **új**, majd válassza ki **projekt**. 
-1. Bontsa ki az új projekt varázslóval **HDInsight**válassza **a Spark on HDInsight (Scala)**, majd válassza ki **tovább**.
+1. Bontsa ki az új projekt varázslóval **HDInsight**válassza **a Spark on HDInsight (Scala)** , majd válassza ki **tovább**.
 
    ![A Spark on HDInsight (Scala) projekt kiválasztása](./media/apache-spark-eclipse-tool-plugin/create-hdi-scala-app-2.png)
 1. A Scala-projekt létrehozása varázsló automatikusan észleli, hogy telepítette-e a beépülő modul Scala. Válassza ki **OK** folytatja a beépülő modul Scala letöltése, és kövesse az utasításokat az Eclipse újraindítását.
@@ -191,7 +191,7 @@ HDInsight eszközök, többek között a feladat kimenetének elérése használ
 1. A Spark előzmények server Irányítópult segítségével az alkalmazás neve keresse meg az alkalmazás csak futtatása befejeződött. A fenti kóddal, a használatával megadhatja az alkalmazás neve `val conf = new SparkConf().setAppName("MyClusterApp")`. Így a Spark-alkalmazás neve lett **MyClusterApp**.
 
 ### <a name="start-the-apache-ambari-portal"></a>Az Apache Ambari portal indítása
-1. Az Azure Explorerben, kattintson a jobb gombbal a Spark-fürt nevét, és válassza **fürt felügyeleti portál megnyitása (Ambari)**. 
+1. Az Azure Explorerben, kattintson a jobb gombbal a Spark-fürt nevét, és válassza **fürt felügyeleti portál megnyitása (Ambari)** . 
 1. Amikor a rendszer kéri, adja meg a rendszergazdai hitelesítő adatok a fürt. Ezek a fürt kiépítése során adott meg.
 
 ### <a name="manage-azure-subscriptions"></a>Azure-előfizetések kezelése
@@ -212,7 +212,7 @@ Ez a hiba elhárításához szükséges [a végrehajtható fájl letöltése](ht
 1. Indítsa el az eclipse-ben, és hozzon létre egy projektet. Az a **új projekt** párbeszédpanelen válassza a következőket, és válassza **tovább**.
    
    * A bal oldali panelen válassza ki a **HDInsight** elemet.
-   * A jobb oldali ablaktáblán válassza ki a **a Spark on HDInsight helyi futtatása minta (Scala)**.
+   * A jobb oldali ablaktáblán válassza ki a **a Spark on HDInsight helyi futtatása minta (Scala)** .
 
    ![A New Project (Új projekt) párbeszédpanel](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run.png)
    
@@ -226,6 +226,60 @@ Ez a hiba elhárításához szükséges [a végrehajtható fájl letöltése](ht
    
    ![A Spark-alkalmazás helyi futtatás eredménye](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run-result.png)
 
+## <a name="reader-only-role"></a>Csak olvasó szerepkör
+Amikor a felhasználók küldés feladat csak olvasó szerepkör engedéllyel rendelkező fürthöz, Ambari hitelesítő adatokkal szükség.
+
+### <a name="link-cluster-from-context-menu"></a>Hivatkozás fürt helyi menüből
+
+1. Jelentkezzen be fiókjával csak olvasó szerepkör.
+       
+2. A **Azure Explorer**, bontsa ki a **HDInsight** megtekintéséhez a HDInsight-fürtök, amelyek az előfizetésében. A megjelölt **"Szerepkör: olvasó"** csak olvasó szerepkör csak engedélye.
+
+    ![HDInsight Spark-fürtök Azure Explorer](./media/apache-spark-eclipse-tool-plugin/view-explorer-6.png)
+
+3. Kattintson a jobb gombbal a fürt, az csak olvasó szerepkör engedélyével. Válassza ki **a fürtöt** fürt mutató hivatkozást a helyi menüből. Adja meg az Ambari felhasználónevet és jelszót.
+
+    ![HDInsight Spark-fürtök Azure Explorer](./media/apache-spark-eclipse-tool-plugin/view-explorer-7.png)
+
+4. Ha a fürt sikeresen csatlakoztatva van, a HDInsight frissülnek.
+   A szakasz a fürt fog legyen csatolva.
+  
+    ![HDInsight Spark-fürtök Azure Explorer](./media/apache-spark-eclipse-tool-plugin/view-explorer-8.png)
+
+
+
+### <a name="link-cluster-by-expanding-jobs-node"></a>Feladatok csomópont kibontásával hivatkozás fürt
+
+1. Kattintson a **feladatok** csomópontban **fürt feladat a hozzáférés megtagadva** ablakban.
+   
+2. Kattintson a **a fürtöt** a fürtöt.
+   
+    ![HDInsight Spark-fürtök Azure Explorer](./media/apache-spark-eclipse-tool-plugin/view-explorer-9.png)
+
+### <a name="link-cluster-from-spark-submission-window"></a>Hivatkozás fürt Spark küldésének ablakból
+
+1. Hozzon létre egy HDInsight-projektet.
+
+2. Kattintson a jobb gombbal a csomagot. Válassza ki **Spark-alkalmazás elküldéséhez HDInsight**.
+   
+   ![HDInsight Spark-fürtök Azure Explorer](./media/apache-spark-eclipse-tool-plugin/view-explorer-11.png)
+
+3. Válassza ki a fürtöt, csak olvasó szerepkör amelyiknek engedélye van a **fürtnév**. Figyelmeztető üzenet mutatja meg. Kattinthat **a fürtöt** a fürtöt.
+   
+   ![HDInsight Spark-fürtök Azure Explorer](./media/apache-spark-eclipse-tool-plugin/view-explorer-15.png)
+   
+### <a name="view-storage-accounts"></a>Storage-fiókok nézet
+
+* Az csak olvasó szerepkör engedéllyel rendelkező fürtök esetén kattintson a **Tárfiókok** csomópont, **tárolási hozzáférés megtagadva** ablakban. 
+     
+   ![HDInsight Spark-fürtök Azure Explorer](./media/apache-spark-eclipse-tool-plugin/view-explorer-13.png)
+
+   ![HDInsight Spark-fürtök Azure Explorer](./media/apache-spark-eclipse-tool-plugin/view-explorer-12.png)
+
+* A csatolt fürtök esetén kattintson a **Storage-fiókok** csomópontot, **tárolási hozzáférés megtagadva** ablakban. 
+     
+   ![HDInsight Spark-fürtök Azure Explorer](./media/apache-spark-eclipse-tool-plugin/view-explorer-14.png)
+
 ## <a name="known-problems"></a>Ismert problémák
 Amikor a fürt hivatkozásra, e javasolna, hogy adja meg a storage hitelesítő adatai.
 
@@ -236,9 +290,6 @@ Két módja a feladatok elküldéséhez. Ha a tároló hitelesítő adat áll re
 ![eclipse-ben jelenik meg a hiba esetén a foglalt fürt](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-upload.png)
 
 ![eclipse-ben jelenik meg a hiba esetén a foglalt fürt](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png)
-
-## <a name="feedback"></a>Visszajelzés
-Ha bármilyen visszajelzése van, vagy bármely egyéb problémákat tapasztal, amikor ezzel az eszközzel, küldjön egy e-mailt hdivstool@microsoft.com.
 
 ## <a name="seealso"></a>Lásd még:
 * [Áttekintés: Az Apache Spark on Azure HDInsight](apache-spark-overview.md)
@@ -257,7 +308,6 @@ Ha bármilyen visszajelzése van, vagy bármely egyéb problémákat tapasztal, 
 * [IntelliJ-hez készült Azure-eszközkészlet használatával hozzon létre, és küldje el a Spark Scala-alkalmazások](apache-spark-intellij-tool-plugin.md)
 * [IntelliJ-hez készült Azure eszközkészlet használata Apache Spark-alkalmazások VPN-en keresztül távolról](../hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [IntelliJ-hez készült Azure eszközkészlet használata Apache Spark-alkalmazások távolról az ssh-n keresztül](../hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh.md)
-* [HDInsight Tools for IntelliJ with hortonworks – tesztkörnyezet használata](../hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
 * [Az Apache Zeppelin notebookok használata a HDInsight Apache Spark-fürt](apache-spark-zeppelin-notebook.md)
 * [Notebookokhoz elérhető kernelek Jupyter a HDInsight az Apache Spark-fürt](apache-spark-jupyter-notebook-kernels.md)
 * [Külső csomagok használata Jupyter notebookokkal](apache-spark-jupyter-notebook-use-external-packages.md)

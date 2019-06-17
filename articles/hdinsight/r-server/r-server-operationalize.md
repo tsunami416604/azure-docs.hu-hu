@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.openlocfilehash: 916c4fae8eed9451080f92e97743876e89bd25ea
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64719749"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Machine Learning-szolgáltatások az Azure HDInsight-fürt üzembe helyezése
@@ -136,7 +136,7 @@ Ha az SSH-munkamenet aktív, a helyi számítógép 12800-as porton érkező for
 
 Méretezni a számítási csomópontok, először a feldolgozó csomópontok leszerelése, majd válassza a számítási csomópontok a leszerelt feldolgozó csomóponton.
 
-### <a name="step-1-decommission-the-worker-nodes"></a>1. lépés: A feldolgozó csomópontok leszerelése
+### <a name="step-1-decommission-the-worker-nodes"></a>1\. lépés: A feldolgozó csomópontok leszerelése
 
 Machine Learning Services fürtje nem kezelhető [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html). Ha a feldolgozó csomópontokat nem szereli, a YARN Resource Manager nem működik, mert nem az erőforrásokat, a kiszolgáló által elvárt módon. Ennek a helyzetnek az elkerülésére javasoljuk a feldolgozó csomópontok leszerelését a számítási csomópontok horizontális felskálázása előtt.
 
@@ -158,7 +158,7 @@ Kövesse az alábbi lépéseket a feldolgozó csomópontok leszerelése:
 * Szüntesse meg a feldolgozó csomópontok kijelölését, és jelölje ki az átjárócsomópontokat.
 * Válassza ki **műveletek** > **kiválasztott gazdagépek** > "**gazdagépek** > **összes összetevő újraindítása**.
 
-### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>2. lépés: Számítási csomópontok konfigurálása az összes leszerelt feldolgozó csomóponton
+### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>2\. lépés: Számítási csomópontok konfigurálása az összes leszerelt feldolgozó csomóponton
 
 1. Jelentkezzen be SSH-n keresztül minden egyes leszerelt feldolgozó csomópontba.
 
@@ -172,7 +172,7 @@ Kövesse az alábbi lépéseket a feldolgozó csomópontok leszerelése:
 
 1. Lépjen ki az admin segédprogramból.
 
-### <a name="step-3-add-compute-nodes-details-on-web-node"></a>3. lépés: A web csomóponton a számítási csomópontok részleteinek megadása
+### <a name="step-3-add-compute-nodes-details-on-web-node"></a>3\. lépés: A web csomóponton a számítási csomópontok részleteinek megadása
 
 Az összes leszerelt feldolgozó csomópontok futtatásához a számítási csomópont konfigurálása után térjen vissza az élcsomóponti operacionalizáláshoz, és adja hozzá a leszerelt feldolgozó csomópontok IP-címek az ML Server webcsomópontjának konfigurációjában:
 

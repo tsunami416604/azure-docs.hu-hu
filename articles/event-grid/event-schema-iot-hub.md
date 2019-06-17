@@ -10,12 +10,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/17/2019
 ms.author: kgremban
-ms.openlocfilehash: e770beb0470b54d8e13493bca4790323b2e96ce1
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 4e96276a862844cea1d0800eafb952d4a0df97ab
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393186"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076357"
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>Az Azure IoT hub Event Grid-eseménysémája
 
@@ -35,7 +35,7 @@ Az Azure IoT Hub a következő esemény típusú bocsát ki:
 | Microsoft.Devices.DeviceDisconnected | Ha egy eszköz nem kapcsolódik az IoT hub közzé. | 
 | Microsoft.Devices.DeviceTelemetry | Ha egy telemetriai üzenetet küld az IoT hub közzé. |
 
-Eszköz telemetriai események kivételével minden eszköz események általánosan elérhetők az Event Grid által támogatott összes régióban. Eszköz telemetriai esemény nyilvános előzetes verzióban érhető el, és érhető el minden régióban, kivéve az USA keleti RÉGIÓJA, USA nyugati RÉGIÓJA, Nyugat-Európa, [Azure Government](/azure-government/documentation-government-welcome.md), [Azure China 21Vianet](/azure/china/china-welcome.md), és [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/).
+Eszköz telemetriai események kivételével minden eszköz események általánosan elérhetők az Event Grid által támogatott összes régióban. Eszköz telemetriai esemény nyilvános előzetes verzióban érhető el, és érhető el minden régióban, kivéve az USA keleti RÉGIÓJA, USA nyugati RÉGIÓJA, Nyugat-Európa, [Azure Government](../azure-government/documentation-government-welcome.md), [Azure China 21Vianet](/azure/china/china-welcome), és [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/).
 
 ## <a name="example-event"></a>Példa esemény
 

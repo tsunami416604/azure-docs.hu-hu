@@ -8,10 +8,10 @@ ms.date: 5/22/2019
 ms.author: amsriva
 ms.topic: conceptual
 ms.openlocfilehash: 9c2759222198f5df682d9e7a5363c0d9679e0fad
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65991403"
 ---
 # <a name="web-application-firewall-for-azure-application-gateway"></a>Az Azure Application Gateway webalkalmazási tűzfal
@@ -50,7 +50,7 @@ Ez a szakasz ismerteti, amelyek az Application Gateway és a WAF-ja használatá
 
 * Testre szabható a WAF-szabályok és az alkalmazás követelményeinek, és hamis pozitív jelzések elkerülése.
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
 - SQL-injection protection.
 - Többhelyes webhelyközi védelme.
@@ -133,7 +133,7 @@ Anomáliadetektálási pontozási módban minden olyan szabálynak megfelelő fo
 |Kritikus     |5|
 |Hiba        |4|
 |Figyelmeztetés      |3|
-|Megjegyzés       |2|
+|Értesítés       |2|
 
 Nincs forgalom blokkolása a Anomáliadetektálási pontszám 5 küszöbértékét. Így egyetlen *kritikus* szabály egyezést is megfelel az Application Gateway WAF egy kérelmet, még akkor is, a megelőzés üzemmód blokkolása. Azonban egy *figyelmeztetés* szabály egyezést csak növeli a nem elég letiltja a forgalmat saját maga által 3 pontszám, Anomáliadetektálás.
 

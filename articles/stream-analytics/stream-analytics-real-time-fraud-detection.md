@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 38353ed68469ac35f04d68e19afd11ac4b47f2ae
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: cfb7dc8ef41c8829caebed6fff2d881093dbbe4d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64943953"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076241"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Első lépések az Azure Stream Analytics használatával: Csalások valós idejű észlelése
 
@@ -56,7 +56,7 @@ Adatfolyam elemzését, *betöltési* azt az Azure-bA. Egy tipikus módja betöl
 ### <a name="create-a-namespace-and-event-hub"></a>A névtér és az eseményközpont létrehozása
 Ebben az eljárásban először hozzon létre egy eseményközpont-névteret, és ezután hozzáadhat új eseményközpont adott névtérhez. Eseményközpont-névtér logikailag csoportosítják a kapcsolódó esemény bus példányok szolgálnak. 
 
-1. Jelentkezzen be az Azure Portalon, és kattintson a **erőforrás létrehozása** > **IOT-** > **Eseményközpont**. 
+1. Jelentkezzen be az Azure Portalon, és kattintson a **erőforrás létrehozása** > **IOT-**  > **Eseményközpont**. 
 
 2. Az a **névtér létrehozása** panelen adja meg például a névtér nevét `<yourname>-eh-ns-demo`. A névtér bármilyen nevet használhat, de a név érvényes URL-cím lehet, és Azure-ban egyedinek kell lennie. 
     
@@ -131,11 +131,12 @@ A TelcoGenerator alkalmazást a Kezdés előtt konfigurálnia kell azt, hogy a h
 
 ### <a name="start-the-app"></a>Indítsa el az alkalmazást
 1.  Nyisson meg egy parancsablakot, és módosítsa a mappát, ahol a TelcoGenerator alkalmazást kicsomagolt.
+
 2.  Írja be a következő parancsot:
 
-        ```cmd
-        telcodatagen.exe 1000 0.2 2
-        ```
+   ```cmd
+   telcodatagen.exe 1000 0.2 2
+   ```
 
     A paraméterek a következők: 
 
@@ -163,7 +164,7 @@ Most, hogy a hívási események streamjével, állíthat egy Stream Analytics-f
 
 ### <a name="create-the-job"></a>A feladat létrehozása 
 
-1. Az Azure Portalon kattintson a **erőforrás létrehozása** > **IOT-** > **Stream Analytics-feladat**.
+1. Az Azure Portalon kattintson a **erőforrás létrehozása** > **IOT-**  > **Stream Analytics-feladat**.
 
 2. Nevezze el a feladat `asa_frauddetection_job_demo`, adjon meg egy előfizetést, erőforráscsoportot és helyet.
 
@@ -352,7 +353,7 @@ Ha rendelkezik meglévő blob storage-fiókot, használhatja azt. Ebben az oktat
 
 3. Az a **Feladattopológia** területén kattintson a **kimeneti** mezőbe.
 
-4. Az a **kimenetek** ablaktáblán kattintson a **Hozzáadás** , és válassza ki **a Blob storage-**. Ezután adja meg az új kimeneti oldal a következő információkat:
+4. Az a **kimenetek** ablaktáblán kattintson a **Hozzáadás** , és válassza ki **a Blob storage-** . Ezután adja meg az új kimeneti oldal a következő információkat:
 
    |**Beállítás**  |**Ajánlott érték**  |**Leírás**  |
    |---------|---------|---------|

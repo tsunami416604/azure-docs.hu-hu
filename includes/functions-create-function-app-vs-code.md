@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 11/27/2018
 ms.author: glenga
-ms.openlocfilehash: 79dbee33928fbc7560d0ea27be3af25cc510e996
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 894ca0e78dfb75dffc124d3d25aa7a8e72adf627
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66132284"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065548"
 ---
 ## <a name="create-an-azure-functions-project"></a>Azure Functions-projekt létrehozása
 
@@ -26,6 +26,9 @@ A Visual Studio Code Azure Functions projektsablonja egy olyan projektet hoz lé
 
 1. Válassza ki a függvényalkalmazási projektjének nyelvét. Ez a cikk a JavaScriptet használja.
     ![Projekt nyelvének kiválasztása](./media/functions-create-function-app-vs-code/create-function-app-project-language.png)
+
+1. Válasszon egy sablont az első függvény a projekthez. Adja meg a függvény nevét.
+    ![Válassza ki az első függvény](./media/functions-create-function-app-vs-code/create-function-app-project-first-function.png)
 
 1. Amikor a program kéri, válassza az **Add to workspace** (Hozzáadás munkaterülethez) lehetőséget.
 

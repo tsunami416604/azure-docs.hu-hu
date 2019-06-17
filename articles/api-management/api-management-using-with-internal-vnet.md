@@ -14,19 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 7db40de921c0eb8826a2fee832c1a51c57796f6d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: a5d8a724a0b4dd6899a71187176b9d444e5fe19c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919838"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051681"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Belső virtuális hálózathoz az Azure API Management szolgáltatás használatával
 Azure virtuális hálózatokkal az Azure API Management API-k nem érhető el az interneten is kezelheti. Számos VPN technológia érhetők el a kapcsolatot. Az API Management egy virtuális hálózaton belül két fő módban telepíthető:
 * Külső
 * Belső
 
-Az API Management üzembe helyezi a módban a belső virtuális hálózathoz, ha a szolgáltatás végpontok (átjáró, a fejlesztői portál, az Azure Portalon, közvetlen felügyelet és a Git) már csak jelennek meg, hogy a hozzáférést a virtuális hálózatokon belüli. A Szolgáltatásvégpontok egyike a nyilvános DNS-kiszolgáló van regisztrálva.
+Az API Management üzembe helyezi a módban a belső virtuális hálózathoz, ha a szolgáltatás végpontok (az alkalmazásproxy-átjáró, a fejlesztői portált, közvetlen felügyelet és Git) láthatók csak egy virtuális hálózatban való hozzáférés ellenőrzését. A Szolgáltatásvégpontok egyike a nyilvános DNS-kiszolgáló van regisztrálva.
+
+> [!NOTE]
+> Mivel nincs DNS-bejegyzéseket a Szolgáltatásvégpontok van, a végpontok nem lesz elérhető, amíg [DNS konfigurálása megtörtént](#apim-dns-configuration) a virtuális hálózathoz.
 
 Az API Management belső módban, akkor érhető el a következő esetekben:
 
@@ -116,10 +119,12 @@ Ha egyéni DNS-kiszolgáló egy virtuális hálózatot használ, is egy DNS-reko
 2. Ezután hozhat létre rekordokat a DNS-kiszolgáló eléréséhez a végpontok, amelyek csak a virtuális hálózaton belül elérhető.
 
 ## <a name="routing"> </a> Útválasztás
-+ Elosztott terhelésű privát virtuális IP-címet az alhálózat címtartományából lesz fenntartva, és az API Management szolgáltatás végpontjainak a virtuális hálózaton belül eléréséhez használt.
-+ Elosztott terhelésű nyilvános IP-cím (VIP) is lehet lefoglalni biztosíthat hozzáférést a felügyeleti szolgáltatás végpontja csak 3443-porton keresztül.
-+ Egy alhálózat IP-címtartomány (DIP) egy IP-címet a virtuális hálózaton belüli erőforrások eléréséhez használható, és a virtuális hálózaton kívüli erőforrások eléréséhez használható nyilvános IP-cím (VIP).
-+ Elosztott terhelésű nyilvános és magánhálózati IP-címek az Azure portal áttekintés/Essentials panelén található.
+
+* Egy elosztott terhelésű *privát* fog foglalni és az API Management szolgáltatás végpontjainak a virtuális hálózaton belüli eléréséhez használt alhálózat címtartományából virtuális IP-cím. Ez *privát* IP-címet az Áttekintés panelen, a szolgáltatás az Azure Portalon található. Ez a cím a virtuális hálózat által használt DNS-kiszolgálók regisztrálva kell lennie.
+* Egy elosztott terhelésű *nyilvános* IP-cím (VIP) is kell fenntartani így biztosítva hozzáférést a felügyeleti szolgáltatás végpontja 3443 porton keresztül. Ez *nyilvános* IP-címet az Áttekintés panelen, a szolgáltatás az Azure Portalon található. A *nyilvános* IP-cím csak adatsík forgalmának ellenőrzésére szolgál a `management` több mint port 3443 és zárhatók le a végpont a [az ApiManagement] [ ServiceTags] servicetag .
+* Az alhálózat IP-címtartomány (DIP) IP-címek rendeli hozzá a szolgáltatás az egyes virtuális gépekre, és a virtuális hálózatban lévő erőforrások eléréséhez használjuk. Nyilvános IP-cím (VIP) a virtuális hálózaton kívüli erőforrások eléréséhez használható. IP-korlátozási listák segítségével a virtuális hálózatban lévő erőforrások védelme, ha az alhálózaton, ahol az API Management szolgáltatás üzembe helyezése kell a teljes tartomány megadott, engedélyezéséhez vagy a hozzáférés korlátozása a szolgáltatásból.
+* Az elosztott terhelésű nyilvános és magánhálózati IP-címek az Azure Portalon az áttekintési panelen található.
+* A nyilvános és privát hozzáférést rendelt IP-címek változhat, ha a szolgáltatás nem eltávolítja, majd újra hozzáadja őket a virtuális hálózat. Ha ez történik, DNS-regisztráció, útválasztási szabályok és IP-korlátozási listák a virtuális hálózaton belül frissítéséhez szükséges lehet.
 
 ## <a name="related-content"> </a>Kapcsolódó tartalom
 További tudnivalókért tekintse meg a következő cikkeket:

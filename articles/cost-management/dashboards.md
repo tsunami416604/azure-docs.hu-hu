@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: vitavor
 ms.custom: seodec18
 ms.openlocfilehash: b83368b913bf1303b49e3a56e3a15248af222cbe
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002054"
 ---
 # <a name="view-key-cost-metrics-with-dashboards"></a>Költségeket az irányítópultok metrikák nézet kulcs
@@ -42,7 +42,7 @@ A használatának gyors megkezdése egy egyéni irányítópult, duplikálhatja 
 
 Egyéni irányítópult létrehozása:
 
-1. A kezdőlapon kattintson **új hozzáadása +**. Saját irányítópult-oldalon jelenik meg.  
+1. A kezdőlapon kattintson **új hozzáadása +** . Saját irányítópult-oldalon jelenik meg.  
     ![Saját irányítópult-oldalon, ahol hozzáadhat új jelentések](./media/dashboards/my-dashboard.png)
 2. Kattintson a **adja hozzá az új jelentés**. A jelentés hozzáadása jelenik meg.
 3. Válassza ki a jelentést, az irányítópult-widgethez hozzáadni kívánt. A widget hozzá van adva az irányítópulthoz.

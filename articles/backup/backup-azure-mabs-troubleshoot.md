@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: kasinh
 ms.openlocfilehash: 06faed8ceca77edc20b67f73a76d885839aa7dbc
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66304321"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Az Azure Backup Server hibaelhárítása
@@ -83,7 +83,7 @@ Azt javasoljuk, hogy hajtsa végre az alábbi érvényesítési, mielőtt haszn�
 | --- | --- | --- |
 | Ügynök leküldése a védett kiszolgálók | A kiszolgáló megadott hitelesítő adatok érvénytelenek. | **Ha a javasolt művelet található a termék nem működik, a következő lépésekkel**: <br> Próbálja ki a védelmi ügynök manuális telepítése az üzemi kiszolgálón megadott [Ez a cikk](https://technet.microsoft.com/library/hh758186(v=sc.12).aspx#BKMK_Manual).|
 | Az Azure Backup szolgáltatás ügynökének nem sikerült kapcsolódni az Azure Backup szolgáltatás (azonosító: 100050) | Az Azure Backup szolgáltatás ügynökének nem sikerült kapcsolódni az Azure Backup szolgáltatással. | **Ha a javasolt művelet található a termék nem működik, a következő lépésekkel**: <br>1. Futtassa a következő parancsot egy rendszergazda jogú parancssorból: **psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe**. Ekkor megnyílik az Internet Explorer-ablakban. <br/> 2. Lépjen a **eszközök** > **Internetbeállítások** > **kapcsolatok** > **LAN-beállítások**. <br/> 3. Módosítsa a beállításokat, egy proxykiszolgáló használatára. Adja meg a proxy adatait.<br/> 4. Ha a gép korlátozott internet-hozzáféréssel, győződjön meg arról, hogy a gépen, vagy a proxy tűzfal beállításai engedélyezik-e [URL-címek](backup-configure-vault.md#verify-internet-access) és [IP-cím](backup-configure-vault.md#verify-internet-access).|
-| Az Azure Backup szolgáltatás ügynökének telepítése nem sikerült | Nem sikerült telepíteni a Microsoft Azure Recovery Services. A rendszer a Microsoft Azure Recovery Services-berendezés által végrehajtott összes módosítás vissza lett állítva. (AZONOSÍTÓ: 4024) | Az Azure-ügynök manuális telepítése.
+| Az Azure Backup szolgáltatás ügynökének telepítése nem sikerült | Nem sikerült telepíteni a Microsoft Azure Recovery Services. A rendszer a Microsoft Azure Recovery Services-berendezés által végrehajtott összes módosítás vissza lett állítva. (Azonosító: 4024) | Az Azure-ügynök manuális telepítése.
 
 
 ## <a name="configuring-protection-group"></a>Védelmi csoport konfigurálása

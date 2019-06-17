@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1ac3cdecc79cafb9ea2697cca3c87b2ebe083d40
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 56dc87b1cdf36d761c46133004a05f8fa225a091
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66254853"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808293"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Fájlok és mappák biztonsági mentésével kapcsolatos gyakori kérdések 
 
@@ -83,11 +83,11 @@ Ha átnevez egy Windows-gépen, minden aktuálisan konfigurált biztonsági ment
 - Ha a régi kiszolgálónévvel a tárolóba mentett adatok helyreállítása van szüksége, használja a a lehetőséget az adat-helyreállító varázslóban egy másodlagos helyre történő helyreállításához. [További információk](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine). 
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>Mi a fájl maximális elérési út hossza biztonsági mentés?
-A MARS-ügynök az NTFS támaszkodik, és használja a fájl elérési útja hossz-specifikációját korlátozza a [Windows API](/windows/desktop/FileIO/naming-a-file#fully_qualified_vs._relative_paths). Ha a védeni kívánt fájlok hosszabb, mint az engedélyezett értéket, készítsen biztonsági másolatot a mappa vagy a lemezmeghajtóról készítse.  
+A MARS-ügynök az NTFS támaszkodik, és használja a fájl elérési útja hossz-specifikációját korlátozza a [Windows API](/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths). Ha a védeni kívánt fájlok hosszabb, mint az engedélyezett értéket, készítsen biztonsági másolatot a mappa vagy a lemezmeghajtóról készítse.  
 
 ### <a name="what-characters-are-allowed-in-file-paths"></a>Mely karakterek engedélyezettek a fájlok elérési útjában?
 
-A MARS-ügynök az NTFS támaszkodik, és lehetővé teszi, hogy [támogatott karakterek](/windows/desktop/FileIO/naming-a-file#naming_conventions) a fájl neve/elérési utakat.
+A MARS-ügynök az NTFS támaszkodik, és lehetővé teszi, hogy [támogatott karakterek](/windows/desktop/FileIO/naming-a-file#naming-conventions) a fájl neve/elérési utakat.
 
 ### <a name="the-warning-azure-backups-have-not-been-configured-for-this-server-appears"></a>A "Az Azure Backup nem lett konfigurálva a kiszolgálón" figyelmeztetés jelenik meg.
 Ez a figyelmeztetés annak ellenére, hogy konfigurálta a biztonsági mentési házirend, amikor a helyi kiszolgálón tárolt ütemezett biztonsági mentési beállítások nem ugyanaz, mint a biztonsági mentési tárolóban tárolt beállításokkal is megjelenhetnek.

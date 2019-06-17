@@ -1,21 +1,21 @@
 ---
-title: Konfigurálja és kiszolgálói naplók elérése az Azure Database for MySQL-hez az Azure Portalon
-description: Ez a cikk ismerteti, hogyan konfigurálhat és eléréséhez a kiszolgálónaplók, Azure database for MySQL-hez az Azure Portalról.
+title: Konfigurálja és eléréséhez lassú lekérdezések naplóinak az Azure Database for MySQL-hez az Azure Portalon
+description: Ez a cikk ismerteti, hogyan konfigurálhat és elérni a lassú naplók az Azure Database MySQL-hez az Azure Portalról.
 author: rachel-msft
 ms.author: raagyema
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: e0701d2e10b366a6bf849512484fb216c42823bc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/29/2019
+ms.openlocfilehash: b16ac525d41eb2423828a647fdb75fd3f4a80a31
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60525882"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052719"
 ---
-# <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Konfigurálja és hozzáférés-kiszolgáló naplóit az Azure Portalon
+# <a name="configure-and-access-slow-query-logs-in-the-azure-portal"></a>Konfigurálja, és hozzáférést a lassú lekérdezések naplózza az Azure Portalon
 
-Konfigurálhatja, listázása, és töltse le a [, Azure Database for MySQL-kiszolgáló naplói](concepts-server-logs.md) az Azure Portalról.
+Konfigurálhatja, listázása, és töltse le a [, Azure Database for MySQL lassú lekérdezések naplóinak](concepts-server-logs.md) az Azure Portalról.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez az útmutató lépéseinek, az alábbiak szükségesek:
@@ -42,7 +42,7 @@ A MySQL lassú lekérdezések naplója történő hozzáférés konfigurálásá
 6. Kattintva térjen vissza a naplók listáját a **Bezárás gomb** (X ikon) a a **Kiszolgálóparaméterekkel** lapot.
 
 ## <a name="view-list-and-download-logs"></a>Lista megtekintése és a naplók letöltéséhez
-Naplózás megkezdése után a naplók megtekintéséhez, és töltse le a webkiszolgáló-naplókkal panelen az egyes naplófájlok. 
+Naplózás megkezdése után a rendelkezésre álló lassú lekérdezések naplóinak listájának megtekintéséhez, és töltse le a webkiszolgáló-naplókkal panelen az egyes naplófájlok.
 
 1. Nyissa meg az Azure Portalt.
 
@@ -61,9 +61,7 @@ Naplózás megkezdése után a naplók megtekintéséhez, és töltse le a webki
 
    ![Kattintson a letöltési ikon](./media/howto-configure-server-logs-in-portal/5-download.png)
 
-
 ## <a name="next-steps"></a>További lépések
-- Lásd: [hozzáférés a kiszolgálói naplókhoz a CLI](howto-configure-server-logs-in-cli.md) megtudhatja, hogyan programozott módon a naplók letöltéséhez.
-- Tudjon meg többet [kiszolgálónaplók](concepts-server-logs.md) az Azure Database for MySQL-hez. 
+- Lásd: [hozzáférést a lassú lekérdezések naplózza a CLI-ben](howto-configure-server-logs-in-cli.md) megtudhatja, hogyan töltheti le a lassú lekérdezések naplóinak programozott módon.
+- Tudjon meg többet [lassú lekérdezések naplóinak](concepts-server-logs.md) az Azure Database for MySQL-hez.
 - A paraméterdefiníciókra és a MySQL-naplózás kapcsolatos további információkért tekintse meg a MySQL dokumentációja [naplók](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html).
-

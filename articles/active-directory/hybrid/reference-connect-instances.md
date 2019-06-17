@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c342eac5460d8d52422b0497b1283f367660eb3c
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66298819"
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: Példányokra vonatkozó különleges szempontok
@@ -33,7 +33,7 @@ A [Microsoft Cloud németországi adatközpontjában](https://www.microsoft.de/c
 | --- |
 | \*.microsoftonline.de |
 | \*.windows.net |
-| + Tanúsítvány-visszavonási listákat |
+| \+ Tanúsítvány-visszavonási listákat |
 
 Amikor bejelentkezik az Azure AD-bérlővel, bejelentkezéskor az onmicrosoft.de tartományba olyan fiókot kell használnia.
 
@@ -53,7 +53,7 @@ Ehhez a felhőhöz a DirSync korábbi verzióiban támogatott. A build 1.1.180 a
 | \*.microsoftonline.us |
 | \*. windows.net (az Azure Government-bérlő automatikus észleléséhez szükséges) |
 | \*.gov.us.microsoftonline.com |
-| + Tanúsítvány-visszavonási listákat |
+| \+ Tanúsítvány-visszavonási listákat |
 
 > [!NOTE]
 > Az Azure AD Connect verziója 1.1.647.0, kezdődően AzureInstance értékre állítja a beállításjegyzékben már nem szükséges, feltéve, hogy *. windows.net meg nyitva a proxy-kiszolgálón. Azon ügyfeleink esetében, amely engedélyezi az Azure AD Connect kiszolgálók internetkapcsolattal, azonban a következő manuális konfiguráció használható.

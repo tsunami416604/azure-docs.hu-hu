@@ -9,10 +9,10 @@ ms.date: 03/23/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 7b75e24e5d59206ee8330c3ca9eaf86eacbad13d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66114803"
 ---
 ### <a name="premium-performance-block-blob-storage"></a>Prémium szintű teljesítményt blokkblob-tárolás
@@ -21,13 +21,13 @@ Prémium szintű teljesítményt block blob storage-fiókban az alkalmazásokat,
 
 ### <a name="premium-performance-filestorage-preview"></a>Prémium szintű teljesítményt FileStorage (előzetes verzió)
 
-Prémium files használjon egy egyedi nevű tárfiókot **FileStorage (előzetes verzió)**. Az ilyen típusú fiókok számítási feladatokat, és magas IOPS, nagy átviteli sebességhez és egységes közel valós idejű lett tervezve. Prémium szintű file storage a létesített megosztás méretének együtt növekszik.
+Prémium files használjon egy egyedi nevű tárfiókot **FileStorage (előzetes verzió)** . Az ilyen típusú fiókok számítási feladatokat, és magas IOPS, nagy átviteli sebességhez és egységes közel valós idejű lett tervezve. Prémium szintű file storage a létesített megosztás méretének együtt növekszik.
 
-|Terület  |Cél  |
+|Terület  |Target  |
 |---------|---------|
 |Maximális méret kiépítve     |100 TiB     |
 |Megosztások   |Korlátlan  |
-|IOPS     |100,000    |
+|IO     |100,000    |
 |Bejövő forgalom|4,136 MiB/s     |
 |Kimenő forgalom|6,204 MiB/s |
 

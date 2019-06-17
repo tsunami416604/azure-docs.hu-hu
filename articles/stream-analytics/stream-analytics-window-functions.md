@@ -2,24 +2,24 @@
 title: Az Azure Stream Analytics ablakkezelési függvényeket bemutatása
 description: Ez a cikk azt ismerteti, négy ablakkezelési függvényeket (átfedésmentes, segítségével tehetjük meg, a késleltetett, munkamenet) az Azure Stream Analytics-feladatok által használt.
 services: stream-analytics
-author: lingliw
-ms.author: v-lingwu
-manager: digimobile
+author: jseb225
+ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/21/19
-ms.openlocfilehash: 04c19e7e51777db4c59bfab3d5a8a7598560556a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/11/2019
+ms.openlocfilehash: 56b6f11d226f25e3094a90d8646fa13860ee306e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60844720"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066763"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Bevezetés a Stream Analytics ablakkezelési függvényeket
+
 Forgatókönyvek idejű streamelés műveleteket hajt végre a historikus windows szereplő adatok a gyakori minta. Stream Analytics ablakkezelési függvényeket, natív támogatással rendelkezik, így a fejlesztők szerzője összetett adatfolyam-feldolgozás feladatokat, minimális erőfeszítéssel.
 
-A historikus windows választhat négy fő típusba sorolhatók: [**Átfedésmentes**](https://msdn.microsoft.com/azure/stream-analytics/reference/tumbling-window-azure-stream-analytics), [ **segítségével tehetjük meg**](https://msdn.microsoft.com/azure/stream-analytics/reference/hopping-window-azure-stream-analytics), [ **késleltetett**](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics), és [ **munkamenet**  ](https://msdn.microsoft.com/azure/stream-analytics/reference/session-window-azure-stream-analytics) windows.  Ablak nyújtott funkciók használata a [ **GROUP BY** ](https://msdn.microsoft.com/azure/stream-analytics/reference/group-by-azure-stream-analytics) a lekérdezés szintaxisa a Stream Analytics-feladatok záradékában.
+A historikus windows választhat négy fő típusba sorolhatók: [**Átfedésmentes**](https://msdn.microsoft.com/azure/stream-analytics/reference/tumbling-window-azure-stream-analytics), [ **segítségével tehetjük meg**](https://msdn.microsoft.com/azure/stream-analytics/reference/hopping-window-azure-stream-analytics), [ **késleltetett**](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics), és [ **munkamenet**  ](https://msdn.microsoft.com/azure/stream-analytics/reference/session-window-azure-stream-analytics) windows.  Ablak nyújtott funkciók használata a [ **GROUP BY** ](https://msdn.microsoft.com/azure/stream-analytics/reference/group-by-azure-stream-analytics) a lekérdezés szintaxisa a Stream Analytics-feladatok záradékában. Események összesítése használatával több windows keresztül a [ **Windows()** függvény](https://docs.microsoft.com/stream-analytics-query/windows-azure-stream-analytics).
 
 Az összes a [ablakkezelési](https://msdn.microsoft.com/azure/stream-analytics/reference/windowing-azure-stream-analytics) műveleteket, eredményeket a **záró** az ablak. A kimeneti ablak egyszeri esemény használja az aggregate függvény alapján lesz. A kimeneti esemény lesz az ablak végén időbélyegzőjét, és minden ablakfüggvények rögzített hosszúságú lettek definiálva. 
 
@@ -51,6 +51,7 @@ Ha eseményeket a megadott időkorláton belül tartani, a munkameneti ablakban 
 
 Egy partíciókulcsot áll rendelkezésre, ha az események együtt a kulcs szerint vannak csoportosítva, és a munkameneti ablakban függetlenül van alkalmazva minden egyes csoportra. Ezt a particionálása esetén hasznos esetekben, ahol különböző munkamenet a windows különböző felhasználók vagy eszközök számára.
 
+
 ## <a name="next-steps"></a>További lépések
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
@@ -58,4 +59,3 @@ Egy partíciókulcsot áll rendelkezésre, ha az események együtt a kulcs szer
 * [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
 * [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!--Update_Description: update meta properties -->

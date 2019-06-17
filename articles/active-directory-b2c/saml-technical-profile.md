@@ -11,10 +11,10 @@ ms.date: 12/21/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: dca330f20548d3a93091f89dc8ab2b3cb92f50e2
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66512712"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Egyéni Azure Active Directory B2C-házirendek egy SAML-alapú technikai profilban meghatározása
@@ -140,7 +140,7 @@ A technikai profil is az identitásszolgáltató nem adott vissza jogcímeket ad
 
 A **CryptographicKeys** elem tartalmazza a következő attribútumokat:
 
-| Attribútum |Szükséges | Leírás |
+| Attribútum |Kötelező | Leírás |
 | --------- | ----------- | ----------- |
 | SamlMessageSigning |Igen | A X509 (RSA key set) tanúsítványt használja, az SAML-üzenetek aláírásához. Az Azure AD B2C a kérelmek és küldje el azokat az identitásszolgáltató ezt a kulcsot használ. |
 | SamlAssertionDecryption |Igen | A X509 tanúsítvány (RSA key set) visszafejtésére SAML használatával. Az identitásszolgáltató által ezt a tanúsítványt kell biztosítani. Az Azure AD B2C ezt a tanúsítványt használja az identitásszolgáltató által küldött adatok visszafejtéséhez. |

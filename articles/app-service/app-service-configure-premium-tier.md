@@ -17,10 +17,10 @@ ms.date: 07/25/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: c85644e3cab39f9e0864af91722ee54aab6d59f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66139773"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>PremiumV2 szintű csomag konfigurálása az Azure App Service-ben
@@ -66,7 +66,7 @@ Attól függően, a üzemeltetési környezet vertikális felskálázása lehets
 
 Az a <a href="https://portal.azure.com" target="_blank">az Azure portal</a>, az App Service-alkalmazás lap megnyitásához.
 
-Az App Service alkalmazás lapjának bal oldali navigációs sávján válassza **vertikális felskálázás (App Service-csomag)**.
+Az App Service alkalmazás lapjának bal oldali navigációs sávján válassza **vertikális felskálázás (App Service-csomag)** .
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
@@ -123,7 +123,7 @@ New-AzAppServicePlan -ResourceGroupName <resource_group_name> `
     -Tier "PremiumV2" `
     -WorkerSize "Small"
 ```
-## <a name="more-resources"></a>További erőforrások
+## <a name="more-resources"></a>További források
 
 [Az Azure-beli alkalmazás vertikális felskálázása](web-sites-scale.md)  
 [Példányszám manuális vagy automatikus méretezése](../monitoring-and-diagnostics/insights-how-to-scale.md)

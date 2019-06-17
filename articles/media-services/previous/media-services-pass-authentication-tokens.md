@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: dwgeo
 ms.openlocfilehash: 71925a1ee67956df45901950b2a59fa4c1b458a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61463225"
 ---
 # <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>Ismerje meg, hogyan ügyfelek jogkivonatok átadása az Azure Media Services kulcskézbesítési szolgáltatásba
@@ -29,7 +29,7 @@ ms.locfileid: "61463225"
 
 - – A HTTP-engedélyeztetési fejléc.
     > [!NOTE]
-    > A "Tulajdonos" előtagot az OAuth 2.0-s specifikációt / várt. A token konfigurációval egy minta player üzemelteti az Azure Media Player [bemutató lapon](https://ampdemo.azureedge.net/). A videó forrása beállításához válassza **AES (JWT-jogkivonat)** vagy **AES (SWT-Token)**. A token via az engedélyezési fejléc lett átadva.
+    > A "Tulajdonos" előtagot az OAuth 2.0-s specifikációt / várt. A token konfigurációval egy minta player üzemelteti az Azure Media Player [bemutató lapon](https://ampdemo.azureedge.net/). A videó forrása beállításához válassza **AES (JWT-jogkivonat)** vagy **AES (SWT-Token)** . A token via az engedélyezési fejléc lett átadva.
 
 - Egy URL-cím hozzáadása keresztül lekérdezési paraméter "token = tokenvalue."  
     > [!NOTE]

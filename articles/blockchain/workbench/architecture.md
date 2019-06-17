@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 989c5c1cd9474999400177293d896b96c79c32b7
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 5333f02edd6a4ff888e28ed36c2b78f75309f4d4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955230"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67060909"
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Az Azure Blockchain Workbench architektúrája
 
@@ -45,7 +45,7 @@ A webalkalmazás a jogosult felhasználók férhessenek a felügyeleti konzolon.
 * Töltse fel, és üzembe helyezése saját smart contracts.
 * Felhasználói hozzáférés hozzárendelése a intelligens szerződés keretén belül egy adott szerepkörrel.
 
-További információkért lásd: a [Azure Blockchain Workbench minta a Githubon ügyfélalkalmazások](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-development-kit/connect/mobile/blockchain-workbench/workbench-client).
+További információkért lásd: a [Azure Blockchain Workbench minta a Githubon ügyfélalkalmazások](https://github.com/Azure-Samples/blockchain-devkit/tree/master/connect/mobile).
 
 ## <a name="gateway-service-api"></a>Átjáró szolgáltatás API
 
@@ -99,7 +99,7 @@ Események tükrözik az egyéni felhasználók és rendszerek vonatkozó inform
 
 Például az SQL fogyasztói eseményeket figyeli, használ fel őket, és tölti fel az SQL-adatbázis foglalt értékek közé. A példány lehetővé teszi, hogy újra létrehozhatja a láncban lévő data láncon kívüli tárolóban replikáját.
 
-## <a name="azure-sql-database"></a>Azure SQL Database
+## <a name="azure-sql-database"></a>Azure SQL-adatbázis
 
 Az Azure SQL database Blockchain Workbenchet csatolt szerződés definíciókat, konfigurációs metaadatok és a blockchain-ban tárolt adatok elérhető SQL replikáját tárolja. Ezeket az adatokat is könnyen lekérdezve, formájában jelenik meg, vagy elemezheti az adatbázis közvetlen elérésével. A fejlesztők és más felhasználók használhatja az adatbázis reporting, analytics, vagy más adatközpontú integrációkkal. Ha például felhasználók tranzakciós adatokat a Power BI használatával jelenítheti meg.
 

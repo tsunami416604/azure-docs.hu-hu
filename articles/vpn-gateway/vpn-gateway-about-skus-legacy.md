@@ -3,8 +3,8 @@ title: Örökölt az Azure virtual network VPN gateway Termékváltozatoktól |}
 description: A régi virtuális hálózati átjárók Termékváltozatainak; használata Alapszintű, Standard és HighPerformance.
 services: vpn-gateway
 documentationcenter: na
-author: WenJason
-manager: digimobile
+author: cherylmc
+manager: jpconnock
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
@@ -13,15 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 03/20/2018
-ms.date: 03/04/2019
-ms.author: v-jay
-ms.openlocfilehash: 5a9e3f63a484069bf8cd39f8a545d7c37f05c63c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/10/2019
+ms.author: cherylmc
+ms.openlocfilehash: 00f1677e2691f9be5bb4584b07ca00340a52b1e1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66159210"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056437"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Virtuális hálózati átjáró Termékváltozatai (örökölt termékváltozatok) használata
 
@@ -30,6 +29,8 @@ Ez a cikk az örökölt (régi) virtuális hálózati átjáró-Termékváltozat
 ## <a name="gwsku"></a>Átjáró-termékváltozatok
 
 [!INCLUDE [Legacy gateway SKUs](../../includes/vpn-gateway-gwsku-legacy-include.md)]
+
+Megtekintheti a régi átjáró díjszabását a **virtuális hálózati átjárók** szakaszban található a [díjszabását ismertető lapon ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute).
 
 ## <a name="agg"></a>Becsült összesített átviteli sebessége Termékváltozat
 
@@ -68,5 +69,3 @@ Az Azure Portalon egy átjárót is méretezheti.
 Az új átjáró-termékváltozatok kapcsolatos további információkért lásd: [átjáró-termékváltozatok](vpn-gateway-about-vpngateways.md#gwsku).
 
 Konfigurációs beállításaival kapcsolatos további információkért lásd: [információk a VPN Gateway konfigurációs beállításairól](vpn-gateway-about-vpn-gateway-settings.md).
-
-<!--Update_Description: wording update-->

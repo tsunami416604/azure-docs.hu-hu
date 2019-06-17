@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbullwin
 ms.openlocfilehash: 5b719566ce42639c0c435a8d631e12541d0a0e9d
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66256622"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Az Application Insights beállítása az ASP.NET-webhelyhez
@@ -70,7 +70,7 @@ A Visual Studióban láthatja a naplózott események számát.
 
 ![A Visual Studio képernyőképe. Megjelenik az Application Insights gomb a hibakeresés alatt.](./media/asp-net/00006-Events.png)
 
-## <a name="step-3-see-your-telemetry"></a>3. lépés: A telemetria megtekintése
+## <a name="step-3-see-your-telemetry"></a>3\. lépés: A telemetria megtekintése
 A telemetriát a Visual Studióban vagy az Application Insights webportálon tekintheti meg. A telemetria keresése a Visual Studióban segíti az alkalmazás hibakeresését. A teljesítményt és a használatot a webes portálon figyelheti, amikor a rendszer élesben működik. 
 
 ### <a name="see-your-telemetry-in-visual-studio"></a>Telemetria megtekintése a Visual Studióban
@@ -99,7 +99,7 @@ A portál az alkalmazásából származó telemetriai adatok nézetével nyílik
 
 A portálon az egyik csempére vagy diagramra kattintva további részleteket tekinthet meg.
 
-## <a name="step-4-publish-your-app"></a>4. lépés: Az alkalmazás közzététele
+## <a name="step-4-publish-your-app"></a>4\. lépés: Az alkalmazás közzététele
 Tegye közzé alkalmazását az IIS-kiszolgálón vagy az Azure-on. Az [Élő mérőszámok streammel](../../azure-monitor/app/metrics-explorer.md#live-metrics-stream) ellenőrizheti, hogy minden rendben működik-e.
 
 A telemetriai adatok buildek fel az Application Insights portálon, ahol figyelheti a mérőszámokat, kereshet a telemetriára. Is használhatja a nagy teljesítményű [Kusto-lekérdezés nyelvi](/azure/kusto/query/) a használat és a teljesítmény elemzéséhez, vagy adott események megtalálásához.

@@ -7,13 +7,13 @@ ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
-ms.openlocfilehash: 883e81572218e39d84ad8793423b02468d49d00a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/10/2019
+ms.openlocfilehash: fbc68b551db1f68fe253a833ad26c88de1b92f30
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61321149"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055368"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Megismerheti és ikereszközök használata az IoT hubban
 
@@ -189,7 +189,7 @@ A megoldás háttérrendszere az ikereszközök használatával a következő at
     $iothub-message-source | twinChangeEvents |
     $content-encoding | utf-8 |
     deviceId | Az eszköz azonosítója |
-    HubName | Name of IoT Hub |
+    hubName | Name of IoT Hub |
     operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) időbélyegző-művelet |
     iothub-message-schema | deviceLifecycleNotification |
     opType | "replaceTwin" vagy "updateTwin" |

@@ -5,18 +5,26 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptional
-ms.date: 04/22/2019
+ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: 3880c847c54136dfd3ba1ecfe0178565091e229f
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 48725ed8cdf3df30f8df31966aa632bfb2a4ef1f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510198"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066895"
 ---
 # <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>Riasztásokat állíthat be az esemény-diagnosztikai naplót a VPN-átjáró
 
-Ez a cikk segít az Azure VPN Gateway diagnosztikai napló események alapján riasztásokat állíthat be.
+Ez a cikk segít az Azure VPN Gateway diagnosztikai napló események alapján riasztásokat állíthat be. A következő naplók kapcsolódnak érhetők el.
+
+|***Name (Név)*** | ***Leírás*** |
+|---        | ---               |
+|GatewayDiagnosticLog | Tartalmazza az átjáró-konfigurációs események, a módosítások elsődleges és a karbantartási események diagnosztikai naplók |
+|TunnelDiagnosticLog | Állapotváltozási események alagút tartalmazza. Alagút csatlakoztatása vagy leválasztása események rendelkezik az állapotváltozás körülményeiről összesített okát, ha van ilyen |
+|RouteDiagnosticLog | Statikus útvonal és a BGP-eseményeket, amelyek az átjáró módosításainak naplók |
+|IKEDiagnosticLog | Naplózza az IKE-vezérlő üzenetek és események az átjárón |
+|P2SDiagnosticLog | Naplózza a pont – hely vezérlő üzenetek és események az átjárón |
 
 ## <a name="setup"></a>Riasztások beállítása
 

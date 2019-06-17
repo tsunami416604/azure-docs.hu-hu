@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/3/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2281fb046ca9b96aa5800150d630b9086236c5c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a9526cde92fe2f504207de188fa8f0567ffa580d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65866600"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67089828"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező SuccessFactors
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a SuccessFactors konfigurálásához hozzá kell Succe
 
 **SuccessFactors hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -187,7 +187,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés SuccessFactors, hajt
 
     e. Válassza ki **engedélyezve** , **SAML jelző engedélyezése**.
 
-    f. Válassza ki **nem** , **bejelentkezési kérelem-aláírás (SF generált/SP/RP)**.
+    f. Válassza ki **nem** , **bejelentkezési kérelem-aláírás (SF generált/SP/RP)** .
 
     g. Válassza ki **böngésző/Post profil** , **SAML-alapú profilban**.
 
@@ -210,7 +210,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés SuccessFactors, hajt
 
     d. Válassza ki **meghatározatlan** , **nameid-formátumához**.
 
-    e. Válassza ki **Igen** , **engedélyezése sp által kezdeményezett bejelentkezési (AuthnRequest)**.
+    e. Válassza ki **Igen** , **engedélyezése sp által kezdeményezett bejelentkezési (AuthnRequest)** .
 
     f. Az a **küldési kérelmek, mint a céges szintű kiállító** szövegmezőjébe illessze be **bejelentkezési URL-cím** az Azure Portalról másolt érték.
 
@@ -284,7 +284,7 @@ Ahhoz, hogy az Azure AD-felhasználók SuccessFactors jelentkezzen be, akkor ki 
 
 SuccessFactors létrehozott felhasználók lekéréséhez lépjen kapcsolatba kell a [SuccessFactors támogatási csoportjának](https://www.successfactors.com/content/ssf-site/en/support.html).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

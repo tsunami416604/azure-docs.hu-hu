@@ -1,19 +1,19 @@
 ---
 title: Rövid útmutató – Webes forgalom irányítása az Azure Application Gatewayjel – Azure PowerShell | Microsoft Docs
-description: Megismerheti, hogyan hozhat létre az Azure PowerShell-lel egy olyan Azure Application Gatewayt, amely a háttérkészletben lévő virtuális gépekhez irányítja a webes forgalmat.
+description: Megtudhatja, hogyan hozhat létre az Azure Application Gateway, amely arra utasítja a webes forgalom háttérkészlet a virtuális gépek Azure PowerShell használatával.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 1/11/2019
+ms.date: 06/11/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 6c472c30514e6acd3b21822e31f2cefc0da5bc98
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: c0e80b1354302f227cb448391c7a92100049cc3a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729658"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053352"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-powershell"></a>Gyors útmutató: A közvetlen webes forgalom az Azure Application Gatewayjel – Azure PowerShell-lel
 
@@ -36,7 +36,7 @@ Ha helyi telepítése és használata az Azure PowerShell választja, az oktató
 
 ### <a name="resource-group"></a>Erőforráscsoport
 
-Az Azure-ban a kapcsolódó erőforrásokat egy erőforráscsoportba foglalhat. Használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy újat. Ebben a példában létrehozunk egy új erőforráscsoport használata a [New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup) parancsmag az alábbiak szerint: 
+Az Azure-ban a kapcsolódó erőforrásokat egy erőforráscsoportba foglalhat. Használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy újat. Ebben a példában használatával fog létrehozni egy új erőforráscsoportot a [New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup) parancsmag az alábbiak szerint: 
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupAG -Location eastus
@@ -44,7 +44,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ### <a name="required-network-resources"></a>Szükséges hálózati erőforrások
 
-Az Azure-hoz az erőforrások közötti kommunikációt, hogy hozzon létre egy virtuális hálózat szükséges.  Az application gateway alhálózatának csak az application Gateway-átjárókon is tartalmazhat. Egyéb erőforrások nem engedélyezettek.  Hozzon létre egy új alhálózatot az Application Gateway számára, vagy használjon egy meglévőt. Ebben a példában két alhálózat ebben a példában hoz létre: egyet az application gateway, a másik pedig a háttérkiszolgálókhoz. Az előtérbeli IP-címét az Application Gateway nyilvános vagy privát kell a használati eset megfelelően konfigurálhatja. Ebben a példában választjuk ki egy nyilvános előtérbeli IP-címet.
+Az Azure-hoz az erőforrások közötti kommunikációt, hogy hozzon létre egy virtuális hálózat szükséges.  Az application gateway alhálózatának csak az application Gateway-átjárókon is tartalmazhat. Egyéb erőforrások nem engedélyezettek.  Hozzon létre egy új alhálózatot az Application Gateway számára, vagy használjon egy meglévőt. Ebben a példában két alhálózat ebben a példában hoz létre: egyet az application gateway, a másik pedig a háttérkiszolgálókhoz. Az előtérbeli IP-címét az Application Gateway nyilvános vagy privát kell a használati eset megfelelően konfigurálhatja. Ebben a példában egy nyilvános előtérbeli IP-címet fogja választani.
 
 1. Hozzon létre az alhálózat-konfigurációit meghívásával [New-AzVirtualNetworkSubnetConfig](/powershell/module/Az.network/new-Azvirtualnetworksubnetconfig).
 2. A virtuális hálózat létrehozása az alhálózat-konfigurációit meghívásával [New-AzVirtualNetwork](/powershell/module/Az.network/new-Azvirtualnetwork). 
@@ -109,7 +109,7 @@ for ($i=1; $i -le 2; $i++)
   Add-AzVMNetworkInterface `
     -VM $vm `
     -Id $nic.Id
-  Set-AzVMBootDiagnostics `
+  Set-AzVMBootDiagnostic `
     -VM $vm `
     -Disable
   New-AzVM -ResourceGroupName myResourceGroupAG -Location EastUS -VM $vm
@@ -219,7 +219,7 @@ New-AzApplicationGateway `
 Bár az application gateway létrehozásához az IIS nem szükséges, telepítette azt ebben a rövid, ellenőrizze, hogy az Azure sikeresen létrejött-e az application gateway. Az IIS használatával az application gateway teszteléséhez:
 
 1. Futtatás [Get-AzPublicIPAddress](/powershell/module/Az.network/get-Azpublicipaddress) , az application Gateway nyilvános IP-címének lekéréséhez. 
-2. Másolja és illessze be a nyilvános IP-címet a böngésző címsorába. Amikor frissíti a böngészőben, megtekintheti a virtuális gép nevét. Érvényes válasz ellenőrzi, hogy az application gateway létrehozása sikeresen megtörtént, és képes sikeresen csatlakozott a háttérszolgáltatás használatára.
+2. Másolja és illessze be a nyilvános IP-címet a böngésző címsorába. Amikor frissíti a böngészőben, megtekintheti a virtuális gép nevét. Érvényes válasz ellenőrzi, hogy az application gateway létrehozása sikeresen megtörtént, és képes sikeresen csatlakozni a háttérszolgáltatás használatára.
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress

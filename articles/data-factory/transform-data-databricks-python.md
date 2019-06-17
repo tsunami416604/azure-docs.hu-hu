@@ -13,10 +13,10 @@ ms.author: gamal
 ms.reviewer: maghan
 manager: craigg
 ms.openlocfilehash: 3ab3ec5380fbc90dffd4f258073ad8b477e2318a
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002834"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Adatok átalakítása egy Python-tevékenység fut az Azure Databricksben
@@ -64,12 +64,12 @@ A következő táblázat ismerteti a JSON-definíciójában használt JSON-tulaj
 
 |Tulajdonság|Leírás|Szükséges|
 |---|---|---|
-|név|A folyamat a tevékenység neve.|Igen|
+|name|A folyamat a tevékenység neve.|Igen|
 |description|A tevékenység leírása leíró szöveg.|Nem|
-|típus|Databricks Python tevékenységhez a tevékenység esetében DatabricksSparkPython.|Igen|
+|type|Databricks Python tevékenységhez a tevékenység esetében DatabricksSparkPython.|Igen|
 |linkedServiceName|A Python-tevékenység fut, amelyen a Databricks társított szolgáltatás neve. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk.|Igen|
 |pythonFile|URI-ját a Python-fájlt kell végrehajtani. Csak a DBFS elérési utak támogatottak.|Igen|
-|paraméterek|Parancssori paraméterek, amelyek a rendszer átad a Python-fájlt. Ez a karakterláncok tömbje.|Nem|
+|parameters|Parancssori paraméterek, amelyek a rendszer átad a Python-fájlt. Ez a karakterláncok tömbje.|Nem|
 |Kódtárak|Telepíteni a fürt, amely végrehajtja a feladat a könyvtárak listáját. Álló tömb lehet < karakterlánc, objektum >|Nem|
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Databricks-tevékenységek támogatott kódtárak

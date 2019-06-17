@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cde9d4efd3d6eb5bc987a4bf7eb423447ceddc2
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: cee7757a0d590c35b0994f912e39adc80ad8606f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898078"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100532"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-works"></a>Oktatóanyag: A RENDSZERKÉP működését az Azure Active Directory-integráció
 
@@ -53,7 +53,7 @@ Konfigurálása az Azure AD integrálása a RENDSZERKÉP működését, hozzá k
 
 **Adja hozzá a RENDSZERKÉP működését a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -185,7 +185,7 @@ Ebben a szakaszban engedélyezze Britta Simon RENDSZERKÉP működik a hozzáfé
 
 Ebben a szakaszban egy Britta Simon nevű LEMEZKÉP működik a felhasználó hoz létre. Együttműködve [RENDSZERKÉP működését támogatási csoportjának](mailto:iw-sd-support@fujifilm.com) a felhasználók hozzáadása a RENDSZERKÉP működését platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: evansma
 ms.openlocfilehash: 7896ed77d9dbb3358ddb1c809ca342828280f66a
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66258924"
 ---
 # <a name="saas-fulfillment-apis"></a>SaaS Fulfillment API-k
@@ -19,7 +19,7 @@ ms.locfileid: "66258924"
 Az SaaS teljesítése API-kkal a független szoftvergyártók (ISV), a SaaS-alkalmazások integrálása az Azure piactéren. Ezen API-k engedélyezése minden engedélyezett kereskedelmi csatornán részt ISV-alkalmazások: a közvetlen partner által irányított (viszonteladói) és a mező által vezetett.  Azok az Azure Marketplace-en transactable SaaS-ajánlatok listázása előfeltétele.
 
 > [!WARNING]
-> Ez az API jelenlegi verziója a 2. verziója, amely kell használni minden új SaaS-ajánlatok.  1. verzióját az API elavult, és támogatja a meglévő ajánlatok fenntartani.
+> Ez az API jelenlegi verziója a 2. verziója, amely kell használni minden új SaaS-ajánlatok.  1\. verzióját az API elavult, és támogatja a meglévő ajánlatok fenntartani.
 
 
 ## <a name="business-model-support"></a>Üzleti modell támogatása

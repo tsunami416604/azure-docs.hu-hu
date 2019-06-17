@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-pawal
 ms.openlocfilehash: 0ecb620757bc58b109747f69eb3b5afe0c56bac4
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66387561"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>Translator Text API 3.0: BreakSentence
@@ -37,7 +37,7 @@ A kérelem lekérdezési karakterláncot az átadott paraméterek a következők
   <th width="20%">Lekérdezési paraméter</th>
   <th>Leírás</th>
   <tr>
-    <td>API-verzió</td>
+    <td>api-version</td>
     <td>*Kötelező lekérdezési paraméter*.<br/>Az ügyfél által kért API-verzió. Az érték lehet `3.0`.</td>
   </tr>
   <tr>
@@ -45,7 +45,7 @@ A kérelem lekérdezési karakterláncot az átadott paraméterek a következők
     <td>*Nem kötelező lekérdezési paraméter*.<br/>A bemeneti szöveg nyelvének azonosítása nyelvcímke. Ha nincs megadva egy kódot, az automatikus nyelvfelismerést lépnek érvénybe.</td>
   </tr>
   <tr>
-    <td>parancsfájl</td>
+    <td>script</td>
     <td>*Nem kötelező lekérdezési paraméter*.<br/>Parancsfájlkód, a parancsfájl a bemeneti szöveg által használt azonosító. Ha a parancsfájl nincs megadva, a nyelv alapértelmezett parancsfájl lesz.</td>
   </tr>
 </table> 

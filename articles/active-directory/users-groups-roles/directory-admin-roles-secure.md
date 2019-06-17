@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4b61b661d9da0748bc354b8defa4e6d67a047a2
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 7e61207ea23b9b9560668b58b33e3f32f5f70ab2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920488"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083939"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Az Azure AD felhőalapú és hibrid telepítések emelt szintű hozzáférés biztonságossá tétele
 
@@ -70,15 +70,15 @@ A Microsoft javasolja, hogy fejleszthet, és hajtsa végre az internetes támad�
 
 * (1 – 3 hónapos) 3. fázis: Láthatóság hozhat létre, és állítsa össze a felügyeleti tevékenység teljes hozzáférés
 
-* 4. fázis (hat hónapos és azt követően): Proaktívabb tovább erősíti a biztonsági platform
+* 4\. fázis (hat hónapos és azt követően): Proaktívabb tovább erősíti a biztonsági platform
 
 Az ütemterv keretrendszer célja maximalizálja a már telepített Microsoft-technológiák használatát. Jelenlegi és jövőbeli kulcsfontosságú technológiák előnyeit, és integrálhatja a már üzembe helyezte, vagy a releváns üzembe helyezése más gyártóktól származó biztonsági eszközöket is. 
 
-## <a name="stage-1-critical-items-that-we-recommend-you-do-right-away"></a>1. fázis: Azt javasoljuk, hogy kritikus elemek nincs azonnal
+## <a name="stage-1-critical-items-that-we-recommend-you-do-right-away"></a>1\. fázis: Azt javasoljuk, hogy kritikus elemek nincs azonnal
 
 ![Ehhez először a 1. fázis kritikus elemek](./media/directory-admin-roles-secure/stage-one.png)
 
-1. fázisa az ütemterv részét képezi, amely gyorsan és könnyen megvalósítható kritikus feladatok összpontosít. Azt javasoljuk, hogy végrehajtja-e ezek néhány elemet azonnal belül a biztonságos emelt szintű hozzáférés alapvető szintjének biztosítása érdekében első 24-48 óra. Ebben a szakaszban az emelt szintű hozzáférés biztonságossá ütemterv az alábbi műveleteket tartalmazza:
+1\. fázisa az ütemterv részét képezi, amely gyorsan és könnyen megvalósítható kritikus feladatok összpontosít. Azt javasoljuk, hogy végrehajtja-e ezek néhány elemet azonnal belül a biztonságos emelt szintű hozzáférés alapvető szintjének biztosítása érdekében első 24-48 óra. Ebben a szakaszban az emelt szintű hozzáférés biztonságossá ütemterv az alábbi műveleteket tartalmazza:
 
 ### <a name="general-preparation"></a>Általános előkészítése
 
@@ -125,9 +125,9 @@ A vészelérési fiókok segítségével a szervezetek korlátozni a rendszerjog
 
 Az Azure multi-factor Authentication (MFA) megkövetelése bejelentkezéskor véglegesen egy vagy több Azure AD felügyeleti szerepkörök rendelt minden egyes felhasználók számára: Globális rendszergazda, kiemelt szerepkörű rendszergazda, az Exchange Online rendszergazdai és a rendszergazda a SharePoint online-hoz. Az útmutató használatával engedélyezhető az [multi-factor Authentication (MFA) a rendszergazdai fiókok](../authentication/howto-mfa-userstates.md) , és győződjön meg arról, hogy az összes számukra regisztrálták-e a [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup). További információ található a 2. lépés és az útmutató 3. lépés [adatait és szolgáltatásait az Office 365-ben való hozzáférés védelme](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
 
-## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>2. fázis: A leggyakrabban alkalmazott támadási taktikák kockázatának csökkentése
+## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>2\. fázis: A leggyakrabban alkalmazott támadási taktikák kockázatának csökkentése
 
-![2. fázis a gyakran használt Mitigate támadások](./media/directory-admin-roles-secure/stage-two.png)
+![2\. fázis a gyakran használt Mitigate támadások](./media/directory-admin-roles-secure/stage-two.png)
 
 A legtöbb gyakori problémák enyhítését célzó ütemterv összpontosít 2. fázis alkalmazott támadási taktikák kockázatának hitelesítő adatok ellopásának és visszaélések és megközelítőleg 2 – 4 héten belül végrehajtható. Ebben a szakaszban az emelt szintű hozzáférés biztonságossá ütemterv az alábbi műveleteket tartalmazza.
 
@@ -173,7 +173,7 @@ Kapcsolja be:
 
 Ha használ Windows Hello for Business, az MFA úgy érheti el használata a Windows Hello bejelentkezési élményt nyújt. További információkért lásd: [Windows Hello](https://docs.microsoft.com/windows/uwp/security/microsoft-passport). 
 
-#### <a name="configure-identity-protection"></a>Az Identity Protection konfigurálása 
+#### <a name="configure-identity-protection"></a>Identity Protection konfigurálása 
 
 Az Azure AD Identity Protection, az algoritmus-alapú figyelési és jelentéskészítési eszköz, amellyel a szervezet identitásait érintő esetleges biztonsági rések észlelését. Automatikus válaszok e észlelt gyanús tevékenységek konfigurálhatja, és hajtsa végre a problémák megoldásához a megfelelő műveletet. További információkért lásd: [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 
@@ -218,11 +218,11 @@ Az Azure-tevékenységnapló az Azure előfizetés-szintű eseményeit tartalmaz
 Készítse elő a feltételes hozzáférési szabályzatok a helyszíni és felhőben üzemeltetett alkalmazásokban. Ha a felhasználói munkahelyhez csatlakoztatott eszközök, részletes tájékoztatást a [beállítása a helyszíni feltételes hozzáférés által az Azure Active Directory eszközregisztrációjával](../active-directory-device-registration-on-premises-setup.md).
 
 
-## <a name="stage-3-build-visibility-and-take-full-control-of-admin-activity"></a>3. fázis: Láthatóság hozhat létre, és teljes mértékben vezérelhetik a felügyeleti tevékenység
+## <a name="stage-3-build-visibility-and-take-full-control-of-admin-activity"></a>3\. fázis: Láthatóság hozhat létre, és teljes mértékben vezérelhetik a felügyeleti tevékenység
 
-![3. fázis irányításuk alá vonják rendszergazdai tevékenység](./media/directory-admin-roles-secure/stage-three.png)
+![3\. fázis irányításuk alá vonják rendszergazdai tevékenység](./media/directory-admin-roles-secure/stage-three.png)
 
-3. fázis a 2. fázis kockázatcsökkentő épül, és célja, hogy megközelítőleg 1 – 3 hónapon belül kell végrehajtani. A biztonságos emelt szintű hozzáférés védelmének ütemterve ezen szakasza a következő összetevőket tartalmazza.
+3\. fázis a 2. fázis kockázatcsökkentő épül, és célja, hogy megközelítőleg 1 – 3 hónapon belül kell végrehajtani. A biztonságos emelt szintű hozzáférés védelmének ütemterve ezen szakasza a következő összetevőket tartalmazza.
 
 ### <a name="general-preparation"></a>Általános előkészítése
 
@@ -320,9 +320,9 @@ Győződjön meg arról, egymáshoz kapcsolódó alkalmazások, valamint a véde
 
 A Cloud App Security SIEM-ügynök a Cloud App Security integrálható az Office 365-riasztások és tevékenységek centralizált figyelését engedélyezéséhez az SIEM-kiszolgálóra. A kiszolgálón fut, és lekéri a riasztásokat és tevékenységeket a Cloud App Security és továbbítja azokat a SIEM-kiszolgálóra. További információkért lásd: [SIEM-integráció](https://docs.microsoft.com/cloud-app-security/siem).
 
-## <a name="stage-4-continue-building-defenses-to-a-more-proactive-security-posture"></a>4. fázis: Proaktívabb egy további biztonsági rendszer kialakításához
+## <a name="stage-4-continue-building-defenses-to-a-more-proactive-security-posture"></a>4\. fázis: Proaktívabb egy további biztonsági rendszer kialakításához
 
-![4. fázis elfogadják a proaktív biztonsági rendszer kialakításához](./media/directory-admin-roles-secure/stage-four.png)
+![4\. fázis elfogadják a proaktív biztonsági rendszer kialakításához](./media/directory-admin-roles-secure/stage-four.png)
 
 Az ütemterv – 4. fázis a 3. fázis látható-e épül, és célja, hogy hat hónapon belül és kívül kell végrehajtani. Befejezése strong fejleszt terv segít az emelt szintű hozzáférési védelmet jelenleg ismertek és elérhetők még ma a lehetséges támadások ellen. Biztonsági fenyegetések sajnos folyamatosan fejlődnek, és változnak, ezért azt javasoljuk, hogy megtekintheti a biztonsági olyan folyamatként összpontosított költségeinek növelése és csökkentése sikerének célja a környezetet.
 

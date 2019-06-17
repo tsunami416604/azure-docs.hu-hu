@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 06/11/2019
 ms.author: tulasim
-ms.openlocfilehash: 85b0004288a06a834b61f6e3d50017d35d66ce86
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b3bae01d65685aa9ea7bfc95d1f1454741d37b5e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60599025"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053226"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>Oktatóanyag: A QnA robotot létrehozása az Azure Bot Service v4
 
@@ -55,9 +55,9 @@ Hozzon létre egy robot a Tudásbázis ügyfélalkalmazást.
     |Location egység|`west us`|A robot Azure-erőforrás helye.|
     |Tarifacsomag|`F0`|Az Azure bot service az ingyenes szintet.|
     |App neve|`my-tutorial-kb-bot-app`|Ez a webes alkalmazás csak a robot támogatásához. Ezzel nem kell az ugyanazon alkalmazás neve, ahogy a QnA Maker szolgáltatás már használja. A QnA Maker webalkalmazás osztanak meg minden egyéb erőforrás nem támogatott.|
-    |SDK-nyelv|C#|Ez az az alapul szolgáló programozási nyelv, a bot framework SDK-t használják. A választható lehetőségek: C# vagy node.js nyelven.|
+    |SDK-nyelv|C#|Ez az az alapul szolgáló programozási nyelv, a bot framework SDK-t használják. A választható lehetőségek: [ C# ](https://github.com/Microsoft/botbuilder-dotnet) vagy [Node.js](https://github.com/Microsoft/botbuilder-js).|
     |A QnA hitelesítési kulcs|**Ne módosítsa**|Ez az érték kitölti a rendszer az Ön számára.|
-    |App Service-csomag helye|**Ne módosítsa**|A jelen oktatóanyag esetében a hely nem számít.|
+    |App service-csomag/hely|**Ne módosítsa**|A jelen oktatóanyag esetében a hely nem számít.|
     |Azure Storage|**Ne módosítsa**|Az Azure Storage-táblák beszélgetési adatok tárolódik.|
     |Application Insights|**Ne módosítsa**|Naplózás küld az Application Insights.|
     |A Microsoft-alkalmazás azonosítója|**Ne módosítsa**|Az Active directory – felhasználók és a jelszó megadása kötelező.|

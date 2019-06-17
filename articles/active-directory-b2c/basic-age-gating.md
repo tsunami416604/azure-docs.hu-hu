@@ -11,10 +11,10 @@ ms.date: 11/13/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 33b379a03c92b81885f7adfc70f7025a85ce9057
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66511664"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C Korhatáralapú hozzáférés engedélyezése
@@ -33,19 +33,19 @@ Korhatáralapú magában foglalja a két kora érték: az életkor valaki már n
 
 | Ország/régió | Ország/régió neve | Kisebb hozzájárulási kora | Kisebb kora |
 | -------------- | ------------------- | ----------------- | --------- |
-| Alapértelmezett | Egyik sem | Egyik sem | 18 |
-| AE | Egyesült Arab Emírségek | Egyik sem | 21 |
+| Alapértelmezett | None | None | 18 |
+| AE | Egyesült Arab Emírségek | None | 21 |
 | AT | Ausztria | 14 | 18 |
 | BE | Belgium | 14 | 18 |
 | BG | Bulgária | 16 | 18 |
-| BH | Bahrein | Egyik sem | 21 |
-| CM | Kamerun | Egyik sem | 21 |
+| BH | Bahrein | None | 21 |
+| CM | Kamerun | None | 21 |
 | CY | Ciprus | 16 | 18 |
 | CZ | Cseh Köztársaság | 16 | 18 |
 | DE | Németország | 16 | 18 |
 | DK | Dánia | 16 | 18 |
 | EE | Észtország | 16 | 18 |
-| EG | Egyiptom | Egyik sem | 21 |
+| EG | Egyiptom | None | 21 |
 | ES | Spanyolország | 13 | 18 |
 | JK | Franciaország | 16 | 18 |
 | GB | Egyesült Királyság | 13 | 18 |
@@ -59,18 +59,18 @@ Korhatáralapú magában foglalja a két kora érték: az életkor valaki már n
 | LU | Luxemburg | 16 | 18 |
 | LV | Lettország | 16 | 18 |
 | MT | Málta | 16 | 18 |
-| n/a | Namíbia | Egyik sem | 21 |
+| n/a | Namíbia | None | 21 |
 | NL | Hollandia | 16 | 18 |
 | PL | Lengyelország | 13 | 18 |
 | PT | Portugália | 16 | 18 |
 | RO | Románia | 16 | 18 |
 | SE | Svédország | 13 | 18 |
-| SG | Szingapúr | Egyik sem | 21 |
+| SG | Szingapúr | None | 21 |
 | SI | Szlovénia | 16 | 18 |
 | SK | Szlovákia | 16 | 18 |
-| TD | Csád | Egyik sem | 21 |
-| TH | Thaiföld | Egyik sem | 20 |
-| TW | Tajvan | Egyik sem | 20 | 
+| TD | Csád | None | 21 |
+| TH | Thaiföld | None | 20 |
+| TW | Tajvan | None | 20 | 
 | USA | Egyesült Államok | 13 | 18 |
 
 ## <a name="age-gating-options"></a>Korhatáralapú hozzáférés-beállítások

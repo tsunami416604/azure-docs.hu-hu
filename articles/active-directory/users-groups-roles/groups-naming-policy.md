@@ -16,10 +16,10 @@ ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0c13b95028975c5463217455c940bb84c3867899
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66734783"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Az Office 365-csoportok az Azure Active Directoryban elnevezési szabályzat kényszerítése
@@ -71,8 +71,8 @@ Letiltott szó lista szabályok:
 Kijelölt rendszergazdák kivonhatók a ezek a házirendek összes csoport számítási feladatok és végpontok, úgy, hogy miképpen hozhatnak létre csoportokat a letiltott szavakat használ, és a saját elnevezési konvenciókat. Az alábbiakban a csoportelnevezési házirend alól rendszergazdai szerepkörök listája.
 
 - Globális rendszergazda
-- 1. szintű Partnertámogatás
-- 2. szintű Partnertámogatás
+- 1\. szintű Partnertámogatás
+- 2\. szintű Partnertámogatás
 - Felhasználói adminisztrátor
 - Címtárírók
 

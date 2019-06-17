@@ -3,7 +3,7 @@ title: Mi az az Azure Security Center?| Microsoft Docs
 description: Információk az Azure Security Centerről, annak főbb funkcióiról és működéséről.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 45b9756b-6449-49ec-950b-5ed1e7c56daa
@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/15/2019
-ms.author: rkarlin
-ms.openlocfilehash: 13526268480c69798ee52078f7448605fc1afa9a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 6/06/2019
+ms.author: v-mohabe
+ms.openlocfilehash: 28e85f2e9caacc0cc30dcc1a073414c34bc2ab0e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60910209"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064327"
 ---
 # <a name="what-is-azure-security-center"></a>Mi az az Azure Security Center?
 
@@ -88,7 +88,7 @@ A biztonság csökkentése a Security Center teszi hozzáadásával egy lépés 
 
 A szív érték az Azure Security Center javaslatait rejlik. A javaslatok a talált a számítási feladatok az adott biztonsági problémák vannak igazítva, és a Security Center elvégzi a biztonsági rendszergazdai munkához, nem csak a biztonsági rések keresése, de így a konkrét utasításokat, hogy hogyan távolíthatja el azokat.
 
-![Security Center-javaslatok](media/security-center-intro/sc-recommendations.png)
+![A Security Center-javaslatok](media/security-center-intro/sc-recommendations.png)
 
 Ily módon a Security Center lehetővé teszi nemcsak a biztonsági szabályzatok beállítása, de az erőforrások biztonságos konfigurációs szabványok igyekszik.
 
@@ -125,6 +125,10 @@ A Security Center segítségével korlátozhatja a találgatásos támadásokkal
 ### <a name="protect-data-services"></a>Data services védelme
 
 A Security Center tartalmaz, amelyekkel hajtsa végre az automatikus besorolás az adatok Azure SQL-ben. Azure SQL- és tárolási szolgáltatások és azok mérséklésére vonatkozó értékelések a potenciális biztonsági réseket is kaphat.
+
+### <a name="protect-iot-and-hybrid-cloud-workloads-preview"></a>IoT és a hibrid felhőbeli számítási feladatok (előzetes verzió) védelme
+
+Az Azure Security Center az IoT (eszközök internetes hálózata) egyszerűbbé teszi a hibrid számítási feladatok védelmét azáltal, hogy egységes láthatóságát és a vezérlő, adaptív fenyegetések megelőzése, és intelligens fenyegetésészlelés és a válaszok edge, a helyszínen futó számítási feladatok között Azure-ban, és más felhőkben. További információkért lásd: [IoT (előzetes verzió) az Azure Security Center](https://docs.microsoft.com/azure/asc-for-iot/).
 
 ## <a name="get-secure-faster"></a>Gyorsabb, biztonságos beolvasása
 

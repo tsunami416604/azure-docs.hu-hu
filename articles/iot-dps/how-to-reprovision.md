@@ -2,18 +2,17 @@
 title: Hogyan kell építenie az eszközök az Azure IoT Hub Device Provisioning Service |} A Microsoft Docs
 description: Hogyan kell építenie az eszközök a device provisioning service-példány
 author: wesmc7777
-ms.author: v-yiso
-origin.date: 04/04/2019
-ms.date: 05/06/2019
+ms.author: wesmc
+ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.openlocfilehash: 92680a453d93c8dc0189c6ae376449a8e7a22076
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60627348"
 ---
 # <a name="how-to-reprovision-devices"></a>Hogyan kell építenie az eszközök

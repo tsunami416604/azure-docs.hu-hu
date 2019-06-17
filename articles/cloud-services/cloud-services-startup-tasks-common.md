@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 0a2e2a3d817140a6ab15dab0093b4025a3bfd76c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1d78ab917589af0eae72eb70e3cdc2cc751072eb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60406395"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076440"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Gyakori Felhőszolgáltatás indítási feladatok
 Ez a cikk példákat néhány gyakori indítási feladatok, érdemes lehet végrehajtani a cloud service-ben. Indítási feladatok segítségével hajtsa végre a műveleteket a szerepkör elindítása előtt. Esetlegesen végrehajtani kívánt műveletek közé tartozik egy összetevő telepítése, COM-összetevők regisztrálása, beállításkulcsokat vagy hosszú ideig futó folyamat indítása. 
@@ -73,7 +73,7 @@ Az által visszaadott errorlevel *AppCmd.exe* szerepelnek a winerror.h fájlt, �
 ### <a name="example-of-managing-the-error-level"></a>A hiba szintje kezelése – példa
 Ebben a példában hozzáad egy tömörítési fejezetet, és a egy tömörítési bejegyzést JSON-a *Web.config* fájllal hiba- és naplózás.
 
-A vonatkozó részt a [ServiceDefinition.csdef] fájl látható itt, többek között a beállítás a [executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#Task) attribútumot `elevated` biztosíthat *AppCmd.exe* módosítása a megfelelő engedélyekkel a *Web.config* fájlt:
+A vonatkozó részt a [ServiceDefinition.csdef] fájl látható itt, többek között a beállítás a [executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#task) attribútumot `elevated` biztosíthat *AppCmd.exe* módosítása a megfelelő engedélyekkel a *Web.config* fájlt:
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">

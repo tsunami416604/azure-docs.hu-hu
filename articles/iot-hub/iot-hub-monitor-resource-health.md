@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: kgremban
 ms.openlocfilehash: 6dea1add1e329cfc894068732898a856a69c9b4c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66166207"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub állapotának monitorozásához és a problémák gyorsan diagnosztizálása
@@ -66,7 +66,7 @@ A kapcsolatok kategóriában nyomon követi eszköz csatlakoztatása, és esemé
 }
 ```
 
-#### <a name="cloud-to-device-commands"></a>Felhő–eszköz irányú parancsok
+#### <a name="cloud-to-device-commands"></a>Felhőből az eszközre irányuló parancsok
 
 A felhőből az eszközre irányuló parancsok kategória előforduló hibák az IoT hubra a felhőből az eszközre irányuló üzenetek folyamat kapcsolódó követi nyomon. Ez a kategória tartalmazza a felmerülő hibák:
 
@@ -345,7 +345,7 @@ Itt `durationMs` rendszer nem számítja ki, az IoT Hub órája nem lehet az esz
 
 | Tulajdonság | Típus | Leírás |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **messageSize** | Integer | A mérete (bájt) eszköz – felhő üzenetek |
+| **messageSize** | Egész szám | A mérete (bájt) eszköz – felhő üzenetek |
 | **deviceId** | ASCII 7 bites alfanumerikus karakterekből álló karakterlánc | Az eszköz identitásának |
 | **callerLocalTimeUtc** | UTC-időbélyeg | Az üzenet jelentése szerint az eszköz helyi órája létrehozásának idejét |
 | **calleeLocalTimeUtc** | UTC-időbélyeg | Az átjáró az IoT Hub, IoT Hub szolgáltatás oldali óra által jelentett üzenet érkezés időpontja |

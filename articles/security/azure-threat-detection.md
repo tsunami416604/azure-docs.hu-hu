@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: 60a0d7c2da25f63d0728dbb86f9a6c2328def811
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60611026"
 ---
 # <a name="azure-advanced-threat-detection"></a>Az Azure fejlett fenyegetésészlelés
@@ -95,7 +95,7 @@ A Log Analytics biztonsági és auditálási irányítópultja négy fő kategó
 
 -   **Jelentős problémák**: Lehetővé teszi, hogy gyorsan azonosíthatja az aktív problémák számát és a problémák súlyosságát.
 
--   **Észlelések (előnézet)**: Lehetővé teszi a támadási minták azonosítását az erőforrásokkal bekövetkezésük biztonsági riasztások megjelenítésével.
+-   **Észlelések (előnézet)** : Lehetővé teszi a támadási minták azonosítását az erőforrásokkal bekövetkezésük biztonsági riasztások megjelenítésével.
 
 -   **Fenyegetések felderítése**: Lehetővé teszi a támadási mintákat azonosíthat a kimenő rosszindulatú IP-forgalom kiszolgálók száma, a rosszindulatú fenyegetések típusa és az IP-címek helyek térképe.
 
@@ -343,9 +343,9 @@ A Cloud App Security eszközeivel könnyebb az informatikai árnyék-infrastrukt
 |---|---|
 | Ismertetők | Fedje fel a Cloud App Securityvel informatikai árnyék-infrastruktúra. Alkalmazások, tevékenységek, felhasználók, adatok és fájlok a felhőalapú környezetben felderítésével nagyobb a láthatóságot. Ismerje meg, amely a felhőhöz csatlakoztatott külső alkalmazásoknak.|
 |Vizsgálat | Vizsgálja meg a felhőalkalmazások által felhőalapú nyomkereső eszközökkel, így részletesen elemezheti kockázatos alkalmazásokat, egyes felhasználókat és a hálózati fájlokat. Minták keresése a felhőből gyűjtött adatokban. A felhőt figyelő jelentéseket hozhat létre. |
-| Vezérlés | Mérsékelheti a kockázatot szabályzatok és riasztások maximális szabályozhatja a hálózati eléréséhez. A Cloud App Security segítségével biztonságos, engedélyezett felhőalkalmazás-alternatívákra telepítheti át a felhasználóit. |
-| Védelem | A Cloud App Security használatával engedélyezését vagy alkalmazások az engedélyeiket, adatveszteség-megelőzés, szabályozhatja az engedélyeket és megosztása, valamint testreszabott jelentéseket és riasztásokat hozhat létre. |
-| Vezérlés | Mérsékelheti a kockázatot szabályzatok és riasztások maximális szabályozhatja a hálózati eléréséhez. A Cloud App Security segítségével biztonságos, engedélyezett felhőalkalmazás-alternatívákra telepítheti át a felhasználóit. |
+| Szabályozás | Mérsékelheti a kockázatot szabályzatok és riasztások maximális szabályozhatja a hálózati eléréséhez. A Cloud App Security segítségével biztonságos, engedélyezett felhőalkalmazás-alternatívákra telepítheti át a felhasználóit. |
+| védelme | A Cloud App Security használatával engedélyezését vagy alkalmazások az engedélyeiket, adatveszteség-megelőzés, szabályozhatja az engedélyeket és megosztása, valamint testreszabott jelentéseket és riasztásokat hozhat létre. |
+| Szabályozás | Mérsékelheti a kockázatot szabályzatok és riasztások maximális szabályozhatja a hálózati eléréséhez. A Cloud App Security segítségével biztonságos, engedélyezett felhőalkalmazás-alternatívákra telepítheti át a felhasználóit. |
 | | |
 
 

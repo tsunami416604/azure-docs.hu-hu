@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81770b6ec4eacad10cd88978952688c29eff452d
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 590184c25fa0aa3cb3219aa9c185a31e62090ba9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962418"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111142"
 ---
 # <a name="mobile-app-that-calls-web-apis---get-a-token"></a>Mobilalkalmazás, amely meghívja a webes API-k – egy token beszerzése
 
@@ -167,7 +167,7 @@ Nem ajánlott közvetlenül a protokoll használatával. Ha így tesz, az alkalm
 
 A protokoll használatával tokenekhez mobilalkalmazásokhoz, amikor két kérést kell: hozzáférési kód beszerzése és az exchange-, a jogkivonat.
 
-#### <a name="get-authorization-code"></a>Engedélyezési kód beszerzése
+#### <a name="get-authorization-code"></a>Hozzáférési kód lekérése
 
 ```Text
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?

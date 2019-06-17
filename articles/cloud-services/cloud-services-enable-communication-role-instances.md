@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2016
 ms.author: jeconnoc
-ms.openlocfilehash: 8b521ebe869210b66ac3b3efeebda873f7c0e50b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4fa3885f9c273cf6aaf9173ebd3fee3d4499be34
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60519434"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808095"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>Az azure-szerepkörpéldányok kommunikáció engedélyezése
 A felhőszolgáltatásokhoz tartozó szerepkörök belső és külső kapcsolatok keresztül kommunikálnak. A külső kapcsolatokat az úgynevezett **bemeneti végpontok** közben belső kapcsolatok nevezzük **belső végpont**. Ez a témakör ismerteti, hogyan lehet módosítani a [szolgáltatásdefiníciós](cloud-services-model-and-package.md#csdef) végpontok létrehozásához.
 
 ## <a name="input-endpoint"></a>Bemeneti végpont
-A bemeneti végpont szeretné közzétenni a külső port használatos. Protokoll típusa és a végpont, amely mind a belső és külső portok a végpont majd alkalmazza a portot kell megadni. Ha azt szeretné, az a végpont egy másik belső portot is megadhat a [localPort](/previous-versions/azure/reference/gg557552(v=azure.100)#InputEndpoint) attribútum.
+A bemeneti végpont szeretné közzétenni a külső port használatos. Protokoll típusa és a végpont, amely mind a belső és külső portok a végpont majd alkalmazza a portot kell megadni. Ha azt szeretné, az a végpont egy másik belső portot is megadhat a [localPort](/previous-versions/azure/reference/gg557552(v=azure.100)#inputendpoint) attribútum.
 
 A bemeneti végpont használhatja az alábbi protokollok: **http, https, tcp, udp**.
 
@@ -260,7 +260,7 @@ Az alábbi példakód bemutatja a szerepkör-definíciók az előző ábrán is 
 
 Alapértelmezés szerint után egy belső végpont van definiálva, kommunikációs folytatódhat bármely szerepkörből, a belső végpont egy szerepkör korlátozása nélkül. Korlátozni a kommunikációt, hozzá kell adnia egy **NetworkTrafficRules** elem a **szolgáltatásdefiníció** elem a szolgáltatásdefiníciós fájlban.
 
-### <a name="scenario-1"></a>1. forgatókönyv
+### <a name="scenario-1"></a>1\. forgatókönyv
 A csak hálózati forgalom **WebRole1** való **WorkerRole1**.
 
 ```xml
@@ -279,7 +279,7 @@ A csak hálózati forgalom **WebRole1** való **WorkerRole1**.
 </ServiceDefinition>
 ```
 
-### <a name="scenario-2"></a>2. forgatókönyv
+### <a name="scenario-2"></a>2\. forgatókönyv
 Csak lehetővé teszi, hogy a hálózati forgalom **WebRole1** való **WorkerRole1** és **WorkerRole2**.
 
 ```xml
@@ -298,7 +298,7 @@ Csak lehetővé teszi, hogy a hálózati forgalom **WebRole1** való **WorkerRol
 </ServiceDefinition>
 ```
 
-### <a name="scenario-3"></a>3. forgatókönyv
+### <a name="scenario-3"></a>3\. forgatókönyv
 Csak lehetővé teszi, hogy a hálózati forgalom **WebRole1** való **WorkerRole1**, és **WorkerRole1** való **WorkerRole2**.
 
 ```xml
@@ -327,7 +327,7 @@ Csak lehetővé teszi, hogy a hálózati forgalom **WebRole1** való **WorkerRol
 </ServiceDefinition>
 ```
 
-### <a name="scenario-4"></a>4. forgatókönyv
+### <a name="scenario-4"></a>4\. forgatókönyv
 Csak lehetővé teszi, hogy a hálózati forgalom **WebRole1** való **WorkerRole1**, **WebRole1** való **WorkerRole2**, és **WorkerRole1**  való **WorkerRole2**.
 
 ```xml

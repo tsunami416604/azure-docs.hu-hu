@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/18/2019
+ms.date: 06/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 531e51fbddb99ebba11284d5291b4cca26559bc1
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: a370dcb349b61f3dda544d9c5a2030b6789e34c4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65906771"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075435"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Az AKS fürtteljesítmény és az Azure Monitor-tárolókhoz ismertetése 
 Az Azure monitorral tárolók segítségével a teljesítmény diagramokat és az állapot az Azure Kubernetes Service (AKS)-fürtök két perspektíva adatai, közvetlenül az AKS-fürt vagy az Azure-ból összes AKS-fürt az előfizetéshez, a számítási feladat figyeléséhez Ez a figyelő. Megtekintése az Azure Container Instances (ACI) esetén is lehetséges egy adott AKS-fürt monitorozására.
@@ -61,7 +61,7 @@ Tartalmazza a rendszerállapot-állapotok az alábbiak:
 * **Nem található** - vagy a munkaterületen, az erőforráscsoportra vagy törölték a megoldás, amely tartalmazza a munkaterület előfizetés.
 * **Jogosulatlan** -felhasználó nem rendelkezik az adatok a munkaterület olvasásához szükséges engedélyekkel.
 * **Hiba** -hiba történt a munkaterület adatainak olvasására tett kísérlet során.
-* **Konfigurált MIS** -tárolókhoz az Azure Monitor nincs megfelelően konfigurálva az adott munkaterületen.
+* **Nincs megfelelően konfigurálva** -tárolókhoz az Azure Monitor nincs megfelelően konfigurálva az adott munkaterületen.
 * **Nincs adat** -adatok nem jelentette a munkaterülethez az elmúlt 30 percben.
 
 Állapot alapján számítja ki a teljes fürt állapotát, *legrosszabb,* , egy kivétellel – a három állapotok, ha a három állapotok valamelyikében van *ismeretlen*, megjelenik a teljes fürt állapota **ismeretlen**.  
@@ -102,12 +102,12 @@ Az alapértelmezett oldalt megnyitni kattintva **Insights** van **fürt**, és a
 
 A teljesítmény diagramon négy teljesítmény-mérőszámait jeleníti meg:
 
-- **Csomópont CPU-kihasználtság&nbsp;%**: Összesített szempontjából CPU-kihasználtság az egész fürt számára. Kijelölésével szűrheti az eredményeket a időtartományban **átlagos**, **Min**, **maximális**, **50**, **90**, és **95.** percentilisei-választójában jelenítse a diagram felett vagy külön-külön vagy együtt. 
-- **Csomópont memóriahasználat&nbsp;%**: Összesített szempontjából a memóriahasználat, az egész fürt számára. Kijelölésével szűrheti az eredményeket a időtartományban **átlagos**, **Min**, **maximális**, **50**, **90**, és **95.** percentilisei-választójában jelenítse a diagram felett vagy külön-külön vagy együtt. 
+- **Csomópont CPU-kihasználtság&nbsp;%** : Összesített szempontjából CPU-kihasználtság az egész fürt számára. Kijelölésével szűrheti az eredményeket a időtartományban **átlagos**, **Min**, **maximális**, **50**, **90**, és **95.** percentilisei-választójában jelenítse a diagram felett vagy külön-külön vagy együtt. 
+- **Csomópont memóriahasználat&nbsp;%** : Összesített szempontjából a memóriahasználat, az egész fürt számára. Kijelölésével szűrheti az eredményeket a időtartományban **átlagos**, **Min**, **maximális**, **50**, **90**, és **95.** percentilisei-választójában jelenítse a diagram felett vagy külön-külön vagy együtt. 
 - **Csomópontok száma**: A csomópontok száma és a Kubernetes állapota. A fürtcsomópontok jelölt állapotok a *összes*, *készen*, és *nem áll készen* és szűrt külön-külön vagy együtt a választó a diagram felett a. 
 - **Tevékenységnapló-pod száma**: A pod száma és a Kubernetes állapota. A podok jelöli az állapotok a *összes*, *függőben lévő*, *futó*, és *ismeretlen* és szűrt külön-külön vagy együtt a a a diagram felett választó. 
 
-A balra vagy jobbra nyíl billentyűk használatával válthat a PERCENTILIS vonalak kulcsok a diagram és a felfelé és lefelé mutató nyílra, az az egyes válthat.
+A balra vagy jobbra nyíl billentyűk használatával válthat a PERCENTILIS vonalak kulcsok a diagram és a felfelé és lefelé mutató nyílra, az az egyes válthat. Kattintson a rajzszög ikonra a felső sarkában a diagramok bármelyike rögzítenie a kijelölt diagram legutóbb megtekintve utolsó Azure-irányítópultra. Az irányítópultról, átméretezheti és áthelyezheti a diagramot. Válassza ki a diagram az irányítópult-tárolókhoz az Azure monitornak átirányítás, és a megfelelő hatókörben és nézet betöltése.
 
 Az Azure Monitor-tárolókhoz is támogatja az Azure Monitor [metrikaböngésző](../platform/metrics-getting-started.md), ahol hozzon létre saját diagram diagramokat, összevetését és megvizsgálhatja a trendeket, és rögzíthet az irányítópultokon. A metrikaböngésző, is használhatja a feltételeknek, a metrikák megjelenítéséhez alapjául szolgáló meg egy [mérőszám-alapú riasztási szabály](../platform/alerts-metric.md).  
 
@@ -129,7 +129,7 @@ A metrikaböngészőben megtekintheti összesített csomópont és a pod-tárol�
 
 Alkalmazhat [felosztás](../platform/metrics-charts.md#apply-splitting-to-a-chart) dimenzió tekinti meg, és megjelenítheti a különböző szegmenseinek metrikát, hasonlítsa össze egymással. Egy csomópont a diagram a is szegmentálhatja a *gazdagép* dimenzió, és a egy pod is szegmentálhatja, a következő szempontok alapján:
 
-* Vezérlő
+* tartományvezérlő
 * Kubernetes-névtér
 * Csomópont
 * Fázis
@@ -163,7 +163,7 @@ Az Azure Container Instances virtuális csomópontok a Linux operációs rendsze
 Egy kibontott csomópontból részletezhet a pod vagy teljesítményadatok szűrve, hogy a tartományvezérlő a tartományvezérlőre, amely a csomóponton futó tárolót. Kattintson az érték a a **vezérlő** oszlopban az adott csomópont számára.   
 ![Példa Lehatolás csomópontból a teljesítmény nézet-vezérlő](./media/container-insights-analyze/drill-down-node-controller.png)
 
-Válassza ki a tartományvezérlők vagy a lap tetején lévő tárolókat, és tekintse át az állapot- és erőforrás-felhasználást azokat az objektumokat.  Ha ehelyett meg szeretné tekinteni a memóriahasználat, az a **metrika** legördülő listában válassza **memória RSS** vagy **memória-munkakészlet**. **Memória RSS** csak Kubernetes 1.8-as és újabb verziók esetében támogatott. Ellenkező esetben, tekintse meg az értékeket **Min&nbsp; %**  , *NaN&nbsp;%*, azaz egy nem definiált képviselő numerikus típus értéke vagy ábrázolható érték. 
+Válassza ki a tartományvezérlők vagy a lap tetején lévő tárolókat, és tekintse át az állapot- és erőforrás-felhasználást azokat az objektumokat.  Ha ehelyett meg szeretné tekinteni a memóriahasználat, az a **metrika** legördülő listában válassza **memória RSS** vagy **memória-munkakészlet**. **Memória RSS** csak Kubernetes 1.8-as és újabb verziók esetében támogatott. Ellenkező esetben, tekintse meg az értékeket **Min&nbsp; %**  , *NaN&nbsp;%* , azaz egy nem definiált képviselő numerikus típus értéke vagy ábrázolható érték. 
 
 ![Tároló csomópontok teljesítmény nézet](./media/container-insights-analyze/containers-node-metric-dropdown.png)
 
@@ -175,7 +175,7 @@ Amikor egérmutatót alatt az oszlopdiagram a **Trend** oszlop, minden egyes sá
 
 ![Sáv diagram vigye a kurzort a példában trend](./media/container-insights-analyze/containers-metric-trend-bar-01.png)    
 
-A következő példában, vegye figyelembe a lista – az első node *aks-nodepool1 -*, értéke **tárolók** érték 9, amely egy összegző üzembe helyezett tárolókat teljes száma.
+A következő példában, vegye figyelembe a lista – az első node *aks-nodepool1 -* , értéke **tárolók** érték 9, amely egy összegző üzembe helyezett tárolókat teljes száma.
 
 ![A tárolók száma példája összegzése](./media/container-insights-analyze/containers-nodes-containerstotal.png)
 
@@ -233,7 +233,7 @@ Az ikonok az állapot mezőben a tárolók online állapotát jelzi:
 | ![Utolsó jelentett futó állapotikon](./media/container-insights-analyze/containers-grey-icon.png) | Utolsó jelentett fut, de 30 percnél hosszabb ideig nem válaszolt.|
 | ![A sikeres állapot ikon](./media/container-insights-analyze/containers-green-icon.png) | Sikeresen leállt vagy nem sikerült leállítani a|
 
-Az állapotjelző ikon alapján a pod biztosít számát jeleníti meg. A legrosszabb kétállapotú jeleníti meg, és amikor a kurzort az állapot, a tárolóban megjeleníti az összes podok egy összesítő állapotát. Ha nincs kész állapotú, az állapot értékét jeleníti meg **(0)**. 
+Az állapotjelző ikon alapján a pod biztosít számát jeleníti meg. A legrosszabb kétállapotú jeleníti meg, és amikor a kurzort az állapot, a tárolóban megjeleníti az összes podok egy összesítő állapotát. Ha nincs kész állapotú, az állapot értékét jeleníti meg **(0)** . 
 
 Válassza ki a választó **tárolók**.
 
@@ -270,6 +270,20 @@ Az állapot mezőben az ikonok jelzi a podok, online válik, az alábbi tábláz
 | ![Utolsó jelentett futó állapotikon](./media/container-insights-analyze/containers-grey-icon.png) | Utolsó jelentett fut, de a 30 percnél hosszabb ideig nem válaszolt|  
 | ![Elbocsátott állapotikon](./media/container-insights-analyze/containers-terminated-icon.png) | Sikeresen leállt vagy nem sikerült leállítani a|  
 | ![Sikertelen állapotikon](./media/container-insights-analyze/containers-failed-icon.png) | Hibás állapotban |  
+
+## <a name="disk-capacity-workbook"></a>Lemez kapacitása munkafüzet
+Munkafüzetek kombinálhatja a szöveg, [lekérdezések naplózását](../log-query/query-language.md), [metrikák](../platform/data-platform-metrics.md), és látványos interaktív jelentéseket paramétereket. Munkafüzetek bármely más csapattagokat ugyanazon Azure-erőforrásokhoz való hozzáféréssel rendelkező tagjai szerkeszthetik.
+
+Tárolók az Azure Monitor tartalmazza az első lépésekhez, egy munkafüzet **lemez kapacitása**.  Ez a munkafüzet interaktív lemez használati diagramok az egyes lemezek, a következő perspektívák által a csomópontra a tárolókon belül bemutatott mutat be:
+
+- Az összes lemez % Lemezhasználat
+- Minden lemez esetében a szabad lemezterület
+- Foglalt hely % az egyes csomópontok lemez megjelenítő táblázat, % trendjének használt terület, a szabad lemezterület (GB) és a trend (GB) szabad lemezterület szükséges. Foglalt hely %- és a szabad lemezterület (GB) az alábbiakban látható kiválasztásakor egy sort a táblázatban, 
+
+Ez a munkafüzet kiválasztásával fér hozzá **lemez kapacitása** származó a **nézet munkafüzetek** legördülő listából válassza ki.  
+
+![Munkafüzetek legördülő lista megtekintése](./media/container-insights-analyze/view-workbooks-dropdown-list.png)
+
 
 ## <a name="next-steps"></a>További lépések
 - Tekintse át a [teljesítményével kapcsolatos riasztások létrehozása az Azure Monitor szolgáltatással tárolók](container-insights-alerts.md) megtudhatja, hogyan hozhat létre riasztásokat a magas CPU és memória kihasználtságáról, a DevOps és üzemeltetési folyamatokat és eljárásokat támogatásához. 

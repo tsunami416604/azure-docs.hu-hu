@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: mstephen
 ms.openlocfilehash: 202d33c95742f951b57e68f491f139aef068767c
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66246179"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Üzembe helyezése az Azure AD-alkalmazásproxy a az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
@@ -58,7 +58,7 @@ Hajtsa végre az alábbi lépéseket az Azure AD-címtár az Azure AD-alkalmazá
     ![Erősítse meg a letöltési](./media/app-proxy/app-proxy-enabled-confirm-download.png)
 
 
-## <a name="task-2---provision-domain-joined-windows-servers-to-deploy-the-azure-ad-application-proxy-connector"></a>2. feladat – tartományhoz csatlakoztatott Windows-kiszolgálók üzembe helyezéséhez az Azure AD-alkalmazásproxy-összekötő üzembe helyezése
+## <a name="task-2---provision-domain-joined-windows-servers-to-deploy-the-azure-ad-application-proxy-connector"></a>2\. feladat – tartományhoz csatlakoztatott Windows-kiszolgálók üzembe helyezéséhez az Azure AD-alkalmazásproxy-összekötő üzembe helyezése
 Tartományhoz csatlakoztatott Windows Serveres virtuális gép, amelyen az Azure AD-alkalmazásproxy-összekötő telepítése szükséges. Egyes alkalmazások esetében dönthet úgy, hogy több kiszolgálóra, amelyre telepítve van az összekötő üzembe helyezése. Üzembe helyezési lehetőséget ad magasabb rendelkezésre állás, és segít fejlesztettük hitelesítés kezeléséhez.
 
 Az összekötő-kiszolgálók azonos virtuális hálózatban (vagy egy csatlakoztatott/társviszonyban álló virtuális hálózat), amelyiken engedélyezte az Azure AD tartományi szolgáltatásokkal felügyelt tartományban üzembe. Ehhez hasonlóan az alkalmazásproxyn keresztül közzétett alkalmazások üzemeltető kiszolgálók azonos Azure virtuális hálózathoz kell telepíteni kell.
@@ -66,7 +66,7 @@ Az összekötő-kiszolgálók azonos virtuális hálózatban (vagy egy csatlakoz
 Összekötő-kiszolgálók kiépítéséhez, című cikkben ismertetett feladatok végrehajtásával [Windows virtuális gépek csatlakoztatása felügyelt tartományhoz](active-directory-ds-admin-guide-join-windows-vm.md).
 
 
-## <a name="task-3---install-and-register-the-azure-ad-application-proxy-connector"></a>3. feladat – telepítése és regisztrálása az Azure AD alkalmazásproxy-összekötő
+## <a name="task-3---install-and-register-the-azure-ad-application-proxy-connector"></a>3\. feladat – telepítése és regisztrálása az Azure AD alkalmazásproxy-összekötő
 Korábban a Windows Server virtuális gép kiépítése, és azt a felügyelt tartományhoz kapcsolódó. Ebben a feladatban telepíti ezt a virtuális gépet az Azure AD-alkalmazásproxy-összekötő.
 
 1. Másolja a virtuális gép, amelyen az Azure AD Web Application Proxy connector telepítése az összekötő telepítőcsomagját.

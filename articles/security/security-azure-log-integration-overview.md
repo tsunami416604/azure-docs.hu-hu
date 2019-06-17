@@ -16,16 +16,16 @@ ms.date: 05/28/2019
 ms.author: TomSh
 ms.custom: azlog
 ms.openlocfilehash: 65e256b476c1e459ae937d9f6cbb43e0020fd9fe
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66298131"
 ---
 # <a name="introduction-to-azure-log-integration"></a>Bevezetés az Azure-naplók integrációja
 
 >[!IMPORTANT]
-> Az Azure Log integration szolgáltatás 06/15/2019 elavulttá válik. 2018. június 27. AzLog letöltések letiltottuk. Mi a teendő mozgatása előre tekintse át a hozzászólás útmutatást [SIEM-eszközök integrálása az Azure monitor](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Az Azure Log integration szolgáltatás 06/15/2019 elavulttá válik. 2018\. június 27. AzLog letöltések letiltottuk. Mi a teendő mozgatása előre tekintse át a hozzászólás útmutatást [SIEM-eszközök integrálása az Azure monitor](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 Az Azure Log Integration volt elérhetővé egyszerűsítheti a integrálása az Azure naplói a helyszíni biztonságiadat- és eseménykezelés (SIEM) rendszerbe.
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfd3afea4a5f09f1e572030b28d3511b31d81b69
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 69c2599a2ddd09cbaf869bf4d9e21a8032855cce
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65865146"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67086168"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho"></a>Oktatóanyag: Zoho az Azure Active Directory-integráció
 
@@ -53,7 +53,7 @@ Zoho integrálása az Azure AD beállítása, hozzá kell Zoho a galériából a
 
 **Zoho hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -237,7 +237,7 @@ Ahhoz, hogy az Azure AD-felhasználók Zoho Mail-ba való bejelentkezéshez, akk
     > [!NOTE]
     > Az Azure Active Directory fiók tulajdonosa kapnak egy e-mailt, mielőtt aktívvá válik, győződjön meg arról, hogy a fiók hivatkozását.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

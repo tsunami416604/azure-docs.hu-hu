@@ -10,10 +10,10 @@ ms.date: 05/21/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: d4e1ad106b928c41bd6940d7c3713b5fb34afe3a
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66389110"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Azure Automationben
@@ -159,7 +159,7 @@ Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Autom
 
 A megoldás három különböző forgatókönyveket tartalmaz. Ezek a forgatókönyvek a következők:
 
-### <a name="scenario-1-startstop-vms-on-a-schedule"></a>1. forgatókönyv: Ütemezés szerint virtuális gépek indítása/leállítása
+### <a name="scenario-1-startstop-vms-on-a-schedule"></a>1\. forgatókönyv: Ütemezés szerint virtuális gépek indítása/leállítása
 
 Ez a forgatókönyv az alapértelmezett konfiguráció esetén a megoldás első üzembe. Például beállíthatja, hogy minden virtuális gép leállítása előfizetésen, ha munkahelyi esténként hagyja, és indítsa el őket a reggel, amikor áll vissza a office. Az ütemezések konfigurálásakor **ütemezett-StartVM** és **ütemezett-StopVM** központi telepítése során indítsa el, és állítsa le a célként kijelölt virtuális gépek. Ez a megoldás csak a virtuális gépek leállításához konfigurálása támogatott, lásd: [indítási és leállítási ütemezés módosítása](#modify-the-startup-and-shutdown-schedules) megtudhatja, hogyan állítson be egy egyéni ütemezést.
 
@@ -185,7 +185,7 @@ A műveletet egy előfizetésben és erőforráscsoportban célzó, vagy egy ado
 > [!NOTE]
 > Az érték **cél erőforráscsoport nevét** mindkét értéket tárolt **External_Start_ResourceGroupNames** és **External_Stop_ResourceGroupNames**. A további részletességgel ezeket a változókat, amelyekre eltérő erőforráscsoportokban mindegyike módosíthatja. A kezdő művelet használja **External_Start_ResourceGroupNames**, és a leállítási művelet, használja **External_Stop_ResourceGroupNames**. Virtuális gépek automatikusan hozzáadódnak a kezdő, és állítsa le az ütemezéseket.
 
-### <a name="scenario-2-startstop-vms-in-sequence-by-using-tags"></a>2. forgatókönyv: A címkék használatával feladatütemezési virtuális gépek indítása és leállítása
+### <a name="scenario-2-startstop-vms-in-sequence-by-using-tags"></a>2\. forgatókönyv: A címkék használatával feladatütemezési virtuális gépek indítása és leállítása
 
 A több, elosztott számítási feladatok támogatása virtuális gépen kettő vagy több összetevőt tartalmazó környezetekben támogató összetevők indíthatók és állíthatók le, amelyben a feladatütemezési sorrendben fontos. Ebben a forgatókönyvben a következő lépések végrehajtásával végezheti el:
 
@@ -204,7 +204,7 @@ A több, elosztott számítási feladatok támogatása virtuális gépen kettő 
 1. Ebben a forgatókönyvben nem fogadja el a **External_Start_ResourceGroupNames** és **External_Stop_ResourceGroupnames** változókat. Ebben az esetben szüksége saját Automation ütemezés létrehozásához. További információkért lásd: [runbook ütemezése az Azure Automation](../automation/automation-schedules.md).
 1. Tekintse meg a műveletet, és végezze el a szükséges módosításokat az éles virtuális gépek elleni implementálása előtt. Készen, manuálisan végrehajtása közben a monitoring-és-diagnosztikai/monitoring-művelet-groupsrunbook beállítása paraméterrel **hamis**, vagy lehetővé teszik az Automation ütemezési **Sequenced-StartVM** és **Sequenced-StopVM** futtassa a következő automatikusan a a meghatározott ütemezés szerint.
 
-### <a name="scenario-3-startstop-automatically-based-on-cpu-utilization"></a>3. forgatókönyv: CPU-kihasználtság alapján automatikusan indítása és leállítása
+### <a name="scenario-3-startstop-automatically-based-on-cpu-utilization"></a>3\. forgatókönyv: CPU-kihasználtság alapján automatikusan indítása és leállítása
 
 Ez a megoldás segítségével az előfizetésében futó virtuális gépek értékelése az Azure virtuális gépek nem használt nem csúcsidőre időszakokban például óra elteltével, és automatikusan leáll őket, ha a processzorhasználat értéke: záró x % költségének kezeléséhez.
 
@@ -312,11 +312,11 @@ Automation két rekordtípust hoz létre a Log Analytics-munkaterület: feladat-
 |ResourceGroup | Meghatározza a runbook-feladat erőforráscsoportjának nevét.|
 |ResourceProvider | Meghatározza, hogy melyik Azure-szolgáltatás biztosítja az üzembe helyezhető és kezelhető erőforrásokat. Az Automation esetében az érték Azure Automation.|
 |ResourceType | Meghatározza az Azure-ban szereplő erőforrás típusát. Az Automation esetében az érték a runbookhoz társított Automation-fiók.|
-|resultType | A runbook-feladat állapota. Lehetséges értékek a következők:<br>- Elindítva<br>- Leállítva<br>- Felfüggesztve<br>- Sikertelen<br>- Sikeres|
-|resultDescription | Ismerteti a runbook-feladat eredményállapotát. Lehetséges értékek a következők:<br>- A feladat elindult<br>- A feladat nem sikerült<br>- A feladat befejeződött|
+|resultType | A runbook-feladat állapota. Lehetséges értékek:<br>- Elindítva<br>- Leállítva<br>- Felfüggesztve<br>- Sikertelen<br>- Sikeres|
+|resultDescription | Ismerteti a runbook-feladat eredményállapotát. Lehetséges értékek:<br>- A feladat elindult<br>- A feladat nem sikerült<br>- A feladat befejeződött|
 |RunbookName | Megadja a runbook-feladat nevét.|
 |SourceSystem | Megadja az elküldött adatok forrásrendszerét. Az Automation esetében az érték OpsManager|
-|StreamType | Megadja az esemény típusát. Lehetséges értékek a következők:<br>- Részletes<br>- Kimenet<br>- Hiba<br>- Figyelmeztetés|
+|StreamType | Megadja az esemény típusát. Lehetséges értékek:<br>- Részletes<br>- Kimenet<br>- Hiba<br>- Figyelmeztetés|
 |SubscriptionId | Megadja a feladat előfizetési azonosítóját.
 |Time | A runbook-feladat végrehajtásának dátuma és időpontja.|
 
@@ -336,7 +336,7 @@ Automation két rekordtípust hoz létre a Log Analytics-munkaterület: feladat-
 |resultDescription | A runbook kimeneti streamjét tartalmazza.|
 |RunbookName | A runbook neve.|
 |SourceSystem | Megadja az elküldött adatok forrásrendszerét. Az Automation esetében az érték OpsManager.|
-|StreamType | A feladatstream típusa. Lehetséges értékek a következők:<br>– Folyamatban<br>- Kimenet<br>- Figyelmeztetés<br>- Hiba<br>- Hibakeresés<br>- Részletes|
+|StreamType | A feladatstream típusa. Lehetséges értékek:<br>– Folyamatban<br>- Kimenet<br>- Figyelmeztetés<br>- Hiba<br>- Hibakeresés<br>- Részletes|
 |Time | A runbook-feladat végrehajtásának dátuma és időpontja.|
 
 Kategória rekordjait visszaadó bármely Naplókeresés végrehajtásakor **JobLogs** vagy **JobStreams**, kiválaszthatja a **JobLogs** vagy **JobStreams**nézetet, amely megjeleníti a keresés által visszaadott frissítéseket összefoglaló csempék készletét.

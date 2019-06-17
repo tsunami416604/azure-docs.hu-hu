@@ -18,10 +18,10 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b5e175a8cdd1622add90bd80df63303fe914ab9c
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66430804"
 ---
 # <a name="application-configuration-options"></a>Alkalmazás-konfigurációs beállításai
@@ -38,7 +38,7 @@ A kód egy új nyilvános vagy bizalmas ügyfél (vagy a felhasználói ügynök
 ## <a name="authority"></a>szolgáltató
 A rendszer nem egy URL-címet, amely azt jelzi, hogy egy könyvtárat, amely az MSAL származó jogkivonatokat kérhetnek. Közös esetében:
 
-- https://login.microsoftonline.com/&lt; bérlő&gt;/, ahol &lt;bérlői&gt; van az Azure Active Directory (Azure AD) bérlő vagy az Azure AD-bérlőhöz társított tartomány Bérlőazonosítója. Csak használják a felhasználók egy adott szervezet.
+- https://login.microsoftonline.com/&lt ; bérlő&gt; /, ahol &lt; bérlői&gt; van az Azure Active Directory (Azure AD) bérlő vagy az Azure AD-bérlőhöz társított tartomány Bérlőazonosítója. Csak használják a felhasználók egy adott szervezet.
 - https://login.microsoftonline.com/common/. A felhasználók munkahelyi és iskolai fiókokhoz vagy személyes Microsoft-fiókok segítségével.
 - https://login.microsoftonline.com/organizations/. Segítségével a felhasználók munkahelyi és iskolai fiókjába.
 - https://login.microsoftonline.com/consumers/. Jelentkezzen be a felhasználók csak személyes Microsoft-fiókok (korábbi nevén Windows Live ID-fiókok)-segítségével.

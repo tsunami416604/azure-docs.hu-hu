@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 11f75f53adc9e8ce1dbf78ef7a7d58742b6bc839
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 1024f0c09d6ab67b412a8f65d8964f3ac9d43254
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813413"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67087785"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veracode"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Veracode
 
@@ -55,7 +55,7 @@ Az Azure AD integrálása a Veracode konfigurálásához hozzá kell Veracode a 
 
 **Veracode hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -248,7 +248,7 @@ Ahhoz, hogy az Azure AD-felhasználók Veracode szolgáltatásba való bejelentk
 > [!NOTE]
 > Eszközt is használhat bármilyen más Veracode felhasználói fiók létrehozása, vagy az Azure AD-felhasználói fiókok kiépítése Veracode által biztosított API-k.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

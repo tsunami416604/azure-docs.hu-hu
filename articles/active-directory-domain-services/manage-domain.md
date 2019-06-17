@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
 ms.openlocfilehash: 31221b17059bb7754e24ce1139e8cb2ec22cf7a7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66245864"
 ---
 # <a name="administer-an-azure-active-directory-domain-services-managed-domain"></a>Az Azure Active Directory tartományi szolgáltatások által felügyelt tartományok adminisztrációja
@@ -55,7 +55,7 @@ A tartomány Microsoft által kezelt, ideértve a tevékenységeket, mint péld�
 * Nem lehet csatlakozni a távoli asztal használatával felügyelt tartományhoz tartozó tartományvezérlőket.
 * A felügyelt tartomány tartományvezérlőket nem lehet hozzáadni.
 
-## <a name="task-1---create-a-domain-joined-windows-server-virtual-machine-to-remotely-administer-the-managed-domain"></a>1. feladat – tartományhoz csatlakoztatott Windows Server virtuális gép létrehozása távoli felügyeletéhez a felügyelt tartományhoz
+## <a name="task-1---create-a-domain-joined-windows-server-virtual-machine-to-remotely-administer-the-managed-domain"></a>1\. feladat – tartományhoz csatlakoztatott Windows Server virtuális gép létrehozása távoli felügyeletéhez a felügyelt tartományhoz
 Az Azure AD Domain Services felügyelt tartomány a jól ismert az Active Directory felügyeleti eszközök például az Active Directory felügyeleti központ (ADAC) vagy AD PowerShell használatával kezelhetők. A bérlői rendszergazdák nem rendelkezik jogosultságokkal a tartományvezérlők a távoli asztalon keresztül felügyelt tartományon való kapcsolódáshoz. Az "AAD DC rendszergazdák" csoport tagjai felügyelhetik távolról az AD felügyeleti eszközök a felügyelt tartományhoz csatlakozó számítógépről a Windows Server vagy Windows-ügyfél használatával felügyelt tartományok. Felügyeleti eszközök AD a Távoli kiszolgálófelügyelet eszközei (RSAT) a Windows Server és a felügyelt tartományhoz csatlakoztatott ügyfélgépek választható szolgáltatás részeként is telepíthető.
 
 Az első lépés, hogy a Windows Server virtuális gép, amely a felügyelt tartományhoz csatlakozik. Útmutatásért tekintse meg a című cikkben [Windows Server virtuális gép csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz](active-directory-ds-admin-guide-join-windows-vm.md).
@@ -65,7 +65,7 @@ A felügyelt tartomány felügyeletéhez az AAD-DS-ben Ez a cikk egy Windows Ser
 
 Is [távoli kiszolgálófelügyelet eszközei (RSAT) telepítése](https://social.technet.microsoft.com/wiki/contents/articles/2202.remote-server-administration-tools-rsat-for-windows-client-and-windows-server-dsforum2wiki.aspx) utasításait követve, TechNeten Windows ügyfél virtuális gépen.
 
-## <a name="task-2---install-active-directory-administration-tools-on-the-virtual-machine"></a>2. feladat – telepítés Active Directory felügyeleti eszközök a virtuális gépen
+## <a name="task-2---install-active-directory-administration-tools-on-the-virtual-machine"></a>2\. feladat – telepítés Active Directory felügyeleti eszközök a virtuális gépen
 A következő lépéseket az Active Directory-felügyeleti eszközök telepítése a tartományhoz csatlakoztatott virtuális gépen. Tekintse meg a Technet további [telepítéséről és a Távoli kiszolgálófelügyelet eszközei használatával](https://technet.microsoft.com/library/hh831501.aspx).
 
 1. Keresse meg az Azure Portalon. Kattintson a **összes erőforrás** a bal oldali panelen. Keresse meg és kattintson a virtuális gép az 1. feladatban létrehozott.
@@ -93,7 +93,7 @@ A következő lépéseket az Active Directory-felügyeleti eszközök telepíté
 
     ![Megerősítő oldal](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-confirmation.png)
 
-## <a name="task-3---connect-to-and-explore-the-managed-domain"></a>3. feladat csatlakozik, és Fedezze fel a felügyelt tartományhoz
+## <a name="task-3---connect-to-and-explore-the-managed-domain"></a>3\. feladat csatlakozik, és Fedezze fel a felügyelt tartományhoz
 Most használhatja a Windows Server AD-felügyeleti eszközök megismerését és a felügyelt tartomány felügyeletéhez.
 
 > [!NOTE]

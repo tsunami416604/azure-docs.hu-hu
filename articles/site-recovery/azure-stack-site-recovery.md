@@ -9,10 +9,10 @@ ms.service: site-recovery
 ms.date: 05/30/2019
 ms.author: raynew
 ms.openlocfilehash: 11d409f904c43c0df4bbbd44fdb24531f2f989f6
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66399599"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Az Azure Stack-alapú virtuális gépek replikálása az Azure-bA
@@ -46,7 +46,7 @@ A következő lépésekkel teljes körű majd futtathatja egy teljes feladatátv
 **Hely** | **Összetevő** |**Részletek**
 --- | --- | ---
 **Konfigurációs kiszolgáló** | Az Azure Stack egyetlen virtuális Gépet futtat. | Az egyes előfizetésekben beállította a konfigurációs kiszolgáló virtuális Géphez. Ez a virtuális gép fut, a következő Site Recovery-összetevők:<br/><br/> -A konfigurációs kiszolgálón: A helyszíni és Azure közötti kommunikáció koordinálását, valamint felügyeli az adatreplikációt. -Folyamatkiszolgáló: Replikációs átjáróként üzemel. Ez fogadja a replikációs adatokat, optimalizálja a gyorsítótárazás, tömörítés és titkosítás; és elküldi azt az Azure-tárolóba.<br/><br/> Ha replikálni kívánt virtuális gépek lépik túl az alábbiakban említett, akkor külön önálló folyamatkiszolgáló állíthatja. [További információk](https://docs.microsoft.com/azure/site-recovery/vmware-azure-set-up-process-server-scale).
-**A mobilitási szolgáltatás** | Minden replikálni kívánt gépen telepítve. | A jelen cikkben ismertetett lépések azt készíteni egy fiókot, hogy a mobilitási szolgáltatás automatikusan települ a virtuális gép replikációs engedélyezésekor. Ha nem szeretné automatikusan telepítse a szolgáltatást, számos más módszerekkel is használhatja. [További információk](https://docs.microsoft.com/azure/site-recovery/vmware-azure-install-mobility-service).
+**Mobilitási szolgáltatás** | Minden replikálni kívánt gépen telepítve. | A jelen cikkben ismertetett lépések azt készíteni egy fiókot, hogy a mobilitási szolgáltatás automatikusan települ a virtuális gép replikációs engedélyezésekor. Ha nem szeretné automatikusan telepítse a szolgáltatást, számos más módszerekkel is használhatja. [További információk](https://docs.microsoft.com/azure/site-recovery/vmware-azure-install-mobility-service).
 **Azure** | Az Azure-ban kell a Recovery Services-tárolót, egy tárfiókot és egy virtuális hálózatot. |  A replikált adatok a storage-fiókban tárolt. Az Azure virtuális gépek feladatátvétel esetén kerülnek az Azure-hálózatot. 
 
 
@@ -78,7 +78,7 @@ Replikáció a következőképpen történik:
 
 
  
-## <a name="step-1-prepare-azure-stack-vms"></a>1. lépés: Az Azure Stack-beli virtuális gépek előkészítése
+## <a name="step-1-prepare-azure-stack-vms"></a>1\. lépés: Az Azure Stack-beli virtuális gépek előkészítése
 
 ### <a name="verify-the-operating-system"></a>Ellenőrizze az operációs rendszer
 
@@ -140,7 +140,7 @@ Minden replikálni kívánt gépen keresse meg az IP-cím:
     ![Magánhálózati IP-cím](./media/azure-stack-site-recovery/private-ip.png)
 
 
-## <a name="step-2-create-a-vault-and-select-a-replication-goal"></a>2. lépés: Hozzon létre egy tárolót, és a replikációs cél kiválasztása
+## <a name="step-2-create-a-vault-and-select-a-replication-goal"></a>2\. lépés: Hozzon létre egy tárolót, és a replikációs cél kiválasztása
 
 1. Az Azure Portalon válassza ki a **erőforrás létrehozása** > **kezelőeszközök** > **Backup és Site Recovery**.
 2. A **Név** mezőben adjon meg egy, a tárolót azonosító rövid nevet. 
@@ -162,7 +162,7 @@ Minden replikálni kívánt gépen keresse meg az IP-cím:
 
     ![Védelmi cél](./media/azure-stack-site-recovery/protection-goal.png)
 
-## <a name="step-3-set-up-the-source-environment"></a>3. lépés: A forráskörnyezet beállítása
+## <a name="step-3-set-up-the-source-environment"></a>3\. lépés: A forráskörnyezet beállítása
 
 A konfigurációs kiszolgáló gép, regisztrálja a tárolóban, és a replikálni kívánt gépek felderítése.
 
@@ -193,7 +193,7 @@ Most telepíteni a konfigurációs kiszolgáló:
 > 
 > Akár 15 vagy még több percbe is beletelhet, amíg a fiók neve megjelenik a portálon. Az azonnali frissítéshez válassza a **Konfigurációs kiszolgálók** > ***kiszolgáló neve*** > **Kiszolgáló frissítése** elemet.
 
-## <a name="step-4-set-up-the-target-environment"></a>4. lépés: A célkörnyezet beállítása
+## <a name="step-4-set-up-the-target-environment"></a>4\. lépés: A célkörnyezet beállítása
 
 Válassza ki és ellenőrizze a célerőforrásokat.
 
@@ -202,7 +202,7 @@ Válassza ki és ellenőrizze a célerőforrásokat.
 3. A Site Recovery ellenőrzi, hogy rendelkezik-e legalább egy kompatibilis Azure-tárfiókkal és -hálózattal. Ha azok nem talál, meg kell legalább egy tárfiókot és a virtuális hálózat létrehozása annak érdekében, hogy a varázsló befejezéséhez.
 
 
-## <a name="step-5-enable-replication"></a>5. lépés: A replikáció engedélyezése
+## <a name="step-5-enable-replication"></a>5\. lépés: A replikáció engedélyezése
 
 ### <a name="create-a-replication-policy"></a>Replikációs házirend létrehozása
 
@@ -255,7 +255,7 @@ Ellenőrizze, hogy végrehajtotta az összes feladat [1. lépés: Gép előkész
 > A hozzáadott virtuális gépek monitorozásához ellenőrizze a virtuális gépek legutolsó felderítésének időpontját a **Konfigurációs kiszolgálók** > **Legutóbbi kapcsolat** területen. Ha nem szeretné megvárni az ütemezett felderítést a virtuális gépek hozzáadásához, emelje ki a konfigurációs kiszolgálót (ne válassza ki), majd válassza a **Frissítés** elemet.
 
 
-## <a name="step-6-run-a-disaster-recovery-drill"></a>6. lépés: Vészhelyreállítási próba végrehajtása
+## <a name="step-6-run-a-disaster-recovery-drill"></a>6\. lépés: Vészhelyreállítási próba végrehajtása
 
 Feladatátvételi teszt futtatásakor győződjön meg arról, hogy minden a várt módon működik, az Azure-bA. Ez a feladatátvétel nem befolyásolják az éles környezetben.
 

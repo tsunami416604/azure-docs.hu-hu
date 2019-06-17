@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 7806599c1a2f1396ff4b07d6f0538057654029d7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66157131"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-devops-continuous-integration-and-delivery-pipeline"></a>Az Azure DevTest Labs integrálása az Azure DevOps folyamatos integrációs és teljesítési folyamat
@@ -179,7 +179,7 @@ A következő szakaszban, hogy az újonnan üzembe helyezett virtuális gép ren
 
    d. (Nem kötelező) A **leírás**, adjon meg egy leírást, amely megkönnyíti a későbbi válassza ki a megfelelő lemezképet.
 
-   e. A **forrás Lab VM - Lab VM Forrásazonosítója**, ha a labor virtuális gép egy korábbi feladat azonosítójú a környezeti változó, amely a rendszer automatikusan kitölti a rendszer alapértelmezett neve módosította Itt szerkesztheti. Az alapértelmezett érték **$(labVMId)**.
+   e. A **forrás Lab VM - Lab VM Forrásazonosítója**, ha a labor virtuális gép egy korábbi feladat azonosítójú a környezeti változó, amely a rendszer automatikusan kitölti a rendszer alapértelmezett neve módosította Itt szerkesztheti. Az alapértelmezett érték **$(labVMId)** .
 
    f. A **kimeneti változók – egyéni lemezkép-azonosító**, kezelése vagy törlése, ha az újonnan létrehozott rendszerkép Azonosítóját kell. Az alapértelmezett nevet, a környezeti változó, amely a rendszer automatikusan kitölti ezt az Azonosítót értéke a **kimeneti változók** szakaszban. Szükség esetén szerkesztheti a változót.
 
@@ -194,7 +194,7 @@ Az utolsó fáziséit, hogy törli a virtuális Gépet üzembe helyezett Azure D
 
    a. A **Azure RM-előfizetés**, válassza ki a kapcsolat a **elérhető Azure-szolgáltatás kapcsolatok** listában, vagy hozzon létre több korlátozott engedélyek kapcsolat az Azure-előfizetéshez. További információkért lásd: [Azure Resource Manager-szolgáltatásvégpont](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
  
-   b. A **tesztlabor virtuális gép azonosítója**, ha a labor virtuális gép egy korábbi feladat azonosítójú a környezeti változó, amely a rendszer automatikusan kitölti a rendszer alapértelmezett neve módosította Itt szerkesztheti. Az alapértelmezett érték **$(labVMId)**.
+   b. A **tesztlabor virtuális gép azonosítója**, ha a labor virtuális gép egy korábbi feladat azonosítójú a környezeti változó, amely a rendszer automatikusan kitölti a rendszer alapértelmezett neve módosította Itt szerkesztheti. Az alapértelmezett érték **$(labVMId)** .
 
 1. Adjon meg egy nevet a kiadási folyamathoz, és mentse azt.
 1. Hozzon létre egy új kiadás, válassza ki a legújabb buildre és üzembe helyezése az a folyamat az egyetlen környezetben.
