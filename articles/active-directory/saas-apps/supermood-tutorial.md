@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 177b393b475250e5e019a5829ea17279e1b0f44c
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: e54d0b1ef3173fd1ec709927c7c9842b428bd3a5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922104"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67089410"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-supermood"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Supermood
 
@@ -55,7 +55,7 @@ Az Azure ad-ben Supermood integráció konfigurálásához, hozzá kell Supermoo
 
 **Supermood hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -154,7 +154,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Supermood, hajtsa v�
 
 1. Nyissa meg a Supermood.co felügyeleti panel biztonsági rendszergazdaként.
 
-1. Kattintson a **fiókom** (bal alsó sarokban található) és **egyszeri bejelentkezés (SSO)**.
+1. Kattintson a **fiókom** (bal alsó sarokban található) és **egyszeri bejelentkezés (SSO)** .
 
     ![A tanúsítvány egyetlen](./media/supermood-tutorial/tutorial_supermood_single.png)
 
@@ -170,7 +170,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Supermood, hajtsa v�
 
     b. Az a **-metaadatok URL-cím használata** szövegmezőjébe illessze be a **alkalmazás összevonási metaadatainak URL-címe** Azure Portalról másolt.
 
-    c. Kattintson a **Hozzáadás** parancsra.
+    c. Kattintson a **Hozzáadás**lehetőségre.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 

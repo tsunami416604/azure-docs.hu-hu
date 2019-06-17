@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aff695307fc97e9f2acfd44f7434d5cbb26ef53e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 85f600c8bd46e699e80bf7b596574dc01467ef79
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65950828"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109314"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>Hibrid identitás-életciklus bevezetési stratégiája határozza meg
 Ebben a feladatban meg fogja definiálni, a hibrid identitáskezelési megoldás az üzleti szükségletek kielégítése céljából, amelyet a megadott identity management stratégiája [határozza meg a hibrid identitáskezelési feladatokat](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md).
@@ -80,13 +80,13 @@ Az Azure Active Directory egyszeri bejelentkezést biztosít, és a bővített a
 A helyszíni címtárak és az Azure AD integrálása révén a felhasználók munkája hatékonyabbá válik, mivel a felhőalapú és a helyszíni erőforrások hozzáféréséhez közös identitás áll a rendelkezésükre. Ez az integráció felhasználók és a szervezetek kihasználhatják a következőket:
 
 * Szervezetek számára a helyszíni vagy felhőalapú szolgáltatásokat kihasználva a Windows Server Active Directory, Azure Active Directory majd csatlakozzon a hibrid identitással rendelkező felhasználók biztosíthat.
-* A rendszergazdák feltételes hozzáférést biztosító alkalmazás-erőforrás, eszköz és a felhasználói identitás, hálózati hely és a multi-factor authentication alapján is biztosítanak.
+* A rendszergazdák feltételes hozzáférést biztosító alkalmazás-erőforrás, eszköz és a felhasználói identitás, hálózati hely és a multi-factor authentication alapján biztosít.
 * Felhasználók használhatják a saját közös identitást fiókokon keresztül az Office 365, az Intune-ban, a SaaS-alkalmazásokhoz az Azure AD-ben és a harmadik féltől származó alkalmazások.
 * A fejlesztők fejleszthetnek, az a közös identitás modell alkalmazások alkalmazások integrálása az Active Directoryban a helyszínen vagy az Azure felhőalapú alkalmazások számára
 
 Az alábbi ábra egy identitás szinkronizálási folyamat áttekintése példát tartalmaz.
 
-![Szinkronizálás](./media/plan-hybrid-identity-design-considerations/identitysync.png)
+![Sync](./media/plan-hybrid-identity-design-considerations/identitysync.png)
 
 Identitás-szinkronizációs folyamata
 

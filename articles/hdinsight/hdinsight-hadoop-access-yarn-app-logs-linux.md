@@ -8,19 +8,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0a3411cc4cc32c3e54583ab81ee98f2e151d4384
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c0c5ecfba97c61288d08681006645eab0bdd23f2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702666"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059457"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Az Apache Hadoop YARN-alkalmazásnaplók elérése Linux-alapú HDInsight a
 
 A naplók elérése [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) (még egy másik Resource Negotiator) alkalmazásokat egy [Apache Hadoop](https://hadoop.apache.org/) Azure HDInsight-fürt.
-
-> [!IMPORTANT]  
-> A dokumentum lépéseinek elvégzéséhez egy Linux-alapú HDInsight-fürt szükséges. Linux az egyetlen operációs rendszer használt a HDInsight 3.6-os vagy újabb verzió. További információkért lásd: [HDInsight összetevők verziószámozása](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="YARNTimelineServer"></a>YARN idővonal-kiszolgáló
 
@@ -37,9 +34,9 @@ YARN idővonal-kiszolgáló a következő típusú adatokat tartalmazza:
 
 YARN támogatja a több programozási modelleket ([Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) folyamatban van az egyiket) erőforrás-kezelést, ütemezés/alkalmazásfigyelés leválasztásával. YARN használ egy globális *ResourceManager* (RM), feldolgozó-csomópontonkénti *NodeManagers* (NMs), és alkalmazásonkénti *ApplicationMasters* (AMs). Az alkalmazás kor erőforrások (CPU, memória, lemez vagy hálózat) egyezteti az alkalmazás futtatására és a RM. Az erőforrás-kezelő működik együtt, adja meg ezeket az erőforrásokat, mint megadó NMs *tárolók*. A AM felelős a tárolók a RM. által hozzárendelt állapotának nyomon követése Egy alkalmazás az alkalmazás jellegétől függően több tároló lehet szükség.
 
-Minden alkalmazás több állhat *alkalmazás kísérletek*. Ha egy alkalmazás nem tudja, akkor előfordulhat, hogy újra megkísérli egy új kísérlet. Minden kísérlet egy tárolóban futtatja. Bizonyos értelemben egy tárolót a YARN-alkalmazás által végzett munka alapvető egysége a kontextust biztosít a. Egy tároló kontextusában végrehajtott összes munka a egyetlen munkavégző csomóponton, amelyen a tároló lefoglalt történik. Lásd: [Apache Hadoop YARN fogalmak] [ YARN-concepts] további referenciaként.
+Minden alkalmazás több állhat *alkalmazás kísérletek*. Ha egy alkalmazás nem tudja, akkor előfordulhat, hogy újra megkísérli egy új kísérlet. Minden kísérlet egy tárolóban futtatja. Bizonyos értelemben egy tárolót a YARN-alkalmazás által végzett munka alapvető egysége a kontextust biztosít a. Egy tároló kontextusában végrehajtott összes munka a egyetlen munkavégző csomóponton, amelyen a tároló lefoglalt történik. Lásd: [Apache Hadoop YARN fogalmak](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html) további referenciaként.
 
-Protokoly aplikací (és a társított tároló naplóinak) létfontosságúak a problémás Hadoop-alkalmazások hibakeresése. YARN összegyűjtése, összevonása és az alkalmazás naplók tárolásához nice keretrendszert biztosít a [Log összesítési] [ log-aggregation] funkció. A naplózási összesítési szolgáltatás kiszámíthatóbbá teszi hozzáférni az alkalmazásnaplókat. Ez összesíti a naplók között a munkavégző csomóponton az összes tárolót, és tárolja őket egy összesített naplófájl száma feldolgozó csomópontonként. A naplóban tárolja az alapértelmezett fájlrendszer egy alkalmazás befejezése után. Az alkalmazás felhasználhatja, több száz vagy akár több ezer olyan tárolók, de a egyetlen munkavégző csomóponton futó összes tároló naplóinak mindig egyetlen fájlban vannak összesítve. Így nincs csak 1 log száma feldolgozó csomópontonként az alkalmazása által használt. A HDInsight fürtök 3.0-s verzió vagy újabb alapértelmezés szerint engedélyezve van a naplózási összesítési. Összesített naplókat a fürt alapértelmezett tárolója mappában találhatók. A következő elérési út a naplók HDFS elérési útja:
+Protokoly aplikací (és a társított tároló naplóinak) létfontosságúak a problémás Hadoop-alkalmazások hibakeresése. YARN összegyűjtése, összevonása és az alkalmazás naplók tárolásához nice keretrendszert biztosít a [Log összesítési](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/) funkció. A naplózási összesítési szolgáltatás kiszámíthatóbbá teszi hozzáférni az alkalmazásnaplókat. Ez összesíti a naplók között a munkavégző csomóponton az összes tárolót, és tárolja őket egy összesített naplófájl száma feldolgozó csomópontonként. A naplóban tárolja az alapértelmezett fájlrendszer egy alkalmazás befejezése után. Az alkalmazás felhasználhatja, több száz vagy akár több ezer olyan tárolók, de a egyetlen munkavégző csomóponton futó összes tároló naplóinak mindig egyetlen fájlban vannak összesítve. Így nincs csak 1 log száma feldolgozó csomópontonként az alkalmazása által használt. A HDInsight fürtök 3.0-s verzió vagy újabb alapértelmezés szerint engedélyezve van a naplózási összesítési. Összesített naplókat a fürt alapértelmezett tárolója mappában találhatók. A következő elérési út a naplók HDFS elérési útja:
 
     /app-logs/<user>/logs/<applicationId>
 
@@ -73,7 +70,5 @@ A YARN ResourceManager felhasználói felülete a fürt átjárócsomópontjáva
     YARN-naplókat mutató hivatkozások listája jelenik meg.
 
 [YARN-timeline-server]:https://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html
-[log-aggregation]:https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/
 [T-file]:https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf
 [binary-format]:https://issues.apache.org/jira/browse/HADOOP-3315
-[YARN-concepts]:https://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/

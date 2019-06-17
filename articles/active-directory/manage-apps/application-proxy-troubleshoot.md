@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbdccf3b7a3ba1b8e55befa0fdc24eeff3e403da
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 315aba8ac8617f8bf2db71784ec0f9a8dec66cf7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65782938"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108366"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Az alkalmazásproxy-problémák és hibaüzenetek hibaelhárítása
 Ha hiba lép fel, a közzétett alkalmazás eléréséhez, vagy az alkalmazások közzétételéhez, ellenőrizze a megtekintéséhez, hogy a Microsoft Azure AD-alkalmazásproxy megfelelően működik-e a következő beállításokat:
@@ -48,7 +48,7 @@ Regisztrációs összekötő varázsló telepítése közben meghiúsul, ha két
 
 Amikor a Összekötőjével kapcsolatos hiba az esemény eseménynaplóból való megkereséséhez használja ez a táblázat a gyakori hibák a probléma megoldásához:
 
-| Hiba | Ajánlott lépések |
+| Hiba | Javasolt lépések |
 | ----- | ----------------- |
 | Összekötő regisztrálása sikertelen volt: Ellenőrizze, hogy engedélyezte az alkalmazásproxy az Azure felügyeleti portálon és a megadott megfelelően az Active Directory felhasználónevet és jelszót. Hiba: "Egy vagy több hiba történt." | Ha már bezárta a regisztrációs ablak az Azure AD-bejelentkezés nélkül, futtassa újra az összekötő varázslót, és az összekötő regisztrálására. <br><br> Ha a regisztráció ablak megnyílik, és ezután azonnal bezárul, nem engedélyezi, hogy jelentkezzen be, ez a hiba valószínűleg kap. Ez a hiba akkor fordul elő, ha hálózati hiba van a rendszeren. Győződjön meg arról, hogy lehet csatlakozni egy böngészőből nyilvános webhelyeken és, hogy a portok meg nyitva megadott [alkalmazásproxy Előfeltételek](application-proxy-add-on-premises-application.md). |
 | Az ablakban törölje hiba jelenik meg. Nem lehet folytatni | Ha ezt a hibaüzenetet, és ezután az ablak bezárul, a rossz felhasználónévvel vagy jelszóval adott meg. Próbálja meg újra. |
@@ -91,7 +91,7 @@ Ha egy hiba vagy nem szerepel a listán a hibaelhárítási útmutató az Azure 
 * [Az Azure Active Directory alkalmazásproxy engedélyezése](application-proxy-add-on-premises-application.md)
 * [Az alkalmazásproxy-alkalmazások közzététele](application-proxy-add-on-premises-application.md)
 * [Egyszeri bejelentkezés engedélyezése](application-proxy-configure-single-sign-on-with-kcd.md)
-* [Feltételes hozzáférés engedélyezése](application-proxy-integrate-with-sharepoint-server.md)
+* [Feltételes hozzáférési házirend engedélyezése](application-proxy-integrate-with-sharepoint-server.md)
 
 
 <!--Image references-->

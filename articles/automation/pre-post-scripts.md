@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7317b634ee4c8886ce5c99bb2b3395d7d1f646d5
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 8a11602919a8b68a078b0b2690411358b4b5f814
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65913856"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063493"
 ---
 # <a name="manage-pre-and-post-scripts"></a>Kezelése előtti és utáni szkriptek
 
@@ -42,7 +42,7 @@ A frissítéstelepítés konfigurálásának befejezéséhez.
 
 A frissítéstelepítés befejeződése után nyissa meg **Frissítéstelepítések** az eredmények megtekintéséhez. Amint láthatja, a szkript előtti és utáni állapota állnak rendelkezésre.
 
-![Eredmények frissítése](./media/pre-post-scripts/update-results.png)
+![Frissítés eredményei](./media/pre-post-scripts/update-results.png)
 
 Futtassa a frissítéstelepítés tárolóiba kattintva, a előtti és utáni parancsfájlokat további információkat az Ön megadott. A futtatás idején a parancsfájl forrás találhatóak.
 
@@ -68,7 +68,7 @@ A standard szintű runbook paraméterek kívül egy további paraméter biztosí
 
 ## <a name="stopping-a-deployment"></a>Központi telepítés leállítása
 
-Ha a központi telepítés előtti parancsprogram kell alapján le szeretné [throw](automation-runbook-execution.md#throw) kivételt. Ha Ön nem kivételt, az üzembe helyezés és az utólagos parancsfájl továbbra is futni fog. A [példa runbook](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44?redir=0) a katalógus bemutatja, hogyan ezt megteheti. Az alábbiakban látható egy részlet a runbookból.
+Ha szeretné leállítani a központi telepítés előtti parancsprogram alapján, meg kell [throw](automation-runbook-execution.md#throw) kivételt. Ha Ön nem kivételt, az üzembe helyezés és az utólagos parancsfájl továbbra is futni fog. A [példa runbook](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44?redir=0) a katalógus bemutatja, hogyan ezt megteheti. Az alábbiakban látható egy részlet a runbookból.
 
 ```powershell
 #In this case, we want to terminate the patch job if any run fails.
@@ -206,11 +206,11 @@ $variable = Get-AutomationVariable -Name $runId
 
 ## <a name="interacting-with-machines"></a>Gépek használata
 
-Egy runbook az Automation-fiókban, és nem közvetlenül a központi telepítésben a gépeken futtatása előtti és utáni feladatokat. Előtti és utáni feladatokat is Azure környezetében futnak, és nem fér hozzá a nem Azure-beli gépek. A következő szakaszok bemutatják, hogyan kezelheti a gépek közvetlenül,-e egy Azure virtuális Gépen vagy egy nem Azure-beli gép:
+Egy runbook az Automation-fiókban, és nem közvetlenül a központi telepítésben a gépeken futtatása előtti és utáni feladatokat. Előtti és utáni feladatokat is Azure környezetében futnak, és nem fér hozzá a nem Azure-beli gépek. A következő szakaszok bemutatják hogyan kezelheti a gépek közvetlenül e van egy Azure virtuális Gépen vagy egy nem Azure-beli gép:
 
 ### <a name="interacting-with-azure-machines"></a>Azure-beli gépek használata
 
-Előtti és utáni feladatok runbookként futott, natív módon nem futnak az Azure virtuális gépeken a központi telepítésben. Együttműködik az Azure-beli virtuális gépek, a következőkkel kell rendelkeznie:
+Előtti és utáni feladatok runbookként futnak, és nem natív módon az üzembe helyezés az Azure virtuális gépeken futnak. Együttműködik az Azure-beli virtuális gépek, a következőkkel kell rendelkeznie:
 
 * Futtató fiók
 * A futtatni kívánt runbook
@@ -239,9 +239,10 @@ if (<My custom error logic>)
     throw "There was an error, abort deployment"
 }
 ```
+
 ## <a name="known-issues"></a>Ismert problémák
 
-* Nem adhatók át objektum vagy tömb paraméterek előtti és utáni parancsfájlok használata esetén. A runbook sikertelen lesz.
+* Nem adhatók át egy logikai érték beolvasása, objektumok vagy tömbök paraméterek előtti és utáni parancsfájlok használata esetén. A runbook sikertelen lesz. A támogatott típusok teljes listáját lásd: [paraméterek](#passing-parameters).
 
 ## <a name="next-steps"></a>További lépések
 

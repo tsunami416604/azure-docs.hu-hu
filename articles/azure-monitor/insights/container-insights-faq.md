@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: magoedte
 ms.openlocfilehash: afa332b40884a79b5114b3b8093cd27108c39984
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65780009"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>Az Azure Monitor-tárolókhoz gyakran ismételt kérdések
@@ -71,7 +71,7 @@ A probléma részletes tekintse meg, tekintse át a következő [github-hivatkoz
 
 ## <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Hogyan oldhatom fel az Azure AD-hibák, amikor a engedélyezése élő naplók? 
 
-A következő hiba jelenhet meg: **A válasz URL-címe a kérelemben megadott nem egyezik az alkalmazáshoz konfigurált válasz URL: "< Alkalmazásazonosító\>"**. A megoldás megoldhatja a problémát a cikkben található [tároló naplók valós időben az Azure Monitor szolgáltatással tárolók megtekintése](container-insights-live-logs.md#configure-aks-with-azure-active-directory). 
+A következő hiba jelenhet meg: **A válasz URL-címe a kérelemben megadott nem egyezik az alkalmazáshoz konfigurált válasz URL: "< Alkalmazásazonosító\>"** . A megoldás megoldhatja a problémát a cikkben található [tároló naplók valós időben az Azure Monitor szolgáltatással tárolók megtekintése](container-insights-live-logs.md#configure-aks-with-azure-active-directory). 
 
 ## <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Miért nem tudja frissíteni az előkészítés után fürt?
 

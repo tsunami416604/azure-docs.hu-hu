@@ -17,11 +17,11 @@ ms.date: 03/27/2019
 ms.author: zhchia
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c8fecc5232b26c98c4027174454cf29b81b0ee41
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59263596"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67060316"
 ---
 # <a name="tutorial-configure-merchlogix-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása MerchLogix konfigurálása
 
@@ -44,7 +44,7 @@ Az Azure AD-felhasználók automatikus MerchLogix konfigurálja, mielőtt szüks
 
 **Az Azure AD alkalmazáskatalógusában MerchLogix hozzáadásához hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, a bal oldali navigációs panelen, kattintson a a **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)** , a bal oldali navigációs panelen, kattintson a a **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -101,7 +101,7 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
     * Az a **titkos jogkivonat** mezőben adja meg titkos jogkivonat MerchLogix műszaki partnere által biztosított.
 
-6. 5. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD MerchLogix csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, MerchLogix fiókja rendszergazdai engedélyekkel rendelkező, és próbálkozzon újra.
+6. 5\. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD MerchLogix csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, MerchLogix fiókja rendszergazdai engedélyekkel rendelkező, és próbálkozzon újra.
 
 7. Az a **értesítő e-mailt** mezőbe írja be az e-mail-címét egy személyt vagy csoportot, akik kell üzembe helyezési hiba értesítéseket fogadni, és jelölje be a jelölőnégyzetet - **e-mail-értesítés küldése, ha hiba történik**.
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 541be5466b65705daa0485976eab3df8eb3d707f
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 3fd0a4e77c36f8f9be220b4e56d76d17487b7017
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65905342"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67087311"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-way-we-do"></a>Oktatóanyag: Úgy tesszük az Azure Active Directory-integráció
 
@@ -56,7 +56,7 @@ Az Azure AD-be, így még a nem az integráció konfigurálásához hozzá kell 
 
 **Úgy tesszük hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -223,7 +223,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó a úgy tesszük jön lé
 > [!Note]
 > Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [módon azt tegye ügyfél-támogatási csapatának](mailto:support@waywedo.com).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

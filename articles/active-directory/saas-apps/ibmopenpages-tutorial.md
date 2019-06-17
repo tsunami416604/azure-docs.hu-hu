@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 699e4830b6399fbce07dfc125e69513b58f58dd1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f045d5f880179827a00078419fc2c67d18db774a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60274872"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100710"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ibm-openpages"></a>Oktatóanyag: Az Azure Active Directory integrációja az IBM OpenPages
 
@@ -53,7 +53,7 @@ IBM OpenPages integrálása az Azure AD beállítása, hozzá kell IBM OpenPages
 
 **IBM OpenPages hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

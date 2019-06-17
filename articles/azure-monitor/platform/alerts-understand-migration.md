@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: b5a13254fc9dfd58db83a1bc8b9dd071cfbbdab2
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 9d872a6d753a206dcfb03761e50e5854db4f146e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66015590"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071594"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Az áttelepítési eszköz működésének megismerése
 
@@ -55,10 +55,11 @@ A storage-fiókok összes klasszikus riasztások riasztások a metrikák kivéte
 - Percenttimeouterror értéket mutatnak
 - AnonymousThrottlingError
 - SASThrottlingError
+- ThrottlingError
 
 A szabályok százalékban kifejezett metrikákra vonatkozóan kell áttelepíteni a klasszikus riasztás alapján [korábbi és új storage-mérőszámok közötti leképezést](https://docs.microsoft.com/azure/storage/common/storage-metrics-migration#metrics-mapping-between-old-metrics-and-new-metrics). Küszöbértékek megfelelően módosítható, mert a rendelkezésre álló új metrika egy abszolút kell.
 
-Klasszikus riasztási szabályok AnonymousThrottlingError és SASThrottlingError kell osztani két új riasztásokat, mert nincs kombinált metrika, amely ugyanazokat a funkciókat biztosít. Küszöbértékek kell megfelelően adaptálhassa.
+Klasszikus riasztási szabályok AnonymousThrottlingError, SASThrottlingError és ThrottlingError kell osztani két új riasztásokat, mert nincs kombinált metrika, amely ugyanazokat a funkciókat biztosít. Küszöbértékek kell megfelelően adaptálhassa.
 
 ## <a name="rollout-phases"></a>Bevezetési fázisok
 
@@ -106,7 +107,7 @@ Bármely felhasználó, aki közreműködői figyelés, a beépített szerepkör
 
 Miután [aktiválása az áttelepítés](alerts-using-migration-tool.md), úgy, hogy az áttelepítés akkor fejeződött be, vagy ha semmilyen teendője, a megadott címre e-mailt fog kapni. Ez a szakasz néhány gyakori problémát és azok kezelésére ismerteti.
 
-### <a name="validation-failed"></a>Az érvényesítés nem sikerült
+### <a name="validation-failed"></a>Nem sikerült ellenőrizni a
 
 Néhány legutóbbi módosításainak klasszikus riasztási szabályok az előfizetésében, mert az előfizetés nem telepíthetők át. Ez a probléma csak átmenetileg létezik. Az áttelepítés után a migrálás állapota Visszalépés újraindíthatja **migrálásra kész** néhány nap alatt.
 

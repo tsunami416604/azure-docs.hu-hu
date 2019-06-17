@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 82a8eecb4fb211117000c94c51644ce1fd27916d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 5c038f0be31acea52c2ef07d43f0dbaf3434a371
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61463897"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64709522"
 ---
 # <a name="encoding-error-codes"></a>Kódolási hibakódok
 
@@ -30,7 +30,7 @@ Az alábbi táblázat abban az esetben, ha hiba történt a kódolási feladat a
 | Ismeretlen |A feladat végrehajtása közben ismeretlen hiba |
 | ErrorDownloadingInputAssetMalformedContent |Hibák letöltése, például a rossz fájlneveket, nulla hosszúságú fájlok, a hibás bemeneti objektuma hibák kategóriáját formázza és így tovább. |
 | ErrorDownloadingInputAssetServiceFailure |Kategória hibák Szolgáltatásoldali – például hálózati vagy tárolási hibák letöltése közben problémákat ismerteti. |
-| ErrorParsingConfiguration |A hibák kategória ahol feladat <see cref="MediaTask.PrivateData"/> (konfiguráció) nem érvényes, például a konfiguráció nem egy érvényes rendszer készletet, vagy érvénytelen XML-kódot tartalmaz. |
+| ErrorParsingConfiguration |A hibák kategória ahol feladat \<cref="MediaTask.PrivateData"/ Lásd > (konfiguráció) nem érvényes, például a konfiguráció nem egy érvényes rendszer készletet, vagy érvénytelen XML-kódot tartalmaz. |
 | ErrorExecutingTaskMalformedContent |Hol található a bemeneti médiafájlok okozza hiba a feladat végrehajtása közben hibák kategóriáját. |
 | ErrorExecutingTaskUnsupportedFormat |Kategória hibák, ahol a media processzor nem tudja feldolgozni a megadott fájlok – médiaformátum nem támogatott, vagy nem felel meg a konfigurációt. Ha például próbál egy eszköz, amely csak a videó rendelkezik a csak hangfájlt tartalmazó kimenetet |
 | ErrorProcessingTask |Más hibák, amelyek a médiafeldolgozót. a feladat feldolgozása során fordul elő, amelyek kapcsolódnak a tartalom kategóriáját. |

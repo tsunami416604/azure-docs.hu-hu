@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a62aa573d49ccdd237e692b63a6fda0dd83d52a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7c3651e81cd3916bccc859bc3bc010511b2a114a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65869994"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67095263"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>Oktatóanyag: A Palo Alto hálózatok függő Portal Azure Active Directory-integráció
 
@@ -78,12 +78,12 @@ A Palo Alto hálózatok függő portál nevű tesztfelhasználó alapján az Azu
 
 Az Azure AD egyszeri bejelentkezés Palo Alto hálózatok függő portállal tesztelése és konfigurálása, hajtsa végre a következő feladatokat:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**: Engedélyezze a felhasználó a funkció használatához.
-2. **[Palo Alto hálózatok függő portál egyszeri bejelentkezés konfigurálása](#configure-palo-alto-networks-captive-portal-single-sign-on)**: Az egyszeri bejelentkezési beállításainak konfigurálása az alkalmazásban.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**: Az Azure AD egyszeri bejelentkezés a felhasználóval tesztelje *Britta Simon*.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**: Britta Simon beállítása az Azure AD egyszeri bejelentkezés használatára.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)** : Engedélyezze a felhasználó a funkció használatához.
+2. **[Palo Alto hálózatok függő portál egyszeri bejelentkezés konfigurálása](#configure-palo-alto-networks-captive-portal-single-sign-on)** : Az egyszeri bejelentkezési beállításainak konfigurálása az alkalmazásban.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)** : Az Azure AD egyszeri bejelentkezés a felhasználóval tesztelje *Britta Simon*.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)** : Britta Simon beállítása az Azure AD egyszeri bejelentkezés használatára.
 5. **Hozzon létre egy Palo Alto hálózatok függő portál tesztfelhasználót**: Hozzon létre egy partner felhasználót *Britta Simon* a Palo Alto hálózatok függő portál, amely kapcsolódik az Azure AD-felhasználót.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**: Győződjön meg arról, hogy működik-e a konfiguráció.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** : Győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -158,7 +158,7 @@ Ezután hozzon létre egy tesztfelhasználót nevű *Britta Simon* az Azure Port
 
     1. A **neve**, adja meg **BrittaSimon**.
   
-    2. A **felhasználónév**, adja meg **BrittaSimon\@\<your_company_domain\>**. Ha például **BrittaSimon\@contoso.com**.
+    2. A **felhasználónév**, adja meg **BrittaSimon\@\<your_company_domain\>** . Ha például **BrittaSimon\@contoso.com**.
 
     3. A **jelszó**, adjon meg egy jelszót. Azt javasoljuk, hogy Ön tárolja a megadott jelszó. Kiválaszthatja a **jelszó megjelenítése** melletti jelölőnégyzetet, hogy a jelszó megjelenítéséhez.
 
@@ -197,7 +197,7 @@ Ezután hozzon létre egy nevű felhasználó *Britta Simon* Palo Alto hálózat
 > [!NOTE]
 > Ha szeretné manuálisan hozzon létre egy felhasználót, lépjen kapcsolatba a [Palo Alto hálózatok függő portál ügyfél-támogatási csapatának](https://support.paloaltonetworks.com/support).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Tűzfal mögött lévő Windows virtuális gép telepítve van a Palo Alto hálózatok függő portál. Egyszeri bejelentkezés tesztelése a Palo Alto hálózatok függő portál, jelentkezzen be a Windows virtuális gép távoli asztali protokoll (RDP) használatával. Az RDP-munkamenetet nyisson meg egy böngészőt, és bármely webhelyen. Az egyszeri bejelentkezési URL-címet nyitja meg, és hitelesítést kér. Ha hitelesítési befejeződött, a websites érheti el.
 

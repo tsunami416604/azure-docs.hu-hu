@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 9d3c2c646cc713b4590a85def9813ca102198229
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3c6e1748fa4c86f4820e8373bc45541ecad55c71
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65867436"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67090740"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shuccho-navi"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Shuccho Navi
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Shuccho Navi konfigurálásához hozzá kell Shuccho
 
 **Shuccho Navi hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -183,7 +183,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű Shuccho Navi hoz létre. Együttműködve [Shuccho Navi támogatási csapatának](mailto:sys_ntabtm@nta.co.jp) a felhasználók hozzáadása az Shuccho Navi platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

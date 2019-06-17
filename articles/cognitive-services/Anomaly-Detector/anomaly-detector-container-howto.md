@@ -3,24 +3,24 @@ title: Telepítse és futtassa a tárolók – Anomáliadetektálási detector h
 titleSuffix: Azure Cognitive Services
 description: Az Anomáliadetektálási detector használatával API korszerű algoritmusokat segítségével azonosíthatja a rendellenességeket az idősoros adatokat.
 services: cognitive-services
-author: aahill
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: anomaly-detection
 ms.topic: article
-ms.date: 05/28/2019
-ms.author: aahi
-ms.openlocfilehash: ec32d5de9e3af14abbf14f79f37ab00f3346b1c1
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.date: 06/10/2019
+ms.author: dapine
+ms.openlocfilehash: 0369e27e7a260c50fc4de690dd3261421356799a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306980"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073326"
 ---
 # <a name="install-and-run-anomaly-detector-containers"></a>Telepítse és futtassa a tárolók Anomáliadetektálási detector használatával
 
 Az Anomáliadetektálási detector használatával a következő tárolórendszerkép rendelkezik: 
 
-|Függvény|Funkciók|
+|Függvény|Szolgáltatások|
 |-|-|
 |Anomáliadetektor| <li> A valós idejű előforduló észleli a rendellenességeket. <li> Észleli a rendellenességeket a készlet egész kötegként. <li> Kikövetkezteti a várt normál tartományon az adatokat. <li> Támogatja anomáliadetektálási észlelés érzékenysége korrekciós jobban illeszkednek az adatok. |
 
@@ -57,7 +57,7 @@ Először végezze el, és küldje el a [Anomáliadetektálási detector haszná
 
 A következő táblázat ismerteti a minimális és ajánlott processzormagot és memóriát lefoglalni az Anomáliadetektálási detector használatával tároló.
 
-| QPS (a másodpercenkénti lekérdezések) | Minimum | Ajánlott |
+| QPS (a másodpercenkénti lekérdezések) | Minimális | Ajánlott |
 |-----------|---------|-------------|
 | 10 QPS | 4 mag, 1GB memória | 8 mag 2GB memória |
 | 20 QPS | 8 mag, 2GB memória | 16 mag, 4GB memória |
@@ -70,7 +70,7 @@ Core és a memória felel meg a `--cpus` és `--memory` beállítások, amelyek 
 
 Használja a [ `docker pull` ](https://docs.docker.com/engine/reference/commandline/pull/) paranccsal letöltheti egy tárolórendszerképet.
 
-| Tároló | Adattár |
+| Tároló | Tárház |
 |-----------|------------|
 | cognitive-services-anomaly-detector | `containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector:latest` |
 

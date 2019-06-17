@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c26a5007c2dcaa5d41be46f685f0f259866ca2c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 8240a487bdb01cdbe9017ddc7cb95ce4fc0e1503
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544060"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052356"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>A közösségi identitású felhasználók az MSAL.NET használatával
 
@@ -177,7 +177,7 @@ A javasolt áthidaló megoldás a [gyorsítótárazási házirend](#acquire-a-to
 Másik lehetőségként használhatja a `tid` jogcímet, ha használja a [B2C-vel egyéni szabályzatok](https://aka.ms/ief), mert azt lehetővé teszi az alkalmazás további jogcímeket adja vissza. Tudjon meg többet a [jogcímek átalakítása](/azure/active-directory-b2c/claims-transformation-technical-profile)
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>"A jogkivonatot a válaszból hiányzik" megoldás
-Az egyik lehetőség, hogy a "name" jogcímet a előnyben részesített felhasználóneveként. Ez a folyamat említett [B2C doc](/azure/active-directory-b2c/active-directory-b2c-reference-policies#frequently-asked-questions) -> "a visszatérési jogcím oszlop kiválasztása a visszaküldött hitelesítő jogkivonatokban a sikeres Profilszerkesztési művelet után az alkalmazásnak szeretne jogcímeket. Jelölje be például megjelenítendő név, postai irányítószám."
+Az egyik lehetőség, hogy a "name" jogcímet a előnyben részesített felhasználóneveként. Ez a folyamat említett [B2C doc](../../active-directory-b2c/active-directory-b2c-reference-policies.md) -> "a visszatérési jogcím oszlop kiválasztása a visszaküldött hitelesítő jogkivonatokban a sikeres Profilszerkesztési művelet után az alkalmazásnak szeretne jogcímeket. Jelölje be például megjelenítendő név, postai irányítószám."
 
 ## <a name="next-steps"></a>További lépések 
 

@@ -1,5 +1,5 @@
 ---
-title: Azure erőforráscsoportokkal kapcsolatos Visual Studio-projektek | Microsoft Docs
+title: Hozzon létre, és üzembe helyezés a Visual Studio Azure resource projektek
 description: Az erőforrások üzembe helyezése az Azure és a egy Azure erőforráscsoport-projekt létrehozása a Visual Studio használatával.
 services: azure-resource-manager
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: ca7cccb1d4f17ff9f80ca006da0ef7ce77109227
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 4b54a1c234eb2211884fede1c059e4c20cda137e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595542"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053273"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Azure erőforráscsoport-sablonok létrehozása és telepítése a Visual Studio alkalmazással
 
@@ -37,7 +37,7 @@ Ebben a szakaszban egy Azure erőforráscsoport-projektet hoz létre egy **Webes
     ![Felhőtelepítési projekt](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-project.png)
 2. Válassza ki az Azure Resource Managerbe telepíteni kívánt sablont. Figyelje meg, hogy a telepíteni kívánt projekt típusától függően számos különböző lehetőség áll rendelkezésre. Ehhez a cikkhez válassza a **Webapp + SQL** sablont.
    
-    ![Válasszon sablont](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-project.png)
+    ![Sablon kiválasztása](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-project.png)
    
     A kiválasztott sablon csak egy kiindulási pont. A forgatókönyvnek való megfelelés érdekében hozzáadhat és eltávolíthat erőforrásokat.
    

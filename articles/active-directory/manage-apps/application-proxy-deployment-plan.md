@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: 04a2e9968e8716818637a34adea86de88e1f848c
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 24429c5596494082b526b9648a1405bc397b9d2f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388305"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108489"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Az Azure AD-alkalmazásproxy központi telepítésének megtervezése
 
@@ -64,7 +64,7 @@ Az alábbi alapvető követelményeknek teljesülniük kell ahhoz, hogy konfigur
 
 *  **Előkészítési**: Application proxy üzembe helyezése előtt felhasználói identitásokat a helyszíni címtárból szinkronizált vagy közvetlenül az Azure AD-bérlőt belül létrehozni. Identitásszinkronizálási lehetővé teszi, hogy az Azure ad-ben előre hitelesíti a felhasználókat, mielőtt őket hozzáférés engedélyezése az alkalmazásproxyval közzétett alkalmazások és az egyszeri bejelentkezés (SSO) végrehajtásához szükséges felhasználói információk.
 
-* **Feltételes hozzáférési követelmények**: Alkalmazásproxy segítségével intranetes hozzáférés esetén, mert ez hozzáadja a késés, amely negatív hatással lesz a felhasználók nem ajánlott. Azt javasoljuk, hogy előtti hitelesítés és feltételes hozzáférési szabályzatokat az alkalmazásproxy használatával távoli elérés az interneten.  Egy módszert biztosít a feltételes hozzáférés az intranethez használják, hogy alkalmazások korszerűsítése, így azokat is diretly hitelesítés az aad-ben. Tekintse meg [erőforrások áttelepítése az AAD-alkalmazások](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) további információt. 
+* **Feltételes hozzáférési követelmények**: Alkalmazásproxy segítségével intranetes hozzáférés esetén, mert ez hozzáadja a késés, amely negatív hatással lesz a felhasználók nem ajánlott. Azt javasoljuk, hogy alkalmazásproxyval előtti hitelesítés és a feltételes hozzáférési szabályzatokat a távoli elérés az interneten.  Egy módszert biztosít a feltételes hozzáférés az intranethez használják, hogy alkalmazások korszerűsítése, így azokat is diretly hitelesítés az aad-ben. Tekintse meg [erőforrások áttelepítése az AAD-alkalmazások](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) további információt. 
 
 * **Szolgáltatási korlátozásaival**: Ellen védelmet biztosító overconsumption van az egyes bérlők által erőforrások minden alkalmazás és a bérlői szabályozási korlátok. Tekintse meg ezeket a korlátokat megtekintéséhez [az Azure AD szolgáltatási korlátozások](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions). Ezek a szabályozási határértékek sokkal jellemző használati kötet felett egy teljesítményteszt alapulnak, és központi telepítések többsége bőséges puffert biztosít.
 
@@ -199,7 +199,7 @@ Forgatókönyvek esetén, ahol a közzétett alkalmazás hivatkozásainak más k
 
 Tegyük fel például, hogy három olyan alkalmazásokkal rendelkezik, hogy az összes hivatkozás egymáshoz alkalmazásproxyn keresztül közzétett: Előnyök, költségek, és utazási, valamint egy negyedik alkalmazást, visszajelzés, alkalmazásproxyn keresztül közzétett nem.
 
-![1. kép](media/App-proxy-deployment-plan/link-translation.png)
+![1\. kép](media/App-proxy-deployment-plan/link-translation.png)
 
 Hivatkozás fordítási az előnyök alkalmazás engedélyezésekor a rendszer a költségek és utazási mutató hivatkozásokat tartalmaz átirányítja ezen alkalmazások esetén a külső URL-címeket úgy, hogy az alkalmazások a vállalati hálózaton kívül hozzáférő felhasználók érhetik el azokat. Vissza előnyeit a költségek és utazás hivatkozások nem működnek, mert azokat az alkalmazásokat két hivatkozás fordítási még nem lett engedélyezve. A hivatkozásra kattintva visszajelzés nem irányítja át, mert nincsenek külső URL-cím, így az előnyök alkalmazást használó felhasználók nem tudják a vállalati hálózaton kívül a visszajelzés-alkalmazás elérésére. Részletes információk megjelenítéséhez a [fordítási és egyéb átirányítási lehetőségek](application-proxy-configure-hard-coded-link-translation.md).
 
@@ -266,7 +266,7 @@ Az alábbi képességeket támogatja az Azure AD-alkalmazásproxy használható:
 
 * Eszközalapú feltételes hozzáférés: Győződjön meg arról, csak a regisztrált, jóváhagyott és megfelelő eszközök férhessenek hozzá a vállalati adatok [eszközalapú feltételes hozzáférési](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications).
 
-* Alkalmazásalapú feltételes hozzáférés: Munkahelyi leállítása, ha a felhasználó nem a vállalati hálózaton nem kell. [Biztonságos hozzáférés a vállalati felhő- és a helyszíni alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam) és a feltételes hozzáférés-vezérlés kezelése.
+* Alkalmazásalapú feltételes hozzáférés: Munkahelyi leállítása, ha a felhasználó nem a vállalati hálózaton nem kell. [Biztonságos hozzáférés a vállalati felhő- és a helyszíni alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam) és elérésük szabályozása a feltételes hozzáférés.
 
 * Kockázatalapú feltételes hozzáférés: Megvédheti adatait a rosszindulatú támadók egy [kockázatalapú feltételes hozzáférési szabályzat](https://www.microsoft.com/cloud-platform/conditional-access) , amelyek alkalmazhatók minden alkalmazás és az összes felhasználóra, hogy a helyszíni vagy a felhőben.
 

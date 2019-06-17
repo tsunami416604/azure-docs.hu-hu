@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/20/2019
+ms.date: 06/12/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86e875108e0349c0ab08a7217074e2afe23bcacc
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 79718b14210bfdf139bca76db91c57c38a791434
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544920"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052243"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-code-flow"></a>A Microsoft identity platform és az OAuth 2.0 eszköz kódfolyamat
 
@@ -31,9 +31,11 @@ ms.locfileid: "65544920"
 A Microsoft identity platform támogatja a [eszköz kódmegadás](https://tools.ietf.org/html/draft-ietf-oauth-device-flow-12), amely lehetővé teszi, hogy a felhasználók számára, hogy jelentkezzen be a bemeneti korlátozott eszközök, mint egy Okostelevízió, IoT-eszközből vagy nyomtató.  Ahhoz, hogy ez a folyamat, az eszköz a böngészőben egy másik eszközön, hogy jelentkezzen be a felhasználói látogatás egy weblap rendelkezik.  Miután a felhasználó bejelentkezik, az eszköz nem képes hozzáférési és frissítési jogkivonatok, igény szerint.  
 
 > [!IMPORTANT]
-> Jelenleg a Microsoft identity platform végpont csak támogatja az eszköz a folyamat az Azure AD-bérlőt, de nem személyes fiókokat.  Ez azt jelenti, hogy bérlőként, állítsa be a végpont kell használnia, vagy a `organizations` végpont.  
+> Jelenleg a Microsoft identity platform végpont csak támogatja az eszköz a folyamat az Azure AD-bérlőt, de nem személyes fiókokat.  Ez azt jelenti, hogy bérlőként, állítsa be a végpont kell használnia, vagy a `organizations` végpont.  Ez a támogatás hamarosan engedélyezve lesz. 
 >
 > Személyes fiókokat is meghív egy Azure AD-bérlővel, használhatja az eszköz folyamat engedély megadása, de csak a bérlői kontextusában lesz.
+>
+> Egy további megjegyzés a `verification_uri_complete` válasz mező nem tartalmaz, vagy jelenleg támogatott.  
 
 > [!NOTE]
 > A Microsoft identity platform végpont nem támogatja az összes Azure Active Directory-forgatókönyvek és funkciók. Annak megállapításához, hogy a Microsoft identity platform végpontot kell használnia, olvassa el [a Microsoft identity platform korlátozásai](active-directory-v2-limitations.md).
@@ -42,7 +44,7 @@ A Microsoft identity platform támogatja a [eszköz kódmegadás](https://tools.
 
 A teljes eszköz hitelesítésikód-folyamata a következő diagram hasonlóan néz ki. A cikk későbbi részében lépések mindegyikét ismertetünk.
 
-![Eszközkód folyamata](./media/v2-oauth2-device-code/v2-oauth-device-flow.svg)
+![Eszköz kódfolyamat](./media/v2-oauth2-device-code/v2-oauth-device-flow.svg)
 
 ## <a name="device-authorization-request"></a>Eszköz engedélyezési kérése
 
@@ -63,10 +65,10 @@ scope=user.read%20openid%20profile
 
 ```
 
-| Paraméter | Feltétel | Leírás |
+| Paraméter | Állapot | Leírás |
 | --- | --- | --- |
-| `tenant` | Szükséges |A directory-bérlőhöz, amelyet szeretne az engedélyt. Ez lehet GUID vagy rövid név formátumban.  |
-| `client_id` | Szükséges | A **Alkalmazásazonosítót (ügyfél)** , amely a [az Azure-portál – alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) az alkalmazáshoz rendelt felhasználói élményt. |
+| `tenant` | Kötelező |A directory-bérlőhöz, amelyet szeretne az engedélyt. Ez lehet GUID vagy rövid név formátumban.  |
+| `client_id` | Kötelező | A **Alkalmazásazonosítót (ügyfél)** , amely a [az Azure-portál – alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) az alkalmazáshoz rendelt felhasználói élményt. |
 | `scope` | Ajánlott | Szóközzel elválasztott listáját [hatókörök](v2-permissions-and-consent.md) , hogy szeretné-e a felhasználót, hogy engedélyt adjanak az.  |
 
 ### <a name="device-authorization-response"></a>Eszköz hitelesítési válasza
@@ -77,8 +79,7 @@ A sikeres válasz, hogy a felhasználó jelentkezzen be a szükséges adatokat t
 | ---              | --- | --- |
 |`device_code`     | String | Hosszú karakterlánc, amellyel az ügyfél és az engedélyezési kiszolgáló között a munkamenet ellenőrzése. Az ügyfél használja ezt a paramétert, a hozzáférési jogkivonatot kér az engedélyezési kiszolgálón. |
 |`user_code`       | String | Egy rövid karakterlánc jelenik meg a felhasználót, hogy a munkamenet egy másodlagos eszközön azonosítására szolgál.|
-|`verification_uri`| URI | A felhasználónak el kell küldeni az URI a `user_code` annak érdekében, hogy jelentkezzen be. |
-|`verification_uri_complete`| URI | Egy URI-t, amely ötvözi az `user_code` és a `verification_uri`(például Bluetooth egy eszközre vagy QR-kód) használatával a felhasználó nem szöveges továbbítására szolgál.  |
+|`verification_uri`| URI-T | A felhasználónak el kell küldeni az URI a `user_code` annak érdekében, hogy jelentkezzen be. |
 |`expires_in`      | int | Mielőtt másodpercben a `device_code` és `user_code` lejár. |
 |`interval`        | int | Az ügyfélnek várnia kell lekérdezési kérelmek közötti másodpercek számát. |
 | `message`        | String | A felhasználói utasításokat emberek számára olvasható karakterlánc. Ez azzal kell honosított egy **lekérdezési paraméter** az űrlap a kérésben `?mkt=xx-XX`, a megfelelő nyelvi kulturális környezet kód töltését. |
@@ -98,10 +99,10 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8
 ```
 
-| Paraméter | Szükséges | Leírás|
+| Paraméter | Kötelező | Leírás|
 | -------- | -------- | ---------- |
-| `grant_type` | Szükséges | Kell lennie `urn:ietf:params:oauth:grant-type:device_code`|
-| `client_id`  | Szükséges | Meg kell egyeznie a `client_id` a kiindulási kérelemhez használt. |
+| `grant_type` | Kötelező | Kell lennie `urn:ietf:params:oauth:grant-type:device_code`|
+| `client_id`  | Kötelező | Meg kell egyeznie a `client_id` a kiindulási kérelemhez használt. |
 | `device_code`| Szükséges | A `device_code` adja vissza az eszköz engedélyezési kérésben.  |
 
 ### <a name="expected-errors"></a>Várt hibák

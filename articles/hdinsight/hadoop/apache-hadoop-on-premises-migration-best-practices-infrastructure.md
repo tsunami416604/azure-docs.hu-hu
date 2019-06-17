@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1bd06507bd8a20cf504c1ff4cd9fe7e3b9196a3c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5bdd5049b7ddeaac4425734aa6f4d633b08cd3b4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687766"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057472"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>A helyszíni Apache Hadoop-fürtök áttelepítése Azure HDInsight - infrastruktúra ajánlott eljárások
 
@@ -36,7 +36,7 @@ Lásd: [csomópont konfigurációs és virtuális gépek méretei fürtök alap�
 
 ## <a name="check-hadoop-components-availability-in-hdinsight"></a>A HDInsight Hadoop-összetevők elérhetőségének ellenőrzése
 
-Minden HDInsight-verzió felhőalapú terjesztése egy verziójának megfelelő Hortonworks Data Platform (HDP), és a egy Hadoop-ökoszisztéma összetevők készlete áll. Lásd: [HDInsight Component-Versioning](../hdinsight-component-versioning.md) az összes HDInsight-összetevők és azok aktuális verziók.
+Minden egyes HDInsight a Hadoop-ökoszisztéma összetevők felhőalapú terjesztett verziószáma. Lásd: [HDInsight Component-Versioning](../hdinsight-component-versioning.md) az összes HDInsight-összetevők és azok aktuális verziók.
 
 Az Apache Ambari felhasználói felületén vagy az Ambari REST API-t használhatja a Hadoop-összetevők és a HDInsight-verziók ellenőrzéséhez.
 
@@ -63,7 +63,7 @@ Alkalmazások és összetevők, amelyek nem voltak elérhetők a helyi fürtökb
 |R|PaaS 
 |SAS|IaaS 
 |Vertica|IaaS (SQLDW helyett az Azure-ban)
-|Tableau|IaaS 
+|A tableau|IaaS 
 |Vízvonallal|HDInsight élcsomóponthoz
 |StreamSets|HDInsight edge 
 |Palantir|IaaS 

@@ -7,10 +7,10 @@ ms.service: dns
 ms.date: 4/3/2019
 ms.author: victorh
 ms.openlocfilehash: 00ff5636f97b24c656ee4e5d8ceb2f6b22524538
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66515346"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Importálása és exportálása a DNS-zónafájl az Azure CLI használatával
@@ -73,7 +73,7 @@ az network dns zone import -g <resource group> -n <zone name> -f <zone file name
 
 Ha egy ilyen nevű zóna nem létezik az erőforráscsoportban, létrejön az Ön számára. Ha a zóna már létezik, az importált rekordhalmazok egyesítésekor a meglévő rekordhalmazt. 
 
-### <a name="step-1-import-a-zone-file"></a>1.lépés A zónafájl importálása
+### <a name="step-1-import-a-zone-file"></a>1\.lépés A zónafájl importálása
 
 A zóna egy zónafájl importálása **contoso.com**.
 
@@ -89,7 +89,7 @@ A zóna egy zónafájl importálása **contoso.com**.
     az network dns zone import -g myresourcegroup -n contoso.com -f contoso.com.txt
     ```
 
-### <a name="step-2-verify-the-zone"></a>2.lépés A zóna ellenőrzése
+### <a name="step-2-verify-the-zone"></a>2\.lépés A zóna ellenőrzése
 
 Ellenőrizze a DNS-zóna, a fájl importálása után, az alábbi módszerek bármelyikét használhatja:
 
@@ -147,7 +147,7 @@ Ellenőrizze a DNS-zóna, a fájl importálása után, az alábbi módszerek bá
         134.170.188.221
     ```
 
-### <a name="step-3-update-dns-delegation"></a>3. lépés. DNS-delegálás frissítése
+### <a name="step-3-update-dns-delegation"></a>3\. lépés. DNS-delegálás frissítése
 
 Miután ellenőrizte, hogy helyesen importálta a zónában, a DNS-delegálás az Azure DNS névkiszolgálóit átirányítása frissíteni szeretné. További információkért tekintse meg a cikket [a DNS-delegálás frissítése](dns-domain-delegation.md).
 

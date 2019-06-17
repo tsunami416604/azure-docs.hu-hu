@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29ca16e149852d044fdd6f6ea0baf0b11ccb75cf
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f7b4db749d1191179b3f4f1d9bb13d77925697f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64709571"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67104549"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Coupa
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Coupa konfigurálásához hozzá kell Coupa a katal�
 
 **Coupa hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -114,7 +114,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Coupa, hajtsa végre
 
     | Környezet  | URL-cím |
     |:-------------|----|
-    | Védőfal | `sso-stg1.coupahost.com`|
+    | Sandbox | `sso-stg1.coupahost.com`|
     | Production | `sso-prd1.coupahost.com`|
     | | |
 
@@ -122,7 +122,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Coupa, hajtsa végre
 
     | Környezet | URL-cím |
     |------------- |----|
-    | Védőfal | `https://sso-stg1.coupahost.com/sp/ACS.saml2`|
+    | Sandbox | `https://sso-stg1.coupahost.com/sp/ACS.saml2`|
     | Production | `https://sso-prd1.coupahost.com/sp/ACS.saml2`|
     | | |
 

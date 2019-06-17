@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/06/2019
 ms.author: roiyz
 ms.openlocfilehash: 8b24af016349db0fcfb4106a1e69da395e3d0150
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66755154"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-linux"></a>Az Azure Monitor virtuálisgép-bővítmény linuxhoz
@@ -43,9 +43,9 @@ A Log Analytics-ügynök bővítményt a Linux-disztribúciók is futtatni.
 |---|---|
 | CentOS Linux | 6 (x86/x64) és 7 (x 64) |
 | Amazon Linux | 2017.09 (x64) | 
-| Oracle Linux | 6. és 7 (x86/x64) |
+| Oracle Linux | 6\. és 7 (x86/x64) |
 | Red Hat Enterprise Linux Server | 6 (x86/x64) és 7 (x 64) |
-| Debian GNU/Linux | 8. és 9 (x86/x64) |
+| Debian GNU/Linux | 8\. és 9 (x86/x64) |
 | Ubuntu | 14.04 (x86/x64) LTS, 16.04 LTS (x86/x64) és 18.04 LTS (x64) |
 | SUSE Linux Enterprise Server | 12 (x 64) |
 

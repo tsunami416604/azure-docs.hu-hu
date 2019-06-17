@@ -1,6 +1,6 @@
 ---
 title: Alapvető házirendet service management (előzetes verzió) – az Azure Active Directory MFA megkövetelése
-description: Feltételes hozzáférési szabályzat segítségével a többtényezős hitelesítés az Azure Resource Manager
+description: Feltételes hozzáférési szabályzatot a többtényezős hitelesítés az Azure Resource Manager
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00ed40bef3f3cbe59825f546ffa39c3ebfb2e41f
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 24b54a3645fe97903219841dd148c0942dfcda76
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003176"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112385"
 ---
 # <a name="baseline-policy-require-mfa-for-service-management-preview"></a>Alapvető házirendet: Többtényezős hitelesítés a service management (előzetes verzió)
 
@@ -40,7 +40,7 @@ Interaktív bejelentkezés segítségével végrehajtásához [Azure PowerShell-
 Connect-AzAccount
 ```
 
-A futtatáskor ez a parancsmag jogkivonatsztringet jelenít meg. Jelentkezzen be, másolja ezt a karakterláncot, és illessze be azt [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) egy böngészőben. A rendszer ekkor hitelesíti a PowerShell-munkamenetet az Azure-hoz való csatlakozáshoz.
+A futtatáskor ez a parancsmag jogkivonatsztringet jelenít meg. Jelentkezzen be, másolja ezt a karakterláncot, és illessze be azt [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin)  egy böngészőben. A rendszer ekkor hitelesíti a PowerShell-munkamenetet az Azure-hoz való csatlakozáshoz.
 
 Interaktív bejelentkezés segítségével végrehajtásához [Azure CLI-vel](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)futtassa a [az bejelentkezési](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) parancsot.
 
@@ -73,7 +73,7 @@ A szabályzat engedélyezéséhez, és a rendszergazdák védelmére:
 
 1. Jelentkezzen be a **az Azure portal** globális rendszergazdai, biztonsági rendszergazdai vagy feltételes hozzáférésű rendszergazda.
 1. Keresse meg a **az Azure Active Directory** > **feltételes hozzáférési**.
-1. A házirendek listájából válassza ki **alapvető házirendet: Többtényezős hitelesítés a service management (előzetes verzió)**.
+1. A házirendek listájából válassza ki **alapvető házirendet: Többtényezős hitelesítés a service management (előzetes verzió)** .
 1. Állítsa be **házirend engedélyezése** való **a házirend azonnal használható**.
 1. Bármely felhasználó kizárások hozzáadása kattintva **felhasználók** > **kizárt felhasználók kiválasztása** majd ki kell zárni a felhasználóknak. Kattintson a **kiválasztása** majd **kész**.
 1. Kattintson a **mentése**.

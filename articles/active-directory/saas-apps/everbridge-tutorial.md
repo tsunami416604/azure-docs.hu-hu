@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: f8dd11e7fb0b9fda0e0f1c7d3f794f6bfd766cdf
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 60463a00c6864bed7b3a18e816ef0143d3573782
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231466"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67103255"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Everbridge
 
@@ -228,7 +228,7 @@ Britta Simon által biztosított hozzáférés Everbridge Azure egyszeri bejelen
 
 Ebben a szakaszban a tesztfelhasználó számára a Everbridge Britta Simon hoz létre. Felhasználók hozzáadása az Everbridge platformon, dolgozni a [Everbridge támogatási csapatának](mailto:support@everbridge.com). Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt Everbridge aktiválva. 
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Az Azure AD egyszeri bejelentkezés beállításainak ellenőrzéséhez a hozzáférési panelen.
 

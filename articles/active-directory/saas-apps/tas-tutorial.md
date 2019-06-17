@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 11ba7cd9be59f13081bdc5a543c52ca5f9d66e09
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 279f6970c34acbfea645366f7e965c830873fdbf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60339329"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67089178"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tas"></a>Oktatóanyag: A feladat az Azure Active Directory-integráció
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a feladat konfigurálásához szüksége feladat hozz�
 
 **Feladat hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

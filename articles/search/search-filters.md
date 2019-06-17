@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 06/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 1871fee2734d347ff54d6aa70d90d1c28bd1f6f1
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 8676ad48bc4fab6149db00d778349ac1acd7223d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597288"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062385"
 ---
 # <a name="filters-in-azure-search"></a>Szűrők az Azure Search szolgáltatásban 
 
@@ -158,11 +158,11 @@ Karakterlánc csak kis-és nagybetűket. Nincs alsó – kis-és felső Case ala
 
 ### <a name="approaches-for-filtering-on-text"></a>Megközelítések a szöveg a szűréshez
 
-| A módszer | Leírás | A következő esetekben használja | 
+| A módszer | Leírás | A következő esetekben használja |
 |----------|-------------|-------------|
-| [search.in](query-odata-filter-orderby-syntax.md) | Függvény, amely megfelel egy karakterláncok tagolt listáját tartalmazó mezőt. | Ajánlott [biztonsági szűrők](search-security-trimming-for-azure-search.md) és a szűrőket. Ha a nyers szöveg sok értéket kell karakterlánc típusú egyeztetését. A **javításával** függvény sebesség lett tervezve, és sokkal gyorsabb az a mező minden karakterlánc tanúsítványokkal szemben explicit módon összehasonlítása `eq` és `or`. | 
-| [search.ismatch](query-odata-filter-orderby-syntax.md) | Függvény, amely lehetővé teszi, hogy a teljes szöveges keresés műveleteit kizárólag logikai típusú szűrő az azonos szűrőkifejezésben kombinálhatók. | Használat **search.ismatch** (vagy pontozási egyenértékű **search.ismatchscoring**) Ha azt szeretné, hogy egy kérelem több keresési-szűrő kombináció. Használhatja azt egy *tartalmaz* szűrőt a részleges karakterlánc nagyobb karakterláncon belül. |
-| [$filter = mező operátor karakterlánc](query-odata-filter-orderby-syntax.md) | Egy felhasználó által definiált kifejezés tevődik össze mezőket, operátorokat és értékeket. | Akkor használja, ha a keresett karakterlánc típusú és a egy karakterláncértéket között pontos egyezés. |
+| [`search.in`](search-query-odata-search-in-function.md) | Függvény, amely megfelel egy karakterláncok tagolt listáját tartalmazó mezőt. | Ajánlott [biztonsági szűrők](search-security-trimming-for-azure-search.md) és a szűrőket. Ha a nyers szöveg sok értéket kell karakterlánc típusú egyeztetését. A **javításával** függvény sebesség lett tervezve, és sokkal gyorsabb az a mező minden karakterlánc tanúsítványokkal szemben explicit módon összehasonlítása `eq` és `or`. | 
+| [`search.ismatch`](search-query-odata-full-text-search-functions.md) | Függvény, amely lehetővé teszi, hogy a teljes szöveges keresés műveleteit kizárólag logikai típusú szűrő az azonos szűrőkifejezésben kombinálhatók. | Használat **search.ismatch** (vagy pontozási egyenértékű **search.ismatchscoring**) Ha azt szeretné, hogy egy kérelem több keresési-szűrő kombináció. Használhatja azt egy *tartalmaz* szűrőt a részleges karakterlánc nagyobb karakterláncon belül. |
+| [`$filter=field operator string`](search-query-odata-comparison-operators.md) | Egy felhasználó által definiált kifejezés tevődik össze mezőket, operátorokat és értékeket. | Akkor használja, ha a keresett karakterlánc típusú és a egy karakterláncértéket között pontos egyezés. |
 
 ## <a name="numeric-filter-fundamentals"></a>Numerikus szűrő – alapok
 

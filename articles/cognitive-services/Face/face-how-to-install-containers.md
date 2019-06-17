@@ -3,20 +3,20 @@ title: Tárolók telepítése és futtatása
 titlesuffix: Face - Azure Cognitive Services
 description: Töltse le, telepítse, és futtathat tárolókat az Arcfelismerés az bemutató oktatóanyag.
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: article
-ms.date: 05/28/2019
-ms.author: diberry
-ms.openlocfilehash: 26ebeb463f42dce06c29a5bd3f69585430a2ee90
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.date: 06/10/2019
+ms.author: dapine
+ms.openlocfilehash: 4d3f3e64e109d0b1dc010be39b62b4f0bdc0573d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306634"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063599"
 ---
 # <a name="install-and-run-face-containers"></a>Telepítse és futtassa a Face tárolók
 
@@ -47,9 +47,9 @@ A Face API-tárolók használata előtt meg kell felelnie a következő előfelt
 
 A következő táblázat ismerteti a minimális és ajánlott processzormagot és memóriát lefoglalni az egyes Face API-tárolók.
 
-| Tároló | Minimális | Ajánlott | Másodpercenkénti tranzakció<br>(Minimális, maximális)|
+| Tároló | Minimális | Ajánlott | Másodpercenkénti tranzakciók<br>(Minimális, maximális)|
 |-----------|---------|-------------|--|
-|Face | 1 mag, 2 GB memória | 1 mag, 4 GB memória |10, 20|
+|Arcfelismerés | 1 mag, 2 GB memória | 1 mag, 4 GB memória |10, 20|
 
 * Egyes maghoz kell lennie legalább 2,6 GHz-es vagy gyorsabb.
 * Másodpercenkénti tranzakciók (TPS).
@@ -60,9 +60,9 @@ Core és a memória felel meg a `--cpus` és `--memory` beállítások, amelyek 
 
 A Face API tárolórendszerképeket érhetők el. 
 
-| Tároló | Adattár |
+| Tároló | Tárház |
 |-----------|------------|
-| Face | `containerpreview.azurecr.io/microsoft/cognitive-services-face:latest` |
+| Arcfelismerés | `containerpreview.azurecr.io/microsoft/cognitive-services-face:latest` |
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 

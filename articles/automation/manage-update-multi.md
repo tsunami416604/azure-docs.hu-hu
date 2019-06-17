@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 16fe2d23fdd07f8f150cc010b0a1d232c761c77f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 024a2dbbd46fa2ab60da0f9682dbe298eaf73e86
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61300103"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055575"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Frissítések kezelése több gép esetén
 
@@ -85,7 +85,7 @@ Számítógépek nemrég lett engedélyezve az Update Management, előfordulhat,
 
 - **Nem megfelelő**: Számítógép, amelyen nincs legalább egy kritikus vagy biztonsági frissítés.
 
-- **Nincs értékelve**: A frissítés kiértékelésének adatai nem érkeztek időkereten belül a számítógépről. A Linux rendszerű számítógépek esetében a várt időtartamon az elmúlt 3 órában van. A Windows-számítógépek esetében az elmúlt 12 órában időkereten van.
+- **Nincs értékelve**: A frissítés kiértékelésének adatai nem érkeztek időkereten belül a számítógépről. A Linux rendszerű számítógépek esetében a várt időtartamon van, az elmúlt órában. A Windows-számítógépek esetében az elmúlt 12 órában időkereten van.
 
 Az ügynök állapotának megtekintéséhez válassza ki a hivatkozásra a **frissítési ÜGYNÖK KÉSZÜLTSÉGE** oszlop. Ezzel a beállítással megnyílik a **hibrid feldolgozó** ablaktáblán, és a hibrid feldolgozó állapotát jeleníti meg. Az alábbi képen egy példa olyan ügynök, amely nem csatlakozik az Update Management hosszabb idő:
 
@@ -116,7 +116,7 @@ A számítógép frissítési megfelelőség szempontjából vizsgálat befejez�
 
 A frissítés megfelelőségi vizsgálat ütemezett vizsgálatokat mellett az MMA újraindítja, frissítés telepítése előtt, és a frissítés telepítése után legfeljebb 15 perccel kezdeményezik.
 
-Linux rendszerű számítógépen a megfelelőségi vizsgálat három óránként történik alapértelmezés szerint. Az MMA-ügynök újraindítása, ha a megfelelőségi vizsgálatot kezdeményez 15 percen belül.
+Linux rendszerű számítógépen a megfelelőségi vizsgálat alapértelmezés szerint történik minden órában. Az MMA-ügynök újraindítása, ha a megfelelőségi vizsgálatot kezdeményez 15 percen belül.
 
 30 perc és a felügyelt számítógépekből származó frissített adatok megjelennek az irányítópulton 6 óráig is eltarthat.
 
@@ -130,7 +130,7 @@ Az a **új frissítéstelepítés** panelen adja meg a következő információk
 
 - **Név**: Adjon meg egy egyedi nevet a frissítéstelepítés azonosításához.
 - **Operációs rendszer**: Válassza ki **Windows** vagy **Linux**.
-- **A csoportok frissítése (előzetes verzió)**: Egy előfizetés, erőforráscsoport, helyek és címkék felvenni az üzembe helyezés az Azure-beli virtuális dinamikus csoportot hozhat létre kombinációja alapján lekérdezést határoz meg. További információ: [Dinamikus csoportok](automation-update-management.md#using-dynamic-groups)
+- **A csoportok frissítése (előzetes verzió)** : Egy előfizetés, erőforráscsoport, helyek és címkék felvenni az üzembe helyezés az Azure-beli virtuális dinamikus csoportot hozhat létre kombinációja alapján lekérdezést határoz meg. További információ: [Dinamikus csoportok](automation-update-management.md#using-dynamic-groups)
 - **Frissítendő gépek**: Jelöljön ki egy mentett keresési importált csoporthoz, vagy gépek számára, hogy válassza ki a frissíteni kívánt gépeket. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható. A frissítéstelepítés ütemezése előtt látható a gép állapotát. Számítógépcsoportok létrehozását az Azure Monitor naplóira különböző módszereivel kapcsolatos további információkért lásd: [számítógépcsoportokat az Azure Monitor naplóira](../azure-monitor/platform/computer-groups.md)
 
   ![Új frissítés üzembe helyezési panel](./media/manage-update-multi/update-select-computers.png)
@@ -154,7 +154,7 @@ Az a **új frissítéstelepítés** panelen adja meg a következő információk
    ![Ütemezési beállítások párbeszédpanel](./media/manage-update-multi/update-set-schedule.png)
 
 - **Előre parancsfájlok + utáni parancsfájlok**: Válassza ki a parancsfájlok futtatása előtt és után a központi telepítés. További információ: [Előkészítő és utólagos szkriptek kezelése](pre-post-scripts.md).
-- **Karbantartási időszak (perc)**: Adja meg azt az időszakot, hogy azt szeretné, hogy a frissítés telepítése megtörténjen. Ez a beállítás biztosítja, hogy a módosítások a megadott szolgáltatási időkereten belül menjenek végbe.
+- **Karbantartási időszak (perc)** : Adja meg azt az időszakot, hogy azt szeretné, hogy a frissítés telepítése megtörténjen. Ez a beállítás biztosítja, hogy a módosítások a megadott szolgáltatási időkereten belül menjenek végbe.
 
 - **Indítsa újra a vezérlő** – Ez a beállítás azt határozza meg, hogyan kezelje a központi telepítési újraindítások.
 

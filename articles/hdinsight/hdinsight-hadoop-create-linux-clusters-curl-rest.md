@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: hrasheed
-ms.openlocfilehash: acf121c2954b3f324682578dd3ab2b4d8b1f63f2
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d771d91feaba942b88a0ddb68f0d997fad4a981e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707354"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059413"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Az Azure REST API használatával az Apache Hadoop-fürtök létrehozása
 
@@ -22,9 +22,6 @@ ms.locfileid: "64707354"
 Ismerje meg, hogyan hozhat létre egy HDInsight-fürtöt az Azure Resource Manager-sablon és az Azure REST API használatával.
 
 Az Azure REST API felügyeleti műveletek végrehajtása a szolgáltatások az Azure platformon, beleértve az új erőforrások, például a HDInsight-fürtök létrehozását teszi lehetővé.
-
-> [!IMPORTANT]  
-> A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 > [!NOTE]  
 > A lépéseket, a jelen dokumentum-használat a [curl (https://curl.haxx.se/) ](https://curl.haxx.se/) segédprogram az Azure REST API folytatott kommunikációhoz.
@@ -215,7 +212,7 @@ Ebben a példában a jelen dokumentumban leírt lépések használatban van. Cse
 >
 > További információ a csomópontméretekről és a velük járó költségekről: [A HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-## <a name="log-in-to-your-azure-subscription"></a>Bejelentkezés az Azure-előfizetésbe
+## <a name="sign-in-to-your-azure-subscription"></a>Jelentkezzen be az Azure-előfizetésébe
 
 Kövesse a leírt lépéseket [Azure CLI használatának első lépései](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) , és az előfizetés használatával kapcsolódhat a `az login` parancsot.
 

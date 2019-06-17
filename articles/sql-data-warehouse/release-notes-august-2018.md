@@ -11,13 +11,13 @@ ms.date: 08/13/2018
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.openlocfilehash: f0840e9b91c81b8a99e8c736c3c5db082c92fe76
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65912207"
 ---
-# <a name="whats-new-in-azure-sql-data-warehouse-august-2018"></a>Mi az új Azure SQL Data warehouse? 2018. augusztus
+# <a name="whats-new-in-azure-sql-data-warehouse-august-2018"></a>Mi az új Azure SQL Data warehouse? 2018\. augusztus
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek a 2018 augusztus.
 
 ## <a name="automatic-intelligent-insights"></a>Automatikus Intelligent Insights

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: e5ab6651503766844b2aeef1849bffff9cf4d7bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f8087afc541dba41d23eacd2dd0f50e8f0180af1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60835500"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808409"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Az Azure App Service-ben az operációs rendszer funkcionalitása
 Ez a cikk ismerteti a gyakori alapkonfiguráció operációs rendszer funkcionalitása futó összes Windows-alkalmazások számára elérhető [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Ez a funkció tartalmazza a fájl, hálózati, és az adatbázis eléréséhez, és a diagnosztikai naplók és események. 
@@ -65,7 +65,7 @@ Fontos a lemezhasználat monitorozása az alkalmazás növekedésével. Ha a lem
 
 - Az alkalmazás throw előfordulhat, hogy egy hibaüzenet nincs elég hely a lemezen.
 - A Kudu konzolhoz böngészésekor lemezterületből fakadó hibák jelenhetnek meg.
-- Az üzembe helyezés a vsts-ben vagy a Visual Studio meghiúsulhat `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`.
+- Az üzembe helyezést az Azure DevOps vagy a Visual Studio meghiúsulhat `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`.
 - Az alkalmazás gyengülhet a teljesítmény lecsökkenését tapasztalhatja.
 
 <a id="NetworkDrives"></a>

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
 ms.author: monhaber
-ms.openlocfilehash: 16548ae75567fa3ba6f8c9135d61945bd28d2db8
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: a30bc55c564f852a5fef6e71aad9e607e6aa1065
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428418"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083675"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Identitás és hozzáférés az Azure Security Centerben (előzetes verzió) figyelése
 Ez a cikk útmutatást nyújt a felhasználók identitási és hozzáférési tevékenységeinek az Azure Security Center segítségével történő figyeléséhez.
@@ -114,7 +114,7 @@ Referenciaként az alábbi táblázat segítségével segítenek megérteni a re
 |Előfizetés|40|MFA engedélyezni kell a írási engedéllyel rendelkező előfizetés fiókjának|Engedélyezi a multi-factor Authentication (MFA) a fiókok vagy az erőforrások biztonsági incidenseinek megelőzése írási jogosultsággal rendelkező összes előfizetési fiókban.|
 |Előfizetés|30|Tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből|Tulajdonosi engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből a nem monitorozott hozzáférések megelőzése céljából.|
 |Előfizetés|30|MFA a az előfizetés olvasási engedélyekkel rendelkező fiókok engedélyezve kell lennie|A multi-factor Authentication (MFA) engedélyezéséhez a fiókok vagy az erőforrások biztonsági incidenseinek megelőzése olvasási jogosultságokkal rendelkező összes előfizetési fiókban.|
-|Előfizetés|25|Írási rendelkező külső fiókok engedélyeit el kell távolítani az előfizetésből|Írási engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből a nem monitorozott hozzáférések megelőzése céljából. |
+|Előfizetés|25|Írási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből|Írási engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből a nem monitorozott hozzáférések megelőzése céljából. |
 |Előfizetés|20|Tulajdonosi engedélyekkel rendelkező elavult fiókokat el kell távolítani az előfizetésből|Tulajdonosi engedélyekkel rendelkező elavult fiókok eltávolítása az előfizetések közül.|
 |Előfizetés|5|Elavult fiókokat el kell távolítani az előfizetésből|Elavult fiókok eltávolítása az csak az aktuális felhasználó hozzáférésének engedélyezése az előfizetések közül. |
 |Előfizetés|5|Meg kell adni az előfizetéshez hozzárendelt egynél több tulajdonosa|Több mint egy előfizetés-tulajdonost kijelölni a rendszergazdai hozzáférés redundanciájának biztosításához.|

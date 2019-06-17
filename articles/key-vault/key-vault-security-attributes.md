@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 1c2265ff5f4c444121bf70c35145703f1b9fe981
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66000181"
 ---
 # <a name="security-attributes-for-azure-key-vault"></a>Az Azure Key Vault biztonsági attribútumok
@@ -61,7 +61,7 @@ Ez a cikk az Azure Key Vault beépített biztonsági attribútumok dokumentumok.
 | Ellenőrzés/felügyeleti naplózás és a naplózási adatsík| Igen | A Log Analytics használatával. |
 | Adatsík naplózása és naplózása| Igen | A Log Analytics használatával. |
 
-## <a name="access-controls"></a>Hozzáférés-szabályozás
+## <a name="access-controls"></a>Hozzáférés-vezérlés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|

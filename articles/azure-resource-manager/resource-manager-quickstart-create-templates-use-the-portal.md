@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 03/04/2019
+ms.date: 06/12/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: aea6f58c74d6e50e7936b949620912f3f587f004
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: d5deedb12afb1b766255ad0a9f247594ed70acaa
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205868"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069304"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Gyors útmutató: Létrehozása és üzembe helyezése Azure Resource Manager-sablonok az Azure portal használatával
 
@@ -45,7 +45,7 @@ Számos sablon tapasztalt fejlesztők sablonjainak előállítása, amikor azok 
     |Name (Név)|Érték|
     |----|----|
     |**Erőforráscsoport**|Válassza ki **új létrehozása**, és adja meg a kiválasztott erőforráscsoport nevét. A képernyőképen az erőforráscsoport neve *mystorage1016rg*. Erőforráscsoport egy olyan tároló, az Azure-erőforrásokhoz. Erőforráscsoport megkönnyíti az Azure-erőforrások kezeléséhez. |
-    |**Name (Név)**|Adjon meg egy egyedi nevet a tárfiók. A tárfiók nevének egyedinek kell lennie Azure összes, és hogy az csak kisbetűket és számokat tartalmaz. Nevének 3 – 24 karakter hosszúnak kell lennie. Ha a helyen a "a"mystorage1016"tárfióknév már foglalt" szövegű hibaüzenetet kap, próbálja meg használni  **&lt;a neve > tároló&lt;MMDD a mai dátumra >**, például  **johndolestorage1016**. További információkért lásd: [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions).|
+    |**Name (Név)**|Adjon meg egy egyedi nevet a tárfiók. A tárfiók nevének egyedinek kell lennie Azure összes, és hogy az csak kisbetűket és számokat tartalmaz. Nevének 3 – 24 karakter hosszúnak kell lennie. Ha a helyen a "a"mystorage1016"tárfióknév már foglalt" szövegű hibaüzenetet kap, próbálja meg használni  **&lt;a neve > tároló&lt;MMDD a mai dátumra >** , például  **johndolestorage1016**. További információkért lásd: [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions).|
 
     A többi tulajdonság esetén használhatja az alapértelmezett értékeket.
 
@@ -64,7 +64,7 @@ Számos sablon tapasztalt fejlesztők sablonjainak előállítása, amikor azok 
     Hat paraméter van definiálva. Az egyikük neve **storageAccountName**. Az előző képernyőképen a második kijelölt rész bemutatja, hogyan ebben a sablonban paraméterre hivatkozhatnak. A következő szakaszban úgy szerkeszti a sablont, hogy létrehozott nevet használjon a tárfiók neveként.
 
     A sablonban egy Azure-erőforrás van definiálva. A típus `Microsoft.Storage/storageAccounts`. Tekintse meg, hogy az erőforrás van definiálva, és a szabályzatdefiníciók struktúrája igénybe vehet.
-6. Válassza ki **letöltése** a képernyő tetején. 
+6. Válassza ki **letöltése** a képernyő tetején.
 7. Nyissa meg a letöltött zip-fájlt, és mentse **template.json** a számítógépre. A következő szakaszban egy üzembehelyezési sablon eszközzel fogja szerkeszteni a sablont.
 8. A **Paraméterek** lapon tekintheti meg a paraméterekhez megadott értékeket. Jegyezze fel ezeket az értékeket, mivel a következő szakaszban, a sablon üzembe helyezésekor szükség lesz rájuk.
 
@@ -75,6 +75,9 @@ Számos sablon tapasztalt fejlesztők sablonjainak előállítása, amikor azok 
 ## <a name="edit-and-deploy-the-template"></a>Sablon szerkesztése és üzembe helyezése
 
 Az Azure Portal is használható egyes alapvető szerkesztési műveletekhez. Ebben a rövid útmutatóban a portál *Template deployment* nevű eszközét használjuk. *Sablonalapú telepítés* a jelen oktatóanyagban használt, így az egész oktatóanyag egy felület – az Azure portal használatával is elvégezheti. Egy összetettebb sablon szerkesztése, érdemes lehet [Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md), amely gazdagabb Szerkesztés funkciókat biztosít.
+
+> [!IMPORTANT]
+> Sablonalapú telepítés olyan felületet biztosít az egyszerű sablonok tesztelése. A funkció használatához az éles környezetben nem ajánlott. Ehelyett a sablonokat tárolja egy Azure storage-fiókot, vagy a forráskódraktárban, például a Githubból.
 
 Az Azure megköveteli, hogy minden Azure-szolgáltatás egyedi névvel rendelkezzen. A központi telepítés sikertelen lehet, ha a megadott tárfiók neve, amely már létezik. A probléma elkerülése érdekében módosítsa a sablon használatához egy sablon függvény hívásához szükséges `uniquestring()` létrehozni a tárfiók egyedi neve.
 

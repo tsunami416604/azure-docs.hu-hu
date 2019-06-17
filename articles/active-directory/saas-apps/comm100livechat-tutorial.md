@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 203c082275dc75a7dcf948eb42a383300955f355
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a03b185f6df5e32012883d210d684ec08b119019
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60281141"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105028"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-comm100-live-chat"></a>Oktatóanyag: Az Azure Active Directory-integráció az Comm100 élő csevegés
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Comm100 élő csevegés konfigurálásához hozzá k
 
 **Élő csevegés a Comm100 hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -118,7 +118,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Comm100 élő csevegés, haj
 
     | Name (Név) |  Adatforrás-attribútum|
     | ---------------| --------------- |
-    |   e-mail    | user.mail |
+    |   email    | user.mail |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 

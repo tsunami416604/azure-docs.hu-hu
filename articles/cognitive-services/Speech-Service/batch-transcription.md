@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 2148d1bd79a858bec37e6c574c2a6b6e2009fe46
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 1828cdce66104424cc7845fea89127219e6b77a0
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190400"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137267"
 ---
 # <a name="why-use-batch-transcription"></a>Miért érdemes használni a Batch beszédátírási?
 
@@ -66,8 +66,8 @@ Konfigurációs paraméterek JSON-fájlként áll rendelkezésre:
 {
   "recordingsUrl": "<URL to the Azure blob to transcribe>",
   "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
-  "locale": "<local to us, for example en-US>",
-  "name": "<user define name of the transcription batch>",
+  "locale": "<locale to us, for example en-US>",
+  "name": "<user defined name of the transcription batch>",
   "description": "<optional description of the transcription>",
   "properties": {
     "ProfanityFilterMode": "Masked",
@@ -83,12 +83,14 @@ Konfigurációs paraméterek JSON-fájlként áll rendelkezésre:
 
 ### <a name="configuration-properties"></a>Konfiguráció tulajdonságai
 
-| Paraméter | Leírás | Kötelező / választható |
-|-----------|-------------|---------------------|
-| `ProfanityFilterMode` | Adja meg a felismerési eredményeket cenzúrázása kezelése. Elfogadott értékek a következők `none` amely letiltja a vulgáris szűréshez `masked` csillag, amely lecseréli cenzúrázása `removed` amely eltávolítja az összes cenzúrázása az eredményből vagy `tags` ami ad "cenzúrázása" címkék. Az alapértelmezett beállítás `masked`. | Optional |
-| `PunctuationMode` | Adja meg a felismerési eredményeket írásjelek kezelése. Elfogadott értékek a következők `none` ami letiltja az absztrakt, `dictated` explicit írásjelek, amiből `automatic` , amellyel a dekóder írásjelek, kezelése vagy `dictatedandautomatic` írásjelek vagy automatikus azt jelenti, amely során. | Választható |
- | `AddWordLevelTimestamps` | Itt adhatja meg, ha word szintű időbélyeggel kell adni a kimenetet. Elfogadott értékek a következők `true` lehetővé teszi a word szintű időbélyegeket és `false` (az alapértelmezett érték) letiltja azt. | Választható |
- | `AddSentiment` | Megadja a vélemény hozzá kell adni az utterance (kifejezés). Elfogadott értékek a következők `true` ami lehetővé teszi az utterance (kifejezés) / vélemények és `false` (az alapértelmezett érték) letiltja azt. | Választható |
+Ezek a választható tulajdonságok használatával beszédátírási konfigurálása:
+
+| Paraméter | Leírás |
+|-----------|-------------|
+| `ProfanityFilterMode` | Adja meg a felismerési eredményeket cenzúrázása kezelése. Elfogadott értékek a következők `none` amely letiltja a vulgáris szűréshez `masked` csillag, amely lecseréli cenzúrázása `removed` amely eltávolítja az összes cenzúrázása az eredményből vagy `tags` ami ad "cenzúrázása" címkék. Az alapértelmezett beállítás `masked`. |
+| `PunctuationMode` | Adja meg a felismerési eredményeket írásjelek kezelése. Elfogadott értékek a következők `none` ami letiltja az absztrakt, `dictated` explicit írásjelek, amiből `automatic` , amellyel a dekóder írásjelek, kezelése vagy `dictatedandautomatic` írásjelek vagy automatikus azt jelenti, amely során. |
+ | `AddWordLevelTimestamps` | Itt adhatja meg, ha word szintű időbélyeggel kell adni a kimenetet. Elfogadott értékek a következők `true` lehetővé teszi a word szintű időbélyegeket és `false` (az alapértelmezett érték) letiltja azt. |
+ | `AddSentiment` | Megadja a vélemény hozzá kell adni az utterance (kifejezés). Elfogadott értékek a következők `true` ami lehetővé teszi az utterance (kifejezés) / vélemények és `false` (az alapértelmezett érték) letiltja azt. |
 
 ### <a name="storage"></a>Storage
 
@@ -100,6 +102,40 @@ A beszédátírási állapotának lekérdezése nem, a legtöbb nagy teljesítm�
 
 További részletekért lásd: [Webhookok](webhooks.md).
 
+## <a name="speaker-separation-diarization"></a>Hangszóró elkülönítése (Diarization)
+
+Diarization az a folyamat megadhat, az előadók hang olyan eszközben. Kötegelt folyamat Diarization támogatja, és képes a két előadói FELISMERVE a monó csatorna felvételek.
+
+Szeretne kérni, hogy a hanganyag átírása kérelem diarization érdekében dolgoz fel, egyszerűen csak akkor adja hozzá a megfelelő paramétereket a HTTP-kérelem az alább látható módon.
+
+ ```json
+{
+  "recordingsUrl": "<URL to the Azure blob to transcribe>",
+  "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
+  "locale": "<locale to us, for example en-US>",
+  "name": "<user defined name of the transcription batch>",
+  "description": "<optional description of the transcription>",
+  "properties": {
+    "AddWordLevelTimestamps" : "True",
+    "AddDiarization" : "True"
+  }
+}
+```
+
+Word szintű időbélyegek is kellene "bekapcsolva", a paramétereket a fenti kérés a jelzi. 
+
+A megfelelő hanganyag tartalmazni fog egy adott azonosított előadó (jelenleg tesztenként csak két beszédhangot, így az előadók azonosította "Speaker 1 ' és Beszélőfelismerési" % 2") a beszédátírási kimenet követ.
+
+Azt is vegye figyelembe, hogy Diarization nem érhető el a sztereó felvételek. Továbbá minden JSON kimeneti fogja tartalmazni a beszélő címke. Ha nem használja a diarization, megjelenik "Speaker: NULL' a JSON-kimenetét.
+
+Támogatott nyelv az alábbiakban láthatók.
+
+| Nyelv | Területi beállítás |
+|--------|-------|
+| Angol | en-US |
+| kínai | zh-CN |
+| Deutsch | de-DE |
+
 ## <a name="sentiment"></a>Hangulat
 
 Vélemények Batch Beszédátírási API-ban új funkció, a hívás center tartomány egyik fontos szolgáltatása. Az ügyfelek használhatják a `AddSentiment` paramétereket saját kérelmek 
@@ -110,7 +146,7 @@ Vélemények Batch Beszédátírási API-ban új funkció, a hívás center tart
 4.  Kiszűrheti a hiba okát is pozitív negatív hívásainak bekapcsolásakor
 5.  Azonosíthatja a vevők hasonló, és mi, tetszik a termék vagy szolgáltatás
 
-Vélemények ahol egy hang szegmensek közötti időtartam (eltolásnak) az utterance (kifejezés) kezdete és az észlelési csend bájt adatfolyam-részlete hang szegmensenként sorolódik. A teljes szöveg a szegmensen belüli rendszer kiszámítja a róluk szóló véleményeket. Ne kiszámítása bármely összesített véleményértékeket a teljes hívás vagy az egyes csatornák teljes speech. Ezek a további a alkalmazni a tartomány tulajdonosa van hátra.
+Vélemények ahol egy hang szegmensek közötti időtartam (eltolásnak) az utterance (kifejezés) kezdete és az észlelési csend bájt adatfolyam-részlete hang szegmensenként sorolódik. A teljes szöveg a szegmensen belüli rendszer kiszámítja a róluk szóló véleményeket. Ne kiszámítása bármely összesített véleményértékeket a teljes hívás vagy az egyes csatornák teljes speech. Ezen összesítések van hátra a tartomány tulajdonosának további a alkalmazni.
 
 Vélemények alkalmazza a lexikális képernyőn található.
 
@@ -149,11 +185,11 @@ JSON kimeneti mintát alábbi hasonlóan néz ki:
   ]
 }
 ```
-Az funkciók jelenleg bétaverzióban vélemények modellt használ.
+A szolgáltatás, amely jelenleg bétaverzióban vélemények modellt használ.
 
 ## <a name="sample-code"></a>Mintakód
 
-A teljes minta megtalálható a [GitHub-mintaadattárból](https://aka.ms/csspeech/samples) belül a `samples/batch` alkönyvtárat.
+Teljes minták érhetők el a [GitHub-mintaadattárból](https://aka.ms/csspeech/samples) belül a `samples/batch` alkönyvtárat.
 
 Testre szabhatja a mintakódot az előfizetési adatokkal, a szolgáltatás a régióban, az SAS URI-t a hangfájl mutató alapuló átírás és modellezheti az azonosítók, abban az esetben, ha egy egyéni akusztikai és nyelvi modell használni kívánt kell. 
 

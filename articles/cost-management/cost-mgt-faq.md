@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
 ms.openlocfilehash: 02a03adb128c140343032075ec334cbd6d88729b
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002031"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>A Cloudyn kapcsolatos gyakori kérdések
@@ -118,7 +118,7 @@ Egy entitás további CSP-fiókok hozzáadásához válassza **MSP hozzáférés
 
 Előfordulhat, hogy különböző pénznemek használatával több Azure-fiókokon. A Cloudyn cost jelentések azonban ne jelenjen meg egynél több pénznem típusa jelentésenként.
 
-Ha különböző pénznemek használatával több előfizetéssel rendelkezik, egy szülőentitás és annak gyermek entitás pénznemek USD-ben jelennek **$**. A javasolt ajánlott eljárás, hogy kerülje a különböző pénznemek entitás ugyanabban a hierarchiában. Más szóval egy entitás struktúrájából összes előfizetés az adott pénznemben kell használnia.
+Ha különböző pénznemek használatával több előfizetéssel rendelkezik, egy szülőentitás és annak gyermek entitás pénznemek USD-ben jelennek **$** . A javasolt ajánlott eljárás, hogy kerülje a különböző pénznemek entitás ugyanabban a hierarchiában. Más szóval egy entitás struktúrájából összes előfizetés az adott pénznemben kell használnia.
 
 A Cloudyn automatikusan észleli a nagyvállalati szerződés előfizetés pénznem és mutat be megfelelően a jelentésekben.  Azonban a Cloudyn csak jeleníti USD **$** CSP és az Azure web-direct-fiókok esetében.
 

@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c28277f61885b574026b19305bef143f09e0ec69
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9f6cdc782f091709ed00358dd309e9fd4ccfd0eb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785231"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66807695"
 ---
 # <a name="office-365-external-sharing-and-azure-active-directory-b2b-collaboration"></a>Külső megosztás az Office 365 és Azure Active Directory B2B-együttműködés
 
@@ -32,7 +32,7 @@ Onedrive vállalati verzió/SharePoint online-ban rendelkezik egy külön meghí
 
 - Az Azure AD B2B együttműködés meghívott felhasználók is tárolható a OneDrive/SharePoint online-hoz megosztása párbeszédpanel. OneDrive/SharePoint Online meghívott felhasználók is jelennek meg az Azure ad-ben után azokat a Meghívók beváltásához.
 
-- A licencelési követelményeket eltérőek. Minden fizetős Azure AD-licencre, esetében engedélyezheti legfeljebb 5 vendégfelhasználót eléréséhez a fizetős Azure AD-funkciók. Licenceléssel kapcsolatos további tudnivalókért lásd: [Azure AD B2B-licencelés](https://docs.microsoft.com/azure/active-directory/b2b/licensing-guidance) és ["Mi egy külső felhasználót?" a SharePoint Online-ban külső megosztása – áttekintés](https://docs.microsoft.com/sharepoint/external-sharing-overview#what-is-an-external-user).
+- A licencelési követelményeket eltérőek. Minden fizetős Azure AD-licencre, esetében engedélyezheti legfeljebb 5 vendégfelhasználót eléréséhez a fizetős Azure AD-funkciók. Licenceléssel kapcsolatos további tudnivalókért lásd: [Azure AD B2B-licencelés](https://docs.microsoft.com/azure/active-directory/b2b/licensing-guidance) és ["Mi egy külső felhasználót?" a SharePoint Online-ban külső megosztása – áttekintés](https://docs.microsoft.com/sharepoint/external-sharing-overview#what-happens-when-users-share).
 
 Külső megosztás kezelése a OneDrive/SharePoint online-ban az Azure AD B2B együttműködés, állítsa be a onedrive vállalati verzió/SharePoint online-hoz beállítással megosztása külső **a szervezet csak a külső felhasználók már létező megosztás engedélyezése Directory**. A felhasználók folytassa a külsőleg megosztott helyek és a rendszergazda által hozzáadott külső közreműködők választhatok. A rendszergazda adhat hozzá a külső együttműködők a B2B-együttműködés meghívó API-k használatával.
 

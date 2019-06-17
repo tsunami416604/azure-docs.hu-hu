@@ -8,10 +8,10 @@ ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
 ms.openlocfilehash: 09777a9980e4576a5d00123516e33696e845dcac
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65990229"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisszumok a konzisztencia, a rendelkezésre állás és a teljesítmény között 
@@ -52,12 +52,12 @@ Az alábbi táblázat a konzisztencia modellek és az adatok tartóssága régi�
 
 |**Régió(k)**|**Replikációs mód**|**Konzisztenciaszint**|**RPO**|**RTO**|
 |---------|---------|---------|---------|---------|
-|1.|Egy vagy több főkiszolgálós|Bármely Konzisztenciaszint|< 240 perc|< 1 hét|
+|1|Egy vagy több főkiszolgálós|Bármely Konzisztenciaszint|< 240 perc|< 1 hét|
 |>1|Single Master|Session, Consistent Prefix, Eventual|< 15 perc|< 15 perc|
-|>1|Single Master|Korlátozott frissesség|*K* & *T*|< 15 perc|
+|>1|Single Master|Kötött elavulás|*K* & *T*|< 15 perc|
 |>1|Single Master|Erős|0|< 15 perc|
 |>1|Multi-Master|Session, Consistent Prefix, Eventual|< 15 perc|0|
-|>1|Multi-Master|Korlátozott frissesség|*K* & *T*|0|
+|>1|Multi-Master|Kötött elavulás|*K* & *T*|0|
 
 *K* száma = *"K"* elem (azaz a frissítések) verzióit.
 

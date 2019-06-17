@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c37a58cb9f9d1082d02854f43e511e5431d90c13
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2a3523a050a021f3a98c144efe14d692704fba63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60302164"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112216"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Gyors útmutató: Felhőbeli alkalmazások elérése előtt el kell fogadni a használati feltételeket tartalmazó fájl megkövetelése
 
@@ -35,7 +35,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Ebben a rövid útmutatóban a forgatókönyv végrehajtásához szükséges:
 
-- **Hozzáférés az Azure AD Premium Edition** – Azure AD feltételes hozzáférés egy Azure AD Premium-funkció.
+- **Hozzáférés az Azure AD Premium Edition** – Azure AD feltételes hozzáférése egy Azure AD Premium-funkció.
 - **Tesztfiók nevű Isabella Simonsen** – Ha nem tudja, hogyan hozzon létre egy olyan fiókot, lásd: [adja hozzá a felhőalapú felhasználók](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
 ## <a name="test-your-sign-in"></a>A bejelentkezés tesztelése
@@ -57,7 +57,7 @@ A szakasz ismerteti a lépéseket egy minta használati feltételek létrehozás
 
 1. Típus **a használati feltételeket tartalmazó fájl**, és a számítógépre, majd mentse a dokumentumot **mytou.pdf**.
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com) globális, biztonsági vagy feltételes hozzáférés rendszergazdájaként.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) globális rendszergazdai, biztonsági rendszergazdai vagy feltételes hozzáférési rendszergazdájaként.
 
 1. Az Azure Portalon, a bal oldali navigációs sávon kattintson **Azure Active Directory**.
 
@@ -95,14 +95,14 @@ A szakasz ismerteti a lépéseket egy minta használati feltételek létrehozás
 
 ## <a name="create-your-conditional-access-policy"></a>A feltételes hozzáférési szabályzat létrehozása
 
-Ez a szakasz bemutatja, hogyan hozhat létre a feltételes hozzáférési szabályzat. Ebben a rövid útmutatóban a forgatókönyvet használja:
+Ez a szakasz bemutatja, hogyan hozhat létre feltételes hozzáférési szabályzatot. Ebben a rövid útmutatóban a forgatókönyvet használja:
 
 - Az Azure Portalon, mint a használati feltételek elfogadását igénylő felhőalapú alkalmazás esetében helyőrző. 
 - A Mintafelhasználó a feltételes hozzáférési házirend tesztelése.  
 
 Állítsa be a szabályzat:
 
-| Beállítás | Value |
+| Beállítás | Érték |
 | --- | --- |
 | Felhasználók és csoportok | Isabella Simonsen |
 | Felhőalkalmazások | A Microsoft Azure Management |
@@ -150,11 +150,11 @@ Ez a szakasz bemutatja, hogyan hozhat létre a feltételes hozzáférési szabá
 
 1. Az a **hozzáférés-vezérlés** területén kattintson **Grant**.
 
-   ![Hozzáférés-szabályozás](./media/require-tou/10.png)
+   ![Hozzáférés-vezérlés](./media/require-tou/10.png)
 
 1. Az a **Grant** oldalon:
 
-   ![Hozzáférés](./media/require-tou/111.png)
+   ![Támogatás](./media/require-tou/111.png)
 
    1. Válassza ki **hozzáférést**.
 
@@ -164,13 +164,13 @@ Ez a szakasz bemutatja, hogyan hozhat létre a feltételes hozzáférési szabá
 
 1. Az a **házirend engedélyezése** területén kattintson **a**.
 
-   ![Házirend engedélyezése](./media/require-tou/18.png)
+   ![Szabályzat engedélyezése](./media/require-tou/18.png)
 
 1. Kattintson a **Create** (Létrehozás) gombra.
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Egy szimulált bejelentkezési kiértékelése
 
-Most, hogy konfigurálta a feltételes hozzáférési szabályzatot, érdemes ellenőriznie, hogy a várt módon működik-e. Első lépésként, a feltételes hozzáférés használata a Mi történik, ha a házirend eszközzel egy jelentkezzen be a tesztfelhasználó szimulálásához. A szimuláció megbecsüli a bejelentkezésnek a szabályzatokra gyakorolt hatását, és létrehoz egy szimulációs jelentést.  
+Most, hogy a feltételes hozzáférési szabályzat van beállítva, érdemes tudni, hogy a várt módon működik-e azt. Első lépésként, a feltételes hozzáférés használata a Mi történik, ha a házirend eszközzel egy jelentkezzen be a tesztfelhasználó szimulálásához. A szimuláció megbecsüli a bejelentkezésnek a szabályzatokra gyakorolt hatását, és létrehoz egy szimulációs jelentést.  
 
 A mi inicializálni a szabályzat kiértékelési eszközével, ha:
 
@@ -188,7 +188,7 @@ Kattintson a **mi történik, ha** tartalmazó szimuláció jelentést hoz létr
 
 1. Az a [feltételes hozzáférés – szabályzatok](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) lapon, a felső menüben kattintson **mi történik, ha**.  
 
-   ![What If](./media/require-tou/14.png)
+   ![mi van, ha](./media/require-tou/14.png)
 
 1. Kattintson a **felhasználók**válassza **Isabella Simonsen**, és kattintson a **kiválasztása**.
 
@@ -210,7 +210,7 @@ Kattintson a **mi történik, ha** tartalmazó szimuláció jelentést hoz létr
 
 1. Kattintson a **mi történik, ha**.
 
-## <a name="test-your-conditional-access-policy"></a>A feltételes hozzáférési szabályzat tesztelése
+## <a name="test-your-conditional-access-policy"></a>A feltételes hozzáférési házirend tesztelése
 
 Az előző szakaszban megtanulhatta egy szimulált bejelentkezési kiértékelése. A szimuláció mellett is érdemes tesztelnie a feltételes hozzáférési szabályzat, győződjön meg arról, hogy az elvárt módon működik.
 

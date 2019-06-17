@@ -1,20 +1,20 @@
 ---
-title: Automatikus skálázás és zónaredundáns Application Gateway az Azure-ban
+title: Automatikus skálázás és zónaredundáns az Application Gateway v2
 description: Ez a cikk bemutatja, az Azure Application Standard_v2 és WAF_v2 SKU, az automatikus skálázás és zónaredundáns szolgáltatást tartalmaz.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/1/2019
+ms.date: 6/13/2019
 ms.author: victorh
-ms.openlocfilehash: 40564e52cbcde0e835ed97132196bf7ed084f5b7
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: 7cf6b4984f3941da3b2cd0e4eada5eb1d87f2b01
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66431197"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67054741"
 ---
-# <a name="autoscaling-and-zone-redundant-application-gateway"></a>Automatikus skálázás és zónaredundáns az Application Gateway 
+# <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatikus skálázás és zónaredundáns az Application Gateway v2 
 
 Az Application Gateway és a webalkalmazási tűzfal (WAF) egy Standard_v2 és WAF_v2 Termékváltozat alatt is elérhetők. A v2 szintű Termékváltozatot kínál a nagyobb teljesítmény és támogatást nyújt a kritikus fontosságú új funkciók, például az automatikus skálázás, a zone redudancy és statikus virtuális IP-címek támogatása. A Standard és a WAF Termékváltozat a meglévő szolgáltatások továbbra is támogatottak az új v2 termékváltozatban szereplő néhány kivételtől eltekintve [összehasonlító](#differences-with-v1-sku) szakaszban.
 
@@ -71,7 +71,7 @@ Díjszabási információkért tekintse meg a [díjszabását ismertető lapon](
 Egy Application Gateway Standard_v2 nélkül szeretné kiosztani az automatikus skálázás manuális skálázásához módban a rögzített öt példányok kapacitását.
 
 Rögzített ár = 744(hours) * 0,20 $ $148.8 = <br>
-Kapacitásegységek 744 (óra) 10 kapacitásegységet példányonként = * öt példányban * kapacitás egység óránként 0.008 $ $297.6 =
+Kapacitásegységek = 744 (óra) * példányonként 10 kapacitás egység * 5-példánnyal * $0.008 kapacitás egység óránként $297.6 =
 
 Teljes ár = $148.8 + 297.6 $ $446.4 =
 
@@ -85,6 +85,9 @@ Kapacitás egységár = 744(hours) * Max (25/50 számítási egység a kapcsolat
 
 Teljes ár $148 =. 23.81 8 + = $172.61
 
+> [!NOTE]
+> A Max függvény értékek párjai a legnagyobb értéket adja vissza.
+
 **3. példa**
 
 Egy Application Gateway WAF_v2 egy hónapig van kiépítve. Ebben az időszakban 25 új SSL kapcsolatok másodpercenkénti átlagos 8.88 MB/s adatátviteli kap, és másodpercenként 80 kérelem does. Feltéve, hogy kapcsolatok rövid életűek, és, hogy a számítási egység számítási az alkalmazás támogatja a 10 RPS számítási egység, az ár lenne:
@@ -95,11 +98,14 @@ Kapacitás egységár = 744(hours) * Max (számítási egység Max(25/50 for con
 
 Teljes ár = $267.84 + 85.71 $ $353.55 =
 
+> [!NOTE]
+> A Max függvény értékek párjai a legnagyobb értéket adja vissza.
+
 ## <a name="scaling-application-gateway-and-waf-v2"></a>Az Application Gateway és a WAF v2 méretezése
 
 Az Application Gateway és a WAF konfigurálható a méretezési csoport két módban:
 
-- **Az automatikus skálázás** – és az automatikus skálázás engedélyezve van, az Application Gateway és a WAF v2 termékváltozatok kisebbre vagy nagyobbra méretezhetők a alkalmazás forgalom követelményeknek megfelelően. Ebben a módban az alkalmazás nagyobb rugalmasságot biztosít, és szükségtelenné teszi a dolgát, az application gateway méretét vagy példányszámot. Ebben a módban is lehetővé teszi csökkenthetők a költségek átjárók futtatását a maximális kiosztott kapacitás várható maximális forgalmi terhelés nem igényli. Ügyfeleknek meg kell adnia egy minimális és igény szerint maximális példányszámot. Kapacitásérték-minimumot biztosítja, hogy az Application Gateway és a WAF v2-es nem tartoznak a megadott, még akkor is érhető el a forgalmat a példányok minimális száma alatt. A minimális kapacitás, még akkor is érhető el a forgalmat, kell fizetnie. Opcionálisan megadhatja a példányok maximális száma, amely biztosítja, hogy az Application Gateway meghaladja a megadott számú példányok nem méretezhető. Számlázunk az átjáró által kiszolgált forgalom mennyiségének fogja folytatni. A példányok számát 125 0 terjedhet. Az alapértelmezett érték a példányok maximális száma 20 Ha nincs megadva.
+- **Az automatikus skálázás** – és az automatikus skálázás engedélyezve van, az Application Gateway és a WAF v2 termékváltozatok kisebbre vagy nagyobbra méretezhetők a alkalmazás forgalom követelményeknek megfelelően. Ebben a módban az alkalmazás nagyobb rugalmasságot biztosít, és szükségtelenné teszi a dolgát, az application gateway méretét vagy példányszámot. Ebben a módban is lehetővé teszi csökkenthetők a költségek átjárók futtatását a maximális kiosztott kapacitás várható maximális forgalmi terhelés nem igényli. Ügyfeleknek meg kell adnia egy minimális és igény szerint maximális példányszámot. Kapacitásérték-minimumot biztosítja, hogy az Application Gateway és a WAF v2-es nem eshet a megadott, még akkor is érhető el a forgalmat a példányok minimális száma. A minimális kapacitás, még akkor is érhető el a forgalmat, kell fizetnie. Opcionálisan megadhatja a példányok maximális száma, amely biztosítja, hogy az Application Gateway meghaladja a megadott számú példányok nem méretezhető. Számlázunk az átjáró által kiszolgált forgalom mennyiségének fogja folytatni. A példányok számát 125 0 terjedhet. Az alapértelmezett érték a példányok maximális száma 20 Ha nincs megadva.
 - **Manuális** – másik lehetőségként kiválaszthatja a manuális módban, ahol az átjáró nem fog az automatikus méretezés. Ebben a módban Mi az Application Gateway vagy WAF képes kezelni, mint a további adatforgalom esetén azt eredményezheti forgalom adatvesztés. A manuális mód példányszám megadása kötelező. Példányok száma 1 eltérőek lehetnek a 125-példányokhoz.
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Termékváltozat v1 és v2 szintű Termékváltozatot közötti funkcióinak összehasonlítása
@@ -142,11 +148,12 @@ Az alábbi táblázat az egyes Termékváltozat szolgáltatásait hasonlítja ö
 |FIPS-módban|Ezek jelenleg nem támogatottak.|
 |ILB mód|Ez jelenleg nem támogatott. Nyilvános és ILB mód együtt használható.|
 |Netwatcher integráció|Nem támogatott.|
-|Az Azure-támogatási központ-integráció|Még nem érhető el.
+|Az Azure Security Center-integráció|Még nem érhető el.
 
 ## <a name="migrate-from-v1-to-v2"></a>Migrálás az 1-esről a 2-es verzióra
 
-Az Azure PowerShell-parancsfájlt, amelyik segítségére lehet a a v1 az Application Gateway/WAF Termékváltozat v2 automatikus méretezése a PowerShell-galériából érhető el. Ez a szkript segít a v1-átjárón a konfigurációs másolja. Forgalom az áttelepítés akkor továbbra is Ön felelőssége. További részletekért lásd: [áttelepítése Azure Application Gateway v1, v2](migrate-v1-v2.md).
+Az Azure PowerShell-parancsfájlt, amelyik segítségére lehet a a v1 az Application Gateway/WAF Termékváltozat v2 automatikus méretezése a PowerShell-galériából érhető el. Ez a szkript segít a v1-átjárón a konfigurációs másolja. Forgalom az áttelepítés akkor továbbra is Ön felelőssége. További információkért lásd: [áttelepítése Azure Application Gateway v1, v2](migrate-v1-v2.md).
+
 ## <a name="next-steps"></a>További lépések
 
 - [Rövid útmutató: A közvetlen webes forgalom az Azure Application Gatewayjel – Azure portal](quick-create-portal.md)

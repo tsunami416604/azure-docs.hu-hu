@@ -4,18 +4,16 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
-ms.openlocfilehash: 397a8a9b07b4d7a88d0345399ac4abcc3e738a82
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b46a2b18309851bbe2934980137a53d2de6f6efc
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60681278"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "67135354"
 ---
-## <a name="set-up-your-device"></a>Az eszköz beállítása
+## <a name="set-up-your-device-in-unity"></a>Konfigurálja az eszközt a Unity-nél
 
-Nyissa meg a projektre a Unity, az `Unity` mappát.
-
-![Unity-ablak](./media/spatial-anchors-unity/unity-window.png)
+[!INCLUDE [Open Unity Project](spatial-anchors-open-unity-project.md)]
 
 ### <a name="set-up-an-android-device"></a>Egy Android-eszköz beállítása
 
@@ -43,20 +41,26 @@ Jelentkezzen be az Android-eszközön, és csatlakozzon a számítógéphez egy 
 
 Nyissa meg **Build Settings** kiválasztásával **fájl** > **Build Settings**.
 
-Alatt **jelenetek épít**, mellett jelölje be a `AzureSpatialAnchorsPlugin/Examples/AzureSpatialAnchorsLocalSharedDemo` jelenet, és törölje a jelölőnégyzet az összes többi jelenetek jelöli meg.
+A **jelenetek épít**, győződjön meg arról, minden a színfalak be van jelölve mellettük.
 
 Győződjön meg arról, hogy **exportálása projekt** nem be van jelölve. Válassza ki **létrehozásához és futtatásához**. Kérni fogja menteni a `.apk` fájlt. Bármilyen nevet, kiválaszthatja.
 
-Kövesse az utasításokat az alkalmazásban. Választhat **Létrehozás & megosztás Forráshorgony** vagy **keresse meg a megosztott Forráshorgony**. Az első forgatókönyv, amely ugyanazon az eszközön vagy egy másik később található horgonyra létrehozását teszi lehetővé. A második forgatókönyv szerint, ha már futtatott az alkalmazást, vagy ugyanazon az eszközön, vagy egy másik, a lehetővé teszi, hogy keresse meg a korábban megosztott horgonyok. Miután a forgatókönyvet, az alkalmazás végigvezeti az tájékoztatjuk a további köré, hogy mi a teendő. Például akkor felszólítja az eszköz Navigálás környezeti információkat gyűjthet. Később a, fog horgonyra helyezze a világon, fog, várjon, amíg feltölti, és így tovább.
+Miután az alkalmazás elindul, a a **válassza ki A Demo** párbeszédpanelen, a jobb vagy bal nyíl segítségével válassza ki a a **LocalShare** lehetőséget, majd koppintson a **nyissa meg!** . Kövesse az utasításokat az alkalmazásban. Választhat **Létrehozás & megosztás Forráshorgony** vagy **keresse meg a megosztott Forráshorgony**.
+
+Az első forgatókönyv, amely ugyanazon az eszközön vagy egy másik később található horgonyra létrehozását teszi lehetővé.
+A második forgatókönyv szerint, ha már futtatott az alkalmazást, vagy ugyanazon az eszközön, vagy egy másik, a lehetővé teszi, hogy keresse meg a korábban megosztott horgonyok. Miután a forgatókönyvet, az alkalmazás végigvezeti az körül, mi a teendő további utasításokat. Ha például rendszer, az eszköz Navigálás környezeti információk gyűjtésére. Később a, fog horgonyra helyezze a világon, várja meg, hogy mentse, és így tovább.
 
 ### <a name="deploy-to-an-ios-device"></a>IOS-eszközön való üzembe helyezése
 
 Nyissa meg **Build Settings** kiválasztásával **fájl** > **Build Settings**.
 
-Alatt **jelenetek épít**, mellett jelölje be a `AzureSpatialAnchorsPlugin/Examples/AzureSpatialAnchorsLocalSharedDemo` jelenet, és törölje a jelölőnégyzet az összes többi jelenetek jelöli meg.
+A **jelenetek épít**, győződjön meg arról, minden a színfalak be van jelölve mellettük.
 
 [!INCLUDE [Configure Xcode](spatial-anchors-unity-ios-xcode.md)]
 
-Kövesse az utasításokat az alkalmazásban. Választhat **Létrehozás & megosztás Forráshorgony** vagy **keresse meg a megosztott Forráshorgony**. Az első forgatókönyv, amely ugyanazon az eszközön vagy egy másik később található horgonyra létrehozását teszi lehetővé. A második forgatókönyv szerint, ha már futtatott az alkalmazást, vagy ugyanazon az eszközön, vagy egy másik, a lehetővé teszi, hogy keresse meg a korábban megosztott horgonyok. Miután a forgatókönyvet, az alkalmazás végigvezeti az tájékoztatjuk a további köré, hogy mi a teendő. Például akkor felszólítja az eszköz Navigálás környezeti információkat gyűjthet. Később a, fog horgonyra helyezze a világon, fog, várjon, amíg feltölti, és így tovább.
+Miután az alkalmazás elindul, a a **válassza ki A Demo** párbeszédpanelen, a jobb vagy bal nyíl segítségével válassza ki a a **LocalShare** lehetőséget, majd koppintson a **nyissa meg!** . Kövesse az utasításokat az alkalmazásban. Választhat **Létrehozás & megosztás Forráshorgony** vagy **keresse meg a megosztott Forráshorgony**.
+
+Az első forgatókönyv, amely ugyanazon az eszközön vagy egy másik később található horgonyra létrehozását teszi lehetővé.
+A második forgatókönyv szerint, ha már futtatott az alkalmazást, vagy ugyanazon az eszközön, vagy egy másik, a lehetővé teszi, hogy keresse meg a korábban megosztott horgonyok. Miután a forgatókönyvet, az alkalmazás végigvezeti az körül, mi a teendő további utasításokat. Ha például rendszer, az eszköz Navigálás környezeti információk gyűjtésére. Később a, fog horgonyra helyezze a világon, várja meg, hogy mentse, és így tovább.
 
 Az xcode-ban, állítsa le az alkalmazást a kiválasztásával **leállítása**.

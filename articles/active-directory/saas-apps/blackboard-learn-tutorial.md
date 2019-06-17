@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60aacc3d4d5743187ec826fb9f544488171b1285
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 26d32c0ed471170dac3fa791ef5a77feef67b051
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65900727"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106177"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn"></a>Oktatóanyag: Antik ismerje meg az Azure Active Directory-integráció
 
@@ -54,7 +54,7 @@ Konfigurálása az Azure AD integrálása a Antik ismerje meg, hozzá kell Antik
 
 **Ismerje meg, antik hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -214,7 +214,7 @@ Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával 
 
 Ebben a szakaszban egy Britta Simon nevű Antik ismerje meg a felhasználó hoz létre. Antik ismerje meg az alkalmazás támogatja a csak az idő felhasználókiépítés. Győződjön meg arról, hogy konfigurálta a jogcímeket a szakaszban leírt módon **konfigurálása az Azure AD egyszeri bejelentkezés**
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

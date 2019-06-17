@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/22/2019
-ms.openlocfilehash: 15aedaa7eedad4940945e9b1e7eff0e1780da796
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: ca29bfdb381c5cab0625a320679331c82f63c887
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790386"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67118074"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>A Virtuálismag-alapú vásárlási modell segítségével az önálló adatbázisok számára erőforráskorlátok
 
@@ -131,7 +131,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 
 A [kiszolgáló nélküli számítási kapacitás](sql-database-serverless.md) előzetes verzióban érhető el, és csak az önálló adatbázisok használatával, a virtuális mag vásárlási modell.
 
-#### <a name="generation-5-compute-platform"></a>5. generáció számítási platform
+#### <a name="generation-5-compute-platform"></a>5\. generáció számítási platform
 
 |Számítási mérete|GP_S_Gen5_1|GP_S_Gen5_2|GP_S_Gen5_4|
 |:--- | --: |--: |--: |
@@ -146,7 +146,7 @@ A [kiszolgáló nélküli számítási kapacitás](sql-database-serverless.md) e
 |A TempDB mérete (GB)|32|64|128|
 |Tárolási típus|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|
 |IO-késés (becsült)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|
-|Cél IOPS (64 KB)|250|500|1000|
+|Cél IOPS (64 KB)|500|1000|2000|
 |Napló Sebességhatár (MB/s)|2.5|5.6|10|
 |Egyidejű feldolgozók (kérelmek) maximális|75|150|300|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|
@@ -255,7 +255,7 @@ A [kiszolgáló nélküli számítási kapacitás](sql-database-serverless.md) e
 
 ## <a name="hyperscale-service-tier"></a>Rugalmas skálázás szolgáltatási szint
 
-### <a name="generation-5-compute-platform"></a>5. generáció számítási platform
+### <a name="generation-5-compute-platform"></a>5\. generáció számítási platform
 
 |Teljesítményszint|HS_Gen5_2|HS_Gen5_4|HS_Gen5_8|HS_Gen5_16|HS_Gen5_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |
@@ -265,7 +265,7 @@ A [kiszolgáló nélküli számítási kapacitás](sql-database-serverless.md) e
 |Oszlopcentrikus támogatása|Igen|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
 |Memóriabeli OLTP storage (GB)|–|N/A|N/A|N/A|N/A|N/A|N/A|–|
 |Maximális adatméret (TB)|100 |100 |100 |100 |100 |100 |100 |100 |
-|Max. napló mérete (TB)|1. |1 |1 |1 |1 |1 |1 |1. |
+|Max. napló mérete (TB)|1 |1 |1 |1 |1 |1 |1 |1 |
 |A TempDB mérete (GB)|64|128|256|384|384|384|384|384|
 |Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
 |Cél IOPS (64 KB)|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|

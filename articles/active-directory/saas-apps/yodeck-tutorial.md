@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 8fce54cba0b0b64390256bc9669821fa582c2e8a
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: af0748f36e8d2299921f987c517f7a4923bd0d55
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920115"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67086477"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yodeck"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Yodeck
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Yodeck konfigurálásához hozzá kell Yodeck a kata
 
 **Yodeck hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

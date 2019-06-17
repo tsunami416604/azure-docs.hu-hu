@@ -12,12 +12,12 @@ ms.reviewer: sstein, carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 5c8a15aa5198983a56a0238c1bb56f9345d07acc
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 2ca2e4e98f56f7df5e81217bcda00179f05ff69e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258594"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070356"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Az SQL Serverről Azure SQL Database felügyelt példány T-SQL különbségek
 
@@ -276,6 +276,7 @@ További információkért lásd: [ALTER DATABASE](https://docs.microsoft.com/sq
 
 ### <a name="sql-server-agent"></a>SQL Server Agent
 
+- Engedélyezése és letiltása SQL Server-ügynök jelenleg nem támogatott a felügyelt példány. SQL-ügynök mindig fut-e.
 - Az SQL Server Agent-beállítások csak olvashatók. Az eljárás `sp_set_agent_properties` a felügyelt példány nem támogatott. 
 - Feladatok
   - T-SQL-feladat lépései támogatottak.
@@ -456,13 +457,13 @@ Kereszt-példány service broker nem támogatott:
 - `Extended stored procedures` nem támogatott, mert az tartalmazza `sp_addextendedproc`  és `sp_dropextendedproc`. Lásd: [bővített tárolt eljárások](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
 - `sp_attach_db`, `sp_attach_single_file_db`, és `sp_detach_db` nem támogatottak. Lásd: [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql), és [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
 
-## <a name="Environment"></a>Environmet megkötései
+## <a name="Environment"></a>Környezet megkötései
 
 ### <a name="subnet"></a>Alhálózat
 - Az alhálózat, a felügyelt példány számára lefoglalt erőforrásokat (például virtuális gépek) nem helyezhető el. Helyezze el ezeket az erőforrásokat más alhálózatokat.
 - Alhálózatot kell rendelkeznie a rendelkezésre álló elegendő számú [IP-címek](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Minimális érték 16, bár javasoljuk, hogy az alhálózat legalább 32 IP-címekkel rendelkeznek.
 - [A Szolgáltatásvégpontok nem rendelhető hozzá a felügyelt példány alhálózatára](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Győződjön meg arról, hogy a szolgáltatás-végpontok lehetőség le van tiltva a virtuális hálózat létrehozásakor.
-- A számát és típusát, amelyek alhálózati elhelyezheti rendelkezik néhány [korlátok és korlátozások](sql-database-managed-instance-resource-limits.md#strategies-for-deploying-mixed-general-purpose-and-business-critical-instances)
+- A virtuális magok száma és a egy régióban üzembe helyezhető példányok típusú rendelkezik néhány [korlátok és korlátozások](sql-database-managed-instance-resource-limits.md#regional-resource-limitations).
 - Van azonban néhány [biztonsági szabályt, amelyek a alkalmazni kell az alhálózaton](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
 
 ### <a name="vnet"></a>VNET

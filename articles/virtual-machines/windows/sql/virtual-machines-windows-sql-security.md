@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 69b6bd07699d179fc87ac6c5364a7a34b23d14eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d5d10562a70b7d37908bc272bf555fd967831009
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477555"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076933"
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Az SQL Server Azure-beli virtuális gépeken történő futtatásának biztonsági szempontjai
 
@@ -42,7 +42,7 @@ Az alábbi szakaszok ezen a ponton keresztül terhelése a javaslatokat.
 
 ## <a name="secure-connections"></a>Biztonságos kapcsolatok
 
-A katalógus-lemezkép, egy SQL Servert futtató virtuális gép létrehozásakor a **SQL Server-kapcsolódás** lehetőséget ad a kiválasztott **(a virtuális gépen) helyi**, **magánhálózati (virtuális hálózaton belül)**, vagy **nyilvános (Internet)**.
+A katalógus-lemezkép, egy SQL Servert futtató virtuális gép létrehozásakor a **SQL Server-kapcsolódás** lehetőséget ad a kiválasztott **(a virtuális gépen) helyi**, **magánhálózati (virtuális hálózaton belül)** , vagy **nyilvános (Internet)** .
 
 ![Az SQL Server-kapcsolódás](./media/virtual-machines-windows-sql-security/sql-vm-connectivity-option.png)
 
@@ -62,9 +62,11 @@ Végül érdemes megfontolni az Azure-beli virtuális gépen az SQL Server adatb
 
 Alapértelmezés szerint az SQL Server a jól ismert porton figyel, 1433-as. A fokozott biztonság érdekében az SQL Server nem alapértelmezett porton, például az 1401 konfigurálása. Üzembe helyez egy SQL Server-katalógus lemezképet az Azure Portalon, ha ezt a portot megadhatja a **SQL Server-beállítások** panelen.
 
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
 Ennek konfigurálásához üzembe helyezés után két lehetősége van:
 
-- A Resource Manager virtuális gépek esetében választhatja **SQL Server-konfiguráció** a virtuális gép – áttekintés panelről. Ez lehetőséget biztosít, hogy módosítsa a portot.
+- A Resource Manager virtuális gépek esetében választhatja **biztonsági** származó a [SQL virtuális gépek erőforrás](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource). Ez lehetőséget biztosít, hogy módosítsa a portot.
 
   ![A portál módosítsa TCP-port](./media/virtual-machines-windows-sql-security/sql-vm-change-tcp-port.png)
 

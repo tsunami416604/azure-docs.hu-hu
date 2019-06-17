@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/13/2019
 ms.author: v-mohabe
 ms.openlocfilehash: cc0c319357b39ddb3e88d515613273a6f7dc0867
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65968799"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Fájlintegritási monitorozás az Azure Security Centerben
@@ -135,7 +135,7 @@ A **módosítások** (lásd alább) lapon látható a munkaterület összes mód
 
    **Munkaterület-konfiguráció** megnyílik a Megjelenítés a három lappal: **Windows beállításjegyzék**, **Windows fájlok**, és **Linux-fájlok**. Minden lap, Ön által szerkeszthető, amelynek-entitásokat sorolja fel. Minden entitás szerepel, a Security Center azonosítja a FIM-e (igaz) engedélyezve van, vagy nincs engedélyezve az (hamis).  Az entitás szerkesztését teszi lehetővé engedélyezheti vagy tilthatja le a FIM.
 
-   ![Munkaterület konfigurálása][12]
+   ![Munkaterület-konfiguráció][12]
 
 2. Válassza ki az identity protection. Ebben a példában egy elem, a Windows beállításjegyzék kiválasztott. **A Change Tracking megoldásba szerkesztése** nyílik meg.
 
@@ -172,7 +172,7 @@ A **szerkesztése a Change Tracking megoldásba** is:
 
 4. Alatt **munkaterület-konfiguráció**, válasszon ki egy csoportot, **engedélyezve** értéke igaz.
 
-   ![Munkaterület konfigurálása][18]
+   ![Munkaterület-konfiguráció][18]
 
 5. A **szerkesztése a Change Tracking megoldásba** ablak set **engedélyezve** hamis értékre.
 

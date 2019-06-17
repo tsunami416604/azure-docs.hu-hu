@@ -14,10 +14,10 @@ ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
 ms.openlocfilehash: 81f1ac3280381ef08a1daf1fa4e041227a07aeaf
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66003022"
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>Az Azure SQL Server Stretch Database szolgáltatás összes téma
@@ -26,7 +26,7 @@ Ez a témakör felsorolja az összes többi témakör, amely közvetlenül a alk
 ## <a name="get-started"></a>Bevezetés
 | &nbsp; | Beosztás | Leírás |
 | ---:|:--- |:--- |
-| 1. |[Adatbázisok és táblák azonosítása Stretch Database for Stretch Database Advisor futtatásával](sql-server-stretch-database-identify-databases.md) |Ismerje meg, hogyan azonosíthatja az adatbázisok és táblák a Stretch Database-kompatibilis. |
+| 1 |[Adatbázisok és táblák azonosítása Stretch Database for Stretch Database Advisor futtatásával](sql-server-stretch-database-identify-databases.md) |Ismerje meg, hogyan azonosíthatja az adatbázisok és táblák a Stretch Database-kompatibilis. |
 | 2 |[A Stretch Database korlátozásai](sql-server-stretch-database-limitations.md) |Ismerje meg a Stretch Database korlátozásai. |
 | 3 |[A Stretch Database – áttekintés](sql-server-stretch-database-overview.md) |Ismerje meg, hogy a Stretch Database hogyan telepíti át a ritkán használt adatokat átlátható módon és biztonságosan a Microsoft Azure felhőbe. |
 | 4 |[Első lépések: az Enable Database futtatása Stretch varázsló](sql-server-stretch-database-wizard.md) |Ebből a cikkből megtanulhatja, hogyan konfigurálhatja adatbázisait a Stretch Database-zel való használatra az Enable Database for Stretch (A Stretch Database használatának engedélyezése az adatbázison) varázsló futtatásával. |
@@ -38,7 +38,7 @@ Ez a témakör felsorolja az összes többi témakör, amely közvetlenül a alk
 | 6 |[Enable Stretch Database for a table (A Stretch Database használatának engedélyezése táblákon)](sql-server-stretch-database-enable-table.md) |Ismerje meg a Stretch Database egy táblázat konfigurálása. |
 | 7 |[Egy szűrőfüggvény (Stretch Database) az áttelepíteni kívánt sorok kiválasztásához](sql-server-stretch-database-predicate-function.md) |Ismerje meg, hogyan lehet egy szűrőfüggvényt az áttelepíteni kívánt sorok kiválasztásához. |
 
-## <a name="manage"></a>Felügyelet
+## <a name="manage"></a>Kezelés
 | &nbsp; | Beosztás | Leírás |
 | ---:|:--- |:--- |
 | 8 |[Tiltsa le a Stretch Database, és bring back távoli adatok](sql-server-stretch-database-disable.md) |Útmutató a Stretch Database letiltása a tábla, illetve szükség esetén vissza távoli adatok. |
@@ -46,7 +46,7 @@ Ez a témakör felsorolja az összes többi témakör, amely közvetlenül a alk
 | 10 |[Figyelése és hibaelhárítása (Stretch Database) adatáttelepítés](sql-server-stretch-database-monitor.md) |Ismerje meg, hogy az adatok áttelepítési állapotának figyelése. |
 | 11 |[(A Stretch Database) adatok áttelepítés felfüggesztése és folytatása](sql-server-stretch-database-pause.md) |Megtudhatja, hogyan felfüggesztése vagy folytatása adatok migrálása az Azure-bA. |
 
-## <a name="security"></a>Biztonsági
+## <a name="security"></a>Biztonság
 | &nbsp; | Beosztás | Leírás |
 | ---:|:--- |:--- |
 | 12 |[Transzparens adattitkosítás (TDE) engedélyezze a Stretch Database az Azure-ban](sql-server-stretch-database-encryption-tde.md) |Az SQL Server Stretch Database az Azure-ban transzparens adattitkosításának (TDE) engedélyezése |

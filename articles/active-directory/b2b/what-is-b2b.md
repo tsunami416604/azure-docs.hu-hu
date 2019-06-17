@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ab73b501fc9dbe6209a92fff6f6e19de03fcdc1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 5c5c133fe728126ea07834c8ff5b02b1203ec326
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65768081"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112687"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Mi az vendég hozzáférés az Azure Active Directory B2B-ben?
 
@@ -46,7 +46,7 @@ A vendégfelhasználók a saját munkahelyi, iskolai vagy közösségi identitá
 ![Képernyőfelvétel: a felülvizsgálati – engedélyek lap](media/what-is-b2b/consentscreen.png)
 
 ## <a name="use-policies-to-securely-share-your-apps-and-services"></a>Házirendek használata az alkalmazások és szolgáltatások biztonságos megosztásához
-A vállalati tartalom védelmére használhat engedélyezési házirendeket. Feltételes hozzáférési szabályzatokat, például többtényezős hitelesítést a következőképpen lehet érvényesíteni:
+A vállalati tartalom védelmére használhat engedélyezési házirendeket. Feltételes hozzáférési szabályzatok, például a többtényezős hitelesítés, a következőkkel lehet érvényesíteni:
 - A bérlői szinten.
 - Az alkalmazási szinten.
 - Meghatározott vendégfelhasználók számára a vállalati alkalmazások és adatok védelmére.

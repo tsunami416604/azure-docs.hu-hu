@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: f84e81a5a9e9c9cf6f477adefa0869d776f7dd71
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ec6a6ea5d00d43f6dffa3aabc367d94ebb8db198
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61487341"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075611"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>A Lsv2 sorozatú virtuális gépek teljesítményének optimalizálása
 
@@ -24,7 +24,7 @@ Lsv2 sorozatú virtuális gépek támogatják a különböző számos különfé
 
 A kialakítás a Lsv2 sorozatú virtuális gépek (VM) a lehető legnagyobbra növeli a AMD EPYC™ 7551 processzor, a processzor, memória, NVMe-eszközök és a virtuális gépek között a lehető legjobb teljesítményt. Maximalizálása a hardverek teljesítményére, valamint Lsv2-sorozat virtuális gépei úgy tervezték, hogy a jobb teljesítmény érdekében az a hardver- és a Windows és Linux operációs rendszerek igényeinek megfelelően dolgozhat.
 
-Hardver- és finomhangolási eredményezett optimalizált verziója [Windows Server 2019 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WindowsServer?tab=Overview), az Azure piactéren, amely támogatja a maximális teljesítményt az NVMe-eszközök Lsv2-sorozat a korai December 2018-ban kiadott Virtuális gépek.
+Hardver- és finomhangolási eredményezett optimalizált verziója [Windows Server 2019 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), az Azure piactéren, amely támogatja a maximális teljesítményt az NVMe-eszközök Lsv2-sorozat a korai December 2018-ban kiadott Virtuális gépek.
 
 Ez a cikk ismerteti a tippeket, és annak biztosítására, a számítási feladatok és alkalmazások javaslatok érheti el a maximális teljesítményt, a virtuális gépek tervezett. Ezen a lapon található információkat folyamatosan frissítjük a optimalizált Lsv2 további rendszerképeket az Azure Marketplace-en való hozzáadása során.
 

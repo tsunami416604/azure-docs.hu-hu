@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/09/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d3e79b00545f76dff9442a11864701d6d61f057
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d1688cc9317306e7f524536754854b6147ad3dd5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784572"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108770"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>Gyors útmutató: Az Azure Active Directory-bérlőhöz alkalmazás hozzáadása
 
@@ -24,7 +24,7 @@ Az Azure Active Directory (Azure AD) rendelkezik egy katalógussal, amely több 
 
 Miután hozzáadta az alkalmazást az Azure AD-bérlőhöz, a következőket teheti:
 
-- Az alkalmazáshoz való felhasználói hozzáférés kezelése feltételes hozzáférési szabályzattal.
+- Az alkalmazás a feltételes hozzáférési szabályzattal együtt való felhasználói hozzáférés kezelését.
 - Felhasználók konfigurálása az alkalmazásba való egyszeri bejelentkezésre az Azure AD-fiókkal.
 
 ## <a name="before-you-begin"></a>Előkészületek
@@ -58,7 +58,7 @@ Katalógusbeli alkalmazás hozzáadása az Azure AD-bérlőhöz:
 
 1. Egy alkalmazáshoz, a Keresés **Hozzáadás a katalógusból**, írja be a hozzáadni kívánt alkalmazás nevét. Válassza ki az alkalmazást az eredményeket, és válassza ki a **Hozzáadás**. A következő példa bemutatja a **alkalmazás hozzáadása** keresése a github.com után megjelenő képernyőn.
 
-    ![Alkalmazás felvétele](media/add-application-portal/add-an-application.png)
+    ![Alkalmazás hozzáadása](media/add-application-portal/add-an-application.png)
 
 1. Az alkalmazásspecifikus űrlapon módosíthatja a tulajdonságokat. Például szerkesztheti az alkalmazás nevét, hogy az megfeleljen a vállalat igényeinek. Ebben a példában a **GitHub-test** nevet használjuk.
 
@@ -72,7 +72,7 @@ Befejezte az alkalmazás. Nyugodtan tartson szünetet. A következő szakaszokba
 
 Tegyük fel, hogy időközben valamiért el kellett mennie, és most folytatja az alkalmazás konfigurálását. Az első teendő, keresse meg az alkalmazást.
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, válassza a bal oldali navigációs panelen, **Azure Active Directory**.
+1. Az a  **[az Azure portal](https://portal.azure.com)** , válassza a bal oldali navigációs panelen, **Azure Active Directory**.
 
 1. Az a **Azure Active Directory** ablaktáblán válassza előbb **vállalati alkalmazások**.
 
@@ -122,7 +122,7 @@ Alkalmazás tulajdonságainak szerkesztése:
 
        | Alkalmazás tulajdonságainak beállításai | | | Felhasználói élmény – nem hozzárendelt felhasználók | |
        |---|---|---|---|---|
-       | Engedélyezett a felhasználók számára a bejelentkezés? | Kell felhasználó-hozzárendelés? | Felhasználók számára látható? | Bejelentkezhetnek a nem hozzárendelt felhasználók? | Látható az alkalmazás a nem hozzárendelt felhasználók számára?* |
+       | Engedélyezett a felhasználók számára a bejelentkezés? | Felhasználó-hozzárendelés szükséges? | Felhasználók számára látható? | Bejelentkezhetnek a nem hozzárendelt felhasználók? | Látható az alkalmazás a nem hozzárendelt felhasználók számára?* |
        | igen | igen | igen | nem  | nem   |
        | igen | igen | nem  | nem  | nem   |
        | igen | nem  | igen | igen | nem   |
