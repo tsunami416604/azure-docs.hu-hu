@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 149452bd7d43ce46f320b9bae63a6f9cd48d98d4
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: e1583ccf04b68f81a71bd2f63779680427ce3362
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730699"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67068782"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Az Azure Disk Encryption IaaS virtuális gépekhez – gyakori kérdések
 
@@ -33,7 +33,7 @@ Semmilyen díjat nem az Azure Disk Encryption Virtuálisgép-lemezek titkosítá
 
 ## <a name="which-virtual-machine-tiers-does-azure-disk-encryption-support"></a>Melyik virtuális gép csomagja támogatja az Azure Disk Encryption?
 
-Beleértve a standard szintű virtuális gépeken érhető el az Azure Disk Encryption [A, D, DS, G, GS és F](https://azure.microsoft.com/pricing/details/virtual-machines/) sorozatú IaaS virtuális gépek. Egyben a premium storage virtuális gép esetében elérhető. Nem érhető el az alapszintű csomag virtuális gépeket.
+Beleértve a standard szintű virtuális gépeken érhető el az Azure Disk Encryption [A, D, DS, E, G, GS és F](https://azure.microsoft.com/pricing/details/virtual-machines/) sorozatú IaaS virtuális gépek. Egyben a premium storage virtuális gép esetében elérhető. Nem érhető el az alapszintű csomag virtuális gépeket.
 
 ## <a name="bkmk_LinuxOSSupport"></a> Milyen Linux-disztribúciók támogatja az Azure Disk Encryption?
 
@@ -121,7 +121,9 @@ Igen. Az Azure AD-alkalmazás használatával lemeztitkosítás továbbra is tá
 Az Azure PowerShell SDK legújabb verziójának segítségével konfigurálhatja az Azure Disk Encryption. Töltse le a legújabb verzióját [Azure PowerShell-lel](https://github.com/Azure/azure-powershell/releases). Az Azure Disk Encryption van *nem* Azure SDK 1.1.0-s verzió által támogatott.
 
 > [!NOTE]
-> A Linux Azure lemez titkosítási előzetes bővítmény elavult. További információkért lásd: [kivezetése Azure lemez titkosítási előzetes bővítmény Linux rendszerű IaaS virtuális gépek](https://blogs.msdn.microsoft.com/azuresecurity/2017/07/12/deprecating-azure-disk-encryption-preview-extension-for-linux-iaas-vms/).
+> A Linux Azure lemez titkosítási előzetes bővítmény "Microsoft.OSTCExtension.AzureDiskEncryptionForLinux" elavult. Az Azure disk encryption előzetes kiadásban ez a bővítmény tettek közzé. A bővítmény előzetes verzióját a tesztelési vagy éles környezetben nem használjon.
+
+> A különféle telepítési környezetekhez hasonlóan az Azure Resource Manager (ARM), ahol nincs szüksége az Azure disk encryption bővítményt a Linuxos IaaS virtuális gép titkosításának Linux rendszerű virtuális gép üzembe helyezéséhez, az Azure disk encryption támogatott éles bővítményt kell használnia" Microsoft.Azure.Security.AzureDiskEncryptionForLinux".
 
 ## <a name="can-i-apply-azure-disk-encryption-on-my-custom-linux-image"></a>Használhatom az Azure Disk Encryption saját egyéni Linux-rendszerképen?
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 66393ffa5e8837b104e42df03ab3af5d6deea936
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c0a1f58705a64a973bb91e47e6e9fce87a48ce99
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65868768"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094215"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promaster-by-inlogik"></a>Oktatóanyag: Az Azure Active Directory integrációja az ProMaster (által Inlogik)
 
@@ -53,7 +53,7 @@ ProMaster (által Inlogik) integrálása az Azure AD beállítása, hozzá kell 
 
 **ProMaster (által Inlogik) hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -65,7 +65,7 @@ ProMaster (által Inlogik) integrálása az Azure AD beállítása, hozzá kell 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **ProMaster (által Inlogik)**, jelölje be **(által Inlogik) ProMaster** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **ProMaster (által Inlogik)** , jelölje be **(által Inlogik) ProMaster** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
      ![Az eredmények listájában (által Inlogik) ProMaster](common/search-new-app.png)
 
@@ -172,7 +172,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés ProMaster (által Inlogik) Azure egyszeri bejelentkezés használatára.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **ProMaster (által Inlogik)**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **ProMaster (által Inlogik)** .
 
     ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
@@ -198,7 +198,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű ProMaster (által Inlogik) hoz létre. Együttműködve [(által Inlogik) ProMaster támogatási csapatának](mailto:michael.boldiston@inlogik.com) a felhasználók hozzáadása a ProMaster (által Inlogik) platform. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

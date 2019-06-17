@@ -11,10 +11,10 @@ tags: connectors
 ms.topic: conceptual
 ms.date: 05/25/2019
 ms.openlocfilehash: 27475fb3f086dbc5166a473e9d657d2dab723938
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66297626"
 ---
 # <a name="delay-running-the-next-action-in-azure-logic-apps"></a>Késleltetés a következő művelet futtatása az Azure Logic Appsben
@@ -53,9 +53,9 @@ A logikai alkalmazás mennyi idő a következő művelet futtatása előtt várj
 
    ![Adja meg a késleltetés ideje](./media/connectors-native-delay/delay-time-intervals.png)
 
-   | Tulajdonság | JSON-név | Kötelező | Típus | Leírás |
+   | Tulajdonság | JSON-név | Szükséges | Típus | Leírás |
    |----------|-----------|----------|------|-------------|
-   | Count | count | Igen | Integer | Késleltetési idő egységek száma |
+   | Count | count | Igen | Egész szám | Késleltetési idő egységek száma |
    | Unit (Egység) | Egység | Igen | String | Az időegység, például: `Second`, `Minute`, `Hour`, `Day`, `Week`, vagy `Month` |
    ||||||
 
@@ -81,7 +81,7 @@ A logikai alkalmazás mennyi idő a következő művelet futtatása előtt várj
 
    | Tulajdonság | JSON-név | Kötelező | Típus | Leírás |
    |----------|-----------|----------|------|-------------|
-   | Timestamp | timestamp | Igen | String | A záró dátum és idő folytatásához a munkafolyamatot, ebben a formátumban: <p>ÉÉÉÉ-hh-DDThh:mm:ssZ <p>Így például, ha azt szeretné, 2017. szeptember 18., 2:00-kor, adja meg "2017-09-18T14:00:00Z". <p>**Megjegyzés:** Ez idő formátumot kell követnie a [ISO 8601 dátum-idő specifikáció](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) a [UTC idő dátumformátum](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), de egy [posun UTC místního](https://en.wikipedia.org/wiki/UTC_offset). Nélkül időzónát hozzá kell adnia a levél "Z" végén szóközök nélkül. A "Z" hivatkozik az azzal egyenértékű [hajózási idő](https://en.wikipedia.org/wiki/Nautical_time). |
+   | Időbélyeg | timestamp | Igen | String | A záró dátum és idő folytatásához a munkafolyamatot, ebben a formátumban: <p>ÉÉÉÉ-hh-DDThh:mm:ssZ <p>Így például, ha azt szeretné, 2017. szeptember 18., 2:00-kor, adja meg "2017-09-18T14:00:00Z". <p>**Megjegyzés:** Ez idő formátumot kell követnie a [ISO 8601 dátum-idő specifikáció](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) a [UTC idő dátumformátum](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), de egy [posun UTC místního](https://en.wikipedia.org/wiki/UTC_offset). Nélkül időzónát hozzá kell adnia a levél "Z" végén szóközök nélkül. A "Z" hivatkozik az azzal egyenértékű [hajózási idő](https://en.wikipedia.org/wiki/Nautical_time). |
    ||||||
 
 1. Adja hozzá a munkafolyamatot futtatni kívánt műveletek.

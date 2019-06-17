@@ -2,20 +2,20 @@
 title: Az Azure Traffic Manager - forgalom-útválasztási módszerek
 description: Ez segít megérteni a különböző forgalom-útválasztási módszer a Traffic Manager által használt cikkei
 services: traffic-manager
-author: KumudD
+author: asudbring
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
-ms.author: kumud
-ms.openlocfilehash: 3cabfeda458011c5d3006642085f78dc74f3451e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 9068cb0dad742ac6e5eeae0b3a1b801d08d4734c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60543350"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070999"
 ---
 # <a name="traffic-manager-routing-methods"></a>Traffic Manager útválasztási módszerek
 

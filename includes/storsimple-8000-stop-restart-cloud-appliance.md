@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: c10482029e6cfce7063d205161fed54030919c48
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66159712"
 ---
 #### <a name="to-stop-and-start-a-cloud-appliance"></a>Felhőalapú készülék leállítása és indítása
@@ -24,7 +24,7 @@ ms.locfileid: "66159712"
 
     ![StorSimple Cloud Appliance virtuális gépe](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart3.png)
 
-4. A leállított virtuális gépeket a rendszer felszabadítja. Amíg a felhőalapú készülék leállítása folyamatban van, az állapota **Felszabadítás**. A felhőalapú készülék leállítás utáni állapota **Leállítva (felszabadítva)**.
+4. A leállított virtuális gépeket a rendszer felszabadítja. Amíg a felhőalapú készülék leállítása folyamatban van, az állapota **Felszabadítás**. A felhőalapú készülék leállítás utáni állapota **Leállítva (felszabadítva)** .
 
     ![StorSimple Cloud Appliance virtuális gépe](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart4.png)
 

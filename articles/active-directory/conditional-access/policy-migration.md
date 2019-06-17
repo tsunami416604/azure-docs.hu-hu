@@ -1,8 +1,8 @@
 ---
-title: Mi a házirend az áttelepítés az Azure Active Directory feltételes hozzáférés? | Microsoft Docs
+title: Mi az az Azure Active Directory feltételes hozzáférési szabályzat áttelepítés? | Microsoft Docs
 description: Ismerje meg, mit kell tudni az Azure Portalon klasszikus szabályzatok migrálása.
 services: active-directory
-keywords: feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-vel, biztonságos hozzáférés a vállalati erőforrásokhoz, feltételes hozzáférési szabályzatok
+keywords: Feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-ben a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési szabályzatok
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -18,14 +18,14 @@ ms.date: 07/24/2018
 ms.author: joflore
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3246a7efa36e6c6ef0dac93e659a73dac17090a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 25161a6317392274ccce8865f7cc0071f0ec89b5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60301571"
+ms.locfileid: "67112184"
 ---
-# <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>Mi a házirend az áttelepítés az Azure Active Directory feltételes hozzáférés? 
+# <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>Mi az az Azure Active Directory feltételes hozzáférési szabályzat áttelepítés? 
 
 
 [Feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md) , jogosult felhasználók hozzáférésének a felhőalapú alkalmazások egy Azure Active directory (Azure AD), amelyek segítségével szabályozhatja, hogy hogyan képességét. Erre a célra nem változtak, amíg az új Azure Portalon, a kiadás jelentős mértékben továbbfejlesztette való feltételes hozzáférés működését.
@@ -82,15 +82,15 @@ Vagy módosítja a kiválasztott csoporthoz vagy adott csoportok kizárásával 
 
 ## <a name="azure-ad-conditional-access-policies"></a>Az Azure AD feltételes hozzáférési szabályzatok
 
-A feltételes hozzáférés az Azure Portalon a szabályzatok egyetlen központi helyen kezelheti. Feltételes hozzáférés megvalósításának jelentősen módosult, mert meg kell ismerkednie az alapvető fogalmakat a klasszikus szabályzatok áttelepítése előtt.
+A feltételes hozzáférés az Azure Portalon a szabályzatok egyetlen központi helyen kezelheti. Bemutatja, hogyan megvalósítása jelentősen megváltozott a feltételes hozzáférés, mivel meg kell ismerkednie az alapvető fogalmakat a klasszikus szabályzatok áttelepítése előtt.
 
 Lásd:
 
 - [Mi a feltételes hozzáférés az Azure Active Directory](../active-directory-conditional-access-azure-portal.md) alapvető fogalmait és a terminológia ismerteti.
 
-- [Ajánlott eljárások az Azure Active Directory feltételes hozzáférés](best-practices.md) útmutatásra a feltételes hozzáférés a szervezet üzembe helyezéséhez.
+- [Ajánlott eljárások az Azure Active Directory feltételes hozzáférés](best-practices.md) útmutatásra a feltételes hozzáférés üzembe helyezéséhez a szervezetben.
 
-- [Többtényezős hitelesítés az Azure Active Directory feltételes hozzáférés az adott alkalmazások](app-based-mfa.md) való ismerkedésre a felhasználói felület az Azure Portalon.
+- [Többtényezős hitelesítés konkrét alkalmazások esetén az Azure Active Directory feltételes hozzáférés](app-based-mfa.md) való ismerkedésre a felhasználói felület az Azure Portalon.
 
 
  
@@ -171,6 +171,6 @@ Az új házirend, ki kell választania a [eszközplatformok](technical-reference
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha azt szeretné tudni, hogyan lehet feltételes hozzáférési szabályzat konfigurálása, lásd: [többtényezős hitelesítés megkövetelése az Azure Active Directory feltételes hozzáférés az adott alkalmazások](app-based-mfa.md).
+- Ha azt szeretné tudni, hogyan lehet feltételes hozzáférési szabályzat konfigurálása, lásd: [megkövetelése MFA konkrét alkalmazások esetén az Azure Active Directory feltételes hozzáférés](app-based-mfa.md).
 
-- Ha kész feltételes hozzáférési szabályzatokat konfigurálni a környezetében, tekintse át [az Azure Active Directory feltételes hozzáféréssel kapcsolatos ajánlott eljárásait](best-practices.md). 
+- Ha készen áll a környezetre vonatkozó feltételes hozzáférési szabályzatok konfigurálására, tekintse meg a [gyakorlati tanácsok az Azure Active Directory feltételes hozzáférés](best-practices.md). 

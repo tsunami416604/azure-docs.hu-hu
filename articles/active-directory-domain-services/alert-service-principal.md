@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: mstephen
 ms.openlocfilehash: a8c21e3b27a4868837d3e381c7c1868c89858bea
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66246494"
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>A felügyelt tartomány konfigurációja érvénytelen egyszerű szolgáltatás hibaelhárítása
@@ -112,5 +112,5 @@ A probléma megoldására, egy PowerShell-ablakban írja be a következő paranc
 3. A törölt is, a rendszer szervizelése magát, és hozza létre újból a jelszó-szinkronizáláshoz szükséges alkalmazások. Annak érdekében, hogy a riasztás sikeresen szervizelve lett, várjon két órát, és a tartomány állapotának ellenőrzése.
 
 
-## <a name="contact-us"></a>Kapcsolat
+## <a name="contact-us"></a>Kapcsolatfelvétel
 Lépjen kapcsolatba az Azure Active Directory Domain Services termékért felelős csoport [visszajelzés és támogatás](contact-us.md).

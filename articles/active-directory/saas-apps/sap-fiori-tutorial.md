@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 9e7993ee1cb439ebeaa9f64bee55429aa54f9cee
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 897685eb967e03cfd30182eec6b237e27386496c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65903946"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67092152"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-fiori"></a>Oktatóanyag: Az Azure Active Directory-integráció az SAP Fiori
 
@@ -40,7 +40,7 @@ Konfigurálja az Azure AD-integráció az SAP Fiori, a következőkre van szüks
 
 * Az Azure AD-előfizetés. Ha nem rendelkezik Azure AD előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) megkezdése előtt.
 * Egy SAP Fiori-előfizetés az egyszeri bejelentkezés engedélyezve van.
-* 7.20 vagy újabb SAP Fiori megadása kötelező.
+* 7\.20 vagy újabb SAP Fiori megadása kötelező.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -78,7 +78,7 @@ Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelen
 
 Az Azure AD egyszeri bejelentkezés az SAP Fiori tesztelése és konfigurálása, a következő építőelemeit kell elvégeznie:
 
-| Feladat | Leírás |
+| Tevékenység | Leírás |
 | --- | --- |
 | **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)** | Lehetővé teszi a felhasználók a funkció használatához. |
 | **[Az SAP Fiori egyszeri bejelentkezés konfigurálása](#configure-sap-fiori-single-sign-on)** | Az egyszeri bejelentkezési beállításainak konfigurálása az alkalmazásban. |
@@ -193,7 +193,7 @@ Ebben a szakaszban konfigurálja az Azure AD egyszeri bejelentkezés az SAP Fior
 
     1. Válassza ki **szerkesztése** megnyitásához a **kezelheti a felhasználói jogcímek** ablaktáblán.
 
-    1. Az a **átalakítási** listáról válassza ki **ExtractMailPrefix()**.
+    1. Az a **átalakítási** listáról válassza ki **ExtractMailPrefix()** .
 
     1. Az a **paraméter 1** listáról válassza ki **user.userprinicipalname**.
 
@@ -272,7 +272,7 @@ Ebben a szakaszban konfigurálja az Azure AD egyszeri bejelentkezés az SAP Fior
 
     **1. forgatókönyv**: SAP-felhasználó számára az Azure AD-felhasználó-hozzárendelés
 
-    1. Az SAP-ben a **részletei a NameID-formátum "nem meghatározott"**, vegye figyelembe a részletek:
+    1. Az SAP-ben a **részletei a NameID-formátum "nem meghatározott"** , vegye figyelembe a részletek:
 
         ![A részleteket a NameID-formátum "Ismeretlen" párbeszédpanel az SAP-ben](./media/sapfiori-tutorial/nameiddetails.png)
 
@@ -282,7 +282,7 @@ Ebben a szakaszban konfigurálja az Azure AD egyszeri bejelentkezés az SAP Fior
 
     **2. forgatókönyv**: Válassza ki az SAP felhasználói azonosító alapján SU01 a beállított e-mail-címét. Ebben az esetben az e-mail-Azonosítót kell konfigurálni a SU01 minden felhasználóhoz, aki az egyszeri bejelentkezés szükséges.
 
-    1.  Az SAP-ben a **részletei a NameID-formátum "nem meghatározott"**, vegye figyelembe a részletek:
+    1.  Az SAP-ben a **részletei a NameID-formátum "nem meghatározott"** , vegye figyelembe a részletek:
 
         ![A részleteket a NameID-formátum "Ismeretlen" párbeszédpanel az SAP-ben](./media/sapfiori-tutorial/tutorial-sapnetweaver-nameiddetails1.png)
 
@@ -314,7 +314,7 @@ Ebben a szakaszban hozzon létre egy tesztfelhasználót Britta Simon nevű az A
 
     1. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    1. Az a **felhasználónév** mezőbe írja be **brittasimon\@\<a vállalati tartomány >.\< bővítmény >**. Ha például **brittasimon\@contoso.com**.
+    1. Az a **felhasználónév** mezőbe írja be **brittasimon\@\<a vállalati tartomány >.\< bővítmény >** . Ha például **brittasimon\@contoso.com**.
 
     1. Válassza ki a **Show jelszó** jelölőnégyzetet. Írja le az értéket, a megjelenő a **jelszó** mezőbe.
 
@@ -352,7 +352,7 @@ Ebben a szakaszban hozzáférést adhat a Britta Simon SAP Fiori így ő Azure e
 
 Ebben a szakaszban az SAP Fiori Britta Simon nevű felhasználó létrehozásához. Az SAP csapat szakértők vagy a szervezet SAP partneri a felhasználó hozzáadása az SAP Fiori-platformon működik.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 1. Az identitásszolgáltató az Azure AD az SAP Fiori aktiválása után próbálja meg elérni az egyszeri bejelentkezés (nem ajánlott rákérdez a felhasználónév és jelszó) teszteléséhez a következő URL-címek valamelyikét:
 

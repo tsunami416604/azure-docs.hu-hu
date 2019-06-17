@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: ergreenl
 ms.openlocfilehash: 637ad62744affa37630df9c841f3c7529674e788
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66246329"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Engedélyezze az Active Directory Domain Servicest az Azure portal használatával
@@ -52,7 +52,7 @@ Elindíthatja a **engedélyezése az Azure AD Domain Services** varázsló a kö
 5. A **engedélyezése az Azure AD Domain Services** varázsló elindul.
 
 
-## <a name="task-1-configure-basic-settings"></a>1. feladat: az alapvető beállítások konfigurálása
+## <a name="task-1-configure-basic-settings"></a>1\. feladat: az alapvető beállítások konfigurálása
 Az a **alapjai** oldal a varázslóban adja meg a felügyelt tartományhoz tartozó DNS-tartománynév. Azt is beállíthatja az erőforráscsoportot és az Azure-beli hely, amelyhez a felügyelt tartomány üzembe szeretné helyezni.
 
 ![Alapvető beállítások konfigurálása](./media/getting-started/domain-services-blade-basics.png)

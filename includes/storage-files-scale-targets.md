@@ -1,15 +1,15 @@
 ---
-author: tamram
+author: roygara
 ms.service: storage
 ms.topic: include
 ms.date: 05/06/2019
-ms.author: tamram
-ms.openlocfilehash: 213ecee34df46c0a408e7034a07ab864c96b340b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: MT
+ms.author: rogarana
+ms.openlocfilehash: df5d8ff941c742d546208c27c7af4e7bcbeec08a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66114512"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073755"
 ---
 | Resource | Standard fájlmegosztások | Prémium szintű fájlmegosztások (előzetes verzió) |
 |----------|---------------|------------------------------------------|

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7eebc68ae8a55d636f3bc85e179bd7d6813be8d
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: e55bf4a66dcd8c1c7cfbc881d6f93c3a12f5dc00
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235557"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112323"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>Alapvető házirendet: Az örökölt hitelesítés letiltása (előzetes verzió)
 
@@ -51,7 +51,7 @@ Ha már rendelkezik egy jobb képet használó örökölt hitelesítés a címt�
 
 Ez a szakasz egy részletes áttekintést nyújt a modern hitelesítés a környezet frissítése. Olvassa el az alábbi lépéseket egy régebbi hitelesítési házirendet a szervezetében blokkolja engedélyezése előtt.
 
-### <a name="step-1-enable-modern-authentication-in-your-directory"></a>1. lépés: A címtárban a modern hitelesítés engedélyezése
+### <a name="step-1-enable-modern-authentication-in-your-directory"></a>1\. lépés: A címtárban a modern hitelesítés engedélyezése
 
 Az első lépés a modern hitelesítés engedélyezése, hogy így, hogy a címtár támogatja a modern hitelesítést. A címtárak vagy 2017. augusztus 1. után létrehozott alapértelmezés szerint engedélyezve van a modern hitelesítést. Ha a címtár dátum előtt jött létre, szüksége manuálisan az az alábbi lépéseket követve a címtár számára a modern hitelesítés engedélyezése:
 
@@ -60,7 +60,7 @@ Az első lépés a modern hitelesítés engedélyezése, hogy így, hogy a címt
 
 Ügyeljen arra, hogy ez a lépés befejezése előtt. Rendkívül fontos, hogy a könyvtár-konfigurációk változnak először mert azok szabályozzák az összes Office-ügyfelek által használt protokoll. Akkor is, ha az Office-ügyfelek, amelyek támogatják a modern hitelesítést használja, akkor alapértelmezés szerint örökölt protokollok használatával, ha a modern hitelesítés le van tiltva, a címtárban.
 
-### <a name="step-2-office-applications"></a>2. lépés: Office-alkalmazások
+### <a name="step-2-office-applications"></a>2\. lépés: Office-alkalmazások
 
 Miután engedélyezte a modern hitelesítést a címtárban, elkezdheti a modern hitelesítéssel az Office-ügyfelek engedélyezésével alkalmazások frissítése. Office 2016 vagy újabb ügyfelek alapértelmezés szerint támogatja a modern hitelesítést. Nincsenek további lépések szükségesek.
 
@@ -70,27 +70,27 @@ Office 2010-et nem támogatja a modern hitelesítést. Szüksége lesz a felhasz
 
 Ha MacOS használ, javasoljuk, Office for Mac 2016 vagy újabb verzióra. A natív levelezőprogramján használja, ha szüksége lesz a MacOS 10.14 verzió vagy újabb minden eszköz rendelkezik.
 
-### <a name="step-3-exchange-and-sharepoint"></a>3. lépés: Az Exchange és SharePoint
+### <a name="step-3-exchange-and-sharepoint"></a>3\. lépés: Az Exchange és SharePoint
 
 Windows-alapú Outlook-felhasználók számára a modern hitelesítést használnak, az Exchange online-hoz kell lennie a modern hitelesítés engedélyezése is. Ha a modern hitelesítés le van tiltva, az Exchange Online, Outlook Windows-alapú ügyfelek támogató modern authentication (Outlook 2013-as vagy újabb) alapszintű hitelesítés fogja használni az Exchange Online-postaládákhoz való kapcsolódáshoz.
 
-A SharePoint Online engedélyezve van a modern hitelesítés alapértelmezett. 2017. augusztus 1. után létrehozott címtárakat a modern hitelesítés alapértelmezés szerint engedélyezve van az Exchange online-ban. Azonban ha korábban rendelkezett letiltott modern hitelesítést, vagy ez a dátum előtt létrehozott egy könyvtárat használja, kövesse az alábbi cikkben leírtak [modern hitelesítés engedélyezése az Exchange Online-ban](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
+A SharePoint Online engedélyezve van a modern hitelesítés alapértelmezett. 2017\. augusztus 1. után létrehozott címtárakat a modern hitelesítés alapértelmezés szerint engedélyezve van az Exchange online-ban. Azonban ha korábban rendelkezett letiltott modern hitelesítést, vagy ez a dátum előtt létrehozott egy könyvtárat használja, kövesse az alábbi cikkben leírtak [modern hitelesítés engedélyezése az Exchange Online-ban](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
 
-### <a name="step-4-skype-for-business"></a>4. lépés: Skype Vállalati verzió
+### <a name="step-4-skype-for-business"></a>4\. lépés: Skype Vállalati verzió
 
-Skype vállalati verzió által az örökölt hitelesítési kérelmek megelőzése érdekében elengedhetetlen a Skype vállalati online a modern hitelesítés engedélyezése. 2017. augusztus 1. után létrehozott címtárakat modern hitelesítést a Skype vállalati verzió alapértelmezés szerint engedélyezve van.
+Skype vállalati verzió által az örökölt hitelesítési kérelmek megelőzése érdekében elengedhetetlen a Skype vállalati online a modern hitelesítés engedélyezése. 2017\. augusztus 1. után létrehozott címtárakat modern hitelesítést a Skype vállalati verzió alapértelmezés szerint engedélyezve van.
 
 Ahhoz, hogy a modern hitelesítést a Skype vállalati verzió, javasoljuk, hogy Microsoft Teams, amely támogatja a modern hitelesítést alapértelmezés szerint való áttérés. Azonban ha nem tudja tr jelenleg, meg fog engedélyeznie kell a modern hitelesítést a Skype vállalati Online úgy, hogy a Skype vállalati ügyfelek számára a modern hitelesítést használó. Kövesse az alábbi lépéseket a cikk [Skype for Business topológiákat támogatja a Modern hitelesítést használó](https://docs.microsoft.com/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported), a Modern hitelesítés engedélyezése a Skype for Business lépéseket.
 
 Egyrészt a modern hitelesítést a Skype vállalati Online, javasoljuk, hogy a modern hitelesítési engedélyezhető az Exchange online-hoz, modern hitelesítést a Skype vállalati verzió engedélyezésekor. Ez a folyamat segít szinkronizálása a modern hitelesítés a Exchange Online és Skype vállalati online állapotát, és megakadályozza, hogy több bejelentkezési kérések a Skype vállalati ügyfelek számára.
 
-### <a name="step-5-using-mobile-devices"></a>5. lépés: Mobil eszközök használatával
+### <a name="step-5-using-mobile-devices"></a>5\. lépés: Mobil eszközök használatával
 
 A mobileszközön lévő alkalmazások kell, valamint az örökölt hitelesítés letiltása. Outlook Mobile használatát javasoljuk. Outlook Mobile alapértelmezés szerint támogatja a modern hitelesítést, és más MFA alapkonfiguráció alkalmazásvédelmi szabályzatok eleget tesz.
 
 A natív IOS-es mail ügyfél használatához szüksége lesz IOS-es verzió fut 11.0 vagy újabb, annak érdekében, hogy az e-mail ügyfélprogramból frissítve lett, hogy az örökölt hitelesítés letiltása.
 
-### <a name="step-6-on-premises-clients"></a>6. lépés: A helyi ügyfelek
+### <a name="step-6-on-premises-clients"></a>6\. lépés: A helyi ügyfelek
 
 Ha a helyszíni Exchange Server és a Skype használata a helyszíni hibrid ügyfél, mindkét szolgáltatás kell frissíteni, hogy a modern hitelesítés engedélyezése. Modern hitelesítést használó hibrid környezetben, ha továbbra is az helyszíni felhasználók hitelesítéséhez használt. A történetet, az erőforrások (e-mailek vagy fájlok) módosítások való hozzáférésre.
 

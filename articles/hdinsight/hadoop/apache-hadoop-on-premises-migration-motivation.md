@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: b45fb5cbfbef334b40ccadecd32f65fa9a59a610
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a03a778b2a057235b31d02e90e5ce87e9559b38a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64685667"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058554"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>A helyszíni Apache Hadoop-fürtök áttelepítése Azure HDInsight - Motiváció és előnyök
 
@@ -21,7 +21,7 @@ Ez a cikk egy sorozat az ajánlott eljárások a migrálás első helyszíni: az
 
 ## <a name="why-to-migrate-to-azure-hdinsight"></a>Miért az Azure HDInsight áttelepítése
 
-Az Azure HDInsight a Hadoop-összetevők felhőalapú terjesztett a [Hortonworks Data Platform(HDP)](https://hortonworks.com/products/data-center/hdp/). Az Azure HDInsight segítségével könnyen, gyorsan és költséghatékonyan dolgozható fel nagy mennyiségű adat. HDInsight a legnépszerűbb nyílt forráskódú keretrendszerekkel például tartalmazza:
+Az Azure HDInsight Hadoop-összetevők felhőalapú terjesztett. Az Azure HDInsight segítségével könnyen, gyorsan és költséghatékonyan dolgozható fel nagy mennyiségű adat. HDInsight a legnépszerűbb nyílt forráskódú keretrendszerekkel például tartalmazza:
 
 - Apache Hadoop
 - Apache Spark
@@ -59,7 +59,7 @@ Az Azure HDInsight a Hadoop-összetevők felhőalapú terjesztett a [Hortonwork
 
     - Az Azure Data Factory (ADF)
     - Azure Blob Storage
-    - 2. generációs Azure Data Lake Storage
+    - 2\. generációs Azure Data Lake Storage
     - Azure Cosmos DB
     - Azure SQL Database
     - Azure Analysis Services
@@ -90,7 +90,6 @@ Ez a szakasz tartalmazza a sablon kérdőíveket kapcsolatos fontos információ
 | **Kérdés** | **Példa** | **Válasz** |
 |---|---|---|
 |**a témakör**: **környezet**|||
-|Fürt terjesztési típusa|Hortonworks, Cloudera, MapR| |
 |Fürt terjesztési verziója|HDP 2.6.5, CDH 5.7|
 |Big Data-ökoszisztéma összetevőket|HDFS, Yarn, Hive, LLAP, Impala, Kudu, HBase, Spark, a MapReduce, a Kafka, Zookeeper, Solr, Sqoop, Oozie, Ranger, Atlas, sólyom, Zeppelin, R|
 |Fürttípusok|Hadoop, Spark, Confluent Kafka, Storm, Solr|
@@ -150,7 +149,7 @@ Ez a szakasz tartalmazza a sablon kérdőíveket kapcsolatos fontos információ
 |**a témakör**: **Fürt kihasználtsága**|||
 |Átlagos CPU-% foglalt|60%||
 |Átlagos memória %-át használja|75%||
-|Használt lemezterület|75%||
+|Felhasznált lemezterület|75%||
 |Átlagos hálózati % foglalt|25%
 |**a témakör**: **Staff**|||
 |Nem. a rendszergazdák|2||
@@ -167,7 +166,7 @@ Ez a szakasz tartalmazza a sablon kérdőíveket kapcsolatos fontos információ
 |**a témakör**: **Infrastruktúra** |||
 |---|---|---|
 |**Kérdés**|**Példa**|**Válasz**|
-| Előnyben részesített régió|USA keleti régiója||
+| Elsődleges régió|USA keleti régiója||
 |Virtuális hálózatok közötti előnyben részesített?|Igen||
 |HA / DR Needed?|Igen||
 |Integráció más felhőalapú szolgáltatásokkal?|ADF, CosmosDB||
@@ -199,7 +198,6 @@ Ez a szakasz tartalmazza a sablon kérdőíveket kapcsolatos fontos információ
 |Különböző fürtök között megosztást metaadattárakat?|Igen||
 |Számítási feladatok deconstruct?|Cserélje le a Hive-feladatok a Spark-feladatok||
 |Adatok előkészítése az ADF használatával?|Nem||
-|HDInsight vs Hortonworks Data Platform az IaaS?|HDInsight||
 
 ## <a name="next-steps"></a>További lépések
 

@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/08/2019
 ms.author: aahi
-ms.openlocfilehash: a5790b5412023f06d9f9fd1d2ff61c11db4c53f3
-ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+ms.openlocfilehash: 7009771f2b647bb582b3d8091edce99fe901a9f1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66807480"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080784"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Oktatóanyag: Streamelési adatok rendellenességeinek észlelése az Azure Databricks használatával
 
@@ -670,22 +670,22 @@ Az eredmény, az alábbi:
 +--------------------+-------+
 |2019-04-16T00:00:00Z|  false|
 +--------------------+-------+
+```
 
+Ennyi az egész! Az Azure Databricks segítségével sikeresen streamelt adatokat az Azure Event Hubsba, a streamadatokat, az Event Hubs összekötője segítségével, és ezt követően futtassa az anomáliadetektálás streamelési adatok közel valós időben.
+Bár ebben az oktatóanyagban a granularitási óránként kerül, bármikor módosíthatja a granularitási megfelelni az igényeknek. 
 
-That's it! Using Azure Databricks, you have successfully streamed data into Azure Event Hubs, consumed the stream data using the Event Hubs connector, and then run anomaly detection on streaming data in near real time.
-Although in this tutorial, the granularity is hourly, you can always change the granularity to meet your need. 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-## Clean up resources
+Az oktatóanyag befejezése után leállíthatja a fürtöt. Ehhez az Azure Databricks-munkaterület kiválasztása **fürtök** a bal oldali ablaktáblán. A fürthöz le szeretné állítani, vigye a mutatót a található három pont **műveletek** oszlopra, és válassza a **Leállítás** ikonra, majd válassza **megerősítése**.
 
-After you have finished running the tutorial, you can terminate the cluster. To do so, in the Azure Databricks workspace, select **Clusters** from the left pane. For the cluster you want to terminate, move the cursor over the ellipsis under **Actions** column, and select the **Terminate** icon and then select **Confirm**.
+![Databricks-fürt leállítása](../media/tutorials/terminate-databricks-cluster.png "Databricks-fürt leállítása")
 
-![Stop a Databricks cluster](../media/tutorials/terminate-databricks-cluster.png "Stop a Databricks cluster")
+Ha Ön nem állítja le manuálisan a fürt automatikusan leáll, a kiválasztott megadott a **után leáll \_ \_ ennyi perc inaktivitás** jelölőnégyzetet a fürt létrehozásakor. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
 
-If you don't manually terminate the cluster it will automatically stop, provided you selected the **Terminate after \_\_ minutes of inactivity** checkbox while creating the cluster. In such a case, the cluster will automatically stop if it has been inactive for the specified time.
+## <a name="next-steps"></a>További lépések
 
-## Next steps
-
-In this tutorial, you learned how to use Azure Databricks to stream data into Azure Event Hubs and then read the streaming data from Event Hubs in real time. Advance to the next tutorial to learn how to call the Anomaly Detector API and visualize anomalies using Power BI desktop. 
+Ez az oktatóanyag bemutatta, hogyan használhatja az Azure Databricks szolgáltatást az adatok Azure Event Hubsra való streamelésére, és hogyan olvashatja valós időben a streamelt adatokat az Event Hubsról. Folytassa a következő oktatóanyaggal, megtudhatja, hogyan az Anomáliadetektálási detector használatával API-t, és megjelenítheti a Power BI desktop használatával rendellenességeket. 
 
 > [!div class="nextstepaction"]
->[Batch anomaly detection with Power BI desktop](batch-anomaly-detection-powerbi.md)
+>[A Batch rendellenesség-észlelést a Power BI desktopban](batch-anomaly-detection-powerbi.md)

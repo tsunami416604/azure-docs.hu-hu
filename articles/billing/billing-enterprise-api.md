@@ -16,10 +16,10 @@ ms.workload: billing
 ms.date: 04/25/2017
 ms.author: erikre
 ms.openlocfilehash: 5722e05e5a5e3a57b4d12b70b14f8674364f824b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66244817"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>A vállalati ügyfelek a Reporting API-k áttekintése
@@ -34,7 +34,7 @@ A Reporting API-k engedélyezése a nagyvállalati Azure-ügyfelek használati �
 |Engedélyezés| Adja meg az értéket a következő formátumban: **tulajdonosi {API_KEY}** <br/> Példa: tulajdonosi eyr... 09| 
 
 ## <a name="consumption-apis"></a>Szolgáltatáshasználati API-jai
-A Swagger-végpont érhető el [Itt](https://consumption.azure.com/swagger/ui/index) esetében az API-k leírt, amely alatt könnyen önelemzési API- és ügyféloldali SDK-k használatával képességét engedélyezze [AutoRest](https://github.com/Azure/AutoRest) vagy [Swagger CodeGen](https://swagger.io/swagger-codegen/). 2014. május 1-én kezdődő adatokat az API-n keresztül érhető el. 
+A Swagger-végpont érhető el [Itt](https://consumption.azure.com/swagger/ui/index) esetében az API-k leírt, amely alatt könnyen önelemzési API- és ügyféloldali SDK-k használatával képességét engedélyezze [AutoRest](https://github.com/Azure/AutoRest) vagy [Swagger CodeGen](https://swagger.io/swagger-codegen/). 2014\. május 1-én kezdődő adatokat az API-n keresztül érhető el. 
 
 * **Egyenleg és összegzése** – a [egyenlegét és az API összefoglaló](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) kínál a jóváírásokat összefoglaló balances, új vásárlások, Azure Marketplace szolgáltatási díjai, módosítását és kereten túli díjak havi összegzését.
 

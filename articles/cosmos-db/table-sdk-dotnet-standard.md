@@ -9,10 +9,10 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
 ms.openlocfilehash: 1c9894772f440a568cbc08890feb961471d84137
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66480214"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Az Azure Cosmos DB tábla .NET Standard API: Töltse le és kibocsátási megjegyzések
@@ -67,12 +67,12 @@ A platformfüggetlen .NET Standard kódtár [Microsoft.Azure.Cosmos.Table](https
 
 | Version | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
-| [1.0.1](#1.0.1) |2019. április 19. |--- |
-| [1.0.0](#1.0.0) |2019. márciusi 13. |--- |
-| [0.11.0-Preview](#0.11.0-preview) |2019. márciusi 5. |--- |
-| [0.10.1-Preview](#0.10.1-preview) |2019. január 22. |--- |
-| [0.10.0-Preview](#0.10.0-preview) |2018. december 18. |--- |
-| [0.9.1-Preview](#0.9.1-preview) |2018. október 18. |--- |
+| [1.0.1](#1.0.1) |2019\. április 19. |--- |
+| [1.0.0](#1.0.0) |2019\. márciusi 13. |--- |
+| [0.11.0-Preview](#0.11.0-preview) |2019\. márciusi 5. |--- |
+| [0.10.1-Preview](#0.10.1-preview) |2019\. január 22. |--- |
+| [0.10.0-Preview](#0.10.0-preview) |2018\. december 18. |--- |
+| [0.9.1-Preview](#0.9.1-preview) |2018\. október 18. |--- |
 
 
 ## <a name="faq"></a>GYIK

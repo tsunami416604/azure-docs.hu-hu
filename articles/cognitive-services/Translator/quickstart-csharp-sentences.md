@@ -8,23 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 06/04/2019
+ms.date: 06/13/2019
 ms.author: erhopf
-ms.openlocfilehash: e8940de90b925a1ca252de3cf75acd192531edeb
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 00fe7ce5558672812be7949b8474a403499de94f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514220"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67123391"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-c"></a>Gyors útmutató: A Translator Text API segítségével állapítsa meg, mondat hosszaC#
 
-Ebben a rövid útmutatóban fog elsajátíthatja meghatározása a mondat hosszúságok .NET Core és a Translator Text API használatával.
+Ebből a gyorsútmutatóból megtudhatja, hogyan használata a .NET Core, mondat hosszúságok meghatározásához C# 7.1-es vagy újabb, és a Translator Text API.
 
 Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely tartalmaz egy Translator Text-erőforrást. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+* C#7.1-es vagy újabb
 * [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
 * [Json.NET NuGet-csomag](https://www.nuget.org/packages/Newtonsoft.Json/)
 * [A Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download), vagy kedvenc szövegszerkesztőjével
@@ -47,6 +48,18 @@ Ezt követően kell telepíteni a Json.Net. A projekt könyvtárában futtassa:
 dotnet add package Newtonsoft.Json --version 11.0.2
 ```
 
+## <a name="select-the-c-language-version"></a>Válassza ki a C# nyelvi változatát
+
+Ez a rövid útmutatóhoz C# 7.1-es vagy újabb verziója. Néhány módon módosítsa a C# verzió a projekthez. Ebben az útmutatóban bemutatjuk, hogyan módosíthatja a `sentences-sample.csproj` fájlt. Az összes rendelkezésre álló beállításokat, például a Visual Studióban, a nyelv módosítását lásd: [válassza ki a C# beállított nyelvi verzióhoz](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version).
+
+Nyissa meg a projektet, majd nyissa meg a `sentences-sample.csproj`. Győződjön meg arról, hogy `LangVersion` 7.1-es vagy újabb verziójára van beállítva. Ha nincs a tulajdonságcsoport a beállított nyelvi verzióhoz, adja hozzá ezeket a sorokat:
+
+```xml
+<PropertyGroup>
+   <LangVersion>7.1</LangVersion>
+</PropertyGroup>
+```
+
 ## <a name="add-required-namespaces-to-your-project"></a>Adja hozzá a projekthez szükséges névterek
 
 A `dotnet new console` parancsot, amely futtatta korábban létrehozott egy projektet, beleértve a `Program.cs`. Ez a fájl meg, ahová az alkalmazás kódjában fog. Nyissa meg `Program.cs`, és cserélje le a meglévő using utasítások. Ezek az utasítások győződjön meg arról, hogy a minta-alkalmazás létrehozásához és futtatásához szükséges összes típusú hozzáférést.
@@ -55,15 +68,38 @@ A `dotnet new console` parancsot, amely futtatta korábban létrehozott egy proj
 using System;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
+// Install Newtonsoft.Json with NuGet
 using Newtonsoft.Json;
+```
+
+## <a name="create-classes-for-the-json-response"></a>A JSON-válasz osztályok létrehozása
+
+Ezután amikor deszerializálása során a JSON-választ adott vissza a Translator Text API által használt osztály létrehozása fogunk.
+
+```csharp
+/// <summary>
+/// The C# classes that represents the JSON returned by the Translator Text API.
+/// </summary>
+public class BreakSentenceResult
+{
+    public int[] SentLen { get; set; }
+    public DetectedLanguage DetectedLanguage { get; set; }
+}
+
+public class DetectedLanguage
+{
+    public string Language { get; set; }
+    public float Score { get; set; }
+}
 ```
 
 ## <a name="create-a-function-to-determine-sentence-length"></a>Mondat hossz megállapításához függvény létrehozása
 
-Belül a `Program` osztály, hozzon létre egy függvényt, nevű `BreakSentence`. Ez az osztály magában foglalja a BreakSentence erőforrás meghívásához használt kódot, és kinyomtatja az eredményt a konzolon.
+Belül a `Program` osztály, hozzon létre egy függvényt, nevű `BreakSentence()`. Ez a függvény négy argumentumot: `subscriptionKey`, `host`, `route`, és `inputText`.
 
 ```csharp
-static void BreakSentence()
+static public async Task BreakSentenceRequest(string subscriptionKey, string host, string route, string inputText)
 {
   /*
    * The code for your call to the translation service will be added to this
@@ -72,20 +108,12 @@ static void BreakSentence()
 }
 ```
 
-## <a name="set-the-subscription-key-host-name-and-path"></a>Az előfizetési kulcs, állomás neve és elérési útja
-
-Adja hozzá ezeket a sorokat a `BreakSentence` függvény. Láthatja, hogy az a `api-version`, meghatározhatja a beviteli nyelv. Ebben a példában az angol.
-
-```csharp
-string host = "https://api.cognitive.microsofttranslator.com";
-string route = "/breaksentence?api-version=3.0&language=en";
-string subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
-```
+## <a name="serialize-the-break-sentence-request"></a>A szünet mondat kérelem szerializálása
 
 Ezután szüksége hozhat létre, és az JSON-objektumot, amely tartalmazza a szöveget. Tartsa szem előtt, az egynél több objektumot továbbíthatja a `body` tömb.
 
 ```csharp
-System.Object[] body = new System.Object[] { new { Text = @"How are you? I am fine. What did you do today?" } };
+object[] body = new object[] { new { Text = inputText } };
 var requestBody = JsonConvert.SerializeObject(body);
 ```
 
@@ -115,35 +143,47 @@ Belül a `HttpRequestMessage` jelennek meg:
 Adja hozzá a kódot a `HttpRequestMessage`:
 
 ```csharp
+// Build the request.
 // Set the method to POST
 request.Method = HttpMethod.Post;
-
-// Construct the full URI
+// Construct the URI and add headers.
 request.RequestUri = new Uri(host + route);
-
-// Add the serialized JSON object to your request
 request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
-
-// Add the authorization header
 request.Headers.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
 
-// Send request, get response
-var response = client.SendAsync(request).Result;
-var jsonResponse = response.Content.ReadAsStringAsync().Result;
-
-// Print the response
-Console.WriteLine(jsonResponse);
-Console.WriteLine("Press any key to continue.");
+// Send the request and get response.
+HttpResponseMessage response = await client.SendAsync(request).ConfigureAwait(false);
+// Read response as a string.
+string result = await response.Content.ReadAsStringAsync();
+// Deserialize the response using the classes created earlier.
+BreakSentenceResult[] deserializedOutput = JsonConvert.DeserializeObject<BreakSentenceResult[]>(result);
+foreach (BreakSentenceResult o in deserializedOutput)
+{
+    Console.WriteLine("The detected language is '{0}'. Confidence is: {1}.", o.DetectedLanguage.Language, o.DetectedLanguage.Score);
+    Console.WriteLine("The first sentence length is: {0}", o.SentLen[0]);
+}
 ```
 
 ## <a name="put-it-all-together"></a>Az alkalmazás összeállítása
 
-Az utolsó lépés az, hogy a hívás `BreakSentence()` a a `Main` függvény. Keresse meg `static void Main(string[] args)` , és adja hozzá ezeket a sorokat:
+Az utolsó lépés az, hogy a hívás `BreakSentenceRequest()` a a `Main` függvény. Keresse meg `static void Main(string[] args)` és cserélje le ezt a kódot:
 
 ```csharp
-BreakSentence();
-Console.ReadLine();
+static async Task Main(string[] args)
+{
+    // This is our main function.
+    // Output languages are defined in the route.
+    // For a complete list of options, see API reference.
+    string subscriptionKey = "YOUR_TRANSLATOR_TEXT_KEY_GOES_HERE";
+    string host = "https://api.cognitive.microsofttranslator.com";
+    string route = "/breaksentence?api-version=3.0";
+    // Feel free to use any string.
+    string breakSentenceText = @"How are you doing today? The weather is pretty pleasant. Have you been to the movies lately?";
+    await BreakSentenceRequest(subscriptionKey, host, route, breakSentenceText);
+}
 ```
+
+Láthatja, hogy a `Main`, kijelenti, hogy `subscriptionKey`, `host`, `route`, és kiértékelheti, hogy a szöveg `breakSentenceText`.
 
 ## <a name="run-the-sample-app"></a>Mintaalkalmazás futtatása
 
@@ -155,14 +195,24 @@ dotnet run
 
 ## <a name="sample-response"></a>Mintaválasz
 
+A minta futtatása után kell megjelennie a terminálban nyomtatott következő:
+
+```bash
+The detected language is \'en\'. Confidence is: 1.
+The first sentence length is: 25
+```
+
+Ez az üzenet, amely fog kinézni a nyers JSON-ból épül:
+
 ```json
 [
     {
-        "sentLen": [
-            13,
-            11,
-            22
-        ]
+        "detectedLanguage":
+        {
+            "language":"en",
+            "score":1.0
+        },
+        "sentLen":[25,32,35]
     }
 ]
 ```

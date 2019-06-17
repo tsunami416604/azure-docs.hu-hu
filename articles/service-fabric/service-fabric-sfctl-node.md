@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: 1e5b5876fa6277d1bad0989c543de667f75a066c
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66258728"
 ---
 # <a name="sfctl-node"></a>sfctl-csomópont
@@ -30,10 +30,10 @@ A csomópontok, amely egy fürt kezelése.
 | --- | --- |
 | Letiltása | Egy Service Fabric-fürt csomópontja megadott inaktiválási készítésében inaktiválása. |
 | Engedélyezése | Aktiválja egy Service Fabric-fürt csomópontja, amely jelenleg inaktivált állapotban van. |
-| egészségügy | Lekérdezi egy Service Fabric-csomópont állapotát. |
-| Adatai | Egy adott csomópont a adatainak beolvasása a Service Fabric-fürtben. |
-| lista | A Service Fabric-fürtben található csomópontok listájának beolvasása. |
-| betöltés | A Service Fabric-csomópont a terhelés információkat kér le. |
+| health | Lekérdezi egy Service Fabric-csomópont állapotát. |
+| info | Egy adott csomópont a adatainak beolvasása a Service Fabric-fürtben. |
+| list | A Service Fabric-fürtben található csomópontok listájának beolvasása. |
+| load | A Service Fabric-csomópont a terhelés információkat kér le. |
 | állapot eltávolítása | Értesítést küld a Service Fabric, hogy a csomópont a megőrzött állapot véglegesen eltávolították vagy elveszett. |
 | report-health | A Service Fabric-csomópont állapota jelentést küld. |
 | restart | A Service Fabric-fürtcsomópont újraindítása. |

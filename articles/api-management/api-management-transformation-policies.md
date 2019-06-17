@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
 ms.openlocfilehash: 28720098206c7afdefacbd47de283b2ef8d5a606
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66243243"
 ---
 # <a name="api-management-transformation-policies"></a>Az API Management átalakítási szabályzatok
@@ -114,7 +114,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Kötelező|
+|Name (Név)|Leírás|Szükséges|
 |----------|-----------------|--------------|
 |xml-to-json|A gyökérelem.|Igen|
 
@@ -150,7 +150,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Kötelező|
+|Name (Név)|Leírás|Szükséges|
 |----------|-----------------|--------------|
 |find-and-replace|A gyökérelem.|Igen|
 
@@ -397,7 +397,7 @@ A `set-body` házirend használatára konfigurálható a [Liquid](https://shopif
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Kötelező|
+|Name (Név)|Leírás|Szükséges|
 |----------|-----------------|--------------|
 |törzs beállítása|A gyökérelem. A szöveg vagy egy kifejezés, amely visszaadja a szervezet tartalmazza.|Igen|
 
@@ -504,7 +504,7 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Kötelező|
+|Name (Név)|Leírás|Szükséges|
 |----------|-----------------|--------------|
 |set-fejléc|A gyökérelem.|Igen|
 |value|Adja meg a fejléc kell beállítani. Az ezzel a névvel több fejlécek hozzá további `value` elemeket.|Igen|

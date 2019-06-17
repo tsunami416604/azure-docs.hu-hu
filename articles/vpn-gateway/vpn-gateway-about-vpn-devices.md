@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/29/2019
 ms.author: yushwang
 ms.openlocfilehash: 6535949767999e04b11106ff8a294e912a6d0fb8
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66388853"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Információk a helyek közötti VPN Gateway-kapcsolatok VPN-eszközeinek IPsec/IKE-paramétereiről
@@ -130,7 +130,7 @@ A következő táblázatokban:
 | **Tulajdonság**          |**Házirendalapú**    | **Útvonalalapú**    |
 | ---                   | ---               | ---               |
 | IKE verziószám           |IKEv1              |IKEv2              |
-| Diffie-Hellman Group  |2. csoport (1024 bites) |2. csoport (1024 bites) |
+| Diffie-Hellman Group  |2\. csoport (1024 bites) |2\. csoport (1024 bites) |
 | Hitelesítési módszer |Előre megosztott kulcs     |Előre megosztott kulcs     |
 | Titkosító és kivonatoló algoritmus |1. AES256, SHA256<br>2. AES256, SHA1<br>3. AES128, SHA1<br>4. 3DES, SHA1 |1. AES256, SHA1<br>2. AES256, SHA256<br>3. AES128, SHA1<br>4. AES128, SHA256<br>5. 3DES, SHA1<br>6. 3DES, SHA256 |
 | SA élettartama           |28 800 másodperc     |28 800 másodperc     |
@@ -155,12 +155,12 @@ Az alábbi táblázat felsorolja az IPsec SA (IKE – gyors mód) ajánlatait. A
 
 |-  |**Titkosítás**|**Hitelesítés**|**PFS-csoport**|
 |---| ---          |---               |---          |
-| 1 |GCM AES256    |GCM (AES256)      |Nincsenek         |
+| 1 |GCM AES256    |GCM (AES256)      |None         |
 | 2 |AES256        |SHA1              |None         |
-| 3 |3DES          |SHA1              |Nincsenek         |
+| 3 |3DES          |SHA1              |None         |
 | 4 |AES256        |SHA256            |None         |
 | 5 |AES128        |SHA1              |None         |
-| 6 |3DES          |SHA256            |Nincsenek         |
+| 6 |3DES          |SHA256            |None         |
 
 #### <a name="azure-gateway-as-responder"></a>Azure-átjáró, mint válaszadó
 
@@ -168,11 +168,11 @@ Az alábbi táblázat felsorolja az IPsec SA (IKE – gyors mód) ajánlatait. A
 |---| ---          | ---              |---          |
 | 1 |GCM AES256    |GCM (AES256)      |None         |
 | 2 |AES256        |SHA1              |None         |
-| 3 |3DES          |SHA1              |Nincsenek         |
-| 4 |AES256        |SHA256            |Nincsenek         |
-| 5 |AES128        |SHA1              |Nincsenek         |
+| 3 |3DES          |SHA1              |None         |
+| 4 |AES256        |SHA256            |None         |
+| 5 |AES128        |SHA1              |None         |
 | 6 |3DES          |SHA256            |None         |
-| 7 |DES           |SHA1              |Nincsenek         |
+| 7 |DES           |SHA1              |None         |
 | 8 |AES256        |SHA1              |1            |
 | 9 |AES256        |SHA1              |2            |
 | 10|AES256        |SHA1              |14           |
@@ -187,7 +187,7 @@ Az alábbi táblázat felsorolja az IPsec SA (IKE – gyors mód) ajánlatait. A
 | 19|AES256        |SHA256            |14           |
 | 20|AES256        |SHA1              |24           |
 | 21|AES256        |SHA256            |24           |
-| 22|AES128        |SHA256            |Nincsenek         |
+| 22|AES128        |SHA256            |None         |
 | 23|AES128        |SHA256            |1            |
 | 24|AES128        |SHA256            |2            |
 | 25|AES128        |SHA256            |14           |
@@ -203,7 +203,7 @@ Az alábbi táblázat felsorolja az IPsec SA (IKE – gyors mód) ajánlatait. A
 >
 >
 
-### <a name="feb-16-2017"></a>2017. február 16.
+### <a name="feb-16-2017"></a>2017\. február 16.
 
 **Palo Alto Networks-eszközök verziója a 7.1.4-esnél** Azure útvonalalapú VPN-hez: Ha a PAN-OS verziója a 7.1.4-esnél Palo Alto Networks származó VPN-eszközöket használ, és az Azure útvonalalapú VPN-átjárókhoz kapcsolódási problémákat tapasztal, hajtsa végre az alábbi lépéseket:
 

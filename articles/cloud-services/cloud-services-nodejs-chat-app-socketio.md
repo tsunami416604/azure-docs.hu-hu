@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: jeconnoc
 ms.openlocfilehash: cd0bceae770182e778410d8065d34dfeed055acc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61433198"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>A Socket.IO kódtár használatával Node.js-csevegőalkalmazás létrehozásához, egy Azure-Felhőszolgáltatás
@@ -113,7 +113,7 @@ A módosítások mentése után **server.js**, kövesse az alábbi lépéseket a
    > 
    > Telepítse újra a AzureAuthoringTools v 2.7.1-es verziójához és AzureComputeEmulator v 2.7 – győződjön meg arról, hogy a verzió megegyezik.
 
-2. Nyisson meg egy böngészőt, és navigáljon a **http://127.0.0.1**.
+2. Nyisson meg egy böngészőt, és navigáljon a **http://127.0.0.1** .
 3. Amikor a böngészőablakban megnyitja, adjon meg egy becenevet, és nyomja le adja.
    Ez lehetővé teszi, hogy egy adott becenév, üzeneteket tehet közzé. Többfelhasználós működésének teszteléséhez nyissa meg az ugyanazon URL-cím használatával további böngészőablakot, és adja meg a különböző beceneveinek.
    

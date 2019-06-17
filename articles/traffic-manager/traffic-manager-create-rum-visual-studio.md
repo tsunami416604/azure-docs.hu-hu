@@ -3,21 +3,22 @@ title: Valós Felhasználóiélmény-mérések az Azure Traffic Manager Visual S
 description: A Traffic Manager valós felhasználói mérések küldése a Visual Studio Mobile Center használatával fejlesztett mobile alkalmazás beállítása
 services: traffic-manager
 documentationcenter: traffic-manager
-author: KumudD
+author: asudbring
+manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/16/2018
-ms.author: kumud
+ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 1a5b883a8c9688d4545c0e98c00f78a2e982a611
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 95207cea5988a22b0b3caa23be39b481f9fd687b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884038"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071257"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Valós felhasználói mérések küldése a Traffic Manager a Visual Studio Mobile Center
 
@@ -28,7 +29,7 @@ Beállíthatja a mobilalkalmazást az alábbi lépéseket a Traffic Manager val�
 
 Valós felhasználói mérések konfigurálásához szüksége a az csomag az alkalmazás tagolását, és egy kulcs beszerzése.
 
-## <a name="step-1-obtain-a-key"></a>1. lépés: Egy kulcs beszerzése
+## <a name="step-1-obtain-a-key"></a>1\. lépés: Egy kulcs beszerzése
     
 A mérési igénybe vehet, és a Traffic Manager, az ügyfélalkalmazás által küldött azonosítja a szolgáltatást egy egyedi karakterlánccá, neve a valós felhasználói mérések (RUM) kulcs használatával. Az Azure portal, a REST API használatával az kulcs kap vagy a PowerShell használatával / parancssori felületek.
 
@@ -50,7 +51,7 @@ Az Azure Portalon a következő eljárással RUM kulcs beszerzése:
  
 6. Kattintson a **másolási** gombra, hogy a RUM kulcsot. 
 
-## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>2. lépés: A Mobile Center SDK-t, az csomag az alkalmazás tagolását
+## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>2\. lépés: A Mobile Center SDK-t, az csomag az alkalmazás tagolását
 
 Ha most ismerkedik a Visual Studio Mobile Center, keresse fel a [webhely](https://mobile.azure.com). Az SDK-integráció részletes utasításokért lásd: [az Android SDK – első lépések](https://docs.microsoft.com/mobile-center/sdk/getting-started/Android).
 

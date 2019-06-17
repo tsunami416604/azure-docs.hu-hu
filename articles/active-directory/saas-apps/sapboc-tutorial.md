@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c64fb2dc4c494252f0078b8d23e05b15f07ebe00
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 8ad2ffddf96aa6ecc886ac5653d2d0b8dcfb0856
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65903680"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091718"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>Oktatóanyag: Az Azure Active Directory-integráció az SAP Business objektum-felhővel
 
@@ -53,7 +53,7 @@ Konfigurálja az integráció az SAP Business objektum Cloud az Azure AD-be, sz�
 
 **Az SAP Business objektum Cloud hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -138,7 +138,7 @@ Konfigurálja az Azure AD egyszeri bejelentkezés az SAP Business objektum-felh�
     
     ![A biztonság lapon válassza a Szerkesztés ikon](./media/sapboc-tutorial/config2.png)  
 
-4. A **hitelesítési módszer**válassza **SAML egyszeri bejelentkezéses (SSO)**.
+4. A **hitelesítési módszer**válassza **SAML egyszeri bejelentkezéses (SSO)** .
 
     ![SAML egyszeri bejelentkezés a hitelesítési módszer kiválasztása](./media/sapboc-tutorial/config3.png)  
 
@@ -225,7 +225,7 @@ A felhasználói fiók kiépítése:
 
     ![Alkalmazott hozzáadása](./media/sapboc-tutorial/user1.png)
 
-3. Az a **felhasználók** adja hozzá az új felhasználó adatai, jelölje be **+**. 
+3. Az a **felhasználók** adja hozzá az új felhasználó adatai, jelölje be **+** . 
 
     ![Felhasználók hozzáadására szolgáló oldala](./media/sapboc-tutorial/user4.png)
 
@@ -247,7 +247,7 @@ A felhasználói fiók kiépítése:
 
     g. Válassza ki a **mentése** ikonra.    
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

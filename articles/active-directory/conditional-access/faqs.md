@@ -16,12 +16,12 @@ ms.date: 01/15/2018
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21c89d9d686c4af594aa7a0fd921471105669e02
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 111daef3448533cd863d45197d45c87d8d21264b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60354536"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112395"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Az Azure Active Directory feltételes hozzáférés – gyakori kérdések
 
@@ -59,8 +59,8 @@ Feltételes hozzáférési szabályzatok jelenleg az iOS és Android-eszközök 
 
 ## <a name="how-do-conditional-access-policies-work-for-microsoft-teams"></a>Hogyan működik a Microsoft Teams feltételes hozzáférési szabályzatokat?
 
-Microsoft Teams erősen támaszkodik a Exchange online-hoz és a SharePoint online-hoz a core irodai alkalmazási helyzetekben, mint értekezletek, a naptárak és a fájlmegosztást. Ezek a felhőalapú alkalmazások beállított feltételes hozzáférési szabályzatok közvetlenül a Microsoft Teams vonatkozik a Microsoft Teams, amikor egy felhasználó jelentkezik.
+Microsoft Teams erősen támaszkodik a Exchange online-hoz és a SharePoint online-hoz a core irodai alkalmazási helyzetekben, mint értekezletek, a naptárak és a fájlmegosztást. Ezek a felhőalapú alkalmazások számára beállított feltételes hozzáférési házirendek közvetlenül a Microsoft Teams vonatkozik a Microsoft Teams, amikor egy felhasználó jelentkezik.
 
-Microsoft Teams is külön-külön is támogatott az Azure Active Directory feltételes hozzáférési házirendek egy felhőalkalmazás. Egy felhőalkalmazás beállított feltételes hozzáférési szabályzatok Microsoft Teams vonatkozik, amikor egy felhasználó bejelentkezik. Azonban az Exchange online-hoz és a SharePoint online-hoz hasonló más alkalmazásokat a megfelelő házirendek nélkül felhasználók előfordulhat, hogy is közvetlenül elérni ezeket az erőforrásokat.
+Microsoft Teams is külön-külön is támogatott az Azure Active Directory feltételes hozzáférési házirendek egy felhőalkalmazás. Felhőalapú alkalmazás esetében beállított feltételes hozzáférési házirendek Microsoft Teams vonatkozik, amikor egy felhasználó bejelentkezik. Azonban az Exchange online-hoz és a SharePoint online-hoz hasonló más alkalmazásokat a megfelelő házirendek nélkül felhasználók előfordulhat, hogy is közvetlenül elérni ezeket az erőforrásokat.
 
 Microsoft Teams asztali ügyfelek Windows és Mac támogatja a modern hitelesítést. Bejelentkezés a az Azure Active Directory Authentication Library (ADAL) az ügyfélalkalmazások számára a Microsoft Office-alapú platformon biztosítható a modern hitelesítést.

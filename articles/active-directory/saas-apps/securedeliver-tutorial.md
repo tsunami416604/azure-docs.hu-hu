@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ca2e717e612973fa4c46c9ab4e70091d32fcf19
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 7dbf96c3480f47e5f6b292759a949c9bbf36dc07
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65902424"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091192"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secure-deliver"></a>Oktatóanyag: BIZTONSÁGOS KÉZBESÍTÉSÉHEZ az Azure Active Directory-integráció
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása a biztonságos továbbítására konfigurálása, hozz
 
 **BIZTONSÁGOS továbbítására hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -185,7 +185,7 @@ Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával,
 
 Ebben a szakaszban egy biztonságos továbbítására Britta Simon nevű felhasználói hoz létre. Együttműködve [biztonságos NYÚJTHAT a támogatási csapat](mailto:iw-sd-support@fujifilm.com) a felhasználók hozzáadása az biztonságos továbbítására platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

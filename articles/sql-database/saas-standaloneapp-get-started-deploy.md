@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 11/07/2018
 ms.openlocfilehash: b1b281c7beac6b6cb48834e636edff818f89bf12
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66304139"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Üzembe helyezése és megismerése az Azure SQL-adatbázist használó önálló egybérlős alkalmazás
@@ -76,16 +76,16 @@ Az alkalmazás események üzemeltető helyszínek bemutatja.  A helyszínek a b
 
 1. A három külön böngészőlapokon bérlők mindegyike esetében nyissa meg az események lapról:
 
-   - http://events.contosoconcerthall.&lt;user&gt;.trafficmanager.net
-   - http://events.dogwooddojo.&lt;user&gt;.trafficmanager.net
-   - http://events.fabrikamjazzclub.&lt;user&gt;.trafficmanager.net
+   - http://events.contosoconcerthall.&lt ;user&gt;.trafficmanager.net
+   - http://events.dogwooddojo.&lt ;user&gt;.trafficmanager.net
+   - http://events.fabrikamjazzclub.&lt ;user&gt;.trafficmanager.net
 
      (Egyes URL-címben cserélje le a &lt;felhasználói&gt; az üzemelő példány felhasználói értékkel.)
 
-   ![Események](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
+   ![Events](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
 Bejövő kérelmek, az alkalmazás által használt elosztását [ *Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md). Minden bérlő-specifikus alkalmazás-példány URL-CÍMÉT a bérlő nevét a tartomány nevének részeként tartalmazza. Az összes bérlői URL-címeket tartalmazza a konkrét **felhasználói** értéket. Az URL-címeket hajtsa végre a következő formátumban:
-- http://events.&lt;venuename&gt;.&lt;user&gt;.trafficmanager.net
+- http://events.&lt ;venuename&gt;.&lt; user&gt;.trafficmanager.net
 
 Minden bérlői adatbázis **hely** az a megfelelő telepített alkalmazások beállításait tartalmazza.
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
 ms.openlocfilehash: 3bbab82831fba389cd4bf172e7ea762d5971579b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66241842"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Hogyan integrálható az Azure API Management az Azure Application insights segítségével
@@ -78,7 +78,7 @@ Az Azure Application Insights használata előtt először a szolgáltatás egy 
 | Cél                         | Az Azure Application Insights-naplózót | Adja meg a használandó Azure Application Insights naplózót                                                                                                                                                                                                                                                                                           |
 | Mintavételi (%)                        | tizedes tört                           | Értékek 0 és 100 (százalék). <br/> Itt adhatja meg, hány százaléka kéréseket az Azure Application Insights lesz naplózva. 0 %-os mintavételi azt jelenti, hogy a nulla kérelmeket naplózza, amíg a 100 %-os mintavételi azt jelenti, hogy naplózott összes kérelem. <br/> Ezzel a beállítással csökkenthető a teljesítményre gyakorolt hatása naplózási kérések az Azure Application Insights (lásd az alábbi szakaszt). |
 | Mindig naplózni a hibákat                   | logikai                           | Ha ez a beállítás be van jelölve, az összes sikertelen lesz naplózva az Azure Application insights szolgáltatásba, függetlenül attól, hogy a **mintavételi** beállítás.                                                                                                                                                                                                                  |
-| Alapszintű beállítások: Fejlécek              | lista                              | Meghatározza a fejléceket, amely a kérelmek és válaszok az Azure Application Insights lesz naplózva.  Alapértelmezés: nincs fejléceket a rendszer naplózza.                                                                                                                                                                                                             |
+| Alapszintű beállítások: Fejlécek              | list                              | Meghatározza a fejléceket, amely a kérelmek és válaszok az Azure Application Insights lesz naplózva.  Alapértelmezés: nincs fejléceket a rendszer naplózza.                                                                                                                                                                                                             |
 | Alapszintű beállítások: Szervezet első bájtok  | egész szám                           | Itt adhatja meg, hány első bájtok a szervezet Azure Application Insights naplózza a kérelmeket és válaszokat.  Alapértelmezett érték: a törzs nem naplózza.                                                                                                                                                                                              |
 | Speciális beállítások: Előtér-kérelem  |                                   | Itt adhatja meg, hogyan *előtérbeli kérelmek* Azure Application insights lesz naplózva. *Előtérbeli kérelem* tulajdonképpen egy kérelem a bejövő és az Azure API Management szolgáltatást.                                                                                                                                                                        |
 | Speciális beállítások: Előtér-válasz |                                   | Itt adhatja meg, hogyan *előtérbeli válaszok* az Azure Application Insights lesz naplózva. *Előtérbeli válasz* választ, az Azure API Management szolgáltatás kimenő.                                                                                                                                                                   |

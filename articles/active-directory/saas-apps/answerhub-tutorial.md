@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52c49bdd51bda7876d19a681bde79c9dbeeb4ea7
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: e51c37f983162b82747760b05e2ec5e4e6553c0b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901282"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106944"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező AnswerHub
 
@@ -180,11 +180,11 @@ Ebben a szakaszban hozzon létre egy tesztfelhasználót Britta Simon nevű az A
 
 3. A felhasználói tulajdonságok a lépések végrehajtásához.
 
-    ![Felhasználó tulajdonságai](common/user-properties.png)
+    ![Felhasználói tulajdonságok](common/user-properties.png)
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@< yourcompanydomain.extension >**.  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@< yourcompanydomain.extension >** .  
     Például: BrittaSimon@contoso.com.
 
     c. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
@@ -242,7 +242,7 @@ Ahhoz, hogy az Azure AD-felhasználók AnswerHub bejelentkezni, hozzá kell őke
 > [!NOTE]
 > Bármely egyéb felhasználói fiók létrehozási eszköz is használhatja, vagy API Azure AD felhasználói fiók beállítása AnswerHub által biztosított.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panel segítségével tesztelheti.
 

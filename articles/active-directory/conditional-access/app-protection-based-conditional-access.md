@@ -2,7 +2,7 @@
 title: Felhőalapú alkalmazás-hozzáférés az Azure Active Directory feltételes hozzáférés szükséges az alkalmazásvédelmi szabályzat |} A Microsoft Docs
 description: Ismerje meg, hogyan alkalmazásvédelmi szabályzatot a feltételes hozzáférés az Azure Active Directory felhőalapú alkalmazás-hozzáférés szükséges.
 services: active-directory
-keywords: feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-vel, biztonságos hozzáférés a vállalati erőforrásokhoz, feltételes hozzáférési szabályzatok
+keywords: Feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-ben a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési szabályzatok
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -18,12 +18,12 @@ ms.date: 4/4/2019
 ms.author: joflore
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2250449c0ef342332945b80cb10cb9a02885b259
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 51d209eceec2c7172cf34dc689079e669760149e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60355989"
+ms.locfileid: "67112738"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>Alkalmazásvédelmi szabályzat szükséges a cloud app hozzáféréshez a feltételes hozzáférés (előzetes verzió)
 
@@ -33,7 +33,7 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a feltételes hozzáférési szabá
 
 ## <a name="overview"></a>Áttekintés
 
-A [Azure AD feltételes hozzáférés](overview.md), finomhangolhatja hogyan engedéllyel rendelkező felhasználók férhetnek hozzá az erőforrásokat. Például korlátozhatja a hozzáférést a felhőalkalmazásokhoz, megbízható eszközökre.
+A [Azure AD feltételes hozzáférési](overview.md), finomhangolhatja hogyan engedéllyel rendelkező felhasználók férhetnek hozzá az erőforrásokat. Például korlátozhatja a hozzáférést a felhőalkalmazásokhoz, megbízható eszközökre.
 
 Használhat [az Intune alkalmazásvédelmi szabályzatai](https://docs.microsoft.com/intune/app-protection-policy) a vállalati adatok védelme érdekében. Az Intune alkalmazásvédelmi szabályzatai nem igénylik a mobileszköz-felügyelet (MDM) megoldás. A vállalati adatok vagy egy Eszközkezelési megoldás eszközök regisztrációja nélkül védheti meg.
 
@@ -68,7 +68,7 @@ Ez a cikk azt feltételezi, hogy ismeri a:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hozzon létre egy védelmi alkalmazásalapú feltételes hozzáférési szabályzatot, a következőket kell tennie:
+Egy app protection-alapú feltételes hozzáférési szabályzat létrehozásához tegye a következőket:
 
 - Enterprise Mobility + Security vagy egy Azure Active Directory premium előfizetéssel + Intune rendelkezik.
 - Győződjön meg arról, hogy a felhasználók az Enterprise Mobility + Security vagy Azure AD-licencek + Intune-ban.
@@ -77,7 +77,7 @@ Hozzon létre egy védelmi alkalmazásalapú feltételes hozzáférési szabály
 
 ## <a name="app-protection-based-policy-for-exchange-online"></a>App protection-alapú szabályzat Exchange online-hoz
 
-Ez a forgatókönyv áll egy védelmi alkalmazásalapú feltételes hozzáférési szabályzatot az Exchange online-hoz való hozzáféréshez.
+Ez a forgatókönyv áll egy app protection-alapú feltételes hozzáférési szabályzat Exchange online-hoz való hozzáféréshez.
 
 ### <a name="scenario-playbook"></a>A forgatókönyv forgatókönyv
 
@@ -97,7 +97,7 @@ Az alkalmazás hozzáférését a vállalati adatok Intune alkalmazásvédelmi s
 
 ### <a name="configuration"></a>Konfiguráció
 
-**1. lépés: Egy Azure AD feltételes hozzáférési szabályzat konfigurálása az Exchange online-hoz**
+**1. lépés: Az Azure AD feltételes hozzáférési szabályzat konfigurálása az Exchange online-hoz**
 
 Ebben a lépésben a feltételes hozzáférési szabályzat adja meg az alábbi összetevőket:
 
@@ -163,7 +163,7 @@ További információkért lásd: [alkalmazások és a Microsoft Intune-nal adat
 
 ## <a name="app-protection-based-or-compliant-device-policy-for-exchange-online"></a>Az Exchange Online protection vagy a megfelelő eszköz alkalmazásszabályzat
 
-Ez a forgatókönyv áll egy app protection-alapú vagy a megfelelő eszköz feltételes hozzáférési szabályzat Exchange online-hoz való hozzáféréshez.
+Ez a forgatókönyv tartalmaz egy app protection-alapú vagy a megfelelő eszköz feltételes hozzáférési szabályzat Exchange online-hoz való hozzáféréshez.
 
 
 ### <a name="scenario-playbook"></a>A forgatókönyv forgatókönyv
@@ -180,7 +180,7 @@ Ez a forgatókönyv feltételezi, hogy:
 
 ### <a name="configuration"></a>Konfiguráció
 
-**1. lépés: Egy Azure AD feltételes hozzáférési szabályzat konfigurálása az Exchange online-hoz**
+**1. lépés: Az Azure AD feltételes hozzáférési szabályzat konfigurálása az Exchange online-hoz**
 
 Ebben a lépésben a feltételes hozzáférési szabályzat adja meg az alábbi összetevőket:
 
@@ -216,7 +216,7 @@ Ebben a lépésben a feltételes hozzáférési szabályzat adja meg az alábbi 
 
 
 
-**2. lépés: Egy Azure AD feltételes hozzáférési szabályzat konfigurálása az Exchange Online, az ActiveSync szolgáltatással**
+**2. lépés: Az Azure AD feltételes hozzáférési szabályzat konfigurálása az Exchange Online, az ActiveSync szolgáltatással**
 
 Ebben a lépésben a feltételes hozzáférési szabályzat adja meg az alábbi összetevőket:
 
@@ -261,7 +261,7 @@ További információkért lásd: [alkalmazások és a Microsoft Intune-nal adat
 
 ## <a name="app-protection-based-and-compliant-device-policy-for-exchange-online"></a>Az Exchange Online protection és a megfelelő eszköz alkalmazásszabályzat
 
-Ez a forgatókönyv áll az app-protection-alapú és a megfelelő eszköz feltételes hozzáférési szabályzat Exchange online-hoz való hozzáféréshez.
+Ez a forgatókönyv tartalmaz egy app-protection-alapú és a megfelelő eszköz a feltételes hozzáférési szabályzat Exchange online-hoz való hozzáféréshez.
 
 
 ### <a name="scenario-playbook"></a>A forgatókönyv forgatókönyv
@@ -282,7 +282,7 @@ Minden olyan Intune alkalmazásvédelmi szabályzatai rendszer aktiválja a vál
 
 ### <a name="configuration"></a>Konfiguráció
 
-**1. lépés: Egy Azure AD feltételes hozzáférési szabályzat konfigurálása az Exchange online-hoz**
+**1. lépés: Az Azure AD feltételes hozzáférési szabályzat konfigurálása az Exchange online-hoz**
 
 Ebben a lépésben a feltételes hozzáférési szabályzat adja meg az alábbi összetevőket:
 
@@ -318,7 +318,7 @@ Ebben a lépésben a feltételes hozzáférési szabályzat adja meg az alábbi 
 
 
 
-**2. lépés: Egy Azure AD feltételes hozzáférési szabályzat konfigurálása az Exchange Online, az ActiveSync szolgáltatással**
+**2. lépés: Az Azure AD feltételes hozzáférési szabályzat konfigurálása az Exchange Online, az ActiveSync szolgáltatással**
 
 Ebben a lépésben a feltételes hozzáférési szabályzat adja meg az alábbi összetevőket:
 
@@ -384,12 +384,12 @@ Minden olyan Intune alkalmazásvédelmi szabályzatai szükség, hogy hozzáfér
 
 **Megjegyzések**
 
-- Ebben a forgatókönyvben is használhatja, ha azt szeretné, mindkét védelmi-alapú és alkalmazásalapú feltételes hozzáférési szabályzatok támogatásához.
+- Ebben a forgatókönyvben is használhatja, ha mindkét app protection-alapú és alkalmazásalapú feltételes hozzáférési szabályzatok támogatni kíván.
 - A jelen *vagy* értékeli ki a szabályzatot, az alkalmazás alkalmazásvédelmi szabályzat követelménye úgy alkalmazások hozzáférés előtt a jóváhagyott alkalmazások követelménynek.
 
 ### <a name="configuration"></a>Konfiguráció
 
-**1. lépés: Egy Azure AD feltételes hozzáférési szabályzat konfigurálása az Exchange online-hoz**
+**1. lépés: Az Azure AD feltételes hozzáférési szabályzat konfigurálása az Exchange online-hoz**
 
 Ebben a lépésben a feltételes hozzáférési szabályzat adja meg az alábbi összetevőket:
 
@@ -436,5 +436,5 @@ További információkért lásd: [alkalmazások és a Microsoft Intune-nal adat
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha azt szeretné tudni, hogyan lehet feltételes hozzáférési szabályzat konfigurálása, lásd: [többtényezős hitelesítés megkövetelése az Azure Active Directory feltételes hozzáférés az adott alkalmazások](app-based-mfa.md).
-- Ha készen áll a környezet feltételes hozzáférési szabályzatainak konfigurálása, lásd: [ajánlott eljárások az Azure Active Directory feltételes hozzáférés](best-practices.md). 
+- Ha azt szeretné tudni, hogyan lehet feltételes hozzáférési szabályzat konfigurálása, lásd: [megkövetelése MFA konkrét alkalmazások esetén az Azure Active Directory feltételes hozzáférés](app-based-mfa.md).
+- Ha készen áll a környezet feltételes hozzáférési szabályzatainak konfigurálása, lásd: [gyakorlati tanácsok az Azure Active Directory feltételes hozzáférés](best-practices.md). 

@@ -1,20 +1,19 @@
 ---
 title: Az Azure Data Factory leképezés adatfolyam Optimalizálás lap
-description: Adatfolyamok optimalizálása lapon partíció beállításokkal leképezése az Azure Data Factory optimalizálása
+description: Azure Data Factory leképezése adatfolyamok lapján optimalizálása a partícióbeállítások optimalizálása
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 3802a8475d8a39a2f275dbc7fcf21ce69892a117
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 372922fff600aaa12fddfeeb86ff4522eca3e602
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61262288"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075104"
 ---
-# <a name="mapping-data-flow-transformation-optimize-tab"></a>Hozzárendelési folyamat átalakítását Optimalizálás lap
+# <a name="mapping-data-flow-transformation-optimize-tab"></a>Adatfolyam átalakítása optimalizálás adatok hozzárendelése lap
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -51,3 +50,8 @@ Egy kifejezés, amely értékek, particionált adatok az oszlopokban a rögzíte
 ### <a name="key"></a>Kulcs
 
 Ha az adatok a számosságot beható ismerete, kulcs particionálás egy jó partíció stratégia lehet. Kulcs particionálás az oszlopban található létrehozza a partíciók minden egyedi értékére vonatkozóan. A partíciók száma nem állítható, mert az a szám az adatok egyedi értékeket fog alapulni.
+
+## <a name="next-steps"></a>További lépések
+
+[Leképezés adatfolyam teljesítmény-útmutató](concepts-data-flow-performance.md)
+[adatfolyam figyelése](concepts-data-flow-monitoring.md)

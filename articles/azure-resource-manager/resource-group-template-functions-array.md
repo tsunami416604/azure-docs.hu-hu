@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/8/2018
 ms.author: tomfitz
 ms.openlocfilehash: c80625fb36709f66319b4966e210785864f30d09
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66128700"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok tömb- és objektumfüggvények
@@ -196,7 +196,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | stringOutput | String | alapértelmezett |
-| intOutput | Int | 1. |
+| intOutput | Int | 1 |
 | objectOutput | Object | {"first": "alapértelmezett"} |
 | arrayOutput | Tömb | [1] |
 | emptyOutput | Bool | True (Igaz) |
@@ -329,7 +329,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="contains" />
 
-## <a name="contains"></a>tartalmazza a következőt:
+## <a name="contains"></a>tartalmaz
 `contains(container, itemToFind)`
 
 Ellenőrzi, hogy egy tömb értéket tartalmaz, objektum kulcsot tartalmaz, vagy egy karakterlánc részkarakterláncot tartalmaz. Az adatkarakterlánc-összehasonlítás a kis-és nagybetűket. Azonban történő tesztelésekor, ha az objektum tartalmaz egy kulcsot, az összehasonlítást, kis-és nagybetűket.
@@ -403,11 +403,11 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True (Igaz) |
-| stringFalse | Bool | Hamis |
+| stringFalse | Bool | False (Hamis) |
 | objectTrue | Bool | True (Igaz) |
-| objectFalse | Bool | Hamis |
+| objectFalse | Bool | False (Hamis) |
 | arrayTrue | Bool | True (Igaz) |
-| arrayFalse | Bool | Hamis |
+| arrayFalse | Bool | False (Hamis) |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
@@ -864,7 +864,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="length" />
 
-## <a name="length"></a>Hossza
+## <a name="length"></a>length
 `length(arg1)`
 
 Egy tömb vagy karakterlánc karaktereinek az elemek számát adja vissza.
@@ -947,7 +947,7 @@ Ez a függvény egy tömböt való használatával kapcsolatos további informá
 
 <a id="max" />
 
-## <a name="max"></a>max.
+## <a name="max"></a>max
 `max(arg1)`
 
 A maximális érték egész számok tömbje vagy egészek vesszővel elválasztott listáját adja vissza.
@@ -1139,7 +1139,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="skip" />
 
-## <a name="skip"></a>kihagyás
+## <a name="skip"></a>Kihagyás
 `skip(originalValue, numberToSkip)`
 
 A tömb a megadott szám után elemeket tömböt ad vissza, vagy az összes karakter karakterláncot ad vissza. a karakterlánc a megadott szám után.
