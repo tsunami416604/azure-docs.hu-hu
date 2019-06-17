@@ -59,7 +59,7 @@
       href: Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md
     - name: Arcok hozzáadása
       href: Face-API-How-to-Topics/how-to-add-faces.md
-    - name: Téglalap elforgatása HeadPose használatával
+    - name: A HeadPose attribútum használata
       href: Face-API-How-to-Topics/how-to-use-headpose.md
     - name: Arcfelismerési modell megadása
       href: Face-API-How-to-Topics/specify-recognition-model.md

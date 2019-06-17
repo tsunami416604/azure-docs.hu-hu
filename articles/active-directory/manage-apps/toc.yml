@@ -83,6 +83,10 @@
           href: plan-sso-deployment.md
     - name: Végfelhasználói portálok
       href: end-user-experiences.md
+    - name: Egy kattintással indítható SSO
+      items:
+        - name: Mi az egy kattintással indítható SSO
+          href: one-click-sso-tutorial.md
 - name: Útmutatók
   items:
     - name: Felhőalkalmazás hozzáadása

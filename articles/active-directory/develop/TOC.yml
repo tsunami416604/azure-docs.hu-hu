@@ -139,6 +139,8 @@
                   href: scenario-protected-web-api-app-registration.md
                 - name: Kódkonfiguráció
                   href: scenario-protected-web-api-app-configuration.md
+                - name: Hatókörök vagy alkalmazás-szerepkörök ellenőrzése
+                  href: scenario-protected-web-api-verification-scope-app-roles.md
                 - name: Átállás éles üzemre
                   href: scenario-protected-web-api-production.md
             - name: Webes API-kat hívó webes API

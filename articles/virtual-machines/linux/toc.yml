@@ -85,9 +85,10 @@
           items:
             - name: Teljesítmény optimalizálása
               href: storage-performance.md
-        - name: GPU-optimalizált
-          href: sizes-gpu.md
+        - name: Gyorsított számítás
           items:
+            - name: GPU-optimalizált
+              href: sizes-gpu.md
             - name: GPU-illesztők beállítása
               href: n-series-driver-setup.md
         - name: Nagy teljesítményű számítás

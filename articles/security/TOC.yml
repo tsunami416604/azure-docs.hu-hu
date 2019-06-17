@@ -54,8 +54,14 @@
               href: azure-security-disk-encryption-overview.md
             - name: Gyors útmutatók
               items:
-                - name: Virtuális gép titkosítása – Azure PowerShell
-                  href: quick-encrypt-vm-powershell.md
+                - name: Linux rendszerű virtuális gép titkosítása az Azure CLI-vel
+                  href: azure-disk-encryption-linux-cli-quickstart.md
+                - name: Linux rendszerű virtuális gép titkosítása az Azure PowerShell-lel
+                  href: azure-disk-encryption-linux-powershell-quickstart.md
+                - name: Windows rendszerű virtuális gép titkosítása az Azure CLI-vel
+                  href: azure-disk-encryption-windows-cli-quickstart.md
+                - name: Windows rendszerű virtuális gép titkosítása az Azure PowerShell-lel
+                  href: azure-disk-encryption-windows-powershell-quickstart.md
             - name: Azure Disk Encryption
               items:
                 - name: Lemeztitkosítás előfeltételei

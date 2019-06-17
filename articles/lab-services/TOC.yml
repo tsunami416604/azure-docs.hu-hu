@@ -50,6 +50,10 @@
       items:
         - name: DevTest Labs-fogalmak
           href: devtest-lab-concepts.md
+        - name: Ajánlott eljárások az elosztott és együttműködésen alapuló fejlesztéshez
+          href: best-practices-distributive-collaborative-development-environment.md
+        - name: Integráció az Azure DevOpsszal
+          href: devtest-lab-dev-ops.md
         - name: Forgatókönyvek
           items:
             - name: Népszerű forgatókönyvek a DevTest Labs használatához
@@ -92,6 +96,8 @@
               href: classroom-labs/how-to-use-shared-image-gallery.md
             - name: Távoli asztali kapcsolat engedélyezése Linuxon
               href: classroom-labs/how-to-enable-remote-desktop-linux.md
+            - name: Virtuális gépek jelszavának beállítása vagy visszaállítása
+              href: classroom-labs/how-to-set-virtual-machine-passwords.md
     - name: DevTest Labs
       items:
         - name: Erőforráscsoport meghatározása a labor virtuális gépeihez
@@ -106,6 +112,8 @@
           href: personal-data-delete-export.md
         - name: Virtuális gépek importálása másik tesztkörnyezetből
           href: import-virtual-machines-from-another-lab.md
+        - name: Tesztkörnyezet konfigurálása távoli asztali átjáró használatához
+          href: configure-lab-remote-desktop-gateway.md
         - name: Rendszerkép-előállító létrehozása
           href: image-factory-create.md
           items:

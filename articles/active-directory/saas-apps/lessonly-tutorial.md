@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: ec1fce18913d6763514abb80ceba471bf73d59ad
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: ccef5b5acd8ba30b6ea8aea2d0eb0a5b2cb6d503
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65897806"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098083"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lessonlycom"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Lessonly.com
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Lessonly.com konfigurálásához hozzá kell Lessonl
 
 **Lessonly.com hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -225,7 +225,7 @@ Nincs meg ebben a szakaszban a művelet elem. Egy új felhasználót hoz létre 
 > [!NOTE]
 > Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [Lessonly.com támogatási csapatának](mailto:support@lessonly.com).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

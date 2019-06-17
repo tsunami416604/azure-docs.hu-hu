@@ -64,7 +64,9 @@ landingContent:
         links:
           - text: Transzparens átjáró konfigurálása
             url: how-to-create-transparent-gateway.md
-          - text: Lefelé irányuló eszköz csatlakoztatása
+          - text: Lefelé irányuló eszköz hitelesítése az Azure IoT Hubon
+            url: how-to-authenticate-downstream-device.md
+          - text: Lefelé irányuló eszköz csatlakoztatása átjáróhoz
             url: how-to-connect-downstream-device.md
   - title: Előkészületek éles forgatókönyvekhez
     linkLists:

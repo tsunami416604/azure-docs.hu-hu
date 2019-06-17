@@ -59,12 +59,20 @@
           href: concepts-business-continuity.md
         - name: Biztonsági mentés és visszaállítás
           href: concepts-backup.md
-    - name: Figyelés
+    - name: Figyelés és hangolás
       items:
         - name: Figyelés
           href: concepts-monitoring.md
-        - name: Kiszolgálói naplók
+        - name: Lassú lekérdezési naplók
           href: concepts-server-logs.md
+        - name: Naplók
+          href: concepts-audit-logs.md
+        - name: Lekérdezéstár
+          href: concepts-query-store.md
+        - name: Lekérdezési terheléselemző
+          href: concepts-query-performance-insight.md
+        - name: Teljesítménnyel kapcsolatos javaslatok
+          href: concepts-performance-recommendations.md
     - name: Fejlesztés
       items:
         - name: Az illesztőprogramok és eszközök kompatibilitása
@@ -75,6 +83,8 @@
       items:
         - name: Beérkező adatokra épülő replikáció
           href: concepts-data-in-replication.md
+        - name: Olvasási replikák
+          href: concepts-read-replicas.md
 - name: Útmutatók
   items:
     - name: Tűzfalszabályok
@@ -113,10 +123,16 @@
           href: howto-auto-grow-storage-portal.md
     - name: Hozzáférés a kiszolgálói naplókhoz
       items:
-        - name: Azure Portal
-          href: howto-configure-server-logs-portal.md
-        - name: Azure CLI
-          href: howto-configure-server-logs-cli.md
+        - name: Lassú lekérdezési naplók
+          items:
+            - name: Azure Portal
+              href: howto-configure-server-logs-portal.md
+            - name: Azure CLI
+              href: howto-configure-server-logs-cli.md
+        - name: Naplók
+          items:
+            - name: Azure Portal
+              href: howto-configure-audit-logs-portal.md
     - name: Figyelés
       items:
         - name: Riasztások létrehozása metrikákhoz
@@ -125,6 +141,8 @@
       items:
         - name: Beérkező adatokra épülő replikáció konfigurálása
           href: howto-data-in-replication.md
+        - name: Olvasási replikák létrehozása az Azure Portalon
+          href: howto-read-replicas-portal.md
     - name: Hibaelhárítás
       items:
         - name: Csatlakozási hibák elhárítása

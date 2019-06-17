@@ -42,8 +42,10 @@
       href: howto-sql-server-to-azure-sql-mi-powershell.md
     - name: A migrálási tevékenységek monitorozása
       href: how-to-monitor-migration-activity.md
-    - name: SSIS-csomagok migrálása az Azure-ba
+    - name: SSIS-csomagok migrálása az Azure SQL Database-be
       href: how-to-migrate-ssis-packages.md
+    - name: SSIS-csomagok migrálása az Azure SQL Database felügyelt példányára
+      href: how-to-migrate-ssis-packages-managed-instance.md
 - name: További források
   items:
     - name: Adatbázis migrációs forgatókönyvének állapota

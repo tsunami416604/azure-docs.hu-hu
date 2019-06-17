@@ -2,7 +2,7 @@
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Mi a feltételes hozzáférés?
+    - name: Mi az a feltételes hozzáférés?
       href: overview.md
 - name: Gyors útmutatók
   items:

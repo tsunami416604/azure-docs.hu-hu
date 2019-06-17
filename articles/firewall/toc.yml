@@ -39,6 +39,8 @@
   items:
     - name: Üzembe helyezés az Azure PowerShell-lel
       href: deploy-ps.md
+    - name: Üzembe helyezés az Azure CLI-vel
+      href: deploy-cli.md
     - name: Üzembe helyezés sablon használatával
       href: deploy-template.md
     - name: Integrálás a Load Balancerrel

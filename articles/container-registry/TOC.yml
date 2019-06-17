@@ -89,12 +89,14 @@
               href: container-registry-auth-aks.md
         - name: Tartalommegbízhatóság
           href: container-registry-content-trust.md
-    - name: Létrehozás és javítás
+    - name: ACR-feladatok
       items:
-        - name: ACR-feladatok
+        - name: Az ACR-feladatok áttekintése
           href: container-registry-tasks-overview.md
         - name: Többlépéses feladatok
           href: container-registry-tasks-multi-step.md
+        - name: Használat felügyelt identitással
+          href: container-registry-tasks-authentication-managed-identity.md
     - name: Regisztrációs adatbázisok és más Azure-szolgáltatások
       items:
         - name: Azure Container Instances

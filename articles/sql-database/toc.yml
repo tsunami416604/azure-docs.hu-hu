@@ -83,22 +83,26 @@
           href: sql-database-design-first-database.md
         - name: Adatbázis tervezése a .NET használatával
           href: sql-database-design-first-database-csharp.md
-    - name: Migrálás az SQL Database-be
+    - name: Egyedülálló adatbázis
       items:
         - name: Migrálás önálló/rugalmas készletbe helyezett adatbázisba DMS használatával
           href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
-        - name: Migrálás felügyelt példányra DMS használatával
+        - name: Földrajzilag elosztott adatbázis implementálása
+          href: sql-database-implement-geo-distributed-database.md
+        - name: Az Azure SQL Data Sync beállítása
+          href: sql-database-get-started-sql-data-sync.md
+    - name: Felügyelt példány
+      items:
+        - name: Online migrálás DMS használatával
           href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
+        - name: Tranzakciós replikáció konfigurálása
+          href: replication-with-sql-database-managed-instance.md
     - name: Biztonság az SQL Database-ben
       items:
         - name: Önálló és rugalmas készletbe helyezett adatbázisok biztonsága
           href: sql-database-security-tutorial.md
         - name: Felügyelt példányok biztonsága
           href: sql-database-managed-instance-aad-security-tutorial.md
-    - name: Földrajzilag elosztott adatbázis implementálása
-      href: sql-database-implement-geo-distributed-database.md
-    - name: Az Azure SQL Data Sync beállítása
-      href: sql-database-get-started-sql-data-sync.md
     - name: Machine Learning Services
       items:
         - name: Prediktív modell létrehozása R nyelven
@@ -500,8 +504,6 @@
           href: sql-database-managed-instance-find-management-endpoint-ip-address.md
         - name: Beépített tűzfalvédelem ellenőrzése
           href: sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md
-        - name: Tranzakciós replikáció
-          href: replication-with-sql-database-managed-instance.md
         - name: Fenyegetésészlelés konfigurálása
           href: sql-database-managed-instance-threat-detection.md
         - name: Alkalmazások csatlakoztatása

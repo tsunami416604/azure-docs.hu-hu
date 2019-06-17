@@ -48,16 +48,31 @@ sections:
             image:
               src: media/index/mongodb-api.svg
             title: MongoDB-hez készült Azure Cosmos DB API
-          - href: /azure/cosmos-db/table-introduction/
-            html: '<p>Ha az Azure Table Storage-ból migrál adatokat az Azure Cosmos DB prémium táblázatajánlatba, használja a Table API-t.</p>'
-            image:
-              src: media/index/table-api.svg
-            title: Tábla API
           - href: /azure/cosmos-db/cassandra-introduction/
             html: '<p>Ha a Cassandrából migrál adatokat az Azure Cosmos DB teljes mértékben felügyelt szolgáltatásába, használja a Cassandra API-t.</p>'
             image:
               src: media/index/cassandra-api.png
             title: Cassandra API
+          - href: /azure/cosmos-db/table-introduction/
+            html: '<p>Ha az Azure Table Storage-ból migrál adatokat az Azure Cosmos DB prémium táblázatajánlatba, használja a Table API-t.</p>'
+            image:
+              src: media/index/table-api.svg
+            title: Tábla API
+          - href: /azure/cosmos-db/spark-api-introduction/
+            html: <p>Az Apache Spark beépített támogatásával elemzést futtathat az Azure Cosmos-fiókban tárolt adatokon. </p>
+            image:
+              src: media/index/spark-logo.png
+            title: Beépített elemzések az Apache Sparkkal
+          - href: /azure/cosmos-db/change-feed/
+            html: <p>A változáscsatornával valós idejű elemzést végezhet az Azure Cosmos DB-tárolóban található dokumentumok rendezett listájának a módosításuk sorrendjében való beolvasásával. </p>
+            image:
+              src: media/index/change-feed-logo.png
+            title: Csatorna módosítása
+          - href: /azure/cosmos-db/etcd-api-introduction/
+            html: <p> Az Etcd API-val háttértárolóként használhatja az Azure Cosmos DB-t az Azure Kuberneteshez.</p>
+            image:
+              src: media/index/etcd-logo.png
+            title: Etcd API
   - title: 5 perces gyors útmutatók
     items:
       - type: paragraph

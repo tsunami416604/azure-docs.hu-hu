@@ -1,0 +1,15 @@
+- name: A biztonságos fejlesztés dokumentációja
+  href: index.yml
+- name: Alapelvek
+  expanded: true
+  items:
+    - name: Ajánlott eljárások
+      items:
+        - name: Áttekintés
+          href: secure-dev-overview.md
+        - name: Biztonságos alkalmazások tervezése
+          href: secure-design.md
+        - name: Biztonságos alkalmazások fejlesztése
+          href: secure-develop.md
+        - name: Biztonságos alkalmazások üzembe helyezése
+          href: secure-deploy.md

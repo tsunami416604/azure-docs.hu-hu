@@ -74,8 +74,9 @@
     - name: Bérlőszintű láthatóság
       href: security-center-management-groups.md
     - name: Biztonsági javaslatok megvalósítása
-      href: security-center-recommendations.md
       items:
+        - name: Mik azok a biztonsági javaslatok
+          href: security-center-recommendations.md
         - name: Biztonsági helyzet megerősítése
           href: security-center-monitoring.md
         - name: Gépek és alkalmazások védelme
@@ -181,6 +182,8 @@
       href: /learn/browse/?term=securityS
     - name: Felhasználói adatok kezelése
       href: security-center-privacy.md
+    - name: Az IoT felügyelete
+      href: 'https://docs.microsoft.com/en-us/azure/asc-for-iot/'
     - name: GYIK
       href: security-center-faq.md
     - name: Azure Security

@@ -205,7 +205,7 @@
           href: iot-accelerators-device-simulation-advanced-device.md
         - name: Telemetria vizualizációja a Time Series Insights használatával
           href: iot-accelerators-device-simulation-time-series-insights.md
-        - name: Telemetria szerializálása Protobuf használatával
+        - name: Telemetria szerializálása a Protobuf használatával
           href: iot-accelerators-device-simulation-protobuf.md
         - name: Egyéni Docker-rendszerkép üzembe helyezése
           href: iot-accelerators-device-simulation-deploy-image.md

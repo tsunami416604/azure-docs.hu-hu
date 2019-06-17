@@ -116,7 +116,7 @@
           href: licensing-groups-change-licenses.md
         - name: További helyzetek
           href: licensing-group-advanced.md
-        - name: Csoportalapú licencelés a PowerShell-lel
+        - name: Csoportalapú licencelés a PowerShell és a Graph használatával
           href: licensing-ps-examples.md
         - name: Szolgáltatáscsomag-azonosítók licenckezeléshez
           href: licensing-service-plan-reference.md

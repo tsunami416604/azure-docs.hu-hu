@@ -43,6 +43,8 @@
         - name: Offline értékelés
           href: concepts-offline-evaluation.md
           displayName: 'learning policy, Counterfactual, features'
+    - name: Méretezhetőség és teljesítmény
+      href: concepts-scalability-performance.md
 - name: Útmutatók
   items:
     - name: Személyre szabó létrehozása és konfigurálása

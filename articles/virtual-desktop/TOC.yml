@@ -16,6 +16,10 @@
       href: manage-app-groups.md
     - name: 5. Gazdagépcsoport létrehozása a szolgáltatásfrissítések érvényesítéséhez
       href: create-validation-host-pool.md
+    - name: 6. Felügyeleti eszköz üzembe helyezése
+      href: manage-resources-using-ui.md
+    - name: 7. Szolgáltatásriasztások beállítása
+      href: set-up-service-alerts.md
 - name: Használati útmutató
   items:
     - name: Csatlakozás Windows Virtual Desktop erőforrásaihoz
@@ -40,6 +44,8 @@
       href: configure-vm-gpu.md
     - name: Munkamenetgazdák automatikus méretezése
       href: set-up-scaling-script.md
+    - name: RDP-tulajdonságok testreszabása
+      href: customize-rdp-properties.md
 - name: Alapelvek
   items:
     - name: A Windows Virtual Desktop környezete

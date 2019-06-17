@@ -2,37 +2,51 @@
   href: index.md
 - name: Áttekintés
   items:
-    - name: Mi az Azure állapota?
+    - name: Azure Service Health szolgáltatás
+      href: overview.md
+- name: Gyors útmutatók
+  items:
+    - name: Szolgáltatások állapoteseményeire vonatkozó riasztások beállítása
+      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
+- name: Alapelvek
+  items:
+    - name: Az Azure állapota oldal
       href: azure-status-overview.md
-    - name: Mi a Service Health?
+    - name: Service Health
       href: service-health-overview.md
-    - name: Mi a Resource Health?
+    - name: Resource Health
       href: resource-health-overview.md
 - name: Útmutató
   items:
     - name: Szolgáltatások állapoteseményeire vonatkozó riasztások beállítása
       href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
-      items:
-        - name: Szolgáltatás állapotára vonatkozó értesítések megtekintése az Azure Portalon
-          href: ../azure-monitor/platform/service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
-    - name: Szolgáltatások állapotára vonatkozó értesítések konfigurálása webhookkal
+    - name: Szolgáltatás állapotára vonatkozó értesítések megtekintése az Azure Portalon
+      href: ../azure-monitor/platform/service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
+    - name: Riasztások küldése külső rendszereknek webhookon keresztül
       href: service-health-alert-webhook-guide.md
-      items:
-        - name: Konfigurálás a ServiceNow segítségével
-          href: service-health-alert-webhook-servicenow.md
-        - name: Konfigurálás a PagerDuty segítségével
-          href: service-health-alert-webhook-pagerduty.md
-        - name: Konfigurálás az OpsGenie segítségével
-          href: service-health-alert-webhook-opsgenie.md
-        - name: Állapotesemények lekérése a REST használatával
-          href: service-health-rest.md
+    - name: Riasztások küldése a ServiceNow-nak
+      href: service-health-alert-webhook-servicenow.md
+    - name: Riasztások küldése a PagerDutynak
+      href: service-health-alert-webhook-pagerduty.md
+    - name: Riasztások küldése az OpsGenie-nek
+      href: service-health-alert-webhook-opsgenie.md
+    - name: Állapotesemények lekérése a REST használatával
+      href: service-health-rest.md
     - name: Erőforrások állapoteseményeire vonatkozó riasztások beállítása
       href: resource-health-alert-arm-template-guide.md
+- name: Referencia
+  items:
+    - name: A szolgáltatásállapottal kapcsolatos riasztások tulajdonságai
+      href: service-health-notifications-properties.md
+    - name: Erőforrás-állapot típusai és ellenőrzések
+      href: resource-health-checks-resource-types.md
+    - name: Erőforrás állapota GYIK
+      href: resource-health-faq.md
 - name: További források
   items:
-    - name: Gyakori kérdések
-      href: resource-health-faq.md
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
     - name: Díjkalkulátor
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Az Azure Resource Health segítségével elérhető erőforrástípusok és állapotellenőrzések
-      href: resource-health-checks-resource-types.md
+    - name: Értesítések díjszabása
+      href: 'https://azure.microsoft.com/pricing/details/monitor/'

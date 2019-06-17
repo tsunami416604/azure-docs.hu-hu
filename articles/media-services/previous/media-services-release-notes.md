@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: c519cf88f40928bbd556b0accfa30d9f8c5c0f11
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65991919"
 ---
 # <a name="azure-media-services-release-notes"></a>Az Azure Media Services kibocsátási megjegyzései
@@ -45,15 +45,15 @@ Szívesen meghallgatnánk az ügyfeleink, így Ön érintő problémák kijavít
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>REST API-korábbi verziók
 A Media Services REST API-korábbi verziók kapcsolatos információkért tekintse meg a [Az Azure Media Services REST API-referencia].
 
-## <a name="march-2019"></a>2019. március
+## <a name="march-2019"></a>2019\. március
 
 Az Azure Media Services Media Hyperlapse előzetes verzióként elérhető funkciója kivezettük.
 
-## <a name="december-2018"></a>2018. december
+## <a name="december-2018"></a>2018\. december
 
-Az Azure Media Services Media Hyperlapse előzetes verzióként elérhető funkciója hamarosan megszűnik. 2018. December 19., kezdve a Media Services fog már nem győződjön meg arról, módosításokat és fejlesztéseket Media hyperlapse használatával való. 2019. március 29., a kivont és már nem elérhető lesz.
+Az Azure Media Services Media Hyperlapse előzetes verzióként elérhető funkciója hamarosan megszűnik. 2018\. December 19., kezdve a Media Services fog már nem győződjön meg arról, módosításokat és fejlesztéseket Media hyperlapse használatával való. 2019\. március 29., a kivont és már nem elérhető lesz.
 
-## <a name="october-2018"></a>2018. október
+## <a name="october-2018"></a>2018\. október
 
 ### <a name="cmaf-support"></a>CMAF támogatása
 
@@ -63,19 +63,19 @@ CMAF és "cbcs" titkosítás támogatása (iOS 11 +) Apple HLS és MPEG-DASH, am
 
 Mostantól használhatja a Media Services webes VTT miniatűr sprites a v2 API-k használatával létrehozni. További információkért lásd: [hozzon létre egy miniatűr sprite](generate-thumbnail-sprite.md).
 
-## <a name="july-2018"></a>2018. július
+## <a name="july-2018"></a>2018\. július
 
 A szolgáltatás legújabb kiadással nincsenek kisebb a hibaüzenetek, amikor egy feladat sikertelen volt, vonatkozóan, hogyan azt van osztva két vagy több sort adja vissza a szolgáltatás a módosítások formázása.
 
-## <a name="may-2018"></a>2018. május 
+## <a name="may-2018"></a>2018\. május 
 
-2018. május 12., az élő csatornák indítása fogja többé nem támogatja a RTP/MPEG-2 adatátviteli stream betöltési protokollját. Telepítse át a RTP/MPEG-2 RTMP vagy darabolt MP4 (Smooth Streaming) betöltési protokollokra.
+2018\. május 12., az élő csatornák indítása fogja többé nem támogatja a RTP/MPEG-2 adatátviteli stream betöltési protokollját. Telepítse át a RTP/MPEG-2 RTMP vagy darabolt MP4 (Smooth Streaming) betöltési protokollokra.
 
-## <a name="october-2017-release"></a>2017. októberi kiadás
+## <a name="october-2017-release"></a>2017\. októberi kiadás
 > [!IMPORTANT] 
-> A Media Services az Azure Access Control Service-hitelesítési kulcsok támogatásának kivezetése. 2018. június 22. már nem hitelesítheti a Media Services-háttérrendszer használatával kód Access Control Service kulcsok használatával. Az Azure Active Directory (Azure AD) használja a kód frissítenie kell egy [az Azure AD-alapú hitelesítés](media-services-use-aad-auth-to-access-ams-api.md). Tekintse meg a figyelmeztetéseket erről a változásról, az Azure Portalon.
+> A Media Services az Azure Access Control Service-hitelesítési kulcsok támogatásának kivezetése. 2018\. június 22. már nem hitelesítheti a Media Services-háttérrendszer használatával kód Access Control Service kulcsok használatával. Az Azure Active Directory (Azure AD) használja a kód frissítenie kell egy [az Azure AD-alapú hitelesítés](media-services-use-aad-auth-to-access-ams-api.md). Tekintse meg a figyelmeztetéseket erről a változásról, az Azure Portalon.
 
-### <a name="updates-for-october-2017"></a>2017. októberi frissítések
+### <a name="updates-for-october-2017"></a>2017\. októberi frissítések
 #### <a name="sdks"></a>SDK-k
 * A .NET SDK frissült az Azure AD-hitelesítés támogatásához. A legújabb .NET SDK gyorsabb áttelepítés az Azure ad-val ösztönzik a Nuget.org webhelyen az Access Control Service-hitelesítés támogatása el lett távolítva. 
 * A JAVA SDK frissítve lett az Azure AD-hitelesítés támogatásához. Azure AD-hitelesítés támogatása hozzáadva a Java SDK-t. Információk a Java SDK használatának a Media Services: [a Java ügyfél-SDK használatának első lépései az Azure Media Services](media-services-java-how-to-use.md)
@@ -105,9 +105,9 @@ Az új processzor áttekintéséhez lásd: [ebben a blogbejegyzésben](https://a
 A Media Services már támogatja [az Azure AD-alapú hitelesítés](media-services-use-aad-auth-to-access-ams-api.md).
 
 > [!IMPORTANT]
-> Jelenleg a Media Services támogatja az Access Control Service-hitelesítési modellre. 2018. június 1. Access Control Service engedélyezési elavulttá válik. Javasoljuk, hogy mielőbb térjen át az Azure AD-hitelesítési modellre.
+> Jelenleg a Media Services támogatja az Access Control Service-hitelesítési modellre. 2018\. június 1. Access Control Service engedélyezési elavulttá válik. Javasoljuk, hogy mielőbb térjen át az Azure AD-hitelesítési modellre.
 
-## <a name="march-2017-release"></a>2017. márciusi kiadás
+## <a name="march-2017-release"></a>2017\. márciusi kiadás
 
 Most már használhatja a standard szintű Encoder a [skála automatikus létrehozását](media-services-autogen-bitrate-ladder-with-mes.md) kódolási tevékenység létrehozásakor a karakterlánc a "adaptív Streamelés" előbeállítást megadásával. Kódolás a Media Services használatával folyamatos átviteli videó, használja a "Adaptív Streamelés" beállításkészletet. Testre szabhatja egy kódolási előbeállítást az adott forgatókönyvhöz, megkezdheti az [ezen készletek](media-services-mes-presets-overview.md).
 
@@ -115,13 +115,13 @@ Most már használhatja a Media Encoder Standard vagy a Media Encoder Premium mu
 
 ## <a name="february-2017-release"></a>2017 február kiadás
 
-2017. április 1-én kezdve a fiókjában 90 napnál régebbi feladat rekordot automatikusan törlődik, és a kapcsolódó bejegyzések. Törlés akkor fordul elő, akkor is, ha a rekordok száma nem éri a maximális kvótát. A feladatok/műveletek adatainak archiválásához használhatja a kód ismertetett [kezelése az eszközök és a kapcsolódó entitások a Media Services .NET SDK-val](media-services-dotnet-manage-entities.md).
+2017\. április 1-én kezdve a fiókjában 90 napnál régebbi feladat rekordot automatikusan törlődik, és a kapcsolódó bejegyzések. Törlés akkor fordul elő, akkor is, ha a rekordok száma nem éri a maximális kvótát. A feladatok/műveletek adatainak archiválásához használhatja a kód ismertetett [kezelése az eszközök és a kapcsolódó entitások a Media Services .NET SDK-val](media-services-dotnet-manage-entities.md).
 
 ## <a name="january-2017-release"></a>2017 január kiadás
 
 A Media Services szolgáltatásban a tartalomstreameléshez használt streamvégpont jelöli egy adatfolyam-szolgáltatást, amely tartalmat továbbít közvetlenül az ügyfél lejátszóalkalmazásába, vagy a content delivery network (CDN) további terjesztés céljából. Media Services az Azure Content Delivery Network zökkenőmentes integrációt is biztosít. A kimenő adatfolyam a Streamvégpontok szolgáltatás az élő stream, igény szerinti videó vagy egy progresszív letöltés, az eszköz a Media Services-fiók lehet. Minden egyes Media Services-fiók alapértelmezett streamvégpontja tartalmazza. További streamvégpontok a fiók alatt hozható létre. 
 
-A streamvégpontot választanak, két verziója 1.0-s és 2.0-s. 2017. január 10., kezdve minden újonnan létrehozott Media Services-fiókok tartalmazzák a 2.0-s verziójának alapértelmezett streamvégpontot. Adja hozzá az ehhez a fiókhoz további streamvégpontok egyúttal 2.0-s verzióját. Ez a változás nem érinti a meglévő fiókok. Meglévő streamvégpontok 1.0-s és 2.0-s verziójának frissíthetők. Nincsenek viselkedés, a számlázással és az módosítása funkció módosításokat. További információk: [Streamvégpontok áttekintése](media-services-streaming-endpoints-overview.md).
+A streamvégpontot választanak, két verziója 1.0-s és 2.0-s. 2017\. január 10., kezdve minden újonnan létrehozott Media Services-fiókok tartalmazzák a 2.0-s verziójának alapértelmezett streamvégpontot. Adja hozzá az ehhez a fiókhoz további streamvégpontok egyúttal 2.0-s verzióját. Ez a változás nem érinti a meglévő fiókok. Meglévő streamvégpontok 1.0-s és 2.0-s verziójának frissíthetők. Nincsenek viselkedés, a számlázással és az módosítása funkció módosításokat. További információk: [Streamvégpontok áttekintése](media-services-streaming-endpoints-overview.md).
 
 A Media Services 2.15 verziójával kezdődően a streaming endpoint entitáshoz hozzáadva az alábbi tulajdonságokat:
 
@@ -132,7 +132,7 @@ A Media Services 2.15 verziójával kezdődően a streaming endpoint entitáshoz
 
 Ezek a tulajdonságok további információkért lásd: [Streamvégpontok](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint). 
 
-## <a name="december-2016-release"></a>2016. december kiadás
+## <a name="december-2016-release"></a>2016\. december kiadás
 
  Most már használhatja a Media Services telemetriai adatok és metrikák adatok elérését a szolgáltatásokhoz. Aktuális verzióját használja, a Media Services élő csatorna telemetriai adatainak gyűjtéséhez streamvégpontot, és archiválja az entitások. További információkért lásd: [Media Services telemetriai](media-services-telemetry-overview.md).
 
@@ -451,7 +451,7 @@ A következő Media Services PowerShell-parancsmagok mostantól beletartoznak [A
 A következő módosításokat ebben a szakaszban említett a 2013. június Media Services-kiadások-frissítéseket is:
 
 * Lehetővé teszi több tárfiók csatolása egy Media Services-fiókját. 
-    * Tárfiók
+    * StorageAccount
     * Asset.StorageAccountName and Asset.StorageAccount
 * Job.Priority frissítésének lehetőségét. 
 * Értesítési kapcsolatos entitásokat és tulajdonságok: 
@@ -472,7 +472,7 @@ A következő változások legyenek belefoglalva a június 2013 a Media Services
     * StorageAccountName tulajdonság
   
       További információkért lásd: [kezelése Media Services objektumai több tárfiókban](https://msdn.microsoft.com/library/azure/dn271889.aspx).
-* Értesítési kapcsolatos API-k. 2.2.0.0 verziójával kezdődően, figyelheti az Azure Queue storage értesítésekre. További információkért lásd: [kezelni a Media Services feladat értesítések](https://msdn.microsoft.com/library/azure/dn261241.aspx).
+* Értesítési kapcsolatos API-k. 2\.2.0.0 verziójával kezdődően, figyelheti az Azure Queue storage értesítésekre. További információkért lásd: [kezelni a Media Services feladat értesítések](https://msdn.microsoft.com/library/azure/dn261241.aspx).
   
     * Microsoft.WindowsAzure.MediaServices.Client.IJob.JobNotificationSubscriptions tulajdonság
     * Microsoft.WindowsAzure.MediaServices.Client.INotificationEndPoint type

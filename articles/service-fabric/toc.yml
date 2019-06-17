@@ -517,6 +517,8 @@
               href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md
             - name: Linux-fürt beállítása Windowson
               href: service-fabric-local-linux-cluster-windows.md
+            - name: .NET Core-alkalmazás üzembe helyezése távoli Linux-fürtre VS-ről
+              href: service-fabric-how-to-publish-linux-app-vs.md
         - name: Munka a Linux/Eclipse fejlesztői környezetében
           items:
             - name: Az Eclipse beépülő modul használatának első lépései Java-fejlesztésekhez
@@ -842,8 +844,8 @@
       href: 'https://azure.microsoft.com/pricing/details/service-fabric/'
     - name: Díjkalkulátor
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Hibaelhárítási útmutatók
-      href: 'https://github.com/Azure/Service-Fabric-Troubleshooting-Guides'
+    - name: Kibocsátási megjegyzések
+      href: release-notes.md
     - name: Mintakód
       href: 'https://aka.ms/servicefabricsamples'
     - name: Támogatási lehetőségek
@@ -852,5 +854,7 @@
       href: service-fabric-versions.md
     - name: Szolgáltatási hírek
       href: 'https://azure.microsoft.com/updates/?product=service-fabric'
+    - name: Hibaelhárítási útmutatók
+      href: 'https://github.com/Azure/Service-Fabric-Troubleshooting-Guides'
     - name: Videók
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-fabric'

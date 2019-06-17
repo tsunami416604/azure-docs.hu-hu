@@ -1,0 +1,44 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: A biztonságos fejlesztés dokumentációja
+metadata:
+  document_id: null
+  title: Biztonságos fejlesztési dokumentáció a Microsoft Azure-ról
+  meta.description: Learn how to develop secure apps on Azure.
+  services: security
+  author: TerryLanfear
+  manager: barbkess
+  ms.service: security
+  ms.subservice: develop
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 06/11/2019
+  ms.author: terrylan
+abstract:
+  description: 'Mintaalkalmazásaink, ajánlott eljárásaink és útmutatóink segítségével megtudhatja, hogyan fejleszthet és helyezhet üzembe biztonságos alkalmazásokat az Azure-ban.'
+sections:
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 2
+        items:
+          - href: /azure/security/develop/secure-dev-overview
+            html: <p>Biztonságos webalkalmazás fejlesztése az Azure-ban</p>
+            image:
+              src: /media/common/i_get-started.svg
+            title: Bevezetés
+          - href: 'https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider'
+            html: <p>A webalkalmazások öt legfontosabb biztonsági eleme</p>
+            image:
+              src: /media/common/i_learn-about.svg
+            title: Fejlessze a készségeit a Microsoft Learnnel
+  - title: Alapelvek
+    items:
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/security/develop/secure-dev-overview">A biztonságos fejlesztés ajánlott eljárásai</a>
+          - html: <a href="/azure/security/azure-security-threat-modeling-tool">Fenyegetésmodellezés</a>
