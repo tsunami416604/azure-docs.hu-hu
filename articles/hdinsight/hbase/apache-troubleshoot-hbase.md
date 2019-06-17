@@ -8,10 +8,10 @@ ms.custom: hdinsightactive, seodec18
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.openlocfilehash: 6ba17a3839390ed5fe503a6fe57b63d8fb119138
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64713494"
 ---
 # <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>Az Azure HDInsight az Apache HBase hibaelhárítása
@@ -219,7 +219,7 @@ Csatlakozás az Apache Phoenix, az aktív Apache ZooKeeper-csomópont IP-címét
    ```
 
    > [!Note] 
-   > Az Ambari felhasználói felületén is kap az aktív ZooKeeper-csomópont IP-címét. Lépjen a **HBase** > **Gyorshivatkozások** > **ZK\* (aktív)** > **Zookeeper Info**. 
+   > Az Ambari felhasználói felületén is kap az aktív ZooKeeper-csomópont IP-címét. Lépjen a **HBase** > **Gyorshivatkozások** > **ZK\* (aktív)**  > **Zookeeper Info**. 
 
 3. Ha az sqlline.py Phoenix csatlakozik, és nem időkorlátja nem, futtassa a következő parancsot a rendelkezésre állás és a Phoenix állapotának ellenőrzése:
 

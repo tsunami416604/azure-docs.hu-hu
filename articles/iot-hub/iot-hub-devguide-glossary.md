@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.openlocfilehash: 6f89e27b06179c33857d581c0c6e3fc78c683d48
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62119809"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Az IoT Hub kifejezések jegyzéke
@@ -21,7 +21,7 @@ Ez a cikk felsorolja az egyes az IoT Hub-cikkekben használt gyakori kifejezése
 ## <a name="advanced-message-queueing-protocol"></a>Advanced Message Queueing Protocol
 [Advanced Message Queueing Protocol (AMQP)](https://www.amqp.org/) van, amelyek közül az üzenetküldés van protokollokon [az IoT Hub](#iot-hub) támogatja a eszközökkel való kommunikációhoz. Az üzenetküldési protokollokat, amely az IoT Hub által támogatott kapcsolatos további információkért lásd: [küldhet és fogadhat üzeneteket az IoT Hub](iot-hub-devguide-messaging.md).
 
-## <a name="automatic-device-management"></a>Automatikus eszközkezelés
+## <a name="automatic-device-management"></a>Az automatikus kezelés
 Az Azure IoT Hub automatikus kezelés automatizálja az ismétlődő és összetett feladatok nagy eszköz flották kezelésének azok életciklusának teljes keresztül. Automatikus felügyeleti (MDM) cél az eszközök a hozzájuk tartozó tulajdonságok alapján, a kívánt konfiguráció definiálása és frissítheti az eszközeit, amikor hatókör lépnek az IoT Hub segítségével.  Áll [automatikus eszközkonfigurációk](iot-hub-auto-device-config.md) és [automatikus IoT Edge-telepítések](../iot-edge/how-to-deploy-monitor.md).
 
 ## <a name="automatic-device-configuration"></a>Eszközök automatikus konfigurálása
@@ -67,7 +67,7 @@ Minden IoT hub tartalmaz egy beépített [végpont](iot-hub-devguide-endpoints.m
 ## <a name="cloud-gateway"></a>Átjáró
 Egy felhőátjáróhoz lehetővé teszi, hogy a kapcsolatok közvetlenül a nem csatlakozó eszközökön [az IoT Hub](#iot-hub). A felhőátjáró ellentétben a felhőben üzemeltetett egy [helyszíni átjáró](#field-gateway) , futtató helyi az eszközökön. Felhőalapú átjáró egy tipikus használati eset, hogy az eszközök protokollfordítás végrehajtása.
 
-## <a name="cloud-to-device"></a>Felhőből-az-eszközre
+## <a name="cloud-to-device"></a>Felhőből az eszközre
 Egy csatlakoztatott eszköznek az IoT hubról küldött üzenetek hivatkozik. Gyakran előfordul ezeket az üzeneteket olyan parancsok, melyek arra utasítják az eszköz egy műveletet. További információkért lásd: [küldhet és fogadhat üzeneteket az IoT Hub](iot-hub-devguide-messaging.md).
 
 ## <a name="configuration"></a>Konfiguráció
@@ -93,7 +93,7 @@ Kontextusában egy [ikereszköz](iot-hub-devguide-device-twins.md), kívánt tul
 ## <a name="desired-properties"></a>Kívánt tulajdonságok
 Kontextusában egy [ikereszköz](iot-hub-devguide-device-twins.md), kívánt tulajdonságok egy alszakaszban az ikereszközök használt [jelentett tulajdonságokként](#reported-properties) eszközkonfiguráció vagy az állapot szinkronizálásához. Kívánt tulajdonságok csak akkor állítható egy [háttéralkalmazás](#back-end-app) és betartják a [eszközalkalmazás](#device-app).
 
-## <a name="device-to-cloud"></a>Eszközről-a-felhőbe
+## <a name="device-to-cloud"></a>Device-to-cloud
 Hivatkozik az a csatlakoztatott eszközökről küldött üzeneteket [az IoT Hub](#iot-hub). Lehet, hogy ezek az üzenetek [adatpont](#data-point-message) vagy [interaktív](#interactive-message) üzeneteket. További információkért lásd: [küldhet és fogadhat üzeneteket az IoT Hub](iot-hub-devguide-messaging.md).
 
 ## <a name="device"></a>Eszköz
@@ -129,7 +129,7 @@ A kezdeti hozzáadása során a rendszer eszközkiépítési [eszközadatok](#de
 ## <a name="device-twin"></a>Ikereszközök
 A [ikereszköz](iot-hub-devguide-device-twins.md) JSON-dokumentum, amely tárolja az eszközök állapotinformációit, például a metaadatokat, konfigurációkat és állapotokat. [Az IoT Hub](#iot-hub) az IoT hubban kiosztott minden egyes eszközhöz egy ikereszközt. Ikereszközök engedélyezése való szinkronizálását, [eszköz feltételek](#device-condition) és a háttéralkalmazás az eszköz és a megoldás közötti konfigurációkat. Keresse meg az adott eszközöket és a hosszú ideig futó műveletek állapotának lekérdezése ikereszközök lekérdezheti.
 
-## <a name="direct-method"></a>Közvetlen módszer
+## <a name="direct-method"></a>Közvetlen metódus
 A [közvetlen metódus](iot-hub-devguide-direct-methods.md) megoldást nyújt, hogy egy metódus-trigger által az IoT hub API meghívása egy eszközön végrehajtani.
 
 ## <a name="endpoint"></a>Végpont
@@ -138,7 +138,7 @@ Az IoT hub tesz több [végpontok](iot-hub-devguide-endpoints.md) , amely enged�
 ## <a name="event-hubs-service"></a>Event Hubs service
 [Az Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) van egy kiválóan méretezhető adatbefogadási szolgáltatás, amely több millió fogadására képes az események száma másodpercenként. A szolgáltatás lehetővé teszi, hogy a csatlakoztatott eszközök és alkalmazások által létrehozott hatalmas adatmennyiségek elemzését. Az IoT Hub szolgáltatással összehasonlításáért lásd: [összehasonlítása az Azure IoT Hub és az Azure Event Hubs](iot-hub-compare-event-hubs.md).
 
-## <a name="event-hub-compatible-endpoint"></a>Event Hubs-kompatibilis végpont
+## <a name="event-hub-compatible-endpoint"></a>Event Hub-compatible endpoint
 Olvassa el a [eszközről a felhőbe](#device-to-cloud) küldi az üzeneteket az IoT hub a hub végpont csatlakozni, és bármely Event Hub-kompatibilis módszer használatával olvassa el ezeket az üzeneteket. Event Hub-kompatibilis módszerek közé tartozik a használatával a [Event Hubs SDK-k](../event-hubs/event-hubs-programming-guide.md) és [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md).
 
 ## <a name="field-gateway"></a>Helyszíni átjáró
@@ -247,7 +247,7 @@ Azure-előfizetéssel, ha a számlázási történik. Egyes Azure-erőforrások 
 ## <a name="system-properties"></a>Rendszertulajdonságok
 Kontextusában egy [ikereszköz](iot-hub-devguide-device-twins.md), Rendszertulajdonságok csak olvashatók, és az eszköz használata, például a legutóbbi tevékenység időt és a kapcsolati állapot kapcsolatos információkat tartalmazzák.
 
-## <a name="tags"></a>Címkék
+## <a name="tags"></a>Tags
 Kontextusában egy [ikereszköz](iot-hub-devguide-device-twins.md), a címkék olyan eszköz metaadatait tárolja, és a megoldás háttérrendszere JSON-dokumentumok formájában által lekérése. Címkék nem láthatók el alkalmazásokat az eszközön.
 
 ## <a name="telemetry"></a>Telemetria

@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.openlocfilehash: 420800e718c8f98bfd3d5d7383829d5aa5472828
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64698159"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Használat Apache Kafka on HDInsight az Azure IoT hubbal
@@ -167,7 +167,7 @@ Az összekötő által használt IoT hub információk lekéréséhez használja
 
 1. Töltse le az Event Hub-kompatibilis végpont és az IoT hub Event Hub-kompatibilis végpont neve. Ezek az információk lekéréséhez használja a következő módszerek egyikét:
 
-   * __Az a [az Azure portal](https://portal.azure.com/)__, kövesse az alábbi lépéseket:
+   * __Az a [az Azure portal](https://portal.azure.com/)__ , kövesse az alábbi lépéseket:
 
      1. Keresse meg az IoT hubot és jelölje ki __végpontok__.
      2. A __beépített végpontokról__válassza __események__.
@@ -180,7 +180,7 @@ Az összekötő által használt IoT hub információk lekéréséhez használja
         > [!IMPORTANT]  
         > A végpont értékét a Portalról, amely ebben a példában nincs szükség további szöveg tartalmazhat. Csomagolja ki, amely megfelel ennek a mintának a szöveg `sb://<randomnamespace>.servicebus.windows.net/`.
 
-   * __Az a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__, használja a következő parancsot:
+   * __Az a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__ , használja a következő parancsot:
 
        ```azure-cli
        az iot hub show --name myhubname --query "{EventHubCompatibleName:properties.eventHubEndpoints.events.path,EventHubCompatibleEndpoint:properties.eventHubEndpoints.events.endpoint,Partitions:properties.eventHubEndpoints.events.partitionCount}"
@@ -196,13 +196,13 @@ Az összekötő által használt IoT hub információk lekéréséhez használja
 
 2. Első a __megosztott hozzáférési szabályzat__ és __kulcs__. Ebben a példában használja a __szolgáltatás__ kulcsot. Ezek az információk lekéréséhez használja a következő módszerek egyikét:
 
-    * __Az a [az Azure portal](https://portal.azure.com/)__, kövesse az alábbi lépéseket:
+    * __Az a [az Azure portal](https://portal.azure.com/)__ , kövesse az alábbi lépéseket:
 
         1. Válassza ki __megosztott elérési házirendek__, majd válassza ki __szolgáltatás__.
         2. Másolás a __elsődleges kulcs__ értéket.
         3. Másolás a __kapcsolati karakterlánc – elsődleges kulcs__ értéket.
 
-    * __Az a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__, használja a következő parancsot:
+    * __Az a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__ , használja a következő parancsot:
 
         1. Az elsődleges kulcs-érték lekéréséhez használja a következő parancsot:
 

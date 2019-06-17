@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
 ms.openlocfilehash: a343caaa998505a1772096b058ec7ad300eec03c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64725700"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Kinyerési, átalakítási és betöltési (ETL) ipari méretekben
@@ -127,9 +127,9 @@ Sqoop MapReduce importálása és exportálása az adatok párhuzamos művelet �
 
 Az Apache Flume egy elosztott, megbízható és elérhető szolgáltatás hatékonyan összegyűjtése, összevonása, és nagy mennyiségű Teljesítménynapló-adatok áthelyezését. Flume egy egyszerű és rugalmas architektúra alapján a streamelési adatok folyamatokat tartalmaz. Flume, hatékony és hibatűrő hangolható megbízhatóság mechanizmusok és számos feladatátvételi és helyreállítási mechanizmusokat. Flume, amely lehetővé teszi, hogy az online analitikus alkalmazás egyszerű bővíthető adatok modellt használ.
 
-Az Azure HDInsight az Apache Flume nem használható.  Helyszíni Hadoop telepítés Flume használatával vagy az Azure Storage-Blobokkal, vagy az Azure Data Lake Storage történő adatküldéshez.  További információkért lásd: [Apache Flume használata a HDInsight](https://web.archive.org/web/20190217104751/https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
+Az Azure HDInsight az Apache Flume nem használható.  Helyszíni Hadoop telepítés Flume használatával vagy az Azure Storage-Blobokkal, vagy az Azure Data Lake Storage történő adatküldéshez.  További információkért lásd: [Apache Flume használata a HDInsight](https://web.archive.org/web/20190217104751/ https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
 
-## <a name="transform"></a>Átalakítás
+## <a name="transform"></a>átalakítási
 
 Miután adatokat már létezik a megadott helyre, kell megtisztítsa tőle, összevonásához vagy felkészítse az egy adott használati módot.  Hive, Pig és a Spark SQL a munka jellege jó lehetőségeit.  Ezek mind támogatottak a HDInsight. 
 
