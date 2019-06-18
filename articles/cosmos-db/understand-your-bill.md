@@ -8,10 +8,10 @@ ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
 ms.openlocfilehash: a097539e51aa2a2130dead236d553d60f2ebb89d
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65965635"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Az Azure Cosmos DB-elszámolások ismertetése
@@ -96,8 +96,8 @@ Tegyük fel, hogy egy Azure Cosmos-tárolóhoz, az USA nyugati RÉGIÓJA. A tár
 
 |**Elem** |**Felhasználás (havi)** |**Arány** |**Havi költség** |
 |---------|---------|---------|-------|
-|Átviteli sebességre vonatkozó számla az USA nyugati régiójában lévő tároló esetén      | 10 K RU/s * 24 * 30    |0.008 $ / 100 RU/s / óra   |$576|
-|Átviteli sebességre vonatkozó számla 3 további régió esetén – az USA keleti régiója, Észak-Európa, Kelet-Ázsia       | 3 * 10K RU/s * 24 * 30    |0.008 $ / 100 RU/s / óra  |$1,728|
+|Átviteli sebességre vonatkozó számla az USA nyugati régiójában lévő tároló esetén      | 10 K RU/s * 24 * 30    |0\.008 $ / 100 RU/s / óra   |$576|
+|Átviteli sebességre vonatkozó számla 3 további régió esetén – az USA keleti régiója, Észak-Európa, Kelet-Ázsia       | 3 * 10K RU/s * 24 * 30    |0\.008 $ / 100 RU/s / óra  |$1,728|
 |Adattárolásra vonatkozó számla az USA nyugati régiójában lévő tároló esetén      | 250 GB    |$ 0,25/GB  |$62.50|
 |Adattárolásra vonatozó számla 3 további régió esetén – az USA keleti régiója, Észak-Európa, Kelet-Ázsia      | 3 * 250 GB    |$ 0,25/GB  |$187.50|
 |**Összesen**     |     |  |**$2,554**|
@@ -110,8 +110,8 @@ Tegyük fel, az USA nyugati Régiójában egy Azure Cosmos-tárolót hoz létre.
 
 |**Elem** |**Felhasználás (havi)**|**Arány** |**Havi költség** |
 |---------|---------|---------|-------|
-|Átviteli sebességre vonatkozó számla az USA nyugati RÉGIÓJA (az összes régióban is írható) lévő tároló esetén       | 10 K RU/s * 24 * 30    |0.016 $ / 100 RU/s / óra    |$1,152 |
-|Átviteli sebességre vonatkozó számla 3 további régió – USA keleti RÉGIÓJA, Észak-Európa és Kelet-Ázsia (az összes régióban is írható) esetén        | (3 + 1) * 10 K RU/s * 24 * 30    |0.016 $ / 100 RU/s / óra   |$4,608 |
+|Átviteli sebességre vonatkozó számla az USA nyugati RÉGIÓJA (az összes régióban is írható) lévő tároló esetén       | 10 K RU/s * 24 * 30    |0\.016 $ / 100 RU/s / óra    |$1,152 |
+|Átviteli sebességre vonatkozó számla 3 további régió – USA keleti RÉGIÓJA, Észak-Európa és Kelet-Ázsia (az összes régióban is írható) esetén        | (3 + 1) * 10 K RU/s * 24 * 30    |0\.016 $ / 100 RU/s / óra   |$4,608 |
 |Adattárolásra vonatkozó számla az USA nyugati régiójában lévő tároló esetén      | 250 GB    |$ 0,25/GB  |$62.50|
 |Adattárolásra vonatozó számla 3 további régió esetén – az USA keleti régiója, Észak-Európa, Kelet-Ázsia      | 3 * 250 GB    |$ 0,25/GB  |$187.50|
 |**Összesen**     |     |  |**$6,010**|
@@ -202,7 +202,7 @@ Vegyünk például egy másik példa, ahol szeretné a proaktív módon megbecs�
 
 |**Tárolási költségek** | |
 |----|----|
-|Rekord átlagos mérete (KB) |1. |
+|Rekord átlagos mérete (KB) |1 |
 |Rekordok száma  |100,000,000  |
 |Teljes tárterület (GB)  |100 |
 |GB-onkénti havi költség  |$0.25  |
@@ -212,9 +212,9 @@ Vegyünk például egy másik példa, ahol szeretné a proaktív módon megbecs�
 
 |**Átviteli sebesség költség** | | | |
 |----|----|----|----|
-|Művelet típusa| Requests/sec| Átl. RU/kérelem| Kérelemegység szükséges|
+|Művelettípus| Requests/sec| Átl. RU/kérelem| Kérelemegység szükséges|
 |Írás| 100 | 5 | 500|
-|Olvasás| 400| 1.| 400|
+|Olvasás| 400| 1| 400|
 
 Összes RU/mp: 500-as + 400 = 900 óránkénti költség: 900/100 * 0.008 $ $0.072 várható havi díj (31 napos feltételezve) átviteli sebességet =: $0.072 * 24 * 31 = $53.57
 
@@ -238,7 +238,7 @@ A teljes számlája (fenntartott kapacitás) nélküli lenne (feltételezve 30 n
 |----|----|----|----|----|
 |USA keleti régiója|$0.008 |50 K|$4|$2,880 |
 |Kelet-Japán|$0.009 |50 K| $4.50 |$3,240 |
-|Összeg|||$8.50|$6,120 |
+|Összes|||$8.50|$6,120 |
 
 Vegyünk például, hogy, hogy inkább is tartalékkapacitást vásárolt. Fenntartott kapacitás 100-K RU/s (20 %-os kedvezménnyel) egy évig 56,064 $ vagy 6.40 $ / óra díjért vásárolhat. Lefoglalt kapacitás a díjszabási a [díjszabási oldalunkon](https://azure.microsoft.com/pricing/details/cosmos-db/)).  
 

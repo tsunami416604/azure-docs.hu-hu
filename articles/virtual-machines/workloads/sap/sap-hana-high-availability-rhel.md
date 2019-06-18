@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
 ms.openlocfilehash: 1eca9dd82bec120e5554627ade71688c82be7763
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922132"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Magas rendelkezésre állás az SAP HANA, Red Hat Enterprise Linux-alapú Azure virtuális gépeken
@@ -28,18 +28,18 @@ ms.locfileid: "64922132"
 
 [2205917]:https://launchpad.support.sap.com/#/notes/2205917
 [1944799]:https://launchpad.support.sap.com/#/notes/1944799
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
-[2191498]:https://launchpad.support.sap.com/#/notes/2191498
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[2015553]: https://launchpad.support.sap.com/#/notes/2015553
+[2178632]: https://launchpad.support.sap.com/#/notes/2178632
+[2191498]: https://launchpad.support.sap.com/#/notes/2191498
+[2243692]: https://launchpad.support.sap.com/#/notes/2243692
 [1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[1999351]: https://launchpad.support.sap.com/#/notes/1999351
 [2388694]:https://launchpad.support.sap.com/#/notes/2388694
-[2292690]:https://launchpad.support.sap.com/#/notes/2292690
-[2455582]:https://launchpad.support.sap.com/#/notes/2455582
-[2002167]:https://launchpad.support.sap.com/#/notes/2002167
-[2009879]:https://launchpad.support.sap.com/#/notes/2009879
+[2292690]: https://launchpad.support.sap.com/#/notes/2292690
+[2455582]: https://launchpad.support.sap.com/#/notes/2455582
+[2002167]: https://launchpad.support.sap.com/#/notes/2002167
+[2009879]: https://launchpad.support.sap.com/#/notes/2009879
 
 [sap-swcenter]:https://launchpad.support.sap.com/#/softwarecenter
 [template-multisid-db]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
@@ -109,7 +109,7 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
     * **SAP-rendszer mérete**: Adja meg az SAP, amelyet az új rendszerre, adja meg. Ha nem biztos a rendszer hány SAP, kérje meg az SAP technológiai partnerek vagy rendszerintegrátor.
     * **Rendszer rendelkezésre állását**: Válassza ki **magas rendelkezésre ÁLLÁSÚ**.
     * **Rendszergazdai felhasználónév, a rendszergazdai jelszó vagy SSH-kulcs**: Egy új felhasználót hoz létre, amely segítségével jelentkezzen be a gépre.
-    * **Alhálózati azonosító**: Ha azt szeretné, helyezheti üzembe a virtuális gép egy meglévő Vnetet, amelyekben egy meghatározott alhálózatot a virtuális gép hozzá kell rendelni, nevezze el a kívánt alhálózatot. Az azonosító általában tűnik **/subscriptions/\<előfizetés-azonosító > /resourceGroups/\<erőforráscsoport-név > /providers/Microsoft.Network/virtualNetworks/\<virtuális hálózat neve > /subnets/ \<alhálózat neve >**. Hagyja üresen, ha szeretne egy új virtuális hálózat létrehozása
+    * **Alhálózati azonosító**: Ha azt szeretné, helyezheti üzembe a virtuális gép egy meglévő Vnetet, amelyekben egy meghatározott alhálózatot a virtuális gép hozzá kell rendelni, nevezze el a kívánt alhálózatot. Az azonosító általában tűnik **/subscriptions/\<előfizetés-azonosító > /resourceGroups/\<erőforráscsoport-név > /providers/Microsoft.Network/virtualNetworks/\<virtuális hálózat neve > /subnets/ \<alhálózat neve >** . Hagyja üresen, ha szeretne egy új virtuális hálózat létrehozása
 
 ### <a name="manual-deployment"></a>Manuális telepítés
 
@@ -191,11 +191,11 @@ Az SAP Hana-hoz a szükséges portok kapcsolatos további információkért olva
 
 A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 
-* **[A]**: A lépés minden csomópont számára vonatkozik.
-* **[1]**: A lépés csak 1 csomópont vonatkozik.
-* **[2]**: A lépés fürtcsomópont 2 támasztja csak vonatkozik.
+* **[A]** : A lépés minden csomópont számára vonatkozik.
+* **[1]** : A lépés csak 1 csomópont vonatkozik.
+* **[2]** : A lépés fürtcsomópont 2 támasztja csak vonatkozik.
 
-1. **[A]**  a lemez elrendezése beállítása: **A Logical Volume Manager (LVM)**.
+1. **[A]**  a lemez elrendezése beállítása: **A Logical Volume Manager (LVM)** .
 
    Azt javasoljuk, hogy a köteteket, amelyek adatokat tárolhatnak, és a naplófájlok LVM használja. Az alábbi példa azt feltételezi, hogy a virtuális gépek négy adatok csatlakoztatott lemezekkel rendelkezik, amely segítségével hozzon létre két kötetet.
 
@@ -331,7 +331,7 @@ A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
    * Enter Database User (SYSTEM) Password: Adja meg az adatbázis felhasználói jelszót.
    * Adatbázis (rendszer) felhasználói jelszó megerősítése: Adja meg az adatbázis felhasználói jelszót kétszer.
    * Számítógép újraindítása után indítsa újra a rendszert? [n]: Válassza ki a adja meg.
-   * Folytatja? (y/n): Ellenőrizze az összegzést. Adja meg **y** folytatásához.
+   * Biztosan folytatja? (y/n): Ellenőrizze az összegzést. Adja meg **y** folytatásához.
 
 1. **[A]**  SAP gazdagép-ügynök frissítése.
 
@@ -352,9 +352,9 @@ A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 
 A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 
-* **[A]**: A lépés minden csomópont számára vonatkozik.
-* **[1]**: A lépés csak 1 csomópont vonatkozik.
-* **[2]**: A lépés fürtcsomópont 2 támasztja csak vonatkozik.
+* **[A]** : A lépés minden csomópont számára vonatkozik.
+* **[1]** : A lépés csak 1 csomópont vonatkozik.
+* **[2]** : A lépés fürtcsomópont 2 támasztja csak vonatkozik.
 
 1. **[A]**  Tűzfal konfigurálása
 
@@ -443,9 +443,9 @@ A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 
 A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 
-* **[A]**: A lépés minden csomópont számára vonatkozik.
-* **[1]**: A lépés csak 1 csomópont vonatkozik.
-* **[2]**: A lépés fürtcsomópont 2 támasztja csak vonatkozik.
+* **[A]** : A lépés minden csomópont számára vonatkozik.
+* **[1]** : A lépés csak 1 csomópont vonatkozik.
+* **[2]** : A lépés fürtcsomópont 2 támasztja csak vonatkozik.
 
 1. **[A]**  Tűzfal konfigurálása
 

@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
 ms.openlocfilehash: 3d59fc48f1f6f6931ca18e09a420fdbccc7d53dc
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922290"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>A SUSE Linux Enterprise Server Azure virtuális gépeken SAP Hana magas rendelkezésre állás
@@ -26,17 +26,17 @@ ms.locfileid: "64922290"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[2205917]:https://launchpad.support.sap.com/#/notes/2205917
-[1944799]:https://launchpad.support.sap.com/#/notes/1944799
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
-[2191498]:https://launchpad.support.sap.com/#/notes/2191498
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
-[1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[2205917]: https://launchpad.support.sap.com/#/notes/2205917
+[1944799]: https://launchpad.support.sap.com/#/notes/1944799
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[2015553]: https://launchpad.support.sap.com/#/notes/2015553
+[2178632]: https://launchpad.support.sap.com/#/notes/2178632
+[2191498]: https://launchpad.support.sap.com/#/notes/2191498
+[2243692]: https://launchpad.support.sap.com/#/notes/2243692
+[1984787]: https://launchpad.support.sap.com/#/notes/1984787
+[1999351]: https://launchpad.support.sap.com/#/notes/1999351
 [2388694]:https://launchpad.support.sap.com/#/notes/2388694
-[401162]:https://launchpad.support.sap.com/#/notes/401162
+[401162]: https://launchpad.support.sap.com/#/notes/401162
 
 [hana-ha-guide-replication]:sap-hana-high-availability.md#14c19f65-b5aa-4856-9594-b81c7e4df73d
 [hana-ha-guide-shared-storage]:sap-hana-high-availability.md#498de331-fa04-490b-997c-b078de457c9d
@@ -113,7 +113,7 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
     - **Rendszer rendelkezésre állását**: Válassza ki **magas rendelkezésre ÁLLÁSÚ**.
     - **Rendszergazdai felhasználónév és jelszó rendszergazdai**: Egy új felhasználót hoz létre, amely segítségével jelentkezzen be a gépre.
     - **Új vagy meglévő alhálózaton**: Meghatározza, hogy egy új virtuális hálózatot és alhálózatot kell létrehozni, vagy egy meglévő alhálózatot használja. Ha a helyszíni hálózatához csatlakoztatott virtuális hálózat már rendelkezik, válassza ki a **meglévő**.
-    - **Alhálózati azonosító**: Ha azt szeretné, helyezheti üzembe a virtuális gép egy meglévő Vnetet, amelyekben egy meghatározott alhálózatot a virtuális gép hozzá kell rendelni, nevezze el a kívánt alhálózatot. Az azonosító általában tűnik **/subscriptions/\<előfizetés-azonosító > /resourceGroups/\<erőforráscsoport-név > /providers/Microsoft.Network/virtualNetworks/\<virtuális hálózat neve > /subnets/ \<alhálózat neve >**.
+    - **Alhálózati azonosító**: Ha azt szeretné, helyezheti üzembe a virtuális gép egy meglévő Vnetet, amelyekben egy meghatározott alhálózatot a virtuális gép hozzá kell rendelni, nevezze el a kívánt alhálózatot. Az azonosító általában tűnik **/subscriptions/\<előfizetés-azonosító > /resourceGroups/\<erőforráscsoport-név > /providers/Microsoft.Network/virtualNetworks/\<virtuális hálózat neve > /subnets/ \<alhálózat neve >** .
 
 ### <a name="manual-deployment"></a>Manuális telepítés
 
@@ -204,11 +204,11 @@ Kövesse a [támasztja a SUSE Linux Enterprise Server az Azure-beli beállítás
 ## <a name="install-sap-hana"></a>Az SAP HANA telepítése
 
 A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
-- **[A]**: A lépés minden csomópont számára vonatkozik.
-- **[1]**: A lépés csak 1 csomópont vonatkozik.
-- **[2]**: A lépés fürtcsomópont 2 támasztja csak vonatkozik.
+- **[A]** : A lépés minden csomópont számára vonatkozik.
+- **[1]** : A lépés csak 1 csomópont vonatkozik.
+- **[2]** : A lépés fürtcsomópont 2 támasztja csak vonatkozik.
 
-1. **[A]**  a lemez elrendezése beállítása: **A Logical Volume Manager (LVM)**.
+1. **[A]**  a lemez elrendezése beállítása: **A Logical Volume Manager (LVM)** .
 
    Azt javasoljuk, hogy a köteteket, amelyek adatokat tárolhatnak, és a naplófájlok LVM használja. Az alábbi példa azt feltételezi, hogy a virtuális gépek négy adatok csatlakoztatott lemezekkel rendelkezik, amely segítségével hozzon létre két kötetet.
 
@@ -343,7 +343,7 @@ Az SAP HANA-Rendszerreplikálást telepítéséhez hajtsa végre a fejezete 4 a 
    * Enter Database User (SYSTEM) Password: Adja meg az adatbázis felhasználói jelszót.
    * Adatbázis (rendszer) felhasználói jelszó megerősítése: Adja meg az adatbázis felhasználói jelszót kétszer.
    * Számítógép újraindítása után indítsa újra a rendszert? [n]: Válassza ki a adja meg.
-   * Folytatja? (y/n): Ellenőrizze az összegzést. Adja meg **y** folytatásához.
+   * Biztosan folytatja? (y/n): Ellenőrizze az összegzést. Adja meg **y** folytatásához.
 
 1. **[A]**  SAP gazdagép-ügynök frissítése.
 
@@ -356,9 +356,9 @@ Az SAP HANA-Rendszerreplikálást telepítéséhez hajtsa végre a fejezete 4 a 
 
 A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 
-* **[A]**: A lépés minden csomópont számára vonatkozik.
-* **[1]**: A lépés csak 1 csomópont vonatkozik.
-* **[2]**: A lépés fürtcsomópont 2 támasztja csak vonatkozik.
+* **[A]** : A lépés minden csomópont számára vonatkozik.
+* **[1]** : A lépés csak 1 csomópont vonatkozik.
+* **[2]** : A lépés fürtcsomópont 2 támasztja csak vonatkozik.
 
 1. **[1]**  a bérlői adatbázis létrehozása.
 
@@ -401,9 +401,9 @@ A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 
 A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 
-* **[A]**: A lépés minden csomópont számára vonatkozik.
-* **[1]**: A lépés csak 1 csomópont vonatkozik.
-* **[2]**: A lépés fürtcsomópont 2 támasztja csak vonatkozik.
+* **[A]** : A lépés minden csomópont számára vonatkozik.
+* **[1]** : A lépés csak 1 csomópont vonatkozik.
+* **[2]** : A lépés fürtcsomópont 2 támasztja csak vonatkozik.
 
 1. **[1]**  Hozza létre a szükséges felhasználókat.
 
@@ -736,7 +736,7 @@ MEGJEGYZÉS: A következő ellenőrzés úgy tervezték, hogy a feladatütemezé
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
    </code></pre>
 
-1. 2. TESZT: LEÁLLÍTÁS ELSŐDLEGES ADATBÁZIS-CSOMÓPONT 2
+1. 2\. TESZT: LEÁLLÍTÁS ELSŐDLEGES ADATBÁZIS-CSOMÓPONT 2
 
    Erőforrás állapotának a vizsgálat megkezdése előtt:
 
@@ -777,7 +777,7 @@ MEGJEGYZÉS: A következő ellenőrzés úgy tervezték, hogy a feladatütemezé
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-1. 3. TESZT: ÖSSZEOMLÁS ELSŐDLEGES ADATBÁZIS-CSOMÓPONT
+1. 3\. TESZT: ÖSSZEOMLÁS ELSŐDLEGES ADATBÁZIS-CSOMÓPONT
 
    Erőforrás állapotának a vizsgálat megkezdése előtt:
 
@@ -818,7 +818,7 @@ MEGJEGYZÉS: A következő ellenőrzés úgy tervezték, hogy a feladatütemezé
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
    </code></pre>
 
-1. 4. TESZT: ÖSSZEOMLÁS ELSŐDLEGES ADATBÁZIS-CSOMÓPONT 2
+1. 4\. TESZT: ÖSSZEOMLÁS ELSŐDLEGES ADATBÁZIS-CSOMÓPONT 2
 
    Erőforrás állapotának a vizsgálat megkezdése előtt:
 
@@ -961,7 +961,7 @@ MEGJEGYZÉS: A következő ellenőrzés úgy tervezték, hogy a feladatütemezé
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-1. 7. TESZT: ÁLLÍTSA LE A MÁSODLAGOS ADATBÁZIS-CSOMÓPONT 2
+1. 7\. TESZT: ÁLLÍTSA LE A MÁSODLAGOS ADATBÁZIS-CSOMÓPONT 2
 
    Erőforrás állapotának a vizsgálat megkezdése előtt:
 
@@ -998,7 +998,7 @@ MEGJEGYZÉS: A következő ellenőrzés úgy tervezték, hogy a feladatütemezé
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-1. 8. TESZT: A MÁSODLAGOS ADATBÁZIS-CSOMÓPONT 2 ÖSSZEOMLÁS
+1. 8\. TESZT: A MÁSODLAGOS ADATBÁZIS-CSOMÓPONT 2 ÖSSZEOMLÁS
 
    Erőforrás állapotának a vizsgálat megkezdése előtt:
 

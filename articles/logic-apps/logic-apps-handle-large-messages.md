@@ -128,7 +128,7 @@ Ezeket a lépéseket ismertetik a részletes folyamat, Logic Apps számára a lo
    | Végpont válasz fejléce mező | Typo | Kötelező | Leírás |
    |--------------------------------|------|----------|-------------|
    | **x-ms-chunk-size** | Integer | Nem | A javasolt adatrészlet mérete (bájt) |
-   | **Hely** | String | Nem | Az URL-címét, hova küldhetők a HTTP-javítás üzenetek |
+   | **Location** | String | Nem | Az URL-címét, hova küldhetők a HTTP-javítás üzenetek |
    ||||
 
 3. A logikai alkalmazás hoz létre, és ezt az információt az egyes küldi az üzeneteket követő HTTP PATCH:

@@ -4,6 +4,8 @@
   items:
     - name: Mi az Azure DNS?
       href: dns-overview.md
+    - name: Mi az Azure Private DNS?
+      href: private-dns-overview.md
 - name: Gyors útmutatók
   expanded: true
   items:
@@ -20,7 +22,7 @@
     - name: Webalkalmazások egyéni DNS-rekordjainak létrehozása
       href: dns-web-sites-custom-domain.md
     - name: Privát DNS-zónák és -rekordok létrehozása
-      href: private-dns-getstarted-powershell.md
+      href: private-dns-portal.md
     - name: A Traffic Manager aliasrekordjai
       href: tutorial-alias-tm.md
     - name: Nyilvános IP-címek aliasrekordjai
@@ -33,6 +35,12 @@
       href: cli-samples.md
 - name: Alapelvek
   items:
+    - name: Private DNS
+      items:
+        - name: Gyakori kérdések – Private DNS
+          href: dns-faq-private.md
+        - name: Privát DNS-forgatókönyvek
+          href: private-dns-scenarios.md
     - name: Zónák és rekordok
       href: dns-zones-records.md
     - name: Aliasrekordok
@@ -41,10 +49,6 @@
       href: dns-domain-delegation.md
     - name: GYIK
       href: dns-faq.md
-    - name: Privát DNS-zónák használata
-      href: private-dns-overview.md
-    - name: Privát DNS-forgatókönyvek
-      href: private-dns-scenarios.md
     - name: DNS-mérőszámok és riasztások
       href: dns-alerts-metrics.md
     - name: Fordított DNS
@@ -53,8 +57,12 @@
       href: ../networking/disaster-recovery-dns-traffic-manager.md
 - name: Útmutató
   items:
-    - name: Privát DNS-zóna és -rekord létrehozása – Azure CLI
-      href: private-dns-getstarted-cli.md
+    - name: Private DNS
+      items:
+        - name: Magánzóna létrehozása – parancssori felület
+          href: private-dns-getstarted-cli.md
+        - name: Magánzóna létrehozása – PowerShell
+          href: private-dns-getstarted-powershell.md
     - name: Elosztott terhelésű webalkalmazások aliasrekordjai
       href: dns-alias-appservice.md
     - name: DNS-zónák kezelése
