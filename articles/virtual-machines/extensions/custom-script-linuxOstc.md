@@ -125,9 +125,9 @@ Ezeket az elemeket kell kezelni, mint a bizalmas adatok és a bővítmények vé
 | publisher | Microsoft.OSTCExtensions | string |
 | type | CustomScriptForLinux | string |
 | typeHandlerVersion | 1.5 | int |
-| fileUris (például:) | https://github.com/MyProject/Archive/MyPythonScript.py | tömb |
+| fileUris (például:) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
 | commandToExecute (például:) | python MyPythonScript.py \<my-param1\> | string |
-| enableInternalDNSCheck | true | logikai |
+| enableInternalDNSCheck | true | boolean |
 | storageAccountName (e.g) | examplestorageacct | string |
 | storageAccountKey (például:) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
 
