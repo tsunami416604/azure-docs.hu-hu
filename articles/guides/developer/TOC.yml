@@ -83,7 +83,7 @@
     - name: Felkészülés
       items:
         - name: Webalkalmazás-architektúrák
-          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/managed-web-app/'
+          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/basic-web-app'
         - name: Virtuálisgép-architektúrák
           href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/'
         - name: Csatlakozás helyszíni hálózatokhoz
