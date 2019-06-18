@@ -15,15 +15,15 @@ ms.workload: infrastructure-services
 ms.date: 03/28/2019
 ms.author: kumud
 ms.openlocfilehash: 266630cb7c9601af69073a6c9beb7d7ada9b8034
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65957484"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Az Azure Standard Load Balancer áttekintése
 
-Az Azure Load Balancer lehetővé teszi az alkalmazások skálázását és magas rendelkezésre állású szolgáltatások létrehozását. Load Balancer bejövő, valamint a kimenő forgatókönyveket is használható, és alacsony késleltetésű, nagy átviteli sebességet, és akár több milliónyi összes TCP és UDP-alkalmazás méretezhető. 
+Az Azure Load Balancer lehetővé teszi az alkalmazások skálázását és magas rendelkezésre állású szolgáltatások létrehozása. Load Balancer bejövő, valamint a kimenő forgatókönyveket is használható, és alacsony késleltetésű, nagy átviteli sebességet, és akár több milliónyi összes TCP és UDP-alkalmazás méretezhető. 
 
 Ez a cikk a Standard Load Balancer összpontosít.  Az Azure Load Balancerhez általános áttekintést, tekintse át a [Load Balancer áttekintése](load-balancer-overview.md) is.
 
@@ -204,7 +204,7 @@ SKU-k, amelyek nem módosítható. Kövesse az ebben a szakaszban egy erőforrá
 >
 >SKU-k megfelelő a Load Balancer és a nyilvános IP-cím erőforrást kell használni. Alapszintű Termékváltozat a Standard Termékváltozat erőforrásokat és vegyesen nem rendelkezhet. Nem csatolhat mindkét SKU-hoz egyszerre önálló virtuális gépeket, rendelkezésre állási csoportban lévő virtuális gépeket vagy virtuálisgép-méretezési csoport típusú erőforrásokat.
 
-## <a name="region-availability"></a>Regionális elérhetőség
+## <a name="region-availability"></a>Régiónkénti elérhetőség
 
 A standard Load Balancer jelenleg nyilvános felhő minden régióban.
 

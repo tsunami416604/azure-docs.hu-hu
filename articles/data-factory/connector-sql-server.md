@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 06/13/2019
 ms.author: jingwang
-ms.openlocfilehash: d28f6ed1957f8f6ae7ff7eb49f8ce4cbdec62266
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.openlocfilehash: 230fe94820a00c276238a7f5ff189ecc817f3f96
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147421"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074045"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Adatok másolása, és az SQL Serverről az Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
 > * [1-es verzió](v1/data-factory-sqlserver-connector.md)
 > * [Aktuális verzió](connector-sql-server.md)
 
@@ -280,6 +280,9 @@ GO
 
 ### <a name="sql-server-as-sink"></a>SQL Server pedig a fogadó
 
+> [!TIP]
+> További információ a támogatott írási viselkedéseket, konfigurációk és az ajánlott eljárás a [ajánlott eljárás az adatok betöltése az SQL Server](#best-practice-for-loading-data-into-sql-server).
+
 Adatok másolása az SQL Server, állítsa be a fogadó típusa a másolási tevékenység **SqlSink**. A következő tulajdonságok támogatottak a másolási tevékenység **fogadó** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -288,12 +291,9 @@ Adatok másolása az SQL Server, állítsa be a fogadó típusa a másolási tev
 | writeBatchSize |Az SQL-táblába beilleszti sorok száma **kötegenként**.<br/>Engedélyezett értékek a következők: egész szám (sorok száma). Alapértelmezés szerint a Data Factory a megfelelő kötegméret sor mérete alapján dinamikus meghatározásához. |Nem |
 | writeBatchTimeout |Várjon, amíg a kötegelt insert művelet befejezését, mielőtt azt az időkorlátot.<br/>Engedélyezett értékek a következők: időtartam. Példa: "00: 30:00" (30 perc). |Nem |
 | preCopyScript |Adjon meg egy SQL-lekérdezést az SQL Server adatainak írása előtt hajtsa végre a másolási tevékenység. Azt fogja csak egyszer hívhatók példányonkénti futtatni. Ez a tulajdonság segítségével törölje az előre betöltött adatokat. |Nem |
-| sqlWriterStoredProcedureName |A tárolt eljárást, amely meghatározza, hogyan alkalmazhatja a forrásadatok céloldali táblához, pl. do upserts vagy a saját üzleti logika átalakító neve. <br/><br/>Megjegyzés: Ez a tárolt eljárás lesz **kötegenként meghívása**. Ha azt szeretné, hogy csak egyszer fut, és nem a forrásadatokat, például törlés/truncate, használja a művelet elvégzéséhez `preCopyScript` tulajdonság. |Nem |
+| sqlWriterStoredProcedureName |A tárolt eljárást, amely meghatározza, hogyan alkalmazhatja a forrásadatok cél táblába neve.<br/>Megjegyzés: Ez a tárolt eljárás lesz **kötegenként meghívása**. Ha azt szeretné, hogy csak egyszer fut, és nem a forrásadatokat, például törlés/truncate, használja a művelet elvégzéséhez `preCopyScript` tulajdonság. |Nem |
 | storedProcedureParameters |A tárolt eljárás paraméterei.<br/>Engedélyezett értékek a következők: név-érték párokat. Nevek és a kis-és a paraméterek meg kell egyeznie a neveket és a kis-és nagybetűhasználatot, a tárolt eljárás paraméterértékeinek. |Nem |
 | sqlWriterTableType |Adjon meg egy tábla típusú név a tárolt eljárás használható. Másolási tevékenység egy ideiglenes táblát a tábla típusú elérhetővé teszi az adatok áthelyezését. Tárolt eljárás kód majd egyesítheti az adatok másolását a adatokkal. |Nem |
-
-> [!TIP]
-> Ha az adatok másolása az SQL Server, a másolási tevékenység adatokat fűz hozzá a fogadó tábla alapértelmezés szerint. Az UPSERT vagy további üzleti logikát használja a tárolt eljárást az SqlSink. További részletek a [a fogadó SQL tárolt eljárás meghívása](#invoking-stored-procedure-for-sql-sink).
 
 **1. példa: adatok hozzáfűzése**
 
@@ -327,7 +327,7 @@ Adatok másolása az SQL Server, állítsa be a fogadó típusa a másolási tev
 ]
 ```
 
-**2. példa: egy tárolt eljárás meghívása során az upsert másolása**
+**2. példa: egy tárolt eljárás meghívása során másolása**
 
 További részletek a [a fogadó SQL tárolt eljárás meghívása](#invoking-stored-procedure-for-sql-sink).
 
@@ -366,80 +366,69 @@ További részletek a [a fogadó SQL tárolt eljárás meghívása](#invoking-st
 ]
 ```
 
-## <a name="identity-columns-in-the-target-database"></a>A céladatbázis azonosító oszlop
+## <a name="best-practice-for-loading-data-into-sql-server"></a>Ajánlott eljárás az adatok betöltése az SQL Server
 
-Ez a szakasz azt szemlélteti, amely adatokat másol a forrástábla nem identitásoszlop az identity oszlopot tartalmazó táblát.
+Adatok másolása az SQL Server esetén szükség lehet különböző írási viselkedés:
 
-**Forrástábla:**
+- **[Hozzáfűzés](#append-data)** : csak a rendelkező új rekordok; forrás adatok
+- **[Upsert](#upsert-data)** : Beszúrások és frissítések; egyaránt rendelkező forrás adatok
+- **[Írja felül](#overwrite-entire-table)** : Töltse be újra az egész táblát, minden alkalommal, amikor; szeretnék
+- **[Az egyéni logikát írási](#write-data-with-custom-logic)** : További feldolgozás előtt a végső beszúrási a céltáblázatba történő van szükségem.
+
+Tekintse meg a rendre szakaszok konfigurálásával az ADF és az ajánlott eljárásokat.
+
+### <a name="append-data"></a>Adatok hozzáfűzése
+
+Ez a fogadó SQL Server-összekötő alapértelmezett viselkedését, és tegye az ADF **tömeges Beszúrás** hatékonyan írni a táblában. Egyszerűen konfigurálható a forrás és fogadó ennek megfelelően a másolási tevékenység.
+
+### <a name="upsert-data"></a>Adatok beszúrása és frissítése (upsert)
+
+**E beállítás** (javasolt, ha különösen a nagy mennyiségű adat másolása rendelkezik): a **a legtöbb nagy teljesítményű megközelítés** upsert ehhez a rendszer a következő: 
+
+- Először is kihasználhatja a [ideiglenes tábla](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql?view=sql-server-2017#temporary-tables) a tömeges betöltés összes rekordot a másolási tevékenység használatával. Ideiglenes táblák végzett műveletek nem kerülnek naplózásra, mivel rekordok millióit, betöltheti másodpercek alatt.
+- Egy tárolt eljárási tevékenység végrehajtása a alkalmazni az ADF- [EGYESÍTÉSE](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) (vagy a beszúrási/frissítés) utasítás, és használja a temp táblát az összes forrás frissít vagy szúr be egy tranzakcióként életű könyvtárgyorsítótárból mértékének csökkentésével, és olyan műveletek naplózására. A tárolt eljárási tevékenység végén ideiglenes táblára, készen áll a következő upsert ciklusig levágja. 
+
+Tegyük fel, az Azure Data Factory, létrehozhat rendelkező folyamatot egy **másolási tevékenység** a kapcsolt egy **Stored Procedure-tevékenység** sikeres művelet. A korábbi adatokat másol a forrásadattárba a egy adatbázis ideiglenes táblába, például: " **##UpsertTempTable**" adatkészletben levő table neveként majd az utóbbi meghívja az ideiglenes táblából a forrásadatok egyesíteni a céloldali tábla, egy tárolt eljárás és törli az ideiglenes tábla.
+
+![Upsert](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
+
+Az adatbázis határoz meg egy tárolt eljárás egyesítési logikával, például a következő, az a fenti tárolt eljárási tevékenység mutatott. Feltéve, hogy a cél **Marketing** három oszlopokat tartalmazó táblába: **ProfileID**, **állapot**, és **kategória**, és végezze el az upsert alapján a **ProfileID** oszlop.
 
 ```sql
-create table dbo.SourceTbl
-(
-    name varchar(100),
-    age int
-)
+CREATE PROCEDURE [dbo].[spMergeData]
+AS
+BEGIN
+    MERGE TargetTable AS target
+    USING ##UpsertTempTable AS source
+    ON (target.[ProfileID] = source.[ProfileID])
+    WHEN MATCHED THEN
+        UPDATE SET State = source.State
+    WHEN NOT matched THEN
+        INSERT ([ProfileID], [State], [Category])
+      VALUES (source.ProfileID, source.State, source.Category);
+    
+    TRUNCATE TABLE ##UpsertTempTable
+END
 ```
 
-**Céltábla:**
+**II. lehetőség:** lehetőségként választhatja [másolási tevékenység belül tárolt eljárás meghívása](#invoking-stored-procedure-for-sql-sink), miközben Megjegyzés: Ez a megközelítés a forrástábla helyett tömeges támaszkodva minden egyes sorára hajtja végre az alapértelmezett módszer is beilleszthet a másolási tevékenység így azt nem fér el a nagy méretű upsert.
 
-```sql
-create table dbo.TargetTbl
-(
-    identifier int identity(1,1),
-    name varchar(100),
-    age int
-)
-```
+### <a name="overwrite-entire-table"></a>Írja felül a teljes tábla
 
-Figyelje meg, hogy a céloldali tábla rendelkezik-e egy identitásoszlop.
+Konfigurálható **preCopyScript** tulajdonság a másolási tevékenység fogadó ebben az esetben minden másolási tevékenység futtatása, ADF végrehajtja a parancsfájl először futtassa a másolat illessze be az adatokat. Például a teljes tábla felülírja a legújabb adatokkal, is megadhat egy parancsfájlt, amely először törölje az összes rekordot a forrás az új adatok tömeges-betöltés előtt.
 
-**Forrás adatkészlet JSON-definíció**
+### <a name="write-data-with-custom-logic"></a>Egyéni logikát az adatok írása
 
-```json
-{
-    "name": "SampleSource",
-    "properties": {
-        "type": " SqlServerTable",
-        "linkedServiceName": {
-            "referenceName": "TestIdentitySQL",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "tableName": "SourceTbl"
-        }
-    }
-}
-```
-
-**Cél adatkészlet JSON-definíció**
-
-```json
-{
-    "name": "SampleTarget",
-    "properties": {
-        "structure": [
-            { "name": "name" },
-            { "name": "age" }
-        ],
-        "type": "SqlServerTable",
-        "linkedServiceName": {
-            "referenceName": "TestIdentitySQL",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "tableName": "TargetTbl"
-        }
-    }
-}
-```
-
-Figyelje meg, hogy a forrás és cél táblaként eltérő sémával rendelkezik (cél van egy további oszlop identitás). Ebben az esetben meg kell adnia **struktúra** tulajdonság a célként megadott adatkészlet definíciójában, amely nem tartalmazza az identitásoszlop.
+Hasonló leírtak szerint [Upsert adatok](#upsert-data) szakaszban további feldolgozás előtt a végső beszúrási a forrásadatok a céltáblázatba történő, alkalmaznia kell is egy) a nagyméretű méretezési egy ideiglenes táblát betöltési, akkor egy tárolt meghívása az eljárás, vagy b) tárolt eljárás meghívása másolása során.
 
 ## <a name="invoking-stored-procedure-for-sql-sink"></a> Az SQL-fogadó tárolt eljárás meghívása
 
-Adatok másolása az SQL Server database-be, amikor egy felhasználó által meghatározott sikerült konfigurálhatók és további paraméterek meghívása tárolt eljárás.
+Példatípust az adatok az SQL Server-adatbázisba, is konfigurálni és meghívni a felhasználó által megadott tárolt eljárást a további paraméterek.
 
-Tárolt eljárás is használható, ha a beépített másolási mechanizmust erre a célra nem használhatók. Ha az upsert (insert és update), vagy további feldolgozás (egyesítés oszlopok keresése további értékeket szúr be a több táblákat, stb.) kell tenni a forrásadatok a céloldali tábla utolsó beszúrási előtt általában szolgál.
+> [!TIP]
+> Tárolt eljárás meghívása dolgozza fel az adatok sor soronként tömeges művelet, amely nem ajánlott nagy méretű példány helyett. További információkat talál a [ajánlott eljárás az adatok betöltése az SQL Server](#best-practice-for-loading-data-into-sql-server).
+
+Beépített másolási mechanizmust nem, a célt szolgálják, amikor egy tárolt eljárást használhatja például a további feldolgozás előtt a végső beszúrási a forrásadatok a céltáblázatba történő alkalmazásához. Extra feldolgozási példákat egyesítési oszlop, keresse meg a további értéket, és annak több tábla.
 
 A következő minta bemutatja, hogyan egy tárolt eljárást az upsert ehhez az SQL Server-adatbázisban egy táblába. Tegyük fel, amelyek bemeneti és a fogadó **Marketing** tábla minden egyes háromoszloposak: **ProfileID**, **állapot**, és **kategória**. Hajtsa végre az upsert alapján a **ProfileID** oszlopot, és csak egy adott kategória alkalmazhatja azt.
 

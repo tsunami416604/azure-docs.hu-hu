@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c9b07e7524488d0336a55af6e1d5f36af59a870
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: c5ccc4ef6c095eacd29590504d46756ead856574
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729828"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058618"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához
 Ez a cikk útmutatást az Azure Active Directory (Azure AD) PowerShell-parancsmagok használatával hozhat létre, és a csoportokat. Ez a tartalom csak az Office 365-csoportok (más néven egyesített csoportok) vonatkozik. 
@@ -78,7 +78,7 @@ Ezeket a lépéseket beállítások létrehozása könyvtár szintjén, amely az
    ```
 6. Az értékek használatával olvashatja:
 
-  ```powershell
+   ```powershell
    $Setting.Values
    ```  
 ## <a name="update-settings-at-the-directory-level"></a>A könyvtár szintjén beállításainak frissítése
@@ -86,7 +86,7 @@ Frissítse az értéket a UsageGuideLinesUrl a beállítás sablonban, egyszerű
 
 UsageGuideLinesUrl értékét eltávolításához szerkessze az URL-cím, egy üres karakterláncot, használja a fenti 4. lépés:
 
- ```powershell
+   ```powershell
    $Setting["UsageGuidelinesUrl"] = ""
    ```  
 Végezze el az új érték beállítása 5. lépés.
@@ -112,7 +112,7 @@ Az alábbiakban a Group.Unified SettingsTemplate megadott beállítások. Hiány
 
 ## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>Példa: A könyvtár szintjén csoportok Vendég vonatkozó házirend konfigurálása
 1. A beállítás az összes sablon beszerzését:
-  ```powershell
+   ```powershell
    Get-AzureADDirectorySettingTemplate
    ```
 2. Vendég-házirend beállítása a csoportok a könyvtár szintjén, Group.Unified sablont kell
@@ -135,7 +135,7 @@ Az alábbiakban a Group.Unified SettingsTemplate megadott beállítások. Hiány
    ```
 6. Az értékek használatával olvashatja:
 
-  ```powershell
+   ```powershell
    $Setting.Values
    ```   
 
@@ -143,9 +143,9 @@ Az alábbiakban a Group.Unified SettingsTemplate megadott beállítások. Hiány
 
 Ha ismeri a lekérdezni kívánt beállítás nevére, használhatja az alábbi parancsmag segítségével kérje le az aktuális beállítások értéket. Ebben a példában azt olvas be egy elnevezett "UsageGuidelinesUrl." beállítás értéke 
 
-  ```powershell
-  (Get-AzureADDirectorySetting).Values | Where-Object -Property Name -Value UsageGuidelinesUrl -EQ
-  ```
+   ```powershell
+   (Get-AzureADDirectorySetting).Values | Where-Object -Property Name -Value UsageGuidelinesUrl -EQ
+   ```
 Ezeket a lépéseket olvassa el a könyvtár szintjén beállításokat, amelyeket a alkalmazni az összes Office-csoportok a címtárban.
 
 1. Olvassa el az összes meglévő címtár beállításai:
@@ -188,11 +188,11 @@ Ezeket a lépéseket olvassa el a könyvtár szintjén beállításokat, amelyek
 
 ## <a name="remove-settings-at-the-directory-level"></a>A könyvtár szintjén beállítások eltávolítása
 Ez a lépés eltávolítja a könyvtár szintjén beállításokat, amelyeket a alkalmazni az összes Office-csoportok a címtárban.
-  ```powershell
-  Remove-AzureADDirectorySetting –Id c391b57d-5783-4c53-9236-cefb5c6ef323c
-  ```
+   ```powershell
+   Remove-AzureADDirectorySetting –Id c391b57d-5783-4c53-9236-cefb5c6ef323c
+   ```
 
-## <a name="update-settings-for-a-specific-group"></a>Egy adott csoport beállításainak frissítése
+## <a name="create-settings-for-a-specific-group"></a>Hozzon létre egy adott csoport beállításai
 
 1. Keresse meg a "Groups.Unified.Guest" nevű beállítások sablon
    ```powershell
@@ -219,13 +219,49 @@ Ez a lépés eltávolítja a könyvtár szintjén beállításokat, amelyeket a 
    ```powershell
    $SettingCopy["AllowToAddGuests"]=$False
    ```
-5. Az új beállítás a szükséges csoport létrehozása a könyvtárban:
+5. Kérje le a alkalmazni ezt a beállítást szeretné csoport azonosítója:
    ```powershell
-   New-AzureADObjectSetting -TargetType Groups -TargetObjectId ab6a3887-776a-4db7-9da4-ea2b0d63c504 -DirectorySetting $SettingCopy
+   $groupID= (Get-AzureADGroup -SearchString "YourGroupName").ObjectId
    ```
-6. Ellenőrizze a beállításokat, a következő parancs futtatásával:
+6. Az új beállítás a szükséges csoport létrehozása a könyvtárban:
    ```powershell
-   Get-AzureADObjectSetting -TargetObjectId ab6a3887-776a-4db7-9da4-ea2b0d63c504 -TargetType Groups | fl Values
+   New-AzureADObjectSetting -TargetType Groups -TargetObjectId $groupID -DirectorySetting $SettingCopy
+   ```
+7. Ellenőrizze a beállításokat, a következő parancs futtatásával:
+   ```powershell
+   Get-AzureADObjectSetting -TargetObjectId $groupID -TargetType Groups | fl Values
+   ```
+
+## <a name="update-settings-for-a-specific-group"></a>Egy adott csoport beállításainak frissítése
+1. A csoport, amelynek a frissíteni kívánt beállítás Azonosítójának lekéréséhez:
+   ```powershell
+   $groupID= (Get-AzureADGroup -SearchString "YourGroupName").ObjectId
+   ```
+2. A beállítás a csoport beolvasása:
+   ```powershell
+   $Setting = Get-AzureADObjectSetting -TargetObjectId $groupID -TargetType Groups
+   ```
+3. A beállítás a csoport frissítése, igény szerint, például:
+   ```powershell
+   $Setting["AllowToAddGuests"] = $True
+   ```
+4. Kérje le a beállítása az adott csoport azonosítója:
+   ```powershell
+   Get-AzureADObjectSetting -TargetObjectId $groupID -TargetType Groups
+   ```
+   Válasz jelenik meg egy ehhez hasonló:
+   ```powershell
+   Id                                   DisplayName            TemplateId                             Values
+   --                                   -----------            -----------                            ----------
+   2dbee4ca-c3b6-4f0d-9610-d15569639e1a Group.Unified.Guest    08d542b9-071f-4e16-94b0-74abb372e3d9   {class SettingValue {...
+   ```
+5. Ezután az új érték között állítható be ehhez a beállításhoz:
+   ```powershell
+   Set-AzureADObjectSetting -TargetType Groups -TargetObjectId $groupID -Id 2dbee4ca-c3b6-4f0d-9610-d15569639e1a -DirectorySetting $Setting
+   ```
+6. Tudjon meg, hogy megfelelően frissült a beállítás értékét:
+   ```powershell
+   Get-AzureADObjectSetting -TargetObjectId $groupID -TargetType Groups | fl Values
    ```
 
 ## <a name="cmdlet-syntax-reference"></a>A parancsmag szintaxisának referenciája

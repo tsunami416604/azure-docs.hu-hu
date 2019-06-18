@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/02/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f77e322ffd7eec78fe13650f40c93f914706d557
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 272d5194b2922e57aca0d63fd62c222e17a29c53
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65824624"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108252"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>Az AD FS az Azure AD-alkalmazások áthelyezése 
 
@@ -46,7 +46,7 @@ Az Office 365- és az Azure AD-alapú alkalmazások mellett számos vállalat re
 Olyan szervezet már használja az AD FS, a Pinget vagy más helyszíni hitelesítési szolgáltatót alkalmazások áthelyezése az Azure AD lehetővé teszi, hogy a következő előnyökkel jár:
 
 **Biztonságosabb hozzáférés**
-- Részletesebb alkalmazásonkénti hozzáférés-vezérlés konfigurálása, beleértve az Azure Multi-Factor Authenticationt az [Azure AD feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md) használatával. A szabályzatok ugyanúgy alkalmazhatók az SaaS- és az egyéni alkalmazásokra, ahogy jelenleg az Office 365-alkalmazásokra.
+- Részletesebb alkalmazásonkénti hozzáférés-vezérlés konfigurálása, beleértve az Azure multi-factor Authentication használatával [Azure AD feltételes hozzáférési](../active-directory-conditional-access-azure-portal.md). A szabályzatok ugyanúgy alkalmazhatók az SaaS- és az egyéni alkalmazásokra, ahogy jelenleg az Office 365-alkalmazásokra.
 - Az [Azure AD Identity Protection](../active-directory-identityprotection.md) használatával kiaknázhatja annak képességeit a fenyegetések gépi tanulással és heurisztikával való észleléséhez és a bejelentkezések védelméhez.
 
 **Azure AD B2B együttműködés**
@@ -155,7 +155,7 @@ A jelenleg könnyen áthelyezhető-alkalmazások konfigurációs elemek és jogc
 - Egyéni jogcímek. A támogatott jogcímek társításával kapcsolatos információért tekintse meg a [Jogcímtársítások az Azure Active Directory-ban](../develop/active-directory-claims-mapping.md) és az [SAML-jogkivonatban kiadott jogcímek testreszabása vállalati alkalmazások esetén az Azure Active Directory-ban](../develop/active-directory-saml-claims-customization.md) témakört.
 
 Az egyéni jogcímek és **NameID** elemek mellett az Azure AD-ben a migráció keretében további konfigurációs lépéseket igénylő konfigurációk a következők:
-- Az AD FS egyéni hitelesítési vagy többtényezős hitelesítési szabályai. Az [Azure AD feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md) funkciójával konfigurálhatja őket.
+- Az AD FS egyéni hitelesítési vagy többtényezős hitelesítési szabályai. Segítségével konfigurálhatja a [Azure AD feltételes hozzáférési](../active-directory-conditional-access-azure-portal.md) funkció.
 - A több SAML-végponttal rendelkező alkalmazások. Az Azure AD-ben a PowerShell segítségével konfigurálhatja őket. (Ez a funkció a portálon nem érhető el.)
 - A WS-Federationt használó alkalmazások, például a SharePoint-alkalmazások, amelyek SAML 1.1-es verziójú jogkivonatot igényelnek. Ezeket manuális módszerrel kell konfigurálnia a PowerShell használatával.
 

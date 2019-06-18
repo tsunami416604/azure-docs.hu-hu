@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/27/2019
 ms.author: hrasheed
 ms.openlocfilehash: b2ae24c0449b009db6fcecdd8a1366ea5154629a
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66257792"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>-Kernelek Jupyter notebook az Azure HDInsight az Apache Spark-fürtök 
@@ -72,7 +72,7 @@ Az alábbiakban néhány előnyei az új kernelekkel a Jupyter notebookot HDInsi
    | Magic Quadrant | Példa | Leírás |
    | --- | --- | --- |
    | help |`%%help` |Létrehoz egy táblát az összes rendelkezésre álló magics példa és leírás |
-   | Adatai |`%%info` |A jelenlegi Livy-végpont kimenetek munkamenet-információk |
+   | info |`%%info` |A jelenlegi Livy-végpont kimenetek munkamenet-információk |
    | Konfigurálása |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Konfigurálja a paramétereket a munkamenet létrehozásához. A kényszerítési jelzőt (-f) megadása kötelező, ha a munkamenet már létrejött, amely biztosítja, hogy a munkamenet eltávolítja és újra létre kell hozni. Tekintse meg [Livy a POST /sessions kérelem törzse](https://github.com/cloudera/livy#request-body) érvényes paramétereinek listáját. Paramétereket kell átadni, egy JSON-karakterlánc, és későbbinek kell lennie a következő sorban a Magic Quadrant, ahogyan az a példában oszlop. |
    | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |Futtatják a Hive-lekérdezést a kontext sqlContext ellen. Ha a `-o` paramétert, a lekérdezés eredménye a rendszer megőrzi a %% helyi Python-környezetben egy [Pandas](https://pandas.pydata.org/) dataframe. |
    | helyi |`%%local`<br>`a=1` |A következő sorokban minden kód helyileg hajtja végre. Kód akár a kernelt használja függetlenül érvényes Python2-kódot kell lennie. Igen, akkor is, ha a kiválasztott **PySpark3** vagy **Spark** kernelekkel létrehozásakor a notebook használatakor a `%%local` magic egy cellába, a cella csak rendelkeznie kell érvényes Python2-kódot. |

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d58ef2716e2a432e1123d6b215b33fb2b688a32
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1e093c9065cf7372e329af68e0fb9867bb12782a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724457"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105758"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-certent-equity-management"></a>Oktatóanyag: Certent tőke kezelése az Azure Active Directory-integráció
 
@@ -54,7 +54,7 @@ Certent tőke Management integrálása az Azure AD beállítása, hozzá kell Ce
 
 **Certent tőke felügyeleti hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -121,7 +121,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Certent tőke felüg
 
     | Name (Név) | Adatforrás-attribútum|
     | ---------------| --------------- |
-    | VÁLLALAT | user.companyname |
+    | VÁLLALATI | user.companyname |
     | FELHASZNÁLÓ | user.userprincipalname |
     | SZEREPKÖR | user.assignedroles |
 

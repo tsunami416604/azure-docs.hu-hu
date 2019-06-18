@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/06/201
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 89034b04c6b38c0873f890e55693c6e15e6a8d93
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a3677e45738c368d8438872da740a362a8048a63
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069398"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155540"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Oktatóanyag: Meglévő egyéni DNS-név leképezése az Azure App Service-ben
 
@@ -156,7 +156,7 @@ Eltarthat egy ideig, az alkalmazás megjelenik az új egyéni tartomány **egyé
 ![CNAME rekord hozzáadva](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
 > [!NOTE]
-> A **Megjegyzés biztonságos** az egyéni tartomány azt jelenti, hogy még nincs kötött SSL-tanúsítványt, és bármely HTTPS-kérést közvetlenül a böngészőből az egyéni tartomány kap, és hiba vagy figyelmeztetés, attól függően, a böngésző-címkét. Egy SSL-kötés hozzáadásával, lásd: [meglévő egyéni SSL-tanúsítvány kötése az Azure App Service-](app-service-web-tutorial-custom-ssl.md).
+> A **nem biztonságos** az egyéni tartomány azt jelenti, hogy még nincs kötött SSL-tanúsítványt, és bármely HTTPS-kérést közvetlenül a böngészőből az egyéni tartomány kap, és hiba vagy figyelmeztetés, attól függően, a böngésző-címkét. Egy SSL-kötés hozzáadásával, lásd: [meglévő egyéni SSL-tanúsítvány kötése az Azure App Service-](app-service-web-tutorial-custom-ssl.md).
 
 Ha kihagyott egy lépést, vagy korábban valamit elgépelt, egy ellenőrzési hiba látható a lap alján.
 
@@ -240,7 +240,7 @@ Eltarthat egy ideig, az alkalmazás megjelenik az új egyéni tartomány **egyé
 ![A rekord hozzáadva](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
 > [!NOTE]
-> A **Megjegyzés biztonságos** az egyéni tartomány azt jelenti, hogy még nincs kötött SSL-tanúsítványt, és bármely HTTPS-kérést közvetlenül a böngészőből az egyéni tartomány kap, és hiba vagy figyelmeztetés, attól függően, a böngésző-címkét. Egy SSL-kötés hozzáadásával, lásd: [meglévő egyéni SSL-tanúsítvány kötése az Azure App Service-](app-service-web-tutorial-custom-ssl.md).
+> A **nem biztonságos** az egyéni tartomány azt jelenti, hogy még nincs kötött SSL-tanúsítványt, és bármely HTTPS-kérést közvetlenül a böngészőből az egyéni tartomány kap, és hiba vagy figyelmeztetés, attól függően, a böngésző-címkét. Egy SSL-kötés hozzáadásával, lásd: [meglévő egyéni SSL-tanúsítvány kötése az Azure App Service-](app-service-web-tutorial-custom-ssl.md).
 
 Ha kihagyott egy lépést, vagy korábban valamit elgépelt, egy ellenőrzési hiba látható a lap alján.
 

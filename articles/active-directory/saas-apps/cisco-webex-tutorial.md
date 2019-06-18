@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 308f745489fba2e2b539a2f2615b65228565dcf9
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: ec8c2fc2c2dbbfd2c98184215f696aaf18a87193
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65900085"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105552"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex-meetings"></a>Oktatóanyag: Cisco Webex értekezletek az Azure Active Directory-integráció
 
@@ -55,7 +55,7 @@ Cisco Webex értekezletek integrálása az Azure AD beállítása, hozzá kell C
 
 **Cisco Webex értekezletek hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -249,7 +249,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ez a szakasz célja a Cisco Webex értekezletek Britta Simon nevű felhasználó létrehozásához. Cisco Webex értekezletek támogatja **just-in-time** kiépítést, amely alapértelmezés szerint ki van engedélyezve. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó még nem létezik a Cisco Webex értekezletek, amikor megpróbálja elérni a Cisco Webex értekezletek egy új jön létre.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

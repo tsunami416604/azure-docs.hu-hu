@@ -1,162 +1,228 @@
 ---
 title: Az Application Insights Node.js
 titleSuffix: Azure Cognitive Services
-description: A robot a LUIS-alkalmazás és az Application Insights Node.js használatával integrálva hozhat létre.
+description: Ebben az oktatóanyagban hozzáadja az Application Insights telemetriai adatokat tároló robot és a Language Understanding információkat.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 06/11/2019
+ms.topic: tutorial
+ms.date: 06/16/2019
 ms.author: diberry
-ms.openlocfilehash: 5a5a7ee12d9e80c81329c825f4e795ccd8063526
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5459fb5d8304a35b3f009354c446514a2831c513
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068530"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155292"
 ---
-# <a name="add-luis-results-to-application-insights-with-a-bot-in-nodejs"></a>A LUIS-eredményeket ad hozzá az Application Insights Node.js-ben egy robottal
-Ebben az oktatóanyagban hozzáadja a kérések és válaszok adatokat LUIS [Application Insights](https://azure.microsoft.com/services/application-insights/) telemetriai adatok tárolására. Miután az adatokat, kérdezhet le róla a Kusto-nyelv vagy a Power BI segítségével elemezheti, összesítése, és a jelentés a szándékok és entitások, valós idejű utterance (kifejezés). Az elemzés segít annak meghatározásában, ha kell hozzáadása vagy szerkesztése a szándékok és entitások, a LUIS-alkalmazás.
-
-A robot épül fel a Bot keretrendszer 4.x-es és az Azure Web app bot. A [Bot keretrendszer 4.x LUIS oktatóanyag](luis-nodejs-tutorial-bf-v4.md) is rendelkezésre áll.
+# <a name="add-luis-results-to-application-insights-from-a-bot-in-nodejs"></a>LUIS eredményeket adhat az Application Insights Node.js-ben a robot a
+Ez az oktatóanyag hozzáad robot és a Language Understanding információkat [Application Insights](https://azure.microsoft.com/services/application-insights/) telemetriai adatok tárolására. Miután az adatokat, kérdezhet le róla a Kusto-nyelv vagy a Power BI segítségével elemezheti, összesítése, és a jelentés a szándékok és entitások, valós idejű utterance (kifejezés). Az elemzés segít annak meghatározásában, ha kell hozzáadása vagy szerkesztése a szándékok és entitások, a LUIS-alkalmazás.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Web app-robot Application Insights-könyvtár hozzáadása
-> * Rögzíti és továbbítja a LUIS lekérdezés eredményeit az Application Insights
-> * Az Application Insights lekérdezési felső szándékot, pontszám és utterance (kifejezés)
+> * A robot és a Language understanding adatok az Application Insights rögzítése
+> * Az Application Insights lekérdezni a Language Understanding data
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A LUIS web app-robot, az **[oktatóanyag](luis-nodejs-tutorial-bf-v4.md)** az Application Insights-e kapcsolva. 
+* Az Azure bot service robot, engedélyezve van az Application Insights használatával létrehozott.
+* Bot kód az előző robot-től letöltött  **[oktatóanyag](luis-nodejs-tutorial-bf-v4.md)** . 
+* [Bot Emulator](https://aka.ms/abs/build/emulatordownload)
+* [Visual Studio Code](https://code.visualstudio.com/Download)
 
-> [!Tip]
-> Ha Ön még nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+Ebben az oktatóanyagban kódja megtalálható a [Azure-minták Language Understanding GitHub-adattár](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/v4/luis-nodejs-bot-johnsmith-src-telemetry). 
 
-Ebben az oktatóanyagban kódja érhető el a [Azure-minták GitHub-adattár](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs) és ebben az oktatóanyagban társított minden egyes sor van ellátva a `//APPINSIGHT:`. 
+## <a name="add-application-insights-to-web-app-bot-project"></a>Az Application Insights hozzáadása a web app bot projekthez
+Jelenleg az Application Insights szolgáltatás a web app bot használt gyűjt a robot telemetriája általános állapotát. A LUIS-adatokat nem gyűjt. 
 
-## <a name="web-app-bot-with-luis"></a>Web app bot az intelligens hangfelismerési szolgáltatással
-Ez az oktatóanyag feltételezi, hogy a kódot, hogy a következőképpen néz ki: a következő vagy az, hogy végrehajtotta a [többi oktatóanyag](luis-nodejs-tutorial-bf-v4.md): 
+Annak érdekében, hogy rögzítheti a LUIS-információkat, a web app bot van szüksége a **[Application Insights](https://www.npmjs.com/package/applicationinsights)** NPM-csomag telepítését és konfigurálását.  
 
-   [!code-javascript[Web app bot with LUIS](~/samples-luis/documentation-samples/tutorial-web-app-bot/nodejs/app.js "Web app bot with LUIS")]
-
-## <a name="add-application-insights-library-to-web-app-bot"></a>Web app bot Application Insights-könyvtár hozzáadása
-Jelenleg az Application Insights szolgáltatás a web app bot használt gyűjt a robot telemetriája általános állapotát. A LUIS kérések és válaszok a keresett információt, ellenőrizze és javítsa ki a szándékok és entitások nem gyűjt. 
-
-Annak érdekében, hogy a LUIS-kérések és válaszok rögzítése, a web app bot van szüksége a **[Application Insights](https://www.npmjs.com/package/applicationinsights)** NPM-csomag telepítve és konfigurálva a **app.js** fájlt. Ezután a szándék párbeszédpanel kezelők kell elküldeni a LUIS kérés- és az információkat az Application Insights. 
-
-1. Web app bot service-ben az Azure Portalon válassza ki a **hozhat létre** alatt a **Bot felügyeleti** szakaszban. 
-
-    ![Web app bot service-ben az Azure Portalon válassza a "Build" a "Bot kezelése" szakaszban.](./media/luis-tutorial-appinsights/build.png)
-
-2. Egy új böngészőlapon nyílik meg, hogy az App Service Editor. Válassza ki az alkalmazás neve a felső sávon, majd válassza ki **Kudu konzol megnyitása**. 
-
-    ![Válassza ki a felső sávon az alkalmazás nevét, majd válassza a "Megnyitás Kudu konzol".](./media/luis-tutorial-appinsights/kudu-console.png)
-
-3. A konzolon adja meg az Application Insights és az aláhúzás csomagok telepítéséhez a következő parancsot:
+1. A VSCode integrált terminálon a bot projekt gyökerében adja hozzá a következő NPM csomagok, a parancs látható: 
 
     ```console
-    cd site\wwwroot && npm install applicationinsights && npm install underscore
+    npm install applicationinsights && npm install underscore
     ```
-
-    ![Az Application Insights és az aláhúzás csomagok telepítése az npm parancsok használatával](./media/luis-tutorial-appinsights/npm-install.png)
-
-    Várja meg a csomagok telepítése:
-
-    ```console
-    luisbot@1.0.0 D:\home\site\wwwroot
-    `-- applicationinsights@1.0.1 
-      +-- diagnostic-channel@0.2.0 
-      +-- diagnostic-channel-publishers@0.2.1 
-      `-- zone.js@0.7.6 
     
-    npm WARN luisbot@1.0.0 No repository field.
-    luisbot@1.0.0 D:\home\site\wwwroot
-    +-- botbuilder-azure@3.0.4
-    | `-- azure-storage@1.4.0
-    |   `-- underscore@1.4.4 
-    `-- underscore@1.8.3 
-    ```
+    A **aláhúzás** csomag simítja egybe a LUIS JSON-struktúrát, így könnyebben megtekintéséhez és használatához az Application Insights segítségével.
+    
 
-    A kudu konzol böngészőlapon végzett.
 
 ## <a name="capture-and-send-luis-query-results-to-application-insights"></a>Rögzíti és továbbítja a LUIS lekérdezés eredményeit az Application Insights
-1. Az App Service Editor böngészőlapon nyissa meg a **app.js** fájlt.
 
-2. Adja hozzá a következő NPM-kódtárak a meglévő alatt `requires` sorok:
+1. A vscode-ban, hozzon létre egy új fájlt **appInsightsLog.js** , és adja hozzá a következő kódot:
 
-   [!code-javascript[Add NPM packages to app.js](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/nodejs/app.js?range=12-16 "Add NPM packages to app.js")]
+    ```javascript
+    const appInsights = require('applicationinsights');
+    const _ = require("underscore");
+    
+    // Log LUIS results to Application Insights
+    // must flatten as name/value pairs
+    var appInsightsLog = (botContext,luisResponse) => {
 
-3. Az Application Insights-objektum létrehozása és használata a web app bot Alkalmazásbeállítás **BotDevInsightsKey**: 
+        appInsights.setup(process.env.MicrosoftApplicationInsightsInstrumentationKey).start();
+        const appInsightsClient = appInsights.defaultClient;
 
-   [!code-javascript[Create the Application Insights object](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/nodejs/app.js?range=68-80 "Create the Application Insights object")]
+        // put bot context and LUIS results into single object
+        var data = Object.assign({}, {'botContext': botContext._activity}, {'luisResponse': luisResponse});
+    
+        // Flatten data into name/value pairs
+        flatten = (x, result, prefix) => {
+            if(_.isObject(x)) {
+                _.each(x, (v, k) => {
+                    flatten(v, result, prefix ? prefix + '_' + k : k)
+                })
+            } else {
+                result["LUIS_" + prefix] = x
+            }
+            return result;
+        }
+    
+        // call fn to flatten data
+        var flattenedData = flatten(data, {});
+    
+        // ApplicationInsights Trace 
+        console.log(JSON.stringify(flattenedData));
+    
+        // send data to Application Insights
+        appInsightsClient.trackTrace({message: "LUIS", severity: appInsights.Contracts.SeverityLevel.Information, properties: flattenedData});
+    }
+    
+    module.exports.appInsightsLog = appInsightsLog;
+    ```
 
-4. Adja hozzá a **appInsightsLog** függvény:
+    Ez a fájl vesz igénybe a robot, környezeti és a luis-válasz, simítja egybe mindkét objektum és beilleszti őket egy **nyomkövetési** eseményt az application insightsban. Az esemény nevét kötelező **LUIS**. 
 
-   [!code-javascript[Add the appInsightsLog function](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/nodejs/app.js?range=82-109 "Add the appInsightsLog function")]
+1. Nyissa meg a **párbeszédpanelek** mappát, majd a **luisHelper.js** fájlt. Tartalmazza az új **appInsightsLog.js** egy szükséges fájl, és rögzítheti a robot környezet és a LUIS választ. Ez a fájl teljes kódja a következő: 
 
-    A függvény utolsó sora, ahol az adatok bekerülnek az Application Insightsba. Az esemény nevét kötelező **LUIS-eredmények**, a web app bot által gyűjtött egyéb telemetriai adatokat szereplőkkel egy egyedi nevet. 
+    ```javascript
+    // Copyright (c) Microsoft Corporation. All rights reserved.
+    // Licensed under the MIT License.
+    
+    const { LuisRecognizer } = require('botbuilder-ai');
+    const { appInsightsLog } = require('../appInsightsLog');
+    
+    class LuisHelper {
+        /**
+         * Returns an object with preformatted LUIS results for the bot's dialogs to consume.
+         * @param {*} logger
+         * @param {TurnContext} context
+         */
+        static async executeLuisQuery(logger, context) {
+            const bookingDetails = {};
+    
+            try {
+                const recognizer = new LuisRecognizer({
+                    applicationId: process.env.LuisAppId,
+                    endpointKey: process.env.LuisAPIKey,
+                    endpoint: `https://${ process.env.LuisAPIHostName }`
+                }, {}, true);
+    
+                const recognizerResult = await recognizer.recognize(context);
+    
+                // APPINSIGHT: Log results to Application Insights
+                appInsightsLog(context,recognizerResult);
+    
+    
+                const intent = LuisRecognizer.topIntent(recognizerResult);
+    
+                bookingDetails.intent = intent;
+    
+                if (intent === 'Book_flight') {
+                    // We need to get the result from the LUIS JSON which at every level returns an array
+    
+                    bookingDetails.destination = LuisHelper.parseCompositeEntity(recognizerResult, 'To', 'Airport');
+                    bookingDetails.origin = LuisHelper.parseCompositeEntity(recognizerResult, 'From', 'Airport');
+    
+                    // This value will be a TIMEX. And we are only interested in a Date so grab the first result and drop the Time part.
+                    // TIMEX is a format that represents DateTime expressions that include some ambiguity. e.g. missing a Year.
+                    bookingDetails.travelDate = LuisHelper.parseDatetimeEntity(recognizerResult);
+                }
+            } catch (err) {
+                logger.warn(`LUIS Exception: ${ err } Check your LUIS configuration`);
+            }
+            return bookingDetails;
+        }
+    
+        static parseCompositeEntity(result, compositeName, entityName) {
+            const compositeEntity = result.entities[compositeName];
+            if (!compositeEntity || !compositeEntity[0]) return undefined;
+    
+            const entity = compositeEntity[0][entityName];
+            if (!entity || !entity[0]) return undefined;
+    
+            const entityValue = entity[0][0];
+            return entityValue;
+        }
+    
+        static parseDatetimeEntity(result) {
+            const datetimeEntity = result.entities['datetime'];
+            if (!datetimeEntity || !datetimeEntity[0]) return undefined;
+    
+            const timex = datetimeEntity[0]['timex'];
+            if (!timex || !timex[0]) return undefined;
+    
+            const datetime = timex[0].split('T')[0];
+            return datetime;
+        }
+    }
+    
+    module.exports.LuisHelper = LuisHelper;
+    ```
 
-5. Használja a **appInsightsLog** függvény. Minden szándék párbeszédpanel, adja hozzá:
+## <a name="add-application-insights-instrumentation-key"></a>Az Application Insights-eszközkulcs felvétele 
 
-   [!code-javascript[Use the appInsightsLog function](~/samples-luis/documentation-samples/tutorial-web-app-bot-application-insights/nodejs/app.js?range=117-118 "Use the appInsightsLog function")]
+Adatok hozzáadása az application insights, a kialakítási kulcsot kell.
 
-6. A web app bot teszteléséhez használja a **tesztelni, webes csevegési** funkció. Nincs különbség, mivel a munka az Application insights szolgáltatásban, nem szerepel a robot válaszokat kell megjelennie.
+1. Egy böngészőben a a [az Azure portal](https://portal.azure.com), keresse meg a robot **Application Insights** erőforrás. A név lesz a legtöbb a robot neve, majd a véletlenszerű karaktert a név végén `luis-nodejs-bot-johnsmithxqowom`. 
+1. Az Application Insights-erőforrás a a **áttekintése** lapon, másolja a **kialakítási kulcs**.
+1. A vscode-ban, nyissa meg a **.env** fájlt robot projekt gyökérmappájában. Ebben a fájlban található összes környezeti változót.  
+1. Adjon hozzá egy új változó `MicrosoftApplicationInsightsInstrumentationKey` a kialakítási kulcs értékét. Ne nincs put idézőjelek között szereplő érték. 
+
+## <a name="start-the-bot"></a>A robot indítása
+
+1. Az integrált terminálon VSCode indítsa el a robotot:
+    
+    ```console
+    npm start
+    ```
+
+1. A robot-emulátor elindítása, és nyissa meg a robot. Ez [lépés](luis-nodejs-tutorial-bf-v4.md#use-the-bot-emulator-to-test-the-bot) az előző oktatóanyagban található.
+
+1. A robot tegyen fel kérdést. Ez [lépés](luis-nodejs-tutorial-bf-v4.md#ask-bot-a-question-for-the-book-flight-intent) az előző oktatóanyagban található.
 
 ## <a name="view-luis-entries-in-application-insights"></a>Nézet LUIS bejegyzések az Application insights szolgáltatásban
-Nyissa meg az Application Insights a LUIS-bejegyzések megtekintéséhez. 
 
-1. Válassza a portál **összes erőforrás** majd szűrés a webalkalmazás robot neve. Kattintson az erőforráson típusú **Application Insights**. Az ikonra az Application Insights egy villanykörte. 
+Nyissa meg az Application Insights a LUIS-bejegyzések megtekintéséhez. Az adatai megjelennek az Application Insights pár percet is igénybe vehet.
 
-    ![Keresés az app insights az Azure Portalon](./media/luis-tutorial-appinsights/search-for-app-insights.png)
+1. Az a [az Azure portal](https://portal.azure.com), nyissa meg a robot Application Insights-erőforrást. 
+1. Az erőforrás megnyitása után válassza ki a **keresési** , és keresse meg az összes adat az utolsó **30 perc** az esemény típusú **nyomkövetési**. Válassza ki a nyomkövetés nevű **LUIS**. 
+1. A robot és a LUIS információ érhető el **egyéni tulajdonságok**. 
 
-2. Az erőforrás megnyitása után kattintson a a **keresési** ikonjára a Nagyító ikonra a jobb szélen panelen. Egy új panel a jobb oldali jeleníti meg. Telemetriai adatok mennyiségétől függően található, a panel megjelenítéséhez egy második is igénybe vehet. Keresse meg `LUIS-results` , majd nyomja le a billentyűzet adja meg. A listában csak a LUIS lekérdezési eredmények ebben az oktatóanyagban hozzáadja van szűkíthető.
-
-    ![Függőségek szűrése](./media/luis-tutorial-appinsights/app-insights-filter.png)
-
-3. Válassza ki a legfelső bejegyzésre. Egy új ablakban jeleníti meg a részletes – jobb szélen a LUIS lekérdezés egyéni adatokat is beleértve. A felső célt, és a pontszám szerepel.
-
-    ![Függőség részletei](./media/luis-tutorial-appinsights/app-insights-detail.png)
-
-    Amikor elkészült, válassza a jobb szélső felső **X** térjen vissza a függőségi elemek listáját. 
-
-
-> [!Tip]
-> Ha azt szeretné, mentheti a függőségi listát, és később még visszatérünk rá, kattintson a **... További** kattintson **mentés kedvenc**.
+    ![Tekintse át az Application insights szolgáltatásban tárolt LUIS egyéni tulajdonságok](./media/luis-tutorial-appinsights/application-insights-luis-trace-custom-properties-nodejs.png)
 
 ## <a name="query-application-insights-for-intent-score-and-utterance"></a>Lekérdezés az Application Insights szándékot, pontszám és utterance (kifejezés)
 Az Application Insights lehetővé teszi az adatok lekérdezéséhez a [Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) nyelven, valamint exportálási, hogy [Power BI](https://powerbi.microsoft.com). 
 
-1. Kattintson a **Analytics** felső részén a függőség, listázása, fent a Szűrő mezőbe. 
-
-    ![Elemzés gomb](./media/luis-tutorial-appinsights/analytics-button.png)
-
-2. Egy lekérdezési ablak tetején, és a egy tábla ablak, amely alatt megjelenik egy új ablak. Ha a használt adatbázisokat korábban, ezzel az elrendezéssel fokozott tisztában van-e. A lekérdezés tartalmazza az elmúlt 24 órában nevét kezdetű elemeivel `LUIS-results`. A **CustomDimensions** oszlopnak a LUIS-lekérdezés eredménye név/érték párokként.
-
-    ![Elemzés lekérdezési ablak](./media/luis-tutorial-appinsights/analytics-query-window.png)
-
-3. Is, a felső szándékot, pontszám és utterance (kifejezés), adja hozzá a következő felett az utolsó sort a lekérdezési ablakban:
+1. Válassza ki **Log (Analytics)** . Egy lekérdezési ablak tetején, és a egy tábla ablak, amely alatt megjelenik egy új ablak. Ha a használt adatbázisokat korábban, ezzel az elrendezéssel fokozott tisztában van-e. A lekérdezés az előző szűrt adatokat jelöli. A **CustomDimensions** oszlopnak a robot és a LUIS-információkat.
+1. Is, a felső szándékot, pontszám és utterance (kifejezés), adja hozzá a következő csak az utolsó sort fent (a `|top...` sor) a lekérdezési ablakban:
 
     ```kusto
-    | extend topIntent = tostring(customDimensions.LUIS_intent_intent)
-    | extend score = todouble(customDimensions.LUIS_intent_score)
-    | extend utterance = tostring(customDimensions.LUIS_text)
+    | extend topIntent = tostring(customDimensions.LUIS_luisResponse_luisResult_topScoringIntent_intent)
+    | extend score = todouble(customDimensions.LUIS_luisResponse_luisResult_topScoringIntent_score)
+    | extend utterance = tostring(customDimensions.LUIS_luisResponse_text)
     ```
 
-4. Futtassa a lekérdezést. Görgessen az adatok tábla jobb szélén. Az új oszlopok topIntent, pontszám és utterance (kifejezés) érhetők el. Kattintson a topIntent oszlopra kattintva rendezheti a.
-
-    ![Analytics felső leképezés](./media/luis-tutorial-appinsights/app-insights-top-intent.png)
-
+1. Futtassa a lekérdezést. Az új oszlopok topIntent, pontszám és utterance (kifejezés) érhetők el. Válassza ki a topIntent oszlopra kattintva rendezheti.
 
 Tudjon meg többet a [Kusto-lekérdezés nyelvi](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) vagy [exportálja az adatokat a Power bi-bA](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi). 
 
 ## <a name="next-steps"></a>További lépések
 
-Egyéb információkat, érdemes hozzáadni az application insights-adatok tartalmazza Alkalmazásazonosító, a verzió azonosítója, a legutóbbi modell dátuma, a legutóbbi train dátuma, a legutóbbi közzététel dátuma. Ezek az értékek vagy olvashatók be a végpont URL-címe, (Alkalmazásazonosító és verzió azonosítója), vagy a egy [API szerzői](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3d) hívja, majd a web app bot beállítások, és onnan kéri le.  
+Egyéb információkat, érdemes hozzáadni az application insights-adatok tartalmazza Alkalmazásazonosító, a verzió azonosítója, a legutóbbi modell dátuma, a legutóbbi train dátuma, a legutóbbi közzététel dátuma. Ezeket az értékeket is vagy lekérje a végponti URL-cím (az alkalmazás és verzió-azonosító), vagy egy jelentéskészítő API-hívás, majd a web app bot beállítások és onnan kéri le.  
 
 Végpont ugyanahhoz az előfizetéshez egynél több LUIS alkalmazás használ, akkor is tartalmaznia kell az előfizetés-azonosító és a egy tulajdonság arról, hogy egy megosztott kulcsot. 
 

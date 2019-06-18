@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/03/2019
 ms.openlocfilehash: 4ff6cc0ba18074f353eb5b99af7052edd658a80e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66164468"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Az Azure SQL-kapcsolati architektúra
@@ -79,9 +79,9 @@ Az alábbi táblázat az elsődleges és másodlagos IP-címek, adatok minden r�
 | Közép-Franciaország | 40.79.137.0 | 40.79.129.1 |
 | Közép-Németország | 51.4.144.100 | |
 | Németország, Északkelet | 51.5.144.179 | |
-| India középső régiója | 104.211.96.159 | |
-| India déli régiója | 104.211.224.146 | |
-| India nyugati régiója | 104.211.160.80 | |
+| Közép-India | 104.211.96.159 | |
+| Dél-India | 104.211.224.146 | |
+| Nyugat-India | 104.211.160.80 | |
 | Kelet-Japán | 191.237.240.43 | 13.78.61.196 |
 | Nyugat-Japán | 191.238.68.11 | 104.214.148.156 |
 | Korea középső régiója | 52.231.32.42 | |
@@ -90,12 +90,12 @@ Az alábbi táblázat az elsődleges és másodlagos IP-címek, adatok minden r�
 | Észak-Európa | 191.235.193.75 | 40.113.93.91 |
 | USA déli középső régiója | 23.98.162.75 | 13.66.62.124 |
 | Délkelet-Ázsia | 23.100.117.95 | 104.43.15.0 |
-| Egyesült Királyság déli régiója | 51.140.184.11 | |
-| Egyesült Királyság nyugati régiója | 51.141.8.11| |
+| Az Egyesült Királyság déli régiója | 51.140.184.11 | |
+| Az Egyesült Királyság nyugati régiója | 51.141.8.11| |
 | USA nyugati középső régiója | 13.78.145.25 | |
 | Nyugat-Európa | 191.237.232.75 | 40.68.37.158 |
 | USA nyugati RÉGIÓJA 1 | 23.99.34.75 | 104.42.238.205 |
-| USA 2. nyugati régiója | 13.66.226.202 | |
+| USA nyugati régiója, 2. | 13.66.226.202 | |
 ||||
 
 \* **MEGJEGYZÉS:** *USA keleti RÉGIÓJA 2* is a harmadlagos IP-címmel rendelkezik `52.167.104.0`.

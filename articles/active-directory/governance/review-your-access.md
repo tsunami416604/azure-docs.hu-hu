@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6b38422b22885ad96c6681abe58b897155809521
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66113188"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Hozzáférés felülvizsgálata maga a csoportokat vagy alkalmazásokat az Azure AD hozzáférési felülvizsgálatokkal
@@ -30,7 +30,7 @@ Ez a cikk a saját egy csoporthoz vagy alkalmazáshoz való hozzáférés felül
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure AD Premium P2
+- Prémium szintű Azure AD P2
 
 További információkért lásd: [mely felhasználók rendelkeznie kell licencekkel?](access-reviews-overview.md#which-users-must-have-licenses).
 

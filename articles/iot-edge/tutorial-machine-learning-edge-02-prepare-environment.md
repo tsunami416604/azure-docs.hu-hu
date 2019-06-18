@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f8652dab5db8bbd59982cb1dda727698868df23c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: f36b706213639c5bea383ec20ffc7f6d7ed01021
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057742"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155701"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Oktatóanyag: A machine learning, az IoT Edge-környezet beállítása
 
@@ -61,7 +61,7 @@ A DevVM könyvtár létrehozása egy Azure virtuális gép megfelelő, az oktat�
 1. Nyissa meg a Powershellt rendszergazdaként, és lépjen abba a könyvtárba, amelybe letöltötte a kódot. A gyökérkönyvtár, mint a forrás hivatkozni fogunk `<srcdir>`.
 
     ```powershell
-    cd \<srcdir\>\IoTEdgeAndMlSample\DevVM
+    cd <srcdir>\IoTEdgeAndMlSample\DevVM
     ```
 
 2. A következő parancsot a parancsfájlok futtatását teszi lehetővé. Válasszon **Igen, az összeset** amikor a rendszer kéri.
@@ -141,7 +141,7 @@ Most, hogy csatlakozott a fejlesztői gépen, néhány hasznos bővítményeket 
 3. Futtassa a szkriptet.
 
     ```powershell
-    .\\Enable-CodeExtensions.ps1
+    .\Enable-CodeExtensions.ps1
     ```
 
 4. A parancsprogram futtatása néhány percet a VS code-bővítmények telepítése:

@@ -12,10 +12,10 @@ ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
 ms.openlocfilehash: b7af4d0a48f002f7523def971a306d1fa2077c70
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65952031"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Nevesített entitások felismerése cognitive szakértelem
@@ -41,7 +41,7 @@ Egy rekord maximális mérete 50 000 karakter által mért kell lennie `String.L
 
 A paraméterei a kis-és nagybetűket.
 
-| Paraméternév     | Leírás |
+| Paraméter neve     | Leírás |
 |--------------------|-------------|
 | kategóriák    | Ki kell nyerni kategóriákat tömbje.  Lehetséges kategória típusok: `"Person"`, `"Location"`, `"Organization"`. Ha nincs kategória áll rendelkezésre, a rendszer minden adja vissza.|
 |defaultLanguageCode |  A bemeneti szöveg nyelvkódja. A következő nyelvek támogatottak: `de, en, es, fr, it`|
@@ -49,19 +49,19 @@ A paraméterei a kis-és nagybetűket.
 
 ## <a name="skill-inputs"></a>Ismeretek bemenetek
 
-| Bemenet neve      | Leírás                   |
+| Bemeneti név      | Leírás                   |
 |---------------|-------------------------------|
 | languageCode  | Választható. Az alapértelmezett szint a `"en"`.  |
-| text          | Az elemzendő szöveg.          |
+| szöveg          | Az elemzendő szöveg.          |
 
 ## <a name="skill-outputs"></a>Ismeretek kimenetek
 
 | Kimeneti név     | Leírás                   |
 |---------------|-------------------------------|
 | személyek      | Egy karakterlánctömb, ahol minden egyes karakterlánc egy személy nevét jelöli. |
-| helyek  | Egy karakterlánctömb, ahol az egyes sztringek jelenti egy helyre. |
+| locations  | Egy karakterlánctömb, ahol az egyes sztringek jelenti egy helyre. |
 | organizations  | Ahol az egyes sztringek jelenti egy szervezet karakterláncok tömbje. |
-| entitás | Összetett típusok egy tömbjét. Minden egyes komplex típus a következő mezőket tartalmazza: <ul><li>kategória (`"person"`, `"organization"`, vagy `"location"`)</li> <li>érték (a tényleges entitás neve)</li><li>eltolás (a hely hol található a szövegben)</li><li>(0, 1, amely közötti értéket jelöli, hogy, hogy az érték egy tényleges entitás megbízhatósági) magabiztosan</li></ul> |
+| Entitások | Összetett típusok egy tömbjét. Minden egyes komplex típus a következő mezőket tartalmazza: <ul><li>kategória (`"person"`, `"organization"`, vagy `"location"`)</li> <li>érték (a tényleges entitás neve)</li><li>eltolás (a hely hol található a szövegben)</li><li>(0, 1, amely közötti értéket jelöli, hogy, hogy az érték egy tényleges entitás megbízhatósági) magabiztosan</li></ul> |
 
 ##  <a name="sample-definition"></a>Minta-definíció
 

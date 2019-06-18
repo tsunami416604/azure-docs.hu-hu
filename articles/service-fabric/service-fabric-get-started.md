@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/24/2019
+ms.date: 06/10/2019
 ms.author: aljo
-ms.openlocfilehash: 68a91bfba07b31117f553e4d689adc51bf51824c
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 4d7fb257c932d84d8ddcb6c69e5286373f9b6adf
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66297265"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067218"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>A fejlesztőkörnyezet előkészítése Windowson
 > [!div class="op_single_selector"]
@@ -69,8 +69,8 @@ Ha csak az SDK-ra van szükség, telepítse a következő csomagot:
 * [A Microsoft Azure Service Fabric SDK telepítése][core-sdk]
 
 Az aktuális verziók a következők:
-* Service Fabric SDK és eszközök 3.3.664
-* Service Fabric-futtatókörnyezet 6.4.664
+* Service Fabric SDK és eszközök 3.4.639
+* Service Fabric-futtatókörnyezet 6.5.639
 * Service Fabric Tools Pro Visual Studio 2015 2.4.11116.1
 * Visual Studio 2017 15.9 tartalmazza a Service Fabric Tools for Visual Studio 2.4.11024.1 
 
@@ -99,7 +99,7 @@ Most, hogy végzett a fejlesztőkörnyezet beállításával, belefoghat az alka
 
 [1]: https://azure.microsoft.com/campaigns/service-fabric/ "A Service Fabric kampányoldala"
 [2]: https://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
-[full-bundle-vs2015]:https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "VS 2015 WebPI-hivatkozás"
-[full-bundle-dev15]:https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI-hivatkozás"
-[core-sdk]:https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK "Core SDK WebPI-hivatkozás"
+[full-bundle-vs2015]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "VS 2015 WebPI-hivatkozás"
+[full-bundle-dev15]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI-hivatkozás"
+[core-sdk]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK "Core SDK WebPI-hivatkozás"
 [powershell5-download]:https://www.microsoft.com/en-us/download/details.aspx?id=50395

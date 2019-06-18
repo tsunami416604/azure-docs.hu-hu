@@ -9,13 +9,13 @@ ms.date: 05/16/2019
 ms.author: rolyon
 ms.custom: include file
 ms.openlocfilehash: 6711506c1e489dcbd50aedd36241affc3bbed80b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66113392"
 ---
-### <a name="policy-for-users-in-your-directory"></a>Szabályzat: A címtárban lévő felhasználók számára
+### <a name="policy-for-users-in-your-directory"></a>Házirend: A címtárban lévő felhasználók számára
 
 Kövesse az alábbi lépéseket, ha azt szeretné, hogy a felhasználók és csoportok a címtárban kérhetnek hozzáférést csomag házirend.
 
@@ -31,7 +31,7 @@ Kövesse az alábbi lépéseket, ha azt szeretné, hogy a felhasználók és cso
 
 1. Ugorjon le a [házirend: Kérelem](#policy-request) szakaszban.
 
-### <a name="policy-for-users-not-in-your-directory"></a>Szabályzat: Nem a címtárban található felhasználók számára
+### <a name="policy-for-users-not-in-your-directory"></a>Házirend: Nem a címtárban található felhasználók számára
 
 Ha azt szeretné, hogy a házirend nem található a könyvtár kérhet hozzáférést csomag felhasználók számára, kövesse az alábbi lépéseket. Könyvtárak engedélyezettek kell állítani a **szervezeti kapcsolatok együttműködési korlátozások** beállításait.
 
@@ -59,7 +59,7 @@ Ha azt szeretné, hogy a házirend nem található a könyvtár kérhet hozzáf�
 
 1. Ugorjon le a [házirend: Kérelem](#policy-request) szakaszban.
 
-### <a name="policy-none-administrator-direct-assignments-only"></a>Szabályzat: Egyik sem (rendszergazdai közvetlen hozzárendelések csak)
+### <a name="policy-none-administrator-direct-assignments-only"></a>Házirend: Egyik sem (rendszergazdai közvetlen hozzárendelések csak)
 
 Kövesse az alábbi lépéseket, ha azt szeretné, hogy a szabályzat megkerüljék a hozzáférést, és lehetővé teszi a rendszergazdák számára, hogy közvetlenül az adott felhasználók hozzárendelése a hozzáférés-csomag. Felhasználók sem kell kérni a hozzáférés-csomag. Lejárati beállítások továbbra is beállíthatja, de nem kérelem beállításokat.
 
@@ -69,7 +69,7 @@ Kövesse az alábbi lépéseket, ha azt szeretné, hogy a szabályzat megkerülj
 
 1. Ugorjon le a [házirend: Lejárati](#policy-expiration) szakaszban.
 
-### <a name="policy-request"></a>Szabályzat: Lekérés
+### <a name="policy-request"></a>Házirend: Kérés
 
 A kérelem a szakaszban megadhatja jóváhagyási beállítások, amikor a felhasználók a hozzáférés csomagban kérik.
 
@@ -95,7 +95,7 @@ A kérelem a szakaszban megadhatja jóváhagyási beállítások, amikor a felha
 
 1. Az a **jóváhagyási kérés időtúllépése (nap)** adja meg, mennyi ideig kell a jóváhagyók tekintse át a kérést. Ha nincsenek jóváhagyók az ez idő alatt tekintse át, a kérelem lejár, és a hozzáférés-csomag egy másik kérelmet küldeni a felhasználónak kell.
 
-### <a name="policy-expiration"></a>Szabályzat: Lejárat
+### <a name="policy-expiration"></a>Házirend: lejárati
 
 A lejárati szakaszban megadhatja, amikor a felhasználó-hozzárendelés a hozzáférés csomag érvényessége lejár.
 
@@ -115,7 +115,7 @@ A lejárati szakaszban megadhatja, amikor a felhasználó-hozzárendelés a hozz
 
     ![Access-package - házirend - lejárati beállítások](./media/active-directory-entitlement-management-policy/policy-expiration.png)
 
-### <a name="policy-enable-policy"></a>Szabályzat: Házirend engedélyezése
+### <a name="policy-enable-policy"></a>Házirend: Szabályzat engedélyezése
 
 1. Ha azt szeretné, hogy a hozzáférés-csomag a házirendben a felhasználókat azonnal rendelkezésére bocsátani, kattintson a **Igen** szabályzatának engedélyezéséhez.
 

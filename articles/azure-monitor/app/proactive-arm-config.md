@@ -14,10 +14,10 @@ ms.date: 02/07/2019
 ms.reviewer: mbullwin
 ms.author: harelbr
 ms.openlocfilehash: 3ab50c92543615488d9ced599df433bf7e1e4061
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61461561"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok használatával az Application Insights intelligens detektálási szabályok kezelése
@@ -39,7 +39,7 @@ Maximális rugalmassággal egyedi értesítési beállításokat minden intellig
 ## <a name="examples"></a>Példák
 
 Az alábbiakban néhány példát bemutató az Azure Resource Manager-sablonok használatával intelligens detektálási szabályok konfigurálásához.
-Az összes minta tekintse meg az Application Insights-erőforrás nevű _"myApplication"_, és az "hosszú függőségi időtartam intelligens detektálási szabályra", amely belsőleg nevű _"longdependencyduration"_.
+Az összes minta tekintse meg az Application Insights-erőforrás nevű _"myApplication"_ , és az "hosszú függőségi időtartam intelligens detektálási szabályra", amely belsőleg nevű _"longdependencyduration"_ .
 Ellenőrizze, hogy cserélje le az Application Insights-erőforrás nevét, és adja meg a megfelelő intelligens észlelés a szabály belső nevét. Ellenőrizze a megfelelő belső Azure Resource Manager nevét az egyes intelligens detektálási szabályok listáját az alábbi táblázatot.
 
 ### <a name="disable-a-smart-detection-rule"></a>Intelligens detektálási szabályra letiltása
@@ -146,10 +146,10 @@ Alább az intelligens detektálási szabályok nevének táblázatát, mivel azo
 | Az Azure portal szabály neve | A belső név
 |:---|:---|
 | Lassú lapbetöltés | slowpageloadtime |
-| Lassú kiszolgálói válasz | slowserverresponsetime |
+| Lassú kiszolgálói válaszidő | slowserverresponsetime |
 | Hosszú függőségi időtartam | longdependencyduration |
-| Kiszolgáló válaszidejének romlása | degradationinserverresponsetime |
-| Függőségi időtartam csökkenése | degradationindependencyduration |
+| Kiszolgálói válaszidő romlása | degradationinserverresponsetime |
+| A függőségi időtartam teljesítménycsökkenése | degradationindependencyduration |
 | Csökkenés a következőben nyomkövetési súlyossági arány (előzetes verzió) | extension_traceseveritydetector |
 | Rendellenes növekedése a kivételek mennyiségének (előzetes verzió) | extension_exceptionchangeextension |
 | Potenciális memóriavesztést észlelt (előzetes verzió) | extension_memoryleakextension |

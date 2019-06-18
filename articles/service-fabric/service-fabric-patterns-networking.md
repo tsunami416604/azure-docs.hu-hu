@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: aljo
-ms.openlocfilehash: d5aa09f3ff899766e6eb6d1784e4417f7b48eac0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 456eac4a8d3a6cb8cbaca13ad4e4f3b2ae0309bc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66110258"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67125592"
 ---
 # <a name="service-fabric-networking-patterns"></a>Hálózati Service Fabric-minták
 Más Azure hálózati szolgáltatásokkal integrálható az Azure Service Fabric-fürt. Ebben a cikkben bemutatjuk, hogyan hozhat létre a következő szolgáltatásokat használó fürtök:
@@ -268,7 +268,7 @@ Egy másik példa: [, amely nem adott meg a Service Fabric](https://github.com/g
                     ],
     ```
 
-7. Az a `Microsoft.ServiceFabric/clusters` erőforrás, a módosítás `managementEndpoint` a statikus IP-cím DNS teljes Tartománynevét. Ha egy biztonságos fürtöt használ, ellenőrizze, hogy módosítja *http://* való *https://*. (Vegye figyelembe, hogy érvényes-e ez a lépés csak a Service Fabric-fürtöket. Ha egy virtuálisgép-méretezési csoportot használja, kihagyhatja ezt a lépést.)
+7. Az a `Microsoft.ServiceFabric/clusters` erőforrás, a módosítás `managementEndpoint` a statikus IP-cím DNS teljes Tartománynevét. Ha egy biztonságos fürtöt használ, ellenőrizze, hogy módosítja *http://* való *https://* . (Vegye figyelembe, hogy érvényes-e ez a lépés csak a Service Fabric-fürtöket. Ha egy virtuálisgép-méretezési csoportot használja, kihagyhatja ezt a lépést.)
 
     ```json
                     "fabricSettings": [],
@@ -370,7 +370,7 @@ Ebben a forgatókönyvben egy belső terheléselosztót az alapértelmezett a Se
                     ],
     ```
 
-6. Az a `Microsoft.ServiceFabric/clusters` erőforrás, a módosítás `managementEndpoint` átirányítása a belső terheléselosztó címmel. Ha egy biztonságos fürtöt használ, ellenőrizze, hogy módosítja *http://* való *https://*. (Vegye figyelembe, hogy érvényes-e ez a lépés csak a Service Fabric-fürtöket. Ha egy virtuálisgép-méretezési csoportot használja, kihagyhatja ezt a lépést.)
+6. Az a `Microsoft.ServiceFabric/clusters` erőforrás, a módosítás `managementEndpoint` átirányítása a belső terheléselosztó címmel. Ha egy biztonságos fürtöt használ, ellenőrizze, hogy módosítja *http://* való *https://* . (Vegye figyelembe, hogy érvényes-e ez a lépés csak a Service Fabric-fürtöket. Ha egy virtuálisgép-méretezési csoportot használja, kihagyhatja ezt a lépést.)
 
     ```json
                     "fabricSettings": [],
@@ -606,10 +606,7 @@ Egy két csomóponttípus fürtben egy csomópont típusa van a külső terhelé
 Üzembe helyezés után megjelenik az erőforráscsoportban lévő két terheléselosztók. Miután felkereste a terheléselosztók, láthatja a nyilvános IP cím és felügyeleti végpont (19000 és a 19080-as portot) rendelt nyilvános IP-cím. A statikus belső IP cím és az alkalmazások végpont (80-as port) a belső terheléselosztó rendelt is láthatja. Mindkét terheléselosztók az azonos virtuális gép méretezési készlet háttérkészlet-használja.
 
 ## <a name="next-steps"></a>További lépések
-[Hozzon létre egy fürtöt](service-fabric-cluster-creation-via-arm.md) ternalLB.json
-    ```
+[Fürt létrehozása](service-fabric-cluster-creation-via-arm.md)
 
 Üzembe helyezés után megjelenik az erőforráscsoportban lévő két terheléselosztók. Miután felkereste a terheléselosztók, láthatja a nyilvános IP cím és felügyeleti végpont (19000 és a 19080-as portot) rendelt nyilvános IP-cím. A statikus belső IP cím és az alkalmazások végpont (80-as port) a belső terheléselosztó rendelt is láthatja. Mindkét terheléselosztók az azonos virtuális gép méretezési készlet háttérkészlet-használja.
 
-## <a name="next-steps"></a>További lépések
-[Fürt létrehozása](service-fabric-cluster-creation-via-arm.md)

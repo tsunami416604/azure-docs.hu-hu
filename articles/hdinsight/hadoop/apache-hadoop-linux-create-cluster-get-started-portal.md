@@ -1,22 +1,22 @@
 ---
 title: 'Gyors útmutató: Ismerkedés az Apache Hadoop- és Apache Hive, az Azure portal – Azure HDInsight használatával'
-description: Ismerje meg, hogyan hozhat létre HDInsight-fürtöket az Azure Portal használatával, és hogyan kérdezhet le adatokat a Hive segítségével.
+description: Ebben a rövid útmutatóban egy HDInsight Hadoop-fürt létrehozásához használhatja az Azure Portalon
 keywords: hadoop első lépések, hadoop linux, hadoop rövid útmutató, hive első lépések, hive rövid útmutató
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0c466840c3de9337d7bb8d22f00da0ba52227770
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 020d1be0587214f560bcb0cb717ec9166302cf9a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697801"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057570"
 ---
-# <a name="quickstart-get-started-with-apache-hadoop-and-apache-hive-in-azure-hdinsight-using-the-azure-portal"></a>Gyors útmutató: Ismerkedés az Apache Hadoop- és Apache Hive, az Azure HDInsight az Azure portal használatával
+# <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>Gyors útmutató: Az Apache Hadoop-fürt létrehozása az Azure HDInsight az Azure portal használatával
 
 Ebből a cikkből megismerheti, hogyan hozhat létre [Apache Hadoop](https://hadoop.apache.org/) a HDInsight az Azure portal használatával, és futtassa az Apache Hive-feladatok a HDInsight-fürtök. A legtöbb Hadoop-feladat kötegelt feladat. Létrehoz fog hozni egy fürtöt, futtat néhány feladatot, majd törölni fogja a fürtöt. Ebben a cikkben mind a három feladatot elvégzi.
 
@@ -30,7 +30,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Ebben a szakaszban egy Hadoop-fürtöt hozhat létre a HDInsightban az Azure Portal használatával. 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) webhelyre.
 
 1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Adatok + analitika** > **HDInsight** elemet. 
 
@@ -157,37 +157,8 @@ Az oktatóanyag befejezése után érdemes törölni a fürtöt. A HDInsight az 
 3. Válassza az **Erőforráscsoport törlése** lehetőséget a fürtöt és az alapértelmezett tárfiókot tartalmazó erőforráscsoport törléséhez. Vegye figyelembe, hogy az erőforráscsoport törlése a tárfiókot is törli. Ha szeretné megtartani a tárfiókot, csak a fürtöt törölje.
 
 ## <a name="next-steps"></a>További lépések
+
 Ebben az oktatóanyagban megtanulhatta, hogyan hozhat létre Linux-alapú HDInsight-fürtöt egy Resource Manager-sablonnal, és hogyan hajthat végre alapszintű Hive-lekérdezéseket. A következő cikkben megtudhatja, hogyan végezheti el az adatok kinyerési, átalakítási és betöltési (ETL) műveleteit a Hadoop használatával a HDInsighton.
 
 > [!div class="nextstepaction"]
 >[A kinyerési, átalakítási és az Apache Hive használata a HDInsight adatok betöltése](../hdinsight-analyze-flight-delay-data-linux.md)
-
-Ha készen áll dolgozni a saját adataival, és szeretne többet megtudni a HDInsight adattárolási módszereiről, illetve arról, hogyan kerülnek az adatok a HDInsightba, tekintse meg a következő cikkeket:
-
-* További információt az Azure Storage HDInsight általi használatáról [az Azure Storage és a HDInsight együttes használatát](../hdinsight-hadoop-use-blob-storage.md) ismertető cikkben talál.
-* Egy HDInsight-fürt létrehozása a Data Lake Storage módjáról további információkért lásd: [a rövid útmutató: A HDInsight-fürtök beállítása](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
-* További információ a HDInsightba való adatfeltöltésről: [Adatok feltöltése a HDInsightba](../hdinsight-upload-data.md).
-* [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtök](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
-
-A HDInsight használatával történő adatelemzésről az alábbi cikkekben talál további információt:
-
-* További információ a Hive a HDInsight, beleértve a Visual Studióban a Hive-lekérdezések végrehajtása: [Apache Hive használata a HDInsight](hdinsight-use-hive.md).
-* További információ az adatok átalakítására szolgáló Pig: [Apache Pig használata a HDInsight](hdinsight-use-pig.md).
-* További információ a Hadoopon adatokat feldolgozó programok írására szolgáló MapReduce módszerről: [A MapReduce használata a HDInsighttal](hdinsight-use-mapreduce.md).
-* A HDInsight-adatok elemzésére szolgáló HDInsight Tools for Visual Studio szolgáltatással kapcsolatos további információkért lásd: [Get started using Visual Studio Hadoop tools for HDInsight](apache-hadoop-visual-studio-tools-get-started.md) (A HDInsight Visual Studio Hadoop-eszközeinek használatára vonatkozó első lépések).
-
-
-A HDInsight-fürtök létréhozásával vagy kezelésével kapcsolatos további információkért lásd a következő cikkeket:
-
-* A Linux-alapú HDInsight-fürt kezelésével kapcsolatos további információkért lásd: [kezelése a HDInsight-fürtök az Apache Ambari](../hdinsight-hadoop-manage-ambari.md).
-* További információ a HDInsight-fürtök létrehozásakor kiválasztható beállításokról: [Creating HDInsight on Linux using custom options](../hdinsight-hadoop-provision-linux-clusters.md) (HDInsight létrehozása Linux rendszeren egyéni beállításokkal).
-
-
-[1]: ../HDInsight/apache-hadoop-visual-studio-tools-get-started.md
-
-[hdinsight-provision]: hdinsight-provision-linux-clusters.md
-[hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-use-hive]: hdinsight-use-hive.md
-[hdinsight-use-pig]: hdinsight-use-pig.md
-
-

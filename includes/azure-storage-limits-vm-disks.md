@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
 ms.openlocfilehash: 2936fd318f08c74675f7e8b382c861f4a28319fc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66148178"
 ---
 Egy több adatlemez csatlakoztathat egy Azure virtuális gépen. A virtuális gép adatlemezek méretezhetőségi és Teljesítménycélok alapján, meghatározhatja a száma és típusa, amely csak szüksége lehet a teljesítményre és kapacitásra vonatkozó lemez.
@@ -23,8 +23,8 @@ Az alábbi táblázat mutatja be, az alapértelmezett és korlátozásainak megf
 > | Resource | Alapértelmezett korlát  | Felső korlát |
 > | --- | --- | --- |
 > | Standard szintű felügyelt lemezekre | 25,000 | 50,000 |
-> | Standard SSD típusú felügyelt lemezek | 25,000 | 50,000 |
-> | Prémium szintű Managed Disks | 25,000 | 50,000 |
+> | Standard SSD-felügyelt lemezek | 25,000 | 50,000 |
+> | Prémium szintű managed disks | 25,000 | 50,000 |
 > | Standard_LRS pillanatképek | 25,000 | 50,000 |
 > | Standard_ZRS pillanatképek | 25,000 | 50,000 |
 > | Felügyelt rendszerkép | 25,000 | 50,000 |

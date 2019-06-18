@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 03d39ed01907a2ad61e089946673b96b8a2cc83e
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65916975"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Egyéni foglalási szabályzatok használata
@@ -102,7 +102,7 @@ Ebben a szakaszban létrehozhat egy új regisztrációs csoportot, amely az egy�
 
     **Kulcsok automatikus létrehozása**: A jelölőnégyzet már ellenőrizni kell.
 
-    **Válassza ki, hogyan szeretné hozzárendelni az eszközöket hubs**: Válassza ki **egyéni (használja az Azure-függvényt)**.
+    **Válassza ki, hogyan szeretné hozzárendelni az eszközöket hubs**: Válassza ki **egyéni (használja az Azure-függvényt)** .
 
     ![Egyéni hozzárendelés regisztrációs csoportot szimmetrikus kulcsát a kulcsigazoláshoz hozzáadása](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
@@ -508,12 +508,12 @@ Az alábbi táblázat bemutatja a várt forgatókönyvek és az eredmények hiba
 
 | Forgatókönyv | Eszközkiépítési szolgáltatás regisztrációs eredménye | Kiépítési SDK eredmények |
 | -------- | --------------------------------------------- | ------------------------ |
-| A webhook ad vissza 200 OK értékre egy érvényes IoT hub-állomásnévvel iotHubHostName | Eredmény állapota: Hozzárendelt  | SDK-t PROV_DEVICE_RESULT_OK hub információk mellett adja vissza. |
-| A webhook ad vissza 200 OK "iotHubHostName" az a válaszban található, de egy NULL értékű vagy üres karakterlánc beállítása | Eredmény állapota: Sikertelen<br><br> Hibakód: CustomAllocationIotHubNotSpecified (400208) | SDK returns PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
-| A webhook adja vissza a 401-es nem engedélyezett | Eredmény állapota: Sikertelen<br><br>Hibakód: CustomAllocationUnauthorizedAccess (400209) | SDK-t PROV_DEVICE_RESULT_UNAUTHORIZED adja vissza. |
+| A webhook ad vissza 200 OK értékre egy érvényes IoT hub-állomásnévvel iotHubHostName | Eredmény állapota: Kiosztva  | SDK-t PROV_DEVICE_RESULT_OK hub információk mellett adja vissza. |
+| A webhook ad vissza 200 OK "iotHubHostName" az a válaszban található, de egy NULL értékű vagy üres karakterlánc beállítása | Eredmény állapota: Meghiúsult<br><br> Hibakód: CustomAllocationIotHubNotSpecified (400208) | SDK returns PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
+| A webhook adja vissza a 401-es nem engedélyezett | Eredmény állapota: Meghiúsult<br><br>Hibakód: CustomAllocationUnauthorizedAccess (400209) | SDK-t PROV_DEVICE_RESULT_UNAUTHORIZED adja vissza. |
 | Egyéni regisztrációt létrejött, az eszköz letiltása | Eredmény állapota: Letiltva | SDK-t PROV_DEVICE_RESULT_DISABLED adja vissza. |
 | A webhook függvény hibakód: > = 429-es | DPS' vezénylési számos alkalommal próbálkozik újra. Az újrapróbálkozási szabályzat jelenleg:<br><br>&nbsp;&nbsp;-Újrapróbálkozások száma: 10<br>&nbsp;&nbsp;-Kezdeti időköz: 1s<br>&nbsp;&nbsp;-Növekmény: 9s | SDK-t fog hiba figyelmen kívül, és a egy másik get állapotüzenet küldése a megadott időtartam alatt |
-| A webhook bármely más állapotkódot adja vissza. | Eredmény állapota: Sikertelen<br><br>Hibakód: CustomAllocationFailed (400207) | SDK returns PROV_DEVICE_RESULT_DEV_AUTH_ERROR |
+| A webhook bármely más állapotkódot adja vissza. | Eredmény állapota: Meghiúsult<br><br>Hibakód: CustomAllocationFailed (400207) | SDK returns PROV_DEVICE_RESULT_DEV_AUTH_ERROR |
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

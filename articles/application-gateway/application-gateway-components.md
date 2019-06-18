@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
 ms.openlocfilehash: f5dfa34760bcef23bf54d65b35e3ad8f48cc2ee5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60831834"
 ---
 # <a name="application-gateway-components"></a>Application gateway összetevők
@@ -126,7 +126,7 @@ Háttérkészlet teljesíteni a kérést háttérkiszolgálók kérelmet irány�
 - Virtuálisgép-méretezési csoportok
 - Nyilvános IP-címek
 - Belső IP-címek
-- Teljes tartománynév
+- TELJES TARTOMÁNYNÉV
 - Több-bérlős háttérrendszerek (például az App Service-ben)
 
 Application Gateway háttérkészlet-tagokra egy rendelkezésre állási csoport nem kötődik. Egy application gateway az, hogy a virtuális hálózaton kívüli példányok kommunikálhat. Ennek eredményeképpen a háttérkészletek tagjai lehet különböző fürtökben, adatközpontok, vagy az Azure-on kívülről, mindaddig, amíg nincs IP-kapcsolat.

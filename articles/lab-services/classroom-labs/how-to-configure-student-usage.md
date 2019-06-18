@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 06/11/2019
 ms.author: spelluru
-ms.openlocfilehash: 494c285f1c096a84925d9d9a4fb98409960e5230
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 67faf268d265fd045c21b75b6f64840511a371d3
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60703690"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067331"
 ---
 # <a name="configure-usage-settings-and-policies"></a>És használati beállítások és szabályzatok konfigurálása
 Ez a cikk ismerteti a felhasználók hozzáadása a tesztkörnyezethez, azok regisztrálva a labor, szabályozhatja a virtuális Gépet, és további használatához órák száma. 
@@ -80,19 +80,24 @@ Válassza ki **felhasználók** a labor létrehozása a felhasználók listája 
 Felhasználónként kvóták az alábbi lépéseket követve állíthatja be: 
 
 1. Válassza ki **felhasználók** a bal oldali menüben.
-2. Válassza ki **felhasználónként kvóta: korlátlan** az eszköztáron. 
-3. Az a **felhasználónként kvóta** lapra, jelölje be az alábbi lehetőségek közül: 
-    1. **Nincs**. Felhasználók a saját virtuális gépek csak az ütemezett időszakban, vagy ha a labor tulajdonos kapcsolja be a virtuális gépek a számukra.
-    2. **Korlátlan (alapértelmezett)**. Felhasználók használhatják a virtuális gépeik időbeli korlátozások nélkül.
-    3. **Adja meg a felhasználónként órák száma**. Óra (az alább megadott) mellett a megadott időpont a meghatározott számú virtuális gépeik felhasználók használhatják. Ha ezt a lehetőséget választja, adja meg a **órák száma** a szövegmezőben. 
+2. Válassza ki **felhasználónként kvóta:** az eszköztáron. 
+3. Az a **felhasználónként kvóta** csoportjában adja meg kíván adni, az egyes felhasználók (student) órák száma: 
+    1. **0 óra (csak ütemezés)** . Felhasználók a saját virtuális gépek csak a megadott időszakban, vagy ha a labor tulajdonosa, kapcsolja be a virtuális gépek a számukra.
+
+        ![Nulla óra – csak az ütemezett időpont](../media/how-to-configure-student-usage/zero-hours.png)
+    1. **Felhasználónként labor órák számának**. Felhasználók virtuális gépeiken használhatják a meghatározott számú (ebben a mezőben megadott) óra **mellett az ütemezett időpont**. Ha ezt a lehetőséget választja, adja meg a **órák száma** a szövegmezőben. 
 
         ![Felhasználónként órák száma](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
     4. Kattintson a **Mentés** gombra. 
-5. Módosított értéke most már az eszköztáron látható: **Felhasználói kvóta: &lt;órák száma&gt;**. 
+5. Módosított értéke most már az eszköztáron látható: **Felhasználói kvóta: &lt;órák száma&gt;** . 
 
     ![Kvóta felhasználó szerint](../media/how-to-configure-student-usage/quota-per-user.png)
 
+
+
 > [!IMPORTANT]
+> Mielőtt elküldené a regisztráció hivatkozásra a tanulók, oktatók kell az osztály az ütemezés beállítása, ha válasszon kvótája 0 óra, illetve adja meg a kvóta órák a tesztkörnyezethez.
+>
 > A [ütemezett futtatási idő a virtuális gépek](how-to-create-schedules.md) nem számítanak bele a kvóta növeléséhez, a felhasználó számára engedélyezett. A kvóta pedig egy diák foglalkozik a virtuális gépek idő ütemezése kívül alkalommal. 
 
 ### <a name="add-users-by-uploading-a-csv-file"></a>Felhasználók hozzáadása egy CSV-fájl feltöltésével

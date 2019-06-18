@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 7dfa252c29121adca2ecc77c08b2fca81d56e575
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61070004"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Az élcsomópontok teljesítményének elemzése a Microsoft Azure CDN szolgáltatásban
@@ -121,7 +121,7 @@ Ezek a metrikák célja a forgalom általános CDN teljesítményének nyomon k�
 | Tömörített kérelmek gyakorisága |A kérelmező (pl. webböngésző), a CDN-t (peremhálózati kiszolgálókon) a kapott találatok arányát jelzi a tömörített formátumban. |
 | 4xx Hibaarány |Által generált egy 4xx típusú állapotkódot találatok arányát jelzi. |
 | 5XX Hibaarány |Által generált 5xx állapotkódot találatok arányát jelzi. |
-| Találatok |Azt jelzi, hogy a CDN-tartalom vonatkozó kérelmek száma. |
+| Találatok száma |Azt jelzi, hogy a CDN-tartalom vonatkozó kérelmek száma. |
 
 #### <a name="secure-traffic-metrics"></a>Biztonságos forgalom metrikák
 Ezek a metrikák célja a HTTPS-forgalmat a CDN teljesítményének nyomon követéséhez.
@@ -168,7 +168,7 @@ Ez a modul minden egyes jelentést tartalmaz egy diagramot és a különböző t
 | TCP_EXPIRED_MISS részletei |Tartalmazza az elavult eszközöket, amelyhez új verzió kellett kérhető le a forráskiszolgáló URL felső 10-megjelenítő grafikon. Az első 100 URL-címeket az ilyen típusú eszközök statisztikája közvetlenül ehhez a diagramhoz alatt jelennek meg. |
 | TCP_CLIENT_REFRESH_MISS részletei |Tartalmazza a sávdiagramot oszlopdiagramra cseréli, amely megjeleníti az első 10 URL-címeket az eszközök lekérése egy forráskiszolgálóról, az ügyfél kérése no-cache miatt. Az első 100 URL-címeket az ilyen típusú kérelmeket statisztikája közvetlenül a diagram alatt jelennek meg. |
 | Ügyfél kéréstípusok |HTTP-ügyfél (például böngészők) által végrehajtott kérelmek típusát jelzi. Ez a jelentés egy fánkdiagramon feltárhatja, hogy hogyan kérések kezelésének bizonyos értelemben biztosító tartalmaz. Minden egyes kérelemtípus kapcsolatos sávszélesség és a forgalom a diagram alatt jelenik meg. |
-| Böngészőazonosító |Tartalmaz egy olyan oszlopdiagramon, megjelenítés, a felső 10 felhasználói ügynökök lekérni a tartalmat a CDN-en keresztül. A felhasználói ügynök általában egy webböngészőben, a media player vagy a mobiltelefon böngészőben. Az első 100 felhasználói ügynökök statisztikáját közvetlenül a diagram alatt jelennek meg. |
+| Felhasználói ügynök |Tartalmaz egy olyan oszlopdiagramon, megjelenítés, a felső 10 felhasználói ügynökök lekérni a tartalmat a CDN-en keresztül. A felhasználói ügynök általában egy webböngészőben, a media player vagy a mobiltelefon böngészőben. Az első 100 felhasználói ügynökök statisztikáját közvetlenül a diagram alatt jelennek meg. |
 | Hivatkozók |A felső 10 hivatkozók megjelenítése a CDN-en keresztül elérhető tartalmakhoz oszlopdiagramon tartalmazza. A hivatkozó általában a weblapon vagy a tartalom összekapcsoló erőforrás URL-CÍMÉT. Részletes információkat lejjebb a diagramon az első 100 hivatkozóknak. |
 | A tömörítési típusok |E tömörített, a peremhálózati kiszolgáló által kért eszközök felszámolja gyűrűdiagramra tartalmazza. A tömörített eszközök aránya használt tömörítési típust oszlanak meg. Részletes információkat lejjebb a gráf minden tömörítési típus és állapotát. |
 | Fájltípusok |Egy oszlopdiagramot jelenít meg a felső 10 fájltípusokat, a fiókhoz tartozó CDN-en keresztül kérő tartalmazza. Ez a jelentés az alkalmazásában, a fájl típusa határozza meg az objektum fájlnév-kiterjesztésű és internetes média típusa (pl. .html \[text/html\], .htm \[text/html\], .aspx \[text/html\]stb.). Részletes információkat lejjebb a gráf az első 100 fájltípusok esetén. |

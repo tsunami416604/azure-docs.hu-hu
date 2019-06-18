@@ -12,10 +12,10 @@ author: gauravmalhot
 ms.author: gamal
 manager: craigg
 ms.openlocfilehash: b62cbe75730da8c5764839d41887deb7e6cd0e90
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66122611"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Az Azure Data Factory integrációs modul monitorozása  
@@ -73,7 +73,7 @@ Az alábbi táblázat ismerteti tulajdonságainak figyelési **minden csomópont
 | Name (Név) | A saját üzemeltetésű integrációs modul és a hozzá társított csomópontok neve. Csomópont egy helyszíni Windows-gépen, amelyen a saját üzemeltetésű integrációs modul telepítve. |  
 | Állapot | Az általános saját üzemeltetésű integrációs modult és minden egyes csomópont állapotát. Példa: Online/Offline/korlátozott/stb. A fenti állapotok megjelenése kapcsolatos információkért tekintse meg a következő szakaszban. | 
 | Version | A saját üzemeltetésű integrációs modult és minden egyes csomópont verziója. A saját üzemeltetésű integrációs modul verzióját határozza meg a csoport csomópontjának többsége verzióján alapul. Ha a saját üzemeltetésű integrációs modul telepítése különböző verziójú csomópontok, csak a csomópontok, a logikai verziószámmal saját üzemeltetésű integrációs modul függvény megfelelően. Mások a korlátozott módban van, és manuálisan kell frissíteni, (csak abban az esetben az automatikus frissítés nem működik). | 
-| Elérhető memória | Rendelkezésre álló memória egy saját üzemeltetésű integrációs modul csomópontján. Ez az érték közel valós idejű pillanatképet. | 
+| Rendelkezésre álló memória | Rendelkezésre álló memória egy saját üzemeltetésű integrációs modul csomópontján. Ez az érték közel valós idejű pillanatképet. | 
 | Processzorkihasználtság | Egy saját üzemeltetésű integration runtime csomópontja CPU-felhasználását. Ez az érték közel valós idejű pillanatképet. |
 | Hálózatkezelés (In/Out) | Egy saját üzemeltetésű integration runtime csomópontja hálózatfelhasználásáról. Ez az érték közel valós idejű pillanatképet. | 
 | Egyidejű feladatok (futó / Limit) | **Futó**. Feladatok és minden egyes csomóponton futó feladatok száma. Ez az érték közel valós idejű pillanatképet. <br/><br/>**Korlát**. Korlát azt jelzi, hogy az egyidejű feladatok maximális száma minden egyes csomópont esetében. Ez az érték van megadva a mérete alapján. Vertikális felskálázás akár egyidejű feladat végrehajtása a speciális esetben, amikor a tevékenység időkorlátja még ha CPU, memória, vagy hálózati a kevésbé használt a korlát növeléséhez. Ez a funkció egy egycsomópontos saját üzemeltetésű integrációs modult a is érhető el. |
@@ -96,7 +96,7 @@ Az alábbi táblázatban egy saját üzemeltetésű integration runtime csomópo
 | ------ | ------------------ | 
 | Online | Csomópont csatlakoztatva van a Data Factory szolgáltatásban. |
 | Offline | Csomópont offline állapotban. |
-| Frissítés | A csomópont automatikus frissítése folyamatban van. |
+| A frissítés | A csomópont automatikus frissítése folyamatban van. |
 | Korlátozott | Kapcsolódási probléma miatt. HTTP-port 8050 probléma, service bus kapcsolódási probléma vagy a hitelesítő adatok szinkronizálása kapcsolatos hiba miatt lehet. |
 | Inaktív | Csomópontnak számít eltér a többi legtöbb csomópont konfigurációjának konfigurációban. |
 
@@ -187,7 +187,7 @@ Az Azure-SSIS integrációs modul, az Azure virtuális gépeken (vagy csomópont
 | Állapot | Leírás |
 | ------ | ----------- | 
 | Indítás | Ez a csomópont előkészítésére. |
-| Szabad | Ez a csomópont készen áll a SSIS-csomagok üzembe helyezése/végrehajtását. |
+| Elérhető | Ez a csomópont készen áll a SSIS-csomagok üzembe helyezése/végrehajtását. |
 | Újrahasznosítása | Ez a csomópont folyamatban javítani vagy újraindítása. |
 | Nem elérhető | Ez a csomópont nem áll készen az SSIS-csomagok üzembe helyezése/futtathat, és gyakorlatban hasznosítható hibák vagy problémák feloldására. |
 

@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: nacharya1
 ms.author: nilesha
-ms.date: 05/21/2019
+ms.date: 06/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 93eb0fba91ce5064d04a340e8b3e5b984ee73081
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 1dcdbbf0a2a71fa38b6eacd6a8d179cdad979937
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515573"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059291"
 ---
 # <a name="what-is-automated-machine-learning"></a>Mi a machine learning automatikus?
 
@@ -62,6 +62,19 @@ Modell létrehozása automatikus, miközben is [megtudhatja, hogyan fontos és r
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
 
 <a name="preprocess"></a>
+
+## <a name="time-series-forecasting"></a>Time-Series Forecasting
+Minden olyan cégnek, és szerves része előrejelzések készítése, legyen szó bevétel, készlet, értékesítési vagy ügyfél igény szerint. Gépi tanulás használja számos kombinált technikák és megközelítéseket, javasoljuk, hogy kiváló minőségű idősorozat-előrejelzés automatikus. Idősorozat-kísérletek automatikus ml többváltozós regresszió probléma kell kezelni. Time series korábbi értékek vannak "problémakörrel" a regressor más előrejelzőket együtt erre a további méretek válik. 
+
+Ezzel a módszerrel eltérően klasszikus idő adatsorozat módok, természetesen magában foglaló, több környezeti változók és azok egy másik betanítás során előnye van. A való életből vett előrejelzési alkalmazások számos tényező befolyásolhatja az előrejelzést. Értékesítési előrejelzések, ha a korábbi trendek, árfolyam és a díj az összes kapcsolati például közösen meghajtó az értékesítési serkenti az eredményt. További előnye, hogy az összes legújabb fejlesztéseit a regressziós modellek azonnal érvénybe lépnek előrejelzését.
+
+Milyen az elkövetkező az előrejelzés (az előrejelzési horizon) kell terjeszteni az alapvető előrejelzési specifikáció része. A kötelező paraméter, `max_horizon` a kísérletben meghatározása hány egység időszakok (a betanítási adatok, például havi, hetente a forecaster meg kell találnia az az időintervallum alapján. 
+
+Automatizált gépi tanulás képes megtanulni az adatkészlet és előrejelzési szintek az összes cikkhez egyetlen, de gyakran belső elágazó modell. Több adatot Modellparaméterek megbecsülni így érhető el, és nem látható adatsorozat általánossá lehetségessé válik. 
+
+A betanítási adatok kinyert szolgáltatások kritikus szerepet játszanak. Automatizált Machine Learning standard előfeldolgozási lépéseket hajtja végre, és további idősorozat-funkciók (például év, hónap, hét stb.) generál szezonális hatások rögzítése, és maximalizálhatják prediktív pontosságát. 
+
+Ha a forgatókönyvhöz megfelelő, irányíthatók automatikus ML késedelmes jelentések létrehozásához (`target_lags`) vagy az adatok összesítése a működés közbeni ablak (`target_rolling_window_size`) a célként megadott (`y_value`) múltbéli értékek. 
 
 ## <a name="preprocessing"></a>Előfeldolgozása
 
@@ -160,6 +173,7 @@ Automatizált ML is érhető el a többi Microsoft-megoldások például:
 |[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Automatikus modell kiválasztása és képzések a Visual Studio és a Visual Studio Code használatával ML.NET a .NET-alkalmazások automatizált a Machine Learning (előzetes verzió).|
 |[HDIsnight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|Horizontális felskálázás az automatizált Machine Learning betanítási feladatokat a Spark on HDInsight-fürtök párhuzamosan.|
 |[PowerBI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Hívja meg a machine learning-modellek közvetlenül a Power BI (előzetes verzió).|
+|[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|Hozzon létre új machine learning modellek az adatok SQL Server 2019 big data-fürtökben.|
 
 ## <a name="next-steps"></a>További lépések
 

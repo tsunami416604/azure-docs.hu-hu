@@ -16,20 +16,20 @@ ms.workload: infrastructure-services
 ms.date: 11/17/2018
 ms.author: sedusch
 ms.openlocfilehash: f09f66e81ec4878aedebfee9be4c0c67b75c8ad6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61463004"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Az Azure SAP LaMa összekötője
 
-[1877727]:https://launchpad.support.sap.com/#/notes/1877727
-[2343511]:https://launchpad.support.sap.com/#/notes/2343511
-[2350235]:https://launchpad.support.sap.com/#/notes/2350235
-[2562184]:https://launchpad.support.sap.com/#/notes/2562184
-[2628497]:https://launchpad.support.sap.com/#/notes/2628497
-[2445033]:https://launchpad.support.sap.com/#/notes/2445033
+[1877727]: https://launchpad.support.sap.com/#/notes/1877727
+[2343511]: https://launchpad.support.sap.com/#/notes/2343511
+[2350235]: https://launchpad.support.sap.com/#/notes/2350235
+[2562184]: https://launchpad.support.sap.com/#/notes/2562184
+[2628497]: https://launchpad.support.sap.com/#/notes/2628497
+[2445033]: https://launchpad.support.sap.com/#/notes/2445033
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 [dbms-guide]:dbms-guide.md
@@ -51,7 +51,7 @@ Ez az útmutató azt ismerteti, hogyan állíthatja be az Azure-összekötő az 
 
 Az alábbi SAP-megjegyzések kapcsolódnak a témakör az SAP-LaMa az Azure-ban:
 
-| Megjegyzés száma | Cím |
+| Megjegyzés száma | Beosztás |
 | --- | --- |
 | [2343511] |A Microsoft Azure-összekötő az SAP-rendszeren, Management (LaMa) |
 | [2350235] |SAP Landscape Management 3.0 - Enterprise edition |
@@ -332,7 +332,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-db
 
 Futtassa a SWPM adatbázisban példánya telepítése az SQL server virtuális gépen. Használja a SAPINST_USE_HOSTNAME =*as1-db* felül az SQL-kiszolgálóhoz való csatlakozáshoz használt állomásnévvel. Ha a virtuális gépet az Azure Resource Manager-sablon használatával telepítette, ügyeljen arra, hogy állítsa be a könyvtár, az adatok adatbázisfájlok *C:\sql\data* és az adatbázis naplófájlját *C:\sql\log*.
 
-Győződjön meg arról, hogy a felhasználó *NT AUTHORITY\SYSTEM* hozzáfér az SQL Server és a kiszolgálói szerepkörrel rendelkezik *SysAdmin (rendszergazda)*. További információkért tekintse meg az SAP-Jegyzetnek [1877727] és [2562184].
+Győződjön meg arról, hogy a felhasználó *NT AUTHORITY\SYSTEM* hozzáfér az SQL Server és a kiszolgálói szerepkörrel rendelkezik *SysAdmin (rendszergazda)* . További információkért tekintse meg az SAP-Jegyzetnek [1877727] és [2562184].
 
 #### <a name="install-sap-netweaver-application-server"></a>SAP NetWeaver-alkalmazáskiszolgáló telepítése
 

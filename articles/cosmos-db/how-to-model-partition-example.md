@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: c98a8187c0365abc8fdb2bedacc5216266cc5cad
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 4bb99c8cbec88d23f9297dcbe8b13cc69cd0006c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240999"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070668"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Modell és a partíció adatainak az Azure Cosmos DB használatával egy való életből vett példa
 
@@ -217,7 +217,7 @@ Akárcsak a **[4]** , azt, hogy a post esetében a kedvelések lekérdezése, ma
 | --- | --- | --- |
 | 59 ms | 58.92 RU | ⚠ |
 
-### <a name="q6-list-the-x-most-recent-posts-created-in-short-form-feed"></a>6. [KÉRDÉS] A rövid űrlapot (adatcsatorna) létrehozott x legutóbbi bejegyzések listája
+### <a name="q6-list-the-x-most-recent-posts-created-in-short-form-feed"></a>6\. [KÉRDÉS] A rövid űrlapot (adatcsatorna) létrehozott x legutóbbi bejegyzések listája
 
 Azt a legutóbbi bejegyzések fetch lekérdezésével a `posts` rendezve csökkenő létrehozás dátuma, majd a összesített felhasználónevek és a megjegyzések és kedvelések számát az egyes bejegyzéseket a hozzászólások tároló.
 
@@ -454,7 +454,7 @@ Most már tudjuk irányítani a lekérdezést a `users` tárolót, a szűrést a
 | --- | --- | --- |
 | 4 ms | 6.46 RU | ✅ |
 
-### <a name="q6-list-the-x-most-recent-posts-created-in-short-form-feed"></a>6. [KÉRDÉS] A rövid űrlapot (adatcsatorna) létrehozott x legutóbbi bejegyzések listája
+### <a name="q6-list-the-x-most-recent-posts-created-in-short-form-feed"></a>6\. [KÉRDÉS] A rövid űrlapot (adatcsatorna) létrehozott x legutóbbi bejegyzések listája
 
 A fentiekhez hasonlóan itt kezelésére van: után is a további lekérdezések sparing szükségtelen által hátrahagyott a V2-ben bevezetett denormalizáció, a fennmaradó lekérdezés nem szűrhet a tároló partíciókulcs:
 
@@ -479,7 +479,7 @@ A legutóbbi kérelem optimalizálása érdekében bevezettünk egy harmadik tá
 
 Ezen tároló által particionálása `type`, amely mindig, `post` az elemek. Ennek során, amely biztosítja, hogy minden ebben a tárolóban található elemek ugyanazon a partíción lesz található.
 
-A denormalizáció eléréséhez csak rá a változáscsatorna folyamat korábban már bevezettük az új tároló hozzászólások tart elküldeni a környezet igénybe vételét. Szem operációs egyik lényeges tudnivaló, hogy azt kell győződjön meg arról, hogy csak tárolása a legutóbbi 100 bejegyzések; Ellenkező esetben a tároló tartalmának előfordulhat, hogy növelje meghaladja a maximális partíció. Ez történik, meghívásával egy [utáni eseményindító](stored-procedures-triggers-udfs.md#triggers) minden alkalommal, amikor egy dokumentum hozzáadása a tárolóban:
+A denormalizáció eléréséhez csak rá a változáscsatorna folyamat korábban már bevezettük az új tároló hozzászólások tart elküldeni a környezet igénybe vételét. Egyik lényeges tudnivaló, hogy figyelembe kell vennie, hogy azt kell győződjön meg arról, hogy csak tárolása a legutóbbi 100 bejegyzések; Ellenkező esetben a tároló tartalmának előfordulhat, hogy növelje meghaladja a maximális partíció. Ez történik, meghívásával egy [utáni eseményindító](stored-procedures-triggers-udfs.md#triggers) minden alkalommal, amikor egy dokumentum hozzáadása a tárolóban:
 
 ![A hírcsatorna tárolóba denormalizálni bejegyzések](./media/how-to-model-partition-example/denormalization-3.png)
 
@@ -542,7 +542,7 @@ Az utolsó lépés az, hogy átirányítsa a lekérdezést az új `feed` tárol�
 
 Nézzük meg, az általános teljesítmény és méretezhetőségi fejlesztései. bevezettük a tervezési különböző verzióihoz képest.
 
-| | 1-es verzió | V2 | V3 |
+| | 1\. verzió | 2\. verzió | V3 |
 | --- | --- | --- | --- |
 | **[C1]** | 7 ms / 5.71 RU | 7 ms / 5.71 RU | 7 ms / 5.71 RU |
 | **[Q1]** | 2 ms / 1 RU | 2 ms / 1 RU | 2 ms / 1 RU |

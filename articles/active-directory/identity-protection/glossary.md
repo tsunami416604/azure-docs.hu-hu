@@ -17,12 +17,12 @@ ms.date: 01/15/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5def46b6c12dc08c273ea7334516b63b7606477f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: c371254f344b321969dcc9b3c36212b7536aa95a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60452823"
+ms.locfileid: "67109001"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection Glossary
 ### <a name="at-risk-user"></a>Veszélyben (felhasználó)
@@ -35,7 +35,7 @@ Egy jelentkezzen be, amely nem jellemző, a konkrét felhasználó, hasonló fel
 Biztonsági modul az Azure Active Directory kockázati események és a szervezet identitásait érintő lehetséges biztonsági résekről nézetet.
 
 ### <a name="conditional-access"></a>Feltételes hozzáférés
-A szabályzat az erőforrásokhoz való hozzáférés biztonságossá tételéhez. Feltételes hozzáférési szabályok vannak tárolva az Azure Active Directoryban, és értékeli ki az Azure AD az erőforráshoz való hozzáférést megelőzően.  Példa szabály jogosultságkészlet hozzáférést a felhasználó helye, Eszközállapot, vagy felhasználói hitelesítési módszert.
+A szabályzat az erőforrásokhoz való hozzáférés biztonságossá tételéhez. A feltételes hozzáférési szabályok vannak tárolva az Azure Active Directoryban, és értékeli ki az Azure AD az erőforráshoz való hozzáférést megelőzően.  Példa szabály jogosultságkészlet hozzáférést a felhasználó helye, Eszközállapot, vagy felhasználói hitelesítési módszert.
 
 ### <a name="credentials"></a>Hitelesítő adatok
 Azonosító és a hozzáférés a helyi és a hálózati erőforrásokhoz használt azonosító adatokat. Hitelesítő adatok példák a felhasználónevek és jelszavak, intelligens kártyák és tanúsítványok.

@@ -1,19 +1,19 @@
 ---
-title: Az Azure service health-riasztások konfigurálás a pagerduty segítségével |} A Microsoft Docs
+title: Az Azure service health-riasztások küldése a pagerduty segítségével webhookok használata
 description: A Szolgáltatásállapot-események a PagerDuty-példányra vonatkozó személyre szabott értesítések küldése.
 author: stephbaron
 ms.author: stbaron
 ms.topic: article
 ms.service: service-health
-ms.date: 11/14/2017
-ms.openlocfilehash: b78c155fb2f3a13c27f4ff71c4dd37df2dbd2f36
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/10/2019
+ms.openlocfilehash: ab3bcffb6453b284c3c8bb0d0373c7155fe8ef23
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60620987"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067156"
 ---
-# <a name="configure-service-health-alerts-with-pagerduty"></a>Service health-riasztások konfigurálás a pagerduty segítségével
+# <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>Az Azure service health-riasztások küldése a pagerduty segítségével webhookok használata
 
 Ez a cikk bemutatja, hogyan állíthatja be az Azure service health értesítések PagerDuty segítségével egy webhook használatával. Használatával [PagerDuty](https://www.pagerduty.com/)a Microsoft Azure integrációs egyéni típus, néhány kattintással hozzáadhatja a Service Health-riasztások az új vagy meglévő PagerDuty-szolgáltatások.
 

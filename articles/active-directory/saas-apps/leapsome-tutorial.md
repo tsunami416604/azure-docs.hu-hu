@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.openlocfilehash: dbdf6847658e6a5a3999007f51b409e47a65e4cd
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 7dab6f6b9215ead8cdcf513e226fd2fb8e59d8fc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988074"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098287"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-leapsome"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Leapsome
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Leapsome konfigurálásához hozzá kell Leapsome a 
 
 **Leapsome hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -128,7 +128,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Leapsome, hajtsa vé
     | ---------------| --------------- | --------- |  
     | Keresztnév | user.givenname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | Vezetéknév | user.surname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | cím | user.jobtitle | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | title | user.jobtitle | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | kép | Az alkalmazott kép URL-címe | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | | |
 
@@ -175,7 +175,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Leapsome, hajtsa vé
 
     ![Leapsome beállítása](./media/leapsome-tutorial/tutorial_leapsome_admin.png)
 
-1. Kattintson a bal oldali menüsáv **egyszeri bejelentkezés (SSO)**, majd a a **SAML-alapú egyszeri bejelentkezés (SSO)** oldalon tegye a következőket:
+1. Kattintson a bal oldali menüsáv **egyszeri bejelentkezés (SSO)** , majd a a **SAML-alapú egyszeri bejelentkezés (SSO)** oldalon tegye a következőket:
 
     ![Leapsome saml](./media/leapsome-tutorial/tutorial_leapsome_samlsettings.png)
 
@@ -246,7 +246,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű Leapsome hoz létre. Együttműködve [Leapsome ügyfél-támogatási csapatának](mailto:support@leapsome.com) a felhasználók vagy a tartományban, amelyhez hozzá kell adni a Leapsome platform engedélyezési lista hozzáadása. Ha a tartomány a csapata által hozzáadott, a Leapsome platform automatikusan kiépítve felhasználók. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

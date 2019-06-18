@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
 ms.openlocfilehash: cad1f84f611ac3214b8823bb11817ffceb3e2017
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66388701"
 ---
 # <a name="connect-your-check-point-appliance"></a>A Check Point berendezés csatlakoztatása
@@ -32,7 +32,7 @@ Csatlakozhat az Azure-Sentinel bármely a Check Point készülék Syslog CEF, a 
 > [!NOTE]
 > Adatokat a munkaterület, amely futtatja az Azure-Sentinel a földrajzi helyen kell tárolni.
 
-## <a name="step-1-connect-your-check-point-appliance-using-an-agent"></a>1. lépés: A Check Point berendezés használatával egy ügynök csatlakoztatása
+## <a name="step-1-connect-your-check-point-appliance-using-an-agent"></a>1\. lépés: A Check Point berendezés használatával egy ügynök csatlakoztatása
 
 A Check Point berendezés csatlakozni az Azure-Sentinel, szüksége egy dedikált gépen (VM vagy helyszíni) a készüléket és a Sentinel-Azure közötti kommunikáció támogatásához az ügynökök telepítéséhez. Az ügynök automatikusan vagy manuálisan telepítheti. Automatikus központi telepítési csak akkor használható, ha dedikált számítógépe egy új virtuális Gépet hoz létre az Azure-ban. 
 
@@ -102,7 +102,7 @@ Ha nem használja az Azure, ügynököt manuálisan telepíti az Azure-Sentinel 
       1. Indítsa újra a Syslog-ügynök a következő paranccsal: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
       1. Győződjön meg arról, hogy nincsenek hibák az ügynöknaplóban Ez a parancs futtatásával: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
  
-## <a name="step-2-forward-check-point-logs-to-the-syslog-agent"></a>2. lépés: A Syslog-ügynök előre a Check Point-naplók
+## <a name="step-2-forward-check-point-logs-to-the-syslog-agent"></a>2\. lépés: A Syslog-ügynök előre a Check Point-naplók
 
 Konfigurálja a Check Point berendezés továbbítani tudja a Syslog-üzeneteket az Azure-munkaterülethez a Syslog-ügynökön keresztül CEF formátumban.
 
@@ -113,7 +113,7 @@ Konfigurálja a Check Point berendezés továbbítani tudja a Syslog-üzeneteket
      - A formátum beállítása **CEF**.
 3. Ha R77.30 vagy R80.10 verzióját használja, akár görgessen **telepítések** , és kövesse az utasításokat követve telepítse a napló exportáló-verzióra vonatkozó.
  
-## <a name="step-3-validate-connectivity"></a>3. lépés: Kapcsolat ellenőrzése
+## <a name="step-3-validate-connectivity"></a>3\. lépés: Kapcsolat ellenőrzése
 
 Upwards of mindaddig, amíg megjelennek a Log Analytics indítása a naplók 20 percig is eltarthat. 
 

@@ -12,10 +12,10 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: 90e43ab0448646650067dbf151702132f434c01e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65967962"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Létrehozhat és konfigurálhat egy saját üzemeltetésű integrációs modul
@@ -130,7 +130,7 @@ Több csomópont társíthatja a saját üzemeltetésű integrációs modul szof
 
 Ha alacsony a rendelkezésre álló memóriát a saját üzemeltetésű integrációs modul és a CPU-használata túl magas, új csomópont hozzáadása segít a horizontális felskálázást a terhelés gépek között. Ha a tevékenység sikertelen, mert éppen időtúllépés, vagy mert a saját üzemeltetésű integrációs modul csomópontja kapcsolat nélküli üzemmódban, ha egy csomópont hozzáadása az átjáró nyújt segítséget.
 
-#### <a name="scale-up"></a>Felskálázás
+#### <a name="scale-up"></a>Vertikális felskálázás
 
 A rendelkezésre álló memória és a Processzor nem használhatók jól, de az egyidejű feladatok végrehajtásának hamarosan eléri a korlátot, érdemes a vertikális felskálázáshoz, amely képes futni a csomóponton egyidejű feladatok számának növelése. Érdemes azt is, amikor a tevékenységek időtúllépésekbe ütközzenek, mert a saját üzemeltetésű integrációs modul túl van terhelve vertikális. Ahogy az az alábbi képen is látható, növelheti a maximális kapacitás egy csomópont:  
 

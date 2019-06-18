@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
 ms.openlocfilehash: 3b805a80330dd44ac4a65db88950393d3d4d60b7
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65992095"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Hogyan használható a Service Bus-üzenettémák és előfizetések a Node.js és az azure-sb csomag
-> [!div class="op_multi_selector" title1="Programming language" title2="Node.js pacakge"]
+> [!div class="op_multi_selector" title1="Programozási nyelv" title2="Node.js pacakge"]
 > - [(Node.js |} azure-sb)](service-bus-nodejs-how-to-use-topics-subscriptions.md)
 > - [(Node.js |} @azure/service-bus)](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
 
@@ -351,6 +351,6 @@ Most, hogy megismerte a Service Bus-üzenettémakörök alapjait, kövesse az al
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[Hozzon létre és telepíthet egy Node.js-alkalmazást az Azure-webhelyekre]: ../app-service/app-service-web-get-started-nodejs.md
+[Hozzon létre és telepíthet egy Node.js-alkalmazást az Azure-webhelyekre]: ./app-service/app-service-web-get-started-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 

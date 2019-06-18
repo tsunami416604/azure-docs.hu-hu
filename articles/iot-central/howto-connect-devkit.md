@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 130ca6bc946d44d80cddba5486d405bfb15523cb
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66235882"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Az MXChip IoT DevKit eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz
@@ -212,7 +212,7 @@ A minta Devkits alkalmazást sablon alapján létrehozott alkalmazás tartalmaz 
 | ------------- | -------------- | ------ | ------- | ------ | 
 | DeviceState   | Eszköz állapota   | Zöld  | Narancssárga  | Piros    | 
 
-#### <a name="events"></a>Események 
+#### <a name="events"></a>Events 
 | Name (Név)             | Display name      | 
 | ---------------- | ----------------- | 
 | ButtonBPressed   | B gomb megnyomásakor  | 
@@ -245,7 +245,7 @@ A beállítások ki-/ bekapcsolása
 
 | Display name | Mező neve | Visszatérési típusa | A beviteli mező megjelenített neve | A beviteli mező neve | A beviteli mező típusa |
 | ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
-| echo         | echo       | text        | érték megjelenítése         | displayedValue   | text             |
+| echo         | echo       | szöveg        | érték megjelenítése         | displayedValue   | szöveg             |
 | Visszaszámlálás    | Visszaszámlálás  | szám      | A darabszám               | countFrom        | szám           |
 
 ## <a name="next-steps"></a>További lépések

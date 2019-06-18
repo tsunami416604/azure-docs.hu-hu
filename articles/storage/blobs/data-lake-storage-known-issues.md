@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: normesta
-ms.openlocfilehash: 27adc0eeeabed2b1f2e86f301a60604a3d358b82
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 446b49cbf3fdf3d4cde37b2a7c4ac2d9f0a811b1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65464723"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061333"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2 ismert problémái
 
@@ -23,7 +23,7 @@ Ez a cikk felsorolja a szolgáltatásokat és eszközöket, amelyek még nem tá
 
 ## <a name="blob-storage-apis"></a>A BLOB storage API-k
 
-A BLOB storage API-k sikerült merülnek fel, mert a Blob Storage API-k még nem működik együtt az Azure Data Lake Gen2 API-k nem szándékos adatok hozzáférési problémák elkerülése érdekében le vannak tiltva.
+A BLOB storage API-k sikerült merülnek fel, mert a Blob Storage API-k még nem működik együtt az Azure Data Lake Gen2 API-k funkció működési követelmények problémák elkerülése érdekében le vannak tiltva.
 
 ### <a name="what-to-do-with-existing-tools-applications-and-services"></a>Mit kell tenni a meglévő eszközökkel, alkalmazásokkal és szolgáltatásokkal
 

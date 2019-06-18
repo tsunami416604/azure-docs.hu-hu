@@ -10,10 +10,10 @@ ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: e0f2d3491db24ecbb49c189232dbc7f698e09fb1
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66430772"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Feladat állapota és a feladatstreamek továbbítja automatizálást az Azure Monitor naplóira
@@ -116,7 +116,7 @@ Diagnosztika az Azure Automation két rekordtípust hoz létre az Azure Monitor 
 | TimeGenerated |A runbook-feladat végrehajtásának dátuma és időpontja. |
 | RunbookName_s |A runbook neve. |
 | Caller_s |A művelet kezdeményezője. Lehetséges értékek: egy e-mail-cím vagy egy ütemezett feladatokat tartalmazó rendszer. |
-| StreamType_s |A feladatstream típusa. Lehetséges értékek:<br>- Folyamatban<br>- Kimenet<br>- Figyelmeztetés<br>- Hiba<br>- Hibakeresés<br>- Részletes |
+| StreamType_s |A feladatstream típusa. Lehetséges értékek:<br>\- Folyamatban<br>- Kimenet<br>- Figyelmeztetés<br>- Hiba<br>- Hibakeresés<br>- Részletes |
 | Tenant_g | A hívónak a bérlői azonosító GUID. |
 | JobId_g |GUID, a runbook-feladat azonosítója. |
 | ResultType |A runbook-feladat állapota. Lehetséges értékek:<br>– Folyamatban |

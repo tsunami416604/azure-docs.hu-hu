@@ -16,21 +16,21 @@ ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
 ms.openlocfilehash: a74dd1a932cac41081786f76938a5b35de62d878
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64689716"
 ---
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
-[2191498]:https://launchpad.support.sap.com/#/notes/2191498
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
-[1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
-[2233094]:https://launchpad.support.sap.com/#/notes/2233094
-[1612105]:https://launchpad.support.sap.com/#/notes/1612105
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[2015553]: https://launchpad.support.sap.com/#/notes/2015553
+[2178632]: https://launchpad.support.sap.com/#/notes/2178632
+[2191498]: https://launchpad.support.sap.com/#/notes/2191498
+[2243692]: https://launchpad.support.sap.com/#/notes/2243692
+[1984787]: https://launchpad.support.sap.com/#/notes/1984787
+[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[2233094]: https://launchpad.support.sap.com/#/notes/2233094
+[1612105]: https://launchpad.support.sap.com/#/notes/1612105
 
 [sles-for-sap-bp]:https://www.suse.com/documentation/sles-for-sap-12/
 [db2-hadr-11.1]:https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html
@@ -337,9 +337,9 @@ Használatakor támasztja automatikus feladatátvételhez egy csomópont meghib�
 
 A következő elemek van fűzve a következők egyikével:
 
-- **[A]**: Az összes csomóponthoz alkalmazható
-- **[1]**: Alkalmazható, csak az 1. csomópont 
-- **[2]**: Csak csomópont 2 használható
+- **[A]** : Az összes csomóponthoz alkalmazható
+- **[1]** : Alkalmazható, csak az 1. csomópont 
+- **[2]** : Csak csomópont 2 használható
 
 **[A]**  Előfeltételeket támasztja a konfigurációhoz:
 1. Állítsa le mindkét felhasználói db2-adatbázis-kiszolgálók\<sid > a db2stop.
@@ -595,8 +595,8 @@ crm resource clear msl_<b>Db2_db2ptr_PTR</b>
 </code></pre>
 
 - **CRM-erőforrás át \<res_name > <host>:** Helyre vonatkozó megkötések hoz létre, és problémákat okozhat az átvétel
-- **CRM-erőforrás törlése \<res_name >**: Törli a helyre vonatkozó megkötések
-- **CRM-erőforrás karbantartása \<res_name >**: Összes hiba az erőforrás törlése
+- **CRM-erőforrás törlése \<res_name >** : Törli a helyre vonatkozó megkötések
+- **CRM-erőforrás karbantartása \<res_name >** : Összes hiba az erőforrás törlése
 
 ### <a name="test-the-fencing-agent"></a>Az elkerítés ügynök tesztelése
 

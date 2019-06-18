@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: sasolank
 ms.openlocfilehash: 4ee970f14a6da3d65849a79ff4afae68601f106f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66141662"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrálása belső vnet-en az API Management az Application Gateway segítségével
@@ -88,7 +88,7 @@ Ebben az útmutatóban fog is elérhetővé tesszük a **fejlesztői portál** a
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Erőforráscsoport létrehozása a Resource Managerhez
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 Jelentkezzen be az Azure-ba
 
@@ -98,7 +98,7 @@ Connect-AzAccount
 
 Hitelesíti a hitelesítő adataival.
 
-### <a name="step-2"></a>2. lépés
+### <a name="step-2"></a>2\. lépés
 
 Válassza ki a kívánt előfizetés azonosítóértékét.
 
@@ -107,7 +107,7 @@ $subscriptionId = "00000000-0000-0000-0000-000000000000" # GUID of your Azure su
 Get-AzSubscription -Subscriptionid $subscriptionId | Select-AzSubscription
 ```
 
-### <a name="step-3"></a>3. lépés
+### <a name="step-3"></a>3\. lépés
 
 Hozzon létre egy erőforráscsoportot (hagyja ki ezt a lépést, ha egy meglévő erőforráscsoportot használ).
 
@@ -123,7 +123,7 @@ Az Azure Resource Manager megköveteli, hogy minden erőforráscsoport megadjon 
 
 Az alábbi példa bemutatja, hogyan hozhat létre virtuális hálózatot használatával a resource manager.
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 A 10.0.0.0/24 címtartományt rendelni az Application Gateway egy virtuális hálózat létrehozásakor használni kívánt alhálózati változóhoz.
 
@@ -131,7 +131,7 @@ A 10.0.0.0/24 címtartományt rendelni az Application Gateway egy virtuális há
 $appgatewaysubnet = New-AzVirtualNetworkSubnetConfig -Name "apim01" -AddressPrefix "10.0.0.0/24"
 ```
 
-### <a name="step-2"></a>2. lépés
+### <a name="step-2"></a>2\. lépés
 
 A cím-tartományt 10.0.1.0/24 hozzárendelése a virtuális hálózat létrehozásakor az API Management szolgáltatáshoz használni kívánt alhálózati változóhoz.
 
@@ -139,7 +139,7 @@ A cím-tartományt 10.0.1.0/24 hozzárendelése a virtuális hálózat létrehoz
 $apimsubnet = New-AzVirtualNetworkSubnetConfig -Name "apim02" -AddressPrefix "10.0.1.0/24"
 ```
 
-### <a name="step-3"></a>3. lépés
+### <a name="step-3"></a>3\. lépés
 
 Hozzon létre egy virtuális hálózatot nevű **appgwvnet** erőforráscsoportban **apim-appGw-RG** az USA nyugati RÉGIÓJA számára. Az előtag 10.0.0.0/16 használja a 10.0.0.0/24 alhálózat és 10.0.1.0/24.
 
@@ -147,7 +147,7 @@ Hozzon létre egy virtuális hálózatot nevű **appgwvnet** erőforráscsoportb
 $vnet = New-AzVirtualNetwork -Name "appgwvnet" -ResourceGroupName $resGroupName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $appgatewaysubnet,$apimsubnet
 ```
 
-### <a name="step-4"></a>4. lépés
+### <a name="step-4"></a>4\. lépés
 
 Rendelje hozzá egy alhálózati változót a következő lépések
 
@@ -160,7 +160,7 @@ $apimsubnetdata = $vnet.Subnets[1]
 
 Az alábbi példa bemutatja, hogyan hozhat létre API Management szolgáltatás csak a belső hozzáférés konfigurált virtuális hálózaton.
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 Hozzon létre egy API Management virtuális hálózat objektumot, a fent létrehozott $apimsubnetdata alhálózat használatával.
 
@@ -168,7 +168,7 @@ Hozzon létre egy API Management virtuális hálózat objektumot, a fent létreh
 $apimVirtualNetwork = New-AzApiManagementVirtualNetwork -SubnetResourceId $apimsubnetdata.Id
 ```
 
-### <a name="step-2"></a>2. lépés
+### <a name="step-2"></a>2\. lépés
 
 Hozzon létre egy API Management szolgáltatás a virtuális hálózaton belül.
 
@@ -183,7 +183,7 @@ Lásd a fenti parancs sikeres követően [belső virtuális hálózathoz az API 
 
 ## <a name="set-up-a-custom-domain-name-in-api-management"></a>Az API Management egy egyéni tartománynév beállítása
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 A tanúsítványok részleteit a következő változók inicializálása a titkos kulcsok a tartományra. Ebben a példában használjuk `api.contoso.net` és `portal.contoso.net`.  
 
@@ -200,7 +200,7 @@ $certPwd = ConvertTo-SecureString -String $gatewayCertPfxPassword -AsPlainText -
 $certPortalPwd = ConvertTo-SecureString -String $portalCertPfxPassword -AsPlainText -Force
 ```
 
-### <a name="step-2"></a>2. lépés
+### <a name="step-2"></a>2\. lépés
 
 Hozzon létre, és állítsa be az állomásnevet konfigurációs objektumok a proxy- és a portál.  
 
@@ -227,7 +227,7 @@ Amikor a szolgáltatás elindul, egy IP-cím lesz kiosztva az Application Gatewa
 
 Az Application Gateway létrehozása előtt minden konfigurációs elemet be kell állítani. Az alábbi lépések létrehozzák az Application Gateway erőforráshoz szükséges konfigurációs elemeket.
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 Hozzon létre egy **gatewayIP01** nevű Application Gateway IP-konfigurációt. Amikor az Application Gateway elindul, a konfigurált alhálózatból felvesz egy IP-címet, és a hálózati forgalmat a háttérbeli IP-készlet IP-címeihez irányítja. Ne feledje, hogy minden példány egy IP-címet vesz fel.
 
@@ -235,7 +235,7 @@ Hozzon létre egy **gatewayIP01** nevű Application Gateway IP-konfigurációt. 
 $gipconfig = New-AzApplicationGatewayIPConfiguration -Name "gatewayIP01" -Subnet $appgatewaysubnetdata
 ```
 
-### <a name="step-2"></a>2. lépés
+### <a name="step-2"></a>2\. lépés
 
 Konfigurálja az előtérbeli IP-portot a nyilvános IP-cím végponthoz. A port a port, amelyet a végfelhasználók csatlakozni.
 
@@ -243,7 +243,7 @@ Konfigurálja az előtérbeli IP-portot a nyilvános IP-cím végponthoz. A port
 $fp01 = New-AzApplicationGatewayFrontendPort -Name "port01"  -Port 443
 ```
 
-### <a name="step-3"></a>3. lépés
+### <a name="step-3"></a>3\. lépés
 
 Konfigurálja az előtérbeli IP-portot egy nyilvános IP-címvégponttal.
 
@@ -251,7 +251,7 @@ Konfigurálja az előtérbeli IP-portot egy nyilvános IP-címvégponttal.
 $fipconfig01 = New-AzApplicationGatewayFrontendIPConfig -Name "frontend1" -PublicIPAddress $publicip
 ```
 
-### <a name="step-4"></a>4. lépés
+### <a name="step-4"></a>4\. lépés
 
 A tanúsítványok konfigurálása az Application gatewayhez, amelyet áthaladó forgalom újbóli titkosítására és visszafejtésére használhat.
 
@@ -260,7 +260,7 @@ $cert = New-AzApplicationGatewaySslCertificate -Name "cert01" -CertificateFile $
 $certPortal = New-AzApplicationGatewaySslCertificate -Name "cert02" -CertificateFile $portalCertPfxPath -Password $certPortalPwd
 ```
 
-### <a name="step-5"></a>5. lépés
+### <a name="step-5"></a>5\. lépés
 
 Hozza létre a HTTP-figyelők az Application Gateway számára. Előtérbeli IP konfigurációja, port és az ssl tanúsítványok rendelhet hozzájuk.
 
@@ -269,7 +269,7 @@ $listener = New-AzApplicationGatewayHttpListener -Name "listener01" -Protocol "H
 $portalListener = New-AzApplicationGatewayHttpListener -Name "listener02" -Protocol "Https" -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01 -SslCertificate $certPortal -HostName $portalHostname -RequireServerNameIndication true
 ```
 
-### <a name="step-6"></a>6. lépés
+### <a name="step-6"></a>6\. lépés
 
 Hozzon létre egyéni mintavételek az API Management szolgáltatás `ContosoApi` proxy tartomány végpont. Az elérési út `/status-0123456789abcdef` egy alapértelmezett egészségügyi végpont az API Management-szolgáltatásokban üzemeltetett. Állítsa be `api.contoso.net` , egy egyéni mintát állomásnév biztonságossá tételéhez, SSL-tanúsítvánnyal.
 
@@ -282,7 +282,7 @@ $apimprobe = New-AzApplicationGatewayProbeConfig -Name "apimproxyprobe" -Protoco
 $apimPortalProbe = New-AzApplicationGatewayProbeConfig -Name "apimportalprobe" -Protocol "Https" -HostName $portalHostname -Path "/signin" -Interval 60 -Timeout 300 -UnhealthyThreshold 8
 ```
 
-### <a name="step-7"></a>7. lépés
+### <a name="step-7"></a>7\. lépés
 
 Töltse fel a tanúsítványt az SSL-kompatibilis háttérerőforrásokhoz készletben kell használni. Ez az a 4. lépésben megadott ugyanazt a tanúsítványt.
 
@@ -290,7 +290,7 @@ Töltse fel a tanúsítványt az SSL-kompatibilis háttérerőforrásokhoz kész
 $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name "whitelistcert1" -CertificateFile $gatewayCertCerPath
 ```
 
-### <a name="step-8"></a>8. lépés
+### <a name="step-8"></a>8\. lépés
 
 Konfigurálja a HTTP-háttérbeállítások az Application Gateway számára. Ez magában foglalja a háttérrendszer kérelem, amely után törölve van időtúllépési korlát. Ez az érték eltér a mintavétel időkorlátja.
 
@@ -299,7 +299,7 @@ $apimPoolSetting = New-AzApplicationGatewayBackendHttpSettings -Name "apimPoolSe
 $apimPoolPortalSetting = New-AzApplicationGatewayBackendHttpSettings -Name "apimPoolPortalSetting" -Port 443 -Protocol "Https" -CookieBasedAffinity "Disabled" -Probe $apimPortalProbe -AuthenticationCertificates $authcert -RequestTimeout 180
 ```
 
-### <a name="step-9"></a>9. lépés
+### <a name="step-9"></a>9\. lépés
 
 A háttérbeli IP-címkészletet konfigurálja **apimbackend** belső virtuális IP-címe az API Management szolgáltatás a fent létrehozott.
 
@@ -307,7 +307,7 @@ A háttérbeli IP-címkészletet konfigurálja **apimbackend** belső virtuális
 $apimProxyBackendPool = New-AzApplicationGatewayBackendAddressPool -Name "apimbackend" -BackendIPAddresses $apimService.PrivateIPAddresses[0]
 ```
 
-### <a name="step-10"></a>10. lépés
+### <a name="step-10"></a>10\. lépés
 
 Az Application Gateway használatára az alapszintű útválasztási szabályokat létrehozni.
 
@@ -319,7 +319,7 @@ $rule02 = New-AzApplicationGatewayRequestRoutingRule -Name "rule2" -RuleType Bas
 > [!TIP]
 > -RuleType módosítása és az útválasztást, bizonyos a fejlesztői portál oldalain való hozzáférés korlátozásához.
 
-### <a name="step-11"></a>11. lépés
+### <a name="step-11"></a>11\. lépés
 
 Az Application Gateway konfigurálása a példányok számát és méretét. Ebben a példában használjuk a [WAF Termékváltozatban](../application-gateway/application-gateway-webapplicationfirewall-overview.md) az API Management-erőforrás a biztonság fokozása érdekében.
 
@@ -327,7 +327,7 @@ Az Application Gateway konfigurálása a példányok számát és méretét. Ebb
 $sku = New-AzApplicationGatewaySku -Name "WAF_Medium" -Tier "WAF" -Capacity 2
 ```
 
-### <a name="step-12"></a>12. lépés
+### <a name="step-12"></a>12\. lépés
 
 WAF "Megelőzési" módban kell konfigurálni.
 

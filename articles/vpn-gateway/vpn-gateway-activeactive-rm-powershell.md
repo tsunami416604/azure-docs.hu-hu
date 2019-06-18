@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: yushwang, cherylmc
 ms.openlocfilehash: 7ba4fb32ddfb8b3eb88d2dbfce265b070d521414
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66119442"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Aktív-aktív S2S VPN-kapcsolatok konfigurálása az Azure VPN-átjárókkal
@@ -52,7 +52,7 @@ A többi tulajdonság ugyanazok, mint a nem aktív-aktív átjárót.
 * Győződjön meg arról, hogy rendelkezik Azure-előfizetéssel. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
 * Előfordulhat, hogy telepítenie kell az Azure Resource Manager PowerShell-parancsmagjait. Lásd: [áttekintése az Azure PowerShell](/powershell/azure/overview) a PowerShell-parancsmagok telepítéséről további információt.
 
-### <a name="step-1---create-and-configure-vnet1"></a>1. lépés – létrehozása és konfigurálása a VNet1
+### <a name="step-1---create-and-configure-vnet1"></a>1\. lépés – létrehozása és konfigurálása a VNet1
 #### <a name="1-declare-your-variables"></a>1. A változók deklarálása
 Ezt a gyakorlatot a változók deklarálásával kezdjük. Az alábbi példa a gyakorlathoz használt értékekkel deklarálja a változókat. Az éles konfigurációhoz ne felejtse el ezeket az értékeket a saját értékeire cserélni. Ezeket a változókat akkor használhatja, ha azért hajtja végre a lépéseket, hogy megismerje ezt a konfigurációtípust. Módosítsa a változókat, majd másolja és illessze be őket a PowerShell-konzolra.
 
@@ -103,7 +103,7 @@ $gwsub1 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix $GWS
 New-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNetPrefix11,$VNetPrefix12 -Subnet $fesub1,$besub1,$gwsub1
 ```
 
-### <a name="step-2---create-the-vpn-gateway-for-testvnet1-with-active-active-mode"></a>2. lépés – a TestVNet1 létrehozása a VPN-átjáró aktív – aktív üzemmód
+### <a name="step-2---create-the-vpn-gateway-for-testvnet1-with-active-active-mode"></a>2\. lépés – a TestVNet1 létrehozása a VPN-átjáró aktív – aktív üzemmód
 #### <a name="1-create-the-public-ip-addresses-and-gateway-ip-configurations"></a>1. A nyilvános IP-címek és az átjáró IP-konfiguráció létrehozása
 Kérelem két nyilvános IP-cím kiosztását a virtuális hálózat számára létrehozni kívánt átjáróhoz. Az alhálózat és a szükséges IP-konfigurációk is meghatározhatja.
 
@@ -161,7 +161,7 @@ Létesítmények közötti kapcsolatot létesíteni, szüksége a helyszíni VPN
 
 A folytatás előtt ellenőrizze, hogy befejezte [1. rész](#aagateway) ebben a gyakorlatban.
 
-### <a name="step-1---create-and-configure-the-local-network-gateway"></a>1. lépés – létrehozása és a helyi hálózati átjáró konfigurálása
+### <a name="step-1---create-and-configure-the-local-network-gateway"></a>1\. lépés – létrehozása és a helyi hálózati átjáró konfigurálása
 #### <a name="1-declare-your-variables"></a>1. A változók deklarálása
 Ebben a gyakorlatban továbbra is össze az ábrán látható. Ne felejtse el az értékeket olyanokra cserélni, amelyeket a saját konfigurációjához kíván használni.
 
@@ -190,7 +190,7 @@ New-AzResourceGroup -Name $RG5 -Location $Location5
 New-AzLocalNetworkGateway -Name $LNGName51 -ResourceGroupName $RG5 -Location $Location5 -GatewayIpAddress $LNGIP51 -AddressPrefix $LNGPrefix51 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP51
 ```
 
-### <a name="step-2---connect-the-vnet-gateway-and-local-network-gateway"></a>2. lépés – a virtuális hálózati átjáró és a helyi hálózati átjáró csatlakoztatása
+### <a name="step-2---connect-the-vnet-gateway-and-local-network-gateway"></a>2\. lépés – a virtuális hálózati átjáró és a helyi hálózati átjáró csatlakoztatása
 #### <a name="1-get-the-two-gateways"></a>1. A két átjáró beolvasása
 
 ```powershell
@@ -224,7 +224,7 @@ A kapcsolat néhány perc alatt létrejön, és a BGP társviszony-létesítési
 
 ![active-active-crossprem](./media/vpn-gateway-activeactive-rm-powershell/active-active.png)
 
-### <a name="step-3---connect-two-on-premises-vpn-devices-to-the-active-active-vpn-gateway"></a>3. lépés – két helyszíni VPN-eszköz csatlakoztatása az aktív-aktív VPN gatewayhez
+### <a name="step-3---connect-two-on-premises-vpn-devices-to-the-active-active-vpn-gateway"></a>3\. lépés – két helyszíni VPN-eszköz csatlakoztatása az aktív-aktív VPN gatewayhez
 Ha két VPN-eszközök ugyanazon a helyszíni hálózaton található, kettős redundancia érheti el az Azure VPN gateway a második VPN-eszközhöz való csatlakozással.
 
 #### <a name="1-create-the-second-local-network-gateway-for-site5"></a>1. A második helyi hálózati átjáró létrehozása az Site5
@@ -276,7 +276,7 @@ Ez a szakasz egy aktív-aktív VNet – VNet kapcsolat BGP-vel hoz létre.
 
 Az alábbi útmutató a fent leírt lépések folytatása. Meg kell adnia a [1. rész](#aagateway) létrehozása és konfigurálása a TestVNet1 és a VPN Gateway a BGP. 
 
-### <a name="step-1---create-testvnet2-and-the-vpn-gateway"></a>1. lépés – TestVNet2 és a VPN-átjáró létrehozása
+### <a name="step-1---create-testvnet2-and-the-vpn-gateway"></a>1\. lépés – TestVNet2 és a VPN-átjáró létrehozása
 Fontos győződjön meg arról, hogy az IP-címtér az új TestVNet2, virtuális hálózat nem átfedésben a VNet-címtartományok.
 
 Ebben a példában a virtuális hálózatok ugyanahhoz az előfizetéshez tartozik. Beállíthatja a VNet – VNet kapcsolatokhoz különböző előfizetésekben; között Tekintse meg [VNet – VNet kapcsolat konfigurálása](vpn-gateway-vnet-vnet-rm-ps.md) további részleteket. Mindenképpen adja hozzá a "-enablebgp paramétert $True" BGP engedélyezése a kapcsolatok létrehozásakor.
@@ -338,7 +338,7 @@ A VPN-átjáró létrehozása az AS-számát és a "EnableActiveActiveFeature" j
 New-AzVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2 -Location $Location2 -IpConfigurations $gw2ipconf1,$gw2ipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -Asn $VNet2ASN -EnableActiveActiveFeature
 ```
 
-### <a name="step-2---connect-the-testvnet1-and-testvnet2-gateways"></a>2. lépés – a TestVNet1 és TestVNet2 átjárók csatlakoztatása
+### <a name="step-2---connect-the-testvnet1-and-testvnet2-gateways"></a>2\. lépés – a TestVNet1 és TestVNet2 átjárók csatlakoztatása
 Ebben a példában mindkét átjáró ugyanabban az előfizetésben vannak. Ebben a lépésben a PowerShell-munkamenetben hajthatja végre.
 
 #### <a name="1-get-both-gateways"></a>1. Mindkét átjárótípus beolvasása

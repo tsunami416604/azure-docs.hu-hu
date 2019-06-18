@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a054274da0c83fa5f079e05a1c648c1fc693fd7
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 2bc3de858102c02d49a7cefeef15de7e1c82220e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65900324"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106473"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bamboohr"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező BambooHR
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a BambooHR konfigurálásához hozzá kell BambooHR a 
 
 **BambooHR hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -222,7 +222,7 @@ Az Azure AD-felhasználók BambooHR bejelentkezés engedélyezéséhez állítsa
 >[!NOTE]
 >Felhasználói fiókok Azure AD beállításához, BambooHR felhasználói fiók-létrehozási eszközök vagy API-k is használhatja.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

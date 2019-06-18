@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
 ms.openlocfilehash: 069345f9c2d0fff0b580365153d8be13bb4ba204
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65952139"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>A Security Center-szolgáltatásokat (július 2019) kivonása
@@ -100,7 +100,7 @@ Hogy szeretne eltávolítani a **Ugrás a biztonsági események térkép** gomb
 
 Amikor kiválasztja a **Ugrás a biztonsági események térkép** gombra, a fenyegetésészlelési irányítópult megnyitásakor. Mi a fenyegetésfelderítési irányítópult mégy.  
 
-![Fenyegetésészlelési irányítópult][11]
+![Fenyegetésfelderítési irányítópult][11]
 
 Ha úgy dönt, hogy a munkaterületet a megfelelő fenyegetésészlelési irányítópult megtekintéséhez, nyissa meg a biztonsági riasztások térkép (előzetes verzió) képernyőn a Log Analyticsben. Ez a képernyő mégy azt.
 
@@ -110,7 +110,7 @@ A meglévő adatok továbbra is elérhető a Log Analytics biztonsági megoldás
 
 ### <a name="security-events-map---the-new-experience"></a>Biztonsági események térkép - az új felhasználói felület
 
-Javasoljuk, hogy a riasztások térkép a Security Center beépített funkcióinak használata: **Biztonsági riasztások térkép (előzetes verzió)**. Ez a funkció egy optimalizált felhasználói élményt biztosít, és minden előfizetések és munkaterületek társított. Azt, magas szintű áttekintést nyújt a környezete, és nem egyetlen munkaterület összpontosítanak.
+Javasoljuk, hogy a riasztások térkép a Security Center beépített funkcióinak használata: **Biztonsági riasztások térkép (előzetes verzió)** . Ez a funkció egy optimalizált felhasználói élményt biztosít, és minden előfizetések és munkaterületek társított. Azt, magas szintű áttekintést nyújt a környezete, és nem egyetlen munkaterület összpontosítanak.
 
 ## Egyéni riasztási szabályok (előzetes verzió)<a name="menu_customalerts"></a>
 
@@ -164,7 +164,7 @@ Az Azure Security Center biztonsági konfigurációk figyeli egy alkalmazásáva
 
 Az előzetes verziójú funkció mégy azt. Ha a kivezetési dátum után szeretné visszaállítani a biztonsági konfigurációk az alapértelmezett értékeket, megteheti keresztül API-t vagy a Powershell használatával a [utasítások](https://aka.ms/ascresetsecurityconfigurations)
 
-![Biztonsági beállítások szerkesztése][17]
+![Biztonsági konfigurációk szerkesztése][17]
 
 ### <a name="edit-security-configurations---the-new-experience"></a>Biztonsági konfigurációk – az új felület szerkesztése
 

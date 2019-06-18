@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 05/15/2018
 ms.author: v-pawal
 ms.openlocfilehash: d2ff61908d7901fc464b58ee1ef9b5605b3026a3
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66389847"
 ---
 # <a name="translator-text-api-v20"></a>Translator Text API v2.0
@@ -85,12 +85,12 @@ A válasz tartalomtípusa: application/xml
 
 |Paraméter|Érték|Leírás    |Paraméter típusa|Adattípus|
 |:--|:--|:--|:--|:--|
-|alkalmazásazonosító  |(üres)    |Kötelező. Az engedélyezési vagy Ocp-Apim-Subscription-Key fejléc használata esetén hagyja üresen a appid mezőt más tartalmaznak egy karakterlánc, amely tartalmazza a "Tulajdonos" + "" + "access_token".|query|string|
-|text|(üres)   |Kötelező. Egy karakterlánc, amely a fordítandó szöveg. A szöveg mérete nem haladhatja meg a 10000 karakternél.|query|string|
-|from|(üres)   |Választható. Egy karakterlánc, amely a fordítandó szöveg nyelvkódja. Ha például az angol nyelvű tájékoztatáshoz en.|query|string|
-|erre:|(üres) |Kötelező. Egy karakterlánc, amely lefordítja a szöveget a nyelv kódja.|query|string|
-|contentType|(üres)    |Választható. Folyamatban van a lefordított szöveg formátuma. A támogatott formátumok a következők: text/plain (alapértelmezett) és a text/html. HTML kell lennie egy megfelelően formázott, teljes elemhez.|query|string|
-|category|(üres)   |Választható. A kategória (tartomány), a fordítás tartalmazó karakterlánc. Az alapértelmezett "általános".|query|string|
+|appid  |(üres)    |Kötelező. Az engedélyezési vagy Ocp-Apim-Subscription-Key fejléc használata esetén hagyja üresen a appid mezőt más tartalmaznak egy karakterlánc, amely tartalmazza a "Tulajdonos" + "" + "access_token".|lekérdezés|string|
+|szöveg|(üres)   |Kötelező. Egy karakterlánc, amely a fordítandó szöveg. A szöveg mérete nem haladhatja meg a 10000 karakternél.|lekérdezés|string|
+|from|(üres)   |Választható. Egy karakterlánc, amely a fordítandó szöveg nyelvkódja. Ha például az angol nyelvű tájékoztatáshoz en.|lekérdezés|string|
+|erre:|(üres) |Kötelező. Egy karakterlánc, amely lefordítja a szöveget a nyelv kódja.|lekérdezés|string|
+|contentType|(üres)    |Választható. Folyamatban van a lefordított szöveg formátuma. A támogatott formátumok a következők: text/plain (alapértelmezett) és a text/html. HTML kell lennie egy megfelelően formázott, teljes elemhez.|lekérdezés|string|
+|category|(üres)   |Választható. A kategória (tartomány), a fordítás tartalmazó karakterlánc. Az alapértelmezett "általános".|lekérdezés|string|
 |Engedélyezés|(üres)  |Szükséges, ha az alkalmazásazonosító mezőben, vagy Ocp-Apim-Subscription-Key fejléc nincs megadva. Engedélyezési jogkivonat:  "Tulajdonos" + "" + "access_token".|header|string|
 |OCP-Apim-Subscription-Key|(üres)  |Szükséges, ha az alkalmazásazonosító mezőben vagy engedélyeztetési fejléc nincs megadva.|header|string|
 
@@ -231,8 +231,8 @@ A válasz tartalomtípusa: application/xml
 
 |Paraméter|Érték|Leírás|Paraméter típusa|Adattípus|
 |:--|:--|:--|:--|:--|
-|alkalmazásazonosító|(üres)|Kötelező. Ha a `Authorization` vagy `Ocp-Apim-Subscription-Key` fejléc, hagyja üresen a appid mezőt más adjon meg egy karakterláncot tartalmazó `"Bearer" + " " + "access_token"`.|query|string|
-|Területi beállítás|(üres) |Kötelező. Egy karakterlánc, amely egy ISO 639 kétbetűs kisbetűs kulturális környezet társított nyelvet és a egy ISO 3166 kétbetűs nagybetűssé szubkultúrákhoz kód megkeresni a nyelv nevét vagy a egy ISO 639 kisbetűs kulturális környezet kombinációja önmagában.|query|string|
+|appid|(üres)|Kötelező. Ha a `Authorization` vagy `Ocp-Apim-Subscription-Key` fejléc, hagyja üresen a appid mezőt más adjon meg egy karakterláncot tartalmazó `"Bearer" + " " + "access_token"`.|lekérdezés|string|
+|Területi beállítás|(üres) |Kötelező. Egy karakterlánc, amely egy ISO 639 kétbetűs kisbetűs kulturális környezet társított nyelvet és a egy ISO 3166 kétbetűs nagybetűssé szubkultúrákhoz kód megkeresni a nyelv nevét vagy a egy ISO 639 kisbetűs kulturális környezet kombinációja önmagában.|lekérdezés|string|
 |Engedélyezés|(üres)  |Kötelező, ha az alkalmazásazonosító mezőben, vagy `Ocp-Apim-Subscription-Key` fejléc nincs megadva. Engedélyezési jogkivonat: `"Bearer" + " " + "access_token"`.|header|string|
 |OCP-Apim-Subscription-Key|(üres)  |Kötelező, ha az alkalmazásazonosító mezőben, vagy `Authorization` fejléc nincs megadva.|header|string|
 
@@ -265,7 +265,7 @@ A válasz tartalomtípusa: application/xml
 
 |Paraméter|Érték|Leírás|Paraméter típusa|Adattípus|
 |:--|:--|:--|:--|:--|
-|alkalmazásazonosító|(üres)|Kötelező. Ha a `Authorization` vagy `Ocp-Apim-Subscription-Key` fejléc, hagyja üresen a appid mezőt más adjon meg egy karakterláncot tartalmazó `"Bearer" + " " + "access_token"`.|query|string|
+|appid|(üres)|Kötelező. Ha a `Authorization` vagy `Ocp-Apim-Subscription-Key` fejléc, hagyja üresen a appid mezőt más adjon meg egy karakterláncot tartalmazó `"Bearer" + " " + "access_token"`.|lekérdezés|string|
 |Engedélyezés|(üres)  |Kötelező, ha a `appid` mező vagy `Ocp-Apim-Subscription-Key` fejléc nincs megadva. Engedélyezési jogkivonat: `"Bearer" + " " + "access_token"`.|header|string|
 |OCP-Apim-Subscription-Key|(üres)|Kötelező, ha a `appid` mező vagy `Authorization` fejléc nincs megadva.|header|string|
 
@@ -298,7 +298,7 @@ A válasz tartalomtípusa: application/xml
 
 |Paraméter|Érték|Leírás|Paraméter típusa|Adattípus|
 |:--|:--|:--|:--|:--|
-|alkalmazásazonosító|(üres)|Kötelező. Ha a `Authorization` vagy `Ocp-Apim-Subscription-Key` fejléc, hagyja üresen a appid mezőt más adjon meg egy karakterláncot tartalmazó `"Bearer" + " " + "access_token"`.|query|string|
+|appid|(üres)|Kötelező. Ha a `Authorization` vagy `Ocp-Apim-Subscription-Key` fejléc, hagyja üresen a appid mezőt más adjon meg egy karakterláncot tartalmazó `"Bearer" + " " + "access_token"`.|lekérdezés|string|
 |Engedélyezés|(üres)|Kötelező, ha a `appid` mező vagy `Ocp-Apim-Subscription-Key` fejléc nincs megadva. Engedélyezési jogkivonat: `"Bearer" + " " + "access_token"`.|header|string|
 |OCP-Apim-Subscription-Key|(üres)|Kötelező, ha a `appid` mező vagy `Authorization` fejléc nincs megadva.|header|string|
  
@@ -330,11 +330,11 @@ A válasz tartalomtípusa: application/xml
 
 |Paraméter|Érték|Leírás|Paraméter típusa|Adattípus|
 |:--|:--|:--|:--|:--|
-|alkalmazásazonosító|(üres)|Kötelező. Ha a `Authorization` vagy `Ocp-Apim-Subscription-Key` fejléc, hagyja üresen a appid mezőt más adjon meg egy karakterláncot tartalmazó `"Bearer" + " " + "access_token"`.|query|string|
-|text|(üres)   |Kötelező. Egy mondatban vagy a megadott lehet a wave Stream beszélt nyelv mondatokat tartalmazó karakterlánc. A mérnökeinkkel szöveg mérete nem haladhatja meg a 2000 karakternél hosszabb.|query|string|
-|language|(üres)   |Kötelező. Egy karakterlánc, amely az a szöveg felolvasása a támogatott nyelvi kódot. A kód szerepelnie kell a metódus visszatérési kódok listája `GetLanguagesForSpeak`.|query|string|
-|format|(üres)|Választható. Egy olyan karakterláncot kell a tartalomtípus-azonosítót. Jelenleg `audio/wav` és `audio/mp3` érhetők el. Az alapértelmezett érték `audio/wav`.|query|string|
-|Beállítások|(üres)    |<ul><li>Választható. A karakterlánc a szintetizált tulajdonságainak megadása:<li>`MaxQuality` és `MinSize` érhetők el a hang jelekkel erősségének megadása. A `MaxQuality`, beszerezheti a legjobb minőségű, valamint a beszédhangot `MinSize`, beszerezheti a beszédhangot a legkisebb méretű. Alapértelmezett érték a `MinSize`.</li><li>`female` és `male` érhetők el, adja meg a hangalapú kívánt tartalmazzák. Az alapértelmezett szint a `female`. Használja a függőleges vonal <code>\|</code> több beállításokat tartalmazza. Például `MaxQuality|Male`.</li></li></ul> |query|string|
+|appid|(üres)|Kötelező. Ha a `Authorization` vagy `Ocp-Apim-Subscription-Key` fejléc, hagyja üresen a appid mezőt más adjon meg egy karakterláncot tartalmazó `"Bearer" + " " + "access_token"`.|lekérdezés|string|
+|szöveg|(üres)   |Kötelező. Egy mondatban vagy a megadott lehet a wave Stream beszélt nyelv mondatokat tartalmazó karakterlánc. A mérnökeinkkel szöveg mérete nem haladhatja meg a 2000 karakternél hosszabb.|lekérdezés|string|
+|language|(üres)   |Kötelező. Egy karakterlánc, amely az a szöveg felolvasása a támogatott nyelvi kódot. A kód szerepelnie kell a metódus visszatérési kódok listája `GetLanguagesForSpeak`.|lekérdezés|string|
+|format|(üres)|Választható. Egy olyan karakterláncot kell a tartalomtípus-azonosítót. Jelenleg `audio/wav` és `audio/mp3` érhetők el. Az alapértelmezett érték `audio/wav`.|lekérdezés|string|
+|options|(üres)    |<ul><li>Választható. A karakterlánc a szintetizált tulajdonságainak megadása:<li>`MaxQuality` és `MinSize` érhetők el a hang jelekkel erősségének megadása. A `MaxQuality`, beszerezheti a legjobb minőségű, valamint a beszédhangot `MinSize`, beszerezheti a beszédhangot a legkisebb méretű. Alapértelmezett érték a `MinSize`.</li><li>`female` és `male` érhetők el, adja meg a hangalapú kívánt tartalmazzák. Az alapértelmezett szint a `female`. Használja a függőleges vonal <code>\|</code> több beállításokat tartalmazza. Például `MaxQuality|Male`.</li></li></ul> |lekérdezés|string|
 |Engedélyezés|(üres)|Kötelező, ha a `appid` mező vagy `Ocp-Apim-Subscription-Key` fejléc nincs megadva. Engedélyezési jogkivonat: `"Bearer" + " " + "access_token"`.|header|string|
 |OCP-Apim-Subscription-Key|(üres)  |Kötelező, ha a `appid` mező vagy `Authorization` fejléc nincs megadva.|header|string|
 
@@ -366,8 +366,8 @@ A válasz tartalomtípusa: application/xml
 
 |Paraméter|Érték|Leírás|Paraméter típusa|Adattípus|
 |:--|:--|:--|:--|:--|
-|alkalmazásazonosító|(üres)  |Kötelező. Ha a `Authorization` vagy `Ocp-Apim-Subscription-Key` fejléc, hagyja üresen a appid mezőt más adjon meg egy karakterláncot tartalmazó `"Bearer" + " " + "access_token"`.|query|string|
-|text|(üres)|Kötelező. Néhány szöveg, amelynek a nyelve, hogy azonosítható tartalmazó karakterlánc. A szöveg mérete nem haladhatja meg a 10000 karakternél.|query| string|
+|appid|(üres)  |Kötelező. Ha a `Authorization` vagy `Ocp-Apim-Subscription-Key` fejléc, hagyja üresen a appid mezőt más adjon meg egy karakterláncot tartalmazó `"Bearer" + " " + "access_token"`.|lekérdezés|string|
+|szöveg|(üres)|Kötelező. Néhány szöveg, amelynek a nyelve, hogy azonosítható tartalmazó karakterlánc. A szöveg mérete nem haladhatja meg a 10000 karakternél.|lekérdezés| string|
 |Engedélyezés|(üres)|Kötelező, ha a `appid` mező vagy `Ocp-Apim-Subscription-Key` fejléc nincs megadva. Engedélyezési jogkivonat: `"Bearer" + " " + "access_token"`.|header|string|
 |OCP-Apim-Subscription-Key  |(üres)    |Kötelező, ha a `appid` mező vagy `Authorization` fejléc nincs megadva.|header|string|
 
@@ -421,7 +421,7 @@ A válasz tartalomtípusa: application/xml
 
 |Paraméter|Érték|Leírás|Paraméter típusa|Adattípus|
 |:--|:--|:--|:--|:--|
-|alkalmazásazonosító|(üres)|Kötelező. Ha a `Authorization` vagy `Ocp-Apim-Subscription-Key` fejléc, hagyja üresen a appid mezőt más adjon meg egy karakterláncot tartalmazó `"Bearer" + " " + "access_token"`.|query|string|
+|appid|(üres)|Kötelező. Ha a `Authorization` vagy `Ocp-Apim-Subscription-Key` fejléc, hagyja üresen a appid mezőt más adjon meg egy karakterláncot tartalmazó `"Bearer" + " " + "access_token"`.|lekérdezés|string|
 |Engedélyezés|(üres)|Kötelező, ha a `appid` mező vagy `Ocp-Apim-Subscription-Key` fejléc nincs megadva. Engedélyezési jogkivonat: `"Bearer" + " " + "access_token"`.|header|string|
 |OCP-Apim-Subscription-Key|(üres)|Kötelező, ha a `appid` nincs megadva mező vagy engedélyeztetési fejléc.|header|string|
 
@@ -455,16 +455,16 @@ A válasz tartalomtípusa: alkalmazás: xml
 
 |Paraméter|Érték|Leírás|Paraméter típusa|Adattípus   |
 |:--|:--|:--|:--|:--|
-|alkalmazásazonosító|(üres)|Kötelező. Ha a `Authorization` vagy `Ocp-Apim-Subscription-Key` fejléc, hagyja üresen a appid mezőt más adjon meg egy karakterláncot tartalmazó `"Bearer" + " " + "access_token"`.|query|string|
-|originalText|(üres)|Kötelező. A lefordítandó szöveget tartalmazó karakterlánc. A karakterlánc maximális hossza legfeljebb 1000 karakter lehet.|query|string|
-|translatedText|(üres) |Kötelező. Karakterlánc, amely tartalmazza a lefordított szöveg a célként megadott nyelven. A karakterlánc maximális hossza a 2000 karakternél hosszabb.|query|string|
-|from|(üres)   |Kötelező. Egy karakterlánc, amely a fordítandó szöveg nyelvkódja. en = angol nyelven, de = német stb...|query|string|
-|erre:|(üres)|Kötelező. Egy karakterlánc, amely lefordítja a szöveget a nyelv kódja.|query|string|
-|rating|(üres) |Választható. Ez a karakterlánc a minőségi besorolását jelző egész szám. -10- és 10 közötti értéket. Alapértelmezett értéke 1.|query|egész szám|
-|contentType|(üres)    |Választható. Folyamatban van a lefordított szöveg formátuma. A támogatott formátumok a következők: "text/plain" és "text/html". HTML kell lennie egy megfelelően formázott, teljes elemhez.   |query|string|
-|category|(üres)|Választható. A kategória (tartomány), a fordítás tartalmazó karakterlánc. Az alapértelmezett "általános".|query|string|
-|Felhasználó|(üres)|Kötelező. A Küldés létrehozója nyomon követésére használt karakterlánc.|query|string|
-|URI-t|(üres)|Választható. A tartalom helyét a fordítási tartalmazó karakterlánc.|query|string|
+|appid|(üres)|Kötelező. Ha a `Authorization` vagy `Ocp-Apim-Subscription-Key` fejléc, hagyja üresen a appid mezőt más adjon meg egy karakterláncot tartalmazó `"Bearer" + " " + "access_token"`.|lekérdezés|string|
+|originalText|(üres)|Kötelező. A lefordítandó szöveget tartalmazó karakterlánc. A karakterlánc maximális hossza legfeljebb 1000 karakter lehet.|lekérdezés|string|
+|translatedText|(üres) |Kötelező. Karakterlánc, amely tartalmazza a lefordított szöveg a célként megadott nyelven. A karakterlánc maximális hossza a 2000 karakternél hosszabb.|lekérdezés|string|
+|from|(üres)   |Kötelező. Egy karakterlánc, amely a fordítandó szöveg nyelvkódja. en = angol nyelven, de = német stb...|lekérdezés|string|
+|erre:|(üres)|Kötelező. Egy karakterlánc, amely lefordítja a szöveget a nyelv kódja.|lekérdezés|string|
+|rating|(üres) |Választható. Ez a karakterlánc a minőségi besorolását jelző egész szám. -10- és 10 közötti értéket. Alapértelmezett értéke 1.|lekérdezés|egész szám|
+|contentType|(üres)    |Választható. Folyamatban van a lefordított szöveg formátuma. A támogatott formátumok a következők: "text/plain" és "text/html". HTML kell lennie egy megfelelően formázott, teljes elemhez.   |lekérdezés|string|
+|category|(üres)|Választható. A kategória (tartomány), a fordítás tartalmazó karakterlánc. Az alapértelmezett "általános".|lekérdezés|string|
+|Felhasználó|(üres)|Kötelező. A Küldés létrehozója nyomon követésére használt karakterlánc.|lekérdezés|string|
+|URI-t|(üres)|Választható. A tartalom helyét a fordítási tartalmazó karakterlánc.|lekérdezés|string|
 |Engedélyezés|(üres)|Kötelező, ha az alkalmazásazonosító mezőben, vagy `Ocp-Apim-Subscription-Key` fejléc nincs megadva. Engedélyezési jogkivonat: `"Bearer" + " " + "access_token"`.    |header|string|
 |OCP-Apim-Subscription-Key|(üres)|Kötelező, ha a `appid` mező vagy `Authorization` fejléc nincs megadva.|header|string|
 
@@ -522,7 +522,7 @@ Az AddtranslationsRequest elemben található elemek a következők:
 * `Options`: Kötelező. Lehetőségeket, ideértve a kategória, ContentType, Uri és felhasználói csoportja. Felhasználó megadása kötelező. Kategória, ContentType és Uri megadása nem kötelező. A megadott elemek betűrendbe szerepelnie kell.
 
 ### <a name="response-class-status-200"></a>Válasz osztály (állapota 200)
-AddTranslationArray metódus sikeres volt. 2018. január 31. után mondat módosítások nem lesznek elfogadva. A szolgáltatás válaszol, és 410-es hibakód.
+AddTranslationArray metódus sikeres volt. 2018\. január 31. után mondat módosítások nem lesznek elfogadva. A szolgáltatás válaszol, és 410-es hibakód.
 
 string
 
@@ -565,9 +565,9 @@ A válasz tartalomtípusa: application/xml
 
 |Paraméter|Érték|Leírás|Paraméter típusa|Adattípus|
 |:--|:--|:--|:--|:--|
-|alkalmazásazonosító|(üres)  |Kötelező. Az engedélyezési vagy Ocp-Apim-Subscription-Key fejléc használata esetén hagyja üresen a appid mezőt más tartalmaznak egy karakterlánc, amely tartalmazza a "Tulajdonos" + "" + "access_token".|query| string|
-|text|(üres)   |Kötelező. Szöveg felosztása a mondatok képviselő karakterláncot. A szöveg mérete nem haladhatja meg a 10000 karakternél.|query|string|
-|language   |(üres)    |Kötelező. Egy karakterlánc, amely a bemeneti szöveg nyelvkódja.|query|string|
+|appid|(üres)  |Kötelező. Az engedélyezési vagy Ocp-Apim-Subscription-Key fejléc használata esetén hagyja üresen a appid mezőt más tartalmaznak egy karakterlánc, amely tartalmazza a "Tulajdonos" + "" + "access_token".|lekérdezés| string|
+|szöveg|(üres)   |Kötelező. Szöveg felosztása a mondatok képviselő karakterláncot. A szöveg mérete nem haladhatja meg a 10000 karakternél.|lekérdezés|string|
+|language   |(üres)    |Kötelező. Egy karakterlánc, amely a bemeneti szöveg nyelvkódja.|lekérdezés|string|
 |Engedélyezés|(üres)|Szükséges, ha az alkalmazásazonosító mezőben, vagy Ocp-Apim-Subscription-Key fejléc nincs megadva. Engedélyezési jogkivonat:  "Tulajdonos" + "" + "access_token".    |header|string|
 |OCP-Apim-Subscription-Key|(üres)|Szükséges, ha az alkalmazásazonosító mezőben vagy engedélyeztetési fejléc nincs megadva.|header|string|
 
@@ -659,11 +659,11 @@ A válasz tartalomtípusa: application/xml
 
 |Paraméter|Érték|Leírás|Paraméter típusa|Adattípus|
 |:--|:--|:--|:--|:--|
-|alkalmazásazonosító|(üres)|Kötelező. Ha a `Authorization` vagy `Ocp-Apim-Subscription-Key` fejléc, hagyja üresen a appid mezőt más adjon meg egy karakterláncot tartalmazó `"Bearer" + " " + "access_token"`.|query|string|
-|text|(üres)|Kötelező. Egy karakterlánc, amely a fordítandó szöveg. A szöveg mérete nem haladhatja meg a 10000 karakternél.|query|string|
-|from|(üres)|Kötelező. Egy karakterlánc, amely a fordítandó szöveg nyelvkódja.|query|string|
-|erre: |(üres)    |Kötelező. Egy karakterlánc, amely lefordítja a szöveget a nyelv kódja.|query|string|
-|maxTranslations|(üres)|Kötelező. Egy egész számot a fordítások maximális számát jelölő való visszatéréshez.|query|egész szám|
+|appid|(üres)|Kötelező. Ha a `Authorization` vagy `Ocp-Apim-Subscription-Key` fejléc, hagyja üresen a appid mezőt más adjon meg egy karakterláncot tartalmazó `"Bearer" + " " + "access_token"`.|lekérdezés|string|
+|szöveg|(üres)|Kötelező. Egy karakterlánc, amely a fordítandó szöveg. A szöveg mérete nem haladhatja meg a 10000 karakternél.|lekérdezés|string|
+|from|(üres)|Kötelező. Egy karakterlánc, amely a fordítandó szöveg nyelvkódja.|lekérdezés|string|
+|erre: |(üres)    |Kötelező. Egy karakterlánc, amely lefordítja a szöveget a nyelv kódja.|lekérdezés|string|
+|maxTranslations|(üres)|Kötelező. Egy egész számot a fordítások maximális számát jelölő való visszatéréshez.|lekérdezés|egész szám|
 |Engedélyezés| (üres)|Kötelező, ha a `appid` mező vagy `Ocp-Apim-Subscription-Key` fejléc nincs megadva. Engedélyezési jogkivonat: `"Bearer" + " " + "access_token"`.|string| header|
 |OCP-Apim-Subscription-Key|(üres)  |Kötelező, ha a `appid` mező vagy `Authorization` fejléc nincs megadva.|header|string|
 

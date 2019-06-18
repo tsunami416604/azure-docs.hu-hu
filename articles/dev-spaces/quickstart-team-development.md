@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Tárolók és mikroszolgáltatások az Azure-csapat a Kubernetes-fejlesztés
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
 manager: jeconnoc
-ms.openlocfilehash: e9f9198f8e086bee6c6b02b67ae7dd9cf523416c
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 8160e72657be83af6f9af5226b7cd77c692dcd82
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480362"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061839"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Gyors útmutató: A Kubernetes Azure-fejlesztési szóközzel csoportos fejlesztése
 
@@ -90,7 +90,7 @@ Használja a `helm init` és `helm install` parancsok és a mintaalkalmazás tel
 ```cmd
 cd charts/
 helm init --wait
-helm install -n bikesharing . --dep-up --namespace dev --atomic --wait
+helm install -n bikesharing . --dep-up --namespace dev --atomic 
 ```
 > [!Note]
 > **Ha az RBAC-kompatibilis fürtöt használ**, konfiguráljon [a tiller valóban által használt szolgáltatásfiók](https://helm.sh/docs/using_helm/#role-based-access-control). Ellenkező esetben `helm` parancsok sikertelenek lesznek.
@@ -103,7 +103,7 @@ $ helm init --wait
 ...
 Happy Helming!
 
-$ helm install -n bikesharing . --dep-up --namespace dev --atomic --wait
+$ helm install -n bikesharing . --dep-up --namespace dev --atomic
 
 Hang tight while we grab the latest from your chart repositories...
 ...

@@ -11,11 +11,11 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 7489f42719223dbd7f9cc2908f666dca53fe7c04
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 9a078579fff355d7ddb996316af2a2136fb62335
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66496391"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>A kódot tesztelés az Azure Functions stratégiák
@@ -312,7 +312,7 @@ module.exports = {
 ```
 A modul végrehajtja a `IsPastDue` passzív tulajdonság értéke hamis időzítő példányként.
 
-Ezután használhatja a VS Code funkciók bővítmény [hozzon létre egy új JavaScript HTTP függvényt](https://docs.microsoft.com/azure/azure-functions/tutorial-javascript-vscode-get-started) , és nevezze el *HttpTrigger*. A függvény létrehozása után adjon hozzá egy új fájlt ugyanabba a mappába nevű **index.test.js**, és adja hozzá a következő kódot:
+Ezután használhatja a VS Code funkciók bővítmény [hozzon létre egy új JavaScript HTTP függvényt](https://code.visualstudio.com/tutorials/functions-extension/getting-started) , és nevezze el *HttpTrigger*. A függvény létrehozása után adjon hozzá egy új fájlt ugyanabba a mappába nevű **index.test.js**, és adja hozzá a következő kódot:
 
 ```javascript
 const httpFunction = require('./index');

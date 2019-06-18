@@ -18,10 +18,10 @@ ms.date: 05/07/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2ddcf1f38d3d92f9d9bdd12203ebf99f20600478
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65409771"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Az Azure virtuális gépek tervezése és megvalósítása SAP NetWeaver
@@ -34,14 +34,14 @@ ms.locfileid: "65409771"
 [1139904]:https://launchpad.support.sap.com/#/notes/1139904
 [1173395]:https://launchpad.support.sap.com/#/notes/1173395
 [1245200]:https://launchpad.support.sap.com/#/notes/1245200
-[1409604]:https://launchpad.support.sap.com/#/notes/1409604
+[1409604]: https://launchpad.support.sap.com/#/notes/1409604
 [1558958]:https://launchpad.support.sap.com/#/notes/1558958
 [1585981]:https://launchpad.support.sap.com/#/notes/1585981
 [1588316]:https://launchpad.support.sap.com/#/notes/1588316
 [1590719]:https://launchpad.support.sap.com/#/notes/1590719
-[1597355]:https://launchpad.support.sap.com/#/notes/1597355
+[1597355]: https://launchpad.support.sap.com/#/notes/1597355
 [1605680]:https://launchpad.support.sap.com/#/notes/1605680
-[1619720]:https://launchpad.support.sap.com/#/notes/1619720
+[1619720]: https://launchpad.support.sap.com/#/notes/1619720
 [1619726]:https://launchpad.support.sap.com/#/notes/1619726
 [1619967]:https://launchpad.support.sap.com/#/notes/1619967
 [1750510]:https://launchpad.support.sap.com/#/notes/1750510
@@ -53,24 +53,24 @@ ms.locfileid: "65409771"
 [1772688]:https://launchpad.support.sap.com/#/notes/1772688
 [1814258]:https://launchpad.support.sap.com/#/notes/1814258
 [1882376]:https://launchpad.support.sap.com/#/notes/1882376
-[1909114]:https://launchpad.support.sap.com/#/notes/1909114
+[1909114]: https://launchpad.support.sap.com/#/notes/1909114
 [1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [1941500]:https://launchpad.support.sap.com/#/notes/1941500
 [1956005]:https://launchpad.support.sap.com/#/notes/1956005
 [1973241]:https://launchpad.support.sap.com/#/notes/1973241
-[1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
-[2002167]:https://launchpad.support.sap.com/#/notes/2002167
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[1984787]: https://launchpad.support.sap.com/#/notes/1984787
+[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[2002167]: https://launchpad.support.sap.com/#/notes/2002167
+[2015553]: https://launchpad.support.sap.com/#/notes/2015553
 [2039619]:https://launchpad.support.sap.com/#/notes/2039619
-[2069760]:https://launchpad.support.sap.com/#/notes/2069760
+[2069760]: https://launchpad.support.sap.com/#/notes/2069760
 [2121797]:https://launchpad.support.sap.com/#/notes/2121797
 [2134316]:https://launchpad.support.sap.com/#/notes/2134316
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
-[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2178632]: https://launchpad.support.sap.com/#/notes/2178632
+[2191498]: https://launchpad.support.sap.com/#/notes/2191498
 [2233094]:https://launchpad.support.sap.com/#/notes/2233094
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[2243692]: https://launchpad.support.sap.com/#/notes/2243692
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
@@ -320,7 +320,7 @@ A tanulmány az SAP-telepítési dokumentációt és SAP-megjegyzések, amelyek 
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Felhő-számítástechnika széles körben használt fogalom, amely egyre több fontosságát az informatikai iparágban, belül van hozd a kisvállalatok nagy, nemzetközi vállalatok.
 
 Microsoft Azure a Microsoft új lehetőségek széles skáláját nyújtó Felhőszolgáltatás-platformja. Most már ügyfelek képesek gyors kiépítés és megszüntetni hozzárendeléseket alkalmazásokat a felhőben, szolgáltatásként, akkor nem érvényesülnek a technikai vagy költségvetési korlátozások. Ahelyett idő és a költségvetés beruházó hardver-infrastruktúra, vállalatok koncentrálhat az alkalmazás, üzleti folyamatokat, és az ügyfeleknek és felhasználóknak.
@@ -470,7 +470,7 @@ Az Azure Virtual Machine Services Microsoft van, hogy lehetővé teszi egyéni s
 Működési szempontból az Azure Virtual machines szolgáltatás hasonló funkciókat kínál a helyszínen üzembe helyezett virtuális gépek. Azonban jelentős előny, amely nem kell be kell szereznie, felügyelheti és kezelheti az infrastruktúra rendelkezik. Fejlesztők és rendszergazdák jogköre teljes. az operációs rendszer lemezképének a virtual machines szolgáltatáson belül. A rendszergazdák jelentkezhetnek be távolról ezeket a virtuális gépeket, karbantartási és hibaelhárítási feladatokat, valamint a szoftverek központi telepítési feladatok végrehajtásához. Üzembe helyezés tekintetében a csak korlátozások vonatkoznak, a méretek és Azure virtuális gépek képességeit. Ezek a méretek nem lehet például finom részletes konfigurációban, megteheti a helyszínen. Nincs kombinációját képviselő Virtuálisgép-típusok közül választhat:
 
 * Vcpu-k száma
-* Memória
+* Memory (Memória)
 * Csatolt VHD-k száma
 * Hálózati és tárolási sávszélesség
 
@@ -582,7 +582,7 @@ Ha ki a részét a DS sorozatú virtuális gépek ellenőrzése [ebben a cikkben
 
 További információ a Premium Storage itt található: <https://azure.microsoft.com/blog/2015/04/16/azure-premium-storage-now-generally-available-2>
 
-#### <a name="azure-storage-accounts"></a>Azure-tárfiókok
+#### <a name="azure-storage-accounts"></a>Azure Storage-tárfiókok
 
 Szolgáltatások vagy az Azure-beli virtuális gépek telepítésekor VHD-k és a Virtuálisgép-rendszerképek üzembe helyezése, Azure Storage-fiókok nevű egységek rendszerezheti. Az Azure-telepítés tervezésekor alaposan gondolja át, a korlátozások az Azure kell. Az egyik oldalán nincs a Storage-fiókok csak korlátozott számú Azure-előfizetésenként. Bár minden Azure Storage-fiók képes tárolni a VHD-fájlok nagy számú, rögzített korlátozva van a teljes iops-értékkel / Storage-fiókot. Száz SAP virtuális gép létrehozása jelentős i/o-hívásokat az adatbázis-kezelő rendszerekkel való telepítésekor ajánlott magas iops-t az adatbázis-kezelő virtuális több Azure Storage-fiókok közötti elosztására. Ügyelni kell, nem haladhatja meg az Azure Storage-fiókok aktuális korlát előfizetésenként. Mivel a tárolás fontos részei az SAP-rendszer adatbázis üzembe, a fogalom részletesebben hivatkozott már tárgyalt [DBMS üzembe helyezési útmutató][dbms-guide].
 
@@ -1001,7 +1001,7 @@ Az Azure infrastruktúra-szolgáltatás nem egy egyirányú utcában csak tudnak
 
 A letöltés ideje alatt a VHD-k vagy a felügyelt lemezeket nem lehet aktív. Akkor is, ha a letöltés lemezek, amelyek csatlakoztatva vannak a virtuális gépek, a virtuális gép leállítása és felszabadítása van szüksége. Ha csak szeretné letölteni a használandó, majd állítsa be az adatbázis tartalmat egy új rendszer a helyszínen, ha elfogadható, amelyek a letöltés idején és az új rendszerre, hogy a rendszer az Azure-ban is beállítása során kell működési , sikerült hosszú kialakításának lemezzé tömörített adatbázis biztonsági mentésének végrehajtásával, és csak töltse le a lemezt, hanem is az operációs rendszer alap virtuális Gépet.
 
-#### <a name="powershell"></a>Powershell
+#### <a name="powershell"></a>PowerShell
 
 * Felügyelt lemez letöltése  
   Először az alapul szolgáló blob a felügyelt lemez eléréséhez. Ezután az alapul szolgáló blob átmásolása egy új tárfiókot, és a blob letöltése a storage-fiókból.
@@ -1061,7 +1061,7 @@ Adatlemezek is tárolhatók az Azure Storage-fiókban VHD-fájlok formájában, 
 
 Az adatlemezeket is Managed Disks. Ebben az esetben a felügyelt lemezt használja egy új felügyelt lemez létrehozása előtt a virtuális géphez csatolni. A felügyelt lemez neve erőforráscsoporton belül egyedinek kell lennie.
 
-##### <a name="powershell"></a>Powershell
+##### <a name="powershell"></a>PowerShell
 
 Azure PowerShell-parancsmagok segítségével másolja egy VHD-t, ahogyan az [Ez a cikk][storage-powershell-guide-full-copy-vhd]. Új felügyelt lemez létrehozása, használja a New-AzDiskConfig és New-AzDisk lehetőséget, az alábbi példában látható módon.
 
@@ -1089,7 +1089,7 @@ Az Azure Storage-tallózók Professional kiadása esetén itt található:
 
 A virtuális merevlemez másolatának készítése magát a tárfiókon belül egy olyan folyamat, amely (SAN-hardverre pillanatképeket létrehozni a Lusta másolása és másolási írás hasonló) csak néhány másodpercet vesz igénybe. Miután a VHD-fájl egy példányát, csatlakoztat egy virtuális géphez, vagy másolja a virtuális merevlemez csatlakoztatása a virtuális gépek képként használni.
 
-##### <a name="powershell"></a>Powershell
+##### <a name="powershell"></a>PowerShell
 
 ```powershell
 # attach a vhd to a vm
@@ -1135,7 +1135,7 @@ az vm disk attach --disk <new disk name or managed disk id> --resource-group <re
 #### <a name="9789b076-2011-4afa-b2fe-b07a8aba58a1"></a>Az Azure Storage-fiókok közötti lemezek másolása
 Ez a feladat nem hajtható végre az Azure Portalon. Azure PowerShell parancsmagok, Azure CLI-vel vagy egy külső tároló böngészőben is használhatja. A PowerShell-parancsmagokkal vagy a parancssori felület parancsai hozzon létre és kezelheti a blobokat, amelyek között megtalálható a blobok aszinkron módon másolása Tárfiókok között, és az Azure-előfizetésen belül-régiók között.
 
-##### <a name="powershell"></a>Powershell
+##### <a name="powershell"></a>PowerShell
 Virtuális merevlemezek előfizetések között is másolhatja. További információkért olvassa el [Ez a cikk][storage-powershell-guide-full-copy-vhd].
 
 A PS-parancsmag logika használt alapvető folyamat a következőhöz hasonló:
@@ -1181,7 +1181,7 @@ További példák: [Ez a cikk][storage-azure-cli-copy-blobs].
 
 A virtuális gép és a kapcsolódó lemezek szerkezete kezelésének ideális egyszerű kell lenniük. A helyszíni telepítésekre, az ügyfelek fejlesztett, strukturálja a kiszolgáló telepítése számos módon.
 
-* Egy alap lemez, amelyre az operációs rendszer és az adatbázis-kezelő és/vagy az SAP minden bináris fájl tartalmaz. 2015. március óta a lemez lehet akár 1TB-nál, legfeljebb 127 GB korábbi korlátozások helyett.
+* Egy alap lemez, amelyre az operációs rendszer és az adatbázis-kezelő és/vagy az SAP minden bináris fájl tartalmaz. 2015\. március óta a lemez lehet akár 1TB-nál, legfeljebb 127 GB korábbi korlátozások helyett.
 * Egy vagy több lemez, amely tartalmazza a DBMS naplófájl, az SAP adatbázis és az adatbázis-kezelő ideiglenes tárterület naplófájl (ha az adatbázis-kezelő támogatja ezt). Ha az adatbázis naplózási IOPS követelményeknek magas, szüksége több lemez stripe-elérése érdekében a szükséges IOPS-kötetet.
 * Az SAP adatbázis egy vagy két adatbázis-fájlokat és az adatbázis-kezelő ideiglenes adatokat fájlokat is tartalmazó, (ha az adatbázis-kezelő támogatja ezt) lemezek száma.
 
@@ -1332,7 +1332,7 @@ A tűzfal konfigurálása a virtuális gépek, az SAP-rendszer a bejövő forgal
 > ![Windows][Logo_Windows] Windows
 >
 > Az Azure üzembe helyezett virtuális Gépen belül a Windows tűzfal alapértelmezés szerint be van kapcsolva. Most már engedélyeznie kell a SAP-portot kell megnyitni, ellenkező esetben az SAP grafikus felhasználói Felülettel nem lesz képes csatlakozni.
-> Ehhez tegye az alábbiakat:
+> Ehhez tegye a következőket:
 >
 > * Nyissa meg a vezérlőpult\rendszer és biztonság\windows tűzfal **speciális beállítások**.
 > * Most kattintson a jobb gombbal a bejövő szabályok és a választott **új szabály**.
@@ -1374,7 +1374,7 @@ Feltételezzük, létrehozott egy Virtuálisgép-lemezkép fejezet egyes szakasz
 
 A forgatókönyv megvalósításához a eseménysorozat így néz ki:
 
-##### <a name="powershell"></a>Powershell
+##### <a name="powershell"></a>PowerShell
 
 * Hozzon létre egy új erőforráscsoportot, minden képzési/bemutató fekvő
 
@@ -1489,7 +1489,7 @@ $vm = Get-AzVM -ResourceGroupName $rgName -Name SAPERPDemo
 Add-AzVMDataDisk -VM $vm -Name datadisk -DiskSizeInGB 1023 -CreateOption empty -Lun 0 | Update-AzVM
 ```
 
-##### <a name="cli"></a>CLI
+##### <a name="cli"></a>parancssori felület
 
 Az alábbi példakód Linux rendszeren használható. A Windows, a PowerShell használata a fent leírt vagy alkalmazkodnak a példa a(z) % rgName % használhatja $rgName helyett, és a környezeti változót a Windows paranccsal *beállítása*.
 
@@ -1633,8 +1633,8 @@ A tipikus SAP az alábbi táblázatban a kommunikációs portok vannak felsorolv
 | --- | --- | --- | --- | --- |
 | Diszpécser |sapdp`<nn>` lásd: * |3201 |3200 - 3299 |SAP Dispatcher, az SAP grafikus felhasználói felület a Windows- és Java által használt |
 | Üzenetkiszolgáló |sapms`<sid`> see ** |3600 |ingyenes sapms`<anySID`> |sid = SAP-System-ID |
-| Átjáró |sapgw`<nn`> lásd: * |3301 |ingyenes |SAP-átjáróhoz, CPIC és RFC-kommunikációhoz használt |
-| Az SAP-útválasztó |sapdp99 |3299 |ingyenes |Csak CI (központi példány) szolgáltatásnevek máshoz lehessen rendelni ezeket /etc/services egy tetszőleges értéket a telepítés után. |
+| Átjáró |sapgw`<nn`> lásd: * |3301 |Ingyenes |SAP-átjáróhoz, CPIC és RFC-kommunikációhoz használt |
+| Az SAP-útválasztó |sapdp99 |3299 |Ingyenes |Csak CI (központi példány) szolgáltatásnevek máshoz lehessen rendelni ezeket /etc/services egy tetszőleges értéket a telepítés után. |
 
 *) Neurális hálózat = SAP-példányok száma
 
@@ -1658,7 +1658,7 @@ A helyszíni TCP/IP-alapú hálózati nyomtatók egy Azure-beli virtuális gépe
 - - -
 > ![Windows][Logo_Windows] Windows
 >
-> Ehhez tegye az alábbiakat:
+> Ehhez tegye a következőket:
 >
 > * Egyes hálózati nyomtatók kapható a konfigurációs varázsló, ami lehetővé teszi az egyszerűen beállítható a nyomtató-Azure-beli virtuális gépen. Ha a varázsló szoftvert még nem volt terjesztve a nyomtatóval, a manuális állítsa be a nyomtató módja hozzon létre egy új TCP/IP nyomtatóportot.
 > * Nyissa meg a Vezérlőpult -> eszközök és nyomtatók > Nyomtató hozzáadása
@@ -2030,7 +2030,7 @@ Az adatbázis-kezelő a biztonsági mentés DBMS-specifikus módszerekkel leírt
 Más virtuális gépein az SAP-rendszer Azure virtuális gépek biztonsági mentésének funkciójával is készíthető. Az Azure virtuális gépek biztonsági mentése a szabványos módszer biztonsági mentése egy teljes virtuális gép az Azure-ban. Az Azure Backup tárolja a biztonsági másolatokat az Azure-ban, és lehetővé teszi a virtuális gépek visszaállítását újra.
 
 > [!NOTE]
-> 2015. december használatával a virtuális gép biztonsági mentése nem őrzi az egyedi virtuális gép azonosítója az SAP használt licencelése. Ez azt jelenti, hogy egy virtuális gép biztonsági másolat visszaállítása egy új SAP licenckulcs telepíteni kell, ahogy a visszaállított virtuális Gépet egy új virtuális Gépet, és nem helyettesíti az elsőt megtörtént amelyhez kell tekinteni.
+> 2015\. december használatával a virtuális gép biztonsági mentése nem őrzi az egyedi virtuális gép azonosítója az SAP használt licencelése. Ez azt jelenti, hogy egy virtuális gép biztonsági másolat visszaállítása egy új SAP licenckulcs telepíteni kell, ahogy a visszaállított virtuális Gépet egy új virtuális Gépet, és nem helyettesíti az elsőt megtörtént amelyhez kell tekinteni.
 >
 > ![Windows][Logo_Windows] Windows
 >
@@ -2053,7 +2053,7 @@ Mid 2014 óta különféle összetevőket Hyper-V, a System Center és az Azure-
 
 Ez a megoldás üzembe helyezése a részletező blog itt dokumentált: <https://blogs.msdn.com/b/saponsqlserver/archive/2014/11/19/protecting-sap-solutions-with-azure-site-recovery.aspx>.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 A magas rendelkezésre állású legfontosabb pontjait az Azure-beli SAP-rendszerek a következők:
 

@@ -3,19 +3,19 @@ title: Telepítse a beszédfelismerési tárolókhoz
 titleSuffix: Azure Cognitive Services
 description: Telepítheti és futtathatja a beszédfelismerési tárolókhoz. Hang-szöveg transzformációs transcribes audio-adatfolyamokat valós idejű, amelyek az alkalmazások, eszközök és eszközök használata vagy megjelenítendő szöveg. Szöveg-hang transzformációs emberszerű szintetizált alakítja át a bemeneti szöveg.
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.author: diberry
-ms.openlocfilehash: 763e7bc9298eee1ab602968360bbc79a58243e5b
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.date: 06/11/2019
+ms.author: dapine
+ms.openlocfilehash: 93ae5dd00a7be929f7aa4ac8c35a30b856f0b3ad
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66752440"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072474"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Telepítse és futtassa a Speech Service-tárolók
 
@@ -23,7 +23,7 @@ Beszédfelismerési tárolókhoz ügyfeleink hozhat létre egy beszéd architekt
 
 A két speech tárolók **hang-szöveg transzformációs** és **szöveg-hang transzformációs**. 
 
-|Függvény|Szolgáltatások|Legújabb|
+|Függvény|Szolgáltatások|legfrissebb|
 |-|-|--|
 |Speech-to-text| <li>Transcribes folyamatos valós idejű beszéd vagy kötegelt hangfelvételeket szöveggé a köztes eredményeket.|1.1.1|
 |Szövegfelolvasás| <li>Az írott szöveget természetesnek hangzó beszéddé alakítja. az egyszerű szöveges beviteli vagy beszéd összefoglaló Markup Language (SSML). |1.1.0|
@@ -71,14 +71,13 @@ A következő táblázat ismerteti a minimális és ajánlott processzormagot é
 
 * Egyes maghoz kell lennie legalább 2.6-os gigahertz (GHz) vagy gyorsabb.
 
-
 Core és a memória felel meg a `--cpus` és `--memory` beállítások, amelyek részeként használhatók a `docker run` parancsot.
 
-**Megjegyzés:** ; A minimális és ajánlott alapulnak, Docker-korlátok, minden *nem* a fogadó számítógép-erőforrásokat. Például a hang-szöveg transzformációs tárolók memória térkép részeit nagy nyelvi modell, és van _ajánlott_ , amely a teljes fájlt a memóriába, ami egy további 4 – 6 GB megfelel-e. Ezenkívül az első futtatásakor vagy a tároló hosszabb időt vehet igénybe, mivel a rendszer – lapozható modellek a memóriába.
+**Megjegyzés:** ; A minimális és ajánlott alapulnak, Docker-korlátok, minden *nem* a fogadó számítógép-erőforrásokat. Például a hang-szöveg transzformációs tárolók memória térkép részeit nagy nyelvi modell, és van _ajánlott_ , amely a teljes fájlt a memóriába, ami egy további 4 – 6 GB megfelel-e. Ezenkívül az első futtatásakor vagy a tároló hosszabb időt vehet igénybe, mivel vannak – lapozható modellek a memóriába.
 
 ## <a name="get-the-container-image-with-docker-pull"></a>A tárolórendszerkép beolvasása `docker pull`
 
-A beszédfelismerés tárolórendszerképek érhetők el. 
+A beszédfelismerés tárolórendszerképek érhetők el.
 
 | Tároló | Tárház |
 |-----------|------------|
@@ -89,7 +88,7 @@ A beszédfelismerés tárolórendszerképek érhetők el.
 
 ### <a name="language-locale-is-in-container-tag"></a>Nyelvi kódot tároló címke szerepel.
 
-A `latest` címkézése lekéri a `en-us` területi beállítás és `jessarus` hangalapú. 
+A `latest` címkézése lekéri a `en-us` területi beállítás és `jessarus` hangalapú.
 
 #### <a name="speech-to-text-locales"></a>Beszéd szöveges területi beállításokhoz
 
@@ -118,7 +117,6 @@ A következő táblázat sorolja fel az támogatott nyelveit **hang-szöveg tran
 |koreai|`ko-kr`|
 |portugál|`pt-br`|
 |spanyol|`es-es`<br>`es-mx`|
-
 
 #### <a name="text-to-speech-locales"></a>Szöveg-beszéd átalakítás területi beállítások
 
@@ -171,8 +169,8 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 
 Ha a tároló a [gazdaszámítógép](#the-host-computer), a következő eljárás használható a tárolóval.
 
-1. [A tároló futtatásához](#run-the-container-with-docker-run), a szükséges, de nem használt számlázási beállításokkal. További [példák](speech-container-configuration.md#example-docker-run-commands) , a `docker run` parancs érhetők el. 
-1. [A tároló előrejelzési végpontja lekérdezése](#query-the-containers-prediction-endpoint). 
+1. [A tároló futtatásához](#run-the-container-with-docker-run), a szükséges, de nem használt számlázási beállításokkal. További [példák](speech-container-configuration.md#example-docker-run-commands) , a `docker run` parancs érhetők el.
+1. [A tároló előrejelzési végpontja lekérdezése](#query-the-containers-prediction-endpoint).
 
 ## <a name="run-the-container-with-docker-run"></a>A tároló futtatásához `docker run`
 
@@ -194,7 +192,7 @@ docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
 containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech \
 Eula=accept \
 Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY} 
+ApiKey={BILLING_KEY}
 ```
 
 ### <a name="speech-to-text"></a>Speech-to-text
@@ -204,7 +202,7 @@ docker run --rm -it -p 5000:5000 --memory 2g --cpus 2 \
 containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text \
 Eula=accept \
 Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY} 
+ApiKey={BILLING_KEY}
 ```
 
 Ezzel a paranccsal:
@@ -212,7 +210,7 @@ Ezzel a paranccsal:
 * A tároló rendszerképét Speech tárolóban fut
 * Foglalja le a 2 processzormagot és memóriát 2 gigabájt (GB)
 * Elérhetővé teszi az 5000-es TCP-porton és a egy pszeudo-TTY lefoglalja a tároló
-* Után kilép, automatikusan eltávolítja a tárolót. A tároló rendszerképét az továbbra is elérhető az állomáson. 
+* Után kilép, automatikusan eltávolítja a tárolót. A tároló rendszerképét az továbbra is elérhető az állomáson.
 
 > [!IMPORTANT]
 > A `Eula`, `Billing`, és `ApiKey` beállítások meg kell adni a tároló futtatásához; ellenkező esetben a tároló nem indul el.  További információkért lásd: [számlázási](#billing).
@@ -241,7 +239,9 @@ var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRe
 a tároló végpontja használatával metódust:
 
 ```C#
-var config = SpeechConfig.FromEndpoint("ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1", "YourSubscriptionKey");
+var config = SpeechConfig.FromEndpoint(
+    new Uri("ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1"),
+    "YourSubscriptionKey");
 ```
 
 #### <a name="for-python"></a>A Pythonhoz
@@ -262,9 +262,7 @@ speech_config = speechsdk.SpeechConfig(subscription=speech_key, endpoint="ws://l
 
 A tároló található API-k REST-végpontot biztosít [Itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech) és -példákat [Itt](https://azure.microsoft.com/resources/samples/cognitive-speech-tts/).
 
-
 [!INCLUDE [Validate container is running - Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
-
 
 ## <a name="stop-the-container"></a>Állítsa le a tároló
 
@@ -272,11 +270,11 @@ A tároló található API-k REST-végpontot biztosít [Itt](https://docs.micros
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-A tároló futtatásakor használ-e a tároló **stdout** és **stderr** a kimeneti információt, amely segítségére lehet a hibaelhárítás indítása, vagy a tároló futtatása közben történik. 
+A tároló futtatásakor használ-e a tároló **stdout** és **stderr** a kimeneti információt, amely segítségére lehet a hibaelhárítás indítása, vagy a tároló futtatása közben történik.
 
 ## <a name="billing"></a>Számlázás
 
-Beszéd tárolók Küldés a számlázási adatokat az Azure-ba, a használatával egy _Speech_ erőforrást az Azure-fiókjával. 
+Beszéd tárolók Küldés a számlázási adatokat az Azure-ba, a használatával egy _Speech_ erőforrást az Azure-fiókjával.
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 

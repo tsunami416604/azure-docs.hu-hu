@@ -7,15 +7,15 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
-ms.date: 05/28/2019
-ms.openlocfilehash: 6e7e07d130c8c4c8fa776dcad539398a004ecea0
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.date: 06/11/2019
+ms.openlocfilehash: 42bfa571818efa4d4a5ad96f62a47fb2b80dca3c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66298910"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057564"
 ---
-# <a name="what-is-azure-hdinsight-and-the-apache-hadoop-technology-stack"></a>Mi az Azure HDInsight és az Apache Hadoop-technológiák?
+# <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Mi az Azure HDInsight az Apache Hadoop?
 
 Ebben a cikkben megismerkedhet az Azure HDInsight-alapú Apache Hadooppal. Az Azure HDInsight egy teljes körűen felügyelt, teljes körű, nyílt forráskódú analitikai szolgáltatás nagyvállalatok számára a felhőben. Nyílt forráskódú keretrendszereket, mint a Hadoop-, Apache Spark, az Apache Hive, LLAP, Apache Kafka, Apache Storm, R, és további is használhatja. 
 
@@ -25,7 +25,7 @@ Ebben a cikkben megismerkedhet az Azure HDInsight-alapú Apache Hadooppal. Az Az
 Az [Apache Hadoop](https://hadoop.apache.org/) volt a big data jellegű adatkészletek fürtökön végzett elosztott feldolgozásának, tárolásának és elemzésének eredeti nyílt forráskódú keretrendszere. A Hadoop-technológiák tartalmaz a kapcsolódó szofverek és segédprogramok, többek között az Apache Hive, az Apache HBase, Spark, Kafka és sok más.
 
 
-Az Azure HDInsight a [Hortonworks Data Platform (HDP)](https://hortonworks.com/products/data-center/hdp/) által fejlesztett Hadoop-összetevők felhőalapú terjesztett változata. Az Azure HDInsight segítségével könnyen, gyorsan és költséghatékonyan dolgozható fel nagy mennyiségű adat. Használhat olyan népszerű, nyílt forráskódú keretrendszereket, mint a Hadoop, a Spark, a Hive, az LLAP, a Kafka, a Storm, az R stb. Ezekkel a keretrendszerekkel a forgatókönyvek széles körét alkalmazhatja, köztük kinyerési, átalakítási és betöltési (ETL) feladatokat, adatraktározást, gépi tanulást és az IoT-t.
+Az Azure HDInsight Hadoop-összetevők felhőalapú terjesztett. Az Azure HDInsight segítségével könnyen, gyorsan és költséghatékonyan dolgozható fel nagy mennyiségű adat. Használhat olyan népszerű, nyílt forráskódú keretrendszereket, mint a Hadoop, a Spark, a Hive, az LLAP, a Kafka, a Storm, az R stb. Ezekkel a keretrendszerekkel a forgatókönyvek széles körét alkalmazhatja, köztük kinyerési, átalakítási és betöltési (ETL) feladatokat, adatraktározást, gépi tanulást és az IoT-t.
 
 A HDInsight elérhető Hadoop-technológiák összetevőinek megtekintéséhez lásd: [elérhető HDInsight-összetevők és verziók](../hdinsight-component-versioning.md). További tudnivalók a HDInsightban használt Hadoopról [az Azure-szolgáltatások HDInsightra vonatkozó oldalán](https://azure.microsoft.com/services/hdinsight/) olvashatók.
 
@@ -140,7 +140,4 @@ A jól ismert üzletiintelligencia- (BI-) eszközök a Power Query beépülő mo
 
 ## <a name="next-steps"></a>További lépések
 
-Ebből a cikkből megismerte az Azure HDInsightot, továbbá hogy a HDInsight hogyan biztosítja a Hadoopot és egyéb fürttípusokat az Azure-ban. A következő cikkből megtudhatja, hogyan hozhat létre Apache Hadoop-fürtöket a HDInsightban.
-
-> [!div class="nextstepaction"]
-> [A HDInsight Apache Hadoop-fürt létrehozása](apache-hadoop-linux-create-cluster-get-started-portal.md)
+* [A HDInsight Apache Hadoop-fürt létrehozása](apache-hadoop-linux-create-cluster-get-started-portal.md)

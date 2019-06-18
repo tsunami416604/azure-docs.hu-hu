@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 8e9101a1e23d361e66c5c30969069cbd4b971590
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f63ceb6a80f253ea1661d215939705f8e39f3e58
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236766"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67119295"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Öt lépést a személyazonosság-infrastruktúra védelme
 
@@ -36,7 +36,7 @@ Az alábbi ellenőrzőlista segít gyorsan üzembe helyezhet a kritikus fontoss�
 
 Az ajánlások a dokumentum összhangban legyenek a [identitás biztonságos pontszám](https://docs.microsoft.com/azure/active-directory/fundamentals/identity-secure-score), egy automatikus az Azure AD-bérlő identitás biztonsági konfigurációfelméréssel. Szervezetek használhatják az identitás biztonságos pontszám oldal az Azure AD portálon való azok aktuális biztonsági beállításait, akkor hajtsa végre az aktuális Microsoft gyakorlati tanácsok a biztonsági a lefedettségi hézagok meghatározása. Minden javaslat megvalósítása a biztonságos pontszám oldalon növelheti a pontszám, és segítségével nyomon követheti az előrehaladást, valamint segítséget nyújtanak az implementáció más hasonló méretű szervezetek vagy az iparág összehasonlítása.
 
-![Identitásbiztonsági pontszám](media/azure-ad/azure-ad-sec-steps0.png)
+![Biztonságos identitás-pontszám](media/azure-ad/azure-ad-sec-steps0.png)
 
 ## <a name="before-you-begin-protect-privileged-accounts-with-mfa"></a>Előkészületek: Az MFA kiemelt jogosultságú fiókok védelméhez
 
@@ -46,7 +46,7 @@ Kiemelt jogosultságú fiókok feletti beolvasása, akik teheti áttekintse kár
 
 Minden állítható be? Első lépések az ellenőrzőlista a.
 
-## <a name="step-1---strengthen-your-credentials"></a>1. lépés – a hitelesítő adatok megerősítése 
+## <a name="step-1---strengthen-your-credentials"></a>1\. lépés – a hitelesítő adatok megerősítése 
 
 A legtöbb vállalati biztonsági résekkel szemben származnak, egy olyan fiókkal, az egyik módszer, például a jelszó megfelelő, illetéktelen behatolás visszajátszását vagy adathalász néhány biztonsága sérült. További információ a ezeket a támadásokat, ez a videó (45 perc):
 > [!VIDEO https://www.youtube.com/embed/uy0j1_t5Hd4]
@@ -89,7 +89,7 @@ Konfigurálhatja az alkalmazásokat közvetlenül az Azure AD-hitelesítést a s
 
 Használatával [Windows Hello](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification), lecserélheti ezen jelszavak erős, kétfaktoros hitelesítés a számítógépek és mobileszközök felügyeletét. Ez a hitelesítési módszer új típusú a felhasználói hitelesítő adatok, amelyek biztonságosan eszközhöz kötődik, és a egy biometrikus adatokat vagy PIN-kódot használja.
 
-## <a name="step-2---reduce-your-attack-surface"></a>2. lépés – a támadási felület csökkentése
+## <a name="step-2---reduce-your-attack-surface"></a>2\. lépés – a támadási felület csökkentése
 
 Adja meg a jelszót biztonsági sérülés elterjedtségével, minimalizálja a támadási felületet a szervezetben, kritikus fontosságú. Távolítsa el a régebbi, kevésbé biztonságos protokollok, korlátozza az access belépési pontok, és ilyen erőforrásokhoz való rendszergazdai hozzáférés jelentősebb ellenőrzést csökkentheti a támadási felület.
 
@@ -103,7 +103,7 @@ Saját örökölt módszerekkel fér hozzá vállalati adatokhoz, és az Azure A
 
 ### <a name="block-invalid-authentication-entry-points"></a>Blokk érvénytelen hitelesítési belépési pontok
 
-A feltételezése megsértésére védekezőknek használ, meg kell csökkentésében feltört felhasználói hitelesítő adatok esetén azokat. A környezetében lévő minden egyes alkalmazás fontolja meg az érvényes használati esetek: mely csoportokat, hálózatok, mely eszközök és az egyéb elemek jogosult –, majd a többi letiltása. A [Azure AD feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal), szabályozhatja, hogyan jogosult felhasználók hozzáférésének a alkalmazások és erőforrások adott feltételek alapján határozza meg.
+A feltételezése megsértésére védekezőknek használ, meg kell csökkentésében feltört felhasználói hitelesítő adatok esetén azokat. A környezetében lévő minden egyes alkalmazás fontolja meg az érvényes használati esetek: mely csoportokat, hálózatok, mely eszközök és az egyéb elemek jogosult –, majd a többi letiltása. A [Azure AD feltételes hozzáférési](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal), szabályozhatja, hogyan jogosult felhasználók hozzáférésének a alkalmazások és erőforrások adott feltételek alapján határozza meg.
 
 ### <a name="block-end-user-consent"></a>A végfelhasználói jóváhagyási letiltása
 
@@ -124,7 +124,7 @@ Engedélyezze az Azure AD PIM-ben, majd a hozzárendelt rendszergazdai szerepkö
 
 Telepítésének részeként a rendszerjogosultságú fiókot folyamat, kövesse a [ajánlott eljárás az, hogy hozzon létre legalább két vészhelyzeti fiókokat](https://docs.microsoft.com/azure/active-directory/admin-roles-best-practices) , hogy az Azure AD hozzáférési rendelkezik, ha Ön zárolja önmagát.
 
-## <a name="step-3---automate-threat-response"></a>3. lépés – reagáláshoz automatizálása
+## <a name="step-3---automate-threat-response"></a>3\. lépés – reagáláshoz automatizálása
 
 Az Azure Active Directory számos képesség, amely automatikusan a támadások, az észlelés és válasz a késés eltávolítása intercept rendelkezik. Csökkentheti a költségeket és a kockázatok, ha csökkenti az idő bűnözők beágyazása saját magukat a környezet használatával. Az alábbiakban a konkrét lépéseket is igénybe vehet.
 
@@ -140,7 +140,7 @@ Bejelentkezési kockázati annak a valószínűségét, a fiók tulajdonosa nem 
 
 ![Bejelentkezés névtelen IP-címekről](media/azure-ad/azure-ad-sec-steps2.png)
 
-## <a name="step-4---increase-your-awareness"></a>4. lépés – a irányuljon
+## <a name="step-4---increase-your-awareness"></a>4\. lépés – a irányuljon
 
 Naplózás és a biztonsággal kapcsolatos eseményeket és a kapcsolódó riasztások naplózása egy hatékony védelme stratégia alapvető összetevői. A biztonsági naplók és jelentések biztosítja a gyanús tevékenységek és a mintákat, amelyek a hálózat és a belső támadásokkal külső behatolás történt kísérlet, vagy sikeres lehet, hogy észlelni a Súgó elektronikus rekord. Naplózás segítségével figyelheti a felhasználói tevékenység, a dokumentum a jogszabályoknak való megfelelőség, hajtsa végre a nyomkereső elemzésekkel és több. Riasztások adja meg a biztonsági események értesítések.
 
@@ -168,7 +168,7 @@ Az Azure AD Identity Protection a célszerű figyelemmel kísérni napi két fon
 
 Felhasználók is lehet címeket ágyaznak ellenőrizheti, hogy a feltört webhelyek vagy alkalmazások, amely hozzáfér a saját profil és a felhasználó adatok, például az e-mailjeikhez. Egy rosszindulatú aktor használhatja a postaláda tartalmak titkosításához, és kereslet-postaláda adatait elhárította a ransom kapott jóváhagyott engedélyeket. [A rendszergazdák ekkor a felülvizsgálandó és naplózási](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) a felhasználó által megadott engedélyekkel.
 
-## <a name="step-5---enable-end-user-self-help"></a>5. lépés - a végfelhasználói önsegítő engedélyezése
+## <a name="step-5---enable-end-user-self-help"></a>5\. lépés - a végfelhasználói önsegítő engedélyezése
 
 Lehetőség szerint érdemes hatékonyságú biztonsági elosztása érdekében. A témakörgyűjtemény azonos hamarosan eléri a, hosszú távon határozza meg a biztonság alaprendszert így juthat fennakadások nélkül használható eltávolíthatja a szervezet úgy a felhasználók fennmaradó vigilant közben. 
 
@@ -184,7 +184,7 @@ Az Azure AD lehetővé teszi a biztonsági és Office 365-csoportok használatá
 
 A [az Azure AD hozzáférési felülvizsgálatok](https://docs.microsoft.com/azure/active-directory/active-directory-azure-ad-controls-access-reviews-overview), akkor is kezelhetik a csoporttagságokat, hozzáférés a vállalati alkalmazásokhoz, és ellenőrizze, hogy egy biztonsági szabvány, amely a hozzáférést a felhasználóknak a megmaradjanak a kiemelt szerepkörök hozzárendeléseit kiterjesztett időszakok idő, amikor nincs szükségük van rá.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Sok szempontot, biztonságos identitás-infrastruktúrát, de az 5. lépés – ellenőrzőlista segít gyorsan elvégezni egy biztonságosabb és biztonságos identitás-infrastruktúrát:
 

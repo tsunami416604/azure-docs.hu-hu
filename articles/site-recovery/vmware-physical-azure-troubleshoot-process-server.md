@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 04/29/2019
 ms.author: raynew
 ms.openlocfilehash: 6e31308800f72d60381f1e4ecd540482ba263851
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65969364"
 ---
 # <a name="troubleshoot-the-process-server"></a>A folyamatkiszolgáló hibaelhárítása
@@ -45,13 +45,13 @@ Hibaelhárítás első lépéseként állapotát és a folyamatkiszolgáló áll
 
 ![Folyamat kiszolgáló állapotának hibaelhárítása](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-process-server-health.png)
 
-## <a name="step-1-troubleshoot-process-server-health-alerts"></a>1. lépés: Kiszolgáló állapotriasztások folyamat hibaelhárítása
+## <a name="step-1-troubleshoot-process-server-health-alerts"></a>1\. lépés: Kiszolgáló állapotriasztások folyamat hibaelhárítása
 
 A folyamatkiszolgáló állít elő, hogy a health-riasztások száma. A riasztások és a javasolt műveleteket, az alábbi táblázat foglalja össze.
 
 **Riasztás típusa** | **Hiba történt** | **Hibaelhárítás**
 --- | --- | --- 
-![Kifogástalan][green] | Egyik sem  | A folyamatkiszolgáló csatlakoztatva és működik megfelelően.
+![Kifogástalan][green] | None  | A folyamatkiszolgáló csatlakoztatva és működik megfelelően.
 ![Figyelmeztetés][yellow] | A megadott szolgáltatások nem futnak. | 1. Ellenőrizze, hogy a szolgáltatások futnak-e.<br/> 2. Ha szolgáltatásokat az elvárt módon futnak, hajtsa végre az alatt látható utasításokat követve [kapcsolatot és a replikációs hibaelhárítás](#check-connectivity-and-replication).
 ![Figyelmeztetés][yellow]  | Processzor kihasználtsága > 80 % az elmúlt 15 percben. | 1. Ne adjon hozzá új gépek.<br/>2. Ellenőrizze, hogy a virtuális gépek használatával a folyamatkiszolgáló igazodnak-e [korlátok definiált](site-recovery-plan-capacity-vmware.md#capacity-considerations), és érdemes beállítani egy [további folyamatkiszolgáló](vmware-azure-set-up-process-server-scale.md).<br/>3. Kövesse a lenti útmutatást [kapcsolatot és a replikációs hibaelhárítás](#check-connectivity-and-replication).
 ![Kritikus][red] |  Processzor kihasználtsága > 95 % az elmúlt 15 percben. | 1. Ne adjon hozzá új gépek.<br/>2. Ellenőrizze, hogy a virtuális gépek használatával a folyamatkiszolgáló igazodnak-e [korlátok definiált](site-recovery-plan-capacity-vmware.md#capacity-considerations), és érdemes beállítani egy [további folyamatkiszolgáló](vmware-azure-set-up-process-server-scale.md).<br/>3. Kövesse a lenti útmutatást [kapcsolatot és a replikációs hibaelhárítás](#check-connectivity-and-replication).<br/> 4. Ha a probléma nem szűnik meg, futtassa a [Deployment Planner](https://aka.ms/asr-v2a-deployment-planner) VMware/fizikai kiszolgáló replikációjához.
@@ -65,11 +65,11 @@ A folyamatkiszolgáló állít elő, hogy a health-riasztások száma. A riaszt�
 ![tábla kulcsa](./media/vmware-physical-azure-troubleshoot-process-server/table-key.png)
 
 
-## <a name="step-2-check-process-server-services"></a>2. lépés: Ellenőrizze a folyamatkiszolgáló szolgáltatásai
+## <a name="step-2-check-process-server-services"></a>2\. lépés: Ellenőrizze a folyamatkiszolgáló szolgáltatásai
 
 Szolgáltatások, amelyek a folyamatkiszolgáló futnia kell az alábbi táblázat foglalja össze. A szolgáltatások, attól függően, hogyan helyezünk üzembe a folyamatkiszolgáló kisebb különbségek vannak. 
 
-Kivéve a Microsoft Azure Recovery Services Agent (obengine) szolgáltatásokhoz, ellenőrizze, hogy a lefokozáskor értéke **automatikus** vagy **automatikus (Késleltetett indítás)**.
+Kivéve a Microsoft Azure Recovery Services Agent (obengine) szolgáltatásokhoz, ellenőrizze, hogy a lefokozáskor értéke **automatikus** vagy **automatikus (Késleltetett indítás)** .
  
 **Üzembe helyezés** | **Futó szolgáltatások**
 --- | ---
@@ -78,7 +78,7 @@ Kivéve a Microsoft Azure Recovery Services Agent (obengine) szolgáltatásokhoz
 **Üzembe helyezett Azure-ban feladat-visszavételi folyamatkiszolgáló** | ProcessServer; ProcessServerMonitor; cxprocessserver; Az InMage PushInstall; Napló feltöltési szolgáltatás (LogUpload)
 
 
-## <a name="step-3-check-the-process-server-heartbeat"></a>3. lépés: Ellenőrizze a folyamat kiszolgálói szívverés
+## <a name="step-3-check-the-process-server-heartbeat"></a>3\. lépés: Ellenőrizze a folyamat kiszolgálói szívverés
 
 Ha nem érkezett szívverés a folyamatkiszolgálóról (hibakód: 806), tegye a következőket:
 
@@ -94,15 +94,15 @@ Ha nem érkezett szívverés a folyamatkiszolgálóról (hibakód: 806), tegye a
 ![Kapcsolat és a replikáció hibaelhárítása](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-connectivity-replication.png)
 
 
-## <a name="step-4-verify-time-sync-on-source-machine"></a>4. lépés: Ellenőrizze a forrásgépen idő szinkronizálása
+## <a name="step-4-verify-time-sync-on-source-machine"></a>4\. lépés: Ellenőrizze a forrásgépen idő szinkronizálása
 
 Győződjön meg arról, hogy a rendszer dátum/idő a replikált gép szinkronizálva-e. [További információ](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
 
-## <a name="step-5-check-anti-virus-software-on-source-machine"></a>5. lépés: Ellenőrizze a víruskereső szoftvert a forrásgépen
+## <a name="step-5-check-anti-virus-software-on-source-machine"></a>5\. lépés: Ellenőrizze a víruskereső szoftvert a forrásgépen
 
 Ellenőrizze, hogy a replikált gép nincs víruskereső szoftver blokkolja a Site Recovery. Ha kizárja a Site Recovery a víruskereső programok van szüksége, tekintse át a [Ez a cikk](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program).
 
-## <a name="step-6-check-connectivity-from-source-machine"></a>6. lépés: Ellenőrizze a kapcsolatot a forrásgépen
+## <a name="step-6-check-connectivity-from-source-machine"></a>6\. lépés: Ellenőrizze a kapcsolatot a forrásgépen
 
 
 1. Telepítse a [Telnet-ügyfél](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx) a forrásgépen, ha szeretné. Ne használja a pingelés.
@@ -119,7 +119,7 @@ Ellenőrizze, hogy a replikált gép nincs víruskereső szoftver blokkolja a Si
 **Sikertelen** | Nem lehet csatlakoztatni | Győződjön meg arról, hogy a 9443-as porton bejövő engedélyezett-e a folyamatkiszolgáló. Például ha a szegélyhálózaton vagy demilitarizált. Ellenőrizze a kapcsolatot újra.
 **Részben sikeres** | A kapcsolódás, de a forrásgép jelenti, hogy a folyamatkiszolgáló nem érhető el. | Folytassa a következő hibaelhárítási eljárást.
 
-## <a name="step-7-troubleshoot-an-unreachable-process-server"></a>7. lépés: Amikor folyamatkiszolgálót nem érhető el – hibaelhárítás
+## <a name="step-7-troubleshoot-an-unreachable-process-server"></a>7\. lépés: Amikor folyamatkiszolgálót nem érhető el – hibaelhárítás
 
 Ha a folyamatkiszolgáló nem a forrásgépről, 78186 hiba jelenik meg. Ha nem képes kezelni, a probléma lesz alkalmazáskonzisztens egyaránt, és összeomlás-konzisztens helyreállítási pontok nem várt módon létrehozott.
 
@@ -162,7 +162,7 @@ Adatfeltöltés blokkolva forrásgépek, a folyamat szolgáltatáshoz probléma 
 
 
 
-## <a name="step-8-check-whether-the-process-server-is-pushing-data"></a>8. lépés: Ellenőrizze, hogy a folyamatkiszolgáló küld-e adatokat
+## <a name="step-8-check-whether-the-process-server-is-pushing-data"></a>8\. lépés: Ellenőrizze, hogy a folyamatkiszolgáló küld-e adatokat
 
 Ellenőrizze, hogy a folyamatkiszolgáló van aktívan küld-e adatokat az Azure-bA.
 
@@ -174,7 +174,7 @@ Ellenőrizze, hogy a folyamatkiszolgáló van aktívan küld-e adatokat az Azure
 
   Ha cbengine.exe nagy mennyiségű adatot nem küld, hajtsa végre az alábbi szakaszokban található.
 
-## <a name="step-9-check-the-process-server-connection-to-azure-blob-storage"></a>9. lépés: Az Azure blob storage-folyamat kiszolgálói kapcsolat ellenőrzése
+## <a name="step-9-check-the-process-server-connection-to-azure-blob-storage"></a>9\. lépés: Az Azure blob storage-folyamat kiszolgálói kapcsolat ellenőrzése
 
 1. Válassza ki az erőforrás-figyelő **cbengine.exe**.
 2. A **TCP-kapcsolatok**, ellenőrizze, hogy van-e kapcsolat a folyamatkiszolgáló és az Azure storage.
@@ -197,7 +197,7 @@ Ha nincs kapcsolat a folyamatkiszolgáló és az Azure blob storage URL-címe va
 3. Indítsa el, vagy bármely szolgáltatás nem fut, indítsa újra.
 4. Győződjön meg arról, hogy a folyamatkiszolgáló csatlakoztatva és elérhető. 
 
-## <a name="step-10-check-the-process-server-connection-to-azure-public-ip-address"></a>10. lépés: Ellenőrizze a folyamat kiszolgálói kapcsolatot az Azure nyilvános IP-cím
+## <a name="step-10-check-the-process-server-connection-to-azure-public-ip-address"></a>10\. lépés: Ellenőrizze a folyamat kiszolgálói kapcsolatot az Azure nyilvános IP-cím
 
 1. A folyamatkiszolgáló a **%programfiles%\Microsoft Azure Recovery Services Agent\Temp**, nyissa meg a legújabb CBEngineCurr.errlog fájlt.
 2. A fájlban keresse meg **443-as**, vagy a karakterlánc **kapcsolódási kísérlet sikertelen**.
@@ -211,7 +211,7 @@ Ha nincs kapcsolat a folyamatkiszolgáló és az Azure blob storage URL-címe va
 5. A parancssorban a folyamatkiszolgálón a Telnet használatával az Azure nyilvános IP-címet pingelje.
 6. Ha nem sikerül, kövesse a következő eljárással.
 
-## <a name="step-11-check-process-server-firewall-settings"></a>11. lépés: Ellenőrizze a folyamat kiszolgálói tűzfal beállításaiban. 
+## <a name="step-11-check-process-server-firewall-settings"></a>11\. lépés: Ellenőrizze a folyamat kiszolgálói tűzfal beállításaiban. 
 
 Ellenőrizze, hogy a folyamatkiszolgáló IP cím-alapú tűzfala blokkolja.
 
@@ -228,7 +228,7 @@ Ellenőrizze, hogy a folyamatkiszolgáló IP cím-alapú tűzfala blokkolja.
     [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
 
 
-## <a name="step-12-verify-process-server-proxy-settings"></a>12. lépés: Folyamat kiszolgáló proxy beállításainak ellenőrzése 
+## <a name="step-12-verify-process-server-proxy-settings"></a>12\. lépés: Folyamat kiszolgáló proxy beállításainak ellenőrzése 
 
 1. Ha proxykiszolgálót használ, győződjön meg arról, hogy a proxykiszolgáló nevét feloldja a DNS-kiszolgáló. Ellenőrizze a beállításkulcs a konfigurációs kiszolgáló beállításakor megadott értékét **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure hely Recovery\ProxySettings**.
 2. Győződjön meg arról, hogy ugyanazokat a beállításokat az Azure Site Recovery-ügynök által használ is küldhet adatokat.
@@ -239,7 +239,7 @@ Ellenőrizze, hogy a folyamatkiszolgáló IP cím-alapú tűzfala blokkolja.
 
     c) az a **proxykonfiguráció** lapon, a proxykiszolgáló címét megegyezőnek kell lennie a proxykiszolgáló címét, a beállításjegyzék-beállításainak látható. Ha nem, akkor ugyanazt a címet módosítsa azt.
 
-## <a name="step-13-check-bandwidth"></a>13. lépés: Ellenőrizze a sávszélesség
+## <a name="step-13-check-bandwidth"></a>13\. lépés: Ellenőrizze a sávszélesség
 
 Növelje a sávszélesség a folyamatkiszolgáló és az Azure között, és ellenőrizze, hogy a probléma továbbra is fennáll-e.
 

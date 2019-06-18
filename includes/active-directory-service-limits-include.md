@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 3b1019d45f4fee60e0e197f283ef38f4f3fca875
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: MT
+ms.openlocfilehash: 067280cdad85f59106bce5ff214e2fa9eddf3b71
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66143069"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133179"
 ---
 Az alábbiakban az Azure Active Directory (Azure AD) szolgáltatás használati és egyéb szolgáltatási korlátai olvashatóak.
 
@@ -29,4 +29,4 @@ Az alábbiakban az Azure Active Directory (Azure AD) szolgáltatás használati 
 | Hozzáférési panel |<ul><li>A felhasználók számára a hozzáférési panelen megjelenő alkalmazások számának nincs korlátja. Ez a Prémium szintű Azure AD- vagy Nagyvállalati mobilitási csomag-licenccel rendelkező felhasználókra vonatkozik.</li><li>A felhasználók számára a hozzáférési panelen legfeljebb 10 alkalmazáscsempe jeleníthető meg. Ez a korlátozás az Azure Active Directory ingyenes vagy alapszintű kiadásához tartozó licenccel rendelkező felhasználókra vonatkozik. Az alkalmazáscsempék közé tartozik például a Box, a Salesforce vagy a Dropbox. Ez a korlátozás a rendszergazdai fiókokra nem vonatkozik.</li></ul> |
 | Jelentések | A jelentésekben legfeljebb 1000 sort lehet megtekinteni vagy letölteni. A további adatokat a rendszer csonkolja. |
 | Felügyeleti egységek | Egy objektum legfeljebb 30 felügyeleti egységnek lehet a tagja. |
-| Rendszergazdai szerepkörök és engedélyek | <li>Csoportokat nem lehet tulajdonosként hozzáadni.<li>Csoportokat nem lehet szerepkörhöz rendelni.<li>Az alapértelmezett felhasználói engedélyek nem módosíthatók, kivéve a bérlők váltását, amely az Azure AD-ben érhető el felhasználói beállításként. |
+| Rendszergazdai szerepkörök és engedélyek | <ul><li>A csoport nem lehet hozzáadni egy [tulajdonosa](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership).</li><li>A csoport nem lehet hozzárendelni egy [szerepkör](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/directory-assign-admin-roles).</li><li>A többi felhasználó címtáradatok olvasása, hogy a felhasználók nem korlátozhatók kívül minden adatát (nem javasolt) minden nem rendszergazdai felhasználók elérésének letiltása a bérlői szintű kapcsolót. További információ az alapértelmezett engedélyek [Itt](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users).</li><li>Akár 15 percig is eltarthat, vagy aláírási out/bejelentkezés előtt rendszergazdai szerepkör tagsága hozzáadások és által okozott hibával találkozzanak érvénybe léptetéséhez.</li></ul> |

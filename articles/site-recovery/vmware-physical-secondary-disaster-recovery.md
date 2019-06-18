@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: raynew
 ms.openlocfilehash: 9a1cb63bd2a209c72af608d23515723a63b180e1
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66417724"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>A helyszíni VMware virtuális gépek vagy fizikai kiszolgálók másodlagos helyre történő vészhelyreállításának beállítása
@@ -29,10 +29,10 @@ Az Azure Site Recovery a forgatókönyvben a helyszíni VMware vagy fizikai adat
 
 2018-as és a 2019 során két frissítések elérhető lesz: 
 
--   7. frissítés: Hálózati konfigurációs és megfelelőségi problémák, és a TLS 1.2 támogatást biztosít.
--   8. frissítés: A Linux operációs rendszerek RHEL/CentOS 7.3/7.4/7.5 és a SUSE-12 támogatása
+-   7\. frissítés: Hálózati konfigurációs és megfelelőségi problémák, és a TLS 1.2 támogatást biztosít.
+-   8\. frissítés: A Linux operációs rendszerek RHEL/CentOS 7.3/7.4/7.5 és a SUSE-12 támogatása
 
-8. frissítés, miután további frissítések elérhető lesz. Korlátozott gyorsjavítási támogatás hozzáadva a frissítés 8 operációs rendszerek és hibajavításokat tartalmaz, a lehető legjobb alapján lesz.
+8\. frissítés, miután további frissítések elérhető lesz. Korlátozott gyorsjavítási támogatás hozzáadva a frissítés 8 operációs rendszerek és hibajavításokat tartalmaz, a lehető legjobb alapján lesz.
 
 Az Azure Site Recovery továbbra is lehetővé teszi az ügyfelek VMware és Hyper-V zökkenőmentes és a legjobb minőségű DRaaS az Azure-t egy vész-helyreállítási webhelyként villámgyors innovációt hajthat végre. A Microsoft azt javasolja, hogy a már InMage / ASR Scout ügyfelek fontolja meg az Azure Site Recovery VMware – Azure forgatókönyvek esetében az üzletmenet-folytonossági kell. Az Azure Site Recovery VMware – Azure forgatókönyvére egy nagyvállalati szintű Vészhelyreállítási megoldás az alkalmazások VMware RPO és RTO perc kínáló támogatása több virtuális gépes alkalmazás replikálását és helyreállítását, zökkenőmentes bevezetése átfogó figyelést, és jelentős előnye a teljes bekerülési Költséget.
 
@@ -144,7 +144,7 @@ Töltse le a [frissítése](https://aka.ms/asr-scout-update7) .zip-fájlt, és a
 
 ### <a name="site-recovery-scout-801-update-7"></a>Site Recovery Scout 8.0.1 7. frissítés 
 Frissítve: 2018. december 31-ig töltse le [Scout frissítés 7](https://aka.ms/asr-scout-update7).
-Scout frissítés 7 el egy teljes telepítő, amely feltárhatja, hogy frissítse a meglévő ügynökök/MT korábbi frissítéseket (frissítési 1 – 6. frissítés) tartoznak, valamint friss telepítéséhez használható. 6. frissítés és az új javítások és fejlesztések az alábbiakban az 1. frissítés minden javításokat tartalmaz.
+Scout frissítés 7 el egy teljes telepítő, amely feltárhatja, hogy frissítse a meglévő ügynökök/MT korábbi frissítéseket (frissítési 1 – 6. frissítés) tartoznak, valamint friss telepítéséhez használható. 6\. frissítés és az új javítások és fejlesztések az alábbiakban az 1. frissítés minden javításokat tartalmaz.
  
 #### <a name="new-features"></a>Új funkciók
 * PCI-megfelelőség
@@ -166,7 +166,7 @@ Frissítve: 2017. október 12.
 
 Töltse le [Scout 6. összesített frissítéssel](https://aka.ms/asr-scout-update6).
 
-6. összesített frissítéssel Scout az összesítő frissítés. Az 1. frissítés Update 5 és az új javítások és fejlesztések az alább ismertetett összes javításokat tartalmaz. 
+6\. összesített frissítéssel Scout az összesítő frissítés. Az 1. frissítés Update 5 és az új javítások és fejlesztések az alább ismertetett összes javításokat tartalmaz. 
 
 #### <a name="new-platform-support"></a>Új eszközplatform-támogatás
 * Támogatási hozzá van adva forrás a Windows Server 2016-hoz
@@ -240,14 +240,14 @@ Scout Update 5 a kumulatív frissítés. Update 4-es frissítés 1-től az össz
 
 
 ### <a name="azure-site-recovery-scout-801-update-4"></a>Az Azure Site Recovery Scout 8.0.1 Update 4
-4. frissítéssel Scout az összesítő frissítés. Ez magában foglalja az összes javítások történtek az 1. frissítés Update 3 és az alább ismertetett új javítások.
+4\. frissítéssel Scout az összesítő frissítés. Ez magában foglalja az összes javítások történtek az 1. frissítés Update 3 és az alább ismertetett új javítások.
 
 #### <a name="new-platform-support"></a>Új eszközplatform-támogatás
 
 * Már támogatja a vCenter/vsphere-6.0, 6.1-es és 6.2
 * A Linux operációs rendszer már támogatja:
   * Red Hat Enterprise Linux (RHEL) 7.0, 7.1-es és 7.2
-  * 7.0, 7.1-es és 7.2 centOS
+  * 7\.0, 7.1-es és 7.2 centOS
   * Red Hat Enterprise Linux (RHEL) 6.8
   * CentOS 6.8
 
@@ -279,16 +279,16 @@ Scout Update 5 a kumulatív frissítés. Update 4-es frissítés 1-től az össz
 >     * Egy frissített konfigurációs kiszolgáló alap telepítője (**InMage_CX_8.0.1.0_Windows_GA_26Feb2015_release.exe**)
 >     * Egy fő célkiszolgáló alap Windows installer (**InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_26Feb2015_release.exe**).
 >     * Minden új telepítések esetén használja az új konfigurációs kiszolgáló és a fő célkiszolgáló általánosan elérhető a bits Windows.
-> * 4. frissítés akkor alkalmazható, közvetlenül a 8.0.1 általánosan elérhető
+> * 4\. frissítés akkor alkalmazható, közvetlenül a 8.0.1 általánosan elérhető
 > * A konfigurációs kiszolgáló és a frissítések RX majd, miután a alkalmazni már nem állítható.
 
 
 ### <a name="azure-site-recovery-scout-801-update-3"></a>Az Azure Site Recovery Scout 8.0.1 3-as frissítés
 
-Site Recovery-hírek összeadódnak. 3. frissítés Update 1 és 2. frissítés minden javításokat tartalmaz. 3. frissítés közvetlenül alkalmazható 8.0.1 általánosan elérhető A konfigurációs kiszolgáló és a frissítések RX majd, miután a alkalmazni már nem állítható.
+Site Recovery-hírek összeadódnak. 3\. frissítés Update 1 és 2. frissítés minden javításokat tartalmaz. 3\. frissítés közvetlenül alkalmazható 8.0.1 általánosan elérhető A konfigurációs kiszolgáló és a frissítések RX majd, miután a alkalmazni már nem állítható.
 
 #### <a name="bug-fixes-and-enhancements"></a>Hibajavítások és fejlesztések
-3. frissítés az alábbi problémákat javítja:
+3\. frissítés az alábbi problémákat javítja:
 
 * A konfigurációs kiszolgáló és a RX aspektusnevek regisztrálva a tároló Ha a proxy mögött.
 * Az állapotjelentés, amelyben a helyreállításipont-célkitűzés (RPO) elérte a nem órák száma nem frissül.
@@ -322,7 +322,7 @@ A 2. frissítésben javításokat tartalmazza:
 * **Egyesített ügynök**: Javítsa ki a Update 1, melyek kiváltották a frissítés nincs telepítve a fő célkiszolgálón a 8.0.1 8.0-s verziójáról a frissítés során egy adott probléma megoldásához.
 
 ### <a name="azure-site-recovery-scout-801-update-1"></a>Az Azure Site Recovery Scout 8.0.1 1. frissítés
-1. frissítés a következő hibajavítások és új funkciókat tartalmazza:
+1\. frissítés a következő hibajavítások és új funkciókat tartalmazza:
 
 * 31 napig ingyenes védelem különbséglemezekhez. Ez lehetővé teszi, hogy a funkció tesztelése, vagy hozzon létre egy proof-of-concept.
 * Az első 31 napra vonatkozó összes műveletet a kiszolgálón, beleértve a feladatátvétel és feladat-visszavétel használata ingyenes. Az idő a kiszolgáló első védett a Site Recovery Scout indul el. A 32 nap, a védett kiszolgáló díja felhasználói tulajdonú helyre a Site Recovery általi védelem standard szintű példány díjának.

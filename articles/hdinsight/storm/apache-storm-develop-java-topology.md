@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 43f68908c8549c2f1d8322b5c4ad3985618cfe6e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 89cee70c9d7c5dffdb3078756cf4fa94d7cd1a9a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64695645"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078225"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Az Apache Storm-topológia létrehozása Java nyelven
 
-Ismerje meg, hogyan hozhat létre egy Java-alapú topológia [Apache Storm](https://storm.apache.org/). Itt hozzon létre egy word-count alkalmazás megvalósító Storm-topológia. Használhat [Apache Maven](https://maven.apache.org/) felépítéséhez és becsomagolásához a projektet. Ezután megtudhatja, hogyan határozza meg a topológia használatával a [Apache Storm fluxus](https://storm.apache.org/releases/2.0.0-SNAPSHOT/flux.html) keretrendszer.
+Ismerje meg, hogyan hozhat létre egy Java-alapú topológia [Apache Storm](https://storm.apache.org/). Itt hozzon létre egy word-count alkalmazás megvalósító Storm-topológia. Használhat [Apache Maven](https://maven.apache.org/) felépítéséhez és becsomagolásához a projektet. Ezután megtudhatja, hogyan határozza meg a topológia használatával a [Apache Storm fluxus](https://storm.apache.org/releases/2.0.0/flux.html) keretrendszer.
 
 Ebben a dokumentumban a lépések elvégzése után telepítheti a topológia az Apache Storm on HDInsight.
 
@@ -621,7 +621,7 @@ Van egy 5 másodperces időköze kibocsátási szavak és számok között. A **
 
 ## <a name="convert-the-topology-to-flux"></a>A topológia átalakítása fluxus
 
-[Fluxus](https://storm.apache.org/releases/2.0.0-SNAPSHOT/flux.html) egy új keretrendszer érhető el, a Storm 0.10.0-s vagy újabb, amely lehetővé teszi, hogy külön konfigurációt az implementáció. Az összetevők továbbra is vannak meghatározva a Java, de a topológia van definiálva egy YAML-fájllal. Egy alapértelmezett topológia definíciójának csomagot a projekthez, vagy egy önálló fájlt használja, a topológia elküldésekor. A Storm-topológia elküldésekor környezeti változókat vagy konfigurációs fájlok használatával töltse fel a YAML-topológia definíciójának értékeit.
+[Fluxus](https://storm.apache.org/releases/2.0.0/flux.html) egy új keretrendszer érhető el, a Storm 0.10.0-s vagy újabb, amely lehetővé teszi, hogy külön konfigurációt az implementáció. Az összetevők továbbra is vannak meghatározva a Java, de a topológia van definiálva egy YAML-fájllal. Egy alapértelmezett topológia definíciójának csomagot a projekthez, vagy egy önálló fájlt használja, a topológia elküldésekor. A Storm-topológia elküldésekor környezeti változókat vagy konfigurációs fájlok használatával töltse fel a YAML-topológia definíciójának értékeit.
 
 A YAML-fájl határozza meg a topológia és az adatok az összetevők közötti őket. Megadhat egy YAML-fájlt a jar-fájl részeként, vagy egy külső YAML-fájlt is használhat.
 

@@ -4,15 +4,15 @@ description: Ismerteti, hogyan derítheti fel és értékelheti ki a helyszíni 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 01/31/2019
+ms.date: 06/10/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 9eab8a29db40118f2a15064c52419ecebcd4aecb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ac5bed1f21640a40fe32bedac8b28d0a9fda0ffd
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60749850"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074442"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Helyszíni VMware virtuális gépek felderítése és kiértékelése az Azure-ba való migráláshoz
 
@@ -102,6 +102,14 @@ A telepítése előtt ellenőrizze, hogy az .OVA-fájl biztonságos-e.
 3. A létrehozott kivonatnak egyeznie kell ezekkel a beállításokkal.
 
 #### <a name="continuous-discovery"></a>Folyamatos felderítés
+
+  Az OVA verziója 1.0.10.15
+
+  **Algoritmus** | **Kivonat értéke**
+    --- | ---
+    MD5 | dfa1838b1e64f7cde51915927220cf48
+    SHA1 | 24bdbd9c37c7366567ff252db3a37a13dda9de42
+    SHA256 | e9f8f16ceb970c27dd068f5a5f7a4b2fd336f2820e9d6247d510ba6824e3f06c
 
   Az OVA verziója 1.0.10.11
 
@@ -273,10 +281,10 @@ A teljesítményalapú méretezéshez az Azure Migrate-nek szüksége van a virt
    **Az adatpontok rendelkezésre állása** | **Megbízhatósági minősítés**
    --- | ---
    0%–20% | 1 csillag
-   21%–40% | 2 csillag
-   41%–60% | 3 csillag
-   61%–80% | 4 csillag
-   81%–100% | 5 csillag
+   21%-40% | 2 csillag
+   41%-60% | 3 csillag
+   61%-80% | 4 csillag
+   81%-100% | 5 csillag
 
 Az értékelésekben a következő okok miatt nem lehet elérhető az összes adatpont:
 

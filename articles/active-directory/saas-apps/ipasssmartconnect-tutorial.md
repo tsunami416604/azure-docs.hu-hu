@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 8f8dc8219d65505952f35ad018ef19aeb68d64e9
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 9417d7b957d69dc802ecb2f9f78723eb7aba08ba
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65989764"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099853"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ipass-smartconnect"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező iPass SmartConnect
 
@@ -54,7 +54,7 @@ Az Azure AD integrálása a iPass SmartConnect konfigurálásához hozzá kell i
 
 **IPass SmartConnect hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -217,7 +217,7 @@ Ebben a szakaszban engedélyezze Britta Simon használja az Azure egyszeri bejel
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű iPass SmartConnect hoz létre. Együttműködve [iPass SmartConnect támogatási csoportjának](mailto:help@ipass.com) a felhasználók vagy a tartományban, amelyhez hozzá kell adni a iPass SmartConnect platform engedélyezési lista hozzáadása. Ha a tartomány a csapata által hozzáadott, a iPass SmartConnect platform automatikusan kiépítve felhasználók. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

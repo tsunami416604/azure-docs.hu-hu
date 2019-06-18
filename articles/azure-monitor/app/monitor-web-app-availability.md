@@ -14,10 +14,10 @@ ms.date: 01/22/2019
 ms.reviewer: sdash
 ms.author: lagayhar
 ms.openlocfilehash: 76bbcd6fa400111514ec3496005a28ec28ae6ab7
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65977896"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Webhelyek rendelkezésre állásának és válaszkészségének megfigyelése
@@ -71,7 +71,7 @@ Nyissa meg a Rendelkezésre állás panelt, és adjon hozzá egy tesztet.
 
 * **Riasztási hely küszöbértéke**: Ajánlott legalább 3 vagy 5 helyeket. Az optimális riasztási hely küszöbértéke és tesztelési helyek közötti kapcsolat **riasztási hely küszöbértéke** = **teszthelyszín száma** – 2-ától legalább öt tesztelése helyek.
 
-## <a name="multi-step-web-tests"></a>Többlépéses webtesztek
+## <a name="multi-step-web-tests"></a>Többlépéses webes tesztek
 Olyan forgatókönyveket is figyelhet, amelyek egy URL-címek sorozatából állnak. Ha például egy értékesítési webhelyet figyel, tesztelheti, hogy megfelelően működik-e a termékek kosárba helyezése.
 
 > [!NOTE]

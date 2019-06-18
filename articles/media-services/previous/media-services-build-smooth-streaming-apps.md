@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: b8c1513838fb848388946e18698a0410aa7a0332
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65949626"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Smooth Streaming-Windows Store-alkalmazás létrehozása  
@@ -47,7 +47,7 @@ A kész megoldás minden lecke a letölthető MSDN fejlesztői Kódminták (Kód
 * [3. lecke](https://code.msdn.microsoft.com/A-Windows-8-Smooth-883c3b44) – a Windows 8 Smooth Streaming-Stream kijelölés, a Media Player  
 * [4. lecke](https://code.msdn.microsoft.com/A-Windows-8-Smooth-aa9e4907) – a Windows 8 Smooth Streaming-Media Player követése kijelöléssel.
 
-## <a name="lesson-1-create-a-basic-smooth-streaming-store-application"></a>1. lecke: Hozzon létre egy alapszintű zökkenőmentes Streamet biztosító Store alkalmazás
+## <a name="lesson-1-create-a-basic-smooth-streaming-store-application"></a>1\. lecke: Hozzon létre egy alapszintű zökkenőmentes Streamet biztosító Store alkalmazás
 
 Ebben a leckében létrehozhat egy Windows Store-alkalmazás Smooth Stream lejátszás prvku MediaElement vezérlővel tartalom.  A futó alkalmazás hasonlóan néz ki:
 
@@ -222,9 +222,9 @@ A kész fájl mögötti kódban kell kinéznie:
 
 Lesson1 befejeződött.  Ebben a leckében használhatja egy prvku MediaElement vezérlőelem lejátszás Smooth Streaming-tartalmat.  A következő leckében hozzáadja egy csúszkát a Smooth Streaming-tartalmat állapotának szabályozásához.
 
-## <a name="lesson-2-add-a-slider-bar-to-control-the-media-progress"></a>2. lecke: Adjon hozzá egy csúszka, szabályozhatja az adathordozó folyamatban
+## <a name="lesson-2-add-a-slider-bar-to-control-the-media-progress"></a>2\. lecke: Adjon hozzá egy csúszka, szabályozhatja az adathordozó folyamatban
 
-1. lecke létrehozott egy Windows Store-alkalmazás lejátszási Smooth Streaming-tartalmat prvku MediaElement XAML-vezérlővel.  Néhány alapvető adathordozó-funkciók, például indítása, leállítása és szüneteltetése származik.  Ebben a leckében egy csúszkavezérlő sáv fog hozzáadni az alkalmazáshoz.
+1\. lecke létrehozott egy Windows Store-alkalmazás lejátszási Smooth Streaming-tartalmat prvku MediaElement XAML-vezérlővel.  Néhány alapvető adathordozó-funkciók, például indítása, leállítása és szüneteltetése származik.  Ebben a leckében egy csúszkavezérlő sáv fog hozzáadni az alkalmazáshoz.
 
 Ebben az oktatóanyagban a csúszka pozíció alapján a jelenlegi pozíció ovládacího prvku MediaElement frissíteni egy időzítő használjuk.  A csúszka kezdési és befejezési időt is frissíteni kell az élő tartalmak esetén.  Ez jobban kezelhető az adaptív forrás update eseményt.
 
@@ -540,9 +540,9 @@ Ugyanazokat az eseményeket adaptív forrás Manager szinten is, amely az alkalm
 4. Kattintson a **Nastavit Zdroje**. 
 5. A csúszka sávjának teszteléséhez.
 
-2. lecke befejeződött.  Ebben a leckében hozzáadott alkalmazás egy csúszkát. 
+2\. lecke befejeződött.  Ebben a leckében hozzáadott alkalmazás egy csúszkát. 
 
-## <a name="lesson-3-select-smooth-streaming-streams"></a>3. lecke: Jelölje be a Streamek Smooth Streaming
+## <a name="lesson-3-select-smooth-streaming-streams"></a>3\. lecke: Jelölje be a Streamek Smooth Streaming
 Smooth Streaming stream tartalom több nyelven hangsáv, amelyek a nézők által választható kezelésére képes.  Ebben a leckében lehetővé teszi a nézők jelölje be a Streamek. Ebben a leckében az alábbi eljárásokat tartalmazza:
 
 1. Az XAML-fájl módosítása
@@ -817,9 +817,9 @@ Smooth Streaming stream tartalom több nyelven hangsáv, amelyek a nézők álta
 4. Kattintson a **Nastavit Zdroje**. 
 5. Az alapértelmezett nyelv az audio_eng. Próbálja meg audio_eng és audio_es közötti váltáshoz. Minden alkalommal egy új adatfolyamot választja, kattintson a Küldés gombra.
 
-3. lecke befejeződött.  Ebben a leckében a Streamek kiválasztása funkciókat adhat meg.
+3\. lecke befejeződött.  Ebben a leckében a Streamek kiválasztása funkciókat adhat meg.
 
-## <a name="lesson-4-select-smooth-streaming-tracks"></a>4. lecke: Válassza ki a Smooth Streaming nyomon követi
+## <a name="lesson-4-select-smooth-streaming-tracks"></a>4\. lecke: Válassza ki a Smooth Streaming nyomon követi
 
 Smooth Streaming bemutató különböző minőségi szintet (átviteli sebességek) és a megoldásuk kódolású, több videó fájlokat tartalmazza. Ebben a leckében, lehetővé teszi a felhasználóknak, hogy nyomon követi. Ebben a leckében az alábbi eljárásokat tartalmazza:
 
@@ -1021,7 +1021,7 @@ Smooth Streaming bemutató különböző minőségi szintet (átviteli sebesség
 4. Kattintson a **Nastavit Zdroje**. 
 5. Alapértelmezés szerint az összes a video-adatfolyamot, a számok ki van jelölve. Kísérlet a átviteli sebesség módosításokat, válassza ki a legalacsonyabb átviteli sebességet, és válassza ki a legnagyobb átviteli sebességet. Minden módosítás után kattintson a küldés.  Láthatja, hogy a videó minősége módosításokat.
 
-4. lecke befejeződött.  Ebben a leckében kiválasztása nyomon követi a funkciókat adhat meg.
+4\. lecke befejeződött.  Ebben a leckében kiválasztása nyomon követi a funkciókat adhat meg.
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 

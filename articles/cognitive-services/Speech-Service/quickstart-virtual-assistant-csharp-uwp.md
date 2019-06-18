@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: e03cc45c5868f90dd1c2da0d7b4890fbf72c9899
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 9d29fdbfc82f221dac3b304dcf9de8c230b4d5e2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65954812"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056787"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Gyors útmutató: Hozzon létre egy hang-és felhőközpontú virtuális asszisztensek UWP Speech-SDK-val
 
@@ -32,11 +32,11 @@ Ebben a cikkben dolgoznia egy C# univerzális Windows Platform (UWP) alkalmazás
 Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* A beszédfelismerési szolgáltatás egy Azure-előfizetés kulcs. [Igényeljen ingyenesen egy](get-started.md).
+* Egy Azure-előfizetés kulcsot, a beszéd-szolgáltatások a **westus2** régióban. Ez az előfizetés létrehozása a [az Azure portal](https://portal.azure.com).
 * Egy korábban létrehozott bot konfigurálva a [közvetlen vonal beszédfelismerő csatornát](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
     > [!NOTE]
-    > Előzetes verzióban elérhető a közvetlen vonal beszédfelismerő csatornát jelenleg csak támogatja a **westus2** régióban.
+    > A közvetlen vonal Speech (előzetes verzió) jelenleg csak az elérhető a **westus2** régióban.
 
     > [!NOTE]
     > A 30 napos próbaverziójára, a standard tarifacsomag ismertetett [próbálja ki ingyenesen beszédszolgáltatások](get-started.md) korlátozódik **westus** (nem **westus2**) és így nem kompatibilis a közvetlen Sor Speech. Ingyenes és standard szintje **westus2** előfizetések kompatibilisek.
@@ -254,9 +254,9 @@ Ez a rövid útmutató azt ismerteti, lépésről lépésre, hogyan, hogy egy eg
     ```csharp
     // create a BotConnectorConfig by providing a bot secret key and Cognitive Services subscription key
     // the RecoLanguage property is optional (default en-US); note that only en-US is supported in Preview
-    const string channelSecret = "YourChannelSecret";
-    const string speechSubscriptionKey = "YourSpeechSubscriptionKey";
-    const string region = "YourServiceRegion"; // note: this is assumed as westus2 for preview
+    const string channelSecret = "YourChannelSecret"; // Your channel secret
+    const string speechSubscriptionKey = "YourSpeechSubscriptionKey"; // Your subscription key
+    const string region = "YourServiceRegion"; // Your subscription service region. Note: only 'westus2' is currently supported
 
     var botConnectorConfig = BotConnectorConfig.FromSecretKey(channelSecret, speechSubscriptionKey, region);
     botConnectorConfig.SetProperty(PropertyId.SpeechServiceConnection_RecoLanguage, "en-US");

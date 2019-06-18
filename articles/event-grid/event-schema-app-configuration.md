@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 05/30/2019
 ms.author: jimmyca
 ms.openlocfilehash: fe0274f723692eea3cfd25cc0e9e146b35dce2ae
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66735781"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-app-configuration"></a>Az Azure-alkalmazások konfigurálása az Azure Event Grid eseménysémája
@@ -90,7 +90,7 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | -------- | ---- | ----------- |
 | key | string | A kulcs-érték módosított vagy törölt kulcsa. |
 | label | string | A címke, ha bármely, a kulcs-érték, amely módosították vagy törölték. |
-| Az ETag | string | A `KeyValueModified` etag címkéje az új kulcs-érték. A `KeyValueDeleted` etag címkéje a kulcs-érték, amely törölve lett. |
+| etag | string | A `KeyValueModified` etag címkéje az új kulcs-érték. A `KeyValueDeleted` etag címkéje a kulcs-érték, amely törölve lett. |
  
 ## <a name="next-steps"></a>További lépések
 

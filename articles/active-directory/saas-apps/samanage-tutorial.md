@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b00e27a0620212fbc09f8b7d91d8f5b9d0971c8f
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 714e67bc7cf9e9c928eb4fd0764619041c9c1424
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65902982"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67092596"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-samanage"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Samanage
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Samanage konfigurálásához hozzá kell Samanage a 
 
 **Samanage hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -142,7 +142,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Samanage, hajtsa vé
    
     ![Bejelentkezési SAML használatával](./media/samanage-tutorial/tutorial_samanage_003.png "bejelentkezési SAML használatával")
  
-    a. Kattintson a **engedélyezze az egyszeri bejelentkezési SAML-**.  
+    a. Kattintson a **engedélyezze az egyszeri bejelentkezési SAML-** .  
  
     b. Az a **identitásszolgáltató szolgáltató URL-címe** szövegmező, illessze be az értéket a **Azure Ad-azonosító** Azure Portalról másolt.    
  
@@ -237,7 +237,7 @@ Samanage, esetén kiépítése a manuális feladat.
    >[!NOTE]
    >Az Azure Active Directory fióktulajdonos kap egy e-mailt, és a egy hivatkozásra kattintva a fiók megerősítéséhez, mielőtt aktívvá válik. Bármely más Samanage felhasználói fiók létrehozása eszközöket használhatja, vagy API-k által biztosított Samanage üzembe helyezni az Azure Active Directory felhasználói fiókokat.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

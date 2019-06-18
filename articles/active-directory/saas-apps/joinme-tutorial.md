@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab2fc543d345436e3d0a82fdb97a8c937f6ef256
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0abb842f5c8ce36262def30ec243e70327075825
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60265220"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099083"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-joinme"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező join.me
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a join.me konfigurálásához hozzá kell join.me a ka
 
 **Join.me hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

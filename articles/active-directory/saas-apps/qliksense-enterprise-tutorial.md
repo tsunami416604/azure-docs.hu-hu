@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31df4cb9163e598bfde0c491d8088398c3204119
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: e72ec4f9c512f6525f790d555794c1a120ac07c9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407994"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67093424"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qlik-sense-enterprise"></a>Oktatóanyag: Az Azure Active Directory-integráció, a Qlik Sense Enterprise-zal
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Qlik Sense vállalati konfigurálásához hozzá kel
 
 **Adja hozzá a Qlik Sense vállalati a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -183,9 +183,9 @@ Konfigurálja az Azure AD egyszeri bejelentkezés, a Qlik Sense vállalati, hajt
 
     e. A **identitásszolgáltató SAML-metaadatok** a korábban szerkesztett fájl a **összevonási metaadatainak szerkesztése az Azure AD-konfigurációból** szakaszban.  **Mielőtt feltöltené a identitásszolgáltató metaadatok, a fájl szerkeszthető kell** között az Azure AD megfelelő működés érdekében adatok eltávolítása és a Qlik Sense kiszolgáló.  **Tekintse meg a fenti utasításokat, ha a fájl még nem szerkeszthető.**  Ha a fájl kattintson a Tallózás gombra, és válassza ki a szerkesztett metaadatok fájlt feltölteni a virtuális proxykonfigurációt.
 
-    f. Adja meg a nevét vagy a séma attribútumhivatkozás jelölő SAML-attribútumot a **UserID** az Azure AD elküldi a Qlik Sense-kiszolgálóhoz.  Az Azure-alkalmazás képernyők post konfigurációs séma referenciainformációk érhető el.  A name attribútum használatához adja meg `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    f. Adja meg a nevét vagy a séma attribútumhivatkozás jelölő SAML-attribútumot a **UserID** az Azure AD elküldi a Qlik Sense-kiszolgálóhoz.  Az Azure-alkalmazás képernyők post konfigurációs séma referenciainformációk érhető el.  A name attribútum használatához adja meg `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
-    g. Adja meg az értéket a **felhasználói címtárba** , amely csatolva lesz a felhasználók hitelesítéskor Qlik Sense-kiszolgálóhoz az Azure AD-n keresztül.  Nem változtatható értékek kell lennie.%n **szögletes szögletes zárójeleket []**.  Egy attribútum küldi el az Azure AD SAML helyességi feltétel használatához adja meg a nevét, a szövegmezőbe **nélkül** szögletes zárójelek között.
+    g. Adja meg az értéket a **felhasználói címtárba** , amely csatolva lesz a felhasználók hitelesítéskor Qlik Sense-kiszolgálóhoz az Azure AD-n keresztül.  Nem változtatható értékek kell lennie.%n **szögletes szögletes zárójeleket []** .  Egy attribútum küldi el az Azure AD SAML helyességi feltétel használatához adja meg a nevét, a szövegmezőbe **nélkül** szögletes zárójelek között.
 
     h. A **SAML aláíró algoritmus** állítja be a service provider (a ez megkülönbözteti a kis Qlik Sense-kiszolgáló) tanúsítvány-aláírási a virtuális proxy konfigurálása.  Ha Qlik Sense-kiszolgáló Microsoft Enhanced RSA és az AES titkosítási szolgáltató használatával létrehozott egy megbízható tanúsítványt használ, módosítsa az SAML aláírási algoritmus **SHA-256**.
 
@@ -298,7 +298,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy Britta Simon nevű Qlik Sense vállalati felhasználó hoz létre. Együttműködve [Qlik Sense vállalati támogatási csapatának](https://www.qlik.com/us/services/support) a felhasználók hozzáadása a Qlik Sense nagyvállalati platform. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

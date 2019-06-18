@@ -10,10 +10,10 @@ ms.author: mhopkins
 ms.reviewer: clausjor
 ms.subservice: blobs
 ms.openlocfilehash: 8e9e27f14c4ccd6f5822033baa21aaafcf96c428
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65148501"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Az Azure Blob storage: gyakori és ritka elérésű, és az archív elérési szint
@@ -89,7 +89,7 @@ A blobszintű rétegezés segítségével az adatok szintje egyetlen művelet, a
 
 Az utolsó blobszint-módosítás időpontja a **Hozzáférési szint utolsó módosítása** blobtulajdonságon keresztül érhető el. Ha egy blob az archív szinten van, akkor nem lehet felülírni, ezért ugyanennek a blobnak a feltöltése nem engedélyezett ebben a forgatókönyvben. A blobok, amelyben eset az új blob örökli a felül lett írva a blob szintjét gyors vagy lassú elérésű szint is írja felül.
 
-Minden hozzáférési három szinten lévő blobok egy adott fiókban egyszerre is használható. Azok a blobok, amelyekhez nincs kifejezetten hozzárendelve szint, a fiók hozzáférési szintjének beállítását veszik át. Ha a hozzáférési szint a fióktól vette a beállításait a fiók, akkor tekintse meg a **hozzáférési szint következtetett** blobtulajdonság beállítása "true", és a blob **hozzáférési szint** blobtulajdonság megfelel a fiókszintjének. Az Azure Portalon a hozzáférési szint hozott tulajdonsága a blob hozzáférési szintjével együtt jelenik meg (például **gyakori (következtetett)** vagy **ritka (következtetett)**).
+Minden hozzáférési három szinten lévő blobok egy adott fiókban egyszerre is használható. Azok a blobok, amelyekhez nincs kifejezetten hozzárendelve szint, a fiók hozzáférési szintjének beállítását veszik át. Ha a hozzáférési szint a fióktól vette a beállításait a fiók, akkor tekintse meg a **hozzáférési szint következtetett** blobtulajdonság beállítása "true", és a blob **hozzáférési szint** blobtulajdonság megfelel a fiókszintjének. Az Azure Portalon a hozzáférési szint hozott tulajdonsága a blob hozzáférési szintjével együtt jelenik meg (például **gyakori (következtetett)** vagy **ritka (következtetett)** ).
 
 > [!NOTE]
 > Az archív tárolás és a blobszintű rétegezés csak a blokkblobokat támogatja. A pillanatképeket tartalmazó blokkblob szintje sem módosítható.

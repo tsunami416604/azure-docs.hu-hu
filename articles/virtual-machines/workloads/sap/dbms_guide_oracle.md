@@ -17,10 +17,10 @@ ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5182b621779cf31f3c7da99674ab24fe6efe702d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60835260"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure virtuális gépek DBMS üzembe helyezési SAP számítási feladatok
@@ -30,7 +30,7 @@ ms.locfileid: "60835260"
 [826037]:https://launchpad.support.sap.com/#/notes/826037
 [965908]:https://launchpad.support.sap.com/#/notes/965908
 [1031096]:https://launchpad.support.sap.com/#/notes/1031096
-[1114181]:https://launchpad.support.sap.com/#/notes/1114181
+[1114181]: https://launchpad.support.sap.com/#/notes/1114181
 [1139904]:https://launchpad.support.sap.com/#/notes/1139904
 [1173395]:https://launchpad.support.sap.com/#/notes/1173395
 [1245200]:https://launchpad.support.sap.com/#/notes/1245200
@@ -39,7 +39,7 @@ ms.locfileid: "60835260"
 [1585981]:https://launchpad.support.sap.com/#/notes/1585981
 [1588316]:https://launchpad.support.sap.com/#/notes/1588316
 [1590719]:https://launchpad.support.sap.com/#/notes/1590719
-[1597355]:https://launchpad.support.sap.com/#/notes/1597355
+[1597355]: https://launchpad.support.sap.com/#/notes/1597355
 [1605680]:https://launchpad.support.sap.com/#/notes/1605680
 [1619720]:https://launchpad.support.sap.com/#/notes/1619720
 [1619726]:https://launchpad.support.sap.com/#/notes/1619726
@@ -55,23 +55,23 @@ ms.locfileid: "60835260"
 [1882376]:https://launchpad.support.sap.com/#/notes/1882376
 [1909114]:https://launchpad.support.sap.com/#/notes/1909114
 [1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [1941500]:https://launchpad.support.sap.com/#/notes/1941500
 [1956005]:https://launchpad.support.sap.com/#/notes/1956005
 [1973241]:https://launchpad.support.sap.com/#/notes/1973241
 [1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[1999351]: https://launchpad.support.sap.com/#/notes/1999351
 [2002167]:https://launchpad.support.sap.com/#/notes/2002167
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
-[2039619]:https://launchpad.support.sap.com/#/notes/2039619
-[2069760]:https://launchpad.support.sap.com/#/notes/2069760
+[2015553]: https://launchpad.support.sap.com/#/notes/2015553
+[2039619]: https://launchpad.support.sap.com/#/notes/2039619
+[2069760]: https://launchpad.support.sap.com/#/notes/2069760
 [2121797]:https://launchpad.support.sap.com/#/notes/2121797
 [2134316]:https://launchpad.support.sap.com/#/notes/2134316
-[2171857]:https://launchpad.support.sap.com/#/notes/2171857
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
-[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2171857]: https://launchpad.support.sap.com/#/notes/2171857
+[2178632]: https://launchpad.support.sap.com/#/notes/2178632
+[2191498]: https://launchpad.support.sap.com/#/notes/2191498
 [2233094]:https://launchpad.support.sap.com/#/notes/2233094
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[2243692]: https://launchpad.support.sap.com/#/notes/2243692
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
@@ -319,7 +319,7 @@ Oracle-szoftverek futtatása Microsoft Azure-on Oracle támogatja. A Windows Hyp
 
 Az alábbi SAP-megjegyzések kapcsolódó Azure-beli SAP.
 
-| Megjegyzés száma | Cím |
+| Megjegyzés száma | Beosztás |
 | --- | --- |
 | [1928533] |SAP-alkalmazások az Azure-ban: Támogatott termékek és Azure-beli Virtuálisgép-típusok |
 | [2015553] |A Microsoft Azure-beli SAP: Támogatás előfeltételei |
@@ -397,9 +397,9 @@ A teljesítmény-konfiguráció a következőképpen történik:
 | \oracle\<SID>\oraarch* | Prémium | None | Nem szükséges |
 | Oracle-kezdőlap, saptrace... | Operációsrendszer-lemez | Nem szükséges |
 
-* (n + 1): rendszer, a TEMP és a visszavonás táblahelyeket üzemeltetése. Rendszer- és visszavonási táblahelyeket i/o minta más alkalmazás adatait tartalmazó táblahelyeket eltérnek. Nincs gyorsítótárazás nem a rendszer- és visszavonási táblahelyeket teljesítményét leginkább megfelelő opció kiválasztásához.
+\* (n + 1): rendszer, a TEMP és a visszavonás táblahelyeket üzemeltetése. Rendszer- és visszavonási táblahelyeket i/o minta más alkalmazás adatait tartalmazó táblahelyeket eltérnek. Nincs gyorsítótárazás nem a rendszer- és visszavonási táblahelyeket teljesítményét leginkább megfelelő opció kiválasztásához.
 
-* oraarch: a tárolókészletben nem feltétlenül szükséges a teljesítmény szempontjából. A hely bővítése használható.
+\* oraarch: a tárolókészletben nem feltétlenül szükséges a teljesítmény szempontjából. A hely bővítése használható.
 
 Ha további IOPS szükség, hozhat létre egy nagy méretű logikai eszköz több csatlakoztatott lemez Windows Tárolókészletek (csak Windows Server 2012 és újabb verziói) használatát javasoljuk. Ez a megközelítés leegyszerűsíti a terhelés kezelése a lemezterület felügyeletét, és elkerülheti a munka, amelyet manuálisan elosztása több csatlakoztatott lemezek között fájlokat.
 
@@ -471,7 +471,7 @@ Minimális konfigurációt:
 | /Oracle/\<SID > / oraarch | Standard | None | Nem szükséges |
 | Oracle-kezdőlap, saptrace... | Operációsrendszer-lemez | | Nem szükséges |
 
-* Ezért: LVM stripe vagy MDADM RAID0 használatával
+\* Ezért: LVM stripe vagy MDADM RAID0 használatával
 
 Az Oracle online visszaállítási naplók tárolásához lemezkiválasztás IOPS követelmények szerint kell meghatározni. Minden sapdata1... tárolására lehetséges, amíg a kötet, az IOPS és átviteli sebesség megfelelnek-e egyetlen csatlakoztatott lemez (táblahelyeket) n. 
 
@@ -488,11 +488,11 @@ Teljesítmény-konfigurációkat:
 | /Oracle/\<SID > / oraarch * | Prémium | None | Nem szükséges |
 | Oracle-kezdőlap, saptrace... | Operációsrendszer-lemez | Nem szükséges |
 
-* Ezért: LVM stripe vagy MDADM RAID0 használatával
+\* Ezért: LVM stripe vagy MDADM RAID0 használatával
 
-* (n + 1): rendszer, a TEMP és a visszavonás táblahelyeket üzemeltető: Rendszer- és visszavonási táblahelyeket i/o minta más alkalmazás adatait tartalmazó táblahelyeket eltérnek. Nincs gyorsítótárazás nem a rendszer- és visszavonási táblahelyeket teljesítményét leginkább megfelelő opció kiválasztásához.
+\* (n + 1): rendszer, a TEMP és a visszavonás táblahelyeket üzemeltető: Rendszer- és visszavonási táblahelyeket i/o minta más alkalmazás adatait tartalmazó táblahelyeket eltérnek. Nincs gyorsítótárazás nem a rendszer- és visszavonási táblahelyeket teljesítményét leginkább megfelelő opció kiválasztásához.
 
-* oraarch: a tárolókészletben nem feltétlenül szükséges a teljesítmény szempontjából.
+\* oraarch: a tárolókészletben nem feltétlenül szükséges a teljesítmény szempontjából.
 
 
 Ha további IOPS szükség, egy nagy méretű logikai kötet létrehozása több csatlakoztatott lemez keresztül LVM (a Logical Volume Manager) vagy MDADM használatát javasoljuk. További információkért lásd: [SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md) vonatkozó irányelvek és mutatók LVM vagy MDADM módjáról. Ez a megközelítés leegyszerűsíti az adminisztratív terhelés kezelésére a lemezterület, és elkerülheti a munka, amelyet manuálisan elosztása több csatlakoztatott lemezek között fájlokat.

@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e206cb29338445e30a7462bcbaf0079236e75510
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: bdd68d9ec5d0dd83df4628f39785ce255482245d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074965"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111153"
 ---
 # <a name="protected-web-api---code-configuration"></a>Védett webes API - kód-konfiguráció
 
@@ -61,7 +61,7 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 
 Ez a szakasz ismerteti, milyen konfigurálnia kell a tulajdonosi jogkivonatot.
 
-### <a name="config-file"></a>Konfigurációs fájl
+### <a name="config-file"></a>A konfigurációs fájl
 
 ```Json
 {
@@ -159,4 +159,4 @@ A érvényesítők rendszer a tulajdonságait a `TokenValidationParameters` oszt
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Helyezze át az éles környezetbe](scenario-protected-web-api-production.md)
+> [Ellenőrizze a hatókörök és alkalmazás-szerepkörök a kódban](scenario-protected-web-api-verification-scope-app-roles.md)

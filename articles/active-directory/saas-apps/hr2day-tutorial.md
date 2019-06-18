@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 491f1704cf08bd31a1b089d178afb3c281d636e6
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 126bb05109e624fb1198ea16b07cd7836103f9e2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898285"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100882"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Oktatóanyag: HR2day Merces által az Azure Active Directory-integráció
 
@@ -53,7 +53,7 @@ Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri b
 
 **Által Merces HR2day hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -163,7 +163,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés által Merces HR2day
 Az egyszeri bejelentkezés konfigurálása **által Merces HR2day** oldalon kell küldenie a letöltött **tanúsítvány (Base64)** és az Azure Portalról másolt URL-címek megfelelő [HR2day Merces támogatja csapat](mailto:servicedesk@merces.nl). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 > [!NOTE]
-> A Merces csapatának megemlíteni, hogy ez az integráció kell állítani a mintával az entitás azonosítója **https://hr2day.force.com/INSTANCENAME**.
+> A Merces csapatának megemlíteni, hogy ez az integráció kell állítani a mintával az entitás azonosítója **https://hr2day.force.com/INSTANCENAME** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -223,7 +223,7 @@ Ebben a szakaszban egy felhasználói Britta Simon hívja a HR2day Merces hoz l�
 > [!NOTE]
 > Ha manuálisan hozzon létre egy felhasználót van szüksége, lépjen kapcsolatba a [Merces ügyfél-támogatási csapata által HR2day](mailto:servicedesk@merces.nl).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

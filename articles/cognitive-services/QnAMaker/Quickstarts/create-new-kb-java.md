@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/04/2019
 ms.author: diberry
-ms.openlocfilehash: 85d5fa1cc036737497e276413985e0828e3b51f6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c6fddec80da1baa852a2f3712a94b785d775919e
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65788724"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67151045"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Gyors útmutató: Tudásbázis létrehozása a QnA Maker Java használatával
 
@@ -100,7 +100,7 @@ Ismételje a hívást, amíg nem sikerül vagy meg nem hiúsul:
 ```
 
 ## <a name="add-a-main-method"></a>Fő metódus hozzáadása
-A fő metódus létrehozza a tudásbázist, és kérést indít az állapotellenőrzéshez. A _create_ **műveletazonosítót** a rendszer a POST-válasz **Location** fejlécmezőjében adja vissza, majd a GET-kérésben az útvonal részeként használja. **A `while` hurok újra megpróbálja lekérni az állapotot, ha az nem teljesült.
+A fő metódus létrehozza a tudásbázist, és kérést indít az állapotellenőrzéshez. A művelet azonosítója a fejléc mezőben bejegyzés választ adja vissza **hely**, majd használja az útvonal a GET kérelem részeként. A `while` hurok állapota újrapróbálkozik, ha nem végzi el.
 
 [!code-java[Add main method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=152-191 "Add main method")]
 

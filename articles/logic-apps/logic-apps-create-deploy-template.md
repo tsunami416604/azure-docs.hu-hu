@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
 ms.openlocfilehash: 624539557b0bf57e9d919a3a46337f1cf93a4f07
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62128600"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>Logic Apps-alkalmazások üzembe helyezéséhez Azure Resource Manager-sablonok létrehozása
@@ -27,7 +27,7 @@ Az Azure Logic Apps biztosít egy [előre létrehozott logikai alkalmazások az 
 Az Azure Resource Manager-sablonokkal kapcsolatos további információkért tanulmányozza a következő cikkeket:
 
 * [Szerzői Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-authoring-templates.md)
-* [Fejlesztés a felhőben konzisztencia az Azure Resource Manager-sablonokkal](../azure-resource-manager/templates-cloud-consistency.md)
+* [Azure Resource Manager-sablonok fejlesztése felhőkonzisztenciához](../azure-resource-manager/templates-cloud-consistency.md)
 
 ## <a name="logic-app-structure"></a>Logic app-struktúra
 
@@ -182,7 +182,7 @@ Ha rendelkezik egy meglévő Azure erőforráscsoport-projektet, a JSON-vázlat 
 
 4. Az a **erőforrás hozzáadása** párbeszédpanelen keresse meg és válassza ki **logikai alkalmazás**. Nevezze el a logikai alkalmazást, és válassza a **Hozzáadás**.
 
-   ![Erőforrás felvétele](./media/logic-apps-create-deploy-template/addresource.png)
+   ![Erőforrás hozzáadása](./media/logic-apps-create-deploy-template/addresource.png)
 
 ## <a name="get-support"></a>Támogatás kérése
 

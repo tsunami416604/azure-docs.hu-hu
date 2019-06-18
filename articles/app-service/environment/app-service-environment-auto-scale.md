@@ -16,10 +16,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 6660aa4e21aa36dc94c4ed9201fecb5637dddb3a
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65955963"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>Automatikus skálázás és az App Service Environment-környezet v1
@@ -93,7 +93,7 @@ Frank tisztában van az alkalmazás. Akkor tudja, hogy a terhelés csúcsidősza
 |  | |
 | **Automatikus skálázási szabály (vertikális Felskálázás)** |**Automatikus skálázási szabály (vertikális Felskálázás)** |
 | **erőforrás:** Éles (App Service Environment-környezet) |**erőforrás:** Éles (App Service Environment-környezet) |
-| **Metrika:** CPU-használat (%) |**Metrika:** CPU-használat (%) |
+| **Metrika:** SZÁZALÉKOS PROCESSZORHASZNÁLATRÓL |**Metrika:** SZÁZALÉKOS PROCESSZORHASZNÁLATRÓL |
 | **Művelet:** Nagyobb, mint 60 % |**Művelet:** 80 %-nál nagyobb |
 | **Időtartam:** 5 perc |**Időtartam:** 10 perc |
 | **Idő összesítése:** Átlag |**Idő összesítése:** Átlag |
@@ -102,7 +102,7 @@ Frank tisztában van az alkalmazás. Akkor tudja, hogy a terhelés csúcsidősza
 |  | |
 | **Automatikus skálázási szabály (Scale le)** |**Automatikus skálázási szabály (Scale le)** |
 | **erőforrás:** Éles (App Service Environment-környezet) |**erőforrás:** Éles (App Service Environment-környezet) |
-| **Metrika:** CPU-használat (%) |**Metrika:** CPU-használat (%) |
+| **Metrika:** SZÁZALÉKOS PROCESSZORHASZNÁLATRÓL |**Metrika:** SZÁZALÉKOS PROCESSZORHASZNÁLATRÓL |
 | **Művelet:** Kevesebb mint 30 % |**Művelet:** Kevesebb mint 20 % |
 | **Időtartam:** 10 perc |**Időtartam:** 15 perc |
 | **Idő összesítése:** Átlag |**Idő összesítése:** Átlag |
@@ -209,7 +209,7 @@ Ebben a forgatókönyvben a Frank tudja, hogy a hibák aránya előtérrendszere
 |  |
 | **Automatikus skálázási szabály (vertikális Felskálázás)** |
 | **erőforrás:** Előtér-készlet |
-| **Metrika:** CPU-használat (%) |
+| **Metrika:** SZÁZALÉKOS PROCESSZORHASZNÁLATRÓL |
 | **Művelet:** Nagyobb, mint 60 % |
 | **Időtartam:** 20 perc |
 | **Idő összesítése:** Átlag |
@@ -218,7 +218,7 @@ Ebben a forgatókönyvben a Frank tudja, hogy a hibák aránya előtérrendszere
 |  |
 | **Automatikus skálázási szabály (Scale le)** |
 | **erőforrás:** Feldolgozókészlet 1 |
-| **Metrika:** CPU-használat (%) |
+| **Metrika:** SZÁZALÉKOS PROCESSZORHASZNÁLATRÓL |
 | **Művelet:** Kevesebb mint 30 % |
 | **Időtartam:** 20 perc alatt |
 | **Idő összesítése:** Átlag |

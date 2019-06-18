@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: dd84f9b3b68d7a34903241caed7f1f93e685fb57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 548cd3de6d2eff9f2077ca66b66d5c60aa84f7e2
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66138968"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154205"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Oktatóanyag: Az App Service-ben egy felügyelt identitás használata Azure SQL Database-kapcsolat biztonságossá tétele érdekében
 
@@ -84,6 +84,15 @@ az sql server ad-admin create --resource-group myResourceGroup --server-name <se
 ```
 
 A felügyelt identitás ezentúl hozzáférhet az Azure SQL-adatbáziskiszolgálójához.
+
+> [!IMPORTANT]
+> Az egyszerűség kedvéért ez a lépés a felügyelt Azure AD identity konfigurálja az SQL Database-rendszergazdaként. A módszer a következő korlátozások vonatkoznak:
+>
+> - Az alkalmazás rendszergazdai hozzáférést nem követi a bevált biztonsági gyakorlatokat.
+> - Mivel a felügyelt identitást adott alkalmazás, egy másik alkalmazás SQL Database-adatbázishoz csatlakozni az azonos felügyelt identitás nem használható.
+> - A felügyelt identitás nem tud bejelentkezni az SQL Database-adatbázishoz, így nem lehet hozzáférést biztosítani a felügyelt identitásokból további alkalmazásokat. 
+>
+> Biztonság növelése érdekében, és felügyelheti az Azure AD-fiókokat az SQL Database, kövesse a lépéseket [minimális jogosultságok engedélyezése az identitás](#grant-minimal-privileges-to-identity).
 
 ## <a name="modify-connection-string"></a>Kapcsolati sztring módosítása
 

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0dad74f75fd7b73e7dab0b2dddbdfda193d5b2ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 50779f8a37713bda8b27c1cfd2ca37eed4edbd11
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61073951"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67054714"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Azure Automation Állapotkonfiguráció számára az Azure Monitor naplóira továbbítása
 
@@ -49,26 +49,26 @@ Azure Automation DSC adatok importálása az Azure Monitor naplóira a kezdéshe
 
    ```powershell
    # Find the ResourceId for the Automation Account
-   Get-AzureRmResource -ResourceType 'Microsoft.Automation/automationAccounts'
+   Get-AzResource -ResourceType 'Microsoft.Automation/automationAccounts'
    ```
 
 1. Első a _ResourceId_ a Log Analytics munkaterület a következő PowerShell-parancs futtatásával: (Ha rendelkezik több munkaterülettel, válassza ki a _ResourceID_ a konfigurálni kívánt munkaterület).
 
    ```powershell
    # Find the ResourceId for the Log Analytics workspace
-   Get-AzureRmResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
+   Get-AzResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
    ```
 
 1. Futtassa a következő PowerShell-parancsot, és cserélje le `<AutomationResourceId>` és `<WorkspaceResourceId>` az a _ResourceId_ értékeit az előző lépések:
 
    ```powershell
-   Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Categories 'DscNodeStatus'
+   Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Category 'DscNodeStatus'
    ```
 
 Ha szeretné leállítani az Azure Automation konfigurációs adatok importálása az Azure Monitor naplóira, futtassa a következő PowerShell-parancsot:
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $false -Categories 'DscNodeStatus'
+Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $false -Category 'DscNodeStatus'
 ```
 
 ## <a name="view-the-state-configuration-logs"></a>Konfigurációs naplók megtekintése
@@ -133,7 +133,7 @@ Diagnosztika az Azure Automation szolgáltatást két kategóriája rögzíti az
 | NodeName_s |A felügyelt csomópont neve. |
 | NodeComplianceStatus_s |A csomópont-e megfelelő. |
 | DscReportStatus |Hogy a megfelelőségi ellenőrzés sikeresen lefutott. |
-| ConfigurationMode | Hogyan a konfiguráció alkalmazása a csomópontra. Lehetséges értékek a következők __"ApplyOnly"__,__"ApplyandMonitior"__, és __"ApplyandAutoCorrect"__. <ul><li>__ApplyOnly__: DSC konfigurációjának alkalmazására szolgál, és nem módosítja a további, kivéve, ha egy új konfigurációt a célcsomópont, vagy ha egy kiszolgálóról kéri le egy új konfiguráció leküldésekor. Új konfiguráció kezdeti léptetés DSC nem ellenőrzi az előzőleg konfigurált állapotba való eltéréseket. DSC megkísérli a alkalmazni a konfigurációt, egészen addig, amíg a sikeres előtt __ApplyOnly__ lép érvénybe. </li><li> __ApplyAndMonitor__: Ez az alapértelmezett érték. Az LCM vonatkozik minden új konfigurációt. Új konfiguráció, kezdeti alkalmazása után a a célcsomópont drifts a kívánt állapotból, ha DSC jelentések naplók az eltérést. DSC megkísérli a alkalmazni a konfigurációt, egészen addig, amíg a sikeres előtt __ApplyAndMonitor__ lép érvénybe.</li><li>__ApplyAndAutoCorrect__: DSC vonatkozik minden új konfigurációt. Kezdeti alkalmazását követően az új konfiguráció a célcsomópont drifts a kívánt állapotból, ha DSC-jelentések a naplókban az eltérés, és majd újra alkalmazza arra a jelenlegi konfiguráció.</li></ul> |
+| ConfigurationMode | Hogyan a konfiguráció alkalmazása a csomópontra. Lehetséges értékek a következők __"ApplyOnly"__ , __"ApplyandMonitior"__ , és __"ApplyandAutoCorrect"__ . <ul><li>__ApplyOnly__: DSC konfigurációjának alkalmazására szolgál, és nem módosítja a további, kivéve, ha egy új konfigurációt a célcsomópont, vagy ha egy kiszolgálóról kéri le egy új konfiguráció leküldésekor. Új konfiguráció kezdeti léptetés DSC nem ellenőrzi az előzőleg konfigurált állapotba való eltéréseket. DSC megkísérli a alkalmazni a konfigurációt, egészen addig, amíg a sikeres előtt __ApplyOnly__ lép érvénybe. </li><li> __ApplyAndMonitor__: Ez az alapértelmezett érték. Az LCM vonatkozik minden új konfigurációt. Új konfiguráció, kezdeti alkalmazása után a a célcsomópont drifts a kívánt állapotból, ha DSC jelentések naplók az eltérést. DSC megkísérli a alkalmazni a konfigurációt, egészen addig, amíg a sikeres előtt __ApplyAndMonitor__ lép érvénybe.</li><li>__ApplyAndAutoCorrect__: DSC vonatkozik minden új konfigurációt. Kezdeti alkalmazását követően az új konfiguráció a célcsomópont drifts a kívánt állapotból, ha DSC-jelentések a naplókban az eltérés, és majd újra alkalmazza arra a jelenlegi konfiguráció.</li></ul> |
 | HostName_s | A felügyelt csomópont neve. |
 | IPAddress | A kezelt csomópontok IPv4-címét. |
 | Category | DscNodeStatus |
@@ -185,7 +185,7 @@ Diagnosztika az Azure Automation szolgáltatást két kategóriája rögzíti az
 | ResourceType | AUTOMATIONACCOUNTS |
 | CorrelationId |GUID, a megfelelőségi jelentés korrelációs azonosítója. |
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az Automation állapota konfigurációs adatokat küld az Azure Monitor naplóira, állapotát, az Automation Állapotkonfiguráció csomópontok által nagyobb betekintést kaphat:
 

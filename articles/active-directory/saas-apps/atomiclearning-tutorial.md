@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a94b346848b81c8b30bf99169356bd3fd08b488
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 78f5c701a009f8510c62f6cfa736d20205e383a9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64726338"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106604"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-atomic-learning"></a>Oktatóanyag: Az atomi Learning az Azure Active Directory-integráció
 
@@ -55,7 +55,7 @@ Atomi Learning integrálása az Azure AD beállítása, hozzá kell atomi Learni
 
 **Atomi Learning hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 

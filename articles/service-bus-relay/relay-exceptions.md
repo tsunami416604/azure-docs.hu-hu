@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/20/2017
 ms.author: spelluru
 ms.openlocfilehash: fe8f057443b978e70e7cdd2591affd455fefdca8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60749036"
 ---
 # <a name="azure-relay-exceptions"></a>Az Azure Relay-kivételek
@@ -59,7 +59,7 @@ A következő táblázat felsorolja az üzenetkezelési kivételtípusok és oka
 
 ## <a name="quotaexceededexception"></a>QuotaExceededException
 
-A [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) kivétel azt jelzi, hogy túllépte az adott entitáshoz tartozó kvótát.
+[QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) azt jelzi, hogy egy adott entitáshoz tartozó kvóta túl lett lépve.
 
 A Relay, ehhez a kivételhez burkolja az [System.ServiceModel.QuotaExceededException](https://msdn.microsoft.com/library/system.servicemodel.quotaexceededexception.aspx), ami azt jelenti, hogy a Figyelők maximális számát ezen a végponton túl lett lépve. Ez jelzi a a **MaximumListenersPerEndpoint** a kivételre vonatkozó üzenet értékét.
 

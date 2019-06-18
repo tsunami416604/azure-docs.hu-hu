@@ -9,10 +9,10 @@ ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 6d0737a7300b2a6025f776c1ed65a05cacf2141a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66157667"
 ---
 Hozzon létre egy távoli asztali kapcsolat egy virtuális hálózat üzembe helyezett virtuális Géphez való csatlakozáshoz. Ellenőrizze, hogy a virtuális gép csatlakozhat a legjobb módja a számítógép neve helyett a magánhálózati IP-címére kapcsolódni fog. Ezzel a módszerrel tesztelt megtekintheti, ha akkor is csatlakozhat, nem e névfeloldás megfelelően van konfigurálva. 

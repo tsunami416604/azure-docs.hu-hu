@@ -8,14 +8,14 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4a94560bcb66c2ed59f78eef4f6a08b3f0227dc4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: af91dc09f8ed68d7bd4f2378c13d99eb67c52e9e
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057637"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155649"
 ---
-# <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Oktatóanyag: Betanítását és üzembe helyezése az Azure Machine Learning-modell
+# <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Oktatóanyag: Azure Machine Learning-modell betanítása és üzembe helyezése
 
 > [!NOTE]
 > Ez a cikk egy sorozat része az IoT Edge-ben az Azure Machine Learning használatával kapcsolatos oktatóanyagot. Ha érkezett, ez a cikk közvetlenül, javasoljuk, hogy először a [először cikk](tutorial-machine-learning-edge-01-intro.md) a sorozat a legjobb eredmények.

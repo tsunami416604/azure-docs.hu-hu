@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 86efbaa053e087885f0dbfea24000781d41ac5d5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a2096004a7b389f627c528a8dfb4768ac001f390
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057714"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155629"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Oktatóanyag: IoT Edge-eszköz konfigurálása
 
@@ -35,7 +35,7 @@ Ebben a szakaszban létrehozunk, hogy Ezután létrehozhatja és futtathatja egy
 2. Nyisson meg egy parancssort, és futtassa a következő parancsot egy könyvtár létrehozására a virtuális gépen.
 
     ```cmd
-    mkdir C:\edgecertificates
+    mkdir c:\edgeCertificates
     ```
 
 3. Indítsa el **Docker for Windows** a Windows Start menüjében.
@@ -56,21 +56,19 @@ Ebben a szakaszban létrehozunk, hogy Ezután létrehozhatja és futtathatja egy
 9. A Visual Studio Code terminálablakban futtassa a createcertificates tárolót.
 
     ```cmd
-    docker run --name createcertificates --rm -v
-    C:\edgeCertificates:/edgeCertificates createcertificates
-    /edgeCertificates
+    docker run --name createcertificates --rm -v c:\edgeCertificates:/edgeCertificates createcertificates /edgeCertificates
     ```
 
-10. Docker fogja kérni a hozzáférést a **C:\\**  meghajtót. Válassza ki **megoszthatja azt**.
+10. Docker fogja kérni a hozzáférést a **c:\\**  meghajtót. Válassza ki **megoszthatja azt**.
 
 11. Adja meg a hitelesítő adatait, amikor a rendszer kéri.
 
-12. Egyszer a tároló végeztével fut, a következő fájlok keresése **c:\\edgecertificates**:
+12. Egyszer a tároló végeztével fut, a következő fájlok keresése **c:\\edgeCertificates**:
 
-    * C:\\edgeCertificates\\certs\\azure-iot-test-only.root.ca.cert.pem
-    * C:\\edgeCertificates\\certs\\new-edge-device-full-chain.cert.pem
-    * C:\\edgeCertificates\\certs\\new-edge-device.cert.pem
-    * C:\\edgeCertificates\\certs\\new-edge-device.cert.pfx
+    * c:\\edgeCertificates\\certs\\azure-iot-test-only.root.ca.cert.pem
+    * c:\\edgeCertificates\\certs\\new-edge-device-full-chain.cert.pem
+    * c:\\edgeCertificates\\certs\\new-edge-device.cert.pem
+    * c:\\edgeCertificates\\certs\\new-edge-device.cert.pfx
     * C:\\edgeCertificates\\privát\\új edge device.key.pem
 
 ## <a name="upload-certificates-to-azure-key-vault"></a>Tanúsítványok feltöltése az Azure Key Vaultba
@@ -86,8 +84,7 @@ A tanúsítványokat tárolja biztonságos helyen, és elérhetővé teheti őke
 3. A fejlesztői gépen a tanúsítványok feltöltése a Key Vaulthoz. Cserélje le **\<subscriptionId\>** és **\<keyvaultname\>** erőforrás adataival.
 
     ```powershell
-    C:\source\IoTEdgeAndMlSample\CreateCertificates\upload-keyvaultcerts.ps1
-    -SubscriptionId <subscriptionId> -KeyVaultName <keyvaultname>
+    c:\source\IoTEdgeAndMlSample\CreateCertificates\upload-keyvaultcerts.ps1 -SubscriptionId <subscriptionId> -KeyVaultName <keyvaultname>
     ```
 
 4. Ha a rendszer kéri, jelentkezzen be az Azure-bA.
@@ -145,7 +142,7 @@ Ezután futtassa a szkriptet a virtuális gép számára az IoT Edge-eszköz lé
 1. Nyisson meg egy PowerShell-ablakot, és keresse meg a **EdgeVM** könyvtár.
 
     ```powershell
-    cd C:\source\IoTEdgeAndMlSample\EdgeVM”
+    cd c:\source\IoTEdgeAndMlSample\EdgeVM
     ```
 
 2. Futtassa a szkriptet a virtuális gép létrehozásához.
@@ -210,7 +207,7 @@ Ez a cikk a korábbi Key Vault az elérhetővé tételükhöz az IoT Edge-eszkö
 1. Az Azure parancssori felület parancsai használni kívánt Azure-előfizetés ASet.
 
     ```bash
-    az account set --subscription <subscription id>
+    az account set --subscription <subscriptionId>
     ```
 
 1. Hozzon létre egy könyvtárat, a tanúsítványok a virtuális gépen.

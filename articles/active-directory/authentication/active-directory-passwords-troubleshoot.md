@@ -13,10 +13,10 @@ ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 89c76ad0739edea4c0541ace76ca2311453de71d
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963025"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Az önkiszolgáló jelszó-visszaállítás hibaelhárítása
@@ -255,7 +255,7 @@ Az Azure AD Connectnek szüksége van az Active Directory **jelszó alaphelyzetb
 
 Ha az Azure AD általános kérdésem van, és az önkiszolgáló jelszó-visszaállítás, megkérheti a Közösség segítségért a a [az Azure AD-fórumokon](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WindowsAzureAD). A Közösség tagjai közé tartozik, mérnökök, termék kezelők, MVP-k és megosztana informatikai szakemberek számára.
 
-## <a name="contact-microsoft-support"></a>Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
+## <a name="contact-microsoft-support"></a>Forduljon a Microsoft ügyfélszolgálatához
 
 Ha nem találja a választ egy problémára, a támogatási csapatuk mindig elérhetők, további segítséget.
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: jhakulin
-ms.openlocfilehash: 80ec606fee30c239d47bca94188d3b9cbb7c82d5
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: f0838d345abfcfdf69ca6ea44d3206c23010b457
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604413"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073089"
 ---
 # <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>A beszédfelismerés SDK-val több résztvevő beszélgetések alapuló átírás
 
@@ -43,7 +43,7 @@ Az első lépéseként a beszélgetés résztvevők hangalapú aláírások lét
 * A bemeneti audio hangfájl hangalapú aláírások létrehozásához a 16 bites minták, 16 kHz mintavételi gyakoriság és a egy egyetlen csatornát (Mono) formátumot kell.
 * Az ajánlott minden egyes hang minta hossza 30 másodperc és két perc között.
 
-A következő példában két különböző módon hozhat létre hangalapú aláírása [a REST API használatával.] (https://aka.ms/cts/signaturegenservice) a C#:
+Az alábbi példa szerint voice-aláírás létrehozásához két különböző módszert mutat be [a REST API-val](https://aka.ms/cts/signaturegenservice) a C#:
 
 ```csharp
 class Program

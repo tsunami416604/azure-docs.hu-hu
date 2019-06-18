@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: genli
 ms.openlocfilehash: cab40284f36f21f9de72ee4dc1faf78153621d26
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66475971"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Hibaelhárítás: Az Azure pont – hely kapcsolati problémák
@@ -80,9 +80,9 @@ A Windows 10 vagy a Server 2016 előkészítése az IKEv2 használatára:
 
    | Operációs rendszer verziója | Dátum | Szám/hivatkozás |
    |---|---|---|---|
-   | Windows Server 2016<br>Windows 10, 1607-es verzió | 2018. január 17. | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
-   | Windows 10, 1703-as verzió | 2018. január 17. | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
-   | A Windows 10 1709-es verzió | 2018. március 22. | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
+   | Windows Server 2016<br>Windows 10, 1607-es verzió | 2018\. január 17. | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
+   | Windows 10, 1703-as verzió | 2018\. január 17. | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
+   | A Windows 10 1709-es verzió | 2018\. március 22. | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |  |
 
 2. Adja meg a beállításkulcs értékét. Hozza létre a „HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload” REG_DWORD kulcsot a beállításjegyzékben, vagy állítsa az értékét 1-re.

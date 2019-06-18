@@ -1,20 +1,20 @@
 ---
-title: Apache Spark-fürt létrehozása az Azure HDInsight az Azure CLI-vel
+title: 'Gyors útmutató: Apache Spark-fürt létrehozása az Azure HDInsight az Azure CLI-vel'
 description: Ez a rövid útmutató bemutatja, hogyan Apache Spark-fürt létrehozása az Azure HDInsight az Azure CLI használatával.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
-ms.date: 05/09/2019
+ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: b9478ca8e1b31c1761e063a6789e96043f9a2c68
-ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
+ms.openlocfilehash: 72bdab9d7fb5c3019d97ffc4c92257c49ec2b8e5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65556831"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066251"
 ---
-# <a name="create-an-apache-spark-cluster-in-azure-hdinsight-with-azure-cli"></a>Apache Spark-fürt létrehozása az Azure HDInsight az Azure CLI-vel
+# <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-cli"></a>Gyors útmutató: Az Apache Spark-fürt létrehozása az Azure HDInsight, Azure CLI használatával
 
 Ebben a rövid útmutatóban megismerheti, Apache Spark-fürt létrehozása az Azure HDInsight, Azure CLI használatával. Az Apache Spark a memóriában végzett feldolgozás segítségével teszi lehetővé a gyors adatelemzést és fürtszámítást. A [az Azure parancssori felület (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) van a Microsoft többplatformos parancssori felülete Azure-erőforrások kezeléséhez.
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59c46e30f0f1c4ce3cf8cbe06808945ec0d9b5e2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e97a66a1b21b46649a1206eb522c180e84a0a0d4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60267530"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099155"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-jira"></a>Oktatóanyag: A JIRA Kantega SSO-val az Azure Active Directory-integráció
 
@@ -54,7 +54,7 @@ Az Azure AD-be a JIRA Kantega SSO-integráció konfigurálásához, hozzá kell 
 
 **A JIRA Kantega SSO hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -205,7 +205,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a JIRA Kantega SSO-val, 
 
     b. Kattintson a **tovább**.
 
-1. Kattintson a **Befejezés** gombra.
+1. Kattintson a **Befejezés**gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforjira-tutorial/addon11.png)
 

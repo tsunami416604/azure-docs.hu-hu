@@ -12,10 +12,10 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.openlocfilehash: c3088ae777fe1a64be218105d36fdb9e01d7b798
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66172235"
 ---
 # <a name="debug-application-proxy-connector-issues"></a>Application Proxy connector kapcsolatos problémák megoldásában 
@@ -42,7 +42,7 @@ Ez a folyamatábra végigvezeti az összekötő gyakori problémák a hibakeres�
 
 |  | Műveletek | Leírás | 
 |---------|---------|---------|
-|1. | Keresse meg az alkalmazáshoz hozzárendel az összekötőcsoport | Valószínűleg több kiszolgálón telepített egy összekötőt, ebben az esetben az összekötők kell [összekötőcsoportok rendelt](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups). Összekötőcsoportok kapcsolatos további információkért lásd: [külön hálózatok és helyek összekötőcsoportok használatával az alkalmazások közzététele](application-proxy-connector-groups.md). |
+|1 | Keresse meg az alkalmazáshoz hozzárendel az összekötőcsoport | Valószínűleg több kiszolgálón telepített egy összekötőt, ebben az esetben az összekötők kell [összekötőcsoportok rendelt](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups). Összekötőcsoportok kapcsolatos további információkért lásd: [külön hálózatok és helyek összekötőcsoportok használatával az alkalmazások közzététele](application-proxy-connector-groups.md). |
 |2 | Az összekötő telepítése és hozzárendelése egy csoporthoz | Ha nincs telepítve egy összekötőt, [telepítése és regisztrálása egy összekötő](application-proxy-add-on-premises-application.md#install-and-register-a-connector).<br></br>Ha az összekötő a csoporthoz nincs hozzárendelve, [az összekötő hozzárendelése egy csoporthoz](application-proxy-connector-groups.md#create-connector-groups).<br></br>Ha az alkalmazás nincs hozzárendelve egy összekötőcsoporthoz, [rendelje hozzá az alkalmazás egy összekötőcsoporthoz](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups).|
 |3 | Az összekötő kiszolgáló-port teszt futtatása | Az összekötő-kiszolgálón futtassa a port tesztet használatával [telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) vagy más port tesztelés eszközzel ellenőrizheti, ha a 443-as és a 80-as portok nyitva-e.|
 |4 | Portok és tartományok konfigurálása | [Győződjön meg arról, hogy a tartományok és a portok megfelelően vannak konfigurálva,](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) megfelelően működjön, az összekötő vannak egyes portok nyitva kell lennie, és az URL-címeket, a kiszolgáló eléréséhez képesnek kell lennie. |

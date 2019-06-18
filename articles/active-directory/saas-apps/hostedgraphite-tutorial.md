@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49e70eab0b9824742a67e4446c5ff6f0a9a366ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 79a83ec34d8e9d577e6bde8421a11b4c7bf6b241
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60275599"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100905"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>Oktatóanyag: Az Azure Active Directory integrációja az üzemeltetett grafit
 
@@ -54,7 +54,7 @@ Azure ad-ben üzemeltetett grafit integráció konfigurálásához, hozzá kell 
 
 **Üzemeltetett grafit hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -137,7 +137,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés grafit üzemeltetett
 
 1. Bejelentkezés az üzemeltetett grafit bérlői rendszergazdaként.
 
-2. Nyissa meg a **SAML beállítása lapon** az oldalsávon (**hozzáférés SAML beállítása ->**).
+2. Nyissa meg a **SAML beállítása lapon** az oldalsávon (**hozzáférés SAML beállítása ->** ).
 
     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_000.png)
 

@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f7f91e6ab1fb12132068b839e66fafd3ab1bc73
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 061b8a9f16396841c3f0d650ccc2f2c4a907aab3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65543958"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111307"
 ---
 # <a name="using-web-browsers-in-msalnet"></a>Webböngészők MSAL.NET használatával
 Webböngészők az interaktív hitelesítéshez szükségesek. Alapértelmezés szerint az MSAL.NET támogatja a [rendszer webböngésző](#system-web-browser-on-xamarinios-and-xamarinandroid) a Xamarin.iOS és [Xamarin.Android](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/system-browser). De [is engedélyezheti a beágyazott webböngésző](#enable-embedded-webviews) a követelményektől (UX, egyszeri bejelentkezés (SSO), biztonsági szükségességét) függően [Xamarin.iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) és [Xamarin.Android](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid) az alkalmazások. És is [kiválasztása dinamikusan](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) melyik webböngésző használata Chrome-ban vagy a támogató Android egyéni lapok Chrome böngészőben jelenléte alapján.
@@ -33,7 +33,7 @@ Fontos megérteni, hogy egy token beszerzése a interaktív módon, amikor a pá
 
 - A jelszó (ha az egyik írta be), és az alkalmazás nem a hitelesítési tár a soha nem tárolja.
 - Lehetővé teszi az átirányítások az egyéb identitás-szolgáltatóktól (például bejelentkezési-be a munkahelyi vagy iskolai fiókhoz vagy egy személyes fiók MSAL, vagy az Azure AD B2C-közösségi fiókkal).
-- Lehetővé teszi, hogy az STS-feltételes hozzáférés, például szabályozhatja a felhasználó nincs több többtényezős hitelesítés (MFA) hitelesítési fázisában (a Windows Hello PIN-kód megadása vagy a telefon vagy a telefonjukra hitelesítési alkalmazás hívott) megadásával. Azokban az esetekben, ahol a szükséges többtényezős hitelesítést nincs beállítva, még a felhasználó is állítsa be az azonos párbeszédpanelen szerinti.  A felhasználó beírja a mobiltelefon száma, és a egy hitelesítési alkalmazás telepítéséhez és a egy QR címke, a felhasználó fiókját hozzáadja a vizsgálat a rendszer végigvezeti. Ez a kiszolgáló kapcsolati driven nagyszerű felhasználói élményt!
+- Lehetővé teszi, hogy az STS feltételes hozzáférésének szabályozása, például a felhasználó nincs több többtényezős hitelesítés (MFA) hitelesítési fázisában (a Windows Hello PIN-kód megadása vagy a telefon vagy a telefonjukra hitelesítési alkalmazás hívott) kellene. Azokban az esetekben, ahol a szükséges többtényezős hitelesítést nincs beállítva, még a felhasználó is állítsa be az azonos párbeszédpanelen szerinti.  A felhasználó beírja a mobiltelefon száma, és a egy hitelesítési alkalmazás telepítéséhez és a egy QR címke, a felhasználó fiókját hozzáadja a vizsgálat a rendszer végigvezeti. Ez a kiszolgáló kapcsolati driven nagyszerű felhasználói élményt!
 - Lehetővé teszi a felhasználónak módosítania kell a jelszavát, ezen a párbeszédpanelen, amikor a jelszó lejárt (kezeléséről további mezőket a régi jelszót és az új jelszót).
 - Lehetővé teszi, hogy az Azure AD-Bérlői rendszergazda által vezérelt védjegyezés a bérlő vagy az application (képek) / alkalmazás tulajdonosa.
 - Lehetővé teszi a felhasználóknak, hogy engedélyt adjanak az lehetővé teszi az alkalmazás-erőforrások eléréséhez, vagy csak a hitelesítést követően a neve hatóköröket.

@@ -17,28 +17,28 @@ ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8b19c0fd8af2792a4ffb877e5c6a7fc6b3f94511
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60836118"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Az SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai
-[1114181]:https://launchpad.support.sap.com/#/notes/1114181
-[1409604]:https://launchpad.support.sap.com/#/notes/1409604
-[1597355]:https://launchpad.support.sap.com/#/notes/1597355
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
-[1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
-[2002167]:https://launchpad.support.sap.com/#/notes/2002167
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
-[2039619]:https://launchpad.support.sap.com/#/notes/2039619
-[2069760]:https://launchpad.support.sap.com/#/notes/2069760
-[2171857]:https://launchpad.support.sap.com/#/notes/2171857
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
-[2191498]:https://launchpad.support.sap.com/#/notes/2191498
-[2233094]:https://launchpad.support.sap.com/#/notes/2233094
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1114181]: https://launchpad.support.sap.com/#/notes/1114181
+[1409604]: https://launchpad.support.sap.com/#/notes/1409604
+[1597355]: https://launchpad.support.sap.com/#/notes/1597355
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[1984787]: https://launchpad.support.sap.com/#/notes/1984787
+[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[2002167]: https://launchpad.support.sap.com/#/notes/2002167
+[2015553]: https://launchpad.support.sap.com/#/notes/2015553
+[2039619]: https://launchpad.support.sap.com/#/notes/2039619
+[2069760]: https://launchpad.support.sap.com/#/notes/2069760
+[2171857]: https://launchpad.support.sap.com/#/notes/2171857
+[2178632]: https://launchpad.support.sap.com/#/notes/2178632
+[2191498]: https://launchpad.support.sap.com/#/notes/2191498
+[2233094]: https://launchpad.support.sap.com/#/notes/2233094
+[2243692]: https://launchpad.support.sap.com/#/notes/2243692
 [deployment-guide]:deployment-guide.md
 [deployment-guide-3]:deployment-guide.md#b3253ee3-d63b-4d74-a49b-185e76c4088e
 [planning-guide]:planning-guide.md
@@ -83,7 +83,7 @@ Bizonyos Microsoft-dokumentációt létesítmények közötti forgatókönyv kü
 
 Az alábbi SAP-megjegyzések tekintetében a dokumentumban leírt terület kapcsolódó Azure-beli SAP.
 
-| Megjegyzés száma | Cím |
+| Megjegyzés száma | Beosztás |
 | --- | --- |
 | [1928533] |SAP-alkalmazások az Azure-ban: Támogatott termékek és Azure-beli Virtuálisgép-típusok |
 | [2015553] |A Microsoft Azure-beli SAP: Támogatás előfeltételei |
@@ -216,7 +216,7 @@ A premium storage a következő gyorsítótárazási lehetőségek érhetők el:
 
 * None
 * Olvasás
-* Olvasás/írás
+* Olvasási/írási
 * Nincs + Írásgyorsító, amely csak az Azure M sorozatú virtuális gépek
 * Olvasás + Írásgyorsító, amely csak az Azure M sorozatú virtuális gépek
 

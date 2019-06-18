@@ -1,6 +1,6 @@
 ---
 title: 'Gyors útmutató: Apache Hive-lekérdezések végrehajtása az Azure HDInsight – Apache Zeppelin'
-description: Megtudhatja, hogyan futtathat Apache Hive-lekérdezések a Apache Zeppelin használatával.
+description: Ez a rövid útmutatóban megismerheti, hogyan futtathat Apache Hive-lekérdezések a Apache Zeppelin használatával.
 keywords: hdinsight, hadoop, hive, LLAP interaktív lekérdezés
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.author: hrasheed
-ms.openlocfilehash: f4b8495646e83005dc48e8a729a0e5987b832721
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 1642c64b0b14c2e290aad689399b59d896660a28
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65801053"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056696"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Gyors útmutató: Apache Hive-lekérdezések végrehajtása az Azure HDInsight az Apache Zeppelin
 
@@ -83,12 +83,3 @@ Ebből a gyors útmutatóból megtudhatta, hogyan Apache Zeppelin használata Az
 
 > [!div class="nextstepaction"]
 > [Csatlakozás az Azure HDInsight és a Data Lake Tools for Visual Studio használatával, az Apache Hive-lekérdezések futtatása](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)
-
-## <a name="see-also"></a>Lásd még
-
-* [Az Apache Hive-adatok vizualizálása a Microsoft Power bi-ban az Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md).
-* [A Power bi használatával az Azure HDInsight interaktív lekérdezés Apache Hive-adatok megjelenítése](./apache-hadoop-connect-hive-power-bi-directquery.md).
-* [Excel csatlakoztatása a Microsoft Hive ODBC illesztőprogram segítségével a HDInsight](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
-* [Excel Power Query használatával csatlakozni az Apache Hadoop](../hadoop/apache-hadoop-connect-excel-power-query.md).
-* [Az Azure HDInsight-eszköz használata a Visual Studio Code](../hdinsight-for-vscode.md).
-* [Upload Data to HDInsight](../hdinsight-upload-data.md).

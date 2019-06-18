@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: d0960c749d74903acc778c0f21d5c49f380195ae
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: c8199c960229f9cc53cf57f9da3e1f17ebd9f5c7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734193"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074162"
 ---
 # <a name="status-monitor-v2-detailed-instructions"></a>A figyelő v2 állapota: Részletes utasítások
 
@@ -128,7 +128,7 @@ Ezeket a lépéseket a PowerShell-galériából töltse le a modulok-kiszolgál�
     Ez a Módosítás megerősítése és a naplózási összes PSRepositories futtatásával a `Get-PSRepository` parancsot.
 
 4. A PowerShellGet legújabb verziójának telepítéséhez.
-    - Leírás: Ez a modul tartalmazza a PowerShell-galériából más modulok beszerzéséhez használt eszközök. A Windows 10 és Windows Server verzió 1.0.0.1 letöltésként érhető el. 1.6.0-s verziójának vagy újabb verziója szükséges. Annak megállapításához, hogy mely verziója van telepítve, futtassa a `Get-Command -Module PowerShellGet` parancsot.
+    - Leírás: Ez a modul tartalmazza a PowerShell-galériából más modulok beszerzéséhez használt eszközök. A Windows 10 és Windows Server verzió 1.0.0.1 letöltésként érhető el. 1\.6.0-s verziójának vagy újabb verziója szükséges. Annak megállapításához, hogy mely verziója van telepítve, futtassa a `Get-Command -Module PowerShellGet` parancsot.
     - Leírások: [A PowerShellGet telepítése](https://docs.microsoft.com/powershell/gallery/installing-psget).
     - A parancs: `Install-Module -Name PowerShellGet`.
     - Választható paraméterek:
@@ -204,7 +204,7 @@ További információkért lásd: [egy PowerShell-modul telepítése](https://do
 
 ### <a name="option-2-unzip-and-import-nupkg-manually"></a>Option 2: Csomagolja ki, és nupkg manuális importálása
 Manuálisan letöltött PowerShell-modul telepítéséhez, egy olyan PowerShell-könyvtárba, így felderíthető PowerShell-munkamenetek szerint.
-További információkért lásd: [egy PowerShell-modul telepítése](https://docs.mircrosoft.com/powershell/developer/module/installing-a-powershell-module).
+További információkért lásd: [egy PowerShell-modul telepítése](https://docs.microsoft.com/powershell/developer/module/installing-a-powershell-module).
 
 Ha telepíti a modul más könyvtárba, manuálisan importálja a modult a [Import-Module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-6).
 

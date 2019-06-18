@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: b8d7b6fee973379516e7dbf58b27cfafe1e1edc0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ca2a7edff4b8c06b2838474449360b4b14b3e393
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65868544"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67092963"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reflektive"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Reflektive
 
@@ -53,7 +53,7 @@ Az Azure AD integrálása a Reflektive konfigurálásához hozzá kell Reflektiv
 
 **Reflektive hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -138,7 +138,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Reflektive, hajtsa v
 
 ### <a name="configure-reflektive-single-sign-on"></a>Reflektive egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálása **Reflektive** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [Reflektive támogatási csapatának](mailto:https://support@reflektive.com/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Az egyszeri bejelentkezés konfigurálása **Reflektive** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [Reflektive támogatási csapatának](mailto: https://support@reflektive.com/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
@@ -192,9 +192,9 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 ### <a name="create-reflektive-test-user"></a>Reflektive tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű Reflektive hoz létre. Együttműködve [Reflektive támogatási csapatának](mailto:https://support@reflektive.com/) a felhasználók hozzáadása az Reflektive platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói Britta Simon nevű Reflektive hoz létre. Együttműködve [Reflektive támogatási csapatának](mailto: https://support@reflektive.com/) a felhasználók hozzáadása az Reflektive platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 74eee3d164e7ee3831f292568da9cf0620e576e5
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 23273084826775b47170753dff3e5cf5ed8ae45f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399290"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063558"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Az Azure Cosmos DB magas rendelkezésre állás
 
@@ -76,7 +76,7 @@ Ez a funkció az alábbi Azure-régióban érhető el:
 
 Az alábbi táblázat foglalja össze különböző fiókkonfigurációt magas rendelkezésre állású képességét: 
 
-|KPI  |Egy régióban anélkül, hogy a rendelkezésre állási zónák (nem AZ)  |Egyetlen régió – rendelkezésre állási zónák (AZ)  |A rendelkezésre állási zónák (AZ, 2 régió) – leginkább a javasolt beállítás több régióban |
+|KPI  |Egy régióban anélkül, hogy a rendelkezésre állási zónák (nem-AZ)  |Egyetlen régió a rendelkezésre állási zónák (AZ)  |Többrégiós ír a rendelkezésre állási zónák (AZ, 2 régió) – a legtöbb javasolt beállítás |
 |---------|---------|---------|---------|
 |Rendelkezésre állási SLA írása     |   99.99%      |    99.99%     |  99.999%  |
 |Olvassa el a rendelkezésre állási SLA   |   99.99%      |   99.99%      |  99.999%       |

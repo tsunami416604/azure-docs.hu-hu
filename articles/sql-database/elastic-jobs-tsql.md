@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 59e0e4cf82af9851dacf3ec030575ed392571331
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61475813"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Rugalmas adatbázis-feladatok létrehozása és kezelése Transact-SQL (T-SQL) használatával
@@ -456,7 +456,7 @@ A feladat leírása. Leírás megadása nem nvarchar(512), az alapértelmezett �
 [  **\@engedélyezve =** ] engedélyezve  
 A feladat ütemezés engedélyezve van-e. Engedélyezett bit, az alapértelmezett érték a 0 (letiltva). Ha 0, a feladat nem engedélyezett, és nem fut az ütemezésnek; azonban hogy manuálisan futtatható. Ha 1, a feladat az ütemezése szerint fog futni, és manuálisan is futtathatók.
 
-[  **\@schedule_interval_type =**] schedule_interval_type  
+[  **\@schedule_interval_type =** ] schedule_interval_type  
 Érték azt jelzi, ha a feladat kell végrehajtani. schedule_interval_type nvarchar(50), az egyszer, alapértelmezett érték, és a következő értékek egyike lehet:
 - Az "egyszeri"
 - "Minutes",
@@ -1225,7 +1225,7 @@ Látható feladat-végrehajtási előzményei.
 |**end_time**|  datetime2(7)    |Dátum és idő a feladat végrehajtása befejeződött. NULL értékű, ha még nem lett végrehajtva a feladat, vagy nem rendelkezik még végrehajtása befejeződött.
 |**current_attempts**   |int    |Kísérelte meg a lépés hányszor. Szülő feladat lesz 0, gyermek feladatvégrehajtások 1 lesz, vagy a végrehajtási házirend nagyobb alapján.
 |**current_attempt_start_time** |datetime2(7)|  Dátum és idő a feladat végrehajtási elindult. NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
-|**last_message**   |nvarchar(max)| Feladat és lépés előzmények üzenet. 
+|**last_message**   |típus: nvarchar(max)| Feladat és lépés előzmények üzenet. 
 |**target_type**|   nvarchar(128)   |Céladatbázis vagy az adatbázis összes adatbázissal egy kiszolgálót, egy rugalmas készletben található összes adatbázis vagy egy adatbázis-gyűjtemény típusa. Target_type érvényes értékei a következők: "SqlServer", "SqlElasticPool" vagy "SqlDatabase". NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
 |**target_id**  |uniqueidentifier|  A célként megadott csoport tagja egyedi azonosítója.  NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
 |**target_group_name**  |nvarchar(128)  |A célcsoport neve. NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
@@ -1279,7 +1279,7 @@ Minden egyes feladat jelenlegi verziója minden lépéseit mutatja be.
 |**step_name**  |nvarchar(128)  |(A feladathoz) egyedi neve a lépéshez.|
 |**command_type**   |nvarchar(50)   |A feladat lépésben végrehajtandó parancs típusa. V1, az értéknek meg kell egyeznie a és "TSql" az alapértelmezett érték.|
 |**command_source** |nvarchar(50)|  A parancs helye. A 1-es "Beágyazott" az alapértelmezett beállítás, és csak elfogadható érték.|
-|**command**|   nvarchar(max)|  Rugalmas feladatok command_type keresztül hajtja végre a parancsokat.|
+|**command**|   típus: nvarchar(max)|  Rugalmas feladatok command_type keresztül hajtja végre a parancsokat.|
 |**credential_name**|   nvarchar(128)   |Végrehajtási a feladat segítségével az adatbázishoz kötődő hitelesítő adat nevét.|
 |**target_group_name**| nvarchar(128)   |A célcsoport neve.|
 |**target_group_id**|   uniqueidentifier|   A célként megadott csoport egyedi azonosítója.|
@@ -1294,8 +1294,8 @@ Minden egyes feladat jelenlegi verziója minden lépéseit mutatja be.
 |**output_resource_group_name** |nvarchar(128)| A célkiszolgáló tartalmazó erőforráscsoport neve.|
 |**output_server_name**|    nvarchar(256)   |Az eredménykészletet a célkiszolgáló nevét.|
 |**output_database_name**   |nvarchar(128)| Az eredménykészletet a céladatbázis neve.|
-|**output_schema_name** |nvarchar(max)| A cél séma neve. Alapértelmezés szerint a dbo, ha nincs megadva.|
-|**output_table_name**| nvarchar(max)|  Az eredmények, adja meg a lekérdezés eredményeinek tárolására a tábla neve. Táblázat az eredmények, ha még nem létezik a séma alapján automatikusan létrejön. Séma meg kell egyeznie az eredménykészletet sémája.|
+|**output_schema_name** |típus: nvarchar(max)| A cél séma neve. Alapértelmezés szerint a dbo, ha nincs megadva.|
+|**output_table_name**| típus: nvarchar(max)|  Az eredmények, adja meg a lekérdezés eredményeinek tárolására a tábla neve. Táblázat az eredmények, ha még nem létezik a séma alapján automatikusan létrejön. Séma meg kell egyeznie az eredménykészletet sémája.|
 |**max_parallelism**|   int|    Adatbázisok száma, amelyek a feladat lépésének fut egyszerre rugalmas készlet maximális számát. Az alapértelmezett érték NULL, tehát nincs korlátozva. |
 
 

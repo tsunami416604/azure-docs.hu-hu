@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81a216e720523767f428036290aea7151c2dca34
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 38ce83df4d4de6d7816ee969a4fee153ad5457d8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708166"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097995"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-sales-navigator"></a>Oktatóanyag: A LinkedIn Sales Navigator az Azure Active Directory-integráció
 
@@ -58,7 +58,7 @@ Az Azure AD integrálása a LinkedIn Sales Navigator konfigurálásához hozzá 
 
 **LinkedIn Sales Navigator hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -128,7 +128,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a LinkedIn Sales Navigat
 
     | Name (Név) | Adatforrás-attribútum|
     | --- | --- |
-    | e-mail| user.mail |
+    | email| user.mail |
     | Szervezeti egység| user.department |
     | Keresztnév| user.givenname |
     | Vezetéknév| user.surname |

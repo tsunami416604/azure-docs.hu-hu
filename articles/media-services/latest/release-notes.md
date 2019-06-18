@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 06/04/2019
 ms.author: juliako
 ms.openlocfilehash: e34e0f9fee1d09e66dcdd5069e800dc1f3f750cb
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66688651"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Az Azure Media Services v3 kibocsátási megjegyzései
@@ -34,7 +34,7 @@ Naprakész a legújabb fejlemények, ez a cikk azt ismerteti kapcsolatban:
 
 További információkért lásd: [Migrálási útmutató segítséget nyújt a Media Services v2 áthelyezését v3](migrate-from-v2-to-v3.md#known-issues).
 
-## <a name="may-2019"></a>2019. május
+## <a name="may-2019"></a>2019\. május
 
 ### <a name="azure-monitor-support-for-media-services-diagnostic-logs-and-metrics"></a>A Media Services diagnosztikai naplók és mérőszámok az Azure Monitor támogatása
 
@@ -69,19 +69,19 @@ További információkért lásd: [felhők és melyik Media Services v3 létezik
 * [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset) hozzá lett adva a beépített analyzer készletek.
 * [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset) hozzá lett adva a beépített kódoló készletek. További információkért lásd: [tartalom-kompatibilis kódolás](cae-experimental.md). 
 
-## <a name="march-2019"></a>2019. március
+## <a name="march-2019"></a>2019\. március
 
 A dinamikus csomagolás mostantól támogatja a Dolby Atmos. További információkért lásd: [dinamikus becsomagolás által támogatott hang kodekek](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging).
 
 Most már megadhatja az eszköz vagy a fiók szűrők, a Streamelési lokátor alkalmazandó listáját. További információkért lásd: [szűrők társítása Streamelési lokátor](filters-concept.md#associating-filters-with-streaming-locator).
 
-## <a name="february-2019"></a>2019. február
+## <a name="february-2019"></a>2019\. február
 
 A Media Services v3 mostantól támogatott az országos Azure felhőkhöz. Nem minden funkciója érhető el az összes felhő még. További információkért lásd: [felhők és régiók, mely az Azure Media Services v3 létezik](azure-clouds-regions.md).
 
 [Microsoft.Media.JobOutputProgress](media-services-event-schemas.md#monitoring-job-output-progress) esemény került be az Azure Event Grid-sémák, a Media Services.
 
-## <a name="january-2019"></a>2019. január
+## <a name="january-2019"></a>2019\. január
 
 ### <a name="media-encoder-standard-and-mpi-files"></a>Media Encoder Standard és a MPI-fájlok 
 
@@ -89,7 +89,7 @@ Kódolás a Media Encoder Standard MP4-fájl létrehozására, ha .mpi új fájl
 
 Ne módosítsa vagy távolítsa el az MPI-fájlt, és minden olyan függőséget is a létezik-e a service-ben (vagy sem) egy souboru.
 
-## <a name="december-2018"></a>2018. december
+## <a name="december-2018"></a>2018\. december
 
 Az általánosan elérhető kiadás V3 API-frissítések a következők:
        

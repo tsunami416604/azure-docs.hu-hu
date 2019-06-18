@@ -9,10 +9,10 @@ ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 6ad6f9414df17f9edff7565752ef3845e0d3c88e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66116205"
 ---
 # <a name="understand-azure-policy-effects"></a>Az Azure Policy hatások ismertetése
@@ -59,7 +59,7 @@ Csak akkor Hozzáfűzés hatással van egy **részletek** tömb, amely szükség
 
 ### <a name="append-examples"></a>Példák hozzáfűzése
 
-1. példa: Egyetlen **mező/érték** pár hozzáfűzni egy címkét.
+1\. példa: Egyetlen **mező/érték** pár hozzáfűzni egy címkét.
 
 ```json
 "then": {
@@ -71,7 +71,7 @@ Csak akkor Hozzáfűzés hatással van egy **részletek** tömb, amely szükség
 }
 ```
 
-2. példa Két **mező/érték** párok fűzze hozzá a címkéket egy készletét.
+2\. példa Két **mező/érték** párok fűzze hozzá a címkéket egy készletét.
 
 ```json
 "then": {
@@ -88,7 +88,7 @@ Csak akkor Hozzáfűzés hatással van egy **részletek** tömb, amely szükség
 }
 ```
 
-3. példa: Egyetlen **mező/érték** párosítsa a használatával egy nem -**[\*]** [alias](definition-structure.md#aliases) -tömbbel rendelkező **érték** IP-szabályok beállítása a storage-fiók. Ha a nem -**[\*]** alias van egy tömb, a hatás hozzáfűzi a **érték** a teljes tömb. Ha a tömb már létezik, a Megtagadás esemény következik be, az ütköző.
+3\. példa: Egyetlen **mező/érték** párosítsa a használatával egy nem - **[\*]** [alias](definition-structure.md#aliases) -tömbbel rendelkező **érték** IP-szabályok beállítása a storage-fiók. Ha a nem - **[\*]** alias van egy tömb, a hatás hozzáfűzi a **érték** a teljes tömb. Ha a tömb már létezik, a Megtagadás esemény következik be, az ütköző.
 
 ```json
 "then": {
@@ -103,7 +103,7 @@ Csak akkor Hozzáfűzés hatással van egy **részletek** tömb, amely szükség
 }
 ```
 
-4. példa: Egyetlen **mező/érték** használatával párosítsa az **[\*]** [alias](definition-structure.md#aliases) -tömbbel rendelkező **érték** IP-szabályok beállítása a storage-fiók. Használatával a **[\*]** alias, a hatás hozzáfűzi a **érték** esetlegesen már meglévő tömbbe. Ha a tömb nem még létezik, jön létre.
+4\. példa: Egyetlen **mező/érték** használatával párosítsa az **[\*]** [alias](definition-structure.md#aliases) -tömbbel rendelkező **érték** IP-szabályok beállítása a storage-fiók. Használatával a **[\*]** alias, a hatás hozzáfűzi a **érték** esetlegesen már meglévő tömbbe. Ha a tömb nem még létezik, jön létre.
 
 ```json
 "then": {
