@@ -108,9 +108,9 @@ Ezeket az elemeket kell kezelni, mint a bizalmas adatok és a bővítmények vé
 | publisher | Microsoft.Compute | string |
 | type | CustomScriptExtension | string |
 | typeHandlerVersion | 1.9 | int |
-| fileUris (például:) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | tömb |
-| időbélyegző (például:) | 123456789 | 32 bites egész szám |
-| commandToExecute (például:) | PowerShell - ExecutionPolicy Unrestricted - fájl konfigurálása music-app.ps1 | string |
+| fileUris (például:) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
+| timestamp (például:) | 123456789 | 32 bites egész szám |
+| commandToExecute (például:) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | string |
 | storageAccountName (e.g) | examplestorageacct | string |
 | storageAccountKey (például:) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
 
