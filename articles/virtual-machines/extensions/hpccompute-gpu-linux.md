@@ -85,7 +85,7 @@ Minden beállítás nem kötelező. Az alapértelmezett viselkedést, hogy a ker
 | Name (Név) | Leírás | Alapértelmezett érték | Érvényes értékek | Adattípus |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | Frissítse a kernel akkor is, ha az illesztőprogram telepítéséhez nem szükséges | false | true, false | boolean |
-| driverVersion | NV: RÁCS illesztőprogram verziója<br> NC/ND: CUDA-eszközkészlet verzió. A legújabb illesztőprogramokat a kiválasztott CUDA automatikusan települnek. | latest | GRID: "418.70", "410.92", "410.71", "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | string |
+| driverVersion | NV: RÁCS illesztőprogram verziója<br> NC/ND: CUDA-eszközkészlet verzió. A legújabb illesztőprogramokat a kiválasztott CUDA automatikusan települnek. | legújabb | GRID: "418.70", "410.92", "410.71", "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | string |
 | installCUDA | Telepítse a CUDA eszközkészlet. Csak akkor érvényes, a hálózati vezérlő/ND sorozatú virtuális gépek. | true | true, false | boolean |
 
 

@@ -9,11 +9,11 @@ ms.date: 09/18/2018
 ms.author: dacoulte
 ms.custom: include file
 ms.openlocfilehash: b6587a3928c2ddf0d00c90e07643525314690e42
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66155539"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179256"
 ---
 ### <a name="virtual-machines"></a>Virtuális gépek
 
