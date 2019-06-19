@@ -43,9 +43,9 @@ A Log Analytics-ügynök bővítményt a Linux-disztribúciók is futtatni.
 |---|---|
 | CentOS Linux | 6 (x86/x64) és 7 (x 64) |
 | Amazon Linux | 2017.09 (x64) | 
-| Oracle Linux | 6\. és 7 (x86/x64) |
+| Oracle Linux | 6 és 7 (x86/x64) |
 | Red Hat Enterprise Linux Server | 6 (x86/x64) és 7 (x 64) |
-| Debian GNU/Linux | 8\. és 9 (x86/x64) |
+| Debian GNU/Linux | 8 és 9 (x86/x64) |
 | Ubuntu | 14.04 (x86/x64) LTS, 16.04 LTS (x86/x64) és 18.04 LTS (x64) |
 | SUSE Linux Enterprise Server | 12 (x 64) |
 
@@ -60,8 +60,8 @@ Az alábbi táblázat a támogatott Linux-disztribúciók, amely az agent telep�
 |Szükséges csomag |Leírás |Minimális verziója |
 |-----------------|------------|----------------|
 |Glibc |    GNU C-kódtár | 2.5-12 
-|openssl    | OpenSSL-függvénytárak | 1.0.x verziót vagy 1.1.x |
-|A curl | a cURL webes ügyféllel | 7.15.5 |
+|Openssl    | OpenSSL-függvénytárak | 1.0.x verziót vagy 1.1.x |
+|Curl | a cURL webes ügyféllel | 7.15.5 |
 |Python-ctypes | | 
 |PAM | Cserélhető hitelesítési modulok | | 
 
