@@ -18,7 +18,7 @@ Minden oszlop a következő tulajdonságokat tartalmazza:
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| név |Az oszlop neve. |Igen |
+| name |Az oszlop neve. |Igen |
 | type |Az oszlop adattípusát. Tekintse meg a típus átalakítások kapcsolatos alábbi szakasz további részletek kapcsolatban, hogy mikor kell hogy típussal kapcsolatos információk megadása |Nem |
 | culture |.NET-alapú kulturális környezet esetén a típus van megadva, és jelenleg .NET Datetime vagy Datetimeoffset használandó. Alapértelmezett érték "en-us". |Nem |
 | format |Formázó karakterlánc típus van megadva, és .NET használandó Datetime vagy Datetimeoffset írja be. |Nem |
