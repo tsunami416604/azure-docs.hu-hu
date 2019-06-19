@@ -93,7 +93,7 @@ A következő JSON a Log Analytics-ügynök bővítmény sémáját jeleníti me
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
 | type | MicrosoftMonitoringAgent |
 | typeHandlerVersion | 1.0 |
-| munkaterület azonosítója (e.g)* | 6f680a37-00c6-41c7-a93f-1437e3462574 |
+| workspaceId (például:)* | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (például:) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
 \* A munkaterület azonosítója a consumerId nevezzük a Log Analytics API-ban.
