@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/29/2019
 ms.author: jowargo
-ms.openlocfilehash: abc77ad4d06dc719ee1a89cd8fcf29d42d96b483
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: e8e6df0426314942f86b844b2de067b38488ff37
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147641"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204875"
 ---
 # <a name="get-started-with-notification-hubs-for-kindle-apps"></a>Ismerkedés a Notification Hubs szolgáltatással Kindle-alkalmazásokhoz
 
@@ -326,7 +326,7 @@ Ebben az oktatóanyagban kódot fog létrehozni/frissíteni az alábbi feladatok
     }
     ```
 ## <a name="create-an-adm-object"></a>ADM – objektum létrehozása
-1 az a `MainActivity.java` fájlt, adja hozzá a következő importálási utasításokat:
+1. Az a `MainActivity.java` fájlt, adja hozzá a következő importálási utasításokat:
 
     ```java
     import android.os.AsyncTask;

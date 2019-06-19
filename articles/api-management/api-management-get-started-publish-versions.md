@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 6820b44309ac2b3dbeb5ad6f0beb460c8712e9af
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62127446"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203690"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>Az API több verziójának közzététele 
 
@@ -46,7 +46,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 ![Az API helyi menüje – Verzió hozzáadása](media/api-management-getstarted-publish-versions/AddVersionMenu.png)
 
 1. Válassza a **Demo Conference API** lehetőséget az API-k listájából.
-2. Válassza a mellette lévő helyi menüt (**...**).
+2. Válassza a mellette lévő helyi menüt ( **...** ).
 3. Válassza a **+ Verzió hozzáadása** lehetőséget.
 
 > [!TIP]

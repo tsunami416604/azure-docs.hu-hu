@@ -9,11 +9,11 @@ ms.date: 04/06/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: b6cafcfe6c892cd43f056458fe3586da834c2fd1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66131443"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178882"
 ---
 Funkciók egyszerűvé teszi a függvényalkalmazás hozzáadása az Application Insights-integráció a [Azure Portal].
 
@@ -28,7 +28,7 @@ Funkciók egyszerűvé teszi a függvényalkalmazás hozzáadása az Application
     | Beállítás      | Ajánlott érték  | Leírás                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Name (Név)** | Egyedi nevet az alkalmazáshoz | A legegyszerűbb használja ugyanazt a nevet a függvényalkalmazás, amelyek az előfizetésében egyedinek kell lennie. | 
-    | **Hely** | Nyugat-Európa | Ha lehetséges, használjon azonos [régió](https://azure.microsoft.com/regions/) a függvényalkalmazás, vagy a függvényalkalmazáshoz. |
+    | **Location** | Nyugat-Európa | Ha lehetséges, használjon azonos [régió](https://azure.microsoft.com/regions/) a függvényalkalmazás, vagy a függvényalkalmazáshoz. |
 
 1. Válassza az **OK** gombot. Az Application Insights-erőforrást az ugyanabban az erőforráscsoportban és előfizetésben, a függvényalkalmazás jön létre. Létrehozás befejezése után zárja be az Application Insights ablakot.
 

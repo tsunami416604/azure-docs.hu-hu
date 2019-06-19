@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 7a57ab6e8f742cb44425ef703986e61529672264
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fda9594d97500075e6b018e1e8c9ff5816fe3590
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102218"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164958"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fuse"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Fuse
 
@@ -104,7 +104,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Fuse, hajtsa végre 
 
     ![Fuse tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-signonurl.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<tenant name>.fusionuniversal.com/`
+    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://{tenantname}.fuseuniversal.com/`
 
     > [!NOTE]
     > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [biztosítéka ügyfél-támogatási csapatának](mailto:support@fusion-universal.com) a gépkulcsengedélyek értékének. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.

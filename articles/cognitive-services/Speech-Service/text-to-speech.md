@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/04/2019
+ms.date: 06/14/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 84e8eedfb206e28f245128a4e30aba44e96277ab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a3469e4f7fe1c234a6df694d7bdd6d9e2c46407a
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072423"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204891"
 ---
 # <a name="what-is-text-to-speech"></a>Mi az szöveg-hang transzformációs?
 
@@ -26,13 +25,13 @@ Szöveg-hang transzformációs technológia lehetővé teszi a tartalomkészít�
 
 ### <a name="standard-voices"></a>Standard beszédhangot
 
-Standard szintű beszédhangot statisztikai paraméteres összefoglaló és/vagy összefűző összefoglaló technikák használatával jön létre. Ezek adott beszédhangot magas érthető, és hang-meglehetősen természetes. Mondjon ki több mint 45 nyelvet, az alábbi beállítások közül számos az alkalmazások könnyen engedélyezheti. Ezek adott beszédhangot adja meg a magas írásmódja pontosság, beleértve az rövidítéseket, betűszó bővülésből, dátum és idő értelmezések, polyphones és egyéb támogatása. Használjon szabványos hallhatóan kommunikál a tartalmakat a felhasználók számára az alkalmazások és szolgáltatások akadálymentesítés érdekében.
+Standard szintű beszédhangot statisztikai paraméteres összefoglaló és/vagy összefűző összefoglaló technikák használatával jön létre. Ezek adott beszédhangot hatékonyan érthető és hang természetes. Mondjon ki több mint 45 nyelvet, az alábbi beállítások közül számos az alkalmazások könnyen engedélyezheti. Ezek adott beszédhangot adja meg a magas írásmódja pontosság, beleértve az rövidítéseket, betűszó bővülésből, dátum és idő értelmezések, polyphones és egyéb támogatása. Használjon szabványos hallhatóan kommunikál a tartalmakat a felhasználók számára az alkalmazások és szolgáltatások akadálymentesítés érdekében.
 
 ### <a name="neural-voices"></a>Neurális beszédhangot
 
-Neurális beszédhangot neurálishálózat használatával elhárítja a hagyományos szöveg-hang transzformációs rendszerek magas terhelés, és használja a beszélt nyelv, és a speech egységeket szintetizáló be a számítógép hang intonation utaló megfelelő korlátozásait. Standard szintű, szöveg-hang transzformációs felszámolja prosody külön nyelvi elemzés és akusztikai előrejelzési lépések, amelyek független modellek vonatkoznak rájuk. Amely muffled, buzzy hangalapú összefoglaló eredményezhet. A Neurális képesség hajtja végre prosody előrejelzési és hangra vonatkozó összefoglaló egyidejűleg, ami egy további képlékeny és természetes hangzó hangalapú eredményez.
+Neurális beszédhangot neurálishálózat használatával elhárítja a hagyományos szöveg-hang transzformációs rendszerek magas terhelés, és használja a beszélt nyelv, és a speech egységeket szintetizáló be a számítógép hang intonation utaló megfelelő korlátozásait. Standard szintű, szöveg-hang transzformációs felszámolja prosody külön nyelvi elemzés és akusztikai előrejelzési lépések, amelyek független modellek, ami muffled hangalapú összefoglaló eredményezhet vonatkoznak rájuk. A Neurális képesség hajtja végre prosody előrejelzési és hangra vonatkozó összefoglaló egyidejűleg, ami egy további képlékeny és természetes hangzó hangalapú eredményez.
 
-Győződjön meg arról, látás- és a virtuális asszisztensek interakció természetesebb, és vonzó, digitális szövegek, például az e-könyvek átalakítása audiobooks, és javíthatja a autós navigációs rendszerek Neurális beszédhangot használható. Az emberi intelligenciára hasonlító elemeket természetes prosody és egyértelmű csuklópontot szó Neurális beszédhangot jelentősen csökkentheti figyel-e fáradás AI-rendszerekkel való kommunikáció során. 
+Győződjön meg arról, látás- és a virtuális asszisztensek interakció természetesebb, és vonzó, digitális szövegek, például az e-könyvek átalakítása audiobooks, és javíthatja a autós navigációs rendszerek Neurális beszédhangot használható. Az emberi intelligenciára hasonlító elemeket természetes prosody és egyértelmű csuklópontot szó Neurális beszédhangot jelentősen csökkentheti figyel-e fáradás AI-rendszerekkel való kommunikáció során.
 
 Neurális beszédhangot támogatják a különböző stílust, semleges és cheerful. Például a Jessa (en-US) hangalapú képesek megszólalni cheerfully, amely meleg, örömmel beszélgetés van optimalizálva. Módosíthatja a hangalapú kimenet, például a képviselő hangvételét, a terv lényegét, és használatával felgyorsíthatja [Speech összefoglaló Markup Language](speech-synthesis-markup.md). Rendelkezésre álló beszédhangot teljes listáját lásd: [támogatott nyelvek](language-support.md#text-to-speech).
 
@@ -41,6 +40,26 @@ Neurális beszédhangot előnyeivel kapcsolatos további tudnivalókért lásd: 
 ### <a name="custom-voices"></a>Egyéni beszédhangot
 
 Hangalapú testreszabási egy könnyen felismerhető névre, egy-az-maga nemében egyedülálló hang, a saját márkáját létrehozását teszi lehetővé. Szeretne létrehozni az egyéni hangtípusú, győződjön meg arról, a studio felvételt, és töltse fel a betanítási adatok, a kapcsolódó parancsprogramokat. A szolgáltatás ekkor létrehoz egy egyéni modell a rögzítése használatára vannak konfigurálva. Az egyéni hangtípusú használatával beszédfelismerési szintetizálásához. További információkért lásd: [egyéni beszédhangot](how-to-customize-voice-font.md).
+
+## <a name="speech-synthesis-markup-language-ssml"></a>Beszédszintézis-jelölőnyelv (SSML)
+
+Beszéd összefoglaló Markup Language (SSML), egy XML-alapú jelölőnyelv, amely lehetővé teszi a fejlesztők hogyan bemeneti szöveg megadása a szöveg-hang transzformációs szolgáltatásával szintetizált lesz konvertálva. Egyszerű szöveges képest, SSML lehetővé teszi a fejlesztőknek finomhangolása a terv lényegét, írásmódja, beszéd arány, a kötet és más, a szöveg-hang transzformációs kimenet. Normál írásjelek, például egy idő után felfüggesztés vagy a megfelelő intonation használatát, amikor egy mondatnál végződik a kérdőjel automatikusan kezeli.
+
+A szöveg-hang transzformációs szolgáltatásnak küldött szöveges bemenetei között, SSML kell strukturálni. További információkért lásd: [Speech összefoglaló Markup Language](speech-synthesis-markup.md).
+
+### <a name="pricing-note"></a>Megjegyzés: díjszabása
+
+Ha a szöveg-hang transzformációs szolgáltatást használja, minden beszéd átalakítás, beleértve az absztrakt konvertált karaktert számlázzuk ki. Bár a SSML dokumentum maga nem számlázható, számlázható karakter, amely segítségével állítsa be, hogyan a szöveg-beszéd átalakítás, például fonémából és a terv lényegét, alakítja át, nem kötelező elemek számít. Mi az a számlázható listáját a következő:
+
+* Az szöveg-hang transzformációs szolgáltatásba a kérelem törzsében SSML átadott szöveg
+* A kérelem törzsében SSML formátumú szöveg területén az összes jelölés kivételével `<speak>` és `<voice>` címkék
+* Betűket, írásjelek, tárolóhelyek, lapok, markup és az összes üres karaktereket
+* Minden Unicode meghatározott kód ponttal
+
+Részletes információkért lásd: [díjszabási](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+
+> [!IMPORTANT]
+> Minden kínai, japán és koreai nyelvi karaktert akkor számít, a számlázási a kettőt.
 
 ## <a name="core-features"></a>Alapfunkciók
 

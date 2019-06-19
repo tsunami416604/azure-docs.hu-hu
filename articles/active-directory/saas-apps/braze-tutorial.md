@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 670319eb3fb79742d2946f5fc45ca8904e8c1dd9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd8d4a4bd21e0f7a7f483e139beb1840b5c3cc7f
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105960"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165083"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-braze"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Braze
 
@@ -106,7 +106,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Braze, hajtsa végre
 
     ![Braze tartomány és URL-címeket egyetlen bejelentkezési adatait](common/both-replyurl.png)
 
-    Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<SUBDOMAIN>.braze.com/auth/saml/callback `
+    Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<SUBDOMAIN>.braze.com/auth/saml/callback`
 
 5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 

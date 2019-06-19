@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a034e7dc06defd701b58ec283ee161f5557c075d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 456c984e577e3427ce8cd62d6f63987118f2c8ed
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095449"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164149"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>Oktatóanyag: Oracle Felhőbeli infrastruktúra konzolon integrálása az Azure Active Directoryval
 
@@ -92,7 +92,7 @@ Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyez�
       > [!NOTE]
       > Ha a **azonosító** és **válasz URL-cím** értékek nem automatikus polulated lekérése, majd adja meg az értékeket manuálisan a követelmény alapján.
 
-      Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím: ` https://console.<REGIONNAME>.oraclecloud.com/`
+      Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím: `https://console.<REGIONNAME>.oraclecloud.com/`
 
       > [!NOTE]
       > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [Oracle Felhőbeli infrastruktúra-konzol ügyfél-támogatási csapatának](https://www.oracle.com/support/advanced-customer-support/products/cloud.html) a gépkulcsengedélyek értékének. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.

@@ -9,11 +9,11 @@ ms.date: 03/27/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: b2549abd3a4f87de99efa9a916e39b99c6fc8747
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66150860"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179022"
 ---
 1. Lépjen a virtuális WAN oldalára. Keresse meg a lap egyik módja, nyissa meg a **minden szolgáltatás**, majd keresse meg a virtuális WAN.
 1. A **WAN létrehozása** lap megnyitásához kattintson a **+ Hozzáadás** gombra.

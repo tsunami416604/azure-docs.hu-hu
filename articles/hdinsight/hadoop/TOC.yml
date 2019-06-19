@@ -2,23 +2,14 @@
   href: /azure/hdinsight
 - name: Áttekintés
   items:
-    - name: Tudnivalók a HDInsight-alapú Apache Hadoopról
+    - name: Mi az Apache Hadoop a HDInsightban?
       href: apache-hadoop-introduction.md
-      maintainContext: true
-    - name: Apache Hadoop-architektúra a HDInsightban
-      href: ../hdinsight-hadoop-architecture.md
-      maintainContext: true
-    - name: HDInsight-alapú Apache Hadoop-összetevők
-      href: ../hdinsight-component-versioning.md
-      maintainContext: true
-    - name: HDInsight 4.0
-      href: ../hdinsight-version-release.md
       maintainContext: true
 - name: Gyors útmutatók
   items:
     - name: Apache Hadoop-fürt létrehozása – Portál
       href: apache-hadoop-linux-create-cluster-get-started-portal.md
-    - name: Apache Hadoop-fürt létrehozása – Resource Manager-sablon
+    - name: Apache Hadoop-fürt létrehozása – Sablon
       displayName: 'resource manager template, arm template, resource manager group'
       href: apache-hadoop-linux-tutorial-get-started.md
 - name: Oktatóanyagok
@@ -45,6 +36,15 @@
       maintainContext: true
 - name: Alapelvek
   items:
+    - name: HDInsight 4.0
+      href: ../hdinsight-version-release.md
+      maintainContext: true
+    - name: Apache Hadoop-architektúra a HDInsightban
+      href: ../hdinsight-hadoop-architecture.md
+      maintainContext: true
+    - name: Apache Hadoop-összetevők a HDInsightban
+      href: ../hdinsight-component-versioning.md
+      maintainContext: true
     - name: A fürtök kapacitástervezése
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
@@ -471,9 +471,6 @@
   items:
     - name: Windows-fürtök
       items:
-        - name: Windows-fürtök áttelepítése Linux-fürtökre
-          href: ../hdinsight-migrate-from-windows-to-linux.md
-          maintainContext: true
         - name: .NET–megoldások áttelepítése Linux-fürtökre
           href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
           maintainContext: true

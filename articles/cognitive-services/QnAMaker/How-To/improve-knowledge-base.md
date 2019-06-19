@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 06/19/2019
 ms.author: diberry
-ms.openlocfilehash: f8d2f6d9fce6a249a782f959ac7672ac8e123fbc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b73884e544ea1b8ee76c8a891048e6a8e17d6ab3
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075156"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204096"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Aktív tanulás használatával javíthatja a Tudásbázis
 
@@ -193,9 +193,9 @@ JSON-törzse többféle beállításokkal rendelkezik:
 
 |JSON-törzse tulajdonság|Típus|Cél|
 |--|--|--|--|
-|`feedbackRecords`|tömb|Visszajelzés listája.|
+|`feedbackRecords`|array|Visszajelzés listája.|
 |`userId`|string|A felhasználói azonosító, annak a személynek a javasolt kérdések elfogadásával. Felhasználói azonosító formátuma szerint strukturálhatja. Például egy e-mail-cím lehet a felhasználói azonosító érvénytelen az architektúrához. Választható.|
-|`userQuestion`|string|A kérdés pontos szövegét. Kötelező.|
+|`userQuestion`|string|A felhasználó lekérdezése pontos szövege. Kötelező.|
 |`qnaID`|szám|Kérdés, talált azonosító a [GenerateAnswer válasz](metadata-generateanswer-usage.md#generateanswer-response-properties). |
 
 Egy példa JSON-törzse hasonlóan néz ki:
@@ -213,6 +213,36 @@ Egy példa JSON-törzse hasonlóan néz ki:
 ```
 
 A sikeres válasz egy 204, és nincs JSON-válasz törzsében állapotát adja vissza. 
+
+### <a name="batch-many-feedback-records-into-a-single-call"></a>Batch-számos visszajelzés rekord egyetlen hívással történő
+
+Az ügyféloldali alkalmazás-robot esetén például az adatok tárolásához, majd küldje el sok rekordot egy egyetlen JSON-törzs az a `feedbackRecords` tömb. 
+
+Egy példa JSON-törzse hasonlóan néz ki:
+
+```json
+{
+    "feedbackRecords": [
+        {
+            "userId": "1",
+            "userQuestion": "How do I ...",
+            "qnaId": 1
+        },
+        {
+            "userId": "2",
+            "userQuestion": "Where is ...",
+            "qnaId": 40
+        },
+        {
+            "userId": "3",
+            "userQuestion": "When do I ...",
+            "qnaId": 33
+        }
+    ]
+}
+```
+
+
 
 <a name="active-learning-is-saved-in-the-exported-apps-tsv-file"></a>
 

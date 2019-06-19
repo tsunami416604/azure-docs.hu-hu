@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: tutorial
-ms.date: 04/23/2019
+ms.date: 06/18/2019
 ms.author: raynew
-ms.openlocfilehash: 2a6319565aa05f34ce31a14c5fc57e591248f4ee
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: cb8b188f8d5313852ce57481031faafc28e247b3
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399700"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204314"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Információk az Azure-beli virtuális gépeken futó SQL Server Backupról
 
@@ -50,6 +50,17 @@ A Kezdés előtt ellenőrizze az alábbi:
 **Támogatott operációs rendszerek** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> Linux jelenleg nem támogatott.
 **Támogatott SQL Server-verziók** | Az SQL Server 2017; SQL Server 2016-ban, SQL Server 2014, SQL Server 2012-ben.<br/><br/> Enterprise, Standard, Web, Developer, Express.
 **Támogatott .NET-verziók** | .NET-keretrendszer 4.5.2-es verziója és az újabb verzióját a virtuális gépen
+
+### <a name="support-for-sql-server-2008-and-sql-server-2008-r2"></a>Az SQL Server 2008 és az SQL Server 2008 R2 támogatása
+
+Az Azure Backup nemrég jelentettük be támogatása [EOS SQL-adatbázisai](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-2008-eos-extend-support) – SQL Server 2008 és az SQL Server 2008 R2. A megoldás jelenleg előzetes verziójú EOS SQL Serverhez, és támogatja a következő konfigurációt:
+
+1. Az SQL Server 2008 és a Windows 2008 R2 SP1 rendszert futtató SQL Server 2008 R2
+2. .NET-keretrendszer 4.5.2-es vagy újabb kell telepítenie a virtuális gépen
+3. Az FCI és a tükrözött adatbázisok biztonsági mentés nem támogatott
+
+Összes olyan [szempontok és korlátozások](#feature-consideration-and-limitations) , valamint ezen verziójára érvényesek. Ez a szolgáltatás eddig: általánosan elérhető az idő az ügyfélnek nem kell fizetnie.
+
 
 ## <a name="feature-consideration-and-limitations"></a>A szolgáltatás szempontok és korlátozások
 
@@ -114,9 +125,19 @@ Különbségi | Elsődleges
 Napló |  Másodlagos
 Csak másolatot teljes |  Másodlagos
 
-## <a name="fix-sql-sysadmin-permissions"></a>Javítsa ki az SQL-rendszergazdai engedélyek
+## <a name="set-vm-permissions"></a>Virtuális gép engedélyeinek beállítása
 
-  Ha szeretné javítani az engedélyek miatt **UserErrorSQLNoSysadminMembership** hiba, hajtsa végre az alábbi lépéseket:
+  Amikor felderítési SQL Server-kiszolgálón futtatja, az Azure Backup a következőket teszi:
+
+* Hozzáadja a AzureBackupWindowsWorkload bővítményt.
+* Létrehoz egy NT SERVICE\AzureWLBackupPluginSvc fiókot a virtuális gépen adatbázisok felderítéséhez. Ez a fiók használatos biztonsági és visszaállítása, és SQL-rendszergazdai engedélyekkel kell rendelkeznie.
+* Felderíti az adatbázisok egy virtuális gépen futó Azure Backup az NT AUTHORITY\SYSTEM fiókot használja. Ennek a fióknak kell lennie egy nyilvános jelentkezzen be az SQL.
+
+Ha Ön hozta létre az SQL Server rendszerű virtuális gép az Azure Marketplace-en, vagy ha SQL 2008 és 2008 R2, kaphat egy **UserErrorSQLNoSysadminMembership** hiba.
+
+Az engedélyek ajándékozás **SQL 2008** és **2008 R2** Windows 2008 R2 rendszeren futó, tekintse meg [Itt](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2).
+
+Minden egyéb verziói esetén javítsa ki az engedélyeket az alábbi lépéseket követve:
 
   1. Az SQL Server SysAdmin (rendszergazda) engedélyekkel rendelkező fiók használatával jelentkezzen be az SQL Server Management Studio (SSMS). Ha nincs szükség speciális engedélyek, a Windows-hitelesítés működnie kell.
   2. Nyissa meg az SQL Server, a **biztonsági/bejelentkezések** mappát.
@@ -146,8 +167,72 @@ Csak másolatot teljes |  Másodlagos
 > [!NOTE]
 > Ha az SQL Server telepített SQL Server több példánnyal rendelkezik, akkor hozzá kell adnia a sysadmin (rendszergazda) engedély **NT Service\AzureWLBackupPluginSvc** fiók az összes SQL-példányra.
 
+### <a name="give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2"></a>SQL 2008 és az SQL 2008 R2 SQL rendszergazdai jogosultságok adása
+
+Adjon hozzá **NT AUTHORITY\SYSTEM** és **NT Service\AzureWLBackupPluginSvc** bejelentkezések, az SQL Server-példány:
+
+1. Nyissa meg az SQL Server-példány az Object explorer.
+2. Keresse meg a Security -> bejelentkezések
+3. A jobb gombbal a bejelentkezések a, és kattintson a *új bejelentkezés...*
+
+    ![Új bejelentkezés az SSMS használatával](media/backup-azure-sql-database/sql-2k8-new-login-ssms.png)
+
+4. Nyissa meg az Általános lapot, és adja meg **NT AUTHORITY\SYSTEM** bejelentkezési nevet.
+
+    ![bejelentkezési név az ssms használatával](media/backup-azure-sql-database/sql-2k8-nt-authority-ssms.png)
+
+5. Lépjen a *kiszolgálói szerepkörök* válassza *nyilvános* és *SysAdmin (rendszergazda)* szerepköröket.
+
+    ![szerepkör kiválasztása az ssms-ben](media/backup-azure-sql-database/sql-2k8-server-roles-ssms.png)
+
+6. Lépjen a *állapot*. *Engedélyezés* kapcsolódjanak az adatbázismotor, és jelentkezzen be az engedély *engedélyezve*.
+
+    ![Engedélyek megadása az ssms-ben](media/backup-azure-sql-database/sql-2k8-grant-permission-ssms.png)
+
+7. Kattintson az OK gombra.
+8. Ismételje meg a lépést (1-7 fent) ugyanabban a sorrendben NT Service\AzureWLBackupPluginSvc bejelentkezési hozzáadása az SQL Server-példányt. Ha a bejelentkezés már létezik, győződjön meg arról, azt a sysadmin (rendszergazda) kiszolgálói szerepkörrel rendelkezik, és az állapot Grant engedélyt az adatbázismotorhoz való csatlakozáshoz, és jelentkezzen be az engedélyezve van.
+9. Engedély megadása után **adatbázisok újbóli felderítése** a portálon: Tároló **->** biztonsági mentési infrastruktúra **->** számítási feladatok Azure-beli virtuális gépen:
+
+    ![Adatbázisok újbóli felderítése az Azure Portalon](media/backup-azure-sql-database/sql-rediscover-dbs.png)
+
+Azt is megteheti automatizálhatja a engedélyeket ad adminisztrátori módban a következő PowerShell-parancsok futtatásával. A példány neve alapértelmezés szerint MSSQLSERVER van beállítva. A példány nevét a argumentum a parancsfájlt, ha változás kell lennie:
+
+```powershell
+param(
+    [Parameter(Mandatory=$false)] 
+    [string] $InstanceName = "MSSQLSERVER"
+)
+if ($InstanceName -eq "MSSQLSERVER")
+{
+    $fullInstance = $env:COMPUTERNAME   # In case it is the default SQL Server Instance
+}
+else
+{
+    $fullInstance = $env:COMPUTERNAME + "\" + $InstanceName   # In case of named instance
+}
+try
+{ 
+    sqlcmd.exe -S $fullInstance -Q "sp_addsrvrolemember 'NT Service\AzureWLBackupPluginSvc', 'sysadmin'" # Adds login with sysadmin permission if already not available
+}
+catch
+{
+    Write-Host "An error occurred:"
+    Write-Host $_.Exception|format-list -force
+}
+try
+{ 
+    sqlcmd.exe -S $fullInstance -Q "sp_addsrvrolemember 'NT AUTHORITY\SYSTEM', 'sysadmin'" # Adds login with sysadmin permission if already not available
+}
+catch
+{
+    Write-Host "An error occurred:"
+    Write-Host $_.Exception|format-list -force
+}
+```
+
+
 ## <a name="next-steps"></a>További lépések
 
-- [Ismerje meg](backup-sql-server-database-azure-vms.md) SQL Server-adatbázisok biztonsági mentése.
-- [Ismerje meg](restore-sql-database-azure-vm.md) biztonsági másolat az SQL Server-adatbázisok visszaállítása.
-- [Ismerje meg](manage-monitor-sql-database-backup.md) kezelése biztonsági mentés az SQL Server-adatbázisok.
+* [Ismerje meg](backup-sql-server-database-azure-vms.md) SQL Server-adatbázisok biztonsági mentése.
+* [Ismerje meg](restore-sql-database-azure-vm.md) biztonsági másolat az SQL Server-adatbázisok visszaállítása.
+* [Ismerje meg](manage-monitor-sql-database-backup.md) kezelése biztonsági mentés az SQL Server-adatbázisok.

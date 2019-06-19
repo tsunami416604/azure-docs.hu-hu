@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: 69c14c6b98b572bc413f5a35696269e13344387e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 704a1193eb47f9346900c6c8a003122c30c8ab44
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417308"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203969"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>A Text Analytics API nyelvéhez és régiójához támogatása
 
@@ -31,7 +31,14 @@ Ha a tartalom kevésbé gyakran használt nyelven, megpróbálhatja nyelvfelisme
 
 ## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Hangulatelemzést, Kulcsszókeresést és nevesített entitások felismerése
 
-Hangulatelemzést, kulcsszókeresést és entitások felismerése támogatott nyelvek listáját a rendszer több szelektív, mivel az elemzők számát finomított további nyelveket nyelvi szabályainak megfelelően.
+Hangulatelemzést, kulcsszókeresést és entitások felismerése támogatott nyelvek listáját a rendszer több szelektív, mivel az elemzők számát finomított további nyelveket nyelvi szabályainak megfelelően. A teljes körű támogatása [entitástípusok](how-tos/text-analytics-how-to-entity-linking.md#supported-types-for-named-entity-recognition) jelenleg csak az alábbi nyelveken: 
+* Angol
+* Egyszerűsített kínai
+* francia
+* német
+* spanyol
+
+Csak a `Person`, `Location` és `Organization` nevesített entitásokhoz a többi nyelvet adja vissza.
 
 ## <a name="language-list-and-status"></a>Nyelvek listája és állapota
 
@@ -64,7 +71,7 @@ Nyelvi támogatás kezdetben integráljuk általánosan elérhető (GA) állapot
 
 \* Nyelvi támogatás az előzetes verzióban
 
-\*\* Megnevezett entitások felismerése és [entitáskapcsolás](how-tos/text-analytics-how-to-entity-linking.md) is ezen a nyelven érhető el.    
+\*\* [Megnevezett entitások felismerése](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-ner) és [entitáskapcsolás](how-tos/text-analytics-how-to-entity-linking.md#entity-linking) is ezen a nyelven érhető el.    
 
 ## <a name="see-also"></a>Lásd még
 

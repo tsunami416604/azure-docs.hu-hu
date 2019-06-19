@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: article
-ms.date: 04/26/2019
+ms.date: 06/18/2019
 ms.author: rosh
-ms.openlocfilehash: ebe54f5319986f0588e06a980a6f914beb6adbcc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 78584c2c0419bb27fb58c07eb97b1aa38501951f
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65909400"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204066"
 ---
 # <a name="find-similar-images-from-previous-searches-using-imageinsightstoken"></a>Keresse meg a korábbi kereséseket ImageInsightsToken használatával hasonló képek
 
 A Visual Search SDK lehetővé teszi, hogy a korábbi kereséseket visszaadó online rendszerképek keresése egy `ImageInsightsToken`. Ez az alkalmazás lekéri az `ImageInsightsToken` és használja a jogkivonatot egy későbbi keresés. Ezután elküldi a `ImageInsightsToken` Bing és az értéket ad vissza, a Bing Keresés URL-címek és található online-hoz hasonló képek URL-címeket tartalmazó eredmények.
 
-A teljes forráskódot, ebben az oktatóanyagban található további hibakezelést és jegyzetek [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchInisghtsTokens.cs).
+A teljes forráskódot, ebben az oktatóanyagban található további hibakezelést és jegyzetek [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchInsightsTokens.cs).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,10 +38,10 @@ A teljes forráskódot, ebben az oktatóanyagban található további hibakezel�
 
 ## <a name="get-the-imageinsightstoken-from-the-bing-image-search-sdk"></a>A Bing Képkeresés SDK-t a ImageInsightsToken lekérése
 
-Ez az alkalmazás használ egy `ImageInsightsToken` kombináljuk az [Bing kép Search SDK](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart). Az új C# -Konzolalkalmazás, hozzon létre egy ügyfél hívja az API használatával `ImageSearchAPI()`. Ezután `SearchAsync()` a lekérdezést:
+Ez az alkalmazás használ egy `ImageInsightsToken` kombináljuk az [Bing kép Search SDK](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart). Az új C# -Konzolalkalmazás, hozzon létre egy ügyfél hívja az API használatával `ImageSearchClient()`. Ezután `SearchAsync()` a lekérdezést:
 
 ```csharp
-var client = new ImageSearchAPI(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey));
+var client = new ImageSearchClient(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey));
 var imageResults = client.Images.SearchAsync(query: "canadian rockies").Result;
 Console.WriteLine("Search images for query \"canadian rockies\"");
 ```

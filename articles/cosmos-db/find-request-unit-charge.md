@@ -4,14 +4,14 @@ description: Ismerje meg, hogy bármilyen műveletet elvégezni az Azure Cosmos-
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/23/2019
+ms.date: 06/14/2019
 ms.author: thweiss
-ms.openlocfilehash: 0671556a1ad049782090ffede509072adbac4c6a
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 07ca6278da6dd1f50f017f389c2c1389a42196f4
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416034"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67163838"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>Keresse meg a kérelem egységek használata után az Azure Cosmos DB-ben
 
@@ -297,8 +297,9 @@ További információkért lásd: [a rövid útmutató: A .NET SDK-t és az Azur
 A fogyasztott optimalizálásával kapcsolatos további információkért tanulmányozza a következő cikkeket:
 
 * [Kérelemegységek és átviteli sebesség az Azure Cosmos DB-ben](request-units.md)
-* [Az Azure Cosmos DB kiosztott átviteli sebesség költségek optimalizálása](optimize-cost-throughput.md)
+* [A kiosztott átviteli sebesség költségeinek optimalizálása az Azure Cosmos DB-ben](optimize-cost-throughput.md)
 * [Az Azure Cosmos DB lekérdezési költségek optimalizálása](optimize-cost-queries.md)
 * [Globális skálázása a kiosztott átviteli sebesség](scaling-throughput.md)
 * [A tárolók és adatbázisok kiépítése átviteli](set-throughput.md)
 * [A tároló üzembe helyezése átviteli](how-to-provision-container-throughput.md)
+* [A figyelő és hibakeresése az Azure Cosmos DB metrikákkal](use-metrics.md)

@@ -1,21 +1,21 @@
 ---
 title: 'Gyors útmutató: A Bing Custom Search-végpontot a hívás a C# SDK |} A Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: Telepítse a Custom Search SDK C#-konzolalkalmazást.
+description: A Bing egyéni keresés SDK használata C# az egyéni keresőpéldányok kereséséhez.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 09/06/2018
+ms.date: 06/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 9e13edce77819d5ef8cfc3b6becff9fb82224a83
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 0381df439d0c0904e8741bb1f31b179566c72ec5
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595961"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206179"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-c-sdk"></a>Gyors útmutató: A Bing Custom Search-végpontot a hívás a C# SDK 
 
@@ -27,7 +27,7 @@ Ez a rövid útmutató segítségével megkezdheti a keresési eredmények kér 
 - Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
 - Bármely kiadása [Visual Studio 2017-es vagy újabb](https://www.visualstudio.com/downloads/)
 - Linux/MacOS rendszer esetében az alkalmazás a [Monóval](https://www.mono-project.com/) futtatható.
-- Telepített [NuGet Custom Search](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) csomag. 
+- A [Bing Custom Search](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) NuGet-csomagot. 
     - A **Megoldáskezelőben** a Visual Studióban kattintson jobb gombbal a projektre, és válassza ki **NuGet-csomagok kezelése** a menüből. Telepítse az `Microsoft.Azure.CognitiveServices.Search.CustomSearch` csomagot. A NuGet Custom Search csomag telepítésekor a következő szerelvények is települnek:
         - Microsoft.Rest.ClientRuntime
         - Microsoft.Rest.ClientRuntime.Azure

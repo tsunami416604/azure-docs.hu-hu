@@ -44,6 +44,8 @@
       href: configure-vm-gpu.md
     - name: Munkamenetgazdák automatikus méretezése
       href: set-up-scaling-script.md
+    - name: Csatorna személyre szabása Windows Virtual Desktop-felhasználók számára
+      href: customize-feed-for-virtual-desktop-users.md
     - name: RDP-tulajdonságok testreszabása
       href: customize-rdp-properties.md
 - name: Alapelvek

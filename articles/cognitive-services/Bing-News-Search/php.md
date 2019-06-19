@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Hajtsa végre a PHP - Bing News Search REST API egy hírkeresés'
+title: 'Gyors útmutató: Hajtsa végre a hírkeresési, a PHP és a Bing News Search REST API'
 titlesuffix: Azure Cognitive Services
 description: Ez a rövid útmutató segítségével egy kérelmet küld a Bing News Search REST API a PHP használatával, és a egy JSON-választ kap.
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 1/10/2019
+ms.date: 6/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: fa253f95c01e35505e154d9709ca88033735fa52
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 9fd03b433580444c2fc3f956dded6deb1a2be7f1
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390472"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203338"
 ---
 # <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hajtsa végre a PHP és a Bing News Search REST API használatával hírkeresés
 

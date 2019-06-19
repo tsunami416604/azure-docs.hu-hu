@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: 7987e8a7a9db06608f663b6ae414788ba8330f65
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66124996"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179450"
 ---
 ## <a name="publish-or-revert"></a>Közzététel szülővé és visszaalakítás szülőből
 Egy egyéni keresési példány módosítások történnek a **konfigurációs** lapon, hogy ellenőrizhesse a módosításokat. Ha elkészült, és módosítások és a közzétételre kész, kattintson a **közzététel**. Módosítások nem tükröződnek a termelési végpontokon, amíg a közzététel.

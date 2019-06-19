@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 757c710ddca72ec6a1383b51a8b536d196e6cb8c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62107227"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203602"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>Változatok használata a nem kompatibilitástörő változások biztonságos elvégzéséhez
 Amikor az API készen áll, és a fejlesztők elkezdik a használatát, előbb-utóbb módosításokat kell végeznie az API-n, miközben nem akadályozza az API hívóit. Emellett az is hasznos, ha a fejlesztők értesülnek az elvégzett módosításokról. Az Azure API Managementben ez a **változatok** használatával valósítható meg. További információ: [Verziók és változatok](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/) és [API-k verziókezelése az Azure API Managementtel](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/).
@@ -50,7 +50,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 4. Válassza a **+ Változat hozzáadása** lehetőséget.
 
     > [!TIP]
-    > Az API helyi menüjében (**...**) található **Változat hozzáadása** lehetőséget is választhatja.
+    > Az API helyi menüjében ( **...** ) található **Változat hozzáadása** lehetőséget is választhatja.
 
 5. Adja meg az új változat leírását, amely alapján emlékezni fog a változat funkciójára.
 6. Kattintson a **Létrehozás** elemre.
@@ -82,7 +82,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
     ![A változatok képernyőn található változatok menü.](media/api-management-getstarted-revise-api/RevisionsMenu.PNG)
 
-2. Nyissa meg a **2. változat** helyi menüjét (**...**).
+2. Nyissa meg a **2. változat** helyi menüjét ( **...** ).
 3. Kattintson a **Legyen ez az aktuális** elemre.
 4. Jelölje be a **Közzététel az API nyilvános módosításnaplójában** beállítást, ha megjegyzéseket kíván közzétenni erről a módosításról. Adjon meg egy leírást, a módosítás a fejlesztőknek, például: **Változatok tesztelése. Új „test” művelet hozzáadva.**
 5. Most már a **2. változat** az aktuális.

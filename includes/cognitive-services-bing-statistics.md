@@ -9,11 +9,11 @@ ms.date: 04/09/2018
 ms.author: scottwhi
 ms.custom: include file
 ms.openlocfilehash: 6016b13fe7d3e1f3b673bd2446d2f68b04878cd6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66124737"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179402"
 ---
 Statisztikai Bing analytics Bing keresési API-kat biztosít. Analytics biztosít a hívások mennyisége, felső lekérdezési karakterláncokat, földrajzi eloszlása és egyéb. A Bing Search-előfizetéssel a statisztikai Bing engedélyezéséhez lépjen a [Azure irányítópultján](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7), válassza ki a fizetett előfizetését, majd kattintson a statisztikai Bing engedélyezése. Statisztikai Bing engedélyezése kissé növeli a feliratkozási arány (lásd: [díjszabás](https://aka.ms/bingstatisticspricing)).
 

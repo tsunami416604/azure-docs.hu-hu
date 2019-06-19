@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
 ms.openlocfilehash: e30651cb0ed7d74082163a92acbc428c21018255
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66167223"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179197"
 ---
 ## <a name="c-program-example"></a>C#program példa
 
@@ -37,7 +37,7 @@ A helyreállító lemez jeleníti meg a kapcsolat a két táblázat között. Az
 
 A C# program logikailag egy .cs fájlt, és számos kódblokkok, hogy minden egyes megérteni a fizikailag oszlik. Fordítsa le és futtassa a programot, hajtsa végre a következő lépéseket:
 
-1. Hozzon létre egy C# projektre a Visual Studióban. A projekt típusúnak kell lennie egy *konzol*, alatt található **sablonok** > **Visual C#**   >  **Windows asztali**  >  **Console App (.NET Framework)**.
+1. Hozzon létre egy C# projektre a Visual Studióban. A projekt típusúnak kell lennie egy *konzol*, alatt található **sablonok** > **Visual C#**   >  **Windows asztali**  >  **Console App (.NET Framework)** .
 
 1. A fájl *Program.cs*, az alapszintű kódsorokat cserélje le az alábbi lépéseket:
 

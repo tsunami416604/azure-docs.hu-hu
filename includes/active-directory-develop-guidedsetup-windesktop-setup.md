@@ -15,11 +15,11 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: ae6d590cdada24638ec2d24c83609b8e6addfaf0
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121635"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179294"
 ---
 ## <a name="set-up-your-project"></a>A projekt beállítása
 
@@ -34,8 +34,8 @@ Az alkalmazást, amelyet ez az útmutató létrehoz egy gombot, egy grafikon, eg
 Az alkalmazás létrehozásához tegye a következőket:
 
 1. A Visual Studióban válassza ki a **fájl** > **új** > **projekt**.
-2. A **sablonok**válassza **Visual C#**.
-3. Válassza ki **WPF App (.NET Framework)**, attól függően, Ön által használt verziója a Visual Studio verziójának.
+2. A **sablonok**válassza **Visual C#** .
+3. Válassza ki **WPF App (.NET Framework)** , attól függően, Ön által használt verziója a Visual Studio verziójának.
 
 ## <a name="add-msal-to-your-project"></a>Az MSAL hozzáadása a projekthez
 

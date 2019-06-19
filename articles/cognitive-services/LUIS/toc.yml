@@ -85,12 +85,24 @@
           displayName: roles
         - name: Szabad formátumú adatok kinyerése
           href: luis-tutorial-pattern-any.md
-    - name: A V4 Bot Framework használata
+    - name: Használat robottal
       items:
         - name: 'C# használatával'
-          href: luis-csharp-tutorial-bf-v4.md
+          items:
+            - name: 1. Alapszintű robot létrehozása
+              href: luis-csharp-tutorial-bf-v4.md
+              displayName: 'bot framework, framework, sdk, abs'
+            - name: 2. Telemetria hozzáadása az Application Insightshoz
+              href: luis-tutorial-bot-csharp-appinsights.md
+              displayName: 'Application insight, kusto'
         - name: Node.js használatával
-          href: luis-nodejs-tutorial-bf-v4.md
+          items:
+            - name: 1. Alapszintű robot létrehozása
+              displayName: 'bot framework, framework, sdk, abs'
+              href: luis-nodejs-tutorial-bf-v4.md
+            - name: 2. Telemetria hozzáadása az Application Insightshoz
+              displayName: 'Application insight, kusto'
+              href: luis-tutorial-bot-nodejs-appinsights.md
 - name: Példák
   items:
     - name: Kódminták
@@ -200,14 +212,6 @@
           href: luis-tutorial-bing-spellcheck.md
         - name: Beszédszolgáltatással
           href: ../speech-service/how-to-recognize-intents-from-speech-csharp.md?toc=/azure/cognitive-services/luis/toc.json&bc=/azure/cognitive-services/luis/breadcrumb/toc.json
-        - name: Robot az Application Insightsszal
-          items:
-            - name: Node.js
-              displayName: 'Application insight, kusto'
-              href: luis-tutorial-bot-nodejs-appinsights.md
-            - name: 'C#'
-              displayName: 'Application insight, kusto'
-              href: luis-tutorial-bot-csharp-appinsights.md
     - name: Előrejelzés pontosságának javítása
       items:
         - name: Az irányítópult használata

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 09/13/2018
 ms.author: wolfma
 ms.openlocfilehash: afe6f1493c7fa8272c67f23d6708ad6e4eea9381
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145500"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179412"
 ---
 1. Indítsa el a Visual Studio 2017-et.
 
@@ -19,7 +19,7 @@ ms.locfileid: "66145500"
 
    ![A .NET asztali fejlesztés engedélyezése](~/articles/cognitive-services/speech-service/media/sdk/vs-enable-net-desktop-workload.png)
 
-1. Következő lépésként hozzunk létre egy projektet. A menüsávon válassza **File > New > Project**. A párbeszédpanel akkor jelenik meg, ha a bal oldali panelen bontsa ki a ezekben a szakaszokban **telepített > Visual C# > Windows asztali** válassza **Console App (.NET Framework)**. Adja a projektnek *helloworld*.
+1. Következő lépésként hozzunk létre egy projektet. A menüsávon válassza **File > New > Project**. A párbeszédpanel akkor jelenik meg, ha a bal oldali panelen bontsa ki a ezekben a szakaszokban **telepített > Visual C# > Windows asztali** válassza **Console App (.NET Framework)** . Adja a projektnek *helloworld*.
 
     ![Create Visual C# Console App (.NET Framework) (Visual C#-konzolalkalmazás létrehozása (.NET keretrendszer))](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-01-new-console-app.png "Create Visual C# Console App (.NET Framework) (Visual C#-konzolalkalmazás létrehozása (.NET keretrendszer))")
 

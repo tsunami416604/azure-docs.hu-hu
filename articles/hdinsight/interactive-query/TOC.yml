@@ -2,11 +2,8 @@
   href: /azure/hdinsight
 - name: Áttekintés
   items:
-    - name: HDInsight-alapú Apache Hadoop-összetevők
-      href: ../hdinsight-component-versioning.md
-      maintainContext: true
-    - name: HDInsight 4.0
-      href: ../hdinsight-version-release.md
+    - name: Mi az interaktív lekérdezés a HDInsightban?
+      href: ./apache-interactive-query-get-started.md
       maintainContext: true
 - name: Gyors útmutatók
   items:
@@ -14,8 +11,6 @@
       href: ./hdinsight-connect-hive-zeppelin.md
 - name: Bevezetés
   items:
-    - name: Az interaktív lekérdezések használatának első lépései
-      href: ./apache-interactive-query-get-started.md
     - name: HDInsight-alkalmazások telepítése
       href: ../hdinsight-apps-install-applications.md
       maintainContext: true

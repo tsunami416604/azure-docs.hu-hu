@@ -9,11 +9,11 @@ ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: 4fec9be34e390498b85ecfcb3f3b61055a08fdd2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66120705"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178810"
 ---
 1. Egy új böngészőablakban jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. A bal oldali navigációs panelen válassza ki **erőforrás létrehozása**. Válassza ki **adatbázisok** majd **Azure Cosmos DB**.
@@ -26,7 +26,7 @@ ms.locfileid: "66120705"
     ---|---|---
     Előfizetés|Az Ön előfizetése|Válassza ki az Azure Cosmos DB-fiókhoz használni kívánt Azure-előfizetést. 
     Erőforráscsoport|Új létrehozása<br><br>A használt egyedi nevet majd adja meg a azonosítója|Válassza az **Új létrehozása** lehetőséget. Majd adjon meg egy új erőforráscsoport neve a fiókjához. Az egyszerűség kedvéért használja ugyanazt a nevet, az azonosítóját. 
-    Fiók neve|Adjon meg egy egyedi nevet|Adjon meg egy egyedi nevet az Azure Cosmos DB-fiók azonosításához.<br><br>Az azonosító csak kisbetűket, számokat és a kötőjel (-) karaktert használhat. 3. és 31 karakter között kell lennie.
+    Fiók neve|Adjon meg egy egyedi nevet|Adjon meg egy egyedi nevet az Azure Cosmos DB-fiók azonosításához.<br><br>Az azonosító csak kisbetűket, számokat és a kötőjel (-) karaktert használhat. 3\. és 31 karakter között kell lennie.
     API|Azure-tábla|A létrehozni kívánt fiók típusát az API határozza meg. Az Azure Cosmos DB öt API-kat biztosít: A dokumentum-adatbázis Core(SQL) a Gremlin gráf típusú adatbázisokat, a MongoDB, a dokumentum-adatbázis, az Azure Table és a Cassandra. Jelenleg minden API egy külön fiókot kell létrehoznia. <br><br>Válassza ki **Azure Table** mivel ebben a rövid útmutatóban hoz létre egy táblát, amely a Table API-val működik. <br><br>[További információ a Table API](../articles/cosmos-db/table-introduction.md).|
     Location egység|Válassza ki a felhasználóihoz legközelebb eső régiót|Válassza ki az Azure Cosmos DB-fiókot üzemeltetéséhez használni kívánt földrajzi helyet. A felhasználók számára tegye lehetővé számukra a lehető leggyorsabb hozzáférést biztosítsa az adatok legközelebb eső helyet használja.
 

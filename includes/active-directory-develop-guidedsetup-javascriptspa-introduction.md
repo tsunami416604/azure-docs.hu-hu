@@ -15,11 +15,11 @@ ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: include file
 ms.openlocfilehash: 8c2dc41fde9387da291b6e4a6c8a6220ae62b514
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121788"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179724"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>A felhasználók és a Microsoft Graph API meghívása egy JavaScript egyoldalas alkalmazásból (SPA)
 
@@ -30,7 +30,7 @@ Ez az útmutató bemutatja, hogyan a panelt a JavaScript egyoldalas alkalmazás 
 ![Bemutatja, hogyan jöjjön létre a mintaalkalmazás által ezen oktatóanyagok működik](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
 <!--start-collapse-->
-### <a name="more-information"></a>További információk
+### <a name="more-information"></a>További információ
 
 Ez az útmutató által létrehozott alkalmazás lehetővé teszi, hogy egy JavaScript SPA lekérdezni a Microsoft Graph API vagy egy webes API-t, amely a Microsoft identity platform végpontról jogkivonatokat fogad. Ebben a forgatókönyvben egy felhasználó bejelentkezése után az, egy hozzáférési jogkivonatot kért és a HTTP-kérelmekre – az engedélyezési fejléc hozzáadása. Token beszerzése és megújítása a Microsoft hitelesítési tár (MSAL) kezeli.
 
@@ -41,7 +41,7 @@ Ez az útmutató által létrehozott alkalmazás lehetővé teszi, hogy egy Java
 
 Ez az útmutató használja a következő könyvtárban:
 
-|Szalagtár|Leírás|
+|Erőforrástár|Leírás|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|A Microsoft Authentication Library for JavaScript-előzetes verzió|
 

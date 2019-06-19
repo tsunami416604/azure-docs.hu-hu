@@ -3,20 +3,20 @@ title: Megbízhatósági pontszám – QnA Maker
 titleSuffix: Azure Cognitive Services
 description: A megbízhatósági pontszám azt jelzi, hogy a válasz-e a megfelelő egyezik a megadott felhasználói lekérdezés magabiztosan.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/05/2019
-ms.author: tulasim
+ms.date: 06/17/2019
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 4fb5d1e20c4c857dedcec2dc4695f82fccd9269d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c14c607e4c563bbeeaff02b2c2478cc4b4d96ee5
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65792749"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165138"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>A QnA Maker Tudásbázis megbízhatósági pontszám
 Ha egy felhasználó lekérdezése Tudásbázis van, a QnA Maker azokra adott válaszokat, és a egy magabiztossági pontszámot ad vissza. Ezt az értéket, hogy a válasz-e a megfelelő egyezik a megadott felhasználói lekérdezés magabiztosan jelzi. 
@@ -46,7 +46,7 @@ Az alábbi táblázat azt jelzi, hogy egy adott pontszám kapcsolódó tipikus m
 |0|Nincs egyezés, így a válasz nem ad vissza.|"A szolgáltatás mennyibe"|
 
 ## <a name="choose-a-score-threshold"></a>Válassza ki a pontszám küszöbértéket
-A fenti táblázatban a legtöbb Tudásbázis mutatja, amelyek várhatóan pontszámokat. Azonban mivel minden KB különböző, és rendelkezik a különböző típusú szavak, leképezések és célok – javasoljuk, teszteléséhez, és válassza ki a küszöbérték, amely a legjobban működik az Ön számára. Alapértelmezés szerint a küszöbérték értéke 0, így minden lehetséges választ adja vissza. Az ajánlott küszöbértéket, hogy működik a legtöbb Tudásbázis van **50**.
+A fenti táblázatban a legtöbb Tudásbázis mutatja, amelyek várhatóan pontszámokat. Azonban mivel minden KB más, és rendelkezik a különböző típusú szavak, leképezések és célok – javasoljuk, teszteléséhez, és válassza ki a küszöbérték, amely a legjobban működik az Ön számára. Alapértelmezés szerint a küszöbérték értéke 0, így minden lehetséges választ adja vissza. Az ajánlott küszöbértéket, hogy működik a legtöbb Tudásbázis van **50**.
 
 A küszöbérték kiválasztásakor tartsa szem előtt a pontosság és lefedettség közötti egyensúly, és a Teljesítménybeállítások az igényei alapján küszöbértékét.
 
@@ -56,6 +56,12 @@ A küszöbérték kiválasztásakor tartsa szem előtt a pontosság és lefedett
 
 > [!NOTE]
 > A QnA Maker újabb verzióit közé tartozik a pontozási logikát, és hatással lehetnek a küszöbértéket. Frissíti a szolgáltatás bármikor ügyeljen arra, hogy tesztelése és finomhangolása a küszöbértéket, ha szükséges. Ellenőrizheti a kérdések és válaszok verziója [Itt](https://www.qnamaker.ai/UserSettings), és tekintse meg a legújabb frissítéseinek [Itt](../How-To/troubleshooting-runtime.md).
+
+## <a name="set-threshold"></a>Beállított küszöbértéket 
+
+Állítsa be a küszöbérték pontszám tulajdonságaként a [GenerateAnswer API JSON-törzse](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration). Ez azt jelenti, hogy egyes hívások GenerateAnswer beállítása. 
+
+A bot framework, állítsa be a pontszám beállítások objektum részeként [ C# ](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) vagy [Node.js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs).
 
 ## <a name="improve-confidence-scores"></a>Megbízhatósági pontszámukat
 A megbízhatósági pontszám, egy felhasználó adott válaszban javítása érdekében adhat hozzá a felhasználó lekérdezése a Tudásbázis következő, egy másik kérdésre adott válasz. Is használhatja kis-és [word-átalakítások](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) szinonimák hozzáadása a KB-ban keywords.

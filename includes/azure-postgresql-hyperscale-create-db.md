@@ -9,11 +9,11 @@ ms.date: 05/14/2019
 ms.author: jonels
 ms.custom: include file
 ms.openlocfilehash: c07e352288d7dc1d0bf198fd74c8baaded3a2d23
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66154495"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179362"
 ---
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -64,7 +64,7 @@ Az Azure-adatbázis PostgreSQL – nagy kapacitású (Citus) (előzetes verzió)
 
 Az Azure Database for PostgreSQL-kiszolgáló létrehozásakor egy alapértelmezett adatbázis nevű **citus** jön létre. Az adatbázis-kiszolgálóhoz csatlakozni, szüksége van egy kapcsolati karakterláncot, és a rendszergazdai jelszót.
 
-1. Szerezze be a kapcsolati karakterláncot. A kiszolgáló oldalán kattintson a **kapcsolati karakterláncok** menüpontot. (Alatt áll **beállítások**.) Keresse meg a megjelölt karakterláncot  **C++ (libpq)**. A képernyő lesz:
+1. Szerezze be a kapcsolati karakterláncot. A kiszolgáló oldalán kattintson a **kapcsolati karakterláncok** menüpontot. (Alatt áll **beállítások**.) Keresse meg a megjelölt karakterláncot  **C++ (libpq)** . A képernyő lesz:
 
    ```
    host=hostname.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require

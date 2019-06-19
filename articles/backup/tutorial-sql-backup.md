@@ -6,14 +6,14 @@ author: dcurwin
 manager: ''
 ms.service: backup
 ms.topic: tutorial
-ms.date: 05/22/2019
+ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: bfe48fb1bf6a361ce79d0ddc5281a6380a5367e4
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 5fbbd2cf999ab8ba3183879bd9b417353aa5edd0
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66016481"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203481"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>SQL Server-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -33,7 +33,7 @@ Ez a cikk bemutatja, hogyan készíthet biztonsági másolatot az Azure Backup h
 Biztonsági másolatot készíteni az SQL Server-adatbázishoz, mielőtt a következőket ellenőrizze:
 
 1. Azonosítsa vagy [létrehozása](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) ugyanabban a régióban vagy a virtuális Gépet üzemeltető SQL Server-példány területi beállításról egy Recovery Services-tárolót.
-2. [Ellenőrizze a virtuális gép engedélyeit](backup-azure-sql-database.md#fix-sql-sysadmin-permissions) szükséges az SQL-adatbázisok biztonsági mentését.
+2. [Ellenőrizze a virtuális gép engedélyeit](backup-azure-sql-database.md#set-vm-permissions) szükséges az SQL-adatbázisok biztonsági mentését.
 3. Ellenőrizze, hogy rendelkezik-e a virtuális gép [hálózati kapcsolat](backup-sql-server-database-azure-vms.md#establish-network-connectivity).
 4. Ellenőrizze, hogy az SQL Server-adatbázisok összhangban vannak elnevezve [pokyny Pro pojmenování](#verify-database-naming-guidelines-for-azure-backup) az Azure Backup szolgáltatáshoz.
 5. Győződjön meg arról, hogy nincs engedélyezve az adatbázis biztonsági mentési megoldások. Tiltsa le az összes többi SQL Server biztonsági mentés előtt végzi el ebben a forgatókönyvben. Egy Azure virtuális gép Azure Backup és az Azure Backup bármely konfliktus nélkül a virtuális gépen futó SQL Server-adatbázis számára engedélyezheti.
@@ -61,7 +61,7 @@ Az Azure Backup több minden hajtja végre az SQL Server-adatbázis biztonsági 
 - A virtuális gépen adatbázisok felderítéséhez, az Azure Backup hoz létre a fiók **NT SERVICE\AzureWLBackupPluginSvc**. Ennek a fióknak a biztonsági mentés és visszaállítás szolgál, és az SQL-rendszergazdai engedélyekkel kell rendelkeznie.
 - Az Azure Backup használja a **NT AUTHORITY\SYSTEM** adatbázis felderítési/lekérdezési, így ennek a fióknak kell lennie egy nyilvános bejelentkezés az SQL-fiók.
 
-Ha az SQL Server rendszerű virtuális gép az Azure Marketplace-ről nem hozott létre, akkor előfordulhat, hogy megjelenik egy hibaüzenet **UserErrorSQLNoSysadminMembership**. Ha ez történik [az alábbi lépéseket követve](backup-azure-sql-database.md#fix-sql-sysadmin-permissions).
+Ha az SQL Server rendszerű virtuális gép az Azure Marketplace-ről nem hozott létre, akkor előfordulhat, hogy megjelenik egy hibaüzenet **UserErrorSQLNoSysadminMembership**. Ha ez történik [az alábbi lépéseket követve](backup-azure-sql-database.md#set-vm-permissions).
 
 ### <a name="verify-database-naming-guidelines-for-azure-backup"></a>Az Azure Backup database elnevezési irányelvei ellenőrzése
 
@@ -114,7 +114,7 @@ Fedezze fel a virtuális gépen futó adatbázisok.
     - Az Azure Backup a szolgáltatás-fiókot hoz létre **NT Service\AzureWLBackupPluginSvc** a virtuális gépen.
       - Minden biztonsági mentési és visszaállítási műveletek service fiókot használja.
       - **NT Service\AzureWLBackupPluginSvc** SQL-rendszergazdai engedélyekre van szüksége. Az összes SQL Server virtuális gépek létrehozása az Azure Marketplace-en kapható a **SqlIaaSExtension** telepítve. A **AzureBackupWindowsWorkload** kiterjesztést használja a **SQLIaaSExtension** a szükséges engedélyek automatikus beszerzéséhez.
-    - Ha nem hozott létre a virtuális gép a piactérről, akkor a virtuális gép nem rendelkezik a **SqlIaaSExtension** telepítve van, és a felderítési művelet meghiúsul, a hibaüzenet **UserErrorSQLNoSysAdminMembership**. Kövesse a [utasításokat](backup-azure-sql-database.md#fix-sql-sysadmin-permissions) a probléma megoldásához.
+    - Ha nem hozott létre a virtuális gép a piactérről, akkor a virtuális gép nem rendelkezik a **SqlIaaSExtension** telepítve van, és a felderítési művelet meghiúsul, a hibaüzenet **UserErrorSQLNoSysAdminMembership**. Kövesse a [utasításokat](backup-azure-sql-database.md#set-vm-permissions) a probléma megoldásához.
 
         ![Válassza ki a virtuális gép és az adatbázis](./media/backup-azure-sql-database/registration-errors.png)
 

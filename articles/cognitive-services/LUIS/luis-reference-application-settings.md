@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/29/2019
 ms.author: diberry
-ms.openlocfilehash: c19d328c3a5f4dd6dbe14ca94809e42c5655ea72
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8a1f6fe9372d013d310c557161ceb813b8a478b
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66391144"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67163640"
 ---
 # <a name="application-settings"></a>Alkalmazásbeállítások
 
@@ -107,8 +107,8 @@ Ez magában foglalja a francia és a kanadai tápfolyadékok cseréjét.
 |E mellékjeleket "false" értékűre.|E mellékjeleket "false" értékűre.|
 |--|--|
 |`ä`|`a`|
-|`ö `|`o`| 
-|`ü `|`u`| 
+|`ö`|`o`| 
+|`ü`|`u`| 
 
 #### <a name="italian-it-it-diacritics"></a>Olasz `it-it` mellékjeleket
 
@@ -121,7 +121,7 @@ Ez magában foglalja a francia és a kanadai tápfolyadékok cseréjét.
 |`í`|`i`| 
 |`î`|`i`| 
 |`ò`|`o`| 
-|`ó `|`o`| 
+|`ó`|`o`| 
 |`ù`|`u`|
 |`ú`|`u`|
 
@@ -134,7 +134,7 @@ Ez magában foglalja, spanyol és a kanadai mexikói.
 |`á`|`a`|
 |`é`|`e`|
 |`í`|`i`| 
-|`ó `|`o`| 
+|`ó`|`o`| 
 |`ú`|`u`|
 |`ü`|`u`|
 |`ñ`|`u`|

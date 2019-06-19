@@ -9,29 +9,28 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 06/18/2019
 ms.author: diberry
-ms.openlocfilehash: 7315c80ad74eae07e41577fb2ac13742002e729e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7f82bf5a40df0554d4f98b2d835fcbd69279be43
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60198575"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204161"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>Előfizetési kulcsok használata a LUIS-appal
 
-Nem kell használni az ingyenes első-1000 végpont lekérdezések előfizetői azonosítók létrehozása. Miután ezen végpont-lekérdezést használ, hozzon létre egy Azure-erőforrást a [az Azure portal](https://portal.azure.com), hozzárendelheti a LUIS-alkalmazásokon ennek az erőforrásnak a [LUIS portál](https://www.luis.ai).
-
-Ha megjelenik egy _kvótájából_ hiba történt egy HTTP 403-as és 429-es formájában, kell hozzon létre egy kulcsot, és rendelje hozzá az alkalmazáshoz. 
+Language Understanding (LUIS) első használatakor nem kell előfizetői azonosítók létrehozása. 1000 végpont lekérdezések először kapnak. 
 
 Teszteléshez és prototípus csak az ingyenes (F0) csomagot használja. Éles rendszerek esetén használhatja a [fizetős](https://aka.ms/luis-price-tier) szint. Ne használja a [kulcs létrehozási](luis-concept-keys.md#authoring-key) végpont lekérdezések éles környezetben.
+
 
 <a name="create-luis-service"></a>
 <a name="create-language-understanding-endpoint-key-in-the-azure-portal"/>
 
 ## <a name="create-prediction-endpoint-runtime-resource-in-the-azure-portal"></a>Előrejelzési végpont futásidejű erőforrás létrehozása az Azure Portalon
 
-Részletes ismertetőt talál a [alkalmazás készítése](get-started-portal-build-app.md) rövid.
+Hoz létre a [előrejelzési végponti erőforrás](get-started-portal-deploy-app.md#create-the-endpoint-resource) az Azure Portalon. Ehhez az erőforráshoz csak használandó végpont előrejelzési lekérdezések. Ne használja ezt az erőforrást módosítások az alkalmazás szerzői műveletekhez részben.
 
 <a name="programmatic-key" ></a>
 <a name="authoring-key" ></a>
@@ -49,7 +48,7 @@ Részletes ismertetőt talál a [alkalmazás készítése](get-started-portal-bu
 
 ## <a name="assign-resource-key-to-luis-app-in-luis-portal"></a>Az erőforráskulcs hozzárendelése a LUIS-portál a LUIS-alkalmazás
 
-Részletes ismertetőt talál a [üzembe helyezési](get-started-portal-deploy-app.md) rövid.
+Minden alkalommal, amikor egy új erőforrást hoz létre a LUIS, kell [az erőforrás hozzárendelése a LUIS-alkalmazásokon](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal). Miután van hozzárendelve, nem kell újra el ezt a lépést, ha nem hoz létre egy új erőforrást. Létrehozhat egy új erőforrást, bontsa ki a régiók, az alkalmazás vagy egy előrejelzési lekérdezések nagyobb számának támogatásához.
 
 <!-- content moved to luis-reference-regions.md, need replacement links-->
 <a name="regions-and-keys"></a>
@@ -155,10 +154,30 @@ Például egy CI/CD-folyamat automation célból érdemes automatizálni a LUIS-
     ![A LUIS támogatási csomag ellenőrzése](./media/luis-usage-tiers/updated.png)
 1. Ne felejtse el [rendelje hozzá a végpont kulcs](#assign-endpoint-key) a a **közzététel** lapon, és használhatja az összes endpoint lekérdezés. 
 
-## <a name="how-to-fix-out-of-quota-errors-when-the-key-exceeds-pricing-tier-usage"></a>Hogyan out-az-kvóta hibák javítása, ha a kulcs meghaladja az árképzési szint használatához
-Minden egyes csomaggal meghatározott arányban végpont kéréseket a LUIS-fiókjába. Ha a kérelmek száma nagyobb, mint a megengedett sebesség a díjköteles fiók percenként vagy havonta, a kérelmek, HTTP hibaüzenetet kap "429-es: Túl sok kérelem."
+## <a name="fix-http-status-code-403-and-429"></a>Hárítsa el a HTTP-állapotkód: 403-as és 429-es
 
-Minden egyes csomaggal halmozódnak kérés havonta. Ha az összes kérelmet magasabb, mint az engedélyezett sebességét, a kérelmek, HTTP hibaüzenetet kap "403-as: tiltott".  
+Hibaüzenetet 403-as és 429 állapotkódok Ha túllépi a tranzakció / másodperc vagy tarifacsomag havi tranzakciók.
+
+### <a name="when-you-receive-an-http-403-error-status-code"></a>Amikor megjelenik egy HTTP 403-as hibakód állapota:
+
+Amikor az összes ingyenes 1000 végpont lekérdezések használhatja, vagy a tarifacsomag havi tranzakciók kvóta, kap egy HTTP 403-as hibakód állapota. 
+
+Ez a hiba javításához egyaránt szüksége [tarifacsomagra](luis-how-to-azure-subscription.md#change-pricing-tier) magasabb szintre vagy [hozzon létre egy új erőforrást](get-started-portal-deploy-app.md#create-the-endpoint-resource) és [rendelje hozzá az alkalmazás](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal).
+
+Ez a hiba-megoldások a következők:
+
+* Az a [az Azure portal](https://portal.azure.com), az ismertetése, erőforrás, a nyelv a **erőforrás-kezelés -> tarifacsomag**, módosítsa a tarifacsomagot TPS magasabb szintre. Nem kell az erőforrás már hozzá van rendelve a Language Understanding app, nincs semmi, a Language Understanding portálon.
+*  Ha a felhasználás meghaladja a legmagasabb tarifacsomagot, további Language Understanding erőforrások hozzáadása egy előtti terheléselosztó tartománynévcímkéje őket a. A [Language Understanding tároló](luis-container-howto.md) a Kubernetes vagy a Docker Compose segítségével ezt.
+
+### <a name="when-you-receive-an-http-429-error-status-code"></a>Amikor megjelenik egy HTTP 429-es hibakód állapota:
+
+Ezzel az állapotkóddal van adott vissza, ha a tranzakciók másodpercenkénti meghaladja a tarifacsomagot.  
+
+Megoldások a következők:
+
+* Is [tarifacsomag növelése](#change-pricing-tier), ha nem, a legmagasabb szintű.
+* Ha a felhasználás meghaladja a legmagasabb tarifacsomagot, további Language Understanding erőforrások hozzáadása egy előtti terheléselosztó tartománynévcímkéje őket a. A [Language Understanding tároló](luis-container-howto.md) a Kubernetes vagy a Docker Compose segítségével ezt.
+* Akkor is gate az ügyfélkérelmek alkalmazás az egy [újrapróbálkozási szabályzat](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) megvalósítása saját kezűleg Ha ezzel az állapotkóddal. 
 
 ## <a name="viewing-summary-usage"></a>Összefoglaló használat megtekintése
 A LUIS-használati adatokat megtekintheti az Azure-ban. A **áttekintése** lapon többek között a hívások és hibák legutóbbi összegző információit jeleníti meg. Ha Ön kérést egy LUIS végpontot, majd azonnal tekintse meg a **áttekintőlapján**, akár öt perc alatt jelenik meg a használat engedélyezése.

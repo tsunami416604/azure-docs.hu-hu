@@ -1,21 +1,21 @@
 ---
 title: Nyelvi támogatás
-titleSuffix: Cognitive Services - Azure
+titleSuffix: Azure Cognitive Services
 description: Az Azure Cognitive Services lehetővé teszi alkalmazások összeállítását, amelyek lásd, hallgassa meg, beszéljen a és a felhasználók megismerése. Ezek a szolgáltatások között több mint három tucat nyelvet támogat, így a felhasználók természetes módon kommunikálnak az alkalmazással.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/13/2019
+ms.date: 06/16/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0883b8e5ae2eab39fca6434141d6591432ad341e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 55127ee1226d7345f825c9571c16f12eaa956d94
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65595712"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67163860"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Természetes nyelvi támogatás az Azure Cognitive Services
 

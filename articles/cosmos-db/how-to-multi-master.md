@@ -1,21 +1,21 @@
 ---
 title: Több főkiszolgálós konfigurálása az Azure Cosmos DB-ben
 description: Ismerje meg, hogy több főkiszolgálós konfigurálása az Azure Cosmos DB-ben az alkalmazások.
-author: rimman
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
-ms.author: rimman
-ms.openlocfilehash: 1d9fa7380f62165d360888fd8cb03919f1736297
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.author: mjbrown
+ms.openlocfilehash: e33aa10673f4c4b061f8961959f20b7b3416ec84
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244747"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204785"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Több főkiszolgálós konfigurálása az Azure Cosmos DB használó alkalmazásokban
 
-Az alkalmazás a több főkiszolgálós szolgáltatását használja, többrégiós írási műveletek engedélyezése, és a többkiszolgálós funkció konfigurálása az Azure Cosmos DB-ben. Többkiszolgálós konfigurálásához állítsa a régió, ahol az alkalmazás üzemel.
+Az alkalmazás a több főkiszolgálós szolgáltatását használja, többrégiós írási műveletek engedélyezése, és a többkiszolgálós funkció konfigurálása az Azure Cosmos DB-ben. Konfigurálja a többhelyű, át kell adnia a régió, ahol az alkalmazás központi telepítése történik a SetCurrentLocation tulajdonság nevére. Ezzel automatikusan feltölti a PreferredLocations tulajdonság átadott helyről geo-közelsége alapján. Ha egy új régióban később ad hozzá a fiókot, az alkalmazás nem rendelkezik frissítése vagy újratelepítése, automatikusan észleli a közelebb régióban, és fog automatikus-home, be kell egy regionális esemény következik be.
 
 ## <a id="netv2"></a>.NET SDK-val v2
 

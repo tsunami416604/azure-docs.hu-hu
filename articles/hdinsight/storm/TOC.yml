@@ -4,6 +4,11 @@
   items:
     - name: Mi az az Apache Storm a HDInsightban?
       href: apache-storm-overview.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: Apache Storm-topológia létrehozása A HDInsightban
+      href: ./apache-storm-quickstart.md
 - name: Bevezetés
   items:
     - name: Apache Storm-fürt létrehozása

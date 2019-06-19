@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/12/2019
+ms.date: 06/17/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: e9cca4cd113115a1acf676b46cc65dc4ed7021fa
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 6a41df70340da626a849804155ca245d95b6da46
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144070"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190503"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Oktatóanyag: HTTPS konfigurálása Azure CDN egyéni tartományon
 
@@ -189,10 +189,10 @@ Az automatikus érvényesíts általában eltart néhány óra alatt. Ha nem lá
 
 ### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>Az egyéni tartomány nincs leképezve a CDN-végpontra
 
-Ha már nem létezik a végpont CNAME rekordjának bejegyzése, vagy a cdnverify altartományt tartalmazza, kövesse a jelen lépés további útmutatásait.
-
 >[!NOTE]
->Az e-mail-ellenőrzést az egyéni tartomány tulajdonjogának jelenleg nem érhető el **Akamai Azure CDN** profilok. Ez a funkció jelenleg még megvalósítás alatt áll. 
+>Az e-mail-ellenőrzést az egyéni tartomány tulajdonjogának jelenleg nem érhető el **Akamai Azure CDN** profilok. Ha használ **Akamai Azure CDN**, az egyéni tartomány le kell képezni a cdn-végpontját egy CNAME rekordot a fentieknek megfelelően.  Ez a funkció jelenleg még megvalósítás alatt áll. 
+
+Ha a CNAME rekordjának bejegyzése a cdnverify altartományt tartalmazza, kövesse az ebben a lépésben az utasításokat a többi.
 
 Miután elküldött egy kérelem engedélyezéséhez az egyéni tartomány HTTPS, a DigiCert hitelesítésszolgáltató érvényesíti a tartomány tulajdonjogát kapcsolatba lép a regisztrálójával a tartomány [WHOIS](http://whois.domaintools.com/) regisztrálójának információja alapján. A kapcsolatfelvétel a WHOIS-regisztrációban megadott e-mail-címen (alapértelmezett) vagy telefonszámon keresztül történik. A HTTPS csak a tartomány hitelesítése után aktiválódik az egyéni tartományon. A tartomány jóváhagyására hat munkanap áll rendelkezésére. A hat munkanapon belül jóvá nem hagyott kérelmek automatikusan törlődnek. 
 

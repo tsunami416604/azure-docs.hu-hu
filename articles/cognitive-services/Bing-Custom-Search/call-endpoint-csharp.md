@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 05/07/2018
+ms.date: 06/18/2018
 ms.author: maheshb
-ms.openlocfilehash: 267b50e15d39fc5a0df763cea2e2b79f9b23d151
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 87c6744dd9ee0a921a422320563f10acff9ed875
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595804"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206218"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>Gyors útmutató: A Bing Custom Search-végpontot a hívásC# 
 
@@ -25,9 +25,9 @@ Ez a rövid útmutató segítségével megkezdheti a keresési eredmények kér 
 
 - Bing Custom Search-példány. Lásd: [a rövid útmutató: Az első Bing Custom Search-példány létrehozása](quick-start.md) további információt.
 - Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
-- Bármely kiadása [Visual Studio 2017-es vagy újabb](https://www.visualstudio.com/downloads/)
+- Bármely kiadása [Visual Studio 2019 vagy újabb](https://www.visualstudio.com/downloads/)
 - Linux/MacOS rendszer esetében az alkalmazás a [Monóval](https://www.mono-project.com/) futtatható.
-- Telepített [NuGet Custom Search](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) csomag. 
+- A [Bing Custom Search](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) NuGet-csomagot. 
     - A **Megoldáskezelőben** a Visual Studióban kattintson jobb gombbal a projektre, és válassza ki **NuGet-csomagok kezelése** a menüből. Telepítse az `Microsoft.Azure.CognitiveServices.Search.CustomSearch` csomagot. A NuGet Custom Search csomag telepítésekor a következő szerelvények is települnek:
         - Microsoft.Rest.ClientRuntime
         - Microsoft.Rest.ClientRuntime.Azure
@@ -104,7 +104,7 @@ Ez a rövid útmutató segítségével megkezdheti a keresési eredmények kér 
     ```
    ## <a name="process-and-view-the-results"></a>Dolgozza fel és tekintse meg az eredményeket
 
-1. Megismételheti a Válaszobjektum minden keresési eredmény, beleértve a neve, URL-cím és a dátum a weblap lett utoljára bejárt információit jeleníti meg.
+3. Megismételheti a Válaszobjektum minden keresési eredmény, beleértve a neve, URL-cím és a dátum a weblap lett utoljára bejárt információit jeleníti meg.
 
     ```csharp
     for(int i = 0; i < response.webPages.value.Length; i++) {                

@@ -15,11 +15,11 @@ ms.date: 04/19/2018
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 8795c9ab0a4dbb76327d0ead48ed33fb0cff9e86
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121767"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179728"
 ---
 ## <a name="test-your-code"></a>Tesztelheti a kódját
 
@@ -93,6 +93,6 @@ Jelentkezzen be a hozzáférés csak felhasználói fiókok, egy Azure AD-szerve
 1. Az a [OWIN indítási osztályt](#configure-the-authentication-pipeline)állítsa be a `ValidateIssuer` argumentumának `true`.
 2. Az értékét állítsa be a `ValidIssuers` paraméter engedélyezett szervezetek listájához.
 
-#### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>3. lehetőség: Egyéni módszer használatával kiállítók ellenőrzése
+#### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>3\. lehetőség: Egyéni módszer használatával kiállítók ellenőrzése
 
 Egy egyéni módszert, kiállítók használatával valósítható meg a **IssuerValidator** paraméter. Ez a paraméter használatával kapcsolatos további információkért olvassa el a [TokenValidationParameters osztály](/previous-versions/visualstudio/dn464192(v=vs.114)).

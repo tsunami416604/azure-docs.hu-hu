@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 06/17/2019
 ms.author: tulasim
-ms.openlocfilehash: b18d47b4b09c6fa9c4d5f0ef87d7ebe73f151c60
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d1e7a29e4ca94405e2d6b2000309ef6e2c3a777c
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66693240"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164613"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Válasz a GenerateAnswer API és a metaadatok
 
@@ -78,7 +78,7 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 
 JSON-törzse többféle beállításokkal rendelkezik:
 
-|JSON-törzse tulajdonság|Szükséges|Típus|Cél|
+|JSON-törzse tulajdonság|Kötelező|Típus|Cél|
 |--|--|--|--|
 |`question`|Szükséges|string|Egy felhasználó kérdést kell küldeni a tudásbázist.|
 |`top`|Nem kötelező|egész szám|A kimenetben: rangsorolt eredmények száma. Az alapértelmezett érték az 1.|
@@ -144,6 +144,40 @@ A sikeres válasz állapota 200-as és a egy JSON-választ adja vissza.
     ]
 }
 ```
+
+## <a name="use-qna-maker-with-a-bot-in-c"></a>A robot a QnA Maker használataC#
+
+A bot framework a QnA Maker tulajdonságok hozzáférést biztosít:
+
+```csharp
+using Microsoft.Bot.Builder.AI.QnA;
+var metadata = new Microsoft.Bot.Builder.AI.QnA.Metadata();
+var qnaOptions = new QnAMakerOptions();
+
+qnaOptions.Top = Constants.DefaultTop;
+qnaOptions.ScoreThreshold = 0.3F;
+var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnContext, qnaOptions);
+```
+
+A támogatási robot rendelkezik [például](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-support/csharp_dotnetcore/Service/SupportBotService.cs#L418) ezzel a kóddal.
+
+## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>A QnA Maker használata a Node.js-ben a robotot
+
+A bot framework a QnA Maker tulajdonságok hozzáférést biztosít:
+
+```javascript
+const { QnAMaker } = require('botbuilder-ai');
+this.qnaMaker = new QnAMaker(endpoint);
+
+// Default QnAMakerOptions
+var qnaMakerOptions = {
+    ScoreThreshold: 0.03,
+    Top: 3
+};
+var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOptions);
+```
+
+A támogatási robot rendelkezik [például](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs/Helpers/dialogHelper.js#L36) ezzel a kóddal.
 
 <a name="metadata-example"></a>
 

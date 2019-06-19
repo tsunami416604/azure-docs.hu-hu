@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: c8319dbcb8cebe51dae2a4d7e8d9749c3ab7674f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 881c829424124cca843beb7005306edd53be2673
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65231430"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203993"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Megnevezett entitások felismerése Szövegelemzés használata
 
@@ -31,7 +31,7 @@ Entitáskapcsolás rendszer azon képessége, azonosíthatja és a egy entitás 
 ### <a name="named-entity-recognition-ner"></a>Nevesített entitások felismerése (NER)
 Megnevezett entitások felismerése (NER) rendszer azon képessége, azonosíthatja a szöveg különböző entitásokat, és előre meghatározott osztályokba kategorizálja őket. Az entitások támogatott osztályokat alább láthatók.
 
-A Text Analytics [2.1-es verzió](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634), entitáskapcsolás és nevesített entitások felismerése (NER) érhető el.
+A Text Analytics [2.1-es verzió](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634), entitáskapcsolás és nevesített entitások felismerése (NER) érhetők el számos nyelvet. Tekintse meg a [nyelvi támogatás](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) cikkben további információt. 
 
 ### <a name="language-support"></a>Nyelvi támogatás
 

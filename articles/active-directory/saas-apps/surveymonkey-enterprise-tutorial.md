@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c55438e2a853094bc26b3cb672687733f206f104
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 10d43de00c9daefdb86a92d92ebe2cfe39fd3248
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089584"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164399"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-surveymonkey-enterprise"></a>Oktatóanyag: Az Azure Active Directory-integráció a surveymonkey-beli vállalati
 
@@ -110,7 +110,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a surveymonkey-beli vál
 
     ![Surveymonkey-beli vállalati tartomány és URL-címek egyszeri bejelentkezési adatait](common/both-signonurl.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címe:  ` https://www.surveymonkey.com/user/sign-in/sso/?ut_source=megamenu`
+    Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címe:  `https://www.surveymonkey.com/user/sign-in/sso/?ut_source=megamenu`
 
 6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
