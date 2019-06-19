@@ -43,13 +43,13 @@ Az alábbi táblázat tartalmazza a Windows Azure Monitor Virtuálisgép-bővít
 | Log Analytics Windows ügynök csomag verziója | Az Azure Monitor Windows VM-bővítmény verziója | Kiadás dátuma | Kibocsátási megjegyzések |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
 | 10.20.18001 | 1.0.18001 | Június 2019 | <ul><li> Kisebb hibajavítások és stabilizált fejlesztései </li><li> A hozzáadott letiltási lehetőség alapértelmezett hitelesítő adatok, ha proxy-kapcsolat (WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH támogatás) </li></ul>|
-| 10.19.13515 | 1.0.13515 | 2019\. március | <ul><li>Kisebb stabilizálása javításai </li></ul> |
+| 10.19.13515 | 1.0.13515 | 2019. március | <ul><li>Kisebb stabilizálása javításai </li></ul> |
 | 10.19.10006 | n/a | A 2018. december | <ul><li> Kisebb stabilizálása javításai </li></ul> | 
 | 8.0.11136 | n/a | Szeptembertől 2018. |  <ul><li> Támogatás hozzáadva az erőforrás-azonosító módosítását a virtuális gép áthelyezése észlelése </li><li> Támogatás hozzáadva a jelentési erőforrást azonosító használata nem bővítmény telepítése </li></ul>| 
-| 8.0.11103 | n/a |  2018\. április | |
-| 8.0.11081 | 1.0.11081 | 2017\. november | | 
+| 8.0.11103 | n/a |  2018. április | |
+| 8.0.11081 | 1.0.11081 | 2017. november | | 
 | 8.0.11072 | 1.0.11072 | Szeptembertől 2017. | |
-| 8.0.11049 | 1.0.11049 | 2017\. február | |
+| 8.0.11049 | 1.0.11049 | 2017. február | |
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
