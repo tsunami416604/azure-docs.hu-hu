@@ -145,6 +145,12 @@
             - name: Indexelési szabályzatok
               displayName: 'consistent, none'
               href: index-policy.md
+        - name: Adattípusok
+          items:
+            - name: DateTime
+              href: working-with-dates.md
+            - name: Térinformatikai
+              href: geospatial.md
         - name: Élettartam
           displayName: 'delete, delete data, ttl'
           href: time-to-live.md
@@ -164,7 +170,11 @@
           displayName: change feed
           href: change-feed-functions.md
     - name: Beépített elemzések az Apache Sparkkal
-      href: spark-api-introduction.md
+      items:
+        - name: Bevezetés
+          href: spark-api-introduction.md
+        - name: Lambda architektúra
+          href: lambda-architecture.md
     - name: Kiszolgálóoldali programozás
       items:
         - name: 'Tárolt eljárások, eseményindítók és felhasználói függvények'
@@ -480,8 +490,16 @@
           href: bootstrap-kubernetes-cluster.md
 - name: Útmutatók
   items:
-    - name: Azure Cosmos-fiók kezelése
+    - name: Azure Cosmos-fiók használata
       href: how-to-manage-database-account.md
+    - name: Azure Cosmos DB-erőforrások használata
+      items:
+        - name: A PowerShell használata
+          href: manage-with-powershell.md
+        - name: Az Azure parancssori felület használata
+          href: manage-with-cli.md
+        - name: Resource Manager-sablonok használata
+          href: manage-sql-with-resource-manager.md
     - name: Globális terjesztés
       items:
         - name: Több főkiszolgálós telepítés konfigurálása
@@ -506,6 +524,12 @@
           href: find-request-unit-charge.md
     - name: A tárolók és elemek használata
       items:
+        - name: Cosmos DB-adatok használata
+          items:
+            - name: Adatok kezelése az Azure Storage Explorerrel
+              href: storage-explorer.md
+            - name: Adatok kezelése az Azure Cosmos Explorerrel
+              href: data-explorer.md
         - name: Tároló létrehozása
           href: how-to-create-container.md
         - name: Tároló létrehozása nagy partíciókulccsal
@@ -520,10 +544,6 @@
         - name: Élettartam konfigurálása
           displayName: 'delete, delete data, ttl'
           href: how-to-time-to-live.md
-        - name: Adatok kezelése az Azure Storage Explorerrel
-          href: storage-explorer.md
-        - name: Adatok kezelése az Azure Cosmos Explorerrel
-          href: data-explorer.md
         - name: Indexelési szabályzatok kezelése
           href: how-to-manage-indexing-policy.md
         - name: Egyedi kulcsok meghatározása
@@ -531,14 +551,48 @@
         - name: Példák SQL-segédlekérdezésekre
           displayName: 'subquery, exists'
           href: how-to-sql-subquery.md
+    - name: Ajánlott eljárások
+      items:
+        - name: Teljesítménnyel kapcsolatos tippek
+          items:
+            - name: Lekérdezés-végrehajtási mérőszámok lekérése
+              displayName: 'query profile, profile'
+              href: profile-sql-api-query.md
+            - name: Lekérdezési teljesítmény hangolása
+              href: sql-api-query-metrics.md
+            - name: Teljesítménnyel kapcsolatos tippek .NET SDK-hoz
+              href: performance-tips.md
+            - name: Teljesítménnyel kapcsolatos tippek Java SDK-hoz
+              href: performance-tips-java.md
+            - name: Teljesítménnyel kapcsolatos tippek Async Java SDK-hoz
+              href: performance-tips-async-java.md
+            - name: Teljesítményteszt – mintaalkalmazás
+              href: performance-testing.md
+        - name: Költséghatékony írások és olvasások
+          href: key-value-store-cost.md
+    - name: Hibaelhárítás
+      items:
+        - name: Java Async SDK-hibák elhárítása
+          href: troubleshoot-java-async-sdk.md
+        - name: .NET SDK-hibák elhárítása
+          href: troubleshoot-dot-net-sdk.md
     - name: Változáscsatorna
       items:
+        - name: Az Azure Cosmos DB eseményindító-naplói
+          href: how-to-configure-cosmos-db-trigger-logs.md
         - name: Azure Cosmos DB-trigger kapcsolódási szabályzata
           href: how-to-configure-cosmos-db-trigger-connection-policy.md
         - name: Több Azure Cosmos DB-eseményindító
           href: how-to-create-multiple-cosmos-db-triggers.md
         - name: Azure Cosmos DB-eseményindítók hibaelhárítása
           href: troubleshoot-changefeed-functions.md
+    - name: Beépített elemzések az Apache Sparkkal
+      items:
+        - name: Azure Databricks Spark-összekötő
+          href: spark-connector.md
+        - name: Streamelés az Apache Kafkával és a Cosmos DB-vel
+          href: /azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb
+          maintainContext: true
     - name: Kiszolgálóoldali programozás
       items:
         - name: 'Tárolt eljárások, triggerek és felhasználói függvények írása'
@@ -557,18 +611,12 @@
           href: how-to-configure-cross-origin-resource-sharing.md
         - name: Azure Cosmos-kulcsok védelme a Key Vaulttal
           href: access-secrets-from-keyvault.md
+        - name: Tanúsítványalapú hitelesítés az Azure AD-val
+          href: certificate-based-authentication.md
     - name: Alkalmasság vállalati használatra
       items:
         - name: Adatok visszaállítása biztonsági mentésből
           href: how-to-backup-and-restore.md
-    - name: Azure Cosmos DB-erőforrások kezelése
-      items:
-        - name: Kezelés a PowerShell-lel
-          href: manage-with-powershell.md
-        - name: Kezelés az Azure CLI használatával
-          href: manage-with-cli.md
-        - name: Kezelés Resource Manager-sablonokkal
-          href: manage-sql-with-resource-manager.md
     - name: Naplózás
       items:
         - name: Diagnosztikai naplózás
@@ -592,30 +640,6 @@
           href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
     - name: Az Azure DevOps CI-/CD-folyamat beállítása
       href: tutorial-setup-ci-cd.md
-    - name: Adattípusok
-      items:
-        - name: DateTime
-          href: working-with-dates.md
-        - name: Térinformatikai
-          href: geospatial.md
-    - name: Ajánlott eljárások
-      items:
-        - name: Teljesítménnyel kapcsolatos tippek
-          items:
-            - name: Lekérdezés-végrehajtási mérőszámok lekérése
-              href: profile-sql-api-query.md
-            - name: Lekérdezési teljesítmény hangolása
-              href: sql-api-query-metrics.md
-            - name: Teljesítménnyel kapcsolatos tippek .NET SDK-hoz
-              href: performance-tips.md
-            - name: Teljesítménnyel kapcsolatos tippek Java SDK-hoz
-              href: performance-tips-java.md
-            - name: Teljesítménnyel kapcsolatos tippek Async Java SDK-hoz
-              href: performance-tips-async-java.md
-            - name: Teljesítményteszt – mintaalkalmazás
-              href: performance-testing.md
-        - name: Költséghatékony írások és olvasások
-          href: key-value-store-cost.md
     - name: Cosmos DB-adatok vizualizációja
       items:
         - name: A Power BI használata
@@ -651,13 +675,6 @@
         - name: A Spring Boot Starter használata
           href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
           maintainContext: true
-        - name: Lambda architektúra
-          href: lambda-architecture.md
-        - name: Azure Databricks(Spark-összekötő)
-          href: spark-connector.md
-        - name: Spark és Kafka
-          href: /azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb
-          maintainContext: true
         - name: ODBC-illesztő
           href: odbc-driver.md
     - name: Tömeges végrehajtói könyvtár
@@ -668,12 +685,6 @@
           href: bulk-executor-dot-net.md
         - name: Tömeges végrehajtó – Java-kódtár
           href: bulk-executor-java.md
-    - name: Hibaelhárítás
-      items:
-        - name: Java Async SDK-hibák elhárítása
-          href: troubleshoot-java-async-sdk.md
-        - name: .NET SDK-hibák elhárítása
-          href: troubleshoot-dot-net-sdk.md
 - name: Referencia
   items:
     - name: .NET

@@ -111,8 +111,16 @@
           items:
             - name: Kezelés az Azure Portalon
               href: data-box-portal-ui-admin.md
-            - name: Data Box Disk-hibák elhárítása
-              href: data-box-disk-troubleshoot.md
+            - name: Hibaelhárítás
+              items:
+                - name: Zárolásfeloldási problémák
+                  href: data-box-disk-troubleshoot-unlock.md
+                - name: Adatmásolási problémák
+                  href: data-box-disk-troubleshoot-data-copy.md
+                - name: Érvényesítési problémák
+                  href: data-box-disk-troubleshoot.md
+                - name: Feltöltési problémák
+                  href: data-box-disk-troubleshoot-upload.md
             - name: Kapcsolatfelvétel a támogatási szolgáltatással
               href: data-box-disk-contact-microsoft-support.md
     - name: Data Box Heavy
