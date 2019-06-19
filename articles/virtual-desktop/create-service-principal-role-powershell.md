@@ -1,36 +1,36 @@
 ---
-title: Windows virtuális asztal előzetes egyszerű szolgáltatásnevekről és a szerepkör-hozzárendelések létrehozása a PowerShell használatával – Azure
-description: Hogyan lehet az egyszerű szolgáltatások létrehozása és hozzárendelése a szerepkörök a PowerShell használatával a Windows Virtual Desktop előzetes verziójához.
+title: Windows virtuális asztal előzetes egyszerű szolgáltatásnevekről és a szerepkör-hozzárendelés létrehozása PowerShell – Azure használatával
+description: Útmutató egyszerű szolgáltatások létrehozása és szerepkörök hozzárendelése a PowerShell használatával Windows virtuális asztal előzetes verzióban érhető el.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 1e53f76f564c0970ac1f291d2125807441500de6
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 44c823653ecbad1c4dd1fd35b676c8a6d8bd1620
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523319"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206656"
 ---
-# <a name="tutorial-create-service-principals-and-role-assignments-with-powershell"></a>Oktatóanyag: Szolgáltatásnevek létrehozása és szerepkörök hozzárendelése a PowerShell-lel
+# <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Oktatóanyag: Egyszerű szolgáltatásnevekről és a szerepkör-hozzárendelés létrehozása PowerShell használatával
 
-Szolgáltatásnevek használata az identitások szerepköröket és engedélyeket rendelhet a meghatározott célra az Azure Active Directoryban is létrehozhat. Windows virtuális asztal előzetes verzióban elérhető szolgáltatás hozhat létre, az egyszerű szolgáltatásnév:
+Szolgáltatásnevek használata az identitások, amelyek a szerepköröket és engedélyeket rendelhet a meghatározott célra az Azure Active Directoryban is létrehozhat. Windows virtuális asztal előzetes verzióban elérhető szolgáltatás hozhat létre, az egyszerű szolgáltatásnév:
 
-- Adott virtuális asztali Windows-felügyeleti feladatok automatizálása
-- Bármely Windows virtuális asztal Azure Resource Manager-sablon futtatásakor helyett MFA szükséges felhasználói hitelesítő adatokat használja
+- Adott virtuális asztali Windows-felügyeleti feladatok automatizálása.
+- Helyett MFA szükséges felhasználói hitelesítő adatokat használja a Windows virtuális asztal minden olyan Azure Resource Manager-sablon futtatásakor.
 
 Az oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
-> * Egyszerű szolgáltatás létrehozása az Azure Active Directory-ban
-> * Szerepkör-hozzárendelés létrehozása a virtuális asztali Windows
-> * Jelentkezzen be Windows virtuális asztal egyszerű szolgáltatással
+> * Egyszerű szolgáltatás létrehozása az Azure Active Directoryban.
+> * Szerepkör-hozzárendelés létrehozása a Windows virtuális asztalához.
+> * Jelentkezzen be a Windows virtuális asztal egyszerű szolgáltatás használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szolgáltatásnevek és szerepkör-hozzárendeléseket hozhat létre, mielőtt szüksége három dolgot tennie:
+Szolgáltatásnevek és szerepkör-hozzárendeléseket hozhat létre, mielőtt kell tennie a három dolgot:
 
 1. Az Azure ad-modul telepítése. A modul telepítéséhez futtassa a Powershellt rendszergazdaként, és futtassa a következő parancsmagot:
 
@@ -48,7 +48,7 @@ Szolgáltatásnevek és szerepkör-hozzárendeléseket hozhat létre, mielőtt s
 
 ## <a name="create-a-service-principal-in-azure-active-directory"></a>Egyszerű szolgáltatás létrehozása az Azure Active Directory-ban
 
-Egyszer, hogy teljesülnek az Előfeltételek a PowerShell-munkamenetben futtassa a következő PowerShell-parancsmagok az Azure-beli szolgáltatásnév létrehozása több-bérlős szolgáltatás.
+Után a PowerShell-munkamenetben az előfeltételeket már teljesülnek, futtassa a következő PowerShell-parancsmagok egy több-bérlős szolgáltatásnév létrehozásához az Azure-ban.
 
 ```powershell
 Import-Module AzureAD
@@ -72,14 +72,14 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincip
 
 ## <a name="sign-in-with-the-service-principal"></a>Jelentkezzen be a szolgáltatásnévvel
 
-Miután létrehozta a szerepkör-hozzárendelés, a szolgáltatás egyszerű, most ellenőrizzük, hogy a szolgáltatásnév jelentkezhetnek be Windows virtuális asztal a következő parancsmag futtatásával:
+Miután létrehozott egy szerepkör-hozzárendelés a szolgáltatás egyszerű, győződjön meg arról, hogy a szolgáltatásnév jelentkezhetnek be Windows virtuális asztal a következő parancsmagot:
 
 ```powershell
 $creds = New-Object System.Management.Automation.PSCredential($svcPrincipal.AppId, (ConvertTo-SecureString $svcPrincipalCreds.Value -AsPlainText -Force))
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com" -Credential $creds -ServicePrincipal -AadTenantId $aadContext.TenantId.Guid
 ```
 
-Miután bejelentkezett, ellenőrizze, hogy minden működik, az egyszerű szolgáltatás néhány Windows virtuális asztal PowerShell-parancsmagok tesztelését.
+Miután bejelentkezett, ellenőrizze, hogy minden működik, az egyszerű szolgáltatás néhány Windows virtuális asztal PowerShell-parancsmagok tesztelésével.
 
 ## <a name="view-your-credentials-in-powershell"></a>A hitelesítő adatok megtekintése a PowerShellben
 
@@ -99,7 +99,7 @@ Az alábbiakban a három hitelesítő adatokat, le kell írni és azok futtatnia
     $aadContext.TenantId.Guid
     ```
 
-- Alkalmazás azonosítója:
+- Alkalmazásazonosító:
 
     ```powershell
     $svcPrincipal.AppId
@@ -107,7 +107,7 @@ Az alábbiakban a három hitelesítő adatokat, le kell írni és azok futtatnia
 
 ## <a name="next-steps"></a>További lépések
 
-Miután létrehozta az egyszerű szolgáltatás és hozzárendelte egy szerepkört a Windows virtuális asztal bérlő, a gazdagép-készlet létrehozása használhatja. Gazdagép-készletek kapcsolatos további információkért folytassa az oktatóanyag során egy gazdagép-készlet létrehozása a Windows virtuális asztal.
+Miután az egyszerű szolgáltatás létrehozása és hozzárendelte egy szerepkört a Windows virtuális asztal bérlő, a gazdagép-készlet létrehozása használhatja. Gazdagép-készletek kapcsolatos további információkért folytassa az oktatóanyag során egy gazdagép-készlet létrehozása a Windows virtuális asztal.
 
  > [!div class="nextstepaction"]
  > [Windows virtuális asztali állomás készlet oktatóanyag](./create-host-pools-azure-marketplace.md)
