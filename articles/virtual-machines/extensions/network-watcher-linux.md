@@ -39,12 +39,12 @@ A Network Watcher-ügynök bővítményt a következő Linux-disztribúciókra v
 | Disztribúció | Version |
 |---|---|
 | Ubuntu | 12+ |
-| Debian | 7\. és 8 |
-| Red Hat | 6\. és 7 |
-| Oracle Linux | 6.8 + és 7 |
-| SUSE Linux Enterprise Server | 11 – 12 |
+| Debian | 7 és 8 |
+| Red Hat | 6 és 7 |
+| Oracle Linux | 6.8+ és 7 |
+| SUSE Linux Enterprise Server | 11 és 12 |
 | OpenSUSE azt | 42.3+ |
-| CentOS | 6.5-ös + és 7 |
+| CentOS | 6.5+ és 7 |
 | CoreOS | 899.17.0+ |
 
 
