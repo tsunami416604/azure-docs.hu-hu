@@ -70,14 +70,17 @@
     - name: OS-funkciók
       href: operating-system-functionality.md
     - name: Biztonság
-      href: overview-security.md
       items:
+        - name: Javaslatok
+          href: security-recommendations.md
         - name: Hitelesítés és engedélyezés
           href: overview-authentication-authorization.md
         - name: Az operációs rendszer és a futtatókörnyezet javítása
           href: overview-patch-os-runtime.md
         - name: Biztonsági attribútumok
           href: app-service-security-attributes.md
+        - name: Biztonsági áttekintés
+          href: overview-security.md
     - name: Hálózatkezelési funkciók
       href: networking-features.md
     - name: Bemeneti és kimeneti IP-címek

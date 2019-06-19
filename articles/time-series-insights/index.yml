@@ -5,14 +5,14 @@ metadata:
   title: 'Az Azure Time Series Insights dokumentációja – Rövid útmutatók, oktatóanyagok és API-referencia | Microsoft Docs'
   description: 'Ismerje meg, hogyan futtathat Azure IoT-elemzést a felhőben teljes körűen felügyelt eseményfeldolgozással. Valós időben elemezhet többek között alkalmazásokból, érzékelőkből és eszközökből származó adatokat.'
   services: time-series-insights
-  author: anshan
+  author: deepakpalled
   manager: cshankar
   ms.service: time-series-insights
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 06/03/2019
-  ms.author: anshan
+  ms.author: dpalled
 abstract:
   description: 'Üdvözli az Azure Time Series Insights! Az Azure Time Series Insights hatékony adatfeltárási és telemetriai eszközöket biztosít a működési elemzések hatékonyabbá tételéhez. A dokumentáció ismerteti a szolgáltatást, az első lépéseket a szolgáltatás számos funkciójának használatához, az ügyféloldali SDK-t, valamint a hatékony Time Series Insights API-kat. Két verzióhoz érhetők el információk, a már általánosan elérhető verzióhoz (a Time Series Insights általánosan elérhető verziója) és egy előzetes verziójú nagyobb szolgáltatásfrissítéshez (Time Series Insights előzetes verzió).'
   aside:
