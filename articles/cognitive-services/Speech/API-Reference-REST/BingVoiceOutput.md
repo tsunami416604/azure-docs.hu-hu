@@ -67,7 +67,7 @@ X-Microsoft-OutputFormat | **1.** ssml – 16 khz – 16 bites-mono-Szövegfelol
 X-Search-AppId | Egy GUID Azonosítót (csak hexadecimális, nincs szaggatott vonal) | Egy azonosító, amely egyedileg azonosítja az ügyfélalkalmazás. Ez lehet az alkalmazások a tároló azonosítója. Egy nem áll rendelkezésre, ha az azonosító lehet felhasználó által az alkalmazáshoz.
 X-Search-ClientID | Egy GUID Azonosítót (csak hexadecimális, nincs szaggatott vonal) | Egy azonosító, amely egyedileg azonosítja az alkalmazáspéldány minden telepítésnél.
 User-Agent | Alkalmazásnév | Az alkalmazásnév megadása kötelező, és legfeljebb 255 karakterből állhat.
-Engedélyezés | Engedélyezési jogkivonat |  Tekintse meg a <a href="#Subscription">engedélyezési jogkivonat</a> szakaszban.
+Authorization | Engedélyezési jogkivonat |  Tekintse meg a <a href="#Subscription">engedélyezési jogkivonat</a> szakaszban.
 
 ### <a name="InputParam"></a>Bemeneti paraméterek
 

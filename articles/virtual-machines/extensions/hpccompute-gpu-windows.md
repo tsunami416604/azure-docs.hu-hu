@@ -37,9 +37,9 @@ Ez a bővítmény a következő nyílt forráskódú támogatja:
 
 | Disztribúció | Version |
 |---|---|
-| Windows 10 rendszerű (akár 1803 verzió)| Mag |
-| Windows Server 2016 | Mag |
-| Windows Server 2012R2 | Mag |
+| Windows 10 rendszerű (akár 1803 verzió)| Core |
+| Windows Server 2016 | Core |
+| Windows Server 2012R2 | Core |
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
