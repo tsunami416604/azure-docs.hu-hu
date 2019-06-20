@@ -58,7 +58,7 @@ Az érték konvertálása egy tömb.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| convertToArray |Igen |int, string, tömb vagy objektum |Egy tömb alakítandó érték. |
+| convertToArray |Igen |int, string, array vagy object |Egy tömb alakítandó érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
