@@ -7,8 +7,28 @@
       href: Welcome.md
     - name: Nyelvi támogatás
       href: language-support.md
+- name: Tárolótámogatás
+  items:
     - name: Tárolótámogatás
       href: cognitive-services-container-support.md
+    - name: Tárolóreceptek
+      items:
+        - name: Tárolók újrahasznosítása
+          href: ./containers/container-reuse-recipe.md
+        - name: Üzembe helyezés az Azure Container Instancesben
+          href: ./containers/azure-container-instance-recipe.md
+        - name: Üzembe helyezés az Azure Kubernetesben
+          href: ./containers/azure-kubernetes-recipe.md
+        - name: Üzembe helyezés a Docker Compose-zal
+          href: ./containers/docker-compose-recipe.md
+    - name: Egyéb tárolószolgáltatások
+      items:
+        - name: Azure Container Instances
+          href: ../container-instances/container-instances-tutorial-prepare-app.md
+        - name: Azure Container Registry
+          href: ../container-registry/container-registry-get-started-azure-cli.md
+        - name: Azure Kubernetes Service (AKS)
+          href: ../aks/tutorial-kubernetes-prepare-app.md
 - name: Gyors útmutatók
   items:
     - name: Fiók létrehozása
