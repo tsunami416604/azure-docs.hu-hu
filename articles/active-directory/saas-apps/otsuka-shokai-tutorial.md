@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/06/2019
+ms.date: 06/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb5e667151f0148468e9eda8189c0f249b402b56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd06eafca2c508bc73fa2b327235621797be417c
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095278"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274191"
 ---
 # <a name="tutorial-integrate-otsuka-shokai-with-azure-active-directory"></a>Oktatóanyag: Otsuka Shokai integrálása az Azure Active Directoryval
 
@@ -29,7 +29,6 @@ Ebben az oktatóanyagban elsajátíthatja a Otsuka Shokai integrálása az Azure
 
 * Szabályozza, ki férhet hozzá Otsuka Shokai Azure AD-ben.
 * Engedélyezze a felhasználóknak, hogy lehet automatikusan bejelentkezve Otsuka Shokai az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
 SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
@@ -112,17 +111,15 @@ Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyez�
 
     g. Kattintson a **Save** (Mentés) gombra.
 
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** és mentse a Jegyzettömbben .
-
-   ![A tanúsítvány letöltési hivatkozás](common/copy-metadataurl.png)
-
-1. Az a **Otsuka Shokai beállítása** területén másolja a megfelelő URL-címe szerint.
-
-   ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
-
 ### <a name="configure-otsuka-shokai"></a>Otsuka Shokai konfigurálása
 
-Az egyszeri bejelentkezés konfigurálása **Otsuka Shokai** oldalon kell küldenie a **alkalmazás összevonási metaadatainak URL-címe** való [Otsuka Shokai támogatási csapatának](mailto:Tatsuya.Satoh@otsuka-shokai.co.jp). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+1. Ha csatlakozik az ügyfél saját lap alkalmazásból egyszeri Bejelentkezést, a varázsló, egyszeri bejelentkezési beállítás kezdődik.
+
+2. Ha Otsuka azonosító nincs regisztrálva, folytassa a új regisztrációs Otsuka-azonosító.   Ha regisztrálta Otsuka-azonosító, folytassa a kapcsolat beállítása.
+
+3. A végfelhasználók továbbléphet, és a legfelső képernyőre Miután bejelentkezett az ügyfél saját lap jelenik meg, ha az egyszeri bejelentkezési beállításainak teljesülnek.
+
+4. A következő való csatlakozáskor az ügyfél saját lap az egyszeri bejelentkezés alkalmazásból után megnyílik a útmutatást képernyő, a felső képernyő jelenik meg az ügyfél saját lap való bejelentkezés után.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -156,7 +153,7 @@ Ebben a szakaszban b Simon által biztosított hozzáférés Otsuka Shokai Azure
 
 ### <a name="create-otsuka-shokai-test-user"></a>Otsuka Shokai tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói B.Simon nevű Otsuka Shokai hoz létre. Együttműködve [Otsuka Shokai támogatási csapatának](mailto:Tatsuya.Satoh@otsuka-shokai.co.jp) a felhasználók hozzáadása az Otsuka Shokai platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Új, SaaS-fiók regisztrálása történik, az első Otsuka Shokai hozzáférést. Emellett azt is társítja az Azure AD-fiókot és a SaaS-fiók új létrehozásának időpontjában.
 
 ### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 

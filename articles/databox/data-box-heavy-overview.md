@@ -7,16 +7,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 05/20/2019
+ms.date: 06/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 0f71d9b4400041db50cb3e24940e922acde55edc
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 94ba0040b1de7e1f03825f1cd2ef2a6536343d96
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991692"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67271743"
 ---
-# <a name="what-is-azure-data-box-heavy-preview"></a>Mi az az Azure Data Box Heavy? (előzetes)
+# <a name="what-is-azure-data-box-heavy-preview"></a>Mi az az Azure Data Box Heavy? (előzetes verzió)
 
 Az Azure Data Box (nagy erőforrásigényű) lehetővé teszi, hogy több száz terabájt adat gyors, költségkímélő és az Azure és megbízható módon küldhet. Az adatok az Azure-bA kerüljenek elküldünk Önnek az 1-PB tárolási kapacitás, amely adja meg az adatait, és a Microsoftnak egy Data Box nehéz eszközt. Az eszköz rendelkezik egy rugged kis-és védelemmel való ellátásához és az adatok védelme az átvitel során.
 
@@ -62,14 +62,14 @@ A Data Box nehéz eszközt ebben a kiadásban a következő funkciókkal rendelk
 
 | Specifikációk                                          | Leírás              |
 |---------------------------------------------------------|--------------------------|
-| Súlyozás                                                  | körülbelül 500 lbs.                |
+| Tömeg                                                  | körülbelül 500 lbs. <br>A zárolás átvitel kerekeket eszköz|
 | Dimenziók                                              | Szélesség: 26 hüvelyk Height: 28 hüvelyk hossza: 48 hüvelyk |
 | Kiszolgálószekrény-terület                                              | Nem lehet az állványra szerelt|
-| Szükséges kábelek                                         | 4 X földelve 120 V/10 A tápkábelek (5 – 15 NEMA) tartalmaz <br> Eszköz legfeljebb 240 V power támogatja, és C-13 power konténerek <br> Használja a hálózati kábel kompatibilis [Mellanox MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html)  |
-|Energiagazdálkodási                                                    | 4 beépített energiagazdálkodási ellátási egység (PSUs) mindkét eszköz csomópontjai között megosztott|
+| Szükséges kábelek                                         | 4 földelve 120 V / 10 A tápkábellel (5 – 15 NEMA) tartalmaz <br> Eszköz legfeljebb 240 V power támogatja, és C-13 power konténerek <br> Használja a hálózati kábel kompatibilis [Mellanox MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html)  |
+| Energiagazdálkodási                                                    | 4 beépített energiagazdálkodási ellátási egység (PSUs) mindkét eszköz csomópontjai között megosztott <br> 1200 teljesítménymérő tipikus power rajzolása|
 | Tárkapacitás                                        | ~ 1 PB nyers, 14 TB 70 lemezek <br> 770-TB felhasználható kapacitás|
-|Csomópontok száma                                          | 2 független csomópont eszközönként (500 TB-os) |
-| Hálózati adapterek száma csomópontonként                             | 4 hálózati adapterek száma csomópontonként <br> MGMT, DATA3 <ul><li> 2 x 1-GbE adapter </li><li> MGMT Management, nem felhasználó által konfigurálható, szolgál a kezdeti beállítás </li><li> DATA3 az egy felhasználó által konfigurálható adatok felület, a Dynamic Host Configuration Protocol (DHCP) alapértelmezés szerint</li><li>1-GbE hálózati adapterek is beállítható 10-GbE adapter</li></ul>Adat1, adat2 Adatfelületek <ul><li>2 x 40-GbE adapter </li><li> Alapértelmezés szerint, vagy statikus konfigurálható kezelőfelületet DHCP</li>|
+| Csomópontok száma                                          | 2 független csomópont eszközönként (500 TB-os) |
+| Hálózati adapterek száma csomópontonként                             | 4 hálózati adapterek száma csomópontonként <br><br> MGMT, DATA3 <ul><li> 2 x 1-GbE adapter </li><li> MGMT olyan felügyeleti és a kezdeti beállítás, nem felhasználó által konfigurálható </li><li> DATA3 a felhasználó által konfigurálható, és a Dynamic Host Configuration Protocol (DHCP) alapértelmezés szerint</li><li>Az 1-GbE hálózati adapterek is beállítható 10-GbE adapter</li></ul>Adat1, adat2 Adatfelületek <ul><li>2 x 40-GbE adapter </li><li> Felhasználó által konfigurálható (alapértelmezés) DHCP vagy statikus</li></ul>|
 
 
 ## <a name="components"></a>Összetevők
@@ -99,7 +99,7 @@ A munkafolyamat általában az alábbi lépésekből áll:
 
 A folyamat során értesítést kap minden állapot módosul az e-mailen keresztül.
 
-## <a name="region-availability"></a>Regionális elérhetőség
+## <a name="region-availability"></a>Régiónkénti elérhetőség
 
 Data Box nagy adatátviteli alapján a régiót, amelyben szolgáltatás üzembe helyezése, ország/régió, amelyhez az eszköz tartalmazza a szükséges, és a célként megadott Azure storage-fiókot, ahol az adatok átvitelét.
 
@@ -113,7 +113,7 @@ Data Box nagy adatátviteli alapján a régiót, amelyben szolgáltatás üzembe
 
 Régiónkénti elérhetőség a legfrissebb információk a Data Box nehéz, Ugrás [az Azure-termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all).
 
-## <a name="sign-up"></a>Feliratkozás
+## <a name="sign-up"></a>Regisztráció
 
 A Data Box Heavy előzetes verzióban érhető el, és a használatához regisztráció szükséges. A következő lépésekkel regisztrálhat Data Box (nagy erőforrásigényű):
 
