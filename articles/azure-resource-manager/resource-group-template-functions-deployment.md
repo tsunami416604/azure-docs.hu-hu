@@ -33,7 +33,7 @@ Erőforrások, erőforráscsoportok vagy előfizetések lekérjük az értékeke
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="deployment"></a>üzembe helyezés
+## <a name="deployment"></a>deployment
 `deployment()`
 
 A jelenlegi üzembe helyezési művelet adatait adja vissza.
@@ -257,7 +257,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | stringOutput | String | 1\. lehetőséget |
 | intOutput | Int | 1 |
 | objectOutput | Object | {"egy": "a", "2": "b"} |
-| arrayOutput | Tömb | [1, 2, 3] |
+| arrayOutput | Array | [1, 2, 3] |
 | crossOutput | String | 1\. lehetőséget |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
@@ -358,7 +358,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | exampleOutput1 | String | myVariable |
-| exampleOutput2 | Tömb | [1, 2, 3, 4] |
+| exampleOutput2 | Array | [1, 2, 3, 4] |
 | exampleOutput3 | String | myVariable |
 | exampleOutput4 |  Object | {"Tulajdonság1": "érték1", "Tulajdonság2": "érték2"} |
 
