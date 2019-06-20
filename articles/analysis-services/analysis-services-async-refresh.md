@@ -104,7 +104,7 @@ Paraméterek megadása nem kötelező. Alapértelmezés szerint a rendszer alkal
 | `CommitMode`     | Enum  | Azt határozza meg, ha objektumok lesznek véglegesítve, és kötegekben, vagy csak ha végzett. Módok közé tartozik: alapértelmezett, tranzakciós partialBatch.  |  tranzakciós       |
 | `MaxParallelism` | Int   | Ez az érték a párhuzamos feldolgozás parancsok futtatására szálak maximális száma határozza meg. Ez az érték a TMSL beállítható MaxParallelism tulajdonság igazítva [parancs feladatütemezési](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl) vagy más módszerrel.       | 10        |
 | `RetryCount`     | Int   | Azt jelzi, hogy hányszor, mielőtt hibát jelentene próbálkozik újra a műveletet.      |     0    |
-| `Objects`        | Tömb | A feldolgozásra objektumok egy tömbjét. Minden objektumot tartalmazza: "table" feldolgozásakor a teljes táblázatot vagy a "table" és "partíció" partíció feldolgozása során. Ha nincs objektum meg van adva, a teljes modellt frissülnek. |   A teljes modell feldolgozása      |
+| `Objects`        | Array | A feldolgozásra objektumok egy tömbjét. Minden objektumot tartalmazza: "table" feldolgozásakor a teljes táblázatot vagy a "table" és "partíció" partíció feldolgozása során. Ha nincs objektum meg van adva, a teljes modellt frissülnek. |   A teljes modell feldolgozása      |
 
 CommitMode partialBatch megegyezik. Szolgál, amely során egy kezdeti betöltése a nagyméretű adathalmazok óráig is eltarthat. A frissítési művelet nem sikerül, egy vagy több köteg sikeresen véglegesítése után, ha sikeresen véglegesítve köteg véglegesített marad (ez nem állítja vissza sikeresen véglegesítve kötegek).
 
