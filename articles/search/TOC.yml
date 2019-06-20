@@ -31,6 +31,14 @@
       href: search-get-started-python.md
 - name: Oktatóanyagok
   items:
+    - name: Az első alkalmazás létrehozása
+      items:
+        - name: 1 – Alapszintű keresőoldal
+          href: tutorial-csharp-create-first-app.md
+        - name: 2 – Találatok oldalakra bontásának hozzáadása
+          href: tutorial-csharp-paging.md
+        - name: 3 – Prediktív szövegbevitel hozzáadása
+          href: tutorial-csharp-type-ahead-and-suggestions.md
     - name: Az Azure SQL Database indexelése
       href: search-indexer-tutorial.md
     - name: Azure JSON blobok indexelése

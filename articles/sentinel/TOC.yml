@@ -40,6 +40,8 @@
               href: connect-azure-atp.md
             - name: Az Azure Security Center csatlakoztatása
               href: connect-azure-security-center.md
+            - name: Tartományi névkiszolgáló csatlakoztatása
+              href: connect-dns.md
             - name: A Microsoft webalkalmazási tűzfal csatlakoztatása
               href: connect-microsoft-waf.md
             - name: A Windows tűzfal csatlakoztatása

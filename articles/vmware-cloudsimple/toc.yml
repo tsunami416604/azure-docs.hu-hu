@@ -10,7 +10,7 @@
     - name: Első lépések
       expanded: true
       items:
-        - name: Inicializálás és kapacitás vásárlása
+        - name: Inicializálás és kapacitás kiépítése
           href: quickstart-create-cloudsimple-service.md
         - name: Magánfelhős környezet konfigurálása
           href: quickstart-create-private-cloud.md
@@ -62,7 +62,7 @@
           href: access-cloudsimple-portal.md
         - name: Csomópontok kezelése
           items:
-            - name: Csomópontok vásárlása
+            - name: Csomópontok kiépítése
               href: create-nodes.md
         - name: Magánfelhő-erőforrások kezelése
           items:

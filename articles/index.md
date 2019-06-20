@@ -6,12 +6,12 @@ description: Ismerje meg, hogyan készíthet és felügyelhet hatékony alkalmaz
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: bc052b749724a76df3df3572913f4bcbc146df17
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: dffb0fc1ca08cb0b1ab73448c987d648bc8aead7
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497078"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67191046"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -775,6 +775,12 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                                 <p>Azure Front Door Service</p>
                                             </a>
                                         </li>
+                                        <li>
+                                            <a href="/azure/bastion/">
+                                                <img src="media/index/web_connect.svg" alt="" />
+                                                <p>Azure Bastion</p>
+                                            </a>
+                                        </li>
                                     </ul>
                                     <h3>AI + Machine Learning</h3>
                                     <ul>
@@ -1105,13 +1111,13 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                         <li>
                                             <a href="/azure/storage/blobs/data-lake-storage-introduction">
                                                 <img src="media/index/Azure-Data-Lake-Store-COLOR.svg" alt="" />
-                                                <p>2. generációs Data Lake Storage</p>
+                                                <p>2\. generációs Data Lake Storage</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/data-lake-store/">
                                                 <img src="media/index/Azure-Data-Lake-Store-COLOR.svg" alt="" />
-                                                <p>1. generációs Data Lake Storage</p>
+                                                <p>1\. generációs Data Lake Storage</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1270,12 +1276,12 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                         <li>
                                             <a href="/azure/storage/blobs/data-lake-storage-introduction">
                                                 <img src="media/index/Azure-Data-Lake-Store-COLOR.svg" alt="" />
-                                                <p>2. generációs Data Lake Storage</p>
+                                                <p>2\. generációs Data Lake Storage</p>
                                             </a>
                                             <li>
                                             <a href="/azure/data-lake-store/">
                                                 <img src="media/index/Azure-Data-Lake-Store-COLOR.svg" alt="" />
-                                                <p>1. generációs Data Lake Storage</p>
+                                                <p>1\. generációs Data Lake Storage</p>
                                             </a>
                                         </li>
                                         <li>
@@ -2420,6 +2426,25 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                     </div>
                                 </a>
                             </li>
+<li>
+                                <a href="/azure/bastion/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/web_connect.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Bastion</h3>
+                                                    <p>Zökkenőmentes virtuálisgép-kapcsolatok SSL-en keresztül az Azure Portalon, nyilvános IP-cím nélkül</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -2474,7 +2499,7 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>2. generációs Data Lake Storage</h3>
+                                                    <h3>2\. generációs Data Lake Storage</h3>
                                                     <p>Rendkívül rugalmasan méretezhető, Blob Storage-on alapuló biztonságos Data Lake Storage-tároló</p>
                                                 </div>
                                             </div>
@@ -2493,7 +2518,7 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>1. generációs Data Lake Storage</h3>
+                                                    <h3>1\. generációs Data Lake Storage</h3>
                                                     <p>Rugalmas skálázású adattár a big data koncepción alapuló adatelemzési célokra</p>
                                                 </div>
                                             </div>
@@ -3677,7 +3702,7 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>2. generációs Data Lake Storage</h3>
+                                                    <h3>2\. generációs Data Lake Storage</h3>
                                                     <p>Rendkívül rugalmasan méretezhető, Blob Storage-on alapuló biztonságos Data Lake Storage-tároló</p>
                                                 </div>
                                             </div>
@@ -3696,7 +3721,7 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>1. generációs Data Lake Storage</h3>
+                                                    <h3>1\. generációs Data Lake Storage</h3>
                                                     <p>Rugalmas skálázású adattár a big data koncepción alapuló adatelemzési célokra</p>
                                                 </div>
                                             </div>

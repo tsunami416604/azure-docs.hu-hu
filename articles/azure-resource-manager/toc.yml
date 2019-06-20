@@ -124,9 +124,10 @@
               href: resource-manager-powershell-sas-token.md
         - name: Üzembe helyezés több erőforráscsoporton vagy előfizetésben
           href: resource-manager-cross-resource-group-deployment.md
-        - name: Folyamatos integráció az Azure DevOps Services szolgáltatással
-          href: ../vs-azure-tools-resource-groups-ci-in-vsts.md
-          maintainContext: true
+    - name: CI/CD
+      items:
+        - name: VS-projekt folyamatokkal
+          href: vs-resource-groups-project-devops-pipelines.md
     - name: Sablon exportálása
       href: export-template-portal.md
     - name: Kezelés
