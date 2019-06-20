@@ -9,12 +9,12 @@ ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: f0dfed10190685c1d51822b8bec2b3c80cea7bb2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fecced844b3580c83fd18d0c14c3a2083f7a4fc
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153944"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165735"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Az Azure Storage analytics metrics (klasszikus)
 
@@ -90,18 +90,27 @@ A parancsmagok, amelyek vezérlik a Storage Metrics használja a következő par
 * **Szolgáltatás**: Gyűjti a mérőszámokat, például a bejövő/kimenő forgalom, elérhetőség, késés és sikeres százalékok, amely a blob, queue, table és Fájlszolgáltatások összesítve szerepelnek.
 * **ServiceAndApi**: A szolgáltatások mérőszámait mellett ugyanazokat az egyes tárolási műveletek az Azure Storage szolgáltatás API-ban mérőszámok gyűjti.
 
-Az alábbi parancs például a perc típusú metrikák a alapértelmezett tárfiókban található blob szolgáltatás vált, együtt a megőrzési időszak beállítása pedig öt nappal:  
+Az alábbi parancs például a perc típusú metrikák, a tárfiókban található blob szolgáltatás vált, a megőrzési időszak beállítása pedig öt nappal a: 
+
+> [!NOTE]
+> Ez a parancs feltételezi, hogy korábban már bejelentkezett az Azure-előfizetés használatával a `Connect-AzAccount` parancsot.
 
 ```  
-Set-AzureStorageServiceMetricsProperty -MetricsType Minute   
--ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5  
+$storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
+
+Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5 -Context $storageAccount.Context
 ```  
+
+* Cserélje le a `<resource-group-name>` helyőrző értékét az erőforráscsoport nevét.
+
+* Cserélje le a `<storage-account-name>` helyőrző értéket cserélje a tárfiókja nevére.
+
+
 
 Az alábbi parancs lekéri a jelenlegi óránkénti metrikák szintje és megőrzési nap a blobszolgáltatás alapértelmezett tárfiókban található:  
 
 ```  
-Get-AzureStorageServiceMetricsProperty -MetricsType Hour   
--ServiceType Blob  
+Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob -Context $storagecontext.Context
 ```  
 
 Működik az Azure-előfizetésében az Azure PowerShell-parancsmagjainak konfigurálása és használata az alapértelmezett tárfiók kiválasztása kapcsolatos információkért lásd: [Azure PowerShell telepítése és konfigurálása annak](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  

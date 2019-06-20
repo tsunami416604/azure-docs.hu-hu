@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: 48c59ddc1e203030bd967911d536930cb94761d3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f1cb7c9aa0844c82acd333c4f9dd87a4dda013e7
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66356178"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165333"
 ---
 # <a name="securely-run-experiments-and-inference-inside-an-azure-virtual-network"></a>Biztonságos futtatására kísérletek tanuláshoz és következtetésekhez egy Azure virtuális hálózaton belül
 
@@ -35,9 +35,13 @@ Jelen dokumentum céljából feltételezzük, hogy Ön ismeri az Azure-beli virt
 ## <a name="storage-account-for-your-workspace"></a>Storage-fiók a munkaterülethez
 
 > [!IMPORTANT]
-> A storage-fiókot csak Kísérletezési közben a virtuális hálózat mögött az Azure Machine Learning szolgáltatás munkaterületén csatolt helyezheti. Következtetésekhez korlátlan hozzáférést a storage-fiók szükséges. Ha nem biztos benne, hogy módosította ezeket a beállításokat, vagy nem, lásd: __módosítsa az alapértelmezett hálózati hozzáférési szabály__ a [konfigurálása az Azure Storage-tűzfalak és virtuális hálózatok](https://docs.microsoft.com/azure/storage/common/storage-network-security). A lépések segítségével engedélyezze a hozzáférést minden hálózatból elérhető következtetésekhez során, vagy a modell pontozása.
+> A __alapértelmezett tárfiók__ az Azure Machine Learning szolgáltatás a virtuális hálózatban helyezhető __csak Kísérletezési Mindeközben__.
+>
+> A __tárfiókok nem alapértelmezett Kísérletezési__, vagy ha egy storage-fiókot használ __következtetésekhez__, rendelkeznie kell __korlátozás nélkül hozzáférnek a tárfiók__.
+> 
+> Ha nem biztos benne, hogy módosította ezeket a beállításokat, vagy nem, lásd: __módosítsa az alapértelmezett hálózati hozzáférési szabály__ a [konfigurálása az Azure Storage-tűzfalak és virtuális hálózatok](https://docs.microsoft.com/azure/storage/common/storage-network-security). A lépések segítségével engedélyezze a hozzáférést minden hálózatból elérhető következtetésekhez során, vagy a modell pontozása.
 
-Az Azure Machine Learning-Kísérletezési képességek használata az Azure Storage mögött egy virtuális hálózatot, kövesse az alábbi lépéseket:
+A munkaterület egy virtuális hálózatban, az alapértelmezett Azure Storage-fiók ezen a helyen használja az alábbi lépéseket:
 
 1. Hozzon létre egy Kísérletezési számítási ex. Learning Compute Machine mögött egy virtuális hálózatot, vagy egy Kísérletezési számítási csatolása ex a munkaterületen. HDInsight-fürt vagy a virtuális gép. További információkért lásd: [Machine Learning Compute](#use-machine-learning-compute) és [egy virtuális gép vagy HDInsight-fürt](#use-a-virtual-machine-or-hdinsight-cluster) szakaszok a jelen dokumentum
 2. Nyissa meg a storage, a munkaterülethez csatlakozik. ![Az Azure portál Azure Storage, amely csatlakozik az Azure Machine Learning szolgáltatás munkaterület képe](./media/how-to-enable-virtual-network/workspace-storage.png)

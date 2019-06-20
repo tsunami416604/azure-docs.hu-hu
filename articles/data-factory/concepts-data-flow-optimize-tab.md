@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 372922fff600aaa12fddfeeb86ff4522eca3e602
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 40023931b2a0b3788a583a5b5240e7916b187e34
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075104"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190644"
 ---
 # <a name="mapping-data-flow-transformation-optimize-tab"></a>Adatfolyam átalakítása optimalizálás adatok hozzárendelése lap
 
@@ -45,7 +45,7 @@ Dinamikus tartomány Spark oszlopokat vagy Ön által megadott kifejezések alap
 
 ### <a name="fixed-range"></a>Rögzített tartomány
 
-Egy kifejezés, amely értékek, particionált adatok az oszlopokban a rögzített kínál kell létrehozni. Az adatok beható ismerete, mielőtt ezt a beállítást annak érdekében, hogy partíció döntés kell rendelkeznie. Adja meg a kifejezés értékét a partíciós függvények részeként használható. Beállíthatja, hogy a fizikai partíciók számát.
+Egy kifejezés, amely értékek, particionált adatok az oszlopokban a rögzített kínál kell létrehozni. Az adatok beható ismerete, mielőtt ezt a beállítást annak érdekében, hogy partíció döntés kell rendelkeznie. A kifejezés a beírt értékeket a partíciós függvények részeként használható. Beállíthatja, hogy a fizikai partíciók számát.
 
 ### <a name="key"></a>Kulcs
 

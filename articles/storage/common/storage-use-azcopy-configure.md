@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: bf58256b05c6c1260078c0dba547295e08328ef5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 1a67846889b43d582a7a7d477a33f0e2168fd760
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073685"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147865"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurálja, optimalizálhat és AzCopy hibaelhárítása
 
@@ -32,7 +32,7 @@ Konfigurálja a proxybeállításokat az AzCopy, állítsa be a `https_proxy` k�
 
 | Operációs rendszer | Parancs  |
 |--------|-----------|
-| **Windows** | A parancssort használja: `set https_proxy=<proxy IP>:<proxy port>`<br> A PowerShell használata: `$env:https_proxy=<proxy IP>:<proxy port>`|
+| **Windows** | A parancssort használja: `set https_proxy=<proxy IP>:<proxy port>`<br> A PowerShell használata: `$env:https_proxy="<proxy IP>:<proxy port>"`|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
 | **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 

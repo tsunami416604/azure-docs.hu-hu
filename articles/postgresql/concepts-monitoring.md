@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: b7d69e0fe16f96b0e3886c3736f8b91d4c06b446
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/19/2019
+ms.openlocfilehash: c69ffb30a37de8e6dc3e15aa1f7dcd6a9311d614
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063755"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274302"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Figyelése és finomhangolása az Azure Database for PostgreSQL - kiszolgáló egyetlen
 A kiszolgálók adatainak segítségével hibaelhárítása és optimalizálhatja a számítási feladatok számára. Azure Database for PostgreSQL nyújt betekintést a kiszolgáló viselkedését a különböző megfigyelési lehetőségeket biztosít.
@@ -33,11 +33,13 @@ Ezek a metrikák érhetők el az Azure Database for postgresql-hez:
 |serverlog_storage_percent|Server Log storage százalékban|Százalék|A százalékos aránya ki a kiszolgáló maximális kiszolgálói naplók tárolására használt kiszolgálói naplók tárolásához.|
 |serverlog_storage_usage|Kiszolgálói naplók tárolására használt|Bájt|Kiszolgálói naplók tárolására használt mennyisége.|
 |serverlog_storage_limit|Log storage maximális|Bájt|A maximális kiszolgálói naplók tárolásához, ehhez a kiszolgálóhoz.|
-|active_connections|Az aktív kapcsolatok|Count|A kiszolgáló aktív kapcsolatok száma.|
+|active_connections|Az aktív kapcsolatok|Darabszám|A kiszolgáló aktív kapcsolatok száma.|
 |connections_failed|Sikertelen kapcsolatok|Count|Nem sikerült a kiszolgálóval létesített kapcsolatok száma.|
 |network_bytes_egress|Kimenő hálózat|Bájt|Kimenő hálózati forgalom az aktív kapcsolatok között.|
 |network_bytes_ingress|Bejövő hálózat|Bájt|Hálózati az aktív kapcsolatok között.|
 |backup_storage_used|Felhasznált biztonsági mentési tár|Bájt|A felhasznált biztonsági mentési tárterület mennyisége.|
+|pg_replica_log_delay_in_bytes|Maximális késés replika között|Bájt|A lag a master és a legtöbb elmaradt replika közötti bájtban. Ez a metrika csak a fő kiszolgálón érhető el.|
+|pg_replica_log_delay_in_seconds|Replika késés|másodperc|Az idő, mert az utolsó játssza vissza a tranzakciót. Ez a metrika csak a replikakiszolgálót érhető el.|
 
 ## <a name="server-logs"></a>Kiszolgálói naplók
 Engedélyezheti a naplózást a kiszolgálón. Ezek a naplók is elérhetők az Azure-diagnosztikai naplók keresztül [naplózza az Azure Monitor](../azure-monitor/log-query/log-query-overview.md), az Event Hubs és a Storage-fiókot. Naplózásával kapcsolatos további tudnivalókért látogasson el a [kiszolgálónaplók](concepts-server-logs.md) lapot.

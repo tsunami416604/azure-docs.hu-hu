@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: estfan
 ms.openlocfilehash: ebae0fac5edc0bb79e6a19d8bdc741960f0b0e20
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66149695"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179377"
 ---
 ### <a name="prerequisites"></a>Előfeltételek
 * Egy [Office 365-felhasználók](https://office365.com) fiók  

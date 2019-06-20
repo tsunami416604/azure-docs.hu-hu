@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 4935e06389266f049b8f7f79ca6fb9380f33c864
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 47b1d9720a23c1dbfdee8c2e4cba95ff998a4cc0
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954144"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137744"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Az Azure Cosmos DB API kapcsolatos gyakori kérdések
 
@@ -744,11 +744,11 @@ Igen, rendszeres szintaxis használatával összetett partíciós kulcs létreho
 
 ### <a name="can-i-use-stable-loader-for-data-loading"></a>Használhatok stabil betöltő Adatbetöltési?
 
-Előzetes verzió ideje alatt nem stabil betöltő nem támogatott.
+Nem, stabil betöltő nem támogatott.
 
 ### <a name="can-an-on-premises-apache-cassandra-cluster-be-paired-with-azure-cosmos-dbs-cassandra-api"></a>Egy helyszíni Apache Cassandra-fürtjére párosítható is az Azure Cosmos DB Cassandra API-val?
 
-A jelenlegi Azure Cosmos DB egy optimalizált megoldás műveletek nélkül terhelés a felhőalapú környezet rendelkezik. Üzenet küldése a párosítást követelik meg, ha [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com) az az eset leírását.
+A jelenlegi Azure Cosmos DB egy optimalizált megoldás műveletek nélkül terhelés a felhőalapú környezet rendelkezik. Üzenet küldése a párosítást követelik meg, ha [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com) az az eset leírását. Dolgozunk az ajánlat súgó párt a – helyi vagy más felhőben Cassandra Cosomos DB Cassandra API a fürtben.
 
 ### <a name="does-cassandra-api-provide-full-backups"></a>Biztosítja a Cassandra API a teljes biztonsági mentés?
 
@@ -763,15 +763,12 @@ A fiók, és szabályozhatja, ahol azt átveheti azáltal, hogy a feladatátvét
 
 ### <a name="does-the-apache-cassandra-api-index-all-attributes-of-an-entity-by-default"></a>Az Apache Cassandra API index egy entitás összes attribútumának alapértelmezés szerint?
 
-Igen, egy entitás összes attribútumának indexelt alapértelmezés szerint az Azure Cosmos DB-hez. További információkért lásd: [Azure Cosmos DB: Indexelési szabályzataihoz](index-policy.md). Garantált konzisztens indexelő teljesítmény előnyeit kap, és véglegesített tartós kvórum mindig írja.
+Cassandra API-val tervezi támogatja a másodlagos indexelést, segítve a szelektív index egyes attribútumok. 
 
-### <a name="does-this-mean-i-dont-have-to-create-more-than-one-index-to-satisfy-the-queries"></a>Nem, nem kell létrehoznunk jelent ez több, mint a lekérdezések kielégítéséhez több index?
-
-Igen, az Azure Cosmos DB biztosít az összes attribútum bármely séma definíció nélküli automatikus indexelés. Ezt az automatizálást a fejlesztők számára, hogy az alkalmazás helyett az index létrehozásának és felügyeletének fókusz szabadít fel. További információkért lásd: [Azure Cosmos DB: Indexelési szabályzataihoz](index-policy.md).
 
 ### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>Használható az új Cassandra API SDK-t helyi emulátorral?
 
-Ezen képesség támogatásához a jövőben tervezzük.
+Igen Ez támogatott.
 
 ### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-change-feed-and-other-functionality-will-these-capabilities-be-added-to-the-cassandra-api"></a>Az Azure Cosmos DB platform úgy tűnik, hogy rengeteg funkciók, például a változáscsatorna és más funkciókat. Ezek a képességek hozzáadódik a Cassandra API-t?
 

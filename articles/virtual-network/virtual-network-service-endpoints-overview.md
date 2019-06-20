@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: 73621c3bbab7f0c49feacab29e1e5de1792b80e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: e621eeeca7a4f325efcfb242c204b2f727e55fc4
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61032589"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147762"
 ---
 # <a name="virtual-network-service-endpoints"></a>Virtuális hálózati szolgáltatásvégpontok
 
@@ -61,7 +61,7 @@ A szolgáltatásvégpontok az alábbi előnyöket nyújtják:
 - A szolgáltatás csak az Azure Resource Manager-alapú üzemi modellel üzembe helyezett virtuális hálózatokon érhető el.
 - A végpontok az Azure-beli virtuális hálózatokon konfigurált alhálózatokon vannak engedélyezve. A végpontok nem használhatók a helyszíni eredetű, az Azure-szolgáltatásokba irányuló forgalom továbbítására. További információt [az Azure-szolgáltatások helyszíni hozzáférésének biztosítását](#securing-azure-services-to-virtual-networks) ismertető szakaszban talál.
 - Az Azure SQL esetében a szolgáltatásvégpontok csak az adott virtuális hálózat régióján belül vannak hatással az Azure-szolgáltatások forgalmára. Az Azure Storage RA-GRS- és GRS-forgalmának támogatása érdekében a végpontok azokra a párosított régiókra is kiterjednek, amelyekben a virtuális hálózat üzembe van helyezve. További információk az [Azure párosított régióiról](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
-- Az ADLS általános 1 a VNet-integráció funkció csak akkor használható, az azonos régión belüli virtuális hálózatok esetében.
+- Az ADLS általános 1 a VNet-integráció funkció csak akkor használható, az azonos régión belüli virtuális hálózatok esetében. Vegye figyelembe, hogy a virtuális hálózat integrációja Azure Data Lake Storage Gen1 teszi is használhat a virtuális hálózati szolgáltatási végpont biztonsági a virtuális hálózat és az Azure Active Directory (Azure AD) további biztonsági jogcímeket a hozzáférési jogkivonatot létrehozni. Ezután e jogcímek használatával hitelesíti a virtuális hálózatot az 1. generációs Data Lake Storage-fiókkal, és engedélyezi a hozzáférést. Szolgáltatásvégpontok támogató szolgáltatások felsorolva "Microsoft.AzureActiveDirectory" címkét csak támogató Szolgáltatásvégpontok ADLS általános 1 használ. Az Azure Active Directory (Azure AD) natív módon nem támogatja a szolgáltatásvégpontokat. Tudjon meg többet [Azure Data Lake Store általános 1 VNet-integráció](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="securing-azure-services-to-virtual-networks"></a>Azure-szolgáltatások biztosítása virtuális hálózatokhoz
 
@@ -120,7 +120,7 @@ Ha konfigurálta a szolgáltatásvégpontokat egy adott szolgáltatáshoz, a kö
 
 ## <a name="provisioning"></a>Kiépítés
 
-A szolgáltatásvégpontok a virtuális hálózatokon külön-külön konfigurálhatók egy olyan felhasználó által, akiknek írási hozzáférése van egy virtuális hálózathoz. Ahhoz, hogy egy felhasználó Azure-szolgáltatási erőforrásokat rendelhessen egy virtuális hálózathoz, rendelkeznie kell a hozzáadott alhálózatokra vonatkozó *Microsoft.Network/JoinServicetoaSubnet* engedéllyel. Ez az engedély alapértelmezés szerint bele van foglalva a beépített szolgáltatás-rendszergazdai szerepkörökbe, és egyéni szerepkörök létrehozásával módosítható.
+A szolgáltatásvégpontok a virtuális hálózatokon külön-külön konfigurálhatók egy olyan felhasználó által, akiknek írási hozzáférése van egy virtuális hálózathoz. Biztonságos Azure-szolgáltatási erőforrások virtuális hálózathoz, a felhasználó engedéllyel kell rendelkeznie a *Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action* az alhálózatokra. Ez az engedély alapértelmezés szerint bele van foglalva a beépített szolgáltatás-rendszergazdai szerepkörökbe, és egyéni szerepkörök létrehozásával módosítható.
 
 További információk a [beépített szerepkörökről](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és a bizonyos engedélyek [egyéni szerepkörökhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) való hozzárendeléséről.
 

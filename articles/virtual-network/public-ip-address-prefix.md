@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 23cd77d4a2d0c8203670039dd44c878bf7217fd3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: fe163fc2370e884bed58bfffe5baffa5642b6d90
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799105"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67148001"
 ---
 # <a name="public-ip-address-prefix"></a>Nyilvános IP-cím előtagja
 
@@ -32,7 +32,7 @@ Hoz létre egy nyilvános IP-címelőtag egy Azure-régióban és az előfizeté
 
 ## <a name="why-create-a-public-ip-address-prefix"></a>Miért érdemes létrehozni egy nyilvános IP-címelőtag?
 
-Nyilvános IP-cím erőforrás létrehozásakor az Azure hozzárendelhetők elérhető nyilvános IP-cím a tartományokkal a régióban használják őket. Az Azure hozzárendeli a címet, ha tudja, hogy mi a címet, de addig, amíg az Azure hozzárendeli a címet, nem tudja, milyen címet hozzárendelni. A problémás lehet, ha például Ön, vagy az üzleti partnerek tűzfalszabályok beállítása, amely lehetővé teszi meghatározott IP-címek. Minden alkalommal, amikor új nyilvános IP-címet rendel egy erőforrást, a cím a tűzfalszabály hozzáadandó rendelkezik. Az erőforrások címeket rendel egy nyilvános IP-címelőtag a, ha tűzfalszabályok nem kell minden alkalommal, amikor a címek hozzárendelését frissíthető, mert a teljes körű hozzá lehet adni egy szabályt.
+Nyilvános IP-cím erőforrás létrehozásakor az Azure bármelyik régióban használt tartományt hozzárendeli az elérhető nyilvános IP-cím. Az Azure hozzárendeli a címet, ha tudja, hogy mi a címet, de addig, amíg az Azure hozzárendeli a címet, nem tudja, milyen címet hozzárendelni. A problémás lehet, ha például Ön, vagy az üzleti partnerek tűzfalszabályok beállítása, amely lehetővé teszi meghatározott IP-címek. Minden alkalommal, amikor új nyilvános IP-címet rendel egy erőforrást, a cím a tűzfalszabály hozzáadandó rendelkezik. Az erőforrások címeket rendel egy nyilvános IP-címelőtag a, ha tűzfalszabályok nem kell minden alkalommal, amikor a címek hozzárendelését frissíthető, mert a teljes körű hozzá lehet adni egy szabályt.
 
 ## <a name="benefits"></a>Előnyök
 

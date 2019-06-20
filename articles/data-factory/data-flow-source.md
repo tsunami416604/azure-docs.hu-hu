@@ -3,16 +3,15 @@ title: Állítsa be az Azure Data Factory az adatfolyam-leképezés funkció a f
 description: Ismerje meg, hogyan állítható be egy adatfolyam-leképezés forrás átalakítási műveletet.
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 5b53819c1d30f6cd62c5941d4b44d70a4996daad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 86e30c465a605681519565261beec75d88ccd472
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67117884"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190805"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Forrás átalakításában adatfolyam-leképezés 
 
@@ -124,6 +123,14 @@ Ha a forrás SQL-adatbázis vagy az SQL Data Warehouse, a forrás Fájlkezelés 
 
 * **Lekérdezés**: Adja meg a forrás SQL-lekérdezést. Ez a beállítás felülbírál bármely táblázat, amely a kiválasztott adatkészlet. Vegye figyelembe, hogy **Order By** záradékok itt nem támogatottak, de beállíthatja, hogy egy teljes válassza ki az utasítást. Felhasználó által definiált táblafüggvények is használható. **Válassza ki * a udfGetData()** van egy SQL-táblát visszaadó UDF. Ezt a lekérdezést, amelyet használhat az adatfolyam a forrástábla állítja elő.
 * **Kötegméret**: Adja meg a Köteg mérete nagy mennyiségű adat álló olvasott be.
+* **Elkülönítési szintet**: SQL-források az ADF-leképezés adatfolyamok alapértelmezés olvassa el a nem véglegesített. Az elkülönítési szint Itt módosíthatja az alábbi értékek egyikére:
+* Zárolásalapú
+* Olvassa el a nem véglegesített
+* Megismételhető olvasása
+* A szerializálható
+* Egyik sem (figyelmen kívül hagyása elkülönítési szint)
+
+![Elkülönítési szintet](media/data-flow/isolationlevel.png "elkülönítési szint")
 
 > [!NOTE]
 > Fájlműveletek futtassa, csak akkor, ha az adatok az adatfolyam kezdhet egy (a folyamat hibakeresési vagy a Futtatás végrehajtási) futtatása, a folyamat a végrehajtása az adatfolyam tevékenységeit használó folyamatot. A fájl az operations *nem* adatfolyam hibakeresési módban futtatja.

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 06/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: 6429568b33ece3ed4f26614e55e8c3069dd65d71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e6ed18a49a77f8061c975bdf3ecb085ebf71317
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65204408"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190763"
 ---
 # <a name="connect-your-domain-name-server"></a>Connect your domain name server
 
@@ -36,21 +36,33 @@ Ha engedélyezi a DNS kapcsolat, a következőket teheti:
 - DNS-kiszolgálók terhelését nézet kérelem
 - Dinamikus DNS regisztrációs hibák megtekintése
 
-## <a name="how-it-works"></a>Működés
+## <a name="connected-sources"></a>Összekapcsolt források
 
-DNS-kapcsolat a DNS-gépen egy ügynök telepítésével valósítható meg. Az ügynök lekéri az események a DNS szolgáltatásból, és továbbítja őket a Log Analytics.
+A következő táblázat ismerteti a megoldás által támogatott csatlakoztatott forrásokat:
+
+| **Csatlakoztatott forrás** | **Támogatás** | **Leírás** |
+| --- | --- | --- |
+| [Windows-ügynökök](../azure-monitor/platform/agent-windows.md) | Igen | A megoldás a DNS-adatok Windows-ügynököktől gyűjti. |
+| [Linux-ügynökök](../azure-monitor/learn/quick-collect-linux-computer.md) | Nem | A megoldás nem DNS-információkat gyűjtsön a közvetlen Linux-ügynökök. |
+| [System Center Operations Manager felügyeleti csoport](../azure-monitor/platform/om-agents.md) | Igen | A megoldás a DNS-adatok egy csatlakoztatott az Operations Manager felügyeleti csoportban lévő ügynököktől gyűjti. Az Azure monitornak közvetlen kapcsolat legyen az Operations Manager-ügynök nem kötelező. Adatok lesznek továbbítva a felügyeleti csoportból a Log Analytics-munkaterületet. |
+| [Azure Storage-fiók](../azure-monitor/platform/collect-azure-metrics-logs.md) | Nem | A megoldás az Azure storage nem használja. |
+
+### <a name="data-collection-details"></a>Adatok gyűjtése részletei
+
+A megoldás gyűjti DNS-leltár- és DNS-esemény kapcsolatos adatokat a DNS-kiszolgálók ahol egy Log Analytics-ügynök telepítve van. A DNS PowerShell-parancsmagok futtatása leltárhoz kapcsolódó adatok, például a DNS-kiszolgálók, zónák és rekordok, számát gyűjti. Az adatok két naponta egyszer frissül. Az esemény-kapcsolódó adatok gyűjtése történik, közel valós időben a [elemzési és auditnaplók](https://technet.microsoft.com/library/dn800669.aspx#enhanc) továbbfejlesztett DNS-naplózás és diagnosztika a Windows Server 2012 R2 által biztosított.
+
 
 ## <a name="connect-your-dns-appliance"></a>Csatlakozás a DNS-berendezés
 
 1. Az Azure-Sentinel-portálon válassza **adatösszekötők** , és válassza a **DNS** csempére.
 1. Ha a DNS-gép az Azure-ban:
-    1. Kattintson a **letöltése és telepítése az ügynök a Windows virtuális gépek**.
+    1. Kattintson a **ügynök telepítése az Azure Windows virtuális gép**.
     1. Az a **virtuális gépek** listájához, válassza ki a kívánt streamelése az Azure-Sentinel DNS gép. Ellenőrizze, hogy ez egy Windows virtuális Gépet.
     1. A virtuális gép megnyíló ablakban kattintson a **Connect**.  
     1. Kattintson a **engedélyezése** a a **DNS összekötő** ablak. 
 
 2. Ha a DNS-számítógép nem egy Azure virtuális Gépen:
-    1. Kattintson a **letöltése és telepítése a Windows Azure-beli gépek ügynök**.
+    1. Kattintson a **ügynök telepítése nem Azure-beli gépek**.
     1. Az a **közvetlen ügynök** ablakában válassza **töltse le Windows-ügynök (64 bites)** vagy **töltse le Windows-ügynök (32 bites)** .
     1. Telepítse az ügynököt a DNS-gépen. Másolás a **munkaterület-Azonosítót**, **elsődleges kulcs**, és **másodlagos kulcs** , és használja őket, amikor a rendszer kéri, a telepítés során.
 

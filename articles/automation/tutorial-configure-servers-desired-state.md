@@ -9,12 +9,12 @@ ms.author: robreed
 manager: carmonm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 83a65be50a3cec9cea47682ab5e207bd4ad9e984
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 3bcdb667ee649b9bbf32ad33e74e876cdd2b5cbf
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072563"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144190"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Kiszolgálók célállapotba történő konfigurálása és eltéréskezelés
 
@@ -154,7 +154,7 @@ Ha eltávolíthatja a csomópontot a szolgáltatásból, akkor megteheti, hogy a
 > [!NOTE]
 > A Local Configuration Manager-beállítások csak a szolgáltatásból egy csomópont regisztrációjának törlésekor állítja be, így a csomópont már nem csatlakozik a szolgáltatáshoz.
 > Ez nincs hatással a konfigurációt, amely a csomópont jelenleg érvényes.
-> A jelenlegi konfiguráció eltávolításához használja a [PowerShell](https://docs.microsoft.com/en-us/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) és törölheti a helyi konfigurációs fájlt (Ez a lehetőség csak Linux-csomópontok esetében).
+> A jelenlegi konfiguráció eltávolításához használja a [PowerShell](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) és törölheti a helyi konfigurációs fájlt (Ez a lehetőség csak Linux-csomópontok esetében).
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -165,7 +165,7 @@ A csomópont nézetben kattintson **Unregister**.
 
 ### <a name="powershell"></a>PowerShell
 
-PowerShell-lel az Azure Automation konfigurációs szolgáltatásból egy csomópont regisztrációjának törlése, kövesse a dokumentáció a parancsmag [Unregister-AzAutomationDscNode](https://docs.microsoft.com/en-us/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0).
+PowerShell-lel az Azure Automation konfigurációs szolgáltatásból egy csomópont regisztrációjának törlése, kövesse a dokumentáció a parancsmag [Unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0).
 
 ## <a name="next-steps"></a>További lépések
 

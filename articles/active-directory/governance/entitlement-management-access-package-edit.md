@@ -16,12 +16,12 @@ ms.date: 05/16/2019
 ms.author: rolyon
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce51f4df50de50cef06bba699ca7c6f76bc5d166
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73c1717249abac30847f96073ee6daf7d98112d7
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65833372"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190334"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Szerkesztése és kezelése az Azure ad-ben tagjogosultság-kezelés (előzetes verzió) egy meglévő hozzáférési csomagot
 
@@ -348,4 +348,5 @@ Tagjogosultság-kezelés, az Azure ad-ben a dolgozza fel a hozzárendelési és 
 
 ## <a name="next-steps"></a>További lépések
 
+- [Adjon hozzá egy katalógus tulajdonosa vagy egy hozzáférési Csomagkezelő](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
 - [Folyamat és az e-mailes értesítések kérése](entitlement-management-process.md)

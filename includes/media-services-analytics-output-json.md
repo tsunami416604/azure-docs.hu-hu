@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 065cb4daa9501ee658d364dad43b9e03798e4083
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160953"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179533"
 ---
 A feladat egy észlelt, és a nyomon követett arcok kapcsolatos metaadatokat tartalmazó JSON-kimenet fájlt hoz létre. Metaadatok helyét, arcok, valamint a nyomon követheti, hogy egyes jelző face ID szám jelző koordinátákat tartalmaznak. Face ID számok során gyakran fordul elő alaphelyzetbe körülmények között, ha a elülső face elvesztése vagy a keretbe átfedett bizonyos felhasználók több ID első hozzárendelt eredményez.
 

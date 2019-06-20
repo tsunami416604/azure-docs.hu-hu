@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 06/12/2019
-ms.openlocfilehash: b740b49e2decabd5f104d1db5d38b48f2bc2111c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: afa575c9015cbb21386d23101b74456822dfa33c
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67116209"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275467"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Az Azure SQL Database kiszolgáló nélküli (előzetes verzió)
 
@@ -253,6 +253,8 @@ A felhasználói erőforráskészlethez van a belső egy adatbázist, független
 
 ### <a name="metrics"></a>Mérőszámok
 
+Egy kiszolgáló nélküli adatbázis app package és a felhasználói készlet erőforrás-használat monitorozásával metrikáit az alábbi táblázatban láthatók:
+
 |Entitás|Metrika|Leírás|Egység|
 |---|---|---|---|
 |Alkalmazáscsomag|app_cpu_percent|Virtuális magra jogosult, használja az alkalmazás az alkalmazás számára engedélyezett maximális virtuális magok viszonyított aránya.|Százalék|
@@ -263,10 +265,6 @@ A felhasználói erőforráskészlethez van a belső egy adatbázist, független
 |Felhasználó-készlet|log_IO_percent|Napló százaléka MB/s felhasználómennyiség kiszolgálására alkalmasak viszonyított maximális log MB/s által használt engedélyezett felhasználómennyiség kiszolgálására alkalmasak.|Százalék|
 |Felhasználó-készlet|workers_percent|Felhasználómennyiség kiszolgálására alkalmasak viszonyított felhasználói számítási feladatok számára engedélyezett maximális dolgozók által használt feldolgozók százalékos értéke.|Százalék|
 |Felhasználó-készlet|sessions_percent|Felhasználómennyiség kiszolgálására alkalmasak viszonyított felhasználói munkaterhelés számára engedélyezett maximális munkamenetek által használt munkamenetek százaléka.|Százalék|
-____
-
-> [!NOTE]
-> Metrikák az Azure Portalon érhetők el az adatbázis panel alatt egyetlen adatbázishoz **figyelés**.
 
 ### <a name="pause-and-resume-status"></a>Szünet és folytatás állapota
 

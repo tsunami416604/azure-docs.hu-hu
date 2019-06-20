@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: c918abdc635e7a4a831e367e159354bb752e95e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 6285348aa8067f356635dfff9ecd4eb34c431f0b
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66743110"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147695"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dinamikusan méretezheti az adatbázis-erőforrások minimális állásidővel
 
@@ -41,7 +41,7 @@ Az Azure SQL Database kínál a [DTU-alapú vásárlási modell](sql-database-se
 Hozza létre első alkalmazását egy egyedülálló, kisméretű adatbázison alacsony áron a Basic, Standard vagy általános célú szolgáltatási szinten a havonta, és ezután szolgáltatásszintet manuálisan vagy programon keresztül bármikor módosíthatja a prémium szintű és az üzletileg kritikus szolgáltatásszinthez megfelelni a ne a megoldás eds. Úgy módosíthatja a teljesítményt, hogy az nem jár leállással az alkalmazás vagy az ügyfelek számára. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre, és lehetővé teszi, hogy csak azokért az erőforrásokért fizessen, amelyekre és amikor szüksége van.
 
 > [!NOTE]
-> A dinamikus méretezhetőség különbözik az automatikus skálázástól. Automatikus skálázás esetén a szolgáltatás adott feltételek alapján, automatikusan méretez, míg a dinamikus méretezhetőség lehetővé teszi a manuális méretezést, amely nem jár állásidővel.
+> A dinamikus méretezhetőség különbözik az automatikus skálázástól. Automatikus skálázási akkor, ha a szolgáltatás alapján automatikusan méretezi a feltételek, mivel a dinamikus méretezhetőség lehetővé teszi, hogy manuális egy minimális állásidővel.
 
 Az önálló Azure SQL Database a manuális dinamikus méretezhetőséget támogatja, de az automatikus skálázást nem. Ha *automatikus* megoldást keres, érdemes megfontolni a rugalmas készletek használatát, amely lehetővé teszi, hogy az adatbázisok osztozzanak egy készlet erőforrásain az egyes adatbázisok egyedi igényei alapján.
 Vannak azonban olyan parancsfájlok, amelyek segítségével automatizálhatja a méretezhetőség egyetlen Azure SQL-adatbázishoz. Erre az [Egyetlen SQL-adatbázis monitorozása és skálázása a PowerShell használatával](scripts/sql-database-monitor-and-scale-database-powershell.md) című témakörben láthat példát.

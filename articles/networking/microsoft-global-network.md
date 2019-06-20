@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/24/2019
+ms.date: 06/13/2019
 ms.author: ypitsch,kumud
-ms.openlocfilehash: 99650577b17874e61d1cede979d7ef2f4bfd491b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: ecce41878f7579862bba083f8cecf5db3cbde3e6
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66247289"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144134"
 ---
 # <a name="microsoft-global-network"></a>Microsoft globális hálózat
 
@@ -33,8 +33,10 @@ A [a Microsoft globális hálózatának](https://azure.microsoft.com/global-infr
  
 Az engedélyezés az [ajánlott a lehető élményt](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) könnyen akkor, ha a Microsoft cloud használ. Abban a pillanatban, amikor a felhasználói forgalom belép a globális hálózata révén a stratégiai alapon elhelyezett élcsomópontok az adatok halad a fénysebességgel közelében található optimalizált útvonalak segítségével. Ez biztosítja, hogy optimális késéssel a legjobb teljesítmény érdekében. Ezek-élcsomópontok, több mint 3500 egyedi Internet partnereinek (partnerek) keresztül kapcsolatok több ezer több mint 145 helyek egymással összekapcsolt összes tartalmaznak, az összekapcsolási stratégiánkat. 
  
-Csatlakozás, London, Tokió, vagy a Los Angeles, Washington, D.C., hogy a hálózati teljesítmény számszerűen és többek között a késés, a jitter, a csomagvesztés és a átviteli sebesség hatással.  A Microsoft javasolt, és használja a közvetlen kapcsolatok átvitel hivatkozások helyett, ez tartja a forgalom válasz szimmetrikus, és segít az útválasztók ugrásainak, a társviszony-létesítés Szerződő Felek és a rövid és a lehető legegyszerűbb elérési utakat. A prémium szintű módszert használja, más néven [hideg – potato útválasztás](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing), biztosítja, hogy az ügyfelek hálózati forgalom marad a Microsoft a lehető leghosszabbak hálózaton belüli azt kiosztják, mielőtt.  
- 
+Csatlakozás, London, Tokió, vagy a Los Angeles, Washington, D.C., hogy a hálózati teljesítmény számszerűen és többek között a késés, a jitter, a csomagvesztés és a átviteli sebesség hatással.  A Microsoft javasolt, és használja a közvetlen kapcsolatok átvitel hivatkozások helyett, ez tartja a forgalom válasz szimmetrikus, és segít az útválasztók ugrásainak, a társviszony-létesítés Szerződő Felek és a rövid és a lehető legegyszerűbb elérési utakat. 
+
+Például a londoni egy felhasználó megpróbál hozzáférni egy szolgáltatása, Tokió, majd az internetes forgalom belép az élek egyik londoni, ha halad keresztül Franciaország, Microsoft WAN hálózaton keresztül a Trans-Arábia elérési utak, Európa és közép között, majd a japán, ahol a szolgáltatás üzemel. Válasz forgalom szimmetrikus. Ez is hívják [hideg – potato útválasztás](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) mely azt jelenti, hogy a forgalom a Microsoft marad, amíg hálózati ahhoz, hogy kiosztják azt.  
+  
 Tehát jelent minden forgalom a Microsoft-szolgáltatások használata esetén? Igen, az adatközpontok adatok közötti adatforgalmat, a Microsoft Azure-on belül vagy között Microsoft-szolgáltatások, például a virtuális gépek, az Office 365, az XBox, az SQL-adatbázisok, tároló, és a virtuális hálózatokon belüli globális hálózata, és soha nem a nyilvános interneten, hogy optimális legyenek átirányítva. teljesítmény- és sértetlenségét.  
  
 Fiber-kapacitás és a sokféleség metro, szárazföldi és tenger elérési utak között jelentős befektetéseket alapvető fontosságúak a számunkra, hogy egységes és magas szolgáltatási szint közben a felhő- és online szolgáltatások rendkívüli növekedését jövőjébe. Globális hálózata legújabb kiegészítéseinek vannak a [MAREA](https://www.submarinecablemap.com/#/submarine-cable/marea) tenger alatti kábelek, az iparág első nyílt sor System (OLS) keresztül subsea közötti Bilbao, spanyol és Virginia Beach, Virginia, USA, valamint a [AEC](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1)között New York, az USA és Dublin, Írország, és [új Adatbázisközi csendes-óceáni (NCP)](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) Tokió, japán, és Portland, Oregon, USA között. 

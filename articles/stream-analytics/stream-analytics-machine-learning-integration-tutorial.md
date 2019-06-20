@@ -7,17 +7,17 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 06/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: b06fec8ab726f48e1937bae4cfbdbd9842788d0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c945f39218f9099d5c304739ca9b567ab9b3325
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61480817"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164691"
 ---
-# <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Hangulatelemzés végrehajtása az Azure Stream Analytics és az Azure Machine Learning használatával
-Ez a cikk bemutatja, hogyan gyorsan beállíthat egy egyszerű Azure Stream Analytics-feladatot, amely integrálható az Azure Machine Learning. Segítségével elemzési modell Machine Learning vélemények a Cortana Intelligence-katalógusban a streamadatok szöveg elemzése, és döntse el, valós idejű értelmezhetőségi pontszámot. A Cortana Intelligence Suite használatával teszi lehetővé a feladatnak a róluk szóló véleményeket elemzési modellek létrehozásához jainak részleteivel kellene bajlódnia.
+# <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning-studio-preview"></a>Hangulatelemzés végrehajtása az Azure Stream Analytics és Azure Machine Learning Studio (előzetes verzió) használatával
+Ez a cikk bemutatja, hogyan gyorsan beállíthat egy egyszerű Azure Stream Analytics-feladatot, amely integrálható az Azure Machine Learning Studióban. Segítségével elemzési modell Machine Learning vélemények a Cortana Intelligence-katalógusban a streamadatok szöveg elemzése, és döntse el, valós idejű értelmezhetőségi pontszámot. A Cortana Intelligence Suite használatával teszi lehetővé a feladatnak a róluk szóló véleményeket elemzési modellek létrehozásához jainak részleteivel kellene bajlódnia.
 
 Alkalmazhat témák Ez a cikk a például a következő forgatókönyvekre:
 
@@ -45,7 +45,7 @@ Mielőtt hozzálátna, győződjön meg róla, hogy rendelkezik az alábbiakkal:
 Magas szinten a feladatokat, ebben a cikkben bemutatott, tegye a következőket:
 
 1. Hozzon létre egy Azure storage-fiók és a egy blob storage-tárolóba, és a egy CSV formátumú bemeneti fájl feltöltése a tárolóba.
-3. A Cortana Intelligence-katalógusban a róluk szóló véleményeket elemzési modellek hozzáadása az Azure Machine Learning-munkaterületet, és ez a modell üzembe webszolgáltatásként, amely a Machine Learning-munkaterület.
+3. A Cortana Intelligence-katalógusban a róluk szóló véleményeket elemzési modellek hozzáadása az Azure Machine Learning Studio munkaterületét, és üzembe a modellt webszolgáltatásként, amely a Machine Learning-munkaterület.
 5. Hozzon létre egy Stream Analytics-feladat, amely meghívja a webszolgáltatás függvényében, hogy megállapítsuk a bemeneti szövegben a róluk szóló véleményeket.
 6. Indítsa el a Stream Analytics-feladatot, és a kimenet ellenőrzése.
 

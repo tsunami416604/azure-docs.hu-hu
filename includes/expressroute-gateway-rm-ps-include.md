@@ -9,11 +9,11 @@ ms.date: 02/21/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 922ac7eb6cb9676af65700a6a2fe7fbae35a0dc5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66158761"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179652"
 ---
 Ez a feladat lépései használják egy virtuális hálózathoz, a következő konfigurációs hivatkozás listában található értékek alapján. Ez a lista további beállításokat és neveket is rendszerkövetelményeknek. Nem használjuk ezt a listát minden lépést, közvetlenül a bár adjuk hozzá a változók a listában szereplő értékek alapján. A listában, hivatkozásként van listázva, használata és cserélje le az értékeket saját másolhatja.
 

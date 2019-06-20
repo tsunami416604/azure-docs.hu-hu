@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 04/23/2019
-ms.openlocfilehash: 0f764ebbad53185f46c7166011e05493ed261d6a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/18/2019
+ms.openlocfilehash: 6549892bfd04065bf83ab50fa5f5b439c35c4238
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696644"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190549"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Az Azure SQL Database biztonsági mentéseinek Store akár 10 évig
 
@@ -59,8 +59,8 @@ W = 12 hetes (84 nap), M = 12 hónap (365 napos), Y = 10 év (3650 nap), WeekOfY
 
 Ha a fenti szabályzatot módosítja, és a set W = 0 (nincs heti biztonsági mentések), a kiadása ütemben történik a biztonsági másolatok változik jelenik meg a fenti táblázat kiemelt dátuma szerint. A szükséges, hogy ezeket a biztonsági másolatokat tároló összeg csökkentené a ennek megfelelően. 
 
-> [!NOTE]
-> Azure SQL Database az egyes LTR biztonsági mentés ütemezése határozza meg. Nem manuálisan LTR biztonsági másolatot készíteni, és a biztonsági mentés létrehozása szabályozásához.
+> [!IMPORTANT]
+> Azure SQL Database az egyes LTR biztonsági mentés ütemezése határozza meg. Nem manuálisan LTR biztonsági másolatot készíteni, és a biztonsági mentés létrehozása szabályozásához. Az LTR-szabályzat konfigurálása, után legfeljebb 7 napig előtt az első LTR biztonsági mentés be automatikusan megjelennek az elérhető biztonsági másolatok listáját is eltarthat.  
 > 
 
 ## <a name="geo-replication-and-long-term-backup-retention"></a>Georeplikáció és a hosszú távú adatmegőrzés

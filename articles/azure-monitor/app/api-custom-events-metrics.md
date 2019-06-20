@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: 5194b9e6f40dbcd5e48b33c12db4b3cd94f75de3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd4690e27be38c3fef3053562ebee773698a70d7
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66478418"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154776"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és metrikák
 
@@ -249,7 +249,7 @@ namespace User.Namespace.Example01
 ## <a name="trackmetric"></a>TrackMetric
 
 > [!NOTE]
-> A .NET SDK-ban Microsoft.ApplicationInsights.TelemetryClient.TrackMetric elavult. Metrikák mindig kell előre összesített között egy adott időszakban elküldése előtt. A GetMetric(..) túlterheléssel valamelyikével SDK előzetes összesítéssel képességek eléréséhez egy metrika objektum beolvasása. Ha saját előzetes összesítéssel logika, a nyomon követése (ITelemetry metricTelemetry) metódus használatával az eredményül kapott összesítések küldése. Ha az alkalmazás egy külön telemetriai elem küldése minden alkalommal, amikor az összesítés nélkül, idő között, valószínűleg rendelkezik egy alkalmazási helyzet az esemény telemetriát; Tekintse meg a TelemetryClient.TrackEvent (Microsoft.ApplicationInsights.DataContracts.EventTelemetry).
+> Microsoft.ApplicationInsights.TelemetryClient.TrackMetric nem az előnyben részesített módszere mérőszámok küldése. Metrikák mindig kell előre összesített között egy adott időszakban elküldése előtt. A GetMetric(..) túlterheléssel valamelyikével SDK előzetes összesítéssel képességek eléréséhez egy metrika objektum beolvasása. Ha saját előzetes összesítéssel logika, a trackmetric() függvényt a metódus használatával az eredményül kapott összesítések küldése. Ha az alkalmazás egy külön telemetriai elem küldése minden alkalommal, amikor az összesítés nélkül, idő között, valószínűleg rendelkezik egy alkalmazási helyzet az esemény telemetriát; Tekintse meg a TelemetryClient.TrackEvent (Microsoft.ApplicationInsights.DataContracts.EventTelemetry).
 
 Az Application Insights is diagram, amelyek nem kapcsolódnak az egyes események metrikákat. A várólista hossza például rendszeres időközönként sikerült figyelése. Metrikákkal az egyes mérések érdekesek lehetnek kevesebb, mint a változatok és a trendeket, és így statisztikai diagramok hasznosak.
 

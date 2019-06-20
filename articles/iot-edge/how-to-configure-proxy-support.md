@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 1c0da1a768b894f543b9089643622c31d6a8758d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 34a94a1b9c38070f5c9de22d9a9e4f24183a876c
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730142"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67151003"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Egy proxykiszolgálón keresztül kommunikáljon az IoT Edge-eszköz konfigurálása
 
@@ -52,7 +52,7 @@ A jelen cikkben ismertetett lépések bármelyike megkezdése előtt kell tudni,
 
 Proxykiszolgáló URL-címeket is a következő formátumban: **protokoll**://**proxy_host**:**proxyport**.
 
-* A **protokoll** HTTP vagy HTTPS van. A Docker-démon használhatja mindkét protokollt, a tároló-beállításjegyzékek beállításai, attól függően, de az IoT Edge-démont és futásidejű tárolók mindig HTTPS PROTOKOLLT használnak.
+* A **protokoll** HTTP vagy HTTPS van. A Docker-démon használhatja mindkét protokollt, a tároló-beállításjegyzékek beállításai, attól függően, de az IoT Edge-démont és futásidejű tárolók HTTP mindig használja a proxykiszolgálóhoz való csatlakozáshoz.
 
 * A **proxy_host** esetében a proxykiszolgáló-cím. Ha a proxykiszolgáló hitelesítést igényel, megadhatja a hitelesítő adatait a proxyállomás részeként a következő formátumban: **felhasználói**:**jelszó**\@**proxy_host** .
 
@@ -250,7 +250,7 @@ A a környezeti változókat tartalmaz a modul definition edgeHub az alábbihoz 
     },
     "env": {
         "https_proxy": {
-            "value": "https://proxy.example.com:3128"
+            "value": "http://proxy.example.com:3128"
         }
     },
     "status": "running",

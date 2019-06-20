@@ -6,18 +6,18 @@ services: time-series-insights
 author: ashannon7
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 05/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6151af941b89198812f2a33a522b30ff0a8796a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 129476c833e596d40daa7081e23c0fd6d1b93b30
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242060"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165757"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Figyelheti, és az Azure Time Series Insightsban késés csökkentése érdekében a szabályozás csökkentése
 
@@ -42,11 +42,11 @@ Legnagyobb valószínűséggel késés és a szabályozás, amikor Ön:
 
 Riasztások segíthetnek a környezet által okozott késési problémák diagnosztizálásához és érdekében.
 
-1. Az Azure Portalon kattintson a **metrikák**.
+1. Az Azure Portalon válassza ki a **metrikák**.
 
    [![Metrikák](media/environment-mitigate-latency/add-metrics.png)](media/environment-mitigate-latency/add-metrics.png#lightbox)
 
-1. Kattintson a **metrikariasztás hozzáadása**.  
+1. Válassza a **Metrikariasztás hozzáadása** lehetőséget.  
 
    [![Metrikariasztás hozzáadása](media/environment-mitigate-latency/add-metric-alert.png)](media/environment-mitigate-latency/add-metric-alert.png#lightbox)
 

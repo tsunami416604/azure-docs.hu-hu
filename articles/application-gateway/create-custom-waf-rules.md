@@ -1,24 +1,24 @@
 ---
-title: Létrehozhat és használhat egyéni szabályok Azure webalkalmazási tűzfal (WAF)
-description: Ez a cikk információt nyújt az Azure Application Gateway webalkalmazási tűzfala (WAF) egyéni szabályok létrehozásához.
+title: Létrehozhat és használhat Azure webalkalmazási tűzfal (WAF) v2 egyéni szabályok
+description: Ez a cikk információt nyújt az Azure Application Gateway webalkalmazási tűzfala (WAF) v2 egyéni szabályok létrehozásához.
 services: application-gateway
 ms.topic: article
 author: vhorne
 ms.service: application-gateway
-ms.date: 6/5/2019
+ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: bb8c50664261814c7d994c9b879972b1e8b846e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 86ddb0b608cd17814cbcbb902f0b2905fe61094a
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66689031"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164678"
 ---
-# <a name="create-and-use-web-application-firewall-custom-rules"></a>Létrehozhat és használhat egyéni szabályok a webalkalmazási tűzfal
+# <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Hozzon létre és webalkalmazási tűzfal v2 egyéni szabályok használata
 
-Az Azure Application Gateway webalkalmazási tűzfala (WAF) védelmet kínál a webes alkalmazásokhoz. Ez a védelem által az Open Web Application Security Project (OWASP) Core szabály beállítása (CRS) biztosítunk. Bizonyos esetekben szükség lehet a saját igényeinek megfelelően egyedi szabályokat hoz létre. WAF egyéni szabályokkal kapcsolatos további információkért lásd: [egyéni webalkalmazás-tűzfal szabályok áttekintése](custom-waf-rules-overview.md).
+Az Azure Application Gateway webes alkalmazás tűzfal (WAF) v2 védelmet kínál a webes alkalmazásokhoz. Ez a védelem által az Open Web Application Security Project (OWASP) Core szabály beállítása (CRS) biztosítunk. Bizonyos esetekben szükség lehet a saját igényeinek megfelelően egyedi szabályokat hoz létre. WAF egyéni szabályokkal kapcsolatos további információkért lásd: [egyéni webalkalmazás-tűzfal szabályok áttekintése](custom-waf-rules-overview.md).
 
-Ez a cikk bemutatja, néhány példa egyéni szabály létrehozása és használata a WAF. Ismerje meg, hogyan helyezhet üzembe egy WAF Azure PowerShell-lel egyéni szabállyal, lásd: [webalkalmazási tűzfal konfigurálása az Azure PowerShell használatával egyéni szabályok](configure-waf-custom-rules.md).
+Ez a cikk bemutatja, néhány példa egyéni szabályokat hozhat létre és a v2 WAF használata. Ismerje meg, hogyan helyezhet üzembe egy WAF Azure PowerShell-lel egyéni szabállyal, lásd: [webalkalmazási tűzfal konfigurálása az Azure PowerShell használatával egyéni szabályok](configure-waf-custom-rules.md).
 
 >[!NOTE]
 > Ha az application gateway nem használja a WAF-csomag, az application gateway WAF-szintre frissítheti a jobb oldali ablaktáblán jelenik meg.

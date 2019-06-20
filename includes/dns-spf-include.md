@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: victorh
 ms.openlocfilehash: 9cc650cea17acb8d89933c819c4ca60e2c459d1c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66149934"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179750"
 ---
 Küldő házirend-keretrendszer (SPF) rekordok segítségével adja meg, melyik e-mail-kiszolgálók küldhet e-mailt nevében egy tartomány nevét. SPF-rekordokat konfigurációját fontos, hogy megakadályozza, hogy a címzettek megjelölés levélszemétként az e-maileket.
 

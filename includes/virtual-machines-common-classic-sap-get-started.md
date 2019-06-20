@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 1983e7560c986df241e9c592aaaa6b646a99840f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66143254"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179052"
 ---
 ## <a name="planning-and-implementation"></a>Tervezés és megvalósítás
 Cím: SAP NetWeaver az Azure virtuális gépeken – tervezési és megvalósítási útmutató

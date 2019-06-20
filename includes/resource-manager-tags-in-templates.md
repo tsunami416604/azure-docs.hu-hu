@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/11/2019
 ms.author: tomfitz
 ms.openlocfilehash: 104bd13a0cf97a8605670adde479c2a2eeb29c15
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66128839"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179501"
 ---
 Üzembe helyezés során címkével ellátni egy erőforrást, adja hozzá a `tags` elemet ahhoz az erőforráshoz, helyezi üzembe. Adja meg a címke nevét és értékét.
 

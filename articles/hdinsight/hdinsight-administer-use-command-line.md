@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: tyfox
-ms.openlocfilehash: 7c12831c43762ddc776e8d5701f002be97992cbc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 5ae97b17d06fa0a9934a58ac662ef12116cce4f6
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65859962"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137406"
 ---
 # <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Azure CLI használatával Azure HDInsight-fürtök kezelése
 
@@ -85,7 +85,7 @@ az group delete --name RESOURCE_GROUP_NAME
 Használat [az hdinsight átméretezése](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) méretezze át a megadott HDInsight-fürt a megadott mérethez. Az alábbi parancsot szerkesztése lecserélésével `RESOURCE_GROUP_NAME`, és `CLUSTER_NAME` a megfelelő adatokat. Cserélje le `TARGET_INSTANCE_COUNT` az a fürt munkavégző csomópontok kívánt száma. Fürtök méretezésével kapcsolatos további információkért lásd: [méretezési HDInsight-fürtök](./hdinsight-scaling-best-practices.md). Adja meg a parancsot:
 
 ```azurecli-interactive
-az hdinsight delete --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --target-instance-count TARGET_INSTANCE_COUNT
+az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --target-instance-count TARGET_INSTANCE_COUNT
 ```
 
 ## <a name="next-steps"></a>További lépések

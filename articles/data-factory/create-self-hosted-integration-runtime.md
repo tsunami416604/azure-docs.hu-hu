@@ -7,16 +7,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 06/18/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 90e43ab0448646650067dbf151702132f434c01e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec6177bb353602f20040f05215678e3a8a161ebc
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967962"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190838"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Létrehozhat és konfigurálhat egy saját üzemeltetésű integrációs modul
 Az integrációs modul (IR) a számítási infrastruktúra, amellyel Azure Data Factory adatintegrációs képességeket biztosítja különböző hálózati környezetekben. Integrációs modul kapcsolatos részletekért lásd: [Integration runtime áttekintése](concepts-integration-runtime.md).
@@ -44,7 +44,7 @@ Ez a dokumentum ismerteti, hogyan, létrehozhat és konfigurálhat egy saját ü
 
     ```
 
-## <a name="setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template-automation"></a>Egy saját üzemeltetésű integrációs modul egy Azure virtuális gépen az Azure Resource Manager-sablon (automatizálás) beállítása
+## <a name="setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template"></a>Egy saját üzemeltetésű integrációs modul egy Azure-beli virtuális gépen beállítása az Azure Resource Manager-sablon használatával 
 Egy Azure virtuális gépen a saját üzemeltetésű integrációs modul telepítő használatával automatizálható [ezen Azure Resource Manager-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vms-with-selfhost-integration-runtime). Ez a sablon tartalmaz egy egyszerű módja annak, hogy rendelkezik egy teljes mértékben működő saját üzemeltetésű IR egy magas rendelkezésre állás és méretezhetőség funkciókat az Azure virtuális hálózaton belül, (feltéve, megadhatja a csomópontok száma 2 vagy nagyobb értékre).
 
 ## <a name="command-flow-and-data-flow"></a>Parancsot a folyamat és az adatfolyam
@@ -86,6 +86,7 @@ A saját üzemeltetésű integrációs modult telepítheti az MSI-telepítő cso
 
 - A gazdagépen a saját üzemeltetésű integrációs modul energiasémát beállítani, hogy a gép hibernálásra nem. Ha szeretné a gazdagépen, a saját üzemeltetésű integrációs modul offline állapotba kerül.
 - Készítsen biztonsági másolatot a saját üzemeltetésű integrációs modul rendszeresen társított hitelesítő adatok.
+- Automatizálhatja a saját üzemeltetésű integrációs modul beállítása az operations, tekintse meg [szakasz alatti](#automation-support-for-self-hosted-ir-function).  
 
 ## <a name="install-and-register-self-hosted-ir-from-the-download-center"></a>Telepítse és regisztrálja a letöltőközpontból saját üzemeltetésű integrációs modul
 
@@ -109,6 +110,45 @@ A saját üzemeltetésű integrációs modult telepítheti az MSI-telepítő cso
     b. Bejelölheti **megjelenítése a hitelesítési kulcs** , tekintse meg a kulcs szövegét.
 
     c. Kattintson a **Register** (Regisztrálás) elemre.
+
+## <a name="automation-support-for-self-hosted-ir-function"></a>Automatizálás támogatása a saját üzemeltetésű integrációs modul függvény
+
+
+> [!NOTE]
+> Ha azt tervezi, a saját üzemeltetésű integrációs modul egy Azure virtuális gépen beállítása és automatizálja az Azure Resource Manager-sablonokkal szeretne, tekintse meg [szakasz](#setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template).
+
+Parancssor használata vagy egy meglévő saját üzemeltetésű Ez különösen a saját üzemeltetésű integrációs modul csomópontján regisztrációs a telepítés automatizálása is használható. 
+
+**Dmgcmd.exe** általában található, a helyi telepítést része: Mappa a C:\Program Files\Microsoft integrációs Runtime\3.0\Shared\. Különböző paramétereket támogatja, és a batch-parancsfájlok használata az automation parancssor használatával is hívható. 
+
+*Használat:* 
+
+```powershell
+dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<thumbprint>"] -EnableRemoteAccessInContainer "<port>" ["<thumbprint>"] -DisableRemoteAccess -Key "<AuthenticationKey>" -GenerateBackupFile "<filePath>" "<password>" -ImportBackupFile "<filePath>" "<password>" -Restart -Start -Stop -StartUpgradeService -StopUpgradeService -TurnOnAutoUpdate -TurnOffAutoUpdate -SwitchServiceAccount "<domain\user>" ["password"] -Loglevel <logLevel> ] 
+```
+
+ *Részletek (paraméterek / tulajdonság):* 
+
+| Tulajdonság                                                    | Leírás                                                  | Kötelező |
+| ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
+| RegisterNewNode "`<AuthenticationKey>`"                     | Az Integration Runtime (helyi) csomópontjának regisztrálása a megadott hitelesítési kulccsal | Nem       |
+| EnableRemoteAccess "`<port>`" ["`<thumbprint>`"]            | Távelérés engedélyezése az aktuális csomóponton az egy magas rendelkezésre állású fürt beállítása és/vagy hitelesítő adatokat közvetlenül a saját üzemeltetésű integrációs modul (nélkül ADF szolgáltatáson keresztül) használ a beállítás engedélyezése  **Új AzDataFactoryV2LinkedServiceEncryptedCredential** parancsmag egy távoli számítógépről az ugyanazon a hálózaton. | Nem       |
+| EnableRemoteAccessInContainer "`<port>`" ["`<thumbprint>`"] | Az aktuális csomóponton távoli hozzáférés engedélyezése, ha a csomópontot a tároló fut-e | Nem       |
+| DisableRemoteAccess                                         | Tiltsa le a távoli elérés az aktuális csomóponton. Távoli hozzáférés a több csomópontos telepítő van szükség. A New -**AzDataFactoryV2LinkedServiceEncryptedCredential** PowerShell-parancsmag továbbra is működik, még ha távoli hozzáférés le van tiltva, amíg a saját üzemeltetésű integrációs modul csomópontja ugyanazon a gépen hajtja végre. | Nem       |
+| Kulcs "`<AuthenticationKey>`"                                 | Írja felül, és frissítse az előző hitelesítési kulcsot. Legyen óvatos, mert ennek eredményeként az előző saját üzemeltetésű integrációs modul csomópontját kapcsolat nélküli üzemmódba, ha a kulcs új integrációs modul. | Nem       |
+| GenerateBackupFile "`<filePath>`" "`<password>`"            | Hozzon létre a biztonságimásolat-fájlt az aktuális csomóponton, a biztonságimásolat-fájl tartalmazza a csomópont kulcs és az adattár hitelesítő adatait | Nem       |
+| ImportBackupFile "`<filePath>`" "`<password>`"              | A csomópont visszaállítása biztonsági másolatból                          | Nem       |
+| Újraindítás                                                     | Indítsa újra az Integration Runtime (helyi) gazdaszolgáltatása szolgáltatás   | Nem       |
+| Indítás                                                       | Az Integration Runtime (helyi) gazdaszolgáltatása szolgáltatás indítása     | Nem       |
+| Leállítás                                                        | Az Integration Runtime (helyi) frissítési szolgáltatásának leállítása        | Nem       |
+| StartUpgradeService                                         | Az Integration Runtime (helyi) frissítési szolgáltatásának indítása       | Nem       |
+| StopUpgradeService                                          | Az Integration Runtime (helyi) frissítési szolgáltatásának leállítása        | Nem       |
+| TurnOnAutoUpdate                                            | Az Integration Runtime (helyi) automatikus frissítésének bekapcsolása        | Nem       |
+| TurnOffAutoUpdate                                           | Az Integration Runtime (helyi) automatikus frissítésének kikapcsolása       | Nem       |
+| SwitchServiceAccount "< tartomány\felhasználó >" ["password"]           | Állítsa be a DIAHostService egy új fiókként történő futtatására. Használja a jelszó üres ("") rendszerfiók vagy virtuális fiók | Nem       |
+| Loglevel `<logLevel>`                                       | (Kikapcsolva, hiba, részletes vagy az összes) ETW-naplózási szint megadásához. Általában használják a hibakeresés során a Microsoft ügyfélszolgálatához. | Nem       |
+
+   
 
 
 ## <a name="high-availability-and-scalability"></a>Magas rendelkezésre állás és méretezhetőség
@@ -341,7 +381,7 @@ Ha egy külső tűzfalat használ, manuálisan megnyithatja 8060 (vagy felhaszn�
 
 ```
 msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
-``` 
+```
 
 Ha nem kíván nyissa meg a saját üzemeltetésű integrációs modul gépen 8060 portot, a mechanizmus a hitelesítő adatok beállítása alkalmazás eltérő segítségével konfigurálhatja az adattár hitelesítő adatait. Használhatja például a **New-AzDataFactoryV2LinkedServiceEncryptCredential** PowerShell-parancsmagot.
 

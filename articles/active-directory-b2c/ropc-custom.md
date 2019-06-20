@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7a802354f20998c87ac8c2ef1f2c1dbdf47f6930
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d01e8ce894bfb1ece3555eddc714d2d3a80e44b5
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66733650"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164849"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Az erőforrás tulajdonosának jelszavas hitelesítő adatainak folyamata az Azure Active Directory B2C egy egyéni házirend használatával konfigurálja
 
@@ -255,7 +255,7 @@ Ezután frissítse a függő entitás fájlt, amely az Ön által létrehozott f
     ```
 
 5. Az a **egyéni szabályzatok** az Azure AD B2C-bérlő, válassza a lap **szabályzat feltöltése**.
-6. Engedélyezése **szabályzat felülírása, ha létezik**, és keresse meg és válassza ki a *TrustFrameworkExtensions.xml* fájlt.
+6. Engedélyezése **szabályzat felülírása, ha létezik**, és keresse meg és válassza ki a *ROPC_Auth.xml* fájlt.
 7. Kattintson a **Feltöltés** gombra.
 
 ## <a name="test-the-policy"></a>A házirend tesztelése

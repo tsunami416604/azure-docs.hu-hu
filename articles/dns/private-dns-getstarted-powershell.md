@@ -1,30 +1,30 @@
 ---
-title: Oktatóanyag – Saját Azure DNS-zóna létrehozása az Azure PowerShell használatával
-description: Ebben az oktatóanyagban egy saját DNS-zónát és -rekordot hozunk létre és tesztelünk az Azure DNS-ben. Ez egy lépésenkénti útmutató, amellyel az Azure PowerShell használatával létrehozhatja és kezelheti az első saját DNS-zónáját és -rekordját.
+title: Hozzon létre egy privát Azure DNS-zóna, Azure PowerShell-lel
+description: Ebben a cikkben létrehozása és tesztelése a saját DNS-zóna és -rekordhalmazok az Azure DNS-ben. Ez egy lépésenkénti útmutató, amellyel az Azure PowerShell használatával létrehozhatja és kezelheti az első saját DNS-zónáját és -rekordját.
 services: dns
 author: vhorne
 ms.service: dns
-ms.topic: tutorial
-ms.date: 06/13/2019
+ms.topic: article
+ms.date: 06/14/2019
 ms.author: victorh
-ms.openlocfilehash: 8f39c9707fef013c162e407a7e3ccaa67f2cabfc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 9d79ed28bd331b723755e1c17233aa82421ad1d7
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080589"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147873"
 ---
-# <a name="tutorial-create-an-azure-dns-private-zone-using-azure-powershell"></a>Oktatóanyag: Hozzon létre egy privát Azure DNS-zóna, Azure PowerShell-lel
+# <a name="create-an-azure-dns-private-zone-using-azure-powershell"></a>Hozzon létre egy privát Azure DNS-zóna, Azure PowerShell-lel
 
 [!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
-Ez az oktatóanyag végigvezeti az első saját DNS-zóna és -rekord Azure PowerShell-lel való létrehozásának lépésein.
+Ez a cikk végigvezeti az első saját DNS-zóna és -rekord Azure PowerShell-lel való létrehozásának lépésein.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A tartománya Azure DNS-ben való üzemeltetésének megkezdéséhez létre kell hoznia egy DNS-zónát az adott tartománynévhez. Ezután a tartománya összes DNS-rekordja ebben a DNS-zónában jön létre. A saját DNS-zóna virtuális hálózaton történő közzétételéhez meg kell adnia azon virtuális hálózatok listáját, amelyek számára engedélyezett a zónán belüli rekordok feloldása.  Ezek az úgynevezett *társított* virtuális hálózatok. Automatikus regisztrációnak engedélyezve van, amikor az Azure DNS-ben is frissíti a zóna rekordok, amikor egy virtuális gép létrejött, módosításokat az "IP-címet, vagy törölték.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * Saját DNS-zóna létrehozása
@@ -32,16 +32,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * További DNS-rekord létrehozása
 > * A saját zóna tesztelése
 
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-Igény szerint az oktatóanyag az [Azure CLI](private-dns-getstarted-cli.md) használatával is elvégezhető.
-
-<!--- ## Get the Preview PowerShell modules
-These instructions assume you have already installed and signed in to Azure PowerShell, including ensuring you have the required modules for the Private Zone feature. -->
-
-<!---[!INCLUDE [dns-powershell-setup](../../includes/dns-powershell-setup-include.md)] -->
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Ha szeretné, ez az eljárás használatával elvégezhető [Azure CLI-vel](private-dns-getstarted-cli.md).
 
 ## <a name="create-the-resource-group"></a>Az erőforráscsoport létrehozása
 
@@ -204,7 +199,7 @@ Ismételje meg ezt a myVM02 gép esetében is.
 
 ## <a name="delete-all-resources"></a>Az összes erőforrás törlése
 
-Ha már nincs rájuk szükség, a **MyAzureResourceGroup** erőforráscsoport törlésével törölheti az oktatóanyagban létrehozott erőforrásokat.
+Ha már nincs rá szükség, törölje a **MyAzureResourceGroup** erőforráscsoport törlése az ebben a cikkben létrehozott erőforrásokat.
 
 ```azurepowershell
 Remove-AzResourceGroup -Name MyAzureResourceGroup
@@ -212,8 +207,7 @@ Remove-AzResourceGroup -Name MyAzureResourceGroup
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban üzembe helyezett egy privát DNS-zónát, létrehozott egy DNS-rekordot, és tesztelte a zónát.
+Ebben a cikkben üzembe helyezett privát DNS-zónák, DNS-rekord létrehozása és tesztelése a zóna.
 Ezután behatóbban megismerheti a DNS-zónákat.
 
-> [!div class="nextstepaction"]
-> [Az Azure DNS használata saját tartományok esetében](private-dns-overview.md)
+* [Az Azure DNS használata saját tartományok esetében](private-dns-overview.md)
