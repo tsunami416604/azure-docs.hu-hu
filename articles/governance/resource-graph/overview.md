@@ -7,12 +7,12 @@ ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 9d3385b688208065e5854b6358819b5afad8fe65
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 4724789dd1a0893c5ef4ab112306c185f0e87da7
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66162081"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274380"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Az Azure-erőforrás Graph szolgáltatás áttekintése
 
@@ -38,7 +38,7 @@ Az Azure Resource Graph segítségével az erőforrás-szolgáltatók egyenként
 Az Azure Erőforrás-grafikon a következőket teheti:
 
 - Hozzáférés a anélkül, hogy az egyes hívásokat mindegyik erőforrás-szolgáltató erőforrás-szolgáltató által visszaadott tulajdonságait.
-- Az elmúlt 14 napban tulajdonságok változott az erőforrás végzett módosítási előzmények megtekintése és mikor. (előzetes)
+- Az elmúlt 14 napban tulajdonságok változott az erőforrás végzett módosítási előzmények megtekintése és mikor. (előzetes verzió)
 
 ## <a name="how-resource-graph-is-kept-current"></a>Hogyan tárolódik aktuális erőforrás-grafikon
 
@@ -71,7 +71,7 @@ Erőforrás-grafikon felhasználói szinten lekérdezések szabályozza. A szolg
 - `x-ms-user-quota-remaining` (int): A felhasználó többi erőforrás kvótáját. Ez az érték lekérdezés száma képezi le.
 - `x-ms-user-quota-resets-after` (ÓÓ:) Az időtartamot, amíg a felhasználó kvóta fogyasztás alaphelyzetbe állítása
 
-További információkért lásd: [szabályozás Resource Manager-kérelmek](../../azure-resource-manager/resource-manager-request-limits.md).
+További információkért lásd: [szabályozott kérelmeinek útmutatást](./concepts/guidance-for-throttled-requests.md).
 
 ## <a name="running-your-first-query"></a>Az első lekérdezés futtatása
 

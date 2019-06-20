@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 5fabe9ba03c9516f5df41645fc6ab1b7a0cb2050
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 88fb243af7628b159a2255c2cdae2ab86f39ca1e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60555934"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275488"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-projects"></a>A CI/CD-folyamat létrehozása a .NET-hez az Azure DevOps Projects segítségével
 
@@ -44,17 +44,13 @@ DevOps-projektek az Azure DevOps hoz létre a CI/CD-folyamat. Hozzon létre egy 
 
 ## <a name="select-a-sample-application-and-azure-service"></a>Mintaalkalmazás és Azure-szolgáltatás kiválasztása
 
-1. Válassza ki a .NET-mintaalkalmazást. A .NET-minták esetén a nyílt forráskódú ASP.NET- vagy a platformfüggetlen .NET Core-keretrendszer közül választhat.
+1. Válassza a **.NET** mintaalkalmazást. A .NET-minták esetén a nyílt forráskódú ASP.NET- vagy a platformfüggetlen .NET Core-keretrendszer közül választhat.
 
     ![.NET-keretrendszer](_img/azure-devops-project-aspnet-core/chooselanguagedotnet.png)
 
-1. Válassza ki a .NET Core-alkalmazás keretrendszer.  
-    Ez a minta egy ASP.NET Core MVC-alkalmazás.
+2. Ez a minta egy ASP.NET Core MVC-alkalmazás. Válassza ki a **.NET Core** alkalmazás-keretrendszert, majd válassza ki **tovább**.    
     
-2. Kattintson a **Tovább** gombra.  
-    A Web App on Windows az alapértelmezett telepítési cél.  A Web App on Linux vagy a Web App for Containers használata mellett is dönthet.  Az alkalmazás-keretrendszer, amely korábban kiválasztott itt előírja a rendelkezésre álló Azure-szolgáltatás központi telepítési cél típusát.  
-    
-3. Hagyja az alapértelmezett szolgáltatást, és válassza ki **tovább**.
+3. Válassza ki **Windows webalkalmazás** központi telepítés céljaként, majd válassza ki **tovább**. Szükség esetén választhat más Azure-szolgáltatások az üzembe helyezéshez. Az alkalmazás-keretrendszer, amely korábban kiválasztott itt előírja a típusú Azure-szolgáltatás központi telepítési cél érhető el.
 
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Az Azure DevOps és az Azure-előfizetés konfigurálása 
 

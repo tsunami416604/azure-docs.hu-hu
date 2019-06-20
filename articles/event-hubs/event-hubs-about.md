@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 83a1026cd9426e1b1651e0ec4f556b8babccb107
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 7362bd5b4e15df516478ef4bef20d76fc46b326f
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236242"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275364"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs – Big data streamelési platform és eseménybetöltő szolgáltatás
 Az Azure Event Hubs szolgáltatás a big Data típusú adatstreamelési platform és eseményfeldolgozó szolgáltatás. Képes fogadni és feldolgozni másodpercenként több millió. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók.
@@ -45,9 +45,9 @@ Azure Event Hubs szolgáltatás egy teljes körűen felügyelt Platform--szolgá
 
 ## <a name="support-for-real-time-and-batch-processing"></a>Valós idejű kötegelt feldolgozás támogatása
 
-Valós időben töltheti be, pufferelheti, tárolhatja és dolgozhatja fel a streameket, hogy a gyakorlatban is használható elemzésekhez jusson. Az Event Hubs használ egy [particionált felhasználói modell](event-hubs-features.md#partitions), az adatfolyam folyamat több alkalmazás egyidejűleg engedélyezése és a feldolgozás sebessége, ami lehetővé teszi.
+Valós időben töltheti be, pufferelheti, tárolhatja és dolgozhatja fel a streameket, hogy a gyakorlatban is használható elemzésekhez jusson. Az Event Hubs használ egy [particionált felhasználói modell](event-hubs-scalability.md#partitions), az adatfolyam folyamat több alkalmazás egyidejűleg engedélyezése és a feldolgozás sebessége, ami lehetővé teszi.
 
-[Rögzítés](event-hubs-capture-overview.md) a közel valós időben az adatok egy [Azure Blob storage](https://azure.microsoft.com/services/storage/blobs/) vagy [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) a hosszú távú megőrzés vagy irányuló mikrokötegelt feldolgozást. Ez a viselkedés használhat valós idejű elemzési származtatás ugyanazon streamben érheti el. Az esemény adatok rögzítése, beállítania gyors. Nincsenek a futtatáshoz felügyeleti költségek, és automatikusan átméreteződik az Event Hubs [átviteli egységek](event-hubs-features.md#throughput-units). Az Event Hubs lehetővé teszi fókusz adatfeldolgozási helyett az adatváltozások rögzítése.
+[Rögzítés](event-hubs-capture-overview.md) a közel valós időben az adatok egy [Azure Blob storage](https://azure.microsoft.com/services/storage/blobs/) vagy [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) a hosszú távú megőrzés vagy irányuló mikrokötegelt feldolgozást. Ez a viselkedés használhat valós idejű elemzési származtatás ugyanazon streamben érheti el. Az esemény adatok rögzítése, beállítania gyors. Nincsenek a futtatáshoz felügyeleti költségek, és automatikusan átméreteződik az Event Hubs [átviteli egységek](event-hubs-scalability.md#throughput-units). Az Event Hubs lehetővé teszi fókusz adatfeldolgozási helyett az adatváltozások rögzítése.
 
 Az Azure Event Hubs az [Azure Functions](/azure/azure-functions/) szolgáltatással is integrálható egy kiszolgáló nélküli architektúra keretein belül.
 

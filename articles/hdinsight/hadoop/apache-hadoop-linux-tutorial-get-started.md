@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 43eb2f6aad1b980d59b34b83547c8fc4812a763b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 8eb297c555d2d7f95419b2a9aa11a26cf5c7230f
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057536"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137470"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Gyors útmutató: Az Apache Hadoop-fürt létrehozása az Azure HDInsight használata a Resource Manager-sablon
 
@@ -59,11 +59,8 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 > [!NOTE]  
 > Egyéb Fürtlétrehozási módszerekhez és ebben a rövid útmutatóban használt tulajdonságok megértéséhez, lásd: [létre HDInsight-fürtök](../hdinsight-hadoop-provision-linux-clusters.md).
 
-## <a name="troubleshoot"></a>Hibaelhárítás
-
-Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](../hdinsight-hadoop-customize-cluster-linux.md#access-control).
-
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
 Miután végzett a gyors üzembe helyezéssel, érdemes törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket.
 
 > [!NOTE]  

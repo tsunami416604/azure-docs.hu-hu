@@ -7,12 +7,12 @@ ms.date: 02/08/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 960b8145e5f53c6c37820604fd634ccf5fd77c6b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 8b340eeaaae41815482f4dfed4168dfd8367aba9
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60876239"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67143911"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Az Azure-tervek szolgáltatás áttekintése
 
@@ -109,7 +109,7 @@ Tervek hozzárendeléséhez vagy a hozzárendelés megszüntetéséhez a fiókna
 A fenti engedélyek mindegyikének birtokában szerepelnek a **tulajdonosa** szerepkör. A **közreműködői** szerepkör rendelkezik tervezet és törlési tervezet engedélyek létrehozása, de nem rendelkezik a tervezet-hozzárendelési engedélyt. Ha ezek a beépített szerepkörök nem felelnek meg a biztonsági követelményeinek, létrehozhat [egyéni szerepköröket](../../role-based-access-control/custom-roles.md).
 
 > [!NOTE]
-> Az Azure Blueprints-tervek szolgáltatásnevének **Tulajdonos** szerepkörrel kell rendelkeznie a hozzárendelt előfizetésen ahhoz, hogy az üzembe helyezés engedélyezett legyen. A portál használata esetén ezt a szerepkört a rendszer automatikusan biztosítja és visszavonja az üzembe helyezéshez. A REST API használata esetén a szerepkört manuálisan kell biztosítani, de az üzembe helyezés befejeződése a rendszer szintén automatikusan visszavonja.
+> Ha egy rendszer által hozzárendelt felügyelt identitás, az egyszerű szolgáltatás Azure tervrajz igényel a **tulajdonosa** annak érdekében, hogy a központi telepítés engedélyezése a hozzárendelt előfizetés szerepkört. A portál használata esetén ezt a szerepkört a rendszer automatikusan biztosítja és visszavonja az üzembe helyezéshez. A REST API használata esetén a szerepkört manuálisan kell biztosítani, de az üzembe helyezés befejeződése a rendszer szintén automatikusan visszavonja. Ha egy felhasználó által hozzárendelt felügyelt identitás, csak a tervezet-hozzárendelés létrehozása a felhasználónak **tulajdonosa** engedélyeket.
 
 ## <a name="video-overview"></a>Áttekintő videó
 

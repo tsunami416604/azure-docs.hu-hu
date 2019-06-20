@@ -15,16 +15,16 @@ ms.topic: overview
 ms.date: 01/04/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a3ff9b6fc1abf36bf2feddf518e4e920f18a3c23
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 5ce8abd08f82a2a8b69cc996bfd8f7f060bb8c23
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60835345"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205034"
 ---
 # <a name="app-service-overview"></a>App Service – áttekintés
 
-*Az Azure App Service* egy szolgáltatás REST API-k, a webalkalmazások üzemeltetéséhez és mobilháttereket. Kedvenc nyelvén fejleszthet, legyen az .NET, .NET Core, Java, Ruby, Node.js, PHP, vagy Python. Alkalmazások futnak, és a Windows és Linux-alapú környezetekben is méretezheti. Linux-alapú környezetek esetén lásd: [App Service Linux rendszeren](containers/app-service-linux-intro.md). 
+*Az Azure App Service* mobil háttérrendszer és a egy HTTP-alapú szolgáltatás REST API-k, a webalkalmazások üzemeltetéséhez. Kedvenc nyelvén fejleszthet, legyen az .NET, .NET Core, Java, Ruby, Node.js, PHP, vagy Python. Alkalmazások futnak, és a Windows és Linux-alapú környezetekben is méretezheti. Linux-alapú környezetek esetén lásd: [App Service Linux rendszeren](containers/app-service-linux-intro.md). 
 
 App Service-ben nem csak az a Microsoft Azure ad hozzá az alkalmazásokhoz, például a biztonsági, terheléselosztási, automatikus skálázást, és automatikus kezelés. DevOps-képességeket is biztosít, mint például a folyamatos üzembe helyezés az Azure DevOpsból, a GitHubról, a Docker Hubról és más forrásokból, a csomagkezelés, az átmeneti környezetek, az egyéni tartomány és az SSL-tanúsítványok. 
 

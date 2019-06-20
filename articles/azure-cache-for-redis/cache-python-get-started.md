@@ -15,17 +15,17 @@ ms.workload: tbd
 ms.date: 05/11/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: f8189b5a90f7e9114ec39a874cc60912ac2bb0ce
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: a0ca2adebe662c72eb476e800e17092ddbba34a0
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872995"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275610"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Gyors útmutató: Az Azure Cache használata pythonnal Redis
 
 
-## <a name="introduction"></a>Bemutatás
+## <a name="introduction"></a>Bevezetés
 
 Ez a rövid útmutató bemutatja, hogyan csatlakozhat egy Azure Cache redis az olvasási és írási gyorsítótár a Python használatával. 
 
@@ -66,6 +66,9 @@ True
 >>> r.get('foo')
 b'bar'
 ```
+
+> [!IMPORTANT]
+> A Redis verzió 3.0-s vagy újabb verziója szükséges, az SSL-tanúsítvány-ellenőrzés van érvényben. ssl_ca_certs explicit módon kell állítani a Redis való csatlakozáskor. RH Linux esetén ssl_ca_certs megtalálható a "/ etc/pki/tls/certs/ca-bundle.crt" tanúsítvány modul.
 
 ## <a name="create-a-python-script"></a>Python-szkript létrehozása
 

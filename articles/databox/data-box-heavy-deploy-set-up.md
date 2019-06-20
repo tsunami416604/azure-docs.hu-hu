@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 05/24/2019
+ms.date: 06/19/2019
 ms.author: alkohli
-ms.openlocfilehash: f2f6b544b56977b3f1bfb6a4fb46a9f1e3bcc294
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: d4cdc9b6c31c62080fed5a8528577fef72c01c3f
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427940"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67271706"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box-heavy-preview"></a>Oktatóanyag: Kábelek, és csatlakozzon az Azure Data Box (nagy erőforrásigényű) (előzetes verzió)
 
@@ -79,7 +79,7 @@ Az alábbi lépéseket az eszköz bekábelezése.
 Az eszköz a csomópontok egyikén a következő lépésekkel, a hálózati kábel.
 
 1. A CAT 6 RJ-45 hálózati kábellel (a képen látható kék színű kábel) használatával csatlakoztassa a gazdaszámítógépet az 1-GB/s sebességű felügyeleti porthoz.
-2. A Twinax QSFP + rézeres kábellel (a kép fekete kábel) használatával legalább egy 40 Gbps (1 GB/s felett preferált) adatátvitelre szolgáló hálózati adaptert. Ha a 10-GB/s kapcsoló használata a Twinax SFP + rézeres kábellel egy QSFP + SFP + adapter (DSS foglalt követelményeknek adapter) való csatlakozáshoz a 40 GB/s hálózati adapter adatok.
+2. QSFP + kábel (fiber vagy réz) használatával legalább egy 40 Gbps (1 GB/s felett preferált) adatátvitelre szolgáló hálózati adaptert. Ha 10-GB/s kapcsoló használatával használatával SFP + kábel egy QSFP + SFP + adapter (DSS foglalt követelményeknek adapter) adatokat a 40 GB/s sebességű hálózati adaptert.
 
     ![Data Box – nehéz portok bekábelezte](media/data-box-heavy-deploy-set-up/data-box-heavy-ports-cabled.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Mi az az Azure saját DNS?
+title: Mi az Azure Private DNS?
 description: Az üzemeltetési szolgáltatás a Microsoft Azure saját DNS áttekintése.
 services: dns
 author: vhorne
@@ -7,14 +7,14 @@ ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
 ms.author: victorh
-ms.openlocfilehash: a8548b4972d5853f09630ae3e9ded05ed6fee32b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 7012bbe98e41a3eb273b26e7e4ade705a6eaf8e1
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076395"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147571"
 ---
-# <a name="what-is-azure-private-dns"></a>Mi az az Azure saját DNS?
+# <a name="what-is-azure-private-dns"></a>Mi az Azure Private DNS?
 
 > [!IMPORTANT]
 > Privát Azure DNS jelenleg nyilvános előzetes verzióban érhető el.
@@ -64,21 +64,11 @@ Az Azure DNS az alábbi képességeket biztosítja:
 
 Az Azure DNS a következő korlátozások vonatkoznak:
 
-* A regisztráció csak egy virtuális hálózat privát zónánként engedélyezett.
-* Legfeljebb 10 feloldási virtuális hálózatok privát zónánként engedélyezett. Ez a korlátozás a rendszer eltávolítja, ha ez a funkció általánosan elérhető.
-* Egy adott virtuális hálózaton egy regisztrációs virtuális hálózatként kapcsolhatók ki csak egy privát zónához.
-* Egy adott virtuális hálózati feloldási virtuális hálózatként legfeljebb 10 privát zónák kapcsolható ki. Ez a korlátozás a rendszer eltávolítja, ha ez a funkció általánosan elérhető.
-* Ha megad egy regisztrációs virtuális hálózatnak, a virtuális gépek a kiválasztott virtuális hálózatban, amelyek a saját zóna a DNS-rekordok nincsenek megtekinthető vagy nem olvasható be az Azure Powershell és az Azure CLI API-k. A virtuális gép rekordok valóban regisztrálva van, és feloldja sikeresen megtörtént.
-* Fordított DNS működését csak a privát IP-címteret a regisztrációs virtuális hálózatban.
-* Fordított DNS egy magánhálózati IP-címet, amely nincs regisztrálva a (például egy virtuális hálózatot, amely kapcsolódik a feloldási virtuális hálózatot, egy privát zónához a virtuális gép magánhálózati IP-cím) a saját zóna visszaadja *internal.cloudapp.net* a DNS-utótagként. Azonban ennek az utótagnak nem oldható fel.
-* A virtuális hálózat teljesen üresnek kell lennie az első alkalommal kapcsolja össze a saját zóna regisztrációs vagy feloldási virtuális hálózatként. Azonban a virtuális hálózat majd lehet nem üres jövőbeli kapcsolásának egy regisztrációs vagy feloldási virtuális hálózattal, az egyéb privát zónák.
-* Feltételes továbbítás (például a megoldás az Azure és a rendszert hálózatok közötti engedélyezése) jelenleg nem támogatott. Hogyan ügyfelek is valósíthat meg ebben a forgatókönyvben más mechanizmusok használatával kapcsolatos információkért lásd: [névfeloldás virtuális gépek és szerepkörpéldányok](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+* Egy adott virtuális hálózati kapcsolhatók csak egy privát zónához, mint ha a virtuális gép DNS-rekordok automatikus regisztráció engedélyezve van. Több virtuális hálózat azonban csatolása egyetlen DNS-zónát.
 * Fordított DNS csak működik a társított virtuális hálózat privát IP-címtér
 * Fordított DNS, a társított virtuális hálózati magánhálózati IP-cím a virtuális gép alapértelmezett utótagját "internal.cloudapp.net" értéket ad vissza. Virtual Network hálózatokhoz használható, amely automatikus regisztrációnak engedélyezve van a privát zónához van csatolva, fordított DNS egy magánhálózati IP-címet visszaadja 2 teljes tartományneveket, egy alapértelmezett utótag *internal.cloudapp.net* és a egy másik, a privát zónák utótagot.
-* Feltételes továbbítás nem támogatott. Ha például ahhoz, hogy a megoldás az Azure és helyszíni hálózat között. Ismerje meg, hogyan tehető lehetővé, ez a forgatókönyv más mechanizmusok használatával. Lásd: [névfeloldás virtuális gépek és szerepkörpéldányok](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
+* Feltételes továbbítás natív módon nem támogatott abban a pillanatban. Ahhoz, hogy a megoldás az Azure és helyszíni hálózat között. Lásd: [névfeloldás virtuális gépek és szerepkörpéldányok](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
  
-
-
 ## <a name="pricing"></a>Díjszabás
 
 Díjszabási információkért tekintse meg a [Azure DNS díjszabási](https://azure.microsoft.com/pricing/details/dns/).

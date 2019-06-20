@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 05/24/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 450e3b0a25f4be90aea26adfd4c35efc3077af57
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e216503cac2db55115bd4c1b5bf0e2f6e50355fc
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071391"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190857"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Az Azure Blob Storage bemutatása
 
@@ -56,7 +56,7 @@ Az Azure Storage háromféle blobot támogatja:
 
 * **Blokkblobok** legfeljebb nagyjából 4,7 TB szöveges és bináris adatok tárolására. A blokkblobok önállóan felügyelhető adatblokkokból állnak.
 * **Hozzáfűző blobok** blokkokból épülnek fel, mint a blokkblobok használatát támogatják, de vannak optimalizálva műveletek hozzáfűzésére. A hozzáfűző blobok ideálisak például a virtuális gépek adatainak naplózásához és hasonló forgatókönyvekhez.
-* **Lapblobok** store véletlenszerű elérésű fájlok tárolhatók legfeljebb 8 TB méretű. A lapblobok a virtuális merevlemez (VHD) fájlok állnak az Azure-beli virtuális gépek lemezeinek tárolóban. A lapblobok kapcsolatos további információkért lásd: [áttekintése az Azure-lapblobokkal](storage-blob-pageblob-overview.md)
+* **Lapblobok** store véletlenszerű elérésű fájlok tárolhatók legfeljebb 8 TB méretű. A lapblobok virtuális merevlemez (VHD) fájlok tárolására és állnak az Azure-beli virtuális gépek lemezeinek. A lapblobok kapcsolatos további információkért lásd: [áttekintése az Azure-lapblobokkal](storage-blob-pageblob-overview.md)
 
 Blobok különböző típusaival kapcsolatos további információkért lásd: [Understanding Block Blobs, hozzáfűző blobokat és Lapblobokat](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
 

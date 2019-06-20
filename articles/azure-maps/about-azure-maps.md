@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 8092cd169f93a6815e52517d805941ac7ddcbbc0
-ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+ms.openlocfilehash: 2368d097cc0bfe82d0b869c3c8eb48760cc41616
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66807510"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275107"
 ---
 # <a name="what-is-azure-maps"></a>Mi az Azure Maps?
 
-Az Azure Maps gyűjteménye, térinformatikai szolgáltatások rögzítetlen által elérhető pontos földrajzi kontextusának biztosításához a webes és mobil alkalmazások a legfrissebb társítási adatok törlése. Renderelési REST API-k áll az Azure Maps **Maps** több stílusok és szatellit képanyag, **keresésével** címek, helyek és hasznos helyek szerte a világon; **Útválasztás** point-to-point, multipoint, multipoint optimalizálás, isochrone, kereskedelmi járművek, befolyásolják a forgalom és mátrix útválasztás; iparágvezető forgalmat, és események megtekintése **Mobilitási** nyilvános átvitel során, bikeshare, scooter megosztás és autó igénylő szolgáltatások információikat megtervezhetik az útvonalakat, kihasználva a szállítás és a valós idejű adatok alternatív módja; létrehozó felhasználó helye keresztül **Földrajzi hely meghatározásának**; és helyre való konvertálást **időzónák**, valamint beolvasása idő egy helyen. Az Azure Maps továbbá lehetővé teszi a szolgáltatások **Geokerítések**, térkép **adatok** helyadatokhoz, az Azure-ban; üzemeltető - tárolót és **térbeli Operations** helyére térinformatikai elemzés révén intelligencia. Azure Maps-szolgáltatások érhetők el közvetlenül a REST API-ként vagy keresztül vagy a robusztus **Web SDK** vagy **Android SDK**. Ezek az eszközök lehetővé teszik a fejlesztők gyorsan üzembe helyezheti és méretezzen olyan megoldásokat, amelyek az Azure-felhőben az Azure megoldásokba. Regisztráljon az ingyenes [Azure Maps-fiók](https://azure.microsoft.com/services/azure-maps/) ma és a kezdő fejlesztésének!
+Az Azure Maps olyan térinformatikai szolgáltatások alapulniuk elérhető pontos földrajzi kontextusának biztosításához a webes és mobil alkalmazások a legfrissebb társítási adatok gyűjteménye. Renderelési REST API-k áll az Azure Maps **Maps** több stílusok és szatellit képanyag, **keresésével** címek, helyek és hasznos helyek szerte a világon; **Útválasztás** point-to-point, multipoint, multipoint optimalizálás, isochrone, kereskedelmi járművek, befolyásolják a forgalom és mátrix útválasztás; iparágvezető forgalmat, és események megtekintése **Mobilitási** nyilvános átvitel során, bikeshare, scooter megosztás és autó igénylő szolgáltatások információikat megtervezhetik az útvonalakat, kihasználva a szállítás és a valós idejű adatok alternatív módja; létrehozó felhasználó helye keresztül **Földrajzi hely meghatározásának**; és helyre való konvertálást **időzónák**, valamint beolvasása idő egy helyen. Az Azure Maps továbbá lehetővé teszi a szolgáltatások **Geokerítések**, térkép **adatok** helyadatokhoz, az Azure-ban; üzemeltető - tárolót és **térbeli Operations** helyére térinformatikai elemzés révén intelligencia. Azure Maps-szolgáltatások érhetők el közvetlenül a REST API-ként vagy keresztül vagy a robusztus **Web SDK** vagy **Android SDK**. Ezek az eszközök lehetővé teszik a fejlesztők gyorsan üzembe helyezheti és méretezzen olyan megoldásokat, amelyek az Azure-felhőben az Azure megoldásokba. Regisztráljon az ingyenes [Azure Maps-fiók](https://azure.microsoft.com/services/azure-maps/) ma és a kezdő fejlesztésének!
 
 A következő videó részletesen bemutatja az Azure Mapset:
 
@@ -151,12 +151,12 @@ Győződjön meg arról, hogy az aktuális IP-címe helye nem a nem támogatott 
 
 ## <a name="next-steps"></a>További lépések
 
-További információk az Azure Maps új szolgáltatásairól:
-
-> [!div class="nextstepaction"]
-> [Útvonalmátrix, izokrón térképek, IP-keresés és további szolgáltatások](https://azure.microsoft.com/blog/route-matrix-isochrones-ip-lookup-and-more-added-to-azure-maps/)
-
 Próbálja ki az Azure Maps kipróbálunk egy mintaalkalmazást:
 
 > [!div class="nextstepaction"]
 > [Rövid útmutató: Webes alkalmazás létrehozása](quick-demo-map-app.md)
+
+Maradjon naprakész az Azure Maps szolgáltatásban: 
+
+> [!div class="nextstepaction"]
+> [Azure Maps-blog](https://azure.microsoft.com/blog/topics/azure-maps/)

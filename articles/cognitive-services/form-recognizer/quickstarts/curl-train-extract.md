@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: aed18cd33078d6af65e749cf9dd4950087b6b72c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9b5f3b77e3af719d0e3b37ac196b1691ce659e5e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063898"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67271433"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Gyors útmutató: Űrlap felismerő modellek betanítása és űrlap adatokat nyerhet ki a REST API-val a curl használatával
 
@@ -36,7 +36,7 @@ Használja az űrlap felismerő hozzáférést kapnak, amikor kap egy üdvözlő
 |--|--|
 | **Name (Név)** | Az erőforrás egy leíró nevet. Azt javasoljuk egy leíró nevet, például *MyNameFormRecognizer*. |
 | **Előfizetés** | Válassza ki az Azure-előfizetést, amelynek hozzáférési engedélyt kapott. |
-| **Hely** | A cognitive Services-példány helye. Különböző helyeken a késés bevezetni, de semmilyen hatást nem futásidejű rendelkezésre állását az erőforrást. |
+| **Location** | A cognitive Services-példány helye. Különböző helyeken a késés bevezetni, de semmilyen hatást nem futásidejű rendelkezésre állását az erőforrást. |
 | **Tarifacsomag** | Az erőforrás költségének, válassza ki a tarifacsomagot, és a használat függ. További információkért tekintse meg az API-t [díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/).
 | **Erőforráscsoport** | A [Azure-erőforráscsoport](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access#what-is-an-azure-resource-group) , amely tartalmazza az erőforrás. Hozzon létre egy új csoportot, vagy adja hozzá egy meglévő csoportot. |
 
@@ -63,40 +63,59 @@ Kapni fog egy `200 (Success)` válasz a következő JSON-kimenetet:
 
 ```json
 {
-  "modelId": "59e2185e-ab80-4640-aebc-f3653442617b",
-  "trainingDocuments": [
-    {
-      "documentName": "Invoice_1.pdf",
-      "pages": 1,
-      "errors": [],
-      "status": "success"
-    },
-    {
-      "documentName": "Invoice_2.pdf",
-      "pages": 1,
-      "errors": [],
-      "status": "success"
-    },
-    {
-      "documentName": "Invoice_3.pdf",
-      "pages": 1,
-      "errors": [],
-      "status": "success"
-    },
-    {
-      "documentName": "Invoice_4.pdf",
-      "pages": 1,
-      "errors": [],
-      "status": "success"
-    },
-    {
-      "documentName": "Invoice_5.pdf",
-      "pages": 1,
-      "errors": [],
-      "status": "success"
+  "parameters": {
+    "Endpoint": "{Endpoint}",
+    "Content-Type": "application/json",
+    "Ocp-Apim-Subscription-Key": "{API key}",
+    "body": {},
+    "trainRequest": {
+      "source": "/input/data",
+      "sourceFilter": {
+        "prefix": "",
+        "includeSubFolders": false
+      }
     }
-  ],
-  "errors": []
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "modelId": "ad1901b6-ddaa-4249-8938-3f03f65cc893",
+        "trainingDocuments": [
+          {
+            "documentName": "0.pdf",
+            "pages": 1,
+            "errors": [],
+            "status": "success"
+          },
+          {
+            "documentName": "1.pdf",
+            "pages": 1,
+            "errors": [],
+            "status": "success"
+          },
+          {
+            "documentName": "2.pdf",
+            "pages": 1,
+            "errors": [],
+            "status": "success"
+          },
+          {
+            "documentName": "3.pdf",
+            "pages": 1,
+            "errors": [],
+            "status": "success"
+          },
+          {
+            "documentName": "4.pdf",
+            "pages": 1,
+            "errors": [],
+            "status": "success"
+          }
+        ],
+        "errors": []
+      }
+    }
+  }
 }
 ```
 

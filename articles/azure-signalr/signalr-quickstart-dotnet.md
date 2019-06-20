@@ -7,16 +7,16 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/20/2019
 ms.author: zhshang
-ms.openlocfilehash: cda1eddc5fa40e97038274cf9b4c3c2cb9552871
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2020ee02d236ca13431adb736d9f48171d33b4f3
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154502"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147421"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>Gyors útmutató: Az ASP.NET és a SignalR Service csevegőszoba létrehozása
 
-Az Azure SignalR Service alapján [SignalR az ASP.NET Core 2.0](https://docs.microsoft.com/aspnet/core/signalr/introduction), amely **nem** 100 %-os kompatibilis az ASP.NET SignalR. Az Azure SignalR Service újra végrehajtani az ASP.NET SignalR data protokoll a legújabb ASP.NET Core technoledges alapján. Az Azure SignalR Service használata az ASP.NET SignalR, egyes ASP.NET SignalR-funkciók már nem támogatottak, például az Azure SignalR nem visszajátszani üzeneteket az ügyfelek csatlakozásakor. Emellett a végtelen keret átviteli és JSNOP nem érhetők támogatása. SignalR Service használata az ASP.NET SignalR alkalmazások néhány kódmódosítás és a függő kódtárak megfelelő verziója szükséges. 
+Az Azure SignalR Service alapján [SignalR az ASP.NET Core 2.0](https://docs.microsoft.com/aspnet/core/signalr/introduction), amely **nem** 100 %-os kompatibilis az ASP.NET SignalR. Az Azure SignalR Service újra végrehajtani a legújabb ASP.NET Core-technológiákon alapuló ASP.NET SignalR data protokoll. Az Azure SignalR Service használata az ASP.NET SignalR, egyes ASP.NET SignalR-funkciók már nem támogatottak, például az Azure SignalR nem visszajátszani üzeneteket az ügyfelek csatlakozásakor. Emellett a végtelen keret átviteli és JSNOP nem érhetők támogatása. SignalR Service használata az ASP.NET SignalR alkalmazások néhány kódmódosítás és a függő kódtárak megfelelő verziója szükséges. 
 
 Tekintse meg a [verzió különbségek doc](https://docs.microsoft.com/aspnet/core/signalr/version-differences?view=aspnetcore-2.2) ASP.NET SignalR és az ASP.NET Core SignalR összehasonlítását funkció teljes listájának.
 

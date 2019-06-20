@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 5bc326bbc16ef93d484425f26b6f8226150c77c6
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 58daa53dba8f18c3f73253008fe687ba8b0d0839
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66302427"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274070"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Oktatóanyag: Önálló Service Fabric-fürtben az alkalmazás üzembe helyezése
 
@@ -61,7 +61,7 @@ Az alkalmazás letöltése után telepítheti azt a fürtön, közvetlenül a Vi
 
 4. A Megoldáskezelőben kattintson a jobb gombbal a `Voting` alkalmazásra, és válassza a **Közzététel** lehetőséget.
 
-5. Kattintson a **Kapcsolati végpont** legördülő menüjére, és írja be a fürtben lévő egyik csomópont DNS-nevét.  Például: `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`
+5. Kattintson a **Kapcsolati végpont** legördülő menüjére, és írja be a fürtben lévő egyik csomópont DNS-nevét.  Például: `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. Vegye figyelembe, hogy az Azure-ban, egy teljesen minősített tartománynevét (FQDN) nem történik meg automatikusan, de egyszerűen [állítható be a virtuális gépek – Áttekintés oldalon.](https://docs.microsoft.com/azure/virtual-machines/linux/portal-create-fqdn)
 
 6. Nyissa meg az előnyben részesített böngészőt, és adja meg a fürt címét (a kapcsolati végpontot; ez az alkalmazás a 8080-as porton van üzembe helyezve; például: ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080).
 

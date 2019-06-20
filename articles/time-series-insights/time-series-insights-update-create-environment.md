@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 04/25/2019
+ms.date: 06/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 77b7b90b63ffebc14498183fc179b9c8ae76a722
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 824d24b97f192583a42192b3bb90eb1818e1aa18
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237847"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272989"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Oktatóanyag: Az Azure Time Series Insights – előzetes környezet beállítása
 
@@ -28,6 +28,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 * Egy megoldás gyorsító minta futtatása az adatok streamelése az Azure Time Series Insights – előzetes környezetbe.
 * Alapvető adatok elemzését, a.
 * Egy Idősorozat-modell típusa és a hierarchia definiálja, és társíthatja azt az üzemelő példányok.
+
+>[!TIP]
+> [IoT-megoldásgyorsítók](https://www.azureiotsolutions.com/Accelerators) nagyvállalati szintű, előre konfigurált megoldások, amelyek használatával gyorsíthatja fel az egyéni IoT-megoldások fejlesztését.
 
 ## <a name="create-a-device-simulation"></a>Eszközszimuláció létrehozása
 
@@ -43,58 +46,18 @@ Ebben a szakaszban három szimulált eszközök, amelyek adatokat küldenek az A
 
     | Paraméter | Műveletek |
     | --- | --- |
-    | **Megoldás neve** | Adja meg egy egyedi értéket egy új erőforráscsoportot. A felsorolt Azure-erőforrások létrejönnek, és hozzá lesznek rendelve az erőforráscsoporthoz. |
-    | **Előfizetés** | Válassza ki az előfizetést, amelyhez a Time Series Insights-környezet létrehozásához használt. |
-    | **Régió** | Válassza ki a régiót, amelyben a Time Series Insights-környezet létrehozásához használt. |
-    | **Választható Azure-erőforrások üzembe helyezése** | Hagyja a **az IoT Hub** jelölőnégyzet be van jelölve. A szimulált eszközök az IoT Hub használatával csatlakozhat, és adatokat. |
+    | **Üzemelő példány neve** | Adja meg egy egyedi értéket egy új erőforráscsoportot. A felsorolt Azure-erőforrások létrejönnek, és hozzá lesznek rendelve az erőforráscsoporthoz. |
+    | **Azure-előfizetés** | Válassza ki az előfizetést, amelyhez a Time Series Insights-környezet létrehozásához használt. |
+    | **Azure-beli helyre** | Válassza ki a régiót, amelyben a Time Series Insights-környezet létrehozásához használt. |
+    | **Központi telepítési beállítások** | Válassza ki **új IoT hubot kiépítése**. |
  
-    Válassza ki **megoldás létrehozása**. Várjon 10 – 15 perc, a megoldás a telepítésre.
+    Válassza ki **megoldás létrehozása**. A megoldás telepítésének befejezéséhez akár 20 percig is eltarthat.
 
     [![Eszközszimuláció megoldás lap létrehozása](media/v2-update-provision/device-two-create.png)](media/v2-update-provision/device-two-create.png#lightbox)
 
-1. A megoldás gyorsító irányítópultján, válassza ki a **indítsa el a**:
-
-    [![Az eszköz szimulálása megoldás indítása](media/v2-update-provision/device-three-launch.png)](media/v2-update-provision/device-three-launch.png#lightbox)
-
-1. A program átirányítja a **a Microsoft Azure IoT-eszköz szimulálása** lapot. Az oldal jobb felső sarkában válassza **új szimuláció**.
-
-    [![Az Azure IoT-szimuláció lap](media/v2-update-provision/device-four-iot-sim-page.png)](media/v2-update-provision/device-four-iot-sim-page.png#lightbox)
-
-1. Az a **szimuláció telepítő** panelen adja meg a következő paraméterekkel:
-
-    | Paraméter | Műveletek |
-    | --- | --- |
-    | **Name (Név)** | Adjon meg egy egyedi nevet szimulátort. |
-    | **Leírás** | Adjon meg definíciót. |
-    | **Szimuláció időtartama** | Állítsa be **határozatlan idejű futásra**. |
-    | **Eszközmodell** | **Név**: Adja meg **hűtő**. <br />**Összeg**: Adja meg **3**. |
-    | **Cél IoT Hub** | Állítsa be **használja az előzetesen kiépített az IoT Hub**. |
-
-    [![Paraméterek beállítása](media/v2-update-provision/device-five-params.png)](media/v2-update-provision/device-five-params.png#lightbox)
-
-    Válassza ki **szimuláció indítása**.
-
-    Az eszköz szimulálása irányítópultján, vegye figyelembe a látható információk **aktív eszközök** és **üzenetek / másodperc**.
-
-    [![Az Azure IoT-szimuláció irányítópult](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
-
-## <a name="list-device-simulation-properties"></a>Lista eszköz szimulálása tulajdonságai
-
-Létrehoz egy Azure Time Series Insights-környezetet, mielőtt szüksége az IoT hub, az előfizetés és az erőforráscsoport nevét.
-
-1. Nyissa meg a megoldás gyorsító irányítópultján. Azure-előfizetés ugyanazzal a fiókkal jelentkezzen be. Az eszközszimuláció, amelyet az előző szakaszban található.
-
-1. A készülékszimulátort, majd válassza ki és **indítsa el a**. Az eszköz szimulátor megoldás gyorsító ablaktábláján a jobb oldalon, válassza ki a **Azure felügyeleti portálján** lehetőséget.
-
-    [![Simulátor listaelemek](media/v2-update-provision/device-six-listings.png)](media/v2-update-provision/device-six-listings.png#lightbox)
-
-1. Megjegyzés: az IoT hub, az előfizetés és erőforrás-csoport nevét.
-
-    [![Az Azure portal eszköz szimulátor irányítópult részletei](media/v2-update-provision/device-eight-portal.png)](media/v2-update-provision/device-eight-portal.png#lightbox)
-
 ## <a name="create-a-time-series-insights-preview-payg-environment"></a>Egy Time Series Insights előzetes PAYG környezet létrehozása
 
-Ez a szakasz ismerteti, hogyan hozhat létre az Azure Time Series Insights – előzetes környezet használatával a [az Azure portal](https://portal.azure.com/).
+Ez a szakasz ismerteti, hogyan hozhat létre Azure Time Series Insights – előzetes környezet, és csatlakoztassa az IoT hub, IoT-Megoldásgyorsítók használatával létrehozott a [az Azure portal](https://portal.azure.com/).
 
 1. Jelentkezzen be az Azure Portalra az előfizetéses fiókba.
 
@@ -109,7 +72,7 @@ Ez a szakasz ismerteti, hogyan hozhat létre az Azure Time Series Insights – e
     | **Környezet neve** | Adja meg az Azure Time Series Insights – előzetes környezet egyedi nevét. |
     | **Előfizetés** | Adja meg az előfizetést, ahol szeretné létrehozni az Azure Time Series Insights – előzetes környezet. Ajánlott eljárás, hogy ugyanahhoz az előfizetéshez, az IoT-erőforrásokat a készülékszimulátort által létrehozott többi részétől. |
     | **Erőforráscsoport** | Válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot, az Azure Time Series Insights – előzetes környezet erőforrás. Az erőforráscsoport az Azure-erőforrások tárolója. Ajánlott eljárás, hogy ugyanazt az erőforráscsoportot, a többi IoT erőforrást a készülékszimulátort által létrehozott. |
-    | **Hely** | Válassza ki az Azure Time Series Insights – előzetes környezet egy adatközpont-régiót. Hozzáadott sávszélességgel kapcsolatos költségek és a késés elkerülése érdekében érdemes az Azure Time Series Insights – előzetes környezet létrehozásához és az egyéb IoT-erőforrások ugyanabban a régióban található. |
+    | **Location** | Válassza ki az Azure Time Series Insights – előzetes környezet egy adatközpont-régiót. További késleltetés elkerülése érdekében érdemes az Azure Time Series Insights – előzetes környezet létrehozásához és az egyéb IoT-erőforrások ugyanabban a régióban található. |
     | **Tier** |  Válassza ki **PAYG** (*utólagos elszámolású*). Ez a Termékváltozat az Azure Time Series Insights előzetes verziója a termékhez. |
     | **Tulajdonságazonosító** | Adjon meg egy értéket, amely egyedileg azonosítja a time series példány. Az érték azt adja meg a **Tulajdonságazonosító** mező nem módosítható. Később nem módosítható. A jelen oktatóanyag esetében írja be a **iothub-kapcsolat-eszközazonosító**. A Time Series azonosító kapcsolatos további információkért lásd: [ajánlott eljárások a Time Series ID kiválasztására vonatkozó](./time-series-insights-update-how-to-id.md). |
     | **Tárfiók neve** | Adjon meg egy új tárfiókot hozzon létre egy globálisan egyedi nevet. |
@@ -129,7 +92,7 @@ Ez a szakasz ismerteti, hogyan hozhat létre az Azure Time Series Insights – e
    | **Előfizetés** | Válassza ki az előfizetést, amelyhez az eszköz szimulátort használ. |
    | **Az IoT Hub nevét** | Válassza ki az IoT hub nevére, a készülékszimulátort létrehozott. |
    | **Az IoT Hub-hozzáférési házirend** | Válassza ki **iothubowner**. |
-   | **Az IOT Hub fogyasztói csoport** | Válassza ki **új**, adjon meg egy egyedi nevet, és válassza **Hozzáadás**. A fogyasztói csoportot az Azure Time Series Insights – előzetes egyedi értéknek kell lennie. |
+   | **Az IoT Hub fogyasztói csoport** | Válassza ki **új**, adjon meg egy egyedi nevet, és válassza **Hozzáadás**. A fogyasztói csoportot az Azure Time Series Insights – előzetes egyedi értéknek kell lennie. |
    | **Időbélyeg-tulajdonság** | Ez az érték azonosítására szolgál a **időbélyeg** a bejövő telemetria-adatok a tulajdonság. Ebben az oktatóanyagban hagyja üresen ezt a jelölőnégyzetet. A szimulátor használja az IoT hubról, alapértelmezett beállítása a Time Series Insights bejövő időbélyeg. |
 
    Válassza az **Áttekintés + létrehozás** lehetőséget.
@@ -159,6 +122,34 @@ Ez a szakasz ismerteti, hogyan hozhat létre az Azure Time Series Insights – e
       [![Listán szereplő hitelesítő adatok](media/v2-update-provision/payg-ten-verify.png)](media/v2-update-provision/payg-ten-verify.png#lightbox)
 
    Ha nem jelenik meg a hitelesítő adatait, engedélyt kell saját kezűleg a környezet eléréséhez. További információt az engedélyek beállításáról, olvassa el [adathozzáférés](./time-series-insights-data-access.md).
+
+## <a name="stream-data-into-your-environment"></a>Stream data környezetébe
+
+1. Lépjen vissza a [Azure IoT-megoldás megoldásgyorsítók lapja](https://www.azureiotsolutions.com/Accelerators). Keresse meg a megoldás a megoldás gyorsító irányítópultján. Ezután válassza ki **indítsa el a**:
+
+    [![Az eszköz szimulálása megoldás indítása](media/v2-update-provision/device-three-launch.png)](media/v2-update-provision/device-three-launch.png#lightbox)
+
+1. A program átirányítja a **a Microsoft Azure IoT-eszköz szimulálása** lapot. Az oldal jobb felső sarkában válassza **új szimuláció**.
+
+    [![Az Azure IoT-szimuláció lap](media/v2-update-provision/device-four-iot-sim-page.png)](media/v2-update-provision/device-four-iot-sim-page.png#lightbox)
+
+1. Az a **szimuláció telepítő** panelen adja meg a következő paraméterekkel:
+
+    | Paraméter | Műveletek |
+    | --- | --- |
+    | **Name (Név)** | Adjon meg egy egyedi nevet szimulátort. |
+    | **Leírás** | Adjon meg definíciót. |
+    | **Szimuláció időtartama** | Állítsa be **határozatlan idejű futásra**. |
+    | **Eszközmodell** | **Név**: Adja meg **hűtő**. <br />**Összeg**: Adja meg **3**. |
+    | **Cél IoT Hub** | Állítsa be **használja az előzetesen kiépített az IoT Hub**. |
+
+    [![Paraméterek beállítása](media/v2-update-provision/device-five-params.png)](media/v2-update-provision/device-five-params.png#lightbox)
+
+    Válassza ki **szimuláció indítása**.
+
+    Az eszköz szimulálása irányítópultján, vegye figyelembe a látható információk **aktív eszközök** és **üzenetek / másodperc**.
+
+    [![Az Azure IoT-szimuláció irányítópult](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
 
 ## <a name="analyze-data-in-your-environment"></a>A környezetben lévő adatok elemzése
 

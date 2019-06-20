@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Services v3 élő Stream .NET használatával |} A Microsoft Docs
-description: Ez az útmutató lépésről lépésre ismerteti, hogyan streamelhet élő tartalmakat a .NET Core-keretrendszert használó Media Services 3-as verziójával.
+title: Az Azure Media Services v3 élő Stream |} A Microsoft Docs
+description: Ez az oktatóanyag végigvezeti a lépéseken, élő adások online közvetítése a Media Services v3.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,19 +14,19 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 8bac9b178aef1ddee396d94a193d9b9262cd6fce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5028fd4179f19634b41bb46a5f6df40f36cc8e29
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67123071"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275567"
 ---
-# <a name="tutorial-stream-live-with-media-services-v3-using-net"></a>Oktatóanyag: A Media Services v3 élő Stream .NET használatával
-
-Az Azure Media Services [élő események](https://docs.microsoft.com/rest/api/media/liveevents) felelősek az élő adatfolyam-tartalmak feldolgozása. Egy élő eseményt bemeneti végpontot biztosít (betöltési URL-címe), hogy, majd adja meg az élő kódoló. Az élő esemény az élő kódoló a bemeneti élő Streamek fogad, és lehetővé teszi egy vagy több keresztül [adatfolyam-továbbítási végpontok](https://docs.microsoft.com/rest/api/media/streamingendpoints). Élő események előzetes verziójú végpont (előzetes verzió URL-cím), amellyel és ellenőrzéséhez a stream előnézetének a feldolgozás folytatása és a továbbítás előtti is biztosítanak. Ez az oktatóprogram bemutatja, hogyan hozhat létre **átmenő** típusú élő eseményt a .NET Core használatával. 
+# <a name="tutorial-stream-live-with-media-services"></a>Oktatóanyag: A Media Services élő Stream
 
 > [!NOTE]
-> Mielőtt folytatná, mindenképp tekintse át [a Media Services 3-as verziójával megvalósított élő streamelést](live-streaming-overview.md) bemutató cikket. 
+> Annak ellenére, hogy az oktatóanyag a [.NET SDK-val](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) példákat az általános lépések ugyanazok a [REST API-val](https://docs.microsoft.com/rest/api/media/liveevents), [CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest), vagy más támogatott [SDK-k](media-services-apis-overview.md#sdks) .
+
+Az Azure Media Services [élő események](https://docs.microsoft.com/rest/api/media/liveevents) felelősek az élő adatfolyam-tartalmak feldolgozása. Egy élő eseményt bemeneti végpontot biztosít (betöltési URL-címe), hogy, majd adja meg az élő kódoló. Az élő esemény az élő kódoló a bemeneti élő Streamek fogad, és lehetővé teszi egy vagy több keresztül [adatfolyam-továbbítási végpontok](https://docs.microsoft.com/rest/api/media/streamingendpoints). Élő események előzetes verziójú végpont (előzetes verzió URL-cím), amellyel és ellenőrzéséhez a stream előnézetének a feldolgozás folytatása és a továbbítás előtti is biztosítanak. Ez az oktatóprogram bemutatja, hogyan hozhat létre **átmenő** típusú élő eseményt a .NET Core használatával. 
 
 Ez az oktatóanyag a következőket mutatja be:    
 
@@ -47,6 +47,9 @@ Az oktatóanyag elvégzésének a következők a feltételei.
 - Kövesse a [hozzáférés az Azure Media Services API az Azure CLI-vel](access-api-cli-how-to.md) és menteni a hitelesítő adatokat. Az API eléréséhez használandó kell.
 - Egy kamera vagy egyéb eszköz (például laptop), amely az eseményt közvetíti.
 - Egy helyszíni élő kódoló, amely a kamera jeleit streammé alakítja, amelyek aztán továbbítódnak a Media Services élő streamszolgáltatásra. A streamnek **RTMP** vagy **Smooth Streaming** formátumúnak kell lennie.
+
+> [!TIP]
+> Mielőtt folytatná, mindenképp tekintse át [a Media Services 3-as verziójával megvalósított élő streamelést](live-streaming-overview.md) bemutató cikket. 
 
 ## <a name="download-and-configure-the-sample"></a>Töltse le és a minta konfigurálásához
 
@@ -88,7 +91,7 @@ Néhány dolgot, amelyeket érdemes az élő esemény létrehozásakor adja meg 
 * A Media Services hely 
 * Az élő esemény az adatfolyam-továbbítási protokoll (jelenleg az RTMP és Smooth Streaming protokollokat támogatottak).<br/>Az élő esemény vagy kapcsolódó Live Kimenetétől futása közben, a protokollbeállítás nem módosítható. Ha eltérő protokollok használatára van szüksége, létre kell hoznia az egyes streamprotokollokhoz külön élő esemény.  
 * IP-korlátozások a betöltési és az előnézeti címen. Megadhatja, hogy az IP-címek, amelyek jogosultak videókat az élő esemény betölteni. Az engedélyezett IP-címek köre tartalmazhat egyetlen IP-címet (például „10.0.0.1”), vagy egy IP-tartományt, amelyet egy IP-cím és egy CIDR alhálózati maszk (például„10.0.0.1/22”) vagy egy IP-cím és egy pontozott decimális alhálózati maszk (például „10.0.0.1(255.255.252.0)”) segítségével lehet megadni.<br/>Ha nem ad meg IP-címeket, és nem határoz meg szabálydefiníciót, a rendszer egyetlen IP-címet sem engedélyez. Ha az összes IP-címnek szeretne engedélyt adni, hozzon létre egy szabályt, és állítsa be a következő értéket: 0.0.0.0/0.<br/>Az IP-címeket kell lennie a következő formátumok egyikében: IpV4-cím 4 számjegyből, CIDR-címtartományt.
-* Az esemény létrehozásakor megadhatja, hogy az automatikusan induljon el. <br/>Ha autostart értéke igaz, az élő esemény létrehozása után fog elindulni. Ez azt jelenti, a számlázási elindul, amint az élő esemény startsrunning. Leállítás explicit módon kell meghívnia, további számlázási megállítani az élő esemény erőforráson. További információkért lásd: [élő esemény állapotok és számlázási](live-event-states-billing.md).
+* Az esemény létrehozásakor megadhatja, hogy az automatikusan induljon el. <br/>Ha autostart értéke igaz, az élő esemény létrehozása után fog elindulni. Ez azt jelenti, a számlázási elindul, amint az élő esemény elindult. Leállítás explicit módon kell meghívnia, további számlázási megállítani az élő esemény erőforráson. További információkért lásd: [élő esemény állapotok és számlázási](live-event-states-billing.md).
 * A bemeneti URL-címet kell prediktív állítsa a "személyes" módot. Részletes információkért lásd: [esemény élő betöltési URL-címek](live-events-outputs-concept.md#live-event-ingest-urls).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateLiveEvent)]

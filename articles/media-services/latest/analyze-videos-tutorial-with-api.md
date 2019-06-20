@@ -1,5 +1,5 @@
 ---
-title: Videók elemzése a Media Services használata a .NET-keretrendszerhez – Azure |} A Microsoft Docs
+title: Videók elemzése az Azure Media Serviceszel | Microsoft Docs
 description: Az oktatóanyag lépéseit követve megtudhatja, hogyan elemezhet videókat az Azure Media Serviceszel.
 services: media-services
 documentationcenter: ''
@@ -9,22 +9,25 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.date: 04/21/2019
+ms.date: 06/19/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ead6fdc0ade4a24d162603b9dc3749726c0d8002
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 2c26ba24f0262f7cf43f80b4f4deae464581d08d
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415647"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273889"
 ---
-# <a name="tutorial-analyze-videos-with-media-services-v3-using-net"></a>Oktatóanyag: Elemezhet videókat a Media Services v3 .NET használatával
+# <a name="tutorial-analyze-videos-with-media-services-v3"></a>Oktatóanyag: A Media Services v3 videók elemzése
+
+> [!NOTE]
+> Annak ellenére, hogy az oktatóanyag a [.NET SDK-val](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) példákat az általános lépések ugyanazok a [REST API-val](https://docs.microsoft.com/rest/api/media/liveevents), [CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest), vagy más támogatott [SDK-k](media-services-apis-overview.md#sdks) .
 
 Az oktatóanyag bemutatja, hogyan elemezhet videókat az Azure Media Serviceszel. Bizonyos esetekben szüksége lehet a rögzített video- és audiotartalmak részletesebb elemzésére. Egy vállalatnál például a vásárlói elégedettség növelése érdekében szükség lehet a beszéd szöveggé alakítására, hogy az ügyfélszolgálati beszélgetéseket kereshető katalógussá alakítsák, amelyhez indexek és irányítópultok érhetőek el. Ezt követően lekérhetik az üzleti például közös panaszok listáját, források ilyen panaszok és egyéb hasznos információkat.
 
 Ez az oktatóanyag a következőket mutatja be:    
-
+ 
 > [!div class="checklist"]
 > * A témakörben ismertetett mintaalkalmazás letöltése
 > * A megadott videót elemző kód vizsgálata

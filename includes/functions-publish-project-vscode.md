@@ -10,11 +10,11 @@ ms.date: 04/16/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: ec0425ff2188ecf1816d5f5841394c8e32f301d2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66132225"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178916"
 ---
 ## <a name="publish-the-project-to-azure"></a>A projekt közzététele az Azure-ban
 
@@ -27,7 +27,7 @@ A cikk azt feltételezi, hogy Ön új függvényalkalmazást hoz létre.
 
 1. Az a **Azure: Függvények** területen válassza ki az üzembe helyezés, a Függvényalkalmazás ikon.
 
-    ![Függvényalkalmazás beállításai](./media/functions-publish-project-vscode/function-app-publish-project.png)
+    ![A függvényalkalmazás beállításai](./media/functions-publish-project-vscode/function-app-publish-project.png)
 
 1. Ha nincs bejelentkezve, kéri **jelentkezzen be Azure**. Emellett **hozzon létre egy ingyenes Azure-fiókkal**. Sikeres bejelentkezés után a böngészőből lépjen vissza a Visual Studio Code-ot. 
 
@@ -43,9 +43,9 @@ A cikk azt feltételezi, hogy Ön új függvényalkalmazást hoz létre.
 
     Amikor lenyomja az ENTER billentyűt, a következő Azure-erőforrások jönnek létre az előfizetésben:
 
-    * **[Erőforráscsoport](../articles/azure-resource-manager/resource-group-overview.md)**: Tartalmazza az összes létrehozott Azure-erőforrások. A név alapján a függvényalkalmazás nevére.
-    * **[Storage-fiók](../articles/storage/common/storage-quickstart-create-account.md)**: Egy standard szintű tárfiókot a függvényalkalmazás neve alapján egyedi névvel jön létre.
-    * **[Szolgáltatási csomag](../articles/azure-functions/functions-scale.md)**: A használatalapú csomag a kiszolgáló nélküli függvényalkalmazás futtatásához, az USA nyugati régiójában jön létre.
+    * **[Erőforráscsoport](../articles/azure-resource-manager/resource-group-overview.md)** : Tartalmazza az összes létrehozott Azure-erőforrások. A név alapján a függvényalkalmazás nevére.
+    * **[Storage-fiók](../articles/storage/common/storage-quickstart-create-account.md)** : Egy standard szintű tárfiókot a függvényalkalmazás neve alapján egyedi névvel jön létre.
+    * **[Szolgáltatási csomag](../articles/azure-functions/functions-scale.md)** : A használatalapú csomag a kiszolgáló nélküli függvényalkalmazás futtatásához, az USA nyugati régiójában jön létre.
     * **Függvényalkalmazás**: A projekt központi telepítése, és fut, az új függvényalkalmazást.
 
     A függvényalkalmazás létrehozása és a telepítőcsomag alkalmazása után megjelenik egy értesítés. Válassza ki **nézet kimeneti** erre az értesítésre, létrehozása és üzembe helyezés eredményei megtekintése, beleértve a létrehozott Azure-erőforrások.

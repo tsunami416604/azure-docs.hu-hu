@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: e4aa5314811ceac9e1f9d1136fc8ae5557a3d71d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 1987bd348bf37c147eeb0697c88653c48f8c9136
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063255"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144217"
 ---
 # <a name="create-your-first-function-with-java-and-maven"></a>Az első függvény létrehozása a Java és Maven
 
@@ -62,8 +62,8 @@ mvn archetype:generate `
 
 ```cmd
 mvn archetype:generate ^
-    -DarchetypeGroupId=com.microsoft.azure ^
-    -DarchetypeArtifactId=azure-functions-archetype
+    "-DarchetypeGroupId=com.microsoft.azure" ^
+    "-DarchetypeArtifactId=azure-functions-archetype"
 ```
 
 A Maven kérni fogja a projekt létrehozásához szükséges értékeket. A _groupId_, _artifactId_ és _version_ értékek a [Maven elnevezési konvenciókra](https://maven.apache.org/guides/mini/guide-naming-conventions.html) vonatkozó referenciákban találhatók. Az _appName_ értékének egyedinek kell lennie az Azure-ban, ezért a Maven alapértelmezés szerint az előzőleg megadott _artifactId_ érték alapján létrehoz egy alkalmazásnevet. A _packageName_ érték meghatározza a Java-csomagot a létrehozott függvénykódhoz.

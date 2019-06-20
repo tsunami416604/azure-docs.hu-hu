@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7a9eedfe851bb8b5519d0831f47cf6787345a1f8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 80dcdd666c1067f2fc9415a663f26b82d1335d5f
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60233378"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "67135263"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>Gyors útmutató: HoloLens-alkalmazás létrehozása a C + Azure térbeli horgonyok +/ WinRT és DirectX segítségével
 
@@ -32,7 +32,7 @@ A következőket fogja megtanulni:
 
 A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
-- Olyan Windows-gépeken, <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017 +</a> telepített a **univerzális Windows Platform fejlesztési** számítási feladatok és a **Windows 10 SDK (10.0.17763.0 vagy újabb)** az összetevőt, és <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a>.
+- Olyan Windows-gépeken, <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> telepített a **univerzális Windows Platform fejlesztési** számítási feladatok és a **Windows 10 SDK (10.0.17763.0 vagy újabb)** az összetevőt, és <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a>.
 - A [ C++WinRT Visual Studio bővítmény (VSIX)](https://aka.ms/cppwinrt/vsix) a Visual Studióban telepítenie kell a a [Visual Studio-piactér](https://marketplace.visualstudio.com/).
 - HoloLens eszköz [fejlesztői mód](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) engedélyezve van. Ez a cikk a HoloLens eszköz van szükség a [Windows 2018. október 10. frissítés](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018 ) (más néven RS5). A legújabb verziót a HoloLens frissítéséhez nyissa meg a **beállítások** alkalmazást, lépjen a **frissítés és biztonság**, majd válassza a **frissítések keresése** gombra.
 - Az alkalmazás be kell állítani a **spatialPerception** funkció az AppX-jegyzékfájlban.

@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 04/11/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: a1d4af695807a6e2c5ef4ee74527083002bc6015
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ad9c50953447c1effee48eec5b0cb9f64386e6cc
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61342414"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155575"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Függvényalkalmazás létrehozása az Azure Portal használatával
 
@@ -27,7 +27,7 @@ Az Azure Function Apps az Azure App Service infrastruktúráját használja. Ez 
 
 [!INCLUDE [functions-create-function-app-portal](../../includes/functions-create-function-app-portal.md)]
 
-Ha függvényalkalmazást hoz létre, ügyeljen arra, hogy érvényes **alkalmazásnevet** adjon meg, amely csak betűket, számokat és kötőjelet tartalmazhat. Az aláhúzás (**_**) nem engedélyezett karakter.
+Ha függvényalkalmazást hoz létre, ügyeljen arra, hogy érvényes **alkalmazásnevet** adjon meg, amely csak betűket, számokat és kötőjelet tartalmazhat. Az aláhúzás ( **_** ) nem engedélyezett karakter.
 
 A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat. A tárfiók nevének egyedinek kell lennie az Azure rendszerben. 
 
@@ -52,4 +52,7 @@ További információ a tárfiókok típusairól: [Az Azure Storage szolgáltat�
 
 ## <a name="next-steps"></a>További lépések
 
-[!INCLUDE [Functions quickstart next steps](../../includes/functions-quickstart-next-steps.md)]
+Bár az Azure portal segítségével egyszerűen hozhat létre, és próbálja ki a Funkciók, javasoljuk, hogy [helyi fejlesztési](functions-develop-local.md). Függvényalkalmazás létrehozása a portálon, után továbbra is szeretné függvény hozzáadása. 
+
+> [!div class="nextstepaction"]
+> [Egy HTTP által aktivált függvény hozzáadásához](functions-create-first-azure-function.md#create-function)

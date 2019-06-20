@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: overview
-ms.date: 01/11/2019
+ms.date: 06/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: 77f8e41b2271770e49c2e5c4d1591c213eaa257d
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: da1dd68b8e155e121f26f5599207691877fbf0ca
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383418"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274164"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>Hírkeresés a Bing News Search API
 
@@ -51,7 +51,7 @@ Ha egy konkrét tartományban található híreket szeretne lekérni, használja
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
 ```
 
-Az alábbiakban az előző lekérdezésre adott válasz látható. Részeként a [használati és megjelenítési követelményeinek](../useanddisplayrequirements.md) a Bing search API-k esetében meg kell jelenítenie egyes hír a válaszban megadott sorrendben. Ha a cikk fürtözött cikkeket, jeleznie kell azt, hogy a kapcsolódó cikkek létezik, és megjeleníti őket a kérésre.
+A következő JSON-minta bemutatja az előző lekérdezést a választ. Részeként a [használati és megjelenítési követelményeinek](../useanddisplayrequirements.md) a Bing search API-k esetében meg kell jelenítenie egyes hír a válaszban megadott sorrendben. Ha a cikk fürtözött cikkeket, jeleznie kell azt, hogy a kapcsolódó cikkek létezik, és megjeleníti őket a kérésre.
 
 ```json
 {
@@ -107,7 +107,7 @@ Ha a Bing meg tudja határozni a cikk kategóriáját, a cikk tartalmazza a `cat
 
 ## <a name="get-todays-top-news"></a>Napjaink felső hírek
 
-A nap legfrissebb híreinek lekéréséhez ugyanazt a kérést kell végrehajtania, mint az általános hírek lekérésénél, azzal a különbséggel, hogy a `q` mezőt nem kell beállítania.
+Megkaphatja a mai híreket, is küldhet a kérésben általános hírek mint korábban, eközben a `q` adott Orientation paraméter.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=&mkt=en-us HTTP/1.1
@@ -119,7 +119,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-A legfrissebb hírek lekérésére adott válasz majdnem ugyanolyan, mint az általános hírek lekérésénél. A `news` válasz azonban nem tartalmazza a `totalEstimatedMatches` mezőt, mivel a találatok száma meg van határozva. A legfrissebb hírek cikkeinek száma eltérő lehet a hírciklustól függően. Ügyeljen arra, hogy megjelenítse a cikk forrását a `provider` használatával.
+Híreket első válasz megegyezik szinte beolvasása hírek általános esetében. A `news` válasz azonban nem tartalmazza a `totalEstimatedMatches` mezőt, mivel a találatok száma meg van határozva. A legfrissebb hírek cikkeinek száma eltérő lehet a hírciklustól függően. Ügyeljen arra, hogy a `provider` mezőt, a cikk attribútum.
 
 ## <a name="get-news-by-category"></a>Beolvasása Hírek kategória szerint
 

@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: Önálló Service Fabric-fürt törlése – Azure Service Fabric | Microsoft Docs'
-description: Ez az oktatóanyag ismerteti, hogyan törölheti az önálló fürtöt
+description: Ebben az oktatóanyagban elsajátíthatja, hogyan önálló fürt törlése
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -15,55 +15,62 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 67334a0e8ae3e6dcca86830cd088e6e446331aee
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 9127ad1fe148f85779913454adf6578a9a8a1055
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306713"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274095"
 ---
 # <a name="tutorial-clean-up-your-standalone-cluster"></a>Oktatóanyag: Önálló fürt törlése
 
-Az önálló Service Fabric-fürtök lehetővé teszik, hogy kiválassza a saját környezetét, és hogy a Service Fabric „bármely operációs rendszer, bármilyen felhő” módszerével hozzon létre egy fürtöt. Ebben az oktatóanyag-sorozatban egy, az AWS-en futtatott önálló fürtöt hoz létre, majd telepít rá egy alkalmazást.
+Az önálló Service Fabric-fürtök lehetővé teszik, hogy kiválassza a saját környezetét, és hogy a Service Fabric „bármely operációs rendszer, bármilyen felhő” módszerével hozzon létre egy fürtöt. Oktatóanyag-sorozat AWS vagy Azure tárolt önálló fürt létrehozása és a egy alkalmazás telepítése bele.
 
-Ez az oktatóanyag egy sorozat negyedik része. Az oktatóanyag jelen része bemutatja, hogyan törölheti a Service Fabric-fürt futtatásához létrehozott AWS-erőforrásokat.
+Ez az oktatóanyag egy sorozat negyedik része. Ez a rész az oktatóanyag bemutatja, hogyan karbantartása az AWS vagy Azure-erőforrások, amelyek a Service Fabric-fürt üzemeltetésére létrehozott.
 
 A sorozat negyedik részében az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * A Service Fabric-fürt törlése
-> * Az AWS-erőforrások törlése
+> * Az AWS vagy Azure-erőforrások törlése
 
 ## <a name="clean-up-service-fabric-cluster"></a>A Service Fabric-fürt törlése
 
-* Csatlakozzon RDP-kapcsolaton keresztül a Service Fabric telepítéséhez használt EC2-példányhoz
-* A PowerShell megnyitása
-* Lépjen a második oktatóanyagban kibontott mappába.
-* A Service Fabric-fürt eltávolításához futtassa a következő parancsot:
+1. RDP-Kapcsolatot létesíthessen a virtuális gép által használt telepítve van a Service Fabric.
+2. Nyissa meg a PowerShellt.
+3. Lépjen a második oktatóanyagban kibontott mappába.
+4. A Service Fabric-fürt eltávolításához futtassa a következő parancsot:
 
-```powershell
-.\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
-```
+  ```powershell
+  .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
+  ```
 
-* `Y` amikor a rendszer kéri. Ha a művelet sikeres, a kimenet a következőhöz hasonló (az Ön IP-címeivel):
+5. Adja meg `Y` amikor a rendszer kéri, ha sikeres volt, akkor a kimenetben a következő, a saját IP-címmel a helyettesített fog kinézni:
 
-```powershell
-Best Practices Analyzer completed successfully.
-Removing configuration from machine 172.31.21.141
-Removing configuration from machine 172.31.27.1
-Removing configuration from machine 172.31.20.163
-Configuration removed from machine 172.31.21.141
-Configuration removed from machine 172.31.27.1
-Configuration removed from machine 172.31.20.163
-The cluster is successfully removed.
-```
+  ```powershell
+  Best Practices Analyzer completed successfully.
+  Removing configuration from machine 172.31.21.141
+  Removing configuration from machine 172.31.27.1
+  Removing configuration from machine 172.31.20.163
+  Configuration removed from machine 172.31.21.141
+  Configuration removed from machine 172.31.27.1
+  Configuration removed from machine 172.31.20.163
+  The cluster is successfully removed.
+  ```
 
 ## <a name="clean-up-aws-resources"></a>Az AWS-erőforrások törlése
 
-* Jelentkezzen be az AWS-fiók
-* Lépjen az EC2 konzolra.
-* Válassza ki az oktatóanyag első részében létrehozott csomópontokat.
-* Kattintson az **Actions** (Műveletek)  >  **Instance State** (Példány állapota)  >  **Terminate** (Leállítás) elemre
+1. Jelentkezzen be az AWS-fiókjára.
+2. Lépjen az EC2 konzolra.
+3. Válassza ki az oktatóanyag első részében létrehozott csomópontokat.
+4. Kattintson a **műveletek** > **példány állapota** > **leállítása**.
+
+## <a name="clean-up-azure-resources"></a>Az Azure-erőforrások törlése
+
+1. Jelentkezzen be az Azure portálra.
+2. Nyissa meg a **virtuális gépek** szakaszban.
+3. Válassza ki a három csomóponttal, amely egy, az oktatóanyag első részében létrehozott jelölőnégyzeteit.
+4. Kattintson a **törlése**.
 
 ## <a name="next-steps"></a>További lépések
 

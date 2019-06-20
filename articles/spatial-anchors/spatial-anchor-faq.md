@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: cd004e1eb6a40648c52dd3b5aee0ec38bff8f9b3
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 73979ec3bd1d667453a186ea1f20bbeddc12db8f
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304191"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273315"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Gyakori kérdések az Azure Spatial Anchorsról
 
@@ -78,7 +78,7 @@ Az Azure térbeli horgonyok betartja a [Azure szolgáltatási szerződés felté
 Általános elérhető (GA) dátumok hamarosan fogjuk bejelenteni.
 
 **K: Van bármilyen szabályozási korlátok helyen?**
- 
+
 **A**: Igen, rendelkezünk szabályozási korlátait.  Várhatóan nem el fog érni őket az alkalmazások fejlesztéséhez és teszteléséhez. Éles környezetekben üzemelő példányok hogy vevőink nagy méretű memóriakonfigurációt készen áll. [Lépjen kapcsolatba velünk](mailto:azuremrs@microsoft.com) vitatni. Ebben a fázisban előzetes verziójának azt még nem tette közzé a rétegezést és díjszabási struktúrája, de várhatóan hamarosan ehhez.
 
 **K: Mely régiókban érhető el az Azure térbeli horgonyok?**
@@ -125,3 +125,7 @@ Ismerkedés a [fejlesztesz](index.yml).
 **K: Működik a Xamarin?**
 
 **V:** Igen. Bár a Microsoft nem biztosít egy Xamarin SDK, várhatóan a fejlesztők a térbeli horgonyok Azure Xamarin-alkalmazásokban való integráció révén az Azure térbeli horgonyok API.
+
+**K: Mi a portok és protokollok alkalmazza a térbeli horgonyok Azure?**
+
+**V:** Az Azure térbeli horgonyok egy titkosított protokoll használatával 443-as TCP-porton keresztül kommunikál. A hitelesítéshez használja [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/), amely a HTTPS protokoll használatával a 443-as porton keresztül kommunikál.

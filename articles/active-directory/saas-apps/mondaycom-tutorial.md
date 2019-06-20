@@ -5,7 +5,7 @@ services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: barbkess
+ms.reviewer: celested
 ms.assetid: 9e8ad807-0664-4e31-91de-731097c768e2
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -13,227 +13,188 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/15/2019
+ms.date: 06/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08108a1718ee917a317b4864de81959ae139eaa5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4cdc605c059857c826056fece782bbb9a9c86a15
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67097016"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275811"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mondaycom"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező monday.com
+# <a name="tutorial-integrate-mondaycom-with-azure-active-directory"></a>Oktatóanyag: Monday.com integrálása az Azure Active Directoryval
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan monday.com integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja a monday.com integrálása az Azure Active Directory (Azure AD) lesz. Monday.com integrálása az Azure ad-vel, akkor a következőket teheti:
 
-Monday.com integrálása az Azure AD kínál fel a következő előnyökkel jár:
+* Szabályozza, ki férhet hozzá monday.com Azure AD-ben.
+* Engedélyezze a felhasználóknak, hogy lehet automatikusan bejelentkezve az Azure AD-fiókjukat monday.com.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-* Az Azure AD, hogy ki férhet hozzá monday.com is használhatja.
-* Felhasználók is automatikusan bejelentkeznie az Azure ad-ben fiókjukkal (egyszeri bejelentkezés) monday.com.
-* A fiókok egyetlen központi helyen, az Azure Portalon kezelheti.
-
-Az Azure ad-vel szoftverként (saas biztosított) alkalmazás integrációja szoftverrel kapcsolatos további információkért lásd: [egyszeri bejelentkezés alkalmazásokhoz az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Monday.com az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Első lépésként szüksége van a következő elemek:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik Azure AD előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) megkezdése előtt.
-* Az egyszeri bejelentkezés engedélyezve monday.com előfizetés.
+* Az Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, hozzájuthat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+* Monday.com egyszeri bejelentkezés (SSO) engedélyezve van az előfizetésben.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálni és a egy tesztkörnyezetben az Azure AD egyszeri bejelentkezés tesztelése és monday.com integrálása az Azure ad-ben.
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD SSO-t egy tesztkörnyezetben. Monday.com támogatja **SP és IDP** által kezdeményezett egyszeri Bejelentkezést, és támogatja a **igény szerinti** felhasználóátadást készíthet elő.
 
-Monday.com támogatja a következő funkciókat:
+## <a name="adding-mondaycom-from-the-gallery"></a>Monday.com hozzáadása a katalógusból
 
-* **SP által kezdeményezett egyszeri bejelentkezés**
-* **Identitásszolgáltató által kezdeményezett egyszeri bejelentkezés**
-* **Felhasználókiépítés igény**
+Az Azure AD integrálása a monday.com konfigurálásához hozzá kell monday.com a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-## <a name="add-mondaycom-in-the-azure-portal"></a>Az Azure Portalon monday.com hozzáadása
-
-Monday.com integrálható az Azure ad-vel, hozzá kell adnia monday.com a felügyelt SaaS-alkalmazások listájában.
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-
-1. A bal oldali menüben válassza ki a **Azure Active Directory**.
-
-    ![Az Azure Active Directoryval opciót.](common/select-azuread.png)
-
-1. Válassza ki **vállalati alkalmazások** > **minden alkalmazás**.
-
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
-
-1. Egy alkalmazás hozzáadásához válassza **új alkalmazás**.
-
-    ![Az új alkalmazás-beállítás](common/add-new-app.png)
-
-1. A Keresés mezőbe írja be a **monday.com**. A keresési eredmények között, válassza ki a **monday.com**, majd válassza ki **Hozzáadás**.
-
-    ![az eredmények listájában Monday.com](common/search-new-app.png)
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatás.
+1. Navigáljon a **vállalati alkalmazások** majd **minden alkalmazás**.
+1. Új alkalmazás hozzáadásához válassza **új alkalmazás**.
+1. Az a **Hozzáadás a katalógusból** területén írja be a **monday.com** kifejezést a keresőmezőbe.
+1. Válassza ki **monday.com** az eredmények panelen, és vegye fel az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőn.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az nevű tesztfelhasználó alapján monday.com **Britta Simon**. Az egyszeri bejelentkezés működéséhez ki kell alakítani a társított kapcsolatot egy Azure AD-felhasználót és a kapcsolódó felhasználó között monday.com.
+Konfigurálás és tesztelés az Azure AD SSO nevű tesztfelhasználó használata monday.com **B.Simon**. Az SSO működjön kell monday.com az Azure AD-felhasználót és a kapcsolódó felhasználó közötti hivatkozás kapcsolatot hozhat létre.
 
-Az Azure AD egyszeri bejelentkezés az monday.com tesztelése és konfigurálása, hogy a következő építőelemeit kell elvégeznie:
+Konfigurálás, és tesztelés az Azure AD SSO monday.com, hajtsa végre a következő építőelemeket:
 
-| Tevékenység | Leírás |
-| --- | --- |
-| **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)** | Lehetővé teszi a felhasználók a funkció használatához. |
-| **[Monday.com egyszeri bejelentkezés konfigurálása](#configure-mondaycom-single-sign-on)** | Az egyszeri bejelentkezési beállításainak konfigurálása az alkalmazásban. |
-| **[Hozzon létre egy Azure ad-ben tesztfelhasználó számára](#create-an-azure-ad-test-user)** | Tesztek az Azure AD egyszeri bejelentkezés egy felhasználó nevű Britta Simon. |
-| **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assign-the-azure-ad-test-user)** | Britta Simon az Azure AD egyszeri bejelentkezés használata lehetővé teszi. |
-| **[Monday.com tesztfelhasználó létrehozása](#create-a-mondaycom-test-user)** | Létrehoz egy megfelelője a Britta Simon monday.com, amely a felhasználó Azure ad-ben reprezentációja van csatolva. |
-| **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** | Ellenőrzi, hogy működik-e a konfiguráció. |
+1. **[Az Azure AD SSO konfigurálása](#configure-azure-ad-sso)**  ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Konfigurálja a monday.com](#configure-mondaycom)**  alkalmazás oldalán az egyszeri bejelentkezési beállításainak konfigurálására.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés az B.Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  B.Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre monday.com tesztfelhasználót](#create-mondaycom-test-user)**  B.Simon egy megfelelője a felhasználó Azure ad-ben reprezentációja kapcsolódó monday.com a rendelkeznie.
+6. **[Egyszeri bejelentkezés tesztelése](#test-sso)**  ellenőrzése, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO konfigurálása
 
-Ebben a szakaszban konfigurálnia az Azure AD egyszeri bejelentkezés az Azure Portalon monday.com.
+Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyezése az Azure Portalon.
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **monday.com** application integration ablaktáblában válassza **egyszeri bejelentkezési**.
+1. Az a [az Azure portal](https://portal.azure.com/), a a **monday.com** alkalmazás integráció lapon keresse meg a **kezelése** szakaszt, és válassza **egyszeri bejelentkezési**.
+1. Az a **egyszeri bejelentkezési módszer** lapra, jelölje be **SAML**.
+1. Az a **állítsa be egyszeri bejelentkezést az SAML** lap, kattintson a Szerkesztés/toll ikonra a **alapszintű SAML-konfigurációja** beállításait módosíthatja.
 
-    ![Egyszeri bejelentkezési beállítás konfigurálása](common/select-sso.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az a **egyszeri bejelentkezési módszer** ablaktáblán válassza ki az **SAML** vagy **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
-
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
-
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** ablaktáblán válassza **szerkesztése** (a ceruza ikon) nyissa meg a **alapszintű SAML-konfigurációja** ablaktáblán.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-1. Az a **alapszintű SAML-konfigurációja** ablaktáblán, ha rendelkezik a service provider metaadatait tartalmazó fájl, és a konfigurálni kívánt *Identitásszolgáltató által kezdeményezett mód*, kövesse az alábbi lépéseket:
+4. Az a **alapszintű SAML-konfigurációja** ablaktáblán, ha a service provider metaadatait tartalmazó fájl rendelkezik, és a konfigurálni kívánt **Identitásszolgáltató által kezdeményezett** mód, hajtsa végre az alábbi lépéseket:
 
     1. Válassza ki **metaadatfájl feltöltése**.
 
-       ![Metaadatok feltöltés beállítást](common/upload-metadata.png)
-
     1. Válassza ki a metaadatait tartalmazó fájl, a mappa ikonra, és válassza **feltöltése**.
-
-       ![Válassza ki a metaadat-fájlt, majd a feltöltés gombbal](common/browse-upload-metadata.png)
 
     1. A metaadatait tartalmazó fájl sikeresen feltöltve, miután a **azonosító** és **válasz URL-cím** értékeket automatikusan fel van töltve a a **alapszintű SAML-konfigurációja** panelen:
 
-       ![Az IDP értékeket az alapszintű SAML-konfigurációja panelen](common/idp-intiated.png)
-
        > [!Note]
-       > Ha a **azonosító** és **válasz URL-cím** értékek nincsenek automatikusan kitöltve, adja meg az értékeket manuálisan.
+       > Ha a **azonosító** és **válasz URL-cím** értékek nem get kitölti a rendszer automatikusan, majd töltse ki az értékeket manuálisan. A **azonosító** és a **válasz URL-cím** azonos és érték szerepel a következő mintának: `https://<your-domain>.monday.com/saml/saml_callback`
 
-1. Az alkalmazás konfigurálása *SP által kezdeményezett mód*:
+5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
-    1. Válassza ki **további URL-címet beállítani**.
-    
-    1. Az a **bejelentkezési URL-cím** mezőbe írjon be egy URL-címet, amely rendelkezik a következő mintának: https:\//\<tartomanynev >. monday.com. Forduljon a [monday.com ügyfél-támogatási csapatának](mailto:support@monday.com) a bejelentkezési URL-Címének lekéréséhez.
+    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<your-domain>.monday.com`
 
-        ![További URL-címek Set kapcsoló](common/metadata-upload-additional-signon.png)
+    > [!NOTE]
+    > Ezek a értékei nem valódi. Frissítse a tényleges azonosítója, válasz URL-cím és a bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [monday.com ügyfél-támogatási csapatának](mailto:dev@food.ee) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-1. Monday.com alkalmazása a SAML helyességi feltételek egy meghatározott formátumban kell megadni. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezeket az attribútumértékeket, kezelhet a **állítsa be egyszeri bejelentkezést az SAML** panelen válassza **szerkesztése** megnyitásához a **felhasználói attribútumok** ablaktáblán.
+1. Monday.com alkalmazását a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a felhasználói attribútumok párbeszédpanel.
 
     ![A felhasználói attribútumok ablaktáblából.](common/edit-attribute.png)
 
-1. A **felhasználói jogcímek**válassza **szerkesztése** a jogcímek szerkesztése. Jogcím hozzáadásához válassza **hozzáadása új jogcímet**, majd adja meg az SAML-jogkivonat attribútum az előző képen látható módon. Ezután kövesse az alábbi lépéseket: 
+6. Emellett a fentiekben monday.com alkalmazás vár néhány további attribútumok vissza SAML-válasz átadni. A a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen a következő lépésekkel adja hozzá a SAML-jogkivonat attribútumot, ahogyan az alábbi táblázatban:
 
-    1. Válassza ki **hozzáadása új jogcímet**.
+    | Name (Név) | Adatforrás-attribútum|
+    | ---------------| --------------- |
+    | E-mail | user.mail |
+    | FirstName | user.givenname |
+    | LastName | user.surname |
 
-        ![A Hozzáadás, új jogcím-beállítás a felhasználói jogcímek panelen](common/new-save-attribute.png)
+    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
-    1. Az a **kezelheti a felhasználói jogcímek** panelen adja meg a következő értékeket:
-        
-       1. Az a **neve** mezőben megadhatja azon attribútum nevét, a felhasználói jogcím sor is látható.
+    ![image](./media/mondaycom-tutorial/attribute01.png)
 
-       1. Hagyja **Namespace** üres.
+    ![image](common/new-attribute-details.png)
 
-       1. A **forrás**válassza **attribútum**.
+    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
 
-       1. Az a **forrásattribútum** listájához, válassza ki a felhasználói jogcím sorhoz feltüntetett attribútumértéket.
+    c. Távolítsa el a **Namespace**.
 
-       1. Válassza ki **OK**, majd válassza ki **mentése**.
+    d. Válassza ki a forrás, **attribútum**.
 
-       ![A kezelés felhasználói jogcímek](common/new-attribute-details.png)
+    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
 
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** panel alatt **SAML-aláíró tanúsítvány**, jelölje be **letöltése** melletti **tanúsítvány (Base64)** . Válassza ki a letöltési lehetőséget igényei alapján. Mentse a tanúsítványt a számítógépen.
+    f. Kattintson az **OK** gombra.
 
-    ![A tanúsítvány (Base64) a letöltési lehetőséget](common/certificatebase64.png)
+    g. Kattintson a **Save** (Mentés) gombra.
 
-1. Az a **monday.com beállítása** területén másolja a következő URL-címek igényei alapján:
+1. A a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén található **tanúsítvány (Base64)** válassza **letöltése** töltse le a tanúsítványt, és menti azt a számítógépet.
 
-    * Bejelentkezési URL
-    * Azure AD-azonosító
-    * Kijelentkezési URL
+   ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+1. Az a **monday.com beállítása** területén másolja a megfelelő URL-címe szerint.
 
-### <a name="configure-mondaycom-single-sign-on"></a>Monday.com egyszeri bejelentkezés konfigurálása
+   ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
-Egyszeri bejelentkezés konfigurálásához a monday.com oldalon, a letöltött tanúsítvány (Base64) fájlt, és a megfelelő URL-címeket, az Azure Portalról másolt küldése a [monday.com támogatási csapatának](mailto:support@monday.com). A monday.com csapatával küldheti el nekik, győződjön meg arról, hogy a SAML egyszeri bejelentkezési kapcsolatot helyesen van beállítva mindkét oldalon az információkat használja.
+### <a name="configure-mondaycom"></a>Monday.com konfigurálása
+
+1. Egy másik böngészőablakban jelentkezzen be monday.com rendszergazdaként.
+
+2. Nyissa meg a **profil** lapot, majd kattintson a jobb felső sarokban lévő **rendszergazdai**.
+
+     ![Monday.com konfiguráció](./media/mondaycom-tutorial/configuration01.png)
+
+3. Válassza ki **biztonsági** , és győződjön meg arról, hogy kattintson a **nyílt** SAML mellett.
+
+    ![Monday.com konfiguráció](./media/mondaycom-tutorial/configuration02.png)
+
+4. Adja meg az identitásszolgáltató részleteit alább olvashatja.
+
+    ![Monday.com konfiguráció](./media/mondaycom-tutorial/configuration03.png)
+
+    >[!NOTE]
+    >További részletekért tekintse meg [ez](https://support.monday.com/hc/articles/360000460605-SAML-Single-Sign-on?abcb=34642) cikk
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ebben a szakaszban hozzon létre egy tesztfelhasználót Britta Simon nevű az Azure Portalon.
+Ebben a szakaszban az Azure Portalon B.Simon nevű tesztfelhasználó fog létrehozni.
 
-1. Az Azure Portalon válassza ki a **Azure Active Directory** > **felhasználók** > **minden felhasználó**.
-
-    ![A felhasználók és az összes felhasználói beállítások](common/users.png)
-
-1. Válassza ki **új felhasználó**.
-
-    ![Az új felhasználói beállítás](common/new-user.png)
-
-1. Az a **felhasználói** panelen a következő lépéseket:
-
-    1. Az a **neve** mezőbe írja be **BrittaSimon**.
-  
-    1. Az a **felhasználónév** mezőbe írja be **brittasimon\@\<a vállalati tartomány >.\< bővítmény >** . Ha például **brittasimon\@contoso.com**.
-
-    1. Válassza ki a **Show jelszó** jelölőnégyzetet. Írja le az értéket, a megjelenő a **jelszó** mezőbe.
-
-    1. Kattintson a **Létrehozás** gombra.
-
-    ![A felhasználói panelen](common/user-properties.png)
+1. Az Azure Portal bal oldali panelén válassza **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. Válassza ki **új felhasználó** a képernyő tetején.
+1. Az a **felhasználói** tulajdonságok, kövesse az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. Az a **felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
+   1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban Ön hozzáférést Britta Simon monday.com így ő Azure egyszeri bejelentkezéshez használható.
+Ebben a szakaszban B.Simon használja az Azure egyszeri bejelentkezés monday.com való hozzáférést kell engedélyeznie.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások** > **minden alkalmazás** > **monday.com**.
-
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
-
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
 1. Az alkalmazások listájában jelölje ki a **monday.com**.
+1. Az alkalmazás áttekintése lapon keresse meg a **kezelés** szakaszt, és válassza **felhasználók és csoportok**.
 
-    ![az alkalmazások listáját a Monday.com](common/all-applications.png)
+   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-1. Válassza a menüben **felhasználók és csoportok**.
+1. Válassza ki **felhasználó hozzáadása**, majd **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A felhasználók és csoportok lehetőség](common/users-groups-blade.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. Válassza ki **felhasználó hozzáadása**. Ezt követően a a **-hozzárendelés hozzáadása** ablaktáblán válassza előbb **felhasználók és csoportok**.
+1. Az a **felhasználók és csoportok** párbeszédablakban válassza **B.Simon** a felhasználók listájából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+1. Ha a SAML helyességi feltétel, a szerepkör értéket vár a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználóhoz a listából, és kattintson a **kiválasztása** gombra a képernyő alján.
+1. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
-    ![A Hozzáadás hozzárendelési ablaktáblán](common/add-assign-user.png)
+### <a name="create-mondaycom-test-user"></a>Monday.com tesztfelhasználó létrehozása
 
-1. Az a **felhasználók és csoportok** ablaktáblán válassza **Britta Simon** felhasználók listájában. Válassza a **Kiválasztás** lehetőséget
+Ebben a szakaszban egy B.Simon nevű felhasználó monday.com jön létre. Monday.com támogatja a just-in-time-kiépítés, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó már nem létezik az monday.com, amikor megpróbálja elérni monday.com egy új jön létre.
 
-1. Ha az a SAML-előfeltétel szerepkör értéket várt a **szerepkör kiválasztása** ablaktáblán válassza ki a megfelelő szerepkört a felhasználóhoz a listából. Válassza a **Kiválasztás** lehetőséget
+### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-1. Az a **hozzárendelés hozzáadása** ablaktáblán válassza előbb **hozzárendelése**.
+A monday.com csempe kiválasztásakor a hozzáférési panelen, kell lennie automatikusan bejelentkezett a monday.com, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-### <a name="create-a-mondaycom-test-user"></a>Monday.com tesztfelhasználó létrehozása
+## <a name="additional-resources"></a>További források
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót a monday.com alkalmazásban jön létre. Monday.com támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó már nem létezik az monday.com, egy új jön létre a hitelesítés után.
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-Ebben a szakaszban a az Azure AD egyszeri bejelentkezés beállításai a saját alkalmazások portál segítségével tesztelnie.
-
-Miután beállította egyszeri bejelentkezést, amikor kiválaszt **monday.com** a saját alkalmazások portál automatikusan bejelentkezett a monday.com. A saját alkalmazások portál kapcsolatos további információkért lásd: [használatának és elérésének alkalmazásokat a saját alkalmazások portál](../user-help/my-apps-portal-end-user-access.md).
-
-## <a name="next-steps"></a>További lépések
-
-További információkért tekintse át a következő cikkeket:
-
-- [Az Azure Active Directory SaaS-alkalmazások integrálását ismertető oktatóanyagok listáját](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Egyszeri bejelentkezés az Azure Active Directory-alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -1,17 +1,18 @@
 ---
-title: A vállalati biztonsági csomaggal – Azure HDInsight az Apache HBase-szabályzatok konfigurálása
-description: Ismerje meg, az Apache Ranger-házirendek konfigurálása a hbase-hez az Azure HDInsight vállalati biztonsági csomaggal.
+title: Oktatóanyag – a vállalati biztonsági csomaggal – Azure HDInsight az Apache HBase-szabályzatok konfigurálása
+description: Oktatóanyag – az Apache Ranger-házirendek konfigurálása a hbase-hez az Azure HDInsight vállalati biztonsági csomaggal.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.topic: tutorial
-ms.date: 02/01/2019
-ms.openlocfilehash: d1f2a2b24e6f1856d021911e6f2e9c107bd38b72
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.date: 06/18/2019
+ms.openlocfilehash: 04592ba307cd696c20778d4a79f03be2eb0ac987
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926096"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274397"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Oktatóanyag: Az Apache HBase-házirendek konfigurálása a HDInsight vállalati biztonsági csomaggal
 
@@ -25,7 +26,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Táblázatok HBase-fürt létrehozása
 > * Ranger-házirendek tesztelése
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
@@ -105,7 +106,7 @@ Hozzon létre egy Ranger-házirendet a **sales_user1** és **marketing_user1**.
 
    |**Beállítás**  |**Ajánlott érték**  |
    |---------|---------|
-   |Házirend neve  |  sales_customers_name_contact   |
+   |Szabályzat neve  |  sales_customers_name_contact   |
    |HBase-tábla   |  Ügyfelek |
    |A HBase oszlopcsalád-   |  Kapcsolattartó neve |
    |A HBase oszlop   |  * |
@@ -129,7 +130,7 @@ Hozzon létre egy Ranger-házirendet a **sales_user1** és **marketing_user1**.
 
    |**Beállítás**  |**Ajánlott érték**  |
    |---------|---------|
-   |Házirend neve  |  marketing_customers_contact   |
+   |Szabályzat neve  |  marketing_customers_contact   |
    |HBase-tábla   |  Ügyfelek |
    |A HBase oszlopcsalád-   |  Kapcsolattartó |
    |A HBase oszlop   |  * |
@@ -159,7 +160,7 @@ Konfigurálva, a Ranger-házirendek alapján **sales_user1** is megtekintheti az
    kinit sales_user1
    ```
 
-2. Nyissa meg a hbase rendszerhéjat, és a tábla beolvasása `Customers`.
+2. Nyissa meg a HBase rendszerhéjat, és a tábla beolvasása `Customers`.
 
    ```hbaseshell
    hbase shell
@@ -201,7 +202,7 @@ Konfigurálva, a Ranger-házirendek alapján **sales_user1** is megtekintheti az
    kinit marketing_user1
    ```
 
-2. Nyissa meg a hbase rendszerhéjat, és a tábla beolvasása `Customers`:
+2. Nyissa meg a HBase rendszerhéjat, és a tábla beolvasása `Customers`:
 
     ```hbaseshell
     hbase shell

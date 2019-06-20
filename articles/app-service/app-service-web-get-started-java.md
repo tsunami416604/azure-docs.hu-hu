@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jasonfreeberg
 ms.custom: mvc
-ms.openlocfilehash: c77f7afe3941395a156896135043710252637ef3
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: bd11b5334fbffc28aa6869c9f37b2b9909692d56
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393241"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154792"
 ---
 # <a name="quickstart-create-a-java-app-in-app-service"></a>Gyors útmutató: Hozzon létre egy Java-alkalmazás az App Service-ben
 
@@ -66,7 +66,7 @@ Ezután adja hozzá a következő bővítménydefiníciót a `pom.xml` fájl `<b
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.5.4</version>
+        <version>1.6.0</version>
         <configuration>
             <!-- Specify v2 schema -->
             <schemaVersion>v2</schemaVersion>
@@ -105,9 +105,9 @@ Frissítse a következő helyőrzőket a bővítmény konfigurációjában:
 | Helyőrző | Leírás |
 | ----------- | ----------- |
 | `SUBSCRIPTION_ID` | Egyedi azonosítója annak az előfizetésnek az alkalmazást telepíteni kívánja. Alapértelmezett előfizetés-azonosító megtalálja a Cloud Shellben vagy a parancssori felület használatával a `az account show` parancsot. Az összes rendelkezésre álló előfizetések, használja a `az account list` parancsot.|
-| `RESOURCEGROUP_NAME` | Az új erőforráscsoport, amelyben létrehozza az alkalmazás neve. Ha egy alkalmazás összes erőforrását egy csoportban helyezi el, akkor mindet együtt kezelheti. Az erőforráscsoport törlésével például az alkalmazáshoz társított összes erőforrást törli. Frissítse ezt az értéket egy egyedi új erőforráscsoport-névre, például *TestResources*. Ezt az erőforráscsoport-nevet használjuk egy későbbi szakaszban az összes Azure-erőforrás eltávolításához. |
-| `WEBAPP_NAME` | Az alkalmazás neve lesz az állomásnév az alkalmazás telepítésekor az Azure-ba (WEBAPP_NAME.azurewebsites.net) rész. Frissítse ezt az értéket fogja futtatni a Java-alkalmazás, például új App Service-alkalmazás egyedi nevet *contoso*. |
-| `REGION` | Ha az alkalmazás üzemel, például egy Azure-régió `westus2`. A régiók listáját az `az account list-locations` paranccsal, a Cloud Shellben vagy a CLI-ben kérheti le. |
+| `RESOURCEGROUP_NAME` | Az új erőforráscsoport, amelyben létrehozza az alkalmazás neve. Ha egy alkalmazás összes erőforrását egy csoportban helyezi el, akkor mindet együtt kezelheti. Az erőforráscsoport törlésével például az alkalmazáshoz társított összes erőforrást törli. Frissítse ezt az értéket egy egyedi új erőforráscsoport-nevet, például *myResourceGroup*. Ezt az erőforráscsoport-nevet használjuk egy későbbi szakaszban az összes Azure-erőforrás eltávolításához. |
+| `WEBAPP_NAME` | Az alkalmazás nevét az alkalmazás az Azure-ba (WEBAPP_NAME.azurewebsites.net) telepítésekor az állomás neve része lesz. Frissítse ezt az értéket fogja futtatni a Java-alkalmazás, például új App Service-alkalmazás egyedi nevet *contoso*. |
+| `REGION` | Ha az alkalmazás üzemel, például egy Azure-régió *westus2*. A régiók listáját az `az account list-locations` paranccsal, a Cloud Shellben vagy a CLI-ben kérheti le. |
 
 ## <a name="deploy-the-app"></a>Az alkalmazás üzembe helyezése
 

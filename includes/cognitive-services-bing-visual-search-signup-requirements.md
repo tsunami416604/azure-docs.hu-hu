@@ -3,13 +3,13 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 12/18/2018
-ms.openlocfilehash: 606734726539397c0be0bc01afb3dbfac08b3a2b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 06/18/2019
+ms.openlocfilehash: 16ee9ae9a4eec6b38c57b984b3acb75479b437e6
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179399"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67277269"
 ---
 Rendelkeznie kell egy [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Bing Search APIs-hozzáféréssel rendelkező. A folytatás előtt szüksége lesz a hozzáférési kulcs után egy előfizetést, S9 árkategória indítása, ahogyan biztosított [Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/). 
 

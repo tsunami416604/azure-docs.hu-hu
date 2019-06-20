@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 04/26/2019
 ms.author: danlep
 ms.openlocfilehash: 5fa4d76656f6000745291230025a50d3e1fb6fc4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66152264"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179678"
 ---
 ### <a name="regions-and-resource-availability"></a>Régiók és az erőforrás rendelkezésre állása
 
@@ -19,4 +19,4 @@ ms.locfileid: "66152264"
 | Nyugat-Európa | Linux | 4 | 14 |
 | Kelet-Japán | Linux | 2 | 8 |
 | Dél-India, USA északi középső RÉGIÓJA, USA nyugati RÉGIÓJA | Linux | 2 | 3.5 |
-| Ausztrália keleti régiója, USA nyugati középső RÉGIÓJA | Linux | 1. | 1.5 |
+| Ausztrália keleti régiója, USA nyugati középső RÉGIÓJA | Linux | 1 | 1.5 |

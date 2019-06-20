@@ -11,20 +11,20 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 11/13/2018
+ms.date: 06/14/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 15b7c052d0e4d51cb033607c156a55c581f722b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4484269194aa3d637101a6a0b83eacb268d4c16e
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60539596"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147282"
 ---
 # <a name="configure-log-analytics-agent-for-linux-computers-in-a-hybrid-environment"></a>Log Analytics-ügynök konfigurálása Linux rendszerű számítógépekhez hibrid környezetekben
-Az [Azure Log Analytics](../../azure-monitor/platform/agent-windows.md) közvetlenül tud adatokat gyűjteni az Ön adatközpontjában vagy egyéb felhőalapú környezetében található fizikai vagy virtuális Linux-gépekről egy adattárba, részletes elemzés és összehasonlítás céljából. Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a Linux rendszerű számítógépekről történő adatgyűjtést néhány egyszerű lépésben.  Azure-beli linuxos virtuális gépek esetén lásd [az Azure-beli virtuális gépekről történő adatgyűjtést](quick-collect-azurevm.md) ismertető cikket.  
+Az [Azure Log Analytics](../platform/agent-windows.md) közvetlenül tud adatokat gyűjteni az Ön adatközpontjában vagy egyéb felhőalapú környezetében található fizikai vagy virtuális Linux-gépekről egy adattárba, részletes elemzés és összehasonlítás céljából. Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a Linux rendszerű számítógépekről történő adatgyűjtést néhány egyszerű lépésben.  Azure-beli linuxos virtuális gépek esetén lásd [az Azure-beli virtuális gépekről történő adatgyűjtést](quick-collect-azurevm.md) ismertető cikket.  
 
-A támogatott konfiguráció megismeréséhez tekintse meg a [támogatott Linux operációs rendszerek](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) és [hálózati tűzfal konfigurációk](../../azure-monitor/platform/log-analytics-agent.md#network-firewall-requirements) részt.
+A folytatás előtt először tekintse át a Log Analytics-ügynököket [áttekintése](../platform/log-analytics-agent.md) a cikkből megismerheti, milyen konfigurációk támogatottak, a [támogatott Linux operációs rendszerek](../platform/log-analytics-agent.md#supported-linux-operating-systems) és [ hálózati tűzfal-konfiguráció](../platform/log-analytics-agent.md#network-firewall-requirements). 
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -107,7 +107,7 @@ Például:`https://user01:password@proxy01.contoso.com:30443`
 A Log Analytics képes az események gyűjtésére a Linux rendszernaplójából és a megadott teljesítményszámlálókból a hosszabb távú elemzések és jelentések készítéséhez, valamint műveleteket hajt végre bizonyos feltételek észlelése esetén.  A következő lépésekkel konfigurálhatja az események gyűjtését a Linux rendszernaplójából, illetve egyes gyakran használt teljesítményszámlálókból is.  
 
 1. Válassza a **Syslog** elemet.  
-2. Eseménynaplókat a nevük begépelésével adhat hozzá. Írja be a **Syslog** kifejezést, majd kattintson a pluszjelre **+**.  
+2. Eseménynaplókat a nevük begépelésével adhat hozzá. Írja be a **Syslog** kifejezést, majd kattintson a pluszjelre **+** .  
 3. A táblában törölje a **Tájékoztatás**, az **Értesítés** és a **Hibakeresés** súlyossági szint jelölését. 
 4. A konfiguráció mentéséhez kattintson az oldal tetején található **Mentés** parancsra.
 5. Válassza a **Linuxos teljesítményadatok** elemet a teljesítményszámláló-adatok gyűjtésének Linux rendszerű gépen történő engedélyezéséhez. 

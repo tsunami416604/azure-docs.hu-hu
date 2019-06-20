@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 3635cd422e4c7a064d3317401b734f3bc6ccb6c6
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 4db9e6eaf2d7f7630d3d412d5519d97f8beca3ad
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67136444"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272839"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>Oktatóanyag: Felügyeleti eszköz üzembe helyezése
 
@@ -62,9 +62,29 @@ A következő adja meg a paramétereket az eszköz konfigurálásának módjár�
 - Az AAD-hitelesítő adatok használata a többtényezős hitelesítés le van tiltva, hogy jelentkezzen be az Azure-bA. Lásd: [kell futtatni az Azure Resource Manager-sablon](#what-you-need-to-run-the-azure-resource-manager-template).
 - Használjon egy egyedi nevet, amely regisztrálva lesz az Azure Active Directory management Tool; Ha például Apr3UX.
 
-## <a name="use-the-management-tool"></a>A felügyeleti eszközzel
+## <a name="provide-consent-for-the-management-tool"></a>Hozzájárulás megadása a felügyeleti eszköz
 
 Miután a GitHub Azure Resource Manager sablon befejeződik, egy erőforráscsoportot, két app services és a egy app service-csomag az Azure Portalon tartalmazó találja.
+
+Bejelentkezett, és a felügyeleti eszközt használja, mielőtt történő az új Azure Active Directory-alkalmazás, amely a felügyeleti eszköz társítva van szüksége. Azáltal, hogy a hozzájárulási, engedélyezi a felügyeleti eszköz Windows virtuális asztal felügyeleti hívásokat az eszköz van bejelentkezett felhasználó nevében.
+
+Határozzák meg, hogy mely felhasználói segítségével jelentkezzen be az eszközt, nyissa meg a [Azure Active Directory-felhasználói beállítások lapon](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) , és jegyezze fel az értéket **felhasználók engedélyezhetik, hogy az alkalmazások hozzáférjenek a céges adatok saját nevükben való**.
+
+- Ha az értéke **Igen**, jelentkezzen be az Azure Active Directory minden olyan felhasználói fiókkal, és adja meg a jóváhagyási csak az adott felhasználó számára. Azonban hogy jelentkezzen be a felügyeleti eszköz és a egy másik felhasználó később, ha kell végrehajtania azonos beleegyezése újra.
+- Ha az értéke **nem**, meg kell az Azure Active Directory globális rendszergazda jelentkezzen be, és adja meg a rendszergazdai jóváhagyás a címtárban lévő összes felhasználó számára. Nem fogja 
+
+
+Ha úgy dönt, hogy melyik felhasználó történő használandó, kövesse az alábbi utasításokat biztosít, hogy az eszköz:
+
+1. Nyissa meg az Azure-erőforrások, válassza ki az Azure App Services-erőforrás a megadott nevű (például Apr3UX) a sablonban, keresse meg az URL-címhez társított Ha például <https://rdmimgmtweb-210520190304.azurewebsites.net>.
+2. Jelentkezzen be a megfelelő Azure Active Directory felhasználói fiók használatával.
+3. Ha megtörtént a globális rendszergazda, most kiválaszthatja a jelölőnégyzet bejelölésével **hozzájárul a szervezet nevében**. Válassza ki **elfogadás** történő.
+
+Most már ekkor megjelenik a felügyeleti eszköz.
+
+## <a name="use-the-management-tool"></a>A felügyeleti eszközzel
+
+Miután megadta a jóváhagyás, a szervezet számára, vagy egy adott felhasználó, bármikor elérheti a felügyeleti eszköz.
 
 Kövesse az alábbi utasításokat, az eszköz elindításához:
 

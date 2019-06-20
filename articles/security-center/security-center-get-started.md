@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 37f85afbdd55d3f14638f0833f69bb1992770449
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4464796e655cefd28f858cb732ff3d5721a7aa47
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60908290"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206814"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Gyors útmutató: Felvétele a Security Center Standard Azure-előfizetése
 Az Azure Security Center egységes biztonsági felügyeletet és fenyegetésvédelmet biztosít a hibrid felhőalapú számítási feladatokhoz. Míg az Ingyenes szint korlátozott biztonságot nyújt, és azt is csak az Azure-erőforrások számára, a Standard szint kiterjeszti ezeket a képességeket a helyszíni és egyéb felhőkre. A Security Center segítségével megtalálhatja és kijavíthatja a biztonsági réseket, hozzáférés- és alkalmazásvezérlőket alkalmazhat a kártékony tevékenységek blokkolásához, észlelheti a fenyegetéseket az analitika és az intelligencia használatával, valamint gyorsan reagálhat, ha a rendszer támadás alatt áll. Megpróbálhatja Security Center Standard költségek nélkül. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
@@ -77,7 +77,7 @@ A Microsoft Monitoring Agent automatikus kiépítésének engedélyezése:
 2. Az előfizetést tartalmazó soron kattintson a **Beállítások szerkesztése>** elemre.
 3. Az **Adatgyűjtés** lapon állítsa az **Automatikus telepítést** **Be** értékre.
 4. Kattintson a **Mentés** gombra.
-****
+---
   ![Automatikus kiépítés engedélyezése][6]
 
 Az Azure-beli virtuális gépekbe való új betekintésnek köszönhetően a Security Center további javaslatokkal láthatja el Önt a rendszerfrissítés állapotával, az operációs rendszer biztonsági konfigurációival és a végpontvédelemmel kapcsolatban, illetve további biztonsági riasztásokat is létrehozhat.

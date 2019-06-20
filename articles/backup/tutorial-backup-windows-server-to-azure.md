@@ -2,20 +2,20 @@
 title: Windows Server biztonsági mentése az Azure-ba
 description: Ez az oktatóanyag részletesen ismerteti a helyszíni Windows Serverek helyreállítási tárba történő biztonsági mentését.
 services: backup
-author: saurabhsensharma
-manager: shivamg
+author: dcurwin
+manager: carmonm
 keywords: windows server biztonsági másolat; windows server biztonsági mentése; biztonsági mentés és vészhelyreállítás
 ms.service: backup
 ms.topic: tutorial
 ms.date: 8/22/2018
-ms.author: saurse
+ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: f5cfa3de962c51ac7ff43d9b83bdea9f408f5bcf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 907a10314f27428d4d4b867abb71e2046208650b
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60722767"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273959"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Windows Server biztonsági mentése az Azure-ba
 
@@ -98,7 +98,7 @@ A Microsoft Azure Recovery Services- (MARS-) ügynök egy társítást hoz létr
  
 4. Amikor a rendszer kéri, adja meg a Windows Server biztonsági másolatainak titkosításához szükséges jelszót. A Microsoft nem tudja helyreállítani az elveszített jelszót, ezért mentse biztonságos helyre.
 
-5. Kattintson a **Befejezés** gombra. 
+5. Kattintson a **Befejezés**gombra. 
 
 ## <a name="configure-backup-and-retention"></a>Biztonsági mentés és megőrzés konfigurálása
 

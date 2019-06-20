@@ -20,8 +20,6 @@
   items:
     - name: Lekérdezések futtatása egy Apache Spark-fürtön
       href: apache-spark-load-data-run-query.md
-    - name: Apache Spark-lekérdezések futtatása VSCode használatával
-      href: ../hdinsight-for-vscode.md
     - name: Apache Spark-lekérdezések futtatása IntelliJ használatával
       href: apache-spark-intellij-tool-plugin.md
     - name: Adatok elemzése BI-eszközökkel
@@ -32,6 +30,8 @@
       href: apache-spark-ipython-notebook-machine-learning.md
     - name: Apache Spark-alkalmazás létrehozása IntelliJ-ben
       href: apache-spark-create-standalone-application.md
+    - name: Apache Spark-lekérdezések futtatása VSCode használatával
+      href: ../hdinsight-for-vscode.md
     - name: Fürtök rendelkezésre állásának monitorozása az Ambarival és az Azure Monitor-naplókkal
       href: ../hdinsight-cluster-availability.md
 - name: Példák

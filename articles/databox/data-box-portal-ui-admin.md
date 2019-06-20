@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: c998e01cdb9031771acd3d9605da3e77d5ae3201
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: a7681ba815533296deae2b585e377a733074b6c9
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953370"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147913"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>A Data Box-lemezek felügyelete az Azure portal használatával
 
@@ -76,7 +76,7 @@ Csak a teljesített vagy visszavont rendeléseket törölheti. A rendelések tö
      ![Data Box Disk-rendelés törlése 2](media/data-box-portal-ui-admin/delete-order2.png)
 
 
-## <a name="download-shipping-label"></a>Levélcímke letöltése
+## <a name="download-shipping-label"></a>Fuvarlevélcímke letöltése
 
 Ha a meghajtókkal szállított fuvarlevélcímke elveszett vagy nem találja, le kell töltenie a portálról. 
 
@@ -103,7 +103,7 @@ A rendelés szerkesztéséhez kövesse az alábbi lépéseket.
 
     ![Szállítási cím szerkesztése 2](media/data-box-portal-ui-admin/edit-shipping-address2.png)
 
-## <a name="edit-notification-details"></a>Értesítés adatainak szerkesztése
+## <a name="edit-notification-details"></a>Értesítési adatok szerkesztése
 
 Lehet, hogy módosítani szeretné, hogy mely felhasználók kapjanak értesítő e-maileket a rendelés állapotáról. Például előfordulhat, hogy valamelyik felhasználót értesíteni kell, ha a meghajtót kiszállítják vagy már átvették. Egy másik felhasználó szükség lehet az adatok másolása befejeződött, így azok ellenőrizheti a forrás törlése előtt az Azure storage-fiókban van az adatok tájékoztatni kell. Ilyen esetekben szerkesztheti az értesítési adatokat.
 
@@ -126,10 +126,10 @@ Az értesítési adatok szerkesztéséhez kövesse az alábbi lépéseket.
 |Feladva     | A rendelés fel lett adva. A rendelést 1–2 napon belül kapja kézhez.        |
 |Kézbesítve     | A rendelés ki lett kézbesítve a rendelésben megadott címre.        |
 |Szállítás alatt     |A visszaküldött csomagot a futár átvette. <br> Miután a szállítmány érkezik az Azure-adatközpontban, adatokat automatikusan töltődnek fel az Azure-bA.         |
-|Érkezett     | A meghajtókat átvették az Azure-adatközpontban. Az adatok másolása hamarosan megkezdődik.        |
+|Megérkezett     | A meghajtókat átvették az Azure-adatközpontban. Az adatok másolása hamarosan megkezdődik.        |
 |Adatok átmásolva     |Az adatok másolása folyamatban van.<br> Várjon, amíg az adatok másolása befejeződik.         |
 |Befejezve       |A rendelés sikeresen teljesítve lett.<br> Ellenőrizze, hogy az adatok elérhetők-e az Azure-ban, mielőtt törölné a helyszíni adatokat a kiszolgálókról.         |
-|Befejeződött, hibákkal| Az adatok másolása befejeződött, azonban hibák jelentkeztek. <br> Tekintse át a másolási naplókat az **Áttekintés** lapon megadott útvonalon. További információért [töltse le a diagnosztikai naplókat](data-box-disk-troubleshoot.md#download-diagnostic-logs).   |
+|Befejeződött, hibákkal| Az adatok másolása befejeződött, azonban hibák jelentkeztek. <br> Tekintse át a hibanaplókat, feltöltés a megadott elérési úton a **áttekintése**. További információért ugorjon [letöltési hiba-naplók feltöltése](data-box-disk-troubleshoot-upload.md#download-logs).   |
 |Megszakítva            |A rendelés vissza lett vonva. <br> Vagy visszavonta a rendelést, vagy hiba történt, és a szolgáltatás vonta vissza.     |
 
 

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/12/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 7e670410b93439e23e1018f6646c5e0edc04b9bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4a5352e96e522a8bd32c428957b3bbfd62c5fa9b
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67116425"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275934"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Mi a szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-erőforrások?
 
@@ -74,7 +74,7 @@ Az Azure számos [beépített szerepkört](built-in-roles.md) biztosít, amelyek
 
 A többi beépített szerepkör adott Azure-erőforrások kezelését teszi lehetővé. Például a [Virtuális gépek közreműködője](built-in-roles.md#virtual-machine-contributor) szerepkör virtuális gépek létrehozását és kezelését teszi lehetővé. Ha a beépített szerepkörök nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját [egyéni szerepkörök az Azure-erőforrások](custom-roles.md).
 
-Az Azure-ban bevezettünk különféle adatműveleteket (ezek jelenleg előzetes verzióban érhetők el), amelyek használatával az egyes objektumokban lévő adatokhoz biztosítható hozzáférés. Ha például egy felhasználó adatolvasási hozzáféréssel rendelkezik egy tárfiókhoz, akkor olvashatja az adott tárfiókban lévő blobokat vagy üzeneteket. További információkért lásd: [megismerheti az Azure-erőforrások szerepkör-definíciók](role-definitions.md).
+Az Azure rendelkezik a műveletekhez, amelyek lehetővé teszik, hogy egy objektum adatokhoz való hozzáférést. Ha például egy felhasználó adatolvasási hozzáféréssel rendelkezik egy tárfiókhoz, akkor olvashatja az adott tárfiókban lévő blobokat vagy üzeneteket. További információkért lásd: [megismerheti az Azure-erőforrások szerepkör-definíciók](role-definitions.md).
 
 ### <a name="scope"></a>Scope
 

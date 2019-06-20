@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: a9ce3d67d0a394e583d7b512f74cbd2d0c61c22f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 5f2a959bcea533174feedb324cecf20ca12bd39b
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67060590"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137201"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Gyors útmutató: Az Apache Kafka-fürt létrehozása az Azure HDInsight használata a Resource Manager-sablon
 
@@ -22,27 +22,13 @@ Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre [Apache Kafka](h
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-> [!IMPORTANT]  
-> A Kafka API csak az ugyanazon virtuális hálózaton belüli erőforrások számára érhető el. Ebben a rövid útmutatóban közvetlenül éri el a fürtöt SSH-val. Ha más szolgáltatásokat, hálózatokat vagy virtuális gépeket szeretne csatlakoztatni a Kafkához, először létre kell hoznia egy virtuális hálózatot, majd létre kell hoznia a hálózaton belüli erőforrásokat.
->
-> További információt a [Csatlakozás az Apache Kafkához virtuális hálózattal](apache-kafka-connect-vpn-gateway.md) című dokumentumban találhat.
+A Kafka API csak az ugyanazon virtuális hálózaton belüli erőforrások számára érhető el. Ebben a rövid útmutatóban közvetlenül éri el a fürtöt SSH-val. Ha más szolgáltatásokat, hálózatokat vagy virtuális gépeket szeretne csatlakoztatni a Kafkához, először létre kell hoznia egy virtuális hálózatot, majd létre kell hoznia a hálózaton belüli erőforrásokat. További információt a [Csatlakozás az Apache Kafkához virtuális hálózattal](apache-kafka-connect-vpn-gateway.md) című dokumentumban találhat.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy SSH-ügyfél. A jelen dokumentum lépései SSH használatával csatlakoznak a fürthöz.
-
-    Az `ssh` parancs alapértelmezés szerint a Linux, Unix és macOS rendszerek része. Windows 10 rendszeren a következő módszerek egyikével telepítse az `ssh` parancsot:
-
-  * Az [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart) használata. A Cloud Shell tartalmazza az `ssh` parancsot, és úgy konfigurálható, hogy a Basht vagy a PowerShellt használja a felületkörnyezetként.
-
-  * [A Linux Windows alrendszerének telepítése](https://docs.microsoft.com/windows/wsl/install-win10). A Microsoft Store-ban elérhető Linux-disztribúciók tartalmazzák az `ssh` parancsot.
-
-    > [!IMPORTANT]  
-    > A dokumentum lépései azt feltételezik, hogy a fent említett egyik SSH-ügyfelet használja. Ha más SSH-ügyfelet használ, és problémákba ütközik, tekintse át az SSH-ügyfél dokumentációját.
-    >
-    > További információ: [SSH használata a HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Egy SSH-ügyfél. További információkért lásd: [HDInsight (az Apache Hadoop) SSH-val csatlakozhat](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="create-an-apache-kafka-cluster"></a>Apache Kafka-fürt létrehozása
 
@@ -65,10 +51,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
     ![A sablontulajdonságok képernyőképe](./media/apache-kafka-quickstart-resource-manager-template/kafka-template-parameters.png)
 
-3. Jelölje be az **Elfogadom a fenti feltételeket** és a **Rögzítés az irányítópulton** lehetőséget, majd kattintson a **Vásárlás** elemre.
-
-> [!NOTE]  
-> A fürt létrehozása 20 percig is eltarthat.
+3. Jelölje be az **Elfogadom a fenti feltételeket** és a **Rögzítés az irányítópulton** lehetőséget, majd kattintson a **Vásárlás** elemre. A fürt létrehozása 20 percig is eltarthat.
 
 ## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
 
@@ -82,29 +65,28 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 3. Ha a rendszer kéri, adja meg az SSH-felhasználó jelszavát.
 
-Miután csatlakozott, az alábbi szöveghez hasonló információkat lát:
-
-```text
-Authorized uses only. All activity may be monitored and reported.
-Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.13.0-1011-azure x86_64)
-
- * Documentation:  https://help.ubuntu.com
- * Management:     https://landscape.canonical.com
- * Support:        https://ubuntu.com/advantage
-
-  Get cloud support with Ubuntu Advantage Cloud Guest:
-    https://www.ubuntu.com/business/services/cloud
-
-83 packages can be updated.
-37 updates are security updates.
-
-
-
-Welcome to Kafka on HDInsight.
-
-Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
-ssuhuser@hn0-mykafk:~$
-```
+    Miután csatlakozott, az alábbi szöveghez hasonló információkat lát:
+    
+    ```text
+    Authorized uses only. All activity may be monitored and reported.
+    Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.13.0-1011-azure x86_64)
+    
+     * Documentation:  https://help.ubuntu.com
+     * Management:     https://landscape.canonical.com
+     * Support:        https://ubuntu.com/advantage
+    
+      Get cloud support with Ubuntu Advantage Cloud Guest:
+        https://www.ubuntu.com/business/services/cloud
+    
+    83 packages can be updated.
+    37 updates are security updates.
+    
+    
+    Welcome to Kafka on HDInsight.
+    
+    Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
+    ssuhuser@hn0-mykafk:~$
+    ```
 
 ## <a id="getkafkainfo"></a>Az Apache Zookeeper és a közvetítő gazdagép információinak lekérése
 
@@ -126,16 +108,13 @@ Ebben a szakaszban a fürtön lévő Ambari REST API-ból szerzi be a gazdagép 
 
     Ha a rendszer kéri, írja be a Kafka-fürt nevét.
 
-3. A környezeti változók Zookeeper-gazdagépadatokkal történő beállítását az alábbi paranccsal végezheti el:
+3. Környezeti változók Zookeeper gazdagépadatok, használja az alábbi parancsot. A parancs lekéri a fürtözni Zookeeper, majd csak az első két tételeket ad vissza. Ez azért van, mert hasznos lehet a redundancia, ha az egyik gazdagép esetleg nem érhető el.
 
     ```bash
     export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
     ```
 
     Ha a rendszer kéri, adja meg a fürt bejelentkezési fiókjának a jelszavát (nem az SSH-fiókét).
-
-    > [!NOTE]  
-    > Ez a parancs lekéri az összes Zookeeper-gazdagépet, majd csak az első két bejegyzést adja vissza. Ez azért van, mert hasznos lehet a redundancia, ha az egyik gazdagép esetleg nem érhető el.
 
 4. A környezeti változók helyes beállításának ellenőrzését az alábbi paranccsal végezheti el:
 
@@ -181,15 +160,13 @@ A Kafka *témakörökben* tárolja az adatstreameket. A `kafka-topics.sh` segéd
 
     * Mindegyik partíció három feldolgozó csomópontra van replikálva a fürtben.
 
-        > [!IMPORTANT]  
-        > Ha olyan Azure-régióban hozta létre a fürtöt, amely három tartalék tartományt biztosít, használjon 3-as replikációs tényezőt. Ellenkező esetben használjon 4-es replikációs tényezőt.
+        Ha olyan Azure-régióban hozta létre a fürtöt, amely három tartalék tartományt biztosít, használjon 3-as replikációs tényezőt. Ellenkező esetben használjon 4-es replikációs tényezőt.
         
         A három tartalék tartományt tartalmazó régiókban a 3-as replikációs tényező lehetővé teszi, hogy a replikákat el lehessen osztani a tartalék tartományok között. A két tartalék tartományt tartalmazó régiókban a négyes replikációs tényező egyenlően osztja el a replikákat a tartományok között.
         
         Az adott régióban található tartalék tartományok számáról további információkat a [Linux rendszerű virtuális gépek rendelkezésre állása](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) dokumentumban talál.
 
-        > [!IMPORTANT]   
-        > A Kafka nem észleli a tartalék Azure-tartományokat. Témakörök számára történő partícióreplikák létrehozásakor lehetséges, hogy a Kafka nem a magas rendelkezésre állásnak megfelelően osztja ki a replikákat.
+        A Kafka nem észleli a tartalék Azure-tartományokat. Témakörök számára történő partícióreplikák létrehozásakor lehetséges, hogy a Kafka nem a magas rendelkezésre állásnak megfelelően osztja ki a replikákat.
 
         Magas rendelkezésre állás biztosítása érdekében használhatja a [Apache Kafka partíció-újraegyensúlyozó eszközt](https://github.com/hdinsight/hdinsight-kafka-tools). Ezt az eszközt egy SSH-kapcsolatból kell futtatni a Kafka-fürt fő csomópontjához.
 
@@ -248,16 +225,11 @@ Kövesse az alábbi lépéseket a rekordoknak a korábban létrehozott test tém
    
     A parancs lekéri a rekordokat a témakörből, majd megjeleníti őket. A `--from-beginning` használata arra utasítja a fogyasztót, hogy a stream elejétől kezdje a műveletet, így az összes rekord lekérése megtörténik.
 
-    > [!NOTE]  
-    > Ha a Kafka régebbi verzióját használja, cserélje le a `--bootstrap-server $KAFKABROKERS` előtagot a következőre: `--zookeeper $KAFKAZKHOSTS`.
+    Ha a Kafka régebbi verzióját használja, cserélje le a `--bootstrap-server $KAFKABROKERS` előtagot a következőre: `--zookeeper $KAFKAZKHOSTS`.
 
 4. Használja a __Ctrl + C__ billentyűparancsot a fogyasztó leállításához.
 
 Szoftveresen is létrehozhat előállítókat és fogyasztókat. Ez az API használatának példájáért lásd a [Apache Kafka Producer és Consumer API-hoz a HDInsight](apache-kafka-producer-consumer-api.md) dokumentum.
-
-## <a name="troubleshoot"></a>Hibaelhárítás
-
-Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -278,4 +250,3 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 
 > [!div class="nextstepaction"]
 > [Az Apache Spark használata az Apache kafka platformmal](../hdinsight-apache-kafka-spark-structured-streaming.md)
-

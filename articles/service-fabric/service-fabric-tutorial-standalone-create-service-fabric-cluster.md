@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 1bcb7f9fadc79db0db17336f07f6d58302433c1f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f978087a935bcf6ac78760fee5842573eb3a326e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60717968"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274113"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Oktatóanyag: Telepítse, és a Service Fabric-fürt létrehozása
 
-Az önálló Service Fabric-fürtök lehetővé teszik, hogy kiválassza a saját környezetét, és hogy a Service Fabric „bármely operációs rendszer, bármilyen felhő” módszerével hozzon létre egy fürtöt. Ebben az oktatóanyag-sorozatban egy, az AWS-en futtatott önálló fürtöt hoz létre, majd telepít rá egy alkalmazást.
+Az önálló Service Fabric-fürtök lehetővé teszik, hogy kiválassza a saját környezetét, és hogy a Service Fabric „bármely operációs rendszer, bármilyen felhő” módszerével hozzon létre egy fürtöt. Oktatóanyag-sorozat AWS vagy Azure tárolt önálló fürt létrehozása és a egy alkalmazás telepítése bele.
 
 Ez az oktatóanyag egy sorozat második része. Ez az oktatóanyag végigvezeti az önálló Service Fabric-fürt létrehozásának lépésein.
 
@@ -37,7 +37,7 @@ A sorozat második részében az alábbiakkal fog megismerkedni:
 
 ## <a name="download-the-service-fabric-for-windows-server-package"></a>A Windows Serverhez készült Service Fabric-csomag letöltése
 
-A Service Fabric egy telepítőcsomagot biztosít az önálló Service Fabric-fürtök telepítéséhez.  [Töltse le a telepítőcsomagot](https://go.microsoft.com/fwlink/?LinkId=730690) a helyi számítógépre.  Miután sikeresen letöltötte, az RDP-kapcsolaton keresztül másolja át az EC2-példányra, és illessze be az asztalra.
+A Service Fabric egy telepítőcsomagot biztosít az önálló Service Fabric-fürtök telepítéséhez.  [Töltse le a telepítőcsomagot](https://go.microsoft.com/fwlink/?LinkId=730690) a helyi számítógépre.  Miután sikeresen letöltötte a virtuális géphez RDP-kapcsolaton keresztül másolja és illessze be az asztalon.
 
 Jelölje ki a ZIP-fájlt, nyissa meg a helyi menüt, ás válassza az **Összes kibontása** > **Kibontás** lehetőséget.  A fájlok kibontásakor létrejön egy mappa az asztalon, amelynek neve megegyezik a ZIP-fájl nevével.
 

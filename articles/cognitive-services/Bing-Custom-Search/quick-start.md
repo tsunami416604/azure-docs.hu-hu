@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: d7a0c29ad3386fcdf85292b6e2852842a971c076
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6949824f598194456837544526223b823dcfc3e5
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60948873"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273346"
 ---
 # <a name="quickstart-create-your-first-bing-custom-search-instance"></a>Gyors útmutató: Az első Bing Custom Search-példány létrehozása
 
@@ -46,7 +46,7 @@ Bing Custom Search-példány létrehozása:
 
 5. Kattintson a **közzététel** a módosítások közzététele az éles környezetbe, és frissítse a példány végpontok.
 
-6.  Kattintson a a **éles** alatt fülre **végpontok**, másolatot a **egyéni konfigurációs azonosító**. Ezt az Azonosítót az egyéni keresési API hívása úgy, hogy van szüksége a `customconfig=` lekérdezési paraméter az Ön hívásait.
+6.  Kattintson a a **éles** lapjára **végpontok**, és másolja a **egyéni konfigurációs azonosító**. Ezt az Azonosítót az egyéni keresési API hívása úgy, hogy van szüksége a `customconfig=` lekérdezési paraméter az Ön hívásait.
 
 
 ## <a name="next-steps"></a>További lépések

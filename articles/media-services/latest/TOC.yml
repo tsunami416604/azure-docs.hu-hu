@@ -19,29 +19,19 @@
         - name: Node.js használatával
           href: stream-files-nodejs-quickstart.md
     - name: Feltöltött fájl kódolása és videó streamelése
-      items:
-        - name: .NET-tel
-          displayName: 'encode, encoding, job, transform'
-          href: stream-files-tutorial-with-api.md
+      displayName: 'encode, encoding, job, transform'
+      href: stream-files-tutorial-with-api.md
     - name: Élő stream
-      items:
-        - name: .NET-tel
-          href: stream-live-tutorial-with-api.md
-          displayName: 'Live Events, Live Outputs, ingest'
+      href: stream-live-tutorial-with-api.md
+      displayName: 'Live Events, Live Outputs, ingest'
     - name: Videó elemzése
-      items:
-        - name: .NET-tel
-          displayName: 'job, transform, VideoAnalyzerPreset, AudioAnalyzerPreset'
-          href: analyze-videos-tutorial-with-api.md
+      displayName: 'job, transform, VideoAnalyzerPreset, AudioAnalyzerPreset'
+      href: analyze-videos-tutorial-with-api.md
     - name: Dinamikus titkosítás 128 bites AES-titkosítással
-      items:
-        - name: .NET-tel
-          href: protect-with-aes128.md
+      href: protect-with-aes128.md
     - name: Dinamikus titkosítás DRM-mel
-      items:
-        - name: .NET-tel
-          displayName: 'PlayReady, Widevine, FairPlay'
-          href: protect-with-drm.md
+      displayName: 'PlayReady, Widevine, FairPlay'
+      href: protect-with-drm.md
 - name: Alapelvek
   items:
     - name: Áttekintés

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4b996effbc03bd1f7c446965b0aa5fb6fa2d0175
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 91894f8fffc319b3dfd21d4c95d5a40cad351741
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024387"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273806"
 ---
 # <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>REST-Útmutató: Index, és részben strukturált adatok (JSON-blobok) keresése az Azure Search szolgáltatásban
 
@@ -127,7 +127,7 @@ A válasznak így kell kinéznie:
 
 ## <a name="create-an-index"></a>Index létrehozása
     
-A második hívás [Index API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-data-source), az Azure Search-index létrehozása, amely tárolja az összes kereshető adatot. Az index határozza meg az összes paramétert és ezek attribútumait.
+A második hívás [Index API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-indexer), az Azure Search-index létrehozása, amely tárolja az összes kereshető adatot. Az index határozza meg az összes paramétert és ezek attribútumait.
 
 A hívás URL-címe: `https://[service name].search.windows.net/indexes?api-version=2019-05-06`. Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
 

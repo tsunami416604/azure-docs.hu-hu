@@ -49,6 +49,11 @@
         - name: Az üzembe helyezés lépései
           displayName: 'standards, iso, 27001'
           href: ./samples/iso27001-ase-sql-workload/deploy.md
+    - name: UK OFFICIAL
+      items:
+        - name: Vezérlőelem-leképezés
+          displayName: 'standards, uk official'
+          href: ./samples/ukofficial/control-mapping.md
 - name: Alapelvek
   items:
     - name: A tervek életciklusa

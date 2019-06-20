@@ -1,6 +1,6 @@
 ---
-title: Feltöltése, kódolása és streamelése az Azure Media Services v3 .NET használatával |} A Microsoft Docs
-description: Kövesse a jelen oktatóanyag töltsön fel egy fájlt, és a videó kódolása és streamelése a tartalom a Media Services v3 használatával a .NET.
+title: Feltöltése, kódolása és streamelése az Azure Media Services v3 |} A Microsoft Docs
+description: Kövesse a jelen oktatóanyag töltsön fel egy fájlt, és a videó kódolása és streamelése tartalmait a Media Services v3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,14 +12,17 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
 ms.author: juliako
-ms.openlocfilehash: 66ee2c110edfdbd0e33c69d45dee8040654d421a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 46a1add812d5721e36d8af030195c42542dc360c
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149147"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273241"
 ---
-# <a name="tutorial-upload-encode-and-stream-videos-using-net"></a>Oktatóanyag: Videók feltöltése, kódolása és streamelése a .NET használatával
+# <a name="tutorial-upload-encode-and-stream-videos"></a>Oktatóanyag: Videók feltöltése, kódolása és streamelése
+
+> [!NOTE]
+> Annak ellenére, hogy az oktatóanyag a [.NET SDK-val](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) példákat az általános lépések ugyanazok a [REST API-val](https://docs.microsoft.com/rest/api/media/liveevents), [CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest), vagy más támogatott [SDK-k](media-services-apis-overview.md#sdks) .
 
 Az Azure Media Services lehetővé teszi a médiafájlok kódolandó, hogy a böngészők és eszközök széles lejátszhatók. Például előfordulhat, hogy az Apple HLS vagy MPEG DASH formátumában szeretné streamelni a tartalmakat. A streamelés előtt érdemes kódolni a jó minőségű digitális médiafájlokat. Kódolással kapcsolatos útmutatásért tekintse meg [a kódolás fogalmát](encoding-concept.md) ismertető cikket. Ez az oktatóanyag feltölt egy helyi videofájlt, és kódolja a feltöltött fájlt. A HTTPS URL-cím segítségével elérhetővé tett tartalmakat is kódolhatja. További információ: [Feladatbemenet létrehozása HTTP(s) URL-címből](job-input-from-http-how-to.md).
 

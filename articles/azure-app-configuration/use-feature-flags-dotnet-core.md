@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 577cb55ce381976a6d623b272b920d0d1bf2eeb9
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 5e27c6a1ab5fc9dff779c6e5d04689683d5c8e6d
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67143999"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274150"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Oktatóanyag: A szolgáltatás jelzők használata az ASP.NET Core-alkalmazás
 
@@ -189,10 +189,10 @@ public class HomeController : Controller
 
 ## <a name="controller-actions"></a>Vezérlő műveletek
 
-MVC-vezérlők, használja a `Feature` vezérlő attribútumot teljes vezérlőosztály vagy egy bizonyos művelet engedélyezve van-e. A következő `HomeController` tartományvezérlő szükséges `FeatureA` kell *a* mielőtt bármilyen műveletet tartalmazza a vezérlőosztály hajtható végre:
+MVC-vezérlők, használja a `FeatureGate` vezérlő attribútumot teljes vezérlőosztály vagy egy bizonyos művelet engedélyezve van-e. A következő `HomeController` tartományvezérlő szükséges `FeatureA` kell *a* mielőtt bármilyen műveletet tartalmazza a vezérlőosztály hajtható végre:
 
 ```csharp
-[Feature(MyFeatureFlags.FeatureA)]
+[FeatureGate(MyFeatureFlags.FeatureA)]
 public class HomeController : Controller
 {
     ...
@@ -202,7 +202,7 @@ public class HomeController : Controller
 A következő `Index` művelethez szükséges `FeatureA` kell *a* ahhoz, hogy futtatható:
 
 ```csharp
-[Feature(MyFeatureFlags.FeatureA)]
+[FeatureGate(MyFeatureFlags.FeatureA)]
 public IActionResult Index()
 {
     return View();
@@ -218,6 +218,25 @@ Az MVC-nézetekben használható egy `<feature>` tartalom megjelenítése címke
 ```html
 <feature name="FeatureA">
     <p>This can only be seen if 'FeatureA' is enabled.</p>
+</feature>
+```
+
+Alternatív tartalom megjelenítéséhez, amikor a követelmények nem teljesülnek a `negate` attribútum is használható.
+
+```html
+<feature name="FeatureA" negate="true">
+    <p>This will be shown if 'FeatureA' is disabled.</p>
+</feature>
+```
+
+A szolgáltatás `<feature>` címke is használható, ha van ilyen tartalmak megjelenítése vagy egy lista összes szolgáltatás engedélyezve van.
+
+```html
+<feature name="FeatureA, FeatureB" requirement="All">
+    <p>This can only be seen if 'FeatureA' and 'FeatureB' are enabled.</p>
+</feature>
+<feature name="FeatureA, FeatureB" requirement="Any">
+    <p>This can be seen if 'FeatureA', 'FeatureB', or both are enabled.</p>
 </feature>
 ```
 

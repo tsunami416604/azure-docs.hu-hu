@@ -8,16 +8,16 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 31c7af3edf6364ebca021f87240e73c74e64ebc4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c29819d817138f2512420584947763247837a9ea
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704138"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "67135207"
 ---
 # <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>Gyors útmutató: Azure térbeli horgonyok használó HoloLens Unity-alkalmazás létrehozása
 
-Ebben a rövid útmutatóban létrehozhat egy Unity HoloLens-alkalmazás által használt [Azure térbeli horgonyok](../overview.md). Térbeli horgonyok platformfüggetlen fejlesztői szolgáltatása lehetővé teszi, hogy hozzon létre vegyes valóság tapasztalatok objektumok helyükre kivonatuk eszközök idővel. Ha elkészült, egy HoloLens, menthet és egy térbeli kapcsolati alapot visszahívása Unity-alkalmazás lesz.
+Ez a rövid útmutatóban létrehozhat egy Unity HoloLens alkalmazást használó [Azure térbeli horgonyok](../overview.md). Térbeli horgonyok platformfüggetlen fejlesztői szolgáltatása lehetővé teszi, hogy hozzon létre vegyes valóság tapasztalatok objektumok helyükre kivonatuk eszközök idővel. Ha elkészült, egy HoloLens, menthet és egy térbeli kapcsolati alapot visszahívása Unity-alkalmazás lesz.
 
 A következőket fogja megtanulni:
 
@@ -34,18 +34,18 @@ A következőket fogja megtanulni:
 A gyorsútmutató elvégzéséhez:
 
 
-- Egy Windows-számítógépen, amelyre szüksége <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3</a> vagy újabb és <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> vagy újabb van telepítve. A Visual Studio telepítésének tartalmaznia kell a **univerzális Windows Platform fejlesztési** számítási feladatot. Emellett telepítenie kell <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a>.
+- Egy Windows-számítógépen, amelyre szüksége <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3</a> vagy újabb és <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> vagy újabb van telepítve. A Visual Studio telepítésének tartalmaznia kell a **univerzális Windows Platform fejlesztési** számítási feladatot. Telepítés <a href="https://git-scm.com/download/win" target="_blank">Git Pro Windows</a>.
 - HoloLens eszköz, amelyre szüksége [fejlesztői mód](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) engedélyezve van. [Windows-2018. október 10. frissítés](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018) (más néven RS5) telepítve kell lennie az eszközön. A legújabb verziót a HoloLens frissítéséhez nyissa meg a **beállítások** alkalmazást, lépjen a **frissítés és biztonság**, majd válassza ki **frissítések keresése**.
 - Az alkalmazásban, engedélyeznie kell a **SpatialPerception** képesség. Ez a beállítás nem található **Build Settings** > **Player beállítások** > **közzétételi beállítások**  >   **Képességek**.
 - Az alkalmazásban, engedélyeznie kell a **virtuális valóságban támogatott** a **Windows vegyes valóság SDK**. Ez a beállítás nem található **Build Settings** > **Player beállítások** > **XR beállítások**.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
-## <a name="open-the-sample-project-in-unity"></a>Nyissa meg a mintaprojektet a Unity-nél
+## <a name="download-and-open-the-unity-sample-project"></a>Töltse le és nyissa meg a Unity mintaprojektet
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-A Unity-nél nyissa meg a projekt a Unity-mappában.
+[!INCLUDE [Open Unity Project](../../../includes/spatial-anchors-open-unity-project.md)]
 
 Nyissa meg **Build Settings** kiválasztásával **fájl** > **Build Settings**.
 
@@ -53,7 +53,7 @@ Az a **Platform** szakaszban jelölje be **univerzális Windows Platform**. Mód
 
 Válassza ki **kapcsoló Platform** módosítása a platform **univerzális Windows Platform**. Unity kérhetik a UWP támogatási összetevők telepítését, ha hiányzik.
 
-   ![Unity-beállítások létrehozása ablak](./media/get-started-unity-hololens/unity-build-settings.png)
+![Unity-beállítások létrehozása ablak](./media/get-started-unity-hololens/unity-build-settings.png)
 
 Zárja be a **Build Settings** ablak.
 

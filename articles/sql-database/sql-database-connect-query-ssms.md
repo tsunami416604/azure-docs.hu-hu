@@ -13,12 +13,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 60f2edf0adbfd740ce552449125ae69ab50a8586
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b060c971218561f285dbd2292529e01a0069d357
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051088"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147741"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Gyors útmutató: SQL Server Management Studio használatával csatlakozhat, és az Azure SQL Database-adatbázis lekérdezéséhez
 
@@ -26,7 +26,7 @@ Ez a rövid útmutatóban használni kívánt [SQL Server Management Studio] [ s
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure SQL-adatbázis. Az alábbi rövid útmutatókban hozhat létre, és válassza az Azure SQL Database egy adatbázis is használja:
+Azure SQL-adatbázis. Az alábbi rövid útmutatókban hozhat létre, és válassza az Azure SQL Database egy adatbázis is használja:
 
   || Önálló adatbázis | Felügyelt példány |
   |:--- |:--- |:---|
@@ -37,7 +37,6 @@ Ez a rövid útmutatóban használni kívánt [SQL Server Management Studio] [ s
   |||[Helyszíni kapcsolat](sql-database-managed-instance-configure-p2s.md)
   |Adatok betöltése|Az Adventure Works betöltött száma a rövid útmutató|[Állítsa vissza a Wide World Importers](sql-database-managed-instance-get-started-restore.md)
   |||Állítsa vissza vagy importálása az Adventure Works [BACPAC](sql-database-import.md) fájlt [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
-  |||
 
   > [!IMPORTANT]
   > Ebben a cikkben a parancsfájlok az Adventure Works adatbázisa használatához készültek. Felügyelt példánnyal Ha az Adventure Works adatbázisa importálása-példány adatbázis, vagy módosítsa a parancsfájlokat ebben a cikkben a Wide World Importers-adatbázis használatára.

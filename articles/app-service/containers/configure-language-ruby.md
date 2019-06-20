@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.author: astay;cephalin;kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 412efac3742acf7ad1cdc3d08f9d90c4d39bad3e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: aec85b16ab0357b28a564f75509e147e5555137b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956117"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205062"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Egy Linux-Ruby-alkalmazás konfigurálása az Azure App Service-ben
 
@@ -141,7 +141,7 @@ Azonban ez a beállítás hatására a Rails-kiszolgálót, a fejlesztői módba
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings APP_COMMAND_LINE="rails server -b 0.0.0.0"
 ```
 
-### <a name="set-secretkeybase-manually"></a>Secret_key_base manuális beállítása
+### <a name="set-secret_key_base-manually"></a> Secret_key_base manuális beállítása
 
 Használatához a saját `secret_key_base` helyett, ami lehetővé teszi az App Service-ben hozzon létre egyet, és állítsa a `SECRET_KEY_BASE` [Alkalmazásbeállítás](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) a kívánt értéket. Példa:
 
