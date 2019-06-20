@@ -16,12 +16,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d68c190b51b9bbb5faf21e8ea75b07d1a82005e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0ea151ee79fccd66f1d9422744d8f57829677ec0
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64571413"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204530"
 ---
 # <a name="change-the-azure-ad-connector-account-password"></a>Az Azure AD Connector-fiók jelszavának módosítása
 Az Azure AD-összekötő fiók kellene lennie ingyenes szolgáltatás. Ha a hitelesítő adatok alaphelyzetbe kell, majd ez a témakör Önnek szól. Például egy globális rendszergazdai szerint hibásan van visszaállíthatja a jelszót a fiók PowerShell-lel.
@@ -39,12 +39,12 @@ Ez a parancsmag alaphelyzetbe állítja a jelszót a fiókhoz, és frissítse az
 ## <a name="known-issues-these-steps-can-solve"></a>Ismert problémákat oldhat meg ezeket a lépéseket
 Ez a szakasz az ügyfelek által a hitelesítő adatok alaphelyzetbe állítása, az Azure AD-összekötő fiók javított által jelentett hibák listája.
 
-- - -
+---
 Esemény 6900  
 A kiszolgáló váratlan hibába ütközött a jelszóváltoztatási értesítés feldolgozása közben:  
 AADSTS70002: Hiba történt a hitelesítő érvényesítésekor. AADSTS50054: Régi jelszót használt a hitelesítéshez.
 
-- - -
+---
 Esemény 659  
 Hiba történt a jelszó szinkronizálása szabályzatkonfiguráció beolvasása. Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException:  
 AADSTS70002: Hiba történt a hitelesítő érvényesítésekor. AADSTS50054: Régi jelszót használt a hitelesítéshez.

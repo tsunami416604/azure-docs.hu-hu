@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: genemi,ayolubek, jrasnick
+ms.reviewer: genemi, ayolubek, jrasnick
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 9704acee2ca8bad7437ae22ff5041e2253916dce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/19/2019
+ms.openlocfilehash: d15e629343e015af5f83e1d185c6a46fc48fa3c4
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160806"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275199"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Az Azure SQL Database DNS-alias
 
@@ -49,7 +49,7 @@ Később az új rendszer élesíti éles környezetben, ha az alias átirányít
 
 ### <a name="cross-region-support"></a>Régiók közötti támogatás
 
-Vész-helyreállítási előfordulhat, hogy az SQL Database-kiszolgáló átvált egy másik földrajzi régióban. A rendszer DNS-alias használta a szolgáltatást, mint a kell megkeresnie és a kapcsolati karakterláncok frissítése az összes ügyfél elkerülhető. Ehelyett egy alias tekintse meg az új SQL Database-kiszolgáló, amely most az adatbázist tároló frissítheti.
+Vész-helyreállítási előfordulhat, hogy az SQL Database-kiszolgáló átvált egy másik földrajzi régióban. Egy rendszer, amely egy DNS-alias használta a szolgáltatást a kell megkeresnie és a kapcsolati karakterláncok frissítése az összes ügyfél el kell kerülni. Ehelyett egy alias tekintse meg az új SQL Database-kiszolgáló, amely most az adatbázist tároló frissítheti.
 
 ## <a name="properties-of-a-dns-alias"></a>DNS-alias tulajdonságai
 
@@ -67,13 +67,6 @@ Minden DNS-alias az SQL Database-kiszolgálóhoz a következő tulajdonságok vo
 Ahhoz, hogy programozott módon kezelheti a DNS-aliasokat REST API-k és a PowerShell-parancsmagok érhetők el.
 
 ### <a name="rest-apis-for-managing-your-dns-aliases"></a>REST API-k a DNS-aliasok kezeléséhez
-
-<!-- TODO
-??2 "soon" in the following live sentence, is not the best situation.
-TODO update this subsection very soon after REST API docu goes live.
-Dev = Magda Bojarska
-Comment as of:  2018-01-26
--->
 
 A dokumentáció a REST API-k mellett a következő webes helyen érhető el:
 
@@ -111,7 +104,7 @@ Jelenleg a DNS alias a következő korlátozások vonatkoznak:
 - *Legfeljebb 2 perces késleltetés:* A DNS-alias, frissíteni vagy eltávolítani legfeljebb 2 percet vesz igénybe.
   - Minden olyan rövid késleltetés, függetlenül az alias azonnal leállítja az örökölt kiszolgálóra ügyfélkapcsolatok hivatkozó.
 - *A DNS-címkeresés:* Most úgy a csak mérvadó végrehajtásával ellenőrizze, milyen kiszolgálói aliast hivatkozik a megadott DNS- [DNS-címkeresés](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup).
-- *[Nem támogatott a táblanaplózás](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md):* DNS-alias nem használható az Azure SQL Database-kiszolgáló, amely rendelkezik *táblanaplózás* egy adatbázison engedélyezve van.
+- _Táblanaplózás nem támogatott:_ DNS-alias nem használható az Azure SQL Database-kiszolgáló, amely rendelkezik *táblanaplózás* egy adatbázison engedélyezve van.
   - A táblanaplózás elavult.
   - Azt javasoljuk, hogy áthelyezi [Blobnaplózás](sql-database-auditing.md).
 

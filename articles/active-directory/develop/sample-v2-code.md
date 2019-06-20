@@ -1,6 +1,6 @@
 ---
 title: A Microsoft identity platform Kódminták |} A Microsoft Docs
-description: Itt indexe alapján elérhető a Microsoft identity platform (V2 végpont) kódminták forgatókönyv szerint vannak rendezve.
+description: Itt indexe alapján elérhető a Microsoft identity platform (v2.0-végpontra) kódminták forgatókönyv szerint vannak rendezve.
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 327111182a4ad8958f2d852a88ba0608d8510c51
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 326b69bffa0cd5728b939a91cce4fab3f3a329f7
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055907"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272671"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>A Microsoft identity platform Kódminták (v2.0-végpontra)
 
@@ -34,7 +34,7 @@ A Microsoft identity platform használhatja:
 - Hitelesítés és engedélyezés hozzáadása a webes alkalmazások és a webes API-kat.
 - Hozzáférési jogkivonat egy védett webes API eléréséhez szükséges.
 
-Ez a cikk röviden ismerteti, és hivatkozásokat tartalmaz, amelyek a mintákat a Microsoft identity platform végpont. Ezek a minták bemutatják, hogyan kész van kódrészletek, amelyek az alkalmazásokban használható együtt. A minta kódlap, a Súgó a követelményeket, telepítési, és állítsa be a részletes információs témát találhat. A kód megjegyzéseket-e segítenek megérteni a kritikus fontosságú szakaszok.
+Ez a cikk röviden ismerteti, és hivatkozásokat tartalmaz, amelyek a mintákat a Microsoft identity platform végpont. Ezek a minták bemutatják, hogyan történik, és kódrészletek, amelyek használhatja alkalmazásaiban is biztosítanak. A minta kódlap, a részletes információs témakörök, amelyek segítenek a követelményeket, telepítési és beállítási találja. A kód megjegyzéseket segítségével megismerheti a kritikus fontosságú szakaszok.
 
 > [!NOTE]
 > Ha az 1.0-s verziójú minták érdekli, lásd: [az Azure AD-Kódminták (1.0-s verziójú végpont)](sample-v1-code.md).
@@ -43,9 +43,9 @@ Az alapszintű forgatókönyv az egyes minta ismertetése: [típusú alkalmazás
 
 Ön is hozzájárulhat a mintákat a Githubon. További információ [a Microsoft Azure Active Directory-példák és dokumentáció](https://github.com/Azure-Samples?page=3&query=active-directory).
 
-## <a name="single-page-applications-spa"></a>Egylapos alkalmazások (SPA)
+## <a name="single-page-applications"></a>Egylapos alkalmazások
 
-Ezek a minták ismertetik, hogyan írhat egy védett Microsoft identity platform egyoldalas alkalmazás. Ezek a minták a MSAL.js változata valamelyikével:
+Ezek a minták ismertetik, hogyan írhat egy védett Microsoft identity platform egyoldalas alkalmazás. Ezek a minták MSAL.js változata egyikét használhatja.
 
 | Platform | Leírás | Hivatkozás |
 | -------- | --------------------- | -------- |
@@ -68,7 +68,7 @@ A következő példák bemutatják, webalkalmazások, amelyek a felhasználók. 
 
 ## <a name="desktop-and-mobile-public-client-apps"></a>Nyilvános ügyfél asztali és mobil alkalmazások
 
-A következő példák bemutatják nyilvános ügyfél (asztali és mobil alkalmazások) alkalmazást, hogy a Microsoft Graph API vagy saját webes API-be a felhasználó nevét. Ezek ügyfélalkalmazások Microsoft hitelesítési tárak (MSAL) használja.
+A következő példák bemutatják nyilvános ügyfél (asztali és mobil alkalmazások) alkalmazást, hogy a Microsoft Graph API, vagy saját webes API-t be a felhasználó nevét. Ezek ügyfélalkalmazások használja a Microsoft-hitelesítési tár (MSAL).
 
 | Ügyfélalkalmazás | Platform | A folyamat/engedélyezés | A Microsoft Graph hívások | Az ASP.NET Core 2.0-s webes API-hívások |
 | ------------------ | -------- |  ----------| ---------- | ------------------------- |
@@ -90,7 +90,7 @@ A következő példák bemutatják egy alkalmazás, amely a Microsoft Graph API 
 
 ## <a name="headless-applications"></a>Távfelügyelt alkalmazások
 
-A következő minta bemutatja egy webes böngésző nélkül futó nyilvános ügyfélalkalmazás. Az alkalmazás a parancssori eszköz vagy a Linux/Mac gépen fut, illetve IoT-alkalmazás lehet. A minta egy alkalmazást a felhasználó, aki bejelentkezik interaktív módon (például mobiltelefon) egy másik eszközön be nevét, a Microsoft Graph API elérése funkciókat. Az ügyfélalkalmazás MicroSoft hitelesítési tárak (MSAL).
+A következő minta bemutatja egy webes böngésző nélkül futó nyilvános ügyfélalkalmazás. Az alkalmazás a parancssori eszköz, egy alkalmazás futtatását Linux vagy Mac vagy IoT-alkalmazás is lehet. A minta egy alkalmazást a felhasználó, aki bejelentkezik interaktív módon (például mobiltelefon) egy másik eszközön be nevét a Microsoft Graph API elérése funkciókat. Az ügyfélalkalmazás használja a Microsoft-hitelesítési tár (MSAL).
 
 | Ügyfélalkalmazás | Platform | A folyamat/engedélyezés | A Microsoft Graph hívások |
 | ------------------ | -------- |  ----------| ---------- |
@@ -98,11 +98,11 @@ A következő minta bemutatja egy webes böngésző nélkül futó nyilvános ü
 
 ## <a name="web-apis"></a>Webes API-k
 
-A következő minták bemutatja, hogyan védheti meg a webes API-t a Microsoft identity platform végponttal, és hogyan hívhat meg egy alsóbb rétegbeli API-t a webes API-ból.
+A következő példák bemutatják, hogyan védheti meg a webes API-t a Microsoft identity platform végponttal, és hogyan hívhat meg egy alsóbb rétegbeli API-t a webes API-t.
 
 | Platform | Sample |
 | -------- | ------------------- |
-| ![ASP.NET-mag](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.2 | ASP.NET Core Web API (szolgáltatás), [dotnet-natív-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph)  |
+| ![ASP.NET-mag](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.2 | ASP.NET Core webes API-k (szolgáltatás), [dotnet-natív-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph)  |
 | ![ASP.NET](media/sample-v2-code/logo_NET.png)</p>ASP.NET, MVC | Webes API-t (szolgáltatás), [ms-identity-aspnet-webapi-onbehalfof](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof) |
 
 ## <a name="other-microsoft-graph-samples"></a>Más Microsoft Graph-minták

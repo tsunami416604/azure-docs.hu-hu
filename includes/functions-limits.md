@@ -4,16 +4,17 @@ ms.service: billing
 ms.topic: include
 ms.date: 05/09/2019
 ms.author: glenga
-ms.openlocfilehash: 9b98e1a1f5243584d0ca4b1490e25302ec26b465
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f2470f937d2d812bf79cea3c23d89a50717a5a92
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050542"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67277271"
 ---
 | Resource | [Használatalapú csomag](../articles/azure-functions/functions-scale.md#consumption-plan) | [Prémium szintű csomag](../articles/azure-functions/functions-scale.md#premium-plan) | [App Service-csomag](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
 | --- | --- | --- | --- |
 | Horizontális felskálázás | Eseményvezérelt | Eseményvezérelt | [Manuális vagy automatikus skálázás](../articles/app-service/web-sites-scale.md) | 
+| Példányok maximális száma | 200 | 20 | 10-20 |
 |Alapértelmezett [időtúllépési időtartam](../articles/azure-functions/functions-scale.md#timeout) (min.) |5 | 30 |30<sup>2</sup> |
 |Maximális [időtúllépési időtartam](../articles/azure-functions/functions-scale.md#timeout) (min.) |10 | korlátlan streameken működő | korlátlan streameken működő<sup>3</sup> |
 | Kimenő kapcsolatok maximális száma (példányonként) | 600 aktív (összesen 1200-as) | korlátlan streameken működő | korlátlan streameken működő |
@@ -26,7 +27,7 @@ ms.locfileid: "67050542"
 | [App Service-csomagok](../articles/app-service/overview-hosting-plans.md) | 100 / [régió](https://azure.microsoft.com/global-infrastructure/regions/) |az adott erőforráscsoport esetében 100 |az adott erőforráscsoport esetében 100 |
 | Storage<sup>6</sup> |1 GB |250 GB |50-1000 GB |
 | Egyéni tartományok alkalmazásonként</a> |500<sup>7</sup> |500 |500 |
-| Egyéni tartomány [SSL-támogatás](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |Nem támogatott, a helyettesítő tanúsítványt *. azurewebsites.net alapértelmezés szerint elérhető| korlátlan streameken működő SNI SSL és 1 IP SSL-kapcsolatot tartalmaz |korlátlan streameken működő SNI SSL és 1 IP SSL-kapcsolatot tartalmaz | 
+| Egyéni tartomány [SSL-támogatás](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |korlátlan streameken működő SNI SSL-kapcsolatot tartalmaz | korlátlan streameken működő SNI SSL és 1 IP SSL-kapcsolatot tartalmaz |korlátlan streameken működő SNI SSL és 1 IP SSL-kapcsolatot tartalmaz | 
 
 <sup>1</sup> adott korlátait a különféle App Service-csomagokkal, tekintse meg a [App Service-csomag korlátok](../articles/azure-subscription-service-limits.md#app-service-limits).  
 <sup>2</sup> alapértelmezés szerint az a funkciók 1.x modul az App Service-csomag időtúllépés a korlátlan streameken működő.  

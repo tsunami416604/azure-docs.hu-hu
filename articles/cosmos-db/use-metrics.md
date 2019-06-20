@@ -5,24 +5,48 @@ ms.service: cosmos-db
 author: kanshiG
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 06/18/2019
 ms.reviewer: sngun
-ms.openlocfilehash: b7633b75bbb6d37c68a562560a6459e35d03b810
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ef457fe8c21bc7e62f910a78913069df32bea1a3
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242538"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275684"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>A figyelő és hibakeresése az Azure Cosmos DB metrikákkal
 
-Az Azure Cosmos DB mérőszámait átviteli sebesség, a storage, a konzisztencia, a rendelkezésre állás és a késés. A [az Azure portal](https://portal.azure.com) ezeket a metrikákat egy összesített nézetét biztosítja. A részletes metrikákért, mind az ügyfél SDK-t és a [diagnosztikai naplók](./logging.md) érhetők el.
+Az Azure Cosmos DB mérőszámait átviteli sebesség, a storage, a konzisztencia, a rendelkezésre állás és a késés. Az Azure Portalon ezeket a metrikákat egy összesített nézetét biztosítja. Azure Cosmos DB-mérőszámok az Azure Monitor API is megtekintheti. Az Azure monitor mérőszámainak megtekintése kapcsolatos további információkért tekintse meg a [az Azure Monitor metrikáinak beolvasása](cosmos-db-azure-monitor-metrics.md) cikk. 
 
 Ez a cikk végigvezeti a gyakori használati esetek és hogyan az Azure Cosmos DB-metrikák elemzéséhez, és ezeket a problémákat hibakeresés használható. Metrikák legyenek gyűjtve 5 percenként, és hét napig őrzi meg.
 
+## <a name="view-metrics-from-azure-portal"></a>Metrikák megtekintése az Azure Portalról
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+
+1. Nyissa meg a **metrikák** ablaktáblán. Alapértelmezés szerint a metrikák panelen látható a tárhely, index, kérelem egységek metrikáit az Azure Cosmos-fiókjában található összes adatbázishoz. Ezek a metrikák, adatbázis, tárolót vagy régió szerint szűrheti. A metrikákat egy megadott idő részletesség, szűrheti is. További részleteket az átviteli sebesség, storage, rendelkezésre állási, késés és konzisztencia metrikák külön lapon találhatók. 
+
+   ![A cosmos DB teljesítmény-mérőszámok az Azure Portalon](./media/use-metrics/performance-metrics.png)
+
+A következő metrikák érhetők el a **metrikák** panelen: 
+
+* **Átviteli sebességre vonatkozó mérőszámok** – Ez a metrika felhasznált, vagy sikertelen volt (429 válaszkód) kérések számát jeleníti meg, mert túllépte a tároló kiosztott átviteli sebesség vagy tárolókapacitás.
+
+* **Storage-mérőszámok** – Ez a mérőszám a használati adatok és indexek mérete jeleníti meg.
+
+* **Rendelkezésre állási metrikák** – Ez a mérőszám a sikeres kérelmek százalékos megjeleníti az összes kérelmet az óránként. Az Azure Cosmos DB SLA-k sikerességi arányát határozza meg.
+
+* **Késés metrikák** – Ez a metrika az olvasási és írási késés, a régiót, ahol a fiók üzemel az Azure Cosmos DB által megfigyelt jeleníti meg. Egy georeplikált fiók régiók közötti késés jelenítheti meg. Ez a mérőszám a teljes körű késleltetése nem képviselik.
+
+* **Konzisztencia-metrikák** – Ez a mérőszám azt mutatja, hogyan végleges konzisztencia modell úgy dönt, a konzisztencia. Többrégiós-fiókok esetében ez a metrika is megjeleníti a replikációs késés kiválasztott régiók között.
+
+* **Rendszermérőszámokat** – Ez a metrika jeleníti meg, hány metaadat-kérelmek szolgáltatja a fő partíció. Azt is segít azonosítani a szabályozott kérelmeinek száma.
+
+Az alábbi szakaszok ismertetik a gyakori forgatókönyveket, melyekben használhatja az Azure Cosmos DB-metrikák. 
+
 ## <a name="understand-how-many-requests-are-succeeding-or-causing-errors"></a>Megismerheti, hogy hány kérésnek okozza a hibákat vagy sikeres
 
-A kezdéshez lépjen a [az Azure portal](https://portal.azure.com) , és keresse meg a **metrikák** panelen. A panelen keresse meg a **kérelmek száma túllépte a kapacitást 1 percenként** diagram. Ez a diagram egy perces által percenként összes kérelmet az állapotkódot alapján szegmentált jeleníti meg. HTTP-állapotkódok kapcsolatos további információkért lásd: [HTTP-állapotkódok az Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
+A kezdéshez lépjen a [az Azure portal](https://portal.azure.com) , és keresse meg a **metrikák** panelen. A panelen keresse meg a ** kérelmek száma túllépte a kapacitást egy 1 perces diagramban. Ez a diagram egy perces által percenként összes kérelmet az állapotkódot alapján szegmentált jeleníti meg. HTTP-állapotkódok kapcsolatos további információkért lásd: [HTTP-állapotkódok az Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
 
 A leggyakoribb állapot hibakód 429-es (sebessége korlátozza/szabályozás). Ez a hiba azt jelenti, hogy a kérelmek az Azure Cosmos DB több, mint a kiosztott átviteli sebesség. A leggyakoribb megoldás erre a problémára [vertikális felskálázás a RUs](./set-throughput.md) az adott gyűjtemény számára.
 
@@ -87,5 +111,6 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 Most már bemutattuk, figyelése és a hibakeresési problémák a metrikák az Azure Portal használatával. További információt a következő cikkek elolvasásával adatbázis-teljesítmény javításához érdemes:
 
+* Az Azure monitor mérőszámainak megtekintése kapcsolatos további információkért tekintse meg a [az Azure Monitor metrikáinak beolvasása](cosmos-db-azure-monitor-metrics.md) cikk. 
 * [Teljesítmény- és mérettesztelés az Azure Cosmos DB tesztelése](performance-testing.md)
 * [Az Azure Cosmos DB a teljesítménnyel kapcsolatos tippek](performance-tips.md)

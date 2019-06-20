@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/19/2019
+ms.date: 06/14/2019
 ms.author: haroldw
-ms.openlocfilehash: d8a9b82e51c837af6343ddf851545d02299aa527
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 834484278bb597bba4a5e1821d0b6572913a761d
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61473885"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67146999"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>OpenShift az Azure-beli üzembe helyezésének általános Előfeltételek
 
@@ -69,7 +69,7 @@ az group create --name keyvaultrg --location eastus
 ```
 
 ## <a name="create-a-key-vault"></a>Kulcstartó létrehozása
-Hozzon létre egy kulcstartót a fürthöz az SSH-kulcsok tárolására a [az keyvault létrehozása](/cli/azure/keyvault) parancsot. A kulcstároló nevének globálisan egyedinek kell lennie.
+Hozzon létre egy kulcstartót a fürthöz az SSH-kulcsok tárolására a [az keyvault létrehozása](/cli/azure/keyvault) parancsot. A kulcstároló nevének globálisan egyedinek kell lennie, és engedélyezni kell a sablon telepítése vagy a telepítés "KeyVaultParameterReferenceSecretRetrieveFailed" hibaüzenettel meghiúsul.
 
 Az alábbi példa létrehoz egy kulcstartót nevű *keyvault* a a *keyvaultrg* erőforráscsoportot:
 

@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 05/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 93fc9a4e9e44bd7e8db3d49fe390ebe273c45ce9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 638d7bfb0e396874415c1055c4b707a65caffa4e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66239044"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67269301"
 ---
 # <a name="access-data-from-your-datastores"></a>Az adattárolók érheti el adatait
 
@@ -59,7 +59,19 @@ ds = ws.get_default_datastore()
 
 ### <a name="register-your-own-datastore-with-the-workspace"></a>A saját adattárolója regisztrálja a munkaterület
 
-Ha rendelkezik meglévő Azure Storage, regisztrálhatja adattárolót, a munkaterületen.   A rendszer a register-módszerek a [ `Datastore` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) osztályt, és rendelkezik az űrlap register_azure_ *. 
+Ha rendelkezik meglévő Azure Storage, regisztrálhatja adattárolót, a munkaterületen. 
+
+<a name="store"></a>
+
+####  <a name="storage-guidance"></a>Storage útmutatója
+
+Azt javasoljuk, hogy a blob storage- és blob adattárolók. Standard és prémium szintű storage blobok számára érhetők el. Bár a drágább, javasoljuk, hogy a premium storage nagyobb átviteli sebességre képes növelni a tanítási sebessége miatt fut, particlularly Ha most végezzük nagyméretű ellen. Tekintse meg a [Azure díjkalkulátorát](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service) költségadatokra tárfiók.
+
+>[!NOTE]
+> Az Azure Machine Learning szolgáltatás adattárolók, más típusú támogatja, amelyek bizonyos forgatókönyvek esetén hasznosak lehetnek. Például ha train-adatbázisban tárolt adatok van szüksége, használhat a AzureSQLDatabaseDatastore vagy AzurePostgreSqlDatastore. Lásd: [Ez a táblázat](#matrix) a rendelkezésre álló adattároló esetében.
+
+#### <a name="register-your-datastore"></a>Az adattároló regisztrálása
+A rendszer a register-módszerek a [ `Datastore` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) osztályt, és rendelkezik az űrlap register_azure_ *.
 
 Az alábbi példák bemutatják, hogy egy Azure Blob-tároló vagy egy Azure-fájlmegosztás regisztrálásához adattárolót.
 
@@ -178,6 +190,7 @@ ds.path('./bar').as_download()
 > [!NOTE]
 > Bármely `ds` vagy `ds.path` objektumra mutat egy környezeti változó neve, a formátum `"$AZUREML_DATAREFERENCE_XXXX"` amelynek az értéke az a cél számítási csatlakoztatási/letöltési útja jelöli. Az adattároló-elérési útját a céloldali számítási nem lehet ugyanaz, mint a betanítási szkript végrehajtási útvonalát.
 
+<a name="matrix"></a>
 ### <a name="training-compute-and-datastore-matrix"></a>Képzési számítási és az adattárhoz mátrix
 
 A következő mátrix jeleníti meg a rendelkezésre álló adatok hozzáférés funkciói a különböző képzési számítási célokhoz és adattárolója forgatókönyvekhez. Tudjon meg többet a [képzés az Azure Machine Learning számítási céljainak](how-to-set-up-training-targets.md#compute-targets-for-training).
@@ -194,7 +207,7 @@ A következő mátrix jeleníti meg a rendelkezésre álló adatok hozzáférés
 | Azure DataLake Analytics       |–                                           |–                                           |[Gépi tanulás&nbsp;folyamatok](concept-ml-pipelines.md)             |–                                                                         |
 
 > [!NOTE]
-> Előfordulhat, hogy forgatókönyvek, amelyben magas iteratív, nagy mennyiségű adat folyamatok futtatása gyorsabb használatával [`as_download()`] helyett [`as_mount()`]; Ez kísérlettel érvényesíthetők.
+> Előfordulhat, hogy magas iteratív, amelyek nagy mennyiségű adat folyamatok gyorsabb használatával futtassa forgatókönyvek `as_download()` helyett `as_mount()`; ez kísérlettel érvényesíthetők.
 
 ### <a name="examples"></a>Példák 
 

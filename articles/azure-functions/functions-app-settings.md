@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: 02becd787fcc5f82efff7ef21feaf336fba3a26f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 62d359494050b188869d51d1e3975c823b9c0a76
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967588"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204943"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Az Azure Functions – alkalmazásbeállítási referencia
 
@@ -32,6 +32,10 @@ Az Application Insights kialakítási kulcsot, az Application Insights használa
 |Kulcs|Mintaérték|
 |---|------------|
 |ÁLLÍTANI AZ APPINSIGHTS_INSTRUMENTATIONKEY|5dbdd5e9-af77-484b-9032-64f83bb83bb|
+
+## <a name="azurefunctionsenvironment"></a>AZURE_FUNCTIONS_ENVIRONMENT
+
+Verzió 2.x verzióját a Functions-futtatókörnyezet, konfigurálja a futtatási környezetet alapuló alkalmazások működését. Ez az érték [inicializálása során beolvasott](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43). Beállíthat `AZURE_FUNCTIONS_ENVIRONMENT` bármely értékre, de [értékek](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) támogatottak: [Fejlesztési](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [átmeneti](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging), és [éles](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). Amikor `AZURE_FUNCTIONS_ENVIRONMENT` nincs beállítva, a rendszer alapértelmezés szerint `Production`. Ezt a beállítást kell használni, hanem `ASPNETCORE_ENVIRONMENT` a futtatókörnyezet beállítása. 
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
@@ -71,14 +75,6 @@ Bétaverzió funkciók engedélyezéséhez vesszővel tagolt listája. Ezek a je
 |Kulcs|Mintaérték|
 |---|------------|
 |AzureWebJobsFeatureFlags|feature1, feature2|
-
-## <a name="azurewebjobsscriptroot"></a>AzureWebJobsScriptRoot
-
-A gyökérkönyvtár elérési útja, a *host.json* fájl- és függvény mappák találhatók. A függvényalkalmazás, az alapértelmezett érték `%HOME%\site\wwwroot`.
-
-|Kulcs|Mintaérték|
-|---|------------|
-|AzureWebJobsScriptRoot|%Home%\site\wwwroot|
 
 ## <a name="azurewebjobssecretstoragetype"></a>AzureWebJobsSecretStorageType
 

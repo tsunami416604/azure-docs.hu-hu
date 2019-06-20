@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/18/2019
 ms.author: haroldw
-ms.openlocfilehash: 664099322bef3ac85d980fbe5e43dcc49cba862b
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 296bc42313ef80425004d3c9b43c6792cbaf97f4
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/17/2019
 ms.locfileid: "65411558"
 ---
 # <a name="deploy-openshift-container-platform-in-azure"></a>Az OpenShift Container Platform az Azure-beli üzembe helyezése
@@ -66,7 +66,7 @@ Az alábbi példa bemutatja egy nevű azuredeploy.parameters.json az összes sz�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "_artifactsLocation": {
@@ -282,10 +282,10 @@ Előfordulhat, hogy a különböző kiadások eltérő paraméterekkel, ezért e
 | `keyVaultName` | A létrehozott Key Vault neve |  |  |
 | `enableAzure` | Azure-felhő szolgáltató engedélyezése | true <br> false | true |
 | `aadClientId` | Az Azure Active Directory ügyfél-azonosító az egyszerű szolgáltatás Alkalmazásazonosítója néven is ismert |  |  |
-| `domainName` | Az egyéni tartománynév használata (ha alkalmazható) neve. Állítsa be a "none", ha nem teljesen privát fürt üzembe helyezése |  | nincs |
-| `masterClusterDnsType` | OpenShift webkonzol tartomány típusa. "default" infra fogja használni az eredeti DNS-címke nyilvános IP-cím. "egyéni" lehetővé teszi, hogy a saját nevének meghatározása | alapértelmezett <br> egyéni | alapértelmezett |
+| `domainName` | Az egyéni tartománynév használata (ha alkalmazható) neve. Állítsa be a "none", ha nem teljesen privát fürt üzembe helyezése |  | Egyik sem |
+| `masterClusterDnsType` | OpenShift webkonzol tartomány típusa. "default" infra fogja használni az eredeti DNS-címke nyilvános IP-cím. "egyéni" lehetővé teszi, hogy a saját nevének meghatározása | alapértelmezett <br> Egyéni | alapértelmezett |
 | `masterClusterDns` | Az OpenShift webkonzol eléréséhez, ha az "egyéni" a kiválasztott egyéni DNS-név `masterClusterDnsType` |  | console.contoso.com |
-| `routingSubDomainType` | Ha a "nipio", állítsa `routingSubDomain` nip.io fogja használni.  Használja a "custom", ha saját tartomány, amelyet az továbbításához használni kívánt | nipio <br> egyéni | nipio |
+| `routingSubDomainType` | Ha a "nipio", állítsa `routingSubDomain` nip.io fogja használni.  Használja a "custom", ha saját tartomány, amelyet az továbbításához használni kívánt | nipio <br> Egyéni | nipio |
 | `routingSubDomain` | A helyettesítő karakteres útválasztáshoz, ha a kiválasztott "egyéni", a használni kívánt DNS-név `routingSubDomainType` |  | apps.contoso.com |
 | `virtualNetworkNewOrExisting` | Válassza ki, hogy egy meglévő virtuális hálózatot, vagy hozzon létre egy új virtuális hálózatot | meglévő <br> új | új |
 | `virtualNetworkResourceGroupName` | Az új virtuális hálózatot, ha a kiválasztott "új" az erőforráscsoport nevét `virtualNetworkNewOrExisting` |  | resourceGroup().name |
@@ -301,16 +301,16 @@ Előfordulhat, hogy a különböző kiadások eltérő paraméterekkel, ezért e
 | `existingInfraSubnetReference` | Csomópontok infrastruktúra teljes leírása a meglévő IP-alhálózatot. Nincs szükség, ha létrehozása új virtuális hálózat / alhálózat |  |  |
 | `existingCnsSubnetReference` | Teljes CNS csomópontok meglévő alhálózat-hivatkozás. Nincs szükség, ha létrehozása új virtuális hálózat / alhálózat |  |  |
 | `existingNodeSubnetReference` | Teljes számítási csomópontok meglévő alhálózat-hivatkozás. Nincs szükség, ha létrehozása új virtuális hálózat / alhálózat |  |  |
-| `masterClusterType` | Adja meg, hogy a fürt használja-e a nyilvános vagy privát fő csomóponttal. Ha privát választ, a fő csomópontok nem az interneten egy nyilvános IP-címen keresztül kitéve. Ehelyett a magánhálózati IP-cím megadott fogja használni a `masterPrivateClusterIp` | nyilvános <br> privát | nyilvános |
+| `masterClusterType` | Adja meg, hogy a fürt használja-e a nyilvános vagy privát fő csomóponttal. Ha privát választ, a fő csomópontok nem az interneten egy nyilvános IP-címen keresztül kitéve. Ehelyett a magánhálózati IP-cím megadott fogja használni a `masterPrivateClusterIp` | Nyilvános <br> privát | Nyilvános |
 | `masterPrivateClusterIp` | Ha privát fő csomópont van kiválasztva, majd egy magánhálózati IP-címet kell megadni használatra a belső terheléselosztó fő csomóponttal. A statikus IP-cím a fő alhálózat és még nincs használatban a CIDR-blokk belül kell lennie. Ha nyilvános fő csomópont van kiválasztva, ez az érték nem használható, de továbbra is meg kell adni |  | 10.1.0.200 |
-| `routerClusterType` | Adja meg, hogy a fürt használja-e nyilvános vagy privát infra csomópontok. Ha privát választ, az infrastruktúra csomópontok nem érhetők el az interneten egy nyilvános IP-címen keresztül. Ehelyett a magánhálózati IP-cím megadott fogja használni a `routerPrivateClusterIp` | nyilvános <br> privát | nyilvános |
+| `routerClusterType` | Adja meg, hogy a fürt használja-e nyilvános vagy privát infra csomópontok. Ha privát választ, az infrastruktúra csomópontok nem érhetők el az interneten egy nyilvános IP-címen keresztül. Ehelyett a magánhálózati IP-cím megadott fogja használni a `routerPrivateClusterIp` | Nyilvános <br> privát | Nyilvános |
 | `routerPrivateClusterIp` | Ha privát infra csomópont ki van jelölve, majd egy magánhálózati IP-címet kell megadni a belső terheléselosztó által infra csomópontok használhatók. A statikus IP-cím a fő alhálózat és még nincs használatban a CIDR-blokk belül kell lennie. Ha nyilvános infra csomópont ki van jelölve, ez az érték nem használható, de továbbra is meg kell adni |  | 10.2.0.200 |
-| `routingCertType` | Egyéni tanúsítvány használata az útválasztási tartomány vagy az alapértelmezett önaláírt tanúsítvány – a kapott utasításokat követve **egyéni tanúsítványokat** szakasz | selfsigned <br> egyéni | selfsigned |
-| `masterCertType` | Egyéni tanúsítvány használata a fő tartomány vagy az alapértelmezett önaláírt tanúsítvány – a kapott utasításokat követve **egyéni tanúsítványokat** szakasz | selfsigned <br> egyéni | selfsigned |
+| `routingCertType` | Egyéni tanúsítvány használata az útválasztási tartomány vagy az alapértelmezett önaláírt tanúsítvány – a kapott utasításokat követve **egyéni tanúsítványokat** szakasz | selfsigned <br> Egyéni | selfsigned |
+| `masterCertType` | Egyéni tanúsítvány használata a fő tartomány vagy az alapértelmezett önaláírt tanúsítvány – a kapott utasításokat követve **egyéni tanúsítványokat** szakasz | selfsigned <br> Egyéni | selfsigned |
 
 <br>
 
-### <a name="deploy-using-azure-cli"></a>Üzembe helyezés az Azure CLI használatával
+### <a name="deploy-using-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
 
 > [!NOTE] 
 > A következő parancs használatához az Azure CLI-vel 2.0.8 vagy újabb. Az a parancssori felület verziójának ellenőrzéséhez az `az --version` parancsot. A parancssori felület verziójának frissítéséhez lásd [Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latesti).

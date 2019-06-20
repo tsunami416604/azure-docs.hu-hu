@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 123a24eb13de584d8e3b70d0d8b1173f583867c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9dcc959e51aa42fd6ef3173dba2aec8d9970deb1
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61341439"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154573"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Az első függvény létrehozása a Java és az eclipse-ben 
 
@@ -43,15 +43,15 @@ Erősen javasoljuk, hogy még a telepítés [Azure Functions Core Tools, 2. verz
 
 ## <a name="create-a-functions-project"></a>A Functions-projekt létrehozása
 
-1. Az eclipse-ben a **fájl** menüben, majd válassza ki **projekt**. 
-1. Nyissa meg a **Java-projektek** mappájában a **új projekt** ablakban, majd válassza **Maven-projektet**, majd **tovább**.
+1. Az eclipse-ben a **fájl** menüben, majd válassza ki **New -&gt; Maven-projektet**. 
 1. Elfogadhatja az alapértelmezett beállításokat, az a **új Maven-projektet** párbeszéd, és válassza ki **tovább**.
 1. Válassza ki **hozzáadása Archetype** , és adja hozzá a bejegyzést a [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype).
     - Archetype Csoportazonosító: következőt: com.microsoft.azure
     - Archetype összetevő-azonosító: az azure-functions-archetype
-    - Verzió: Legújabb verziót használja [központi adattára](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    - Verzió: Használja a legújabb verzió **1,22** a [központi adattára](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
     ![Eclipse Maven létrehozása](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
-1. Kattintson a **OK** , és adja meg a részleteket az aktuális projekthez, és végül **Befejezés**.
+1. Kattintson a **OK** majd **tovább** , adja meg az értékeket, például a következő pillanatkép (más, használjon egy másik appName **fabrikam-függvény-20170920120101928**), és végül **Befejezés**.
+    ![Az eclipse Maven create2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
 A Maven egy _artifactId_ nevű új mappában hozza létre a projektfájlokat. A projekt belül létrehozott kód egy egyszerű [HTTP által aktivált](/azure/azure-functions/functions-bindings-http-webhook) -függvény, amely a riasztást kiváltó HTTP-kérelem törzsét.
 
@@ -68,7 +68,7 @@ A modul a konzolablakban az leáll, ha elkészült a függvény tesztelése. Csa
 
 ### <a name="debug-the-function-in-eclipse"></a>Hibakeresés az eclipse-ben a függvény
 
-Az a **futtató** állítsa be az előző lépésben, a módosítás konfigurációs `azure-functions:run` való `mvn azure-functions:run -DenableDebug` , és futtassa a frissített konfigurációt, a függvényalkalmazás elindításához hibakeresési módban.
+Az a **futtató** állítsa be az előző lépésben, a módosítás konfigurációs `azure-functions:run` való `azure-functions:run -DenableDebug` , és futtassa a frissített konfigurációt, a függvényalkalmazás elindításához hibakeresési módban.
 
 Válassza ki a **futtatása** menüt, és nyissa meg **konfigurációk hibakeresése**. Válasszon **távoli Java-alkalmazás** , és hozzon létre egy újat. Adja meg a konfiguráció nevét, és adja meg a beállításokat. A port a hibakeresési port függvény gazdagépre, amely alapértelmezés szerint az által megnyitott összhangban kell lennie `5005`. A telepítés után kattintson a `Debug` hibakeresésének elkezdéséhez.
 

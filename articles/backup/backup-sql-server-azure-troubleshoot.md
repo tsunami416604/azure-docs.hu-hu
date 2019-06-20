@@ -6,14 +6,14 @@ author: anuragm
 manager: shivamg
 ms.service: backup
 ms.topic: article
-ms.date: 05/27/2019
+ms.date: 06/18/2019
 ms.author: anuragm
-ms.openlocfilehash: 8459bb451c4ff462ee816b986cafdbf776603917
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ed30a35f30d1b6b9fdcd43110ed93618a10dbc3
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306970"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204190"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Az Azure SQL Server biztonsági mentése – hibaelhárítás
 
@@ -25,8 +25,7 @@ A szolgáltatás figyelmet megtekintése, tekintse meg a cikket [Azure virtuáli
 
 ## <a name="sql-server-permissions"></a>SQL Server engedélyei
 
-Az SQL Server-adatbázis védelme nem konfigurálható a virtuális gépen a **AzureBackupWindowsWorkload** bővítményt telepíteni kell, hogy a virtuális gép. Ha a hibaüzenetet kapja **UserErrorSQLNoSysadminMembership**, ez azt jelenti, hogy az SQL-példány nem rendelkezik a szükséges biztonsági engedélyeket. Ez a hiba elhárításához kövesse [állítsa be a marketplace-az SQL virtuális gépek](backup-azure-sql-database.md#fix-sql-sysadmin-permissions).
-
+Az SQL Server-adatbázis védelme nem konfigurálható a virtuális gépen a **AzureBackupWindowsWorkload** bővítményt telepíteni kell, hogy a virtuális gép. Ha a hibaüzenetet kapja **UserErrorSQLNoSysadminMembership**, ez azt jelenti, hogy az SQL-példány nem rendelkezik a szükséges biztonsági engedélyeket. Ez a hiba elhárításához kövesse [állítsa be a marketplace-az SQL virtuális gépek](backup-azure-sql-database.md#set-vm-permissions).
 
 ## <a name="backup-type-unsupported"></a>Biztonsági mentés típusa nem támogatott
 

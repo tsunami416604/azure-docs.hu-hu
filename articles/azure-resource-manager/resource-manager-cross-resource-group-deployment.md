@@ -1,24 +1,17 @@
 ---
 title: Több előfizetés és erőforrás-csoportok az Azure erőforrások üzembe helyezése |} A Microsoft Docs
 description: Bemutatja, hogyan célcsoport egynél több Azure előfizetésben és erőforráscsoportban üzembe helyezés során.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3641833f0b55f20066302de350bfab17adfade0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33b0a998206b68f1807f5bfa3c3f39164798842c
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66128526"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205472"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Egynél több előfizetésen vagy erőforráscsoporton az Azure-erőforrások üzembe helyezése
 

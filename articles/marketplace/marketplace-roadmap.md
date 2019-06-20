@@ -6,24 +6,24 @@ author: qianw211
 manager: MaggiePucciEvans
 ms.service: marketplace
 ms.topic: article
-ms.date: 03/29/2019
+ms.date: 06/17/2019
 ms.author: BrianLevenson
-ms.openlocfilehash: 5e20d65160e66937668d9f504245a8c042d58fee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 39a0ea2ec173c8e3a2f79fd19dfa35ce2806d442
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66751654"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274880"
 ---
 # <a name="azure-marketplace-and-appsource-roadmap"></a>Az Azure Marketplace és az AppSource ütemterve
 
-Ez a dokumentum mit tartogat a jövő az Azure Marketplace, az appsource-ban és a kapcsolódó partner programok betekintést biztosít. A jelentős funkcióit, hogy sértették meg, vagy hozzávetőleges időszakon láthatók őket, és frissülni fog havonta rögzíti. Nem minden új szolgáltatások teljes listája de célja, hogy betekintést a fő befektetéseit. Ezek a szolgáltatáskészletek és kézbesítési időkeretének meghatározása jelenlegi, még változhatnak.
+Ez a dokumentum lehetővé teszi a Mit tartogat a jövő a Microsoft kereskedelmi Marketplace-en a kiadók, eladók és vásárlóink számára. A jelentős funkcióit, hogy sértették meg, vagy hozzávetőleges időszakon láthatók őket, és frissülni fog havonta rögzíti. Nem minden új szolgáltatások teljes listája de célja, hogy betekintést a fő befektetéseit. Ezek a szolgáltatáskészletek és kézbesítési időkereteknek jelenlegi, még változhatnak.
 
 Örömmel vesszük javaslatait! Beszélgetésbe a [Microsoft Partnerközösségéhez](https://www.microsoftpartnercommunity.com/) a legújabb frissítéseinek új funkciókat, programok és események.
 
 
 ## <a name="roadmap"></a>Ütemterv
-![](./media/marketplace-publishers-guide/roadmap.png)
+![Június Marketplace ütemterve](./media/marketplace-publishers-guide/roadmap-june19.png)
 
 
 ## <a name="recent-releases"></a>Verziók
@@ -41,6 +41,14 @@ Ha egy olyan képességet, azt törlődni fog az ütemterv részét képezi. Fun
 * [Marketplace-en helyeken és pénznemek](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)
 * [Értékesítői Insights](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/si-changes)
 
+### <a name="for-may-2019"></a>A 2019. május
+
+* [Microsoft Build Marketplace Blog](https://azure.microsoft.com/blog/announcing-new-marketplace-revenue-opportunities/)
+* [Marketplace-en május frissíti Blog](https://azure.microsoft.com/blog/microsoft-commercial-marketplace-updates-may-2019/)
+* Partnerközpont: [Fiók létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) / [fiók kezelése](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account) / [CPP történő áttelepítés](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)
+* Partnerközpont: [SaaS-ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer) / [közzétételi állapota](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status
+) / [létező ajánlat frissítése](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer) / [Analytics ajánlat](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics)
+* [Támogatás kérése a Partner Center Marketplace-en](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)
 
 ## <a name="next-steps"></a>További lépések
 

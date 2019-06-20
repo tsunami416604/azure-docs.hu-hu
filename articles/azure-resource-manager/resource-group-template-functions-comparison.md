@@ -1,25 +1,17 @@
 ---
 title: Az Azure Resource Manager sablonfüggvényei – összehasonlítás |} A Microsoft Docs
 description: A functions az Azure Resource Manager-sablon használatával értékek összehasonlítása ismerteti.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 6591a75577670f5bb50c1275af7e51e9b8328d50
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0eafadd4049baea58aa882b3421eaa6a684a3a38
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66128683"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205502"
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Összehasonlító függvények az Azure Resource Manager-sablonok
 
@@ -42,8 +34,8 @@ Ellenőrzi, hogy a két érték egyenlő egymással.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |int, string, tömb vagy objektum |Az első érték egyenlő kereséséhez. |
-| arg2 |Igen |int, string, tömb vagy objektum |A második érték egyenlő kereséséhez. |
+| arg1 |Igen |int, string, array vagy object |Az első érték egyenlő kereséséhez. |
+| arg2 |Igen |int, string, array vagy object |A második érték egyenlő kereséséhez. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 

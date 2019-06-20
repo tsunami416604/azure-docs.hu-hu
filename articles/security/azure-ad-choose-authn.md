@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: cc41581232b331368b44fc7190eadb94516824c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 35fb529be28fc985460421c185872c7e35603341
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67119315"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274275"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Válassza ki a megfelelő hitelesítési módszert az Azure Active Directory hibrid identitáskezelési megoldás 
 
@@ -101,7 +101,7 @@ Döntési kérdések adatai:
 * **Megfontolandó szempontok**. Jelenleg a Jelszókivonat-szinkronizálás nem azonnal érvénybe lépteti az helyi fiók Államokban módosításokat. Ebben a helyzetben a felhasználó hozzáfér a felhőalkalmazásokhoz, amíg az Azure AD szinkronizálása a felhasználói fiók állapota. Ez a korlátozás áthidalható futtatásával egy új szinkronizálási ciklust követően a rendszergazdák a frissítéseket a helyi felhasználói fiók állapotok tömeges szervezeteknek érdemes. Egy példa a fiókok letiltása.
 
 > [!NOTE]
-> A jelszó lejárt, és a fiók zárolt állapotok jelenleg az Azure AD az Azure AD Connect nem szinkronizálja. 
+> A jelszó lejárt, és a fiók zárolt állapotok jelenleg az Azure AD az Azure AD Connect nem szinkronizálja. Ha módosítja egy felhasználó jelszavát, és állítsa a *kell változtatni a jelszót a következő bejelentkezéskor* jelző, a Jelszókivonat nem lesz(nek) szinkronizálva az Azure AD az Azure AD Connect, amíg a felhasználó módosíthatja a jelszavát.
 
 Tekintse meg [Jelszókivonat-szinkronizálás megvalósítása](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) a telepítési lépéseket.
 

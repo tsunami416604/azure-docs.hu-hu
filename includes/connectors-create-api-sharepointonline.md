@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: estfan
 ms.openlocfilehash: 0cabc58d856c09accd9b1924fe63d6518b1cb9ef
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129997"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205779"
 ---
 Használata esetén csatlakozhassanak az **SharePoint online-hoz**, meg kell adnia az identitás (felhasználónév és jelszó, intelligens kártya hitelesítő adatait, stb.) a SharePoint online-hoz. Ön már megtörtént a hitelesítést követően folytathatja a SharePoint Online-összekötő használatára a logikai alkalmazásban. 
 

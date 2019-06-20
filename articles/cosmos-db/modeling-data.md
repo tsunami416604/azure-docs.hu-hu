@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: rimman
 ms.custom: rimman
-ms.openlocfilehash: 956f63dd92c82df0998cfaca76c7ecf5b10f053e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3cf075c2909b35bb08ca4cb24aaa3b99597f34c6
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65953853"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203512"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Az Azure Cosmos DB-ben adatmodellezés
 
@@ -176,9 +176,9 @@ Készlet *zaza* egyetlen alkalommal több száz kerülhetnek nap és a felhaszn�
 
 ## <a name="referencing-data"></a>Hivatkozó adatok
 
-Így sok esetben szépen adatok beágyazása működik, de egyértelmű, hogy vannak helyzetek, amikor denormalizálni az adatokat, érdemes további problémákat okozhat. Tehát Mi a teendő most?
+Sok esetben szépen adatok beágyazása működik, de vannak helyzetek, amikor denormalizálni az adatokat, érdemes további problémákat okozhat. Tehát Mi a teendő most?
 
-A relációs adatbázisok nem állnak az egyetlen hely, ahol az entitások közötti kapcsolatokat hozhat létre. A dokumentum-adatbázis, az információt, hogy ténylegesen vonatkozik, adatok, az egyéb dokumentumokat egy dokumentum rendelkezhet. Most szeretnék vagyok nem javasolni akár egy percet, hogy készítünk rendszereket, akkor lehet jobban megfelel az Azure Cosmos DB a relációs vagy egyéb dokumentum-adatbázist, de egyszerű kapcsolatok rendben, és hasznos lehet.
+A relációs adatbázisok nem állnak az egyetlen hely, ahol az entitások közötti kapcsolatokat hozhat létre. A dokumentum-adatbázis, az információt, amely kapcsolódik az adatok az egyéb dokumentumokat egy dokumentum rendelkezhet. Rendszereket, amelyek akkor lehet jobban megfelel az Azure Cosmos DB a relációs vagy egyéb dokumentum-adatbázist nem ajánlott, de egyszerű kapcsolatok rendben, és hasznos lehet.
 
 A JSON az alábbi a példában a tőzsdei portfólió a korábban használandó választottuk, de ezúttal nevezzük a portfólió helyett beágyazza a tőzsdei elemet. Ez esetben, amikor a tőzsdei elem gyakran megváltoznak egy nap csak dokumentumot frissíteni kell a készlet egyetlen dokumentum.
 

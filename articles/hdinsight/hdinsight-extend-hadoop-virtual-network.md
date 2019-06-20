@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/04/2019
-ms.openlocfilehash: 4bfbce7dd985f3ebf67fde671d83acf30623b641
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/17/2019
+ms.openlocfilehash: 0dbcc99850d0a8b3b7306fac2bd8f89e6c941e4c
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055406"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67163662"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Az Azure Virtual Network használata Azure HDInsight kiterjesztése
 
@@ -25,7 +25,7 @@ Ismerje meg, hogyan használható a HDInsight- [Azure Virtual Network](../virtua
 * Közvetlen hozzáférés [Apache Hadoop](https://hadoop.apache.org/) szolgáltatásokat, amelyek nem érhető el nyilvánosan az interneten keresztül. Ha például [Apache Kafka](https://kafka.apache.org/) API-k vagy a [Apache HBase](https://hbase.apache.org/) Java API-t.
 
 > [!IMPORTANT]  
-> 2019\. február 28., miután a hálózati erőforrások (például a hálózati adapterek, LBs stb.) egy virtuális hálózaton létrehozott új fürtök esetében a HDInsight fürt azonos erőforráscsoportban jön létre. Korábban ezeket az erőforrásokat kiépített virtuális hálózat az erőforráscsoportban. Nem történik változás az aktuális futó fürtök és ezeket a virtuális hálózat nélkül létrehozott fürtök.
+> 2019. február 28., miután a hálózati erőforrások (például a hálózati adapterek, LBs stb.) egy virtuális hálózaton létrehozott új fürtök esetében a HDInsight fürt azonos erőforráscsoportban jön létre. Korábban ezeket az erőforrásokat kiépített virtuális hálózat az erőforráscsoportban. Nem történik változás az aktuális futó fürtök és ezeket a virtuális hálózat nélkül létrehozott fürtök.
 
 ## <a name="prerequisites-for-code-samples-and-examples"></a>Kódminták és példák előfeltételei
 
@@ -211,13 +211,13 @@ Az Apache Ambari és a más weblapok, a virtuális hálózaton keresztül csatla
 
 ## <a id="networktraffic"></a> Hálózati forgalom szabályozása
 
-### <a name="controlling-inbound-traffic-to-hdinsight-clusters"></a>HDInsight-fürtök a bejövő forgalom szabályozása
+### <a name="techniques-for-controlling-inbound-and-outbound-traffic-to-hdinsight-clusters"></a>A HDInsight-fürtök a bejövő és kimenő forgalom szabályozása technikák
 
 Egy Azure-beli virtuális hálózatok hálózati forgalmához szabályozhatja a következő módszerekkel:
 
 * **Hálózati biztonsági csoportok** (NSG) lehetővé teszi a hálózati bejövő és kimenő forgalom szűrését. További információkért lásd: a [hálózati biztonsági csoportokkal a hálózati forgalom szűrése](../virtual-network/security-overview.md) dokumentumot.
 
-* **Hálózati virtuális berendezések** replikálni, például a tűzfalak és az útválasztók eszközök működésével. További információkért lásd: a [hálózati berendezések](https://azure.microsoft.com/solutions/network-appliances) dokumentumot.
+* **Hálózati virtuális berendezések** (NVA) csak a kimenő forgalmat is használható. Az nva-k az eszközök, például a tűzfalak és az útválasztók funkciójának replikálni.  További információkért lásd: a [hálózati berendezések](https://azure.microsoft.com/solutions/network-appliances) dokumentumot.
 
 Felügyelt szolgáltatásként HDInsight a HDInsight állapota nem korlátozott hozzáférésre van szüksége, és felügyeleti szolgáltatásokat, mind a bejövő és kimenő forgalmat a virtuális hálózatról. Az NSG-k használata esetén győződjön meg róla, hogy ezek a szolgáltatások továbbra is kommunikál HDInsight-fürt.
 

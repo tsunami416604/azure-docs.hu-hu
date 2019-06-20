@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 6425fdfe89ca2f4c47aaf0e5ffd1dac7767b5020
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 536d7a572eddc2cf75f6ce135c3cd4f4f2635416
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057934"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203295"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Másolja az adatokat, vagy az Azure Data Lake Storage Gen2 Azure Data Factory használatával
 
@@ -60,6 +60,9 @@ Az Azure Data Lake Storage Gen2-összekötő a következő hitelesítési típus
 - [Egyszerű szolgáltatás hitelesítése](#service-principal-authentication)
 - [Felügyelt identitások Azure-erőforrások hitelesítéshez](#managed-identity)
 
+>[!NOTE]
+>A PolyBase az adatok betöltése az SQL Data Warehouse, ha a Data Lake Storage Gen2 forrás beállítása a virtuális hálózati végpont, ha szükséges, a PolyBase által felügyelt identitás hitelesítést kell használnia. Tekintse meg a [felügyelt identitás hitelesítési](#managed-identity) további konfigurációs az Előfeltételek szakaszban.
+
 ### <a name="account-key-authentication"></a>Fiók kulcsos hitelesítés
 
 A storage-fiók kulcsos hitelesítést használ, a következő tulajdonságok támogatottak:
@@ -103,10 +106,10 @@ Egyszerű szolgáltatásnév hitelesítése használatához kövesse az alábbi 
     - Alkalmazáskulcs
     - Bérlőazonosító
 
-2. Adja meg a szolgáltatás egyszerű megfelelő engedéllyel.
+2. Adja meg a szolgáltatás egyszerű megfelelő engedéllyel. Engedély a Data Lake Storage Gen2 a működéséről további [hozzáférés-vezérlési listák a fájlok és könyvtárak](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)
 
-    - **Forrásként**: Az Azure Storage Explorerben, adjon meg legalább **Olvasás + végrehajtás** listázása, és másolja a fájlokat a mappákban és almappáiban engedéllyel. Vagy biztosíthat **olvasási** engedéllyel egy fájl másolása. Másik lehetőségként a hozzáférés-vezérlés (IAM), adja meg legalább az **Storage-Blobadatok olvasója** szerepkör.
-    - **Fogadóként**: A Storage Explorerben, adjon meg legalább **írás + végrehajtás** engedély szükséges gyermekelemek létrehozásához a mappában. Másik lehetőségként a hozzáférés-vezérlés (IAM), adja meg legalább az **Storage-Blobadatok Közreműködője** szerepkör.
+    - **Forrásként**: A Storage Explorerben, adjon meg legalább **Execute** kezdve a forrásrendszerben fájlt, az engedély **olvasási** engedéllyel a fájlok másolásához. Másik lehetőségként a hozzáférés-vezérlés (IAM), adja meg legalább az **Storage-Blobadatok olvasója** szerepkör.
+    - **Fogadóként**: A Storage Explorerben, adjon meg legalább **Execute** kezdve a fogadó fájlrendszerből mentén engedély **írási** a fogadó mappa engedéllyel. Másik lehetőségként a hozzáférés-vezérlés (IAM), adja meg legalább az **Storage-Blobadatok Közreműködője** szerepkör.
 
 >[!NOTE]
 >A lista mappákat a fiók szintjén, vagy a kapcsolat teszteléséhez, be kell állítania a szolgáltatásnév az engedély megadása az engedély **tárfiók IAM a "Storage-Blobadatok olvasója" engedéllyel rendelkező**. Ez igaz, ha használja a:
@@ -157,10 +160,10 @@ Azure-erőforrás-hitelesítéshez használandó felügyelt identitások, köves
 
 1. [A Data Factory által felügyelt azonosító információkat lekérni](data-factory-service-identity.md#retrieve-managed-identity) értékét másolásával az **szolgáltatás identitás Alkalmazásazonosítója** az előállító együtt jönnek létre.
 
-2. Adja meg a felügyelt identitás megfelelő engedéllyel.
+2. Adja meg a felügyelt identitás megfelelő engedéllyel. Engedély a Data Lake Storage Gen2 a működéséről további [hozzáférés-vezérlési listák a fájlok és könyvtárak](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
 
-    - **Forrásként**: A Storage Explorerben, adjon meg legalább **Olvasás + végrehajtás** listázása, és másolja a fájlokat a mappákban és almappáiban engedéllyel. Vagy biztosíthat **olvasási** engedéllyel egy fájl másolása. Másik lehetőségként a hozzáférés-vezérlés (IAM), adja meg legalább az **Storage-Blobadatok olvasója** szerepkör.
-    - **Fogadóként**: A Storage Explorerben, adjon meg legalább **írás + végrehajtás** engedély szükséges gyermekelemek létrehozásához a mappában. Másik lehetőségként a hozzáférés-vezérlés (IAM), adja meg legalább az **Storage-Blobadatok Közreműködője** szerepkör.
+    - **Forrásként**: A Storage Explorerben, adjon meg legalább **Execute** kezdve a forrásrendszerben fájlt, az engedély **olvasási** engedéllyel a fájlok másolásához. Másik lehetőségként a hozzáférés-vezérlés (IAM), adja meg legalább az **Storage-Blobadatok olvasója** szerepkör.
+    - **Fogadóként**: A Storage Explorerben, adjon meg legalább **Execute** kezdve a fogadó fájlrendszerből mentén engedély **írási** a fogadó mappa engedéllyel. Másik lehetőségként a hozzáférés-vezérlés (IAM), adja meg legalább az **Storage-Blobadatok Közreműködője** szerepkör.
 
 >[!NOTE]
 >Listára mappákat a fiók szintjén, vagy a kapcsolat teszteléséhez, be kell állítania az engedély az engedély megadása a felügyelt identitás **IAM a "Storage-Blobadatok olvasója" engedéllyel rendelkező tárfiók**. Ez igaz, ha használja a:
@@ -169,7 +172,7 @@ Azure-erőforrás-hitelesítéshez használandó felügyelt identitások, köves
 >Ha a fiók szintjén engedély kapcsolatos elvárásainak, kihagyhatja kapcsolat tesztelése és a bemeneti elérési út manuális létrehozása alatt. A másolási tevékenység továbbra is működik, amíg a felügyelt identitást kapnak a átmásolni a fájlokat a megfelelő engedéllyel rendelkező.
 
 >[!IMPORTANT]
->Ha a PolyBase használatával adatok betöltése az Data Lake Storage Gen2 az SQL Data Warehouse, ha a Data Lake Storage Gen2-felügyelt identitásnak hitelesítést használ, győződjön meg arról is lépéseket 1. és 2 a [Ez az útmutató](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Kövesse az utasításokat az SQL Database-kiszolgáló regisztrálása az Azure Active Directoryval (Azure AD). A Storage-Blobadatok Közreműködője szerepkör, szerepkör alapú hozzáférés-vezérlést az SQL Database-kiszolgálóhoz is hozzárendeli. A többi Data Factory kezeli. Ha a Data Lake Storage Gen2-adatok betöltése a PolyBase használatával az Azure Virtual Network végpont van konfigurálva, felügyelt identitás hitelesítést kell használnia.
+>Ha a PolyBase használatával adatok betöltése az Data Lake Storage Gen2 az SQL Data Warehouse, a Data Lake Storage Gen2 felügyelt identitás-hitelesítés használata esetén, győződjön meg arról is lépéseket 1. és 2 a [Ez az útmutató](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) 1) regisztrálja az SQL Adatbázis-kiszolgáló az Azure Active Directoryval (Azure AD) és 2) a Storage-Blobadatok Közreműködője szerepkör hozzárendelése az SQL Database-kiszolgáló; a Data Factory kezeli, a többi. Ha a Data Lake Storage Gen2 van konfigurálva az Azure Virtual Network-végponttal, az adatok betöltése a PolyBase használatával kell használnia felügyelt identitás hitelesítési PolyBase igényeinek megfelelően.
 
 Ezek a Tulajdonságok támogatottak a társított szolgáltatást:
 

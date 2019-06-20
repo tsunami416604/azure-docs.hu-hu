@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
-ms.openlocfilehash: b6f0ce1939b2a78ca191d2feb0140506d130b9b0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e08b1d8f847536101d44db266be5cd34e3e6a74c
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60648350"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155314"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Offline biztonsági mentési munkafolyamat az Azure Backupban
 Az Azure Backup rendelkezik, amely a hálózati és tárolási költségek csökkentése az Azure-ban adatok kezdeti teljes biztonsági mentés során számos beépített hatékonyság. Kezdeti teljes biztonsági mentés általában nagy mennyiségű adat átvitele, és azt követő biztonsági mentéseket, hogy csak a változásokat/szalagnak transfer képest nagyobb hálózati sávszélesség szükséges. Kapcsolat nélküli beültetéssel is a folyamatot az Azure Backup lemez is használható az offline biztonsági mentési adatok feltöltése az Azure-bA.
@@ -76,7 +76,7 @@ Ez a szakasz ismerteti az offline biztonsági mentési munkafolyamat, így az ad
    A leírás a bemeneti adatok a következőképpen történik:
 
     * **Átmeneti hely**: Az ideiglenes tárolási hely, amelyhez a kezdeti biztonsági másolatot íródik. Átmeneti hely lehet egy hálózati megosztásra vagy a helyi számítógépen. Ha a másolási számítógép és a forrásoldali számítógép eltérő, javasoljuk, hogy a teljes elérési útja az előkészítési hely megadása.
-    * **Azure Resource Manager Storage Account**: A Resource Manager típusú bármely Azure-előfizetésében lévő tárfiók neve.
+    * **Azure Resource Manager Storage Account**: Az a Resource Manager típusú tárfiók neve (általános célú v1 vagy általános célú v2) minden olyan Azure-előfizetésében.
     * **Az Azure Storage-tároló**: A cél storage-blobból az Azure Storage-fiók, amelybe importálják a biztonsági mentési adatok másolását a Recovery Services-tároló előtt a neve.
     * **Azure-előfizetés azonosítója**: Ha az Azure Storage-fiók létrehozása az Azure-előfizetés azonosítója.
     * **Azure-beli importálási feladat neve**: Az egyedi név szerint mely Azure Import szolgáltatás és az Azure Backup nyomon követése az elküldött adatok átvitelét az lemezeket az Azure-bA. 

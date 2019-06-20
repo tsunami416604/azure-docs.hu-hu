@@ -1,5 +1,5 @@
 ---
-title: Csomópontok vásárolhat CloudSimple – Azure VMware-megoldások számára
+title: VMware CloudSimple – Azure-megoldások kiépítése-csomópont
 description: Ismerje meg, hogyan adhat hozzá csomópontokat a VMWare CloudSimple üzembe helyezéssel
 author: dikamath
 ms.author: dikamath
@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9f5108207c4f8debc65b9d1fe625ae7033ca4e70
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33de07663c91f12d4e10c4661b841cd2dbe5a162
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64577180"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165261"
 ---
-# <a name="purchase-nodes-for-vmware-solution-by-cloudsimple---azure"></a>Csomópontok vásárolhat CloudSimple – Azure VMware-megoldások számára
+# <a name="provision-nodes-for-vmware-solution-by-cloudsimple---azure"></a>VMware CloudSimple – Azure-megoldások kiépítése-csomópont
 
 Az Azure Portalon csomópontok kiépítésére. Ezután beállíthatja a használatalapú – mint-akkor lépjen kapacitás CloudSimple magánfelhő környezete számára.
 
-## <a name="add-a-purchased-node-to-your-cloudsimple-private-cloud"></a>A megvásárolt csomópont hozzáadása a CloudSimple magánfelhőben
+## <a name="add-a-provisioned-node-to-your-cloudsimple-private-cloud"></a>A CloudSimple magánfelhő számára kiosztott csomópont hozzáadása
 
 1. Válassza az **Összes szolgáltatás** elemet.
 2. Keresse meg **CloudSimple csomópontok**.
@@ -31,7 +31,7 @@ Az Azure Portalon csomópontok kiépítésére. Ezután beállíthatja a haszná
 
     ![CloudSimple csomópontok hozzáadása](media/create-cloudsimple-node-add.png)
 
-5. Válassza ki az előfizetést, ahol szeretné vásárolni CloudSimple csomópontok.
+5. Válassza ki az előfizetést, ahol szeretné CloudSimple csomópontok kiépítésére.
 6. Válassza ki az erőforráscsoportot, a csomópontok. Egy új erőforráscsoport hozzáadásához kattintson **hozzon létre új**.
 7. Adja meg az előtagot a csomópontok azonosításához.
 8. Válassza ki a csomópont erőforrások helyét.

@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/05/2019
-ms.openlocfilehash: 02bc8835ddb163d81f389e13b21b88adca55cb2f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bd0e8099be5422d561541aeb8911c9a1610befcb
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67082624"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272762"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-image"></a>Modell üzembe helyezése egy egyéni Docker-rendszerkép használata
 
@@ -43,6 +43,7 @@ Ez a dokumentum két szakaszra van osztva:
 * Az Azure Machine Learning szolgáltatás munkacsoporthoz. További információkért lásd: a [hozzon létre egy munkaterületet](setup-create-workspace.md) cikk.
 * The Azure Machine Learning SDK. Python SDK-t című szakaszában talál további információt a [hozzon létre egy munkaterületet](setup-create-workspace.md#sdk) cikk.
 * A [az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* A [az Azure Machine Learning CLI-bővítmény](reference-azure-machine-learning-cli.md).
 * Egy [Azure Container Registry](/azure/container-registry) vagy másik Docker-jegyzék, amely az interneten érhető el.
 * A jelen dokumentumban leírt lépések azt feltételezik, hogy Ön ismeri a létrehozásával és használatával egy __következtetésekhez konfigurációs__ objektum modell központi telepítésének részeként. További információ "üzembe helyezés előkészítése" című szakaszában talál [az üzembe helyezés, és hogyan](how-to-deploy-and-where.md#prepare-to-deploy).
 

@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 05/29/2019
 ms.author: apimpm
-ms.openlocfilehash: a8bfa7c5baa316b4019480bfc146b6cc61eff979
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d74552f2d4bea495c0278ef6ed4a408188752a7e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66141305"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274971"
 ---
 # <a name="configure-a-custom-domain-name"></a>Egyéni tartománynév konfigurálása 
 
@@ -49,7 +49,7 @@ Ebben a cikkben leírt lépések végrehajtásához rendelkeznie:
    + **SCM** (alapértelmezett érték: `<apim-service-name>.scm.azure-api.net`).
 
      >[!NOTE]
-     > A végpontok egy része vagy azokat frissítheti. Gyakran, az ügyfelek frissítéséhez **Proxy** (az URL-cím segítségével az API Management szolgáltatáson keresztül közzétett API-t) és **portál** (a fejlesztői portál URL-cím). **Felügyeleti** és **SCM** végpontok belsőleg az APIM-ügyfelek, és így kevésbé gyakran hozzárendelt egy egyéni tartomány nevét.
+     > A végpontok egy része vagy azokat frissítheti. Gyakran, az ügyfelek frissítéséhez **Proxy** (az URL-cím segítségével az API Management szolgáltatáson keresztül közzétett API-t) és **portál** (a fejlesztői portál URL-cím). **Felügyeleti** és **SCM** végpontok belsőleg az APIM-ügyfelek, és így kevésbé gyakran hozzárendelt egy egyéni tartomány nevét. A legtöbb esetben csak egyetlen egyéni tartománynevet is állítható be egy adott végpontot. Azonban a **prémium** csomag támogatja a több állomásnevet a **Proxy** végpont.  
 
 1. Válassza ki a frissíteni kívánt végpontot. 
 1. Kattintson a jobb oldali ablakban **egyéni**.

@@ -1,11 +1,11 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező RealtimeBoard |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és RealtimeBoard között.
+title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Miro |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Miro között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: barbkess
+ms.reviewer: celested
 ms.assetid: a37fc1c0-4bae-4173-989b-00de53a0076f
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -13,185 +13,128 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/27/2019
+ms.date: 06/17/2019
 ms.author: jeedes
-ms.openlocfilehash: b68f7d0a6b5e60ffab2232a9d6ba502e37801410
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3fa1a3fff38903dc22ab60a6d1b68d611011f5c3
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67093094"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274761"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-realtimeboard"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező RealtimeBoard
+# <a name="tutorial-integrate-miro-with-azure-active-directory"></a>Oktatóanyag: Miro integrálása az Azure Active Directoryval
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan RealtimeBoard integrálása az Azure Active Directory (Azure AD).
-RealtimeBoard integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebben az oktatóanyagban elsajátíthatja a Miro integrálása az Azure Active Directory (Azure AD) lesz. Miro integrálása az Azure ad-vel, akkor a következőket teheti:
 
-* Szabályozhatja, ki férhet hozzá RealtimeBoard Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve RealtimeBoard (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* Szabályozza, ki férhet hozzá Miro Azure AD-ben.
+* Engedélyezze a felhasználóknak, hogy lehet automatikusan bejelentkezve Miro az Azure AD-fiókjukat.
 * A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-RealtimeBoard az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Első lépésként szüksége van a következő elemek:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* RealtimeBoard egyszeri bejelentkezés engedélyezve van az előfizetés
+* Az Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, hozzájuthat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+* Miro egyszeri bejelentkezés (SSO) engedélyezve van az előfizetésben.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD SSO-t egy tesztkörnyezetben. Miro támogatja **SP és IDP** által kezdeményezett egyszeri Bejelentkezést, és támogatja a **igény szerinti** felhasználóátadást készíthet elő.
 
-* Támogatja a RealtimeBoard **SP** és **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés
+## <a name="adding-miro-from-the-gallery"></a>Miro hozzáadása a katalógusból
 
-* Támogatja a RealtimeBoard **igény szerinti** felhasználók átadása
+Az Azure AD integrálása a Miro konfigurálásához hozzá kell Miro a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-## <a name="adding-realtimeboard-from-the-gallery"></a>RealtimeBoard hozzáadása a katalógusból
-
-Az Azure AD integrálása a RealtimeBoard konfigurálásához hozzá kell RealtimeBoard a katalógusból a felügyelt SaaS-alkalmazások listájára.
-
-**RealtimeBoard hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
-
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
-
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
-
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
-
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
-
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
-
-    ![Az új alkalmazás gomb](common/add-new-app.png)
-
-4. A Keresés mezőbe írja be a **RealtimeBoard**válassza **RealtimeBoard** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
-
-     ![Az eredmények listájában RealtimeBoard](common/search-new-app.png)
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatás.
+1. Navigáljon a **vállalati alkalmazások** majd **minden alkalmazás**.
+1. Új alkalmazás hozzáadásához válassza **új alkalmazás**.
+1. Az a **Hozzáadás a katalógusból** területén írja be a **Miro** kifejezést a keresőmezőbe.
+1. Válassza ki **Miro** az eredmények panelen, és vegye fel az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőn.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az RealtimeBoard nevű tesztfelhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó RealtimeBoard hivatkozás kapcsolata kell létrehozni.
+Konfigurálás és tesztelés az Azure AD SSO nevű tesztfelhasználó használata Miro **B.Simon**. Az SSO működjön kell Miro az Azure AD-felhasználót és a kapcsolódó felhasználó közötti hivatkozás kapcsolatot hozhat létre.
 
-Az Azure AD egyszeri bejelentkezés az RealtimeBoard tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD SSO Miro tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[RealtimeBoard egyszeri bejelentkezés konfigurálása](#configure-realtimeboard-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre RealtimeBoard tesztfelhasználót](#create-realtimeboard-test-user)**  – egy megfelelője a Britta Simon RealtimeBoard, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD SSO konfigurálása](#configure-azure-ad-sso)**  ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Konfigurálja a Miro](#configure-miro)**  alkalmazás oldalán az egyszeri bejelentkezési beállításainak konfigurálására.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés az B.Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  B.Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre Miro tesztfelhasználót](#create-miro-test-user)**  van egy megfelelője a B.Simon Miro, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+6. **[Egyszeri bejelentkezés tesztelése](#test-sso)**  ellenőrzése, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO konfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyezése az Azure Portalon.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés RealtimeBoard, hajtsa végre az alábbi lépéseket:
+1. Az a [az Azure portal](https://portal.azure.com/), a a **Miro** alkalmazás integráció lapon keresse meg a **kezelése** szakaszt, és válassza **egyszeri bejelentkezési**.
+1. Az a **egyszeri bejelentkezési módszer** lapra, jelölje be **SAML**.
+1. Az a **állítsa be egyszeri bejelentkezést az SAML** lap, kattintson a Szerkesztés/toll ikonra a **alapszintű SAML-konfigurációja** beállításait módosíthatja.
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **RealtimeBoard** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
-
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
-
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
-
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
-
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
 4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre a következő lépést:
-
-    ![RealtimeBoard tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-identifier.png)
 
     Az a **azonosító** szövegmezőbe írja be egy URL-címe:  `https://realtimeboard.com`
 
 5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
-    ![image](common/both-preintegrated-signon.png)
-
     Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címe:  `https://realtimeboard.com/sso/saml`
 
-6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+1. A a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén található **összevonási metaadatainak XML** válassza **letöltése** töltse le a tanúsítványt, és menti azt a számítógépet.
 
-    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
+   ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-7. Az a **RealtimeBoard beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+1. Az a **Miro beállítása** területén másolja a megfelelő URL-címe szerint.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+   ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+### <a name="configure-miro"></a>Miro konfigurálása
 
-    b. Azure AD-azonosító
+Az egyszeri bejelentkezés konfigurálása **Miro** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** majd megfelelő másolt URL-címek az Azure Portalról Miro támogatási csapatával. Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon
 
-    c. Kijelentkezési URL
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-### <a name="configure-realtimeboard-single-sign-on"></a>RealtimeBoard egyszeri bejelentkezés konfigurálása
+Ebben a szakaszban az Azure Portalon B.Simon nevű tesztfelhasználó fog létrehozni.
 
-Az egyszeri bejelentkezés konfigurálása **RealtimeBoard** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** majd megfelelő másolt URL-címek az Azure Portalról RealtimeBoard támogatási csapatával. Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
-
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
-
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
-
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
-
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
-
-2. Válassza ki **új felhasználó** a képernyő tetején.
-
-    ![Új felhasználó gomb](common/new-user.png)
-
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
-
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
-
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
-  
-    b. Az a **felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extension. Például: BrittaSimon@contoso.com
-
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
-
-    d. Kattintson a **Create** (Létrehozás) gombra.
+1. Az Azure Portal bal oldali panelén válassza **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. Válassza ki **új felhasználó** a képernyő tetején.
+1. Az a **felhasználói** tulajdonságok, kövesse az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. Az a **felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
+   1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés RealtimeBoard Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban B.Simon által biztosított hozzáférés Miro Azure egyszeri bejelentkezés használatához engedélyeznie kell.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **RealtimeBoard**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
+1. Az alkalmazások listájában jelölje ki a **Miro**.
+1. Az alkalmazás áttekintése lapon keresse meg a **kezelés** szakaszt, és válassza **felhasználók és csoportok**.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-2. Az alkalmazások listájában jelölje ki a **RealtimeBoard**.
+1. Válassza ki **felhasználó hozzáadása**, majd **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![Az alkalmazások listáját a RealtimeBoard hivatkozásra](common/all-applications.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+1. Az a **felhasználók és csoportok** párbeszédablakban válassza **B.Simon** a felhasználók listájából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+1. Ha a SAML helyességi feltétel, a szerepkör értéket vár a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználóhoz a listából, és kattintson a **kiválasztása** gombra a képernyő alján.
+1. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+### <a name="create-miro-test-user"></a>Miro tesztfelhasználó létrehozása
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+Ebben a szakaszban egy B.Simon nevű felhasználó Miro jön létre. Miro támogatja a just-in-time-kiépítés, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó már nem létezik az Miro, amikor megpróbálja elérni Miro egy új jön létre.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
-
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
-
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
-
-### <a name="create-realtimeboard-test-user"></a>RealtimeBoard tesztfelhasználó létrehozása
-
-Ebben a szakaszban egy Britta Simon nevű felhasználó RealtimeBoard jön létre. RealtimeBoard támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó már nem létezik az RealtimeBoard, egy új jön létre a hitelesítés után.
-
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
-
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
-
-Ha a hozzáférési panelen a RealtimeBoard csempére kattint, meg kell lehet automatikusan bejelentkezett a RealtimeBoard, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+A Miro csempe kiválasztásakor a hozzáférési panelen, kell lennie automatikusan bejelentkezett a Miro, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
@@ -200,4 +143,3 @@ Ha a hozzáférési panelen a RealtimeBoard csempére kattint, meg kell lehet au
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

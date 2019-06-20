@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: cc4fb07874015112791ef2eaf9c39b31b690006c
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: d6387fc0f2f7342eb7a1fda25fcf1272889d13f7
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978663"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "64698139"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Hozzon létre, és több hálózati adapterrel rendelkező Windows virtuális gép kezelése
 Azure-beli virtuális gépek (VM) több virtuális hálózati adapterek (NIC) csatlakoztatott adatlemezekkel is rendelkezik. Gyakran előfordul, hogy az előtérbeli és háttérbeli kapcsolat különböző alhálózatokon. Több alhálózaton egy virtuális gépen több hálózati adapter társíthat, de ezekhez az alhálózatokhoz kell az összes található ugyanazon a virtuális hálózaton (vNet). Ez a cikk részletesen csatlakozik, több hálózati adapterrel rendelkező virtuális gép létrehozása. Azt is megtudhatja, hogyan hozzáadása vagy eltávolítása a hálózati adapterek meglévő virtuális gépről. Különböző [Virtuálisgép-méretek](sizes.md) támogatja a hálózati adapterek különböző számú, tehát ennek megfelelően az a virtuális gép méretezéséhez.
@@ -28,7 +28,7 @@ Azure-beli virtuális gépek (VM) több virtuális hálózati adapterek (NIC) cs
 
 A következő példákban cserélje le a példa a paraméter nevét a saját értékeire. Példa a paraméter nevek a következők *myResourceGroup*, *myVnet*, és *myVM*.
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="create-a-vm-with-multiple-nics"></a>Több hálózati adapterrel rendelkező virtuális gép létrehozása
 Először hozzon létre egy erőforráscsoportot. A következő példában létrehozunk egy erőforráscsoportot, nevű *myResourceGroup* a a *EastUs* helye:

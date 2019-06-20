@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: fa2de14ada5d24531dfecc7f2f709a87f39ea6cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: bf2262d8a222cec6c5d0d7e53ded7b2994481656
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65826439"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205693"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Az Azure NetApp Files hálózattervezési irányelvei
 
@@ -42,7 +42,7 @@ Az alábbi funkciók jelenleg nem támogatott a NetApp Azure-fájlok:
 
 A következő hálózati korlátozások vonatkoznak az Azure Files-NetApp:
 
-* Csatlakozhat egy kötetet (virtuális hálózathoz vagy társviszonyban lévő virtuális hálózatok közötti) virtuális gépek száma nem haladhatja meg az 1000.
+* Az Azure NetApp fájlokat (beleértve a virtuális társhálózatba tartozó virtuális hálózatok) rendelkező virtuális hálózaton használt IP-címek száma legfeljebb 1000.
 * Az egyes Azure virtuális hálózatok (VNet) csak egy alhálózatot az Azure Files-NetApp delegálható.
 
 
@@ -103,13 +103,13 @@ A fenti ábrán fontolja meg a virtuális hálózat 2. és 3 virtuális hálóza
 
 Továbbá vegye figyelembe, hogy ez a forgatókönyv, ahol az 1 virtuális hálózat társviszonyban áll-e virtuális hálózat 2. és 2 virtuális hálózat társviszonyban áll-e az azonos régióban található virtuális hálózatok közötti 3. A virtuális hálózatok közötti 1 erőforrásait a 2. virtuális hálózati erőforrások csatlakozni, de nem tud kapcsolódni a virtuális hálózatok közötti 3, erőforrás, ha a virtuális hálózat 1. és 3 virtuális hálózatok társviszonyban állnak. 
 
-A fenti ábrán, bár a virtuális gép 3 csatlakozhat az 1. kötet, 4 virtuális gép nem tud kapcsolódni kötet 2.  A hiba oka, hogy a küllő virtuális hálózatok nem társviszonyban állnak, és _tranzit útválasztás nem támogatott virtuális hálózatok közötti társviszony-létesítésen keresztül_.
+A fenti ábrán, bár a virtuális gép 3 csatlakozhat az 1. kötet, 4 virtuális gép nem tud kapcsolódni kötet 2.  Ennek az az oka az, hogy a küllő virtuális hálózatok nem társviszonyban állnak, és _tranzit útválasztás nem támogatott virtuális hálózatok közötti társviszony-létesítésen keresztül_.
 
 ## <a name="hybrid-environments"></a>Hibrid környezetek
 
 A következő ábra szemlélteti a hibrid környezetben: 
 
-![Hibrid hálózati környezetben](../media/azure-netapp-files/azure-netapp-files-networ-hybrid-environment.png)
+![Hibrid hálózati környezetben](../media/azure-netapp-files/azure-netapp-files-network-hybrid-environment.png)
 
 A hibrid forgatókönyvek esetében az alkalmazások a helyszíni adatközpontjaiban kell az Azure-erőforrásokhoz való hozzáférés.  Ez a helyzet az Adatközpont bővítéséhez az Azure-ba, vagy a natív Azure-szolgáltatások használatára szeretné-e, vagy vész-helyreállítási. Lásd: [tervezésénél VPN-átjáró](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable) több erőforrást a helyszíni erőforrásokhoz az Azure site-to-site VPN-en vagy egy ExpressRoute-ban történő használatáról.
 
@@ -117,10 +117,10 @@ A hibrid küllős topológiában az agyi virtuális hálózat az Azure-ban a hel
 
 Attól függően, a konfiguráció. A helyszíni erőforrások csatlakozhat a küllős topológia az erőforrásokhoz.
 
-A topológia a fent a helyszíni hálózathoz csatlakoztatva van egy agyi virtuális hálózat az Azure-ban, és nincsenek 2 küllő virtuális hálózatok társviszonyban az agyi virtuális hálózat.  Ebben a forgatókönyvben az Azure Files-NetApp kötetek esetében támogatott kapcsolati lehetőségek a következők:
+A topológia a fent a helyszíni hálózathoz csatlakoztatva van egy agyi virtuális hálózat az Azure-ban, és nincsenek az agyi virtuális hálózat társviszonyban 2 küllő virtuális hálózatok ugyanabban a régióban.  Ebben a forgatókönyvben az Azure Files-NetApp kötetek esetében támogatott kapcsolati lehetőségek a következők:
 
-* A helyszíni erőforrások a virtuális gép 1. és 2. virtuális gép 1. kötet az agyban protokollon keresztül is kapcsolódhatnak site-to-site VPN-en vagy az ExpressRoute. 
-* Virtuális gép 1. és 2. virtuális gép a helyszíni erőforrásokhoz csatlakozhat a kötet 2 vagy 3 kötet.
+* A helyszíni erőforrások a virtuális gép 1. és 2. virtuális gép 1. kötet az agyban protokollon keresztül is kapcsolódhatnak egy helyek közötti VPN vagy Express Route. 
+* A helyszíni erőforrások a virtuális gép 1. és 2. virtuális gép kötet 2 vagy 3 kötet protokollon keresztül is kapcsolódhatnak egy helyek közötti VPN és a regionális virtuális hálózatok közötti társviszonyt.
 * Az agyi virtuális gép 3 virtuális hálózat kapcsolódhat kötet küllő virtuális hálózatok közötti 1 a 2. és 3 kötet a küllő virtuális hálózat 2.
 * 4 virtuális gép küllő virtuális hálózatok közötti 1 és 5. küllő virtuális hálózat 2 virtuális gép csatlakozhat 1. kötet az agyi virtuális hálózat.
 

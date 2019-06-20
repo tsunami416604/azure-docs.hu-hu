@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 06/17/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5c45071406c420546a90a71751045fea926804f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 235fe1fbe7febc193826cf09202365ee4a788194
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66513519"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164763"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>A Microsoft identity platform és az OAuth 2.0 hitelesítési kódfolyamat
 
@@ -68,7 +68,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `client_id`   | Szükséges    | A **Alkalmazásazonosítót (ügyfél)** , amely a [az Azure-portál – alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) az alkalmazáshoz rendelt felhasználói élményt.  |
 | `response_type` | Szükséges    | Tartalmaznia kell `code` az engedélyezési kód folyamata.       |
 | `redirect_uri`  | Szükséges | Az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszokat redirect_uri tulajdonsága. Pontosan egyeznie kell a redirect_uris regisztrálta a portálon, kivéve azt az URL-kódolású kell lennie. A natív és mobil alkalmazások esetén az alapértelmezett értéket használjon `https://login.microsoftonline.com/common/oauth2/nativeclient`.   |
-| `scope`  | Szükséges    | Szóközzel elválasztott listáját [hatókörök](v2-permissions-and-consent.md) , hogy szeretné-e a felhasználót, hogy engedélyt adjanak az. |
+| `scope`  | Szükséges    | Szóközzel elválasztott listáját [hatókörök](v2-permissions-and-consent.md) , hogy szeretné-e a felhasználót, hogy engedélyt adjanak az.  Az a `/authorize` alapját képező a kérelem több erőforrást, amely lehetővé teszi az alkalmazások lekérése a hozzájárulási több webes API-k szeretné meghívni a ez fedezi. |
 | `response_mode`   | Ajánlott | Meghatározza a létrejövő jogkivonat vissza küldhet az alkalmazáshoz használandó módszert. A következők egyike lehet:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` a kódot biztosít az átirányítási URI-t a lekérdezési sztring paramétereként. Ha Ön a kért egy azonosító jogkivonat, használja az implicit folyamatot, nem használhatja `query` meghatározott a [OpenID specifikációja](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Ha csak a kódot kért, `query`, `fragment`, vagy `form_post`. `form_post` az átirányítási URI-t a kódot egy HOZZÁSZÓLÁSRA hajtja végre. További információ: [OpenID Connect protokollal](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code).  |
 | `state`                 | Ajánlott | A kérésben is a token válaszban visszaadott érték. Bármilyen tartalmat, akinél karakterlánc lehet. Egy véletlenszerűen generált egyedi érték jellemzően a [webhelyközi kérések hamisításának megakadályozása támadások](https://tools.ietf.org/html/rfc6749#section-10.12). Az érték is az alkalmazás a felhasználói állapot kapcsolatos információkat is kódolása, előtt a hitelesítési kérelmet, például az oldal vagy voltak a nézet. |
 | `prompt`  | Nem kötelező    | Azt jelzi, hogy milyen típusú felhasználói beavatkozás szükséges. Jelenleg az egyetlen érvényes értékek a következők `login`, `none`, és `consent`.<br/><br/>- `prompt=login` a felhasználónak meg kell adnia a hitelesítő adataik adott kérelem negating egyszeri bejelentkezéses kényszeríti.<br/>- `prompt=none` Ellenkező – biztosítja, hogy a felhasználó el minden olyan interaktív kérdés nem megjelenik. Ha a kérés nem teljesíthető csendes egyszeri bejelentkezéses keresztül, a Microsoft identity platform végpont adja vissza egy `interaction_required` hiba.<br/>- `prompt=consent` Elindítja az OAuth-hozzájárulási párbeszédpanel kéri a felhasználót, hogy az alkalmazás engedélyeket, a felhasználó bejelentkezése után. |
@@ -154,7 +154,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `tenant`   | Szükséges   | A `{tenant}` szabályozza, ki az alkalmazás be tud jelentkezni az értéket a kérelem elérési használható. Az engedélyezett értékek a következők `common`, `organizations`, `consumers`, és a bérlői azonosító. További részletekért lásd: [protokoll alapvető](active-directory-v2-protocols.md#endpoints).  |
 | `client_id` | Szükséges  | Az alkalmazás (ügyfél) AZONOSÍTÓJÁT, amely a [az Azure-portál – alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) az alkalmazáshoz rendelt lapot. |
 | `grant_type` | Szükséges   | Meg kell `authorization_code` az engedélyezési kód folyamata.   |
-| `scope`      | Szükséges   | Hatókörök szóközzel elválasztott listáját. A hatókörök, ez a szakasz a kért megfelelő vagy a hatókörök, az első alapját képező kért egy részét kell lennie. Ha az ebben a kérelemben megadott hatókörök span több erőforrás-kiszolgáló, akkor a Microsoft identity platform végpont vissza az első hatókörében megadott erőforrás-jogkivonat. A hatókörök részletes magyarázatát, tekintse meg [engedélyek, beleegyezése és hatókörök](v2-permissions-and-consent.md). |
+| `scope`      | Szükséges   | Hatókörök szóközzel elválasztott listáját. A hatókörök, ez a szakasz a kért megfelelő vagy a hatókörök, az első alapját képező kért egy részét kell lennie. A hatókörök kell származniuk egy erőforrást, valamint OIDC hatókörök (`profile`, `openid`, `email`). A hatókörök részletes magyarázatát, tekintse meg [engedélyek, beleegyezése és hatókörök](v2-permissions-and-consent.md). |
 | `code`          | Szükséges  | A folyamat első szakasza beszerzett authorization_code. |
 | `redirect_uri`  | Szükséges  | Az azonos redirect_uri használt értékkel beszerezni a authorization_code. |
 | `client_secret` | a web apps szükséges | Az alkalmazás titkos, amelyet az alkalmazás az alkalmazás regisztrációs portálon létrehozott. Egy natív alkalmazást, ne használja az alkalmazás titkos, mert client_secrets megbízhatóan nem tárolható az eszközökön. Webalkalmazások és webes API-kat, amelynek a titkos ügyfélkódot tárolja biztonságos helyen a kiszolgálói oldalon lehetősége van szükség.  A titkos ügyfélkulcsot kell URL-kódolású elküldése előtt.  |

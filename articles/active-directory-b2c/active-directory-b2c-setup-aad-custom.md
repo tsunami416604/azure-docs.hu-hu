@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8ade695f1930c11f2d2d7ab7e0430910bd6f8705
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ae821dc9ae0d739526b91bad76bca544cad2fb0
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508644"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203709"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Állítsa be a bejelentkezést egy Azure Active Directory-fiókot az Azure Active Directory B2C-vel egyéni szabályzatok használatával 
 
@@ -132,7 +132,7 @@ Egy token beszerzése az Azure AD-végpontról, adja meg a protokoll, amely az A
 5. Értékét állítsa be a **METAADATOK** való `https://login.windows.net/your-AD-tenant-name.onmicrosoft.com/.well-known/openid-configuration`, ahol `your-AD-tenant-name` az Azure AD-bérlő neve van. Például: `https://login.windows.net/fabrikam.onmicrosoft.com/.well-known/openid-configuration`
 6. Nyissa meg a böngészőt, és nyissa meg a **METAADATOK** imént frissített, keresse meg az URL-címet a **kibocsátó** objektumot, másolja és illessze be az értéket értéke **ProviderName** az XML-fájlban.
 8. Állítsa be **client_id** és **IdTokenAudience** való az alkalmazás regisztrációja Alkalmazásazonosítója.
-9. A **CryptograhicKeys**, frissítse az értéket a **StorageReferenceId** meghatározott házirend kulcshoz. Például: `ContosoAppSecret`.
+9. A **CryptographicKeys**, frissítse az értéket a **StorageReferenceId** meghatározott házirend kulcshoz. Például: `ContosoAppSecret`.
 
 ### <a name="upload-the-extension-file-for-verification"></a>Az ellenőrzéshez a bővítmény-fájl feltöltése
 

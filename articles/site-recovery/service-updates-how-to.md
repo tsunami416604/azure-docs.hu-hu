@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: rajanaki
-ms.openlocfilehash: dc15c8935cd3c20037bbed01f0f24cd2b8642045
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bde341063fb6742bbe2a92592981d4a2a437d214
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540930"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203434"
 ---
 # <a name="service-updates-in-azure-site-recovery"></a>Az Azure Site Recovery szolgáltatási hírek
 Szervezetként kell döntse el, hogyan fog az adatok biztonságban és futására tervezett alkalmazások és számítási feladatok, és nem tervezett leállások esetén. Az Azure Site Recovery azzal segíti a BCDR-stratégia, hogy virtuális gépeken és fizikai kiszolgálókon érhető el, ha egy hely leállása futtatja az alkalmazásokat. A Site Recovery replikálja a virtuális gépeken és fizikai kiszolgálókon futó folyamatokat, hogy azok egy másodlagos helyen elérhetők maradjanak az elsődleges hely elérhetetlenné válása esetén. Amikor az elsődleges hely ismét üzembe áll, helyreállítja rajta a munkafolyamatokat.
@@ -33,6 +33,17 @@ Az Azure Site Recovery rendszeres időközönként – beleértve a új funkció
 
 > [!IMPORTANT]
 > A hivatalos támogatási frissítéseket az > N-4 N verzióra (N a legújabb verzió alatt). Ha olyan N-6, szeretné-e először frissítse a N-4, majd utána frissítse a n
+
+## <a name="expiry-of-components"></a>Összetevők lejárta
+A Site Recovery értesíti az ügyfelek összetevők lejárnak, vagy már lejárt, e-mail-értesítések útján (ha van, amelyre Ön feliratkozott őket), vagy a tároló irányítópultjának a portálon. A tároló irányítópultján értesítések nem érhetők el, ha jelen pillanatban hYpe-v virtuális gép védelmét. Is ha a kapcsolódó infrastruktúra nézetet válthat a forgatókönyvnek, lesz egy "frissítés érhető el" gomb mellett az összetevő, amely átirányítja Önt a hivatkozás a letöltésekhez a legújabb verzióra.
+
+Az alábbi, az e-mail-értesítések gyakoriságát, amikor egy összetevőinek érvényessége hamarosan lejár.
+- 60 nap elteltével az összetevő érvényessége hamarosan lejár: hetente egyszer
+- A következő 53 nap: hetente egyszer
+- Elmúlt 7 napban: Naponta egyszer
+- Miután a lejárt: hetente egyszer
+
+
 
 ### <a name="upgrading-when-the-difference-between-current-version-and-latest-released-version-is-greater-than-4"></a>Ha jelenlegi verziója és a legújabb elérhető verzió közötti különbség nagyobb, mint 4 frissítése
 
@@ -118,15 +129,16 @@ Frissítések folytatása előtt tekintse meg [Site Recovery támogatási nyilat
 
 |Update Rollup  |Szolgáltató  |Egyesített telepítő| OVF  |MARS|
 |---------|---------|---------|---------|--------|
+|[37. kumulatív frissítés](https://support.microsoft.com/help/4508614/update-rollup-37-for-azure-site-recovery)     |   5.1.4300.0  |  9.25.5241.1   |  5.1.4300.0  | 2.0.9163.0
 |[36. kumulatív frissítés](https://support.microsoft.com/en-in/help/4503156)     |   5.1.4150.0  |  9.24.5211.1   |  5.1.4150.0  | 2.0.9160.0
 |[35. kumulatív frissítés](https://support.microsoft.com/en-us/help/4494485/update-rollup-35-for-azure-site-recovery)     |   5.1.4000.0  |  9.23.5163.1   |  5.1.4000.0  | 2.0.9156.0
 |[34. kumulatív frissítés](https://support.microsoft.com/en-us/help/4490016/update-rollup-34-for-azure-site-recovery) -gyorsjavítást     |   5.1.3950.0  |  9.22.5142.1   |  5.1.3950.0  | 2.0.9155.0
 |[33. kumulatív frissítés](https://support.microsoft.com/en-us/help/4489582/update-rollup-33-for-azure-site-recovery)     |   5.1.3900.0  |  9.22.5109.1   |  5.1.3900.0  | 2.0.9155.0
 |[32-es kumulatív frissítés](https://support.microsoft.com/en-us/help/4485985/update-rollup-32-for-azure-site-recovery)     |   5.1.3800.0  |  9.21.5091.1   |  5.1.3800.0  |2.0.9144.0
-|[A kumulatív frissítések 31.](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)     |     5.1.3700.0      |   9.20.5051.1      |     5.1.3700.0    |2.0.9144.0
 
 ## <a name="previous-update-rollups"></a>Korábbi kumulatív frissítések
 
+- [A kumulatív frissítések 31.](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)
 - [30. kumulatív frissítés](https://support.microsoft.com/help/4468181/azure-site-recovery-update-rollup-30)
 - [29-es kumulatív frissítés](https://support.microsoft.com/help/4466466/update-rollup-29-for-azure-site-recovery)
 - [28. kumulatív frissítés](https://support.microsoft.com/help/4460079/update-rollup-28-for-azure-site-recovery)

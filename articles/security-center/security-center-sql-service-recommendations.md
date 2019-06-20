@@ -1,10 +1,10 @@
 ---
-title: Az Azure SQL-szolgáltatás és az Azure Security Center adatok védelme |} A Microsoft Docs
+title: Az Azure Security Centerben az Azure adat- és tárolási szolgáltatások védelme |} A Microsoft Docs
 description: Ez a dokumentum címek javaslatok az Azure Security Centerben, amelyekkel védje meg adatait és az Azure SQL-szolgáltatás, és megfelel a biztonsági házirendek maradjon.
 services: security-center
 documentationcenter: na
 author: monhaber
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: bcae6987-05d0-4208-bca8-6a6ce7c9a1e3
 ms.service: security-center
@@ -12,48 +12,58 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/27/2019
+ms.date: 06/19/2019
 ms.author: monhaber
-ms.openlocfilehash: bbba5f380fddb4fdec43a7414e59778135c4e0ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ac0e4ebaafb8b0c9c79e885cecbefc5a65c1823
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428298"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275333"
 ---
-# <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>Az Azure SQL-szolgáltatás és az Azure Security Center adatok védelme
-Az Azure Security Center elemzi az Azure-erőforrások biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán hoz létre.  Javaslatok alkalmazása az Azure-erőforrástípus: virtuális gépek (VM), hálózati, SQL és az adatokhoz és alkalmazásokhoz.
+# <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>Az Azure Security Centerben az Azure adat- és tárolási szolgáltatások védelme
+Ez a témakör bemutatja, hogyan megtekintéséhez és adat-és a biztonsági javaslatok implementálása. Az Azure Security Center ezeket a javaslatokat is található, az Azure-erőforrások biztonsági állapotának elemzésekor.
+
+## <a name="view-your-data-security-information"></a>Az adatok biztonsági információinak megtekintése
+
+1. Az a **erőforrás biztonsági higiéniai** területén kattintson **adat-és**.
+
+   ![Adatok és a tárolási erőforrásokhoz](./media/security-center-monitoring/click-data.png)
+
+    A **adatbiztonság** lap, melyen az adatok erőforrásokkal kapcsolatos ajánlásokat.
+
+     ![Adatforrások](./media/security-center-monitoring/sql-overview.png)
+
+Ezen az oldalon a következőket teheti:
+
+* Kattintson a **áttekintése** lap felsorolja az összes adat erőforrások vonatkozó javaslatok kijavítható. 
+* Az egyes fülekre, és megtekintheti az ajánlások erőforrástípus szerint.
+
+    > [!NOTE]
+    > A tárolás titkosításáról további információkat az [Azure-tárfiókok titkosításának engedélyezése az Azure Security Centerben](security-center-enable-encryption-for-storage-account.md) című cikkben találhat.
 
 
-### <a name="monitor-data-security"></a>Adatbiztonság monitorozása
+## <a name="remediate-a-recommendation-on-a-data-resource"></a>Egy adatforrás, melyhez a javaslat szervizelése
 
-A **Megelőzés** szakasz **Adatbiztonság** elemére kattintva megnyithatja az **Adatforrások** panelt, amelyen az SQL és a Storage használatával kapcsolatos javaslatokat olvashat. Ezenfelül általános [javaslatokat](security-center-sql-service-recommendations.md) is talál itt az adatbázis állapotára vonatkozóan. A tárolás titkosításáról további információkat az [Azure-tárfiókok titkosításának engedélyezése az Azure Security Centerben](security-center-enable-encryption-for-storage-account.md) című cikkben találhat.
+1. Bármelyik erőforrás lapon kattintson egy erőforrást. A információkat tartalmazó oldal megnyitása kijavítható vonatkozó javaslatok listázása.
 
-![Adatforrások](./media/security-center-monitoring/security-center-monitoring-fig13-newUI-2017.png)
+    ![Erőforrásadatok](./media/security-center-monitoring/sql-recommendations.png)
 
-Az **SQL Recommendations** (Javaslatok az SQL használatával kapcsolatban) területen bármely javaslatra kattintva részletesebb információt kap a probléma megoldásához szükséges további intézkedésről. A következő példában a **Database Auditing & Threat detection on SQL databases** (Naplózás és fenyegetésészlelés az SQL-adatbázisokban) javaslat kibontott nézete látható.
+2. Egy javaslatra kattint. Az ajánlás oldal megnyitja és megjeleníti a **javítási lépések** történő megvalósításához.
 
-![SQL-javaslat részletei](./media/security-center-monitoring/security-center-monitoring-fig14-ga-new.png)
+   ![Javítási lépések](./media/security-center-monitoring/remediate1.png)
 
-Az **Naplózás és fenyegetésészlelés engedélyezése az SQL-adatbázisokban** panelen a következő információk láthatók:
+3. Kattintson a **művelet végrehajtása**. Az erőforrás-beállítások oldal jelenik meg.
 
-* Az SQL-adatbázisok listája
-* A kiszolgáló, amely tárolja ezeket
-* Az, hogy a beállítás a kiszolgálóról öröklődött, vagy konkrétan az adott adatbázisra vonatkozik
-* Az aktuális állapot
-* A probléma súlyossága
+    ![Az ajánlás engedélyezése](./media/security-center-monitoring/remediate2.png)
 
-Ha a javaslat megoldása érdekében rákattint az adatbázisra, az alábbi képernyőn látható módon megnyílik az **Naplózás és fenyegetésészlelés** panel.
-
-![Naplózás és fenyegetésészlelés](./media/security-center-monitoring/security-center-monitoring-fig15-ga.png)
-
-A naplózás engedélyezéséhez módosítsa az **Auditing** (Naplózás) beállítását **ON** (BE) értékre.
+4. Kövesse a **javítási lépések** kattintson **mentése**.
 
 ## <a name="data-and-storage-recommendations"></a>Adatok és tárolás javaslatok
 
 |Erőforrás típusa|Biztonsági pontszám|Ajánlás|Leírás|
 |----|----|----|----|
-|Tárfiók|20|Engedélyezni kell a biztonságos átvitelt a storage-fiókok|Biztonságos átvitel, amely arra kényszeríti a storage-fiók csak a biztonságos kapcsolat (HTTPS) érkező kérések fogadására lehetőség. HTTPS használata biztosítja, hogy a kiszolgáló és a szolgáltatás közötti hitelesítéshez, és man-in-the-middle, lehallgatást, és a munkamenet-eltérítés – például a hálózati réteg támadások ellen védi a az átvitt adatokat.|
+|Tárfiók|20|Engedélyezni kell a biztonságos átvitelt a storage-fiókok|Biztonságos átvitel, amely arra kényszeríti a storage-fiók csak a biztonságos kapcsolat (HTTPS) érkező kérések fogadására lehetőség. HTTPS biztosítja, hogy a kiszolgáló és a szolgáltatás közötti hitelesítéshez, és védi az adatokat átvitel közben a hálózati réteg támadásoktól, például a man-in-the-middle, lehallgatást, és munkamenet-eltérítés.|
 |Redis|20|A Redis gyorsítótárhoz kizárólag biztonságos kapcsolatot engedélyezni kell|Engedélyezi a Redis Azure Cache SSL-en keresztül csak kapcsolatokat. Biztonságos kapcsolatok használata biztosítja, hogy a kiszolgáló és a szolgáltatás közötti hitelesítéshez, és az átvitt adatokat védi a hálózati réteg támadásoktól, például a man-in-the-middle, lehallgatást, és munkamenet-eltérítés.|
 |SQL|15|Engedélyezni kell az SQL Database-adatbázisok transzparens adattitkosítás|Inaktív adatok védelmét és megfelelőségi követelmények teljesítése érdekében a transzparens adattitkosítás engedélyezése.|
 |SQL|15|SQL server-naplózás engedélyezni kell|Az Azure SQL-kiszolgáló naplózásának engedélyezése. (Csak az azure SQL-szolgáltatás esetében. Nem tartalmazza a virtuális gépeken futó SQL.)|
@@ -65,13 +75,13 @@ A naplózás engedélyezéséhez módosítsa az **Auditing** (Naplózás) beáll
 |Tárfiók|1|Storage-fiókokat kell áttelepíteni az új Azure Resource Manager-erőforrások|A storage-fiókok új Azure Resource Manager-v2 használatával adja meg például a biztonsági fejlesztések: erősebb hozzáférés-vezérlés (RBAC), a jobb naplózás, a Resource Manager-alapú üzembe helyezés és a cégirányítási, elérését a felügyelt identitások, a key vaulthoz való hozzáférés titkos adatait, és az Azure AD-alapú hitelesítést és címkék támogatása és -erőforráscsoportok egyszerűbb biztonság kezelése.|
 
 ## <a name="see-also"></a>Lásd még
-Javaslatok, amelyek vonatkoznak a többi Azure-erőforrásokkal kapcsolatos további információkért tekintse meg a következőket:
+Javaslatok, amelyek vonatkoznak a többi Azure-erőforrásokkal kapcsolatos további információkért tekintse meg a következő témaköröket:
 
 * [Virtuális gépek védelme az Azure Security Centerben](security-center-virtual-machine-recommendations.md)
 * [Alkalmazások védelme az Azure Security Centerben](security-center-application-recommendations.md)
 * [Hálózat védelme az Azure Security Centerben](security-center-network-recommendations.md)
 
-A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
+A Security Centerrel kapcsolatos további tudnivalókért lásd a következő témaköröket:
 
 * [Biztonsági szabályzatok beállítása az Azure Security Centerben](tutorial-security-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.

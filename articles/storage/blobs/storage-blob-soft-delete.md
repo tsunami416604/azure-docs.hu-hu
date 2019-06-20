@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 8c23e429966cf9a1e93ac46ea3ecd11744761872
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f1c6f8074dab19b18f695763b160e4aeffe3ac44
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148618"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204829"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Helyreállítható Törlés az Azure Storage-BLOB
 Azure Storage blob-objektumok a helyreállítható Törlés most kínál, így könnyebben helyreállíthatja az adatokat próbál módosított vagy törölt egy alkalmazás vagy más storage-fiók felhasználó által.
@@ -274,13 +274,10 @@ CloudBlockBlob copySource = allBlobVersions.First(version => ((CloudBlockBlob)ve
 blockBlob.StartCopy(copySource);
 ```
 
-## <a name="should-i-use-soft-delete"></a>Helyreállítható törlés érdemes használni?
-Ha esély van arra, hogy az adatok akkor véletlenül által módosított vagy törölt egy alkalmazás vagy a storage-fiók egy másik felhasználó, ajánlott bekapcsolni a helyreállítható törlés. Helyreállítható törlés egy adatvédelmi stratégiát egy része, és segít megelőzni a véletlen adatvesztést okoz.
+## <a name="are-there-any-special-considerations-for-using-soft-delete"></a>Vannak különleges beavatkozást, a helyreállítható törlés használata?
+Ha esély van arra, hogy az adatok akkor véletlenül által módosított vagy törölt egy alkalmazás vagy a storage-fiók egy másik felhasználó, ajánlott bekapcsolni a helyreállítható törlés. Lehetővé teszi a helyreállítható törlés gyakran felülírt adatok vonhat nagyobb kapacitást a tárterületért, és késések blobok listázása során. Ez csökkentheti a gyakori felülírt adatok tárolásával egy önálló tárfiókot a helyreállítható törlés le van tiltva. 
 
 ## <a name="faq"></a>GYIK
-**Vannak különleges beavatkozást, a helyreállítható törlés használata?**  
-Lehetővé teszi a helyreállítható törlés gyakran felülírt adatok vonhat nagyobb kapacitást a tárterületért, és késések blobok listázása során. Ez csökkentheti a gyakori felülírt adatok tárolásával egy önálló tárfiókot a helyreállítható törlés le van tiltva. 
-
 **Milyen tárolási típus esetében használható a helyreállítható törlés?**  
 Jelenleg a helyreállítható törlés csak akkor használható (objektum) a blob Storage.
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: c44b39effdc6d8fcdc144915ec7b51489e3798cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66145860"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179084"
 ---
 Fontos a futtatott alkalmazások biztonságát a virtuális gép (VM). A virtuális gépek védelme is tartalmazhat, egy vagy több Azure-szolgáltatásokat és funkciókat, mind a biztonságos hozzáférés a virtuális gépek és az adatok biztonságos tárolását. Ez a cikk nyújt információt, amely lehetővé teszi a virtuális gép és az alkalmazások biztonságának megőrzéséhez.
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: pabutler
-ms.openlocfilehash: a1bcab9816627b453ba8b20b7bcd9402c2dfd151
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 08f9d794822dfd7879efc7c4813ecc46f92f6a45
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66240535"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147904"
 ---
 # <a name="lead-management-instructions-for-azure-table"></a>Az Azure Table utasítások felügyeleti vezethet
 
@@ -97,7 +97,7 @@ A következő készletét a lépéseket is kapcsolódni az Azure-tábla, és ál
 
      ![Válasszon egy egyéni értéket az Azure-tábla neve](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-table-name.png)
 
-   - **Szűrőlekérdezés** – kattintson a mezőre, és a **múltbeli időpont beolvasása** ikon megjelenik egy felugró ablakban. Válassza ki **múltbeli időpont** időbélyegzőként Ez a lekérdezés szűrése használatára. Azt is megteheti beillesztheti a következő függvényt az mezőbe: CreatedTime `gt datetime'@{body('Get_past_time')}'` 
+   - **Szűrőlekérdezés** – kattintson a mezőre, és a **múltbeli időpont beolvasása** ikon megjelenik egy felugró ablakban. Válassza ki **múltbeli időpont** időbélyegzőként Ez a lekérdezés szűrése használatára. Azt is megteheti beillesztheti a következő függvényt az mezőbe: CreatedTime `Timestamp gt datetime'@{body('Get_past_time')}'` 
 
      ![Szűrő lekérdezés függvény beállítása](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-filterquery.png)
 

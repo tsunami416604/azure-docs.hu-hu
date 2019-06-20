@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 007b6c409dde248a4dde7a15fd16b543add234bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57e66d449b194662bfc03f7e130cf49c02a15793
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64870312"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275711"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>AWS-költségek és az Azure-beli használati kezelése
 
@@ -129,6 +129,8 @@ A következő hibaelhárítási információk használatával kapcsolatos gyakor
 
 ### <a name="no-permission-to-aws-linked-accounts"></a>Nincs engedélye az AWS összekapcsolt fiókok
 
+**Hibakód:** _Nem engedélyezett_
+
 Megszerezni a csatolt AWS-fiókok költségek elérésére jogosult két módja van:
 
 - A felügyeleti csoporthoz, amely rendelkezik az AWS az összekapcsolt fiókoknak hozzáférést kap.
@@ -136,7 +138,11 @@ Megszerezni a csatolt AWS-fiókok költségek elérésére jogosult két módja 
 
 Alapértelmezés szerint az AWS-összekötő létrehozó a tulajdonosa az összekötő által létrehozott összes objektumot. Többek között, az AWS összevont fiók és az AWS társított fiókot.
 
+Ahhoz, hogy az összekötő-beállítások ellenőrzése szüksége lesz egy legalább közreműködői szerepkör, olvasó nem ellenőrizheti az összekötő-beállítások
+
 ### <a name="collection-failed-with-assumerole"></a>Nem sikerült AssumeRole gyűjtemény
+
+**Hibakód:** _FailedToAssumeRole_
 
 Ez a hiba azt jelenti, hogy a Cost Management az AWS AssumeRole API meghívása nem sikerült. Ez a probléma akkor fordulhat elő, a szerepkör-definíció probléma miatt. Győződjön meg arról, hogy az alábbi feltételek teljesülése esetén:
 
@@ -147,11 +153,23 @@ Ez a hiba azt jelenti, hogy a Cost Management az AWS AssumeRole API meghívása 
 
 ### <a name="collection-failed-with-access-denied"></a>Nem sikerült a hozzáférés megtagadva a gyűjtemény
 
-Ez a hibaüzenet azt jelenti, hogy a Cost Management nem fér hozzá az Amazon S3 gyűjtőt található aktuális fájlok. Győződjön meg arról, hogy a szerepkör csatolt AWS JSON házirend alján látható példához hasonlít-e a [hozzon létre egy szerepkör és a házirend az AWS-ben](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) szakaszban.
+- **Hibakód:** _AccessDeniedReportDefinitions_ 
+- **Hibakód:** _AccessDeniedListReports_ 
+- **Hibakód:** _AccessDeniedDownloadReport_ 
 
-### <a name="connector-error-with-failedtofindreport"></a>FailedToFindReport-összekötői hiba
+Ez a hibaüzenet azt jelenti, hogy Cost Management nem fér hozzá az Amazon S3 gyűjtőt található aktuális fájlok. Győződjön meg arról, hogy a szerepkör csatolt AWS JSON házirend alján látható példához hasonlít-e a [hozzon létre egy szerepkör és a házirend az AWS-ben](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) szakaszban.
+
+### <a name="collection-failed-since-we-did-not-find-the-cost-and-usage-report"></a>Sikertelen volt, mert nem található a költségek és a használati jelentés gyűjtemény
+
+**Hibakód:** _FailedToFindReport_
 
 Ez a hiba, az azt jelenti, hogy a Cost Management nem találja a felhasználási és jelentés, az összekötő a megadott. Ellenőrizze, hogy az nem törlődik, és, hogy a szerepkör csatolt AWS JSON házirend alján látható példához hasonlít-e a [hozzon létre egy szerepkör és a házirend az AWS-ben](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) szakaszban.
+
+### <a name="unable-to-create-or-verify-connector-due-to-cost-and-usage-report-definitions-mismatch"></a>Nem sikerült létrehozni, vagy ellenőrizze az összekötő költség- és használati jelentés definíciók eltérése miatt
+
+**Hibakód:** _ReportIsNotValid_
+
+Ez a hiba vonatkozik, az AWS-költségek és a használati jelentés, hogy szükséges specifikus beállításokat ehhez a jelentéshez, a követelményeket a [felhasználási és jelentés létrehozása az AWS-ben](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)
 
 ## <a name="next-steps"></a>További lépések
 

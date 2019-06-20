@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: kexia
-ms.custom: it-pro, seodec18
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 277e7663c978e64ee1440e14583e884b768b3139
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bef3960e5c117a131b59a65196214c51e01bd3c8
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65441634"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204580"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Adja hozzá a szervezet Azure Active Directory bejelentkezési oldal arculat megjelenítése
 A vállalat emblémája és egyéni színsémák használatával adjon meg egy egységes megjelenést és a hangulat használatát az Azure Active Directory (Azure AD) bejelentkezési oldalakon. A bejelentkezési oldal jelenik meg, ha a felhasználói bejelentkeznek a munkahelyi webes alkalmazásokhoz, például az Office 365, amely használja az Azure ad-ben az identitás-szolgáltatóként.
@@ -58,7 +58,7 @@ Az egyéni márkajelzési nem jelenik meg azonnal, amikor a helyeket, például 
 
         - **Fejléc embléma.** Válassza ki az embléma jelenik meg a bejelentkezési oldalon, a felhasználó beírja a felhasználónevet és a egy .png vagy .jpg verzióját a **saját alkalmazások** portáloldalán.
             
-            A lemezkép nem lehet magasabb, mint 36 képpont vagy nagyobb, mint 245 képpont. Azt javasoljuk, hogy transzparens rendszerkép használatával, mivel a háttér nem egyeznek az embléma háttér. Emellett javasoljuk, hogy ne adja hozzá a kép körül kitöltési, vagy lehet létrehozni, akkor keresse meg a kis méretű embléma.
+            A lemezkép nem lehet magasabb, mint 60 képpont vagy nagyobb, mint 280 képpont. Azt javasoljuk, hogy transzparens rendszerkép használatával, mivel a háttér nem egyeznek az embléma háttér. Emellett javasoljuk, hogy ne adja hozzá a kép körül kitöltési, vagy lehet létrehozni, akkor keresse meg a kis méretű embléma.
 
         - **Felhasználónév-emlékeztető.** Írja be a segítő szöveg, amely a felhasználók számára akkor jelenik meg, ha elfelejtették a felhasználóneve. Ezt a szöveget kell lennie a Unicode használatát, hivatkozásokat vagy kód nélkül, és nem lehet hosszabb 64 karakternél. Ha vendégek jelentkezzen be az alkalmazásba, javasoljuk, hogy ne adja hozzá a mutatót.
 

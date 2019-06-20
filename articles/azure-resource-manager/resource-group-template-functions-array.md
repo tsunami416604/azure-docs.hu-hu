@@ -16,7 +16,7 @@ ms.date: 11/8/2018
 ms.author: tomfitz
 ms.openlocfilehash: c80625fb36709f66319b4966e210785864f30d09
 ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/13/2019
 ms.locfileid: "66128700"
@@ -136,8 +136,8 @@ A paraméterek első nem üres értéket adja vissza. Üres karakterláncok, ür
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |int, string, tömb vagy objektum |Az első érték null teszteléséhez. |
-| További argumentumok |Nem |int, string, tömb vagy objektum |További értékek tesztelésére null értékűek. |
+| arg1 |Igen |int, string, array vagy object |Az első érték null teszteléséhez. |
+| További argumentumok |Nem |int, string, array vagy object |További értékek tesztelésére null értékűek. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 

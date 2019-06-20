@@ -1,23 +1,35 @@
 ---
-title: Az Azure Active Directory-szabályzat konfigurálása az Azure Data Catalog
-description: Előfordulhat olyan helyzet állhat elő, ha tud bejelentkezni az Azure Data Catalog portál, de amikor megpróbál bejelentkezni az adatforrás-regisztráló eszköz, hibaüzenetet tapasztal.
+title: Az Azure Data Catalog hibaelhárítása
+description: Ez a cikk ismerteti a gyakori hibaelhárítási problémák az Azure Data Catalog-erőforrásokhoz.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
-ms.date: 04/06/2019
-ms.openlocfilehash: e69a7e3bd104d0fb82b248b6560d4fd082c88426
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: troubleshooting
+ms.date: 06/13/2019
+ms.openlocfilehash: ed74e90e5e8ed55b75968f51cb50e6a1b4cdd75d
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62116601"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203506"
 ---
-# <a name="azure-active-directory-policy-configuration"></a>Azure Active Directory-szabályzat konfigurálása
+# <a name="troubleshooting-azure-data-catalog"></a>Az Azure Data Catalog hibaelhárítása
+
+Ez a cikk ismerteti a gyakori hibaelhárítási problémák az Azure Data Catalog-erőforrásokhoz. 
+
+## <a name="functionality-limitations"></a>Funkciók korlátozások
+
+Az Azure Data Catalog használatakor az alábbi funkciókat korlátozva:
+
+- Típusú fiókok **Vendég szerepkör** nem támogatottak. Az Azure Data Catalog felhasználói nem adható hozzá, a Vendég fiók, és www.azuredatacatalog.com, a vendég felhasználók nem használhatják a portálon.
+
+- Az Azure Resource Manager-sablonok vagy az Azure PowerShell-parancsok az Azure Data Catalog-erőforrások létrehozása nem támogatott.
+
+- Az Azure Data Catalog-erőforrást nem lehet áthelyezni az Azure-bérlők között.
+
+## <a name="azure-active-directory-policy-configuration"></a>Azure Active Directory-szabályzat konfigurálása
 
 Előfordulhat, hogy ugyan be tud lépni az Azure Data Catalog portálra, de amikor megpróbál bejelentkezni az adatforrás-regisztrációs eszközbe, hibaüzenet jelenik meg, amely meggátolja a belépést. Ez a hiba akkor fordulhat elő, ha a vállalati hálózaton, vagy a vállalati hálózaton kívülről történő csatlakozáskor.
-
-## <a name="registration-tool"></a>Frissítésregisztráló eszköz
 
 A regisztrációs eszköz *űrlapos hitelesítés* segítségével veti össze a felhasználói bejelentkezéseket az Azure Active Directory adatbázisával. Ahhoz, hogy a bejelentkezés sikeres legyen, az Azure Active Directory rendszergazdájának engedélyeznie kell az űrlapos hitelesítést a *globális hitelesítési szabályzatban*.
 

@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: genli
 ms.openlocfilehash: 54ef8782620a387d60454023d0e446279e467a99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60517015"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "64730328"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-classic-in-powershell"></a>Bevezetés az internetkapcsolattal rendelkező terheléselosztó (klasszikus) létrehozásába a PowerShellben
 
@@ -44,7 +44,7 @@ Az alábbi lépéseket követve állíthat be egy terheléselosztót a PowerShel
 
 Az alábbi példában egy „webfarm” nevű terheléselosztó-készletet fog hozzáadni a „mytestcloud” (vagy myctestcloud.cloudapp.net) nevű felhőszolgáltatáshoz, ehhez a terheléselosztó végpontjait hozzáadja a „web1” és „web2” nevű virtuális gépekhez. A terheléselosztó a 80-as porton keresztül fogadja a hálózati forgalmat, és a TCP használatával elosztja a terhelést a helyi végpont (jelen esetben a 80-as port) által meghatározott virtuális gépek között.
 
-### <a name="step-1"></a>1. lépés
+### <a name="step-1"></a>1\. lépés
 
 Hozzon létre egy elosztott terhelésű végpontot az első, „web1” nevű virtuális gép számára
 
@@ -52,7 +52,7 @@ Hozzon létre egy elosztott terhelésű végpontot az első, „web1” nevű vi
 Get-AzureVM -ServiceName "mytestcloud" -Name "web1" | Add-AzureEndpoint -Name "HttpIn" -Protocol "tcp" -PublicPort 80 -LocalPort 80 -LBSetName "WebFarm" -ProbePort 80 -ProbeProtocol "http" -ProbePath '/' | Update-AzureVM
 ```
 
-### <a name="step-2"></a>2. lépés
+### <a name="step-2"></a>2\. lépés
 
 Hozzon létre egy másik végpontot a második, „web2” nevű virtuális gép számára ugyanazon terheléselosztó-készlet nevének használatával
 

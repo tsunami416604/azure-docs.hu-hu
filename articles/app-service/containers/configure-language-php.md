@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 637feb855c7816dfb26229c5a65a069260a58cd3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 279660d903b3b0e893c3ccddb89da7c6dc42fa09
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66003094"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205077"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Az Azure App Service Linux PHP-alkalmazás konfigurálása
 
@@ -167,7 +167,7 @@ Telepítse újra az alkalmazást, az a módosításokat, és indítsa újra. Ha 
 
 Az alternatív *.htaccess*, használható [ini_set()](https://www.php.net/manual/function.ini-set.php) ezeket az irányelveket nem PHP_INI_SYSTEM szabhatja testre az alkalmazásban.
 
-### <a name="customize-phpinisystem-directives"></a>PHP_INI_SYSTEM irányelvek testreszabása
+### <a name="customize-php_ini_system-directives"></a>PHP_INI_SYSTEM irányelvek testreszabása
 
 PHP_INI_SYSTEM irányelvek testreszabása (lásd: [php.ini irányelvek](https://www.php.net/manual/ini.list.php)), nem használhatja a *.htaccess* megközelítést. Az App Service biztosítja, hogy egy külön mechanizmus használatával a `PHP_INI_SCAN_DIR` alkalmazásbeállítást.
 

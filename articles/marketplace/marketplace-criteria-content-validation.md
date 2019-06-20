@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: 3345dd82a1de4f9144cdeb5acd5d3e506dc55de8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97fb4dc37f3c9f776e4abf433f916ceaf177a70b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937828"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67202678"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Az Azure Marketplace piactéren irányelvek
 
@@ -39,14 +39,14 @@ Minden ajánlat meg kell felelnie a [ajánlati követelményeinek](https://docs.
 | 11 | Megoldás-támogatás és Súgó | Legalább egy, a következő hivatkozásra: <br>o telefonszámok <br>o e-mailes támogatást <br>o Csevegés ügynökök <br>o-közösségi fórumok |<br>• Minden felsorolt módszereket támogatja: Telefon- és e-mail támogatás. <br>• A fizetős támogatási kínált ingyenes próba- vagy tesztkörnyezetből meghajtó ideje alatt | 
 | 12 | Jogi tudnivalók | Szabályzatok és a egy nyilvános URL-CÍMEN keresztül érhető el a feltételeket |  | 
 
-----
+---
 ## <a name="trial-offer-requirements"></a>Próbaverziós ajánlat követelmények
 
 |  | Elem listázása | Alap követelmények | Optimális követelmények | 
 |:--- |:--- |:--- |:--- |
 |  | Lista állapota | Hivatkozás vezethet az ügyfél által vezetett próbaverziója | Más CTAs (pl. vásárlás) is elérhető | 
 
-----
+---
 ## <a name="saas-apps-requirements"></a>SaaS-alkalmazásokkal kapcsolatos követelmények
 
 |  | Elem listázása | Alap követelmények | Optimális követelmények | 
@@ -63,7 +63,7 @@ Minden ajánlat meg kell felelnie a [ajánlati követelményeinek](https://docs.
 | 10 | Partnerek: Megoldás-támogatás és Súgó | <br>• Műszaki kapcsolattartó neve: Adja meg az engineering contact az alkalmazás nevét. Ez a kapcsolat műszaki kommunikáció fog kapni a Microsoft.<br>• Műszaki kapcsolattartási e-mail cím:  Adja meg az alkalmazás a mérnöki kapcsolattartási e-mail-címét.<br>• Műszaki partnerek telefonszám: Adja meg az engineering contact telefonszámát. ISO-telefon száma jelölések támogatottak; További információkért lásd: https://en.wikipedia.org/wiki/E.123.<br>• Támogatási kapcsolattartó neve: Adja meg az alkalmazás a támogatási kapcsolattartó nevét. Ez a kapcsolat támogatási kapcsolatos üzeneteket fog kapni a Microsoft.<br>• Támogatási kapcsolattartási e-mail cím: Adja meg a támogatási kapcsolattartó e-mail-címe az alkalmazás. <br>• Támogatási kapcsolatba telefonszám: Adja meg a támogatási kapcsolattartó telefonszáma. ISO-telefon száma jelölések támogatottak; További információkért lásd: https://en.wikipedia.org/wiki/E.123. <br>• Támogatási URL-címe: Adja meg az URL-címet a támogatási lapja. | <br>• Minden felsorolt módszereket támogatja: Telefon- és e-mail támogatás. <br>• A fizetős támogatási kínált ingyenes próba- vagy tesztkörnyezetből meghajtó ideje alatt |
 | 11 | Jogi tudnivalók |<br>• Adatvédelmi szabályzat URL-címe: Az alkalmazás adatvédelmi szabályzat CPP az adatvédelmi szabályzat URL-cím mezőben adja meg az URL-címet. <br>• Használati feltételek: Adja meg a használati feltételeket az alkalmazás. Fogadja el ezeket a feltételeket, mielőtt az alkalmazás próbálkozhatnak ügyfelek szükségesek. |  Szabályzatok és a egy nyilvános URL-cím webhelyen keresztül elérhető feltételek |
 
-----
+---
 
 ## <a name="container-offer-requirements"></a>Tároló ajánlat követelményeinek
 
@@ -74,7 +74,7 @@ Minden ajánlat meg kell felelnie a [ajánlati követelményeinek](https://docs.
 | 3 | Marketplace-összetevők | Emblémák hibásan jelennek meg |<br>• Embléma tartalmazza a "fő képet," a nagy formátumú képet, az Azure Portalon <br>• Emblémát: Kicsi (48 x 48) és a nagy (216 x 216) követelmények érvényesek. <br>• Hero a rendszerképre vonatkozó követelmények: https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish<br>• Képernyőkép (max. 5):  CPP feloldási 1280 x 720 között egy .png lemezkép szükséges.|
 | 4 | Felügyeleti vezethet |<br>• A felügyeleti nyújtják: Válassza ki az érdeklődőket a rendszer hol tárolja a rendszer. <br>• Megtudhatja, hogyan csatlakozhat a CRM-rendszerbe [Itt](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) | |
 
-----
+---
 
 ## <a name="consulting-offer-requirements"></a>Consulting ajánlatot követelmények
 
@@ -97,6 +97,3 @@ Minden ajánlat meg kell felelnie a [ajánlati követelményeinek](https://docs.
 ## <a name="next-steps"></a>További lépések
 * További információ a különböző típusú a Marketplace-en. <br>[SaaS-alkalmazások](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) <br>[Containers](https://docs.microsoft.com/azure/marketplace/marketplace-containers) <br>[Tanácsadói szolgáltatások](https://docs.microsoft.com/azure/marketplace/consulting-services)
 *   [A megoldás lista típusának meghatározása](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type).
-
- 
----

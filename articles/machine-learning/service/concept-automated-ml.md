@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1dcdbbf0a2a71fa38b6eacd6a8d179cdad979937
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3f00a530cb4e62ae83dea349c949e8f2ddc43c0c
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059291"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203031"
 ---
 # <a name="what-is-automated-machine-learning"></a>Mi a machine learning automatikus?
 
@@ -171,7 +171,7 @@ Automatizált ML is érhető el a többi Microsoft-megoldások például:
 |Integráció|Leírás|
 |------------|-----------|
 |[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Automatikus modell kiválasztása és képzések a Visual Studio és a Visual Studio Code használatával ML.NET a .NET-alkalmazások automatizált a Machine Learning (előzetes verzió).|
-|[HDIsnight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|Horizontális felskálázás az automatizált Machine Learning betanítási feladatokat a Spark on HDInsight-fürtök párhuzamosan.|
+|[HDInsight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|Horizontális felskálázás az automatizált Machine Learning betanítási feladatokat a Spark on HDInsight-fürtök párhuzamosan.|
 |[PowerBI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Hívja meg a machine learning-modellek közvetlenül a Power BI (előzetes verzió).|
 |[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|Hozzon létre új machine learning modellek az adatok SQL Server 2019 big data-fürtökben.|
 

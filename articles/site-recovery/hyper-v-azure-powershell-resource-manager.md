@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 06/18/2019
 ms.author: sutalasi
-ms.openlocfilehash: 5fbe4fd5f85026cd62f1bd10e36561b312464054
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bc1d52a1062d1848daaaeef7977f96cd270567c8
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64690571"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203471"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Az Azure-bA vészhelyreállítás beállítása a Hyper-V virtuális gépekhez a PowerShell és Azure Resource Manager használatával
 
@@ -113,6 +113,15 @@ A tárolási környezetet állítsa be a következőképpen:
 5. Győződjön meg arról, hogy a Hyper-V-gazdagép regisztrálva van a helyhez a következő:
 
         $server =  Get-AsrFabric -Name $siteName | Get-AsrServicesProvider -FriendlyName $server-friendlyname
+
+Ha egy Hyper-V core kiszolgálón futtatja, a telepítési fájl letöltéséhez, és kövesse az alábbi lépéseket:
+1. Csomagolja ki a fájlokat AzureSiteRecoveryProvider.exe egy helyi könyvtárban a következő parancs futtatásával: ```AzureSiteRecoveryProvider.exe /x:. /q```
+2. Futtatás ```.\setupdr.exe /i``` % Programdata%\ASRLogs\DRASetupWizard.log eredményeket a rendszer naplózza.
+
+3. Regisztrálja a kiszolgálót a következő parancs futtatásával:
+
+    ```cd  C:\Program Files\Microsoft Azure Site Recovery Provider\DRConfigurator.exe" /r /Friendlyname "FriendlyName of the Server" /Credentials "path to where the credential file is saved"```
+
 
 ## <a name="step-6-create-a-replication-policy"></a>6\. lépés: Replikációs házirend létrehozása
 

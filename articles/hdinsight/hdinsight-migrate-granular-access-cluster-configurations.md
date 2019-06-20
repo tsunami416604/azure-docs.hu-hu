@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 1ec4786291d6e2e5be6785e52cf3ab5bb5bbc690
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 56ba2dfebeb47f7e12a2693eae443e3c31e2a4dd
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754535"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203089"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrálás fürtkonfigurációk részletes szerepköralapú hozzáféréséhez
 
@@ -23,7 +23,7 @@ További részletes szerepkör alapú hozzáférés támogatásához bizalmas in
 Korábban a titkos kulcsok sikerült beolvasni a HDInsight-API-n keresztül a fürt felhasználók rendelkeznek a tulajdonos, közreműködő vagy olvasó [RBAC-szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles), amilyenek korábban voltak rendelkező a `*/read` engedély volt szükség.
 Jövőben fér hozzá a titkos adatokat lesz szükség a `Microsoft.HDInsight/clusters/configurations/*` engedéllyel, ami azt jelenti, azok többé nem elérhetők a olvasói szerepkörrel rendelkező felhasználók által. Titkos kulcsok vannak meghatározva, értékeket, amelyek segítségével több emelt szintű hozzáférés, mint a felhasználói szerepkör lehetővé teszi. Ezek közé tartozik például a fürt átjáró HTTP hitelesítő adatait, a tárfiókkulcsok és adatbázis-hitelesítő adatok értékeit.
 
-Is elérhetőkké váltak egy új [futtató HDInisght fürt operátor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) szerepkör, amely fogja tudni beolvasni a titkos kulcsok a rendszergazdai engedélyekkel, közreműködő vagy tulajdonos engedély megadása nélkül. Összefoglalásképpen:
+Is elérhetőkké váltak egy új [HDInsight-fürt operátor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) szerepkör, amely fogja tudni beolvasni a titkos kulcsok a rendszergazdai engedélyekkel, közreműködő vagy tulajdonos engedély megadása nélkül. Összefoglalásképpen:
 
 | Szerepkör                                  | Korábban                                                                                       | A jövőben       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
@@ -155,7 +155,7 @@ Frissítse [Az PowerShell 2.0.0-s verzió](https://www.powershellgallery.com/pac
 
 ## <a name="add-the-hdinsight-cluster-operator-role-assignment-to-a-user"></a>A HDInsight-fürt operátor szerepkör-hozzárendelés hozzáadása egy felhasználó számára
 
-Rendelkező felhasználók a [közreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) vagy [tulajdonosa](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) szerepkör is hozzárendelhet a [futtató HDInisght fürt operátor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) a felhasználók számára, amely rendelkezik olvasási/írási hozzáféréssel a bizalmas szeretne szerepkör HDInsight fürt konfigurációs értékek (például a fürt átjáró hitelesítő adatait és a storage-fiók kulcsainak).
+Rendelkező felhasználók a [közreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) vagy [tulajdonosa](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) szerepkör is hozzárendelhet a [HDInsight-fürt operátor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) a felhasználók számára, amely rendelkezik olvasási/írási hozzáféréssel a bizalmas szeretne szerepkör HDInsight fürt konfigurációs értékek (például a fürt átjáró hitelesítő adatait és a storage-fiók kulcsainak).
 
 ### <a name="using-the-azure-cli"></a>Az Azure parancssori felületének használata
 

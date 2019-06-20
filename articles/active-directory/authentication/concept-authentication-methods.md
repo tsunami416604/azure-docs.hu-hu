@@ -1,22 +1,22 @@
 ---
 title: Hitelesítési módszerek – Azure Active Directory
-description: Milyen hitelesítési módszerek érhetők el az SSPR MFA és az Azure AD-ben
+description: A többtényezős hitelesítés és az SSPR az Azure AD-ban elérhető hitelesítési módszerek
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 06/17/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0bcaf356108984baf473cdef8c18c5561343cd9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1322c919906dc2d0dd23de538fa2c1992fbe5da0
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66119368"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164829"
 ---
 # <a name="what-are-authentication-methods"></a>Mik a hitelesítési módszerek?
 
@@ -180,7 +180,9 @@ Hibák elhárítása után a rendszergazda ezután aktiválhatja minden kulcs ka
 
 Előfordulhat, hogy a felhasználók akár öt hardver OATH-tokenek vagy authenticator alkalmazásokhoz, mint a Microsoft Authenticator alkalmazás bármikor használatra konfigurált kombinációját.
 
-## <a name="mobile-phone"></a>Mobiltelefon
+## <a name="phone-options"></a>Telefon beállításai
+
+### <a name="mobile-phone"></a>Mobiltelefon
 
 Két lehetőség áll rendelkezésre a felhasználók számára a mobiltelefonon.
 
@@ -193,18 +195,18 @@ Megfelelően működjön, telefonszámokat a következő formátumban kell lenni
 >
 > Új jelszó kérése a telefonos mellékek nem támogatja. A + 1 4255551234 X 12345 formátumban, még akkor is, bővítmények előtt távolítsa el a a hívást kezdeményeznek.
 
-### <a name="text-message"></a>Szöveges üzenet
+#### <a name="text-message"></a>Szöveges üzenet
 
 A mobiltelefonszámot egy ellenőrző kódot tartalmazó SMS küld. Adja meg a bejelentkezési felületen, a folytatáshoz a megadott ellenőrző kód.
 
-### <a name="phone-call"></a>Telefonhívás
+#### <a name="phone-call"></a>Telefonhívás
 
 Automatikus hanghívást indít, adja meg a telefonszámot kérés érkezett. A hívás, és nyomja le a hitelesítéshez lenyomja a telefon billentyűzetén a #
 
 > [!IMPORTANT]
 > A telefonhívási beállítások verzióját 2019. március kezdve nem lesz elérhető ingyenes vagy próbaverziója az Azure AD-bérlők MFA és az SSPR felhasználók számára. SMS-ezni, ez a változás nem érinti. Telefonhívás továbbra is elérhető a felhasználók számára a fizetős Azure AD-bérlőt. Ez a változás csak az Azure AD ingyenes vagy próbaverziója bérlők hatással van.
 
-## <a name="office-phone"></a>Irodai telefon
+### <a name="office-phone"></a>Irodai telefon
 
 Automatikus hanghívást indít, adja meg a telefonszámot kérés érkezett. A hívás és a hitelesítéshez lenyomja a telefon billentyűzetén a # gombot.
 
@@ -219,6 +221,25 @@ Az office telefonszám attribútuma a rendszergazda felügyeli.
 > Szükség van egy országhívószámát és telefonszámát közötti hely.
 >
 > Új jelszó kérése a telefonos mellékek nem támogatja. A + 1 4255551234 X 12345 formátumban, még akkor is, bővítmények előtt távolítsa el a a hívást kezdeményeznek.
+
+### <a name="troubleshooting-phone-options"></a>Hibaelhárítási telefon beállításai
+
+Hitelesítési módszerek telefonszám kapcsolatos gyakori problémák:
+
+* Egy adott eszközön letiltott hivó azonosítója
+   * Eszköz hibáinak elhárítása
+* A telefonszám nem megfelelő, helytelen országkód, munkahelyi és otthoni telefonszám
+   * Felhasználói objektum elhárítása és a hitelesítési módszerek konfigurálása. Ellenőrizze, helyes telefonszám a számok regisztrálva vannak.
+* Helytelen PIN-kód megadva
+   * Ellenőrizze, hogy a felhasználó a megfelelő PIN-kódot az Azure MFA-kiszolgáló regisztrálva használt.
+* Hívás továbbított üzenetrögzítőre kapcsolt
+   * Győződjön meg, hogy a felhasználó rendelkezik-e kapcsolva telefon, és a szolgáltatás a saját területén, illetve használja alternatív módszer érhető el.
+* A felhasználó blokkolva van
+   * Az Azure Portalon a felhasználó tiltásának feloldásához rendszergazda rendelkezik.
+* Az eszközön nincs előfizetve az SMS
+   * Módszer megváltoztatása, vagy SMS aktiválása az eszközön a felhasználó rendelkezik.
+* Hibás a távközlési szolgáltatók (nincs bevitel a telefonról észlel, hiányzik a DTMF-hangjelzések kapcsolatos problémák, letiltott Hívóazonosító több eszközön, vagy több eszközön SMS blokkolva)
+   * A Microsoft több távközlési szolgáltatók irányíthatja a telefonhívási és SMS-üzenetek a hitelesítéshez használja. Ha valamelyik fenti probléma rendelkezik egy felhasználó kísérlet után 5 percen belül 5 alkalommal a módszert használja, és annak a felhasználónak a rendelkezésre álló információk rendelkezik, amikor kapcsolatba lép a Microsoft ügyfélszolgálatához.
 
 ## <a name="app-passwords"></a>Alkalmazásjelszavak
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 18cd5a86cc2f52567c5f320719d1a9f21b377ed4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bc058cb3f27545b9e4ad8ef1062ca4d2fa4c9fa8
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60921273"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155154"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Azure Windows virtuális gép aktiválással kapcsolatos problémák elhárítása
 
@@ -51,11 +51,9 @@ Ha megpróbálja aktiválni az Azure Windows virtuális Gépekhez, akkor megjele
 >
 >Ha az ExpressRoute használ, és rendelkezik az alapértelmezett útvonal közzétett, lásd: [Azure virtuális gép esetleg nem expressroute-on keresztül aktiválhatja](https://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx).
 
-### <a name="step-1-configure-the-appropriate-kms-client-setup-key-for-windows-server-2016-and-windows-server-2012-r2"></a>1\. lépés a megfelelő KMS-ügyfél telepítési kulcsának konfigurálása (a Windows Server 2016 és Windows Server 2012 R2)
+### <a name="step-1-configure-the-appropriate-kms-client-setup-key"></a>1\. lépés konfigurálása a megfelelő KMS-ügyfél telepítési kulcsának
 
-A virtuális Gépet, amely a Windows Server 2016 vagy Windows Server 2012 R2 egyéni rendszerkép alapján hozza létre konfigurálnia kell a megfelelő KMS-ügyfél telepítési kulcsának a virtuális gép számára.
-
-Ez a lépés nem vonatkozik a Windows 2012 vagy Windows 2008 R2. Az Automation virtuális gép aktiválása (AVMA) funkció, amely csak a Windows Server 2016 és Windows Server 2012 R2 által támogatott használ.
+A virtuális Gépet, amely egy egyéni lemezkép alapján jön létre konfigurálnia kell a megfelelő KMS-ügyfél telepítési kulcsának a virtuális gép számára.
 
 1. Futtatás **slmgr.vbs/dlv** egy rendszergazda jogú parancssorba. Ellenőrizze a kimenetben a leírás értékét, és ellenőrizze, hogy létrehozták a kiskereskedelmi (KISKERESKEDELMI csatorna) vagy (VOLUME_KMSCLIENT) mennyiségi licencelési adathordozóról:
   

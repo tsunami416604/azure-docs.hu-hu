@@ -1,18 +1,18 @@
 ---
-title: A vállalati biztonsági csomaggal – Azure HDInsight az Apache Kafka-szabályzatok konfigurálása
-description: Megtudhatja, hogyan konfigurálhat Apache Ranger-házirendeket a Kafkához az Azure HDInsightban az Enterprise Security Package csomaggal.
+title: Oktatóanyag – a vállalati biztonsági csomaggal – Azure HDInsight az Apache Kafka-szabályzatok konfigurálása
+description: Oktatóanyag – ismerje meg, az Apache Ranger-házirendek konfigurálása a vállalati biztonsági csomag az Azure HDInsight Kafka számára.
 ms.service: hdinsight
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.topic: tutorial
-ms.date: 01/14/2019
-ms.openlocfilehash: 6434f7cae3c3fa402efad00b2f6bfb0bc405f9e3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/18/2019
+ms.openlocfilehash: 3a7d3a5d066db349bd3002b244d3a9f88777369b
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730251"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274346"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Oktatóanyag: Az Apache Kafka-házirendek konfigurálása a HDInsight vállalati biztonsági csomaggal (előzetes verzió)
 
@@ -26,7 +26,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Témakörök létrehozása egy Kafka-fürtön
 > * Ranger-házirendek tesztelése
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
@@ -61,14 +61,14 @@ Hozzon létre egy Ranger-házirendet a **sales_user** és **marketing_user** fel
 
    |**Beállítás**  |**Ajánlott érték**  |
    |---------|---------|
-   |Házirend neve  |  hdi sales* policy   |
+   |Szabályzat neve  |  hdi sales* policy   |
    |Témakör   |  sales* |
    |Felhasználó kiválasztása  |  sales_user1 |
    |Engedélyek  | közzététel, felhasználás, létrehozás |
 
    A témakör nevében a következő helyettesítő karakterek használhatók:
 
-   * * – Nulla vagy több karaktert helyettesíthet.
+   * \* – Nulla vagy több karaktert helyettesíthet.
    * ? – Egy tetszőleges karaktert helyettesít.
 
    ![Házirend létrehozása az Apache Ranger rendszergazdai felhasználói felületen](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)   
@@ -82,7 +82,7 @@ Hozzon létre egy Ranger-házirendet a **sales_user** és **marketing_user** fel
 
    |**Beállítás**  |**Ajánlott érték**  |
    |---------|---------|
-   |Házirend neve  |  hdi marketing policy   |
+   |Szabályzat neve  |  hdi marketing policy   |
    |Témakör   |  marketingspend |
    |Felhasználó kiválasztása  |  marketing_user1 |
    |Engedélyek  | közzététel, felhasználás, létrehozás |
@@ -117,7 +117,7 @@ Két témakör létrehozásához `salesevents` és `marketingspend`:
    ```
 
    > [!Note]  
-   > Mielőtt továbblépne, konfigurálnia kell a fejlesztési környezetet, ha még nem tette volna meg. A következő összetevőkre lesz szüksége: Java JDK, Apache Maven, valamint egy SSH-ügyfél SCP-vel. További részletekért lásd: [beállítási utasítások](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
+   > Mielőtt továbblépne, konfigurálnia kell a fejlesztési környezetet, ha még nem tette volna meg. A következő összetevőkre lesz szüksége: Java JDK, Apache Maven, valamint egy SSH-ügyfél SCP-vel. További információkért lásd: [beállítási utasítások](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
    
 1. Töltse le az [Apache Kafka tartományhoz csatlakoztatott előállítói és fogyasztói példákat](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
 

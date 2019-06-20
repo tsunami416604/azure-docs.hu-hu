@@ -6,14 +6,14 @@ author: cherylmc
 tags: azure-resource-manager
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 5/21/2019
+ms.date: 6/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6b66a9cf28faccf5ba22bc016297f1d53febe533
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 07bcf50a816c090ccef846909dff671486e514c4
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66157354"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203057"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Azure natív tanúsítványalapú hitelesítésének használatával virtuális hálózathoz pont – hely kapcsolat konfigurálása: Azure Portal
 
@@ -98,7 +98,7 @@ Az ügyfélcímkészlet megadott magánhálózati IP-címek tartománya. A pont�
 2. Kattintson a **Konfigurálás most** elemre a konfigurációs lap megnyitásához.
 
    ![Konfigurálás most](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configurenow.png)
-3. A **Pont–hely** konfigurációs lapján írja be a **Címkészlet** mezőbe a magánhálózati IP-címtartományt, amelyet használni szeretne. A VPN-ügyfelek dinamikusan kapnak egy IP-címet a megadott tartományból. Kattintson a **Mentés** gombra a beállítás érvényesítéséhez és mentéséhez.
+3. A **Pont–hely** konfigurációs lapján írja be a **Címkészlet** mezőbe a magánhálózati IP-címtartományt, amelyet használni szeretne. A VPN-ügyfelek dinamikusan kapnak egy IP-címet a megadott tartományból. A minimális alhálózati maszkkal aktív/passzív és aktív-aktív konfiguráció 28 bit 29 bit. Kattintson a **Mentés** gombra a beállítás érvényesítéséhez és mentéséhez.
 
    ![Ügyfélcímkészlet](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/addresspool.png)
 

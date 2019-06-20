@@ -12,20 +12,20 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/24/2019
+ms.date: 06/18/2019
 ms.author: pepogors
-ms.openlocfilehash: 051d6b1129724ce4e8a67bde4e56ebe61cd832f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fdbd3f15b11e4c3975ca29627d5984382bcf049
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65231382"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206804"
 ---
 # <a name="azure-service-fabric-application-and-cluster-best-practices"></a>Az Azure Service Fabric-alkalmazás és fürt kapcsolatos ajánlott eljárások
 
-Az Azure Service Fabric-alkalmazások és -fürtök felügyelete a sikeres, erősen ajánlott az éles környezetben; megbízhatóságának optimalizálása hajt végre műveleteket vannak Ebben a dokumentumban meghatározott műveletek elvégzéséhez, és válassza ki az egyik a [minták Service Fabric-fürt az Azure-sablonok](https://github.com/Azure-Samples/service-fabric-cluster-templates) megkezdése a gyártási megoldás tervezése, vagy módosíthatja a meglévő sablont, és építse be ezeket az eljárásokat.
+Ez a cikk az Azure Service Fabric-alkalmazások és -fürtök kezelésére vonatkozó ajánlott eljárások mutató hivatkozásokat tartalmaz. Kifejezetten ajánljuk, hogy alkalmazza ezeket a módszereket, a megbízhatóság az éles környezet optimalizálása érdekében. Használja az egyik a [Service Fabric-fürt sablonok](https://github.com/Azure-Samples/service-fabric-cluster-templates) megkezdéséhez, a gyártási megoldás tervezése, vagy frissítse a meglévő sablont, és építse be ezeket az eljárásokat.
 
-## <a name="security"></a>Biztonság 
+## <a name="security"></a>Biztonság
 
 * [Biztonsági védelmének bevált gyakorlata](service-fabric-best-practices-security.md)
 
@@ -52,11 +52,11 @@ Az Azure Service Fabric-alkalmazások és -fürtök felügyelete a sikeres, erő
 
 ## <a name="checklist"></a>Ellenőrzőlista
 
-Miután végzett az összes fenti szakaszt, győződjön meg arról, hogy integrálta az ajánlott eljárások az üzemi készültségi feladatlista mindegyikét:
+Után alkalmazza a javasolt a korábbi szakaszokban ismertetett eljárásokat, győződjön meg arról, hogy Ön már integrált az éles készültségi feladatlista ajánlott eljárásokat:
 * [Az Azure Service Fabric éles készültségi ellenőrzőlista](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)
 
 ## <a name="next-steps"></a>További lépések
 
 * Fürt létrehozása a virtuális gépek vagy a Windows Server rendszert futtató számítógépeken: [A Service Fabric-fürt létrehozása a Windows Server](service-fabric-cluster-creation-for-windows-server.md)
 * Fürt létrehozása a virtuális gépek vagy a Linux operációs rendszert futtató számítógépeken: [Linux-fürt létrehozása](service-fabric-cluster-creation-via-portal.md)
-* Hibaelhárítás: [A Service Fabric – hibaelhárítási útmutató](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)
+* A Service Fabric hibaelhárítása: [Hibaelhárítási útmutatók](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)

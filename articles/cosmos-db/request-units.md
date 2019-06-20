@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan adja meg, és az Azure Cosmos DB-ben a kérelem
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 06/14/2019
 ms.author: rimman
-ms.openlocfilehash: 9615aebd345c957c8e401581ff94735f39ba73c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 12f91676ac50511bf3d2d33f7fed2029e152dc98
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65953535"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165005"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Az Azure Cosmos DB-kérésegységeiről
 
@@ -75,3 +75,4 @@ Becslései szerint a fenntartott egységek száma másodpercenként üzembe hely
 * Ismerje meg, hogyan [optimalizálása az Azure Cosmos DB kiosztott átviteli sebesség költség](optimize-cost-throughput.md).
 * Ismerje meg, hogyan [olvasása és írása az Azure Cosmos DB költségek optimalizálása](optimize-cost-reads-writes.md).
 * Ismerje meg, hogyan [optimalizálása az Azure Cosmos DB lekérdezési költség](optimize-cost-queries.md).
+* Ismerje meg, hogyan [figyelő átviteli sebesség a mérőszámok használatát](use-metrics.md).

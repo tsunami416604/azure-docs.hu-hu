@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: b29f3168b7ecc1ec8f783a7ce7a6dea83318fa14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ba803c493fd85a7be7bc6c5922171678cc6e0df0
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66455708"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164451"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Kimenő adatait az Azure Stream Analytics ismertetése
 
@@ -247,8 +247,7 @@ Az alábbi táblázat ismerteti a tulajdonságait, egy Azure Cosmos DB kimeneti 
 | Fiókazonosító | A neve vagy URI-t az Azure Cosmos DB-fiók végpontját. |
 | Fiókkulcs | A közös hozzáférési kulcs az Azure Cosmos DB-fiókot. |
 | Adatbázis | Az Azure Cosmos DB-adatbázis nevét. |
-| Gyűjteménynévminta | A gyűjtemény nevét, vagy a használandó gyűjtemények minta. <br />A gyűjteménynév-formátum az opcionális {partition} token használatával, ahol a partíciók 0-tól kezdődnek hozhatnak létre. Két példa:  <br /><ul><li> _MyCollection_: Egy gyűjtemény "MyCollection" nevű léteznie kell.</li>  <li> _{Partition} MyCollection_: A particionálási oszlop alapján.</li></ul> A particionálási oszlop gyűjteményeknek létezniük kell: "MyCollection0," "MyCollection1", "MyCollection2," és így tovább. |
-| Partíciókulcs | Választható. Ez szükséges csak akkor, ha a gyűjteménynévminta {partition} token használ.<br /> A partíciós kulcs pedig a kimeneti eseményekben a kimenet gyűjtemények közötti particionálására szolgáló kulcs megadásához használt mező neve.<br /> A kimenet egyetlen gyűjtemény bármilyen tetszőleges kimeneti oszlop is használhatja. Ilyen például, PartitionID azonosítóval. |
+| Gyűjtemény neve | Az Azure Cosmos DB a gyűjtemény neve. Az Azure Cosmos DB korlátlan tárolókra az ajánlott módszer számára az adatok particionálása, az Azure Cosmos DB automatikusan méretezi a számítási feladatok alapján. |
 | Dokumentumazonosító |Választható. A kimeneti eseményekben a melyik beszúrási vagy frissítési műveletek alapulnak az elsődleges kulcs megadásához használt mező neve.
 
 ## <a name="azure-functions"></a>Azure Functions

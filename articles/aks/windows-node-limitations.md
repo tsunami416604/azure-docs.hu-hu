@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: twhitney
-ms.openlocfilehash: 12fb9dc67e8afae3dcb9ade97dd61ab438e0fac5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4b72b6e33ad59ffceebf58aed7b315a4833b02f9
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475407"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203675"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Aktuális korlátozások csomópontkészleteit a Windows Server és az alkalmazás számítási feladatainak Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ Ez a cikk néhány korlátozás és az aks-ben a Windows Server-csomópontok ope
 
 ## <a name="limitations-for-windows-server-in-kubernetes"></a>Korlátozások a Windows Server a Kubernetesben
 
-A Windows Server-tárolók egy Windows-alapú tárolót gazdagépen kell futtatni. Az aks-ben a Windows Server-tárolók futtatásához is [létrehozása a Windows Server rendszert futtató csomópontkészletek] [ windows-node-cli] , a vendég operációs rendszer. Ablak kiszolgáló csomópont készlet támogatás magában foglalja a Kubernetes-projektben a felsőbb rétegbeli Windows Server részét képező bizonyos korlátozások. Ezek a korlátozások nem konkrétan az aks-ben. A felsőbb szintű támogatás Windows Serverhez a Kubernetesben további információkért lásd: [Kubernetes korlátozásai a Windows Server-tárolók][upstream-limitations].
+A Windows Server-tárolók egy Windows-alapú tárolót gazdagépen kell futtatni. Az aks-ben a Windows Server-tárolók futtatásához is [létrehozása a Windows Server rendszert futtató csomópontkészletek] [ windows-node-cli] , a vendég operációs rendszer. Ablak kiszolgáló csomópont készlet támogatás magában foglalja a Kubernetes-projektben a felsőbb rétegbeli Windows Server részét képező bizonyos korlátozások. Ezek a korlátozások nem konkrétan az aks-ben. A felsőbb szintű támogatás Windows Serverhez a Kubernetesben további információkért lásd: [Kubernetes korlátozásai a Windows Server-tárolók](https://docs.microsoft.com/azure/aks/windows-node-limitations).
 
 A következő felsőbb rétegbeli korlátozások, a Windows Server-tárolók a Kubernetes AKS kapcsolódnak:
 

@@ -9,11 +9,11 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: ec5b3572cbf74bad9b82eb93a45d7a4664023b95
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: c447a14f72c56e3e1e244011aa215a33b3f222a6
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/17/2019
 ms.locfileid: "65408224"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
@@ -274,7 +274,7 @@ Alul látható egy minta lecserélendő `AppMonitoredSite` a webhely neve:
             "type": "string"
         }
     },
-    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0"
 }
 ```
@@ -299,7 +299,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 ## <a name="upgrade-monitoring-extensionagent"></a>Figyelési bővítmény-ügynökök frissítése
 
-### <a name="upgrading-from-versions-289-and-up"></a>2.8.9 verziókról és mentése frissítése
+### <a name="upgrading-from-versions-289-and-up"></a>2\.8.9 verziókról és mentése frissítése
 
 Történő frissítéskor 2.8.9 automatikusan történik, minden további műveletek nélkül. Az új figyelési bits érkezzenek a célként megadott app Service a háttérben, és az alkalmazás-újraindítás csak azt követően dolgozza.
 
@@ -309,7 +309,7 @@ A bővítmény verziójának ellenőrzéséhez keresse fel futtatja `http://your
 
 ### <a name="upgrade-from-versions-100---265"></a>Frissítés a 2.6.5 1.0.0 - verziók
 
-2.8.9 verziótól kezdve az előre telepített webhelybővítményt szolgál. Ha egy korábbi, keresztül két módszer egyikével frissítheti:
+2\.8.9 verziótól kezdve az előre telepített webhelybővítményt szolgál. Ha egy korábbi, keresztül két módszer egyikével frissítheti:
 
 * [A portálon keresztül engedélyezésével frissítési](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enable-application-insights). (Akkor is, ha az Azure App Service telepítve van az Application Insights bővítményt, a felhasználói felület megjelenítése csak **engedélyezése** gombra. A színfalak mögött a régi privát webhelybővítmény távolítja el.)
 

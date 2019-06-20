@@ -11,12 +11,12 @@ ms.date: 01/09/2019
 author: sharonlo101
 ms.author: shlo
 manager: craigg
-ms.openlocfilehash: 82786b8f01ce409179f4ddd37127679f9357cd0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: dfdfb9e38f16d0077175587933b0800b87cc1931
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64727051"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144128"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure-függvény tevékenység az Azure Data Factoryban
 
@@ -64,6 +64,10 @@ Függetlenül attól, hogy 230 másodperc után az Azure Functions-időtúllép�
 
 További információ a Durable Functions [Ez a cikk](../azure-functions/durable/durable-functions-overview.md). Beállíthat egy Azure-függvény tevékenység tartós függvény, amely választ küld egy másik URI-azonosítójú például [ebben a példában](../azure-functions/durable/durable-functions-http-api.md#http-api-url-discovery). Mivel `statusQueryGetUri` HTTP-állapot 202 közben a függvény fut, a webes tevékenység használatával lekérdezheti a állapotát, a függvény visszaadja. Egyszerűen állítsa be a webes tevékenységet a `url` mező értéke `@activity('<AzureFunctionActivityName>').output.statusQueryGetUri`. A tartós függvény lefutott, a függvény kimenetének lesznek a webes tevékenység kimenetét.
 
+
+## <a name="sample"></a>Sample
+
+Az adat-előállítók által használt Azure-függvény egy tar-fájlok tartalma kinyeréséhez egy minta annak [Itt](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction).
 
 ## <a name="next-steps"></a>További lépések
 

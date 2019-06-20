@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: jingwang
-ms.openlocfilehash: e68b522d5a0fe7c359d83fc436aa7a1fd2159198
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9208ceeb760bba97c12b23a1b6e5bdff7efc9020
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67048592"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274821"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Adatok másolása és az Azure SQL Database felügyelt példány az Azure Data Factory használatával
 
@@ -33,7 +33,11 @@ Pontosabban az Azure SQL Database felügyelt példányába összekötő támogat
 - Forrásként adatok beolvasása egy SQL-lekérdezést vagy tárolt eljárás használatával.
 - Fogadóként adatok hozzáfűzése táblát vagy egy tárolt eljárást az egyéni logikát meghívása másolása során.
 
-Az SQL Server [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017) jelenleg nem támogatja. 
+>[!NOTE]
+>Az Azure SQL Database felügyelt példányain **[Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-mi-current)** jelenleg nem támogatja az összekötő által. Megkerülő megoldásként használhatja [általános ODBC-összekötő](connector-odbc.md) és az SQL Server ODBC-illesztőprogram helyi Integration Runtime-n keresztül. Hajtsa végre a [Ez az útmutató](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-mi-current) ODBC illesztőprogram letöltési és kapcsolati karakterlánc konfigurációkkal.
+
+>[!NOTE]
+>Szolgáltatás egyszerű és felügyelt identitások hitelesítése jelenleg nem támogatottak az összekötő által és a csomag hamarosan utáni engedélyezéséhez. Most a következő módokon hidalható át kiválaszthatja az Azure SQL Database-összekötő és a manuális adja meg a kiszolgáló a felügyelt példány.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -57,7 +61,7 @@ Az Azure SQL Database felügyelt példányába társított szolgáltatás a köv
 | connectionString |Ez a tulajdonság határozza meg a connectionString információkat, amelyeket a példányhoz való csatlakozáshoz a felügyelt SQL-hitelesítés használatával. További információkért lásd az alábbi példákat. <br/>Ez a mező jelölhetnek egy SecureString tárolja biztonságos helyen a Data Factoryban. Jelszó is helyezheti az Azure Key Vaultban, és ha az SQL-hitelesítés lekéréses a `password` konfigurációs ki a kapcsolati karakterláncot. A táblázat alatti a JSON-példa és [Store hitelesítő adatokat az Azure Key Vaultban](store-credentials-in-key-vault.md) további részleteket a cikkben. |Igen. |
 | connectVia | Ez [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódásra szolgál. (Ha a felügyelt példány nyilvános végponttal rendelkezik, és lehetővé teszi az ADF eléréséhez) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Igen. |
 
-**1. példa: SQL-hitelesítés használata**
+**1. példa: SQL-hitelesítés használata** alapértelmezett port a 1433-as. SQL felügyelt példánya a nyilvános végpontot használja, ha explicit módon adja meg a portot 3342.
 
 ```json
 {
@@ -67,7 +71,7 @@ Az Azure SQL Database felügyelt példányába társított szolgáltatás a köv
         "typeProperties": {
             "connectionString": {
                 "type": "SecureString",
-                "value": "Data Source=<servername:port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
+                "value": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
             }
         },
         "connectVia": {
@@ -78,7 +82,7 @@ Az Azure SQL Database felügyelt példányába társított szolgáltatás a köv
 }
 ```
 
-**2. példa: SQL-hitelesítés használata az Azure Key Vaultban jelszó**
+**2. példa: SQL-hitelesítés használata az Azure Key Vaultban jelszóval** alapértelmezett port a 1433-as. SQL felügyelt példánya a nyilvános végpontot használja, ha explicit módon adja meg a portot 3342.
 
 ```json
 {
@@ -88,7 +92,7 @@ Az Azure SQL Database felügyelt példányába társított szolgáltatás a köv
         "typeProperties": {
             "connectionString": {
                 "type": "SecureString",
-                "value": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;"
+                "value": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;"
             },
             "password": { 
                 "type": "AzureKeyVaultSecret", 

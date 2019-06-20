@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
 ms.author: cithomas
-ms.openlocfilehash: c94167929782a2deca7bba19924bfe67dd46bf29
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 7a657f175307e019155e37538021c5aecf5bb068
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388375"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67136900"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights-mintavétel
 
@@ -53,7 +53,7 @@ Ha az adaptív vagy rögzített méretű arány mintavételi művelet, a betölt
 
 Az adaptív mintavételezési érhető el az Application Insights SDK for ASP.NET v 2.0.0-beta3 vagy újabb, Microsoft.ApplicationInsights.AspNetCore SDK v 2.2.0-beta1 és újabb verziók, és alapértelmezés szerint engedélyezve van.
 
-Az adaptív mintavételezési hatással van az Application Insights szolgáltatás végpontjának a webalkalmazás-kiszolgáló által küldött telemetriai adatok mennyisége. A kötetet, hogy a forgalom a megadott maximális sebesség belül automatikusan módosul, és a beállítás védi `MaxTelemetryItemsPerSecond`. Ha az alkalmazást hoz létre egy kis mennyiségű telemetriai adatokat, például hibakeresést, vagy az alacsony kihasználtságú miatt elemek nem lekérése mintavételezés, amíg a kötet nem éri el `MaxTelemetryItemsPerSecond`. Mintavételi ráta telemetriai nő a mennyisége, hogy a célkötet módosul.
+Az adaptív mintavételezési hatással van az Application Insights szolgáltatás végpontjának a webalkalmazás-kiszolgáló által küldött telemetriai adatok mennyisége. A kötetet, hogy a forgalom a megadott maximális sebesség belül automatikusan módosul, és a beállítás védi `MaxTelemetryItemsPerSecond`. Ha az alkalmazást hoz létre egy kis mennyiségű telemetriai adatokat, például hibakeresést, vagy az alacsony kihasználtságú miatt elemek nem dobható el, a mintavételi feldolgozó, amíg a kötet nem éri el `MaxTelemetryItemsPerSecond`. Mintavételi ráta telemetriai nő a mennyisége, hogy a célkötet módosul.
 
 A célkötet eléréséhez a generált telemetriai adatokat néhány elveti. De mintavételi más típusú, például az algoritmus megtartja a kapcsolódó telemetriai adat elemek. Például ha a telemetria keresése a vizsgálat lesz találta meg a kérelem egy adott kivétel kapcsolatos.
 

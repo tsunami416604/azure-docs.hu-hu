@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 05/22/2019
-ms.openlocfilehash: 5a7c6c4553f46e8a7308995e05d6c06c0eb10f27
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/18/2019
+ms.openlocfilehash: 1d639a8b1d5c7a5dd2b7bac7c5e020be7c8b1c50
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002213"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190947"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Gyakori Azure Database Migration Service-problémák és hibák elhárítása
 
@@ -59,6 +59,16 @@ Hiba történt a következő amikor megjelenik az Azure Database Migration Servi
 | Ok         | Megoldás: |
 | ------------- | ------------- |
 | Ez a hiba a szolgáltatáspéldány leállítani a végrehajtani kívánt olyan tevékenységeket foglal magába, amelyek továbbra is futnak, vagy jelenleg a migrálási projekt jelenít meg. <br><br><br><br><br><br> | Győződjön meg arról, hogy nincsenek-e az Azure Database Migration Service leállítani kívánt példányát futtató tevékenységek. Törölheti is a tevékenységek vagy projektekhez előtt állítsa le a szolgáltatást. A következő lépések bemutatják, hogyan törlésével az összes futó feladatot az áttelepítés szolgáltatáspéldány karbantartása projektek eltávolítása:<br>1. Install-Module -Name AzureRM.DataMigration <br>2. Login-AzureRmAccount <br>3. Select-AzureRmSubscription -SubscriptionName "<subName>" <br> 4. Remove-AzureRmDataMigrationProject -Name <projectName> -ResourceGroupName <rgName> -ServiceName <serviceName> -DeleteRunningTask |
+
+## <a name="error-when-attempting-to-start-azure-database-migration-service"></a>Azure Database Migration Service indítására tett kísérlet közben hiba
+
+Hiba történt a következő amikor megjelenik az Azure Database Migration Service-példány indítása:
+
+* **Hiba**: Szolgáltatás indítása sikertelen. Hiba: {"errorDetail": "a szolgáltatás nem sikerült elindítani, forduljon a Microsoft ügyfélszolgálatához"}
+
+| Ok         | Megoldás: |
+| ------------- | ------------- |
+| Ez a hiba az előző példányt nem sikerült belsőleg jelenít meg. Ez a hiba csak ritkán jelentkezik, és ismeri fel a mérnöki csapathoz. <br> | Törölje a szolgáltatáspéldányt, hogy lehet elindítani, és hogyan építhet ki helyette újat. |
 
 ## <a name="error-restoring-database-while-migrating-sql-to-azure-sql-db-managed-instance"></a>Adatbázis visszaállítása közben az Azure SQL-adatbázis áttelepítése SQL felügyelt példánya hiba
 

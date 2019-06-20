@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
 ms.author: monhaber
-ms.openlocfilehash: e7420adfe1608df39ef72124817f1d6dadf07db8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 76e691df0a026802682b57ff78496f6b66d7ff79
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66400133"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154820"
 ---
-# <a name="advanced-data-security-for-sql-servers-on-iaas"></a>Speciális biztonsági IaaS-on SQL-kiszolgálók
-Azure virtuális gépeken futó SQL-kiszolgálók speciális biztonsági egységes csomag egy tapasztalt SQL biztonsági funkciók. Felszínre hozza a és az adatbázis biztonsági réseinek csökkentése és az adatbázis fenyegetést jelezhet rendellenes tevékenységeket észleli a funkció jelenleg tartalmazza. 
+# <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-public-preview"></a>Speciális biztonsági SQL-kiszolgálók Azure-beli virtuális gépeken (nyilvános előzetes verzió)
+Azure virtuális gépeken futó SQL-kiszolgálók speciális biztonsági egységes csomag egy tapasztalt SQL biztonsági funkciók. Felszínre hozza a és az adatbázis biztonsági réseinek csökkentése és az adatbázis fenyegetést jelezhet rendellenes tevékenységeket észleli a funkciót jelenleg (a nyilvános előzetes verzió) tartalmaz. 
 
 Az ajánlat az Azure virtuális gépek SQL-kiszolgálók biztonsági alapul használt ugyanazon alapvető technológia a [Azure SQL Database speciális adatok biztonsági csomag](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security).
 
@@ -36,7 +36,7 @@ Speciális biztonsági egy tapasztalt SQL biztonsági funkciókat, sebezhetősé
 
 ## <a name="get-started-with-advanced-data-security-for-sql-on-azure-vms"></a>Az Azure virtuális gépeken SQL speciális Data Security használatának első lépései
 
-Az alábbi lépéseket az első lépéseket biztonságú adatokat az SQL Azure virtuális gépeken.
+Az alábbi lépéseket az első lépéseket biztonságú adatokat az Azure virtuális gépek nyilvános előzetes verziója az SQL.
 
 ### <a name="set-up-advanced-data-security-for-sql-on-azure-vms"></a>Azure virtuális gépeken az SQL Data biztonságú beállítása
 
@@ -145,7 +145,7 @@ Megtekintheti a sebezhetőségi felmérés eredmények és a jelentéseket közv
 ## <a name="advanced-threat-protection-for-sql-servers-on-azure-vms-alerts"></a>Komplex veszélyforrások elleni védelem SQL-kiszolgálók az Azure virtuális gépek riasztások
 Szokatlan és vélhetően kárt okozó kísérleteket elérni vagy kiaknázni az SQL Server-kiszolgálók által előállított riasztások. Ezeket az eseményeket is aktiválhatja a következő riasztásokat:
 
-### <a name="anomalous-access-pattern-alerts"></a>Rendellenes hozzáférési minta riasztások
+### <a name="anomalous-access-pattern-alerts-supported-in-public-preview"></a>Rendellenes hozzáférési minta riasztásokat (a támogatott nyilvános előzetes verzióban érhető el)
 
 * **Hozzáférés szokatlan helyről:** Ez a riasztás akkor aktiválódik, ha az SQL Server, amikor valaki jelentkezett be az SQL Server egy szokatlan földrajzi helyről hozzáférési mintájában változik. A lehetséges okok:
      * Egy támadó vagy egy korábbi rosszindulatú alkalmaz érte el az SQL Serverhez.

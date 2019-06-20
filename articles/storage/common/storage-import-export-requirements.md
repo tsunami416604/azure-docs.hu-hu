@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: bc244ecb62655d1e95046fb0eb8548fdacdcc2a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 4d002a82e3968e0462e5f6e775ec147669c01b0d
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61478589"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147955"
 ---
 # <a name="azure-importexport-system-requirements"></a>Az Azure Import/Export rendszerre vonatkozó követelmények
 
@@ -41,7 +41,7 @@ A merevlemez-meghajtókat a WAImportExport eszközzel, a következő előkészí
 
 Az Azure Import/Export szolgáltatás támogatja a következő típusú storage-fiókok:
 
-- Általános célú v2 storage-fiókok (a legtöbb forgatókönyvek esetén ajánlott)
+- Standard szintű, általános célú v2 storage-fiókok (a legtöbb forgatókönyvek esetén ajánlott)
 - Blob Storage-fiókok
 - Általános célú v1-tárfiókok (klasszikus és a Azure Resource Manager üzembe helyezések), 
 
