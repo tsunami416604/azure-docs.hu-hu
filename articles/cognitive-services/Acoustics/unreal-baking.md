@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: michem
-ms.openlocfilehash: 48a1c4350b438761aa2e2d8c7e57a872c86ca292
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6b49a6b9e235414cd63eacdbad523bbda8646963
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61433419"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304308"
 ---
 # <a name="project-acoustics-unreal-bake-tutorial"></a>Projekt Akusztika Unreal Bake oktatóanyag
 Ez a dokumentum ismerteti az Unreal szerkesztő bővítményének használatával Akusztika bake be.
@@ -208,7 +208,7 @@ A bake befejezése után ellenőrizze, hogy a mintavétel, valamint voxels ponto
 Nincsenek különböző időpontokban a beépülő modul által létrehozott négy adatfájlokat. Csak az egyik futásidőben van szükség, és a fájlfejlécben található a projekt tartalom/Akusztika mappába, amely automatikusan hozzáadódik a projekt csomagolási elérési útját. A másik három a Akusztika adatok mappában találhatók, és nem vannak csomagolva.
 
 * **[Project]/Config/ProjectAcoustics.cfg**: Ez a fájl tárolja az adatokat, a felhasználói felületen Akusztika mód mezőkben. A hely és a fájl neve nem lehet módosítani. Ebben a fájlban tárolt más értékek, amelyek a bake hatással, de tapasztalt felhasználók számára, és nem szabad módosítani.
-* **[Project]/Content/Acoustics/[LevelName]\_AcousticsData.ace**: Ez a fájl, mi a bake szimuláció során létrejön, és a helyszín a Akusztika megjelenítése a modul által használt keresési adatait tartalmazza. A helyét, és ez a fájl nevét is módosítható a mezői a **mintavételek** fülre.
+* **[Project]/Content/Acoustics/[LevelName]\_AcousticsData.ace**: Ez a fájl, mi a bake szimuláció során létrejön, és a helyszín a Akusztika megjelenítése a modul által használt keresési adatait tartalmazza. A helyét, és ez a fájl nevét is módosítható a mezői a **mintavételek** fülre. Ha azt szeretné, ez a fájl átnevezése a létrehozásuk után, az Unreal projektből a UAsset törlése, nevezze át a fájlt a Fájlkezelőben Unreal kívül, és majd újra a fájlt importálja egy új UAsset előállításához Unreal. A UAsset átnevezése önmagában nem fog működni.
 * **[Project]/Plugins/ProjectAcoustics/AcousticsData/[LevelName]\_AcousticsData.vox**: Ez a fájl tartalmazza a voxelized Akusztika geometry és a lényeges tulajdonságait. Kiszámítása a **Calculate** gombot a **mintavételek** fülre. A helyét, és ez a fájl nevét is módosítható a mezői a **mintavételek** fülre.
 * **[Project]/Plugins/ProjectAcoustics/AcousticsData/[LevelName]\_AcousticsData\_config.xml**: Ez a fájl tartalmazza a paraméterek kiszámítása a **Calculate** gombot a **mintavételek** fülre. A helyét, és ez a fájl nevét is módosítható a mezői a **mintavételek** fülre.
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 4db9e6eaf2d7f7630d3d412d5519d97f8beca3ad
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 275fec5fb696a7e1352bbddccd288863e984b796
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272839"
+ms.locfileid: "67304557"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>Oktatóanyag: Felügyeleti eszköz üzembe helyezése
 
@@ -66,12 +66,16 @@ A következő adja meg a paramétereket az eszköz konfigurálásának módjár�
 
 Miután a GitHub Azure Resource Manager sablon befejeződik, egy erőforráscsoportot, két app services és a egy app service-csomag az Azure Portalon tartalmazó találja.
 
-Bejelentkezett, és a felügyeleti eszközt használja, mielőtt történő az új Azure Active Directory-alkalmazás, amely a felügyeleti eszköz társítva van szüksége. Azáltal, hogy a hozzájárulási, engedélyezi a felügyeleti eszköz Windows virtuális asztal felügyeleti hívásokat az eszköz van bejelentkezett felhasználó nevében.
+Mielőtt jelentkezzen be, és a felügyeleti eszközzel kell hozzájárulás megadása az új Azure Active Directory-alkalmazás, amely a felügyeleti eszköz társítva van. Azáltal, hogy a hozzájárulási, engedélyezi a felügyeleti eszköz Windows virtuális asztal felügyeleti hívásokat az eszköz van bejelentkezett felhasználó nevében.
 
-Határozzák meg, hogy mely felhasználói segítségével jelentkezzen be az eszközt, nyissa meg a [Azure Active Directory-felhasználói beállítások lapon](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) , és jegyezze fel az értéket **felhasználók engedélyezhetik, hogy az alkalmazások hozzáférjenek a céges adatok saját nevükben való**.
+![Egy Képernyőkép az engedélyeket, amikor Ön hozzájárul a felhasználói felület felügyeleti eszköz konvertálásához.](media/management-ui-delegated-permissions.png)
 
-- Ha az értéke **Igen**, jelentkezzen be az Azure Active Directory minden olyan felhasználói fiókkal, és adja meg a jóváhagyási csak az adott felhasználó számára. Azonban hogy jelentkezzen be a felügyeleti eszköz és a egy másik felhasználó később, ha kell végrehajtania azonos beleegyezése újra.
-- Ha az értéke **nem**, meg kell az Azure Active Directory globális rendszergazda jelentkezzen be, és adja meg a rendszergazdai jóváhagyás a címtárban lévő összes felhasználó számára. Nem fogja 
+Melyik felhasználó jelentkezzen be az eszköz segítségével megállapíthatja, nyissa meg a [Azure Active Directory-felhasználói beállítások lapon](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) , és jegyezze fel az értéket **felhasználók engedélyezhetik, hogy az alkalmazások hozzáférjenek a céges adatok saját nevükben való** .
+
+![Képernyőfelvétel:, ha a felhasználók is biztosítani beleegyezik az alkalmazások csak a felhasználó számára.](media/management-ui-user-consent-allowed.png)
+
+- Ha az értéke **Igen**, jelentkezzen be az Azure Active Directory minden olyan felhasználói fiókkal, és adja meg a jóváhagyási csak az adott felhasználó számára. Azonban ha bejelentkezik a felügyeleti eszköz és a egy másik felhasználó később, kell végrehajtania az azonos hozzájárulási újra.
+- Ha az értéke **nem**, jelentkezzen be az Azure Active Directory globális rendszergazdájaként kell és a címtár összes felhasználója esetében adja meg a rendszergazdai jóváhagyás. Más felhasználók nem fognak adódni jóváhagyásukat kéri.
 
 
 Ha úgy dönt, hogy melyik felhasználó történő használandó, kövesse az alábbi utasításokat biztosít, hogy az eszköz:
@@ -79,6 +83,8 @@ Ha úgy dönt, hogy melyik felhasználó történő használandó, kövesse az a
 1. Nyissa meg az Azure-erőforrások, válassza ki az Azure App Services-erőforrás a megadott nevű (például Apr3UX) a sablonban, keresse meg az URL-címhez társított Ha például <https://rdmimgmtweb-210520190304.azurewebsites.net>.
 2. Jelentkezzen be a megfelelő Azure Active Directory felhasználói fiók használatával.
 3. Ha megtörtént a globális rendszergazda, most kiválaszthatja a jelölőnégyzet bejelölésével **hozzájárul a szervezet nevében**. Válassza ki **elfogadás** történő.
+   
+   ![Egy Képernyőkép a teljes hozzájárulást kérő lap, a felhasználó vagy rendszergazda fognak megjelenni.](media/management-ui-consent-page.png)
 
 Most már ekkor megjelenik a felügyeleti eszköz.
 

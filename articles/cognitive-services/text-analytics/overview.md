@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 04/03/2019
 ms.author: aahi
-ms.openlocfilehash: 7d52585b51af09c430130141c3680b5630f7b95e
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: a4f1f75c85c99610ee75eb9fda51114b52bbfac3
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417290"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304022"
 ---
 # <a name="what-is-text-analytics-api"></a>Mit jelent a szövegelemzési API-t?
 
@@ -89,7 +89,18 @@ A Text Analytics API minden végpontja nyers szöveges adatokat fogad el. A jele
 | Teljes kérés maximális mérete | 1 MB |
 | Egy kérésbe foglalt dokumentumok maximális száma | 1000 dokumentum |
 
-A sávszélesség-korlátjának a második és az 1000 percenkénti kérések 100 kérelemből állhat. Elküldheti a nagy mennyiségű dokumentumok száma (legfeljebb 1000 dokumentumot).
+A sávszélesség-korlátjának tarifacsomag számától függ.
+
+| Szint          | Kérések másodpercenként | Percenkénti kérések |
+|---------------|---------------------|---------------------|
+| Több szolgáltatás | 1000                | 1000                |
+| S0/F0         | 100                 | 300                 |
+| S1            | 200                 | 300                 |
+| S2            | 300                 | 300                 |
+| S3            | 500                 | 500                 |
+| S4            | 1000                | 1000                |
+
+Kérelmek mérése történik, Szövegelemzés szolgáltatásonként külön-külön. Például küldhet kérelmek maximális száma a tarifacsomagot az egyes funkciók egyszerre.      
 
 ## <a name="unicode-encoding"></a>Unicode-kódolás
 

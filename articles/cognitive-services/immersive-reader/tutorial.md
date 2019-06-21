@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Indítsa el a ragadó Reader (Node.js)'
+title: 'Oktatóanyag: A Modern olvasó indítása (Node.js)'
 titleSuffix: Azure Cognitive Services
 description: Ebben az oktatóanyagban egy Node.js-alkalmazás, amely elindítja a ragadó olvasó fog létrehozni.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: a6300d0233f222f26dc018136038c9fe96ecca84
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 98b46636be321bfe87c08687600894d0c8ab54db
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296736"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67311711"
 ---
-# <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Oktatóanyag: Indítsa el a ragadó Reader (Node.js)
+# <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Oktatóanyag: A Modern olvasó indítása (Node.js)
 
 Az a [áttekintése](./overview.md), mi az a ragadó olvasó megismerkedett a, és hogyan valósítja meg olvasó szövegértést javítása nyelvi tanulók, az újonnan felbukkanó olvasók mind a tanulói tanulási különbségek a bevált módszereket. Ez az oktatóanyag bemutatja, hogyan hozhat létre egy Node.js-webalkalmazás, amely elindítja a ragadó olvasó. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -32,7 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy előfizetési kulcsot ragadó olvasó. Itt igényelhet a következő [ezek az utasítások](https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-apis-create-account).
+* Egy előfizetési kulcsot ragadó olvasó. Itt igényelhet a következő [ezek az utasítások](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
 * [NODE.js](https://nodejs.org/) és [Yarn](https://yarnpkg.com)
 * Például az integrált fejlesztői Környezetig [Visual Studio Code-ot](https://code.visualstudio.com/)
 
@@ -56,7 +56,7 @@ yarn add dotenv
 
 ## <a name="acquire-an-access-token"></a>Hozzáférési jogkivonat beszerzése
 
-Következő lépésként írja meg a háttérrendszeri API használatával az előfizetési kulcs hozzáférési jogkivonatot beolvasni. Szükség van az előfizetési kulcs és a végpont a következő lépéssel. Ezt az információt, annak https://azure.microsoft.com/try/cognitive-services/my-apis/.
+Következő lépésként írja meg a háttérrendszeri API használatával az előfizetési kulcs hozzáférési jogkivonatot beolvasni. Szükség van az előfizetési kulcs és a végpont a következő lépéssel. Az előfizetési kulcs az ragadó olvasó erőforrást az Azure Portal kulcsok lapján található. A végpont az Áttekintés oldal találhatja meg.
 
 Miután az előfizetési kulcs és a végpont, hozzon létre egy új fájlt _.env_, és illessze be a következő kódot, és cserélje le `{YOUR_SUBSCRIPTION_KEY}` és `{YOUR_ENDPOINT}` az előfizetési kulcs és a végpontot, illetve.
 
@@ -88,7 +88,7 @@ router.get('/token', function(req, res, next) {
         'Ocp-Apim-Subscription-Key': process.env.SUBSCRIPTION_KEY,
         'content-type': 'application/x-www-form-urlencoded'
     },
-    url: process.env.ENDPOINT + '/issueToken'
+    url: process.env.ENDPOINT
   },
   function(err, resp, token) {
     return res.send(token);
@@ -103,7 +103,7 @@ Az API-végpont védelméhez mögött valamilyen hitelesítés (például [OAuth
 1. Nyissa meg _views\layout.pug_, és adja hozzá a következő kódot alatt a `head` címke, mielőtt a `body` címke. Ezek `script` betölteni a címkéket a [ragadó olvasó SDK](https://github.com/Microsoft/immersive-reader-sdk) és jQuery.
 
     ```pug
-    script(src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.1.0.0.js')
+    script(src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.0.0.1.js')
     script(src='https://code.jquery.com/jquery-3.3.1.min.js')
     ```
 
@@ -130,7 +130,7 @@ Az API-végpont védelméhez mögött valamilyen hitelesítés (például [OAuth
             };
 
             // Third, launch the Immersive Reader
-            ImmersiveReader.launchAsync(token, null, content);
+            ImmersiveReader.launchAsync(token, content);
           }});
         }
     ```
@@ -174,7 +174,7 @@ Alapértelmezés szerint a ragadó olvasó felület nyelve megegyezik a webböng
     const options = {
         uiLang: 'fr',
     }
-    ImmersiveReader.launchAsync(token, null, content, options);
+    ImmersiveReader.launchAsync(token, content, options);
     ```
 
 2. Navigáljon a _http://localhost:3000_ . Ha elindítja a ragadó olvasó, a felület francia nyelven jelenik meg.

@@ -11,12 +11,12 @@ ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: de99d1a58cac12c80748b34ef4a1b07c9fb2a78e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 34c8c49166ea13d67c1f3d51805671c63dbb352b
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60337203"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312300"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Adatátalakítás a felhőben egy Spark-tevékenység az Azure Data Factoryban való használatával
 Ebben az oktatóanyagban egy Azure Data Factory-folyamatot hoz létre az Azure Portal használatával. Ez a folyamat egy Spark-tevékenységgel és egy igény szerinti Azure HDInsight társított szolgáltatással alakítja át az adatokat. 
@@ -147,7 +147,7 @@ Ebben a szakaszban két társított szolgáltatást hoz létre:
    
    b. Győződjön meg arról, hogy az **On-demand HDInsight** (Igény szerinti HDInsight) van kiválasztva a **Típus** elemnél.
    
-   c. Az **Azure Storage társított szolgáltatás** mezőben válassza az **AzureStorage1** lehetőséget. Ezt a társított szolgáltatást korábban hozta létre. Ha másik nevet használt, adja meg a megfelelő nevet. 
+   c. A **Azure Storage társított szolgáltatás**válassza **AzureBlobStorage1**. Ezt a társított szolgáltatást korábban hozta létre. Ha másik nevet használt, adja meg a megfelelő nevet. 
    
    d. Válasza a **spark** **fürttípust**.
    
@@ -189,7 +189,7 @@ Ebben a szakaszban két társított szolgáltatást hoz létre:
    ![Az HDInsight kapcsolódó szolgáltatás megadása](./media/tutorial-transform-data-spark-portal/select-hdinsight-linked-service.png)
 1. Váltson a **Szkript/Jar** lapra, és végezze el az alábbi lépéseket: 
 
-   a. A **Feladathoz társított szolgáltatás** mezőben válassza az **AzureStorage1** lehetőséget.
+   a. A **feladathoz társított szolgáltatás**válassza **AzureBlobStorage1**.
    
    b. Kattintson a **Tallózás a tárolóban** lehetőségre.
 
@@ -206,7 +206,7 @@ Ebben a szakaszban két társított szolgáltatást hoz létre:
 
 
 ## <a name="trigger-a-pipeline-run"></a>Folyamat futtatásának aktiválása
-Kattintson az **Aktiválás** gombra az eszköztáron, majd válassza az **Aktiválás most** lehetőséget. 
+Válassza ki **eseményindító hozzáadása** az eszköztáron, majd válassza ki a **Aktiválás most**. 
 
 ![Az „Aktiválás” és az „Aktiválás most” gomb](./media/tutorial-transform-data-spark-portal/trigger-now-menu.png)
 
@@ -222,7 +222,7 @@ Kattintson az **Aktiválás** gombra az eszköztáron, majd válassza az **Aktiv
 
    ![Folyamat futási állapota](./media/tutorial-transform-data-spark-portal/pipeline-run-succeeded.png) 
 
-   A fenti **Folyamatok** elemre kattintva visszaválthat a folyamatfuttatások nézetre.
+   Válthat vissza a folyamatfuttatások nézetre való kiválasztásával a **összes Folyamatfuttatások** a fenti hivatkozásra.
 
    ![„Tevékenységfuttatások” nézet](./media/tutorial-transform-data-spark-portal/activity-runs.png)
 

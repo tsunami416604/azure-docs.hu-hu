@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 06/05/2019
 ms.author: raymondl
-ms.openlocfilehash: b7683b6d5932872f8cef2f6db9a1ec7e5e4fa86d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c803c85a0900a09b18909e2c81d52915a12cff1a
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069181"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304075"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Példa: Kulcsszavak kinyerése a Text Analytics használatával
 
@@ -84,7 +84,7 @@ A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytic
 
 ## <a name="step-2-post-the-request"></a>2\. lépés: A kérelem küldése
 
-Az elemzés a kérelem megkapásakor történik meg. A szolgáltatás percenként legfeljebb 100 kérést fogad. Mindegyik kérés legfeljebb 1 MB lehet.
+Az elemzés a kérelem megkapásakor történik meg. Tekintse meg a [data korlátai](../overview.md#data-limits) szakasz az áttekintésben a méret és a kérelmek percenkénti küldhet és a második kapcsolatos információkat.
 
 Ne felejtse, hogy a szolgáltatás állapot nélküli. A fiókban nem tárol semmilyen adatot. Az eredményeket azonnal visszaadja a válaszban.
 

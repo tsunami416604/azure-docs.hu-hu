@@ -9,14 +9,14 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: 481f7a7589a58baac922001d230f95198ed45eb7
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 6f1e71b75aa68c8f4ea1fa8ed373da25dbb3c24b
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417944"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304048"
 ---
-# <a name="example-how-to-detect-language-with-text-analytics"></a>Példa: Szövegelemzés nyelv észlelése
+# <a name="example-how-to-detect-language-with-text-analytics"></a>Példa: Nyelvfelismerés a Text Analytics használatával
 
 A [nyelvfelismerés](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) funkció API-szöveg a bemeneti, és minden egyes dokumentum esetében kiértékeli, és az elemzés erőssége jelző pontszámot ad vissza, nyelvi azonosítók.
 
@@ -62,7 +62,7 @@ Dokumentum mérete kell lennie a 5,120 karakter / dokumentum, és legfeljebb 100
     }
 ```
 
-## <a name="step-1-structure-the-request"></a>1. lépés: A kérelem struktúra
+## <a name="step-1-structure-the-request"></a>1\. lépés: A kérelem struktúra
 
 A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytics API hívásának módja](text-analytics-how-to-call-api.md) részben. A következő pontokat a kényelem kedvéért itt megismételjük:
 
@@ -77,14 +77,14 @@ A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytic
 > [!Tip]
 > Használható a [Postman](text-analytics-how-to-call-api.md) vagy nyissa meg az **API teszt konzolt** a [dokumentációban](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) a kérés felépítéséhez és a szolgáltatásnak történő POST elküldéséhez.
 
-## <a name="step-2-post-the-request"></a>2. lépés: A kérelem küldése
+## <a name="step-2-post-the-request"></a>2\. lépés: A kérelem küldése
 
-Az elemzés a kérelem megkapásakor történik meg. A szolgáltatás percenként legfeljebb 100 kérést fogad. Mindegyik kérés legfeljebb 1 MB lehet.
+Az elemzés a kérelem megkapásakor történik meg. Tekintse meg a [data korlátai](../overview.md#data-limits) szakasz az áttekintésben a méret és a kérelmek percenkénti küldhet és a második kapcsolatos információkat.
 
 Ne felejtse, hogy a szolgáltatás állapot nélküli. A fiókban nem tárol semmilyen adatot. Az eredményeket azonnal visszaadja a válaszban.
 
 
-## <a name="step-3-view-results"></a>3. lépés: Eredmények megtekintése
+## <a name="step-3-view-results"></a>3\. lépés: Eredmények megtekintése
 
 Minden POST kérés egy JSON formátumú választ ad vissza az azonosítókkal és az észlelt tulajdonságokkal.
 

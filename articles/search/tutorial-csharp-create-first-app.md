@@ -7,14 +7,14 @@ ms.topic: tutorial
 ms.author: v-pettur
 author: PeterTurcan
 ms.date: 05/01/2019
-ms.openlocfilehash: 5ca01e8077eb0651dff57be4c7681995764f6992
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 71668b41125de323640dd668f733c1bd1982f583
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67166896"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304411"
 ---
-# <a name="c-tutorial-create-your-first-app---azure-search"></a>C#Oktatóanyag: Hozzon létre első alkalmazását – Azure Search
+# <a name="c-tutorial-create-your-first-app---azure-search"></a>C#oktatóanyag: Hozzon létre első alkalmazását – Azure Search
 
 Ismerje meg, hogyan hozhat létre egy webes felület, használja az Azure Search-index lekérdezése és a jelenlegi keresési eredmények. Ebben az oktatóanyagban egy meglévő, üzemeltetett index kezdődik, úgy, hogy a keresési lapot készítésére összpontosíthat. Az index tartalmazza a fiktív Szálloda adatokat. Ha már rendelkezik egy egyszerű lap, fejlesztheti az ezt követő leckék lapozási, a metszettel és a egy gépelés közbeni élmény.
 
@@ -65,6 +65,7 @@ Ez a projekt létrehozása előzmények nélkül, és ezáltal segít a megerős
 ## <a name="set-up-a-development-environment"></a>A fejlesztési környezet beállítása
 
 1. A Visual Studio 2017, vagy újabb verziójú, jelölje be a **új projektgyűjtemény** majd **ASP.NET Core-webalkalmazás**. Adjon meg egy nevet, például "FirstAzureSearchApp" a projekt.
+
     ![A felhő-projekt létrehozása](./media/tutorial-csharp-create-first-app/azure-search-project1.png)
 
 2. Miután rákattintott a **OK** a projekt típus után kap egy második együttesét a projekt típushoz elérhető beállításokat. Válassza ki **webalkalmazás (Model-View-Controller)** .
@@ -81,12 +82,12 @@ Ebben a példában a nyilvánosan elérhető Szálloda adatokat használjuk. Eze
 
 1. Nyissa meg a appsettings.json fájlt az új projekt, és cserélje le az alapértelmezett sorokat a következő nevére és kulcsára. Itt nem egy kulcsot egy példa látható API-kulcs van _pontosan_ a Szálloda adatok eléréséhez szükséges kulcs. Az appsettings.json fájlt kell kinéznie.
 
-```cs
-{
-  "SearchServiceName": "azs-playground",
-  "SearchServiceQueryApiKey": "EA4510A6219E14888741FCFC19BFBB82"
-}
-```
+    ```cs
+    {
+        "SearchServiceName": "azs-playground",
+        "SearchServiceQueryApiKey": "EA4510A6219E14888741FCFC19BFBB82"
+    }
+    ```
 
 2. Ez a fájl nem történik, de ez a fájl tulajdonságainak kiválasztunk, és módosítása a **Copy to Output Directory** beállítást **másolás, ha újabb**.
 
@@ -100,147 +101,147 @@ Modellek (C# osztályok) az ügyfél (Nézet), a kiszolgáló (vezérlő), valam
 
 2. Kattintson a jobb gombbal a **modellek** mappára, és válassza **Hozzáadás** majd **új elem**. Majd a megjelenő párbeszédablakban válassza **ASP.NET Core** majd az első lehetőség **osztály**. Nevezze át a .cs fájlt hotel.cs fájlban, és kattintson a **Hozzáadás**. Cserélje le a hotel.cs fájlban a tartalmát az alábbira. Figyelje meg a **cím** és **szoba** tagokat az osztály, ezek a mezők találhatók osztályok magukat, szükségünk lesz modellek számukra túl.
 
-```cs
-using System;
-using Microsoft.Azure.Search;
-using Microsoft.Azure.Search.Models;
-using Microsoft.Spatial;
-using Newtonsoft.Json;
+    ```cs
+    using System;
+    using Microsoft.Azure.Search;
+    using Microsoft.Azure.Search.Models;
+    using Microsoft.Spatial;
+    using Newtonsoft.Json;
 
-namespace FirstAzureSearchApp.Models
-{
-    public partial class Hotel
+    namespace FirstAzureSearchApp.Models
     {
-        [System.ComponentModel.DataAnnotations.Key]
-        [IsFilterable]
-        public string HotelId { get; set; }
+        public partial class Hotel
+        {
+            [System.ComponentModel.DataAnnotations.Key]
+            [IsFilterable]
+            public string HotelId { get; set; }
 
-        [IsSearchable, IsSortable]
-        public string HotelName { get; set; }
+            [IsSearchable, IsSortable]
+            public string HotelName { get; set; }
 
-        [IsSearchable]
-        [Analyzer(AnalyzerName.AsString.EnLucene)]
-        public string Description { get; set; }
+            [IsSearchable]
+            [Analyzer(AnalyzerName.AsString.EnLucene)]
+            public string Description { get; set; }
 
-        [IsSearchable]
-        [Analyzer(AnalyzerName.AsString.FrLucene)]
-        [JsonProperty("Description_fr")]
-        public string DescriptionFr { get; set; }
+            [IsSearchable]
+            [Analyzer(AnalyzerName.AsString.FrLucene)]
+            [JsonProperty("Description_fr")]
+            public string DescriptionFr { get; set; }
 
-        [IsSearchable, IsFilterable, IsSortable, IsFacetable]
-        public string Category { get; set; }
+            [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+            public string Category { get; set; }
 
-        [IsSearchable, IsFilterable, IsFacetable]
-        public string[] Tags { get; set; }
+            [IsSearchable, IsFilterable, IsFacetable]
+            public string[] Tags { get; set; }
 
-        [IsFilterable, IsSortable, IsFacetable]
-        public bool? ParkingIncluded { get; set; }
+            [IsFilterable, IsSortable, IsFacetable]
+            public bool? ParkingIncluded { get; set; }
 
-        [IsFilterable, IsSortable, IsFacetable]
-        public DateTimeOffset? LastRenovationDate { get; set; }
+            [IsFilterable, IsSortable, IsFacetable]
+            public DateTimeOffset? LastRenovationDate { get; set; }
 
-        [IsFilterable, IsSortable, IsFacetable]
-        public double? Rating { get; set; }
+            [IsFilterable, IsSortable, IsFacetable]
+            public double? Rating { get; set; }
 
-        public Address Address { get; set; }
+            public Address Address { get; set; }
 
-        [IsFilterable, IsSortable]
-        public GeographyPoint Location { get; set; }
+            [IsFilterable, IsSortable]
+            public GeographyPoint Location { get; set; }
 
-        public Room[] Rooms { get; set; }
+            public Room[] Rooms { get; set; }
+        }
     }
-}
-```
+    ```
 
 3. Kövesse a modell létrehozásának eljárást a **cím** osztályhoz, azzal a különbséggel a Address.cs fájl neve. Cserélje ki annak tartalmát az alábbira.
 
-```cs
-using Microsoft.Azure.Search;
+    ```cs
+    using Microsoft.Azure.Search;
 
-namespace FirstAzureSearchApp.Models
-{
-    public partial class Address
+    namespace FirstAzureSearchApp.Models
     {
-        [IsSearchable]
-        public string StreetAddress { get; set; }
+        public partial class Address
+        {
+            [IsSearchable]
+            public string StreetAddress { get; set; }
 
-        [IsSearchable, IsFilterable, IsSortable, IsFacetable]
-        public string City { get; set; }
+            [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+            public string City { get; set; }
 
-        [IsSearchable, IsFilterable, IsSortable, IsFacetable]
-        public string StateProvince { get; set; }
+            [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+            public string StateProvince { get; set; }
 
-        [IsSearchable, IsFilterable, IsSortable, IsFacetable]
-        public string PostalCode { get; set; }
+            [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+            public string PostalCode { get; set; }
 
-        [IsSearchable, IsFilterable, IsSortable, IsFacetable]
-        public string Country { get; set; }
+            [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+            public string Country { get; set; }
+        }
     }
-}
-```
+    ```
 
 4. És ismét leírtakat hozhat létre a **szoba** osztályt, a fájl Room.cs elnevezési. Ismét cserélje ki annak tartalmát az alábbira.
 
-```cs
-using Microsoft.Azure.Search;
-using Microsoft.Azure.Search.Models;
-using Newtonsoft.Json;
+    ```cs
+    using Microsoft.Azure.Search;
+    using Microsoft.Azure.Search.Models;
+    using Newtonsoft.Json;
 
-namespace FirstAzureSearchApp.Models
-{
-    public partial class Room
+    namespace FirstAzureSearchApp.Models
     {
-        [IsSearchable]
-        [Analyzer(AnalyzerName.AsString.EnMicrosoft)]
+        public partial class Room
+        {
+            [IsSearchable]
+            [Analyzer(AnalyzerName.AsString.EnMicrosoft)]
 
-        public string Description { get; set; }
+            public string Description { get; set; }
 
-        [IsSearchable]
-        [Analyzer(AnalyzerName.AsString.FrMicrosoft)]
-        [JsonProperty("Description_fr")]
-        public string DescriptionFr { get; set; }
+            [IsSearchable]
+            [Analyzer(AnalyzerName.AsString.FrMicrosoft)]
+            [JsonProperty("Description_fr")]
+            public string DescriptionFr { get; set; }
 
-        [IsSearchable, IsFilterable, IsFacetable]
-        public string Type { get; set; }
+            [IsSearchable, IsFilterable, IsFacetable]
+            public string Type { get; set; }
 
-        [IsFilterable, IsFacetable]
-        public double? BaseRate { get; set; }
+            [IsFilterable, IsFacetable]
+            public double? BaseRate { get; set; }
 
-        [IsSearchable, IsFilterable, IsFacetable]
-        public string BedOptions { get; set; }
+            [IsSearchable, IsFilterable, IsFacetable]
+            public string BedOptions { get; set; }
 
-        [IsFilterable, IsFacetable]
+            [IsFilterable, IsFacetable]
 
-        public int SleepsCount { get; set; }
+            public int SleepsCount { get; set; }
 
-        [IsFilterable, IsFacetable]
-        public bool? SmokingAllowed { get; set; }
+            [IsFilterable, IsFacetable]
+            public bool? SmokingAllowed { get; set; }
 
-        [IsSearchable, IsFilterable, IsFacetable]
-        public string[] Tags { get; set; }
+            [IsSearchable, IsFilterable, IsFacetable]
+            public string[] Tags { get; set; }
+        }
     }
-}
-```
+    ```
 
 5. Készletét **Szálloda**, **cím**, és **szoba** osztályok az Azure-t néven ismert [ _komplex típusok_ ](search-howto-complex-data-types.md), az Azure Search egyik fontos szolgáltatása. Komplexní typy is hány szint mélységig az osztályok és alosztályok, és jóval összetettebb adatstruktúrákat, mint képviseltesse engedélyezése _egyszerű típusokat_ (csak a primitív tagokat tartalmazó osztály). Valóban szükséges egy további modell, ezért nyissa meg újra létrehozni egy új modellosztály folyamatát, azonban ennek az időnek hívja az osztály SearchData.cs és az alapértelmezett kód cserélje le a következő.
 
-```cs
-using Microsoft.Azure.Search.Models;
+    ```cs
+    using Microsoft.Azure.Search.Models;
 
-namespace FirstAzureSearchApp.Models
-{
-    public class SearchData
+    namespace FirstAzureSearchApp.Models
     {
-        // The text to search for.
-        public string searchText { get; set; }
+        public class SearchData
+        {
+            // The text to search for.
+            public string searchText { get; set; }
 
-        // The list of results.
-        public DocumentSearchResult<Hotel> resultList;
+            // The list of results.
+            public DocumentSearchResult<Hotel> resultList;
+        }
     }
-}
-```
+    ```
 
-Ez az osztály tartalmazza a felhasználói bevitel (**Keresettszöveg**), és a keresés kimeneti (**resultList**). A kimeneti típus kritikus fontosságú, **DocumentSearchResult&lt;Szálloda&gt;** , mivel ez a típus pontosan megegyezik az eredményeket a keresési, ezért ellenőriznünk kell a ezt a hivatkozást a nézet keresztül adja át.
+    Ez az osztály tartalmazza a felhasználói bevitel (**Keresettszöveg**), és a keresés kimeneti (**resultList**). A kimeneti típus kritikus fontosságú, **DocumentSearchResult&lt;Szálloda&gt;** , mivel ez a típus pontosan megegyezik az eredményeket a keresési, ezért ellenőriznünk kell a ezt a hivatkozást a nézet keresztül adja át.
 
 
 
@@ -254,30 +255,30 @@ Ebben az esetben Index.cshtml tartalmának törlése, és építse újra a fájl
 
 2. Az első sort Index.cshtml kell hivatkoznia a modellt fogjuk használni az ügyfél (Nézet) és a kiszolgáló (vezérlő), amely közötti kommunikációhoz a **SearchData** létrehozott modellt. Adja hozzá ezt a sort a Index.cshtml fájl.
 
-```cs
-@model FirstAzureSearchApp.Models.SearchData
-```
+    ```cs
+    @model FirstAzureSearchApp.Models.SearchData
+    ```
 
 3. Célszerű a szabványos eljárás az, hogy a nézetben, adjon meg egy címet, a következő sorokat kell lennie:
 
-```cs
-@{
-    ViewData["Title"] = "Home Page";
-}
-```
+    ```cs
+    @{
+        ViewData["Title"] = "Home Page";
+    }
+    ```
 
 4. A cím a következő adjon meg egy HTML stíluslap, amely hamarosan létrehozunk egy hivatkozást.
 
-```cs
-<head>
-    <link rel="stylesheet" href="~/css/hotels.css" />
-</head>
-```
+    ```cs
+    <head>
+        <link rel="stylesheet" href="~/css/hotels.css" />
+    </head>
+    ```
 
 5. Most, hogy a nézet húsa. A lényeg, ne felejtse el, hogy rendelkezik-e a nézet két helyzetek kezelésére. A megjelenített először azt kell kezelnie először az alkalmazást elindítja, és a felhasználó még nem lépett keresési szöveg. Másodszor azt kell kezelnie a megjelenített eredmények mellett a keresőmezőbe, a felhasználó ismételt felhasználásra. E két helyzetek kezelése érdekében ellenőrizze, hogy a nézet a megadott mintának null értékű vagy nem kell. Egy NULL értékű modell azt jelzi, hogy vagyunk az első két helyzetben (az alkalmazás a kezdeti futó). Adja hozzá a következőket az Index.cshtml fájl, és olvassa végig a megjegyzéseket.
 
-```cs
-<body>
+    ```cs
+    <body>
     <h1 class="sampleTitle">
         <img src="~/images/azure-logo.png" width="80" />
         Hotels Search
@@ -305,85 +306,85 @@ Ebben az esetben Index.cshtml tartalmának törlése, és építse újra a fájl
             }
         }
     }
-</body>
-```
+    </body>
+    ```
 
 6. Végül a stíluslap hozzáadunk. A Visual Studióban az a **fájl** menüből válassza **új/fájl** majd **stíluslap** (a **általános** kiemelt). Cserélje le az alapértelmezett kód a következő. A stílusok fog nem lehet fogjuk ebbe a fájlba bármely részletesebben, normál HTML.
 
-```cs
-   textarea.box1 {
-    width: 648px;
-    height: 30px;
-    border: none;
-    background-color: azure;
-    font-size: 14pt;
-    color: blue;
-    padding-left: 5px;
-}
+    ```html
+    textarea.box1 {
+        width: 648px;
+        height: 30px;
+        border: none;
+        background-color: azure;
+        font-size: 14pt;
+        color: blue;
+        padding-left: 5px;
+    }
 
-textarea.box2 {
-    width: 648px;
-    height: 100px;
-    border: none;
-    background-color: azure;
-    font-size: 12pt;
-    padding-left: 5px;
-    margin-bottom: 24px;
-}
+    textarea.box2 {
+        width: 648px;
+        height: 100px;
+        border: none;
+        background-color: azure;
+        font-size: 12pt;
+        padding-left: 5px;
+        margin-bottom: 24px;
+    }
 
-.sampleTitle {
-    font: 32px/normal 'Segoe UI Light',Arial,Helvetica,Sans-Serif;
-    margin: 20px 0;
-    font-size: 32px;
-    text-align: left;
-}
+    .sampleTitle {
+        font: 32px/normal 'Segoe UI Light',Arial,Helvetica,Sans-Serif;
+        margin: 20px 0;
+        font-size: 32px;
+        text-align: left;
+    }
 
-.sampleText {
-    font: 16px/bold 'Segoe UI Light',Arial,Helvetica,Sans-Serif;
-    margin: 20px 0;
-    font-size: 14px;
-    text-align: left;
-    height: 30px;
-}
+    .sampleText {
+        font: 16px/bold 'Segoe UI Light',Arial,Helvetica,Sans-Serif;
+        margin: 20px 0;
+        font-size: 14px;
+        text-align: left;
+        height: 30px;
+    }
 
-.searchBoxForm {
-    width: 648px;
-    box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 4px 0 rgba(0,0,0,.16);
-    background-color: #fff;
-    display: inline-block;
-    border-collapse: collapse;
-    border-spacing: 0;
-    list-style: none;
-    color: #666;
-}
+    .searchBoxForm {
+        width: 648px;
+        box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 4px 0 rgba(0,0,0,.16);
+        background-color: #fff;
+        display: inline-block;
+        border-collapse: collapse;
+        border-spacing: 0;
+        list-style: none;
+        color: #666;
+    }
 
-.searchBox {
-    width: 568px;
-    font-size: 16px;
-    margin: 5px 0 1px 20px;
-    padding: 0 10px 0 0;
-    border: 0;
-    max-height: 30px;
-    outline: none;
-    box-sizing: content-box;
-    height: 35px;
-    vertical-align: top;
-}
+    .searchBox {
+        width: 568px;
+        font-size: 16px;
+        margin: 5px 0 1px 20px;
+        padding: 0 10px 0 0;
+        border: 0;
+        max-height: 30px;
+        outline: none;
+        box-sizing: content-box;
+        height: 35px;
+        vertical-align: top;
+    }
 
-.searchBoxSubmit {
-    background-color: #fff;
-    border-color: #fff;
-    background-image: url(/images/search.png);
-    background-repeat: no-repeat;
-    height: 20px;
-    width: 20px;
-    text-indent: -99em;
-    border-width: 0;
-    border-style: solid;
-    margin: 10px;
-    outline: 0;
-}
-```
+    .searchBoxSubmit {
+        background-color: #fff;
+        border-color: #fff;
+        background-image: url(/images/search.png);
+        background-repeat: no-repeat;
+        height: 20px;
+        width: 20px;
+        text-indent: -99em;
+        border-width: 0;
+        border-style: solid;
+        margin: 10px;
+        outline: 0;
+    }
+    ```
 
 7. Mentse a stíluslap fájlt hotels.css, mint a wwwroot/css mappába, az alapértelmezett site.css fájl mellett.
 
@@ -395,16 +396,16 @@ Módosítani szeretne az egyik vezérlő tartalmát kell (**kezdőlap vezérlő*
 
 1. Nyissa meg a HomeController.cs fájlban, és cserélje le a **használatával** az alábbi utasításokat.
 
-```cs
-using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using FirstAzureSearchApp.Models;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Azure.Search;
-using Microsoft.Azure.Search.Models;
-```
+    ```cs
+    using System;
+    using System.Diagnostics;
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Mvc;
+    using FirstAzureSearchApp.Models;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Azure.Search;
+    using Microsoft.Azure.Search.Models;
+    ```
 
 ### <a name="add-index-methods"></a>Index módszerek hozzáadása
 
@@ -412,7 +413,7 @@ Igazolnia kell, hogy két **Index** módszerek egyet nincsenek paraméterei (az 
 
 1. Adja hozzá a következő metódust az alapértelmezett után **Index()** metódust.
 
-```cs
+    ```cs
         [HttpPost]
         public async Task<ActionResult> Index(SearchData model)
         {
@@ -434,11 +435,11 @@ Igazolnia kell, hogy két **Index** módszerek egyet nincsenek paraméterei (az 
             }
             return View(model);
         }
-```
+    ```
 
-Figyelje meg a **aszinkron** deklarace metody, és a **await** hívása **RunQueryAsync**. Ezek a kulcsszavak a hívások aszinkron gondoskodik, és ezért ne blokkolja a szálak a kiszolgálón.
+    Figyelje meg a **aszinkron** deklarace metody, és a **await** hívása **RunQueryAsync**. Ezek a kulcsszavak a hívások aszinkron gondoskodik, és ezért ne blokkolja a szálak a kiszolgálón.
 
-A **catch** letiltása, amely alapértelmezés szerint az USA készült hiba modellt használja.
+    A **catch** letiltása, amely alapértelmezés szerint az USA készült hiba modellt használja.
 
 ### <a name="note-the-error-handling-and-other-default-views-and-methods"></a>Vegye figyelembe a hibakezelést és más alapértelmezett nézetek és módszerek
 
@@ -454,7 +455,7 @@ Az Azure Search-hívásra van beágyazva a **RunQueryAsync** metódust.
 
 1. Először adja hozzá a statikus változókat, állítsa be az Azure-szolgáltatás, és a egy hívás kezdeményezése nélkül.
 
-```cs
+    ```cs
         private static SearchServiceClient _serviceClient;
         private static ISearchIndexClient _indexClient;
         private static IConfigurationBuilder _builder;
@@ -474,11 +475,11 @@ Az Azure Search-hívásra van beágyazva a **RunQueryAsync** metódust.
             _serviceClient = new SearchServiceClient(searchServiceName, new SearchCredentials(queryApiKey));
             _indexClient = _serviceClient.Indexes.GetClient("hotels");
         }
-```
+    ```
 
 2. Ezután adja hozzá a **RunQueryAsync** metódus magát.
 
-```cs
+    ```cs
         private async Task<ActionResult> RunQueryAsync(SearchData model)
         {
             InitSearch();
@@ -496,11 +497,11 @@ Az Azure Search-hívásra van beágyazva a **RunQueryAsync** metódust.
             // Display the results.
             return View("Index", model);
         }
-```
+    ```
 
-Ezen módszer esetében először biztosítható az Azure konfigurációs van kezdeményezett, majd állítsa be az egyes keresési paraméterek. A mezők nevei a **kiválasztása** paraméter felel meg pontosan a tulajdonságneveket a **Szálloda** osztály. Lehetséges, hogy hagyja ki a **kiválasztása** paramétert, ebben az esetben az összes tulajdonság adja vissza. Azonban a nem beállítás **kiválasztása** paraméterek nem hatékony, ha azt csak az adatok egy részét. Foglalkozunk tulajdonságainak megadásával csak ezeket a tulajdonságokat adja vissza.
+    Ezen módszer esetében először biztosítható az Azure konfigurációs van kezdeményezett, majd állítsa be az egyes keresési paraméterek. A mezők nevei a **kiválasztása** paraméter felel meg pontosan a tulajdonságneveket a **Szálloda** osztály. Lehetséges, hogy hagyja ki a **kiválasztása** paramétert, ebben az esetben az összes tulajdonság adja vissza. Azonban a nem beállítás **kiválasztása** paraméterek nem hatékony, ha azt csak az adatok egy részét. Foglalkozunk tulajdonságainak megadásával csak ezeket a tulajdonságokat adja vissza.
 
-Keresés a aszinkron hívás (**model.resultList = await _indexClient.Documents.SearchAsync&lt;Szálloda&gt;(model.searchText, paraméterek);** ) Mi ez az oktatóanyag és az alkalmazás a részletes tudnivalók. A **DocumentSearchResult** osztály egy érdekes, és (ha az alkalmazás fut) érdemes itt állítson be egy töréspontot, és vizsgálja meg a tartalmát a hibakeresőt használatával **model.resultList**. Keresse meg, hogy éppen intuitív, hogy az adatokat kéri, és sokkal más.
+    Keresés a aszinkron hívás (**model.resultList = await _indexClient.Documents.SearchAsync&lt;Szálloda&gt;(model.searchText, paraméterek);** ) Mi ez az oktatóanyag és az alkalmazás a részletes tudnivalók. A **DocumentSearchResult** osztály egy érdekes, és (ha az alkalmazás fut) érdemes itt állítson be egy töréspontot, és vizsgálja meg a tartalmát a hibakeresőt használatával **model.resultList**. Keresse meg, hogy éppen intuitív, hogy az adatokat kéri, és sokkal más.
 
 Most a kis időt az egyértelműség.
 
@@ -532,8 +533,8 @@ Fontos győződjön meg arról, hogy a hibakezelés funkciókat, akkor kell, akk
 
      ![Kényszerített hiba](./media/tutorial-csharp-create-first-app/azure-search-error.png)
 
-> [!Important]
-> Belső hiba számok visszaadandó hibalapok biztonsági kockázatot minősül. Ha az alkalmazás általános használatra szánt, tegye a mi vissza, ha hiba lép fel, biztonságos és ajánlott eljárások egyes vizsgálja.
+    > [!Important]
+    > Belső hiba számok visszaadandó hibalapok biztonsági kockázatot minősül. Ha az alkalmazás általános használatra szánt, tegye a mi vissza, ha hiba lép fel, biztonságos és ajánlott eljárások egyes vizsgálja.
 
 3. Távolítsa el **új Exception() Throw** Ha elégedett a hibakezelési működik, ahogyan kellene.
 

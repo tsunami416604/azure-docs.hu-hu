@@ -10,12 +10,12 @@ manager: carmonm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: 4287efedfc35da762825c5562cf88e64987192f1
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: ee232b54bc4d65d6380a6f2a1d1c88ee7dcf53c3
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65414766"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312666"
 ---
 # <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>Oktatóanyag: Kezelési e-maileket és mellékleteket az Azure Logic Apps automatizálása
 
@@ -63,7 +63,7 @@ A bejövő e-mailek és mellékletek blobként menthetőek egy [Azure Storage-t�
    | **Előfizetés** | <*Azure-előfizetés-neve*> | Az Azure-előfizetés neve |  
    | **Erőforráscsoport** | LA-Tutorial-RG | A kapcsolódó erőforrások rendezéséhez és felügyeletéhez használt [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) neve. <p>**Megjegyzés:** Egy erőforráscsoport létezik egy adott régión belül. Bár az ebben az oktatóanyagban bemutatott elemek nem feltétlenül érhetőek el minden régióban, igyekezzen ugyanazt a régiót használni, amikor csak lehetséges. |
    | **Tárfiók neve** | attachmentstorageacct | A tárfiók neve |
-   | **Hely** | USA nyugati régiója | A tárfiókkal kapcsolatos információk tárolására szolgáló régió |
+   | **Location** | USA nyugati régiója | A tárfiókkal kapcsolatos információk tárolására szolgáló régió |
    | **Teljesítmény** | Standard | Ez a beállítás adja meg a támogatott adattípusokat és az adathordozót az adatok tárolásához. Lásd: [A tárfiókok típusai](../storage/common/storage-introduction.md#types-of-storage-accounts). |
    | **Fióktípus** | Általános célú | A [tárfiók típusa](../storage/common/storage-introduction.md#types-of-storage-accounts) |
    | **Replikáció** | Helyileg redundáns tárolás (LRS) | Ez a beállítás határozza meg az adatok másolásának, tárolásának, felügyeletének és szinkronizálásának módját. Lásd: [helyileg redundáns tárolás (LRS): Az Azure Storage alacsony költségű adatredundancia](../storage/common/storage-redundancy-lrs.md). |
@@ -145,11 +145,11 @@ Most az ezekben a lépésekben megadott kódrészlet használatával hozzon lét
 
    | Beállítás | Value (Díj) | Leírás |
    | ------- | ----- | ----------- |
-   | **Alkalmazás neve** | CleanTextFunctionApp | A függvényalkalmazás globálisan egyedi leíró neve |
+   | **Alkalmazás neve** | <*function-app-name*> | A függvényalkalmazás globálisan egyedi, és leíró neve, amely "CleanTextFunctionApp" Ebben a példában, ezért adjon meg egy másik nevet, például a "MyCleanTextFunctionApp" |
    | **Előfizetés** | <*your-Azure-subscription-name*> | A korábban is használt Azure-előfizetés | 
    | **Erőforráscsoport** | LA-Tutorial-RG | A korábban is használt Azure-erőforráscsoport |
    | **Szolgáltatási csomag** | Használatalapú csomag | Ez a beállítás határozza meg az erőforrások, például a számítási teljesítmény lefoglalásának és méretezésének módját a függvényalkalmazás futtatásához. Lásd a [szolgáltatási csomagok összehasonlítását](../azure-functions/functions-scale.md). | 
-   | **Hely** | USA nyugati régiója | A korábban is használt régió |
+   | **Location** | USA nyugati régiója | A korábban is használt régió |
    | **Futtatókörnyezet verme** | Elsődleges nyelv | Válassza ki egy modult, amely támogatja a kedvenc függvény programozási nyelv. Válassza ki **.NET** a C# és F# funkciók. |
    | **Storage** | cleantextfunctionstorageacct | Hozzon létre egy tárfiókot a függvényalkalmazás számára. Csak kisbetűket és számokat használjon. <p>**Megjegyzés:** Ez a tárfiók a függvényalkalmazást tartalmazza, és a korábban létrehozott storage-fiók e-mail-mellékletek eltér. |
    | **Application Insights** | Ki | Bekapcsolja az [Application Insights](../azure-monitor/app/app-insights-overview.md) alkalmazásmonitorozását, de ehhez az oktatóanyaghoz válassza a **kikapcsolva** beállítást. |
@@ -168,7 +168,7 @@ Most az ezekben a lépésekben megadott kódrészlet használatával hozzon lét
 
    Függvényalkalmazás létrehozásához az [Azure CLI](../azure-functions/functions-create-first-azure-function-azure-cli.md) vagy [PowerShell- és Resource Manager-sablonok](../azure-resource-manager/resource-group-template-deploy.md) is használhatóak.
 
-2. A **Függvényalkalmazások** alatt bontsa ki a **CleanTextFunctionApp** csoportot, és válassza a **Függvények** lehetőséget. A függvények eszköztárán válassza az **Új függvény** lehetőséget.
+2. A **Függvényalkalmazások**, ebben a példában bontsa ki a függvényalkalmazást, amely "CleanTextFunctionApp", és válassza ki **funkciók**. A függvények eszköztárán válassza az **Új függvény** lehetőséget.
 
    ![Új függvény létrehozása](./media/tutorial-process-email-attachments-workflow/function-app-new-function.png)
 
@@ -180,7 +180,7 @@ Most az ezekben a lépésekben megadott kódrészlet használatával hozzon lét
 
 4. Az **Új függvény** panelen, a **Név** területen adja meg ezt: `RemoveHTMLFunction`. Az **Engedélyszint** értékének adja a **Függvényt**, majd válassza a **Létrehozás** elemet.
 
-   ![Adjon nevet a függvénynek](./media/tutorial-process-email-attachments-workflow/function-provide-name.png)
+   ![A függvény neve](./media/tutorial-process-email-attachments-workflow/function-provide-name.png)
 
 5. Miután megnyílik a szerkesztő, a sablonban lévő kód helyére illessze be ezt a mintakódot, amely eltávolítja a HTML-formázást és visszaadja az eredményeket a hívónak:
 
@@ -210,7 +210,7 @@ Most az ezekben a lépésekben megadott kódrészlet használatával hozzon lét
    }
    ```
 
-6. Ha elkészült, kattintson a **Mentés** gombra. A függvény teszteléséhez válassza **Tesztelés** lehetőséget a szerkesztő jobb szélén lévő nyíl (**<**) ikon alatt.
+6. Ha elkészült, kattintson a **Mentés** gombra. A függvény teszteléséhez válassza **Tesztelés** lehetőséget a szerkesztő jobb szélén lévő nyíl ( **<** ) ikon alatt.
 
    ![A „Tesztelés” panel bezárása](./media/tutorial-process-email-attachments-workflow/function-choose-test.png)
 
@@ -246,7 +246,7 @@ Miután ellenőrizte, hogy működik-e a függvény, készítse el a logikai alk
    | **Name (Név)** | LA-ProcessAttachment | A logikai alkalmazás neve |
    | **Előfizetés** | <*your-Azure-subscription-name*> | A korábban is használt Azure-előfizetés |
    | **Erőforráscsoport** | LA-Tutorial-RG | A korábban is használt Azure-erőforráscsoport |
-   | **Hely** | USA nyugati régiója | A korábban is használt régió |
+   | **Location** | USA nyugati régiója | A korábban is használt régió |
    | **Log Analytics** | Ki | Ebben az oktatóanyagban tartsa meg a **Ki** beállítást. |
    ||||
 
@@ -281,7 +281,7 @@ Ezután adjon hozzá egy [eseményindítót](../logic-apps/logic-apps-overview.m
       | **Mappa** | Beérkezett üzenetek | Az ellenőrizni kívánt e-mail-mappa |
       | **Melléklettel rendelkezik** | Igen | Csak a melléklettel rendelkező e-mailek beolvasása. <p>**Megjegyzés:** Az eseményindító nem távolítja el e-mailt a fiókból, csak az új üzeneteket ellenőrzése, és feldolgozza, amelyek megfelelnek a tárgyszűrőnek. |
       | **Mellékletek is** | Igen | A mellékletek egyszerű ellenőrzése helyett azok lekérése bemenetként a munkafolyamathoz. |
-      | **Intervallum** | 1. | Az ellenőrzések között kivárt intervallumok száma |
+      | **Intervallum** | 1 | Az ellenőrzések között kivárt intervallumok száma |
       | **Gyakoriság** | Perc | Az ellenőrzések közötti intervallumok időegysége |
       ||||
   
@@ -316,7 +316,7 @@ Most adjon meg olyan feltételt, amely csak a csatolmánnyal rendelkező e-maile
    ![Válassza ki a "Feltétel"](./media/tutorial-process-email-attachments-workflow/select-condition.png)
 
    1. Adjon egy leíróbb nevet a feltételnek. 
-   A feltétel címsorán válassza a **három pont** (**...** ) gomb > **átnevezése**.
+   A feltétel címsorán válassza a **három pont** ( **...** ) gomb > **átnevezése**.
 
       ![Feltétel átnevezése](./media/tutorial-process-email-attachments-workflow/condition-rename.png)
 
@@ -399,7 +399,7 @@ Ez a lépés hozzáadja az előzőleg létrehozott Azure-függvényt a logikai a
 
    ![Művelet kiválasztása a „Válasszon Azure-függvényt” lehetőséghez](./media/tutorial-process-email-attachments-workflow/add-action-azure-function.png)
 
-3. Válassza ki a korábban létrehozott függvényalkalmazást: **CleanTextFunctionApp**
+3. Válassza ki a korábban létrehozott függvényalkalmazást, amely "CleanTextFunctionApp" Ebben a példában:
 
    ![Az Azure-függvényalkalmazás kiválasztása](./media/tutorial-process-email-attachments-workflow/add-action-select-azure-function-app.png)
 
@@ -626,7 +626,7 @@ Ezután adjon meg egy műveletet, hogy a logikai alkalmazás egy e-mail-üzenete
    ||||
 
    > [!NOTE]
-   > Ha olyan mezőt választ ki, amely egy tömböt tartalmaz, például a **Tartalom** elemet, amely egy mellékleteket tartalmazó tömb, a tervező automatikusan hozzáad egy „For each” iterációt a mezőre hivatkozó művelet köré. Így a logikai alkalmazás a tömb mindegyik elemén végrehajthatja az adott műveletet. Az iteráció eltávolításához törölje a mezőt a tömbből, helyezze a hivatkozó műveletet a tömbön kívül, válassza az iteráció címsorában lévő három pontot (**...**), majd válassza a **Törlés** lehetőséget.
+   > Ha olyan mezőt választ ki, amely egy tömböt tartalmaz, például a **Tartalom** elemet, amely egy mellékleteket tartalmazó tömb, a tervező automatikusan hozzáad egy „For each” iterációt a mezőre hivatkozó művelet köré. Így a logikai alkalmazás a tömb mindegyik elemén végrehajthatja az adott műveletet. Az iteráció eltávolításához törölje a mezőt a tömbből, helyezze a hivatkozó műveletet a tömbön kívül, válassza az iteráció címsorában lévő három pontot ( **...** ), majd válassza a **Törlés** lehetőséget.
 
 6. Mentse a logikai alkalmazást.
 

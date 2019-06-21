@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.service: openshift
 ms.date: 05/14/2019
-ms.openlocfilehash: 651236c25ed912ebd7399d351677a67e3826278c
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 9094fa441ff5ffdd5f579fd072ffaa303961314d
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306186"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304273"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Oktatóanyag: Azure Red Hat OpenShift-fürt létrehozása
 
@@ -46,7 +46,7 @@ Győződjön meg arról, hogy [a fejlesztési környezet beállítása](howto-se
 - Biztonsági csoport létrehozása
 - Egy Active Directory-felhasználót, jelentkezzen be a fürt létrehozásához.
 
-## <a name="step-1-sign-in-to-azure"></a>1. lépés: Bejelentkezés az Azure-ba
+## <a name="step-1-sign-in-to-azure"></a>1\. lépés: Bejelentkezés az Azure-ba
 
 Ha helyileg futtatja az Azure CLI, nyissa meg a Bash parancs héjastól és futtatási `az login` bejelentkezni az Azure-bA.
 
@@ -56,7 +56,7 @@ az login
 
  Ha több előfizetést is hozzáférhet, futtassa `az account set -s {subscription ID}` cseréje `{subscription ID}` a használni kívánt előfizetést.
 
-## <a name="step-2-create-an-azure-red-hat-openshift-cluster"></a>2. lépés: Azure Red Hat OpenShift-fürt létrehozása
+## <a name="step-2-create-an-azure-red-hat-openshift-cluster"></a>2\. lépés: Azure Red Hat OpenShift-fürt létrehozása
 
 A Bash parancssori ablakban állítsa be az alábbi változókat:
 
@@ -107,6 +107,10 @@ az group create --name $CLUSTER_NAME --location $LOCATION
 
 Ha nincs szüksége a virtuális hálózat (VNET), a fürt hoz létre egy meglévő virtuális hálózatok közötti társviszony-n keresztül kapcsolódni, kihagyhatja ezt a lépést.
 
+Társviszony-létesítés kívül az alapértelmezett előfizetést, majd ezt az előfizetést a hálózathoz, ha is szüksége lesz a szolgáltató Microsoft.ContainerService regisztrálásához. Ehhez futtassa az alábbi parancsot, az adott előfizetésben. Más esetben a Társviszonyt ugyanabban az előfizetésben található, ha a regisztrálási lépést kihagyhatja. 
+
+`az provider register -n Microsoft.ContainerService --wait`
+
 Először kérje le a meglévő virtuális hálózat azonosítóját. Az azonosító lesz a következő formában: `/subscriptions/{subscription id}/resourceGroups/{resource group of VNET}/providers/Microsoft.Network/virtualNetworks/{VNET name}`.
 
 Ha nem tudja, a hálózat nevét, vagy az erőforráscsoport, a meglévő virtuális hálózathoz tartozik, ugorjon a [virtuális hálózatok panelen](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Network%2FvirtualNetworks) , és kattintson a virtuális hálózaton. A virtuális hálózat lap jelenik meg, és felsorolja a hálózat és tartozik, az erőforráscsoport nevét.
@@ -152,7 +156,7 @@ Keresse meg a `publicHostName` a kimenetben, például: `"publicHostname": "open
 
 A bejelentkezési URL-címet a fürt számára lesz `https://` követ a `publicHostName` értéket.  Például: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`.  Ez az URI a következő lépésben fogja használni a részeként az alkalmazás regisztrációs átirányítási URI-t.
 
-## <a name="step-3-update-your-app-registration-redirect-uri"></a>3. lépés: Az alkalmazás regisztrációs átirányítási URI-JÁNAK frissítése
+## <a name="step-3-update-your-app-registration-redirect-uri"></a>3\. lépés: Az alkalmazás regisztrációs átirányítási URI-JÁNAK frissítése
 
 Most, hogy a bejelentkezési URL-címben a fürthöz, állítsa be az alkalmazás regisztrációs átirányítási felhasználói felületén:
 
@@ -162,7 +166,7 @@ Most, hogy a bejelentkezési URL-címben a fürthöz, állítsa be az alkalmazá
 4. Ügyeljen arra, hogy **típus** van **webes** és állítsa be a **ÁTIRÁNYÍTÁSI URI-t** használatával a következő mintának: `https://<public host name>/oauth2callback/Azure%20AD`. Például:`https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io/oauth2callback/Azure%20AD`
 5. Kattintson a **Save** (Mentés) gombra
 
-## <a name="step-4-sign-in-to-the-openshift-console"></a>4. lépés: Jelentkezzen be az OpenShift konzol
+## <a name="step-4-sign-in-to-the-openshift-console"></a>4\. lépés: Jelentkezzen be az OpenShift konzol
 
 Most már készen áll az OpenShift-konzolon az új fürtre való bejelentkezéshez. A [OpenShift Webkonzol](https://docs.openshift.com/aro/architecture/infrastructure_components/web_console.html) jelenítheti meg, keresse meg és kezelheti az OpenShift projektek tartalmát is.
 
@@ -181,7 +185,7 @@ Most már jelentkezett be a fürt konzolba.
 
  Tudjon meg többet [az OpenShift konzollal](https://docs.openshift.com/aro/getting_started/developers_console.html) hozhat létre és a beépített rendszerképek a [Red Hat OpenShift](https://docs.openshift.com/aro/welcome/index.html) dokumentációját.
 
-## <a name="step-5-install-the-openshift-cli"></a>5. lépés: Telepítse az OpenShift CLI-t
+## <a name="step-5-install-the-openshift-cli"></a>5\. lépés: Telepítse az OpenShift CLI-t
 
 A [OpenShift CLI](https://docs.openshift.com/aro/cli_reference/get_started_cli.html) (vagy *c eszközök*) parancsokat biztosít az alkalmazások és a különféle komponenseinek használatát az OpenShift fürt folytatott interakcióra szolgáló alacsonyabb szintű segédprogramok kezeléséhez.
 
