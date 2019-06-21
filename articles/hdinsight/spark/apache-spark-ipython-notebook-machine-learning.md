@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: A Spark machine learning az Azure HDInsight application készítése'
-description: Részletes útmutató Apache Spark Machine Learning-alkalmazások HDInsight Spark-fürtökön a Jupyter notebook használatával történő létrehozásához.
+description: Oktatóanyag – lépésenként bemutatja, hogyan hozhat létre Apache Spark machine learning-alkalmazás a HDInsight Spark-fürtöket a Jupyter notebook használatával.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: ed6a8f83d2ef31513aeadbc6741dd77c30c30070
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 1013d16295c0348593a207b1af5e0d0d399dd116
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66252878"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295325"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-hdinsight"></a>Oktatóanyag: Az Apache Spark machine learning-alkalmazás a HDInsight létrehozása 
 

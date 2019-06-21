@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: dfcf47a95d1dbff34ff322768fc4ac6c9674cff4
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
-ms.translationtype: HT
+ms.openlocfilehash: 21e2d3f75028d239175effa7a3608cc18ccfc95c
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295928"
+ms.locfileid: "67305290"
 ---
 **Gyűjtemény adatmennyiség és megőrzés** 
 
 | Szint | Korlátozza a naponta | Adatmegőrzés | Megjegyzés |
 |:---|:---|:---|:---|
 | Jelenlegi GB tarifacsomag kiválasztása<br>(a 2018 április ismertetése) | Korlátlan | 30 - 730 napig | Adatmegőrzés 31 napos időszak letelte után számítunk fel további díjat érhető el. További információ az Azure Monitor díjszabásáról. |
-| Régi ingyenes szint<br>(2016. április jelent meg). | 500 MB | 7 nap | Amikor a munkaterület eléri az 500 MB-os napi adatátviteli korlátot, az adatelemzés leáll, és a következő nap kezdetekor folytatódik. A napi elszámolás UTC-alapú. |
+| Régi ingyenes szint<br>(2016. április jelent meg). | 500 MB | 7 nap | Ha a munkaterület eléri a napi 500 MB-os, adatbetöltés leállítja, és a következő nap kezdetekor folytatódik. A napi elszámolás UTC-alapú. Vegye figyelembe, hogy az Azure Security Center által gyűjtött adatokat nem tartalmazza ezt a napi 500 MB-ban, és továbbra is meghaladja a gyűjtendő.  |
 | Örökölt önálló GB szint<br>(2016. április jelent meg). | Korlátlan | 30 és 730 nap | Adatmegőrzés 31 napos időszak letelte után számítunk fel további díjat érhető el. További információ az Azure Monitor díjszabásáról. |
 | Örökölt Csomópontonkénti (OMS)<br>(2016. április jelent meg). | Korlátlan | 30 és 730 nap | Adatmegőrzés 31 napos időszak letelte után számítunk fel további díjat érhető el. További információ az Azure Monitor díjszabásáról. |
 | Örökölt Standard csomag | Korlátlan | 30 nap  | Nem módosítható a megőrzési |

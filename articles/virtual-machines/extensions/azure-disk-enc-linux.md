@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: ejarvi
-ms.openlocfilehash: 4b5b1f24fb22ff0922c362bd9911ad5c42236ee6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 05d20e75cf8f0c84936ff4e5dfa42d60678f6ffc
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051715"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295333"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Azure Disk Encryption for Linux (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
@@ -34,7 +34,7 @@ Előfeltételek teljes listáját lásd: [Azure Disk Encryption titkosítási el
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-Az Azure Disk Encryption válassza disztribúciók és verziók a jelenleg támogatott.  Tekintse meg a [Azure Disk Encryption – gyakori kérdések](../../security/azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) által támogatott Linux-disztribúciók listáját.
+Az Azure Disk Encryption válassza disztribúciók és verziók a jelenleg támogatott.  Tekintse meg a [az Azure Disk Encryption támogatott operációs rendszerek: Linux](../../security/azure-security-disk-encryption-prerequisites.md#linux) által támogatott Linux-disztribúciók listáját.
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 

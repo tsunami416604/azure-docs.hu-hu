@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: 27db27d79a05f24461e63242c0395cfd81315432
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22802950c68dc5a3cf0df8ee26ff38ccb937b551
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60782769"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295507"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Naplóadatok és az Azure monitorban munkaterületek kezelése
 Az Azure Monitor-tárolók adatok jelentkezzen be a Log Analytics-munkaterület, amely lényegében, ha egy tároló, amely adatot és konfigurációs információt tartalmazza. Az adatok hozzáférésének kezelése, munkaterületekhez kapcsolódó különféle adminisztratív feladatokat végezhet. Ön vagy a szervezet más tagjai több munkaterületet is használhatnak az informatikai infrastruktúra egészéből vagy egyes részeiből begyűjtött különböző adatkészletek kezeléséhez.
@@ -278,7 +278,7 @@ Lásd: [tábla hozzáférés-vezérlés meghatározása](#table-level-rbac) ha a
 ## <a name="table-level-rbac"></a>Táblázatok szintjén RBAC
 **Tábla szint RBAC** lehetővé teszi, hogy az más engedélyek mellett a Log Analytics-munkaterület az adatok részletesebb vezérléshez. Ez a vezérlő lehetővé teszi meghatározott adattípusok, amelyek csak a felhasználók adott csoportja számára elérhető definiálása.
 
-Tábla hozzáférés-vezérlés megvalósítása [Azure egyéni szerepkörök](../../role-based-access-control/custom-roles.md) engedélyezéséhez, vagy megtagadja a hozzáférést az adott [táblák](../log-query/log-query-overview.md#how-azure-monitor-log-data-is-organized) a munkaterületen. Ezek a szerepkörök érvénybe lépnek a munkaterület-központú vagy erőforrás-központú munkaterületek [ellenőrzési mód eléréséhez](#access-control-mode) függetlenül a felhasználói [hozzáférési mód](#access-modes).
+Tábla hozzáférés-vezérlés megvalósítása [Azure egyéni szerepkörök](../../role-based-access-control/custom-roles.md) engedélyezéséhez, vagy megtagadja a hozzáférést az adott [táblák](../log-query/logs-structure.md) a munkaterületen. Ezek a szerepkörök érvénybe lépnek a munkaterület-központú vagy erőforrás-központú munkaterületek [ellenőrzési mód eléréséhez](#access-control-mode) függetlenül a felhasználói [hozzáférési mód](#access-modes).
 
 Hozzon létre egy [egyéni szerepkör](../../role-based-access-control/custom-roles.md) a hozzáférés-vezérlés táblában való hozzáférés meghatározásához a következő műveleteket.
 

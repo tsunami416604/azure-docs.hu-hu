@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/05/2019
-ms.openlocfilehash: 75a3c8a9912fe9ace70e411983996167da755128
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.date: 06/14/2019
+ms.openlocfilehash: c98247b0ba8b670a59dec9aa3ec87e949f1dda78
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734652"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147926"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - kiszolgáló egyetlen olvasható replika
 
@@ -122,6 +122,9 @@ A kiszolgáló ugyanazt a konfigurációt a master létrehoztak egy replikát. R
 PostgreSQL szükséges értéke a `max_connections` paramétert nagyobb vagy egyenlő a fő értékkel; egyéb kell olvasási replikán, a replika nem indul el. Az Azure Database for postgresql-hez a `max_connections` SKU paraméter értéke alapján. További információkért lásd: [korlátozások az Azure Database for postgresql-hez](concepts-limits.md). 
 
 Próbálja meg frissíteni a kiszolgáló értékeket, de nem igazodik a határértékekhez, ha hibaüzenetet kap.
+
+### <a name="maxpreparedtransactions"></a>max_prepared_transactions
+[PostgreSQL igényel](https://www.postgresql.org/docs/10/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) értékét a `max_prepared_transactions` paramétert nagyobb vagy egyenlő a fő értékkel; egyéb kell olvasási replikán, a replika nem indul el. Ha meg szeretné változtatni `max_prepared_transactions` főkiszolgálón, először módosítsa azt a replikákon.
 
 ### <a name="stopped-replicas"></a>Leállított replikák
 Ha megszakítja egy fölérendelt kiszolgáló és a egy olvasási replika közötti replikációt, a replika újraindítja a módosítás alkalmazására. A leállított replika egy önálló kiszolgáló, amely fogadja az olvasásokat és az írásokat válik. Az önálló kiszolgáló nem hajtható végre egy replika be újra.

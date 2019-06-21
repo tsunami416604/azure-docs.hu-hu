@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 98b316f8a9c1c8ceba91870af4ff67b1aa854a9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/20/2019
+ms.openlocfilehash: 0b92fb9c9bf022adce4cc0dd3e58ce8e476ed5b7
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65785332"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303510"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>Gyors útmutató: BACPAC-fájl importálása az Azure SQL Database-adatbázishoz
 
@@ -35,6 +35,9 @@ A [az Azure portal](https://portal.azure.com) *csak* támogatja az önálló ada
 > [!NOTE]
 > [Felügyelt példány](sql-database-managed-instance.md) jelenleg nem támogatja az adatbázis-példány adatbázis BACPAC-fájlból az Azure portal használatával történő áttelepítése. Felügyelt példány importálni, használja az SQL Server Management Studio vagy az SQLPackage.
 
+> [!NOTE]
+> A portál vagy a Powershellen keresztül elküldött importálási/exportálási kérelmek feldolgozása gépek kell a bacpac-fájlba, valamint a Adatrétegbeli alkalmazási keretrendszer (DacFX) által létrehozott ideiglenes fájlok tárolására. Szükséges lemezterület jelentősen megvalósító adatbázisok azonos méretű és is igénybe vehet fel 3 alkalommal az adatbázis mérete. Az importálási/exportálási kérelem csak futtató gépek 450GB helyi lemezterület szükséges. Emiatt bizonyos kérelmek sikertelenek lehetnek a "Nem áll elég hely a lemezen található" hiba. Ebben az esetben a megoldás az sqlpackage.exe futtatása helyi szabad lemezterület a gépen. Ha 150GB-nál nagyobb adatbázisok importálása/exportálása, használnia [SqlPackage](#import-from-a-bacpac-file-using-sqlpackage) a probléma elkerülése érdekében.
+ 
 1. BACPAC-fájlból importálja egy új önálló adatbázis az Azure portal használatával, nyissa meg az megfelelő adatbázis-kiszolgáló oldalára, és majd az eszköztáron válassza **adatbázis importálása**.  
 
    ![Adatbázis import1](./media/sql-database-import/import1.png)
@@ -81,6 +84,8 @@ SqlPackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 > [!NOTE]
 > [Felügyelt példány](sql-database-managed-instance.md) jelenleg nem támogatja az adatbázis áttelepítése az Azure PowerShell használatával BACPAC-fájlból egy példány adatbázisba. Felügyelt példány importálni, használja az SQL Server Management Studio vagy az SQLPackage.
 
+> [!NOTE]
+> A portál vagy a Powershellen keresztül elküldött importálási/exportálási kérelmek feldolgozása gépek kell a bacpac-fájlba, valamint a Adatrétegbeli alkalmazási keretrendszer (DacFX) által létrehozott ideiglenes fájlok tárolására. Szükséges lemezterület jelentősen megvalósító adatbázisok azonos méretű és is igénybe vehet fel 3 alkalommal az adatbázis mérete. Az importálási/exportálási kérelem csak futtató gépek 450GB helyi lemezterület szükséges. Emiatt bizonyos kérelmek sikertelenek lehetnek a "Nem áll elég hely a lemezen található" hiba. Ebben az esetben a megoldás az sqlpackage.exe futtatása helyi szabad lemezterület a gépen. Ha 150GB-nál nagyobb adatbázisok importálása/exportálása, használnia [SqlPackage](#import-from-a-bacpac-file-using-sqlpackage) a probléma elkerülése érdekében.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]

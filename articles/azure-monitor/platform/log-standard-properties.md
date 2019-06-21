@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: bwren
-ms.openlocfilehash: 4d7c1d9b59e802343f6d8fe258e8e4ac961bb2df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 50804e1f6ab4f352239d3f405e5b41e4e0c58d14
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061003"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67292821"
 ---
-# <a name="standard-properties-in-azure-monitor-log-records"></a>Az Azure Monitor naplórekordok standard tulajdonságok
-Naplóadatok az Azure monitorban [tárolt rekordkészletet és](../log-query/log-query-overview.md), amelyek mindegyike egy adott adattípus, amely egy egyedi tulajdonságkészlettel rendelkezik. Számos adattípusok, amelyek közösek a több típus több alapvető tulajdonságainak lesz. Ez a cikk ismerteti ezeket a tulajdonságokat és példákat, hogyan használhatja ezeket a lekérdezéseket.
+# <a name="standard-properties-in-azure-monitor-logs"></a>Az Azure Monitor naplóira standard tulajdonságok
+Adatai az Azure Monitor naplóira [a rekordok egy Log Analytics-munkaterületen vagy az Application Insights alkalmazást egy készletben tárolt](../log-query/logs-structure.md), amelyek mindegyike egy adott adattípus, amely egy egyedi tulajdonságkészlettel rendelkezik. Számos adattípusok, amelyek közösek a több típus több alapvető tulajdonságainak lesz. Ez a cikk ismerteti ezeket a tulajdonságokat és példákat, hogyan használhatja ezeket a lekérdezéseket.
 
 Ezek a tulajdonságok néhány létrehozás folyamatban van megvalósítva, így előfordulhat, hogy megjelennek az egyes adattípusok, de még nincs a többi.
 
-## <a name="timegenerated"></a>TimeGenerated
-A **TimeGenerated** tulajdonság tartalmazza a dátum és idő, hogy a rekord létrehozásának. Szűrés vagy időpontig összefoglalójához közös tulajdonság biztosít. Amikor kiválaszt egy időtartományt, nézetben vagy Irányítópulton az Azure Portalon, az eredmények szűréséhez TimeGenerated használ.
+## <a name="timegenerated-and-timestamp"></a>TimeGenerated és időbélyeg
+A **TimeGenerated** (Log Analytics-munkaterület) és **időbélyeg** (Application Insights-alkalmazás) tulajdonságok tartalmaznak dátumát és időpontját, hogy a rekord létrejött. Szűrés vagy időpontig összefoglalójához közös tulajdonság biztosít. Amikor kiválaszt egy időtartományt, nézetben vagy Irányítópulton az Azure Portalon, használ a TimeGenerated, illetve időbélyeg, az eredmények szűréséhez.
 
 ### <a name="examples"></a>Példák
 
@@ -39,16 +39,25 @@ Event
 | sort by TimeGenerated asc 
 ```
 
-## <a name="type"></a>Típus
-A **típus** tulajdonság nevét tárolja a tábla, hogy a rekord, amelyből beolvasták is is értelmezhetők, a rekord típusa. Ez a tulajdonság akkor hasznos, a lekérdezések, amelyek több táblából, például rekordok a `search` operátor szerinti szűrése, megkülönböztetni a különböző típusú rekordok. **$table** helyén használható **típus** egyes helyeken.
+A következő lekérdezést kivételek létrehozott minden egyes nap az előző hét számát adja vissza.
+
+```Kusto
+exceptions
+| where timestamp between(startofweek(ago(7days))..endofweek(ago(7days))) 
+| summarize count() by bin(TimeGenerated, 1day) 
+| sort by timestamp asc 
+```
+
+## <a name="type-and-itemtype"></a>Írja be és itemType
+A **típus** (Log Analytics-munkaterület) és **itemType** (Application Insights-alkalmazás) tulajdonságok céllal, hogy a rekord való lekérdezés melyik is is a táblázat neve értelmezhetők, a rekord Írja be. Ez a tulajdonság akkor hasznos, a lekérdezések, amelyek több táblából, például rekordok a `search` operátor szerinti szűrése, megkülönböztetni a különböző típusú rekordok. **$table** helyén használható **típus** egyes helyeken.
 
 ### <a name="examples"></a>Példák
 Az alábbi lekérdezés a bejegyzések száma az elmúlt egy órában gyűjtött típus szerint adja vissza.
 
 ```Kusto
 search * 
-| where TimeGenerated > ago(1h) 
-| summarize count() by Type 
+| where TimeGenerated > ago(1h)
+| summarize count() by Type
 ```
 
 ## <a name="resourceid"></a>\_ResourceId

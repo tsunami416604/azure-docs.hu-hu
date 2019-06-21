@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 962e2b10136cf1cbab7cc5d3d06059922c363b15
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/19/2019
+ms.openlocfilehash: efa4cc070f47174634c8dc67b37f10bc3d112d08
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65410275"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67293210"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - kiszolgáló egyetlen PostgreSQL-bővítmények
 PostgreSQL lehetővé teszi az adatbázis-bővítményekkel funkcióinak bővítése érdekében. Bővítmények lehetővé teszik több kapcsolódó SQL objektumok együtt kötegelést betöltve, vagy eltávolítja az adatbázisból, egyetlen paranccsal egyetlen csomagban. Után az adatbázis betöltése, bővítmények működhet, mint a beépített funkciók. A PostgreSQL-bővítmények további információkért lásd: [csomagolási kapcsolódó objektumot egy bővítmény](https://www.postgresql.org/docs/9.6/static/extend-extensions.html).
@@ -73,6 +73,7 @@ Az alábbi táblázatok sorolják fel a standard szintű PostgreSQL-bővítmény
 > | **Extension** | **Leírás** |
 > |---|---|
 > | [plpgsql](https://www.postgresql.org/docs/9.6/static/plpgsql.html) | PL/pgSQL oszlopszinten eljárási nyelv. |
+> | [plv8](https://plv8.github.io/) | A Javascript nyelvi bővítmény, amely a tárolt eljárások, eseményindítók és egyéb is használható a PostgreSQL-hez. |
 
 ### <a name="miscellaneous-extensions"></a>Személyi bővítmények
 
@@ -124,7 +125,7 @@ TimescaleDB egy idősorozat-adatbázis, amely a PostgreSQL-hez készült bővít
 [További tudnivalók a TimescaleDB](https://docs.timescale.com/latest), bejegyzett védjegye [időskálára, Inc.](https://www.timescale.com/)
 
 ### <a name="installing-timescaledb"></a>TimescaleDB telepítése
-TimescaleDB telepítéséhez szüksége adja meg a kiszolgáló megosztott preload könyvtárakban található. Megosztott preload kódtárak Postgres a módosítás van szükség egy **a kiszolgáló újraindításának** érvénybe léptetéséhez.
+TimescaleDB telepítéséhez szüksége adja meg a kiszolgáló megosztott preload könyvtárakban található. A Postgres módosítás `shared_preload_libraries` paraméter szükséges a **kiszolgáló újraindítása** érvénybe léptetéséhez. A paraméterek használatával módosíthatja a [az Azure portal](howto-configure-server-parameters-using-portal.md) vagy a [Azure CLI-vel](howto-configure-server-parameters-using-cli.md).
 
 > [!NOTE]
 > TimescaleDB engedélyezhető Azure Database for PostgreSQL-verzió 9.6 és 10
@@ -137,10 +138,7 @@ Használatával a [az Azure portal](https://portal.azure.com/):
 
 3. Keresse meg a `shared_preload_libraries` paraméter.
 
-4. Másolja és illessze be a következő értéket `shared_preload_libraries`
-   ```
-   timescaledb
-   ```
+4. Válassza ki **TimescaleDB**.
 
 5. Válassza ki **mentése** megőrzése érdekében a módosításokat. A módosítás mentése után értesítést kap. 
 
@@ -158,4 +156,4 @@ Most már létrehozhat egy TimescaleDB hypertable [előzmények](https://docs.ti
 
 
 ## <a name="next-steps"></a>További lépések
-Ha nem lát, amelyet szeretne használni, ossza meg velünk bővítmény. Szavazzon meglévő kérelmeket, vagy hozzon létre új visszajelzést és a kéréseket a [ügyfél-visszajelzési fórumán](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).
+Ha nem lát, amelyet szeretne használni, ossza meg velünk bővítmény. Szavazzon meglévő kérelmeket, vagy hozzon létre az új visszajelzési kéréseket a [Visszajelzési fórum](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).

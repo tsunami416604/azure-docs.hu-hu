@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-lilei
-ms.openlocfilehash: 75ff1f7a37522c295bff10fe22bbb995fea65d52
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 50a252ff93f7e2cc6e5c6100c6bce850e9e96baf
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276040"
+ms.locfileid: "67295624"
 ---
 # <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>Python-oktatóprogram: Az egy Azure Search szolgáltatásban az indexelés folyamat a Cognitive Services API-k meghívása
 
@@ -465,73 +465,7 @@ Az eredmények az alábbi példához hasonlóan kell kinéznie. Csak a képerny�
 Ismételje meg a műveletet további mezőket: tartalom, languageCode, keyPhrases és szervezetek ebben a gyakorlatban. Egyszerre több mezőt is lekérhet a vesszővel elválasztott listát használó `$select` megadásával.
 
 A lekérdezési karakterlánc összetettségétől és hosszától függően használhatja a GET vagy a POST metódust. További információkért lásd: [Lekérdezés a REST API-val](https://docs.microsoft.com/rest/api/searchservice/search-documents).
-
-<a name="access-enriched-document"></a>
-
-## <a name="accessing-the-enriched-document"></a>A bővített dokumentum elérése
-
-A kognitív kereséssel megtekintheti a bővített dokumentum szerkezetét. A bővített dokumentumok a bővítés során létrejött, majd a folyamat végeztével törlődő ideiglenes szerkezetek.
-
-Ha pillanatképet szeretne készíteni az indexelés során létrejött bővített dokumentumról, adja hozzá az indexhez az `enriched` mezőt. Az indexelő automatikusan hozzáadja a mezőhöz az adott dokumentum bővítéseinek karakterláncos leképezését.
-
-Az `enriched` mező egy sztringet tartalmaz, amely a JSON-ban szereplő memóriabeli bővített dokumentum logikai leképezése.  A mező értéke azonban egy érvényes JSON-dokumentum. Idézőjelek előtt escape karakternek, ezért le kell cserélnie `\"` a `"` megtekinthetik a dokumentumot, mint a JSON formátumú.  
-
-Az `enriched` mező célja a hibakeresés, annak érdekében, hogy segítsen azon tartalom logikai alakzatának megértésében, amely szerint a kifejezések értékelve lesznek. Ez hasznos eszközként szolgálat a képességcsoport megértéséhez és hibakereséséhez.
-
-Rögzítse a jelentéstétellel dokumentumok tartalmát, ismételje meg az előző gyakorlat során, és tartalmazza a `enriched` mezőt az indexben készítése során.
-
-> [!Tip]
-> Ismételje ezeket a lépéseket, mielőtt törölnie kell az adatforrást, index, indexelő és indexmezők imént létrehozott. További információkért lásd: [alaphelyzetbe állítása, és futtassa újból](#reset).
-
-```python
-# Create index with enriched field
-index_payload = {
-    "name": index_name,
-    "fields": [
-      {
-        "name": "id",
-        "type": "Edm.String",
-        "key": "true",
-        "searchable": "true",
-        "filterable": "false",
-        "facetable": "false",
-        "sortable": "true"
-      },
-      {
-        "name": "content",
-        "type": "Edm.String",
-        "sortable": "false",
-        "searchable": "true",
-        "filterable": "false",
-        "facetable": "false"
-      },
-      {
-        "name": "languageCode",
-        "type": "Edm.String",
-        "searchable": "true",
-        "filterable": "false",
-        "facetable": "false"
-      },
-      {
-        "name": "keyPhrases",
-        "type": "Collection(Edm.String)",
-        "searchable": "true",
-        "filterable": "false",
-        "facetable": "false"
-      },
-      {
-        "name": "organizations",
-        "type": "Collection(Edm.String)",
-        "searchable": "true",
-        "sortable": "false",
-        "filterable": "false",
-        "facetable": "false"
-      }
-   ]
-}
-```
-
-<a name="reset"></a>
+it <a name="reset"></a>
 
 ## <a name="reset-and-rerun"></a>Alaphelyzetbe állítás és ismételt futtatás
 

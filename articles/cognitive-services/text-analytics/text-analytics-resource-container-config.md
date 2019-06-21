@@ -3,20 +3,20 @@ title: Tárolók konfigurálása
 titlesuffix: Text Analytics - Azure Cognitive Services
 description: Szövegelemzés biztosít az egyes tárolók és a egy közös keretrendszer konfigurációs, egyszerűen konfigurálása és kezelése a storage, a naplózás és a telemetriai adatok és a biztonsági beállítások a tárolókhoz.
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 04/16/2019
-ms.author: diberry
-ms.openlocfilehash: 1333aefc145e95223624f42a28ec0bb31ab70065
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/20/2019
+ms.author: dapine
+ms.openlocfilehash: 604b17bc3d4696ff0bf2be1759a53927a531fe13
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60828122"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296022"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Szövegelemzés a docker-tárolók konfigurálása
 
@@ -51,7 +51,7 @@ Ez a beállítás a következő helyen található:
 
 Hozzá kell adnia a `text/analytics/v2.0` útválasztás az a végpont URI-t, a következő BILLING_ENDPOINT_URI példában látható módon.
 
-|Szükséges| Name (Név) | Adattípus | Leírás |
+|Kötelező| Name (Név) | Adattípus | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Billing` | Karakterlánc | A számlázás végpont URI azonosítója<br><br>Példa:<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.1` |
 

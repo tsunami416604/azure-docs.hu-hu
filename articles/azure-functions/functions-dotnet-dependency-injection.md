@@ -10,19 +10,21 @@ ms.service: azure-functions
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/28/2019
-ms.author: jehollan, glenga, cshoe
-ms.openlocfilehash: b1a6751f0d788c26af60b28eee994dc9b3877f00
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.author: jehollan, cshoe
+ms.openlocfilehash: 9f932bf92cb3871af7f0eb294ac15dec82cdc8ba
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66693248"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274249"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Függőségi beszúrást használata a .NET Azure Functions szolgáltatásban
 
 Az Azure Functions támogatja a függőségi injektálási (DI) szoftver tervezési mintát, amely a technika eléréséhez [vezérlő invertálásának (IoC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) osztályok és a függőségek között.
 
 Az Azure Functions az ASP.NET Core függőségi beszúrást funkciók épül. Szolgáltatások élettartam és tervezési mintáinak ismerete [ASP.NET Core függőségi beszúrást](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) DI szolgáltatásainak használata az Azure Functions előtt javasolt a alkalmazás.
+
+A függőségi beszúrást megkezdi az Azure Functions támogatása 2.x.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,13 +34,22 @@ Függőségi beszúrást használata előtt telepítenie kell a következő NuGe
 
 - [Microsoft.NET.Sdk.Functions csomag](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) 1.0.28 verzió vagy újabb
 
+- Nem kötelező: [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) csak indításkor HttpClient regisztrálásához szükséges
+
 ## <a name="register-services"></a>Szolgáltatások regisztrálása
 
 Szolgáltatások regisztrálása, konfigurálásához, és adjon hozzá összetevőket metódus segítségével létrehozhat egy `IFunctionsHostBuilder` példány.  Az Azure Functions állomás létrehoz egy példányt a `IFunctionsHostBuilder` és továbbadja azt közvetlenül a metódus.
 
-A módszer regisztrálásához adja hozzá a `FunctionsStartup` szerelvény attribútum, amely meghatározza a típusnév indítása során használt.
+A módszer regisztrálásához adja hozzá a `FunctionsStartup` szerelvény attribútum, amely meghatározza a típusnév indítása során használt. Kód is hivatkozik egy előzetes verzióját [Microsoft.Azure.Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) nugeten.
 
 ```csharp
+using System;
+using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Http;
+using Microsoft.Extensions.Logging;
+using Microsoft.Azure.Cosmos;
+
 [assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
 
 namespace MyNamespace
@@ -62,6 +73,16 @@ namespace MyNamespace
 ASP.NET Core konstruktor injektálási használja a függőségek a függvény számára elérhetővé tenni. A következő minta bemutatja, hogyan a `IMyService` és `HttpClient` függőségek a rendszer kártevő program férkőzik be egy HTTP-eseményindítóval aktivált függvényt.
 
 ```csharp
+using System;
+using System.IO;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+
 namespace MyNamespace
 {
     public class HttpTrigger
