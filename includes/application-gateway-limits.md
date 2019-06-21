@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 6/5/2019
 ms.author: victorh
-ms.openlocfilehash: 592e1973344b231693077f8286a41dfd67a8d188
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 9a8d925e5d72500817028b913a80255a4339255c
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66689101"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67148428"
 ---
 | Resource | Alapértelmezett/maximális korlát | Megjegyzés |
 | --- | --- | --- |
@@ -23,7 +23,7 @@ ms.locfileid: "66689101"
 | Háttér-HTTP-beállítások |100<sup>1</sup> | |
 | Átjárónkénti példányok száma |32 | |
 | SSL-tanúsítványok |100<sup>1</sup> |HTTP-figyelőnként 1 |
-| SSL-tanúsítvány maximális mérete |V1 TERMÉKVÁLTOZATOT – 10 KB-OS<br>V2 SZINTŰ TERMÉKVÁLTOZATOT – 25 KB| |
+| SSL-tanúsítvány maximális mérete |V1 TERMÉKVÁLTOZATOT – 10 KB-OS<br>V2 SZINTŰ TERMÉKVÁLTOZATOT – 16 KB-OS| |
 | Hitelesítési tanúsítványok |100 | |
 | Megbízható legfelső szintű tanúsítványok |100 | |
 | Minimális kérés időtúllépése |1 másodperc | |

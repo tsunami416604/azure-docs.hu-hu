@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: c98229a28f31ff715f252dc3915ca690e99245ff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: c79a4907e277c337509bd362653cfb100c4bd39c
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65979517"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137440"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy Vendég konfiguráció ismertetése
 
@@ -114,7 +114,8 @@ A fürtérvényesítési eszköz biztosít a Vendég konfigurációs ügyfél az
 Az Azure Policy használja a Vendég-konfigurációs erőforrás-szolgáltatók **complianceStatus** való megfelelőség jelentéséhez a tulajdonság a **megfelelőségi** csomópont. További információkért lásd: [megfelelőségi adatok](../how-to/getting-compliance-data.md).
 
 > [!NOTE]
-> Minden egyes vendég konfigurációs definíciós mind a **DeployIfNotExists** és **naplózási** szabályzatdefiníciók léteznie kell.
+> A **DeployIfNotExists** házirend szükség a **naplózási** házirend eredményeinek visszaadása.
+> Nélkül a **DeployIfNotExists**, a **naplózási** házirend jeleníti meg a "0-0" erőforrásokhoz, mint az állapot.
 
 Beépített Vendég konfigurációs szabályzatainak csoportra vonatkozó definíciókat használja a hozzárendelések kezdeményezések szerepelnek. A beépített kezdeményezés nevű *[előzetes verzió]: Naplózási jelszó biztonsági beállítások a Linux és Windows virtuális gépeken belül* 18 szabályzatokat tartalmaz. Hat **DeployIfNotExists** és **naplózási** Windows és Linux-három pár párokat. Minden esetben a logika belül a definíció érvényesíti csak a cél operációs rendszer alapján értékeli ki a [felügyeletiházirend-szabálya](definition-structure.md#policy-rule) definíciója.
 

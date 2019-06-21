@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e727398e1b7bfa406166574ab40320c68dac5709
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: a8cc6cf834c54ca25c12a6d66675e4290fd66136
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66358528"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165819"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>VMware megoldást, CloudSimple kapcsolatos gyakori kérdések
 
-Gyakori kérdések és válaszok CloudSimple VMware-megoldások tudnivalók, amelyek segítenek megérteni a szolgáltatás, és hogyan használható a.  A kérdések és válaszok a következő kategóriákba vannak rendezve.
+Gyakori kérdések és válaszok Azure VMware-megoldás által CloudSimple, amelyek segítenek megérteni a szolgáltatás, és hogyan használható a. A kérdések és válaszok a következő kategóriákban elrendezésére:
 
-* CloudSimple Service
+* CloudSimple service
 * Kapcsolat
 * Hálózat
 * Biztonság
@@ -27,89 +27,89 @@ Gyakori kérdések és válaszok CloudSimple VMware-megoldások tudnivalók, ame
 * Storage
 * VMware
 * Az Azure-integráció
-  
-## <a name="cloudsimple-service"></a>CloudSimple Service
+ 
+## <a name="cloudsimple-service"></a>CloudSimple service
 
-**Mi a VMware megoldás által CloudSimple?**
+**Mi az Azure VMware megoldás által CloudSimple?**
 
-**VMware megoldást, CloudSimple** alakítja át, és kiterjeszti a VMware számítási feladatainak Azure-beli privát, dedikált felhőkhöz percek alatt. Mi gondoskodunk, az üzembe helyezést, az infrastruktúra kezelése és replikálásával segít a vállalatnak a helyszíni és az Azure között. Mivel az alkalmazások pontosan ugyanazt a helyi Futtatás és az Azure-ban, kihasználhatják a rugalmasság és -szolgáltatások a felhőben, a bonyolultságát, hogy az alkalmazások átszervezése nélkül. CloudSimple csökkenti a teljes tulajdonosi költség, és a egy igény szerinti üzembe helyezési, használatalapú-as--növekedés biztosító felhőalapú fogyasztási modell, és a kapacitás optimalizálása.  Lásd: [Mi az Azure-ban CloudSimple által a VMware megoldás](cloudsimple-vmware-solutions-overview.md) szolgáltatásokat, előnyöket és forgatókönyvekhez.
+Azure VMware-megoldás által CloudSimple alakítja át, és a VMware számítási feladatainak Azure-beli privát, dedikált felhőkhöz kiterjesztheti percek alatt. A megoldás látja el az infrastruktúrát felügyeli és koordinálja a helyszíni és az Azure között. Mivel az alkalmazások pontosan ugyanazt a helyi Futtatás és az Azure-ban, kihasználhatják a rugalmasság és -szolgáltatások a felhőben, a bonyolultságát, hogy az alkalmazások átszervezése nélkül. CloudSimple csökkenti a teljes tulajdonosi költség, és a egy igény szerinti üzembe helyezési, használatalapú-as--növekedés biztosító felhőalapú fogyasztási modell, és a kapacitás optimalizálása. Szolgáltatásokat, előnyöket és forgatókönyvek, lásd: [Mi az Azure VMware megoldás által CloudSimple?](cloudsimple-vmware-solutions-overview.md).
 
-**Mi az CloudSimple Magánfelhő?**
+**Mit jelent a magánfelhő CloudSimple?**
 
-Üzembe helyez egy privát, dedikált felhőalapú, nagy teljesítményű számítási, tárolási, amely, valamint a hálózati környezetben telepített Microsoft Azure-infrastruktúra (hardver- és adatközpont-terület) az Azure-helyen.  Magánfelhő "-szolgáltatásként" natív VMware platformot biztosít. Minden egyes Magánfelhő VMware-feltételeket, a vCenter-kiszolgáló pontosan egy példányát tartalmazza. A vCenter Server kezeli a több ESXi-csomópont található egy vagy több vSphere fürtök esetén a megfelelő virtuális SAN (vSAN) storage együtt. CloudSimple szolgáltatásként az Azure-előfizetésében több magánfelhő is tartalmazhat.  Magánfelhők kapcsolatos további információkért lásd: [áttekintés Magánfelhő](cloudsimple-private-cloud.md).
+Üzembe helyez egy dedikált, privát felhő, amely egy nagy teljesítményű számítási, tárolási és hálózati környezetet az Azure-helyen telepített Microsoft Azure-infrastruktúra (hardver- és adatközpont-terület) áll. A magánfelhő natív VMware platformot biztosít szolgáltatásként. A VMware-feltételeket az egyes magánfelhőkhöz pontosan egy példányát a vCenter-kiszolgáló tartalmazza. A vCenter Server kezeli a több ESXi csomópont egy vagy több vSphere fürtökben, és a megfelelő vSAN-tároló tartalmazza. CloudSimple szolgáltatásként az Azure-előfizetésében több magánfelhő is tartalmazhat. Magánfelhők kapcsolatos további információkért lásd: [áttekintés magánfelhő](cloudsimple-private-cloud.md).
 
-**Hol érhető el CloudSimple szolgáltatás?**
+**Hol érhető el a CloudSimple szolgáltatás?**
 
 CloudSimple az USA keleti RÉGIÓJA és USA nyugati régióban érhető el.
 
 **Hogyan engedélyezhetem CloudSimple-előfizetés?**
 
-A következő Microsoft-ügyfélmenedzserhez fordulnia [ azurevmwaresales@microsoft.com ](mailto:azurevmwaresales@microsoft.com) CloudSimple szolgáltatás az előfizetés engedélyezése érdekében. Adja meg az e-mailben, amelyek esetében szeretne CloudSimple szolgáltatás engedélyezve van az előfizetés-Azonosítóját.  
+Forduljon a Microsoft-ügyfélmenedzserhez, [ azurevmwaresales@microsoft.com ](mailto:azurevmwaresales@microsoft.com) CloudSimple szolgáltatás az előfizetés engedélyezése érdekében. Adja meg az e-mailben, amelyek esetében szeretne CloudSimple szolgáltatás engedélyezve van az előfizetés-Azonosítóját. 
 
 **Hogyan férhetek hozzá a CloudSimple portálon?**
 
-Az Azure Portalról CloudSimple portál érhető el.  Lásd: [VMware megoldás elérése az Azure Portalról CloudSimple portál](https://docs.azure.cloudsimple.com/access-cloudsimple-portal) részleteivel kapcsolatban CloudSimple portál elérése. 
+A CloudSimple portálon az Azure Portalról érhető el. Hogyan CloudSimple portál eléréséhez további információkért lásd: [férhetnek hozzá a VMware megoldás, az Azure Portalról CloudSimple portál](https://docs.azure.cloudsimple.com/access-cloudsimple-portal).
 
-**Hogyan növelhetem a Magánfelhő kapacitása?**
+**Hogyan növelhetem a magánfelhő kapacitása?**
 
-Vásároljon csomópontok az Azure Portalról, és bontsa ki a Magánfelhő a CloudSimple portálról.  A Magánfelhő bővítheti meglévő vSphere-fürthöz további csomópontok hozzáadásával vagy a vSphere új fürtöt.  Lásd: [bontsa ki a CloudSimple Magánfelhő](https://docs.azure.cloudsimple.com/expand-private-cloud) a cikk a következő eljáráshoz.
+Az Azure Portalról csomópontok kiépítésére, és bontsa ki a magánfelhőben, a CloudSimple portálról. A magánfelhő bővítheti meglévő vSphere-fürtre csomópontok hozzáadásával vagy egy új vSphere-fürtöt. Az eljárást a további információkért lásd: [bontsa ki a magánfelhő CloudSimple](https://docs.azure.cloudsimple.com/expand-private-cloud).
 
-**Mi történik a Magánfelhő karbantartás során?**
+**Mi történik a magánfelhő karbantartás során?**
 
-CloudSimple ütemezett karbantartás előtt nap rendszeres értesítéseket biztosít.  Karbantartás történik, zavart nem okozó úgy, hogy a Magánfelhő rendelkezésre állásának biztosításához.  Karbantartási típusai a következők lehetnek:
+CloudSimple biztosít az időszakos értesítések nappal az ütemezett karbantartás előtt. Karbantartási leállás úgy, hogy a magánfelhő rendelkezésre állásának biztosításához történik. Karbantartási típusai a következők lehetnek:
 
-1. **CloudSimple infrastruktúra:**  CloudSimple infrastruktúráját úgy tervezték, hogy magas rendelkezésre állású legyen.  A karbantartás során kapcsolat és a Magánfelhő rendelkezésre állását biztosítják a redundáns összetevőket egyesével frissíti egyszerre nem érinti.  A Magánfelhő vCenter, minden virtuális gépek, a Magánfelhő internet kapcsolat és kapcsolatok a helyszíni vagy Azure hozzáférhet.
-2. **CloudSimple Portal:** Karbantartás közben néhány funkció CloudSimple portálon nem lehet, elérhető-e vagy le van tiltva.  Karbantartási értesítés mi teheti meg a portál részleteit tartalmazza.
+- **CloudSimple infrastruktúra**: A CloudSimple infrastruktúráját úgy tervezték, hogy magas rendelkezésre állású legyen. Karbantartás közben kapcsolatot és a saját magánfelhő-alapú rendelkezésre állását biztosítják a redundáns összetevőket egyesével frissíti egyszerre nem érinti. A magánfelhő vCenter, minden virtuális gépek, a saját magánfelhő-alapú internetkapcsolat és kapcsolatok a helyszíni vagy Azure elérhető lesz.
+- **CloudSimple portál**: Karbantartás közben néhány szolgáltatása a CloudSimple portálon nem érhető el, vagy előfordulhat, hogy le van tiltva. A karbantartási értesítés tartalmaz információkat, mi teheti meg a portálon.
 
 ## <a name="connectivity"></a>Kapcsolat
 
-**Milyen CloudSimple régió hálózati kapcsolat lehetőségeim?**
+**Mik azok a saját kapcsolati lehetőségek CloudSimple régió hálózatomhoz?**
 
-CloudSimple biztosít három különböző kapcsolati lehetőségek a CloudSimple régió hálózathoz való csatlakozáshoz.  Mindhárom együtt is használható.
+CloudSimple biztosít három különböző kapcsolati lehetőségek a CloudSimple régió hálózathoz való csatlakozáshoz. Mindhárom együtt is használható:
 
-1. Az ExpressRoute-kapcsolat a helyszíni adatközpont CloudSimple régió hálózathoz – nagy sebességű, alacsony késleltetésű biztonságos privát kapcsolat a helyszíni ExpressRoute-kapcsolatcsoport a CloudSimple ExpressRoute-kapcsolatcsoporttal globális elérhetőségű az adatközponthíd-képzés. Lásd: [CloudSimple ExpressRoute használatával csatlakozhat a helyszíni](https://docs.azure.cloudsimple.com/on-premises-connection) a cikk a kapcsolat beállításához.
-2. Az ExpressRoute-kapcsolat az Azure virtuális hálózat CloudSimple régió hálózathoz – nagy sebességű, alacsony késleltetésű biztonságos privát kapcsolatot a virtuális hálózati átjárók használatával CloudSimple ExpressRoute-kapcsolatcsoport az adatközponthíd-képzés az Azure-beli virtuális hálózat.  Lásd: [CloudSimple Magánfelhő környezetében csatlakozhat az Azure virtuális hálózat ExpressRoute-tal](https://docs.azure.cloudsimple.com/azure-expressroute-connection) a cikk a kapcsolat beállításához.
-3. Site-to-Site VPN-kapcsolat a helyszíni adatközpontból a CloudSimple régió hálózati – biztonságos virtuális magánhálózati a helyszíni VPN-eszköz, a Magánfelhő CloudSimple régióhoz.  [Állítsa be a VPN-kapcsolat a helyszíni hálózata és a Magánfelhő CloudSimple] lásd a cikk a VPN-kapcsolat beállítása.
+- Az Azure ExpressRoute-kapcsolat a helyszíni adatközpontból CloudSimple régió hálózathoz: Nagy sebességű közel valós idejű biztonságos privát kapcsolat, amely áthidalja a helyszíni ExpressRoute-kapcsolatcsoport az CloudSimple ExpressRoute-kapcsolatcsoport a globális elérhetőségű használatával. A kapcsolat beállításához, tekintse meg a [CloudSimple ExpressRoute használatával csatlakozhat a helyszíni](https://docs.azure.cloudsimple.com/on-premises-connection).
+- Az ExpressRoute az Azure virtuális hálózat a hálózattal létesített kapcsolat CloudSimple régió: Nagy sebességű, alacsony késleltetésű biztonságos privát kapcsolat, amely áthidalja a virtuális hálózaton az CloudSimple ExpressRoute-kapcsolatcsoport Azure-beli virtuális hálózati átjárók segítségével. A kapcsolat beállításához, tekintse meg a [CloudSimple magánfelhő környezetében csatlakozhat az Azure virtuális hálózat ExpressRoute](https://docs.azure.cloudsimple.com/azure-expressroute-connection).
+- Site-to-site VPN-kapcsolatot a helyszíni adatközpontját a CloudSimple régió hálózathoz: Biztonságos virtuális magánhálózati, a helyszíni VPN-eszköz a CloudSimple magánfelhő régióhoz. A kapcsolat beállításához, tekintse meg a [állítsa be a VPN-kapcsolat a helyszíni hálózata és a magánfelhő CloudSimple](https://docs.azure.cloudsimple.com/set-up-vpn).
 
-**Hogyan létesíthetek kapcsolatot magánfelhőbe?**
+**Hogyan létesíthetek kapcsolatot a magánfelhő számára?**
 
-A Magánfelhő részleteit megtekintheti a CloudSimple portálon. Szeretne csatlakozni a vcenter-kiszolgáló a Magánfelhő megfelelő, győződjön meg arról hálózati kapcsolatot létrehozott használja a Site-to-Site, pont – hely, vagy az ExpressRoute. Ezután indítsa el a CloudSimple portálon az Azure portálon, majd kattintson a *indítsa el a vSphere Client* a kezdőlapon vagy a Magánfelhő részleteit megjelenítő oldalon.
+A CloudSimple portálon megtekintheti a részleteket a magánfelhő. Csatlakozik a vcenter-kiszolgáló, amely megfelel a magánfelhőben, győződjön meg róla, hogy a hálózati kapcsolat site-to-site, pont – hely vagy az ExpressRoute használatával hozták létre. Ezután indítsa el a CloudSimple portálon az Azure Portalról. Válassza ki **indítsa el a vSphere Client** a kezdőlapon vagy a magánfelhő részleteit megjelenítő oldalon.
 
-**Mi az az előnye, hogy az ExpressRoute-kapcsolatcsoportot?**
+**Mi az az előnye, hogy egy ExpressRoute-kapcsolatcsoportot?**
 
-Az Azure ExpressRoute-kapcsolatcsoport nagy sebességű, alacsony késleltetésű biztonságos kapcsolatot biztosít.  CloudSimple biztosít egy dedikált ExpressRoute-kapcsolatcsoport ügyfelenként régiónként.  A kapcsolatcsoport használatával, biztonságos kapcsolatot a helyszíni és/vagy az Azure-előfizetése is létrehozhat.
+Az Azure ExpressRoute-Kapcsolatcsoportok nagy sebességű, alacsony késleltetésű biztonságos kapcsolatot biztosít. CloudSimple biztosít egy dedikált ExpressRoute-kapcsolatcsoport ügyfelenként régiónként. A kapcsolatcsoport használatával, biztonságos kapcsolatot a helyszíni és az Azure-előfizetése is létrehozhat.
 
-**Mik azok a hálózati költségeket és-tárolókról CloudSimple csatlakozni. A kimenő adatforgalmi díjakat és-tárolókról az Azure-bA CloudSimple? Több régió?**
+**Mik azok a hálózati költségeket és onnan CloudSimple csatlakozni? Vannak-e a kimenő adatforgalmi díjakat és az Azure-bA CloudSimple? Vannak-e a kimenő adatforgalmi díjakat régióban?**
 
-Nem jár semmilyen hálózati kimenő forgalomra.  Az Azure standard díjszabása vonatkozik minden kimenő forgalom a virtuális hálózat vagy a helyi ExpressRoute-kapcsolatcsoport.
+Nem jár költséggel a kimenő hálózati forgalomért. A virtuális hálózat vagy a helyi ExpressRoute-kapcsolatcsoport Azure standard díjszabása alapján minden kimenő forgalom a alkalmazni.
 
 ## <a name="networking"></a>Hálózat
 
-**Milyen hálózati szolgáltatások saját Magánfelhő érhetők el?**
+**Milyen hálózati szolgáltatások saját magánfelhő érhetők el?**
 
-VLAN-ok (és az alhálózatok) üzembe helyezése, tűzfal-táblákat, és rendeljen nyilvános IP-címeket és képezze le a privát felhőben futó virtuális géphez.  További információkért lásd: [VLAN-OK/alhálózatok áttekintése](cloudsimple-vlans-subnets.md), [tűzfal táblák áttekintése](cloudsimple-firewall-tables.md), és [nyilvános IP-cím áttekintése](cloudsimple-public-ip-address.md) cikkeket.
+Telepíthet virtuális helyi hálózatok és alhálózatok, illetve tűzfal táblák. Rendeljen nyilvános IP-címeket, és a térkép-magánfelhőben futó virtuális géphez. További információkért lásd: [virtuális helyi hálózatok és alhálózatok áttekintése](cloudsimple-vlans-subnets.md), [tűzfal táblák áttekintése](cloudsimple-firewall-tables.md), és [nyilvános IP-cím áttekintése](cloudsimple-public-ip-address.md).
 
-**Hogyan állíthatok be különböző alhálózatokon saját alkalmazások számára a saját privát felhő?**
+**Hogyan állíthatok be különböző alhálózatokon saját alkalmazások számára a saját privát felhőben?**
 
-A Magánfelhő a VLAN-OK CloudSimple portálból hozhat létre.  Miután létrehozta a VLAN, hozzon létre egy elosztott port csoportot a Magánfelhő vcenter a VLAN használatával, és az elosztott port csoporthoz csatlakoztatott virtuális gépek létrehozása.  Tűzfal tábla engedélyezheti a VLAN/alhálózat és hálózati forgalmának biztonságossá tétele a tűzfalszabályok meghatározásához.
+A magánfelhőben VLAN-okat a CloudSimple portálon hozhat létre. Miután létrehozta a VLAN, hozzon létre egy elosztott port csoportot a magánfelhő vcenter a VLAN használatával, és az elosztott port csoporthoz csatlakoztatott virtuális gépek létrehozása. Tűzfal tábla engedélyezése a VLAN-t vagy alhálózat számára, és a hálózati forgalmának biztonságossá tétele a tűzfalszabályok meghatározásához.
 
-**Milyen tűzfal beállításait a Magánfelhők számára érhetők el?**
+**A privát felhők milyen tűzfal beállításai érhetők el?**
 
-Észak – dél- és kelet – Nyugat irányú forgalom szabályokat konfigurálhat.  A szabályok egy tűzfal táblában vannak definiálva.  A tűzfal tábla a privát felhőben VLAN(s) csatolhatók.  Lásd: [tűzfal táblák és -szabályok beállítása Magánfelhők](https://docs.azure.cloudsimple.com/firewall) folyamat ismertető cikket.
+Észak – dél- és kelet – Nyugat irányú forgalom szabályokat konfigurálhat. A szabályok egy tűzfal táblában vannak definiálva. A tűzfal tábla VLAN-okat a magánfelhőben csatolhatók. A telepítő eljárás: [tűzfal táblák és a magánfelhők szabályok beállítása](https://docs.azure.cloudsimple.com/firewall).
 
-**Is hozzárendelhetők nyilvános IP-címek a virtuális gépek a Magánfelhő környezetemet?**
+**Is hozzárendelhetők nyilvános IP-címek a virtuális gépek saját magánfelhő-alapú környezetben?**
 
-Az CloudSimple Portalon egyszerűen egy új nyilvános IP-címet lefoglalni és társítsa a virtuális gép vagy készülék magánhálózati IP-cím.  Is új tűzfalszabályok létrehozása vagy meglévő tűzfalszabályokat, hogy a forgalom a meghatározott portokon és/vagy adott állítsa be az IP-címek a portálon a alkalmazni. Lásd: [nyilvános IP-címek lefoglalása a Magánfelhő-környezethez](https://docs.azure.cloudsimple.com/public-ips) eljárás beállítására.
+Az CloudSimple Portalon egyszerűen egy új nyilvános IP-címet lefoglalni és társítsa a virtuális gép vagy készülék magánhálózati IP-cím. Emellett új tűzfalszabályok létrehozása vagy meglévő tűzfalszabályok engedélyezése a forgalmat az adott portokhoz és egyedi IP-címek a portálon beállítja a alkalmazni. A telepítő eljárás: [nyilvános IP-címeket lefoglalni a magánfelhő-környezethez az](https://docs.azure.cloudsimple.com/public-ips).
 
 ## <a name="security"></a>Biztonság
 
 **Milyen a CloudSimple biztonsági lehetőségeim?**
 
-CloudSimple Magánfelhő a következő biztonsági funkciókat biztosít a Magánfelhő-környezet biztonságossá tétele:
+CloudSimple magánfelhő a következő biztonsági funkciókat biztosít a magánfelhő-környezet biztonságossá tétele:
 
-1. **Inaktív adatok titkosítása adatok**: A vSAN-tárolót a privát felhőben levő az inaktív adatok titkosíthatók. vSAN támogatja a külső kulcs felügyeleti kiszolgálóra, amely az Azure virtuális hálózat vagy a helyszíni környezetben is telepíthető.  Lásd: [konfigurálja a vsan-hoz a CloudSimple Magánfelhő titkosítást](https://docs.azure.cloudsimple.com/vsan-encryption) további részletekért.
-2. **Hálózati biztonság**: Hálózati forgalom átvitelvezérlés Azure blobból vagy az internetről, a helyszíni és a Magánfelhő tűzfalszabályokkal alhálózatain belül a privát felhő.
-3. **Biztonságos, privát kapcsolat**: Biztonságos privát kapcsolat a helyszíni hálózat és az Azure-előfizetése között.
+- **Adatok inaktív adatok titkosítása:** Titkosíthatja az inaktív vSAN tárolás a privát felhőben lévő adatok. vsan-hoz egy külső kulcs felügyeleti kiszolgálóra, amely is üzembe helyezhetők az Azure virtuális hálózat vagy a helyszíni környezetben támogatja. További információkért lásd: [konfigurálja a vsan-hoz a CloudSimple magánfelhőben titkosítást](https://docs.azure.cloudsimple.com/vsan-encryption).
+- **Hálózati biztonság:** Hálózati forgalom átvitelvezérlés a kezdő és a saját magánfelhő-alapú az internetről, a helyszínen, és a magánfelhő tűzfalszabályok használatával alhálózatok belül.
+- **Biztonságos, privát kapcsolat:** Biztonságos, privát kapcsolat a helyszíni hálózat és az Azure-előfizetés között.
 
 ## <a name="compute"></a>Compute
 
@@ -117,60 +117,60 @@ CloudSimple Magánfelhő a következő biztonsági funkciókat biztosít a Magá
 
 CloudSimple két gazdagép típust kínál:
 
-* **CS28 csomópont:** CPU:2 2.2 GHz-es teljes 28 mag, 48 x HT.  RAM: 256 GB.  Storage: 1600 GB-os NVMe gyorsítótár, 5760 GB adat (teljes mértékben Flash). Hálózat: 2x25Gbe NIC
-* **CS36 csomópont:** CPU 2 x 2.3 GHz-es összesen 36 mag, 72 HT.  RAM: 512 GB.  Storage: 3200 GB NVMe-gyorsítótár 11,520 GB adat (teljes mértékben Flash).  Hálózat: 2x25Gbe NIC
+* **CS28 csomópont**: CPU:2 2.2 GHz-es teljes 28 mag, 48 x HT. RAM: 256 GB. Storage: 1600 GB-os NVMe gyorsítótár, 5760 GB méretű adatok (teljes mértékben Flash). Hálózat: 2x25Gbe NIC.
+* **CS36 csomópont**: CPU 2 x 2.3 GHz-es összesen 36 mag, 72 HT. RAM: 512 GB. Storage: 3200 GB-os NVMe gyorsítótár 11,520 GB méretű adatok (teljes mértékben Flash). Hálózat: 2x25Gbe NIC.
 
-**Hogyan kezelje a szüntethessük a hardverhibák?**
+**Hogyan kezelje a hardveres hibák esetén?**
 
-Minden CloudSimple infrastruktúra folyamatosan figyeli a CloudSimple platform és a szolgáltatás üzemeltetői csapatokat.  Hardverhiba észlelése esetén egy új csomópontra kerül a Magánfelhő és a sikertelen csomópont eltávolítása a Magánfelhő magas rendelkezésre állásának biztosítása.
+Minden CloudSimple infrastruktúra folyamatosan figyeli a CloudSimple platform és a szolgáltatás üzemeltetői csapatokat. Hardverhiba észlelése esetén egy új csomópontot ad a magánfelhő számára. A magánfelhő a magas rendelkezésre állás biztosítása érdekében el a sikertelen csomópontot.
 
 ## <a name="storage"></a>Storage
 
-**A Magánfelhő tároló milyen típusú támogatott?**
+**Milyen típusú tárolás a privát felhő támogatott?**
 
-CloudSimple kínál **teljes mértékben flash VMware vSAN tárolási** minden privát felhő.  Minden egyes vSphere jön létre a saját vSAN-adattárhoz.  Lásd: [privát felhő VMware összetevők – vsan-hoz, storage](https://docs.azure.cloudsimple.com/vmware-components/#vsan-storage) további részleteivel.
+CloudSimple kínál **teljes mértékben flash VMware vSAN tárolási** minden privát felhő. Minden egyes vSphere jön létre a saját vSAN-adattárhoz. További információkért lásd: [magánfelhő VMware-összetevők – vsan-hoz, storage](https://docs.azure.cloudsimple.com/vmware-components/#vsan-storage).
 
 **Az adatok támogatott titkosítási?**
-Igen.  Állíthat be a vSAN-tárolót a privát felhő, amely üzembe helyezett helyszíni kulcskezelő kiszolgáló (KMS) használata vagy az Azure-ban a vSAN-on tárolt adatok titkosításához
+Igen. Állíthat be a vSAN-tárolót egy kulcskezelés kiszolgálói (KMS), amely üzembe helyezett helyszíni használata a magánfelhőben vagy Azure-beli vsan-hoz a tárolt adatok titkosításához.
 
 **Hogyan kezeli a hibás lemezeket?**
 
-A privát felhő minden hardverösszetevő folyamatosan CloudSimple figyelési figyeli.  Ha semmilyen lemezhiba észlel, vagy a lemezzel (a heurisztika alapján) sikertelen azonosítottak, egy új csomópont automatikusan hozzáadódik a Magánfelhő.  A csomópont hibás lemezt távolítja el a Magánfelhő.
+A magánfelhő minden hardverösszetevő folyamatosan CloudSimple figyelési figyeli. Észleli a lemezhiba vagy lemez sikertelen heurisztika alapján azonosítja, ha új csomópontot automatikusan hozzáadódik a magánfelhő számára. A csomópont egy hibás lemezt távolítja el a magánfelhő.
 
 ## <a name="vmware"></a>VMware
 
-**Hogyan hajthatom végre nagy méretű feltöltése/migrate alkalmazásait és adatait a helyszíni?**
+**Hogyan hajthatom végre nagy méretű feltöltése és az alkalmazások és adatok áttelepítését a helyszíni?**
 
-CloudSimple natív VMware vSphere-megoldást kínál.  Minden olyan eszköz, amellyel tömeges adatáttelepítés CloudSimple Magánfelhő is használható.  Az elérhető lehetőségek a következők:
+CloudSimple natív VMware vSphere megoldást kínál. Minden olyan eszköz, amellyel tömeges adatáttelepítés CloudSimple magánfelhőbe is használható. Az elérhető lehetőségek a következők:
 
-1. VMware HCX adatok tömeges az áttelepítéshez.
-2. Ritkán használt adatok CloudSimple a helyszínről a Storage vMotion használatával áttelepítése.
+- VMware HCX adatok tömeges az áttelepítéshez.
+- Offline áttelepítés adatok CloudSimple a helyszínről a Storage vMotion használatával.
 
 **Minden olyan VMware-eszközöket is telepíthet?**
 
-CloudSimple natív VMware vSphere-megoldást kínál.  Minden olyan eszköz, amellyel vSphere környezetben a helyszíni CloudSimple lehet használni.  CloudSimple Bring-Your-saját licenc használata (BYOL) modell támogatja a VMware-eszközök telepítése.
+CloudSimple natív VMware vSphere megoldást kínál. Bármely eszköz egy vSphere-környezet helyszíni CloudSimple lehet használni. CloudSimple bring-your-saját licenc (használata BYOL) modell támogatja a VMware-eszközök telepítése.
 
 **Hogyan frissítések és verziófrissítések felügyelt?**
 
-CloudSimple kezeli, és frissíti a Magánfelhő összes infrastruktúra-összetevőihez zavart nem okozó gördülékennyé.  Minden olyan VMware vagy infrastruktúra-szolgáltató által kiadott frissítés vagy javítást lesz ütemezve frissítés, amint azt a CloudSimple minősíteni.
+CloudSimple kezeli, és frissíti a magánfelhő infrastrukturális összetevők leállás gördülékennyé. Minden olyan VMware vagy infrastruktúra-szolgáltató által kiadott frissítés vagy javítást ütemezett frissítést, amint azt a CloudSimple minősíteni.
 
-CloudSimple frissítések, a Magánfelhő a telepített alkalmazások nem hajt végre.
+A magánfelhőbe telepített alkalmazások frissítések CloudSimple végre.
 
 ## <a name="azure-integration"></a>Az Azure-integráció
 
 **Milyen Azure-szolgáltatások támogatottak?**
 
-CloudSimple biztosít az előfizetéshez az Azure ExpressRoute-kapcsolat az Azure-ban.  Az előfizetésében futó szolgáltatások a Magánfelhő hálózati kapcsolattal rendelkezik, és csatlakozhat a Magánfelhő.  Példák:
+CloudSimple biztosít az előfizetéshez az Azure ExpressRoute-kapcsolat az Azure-ban. Az előfizetésében futó minden olyan szolgáltatások hálózati kapcsolattal rendelkezik a magánfelhő számára, és csatlakozhat a magánfelhő. Példák:
 
-1. **Az Azure Active Directory** a CloudSimple vcenter-identitás forrásként
-2. **Az Azure storage** biztonsági mentések, képek és egyéb adatait a Magánfelhő tárolására
-3. **Hibrid alkalmazások** -alkalmazásarchitektúra nyilvános és magánfelhőkben is létrehozhat.  Például az Azure-ban elérhető alkalmazás- és adatbázis-kiszolgálók CloudSimple privát felhő webservers is létrehozhat.
-4. **Az Azure monitor** és **az Azure security center** – VMware-en futó munkaterhelések használhatják, ezek a naplózás, teljesítmény-mérőszámok és biztonsági felügyeleti.
+- **Azure Active Directory**: Az Azure Active Directory használata a CloudSimple vCenter-identitás forrásaként.
+- **Az Azure Storage**: Tárolás biztonsági mentések, képek és egyéb adatait a magánfelhőben használni.
+- **Hibrid alkalmazások**: Alkalmazásarchitektúra nyilvános és magánfelhőkben is létrehozhat. Például létrehozhat webkiszolgálók az Azure-ban, hogy hozzáférési alkalmazás- és adatbázis-kiszolgálók a CloudSimple magánfelhőbe.
+- **Az Azure Monitor** és **az Azure Security Center**: Naplózás, teljesítmény-mérőszámok és biztonsági felügyeleti VMware-en futó számítási feladatok figyelése és a Security Center használható.
 
 **Hogyan rendelhetek VMware a bérlő Azure-bA?**
 
-CloudSimple teszi lehetővé egyedi a Magánfelhő VMware virtuális gépek kezelése az Azure Portalról.  VCenter erőforráskészlet (konfigurálni kívánt erőforrás-korlátozások) a globális rendszergazda is rendelhető hozzá az előfizetés.  
+CloudSimple teszi lehetővé egyedi magánfelhő VMware virtuális gépek kezelése az Azure Portalról. VCenter erőforráskészlet konfigurálni szeretné, hogy a globális rendszergazda az előfizetés megfeleltethetők erőforrás-korlátozások. 
 
 **Milyen licencelési kedvezmények jelenik meg az Azure-ral?**
 
-CloudSimple is kihasználhatja az Azure Hybrid Benefit használati és legfeljebb 90 %-os megtakarítást a licenceket a Microsoft Licenses, a teljes bekerülési Költséget, más felhőkben képest csökkenti a befektetési megőrizve. Biztonsági frissítések hálózatfigyelést emellett a Windows Server 2008 és a Microsoft SQL Server 2008.  Tartsa a költségeket a használata a saját licenc használata (BYOL) alacsony például a Veeam, a Zerto és egyéb gyakori alkalmazások a felhőbe.  
+CloudSimple az Azure Hybrid Benefit előnyeit, és a licencek eszközölt befektetéseit a Microsoft licencek, valamint csökkentheti a teljes birtoklási más felhőkben képest akár 90 százalékkal mentése. Biztonsági frissítések a Windows Server 2008 és a Microsoft SQL Server 2008 első terjeszteni. A költségek alacsony BYOL-tartsa a felhőbe, mint a Veeam, a Zerto és egyéb gyakori alkalmazások. 

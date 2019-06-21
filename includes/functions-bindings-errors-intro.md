@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: c1784111cd2fc2c93b67510f310b9e513cf2b86e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66132472"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178914"
 ---
 Az Azure Functions [eseményindítók és kötések](../articles/azure-functions/functions-triggers-bindings.md) különböző Azure-szolgáltatásokkal kommunikálni. Amikor ezen szolgáltatások integrálása, előfordulhat, hibák következik be, amely az alapul szolgáló Azure-szolgáltatások az API-k származik. Hibák akkor is előfordulhat, amikor REST vagy a klienskódtáron használatával kommunikálnak a függvénykódban más szolgáltatásaiban próbál. Az adatvesztés elkerülése érdekében, és ellenőrizze, helyes működését a függvények, fontos vagy forrásból hibáinak kezelése.
 

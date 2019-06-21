@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e1fc7809ad94d589483b87c638d027a39098164e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a67cd2f82eb069555bda68e4cb04a6634e3b31d
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209541"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164359"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Rövid útmutató – a magánfelhő-környezet konfigurálása
 
@@ -33,7 +33,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 5. CloudSimple portálon adja meg a Magánfelhő nevét
 6. Válassza ki a **hely** a privát felhő
-7. Válassza ki a **csomóponttípus** vásárolt Azure-ban.  Választhat a [CS28 vagy CS36](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku). Az utóbbi lehetőséget tartalmaz a maximális számítási és memória-kapacitás.
+7. Válassza ki a **csomóponttípus** kiépített Azure-ban.  Választhat a [CS28 vagy CS36](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku). Az utóbbi lehetőséget tartalmaz a maximális számítási és memória-kapacitás.
 8. Adja meg a **csomópontok száma**.  Legalább három csomópont szükséges Magánfelhő létrehozása
 
     ![Hozzon létre a Magánfelhő – alapvető adatok](media/create-private-cloud-basic-info.png)

@@ -7,19 +7,19 @@ ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/28/2017
-ms.openlocfilehash: f11034a4970e3fb95333310af82a6b2a2551f1eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/11/2019
+ms.openlocfilehash: db14f8240dea95eb073a0a653c2798f02fbb7c35
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61479153"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67162593"
 ---
-# <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>Az Azure Machine Learning-függvényekkel a Stream Analytics-feladatok méretezése
+# <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-functions"></a>A Stream Analytics-feladatot az Azure Machine Learning Studio functions méretezése
 Legyen nagyon egyszerű Stream Analytics-feladat beállítását, és néhány Mintaadat végigfuttatása. Mit kell? ha ellenőriznünk kell a magasabb adatkötettel ugyanez a feladat futtatása Ez megköveteli tőlünk, megtudhatja, hogyan konfigurálja a Stream Analytics-feladat, így a méretezés. Ebben a dokumentumban koncentrálunk a Machine Learning-függvényekkel a Stream Analytics-feladatok méretezése különleges szempontjait. A Stream Analytics-feladatok méretezése az általános információkat lásd: a cikk [feladatok méretezése](stream-analytics-scale-jobs.md).
 
 ## <a name="what-is-an-azure-machine-learning-function-in-stream-analytics"></a>Mi az az Azure Machine Learning-függvény a Stream Analytics?
-A Stream Analytics a Machine Learning-függvény is használható, mint egy normál függvény hívásához szükséges a Stream Analytics lekérdezési nyelv a. Azonban a jelenet mögött a függvényhívások valójában az Azure Machine Learning Web Service kérelmeket is. Machine Learning webszolgáltatások támogatja a "kötegelés" több sort mini batch meghívta a azonos webszolgáltatás API-hívások, általános teljesítmény növelése érdekében. További információkért lásd: [Azure Machine Learning webszolgáltatások](../machine-learning/studio/consume-web-services.md).
+A Stream Analytics a Machine Learning-függvény is használható, mint egy normál függvény hívásához szükséges a Stream Analytics lekérdezési nyelv a. A helyszín mögött azonban a függvényhívások ténylegesen az Azure Machine Learning Studio webszolgáltatás-kérelmek is. Machine Learning webszolgáltatások támogatja a "kötegelés" több sort mini batch meghívta a azonos webszolgáltatás API-hívások, általános teljesítmény növelése érdekében. További információkért lásd: [Azure Machine Learning Studio-webszolgáltatások](../machine-learning/studio/consume-web-services.md). Az Azure Machine Learning Studio a Stream Analytics támogatása előzetes verzióban van.
 
 ## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>Machine Learning-függvényekkel a Stream Analytics-feladat konfigurálása
 Stream Analytics-feladat egy Machine Learning-függvény konfigurálásakor nincsenek két paramétert kell figyelembe venni, a Machine Learning függvényhívások és a streamelési egységek (su), a Stream Analytics-feladat kiépítve a Köteg mérete. Annak megállapításához, a megfelelő értékeket a SUS-t, először egy kell döntést közötti teljesítmény, és a késés, a Stream Analytics-feladat, és mindegyik Adategység átviteli sebességet a késés. SUS-t mindig vehetők egy feladathoz, növelheti a teljesítményt és particionált Stream Analytics-lekérdezés, bár további SUS-t a feladat futtatásával járó költségeket.

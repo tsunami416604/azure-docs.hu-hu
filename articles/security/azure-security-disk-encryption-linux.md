@@ -7,16 +7,16 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 04/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: db289e5b5be23176e8589f408a86734181129ebe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ffdda51c4739dfad6c326a5c90f4a93ebfb321cd
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978497"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67294900"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms"></a>Linux rendszerű IaaS virtuális gépekhez az Azure Disk Encryption engedélyezése 
 
-Engedélyezheti a lemeztitkosítási számos forgatókönyv, és a lépések eltérőek lehetnek a forgatókönyv szerint. Az alábbi szakaszok részletesebben a forgatókönyvek Linux rendszerű IaaS virtuális gépek terjed ki. Lemeztitkosítás, használata előtt a [az Azure Disk Encryption előfeltétel](azure-security-disk-encryption-prerequisites.md) kell elvégezni, és a [Linux rendszerű IaaS virtuális gépek további Előfeltételek](azure-security-disk-encryption-prerequisites.md#bkmk_LinuxPrereq) szakasz át kell tekinteni.
+Engedélyezheti a lemeztitkosítási számos forgatókönyv, és a lépések eltérőek lehetnek a forgatókönyv szerint. Az alábbi szakaszok részletesebben a forgatókönyvek Linux rendszerű IaaS virtuális gépek terjed ki. Lemeztitkosítás, használata előtt a [az Azure Disk Encryption előfeltétel](azure-security-disk-encryption-prerequisites.md) kell végrehajtani, és a [Linux rendszerű IaaS virtuális gépek további Előfeltételek](azure-security-disk-encryption-prerequisites.md#additional-prerequisites-for-linux-iaas-vms) szakasz át kell tekinteni.
 
 Igénybe vehet egy [pillanatkép](../virtual-machines/windows/snapshot-copy-managed-disk.md) és/vagy lemezek előtt készítsen biztonsági másolatot. Biztonsági mentések ellenőrizze, hogy a helyreállítási beállítások titkosítás során váratlan hiba esetén lehetséges. A felügyelt lemezekkel rendelkező virtuális gépek biztonsági szükséges, a titkosítás előtt. Miután biztonsági másolatból történik, a Set-AzVMDiskEncryptionExtension parancsmag segítségével felügyelt lemezek titkosítása a - skipVmBackup paraméter megadásával. Biztonsági mentése és visszaállítása titkosított virtuális gépek kapcsolatos további információkért lásd: a [Azure Backup](../backup/backup-azure-vms-encryption.md) cikk. 
 

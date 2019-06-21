@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: a561d29f462d44eb6bc440bb6110430cc5c51688
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 4fb2fd9503dad4113609b35dbe66496a03272f85
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735238"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137211"
 ---
 # <a name="azure-serial-console-for-linux"></a>Linuxhoz készült Azure-soros konzolon
 
-Az Azure Portalon a soros konzol Linux rendszerű virtuális gépek (VM) egy szöveges alapú konzol hozzáférést biztosít, és a virtuális gép méretezési csoport példányaihoz. A soros kapcsolat a virtuális gép vagy a virtuális gép méretezési készlet példány, azt a hálózati vagy az operációs rendszer állapotának független való hozzáférés biztosítása a COM1 soros porton csatlakozik. A soros konzol csak lehet hozzáférni az Azure portal használatával, és csak a közreműködői hozzáférés szerepkörrel rendelkező felhasználók számára engedélyezett vagy újabb, a virtuális gép vagy virtuálisgép-méretezési csoporthoz.
+Az Azure Portalon a soros konzol Linux rendszerű virtuális gépek (VM) egy szöveges alapú konzol hozzáférést biztosít, és a virtuális gép méretezési csoport példányaihoz. A soros kapcsolat a virtuális gép vagy a virtuális gép méretezési készlet példány, azt a hálózati vagy az operációs rendszer állapotának független való hozzáférés biztosítása a ttys0 soros porton csatlakozik. A soros konzol csak lehet hozzáférni az Azure portal használatával, és csak a közreműködői hozzáférés szerepkörrel rendelkező felhasználók számára engedélyezett vagy újabb, a virtuális gép vagy virtuálisgép-méretezési csoporthoz.
 
 Soros konzol virtuális gépek azonos módon működik, és a virtuális gép méretezési csoport példányaihoz. Ez a dokumentum a virtuális gépek összes említései implicit módon tartalmazza a virtuális gép méretezési csoport példányaihoz Ha másként nincs jelezve.
 

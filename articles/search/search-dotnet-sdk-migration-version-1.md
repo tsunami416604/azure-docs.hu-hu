@@ -10,18 +10,14 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 3f47656bb13d08ea56cf25a2a29897722abb1cdb
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 82823bae76521080634d4f7ff285d94ce8495fbf
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/17/2019
 ms.locfileid: "65024169"
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-11"></a>Az Azure Search .NET SDK 1.1-es verziójának frissítése
-
-> [!Important]
-> Ez a tartalom még fejlesztés alatt áll. Az Azure Search .NET SDK 9.0-s verziója érhető el a NuGet. Ebből a cikkből azt ismertetik, hogyan 9.0 rendszerre történő is dolgozunk. 
-> 
 
 Verzió 1.0.2-preview használata vagy a régebbi a [Azure Search .NET SDK](https://aka.ms/search-sdk), ez a cikk segít az alkalmazás használhatja az 1.1-es verziójának frissítése.
 
@@ -52,7 +48,7 @@ Végül felépítési hibák már rögzített, ha módosításokat végezheti el
 
 <a name="ListOfChangesV1"></a>
 
-## <a name="list-of-breaking-changes-in-version-11"></a>1.1-es verzió használhatatlanná tévő változásai listája
+## <a name="list-of-breaking-changes-in-version-11"></a>1\.1-es verzió használhatatlanná tévő változásai listája
 Az alábbi lista rendezésére a valószínűsége, hogy a változás érinteni fogja az alkalmazás kódjában.
 
 ### <a name="indexbatch-and-indexaction-changes"></a>IndexBatch és IndexAction módosítások
@@ -124,7 +120,7 @@ Az `IndexOperationsExtensions` szkriptben:
         this IIndexOperations operations,
         string indexName);
 
-1.1-es verzió ugyanehhez a művelethez a metódusainak aláírásai néznek ki:
+1\.1-es verzió ugyanehhez a művelethez a metódusainak aláírásai néznek ki:
 
 Az `IIndexesOperations` szkriptben:
 
@@ -150,7 +146,7 @@ Az `IndexesOperationsExtensions` szkriptben:
         string indexName,
         SearchRequestOptions searchRequestOptions = default(SearchRequestOptions));
 
-1.1-es verzióval kezdődően az Azure Search .NET SDK rendszerezi műveleti metódusoknál eltérően:
+1\.1-es verzióval kezdődően az Azure Search .NET SDK rendszerezi műveleti metódusoknál eltérően:
 
 * Választható paraméterek: mostantól modellezése eltér az alapértelmezett inkább a paraméterek, mint a további túlterheléssel. Ez néha jelentősen csökkenti a metódus túlterheléssel, száma.
 * A bővítő metódusokat mostantól elrejtheti a hívó HTTP felesleges adatait rengeteg. Például az SDK korábbi verzióinak adott vissza a választ egy HTTP-állapotkódot, amelyek gyakran nem kell ellenőrizni, mert a műveleti metódusoknál throw objektum `CloudException` számára bármilyen hibát jelző állapotkód. A bővítmény új módszereket csak adatmodell-objektumokat, így nem szükséges kicsomagolása őket a kódban kelljen adja vissza.

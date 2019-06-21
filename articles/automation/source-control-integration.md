@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 94912d5aa10ddd2e67c33bcbb416f007c85f105c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce41ae73a0c55a2b5c27cbdce4d4c16853acf59e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64574109"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273189"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Verziókövetés integrálása az Azure Automation szolgáltatásban
 
-Verziókövetés lehetővé teszi, hogy a forgatókönyvek az Automation fiókhoz a parancsfájlok a GitHub vagy az Azure-Adattárakkal verziókövetési tárházat a naprakészek legyenek. Verziókövetés együttműködhet a csapatával, követi a változásokat, és állítsa vissza a runbookok korábbi verzióira teszi lehetővé. Például verziókövetés lehetővé teszi, hogy a fejlesztési, tesztelési vagy éles környezetben az Automation-fiókok a verziókövetési rendszerben különböző ágak szinkronizálása. Ez megkönnyíti az előléptetni a kódot, amely a fejlesztési környezetben, az Automation-fiók éles üzemben futó tesztelve lett. Verziókövetés integrálása az Automation szolgáltatással támogatja az egyetlen irányú szinkronizálását a verziókövetési tárházzal.
+Verziókövetés naprakészen a forgatókönyvek az Automation-fiókban a parancsfájlok a GitHub vagy az Azure-Adattárakkal verziókövetési tárházat teszi lehetővé. Verziókövetés együttműködhet a csapatával, követi a változásokat, és állítsa vissza a runbookok korábbi verzióira teszi lehetővé. Például verziókövetés lehetővé teszi, hogy a fejlesztési, tesztelési vagy éles környezetben az Automation-fiókok a verziókövetési rendszerben különböző ágak szinkronizálása. Ez megkönnyíti az előléptetni a kódot, amely a fejlesztési környezetben, az Automation-fiók éles üzemben futó tesztelve lett. Verziókövetés integrálása az Automation szolgáltatással támogatja az egyetlen irányú szinkronizálását a verziókövetési tárházzal.
 
 Az Azure Automation három típusú verziókövetés támogatja:
 

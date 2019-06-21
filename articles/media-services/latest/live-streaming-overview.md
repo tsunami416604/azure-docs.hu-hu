@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 05/11/2019
+ms.date: 06/16/2019
 ms.author: juliako
-ms.openlocfilehash: fa09185e68c8d3a70562fe50c583ff872bf91e48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 0abc3eec380cccae2672d0e9aa4a3a4c7199362f
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65556221"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295661"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Élő Stream a az Azure Media Services v3
 
@@ -31,7 +31,7 @@ Az Azure Media Services lehetővé teszi, hogy az ügyfeleknek az Azure-felhőbe
 - A Media Services szolgáltatásban, amelyek lehetővé teszik, hogy, összetevők előzetes verzió, csomag, jegyezze fel, titkosítása és az élő esemény szórási, az ügyfelek számára, vagy egy CDN későbbi terjesztés.
 
 Ez a cikk áttekintést és útmutatást az élő adások online közvetítése a Media Services és más ide tartozó cikkekre mutató hivatkozásokat biztosít.
-
+ 
 > [!NOTE]
 > Jelenleg az Azure Portal használatával nem felügyelheti a v3 verziójú erőforrásokat. Használja a [REST API-t](https://aka.ms/ams-v3-rest-ref), a [parancssori felületet](https://aka.ms/ams-v3-cli-ref) vagy valamelyik támogatott [SDK-t](media-services-apis-overview.md#sdks).
 
@@ -49,27 +49,27 @@ Dinamikus szűrés segítségével nyomon követi, formátum, bitsebességre val
 
 ## <a name="live-event-types"></a>Élő események típusai
 
-Egy élő eseményt két típus egyike lehet: csatlakoztatott mind az élő kódolás. A Media Services v3 élő streameléssel kapcsolatos részletekért lásd: [élő események és élő kimenetek](live-events-outputs-concept.md).
+Az [élő események](https://docs.microsoft.com/rest/api/media/liveevents) az élő videóadatok betöltését és feldolgozását végzik. Egy élő eseményt két típus egyike lehet: csatlakoztatott mind az élő kódolás. A Media Services v3 élő streameléssel kapcsolatos részletekért lásd: [élő események és élő kimenetek](live-events-outputs-concept.md).
 
 ### <a name="pass-through"></a>Továbbítás
 
 ![átmenő típusú](./media/live-streaming/pass-through.svg)
 
-A továbbított **élő esemény** használatakor a helyszíni élő kódoló használatával létrehoz egy többféle sávszélességű videóstreamet, amelyet elküld az élő eseménynek bemeneti adatként (RTMP vagy darabolt MP4 protokollal). Az élő esemény ezután további feldolgozás nélkül továbbítja a bejövő videóstreameket. Az ilyen egy csatlakoztatott élő esemény hosszú ideig futó élő események van optimalizálva, vagy 24 x 365 lineáris élő adatfolyam. 
+Az átmenő használatakor **élő esemény**, amelyeket összeköthet a helyszíni élő kódoló készítése több sávszélességű video-adatfolyamot, és elküldeni, mint a hozzájárulás hírcsatorna az élő esemény (az RTMP- vagy töredékes MP4 bemeneti protokoll használatával). Az élő esemény majd végzi a bejövő video-adatfolyamokat a dinamikus packager (folyamatos átviteli végponton) anélkül, hogy bármilyen további átkódolása keresztül. Az ilyen egy csatlakoztatott élő esemény hosszú ideig futó élő események van optimalizálva, vagy 24 x 365 lineáris élő adatfolyam. 
 
 ### <a name="live-encoding"></a>Live Encoding  
 
 ![live encoding](./media/live-streaming/live-encoding.svg)
 
-Amikor élő kódolást alkalmaz a Media Services használatával, úgy konfigurálja a helyszíni élő kódolót, hogy egyféle sávszélességű videót küldjön bemeneti adatként az élő eseménynek (RTMP vagy darabolt Mp4 protokollal). Az élő esemény egy [többféle sávszélességű videóstreammé](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) kódolja ezt a bejövő egyféle sávszélességű streamet, így az olyan protokollokkal továbbítható a lejátszóeszközökre, mint az MPEG-DASH, a HLS és a Smooth Streaming. 
+Felhőbe kódolás a Media Services használatakor, konfigurálja a helyszíni élő kódoló egy egyféle sávszélességű videó elküldeni a hozzájárulás hírcsatorna (akár összesített 32Mbps), az élő esemény (az RTMP- vagy töredékes MP4 bemeneti protokoll használatával). Az élő esemény átkódolja a bejövő egyféle sávszélességű streamelése az [több sávszélességű video-adatfolyamokat](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) különböző felbontású delivery javítása, és lehetővé teszi a lejátszás eszközöket az iparági szabványos protokollok történő továbbítását például MPEG-DASH, Apple HTTP Live Streaming (HLS), és a Microsoft Smooth Streaming. 
 
 ## <a name="live-streaming-workflow"></a>Élő adatfolyam-továbbítási munkafolyamat
 
 Szeretné megtudni, a Media Services v3 élő adatfolyam-továbbítási munkafolyamat, először tekintse át kell, és a következő fogalmak megismerése: 
 
-- [Streamvégpontok API](streaming-endpoint-concept.md)
-- [Élő események és élő kimenetek API](live-events-outputs-concept.md)
-- [Streamelési Lokátorok API](streaming-locators-concept.md)
+- [Streamvégpontok](streaming-endpoint-concept.md)
+- [Élő események és élő kimenetek](live-events-outputs-concept.md)
+- [Streamelési lokátorok](streaming-locators-concept.md)
 
 ### <a name="general-steps"></a>Általános lépései
 
@@ -79,7 +79,7 @@ Szeretné megtudni, a Media Services v3 élő adatfolyam-továbbítási munkafol
 4. Előnézeti URL-címére, és a segítségével ellenőrizheti, hogy a kódoló a bemeneti ténylegesen fogadja.
 5. Hozzon létre egy új **eszköz** objektum.
 6. Hozzon létre egy **élő kimeneti** , és használja az Ön által létrehozott objektum nevét.<br/>A **élő kimeneti** archiválja a streamet, a **eszköz**.
-7. Hozzon létre egy **Streamelési lokátor** a beépített **Streamelési házirend** típusokat.<br/>Ha azt tervezi, a tartalmak, tekintse át a [Content protection áttekintése](content-protection-overview.md).
+7. Hozzon létre egy **Streamelési lokátor** együtt a [beépített adatfolyam szabályzattípusok](streaming-policy-concept.md)
 8. Az útvonalak listájában a **Streamelési lokátor** visszatéréshez használandó URL-címek (ezek a determinisztikus).
 9. A gazdanevének beszerzése a **folyamatos átviteli végponton** (forrás) szeretné az adatfolyam.
 10. Az URL-címet a 8. lépés kombinálva a teljes URL-Címének lekéréséhez 9. lépésben az állomásnevet.

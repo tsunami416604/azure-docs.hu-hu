@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
 ms.openlocfilehash: 05a7c52dca420f97252c68445398fb3959be8804
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60445702"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "64711291"
 ---
 # <a name="a-practical-guide-to-designing-secure-health-care-solutions-in-azure"></a>Gyakorlati útmutató a biztonságos egészségügyi megoldások az Azure-ban
 Egészségügyi iparági startupokhoz, a rendszer rendszerintegrátorokkal (SI), a független szoftvergyártók (ISV-k) és a egészségügyi szervezetek a mérlegeli, hogy áttért az Azure-ba, amely segít nekik útmutatást keres beépíthet megfelelőségi kötelezettségeiket biztonsági vezérlők.

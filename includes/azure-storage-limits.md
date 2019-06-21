@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: ee9b70827c19236287f81f66f4b9c6e1004a54fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e3cff54f49d40fb7da99dcafa9535349ccb70e09
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66114499"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67150478"
 ---
 A következő táblázat ismerteti az Azure általános célú v1, v2 és Blob storage-tárfiókok alapértelmezés szerinti korlátozásoknak. A *bejövő* korlát a tárfiókhoz küldött kérések hivatkozik az összes adat. A *kimenő* korlát hivatkozik az összes adat, amely egy storage-fiók érkező válaszok.
 
@@ -32,15 +32,15 @@ A következő táblázat ismerteti az Azure általános célú v1, v2 és Blob s
 <sup>1</sup>azure standard szintű Storage-fiókok támogatása magasabb korlátok bejövő kérelem által. A bejövő forgalom korlátok növelését, lépjen kapcsolatba a [Azure-támogatási](https://azure.microsoft.com/support/faq/).
 
 <sup>2</sup> [azure Storage replikáció](https://docs.microsoft.com/azure/storage/common/storage-redundancy) lehetőségek a következők:
-* **RA-GRS**: Írásvédett georedundáns tárolás. RA-GRS engedélyezése esetén a másodlagos hely kimenő célok megegyeznek az elsődleges helyen.
-* **GRS**: Georedundáns tárolás. 
-* **ZRS**: Zónaredundáns tárolás.
-* **LRS**: Helyileg redundáns tárolás. 
+- **RA-GRS**: Írásvédett georedundáns tárolás. RA-GRS engedélyezése esetén a másodlagos hely kimenő célok megegyeznek az elsődleges helyen.
+- **GRS**: Georedundáns tárolás.
+- **ZRS**: Zónaredundáns tárolás.
+- **LRS**: Helyileg redundáns tárolás.
 
 > [!NOTE]
 > Javasoljuk, hogy a legtöbb esetben használjon egy általános célú v2-tárfiók. Könnyedén frissíthet egy általános célú V1-es vagy egy Azure Blob storage-fiók egy általános célú v2 fiók üzemkimaradás nélkül, valamint az adatok másolása nélkül.
 >
-> Az Azure Storage-fiókokról további információért lásd: [Tárfiók áttekintésének](../articles/storage/common/storage-account-overview.md). 
+> Az Azure Storage-fiókokról további információért lásd: [Tárfiók áttekintésének](../articles/storage/common/storage-account-overview.md).
 
 Ha az alkalmazása igényeit meghaladja a skálázhatósági célokat, az egy tárfiókban, hozhat létre az alkalmazás több tárfiók használata. Ezután az adatobjektumok particionáló ezen a tárfiókon keresztül. A mennyiségi díjszabásról további információkért lásd: [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/).
 

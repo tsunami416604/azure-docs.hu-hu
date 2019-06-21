@@ -1,22 +1,22 @@
 ---
-title: Webalkalmazási tűzfal (WAF) az Azure egyéni szabályok
-description: Ez a cikk az egyéni szabályok (WAF) az Azure Application Gateway webalkalmazási tűzfal áttekintést nyújt.
+title: Az Azure webalkalmazási tűzfal (WAF) v2 egyéni szabályok
+description: Ez a cikk a webalkalmazási tűzfal (WAF) v2 egyéni szabályok az Azure Application Gateway áttekintése.
 services: application-gateway
 ms.topic: article
 author: vhorne
 ms.service: application-gateway
-ms.date: 6/5/2019
+ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: d35e1dc96f65e51ab14c4962d1824334cbdb1616
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f6ea831771a8ffecfdd4c7c0d6374c16894e25ed
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752029"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164663"
 ---
-# <a name="custom-rules-for-web-application-firewall"></a>Webalkalmazási tűzfal egyéni szabályok
+# <a name="custom-rules-for-web-application-firewall-v2"></a>Egyéni szabályok a webalkalmazási tűzfal v2-ben
 
-Az Azure Application Gateway webalkalmazási tűzfala (WAF) tartalmaz egy előre konfigurált, a platform által kezelt szabálykészletben által kínált számos különböző típusú támadások elleni védelem. Ezeket a támadásokat hely scripting, SQL-injektálás és mások közötti közé tartozik. Ha Ön a WAF-rendszergazda, érdemes lehet írni, mivel megvédi a alapvető szabálykészlet saját szabályok (CRS) szabályokat állíthat be. A szabályok vagy blokkolhatják vagy engedélyezhetik a kért forgalmat, a megadott feltételeknek megfelelő alapján.
+Az Azure Application Gateway webes alkalmazás tűzfal (WAF) v2 tartalmaz egy előre konfigurált, a platform által kezelt szabálykészletben által kínált számos különböző típusú támadások elleni védelem. Ezeket a támadásokat hely scripting, SQL-injektálás és mások közötti közé tartozik. Ha Ön a WAF-rendszergazda, érdemes lehet írni, mivel megvédi a alapvető szabálykészlet saját szabályok (CRS) szabályokat állíthat be. A szabályok vagy blokkolhatják vagy engedélyezhetik a kért forgalmat, a megadott feltételeknek megfelelő alapján.
 
 Egyéni szabályok lehetővé teszik a saját, amely értékeli az egyes kérések, amely áthalad a WAF-szabályok létrehozása. Ezek a szabályok egy magasabb prioritású, mint a szabályokat a többi felügyelt szabálykészletek tart. Az egyéni szabályok tartalmaznak, a szabály nevét, a szabály prioritása és a feltételeknek megfelelő tömbjét. Ha ezek a feltételek teljesülnek, egy műveletet (az engedélyezés vagy letiltás).
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 230fe94820a00c276238a7f5ff189ecc817f3f96
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 62845557f33fd9c4f3c2ec4e239213c75101955d
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074045"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275982"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Adatok másolása, és az SQL Serverről az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
@@ -37,7 +37,8 @@ Pontosabban az SQL Server-összekötő támogatja:
 - Forrásként SQL-lekérdezést vagy tárolt eljárás használatával adatok beolvasása.
 - Fogadóként adatok hozzáfűzése a célként megadott táblája vagy egyéni logikával tárolt eljárás meghívása másolása során.
 
-Az SQL Server [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017) jelenleg nem támogatja.
+>[!NOTE]
+>Az SQL Server **[Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)** jelenleg nem támogatja az összekötő által. Megkerülő megoldásként használhatja [általános ODBC-összekötő](connector-odbc.md) és az SQL Server ODBC-illesztőt. Hajtsa végre a [Ez az útmutató](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=sql-server-2017) ODBC illesztőprogram letöltési és kapcsolati karakterlánc konfigurációkkal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

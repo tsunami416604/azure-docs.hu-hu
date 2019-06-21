@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd8cebbd7c60715bc90412d9f53458edfee6c56d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5278d504c43688bf064b869982938db52b1b1bf
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108204"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164957"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Egy egyszeri bejelentkezés üzembe helyezésének megtervezése
 
@@ -61,9 +61,9 @@ Kétféleképpen elsődleges, amelyben engedélyezheti a felhasználók egyszeri
 
 A jelszóalapú egyszeri bejelentkezés az Azure AD használatával telepíteni kell egy webböngésző-bővítmény, amely biztonságosan betölti a hitelesítő adatokat, és töltse ki a bejelentkezési űrlap. Adja meg egy olyan mechanizmust méretek mellett a bővítmény telepítése [támogatott böngészők](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction). A lehetőségek a következők:
 
-- [Az Internet Explorer csoportházirend ](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
-- [System Center Configuration Manager (SCCM) for Internet Explorer ](https://docs.microsoft.com/sccm/core/clients/deploy/deploy-clients-to-windows-computers)
-- [A felhasználó közreműködésével, töltse le és a Chrome, Firefox, a Microsoft Edge vagy Internet Explorer konfigurációját ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+- [Az Internet Explorer csoportházirend](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
+- [A System Center Configuration Manager (SCCM) az Internet Explorer](https://docs.microsoft.com/sccm/core/clients/deploy/deploy-clients-to-windows-computers)
+- [A felhasználó közreműködésével, töltse le és a Chrome, Firefox, a Microsoft Edge vagy Internet Explorer konfigurációját](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 További tudnivalókért lásd: [hogyan konfigurálása jelszó egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-password-sso-non-gallery).
 

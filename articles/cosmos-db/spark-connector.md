@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: bc0f2044f70c674177f9c9786f56f0441db2e282
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c39614a05db6553102e74ddbc3838d8c8f812640
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978904"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190490"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Gyorsítsa fel a big data-elemzés az Azure Cosmos DB-összekötő az Apache Spark használatával
 
@@ -38,7 +38,7 @@ Használhatja az összekötőnél a [Azure Databricks](https://azure.microsoft.c
 * Most hozzon létre új jegyzetfüzet, és importálása a Cosmos DB-összekötő könyvtár. Ugrás a [a Cosmos DB-összekötő használata](#bk_working_with_connector) megtudhatja, hogyan állíthatja be a munkaterület számára.
 * Az alábbi szakasz kódrészletek való olvasása és írása az összekötővel rendelkezik.
 
-### <a name="reading-from-cosmos-db"></a>A Cosmos DB olvasásakor
+### <a name="batch-reads-from-cosmos-db"></a>A Batch beolvassa a Cosmos DB-ből
 
 Az alábbi kódrészlet bemutatja, hogyan hozhat létre a Spark DataFrame olvasni a Cosmos DB a PySpark.
 
@@ -65,7 +65,7 @@ import com.microsoft.azure.cosmosdb.spark.schema._
 import com.microsoft.azure.cosmosdb.spark._
 import com.microsoft.azure.cosmosdb.spark.config.Config
 
-// Configure connection to your collection
+// Read Configuration
 val readConfig = Config(Map(
   "Endpoint" -> "https://doctorwho.documents.azure.com:443/",
   "Masterkey" -> "YOUR-KEY-HERE",
@@ -79,7 +79,7 @@ val flights = spark.read.cosmosDB(readConfig)
 flights.count()
 ```
 
-### <a name="writing-to-cosmos-db"></a>A Cosmos DB írása
+### <a name="batch-writes-to-cosmos-db"></a>A Batch írja a Cosmos DB-hez
 
 Az alábbi kódrészlet bemutatja, hogyan írhat adatkeretek PySpark a Cosmos DB-hez.
 
@@ -100,7 +100,8 @@ flights.write.format("com.microsoft.azure.cosmosdb.spark").options(**writeConfig
 És a Scala azonos kódrészlet:
 
 ```scala
-// Configure connection to the sink collection
+// Write configuration
+
 val writeConfig = Config(Map(
   "Endpoint" -> "https://doctorwho.documents.azure.com:443/",
   "Masterkey" -> "YOUR-KEY-HERE",
@@ -109,20 +110,118 @@ val writeConfig = Config(Map(
   "Upsert" : "true"
 ))
 
-// Upsert the dataframe to Cosmos DB
+// Write to Cosmos DB from the flights DataFrame
 import org.apache.spark.sql.SaveMode
 flights.write.mode(SaveMode.Overwrite).cosmosDB(writeConfig)
 ```
 
+### <a name="streaming-reads-from-cosmos-db"></a>Adatfolyam-olvasások Cosmos DB-ből
+
+Az alábbi kódrészlet bemutatja, hogyan csatlakozhat, és az Azure Cosmos DB módosítási hírcsatorna olvasni.
+
+```python
+# Read Configuration
+readConfig = {
+  "Endpoint" : "https://doctorwho.documents.azure.com:443/",
+  "Masterkey" : "YOUR-KEY-HERE",
+  "Database" : "DepartureDelays",
+  "Collection" : "flights_pcoll",
+  "ReadChangeFeed" : "true",
+  "ChangeFeedQueryName" : "Departure-Delays",
+  "ChangeFeedStartFromTheBeginning" : "false",
+  "InferStreamSchema" : "true",
+  "ChangeFeedCheckpointLocation" : "dbfs:/Departure-Delays"
+}
+
+
+# Open a read stream to the Cosmos DB Change Feed via azure-cosmosdb-spark to create Spark DataFrame
+changes = (spark
+.readStream
+.format("com.microsoft.azure.cosmosdb.spark.streaming.CosmosDBSourceProvider")
+.options(**readConfig)
+.load())
+```
+És a Scala azonos kódrészlet:
+
+```scala
+// Import Necessary Libraries
+import com.microsoft.azure.cosmosdb.spark.schema._
+import com.microsoft.azure.cosmosdb.spark._
+import com.microsoft.azure.cosmosdb.spark.config.Config
+
+// Read Configuration
+val readConfig = Config(Map(
+  "Endpoint" -> "https://doctorwho.documents.azure.com:443/",
+  "Masterkey" -> "YOUR-KEY-HERE",
+  "Database" -> "DepartureDelays",
+  "Collection" -> "flights_pcoll",
+  "ReadChangeFeed" -> "true",
+  "ChangeFeedQueryName" -> "Departure-Delays",
+  "ChangeFeedStartFromTheBeginning" -> "false",
+  "InferStreamSchema" -> "true",
+  "ChangeFeedCheckpointLocation" -> "dbfs:/Departure-Delays"
+))
+
+// Open a read stream to the Cosmos DB Change Feed via azure-cosmosdb-spark to create Spark DataFrame
+val df = spark.readStream.format(classOf[CosmosDBSourceProvider].getName).options(readConfig).load()
+```
+
+### <a name="streaming-writes-to-cosmos-db"></a>Streamelési írási, Cosmos DB-hez
+
+Az alábbi kódrészlet bemutatja, hogyan írhat adatkeretek PySpark a Cosmos DB-hez.
+
+```python
+# Write configuration
+writeConfig = {
+ "Endpoint" : "https://doctorwho.documents.azure.com:443/",
+ "Masterkey" : "YOUR-KEY-HERE",
+ "Database" : "DepartureDelays",
+ "Collection" : "flights_fromsea",
+ "Upsert" : "true",
+ "WritingBatchSize" : "500",
+ "CheckpointLocation" : "/checkpointlocation_write1"
+}
+
+# Write to Cosmos DB from the flights DataFrame
+changeFeed = (changes
+ .writeStream
+ .format("com.microsoft.azure.cosmosdb.spark.streaming.CosmosDBSinkProvider")
+ .outputMode("append")
+ .options(**writeconfig)
+ .start())
+```
+
+És a Scala azonos kódrészlet:
+
+```scala
+// Write configuration
+
+val writeConfig = Config(Map(
+  "Endpoint" -> "https://doctorwho.documents.azure.com:443/",
+  "Masterkey" -> "YOUR-KEY-HERE",
+  "Database" -> "DepartureDelays",
+  "Collection" -> "flights_fromsea",
+  "Upsert" -> "true",
+  "WritingBatchSize" -> "500",
+  "CheckpointLocation" -> "/checkpointlocation_write1"
+))
+
+// Write to Cosmos DB from the flights DataFrame
+df
+.writeStream
+.format(classOf[CosmosDBSinkProvider].getName)
+.options(writeConfig)
+.start()
+```
 Kódrészletek és a teljes körű kódmintákat, több további: [Jupyter](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/notebooks).
 
 ## <a name="bk_working_with_connector"></a> Az összekötő használata
 
-Az összekötők a Github forrás, vagy töltse le az uber JAR-fájlok kivételével a Mavenből a lenti hivatkozásokra kattintva.
+Az összekötők a GitHub forrás, vagy töltse le az uber JAR-fájlok kivételével a Mavenből a lenti hivatkozásokra kattintva.
 
 | Spark | Scala | Legújabb verziója |
 |---|---|---|
-| 2.4.0 | 2.11 | [azure-cosmosdb-spark_2.4.0_2.11_1.3.5](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.3.5/jar)
+| 2.4.0 | 2.11 | [azure-cosmosdb-spark_2.4.0_2.11_1.4.0](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.4.0/jar)
 | 2.3.0 | 2.11 | [azure-cosmosdb-spark_2.3.0_2.11_1.3.3](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.3.0_2.11/1.3.3/jar)
 | 2.2.0 | 2.11 | [azure-cosmosdb-spark_2.2.0_2.11_1.1.1](https://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-cosmosdb-spark_2.2.0_2.11%7C1.1.1%7Cjar)
 | 2.1.0 | 2.11 | [azure-cosmosdb-spark_2.1.0_2.11_1.2.2](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.1.0_2.11/1.2.2/jar)
@@ -132,7 +231,7 @@ Az összekötők a Github forrás, vagy töltse le az uber JAR-fájlok kivétel�
 Hozzon létre egy könyvtárat a Databricks-munkaterület használata az Azure Databricks útmutató található útmutatást követve > [az Azure Cosmos DB Spark-összekötő használatára](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/cosmosdb-connector.html)
 
 > [!NOTE]
-> Vegye figyelembe, hogy a **használata az Azure Cosmos DB Spark-összekötő** lap jelenleg nem naprakész. Hanem a hat különálló JAR-fájlok kivételével, hat különböző szalagtárat, letöltheti az uber jar a mavenben https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.3.5/jar) és a egy jar kódtár telepítését.
+> Vegye figyelembe, hogy a **használata az Azure Cosmos DB Spark-összekötő** lap jelenleg nem naprakész. Hanem a hat különálló JAR-fájlok kivételével, hat különböző szalagtárat, letöltheti az uber jar a mavenben https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.4.0/jar) és a egy jar kódtár telepítését.
 > 
 
 ### <a name="using-spark-cli"></a>Spark – parancssori felület használatával
@@ -140,7 +239,7 @@ Hozzon létre egy könyvtárat a Databricks-munkaterület használata az Azure D
 A parancssori felületről spark-összekötő működéséhez (azt jelenti, `spark-shell`, `pyspark`, `spark-submit`), használhatja a `--packages` paraméter az összekötővel [maven-koordináták](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11).
 
 ```sh
-spark-shell --master yarn --packages "com.microsoft.azure:azure-cosmosdb-spark_2.4.0_2.11:1.3.5"
+spark-shell --master yarn --packages "com.microsoft.azure:azure-cosmosdb-spark_2.4.0_2.11:1.4.0"
 
 ```
 
@@ -151,7 +250,7 @@ HDInsight belül Jupyter notebookok használata spark-Magic Quadrant használhat
 ```python
 { "name":"Spark-to-Cosmos_DB_Connector",
   "conf": {
-    "spark.jars.packages": "com.microsoft.azure:azure-cosmosdb-spark_2.4.0_2.11:1.3.5",
+    "spark.jars.packages": "com.microsoft.azure:azure-cosmosdb-spark_2.4.0_2.11:1.4.0",
     "spark.jars.excludes": "org.scala-lang:scala-reflect"
    }
    ...
@@ -173,7 +272,6 @@ mvn clean package
 A [Cosmos DB Spark GitHub-adattár](https://github.com/Azure/azure-cosmosdb-spark) rendelkezik a következő mintafüzetek és parancsfájlok, próbálja meg.
 
 * **Kereskedelmi repülési teljesítmény Spark és a Cosmos DB (Budapesten)** [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.html): Csatlakozzon a Spark HDInsight Jupyter notebook szolgáltatás használatával a Spark SQL, GraphFrames és előrejelzésére járatok késésének használatával a gépi Tanulási folyamatok bemutatására Cosmos DB-hez.
-* **[Csatlakozás a Spark a Cosmos DB – csatorna módosítása](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Spark%2Band%2BCosmos%2BDB%2BChange%2BFeed.ipynb)** : A Cosmos DB-módosítási hírcsatorna kapcsolódás Spark rövid bemutatása.
 * **Twitter-forrás az Apache Spark és az Azure Cosmos DB módosítási hírcsatorna**: [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.html)
 * **Az Apache Spark használatával lekérdezés Cosmos DB Gráfok**: [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.html)
 * **[Csatlakozás az Azure Databricks az Azure Cosmos DB](https://docs.databricks.com/spark/latest/data-sources/azure/cosmosdb-connector.html)**  használatával `azure-cosmosdb-spark`.  Csatolva ide van is egy Azure Databricks verzióját a [időben repülési teljesítmény notebook](https://github.com/dennyglee/databricks/tree/master/notebooks/Users/denny%40databricks.com/azure-databricks).

@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a66fa70f6f5615257554e98e40e605d6a7e981fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d415686e4d8a10043df59aa6bf58a5ed4be0149
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508974"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154027"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Az OAuth 2.0 implicit folyamat használata az Azure Active Directory B2C egyoldalas bejelentkezés
 
-Számos modern alkalmazás egylapos alkalmazás előtérrendszerét elsősorban javascriptben írt rendelkezik. Gyakran előfordul az alkalmazás-keretrendszert, például az AngularJS, az Ember.js vagy a Durandal használatával írt. Egyoldalas alkalmazások és más elsősorban a böngészőben futó JavaScript-alapú alkalmazások rendelkeznek a hitelesítés további áttekinthet néhány problémát:
+Számos modern alkalmazás egylapos alkalmazás előtérrendszerét elsősorban javascriptben írt rendelkezik. Az alkalmazás gyakran, például a React, az Angular és az oldalon a Vue.js keretrendszer használatával írt. Egyoldalas alkalmazások és más elsősorban a böngészőben futó JavaScript-alapú alkalmazások rendelkeznek a hitelesítés további áttekinthet néhány problémát:
 
 - Az ezeknek az alkalmazásoknak biztonsági jellemzőkkel eltérnek a hagyományos server-alapú webes alkalmazásokat.
 - Számos engedélyezési kiszolgálók és identitás-szolgáltatóktól nem támogatja az eltérő eredetű erőforrások megosztása (CORS) kéréseket.
@@ -79,7 +79,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_edit_profile
 ```
 
-| Paraméter | Szükséges | Leírás |
+| Paraméter | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | client_id | Igen | Az alkalmazás AZONOSÍTÓJÁT, amely a [az Azure portal](https://portal.azure.com/) az alkalmazáshoz hozzárendelt. |
 | response_type | Igen | Tartalmaznia kell `id_token` OpenID Connect bejelentkezhet. Válasz típusa is tartalmazhat `token`. Ha `token`, az alkalmazás azonnal fogadhatnak egy hozzáférési jogkivonatot a hitelesítési végpontra, anélkül, hogy a második kérés a hitelesítési végpontra.  Ha használja a `token` válasz típusát, a `scope` paraméternek tartalmaznia kell egy hatókör, amely azt jelzi, hogy melyik erőforrást kell kiállítani token. |
@@ -194,15 +194,15 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | Paraméter | Kötelező? | Leírás |
 | --- | --- | --- |
 | client_id |Kötelező |Az Alkalmazásazonosítót az alkalmazáshoz a hozzárendelt a [az Azure portal](https://portal.azure.com). |
-| response_type |Szükséges |Tartalmaznia kell `id_token` OpenID Connect bejelentkezhet.  Válasz típusa emellett tartalmazhat `token`. Ha `token` itt, az alkalmazás azonnal fogadhatnak egy hozzáférési jogkivonatot a hitelesítési végpontra, anélkül, hogy a második kérés a hitelesítési végpontra. Ha használja a `token` válasz típusát, a `scope` paraméternek tartalmaznia kell egy hatókör, amely azt jelzi, hogy melyik erőforrást kell kiállítani token. |
+| response_type |Kötelező |Tartalmaznia kell `id_token` OpenID Connect bejelentkezhet.  Válasz típusa emellett tartalmazhat `token`. Ha `token` itt, az alkalmazás azonnal fogadhatnak egy hozzáférési jogkivonatot a hitelesítési végpontra, anélkül, hogy a második kérés a hitelesítési végpontra. Ha használja a `token` válasz típusát, a `scope` paraméternek tartalmaznia kell egy hatókör, amely azt jelzi, hogy melyik erőforrást kell kiállítani token. |
 | redirect_uri |Ajánlott |Az átirányítási URI-ját az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszokat. Ez pontosan egyeznie kell az átirányítási URI-k a portál regisztrált egyik azzal a különbséggel, hogy az URL-kódolású kell lennie. |
-| scope |Szükséges |Hatókörök szóközzel elválasztott listáját.  Jogkivonatok lekérésének lépéseiről, tartalmazzák, amelyekre szüksége van az importálni kívánt erőforrás minden hatókör. |
+| scope |Kötelező |Hatókörök szóközzel elválasztott listáját.  Jogkivonatok lekérésének lépéseiről, tartalmazzák, amelyekre szüksége van az importálni kívánt erőforrás minden hatókör. |
 | response_mode |Ajánlott |Megadja a módszert, amellyel a létrejövő jogkivonat vissza küldése az alkalmazásnak.  Lehet `query`, `form_post`, vagy `fragment`. |
 | state |Ajánlott |A kérésben a token válaszban visszaadott érték.  Bármilyen tartalmat, amelyet használni szeretne, karakterlánc lehet.  Általában egy véletlenszerűen létrehozott, egyedi érték szolgál, webhelyközi kérések hamisításának megakadályozása támadások megelőzése érdekében.  Az állapot is szolgál az alkalmazás a felhasználói állapot információt kódolása előtt a hitelesítési kérelmet. Például a lapot vagy nézet a felhasználó nem található. |
-| nonce |Szükséges |A kérésben, az eredményül kapott azonosító jogkivonat jogcímként megtalálható az alkalmazás által generált érték.  Az alkalmazás ezután ellenőrizheti ezt az értéket ismétlésének támadások számának csökkentése érdekében. Általában érték, amely azonosítja a kérés eredetének véletlenszerű, egyedi karakterlánc. |
-| parancssor |Szükséges |Frissítés és a egy rejtett IFrame-keretben tokenekhez használja `prompt=none` biztosíthatja, hogy az iframe nem elakadnak a bejelentkezési oldalon, és azonnal visszatér. |
+| nonce |Kötelező |A kérésben, az eredményül kapott azonosító jogkivonat jogcímként megtalálható az alkalmazás által generált érték.  Az alkalmazás ezután ellenőrizheti ezt az értéket ismétlésének támadások számának csökkentése érdekében. Általában érték, amely azonosítja a kérés eredetének véletlenszerű, egyedi karakterlánc. |
+| parancssor |Kötelező |Frissítés és a egy rejtett IFrame-keretben tokenekhez használja `prompt=none` biztosíthatja, hogy az iframe nem elakadnak a bejelentkezési oldalon, és azonnal visszatér. |
 | login_hint |Kötelező |Frissülnek, és a egy rejtett IFrame-keretben tokenekhez, vegye fel annak a felhasználónak a felhasználóneve több munkamenet a felhasználó egy adott időben lehet megkülönböztetni a mutatót. Kibonthatja a felhasználónevet, egy korábbi bejelentkezési használatával a `preferred_username` jogcím. |
-| domain_hint |Szükséges |A következők egyike lehet: `consumers` vagy `organizations`.  Az frissítése és a egy rejtett IFrame-keretben jogkivonatok lekérésének lépéseiről, tartalmazza a `domain_hint` értékével a kérés.  Bontsa ki a `tid` jogcím egy korábbi bejelentkezési azonosító jogkivonata melyik használandó érték meghatározásához.  Ha a `tid` jogcím értéke `9188040d-6c67-4c5b-b112-36a304b66dad`, használjon `domain_hint=consumers`.  Ellenkező esetben használjon `domain_hint=organizations`. |
+| domain_hint |Kötelező |A következők egyike lehet: `consumers` vagy `organizations`.  Az frissítése és a egy rejtett IFrame-keretben jogkivonatok lekérésének lépéseiről, tartalmazza a `domain_hint` értékével a kérés.  Bontsa ki a `tid` jogcím egy korábbi bejelentkezési azonosító jogkivonata melyik használandó érték meghatározásához.  Ha a `tid` jogcím értéke `9188040d-6c67-4c5b-b112-36a304b66dad`, használjon `domain_hint=consumers`.  Ellenkező esetben használjon `domain_hint=organizations`. |
 
 Beállításával a `prompt=none` paramétert, a kérelem vagy sikeres vagy azonnal meghiúsul, és visszaadja az alkalmazásnak.  Sikeres válasz érkezik az alkalmazást a jelzett átirányítási URI-t, a megadott módszer használatával a `response_mode` paraméter.
 
@@ -258,7 +258,7 @@ p=b2c_1_sign_in
 
 | Paraméter | Kötelező? | Leírás |
 | --- | --- | --- |
-| p |Szükséges |A szabályzat használatával jelentkezzen ki az alkalmazás a felhasználó. |
+| p |Kötelező |A szabályzat használatával jelentkezzen ki az alkalmazás a felhasználó. |
 | post_logout_redirect_uri |Ajánlott |Az URL-cím, amely a felhasználó után a rendszer átirányítja a sikeres kijelentkezést. Ha ez a lehetőség nem része, Azure AD B2C egy általános üzenet megjelenítése a felhasználónak. |
 
 > [!NOTE]

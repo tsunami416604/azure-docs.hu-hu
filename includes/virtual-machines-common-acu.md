@@ -9,11 +9,11 @@ ms.date: 12/21/2018
 ms.author: cynthn;davberg
 ms.custom: include file
 ms.openlocfilehash: ca0c45b5d74140e0398595070df71da669caab53
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160082"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179118"
 ---
 Az Azure számítási egységek (ACU) fogalmát biztosítja az Azure-termékváltozatok számítási (CPU) teljesítmény összehasonlítása. Így könnyebben választhatja ki a teljesítményigényeinek leginkább megfelelő termékváltozatot.  Az ACU jelenlegi standard alapjaként a Kisméretű (Standard_A1) virtuális gép 100-as értéket képvisel, és a többi termékváltozat értéke ehhez képest jelöli, hogy mennyivel gyorsabban futtatja az adott termékváltozat a standard teljesítménytesztet. 
 
@@ -24,7 +24,7 @@ Az Azure számítási egységek (ACU) fogalmát biztosítja az Azure-termékvál
 
 <br>
 
-| Termékváltozat-család | ACU \ vCPU | vCPU: Mag |
+| Termékváltozat-család | ACU \ vCPU | vCPU: Core |
 | --- | --- |---|
 | [A0](../articles/virtual-machines/windows/sizes-general.md) |50 | 1:1 |
 | [A1 - A4](../articles/virtual-machines/windows/sizes-general.md) |100 | 1:1 |

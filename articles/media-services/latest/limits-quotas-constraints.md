@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: juliako
-ms.openlocfilehash: 1aa15a42893d867ae18c267e163e8df94af50723
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 709ed293dbb0550dc1bb43bf1e1e1cc50906cc31
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824459"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67293445"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Kvóták és korlátozások az Azure Media Services v3
 
@@ -44,6 +44,7 @@ Ez a cikk azt ismerteti, kvóták és korlátozások az Azure Media Services v3.
 | A Media Services-fiókonként átalakítások | 100 (fix)|
 | Egy eszköz egyszerre társított egyedi Streamelési Lokátorok | 100<sup>(6)</sup> (fix) |
 | Tartalmi kulcs szabályzatonként beállításai |30 | 
+| A Media Services DRM típusuk havi licencek kulcs kézbesítési szolgáltatás fiókonként|1,000,000|
 
 <sup>1</sup> egy blob jelenleg legfeljebb 5 TB-os Azure Blob Storage-ban támogatott maximális méretét. További korlátozások érvényesek a Media Services a szolgáltatás által használt Virtuálisgép-méretek alapján. A méretkorlát a feltöltött fájlokat, és a fájlokat, a Media Services – feldolgozás (kódolás és elemzése) eredményeként létrehozott első vonatkozik. Ha a forrásfájl 260-GB nál nagyobb, a feladat valószínűleg sikertelen lesz. 
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 720288aff462b0590bb9da509096a9305b9b6cc7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66171872"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179154"
 ---
 #### <a name="to-install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>Storsimple-höz készült Windows Powershellen keresztül a karbantartási módú frissítések telepítése
 1. Ha még nem tette meg, az eszköz soros konzoljához és select 1. lehetőség – hozzáféréshez **jelentkezzen be a teljes hozzáféréssel**. 

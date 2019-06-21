@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: Ismerteti a folyamatok, a power Azure fejlesztési területek, és azok miként vannak konfigurálva a azds.yaml konfigurációs fájlban
 keywords: azds.yaml, az Azure fejlesztési tárolóhelyek, fejlesztői, szóközök, Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók
-ms.openlocfilehash: e437a53d640bbdad3cdeeba8fd73e1f9ffef4023
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 083ed45a8fa95ac5fc26af6547b5765acf80e43b
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399831"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154548"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Hogyan Azure fejlesztési tárolóhelyek működik, és van konfigurálva
 
@@ -210,7 +210,7 @@ A `up` parancs feltölti az alkalmazás forrásfájljait és más összetevőket
 1. Az alkalmazás a tárolót hoz létre.
 1. Telepíti az alkalmazást a fejlesztési területet.
 1. Létrehoz egy nyilvánosan elérhető-e DNS-nevet az alkalmazás-végpont, ha konfigurálva.
-1. Használja a *port-továbbító* biztosíthat hozzáférést az alkalmazás-végpontot a http://locahost.
+1. Használja a *port-továbbító* biztosíthat hozzáférést az alkalmazás-végpontot a http://localhost.
 1. Az stdout és stderr, az ügyféloldali eszközök továbbítja.
 
 

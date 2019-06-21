@@ -6,17 +6,17 @@ services: time-series-insights
 author: ashannon7
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: jasonh, kfile, anshan
+ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 62c3b35f80300a38213b089567c3f63a8a2ce8db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: ab80279fae9dacdf7462b6c9d8208e0a56ca0877
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235057"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164978"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>A Time Series Insights-környezethez az Azure portal használatával egy referencia-adatkészlet létrehozása
 
@@ -36,7 +36,7 @@ Referenciaadatok visszamenőlegesen nem csatlakozik tartományhoz. Így csak a j
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Keresse meg a meglévő Time Series Insights-környezetbe. Kattintson a **összes erőforrás** az Azure portal bal oldali menüben. Válassza ki az Azure Time Series Insights-környezetet.
+1. Keresse meg a meglévő Time Series Insights-környezetbe. Válassza ki **összes erőforrás** az Azure portal bal oldali menüben. Válassza ki az Azure Time Series Insights-környezetet.
 
 1. Válassza ki a **áttekintése** lapot. Keresse meg a **Time Series Insights explorer URL-cím** és a hivatkozás megnyitásához.  
 
@@ -76,7 +76,7 @@ Referenciaadatok visszamenőlegesen nem csatlakozik tartományhoz. Így csak a j
 
 1. Nevezze át az oszlopfejléceket, ha szükséges. Az elsődlegeskulcs-oszlop neve szükség a megfelelő tulajdonság az eseményforrás csatlakoztatása. Győződjön meg arról, hogy a hivatkozás az elsődlegeskulcs-oszlop nevének annak pontosan egyeznie az esemény nevét, a bejövő adatokat, beleértve a kisbetű/nagybetű megkülönböztetése. Nem kulcs oszlop nevét használják, mivel megvédi a bejövő adatok a megfelelő hivatkozás adatok értékekkel.
 
-1. Kattintson a **adjon hozzá egy sort** vagy **oszlop hozzáadása** hozzáadása további referencia adatértékek, igény szerint.
+1. Válassza ki **adjon hozzá egy sort** vagy **oszlop hozzáadása** hozzáadása további referencia adatértékek, igény szerint.
 
 1. Adjon meg egy értéket a **a sorok szűrése...**  mezőt, tekintse át az adott sorokat, igény szerint. A szűrő hasznos, tekintse át az adatokat, de a rendszer nem alkalmazza az adatok feltöltése közben.
 

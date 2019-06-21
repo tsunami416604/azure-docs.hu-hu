@@ -1,6 +1,6 @@
 ---
-title: Windows-számítógépek csatlakoztatása az Azure Log Analytics |} A Microsoft Docs
-description: Ez a cikk ismerteti, hogyan csatlakozhat az egyéb felhőkben vagy a helyszínen a Log Analytics-a Microsoft Monitoring Agent (MMA) üzemeltetett Windows-számítógépek.
+title: Windows-számítógépek csatlakoztatása az Azure Monitor |} A Microsoft Docs
+description: Ez a cikk ismerteti a Windows a Log Analytics-ügynököt egy másik felhőben vagy helyszíni az Azure Monitor üzemeltetett Windows-számítógépek csatlakoztatásához.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 06/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 2d57e619ec17e183bc8c9bb155f3e111f43b85f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 7f562959ac6022539ccf7137f352a2e9507758dc
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952488"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67146354"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows-számítógépek csatlakoztatása az Azure Monitor
 
@@ -110,14 +110,16 @@ Az alábbi táblázat az ügynök, beleértve az Automation DSC használatával 
 2. Csendes telepítse az ügynököt, és konfigurálja azt, hogy az Azure kereskedelmi felhőben munkaterület mappájában kibontotta a telepítési fájlokat, írja be: 
    
      ```dos
-    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=0 OPINSIGHTS_WORKSPACE_ID=<your workspace ID> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
+    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=0 OPINSIGHTS_WORKSPACE_ID="<your workspace ID>" OPINSIGHTS_WORKSPACE_KEY="<your workspace key>" AcceptEndUserLicenseAgreement=1
     ```
 
    vagy az ügynök számára, hogy az Azure US Government felhő konfigurálásához írja be: 
 
      ```dos
-    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1 OPINSIGHTS_WORKSPACE_ID=<your workspace ID> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
+    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1 OPINSIGHTS_WORKSPACE_ID="<your workspace ID>" OPINSIGHTS_WORKSPACE_KEY="<your workspace key>" AcceptEndUserLicenseAgreement=1
     ```
+    >[!NOTE]
+    >A karakterlánc-értékeket a paraméterekhez *OPINSIGHTS_WORKSPACE_ID* és *OPINSIGHTS_WORKSPACE_KEY* kell lennie áll idézőjelek arra utasítani a Windows Installer interprit, mint az érvényes beállítások a csomag. 
 
 ## <a name="install-the-agent-using-dsc-in-azure-automation"></a>Ügynök telepítése az Azure Automation DSC használatával
 
@@ -202,4 +204,6 @@ Szívverés rekordok a számítógép csatlakoztatva van megjelölve, és a Serv
 
 ## <a name="next-steps"></a>További lépések
 
-Felülvizsgálat [kezelése és fenntartása a Log Analytics-ügynököket Windows és Linux rendszerhez készült](agent-manage.md) hogyan kezelheti az ügynököt a gépeken a központi telepítés életciklusa alatt.  
+- Felülvizsgálat [kezelése és fenntartása a Log Analytics-ügynököket Windows és Linux rendszerhez készült](agent-manage.md) hogyan kezelheti az ügynököt a gépeken a központi telepítés életciklusa alatt.  
+
+- Felülvizsgálat [hibaelhárítása a Windows-ügynök](agent-windows-troubleshoot.md) Ha problémák merülnek fel telepítése vagy az ügynök kezelése során.

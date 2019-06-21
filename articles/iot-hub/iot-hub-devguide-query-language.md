@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: rezas
-ms.openlocfilehash: e5387f1e44a55b0a30f8620b49d237ac1e1ec2b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 4fbb731d9908e791a6fce2b087d9b734b98a25cb
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61442137"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137732"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub lekérdezési nyelv az eszköz és a modul twins, feladatokkal és üzenet-útválasztása
 
-IoT Hub által biztosított információk lekéréséhez hatékony SQL-szerű nyelv kapcsolatos [ikereszközök](iot-hub-devguide-device-twins.md) és [feladatok](iot-hub-devguide-jobs.md), és [üzenet-útválasztása](iot-hub-devguide-messages-d2c.md). Ez a cikk bemutatja:
+IoT Hub által biztosított információk lekéréséhez hatékony SQL-szerű nyelv kapcsolatos [ikereszközök](iot-hub-devguide-device-twins.md), [ikermodulokkal](iot-hub-devguide-module-twins.md), [feladatok](iot-hub-devguide-jobs.md), és [üzenet-útválasztása](iot-hub-devguide-messages-d2c.md). Ez a cikk bemutatja:
 
 * Az IoT Hub lekérdezési nyelv, a fő funkciókat bemutató és
 * A nyelv részletes leírása. További információ a lekérdezési nyelv az üzenet-útválasztása: [lekérdezések az üzenet-útválasztása](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
@@ -25,7 +25,7 @@ IoT Hub által biztosított információk lekéréséhez hatékony SQL-szerű ny
 
 ## <a name="device-and-module-twin-queries"></a>Eszköz- és modul ikereszköz-lekérdezések
 
-[Ikereszközök](iot-hub-devguide-device-twins.md) és ikermodulokkal tetszőleges JSON-objektumok címkék és tulajdonságok is tartalmazhat. Az IoT Hub lehetővé teszi lekérdezések ikereszközök és ikermodulokkal JSON-dokumentumként egyetlen összes ikereszköz-adatokat tartalmazó.
+[Ikereszközök](iot-hub-devguide-device-twins.md) és [ikermodulokkal](iot-hub-devguide-module-twins.md) címkék és tulajdonságok is tetszőleges JSON-objektumokkal is tartalmazhat. Az IoT Hub lehetővé teszi lekérdezések ikereszközök és ikermodulokkal JSON-dokumentumként egyetlen összes ikereszköz-adatokat tartalmazó.
 
 Tegyük fel például, hogy az IoT hub device twins az alábbi struktúrával rendelkeznek (ikermodul lenne ehhez hasonló csak, egy további moduleId):
 
@@ -159,7 +159,7 @@ SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 
 ### <a name="module-twin-queries"></a>A modul ikereszköz-lekérdezések
 
-Az ikereszközök lekérdezések lekérdezése az ikermodulokkal hasonlít, de egy másik gyűjtemény/névteret, azaz "az eszközök" helyett használatával lekérdezheti device.modules:
+Az ikereszközök lekérdezése, de egy másik gyűjtemény/névtér; használatával hasonlít az ikermodulokkal lekérdezése helyett a **eszközök**, lekérdezheti, ha a **devices.modules**:
 
 ```sql
 SELECT * FROM devices.modules
@@ -315,7 +315,7 @@ Jelenleg a lekérdezések **devices.jobs** nem támogatják:
 
 ## <a name="basics-of-an-iot-hub-query"></a>Az IoT Hub lekérdezési alapjai
 
-Minden IoT Hub lekérdezési válassza ki és záradékok esetén nem kötelező hol és a GROUP BY záradékot tartalmaz. Minden lekérdezés fut, a JSON-dokumentumok, például az ikereszközök gyűjteménye. A FROM záradék azt jelzi, hogy a dokumentum egy dokumentumgyűjteményben, meg kell iterálni (**eszközök** vagy **devices.jobs**). Ezt követően a WHERE záradékban a szűrő alkalmazása. Az összesítéseket, az eredményeket az ebben a lépésben csoportosítva vannak benne a GROUP BY záradékban megadott. Minden csoport jön létre egy sort a SELECT záradékban megadott.
+Minden IoT Hub lekérdezési válassza ki és záradékok esetén nem kötelező hol és a GROUP BY záradékot tartalmaz. Minden lekérdezés fut, a JSON-dokumentumok, például az ikereszközök gyűjteménye. A FROM záradék azt jelzi, hogy a dokumentum egy dokumentumgyűjteményben, meg kell iterálni (**eszközök**, **devices.modules**, vagy **devices.jobs**). Ezt követően a WHERE záradékban a szűrő alkalmazása. Az összesítéseket, az eredményeket az ebben a lépésben csoportosítva vannak benne a GROUP BY záradékban megadott. Minden csoport jön létre egy sort a SELECT záradékban megadott.
 
 ```sql
 SELECT <select_list>
@@ -326,7 +326,7 @@ SELECT <select_list>
 
 ## <a name="from-clause"></a>FROM záradékban
 
-A **< from_specification > a** záradék feltételezheti, hogy csak két értéket: **ESZKÖZÖKRŐL** a lekérdezés ikereszközök, vagy **a devices.jobs** lekérdezés feladat eszközönkénti részletek.
+A **< from_specification > a** záradék feltételezheti, hogy csak három értékeket: **ESZKÖZÖKRŐL** lekérdezés ikereszközök, hogy **devices.modules a** a lekérdezés ikermodulokkal, vagy **devices.jobs a** lekérdezés feladat eszközönkénti részletek.
 
 
 ## <a name="where-clause"></a>WHERE záradék

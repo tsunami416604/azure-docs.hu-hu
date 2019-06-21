@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: beece95164f0d82b1aa7f22d56f4dce02f4bb38c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66117263"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179133"
 ---
 Az Azure parancssori felület lehetővé teszi, hogy hozhat létre, és a macOS, Linux és Windows Azure-erőforrások kezeléséhez. Ez a cikk részletesen hozhat létre és kezelhet virtuális gépeket (VM) leggyakoribb parancsai közül néhányat.
 

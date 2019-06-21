@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 8c577db3e9f2bff9e86c3a7c37274630f90dd680
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66114674"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179323"
 ---
 A storage emulator egy olyan rögzített fiók és a egy jól ismert hitelesítési kulcs megosztott kulcsos hitelesítést támogatja. A fiók és a kulcsot olyan engedélyezett, a storage emulator való használatra csak megosztott kulcsos hitelesítő adatait. Ezek a következők:
 

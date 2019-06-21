@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 06/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: 357435b8a4ac396c1548c89206f269730e871f6b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce4a57b8c266fe474fc2e6dd8f811fc7440e7ac6
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65204492"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190443"
 ---
 # <a name="connect-data-from-azure-active-directory"></a>Adatok csatlakoztatása az Azure Active Directoryból
 
@@ -34,6 +34,8 @@ Azure Sentinel lehetővé teszi az adatok gyűjtéséhez [Azure Active Directory
 - Ha azt szeretné, bejelentkezési adatokat exportálhat az Active Directory, az Azure AD P1 vagy P2 licenccel kell rendelkeznie.
 
 - A felhasználó globális rendszergazdai vagy biztonsági rendszergazdai jogosultságokkal rendelkezik, az adatfolyam a naplók a kívánt bérlő.
+
+- Hogy a kapcsolat állapota, diagnosztikai naplók az Azure AD hozzáférési engedélyt kell. 
 
 
 ## <a name="connect-to-azure-ad"></a>Csatlakozás az Azure AD szolgáltatáshoz

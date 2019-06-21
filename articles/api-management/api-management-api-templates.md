@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: a78c03537d7fb3db6afa0c4a4e84c4746146ca85
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 82c180d869801cd9cd91a3e2a3659644f4e263d9
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60657830"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273322"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Az Azure API Management API-sablonok
 
@@ -44,7 +44,7 @@ Ebben a szakaszban a sablonok lehetővé teszik az API a fejlesztői portál old
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="APIList"></a> API-k listájából  
+## <a name="APIList"></a> API-k listájából  
  A **API-k listájából** a sablon lehetővé teszi, hogy a szervezet az API listában oldal a fejlesztői portál testreszabása.  
   
  ![Fejlesztői portál API-k listájából](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM fejlesztői portál sablonjainak API-k listájából")  
@@ -112,7 +112,7 @@ Ebben a szakaszban a sablonok lehetővé teszik az API a fejlesztői portál old
 }  
 ```  
   
-##  <a name="Product"></a> A művelet  
+## <a name="Product"></a> A művelet  
  A **művelet** a sablon lehetővé teszi, hogy a szervezet a műveletet a fejlesztői portál oldalának testreszabásához.  
   
  ![Fejlesztői portál művelet lap](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APIM fejlesztői portál sablonok művelet lap")  
@@ -642,7 +642,7 @@ Ebben a szakaszban a sablonok lehetővé teszik az API a fejlesztői portál old
 }  
 ```  
   
-##  <a name="CodeSamples"></a> Kódminták  
+## <a name="CodeSamples"></a> Kódminták  
  Az alábbi sablonok lehetővé teszik a szervezet az egyes kódmintát a művelet lapon szabhatja testre.  
   
  ![Fejlesztői portál sablonok Kódminták](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "APIM fejlesztői portál sablonok Kódminták")  
@@ -663,7 +663,7 @@ Ebben a szakaszban a sablonok lehetővé teszik az API a fejlesztői portál old
   
 -   [Ruby](#Ruby)  
   
-###  <a name="Curl"></a> A curl  
+### <a name="Curl"></a> A curl  
  A **DocumentationSamplesCurl** a sablon lehetővé teszi, hogy testre szabhatja a kódminta található, a művelet lapon kód minták szakaszában.  
   
 #### <a name="default-template"></a>Alapértelmezett sablon  
@@ -716,12 +716,12 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 }  
 ```  
   
-###  <a name="CSharp"></a> C#  
+### <a name="CSharp"></a> C#  
  A **DocumentationSamplesCsharp** a sablon lehetővé teszi, hogy testre szabhatja a kódminta található, a művelet lapon kód minták szakaszában.  
   
 #### <a name="default-template"></a>Alapértelmezett sablon  
   
-```xml  
+```csharp  
 using System;  
 using System.Net.Http.Headers;  
 using System.Text;  
@@ -895,12 +895,12 @@ namespace CSHttpClientSample
 }  
 ```  
   
-###  <a name="Stub"></a> Java  
+### <a name="Stub"></a> Java  
  A **DocumentationSamplesJava** a sablon lehetővé teszi, hogy testre szabhatja a kódminta található, a művelet lapon kód minták szakaszában.  
   
 #### <a name="default-template"></a>Alapértelmezett sablon  
   
-```xml  
+```java  
 // // This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
 import java.net.URI;  
 import org.apache.http.HttpEntity;  
@@ -991,12 +991,12 @@ public class JavaSample
 }  
 ```  
   
-###  <a name="JavaScript"></a> A JavaScript  
+### <a name="JavaScript"></a> A JavaScript  
  A **DocumentationSamplesJs** a sablon lehetővé teszi, hogy testre szabhatja a kódminta található, a művelet lapon kód minták szakaszában.  
   
 #### <a name="default-template"></a>Alapértelmezett sablon  
   
-```xml  
+```html  
 <!DOCTYPE html>  
 <html>  
 <head>  
@@ -1080,12 +1080,12 @@ public class JavaSample
 }  
 ```  
   
-###  <a name="ObjectiveC"></a> Objective C  
+### <a name="ObjectiveC"></a> Objective C  
  A **DocumentationSamplesObjc** a sablon lehetővé teszi, hogy testre szabhatja a kódminta található, a művelet lapon kód minták szakaszában.  
   
 #### <a name="default-template"></a>Alapértelmezett sablon  
   
-```xml  
+```objective-c  
 #import <Foundation/Foundation.h>  
   
 int main(int argc, const char * argv[])  
@@ -1192,12 +1192,12 @@ int main(int argc, const char * argv[])
 }  
 ```  
   
-###  <a name="PHP"></a> PHP  
+### <a name="PHP"></a> PHP  
  A **DocumentationSamplesPhp** a sablon lehetővé teszi, hogy testre szabhatja a kódminta található, a művelet lapon kód minták szakaszában.  
   
 #### <a name="default-template"></a>Alapértelmezett sablon  
   
-```xml  
+```php  
 <?php  
 // This sample uses the HTTP_Request2 PHP library (https://github.com/pear/HTTP_Request2)  
 require_once 'HTTP/Request2.php';  
@@ -1282,12 +1282,12 @@ catch (HttpException $ex)
 }  
 ```  
   
-###  <a name="Python"></a> Python  
+### <a name="Python"></a> Python  
  A **DocumentationSamplesPython** a sablon lehetővé teszi, hogy testre szabhatja a kódminta található, a művelet lapon kód minták szakaszában.  
   
 #### <a name="default-template"></a>Alapértelmezett sablon  
   
-```xml  
+```python  
 ########### Python 2.7 #############  
 import httplib, urllib, base64  
   
@@ -1400,12 +1400,12 @@ except Exception as e:
 }  
 ```  
   
-###  <a name="Ruby"></a> Ruby  
+### <a name="Ruby"></a> Ruby  
  A **DocumentationSamplesRuby** a sablon lehetővé teszi, hogy testre szabhatja a kódminta található, a művelet lapon kód minták szakaszában.  
   
 #### <a name="default-template"></a>Alapértelmezett sablon  
   
-```xml  
+```ruby  
 require 'net/http'  
   
 uri = URI('{{scheme}}://{{host}}{{path}}')  

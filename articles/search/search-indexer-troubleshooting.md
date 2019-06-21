@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: 256a38320c9b3ca826ee9c12ac0a437957f988e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 4ed18b5f83bdb052f2db6847a320c26a8e49f83e
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65539277"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147547"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>Az Azure Search gyakori indexelő hibáinak elhárítása
 
@@ -35,14 +35,11 @@ Az Azure Storage konfigurálható tűzfal biztosít. Alapértelmezés szerint a 
 
 Nem érkezik a nem meghatározott hibaüzenet jelenik meg, ha a tűzfal engedélyezve van. Általában tűzfal hibák kinéznie `The remote server returned an error: (403) Forbidden`.
 
-Ellenőrizheti, hogy a tűzfal engedélyezve van a [portál](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal). Ha a tűzfal engedélyezve van, akkor a probléma megoldásához első két lehetősége van:
+Ellenőrizheti, hogy a tűzfal engedélyezve van a [portál](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal). Az egyetlen támogatott megkerülő megoldás az, hogy a tűzfal engedélyezi a hozzáférést a letiltása ["Minden hálózatból elérhető"](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal).
 
-1. A tűzfal engedélyezi a hozzáférést a letiltása ["Minden hálózatból elérhető"](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal)
-1. [Kivétel hozzáadása](https://docs.microsoft.com/azure/storage/common/storage-network-security#managing-ip-network-rules) a keresési szolgáltatásnak az IP-címhez. Az IP-cím megkereséséhez használja a következő parancsot:
+Ha az indexelő nem rendelkezik egy csatlakoztatott indexmezők, _előfordulhat, hogy_ próbál meg [kivételként hozzáadni](https://docs.microsoft.com/azure/storage/common/storage-network-security#managing-ip-network-rules) a search szolgáltatás az IP-címeit. Azonban ez a forgatókönyv nem támogatott, és működése nem garantált.
 
-`nslookup <service name>.search.windows.net`
-
-Kivételek nem működnek a [cognitive search](cognitive-search-concept-intro.md). Az egyetlen megkerülő megoldás, hogy a tűzfal letiltása.
+A teljes Tartományneve pingelésével talál meg a keresési szolgáltatás IP-címét (`<your-search-service-name>.search.windows.net`).
 
 ### <a name="cosmos-db"></a>Cosmos DB
 

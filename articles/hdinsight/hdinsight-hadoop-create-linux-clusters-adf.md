@@ -1,18 +1,18 @@
 ---
 title: 'Oktatóanyag: Igény szerinti Apache Hadoop-fürtök létrehozása az Azure HDInsight a Data Factory segítségével '
-description: Ismerje meg, hogyan hozhat létre Apache Hadoop-fürtök igény szerinti HDInsight az Azure Data Factory használatával.
+description: Oktatóanyag – ismerje meg, hogyan hozhat létre Apache Hadoop-fürtök igény szerinti HDInsight az Azure Data Factory használatával.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 04/18/2019
-ms.openlocfilehash: 937cb9ba2d9ce63ba36805bc7a946e8ee6e18cf3
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 64f016ac0fa572cb8cf8504902108cffae267cec
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275447"
+ms.locfileid: "67293296"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Oktatóanyag: Az Azure Data Factory használatával HDInsight igény szerinti Apache Hadoop-fürtök létrehozása
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]

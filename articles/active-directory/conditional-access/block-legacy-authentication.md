@@ -2,37 +2,27 @@
 title: Az Azure Active Directory (Azure AD) feltételes hozzáférés az örökölt hitelesítési blokkolása |} A Microsoft Docs
 description: Ismerje meg, hogyan javíthatja biztonsági helyzetét blokkolja az örökölt hitelesítés használata az Azure AD feltételes hozzáférés.
 services: active-directory
-keywords: Feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-ben a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési szabályzatok
-documentationcenter: ''
+ms.service: active-directory
+ms.subservice: conditional-access
+ms.topic: conceptual
+ms.date: 06/17/2019
+ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-editor: ''
-ms.subservice: conditional-access
-ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
-ms.service: active-directory
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 03/25/2019
-ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a638b501ea04db787ca366aa015850d94eb475ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9b2120466652db363206ec20c2303ad56670228c
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112707"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164801"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Útmutató: Örökölt hitelesítés letiltása az Azure AD feltételes hozzáférés   
 
 A felhasználók egyszerűen hozzáférhetnek számára a felhőalapú alkalmazások, Azure Active Directory (Azure AD) széles hitelesítési protokollok, beleértve az örökölt hitelesítési támogatja. Azonban régebbi protokollokra nem támogatják a többtényezős hitelesítés (MFA). MFA sok környezetben a közös követelmény, hogy a cím adatokkal való visszaélés. 
 
-
 A környezet örökölt hitelesítés letiltása a bérlő védelmi javítása érdekében készen áll, a cél végezheti el a feltételes hozzáférés. Ez a cikk azt ismerteti, hogy hogyan konfigurálhat feltételes hozzáférési szabályzatokat, amelyek a bérlő számára az örökölt hitelesítés letiltása.
-
-
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,8 +30,6 @@ Ez a cikk azt feltételezi, hogy Ön ismeri a:
 
 - A [alapvető fogalmait](overview.md) Azure AD feltételes hozzáférés 
 - A [ajánlott eljárások](best-practices.md) a feltételes hozzáférési szabályzatok konfigurálása az Azure Portalon
-
-
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -57,12 +45,21 @@ Hogyan megakadályozhatja az elérését a bérlői erőforrásokhoz örökölt 
 
 Feltételes hozzáférési szabályzatai érvényben vannak, az első többtényezős hitelesítés befejezése után. Ezért a feltételes hozzáférés nem célja az első sor védelmi például-szolgáltatásmegtagadásos (DDoS-) támadások, de használhat fel ezeket az eseményeket (például a bejelentkezési kockázati szintet, helyét a kérelmet, és így tovább) érkező általi hozzáférés megállapításához.
 
-
-
-
 ## <a name="implementation"></a>Megvalósítás
 
 Ez a szakasz ismerteti az örökölt hitelesítés letiltása feltételes hozzáférési szabályzat konfigurálása. 
+
+### <a name="identify-legacy-authentication-use"></a>Azonosítsa az örökölt hitelesítés használata
+
+Örökölt hitelesítési letilthatja a címtárban, meg kell hogy először tájékozódjon, ha a felhasználók rendelkeznek-e az örökölt hitelesítési és milyen hatással van a teljes címtár használó alkalmazások. Az Azure AD bejelentkezési naplók segítségével megismerheti, hogy használ-e el az örökölt hitelesítés.
+
+1. Keresse meg a **az Azure portal** > **Azure Active Directory** > **bejelentkezések**.
+1. Az ügyfélalkalmazás oszlop hozzáadását, ha nem látható kattintva **oszlopok** > **ügyfélalkalmazás**.
+1. Szűrés **ügyfélalkalmazás** > **egyéb ügyfelek** kattintson **alkalmaz**.
+
+Szűrés lesz show jelentkezik be, amely megpróbálja csak az örökölt hitelesítési protokollok által indított. Minden egyes bejelentkezési kísérlet kattintva megtudhatja, további részleteket. A **ügyfélalkalmazás** eleménél a **alapszintű adatainak** lapon használt örökölt hitelesítési protokollt jelzi.
+
+Ezek a naplók fogja jelezni, mely felhasználók továbbra is a régi authentication attól függően, és hogy mely alkalmazások örökölt protokoll használata hitelesítési kérelmeket. A felhasználók számára, hogy ezek a naplók nem jelennek meg, és nem használják az örökölt hitelesítési megerősítik ezek a felhasználók csak a feltételes hozzáférési szabályzat megvalósítása.
 
 ### <a name="block-legacy-authentication"></a>Régi hitelesítési folyamat letiltása 
 

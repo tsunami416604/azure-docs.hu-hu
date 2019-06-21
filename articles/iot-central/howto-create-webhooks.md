@@ -3,17 +3,17 @@ title: Hozzon létre a webhookok a szabályok az Azure IoT Central |} A Microsof
 description: Webhookok létrehozása az Azure IoT Central más alkalmazások automatikusan értesíti, amikor szabályok aktiválódik.
 author: viv-liu
 ms.author: viviali
-ms.date: 02/20/2019
+ms.date: 06/16/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 22167de6676837c45c48a0bafd19b1ba69578827
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fdeefdc1ec5372d6ac17f0f985ee0c50ce902e56
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60888329"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165325"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Webhook-műveletek létrehozása az Azure IoT Central szabályai
 

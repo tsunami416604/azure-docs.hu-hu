@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 06/13/2019
+ms.date: 06/14/2019
 ms.author: shvija
-ms.openlocfilehash: c020a7673fe018565a6f1aeb9f7cb2124024a2c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 007e016672f8548956b37b961805183a504d6bf0
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67118865"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154085"
 ---
 # <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>Gyors útmutató: Eseményközpont létrehozása Azure Resource Manager-sablon használatával
 
@@ -83,7 +83,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben egy Event Hubs-névteret hozott létre, és mintaalkalmazások használatával eseményeket küldött az eseményközpontba, illetve fogadott onnan. Események küldése (vagy) események fogadása az event hubs részletes utasításokért lásd: a **események küldéséhez és fogadásához** oktatóanyagok:
+Ebben a cikkben létrehozott Event Hubs-névtér és eseményközpont névtér. Események küldése (vagy) események fogadása az event hubs részletes utasításokért lásd: a **események küldéséhez és fogadásához** oktatóanyagok:
 
 - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
 - [.NET-keretrendszer](event-hubs-dotnet-framework-getstarted-send.md)

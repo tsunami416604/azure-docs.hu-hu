@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
 ms.openlocfilehash: a5dfecd1dd004486a119122192eecac3e03fba80
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60478276"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "64701137"
 ---
 # <a name="azure-security-videos-on-channel-9"></a>Az Azure-biztonsággal kapcsolatos videók a Channel 9-on
 [A Channel 9](https://channel9.msdn.com/) egy Közösség, amely előre számos lehetőséget kínál a személyek termékeink mögött, és csatlakoztatja őket az ügyfelekkel.

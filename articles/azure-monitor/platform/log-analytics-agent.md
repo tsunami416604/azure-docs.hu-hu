@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/06/2019
+ms.date: 06/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 436685f3bba58ed7d06dfe834d808e7fe422176b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 081d65f60eab4e2412a5dd14c3a63a18598e3b8a
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66751980"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67146317"
 ---
-# <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Az Azure Log Analytics-ügynököket a naplóadatok gyűjtése
+# <a name="collect-log-data-with-the-log-analytics-agent"></a>A Log Analytics-ügynököket a naplóadatok gyűjtése
 
 Az Azure Log Analytics ügynök, a Microsoft Monitoring Agent (MMA) vagy az OMS Linux-ügynök, mint korábban említett kifejlesztett átfogó felügyeletét nyújtja a helyszíni gépeken által felügyelt számítógépek [System Center Operations Manager ](https://docs.microsoft.com/system-center/scom/), és a virtuális gépek bármilyen felhőben. A Windows és Linux-ügynökök csatolása az Azure Monitor, és a Log Analytics-munkaterületen, valamint bármely egyedi naplók vagy egy figyelési megoldást a metrikák összegyűjtött napló adatok különböző forrásokból származó tárolására. 
 
@@ -34,11 +34,11 @@ Mielőtt elemzése, és az összegyűjtött adatokat működő, meg kell telepí
 
 A Linux és Windows-ügynököt 443-as TCP-porton keresztül kommunikál az Azure Monitor szolgáltatásba kimenő, és ha való kommunikációhoz az interneten keresztül, egy tűzfalon vagy proxykiszolgálón keresztül csatlakozik a gép tudni, hogy a hálózati konfigurációt az alábbi követelmények áttekintése szükséges. Ha az informatikai biztonsági szabályzatok nem engedélyezik a számítógépek a hálózat csatlakozik az internethez, beállíthat egy [Log Analytics-átjáró](gateway.md) , majd konfigurálja az ügynököt, hogy csatlakozzon az Azure Monitor naplóira átjárón keresztül. Az ügynök ezután fogadni a konfigurációs adatokat, és attól függően, hogy milyen adatokat gyűjtött adatok gyűjtési szabályok és figyelési megoldások engedélyezve van a munkaterülethez. 
 
-Ha egy számítógép és a System Center Operations Manager 2012 R2 vagy újabb, az adatok gyűjtéséhez és a szolgáltatás továbbítja, és továbbra is figyeli az Azure Monitor szolgáltatással többhelyű lehet [az Operations Manager](../../azure-monitor/platform/om-agents.md). A Linux rendszerű számítógépek az ügynök nem tartalmaz egy szolgáltatás-összetevő, a Windows-ügynök nem, és információkat gyűjtik, és a egy felügyeleti kiszolgáló nyújtsanak a nevében dolgozza fel. Linux rendszerű számítógépek eltérően figyelt az Operations Managerrel, mert ezek nem fogadni a konfigurációs vagy közvetlenül az adatok gyűjtéséhez, és továbbítja a felügyeleti csoporton keresztül, például egy Windows-ügynök által felügyelt rendszer. Ennek eredményeképpen ebben a forgatókönyvben a Linux rendszerű számítógépek Operations Manager jelentéskészítő nem támogatott.  
+Ha egy számítógép és a System Center Operations Manager 2012 R2 vagy újabb, az adatok gyűjtéséhez és a szolgáltatás továbbítja, és továbbra is figyeli az Azure Monitor szolgáltatással többhelyű lehet [az Operations Manager](../../azure-monitor/platform/om-agents.md). A Linux rendszerű számítógépek az ügynök nem tartalmaz egy szolgáltatás-összetevő, a Windows-ügynök nem, és információkat gyűjtik, és a egy felügyeleti kiszolgáló nyújtsanak a nevében dolgozza fel. Linux rendszerű számítógépek eltérően figyelt az Operations Managerrel, mert ezek nem fogadni a konfigurációs vagy közvetlenül az adatok gyűjtéséhez, és továbbítja a felügyeleti csoporton keresztül, például egy Windows-ügynök által felügyelt rendszer. Ennek eredményeképpen, Linux rendszerű számítógépek Operations Manager jelentéskészítő nem támogatott ebben a forgatókönyvben, és a Linux rendszerű számítógépet, hogy konfigurálnia kell [jelentést tesz az Operations Manager felügyeleti csoport](../platform/agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group) és a egy két Log Analytics-munkaterületen lépéseket.
 
 A Windows-ügynök legfeljebb négy Log Analytics-munkaterületek, jelentheti a közben csak támogatja a Linux-ügynök, egy egyetlen-munkaterületre jelentő.  
 
-A Linux és Windows-ügynököt nem csak az Azure Monitor csatlakozik, akkor is támogatja a hibrid forgatókönyv-feldolgozói szerepkör és más szolgáltatások üzemeltetésére, mint például az Azure Automation [Change Tracking](../../automation/change-tracking.md) és [kezelése](../../automation/automation-update-management.md). A hibrid forgatókönyv-feldolgozói szerepkör kapcsolatos további információkért lásd: [Azure Automation hibrid Runbook-feldolgozó](../../automation/automation-hybrid-runbook-worker.md).  
+A Linux és Windows-ügynököt nem csak az Azure Monitor csatlakozik, akkor is támogatja a hibrid forgatókönyv-feldolgozói szerepkör és más szolgáltatások üzemeltetésére, mint például az Azure Automation [Change Tracking](../../automation/change-tracking.md), [kezelése](../../automation/automation-update-management.md), és [az Azure Security Center](../../security-center/security-center-intro.md). A hibrid forgatókönyv-feldolgozói szerepkör kapcsolatos további információkért lásd: [Azure Automation hibrid Runbook-feldolgozó](../../automation/automation-hybrid-runbook-worker.md).  
 
 ## <a name="supported-windows-operating-systems"></a>A támogatott Windows operációs rendszerek
 A Windows-ügynök hivatalosan támogatott a Windows operációs rendszer következő verziói:
@@ -81,8 +81,8 @@ Az alábbi táblázat a támogatott Linux-disztribúciók, amely az agent telep�
 |Szükséges csomag |Leírás |Minimális verziója |
 |-----------------|------------|----------------|
 |Glibc |    GNU C-kódtár | 2.5-12 
-|openssl    | OpenSSL-függvénytárak | 1.0.x verziót vagy 1.1.x |
-|A curl | a cURL webes ügyféllel | 7.15.5 |
+|Openssl    | OpenSSL-függvénytárak | 1.0.x verziót vagy 1.1.x |
+|Curl | a cURL webes ügyféllel | 7.15.5 |
 |Python-ctypes | | 
 |PAM | Cserélhető hitelesítési modulok | | 
 

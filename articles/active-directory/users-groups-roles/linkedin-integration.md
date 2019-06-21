@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1130885cc3168582935264ffaad9fd7a8ba3c60b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 36ca46d6df9c32f23d3051d1205c3c6b39e69f5a
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64920265"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164713"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>LinkedIn-fiókkapcsolatok az Azure Active Directory integrálása
 
@@ -44,7 +44,7 @@ LinkedIn-fiókkapcsolatok csak a felhasználók számára szeretné engedélyezn
 1. A **LinkedIn-fiókkapcsolatok**, engedélyezése a felhasználók számára, hogy csatlakoztathassák a fiókjukat a LinkedIn kapcsolatok bizonyos Microsoft-alkalmazások eléréséhez. Nincsenek adatok meg van osztva, amíg a felhasználók beleegyezik abba, hogy csatlakoztathassák a fiókjukat.
 
     * Válassza ki **Igen** a szervezet összes felhasználója számára a szolgáltatás engedélyezése
-    * Válassza ki **kijelölt** engedélyezése a kiválasztott felhasználók a szervezet csak egy csoportja
+    * Válassza ki **kiválasztott csoportot** a szolgáltatás csak a kiválasztott felhasználók a szervezet csoport engedélyezése
     * Válassza ki **nem** való Jóváhagyás eltávolítása a szervezet összes felhasználója
 
     ![Integrálása a szervezet LinkedIn-fiókkapcsolatok](./media/linkedin-integration/linkedin-integration.png)

@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 06/14/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a5187ed299f77c11892c6e34c8dfd3f904c7e075
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: b269c75be7fec55fb77afecc6d04b86266c74a6f
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067706"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147303"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Az alkalmazás integrálása az Azure-beli virtuális hálózathoz
 Ez a dokumentum ismerteti az Azure App Service virtuális hálózat integrációja, és hogyan állítható be az Apps a [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Azure virtuális hálózatok] [ VNETOverview] (Vnetek) lehetővé teszi számos, az Azure-erőforrások nem internetes routeable hálózati helyezni.  
@@ -102,6 +102,10 @@ Miután az alkalmazás integrálva van a virtuális hálózat, a azonos van konf
 Az alkalmazás leválasztása a virtuális hálózaton, válassza ki a **Disconnect**. A művelet újraindítja a webalkalmazás. 
 
 Az új VNet-integráció szolgáltatás lehetővé teszi, hogy a Szolgáltatásvégpontok használatát.  Szolgáltatásvégpontok használatára az alkalmazását, segítségével az új VNet-integráció kapcsolódni egy kijelölt virtuális hálózathoz, majd válassza a Szolgáltatásvégpontok az alhálózaton, az integráció során használt. 
+
+#### <a name="web-app-for-containers"></a>Tárolókhoz készült Web App
+
+Ha a beépített rendszerképek használja az App Service Linux rendszeren, a regionális virtuális hálózat integrációja működik, további módosítások nélkül. Web App for Containers használatakor módosítania a docker-rendszerképet VNet-integráció használatához. A docker-rendszerképet használja a PORT környezeti változót, a fő web server figyelőportját, szoftveresen kötött portszámot használata helyett. A PORT környezeti változó értéke automatikusan az App Service platform, a tároló indítási ideje.
 
 ### <a name="how-vnet-integration-works"></a>Hogyan működik a VNet-integráció
 

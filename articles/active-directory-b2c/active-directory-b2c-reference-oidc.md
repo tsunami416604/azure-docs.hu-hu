@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 85639e2648131f9475ad2ae77f31d43e64bf82e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 0c855a3e0280e1fadf2362f2d8959beff2f5d00a
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509206"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67271966"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webalkalmazás-bejelentkezés OpenID-kapcsolattal az Azure Active Directory B2C-vel
 
@@ -152,7 +153,9 @@ Után ellenőrizze, hogy az azonosító jogkivonat, munkamenet megkezdheti a fel
 
 Ha a webes alkalmazás csak a felhasználói folyamatok futtatását, kihagyhatja a következő néhány szakaszban. Ezek a szakaszok csak az alkalmazásokat, amelyek el kell végezni egy webes API-hívások hitelesített, és emellett az Azure AD B2C által védett webes érvényesek.
 
-Az engedélyezési kód beszerzett beválthatja (használatával `response_type=code+id_token`) a kívánt erőforrást küldésével jogkivonat egy `POST` kérelmet a `/token` végpont. Az egyetlen erőforrás, amely egy jogkivonatot kérhet jelenleg az alkalmazás saját webes API-t. Az egyezmény saját magának egy jogkivonatot kér az, hogy használja az alkalmazás ügyfél-azonosító hatóköre:
+Az engedélyezési kód beszerzett beválthatja (használatával `response_type=code+id_token`) a kívánt erőforrást küldésével jogkivonat egy `POST` kérelmet a `/token` végpont. Az Azure AD B2C-ben is [hozzáférési jogkivonatokat kérhetnek más API-k](active-directory-b2c-access-tokens.md#request-a-token) a szokásos módon a kérést a hatókörök megadásával.
+
+Az alkalmazás ügyfél-azonosítója használatával a megadott hatókörben (ami egy hozzáférési jogkivonatot az adott ügyfél-Azonosítóját, a "célközönség" eredményezi), amelyet az alkalmazás saját háttér-webes API-hoz is kérhet egy hozzáférési jogkivonatot:
 
 ```
 POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
@@ -229,7 +232,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&client_secret=<your-application-secret>
 ```
 
-| Paraméter | Szükséges | Leírás |
+| Paraméter | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | p | Igen | A felhasználói folyamatot, amely az eredeti frissítési jogkivonat beszerzéséhez használt. A kérelem nem használhat egy másik felhasználói folyamatot. Adja hozzá ezt a paramétert, a lekérdezési karakterláncban, nem pedig a bejegyzés törzse. |
 | client_id | Igen | Az alkalmazás AZONOSÍTÓJÁT, amely a [az Azure portal](https://portal.azure.com/) az alkalmazáshoz hozzárendelt. |

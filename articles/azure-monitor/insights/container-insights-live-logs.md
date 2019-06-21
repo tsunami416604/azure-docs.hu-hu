@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/12/2019
+ms.date: 06/19/2019
 ms.author: magoedte
-ms.openlocfilehash: 71c6f1936f8cbc700a24d0ffb497947c8c8d3a50
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7fd9248fd38054b7f0e1fad2888d8b0d4cf2e60c
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075300"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274221"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>Naplók és események megtekintése a valós idejű (előzetes verzió)
 -Tárolókhoz az Azure Monitor tartalmaz egy szolgáltatást, amely jelenleg előzetes verziójú, amely az Azure Kubernetes Service (AKS) tároló naplóinak (stdout/stderr) és az események élő betekintést biztosít a kubectl-parancsok futtatása nélkül. Bármelyik lehetőséget választja, amikor egy új panel jelenik meg a teljesítmény adattábla a a **csomópontok**, **tartományvezérlők**, és **tárolók** megtekintése. Azt mutatja, élő naplózás és a tároló motor további segítik a hibaelhárítást a valós idejű által előállított eseményeket.
@@ -77,6 +77,9 @@ Az AKS beállítható úgy, hogy a felhasználók hitelesítéséhez az Azure Ac
 
 >[!NOTE]
 >Az egyszeri bejelentkezést az Azure Active Directory konfigurálása hitelesítési csak egy új AKS-fürt kezdeti telepítése során is elvégezhető. Egy már üzembe helyezte az AKS-fürtöt az egyszeri bejelentkezés nem állíthatja be.
+  
+>[!IMPORTANT]
+>Ha Ön újrakonfigurálása az Azure AD a felhasználók hitelesítéséhez a frissített, törölje a böngésző gyorsítótárát annak biztosítása érdekében a frissített hitelesítési token letöltése és alkalmazása URI-val.   
 
 ## <a name="view-live-logs-and-events"></a>Élő naplók megtekintése és események
 

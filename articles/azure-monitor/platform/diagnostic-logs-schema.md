@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: robb
 ms.subservice: logs
-ms.openlocfilehash: 21eec5ee2fef185a927f6a416732303765e02b1c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 468bcdb6aa688157196bb9cba8added623a857d3
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65789323"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155305"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Támogatott szolgáltatások, a sémák és a kategóriákat, az Azure diagnosztikai naplók
 
@@ -26,9 +26,9 @@ Az erőforrástípus kombinációja (elérhető a `resourceId` tulajdonság) és
 | Name (Név) | Kötelező/választható | Leírás |
 |---|---|---|
 | time | Kötelező | (UTC) az esemény időbélyegzője. |
-| resourceId | Szükséges | Az esemény kibocsátott erőforrás erőforrás-Azonosítóját. Bérlői szolgáltatások számára ez nem az a képernyő /tenants/tenant-id/providers/provider-name. |
+| resourceId | Kötelező | Az esemény kibocsátott erőforrás erőforrás-Azonosítóját. Bérlői szolgáltatások számára ez nem az a képernyő /tenants/tenant-id/providers/provider-name. |
 | tenantId | Bérlő naplók szükséges | Az Active Directory-bérlővel, amely ezt az eseményt vannak kötve, bérlő azonosítója. Ez a tulajdonság csak használatos a bérlői szintű naplók esetében nem jelenik meg az erőforráscsoport-szintű naplók. |
-| operationName | Szükséges | Ez az esemény által jelölt művelet neve. Ha az esemény RBAC művelet képvisel, ez az RBAC művelet neve (például) Microsoft.Storage/storageAccounts/blobServices/blobs/Read). Általában modellezve a Resource Manager-művelet formájában, még akkor is, ha azok nem tényleges dokumentált Resource Manager-műveletet (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
+| operationName | Kötelező | Ez az esemény által jelölt művelet neve. Ha az esemény RBAC művelet képvisel, ez az RBAC művelet neve (például) Microsoft.Storage/storageAccounts/blobServices/blobs/Read). Általában modellezve a Resource Manager-művelet formájában, még akkor is, ha azok nem tényleges dokumentált Resource Manager-műveletet (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
 | operationVersion | Optional | Az api-version társított a műveletet, ha az operationName hajtottak végre (például) egy API-val `http://myservice.windowsazure.net/object?api-version=2016-06-01`). Ha nincs API, amely megfelel a művelet, a verzió művelet verziója jelöli, abban az esetben, ha a jövőben módosulni a művelet társított tulajdonságokat. |
 | category | Kötelező | A napló az események kategóriájától függően. Kategória, a részletesség, amelyen engedélyezheti vagy letilthatja a naplók az egy adott erőforráshoz. A tulajdonságokat, amelyeket a Tulajdonságok blob egy esemény jelenik meg egy adott kategória- és erőforrás naplótípus belül azonosak. Tipikus naplókategóriák az "Audit" "operatív" "Végrehajtási" és "Kérés." |
 | resultType | Optional | Az esemény állapota. Tipikus értékek közé tartozik a elindítva, folyamatban lévő, sikeres, sikertelen, aktív és megoldott. |
@@ -55,7 +55,7 @@ A séma az erőforrás-diagnosztikai naplók az erőforrás- és naplózási kat
 | Azure Batch |[Az Azure Batch diagnosztikai naplózás](../../batch/batch-diagnostics.md) |
 | Azure Database for MySQL | [Azure Database for MySQL-diagnosztikai naplók](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Azure Database for PostgreSQL-diagnosztikai naplók](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
-| Cognitive Services | A séma nem érhető el. |
+| Cognitive Services | [Az Azure Cognitive Services diagnosztikai naplózása](../../cognitive-services/diagnostic-logging.md) |
 | Content Delivery Network | [A CDN-t az Azure diagnosztikai naplók](../../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Az Azure Cosmos DB-naplózás](../../cosmos-db/logging.md) |
 | Data Factory | [Az Azure Monitor használatával a Data Factoryk figyelése](../../data-factory/monitor-using-azure-monitor.md) |
@@ -209,4 +209,3 @@ A séma az erőforrás-diagnosztikai naplók az erőforrás- és naplózási kat
 * [Az erőforrás-diagnosztikai naplók Stream **az Event Hubs**](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
 * [Módosítsa az erőforrás diagnosztikai beállításait az Azure Monitor REST API használatával](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
 * [A Log Analytics használatával az Azure storage-naplók elemzése](../../azure-monitor/platform/collect-azure-metrics-logs.md)
-

@@ -9,11 +9,11 @@ ms.date: 04/04/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: d35da4f1eaed91411c015ed7665944d886f9d79c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66170143"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178974"
 ---
 Az alábbi lépésekkel hozhat létre egy VNetet a Resource Manager-alapú üzemi modellben az Azure Portallal. Használja a [példaértékeket](#values), ha a lépéseket csupán az oktatóanyag elvégzése érdekében hajtja végre. Ha a lépéseket nem az oktatóanyag keretében hajtja végre, ne felejtse el az értékeket a saját értékeire cserélni. További információ a virtuális hálózatok használatáról: [Virtual Network Overview](../articles/virtual-network/virtual-networks-overview.md) (Virtuális hálózatok áttekintése).
 

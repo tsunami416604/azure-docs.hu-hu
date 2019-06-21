@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9144165a3ce593dce11b5e50ce5f0af9f0afa480
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 0672f25b30bfb34a6ee99b0f4710d01cf0871300
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237656"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67150321"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 
@@ -76,8 +76,23 @@ Ha az Azure File Sync használatával az Azure-fájlmegosztás eléréséhez, mi
 
 Az Azure Files két teljesítményszinttel kínál: standard és prémium szintű.
 
-* **Standard fájlmegosztások** élvezik forgó merevlemez-meghajtók (HDD), amely megbízható teljesítményt, amelyek kevésbé érzékenyek a teljesítményingadozásra, például az általános célú fájlmegosztások és a fejlesztési és tesztelési környezetek i/o-munkaterhelések esetében. Standard fájlmegosztások csak egy használatalapú számlázási modell érhető el.
-* **Prémium szintű fájlmegosztások (előzetes verzió)** élvezik tartós állapotú lemezeket (SSD-kkel), amely egységes nagy teljesítményű és kis késésű, belül a legtöbb i/o-műveletek, a legtöbb i/o-igényes munkaterhelések esetében egy számjegyű ideje ezredmásodpercben. Ez teszi őket a megfelelő számos különböző számítási feladatokhoz – például adatbázisokat, webhelyszolgáltatás, fejlesztőkörnyezetet, stb. Prémium szintű fájlmegosztások csak egy üzembe helyezett számlázási modell érhető el. Prémium szintű fájlmegosztások a egy külön, standard fájlmegosztásokból telepítési modellt használja.
+### <a name="standard-file-shares"></a>Standard fájlmegosztások
+
+Standard fájlmegosztások merevlemezes (HDD) meghajtók élvezik. Normál fájlmegosztásokhoz, amelyek kevésbé érzékenyek a teljesítményingadozásra, például az általános célú fájlmegosztások és a fejlesztési és tesztelési környezetek i/o-munkaterhelések megbízható teljesítményt nyújtanak. Standard fájlmegosztások csak egy használatalapú számlázási modell érhető el.
+
+Legfeljebb 5 TiB méretű standard szintű fájlmegosztások állnak rendelkezésre, a végleges verzió ajánlat. Amíg nagyobb fájlmegosztások, megosztásaitól, nagyobb, mint 5 TiB, legfeljebb 100 Tib-ra, amely jelenleg előzetes ajánlatként érhető el.
+
+> [!IMPORTANT]
+> - Megköveteli, hogy hozzon létre egy új általános célú tárfiók (nem bontsa ki a meglévő tárfiókok).
+> - A rendszer csak az LRS érhető el.
+> - Három régióban érhető el: 2. nyugati RÉGIÓJA, Nyugat-Európa és Délkelet-ázsiai régióban.
+> - LRS, GRS-fiók alakítása nem lehetséges az előfizetés, a nagyobb megosztások fájlelőnézet elfogadása után létrehozott új tárfiókok a.
+
+A fájl nagyobb megosztás méretek némelyikével előzetes előkészítése, szeretné, ha ez elküldése [űrlap](https://aka.ms/azurefilesatscalesurvey). 
+
+### <a name="premium-file-shares-preview"></a>Prémium szintű fájlmegosztások (előzetes verzió)
+
+Prémium szintű fájlmegosztások (előzetes verzió) élvezik tartós állapotú lemezt (SSD). Prémium szintű fájlmegosztások konzisztens nagy teljesítményű és kis késésű, belül a legtöbb i/o-műveletek, i/o-igényes számítási feladatokhoz egyszámjegyű ideje ezredmásodpercben adja meg. Ez teszi őket a megfelelő számos különböző számítási feladatokhoz – például adatbázisokat, webhelyszolgáltatás, fejlesztőkörnyezetet, stb. Prémium szintű fájlmegosztások csak egy üzembe helyezett számlázási modell érhető el. Prémium szintű fájlmegosztások a egy külön, standard fájlmegosztásokból telepítési modellt használja.
 
 Az Azure Backup elérhető prémium szintű fájlmegosztások és Azure Kubernetes Service támogatja a prémium szintű fájlmegosztások, az 1.13 verzió vagy újabb.
 
@@ -180,7 +195,7 @@ Tartsa szem ezeken a pontokon, ha a replikációs beállítás használata:
 
 ## <a name="data-growth-pattern"></a>Növekedési adatmintát
 
-Még ma, a maximális Azure-fájlmegosztások mérete 5 Tib-ra (prémium szintű fájlmegosztások, amely a nyilvános előzetes verzióban érhetők el a 100 TiB). Ezen jelenlegi korlátozás miatt meg kell fontolnia a várható adatmennyiség növekedését, Azure-fájlmegosztások üzembe helyezésekor.
+Még ma, a maximális Azure-fájlmegosztások mérete 5 Tib-ra (előzetes verzióban érhető el a 100 TiB). Ezen jelenlegi korlátozás miatt meg kell fontolnia a várható adatmennyiség növekedését, Azure-fájlmegosztások üzembe helyezésekor.
 
 Több Azure-fájlmegosztások az Azure File Sync használatával egyetlen Windows fájlkiszolgálóhoz szinkronizálási lehetőség. Ez lehetővé teszi, hogy győződjön meg arról, hogy a régebbi, nagy mennyiségű fájlmegosztások, hogy előfordulhat, hogy a helyszíni az Azure File Sync tehető. További információkért lásd: [Azure File Sync üzembe helyezésének megtervezése](storage-files-planning.md).
 

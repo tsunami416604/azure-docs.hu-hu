@@ -15,12 +15,12 @@ ms.date: 06/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 432703b5acb4cd56dac9b25edf99165ca26b0aa0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f15d6fd81337aa4a859539e86f37a516848c9370
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67118272"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165984"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>Megismerheti az Azure-erőforrások hozzárendelések megtagadása
 
@@ -34,7 +34,7 @@ Megtagadási hozzárendelések létrehozása és felügyelete az Azure-erőforr�
 
 ## <a name="compare-role-assignments-and-deny-assignments"></a>Hasonlítsa össze a szerepkör-hozzárendelések és a hozzárendelés elutasítása
 
-Megtagadási hozzárendelések kövesse hasonló mintát hozzárendelések megtagadása, de néhány eltérés is rendelkezik.
+Megtagadási hozzárendelések hasonló mintát követi, szerepkör-hozzárendeléseket, de néhány eltérés is rendelkezik.
 
 | Képesség | Szerepkör-kijelölés | Hozzárendelés elutasítása |
 | --- | --- | --- |

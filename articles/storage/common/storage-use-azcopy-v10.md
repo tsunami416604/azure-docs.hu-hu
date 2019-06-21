@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: bfa3e5a943ee59b1ed335f45e113a60f62572675
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 722097f1a61a10cd45c0c330e998021cd1abf0c8
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735031"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147964"
 ---
 # <a name="get-started-with-azcopy"></a>Bevezetés az AZCopy használatába
 
@@ -49,7 +49,8 @@ Egy bizonyos paranccsal kapcsolatos további információkért csak a parancs ne
 
 ![Beágyazott Súgó](media/storage-use-azcopy-v10/azcopy-inline-help.png)
 
-Akkor is végrehajthat az Azcopyval jelentéssel bíró, mielőtt szüksége annak eldöntése, hogyan ehhez meg kell adnia engedélyezési hitelesítő adatok a storage szolgáltatásra.
+> [!NOTE] 
+> Az Azure Storage-fiók tulajdonosai automatikusan nem hozzárendelt engedélyeket az adatok eléréséhez. Akkor is végrehajthat az Azcopyval jelentéssel bíró, mielőtt szüksége annak eldöntése, hogyan ehhez meg kell adnia engedélyezési hitelesítő adatok a storage szolgáltatásra. 
 
 ## <a name="choose-how-youll-provide-authorization-credentials"></a>Válassza ki, hogyan fogja engedélyezési hitelesítő adatok megadása
 
@@ -67,9 +68,9 @@ Ez a tábla használja útmutatóként:
 
 Engedély szükséges a szint alapul e azt tervezi, hogy a fájlok feltöltése vagy egyszerűen letöltheti a fájlokat.
 
-#### <a name="authorization-to-upload-files"></a>Engedélyezési fájlok feltöltéséhez
+Ha csak szeretné letölteni a fájlokat, majd ellenőrizze, hogy a [Storage-Blobadatok olvasója](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) hozzá lett rendelve a személyazonosságát.
 
-Győződjön meg arról, hogy egyik szerepkör van rendelve az identitás:
+Ha azt szeretné, a fájlok feltöltése, majd győződjön meg arról, hogy egyik szerepkör van rendelve az identitás:
 
 - [Storage-Blobadatok Közreműködője](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)
 - [Tárolási Blob adatok tulajdonosa](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
@@ -87,27 +88,6 @@ Nem kell egy ilyen szerepkörbe, rendelt személyazonosságát, ha az identitás
 
 További tudnivalókért lásd: [hozzáférés-vezérlés az Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
 
-#### <a name="authorization-to-download-files"></a>Engedélyezési fájlok letöltése
-
-Győződjön meg arról, hogy egyik szerepkör van rendelve az identitás:
-
-- [Storage-Blobadatok olvasója](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)
-- [Storage-Blobadatok Közreműködője](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)
-- [Tárolási Blob adatok tulajdonosa](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
-
-Ezek a szerepkörök rendelhetők az identitás, ezek a hatókörök egyikében:
-
-- Tároló (fájlrendszer)
-- Tárfiók
-- Erőforráscsoport
-- Előfizetés
-
-Győződjön meg arról, és szerepkörök hozzárendelése kapcsolatban lásd: [hozzáférést biztosít az Azure blob és üzenetsor az adatokat az RBAC az Azure Portalon](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
-
-Nem kell egy ilyen szerepkörbe, rendelt személyazonosságát, ha az identitás bekerül a céltároló vagy könyvtár hozzáférés-vezérlési lista (ACL) rendelkezik. Az ACL-t az identitás kell olvasási engedéllyel a célkönyvtárat és engedély végrehajtani a tároló és az egyes szülőkönyvtárat.
-
-További tudnivalókért lásd: [hozzáférés-vezérlés az Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
-
 #### <a name="authenticate-your-identity"></a>A személyazonosság hitelesítéséhez
 
 Miután meggyőződött arról, hogy az identitás megadta-e a szükséges jogosultsági szintet, nyisson meg egy parancssort, írja be a következő parancsot, és nyomja le az ENTER billentyűt.
@@ -115,6 +95,14 @@ Miután meggyőződött arról, hogy az identitás megadta-e a szükséges jogos
 ```azcopy
 azcopy login
 ```
+
+Ha több mint egy szervezethez tartozik, például a bérlő azonosítója, amelyhez a storage-fiók tartozik a szervezet.
+
+```azcopy
+azcopy login --tenant-id=<tenant-id>
+```
+
+Cserélje le a `<tenant-id>` helyőrzőt a bérlő Azonosítóját, a szervezet, amely a tárfiók tartozik. A bérlő Azonosítójának megkereséséhez válassza ki a **Azure Active Directory > Tulajdonságok > címtár-azonosító** az Azure Portalon.
 
 Ez a parancs visszaadja a hitelesítési kódot és a egy webhely URL-CÍMÉT. Nyissa meg a webhelyet, írja be a kódot, és válassza a **tovább** gombra.
 
@@ -146,13 +134,32 @@ Példaparancsok megkereséséhez tekintse meg az alábbi cikkek valamelyikére.
 
 - [Adatok áthelyezése az AzCopy és az Amazon S3 gyűjtő](storage-use-azcopy-s3.md)
 
-## <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurálja, optimalizálhat és AzCopy hibaelhárítása
+## <a name="use-azcopy-in-a-script"></a>Az AzCopy használata a parancsfájl
 
-Lásd: [konfigurálása, optimalizálása és AzCopy hibaelhárítása](storage-use-azcopy-configure.md)
+Az AzCopy az idő múlásával [letöltési hivatkozás](#download-and-install-azcopy) AzCopy új verzióinak mutasson. A szkript letölti az AzCopy, ha a parancsfájl előfordulhat, hogy működését gátolja, ha az AzCopy egy újabb verzióját módosítja a parancsfájl attól függ, hogy szolgáltatásokat. 
+
+Ezek a problémák elkerülése érdekében az aktuális verzióra, az AzCopy statikus (nem változó) hivatkozás beszerzése. Ezzel a módszerrel a szkript letölti az AzCopy pontos ugyanazon verzióját minden alkalommal, amikor azt futtató.
+
+A hivatkozás beszerzéséhez a következő parancs futtatásával:
+
+| Operációs rendszer  | Parancs |
+|--------|-----------|
+| **Linux** | `curl -v https://aka.ms/downloadazcopy-v10-linux` |
+| **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).RawContent` |
+
+> [!NOTE]
+> Linux esetén `--strip-components=1` a a `tar` parancs eltávolítja a legfelső szintű mappát, amely a verzió nevét tartalmazza, és ehelyett kibontja a bináris fájlt közvetlenül az aktuális mappába. Ez lehetővé teszi, hogy az új verzióval frissíteni kell a parancsfájl `azcopy` csak frissítésével a `wget` URL-CÍMÉT.
+
+Ez a parancs kimenete az URL-cím jelenik meg. A szkript ezután letöltheti az AzCopy használatával URL-CÍMRE.
+
+| Operációs rendszer  | Parancs |
+|--------|-----------|
+| **Linux** | `wget -O azcopyv10.tar https://azcopyvnext.azureedge.net/release20190301/azcopy_linux_amd64_10.0.8.tar.gz tar -xf azcopyv10.tar --strip-components=1 ./azcopy` |
+| **Windows** | `Invoke-WebRequest https://azcopyvnext.azureedge.net/release20190517/azcopy_windows_amd64_10.1.2.zip -OutFile azcopyv10.zip <<Unzip here>>` |
 
 ## <a name="use-azcopy-in-storage-explorer"></a>Az AzCopy használata a Storage Explorerben
 
-Ha szeretné kihasználni az AzCopy teljesítmény előnyeit, de szeretné használni a parancssor helyett a Storage Explorer használatával kommunikálhat a fájlokat, majd engedélyezze az AzCopy a Storage Explorerben.
+Ha szeretné kihasználni az AzCopy teljesítmény előnyeit, de szeretné használni a parancssor helyett a Storage Explorer használatával kommunikálhat a fájlokat, majd engedélyezze az AzCopy a Storage Explorerben. 
 
 A Storage Explorerben válassza **előzetes**->**használható AzCopy továbbfejlesztett Blob feltöltése és letöltése**.
 
@@ -161,6 +168,8 @@ A Storage Explorerben válassza **előzetes**->**használható AzCopy továbbfej
 > [!NOTE]
 > Nem engedélyezi ezt a beállítást, ha engedélyezte a tárfiók a hierarchikus névtér kell. Mivel a Storage Explorer automatikusan használja az AzCopy a storage-fiókok hierarchikus névtérrel rendelkező ez.  
 
+Storage Explorer használja a fiókkulcs műveleteket hajtson végre, így miután bejelentkezett a Storage Explorer, nem kell további engedélyezési hitelesítő adatait.
+
 <a id="previous-version" />
 
 ## <a name="use-the-previous-version-of-azcopy"></a>Az előző verzió, az AzCopy használata
@@ -168,7 +177,12 @@ A Storage Explorerben válassza **előzetes**->**használható AzCopy továbbfej
 Ha korábbi verzióját használja, az AzCopy (AzCopy v8.1) van szüksége, tekintse át az alábbi hivatkozásokat:
 
 - [Az AzCopy Windows (v8)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy)
+
 - [AzCopy linuxon (v8)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux)
+
+## <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurálja, optimalizálhat és AzCopy hibaelhárítása
+
+Lásd: [konfigurálása, optimalizálása és AzCopy hibaelhárítása](storage-use-azcopy-configure.md)
 
 ## <a name="next-steps"></a>További lépések
 

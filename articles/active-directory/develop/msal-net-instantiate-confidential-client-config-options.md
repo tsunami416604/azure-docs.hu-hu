@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f935b1b2815501710444e3f921a157ba02e3215
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7814ff6b7575fedc19e63676ce3353c2a62a62b4
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544086"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154440"
 ---
 # <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>Hozza létre a bizalmas ügyfélalkalmazás az MSAL.NET használatával, a konfigurációs beállítások
 
@@ -62,12 +62,12 @@ Az ASP.NET Core-konfigurációjához leírt egy *appsettings.json* fájlt:
 }
 ```
 
-A MSAL.NET v3.x-től kezdődően a konfigurációs fájlból bizalmas ügyfélalkalmazás konfigurálása. Az alkalmazáskonfigurációt kapcsolódó osztályok találhatók az `Microsoft.Identity.Client.AppConfig` névtér.
+A MSAL.NET v3.x-től kezdődően a konfigurációs fájlból bizalmas ügyfélalkalmazás konfigurálása.
 
-Deklarálni kell az osztályban, ahol azt szeretné, konfigurálja és hozza létre az alkalmazás egy `ConfidentialClientApplicationOptions` objektum.  A konfiguráció olvasása a forrásból (beleértve a appconfig.json fájl) kötési példányhoz, az alkalmazás beállításai:
+Deklarálni kell az osztályban, ahol azt szeretné, konfigurálja és hozza létre az alkalmazás egy `ConfidentialClientApplicationOptions` objektum.  A konfiguráció olvasása a forrásból (beleértve a appconfig.json fájl) kötni az alkalmazások közül, használja a példány a `IConfigurationRoot.Bind()` módszerrel a [Microsoft.Extensions.Configuration.Binder nuget-csomag](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
 
 ```csharp
-using Microsoft.Identity.Client.AppConfig;
+using Microsoft.Identity.Client;
 
 private ConfidentialClientApplicationOptions _applicationOptions;
 _applicationOptions = new ConfidentialClientApplicationOptions();
