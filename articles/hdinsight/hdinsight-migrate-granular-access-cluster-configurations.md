@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 56ba2dfebeb47f7e12a2693eae443e3c31e2a4dd
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 982c5dcc052f92afe381235db0bf066262fd82c6
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203089"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304282"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrálás fürtkonfigurációk részletes szerepköralapú hozzáféréséhez
 
@@ -20,7 +20,7 @@ További részletes szerepkör alapú hozzáférés támogatásához bizalmas in
 
 ## <a name="what-is-changing"></a>Mi változik?
 
-Korábban a titkos kulcsok sikerült beolvasni a HDInsight-API-n keresztül a fürt felhasználók rendelkeznek a tulajdonos, közreműködő vagy olvasó [RBAC-szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles), amilyenek korábban voltak rendelkező a `*/read` engedély volt szükség.
+Korábban a titkos kulcsok sikerült beolvasni a HDInsight-API-n keresztül a fürt felhasználók rendelkeznek a tulajdonos, közreműködő vagy olvasó [RBAC-szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles), amilyenek korábban voltak rendelkező a `*/read` engedéllyel.
 Jövőben fér hozzá a titkos adatokat lesz szükség a `Microsoft.HDInsight/clusters/configurations/*` engedéllyel, ami azt jelenti, azok többé nem elérhetők a olvasói szerepkörrel rendelkező felhasználók által. Titkos kulcsok vannak meghatározva, értékeket, amelyek segítségével több emelt szintű hozzáférés, mint a felhasználói szerepkör lehetővé teszi. Ezek közé tartozik például a fürt átjáró HTTP hitelesítő adatait, a tárfiókkulcsok és adatbázis-hitelesítő adatok értékeit.
 
 Is elérhetőkké váltak egy új [HDInsight-fürt operátor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) szerepkör, amely fogja tudni beolvasni a titkos kulcsok a rendszergazdai engedélyekkel, közreműködő vagy tulajdonos engedély megadása nélkül. Összefoglalásképpen:

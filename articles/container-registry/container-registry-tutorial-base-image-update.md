@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 06/12/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 27315bf562f7b221b19747aca4809f2be5fd1121
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 7d7cba63060756bff786b9475275e5262627cae9
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147456"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295716"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Oktatóanyag: Tároló rendszerképek létrehozásának automatizálása az Azure container registry alapképet frissítésekor 
 
@@ -30,7 +30,7 @@ Az oktatóanyag-sorozat utolsó része az alábbi lépésekből áll:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha az Azure CLI-t helyben szeretné használni, az Azure CLI **2.0.46-os** vagy újabb verzióját kell telepítenie. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretné a parancssori felületet, olvassa el [az Azure CLI telepítését][azure-cli] ismertető témakört.
+Ha az Azure CLI-t helyben szeretné használni, az Azure CLI **2.0.46-os** vagy újabb verzióját kell telepítenie. A verzió azonosításához futtassa a következőt: `az --version`. Ha szeretné telepíteni, vagy a parancssori felület frissítése, lásd: [Azure CLI telepítése][azure-cli].
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -61,7 +61,7 @@ GIT_PAT=<personal-access-token> # The PAT you generated in the second tutorial
 
 ## <a name="base-images"></a>Alapként szolgáló rendszerképek
 
-A tárolórendszerképek többségét definiáló Docker-fájlok megadnak egy szülőrendszerképet, amely a rendszerképek alapjául szolgál – ezt gyakran *alapként szolgáló rendszerképnek* nevezik. Az alapként szolgáló rendszerképek általában az operációs rendszert tartalmazzák (például [Alpine Linux][base-alpine] vagy [Windows Nano Server][base-windows]), amelyre a tároló többi szintje alkalmazva lesz. Alkalmazás-keretrendszereket is tartalmazhatnak, például a [Node.js][base-node] vagy a [.NET Core][base-dotnet] keretrendszert.
+A tárolórendszerképek többségét definiáló Docker-fájlok megadnak egy szülőrendszerképet, amely a rendszerképek alapjául szolgál – ezt gyakran *alapként szolgáló rendszerképnek* nevezik. Általában tartalmazzák az operációs rendszer, például [Alpine Linux][base-alpine] or [Windows Nano Server][base-windows], az a tároló rétegek a többi alkalmazott. Előfordulhat, hogy is, alkalmazás-keretrendszerek például [Node.js][base-csomópont] vagy [.NET Core][base-dotnet].
 
 ### <a name="base-image-updates"></a>Az alapként szolgáló rendszerképek frissítése
 
@@ -73,23 +73,23 @@ Az alapként szolgáló rendszerképek frissítésekor újra össze kell állít
 
 * Jelenleg a rendszerképek létrehozásának egy Docker-fájlból, egy ACR-tevékenység észleli alaplemezképek a függőségek az ugyanazon az Azure container registry, egy nyilvános Docker Hub adattárban vagy a Microsoft Container Registry nyilvános adattár. Ha adott az alaprendszerképet a `FROM` utasítás ezen a helyen található, az ACR-tevékenység hozzáadja annak érdekében, hogy a rendszerkép újraépítése base frissül, amikor egy hook.
 
-* Amikor hoz létre egy ACR a feladatot a [az acr-feladat létrehozása] [ az-acr-task-create] parancsot, a feladat alapértelmezés szerint *engedélyezve* eseményindító által egy rendszerkép alapszintű frissítésének. Ez azt jelenti, hogy a `base-image-trigger-enabled` tulajdonság True értékre van állítva. Ha le kívánja tiltani ezt a viselkedést egy feladatot, frissítse a tulajdonság FALSE. Például futtassa a következő [az acr-feladat frissítése] [ az-acr-task-update] parancsot:
+* Amikor hoz létre egy ACR a feladatot a [az acr-feladat létrehozása][az-acr-task-create] parancsot, a feladat alapértelmezés szerint *engedélyezve* eseményindító által egy rendszerkép alapszintű frissítésének. Ez azt jelenti, hogy a `base-image-trigger-enabled` tulajdonság True értékre van állítva. Ha le kívánja tiltani ezt a viselkedést egy feladatot, frissítse a tulajdonság FALSE. Például futtassa a következő [az acr-feladat frissítése][az-acr-task-update] parancsot:
 
   ```azurecli
   az acr task update --myregistry --name mytask --base-image-trigger-enabled False
   ```
 
-* Határozza meg, és nyomon követéséhez egy tárolórendszerképet függőségek – köztük az alaprendszerképet a – az ACR feladat engedélyezése kell először indít el a feladat **legalább egyszer**. A feladat segítségével manuálisan például aktiválása a [az acr-feladat futtatása] [ az-acr-task-run] parancsot.
+* Határozza meg, és nyomon követéséhez egy tárolórendszerképet függőségek – köztük az alaprendszerképet a – az ACR feladat engedélyezése kell először indít el a feladat **legalább egyszer**. A feladat segítségével manuálisan például aktiválása a [az acr-feladat futtatása][az-acr-task-run] parancsot.
 
-* A rendszerkép alapszintű frissítésének feladat indításához az alaprendszerképet kell rendelkeznie egy *stabil* címke, például `node:9-alpine`. Jellemző alapképet használó frissül az operációs rendszer és keretrendszer, a címkézés a legújabb stabil kiadás javításokat. Az alap rendszerképet, egy új verzióra frissül, ha ne indítsa el a feladatot. Képcímkézés kapcsolatos további információkért lásd: a [bevált gyakorlatok és útmutató](https://blogs.msdn.microsoft.com/stevelasker/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/). 
+* A rendszerkép alapszintű frissítésének feladat indításához az alaprendszerképet kell rendelkeznie egy *stabil* címke, például `node:9-alpine`. Jellemző alapképet használó frissül az operációs rendszer és keretrendszer, a címkézés a legújabb stabil kiadás javításokat. Az alap rendszerképet, egy új verzióra frissül, ha ne indítsa el a feladatot. Képcímkézés kapcsolatos további információkért lásd: a [bevált gyakorlatok és útmutató](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/). 
 
 ### <a name="base-image-update-scenario"></a>Az alapként szolgáló rendszerkép frissítése forgatókönyv
 
-Ez az oktatóanyag végigvezeti az alapként szolgáló rendszerkép frissítési forgatókönyvén. A [kódminta][code-sample] két Docker-fájlt tartalmaz: egy alkalmazás-rendszerképet, és egy rendszerképet, amelyet az alkalmazás-rendszerkép az alapként szolgáló rendszerképeként ad meg. A következő szakaszokban hozzon létre egy ACR-feladatot, amely automatikusan az alkalmazás rendszerképét build amikor ugyanazon tárolóregisztrációs át lett helyezve az alaprendszerképet új verziója.
+Ez az oktatóanyag végigvezeti az alapként szolgáló rendszerkép frissítési forgatókönyvén. A [kódminta][code-sample] két docker-fájlok tartalmaz: egy alkalmazás-lemezképet, és azt adja meg a Base lemezképet. A következő szakaszokban hozzon létre egy ACR-feladatot, amely automatikusan az alkalmazás rendszerképét build amikor ugyanazon tárolóregisztrációs át lett helyezve az alaprendszerképet új verziója.
 
 [Dockerfile-app][dockerfile-app]: Kisméretű Node.js-webalkalmazás, amely a megjelenítés, a Node.js-verzió, amelyre-alapú statikus weblap jelenik meg. A verziósztring szimulált elem: az alapként szolgáló rendszerképben definiált környezeti változó (`NODE_VERSION`) tartalmát jeleníti meg.
 
-[Docker-fájlban – alapszámláló][dockerfile-base]: A kép, amely `Dockerfile-app` alapja Itt adható meg. Egy [Node][base-node]-rendszerképen alapul, és tartalmazza a `NODE_VERSION` környezeti változót.
+[Docker-fájlban – alapszámláló][dockerfile-base]: A kép, amely `Dockerfile-app` alapja Itt adható meg. Maga a alapján egy [csomópont][base-node] rendszerképet, és tartalmazza a `NODE_VERSION` környezeti változót.
 
 A következő szakaszokban létrehozunk egy feladatot, frissítjük a `NODE_VERSION` értékét az alapként szolgáló rendszerkép Docker-fájljában, majd az ACR Tasks használatával összeállítjuk az alapként szolgáló rendszerképet. Amikor az ACR-feladat leküldi az alapként szolgáló új rendszerképet a regisztrációs adatbázisba, az automatikusan kiváltja az alkalmazás-rendszerkép összeállítását. Ha kívánja, az alkalmazástároló-rendszerkép helyi futtatásával megtekintheti az összeállított rendszerképek eltérő verzió-sztringjeit.
 
@@ -105,7 +105,7 @@ az acr build --registry $ACR_NAME --image baseimages/node:9-alpine --file Docker
 
 ## <a name="create-a-task"></a>Feladat létrehozása
 
-Ezután hozzon létre egy feladatot az [az acr task create][az-acr-task-create] paranccsal:
+Ezután hozzon létre egy feladatot [az acr-feladat létrehozása][az-acr-task-create]:
 
 ```azurecli-interactive
 az acr task create \
@@ -120,9 +120,9 @@ az acr task create \
 ```
 
 > [!IMPORTANT]
-> Ha korábban már létrehozott feladatokat az előzetes verzióban az `az acr build-task` paranccsal, azokat a feladatokat újra létre kell hoznia az [az acr task][az-acr-task] paranccsal.
+> Ha az előzetes során korábban létrehozott feladatok a `az acr build-task` parancsot, ezeket a feladatokat kell újra létrehozni a [az acr feladat][az-acr-task] parancsot.
 
-Ez a feladat hasonlít az [előző oktatóanyagban](container-registry-tutorial-build-task.md) létrehozott gyors feladathoz. A feladat utasítja az ACR Tasksot egy rendszerkép-összeállítás aktiválására, amikor a rendszer leküld egy véglegesítést a `--context` által megadott adattárba. Amíg az előző oktatóanyagban a rendszerkép létrehozásához használt docker-fájlban adja meg a nyilvános alaplemezkép (`FROM node:9-alpine`), a docker-fájl ebben a feladatban [Dockerfile-alkalmazás][dockerfile-app], adja meg egy alaplemezkép ugyanazon beállításjegyzék:
+Ez a feladat hasonlít az [előző oktatóanyagban](container-registry-tutorial-build-task.md) létrehozott gyors feladathoz. A feladat utasítja az ACR Tasksot egy rendszerkép-összeállítás aktiválására, amikor a rendszer leküld egy véglegesítést a `--context` által megadott adattárba. Amíg az előző oktatóanyagban a rendszerkép létrehozásához használt docker-fájlban adja meg a nyilvános alaplemezkép (`FROM node:9-alpine`), a docker-fájl ebben a feladatban [Dockerfile-alkalmazás][dockerfile-app], alapképet megadja a azonos beállításjegyzékben:
 
 ```Dockerfile
 FROM ${REGISTRY_NAME}/baseimages/node:9-alpine
@@ -132,7 +132,7 @@ Ez a konfiguráció megkönnyíti az alaprendszerkép keretrendszer javítás sz
 
 ## <a name="build-the-application-container"></a>Az alkalmazástároló összeállítása
 
-Használat [az acr-feladat futtatása] [ az-acr-task-run] manuálisan elindítani a feladatot, és az alkalmazás-rendszerkép létrehozásához. Ez a lépés biztosítja, hogy a feladat az alaprendszerképet a az alkalmazás rendszerképét függőségi követi.
+Használat [az acr-feladat futtatása][az-acr-task-run] manuálisan elindítani a feladatot, és az alkalmazás-rendszerkép létrehozásához. Ez a lépés biztosítja, hogy a feladat az alaprendszerképet a az alkalmazás rendszerképét függőségi követi.
 
 ```azurecli-interactive
 az acr task run --registry $ACR_NAME --name taskhelloworld
@@ -168,7 +168,7 @@ docker stop myapp
 
 ## <a name="list-the-builds"></a>Összeállítások listázása
 
-Ezután listázza a feladatfuttatásokat, amelyeket az ACR Tasks elkészített a regisztrációs adatbázis számára az [az acr task list-runs][az-acr-task-list-runs] paranccsal:
+Ezután futtatások listája a feladatot, hogy az ACR-feladatok befejeződött-e a beállításjegyzék használatára vonatkozó a [az acr feladat list-futtatások][az-acr-task-list-runs] parancsot:
 
 ```azurecli-interactive
 az acr task list-runs --registry $ACR_NAME --output table

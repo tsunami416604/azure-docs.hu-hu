@@ -5,19 +5,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 09/15/2018
+ms.date: 06/20/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 3cfdca99c91dc54a711801d92aa0da91fb9703e4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
-ms.translationtype: HT
+ms.openlocfilehash: 53ccd439429dc7df311e086d79f7234e26fd8b0e
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179338"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67302307"
 ---
 > [!IMPORTANT]
 > A tárfiók kulcsa hasonlít a tárfiók rendszergazdai jelszavához. Mindig ügyeljen a fiókja kulcsának védelmére. Ne adja ki másoknak, ne kódolja fixen, és ne mentse mások számára elérhető, egyszerű szöveges fájlban. Ha azt gyanítja, hogy a fiókkulcs biztonsága sérült, az Azure Portal segítségével generálja újra.
-> 
+>
 > SAS (közös hozzáférésű Jogosultságkód) jogkivonatok olyan kritikus fontosságú, csakúgy, mint a hozzáférési kulcsainak védelmét. Miközben biztosító granularitási SAS ügyfelek számára hozzáférést biztosít a tárfiókban található erőforrásokhoz, és nem szabad nyilvánosan megosztani. Ha megosztása a hibaelhárításhoz szükséges okokból fontolja meg a naplófájlokat kivonatosan verzióját használja, vagy törlése a naplófájlokban a SAS-tokeneket (ha van ilyen), és győződjön meg arról, hogy a képernyőképek vagy az SAS-információk nem tartalmaznak.
-> 
-> A Microsoft azt javasolja, Blobok és a Queue storage alkalmazásai számára (előzetes verzió), amikor csak lehetséges, a fokozott biztonság az Azure Active Directory (Azure AD-) hitelesítéssel. További információkért lásd: [hitelesítés hozzáférés az Azure-blobok és üzenetsorok az Azure Active Directory (előzetes verzió) használatával](https://docs.microsoft.com/azure/storage/common/storage-auth-aad).

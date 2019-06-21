@@ -8,31 +8,16 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: cacd5510147ce997efec922f4b4656956a098d88
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2553aa95d5028c510b4e1a1b7f51a9f410bcea51
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66676938"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154862"
 ---
 # <a name="register-the-microsoftvmwarecloudsimple-resource-provider-on-your-azure-subscription"></a>Az Azure-előfizetésében Microsoft.VMwareCloudSimple erőforrás-szolgáltató regisztrálása
 
-A CloudSimple szolgáltatás lehetővé teszi, hogy Azure VMware megoldás által CloudSimple felhasználásához. A CloudSimple szolgáltatás használatához először engedélyezni kell az Azure-előfizetésében. Az erőforrás-szolgáltató, majd a Microsoft.VMwareCloudSimple szolgáltatás is regisztrálhat.
-
-## <a name="enable-the-cloudsimple-service"></a>A CloudSimple szolgáltatás engedélyezése
-
-Az Azure-előfizetésében CloudSimple szolgáltatás engedélyezéséhez nyissa meg egy támogatási kérést az [a Microsoft támogatási](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest). Válassza ki a következő beállításokat, a kérelem elküldésekor.
-
-* Probléma típusa: **Technikai**
-* Előfizetés: **Az előfizetés-azonosító**
-* Szolgáltatás típusa: **VMware megoldást CloudSimple szerint**
-* Probléma típusa: **Dedikált csomópontok kvóta**
-* A probléma altípus: **Növelje meg a dedikált csomópontok**
-* Tulajdonos: **CloudSimple szolgáltatás engedélyezése**
-
-Is kapcsolatba léphet a következő Microsoft-ügyfélmenedzserhez [ azurevmwaresales@microsoft.com ](mailto:azurevmwaresales@microsoft.com). Adja meg az e-mailben az Azure-előfizetés azonosítója.  
-
-Miután a CloudSimple szolgáltatás engedélyezve van az előfizetés, az erőforrás-szolgáltatót az előfizetésben engedélyezheti.
+A CloudSimple szolgáltatás lehetővé teszi, hogy Azure VMware megoldás által CloudSimple felhasználásához. Az erőforrás-szolgáltató, a Microsoft.VMwareCloudSimple szolgáltatás regisztrálására.
 
 ## <a name="register-the-resource-provider"></a>Az erőforrás-szolgáltató regisztrálása
 

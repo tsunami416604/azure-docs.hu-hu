@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/10/2017
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: 3e304df51133d53adad50e672249bde6c9960712
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: f2f798be85e9c3aeb8d4b54cba89d8be059427e0
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65539800"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147340"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Az Azure App Service – diagnosztika áttekintése
 
@@ -103,12 +103,12 @@ Proaktív CPU figyelését, például proaktív automatikus javítás egy egysze
 
 ![Proaktív automatikus javítás](./media/app-service-diagnostics/proactive-auto-healing-10.png)
 
-## <a name="change-analysis"></a>Elemzés módosítása
+## <a name="change-analysis-only-for-windows-app"></a>Elemzés (csak a Windows-alkalmazás) módosítása
 
-Ritmusú fejlesztői környezetben néha nehéz lehet, nyomon követheti az alkalmazás végzett összes módosítást, és lehetővé teszik önálló pinpoint a által okozott egy nem megfelelő viselkedésének módosítása. Módosítás elemzés segíthet leszűkíteni a hibaelhárítással élmény megkönnyítése érdekében az alkalmazás végzett módosításokat. Változás elemzési például diagnosztikai jelentés beágyazott **alkalmazás összeomlik** így használhatja más metrikákkal már létesítve lett.
+Ritmusú fejlesztői környezetben néha nehéz lehet, nyomon követheti az alkalmazás végzett összes módosítást, és lehetővé teszik önálló pinpoint a nem megfelelő viselkedésének okozó módosítása. Módosítás elemzés segíthet leszűkíteni a hibaelhárítással élmény megkönnyítése érdekében az alkalmazás végzett módosításokat. Változás elemzési található **alkalmazások módosítására** is ágyazott például diagnosztikai jelentés **alkalmazás összeomlik** így használhatja más metrikákkal már létesítve lett.
+
+Változás elemzésnek engedélyezni kell a funkció használata előtt. Változás-elemzési további információért látogasson el [bejelentése az új módosítás elemzési az App Service Diagnostics](https://azure.github.io/AppService/2019/05/07/Announcing-the-new-change-analysis-experience-in-App-Service-Diagnostics-Analysis.html).
 
 ![Változás elemzési alapértelmezett lap](./media/app-service-diagnostics/change-analysis-default-page-11.png)
 
 ![A diff megtekintése](./media/app-service-diagnostics/diff-view-12.png)
-
-Változás elemzésnek engedélyezni kell a funkció használata előtt. Változás-elemzési további információért látogasson el [bejelentése az új módosítás elemzési az App Service Diagnostics](https://azure.github.io/AppService/2019/05/07/Announcing-the-new-change-analysis-experience-in-App-Service-Diagnostics-Analysis.html).

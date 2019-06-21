@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5e6548a5a04e32b374a8a9c29d2ca5f89fd65c78
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 62511118edb4f8b5061f90138bac2aa2b5d3cfe3
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65160185"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165155"
 ---
 # <a name="private-cloud-vmware-components"></a>Magánfelhő VMware-összetevők
 
@@ -37,7 +37,7 @@ A magánfelhő VMware-környezetet a következő szoftver verziója van telepít
 
 ## <a name="esxi"></a>ESXi
 
-VMware ESXi magánfelhő létrehozásakor beszerzett CloudSimple csomópontjára telepítse.  ESXi a hipervizor biztosít a számítási feladatok virtuális gépek (VM) üzembe helyezéséről.  Csomópontok saját magánfelhő-alapú hiperkonvergens infrastruktúrát (számítási és tárolási) ad.  A csomópontok a vSphere-fürt a magánfelhő részei.  Mindegyik fürtcsomópont négy felületek fizikai hálózatokhoz csatlakozó underlay hálózati.  Két fizikai hálózati adapter használatával létrehozhat egy **vSphere elosztott kapcsoló (VDS)** vCenter és két használatával létrehozhat egy **NSX felügyelte elosztott virtuáliskapcsoló (N-VDS)** .  Hálózati adapterek vannak konfigurálva a magas rendelkezésre állású aktív – aktív üzemmód.
+Magánfelhő létrehozásakor VMware ESXi kiépített CloudSimple csomópontjára telepítse.  ESXi a hipervizor biztosít a számítási feladatok virtuális gépek (VM) üzembe helyezéséről.  Csomópontok saját magánfelhő-alapú hiperkonvergens infrastruktúrát (számítási és tárolási) ad.  A csomópontok a vSphere-fürt a magánfelhő részei.  Mindegyik fürtcsomópont négy felületek fizikai hálózatokhoz csatlakozó underlay hálózati.  Két fizikai hálózati adapter használatával létrehozhat egy **vSphere elosztott kapcsoló (VDS)** vCenter és két használatával létrehozhat egy **NSX felügyelte elosztott virtuáliskapcsoló (N-VDS)** .  Hálózati adapterek vannak konfigurálva a magas rendelkezésre állású aktív – aktív üzemmód.
 
 További információ a VMware ESXi
 

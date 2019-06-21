@@ -7,16 +7,18 @@ ms.date: 04/01/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: ff9513418857562408c162533c48f6495b1f83c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9accdc19062cba7bb313afac3da056798c325a4c
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65137862"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274414"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Azure-erőforrások nagy adatkészletek használata
 
 Az Azure erőforrás-Graph úgy lett kialakítva, használata és erőforrásaival kapcsolatos információk lekérése az Azure-környezetben. Erőforrás-grafikon teszi, hogy ezek az adatok gyors, első akár több ezer olyan rekordok lekérdezésekor. Erőforrás-grafikon rendelkezik-e nagy adatkészletek használata számos lehetőség közül választhat.
+
+A nagy gyakorisággal lekérdezések való használatáról további útmutatóért lásd: [szabályozott kérelmeinek útmutatást](./guidance-for-throttled-requests.md).
 
 ## <a name="data-set-result-size"></a>Adatkészlet eredményének mérete
 
@@ -84,6 +86,6 @@ Egy vonatkozó példáért lásd: [következő lap lekérdezés](/rest/api/azure
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse meg a használt nyelv [alapszintű lekérdezések](../samples/starter.md)
-- Tekintse meg a speciális használ [összetettebb lekérdezésekhez](../samples/advanced.md)
-- Információ az [erőforrások felfedezéséről](explore-resources.md)
+- Tekintse meg a használt nyelv [alapszintű lekérdezéseket](../samples/starter.md).
+- Tekintse meg a speciális használ [összetettebb lekérdezésekhez](../samples/advanced.md).
+- Ismerje meg, hogyan [források](explore-resources.md).

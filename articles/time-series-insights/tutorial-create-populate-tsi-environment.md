@@ -5,16 +5,16 @@ services: time-series-insights
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 04/26/2019
+ms.date: 06/18/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: b8b46db043113f29f559ad44855d19f0d6ca73c3
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 06a450c47c7264bdecb663c9f71e3a9753df5e1e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244161"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273542"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Oktatóanyag: Azure Time Series Insights-környezet létrehozása
 
@@ -40,14 +40,50 @@ Ez az oktatóanyag végigvezeti egy Azure Time Series Insights-környezet, amely
 
 ## <a name="overview"></a>Áttekintés
 
-A Time Series Insights-környezet, ha eszközadatok összegyűjtött és tárolt. Miután az adatok tárolását, a [Azure Time Series Insights explorer](time-series-quickstart.md) és [Time Series Insights lekérdezési API](/rest/api/time-series-insights/ga-query-api) lekérdezését és elemzését az adatok segítségével. Az Azure IoT Hub biztonságos kapcsolódást és küldi az adatokat az Azure-felhő minden eszköz (szimulált vagy fizikai) által használt csatlakozási pont. A [Time Series Insights áttekintése](time-series-insights-overview.md) tudomásul veszi, hogy az Azure IoT Hub is szolgál eseményforrás streamelési adatok egy Time Series Insights-környezetbe. Ebben az oktatóanyagban egy [IoT-megoldásgyorsítók](/azure/iot-accelerators/) hozhat létre és adatfolyam-minta telemetriai adatokat az IoT hubnak.
+A Time Series Insights-környezet, ha eszközadatok összegyűjtött és tárolt. Tárolt, a [Azure Time Series Insights explorer](time-series-quickstart.md) és [Time Series Insights lekérdezési API](/rest/api/time-series-insights/ga-query-api) lekérdezését és elemzését az adatok segítségével.
+
+Az Azure IoT Hub által használt minden eszköz (szimulált vagy fizikai) a jelen oktatóanyagban biztonságos kapcsolódást és az Azure-felhőbeli adatokat a forrás.
+
+Ez az oktatóanyag is használ egy [IoT-megoldásgyorsítók](https://www.azureiotsolutions.com) hozhat létre és adatfolyam-minta telemetriai adatokat az IoT hubnak.
 
 >[!TIP]
-> IoT-megoldásgyorsítók nagyvállalati szintű, előre konfigurált megoldásokat használhatja, egyéni IoT-megoldások fejlesztésének felgyorsításához.
+> [IoT-megoldásgyorsítók](https://www.azureiotsolutions.com) nagyvállalati szintű, előre konfigurált megoldások, amelyek használatával gyorsíthatja fel az egyéni IoT-megoldások fejlesztését.
+
+## <a name="create-a-device-simulation"></a>Eszközszimuláció létrehozása
+
+Először hozza létre az eszköz szimulálása megoldást, amely Tesztadatok feltöltése a Time Series Insights-környezetet hoz létre.
+
+1. Egy külön ablakban vagy a lapon lépjen a [azureiotsolutions.com](https://www.azureiotsolutions.com). Jelentkezzen be Azure-előfizetés ugyanazzal a fiókkal, és válassza ki a **Eszközszimuláció** gyorsító.
+
+   [![Futtassa az Eszközszimuláció megoldástámogató](media/tutorial-create-populate-tsi-environment/sa-main.png)](media/tutorial-create-populate-tsi-environment/sa-main.png#lightbox)
+
+1. Adja meg a szükséges paramétereket a a **Eszközszimuláció létrehozása megoldás** lapot.
+
+   Paraméter|Leírás
+   ---|---
+   **Üzemelő példány neve** | Ez az egyedi érték segítségével hozzon létre egy új erőforráscsoportot. A felsorolt Azure-erőforrások létrejönnek, és hozzá lesznek rendelve az erőforráscsoporthoz.
+   **Azure-előfizetés** | Adja meg a Time Series Insights-környezet létrehozása az előző szakaszban használt ugyanahhoz az előfizetéshez.
+   **Központi telepítési beállítások** | Válassza ki **új IoT hubot kiépítése** létrehozása adott ebben az oktatóanyagban egy új IoT hubot.
+   **Azure-beli helyre** | Adja meg a Time Series Insights-környezet létrehozása az előző szakaszban használt ugyanabban a régióban.
+
+   Ha elkészült, válassza ki a **megoldás létrehozása** a megoldás az Azure-erőforrások kiépítése. Ez a folyamat befejezéséhez akár 20 percig is eltarthat.
+
+   [![Az eszköz szimulálása megoldás kiépítése](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png#lightbox)
+
+1. Kiépítés befejezése után, a szöveg felett az új megoldásokat a változik **kiépítési** való **készen**.
+
+   >[!IMPORTANT]
+   > Ne válassza **indítsa el a** még! Hagyja megnyitva ezt a weblapot, mert Ön lesz később még visszatérünk rá.
+
+   [![Eszköz szimulálása megoldás teljes körű kiépítés](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png#lightbox)
+
+1. Most vizsgálja meg az újonnan létrehozott erőforrásokat az Azure Portalon. Az a **erőforráscsoportok** lapon látható, hogy egy új erőforráscsoportot használatával lett létrehozva, a **megoldásnevet** az előző lépésben megadott. Jegyezze fel az alkalmazáshoz az eszközszimuláció létrehozott erőforrásokat.
+
+   [![Eszköz szimulálása erőforrások](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png)](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png#lightbox)
 
 ## <a name="create-an-environment"></a>Környezet létrehozása
 
-Először hozzon létre egy Time Series Insights-környezet az Azure-előfizetésében.
+Ezután hozzon létre egy Time Series Insights-környezet az Azure-előfizetésében.
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) az Azure-előfizetés fiók használatával. 
 1. Válassza az **+ Erőforrás létrehozása** lehetőséget a bal felső sarokban. 
@@ -59,119 +95,36 @@ Először hozzon létre egy Time Series Insights-környezet az Azure-előfizeté
 
    Paraméter|Leírás
    ---|---
-   **Környezet neve** | Válassza ki a Time Series Insights-környezet egyedi nevét. A neveket a Time Series Insights explorer és a lekérdezési API-k által használt.
+   **Környezet neve** | Válassza ki a Time Series Insights-környezet egyedi nevét. A Time Series Insights explorer által használt nevét, és a [lekérdezési API-k](https://docs.microsoft.com/rest/api/time-series-insights/ga-query).
    **Előfizetés** | Az előfizetés az Azure-erőforrások tárolója. Válasszon egy előfizetést a Time Series Insights környezetet hozhat létre.
    **Erőforráscsoport** | Az erőforráscsoport az Azure-erőforrások tárolója. Válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat a Time Series Insights-környezet erőforrás.
-   **Hely** | Válassza ki a Time Series Insights-környezethez adatközponti régió. A hozzáadott sávszélességgel kapcsolatos költségek és a késés elkerülése érdekében ne a Time Series Insights-környezet és egyéb IoT-erőforrások ugyanabban a régióban.
-   **Díjszabási termékváltozat** | Válassza ki a szükséges teljesítményt. A legalacsonyabb költségek és az alapszintű kapacitás, válassza ki a `S1`.
-   **Kapacitás** | A kapacitás a kiválasztott SKU bejövő forgalmi sebességére, tárkapacitására és költségeire alkalmazott szorzó. Létrehozása után módosíthatja a kapacitást. Válassza ki a legalacsonyabb költséget 1 kapacitását.
+   **Location** | Válassza ki a Time Series Insights-környezethez adatközponti régió. További késleltetés elkerülése érdekében hozzon létre a Time Series Insights-környezet egyéb IoT-erőforrások ugyanabban a régióban.
+   **Tier** | Válassza ki a szükséges teljesítményt. Válassza ki **S1**.
+   **Kapacitás** | Kapacitás a szorzó a alkalmazni a bejövő forgalom és a tárolási kapacitás a kiválasztott Termékváltozat társítva. Létrehozása után módosíthatja a kapacitást. Válassza ki a kapacitását **1**.
 
-   Amikor végzett, válassza ki a **létrehozás** a kiépítési folyamat megkezdéséhez.
+   Amikor végzett, válassza ki a **felülvizsgálat + létrehozása** , folytassa a következő lépéssel.
 
    [![A Time Series Insights környezetet erőforrás létrehozása](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png#lightbox)
+
+1. A Time Series Insights-környezet, mostantól csatlakozhat az IoT hub által a megoldásgyorsító létrehozott. Állítsa be **válassza ki a hub** való `Select existing`. Ezután válassza ki az IoT hub beállításakor a megoldásgyorsító által létrehozott **az IoT Hub nevét**.
+
+   [![A Time Series Insights-környezet csatlakozik a létrehozott IoT hub](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png#lightbox)
 
 1. Ellenőrizze a **értesítések** panel figyelése a központi telepítés befejezését. 
 
    [![Time Series Insights környezetet üzembe helyezés sikeres volt](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png#lightbox)
 
-## <a name="create-a-device-simulation"></a>Eszközszimuláció létrehozása
-
-Ezután hozza létre az eszköz szimulálása megoldást, amely Tesztadatok feltöltése a Time Series Insights-környezetet hoz létre.
-
-1. Egy külön ablakban vagy a lapon lépjen a [azureiotsolutions.com](https://www.azureiotsolutions.com). Jelentkezzen be Azure-előfizetés ugyanazzal a fiókkal, és válassza ki a **Eszközszimuláció** gyorsító.
-
-   [![Futtassa az Eszközszimuláció megoldástámogató](media/tutorial-create-populate-tsi-environment/sa-main.png)](media/tutorial-create-populate-tsi-environment/sa-main.png#lightbox)
-
-1. Adja meg a szükséges paramétereket a a **Eszközszimuláció létrehozása megoldás** lapot.
-
-   Paraméter|Leírás
-   ---|---
-   **Megoldás neve** | Ez az egyedi érték segítségével hozzon létre egy új erőforráscsoportot. A felsorolt Azure-erőforrások létrejönnek, és hozzá lesznek rendelve az erőforráscsoporthoz.
-   **Előfizetés** | Adja meg a Time Series Insights-környezet létrehozása az előző szakaszban használt ugyanahhoz az előfizetéshez.
-   **Régió** | Adja meg a Time Series Insights-környezet létrehozása az előző szakaszban használt ugyanabban a régióban.
-   **Választható Azure-erőforrások üzembe helyezése** | Hagyja **az IoT Hub** be van jelölve. A szimulált eszközök használatával csatlakozni vagy adatokat.
-
-   Ha elkészült, válassza ki a **megoldás létrehozása** a megoldás az Azure-erőforrások kiépítése. Ez a folyamat befejezéséhez 6-7 percbe is telhet.
-
-   [![Az eszköz szimulálása megoldás kiépítése](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png#lightbox)
-
-1. Kiépítés befejezése után, a szöveg felett az új megoldásokat a változik **kiépítési** való **készen**.
-
-   >[!IMPORTANT]
-   > Ne válassza **indítsa el a** még! Hagyja megnyitva ezt a weblapot, mert Ön lesz később még visszatérünk rá.
-
-   [![Eszköz szimulálása megoldás teljes körű kiépítés](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png#lightbox)
-
-1. Most lépjen vissza az Azure Portalra, és vizsgálja meg az újonnan létrehozott erőforrást az előfizetésében. A portálon **erőforráscsoportok** lapon látható, hogy egy új erőforráscsoportot használatával lett létrehozva, a **megoldásnevet** az előző lépésben megadott. Szintén figyelje meg, az eszköz szimulálása megoldás támogatásához létrehozott erőforrásokat.
-
-   [![Az eszközszimulációs megoldás erőforrásai](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png)](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png#lightbox)
-
-## <a name="connect-the-environment-to-the-iot-hub"></a>A környezet csatlakoztatása az IoT hubhoz
-
-Mostanra elsajátította, hogyan hozhat létre két erőforráskészletet, mindegyiket a maga erőforráscsoportjában:
-
-- Üres a Time Series Insights-környezet.
-- Eszköz szimulálása megoldás erőforrásokat, amelyek megoldásgyorsítók által létrehozott IoT hub tartalmaz.
-
-Emlékezzünk vissza, hogy a szimulált eszközöknek egy IoT Hubra kell csatlakozniuk eszközadatok streameléséhez. Az adatok áramlását a Time Series Insights-környezetbe, szüksége az IoT hub és a Time Series Insights-környezet konfigurációs módosításokat.
-
-### <a name="iot-hub-configuration-define-a-consumer-group"></a>IoT hub-konfiguráció: Adjon meg egy fogyasztói csoportot
-
-IoT Hub által biztosított különböző végpontok megosztása más actors funkciókat. Az "Események" végpont teszi lehetővé más alkalmazásokat adatok felhasználásához, ahogy azt adatfolyamként történő egy IoT hub-példány. Pontosabban a "fogyasztói csoportok" alkalmazások figyelését, és kérje le az IoT hub adatainak mechanizmus biztosítására.
-
-Ezután megadhat egy új **fogyasztói csoportot** tulajdonság az eszköz szimulálása megoldás az IoT hub **események végpont**.
-
-1. Az Azure Portalon nyissa meg a **áttekintése** lap az szimuláció megoldás számára létrehozott erőforráscsoport. Válassza ki az IoT hub-erőforrást.
-
-   [![Az eszközszimulációs megoldás erőforráscsoportja](media/tutorial-create-populate-tsi-environment/ap-add-iot-hub-consumer-group-view-rg.png)](media/tutorial-create-populate-tsi-environment/ap-add-iot-hub-consumer-group-view-rg.png#lightbox)
-
-   Jegyezze fel a **neve** az IoT Hub erőforrás jön létre a megoldáshoz. Fog hivatkozni, azt később.
-
-1. Görgessen lefelé, és válassza a **végpontok** oldalra, és kattintson a **események** végpont. A végpont **tulajdonságok** lap, adja meg egy egyedi nevet a végpont alatt a "$Default" fogyasztói csoportot. Kattintson a **Mentés** gombra.
-
-   [![Eszközszimulációs megoldás IoT Hub-végpontjai](media/tutorial-create-populate-tsi-environment/ap-add-iot-hub-consumer-group-create.png)](media/tutorial-create-populate-tsi-environment/ap-add-iot-hub-consumer-group-create.png#lightbox)
-
-### <a name="environment-configuration-define-an-event-source"></a>Környezet konfigurációjának: eseményforrás definiálása
-
-Most csatlakoztassa az új IoT hub **fogyasztói csoportot** esemény végpont a Time Series Insights környezetben egy **eseményforrás**.
-
-1. Nyissa meg a **áttekintése** lapján a Time Series Insights-környezethez létrehozott erőforráscsoportot. Válassza ki a Time Series Insights-környezetet.
-
-   [![Time Series Insights-környezet erőforráscsoport és a környezet](media/tutorial-create-populate-tsi-environment/ap-add-env-event-source-view-rg.png)](media/tutorial-create-populate-tsi-environment/ap-add-env-event-source-view-rg.png#lightbox)
-
-1. A Time Series Insights-környezet oldalán válassza **eseményforrások**. Válassza ki **+ Hozzáadás**.
-
-   [![Time Series Insights-környezet áttekintése](media/tutorial-create-populate-tsi-environment/ap-add-env-event-source-add.png)](media/tutorial-create-populate-tsi-environment/ap-add-env-event-source-add.png#lightbox)
-
-1. Adja meg a szükséges paramétereket a a **új eseményforrás** lapot.
-
-   Paraméter|Leírás
-   ---|---
-   **Eseményforrás neve** | Itt egyedi értéket kell megadni, amely az eseményforrás neveként szolgál majd.
-   **Forrás** | Válassza ki **az IoT Hub**.
-   **Importálási beállítás** | Válassza az alapértelmezett `Use IoT hub from available subscriptions`. Ezen beállítás hatására a következő legördülő listából válassza ki az elérhető előfizetésekkel kell feltöltenie.
-   **Előfizetés** | Válassza ki, amelyben létrehozta a Time Series Insights-környezet és az Eszközszimuláció erőforrások ugyanahhoz az előfizetéshez.
-   **IoT Hub neve** | Ennek alapértelmezés szerint egyeznie kell az IoT Hub korábban feljegyzett nevével. Ha nem, válassza ki a megfelelő IoT Hubot.
-   **Iot Hub szabályzatneve** | Válassza ki **iothubowner**.
-   **IoT Hub fogyasztói csoport** | Ennek alapértelmezés szerint a korábban létrehozott IoT Hub fogyasztói csoport nevével kell egyeznie. Ha nem, válassza ki a megfelelő fogyasztói csoport nevét.
-   **Eseményszerializációs formátum** | Hagyja meg az kilistázott alapértelmezett értéke `JSON`.
-   **Időbélyeg-tulajdonság neve** | Adja meg a `timestamp`.
-
-   Ha elkészült, válassza ki a **létrehozás** az eseményforrás hozzáadása. Amikor visszatér az erőforráscsoport **áttekintése** lapon a Time Series Insights-környezet erőforrás, valamint egy új "Time Series Insights-eseményforrás" erőforrás megjelenik.
-
-   [![Time Series Insights környezetet új eseményforrás](media/tutorial-create-populate-tsi-environment/ap-add-env-event-source-add-event-source.png)](media/tutorial-create-populate-tsi-environment/ap-add-env-event-source-add-event-source.png#lightbox)
-
 ## <a name="run-device-simulation-to-stream-data"></a>Adatok streamelése az eszközszimuláció futtatása
 
-Most, hogy a teljes konfigurációs munkát befejezése, ideje a Time Series Insights környezetet a szimulált eszközök a mintaadatok feltöltése.
+Most, hogy az üzembe helyezés és a kezdeti konfigurációt a befejeződött, töltse ki a Time Series Insights-környezet mintaadatokat is abból az [szimulált eszközök a gyorsító által létrehozott](#create-a-device-simulation).
 
-Előfordulhat, hogy a már ismert a [hozzon létre egy eszköz szimulálása szakaszt](#create-a-device-simulation), a gyorsító támogatásához a megoldás több Azure-erőforrások létrejött. A korábban tárgyalt IoT Hubbal együtt egy Azure App Service-webalkalmazás is létrejött a szimulált eszköztelemetria létrehozására és továbbítására.
+Az IoT hubban, és a egy Azure App Service-webalkalmazás hozhat létre és továbbítja a szimulált eszköz telemetriai lett létrehozva.
 
 1. Lépjen vissza a [megoldásgyorsítók irányítópultjára](https://www.azureiotsolutions.com/Accelerators#dashboard). Jelentkezzen be újra, ha szükséges, azonos, de eddig ebben az oktatóanyagban használt Azure-fiók használatával. Most kiválaszthatja **indítsa el a** a "Eszközszimuláció" megoldás alatt található.
 
      [![Megoldás megoldásgyorsítók irányítópultja](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png#lightbox)
 
-1. Az eszköz szimulálása webes alkalmazás kezdődik a pontot, majd néhány másodpercig kezdeti betöltés után is igénybe vehet. Is kér hozzájárulást adni a webes alkalmazás a "Bejelentkezés és a profilja olvasását" engedélyt. Ez az engedély lehetővé teszi, hogy az alkalmazás a felhasználói profil adatait az alkalmazás működéséhez szükséges.
+1. Az eszköz szimulálása webalkalmazás első lépése kérő üzenet, meg kell adnia a webalkalmazást, a "Bejelentkezés és a profilja olvasását" engedélyt. Ez az engedély lehetővé teszi, hogy az alkalmazás a felhasználói profil adatait az alkalmazás működéséhez szükséges.
 
      [![Eszköz szimulálása webes alkalmazás jóváhagyásának](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png)](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png#lightbox)
 
@@ -219,7 +172,7 @@ Az utolsó szakaszban, győződjön meg arról, hogy a telemetriai adatokat jön
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ebben az oktatóanyagban létrehoz több futó Azure-szolgáltatások támogatásához a Time Series Insights környezetet és az eszköz szimulálása megoldás. Ha szeretne abandon vagy halassza el az oktatóanyag-sorozat végzett munka, a felesleges költségek elkerülése érdekében összes erőforrást törölheti.
+Ebben az oktatóanyagban létrehoz több futó Azure-szolgáltatások támogatásához a Time Series Insights környezetet és az eszköz szimulálása megoldás. Távolítsa el őket, lépjen vissza az Azure Portalon.
 
 Az Azure portal bal oldali menüből:
 

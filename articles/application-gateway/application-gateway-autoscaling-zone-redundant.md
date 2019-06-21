@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/13/2019
 ms.author: victorh
-ms.openlocfilehash: 7cf6b4984f3941da3b2cd0e4eada5eb1d87f2b01
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6aad0502b5739906d1fa8fa896f8d0af8cc38e30
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67054741"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205010"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatikus skálázás és zónaredundáns az Application Gateway v2 
 
@@ -24,7 +24,7 @@ Az új v2 szintű Termékváltozatot a következő fejlesztéseket tartalmazza:
 - **A redundancia zóna**: Egy Application Gateway vagy a waf-védelem is kiterjedhetnek több rendelkezésre állási zónában, eltávolítás, minden zónában egy Traffic Manager külön Application Gateway-példány üzembe kell. Választhat egy zóna vagy több zónában, az Application Gateway-példány telepítve vannak, ami lehetővé teszi az rugalmasabb zóna hibáira. A háttérkészlet alkalmazások hasonló módon – szét lehetnek osztva a rendelkezésre állási zónák.
 
   A Zone redudancy érhető el csak ha Azure-beli zónák rendelkezésre állnak. Más régiókban minden más szolgáltatások támogatottak. További információkért lásd: [Mik a rendelkezésre állási zónák az Azure-ban?](../availability-zones/az-overview.md#services-support-by-region)
-- **Statikus virtuális IP-CÍMEK**: Application gateway v2 Termékváltozat támogatja a statikus virtuális IP-cím kizárólag írja be. Ez biztosítja, hogy az application gateway társított virtuális IP-CÍMEK a telepítéshez, akár az újraindítás után élettartama nem változik.
+- **Statikus virtuális IP-CÍMEK**: Application Gateway v2 szintű Termékváltozatot a statikus VIP típusa kizárólag támogatja. Ez biztosítja, hogy az application gateway társított virtuális IP-CÍMEK a telepítéshez, akár az újraindítás után élettartama nem változik.  Nincs virtuális statikus IP-címhez a v1, így kell használni az application gateway URL-cím helyett az IP-cím-tartomány neve útválasztási az App Servicesbe való az application gateway-n keresztül.
 - **Fejléc Újraírási**: Az Application Gateway lehetővé teszi hozzáadása, eltávolítása vagy frissítse a HTTP-kérelmek és válaszfejlécek v2 szintű Termékváltozatot. További információkért lásd: [Újraírási HTTP-fejlécek az Application Gateway segítségével](rewrite-http-headers.md)
 - **Key Vault-integráció (előzetes verzió)** : Application Gateway v2 HTTPS-kompatibilis figyelői csatolt kiszolgálói tanúsítványokat a Key Vault integration (a nyilvános előzetes verzió) támogatja. További információkért lásd: [Key Vault tanúsítványokkal rendelkező SSL-lezárást](key-vault-certs.md).
 - **Az Azure Kubernetes Service Bejövőforgalom-vezérlőt (előzetes verzió)** : Az Application Gateway v2 Bejövőforgalom-vezérlőjéhez lehetővé teszi, hogy az Azure Application Gateway használható a bejövő forgalom számára az Azure Kubernetes Service (AKS) néven az AKS-fürtöt. További információkért lásd: a [dokumentációs oldalon](https://azure.github.io/application-gateway-kubernetes-ingress/).
@@ -42,7 +42,7 @@ A Standard_v2 és WAF_v2 Termékváltozat az alábbi régiókban érhető el: US
 A v2 termékváltozatú a díjszabási modell határozzák meg a felhasználás, és már nincs csatolva a példányok számát és méretét. A v2 a Termékváltozat díjszabása két összetevőből áll:
 
 - **Rögzített ár** – Ez az óránként (vagy a megkezdett órák) Standard_v2 vagy WAF_v2 átjáró kiépítése árát.
-- **A kapacitás Egységár** – Ez a fogyasztás alapú költségeit, amelyet az állandó költség mellett díjat számítunk fel. Kapacitásegység díj is számított óránkénti vagy részleges óránként. Kapacitásegység három dimenziókat, – a számítási egység, állandó kapcsolat és átviteli sebességet. A számítási egység a processzor kapacitásának felhasznált mérték. Számítási egység befolyásoló tényezők TLS kapcsolatok/mp-ben, az URL Rewrite számítások és WAF szabály feldolgozása. Állandó kapcsolatot létrehozott TCP-kapcsolatot az application gateway mértékegysége szerepel egy adott elszámolási időszakban. Átviteli sebesség átlagos megabit/mp dolgozza fel a rendszer az egy adott elszámolási időszakban.
+- **A kapacitás Egységár** – Ez a fogyasztás alapú költségeit, amelyet az állandó költség mellett díjat számítunk fel. A kapacitásegység díjait is óránkénti vagy részben óránkénti egységekben mérjük. A kapacitásegységek három összetevőből állnak: a számítási egység, az állandó kapcsolatok és az átviteli sebesség. A számítási egység a felhasznált processzorkapacitás mértékegysége. Számítási egység befolyásoló tényezők TLS kapcsolatok/mp-ben, az URL Rewrite számítások és WAF szabály feldolgozása. Állandó kapcsolatot létrehozott TCP-kapcsolatot az application gateway mértékegysége szerepel egy adott elszámolási időszakban. Átviteli sebesség átlagos megabit/mp dolgozza fel a rendszer az egy adott elszámolási időszakban.
 
 Egy kapacitás elszámolási egység legfeljebb áll: 1 számítási egység, vagy állandó 2500-kapcsolatokat, vagy 2.22 MB/s átviteli sebesség.
 

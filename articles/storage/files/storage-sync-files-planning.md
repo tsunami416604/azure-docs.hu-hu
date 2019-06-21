@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bc9f8e29a744a3a40d17b3814c7124eb37c1543b
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
-ms.translationtype: HT
+ms.openlocfilehash: 9bb33e7d2bb80bcb19087dca6bc21bafc791af2a
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/20/2019
-ms.locfileid: "67269424"
+ms.locfileid: "67303917"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -170,7 +170,7 @@ A Windows Server feladatátvételi fürtszolgáltatás támogatott az Azure File
 
 ### <a name="data-deduplication"></a>Az Adatdeduplikáció
 **Ügynök verziója 5.0.2.0**   
-Az Adatdeduplikáció a felhőbeli rétegezés engedélyezve van a Windows Server 2016 és Windows Server 2019 kötetek esetében támogatott. Egy köteten, a deduplikáció engedélyezése a felhőbeli rétegezés engedélyezett lehetővé teszi további fájlok a helyi gyorsítótár több tároló üzembe helyezése nélkül.
+Az Adatdeduplikáció a felhőbeli rétegezés engedélyezve van a Windows Server 2016 és Windows Server 2019 kötetek esetében támogatott. Egy köteten, a deduplikáció engedélyezése a felhőbeli rétegezés engedélyezett lehetővé teszi további fájlok a helyi gyorsítótár több tároló üzembe helyezése nélkül. Vegye figyelembe, hogy ezek kötet megtakarítás csak vonatkoznak-e a helyszíni; Azure Files szolgáltatásban az adatok nem lesznek deduplikált. 
 
 **A Windows Server 2012 R2 vagy az ügynök korábbi verzióival**  
 Olyan kötetek, amelyek nem rendelkeznek a felhőbeli rétegezés engedélyezve van, az Azure File Sync támogatja a Windows Server Adatdeduplikáció engedélyezése a köteten.
@@ -209,9 +209,12 @@ A kiszolgálón, amely az Azure File Sync-ügynök van telepítve a sysprep hasz
 Ha a felhőbeli rétegezés engedélyezve van a kiszolgálóvégponton, a rendszer rétegzett fájlok kihagyva, és nem indexeli a Windows Search. A nem rétegzett fájlok megfelelően vannak indexelve.
 
 ### <a name="antivirus-solutions"></a>A víruskereső megoldásokkal
-Víruskereső ismert kártevő kódja fájlok vizsgálata úgy működik, mert egy víruskereső előfordulhat, hogy a rétegzett fájlok visszahívása. Verziókban 4.0-s és újabb az Azure File Sync ügynök rétegzett fájlok a biztonságos Windows FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS attribútumkészletet. Azt javasoljuk, hogy a szoftver gyártójával való olvasási rendszerfájlokra ez (számos automatikusan elvégezze ezt) kihagyja a megoldás konfigurálása egyeztetett.
+Víruskereső ismert kártevő kódja fájlok vizsgálata úgy működik, mert egy víruskereső előfordulhat, hogy a rétegzett fájlok visszahívása. Verziókban 4.0-s és újabb az Azure File Sync ügynök rétegzett fájlok a biztonságos Windows FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS attribútumkészletet. Azt javasoljuk, hogy a szoftver gyártójával való olvasási rendszerfájlokra ez (számos automatikusan elvégezze ezt) kihagyja a megoldás konfigurálása egyeztetett. 
 
 A Microsoft belső fejlesztésű vírusvédelmi megoldások, a Windows Defender és System Center Endpoint Protection (SCEP), mindkettő automatikusan hagyja ki ezt az attribútumot állítsa rendelkező fájlok olvasásához. Tudjuk tesztelni őket, és egy kisebb hibát azonosított: a kiszolgáló egy meglévő szinkronizálási csoporthoz való hozzáadásakor fájlok kisebb, mint 800 bájt vannak idézni (Letöltés) az új kiszolgálón. Ezek a fájlok továbbra is az új kiszolgálón, és nem lesz rétegzett, mivel azok nem felelnek meg a rétegzési méretkövetelményt (> 64 KB-os).
+
+> [!Note]  
+> Víruskereső ellenőrizheti a kompatibilitást a termék- és az Azure File Sync használatával az [Azure fájl szinkronizálása víruskereső kompatibilitási teszt] között (https://www.microsoft.com/download/details.aspx?id=58322), amely letölthető a Microsoft Download Center érhető el.
 
 ### <a name="backup-solutions"></a>Biztonsági mentési megoldások
 Például a víruskereső megoldások biztonsági mentési megoldások okozhat a rétegzett fájlok visszahívása. Azt javasoljuk, hogy biztonsági mentése az Azure-fájlmegosztás helyett egy a helyszíni biztonsági mentési termék egy felhőalapú biztonsági mentési megoldás használatával.
@@ -265,18 +268,15 @@ Az Azure File Sync csak az alábbi régiókban érhető el:
 | Délkelet-Ázsia | Szingapúr |
 | Az Egyesült Királyság déli régiója | London |
 | Az Egyesült Királyság nyugati régiója | Cardiff |
-| USA Arizona állam (előzetes verzió) | Arizona |
-| USA-beli államigazgatás – Texas (előzetes verzió) | Texas |
-| USA-beli államigazgatás – Virginia (előzetes verzió) | Virginia |
+| USA-beli államigazgatás – Arizona | Arizona |
+| USA-beli államigazgatás – Texas | Texas |
+| USA-beli államigazgatás – Virginia | Virginia |
 | Nyugat-Európa | Hollandia |
 | USA nyugati középső régiója | Wyoming |
 | USA nyugati régiója | Kalifornia |
 | USA nyugati régiója, 2. | Washington |
 
 Az Azure File Sync támogatja, és a Storage Sync Service ugyanabban a régióban található Azure-fájlmegosztások csak való szinkronizálását.
-
-> [!Note]  
-> Az Azure File Sync jelenleg csak a kormányzati régiókat privát előzetes verzióban érhető el. Tekintse meg a [kibocsátási megjegyzések](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#agent-version-5020) előzetes programjában való regisztrációval kapcsolatban.
 
 ### <a name="azure-disaster-recovery"></a>Azure-beli vészhelyreállításához
 Egy Azure-régióban, adatvesztés elleni védelme érdekében az Azure File Sync integrálható a [georedundáns tárhely-redundancia](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS) lehetőséget. GRS tároló működéséről a párosított másodlagos régióban aszinkron blokkreplikációt az elsődleges régióban, amellyel normál esetben kezelheti, storage és a storage használatával. Egy katasztrófa, amely egy Azure-régió ideiglenesen vagy véglegesen offline állapotba a Microsoft fogja tárolás feladatátvétele a párosított régióba. 
@@ -311,7 +311,7 @@ Georedundáns tárolás és az Azure File Sync feladatátvételi integrációjá
 | Az Egyesült Királyság nyugati régiója             | Az Egyesült Királyság déli régiója           |
 | USA-beli államigazgatás – Arizona      | USA-beli államigazgatás – Texas       |
 | US Gov Iowa         | USA-beli államigazgatás – Virginia    |
-| US Gov Virgini      | USA-beli államigazgatás – Texas       |
+| USA-beli államigazgatás – Virginia      | USA-beli államigazgatás – Texas       |
 | Nyugat-Európa         | Észak-Európa       |
 | USA nyugati középső régiója     | USA nyugati régiója, 2.          |
 | USA nyugati régiója             | USA keleti régiója            |

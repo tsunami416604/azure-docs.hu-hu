@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/07/2019
+ms.date: 06/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 00501ec72dff99f93fa04944c5ab733fce38ce21
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9f5f9b3595074c26c80c824052727e962b01162a
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074010"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275042"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Megismerheti az Azure-erőforrások szerepkör-definíciók
 
@@ -52,7 +52,8 @@ A `{action}` egy művelet karakterlánc részének határozza meg az erőforrás
 | ------------------- | ------------------- |
 | `*` | A helyettesítő karaktert az összes műveletet, amelyek megfelelnek a karakterlánc a hozzáférést. |
 | `read` | Lehetővé teszi, hogy olvasási műveleteket (GET). |
-| `write` | Lehetővé teszi, hogy írási műveletek (PUT, POST és PATCH). |
+| `write` | Lehetővé teszi, hogy írási műveletek (PUT vagy PATCH). |
+| `action` | Lehetővé teszi egyéni műveleteket, indítsa újra a virtuális gépek (POST). |
 | `delete` | Lehetővé teszi, hogy törlési műveletek (Törlés). |
 
 Íme a [közreműködői](built-in-roles.md#contributor) szerepkör-definíció JSON formátumban. A helyettesítő karakter (`*`) művelet alatt `Actions` azt jelzi, hogy az egyszerű, ehhez a szerepkörhöz rendelt minden művelet végrehajtására, vagy más szóval azt mindent felügyelhetnek. Ez magában foglalja a későbbiekben, meghatározott műveletek, az Azure ad hozzá új erőforrástípusok. A műveletek alatt `NotActions` összegből `Actions`. Abban az esetben, a [közreműködői](built-in-roles.md#contributor) szerepkör `NotActions` eltávolítja a szerepkör lehetővé teszi az erőforrásokhoz való hozzáférés kezelése és is hozzárendelhet erőforrásokhoz való hozzáférés.
@@ -79,7 +80,7 @@ A `{action}` egy művelet karakterlánc részének határozza meg az erőforrás
 }
 ```
 
-## <a name="management-and-data-operations-preview"></a>Felügyeleti és műveletei (előzetes verzió)
+## <a name="management-and-data-operations"></a>Felügyeleti és műveletei
 
 Felügyeleti műveletek a szerepköralapú hozzáférés-vezérlő van megadva a `Actions` és `NotActions` egy szerepkör-definíció tulajdonságait. Íme néhány példa a felügyeleti műveleteket az Azure-ban:
 
@@ -89,7 +90,7 @@ Felügyeleti műveletek a szerepköralapú hozzáférés-vezérlő van megadva a
 
 Felügyeleti hozzáférés nem örökli az adatokhoz. Ez a fajta elkülönítés megakadályozza, hogy a szerepkörök a helyettesítő karakterek (`*`) származó kellene korlátozás nélkül hozzáférnek az adatokat. Például, ha a felhasználó rendelkezik egy [olvasó](built-in-roles.md#reader) szerepkör egy előfizetésre, majd megtekinthetik a storage-fiókot, de alapértelmezés szerint ezek nem tekintheti meg az alapul szolgáló adatokat.
 
-Szerepköralapú hozzáférés-vezérlés korábban nem használta az üzemeltetés. Engedélyezési műveletek különböző erőforrás-szolgáltató között. Az azonos szerepköralapú hozzáférés-vezérlési engedélyezési modell felügyeleti műveleteihez használt ki van terjesztve az műveletekhez (jelenleg előzetes verzióban érhető el).
+Szerepköralapú hozzáférés-vezérlés korábban nem használta az üzemeltetés. Engedélyezési műveletek különböző erőforrás-szolgáltató között. Az azonos szerepköralapú hozzáférés-vezérlési engedélyezési modell felügyeleti műveleteihez használt ki van terjesztve az műveletekhez.
 
 Műveletek támogatása érdekében új adattulajdonságok lettek hozzáadva a szerepkör-definíció struktúra. Adatműveletek vannak megadva a `DataActions` és `NotDataActions` tulajdonságait. Ezek a Tulajdonságok adatok hozzáadásával a felügyeleti és az adatok elkülönítése változatlan marad. Ez megakadályozza, hogy a jelenlegi szerepkör-hozzárendelések helyettesítő karakterek (`*`) hirtelen nem adatokhoz fér hozzá. Az alábbiakban néhány műveletekhez, amelyek segítségével is megadható `DataActions` és `NotDataActions`:
 
@@ -169,11 +170,7 @@ Megtekintheti és az üzemeltetés, az eszközök és SDK-kkal megfelelő verzi�
 
 Megtekintheti, és a Adatműveletek használata a REST API-ban, be kell állítani a **api-version** paraméter a következő verziójú vagy újabb:
 
-- 2018-01-01-preview
-
-Az Azure Portalon is lehetővé teszi a felhasználóknak megkeresheti és felügyelheti a várólisták és a Blob tartalmát felületének előzetese tárolók az Azure AD-n keresztül. Megtekintheti és kezelheti a várakozási sorban vagy Blobban tároló kattintson a tartalmát a **feltárhatja az adatait az Azure AD preview rendszert használó** a storage-fiók áttekintése.
-
-![Ismerkedés az üzenetsorok és a Blob-tárolók használatával az Azure AD-előzetes verzió](./media/role-definitions/rbac-dataactions-browsing.png)
+- 2018-07-01
 
 ## <a name="actions"></a>Műveletek
 
@@ -195,7 +192,7 @@ A `NotActions` engedélyt megadja a felügyeleti műveleteket, amelyek ki vannak
 > Ha egy felhasználó lesz hozzárendelve egy szerepkörhöz, amely nem tartalmazza a művelet `NotActions`, és hozzá van rendelve egy második szerepkör, amely hozzáférést biztosít a műveletben, a felhasználó számára engedélyezett a művelet végrehajtásához. `NotActions` nem megtagadási szabály – egyszerűen kényelmesen engedélyezett műveletek készletének létrehozása, ha adott műveletek kell ki lesznek zárva.
 >
 
-## <a name="dataactions-preview"></a>a dataActions (előzetes verzió)
+## <a name="dataactions"></a>DataActions
 
 A `DataActions` engedélyt megadja az adatműveletekre, amely a szerepkör lehetővé teszi, hogy végrehajtani ahhoz, hogy az adatok az objektumon belül. Például ha a felhasználó rendelkezik-e olvasási adatelérési blob storage-fiókba, majd elolvasása, hogy a tárfiókban található blobok. Az alábbiakban néhány példát, amely használható Adatműveletek `DataActions`.
 
@@ -206,7 +203,7 @@ A `DataActions` engedélyt megadja az adatműveletekre, amely a szerepkör lehet
 | `Microsoft.Storage/storageAccounts/ queueServices/queues/messages/read` | Egy üzenetet ad vissza. |
 | `Microsoft.Storage/storageAccounts/ queueServices/queues/messages/*` | Üzenet vagy írásakor vagy üzenet törlésének eredményét adja vissza. |
 
-## <a name="notdataactions-preview"></a>notDataActions (előzetes verzió)
+## <a name="notdataactions"></a>NotDataActions
 
 A `NotDataActions` engedélyt megadja a kizárt Adatműveletek az engedélyezett a `DataActions`. A szerepkör (hatályos engedélyek) által biztosított hozzáférést számított kivonásával történik a `NotDataActions` műveleteket az a `DataActions` műveleteket. Mindegyik erőforrás-szolgáltató biztosítja a megfelelő API-k Adatműveletek teljesítéséhez.
 

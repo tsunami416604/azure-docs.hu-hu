@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.date: 04/25/2019
-ms.openlocfilehash: afa539bc3369e4f9d9ecf27340436e0be70a03ad
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: a8857d62b3078d78bdd0a339ebadf766ddb2fb43
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190572"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295820"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Gyors útmutató: Automatizált feladatokat, folyamatok és munkafolyamatok létrehozása az Azure Logic Apps – Visual Studio
 
@@ -88,7 +88,7 @@ Első lépésként hozzon létre egy [Azure erőforráscsoport-projektet](../azu
 
    1. Adja meg a használni kívánt Azure-erőforráscsoportot és egyéb projekt nevét. Válassza a **Létrehozás** elemet.
 
-1. A sablon listából válassza ki a **logikai alkalmazás** sablont. Kattintson az **OK** gombra.
+1. A sablon listából válassza ki a **logikai alkalmazás** sablont. Válassza az **OK** gombot.
 
    ![Logikaialkalmazás-sablon kiválasztása](./media/quickstart-create-logic-apps-with-visual-studio/select-logic-app-template.png)
 
@@ -105,6 +105,9 @@ Ha rendelkezik az Azure-erőforráscsoport projekt, a logikai alkalmazás létre
 
    ![A logikai alkalmazás .json-fájljának megnyitása a Logikaialkalmazás-tervezővel](./media/quickstart-create-logic-apps-with-visual-studio/open-logic-app-designer.png)
 
+   > [!TIP]
+   > Ha nem rendelkezik ezzel a paranccsal a Visual Studio 2019, ellenőrizze, hogy van-e a legújabb frissítéseket a Visual Studióhoz.
+
    A Visual Studio kéri az Azure-előfizetés és az Azure-erőforráscsoport létrehozásához és üzembe helyezni erőforrásokat, a logikai alkalmazás és a kapcsolatokat.
 
 1. A **előfizetés**, válassza ki az Azure-előfizetésében. A **erőforráscsoport**válassza **hozzon létre új** hozhat létre egy új Azure-erőforráscsoportot.
@@ -116,7 +119,7 @@ Ha rendelkezik az Azure-erőforráscsoport projekt, a logikai alkalmazás létre
    | Felhasználói profilok listája | Contoso <br> jamalhartnett@contoso.com | Alapértelmezés szerint a bejelentkezéshez használt fiók |
    | **Előfizetés** | Utólagos, használatalapú fizetés <br> (jamalhartnett@contoso.com) | Az Azure-előfizetés és a társított fiók neve |
    | **Erőforráscsoport** | MyLogicApp-RG <br> (USA nyugati régiója) | Az Azure-erőforráscsoportot és tárolására, és a logikai alkalmazás-erőforrások üzembe helyezése |
-   | **Hely** | MyLogicApp-RG2 <br> (USA nyugati régiója) | Egy másik hely, ha nem az erőforráscsoport helyét szeretné használni |
+   | **Location** | MyLogicApp-RG2 <br> (USA nyugati régiója) | Egy másik hely, ha nem az erőforráscsoport helyét szeretné használni |
    ||||
 
 1. A Logic Apps Designerben megnyílik egy oldal, amely bemutatja a bemutató videó és a gyakran használt triggereket. Görgessen át a videón és triggereket adjuk ki **sablonok**, és válassza ki **üres logikai alkalmazás**.

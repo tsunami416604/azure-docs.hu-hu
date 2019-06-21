@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 06/13/2019
 ms.author: getroyer
-ms.openlocfilehash: ab3b742d50cc141420f9bffa1961a6e170b99d2a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 9b762f1b3f1c17e15b051e72f5d2cf98bef446bf
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66234351"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137758"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Az Azure Data Science virtuális gépek használata
 
@@ -56,6 +56,17 @@ A fájl elérési utak a paritásos megőrzéséhez a **ingyenes számítási** 
 ![Leállítás gombját, az Azure-jegyzetfüzetekben](media/shutdown.png)
 
 Ha egy projektet egy virtuális gépen fut, a fájlok csatlakoztatva vannak-e a gyökérkönyvtárban a Jupyter-kiszolgáló (könyvtárral JupyterHub), és cserélje le az alapértelmezett Azure notebookok fájlokat. Amikor leállítja a virtuális gépet a **leállítási** gomb a notebook UI, az Azure-jegyzetfüzetek visszaállítja az alapértelmezett fájlokat.
+
+![Leállítás gombját, az Azure-jegyzetfüzetekben](media/shutdown.png)
+
+## <a name="create-new-dsvm-users"></a>Hozzon létre új DSVM-felhasználók
+
+Ha több felhasználó osztozik egy adatelemző virtuális GÉPET, elkerülheti a blokkolás egymással létrehozásával és használatával a DSVM-felhasználó minden olyan jegyzetfüzet felhasználóhoz:
+
+1. Az a [az Azure Portal](https://portal.azure.com), keresse meg a virtuális géphez.
+1. A **támogatás + hibaelhárítás** válassza a bal margón **jelszó alaphelyzetbe állítása**.
+1. Adjon meg egy új felhasználónevet és jelszót, és válassza ki **frissítés**. (Meglévő felhasználónevek nem változnak.)
+1. Az előző lépés megismétlésével további felhasználók számára.
 
 ## <a name="next-steps"></a>További lépések
 

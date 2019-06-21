@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: 7c7d7c480068b754413fd2309a2251d1e3855106
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1e46c935d298f2fe7ebfa4bce471288c9ab8a606
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075177"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67271948"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Hozzon létre egy témakör több hellyé követő utasításokat használatával
 
@@ -229,7 +229,7 @@ Az előző szakaszban a kért választ, és bármely követő utasításokat kö
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "prompts": [
+                "promptsToAdd": [
                     {
                         "displayOrder": 0,
                         "qnaId": 16,
@@ -254,7 +254,8 @@ Az előző szakaszban a kért választ, és bármely követő utasításokat kö
                         "qna": null,
                         "displayText": "Create a Windows Account"
                     }
-                ]
+                ],
+                "promptsToDelete":[]
             }
         },
         {
@@ -268,14 +269,15 @@ Az előző szakaszban a kért választ, és bármely követő utasításokat kö
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "prompts": [
+                "promptsToAdd": [
                     {
                         "displayOrder": 0,
                         "qnaId": 16,
                         "qna": null,
                         "displayText": "Turn off the device"
                     }
-                ]
+                ],
+                "promptsToDelete":[]
             }
         },
         {
@@ -289,14 +291,21 @@ Az előző szakaszban a kért választ, és bármely követő utasításokat kö
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "prompts": []
+                "promptsToAdd": [],
+                "promptsToDelete":[]
             }
         }
     ]
 }
 ```
 
-A `prompts` tömb biztosít a szöveg a `displayText` tulajdonság és a `qnaId` flow értéket, így ezek a válaszok megjelenítheti a következő megjelenített választható lehetőségként a beszélgetést, majd küldése a következő kérelmet a QnA Maker kijelölt értéket. 
+A `promptsToAdd` tömb biztosít a szöveg a `displayText` tulajdonság és a `qnaId` flow értéket, így ezek a válaszok megjelenítheti a következő megjelenített választható lehetőségként a beszélgetést, majd küldése a következő kérelmet a QnA Maker kijelölt értéket. 
+
+<!--
+
+The `promptsToDelete` array provides the ...
+
+-->
 
 ## <a name="json-request-to-return-non-initial-answer-and-follow-up-prompts"></a>JSON-kérelmi adhatja vissza nem eredeti válasz és követő utasításokat
 
@@ -336,7 +345,8 @@ A QnA Maker _GenerateAnswer_ JSON-válasz tartalmazza a nyomon követési utasí
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "prompts": []
+                "promptsToAdd": [],
+                "promptsToDelete":[]
             }
         },
         {
@@ -350,14 +360,15 @@ A QnA Maker _GenerateAnswer_ JSON-válasz tartalmazza a nyomon követési utasí
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "prompts": [
+                "promptsToAdd": [
                     {
                         "displayOrder": 0,
                         "qnaId": 4,
                         "qna": null,
                         "displayText": "Ports and connectors"
                     }
-                ]
+                ],
+                "promptsToDelete":[]
             }
         },
         {
@@ -371,7 +382,8 @@ A QnA Maker _GenerateAnswer_ JSON-válasz tartalmazza a nyomon követési utasí
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "prompts": []
+                "promptsToAdd": [],
+                "promptsToDelete":[]
             }
         }
     ]

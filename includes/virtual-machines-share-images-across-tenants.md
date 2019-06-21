@@ -9,11 +9,11 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 499aeccdf00980eeb66ac6ee06e45267fd515143
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66145885"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179083"
 ---
 Megosztott kép katalógusok lehetővé teszik a megosztás képek RBAC használatával. Az RBAC használatával megoszthatja a bérlőn kívüli lemezképeket a bérlőn belül, és akár egyéni felhasználók számára. De ha meg szeretné osztani a lemezképek kívül az Azure-bérlőhöz, ipari méretekben, hozzunk létre egy alkalmazás regisztrációját a megosztás megkönnyítése érdekében.  Az alkalmazásregisztráció használatával engedélyezheti a összetettebb megosztási helyzetek, például: 
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 0b17a87fa02c382ae19cca6e4abcfff2ec475450
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c6d395d878d38ab48b95ca82d94d2a222428bae1
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66252680"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274948"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>Az IoT Hub üzenet-útválasztással és az Event Grid összehasonlítása
 
@@ -64,7 +64,7 @@ Az IoT Hub üzenet-útválasztással és a IoT Hub és az Event Grid integráci�
 
    IoT Hub üzenet-útválasztása támogatja az egyedi végpontok és végponttípusok korlátozott számú, de irányítsa át az adatokat és eseményeket további végpontokat az összekötőket hozhat létre. Támogatott végpontok teljes listáját lásd: a táblázat az előző szakaszban. 
 
-   Az IoT Hub-integráció az Event GRID használatával támogatja az IoT Hub és a nagyobb különböző végponttípusok 500 végpontra. Naively integrálható az Azure Functions, a Logic Apps, a Storage és Azure Service Bus-üzenetsorok, és adatokat küldő kívül az Azure-szolgáltatás ökoszisztéma, valamint a külső üzleti alkalmazások bővítése webhookokkal is működik.
+   Az IoT Hub-integráció az Event GRID használatával támogatja az IoT Hub és a nagyobb különböző végponttípusok 500 végpontra. Natív módon integrálható az Azure Functions, a Logic Apps, a Storage és Azure Service Bus-üzenetsorok, és adatokat küldő kívül az Azure-szolgáltatás ökoszisztéma, valamint a külső üzleti alkalmazások bővítése webhookokkal is működik.
 
 * **Nem számít, hogy az adatok sorrendben érkeznek?**
 

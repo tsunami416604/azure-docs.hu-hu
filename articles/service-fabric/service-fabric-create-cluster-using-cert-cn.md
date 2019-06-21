@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
 ms.author: aljo
-ms.openlocfilehash: bf28ddf7facbc742a107f67f3d7e81eca5a5c950
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fe1adc0aef80066721ce0b80419c787fe25346a9
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60394268"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190818"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Ujjlenyomat helyett a tanúsítvány köznapi nevét használó Service Fabric-fürt üzembe helyezése
 Nincs két tanúsítványt ugyanazzal az ujjlenyomattal, ami megnehezíti a fürt tanúsítványváltás vagy felügyeleti is rendelkezhet. Több tanúsítvány, azonban lehet a ugyanazzal a névvel vagy a tulajdonos.  Tanúsítvány köznapi nevek a fürtök teszi tanúsítványok kezelése sokkal egyszerűbb. Ez a cikk ismerteti, hogyan helyezhet üzembe Service Fabric-fürt helyett a tanúsítvány ujjlenyomata a tanúsítvány köznapi nevét használni.
@@ -84,12 +84,18 @@ Először nyissa meg a *azuredeploy.parameters.json* fájlt egy szövegszerkeszt
 "certificateCommonName": {
     "value": "myclustername.southcentralus.cloudapp.azure.com"
 },
+"certificateIssuerThumbprint": {
+    "value": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+},
 ```
 
 Következő lépésként állítsa a *certificateCommonName*, *sourceVaultValue*, és *certificateUrlValue* azokat a fenti parancsfájl által visszaadott paraméterértékeket:
 ```json
 "certificateCommonName": {
     "value": "myclustername.southcentralus.cloudapp.azure.com"
+},
+"certificateIssuerThumbprint": {
+    "value": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 },
 "sourceVaultValue": {
   "value": "/subscriptions/<subscription>/resourceGroups/testvaultgroup/providers/Microsoft.KeyVault/vaults/testvault"
@@ -108,6 +114,12 @@ Ezután nyissa meg a *azuredeploy.json* fájlt egy szövegszerkesztőben, és h�
       "type": "string",
       "metadata": {
         "description": "Certificate Commonname"
+      }
+    },
+    "certificateIssuerThumbprint": {
+      "type": "string",
+      "metadata": {
+        "description": "Certificate Authority Issuer Thumpbrint for Commonname cert"
       }
     },
     ```
@@ -215,8 +227,5 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -TemplateParameterFi
 * Ismerje meg, hogyan [fürttanúsítvány váltása](service-fabric-cluster-rollover-cert-cn.md)
 * [Frissítse és fürttanúsítványok kezelése](service-fabric-cluster-security-update-certs-azure.md)
 * A tanúsítvány kezelésének leegyszerűsítése [tanúsítvány ujjlenyomatát a fürt módosítása köznapi név](service-fabric-cluster-change-cert-thumbprint-to-cn.md)
-
-[image1]: .\media\service-fabric-cluster-change-cert-thumbprint-to-cn\PortalViewTemplates.png
-ic-cluster-change-cert-thumbprint-to-cn.md))
 
 [image1]: .\media\service-fabric-cluster-change-cert-thumbprint-to-cn\PortalViewTemplates.png
