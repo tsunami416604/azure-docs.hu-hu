@@ -20,14 +20,14 @@ Azure tervezetek így egy tervezetdefiníció több dinamikus funkciókat biztos
 
 Az alábbi funkciókat támogatja:
 
-- [Összetevők](#artifacts)
+- [artifacts](#artifacts)
 - [concat](#concat)
-- [paraméterek](#parameters)
+- [parameters](#parameters)
 - [resourceGroup](#resourcegroup)
 - [resourceGroups](#resourcegroups)
-- [előfizetést](#subscription)
+- [subscription](#subscription)
 
-## <a name="artifacts"></a>Összetevők
+## <a name="artifacts"></a>artifacts
 
 `artifacts(artifactName)`
 
@@ -109,12 +109,12 @@ Néhány példa az adatok beolvasása a _myTemplateArtifact_ minta vannak:
 
 | kifejezés | Típus | Érték |
 |:---|:---|:---|
-|`[artifacts("myTemplateArtifact").outputs.myArray]` | Tömb | \["first", "másodperc"\] |
+|`[artifacts("myTemplateArtifact").outputs.myArray]` | Array | \["first", "másodperc"\] |
 |`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | String | "first" |
 |`[artifacts("myTemplateArtifact").outputs.myString]` | String | "a karakterlánc-érték" |
 |`[artifacts("myTemplateArtifact").outputs.myObject]` | Object | {"myproperty": "saját érték", "anotherProperty": true} |
-|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | String | a "value" |
-|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | True (Igaz) |
+|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | String | "my value" |
+|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | True |
 
 ## <a name="concat"></a>Concat
 
@@ -126,7 +126,7 @@ Több karakterlánc-értékek egyesíti, és a összefűzött karakterláncot ad
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| Szöveg1 |Igen |string |Összefűzés első értéke. |
+| string1 |Igen |string |Összefűzés első értéke. |
 | További argumentumok |Nem |string |További értékek összefűzésével sorrendben |
 
 ### <a name="return-value"></a>Vrácená hodnota
@@ -200,7 +200,7 @@ Ezután _principalIds_ argumentumként `parameters()` a tervezet-összetevőben:
 }
 ```
 
-## <a name="resourcegroup"></a>Erőforráscsoport
+## <a name="resourcegroup"></a>resourceGroup
 
 `resourceGroup()`
 
@@ -324,7 +324,7 @@ Ezután a `resourceGroups()` függvény bármely tervezet lehívandó összetev�
 }
 ```
 
-## <a name="subscription"></a>előfizetést
+## <a name="subscription"></a>subscription
 
 `subscription()`
 
