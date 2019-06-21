@@ -68,9 +68,9 @@ Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
 name | Az if-condition tevékenység neve. | String | Igen
 type | Meg kell **IfCondition** | String | Igen
-kifejezés | IGAZ vagy hamis kifejezés | Logikai érték kifejezéstípus eredménnyel | Igen
-ifTrueActivities | Ha a kifejezés értéke végrehajtott tevékenységek `true`. | Tömb | Igen
-ifFalseActivities | Ha a kifejezés értéke végrehajtott tevékenységek `false`. | Tömb | Igen
+expression | IGAZ vagy hamis kifejezés | Logikai érték kifejezéstípus eredménnyel | Igen
+ifTrueActivities | Ha a kifejezés értéke végrehajtott tevékenységek `true`. | Array | Igen
+ifFalseActivities | Ha a kifejezés értéke végrehajtott tevékenységek `false`. | Array | Igen
 
 ## <a name="example"></a>Példa
 Ebben a példában szereplő folyamat adatokat másol a bemeneti mappában kimeneti mappa. Folyamat paraméter határozza meg a kimeneti mappa: routeSelection. RouteSelection értéke igaz, ha a rendszer outputPath1 átmásolja az adatokat. És ha routeSelection értéke FALSE (hamis), az adatok outputPath2 másolhatók. 
