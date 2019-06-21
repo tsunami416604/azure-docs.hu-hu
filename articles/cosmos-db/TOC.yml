@@ -624,10 +624,12 @@
         - name: Alkalmazásnaplózás a Logic Apps használatával
           href: /azure/logic-apps/logic-apps-scenario-error-and-exception-handling
           maintainContext: true
-    - name: Figyelés
+    - name: Monitorozás mérőszámokkal
       items:
-        - name: Monitorozás mérőszámokkal
+        - name: Mérőszámok megtekintése Azure Cosmos DB-fiókból
           href: use-metrics.md
+        - name: Mérőszámok megtekintése az Azure Monitorban
+          href: cosmos-db-azure-monitor-metrics.md
         - name: SLA-k figyelése
           href: monitor-accounts.md
     - name: Helyi fejlesztés

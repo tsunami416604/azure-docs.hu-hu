@@ -43,6 +43,10 @@
       href: deploy-cli.md
     - name: Üzembe helyezés sablon használatával
       href: deploy-template.md
+    - name: Üzembe helyezés több nyilvános IP-címmel
+      href: deploy-multi-public-ip-powershell.md
+    - name: Üzembe helyezés rendelkezésre állási zónákkal
+      href: deploy-availability-zone-powershell.md
     - name: Integrálás a Load Balancerrel
       href: integrate-lb.md
 - name: Referencia

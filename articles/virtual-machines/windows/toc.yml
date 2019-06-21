@@ -118,8 +118,8 @@
           href: ephemeral-os-disks.md
     - name: Hálózat
       href: network-overview.md
-    - name: Automatikus méretezési alkalmazások
-      href: autoscale.md
+    - name: Méretezési csoportok
+      href: ../../virtual-machine-scale-sets/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: Infrastruktúra automatizálása
       href: infrastructure-automation.md
     - name: Biztonság és szabályzatok

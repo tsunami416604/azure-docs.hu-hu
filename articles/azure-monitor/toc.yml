@@ -33,26 +33,33 @@
           href: learn/quick-collect-windows-computer.md
 - name: Oktatóanyagok
   items:
-    - name: Adatok elemzése a naplóelemzésben
-      href: learn/tutorial-viewdata.md
-    - name: Adatok vizualizációja a naplóelemzésben
-      href: learn/tutorial-logs-dashboards.md
+    - name: Naplók
+      items:
+        - name: Log Analytics
+          href: log-query/get-started-portal.md
+        - name: Naplólekérdezések
+          href: log-query/get-started-queries.md
+        - name: Naplóadatok megjelenítése
+          href: learn/tutorial-logs-dashboards.md
+        - name: Riasztás naplóadatok alapján
+          href: learn/tutorial-response.md
+    - name: Application Insights
+      items:
+        - name: Alkalmazások futásidejű kivételeinek keresése
+          href: learn/tutorial-runtime-exceptions.md
+        - name: Alkalmazások teljesítményproblémáinak keresése
+          href: learn/tutorial-performance.md
+        - name: Alkalmazásállapot-riasztás
+          href: learn/tutorial-alert.md
+        - name: Az alkalmazásfelhasználók megismerése
+          href: learn/tutorial-users.md
+        - name: Egyéni irányítópultok létrehozása
+          href: learn/tutorial-app-dashboards.md
+        - name: Application Insights
     - name: Platformmetrikák és naplóadatok archiválása
       href: learn/tutorial-archive-data.md
-    - name: Riasztás naplóadatok alapján
-      href: learn/tutorial-response.md
     - name: Automatikus méretezés teljesítmény és ütemezés alapján
       href: learn/tutorial-autoscale-performance-schedule.md
-    - name: Alkalmazások futásidejű kivételeinek keresése
-      href: learn/tutorial-runtime-exceptions.md
-    - name: Alkalmazások teljesítményproblémáinak keresése
-      href: learn/tutorial-performance.md
-    - name: Alkalmazásállapot-riasztás
-      href: learn/tutorial-alert.md
-    - name: Az alkalmazásfelhasználók megismerése
-      href: learn/tutorial-users.md
-    - name: Egyéni irányítópultok létrehozása
-      href: learn/tutorial-app-dashboards.md
 - name: Példák
   items:
     - name: Azure PowerShell
@@ -199,6 +206,8 @@
               href: platform/stream-monitoring-data-event-hubs.md
             - name: Egyéni adatforrások egyeztetése
               href: app/custom-data-correlation.md
+            - name: Szolgáltatási értesítések megtekintése
+              href: platform/service-notifications.md
         - name: Ügynökök telepítése és konfigurálása
           items:
             - name: Monitorozási ügynökök áttekintése
@@ -665,6 +674,99 @@
               href: insights/solutions.md
             - name: Célmegoldások
               href: insights/solution-targeting.md
+    - name: Adatok elemzése
+      items:
+        - name: Mérőszámok
+          items:
+            - name: Bevezetés a Metrikaböngésző használatába
+              href: platform/metrics-getting-started.md
+            - name: A Metrikaböngésző speciális funkciói
+              href: platform/metrics-charts.md
+            - name: Példák metrikadiagramokra
+              href: platform/metric-chart-samples.md
+            - name: Metrikadiagramok hibaelhárítása
+              href: platform/metrics-troubleshoot.md
+        - name: Naplók
+          items:
+            - name: Naplólekérdezések áttekintése
+              displayname: 'log query, log queries, query, queries'
+              href: log-query/log-query-overview.md
+            - name: Oktatóanyagok
+              items:
+                - name: Log Analytics-oktatóanyag
+                  href: log-query/get-started-portal.md
+                - name: Naplólekérdezések – oktatóanyag
+                  href: log-query/get-started-queries.md
+            - name: Naplóadatok
+              items:
+                - name: Naplóadat-szerkezet
+                  href: log-query/logs-structure.md
+                - name: Lekérdezési hatókör
+                  href: log-query/scope.md
+                - name: Szokásos tulajdonságok
+                  href: platform/log-standard-properties.md
+            - name: Lekérdezés nyelve
+              items:
+                - name: Lekérdezési nyelv dokumentációja
+                  href: log-query/query-language.md
+                - name: Nyelvi különbözőségek
+                  href: log-query/data-explorer-difference.md
+                - name: Hasznos operátorok
+                  href: log-query/functions.md
+                - name: Functions
+                  href: log-query/useful-operators.md
+                - name: Váltás a naplóbeli keresésről
+                  href: log-query/log-search-transition.md
+                - name: Leckék
+                  items:
+                    - name: Sztringműveletek
+                      href: log-query/string-operations.md
+                    - name: Dátum és idő típusú adatokkal végzett műveletek
+                      href: log-query/datetime-operations.md
+                    - name: Aggregátumfüggvények
+                      href: log-query/aggregations.md
+                    - name: Speciális aggregátumok
+                      href: log-query/advanced-aggregations.md
+                    - name: Illesztések
+                      href: log-query/joins.md
+                    - name: JSON és adatstruktúrák
+                      href: log-query/json-data-structures.md
+                    - name: Továbbfejlesztett lekérdezésírás
+                      href: log-query/advanced-query-writing.md
+                    - name: Diagramok
+                      href: log-query/charts.md
+                    - name: Keresési lekérdezések
+                      href: log-query/search-queries.md
+                - name: Hasznos tanácsok
+                  items:
+                    - name: SQL
+                      href: log-query/sql-cheatsheet.md
+                    - name: Splunk
+                      href: log-query/splunk-cheatsheet.md
+            - name: Erőforrásközi
+              items:
+                - name: Erőforrásközi lekérdezések
+                  href: log-query/cross-workspace-query.md
+                - name: alkalmazáskifejezés
+                  href: log-query/app-expression.md
+                - name: munkaterület-kifejezés
+                  href: log-query/workspace-expression.md
+                - name: Alkalmazás adatforrásainak egységesítése
+                  href: log-query/unify-app-resource-data.md
+            - name: Példák és útmutatás
+              items:
+                - name: Példák naplólekérdezésekre
+                  href: log-query/examples.md
+                - name: Példák intelligens elemzésre
+                  href: log-query/smart-analytics.md
+                - name: Hatékony lekérdezések írása
+                  href: log-query/log-query-performance.md
+                - name: Szövegadatok elemzése
+                  href: log-query/parse-text.md
+            - name: Számítógépcsoportok
+              href: platform/computer-groups.md
+            - name: Folyamat-összekötő
+              href: platform/flow-tutorial.md
     - name: Adatok vizualizációja
       items:
         - name: Nézetek
@@ -683,104 +785,10 @@
               href: platform/powerbi.md
             - name: Alkalmazásadatok exportálása
               href: app/export-power-bi.md
+        - name: Irányítópultok
+          href: app/app-insights-dashboards.md
         - name: Adatok küldése a Grafana számára
           href: platform/grafana-plugin.md
-    - name: Adatok elemzése
-      items:
-        - name: Mérőszámok
-          items:
-            - name: Bevezetés a Metrikaböngésző használatába
-              href: platform/metrics-getting-started.md
-            - name: A Metrikaböngésző speciális funkciói
-              href: platform/metrics-charts.md
-            - name: Példák metrikadiagramokra
-              href: platform/metric-chart-samples.md
-            - name: Metrikadiagramok hibaelhárítása
-              href: platform/metrics-troubleshoot.md
-        - name: Naplók
-          items:
-            - name: Naplólekérdezések
-              href: log-query/log-query-overview.md
-            - name: Naplólekérdezési portálok
-              href: log-query/portals.md
-            - name: Lekérdezési nyelv dokumentációja
-              href: log-query/query-language.md
-            - name: Nyelvi különbözőségek
-              href: log-query/data-explorer-difference.md
-            - name: Váltás a naplóbeli keresésről
-              href: log-query/log-search-transition.md
-            - name: Bevezetés
-              items:
-                - name: Ismerkedés az Analytics-portál használatával
-                  href: log-query/get-started-portal.md
-                - name: Ismerkedés a lekérdezések használatával
-                  href: log-query/get-started-queries.md
-                - name: Keresési lekérdezések
-                  href: log-query/search-queries.md
-                - name: Hasznos operátorok
-                  href: log-query/useful-operators.md
-            - name: Leckék
-              items:
-                - name: Sztringműveletek
-                  href: log-query/string-operations.md
-                - name: Dátum és idő típusú adatokkal végzett műveletek
-                  href: log-query/datetime-operations.md
-                - name: Aggregátumfüggvények
-                  href: log-query/aggregations.md
-                - name: Speciális aggregátumok
-                  href: log-query/advanced-aggregations.md
-                - name: Illesztések
-                  href: log-query/joins.md
-                - name: JSON és adatstruktúrák
-                  href: log-query/json-data-structures.md
-                - name: Továbbfejlesztett lekérdezésírás
-                  href: log-query/advanced-query-writing.md
-                - name: Diagramok
-                  href: log-query/charts.md
-                - name: Functions
-                  href: log-query/functions.md
-            - name: Hasznos tanácsok
-              items:
-                - name: SQL
-                  href: log-query/sql-cheatsheet.md
-                - name: Splunk
-                  href: log-query/splunk-cheatsheet.md
-            - name: Lekérdezés nyelve
-              items:
-                - name: Példák
-                  href: log-query/examples.md
-                - name: Hatékony lekérdezések írása
-                  href: log-query/log-query-performance.md
-                - name: Intelligens elemzés
-                  href: log-query/smart-analytics.md
-                - name: Keresés több erőforrásban
-                  href: log-query/cross-workspace-query.md
-                - name: alkalmazáskifejezés
-                  href: log-query/app-expression.md
-                - name: munkaterület-kifejezés
-                  href: log-query/workspace-expression.md
-            - name: Naplóadatok
-              items:
-                - name: Alkalmazásadatok
-                  href: app/analytics.md
-                - name: Alkalmazás adatforrásainak egységesítése
-                  href: log-query/unify-app-resource-data.md
-                - name: Szokásos tulajdonságok
-                  href: platform/log-standard-properties.md
-                - name: Szövegadatok elemzése
-                  href: log-query/parse-text.md
-            - name: Műveletek végrehajtása a keresési eredményekből
-              href: log-query/take-action.md
-            - name: Számítógépcsoportok
-              href: platform/computer-groups.md
-            - name: Folyamat-összekötő
-              href: platform/flow-tutorial.md
-            - name: Log Search API
-              href: 'https://dev.loganalytics.io/'
-        - name: Események megtekintése a tevékenységnaplóban
-          href: ../azure-resource-manager/resource-group-audit.md
-        - name: Szolgáltatási értesítések megtekintése
-          href: platform/service-notifications.md
     - name: Reagálás incidensekre
       items:
         - name: Riasztások
@@ -931,6 +939,8 @@
           items:
             - name: A REST API használatának bemutatója
               href: platform/rest-api-walkthrough.md
+            - name: Log Search API
+              href: 'https://dev.loganalytics.io/'
             - name: Alert API
               href: platform/api-alerts.md
         - name: Alkalmazások
@@ -973,6 +983,8 @@
               href: platform/runbook-datacollect.md
 - name: Referencia
   items:
+    - name: Szolgáltatási korlátozások
+      href: service-limits.md
     - name: Application Insights
       items:
         - name: Függőségek automatikus összegyűjtése

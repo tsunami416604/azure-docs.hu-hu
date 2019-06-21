@@ -1,0 +1,62 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: A Modern olvasó dokumentációja
+metadata:
+  title: 'A Modern olvasó dokumentációja – Rövid útmutatók, oktatóanyagok és API-referencia – Azure Cognitive Services | Microsoft Docs'
+  description: Útmutató a Modern olvasó alkalmazásbeli használatához.
+  services: cognitive-services
+  author: metanMSFT
+  manager: nitinme
+  ms.service: cognitive-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 06/20/2019
+  ms.author: metanMSFT
+abstract:
+  description: 'A Modern olvasó egy olyan eszköz, amelynek segítségével már bizonyított technikák valósíthatók meg az olvasás utáni szövegértés javításához feltörekvő olvasók, nyelvtanulók és eltérő tanulási képességekkel rendelkező személyek számára. Webalkalmazásában a Modern olvasó SDK-jával használhatja a Modern olvasót.'
+sections:
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/immersive-reader/overview
+            html: <p>További információ a Modern olvasóról és az alkalmazásokba való integrálásáról</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Mi az a Modern olvasó?
+          - href: /azure/cognitive-services/immersive-reader/reference
+            html: <p>Tudnivalók a Modern olvasó JavaScript SDK-járól</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: A Modern olvasó SDK-jának használata
+  - title: 5 perces gyors útmutatók
+    items:
+      - type: paragraph
+        text: 'A Modern olvasó használatának első lépései:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/logo_csharp.svg
+            text: 'C&#35;'
+            alt: 'C# embléma'
+            href: quickstart
+  - title: Részletes útmutatók
+    items:
+      - type: paragraph
+        text: 'Ismerje meg a Modern olvasót használó alkalmazások fejlesztési eljárásait:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="tutorial.md">A Modern olvasó indítása Node.js használatával</a>
+  - title: Referencia
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: SDK-k
+            html: <p><a href="reference.md">Javascript</a></p>

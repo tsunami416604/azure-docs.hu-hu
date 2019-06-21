@@ -26,6 +26,8 @@
       href: tutorial-restore-files.md
     - name: Azure-beli virtuális gépen futó SQL Server biztonsági mentése
       href: tutorial-sql-backup.md
+    - name: Azure Files-fájlmegosztások biztonsági mentése
+      href: tutorial-backup-azure-files.md
     - name: A Windows Server biztonsági mentése
       href: tutorial-backup-windows-server-to-azure.md
     - name: Fájlok visszaállítása a Windows Serverbe

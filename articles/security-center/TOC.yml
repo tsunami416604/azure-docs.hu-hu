@@ -45,7 +45,7 @@
       href: security-center-onboarding.md
     - name: Kiszolgálóvédelem a Windows Defender ATP-vel
       href: security-center-wdatp.md
-    - name: Advanced Data Security az IaaS-hez
+    - name: Advanced Data Security SQL Azure-beli virtuális gépeken (nyilvános előzetes verzió)
       href: security-center-iaas-advanced-data.md
     - name: Az App Service védelme
       href: security-center-app-services.md
@@ -83,7 +83,7 @@
           href: security-center-virtual-machine-protection.md
         - name: Hálózati erőforrások védelme
           href: security-center-network-recommendations.md
-        - name: Az SQL-szolgáltatás és -adatok védelme
+        - name: Adatok és tárolási szolgáltatások védelme
           href: security-center-sql-service-recommendations.md
         - name: Identitás és hozzáférés védelme
           href: security-center-identity-access.md

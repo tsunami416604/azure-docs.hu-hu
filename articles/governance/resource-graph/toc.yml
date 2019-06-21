@@ -33,6 +33,9 @@
     - name: Nagy méretű adathalmazok kezelése
       displayName: 'page, first, skip, token'
       href: ./concepts/work-with-data.md
+    - name: Útmutatás szabályozott kérésekhez
+      displayName: 'pagination, batching, throttling, parallel'
+      href: ./concepts/guidance-for-throttled-requests.md
 - name: Útmutatók
   items:
     - name: Erőforrás-módosítások lekérése

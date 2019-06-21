@@ -73,10 +73,14 @@
           href: service-fabric-tutorial-upgrade-cluster.md
         - name: 5 – Fürt törlése
           href: service-fabric-tutorial-delete-cluster.md
-    - name: Önálló fürt létrehozása az AWS-en
+    - name: Önálló fürt létrehozása
       items:
-        - name: 1 – Infrastruktúra létrehozása az AWS-en
-          href: service-fabric-tutorial-standalone-create-infrastructure.md
+        - name: 1 – Infrastruktúra létrehozása
+          items:
+            - name: Az AWS használata
+              href: service-fabric-tutorial-standalone-create-infrastructure.md
+            - name: Az Azure használata
+              href: service-fabric-tutorial-standalone-azure-create-infrastructure.md
         - name: 2 – Service Fabric beállítása
           href: service-fabric-tutorial-standalone-create-service-fabric-cluster.md
         - name: 3 – Alkalmazás üzembe helyezése a fürtön
@@ -695,6 +699,8 @@
       items:
         - name: Gyakori forgatókönyvek diagnosztizálása
           href: service-fabric-diagnostics-common-scenarios.md
+        - name: Kódcsomaghibák diagnosztizálása
+          href: service-fabric-diagnostics-code-package-errors.md
         - name: Alkalmazások figyelése
           items:
             - name: Naplózás hozzáadása az alkalmazáshoz

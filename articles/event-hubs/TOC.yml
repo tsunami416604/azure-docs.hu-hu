@@ -28,20 +28,8 @@
       items:
         - name: .NET Core
           href: event-hubs-dotnet-standard-getstarted-send.md
-        - name: .NET-keretrendszer
-          href: event-hubs-dotnet-framework-getstarted-send.md
         - name: Java
           href: event-hubs-java-get-started-send.md
-        - name: Python
-          href: event-hubs-python-get-started-send.md
-        - name: Node.js
-          href: event-hubs-node-get-started-send.md
-        - name: Indítás
-          href: event-hubs-go-get-started-send.md
-        - name: C (csak küldés)
-          href: event-hubs-c-getstarted-send.md
-        - name: Apache Storm (csak fogadás)
-          href: event-hubs-storm-getstarted-receive.md
     - name: Események rögzítése
       items:
         - name: Az Event Hubs Capture engedélyezése az Azure Portalon
@@ -60,33 +48,21 @@
       href: event-hubs-tutorial-visualize-anomalies.md
     - name: Rögzített adatok tárolása egy SQL Data Warehouse-ban
       href: store-captured-data-data-warehouse.md
+    - name: Apache Kafka for Event Hubs-események feldolgozása Stream Analytics használatával
+      href: event-hubs-kafka-stream-analytics.md
     - name: Adatok streamelése az Azure Databricksbe az Event Hubs használatával
       href: ../azure-databricks/databricks-stream-from-eventhubs.md
       maintainContext: true
-    - name: Virtuális hálózati integráció és a tűzfalak engedélyezése Event Hubs-névtérben
-      href: event-hubs-tutorial-virtual-networks-firewalls.md
-    - name: Az Apache Kafkához készült Event Hubs
-      items:
-        - name: Kafka-közvetítő tükrözése Apache Kafka-kompatibilis eseményközpontokba
-          href: event-hubs-kafka-mirror-maker-tutorial.md
-        - name: Apache Spark csatlakoztatása Apache Kafka-kompatibilis eseményközpontokhoz
-          href: event-hubs-kafka-spark-tutorial.md
-        - name: Apache Flink csatlakoztatása Apache Kafka-kompatibilis eseményközpontokhoz
-          href: event-hubs-kafka-flink-tutorial.md
-        - name: Az Apache Kafka Connect integrálása Kafka-kompatibilis eseményközpontokkal (előzetes verzió)
-          href: event-hubs-kafka-connect-tutorial.md
-        - name: Akka Streams csatlakoztatása Apache Kafka-kompatibilis eseményközpontokhoz
-          href: event-hubs-kafka-akka-streams-tutorial.md
 - name: Példák
   href: event-hubs-samples.md
 - name: Alapelvek
   items:
-    - name: Event Hubs-szolgáltatások
+    - name: Event Hubs-terminológia
       href: event-hubs-features.md
-    - name: Event Processor Host-áttekintés
-      href: event-hubs-event-processor-host.md
-    - name: Programozási útmutató
-      href: event-hubs-programming-guide.md
+    - name: Rendelkezésre állás és konzisztencia
+      href: event-hubs-availability-and-consistency.md
+    - name: Méretezhetőség
+      href: event-hubs-scalability.md
     - name: Biztonság
       items:
         - name: Az Azure-erőforrásokhoz készült felügyelt identitások
@@ -99,54 +75,95 @@
           href: event-hubs-authentication-and-security-model-overview.md
         - name: Biztonsági attribútumok
           href: event-hubs-security-attributes.md
-    - name: Rendelkezésre állás és konzisztencia
-      href: event-hubs-availability-and-consistency.md
     - name: AMQP 1.0 protokoll – útmutató
       href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
       maintainContext: true
 - name: Útmutatók
   items:
-    - name: 'Események küldése, fogadása és rögzítése a Python használatával'
-      href: event-hubs-python.md
-    - name: Diagnosztikai naplók beállítása
-      href: event-hubs-diagnostic-logs.md
-    - name: Az Apache Kafkához készült Event Hubs
+    - name: Fejlesztés
+      items:
+        - name: Event Hubs kapcsolati sztring lekérése
+          href: event-hubs-get-connection-string.md
+        - name: Események közvetítése különböző protokollokat használó alkalmazások között
+          href: event-hubs-exchange-events-different-protocols.md
+        - name: Programozási útmutató
+          href: event-hubs-programming-guide.md
+        - name: Események fogadása az Event Processor Host használatával
+          href: event-hubs-event-processor-host.md
+    - name: Ügyfélkódtárak használata
+      items:
+        - name: .NET-keretrendszer
+          items:
+            - name: Események küldése és fogadása a .NET-keretrendszer használatával
+              href: event-hubs-dotnet-framework-getstarted-send.md
+        - name: Java
+          items:
+            - name: Spring Cloud Stream Binder-alkalmazás létrehozása
+              href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub
+              maintainContext: true
+            - name: Az Apache Kafkához készült Spring Boot Starter használata
+              href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub
+              maintainContext: true
+        - name: Python
+          items:
+            - name: Események küldése és fogadása a Python használatával
+              href: event-hubs-python-get-started-send.md
+            - name: 'Események küldése, fogadása és rögzítése a Python használatával'
+              href: event-hubs-python.md
+        - name: Node.js
+          items:
+            - name: Események küldése és fogadása a Node.js használatával
+              href: event-hubs-node-get-started-send.md
+        - name: Indítás
+          items:
+            - name: Események küldése és fogadása a Go használatával
+              href: event-hubs-go-get-started-send.md
+        - name: C (csak küldés)
+          items:
+            - name: Események küldése a C használatával
+              href: event-hubs-c-getstarted-send.md
+        - name: Apache Storm (csak fogadás)
+          items:
+            - name: Események fogadása az Apache Storm használatával
+              href: event-hubs-storm-getstarted-receive.md
+    - name: Integrálás az Apache Kafkával
       items:
         - name: Kafka-kompatibilis eseményközpontok létrehozása
           href: event-hubs-create-kafka-enabled.md
-        - name: Apache Kafka for Event Hubs-események feldolgozása Stream Analytics használatával
-          href: event-hubs-kafka-stream-analytics.md
-    - name: Kezelés
+        - name: Kafka-közvetítő tükrözése Apache Kafka-kompatibilis eseményközpontokba
+          href: event-hubs-kafka-mirror-maker-tutorial.md
+        - name: Apache Spark csatlakoztatása Apache Kafka-kompatibilis eseményközpontokhoz
+          href: event-hubs-kafka-spark-tutorial.md
+        - name: Apache Flink csatlakoztatása Apache Kafka-kompatibilis eseményközpontokhoz
+          href: event-hubs-kafka-flink-tutorial.md
+        - name: Az Apache Kafka Connect integrálása Kafka-kompatibilis eseményközpontokkal (előzetes verzió)
+          href: event-hubs-kafka-connect-tutorial.md
+        - name: Akka Streams csatlakoztatása Apache Kafka-kompatibilis eseményközpontokhoz
+          href: event-hubs-kafka-akka-streams-tutorial.md
+    - name: Kezelés és monitorozás
       items:
         - name: Event Hubs-eseményközpontok monitorozása az Azure Monitoring segítségével
           href: event-hubs-metrics-azure-monitor.md
+        - name: Diagnosztikai naplók beállítása
+          href: event-hubs-diagnostic-logs.md
+        - name: Azure Diagnostics-adatok streamelése az Event Hubs használatával
+          href: event-hubs-streaming-azure-diags-data.md
+        - name: Átviteli egységek automatikus skálázása
+          href: event-hubs-auto-inflate.md
         - name: Event Hubs felügyeleti könyvtárak
           href: event-hubs-management-libraries.md
-    - name: Event Hubs kapcsolati sztring lekérése
-      href: event-hubs-get-connection-string.md
-    - name: Java fejlesztése
+    - name: Biztonságos
       items:
-        - name: Spring Cloud Stream Binder-alkalmazás létrehozása
-          href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub
-        - name: Az Apache Kafkához készült Spring Boot Starter használata
-          href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub
+        - name: Tűzfalak használata
+          href: event-hubs-ip-filtering.md
+        - name: Virtuális hálózati szolgáltatásvégpontok használata
+          href: event-hubs-service-endpoints.md
+        - name: Virtuális hálózati integráció és a tűzfalak engedélyezése Event Hubs-névtérben
+          href: event-hubs-tutorial-virtual-networks-firewalls.md
     - name: Hibaelhárítás
       items:
         - name: Kivételek
           href: event-hubs-messaging-exceptions.md
-    - name: Tűzfalak használata
-      href: event-hubs-ip-filtering.md
-    - name: Virtuális hálózati szolgáltatásvégpontok használata
-      href: event-hubs-service-endpoints.md
-    - name: Átviteli egységek automatikus skálázása
-      href: event-hubs-auto-inflate.md
-    - name: Azure Diagnostics-adatok streamelése az Event Hubs használatával
-      href: event-hubs-streaming-azure-diags-data.md
-    - name: Események közvetítése különböző protokollokat használó alkalmazások között
-      href: event-hubs-exchange-events-different-protocols.md
-    - name: Spring Cloud Stream Binder-alkalmazás létrehozása
-      href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub?view=azure-java-stable
-      maintainContext: true
 - name: Referencia
   items:
     - name: Java
