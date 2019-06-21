@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 4dd0182e5698c992e45afae183ef94c488b27e14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66154768"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179088"
 ---
 1. Válassza ki a virtuális Gépet a portálon. A **DNS-név**, kattintson a **konfigurálása**.
    

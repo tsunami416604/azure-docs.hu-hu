@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: d4d2f24a0a7b1f01627ed2cea4a5732ca0e001c9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2dc5fab0966c2ead0276cd8b23ea764bd4f9ef59
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068397"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190481"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions – folyamatos üzembe helyezés
 
@@ -32,7 +32,7 @@ Az Azure functions üzembe helyezés mértékegysége a függvényalkalmazást. 
 
 ## <a name="requirements-for-continuous-deployment"></a>Folyamatos üzembe helyezési követelményei
 
-A folyamatos üzembe helyezés befejeződik, a könyvtárstruktúra kompatibilisnek kell lennie a következő alapvető gyökérmappa-szerkezetében, amelyeket az Azure Functions vár:
+A folyamatos üzembe helyezés befejeződik a directory-struktúra a következő alapvető gyökérmappa-szerkezetében, amelyeket az Azure Functions vár kompatibilisnek kell lennie:
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
@@ -44,13 +44,15 @@ Ezzel az eljárással meglévő függvényalkalmazással – folyamatos üzembe 
 
     ![Az üzembe helyezési központ megnyitása](./media/functions-continuous-deployment/platform-features.png)
 
-2. Az a **üzembe helyezési központ**válassza **GitHub** a **verziókövetés** > **engedélyezés**.
+2. Az a **üzembe helyezési központ**válassza **GitHub**, majd válassza ki **engedélyezés**. Vagy, ha a GitHub már Ön által engedélyezett, jelölje be **Folytatás**. 
 
     ![Üzembe helyezési központ](./media/functions-continuous-deployment/github.png)
 
-3. Válassza ki **AzureAppService engedélyezése** > **továbbra is**.
+3. A Githubban, válassza ki a **engedélyezése AzureAppService**. 
 
     ![Engedélyező](./media/functions-continuous-deployment/authorize.png)
+    
+    Az Azure Portalon **üzembe helyezési központ**válassza **Folytatás**.
 
 4. A következő build szolgáltatók közül választhat:
 

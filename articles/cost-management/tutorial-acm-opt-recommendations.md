@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 81180d6930816a4a7715ce60313347019029fccd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9306e44655bd172343f20ac4fda2b2c56afcfb88
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66416095"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164489"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Oktatóanyag: A javaslatok a költségek optimalizálása
 
@@ -54,7 +54,7 @@ A **hatás** kategória, és a **lehetséges éves megtakarítások**, úgy terv
 Nagy hatású javaslatok:
 - [Megtakarítást érhet el a használatalapú fizetéses költségekhez képest fenntartott virtuálisgép-példányok vásárlásával](../advisor/advisor-cost-recommendations.md#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)
 - [Optimalizálhatja a virtuális gép felhőköltéseiket kihasználatlan példányok leállítása és átméretezése](../advisor/advisor-cost-recommendations.md#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances)
-- [Standard szintű tárolást használnak a Managed Disks pillanatképek tárolásához ](../advisor/advisor-cost-recommendations.md#use-standard-snapshots-for-managed-disks)
+- [Standard szintű tárolást használnak a Managed Disks pillanatképek tárolásához](../advisor/advisor-cost-recommendations.md#use-standard-snapshots-for-managed-disks)
 
 Közepes hatású javaslatok:
 - [Az Azure Data Factory-folyamatok, amelyek nem törlése](../advisor/advisor-cost-recommendations.md#delete-azure-data-factory-pipelines-that-are-failing)

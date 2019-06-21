@@ -4,15 +4,15 @@ description: Ez a cikk bemutatja a például a tárolt eljárások, eseményind�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 06/14/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 40d120fe5fcc79721923d3493e74b5195ecc129c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 529c536d9ea3b898745f03c80b63702b2af485da
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65965705"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165582"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Tárolt eljárások, eseményindítók és felhasználó által definiált függvények
 
@@ -75,7 +75,7 @@ JavaScript-függvények megkülönböztetik státuszban [kiosztott átviteli kap
 
 ## <a name="triggers"></a>Eseményindítók
 
-Ez a szakasz ismerteti az eseményindítók két típusát:
+Az Azure Cosmos DB az eseményindítók két típusát támogatja:
 
 ### <a name="pre-triggers"></a>Üzem előtti eseményindítók
 
@@ -84,6 +84,9 @@ Az Azure Cosmos DB biztosít eseményindítókat, amelyek egy Azure Cosmos DB el
 ### <a name="post-triggers"></a>Utáni eseményindítók
 
 Üzem előtti eseményindítók hasonlóan utáni eseményindítók is társítva legyenek egy Azure Cosmos DB elemet egy olyan műveletet, és nem kívánnak bemeneti paraméterek. Ezek futtatása *után* a művelet befejeződött, és hozzáférhetnek a az ügyfélnek küldött válaszüzenet. Példák: [eseményindítók írásával](how-to-write-stored-procedures-triggers-udfs.md#triggers) cikk.
+
+> [!NOTE]
+> Eseményindítók nem automatikus futtatása mikor regisztrált megfelelő műveleteket (létrehozása / törlése / cseréje / frissítése) történik. Ezek a műveletek végrehajtásakor meghívni rendelkeznek. További tudnivalókért lásd: [futtatása triggerek](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) cikk.
 
 ## <a id="udfs"></a>Felhasználó által definiált függvények
 

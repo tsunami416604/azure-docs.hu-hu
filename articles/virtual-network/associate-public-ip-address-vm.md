@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: kumud
-ms.openlocfilehash: 69460a111e6fd879807b4025d6832b3ac515a9b4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1b201957a33acd609eed8a2373c8201bdefe9d7d
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/17/2019
 ms.locfileid: "64691984"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>Virtuális gép nyilvános IP-cím társítása
@@ -31,7 +31,7 @@ Használhatja a [az Azure portal](#azure-portal), az Azure [parancssori felület
 2. Keresse meg, vagy keresse meg a virtuális gép nyilvános IP-cím hozzáadása és jelölje ki a kívánt.
 3. Alatt **beállítások**, jelölje be **hálózatkezelés**, majd válassza ki a hálózati adapter hozzáadni kívánt nyilvános IP-cím, az alábbi ábrán látható módon:
 
-   ![Válasszon hálózati adaptert](./media/associate-public-ip-address-vm/select-nic.png)
+   ![Válassza ki a hálózati adapter](./media/associate-public-ip-address-vm/select-nic.png)
 
    > [!NOTE]
    > Nyilvános IP-címek egy virtuális Géphez csatolt hálózati adapterek társítva. Az előző ábrán a virtuális gép csak egy hálózati adapter rendelkezik. Ha a virtuális gép több hálózati adapterrel, mindegyik megjelenik, és válassza a hálózati adaptert szeretne társítani a nyilvános IP-címet.
@@ -43,7 +43,7 @@ Használhatja a [az Azure portal](#azure-portal), az Azure [parancssori felület
    > [!NOTE]
    > Nyilvános IP-címek társítva a hálózati illesztő IP-konfigurációk. Az előző képen a hálózati adapter egy IP-konfigurációval rendelkezik. Ha a hálózati adapter több IP-konfiguráció, mindegyik megjelenik a listában, és a kiválasztott IP-konfigurációja, amely a nyilvános IP-címet társítani szeretné.
 
-5. Válassza ki **engedélyezve**, majd **IP-cím (*kötelező beállítások konfigurálása*)**. Válasszon egy meglévő nyilvános IP-címet, amely automatikusan lezárja a **nyilvános IP-cím választása** mezőbe. Ha nem rendelkezik minden elérhető nyilvános IP-címek felsorolt, létre kell hoznia egyet. További információ [hozzon létre egy nyilvános IP-cím](virtual-network-public-ip-address.md#create-a-public-ip-address). Válassza ki **mentése**, ahogyan az a képen látható, amely követi, és zárja be az IP-konfigurációja.
+5. Válassza ki **engedélyezve**, majd **IP-cím (*kötelező beállítások konfigurálása*)** . Válasszon egy meglévő nyilvános IP-címet, amely automatikusan lezárja a **nyilvános IP-cím választása** mezőbe. Ha nem rendelkezik minden elérhető nyilvános IP-címek felsorolt, létre kell hoznia egyet. További információ [hozzon létre egy nyilvános IP-cím](virtual-network-public-ip-address.md#create-a-public-ip-address). Válassza ki **mentése**, ahogyan az a képen látható, amely követi, és zárja be az IP-konfigurációja.
 
    ![Nyilvános IP-cím engedélyezése](./media/associate-public-ip-address-vm/enable-public-ip-address.png)
 

@@ -9,11 +9,11 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: d9825ea41937dc9436fe8b465b48b378e13407c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66150252"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178991"
 ---
 1. A portál **Minden erőforrás** területén kattintson a **+Hozzáadás** gombra.
 2. Az a **mindent** írja be a lap keresőmezőjébe írja **helyi hálózati átjáró**, majd kattintson ide az erőforrások listáját adja vissza. Kattintson a **Helyi hálózati átjáró** elemre a lap megnyitásához, majd kattintson a **Létrehozás** elemre a **Helyi hálózati átjáró létrehozása** lap megnyitásához.

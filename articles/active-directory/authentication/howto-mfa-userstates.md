@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cd26f7bdf928dcbd2cf841526857dc44623f133
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3a2c036265049bf4b87435e96f779482da404caa
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057425"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164821"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Egy felhasználó kétlépéses ellenőrzést igénylése
 
 Egy globális rendszergazdai fiók használata szükséges, amelyek a kétlépéses ellenőrzés, hogy a két módszer valamelyikét hajthatja végre. Az első lehetőség, hogy minden felhasználó számára az Azure multi-factor Authentication (MFA) engedélyezéséhez. Amikor a felhasználók külön-külön vannak engedélyezve, a kétlépéses ellenőrzés minden alkalommal, amikor bejelentkeznek az általuk (néhány kivételtől eltekintve, például amikor bejelentkeznek a megbízható IP-címek, vagy ha a _megjegyzett eszközök_ funkció be van kapcsolva). A második lehetőség, hogy bizonyos körülmények között a kétlépéses ellenőrzést igénylő feltételes hozzáférési szabályzat beállítása.
 
 > [!TIP]
-> Válasszon egyet ezek a metódusok szükséges a kétlépéses ellenőrzést, nem mindkettőt. Bármely feltételes hozzáférési szabályzatokat az Azure multi-factor Authentication engedélyezése a felhasználó felülbírálja.
+> Az Azure multi-factor Authentication feltételes hozzáférési szabályzatok használata az ajánlott eljárás. Felhasználói állapotok módosítását már nem ajánlott, kivéve, ha a licencek nem tartalmazzák a feltételes hozzáférés, ehhez szükség lesz a felhasználók többtényezős hitelesítés minden alkalommal, amikor bejelentkeznek az végrehajtásához.
 
 ## <a name="choose-how-to-enable"></a>Válassza ki a engedélyezése
 

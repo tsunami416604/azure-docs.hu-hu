@@ -4,20 +4,23 @@ description: Ismerje meg, hogyan konfigurálja, és módosítsa az alapértelmez
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 06/14/2019
 ms.author: thweiss
-ms.openlocfilehash: 4206fba8297672a1a24415169cfd19ff89344038
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f19668cc4fb4f4f4a900c157aa79de83ad1b79b
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66431180"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67163729"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Az Azure Cosmos DB indexelési szabályzatok
 
 Az Azure Cosmos DB minden tárolót egy indexelési házirendet, amely előírja, hogy hogyan lehet indexelni a tároló elemek rendelkezik. Alapértelmezett házirend az indexelési újonnan létrehozott tárolók indexek minden elem, tartomány indexei bármilyen karakterlánc vagy szám kényszerítése minden tulajdonsághoz, és a térbeli indexek, az összes GeoJSON-objektum írja be a pont. Ez lehetővé teszi a lekérdezési teljesítmény eléréséhez gondolja át az indexelés és előre Indexkezelés nélkül.
 
 Bizonyos esetekben érdemes lehet, hogy jobban kockázatiszint-e az automatikus viselkedés felülbírálásához. Egy tároló indexelési házirend beállításával testre szabhatja a *indexelési mód*, és bevonhat vagy kizárhat *tulajdonság elérési utak*.
+
+> [!NOTE]
+> A jelen cikkben ismertetett indexelési szabályzatok frissítési módszerének csak érvényes az Azure Cosmos DB SQL-(mag) API-t.
 
 ## <a name="indexing-mode"></a>Az indexelő mód
 
