@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/09/2018
 ms.author: mikhegn
-ms.openlocfilehash: 3d03ca5cec2cef67862c2678b3b0a8f17b413787
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6ed626dddddb8f2b434d6a7acebc5381607b7d3d
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60482437"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304233"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Hogyan lehet paraméterezni a konfigurációs fájlokat a Service Fabricben
 
@@ -44,8 +44,8 @@ Ebben a példában a paraméterek használatával az alkalmazások központi tel
     <Parameters>
       <Parameter Name="MyService_CacheSize" DefaultValue="80" />
     </Parameters>
-   ```
-1. Az a `ServiceManifestImport` szakasz az ApplicationManifest.xml fájl hozzáadása egy `ConfigOverride` elem, a konfigurációs csomag, a szakasz és a paraméter hivatkozik.
+  ```
+1. Az a `ServiceManifestImport` szakasz az ApplicationManifest.xml fájl hozzáadása egy `ConfigOverrides` és `ConfigOverride` elem, a konfigurációs csomag, a szakasz és a paraméter hivatkozik.
 
    ```xml
     <ConfigOverrides>

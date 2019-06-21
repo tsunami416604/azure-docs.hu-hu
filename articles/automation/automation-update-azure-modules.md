@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/30/2019
+ms.date: 06/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c09c9df1b8af7adca5c0169cf31881121ba6cc99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: cd7c268008afbd87e855516d5834676423272646
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427482"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67146717"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Az Azure Automationben az Azure PowerShell-modulok frissítése
 
@@ -35,9 +35,7 @@ Ha a parancsfájlok helyi fejleszt, azt javasoljuk, hogy ugyanazt a modul verzi�
 
 Az alábbiakban néhány szempontot figyelembe kell venni, amikor ez a folyamat segítségével az Azure-modulok frissítése:
 
-* Ez a runbook támogatja frissítése csak a **Azure** és **AzureRm** modulok jelenleg. [PowerShell Az Azure-modulok](/powershell/azure/new-azureps-module-az) Automation-fiókok által támogatott, de az a runbook nem frissíthető. Fontos tényező használatakor figyelembe kell a `Az` modulokat az Automation-fiókban, további információért lásd: [modulokat az Automation-fiók használata Az](az-modules.md).
-
-* Kerülje a runbook indítása az Automation-fiókok, amelyek tartalmazzák Az modulok.
+* Ez a runbook támogatja frissítése a **Azure** és **AzureRm** modulok alapértelmezés szerint. Ez a runbook támogatja frissítése a **Az** modulokat is. Tekintse át a [frissítés az Azure-modulok runbook információs](https://github.com/microsoft/AzureAutomation-Account-Modules-Update/blob/master/README.md) frissítésével kapcsolatos további információk `Az` a runbook-modulok. További fontos tényező használatakor figyelembe kell a `Az` modulokat az Automation-fiókban, további információért lásd: [modulokat az Automation-fiók használata Az](az-modules.md).
 
 * Mielőtt elkezdené a forgatókönyv, ellenőrizze, hogy az Automation-fiók rendelkezik egy [Azure-beli futtató fiók hitelesítő adatait](manage-runas-account.md) létrehozott.
 

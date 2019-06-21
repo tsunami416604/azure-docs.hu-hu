@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: bc85de0c8ec89ea88d2bae8e3f226da7d3163f53
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 607da7983cabe4c36c01171ba8d88c752b99ce3d
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721086"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303813"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Élő Stream metrikák: Figyelő & 1 másodperc késéssel diagnosztizálása
 
-Az élő metrikák Stream segítségével a valós idejű, éles webes alkalmazások válnak küldetése mintavételi [Application Insights](../../azure-monitor/app/app-insights-overview.md). Válassza ki, és szűrje a mérőszámokhoz és a teljesítményszámlálókhoz valós időben, anélkül, hogy a szolgáltatás megzavarását megtekintéshez. Vizsgálja meg a minta sikertelen kérések és kivételek hívásláncait. A [Profiler](../../azure-monitor/app/profiler.md), [pillanatkép-hibakereső](../../azure-monitor/app/snapshot-debugger.md), és [Teljesítménytesztelés](../../azure-monitor/app/monitor-web-app-availability.md#performance-tests), élő metrikák Stream nem invazív, és hatékony diagnosztikai eszközt biztosít az élő webes Ezen a webhelyen.
+Az élő metrikák Stream segítségével a valós idejű, éles webes alkalmazások válnak küldetése mintavételi [Application Insights](../../azure-monitor/app/app-insights-overview.md). Válassza ki, és szűrje a mérőszámokhoz és a teljesítményszámlálókhoz valós időben, anélkül, hogy a szolgáltatás megzavarását megtekintéshez. Vizsgálja meg a minta sikertelen kérések és kivételek hívásláncait. A [Profiler](../../azure-monitor/app/profiler.md), [pillanatkép-hibakereső](../../azure-monitor/app/snapshot-debugger.md). Élő metrikák Stream hatékony és nem invazív diagnosztikai eszközt biztosít az élő webhely.
 
 Az élő Stream metrikák a következőket teheti:
 
@@ -192,15 +192,6 @@ Ha ismeri fel, és a csatlakoztatott kiszolgálókra megbízható, megpróbálha
 >[!NOTE]
 >Javasoljuk, hogy állítsa be a hitelesített csatornát a szűrési feltételeket a potenciálisan bizalmas adatokat, például a CustomerID megadása előtt.
 >
-
-## <a name="generating-a-performance-test-load"></a>Teljesítmény tesztelése terhelés generálása
-
-Ha azt szeretné, tekintse meg a terhelés megnövekedése hatását, használja a teljesítményteszt panel. Azt szimulálja egy egyidejű felhasználók száma érkező kérelmeket. Vagy "manuális tesztek" Futtatás (ping tesztek) egyetlen URL-címet, vagy futhat egy [többlépéses webes teljesítménytesztelési](../../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests) feltöltött (a rendelkezésre állási teszt azonos módon).
-
-> [!TIP]
-> Miután létrehozta a teljesítményteszt, nyissa meg a teszt- és az élő Stream panel külön windows. Megtekintheti a sorban álló teljesítményteszt indításakor, és tekintse meg az élő stream egyszerre.
->
-
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

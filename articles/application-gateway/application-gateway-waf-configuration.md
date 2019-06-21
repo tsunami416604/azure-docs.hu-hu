@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 5/15/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 5ddcdeca41e2f21fa27db25f7e0721c7ef87e491
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 272c6d2de23b1e89caef3f9bee20a96c5c196cde
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65620275"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275175"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Webes alkalmazás tűzfal kérelem méretbeli korlátokat és kizárási listák
 
@@ -35,16 +35,16 @@ WAF is biztosít egy konfigurálható forgatógomb, a kérelem törzsében ellen
 
 WAF kizárási listák lehetővé teszi bizonyos attribútumainak WAF során hagyja ki. Ilyenek például az Active Directory beszúrt jogkivonatokat, amelyek a hitelesítéshez, vagy a beírt jelszavak. Ilyen attribútumok különleges karaktereket tartalmaz, amelyek a WAF-szabályok a hamis pozitív kezdeményezheti a hibalehetőség. Egy attribútumot a WAF-kizárási listára kerül, ha a nem tekinthető minden konfigurált és az aktív WAF-szabály által. A hatókör kizárási listák globálisak.
 
-Kizárási listák is hozzáadhatók a következő attribútumokat:
+A következő attribútumok kizárási listák lehet hozzáadni. A kiválasztott mező értékét nem kerülnek kiértékelésre WAF-szabályok alapján. A kizárás remove vizsgálata a mező értéke sorolja fel.
 
 * Kérelem fejlécei
 * Kérelem cookie-k
-* Kérelem attribútum neve (argumenty)
+* Kérelem attribútum neve (argumentumok) is hozzáadhatók kizárási elemként, például:
 
-   * Az űrlap többrészes adatait
-   * XML
-   * JSON
-   * URL-cím lekérdezési argumentum
+   * Űrlapmező neve
+   * XML-entitás
+   * JSON-entitás
+   * URL-cím lekérdezési karakterlánc argumentum
 
 Adjon meg egy pontos kérelem fejléce, a szervezet, a cookie-t, vagy a lekérdezési karakterláncot attribútumot egyezést.  Másik lehetőségként megadhat részleges egyezéseket. A kizárás, mindig egy fejléc mezőben soha nem a hozzá tartozó érték. Kizárási szabály globális hatókör, és az összes és az összes szabály vonatkozik.
 

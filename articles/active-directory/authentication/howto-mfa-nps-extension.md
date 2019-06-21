@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19bcac68084c4817e0dc0e67f31ab62244db5a2a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97bad4d9cd599890dd5e26cbc77f81156c0f1070
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113408"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204670"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>A meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure multi-factor Authentication
 
@@ -225,7 +225,7 @@ Keresse meg az önaláírt tanúsítványt hozott létre a telepítő a tanúsí
 
 Által létrehozott önaláírt tanúsítványokat a *AzureMfaNpsExtnConfigSetup.ps1* parancsfájlt is rendelkezik érvényességi élettartama pedig két év. Annak ellenőrzése, hogy a tanúsítvány telepítve van-e, amikor is ellenőrizze, hogy a tanúsítvány nem járt le.
 
--------------------------------------------------------------
+---
 
 ### <a name="how-can-i-verify-that-my-client-cert-is-associated-to-my-tenant-in-azure-active-directory"></a>Hogyan ellenőrizhetem, hogy az ügyféltanúsítvány társítva, és az Azure Active Directory-bérlő?
 
@@ -251,13 +251,13 @@ Ez a parancs futtatása után nyissa meg a C meghajtóhoz, keresse meg a fájlt,
 
 Érvényes –, és érvényes – addig, amíg az időbélyegek, amelyek emberek számára olvasható formátumban, nyilvánvaló misfits kiszűréséhez, ha a parancs visszaadja az egynél több tanúsítvány is használható.
 
--------------------------------------------------------------
+---
 
 ### <a name="why-cant-i-sign-in"></a>Miért tud tudok bejelentkezni?
 
 Ellenőrizze, hogy a jelszó még nem járt le. Az NPS-bővítményének jelszavak módosítását nem támogatja a bejelentkezési munkafolyamat részeként. További segítségért forduljon a szervezet informatikai személyzetet tart fenn.
 
--------------------------------------------------------------
+---
 
 ### <a name="why-are-my-requests-failing-with-adal-token-error"></a>Miért hibásak a saját kérések az ADAL-jogkivonathiba?
 
@@ -268,19 +268,19 @@ Ez a hiba miatt számos oka lehet. Hibaelhárítás elősegítése érdekében t
 3. Győződjön meg arról, hogy a tanúsítvány az Azure AD-bérlője társítva.
 4. Ellenőrizze, hogy a https://login.microsoftonline.com/ elérhető-e a bővítményt futtató kiszolgálóról.
 
--------------------------------------------------------------
+---
 
 ### <a name="why-does-authentication-fail-with-an-error-in-http-logs-stating-that-the-user-is-not-found"></a>Miért nem sikerült a hitelesítés a HTTP-naplókat, hogy a felhasználó nem található meg a hiba?
 
 Ellenőrizze, hogy az AD Connect fut, valamint, hogy a felhasználó megtalálható-e a Windows Active Directory és az Azure Active Directoryban.
 
--------------------------------------------------------------
+---
 
 ### <a name="why-do-i-see-http-connect-errors-in-logs-with-all-my-authentications-failing"></a>Miért látok HTTP-csatlakozási hibák a naplókban az összes saját hitelesítések sikertelenek?
 
 Ellenőrizze, hogy a https://adnotifications.windowsazure.com elérhető-e az NPS-bővítményt futtató kiszolgálóról.
 
--------------------------------------------------------------
+---
 
 ### <a name="why-is-authentication-not-working-despite-a-valid-certificate-being-present"></a>Miért hitelesítés nem működik, annak ellenére, hogy megtalálható-e egy érvényes tanúsítványt?
 

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: 38d9ad007b67756bdca0c6f98267aa16ba38ee9d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 535ae91abc04b2fdcebb6a2083db95ec50f61798
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65791430"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275581"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Az Azure SQL nagy kapacitású adatbázisokkal kapcsolatos gyakori kérdések
 
@@ -79,7 +79,7 @@ Az Azure SQL Database rendkívüli szinten érhető el jelenleg alatt felsorolt 
 
 Igen. További információkért és a egy logikai kiszolgálón nagy kapacitású adatbázisok száma korlátlan, lásd: [egy logikai kiszolgálón egyetlen vagy készletezett adatbázisok SQL Database erőforrás-korlátozások](sql-database-resource-limits-logical-server.md).
 
-### <a name="what-are-the-performance-characteristic-of-a-hyperscale-database"></a>Mik azok a nagy kapacitású adatbázis jellemző
+### <a name="what-are-the-performance-characteristics-of-a-hyperscale-database"></a>Mik azok a nagy kapacitású adatbázis teljesítménybeli jellemzői
 
 Az SQL Database rendkívüli architektúrát biztosít nagy teljesítményű és az átviteli sebesség támogatása adatbázis nagy méretek mellett. 
 
@@ -94,7 +94,7 @@ Az SQL Database rendkívüli biztosít a számítási feladatok igény szerint a
 
   A nagy kapacitású az olvasási kérések kiszolgálására használhatja egy vagy több további számítási csomópontok létrehozására is kap. Ez azt jelenti, hogy segítségével a számítási csomópontok csak olvasható csomópontként a az elsődleges számítási a olvasási számítási feladatok kiszervezése. A csak olvasható, ezek a csomópontok segédanyagként is használható, készenléti a feladatátvétel esetén keresztül az elsődleges kiszolgálóról.
 
-  Az egyes ezek további számítási csomópontok állandó időben teheti meg, és a egy online művelet kiépítése. Ezek csak olvasható számítási csomópontot állításával kapcsolódhat a `ApplicationIntent` argumentum a kapcsolati karakterláncot a `read_only`. Kapcsolatok jelölése `read-only` automatikusan kapcsolódóak pedig az egyik a csak olvasható számítási csomópontot is.
+  Az egyes ezek további számítási csomópontok állandó időben teheti meg, és a egy online művelet kiépítése. Ezek csak olvasható számítási csomópontot állításával kapcsolódhat a `ApplicationIntent` argumentum a kapcsolati karakterláncot a `readonly`. Kapcsolatok jelölése `readonly` automatikusan kapcsolódóak pedig az egyik a csak olvasható számítási csomópontot is.
 
 ## <a name="deep-dive-questions"></a>A kérdések részletes bemutatása
 
@@ -140,7 +140,7 @@ Nem.
 
 ### <a name="how-many-read-scale-replicas-are-supported"></a>Hány olvasási szintű replika támogatott
 
-A nagy kapacitású adatbázisok alapértelmezés szerint létrejön egy olvasási szintű replikával (összesen két replika). A csak olvasható replikák 0 és 4 használatával közötti számát is méretezheti a [az Azure portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) vagy [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)...
+A nagy kapacitású adatbázisok alapértelmezés szerint létrejön egy olvasási szintű replikával (összesen két replika). A csak olvasható replikák 0 és 4 használatával közötti számát is méretezheti a [az Azure portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) vagy [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update).
 
 ### <a name="for-high-availability-do-i-need-to-provision-additional-compute-nodes"></a>Magas rendelkezésre állás érdekében do I kell üzembe további számítási csomópontokon
 
@@ -361,7 +361,7 @@ Alapértelmezés szerint 2 replika nagy kapacitású adatbázisok hozunk létre.
 
 ### <a name="how-do-i-connect-to-these-secondary-compute-nodes"></a>Hogyan létesíthetek kapcsolatot a másodlagos számítási csomópontok felé
 
-Ezek csak olvasható számítási csomópontot állításával kapcsolódhat a `ApplicationIntent` argumentum a kapcsolati karakterláncot a `read_only`. Kapcsolatok jelölése `read-only` automatikusan kapcsolódóak pedig az egyik a csak olvasható számítási csomópontot is.  
+Ezek csak olvasható számítási csomópontot állításával kapcsolódhat a `ApplicationIntent` argumentum a kapcsolati karakterláncot a `readonly`. Kapcsolatok jelölése `readonly` automatikusan kapcsolódóak pedig az egyik a csak olvasható számítási csomópontot is.  
 
 ### <a name="can-i-create-a-dedicated-endpoint-for-the-read-scale-replica"></a>Hozhat létre egy dedikált végpontot az olvasási szintű replika
 

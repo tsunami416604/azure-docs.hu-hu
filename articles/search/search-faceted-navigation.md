@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c032dbc528ed5034280d0ecb4c95700b51869991
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6fc1e1aaaa3b2489dd4083f56d45ab0abc2b6892
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65793628"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165968"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jellemzőalapú navigáció megvalósítása az Azure Search-ben
 Jellemzőalapú navigáció egy szűrési mechanizmus, amely alkalmazások keresése az önállóan irányított drilldown navigációs biztosít. A kifejezés "jellemzőalapú navigáció" ismeretlen, de valószínűleg felhasználta előtt. Ahogy az alábbi példa bemutatja, a jellemzőalapú navigáció má hodnotu nothing több, mint az eredmények szűréséhez használt kategóriák.
@@ -401,5 +401,5 @@ Tekintse meg [részletes ismertetése az Azure Search](https://channel9.msdn.com
 A további elemzés, a jellemzőalapú navigáció tervezési elvek javasoljuk, hogy az alábbi hivatkozásokat:
 
 * [Tervezési minták: Jellemzőalapú navigáció](https://alistapart.com/article/design-patterns-faceted-navigation)
-* [Az előtérbeli aggályokat megvalósításához Többszempontú keresés – 1. rész ](https://articles.uie.com/faceted_search2/)
+* [Az előtérbeli aggályokat megvalósításához Többszempontú keresés – 1. rész](https://articles.uie.com/faceted_search2/)
 

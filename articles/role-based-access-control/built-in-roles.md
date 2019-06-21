@@ -15,12 +15,12 @@ ms.date: 05/16/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 427c4615fcbb036ffff56a8fc592f258fb98845e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0789ab981590ac1b7531c1f05d85d7ada3a9f56b
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755109"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295266"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Az Azure-erőforrások beépített szerepkörök
 
@@ -2494,7 +2494,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi tárfiókok kezelését. Nem biztosít hozzáférést a tárfiókban lévő adatokat. |
+> | **Leírás** | Lehetővé teszi tárfiókok kezelését. A fiókkulcs, amely keresztül megosztott kulcsos engedélyezési adatok eléréséhez használható hozzáférést biztosít. |
 > | **Azonosító** | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el az összes engedélyt |

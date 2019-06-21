@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 2f27c50b1d016265c20102521a137bcbb0646115
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66115499"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179337"
 ---
 Ha rendelkezik egy közös hozzáférésű jogosultságkód (SAS) URL-címet, amely a tárfiókban lévő erőforrásokhoz való hozzáférést, használhatja a SAS egy kapcsolati karakterláncot. Az SAS a kérés hitelesítéséhez szükséges információkat tartalmazza, mert egy kapcsolati karakterláncot az SAS használatával biztosítja a protokoll, a szolgáltatási végpont és az erőforrás eléréséhez szükséges hitelesítő adatok.
 

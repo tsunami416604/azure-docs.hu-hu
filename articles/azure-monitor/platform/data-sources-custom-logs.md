@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/12/2019
+ms.date: 06/19/2019
 ms.author: bwren
-ms.openlocfilehash: c80736dcd8be0c7ff3aae850aaaf9659f47daf36
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 56dd1c29d5606da96bbc6d519b70caf580852446
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60996355"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273077"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Egyéni naplók az Azure monitorban
 Az egyéni naplókat adatforrás az Azure Monitor lehetővé teszi, hogy események gyűjtését a Windows és a Linux rendszerű számítógépek szöveges fájlok. Számos alkalmazás adatokat szöveges fájlok nem szabványos naplózási szolgáltatásokkal, például a Windows Eseménynapló vagy a Syslog naplófájlba. Követően az adatok elemzése az egyes mezők a lekérdezéseiben, vagy az adatokat nyerhet ki az egyes mezők a gyűjtés során.
@@ -35,11 +35,7 @@ A naplófájlok gyűjtendő egyeznie kell a következő feltételeknek.
 - A naplófájl ASCII vagy UTF-8 kódolást kell használnia.  Eltérő, például az UTF-16 formátumban nem támogatottak.
 
 >[!NOTE]
->Ha ismétlődő bejegyzéseket a naplófájlban, az Azure Monitor gyűjti azokat.  Azonban a lekérdezési eredmények lesz inkonzisztens ahol a az eredmények szűréséhez, mint a eredményszámot további események megjelenítése.  Fontos, hogy ellenőrizze, hogy a napló megállapításához, hogy az alkalmazás, amely létrehozza okozza ezt a viselkedést, és oldja meg az egyéni napló gyűjtése definíció létrehozása előtt, ha lehetséges lesz.  
->
-  
->[!NOTE]
-> Ha az alkalmazás egy új naplófájlt hoz létre, minden nap, vagy ha egy bizonyos méretet elér, a Linuxhoz készült Log Analytics-ügynök nem deríti fel őket, amíg újra nem indítják. Ez azért, mert az ügynök csak enumerálása, és megkezdődik a figyelés indítása után a megadott naplók mintákat, és ezért meg kell terveznie, körülötte az az ügynök újraindítása automatizálásával.  Ez a korlátozás nem létezik a Windows a Log Analytics-ügynököt.  
+> Ha ismétlődő bejegyzéseket a naplófájlban, az Azure Monitor gyűjti azokat. Azonban a lekérdezési eredmények lesz inkonzisztens ahol a az eredmények szűréséhez, mint a eredményszámot további események megjelenítése. Fontos, hogy ellenőrizze, hogy a napló megállapításához, hogy az alkalmazás, amely létrehozza okozza ezt a viselkedést, és oldja meg az egyéni napló gyűjtése definíció létrehozása előtt, ha lehetséges lesz.  
 >
 
 >[!NOTE]

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: f4facdf8fc530c35ba02620f451a00a8da36d982
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: fcc26d0d42576e8d39407f2af5bafe6de24db19f
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66497113"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154508"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Az Azure Virtual Network – gyakori kérdések (GYIK)
 
@@ -382,13 +382,17 @@ Szolgáltatásvégpontok hozzáadása egy rendszer útvonalat, amely elsőbbség
 Az Azure-szolgáltatás eléréséhez NSG-ket kell kimenő kapcsolatok engedélyezése. Ha az NSG-k elérhető minden kimenő internetforgalmat, majd a végpont forgalmának működnie kell. A szolgáltatás IP-címek a szolgáltatáscímkék csak a kimenő forgalmat is korlátozhatja.  
  
 ### <a name="what-permissions-do-i-need-to-set-up-service-endpoints"></a>Milyen engedélyekkel van szükségem a Szolgáltatásvégpontok beállításához?
-A Szolgáltatásvégpontok a virtuális hálózat külön konfigurálhatók a virtuális hálózathoz írási jogosultsággal rendelkező felhasználó által. Ahhoz, hogy egy felhasználó Azure-szolgáltatási erőforrásokat rendelhessen egy virtuális hálózathoz, rendelkeznie kell a hozzáadott alhálózatokra vonatkozó **Microsoft.Network/JoinServicetoaSubnet** engedéllyel. Ez az engedély alapértelmezés szerint a beépített szolgáltatás-rendszergazdai szerepkör része, és egyéni szerepkörök létrehozásával módosítható. Tudjon meg többet a beépített szerepkörök és az adott engedélyek hozzárendelése a [egyéni szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/custom-roles?toc=%2fazure%2fvirtual-network%2ftoc.json).
+A Szolgáltatásvégpontok a virtuális hálózat külön konfigurálhatók a virtuális hálózathoz írási jogosultsággal rendelkező felhasználó által. Biztonságos Azure-szolgáltatási erőforrások virtuális hálózathoz, a felhasználó engedéllyel kell rendelkeznie **Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action** az alhálózatokra. Ez az engedély alapértelmezés szerint a beépített szolgáltatás-rendszergazdai szerepkör része, és egyéni szerepkörök létrehozásával módosítható. Tudjon meg többet a beépített szerepkörök és az adott engedélyek hozzárendelése a [egyéni szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/custom-roles?toc=%2fazure%2fvirtual-network%2ftoc.json).
  
 
 ### <a name="can-i-filter-virtual-network-traffic-to-azure-services-allowing-only-specific-azure-service-resources-over-vnet-service-endpoints"></a>E szűrheti az Azure-szolgáltatások, virtuális hálózati forgalom virtuális hálózati Szolgáltatásvégpontok keresztül csak az adott azure-szolgáltatási erőforrások, így? 
 
 Virtuális hálózat (VNet) szolgáltatásvégpont-szabályzat lehetővé teszi az Azure-szolgáltatások, így csak bizonyos Azure-szolgáltatási erőforrások keresztül a Szolgáltatásvégpontok a virtuális hálózati forgalmának szűrése. Szolgáltatásvégpont-szabályzatra adja meg a részletes hozzáférés-vezérlés a virtuális hálózati forgalmat az Azure-szolgáltatásokra. További információ a szolgáltatásvégpont-szabályzat [Itt](virtual-network-service-endpoint-policies-overview.md).
- 
+
+### <a name="does-azure-active-directory-azure-ad-support-vnet-service-endpoints"></a>Az Azure Active Directory (Azure AD) támogatja a virtuális hálózati Szolgáltatásvégpontok?
+
+Az Azure Active Directory (Azure AD) natív módon nem támogatja a szolgáltatásvégpontokat. Virtuális hálózati Szolgáltatásvégpontok támogató Azure-szolgáltatások teljes listája látható [Itt](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). Vegye figyelembe, hogy a Szolgáltatásvégpontok támogató szolgáltatások felsorolva "Microsoft.AzureActiveDirectory" címkét használja támogató Szolgáltatásvégpontok ADLS általános 1-re. Az ADLS 1. generációs gyűjtések, virtuális hálózat integrációja Azure Data Lake Storage Gen1 használ a virtuális hálózati szolgáltatási végpont biztonsági a virtuális hálózat és az Azure Active Directory (Azure AD) további biztonsági jogcímeket a hozzáférési jogkivonatot létrehozni. Ezután e jogcímek használatával hitelesíti a virtuális hálózatot az 1. generációs Data Lake Storage-fiókkal, és engedélyezi a hozzáférést. További információ az [Azure Data Lake Store általános 1 VNet-integráció] (.. /Data-Lake-Store/Data-Lake-Store-Network-Security.md?TOC=%2fazure%2fvirtual-Network%2ftoc.JSON
+
 ### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>Bármely korlátozva van hány virtuális hálózati Szolgáltatásvégpontok segítségével állítható be a saját virtuális hálózaton?
 A virtuális hálózati Szolgáltatásvégpontok a virtuális hálózat száma nincs korlátozva van. Az Azure-szolgáltatási erőforrások (például Azure-tárfiókok) esetében a szolgáltatások korlátozhatják az erőforrás biztosításához használt alhálózatok számát. Az alábbi táblázat néhány példa korlát: 
 

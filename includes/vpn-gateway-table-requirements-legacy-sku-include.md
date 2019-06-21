@@ -9,11 +9,11 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 5b9e036816aa532d32b1b4305ef6ae646ae05bae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66159257"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179008"
 ---
 A következő táblázat felsorolja a házirendalapú és Útvonalalapú VPN-átjárók követelményei. Ez a tábla a Resource Managerre és a klasszikus üzembe helyezési modellre is érvényes. A klasszikus modellt a házirendalapú VPN gatewayek ugyanazok, mint statikus átjárókhoz, és az útvonalalapú átjárók ugyanazok, mint a dinamikus átjárók.
 

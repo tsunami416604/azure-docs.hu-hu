@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: f0fc3722ee440b6f50b86f916afef7ddc5876eef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41d544fd23d258393cc83ea09371332655223581
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66693413"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203930"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>OPC Ikereszköz modul és függőségei előzmények üzembe helyezése
 
@@ -200,52 +200,6 @@ A modulok üzembe helyezése az Azure IoT Edge-átjáróeszköz legegyszerűbben
    ```
 
    Az eszköz azonosító paraméter értéke a kis-és nagybetűket. ![az iot hub modul-identity list kimeneti](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/list-modules.png)
-
-## <a name="run-and-debug-locally"></a>Futtatás és hibakeresés helyileg
-
-Hiba történt a hibaelhárítási és a hibakeresés, akkor hasznos, ha az Edge-modulok helyileg futtassa a [IoT Edge fejlesztési szimulátor](https://github.com/Azure/iotedgehubdev).  Biztosítja a helyi fejlesztési környezetet biztosít a szimulátor létrehozásához, fejlesztéséhez, teszteléséhez, futtatása és hibakeresés az Azure IoT Edge-modulok és a megoldások ugyanazon bit/kód éles környezetben használt.
-
-### <a name="prerequisites"></a>Előfeltételek
-
-1. Az OPC-Twin üzembe [függőségek](howto-opc-twin-deploy-dependencies.md).
-
-2. Telepítés [Docker CE (18.02.0+)](https://www.docker.com/community-edition) a [Windows](https://docs.docker.com/docker-for-windows/install/), [macOS](https://docs.docker.com/docker-for-mac/install/) vagy [Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce).
-
-3. Telepítés [Docker Compose (1.20.0+)](https://docs.docker.com/compose/install/#install-compose) (csak szükséges **Linux**. Compose már megtalálható a Windows és macOS Docker CE-telepítés)
-
-4. Telepítés [Python (2.7-es / 3.5+) és a Pip](https://www.python.org/)
-
-5. Futtassa az alábbi parancsot a terminálban iotedgehubdev telepítése
-
-   ```bash
-   pip install --upgrade iotedgehubdev
-   ```
-
-> [!NOTE]
-> Telepítése `iotedgehubdev` a **legfelső szintű** Linux/MacOS rendszeren (*ne használjon "– felhasználó" beállítás a "pip install" parancsot a*).
-> Győződjön meg arról, hogy nem az Azure IoT Edge-futtatókörnyezet futó iotedgehubdev az ugyanazon a gépen, mivel ugyanazokat a portokat van szükségük van.
-
-### <a name="quickstart"></a>Első lépések
-
-1. Kövesse az utasításokat [egy Edge-eszköz létrehozása az Azure Portalon](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal).  Másolja ki a peremhálózati eszköz kapcsolati karakterláncát.
-
-2. Állítsa be a szimulátor az edge-kapcsolati karakterlánc használatával.
-
-    ```bash
-    iotedgehubdev setup -c <edge-device-connection-string>
-    ```
-
-3. Jegyzékfájl az újabb példány egy `deployment.json` fájl ugyanabban a mappában.  Indítsa el az üzembe helyezés a szimulátor használatával
-
-    ```bash
-    iotedgehubdev start -d deployment.json
-    ```
-
-4. Állítsa le a szimulátor használatával
-
-   ```bash
-   iotedgehubdev stop
-   ```
 
 ## <a name="next-steps"></a>További lépések
 

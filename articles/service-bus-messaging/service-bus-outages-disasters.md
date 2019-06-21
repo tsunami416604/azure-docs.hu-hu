@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: 24611e265788cf046aa0733bc423917aaf305427
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 24fba1961c8fd95f1b9489716d690dd6eaa97b62
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589727"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274845"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Ajánlott eljárások az alkalmazások a Service Bus leállásainak és katasztrófákkal szembeni szigetelő
 
@@ -54,9 +54,9 @@ Ha az alkalmazás nem állandó küldő fogadó kommunikációt is igényelnek, 
 ### <a name="active-replication"></a>A replikálás aktív
 Aktív replikációs mindkét névtérre entitások minden művelethez használ. Minden olyan ügyfél, amely egy üzenetet küld az ugyanazon üzenet két példánya küld. Az első másolás küld az elsődleges entitásnál (például **contosoPrimary.servicebus.windows.net/sales**), és az üzenet második példányát küldi el a másodlagos entitást (például  **contosoSecondary.servicebus.windows.net/sales**).
 
-Egy ügyfél mindkét üzenetsorok fogad üzeneteket. A fogadó feldolgozza az üzenetet első példányát, és a második példány le lesz tiltva. Ismétlődő üzenetek le, a küldő fel kell címkéznie az egyes üzenet egyedi azonosítója. Mindkét az üzenet másolata ugyanazzal az azonosítóval kell megcímkézni. Használhatja a [BrokeredMessage.MessageId] [ BrokeredMessage.MessageId] vagy [BrokeredMessage.Label] [ BrokeredMessage.Label] tulajdonságok vagy az üzenetek címkézése egyéni tulajdonságot. A fogadó kell üzeneteket, amelyek már megkapta listának a karbantartására.
+Egy ügyfél mindkét üzenetsorok fogad üzeneteket. A fogadó feldolgozza az üzenetet első példányát, és a második példány le lesz tiltva. Ismétlődő üzenetek le, a küldő fel kell címkéznie az egyes üzenet egyedi azonosítója. Mindkét az üzenet másolata ugyanazzal az azonosítóval kell megcímkézni. Használhatja a [BrokeredMessage.MessageId][BrokeredMessage.MessageId] vagy [BrokeredMessage.Label][BrokeredMessage.Label] tulajdonságok vagy az üzenetek címkézése egyéni tulajdonságot. A fogadó kell üzeneteket, amelyek már megkapta listának a karbantartására.
 
-A [a Service Bus Standard szintű georeplikáció] [ Geo-replication with Service Bus Standard Tier] üzenetküldési entitások active replikálását mutatja be.
+A [a Service Bus Standard szintű georeplikáció][Geo-replication with Service Bus Standard Tier] üzenetküldési entitások active replikálását mutatja be.
 
 > [!NOTE]
 > Az aktív replikációs megközelítés megduplázódik műveletek számát, ezért ez a módszer költségesebb vezethet.
@@ -75,10 +75,10 @@ Passzív replikáció használata esetén a következő esetekben üzenetek néh
 * **Üzenet késése vagy az adatvesztés**: Tegyük fel, hogy a küldő egy üzenetet m1 sikeresen elküldte az elsődleges üzenetsornak, és ezután a várólista elérhetetlenné válik a címzett megkapja az m1 előtt. A küldő a következő üzenetet m2 küld a másodlagos üzenetsor. Az elsődleges üzenetsornak átmenetileg nem érhető el, ha a fogadó m1 kap, miután újra elérhetővé a várólista válik. Egy esetleges vészhelyzet esetén a fogadó soha nem jelenhet meg az M1 verzióban.
 * **Ismétlődő fogadás**: Tegyük fel, hogy a küldő millió üzenetet küld az elsődleges üzenetsornak. A Service Bus sikeresen m dolgozza fel, de nem tud választ küldeni. Miután a küldési művelet időkorlátja lejár, a küldő m egyforma példányával küld a másodlagos üzenetsor. Ha a fogadó tudja fogadni az m első példányát, mielőtt az elsődleges üzenetsornak elérhetetlenné válik, a fogadó kap mindkét másolat m körülbelül egy időben. Ha a címzett nem tudja fogadni az m első példányát, mielőtt az elsődleges üzenetsornak elérhetetlenné válik, a fogadó csak a második példányt m kezdetben kap, de majd m második másolatot kap, amikor az elsődleges üzenetsornak elérhetővé válik.
 
-A [a Service Bus Standard szintű georeplikáció] [ Geo-replication with Service Bus Standard Tier] üzenetküldési entitások passzív replikálását mutatja be.
+A [a Service Bus Standard szintű georeplikáció][Geo-replication with Service Bus Standard Tier] üzenetküldési entitások passzív replikálását mutatja be.
 
 ## <a name="protecting-relay-endpoints-against-datacenter-outages-or-disasters"></a>Adatközpont-leállások és katasztrófák elleni továbbítási végpontok védelme
-A továbbítási végpontok georeplikáció lehetővé teszi, hogy egy szolgáltatás, amely a továbbító végpont zajok mellett a Service Bus leállásainak elérhetőnek kell lennie. Georeplikáció elérése érdekében a szolgáltatás létre kell hoznia két továbbítási végpontok különböző névterekben. A névterek kell lennie, különböző adatközpontokban, és a két végpontot nevének eltérőnek kell lennie. Például egy elsődleges végpont érhető el a **contosoPrimary.servicebus.windows.net/myPrimaryService**, míg a másodlagos párjukhoz alatt elérhető **contosoSecondary.servicebus.windows.net /mySecondaryService**.
+A georeplikáció [Azure Relay](../service-bus-relay/relay-what-is-it.md) végpontok lehetővé teszi, hogy egy szolgáltatás, amely a továbbító végpont zajok mellett a Service Bus leállásainak elérhetőnek kell lennie. Georeplikáció elérése érdekében a szolgáltatás létre kell hoznia két továbbítási végpontok különböző névterekben. A névterek kell lennie, különböző adatközpontokban, és a két végpontot nevének eltérőnek kell lennie. Például egy elsődleges végpont érhető el a **contosoPrimary.servicebus.windows.net/myPrimaryService**, míg a másodlagos párjukhoz alatt elérhető **contosoSecondary.servicebus.windows.net /mySecondaryService**.
 
 Ezután figyeli a szolgáltatás mindkét végponton, és a egy ügyfél hívhat meg mindkét végponton keresztül a szolgáltatás. Egy ügyfélalkalmazás véletlenszerűen választja ki a továbbítók egyikét, az elsődleges végpontot, és a kérést küld az aktív végpontot. A művelet egy hibakóddal meghiúsul, ha ez a hiba azt jelzi, hogy a relay-végpont nem érhető el. Az alkalmazás megnyílik a biztonsági mentési végpont egy csatornát, és a kérés reissues. Ezen a ponton az aktív és a biztonsági mentési végpontok váltson szerepkörök: az ügyfélalkalmazás is figyelembe veszi a régi aktív végpontot, hogy az új biztonsági mentési végpont, és a régi biztonsági mentési végpontot, hogy az új aktív végpontnak lennie. Műveletek sikertelenek is küld, ha a szerepköröket a két entitás változatlanok maradnak, és hibát ad vissza.
 
@@ -87,7 +87,7 @@ Vész-helyreállítási kapcsolatos további információkért tanulmányozza a 
 
 * [Az Azure Service Bus Geo-disaster recovery](service-bus-geo-dr.md)
 * [Az Azure SQL Database üzletmenet-folytonossági][Azure SQL Database Business Continuity]
-* [Rugalmas alkalmazások tervezése az Azure-hoz][Azure resiliency technical guidance]
+* [Rugalmas alkalmazások tervezése az Azure számára][Azure resiliency technical guidance]
 
 [Service Bus Authentication]: service-bus-authentication-and-authorization.md
 [Partitioned messaging entities]: service-bus-partitioning.md

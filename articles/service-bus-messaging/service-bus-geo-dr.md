@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: a2b92b7673ed852e203ca0926421be6ee8cf977d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 24d6658733ea38c15f0673d10db3c0ff5ef51c23
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058170"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190148"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Az Azure Service Bus Geo-disaster recovery
 
@@ -62,6 +62,17 @@ A telepítési folyamat a következő –
 2. Üzembe helyezése egy ***másodlagos*** Service Bus prémium szintű Namespace régióban *különbözik az elsődleges névtér kiosztása ahol*. Ez segít a hibák elszigetelését lehetővé teszik a különböző adatközpont-régió között.
 
 3. Az elsődleges névtér és a másodlagos névtér beszerzése közötti párosítás létrehozása a ***alias***.
+
+    >[!NOTE] 
+    > Ha rendelkezik [az Azure standard szintű Service Bus-névtér áttelepítése az Azure Service Bus prémium szintű](service-bus-migrate-standard-premium.md), majd a vész-helyreállítási létrehozásához kell használnia a már meglévő alias (vagyis a standard szintű Service Bus névtér kapcsolati karakterlánc) konfigurációs keresztül a **PS vagy a parancssori felületen** vagy **REST API-val**.
+    >
+    >
+    > Ez azért, mert az áttelepítés során az Azure Service Bus Standard névtér kapcsolati karakterlánc/DNS-név magát az Azure Service Bus prémium névterekhez egy alias válik.
+    >
+    > Az ügyfélalkalmazásokat, fel kell használniuk az alias (vagyis az Azure Service Bus Standard névtér kapcsolati karakterlánc) való csatlakozáshoz a prémium szintű névteret, ahol a vész-helyreállítási párosítás telepítése befejeződött.
+    >
+    > A portál használatával beállítása a vészhelyreállítási konfigurációban, ha a portálon absztrakt, ez csoportosítani.
+
 
 4. Használja a ***alias*** 3. lépésében beszerzett való csatlakozáshoz az ügyfélalkalmazások a Geo-Dr-beli engedélyezett elsődleges névtér. Kezdetben az alias elsődleges névterére mutat.
 

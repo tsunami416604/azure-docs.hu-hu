@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: iainfou
 ms.openlocfilehash: 2e655627267546d88f76a2487817bca3153ee91d
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/17/2019
 ms.locfileid: "65074019"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Biztonsággal kapcsolatos fogalmait, alkalmazások és-fürtök az Azure Kubernetes Service (AKS)
@@ -69,7 +69,7 @@ Kapcsolati és biztonsági a helyszíni hálózatokkal az AKS-fürtöt meglévő
 
 A forgalmat a virtuális hálózatok szűrése, az Azure hálózati biztonsági csoport szabályai használ. Ezek a szabályok határozzák meg, a forrás és cél IP-címtartományok, portok és protokollok, hogy engedélyezi vagy megtagadja a hozzáférést az erőforrásokhoz. Alapértelmezett szabályok jönnek létre a Kubernetes API-kiszolgálóhoz a TLS-forgalom engedélyezéséhez. Terheléselosztók, portleképezéseit vagy bejövő útvonal létrehozhat olyan szolgáltatásokat, mint az AKS automatikusan módosítja a hálózati biztonsági csoport, a forgalom áramlásának biztosításához.
 
-## <a name="kubernetes-secrets"></a>Kubernetes titkos kulcsok
+## <a name="kubernetes-secrets"></a>A Kubernetes titkos kódjai
 
 A Kubernetes *titkos* bizalmas adatok behelyezése podok, például a hozzáférési hitelesítő adatokhoz vagy kulcsokhoz szolgál. Először hozzon létre egy titkos kulcsot, a Kubernetes API-val. A pod vagy a központi telepítés határozza meg, ha egy adott titkos kód lehet igényelni. A titkos kulcs tárolása pedig a titkos kulcsok csupán útmutatóul szolgálnak a csomópontokra, amelyeken az ütemezett podot működéséhez szükség van rá *tmpfs*nem írt lemezre. A legutóbbi pod egy csomóponton, amely megköveteli a titkos kulcs törlése esetén a titkos kulcsot a csomópont tmpfs lesz törölve. Titkos kulcsok egy adott névtéren belül vannak tárolva, és csak az azonos névtérben podok hozzáférhet.
 

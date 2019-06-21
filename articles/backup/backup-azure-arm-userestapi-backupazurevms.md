@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: pullabhk
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 8a47d3cf346d7961e9f8b1c4fa615a2faa6b1da0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 295c4fed9ab674f0c9e812c02f6b82ee53ef1b91
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60646775"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274852"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Egy Azure virtuális gép biztonsági mentése a Azure Backup – REST API-n keresztül
 
@@ -108,13 +108,13 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 A *első* URI rendelkezik a szükséges paramétereket. Nincsenek további kérelem törzsében van szükség.
 
-#### <a name="responses"></a>Responses
+##### <a name="responses-1"></a>Válaszok
 
 |Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
 |200 OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
-##### <a name="example-responses"></a>Példa válaszok
+##### <a name="example-responses-1"></a>Példa válaszok
 
 Miután a *első* kérelem elküldését a 200 (OK) válasz.
 
@@ -329,7 +329,7 @@ Két választ adja vissza: 202 (elfogadva), ha egy másik művelet jön létre, 
 |---------|---------|---------|
 |202-es elfogadva     |         |     Elfogadva    |
 
-#### <a name="example-responses"></a>Példa válaszok
+##### <a name="example-responses-3"></a>Példa válaszok
 
 Miután a *POST* kérést egy igény szerinti biztonsági mentés, az első válaszig a 202 (elfogadva) egy helyre vagy az Azure-aszinkron-fejléc.
 
@@ -439,7 +439,7 @@ A `{containerName}` és `{protectedItemName}` áll össze [fent](#responses-1). 
 DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2016-12-01
 ```
 
-### <a name="responses"></a>Responses
+### <a name="responses-2"></a>Válaszok
 
 *Törlés* védelem egy [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy a művelet létrehoz egy másik művelet, külön-külön nyomon kell követni.
 

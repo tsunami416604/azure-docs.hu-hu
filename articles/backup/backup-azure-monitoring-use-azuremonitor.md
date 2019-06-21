@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 1e85b633024b5a3e85874707ae9a1f068e7a328d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 7c53d8fe0ee5bbfdbe180aa4d18d8c7b7fab29c2
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808519"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295294"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>Az Azure Monitor használatával nagy mennyiségű figyelése
 
@@ -29,7 +29,7 @@ A [beépített figyelési és riasztási cikk](backup-azure-monitoring-built-in-
 ## <a name="using-log-analytics-workspace"></a>Log Analytics-munkaterület használata
 
 > [!NOTE]
-> Az Azure virtuális gép biztonsági mentéseinek, MAB-ügynök, a System Center DPM (SC-DPM), az SQL Azure virtuális gépek biztonsági mentésének van alatt folyamatosan a Log Analytics-munkaterületre diagnosztikai beállításokon keresztül. Az Azure fájlmegosztások biztonsági másolatainak, a Microsoft Azure Backup Server (MABS) támogatása hamarosan elérhető lesz.
+> Az Azure virtuális gép biztonsági mentéseinek, MAB-ügynök, a System Center DPM (SC-DPM), az SQL Azure virtuális gépek biztonsági mentésének és Azure-fájlmegosztás biztonsági mentés van folyamatban folyamatosan a Log Analytics-munkaterületre diagnosztikai beállításokon keresztül. A Microsoft Azure Backup Server (MABS) támogatása hamarosan elérhető lesz.
 
 Azt is két Azure-szolgáltatások - funkcióit kihasználva az **diagnosztikai beállítások** (adatokat lehet küldeni a több Azure Resource Manager-erőforrások egy másik erőforrás) és **Log Analytics** (LA - létrehozásához egyéni riasztások, ahol megadhatja a más értesítési csatornákra Műveletcsoportok használatával) figyelés ipari méretekben. A következő szakaszokban a LA használatát az Azure Backup monitorozásához ipari méretekben.
 
@@ -47,6 +47,9 @@ Kiválaszthatja egy LA munkaterület célként egy másik előfizetésből. *A a
 ### <a name="deploying-solution-to-log-analytics-workspace"></a>A Log Analytics-munkaterületet a megoldás üzembe helyezése
 
 Amint az adatok LA munkaterületen belül [GitHub-sablon üzembe helyezése](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) alakzatot LA adatok vizualizálásához. Ellenőrizze, hogy megkapja az ugyanabban az erőforráscsoportban, munkaterület neve, és munkaterület helye megfelelően azonosíthatja a munkaterületet, és ez a sablon telepíthető.
+
+> [!NOTE]
+> Felhasználók, akik nem rendelkeznek riasztásokat vagy a biztonsági mentési és visszaállítási feladatokat azok LA munkaterületen "BadArgumentError" kóddal hiba jelenhet meg a portálon. A felhasználók figyelmen kívül hagyhatja ezt a hibát, és a megoldás használatának folytatásához. Ha a megfelelő típusú adatokat megindul a munkaterületre, a Vizualizációk az azonos és a felhasználók nem látják ezt a hibát többé fogja tartalmazni.
 
 ### <a name="view-azure-backup-data-using-log-analytics-la"></a>Log Analytics (LA) használatával az Azure Backup-adatok megtekintése
 

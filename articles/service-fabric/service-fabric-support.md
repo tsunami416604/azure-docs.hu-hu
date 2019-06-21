@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: a931de8be07d41cf4daab63aa7691973ee158452
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 667ee6a49238c1ecaabec631cb72804b0c4b2323
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60545061"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304260"
 ---
 # <a name="azure-service-fabric-support-options"></a>Az Azure Service Fabric támogatási lehetőségei
 
@@ -43,7 +43,7 @@ További információk:
 
 ## <a name="report-production-issues-or-request-paid-support-for-standalone-service-fabric-clusters"></a>Éles problémák jelentése és az önálló Service Fabric-fürtök fizetős támogatási kérelem
 
-Jelentéskészítési problémákat a Service Fabric-fürtben üzembe helyezett helyszíni vagy más felhőkben, nyisson meg egy professzionális támogatási jegyet a [a Microsoft támogatási portálján](https://support.microsoft.com/oas/default.aspx?prid=16146).
+Jelentéskészítési problémákat a Service Fabric-fürtben üzembe helyezett helyszíni vagy más felhőkben, nyisson meg egy professzionális támogatási jegyet a [a Microsoft támogatási portálján](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
 További információk:
 
@@ -60,11 +60,11 @@ Azure Service Fabric hibák jelentést [Service-Fabric-hibák git-tárház](http
 
 ### <a name="stackoverflow-and-msdn-forums"></a>Stackoverflow-n és az MSDN-fórumok
 
-A [Service Fabric-címke a StackOverflow-n] [ stackoverflow] és a [Service Fabric-fórum az MSDN] [ msdn-forum] használt kérdések feltevéséhez a kapcsolatos legjobb Platform működik, és hogyan, előfordulhat, hogy vele bizonyos feladatok elvégzését.
+A [Service Fabric-címke a StackOverflow-n][stackoverflow] and the [Service Fabric forum on MSDN][msdn-forum] ajánlott kérdések feltevéséhez a platform működését, és hogyan lehet, hogy az vele bizonyos feladatok elvégzéséhez használt.
 
 ### <a name="azure-feedback-forum"></a>Azure Visszajelzési fórum
 
-A [Azure Visszajelzési fórum a Service fabric] [ uservoice-forum] a legjobb hely rendelkezik a termék ellenőrizzük, hogy a legnépszerűbb kérelmek nagy ötletek részei a közepes, hosszú távú tervezési és elküldéséhez. Javasoljuk, hogy rally javaslatait a Közösségben támogatása.
+A [Azure Visszajelzési fórum a Service fabric][uservoice-forum] a legjobb hely rendelkezik a termék ellenőrizzük, hogy a legnépszerűbb kérelmek nagy ötletek részei a közepes, hosszú távú tervezési és elküldéséhez. Javasoljuk, hogy rally javaslatait a Közösségben támogatása.
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric előzetes verziókat – üzemi használatra nem támogatott
 

@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: ebe7f9307fcfa39d6cb133203a4c17243ad390c5
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: b2054aa963991ffa2d92aabf1ce896031f2d87fc
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027137"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296062"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Funkciói a következők műveletek és a környezeti információk
 
@@ -40,6 +40,12 @@ Personalizer nem írja elő, korlátozhatja, vagy hárítsa el a műveletek és 
 ## <a name="supported-feature-types"></a>Támogatott szolgáltatás típusa
 
 Personalizer karakterlánc, numerikus és logikai típusú funkcióját támogatja.
+
+### <a name="how-choice-of-feature-type-affects-machine-learning-in-personalizer"></a>Hogyan befolyásolja az szolgáltatástípus kiválasztása a Machine Learning Personalizer
+
+* **Karakterláncok**: A karakterlánc típusú kulcs-érték minden egyes kombinációjához új súlyok a Personalizer gépi tanulási modellt hoz létre. 
+* **Numerikus**: Numerikus értékeket kell használnia, ha a szám arányosan befolyásolhatja a személyre szabási eredményének. Ez a függő nagyon forgatókönyv. A példában egy egyszerűsített pl. amikor személyre szabásához kiskereskedelmi észlel, NumberOfPetsOwned lehet egy szolgáltatás, amely befolyásolhatja az kétszer vagy kevesebb mint háromszor kellene 1 kisállat személyre szabása eredménye 2 vagy 3 kisállatok rendelkező személyek érdemes numerikus van. Funkciók, amelyek numerikus egységek alapulnak, de ahol értelmében nem lineáris - kor, hőmérséklet vagy személy magasság - legjobb kódolt, karakterláncok és a szolgáltatás-minőségi általában javítása érdekében tartományok használatával. Például kora sikerült kódolni, "Age": "0-5", "Age": "6 – 10", stb.
+* **Logikai** elküldött act "false" értékű, ha azok minden korábban elküldött értékek.
 
 Az funkciók, amelyek nem találhatók a kérelem ki lehet hagyni. Kerülje a küldési szolgáltatások null értékű, mert fogja feldolgozni, meglévő, és a egy értéke "null" Ha a modell betanításához.
 

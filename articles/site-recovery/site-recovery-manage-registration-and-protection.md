@@ -5,14 +5,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 06/18/2019
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 1b4cd5bb020e73dc9045eb164ce49931f818f72d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 400ffaa9e6fed14ceabf34283cd5fa7c7a0336b8
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65415487"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203400"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Kiszolgálók eltávolítása és a védelem letiltása
 
@@ -151,6 +151,8 @@ Hyper-V gazdagépeket nem VMM által felügyelt Hyper-V hely vannak összegyűjt
 > [!NOTE]
 > A mobilitási szolgáltatás nem lesz eltávolítva a védett kiszolgálók mind a beállításokat távolítsa el manuálisan kell. Ha a kiszolgálót ugyanarra a konfigurációs kiszolgálóra újra használatával védeni szeretné, kihagyhatja a mobilitási szolgáltatás eltávolítása.
 
+> [!NOTE]
+> Ha egy virtuális Gépet már feladatátadása, és az Azure-ban fut, vegye figyelembe, hogy tiltsa le a védelmet nem eltávolítása / befolyásolja a feladatátvételen átesett virtuális gép.
 ## <a name="disable-protection-for-a-azure-vm-azure-to-azure"></a>Tiltsa le a védelmet egy Azure virtuális gép (Azure-bA)
 
 -  A **védett elemek** > **replikált elemek**, kattintson a jobb gombbal a gépre > **tiltsa le a replikációt**.
@@ -167,8 +169,12 @@ Hyper-V gazdagépeket nem VMM által felügyelt Hyper-V hely vannak összegyűjt
    - **Tiltsa le a replikációt és Eltávolítás (ajánlott)** – ezzel a beállítással eltávolítja a replikált elemet az Azure Site Recovery szolgáltatásból, és a gép replikációja le van állítva. A helyszíni virtuális gépet a replikálási beállításai törlődnek, és a Site Recovery-számlázását a védett kiszolgáló le van állítva.
    - **Távolítsa el** – Ez a beállítás kellene használni, csak ha a forráskörnyezetet törölték, vagy nem érhető el (nem csatlakozik). Ezzel eltávolítja a replikált elemet az Azure Site Recovery (a számlázás megáll). A helyszíni virtuális gépet a replikálási beállításai **nem lesz** törlődnek. 
 
-     > [!NOTE]
+ > [!NOTE]
      > Ha úgy döntött a **eltávolítása** lehetőséget, majd futtassa a következő parancsfájlok a replikációs beállításokat a helyszíni Hyper-V kiszolgálón.
+
+> [!NOTE]
+> Ha egy virtuális Gépet már feladatátadása, és az Azure-ban fut, vegye figyelembe, hogy tiltsa le a védelmet nem eltávolítása / befolyásolja a feladatátvételen átesett virtuális gép.
+
 1. A forrás Hyper-V gazdakiszolgálón, távolítsa el a virtuális gép replikációját. SQLVM1 cserélje le a virtuális gép nevét, és futtassa a parancsfájlt egy felügyeleti PowerShell
 
 ```powershell

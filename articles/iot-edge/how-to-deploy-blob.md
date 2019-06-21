@@ -1,24 +1,27 @@
 ---
 title: Az Azure Blob Storage-modul üzembe helyezése az Azure IoT Edge-eszközök – |} A Microsoft Docs
 description: Egy Azure Blob Storage-modul üzembe helyezése az IoT Edge-eszköz a peremhálózaton adatok tárolására.
-author: kgremban
-ms.author: kgremban
-ms.date: 05/21/2019
+author: arduppal
+ms.author: arduppal
+ms.date: 06/19/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
 ms.reviewer: arduppal
-manager: philmea
-ms.openlocfilehash: d844e81de9cfb556e91ab5c0d5a8074c822cce0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+manager: mchad
+ms.openlocfilehash: 468e4fca5e67850949e7d5826e4bc88fa504b9d6
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65990469"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295187"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Az eszköz üzembe helyezése az Azure Blob Storage, az IoT Edge-modul
 
 Többféleképpen is a modulok IoT Edge-eszköz üzembe helyezése és azokat az Azure Blob Storage az IoT Edge-modulok. A két legegyszerűbb módszereket használja az Azure portal vagy a Visual Studio Code-sablonokat.
+
+> [!NOTE]
+> Az Azure Blob Storage, az IoT Edge-ben van [nyilvános előzetes verzióban](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -88,35 +91,35 @@ A manifest nasazení egy JSON-dokumentum, amely azt ismerteti, hogy mely modulok
      > [!IMPORTANT]
      > Ne változtassa meg a második fele az storage directory kötést, érték, amely a modul egy adott helyre mutat. A storage directory kötési mindig kell végződnie **: / blobroot** Linux-tárolókhoz és **: C: / BlobRoot** Windows-tárolókhoz.
 
-    ![Frissítés modul tároló-létrehozási beállítások – portál](./media/how-to-store-data-blob/edit-module.png)
-
-1. Állítsa be [rétegezést](how-to-store-data-blob.md#tiering-properties) és [time-to-live](how-to-store-data-blob.md#time-to-live-properties) tulajdonságok a modul által a következő JSON másolása és beillesztése be azt a **Set ikermodul kívánt tulajdonságai** mezőbe. Minden egyes tulajdonság beállítása a megfelelő értéket, és mentse a telepítés folytatásához.
+1. Állítsa be [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) és [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) tulajdonságok a modul által a következő JSON másolása és beillesztése be azt a **Set ikermodul kívánt Tulajdonságok** mezőbe. Minden egyes tulajdonság beállítása a megfelelő értéket, és mentse a telepítés folytatásához.
 
    ```json
    {
      "properties.desired": {
-       "ttlSettings": {
-         "ttlOn": <true, false>,
-         "timeToLiveInMinutes": <timeToLiveInMinutes>
+       "deviceAutoDeleteProperties": {
+         "deleteOn": <true, false>,
+         "deleteAfterMinutes": <timeToLiveInMinutes>,
+         "retainWhileUploading":<true,false>
        },
-       "tieringSettings": {
-         "tieringOn": <true, false>,
-         "backlogPolicy": "<NewestFirst, OldestFirst>",
-         "remoteStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>; EndpointSuffix=<your end point suffix>",
-         "tieredContainers": {
+       "deviceToCloudUploadProperties": {
+         "uploadOn": <true, false>,
+         "uploadOrder": "<NewestFirst, OldestFirst>",
+         "cloudStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>; EndpointSuffix=<your end point suffix>",
+         "storageContainersForUpload": {
            "<source container name1>": {
              "target": "<target container name1>"
            }
-         }
+         },
+         "deleteAfterUpload":<true,false>
        }
      }
    }
 
       ```
 
-   ![Állítsa be a rétegzési és élő idő tulajdonságai](./media/how-to-store-data-blob/iotedge_custom_module.png)
+   ![set container create options, deviceAutoDeleteProperties and deviceToCloudUploadProperties properties](./media/how-to-deploy-blob/iotedge-custom-module.png)
 
-   Rétegezést és az élettartam konfigurálásával, a modul telepítését követően további információkért lásd: [szerkesztése az Ikermodul](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin). Kívánt tulajdonságok kapcsolatos további információkért lásd: [meghatározása vagy a frissítés kívánt tulajdonságok](module-composition.md#define-or-update-desired-properties).
+   DeviceToCloudUploadProperties és deviceAutoDeleteProperties konfigurálásával, a modul telepítését követően további információkért lásd: [szerkesztése az Ikermodul](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin). Kívánt tulajdonságok kapcsolatos további információkért lásd: [meghatározása vagy a frissítés kívánt tulajdonságok](module-composition.md#define-or-update-desired-properties).
 
 1. Kattintson a **Mentés** gombra.
 
@@ -158,7 +161,7 @@ Az Azure IoT Edge segítségével peremhálózati megoldásokat fejleszthet a Vi
    | Select folder (Mappa kiválasztása) | Válassza ki a helyet, a Visual Studio Code a megoldás-fájlok létrehozása a fejlesztői gépen. |
    | Provide a solution name (Megoldásnév megadása) | Adjon meg egy leíró nevet a megoldáshoz, vagy fogadja el az alapértelmezett **EdgeSolution**. |
    | Select module template (Modulsablon kiválasztása) | Válasszon **meglévő modul (adjon meg teljes URL-címe)** . |
-   | Provide a module name (Modulnév megadása) | Adja meg például az all-kisbetűk nevét, a modul **Azure BLOB Storage szolgáltatásról**.<br /><br />Fontos kisbetűs nevét az Azure Blob Storage használata az IoT Edge-modul. IoT Edge egy kis-és nagybetűket, modulok kontextusban való megnevezésekor, és a Storage SDK alapértelmezés szerint a kisbetűs. |
+   | Provide a module name (Modulnév megadása) | Adja meg például az all-kisbetűk nevét, a modul **azureblobstorageoniotedge**.<br /><br />Fontos kisbetűs nevét az Azure Blob Storage használata az IoT Edge-modul. IoT Edge egy kis-és nagybetűket, modulok kontextusban való megnevezésekor, és a Storage SDK alapértelmezés szerint a kisbetűs. |
    | A modul adja meg a Docker-rendszerkép | Adja meg a lemezkép URI-ja: **mcr.microsoft.com/azure-blob-storage:latest** |
 
    A Visual Studio Code-ot tart a megadott információt, létrehoz egy IoT Edge-megoldást, majd betölti azt egy új ablakban. A megoldássablon hoz létre, amely tartalmazza a blob storage modul rendszerképének jegyzékfájl a központi telepítési sablont, de be kell állítania a modul a létrehozási beállítások.
@@ -182,7 +185,7 @@ Az Azure IoT Edge segítségével peremhálózati megoldásokat fejleszthet a Vi
       }
       ```
 
-      ![A modul createOptions – Visual Studio Code frissítése](./media/how-to-store-data-blob/create-options.png)
+      ![A modul createOptions – Visual Studio Code frissítése](./media/how-to-deploy-blob/create-options.png)
 
 1. Cserélje le `<your storage account name>` emlékszik névvel. Fiók nevének 3 – 24 karakter hosszúságú, kisbetűket és számokat kell lennie. Nem tartalmazhat szóközöket.
 
@@ -196,32 +199,34 @@ Az Azure IoT Edge segítségével peremhálózati megoldásokat fejleszthet a Vi
       > [!IMPORTANT]
       > Ne változtassa meg a második fele az storage directory kötést, érték, amely a modul egy adott helyre mutat. A storage directory kötési mindig kell végződnie **: / blobroot** Linux-tárolókhoz és **: C: / BlobRoot** Windows-tárolókhoz.
 
-1. Konfigurálása [rétegezést](how-to-store-data-blob.md#tiering-properties) és [time-to-live](how-to-store-data-blob.md#time-to-live-properties) a modul adja hozzá a következő JSON-tulajdonságokat a *deployment.template.json* fájlt. Egyes tulajdonságok konfigurálása a megfelelő értéket, és mentse a fájlt.
+1. Konfigurálása [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) és [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) a modul a következő JSON-hozzáadásával a *deployment.template.json* fájlt. Egyes tulajdonságok konfigurálása a megfelelő értéket, és mentse a fájlt.
 
    ```json
    "<your azureblobstorageoniotedge module name>":{
      "properties.desired": {
-       "ttlSettings": {
-         "ttlOn": <true, false>,
-         "timeToLiveInMinutes": <timeToLiveInMinutes>
+       "deviceAutoDeleteProperties": {
+         "deleteOn": <true, false>,
+         "deleteAfterMinutes": <timeToLiveInMinutes>,
+         "retainWhileUploading": <true, false>
        },
-       "tieringSettings": {
-         "tieringOn": <true, false>,
-         "backlogPolicy": "<NewestFirst, OldestFirst>",
-         "remoteStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>",
-         "tieredContainers": {
+       "deviceToCloudUploadProperties": {
+         "uploadOn": <true, false>,
+         "uploadOrder": "<NewestFirst, OldestFirst>",
+         "cloudStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>",
+         "storageContainersForUpload": {
            "<source container name1>": {
              "target": "<target container name1>"
            }
-         }
+         },
+         "deleteAfterUpload": <true, false>
        }
      }
    }
    ```
 
-   ![Állítsa be a kívánt tulajdonságainak azureblobstorageoniotedge – Visual Studio Code](./media/how-to-store-data-blob/tiering_ttl.png)
+   ![Állítsa be a kívánt tulajdonságainak azureblobstorageoniotedge – Visual Studio Code](./media/how-to-deploy-blob/devicetocloud-deviceautodelete.png)
 
-   Rétegezést és az élettartam konfigurálásával, a modul telepítését követően további információkért lásd: [szerkesztése az Ikermodul](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin). További információ a tároló létrehozási beállítások, indítsa újra a házirendet és a kívánt állapot, lásd: [EdgeAgent kívánt tulajdonságok](module-edgeagent-edgehub.md#edgeagent-desired-properties).
+   DeviceToCloudUploadProperties és deviceAutoDeleteProperties konfigurálásával, a modul telepítését követően további információkért lásd: [szerkesztése az Ikermodul](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin). További információ a tároló létrehozási beállítások, indítsa újra a házirendet és a kívánt állapot, lásd: [EdgeAgent kívánt tulajdonságok](module-edgeagent-edgehub.md#edgeagent-desired-properties).
 
 1. Mentse a *deployment.template.json* fájlt.
 

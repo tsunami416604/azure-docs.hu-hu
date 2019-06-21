@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 05/29/2019
 ms.author: dalek
-ms.openlocfilehash: ebcb0922335a2bdc5423ec4e4bfce7c1cd71c46a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 188911fa3fb872c8db1612406bf3d4e9b36d837b
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357264"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303837"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Használat és költségek kezelése az Application Insights
 
@@ -30,7 +30,7 @@ Ha az Application Insights díjszabásával kapcsolatban kérdése van, akkor is
 
 ## <a name="pricing-model"></a>Díjszabási modell
 
-A díjszabás [Azure Application Insights] [ start] betöltött adatmennyiség alapján. Minden Application Insights-erőforrást különálló szolgáltatásként kell fizetnie, és hozzájárul a az Azure-előfizetéshez tartozó számla.
+A díjszabás [Azure Application Insights][start] betöltött adatmennyiség alapján. Minden Application Insights-erőforrást különálló szolgáltatásként kell fizetnie, és hozzájárul a az Azure-előfizetéshez tartozó számla.
 
 ### <a name="data-volume-details"></a>Adatmennyiség részleteivel
 
@@ -38,11 +38,12 @@ A díjszabás [Azure Application Insights] [ start] betöltött adatmennyiség a
 * Az alkalmazás mennyiségi díjat most egy új rendszergazdát nevű jelentett **adatbetöltés** 2018. április. Ez új fogyasztásmérő közösen használja figyelési Applications Insights és a Log Analytics-technológiákra, és jelenleg a szolgáltatás neve alatt **Log Analytics**. 
 * [Élő metrikák Stream](../../azure-monitor/app/live-stream.md) adatok célokra díjszabás után nem kell fizetnie.
 
-Jelenlegi díjak a pénznem és a régiót, lásd: [Application Insights díjszabásával][pricing].
+> [!NOTE]
+> Minden ebben a cikkben szereplő képernyőképek megjelenő árak például kizárólag célra. Jelenlegi díjak a pénznem és a régiót, lásd: [Application Insights díjszabásával][pricing].
 
 ### <a name="multi-step-web-tests"></a>Többlépéses webes tesztek
 
-[Többlépéses webes tesztek](../../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests) külön díjat számítunk fel. Többlépéses webes tesztek olyan webes teszteket, amely egy műveletsorozatot végrehajtani.
+[Többlépéses webes tesztek](../../azure-monitor/app/availability-multistep.md) külön díjat számítunk fel. Többlépéses webes tesztek olyan webes teszteket, amely egy műveletsorozatot végrehajtani.
 
 Semmilyen külön díjat nem az *ping tesztek* egy oldal. A ping-vizsgálatok és a többlépéses teszt telemetriai ugyanaz, mint más az alkalmazásából származó telemetriai adatok kell fizetnie.
 
@@ -53,7 +54,7 @@ Az Application Insights megkönnyíti a megismeréséhez költségeit valószín
 ![Díjszabás kiválasztása](./media/pricing/pricing-001.png)
 
 A. Tekintse át a továbbított adatmennyiség hónapban. Ez magában foglalja a fogadott és megőrzött adatok (után bármely [mintavételi](../../azure-monitor/app/sampling.md)) az a kiszolgáló és az ügyfélalkalmazások, illetve az rendelkezésre állási tesztet.  
-B. Kérés érkezett egy külön díjat számítunk fel [többlépéses webes tesztek](../../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests). (Egyszerű rendelkezésre állási teszteket, amelyek szerepelnek a mennyiségi adatok díj nem tartalmazza a.)  
+B. Kérés érkezett egy külön díjat számítunk fel [többlépéses webes tesztek](../../azure-monitor/app/availability-multistep.md). (Egyszerű rendelkezésre állási teszteket, amelyek szerepelnek a mennyiségi adatok díj nem tartalmazza a.)  
 C. Adatok mennyiségi trendek megjelenítése az elmúlt hónapban.  
 D. Engedélyezze az adatbetöltés [mintavételi](../../azure-monitor/app/sampling.md).   
 E. Állítsa be a napi adatmennyiségre.  

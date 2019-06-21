@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9accb41cdb4d780bf137d6872cca022226f902e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b0c9699bccbb539c9617fac2f3296483139e7188
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61443095"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203157"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>A távoli figyelési megoldásgyorsító a szerepköralapú hozzáférés-vezérlés konfigurálása
 
@@ -91,11 +91,11 @@ A következő lépések bemutatják, hogyan szerepkör hozzáadása az Azure Act
 
 1. Keresse meg a **alkalmazásregisztráció** a megoldás az Azure Portalon. Az alkalmazás nevét a távoli figyelési megoldás neve. Az alábbi képernyőképen a megoldást és az alkalmazás megjelenített nevek a következők **contoso-rm4**.
 
-    ![Alkalmazásregisztráció](media/iot-accelerators-remote-monitoring-rbac/appregistration2.png)
+    ![Alkalmazásregisztráció](media/iot-accelerators-remote-monitoring-rbac/app-registration-2.png)
 
 1. Válassza ki az alkalmazását, és kattintson a **Manifest**. Láthatja, hogy a két meglévő [alkalmazás-szerepkörök](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles) az alkalmazáshoz meghatározott:
 
-    ![Jegyzék megtekintése](media/iot-accelerators-remote-monitoring-rbac/viewmanifest.png)
+    ![Jegyzék megtekintése](media/iot-accelerators-remote-monitoring-rbac/view-manifest.png)
 
 1. Egy nevű szerepkör hozzáadása a jegyzékfájl szerkesztése **ManageDevices** az alábbi kódrészletben látható módon. Szüksége lesz egy egyedi karakterlánccá, például egy GUID Azonosítót az új szerepkör-azonosítót. Létrehozhat egy új GUID-szolgáltatást használ, mint például a [Online GUID-generátor](https://www.guidgenerator.com/):
 

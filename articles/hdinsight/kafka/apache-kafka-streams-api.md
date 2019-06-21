@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: Az Apache Kafka Streams API – Azure HDInsight használata '
-description: Megtudhatja, hogyan használhatja az Apache Kafka Streams API-t a Kafka on HDInsighttal. Az API segítségével streamfeldolgozást végezhet a témakörök között a Kafkában.
+description: Oktatóanyag – ismerje meg, az Apache Kafka Streams API használata a HDInsight alatt futó Kafka. Az API segítségével streamfeldolgozást végezhet a témakörök között a Kafkában.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 04/02/2019
-ms.openlocfilehash: 9425af0f39d14287b49fe06a81172281feb24e83
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d76ac8cc1673f1df8981a543321d34aa57cd0896
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64715972"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295476"
 ---
 # <a name="tutorial-apache-kafka-streams-api"></a>Oktatóanyag: Apache Kafka streams API
 

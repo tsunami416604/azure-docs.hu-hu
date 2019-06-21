@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 11/09/2018
-ms.openlocfilehash: 6cbfdc9e595ebdf682356990ec975dbd0514035d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f4a1962f90d54001f315827c1243e929344e3d7
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66297088"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274014"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Az Azure SQL Database felügyelt példánya a alkalmazás csatlakoztatása
 
@@ -45,7 +45,7 @@ A virtuális hálózatok csatlakoztatása két lehetőség van:
 A társviszony-létesítési beállítást azért előnyösebb egy társviszony-létesítés használja a Microsoft gerinchálózatán tehát kapcsolat szempontjából, a társított virtuális hálózat és az azonos virtuális hálózaton található virtuális gépek között nincs észrevehető különbség a késés. Virtuális hálózatok közötti társviszony korlátozva a hálózatok ugyanabban a régióban.  
 
 > [!IMPORTANT]
-> A hálózatok ugyanabban a régióban, mert a virtuális hálózatok közötti társviszony-létesítési forgatókönyv a felügyelt példány korlátozódik [korlátokat a globális virtuális hálózati társviszony](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints).
+> A hálózatok ugyanabban a régióban, mert a virtuális hálózatok közötti társviszony-létesítési forgatókönyv a felügyelt példány korlátozódik [korlátokat a globális virtuális hálózati társviszony](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Lásd még a vonatkozó részében a [Azure virtuális hálózatok gyakran ismételt kérdések](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) további részleteivel. 
 
 ## <a name="connect-an-on-premises-application"></a>A helyi alkalmazások csatlakoztatása
 

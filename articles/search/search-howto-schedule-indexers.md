@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 764fca8d3cb4cd9c40d7880043637f89ef1a8578
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4bf931b19b7490a94f30afde49038cdc7573fab3
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755380"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67302243"
 ---
 # <a name="how-to-schedule-indexers-for-azure-search"></a>Az Azure Search indexelők ütemezése
 Az indexelő normális esetben lefut egyszer, azonnal a létrehozást követően. Futtathatja azt újra igény szerint a portálon, a REST API vagy a .NET SDK használatával. Beállíthatja, hogy az indexelő futtatása rendszeres ütemezés szerint.
@@ -43,6 +43,9 @@ Vegyünk egy példát, ez részletesebb legyen. Tegyük fel, hogy úgy konfigur�
 * Az első indexelő végrehajtás, vagy 2019. június 1. 8:00-kor (UTC): elindul. Tegyük fel, a végrehajtási vesz igénybe, 20 perc (vagy bármely idő kevesebb mint 1 óra).
 * A második végrehajtása, vagy 2019. június 1 9:00-kor kezdődik (UTC). Tegyük fel, hogy a végrehajtási perc 70 - több mint egy óra –, és 10:10-kor (UTC) amíg nem fejeződik.
 * A harmadik végrehajtását, 10:00-kor (UTC) történő futásra van ütemezve, de ekkor még mindig fut. az előző végrehajtás. Ez az ütemezett végrehajtási majd a rendszer kihagyta. Az indexelő végrehajtásának tovább nem fog elindulni, amíg 11:00-kor (UTC).
+
+> [!NOTE]
+> Ha az indexelő értéke egy meghatározott ütemezés, de ismételten sikertelen lesz, ugyanazon dokumentum és újra minden alkalommal, amikor azt fut, az indexelő megkezdődik futtatása kevésbé gyakori időközönként (akár a legfeljebb 24 óránként legalább egyszer), amíg sikeresen teszi folyamatban aga a.  Ha úgy véli, hogy bármilyen kijavítása, amely egy bizonyos ponton elakadt, az indexelő okozta a problémát, egy az igény szerinti futtatása az indexelő is végezhet, hogy sikeresen ez, és folyamatban van, az indexelő vissza fog térni a set-ütemezési időköz újra.
 
 <a name="portal"></a>
 

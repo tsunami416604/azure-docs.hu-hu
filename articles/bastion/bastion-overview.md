@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: overview
 ms.date: 06/17/2019
 ms.author: cherylmc
-ms.openlocfilehash: cfd68bbacf4cf8171efdba7878ec8c06055a4997
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: d153c876366c8c747e06bf50a0ea26bcdcea10eb
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191167"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303599"
 ---
 # <a name="what-is-azure-bastion-preview"></a>Mi az Azure megerősített? (Előzetes verzió)
 
@@ -48,7 +48,7 @@ A következő funkciókat szeretné kipróbálni a nyilvános előzetes verziób
 * **Távoli munkamenet az RDP/SSH-hoz az SSL- és tűzfalbeállítások bejárása során:** Azure megerősített egy HTML5-alapú webes ügyfél, amely automatikusan adatfolyamként történő a helyi eszközt használ, annak érdekében, hogy az RDP/SSH-munkamenet SSL-en keresztül, hogy biztonságosan a vállalati tűzfal bejárása lehetővé teszi a 443-as porton.
 * **Nincs nyilvános IP-cím szükséges az Azure virtuális gépen:** Az Azure megerősített megnyílik a RDP/SSH-kapcsolatot az Azure virtuális gép magánhálózati IP használata a virtuális Gépen. A virtuális gép nyilvános IP-cím nem szükséges.
 * **Nincsenek nem kell az NSG-k kezelése:** Az Azure megerősített egy teljes körűen felügyelt platform, amely belsőleg RDP/SSH-kapcsolat védelmének biztosításához a megerősített Azure PaaS-szolgáltatás. Nem kell minden olyan NSG-ket alkalmaz Azure megerősített alhálózaton. Mivel Azure megerősített a virtuális gépek magánhálózati IP-kapcsolatot létesít, konfigurálhatja úgy az NSG-ket csak az Azure megerősített érkező RDP/SSH engedélyezése. Ez eltávolítja az NSG-k minden alkalommal, amikor szüksége biztonságosan csatlakozhat a virtuális gépek felügyelete nem kell.
-* **Védelem ismételt portok:** Nem kell tegye elérhetővé a virtuális gépek nyilvános internetről, mert a virtuális gép védelme portfigyelés engedélyezetlen és a virtuális hálózaton kívül található, a rosszindulatú felhasználókkal szemben.
+* **Portfigyelést elleni védelem:** Nem kell tegye elérhetővé a virtuális gépek nyilvános internetről, mert a virtuális gép védelme portfigyelés engedélyezetlen és a virtuális hálózaton kívül található, a rosszindulatú felhasználókkal szemben.
 * **Nulladik napi támadások ellen. Csak egy helyen megerősítése:** Az Azure megerősített egy teljes körűen platform felügyelt PaaS-szolgáltatás. A virtuális hálózat peremén lévő helyezkedik el, mert nem kell aggódnia a virtuális hálózaton lévő virtuális gépek mindegyike korlátozására. Az Azure platform nulladik napi támadások ellen védi a tartja, az Azure megerősített megerősített és mindig naprakész az Ön számára.
 
 ## <a name="faq"></a>GYIK

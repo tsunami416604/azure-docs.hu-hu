@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b28d590390cd1a1ef1c6651e6943ac2a7fa0af29
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: f4fd47ae4f1ebc50de916b537b165eba1c5efb11
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075503"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205028"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -39,7 +39,7 @@ Az alábbi ábrán látható egy koncepcióvázlaton jelenítik működését é
 
 Az Update Management segítségével natív módon előkészítheti a gépeket ugyanabban a bérlőben több előfizetésben található.
 
-Ha egy CVE kiadás, a javítás jelenik meg a Linux rendszerű gépek értékelés 2 – 3 órát vesz igénybe.  Windows-gépek Miután megtörtént az értékeléshez jelenik meg a javítás 12 – 15 órát vesz igénybe.
+Miután megjelenik egy csomagot, a javítás jelenik meg a Linux rendszerű gépek értékelés 2 – 3 órát vesz igénybe. Windows-gépek Miután megtörtént az értékeléshez jelenik meg a javítás 12 – 15 órát vesz igénybe.
 
 A számítógép frissítési megfelelőség szempontjából vizsgálat befejezése után az ügynök továbbítja az adatokat az Azure Monitor naplóira tömeges. A Windows-számítógépen a megfelelőségi vizsgálat futtatása alapértelmezés szerint 12 óránként.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: jingwang
-ms.openlocfilehash: bd02a95f485f45c223fce4c24a72251481c2aa7e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 68d2f126ee32f61d13d170712bf58581101036e8
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427895"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206070"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Data Warehouse-ból az Azure Data Factory használatával 
 > [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
@@ -426,7 +426,7 @@ A követelmények nem teljesülnek, ha az Azure Data Factory ellenőrzi a beáll
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Fiók kulcsos hitelesítést, felügyelt identitás-hitelesítés |
 
     >[!IMPORTANT]
-    >Ha az Azure Storage-szolgáltatásvégpont van konfigurálva, felügyelt identitás hitelesítést kell használnia. Tekintse meg [hatását a virtuális hálózati Szolgáltatásvégpontok használatával és az Azure storage](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)
+    >Ha az Azure Storage-szolgáltatásvégpont van beállítva, kell használnia felügyelt identitás hitelesítés – tekintse meg [hatását a virtuális hálózati Szolgáltatásvégpontok használatával és az Azure storage](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Ismerje meg a szükséges konfigurációk Data factoryben [Azure Blob - felügyelt identitásnak hitelesítési](connector-azure-blob-storage.md#managed-identity) és [Azure Data Lake Storage Gen2 - felügyelt identitás hitelesítési](connector-azure-data-lake-storage.md#managed-identity) szakasz jelölik.
 
 2. A **Forrás-adatformátum** azonban **Parquet**, **ORC**, vagy **tagolt szöveg**, az alábbi konfigurációkkal:
 
@@ -537,12 +537,12 @@ Ha a forrásadatok szöveges formátumban, vagy más a PolyBase kompatibilis tá
 ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data type VARCHAR to DECIMAL.....Detailed Message=Empty string can't be converted to DECIMAL.....
 ```
 
-A megoldás az, hogy törölje "**típus alapértelmezett**" (hamis) értékűre, a másolási tevékenység fogadó a Beállítás -> PolyBase szabályzattípust. "[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
+A megoldás az, hogy törölje "**típus alapértelmezett**" beállítás (hamis) értékűre, a másolási tevékenység fogadó PolyBase-beállítások ->. "[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
 )" egy PolyBase natív konfigurációja, amely meghatározza, hogy hogyan szeretné kezelni a PolyBase kér le adatokat a szövegfájl elválasztójellel tagolt szöveges fájlok a hiányzó értékeket. 
 
 **Egyéb**
 
-További knonw PolyBase problémáival kapcsolatban tekintse meg [hibaelhárítása az Azure SQL Data Warehouse PolyBase terhelés](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md#polybase).
+A PolyBase több ismert problémákat, tekintse meg a [hibaelhárítása az Azure SQL Data Warehouse PolyBase terhelés](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md#polybase).
 
 ### <a name="sql-data-warehouse-resource-class"></a>Az SQL Data Warehouse erőforrásosztály
 

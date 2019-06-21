@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/12/2019
 ms.author: victorh
-ms.openlocfilehash: c963cb1b6930b41a703b479e0213311d971e6606
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 480cf22491dbbfcb9fe1961b5c9a7aa6fe12a0cb
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67082845"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274034"
 ---
 # <a name="azure-private-dns-faq"></a>Az Azure Private DNS – gyakori kérdések
 
@@ -88,6 +88,13 @@ Az alábbi alapértelmezett korlátok vonatkoznak az Azure saját DNS használat
 ## <a name="is-there-portal-support-for-private-zones"></a>Van-e a saját zónák portal-támogatást?
 
 Igen, és a privát zónák már létrehozott API-k, PowerShell, CLI és SDK-k segítségével az Azure Portalon láthatók.
+
+## <a name="why-dont-my-existing-private-dns-zones-show-up-in-new-portal-experience"></a>A meglévő privát DNS-zónák miért nem jelennek meg az új portálja?
+
+Frissítés előzetes kiadás részeként azt egy új erőforrás-modellt a saját DNS-zónák le szállítani. A meglévő privát DNS-zónák kell migrálható az új erőforrás-modellje, mielőtt ezeket is megjelennek az új portál nyújt lehetőséget. Lásd az alábbi új erőforrás-modellje áttelepítése útmutatást.
+
+## <a name="how-do-i-migrate-my-existing-private-dns-zones-to-the-new-model"></a>Hogyan migrálhatom a meglévő privát DNS-zónák az új modellre?
+Határozottan javasoljuk, hogy telepít át az új erőforrás modellre minél hamarabb. Örökölt erőforrás-modellje is támogatott lesz, azonban további szolgáltatásokat nem kell kidolgozni felül ezt a modellt. A jövőben tervezzük az új erőforrás-modellje értéke kivezetjük. A meglévő privát DNS-kiszolgáló áttelepítése új erőforrás-modellje zónák tekintse át[áttelepítési útmutató az Azure DNS privát zónái](private-dns-migration-guide.md).
 
 ## <a name="next-steps"></a>További lépések
 

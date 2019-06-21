@@ -8,20 +8,20 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.openlocfilehash: af01ebdc72df096b45c4ca4e755b2ed3880bab65
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 17b5c0b459e70909d9f305beb8bf87b83f1cf65c
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255267"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296521"
 ---
-# <a name="get-started-with-azure-monitor-log-analytics"></a>Az Azure Monitor Log Analytics használatának első lépései
+# <a name="get-started-with-log-analytics-in-azure-monitor"></a>Ismerkedés a Log Analytics az Azure monitorban
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Ebben az oktatóanyagban elsajátíthatja a Azure Monitor Log Analytics használata az Azure Portalon az Azure Monitor log-lekérdezések írása lesz. Mely arról szól, hogyan való:
+Ebben az oktatóanyagban elsajátíthatja a Log Analytics használata az Azure Portalon az Azure Monitor log-lekérdezések írása lesz. Mely arról szól, hogyan való:
 
-- Egyszerű lekérdezéseket írni
+- Egy egyszerű lekérdezés írható a Log Analytics használatával
 - A séma az adatok megismerése
 - Szűrése, rendezése és csoportosíthatja az eredményeket
 - Időtartomány alkalmazása
@@ -29,13 +29,22 @@ Ebben az oktatóanyagban elsajátíthatja a Azure Monitor Log Analytics használ
 - Mentés és a lekérdezések betöltése
 - Exportálás és lekérdezések megosztása
 
+Napló lekérdezések írásáról oktatóanyagért lásd: [az Azure Monitor log-lekérdezések használatának első lépései](get-started-queries.md).<br>
+Napló lekérdezésekkel kapcsolatos további részletekért lásd: [napló áttekintése az Azure monitorban lekérdezések](log-query-overview.md).
 
 ## <a name="meet-log-analytics"></a>A Log Analytics felel meg
 A log Analytics egy webes eszköz írása, és hajtsa végre az Azure Monitor log-lekérdezéseket a. Nyissa meg a kiválasztásával **naplók** az Azure figyelő menü. Egy új üres lekérdezés kezdődik.
 
 ![Kezdőlap](media/get-started-portal/homepage.png)
 
+## <a name="firewall-requirements"></a>Tűzfalra vonatkozó követelmények
+A Log Analytics használatához a böngészőben a következő címekre hozzáférésre van szüksége. Ha a böngésző tűzfalon keresztül fér hozzá az Azure Portalon, engedélyeznie kell ezeket a címeket a hozzáférést.
 
+| URI-t | IP | Portok |
+|:---|:---|:---|
+| portal.loganalytics.io | Dinamikus | 80,443 |
+| api.loganalytics.io | Dinamikus | 80,443 |
+| docs.loganalytics.io | Dinamikus | 80,443 |
 
 ## <a name="basic-queries"></a>Alapszintű lekérdezéseket
 Lekérdezések keresési feltételek, azonosíthatja a trendeket, mintáinak elemzése és sok más összefüggéseket az adatok alapján az használható. Kezdje egy egyszerű lekérdezést:
@@ -44,9 +53,9 @@ Lekérdezések keresési feltételek, azonosíthatja a trendeket, mintáinak ele
 Event | search "error"
 ```
 
-Ez a lekérdezés átvizsgálja a _esemény_ rekordok bármely vlastnost "error" kifejezést tartalmazó tábla.
+Ez a lekérdezés átvizsgálja a _esemény_ tábla, amely tartalmazza a kisbetűs rekordok _hiba_ bármely tulajdonságában megtalálható.
 
-Lekérdezések megkezdheti a következők egyikével táblanév vagy egy **keresési** parancsot. A fenti példában a táblanév előtaggal kezdődik _esemény_, amely megadja, hogy a lekérdezés hatókörét. A függőleges vonal (|) karakterrel elkülöníti a parancsok, így az elsőt a kimenete a következő parancs a bemeneti szolgál. Tetszőleges számú parancsokat adhat hozzá egyetlen lekérdezést.
+Lekérdezések megkezdheti a következők egyikével táblanév vagy egy [keresési](/kusto/query/searchoperator) parancsot. A fenti példában a táblanév előtaggal kezdődik _esemény_, amely lekéri az összes rekordot az esemény táblából. A függőleges vonal (|) karakterrel elkülöníti a parancsok, így az elsőt a kimenete a következő parancs a bemeneti szolgál. Tetszőleges számú parancsokat adhat hozzá egyetlen lekérdezést.
 
 Egy másik módja, hogy ugyanabból a lekérdezés írása a következő lesz:
 
@@ -54,18 +63,18 @@ Egy másik módja, hogy ugyanabból a lekérdezés írása a következő lesz:
 search in (Event) "error"
 ```
 
-Ebben a példában **keresési** hatókörét a _esemény_ table és az adott tábla összes rekordját keresett kifejezés "error".
+Ebben a példában **keresési** hatókörét a _esemény_ table és az adott tábla összes rekordját keresett kifejezés _hiba_.
 
 ## <a name="running-a-query"></a>A lekérdezés futtatása
 A lekérdezés futtatásához kattintson a **futtatása** gombra vagy nyomja le **Shift + Enter**. Vegye figyelembe a következő adatokat, amelyek meghatározzák a kódot, amely akkor fut, és a visszaadott adatok:
 
-- Sortörések: Egyetlen szünet lehetővé teszi, hogy világosabb a lekérdezést. Több sortörést külön azt fel.
+- Sortörések: Egyetlen szünet a lekérdezés olvashatóbbá teszi. Több sortörést külön azt fel.
 - A kurzor: Vigye a kurzort a lekérdezés végrehajtásához, belül valahol. Az aktuális lekérdezési kódot kell, amíg nem talál egy üres sort minősül.
 - Időtartomány - egy időtartománya _elmúlt 24 órában_ alapértelmezés szerint van beállítva. Egy másik tartományt használ, használja a időválasztó, vagy adjon hozzá egy kifejezett idő dátumtartomány-szűrőt ad a lekérdezéshez.
 
 
 ## <a name="understand-the-schema"></a>A séma bemutatása
-A séma az gyűjteményét, vizuálisan logikai kategória szerint csoportosítva. A kategóriák számos olyan figyelési megoldások. A _LogManagement_ kategória tartalmazza a közös adatok, például a Windows és a Syslog események, teljesítményadatok és ügyfél szívveréseket.
+A séma az gyűjteményét, vizuálisan logikai kategória szerint csoportosítva. A kategóriák számos olyan figyelési megoldások. A _LogManagement_ kategória tartalmazza a közös adatok, például a Windows és Syslog-események, teljesítményadatok és ügynök szívveréseket.
 
 ![Séma](media/get-started-portal/schema.png)
 
@@ -181,7 +190,7 @@ A lekérdezéskezelő ikonra a jobb felső területen van. Ez felsorolja az öss
 A log Analytics több módszert is exportáló támogatja:
 
 - Excel: Az eredmények mentése CSV-fájlként.
-- Power BI: Exportálhatja az eredményeket a power bi-ban. Lásd: [importálása az Azure Monitor log-adatok Power BI-bA](../../azure-monitor/platform/powerbi.md) részleteiről.
+- Power BI: Exportálhatja az eredményeket a Power bi-bA. Lásd: [importálása az Azure Monitor log-adatok Power BI-bA](../../azure-monitor/platform/powerbi.md) részleteiről.
 - Hivatkozás megosztása: Magát a lekérdezést, amely majd küldhető és más, ugyanahhoz a munkaterülethez hozzáféréssel rendelkező felhasználók által végrehajtott hivatkozásként is megoszthatók.
 
 ## <a name="next-steps"></a>További lépések

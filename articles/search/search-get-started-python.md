@@ -1,7 +1,7 @@
 ---
 title: 'Gyors útmutató: Python és a REST API-k – Azure Search szolgáltatásban'
 description: Hozzon létre, betöltését és a Python, a Jupyter notebookok és az Azure Search REST API-index lekérdezése.
-ms.date: 06/11/2019
+ms.date: 06/20/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: c519cbd151ac3008593e3309930db4e9a9414e51
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 227da2739216961dcd1f2fb8c643703a1b62e51a
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056644"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67302279"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-jupyter-python-notebooks"></a>Gyors útmutató: Jupyter Python notebookok használatával egy Azure Search-index létrehozása
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "67056644"
 > * [Portál](search-create-index-portal.md)
 > 
 
-Létrehozó, betöltődik, és Python használatával Azure Search-index lekérdezése Jupyter notebook létrehozása és a [Azure Search REST API-k](https://docs.microsoft.com/rest/api/searchservice/). Ez a cikk azt ismerteti, hogyan hozhat létre egy notebookot lépésről lépésre, vág bele. Másik lehetőségként egy befejezett notebook futtatható. Ha szeretné letölteni, nyissa meg [Azure-Search-python-samples-tárház](https://github.com/Azure-Samples/azure-search-python-samples).
+Létrehozó, betöltődik, és Python használatával Azure Search-index lekérdezése Jupyter notebook létrehozása és a [Azure Search REST API-k](https://docs.microsoft.com/rest/api/searchservice/). Ez a cikk azt ismerteti, hogyan hozhat létre egy notebookot lépésről lépésre, vág bele. Másik lehetőségként egy befejezett notebook futtatható. Ha szeretné letölteni, nyissa meg a[azure-aearch – python-samples-tárház](https://github.com/Azure-Samples/azure-search-python-samples).
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 

@@ -15,17 +15,17 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e5cad797b633d43bcc9ead657a60fca8aa6679bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 425f4d9dbd6478af834bee6c88d0f13bdaa45b16
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822380"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273683"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Rendelkezésre állás és konzisztencia az Event Hubs
 
 ## <a name="overview"></a>Áttekintés
-Az Azure Event Hubs használ egy [modell particionálás](event-hubs-features.md#partitions) jobb rendelkezésre állás és ezerszer belül ugyanabba az eseményközpontba. Például egy eseményközpontba négy partícióval rendelkezik, és a egy adott partíciók kerül egyik kiszolgálóról a másikra terheléselosztási művelet, akkor is továbbra is küldhet és fogadhat három más partíciókból. Ezenkívül további partíció lehetővé teszi, hogy az összesített átviteli sebesség növelése az adatfeldolgozás, több egyidejű olvasók. Megoldásterv kritikus fontosságú tényezője ismertetése a particionálási és az elosztott rendszerekben rendezése következményei.
+Az Azure Event Hubs használ egy [modell particionálás](event-hubs-scalability.md#partitions) jobb rendelkezésre állás és ezerszer belül ugyanabba az eseményközpontba. Például egy eseményközpontba négy partícióval rendelkezik, és a egy adott partíciók kerül egyik kiszolgálóról a másikra terheléselosztási művelet, akkor is továbbra is küldhet és fogadhat három más partíciókból. Ezenkívül további partíció lehetővé teszi, hogy az összesített átviteli sebesség növelése az adatfeldolgozás, több egyidejű olvasók. Megoldásterv kritikus fontosságú tényezője ismertetése a particionálási és az elosztott rendszerekben rendezése következményei.
 
 A rendezés és a rendelkezésre állási közötti kompromisszum magyarázatának elősegítésére, tekintse meg a [CAP-tétel](https://en.wikipedia.org/wiki/CAP_theorem), más néven sörgyár a tétel. Ez a tétel konzisztencia, a rendelkezésre állás és a partíció tolerancia közötti választás ismerteti. Megállapítja, hogy a hálózati dokumentumtárolási rendszerek esetén mindig van közötti konzisztencia és a rendelkezésre állás.
 

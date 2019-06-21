@@ -1,63 +1,58 @@
 ---
 title: Az Azure IoT Edge-eszközök – a blokkblobok Store |} A Microsoft Docs
 description: Megismerheti a rétegzési és élő idő funkciók, tekintse meg a támogatott blob storage-műveletek és csatlakozhat a blob storage-fiókjában.
-author: kgremban
-manager: philmea
-ms.author: kgremban
+author: arduppal
+manager: mchad
+ms.author: arduppal
 ms.reviewer: arduppal
-ms.date: 05/21/2019
+ms.date: 06/19/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 396af2dfd9fc53c080163a27e376328c1369d5e1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f70ca550f1688551abb94bb30ba4f76eb3c36404
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991473"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303967"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Az Azure Blob Storage a peremhálózaton data Store az IoT Edge-ben (előzetes verzió)
 
 Az IoT Edge-ben az Azure Blob Storage biztosít egy [blokkblob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) tárolási megoldás a peremhálózaton. Az Azure block blob szolgáltatás viselkedik az IoT Edge-eszközön a blob storage-modulban, de a blokkblobok használatát támogatják a rendszer helyben tárolja az IoT Edge-eszközön. Ugyanazokkal a módszerekkel az Azure storage SDK-t a blobok elérése, vagy a blob API-hívás, amely már jártas letiltása.
 
+Ez a modul tartalmaz **deviceToCloudUpload** és **deviceAutoDelete** funkciókat.
 > [!NOTE]
 > Az Azure Blob Storage, az IoT Edge-ben van [nyilvános előzetes verzióban](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ez a modul tartalmaz **rétegezést** és **time-to-live** funkciókat.
+A cikk gyors ismertetést nyújt a videó megtekintése
+> [!VIDEO https://www.youtube.com/embed/QhCYCvu3tiM]
 
-> [!NOTE]
-> Jelenleg rétegezést és az idő-to-live funkció a Linux-AMD64 és a Linux ARM32 csak érhetők el.
+**deviceToCloudUpload** van egy konfigurálható funkcióval rendelkezik, amely lehetővé teszi, hogy automatikusan tölti fel az adatok a helyi blob storage-ból az Azure-bA időszakos internetes kapcsolat támogatást. Lehetővé teszi:
 
-**Rétegezést** van egy konfigurálható funkcióval rendelkezik, amely lehetővé teszi, hogy automatikusan tölti fel az adatok a helyi blob storage-ból az Azure-bA időszakos internetes kapcsolat támogatást. Lehetővé teszi:
-
-- Kapcsolja be-/ kikapcsolási a rétegezési szolgáltatás
-- Válassza ki a sorrendet, amelyben az adatokat másolja az Azure-bA mint NewestFirst vagy OldestFirst
+- Kapcsolja be-/ kikapcsolási a deviceToCloudUpload funkciót.
+- Válassza ki azt a sorrendet, amelyben az adatokat az Azure-bA mint NewestFirst vagy OldestFirst másolja.
 - Adja meg az Azure Storage-fiókot, amely a feltöltött adatok kívánja.
 - Adja meg a tárolók az Azure-bA feltöltendő. Ez a modul lehetővé teszi a forrás és a cél a tároló nevének megadását.
-- Teljes blob rétegezés (használatával `Put Blob` művelet) és szolgáltatói rétegezés letiltása (használatával `Put Block` és `Put Block List` műveletek).
+- Válassza ki a felhőbeli tárhelyén való feltöltés befejeződése után azonnal törli a blobokat lehetősége
+- Blob feltöltése teljes (használatával `Put Blob` művelet) és szolgáltatói feltöltésének blokkolása (használatával `Put Block` és `Put Block List` műveletek).
 
-Ez a modul használja letiltása szintű rétegzést, ha az a blob blokkokat tartalmaz. Íme néhány gyakori helyzetek:
+Ez a modul szintű feltöltésének blokkolása használja, amikor a blokkok áll a blob. Íme néhány gyakori helyzetek:
 
 - Az alkalmazás egyes blokkolja a korábban feltöltött blob frissíti, ez a modul csak a frissített blokkok és nem a teljes blob feltölt.
 - A modul blob van feltöltésével, és internetkapcsolat eltűnik, az internetkapcsolat esetén vissza újra feltölti a fennmaradó blokkok és nem a teljes blob.
 
 Egy váratlan folyamatmegszakítás (például áramkimaradás) egy blob feltöltése közben történik, ha minden blokkok, amelyek korábban a feltöltés esedékes lesz feltöltve újra, ha a modul visszatér online állapotba.
 
-**Time-to-live** (TTL) olyan egy konfigurálható szolgáltatások, ahol a modul automatikusan törli a blobokat a helyi tárolóból amikor lejár a megadott időtartam (percben). TTL lehetővé teszi:
+**deviceAutoDelete** konfigurálható funkció van, ahol a modul automatikusan törli a blobokat a helyi tárolóból amikor lejár a megadott időtartam (percben). Lehetővé teszi:
 
-- Kapcsolja be-/ kikapcsolási a rétegezési szolgáltatás
-- Adja meg az élettartam percben
+- Kapcsolja be-/ kikapcsolási a deviceAutoDelete funkciót.
+- Adja meg az az idő percben (deleteAfterMinutes) után, amelyek a blobok automatikusan törölve lesznek.
+- Válassza ki a is megőrizheti a blob, miközben tölti fel, ha deleteAfterMinutes érték lejár.
 
 Forgatókönyvek, ahol adatokat, például videók, képek, kampányfinanszírozási adatok szórakoztató, kórházi adatok vagy adatok helyben, később kell tárolni, amelyek helyileg sikerült feldolgozni, vagy jó példák töltődnek fel a felhőbe, ez a modul.
 
-Ez a cikk ismerteti, hogyan telepíthető egy Azure Blob Storage, blob szolgáltatás az IoT Edge-eszközön futó IoT Edge-tárolón.
-
-> [!NOTE]
-> A "auto-lejárati" a videó használt használati feltételek "automatikus rétegezést" helyett "rétegezési" és a "time-to-live".
-
-A cikk gyors ismertetést nyújt a videó megtekintése
-> [!VIDEO https://www.youtube.com/embed/wkprcfVidyM]
+Ez a cikk ismerteti az Azure Blob Storage-blob szolgáltatás az IoT Edge-eszközön futó IoT Edge-tárolón kapcsolatos fogalmakat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -71,8 +66,7 @@ Egy Azure IoT Edge-eszköz:
   | ---------------- | ----- | ----- |
   | Ubuntu Server 16.04 | AMD64 |
   | Ubuntu Server 18.04 | AMD64 |
-  | Windows 10 IoT Core (. októberi frissítés) | AMD64 |
-  | A Windows 10 IoT Enterprise (. októberi frissítés) | AMD64 |
+  | Windows 10 IoT Enterprise | AMD64 |
   | A Windows Server 2019 | AMD64 |
   | A stretch Raspbian | ARM32 |
 
@@ -80,29 +74,31 @@ Felhőerőforrások:
 
 Egy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
 
-## <a name="tiering-and-time-to-live-properties"></a>Rétegzési és élő idő tulajdonságai
+## <a name="devicetocloudupload-and-deviceautodelete-properties"></a>deviceToCloudUpload és deviceAutoDelete tulajdonságai
 
-Használni kívánt rétegezést beállításához és a time-to-live tulajdonságai. Ezeket üzembe helyezés során vagy később módosítani az ikermodul ismételt üzembe helyezése nélkül szerkesztésével. Javasoljuk, hogy a "Ikermodul" ellenőrzése a `reported configuration` és `configurationValidation` , hogy megfelelően propagálva értékeket.
+Kívánt tulajdonságok használatával állítsa be a deviceToCloudUploadProperties és deviceAutoDeleteProperties. Ezeket üzembe helyezés során vagy később módosítani az ikermodul ismételt üzembe helyezése nélkül szerkesztésével. Javasoljuk, hogy a "Ikermodul" ellenőrzése a `reported configuration` és `configurationValidation` , hogy megfelelően propagálva értékeket.
 
-### <a name="tiering-properties"></a>Rétegezési tulajdonságai
+### <a name="devicetoclouduploadproperties"></a>deviceToCloudUploadProperties
 
-Ez a beállítás neve `tieringSettings`
-
-| Mező | Lehetséges értékek | Magyarázat |
-| ----- | ----- | ---- |
-| tieringOn | IGAZ, hamis | Alapértelmezés szerint van beállítva `false`, ha azt szeretné a értékre `true`|
-| backlogPolicy | NewestFirst, OldestFirst | Lehetővé teszi, hogy kiválaszthatja a sorrendet, amelyben az adatokat az Azure-ba másolja. Alapértelmezés szerint van beállítva `OldestFirst`. A sorrend határozza meg BLOB utolsó módosítás időpontja |
-| remoteStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` kapcsolati karakterlánc, amely lehetővé teszi, hogy adja meg az Azure Storage-fiók, amelybe az adatok feltöltése. Adja meg `Azure Storage Account Name`, `Azure Storage Account Key`, `End point suffix`. Adja hozzá a megfelelő EndpointSuffix az Azure, hol fogja feltöltött adatmennyiség, a globális Azure, Government Azure és a Microsoft Azure Stack változik. |
-| tieredContainers | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Az Azure-bA feltöltendő a tároló nevének megadását teszi lehetővé. Ez a modul lehetővé teszi a forrás és a cél a tároló nevének megadását. Ha nem adja meg a tároló nevét, akkor automatikusan hozzárendeli a tároló neve megegyezik `<IoTHubName>-<IotEdgeDeviceName>-<ModuleName>-<ContainerName>`. A célként megadott Tárolónév sablon karakterláncok létrehozása, tekintse meg a lehetséges értékek oszlopa. <br>* %h -> az IoT Hub nevére (3 – 50 karakter). <br>* %d IoT-eszköz azonosítója (1. 129 karakternél) ->. <br>* %m -> modul neve (1 – 64 karakter). <br>* %c -> Forrástároló neve (3 – 63 karakter). <br><br>A tároló nevének maximális mérete automatikusan hozzárendelése során a tároló nevét, ha a tároló mérete meghaladja azt fogja trim 63 karakter minden szakasz (IoTHubName, IotEdgeDeviceName, ModuleName, ContainerName) – 15 karakter 63 karakter. |
-
-### <a name="time-to-live-properties"></a>Time-to-live tulajdonságai
-
-Ez a beállítás neve `ttlSettings`
+Ez a beállítás neve `deviceToCloudUploadProperties`
 
 | Mező | Lehetséges értékek | Magyarázat |
 | ----- | ----- | ---- |
-| ttlOn | IGAZ, hamis | Alapértelmezés szerint van beállítva `false`, ha azt szeretné a értékre `true`|
-| timeToLiveInMinutes | `<minutes>` | Adja meg az élettartam percben. A modul automatikusan törli a blobokat a helyi tárolóból TTL lejárata |
+| uploadOn | true, false | Alapértelmezés szerint van beállítva `false`, ha azt szeretné a értékre `true`|
+| uploadOrder | NewestFirst, OldestFirst | Lehetővé teszi, hogy kiválaszthatja a sorrendet, amelyben az adatokat az Azure-ba másolja. Alapértelmezés szerint van beállítva `OldestFirst`. A sorrend határozza meg BLOB utolsó módosítás időpontja |
+| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` kapcsolati karakterlánc, amely lehetővé teszi, hogy adja meg az Azure Storage-fiók, amelybe az adatok feltöltése. Adja meg `Azure Storage Account Name`, `Azure Storage Account Key`, `End point suffix`. Adja hozzá a megfelelő EndpointSuffix az Azure, hol fogja feltöltött adatmennyiség, a globális Azure, Government Azure és a Microsoft Azure Stack változik. |
+| storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Az Azure-bA feltöltendő a tároló nevének megadását teszi lehetővé. Ez a modul lehetővé teszi a forrás és a cél a tároló nevének megadását. Ha nem adja meg a tároló nevét, akkor automatikusan hozzárendeli a tároló neve megegyezik `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>`. A célként megadott Tárolónév sablon karakterláncok létrehozása, tekintse meg a lehetséges értékek oszlopa. <br>* %h -> az IoT Hub nevére (3 – 50 karakter). <br>* %d IoT Edge-eszköz azonosítója (1. 129 karakternél) ->. <br>* %m -> modul neve (1 – 64 karakter). <br>* %c -> Forrástároló neve (3 – 63 karakter). <br><br>A tároló nevének maximális mérete 63 karakter automatikus hozzárendelése során a tároló nevét, ha a tároló mérete meghaladja azt fogja trim 63 karakter minden szakasz (IoTHubName, IotEdgeDeviceID, ModuleName, SourceContainerName) 15-re karakter. |
+| deleteAfterUpload | true, false | Alapértelmezés szerint van beállítva `false`. Ha van beállítva `true`, azt automatikusan törli az adatok felhőbeli tárhelyén való feltöltés befejeződött |
+
+### <a name="deviceautodeleteproperties"></a>deviceAutoDeleteProperties
+
+Ez a beállítás neve `deviceAutoDeleteProperties`
+
+| Mező | Lehetséges értékek | Magyarázat |
+| ----- | ----- | ---- |
+| deleteOn | true, false | Alapértelmezés szerint van beállítva `false`, ha azt szeretné a értékre `true`|
+| deleteAfterMinutes | `<minutes>` | Adja meg az idő percben. A modul automatikusan törli a blobokat a helyi tárolóból ezt az értéket lejártakor |
+| retainWhileUploading | true, false | Alapértelmezés szerint van beállítva `true`, és megőrzi a blob bár azt tölti fel a tárolási Ha deleteAfterMinutes lejár. Beállíthatja `false` és törli az adatokat, amint deleteAfterMinutes lejár. Megjegyzés: Ez a tulajdonság uploadOn működéséhez meg kell igaz értékre|
 
 ## <a name="configure-log-files"></a>Naplófájlok konfigurálása
 
@@ -115,16 +111,16 @@ A fiók neve és a fiókkulcsot, hogy konfigurálta-e a modul az IoT Edge-eszkö
 Adja meg a tárolási blob végpontja az IoT Edge-eszköz végrehajtott módosítások hozzá kérelmeket. Is [hozzon létre egy kapcsolati karakterláncot egy explicit storage-végpont](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-explicit-storage-endpoint) az IoT Edge-eszköz adatait és a beállított fiók nevét.
 
 - Hol futnak az Azure Blob Storage, az IoT Edge-modul, az adott eszközön üzembe helyezett modulok, a blob végpontja van: `http://<module name>:11002/<account name>`.
-- Egy másik eszközön, mint ahol az Azure Blob Storage, az IoT Edge-modul fut, majd attól függően, hogy a telepítő a blob üzembe helyezett modulok végpontja az alábbiak egyike:
+- Külső modulok vagy az alkalmazásokat futtató egy másik eszközön, mint ahol az Azure Blob Storage, az IoT Edge-modul fut, majd attól függően, hogy a hálózat beállítása úgy, hogy az adatforgalom, a külső modulban vagy alkalmazás érhető el az eszközt IoT Edge-modul az Azure Blob Storage futtatja, a blob végpontja az alábbiak egyike:
   - `http://<device IP >:11002/<account name>`
   - `http://<IoT Edge device hostname>:11002/<account name>`
   - `http://<fully qualified domain name>:11002/<account name>`
 
 ## <a name="azure-blob-storage-quickstart-samples"></a>A rövid útmutató Azure Blob Storage-minták
 
-Az Azure Blob Storage dokumentációja tartalmazza az rövid útmutatók, amelyek számos nyelven mintakódot. Ezek a minták teszteléséhez az IoT Edge-ben az Azure Blob Storage a blob végpontja szeretne csatlakozni a blob storage-modulban módosításával futtathatja.
+Az Azure Blob Storage-dokumentáció több nyelven is rövid mintakód tartalmazza. Ezek a minták teszteléséhez az IoT Edge-ben az Azure Blob Storage a blob végpontja szeretne csatlakozni a helyi blob storage-modulban módosításával futtathatja.
 
-Az alábbi rövid útmutatókat használja, így sikerült telepítheti őket, IoT Edge-modulok mellett a blob storage-modulban is IoT Edge által támogatott nyelvek:
+A következő rövid minták használja, így sikerült telepítheti őket, IoT Edge-modulok mellett a blob storage-modulban is IoT Edge által támogatott nyelvek:
 
 - [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
 - [Java](../storage/blobs/storage-quickstart-blobs-java.md)
@@ -133,10 +129,7 @@ Az alábbi rövid útmutatókat használja, így sikerült telepítheti őket, I
 
 ## <a name="connect-to-your-local-storage-with-azure-storage-explorer"></a>Csatlakozás a helyi tárolóba az Azure Storage Explorerrel
 
-Használhat **Azure Storage Explorer** a helyi storage-fiókhoz való csatlakozáshoz. Ez a lehetőség csak a [Azure Storage Explorer verziója 1.5.0](https://github.com/Microsoft/AzureStorageExplorer/releases/tag/v1.5.0).
-
-> [!NOTE]
-> A következő lépésekkel, például egy kapcsolat hozzáadása a helyi storage-fiók vagy helyi tárfiókban lévő tárolók létrehozása közben hibák léphetnek fel. Hagyja figyelmen kívül, és frissítse.
+Használhat [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) a helyi storage-fiókhoz való csatlakozáshoz.
 
 1. Töltse le és telepítse az Azure Storage Explorerrel
 
@@ -213,6 +206,10 @@ Támogatott:
 Nem támogatott:
 
 - Blokk PUT URL-címről
+
+## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+Az alábbiakban a [kibocsátási megjegyzések a docker hubon](https://hub.docker.com/_/microsoft-azure-blob-storage) a modulhoz
 
 ## <a name="feedback"></a>Visszajelzés
 

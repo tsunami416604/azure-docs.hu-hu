@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 675ce2de91dd4e53f4945ceef3b174c33be001f6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2872d106eea56a37c362195e7a3250058336768b
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66118603"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295058"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Az Azure Disk Encryption for függelék 
 
@@ -133,15 +133,15 @@ Az alábbi táblázat mutatja, hogy mely paraméterek is használható a PowerSh
   - [Egy futó Linux rendszerű virtuális gép titkosításának letiltása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
     - Letiltja a titkosítást csak engedélyezett megváltoztatását az adatköteteken Linux rendszerű virtuális gépekhez.  
 
-### <a name="encrypt-or-decrypt-vm-scale-sets"></a>Titkosítása és visszafejtése a Virtuálisgép-méretezési csoportok
+### <a name="encrypt-or-decrypt-virtual-machine-scale-sets"></a>Titkosítása és visszafejtése a virtual machine scale sets
 
 - [A futó Linux rendszerű virtuális gép méretezési lemeztitkosítás engedélyezve](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
 
 - [Egy futó Windows virtuális gép méretezési csoporthoz lemeztitkosítással engedélyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
 
-  - [Egy virtuális gép méretezési állítsa be a Linux rendszerű virtuális gépek üzembe helyezése Linux VMSS a jumpbox, és lehetővé teszi, hogy titkosítással](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
+  - [Méretezési csoport üzembe egy virtuális gép Linux rendszerű virtuális gépek Linux VMSS a jumpbox, és lehetővé teszi, hogy titkosítással](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
 
-  - [A virtuális gép méretezési állítsa be a Windows virtuális gépek üzembe helyezése Windows VMSS a jumpbox, és lehetővé teszi, hogy titkosítással](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
+  - [A virtuális gép méretezési csoportjának Windows virtuális gépek Windows VMSS jumpbox, és lehetővé teszi, hogy titkosításának központi telepítése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
 
 - [Tiltsa le a futó Linux rendszerű virtuális gép méretezési lemeztitkosítás](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
 
@@ -206,7 +206,7 @@ Használja a [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.asp
 
 ### <a name="prerequisites-for-os-disk-encryption"></a>Az operációs rendszer lemeztitkosítás előfeltételei
 
-* A virtuális Gépet kell használnia egy kompatibilis az operációs rendszer lemeztitkosítás terjesztési felsorolt a [Azure Disk Encryption – gyakori kérdések](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) 
+* A virtuális Gépet kell használnia egy kompatibilis az operációs rendszer lemeztitkosítás terjesztési felsorolt a [az Azure Disk Encryption támogatott operációs rendszerek: Linux](azure-security-disk-encryption-prerequisites.md#linux) 
 * A virtuális Gépen a Marketplace-lemezképből az Azure Resource Manager kell létrehozni.
 * Az Azure virtuális gép legalább 4 GB RAM (javasolt a mérete, 7 GB).
 * (Az RHEL és CentOS) Tiltsa le a SELinux. Tiltsa le a SELinux, lásd: "4.4.2. Letiltás SELinux"az a [SELinux felhasználói és rendszergazdai útmutató](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux) a virtuális gépen.

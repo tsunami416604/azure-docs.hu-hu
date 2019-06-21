@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5eff7925599931104440213112ce288fd521b61
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d15bb4a1cd19af70b29d1d74f43e137cf884c4db
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66473776"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164096"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Távoli hozzáférés a Sharepointhoz, az Azure AD-alkalmazásproxy engedélyezése
 
@@ -129,7 +129,7 @@ Most, hogy konfigurálta a kcd Szolgáltatáshoz, készen áll az Azure AD Appli
    1. Az alkalmazás oldalán a portálon, válassza **egyszeri bejelentkezési**.
    2. Válassza az egyszeri bejelentkezési mód, **integrált Windows-hitelesítés**.
    3. Belső alkalmazás egyszerű Szolgáltatásnevét, amely a korábban beállított értékre állítva. Ebben a példában ez lenne **HTTP/SharePoint**.
-   4. Válassza a "Delegált bejelentkezési identitás" **a helyi SAM-fiók neve**.
+   4. A "Delegált bejelentkezési azonosító" Válassza ki az Active Directory-erdő konfigurációval a leginkább megfelelő lehetőséget. Például egyetlen AD-tartományt, ha az erdő, válassza ki a **a helyi SAM-fiók neve** (az alábbi ábrán látható), de ha a felhasználók nem ugyanabban a tartományban, mint a SharePoint és az alkalmazás alkalmazásproxy-összekötő kiszolgálókat, majd válassza  **Helyszíni felhasználó egyszerű neve** (nem látható).
 
    ![Egyszeri bejelentkezés az integrált Windows-hitelesítés konfigurálása](./media/application-proxy-integrate-with-sharepoint-server/configure-iwa.png)
 

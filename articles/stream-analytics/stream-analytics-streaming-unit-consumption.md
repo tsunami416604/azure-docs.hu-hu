@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/17/2019
-ms.openlocfilehash: 60cddf15ee8a93aa01a72fdc124fa27e68184e04
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: acafd6d8f37edd3e16561a4e588556bb771619f8
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65916037"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206708"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Ismertetése és módosítása a folyamatos átviteli egységek
 
@@ -59,7 +59,7 @@ A historikus (time-orientált) lekérdezés elemei a Stream Analytics által biz
 
 Vegye figyelembe, hogy az összetett lekérdezések logikával feladat sikerült magas SU százalékos kihasználtsága akkor is, ha nem kap, folyamatosan bemeneti események. Ez akkor fordulhat elő, a bemeneti és kimeneti események egy hirtelen megugrás után. A feladat lehet, hogy továbbra is a memória-állapot karbantartásához, ha a lekérdezés túl összetett.
 
-SU százalékos kihasználtsága hirtelen dobhatja 0 előtt vissza hamarosan várható szinteket rövid ideig. Ez akkor fordul elő átmeneti hibák, illetve a rendszer által kezdeményezett frissítése miatt.
+SU százalékos kihasználtsága hirtelen dobhatja 0 előtt vissza hamarosan várható szinteket rövid ideig. Ez akkor fordul elő átmeneti hibák, illetve a rendszer által kezdeményezett frissítése miatt. Növelje a folyamatos átviteli egységek számát, egy feladatot nem lehet, hogy csökkentse SU százalékos kihasználtság, ha a lekérdezés nem [teljes párhuzamos](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization).
 
 ## <a name="stateful-query-logicin-temporal-elements"></a>Állapot-nyilvántartó lekérdezés logikája historikus elemek
 Az Azure Stream Analytics-feladat az egyedi képességét egyik állapot-nyilvántartó feldolgozó, például az ablakos összesítéseket, az időalapú illesztéseket és a historikus elemzési funkciók végrehajtásához. Ezen operátorok mindegyike megőrzi az állapotadatokat. Ezen lekérdezési elemek maximális ablak mérete hét nap. 

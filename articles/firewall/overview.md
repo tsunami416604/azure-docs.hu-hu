@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 6/20/2019
+ms.date: 6/21/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: ace0b56ce1ba4c140666c8f2dd6e2187f479446e
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: deca4d1f66950e89148089d2984eb9cb35c470a8
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272653"
+ms.locfileid: "67304573"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -73,7 +73,7 @@ Engedélyezheti a veszélyforrás-felderítésen alapuló szűrést a tűzfalon 
 
 ### <a name="outbound-snat-support"></a>Kimenő SNAT-támogatás
 
-A rendszer a kimenő virtuális hálózati forgalomhoz tartozó minden IP-címet lefordít az Azure Firewall nyilvános IP-címére (forráshálózati címfordítás, SNAT). Azonosíthatja és engedélyezheti a virtuális hálózatból a távoli internetes célhelyekre irányuló forgalmat.
+A rendszer a kimenő virtuális hálózati forgalomhoz tartozó minden IP-címet lefordít az Azure Firewall nyilvános IP-címére (forráshálózati címfordítás, SNAT). Azonosíthatja és engedélyezheti a virtuális hálózatból a távoli internetes célhelyekre irányuló forgalmat. Az Azure tűzfal nem SNAT, ha a cél IP-cím egy magánhálózati IP-címtartományt egy [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). Ha a szervezet magánhálózatok egy nyilvános IP-címtartományt használja, Azure tűzfal fog SNAT a forgalmat a tűzfal magánhálózati IP-címek AzureFirewallSubnet egyikére.
 
 ### <a name="inbound-dnat-support"></a>Bejövő DNAT-támogatás
 

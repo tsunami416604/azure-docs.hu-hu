@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6f512911811535818f4ad857c5c3b956870f619
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0ae638f8cbef29c5d167a3ab59188169cbd934ef
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074545"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67150227"
 ---
 # <a name="web-app-that-signs-in-users---app-registration"></a>Webes alkalmazás, amely képes bejelentkeztetni a felhasználókat – alkalmazás regisztrálása
 
@@ -48,14 +48,14 @@ Ha ez a hivatkozás ugrik, hozhat létre rendszer-indításkori webes alkalmazá
 1. Ha a fiók lehetőséget biztosít több bérlő hozzáférést, a jobb felső sarokban válassza ki a fiókját, és állítsa be a portál munkamenet a kívánt Azure ad-bérlőben.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatásra, és válassza ki **alkalmazásregisztrációk** > **új regisztrációs**.
 1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
-   - Válassza ki az alkalmazás a támogatott fióktípus esetében (lásd: [támogatott fióktípusok](./v2-supported-account-types.md))
-   - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `AspNetCore-WebApp`).
-   - A **válasz URL-cím**, adja hozzá az alkalmazás válasz URL-címe például `https://localhost:44321/`, és válassza ki **regisztrálása**.
+   1. Válassza ki az alkalmazás a támogatott fióktípus esetében (lásd: [támogatott fióktípusok](./v2-supported-account-types.md))
+   1. A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `AspNetCore-WebApp`).
+   1. A **átirányítási URI-t**adja hozzá az alkalmazás és az URI-t a cél, amely elfogadja a sikeres hitelesítés után jogkivonatválaszok adja vissza. Például: `https://localhost:44321/`.  Kattintson a **Register** (Regisztrálás) elemre.
 1. Válassza ki a **hitelesítési** menüben, majd adja hozzá a következő információkat:
-- A **válasz URL-cím**, adjon hozzá `https://localhost:44321/signin-oidc`, és válassza ki **regisztrálása**.
-- Az a **speciális beállítások** szakaszában **kijelentkezési URL-** való `https://localhost:44321/signout-oidc`.
-- A **típusú Implicit engedélyezés**, ellenőrizze **azonosító-jogkivonatokat**.
-- Kattintson a **Mentés** gombra.
+   1. A **válasz URL-cím**, adjon hozzá `https://localhost:44321/signin-oidc`.
+   1. Az a **speciális beállítások** szakaszában **kijelentkezési URL-címe** való `https://localhost:44321/signout-oidc`.
+   1. A **típusú Implicit engedélyezés**, ellenőrizze **azonosító-jogkivonatokat**.
+   1. Kattintson a **Mentés** gombra.
 
 ### <a name="register-an-app-using-powershell"></a>PowerShell-lel alkalmazás regisztrálása
 

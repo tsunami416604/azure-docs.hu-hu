@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec1994169891d5256436ac4de741339c865bb268
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 12b75c2df7d11b0e90c5dccc3bc2aae4e0fb0c1e
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824648"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204483"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Az Azure Active Directoryban attribútumleképezések kifejezések írása
 Amikor konfigurál egy SaaS-alkalmazáshoz való üzembe helyezést, az Ön által megadott attribútum-leképezéshez típusú egyik egy kifejezés-hozzárendelést. Ezeknél a parancsfájl-szerű kifejezés, amely lehetővé teszi, hogy a felhasználók adatokat alakíthatja, amelyek esetében a SaaS-alkalmazás több elfogadható formátumok kell írnia.
@@ -40,7 +40,7 @@ Attribútum-leképezéshez kifejezések szintaxisa reminiscent a Visual Basic f�
 ## <a name="list-of-functions"></a>Függvények listája.
 [Hozzáfűzés](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [csatlakozzon](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [nem](#not) &nbsp; &nbsp; &nbsp; &nbsp; [cseréje](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [Split](#split) &nbsp; &nbsp; &nbsp; &nbsp; [ StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [kapcsoló](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper)
 
-- - -
+---
 ### <a name="append"></a>Hozzáfűzés
 **Függvény:**<br> Append(Source, suffix)
 
@@ -53,7 +53,7 @@ Attribútum-leképezéshez kifejezések szintaxisa reminiscent a Visual Basic f�
 | **source** |Szükséges |Karakterlánc |Általában az attribútum neve, az adatforrás-objektum. |
 | **suffix** |Szükséges |Karakterlánc |Az adatforrás-értéke végére hozzáfűzni kívánt karakterlánc. |
 
-- - -
+---
 ### <a name="formatdatetime"></a>formatDateTime
 **Függvény:**<br> FormatDateTime (forrás, inputFormat, outputFormat)
 
@@ -67,7 +67,7 @@ Attribútum-leképezéshez kifejezések szintaxisa reminiscent a Visual Basic f�
 | **inputFormat** |Szükséges |Karakterlánc |Az adatforrás-értéke formátumával. Tekintse meg a támogatott formátumok [ https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx ](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
 | **outputFormat** |Szükséges |Karakterlánc |A kimeneti dátum formátuma. |
 
-- - -
+---
 ### <a name="join"></a>Csatlakozás
 **Függvény:**<br> Csatlakozás (elválasztó, source1, source2,...)
 
@@ -82,7 +82,7 @@ Ha a forrás-értékeket egy többértékű attribútumot, majd minden egyes ér
 | **separator** |Szükséges |Karakterlánc |Forrásértékek elválasztó, amikor azok vannak összefűzött egy karakterlánc, karakterlánc. Lehet "", ha nincs elválasztó nem szükséges. |
 | **source1... sourceN** |Szükség esetén a változó-hányszor |Karakterlánc |A karakterlánc-értékek egymáshoz csatlakoztatni. |
 
-- - -
+---
 ### <a name="mid"></a>Mid
 **Függvény:**<br> Mid (forrás, indítás, hossz)
 
@@ -96,7 +96,7 @@ Ha a forrás-értékeket egy többértékű attribútumot, majd minden egyes ér
 | **start** |Szükséges |egész szám |Az index a **forrás** karakterláncot, ahol karakterláncrészletet el kell indulnia. A karakterlánc első karaktere 1 index fog rendelkezni, a második karaktere index 2 rendelkezik, és így tovább. |
 | **Hossza** |Szükséges |egész szám |A karakterláncrész hossza. Ha hossza kívül ér véget a **forrás** karakterlánc, a függvény a karakterláncrészt adja vissza **indítsa el** végén indextől **forrás** karakterlánc. |
 
-- - -
+---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
 **Függvény:**<br> NormalizeDiacritics(source)
 
@@ -108,7 +108,7 @@ Ha a forrás-értékeket egy többértékű attribútumot, majd minden egyes ér
 | --- | --- | --- | --- |
 | **source** |Szükséges |String | Általában egy Utónév vagy utolsó név attribútum. |
 
-- - -
+---
 ### <a name="not"></a>nem
 **Függvény:**<br> Not(Source)
 
@@ -120,7 +120,7 @@ Ha a forrás-értékeket egy többértékű attribútumot, majd minden egyes ér
 | --- | --- | --- | --- |
 | **source** |Szükséges |Logikai típusú karakterlánc |A várt **forrás** értékek: "True" vagy "False". |
 
-- - -
+---
 ### <a name="replace"></a>Csere
 **Függvény:**<br> Cserélje le a (forrás, oldValue, regexPattern, regexGroupName, helyettesítő értéke, replacementAttributeName, sablon)
 
@@ -153,7 +153,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 | **replacementAttributeName** |Optional |Karakterlánc |Használandó érték, ha a forrás nem rendelkezik értékkel az attribútum neve. |
 | **sablon** |Optional |Karakterlánc |Amikor **sablon** érték van megadva, alábbiakban tájékozódhat **oldValue** belül a sablont, és cserélje le az adatforrás-értéke. |
 
-- - -
+---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
 **Függvény:**<br> SelectUniqueValue (uniqueValueRule1, uniqueValueRule2, uniqueValueRule3,...)
 
@@ -171,7 +171,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 | **uniqueValueRule1... uniqueValueRuleN** |Legalább a 2 szükséges, nem felső határérték |String | Egyedi érték létrehozási szabályok kiértékelése listája. |
 
 
-- - -
+---
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
 **Függvény:**<br> SingleAppRoleAssignment([appRoleAssignments])
 
@@ -183,7 +183,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 | --- | --- | --- | --- |
 | **[hozzárendeléseinek]** |Szükséges |Karakterlánc |**[hozzárendeléseinek]**  objektum. |
 
-- - -
+---
 ### <a name="split"></a>Felosztás
 **Függvény:**<br> Split (forrás, elválasztó karakter)
 
@@ -196,7 +196,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 | **source** |Szükséges |Karakterlánc |**forrás** érték frissítéséhez. |
 | **delimiter** |Kötelező |String |Adja meg a karakter, amely a sztring felosztásához használandó (Példa: ",") |
 
-- - -
+---
 ### <a name="stripspaces"></a>StripSpaces
 **Függvény:**<br> StripSpaces(source)
 
@@ -208,7 +208,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 | --- | --- | --- | --- |
 | **source** |Szükséges |Karakterlánc |**forrás** érték frissítéséhez. |
 
-- - -
+---
 ### <a name="switch"></a>Kapcsoló
 **Függvény:**<br> Switch (forrás, defaultValue, 1. kulcs, érték1, 2. kulcs, value2,...)
 
@@ -223,7 +223,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 | **key** |Szükséges |Karakterlánc |**Kulcs** összehasonlítására **forrás** értéket. |
 | **value** |Szükséges |Karakterlánc |Az érték a **forrás** összekapcsolja a kulcsot. |
 
-- - -
+---
 ### <a name="tolower"></a>toLower
 **Függvény:**<br> ToLower (forrás, kulturális környezet)
 
@@ -236,7 +236,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 | **source** |Szükséges |Karakterlánc |Általában az attribútum az az adatforrás-objektum neve |
 | **culture** |Optional |String |A kulturális környezet neve alapján RFC 4646 formátuma *languagecode2 – ország/regioncode2*, ahol *languagecode2* a kétbetűs nyelvi kódja és *ország/regioncode2*a kétbetűs szubkultúrákhoz kódja. Például ja-JP Japán (japán) és a hu-hu az angol (Egyesült Államok). Azokban az esetekben, ahol a kétbetűs nyelvkód nem érhető el egy ISO 639-2 származó hárombetűs kódot használja.|
 
-- - -
+---
 ### <a name="toupper"></a>ToUpper
 **Függvény:**<br> ToUpper (forrás, kulturális környezet)
 

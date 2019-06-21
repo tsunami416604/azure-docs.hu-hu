@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7cbb934b87440d23e65fce53d7da40c5ffbd3150
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: bc9f8e29a744a3a40d17b3814c7124eb37c1543b
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65597073"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67269424"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -174,6 +174,15 @@ Az Adatdeduplikáció a felhőbeli rétegezés engedélyezve van a Windows Serve
 
 **A Windows Server 2012 R2 vagy az ügynök korábbi verzióival**  
 Olyan kötetek, amelyek nem rendelkeznek a felhőbeli rétegezés engedélyezve van, az Azure File Sync támogatja a Windows Server Adatdeduplikáció engedélyezése a köteten.
+
+**Megjegyzések**
+- Ha az Adatdeduplikáció az Azure File Sync ügynök telepítése előtt telepítve van, a számítógép újraindítását az Adatdeduplikáció és a felhőrétegzés ugyanazon a köteten támogatásához szükséges.
+- Ha adatok engedélyezi a Deduplikációt egy köteten után felhőbeli rétegezés engedélyezve van, a kezdeti deduplikációs optimalizálási feladat optimalizálja a köteten lévő fájlokkal, amely már nem rétegzett, és az alábbi hatással lesz a felhő rétegezést:
+    - Réteg fájlok megfelelően a szabad lemezterület a köteten lévő szabad terület a házirend továbbra az intenzitástérkép használatával.
+    - Dátum házirend kihagyja, elképzelhető, ellenkező esetben jogosult a deduplikációs optimalizálási feladat a fájlok elérése miatt rétegezést fájlok rétegezést.
+- A deduplikációs optimalizálási feladatok folyamatos, felhőbeli rétegezés dátum szabályzattal késleltetett az Adatdeduplikáció által első [MinimumFileAgeDays](https://docs.microsoft.com/powershell/module/deduplication/set-dedupvolume?view=win10-ps) beállítást, ha a fájl már nem többszintű. 
+    - Példa: Ha a MinimumFileAgeDays beállítás 7 nap, és a felhőrétegzés dátum felhőhasználatiszabályzat pedig 30 nap, az a dátum házirend 37 nap után rétegzi fájlokat.
+    - Megjegyzés: Miután egy fájlt az Azure File Sync többszintű, a deduplikációs optimalizálási feladat kihagyja a fájlt.
 
 ### <a name="distributed-file-system-dfs"></a>Az elosztott fájlrendszer (DFS)
 Az Azure File Sync kompatibilisek az elosztott Fájlrendszerbeli névtereket (DFS-N) és az elosztott fájlrendszer replikációs szolgáltatása (DFS-R) támogatja.

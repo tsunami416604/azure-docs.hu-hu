@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: 6a36770ff623e35c56a972a482e24ebb24849051
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ecf7f11074b447e9f093e4fd6677a3d09d213b1d
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65467429"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295835"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Logikai alkalmazások Visual studióval kezelése
 
@@ -36,7 +36,8 @@ Is hozhat létre, szerkesztése, kezelése és a logic Apps-alkalmazások telep�
   Ez a rövid útmutató a Visual Studio Community 2017 kiadást használja, amely ingyenes.
 
     > [!IMPORTANT]
-    > Visual Studio 2019 vagy 2017 telepítésekor győződjön meg arról, hogy kiválasztja a **Azure-fejlesztési** számítási feladatot. A Visual Studio 2019 a Cloud Explorer nyithatja meg a Logic App Designerben az Azure portal, de még nem lehet megnyitni a beágyazott Logikaialkalmazás-Tervező. További információkért lásd: [kezelése a Visual Studio Cloud Explorer az Azure-fiókokhoz kapcsolódó erőforrások](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view).
+    > Visual Studio 2019 vagy 2017 telepítésekor győződjön meg arról, hogy kiválasztja a **Azure-fejlesztési** számítási feladatot.
+    > További információkért lásd: [kezelése a Visual Studio Cloud Explorer az Azure-fiókokhoz kapcsolódó erőforrások](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view).
 
     A Visual Studio 2015 telepítése a Cloud Explorer [Cloud Explorer letöltése a Visual Studio-piactér](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015). 
     További információkért lásd: [kezelése a Visual Studio Cloud Explorer (2015) Azure-fiókjához társított erőforrások](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015).
@@ -90,6 +91,9 @@ A Visual Studióban nyissa meg a logic apps a korábban létrehozott és telepí
 
 1. Válassza ki a logikai alkalmazás menüjén **nyissa meg a logikai alkalmazás szerkesztő**.
 
+   > [!TIP]
+   > Ha nem rendelkezik ezzel a paranccsal a Visual Studio 2019, ellenőrizze, hogy van-e a legújabb frissítéseket a Visual Studióhoz.
+
    Ez a példa bemutatja a logic apps erőforrástípusok szerint, így a logic apps meg fog jelenni a **Logic Apps** szakaszban.
 
    ![Az Azure Portalról nyissa meg üzembe helyezett logikai alkalmazás](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
@@ -105,10 +109,10 @@ A logikai alkalmazások letöltheti a [az Azure portal](https://portal.azure.com
 
 1. A Visual Studióban nyissa meg a Cloud Explorer, majd keresse meg és válassza ki a logikai alkalmazást, amely letölti az Azure-ból.
 
-   > [!NOTE]
-   > A Visual Studio 2019 a Cloud Explorer a Logikaialkalmazás-Tervező megnyithatja az Azure Portalon, de még nem lehet megnyitni a beágyazott Logikaialkalmazás-Tervező a logikai alkalmazás letöltéséhez.
-
 2. Az alkalmazás helyi menüjén válassza **nyissa meg a logikai alkalmazás szerkesztő**.
+
+   > [!TIP]
+   > Ha nem rendelkezik ezzel a paranccsal a Visual Studio 2019, ellenőrizze, hogy van-e a legújabb frissítéseket a Visual Studióhoz.
 
    A Logic App Designerben megnyílik, és megjeleníti a logikai alkalmazást. 
    Tekintse át a logikai alkalmazás alapul szolgáló definíciójának és struktúra, a tervező alján válassza **Kódnézet**. 

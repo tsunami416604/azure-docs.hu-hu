@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2018
 ms.author: cynthn
-ms.openlocfilehash: b015b52e3fc806834f12e98c30b6b4e53cb6d659
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d9390323a5a1af7a5b8ef1a3d0b5f87c27a42c7c
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/14/2019
 ms.locfileid: "64726263"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Windows virtuális gép létrehozása speciális lemezről a PowerShell használatával
@@ -154,7 +154,7 @@ $osDisk = New-AzDisk -DiskName $osDiskName -Disk `
     -ResourceGroupName $destinationResourceGroup
 ```
 
-## <a name="option-3-copy-an-existing-azure-vm"></a>3. lehetőség: Egy meglévő Azure virtuális gép másolása
+## <a name="option-3-copy-an-existing-azure-vm"></a>3\. lehetőség: Egy meglévő Azure virtuális gép másolása
 
 Létrehozhat egy virtuális Gépet, amely szerint pillanatkép készítése a virtuális gép a managed disks szolgáltatást használ, és majd a pillanatkép használatával hozzon létre egy új felügyelt lemez és a egy új virtuális Gépet egy példányát.
 

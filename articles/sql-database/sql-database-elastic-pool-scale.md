@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 3/14/2019
-ms.openlocfilehash: d8aaf51c836a8e88c4e9b92798067167cd044e72
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f73fc58abfa6cde4133bd56858b7f26bf0c3d4a3
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60848083"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204816"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Az Azure SQL Database rugalmas készlet erőforrások skálázása
 
@@ -44,7 +44,7 @@ A szolgáltatás díjcsomag vagy számítási rugalmas készlet mérete mint ön
 
 ### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>A szolgáltatási szint vagy átméretezésekor számítási mérete változó késés
 
-A késést, módosíthatja a szolgáltatásszintet, vagy egy önálló adatbázis vagy a rugalmas készletet a számítási méretezés a paraméteres módon:
+A becsült várakozási módosíthatja a szolgáltatásszintet, vagy egy önálló adatbázis vagy a rugalmas készletet a számítási méretezés van paraméterezni a következő:
 
 |Szolgáltatásszint|Alapszintű önálló adatbázis,</br>Standard szintű (S0-S1 esetén)|Alapszintű rugalmas készletek</br>Standard (S2-S12) </br>Nagy kapacitású, </br>Általános célú önálló adatbázist vagy a rugalmas készlet|Prémium szintű és az üzletileg kritikus önálló adatbázist vagy rugalmas készlet|
 |:---|:---|:---|:---|

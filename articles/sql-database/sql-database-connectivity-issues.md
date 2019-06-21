@@ -12,13 +12,13 @@ author: dalechen
 ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/14/2018
-ms.openlocfilehash: 56b4e948f4e1aab20de95a16f45ab790c7e591bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.date: 06/14/2019
+ms.openlocfilehash: adbe8dfd41725c11516f820656b0476ed1aa8881
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66019817"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144038"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Az SQL-adatbázis kapcsolati hibák és átmeneti hibák
 
@@ -93,7 +93,7 @@ Tesztelheti az újrapróbálkozási logika egyik módja válassza le az ügyfél
 - **SqlException.Number** = 11001
 - üzenet: "A ilyen állomás nem ismert."
 
-Az első újrapróbálkozási kísérlet részeként a program kijavíthatja a helyesírási, és csatlakozni.
+Az első újrapróbálkozási kísérlet részeként csatlakoztassa újra az ügyfélszámítógépen, a hálózathoz, és csatlakozni.
 
 Ahhoz, hogy ez a teszt gyakorlati, le kell választani a hálózatról a számítógép, a program indítása előtt. Ezután a program felismeri, ami miatt a program futásidejű paraméter:
 

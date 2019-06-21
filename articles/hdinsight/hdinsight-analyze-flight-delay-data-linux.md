@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: Hajtsa végre a kinyerési, átalakítási, betöltési (ETL) operations Hive használata a HDInsight – Azure '
-description: Megtudhatja, hogyan nyerhet ki adatokat egy nyers CSV-adatkészletből, hogyan alakíthatja át az adatokat a Hive on HDInsight használatával, és hogyan töltheti be őket az Azure SQL-adatbázisba az Apache Sqoop segítségével.
+description: Oktatóanyag – ismerje meg, hogyan adatokat nyerhet ki nyers CSV adatkészletből, átalakítja a Hive a HDInsight használatával, és majd betölti az átalakított adatokat az Azure SQL database-be az Apache Sqoop használatával.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/15/2019
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
-ms.openlocfilehash: ac1ae7ed761099a19accf55e9e4dab61193c2de7
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 6eae1a64b6eba54fd35f8371a11e7b5bfeaac2ab
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967802"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296526"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-apache-hive-in-azure-hdinsight"></a>Oktatóanyag: A kinyerési, átalakítási és adatok betöltése az Azure HDInsight az Apache Hive használatával
 

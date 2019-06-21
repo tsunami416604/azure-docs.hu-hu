@@ -8,12 +8,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: 704bb409d2b21e2ae258dbb2d627b1c088d80db7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0f99042d91738c88a8b673444bb3d4a40602b012
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60254638"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204167"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>A Microsoft Azure Backup Server vagy a System Center DPM biztonsági mentés támogatási mátrixa
 
@@ -51,9 +51,9 @@ További információk:
 - [További](backup-architecture.md#architecture-back-up-to-dpmmabs) MABS architektúrával kapcsolatban.
 - [Tekintse át a támogatott műveletek](backup-support-matrix-mars-agent.md) a MARS-ügynök.
 
-## <a name="supported-scenarios"></a>Támogatott esetek 
+## <a name="supported-scenarios"></a>Támogatott esetek
 
-**Forgatókönyv** | **Ügynök** | **Hely**
+**Forgatókönyv** | **Ügynök** | **Location**
 --- | --- | ---
 **A helyszíni gépeket és számítási feladatainak biztonsági mentése** | A DPM/MABS védelmi ügynököt a készíteni kívánt gépeket futtat.<br/><br/> A MARS-ügynököt a DPM vagy MABS-kiszolgálón. | A DPM/MABS helyszíni kell futnia.
 **Az Azure virtuális gépeket és számítási feladatok biztonsági mentése** | A DPM/MABS védelmi ügynököt a védett számítógépen.<br/><br/> A MARS-ügynököt a DPM vagy MABS-kiszolgálón. | A DPM vagy MABS-beli virtuális gépen kell futnia.
@@ -73,12 +73,12 @@ A DPM/MABS is telepíthető, az alábbi táblázat foglalja össze.
 
 Az Azure Backup biztonsági mentést a DPM vagy MABS-példányok, a következő operációs rendszereket futtató. A legújabb szervizcsomaggal és frissítéssel operációs rendszert kell futtatnia.
 
-**Forgatókönyv** | **DPM/MABS** 
---- | --- 
-**Egy Azure virtuális Gépen futó MABS** | Windows Server 2012 R2.<br/><br/> Windows 2016 Datacenter.<br/><br/> Windows 2019 adatközpont.<br/><br/> Azt javasoljuk, hogy kezdjen egy lemezképet a marketplace webhelyről.<br/><br/> Minimális A2 Standard két maggal és 3,5 GB RAM. 
-**A DPM egy Azure virtuális gépen** | System Center 2012 R2 Update 3 vagy újabb.<br/><br/> Windows operációs rendszer [a System Center által igényelt](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server).<br/><br/> Azt javasoljuk, hogy kezdjen egy lemezképet a marketplace webhelyről.<br/><br/> Minimális A2 Standard két maggal és 3,5 GB RAM. 
-**Helyszíni MABS** | 64 bites operációs rendszereken támogatott:<br/><br/> MABS v3-as és újabb verziók: A Windows Server 2019 (Standard, Datacenter, alapjai). <br/><br/> MABS v2 és újabb verziók: A Windows Server 2016 (Standard, Datacenter, alapjai).<br/><br/> Minden MABS-verzió: A Windows Server 2012 R2, Windows Server 2012 (Standard, Datacenter, Foundation).<br/><br/>Minden MABS-verzió: Windows Storage Server 2012 R2, Windows Server 2012 (standard szintű, munkacsoporthoz).
-**A DPM a helyi** | Fizikai kiszolgáló vagy Hyper-V virtuális gépek: A System Center 2012 SP1 vagy újabb.<br/><br/> A VMware virtuális gépek: A System Center 2012 R2 alkalmazás Update 5 vagy újabb. 
+**Forgatókönyv** | **DPM/MABS**
+--- | ---
+**Egy Azure virtuális Gépen futó MABS** | Windows Server 2012 R2.<br/><br/> Windows 2016 Datacenter.<br/><br/> Windows 2019 adatközpont.<br/><br/> Azt javasoljuk, hogy kezdjen egy lemezképet a marketplace webhelyről.<br/><br/> Minimális A2 Standard két maggal és 3,5 GB RAM.
+**A DPM egy Azure virtuális gépen** | System Center 2012 R2 Update 3 vagy újabb.<br/><br/> Windows operációs rendszer [a System Center által igényelt](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server).<br/><br/> Azt javasoljuk, hogy kezdjen egy lemezképet a marketplace webhelyről.<br/><br/> Minimális A2 Standard két maggal és 3,5 GB RAM.
+**Helyszíni MABS** | 64 bites operációs rendszereken támogatott:<br/><br/> MABS v3-as és újabb verziók: A Windows Server 2019 (Standard, Datacenter, alapjai). <br/><br/> MABS v2 és újabb verziók: A Windows Server 2016 (Standard, Datacenter, alapjai).<br/><br/> Minden MABS-verzió: Windows Server 2012 R2.<br/><br/>Minden MABS-verzió: A Windows Storage Server 2012 R2.
+**A DPM a helyi** | Fizikai kiszolgáló vagy Hyper-V virtuális gépek: A System Center 2012 SP1 vagy újabb.<br/><br/> A VMware virtuális gépek: A System Center 2012 R2 alkalmazás Update 5 vagy újabb.
 
 
 
@@ -98,7 +98,7 @@ Az Azure Backup biztonsági mentést a DPM vagy MABS-példányok, a következő 
 Telepíthet egy Azure Stack-beli virtuális gépen MABS, hogy az Azure Stack virtuális gépeket és számítási feladatok biztonsági mentésének egyetlen helyről kezelheti.
 
 **Összetevő** | **Részletek**
---- | --- 
+--- | ---
 **Az Azure Stackben VM MABS** | At legalább A2 méret. Azt javasoljuk, hogy először egy Windows Server 2012 R2 vagy Windows Server 2016 rendszerképet az Azure Marketplace-ről.<br/><br/> Nincs semmi mást MABS a virtuális Gépre telepíteni.
 **MABS-tároló** | Egy önálló tárfiókot a MABS virtuális Géphez használni. A MARS-ügynök fut, a MABS szüksége van ideiglenes tárhelyre, a gyorsítótár helyét, és a felhőből helyreállított adatok tárolásához.
 **MABS-tárolókészlet** | A MABS tárolókészlet méretét száma és a MABS virtuális géphez csatolt lemezek mérete határozza meg. Minden egyes Azure Stack Virtuálisgép-mérettel rendelkezik lemezek maximális száma. Ha például A2 négy lemezek.
@@ -107,7 +107,7 @@ Telepíthet egy Azure Stack-beli virtuális gépen MABS, hogy az Azure Stack vir
 **A MABS .NET-keretrendszer** | A MABS virtuális gép van szüksége a .NET-keretrendszer 3.3-as SP1 vagy újabb verziója rajta.
 **MABS domain** | A MABS virtuális Gépet egy tartományhoz kell csatlakoznia. Rendszergazdai jogosultságokkal rendelkező tartományi felhasználó MABS telepíteni kell a virtuális Gépet.
 **Az Azure Stack VM-adatok biztonsági mentése** | Fájlok, mappák és alkalmazások készíthető.
-**Támogatott biztonsági mentés** | Virtuális gépek biztonsági mentéséhez használni kívánt ezen operációs rendszerek támogatottak:<br/><br/> A Windows Server féléves csatorna (Datacenter, Enterprise, Standard)<br/><br/> Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2
+**Támogatott biztonsági mentés** | Virtuális gépek biztonsági mentéséhez használni kívánt ezen operációs rendszerek támogatottak:<br/><br/> A Windows Server féléves csatorna (Datacenter, Enterprise, Standard)<br/><br/> Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
 **Az SQL Server támogatása az Azure Stack-beli virtuális gépek** | Készítsen biztonsági másolatot az SQL Server 2016, az SQL Server 2014, SQL Server 2012 SP1.<br/><br/> Biztonsági másolatot készíteni és helyreállítani egy adatbázist.
 **A SharePoint-támogatás az Azure Stack-beli virtuális gépek** | SharePoint 2016, a SharePoint 2013-hoz, a SharePoint 2010.<br/><br/> Készítsen biztonsági másolatot, és a egy farm, adatbázis, az előtérbeli és webalkalmazás-kiszolgáló helyreállítása.
 **Biztonsági másolat virtuális gépek hálózati követelményei** | Minden virtuális gép az Azure Stack számítási feladatot kell ugyanahhoz a virtuális hálózathoz tartozik, és ugyanahhoz az előfizetéshez tartozik.
@@ -128,8 +128,8 @@ A DPM-kiszolgáló/MABS URL-hozzáférésre van szüksége:
 
 Nem szükséges megfelelő működéséhez a biztonsági mentésekhez a kapcsolat az Azure Backup szolgáltatásba, és lehet, hogy az Azure-előfizetés aktív. Az alábbi táblázat viselkedése Ha e két dolgokat nem okozhat.
 
-**Az Azure-bA MABS** | **Előfizetés** | **Biztonsági mentés/visszaállítás** 
---- | --- | --- 
+**Az Azure-bA MABS** | **Előfizetés** | **Biztonsági mentés/visszaállítás**
+--- | --- | ---
 Csatlakozva | Aktív | Készítsen biztonsági másolatot a DPM/MABS lemezre.<br/><br/> Készítsen biztonsági másolatot az Azure-bA.<br/><br/> Állítsa vissza a lemezt.<br/><br/> Állítsa vissza az Azure-ból.
 Csatlakozva | Lejárt / – figyelmeztetés megszüntetésről | Nincs biztonsági mentés lemezre vagy az Azure.<br/><br/> Ha az előfizetés lejárt, a lemez- vagy Azure visszaállíthatja.<br/><br/> Ha az előfizetés le van szerelve, lemezről vagy az Azure nem állítható vissza. Az Azure helyreállítási pont törlődik.
 Nincs kapcsolat több mint 15 napon keresztül | Aktív | Nincs biztonsági mentés lemezre vagy az Azure.<br/><br/> A lemez- vagy Azure állíthatja vissza.
@@ -137,7 +137,7 @@ Nincs kapcsolat több mint 15 napon keresztül | Lejárt / – figyelmeztetés m
 
 ## <a name="dpmmabs-storage-support"></a>A DPM vagy MABS-tároló támogatása
 
-A helyi lemezes tárhelyért biztonsági másolatot a DPM/MABS adatokat tárolja. 
+A helyi lemezes tárhelyért biztonsági másolatot a DPM/MABS adatokat tárolja.
 
 **Storage** | **Részletek**
 --- | ---
@@ -162,22 +162,21 @@ A következő táblázat összefoglalja, milyen biztonsági másolat készíthet
 
 **Biztonsági mentés** | **Verziók** | **MABS** | **Részletek** |
 --- | --- | --- | --- |
-**Windows 10<br/>Windows 8.1<br/>Windows 8<br/>Windows 7**<br/><br/>(32 vagy 64 bites) | MABS v3, v2, V1 | A helyszíni. | Kötet vagy megosztás/mappa/fájl.<br/><br/> Deduplikált kötetek támogatott.<br/><br/> Köteteknek legalább 1 GB Méretűnek és NTFS kell lenniük. |
+**Windows 10<br/>Windows 8.1<br/>Windows 8<br/>Windows 7**<br/><br/>(32 vagy 64 bites) | MABS v3, v2 | A helyszíni. | Kötet vagy megosztás/mappa/fájl.<br/><br/> Deduplikált kötetek támogatott.<br/><br/> Köteteknek legalább 1 GB Méretűnek és NTFS kell lenniük. |
 **A Windows Server 2016 (Datacenter, Standard, a Nano nélkül)**<br/><br/> 64 és 32 bites | MABS v3, v2 | Helyszíni/Azure virtuális gép.| Kötet vagy megosztás/fájl/mappa; rendszer-állapot/operációs rendszer nélküli.<br/><br/> Deduplikált kötetek támogatott. |
-**A Windows Server 2012 R2 (Datacenter és Standard)**<br/><br/> 64 és 32 bites | MABS v3, v2, v1 | Helyszíni/Azure virtuális gép. | **Helyszíni védelem**: Kötet vagy megosztás/fájl/mappa; rendszer-állapot/operációs rendszer nélküli.<br/><br/> **Az Azure VMprotection**: Kötet vagy megosztás/mappa/fájl.<br/><br/> Deduplikált kötetek támogatott. |
-**A Windows Server 2012 SP1 (Datacenter és Standard)**<br/><br/> 64 és 32 bites | MABS v3, v2, v1<br/><br/> [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855) kell telepíteni. | Helyszíni/Azure virtuális gép. | **Helyszíni védelem**: Kötet vagy megosztás/fájl/mappa; rendszer-állapot/operációs rendszer nélküli.<br/><br/> **Az Azure virtuális gépek védelmét**: Kötet vagy megosztás/mappa/fájl.<br/><br/> Deduplikált kötetek támogatott. |
-**A Windows Server 2012 (Datacenter és Standard)**<br/><br/> 64 és 32 bites | MABS v1 | Helyszíni/Azure virtuális gép. | **Helyszíni védelem**: Kötet vagy megosztás/fájl/mappa; rendszer-állapot/operációs rendszer nélküli.<br/><br/> **Az Azure virtuális gépek védelmét**: Kötet vagy megosztás/mappa/fájl.<br/><br/> Deduplikált kötetek támogatott. |
-**Windows 2008 R2 SP1 (Standard és Enterprise)**<br/><br/> 64 és 32 bites | A MABS v3-as, v2 és v1 támogatja.<br/><br/> [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855) kell telepíteni. | Helyszíni/Azure virtuális gép. |   **Helyszíni védelem**: Kötet vagy megosztás/fájl/mappa; rendszer-állapot/operációs rendszer nélküli.<br/><br/> **Az Azure virtuális gépek védelmét**: Kötet vagy megosztás/mappa/fájl.<br/><br/> Deduplikált kötetek támogatott. |
-**Windows 2008 R2 (Standard és Enterprise)**<br/><br/> 64 és 32 bites | MABS v1. A MABS az operációs rendszer v2 és v3 kell futnia a SP1. | Helyszíni/Azure virtuális gép. | **Helyszíni védelem**: Kötet vagy megosztás/fájl/mappa; rendszer-állapot/operációs rendszer nélküli.<br/><br/> **Az Azure virtuális gépek védelmét**: Kötet vagy megosztás/mappa/fájl.<br/><br/> Deduplikált kötetek támogatott. |
-**A Windows Server 2008 SP2**<br/><br/> 64 és 32 bites | MABS v1, v2, v3 | V1 az egyetlen támogatott MABS egy a helyszíni fizikai gép vagy a Hyper-V virtuális Gépként üzembe helyezésekor.<br/><br/> MABS v1, 2, 3 akkor támogatott, ha a MABS VMware virtuális gépként üzemel.<br/><br/> MABS Azure virtuális gépen nem támogatott. | Kötet vagy megosztás/fájl/mappa; rendszer-állapot/operációs rendszer nélküli. |
-**A Windows Storage Server 2008** | MABS v1, v2, v3 | A helyszíni fizikai kiszolgáló vagy Hyper-V virtuális gép MABS. <br/><br/> MABS Azure virtuális gépen nem támogatott. | Kötet vagy megosztás/fájl/mappa; rendszer-állapot/operációs rendszer nélküli.
+**A Windows Server 2012 R2 (Datacenter és Standard)**<br/><br/> 64 és 32 bites | MABS v3, v2 | Helyszíni/Azure virtuális gép. | **Helyszíni védelem**: Kötet vagy megosztás/fájl/mappa; rendszer-állapot/operációs rendszer nélküli.<br/><br/> **Az Azure VMprotection**: Kötet vagy megosztás/mappa/fájl.<br/><br/> Deduplikált kötetek támogatott. |
+**A Windows Server 2012 SP1 (Datacenter és Standard)**<br/><br/> 64 és 32 bites | MABS v3, v2 <br/><br/> [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855) kell telepíteni. | Helyszíni/Azure virtuális gép. | **Helyszíni védelem**: Kötet vagy megosztás/fájl/mappa; rendszer-állapot/operációs rendszer nélküli.<br/><br/> **Az Azure virtuális gépek védelmét**: Kötet vagy megosztás/mappa/fájl.<br/><br/> Deduplikált kötetek támogatott. |
+**Windows 2008 R2 SP1 (Standard és Enterprise)**<br/><br/> 64 és 32 bites | A MABS v3, v2 támogatja.<br/><br/> [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855) kell telepíteni. | Helyszíni/Azure virtuális gép. |   **Helyszíni védelem**: Kötet vagy megosztás/fájl/mappa; rendszer-állapot/operációs rendszer nélküli.<br/><br/> **Az Azure virtuális gépek védelmét**: Kötet vagy megosztás/mappa/fájl.<br/><br/> Deduplikált kötetek támogatott. |
+**Windows 2008 R2 (Standard és Enterprise)**<br/><br/> 64 és 32 bites | A MABS az operációs rendszer v2 és v3 kell futnia a SP1. | Helyszíni/Azure virtuális gép. | **Helyszíni védelem**: Kötet vagy megosztás/fájl/mappa; rendszer-állapot/operációs rendszer nélküli.<br/><br/> **Az Azure virtuális gépek védelmét**: Kötet vagy megosztás/mappa/fájl.<br/><br/> Deduplikált kötetek támogatott. |
+**A Windows Server 2008 SP2**<br/><br/> 64 és 32 bites | MABS v2, v3 | MABS v2-v3 akkor támogatott, ha a MABS VMware virtuális gépként üzemel.<br/><br/> MABS Azure virtuális gépen nem támogatott. | Kötet vagy megosztás/fájl/mappa; rendszer-állapot/operációs rendszer nélküli. |
+**A Windows Storage Server 2008** | MABS v2, v3 | A helyszíni fizikai kiszolgáló vagy Hyper-V virtuális gép MABS. <br/><br/> MABS Azure virtuális gépen nem támogatott. | Kötet vagy megosztás/fájl/mappa; rendszer-állapot/operációs rendszer nélküli.
 **SQL Server 2017** | MABS v3 | Helyszíni/Azure virtuális gép.| Az SQL Server-adatbázis biztonsági mentése.<br/><br/> SQL Server fürt biztonsági mentését támogatja.<br/><br/>Az adatbázis nem támogatott a megosztott fürtköteteken tárolja. |
 **Az SQL Server 2016/2016 SP1-gyel** | MABS v3, v2 | Helyszíni/Azure virtuális gép.| Az SQL Server-adatbázis biztonsági mentése.<br/><br/> SQL Server fürt biztonsági mentését támogatja.<br/><br/>Az adatbázis nem támogatott a megosztott fürtköteteken tárolja. |
-**SQL Server 2014**<br/><br/> **SQL Server 2012/SP1/SP2**<br/><br/> **SQL Server 2008 R2**<br/><br/> **SQL Server 2008** | MABS v3, v2, v1 | Helyszíni/Azure virtuális gép.| Az SQL Server-adatbázis biztonsági mentése.<br/><br/> SQL Server fürt biztonsági mentését támogatja.<br/><br/>Az adatbázis nem támogatott a megosztott fürtköteteken tárolja. |
-**Exchange 2016**<br/><br/> **Exchange 2013**<br/><br/> **Exchange 2010** | MABS v3, v2, V1 | A helyszíni. | Önálló Exchange-kiszolgáló, adatbázis egy DAG készíteni.<br/><br/> Állítsa helyre a postaláda és postaláda-adatbázist egy DAG alatt.<br/><br/> A refs fájlrendszer nem támogatott.<br/><br/> Készítsen biztonsági másolatot nem megosztott lemezfürtöket.<br/><br/> Folyamatos replikálásra konfigurált Exchange-kiszolgálóról biztonsági mentést. |
-**SharePoint 2016**<br/><br/> **SharePoint 2013**<br/><br/> **SharePoint 2010** | MABS v3, v2, v1 | Helyszíni/Azure virtuális gép. | Készítsen biztonsági másolatot a farm, előtér-webkiszolgálón.<br/><br/> Állítsa helyre a farm, adatbázis, webalkalmazás, fájl vagy listaelem, SharePoint-keresés, előtér-webkiszolgálón.<br/><br/> Nem lehet biztonsági másolatot készíteni a tartalom-adatbázisokban az SQL Server AlwaysOn szolgáltatást használó, farmban. |
-**A Hyper-V-t a Windows Server 2016-ban**<br/><br/> **A Windows Server 2012 R2 vagy 2012** (Datacenter/Standard)<br/><br/> **Windows Server 2008 R2 (SP1)** | MABS v3, v2, v1 | A helyszíni. | **MABS-ügynököt a Hyper-V-gazdagép**: Készítsen biztonsági másolatot a teljes virtuális gépek és a gazdagép az adatfájlokat. Virtuális gépek biztonsági mentése a helyi storage virtuális gépek a fürt megosztott Fürtkötetes tárolással, virtuális gépek SMB fájlkiszolgáló tárolóval.<br/><br/> **MABS-ügynököt a Vendég virtuális Gépen**: Készítsen biztonsági másolatot a virtuális gépen futó számítási feladatokat. CSV-ket.<br/><br/> **Helyreállítási**: A virtuális gép, virtuális Merevlemezt vagy kötet/mappákat és fájlokat az elemszintű helyreállítás.<br/><br/> **Linux rendszerű virtuális gépek**: Készítsen biztonsági másolatot, ha a Hyper-V fut, a Windows Server 2012 R2 és újabb verziók. Linux rendszerű virtuális gépek helyreállítási van a teljes gépre. |
-**VMware virtuális gépek: vCenter/vSphere ESXi-5.5/6.0/6.5** | MABS v3, v2, v1<br/><br/> MABS v1 kell 1. kumulatív frissítés) | A helyszíni. | VMware virtuális gépek biztonsági mentése CSV-k, az NFS és a SAN-tárolón.<br/><br/> Teljes virtuális gép helyreállításához.<br/><br/> Windows/Linux biztonsági mentés.<br/><br/> Elemszintű helyreállítás mappa és fájlok Windows virtuális gépek csak.<br/><br/> A VMware vapp alkalmazásokra nem támogatottak.<br/><br/> Linux rendszerű virtuális gépek helyreállítási van a teljes gépre. | 
+**SQL Server 2014**<br/><br/> **SQL Server 2012/SP1/SP2**<br/><br/> **SQL Server 2008 R2**<br/><br/> **SQL Server 2008** | MABS v3, v2 | Helyszíni/Azure virtuális gép.| Az SQL Server-adatbázis biztonsági mentése.<br/><br/> SQL Server fürt biztonsági mentését támogatja.<br/><br/>Az adatbázis nem támogatott a megosztott fürtköteteken tárolja. |
+**Exchange 2016**<br/><br/> **Exchange 2013**<br/><br/> **Exchange 2010** | MABS v3, v2 | A helyszíni. | Önálló Exchange-kiszolgáló, adatbázis egy DAG készíteni.<br/><br/> Állítsa helyre a postaláda és postaláda-adatbázist egy DAG alatt.<br/><br/> A refs fájlrendszer nem támogatott.<br/><br/> Készítsen biztonsági másolatot nem megosztott lemezfürtöket.<br/><br/> Folyamatos replikálásra konfigurált Exchange-kiszolgálóról biztonsági mentést. |
+**SharePoint 2016**<br/><br/> **SharePoint 2013**<br/><br/> **SharePoint 2010** | MABS v3, v2 | Helyszíni/Azure virtuális gép. | Készítsen biztonsági másolatot a farm, előtér-webkiszolgálón.<br/><br/> Állítsa helyre a farm, adatbázis, webalkalmazás, fájl vagy listaelem, SharePoint-keresés, előtér-webkiszolgálón.<br/><br/> Nem lehet biztonsági másolatot készíteni a tartalom-adatbázisokban az SQL Server AlwaysOn szolgáltatást használó, farmban. |
+**A Hyper-V-t a Windows Server 2016-ban**<br/><br/> **Windows Server 2008 R2 (SP1)** | MABS v3, v2 | A helyszíni. | **MABS-ügynököt a Hyper-V-gazdagép**: Készítsen biztonsági másolatot a teljes virtuális gépek és a gazdagép az adatfájlokat. Virtuális gépek biztonsági mentése a helyi storage virtuális gépek a fürt megosztott Fürtkötetes tárolással, virtuális gépek SMB fájlkiszolgáló tárolóval.<br/><br/> **MABS-ügynököt a Vendég virtuális Gépen**: Készítsen biztonsági másolatot a virtuális gépen futó számítási feladatokat. CSV-ket.<br/><br/> **Helyreállítási**: A virtuális gép, virtuális Merevlemezt vagy kötet/mappákat és fájlokat az elemszintű helyreállítás.<br/><br/> **Linux rendszerű virtuális gépek**: Készítsen biztonsági másolatot, ha a Hyper-V fut, a Windows Server 2012 R2 és újabb verziók. Linux rendszerű virtuális gépek helyreállítási van a teljes gépre. |
+**VMware virtuális gépek: vCenter/vSphere ESXi-5.5/6.0/6.5** | MABS v3, v2 | A helyszíni. | VMware virtuális gépek biztonsági mentése CSV-k, az NFS és a SAN-tárolón.<br/><br/> Teljes virtuális gép helyreállításához.<br/><br/> Windows/Linux biztonsági mentés.<br/><br/> Elemszintű helyreállítás mappa és fájlok Windows virtuális gépek csak.<br/><br/> A VMware vapp alkalmazásokra nem támogatottak.<br/><br/> Linux rendszerű virtuális gépek helyreállítási van a teljes gépre. |
 
 
 
@@ -188,12 +187,11 @@ A következő táblázat összefoglalja, milyen biztonsági másolat készíthet
 
 
 **Biztonsági mentés** | **DPM** | **Részletek**
---- | --- | --- 
+--- | --- | ---
 **Windows 10<br/>Windows 8.1<br/>Windows 8<br/>Windows 7**<br/><br/>(32 vagy 64 bites) | A helyszíni csak.<br/><br/> A biztonsági másolatot a Windows 10-es és a DPM 2012 R2, ajánlott a telepítése [frissítés 11](https://support.microsoft.com/help/3209592/update-rollup-12-for-system-center-2012-r2-data-protection-manager). | Kötet vagy megosztás/mappa/fájl.<br/><br/> Deduplikált kötetek támogatott.<br/><br/> Köteteknek legalább 1 GB Méretűnek és NTFS kell lenniük.
 **A Windows Server 2016 (Datacenter, Standard, a Nano nélkül)**<br/><br/> 64 és 32 bites | Helyszíni/Azure virtuális gép.<br/><br/> Csak a DPM 2016.| Kötet vagy megosztás/fájl/mappa; rendszer-állapot/operációs rendszer nélküli.<br/><br/> Deduplikált kötetek támogatott.
 **A Windows Server 2012 R2 (Datacenter és Standard)**<br/><br/> 64 és 32 bites | Helyszíni/Azure virtuális gép. | **Helyszíni védelem**: Kötet vagy megosztás/fájl/mappa; rendszer-állapot/operációs rendszer nélküli.<br/><br/> **Az Azure virtuális gépek védelmét**: Kötet vagy megosztás/mappa/fájl.<br/><br/> Deduplikált kötetek a DPM 2012 R2 vagy újabb verziójával támogatott.
 **A Windows Server 2012 SP1 (Datacenter és Standard)**<br/><br/> 64 és 32 bites | Helyszíni/Azure virtuális gép. | **Helyszíni védelem**: Kötet vagy megosztás/fájl/mappa; rendszer-állapot/operációs rendszer nélküli.<br/><br/> **Az Azure virtuális gépek védelmét**: Kötet vagy megosztás/mappa/fájl.<br/><br/> Deduplikált kötetek a DPM 2012 R2 vagy újabb verziójával támogatott.
-**A Windows Server 2012 (Datacenter és Standard)**<br/><br/> 64 és 32 bites |  Helyszíni/Azure virtuális gép. | **Helyszíni védelem**: Kötet vagy megosztás/fájl/mappa; rendszer-állapot/operációs rendszer nélküli.<br/><br/> **Az Azure virtuális gépek védelmét**: Kötet vagy megosztás/mappa/fájl.<br/><br/> Deduplikált kötetek a DPM 2012 R2 vagy újabb verziójával támogatott.
 **Windows 2008 R2 SP1 (Standard és Enterprise)**<br/><br/> 64 és 32 bites | Helyszíni/Azure virtuális gép.<br/><br/> [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855) kell telepíteni. |   **Helyszíni védelem**: Kötet vagy megosztás/fájl/mappa; rendszer-állapot/operációs rendszer nélküli.<br/><br/> **Az Azure virtuális gépek védelmét**: Kötet vagy megosztás/mappa/fájl.
 **Windows 2008 R2 (Standard és Enterprise)**<br/><br/> 64 és 32 bites | A helyszíni.<br/><br/> A DPM nem telepíthető a VMware virtuális gépként.<br/><br/> Egy Azure-beli virtuális gépen futó DPM nem támogatott. | **Helyszíni védelem**: Kötet vagy megosztás/fájl/mappa; rendszer-állapot/operációs rendszer nélküli.
 **A Windows Server 2008 SP2**<br/><br/> 64 és 32 bites | A helyszíni csak.<br/><br/> Ha VMware virtuális gépként futó DPM támogatott. Fizikai kiszolgálóként vagy Hyper-V virtuális gép futtatása nem támogatott. | Kötet vagy megosztás/fájl/mappa; rendszer-állapot/operációs rendszer nélküli.
@@ -205,10 +203,10 @@ A következő táblázat összefoglalja, milyen biztonsági másolat készíthet
 **Exchange 2016**<br/><br/> **Exchange 2013**<br/><br/> **Exchange 2010** | Az Exchange 2016 a DPM 2012 R2 kumulatív frissítés kell a 9-es vagy újabb.<br/><br/> Helyszíni követelmények | Önálló Exchange-kiszolgáló, adatbázis egy DAG készíteni.<br/><br/> Állítsa helyre a postaláda és postaláda-adatbázist egy DAG alatt.<br/><br/> A refs fájlrendszer nem támogatott.<br/><br/> Készítsen biztonsági másolatot nem megosztott lemezfürtöket.<br/><br/> Folyamatos replikálásra konfigurált Exchange-kiszolgálóról biztonsági mentést.
 **SharePoint 2016**<br/><br/> **SharePoint 2013**<br/><br/> **SharePoint 2010** | A SharePoint 2016 a DPM 2016 és újabb verziók.<br/><br/>Helyszíni/Azure virtuális gép. | Készítsen biztonsági másolatot a farm, előtér-webkiszolgálón.<br/><br/> Állítsa helyre a farm, adatbázis, webalkalmazás, fájl vagy listaelem, SharePoint-keresés, előtér-webkiszolgálón.<br/><br/> Nem lehet biztonsági másolatot készíteni a tartalom-adatbázisokban az SQL Server AlwaysOn szolgáltatást használó, farmban.
 **A Hyper-V-t a Windows Server 2016-ban**<br/><br/> **A Windows Server 2012 R2 vagy 2012** (Datacenter/Standard)<br/><br/> **Windows Server 2008 R2 (SP1)** | A Hyper-V, a DPM 2016 által támogatott 2016 és újabb verziók.<br/><br/> A helyszíni. | **MABS-ügynököt a Hyper-V-gazdagép**: Készítsen biztonsági másolatot a teljes virtuális gépek és a gazdagép az adatfájlokat. Virtuális gépek biztonsági mentése a helyi storage virtuális gépek a fürt megosztott Fürtkötetes tárolással, virtuális gépek SMB fájlkiszolgáló tárolóval.<br/><br/> **MABS-ügynököt a Vendég virtuális Gépen**: Készítsen biztonsági másolatot a virtuális gépen futó számítási feladatokat. CSV-ket.<br/><br/> **Helyreállítási**: A virtuális gép, virtuális Merevlemezt vagy kötet/mappákat és fájlokat az elemszintű helyreállítás.<br/><br/> **Linux rendszerű virtuális gépek**: Készítsen biztonsági másolatot, ha a Hyper-V fut, a Windows Server 2012 R2 és újabb verziók. Linux rendszerű virtuális gépek helyreállítási van a teljes gépre.
-**VMware virtuális gépek: vCenter/vSphere ESXi-5.5/6.0/6.5** | MABS v3, v2, v1<br/><br/> DPM 2012 R2 needs System Center Update Rollup 1) <br/><br/>A helyszíni. | VMware virtuális gépek biztonsági mentése CSV-k, az NFS és a SAN-tárolón.<br/><br/> Teljes virtuális gép helyreállításához.<br/><br/> Windows/Linux biztonsági mentés.<br/><br/> Elemszintű helyreállítás mappa és fájlok Windows virtuális gépek csak.<br/><br/> A VMware vapp alkalmazásokra nem támogatottak.<br/><br/> Linux rendszerű virtuális gépek helyreállítási van a teljes gépre.
+**VMware virtuális gépek: vCenter/vSphere ESXi-5.5/6.0/6.5** | MABS v3, v2 <br/><br/> DPM 2012 R2 needs System Center Update Rollup 1) <br/><br/>A helyszíni. | VMware virtuális gépek biztonsági mentése CSV-k, az NFS és a SAN-tárolón.<br/><br/> Teljes virtuális gép helyreállításához.<br/><br/> Windows/Linux biztonsági mentés.<br/><br/> Elemszintű helyreállítás mappa és fájlok Windows virtuális gépek csak.<br/><br/> A VMware vapp alkalmazásokra nem támogatottak.<br/><br/> Linux rendszerű virtuális gépek helyreállítási van a teljes gépre.
 
 
-- Vegye figyelembe, hogy a fürtözött számítási feladatok biztonsági mentése a DPM/MABS DPM/MABS megegyező tartományban vagy gyermek vagy megbízható tartományban kell lennie. 
+- Vegye figyelembe, hogy a fürtözött számítási feladatok biztonsági mentése a DPM/MABS DPM/MABS megegyező tartományban vagy gyermek vagy megbízható tartományban kell lennie.
 - Az NTLM/Tanúsítványalapú hitelesítés használatával nem megbízható tartományokban vagy munkacsoportokban található adatok biztonsági mentéséhez.
 
 

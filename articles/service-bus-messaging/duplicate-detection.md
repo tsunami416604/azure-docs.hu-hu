@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: d9f814a49924ca95078f3b3decca4f3922c74c2b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 286c5850400242224e710a7883d3d3dc175cef12
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65413663"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273204"
 ---
 # <a name="duplicate-detection"></a>Duplikálás észlelése
 
@@ -37,7 +37,7 @@ Az üzleti folyamatok, amelyben több üzeneteket küld az egyes alkalmazás-kö
 A *üzenetazonosító* mindig lehet néhány GUID, de az azonosító az üzleti folyamat horgonyzás poskytne kiszámítható ismételhetőség, amelyek esetében a duplikátumészlelési szolgáltatására támaszkodva gyakorlatilag van szükség.
 
 > [!NOTE]
-> Ha a duplikálásészlelés engedélyezve van, és sesion azonosító vagy a partíciós kulcs nincs megadva, az üzenet azonosítója használja partíciókulcsként. Ha még nincs beállítva az üzenet azonosítója, az AMQP és a .NET-kódtárak automatikusan létrehozhat egy üzenet azonosítója, az üzenet. További információkért lásd: [particionáló kulcsok használatát](service-bus-partitioning.md#use-of-partition-keys).
+> Ha a duplikálásészlelés engedélyezve van, és sesion azonosító vagy a partíciós kulcs nincs megadva, az üzenet azonosítója használja partíciókulcsként. Ha még nincs beállítva az üzenet azonosítója, az AMQP és a .NET-kódtárak automatikusan létrehozhat egy üzenet azonosítója, az üzenet. További információkért lásd: [partíciókulcsok használata](service-bus-partitioning.md#use-of-partition-keys).
 
 ## <a name="enable-duplicate-detection"></a>Ismétlődések észlelésének engedélyezése
 

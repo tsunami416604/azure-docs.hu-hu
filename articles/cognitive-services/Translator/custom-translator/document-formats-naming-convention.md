@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-pawal
 ms.topic: conceptual
-ms.openlocfilehash: 29b74aeaaae0bcfd5f6ae4a3c38cc00176292899
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0959be545f541da2f0efd5bd1e8cc209ab5a0996
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66386911"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275414"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>Dokumentum-formátumok és -elnevezési konvenciót útmutató
 
@@ -37,7 +37,7 @@ Ez a táblázat összes támogatott fájlformátum segítségével hozhat létre
 
 ## <a name="dictionary-formats"></a>Szótár formátumok
 
-A szótárak egyéni a fordítót támogatja a minden fájlformátum azok támogatottak, a betanítási készlete. Ha Excel szótár használ, győződjön meg arról, hogy az első sor / sorát a táblában kell lennie a nyelvkódokról.
+A szótárak egyéni a fordítót támogatja a oktatási csoportok támogatottak minden fájlformátum. Ha egy Excel-szótár, az első sor használata, illetve a táblázat sora nyelvkódokról kell lennie.
 
 ## <a name="zip-file-formats"></a>Zip-formátumok
 

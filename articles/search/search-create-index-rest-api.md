@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 7121bfceb177a7dc06d1c2a65b7c3edfca1d8c31
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 64252f42f5b3690e8ba6d929e27f7f41b649922e
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063650"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67302290"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-powershell"></a>Gyors útmutató: Egy PowerShell-lel az Azure Search-index létrehozása
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "67063650"
 > * [Portál](search-create-index-portal.md)
 > 
 
-Ez a cikk végigvezeti a folyamat létrehozása, betöltése és lekérdezése az Azure Search [index](search-what-is-an-index.md) PowerShell-lel és a [Azure Search szolgáltatás REST API-k](https://docs.microsoft.com/rest/api/searchservice/). Az index definícióját és a kereshető tartalmak szerepelnek a kérelem törzsében helytelen formátumú JSON-tartalomként.
+Ez a cikk végigvezeti a folyamat létrehozása, betöltése és lekérdezése az Azure Search-index PowerShell-lel és a [Azure Search REST API-k](https://docs.microsoft.com/rest/api/searchservice/). Ez a cikk bemutatja, hogyan interatively PowerShell-parancsok futtatásához. Azt is megteheti futtathat egy befejezett parancsfájlt. Ha szeretné letölteni, nyissa meg a [azure-search-powershell-minták](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) tárház.
 
 Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a munka megkezdése előtt, majd [regisztrálhat az Azure Searchre](search-create-service-portal.md).
 
@@ -374,23 +374,23 @@ Próbálja meg néhány további lekérdezést példák betekintést nyerhet a s
 
 ```powershell
 # Query example 1
-# Search the entire index for the terms 'hotels' and 'wifi'
-# Return only the HotelName and HotelId fields
-$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=hotels wifi&$count=true&$select=HotelName,HotelId'
+# Search the entire index for the terms 'restaurant' and 'wifi'
+# Return only the HotelName, Description, and Tags fields
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=restaurant wifi&$count=true&$select=HotelName,Description,Tags'
 
 # Query example 2 
 # Apply a filter to the index to find hotels rated 4 or highter
-# Returns the HotelId and Description. Two documents match.
-$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description,Rating'
+# Returns the HotelName and Rating. Two documents match.
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$filter=Rating gt 4&$select=HotelName,Rating'
 
 # Query example 3
-# Take the top two results, and show only HotelId,HotelName,Description in the results
-$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=boutique&$top=2&$select=HotelId,HotelName,Description,Category'
+# Take the top two results, and show only HotelName and Category in the results
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=boutique&$top=2&$select=HotelName,Category'
 
 # Query example 4
-# Sort by a specific field (`lastRenovationDate`) in descending order
+# Sort by a specific field (Address/City) in ascending order
 
-$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince, Tags'
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating'
 ```
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása 
 
@@ -406,21 +406,7 @@ Invoke-RestMethod -Uri $url -Headers $headers -Method Delete
 
 ## <a name="next-steps"></a>További lépések
 
-Próbáljon meg francia leírások az indexbe. Az alábbi példa francia karakterláncokat tartalmazza, és további keresési műveleteket mutatja be. MergeOrUpload hozhat létre, és a meglévő mezőket ad hozzá. A következő karakterláncot kell lennie az UTF-8 kódolású.
+Ez a rövid útmutatóban a Powershellt használta végighaladhat az alapvető munkafolyamat létrehozásához, és az Azure Search tartalom elérése. Vegye figyelembe a fogalmakat javasoljuk, hogy helyezze át egy speciális forgatókönyvek, például az Azure-adatforrás; indexelő
 
-```json
-{
-    "value": [
-        {
-            "@search.action": "mergeOrUpload",
-            "hotelId": "1",
-            "description_fr": "Meilleur hôtel en ville"
-        },
-        {
-            "@search.action": "merge",
-            "hotelId": "2",
-            "description_fr": "Hôtel le moins cher en ville"
-        }
-    ]
-}
-```
+> [!div class="nextstepaction"]
+> [REST-Útmutató: Index, és részben strukturált adatok (JSON-blobok) keresése az Azure Search szolgáltatásban](search-semi-structured-data.md)

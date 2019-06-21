@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: f48ad6ca74e6ce10148d66549fea16bc74015b2a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c1c4a0384342db82ee9c1f6b9e806188d5949681
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66171220"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67235340"
 ---
 Az alábbi táblázat az Azure Service Bus-üzenetkezelés adott kvótákra vonatkozó információk. Díjszabással kapcsolatos információk és a többi Service Bus kvóták: [Service Bus díjszabásáról](https://azure.microsoft.com/pricing/details/service-bus/).
 
 | Kvóta neve | Scope | Megjegyzések | Érték |
 | --- | --- | --- | --- |
 | Azure-előfizetésenként alapszintű vagy standard szintű névterek maximális száma |Névtér |Az Azure portal által elutasított további alapszintű vagy standard szintű névterekhez későbbi kérelmeket. |100|
-| Prémium szintű névterek Azure-előfizetésenként maximális száma |Névtér |A további prémium szintű névterek későbbi kérelmeket a rendszer elutasítja a portál által. |25 |
+| Prémium szintű névterek Azure-előfizetésenként maximális száma |Névtér |A további prémium szintű névterek későbbi kérelmeket a rendszer elutasítja a portál által. |50 |
 | Üzenetsor vagy témakör mérete |Entitás |Az üzenetsor vagy témakör létrehozásakor meghatározott. <br/><br/> A rendszer elutasítja a további bejövő üzenetek, és a hívó kód által fogadott kivétel. |1, 2, 3, 4 GB-os vagy 5 GB.<br /><br />A prémium szintű Termékváltozat és a Standard Termékváltozat- [particionálás](/azure/service-bus-messaging/service-bus-partitioning) engedélyezve van, a maximális üzenetsor vagy témakör mérete 80 GB. |
 | Egy névtér az egyidejű kapcsolatok száma |Névtér |További kapcsolatok későbbi kérelmeket a rendszer elutasítja, és a egy kivételt a hívó kód által fogadott. REST-műveleteinek egyidejű TCP-kapcsolatok nem beleszámítanak. |NetMessaging: 1,000.<br /><br />AMQP: 5,000. |
 | Párhuzamosan futó száma egy üzenetsor, témakör vagy előfizetés entitás kérelmek fogadásához |Entitás |Ezt követő kap kérelmek azért lettek elutasítva, és a egy kivételt a hívó kód által fogadott. Ez a kvóta vonatkozik, a kombinált számú párhuzamosan futó fogadási műveletek az összes előfizetés témakörökre. |5,000 |

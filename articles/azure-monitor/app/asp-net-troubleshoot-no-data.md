@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 23d7b0626dba5a88c100868907ecf868a895fc9e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3820a5d7becef275ed3408f01cc53ad8590ba60e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059612"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272416"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Adathiány hibaelhárítása – Application Insights .NET-hez
 ## <a name="some-of-my-telemetry-is-missing"></a>Láthatók a telemetriai adatok némelyike hiányzik
@@ -241,13 +241,13 @@ Az Application Insights SDK naplózása helyi hibaelhárítási naplók EventSou
 
 Naplók gyűjtése, töltse le a PerfView, és futtassa a következő parancsot:
 ```cmd
-PerfView.exe collect /onlyProviders=*Microsoft-ApplicationInsights-* -MaxCollectSec:300
+PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-ApplicationInsights-Core,*Microsoft-ApplicationInsights-Data,*Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,*Microsoft-ApplicationInsights-Extensibility-DependencyCollector,*Microsoft-ApplicationInsights-Extensibility-HostingStartup,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,*Microsoft-ApplicationInsights-Extensibility-Web,*Microsoft-ApplicationInsights-Extensibility-WindowsServer,*Microsoft-ApplicationInsights-WindowsServer-Core,*Microsoft-ApplicationInsights-Extensibility-EventSourceListener,*Microsoft-ApplicationInsights-AspNetCore
 ```
 
-Ezeket a paramétereket szükség szerint módosíthatja.
-
+Ezeket a paramétereket szükség szerint módosíthatja:
 - **MaxCollectSec**. A PerfView határozatlan ideig fut, és a kiszolgáló teljesítményét befolyásoló elkerülése érdekében a paraméter értéke.
-- **OnlyProviders**. Ez csak gyűjteni az SDK-val való beállítása. Ez a lista a meghatározott vizsgálatok alapján szabhatja testre. 
+- **OnlyProviders**. Állítsa be ezt a paramétert csak az SDK-t a naplók gyűjtését. Ez a lista a meghatározott vizsgálatok alapján szabhatja testre. 
+- **NoGui**. Használja ezt a paramétert, a naplók a grafikus felhasználói felület nélkül.
 
 
 További információ

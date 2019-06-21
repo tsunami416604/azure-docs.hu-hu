@@ -9,12 +9,12 @@ ms.date: 04/18/2017
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 8bee0426f171b0fdb7793d18c352649928fdb2e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b3c2ed7f2914374ac94783511f2992ae5755967
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65907196"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67302346"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Közös hozzáférésű jogosultságkódok (SAS) használata
 
@@ -23,7 +23,10 @@ Közös hozzáférésű jogosultságkód (SAS) biztosít jogokat a tárfiókban 
 SAS használatával az itt bemutatott ismertetettek további példákért lásd [Ismerkedés az Azure Blob Storage a .NET-ben](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/) és más elérhető minták a [Azure-Kódminták](https://azure.microsoft.com/documentation/samples/?service=storage) könyvtár. A mintaalkalmazások letöltése és futtathatja őket, vagy tallózással keresse meg a kódot a Githubon.
 
 ## <a name="what-is-a-shared-access-signature"></a>Mi az a közös hozzáférésű jogosultságkód?
+
 Közös hozzáférésű jogosultságkód a tárfiókban található erőforrások delegált hozzáférést biztosít. A SAS használatával biztosíthat az ügyfelek erőforrásokhoz való hozzáférés a tárfiókban lévő a fiókkulcsok megosztása nélkül. Ez a lényege a közös hozzáférésű jogosultságkód alkalmazásokban való használatának – az SAS a fiókkulcsok veszélyeztetése nélkül teszi lehetővé a tárolási erőforrások megosztását.
+
+[!INCLUDE [storage-recommend-azure-ad-include](../../../includes/storage-recommend-azure-ad-include.md)]
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
@@ -35,6 +38,7 @@ SAS szabályozható a hozzáférés típusa, többek között a SAS rendelkező 
 * A protokoll, amelyben Azure Storage fogja fogadni az SAS. Ez nem kötelező paraméter használatával korlátozza a hozzáférést az ügyfelek HTTPS-en keresztül.
 
 ## <a name="when-should-you-use-a-shared-access-signature"></a>Mikor használjam a közös hozzáférésű jogosultságkód?
+
 SAS is használhatja, ha lehetővé szeretné tenni a tárfiókban lévő erőforrásokhoz való hozzáférés bármely ügyfélnek, amelyek nem rendelkeznek a tárfiók hozzáférési kulcsait. A tárfiók is tartalmaz, egyszerre egy elsődleges és másodlagos hozzáférési kulcsot, adja meg, amelyek rendszergazdai hozzáférést a fiókjához, és a benne található összes erőforrást. A fiók annak lehetőségét, hogy a rosszindulatú vagy hanyagságból használja ezen kulcsok egyikét is közzéteheti nyílik meg. Közös hozzáférésű jogosultságkódok adjon meg egy biztonságos megoldás, amely lehetővé teszi az ügyfelek számára, hogy az olvasási, írási és törlési konkrétan megadta az engedélyek alapján, és meg kell a tárfiókban lévő adatokat.
 
 Egy gyakori forgatókönyv, ahol egy SAS hasznos egy olyan szolgáltatás, ahol a felhasználók olvassa el, és a saját adatokat írni a tárfiókhoz. Egy forgatókönyv, ahol a storage-fiók felhasználói adatokat tárolja, a rendszer két jellemző tervezési minták:
@@ -56,12 +60,14 @@ Emellett szüksége lesz az adatforrás-objektum bizonyos esetekben a másolási
 * Amikor egy blob átmásolása egy fájl vagy egy fájlt egy blobba, kell használnia egy SAS az adatforrás-objektum elérésének hitelesítéséhez akkor is, ha a forrás és cél-objektumai találhatók ugyanabban a tárfiókban található.
 
 ## <a name="types-of-shared-access-signatures"></a>Közös hozzáférésű jogosultságkódok típusai
+
 Közös hozzáférési aláírások két típusú hozhat létre:
 
 * **Service SAS.** A szolgáltatásalapú SAS csak egy társzolgáltatás (a Blob, a Queue, a Table vagy a File szolgáltatás) egy erőforrásához biztosít hozzáférést. Lásd: [hozhat létre, amely a szolgáltatás SAS](https://msdn.microsoft.com/library/dn140255.aspx) és [SAS példák](https://msdn.microsoft.com/library/dn140256.aspx) a SAS-jogkivonat létrehozásával kapcsolatos részletes információk.
 * **SAS-fiók.** A fiók SAS delegáltak erőforrásokhoz való hozzáférés egy vagy több, a storage-szolgáltatás. A szolgáltatásalapú SAS-n keresztül elérhető műveleteket is rendelkezésre áll egy fiók SAS-n keresztül. Ezenkívül a fiók SAS kódjával is adhat hozzáférést, amely az egyes szolgáltatásokhoz, például a alkalmazni műveletekhez **Get/Set szolgáltatástulajdonságok** és **első szolgáltatási statisztikák**. A blobtárolók, táblák, üzenetsorok és fájlmegosztások olvasási, írási és törlési műveleteihez is hozzáférést biztosíthat, amelyeket a szolgáltatásalapú SAS nem engedélyez. Lásd: [hozhat létre, amely a fiók SAS](https://msdn.microsoft.com/library/mt584140.aspx) a fiók SAS-jogkivonat létrehozásával kapcsolatos részletes információk.
 
 ## <a name="how-a-shared-access-signature-works"></a>Hogyan működik a közös hozzáférésű jogosultságkód
+
 Közös hozzáférésű jogosultságkód egy aláírt URI-t, amely egy vagy több tároló-erőforrások mutat, és a egy speciális lekérdezési paraméterek készletét tartalmazó jogkivonatok tartalmazza. A token jelzi, hogy milyen erőforrásokat érhetik el az ügyfelet. Lekérdezési paraméterek, az aláírás az SAS-paraméterek értékekből összeállított, és a fiókkulcs aláírva. Az aláírás az Azure Storage által a tárolási erőforrások elérésének hitelesítéséhez használatos.
 
 Íme egy példa egy SAS URI, megjelenítése az erőforrás URI-t és a SAS-jogkivonat:
@@ -73,9 +79,11 @@ A SAS-jogkivonat nem létrehozza a sztring a *ügyfél* ügyféloldali (lásd a 
 Amikor egy ügyfél egy SAS URI-t biztosít az Azure Storage egy kérés részeként, a szolgáltatás ellenőrzi a SAS-paramétereket és aláírást annak ellenőrzéséhez, hogy ez érvényes a kérelem hitelesítéséhez. Ha a szolgáltatás ellenőrzi, hogy az aláírás érvénytelen, akkor a kérelme engedélyezett. Ellenkező esetben a kérelem rendszer elutasította, hibakód: 403 (tiltott).
 
 ## <a name="shared-access-signature-parameters"></a>Közös hozzáférésű jogosultságkód paraméterek
+
 SAS-tokeneket és a fiók SAS tartalmazza néhány gyakori paramétereket, és is igénybe vehet néhány paramétert, amelyek eltérnek.
 
 ### <a name="parameters-common-to-account-sas-and-service-sas-tokens"></a>Közös fiók SAS paramétereket és a SAS-tokenek
+
 * **API-verzió** egy nem kötelező paraméter, amely meghatározza a storage szolgáltatás verziót kell használni, a kérés végrehajtásához.
 * **Szolgáltatásverzió** egyik kötelező paraméter, amely meghatározza a storage szolgáltatás verziót kell használni, a kérelem engedélyezéséhez.
 * **Kezdő időpontja.** Ez az az idő, amikor a SAS érvényessé válik. Közös hozzáférésű jogosultságkód kezdési ideje nem kötelező. Kezdési idő, a rendszer az SAS-e hatékony azonnal. A kezdési időpontot kell kifejezni az UTC (egyezményes világidő), egy speciális UTC jelzéssel ("Z"), például `1994-11-05T13:15:30Z`.
@@ -86,6 +94,7 @@ SAS-tokeneket és a fiók SAS tartalmazza néhány gyakori paramétereket, és i
 * **Aláírás.** Az aláírás a többi paraméter rész tokenként megadva, és ezután titkosítja a értékekből összeállított. Az aláírás az adott tárolási erőforrásokhoz való hozzáférés engedélyezésére szolgál.
 
 ### <a name="parameters-for-a-service-sas-token"></a>A szolgáltatás SAS-token paraméterek
+
 * **Storage-erőforrások.** Tárolási erőforrások, amelynek is adhat hozzáférést egy olyan SAS a következők:
   * Tárolók és blobok
   * Fájlmegosztásokat és fájlokat
@@ -93,6 +102,7 @@ SAS-tokeneket és a fiók SAS tartalmazza néhány gyakori paramétereket, és i
   * Táblák és táblaentitások tartományát.
 
 ### <a name="parameters-for-an-account-sas-token"></a>Egy fiók SAS-token paraméterek
+
 * **Szolgáltatás vagy a szolgáltatások.** Egy fiók SAS is adhat hozzáférést a tárolási szolgáltatások közül legalább egyet. Ha például egy fiók SAS, hogy biztosít hozzáférést a Blobok és fájlok szolgáltatáshoz is létrehozhat. Vagy létrehozhat egy SAS, hogy mind a négy delegáltak hozzáférést szolgáltatás (Blob, üzenetsor, tábla és fájl).
 * **Tárolási erőforrástípusok.** Egy fiók SAS egy adott erőforrás helyett a tárolási erőforrások egy vagy több osztályt vonatkozik. Egy fiók SAS való hozzáférés delegálásához hozhat létre:
   * Szolgáltatásiszint-API-k, amelyeket a rendszer meghív, szemben a tárfiók típusú erőforrást. Ilyenek például **Get/Set-szolgáltatás tulajdonságai**, **első szolgáltatási statisztikák**, és **lista tárolók/üzenetsorok és táblák/megosztások**.
@@ -139,6 +149,7 @@ https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015
 Tekintve, hogy az engedélyek korlátozva a szolgáltatási szint, a SAS használatával elérhető műveletek a következők **beolvasása a Blob szolgáltatás tulajdonságai** (olvasás) és **állítsa Blob szolgáltatás tulajdonságai** (írás). Azonban egy másik erőforrás URI-t, az SAS-jogkivonatnak felhasználható is való hozzáférés delegálásához **beolvasása a Blob szolgáltatás statisztikáiról** (olvasás).
 
 ## <a name="controlling-a-sas-with-a-stored-access-policy"></a>A tárolt hozzáférési szabályzattal együtt SAS szabályozása
+
 Közös hozzáférésű jogosultságkód két formáját valamelyikét hajthatja végre:
 
 * **Ad hoc biztonsági Társítások:** Amikor létrehoz egy ad-hoc SAS, a kezdési idő, lejárati időpontot és engedélyeket a SAS minden megadott SAS URI-(vagy hallgatólagos, abban az esetben, ha nincs megadva a kezdési ideje). Az ilyen típusú SAS-fiók SAS-vagy szolgáltatásalapú SAS hozható létre.
@@ -158,12 +169,15 @@ A különbség a két formáját fontos egyik legfontosabb előny a: visszavont 
 > A fiókkulcs aláírásának létrehozására használt társítva egy közös hozzáférésű jogosultságkód URI-t, és a társított tárolt hozzáférési szabályzat (ha van). Ha nincs tárolt hozzáférési szabályzat van megadva, a csak visszavonása a közös hozzáférésű jogosultságkód módja a fiókkulcs módosításához.
 
 ## <a name="authenticating-from-a-client-application-with-a-sas"></a>A SAS-ügyfélalkalmazás hitelesítése
+
 Egy ügyfél, aki rendelkezik a SAS használatával engedélyezhetők a SAS egy storage-fiókot, amelynek nem rendelkeznek a fiókkulcsok egy kérelmet. SAS egy kapcsolati karakterláncot tartalmazza, vagy közvetlenül a megfelelő konstruktor vagy a metódus a használt.
 
 ### <a name="using-a-sas-in-a-connection-string"></a>Egy kapcsolati karakterláncot a SAS használatával
+
 [!INCLUDE [storage-use-sas-in-connection-string-include](../../../includes/storage-use-sas-in-connection-string-include.md)]
 
 ### <a name="using-a-sas-in-a-constructor-or-method"></a>A konstruktor vagy metódus SAS használatával
+
 Számos Azure Storage ügyféloldali kódtár konstruktorok és a metódus túlterheléssel nyújtanak a SAS-paramétert, így engedélyezheti, hogy a szolgáltatás SAS-kérést.
 
 Például itt SAS URI segítségével hozzon létre egy hivatkozást a blokkblobok. Az SAS a csak a kéréshez szükséges hitelesítő adatokat biztosít. A blokkblob hivatkozását írási művelet használja:
@@ -208,6 +222,7 @@ catch (StorageException e)
 ```
 
 ## <a name="best-practices-when-using-sas"></a>SAS használata esetén ajánlott eljárások
+
 Közös hozzáférésű jogosultságkódok használatakor az alkalmazások kell figyelembe venni két potenciális kockázatokról:
 
 * Ha egy SAS kiszivárgott, használat szerint bárki, aki szerzi be, amely potenciálisan kedvezőtlenül befolyásolhatja a storage-fiókjában.
@@ -227,6 +242,7 @@ Az alábbi javaslatok a közös hozzáférésű jogosultságkódok használata s
 10. **A Storage Analytics segítségével figyelheti az alkalmazást.** Naplózás és mérőszámok segítségével bármely megnövekedett leállás miatt fellépő hitelesítési hibákkal figyelje meg, a SAS-szolgáltató szolgáltatásban vagy egy tárolt hozzáférési szabályzat nem szándékos eltávolítását. Tekintse meg a [Azure Storage csapat blogja](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx) további információt.
 
 ## <a name="sas-examples"></a>SAS-példák
+
 Az alábbiakban néhány példa a közös hozzáférésű jogosultságkódok, a fiók SAS mindkét típusú, és a szolgáltatásalapú SAS-t.
 
 Ezekben a példákban a C# futtatásához kell hivatkoznia a projektben a következő NuGet-csomagok:
@@ -237,6 +253,7 @@ Ezekben a példákban a C# futtatásához kell hivatkoznia a projektben a követ
 További példák azt mutatják be, hogyan hozhat létre és tesztelhet egy SAS [Azure Storage-Kódminták](https://azure.microsoft.com/documentation/samples/?service=storage).
 
 ### <a name="example-create-and-use-an-account-sas"></a>Példa: Létrehozhat és használhat egy fiók SAS
+
 Az alábbi példakód létrehoz egy fiókot, amely a Blobok és fájlok szolgáltatások esetében érvényes, és lehetővé teszi az ügyfél engedélyek olvasási, írási és list engedélyeket az eléréséhez a szolgáltatói API-k SAS. A fiók SAS korlátozza a protokoll HTTPS, ezért a kérelem kell tenni a HTTPS.
 
 ```csharp
@@ -304,6 +321,7 @@ static void UseAccountSAS(string sasToken)
 ```
 
 ### <a name="example-create-a-stored-access-policy"></a>Példa: A tárolt hozzáférési szabályzat létrehozása
+
 A következő kódot egy tárolt hozzáférési szabályzatot egy tárolót hoz létre. A hozzáférési szabályzat segítségével a szolgáltatásalapú SAS korlátozások határozhatók meg a tárolóhoz és annak blobjaihoz.
 
 ```csharp
@@ -330,6 +348,7 @@ private static async Task CreateSharedAccessPolicyAsync(CloudBlobContainer conta
 ```
 
 ### <a name="example-create-a-service-sas-on-a-container"></a>Példa: Egy tároló szolgáltatásalapú SAS létrehozása
+
 Az alábbi kód létrehoz egy SAS egy tárolón. Ha egy meglévő tárolt hozzáférési szabályzat neve van megadva, az adott házirendnek SAS társítva. Ha nincs tárolt hozzáférési szabályzat van megadva, majd a kódot a tároló ad-hoc SAS hoz létre.
 
 ```csharp
@@ -373,6 +392,7 @@ private static string GetContainerSasUri(CloudBlobContainer container, string st
 ```
 
 ### <a name="example-create-a-service-sas-on-a-blob"></a>Példa: A blob SAS szolgáltatás létrehozása
+
 Az alábbi kód létrehoz egy SAS-egy BLOB. Ha egy meglévő tárolt hozzáférési szabályzat neve van megadva, az adott házirendnek SAS társítva. Ha nincs tárolt hozzáférési szabályzat van megadva, majd a kódot a blob egy ad-hoc SAS hoz létre.
 
 ```csharp
@@ -419,9 +439,11 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
 ```
 
 ## <a name="conclusion"></a>Összegzés
+
 Közös hozzáférésű jogosultságkódok hasznosak, amelyeknek nem indokolt a fiókkulcs-ügyfelek, amelyek biztosítják az korlátozott engedélyekkel a tárfiókhoz. Mint ilyen a biztonsági modell az Azure Storage használata alkalmazások fontos részei legyenek. Ha követi az itt felsorolt ajánlott eljárásokat, a SAS használatával erőforrásokhoz való hozzáférés nagyobb rugalmasságot biztosítanak a tárfiókban található az alkalmazás biztonságának veszélyeztetése nélkül.
 
 ## <a name="next-steps"></a>További lépések
+
 * [Tárolók és blobok névtelen olvasási hozzáférésének kezelése](../blobs/storage-manage-access-to-resources.md)
 * [Hozzáférés delegálása közös hozzáférésű jogosultságkód használatával](https://msdn.microsoft.com/library/azure/ee395415.aspx)
 * [Tábla és üzenetsor SAS bemutatása](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)

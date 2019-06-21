@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/22/2019
+ms.date: 06/19/2019
 ms.author: magoedte
-ms.openlocfilehash: 3f93318dedb8a4667d32bcc97eb6a697ccebfcc4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d4e49b4f7c1aa244b59ef17716c90369a0d3339
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67122574"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273378"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Az Azure Monitor engedélyezése (előzetes verzió) virtuális gépek – áttekintés
 
@@ -42,10 +42,10 @@ A virtuális gépek az Azure Monitor Log Analytics-munkaterület az alábbi rég
 - USA nyugati középső régiója
 - USA 2. nyugati<sup>1</sup>
 - USA keleti régiója
-- Közép-Kanada<sup>1</sup>
-- Egyesült Királyság déli régiója<sup>1</sup>
+- Közép-Kanada
+- Az Egyesült Királyság déli régiója
 - Nyugat-Európa
-- Délkelet-Ázsia<sup>1</sup>
+- Délkelet-Ázsia
 
 <sup>1</sup> ebben a régióban jelenleg nem támogatja a Azure monitor az állapotfigyelő szolgáltatás virtuális gépek számára.
 
@@ -90,6 +90,10 @@ Az alábbi táblázat felsorolja a Windows és Linux operációs rendszerek, ame
 |Debian 8, 9.4 | X<sup>1</sup> | | X |
 
 <sup>1</sup> a teljesítmény funkció az Azure Monitor-beli virtuális gépek csak az Azure Monitor érhető el. Nem érhető el az Azure virtuális gépek a bal oldali panelen.
+
+>[!NOTE]
+>Virtuális gépek az Azure monitor az állapotfigyelő szolgáltatás nem támogatja [beágyazott virtualizálás](../../virtual-machines/windows/nested-virtualization.md) egy Azure-beli virtuális gépen.
+>
 
 >[!NOTE]
 >A Linux operációs rendszer:

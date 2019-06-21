@@ -4,23 +4,29 @@ description: Tekintse át az adott tulajdonságok és azok értékei a edgeAgent
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 09/21/2018
+ms.date: 06/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: b6eb0c5b0d52bba3d34c9853a73b1f3e07b112a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8a8170023c8f529894522e27a4c6231325089af
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61322727"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190980"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>Az IoT Edge-ügynök és az IoT Edge hubot ikermodulokkal tulajdonságai
 
 Az IoT Edge-ügynök és az IoT Edge hubot az IoT Edge-futtatókörnyezet alkotó két modult. Minden modul hajt végre milyen feladatokat kapcsolatos további információkért lásd: [megismerheti az Azure IoT Edge-futtatókörnyezet és az architektúrára](iot-edge-runtime.md). 
 
-Ez a cikk a kívánt tulajdonságok és a futtatókörnyezet ikermodulokkal jelentett tulajdonságait. A modulok IoT Edge-eszközökön üzembe helyezése további információkért lásd: [központi telepítési és figyelési](module-deployment-monitoring.md).
+Ez a cikk a kívánt tulajdonságok és a futtatókörnyezet ikermodulokkal jelentett tulajdonságait. A modulok IoT Edge-eszközökön üzembe helyezése további információkért lásd: [megtudhatja, hogyan helyezhet üzembe modulokat, és ezekkel létesíthetnek útvonalat az IoT Edge](module-composition.md).
+
+Egy ikermodul tartalmazza: 
+
+* **Kívánt tulajdonságok**. A megoldás háttérrendszere beállíthatja a kívánt tulajdonságait, és a modul is olvashatja őket. A modul is fogadhat értesítéseket a módosításokat a kívánt tulajdonságait. Kívánt tulajdonságok használhatók együtt jelentett tulajdonságok szinkronizálása a modulkonfiguráció vagy feltételeket.
+
+* **Jelentett tulajdonságokként**. A modul be, a jelentett tulajdonságokat, és olvashatja és lekérdezheti, ha a megoldás háttérrendszeréhez. Jelentett tulajdonságok és kívánt tulajdonságok szinkronizálása a modulkonfiguráció vagy feltételeket szolgálnak. 
 
 ## <a name="edgeagent-desired-properties"></a>EdgeAgent desired tulajdonságai
 
@@ -48,7 +54,7 @@ Az IoT Edge-ügynök ikermodulja nevezzük `$edgeAgent` és a egy eszközön, é
 | modules.{moduleId}.version | Egy felhasználó által megadott karakterlánc, amely a modul verzióját. | Igen |
 | modulok. {moduleId} .type | Kell lennie a "docker" | Igen |
 | modulok. {moduleId} .status | {"fut" \| "leállított"} | Igen |
-| modulok. {moduleId} .restartPolicy | {"soha" \| "a – nem sikerült" \| "a – nem megfelelő állapotú" \| "mindig"} | Igen |
+| modulok. {moduleId} .restartPolicy | {"soha" \| "hiba" \| "a – nem megfelelő állapotú" \| "mindig"} | Igen |
 | modules.{moduleId}.settings.image | A modul kép URI Azonosítóját. | Igen |
 | modules.{moduleId}.settings.createOptions | A modul tároló létrehozását, a beállításokat tartalmazó sztringesített JSON. [Docker-létrehozási beállítások](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nem |
 | modules.{moduleId}.configuration.id | Az üzemelő példány, amelyre ez a modul telepítve azonosítója. | Az IoT Hub állítja ezt a tulajdonságot, alkalmazásakor a jegyzékfájl egy üzemelő példány használatával. Nem része egy manifest nasazení. |
@@ -61,7 +67,7 @@ Az IoT Edge-ügynök jelentett tulajdonságok három fő információt tartalmaz
 2. A modulok jelenleg fut az eszközön, az IoT Edge-ügynök; által jelentett módon állapota és
 3. Jelenleg fut az eszköz kívánt tulajdonságait másolatát.
 
-Az utolsó adat, akkor hasznos, abban az esetben a legújabb kívánt tulajdonságok nem alkalmazása sikeresen futásidőben, és az eszköz továbbra is fut egy előző manifest nasazení.
+Ezen információk, az aktuális kívánt tulajdonságait másolatát utolsó részének hasznos állapítható meg, hogy az eszköz rendelkezik a alkalmazni a legújabb kívánt tulajdonságok, vagy még fut egy előző manifest nasazení.
 
 > [!NOTE]
 > Az IoT Edge-ügynök a jelentett tulajdonságok hasznosak lehetnek, a lekérdezhetők a [IoT Hub lekérdezési nyelv](../iot-hub/iot-hub-devguide-query-language.md) vizsgálhatja a nagy mennyiségű központi telepítések állapotát. Az IoT Edge-ügynök tulajdonságainak használata az állapot további információkért lásd: [ismertetése IoT Edge-telepítések egyetlen eszközök vagy ipari méretekben](module-deployment-monitoring.md).
@@ -71,7 +77,7 @@ A következő táblázat nem tartalmazza a kívánt tulajdonságok, másolja az 
 | Tulajdonság | Leírás |
 | -------- | ----------- |
 | lastDesiredVersion | Egész szám lehet a kívánt tulajdonságokkal dolgozza fel az IoT Edge-ügynök verziója az utolsó hivatkozik. |
-| lastDesiredStatus.code | Ez az az IoT Edge-ügynök által látott utolsó kívánt tulajdonságok hivatkozó az állapotkódot. Megengedett értékek: `200` Sikeres, `400` érvénytelen konfigurációt `412` érvénytelen verziójú, `417` a kívánt tulajdonságokkal is üres, `500` sikertelen |
+| lastDesiredStatus.code | Ezzel az állapotkóddal hivatkozik az IoT Edge-ügynök által látott utolsó kívánt tulajdonságait. Megengedett értékek: `200` Sikeres, `400` érvénytelen konfigurációt `412` érvénytelen verziójú, `417` a kívánt tulajdonságokkal is üres, `500` sikertelen |
 | lastDesiredStatus.description | Az állapot leírása |
 | deviceHealth | `healthy` Ha az összes modul futásidejű állapotát `running` vagy `stopped`, `unhealthy` egyéb |
 | configurationHealth.{deploymentId}.health | `healthy` Ha a központi telepítés {deploymentId} által beállított összes modul futási állapotát `running` vagy `stopped`, `unhealthy` egyéb |
@@ -81,14 +87,14 @@ A következő táblázat nem tartalmazza a kívánt tulajdonságok, másolja az 
 | systemModules.edgeAgent.statusDescription | Az IoT Edge-ügynök a jelzett állapot szöveges leírása. |
 | systemModules.edgeHub.runtimeStatus | IoT Edge hubot állapota: {"fut" \| "leállított" \| "sikertelen" \| "leállítási" \| "nem kifogástalan"} |
 | systemModules.edgeHub.statusDescription | Az IoT Edge hub, ha a nem kifogástalan állapotát szöveges leírása. |
-| systemModules.edgeHub.exitCode | Ha kilépett, az IoT Edge hubot tároló által jelentett a kilépési kód |
+| systemModules.edgeHub.exitCode | Az IoT Edge hubot tároló által jelentett a kilépési kód kilép, ha a tároló |
 | systemModules.edgeHub.startTimeUtc | Time when IoT Edge hub was last started |
 | systemModules.edgeHub.lastExitTimeUtc | Time when IoT Edge hub last exited |
 | systemModules.edgeHub.lastRestartTimeUtc | Time when IoT Edge hub was last restarted |
 | systemModules.edgeHub.restartCount | Ez a modul újra lett indítva, az újraindítási házirend részeként hányszor. |
 | modules.{moduleId}.runtimeStatus | A modul állapota: {"fut" \| "leállított" \| "sikertelen" \| "leállítási" \| "nem kifogástalan"} |
 | modules.{moduleId}.statusDescription | Szöveges leírása a modult, ha a nem kifogástalan állapotát. |
-| modulok. {moduleId} .exitCode | Ha kilépett a modul tároló által jelentett a kilépési kód |
+| modulok. {moduleId} .exitCode | A modul tároló által jelentett a kilépési kód kilép, ha a tároló |
 | modules.{moduleId}.startTimeUtc | Ha a modul legutóbbi Indítás ideje |
 | modules.{moduleId}.lastExitTimeUtc | Ha a modul utolsó kilépett idő |
 | modules.{moduleId}.lastRestartTimeUtc | Ha a modul utolsó újraindítása idő |
@@ -101,19 +107,19 @@ Az IoT Edge hub az ikermodul nevezzük `$edgeHub` és koordinálja a kommunikác
 | Tulajdonság | Leírás | Manifest nasazení szükséges |
 | -------- | ----------- | -------- |
 | sémaverzióval | "1.0" kell lennie | Igen |
-| útvonalak. {routeName} | A string representing an IoT Edge hub route. | A `routes` elem létezik, de üres is lehet. |
-| storeAndForwardConfiguration.timeToLiveSecs | Például az IoT Hub, vagy a helyi modul kapcsolódik az időtartam másodpercben, hogy a hub tartja az üzeneteket az IoT Edge útválasztási végpontok leválasztva | Igen |
+| útvonalak. {routeName} | A string representing an IoT Edge hub route. További információkért lásd: [útvonalak deklarálja](module-composition.md#declare-routes). | A `routes` elem létezik, de üres is lehet. |
+| storeAndForwardConfiguration.timeToLiveSecs | Az időtartam másodpercben, hogy az IoT Edge hub tartja Ha bontotta a útválasztási végpontok, hogy üzeneteket az IoT Hub és a egy helyi modul. Az érték lehet bármilyen pozitív egész szám lehet. | Igen |
 
 ## <a name="edgehub-reported-properties"></a>EdgeHub jelentett tulajdonságok
 
 | Tulajdonság | Leírás |
 | -------- | ----------- |
 | lastDesiredVersion | Egész szám lehet a kívánt tulajdonságok, az IoT Edge hub által feldolgozott verzióját az utolsó hivatkozik. |
-| lastDesiredStatus.code | Ez az az IoT Edge-központ által látott utolsó kívánt tulajdonságok hivatkozó az állapotkódot. Megengedett értékek: `200` Sikeres, `400` érvénytelen konfigurációt `500` sikertelen |
-| lastDesiredStatus.description | Az állapot leírása |
+| lastDesiredStatus.code | Az IoT Edge-központ által látott utolsó kívánt tulajdonságok hivatkozó állapotkód. Megengedett értékek: `200` Sikeres, `400` érvénytelen konfigurációt `500` sikertelen |
+| lastDesiredStatus.description | Az állapot szöveges leírása. |
 | ügyfelek számára. {eszköz vagy moduleId} .status | A kapcsolat állapota az eszköz vagy a modul. Lehetséges értékei {"csatlakoztatva" \| "leválasztott"}. Csak a modul identitások leválasztott állapotban is lehetnek. Alsóbb rétegbeli eszközök csatlakoztatása az IoT Edge hubot jelennek meg, csak a csatlakozáskor. |
-| ügyfelek számára. {eszköz vagy moduleId} .lastConnectTime | Utolsó időpont, amikor az eszköz vagy a csatlakoztatott |
-| ügyfelek számára. {eszköz vagy moduleId} .lastDisconnectTime | Utolsó idő az eszköz vagy a modul kapcsolata |
+| ügyfelek számára. {eszköz vagy moduleId} .lastConnectTime | Utolsó időpont, amikor az eszköz vagy a csatlakoztatott. |
+| ügyfelek számára. {eszköz vagy moduleId} .lastDisconnectTime | Utolsó időpont, amikor az eszköz vagy leválasztott modul. |
 
 ## <a name="next-steps"></a>További lépések
 

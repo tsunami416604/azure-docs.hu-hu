@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: e1583ccf04b68f81a71bd2f63779680427ce3362
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 98acc7f6dd5ec7cf3702bbcbe60e2739732512e2
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068782"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67294912"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Az Azure Disk Encryption IaaS virtuális gépekhez – gyakori kérdések
 
@@ -29,43 +29,6 @@ Az Azure Disk Encryption általánosan elérhető az Azure Resource Manager sabl
 ## <a name="how-much-does-azure-disk-encryption-cost"></a>Az Azure Disk Encryption mennyibe?
 
 Semmilyen díjat nem az Azure Disk Encryption Virtuálisgép-lemezek titkosítása, de számítunk fel díjat a társított Azure Key Vault használatát. Az Azure Key Vault költségek további információkért lásd: a [Key Vault díjszabását ismertető](https://azure.microsoft.com/pricing/details/key-vault/) lapot.
-
-
-## <a name="which-virtual-machine-tiers-does-azure-disk-encryption-support"></a>Melyik virtuális gép csomagja támogatja az Azure Disk Encryption?
-
-Beleértve a standard szintű virtuális gépeken érhető el az Azure Disk Encryption [A, D, DS, E, G, GS és F](https://azure.microsoft.com/pricing/details/virtual-machines/) sorozatú IaaS virtuális gépek. Egyben a premium storage virtuális gép esetében elérhető. Nem érhető el az alapszintű csomag virtuális gépeket.
-
-## <a name="bkmk_LinuxOSSupport"></a> Milyen Linux-disztribúciók támogatja az Azure Disk Encryption?
-
-Az Azure Disk Encryption támogatott egy részét a [Azure által támogatott Linux-disztribúciók](../virtual-machines/linux/endorsed-distros.md), amely saját maga lesz az összes Linux server lehetséges disztribúciók egy részét.
-
- ![Venn-Diagram a Linux rendszerű kiszolgáló disztribúciók, amelyek támogatják az Azure Disk Encryption](./media/azure-security-disk-encryption-faq/ade-supported-distros.png)
-
-Nem támogatott az Azure-ban Linux rendszerű kiszolgáló disztribúciók nem támogatják az Azure Disk Encryption, és ezek támogatott, csak a következő disztribúciók és verziók támogatják az Azure Disk Encryption:
-
-| Linux-disztribúció | Verzió | A kötettípus titkosítás támogatott|
-| --- | --- |--- |
-| Ubuntu | 18.04| Operációsrendszer- és lemez |
-| Ubuntu | 16.04| Operációsrendszer- és lemez |
-| Ubuntu | 14.04.5</br>[az Azure-ban beállított kernel 4.15 vagy újabb frissítése](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | Operációsrendszer- és lemez |
-| RHEL | 7.6 | Operációsrendszer- és lemez (lásd az alábbi megjegyzést) |
-| RHEL | 7.5 | Operációsrendszer- és lemez (lásd az alábbi megjegyzést) |
-| RHEL | 7.4 | Operációsrendszer- és lemez (lásd az alábbi megjegyzést) |
-| RHEL | 7.3 | Operációsrendszer- és lemez (lásd az alábbi megjegyzést) |
-| RHEL | 7.2 | Operációsrendszer- és lemez (lásd az alábbi megjegyzést) |
-| RHEL | 6.8 | Adatlemez (lásd az alábbi megjegyzést) |
-| RHEL | 6.7 | Adatlemez (lásd az alábbi megjegyzést) |
-| CentOS | 7.5 | Operációsrendszer- és lemez |
-| CentOS | 7.4 | Operációsrendszer- és lemez |
-| CentOS | 7.3 | Operációsrendszer- és lemez |
-| CentOS | 7.2n | Operációsrendszer- és lemez |
-| CentOS | 6.8 | Adatlemez |
-| openSUSE | 42.3 | Adatlemez |
-| SLES | 12-SP4 | Adatlemez |
-| SLES | 12-SP3 | Adatlemez |
-
-> [!NOTE]
-> Új ADE végrehajtása RHEL-OS és adatlemez RHEL7 használatalapú lemezképekhez támogatott. ADE a RHEL Bring-Your-saját-előfizetés (saját) lemezképek jelenleg nem támogatott. Lásd: [Linuxhoz készült Azure Disk Encryption](azure-security-disk-encryption-linux.md) további információt.
 
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>Hogyan lehet elindítani az Azure Disk Encryption használatával?
 

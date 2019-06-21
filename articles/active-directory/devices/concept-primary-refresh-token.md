@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 563ec5969a77dd01506270c3e864e00639a56eb1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6515f60fb67e52a7924afec2effd0c2001935e5d
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110723"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190255"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Mi az elsődleges frissítési Token?
 
@@ -63,6 +63,9 @@ A Windows 10 rendszerű eszköz két esetben a felhasználói hitelesítés sor�
    * A fiók hozzáadása **beállítások** > **fiókok** > **hozzáférés munkahelyi vagy iskolai** > **Connect**
 
 Ezekben az esetekben az Azure AD WAM beépülő modul az elsődleges hatóság a PRT azért, mert a Windows bejelentkezési nem történik az Azure AD-fiókot.
+
+> [!NOTE]
+> 3\. fél Identitásszolgáltatók a WS-Trust protokollal a Windows 10 rendszerű eszközökön PRT kiállítási támogatnia kell. Nélkül WS-Trust, PRT nem adható ki számára a felhasználók a hibrid Azure AD-hez vagy az Azure AD-hez csatlakoztatott eszközök
 
 ## <a name="what-is-the-lifetime-of-a-prt"></a>Mi az a PRT élettartama?
 

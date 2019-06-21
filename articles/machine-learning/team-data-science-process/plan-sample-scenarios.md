@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6838f4db240a0712eece7a97bc2cfe99efb87215
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 130ab6ee8e59b157d1fbdd8769f14814445dea18
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61429759"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67202742"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Speciális elemzési forgatókönyvek az Azure Machine Learning rendszerben
 Ez a cikk ismerteti a különböző minta adatforrások és a cél forgatókönyvek tudja kezelni a [csoportos adatelemzési folyamat (TDSP)](overview.md). A TDSP rendszerezett megközelítést biztosít olyan munkacsoportok számára az intelligens alkalmazások készítéséhez. Az itt bemutatott forgatókönyveket mutatnak be lehetőségek az adatok feldolgozása a munkafolyamat, amely a adatjellemzők, az adatforrás helyének és az Azure-beli cél tárházak függ.
@@ -239,7 +239,7 @@ A teljes SQL Server-adatbázis az SQL Server virtuális gép replikálása, meg 
 1. Egyszerű Azure Machine Learning kísérlet folyamatot feltöltött adatkészlet kezdve.
 
 ## <a name="decisiontree"></a>Forgatókönyv kiválasztása döntési fája
-- - -
+---
 A következő ábra összefoglalja a fent leírt forgatókönyveket és a fejlett analitikai folyamat és technológia választott lehetőségek, amelyek az egyes a tételes forgatókönyvek esetében. Vegye figyelembe, hogy az adatokat feldolgozó, feltárása, funkciófejlesztési és mintavételi eltarthat egy vagy több módszer/környezet – a forrásnál, köztes, és/vagy a célzott adathalászatban – helyezze, és szükség szerint iteratív folytathatja. A diagram csak néhány lehetséges folyamatok olyan bemutatásáért funkcionál, és nem biztosít teljes körű enumerálás.
 
 ![Minta DS folyamatot bemutató forgatókönyvek][8]

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 83f202f087d51b7742a74cf5ee5db8bd5fee5385
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c5bbd19969349965ea20fa4cfc09e10119a9a86c
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073726"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295748"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>A Microsoft Azure Storage teljesítmény és méretezhetőség – ellenőrzőlista
 
@@ -109,7 +109,7 @@ Ha Ön hamarosan eléri a storage-fiókokat használhat egy adott előfizetés/r
 Ha az alkalmazás már majdnem elérte az egy tárfiókban skálázási célértékei, vegye figyelembe, vezetnek be a következő módszerek egyikét:  
 
 * Gondolja át az alkalmazás megközelítik vagy meghaladják a skálázhatósági célok számítási feladatokra. Megtervezheti, hogy másképp kisebb sávszélességet vagy kapacitását, vagy kevesebb tranzakciók?
-* Ha egy alkalmazás túl kell lépnie az egyik a skálázhatósági célokat, létre kell hoznia storage-fiókok és a partíció az alkalmazásadatok ezeket több tárfiókon keresztül. Ha ezt a mintát használja, majd mindenképpen tervezze alkalmazását úgy, hogy további tárfiókok a jövőben terheléselosztásra is hozzáadhat. Írásának időpontjában a minden Azure-előfizetés storage-fiókok legfeljebb 100 lehet.  Storage-fiókok is kívül tárolt adatokat, a végrehajtott tranzakciók és az átvitt adatok tekintetében a használat ingyenes.
+* Ha egy alkalmazás túl kell lépnie az egyik a skálázhatósági célokat, létre kell hoznia storage-fiókok és a partíció az alkalmazásadatok ezeket több tárfiókon keresztül. Ha ezt a mintát használja, majd mindenképpen tervezze alkalmazását úgy, hogy további tárfiókok a jövőben terheléselosztásra is hozzáadhat. Összeállításakor minden Azure-előfizetés is rendelkezésére legfeljebb 250 tárfiókot régiónként (ha telepítve vannak az Azure Resource Manager modellel).  Storage-fiókok is kívül tárolt adatokat, a végrehajtott tranzakciók és az átvitt adatok tekintetében a használat ingyenes.
 * Ha az alkalmazás eléri a sávszélesség-célokat, fontolja meg az ügyfél elküldi az adatokat a storage szolgáltatás szükséges sávszélesség csökkentése érdekében az adatok tömörítése.  Bár ez sávszélességet takaríthat, és hálózati teljesítmény javításához, azt is lehet néhány negatív hatással van.  Ki kell értékelni a teljesítményre gyakorolt hatás erre a további feldolgozás tömörítése és kibontása adatokat az ügyfél követelményei miatt. Emellett a tömörített adatok tárolására több nehézkessé teheti a hibák elhárításához, mivel lehet bonyolultabb standard eszközökkel tárolt adatok megtekintéséhez.
 * Ha az alkalmazás eléri a skálázhatósági célokat, majd győződjön meg arról, hogy újrapróbálkozások használ egy exponenciális visszatartással (lásd: [újrapróbálkozások](#subheading14)).  Győződjön meg arról, soha nem módszerrel érdemes a skálázhatósági célértékét (amelyet a fenti módszerek egyikének használatával), de ez biztosítja az alkalmazás nem csupán továbbra is újrapróbálkozik gyorsan, ami a szabályozás rosszabb, akkor célszerűbb.  
 

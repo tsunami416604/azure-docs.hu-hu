@@ -17,11 +17,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 4b4d2e2099f0d49c7dd9a150ac659ffde62eaa21
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60506413"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "64693086"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Windows virtuális gépek az Azure-ban a távoli asztali kapcsolatok problémáinak részletes hibaelhárítási lépései
 Ez a cikk diagnosztizálhatja és megoldhatja az Azure-beli virtuális gépek Windows-alapú összetett távoli asztal-hibák részletes hibaelhárítási lépéseket.
@@ -64,7 +64,7 @@ A távoli asztali ügyfél nem lehet elérni a távoli asztali szolgáltatás a 
 * [Hálózati biztonsági csoportok](#source-4-network-security-groups)
 * [Windows-alapú Azure virtuális gép](#source-5-windows-based-azure-vm)
 
-## <a name="source-1-remote-desktop-client-computer"></a>1. forrás: Távoli asztali ügyfél-számítógépen
+## <a name="source-1-remote-desktop-client-computer"></a>1\. forrás: Távoli asztali ügyfél-számítógépen
 Győződjön meg arról, hogy a számítógép kezdeményezhetik egy másik a helyszínen, Windows-alapú számítógép távoli asztali kapcsolatok.
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_1.png)
@@ -78,7 +78,7 @@ Ha nem, ellenőrizze a számítógépen a következő beállításokat:
 
 Az összes ilyen esetben ideiglenesen tiltsa le a szoftvert, és próbáljon kapcsolódni a távoli asztalon keresztül a helyszíni számítógépen. Ha talál a tényleges OK ezzel a módszerrel, a hálózati rendszergazda segítségét a szoftverfrissítési beállításait, hogy a távoli asztali kapcsolatok használható.
 
-## <a name="source-2-organization-intranet-edge-device"></a>2. forrás: Szervezeti intraneten edge-eszköz
+## <a name="source-2-organization-intranet-edge-device"></a>2\. forrás: Szervezeti intraneten edge-eszköz
 Győződjön meg arról, hogy közvetlenül az internethez kapcsolódó számítógép kezdeményezhetik az Azure virtuális gép távoli asztali kapcsolatok.
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_2.png)
@@ -93,7 +93,7 @@ Ha távoli asztali kapcsolatot is létrehozhat egy olyan számítógéppel, köz
 
 Működjön együtt hálózati rendszergazdájával, javítsa ki a beállításokat a szervezet intranetes peremhálózati eszköz, hogy a HTTPS-alapú távoli asztali kapcsolatok az interneten.
 
-## <a name="source-3-cloud-service-endpoint-and-acl"></a>3. forrás: Cloud service-végpont és ACL-JEI
+## <a name="source-3-cloud-service-endpoint-and-acl"></a>3\. forrás: Cloud service-végpont és ACL-JEI
 A klasszikus üzemi modellel létrehozott virtuális gép esetében ellenőrizze, hogy egy másik Azure virtuális Gépet, amely az ugyanazon a felhőszolgáltatáson vagy virtuális hálózati kezdeményezhetik távoli asztali kapcsolatok az Azure virtuális géphez.
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_3.png)
@@ -110,12 +110,12 @@ Ha egy virtuális géphez ugyanazon a felhőszolgáltatáson vagy virtuális há
 
 Ellenőrizze, hogy a végpont-e a probléma forrása, távolítsa el a jelenlegi végpont, és hozzon létre egy újat egy véletlenszerű portot kiválasztása külső portszám 49152 – 65535 közötti tartományban. További információkért lásd: [beállítása a virtuális gép végpontjainak](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-## <a name="source-4-network-security-groups"></a>4. forrás: Network Security Groups (Hálózati biztonsági csoportok)
+## <a name="source-4-network-security-groups"></a>4\. forrás: Network Security Groups (Hálózati biztonsági csoportok)
 Hálózati biztonsági csoportok engedélyezése az engedélyezett bejövő és kimenő forgalom részletesebb vezérléshez. Alhálózatok átfedés szabályokat hozhat létre, és a felhőalapú szolgáltatások Azure-beli virtuális hálózathoz.
 
 Az [IP-folyamat ellenőrzésével](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) győződjön meg róla, hogy a hálózati biztonsági csoportok szabályai nem blokkolják a virtuális gépek kimenő és bejövő forgalmát. Emellett áttekintheti az érvényben lévő biztonsági csoport szabályai annak biztosítása érdekében a bejövő "Engedélyezés" NSG-t a szabály létezik, és van priorizálva (alapértelmezés: 3389) RDP-portra. További információkért lásd: [használatával érvényes biztonsági szabályokat a virtuális gép forgalom áramlása](../../virtual-network/diagnose-network-traffic-filter-problem.md).
 
-## <a name="source-5-windows-based-azure-vm"></a>5. forrás: Windows-alapú Azure virtuális gép
+## <a name="source-5-windows-based-azure-vm"></a>5\. forrás: Windows-alapú Azure virtuális gép
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_5.png)
 
 Kövesse a [Ez a cikk](../windows/reset-rdp.md). Ez a cikk a virtuális gépen a távoli asztal szolgáltatás alaphelyzetbe állítása:

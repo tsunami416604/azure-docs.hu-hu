@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: dc07b4eea553e6cb3d9b522826e860ddbfbc1513
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e3ab53466cae5bd39d85f8d846c8e59ad94f1f2d
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64577045"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165749"
 ---
 # <a name="cloudsimple-private-cloud-overview"></a>CloudSimple magánfelhő áttekintése
 
@@ -63,7 +63,7 @@ A felhasználók használhatják fel a stack keresztül natív VMware-eszközök
 
 Dedikált csomópontok az Azure-helyen telepíthet. Majd kezelheti őket az Azure és a CloudSimple. Magánfelhő áll egy vagy több vSphere-fürtöket, és minden egyes fürt 3 – 16 csomópontot tartalmaz.
 
-Csomópontok vásárolt privát felhő használatával is létrehozhat:
+Létrehozhat magánfelhőt üzembe helyezett csomópontok használatával:
 
 * Használatalapú fizetés csomópontok
 * Fenntartott, dedikált csomópontok

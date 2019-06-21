@@ -8,33 +8,33 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b3c8fca1dd93f379860cc3b084fbb14d4a0c6380
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fb82e31d58d9955efc3b147eccf2b82b8768aeee
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64577360"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165799"
 ---
 # <a name="cloudsimple-nodes-overview"></a>CloudSimple csomópontok áttekintése
 
 Csomópontnak számít:
 
 * Egy dedikált operációs rendszer nélküli gazdagépet, amelyen telepítve van a VMware ESXi-hipervizorra compute  
-* Magánfelhők létrehozása számítástechnika vásárolhatja meg vagy fenntartott egység  
-* Rendelkezésre álló vásárolhatja meg vagy foglaljon le egy régióban, ahol a CloudSimple szolgáltatás érhető el.
+* Magánfelhők létrehozása helyezheti üzembe a számítási vagy fenntartott egység  
+* Rendelkezésre álló, üzembe helyezése, és foglaljon le egy régióban, ahol a CloudSimple szolgáltatás érhető el.
 
-Csomópontok magánfelhő építőelemei.  Magánfelhő létrehozása a ugyanazon termékváltozat három csomóponttal legalább kell.  Bontsa ki a magánfelhő, adjon hozzá további csomópontokat.  Meglévő fürt csomópontokat adhat hozzá. Másik lehetőségként a csomópontok az Azure Portalon vásárol, és társítja őket a CloudSimple szolgáltatással létrehozhat egy új fürtöt.  Vásárolt összes csomópontot már a CloudSimple szolgáltatás alatt jelennek meg.  Magánfelhő CloudSimple Portal megvásárolt csomópontjából hozzon létre.
+Csomópontok magánfelhő építőelemei.  Magánfelhő létrehozása a ugyanazon termékváltozat három csomóponttal legalább kell.  Bontsa ki a magánfelhő, adjon hozzá további csomópontokat.  Meglévő fürt csomópontokat adhat hozzá. Vagy létrehozhat egy új fürt üzembe helyezésével csomópontok az Azure Portalon, és társítja őket a CloudSimple szolgáltatással.  Üzembe helyezett összes csomópontja már a CloudSimple szolgáltatás alatt jelennek meg.  Magánfelhő CloudSimple Portal kiépített csomópontjából hozzon létre.
 
-## <a name="purchased-nodes"></a>Megvásárolt csomópontok
+## <a name="provisioned-nodes"></a>Üzembe helyezett csomópontok
 
-Megvásárolt csomópontok használatalapú-kapacitást biztosítanak. Csomópontok megvásárlása segítségével igény szerint a VMware-fürtök gyors skálázásának. Csomópontok hozzáadása, igény szerint, vagy a megvásárolt csomópont használatával csökkentheti a VMware-fürt törlése. Megvásárolt csomópontok számlázása havi rendszerességgel történik, és ha már vásárolt az előfizetésen felüli:
+Üzembe helyezett csomópontok használatalapú-kapacitást biztosítanak. Csomópontok kiépítése segítségével igény szerint a VMware-fürtök gyors skálázásának. Csomópontok hozzáadása, igény szerint, vagy egy üzembe helyezett csomópont használatával csökkentheti a VMware-fürt törlése. üzembe helyezett csomópontok számlázása havi rendszerességgel történik, és azok üzemelnek, az előfizetésen felüli:
 
 * Ha hitelkártyával fizet az Azure-előfizetése, a kártya azonnal történik.
 * A számlázás a számla ellenében, a költségek jelenik meg a következő számla.
 
 ## <a name="vmware-solution-by-cloudsimple-nodes-sku"></a>VMware megoldást CloudSimple csomópontok Termékváltozat
 
-A következő típusú csomópontokat beszerzési vagy foglalás érhetők el.
+A következő típusú csomópontokat kiépítés vagy foglalást érhetők el.
 
 | SKU | CS28 - csomópont | CS36 - csomópont |
 |-----|-------------|-------------|
@@ -57,5 +57,5 @@ Az alábbi csomópont korlátok vonatkoznak a magánfelhőben.
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg, hogyan [csomópontok megvásárlása](create-nodes.md)
+* Ismerje meg, hogyan [csomópontok üzembe helyezése](create-nodes.md)
 * Ismerje meg [privát felhő](cloudsimple-private-cloud.md)

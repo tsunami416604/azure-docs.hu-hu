@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
-ms.openlocfilehash: 9ff9b6b5313026d2102b98659183fa97c6a5ef84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2eb9f8e19be2a7b6220bc34bf4ce0c72c4ac0b4f
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683987"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275069"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>A használati megismerheti az Azure használat és költségek fájlban
 
@@ -72,8 +72,9 @@ invoiceSection | MCA | Tekintse meg a InvoiceSectionName.
 InvoiceSectionId | EA, MCA | A nagyvállalati szerződéssel rendelkező részleg vagy MCA számla szakasz egyedi azonosítója.
 InvoiceSectionName | EA, MCA | A nagyvállalati szerződéssel rendelkező részleg vagy MCA számla szakasz nevét.
 IsAzureCreditEligible | EA, MCA | Azt jelzi, hogy a díj fizetendő Azure-kreditek használatával támogatható (értékeket: IGAZ, hamis).
+IsEstimated | Összes | Azt jelzi, hogy a számlázási időszak lezárt/véglegesítése. Használati adatok csak akkor jön létre, a számla a számlázási időszak alatt módosíthatja. Ezek a rekordok lesznek megjelölve "becsült".
 Location egység | EA, MCA | -Adatközpontot, ahol az erőforrás fut.
-MeterCategory | Összes | A mérőszám a besorolási kategória neve. Ha például *Cloud services* és *hálózatkezelés*.
+meterCategory | Összes | A mérőszám a besorolási kategória neve. Ha például *Cloud services* és *hálózatkezelés*.
 MeterId | Összes | A mérő egyedi azonosítója.
 MeterName | Összes | A mérő neve.
 MeterRegion | Összes | Az Adatközpont helyét szolgáltatások díjszabása neve helye alapján. Tekintse meg a helyet.

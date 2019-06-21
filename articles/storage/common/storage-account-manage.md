@@ -5,14 +5,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 06/20/2019
 ms.author: tamram
-ms.openlocfilehash: fa574558afeec5a7706482a142c0187e6a34bdb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 66bdc4bd1e17347419a6eccd7c9532db17b33001
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61484273"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303496"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Az Azure Portal tárfiók-beállítások kezelése
 
@@ -20,16 +20,13 @@ Számos beállítást a tárfiók számára érhetők el a [az Azure portal](htt
 
 ## <a name="access-control"></a>Hozzáférés-vezérlés
 
-Az Azure Storage Blob storage és Queue storage szerepköralapú hozzáférés-vezérlés (RBAC) keresztül támogatja az Azure Active Directory hitelesítési. Az Azure AD-hitelesítéssel kapcsolatos további információkért lásd: [hitelesítés hozzáférés az Azure-blobok és üzenetsorok az Azure Active Directoryval](storage-auth-aad.md).
+Az Azure Storage a Blob storage és Queue storage szerepköralapú hozzáférés-vezérlés (RBAC) keresztül az Azure Active Directory hitelesítési támogatja. Engedélyezés az Azure ad-vel kapcsolatos további információkért lásd: [hozzáférés engedélyezése az Azure a blobok és üzenetsorok az Azure Active Directory használatával](storage-auth-aad.md).
 
 A **hozzáférés-vezérlés** beállítások az Azure Portalon rendeljen RBAC-szerepköröket a felhasználók, csoportok, az egyszerű szolgáltatások és a felügyelt identitásokból egyszerű módszert kínálnak. További információ az RBAC-szerepkörök hozzárendelése: [kezelés hozzáférési jogosultsága ahhoz, hogy az RBAC blob és üzenetsor adatok](storage-auth-aad-rbac.md).
 
-> [!NOTE]
-> Felhasználók vagy az Azure AD hitelesítő adatait használó alkalmazások hitelesítése készít felső szintű biztonság és a könnyű használat más engedélyezési módot. Miközben továbbra is megosztott kulcsos engedélyezési használata az alkalmazások, Azure AD-vel megkerüli ügyféladataik tárolásának a kód a hozzáférési kulcsára. Közös hozzáférésű jogosultságkódok (SAS) használata a minden részletre kiterjedő hozzáférést biztosítani a tárfiókban lévő erőforrásokhoz folytathatja, de az Azure AD kezelése SAS-tokeneket vagy sérült biztonságú SAS visszavonása foglalkoznia kellene hasonló funkciókat kínál. 
-
 ## <a name="tags"></a>Tags
 
-Az Azure Storage támogatja az Azure Resource Manager-címkék a testre szabott besorolás az Azure-erőforrások rendszerezéséhez. A tárfiókok is címkékkel, így csoportosíthatja őket az adott előfizetéshez tartozó logikai módon. 
+Az Azure Storage támogatja az Azure Resource Manager-címkék a testre szabott besorolás az Azure-erőforrások rendszerezéséhez. A tárfiókok is címkékkel, így csoportosíthatja őket az adott előfizetéshez tartozó logikai módon.
 
 Storage-fiókok egy címke neve legfeljebb 128 karakter, és a egy címke értéke legfeljebb 256 karakter hosszúságú lehet.
 
@@ -41,24 +38,18 @@ Storage-fiók létrehozásakor az Azure létrehoz két 512 bites tárfiók hozz�
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
-### <a name="view-and-copy-access-keys"></a>Megtekintheti és hozzáférési kulcsok másolása
+[!INCLUDE [storage-recommend-azure-ad-include](../../../includes/storage-recommend-azure-ad-include.md)]
 
-A tárfiók hitelesítő adatainak megtekintéséhez a következőt kell tennie:
+### <a name="view-account-keys-and-connection-string"></a>Fiókkulcsok és kapcsolati karakterlánc megtekintése
 
-1. Lépjen az [Azure Portalra](https://portal.azure.com).
-2. Keresse meg a Storage-fiókját.
-3. A tárfiók áttekintésének **Beállítások** szakaszában válassza a **Hozzáférési kulcsok** elemet. Megjelennek a fiókhoz tartozó hozzáférési kulcsok, valamint az egyes kulcsokhoz tartozó kapcsolati sztringek.
-4. Keresse meg a **Kulcs** értéket a **key1** területen, majd kattintson a **Másolás** gombra a fiókkulcs másolásához.
-5. Másik lehetőségként másolhatja a teljes kapcsolati karakterlánc. Keresse meg a **Kapcsolati sztring** értéket a **key1** területen, és kattintson a **Másolás** gombra a kapcsolati sztring másolásához.
-
-    ![Képernyőfelvétel: a tárelérési kulcsok megtekintése az Azure Portalon](media/storage-manage-account/portal-connection-string.png)
+[!INCLUDE [storage-view-keys-include](../../../includes/storage-view-keys-include.md)]
 
 ### <a name="regenerate-access-keys"></a>Elérési kulcsok újragenerálása
 
 A Microsoft azt javasolja, hogy Ön újragenerálja a hozzáférési kulcsokat rendszeres időközönként a storage-fiókja biztonsága érdekében. Két kulcsot, hogy meg tudja-e forgatni a kulcsok vannak hozzárendelve. A kulcsok rotálására, biztosíthatja, hogy az alkalmazás megőrzi a folyamat során az Azure Storage-hozzáférés. 
 
 > [!WARNING]
-> A tárelérési kulcsok újragenerálása hatással lehet a alkalmazások és Azure-szolgáltatások, amelyek a tárfiók kulcsát függenek. Az ügyfelek, amelyek a fiókkulcs a tárfiók eléréséhez frissíteni kell, hogy az új kulccsal, többek között például a media services, felhőalapú, asztali és mobil alkalmazások és grafikus felhasználói felület alkalmazásokat az Azure Storage, [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/). 
+> A tárelérési kulcsok újragenerálása hatással lehet a alkalmazások és Azure-szolgáltatások, amelyek a tárfiók kulcsát függenek. Az ügyfelek, amelyek a fiókkulcs a tárfiók eléréséhez frissíteni kell, hogy az új kulccsal, többek között például a media services, felhőalapú, asztali és mobil alkalmazások és grafikus felhasználói felület alkalmazásokat az Azure Storage, [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
 
 Kövesse a következő eljárást a storage-fiók kulcsainak rotálása:
 
@@ -74,6 +65,7 @@ Miután létrehozott egy tárfiókot, módosíthatja annak konfigurációját. P
 A storage-fiók konfigurációjának módosítása a hozzáadott költségeket eredményezhet. További részletekért tekintse meg a [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/) lapot.
 
 ## <a name="delete-a-storage-account"></a>Tárfiók törlése
+
 A már nem használt tárfiókok eltávolításához lépjen az [Azure Portalra](https://portal.azure.com), és kattintson a **Törlés** gombra. A tárfiókkal együtt törlődik a teljes fiók, beleértve az abban lévő összes adatot is.
 
 > [!WARNING]

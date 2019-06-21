@@ -1,6 +1,6 @@
 ---
-title: Virtuális hálózat törlése után törlése az Azure SQL Database felügyelt példány |} A Microsoft Docs
-description: Ismerje meg a virtuális hálózat törlése után törlése az Azure SQL Database felügyelt példánya.
+title: Alhálózat törlése után törlése az Azure SQL Database felügyelt példány |} A Microsoft Docs
+description: Ismerje meg, hogyan törlése az Azure SQL Database felügyelt példány törlése, ha Azure-beli virtuális hálózathoz.
 services: sql-database
 ms.service: sql-database
 ms.subservice: management
@@ -12,39 +12,39 @@ ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
 manager: craigg
 ms.date: 05/07/2019
-ms.openlocfilehash: 61f6c25031c4906e65c2f75a7679600741e8311a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec5d99e160e739f59e2bf2ea369fe83e9900a1f1
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65791375"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295304"
 ---
-# <a name="delete-subnet-after-deleting-azure-sql-database-managed-instance"></a>Alhálózat törlése az Azure SQL Database felügyelt példány törlése
+# <a name="delete-a-subnet-after-deleting-an-azure-sql-database-managed-instance"></a>Alhálózat törlése után törlése az Azure SQL Database felügyelt példánya
 
-A cikk ismerteti iránymutatásokat manuálisan törölni az alhálózatot, miután törli a legutóbbi Azure SQL Database felügyelt példány szereplő, hogyan.
+A cikk ismerteti iránymutatásokat manuálisan törölje a egy alhálózatot, ha törli a legutóbbi Azure SQL Database felügyelt példány szereplő, hogyan.
 
-A [virtuális fürt](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture) rendelkezik, amely tartalmazza a törölt felügyelt példány folyamatosan 12 órán át a példány törlését. A virtuális fürt ugyanazon az alhálózaton lévő felügyelt példányok gyorsabb létrehozását lehetővé elvárt másolatok életben. Egy üres virtuális fürt tartja az ingyenesen elérhető. Ebben az időszakban a virtuális fürthöz társított alhálózat nem lehet törölni.
+Az SQL Database adatbázisaihoz egy [virtuális fürt](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture) , a törölt felügyelt példányt tartalmaz. A virtuális fürt továbbra is fennáll, ahhoz, hogy gyorsan hozzon létre felügyelt példányok ugyanazon az alhálózaton, a példány törlése után 12 órán át. Nem jár, hogy egy üres virtuális fürt. Ebben az időszakban a virtuális fürthöz társított alhálózat nem lehet törölni.
 
-Azonnali kiadásában az üres virtuális fürt által használt alhálózat a virtuális fürt manuális törlését keresztül. A virtuális fürt törlése az Azure Portalon vagy a virtuális fürtök API érhető el.
+Várjon, 12 órán át, és azonnal törli a virtuális fürt és az alhálózat inkább nem szeretné, ha manuálisan teheti. A virtuális fürt manuális módszerrel törölje az Azure Portalon vagy a virtuális fürtök API használatával.
 
 > [!NOTE]
 > A virtuális fürt egyetlen felügyelt példány a törlés sikeres tartalmaznia kell.
 
-## <a name="delete-virtual-cluster-from-azure-portal"></a>Virtuális fürt törlése az Azure Portal használatával
+## <a name="delete-virtual-cluster-from-the-azure-portal"></a>Virtuális fürt törlése az Azure Portalról
 
-Töröl egy virtuális fürt Azure portal használatával, keresse meg a virtuális fürt erőforrásai a beépített keresési.
+Virtuális fürtök törlése az Azure Portalon keresse meg a virtuális fürt erőforrásait.
 
-![Keresse meg a virtuális fürt.](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-search.png)
+![A keresőmezőbe, kiemelve az Azure portal képernyőképe](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-search.png)
 
-Ha megtalálta a törölni kívánt virtuális fürt, jelölje be ezt az erőforrást, és válassza a Törlés lehetőséget. A virtuális fürt törlés megerősítésére kéri.
+Miután megtalálta a törölni kívánt virtuális fürt, jelölje be ezt az erőforrást, és válassza **törlése**. A virtuális fürt törlés megerősítésére kéri.
 
-![Virtuális fürt törlése.](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-delete.png)
+![Képernyőkép az Azure Portal virtuális fürtök az irányítópult kiemelt törlése lehetőséggel](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-delete.png)
 
-Jóváhagyás, hogy a virtuális fürt törölve lett az Azure portal értesítések megtalálható. A virtuális fürt sikeres törléséhez azonnal kiadja az alhálózat további ismételt felhasználásra.
+Az Azure portál értesítési területén látható megerősítése, hogy a virtuális fürt törölve lett. A virtuális fürt sikeres törléséhez azonnal kiadja az alhálózat ismételt felhasználásra.
 
-## <a name="delete-virtual-cluster-using-api"></a>API-val virtuális fürt törlése
+## <a name="delete-virtual-cluster-by-using-the-api"></a>Virtuális fürt törlése az API-val
 
-Törli a virtuális fürt API használatával a megadott URI-paraméterek a [virtuális fürtök törlése metódus](https://docs.microsoft.com/rest/api/sql/virtualclusters/delete).
+Az API-n keresztül a virtuális fürt törléséhez használja a megadott URI-paraméterek a [virtuális fürtök törlése metódus](https://docs.microsoft.com/rest/api/sql/virtualclusters/delete).
 
 ## <a name="next-steps"></a>További lépések
 

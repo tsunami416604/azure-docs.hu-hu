@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 05/16/2019
-ms.openlocfilehash: f607c1e79262efdbec79677fa7f16863b7a9d160
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: f45247e652220bdf9f35a15e2059f5f6c06e96d5
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393969"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67294807"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Mi az az Azure Stream Analytics?
 
@@ -67,7 +67,7 @@ A lekérdező nyelv lehetőségei függvények definiálásával és meghívás�
 
 Az Azure Stream Analytics egy teljes körűen felügyelt Azure-beli kiszolgáló nélküli (PaaS-) ajánlat. Nem kell hardvert kiépítenie, vagy a feladatok futtatását fürt kezeléséhez. Az Azure Stream Analytics teljes körűen felügyeli a feladatot összetett számítási fürtök felhőben beállításával, és a teljesítmény-finomhangolási a feladat futtatásához szükséges figyelembe vételével. Integráció az Azure Event Hubs és az Azure IoT Hub lehetővé teszi több millió eseményt második számos forrásból közé tartozik a csatlakoztatott eszközökből, kattintássorozatokból és naplófájlokból, hogy a feladat. Az Event Hubs particionálási szolgáltatásával particionáló számítások logikai lépésekre bonthatók, melyek mindegyike tovább bontható bővítése érdekében.
 
-## <a name="run-in-the-cloud-on-in-the-intelligent-edge"></a>Az intelligens peremhálózat futtatását a felhőben
+## <a name="run-in-the-cloud-or-on-the-intelligent-edge"></a>Futtassa a felhőben vagy az intelligens peremhálózat
 
 Az Azure Stream Analytics a felhőalapú, nagy méretű elemzési futtathatja, vagy futtassa az ultramagas közel valós idejű elemzési IoT Edge-ben. Az Azure Stream Analytics használja ugyanazt a lekérdezési nyelvet a felhő és a peremhálózaton is fejleszthetők a valódi hibrid architektúráknak adatfolyam-feldolgozás engedélyezése.
 

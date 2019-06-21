@@ -8,13 +8,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
-ms.date: 05/13/2019
-ms.openlocfilehash: aa5d3a0555875571276fdf4046ad0e4dd1e69bbd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/19/2019
+ms.openlocfilehash: 490131d1743b366b5ac51a5a0fdac4b89ffe08f2
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596949"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274176"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Az eseményindító és művelet esetében az Azure Logic Apps munkafolyamat-definíciós nyelv leírása
 
@@ -338,7 +338,7 @@ A trigger ellenőrzi vagy lekérdezi a megadott végponton, a megadott ismétlő
 
 Jól működnek a logikai alkalmazást, a végpontot kell egy adott eseményindító minta vagy a szerződés felel meg, és ismeri fel ezeket a tulajdonságokat:  
   
-| Válasz | Szükséges | Leírás | 
+| Válasz | Kötelező | Leírás | 
 |----------|----------|-------------| 
 | Állapotkód | Igen | A "200 OK" állapotkód: elindít egy Futtatás. Minden más állapotkód nem indul el egy Futtatás. | 
 | Retry-after fejléccel | Nem | Mindaddig, amíg a logikai alkalmazás lekérdezi a végpont újra másodpercben | 
@@ -2624,7 +2624,7 @@ Azonban a kérések időtúllépés kell korlátozni, így a hosszú ideig futó
 
 ### <a name="run-in-high-throughput-mode"></a>Magas átviteli módban fusson
 
-Egyetlen logikai alkalmazás futtatásának, 5 percenként végrehajtott műveletek számát rendelkezik egy [alapértelmezett korlát](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Ez a vonatkozó korlát megemeléséhez a [maximális](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) lehetséges, állítsa be a `operationOptions` tulajdonságot `OptimizedForHighThroughput`. Ez a beállítás a logikai alkalmazás "nagy átviteli sebességű" módba helyezi. 
+Egy logikai alkalmazás definícióját, 5 percenként végrehajtott műveletek számát rendelkezik egy [alapértelmezett korlát](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Ez a vonatkozó korlát megemeléséhez a [maximális](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) lehetséges, állítsa be a `operationOptions` tulajdonságot `OptimizedForHighThroughput`. Ez a beállítás a logikai alkalmazás "nagy átviteli sebességű" módba helyezi. 
 
 > [!NOTE]
 > Nagy átviteli sebességű módja előzetes verzióban érhető el. Egy számítási feladatot is szét szükség szerint több mint egy logikai alkalmazást.

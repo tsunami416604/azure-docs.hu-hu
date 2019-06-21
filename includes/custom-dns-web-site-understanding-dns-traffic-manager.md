@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cephalin
 ms.openlocfilehash: f42a97cdd74d360bc047ef561cbe626d526f9e4a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66136243"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179698"
 ---
 A tartománynévrendszer (DNS) segítségével keresse meg a dolgok az interneten. Például amikor adjon meg egy címet a böngészőben, vagy kattintson egy hivatkozásra a weblapon, az DNS segítségével a tartomány lefordítása IP-címet. Az IP-cím rendezését, például egy utca, házszám van, de nem nagyon emberi rövid. Például sokkal egyszerűbb legyen a DNS-név, például ne feledje **contoso.com** ne felejtse el IP-címet, például 192.168.1.88 vagy 2001:0:4137:1f67:24a2:3888:9cce:fea3, mint.
 

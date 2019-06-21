@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 4ec9d5e605a2319a04dac4cb52dbe49c77354479
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 91f15f9c19b480d950b2c715e6d9290e01184cf7
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510640"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272371"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB .NET Core SDK-t az SQL API-hoz: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -49,6 +49,12 @@ Az Azure Cosmos DB .NET Core SDK legújabb verziójában funkcióparitás rendel
 * Új hálózatiobjektum-modellt, a legfelső szintű CosmosClient és módszerek elosztja a megfelelő CosmosDatabases, CosmosContainers és CosmosItems osztályokat.
 * Streamek támogatását.
 * Frissített CosmosResponseMessage állapotkódot adja vissza, és csak throw kivétel, ha nem érkezik válasz-kiszolgálóról.
+
+### <a name="a-name250250"></a><a name="2.5.0"/>2.5.0
+
+* Tartalék egy másik régióba való írási kérések engedélyezése, ha az eredeti egy sikertelen
+* Írási kérés munkamenet újrapróbálkozási szabályzat hozzáadása
+* Nyomkövetés versenyhelyzet a lekérdezéseket, amelyek okozott az üres lap javításai
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
 
@@ -251,38 +257,39 @@ Ha ez az SDK kapcsolatos kérdése van, küldése a [StackOverflow](https://stac
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
-| [2.4.0](#2.4.0) |2019\. május 05. |--- |
-| [2.3.0](#2.3.0) |2019\. április 04. |--- |
-| [2.2.3](#2.2.3) |2019\. márciusi 11. |--- |
-| [2.2.2](#2.2.2) |2019\. február 06. |--- |
-| [2.2.1](#2.2.1) |2018\. december 24. |--- |
-| [2.2.0](#2.2.0) |2018\. december 07. |--- |
-| [2.1.3](#2.1.3) |2018\. október 15. |--- |
-| [2.1.2](#2.1.2) |2018\. október 04. |--- |
-| [2.1.1](#2.1.1) |2018\. szeptember 27. |--- |
-| [2.1.0](#2.1.0) |2018\. szeptember 21. |--- |
-| [2.0.0](#2.0.0) |2018\. szeptember 07. |--- |
-| [1.9.1](#1.9.1) |2018\. március 09. |--- |
-| [1.8.2](#1.8.2) |2018\. február 21. |--- |
-| [1.8.1](#1.8.1) |2018\. február 05 |--- |
-| [1.7.1](#1.7.1) |2017\. november 16. |--- |
-| [1.7.0](#1.7.0) |2017\. november 10. |--- |
-| [1.6.0](#1.6.0) |2017\. október 17. |--- |
-| [1.5.1](#1.5.1) |2017\. október 02 |--- |
-| [1.5.0](#1.5.0) |2017\. augusztus 10. |--- | 
-| [1.4.1](#1.4.1) |2017\. augusztus 07. |--- |
-| [1.4.0](#1.4.0) |2017\. augusztus 02 |--- |
-| [1.3.2](#1.3.2) |2017\. június 12. |--- |
-| [1.3.1](#1.3.1) |2017\. május 23. |--- |
-| [1.3.0](#1.3.0) |2017\. május 10. |--- |
-| [1.2.2](#1.2.2) |2017\. április 19. |--- |
-| [1.2.1](#1.2.1) |2017\. március 29. |--- |
-| [1.2.0](#1.2.0) |2017\. március 25. |--- |
-| [1.1.2](#1.1.2) |2017\. március 20. |--- |
-| [1.1.1](#1.1.1) |2017\. március 14. |--- |
-| [1.1.0](#1.1.0) |2017\. február 16. |--- |
-| [1.0.0](#1.0.0) |2016\. december 21-én |--- |
-| [0.1.0-preview](#0.1.0-preview) |2016\. november 15-én |2016\. december 31-ig. |
+| [2.5.0](#2.5.0) |2019. június 18. |--- |
+| [2.4.0](#2.4.0) |2019. május 05. |--- |
+| [2.3.0](#2.3.0) |2019. április 04. |--- |
+| [2.2.3](#2.2.3) |2019. márciusi 11. |--- |
+| [2.2.2](#2.2.2) |2019. február 06. |--- |
+| [2.2.1](#2.2.1) |2018. december 24. |--- |
+| [2.2.0](#2.2.0) |2018. december 07. |--- |
+| [2.1.3](#2.1.3) |2018. október 15. |--- |
+| [2.1.2](#2.1.2) |2018. október 04. |--- |
+| [2.1.1](#2.1.1) |2018. szeptember 27. |--- |
+| [2.1.0](#2.1.0) |2018. szeptember 21. |--- |
+| [2.0.0](#2.0.0) |2018. szeptember 07. |--- |
+| [1.9.1](#1.9.1) |2018. március 09. |--- |
+| [1.8.2](#1.8.2) |2018. február 21. |--- |
+| [1.8.1](#1.8.1) |2018. február 05 |--- |
+| [1.7.1](#1.7.1) |2017. november 16. |--- |
+| [1.7.0](#1.7.0) |2017. november 10. |--- |
+| [1.6.0](#1.6.0) |2017. október 17. |--- |
+| [1.5.1](#1.5.1) |2017. október 02 |--- |
+| [1.5.0](#1.5.0) |2017. augusztus 10. |--- | 
+| [1.4.1](#1.4.1) |2017. augusztus 07. |--- |
+| [1.4.0](#1.4.0) |2017. augusztus 02 |--- |
+| [1.3.2](#1.3.2) |2017. június 12. |--- |
+| [1.3.1](#1.3.1) |2017. május 23. |--- |
+| [1.3.0](#1.3.0) |2017. május 10. |--- |
+| [1.2.2](#1.2.2) |2017. április 19. |--- |
+| [1.2.1](#1.2.1) |2017. március 29. |--- |
+| [1.2.0](#1.2.0) |2017. március 25. |--- |
+| [1.1.2](#1.1.2) |2017. március 20. |--- |
+| [1.1.1](#1.1.1) |2017. március 14. |--- |
+| [1.1.0](#1.1.0) |2017. február 16. |--- |
+| [1.0.0](#1.0.0) |2016. december 21-én |--- |
+| [0.1.0-preview](#0.1.0-preview) |2016. november 15-én |2016. december 31-ig. |
 
 ## <a name="see-also"></a>Lásd még:
 Cosmos DB kapcsolatos további információkért lásd: [a Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapján.

@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 manager: craigg
 ms.date: 06/13/2019
-ms.openlocfilehash: 15f64c7087ea4d24f271af67b251030a2196fa10
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 89df33f453217585e8f0b8ff13d06ee223474fae
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070375"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272245"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Áttekintés az Azure SQL Database felügyelt példány erőforráskorlátok
 
@@ -105,7 +105,7 @@ Az alábbi táblázat a támogatott előfizetések az alapértelmezett területi
 
 \* Ha azt tervezi, hogy az üzemelő példányokat, vegye figyelembe, hogy a kritikus fontosságú üzleti (BC) virtuális mag (miatt hozzáadott redundancia) használ fel további kapacitás általános célú (GP) virtuális mag, mint x 4. Igen, a számítások, 1 GP virtuális mag = 1 virtuális mag egység és 1 BC virtuális mag = 4 virtuális mag egység. A használati elemzés szemben az alapértelmezés szerinti korlátozásoknak leegyszerűsítése foglalják össze a virtuális mag egységek minden, a régióban, ahol a felügyelt példányok vannak telepítve, és az eredményeket hasonlítsa össze az előfizetés-típus példánykorlátok egység alhálózatok közötti. **Virtuális mag egységek maximális száma** korlát vonatkozik minden egyes előfizetés régióban. Nincs korlátozva az egyes alhálózatok száma, azzal a különbséggel, hogy több alhálózaton túlnyúló telepített összes virtuális magok összege alacsonyabb vagy azzal egyenlőnek kell lennie. **virtuális mag egység maximális**.
 
-** Nagyobb alhálózat és virtuális mag korlátait az alábbi régiókban érhetők el: Ausztrália keleti régiója, USA keleti RÉGIÓJA, USA 2. keleti régiója, Észak-Európa, USA déli középső RÉGIÓJA, Délkelet-Ázsia, Egyesült Királyság déli régiója, Nyugat-Európa, USA 2. nyugati.
+\*\* Nagyobb alhálózat és virtuális mag korlátait az alábbi régiókban érhetők el: Ausztrália keleti régiója, USA keleti RÉGIÓJA, USA 2. keleti régiója, Észak-Európa, USA déli középső RÉGIÓJA, Délkelet-Ázsia, Egyesült Királyság déli régiója, Nyugat-Európa, USA 2. nyugati.
 
 ## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>Nagyobb kvótát beszerzése az SQL felügyelt példánya
 

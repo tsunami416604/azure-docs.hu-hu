@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-pawal
-ms.openlocfilehash: 973d38413fa39fec1c50b5e9770b6114fa2c4c3d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f58ff566ebb83ed6163637aa3899a925ed06242a
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66387516"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67269218"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API 3.0-s verzió
 
@@ -154,6 +154,7 @@ A hibakód egy 6 jegyű számot csoportba foglalása 3 számjegyből HTTP-állap
 | 400075| A nyelvi pár és kategória kombináció nem lesz érvényes.|
 | 400077| Kérelem maximális mérete túl lett lépve. Nézet [kérelmekre vonatkozó korlátok](../request-limits.md).|
 | 400079| Az egyéni rendszer közötti fordítás és nyelv közül a kért nem létezik.|
+| 400080| A nyelv vagy a parancsfájl nem támogatott átbetűzésű.|
 | 401000| A kérelem nem engedélyezett, mert hitelesítő adatok hiányoznak vagy érvénytelen.|
 | 401015| "A megadott hitelesítő adatok vannak a beszédfelismerő API-hoz. A kérelem hitelesítő adatok szükségesek a szöveges API-hoz. Használja a Translator Text API-előfizetés."|
 | 403000| A művelet nem engedélyezett.|

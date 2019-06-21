@@ -4,14 +4,14 @@ description: Azure Resource Manager segítségével az erőforrások áthelyezé
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/13/2019
+ms.date: 06/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: bb7715a7eaa2cb499ed80b78130571f315ef0c95
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1cc2f3b1ee657706dba237c86552b1780bc9dd34
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083541"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295448"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -89,14 +89,14 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * Machine Learning - webszolgáltatások helyezheti át egy erőforráscsoport ugyanabban az előfizetésben, de nem egy másik előfizetésben található Machine Learning Studióban. Egyéb Machine Learning-erőforrások áthelyezhetők, előfizetések között.
 * A Managed Disks – felügyelt lemezek a rendelkezésre állási zónák nem helyezhető át másik előfizetésbe
 * Media Services
-* Győződjön meg arról, hogy új előfizetésbe való áthelyezését figyelője – nem lehet [előfizetési kvóták](../azure-subscription-service-limits.md#monitor-limits)
+* Győződjön meg arról, hogy új előfizetésbe való áthelyezését figyelője – nem lehet [előfizetési kvóták](../azure-subscription-service-limits.md#azure-monitor-limits)
 * Notification Hubs
 * Operational Insights
 * Operations Management
 * Portál irányítópultok
 * A Power BI - mind a Power BI Embedded és a Power BI-munkaterület-csoport
 * Nyilvános IP - áthelyezhetők az alapszintű Termékváltozat nyilvános IP-Címére. Standard Termékváltozat nyilvános IP-cím nem lehet áthelyezni.
-* A Recovery Services-tároló – regisztráljon egy [előzetes](#recovery-services-limitations).
+* A Recovery Services-tároló – lásd: [korlátozások](#recovery-services-limitations).
 * Azure-beli SAP HANA-szolgáltatás
 * Scheduler
 * Keresés –, erőforrások nem helyezhetők át több keresési különböző régiókban lévő több műveletet. Helyezze át őket a különböző műveletek.
@@ -104,7 +104,7 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * Service Fabric
 * Service Fabric Mesh
 * SignalR szolgáltatás
-* Storage - tárfiókok különböző régiókban lévő műveletben nem lehet áthelyezni. Ehelyett használjon minden régióhoz külön műveletnek.
+* Storage
 * Tekintse meg a tároló (klasszikus) – [klasszikus üzembe helyezési korlátozásoknak](#classic-deployment-limitations)
 * Társzinkronizálási szolgáltatás
 * Stream Analytics - feladatok nem lehet áthelyezni, ha a futó Stream Analytics állapot.

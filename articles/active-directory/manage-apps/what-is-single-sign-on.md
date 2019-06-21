@@ -12,12 +12,12 @@ ms.date: 05/15/2019
 ms.author: mimart
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51b3066a529183d7a8a13e4673d7879136aa0d7a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2576a33e62b370bc2fd91c5d155e9f8d6e52c0f8
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824165"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190275"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Egyszeri bejelentkezés az Azure Active Directory-alkalmazások
 
@@ -95,7 +95,7 @@ Jelszavas egyszeri bejelentkezés bármely felhőalapú alkalmazás, amely rende
 - Chrome, a Windows 7 vagy újabb, és a MacOS X rendszeren vagy újabb
 - Firefox 26.0 vagy újabb, Windows XP SP2 vagy újabb, és a Mac OS X 10.6 vagy újabb
 
-Felhőalapú alkalmazások a jelszóalapú egyszeri bejelentkezés beállítása: [az alkalmazás a jelszavas egyszeri bejelentkezés konfigurálása](application-sign-in-problem-password-sso-gallery.md#configure-the-application-for-password-single-sign-on).
+Felhőalapú alkalmazások a jelszóalapú egyszeri bejelentkezés beállítása: [az alkalmazás a jelszavas egyszeri bejelentkezés konfigurálása](application-sign-in-problem-password-sso-gallery.md#configure-the-app-for-password-sso).
 
 Egyszeri bejelentkezés alkalmazásproxyn keresztül a helyszíni alkalmazás beállítása: [az egyszeri bejelentkezés alkalmazásproxyval való vaulting jelszó](application-proxy-configure-single-sign-on-password-vaulting.md)
 

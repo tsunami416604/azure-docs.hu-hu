@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 5/13/2019
 ms.author: sajaya
-ms.openlocfilehash: 1400c023e43179a9c8490334e262711486c75a2d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: beeb4986750e398071e3afb6c1f04663f858cec1
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417923"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303577"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry kapcsolatos gyakori kérdések
 
@@ -440,6 +440,85 @@ Ez a beállítás is vonatkozik a `az acr run` parancsot.
 - [CircleCI](https://github.com/Azure/acr/blob/master/docs/integration/CircleCI.md)
 - [GitHub Actions](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
 
+## <a name="error-references-for-az-acr-check-health"></a>Hiba mutató hivatkozások `az acr check-health`
+
+### <a name="dockercommanderror"></a>DOCKER_COMMAND_ERROR
+
+Ez a hiba azt jelenti, hogy a docker-ügyfél a CLI nem található, amely eleve keresése a docker-verzió, a docker-démon állapotának kiértékelésekor és a docker pull parancs futtatható biztosítása.
+
+*A lehetséges megoldások*: docker-ügyfél telepítése; a rendszer változók hozzáadásával docker elérési útját.
+
+### <a name="dockerdaemonerror"></a>DOCKER_DAEMON_ERROR
+
+Ez a hiba azt jelenti, hogy a docker-démon állapota nem érhető el, vagy hogy azt nem érhető el a parancssori felület használatával. Ez azt jelenti, hogy a docker-műveletek (például bejelentkezési, leküldéses) nem lesz elérhető a parancssori felületén keresztül.
+
+*A lehetséges megoldások*: Indítsa újra a docker-démont, vagy ellenőrizze, hogy helyesen van-e telepítve.
+
+### <a name="dockerversionerror"></a>DOCKER_VERSION_ERROR
+
+Ez a hiba, az azt jelenti, hogy a CLI nem volt képes a parancs futtatásához `docker --version`.
+
+*A lehetséges megoldások*: próbálja ki a következő parancs futtatásával manuálisan, ellenőrizze, hogy a CLI legújabb verzióját, és vizsgálja meg a hibaüzenetet.
+
+### <a name="dockerpullerror"></a>DOCKER_PULL_ERROR
+
+Ez a hiba, az azt jelenti, hogy a CLI nem tudta lekérni egy képet a környezetben.
+
+*A lehetséges megoldások*: Ellenőrizze, hogy az összes összetevő szükséges képet betölteni megfelelően futnak-e.
+
+### <a name="helmcommanderror"></a>HELM_COMMAND_ERROR
+
+Ez a hiba azt jelenti, hogy a helm-ügyfél nem található a parancssori felület, amely kizárja a helm-műveletnél.
+
+*A lehetséges megoldások*: Győződjön meg arról, hogy a helm-ügyfél, és hogy annak elérési útja bekerül a rendszerszintű környezeti változókat.
+
+### <a name="helmversionerror"></a>HELM_VERSION_ERROR
+
+Ez a hiba, az azt jelenti, hogy a CLI nem tudta meghatározni a Helm-verzió van telepítve. Ez akkor fordulhat elő, ha az Azure CLI verziójának (vagy ha a helm-verzió) használt elavult.
+
+*A lehetséges megoldások*: az Azure CLI legújabb verzióját, vagy a javasolt helm verzióra frissítése; manuálisan futtassa a parancsot, és vizsgálja meg a hibaüzenetet.
+
+### <a name="connectivitydnserror"></a>CONNECTIVITY_DNS_ERROR
+
+Ez a hiba azt jelenti, hogy a DNS-ÉT az adott adatbázis bejelentkezési kiszolgálója volt pingkérést küldött, de nem válaszolt, ami azt jelenti, hogy nem érhető el. Ez azt jelezheti kapcsolódási problémák. Is jelentheti, hogy a beállításjegyzék nem létezik, vagy, hogy a tároló-beállításjegyzék egy másik felhőben fut, a használatban van az Azure CLI-ben, hogy a felhasználó nem rendelkezik az engedélyeket a beállításjegyzék (lekérdezni a bejelentkezési kiszolgáló megfelelően).
+
+*A lehetséges megoldások*: kapcsolat érvényesítése; a beállításjegyzék helyesírás-ellenőrzése és a beállításjegyzék létezik; győződjön meg arról, hogy a felhasználó rendelkezik-e a megfelelő engedélyekkel, és, hogy a tárolójegyzék felhőalapú megegyezik az Azure CLI-vel használt.
+
+### <a name="connectivityforbiddenerror"></a>CONNECTIVITY_FORBIDDEN_ERROR
+
+Ez azt jelenti, hogy az adott beállításjegyzékhez a kérdés végpont válaszolt egy 403 Tiltott HTTP-állapot. Ez azt jelenti, hogy felhasználók nincs hozzáférése a regisztrációs adatbázisba, valószínűleg a VNET-konfiguráció miatt.
+
+*A lehetséges megoldások*: távolítsa el a virtuális hálózati szabályainak, vagy a jelenlegi ügyfél IP-Címének hozzáadása az engedélyezett listára.
+
+### <a name="connectivitychallengeerror"></a>CONNECTIVITY_CHALLENGE_ERROR
+
+Ez a hiba, az azt jelenti, hogy a tároló-beállításjegyzék challenge végpontja nem hajtotta végre kihívást.
+
+*A lehetséges megoldások*: próbálja meg újra egy kis idő múlva. Ha a hiba továbbra is fennáll, am problémáját, nyisson https://aka.ms/acr/issues.
+
+### <a name="connectivityaadloginerror"></a>CONNECTIVITY_AAD_LOGIN_ERROR
+
+Ez a hiba azt jelenti, hogy a tároló-beállításjegyzék challenge végpontja kihívást, de az a beállításjegyzék nem támogatja az AAD-bejelentkezéséhez.
+
+*A lehetséges megoldások*: próbálja ki a másik lehetőség a naplózási, például a rendszergazdai hitelesítő adataival. Abban az esetben, ha a felhasználó szeretne bejelentkezés az AAD-támogatást, de problémáját, nyissa meg https://aka.ms/acr/issues.
+
+### <a name="connectivityrefreshtokenerror"></a>CONNECTIVITY_REFRESH_TOKEN_ERROR
+
+Ez azt jelenti, hogy a tárolójegyzék bejelentkezési kiszolgálójának frissítési jogkivonatok, ami azt jelenti, hogy a rendszer megtagadta a hozzáférést a tároló-beállításjegyzék nem válaszolt. Ez akkor fordulhat elő, ha a felhasználó nem rendelkezik a megfelelő engedélyekkel a beállításjegyzék, vagy ha a hitelesítő adatokat az Azure CLI már nem használatosak.
+
+*A lehetséges megoldások*: Győződjön meg arról, ha a felhasználó rendelkezik-e a megfelelő engedélyekkel a beállításjegyzék; Futtatás `az login` engedélyeket, a jogkivonatok és a hitelesítő adatok frissítése.
+
+### <a name="connectivityaccesstokenerror"></a>CONNECTIVITY_ACCESS_TOKEN_ERROR
+
+Ez azt jelenti, hogy a tárolójegyzék bejelentkezési kiszolgálójának egy hozzáférési jogkivonattal, ami azt jelenti, hogy a rendszer megtagadta a hozzáférést a tároló-beállításjegyzék nem válaszolt. Ez akkor fordulhat elő, ha a felhasználó nem rendelkezik a megfelelő engedélyekkel a beállításjegyzék, vagy ha a hitelesítő adatokat az Azure CLI már nem használatosak.
+
+*A lehetséges megoldások*: Győződjön meg arról, ha a felhasználó rendelkezik-e a megfelelő engedélyekkel a beállításjegyzék; Futtatás `az login` engedélyeket, a jogkivonatok és a hitelesítő adatok frissítése.
+
+### <a name="loginservererror"></a>LOGIN_SERVER_ERROR
+
+Ez azt jelenti, hogy a CLI nem találja a megadott beállításkulcs értékét a bejelentkezési kiszolgáló, és nincs alapértelmezett utótag nem található a jelenlegi felhőt. Ez akkor fordulhat elő, ha a beállításjegyzék nem létezik, ha a felhasználó nem rendelkezik a megfelelő engedélyekkel a beállításjegyzék Ha a tárolójegyzék felhőbeli és a jelenlegi Azure CLI-felhő nem egyezik, vagy ha az Azure CLI verziója elavult.
+
+*A lehetséges megoldások*: Ellenőrizze, hogy helyesen szerepel-e a helyesírás-ellenőrzés és, hogy a beállításjegyzék létezik; győződjön meg arról, ha a felhasználó rendelkezik-e a megfelelő engedélyekkel a beállításjegyzék, valamint, hogy a beállításjegyzék és a parancssori felület környezetében a felhők egyezik; az Azure parancssori felület frissítése a legújabb verzióra.
 
 ## <a name="next-steps"></a>További lépések
 

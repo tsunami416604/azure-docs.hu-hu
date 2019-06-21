@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 01/18/2019
+ms.date: 06/05/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1563a023f397999deb5c6abd40843d6a376b0492
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7fcc804db66430598e72e9ebf31a8837eda1cca6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60351444"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67204590"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Mik az Azure AD hozzáférési felülvizsgálatok?
 
@@ -46,7 +46,7 @@ Az Azure AD lehetővé teszi a szervezeten belül, és a külső szervezetek, p�
 - **Amikor az automation is létre lehessen hozni:** Létrehozhatók olyan szabályok, biztonsági vagy Office 365-csoportok, a dinamikus tagságot, de mi történik a HR-adatokat, ha nem az Azure ad-ben, vagy ha felhasználók továbbra is hozzá kell férniük a csere taníthat be a csoport elhagyása után? Ezután létrehozhat azoknak, akik továbbra is hozzá kell férniük kaphatnak folyamatos hozzáférést biztosítani, hogy a csoport értékelést.
 - **Ha egy csoport egy új célra szolgál:** Ha egy csoportot, amelyet szeretne szinkronizálja az Azure ad-hez, vagy ha azt tervezi, hogy az értékesítési csapat csoport minden tagja számára a Salesforce alkalmazás, hasznos lenne, kérje meg a csoport tagságát, a csoport használatban van egy másik kockázati co előtt tekintse át a csoport tulajdonosa tartalomegyezés.
 - **Üzleti kritikus fontosságú adatok elérése:** bizonyos erőforrásokhoz, szükséges lehet kívüli személyek kérni, hogy rendszeresen jelentkezzen ki, és adjon egy indoklás miért szükséges hozzáférés naplózási célokra.
-- **Egy kivétel házirendlista karbantartásához:** Az ideális világában a minden felhasználó követnie a hozzáférési szabályzatok a munkahelyi erőforrásokhoz való hozzáférés biztonságossá tétele érdekében. Azonban néha előfordulhatnak olyan üzleti esetek, amelyek kivételek kérik. A rendszergazdáknak kezelheti a feladat, felügyeletét, házirend kivételek elkerülése és auditorok biztosítanak arról, hogy az ilyen kivételek rendszeresen ellenőrizni.
+- **Egy kivétel házirendlista karbantartásához:** Minden felhasználó egy ideális világában, a hozzáférési szabályzatok a szervezet erőforrásaihoz való hozzáférés biztonsága érdekében követnie. Azonban néha előfordulhatnak olyan üzleti esetek, amelyek kivételek kérik. A rendszergazdáknak kezelheti a feladat, felügyeletét, házirend kivételek elkerülése és auditorok biztosítanak arról, hogy az ilyen kivételek rendszeresen ellenőrizni.
 - **Kérje meg a csoporttulajdonosok továbbra is szükségük van a csoporthoz tartozó vendégek megerősítéséhez:** Alkalmazottak hozzáférését egyes, a helyszínen IAM, de nem a meghívott vendégek előfordulhat, hogy automatizálható. Ha egy csoport hozzáférést biztosít a vendégek üzleti bizalmas tartalmat, akkor azt meg a csoporttulajdonos feladata, hogy erősítse meg a vendégek még hozzáférés valós üzleti szüksége.
 - **Rendelkezik az ellenőrzések rendszeres időközönként Ismétlődés:** Hetente, havonta, negyedévente vagy évente, ha például beállíthatja a felhasználók set frekvencia ismétlődő a hozzáférési felülvizsgálatok, és a többi felhasználó értesítést kap kritika elején. Felülvizsgálók jóváhagyják vagy megtagadja a hozzáférést egy rövid felülettel és intelligens javaslatokat segítségével.
 
@@ -56,21 +56,34 @@ Attól függően, amit meg szeretné tekinteni, a hozzáférési felülvizsgála
 
 | A felhasználók hozzáférési jogosultságok | Felülvizsgálók is lehet. | Tekintse át a létrehozott | Felülvizsgáló élmény |
 | --- | --- | --- | --- |
-| Biztonsági csoport tagjai</br>Office-csoport tagjai | Megadott felülvizsgálók</br>Csoporttulajdonosok</br>Önkiszolgáló áttekintése | Azure AD hozzáférési felülvizsgálatok</br>Az Azure AD-csoportok | Hozzáférési panel |
-| Egy csatlakoztatott alkalmazáshoz rendelve | Megadott felülvizsgálók</br>Önkiszolgáló áttekintése | Azure AD hozzáférési felülvizsgálatok</br>Az Azure AD vállalati alkalmazások (az előzetes verzió) | Hozzáférési panel |
-| Az Azure AD-szerepkörhöz | Megadott felülvizsgálók</br>Önkiszolgáló áttekintése | Az Azure AD PIM-ben | Azure Portal |
-| Azure-erőforrás-szerepkör | Megadott felülvizsgálók</br>Önkiszolgáló áttekintése | Az Azure AD PIM-ben | Azure Portal |
+| Biztonsági csoport tagjai</br>Office-csoport tagjai | Megadott felülvizsgálók</br>Csoporttulajdonosok</br>Önálló áttekintése | Azure AD hozzáférési felülvizsgálatok</br>Az Azure AD-csoportok | Hozzáférési panel |
+| Egy csatlakoztatott alkalmazáshoz rendelve | Megadott felülvizsgálók</br>Önálló áttekintése | Azure AD hozzáférési felülvizsgálatok</br>Az Azure AD vállalati alkalmazások (az előzetes verzió) | Hozzáférési panel |
+| Az Azure AD-szerepkörhöz | Megadott felülvizsgálók</br>Önálló áttekintése | [Az Azure AD PIM-ben](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure Portal |
+| Azure-erőforrás-szerepkör | Megadott felülvizsgálók</br>Önálló áttekintése | [Az Azure AD PIM-ben](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure Portal |
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="which-users-must-have-licenses"></a>Mely felhasználók rendelkeznie kell licencekkel?
 
-A hozzáférési felülvizsgálatok használandó kell rendelkeznie a következő licencek egyikét:
+Minden felhasználónak, aki a hozzáférési felülvizsgálatok kommunikál egy fizetős Azure AD Premium P2 licenccel kell rendelkeznie. Példák erre vonatkozóan:
 
-- Prémium szintű Azure AD P2
-- Enterprise Mobility + Security (EMS) E5 licenc
+- Rendszergazdák, akik a hozzáférési felülvizsgálat létrehozása
+- Csoporttulajdonosok hozzáférési végrehajtó áttekintése
+- Felülvizsgálók hozzárendelt felhasználók
+- Egy önálló áttekintése végrehajtó felhasználók
 
-További információkért lásd: [hogyan: Regisztráljon az Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) vagy [Enterprise Mobility + Security E5 próba](https://aka.ms/emse5trial).
+Vendégfelhasználók tekintse át a saját hozzáférését is kérhet. Minden fizetős Azure AD Premium P2-licenc, amely a saját szervezet felhasználói egyik rendel használhatja az Azure AD--vállalatközi (B2B) alatt a külső felhasználó keretet legfeljebb öt vendégfelhasználók. Ezek a vendég felhasználók is az Azure AD Premium P2-funkciók is használhatók. További információkért lásd: [licencelési útmutató az Azure AD B2B együttműködés](../b2b/licensing-guidance.md).
 
-## <a name="get-started-with-access-reviews"></a>Ismerkedés a hozzáférési felülvizsgálatok
+Az alábbiakban néhány példa forgatókönyvet a segítségével meghatározhatja, hogy hány olyan licencet kell rendelkeznie.
+
+| Forgatókönyv | Számítás | Szükséges licencek száma |
+| --- | --- | --- |
+| A rendszergazda 500 felhasználó csoportba tartozó hozzáférési felülvizsgálat hoz létre.<br/>Felülvizsgálók mint 3 csoporttulajdonosok rendeli hozzá. | 1 rendszergazda + 3 csoporttulajdonosok | 4 |
+| A rendszergazda 500 felhasználó csoportba tartozó hozzáférési felülvizsgálat hoz létre.<br/>Lehetővé teszi egy önálló áttekintése. | 1 rendszergazda + felülvizsgálatban mint 500 felhasználó | 501 |
+| A rendszergazda csoport hozzáférési felülvizsgálat hoz létre 5 és 25 vendég felhasználók.<br/>Lehetővé teszi egy önálló áttekintése. | 1 rendszergazda + 5 felhasználó felülvizsgálatban<br/>(vendégfelhasználók terjed ki a szükséges 1:5 aránya) | 6 |
+| A rendszergazda csoport hozzáférési felülvizsgálat hoz létre 5 és 28 vendég felhasználók.<br/>Lehetővé teszi egy önálló áttekintése. | 1 rendszergazda + felülvizsgálatban mint 5 felhasználó + 1 felhasználó kötelező 1:5 arányú vendégfelhasználóknak | 7 |
+
+Licencek hozzárendelése a által használt kapcsolatos információkért lásd: [hozzárendelni, vagy távolítsa el az Azure Active Directory portálon licenceit](../fundamentals/license-users-groups.md).
+
+## <a name="learn-about-access-reviews"></a>Ismerje meg a hozzáférési felülvizsgálatok
 
 Létrehozásával és a hozzáférési felülvizsgálatok elvégzése kapcsolatos további tudnivalókért tekintse meg a rövid bemutató:
 
@@ -80,29 +93,9 @@ Ha készen áll a szervezet a hozzáférési felülvizsgálatok üzembe helyezé
 
 >[!VIDEO https://www.youtube.com/embed/X1SL2uubx9M]
 
-## <a name="enable-access-reviews"></a>Engedélyezze a hozzáférési felülvizsgálatok
+## <a name="license-requirements"></a>Licenckövetelmények
 
-A hozzáférési felülvizsgálatok engedélyezéséhez kövesse az alábbi lépéseket.
-
-1. Globális rendszergazda vagy felhasználói rendszergazda, jelentkezzen be a [az Azure portal](https://portal.azure.com) ahol hozzáférés használni kívánt ellenőrzi.
-
-1. Kattintson a **minden szolgáltatás** és keresse meg a hozzáférési felülvizsgálatok szolgáltatás.
-
-1. Kattintson a **hozzáférési felülvizsgálatokkal**.
-
-    ![Minden szolgáltatás - hozzáférési felülvizsgálatok](./media/access-reviews-overview/all-services-access-reviews.png)
-
-1. Kattintson a navigációs lista **verziójába való felvételével** megnyitásához a **a hozzáférési felülvizsgálatok előkészítése** lap.
-
-    ![A hozzáférési felülvizsgálatok előkészítése](./media/access-reviews-overview/onboard-button.png)
-
-1. Kattintson a **létrehozás** hozzáférésének engedélyezésére ellenőrzi az aktuális könyvtárban található.
-
-    ![A hozzáférési felülvizsgálatok előkészítése](./media/access-reviews-overview/onboard-access-reviews.png)
-
-    A következő indításakor hozzáférési felülvizsgálatok, a hozzáférési felülvizsgálati beállítások engedélyezve lesz.
-
-    ![A hozzáférési felülvizsgálatok engedélyezve](./media/access-reviews-overview/access-reviews-enabled.png)
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
 ## <a name="next-steps"></a>További lépések
 

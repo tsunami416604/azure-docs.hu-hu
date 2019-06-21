@@ -1,6 +1,6 @@
 ---
 title: Töltse fel az Azure Windows virtuális merevlemez előkészítése |} A Microsoft Docs
-description: A Windows VHD vagy VHDX előkészítése az Azure-ba való feltöltéséhez
+description: Ismerje meg, hogyan készíti elő egy Windows VHD vagy VHDX, az Azure-bA feltöltendő
 services: virtual-machines-windows
 documentationcenter: ''
 author: glimoli
@@ -15,68 +15,71 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 5ae0e7855db6bec9f48d2b9511f0d0626d883111
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc942aeb34d17e8dff064c6a21a3c7b2099c742a
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65561336"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67151028"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Windows VHD vagy VHDX feltöltése az Azure előkészítése
 
-Mielőtt egy Windows virtuális gépek (VM) a helyi Microsoft Azure-bA tölt fel, elő kell készítenie a virtuális merevlemez (VHD vagy vhdx-fájlt). Az Azure támogatja az 1. és a 2. generációs virtuális gépek VHD formátumú, és rendelkezik egy rögzített méretű lemezt. A VHD számára engedélyezett maximális mérete 1,023 GB. Átválthat egy generation 1 VM a vhdx-fájlt a fájlrendszer VHD-t és a egy dinamikusan bővülő rögzített méretű lemezt. De nem módosíthatja a virtuális gép létrehozás. További információkért lásd: [érdemes létrehozni egy 1 vagy 2. generációs virtuális gép a Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) és [Generation 2 virtuális gépek az Azure-ban](generation-2.md).
+Mielőtt egy Windows virtuális gép (VM) a helyszínről az Azure-bA tölt fel, elő kell készítenie a virtuális merevlemez (VHD vagy vhdx-fájlt). Az Azure támogatja az 1. és 2. generációs virtuális gépek, amelyek VHD formátumú, és amelyek egy rögzített méretű lemezt is. A VHD számára engedélyezett maximális mérete 1,023 GB. 
 
-Azure virtuális gép a támogatási házirenddel kapcsolatos további információkért lásd: [Microsoft kiszolgálószoftveres támogatás az Microsoft Azure virtuális gépek](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).
+Az 1. generációs virtuális gép, átválthat egy VHDX-fájl rendszer VHD-t. A rögzített méretű lemez átválthat egy dinamikusan bővülő lemezek is. De nem módosíthatja a virtuális gép létrehozás. További információkért lásd: [érdemes létrehozni egy 1 vagy 2. generációs virtuális gép a Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) és [generation 2 virtuális gépen (előzetes verzió) támogatása az Azure](generation-2.md).
 
-> [!Note]
-> A jelen cikkben lévő utasítások a Windows Server 2008 R2 és újabb Windows server operációs rendszer 64 bites verziójára vonatkoznak. Operációs rendszer az Azure-ban futó 32 bites verzióval kapcsolatos információkért lásd: [32 bites operációs rendszerek Azure-beli virtuális gépeken támogatása](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines).
+Azure virtuális gépek a támogatási házirenddel kapcsolatos információkért lásd: [Microsoft kiszolgálószoftveres támogatás az Azure virtuális gépek](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).
 
-## <a name="convert-the-virtual-disk-to-vhd-and-fixed-size-disk"></a>A virtuális lemez konvertálása a VHD- és a rögzített méretű lemez 
-Ha a kötelező formátumot az Azure-hoz a virtuális lemez konvertálása van szüksége, használja a módszerek közül az ebben a szakaszban. A virtuális gép biztonsági mentése előtt a virtuális lemez konvertálási folyamat futtatja, és ellenőrizze, hogy a Windows virtuális merevlemez megfelelően működik-e a helyi kiszolgálón. Javítsa ki a hibákat belül a virtuális gépre, mielőtt konvertálja, vagy töltse fel az Azure-bA.
+> [!NOTE]
+> A jelen cikkben lévő utasítások a Windows Server 2008 R2 és újabb Windows Server operációs rendszerek 64 bites verziójára vonatkoznak. További információ a 32 bites operációs rendszert futtató Azure-ban: [Azure virtuális gépeken futó 32 bites operációs rendszerek támogatása](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines).
 
-Miután konvertálja a lemezt, hozzon létre a konvertált lemezt használó virtuális gép. Indítsa el, és jelentkezzen be a virtuális géphez a virtuális gép előkészítése feltöltéshez befejezéséhez.
+## <a name="convert-the-virtual-disk-to-a-fixed-size-and-to-vhd"></a>A virtuális lemez konvertálása egy rögzített méretű és a virtuális merevlemez 
+Ha a kötelező formátumot az Azure-hoz a virtuális lemez konvertálása van szüksége, használja a módszerek közül az ebben a szakaszban. Készítsen biztonsági másolatot a virtuális Gépet, mielőtt megkezdené a virtuális lemezt. Győződjön meg arról, hogy a Windows virtuális merevlemez megfelelően működik-e a helyi kiszolgálón. Majd javítsa ki a hibákat a virtuális gépre belül előtt konvertálja, vagy töltse fel az Azure-bA.
 
-### <a name="convert-disk-using-hyper-v-manager"></a>Konvertálja a lemezt a Hyper-V Manager segítségével
-1. Nyissa meg a Hyper-V kezelőjét, és válassza ki a helyi számítógépen, a bal oldalon. A számítógép eszközlista feletti menüben kattintson **művelet** > **lemez szerkesztése**.
-2. Az a **virtuális merevlemez keresése** képernyőn, keresse meg és jelölje ki a virtuális lemezt.
-3. Az a **választott tevékenység** képernyőn, és válassza ki **konvertálása** és **tovább**.
-4. Ha VHDX próbaverzióról van szüksége, válassza ki a **VHD** majd **tovább**.
-5. Ha egy dinamikusan bővülő lemezek konvertálása van szüksége, válassza ki **rögzített méretű** majd **tovább**.
+Miután konvertálja a lemezt, hozzon létre a lemezt használó virtuális gép. Indítsa el, és jelentkezzen be a virtuális gép előkészítése feltöltése befejeződik.
+
+### <a name="use-hyper-v-manager-to-convert-the-disk"></a>A Hyper-V kezelőjével konvertálhatja a lemez 
+1. Nyissa meg a Hyper-V kezelőjét, és válassza ki a helyi számítógépen, a bal oldalon. Válassza a számítógép eszközlista feletti menüben **művelet** > **lemez szerkesztése**.
+2. Az a **virtuális merevlemez keresése** lapra, jelölje be a virtuális lemezt.
+3. Az a **választott tevékenység** lapon jelölje be **konvertálása** > **tovább**.
+4. Ha VHDX próbaverzióról van szüksége, válassza ki a **VHD** > **tovább**.
+5. Ha egy dinamikusan bővülő lemezek konvertálása van szüksége, válassza ki a **rögzített méretű** > **tovább**.
 6. Keresse meg és válassza ki a új virtuális merevlemez fájl elérési útját.
-7. Kattintson a **Befejezés**gombra.
+7. Válassza a **Finish** (Befejezés) elemet.
 
->[!NOTE]
->Az ebben a cikkben szereplő parancsokkal egy emelt szintű PowerShell-munkamenetben kell futtatni.
+> [!NOTE]
+> Egy rendszergazda jogú PowerShell-munkamenetben használja a parancsok futtatásához az ebben a cikkben.
 
-### <a name="convert-disk-by-using-powershell"></a>Lemez konvertálása a PowerShell használatával
+### <a name="use-powershell-to-convert-the-disk"></a>A lemez konvertálása a PowerShell használatával 
 A virtuális lemez segítségével alakíthatja a [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) parancsot a Windows PowerShellben. Válassza ki **Futtatás rendszergazdaként** PowerShell indításakor. 
 
-A következő példaparancs konvertálja a virtuális merevlemez VHDX az és a egy dinamikusan bővülő rögzített méretű lemezt:
+A következő példaparancs átalakítja a VHDX VHD-t. A parancs is átalakítja a dinamikusan bővülő lemezek egy rögzített méretű lemezt.
 
 ```Powershell
 Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd -VHDType Fixed
 ```
-Ebben a parancsban cserélje le az értéket "-elérési út" az elérési útját a virtuális merevlemez, amelyek az átalakítandó és az értéke "-DestinationPath" az új elérési utat és a konvertált lemez neve.
+
+Ebben a parancsban cserélje le az értéket `-Path` az átalakítani kívánt virtuális merevlemez elérési útját. Cserélje le az értéket a `-DestinationPath` az új elérési utat és a konvertált lemez neve.
 
 ### <a name="convert-from-vmware-vmdk-disk-format"></a>VMware VMDK lemez formátum konvertálása
-Ha rendelkezik egy Windows Virtuálisgép-lemezkép a [VMDK-fájl formátuma](https://en.wikipedia.org/wiki/VMDK), konvertálja a virtuális merevlemez a [Microsoft VM Converter](https://www.microsoft.com/download/details.aspx?id=42497). További információ a blogot cikke [VMware VMDK átalakítása Hyper-V virtuális merevlemez](https://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx).
+Ha rendelkezik egy Windows Virtuálisgép-lemezkép a [VMDK-fájl formátuma](https://en.wikipedia.org/wiki/VMDK), használja a [Microsoft Virtual Machine Converter](https://www.microsoft.com/download/details.aspx?id=42497) VHD formátumra átalakítandó. További információkért lásd: [VMware VMDK átalakítása Hyper-V virtuális merevlemez](https://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx).
 
 ## <a name="set-windows-configurations-for-azure"></a>Az Azure Windows-konfigurációnak megadása
 
-A virtuális gépen, amely azt tervezi, hogy töltse fel az Azure-ba, az alábbi lépéseket az összes parancsok futtatását egy [emelt jogosultságszintű parancssort](https://technet.microsoft.com/library/cc947813.aspx):
+A virtuális gép feltöltése az Azure-bA felvenni kívánt, futtassa a következő parancsokat egy [emelt jogosultságszintű parancssort](https://technet.microsoft.com/library/cc947813.aspx):
 
 1. Távolítsa el az útválasztási táblázatban az állandó statikus útvonalakat:
    
    * Az útvonaltábla megtekintéséhez futtassa `route print` parancsot a parancssorba.
-   * Ellenőrizze a **adatmegőrzés útvonalak** szakaszokat. Ha egy állandó útvonalat, használja a **route delete** távolítsa el a parancsot.
+   * Ellenőrizze a `Persistence Routes` szakaszokat. Ha egy állandó útvonalat, használja a `route delete` távolítsa el a parancsot.
 2. Távolítsa el a WinHTTP proxy:
    
     ```PowerShell
     netsh winhttp reset proxy
     ```
 
-    Ha a virtuális gép kell semmilyen speciális proxykat, hozzá kell adnia a proxy-kivétel az Azure IP-cím ([168.63.129.16](https://blogs.msdn.microsoft.com/mast/2015/05/18/what-is-the-ip-address-168-63-129-16/
-)), így a virtuális gép kapcsolódik az Azure-ban:
+    Ha a virtuális Gépet kell dolgoznia egy adott proxy, egy proxy kivétel hozzáadása az Azure IP-cím ([168.63.129.16](https://blogs.msdn.microsoft.com/mast/2015/05/18/what-is-the-ip-address-168-63-129-16/
+)), a virtuális gép csatlakozhatnak az Azure-bA:
     ```
     $proxyAddress="<your proxy server>"
     $proxyBypassList="<your list of bypasses>;168.63.129.16"
@@ -84,7 +87,7 @@ A virtuális gépen, amely azt tervezi, hogy töltse fel az Azure-ba, az alábbi
     netsh winhttp set proxy $proxyAddress $proxyBypassList
     ```
 
-3. A lemez a SAN-szabályzat beállítása [Onlineall](https://technet.microsoft.com/library/gg252636.aspx):
+3. A lemez a SAN-szabályzat beállítása [ `Onlineall` ](https://technet.microsoft.com/library/gg252636.aspx):
    
     ```PowerShell
     diskpart 
@@ -96,19 +99,19 @@ A virtuális gépen, amely azt tervezi, hogy töltse fel az Azure-ba, az alábbi
     exit   
     ```
 
-4. Egyezményes világidő (UTC) idő beállítása a Windows és a Windows idő (w32time) szolgáltatás indítási típusának **automatikusan**:
+4. Egyezményes világidő (UTC) idő beállítása a Windows számára. A Windows időszolgáltatás indítási típusát is beállíthatja (`w32time`) való `Automatic`:
    
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation' -name "RealTimeIsUniversal" -Value 1 -Type DWord -force
 
     Set-Service -Name w32time -StartupType Automatic
     ```
-5. A kiemelt profil beállítása a **nagy teljesítményű**:
+5. Nagy teljesítményű állítsa be a power profil:
 
     ```PowerShell
     powercfg /setactive SCHEME_MIN
     ```
-6. Győződjön meg arról, hogy a környezeti változók **TEMP** és **TMP** az alapértelmezett értékekre vannak beállítva:
+6. Győződjön meg arról, hogy a környezeti változók `TEMP` és `TMP` az alapértelmezett értékekre vannak beállítva:
 
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -name "TEMP" -Value "%SystemRoot%\TEMP" -Type ExpandString -force
@@ -117,7 +120,7 @@ A virtuális gépen, amely azt tervezi, hogy töltse fel az Azure-ba, az alábbi
     ```
 
 ## <a name="check-the-windows-services"></a>Ellenőrizze a Windows-szolgáltatások
-Győződjön meg arról, hogy a következő Windows-szolgáltatások mindegyike értékre van állítva, a **Windows alapértelmezett értékek**. Ezek a szolgáltatások, amelyek kell beállítani, győződjön meg arról, hogy a virtuális gép kapcsolódik, minimális számát. Az indítási beállítások alaphelyzetbe állítása, futtassa a következő parancsokat:
+Győződjön meg arról, hogy a következő Windows-szolgáltatások mindegyike a Windows alapértelmezett értékre állítva. Ezek a szolgáltatások biztosításához a virtuális gépek kapcsolatai beállított minimális. Az indítási beállítások alaphelyzetbe állítása, futtassa a következő parancsokat:
    
 ```PowerShell
 Set-Service -Name bfe -StartupType Automatic
@@ -133,13 +136,11 @@ Set-Service -Name MpsSvc -StartupType Automatic
 Set-Service -Name RemoteRegistry -StartupType Automatic
 ```
 
-## <a name="update-remote-desktop-registry-settings"></a>A távoli asztal beállításjegyzék-beállítások frissítése
-Győződjön meg arról, hogy a következő beállításokkal megfelelően van konfigurálva a távoli asztali kapcsolat:
+## <a name="update-remote-desktop-registry-settings"></a>Remote-desktop beállításjegyzék-beállítások frissítése
+Győződjön meg arról, hogy a következő beállításokkal megfelelően vannak-e konfigurálva a távoli hozzáféréshez:
 
->[!Note] 
->Egy hibaüzenet jelenhet meg, amikor futtatja a **Set-ItemProperty-elérési út "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal szolgáltatások – neve &lt;objektumnév&gt; -érték &lt;érték&gt;**  az alábbi lépéseket. A hibaüzenet biztonságosan figyelmen kívül hagyhatja. Ez azt jelenti, hogy csak, hogy a tartományban van nem küld ez a konfiguráció segítségével a csoportházirend-objektum.
->
->
+>[!NOTE] 
+>Hibaüzenetet kaphat futtatásakor `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -name &lt;object name&gt; -value &lt;value&gt;`. Ez az üzenet biztonságosan figyelmen kívül hagyja. Ez azt jelenti, hogy csak, hogy a tartomány nem küld ez a konfiguráció segítségével a csoportházirend-objektum.
 
 1. Engedélyezve van a távoli asztal protokoll (RDP):
    
@@ -149,7 +150,7 @@ Győződjön meg arról, hogy a következő beállításokkal megfelelően van k
     Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -name "fDenyTSConnections" -Value 0 -Type DWord -force
     ```
    
-2. Az RDP-portra helyesen van beállítva (alapértelmezés szerint a 3389-es port):
+2. Az RDP-portra megfelelően van beállítva. Az alapértelmezett port: 3389-es:
    
     ```PowerShell
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "PortNumber" -Value 3389 -Type DWord -force
@@ -161,7 +162,7 @@ Győződjön meg arról, hogy a következő beállításokkal megfelelően van k
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "LanAdapter" -Value 0 -Type DWord -force
    ```
-4. A hálózati szintű hitelesítés módját, az RDP-kapcsolatok konfigurálása:
+4. A hálózati szintű hitelesítéssel (NLA) módot, az RDP-kapcsolatok konfigurálása:
    
     ```PowerShell
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1 -Type DWord -force
@@ -190,31 +191,31 @@ Győződjön meg arról, hogy a következő beállításokkal megfelelően van k
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "MaxInstanceCount" -Value 4294967295 -Type DWord -force
     ```
-8. Ha önaláírt tanúsítványokat az RDP-figyelő kötve van, távolítsa el őket:
+8. Az RDP-figyelő kötött önaláírt tanúsítványok eltávolítása:
     
     ```PowerShell
     Remove-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "SSLCertificateSHA1Hash" -force
     ```
-    Ez a győződjön meg arról, hogy csatlakozott az elején, a virtuális gép telepítésekor. Emellett áttekintheti Ez az egy későbbi szakaszban a virtuális gép üzembe helyezése az Azure-ban, szükség esetén után.
+    Ez a kód biztosítja, hogy csatlakozott az elején, a virtuális gép telepítésekor. Ha szeretne később tekintse át ezt, megteheti az Azure-ban a virtuális gép üzembe helyezése után.
 
-9. Ha a virtuális gép lesz része egy tartománynak, ellenőrizze a következő beállításokat, győződjön meg arról, hogy a korábbi beállításokat nem állítja. A házirendekben, amelyek ellenőrizni kell a következők:
+9. Ha a virtuális gép lesz része egy tartománynak, ellenőrizze, hogy a korábbi beállításokat nem állítja vissza a rendszer a következő házirendek. 
     
     | Cél                                     | Szabályzat                                                                                                                                                       | Érték                                                                                    |
     |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
     | Az RDP engedélyezve van                           | Computer Configuration\Policies\Windows Settings\Administrative Templates\Components\Remote Desktop Services\Remote Desktop Session Host\Connections         | Lehetővé teszi a felhasználók távolról kapcsolódni a távoli asztal használatával                                  |
-    | NLA csoportházirend                         | Settings\Administrative Templates\Components\Remote Desktop Services\Remote Desktop Session Host\Security                                                    | Felhasználói hitelesítés szükséges a távoli kapcsolatokhoz hálózati szintű hitelesítéssel |
-    | Élő beállítások megtartása                      | Computer Configuration\Policies\Windows Settings\Administrative Templates\Windows Components\Remote Desktop Services\Remote Desktop Session Host\Connections | Kapcsolat életben tartási intervallum                                                 |
-    | Újracsatlakozás a beállítások                       | Computer Configuration\Policies\Windows Settings\Administrative Templates\Windows Components\Remote Desktop Services\Remote Desktop Session Host\Connections | Az automatikus újracsatlakozás                                                                   |
-    | Beállítások kapcsolatok számának korlátozása | Computer Configuration\Policies\Windows Settings\Administrative Templates\Windows Components\Remote Desktop Services\Remote Desktop Session Host\Connections | A kapcsolatok száma                                                              |
+    | NLA csoportházirend                         | Settings\Administrative Templates\Components\Remote Desktop Services\Remote Desktop Session Host\Security                                                    | Felhasználói hitelesítés szükséges a távoli hozzáféréshez NLA használatával |
+    | Életben tartási beállításai                      | Computer Configuration\Policies\Windows Settings\Administrative Templates\Windows Components\Remote Desktop Services\Remote Desktop Session Host\Connections | Kapcsolat életben tartási intervallum                                                 |
+    | Újracsatlakozás a beállítások                       | Computer Configuration\Policies\Windows Settings\Administrative Templates\Windows Components\Remote Desktop Services\Remote Desktop Session Host\Connections | Csatlakoztassa újra automatikusan                                                                   |
+    | Korlátozott számú kapcsolat beállításai | Computer Configuration\Policies\Windows Settings\Administrative Templates\Windows Components\Remote Desktop Services\Remote Desktop Session Host\Connections | A kapcsolatok száma                                                              |
 
 ## <a name="configure-windows-firewall-rules"></a>Windows tűzfal-szabályok konfigurálása
-1. A Windows tűzfal bekapcsolása a három profilt (a tartományhoz, a Standard és a nyilvános):
+1. A Windows tűzfal bekapcsolása a három profilt (a tartományhoz, standard és a nyilvános):
 
    ```PowerShell
     Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled True
    ```
 
-2. Futtassa a következő parancsot a PowerShell WinRM engedélyezéséhez a három tűzfalprofil (tartományi, privát és nyilvános) keresztül, és a PowerShell távelérési szolgáltatásának engedélyezése:
+2. Futtassa a következő parancsot a PowerShell WinRM engedélyezéséhez a három tűzfalprofil (tartományi, privát és nyilvános) keresztül, és engedélyezze a távoli PowerShell-szolgáltatást:
    
    ```PowerShell
     Enable-PSRemoting -force
@@ -226,12 +227,12 @@ Győződjön meg arról, hogy a következő beállításokkal megfelelően van k
    ```PowerShell
     Set-NetFirewallRule -DisplayGroup "Remote Desktop" -Enabled True
    ```   
-4. A fájl- és nyomtatómegosztás szabály engedélyezése, úgy, hogy a virtuális gép is válaszol a ping parancsra, a virtuális hálózaton belül:
+4. A fájl- és nyomtatómegosztás a ping parancsra, a virtuális hálózaton belül a virtuális gép reagáljon a szabály engedélyezése:
 
    ```PowerShell
    Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)" -Enabled True
    ``` 
-5. Ha a virtuális gép lesz része egy tartománynak, ellenőrizze a következő beállításokat, győződjön meg arról, hogy a korábbi beállításokat nem állítja. Az AD-szabályzatokat, amelyek a ellenőrizni kell a következők:
+5. Ha a virtuális gép lesz része egy tartománynak, ellenőrizze, hogy a korábbi beállításokat nem állítja vissza a rendszer a következő Azure AD-házirendek. 
 
     | Cél                                 | Szabályzat                                                                                                                                                  | Érték                                   |
     |--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
@@ -241,18 +242,21 @@ Győződjön meg arról, hogy a következő beállításokkal megfelelően van k
     | Engedélyezze az ICMP-V4                       | Computer Configuration\Policies\Windows Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows Firewall   | Az ICMP-kivételek engedélyezése                   |
     |                                      | Computer Configuration\Policies\Windows Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Standard Profile\Windows Firewall | Az ICMP-kivételek engedélyezése                   |
 
-## <a name="verify-vm-is-healthy-secure-and-accessible-with-rdp"></a>Ellenőrizze a virtuális gép a megfelelő, biztonságos és RDP-vel elérhető 
-1. Ahhoz, hogy a lemez nincs kifogástalan állapotú és egységes, futtassa a következő virtuális gép újraindítása egy ellenőrzési lemez művelet:
+## <a name="verify-the-vm"></a>Ellenőrizze a virtuális gép 
+
+Győződjön meg arról, hogy a virtuális gép kifogástalan állapotú, biztonságos, és elérhető-e az RDP: 
+
+1. Győződjön meg arról, hogy a lemez kifogástalan állapotú és egységes, ellenőrizze a lemez található a következő virtuális gép újraindítása:
 
     ```PowerShell
     Chkdsk /f
     ```
-    Győződjön meg arról, hogy a jelentés megjeleníti egy letisztult és kifogástalan állapotú lemezt.
+    Ellenőrizze, hogy a jelentés megjeleníti egy letisztult és kifogástalan állapotú lemezt.
 
 2. A rendszerindítási konfigurációs adatok (BCD) beállításainak megadása. 
 
-    > [!Note]
-    > Ellenőrizze, hogy futtassa a következő parancsokat egy emelt szintű PowerShell-ablakban a.
+    > [!NOTE]
+    > Futtassa a következő parancsokat használja egy rendszergazda jogú PowerShell-ablakban.
    
    ```powershell
     cmd
@@ -276,12 +280,12 @@ Győződjön meg arról, hogy a következő beállításokkal megfelelően van k
 3. A memóriakép napló a hibaelhárítást a Windows összeomlási hasznos lehet. A napló memóriakép-gyűjtés engedélyezése:
 
     ```powershell
-    # Setup the Guest OS to collect a kernel dump on an OS crash event
+    # Set up the guest OS to collect a kernel dump on an OS crash event
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name CrashDumpEnabled -Type DWord -force -Value 2
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name DumpFile -Type ExpandString -force -Value "%SystemRoot%\MEMORY.DMP"
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name NMICrashDump -Type DWord -force -Value 1
 
-    #Setup the Guest OS to collect user mode dumps on a service crash event
+    # Set up the guest OS to collect user mode dumps on a service crash event
     $key = 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps'
     if ((Test-Path -Path $key) -eq $false) {(New-Item -Path 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting' -Name LocalDumps)}
     New-ItemProperty -Path $key -name DumpFolder -Type ExpandString -force -Value "c:\CrashDumps"
@@ -289,57 +293,60 @@ Győződjön meg arról, hogy a következő beállításokkal megfelelően van k
     New-ItemProperty -Path $key -name DumpType -Type DWord -force -Value 2
     Set-Service -Name WerSvc -StartupType Manual
     ```
-4. Ellenőrizze, hogy a Windows Management Instrumentations tárház egységes. Ennek végrehajtásához futtassa a következő parancsot:
+4. Győződjön meg arról, hogy a Windows Management Instrumentation (WMI) tárház egységes:
 
     ```PowerShell
     winmgmt /verifyrepository
     ```
-    Ha a tárház sérült, [WMI: Tárház sérülése, vagy nem](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not).
+    Ha a tárház sérült, [WMI: A tárház megsérült vagy nem](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not).
 
-5. Győződjön meg arról, hogy minden más alkalmazás nem használja a 3389-es portot. Ezt a portot használja az RDP-szolgáltatás az Azure-ban. Futtathat **netstat - anob** megtekintéséhez, hogy mely portokon a szolgálnak a virtuális gépen:
+5. Győződjön meg arról, hogy egyetlen másik alkalmazás nem 3389-es portot használ. Ezt a portot használja az RDP-szolgáltatás az Azure-ban. Milyen portokat használják a virtuális gépen futtassa `netstat -anob`:
 
     ```PowerShell
     netstat -anob
     ```
 
-6. Ha a feltölteni kívánt Windows virtuális Merevlemezt egy tartományvezérlőt, majd kövesse az alábbi lépéseket:
+6. Feltölteni egy Windows, a tartományvezérlő virtuális Merevlemezt:
 
-    1. Hajtsa végre a [további lépések](https://support.microsoft.com/kb/2904015) készíti elő a lemezen.
+   * Hajtsa végre a [további lépések](https://support.microsoft.com/kb/2904015) készíti elő a lemezen.
 
-    1. Győződjön meg arról, hogy ismeri a DSRM-jelszót, abban az esetben el kell indítani a virtuális gép a címtárszolgáltatások Helyreállító módjában időpontban induljanak. Érdemes ezen a hivatkozáson beállításához tekintse meg a [DSRM-jelszót](https://technet.microsoft.com/library/cc754363(v=ws.11).aspx).
+   * Ellenőrizze, hogy ismeri a Directory címtárszolgáltatások helyreállító módjának (DSRM) jelszavát abban az esetben el kell indítani a virtuális gép a címtárszolgáltatások Helyreállító módjában időpontban induljanak. További információkért lásd: [állítsa be a DSRM-jelszót](https://technet.microsoft.com/library/cc754363(v=ws.11).aspx).
 
-7. Győződjön meg arról, hogy a beépített Rendszergazda fiók és jelszó is ismertek. Előfordulhat, hogy szeretné a jelenlegi helyi rendszergazdai jelszó visszaállítása, és győződjön meg arról, hogy ezt a fiókot használhatja bejelentkezni a Windows az RDP-kapcsolaton keresztül. A hozzáférési engedélyt a "Bejelentkezés engedélyezése a távoli asztali szolgáltatások használatával" csoportházirend-objektumot határozza meg. Ez az objektum a a Helyicsoportházirend-szerkesztő alatt tekintheti meg:
+7. Ellenőrizze, hogy ismeri a beépített rendszergazdai fiókkal és jelszóval. Előfordulhat, hogy szeretné visszaállítani a jelenlegi helyi rendszergazdai jelszót, és ellenőrizze, hogy ezt a fiókot használhatja a bejelentkezni a Windows az RDP-kapcsolaton keresztül. A hozzáférési engedélyt a "Bejelentkezés engedélyezése a távoli asztali szolgáltatások használatával" csoportházirend-objektumot határozza meg. Ezen objektum megtekintésére a a Helyicsoportházirend-szerkesztő itt:
 
     Számítógép konfigurációja\A Windows beállításai\Biztonsági beállítások\Helyi házirend\Felhasználói jogok kiosztása
 
-8. Ellenőrizze az alábbi AD győződjön meg arról, hogy nem blokkolja az RDP-hozzáférés RDP-Kapcsolaton keresztül, és nem is a hálózat szabályzatokkal:
+8. Az alábbi Azure AD-házirendek, győződjön meg arról, hogy nem blokkolja a RDP-Kapcsolaton keresztül, vagy a hálózatról az RDP-hozzáférés ellenőrzése:
 
     - Számítógép konfigurációja\A Windows beállításai\Biztonsági beállítások\Helyi házirend\Felhasználói jogok kiosztása\kötegelt munka bejelentkezésének megtagadása hozzáférést ehhez a számítógéphez a hálózatról
 
     - Számítógép konfigurációja\A Windows beállításai\Biztonsági beállítások\Helyi házirend\Felhasználói jogok kiosztása\helyi bejelentkezés megtagadása a távoli asztali szolgáltatások használatával
 
 
-9. A következő AD házirendben győződjön meg arról, hogy nem távolítja el az alábbi, a hozzáférési fiókok:
+9. Ellenőrizze a következő Azure AD-szabályzatot, hogy még nem eltávolítása a hozzáférési fiókokat bármelyikét:
 
-   - Számítógép konfigurációja\A Windows beállításai\Biztonsági beállítások\Helyi házirend\Felhasználói jogok Assignment\Access a számítási, hálózati
+   - Számítógép konfigurációja\A Windows beállításai\Biztonsági beállítások\Helyi házirend\Felhasználói jogok Assignment\Access ezen a számítógépen, a hálózatról
 
-     A következő csoportok szerepelnie kell a szabályzatra vonatkozó:
+   A szabályzat felsorolásban szerepelnie kell a következő csoportok:
 
    - A rendszergazdák
+
    - Biztonságimásolat-felelősök
+
    - Mindenki számára
+
    - Felhasználók
 
-10. Indítsa újra a virtuális Gépen, győződjön meg arról, hogy Windows továbbra is megfelelő, elérhető, az RDP-kapcsolat használatával. Ezen a ponton érdemes a helyi Hyper-V – győződjön meg róla a virtuális gép teljesen elindult-e, és ellenőrizze, hogy RDP érhető el a virtuális gép létrehozásához.
+10. Indítsa újra a virtuális Gépen, győződjön meg arról, hogy a Windows továbbra is működik megfelelően, és az RDP-kapcsolaton keresztül érhető el. Ezen a ponton érdemes a helyi Hyper-V – ellenőrizze, hogy a virtuális gép teljesen elindul a virtuális gép létrehozásához. Ellenőrizze, hogy ellenőrizze, hogy a virtuális gép RDP-Kapcsolaton keresztül érheti el.
 
-11. Távolítsa el a felesleges átviteli Driver Interface szűrőket, például egy szoftver, amely elemzi a TCP csomagokat, vagy további tűzfalakat. Emellett áttekintheti Ez az egy későbbi szakaszban a virtuális gép üzembe helyezése az Azure-ban, szükség esetén után.
+11. Távolítsa el a felesleges átviteli Átvitelmeghajtói felület (TDI) szűrőket. Például, távolítsa el a szoftver, amely elemzi a TCP csomagokat, vagy további tűzfalakat. Ha szeretne később tekintse át ezt, megteheti az Azure-ban a virtuális gép üzembe helyezése után.
 
-12. Távolítsa el a harmadik féltől származó szoftverek és illesztőprogramot, amely kapcsolódik a fizikai összetevők vagy más virtualizációs technológiát.
+12. Távolítsa el a harmadik féltől származó szoftverek vagy illesztőprogramot, amely a fizikai kapcsolódó összetevők vagy más virtualizációs technológiát.
 
 ### <a name="install-windows-updates"></a>Windows-frissítések telepítése
-Az ideális konfiguráció **a javítási szintje a gép legkésőbb**. Ha ez nem lehetséges, győződjön meg arról, hogy telepítve vannak-e a következő frissítéseket:
+Ideális esetben a gép frissíteni kell tartania a *javítási szintje*. Ha ez nem lehetséges, győződjön meg arról, hogy a következő frissítések telepítve vannak:
 
-| Összetevő               | binary         | Windows 7 SP1, Windows Server 2008 R2 SP1 | A Windows 8, Windows Server 2012-ben               | Windows 8.1, Windows Server 2012 R2 rendszerben | A Windows 10 1607-es verzió a Windows Server 2016-ban 1607-es verzió | Windows 10, 1703-as verzió    | A Windows 10 1709-es Windows Server 2016-ban 1709-es | A Windows 10 1803 Windows Server 2016 verziót 1803-as verzióban |
+| Összetevő               | binary         | Windows 7 SP1, Windows Server 2008 R2 SP1 | A Windows 8, Windows Server 2012-ben               | Windows 8.1, Windows Server 2012 R2 rendszerben | A Windows 10-es v1607, a Windows Server 2016 v1607 | Windows 10 v1703    | A Windows 10-es v1709, a Windows Server 2016 v1709 | A Windows 10-es v1803, a Windows Server 2016 v1803 |
 |-------------------------|----------------|-------------------------------------------|---------------------------------------------|------------------------------------|---------------------------------------------------------|----------------------------|-------------------------------------------------|-------------------------------------------------|
 | Storage                 | Disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
 |                         | Storport.sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.332             | -                                               | -                                               |
@@ -363,7 +370,7 @@ Az ideális konfiguráció **a javítási szintje a gép legkésőbb**. Ha ez ne
 |                         | Tcpip.sys      | 6.1.7601.23761 - KB4022722                | 6.2.9200.22070 - KB4022724                  | 6.3.9600.18478 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
 |                         | a HTTP.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17285 - KB3042553                  | 6.3.9600.18574 - KB4022726         | 10.0.14393.251 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
 |                         | vmswitch.sys   | 6.1.7601.23727 - KB4022719                | 6.2.9200.22117 - KB4022724                  | 6.3.9600.18654 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.138             | -                                               | -                                               |
-| Mag                    | ntoskrnl.exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.483             | -                                               | -                                               |
+| Core                    | ntoskrnl.exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.483             | -                                               | -                                               |
 | Távoli asztali szolgáltatások | rdpcorets.dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.0               | -                                               | -                                               |
 |                         | termsrv.dll    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17048 - KB2973501                  | 6.3.9600.17415 - KB3000850         | 10.0.14393.0 - KB4022715                                | 10.0.15063.0               | -                                               | -                                               |
 |                         | termdd.sys     | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
@@ -377,54 +384,55 @@ Az ideális konfiguráció **a javítási szintje a gép legkésőbb**. Ha ez ne
 |                         | CVE – 2018-0886  | KB4103718               | KB4103730                | KB4103725       | KB4103723                                               | KB4103731                  | KB4103727                                       | KB4103721                                       |
 |                         |                | KB4103712          | KB4103726          | KB4103715|                                                         |                            |                                                 |                                                 |
        
-### A sysprep használata <a id="step23"></a>    
+### Mikor a Sysprep program használata <a id="step23"></a>    
 
-A Sysprep olyan folyamat, futtathatja azokat a windows-telepítés, amely alaphelyzetbe állítja a rendszer a telepítés és a egy "a kezdőélmény" személyes adatokat, és alaphelyzetbe állítása több összetevőből biztosít. Általában ezt megteheti, ha szeretne létrehozni egy sablont, amelyről telepíthet több más virtuális gépeket, amelyek adott konfigurációval rendelkezik. Ezt nevezzük a **rendszerkép általánosítva**.
+Rendszer-előkészítő eszköz (Sysprep) egy olyan folyamat, egy Windows-telepítési alaphelyzetbe futtathatja. A Sysprep "a kezdő" verzióról felületet biztosítja a személyes adatokat, és alaphelyzetbe állítása több összetevőt. 
 
-Ha ehelyett szeretné csak egy virtuális gép létrehozása egy lemezről, nem kell a Sysprep eszközt használja. Ilyen esetben egyszerűen létrehozhatja a virtuális gép az úgynevezett egy **specializált rendszerkép**.
+Általában, amelyről telepíthet több más virtuális gépek adott konfigurációval rendelkező sablon létrehozása a Sysprep futtatása. A sablon neve egy *rendszerkép általánosítva*.
 
-A virtuális gép létrehozása specializált lemezből kapcsolatos további információkért lásd:
+Ha csak egy virtuális gép létrehozása egy lemezről, nem kell a Sysprep eszközt használja. Ehelyett a virtuális Gépet hozhat létre egy *specializált rendszerkép*. A virtuális gép létrehozása specializált lemezből kapcsolatos információkért lásd:
 
 - [Virtuális gép létrehozása specializált lemezből](create-vm-specialized.md)
 - [Virtuális gép létrehozása speciális lemezről a virtuális merevlemez](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)
 
-Ha szeretne létrehozni egy általános rendszerképpel, meg kell futtassa a Sysprep eszközt. További információ a Sysprep: [Sysprep használata: Bevezetés](https://technet.microsoft.com/library/bb457073.aspx). 
+Ha szeretne létrehozni egy általános rendszerképpel, meg kell futtassa a Sysprep eszközt. További információkért lásd: [a Sysprep használata: Bevezetés](https://technet.microsoft.com/library/bb457073.aspx). 
 
-Ez az általánosítás támogatja a nem minden szerepkör vagy alkalmazást, amely egy Windows-alapú számítógépre van telepítve. Mielőtt elkezdi a műveletet, ezért tekintse meg a következő cikket, győződjön meg arról, hogy a szerepkört az adott számítógép támogatja a sysprep. További információ [kiszolgálói szerepkörök támogatása a Sysprep](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles).
+Nem minden szerepkör vagy alkalmazást, amely egy Windows-alapú számítógépre van telepítve az általánosított képeket támogatja. Ezért mielőtt elkezdi a műveletet, ellenőrizze, hogy a Sysprep támogatja a számítógép a szerepkör. További információkért lásd: [kiszolgálói szerepkörök támogatása a Sysprep](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles).
 
-### <a name="steps-to-generalize-a-vhd"></a>Virtuális merevlemez általánosításához lépések
+### <a name="generalize-a-vhd"></a>Virtuális merevlemez generalize
 
 >[!NOTE]
-> Az alábbi lépéseket a sysprep.exe futtatása után kapcsolja ki a virtuális Gépet, és nem kapcsolja be újra, amíg létre lemezképet, az abból az Azure-ban.
+> Futtatása után `sysprep.exe` a következő lépésekben kikapcsolja a virtuális Gépet. Ne kapcsolja be újra, amíg létre lemezképet, az abból az Azure-ban.
 
 1. Jelentkezzen be a Windows virtuális gép.
-2. Futtatás **parancssor** rendszergazdaként. 
-3. Módosítsa a könyvtárat: **%windir%\system32\sysprep**, majd futtassa a **sysprep.exe**.
-3. A **Rendszer-előkészítő eszköz** párbeszédpanelen válassza **A kezdőélmény indítása** lehetőséget, és győződjön meg róla, hogy be van-e jelölve az **Általánosítás** jelölőnégyzet.
+1. Futtatás **parancssor** rendszergazdaként. 
+1. Módosítsa a könyvtárat a `%windir%\system32\sysprep`. Ez után futtassa a `sysprep.exe` parancsot.
+1. A **Rendszer-előkészítő eszköz** párbeszédpanelen válassza **A kezdőélmény indítása** lehetőséget, és győződjön meg róla, hogy be van-e jelölve az **Általánosítás** jelölőnégyzet.
 
     ![Rendszer-előkészítő eszköz](media/prepare-for-upload-vhd-image/syspre.png)
-4. A **leállítási beállítások**válassza **leállítási**.
-5. Kattintson az **OK** gombra.
-6. A Sysprep befejezését követően a virtuális gép leállítására. Ne használjon **indítsa újra a** a virtuális gép leállítása.
-7. A VHD-t most már elkészült tölthető fel. A virtuális gép létrehozása általánosított lemezről kapcsolatos további információkért lásd: [általános VHD feltöltése és ezzel hozzon létre egy új virtuális gépeket az Azure-ban](sa-upload-generalized.md).
+1. A **leállítási beállítások**válassza **leállítási**.
+1. Kattintson az **OK** gombra.
+1. A Sysprep befejeződése után állítsa le a virtuális Gépet. Ne használjon **indítsa újra a** a virtuális gép leállítása.
+
+A VHD-t most már elkészült tölthető fel. A virtuális gép létrehozása általánosított lemezről kapcsolatos további információkért lásd: [általános VHD feltöltése és ezzel hozzon létre egy új virtuális Gépet az Azure-ban](sa-upload-generalized.md).
 
 
 >[!NOTE]
-> Egy egyéni unattend.xml nem támogatott. Támogatjuk a additionalUnattendContent tulajdonság, miközben, amely csak korlátozott támogatást biztosít hozzáadása [microsoft-windows-rendszerhéj – telepítő](https://docs.microsoft.com/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) be az Azure a kiépítési ügynök által az unattend.xml beállítások. Például  használhatnak [additionalUnattendContent](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) FirstLogonCommands és LogonCommands adhat hozzá. Lásd még: [additionalUnattendContent FirstLogonCommands példa](https://github.com/Azure/azure-quickstart-templates/issues/1407).
+> Egyéni *unattend.xml* fájl nem támogatott. Bár támogatjuk a `additionalUnattendContent` tulajdonság, amely csak korlátozott támogatást biztosít a hozzáadása [microsoft-windows-rendszerhéj – telepítő](https://docs.microsoft.com/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) lehetőség be a *unattend.xml* fájlt, amely az Azure-kiépítés ügynök használja. Is használhatja, például [additionalUnattendContent](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) FirstLogonCommands és LogonCommands adhat hozzá. További információkért lásd: [additionalUnattendContent FirstLogonCommands példa](https://github.com/Azure/azure-quickstart-templates/issues/1407).
 
 
-## <a name="complete-recommended-configurations"></a>Ajánlott beállításait
+## <a name="complete-the-recommended-configurations"></a>Az ajánlott konfiguráció befejezéséhez.
 A következő beállítások nem befolyásolják a VHD feltöltésével. Azonban erősen ajánlott, hogy konfigurálta azokat.
 
-* Telepítse a [Azure virtuális gépek ügynök](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Ezután engedélyezheti a Virtuálisgép-bővítmények. A Virtuálisgép-bővítmények megvalósítása a legtöbb kritikus funkciója, amely előfordulhat, hogy kíván használni a virtuális gépek új jelszavak, például az RDP konfigurálása, és így tovább. További információkért lásd: [Azure-beli virtuálisgép-ügynök – áttekintés](../extensions/agent-windows.md).
-* Miután a virtuális gép létrehozása az Azure-ban, azt javasoljuk, hogy a teljesítmény javítása a "Historikus elnevezésű" köteten helyezze a lapozófájl méretét. Beállíthatja a következőképpen:
+* Telepítse a [Azure-beli virtuálisgép-ügynök](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Ezután engedélyezheti a Virtuálisgép-bővítmények. A Virtuálisgép-bővítmények a kritikus fontosságú funkciókat, amelyeket érdemes a virtuális gépek használata a legtöbb megvalósításához. Szüksége lesz a bővítmények, például jelszavakat vagy RDP konfigurálása. További információkért lásd: [Azure-beli virtuálisgép-ügynök – áttekintés](../extensions/agent-windows.md).
+* Miután létrehozta a virtuális gép az Azure-ban, azt javasoljuk, hogy Ön telepít a lapozófájlt a *historikus meghajtó* teljesítmény javítása érdekében. Beállíthat elhelyezéséhez a következőképpen:
 
    ```PowerShell
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -force
    ```
-  Ha a virtuális Géphez csatolt adatlemezre, az ideiglenes meghajtó kötet meghajtójának betűjelét általában-e "D" A kijelölés és a beállításokat, hogy az elérhető meghajtók száma függően eltérő lehet.
+  Ha egy adatlemezt a virtuális Géphez van csatlakoztatva, az ideiglenes meghajtó kötetbetűt általában van-e *D*. Ez a megnevezés a beállítások és a elérhető meghajtók számától függően eltérő lehet.
 
 ## <a name="next-steps"></a>További lépések
 * [Windows Virtuálisgép-Rendszerkép feltöltése az Azure-bA a Resource Manager üzembe helyezések](upload-generalized-managed.md)
-* [Windows rendszerű virtuális gépek Azure-ban való aktiválási problémáinak hibaelhárítása](troubleshoot-activation-problems.md)
+* [Azure Windows virtuális gép aktiválással kapcsolatos problémák elhárítása](troubleshoot-activation-problems.md)
 

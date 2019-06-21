@@ -12,12 +12,12 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: f17c364d258ef356a98180c9903603d92a6a9245
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7789970b47f0e55adee5bbe9da9f303aee6cdb25
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078520"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190121"
 ---
 # <a name="troubleshooting-package-execution-in-ssis-integration-runtime"></a>Hibaelhárítási-csomagok végrehajtása az SSIS integrációs modul
 
@@ -103,6 +103,13 @@ Ez a cikk a leggyakoribb hibákat, amelyek akkor ütközhet, amikor végrehajtá
 ### <a name="error-message-your-integration-runtime-cannot-be-upgraded-and-will-eventually-stop-working-since-we-cannot-access-the-azure-blob-container-you-provided-for-custom-setup"></a>Hibaüzenet jelenik meg: "Az integrációs modul nem lehet frissíteni, és végül fog tovább működni, mivel jelenleg nem érhető el az Azure Blob-tárolóba, a megadott egyéni telepítő."
 
 * Ez a hiba akkor fordul elő, amikor SSIS integrációs modul nem tud hozzáférni a tárolási kapacitással, az egyéni telepítés. Ellenőrizze, hogy a megadott SAS Uri érvényes, és még nem járt le.
+
+### <a name="error-message-microsoft-ole-db-provider-for-analysis-services-hresult-0x80004005-description-com-error-com-error-mscorlib-exception-has-been-thrown-by-the-target-of-an-invocation"></a>Hibaüzenet jelenik meg: "A Microsoft OLE DB-szolgáltató az Analysis Serviceshez. "Hresult: 0x80004005 leírását: " COM-hiba: COM-hiba: mscorlib; A meghívott objektum kivételt adott vissza"
+
+* Lehetséges ok és a javasolt művelet:
+  * Azure Analysis Services-hitelesítést, amely még nem támogatott az SSIS integrációs modul egyik lehetséges oka, hogy felhasználónév/jelszó az MFA engedélyezve van konfigurálva. Próbálja ki az egyszerű szolgáltatás használata az Azure Analysis Service-hitelesítés:
+    1. Egyszerű szolgáltatás AAS előkészítése [https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal](https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal)
+    2. A Csatlakozáskezelő, konfigurálja a "A megadott felhasználónév és jelszó használata": "AppID" állítsa be a felhasználónevet és jelszót "clientSecret"
 
 ### <a name="package-takes-unexpected-long-time-to-execute"></a>Csomag végrehajtása váratlan hosszú időt vesz igénybe.
 

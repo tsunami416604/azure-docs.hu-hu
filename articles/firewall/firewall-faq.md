@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 5/30/2019
+ms.date: 6/21/2019
 ms.author: victorh
-ms.openlocfilehash: 75b1131f2853cb444481b9c7a6c96e28f8537538
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 933b4167f25db5a01cf1160f5e781a1fe31afc6b
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66384674"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304600"
 ---
 # <a name="azure-firewall-faq"></a>Azure-tűzfalon – gyakori kérdések
 
@@ -76,7 +76,6 @@ Az Azure-tűzfal szolgáltatás egészíti ki a hálózati biztonsági csoport f
 
 Azure-tűzfalon egy olyan felügyelt szolgáltatás több védelmi rétegeket, beleértve a platform-védelem és a hálózati szintű NSG-k (nem látható).  Alhálózat-szintű NSG-k az Azure-tűzfal alhálózat nem szükséges, és le vannak tiltva, a szolgáltatás megszakítás nélküli fenntartása érdekében.
 
-
 ## <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>Hogyan állíthatok be Azure-tűzfal saját szolgáltatásvégpontokkal?
 
 Biztonságos hozzáférés PaaS-szolgáltatások javasoljuk, hogy a Szolgáltatásvégpontok. Ha szeretné, engedélyezze a szolgáltatásvégpontokat az Azure-tűzfal alhálózat, és tiltsa le azokat a csatlakoztatott küllő virtuális hálózatokon. Ezzel a módszerrel, előnyös funkciók--service endpoint securityhez és a központi naplózás minden forgalom.
@@ -123,6 +122,10 @@ Igen, az Azure tűzfal hub virtuális hálózatban két küllő virtuális hál�
 ## <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Azure-tűzfal előre is, és az azonos virtuális hálózatban vagy a társviszonyban álló virtuális hálózatba tartozó alhálózatok közötti hálózati forgalom szűrése?
 
 Igen. Azonban ugyanazon virtuális Hálózatban lévő alhálózatok közötti forgalom átirányítása az udr-EK konfigurálása további figyelmet igényel. Használatakor a virtuális hálózati címtartományt, az UDR cél előtagjaként is elegendő, ez is továbbítja az egyik gépről egy másik gépre az Azure tűzfal-példány ugyanazon az alhálózaton minden forgalmat. Ennek elkerülése érdekében közé tartozik az alhálózat egy útvonalat az udr-t a következő ugrási típusú **VNET**. Ezeket az útvonalakat kezeléséhez gyakran fordul elő hiba, és nehézkes lehet. A belső hálózati szegmentálást ajánlott módszer, hogy hálózati biztonsági csoportok, amelyek nem igénylik az udr-EK.
+
+## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>Nem Azure-tűzfal kimenő SNAT magánhálózat között?
+
+Az Azure tűzfal nem SNAT, ha a cél IP-cím egy magánhálózati IP-címtartományt egy [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). Ha a szervezet magánhálózatok egy nyilvános IP-címtartományt használja, Azure tűzfal SNATs a forgalmat egy, a tűzfal magánhálózati IP-címek AzureFirewallSubnet.
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Kényszerítetten tunneling/láncolási egy hálózati virtuális berendezésre támogatott?
 

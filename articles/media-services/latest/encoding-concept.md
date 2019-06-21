@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/10/2019
+ms.date: 06/08/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 25b3209bed98ea217db9e414caa6f08cee6d8c89
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b0a71e8b3ffff822521a23aafd6764bcce9bd4d4
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65761890"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303933"
 ---
 # <a name="encoding-with-media-services"></a>Kódolás a Media Services használatával
 
@@ -25,7 +25,7 @@ A folyamat digitális videót és/vagy egy másik (a) a fájlok méretének csö
 
 Videók az eszközök és alkalmazások által általában érkezzenek [progresszív letöltés](https://en.wikipedia.org/wiki/Progressive_download) vagy [adaptív sávszélességű streamelés](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming). 
 
-* Továbbítás letöltésen keresztül fokozatos, használhatja az Azure Media Services konvertálni egy a digitális média fájlt (mezzanine)-ba egy [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) -kódolású videó tartalmazó fájl a [H.264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) kodeket, és hang, amely a kódolású a [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) kodek. A tárfiókban található egy Eszköz a MP4-fájl írása. Használhatja az Azure Storage API-k és SDK-kkal (például [Storage REST API-val](../../storage/common/storage-rest-api-auth.md), [JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md), vagy [.NET SDK-val](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) közvetlenül a fájl letöltéséhez. Ha a kimeneti hozta létre a tároló egy adott tároló nevű eszköz használ erre a helyre. Ellenkező esetben használhatja a Media Services [eszköz tároló url-Címek listája](https://docs.microsoft.com/rest/api/media/assets/listcontainersas). 
+* Továbbítás letöltésen keresztül fokozatos, használhatja az Azure Media Services (mezzanine) digitális média fájl konvertálása be egy [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) fájl, amely tartalmazza a videóra,-kódolású a [H.264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) kodeket, és hang, amely a kódolású a [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) kodek. A tárfiókban található egy Eszköz a MP4-fájl írása. Használhatja az Azure Storage API-k és SDK-kkal (például [Storage REST API-val](../../storage/common/storage-rest-api-auth.md), [JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md), vagy [.NET SDK-val](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) közvetlenül a fájl letöltéséhez. Ha a kimeneti hozta létre a tároló egy adott tároló nevű eszköz használ erre a helyre. Ellenkező esetben használhatja a Media Services [eszköz tároló url-Címek listája](https://docs.microsoft.com/rest/api/media/assets/listcontainersas). 
 * Tartalom előkészítése kézbesítési adaptív bitsebességű folyamatos átvitel, a mezzanine-fájlt kell kódolni, több bitsebességre való átkódolása (magastól alacsonyig). Az átviteli sebesség arányában minőségű, biztonságos átállás érdekében így egyedül a videó felbontása. Ennek eredményeként egy úgynevezett kódolási létra – felbontásra és bitsebességre való átkódolása tábláját (lásd: [adaptív sávszélességű automatikusan létrehozott létra](autogen-bitrate-ladder.md)). A Media Services segítségével több bitsebességre való – ennek során átkódolása, a "mezzanine" formátumú fájlok, MP4-fájlokat, és a kapcsolódó streamelési konfigurációs fájlokat az eszköz a tárfiókban lévő írt fog kapni. Ezután a [dinamikus csomagolási](dynamic-packaging-overview.md) , hogy a videó streamelési protokollok, mint például a Media Services képesség [MPEG-DASH](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) és [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming). Ehhez szükséges, hogy hozzon létre egy [Streamelési Lokátor](streaming-locators-concept.md) és létrehozása a streamelési url-Címek, a támogatott protokollok, amelyek majd átadható az eszközök és alkalmazások képességeikkel alapján megfelelő.
 
 Az alábbi ábrán látható, a munkafolyamat igény szerinti Encoding, a dinamikus csomagolás használatával.
@@ -47,11 +47,46 @@ Január 2019, kezdve kódolás a Media Encoder Standard MP4-fájl létrehozásá
 > [!NOTE]
 > Ne módosítsa vagy távolítsa el az MPI-fájlt, és minden olyan függőséget is a létezik-e a service-ben (vagy sem) egy souboru.
 
+### <a name="creating-job-input-from-an-https-url"></a>Feladatbemenet HTTPS URL-cím létrehozása
+
+A videók feldolgozásához feladatok elküldésekor meg kell mondanunk a Media Services, hogy hol található a bemeneti videó. A beállításokat egyik HTTPS URL-címet adja meg a bemeneti feladatként. A Media Services v3 jelenleg nem támogatja a darabolásos átvitel kódolási HTTPS URL-címek keresztül. 
+
+#### <a name="examples"></a>Példák
+
+* [Kódolás a HTTPS URL-címet a .NET használatával](stream-files-dotnet-quickstart.md)
+* [Kódolás a HTTPS URL-címet a REST segítségével](stream-files-tutorial-with-rest.md)
+* [Kódolás a HTTPS URL-címet a CLI használatával](stream-files-cli-quickstart.md)
+* [Kódolás a HTTPS URL-címet a node.js használatával](stream-files-nodejs-quickstart.md)
+
+### <a name="creating-job-input-from-a-local-file"></a>Létrehozás a feladat bemenete egy helyi fájlból
+
+A bemeneti videó tárolható Media Service eszközként, ebben az esetben létrehozhat egy bemeneti objektuma a (helyi vagy az Azure Blob storage-ban tárolt) fájl alapján. 
+
+#### <a name="examples"></a>Példák
+
+[Beépített készlet használatával egy helyi fájl kódolása](job-input-from-local-file-how-to.md)
+
+### <a name="creating-job-input-with-subclipping"></a>Feladatbemenet részklipkészítés létrehozása
+
+Amikor a videó kódolása, megadhatja, is trim vagy a forrásfájl grafikus és kimenetet, amely rendelkezik a bemeneti videó csak egy kívánt része. Ez a funkció együttműködik bármely [átalakítása](https://docs.microsoft.com/rest/api/media/transforms) épül fel, amelyek segítségével a [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) készleteket, vagy a [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) készletek. 
+
+Hozzon létre is megadhat egy [feladat](https://docs.microsoft.com/rest/api/media/jobs/create) az egyetlen klip egy videó igény szerinti vagy élő archívum (rögzített esemény). A feladat bemenetére lehet egy eszköz vagy a HTTPS URL-címet.
+
+> [!TIP]
+> Ha azt szeretné, anélkül, hogy a videó reencoding egy sublip a videó továbbításához, érdemes [dinamikus Packager az alkalmazásjegyzékeket előre szűrés](filters-dynamic-manifest-overview.md).
+
+#### <a name="examples"></a>Példák
+
+Példa látható:
+
+* [Részklip egy videót, a .NET használatával](subclip-video-dotnet-howto.md)
+* [Részklip egy videót, a REST segítségével](subclip-video-rest-howto.md)
+
 ## <a name="built-in-presets"></a>Beépített készletek
 
 A Media Services jelenleg a következő beépített kódolási beállításokat támogatja:  
 
-### <a name="builtinstandardencoderpreset-preset"></a>BuiltInStandardEncoderPreset preset
+### <a name="builtinstandardencoderpreset"></a>BuiltInStandardEncoderPreset
 
 [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) a bemeneti videó a standard szintű Encoder kódolási előbeállítást beépített beállítására szolgál. 
 
@@ -71,7 +106,7 @@ A készletek legfrissebb lista megtekintéséhez lásd: [videók kódolásához 
 
 Ha szeretné látni, hogyan használja a készletek, tekintse meg [feltöltése, kódolása és fájlok folyamatos](stream-files-tutorial-with-api.md).
 
-### <a name="standardencoderpreset-preset"></a>StandardEncoderPreset előbeállítás
+### <a name="standardencoderpreset"></a>StandardEncoderPreset
 
 [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) kódolás a bemeneti videó a standard szintű Encoder használt beállításokat ismerteti. Ezzel a készlet, átalakító készletek testreszabásához. 
 
@@ -82,9 +117,11 @@ Egyéni készletek létrehozásakor a következő szempontokat kell figyelembe v
 - Minden értékét magasságát és szélességét AVC tartalom kezelésére kell költeni 4 többszörösének kell lennie.
 - Az Azure Media Services v3-as a kódolási bitsebességre való átkódolása összes bit / másodperc. Ez különbözik a készletek a v2 API-kkal használt egységet kilobit/másodperc. Például ha az átviteli sebesség a v2-ben van megadva, 128 (kilobit/másodperc), a v3-as volna meg akkor 128000 (bit/másodperc).
 
-#### <a name="examples"></a>Példák
+### <a name="customizing-presets"></a>Beállításkészletek testreszabása
 
 A Media Services teljes körűen támogatja az adott kódolási igények és követelmények készletek található értékek némelyike testreszabása. Azt mutatják be, hogyan szabhatja testre a kódoló készletek példákért lásd:
+
+#### <a name="examples"></a>Példák
 
 - [.NET-tel készletek testreszabása](customize-encoder-presets-how-to.md)
 - [CLI-vel beállításkészletek testreszabása](custom-preset-cli-howto.md)
@@ -104,7 +141,7 @@ Tekintse meg a [Azure Media Services-Közösség](media-services-community.md) k
 
 ## <a name="next-steps"></a>További lépések
 
+* [Feltöltése, kódolása és streamelése a Media Services használatával](stream-files-tutorial-with-api.md)
 * [Kódolás a beépített készlet használatával HTTPS URL-címet](job-input-from-http-how-to.md)
 * [Beépített készlet használatával egy helyi fájl kódolása](job-input-from-local-file-how-to.md)
 * [Az egyedi, amelyekre az adott forgatókönyv vagy eszközkövetelmények készletek létrehozása](customize-encoder-presets-how-to.md)
-* [Feltöltése, kódolása és streamelése a Media Services használatával](stream-files-tutorial-with-api.md)

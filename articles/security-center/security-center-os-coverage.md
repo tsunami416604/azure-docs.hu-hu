@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/03/2019
 ms.author: monhaber
-ms.openlocfilehash: c5b5b88ee1334ac6d7b39b8ad53bd020e6042454
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: e2d66db2ae3c379db86d40603d919489fdf15eed
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480535"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144263"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformok és az Azure Security Center által támogatott funkciók
 
@@ -78,7 +78,7 @@ A felhőalapú szolgáltatásként futtató virtuális gépeket is támogatottak
 > [!div class="mx-tableFixed"]
 > 
 
-|Kiszolgáló|Windows||Linux||||Díjszabás|
+|Kiszolgáló|Windows|||Linux|||Díjszabás|
 |----|----|----|----|----|----|----|----|
 |**Környezet**|**Azure**||**Non-Azure**|**Azure**||**Non-Azure**||
 ||**Virtuális gép**|**Virtuálisgép-méretezési csoportot**||**Virtuális gép**|**Virtuálisgép-méretezési csoportot**|

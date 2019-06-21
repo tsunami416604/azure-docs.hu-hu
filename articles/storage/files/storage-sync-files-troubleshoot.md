@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 26055727e308f8c05aece31746434d7e9a0a5abd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9cd1be26f6832fffb86dfefd0d93d9dbb393c0f0
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65555945"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303875"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -245,17 +245,16 @@ Ezek a hibák megtekintéséhez futtassa a **FileSyncErrorsReport.ps1** (az Azur
 | HRESULT | HRESULT (decimális) | Hibasztring | Probléma | Szervizelés |
 |---------|-------------------|--------------|-------|-------------|
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Egy fájl vagy címtár módosítása nem szinkronizálható még, mert egy függő mappa szinkronizálása még nem történt. Ez az elem után a rendszer szinkronizálja a függő módosításokat szinkronizálja. | Nincs szükség felhasználói műveletre. |
-| 0x7B | 123 | ERROR_INVALID_NAME | A fájl vagy könyvtár neve érvénytelen. | Nevezze át a fájl vagy könyvtár az adott. Lásd: [kezelése nem támogatott karaktereket](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) további információt. |
-| 0x8007007b | -2147024773 | STIERR_INVALID_DEVICE_NAME | A fájl vagy könyvtár neve érvénytelen. | Nevezze át a fájl vagy könyvtár az adott. Lásd: [kezelése nem támogatott karaktereket](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) további információt. |
+| 0x8007007b | -2147024773 | ERROR_INVALID_NAME | A fájl vagy könyvtár neve érvénytelen. | Nevezze át a fájl vagy könyvtár az adott. Lásd: [kezelése nem támogatott karaktereket](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) további információt. |
 | 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | A fájl nem szinkronizálható, mert az használatban van. Ha már nincs használatban a fájl lesznek szinkronizálva. | Nincs szükség felhasználói műveletre. Az Azure File Sync naponta egyszer létrehoz egy ideiglenes VSS-pillanatkép megnyitott kezelőkkel rendelkező fájlok szinkronizálása a kiszolgálón. |
 | 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Egy fájl módosult, de a módosítás nem még észlelt szinkronizálás által. Szinkronizálás után ez a változás észlelésekor állítja helyre. | Nincs szükség felhasználói műveletre. |
 | 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | A fájl nem szinkronizálható, mert az Azure-beli fájlmegosztás korlátot. | A probléma megoldásához tekintse meg [a megosztás Azure fájltárolási korlátot elérte](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810) a hibaelhárítási útmutató szakaszát. |
 | 0x80070005 | -2147024891 | E_ACCESSDENIED | Ez a hiba akkor fordulhat elő, a következő okok miatt: fájl titkosítva van egy nem támogatott megoldás (például NTFS EFS) által, a fájl rendelkezik a törlés függőben lévő állapotba, vagy egy csak olvasható replikációs DFS-R mappában található | A fájl titkosítva van egy nem támogatott megoldás, ha a fájl visszafejtése, és a támogatott titkosítási megoldással. Támogatási megoldások listáját lásd: [titkosítási megoldások](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions) az útmutató a tervezési szakaszban. Ha a fájl a függő állapotú törlés, a fájl törlődik, az összes megnyitott fájlleírók bezárásakor. Ha a fájl csak olvasható replikációs DFS-R mappában található, a Azure Files Sync kiszolgálóvégpontok nem csak olvasható replikációs mappák a DFS-R támogatja. Lásd: [kapacitástervezési útmutató](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs) további információt.
-| 0x20 | 32 | ÚJRA | A fájl nem szinkronizálható, mert az használatban van. Ha már nincs használatban a fájl lesznek szinkronizálva. | Nincs szükség felhasználói műveletre. |
+| 0x80070020 | -2147024864 | ÚJRA | A fájl nem szinkronizálható, mert az használatban van. Ha már nincs használatban a fájl lesznek szinkronizálva. | Nincs szükség felhasználói műveletre. |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | A fájl módosításának szinkronizálás során a szinkronizálható, újra kell. | Nincs szükség felhasználói műveletre. |
 
 #### <a name="handling-unsupported-characters"></a>Kezelése nem támogatott karaktereket
-Ha a **FileSyncErrorsReport.ps1** PowerShell-parancsfájl bemutatja a hiba oka nem támogatott karaktereket (hibakódjai 0x7b és 0x8007007b), érdemes távolítsa el vagy nevezze át a megfelelő fájlnevek a hibás karaktereket. PowerShell valószínűleg nyomtatja ki ezeket a karaktereket a kérdőjelek vagy üres téglalapok, mivel ezek a karakterek a legtöbb nem szabványos kódolással. A [Megoldásértékelési eszköz](storage-sync-files-planning.md#evaluation-tool) segítségével azonosíthatja a nem támogatott karaktereket.
+Ha a **FileSyncErrorsReport.ps1** PowerShell-parancsfájl bemutatja a hiba oka nem támogatott karaktereket (hibakód: 0x8007007b), érdemes távolítsa el vagy nevezze át a megfelelő fájlnevek a hibás karaktereket. PowerShell valószínűleg nyomtatja ki ezeket a karaktereket a kérdőjelek vagy üres téglalapok, mivel ezek a karakterek a legtöbb nem szabványos kódolással. A [Megoldásértékelési eszköz](storage-sync-files-planning.md#evaluation-tool) segítségével azonosíthatja a nem támogatott karaktereket.
 
 Az alábbi táblázat tartalmazza az összes Azure File Sync jelenleg nem támogatja a unicode-karaktereket.
 
@@ -310,7 +309,7 @@ Semmit nem kell; a kiszolgáló újra fog próbálkozni. Ha ezt a hibát néhán
 | **Hibakarakterlánc** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
 | **Szervizelés szükséges** | Nem |
 
-Nincs szükség műveletre. Ha egy fájl vagy a fájl megosztása (felhőbeli végpont) visszaállítása az Azure Backup használatával, a szinkronizálás le van tiltva, az Azure-fájlmegosztás címváltozásának felderítését befejeződéséig. Címváltozásának felderítését a visszaállítás befejeződött, és a időtartama alapján a fájlmegosztásban található fájlok száma után azonnal fut.
+Semmit nem kell tenni. Ha egy fájl vagy a fájl megosztása (felhőbeli végpont) visszaállítása az Azure Backup használatával, a szinkronizálás le van tiltva, az Azure-fájlmegosztás címváltozásának felderítését befejeződéséig. Címváltozásának felderítését a visszaállítás befejeződött, és a időtartama alapján a fájlmegosztásban található fájlok száma után azonnal fut.
 
 <a id="-2134364065"></a>**Szinkronizálás az a felhőbeli végpont a megadott Azure-fájlmegosztás nem érhető el.**  
 
@@ -863,6 +862,8 @@ Ha egy kiszolgálón az Azure File Sync problémák merülnek fel, indítsa el a
 
 Ha a probléma továbbra is fennáll, futtassa a AFSDiag eszköz:
 1. Hozzon létre egy könyvtárat, ahol a AFSDiag kimeneti menti a rendszer (például C:\Output).
+    > [!NOTE]
+    >AFSDiag előtt naplók gyűjtésére a kimeneti könyvtár teljes tartalmát törli. Adjon meg egy kimeneti helyet, amely nem tartalmaz adatokat.
 2. Nyisson meg egy rendszergazda jogú PowerShell-ablakot, és futtassa a következő parancsokat (nyomja le az Enter minden parancs után):
 
     ```powershell

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: c97ccd82a9c09e10572733040e238443cbf777da
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0de4d2b9ad0d009b9cd363d19a2de3f29d810d4
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696600"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303453"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>Hibaelhárítási tippek a kognitív keresés
 
@@ -94,7 +94,10 @@ Képelemzés nagy számítási igényű olyan esetekben, akár egyszerű, így r
 
 Maximálisan engedélyezett futási időt díjcsomag szerint változik: több percet az ingyenes szinten, 24 órás indexelést a számlázható szint. Ha feldolgozása nem lehetett végrehajtani, igény szerinti feldolgozási egy 24 órás időtartamon belül, váltson egy ütemezést az indexelővel feldolgozási csomópontmetrikák felvételéhez, ahol abbahagyta. 
 
-Az ütemezett indexelők esetében az indexelés folytatja, az utolsó ismert jó dokumentum ütemezés szerint. Az ismétlődő ütemezés szerint, az indexelő órák vagy napok, nem feldolgozott összes rendszerkép feldolgozásáig sorozatát keresztül működik korongot keresztül a lemezkép várakozó fájlok számát. Az ütemezés szintaxisa további információkért lásd: [3. lépés: Az-indexelő létrehozása](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer).
+Az ütemezett indexelők esetében az indexelés folytatja, az utolsó ismert jó dokumentum ütemezés szerint. Az ismétlődő ütemezés szerint, az indexelő órák vagy napok, nem feldolgozott összes rendszerkép feldolgozásáig sorozatát keresztül működik korongot keresztül a lemezkép várakozó fájlok számát. Az ütemezés szintaxisa további információkért lásd: [3. lépés: Az-indexelő létrehozása](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer) vagy [az Azure Search indexelők ütemezése](search-howto-schedule-indexers.md).
+
+> [!NOTE]
+> Ha az indexelő értéke egy meghatározott ütemezés, de ismételten sikertelen lesz, ugyanazon dokumentum és újra minden alkalommal, amikor azt fut, az indexelő megkezdődik futtatása kevésbé gyakori időközönként (akár a legfeljebb 24 óránként legalább egyszer), amíg sikeresen teszi folyamatban aga a.  Ha úgy véli, hogy bármilyen kijavítása, amely egy bizonyos ponton elakadt, az indexelő okozta a problémát, egy az igény szerinti futtatása az indexelő is végezhet, hogy sikeresen ez, és folyamatban van, az indexelő vissza fog térni a set-ütemezési időköz újra.
 
 Portal-alapú az indexelés (mint a rövid útmutatóban leírtak szerint), az "egyszeri futtatás" indexelő kiválasztása lehetőséget 1 órára feldolgozási korlátok (`"maxRunTime": "PT1H"`). Előfordulhat, hogy szeretné valamilyen hosszabb feldolgozási időszakának kiterjesztése.
 
