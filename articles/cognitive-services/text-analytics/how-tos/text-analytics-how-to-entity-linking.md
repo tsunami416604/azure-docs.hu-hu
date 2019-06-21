@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: 881c829424124cca843beb7005306edd53be2673
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: ff4f9af82024e9d39ad89a39bcb2fe4130de9101
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203993"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304178"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Megnevezett entitások felismerése Szövegelemzés használata
 
@@ -105,7 +105,7 @@ A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytic
 
 ## <a name="step-2-post-the-request"></a>2\. lépés: A kérelem küldése
 
-Az elemzés a kérelem megkapásakor történik meg. A szolgáltatás fogadja a második és az 1000 percenkénti kérések legfeljebb 100 kérelemből állhat. Mindegyik kérés legfeljebb 1 MB lehet.
+Az elemzés a kérelem megkapásakor történik meg. Tekintse meg a [data korlátai](../overview.md#data-limits) szakasz az áttekintésben a méret és a kérelmek percenkénti küldhet és a második kapcsolatos információkat.
 
 Ne felejtse, hogy a szolgáltatás állapot nélküli. A fiókban nem tárol semmilyen adatot. Az eredményeket azonnal visszaadja a válaszban.
 

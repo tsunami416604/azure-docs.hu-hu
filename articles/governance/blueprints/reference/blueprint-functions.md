@@ -109,12 +109,12 @@ Néhány példa az adatok beolvasása a _myTemplateArtifact_ minta vannak:
 
 | kifejezés | Típus | Érték |
 |:---|:---|:---|
-|`[artifacts("myTemplateArtifact").outputs.myArray]` | Array | \["first", "másodperc"\] |
+|`[artifacts("myTemplateArtifact").outputs.myArray]` | Tömb | \["first", "másodperc"\] |
 |`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | String | "first" |
 |`[artifacts("myTemplateArtifact").outputs.myString]` | String | "a karakterlánc-érték" |
 |`[artifacts("myTemplateArtifact").outputs.myObject]` | Object | {"myproperty": "saját érték", "anotherProperty": true} |
-|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | String | "my value" |
-|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | True |
+|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | String | a "value" |
+|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | True (Igaz) |
 
 ## <a name="concat"></a>Concat
 

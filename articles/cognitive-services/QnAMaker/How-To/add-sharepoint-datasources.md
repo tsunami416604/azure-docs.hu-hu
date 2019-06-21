@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/05/2019
+ms.date: 06/20/2019
 ms.author: tulasim
-ms.openlocfilehash: e479cf1729b7dcd2ed2f2470f2a935bdf94af80b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e1b0e3dfb81a9934b393428a946cf1440367985c
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954967"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67311860"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>A Tudásbázis egy védett Sharepoint-adatforrás hozzáadása
 
@@ -35,6 +35,20 @@ Adhat hozzá az összes QnA Maker által támogatott [fájltípusok](../Concepts
     ![A fájl három pont menü, majd másolja az URL-címet kapni a Sharepoint-fájl URL-címe.](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
 
 1. A QnA Maker Portal a a **beállítások** lapon [adja hozzá az URL-cím](edit-knowledge-base.md#add-datasource) a Tudásbázisban. 
+
+### <a name="images-with-sharepoint-files"></a>Képek a Sharepoint-fájlok
+
+Ha a fájlok képeket is tartalmaznak, ezek nincs kibontva. A QnA Maker Portalról, hozzáadhatja a lemezképet, miután a fájl kibontása a QnA párok.
+
+Adja hozzá a kép a következő markdown-szintaxissal: 
+
+```markdown
+![Explanation or description of image](URL of public image)
+```
+
+A szöveg a szögletes zárójelben `[]`, a lemezkép ismerteti. A zárójelek között, az URL-cím `()`, akkor a közvetlen kép hivatkozását. 
+
+A kérdés-válasz párt a interaktív vizsgálati panelen, a QnA Maker Portal tesztelésekor a kép jelenik meg, a markdown-szöveg helyett. Ez igazolja, hogy a kép nyilvánosan kérhető le az ügyfélalkalmazásban.
 
 ## <a name="permissions"></a>Engedélyek
 

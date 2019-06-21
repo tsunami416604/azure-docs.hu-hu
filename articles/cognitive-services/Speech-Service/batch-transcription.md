@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 1828cdce66104424cc7845fea89127219e6b77a0
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 45ed0167f5a83fa843a224ada35e96672a6752a1
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137267"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67311839"
 ---
 # <a name="why-use-batch-transcription"></a>Miért érdemes használni a Batch beszédátírási?
 
@@ -91,6 +91,7 @@ Ezek a választható tulajdonságok használatával beszédátírási konfigurá
 | `PunctuationMode` | Adja meg a felismerési eredményeket írásjelek kezelése. Elfogadott értékek a következők `none` ami letiltja az absztrakt, `dictated` explicit írásjelek, amiből `automatic` , amellyel a dekóder írásjelek, kezelése vagy `dictatedandautomatic` írásjelek vagy automatikus azt jelenti, amely során. |
  | `AddWordLevelTimestamps` | Itt adhatja meg, ha word szintű időbélyeggel kell adni a kimenetet. Elfogadott értékek a következők `true` lehetővé teszi a word szintű időbélyegeket és `false` (az alapértelmezett érték) letiltja azt. |
  | `AddSentiment` | Megadja a vélemény hozzá kell adni az utterance (kifejezés). Elfogadott értékek a következők `true` ami lehetővé teszi az utterance (kifejezés) / vélemények és `false` (az alapértelmezett érték) letiltja azt. |
+ | `AddDiarization` | Megadja, hogy diarization alalysis kell lennie a két beszédhangot tartalmazó monó csatorna, amely a bemeneti kell elvégezni. Elfogadott értékek a következők `true` lehetővé teszi a diarization és `false` (az alapértelmezett érték) letiltja azt. Azt is szükséges `AddWordLevelTimestamps` állítható igaz értékre.|
 
 ### <a name="storage"></a>Storage
 
@@ -128,13 +129,8 @@ A megfelelő hanganyag tartalmazni fog egy adott azonosított előadó (jelenleg
 
 Azt is vegye figyelembe, hogy Diarization nem érhető el a sztereó felvételek. Továbbá minden JSON kimeneti fogja tartalmazni a beszélő címke. Ha nem használja a diarization, megjelenik "Speaker: NULL' a JSON-kimenetét.
 
-Támogatott nyelv az alábbiakban láthatók.
-
-| Nyelv | Területi beállítás |
-|--------|-------|
-| Angol | en-US |
-| kínai | zh-CN |
-| Deutsch | de-DE |
+> [!NOTE]
+> Diarization érhető el minden régióban és az összes területi beállításhoz tartozó!
 
 ## <a name="sentiment"></a>Hangulat
 
