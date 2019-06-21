@@ -1,23 +1,17 @@
 ---
 title: Az Azure Resource Manager-sablonfüggvények – logikai |} A Microsoft Docs
 description: A functions az Azure Resource Manager-sablon használatával határozza meg a logikai értékeket ismerteti.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4684c38fe506ed912c6827f1e60b94b847024347
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: cf6874512557bc44efe978708c78e3d98db4110b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65405667"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205457"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok logikai függvények
 
@@ -39,9 +33,9 @@ Ellenőrzi, hogy minden paraméter értéket Igaz.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |logikai |Ellenőrizze, hogy az első értéket e igaz. |
-| arg2 |Igen |logikai |A második érték, ellenőrizze, hogy igaz. |
-| További argumentumok |Nem |logikai |További argumentumok ellenőrizze, hogy igaz. |
+| arg1 |Igen |boolean |Ellenőrizze, hogy az első értéket e igaz. |
+| arg2 |Igen |boolean |A második érték, ellenőrizze, hogy igaz. |
+| További argumentumok |Nem |boolean |További argumentumok ellenőrizze, hogy igaz. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -77,11 +71,11 @@ Az előző példából kimenete:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | Hamis |
+| andExampleOutput | Bool | False (Hamis) |
 | orExampleOutput | Bool | True (Igaz) |
-| notExampleOutput | Bool | Hamis |
+| notExampleOutput | Bool | False (Hamis) |
 
-## <a name="bool"></a>logikai
+## <a name="bool"></a>bool
 
 `bool(arg1)`
 
@@ -131,9 +125,9 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | trueString | Bool | True (Igaz) |
-| falseString | Bool | Hamis |
+| falseString | Bool | False (Hamis) |
 | trueInt | Bool | True (Igaz) |
-| falseInt | Bool | Hamis |
+| falseInt | Bool | False (Hamis) |
 
 ## <a name="if"></a>Ha
 
@@ -145,7 +139,7 @@ Hogy értéket adja vissza egy feltétele igaz vagy hamis.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| condition |Igen |logikai |Ellenőrizze, hogy azt true vagy FALSE (hamis) érték. |
+| condition |Igen |boolean |Ellenőrizze, hogy azt true vagy FALSE (hamis) érték. |
 | trueValue |Igen | karakterlánc, int, objektumot vagy tömböt |A visszatérési érték, amikor a feltétel teljesül. |
 | falseValue |Igen | karakterlánc, int, objektumot vagy tömböt |A visszatérési érték, amikor a feltétel nem teljesül. |
 
@@ -196,7 +190,7 @@ A következő [példasablonja](https://github.com/krnese/AzureDeploy/blob/master
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "vmName": {
@@ -250,7 +244,7 @@ Logikai érték a ellentétes értékké alakítja.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |logikai |Az átalakítandó érték. |
+| arg1 |Igen |boolean |Az átalakítandó érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -286,9 +280,9 @@ Az előző példából kimenete:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | Hamis |
+| andExampleOutput | Bool | False (Hamis) |
 | orExampleOutput | Bool | True (Igaz) |
-| notExampleOutput | Bool | Hamis |
+| notExampleOutput | Bool | False (Hamis) |
 
 A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) használ **nem** a [egyenlő](resource-group-template-functions-comparison.md#equals).
 
@@ -322,9 +316,9 @@ Ellenőrzi, hogy minden paraméter értéke igaz.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |logikai |Ellenőrizze, hogy az első értéket e igaz. |
-| arg2 |Igen |logikai |A második érték, ellenőrizze, hogy igaz. |
-| További argumentumok |Nem |logikai |További argumentumok ellenőrizze, hogy igaz. |
+| arg1 |Igen |boolean |Ellenőrizze, hogy az első értéket e igaz. |
+| arg2 |Igen |boolean |A második érték, ellenőrizze, hogy igaz. |
+| További argumentumok |Nem |boolean |További argumentumok ellenőrizze, hogy igaz. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -360,9 +354,9 @@ Az előző példából kimenete:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | Hamis |
+| andExampleOutput | Bool | False (Hamis) |
 | orExampleOutput | Bool | True (Igaz) |
-| notExampleOutput | Bool | Hamis |
+| notExampleOutput | Bool | False (Hamis) |
 
 ## <a name="next-steps"></a>További lépések
 

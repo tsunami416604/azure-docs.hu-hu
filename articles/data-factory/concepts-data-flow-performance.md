@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: d4acc620fb2a4c41615c745516e5ccfafd59d848
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bbbc2bc5c47821469ecf15a27195b1bf0c12e6e5
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057947"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190631"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Leképezési adatok folyamatok teljesítmény és finomhangolás – útmutató
 
@@ -59,6 +59,12 @@ Kattintson erre az ikonra a végrehajtási terv és a későbbi teljesítménypr
 * Köteg mérete beállítás utasítja az ADF adatok tárolása a memóriában helyett soronként-csoportok. Egy választható beállítás, és előfordulhat, hogy elfogynak a számítási csomópontokon, ha azok nem megfelelően mérete.
 * Egy lekérdezési beállítás sorok jobb forrásban szűrését, mielőtt még vizsgálatát az adatfolyam-feldolgozási, így gyorsabb kezdeti adatgyűjtés is engedélyezheti.
 * Ha egy lekérdezést használ, az Azure SQL DB, azaz READ UNCOMMITTED adhat hozzá opcionális lekérdezési javaslatok
+
+### <a name="set-isolation-level-on-source-transformation-settings-for-sql-datasets"></a>Átalakítási beállítások forrás SQL-adatkészletek esetében a elkülönítési szint beállítása
+
+* Olvassa el a nem véglegesített biztosít gyorsabb lekérdezés eredményeit az adatforrás-átalakítás
+
+![Elkülönítési szintet](media/data-flow/isolationlevel.png "elkülönítési szint")
 
 ### <a name="set-sink-batch-size"></a>Állítsa be a fogadó kötegmérete
 

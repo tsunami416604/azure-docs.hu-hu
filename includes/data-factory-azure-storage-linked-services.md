@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: b8585b62b0728d1ba6e010e42b44840903c46833
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66146916"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67179587"
 ---
 ### <a name="azure-storage-linked-service"></a>Azure Storage társított szolgáltatás
 A **Azure Storage társított szolgáltatás** lehetővé teszi, hogy az Azure storage-fiók összekapcsolása az Azure data factory használatával az **fiókkulcs**, amely az adat-előállító globális hozzáférést biztosít az Azure Storage. Az alábbi táblázatban az adott Azure Storage társított szolgáltatás JSON-elemek leírását.

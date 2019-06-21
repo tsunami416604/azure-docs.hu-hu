@@ -10,12 +10,13 @@ ms.workload: identity
 ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 27c91185bacea839ec73a3f4bd06f5df43bd4edf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 2c1bfd9e2659127ab77e9db661b54fde18a8d25c
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509653"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205366"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Auditnaplók eléréséhez az Azure AD B2C-vel
 
@@ -23,6 +24,9 @@ Az Azure Active Directory B2C (Azure AD B2C-vel) tartalmazó rendszertevékenys�
 
 > [!IMPORTANT]
 > Auditnaplók csak megmaradnak a hét napja. Tervezze meg, töltse le és tárolja a naplókat az alább látható, ha szüksége van-e a hosszabb adatmegőrzési idő módszerek egyikének használatával.
+
+> [!NOTE]
+> Felhasználói bejelentkezések a az egyes Azure AD B2C-alkalmazások nem látja a **felhasználók** szakaszában a **Azure Active Directory** vagy **Azure AD B2C-vel** paneljein. A bejelentkezések nincs felhasználói tevékenység megjelenik, de nem lehet visszamenőleges korrelációban állnak a B2C-alkalmazást, amely a felhasználó bejelentkezett. A vizsgálati naplók kell használnia, amint ez a cikk további azt.
 
 ## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>A naplók a B2C kategóriában elérhető tevékenységek áttekintése
 A **B2C** kategória-naplók az alábbi típusú tevékenységeket tartalmazza:
@@ -41,6 +45,18 @@ A **B2C** kategória-naplók az alábbi típusú tevékenységeket tartalmazza:
 
 ## <a name="example-activity"></a>Példa tevékenység
 Az alábbi példában látható, amikor egy felhasználó jelentkezik be egy külső identitásszolgáltatónak rögzített adatokat: ![Auditnaplók – példa](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
+
+A tevékenység részletei panelen a következő vonatkozó információkat tartalmazza:
+
+|`Section`|Mező|Leírás|
+|-------|-----|-----------|
+| Tevékenység | Name (Név) | Milyen tevékenység került sor. Például "Id_token kiadása az alkalmazásnak" (amely arra a következtetésre jut a tényleges felhasználói bejelentkezési). |
+| Kezdeményező (szereplő) | ObjectId | A **Objektumazonosító** , a B2C-alkalmazást, hogy a felhasználó bejelentkezik (Ez az azonosító nem látható az Azure Portalon de érhető el a Graph API-n keresztül például). |
+| Kezdeményező (szereplő) | Spn | A **Alkalmazásazonosító** , a B2C-alkalmazást, amely a felhasználó jelentkezik be. |
+| Cél(ok) | ObjectId | A **Objektumazonosító** felhasználó jelentkezik be. |
+| További részletek | TenantId | A **Bérlőazonosító** az Azure AD B2C-bérlő. |
+| További részletek | `PolicyId` | A **házirend-azonosító** használt beléptetni a felhasználót a felhasználói folyamat (házirend). |
+| További részletek | Alkalmazásazonosító | A **Alkalmazásazonosító** , a B2C-alkalmazást, amely a felhasználó jelentkezik be. |
 
 ## <a name="accessing-audit-logs-through-the-azure-portal"></a>Az Azure Portalon keresztül éri el a vizsgálati naplók
 1. Nyissa meg az [Azure Portal](https://portal.azure.com). Győződjön meg róla, hogy a B2C-címtárban.
@@ -62,6 +78,9 @@ Látni fogja az elmúlt hét napban naplózott tevékenységek listája.
 - Használja a **dátumtartomány** legördülő menü jelenik meg a tevékenységek dátumtartománya szűrése
 - Kattint egy adott sorra a listában, ha egy környezetfüggő a jobb oldali mezőbe megjelenik a tevékenység társított további attribútumok
 - Kattintson a **letöltése** tevékenységek letöltése csv-fájlként
+
+> [!NOTE]
+> Emellett megtekintheti az auditnaplók az **Azure AD B2C-vel** helyett **Azure Active Directory** a Kedvencek sávra a bal oldalon található. A **tevékenységek**, kattintson a **Auditnaplók**, ahol megtalálja a hasonló szűrési képességek azonos naplók.
 
 ## <a name="accessing-audit-logs-through-the-azure-ad-reporting-api"></a>Az Azure AD reporting API keresztül éri el a vizsgálati naplók
 Auditnaplók más tevékenységek azonos folyamatra számára közzétett Azure Active Directoryban, így azok keresztül érhetők el a [Azure Active Directory reporting API](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference).

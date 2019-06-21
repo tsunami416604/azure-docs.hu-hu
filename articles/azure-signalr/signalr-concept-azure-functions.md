@@ -6,16 +6,19 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: c06203cfd7537dd4c9bc35c75a3f21d12bf64d26
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c88e2b012086f61aad3143c8fe6b0bd25ec333e5
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61401876"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275095"
 ---
 # <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>Az Azure Functions és az Azure SignalR Service valós idejű alkalmazások készítése
 
 Mivel az Azure SignalR szolgáltatás és az Azure Functions teljeskörűen felügyelt, nagymértékben skálázható szolgáltatások, amelyek lehetővé teszik, hogy az infrastruktúra-kezelés helyett az alkalmazások létrehozására összpontosítson, gyakran használják együtt őket, hogy valós idejű kommunikációt biztosítsanak a [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) környezetekben.
+
+> [!NOTE]
+> Ismerje meg, hogyan használja a SignalR és az Azure Functions együtt az interaktív oktatóanyag [az Azure Functions és a SignalR Service egy webes alkalmazásban az automatikus frissítések engedélyezéséhez](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr).
 
 ## <a name="integrate-real-time-communications-with-azure-services"></a>Valós idejű kommunikáció integrálása Azure-szolgáltatásokkal
 
@@ -63,9 +66,10 @@ A SignalR szolgáltatás lehetővé teszi, hogy üzeneteket továbbítson az ös
 
 Ez a cikk áttekintést nyújtott arról, hogyan használható az Azure Functions és a SignalR szolgáltatás számos különböző kiszolgáló nélküli, valós idejű üzenetküldési forgatókönyv engedélyezésére.
 
-További részletek az Azure Functions és a SignalR Service együttes használatával olvassa el az alábbi útmutatóban.
+Az Azure Functions és a SignalR Service együttes használata teljes részletekért látogasson el az alábbi forrásanyagokat:
 
 * [Az Azure Functions fejlesztői és SignalR Service-konfiguráció](signalr-concept-serverless-development-config.md)
+* [Az Azure Functions és a SignalR Service egy webalkalmazás automatikus frissítések engedélyezése](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr)
 
 További információért kövesse az alábbi rövid útmutatók egyikét.
 

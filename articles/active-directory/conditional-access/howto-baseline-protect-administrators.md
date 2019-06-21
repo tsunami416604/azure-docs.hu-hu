@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f8b7f281ad5ed8424110696544ffdb49e50ce59
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9b2ffd2949c2540265539a743cb41d8070d7ba2a
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112430"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204636"
 ---
 # <a name="baseline-policy-require-mfa-for-admins"></a>Alapvető házirendet: MFA megkövetelése rendszergazdáktól
 
@@ -71,6 +71,9 @@ A szabályzat engedélyezéséhez, és a rendszergazdák védelmére:
 1. Állítsa be **házirend engedélyezése** való **a házirend azonnal használható**.
 1. Bármely felhasználó kizárások hozzáadása kattintva **felhasználók** > **kizárt felhasználók kiválasztása** majd ki kell zárni a felhasználóknak. Kattintson a **kiválasztása** majd **kész**.
 1. Kattintson a **mentése**.
+
+> [!WARNING]
+> Hiba történt egy beállítást **szabályzat automatikus engedélyezés a jövőben** Ha e szabályzat volt érvényes előzetes verzióban érhető el. Eltávolítottuk ezt a beállítást, amikor hirtelen felhasználókra gyakorolt hatás minimalizálása érdekében. Ha ezt a beállítást választotta, amikor volt elérhető, **ne használja a házirend** automatikusan miután már kiválasztotta. Ha használni kívánja az alapvető házirendet, tekintse meg a engedélyezze azt a fenti lépéseket.
 
 ## <a name="next-steps"></a>További lépések
 

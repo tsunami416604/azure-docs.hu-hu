@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: saudas
-ms.openlocfilehash: 2d555908007f4e43a38b6d0eff909ef5050878ea
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: b7910ee6f58c582b824cec834d92a24c0e184bfb
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069675"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205275"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Támogatott az Azure Kubernetes Service (AKS) Kubernetes-verzió
 
@@ -52,9 +52,9 @@ Ez az úgynevezett "N-3"-(N (a legújabb kiadás) – 3 (alverziót)).
 
 Például, ha az AKS vezet be *1.13.x* még ma, a következő verziók támogatást is magukban:
 
-Új alverzió támogatott listája
------------------        ----------------------
-1.13.x 1.12.a, 1.12.b, 1.11.a, 1.11.b, 1.10.a, 1.10.b
+Új alverzió    |    Támogatott verzió lista
+-----------------    |    ----------------------
+1.13.x               |    1.12.a, 1.12.b, 1.11.a, 1.11.b, 1.10.a, 1.10.b
 
 Ha "x" és "sémaszintjén" és ".b" reprezentatív javítási verzió.
 
@@ -84,11 +84,15 @@ Ha a felsőbb rétegbeli Kubernetes kiadott 1.12.3 és 1.11.6 és AKS-kiadások 
 ----------------------
 1.12.*2*, 1.12.*3*, 1.11.*5*, 1.11.*6*
 
+> [!NOTE]
+> Ügyfelek nem kell rögzíteni, fürt létrehozása, CI vagy más automatizált feladatokkal adott javítás kiadására. 
+
 ### <a name="communications"></a>Kommunikáció
 
 * Az új **kisebb** Kubernetes verzióját
-  * Összes felhasználó értesítést kap az új verziót, és milyen verziójú törlődni fog.
-  * A verzióját futtató ügyfelek **eltávolítandó** értesítést kap arról, hogy **60 napig** frissítése egy támogatott verziójára (például kisebb verzió).
+  * Összes felhasználó értesítést kap nyilvánosan az új verziót, és milyen verziójú törlődni fog.
+  * Javítás egy új verziója, a legrégebbi javítás kiadás eltávolítja egy időben.
+  * Az ügyfél rendelkezik **60 napig** nyilvános értesítési napjától frissítése egy támogatott alverzió kiadásra.
 * Az új **javítás** Kubernetes verzióját
   * Összes felhasználó értesítést kap az új javítási verzió felszabadítását, és frissítse a legújabb javítást.
   * Felhasználók **30 napig** frissítése egy újabb, a támogatott javítás kiadásra. Felhasználók **30 napig** frissítése egy támogatott javítás kiadásra a legrégebbi eltávolítása előtt.

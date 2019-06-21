@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
 ms.date: 05/22/2019
-ms.openlocfilehash: 776f79d7f32cf23943ecab4133e055993d30c7cd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 04b1d0eda85972517155f80488ad590fb56619ab
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075062"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190685"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Az Azure Logic Apps díjszabási modell
 
@@ -53,7 +53,7 @@ Díjszabási információkért tekintse meg a [Azure Logic Apps díjszabási](ht
 
 ## <a name="connectors"></a>Összekötők
 
-Az Azure Logic Apps-összekötők segítségével azáltal, hogy a logikai alkalmazás hozzáférés-alkalmazások, szolgáltatások és a felhőbeli és helyszíni rendszerek [eseményindítók](#triggers), [műveletek](#actions), vagy mindkettőt. Összekötők besorolt Standard vagy Enterprise. Ezeket az összekötőket kapcsolatos áttekintéséhez lásd: [Azure Logic Apps összekötői](../connectors/apis-list.md). A következő szakaszok további információt a hogyan számlázzák a aktiválása és a műveletek.
+Az Azure Logic Apps-összekötők segítségével azáltal, hogy a logikai alkalmazás hozzáférés-alkalmazások, szolgáltatások és a felhőbeli és helyszíni rendszerek [eseményindítók](#triggers), [műveletek](#actions), vagy mindkettőt. Összekötők besorolt Standard vagy Enterprise. Ezeket az összekötőket kapcsolatos áttekintéséhez lásd: [Azure Logic Apps összekötői](../connectors/apis-list.md). Ha nincsenek előre elkészített összekötők a logic Apps használni kívánt REST API-k érhetők el, létrehozhat [egyéni összekötők](https://docs.microsoft.com/connectors/custom-connectors), amely körül, amelyek csak burkolókat REST API-k vannak. Egyéni összekötők, a standard szintű összekötők számítjuk fel. A következő szakaszok további információt a hogyan számlázzák a aktiválása és a műveletek.
 
 <a name="triggers"></a>
 

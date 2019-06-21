@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97b32fff931c1c0f5e19a269afec5094cae3d40e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 204e230f7ff0897d2ba97213ebc836aff9d0324b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111206"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204650"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Forgatókönyv: Webes API-kat hívó asztali alkalmazás
 
@@ -53,7 +53,7 @@ Asztali alkalmazások írása, és a felhasználók az alkalmazáshoz, és a web
 
   ![Asztali alkalmazás](media/scenarios/desktop-app.svg)
 
-- Ha szeretne írni egy hordozható parancssori eszköz – valószínűleg egy Linux vagy Mac rendszeren futó .NET Core-alkalmazást – nem tudja használni, sem az interaktív hitelesítéshez (szerint nem biztosít a .NET Core egy [webböngésző](https://aka.ms/msal-net-uses-web-browser)), és integrált sem. Windows-hitelesítés. A legjobb lehetőség ebben az esetben az eszköz kódfolyamat használja. Ez a folyamat egy böngészőbe, például az iOT-alkalmazások anélkül alkalmazásokhoz is használható
+- Ha szeretne írni egy hordozható parancssori eszköz – valószínűleg egy Linux vagy Mac rendszeren futó .NET Core-alkalmazást – nem tudja használni valamelyik az interaktív hitelesítés (mert nem biztosít a .NET Core egy [webböngésző](https://aka.ms/msal-net-uses-web-browser)), vagy integrált Windows-hitelesítés. A legjobb lehetőség ebben az esetben az eszköz kódfolyamat használja. Ez a folyamat egy böngészőbe, például az IoT-alkalmazások anélkül alkalmazásokhoz is használható
 
   ![Browserless alkalmazás](media/scenarios/device-code-flow-app.svg)
 

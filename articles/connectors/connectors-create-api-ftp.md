@@ -6,16 +6,16 @@ ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-ms.reviewer: divswa, LADocs
+ms.reviewer: divswa, klam, LADocs
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 06/19/2019
 tags: connectors
-ms.openlocfilehash: e5aeaa707c7a839483484c524e982204d6fe055c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 66f1d726dcfa1a077abbff0d9f028036db43cc25
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60408555"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67293096"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Létrehozása, figyelése és kezelése az FTP-fájlok Azure Logic Apps használatával
 
@@ -30,13 +30,31 @@ Használhatja az eseményindítókat, amelyek választ kaphat az FTP-kiszolgál�
 
 ## <a name="limits"></a>Limits
 
-* FTP-műveleteket csak olyan fájlok, amelyek támogatják *50 MB-ot kisebb vagy* Ha nem használ [üzenet darabolás](../logic-apps/logic-apps-handle-large-messages.md), amelyek lehetővé teszik túllépi ezt a határt. FTP-eseményindítók jelenleg nem támogatja a darabolás.
-
 * Az FTP-összekötő csak explicit FTP támogatja az SSL feletti (FTPS), és nem kompatibilis az implicit FTPS.
+
+* Alapértelmezés szerint az FTP-műveleteket olvashatja vagy írhatja fájlok *50 MB vagy kisebb*. 50 MB-nál nagyobb fájlok kezeléséhez, FTP-műveleteket támogatási [üzenet darabolás](../logic-apps/logic-apps-handle-large-messages.md). A **fájl tartalmának beolvasása** művelet implicit módon használja darabolás.
+
+* FTP-triggerek nem támogatják a darabolás. Fájl tartalmának kérésekor eseményindítók kiválasztása csak olyan fájlok, amelyek 50 MB vagy kisebb. 50 MB-nál nagyobb fájlok lekéréséhez kövesse az ezt a mintát:
+
+  * Használjon egy FTP-eseményindítóval, amely visszaadja a fájl tulajdonságait, például **fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)** .
+
+  * Hajtsa végre az eseményindítót az FTP- **fájl tartalmának beolvasása** művelet, amely beolvassa a teljes fájlt, és implicit módon darabolás.
+
+## <a name="how-ftp-triggers-work"></a>Hogyan FTP elindítja a munka
+
+FTP-eseményindítók munka az FTP-fájlrendszer lekérdezésével, és keres olyan fájlt, amely a legutóbbi lekérdezés óta módosult. Egyes eszközök segítségével történő küldés időbélyegzője legyen megőrzése, ha módosítja a fájlokat. Ezekben az esetekben kell letiltani ezt a funkciót, így az eseményindító is dolgozhat. Az alábbiakban néhány gyakori beállítások:
+
+| Az SFTP-ügyfél | Műveletek |
+|-------------|--------|
+| Winscp | Lépjen a **beállítások** > **beállítások** > **Transfer** > **szerkesztése**  >  **Időbélyeg megőrzése** > **letiltása** |
+| FileZilla | Lépjen a **Transfer** > **időbélyegeket átvitt fájlok megőrzéséhez** > **letiltása** |
+|||
+
+Ha az eseményindító egy új fájlt talál, a trigger ellenőrzi, hogy az új fájl teljes és részlegesen írásos. Például egy fájl előfordulhat módosítások folyamatban, amikor a trigger ellenőriz a fájlkiszolgálón. Részlegesen írásos fájl visszaadó elkerüléséhez az eseményindító feljegyzi az időbélyeg, amely rendelkezik a legutóbbi módosítások, de nem ad vissza a fájlt közvetlenül a fájl. A trigger a fájl adja vissza, csak akkor, ha a kiszolgáló ismét lekérdezés. Egyes esetekben ez a viselkedés, amely legfeljebb kétszer az eseményindító a lekérdezési időköz késleltetés okozhatja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. 
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
 * Your FTP host server address and account credentials
 
@@ -56,22 +74,13 @@ Használhatja az eseményindítókat, amelyek választ kaphat az FTP-kiszolgál�
 
    – vagy –
 
-   Meglévő logic Apps alkalmazások, az utolsó lépés, adjon hozzá egy műveletet, amelyre a válasszon **új lépés**, majd válassza ki **művelet hozzáadása**. 
-   A keresőmezőbe írja be szűrőként az "ftp". 
-   Műveletek listája alatt válassza ki a kívánt művelet.
+   Meglévő logic Apps alkalmazások, az utolsó lépés, adjon hozzá egy műveletet, amelyre a válasszon **új lépés**, majd válassza ki **művelet hozzáadása**. A keresőmezőbe írja be szűrőként az "ftp". Műveletek listája alatt válassza ki a kívánt művelet.
 
-   Lépések közötti művelet hozzáadása, helyezze az egérmutatót a nyíl lépések között. 
-   Válassza a plusz jelre ( **+** ), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
+   Lépések közötti művelet hozzáadása, helyezze az egérmutatót a nyíl lépések között. Válassza a plusz jelre ( **+** ), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
 
 1. Adja meg a szükséges adatokat a kapcsolatot, és válassza a **létrehozás**.
 
 1. Adja meg a szükséges adatokat a kijelölt eseményindítót vagy műveletet, és továbbra is használhatja a logic app-munkafolyamatot.
-
-Fájl tartalmának kérésekor az eseményindító nem fájlok lekérése 50 MB-nál nagyobb. 50 MB-nál nagyobb fájlok lekéréséhez kövesse az ezt a mintát:
-
-* Használjon egy eseményindítót, amely visszaadja a fájl tulajdonságait, például **fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)** .
-
-* Hajtsa végre az eseményindítót egy műveletet, amely beolvassa a teljes fájlt, mint például a **fájl tartalmának beolvasása elérési út segítségével**, és rendelkezik a művelet használata [üzenet darabolás](../logic-apps/logic-apps-handle-large-messages.md).
 
 ## <a name="examples"></a>Példák
 
@@ -79,17 +88,9 @@ Fájl tartalmának kérésekor az eseményindító nem fájlok lekérése 50 MB-
 
 ### <a name="ftp-trigger-when-a-file-is-added-or-modified"></a>FTP-eseményindító: Amikor felvesznek vagy módosítanak egy fájlt
 
-Ez az eseményindító a logikaialkalmazás-munkafolyamat az eseményindító észleli, ha egy fájl hozzáadásakor vagy módosítani az FTP-kiszolgálón kezdődik. Így például hozzáadhat egy feltételt, amely ellenőrzi a fájl tartalmát, és úgy dönt, hogy kapják meg a tartalmat a e tartalom megfelel-e a megadott feltétel alapján. Végül adjon hozzá egy műveletet, amely a fájl tartalmának beolvasása, és helyezi a tartalmat egy mappába az SFTP-kiszolgáló. 
+Ez az eseményindító a logikaialkalmazás-munkafolyamat az eseményindító észleli, ha egy fájl hozzáadásakor vagy módosítani az FTP-kiszolgálón kezdődik. Így például hozzáadhat egy feltételt, amely ellenőrzi a fájl tartalmát, és úgy dönt, hogy kapják meg a tartalmat a e tartalom megfelel-e a megadott feltétel alapján. Végül adjon hozzá egy műveletet, amely a fájl tartalmának beolvasása, és helyezi a tartalmat egy mappába az SFTP-kiszolgáló.
 
 **Példa vállalati**: Ez az eseményindító használatával figyelheti az FTP-mappába, új fájlok, amelyek ismertetik a vevői rendelések. Ezután használhatja az FTP művelet például **fájl tartalmának beolvasása**, hogy a rendelés tartalmának beolvasása a további feldolgozás céljából, valamint egy rendelési adatbázisba sorrendben tárolja.
-
-Fájl tartalmának kérésekor eseményindítók nem olvasható be a fájlok 50 MB-nál nagyobb. 50 MB-nál nagyobb fájlok lekéréséhez kövesse az ezt a mintát: 
-
-* Használjon egy eseményindítót, amely visszaadja a fájl tulajdonságait, például **fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)** .
-
-* Hajtsa végre az eseményindítót egy műveletet, amely beolvassa a teljes fájlt, mint például a **fájl tartalmának beolvasása elérési út segítségével**, és rendelkezik a művelet használata [üzenet darabolás](../logic-apps/logic-apps-handle-large-messages.md).
-
-Egy érvényes és funkcionális logikai alkalmazásnak szüksége van, egy eseményindítót, és legalább egy műveletet. Ezért győződjön meg arról, hogy a művelet hozzáadása, miután hozzáadott egy eseményindítót.
 
 A következő példa bemutatja, ez az eseményindító: **Amikor felvesznek vagy módosítanak egy fájlt**
 
@@ -101,8 +102,7 @@ A következő példa bemutatja, ez az eseményindító: **Amikor felvesznek vagy
 
 1. Adja meg a szükséges adatokat a kapcsolatot, és válassza a **létrehozás**.
 
-   Alapértelmezés szerint ez az összekötő a szöveges formátumú fájlok átvitele. 
-   Átvitelhez bináris fájlok formátumú, például ha és kódolás használata esetén válassza ki a **bináris átvitelt**.
+   Alapértelmezés szerint ez az összekötő a szöveges formátumú fájlok átvitele. Átvitelhez bináris fájlok formátumú, például ha és kódolás használata esetén válassza ki a **bináris átvitelt**.
 
    ![FTP-kiszolgáló közötti kapcsolat létrehozása](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)  
 
@@ -120,23 +120,17 @@ Most, hogy a logikai alkalmazás egy eseményindító tartozik, adja hozzá a m�
 
 ### <a name="ftp-action-get-content"></a>FTP-művelet: Tartalom lekérése
 
-Ez a művelet a tartalom egy fájlt egy FTP-kiszolgálón olvassa be, ha a fájl hozzáadásakor vagy frissítésekor. Így például az előző példában és a egy műveletet, amely a fájl tartalmának beolvasása után ezt a fájlt ad hozzá vagy szerkeszthetők az eseményindító is hozzáadhat. 
-
-Fájl tartalmának kérésekor eseményindítók nem olvasható be a fájlok 50 MB-nál nagyobb. 50 MB-nál nagyobb fájlok lekéréséhez kövesse az ezt a mintát: 
-
-* Használjon egy eseményindítót, amely visszaadja a fájl tulajdonságait, például **fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)** .
-
-* Hajtsa végre az eseményindítót egy műveletet, amely beolvassa a teljes fájlt, mint például a **fájl tartalmának beolvasása elérési út segítségével**, és rendelkezik a művelet használata [üzenet darabolás](../logic-apps/logic-apps-handle-large-messages.md).
+Ez a művelet a tartalom egy fájlt egy FTP-kiszolgálón olvassa be, ha a fájl hozzáadásakor vagy frissítésekor. Így például az előző példában és a egy műveletet, amely a fájl tartalmának beolvasása után ezt a fájlt ad hozzá vagy szerkeszthetők az eseményindító is hozzáadhat.
 
 A következő példa bemutatja, ez a művelet: **Tartalom lekérése**
 
-1. Válassza az eseményindító vagy bármely más műveletek, **új lépés**. 
+1. Válassza az eseményindító vagy bármely más műveletek, **új lépés**.
 
 1. A keresőmezőbe írja be szűrőként az "ftp". Műveletek listája alatt válassza a következő műveletet: **Fájl tartalmának - FTP beolvasása**
 
    ![FTP-művelet kiválasztása](./media/connectors-create-api-ftp/select-ftp-action.png)  
 
-1. Ha már rendelkezik egy kapcsolatot az FTP-kiszolgáló és a fiók, lépjen a következő lépéssel. Ellenkező esetben adja meg a szükséges adatokat, hogy a kapcsolat, és válassza **létrehozás**. 
+1. Ha már rendelkezik egy kapcsolatot az FTP-kiszolgáló és a fiók, lépjen a következő lépéssel. Ellenkező esetben adja meg a szükséges adatokat, hogy a kapcsolat, és válassza **létrehozás**.
 
    ![FTP-kiszolgáló közötti kapcsolat létrehozása](./media/connectors-create-api-ftp/create-ftp-connection-action.png)
 
@@ -153,11 +147,6 @@ A következő példa bemutatja, ez a művelet: **Tartalom lekérése**
 ## <a name="connector-reference"></a>Összekötő-referencia
 
 További technikai részletek korlátok, eseményindítók és műveletek, amely ismerteti az összekötő OpenAPI által (korábbi nevén Swagger) leírását, tekintse át a [összekötő referencialapja](/connectors/ftpconnector/).
-
-## <a name="get-support"></a>Támogatás kérése
-
-* A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>További lépések
 

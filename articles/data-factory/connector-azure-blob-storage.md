@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 1ff20322f1d4f6024d4f41037ca18c327a0cc21f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3be075b78d8388b7146a9a3180ca825fc6476108
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233195"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206032"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure Blob storage-ból az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
@@ -60,7 +60,10 @@ Az Azure Blob-összekötő a következő hitelesítési típusok támogatása, t
 - [Felügyelt identitások Azure-erőforrások hitelesítéshez](#managed-identity)
 
 >[!NOTE]
->Platformját, az Azure Machine Learning és az Azure SQL Data Warehouse PolyBase betöltési csak Azure Blob storage-fiók kulcsos hitelesítést támogatják.
+>A PolyBase az adatok betöltése az SQL Data Warehouse, ha a forrás- vagy Blob storage átmeneti beállítása a virtuális hálózati végpont, ha szükséges, a PolyBase által felügyelt identitás-hitelesítés használatára, és kell használnia helyi integrációs modul verziójával 3.18 vagy újabb. Tekintse meg a [felügyelt identitás hitelesítési](#managed-identity) további konfigurációs az Előfeltételek szakaszban.
+
+>[!NOTE]
+>Hdinsight és az Azure Machine Learning-tevékenységek csak az Azure Blob storage-fiók kulcsos hitelesítést támogatják.
 
 ### <a name="account-key-authentication"></a>Fiók kulcsos hitelesítés
 
@@ -272,6 +275,9 @@ Tekintse meg [hitelesíti a hozzáférést az Azure Storage, Azure Active Direct
 
     - **Forrásként**, az Access (IAM) vezérlőelemet, adja meg legalább **Storage-Blobadatok olvasója** szerepkör.
     - **Fogadóként**, az Access (IAM) vezérlőelemet, adja meg legalább **Storage-Blobadatok Közreműködője** szerepkör.
+
+>[!IMPORTANT]
+>Ha a PolyBase használatával adatok betöltése a Blobból (forrásként vagy átmeneti) az SQL Data Warehouse, a Blob felügyelt identitás-hitelesítés használata esetén, győződjön meg arról is lépéseket 1. és 2 a [Ez az útmutató](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) 1) regisztrálja az SQL-adatbázis az Azure Active Directoryval (Azure AD-) kiszolgáló és a 2) a Storage-Blobadatok Közreműködője szerepkör hozzárendelése az SQL Database-kiszolgáló; a Data Factory kezeli, a többi. Ha a Blob storage egy Azure Virtual Network végponthoz van konfigurálva, az adatok betöltése a PolyBase használatával kell használnia felügyelt identitás hitelesítési PolyBase igényeinek megfelelően.
 
 Ezek a Tulajdonságok támogatottak az Azure Blob storage társított szolgáltatása:
 

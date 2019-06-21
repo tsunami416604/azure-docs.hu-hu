@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/30/2019
+ms.date: 06/05/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efd3ff8a6e7ddf2aa6242cc322d8a6536a6bd26b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fbb4001e9496d31d9c2879721f8cf8e26b74ddf3
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66474068"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204554"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Mi az Azure ad-ben tagjogosultság-kezelés? (Előzetes verzió)
 
@@ -129,41 +129,6 @@ Tagjogosultság-kezelés és a hozzá tartozó dokumentáció jobb megértéséh
 | erőforrás-könyvtár | Egy könyvtárat, amely rendelkezik egy vagy több erőforrás megosztására. |
 | hozzárendelt felhasználó | Hozzárendelés-hozzáférés egy felhasználó vagy csoport csomag. |
 | Engedélyezése | A folyamat a felhasználók kérvényezhetik a kívánt elérhetővé egy hozzáférés-csomagot. |
-
-## <a name="roles-and-permissions"></a>Szerepkörök és engedélyek
-
-Tagjogosultság-kezelés a feladat függvény alapján különböző szerepkörrel rendelkezik.
-
-| Szerepkör | Leírás |
-| --- | --- |
-| [Felhasználói adminisztrátor](../users-groups-roles/directory-assign-admin-roles.md#user-administrator) | Tagjogosultság-kezelés minden szempontjának kezeléséhez.<br/>Felhasználók és csoportok létrehozása. |
-| Katalógus létrehozója | Hozzon létre és katalógusok kezeléséhez. Általában a rendszergazda vagy az erőforrás tulajdonosa. A személy, amely automatikusan létrehozza a katalógus lesz a katalógus első katalógus tulajdonosa. |
-| Katalógus tulajdonosa | Szerkessze, és a meglévő katalógusok kezelése. Általában a rendszergazda vagy az erőforrás tulajdonosa. |
-| Hozzáférés a Csomagkezelő | Szerkessze, és kezelni átveheti a katalógusban az összes meglévő hozzáférési csomagok. |
-| Jóváhagyó | Hagyja jóvá a csomagok hozzáférés kérése. |
-| Kérelmező | A kérelem hozzáférési csomagok. |
-
-Az alábbi táblázat ezek a szerepkörök engedélyeit.
-
-| Tevékenység | Felhasználói rendszergazda | Katalógus létrehozója | Katalógus tulajdonosa | Hozzáférés a Csomagkezelő | Jóváhagyó |
-| --- | :---: | :---: | :---: | :---: | :---: |
-| [Hozzon létre egy új hozzáférési csomagot az általános-katalógusban](entitlement-management-access-package-create.md) | :heavy_check_mark: |  :heavy_check_mark: |  |  |  |
-| [Hozzon létre egy új hozzáférési csomagot a katalógusban található](entitlement-management-access-package-create.md) | :heavy_check_mark: |   | :heavy_check_mark: |  |  |
-| [Erőforrás-szerepkörökkel és a egy hozzáférés-csomag hozzáadása/eltávolítása](entitlement-management-access-package-edit.md) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Adja meg, akik kérhet egy hozzáférés-csomag](entitlement-management-access-package-edit.md#add-a-new-policy) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Felhasználó hozzárendelése közvetlenül egy hozzáférés-csomag](entitlement-management-access-package-edit.md#directly-assign-a-user) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Az access-csomag-hozzárendeléssel rendelkezik felhasználó megtekintése](entitlement-management-access-package-edit.md#view-who-has-an-assignment) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Egy hozzáférés-csomagot kérelmek megtekintése](entitlement-management-access-package-edit.md#view-requests) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Egy kérelem kézbesítési hibák megtekintése](entitlement-management-access-package-edit.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Függőben lévő kérelem megszakítása](entitlement-management-access-package-edit.md#cancel-a-pending-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Egy hozzáférés-csomag elrejtése](entitlement-management-access-package-edit.md#change-the-hidden-setting) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Töröl egy hozzáférés-csomagot](entitlement-management-access-package-edit.md#delete) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Hozzáférési kérelem jóváhagyása](entitlement-management-request-approve.md) |  |  |  |  | :heavy_check_mark: |
-| [Katalógus létrehozása](entitlement-management-catalog-create.md) | :heavy_check_mark: | :heavy_check_mark: |  |  |  |
-| [Erőforrások és-tárolókról a általános katalógus hozzáadása/eltávolítása](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  |  |  |  |
-| [Erőforrások és-tárolókról a katalógus hozzáadása/eltávolítása](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
-| [Katalógus tulajdonosok hozzáadása vagy csomagkezelők eléréséhez](entitlement-management-catalog-create.md#add-catalog-owners-or-access-package-managers) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
-| [Szerkesztheti vagy törölheti a katalógusban](entitlement-management-catalog-create.md#edit-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
 
 ## <a name="license-requirements"></a>Licenckövetelmények
 

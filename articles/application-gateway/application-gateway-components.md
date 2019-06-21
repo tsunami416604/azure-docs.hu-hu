@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: f5dfa34760bcef23bf54d65b35e3ad8f48cc2ee5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 49b6b49d908a7426e7cfd1bae5260ff399d9953b
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60831834"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273234"
 ---
 # <a name="application-gateway-components"></a>Application gateway összetevők
 
@@ -26,7 +26,9 @@ Egy előtérbeli IP-cím pedig az application gateway társított IP-címe. Konf
 
 ### <a name="static-versus-dynamic-public-ip-address"></a>Static versus dynamic public IP address
 
-Az Azure Application Gateway v2 szintű Termékváltozatot támogatja mindkét statikus belső és a statikus nyilvános IP-címeket, bár a v1 Termékváltozatot támogatja a csak statikus belső IP-címeket. A virtuális IP-cím (VIP) cím módosíthatja, ha az application gateway leállítása és elindítása.
+Az Azure Application Gateway V2 szintű Termékváltozatot vagy egyaránt statikus belső IP-cím és a statikus nyilvános IP-címet, vagy csak statikus nyilvános IP-cím támogatására konfigurálható. Támogatja a csak statikus belső IP-cím nem lehet konfigurálni.
+
+A V1 Termékváltozatot beállítható úgy, hogy támogatják a statikus belső IP-cím és a dinamikus nyilvános IP-cím csak statikus belső IP-címet, vagy csak dinamikus nyilvános IP-címet. A dinamikus IP-címét az Application Gateway nem módosítja a futó átjáró. Ezt módosíthatja, csak akkor, ha leállítja vagy indítsa el az átjárót. Ez nem változik a rendszerhibákat, a frissítések, az Azure-beli gazdagéppel frissítéseknek stb. 
 
 Egy application gateway társított DNS-nevet az átjáró életciklusa nem változik. Ennek eredményeképpen kell egy CNAME-alias használata és az application gateway DNS-címére mutasson.
 
