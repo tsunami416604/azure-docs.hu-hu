@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: ee64d25afcb2be73bed26c6c4dec87f216a0fd82
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 47ae3eb41145a74c1726847943df9074a4a75dfe
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66383875"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273659"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Az Azure Event Hubs az Azure Blob Storage vagy az Azure Data Lake Storage keresztül események rögzítése
-Az Azure Event Hubs lehetővé teszi, hogy automatikusan rögzítheti a streamelt adatokat az Event hubs- [Azure Blob storage](https://azure.microsoft.com/services/storage/blobs/) vagy [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) hozzáadott rugalmasságával a kiválasztott fiók Adjon meg egy idő- vagy méretbeli intervallumokat. Rögzítés beállítása a gyors, nincsenek a futtatáshoz felügyeleti költségek, és automatikusan átméreteződik az Event Hubs [átviteli egységek](event-hubs-features.md#throughput-units). Az Event Hubs Capture legegyszerűbb módja a streamelési adatok betöltése az Azure-ba, és lehetővé teszi, hogy fókusz adatfeldolgozási helyett az adatváltozások rögzítése.
+Az Azure Event Hubs lehetővé teszi, hogy automatikusan rögzítheti a streamelt adatokat az Event hubs- [Azure Blob storage](https://azure.microsoft.com/services/storage/blobs/) vagy [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) hozzáadott rugalmasságával a kiválasztott fiók Adjon meg egy idő- vagy méretbeli intervallumokat. Rögzítés beállítása a gyors, nincsenek a futtatáshoz felügyeleti költségek, és automatikusan átméreteződik az Event Hubs [átviteli egységek](event-hubs-scalability.md#throughput-units). Az Event Hubs Capture legegyszerűbb módja a streamelési adatok betöltése az Azure-ba, és lehetővé teszi, hogy fókusz adatfeldolgozási helyett az adatváltozások rögzítése.
 
 Event Hubs rögzítés funkciója lehetővé teszi ugyanazon streamben-folyamatok valós idejű és kötegelt feldolgozásához. Ez azt jelenti, hogy idővel igényeinek hozhat létre megoldásokat, amelyek növekszik. E batch-alapú rendszereket jelenleg kövesse figyelemmel valós idejű feldolgozás jövőbeli felé fejleszt, vagy egy hatékony ritka elérésű útvonal hozzáadása egy meglévő valós idejű megoldást szeretne, streamelési adatok könnyebb munka az Event Hubs Capture révén.
 
@@ -32,7 +32,7 @@ Event Hubs rögzítés funkciója lehetővé teszi ugyanazon streamben-folyamato
 
 ## <a name="how-event-hubs-capture-works"></a>Az Event Hubs Capture működése
 
-Event Hubs szolgáltatás egy idő-megőrzési puffert a telemetriai adatok bejövő, elosztott a napló a hasonló. Skálázás az Event Hubs kulcsa a [particionált felhasználói modell](event-hubs-features.md#partitions). Mindegyik partíció egy független szegmenst az adatok, és egymástól függetlenül használja fel. Idővel ezek az adatok elavulnak, kikapcsolt, a konfigurálható adatmegőrzési időszak alapján. Ennek eredményeképpen egy adott eseményközpontban soha nem beolvasása "túl teljes."
+Event Hubs szolgáltatás egy idő-megőrzési puffert a telemetriai adatok bejövő, elosztott a napló a hasonló. Skálázás az Event Hubs kulcsa a [particionált felhasználói modell](event-hubs-scalability.md#partitions). Mindegyik partíció egy független szegmenst az adatok, és egymástól függetlenül használja fel. Idővel ezek az adatok elavulnak, kikapcsolt, a konfigurálható adatmegőrzési időszak alapján. Ennek eredményeképpen egy adott eseményközpontban soha nem beolvasása "túl teljes."
 
 Az Event Hubs Capture lehetővé teszi, hogy adja meg a saját Azure Blob storage-fiók és a tároló vagy az Azure Data Lake Store-fiókot, amely a rögzített adatok tárolására szolgálnak. Ezek a fiókok lehet az eseményközpont ugyanabban a régióban, vagy egy másik régióban, az Event Hubs rögzítés funkciója a rugalmas ad hozzá.
 
@@ -54,7 +54,7 @@ https://mystorageaccount.blob.core.windows.net/mycontainer/mynamespace/myeventhu
 
 ### <a name="scaling-to-throughput-units"></a>Az átviteli egységek méretezése
 
-Event Hubs forgalmat kezelnek [átviteli egységek](event-hubs-features.md#throughput-units). Egy átviteli egység lehetővé teszi, hogy 1 MB másodpercenként bejövő és kimenő forgalom kétszer adott mennyiségű második vagy 1000 esemény. Standard szintű Event Hubs 1 – 20 átviteli egység is konfigurálhatók, és többet is vásárolhat a kvóta növeléséhez [támogatási kérelem][support request]. A megvásárolt átviteli egységek használat folyamatban van. Az Event Hubs Capture adatokat másol közvetlenül a belső az Event Hubs-tároló átviteli egység a kimenő forgalom kvóták kihagyásával, és a kimenő forgalom mentése más feldolgozási olvasók, például a Stream Analytics vagy a Spark.
+Event Hubs forgalmat kezelnek [átviteli egységek](event-hubs-scalability.md#throughput-units). Egy átviteli egység lehetővé teszi, hogy 1 MB másodpercenként bejövő és kimenő forgalom kétszer adott mennyiségű második vagy 1000 esemény. Standard szintű Event Hubs 1 – 20 átviteli egység is konfigurálhatók, és többet is vásárolhat a kvóta növeléséhez [támogatási kérelem][support request]. A megvásárolt átviteli egységek használat folyamatban van. Az Event Hubs Capture adatokat másol közvetlenül a belső az Event Hubs-tároló átviteli egység a kimenő forgalom kvóták kihagyásával, és a kimenő forgalom mentése más feldolgozási olvasók, például a Stream Analytics vagy a Spark.
 
 Miután konfigurálta az Event Hubs Capture automatikusan fut, amikor az első eseményt küld, és továbbra is fut. Hogy egyszerűbb legyen az tudnia, hogy működik-e a folyamat az alárendelt feldolgozáshoz, az Event Hubs üres fájlok ír, amikor nem szerepel megjeleníthető adat. Ez a folyamat egy előre jelezhető-váltás gyakoriságáról és jelölő, amely képes a batch-processzorok biztosít.
 
@@ -74,11 +74,11 @@ Az Event Hubs Capture által előállított fájlok a következő Avro-sémában
 
 ![Avro-sémában][3]
 
-Egyszerűen fedezheti fel az Avro-fájlok használatával van a [Avro eszközök] [ Avro Tools] az Apache jar. Is [Apache Drill] [ Apache Drill] az SQL-központú élmény könnyű vagy [Apache Spark] [ Apache Spark] végrehajtásához összetett elosztott a feldolgozott adatok feldolgozása. 
+Egyszerűen fedezheti fel az Avro-fájlok használatával van a [Avro eszközök][Avro Tools] jar from Apache. You can also use [Apache Drill][Apache Drill] az SQL-központú élmény könnyű vagy [Apache Spark][Apache Spark] végrehajtásához összetett elosztott feldolgozási a betöltött adatokon. 
 
 ### <a name="use-apache-drill"></a>Apache Drill használata
 
-[Apache Drill] [ Apache Drill] "nyílt forráskódú SQL lekérdezési motor big Data típusú adatok feltárásához" strukturált és részben strukturált adatokat lekérdezheti, bárhol is találhatóak. A motor futtatható, különálló csomópontként vagy a kiváló teljesítmény hatalmas fürtként.
+[Apache Drill][Apache Drill] "nyílt forráskódú SQL lekérdezési motor big Data típusú adatok feltárásához" strukturált és részben strukturált adatokat lekérdezheti, bárhol is találhatóak. A motor futtatható, különálló csomópontként vagy a kiváló teljesítmény hatalmas fürtként.
 
 Egy natív támogatása az Azure Blob storage-érhető el, amely megkönnyíti a használatával adatokat lekérdezni egy Avro-fájlban, a dokumentációban ismertetett módon:
 
@@ -94,14 +94,14 @@ A teljes, végpontok közötti minta tárházat, a Streamelési érhető el:
 
 ### <a name="use-apache-spark"></a>Use Apache Spark
 
-[Az Apache Spark] [ Apache Spark] egy "egységes elemzési motor a nagyméretű adatfeldolgozási." Támogatja a különböző nyelveken, beleértve az SQL, és a könnyen elérheti az Azure Blob storage. Az Apache Spark az Azure-ban való futtatásához két lehetőség van, és mindkettő az Azure Blob storage egyszerű hozzáférést biztosítanak:
+[Az Apache Spark][Apache Spark] egy "egységes elemzési motor a nagyméretű adatfeldolgozási." Támogatja a különböző nyelveken, beleértve az SQL, és a könnyen elérheti az Azure Blob storage. Az Apache Spark az Azure-ban való futtatásához két lehetőség van, és mindkettő az Azure Blob storage egyszerű hozzáférést biztosítanak:
 
 - [HDInsight: Az Azure Storage tárolóban található címfájlok][HDInsight: Address files in Azure storage]
 - [Az Azure Databricks: Az Azure Blob storage][Azure Databricks: Azure Blob Storage]
 
 ### <a name="use-avro-tools"></a>Az Avro-eszközök
 
-[Az Avro-eszközök] [ Avro Tools] egy jar-csomag formájában állnak rendelkezésre. Miután letöltötte a jar-fájlt, láthatja a séma egy konkrét Avro-fájl a következő parancs futtatásával:
+[Az Avro-eszközök][Avro Tools] egy jar-csomag formájában állnak rendelkezésre. Miután letöltötte a jar-fájlt, láthatja a séma egy konkrét Avro-fájl a következő parancs futtatásával:
 
 ```shell
 java -jar avro-tools-1.8.2.jar getschema <name of capture file>
@@ -130,7 +130,7 @@ Az Avro-eszközök segítségével a fájl átalakítása JSON-formátumban, és
 
 Speciális feldolgozást végez, töltse le és telepítse a avro-hoz tartozó platform a választott. A cikk írásának időpontjában érhetők el megvalósításokhoz C, C++, C\#, Java, NodeJS, Perl, a PHP, Python és Ruby.
 
-Az Apache Avro rendelkezik teljes körű bevezetés útmutatók a [Java] [ Java] és [Python][Python]. Is olvashatja a [Ismerkedés az Event Hubs Capture](event-hubs-capture-python.md) cikk.
+Az Apache Avro rendelkezik teljes körű bevezetés útmutatók a [Java][Java] and [Python][Python]. Is olvashatja a [Ismerkedés az Event Hubs Capture](event-hubs-capture-python.md) cikk.
 
 ## <a name="how-event-hubs-capture-is-charged"></a>Hogyan Event Hubs rögzítés díját
 

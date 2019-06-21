@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b19c0fd8af2792a4ffb877e5c6a7fc6b3f94511
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 975289f338e638ed0209d4f6cf2a163ced996e42
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60836118"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67202944"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Az SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai
 [1114181]: https://launchpad.support.sap.com/#/notes/1114181
@@ -150,7 +150,7 @@ Az elhelyezési az adatbázisfájlokat és a napló- és ismét: fájlok és a t
 Mint már említettük Ha az IOPS követelmény nagyobb, mint egy virtuális Merevlemezzel biztosíthat, egyenleg iops-érték szükséges ahhoz, hogy az adatbázisfájlok több VHD-k számát. Az IOPS osszák szét a lemezeket a legegyszerűbb módja, hogy a build szoftver paritásos különböző lemezek. Ezután elhelyezheti egy számot, az SAP DBMS-adatfájlok ki a szoftver stripe faragottnak LUN-okra. a stripe a lemezek számát a növekvő igények szerint határozzák meg az IOPs a növekvő igények szerint, a lemez átviteli igényeknek és a kötet.
 
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Azt javasoljuk, hogy használja-e Windows tárolóhelyek paritásos létrehozása több Azure virtuális merevlemezek között. Legalább Windows Server 2012 R2 vagy Windows Server 2016-ban.
@@ -164,7 +164,7 @@ Mint már említettük Ha az IOPS követelmény nagyobb, mint egy virtuális Mer
 >
 >
 
-- - -
+---
 
 > [!NOTE]
 > Azure Storage úgy biztosítja a VHD-ket három képét, mert konfigurálása a redundancia stripe-e, amikor nincs értelme. Csak csíkozást konfigurálása, hogy az i/o vannak elosztva a különböző virtuális merevlemezeket kell.
@@ -230,7 +230,7 @@ Az Azure virtuális gépek ajánlat nonpersistent lemezek, virtuális gép üzem
 
 További információkért lásd: [megismerheti az Azure-beli Windows virtuális gépeken az ideiglenes meghajtó](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/).
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Egy Azure-beli virtuális gépen a D meghajtón a típusoszlopok meghajtó, az Azure-beli számítási csomópont által az egyes helyi lemezek biztonsági mentése. Mert az állandó, a tartalmat a D meghajtón végzett módosítások elvesznek, ha a virtuális gép újraindul. A változások a következők voltak tárolt fájlok létrehozott címtárakat és a telepített alkalmazások.
@@ -241,7 +241,7 @@ További információkért lásd: [megismerheti az Azure-beli Windows virtuális
 >
 >
 
-- - -
+---
 
 
 
@@ -339,7 +339,7 @@ További csökkentése érdekében az Azure virtuális gépek közötti hálóza
 > Nem minden Virtuálisgép-típusokat támogatja a gyorsított hálózatkezelés. Az előző cikkben, amely támogatja a gyorsított hálózatkezelés virtuális gép típusok listája.
 >
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > A gyorsított hálózatkezelés a Windows virtuális gépek üzembe helyezése kapcsolatban lásd: [hozzon létre egy Windows virtuális gép gyorsított hálózatkezelésű](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell).
@@ -350,7 +350,7 @@ További csökkentése érdekében az Azure virtuális gépek közötti hálóza
 >
 >
 
-- - -
+---
 
 > [!NOTE]
 > SUSE, a Red Hat és az Oracle Linux esetében a gyorsított hálózatkezelés az újabb verziókban is támogatja. Korábbi kiadások, mint az SLES 12 SP2 vagy RHEL 7.2 nem támogatják az Azure gyorsított hálózatkezelés.

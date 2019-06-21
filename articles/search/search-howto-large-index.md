@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8923c94409dcf079179ed0464046e39ef7654c4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c067b6e238fab2970e5e40f0660a5c7555a8f2e
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65949827"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67302230"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-search"></a>Nagy méretű adatkészleteket az Azure Search indexelése
 
@@ -54,7 +54,7 @@ Az indexelő ütemezése az egy fontos mechanizmusa nagy méretű adatkészletek
 
 A kialakításból fakadóan ütemezett adott időközönként indexelési elindul egy feladat a következő ütemezett időközönként folytatása előtt általában befejezése. Azonban feldolgozása a időtartamon belül nem fejeződik be, ha az indexelő leáll (mert idő). A következő időközönként, ahol utolsó abbamaradtak, a rendszer megtartja a feldolgozás folytatása nyomon követheti hol történik. 
 
-Index terhelés több napig átfedés gyakorlatilag az indexelő helyezheti 24 órás ütemezés szerint. Ha folytatja, a következő 24 órás időszakra vonatkozó indexelést, azt az utolsó ismert jó dokumentum újraindul. Ezzel a módszerrel az indexelő nap után minden feldolgozatlan dokumentumok feldolgozása sorozatát keresztül működik a dokumentum a várakozó úgy. Ezzel a módszerrel kapcsolatos további információkért lásd: [nagy adatkészleteket az Azure Blob storage-indexelő](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Ütemezések általában beállításával kapcsolatos további információkért lásd: [indexelők REST API létrehozása](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer#request-syntax).
+Index terhelés több napig átfedés gyakorlatilag az indexelő helyezheti 24 órás ütemezés szerint. Ha folytatja, a következő 24 órás időszakra vonatkozó indexelést, azt az utolsó ismert jó dokumentum újraindul. Ezzel a módszerrel az indexelő nap után minden feldolgozatlan dokumentumok feldolgozása sorozatát keresztül működik a dokumentum a várakozó úgy. Ezzel a módszerrel kapcsolatos további információkért lásd: [nagy adatkészleteket az Azure Blob storage-indexelő](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Ütemezések általában beállításával kapcsolatos további információkért lásd: [indexelők REST API létrehozása](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer#request-syntax) vagy [az Azure Search indexelők ütemezése](search-howto-schedule-indexers.md).
 
 <a name="parallel-indexing"></a>
 

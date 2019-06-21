@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: sedusch
-ms.openlocfilehash: c93bca14d9385eaf9f79f69d76e9e704796da7a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82ab400c89cb57f3cf72cfb9196ea7c6402808fe
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66154114"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203911"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Az SAP NetWeaver számára az Azure virtuális gépek üzembe helyezése
 
@@ -534,7 +534,7 @@ Miután telepítette a virtuális gép az Azure-ban, hajtsa végre az irányelve
 Mert az operációs rendszer vagy az adatbázis-kezelő különböző verziói különböző patch-követelményekkel rendelkeznek, a képek, az Azure Marketplace-en található előfordulhat, hogy nem az igényeinek. Ehelyett érdemes a saját operációs rendszer/adatbázis-kezelő Virtuálisgép-rendszerképet, amelyeket később újra üzembe a virtuális gép létrehozásához.
 Különböző lépések segítségével hozzon létre egy a Windows mint Linux-privát rendszerkép létrehozása.
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Több virtuális gépek telepítéséhez használhatja a Windows-lemezkép előkészítése, a Windows-beállítások (például a Windows biztonsági AZONOSÍTÓK és állomásnév) kell emeli ki, vagy a helyszíni virtuális gép általánosítva. Használhat [sysprep](https://msdn.microsoft.com/library/hh825084.aspx) ehhez.
@@ -545,7 +545,7 @@ Különböző lépések segítségével hozzon létre egy a Windows mint Linux-p
 >
 >
 
-- - -
+---
 Készítse elő és hozzon létre egy egyéni rendszerképet, és, amellyel több új virtuális gép létrehozása. Erről a [Azure Virtual Machines tervezési és megvalósítási az SAP NetWeaver számára][planning-guide]. Állíthatók az adatbázisok tartalmát egy új SAP-rendszerhez (adatbázis biztonsági mentésének visszaállítja egy lemezről, amely a virtuális géphez csatolt) telepítése a SAP Software kiépítés Manager segítségével, vagy közvetlenül az Azure storage-ból az adatbázis biztonsági mentésének visszaállítása esetén az adatbázis-kezelő támogatja azt. További információkért lásd: [SAP NetWeaver az Azure Virtual Machines DBMS üzembe][dbms-guide]. Ha már telepítette a helyszíni virtuális gép (különösen a kétrétegű rendszerekhez) egy SAP-rendszerrel, módosíthatja a SAP-rendszer beállításait az Azure virtuális gépek üzembe helyezése után is eljárással nevezze át a rendszer által SAP Software kiépítés Manager (SAP támogatott Vegye figyelembe [1619720]). Ellenkező esetben az SAP-szoftvereket telepíteni, az Azure virtuális gép üzembe helyezése után.
 
 Az alábbi folyamatábra bemutatja a SAP-specifikus lépéssorozattal egyéni rendszerképből egy virtuális gép üzembe helyezéséhez:
@@ -674,7 +674,7 @@ Ebben a forgatókönyvben a Virtuálisgép-ügynök nem **nem** automatikusan te
 
 További információ az Azure Virtuálisgép-ügynök a következő forrásanyagokban talál.
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > [Az Azure virtuálisgép-ügynök – áttekintés][virtual-machines-windows-agent-user-guide]
@@ -685,7 +685,7 @@ További információ az Azure Virtuálisgép-ügynök a következő forrásanya
 >
 >
 
-- - -
+---
 
 Az alábbi folyamatábra bemutatja a feladatütemezési lépéseket egy helyszíni virtuális gép áthelyezése az Azure nem általánosított virtuális merevlemez használatával:
 
