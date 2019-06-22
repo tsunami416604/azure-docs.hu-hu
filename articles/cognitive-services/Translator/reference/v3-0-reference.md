@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-pawal
-ms.openlocfilehash: f58ff566ebb83ed6163637aa3899a925ed06242a
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 4133cec401723ab103b0b3bfff62eee21b653e2b
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67269218"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331827"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API 3.0-s verzió
 
@@ -31,20 +31,20 @@ ms.locfileid: "67269218"
 
 ## <a name="base-urls"></a>Alap URL-címek
 
-A Microsoft Translator van szolgálja ki több adatközpontban. Jelenleg találhatók 6 [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions):
+A Microsoft Translator van szolgálja ki több adatközpontban. Jelenleg találhatók 6 [Azure régiócsoportjairól](https://azure.microsoft.com/global-infrastructure/regions):
 
 * **Dél-Amerika:** 2. nyugati RÉGIÓJA és USA nyugati középső RÉGIÓJA 
 * **Ázsia Csendes-óceáni:** Délkelet-Ázsia és Dél-Korea
 * **Európa:** Észak-Európában és Nyugat-Európa
 
-A Microsoft Translator Text API kérelmek vannak a legtöbb esetben az adatközpont, ahol adja meg a kérelem legközelebb eső kezeli. Adatközpont-meghibásodás a kérelmek átirányíthatók a régión kívül.
+A Microsoft Translator Text API kérelmek vannak a legtöbb esetben az adatközpont, ahol adja meg a kérelem legközelebb eső kezeli. Adatközpont-meghibásodás a kérelmek átirányíthatók földrajzi Azure-on kívül.
 
-Kényszeríti a kérelem egy adott adatközpont kell kezelnie, módosítsa a kívánt területi végpont a globális végpont az API-kérelem:
+Hogy a kérelem egy adott Azure földrajzi kell kezelnie, módosítsa a kívánt területi végpont a globális végpont az API-kérelem:
 
-|Leírás|Régió|Alap URL-címe|
+|Leírás|Az Azure földrajzi hely|Alap URL-címe|
 |:--|:--|:--|
-|Azure|Globális|  api.cognitive.microsofttranslator.com|
-|Azure|Észak-Amerika|   api-nam.cognitive.microsofttranslator.com|
+|Azure|Globális (nem régióhoz kötött)|   api.cognitive.microsofttranslator.com|
+|Azure|Egyesült Államok|   api-nam.cognitive.microsofttranslator.com|
 |Azure|Európa|  api-eur.cognitive.microsofttranslator.com|
 |Azure|Ázsia és a Csendes-óceáni térség|    api-apc.cognitive.microsofttranslator.com|
 

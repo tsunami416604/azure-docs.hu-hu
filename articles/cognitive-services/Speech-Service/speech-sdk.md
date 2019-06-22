@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: wolfma
-ms.openlocfilehash: 2bfe111cbe1e352c16c9cbdd6d2ecc999bbe444f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b4092cfb11fc37b9a4d145c3a2994138e5ae6dbf
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66003012"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331912"
 ---
 # <a name="about-the-speech-sdk"></a>Tudnivalók a Speech SDK
 
-A beszédfelismerő szoftver Development Kit (SDK) hozzáférést biztosít az alkalmazások a funkciók a beszédszolgáltatások így könnyebben fejleszthet beszédfelismerő szoftver. Jelenleg az SDK-k hozzáférést biztosítanak **hang-szöveg transzformációs**, **szöveg-hang transzformációs**, **beszédalapú fordítási**, és **szándékának felismerése**. A funkciók és a támogatott platformok általános áttekintését a dokumentációban található [bejegyzés lap](https://aka.ms/csspeech).
+A beszédfelismerő szoftver Development Kit (SDK) hozzáférést biztosít az alkalmazások a funkciók a beszédszolgáltatások így könnyebben fejleszthet beszédfelismerő szoftver. Jelenleg az SDK-k hozzáférést biztosítanak **hang-szöveg transzformációs**, **szöveg-hang transzformációs**, **beszédalapú fordítási**, **szándékának felismerése**, és **Bot Framework közvetlen vonal beszédfelismerő csatornát**. A funkciók és a támogatott platformok általános áttekintését a dokumentációban található [bejegyzés lap](https://aka.ms/csspeech).
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 

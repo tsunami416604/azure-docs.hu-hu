@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: tutorial
 author: deborahc
 ms.author: dech
-ms.date: 05/20/2019
-ms.openlocfilehash: 9e7342ebcbcf536b26e6cf7fb89e3cf58666d24f
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.date: 06/21/2019
+ms.openlocfilehash: d7d9d62525161e6871cafd65cf5cd2c403cf0579
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953958"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331778"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Az Azure Cosmos Emulatort használja a helyi fejlesztési és tesztelési célra
 
@@ -413,6 +413,57 @@ Az Adatkezelő megnyitásához nyissa meg a következő URL-címet a böngésző
 
     https://<emulator endpoint provided in response>/_explorer/index.html
 
+## Mac vagy Linux rendszeren futó<a id="mac"></a>
+
+Jelenleg a Cosmos-emulátor csak futtatható a Windows. Felhasználók, Mac vagy Linux rendszerű az emulátorban futtathatja a Windows virtuális gépeken a hipervizor például szélességi körök és a VirtualBox üzemeltetni. Az alábbiakban a lépéseket ennek engedélyezéséhez.
+
+A Windows virtuális gépen futtassa az alábbi parancsot, és jegyezze fel annak IPv4-címét.
+
+```cmd
+ipconfig.exe
+```
+
+Az alkalmazásban meg kell változtatnia az URI-t a DocumentClient objektum az IPv4-cím által visszaadott `ipconfig.exe`. A következő lépés, hogy a DocumentClient objektum létrehozásakor a hitelesítésszolgáltató érvényesítési megkerüléséhez. Ehhez meg kell adnia egy HttpClientHandler a DocumentClient konstruktor, amely rendelkezik a saját megvalósítása ServerCertificateCustomValidationCallback.
+
+Alább, amelyek, mit kell kinéznie a kódot.
+
+```csharp
+using System;
+using Microsoft.Azure.Documents;
+using Microsoft.Azure.Documents.Client;
+using System.Net.Http;
+
+namespace emulator
+{
+    class Program
+    {
+        static async void Main(string[] args)
+        {
+            string strEndpoint = "https://10.135.16.197:8081/";  //IPv4 address from ipconfig.exe
+            string strKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
+
+            //Work around the CA validation
+            var httpHandler = new HttpClientHandler()
+            {
+                ServerCertificateCustomValidationCallback = (req,cert,chain,errors) => true
+            };
+
+            //Pass http handler to document client
+            using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, httpHandler))
+            {
+                Database database = await client.CreateDatabaseIfNotExistsAsync(new Database { Id = "myDatabase" });
+                Console.WriteLine($"Created Database: id - {database.Id} and selfLink - {database.SelfLink}");
+            }
+        }
+    }
+}
+```
+
+Végül, a a Windows virtuális gépen, indítsa el a Cosmos-emulátor, az alábbi beállítások segítségével a parancssorból.
+
+```cmd
+Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
+```
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

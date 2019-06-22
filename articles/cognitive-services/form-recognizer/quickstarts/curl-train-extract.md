@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 9b5f3b77e3af719d0e3b37ac196b1691ce659e5e
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 3f3b74452ff1f866b0285eee962ab3678b151a30
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67271433"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331831"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Gyors útmutató: Űrlap felismerő modellek betanítása és űrlap adatokat nyerhet ki a REST API-val a curl használatával
 
@@ -52,7 +52,7 @@ Először is kell egy Azure Storage-blobba betanítási adatok egy készletét. 
 A képernyő felismerő modell betanításához az Azure blob-tárolóban a dokumentumok használatával, hívja a **betanításához** API, amely a cURL-parancs futtatásával a következő. Futtassa a parancsot, mielőtt a módosítások:
 
 1. Cserélje le `<Endpoint>` az űrlap felismerő előfizetési kulcs beszerzett a végponttal. Az űrlap felismerő erőforráson található **áttekintése** fülre.
-1. Cserélje le `<SAS URL>` a egy Azure Blob storage-tároló megosztott hozzáférhetnek a betanítási adatok helye jogosultságkód (SAS) URL-CÍMÉT. (Beolvasni az SAS URL-CÍMRE kattintva a közös hozzáférésű Jogosultságkód a beállítások menüben a storage-fiók és a "készítése SAS és kapcsolati karakterlánc". Ez azt mutatja, a Blob service SAS URL-címet. Az URL-cím módosítása után .net containername hozzáadásával /, és mielőtt? sv = az URL-cím, például:.blob.core.windows.net/ < name_of_your_container > /? sv =... Ez az a SAS URL-címet használni.)
+1. Cserélje le `<SAS URL>` együtt az Azure Blob storage-tároló megosztott hozzáférési jogosultságkód (SAS) URL-címe. Ez lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, és válassza ki **Get közös hozzáférésű jogosultságkód**. Kattintson a következő párbeszédpanelen, és másolja az értéket a **URL-cím** szakaszban. Az űrlap kell rendelkeznie: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 1. Cserélje le `<subscription key>` az előfizetés az előző lépésben kimásolt kulccsal.
 
 ```bash
@@ -63,59 +63,40 @@ Kapni fog egy `200 (Success)` válasz a következő JSON-kimenetet:
 
 ```json
 {
-  "parameters": {
-    "Endpoint": "{Endpoint}",
-    "Content-Type": "application/json",
-    "Ocp-Apim-Subscription-Key": "{API key}",
-    "body": {},
-    "trainRequest": {
-      "source": "/input/data",
-      "sourceFilter": {
-        "prefix": "",
-        "includeSubFolders": false
-      }
+  "modelId": "59e2185e-ab80-4640-aebc-f3653442617b",
+  "trainingDocuments": [
+    {
+      "documentName": "Invoice_1.pdf",
+      "pages": 1,
+      "errors": [],
+      "status": "success"
+    },
+    {
+      "documentName": "Invoice_2.pdf",
+      "pages": 1,
+      "errors": [],
+      "status": "success"
+    },
+    {
+      "documentName": "Invoice_3.pdf",
+      "pages": 1,
+      "errors": [],
+      "status": "success"
+    },
+    {
+      "documentName": "Invoice_4.pdf",
+      "pages": 1,
+      "errors": [],
+      "status": "success"
+    },
+    {
+      "documentName": "Invoice_5.pdf",
+      "pages": 1,
+      "errors": [],
+      "status": "success"
     }
-  },
-  "responses": {
-    "200": {
-      "body": {
-        "modelId": "ad1901b6-ddaa-4249-8938-3f03f65cc893",
-        "trainingDocuments": [
-          {
-            "documentName": "0.pdf",
-            "pages": 1,
-            "errors": [],
-            "status": "success"
-          },
-          {
-            "documentName": "1.pdf",
-            "pages": 1,
-            "errors": [],
-            "status": "success"
-          },
-          {
-            "documentName": "2.pdf",
-            "pages": 1,
-            "errors": [],
-            "status": "success"
-          },
-          {
-            "documentName": "3.pdf",
-            "pages": 1,
-            "errors": [],
-            "status": "success"
-          },
-          {
-            "documentName": "4.pdf",
-            "pages": 1,
-            "errors": [],
-            "status": "success"
-          }
-        ],
-        "errors": []
-      }
-    }
-  }
+  ],
+  "errors": []
 }
 ```
 
@@ -128,12 +109,12 @@ Ezután fog dokumentum elemzése és bontsa ki a kulcs-érték párok és tábl�
 1. Cserélje le `<Endpoint>` az űrlap felismerő előfizetési kulcs beszerzett a végponttal. Az űrlap felismerő erőforráson található **áttekintése** fülre.
 1. Cserélje le `<modelID>` , hogy az az előző szakaszban azonosítójú modell.
 1. Cserélje le `<path to your form>` az elérési útját az űrlap (például C:\temp\file.pdf).
-1. Cserélje le `<file type>` az a fájl típusa. Támogatott típusok: pdf-, kép/jpeg, kép-vagy png.
+1. Cserélje le `<file type>` az a fájl típusa. Támogatott típusok: `application/pdf`, `image/jpeg`, `image/png`.
 1. A `<subscription key>` helyére írja be az előfizetési kulcsot.
 
 
 ```bash
-curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/models/<modelID>/analyze" -H "Content-Type: multipart/form-data" -F "form=@\"<path to your form>\";type=application/<file type>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
+curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/models/<modelID>/analyze" -H "Content-Type: multipart/form-data" -F "form=@\"<path to your form>\";type=<file type>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
 ### <a name="examine-the-response"></a>A válasz vizsgálata

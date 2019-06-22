@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/24/2019
 ms.author: pafarley
-ms.openlocfilehash: b405c643f642a8b3f950848fe8cba65207cb5cb3
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 04c7663073a710fe39017b01edd0623a837d6354
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67271424"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331810"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Gyors útmutató: Űrlap felismerő modellek betanítása és űrlap adatokat nyerhet ki a REST API a pythonnal
 
@@ -47,12 +47,13 @@ Befejeztével az űrlap felismerő erőforrás üzembe helyezéséhez keresse me
 
 ## <a name="train-a-form-recognizer-model"></a>Egy űrlap felismerő modell betanítása
 
-Először is kell egy Azure Storage-blobba betanítási adatok egy készletét. Rendelkeznie kell legalább öt mintául szolgáló űrlapok (PDF-dokumentumok és/vagy képek) az azonos típusú/struktúra a fő bemeneti adatként. Vagy használhat egy egyetlen üres képernyő két ki vannak töltve űrlap. Az űrlap üres fájl nevének kell a keresőkifejezésben "üres".
+Először is kell egy Azure Storage blob-tárolóban a betanítási adatok egy készletét. Rendelkeznie kell legalább öt mintául szolgáló űrlapok (PDF-dokumentumok és/vagy képek) az azonos típusú/struktúra a fő bemeneti adatként. Vagy használhat egy egyetlen üres képernyő két ki vannak töltve űrlap. Az űrlap üres fájl nevének kell a keresőkifejezésben "üres".
 
 Egy űrlap felismerő modell betanításához az Azure blob-tárolóban a dokumentumok használatával, hívja a **betanításához** a következő kód futtatásával a python API-t. A kód futtatásához előtt ezeket a módosításokat:
 
 1. Cserélje le `<Endpoint>` az űrlap felismerő erőforrás Azure-régióban, ahol beszerzett az előfizetési kulcsok a végpont URL-címet.
-1. Cserélje le `<SAS URL>` a egy Azure Blob storage-tároló megosztott hozzáférhetnek a betanítási adatok helye jogosultságkód (SAS) URL-CÍMÉT.  
+1. Cserélje le `<SAS URL>` együtt az Azure Blob storage-tároló megosztott hozzáférési jogosultságkód (SAS) URL-címe. Ez lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, és válassza ki **Get közös hozzáférésű jogosultságkód**. Kattintson a következő párbeszédpanelen, és másolja az értéket a **URL-cím** szakaszban. Az űrlap kell rendelkeznie: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+1. Cserélje le `<file type>` az a fájl típusa. Támogatott típusok: `application/pdf`, `image/jpeg`, `image/png`.
 1. Cserélje le `<Subscription key>` az előfizetés az előző lépésben kimásolt kulccsal.
     ```python
     ########### Python Form Recognizer Train #############
@@ -63,7 +64,7 @@ Egy űrlap felismerő modell betanításához az Azure blob-tárolóban a dokume
     source = r"<SAS URL>"
     headers = {
         # Request headers
-        'Content-Type': 'application/json',
+        'Content-Type': '<file type>',
         'Ocp-Apim-Subscription-Key': '<Subscription Key>',
     }
     url = base_url + "/train" 
@@ -83,59 +84,40 @@ Kapni fog egy `200 (Success)` válaszban a JSON-kimenetet:
 
 ```json
 {
-  "parameters": {
-    "Endpoint": "{Endpoint}",
-    "Content-Type": "application/json",
-    "Ocp-Apim-Subscription-Key": "{API key}",
-    "body": {},
-    "trainRequest": {
-      "source": "/input/data",
-      "sourceFilter": {
-        "prefix": "",
-        "includeSubFolders": false
-      }
+  "modelId": "59e2185e-ab80-4640-aebc-f3653442617b",
+  "trainingDocuments": [
+    {
+      "documentName": "Invoice_1.pdf",
+      "pages": 1,
+      "errors": [],
+      "status": "success"
+    },
+    {
+      "documentName": "Invoice_2.pdf",
+      "pages": 1,
+      "errors": [],
+      "status": "success"
+    },
+    {
+      "documentName": "Invoice_3.pdf",
+      "pages": 1,
+      "errors": [],
+      "status": "success"
+    },
+    {
+      "documentName": "Invoice_4.pdf",
+      "pages": 1,
+      "errors": [],
+      "status": "success"
+    },
+    {
+      "documentName": "Invoice_5.pdf",
+      "pages": 1,
+      "errors": [],
+      "status": "success"
     }
-  },
-  "responses": {
-    "200": {
-      "body": {
-        "modelId": "ad1901b6-ddaa-4249-8938-3f03f65cc893",
-        "trainingDocuments": [
-          {
-            "documentName": "0.pdf",
-            "pages": 1,
-            "errors": [],
-            "status": "success"
-          },
-          {
-            "documentName": "1.pdf",
-            "pages": 1,
-            "errors": [],
-            "status": "success"
-          },
-          {
-            "documentName": "2.pdf",
-            "pages": 1,
-            "errors": [],
-            "status": "success"
-          },
-          {
-            "documentName": "3.pdf",
-            "pages": 1,
-            "errors": [],
-            "status": "success"
-          },
-          {
-            "documentName": "4.pdf",
-            "pages": 1,
-            "errors": [],
-            "status": "success"
-          }
-        ],
-        "errors": []
-      }
-    }
-  }
+  ],
+  "errors": []
 }
 ```
 
@@ -148,7 +130,7 @@ Ezután fog dokumentum elemzése és bontsa ki a kulcs-érték párok és tábl�
 1. Cserélje le `<Endpoint>` az űrlap felismerő előfizetési kulccsal végzett beszerzett a végponttal. Az űrlap felismerő erőforráson található **áttekintése** fülre.
 1. Cserélje le `<path to your form>` az elérési útját az űrlap (például C:\temp\file.pdf).
 1. Cserélje le `<modelID>` a modell az előző szakaszban kapott azonosítóval.
-1. Cserélje le `<file type>` az a fájl típusa. Támogatott típusok: pdf-, kép/jpeg, kép-vagy png.
+1. Cserélje le `<file type>` az a fájl típusa. Támogatott típusok: `application/pdf`, `image/jpeg`, `image/png`.
 1. A `<subscription key>` helyére írja be az előfizetési kulcsot.
 
     ```python
@@ -161,7 +143,7 @@ Ezután fog dokumentum elemzése és bontsa ki a kulcs-érték párok és tábl�
     model_id = "<modelID>"
     headers = {
         # Request headers
-        'Content-Type': 'application/<file type>',
+        'Content-Type': '<file type>',
         'Ocp-Apim-Subscription-Key': '<subscription key>',
     }
 
