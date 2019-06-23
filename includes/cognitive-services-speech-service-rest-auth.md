@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: 9cad860b8808dd2682995768c282d8376ab5d9be
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 5f06ca04b0b6ea48ebb49952df71cb02946777fa
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179406"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67333377"
 ---
 ## <a name="authentication"></a>Hitelesítés
 
@@ -26,8 +26,7 @@ Használatakor a `Ocp-Apim-Subscription-Key` fejléc, már csak számára meg ke
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
 ```
 
-Használatakor a `Authorization: Bearer` fejléc, Ön szükséges kérheti a `issueToken` végpont. Ebben a kérelemben cserél az előfizetési kulcs hozzáférési jogkivonat helyeként, 10 percig érvényes. A következő néhány szakaszban fog elsajátíthatja egy token beszerzéséhez, -tokennel, és frissítse a jogkivonatot.
-
+Használatakor a `Authorization: Bearer` fejléc, Ön szükséges kérheti a `issueToken` végpont. Ebben a kérelemben cserél az előfizetési kulcs hozzáférési jogkivonat helyeként, 10 percig érvényes. A következő néhány szakaszban fog elsajátíthatja egy token beszerzése és a egy token.
 
 ### <a name="how-to-get-an-access-token"></a>Hozzáférési jogkivonat beszerzése
 
