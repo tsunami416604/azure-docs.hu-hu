@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 06/24/2019
 ms.author: diberry
-ms.openlocfilehash: b7b4e25c78ef08bdf9a7c2f3faf96725fc5f5fc8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fb4cf119195b3be23dc8f2cb98bd019769583473
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66123888"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341842"
 ---
 # <a name="preview-migrate-to-api-version-3x--for-luis-apps"></a>Előzetes verzió: API-verzió át 3.x LUIS-alkalmazások
 
@@ -54,11 +54,14 @@ A v3-as választ objektum változások a következők [előre összeállított e
 
 A V3 API különböző lekérdezési karakterlánc paraméterei rendelkezik.
 
-|Válaszparaméter-név|Típus|Version|Cél|
-|--|--|--|--|
-|`query`|string|Csak a v3|**A v2-ben**, kell elvégezni, ha az utterance (kifejezés) szerepel a `q` paraméter. <br><br>**A v3-as**, az funkciók átadott a `query` paraméter.|
-|`show-all-intents`|logikai|Csak a v3|Minden leképezések és a megfelelő pontszámot ad vissza a **prediction.intents** objektum. Leképezések a szülő objektumként adja vissza `intents` objektum. Ez lehetővé teszi a programozott hozzáférést anélkül, hogy a leképezés található tömb: `prediction.intents.give`. A v2-ben ezek visszaadott tömbben. |
-|`verbose`|logikai|V2 & V3|**A v2-ben**, ha az értéke igaz, az összes előre jelzett leképezések adott vissza. Ha az összes előre jelzett leképezések van szüksége, használja a v3-as param, `show-all-intents`.<br><br>**A v3-as**, ez a paraméter csak biztosít entitás entitás prediction metaadat részleteit.  |
+|Válaszparaméter-név|Type|Version|Alapértelmezett|Cél|
+|--|--|--|--|--|
+|`log`|boolean|V2 & V3|false|Query Store naplófájlban.| 
+|`query`|string|Csak a v3|Nincs alapértelmezett érték - szükség a GET-kérés|**A v2-ben**, kell elvégezni, ha az utterance (kifejezés) szerepel a `q` paraméter. <br><br>**A v3-as**, az funkciók átadott a `query` paraméter.|
+|`show-all-intents`|boolean|Csak a v3|false|Minden leképezések és a megfelelő pontszámot ad vissza a **prediction.intents** objektum. Leképezések a szülő objektumként adja vissza `intents` objektum. Ez lehetővé teszi a programozott hozzáférést anélkül, hogy a leképezés található tömb: `prediction.intents.give`. A v2-ben ezek visszaadott tömbben. |
+|`verbose`|boolean|V2 & V3|false|**A v2-ben**, ha az értéke igaz, az összes előre jelzett leképezések adott vissza. Ha az összes előre jelzett leképezések van szüksége, használja a v3-as param, `show-all-intents`.<br><br>**A v3-as**, ez a paraméter csak biztosít entitás entitás prediction metaadat részleteit.  |
+
+
 
 <!--
 |`multiple-segments`|boolean|V3 only|Break utterance into segments and predict each segment for intents and entities.|
@@ -71,12 +74,23 @@ A V3 API különböző lekérdezési karakterlánc paraméterei rendelkezik.
 {
     "query":"your utterance here",
     "options":{
-        "timezoneOffset": "-8:00"
+        "datetimeReference": "2019-05-05T12:00:00",
+        "overridePredictions": true
     },
     "externalEntities":[],
     "dynamicLists":[]
 }
 ```
+
+|Tulajdonság|Type|Version|Alapértelmezett|Cél|
+|--|--|--|--|--|
+|`dynamicLists`|tömb|Csak a v3|Nem kötelező.|[A dinamikus listák](#dynamic-lists-passed-in-at-prediction-time) lehetővé teszi, hogy terjessze ki egy meglévő betanított és közzétett listája entitás már megtalálható a LUIS-alkalmazás.|
+|`externalEntities`|tömb|Csak a v3|Nem kötelező.|[Külső entitások](#external-entities-passed-in-at-prediction-time) lehetővé teszik a LUIS-alkalmazás azonosíthatja és entitások felirat alatt modult, amely a meglévő entitások szolgáltatások használhatók. |
+|`options.datetimeReference`|string|Csak a v3|Nincs alapértelmezett érték|Azt határozza meg, [datetimeV2 eltolás](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity).|
+|`options.overridePredictions`|boolean|Csak a v3|false|Itt adhatja meg, ha a felhasználó [(amelynek a neve megegyezik a létező entitásba) külső entitás](#override-existing-model-predictions) szolgál, vagy a modellben a létező entitásba előrejelzéshez használatos. |
+|`query`|string|Csak a v3|Kötelező.|**A v2-ben**, kell elvégezni, ha az utterance (kifejezés) szerepel a `q` paraméter. <br><br>**A v3-as**, az funkciók átadott a `query` paraméter.|
+
+
 
 ## <a name="response-changes"></a>Válasz módosítások
 
@@ -275,6 +289,67 @@ Az előző utterance (kifejezés), használja az utterance (kifejezés) `him` mu
 
 Az előrejelzési válasz tartalmazza a külső entitások, az összes többi előre jelzett entitást, mert meg van határozva a kérés.  
 
+### <a name="override-existing-model-predictions"></a>Bírálja felül a meglévő modell-előrejelzéseket
+
+A `overridePredictions` beállítások tulajdonsága azt adja meg, hogy ha a felhasználó küld egy külső entitás, amely átfedésben van egy azonos nevű előre jelzett entitással, a LUIS úgy dönt, az átadott entitás vagy az entitás a modellben meglévő. 
+
+Vegyük példaként a lekérdezés `today I'm free`. Észleli a LUIS `today` , a következő választ az egy datetimeV2:
+
+```JSON
+"datetimeV2": [
+    {
+        "type": "date",
+        "values": [
+            {
+                "timex": "2019-06-21",
+                "value": "2019-06-21"
+            }
+        ]
+    }
+]
+```
+
+Ha a felhasználó küld a külső entitás:
+
+```JSON
+{
+    "entityName": "datetimeV2",
+    "startIndex": 0,
+    "entityLength": 5,
+    "resolution": {
+        "date": "2019-06-21"
+    }
+}
+```
+
+Ha a `overridePredictions` értékre van állítva `false`, LUIS választ adja vissza, mint ha a külső entitás nem lettek elküldve. 
+
+```JSON
+"datetimeV2": [
+    {
+        "type": "date",
+        "values": [
+            {
+                "timex": "2019-06-21",
+                "value": "2019-06-21"
+            }
+        ]
+    }
+]
+```
+
+Ha a `overridePredictions` értékre van állítva `true`, LUIS adja vissza a választ, többek között:
+
+```JSON
+"datetimeV2": [
+    {
+        "date": "2019-06-21"
+    }
+]
+```
+
+
+
 #### <a name="resolution"></a>Megoldás:
 
 A _választható_ `resolution` a válaszban visszalépési tulajdonság értéket ad vissza, az előrejelzési válaszként, lehetővé teszi, hogy adja át a külső entitáshoz társított metaadatokat, majd megkapni. 
@@ -287,6 +362,7 @@ A `resolution` tulajdonságot akkor lehet egy szám, karakterlánc, objektum vag
 * {"text": "value"}
 * 12345 
 * ["a", "b", "c"]
+
 
 
 ## <a name="dynamic-lists-passed-in-at-prediction-time"></a>Előrejelzési időpontban átadott dinamikus listák

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 29ec50a1d2e0aebb1aeb73b38c662f4a18624754
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6cc530d2680c0410081ad3ad3e573cd59d5583d6
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60539060"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341963"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Beszédfelismerés – gyakori kérdések
 
@@ -69,7 +69,7 @@ Ha módosítani, és a telepített alapkonfiguráció 1.0-s verziójú modell, a
 
 **A**: A modell 20 egyidejű kérelmek egységnyi növekményekben vertikálisan felskálázhatja.
 
-Lépjen kapcsolatba velünk, ha szüksége van egy nagyobb méreteket.
+Kapcsolattartó [Speech támogatási](mailto:speechsupport@microsoft.com?subject=Request%20for%20higher%20concurrency%20for%20Speech-to-text) Ha szüksége van egy nagyobb méreteket.
 
 **K: A modell letöltheti és helyileg futtatja az alkalmazást?**
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 59155b41906ffd401b971bee1248a225d0c33657
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 08bf1363f3c6c9b68243cc10ffb2785f53e02107
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072454"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342193"
 ---
 # <a name="text-to-speech-rest-api"></a>Szöveg-hang transzformációs REST API-val
 
@@ -161,7 +161,7 @@ Ez a táblázat felsorolja a szükséges és választható fejlécek a szöveg-h
 
 | Fejléc | Leírás | Kötelező / választható |
 |--------|-------------|---------------------|
-| `Authorization` | Egy engedélyezési jogkivonatot előzi meg a word `Bearer`. További információért lásd: [Hitelesítés](#authentication). | Kötelező |
+| `Authorization` | Egy engedélyezési jogkivonatot előzi meg a word `Bearer`. További információért lásd: [Hitelesítés](#authentication). | Szükséges |
 | `Content-Type` | A megadott szöveg a tartalom típusát határozza meg. Elfogadott érték: `application/ssml+xml`. | Szükséges |
 | `X-Microsoft-OutputFormat` | A hangkimeneti formátum meghatározása. Elfogadott értékek teljes listáját lásd: [hang kimenetek](#audio-outputs). | Szükséges |
 | `User-Agent` | Az alkalmazás neve. A megadott érték legfeljebb 255 karakter hosszú lehet. | Szükséges |
@@ -225,6 +225,7 @@ A HTTP-állapotkód: minden válasz azt jelzi, hogy a sikeres vagy gyakori hibá
 | 400 | Hibás kérelem | Egy kötelező paraméter hiányzik, üres vagy null értékű. Másik lehetőségként átadott vagy egy kötelező vagy választható paraméter értéke érvénytelen. Egy gyakori probléma egy fejlécet, amely túl hosszú. |
 | 401 | Nem engedélyezett | A kérelem nem engedélyezett. Ellenőrizze, hogy az előfizetési kulcs, vagy a jogkivonat érvényes, és a megfelelő régióban. |
 | 413 | Kérelem az entitás túl nagy | A SSML bemeneti adat 1024 karakternél hosszabb. |
+| 415 | Nem támogatott adathordozó-típus | Lehetséges, hogy nem a megfelelő `Content-Type` lett megadva. `Content-Type` Jelölje meg `application/ssml+xml`. | 
 | 429 | Túl sok kérelem | Túllépte a kvótát, vagy engedélyezett az előfizetéséhez kérelmek száma. |
 | 502 | Hibás átjáró | Hálózati vagy kiszolgálóoldali probléma. Érvénytelen fejlécek is jelezhet. |
 

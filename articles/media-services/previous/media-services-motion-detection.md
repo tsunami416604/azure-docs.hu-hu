@@ -99,13 +99,13 @@ A következő táblázat ismerteti a kimeneti JSON-fájl elemeinek.
 | Offset |Időbélyegeket "órajelben." az idő eltolása Videó API-k 1.0-s verziójában ez mindig 0 lesz. A jövőben támogatott forgatókönyveket, ez az érték változhatnak. |
 | Framerate |Képkockák másodpercenkénti száma a videóban. |
 | Width, Height |A szélességét és magasságát (képpontban) hivatkozik. |
-| Indítás |A "órajel során végbemenő" a start időbélyegző. |
-| Időtartam |Az esemény, a "órajel során végbemenő" hossza. |
+| Start |A "órajel során végbemenő" a start időbélyegző. |
+| Duration |Az esemény, a "órajel során végbemenő" hossza. |
 | Interval |Az időköz az egyes bejegyzések az eseményben szereplő "órajel során végbemenő". |
 | Events |Minden egyes esemény töredék idő töltött belül észlelt a mozgásban lévő adatoknak egyaránt tartalmazza. |
-| Típus |A jelenlegi verzióban ez a "2" általános mozgásban lévő adatoknak egyaránt. A címke ad Video API-k a rugalmasság kategorizálásának mozgási későbbi verziók. |
+| Type |A jelenlegi verzióban ez a "2" általános mozgásban lévő adatoknak egyaránt. A címke ad Video API-k a rugalmasság kategorizálásának mozgási későbbi verziók. |
 | RegionID |Amint azt fent kifejtettük, ez mindig 0 lesz ebben a verzióban. Ez a címke rugalmasságot biztosít Video API a mozgásban lévő keresése a későbbi verziókban különböző régiókban. |
-| Régiók |A videó a terület, ahol konkrét mozgásban lévő adatoknak egyaránt vonatkozik. <br/><br/>– az "id" jelöli a régió terület – ebben a verzióban van csak egy, azonosító: 0. <br/>– "type" az Ön számára a mozgásban lévő adatoknak egyaránt régió az alakzat jelöli. Jelenleg a "téglalap" és "sokszög" támogatottak.<br/> "Téglalap" adott meg, ha a régió dimenziók rendelkezik X, Y szélessége és magassága. Az X és Y koordinátái a 0,0 és 1,0 normalizált méretezési régió felső bal XY koordináták képviseli. A szélesség és magasság képviselik a 0,0 és 1,0 a normalizált méretezési terület méretét. A jelenlegi verzió X, Y, szélesség és magasság mindig rögzíteni, 0, 0 és 1, 1. <br/>"Sokszög" adott meg, ha a régió dimenziók pontokat tartalmaz. <br/> |
+| Regions |A videó a terület, ahol konkrét mozgásban lévő adatoknak egyaránt vonatkozik. <br/><br/>– az "id" jelöli a régió terület – ebben a verzióban van csak egy, azonosító: 0. <br/>– "type" az Ön számára a mozgásban lévő adatoknak egyaránt régió az alakzat jelöli. Jelenleg a "téglalap" és "sokszög" támogatottak.<br/> "Téglalap" adott meg, ha a régió dimenziók rendelkezik X, Y szélessége és magassága. Az X és Y koordinátái a 0,0 és 1,0 normalizált méretezési régió felső bal XY koordináták képviseli. A szélesség és magasság képviselik a 0,0 és 1,0 a normalizált méretezési terület méretét. A jelenlegi verzió X, Y, szélesség és magasság mindig rögzíteni, 0, 0 és 1, 1. <br/>"Sokszög" adott meg, ha a régió dimenziók pontokat tartalmaz. <br/> |
 | Fragments |A metaadatok nevű töredék különböző részekre van darabolásos fel. Minden töredék tartalmaz kezdési időpontot, időtartamot, intervallumszámot és esemény(eke)t. Egy kódrészletet az események nem azt jelenti, hogy semmilyen adott kezdő időpontja és időtartama során észlelt. |
 | Szögletes zárójeleket] |Minden egyes zárójel egy időköz az esemény jelöli. Üres szögletes az adott időköz azt jelenti, hogy semmilyen volt észlelhető. |
 | locations |Ezen események alapján új bejegyzést a helyet, ahol a mozgásban lévő adatoknak egyaránt történt sorolja fel. Ez a pontosabb, mint az észlelési zónák. |

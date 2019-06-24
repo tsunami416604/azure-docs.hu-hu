@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: badf351f8336e501b3ee1c035fcb389a570750c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c7476a82df75d8ba653a2a8e6c0f9f557b53c42
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072853"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341874"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>Entitás hozzáadása a példa kimondott szöveg 
 
 Példa utterances Példák szöveges felhasználói kérdések vagy parancsok. Language Understanding (LUIS) elemre, hozzá kell [példa utterances](luis-concept-utterance.md) , egy [szándékot](luis-concept-intent.md).
 
-Általában először egy beszédszándék adjon hozzá egy példa utterance (kifejezés), és entitásokat és a felirat utterances hozzon létre a szándék oldalon. Ha az entitások nem vznikla először, tekintse meg [entitások hozzáadása](luis-how-to-add-entities.md).
+Általában ad hozzá egy példa utterance (kifejezés) megjelölésű először, és ezután entitások létrehozása és a szándék oldalon utterances címkézését. Ha az entitások nem vznikla először, tekintse meg [entitások hozzáadása](luis-how-to-add-entities.md).
 
 ## <a name="marking-entities-in-example-utterances"></a>Jelölés entitások példa kimondott szöveg
 

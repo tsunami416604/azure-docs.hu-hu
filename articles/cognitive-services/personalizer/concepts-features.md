@@ -7,15 +7,15 @@ author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
-ms.date: 05/07/2019
+ms.topic: concept
+ms.date: 06/24/2019
 ms.author: edjez
-ms.openlocfilehash: b2054aa963991ffa2d92aabf1ce896031f2d87fc
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 2353b8c735602aff0386f44cc29d2be5eb9f90c4
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296062"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340892"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Funkciói a következők műveletek és a környezeti információk
 
@@ -29,7 +29,7 @@ Például előfordulhat, hogy rendelkezik egy **funkció** kapcsolatban:
 * A _tartalom_ például ha egy videó van egy `Documentary`, amely egy `Movie`, vagy egy `TV Series`, vagy e-kereskedelmi elem érhető el tárolójában.
 * A _aktuális_ időszakának idő, például a hét mely napján legyen.
 
-Personalizer nem írja elő, korlátozhatja, vagy hárítsa el a műveletek és a környezet küldhet funkciók:
+Personalizer nem írja elő, korlátozza, vagy javítsa ki milyen funkciókat is elküldheti a műveletek, a környezet:
 
 * Egyes funkciók bizonyos műveletek másoknak pedig nem, ha nincs is küldhet. TV-sorozatának Előfordulhat például, filmek nincs attribútumok.
 * Előfordulhat, egyes funkciói csak néhány alkalommal. Például egy mobilalkalmazás, mint a weblapon további információt tartalmaznak. 
@@ -70,12 +70,15 @@ A szolgáltatás névterek mindaddig, amíg azok érvényes JSON-kulcsokat a saj
 
 A következő JSON-fájlban `user`, `state`, és `device` funkció névterekben vannak.
 
+JSON-objektumok tartalmazhatnak, beágyazott JSON-objektumok és az egyszerű tulajdonságértékeket. Egy tömb csak akkor, ha a tömb cikkeket számok szerepelhetnek. 
+
 ```JSON
 {
     "contextFeatures": [
         { 
             "user": {
-                "name":"Doug"
+                "name":"Doug",
+                "latlong": [47.6, -122.1]
             }
         },
         {
@@ -121,7 +124,7 @@ A második lefelé időbélyeg például az egyik nagyon ritka szolgáltatása. 
 
 #### <a name="expand-feature-sets-with-extrapolated-information"></a>Bontsa ki a szolgáltatáskészleteket extrapolált adatokkal
 
-További funkciók is beszerezheti a biztonságához felderítetlen attribútumok származhatnak információ áll rendelkezésére. Ha például egy fiktív movie lista személyre szabása, az, lehetséges, hogy a hétvégi vs hétköznap elhárítja a felhasználók különböző viselkedés? Idő lehetett kibontani a "hétvégi" vagy "hét napja" attribútuma. Tegye nemzeti kulturális ünnepek meghajtó figyelmet a film bizonyos? Ha például egy "Halloween" attribútum hasznos helyeken, ahol fontos. Az lehetséges, hogy Esős időjárási jelentős hatással van a film a kiválasztott sokak számára? Időben és helyen, az időjárás szolgáltatás biztosíthatja, hogy információkat, és hozzáadhatja egy külön szolgáltatás. 
+További funkciók is beszerezheti a biztonságához felderítetlen attribútumok származhatnak információ áll rendelkezésére. Ha például egy fiktív movie lista személyre szabása, az, lehetséges, hogy a hétvégi vs hétköznap elicits különböző viselkedését a felhasználók? Idő lehetett kibontani a "hétvégi" vagy "hét napja" attribútuma. Tegye nemzeti kulturális ünnepek meghajtó figyelmet a film bizonyos? Ha például egy "Halloween" attribútum hasznos helyeken, ahol fontos. Az lehetséges, hogy Esős időjárási jelentős hatással van a film a kiválasztott sokak számára? Időben és helyen, az időjárás szolgáltatás biztosíthatja, hogy információkat, és hozzáadhatja egy külön szolgáltatás. 
 
 #### <a name="expand-feature-sets-with-artificial-intelligence-and-cognitive-services"></a>Bontsa ki a mesterséges intelligencia és cognitive services szolgáltatáskészleteket
 
@@ -196,6 +199,8 @@ Néhány esetben azt csak lehet meghatározni az üzleti logikát a későbbi Ha
 
 Rang hívásakor, amelyet el szeretne küldeni több művelet közül választhat:
 
+JSON-objektumok tartalmazhatnak, beágyazott JSON-objektumok és az egyszerű tulajdonságértékeket. Egy tömb csak akkor, ha a tömb cikkeket számok szerepelhetnek. 
+
 ```json
 {
     "actions": [
@@ -204,7 +209,8 @@ Rang hívásakor, amelyet el szeretne küldeni több művelet közül választha
       "features": [
         {
           "taste": "salty",
-          "spiceLevel": "medium"
+          "spiceLevel": "medium",
+          "grams": [400,800]
         },
         {
           "nutritionLevel": 5,
@@ -217,7 +223,8 @@ Rang hívásakor, amelyet el szeretne küldeni több művelet közül választha
       "features": [
         {
           "taste": "sweet",
-          "spiceLevel": "none"
+          "spiceLevel": "none",
+          "grams": [150, 300, 450]
         },
         {
           "nutritionalLevel": 2
@@ -229,7 +236,8 @@ Rang hívásakor, amelyet el szeretne küldeni több művelet közül választha
       "features": [
         {
           "taste": "sweet",
-          "spiceLevel": "none"
+          "spiceLevel": "none",
+          "grams": [300, 600, 900]
         },
         {
           "nutritionLevel": 5
@@ -244,7 +252,8 @@ Rang hívásakor, amelyet el szeretne küldeni több művelet közül választha
       "features": [
         {
           "taste": "salty",
-          "spiceLevel": "low"
+          "spiceLevel": "low",
+          "grams": [300, 600]
         },
         {
           "nutritionLevel": 8
@@ -271,6 +280,8 @@ Az alkalmazás felelős a környezeti információk betöltése a vonatkozó ada
 
 JSON-objektum a rang API-nak küldött környezet fejezzük ki:
 
+JSON-objektumok tartalmazhatnak, beágyazott JSON-objektumok és az egyszerű tulajdonságértékeket. Egy tömb csak akkor, ha a tömb cikkeket számok szerepelhetnek. 
+
 ```JSON
 {
     "contextFeatures": [
@@ -288,7 +299,9 @@ JSON-objektum a rang API-nak küldött környezet fejezzük ki:
         {
             "device": {
                 "mobile":true,
-                "Windows":true
+                "Windows":true,
+                "screensize": [1680,1050]
+                }
             }
         }
     ]

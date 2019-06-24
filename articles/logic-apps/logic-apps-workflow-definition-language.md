@@ -80,7 +80,7 @@ Az általános struktúráját egy kimeneti definíciót a következő:
 |-----------|----------|------|-------------|
 | <*key-name*> | Igen | String | A kulcs nevét, a kimeneti értéket adnak vissza. |
 | <*key-type*> | Igen | int, float, string, securestring, bool, array, JSON-objektum | A kimeneti visszatérési érték típusát |
-| <*key-value*> | Igen | Ugyanaz, mint a <*key-type*> | A kimeneti visszatérési érték |
+| <*key-value*> | Igen | Ugyanaz, mint a <*kulcs-típus*> | A kimeneti visszatérési érték |
 |||||
 
 Egy munkafolyamat-futtatási lekérheti a kimenetét, tekintse át a logikai alkalmazás futtatási előzmények és részletek az Azure Portalon, vagy használja a [munkafolyamat REST API-val](https://docs.microsoft.com/rest/api/logic/workflows). Is átadhat kimeneti a külső rendszerekkel, például a Power bi-ban, hogy irányítópultokat hozhat létre.

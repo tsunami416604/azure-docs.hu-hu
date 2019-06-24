@@ -8,20 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 06/24/2019
 ms.author: erhopf
-ms.openlocfilehash: a3469e4f7fe1c234a6df694d7bdd6d9e2c46407a
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: c5f7b0b739e9311e2527e63db7279d2075f0f1ff
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204891"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341286"
 ---
 # <a name="what-is-text-to-speech"></a>Mi az szöveg-hang transzformációs?
 
 Az Azure Speech Services szöveg-hang transzformációs egy szolgáltatása, amely lehetővé teszi az alkalmazások, eszközök és eszközök szöveg átalakítása beszéddé természetes emberszerű szintetizált. Standard és a Neurális beszédhangot közül választhat, vagy létrehozhat saját egyéni beszédfelismerési a termék vagy márka egyedi. 75 + standard beszédhangot legfeljebb 45 nyelv és területi beállítás érhető el, és 5 Neurális beszédhangot 4 nyelv és területi beállítás érhető el. A teljes listát lásd: [támogatott nyelvek](language-support.md#text-to-speech).
 
 Szöveg-hang transzformációs technológia lehetővé teszi a tartalomkészítők, a felhasználóknak a különböző módokon zajló interakciót. Szöveg-hang transzformációs javíthatja a kisegítő lehetőségek biztosításával a felhasználók és használhatja a tartalmakat hallhatóan lehetőség. Hogy a felhasználó egy készült kisegítő funkciók, tanulás fogyatékossággal, vagy elérésével navigációs információra van szüksége, szöveg-hang transzformációs javíthatja a meglévő felületet nyújt. Szöveg-hang transzformációs is egy hang robotok és a virtuális asszisztensek értékes bővítmény.
+
+
+Beszéd összefoglaló Markup Language (SSML), egy XML-alapú jelölőnyelv, kihasználva az szöveg-hang transzformációs szolgáltatással a fejlesztők megadhatja a beviteli szöveg szintetizált lesz konvertálva. SSML, a módosíthatja lényegét, írásmódja, arány, a kötet és más, és beszéljen. További információt ad vissza, lásd: [SSML](#speech-synthesis-markup-language-ssml).
 
 ### <a name="standard-voices"></a>Standard beszédhangot
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 9d650a17ddfac6461341e50c4693e4522d9628b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8b0cebf4ba47f875caacfcfbf89b84551b41333
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148199"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341860"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>A LUIS-portálon új LUIS-alkalmazás létrehozása
 Nincsenek többféle módon LUIS-alkalmazások létrehozásához. A LUIS-alkalmazásokon hozhat létre a [LUIS](https://www.luis.ai) portál, vagy a LUIS szerzői [API-k](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
@@ -65,7 +65,7 @@ Az Authoring Tool API-khoz többféle módon hozhat létre egy új alkalmazást:
 
 Hibák a következők: 
 
-* Már létezik ilyen nevű alkalmazás. Importálja újra az alkalmazást, és állítsa be a **nem kötelező neve** egy új nevet. 
+* Már létezik ilyen nevű alkalmazás. A probléma megoldásához importálja újra az alkalmazást, és állítsa be a **nem kötelező neve** egy új nevet. 
 
 ## <a name="export-app-for-backup"></a>Biztonsági mentés készült alkalmazás exportálása
 
