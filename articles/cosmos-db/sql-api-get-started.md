@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: sngun
-ms.openlocfilehash: 7574985dbcc502d03bc886c7651c859b22968c5f
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 60c7e6b32f60d6f42d706489c41dbeea4af0d15d
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596088"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342120"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Adatkezelés az Azure Cosmos DB SQL API-fiók egy .NET-Konzolalkalmazás létrehozása
 
@@ -78,7 +78,7 @@ Kövesse ezeket az utasításokat az Azure Cosmos DB-fiók létrehozása az Azur
 
 1. Válassza ki a Visual Studio 2017 **fájl** > **új** > **projekt**.
    
-1. Az a **új projekt** párbeszédablakban válassza **Visual C#**   >  **Console App (.NET Framework)**, nevezze el a projektet *AzureCosmosDBApp* , majd válassza ki **OK**.
+1. Az a **új projekt** párbeszédablakban válassza **Visual C#**   >  **Console App (.NET Framework)** , nevezze el a projektet *AzureCosmosDBApp* , majd válassza ki **OK**.
    
    ![A New project (Új projekt) ablak képernyőképe](./media/sql-api-get-started/nosql-tutorial-new-project-2.png)
    
@@ -450,7 +450,7 @@ A következő ábra szemlélteti, hogyan az Azure Cosmos DB SQL-lekérdezési sz
 
 ![A NoSQL-oktatóanyagban a C# konzolalkalmazás létrehozásához használt lekérdezés hatókörét és jelentését ábrázoló diagram.](./media/sql-api-get-started/nosql-tutorial-collection-documents.png)
 
-A [FROM](how-to-sql-query.md#FromClause) kulcsszó, az SQL-lekérdezésben nem kötelező, mivel az Azure Cosmos DB-lekérdezések hatóköre eleve egyetlen gyűjtemény. Kicserélheti `FROM Families f` a `FROM root r`, vagy úgy dönt, változó neve. Az Azure Cosmos DB lesz kikövetkeztetni, amely `Families`, `root`, vagy a változó nevét, válassza ki az aktuális gyűjtemény hivatkozik.
+A [FROM](sql-query-from.md) kulcsszó, az SQL-lekérdezésben nem kötelező, mivel az Azure Cosmos DB-lekérdezések hatóköre eleve egyetlen gyűjtemény. Kicserélheti `FROM Families f` a `FROM root r`, vagy úgy dönt, változó neve. Az Azure Cosmos DB lesz kikövetkeztetni, amely `Families`, `root`, vagy a változó nevét, válassza ki az aktuális gyűjtemény hivatkozik.
 
 ## <a id="ReplaceDocument"></a>JSON-dokumentumok frissítése
 

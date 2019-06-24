@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 02/21/2019
+ms.date: 06/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 55cb9564205c99abc868413ebf43e575999198ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0a204238e86e23a10d698b1b8b0a465c6cbb75da
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60879289"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340974"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-python"></a>Gyors útmutató: Szavak keresése a kétnyelvű szótárban Python használatával
 
@@ -36,7 +36,10 @@ Hozzon létre egy új Python-projektet, a kedvenc integrált Fejlesztőkörnyeze
 
 ```python
 # -*- coding: utf-8 -*-
-import os, requests, uuid, json
+import os
+import requests
+import uuid
+import json
 ```
 
 > [!NOTE]
@@ -74,7 +77,7 @@ A paraméterekkel (`params`) állítható be a forrás- és a célnyelv. Ebben a
 ```python
 base_url = 'https://api.cognitive.microsofttranslator.com'
 path = '/dictionary/lookup?api-version=3.0'
-params = '&from=en&to=es';
+params = '&from=en&to=es'
 constructed_url = base_url + path + params
 ```
 
@@ -115,7 +118,8 @@ response = request.json()
 Az utolsó lépés az eredmények kiírása. Ez a kódrészlet szebbé teszi az eredményeket a kulcsok rendezésével, a behúzás beállításával és az elem- és kulcselválasztók meghatározásával.
 
 ```python
-print(json.dumps(response, sort_keys=True, indent=4, ensure_ascii=False, separators=(',', ': ')))
+print(json.dumps(response, sort_keys=True, indent=4,
+                 ensure_ascii=False, separators=(',', ': ')))
 ```
 
 ## <a name="put-it-all-together"></a>Az alkalmazás összeállítása

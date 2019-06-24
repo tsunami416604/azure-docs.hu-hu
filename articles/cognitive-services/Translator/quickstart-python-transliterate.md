@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
 ms.author: erhopf
-ms.openlocfilehash: ac91212ecc43e5aa03ecdd4857b1431ccf82b1c3
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 89757ec48331f3e58978bd844294b932ddd3be42
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515054"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340908"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-python"></a>Gyors útmutató: A Translator Text API használatával átbetűzés szöveg Python használatával
 
@@ -36,7 +36,10 @@ Hozzon létre egy új projektet egy fájlt a kedvenc IDE- vagy szerkesztő, vagy
 
 ```python
 # -*- coding: utf-8 -*-
-import os, requests, uuid, json
+import os
+import requests
+import uuid
+import json
 ```
 
 > [!NOTE]
@@ -116,7 +119,8 @@ response = request.json()
 Az utolsó lépés az eredmények kiírása. Ez a kódrészlet szebbé teszi az eredményeket a kulcsok rendezésével, a behúzás beállításával és az elem- és kulcselválasztók meghatározásával.
 
 ```python
-print(json.dumps(response, sort_keys=True, indent=4, ensure_ascii=False, separators=(',', ': ')))
+print(json.dumps(response, sort_keys=True, indent=4,
+                 ensure_ascii=False, separators=(',', ': ')))
 ```
 
 ## <a name="put-it-all-together"></a>Az alkalmazás összeállítása

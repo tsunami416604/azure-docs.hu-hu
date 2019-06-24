@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: beverst;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b3d262a33ecbc35ada278019ee0998486bc92efe
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 4b2304e170f9ddc14a5c1fa71a8822d083955106
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130194"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341517"
 ---
 # <a name="build-a-python-and-postgresql-app-in-azure-app-service"></a>Az Azure App Service a Python és PostgreSQL alkalmazás készítése
 
@@ -286,7 +286,8 @@ Ebben a lépésben üzembe helyezi a Postgreshez csatlakoztatott Python-alkalmaz
 Django érvényesíti a `HTTP_HOST` fejléc a bejövő kérelmeket. Az App Service-ben működnek a Django-alkalmazások esetén szüksége a teljesen minősített tartománynevet az alkalmazás hozzáadása az engedélyezett gazdagépek. Nyissa meg _azuresite/settings.py_ , és keresse meg a `ALLOWED_HOSTS` beállítás. Módosítsa a sort:
 
 ```python
-ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net', '127.0.0.1'] if 'WEBSITE_SITE_NAME' in os.environ else []
+ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net',
+                 '127.0.0.1'] if 'WEBSITE_SITE_NAME' in os.environ else []
 ```
 
 Ezután nem támogatja a Django [éles környezetben statikus fájlok kiszolgálása](https://docs.djangoproject.com/en/2.1/howto/static-files/deployment/), így ez manuálisan engedélyeznie kell. A jelen oktatóanyag esetében használja [WhiteNoise](https://whitenoise.evans.io/en/stable/). A WhiteNoise csomag már szerepel a _requirements.txt_. Egyszerűen Django a használatára konfigurálja. 

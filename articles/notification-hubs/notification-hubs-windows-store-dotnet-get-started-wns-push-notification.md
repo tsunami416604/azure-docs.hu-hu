@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
 ms.author: jowargo
-ms.openlocfilehash: b9fa54a24c5d96f0d3ad48034907f2c6fe5cb385
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 714c2be7265a41a7791ce39bfaa1bdc12fa58cac
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60426796"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340751"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-by-using-azure-notification-hubs"></a>Oktatóanyag: Értesítések küldéséhez univerzális Windows-Platformos alkalmazások az Azure Notification Hubs használatával
 
@@ -29,7 +29,7 @@ ms.locfileid: "60426796"
 Ebben az oktatóanyagban egy értesítési központot hoz létre leküldéses értesítések küldéséhez az Univerzális Windows-platformra (UWP) épülő alkalmazásba. Egy üres Windows Áruházbeli alkalmazást fog létrehozni, amely leküldéses értesítéseket fogad a Windows leküldéses értesítési szolgáltatásának (WNS) használatával. Az értesítési központot, majd leküldéses értesítések küldése az alkalmazást futtató összes eszközre használhatja.
 
 > [!NOTE]
-> Az oktatóanyag teljes kódját megtalálja a [GitHubon](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/GetStartedWindowsUniversal).
+> Az oktatóanyag teljes kódját megtalálja a [GitHubon](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/UwpSample).
 
 Tegye a következőket:
 
@@ -77,7 +77,7 @@ A leküldéses értesítések UWP-alkalmazásokba irányuló küldéséhez társ
 
 ### <a name="configure-wns-settings-for-the-hub"></a>A központ WNS-beállításainak konfigurálása
 
-1. Az a **értesítési beállítások** kategória, jelölje be **Windows (WNS)**.
+1. Az a **értesítési beállítások** kategória, jelölje be **Windows (WNS)** .
 2. Adja meg a **Package SID** (Csomag biztonsági azonosítója) és a **Security Key** (Biztonsági kulcs) előző szakaszban feljegyzett értékét.
 3. Kattintson az eszköztár **Mentés** elemére.
 
