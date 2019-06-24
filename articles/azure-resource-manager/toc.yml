@@ -212,7 +212,7 @@
 - name: Referencia
   items:
     - name: Sablonreferencia
-      href: subtoc/toc.yml
+      href: /azure/templates/
     - name: Sablonfüggvények
       items:
         - name: Minden függvény
