@@ -79,8 +79,8 @@ Az általános struktúráját egy kimeneti definíciót a következő:
 | Attribútum | Szükséges | Típus | Leírás |
 |-----------|----------|------|-------------|
 | <*key-name*> | Igen | String | A kulcs nevét, a kimeneti értéket adnak vissza. |
-| <*key-type*> | Igen | int, lebegőpontos, string, securestring, bool, tömböt, JSON-objektum | A kimeneti visszatérési érték típusát |
-| <*key-value*> | Igen | Ugyanaz, mint a <*kulcs-típus*> | A kimeneti visszatérési érték |
+| <*key-type*> | Igen | int, float, string, securestring, bool, array, JSON-objektum | A kimeneti visszatérési érték típusát |
+| <*key-value*> | Igen | Ugyanaz, mint a <*key-type*> | A kimeneti visszatérési érték |
 |||||
 
 Egy munkafolyamat-futtatási lekérheti a kimenetét, tekintse át a logikai alkalmazás futtatási előzmények és részletek az Azure Portalon, vagy használja a [munkafolyamat REST API-val](https://docs.microsoft.com/rest/api/logic/workflows). Is átadhat kimeneti a külső rendszerekkel, például a Power bi-ban, hogy irányítópultokat hozhat létre.
@@ -110,8 +110,8 @@ Az a `parameters` területén adja meg a központi telepítési bemenetek fogad�
 
 | Attribútum | Kötelező | Típus | Leírás |
 |-----------|----------|------|-------------|
-| <*parameter-type*> | Igen | int, lebegőpontos, string, securestring, bool, tömböt, JSON-objektum, secureobject <p><p>**Megjegyzés**: Az összes jelszavak, kulcsok és titkos kulcsokat, használja a `securestring` és `secureobject` típusokat, mert a `GET` művelet nem ad vissza ezeket a típusokat. Paraméterek védelmével kapcsolatos további információkért lásd: [a logikai alkalmazás védelme](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters) | A paraméter típusa |
-| <*alapértelmezett paraméterértékek*> | Igen | Ugyanaz, mint `type` | Az alapértelmezett paraméter értéke, ha nem ad meg értéket, ha a munkafolyamat példányosítja |
+| <*parameter-type*> | Igen | int, float, string, securestring, bool, array, JSON-objektum, secureobject <p><p>**Megjegyzés**: Az összes jelszavak, kulcsok és titkos kulcsokat, használja a `securestring` és `secureobject` típusokat, mert a `GET` művelet nem ad vissza ezeket a típusokat. Paraméterek védelmével kapcsolatos további információkért lásd: [a logikai alkalmazás védelme](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters) | A paraméter típusa |
+| <*default-parameter-values*> | Igen | Ugyanaz, mint `type` | Az alapértelmezett paraméter értéke, ha nem ad meg értéket, ha a munkafolyamat példányosítja |
 | <*array-with-permitted-parameter-values*> | Nem | Tömb | Egy tömb, amely a paraméter elfogadhat értékekkel |
 | `metadata` | Nem | JSON-objektum | Bármely más paraméter részleteit, például a nevét vagy a logikai alkalmazás vagy folyamat, vagy a Visual Studio vagy más eszközök által használt tervezési idejű adatok olvasható leírását |
 ||||
