@@ -569,11 +569,11 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| FirstTimestamp | string | Időbélyeg típusú videó nyomon követi és minőségi szintjének érkezett. |
+| firstTimestamp | string | Időbélyeg típusú videó nyomon követi és minőségi szintjének érkezett. |
 | firstDuration | string | Az adathalmaz első időbélyeggel időtartama. |
 | secondTimestamp | string  | Az időbélyeg néhány egyéb nyomon követése és minőségi szintjét a videó típus érkezett. |
 | secondDuration | string | A második időbélyeggel adathalmaz időtartama. |
-| időskálára | string | Időskálára időbélyegeket és időtartamát.|
+| timescale | string | Időskálára időbélyegeket és időtartamát.|
 
 ### <a name="liveeventingestheartbeat"></a>LiveEventIngestHeartbeat
 
@@ -612,17 +612,17 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | trackType | string | A track típusa (hang / kép). |
-| TrackName | string | A track nevét (vagy a kódoló vagy -esetén RTMP-kiszolgálót állít elő, a megadott *TrackType_Bitrate* formátumban). |
-| Átviteli sebesség | egész szám | A szám sávszélességű. |
-| IncomingBitrate | egész szám | Számított sávszélességű származó kódolóval adattömbök alapján. |
-| LastTimestamp | string | Az elmúlt 20 másodperc nyomon kapott legújabb időbélyegző. |
-| időskálára | string | Időskálára, amelyben időbélyeggel van megadva. |
-| OverlapCount | egész szám | Adattömbök száma az elmúlt 20 másodperc kellett átfedett időbélyegzőnél. |
-| DiscontinuityCount | egész szám | Az elmúlt 20 másodperc megfigyelt folytonosság megszakítását száma. |
-| nonIncreasingCount | egész szám | A múltban időbélyegzőnél adattömbök száma az elmúlt 20 másodperc alatt érkezett. |
+| trackName | string | A track nevét (vagy a kódoló vagy -esetén RTMP-kiszolgálót állít elő, a megadott *TrackType_Bitrate* formátumban). |
+| bitrate | integer | A szám sávszélességű. |
+| incomingBitrate | integer | Számított sávszélességű származó kódolóval adattömbök alapján. |
+| lastTimestamp | string | Az elmúlt 20 másodperc nyomon kapott legújabb időbélyegző. |
+| timescale | string | Időskálára, amelyben időbélyeggel van megadva. |
+| overlapCount | integer | Adattömbök száma az elmúlt 20 másodperc kellett átfedett időbélyegzőnél. |
+| discontinuityCount | integer | Az elmúlt 20 másodperc megfigyelt folytonosság megszakítását száma. |
+| nonIncreasingCount | integer | A múltban időbélyegzőnél adattömbök száma az elmúlt 20 másodperc alatt érkezett. |
 | unexpectedBitrate | bool | Ha a várt és tényleges bitsebességre való átkódolása eltér az elmúlt 20 másodperc alatt több mint engedélyezett korlátot. IGAZ, ha, és csak akkor, ha, incomingBitrate > = 2 * sávszélességű vagy incomingBitrate < = vagy IncomingBitrate sávszélességű/2 = 0. |
 | state | string | Az élő esemény állapota. |
-| Kifogástalan állapotú | bool | Azt jelzi, hogy betöltési állapota megfelelő számát és a jelzők alapján. Kifogástalan igaz. Ha overlapCount = 0 & & discontinuityCount = 0 & & nonIncreasingCount = 0 & & unexpectedBitrate = false. |
+| healthy | bool | Azt jelzi, hogy betöltési állapota megfelelő számát és a jelzők alapján. Kifogástalan igaz. Ha overlapCount = 0 & & discontinuityCount = 0 & & nonIncreasingCount = 0 & & unexpectedBitrate = false. |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
 
@@ -656,12 +656,12 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | trackType | string | A track típusa (hang / kép). |
-| TrackName | string | A track nevét (vagy a kódoló vagy -esetén RTMP-kiszolgálót állít elő, a megadott *TrackType_Bitrate* formátumban). |
-| Átviteli sebesség | egész szám | A szám sávszélességű. |
-| PreviousTimestamp | string | Az előző töredék időbélyegét. |
-| NewTimestamp | string | Az aktuális töredék időbélyegét. |
-| DiscontinuityGap | string | Különbség a két időbélyegek felett. |
-| időskálára | string | A melyik időbélyeg és a kihagyást gap időskálára szerepelnek. |
+| trackName | string | A track nevét (vagy a kódoló vagy -esetén RTMP-kiszolgálót állít elő, a megadott *TrackType_Bitrate* formátumban). |
+| bitrate | integer | A szám sávszélességű. |
+| previousTimestamp | string | Az előző töredék időbélyegét. |
+| newTimestamp | string | Az aktuális töredék időbélyegét. |
+| discontinuityGap | string | Különbség a két időbélyegek felett. |
+| timescale | string | A melyik időbélyeg és a kihagyást gap időskálára szerepelnek. |
 
 ### <a name="common-event-properties"></a>Közös Eseménytulajdonságok
 
@@ -674,7 +674,7 @@ Egy esemény a következő legfelső szintű adatokat tartalmaz:
 | eventType | string | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. Például "Microsoft.Media.JobStateChange." |
 | eventTime | string | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
 | id | string | Az esemény egyedi azonosítója. |
-| data | objektum | A Media Services eseményadatokat. |
+| data | object | A Media Services eseményadatokat. |
 | dataVersion | string | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
 | metadataVersion | string | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
 
