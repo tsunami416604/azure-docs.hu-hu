@@ -140,19 +140,19 @@ A bővítmény telepítéséről automatikusan Chrome böngészők, hozzon létr
 
 |    |    |
 | --- | --- |
-| Útvonal | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| Name (Név) | 1 |
-| Típus | REG_SZ (String) |
-| Adatok | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx |
+| Path | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
+| Name | 1 |
+| Type | REG_SZ (String) |
+| Data | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx |
 
 Támogatja a Chrome **7 és Windows 8.1**, hozza létre a következő beállításkulcsot:
 
 |    |    |
 | --- | --- |
-| Útvonal | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| Name (Név) | 1 |
-| Típus | REG_SZ (String) |
-| Adatok | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
+| Path | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
+| Name | 1 |
+| Type | REG_SZ (String) |
+| Data | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
 
 A böngészők eszközhitelesítés lehetővé teszi az eszköz azonosítani és egy házirend kialakításnak támogatja. Az eszköz-ellenőrzés sikertelen lesz, ha a böngészőt privát üzemmódban fut-e.
 
