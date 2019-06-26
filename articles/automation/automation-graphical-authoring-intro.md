@@ -142,7 +142,7 @@ Az újrapróbálkozási feltétel használhatja, amely hozzáférést biztosít 
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | NumberOfAttempts |Száma, amelyek a tevékenység futott. |
-| Kimenet |A tevékenység a legutóbbi futtatás kimenete. |
+| Output |A tevékenység a legutóbbi futtatás kimenete. |
 | TotalDuration |Lejárt az idő a tevékenység az első alkalommal indítása óta eltelt idő. |
 | StartedAt |Ideje UTC formátumban, a tevékenység először lett elindítva. |
 
@@ -324,10 +324,10 @@ Egyes bemeneti paramétereket határozzák meg a tulajdonságait az alábbi táb
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Name (Név) |A paraméternek egyedi neve. Ez csak alfanumerikus karaktereket tartalmazhat, és nem tartalmazhat szóközt. |
-| Leírás |A bemeneti paraméter leírását. |
-| Típus |A paraméter értéke a várt adattípus. Az Azure Portalon kimondása a bemeneti biztosít az egyes paraméterekhez tartozó adattípus egy megfelelő vezérlőt. |
-| Kötelező |Itt adhatja meg, hogy értéket kell adni a paraméter. A runbook nem indítható el, ha nem ad meg értéket minden kötelező paraméter, amely nem rendelkezik meghatározott alapértelmezett értéket. |
+| Name |A paraméternek egyedi neve. Ez csak alfanumerikus karaktereket tartalmazhat, és nem tartalmazhat szóközt. |
+| Description |A bemeneti paraméter leírását. |
+| Type |A paraméter értéke a várt adattípus. Az Azure Portalon kimondása a bemeneti biztosít az egyes paraméterekhez tartozó adattípus egy megfelelő vezérlőt. |
+| Mandatory |Itt adhatja meg, hogy értéket kell adni a paraméter. A runbook nem indítható el, ha nem ad meg értéket minden kötelező paraméter, amely nem rendelkezik meghatározott alapértelmezett értéket. |
 | Alapértelmezett érték |Itt adhatja meg, milyen értéket a paraméterhez szolgál, ha nincs megadva. Ez lehet null értékű vagy egy adott érték. |
 
 ### <a name="runbook-output"></a>Runbook kimenete
