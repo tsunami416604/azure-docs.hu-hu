@@ -72,7 +72,7 @@ Az alábbi táblázatban a paraméter attribútumait ismerteti.
 |:--- |:--- |
 | type |A paraméter adattípusa. A bemeneti vezérlőelem jelenik meg a felhasználó az adatok típusától függ.<br><br>logikai – a legördülő listából<br>karakterlánc - szövegmező<br>int - szövegmező<br>SecureString - jelszó mező<br> |
 | category |A kategória nem kötelező paraméter.  Paraméterek ugyanahhoz a kategóriához vannak csoportosítva. |
-| Vezérlő |További funkciókat lekérdezésikarakterlánc-paramétereket.<br><br>dátum és idő – dátum és idő vezérlőelem jelenik meg.<br>GUID - érték a GUID azonosító automatikusan jön létre, és a paraméter nem jelenik meg. |
+| control |További funkciókat lekérdezésikarakterlánc-paramétereket.<br><br>dátum és idő – dátum és idő vezérlőelem jelenik meg.<br>GUID - érték a GUID azonosító automatikusan jön létre, és a paraméter nem jelenik meg. |
 | description |A paraméter szükséges, leírását.  Megjelenik egy információk buborékra a paraméter mellett. |
 
 ### <a name="standard-parameters"></a>Szabványos paraméterek
@@ -85,10 +85,10 @@ Az alábbi táblázat felsorolja az összes felügyeleti megoldások szabványos
 
 | Paraméter | Típus | Leírás |
 |:--- |:--- |:--- |
-| fióknév |string |Az Azure Automation-fiók nevét. |
+| accountName |string |Az Azure Automation-fiók nevét. |
 | pricingTier |string |Log Analytics-munkaterületet és az Azure Automation-fiók tarifacsomagját. |
 | regionId |string |Az Azure Automation-fiók régiója. |
-| megoldás neve |string |A megoldás nevére.  A megoldás gyorsindítási sablonok használatával helyez üzembe, majd meg kell határozni solutionName paraméterként így meghatározhatja, hogy inkább igénylő a felhasználó számára adjon meg egy karakterláncot. |
+| solutionName |string |A megoldás nevére.  A megoldás gyorsindítási sablonok használatával helyez üzembe, majd meg kell határozni solutionName paraméterként így meghatározhatja, hogy inkább igénylő a felhasználó számára adjon meg egy karakterláncot. |
 | workspaceName |string |Log Analytics-munkaterület neve. |
 | workspaceRegionId |string |A Log Analytics-munkaterület régiója. |
 
@@ -226,7 +226,7 @@ A **terv** entitás a megoldás erőforrás tulajdonságokkal rendelkezik, az al
 |:--- |:--- |
 | name |A megoldás nevére. |
 | version |A megoldás a szerző által meghatározott verziója. |
-| A termék |A megoldás azonosításához egyedi karakterlánc. |
+| product |A megoldás azonosításához egyedi karakterlánc. |
 | publisher |Adott megoldás kiadójával. |
 
 
