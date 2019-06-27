@@ -127,17 +127,17 @@ Az alábbi táblázat a tulajdonságok és amikor létrehozásába és kezelés�
 
 | Paraméter | Leírás | Alapértelmezett |
 | --- | --- | --- |
-| Name (Név) |A gyorsítótár neve | |
-| Location egység |A gyorsítótár helye | |
+| Name |A gyorsítótár neve | |
+| Location |A gyorsítótár helye | |
 | ResourceGroupName |Erőforráscsoport neve, amelyben a gyorsítótár létrehozása | |
-| Méret |A gyorsítótár méretét. Érvényes értékek a következők: P1, P2, P3, P4, C0 CSOMAG, C1, C2, C3, C4, C5 CSOMAG, C6 CSOMAG, 250 MB-OS, 1 GB-OS, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB |1 GB |
+| Size |A gyorsítótár méretét. Érvényes értékek a következők: P1, P2, P3, P4, C0 CSOMAG, C1, C2, C3, C4, C5 CSOMAG, C6 CSOMAG, 250 MB-OS, 1 GB-OS, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB |1 GB |
 | ShardCount |Hozzon létre egy prémium szintű gyorsítótár létrehozásakor a fürtözés engedélyezve van a szegmensek száma. Érvényes értékek a következők: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | |
 | SKU |Adja meg a gyorsítótár-Termékváltozat. Érvényes értékek a következők: Alap, Normál, Prémium |Standard |
 | RedisConfiguration |Itt adhatja meg a Redis-konfigurációs beállításokat. További információ az egyes beállítások: a következő [RedisConfiguration tulajdonságok](#redisconfiguration-properties) tábla. | |
 | EnableNonSslPort |Azt jelzi, hogy engedélyezve van-e a nem SSL port. |False (Hamis) |
 | MaxMemoryPolicy |Ez a paraméter elavult, – használja helyette a RedisConfiguration. | |
 | StaticIP |Tárolásához a gyorsítótár egy virtuális hálózaton, adja meg egy egyedi IP-cím az alhálózat, a gyorsítótár. Ha nincs megadva, az egyik van kiválasztva, az alhálózatról. | |
-| Alhálózat |Üzemelteti a gyorsítótár egy virtuális hálózaton, amikor megadja az alhálózaton, melyben szeretné üzembe helyezni a gyorsítótár nevére. | |
+| Subnet |Üzemelteti a gyorsítótár egy virtuális hálózaton, amikor megadja az alhálózaton, melyben szeretné üzembe helyezni a gyorsítótár nevére. | |
 | VirtualNetwork |A gyorsítótár egy virtuális hálózaton tárolásához, a virtuális hálózat, melyben szeretné üzembe helyezni a gyorsítótár erőforrás Azonosítóját határozza meg. | |
 | KeyType |Itt adhatja meg, melyik hívóbetű újragenerálni a hozzáférési kulcsok megújításakor. Érvényes értékek a következők: Elsődleges, másodlagos | |
 
