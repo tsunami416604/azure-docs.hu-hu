@@ -79,8 +79,8 @@ Mentett keresés minden egyes tulajdonsága a következő táblázatban leírt.
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | category | A kategória a mentett keresésnek.  Minden mentett keresések megoldásban gyakran oszt ki egyetlen kategória, így együtt vannak csoportosítva a konzolon. |
-| DisplayName | A mentett keresésnek, a portálon megjelenítendő neve. |
-| lekérdezés | A lekérdezés futtatásához. |
+| displayName | A mentett keresésnek, a portálon megjelenítendő neve. |
+| query | A lekérdezés futtatásához. |
 
 > [!NOTE]
 > Szükség lehet escape-karaktereket használja a lekérdezésben, ha JSON-fájlként is értelmezhető karaktereket tartalmaz. Például, ha a lekérdezés a(z) **AzureActivity |} OperationName:"Microsoft.Compute/virtualMachines/write"** , ez a megoldás fájlt kell megírni **AzureActivity |} OperationName: /\"Microsoft.Compute/virtualMachines/write\"** .
@@ -176,10 +176,10 @@ A riasztási művelet erőforrás tulajdonságait az alábbi táblázatok ismert
 
 | Elem neve | Szükséges | Leírás |
 |:--|:--|:--|
-| Típus | Igen | A művelet típusa.  Ez a **riasztás** riasztási műveletek esetében. |
-| Name (Név) | Igen | A riasztás megjelenítendő neve.  Ez a riasztási szabályt a konzolon megjelenített nevet. |
-| Leírás | Nem | A riasztás leírását. |
-| Severity | Igen | A következő értékek közül a riasztásbejegyzést súlyossága:<br><br> **critical**<br>**warning**<br>**Tájékoztató**
+| type | Igen | A művelet típusa.  Ez a **riasztás** riasztási műveletek esetében. |
+| name | Igen | A riasztás megjelenítendő neve.  Ez a riasztási szabályt a konzolon megjelenített nevet. |
+| description | Nem | A riasztás leírását. |
+| severity | Igen | A következő értékek közül a riasztásbejegyzést súlyossága:<br><br> **critical**<br>**warning**<br>**Tájékoztató**
 
 
 #### <a name="threshold"></a>Küszöbérték
