@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 05/20/2019
-ms.openlocfilehash: 1c81f5748d1e3edff4902eb462b9beea78acd8bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3e56244f074e31672cf77bc74998096e215a4db7
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65951668"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357349"
 ---
 # <a name="automated-backups"></a>Automatikus biztonsági mentések
 
@@ -32,7 +32,7 @@ Az SQL Database az SQL Server-technológia segítségével hozza létre [teljes 
 Ezek a biztonsági mentések használhatók:
 
 - **Létező adatbázis visszaállítása egy-időponthoz múltbeli** az Azure Portalon, az Azure PowerShell, Azure CLI vagy REST API használatával adatmegőrzési időszakán belül. Az önálló adatbázisok és rugalmas készletek Ez a művelet létrehoz egy új adatbázist az eredeti adatbázissal ugyanazon a kiszolgálón. A felügyelt példány Ez a művelet egy másolatot az adatbázis vagy azonos vagy eltérő felügyelt példány egy előfizetésen belül hozhat létre.
-  - **[Módosítsa a biztonsági mentés megőrzési időszak](#how-to-change-the-pitr-backup-retention-period)**  közötti 35 napon belül, a biztonsági mentési szabályzat konfigurálásához.
+  - **[Módosítsa a biztonsági mentés megőrzési időszak](#how-to-change-the-pitr-backup-retention-period)**  7 és 35 nap a biztonsági mentési szabályzat konfigurálásához között.
   - **Módosítsa a hosszú távú adatmegőrzési házirend 10 évre** önálló adatbázis és rugalmas készletek [az Azure Portalon](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies) vagy [Azure PowerShell-lel](sql-database-long-term-backup-retention-configure.md#use-powershell-to-configure-long-term-retention-policies-and-restore-backups).
 - **Törölt adatbázis visszaállítása törölve lett az idő** vagy a megőrzési időtartamon belül bármikor. A törölt adatbázisok csak az egyazon logikai kiszolgálón vagy a felügyelt példányt, ahol az eredeti adatbázis létrejött állítható vissza.
 - **Adatbázis helyreállítása egy másik földrajzi régióba**. A GEO-visszaállítás lehetővé teszi egy földrajzi katasztrófa utáni helyreállítás, amikor nem fér hozzá a kiszolgálóhoz és adatbázishoz. Ez létrehoz egy új adatbázist a világ bármely pontján található bármely meglévő Server.

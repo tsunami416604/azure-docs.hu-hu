@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/27/2019
 ms.author: juliako
-ms.openlocfilehash: 3e1a5d8ba8b6d0ec8e3ec1ba9506a88ee87d8ed1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab74b778757aefc22f66e8b52d1f1d922526f14a
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66515727"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296135"
 ---
 # <a name="streaming-endpoints"></a>Streamvégpontok 
 
@@ -143,7 +143,7 @@ Is kell figyelembe venni, hogyan adaptív adatfolyam-továbbítási működik. M
 
 Miután egy folyamatos átviteli végponton ki van építve a CDN engedélyezve van egy meghatározott várakozási idő a Media Services megkezdése előtt el DNS frissítése történik a folyamatos átviteli végponton leképezése a CDN-végponthoz.
 
-Ha később szeretné a CDN engedélyezése vagy tiltása, a streamvégpontnak kell lennie a **leállt** állapota. Azt az Azure CDN engedélyezve az integráció és a módosítások között minden a CDN jelenléti helyein lesz aktív akár két óráig is eltarthat. Azonban Ön telepítheti a streamelési végpontot és a stream nélkül megszakítások indítsa el a streamvégpontot, és az integráció befejezése után a CDN-ből továbbítsa a streamet. Az üzembe helyezési ideje alatt a tartalomstreameléshez használt streamvégpont szerepelni fog **indítása** állapotát, és előfordulhat, hogy figyelje a teljesítmény csökkenését.
+Ha később szeretné a CDN engedélyezése vagy tiltása, a streamvégpontnak kell lennie a **leállt** állapota. Azt az Azure CDN engedélyezve az integráció és a módosítások között minden a CDN jelenléti helyein lesz aktív akár két óráig is eltarthat. Azonban Ön telepítheti a streamelési végpontot és a stream nélkül megszakítások indítsa el a streamvégpontot, és az integráció befejezése után a CDN-ből továbbítsa a streamet. Az üzembe helyezési ideje alatt a tartalomstreameléshez használt streamvégpont szerepelni fog a **indítása** állapotát, és előfordulhat, hogy figyelje a teljesítmény csökkenését.
 
 Ha a standard szintű streamvégpont jön létre, a Standard – Verizon alapértelmezés szerint van konfigurálva. Premium Verizon vagy Standard – Akamai szolgáltatók REST API-k használatával konfigurálhatja. 
 

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dbfbd76d235cedd297a5ad54b51bc4ebb550bb1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a4060c90af3825122c871696a5555e8579d0ad0a
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65466282"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67358080"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azonosíthatja és a egy Azure Active Directory-csoporthoz hozzárendelt kapcsolatos problémák megoldásához
 
@@ -105,7 +105,7 @@ Ha az Exchange Online használata esetén a bérlő néhány felhasználója el�
 > [!TIP]
 > Szeretné látni, hogy van-e ismétlődő proxycímet, hajtsa végre a következő PowerShell-parancsmag elleni Exchange online-hoz:
 > ```
-> Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
+> Get-Recipient -ResultSize unlimited | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
 > ```
 > A problémáról további információk: ["proxycím már használatban van" hibaüzenet jelenik meg az Exchange online-hoz](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online). A cikk emellett tartalmaz információt a [hogyan kapcsolódhat az Exchange online-hoz távoli PowerShell-lel](https://technet.microsoft.com/library/jj984289.aspx).
 

@@ -9,13 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.openlocfilehash: c7f4b6d8aa614a460772fb7af11f9b83dc3fc979
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/20/2019
+ms.openlocfilehash: 4a3ab9094080ab257a885bb7a745fc83948327c2
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65800818"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331682"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatikus – train idősorozat-előrejelzési modell
 
@@ -26,6 +26,14 @@ Ebből a cikkből elsajátíthatja egy idősorozat-előrejelzési regressziós m
 * Futtassa az előrejelzések idősorozat adatokhoz
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GW]
+
+Automatizált gépi tanulás segítségével technikák és módszerek és a egy ajánlott, magas minőségű idősorozat-előrejelzés beolvasása. Automatizált idősorozat-kísérlet többváltozós regresszió probléma számít. Elmúlt idősorozat-értékek vannak "problémakörrel" a regressor más előrejelzőket együtt erre a további méretek válik. 
+
+Ezzel a módszerrel eltérően klasszikus idő adatsorozat módok, természetesen magában foglaló, több környezeti változók és azok egy másik betanítás során előnye van. A való életből vett előrejelzési alkalmazások számos tényező befolyásolhatja az előrejelzést. Értékesítési előrejelzések, ha a korábbi trendek, árfolyam és a díj az összes kapcsolati például közösen meghajtó az értékesítési serkenti az eredményt. További előnye, hogy az összes legújabb fejlesztéseit a regressziós modellek azonnal érvénybe lépnek előrejelzését.
+
+Is [konfigurálása](#config) milyen az elkövetkező az előrejelzés ki kell (a előrejelzési közeljövőre), valamint késedelmes jelentések és egyebek. Automatizált gépi tanulás képes megtanulni az adatkészlet és előrejelzési szintek az összes cikkhez egyetlen, de gyakran belső elágazó modell. Több adatot Modellparaméterek megbecsülni így érhető el, és nem látható adatsorozat általánossá lehetségessé válik. 
+
+A betanítási adatok kinyert szolgáltatások kritikus szerepet játszanak. És automatizált ML standard előfeldolgozási lépéseket hajtja végre, és további idősorozat-funkciók szezonális hatások rögzítése, és maximalizálhatják prediktív pontossága állít elő. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -69,6 +77,7 @@ y_test = X_test.pop("sales_quantity").values
 > [!NOTE]
 > Az értékeket későbbi előrejelzési modell betanításakor ügyeljen rá, hogy a használt képzési szolgáltatásai használhatók az importálni kívánt horizon adatokat futtatásakor. Például egy kereslet-előrejelzési létrehozásakor, beleértve az aktuális tőzsdei árfolyam funkció nagy mértékben megnövelheti képzési pontosságát. Azonban ha azt tervezi, a hosszú horizon előrejelzést, nem lehet előre pontosan a jövőbeli idősorozat-pontok megfelelő jövőbeli tőzsdei értékeket, és modellpontosságból volt tapasztalható.
 
+<a name="config"></a>
 ## <a name="configure-and-run-experiment"></a>Konfigurálja és a kísérlet futtatásához
 
 Automatizált gépi tanulási feladatok előrejelzés, használja az idősorozat-adatok adott előzetes feldolgozása és költségbecslési lépéseket. A következő előfeldolgozási lépéseket fogja végrehajtani:
@@ -81,11 +90,11 @@ Automatizált gépi tanulási feladatok előrejelzés, használja az idősorozat
 
 A `AutoMLConfig` objektuma határozza meg a beállításokat és a egy automatizált machine learning feladatot a szükséges adatokat. Regressziós problémaként hasonlóan megadhat standard képzési paraméterek tevékenység típusa, a betanítási adatok, az ismétlések száma és a kereszt-ellenőrzés száma. Az előrejelzési feladatok, nincsenek további paramétereket kell megadni, amelyek befolyásolják a kísérletet. A következő táblázat az egyes paraméterek és azok használatát ismerteti.
 
-| Param | Leírás | Kötelező |
+| Param | Leírás | Szükséges |
 |-------|-------|-------|
 |`time_column_name`|Itt adhatja meg a dátum/idő oszlop a bemeneti adatok az idősor és annak gyakoriságát adatcsatornához.|✓|
 |`grain_column_names`|Az egyes adatsorozat-csoportok meghatározása a bemeneti adatok neve. Időfelbontási szint nincs definiálva, ha az adatkészlet adatforrásmérete egy idősorozat.||
-|`max_horizon`|Maximálisan keresett előrejelzési horizon idősorozat-gyakoriság egysége.|✓|
+|`max_horizon`|Meghatározza a legnagyobb, kívánt előrejelzési közeljövőre idősorozat-gyakoriság egysége. Egységek alapja az időintervallum, a betanítási adatok, például havi, hetente, hogy a forecaster meg kell találnia.|✓|
 |`target_lags`|*n* előre eltolódást időszakok célértéket modell betanítása előtt.||
 |`target_rolling_window_size`|*n* előre jelzett értékek generálásához használt korábbi időszakok < = képzési mérete. Ha nincs megadva, *n* értéke a teljes képzési méretét.||
 

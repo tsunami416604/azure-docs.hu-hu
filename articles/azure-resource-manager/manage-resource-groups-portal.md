@@ -5,18 +5,15 @@ services: azure-resource-manager,azure-portal
 documentationcenter: ''
 author: mumian
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: 559c1874c119eabef2c35a954961c1e669df3c06
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bc3c1a05c64edea260bd177dd7eaefc003db5310
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65507231"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296293"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure Resource Manager-erőforráscsoportok kezelése az Azure portal használatával
 
@@ -109,14 +106,6 @@ A címkékkel erőforráscsoportok és erőforrásokhoz, hogy logikusan rendszer
 ## <a name="export-resource-groups-to-templates"></a>Erőforráscsoportok exportálása sablonokhoz
 
 További információ a sablonok exportálása: [sablon - portál egy vagy több erőforrás exportálás](export-template-portal.md).
-
-### <a name="fix-export-issues"></a>Az exportálással kapcsolatos problémák megoldása
-
-A sablonexportálási funkciót nem támogatja az összes erőforrástípus. Csak hibák exportálása egy erőforráscsoportból, nem pedig az üzembe helyezési előzményekből exportálásakor. Ha a legutóbbi üzembe helyezés pontosan tükrözi az erőforráscsoport aktuális állapotát, érdemes az erőforráscsoport helyett az üzembe helyezési előzmények közül elvégezni a sablon exportálását. Ha módosította az erőforráscsoportot, amely egyetlen sablonban nem meghatározott csak exportálhatja az erőforráscsoport.
-
-Exportálás problémák megoldása érdekében adja hozzá manuálisan a hiányzó erőforrásokat a sablonhoz vissza. A hibaüzenetben szerepelnek a nem exportálható erőforrástípusok. Ezt az erőforrástípust a [Sablonreferenciában](/azure/templates/) találja. Ha például manuálisan szeretne hozzáadni egy virtuális hálózati átjárót, lásd a [Microsoft.Network/virtualNetworkGateways sablonreferenciát](/azure/templates/microsoft.network/virtualnetworkgateways). Referencia a JSON-erőforrás hozzáadása a sablonhoz, biztosít.
-
-Ha JSON formátumban az erőforrás, le szeretné kérni az erőforrás-értékeket. Az értékeket az erőforrás megtekintéséhez használja a GET műveletet a REST API-ban az erőforrástípushoz. A virtuális hálózati átjáró az értékek lekéréséhez lásd a [első virtuális hálózati átjárók -](/rest/api/network-gateway/virtualnetworkgateways/get).
 
 ## <a name="manage-access-to-resource-groups"></a>Erőforráscsoportok való hozzáférés kezelése
 

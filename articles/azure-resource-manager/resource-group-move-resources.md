@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1cc2f3b1ee657706dba237c86552b1780bc9dd34
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: eb99bec74ae5444320b7098616d4bf2d81b90697
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295448"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67332028"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -79,7 +79,6 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * DNS
 * Event Grid
 * Event Hubs
-* Bejárati ajtajának
 * Tekintse meg a HDInsight-fürtök – [HDInsight korlátozások](#hdinsight-limitations)
 * Iot Central
 * IoT Hubok
@@ -138,6 +137,7 @@ Az alábbi lista nem lehet áthelyezni egy új erőforráscsoportot és egy elő
 * Fejlesztői tárolóhelyek
 * Dynamics LCS
 * ExpressRoute
+* Bejárati ajtajának
 * A Lab Services – osztályterem-tesztkörnyezetek nem lehet áthelyezni egy új erőforráscsoportot vagy előfizetést. DevTest Labs szolgáltatásban egy új erőforráscsoport ugyanabban az előfizetésben, de az előfizetések között nem helyezheti át.
 * Felügyelt alkalmazások
 * Felügyelt identitás - felhasználó által hozzárendelt

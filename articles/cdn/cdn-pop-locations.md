@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2019
+ms.date: 05/19/2019
 ms.author: magattus
-ms.openlocfilehash: 45ac1eb484d5e301a9090ea5a11165ba321b0aaa
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 63f6156e6e1a94c49b2147f7c25da35c247c701d
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274962"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331873"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Az Azure CDN lefedettség Metro szerint 
 > [!div class="op_single_selector"]
@@ -38,9 +38,9 @@ Ez a cikk felsorolja az aktuális metrót tartalmazó jelenléti pontok (POP) he
 
 | Régió | Microsoft | Verizon | Akamai |
 | --- | --- | --- | --- |
-| Észak-Amerika | Toronto, Kanada<br />Querétaro, Mexico<br />San Juan, Puerto Rico<br />Ashburn, VA, USA<br />Atlanta, GA, USA<br />Boston, MA, USA<br />Amerikai Egyesült Államok WY Cheyenne<br />Chicago, IL, USA<br /> Dallas, TX, USA<br />Denver, CO, USA<br />Honoluluban, nagy, USA<br />Amerikai Egyesült Államok TX Houston<br />Las Vegas, NV, USA<br />Los Angeles, Kanada, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Phoenix, AZ, USA<br />A San Antonio, TX, USA<br />A San Jose, Kanada, USA<br />Seattle, WA, USA | Guadalajara, Mexico<br />Mexikóváros, Mexikó<br />Pueblai, Mexikó<br />Querétaro, Mexico<br />Atlanta, GA, USA<br />Boston, MA, USA<br />Chicago, IL, USA<br />Dallas, TX, USA<br />Denver, CO, USA<br />Detroit, MI, USA<br />Los Angeles, Kanada, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Philadelphia, PA, USA<br />A San Jose, Kanada, USA<br />Seattle, WA, USA<br />Washington, DC, USA | Kanada<br />Mexikó<br />USA |
+| Észak-Amerika | Toronto, Kanada<br />Vancouver, Kanada<br />Querétaro, Mexico<br />San Juan, Puerto Rico<br />Ashburn, VA, USA<br />Atlanta, GA, USA<br />Boston, MA, USA<br />Amerikai Egyesült Államok WY Cheyenne<br />Chicago, IL, USA<br /> Dallas, TX, USA<br />Denver, CO, USA<br />Honoluluban, nagy, USA<br />Amerikai Egyesült Államok TX Houston<br />Las Vegas, NV, USA<br />Los Angeles, Kanada, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Newark, NJ, USA<br />Phoenix, AZ, USA<br />Portland, OR, USA<br />A San Antonio, TX, USA<br />A San Jose, Kanada, USA<br />Seattle, WA, USA | Guadalajara, Mexico<br />Mexikóváros, Mexikó<br />Pueblai, Mexikó<br />Querétaro, Mexico<br />Atlanta, GA, USA<br />Boston, MA, USA<br />Chicago, IL, USA<br />Dallas, TX, USA<br />Denver, CO, USA<br />Detroit, MI, USA<br />Los Angeles, Kanada, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Philadelphia, PA, USA<br />A San Jose, Kanada, USA<br />Seattle, WA, USA<br />Washington, DC, USA | Kanada<br />Mexikó<br />USA |
 | Dél-Amerika | Campinas, Brazília<br />Rio de Janeiro, Brazília<br />Santiago, Chile | Buenos Aires, Argentína<br />Rio de Janeiro, Brazília<br />Sao Paulo, Brazília<br />Valparaíso, Chile<br />Barranquilla, Kolumbia<br />Medellin, Kolumbia<br />Quito, Ecuador<br />Lima, Peru | Argentína<br />Brazília<br />Chile<br />Columbia<br />Ecuador<br />Peru<br />Uruguay |
-| Európa | Bécs, Ausztria<br />Brüsszel, Belgium<br />Prága, Cseh Köztársaság<br />Koppenhága, Dánia<br /> Helsinki, Finnország<br />Marseille, France<br />Párizs, Franciaország<br />Berlin, Németország<br />Frankfurt, Németország<br />Athén, Görögország<br />Budapest, Magyarország<br />Dublin, Írország<br />Milánó, Olaszország<br />Amszterdam, Hollandia<br />Varsó, Lengyelország<br />Barcelona, Spanyolország<br />Madrid, Spanyolország<br />Stockholm, Svédország<br />Zürich, Svájc<br />London, Egyesült Királyság<br />Manchester, UK | Bécs, Ausztria<br />Koppenhága, Dánia<br />Helsinki, Finnország<br />Marseille, France<br />Párizs, Franciaország<br />Frankfurt, Németország<br />Milánó, Olaszország<br />Riga, Latvia<br />Amszterdam, Hollandia<br />Varsó, Lengyelország<br />Madrid, Spanyolország<br />Stockholm, Svédország<br />London, Egyesült Királyság | Ausztria<br />Bulgária<br />Dánia<br />Finnország<br />Franciaország<br />Németország<br />Görögország<br />Írország<br />Olaszország<br />Hollandia<br />Lengyelország<br />Oroszország<br />Spanyolország<br />Svédország<br />Svájc<br />Egyesült Királyság |
+| Európa | Bécs, Ausztria<br />Brüsszel, Belgium<br />Szófia, Bulgária<br />Zágráb, Horvátország<br />Prága, Cseh Köztársaság<br />Koppenhága, Dánia<br /> Helsinki, Finnország<br />Marseille, France<br />Párizs, Franciaország<br />Berlin, Németország<br />Frankfurt, Németország<br />Athén, Görögország<br />Budapest, Magyarország<br />Dublin, Írország<br />Milánó, Olaszország<br />Amszterdam, Hollandia<br />Varsó, Lengyelország<br />Lisszabon, Portugália<br />Bukarest, Románia<br />Barcelona, Spanyolország<br />Madrid, Spanyolország<br />Stockholm, Svédország<br />Zürich, Svájc<br />London, Egyesült Királyság<br />Manchester, UK | Bécs, Ausztria<br />Koppenhága, Dánia<br />Helsinki, Finnország<br />Marseille, France<br />Párizs, Franciaország<br />Frankfurt, Németország<br />Milánó, Olaszország<br />Riga, Latvia<br />Amszterdam, Hollandia<br />Varsó, Lengyelország<br />Madrid, Spanyolország<br />Stockholm, Svédország<br />London, Egyesült Királyság | Ausztria<br />Bulgária<br />Dánia<br />Finnország<br />Franciaország<br />Németország<br />Görögország<br />Írország<br />Olaszország<br />Hollandia<br />Lengyelország<br />Oroszország<br />Spanyolország<br />Svédország<br />Svájc<br />Egyesült Királyság |
 | Afrika | Fokváros, Dél-Afrika<br />Johannesburg, Dél-Afrika | Johannesburg, Dél-Afrika | Dél-Afrika |
 | Közel-Kelet | Dubai, Egyesült Arab Emírségek | Muscat, Omán<br />Fujirah, United Arab Emirates | Katar<br />Egyesült Arab Emírségek |
 | India | Csennai, India<br />Hyderabad, India<br />Mumbai, India<br />Új-Delhi, India | Bengaluru (Bangalore), India<br />Csennai, India<br />Mumbai, India<br />Új-Delhi, India<br /> | India |

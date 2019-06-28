@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: d4e9e26f2c6764cc179826266891d861514e23f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 01d6fa30fc781ffe2a9f387f7c9eb4c27eaacc77
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344089"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67338243"
 ---
 # <a name="microsoft-azure-documentation"></a>Microsoft Azure-dokumentáció
 
@@ -34,10 +34,9 @@ Kövesse a közreműködői útmutató [tartalomkészítő eszközök telepíté
 
 ## <a name="license"></a>Licenc
 
-A licencelési információkért lásd a [LICENSE](.github/LICENSE), [LICENSE-CODE](.github/LICENSE-CODE) és [ThirdPartyNotices](.github/ThirdPartyNotices.md) témaköröket.
+A licencelési információkért lásd a [LICENSE](LICENSE), [LICENSE-CODE](LICENSE-CODE) és [ThirdPartyNotices](ThirdPartyNotices.md) témaköröket.
 
 ## <a name="code-of-conduct"></a>Magatartási kódex
 
 A projekt a Microsoft nyílt forráskódú projekteket szabályozó etikai kódexe, a [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) hatálya alá esik.
 További információért tekintse át a [viselkedési szabályzat GYIK dokumentumát](https://opensource.microsoft.com/codeofconduct/faq/), illetve további kérdések vagy megjegyzések esetén írjon az [opencode@microsoft.com](mailto:opencode@microsoft.com) e-mail-címre.
-

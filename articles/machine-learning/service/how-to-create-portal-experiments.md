@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/2019
-ms.openlocfilehash: a2a281fda9272fb794692becb0ca08f3cf791458
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 714283628e1b2ac445d36d0b07fe299b589a1cf0
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65990142"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312819"
 ---
 # <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Hozzon létre, és Fedezze fel az automatikus machine learning-kísérletek az Azure Portalon (előzetes verzió)
 
@@ -96,16 +96,16 @@ Válassza ki a kísérlet létrehozása gombra való feltöltéséhez a követke
 
 1. Az előrejelzési:
     1. Idő típusú oszlop kiválasztása: Ez az oszlop használható idő adatokat tartalmazza.
-    1. Előrejelzési horizon kiválasztása: Adja meg, hány mértékegységét (perc/óra/nap vagy hét/hónap/év) a modell lesz előre tudják jelezni a jövőbeli. A további a modell előre jelezni az elkövetkező a kevésbé pontos válik szükséges. [További információ előrejelzés és előrejelzést horizon](https://docs.microsoft.com/azure/machine-learning/service/how-to-auto-train-forecast#configure-experiment).
+    1. Előrejelzési horizon kiválasztása: Adja meg, hány mértékegységét (perc/óra/nap vagy hét/hónap/év) a modell lesz előre tudják jelezni a jövőbeli. A további a modell előre jelezni az elkövetkező a kevésbé pontos válik szükséges. [További információ előrejelzés és előrejelzést horizon](how-to-auto-train-forecast.md).
 
 1. (Nem kötelező) Speciális beállítások: segítségével jobban kézben a betanítási feladat további beállításokat.
 
     Speciális beállítások|Leírás
     ------|------
-    Elsődleges metrika| A modell pontozása használt fő metrikát. [További információk a metrikákról modell](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#explore-model-metrics).
+    Elsődleges metrika| A modell pontozása használt fő metrikát. [További információk a metrikákról modell](how-to-configure-auto-train.md#explore-model-metrics).
     Kilépési feltételek| Ha ezek a feltételek bármelyike teljesül, a betanítási feladat befejeződik, teljes befejezése előtt. <br> *Betanítási feladat idő (percekben)* : Mennyi ideig, hogy a betanítási feladat futtatásához.  <br> *Az ismétlések maximális száma*: (Az ismétlések) folyamatok tesztelése a betanítási feladat az a maximális számát. A feladat nem fut. több, mint a megadott számú ismétlését. <br> *A metrika pontszám küszöbérték*:  Minimális metrika pontszám összes folyamatokhoz. Ez biztosítja, hogy ha egy meghatározott célhoz metrika szeretne elérni, akkor nem több időt az szükséges, mint a betanítási feladat.
     Előfeldolgozása| Válassza ki az engedélyezni vagy letiltani az előfeldolgozási automatizált gépi tanulás által végzett. Előfeldolgozási tartalmaz Adattisztítás automatikus, előkészítése és átalakítási szintetikus szolgáltatások létrehozásához. [Tudjon meg többet az előfeldolgozási](#preprocess).
-    Ellenőrzés| Válassza ki a keresztellenőrzési beállítások használata a betanítási feladat. [Tudjon meg többet közötti érvényesítési](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#cross-validation-split-options).
+    Ellenőrzés| Válassza ki a keresztellenőrzési beállítások használata a betanítási feladat. [Tudjon meg többet közötti érvényesítési](how-to-configure-auto-train.md).
     Egyidejűség| Válassza ki a Többmagos számítási használatakor szeretne Többmagos korlátokat.
     Letiltott algoritmus| Válassza ki a betanítási feladat a kizárni kívánt algoritmusokat.
 
@@ -180,7 +180,7 @@ Betanítási feladatok futása befejeződik, minden egyes folyamat esetében egy
 
 ### <a name="view-training-run-details"></a>Futtatás részletei nézet képzés
 
-Részletezés bármely, a kimeneti modellek betanítása futtatási adatok, például a teljesítmény-mérőszámokat és a terjesztési diagramok megtekintéséhez. [További tudnivalók a diagramok](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments#understanding-automated-ml-charts).
+Részletezés bármely, a kimeneti modellek betanítása futtatási adatok, például a teljesítmény-mérőszámokat és a terjesztési diagramok megtekintéséhez. [További tudnivalók a diagramok](how-to-track-experiments.md#understanding-automated-ml-charts).
 
 ![Iteráció részletei](media/how-to-create-portal-experiments/iteration-details.png)
 
@@ -220,7 +220,7 @@ Automatizált ML nyújtanak segítséget a modell üzembe helyezésével kódír
 
 1. Válassza ki a **Tallózás** feltölteni a környezet fájlt (condaEnv.yml) korábban letöltött "Conda-fájl" mező melletti gombra.
 
-    Akkor is használja a saját pontozó szkript és a conda-fájlt, valamint kiegészítő fájlok feltöltése. [További tudnivalók a pontozó szkript](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#script).
+    Akkor is használja a saját pontozó szkript és a conda-fájlt, valamint kiegészítő fájlok feltöltése. [További tudnivalók a pontozó szkript](how-to-deploy-and-where.md#script).
 
       >[!Important]
       > Fájlnevek kell lennie a 32 karakter hosszú lehet és kell és végén alfanumerikus karaktereket. Tartalmazhat kötőjeleket, aláhúzásjeleket, pontokat és számok és betűk között. Nem tartalmazhat szóközöket.
@@ -228,7 +228,7 @@ Automatizált ML nyújtanak segítséget a modell üzembe helyezésével kódír
     ![Rendszerkép létrehozása](media/how-to-create-portal-experiments/create-image.png)
 
 1. Válassza ki a lemezkép létrehozásának elindításához a "Létrehozás" gombra. Ez eltarthat néhány percig, miután befejezte, egy üzenet jelenik meg a felső sávon található.
-1. Nyissa meg a "Rendszerképek" lapot, a lemezkép számára telepíteni kívánja melletti jelölőnégyzetet, és válassza a "Központi telepítés létrehozása". [További információ a központi telepítések](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where).
+1. Nyissa meg a "Rendszerképek" lapot, a lemezkép számára telepíteni kívánja melletti jelölőnégyzetet, és válassza a "Központi telepítés létrehozása". [További információ a központi telepítések](how-to-deploy-and-where.md).
 
     Központi telepítés 2 lehetőség van.
      + Az Azure Container instance-példány (aci) Szolgáltatásban – ez tesztelési célú nagy mennyiségű operatív központi telepítés helyett több szolgál. Ügyeljen arra, hogy adja meg az értékeket a legalább egy Core _Processzor Tartalékkapacitása_, és a egy gigabájtot (GB) a _memória Tartalékkapacitása_

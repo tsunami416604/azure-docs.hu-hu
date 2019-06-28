@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 5/10/2019
-ms.openlocfilehash: 5d769e2198b714d611b3004e11ccc624d4c6acdf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.openlocfilehash: 964a2931267ad2f1e2842693eadf43f8f629a084
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65546448"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357225"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Szolgáltatási szinten a DTU-alapú vásárlási modell
 
-Szolgáltatási szinten a DTU-alapú vásárlási modell által meghatározott memóriamennyiséggel rendelkeznek a csomagban foglalt tárhely, a megőrzési időszak a biztonsági mentések és a rögzített ár rögzített számítási méretű különbözteti meg. Minden szolgáltatási szinten a DTU-alapú vásárlási modell a számítási méret állásidő nélkül változó rugalmasságot biztosítanak. Önálló adatbázisok és rugalmas készletek számlázása óraszám alapján, a szolgáltatási szint és a számítási méret.
+Szolgáltatási szinten a DTU-alapú vásárlási modell által meghatározott memóriamennyiséggel rendelkeznek a csomagban foglalt tárhely, a megőrzési időszak a biztonsági mentések és a rögzített ár rögzített számítási méretű különbözteti meg. Minden szolgáltatási szinten a DTU-alapú vásárlási modell a számítási méret minimális változó rugalmasságot biztosítanak [állásidő](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/), azonban van egy kapcsoló időtartamon belül hol való kapcsolata megszakad az adatbázis számára egy rövid ideig, amely enyhíthető újrapróbálkozási logika használata. Önálló adatbázisok és rugalmas készletek számlázása óraszám alapján, a szolgáltatási szint és a számítási méret.
 
 > [!IMPORTANT]
 > Az SQL Database felügyelt példány nem támogatja a DTU-alapú vásárlási modell. További információkért lásd: [Azure SQL Database felügyelt példányába](sql-database-managed-instance.md).
@@ -166,8 +166,8 @@ A legfontosabb metrikákat, a teljesítményteszt átviteli sebességet és vál
 | A szolgáltatás osztályban | Átviteli sebesség mérték | Válasz ideje követelmény |
 | --- | --- | --- |
 | Prémium |Másodpercenkénti tranzakciók |0,5 másodperc, a 95. percentilis |
-| Standard |Percenkénti tranzakciók |90\. százalékértékre, 1.0-ás másodperc |
-| Alapszintű |Óránkénti tranzakciók |80\. százalékos érték a 2.0-s másodperc |
+| Standard |Percenkénti tranzakciók |90. százalékértékre, 1.0-ás másodperc |
+| Alapszintű |Óránkénti tranzakciók |80. százalékos érték a 2.0-s másodperc |
 
 ## <a name="next-steps"></a>További lépések
 

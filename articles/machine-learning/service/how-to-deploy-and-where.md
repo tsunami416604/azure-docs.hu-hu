@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 05/31/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: c4ab5fe4625bce1ed66258a5b9aab597dae17a1a
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: b5a08b9b998f8d0b30091af016af564e836d4651
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303995"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331647"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
@@ -39,7 +39,9 @@ Az üzembe helyezést megvalósító munkafolyamat a fogalmakat további inform�
 
 ## <a id="registermodel"></a> Regisztrálja a modellt
 
-Regisztrálja a gépi tanulási modellek az Azure Machine Learning-munkaterületen. A modell Azure Machine Learning származhatnak, vagy valahol máshol származhatnak. Az alábbi példák bemutatják, hogyan lehet regisztrálni egy modellt a fájlból:
+Regisztrált modell logikai tárolója, amely a modell alkotó egy vagy több fájlt. Például ha rendelkezik olyan modell, amely több fájlok tárolják, regisztrálhatja azokat egyetlen modellként a munkaterületen. A regisztrációt követően is, majd töltse le vagy a regisztrált modell üzembe helyezése és fogadására regisztrált összes fájlt.
+
+Machine learning-modellek az Azure Machine Learning-munkaterület van regisztrálva. A modell Azure Machine Learning származhatnak, vagy valahol máshol származhatnak. Az alábbi példák bemutatják, hogyan lehet regisztrálni egy modellt a fájlból:
 
 ### <a name="register-a-model-from-an-experiment-run"></a>Regisztrálja a modellt egy kísérlet futtatása
 
@@ -48,11 +50,18 @@ Regisztrálja a gépi tanulási modellek az Azure Machine Learning-munkaterület
   model = run.register_model(model_name='sklearn_mnist', model_path='outputs/sklearn_mnist_model.pkl')
   print(model.name, model.id, model.version, sep='\t')
   ```
+
+  > [!TIP]
+  > A modell regisztrálását fel több fájlt, állítsa `model_path` fájlt tartalmazó könyvtárba.
+
 + **A parancssori felületről**
+
   ```azurecli-interactive
   az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment
   ```
 
+  > [!TIP]
+  > A modell regisztrálását fel több fájlt, állítsa `--asset-path` fájlt tartalmazó könyvtárba.
 
 + **A VS Code használatával**
 
@@ -77,10 +86,16 @@ Regisztrálhat egy külsőleg létrehozott modell azáltal, hogy egy **helyi el�
                          description = "MNIST image classification CNN from ONNX Model Zoo",)
   ```
 
+  > [!TIP]
+  > A modell regisztrálását fel több fájlt, állítsa `model_path` fájlt tartalmazó könyvtárba.
+
 + **A parancssori felületről**
   ```azurecli-interactive
   az ml model register -n onnx_mnist -p mnist/model.onnx
   ```
+
+  > [!TIP]
+  > A modell regisztrálását fel több fájlt, állítsa `-p` fájlt tartalmazó könyvtárba.
 
 **Becsült időtartam**: Körülbelül 10 másodperc.
 
@@ -110,12 +125,14 @@ A szkript két függvényt, amely betölteni, és futtassa a modell tartalmazza:
 * `run(input_data)`: Ez a függvény egy értéket a bemeneti adatok alapján előre jelezni a modellt használ. Bemenetek és kimenetek a futtató szerializálást és deszerializálás általában használni JSON. Nyers bináris adatok is együttműködik. A modellhez való elküldése előtt, vagy az ügyfél való visszatérés előtt alakíthatja át az adatokat.
 
 #### <a name="what-is-getmodelpath"></a>Mit jelent a get_model_path?
-Amikor regisztrál egy modellt, adja meg a beállításjegyzékben a modell kezelésére használt modell nevét. Az API, amely visszaadja az elérési útját a helyi fájlrendszerben modell fájl(ok) get_model_path ezt a nevet fogja használni. Ha regisztrál egy mappa vagy fájl gyűjteménye, az API-t az elérési utat a könyvtárba, amely tartalmazza azokat a fájlokat adja vissza.
 
-Ha regisztrálja a modellt, akkor adjon meg egy nevet, amely megfelel, ahol a modell kerül, helyileg vagy a szolgáltatás üzembe helyezése során.
+Amikor regisztrál egy modellt, adja meg a beállításjegyzékben a modell kezelésére használt modell nevét. Ezt a nevet használja a [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) elérési útját a helyi fájlrendszerben modell fájl(ok) lekéréséhez. Ha regisztrál egy mappa vagy fájl gyűjteménye, az API-t az elérési utat a könyvtárba, amely tartalmazza azokat a fájlokat adja vissza.
 
-Az alábbi példában vissza fog térni egy elérési utat egy egyetlen fájl neve "sklearn_mnist_model.pkl" (amely regisztrálva lett az a név "sklearn_mnist")
-```
+Amikor regisztrál egy modellt, akkor adjon meg egy nevet, amely felel meg, ahol a modell kerül, helyileg vagy a szolgáltatás üzembe helyezése során.
+
+Az alábbi példában adja vissza egy elérési utat az egyetlen fájl nevű `sklearn_mnist_model.pkl` (amely regisztrálva lett az a név `sklearn_mnist`):
+
+```python
 model_path = Model.get_model_path('sklearn_mnist')
 ``` 
 
@@ -293,7 +310,8 @@ A következő szakaszok bemutatják, hogyan hozhat létre a telepítési konfigu
 
 ### <a name="optional-profile-your-model"></a>Nem kötelező: A modell kiértékelése
 A modell szolgáltatás a telepítés előtt érdemes profilt, hogy optimális CPU és memória-követelmények meghatározása.
-Ez az SDK-t vagy a CLI-n keresztül teheti meg.
+
+Ön a modell az SDK-t vagy a parancssori felület használatával teheti profil.
 
 További információ az SDK-dokumentáció itt megtekinthet: https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-
 
@@ -386,7 +404,7 @@ Ha már rendelkezik egy AKS-fürt csatolt, telepítheti azt. Ha még nem létreh
 További információ az AKS üzembe helyezési és automatikus méretezés a [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice) hivatkozást.
 
 #### Egy új AKS-fürt létrehozása<a id="create-attach-aks"></a>
-**Becsült időtartam:** Körülbelül 5 perc.
+**Becsült időtartam**: Körülbelül 20 percet.
 
 Létrehozása vagy csatlakoztatása egy AKS-fürtöt a beállítás csak egyszer feldolgozni a munkaterületen. Újból felhasználhatja a fürt több telepítéshez. Ha a fürt vagy az azt tartalmazó erőforráscsoport törléséhez, üzembe kell helyeznie a következő alkalommal létre kell hoznia egy új fürtöt. A munkaterülethez csatlakoztatott több AKS-fürt is rendelkezhet.
 
@@ -425,10 +443,11 @@ További információ a `cluster_purpose` paramétert, tekintse meg a [AksComput
 
 > [!IMPORTANT]
 > A [ `provisioning_configuration()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py), ha az élcsomópontba, győződjön meg arról, szorozva vm_size agent_count nagyobb vagy egyenlő 12 virtuális processzort válasszon agent_count és vm_size, egyéni értékeket. Például ha egy "Standard D3 v2", amelynek 4 virtuális CPU-vm_size majd ki kell választania egy agent_count 3 vagy nagyobb.
-
-**Becsült időtartam**: Körülbelül 20 percet.
+>
+> Az Azure Machine Learning SDK nem biztosít támogatást az AKS-fürt méretezése. A csomópontok méretezése a fürtben, a felhasználói felület használata az AKS-fürt az Azure Portalon. Csak módosíthatja a csomópontok száma, a fürt nem a virtuális gép méretét.
 
 #### <a name="attach-an-existing-aks-cluster"></a>Meglévő AKS-fürt csatolása
+**Becsült időtartam:** Körülbelül 5 perc.
 
 Ha már rendelkezik az AKS-fürtöt az Azure-előfizetésben, és verzió 1.12. ##, használhatja a rendszerképének üzembe helyezéséhez.
 

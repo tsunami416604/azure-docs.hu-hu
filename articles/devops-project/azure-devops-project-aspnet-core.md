@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 88fb243af7628b159a2255c2cdae2ab86f39ca1e
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 387801f2ecb2f5fa1639005726218efb54d75dc8
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275488"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331424"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-projects"></a>A CI/CD-folyamat létrehozása a .NET-hez az Azure DevOps Projects segítségével
 
@@ -46,7 +46,7 @@ DevOps-projektek az Azure DevOps hoz létre a CI/CD-folyamat. Hozzon létre egy 
 
 1. Válassza a **.NET** mintaalkalmazást. A .NET-minták esetén a nyílt forráskódú ASP.NET- vagy a platformfüggetlen .NET Core-keretrendszer közül választhat.
 
-    ![.NET-keretrendszer](_img/azure-devops-project-aspnet-core/chooselanguagedotnet.png)
+   ![.NET-keretrendszer](_img/azure-devops-project-aspnet-core/chooselanguagedotnet.png)
 
 2. Ez a minta egy ASP.NET Core MVC-alkalmazás. Válassza ki a **.NET Core** alkalmazás-keretrendszert, majd válassza ki **tovább**.    
     
@@ -54,37 +54,35 @@ DevOps-projektek az Azure DevOps hoz létre a CI/CD-folyamat. Hozzon létre egy 
 
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Az Azure DevOps és az Azure-előfizetés konfigurálása 
 
-1. Hozzon létre egy új ingyenes Azure DevOps szervezetet, vagy válasszon egy már meglévő szervezet.
+1. Adjon meg egy **projektnév**.
 
-    a. Válasszon egy nevet a projektnek. 
+2. Hozzon létre egy új szabad **Azure DevOps-szervezet** , vagy válasszon egy már meglévő szervezet a legördülő listából.
 
-    b. Válassza ki az Azure-előfizetést és helyet, válasszon egy nevet az alkalmazáshoz, és válassza **kész**.  
-    Néhány perc múlva a DevOps Projects irányítópult jelenik meg az Azure Portalon. Egy mintaalkalmazás be van állítva, a szervezet Azure DevOps-tárházban, build hajtja végre, és az alkalmazás központi telepítése az Azure-bA. Ezt az irányítópultot a kódtárat a CI/CD-folyamat és az Azure-ban az alkalmazás rálátást biztosít.
-    
+3. Válassza ki a **Azure-előfizetés**, adjon meg egy nevet a **webalkalmazás** vagy végezze el a az alapértelmezett, majd válassza ki **kész**. Néhány perc múlva a DevOps Projects üzembe helyezésének áttekintése az Azure-portálon jelenik meg. 
 
-2. Az irányítópult a jobb oldalon válassza ki a **Tallózás** a futó alkalmazás megtekintéséhez.
+4. Válassza ki **erőforrás megnyitása** a DevOps-projekt-irányítópult megtekintéséhez. A jobb felső sarokban a rögzítés a **projekt** lehet gyorsan hozzáférni az irányítópulthoz. Egy mintaalkalmazás beállítása az adattár a **Azure DevOps-szervezet**. Build hajtja végre, és az alkalmazás van üzembe helyezve az Azure-bA.
 
-    ![Irányítópult nézet](_img/azure-devops-project-aspnet-core/dashboardnopreview.png) 
+5. Az irányítópult biztosít a kód tárházban, a CI/CD-folyamat és az alkalmazás az Azure-ban. Válassza ki a Azure-erőforrások jobb **Tallózás** a futó alkalmazás megtekintéséhez.
+
+   ![Irányítópult nézet](_img/azure-devops-project-aspnet-core/dashboardnopreview.png) 
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>Kódmódosítások véglegesítése és a CI/CD végrehajtása
 
- A DevOps Projects egy Git-tárház létrehozott Azure-kódtárak és a GitHub. A tárház megtekintéséhez, és módosítsa a kódokat az alkalmazáshoz, tegye a következőket:
+A DevOps Projects egy Git-tárház létrehozott Azure-kódtárak és a GitHub. A tárház megtekintéséhez, és módosítsa a kódokat az alkalmazáshoz, tegye a következőket:
 
-1. Az irányítópult bal oldalán, a DevOps Projects, jelölje be a hivatkozást a **fő** ágat.  
-Ez a hivatkozás megnyitja az újonnan létrehozott Git-adattár nézetét.
+1. Az irányítópult bal oldalán, a DevOps Projects, jelölje be a hivatkozást a **fő** ágat. Ez a hivatkozás megnyitja az újonnan létrehozott Git-adattár nézetét.
 
-1. Az adattárklón URL-címének megtekintéséhez válassza a **Klónozás** lehetőséget a böngésző jobb felső részén.  
-A Git-adattárat klónozhatja például a kedvenc IDE-környezetébe.  A következő néhány lépésben a webböngésző segítségével közvetlenül a főágban hajthat végre és véglegesíthet kódmódosításokat.
+2. A következő néhány lépést, használhatja a webböngészőt, és kód változtatások véglegesítése a közvetlenül a **fő** ágat. Klónozhatja is a Git-tárház a kedvenc IDE-ben kiválasztásával **Klónozás** a felső az adattár oldalát, jobb. 
 
-1. A bal oldalon, a böngésző, nyissa meg a **Views/Home/index.cshtml** fájlt.
+3. A bal oldalon keresse meg az alkalmazás fájlstruktúra a **Application/aspnet-core-dotnet-core/Pages/Index.cshtml**.
 
-1. Válassza ki **szerkesztése**, és ezután hajtson végre módosítást a h2 fejléc. Írja be például **azonnal Ismerkedés az Azure DevOps Projects** vagy valamilyen más módosítást.
+4. Válassza ki **szerkesztése**, és ezután hajtson végre módosítást a h2 fejléc. Írja be például **azonnal Ismerkedés az Azure DevOps Projects** vagy valamilyen más módosítást.
 
-    ![Kódszerkesztések](_img/azure-devops-project-aspnet-core/codechange.png)
+      ![Kódszerkesztések](_img/azure-devops-project-aspnet-core/codechange.png)
 
-1. Válassza ki **véglegesítése**, majd mentse a módosításokat.
+5. Válassza ki **véglegesítése**, hagyjon megjegyzést, és válassza ki **véglegesítése** újra.
 
-1. A böngészőben nyissa meg az Azure DevOps Project irányítópultot.  Látni fogja, hogy folyamatban van egy build. A módosítások automatikusan gyártja és a CI/CD-folyamat segítségével telepítve.
+6. A böngészőben nyissa meg az Azure DevOps Project irányítópultot.  Látni fogja, hogy folyamatban van egy build. A módosítások automatikusan gyártja és a CI/CD-folyamat segítségével telepítve.
 
 ## <a name="examine-the-cicd-pipeline"></a>Vizsgálja meg a CI/CD-folyamat
 

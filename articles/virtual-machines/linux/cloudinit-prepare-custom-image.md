@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 06/24/2019
 ms.author: danis
-ms.openlocfilehash: da539a5bebc1613115f89a7b47c513ce486b5e3a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a64fb40c905fbe98dc594ab3626666723d1628d0
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60627934"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357262"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Meglévő Azure-beli Linux rendszerű Virtuálisgép-rendszerképet használja a cloud-Init használatával előkészítése
 Ez a cikk bemutatja, hogyan egy meglévő Azure virtuális gépen és készítse elő a újratelepített, a cloud-init használatra kész lesz. Az eredményül kapott kép egy új virtuális gépet vagy virtuális gép méretezési csoportok – amely bármelyike sikerült majd további testre a cloud-init üzembe helyezéskor üzembe helyezéséhez használható.  Ezen a cloud-init parancsfájlok futtatása az első rendszerindításkor az Azure-ban kiépített erőforrások után. A cloud-init működése natív módon az Azure és a támogatott Linux-disztribúciók kapcsolatos további információkért lásd: [cloud-init áttekintése](using-cloud-init.md)
@@ -65,19 +65,14 @@ sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
 sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
 sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
 sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
-cp /lib/systemd/system/waagent.service /etc/systemd/system/waagent.service
-sed -i 's/After=network-online.target/WantedBy=cloud-init.service\\nAfter=network.service systemd-networkd-wait-online.service/g' /etc/systemd/system/waagent.service
-systemctl daemon-reload
 cloud-init clean
 ```
-Engedélyezése csak az Azure adatforrásként az Azure Linux-ügynök hozzon létre egy új fájlt `/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg` segítségével egy tetszőleges szövegszerkesztőben a következő sorokat:
+
+Engedélyezése csak az Azure adatforrásként az Azure Linux-ügynök hozzon létre egy új fájlt `/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg` egy tetszőleges szövegszerkesztőben használata a következő sort:
 
 ```bash
 # Azure Data Source config
 datasource_list: [ Azure ]
-datasource:
-   Azure:
-     agent_command: [systemctl, start, waagent, --no-block]
 ```
 
 Ha a meglévő Azure-rendszerképet egy lapozófájl konfigurálva van, és meg szeretné változtatni a lapozófájl-kapacitás fájl konfigurációját a cloud-init használatával új képek, távolítsa el a meglévő lapozófájl szeretné.

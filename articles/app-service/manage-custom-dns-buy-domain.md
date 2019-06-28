@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4b26446845d004b4dd92807c0b5ec0ada9ed181f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6bba176a27cc70321915654e3e2e62320f22c16c
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475212"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310143"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Az Azure App Service egyéni tartománynév vásárlása
 
@@ -147,7 +147,7 @@ A kiválasztott gazdanév található is megjelenik a **egyéni tartományok** l
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
 > [!NOTE]
-> A **Megjegyzés biztonságos** az egyéni tartomány azt jelenti, hogy még nincs kötött SSL-tanúsítványt, és bármely HTTPS-kérést közvetlenül a böngészőből az egyéni tartomány kap, és hiba vagy figyelmeztetés, attól függően, a böngésző-címkét. SSL-kötés beállítása: [vásárlása és konfigurálása az Azure App Service SSL-tanúsítvány](web-sites-purchase-ssl-web-site.md).
+> A **nem biztonságos** az egyéni tartomány azt jelenti, hogy még nincs kötött SSL-tanúsítványt, és bármely HTTPS-kérést közvetlenül a böngészőből az egyéni tartomány egy hiba vagy figyelmeztetés, attól függően, a böngészőben fog kapni. a címke. SSL-kötés beállítása: [vásárlása és konfigurálása az Azure App Service SSL-tanúsítvány](web-sites-purchase-ssl-web-site.md).
 >
 
 A gazdanév teszteléséhez nyissa meg a listában szereplő állomásnevek a böngészőben. A példa az előző képernyőképen látható, próbálja meg úgy ellenőrizheti, hogy _kontoso.net_ és _www\.kontoso.net_.

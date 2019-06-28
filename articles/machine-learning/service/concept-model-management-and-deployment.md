@@ -11,12 +11,12 @@ author: chris-lauren
 ms.author: clauren
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0eaf48f57c3011222b71a63d703e1ccec7aca001
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5cbb7f13214a86f528521fdeb1ffa1374ca813ef
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66692833"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331706"
 ---
 # <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>MLOps: Kezelheti, telepítheti és figyelheti a modellek az Azure Machine Learning szolgáltatás
 
@@ -54,11 +54,14 @@ Az Azure Machine Learning szolgáltatás a ONNX további információkért lásd
 Modell regisztrálását segítségével tárolja és verzió a modellek az Azure-felhőben, a munkaterületén. A modell beállításjegyzék megkönnyíti a betanított modellek rendszerezéséhez és nyomon követésére.
 
 > [!TIP]
-> Az Azure Machine Learning szolgáltatás kívül betanított modellek is rögzítheti.
+> A regisztrált modell az egy vagy több fájlt, amely a modell alkotó logikai tárolója. Például ha egy modellt, amely több fájlok tárolják, regisztrálhatja őket egy adott modellt, az Azure Machine Learning-munkaterületet. A regisztrációt követően is, majd töltse le vagy a regisztrált modell üzembe helyezése és fogadására regisztrált összes fájlt.
  
 A regisztrált modellek nevét és verzióját azonosítja. Minden alkalommal, amikor egy modell regisztrálni a neve megegyezik egy meglévő, a beállításjegyzék növeli a verziót. Használható kereséskor a modellek regisztrálása során is megadható további metaadat-címkéket. Az Azure Machine Learning szolgáltatásban minden olyan modell, amely lehet betölteni a Python 3.5.2-es verzióját használja, vagy magasabb támogatja.
 
-Egy aktív központi telepítés használt modellek nem törölhető.
+> [!TIP]
+> Az Azure Machine Learning szolgáltatás kívül betanított modellek is rögzítheti.
+
+Egy aktív központi telepítés használt regisztrált modell nem törölhető.
 
 További információkért lásd: a register-modell szakasz, [modellek üzembe helyezése](how-to-deploy-and-where.md#registermodel).
 

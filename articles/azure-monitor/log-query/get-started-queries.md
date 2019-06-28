@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: bwren
-ms.openlocfilehash: 105454205c0fe3a0020693a1289a65cecd2bf57b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b03109ee5cdb76247bf3be6fda97e0cf6e434f17
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65519015"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296085"
 ---
-# <a name="get-started-with-azure-monitor-log-queries"></a>Az Azure Monitor log-lekérdezések használatának első lépései
+# <a name="get-started-with-log-queries-in-azure-monitor"></a>Az Azure Monitor log-lekérdezések használatának első lépései
 
 
 > [!NOTE]
@@ -28,9 +28,9 @@ ms.locfileid: "65519015"
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Ebben az oktatóanyagban elsajátíthatja az Azure Monitor log-lekérdezések írása. Mely arról szól, hogyan való:
+Ebben az oktatóanyagban elsajátíthatja az Azure Monitor log-lekérdezéseket írni. Mely arról szól, hogyan való:
 
-- A lekérdezések struktúra ismertetése
+- Lekérdezés struktúra ismertetése
 - Lekérdezési eredmények rendezése
 - Szűrő lekérdezés eredményei
 - Adjon meg egy időtartományt
@@ -38,6 +38,8 @@ Ebben az oktatóanyagban elsajátíthatja az Azure Monitor log-lekérdezések í
 - Definiálja és egyéni mezők
 - Összesítő és csoportosítási eredmények
 
+A Log Analytics szolgáltatást az Azure Portal oktatóanyag: [Ismerkedés az Azure Monitor Log-Analytics](get-started-portal.md).<br>
+Az Azure Monitor log-lekérdezésekkel kapcsolatos további részletekért lásd: [napló áttekintése az Azure monitorban lekérdezések](log-query-overview.md).
 
 ## <a name="writing-a-new-query"></a>Új lekérdezés írása
 Lekérdezések megkezdheti a következők egyikével táblanév vagy a *keresési* parancsot. A tábla nevét, mert a lekérdezés törlése hatókör határozza meg, és javítja a lekérdezési teljesítmény és az eredmények relevancia alapján végzett kell kezdődnie.
@@ -71,8 +73,8 @@ search in (SecurityEvent) "Cryptographic"
 
 Ez a lekérdezés átvizsgálja a *SecurityEvent* rekordok a "Titkosítási" kifejezést tartalmazó tábla. Ezeknek a rekordoknak 10 rekordot fog visszaadott és jelenik meg. Ha kihagyja azt a `in (SecurityEvent)` futtatásának részeként, és csak `search "Cryptographic"`, a keresés halad *összes* táblát is, amelyeket szeretne hosszabb időt vesz igénybe, és kevésbé hatékony.
 
-> [!NOTE]
-> Alapértelmezésben a időtartománya _elmúlt 24 órában_ van beállítva. Egy másik tartományt használja az időválasztó (melletti a *lépjen* gomb), vagy adja hozzá egy kifejezett idő dátumtartomány-szűrőt ad a lekérdezéshez.
+> [!WARNING]
+> Keresési lekérdezések nincsenek általában lassabb, mint a tábla-alapú lekérdezések futtatása, mert további adatokat feldolgozni rendelkeznek. 
 
 ## <a name="sort-and-top"></a>Rendezés és a leggyakoribb
 Miközben **igénybe** van hasznos néhány rögzíti, az eredmények kiválasztva, és nem adott sorrendben jelennek meg. Egy rendezett nézet lekéréséhez sikerült **rendezési** az előnyben részesített oszlop szerint:

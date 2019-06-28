@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 6/6/2019
 ms.author: tomfitz
-ms.openlocfilehash: 314b28edbd5770186d96fb2a2b203f26ff27bda0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ab8fbd8fa0453ca6c89f3e7ad91bea95b0b9096
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752351"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331984"
 ---
 # <a name="move-operation-support-for-resources"></a>Művelet támogatási erőforrások áthelyezése
 Ez a cikk felsorolja egy Azure-erőforrás az áthelyezési művelet támogatja-e. Bár egy erőforrás támogatja az áthelyezési művelet, előfordulhat, hogy feltételeket, amelyek megakadályozhatja, hogy az erőforrás áthelyezett lehet. Feltételeket, amelyek hatással vannak az áthelyezési műveleteket kapcsolatos részletekért lásd: [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](resource-group-move-resources.md).
@@ -564,8 +564,8 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | expressroutecrossconnections | Nem | Nem |
 | expressroutegateways | Nem | Nem |
 | expressrouteports | Nem | Nem |
-| frontdoors | Igen | Igen |
-| frontdoorwebapplicationfirewallpolicies | Igen | Igen |
+| frontdoors | Nem | Nem |
+| frontdoorwebapplicationfirewallpolicies | Nem | Nem |
 | loadbalancers | Igen | Igen |
 | localnetworkgateways | Igen | Igen |
 | natgateways | Igen | Igen |

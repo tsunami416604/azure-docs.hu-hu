@@ -11,12 +11,12 @@ ms.date: 05/31/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: cdf4dba3996668b3c9fe31df10050ff2cbff6cb3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c493dbc99edc794dd5a261dfc004c2c8c1cb6d52
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60387825"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312078"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Adatok átalakítása a Spark-tevékenység használatával az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
@@ -25,8 +25,6 @@ ms.locfileid: "60387825"
 
 A Spark-tevékenység az adat-előállító [folyamat](concepts-pipelines-activities.md) lefut egy Spark-programot a [saját](compute-linked-services.md#azure-hdinsight-linked-service) vagy [igény szerinti](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight-fürt. Ez a cikk épül, amely a [adat-átalakítási tevékenységeket](transform-data.md) című cikket, amely megadja az adatok átalakítását és a támogatott Adatátalakítási tevékenységek általános áttekintése. Egy igény szerinti Spark társított szolgáltatás használata esetén a Data Factory automatikusan létrehoz egy Spark-fürtöt,-igény az adatok feldolgozása a, és ezután törli a fürtöt, a feldolgozás befejeződése után. 
 
-> [!IMPORTANT]
-> Spark-tevékenység nem támogatja a HDInsight Spark-fürtökön, amely egy Azure Data Lake Store elsődleges tárolóként használnia.
 
 ## <a name="spark-activity-properties"></a>Spark-tevékenység tulajdonságai
 Itt látható a minta egy Spark-tevékenység JSON-definíciót:    
@@ -45,7 +43,7 @@ Itt látható a minta egy Spark-tevékenység JSON-definíciót:
             "referenceName": "MyAzureStorageLinkedService",
             "type": "LinkedServiceReference"
         },
-        "rootPath": "adfspark\\pyFiles",
+        "rootPath": "adfspark",
         "entryFilePath": "test.py",
         "sparkConfig": {
             "ConfigItem1": "Value"
@@ -80,7 +78,7 @@ Spark-feladatok olyan, mint a Pig/Hive-feladatok több bővíthető. A Spark-fel
 
 A következő gyökérmappa-szerkezetében létrehozása az Azure Blob storage a HDInsight társított szolgáltatás által hivatkozott. Ezután töltse fel a függő fájl a gyökérmappában által képviselt megfelelő sub mappákhoz **entryFilePath**. Például töltse fel a pyFiles almappába python-fájlok és a jar-fájlok a JAR-fájlok kivételével a legfelső szintű mappa almappája. Futásidőben a Data Factory szolgáltatás a következő mappastruktúra vár az Azure Blob storage-ban:     
 
-| Útvonal                  | Leírás                              | Kötelező | Típus   |
+| Útvonal                  | Leírás                              | Kötelező | Type   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
 | `.` (root)            | A meghajtógyökér elérési útja a Spark-feladat, a storage-beli társított szolgáltatás | Igen      | Mappa |
 | &lt;felhasználó által definiált &gt; | Az elérési a bejegyzés fájlt a Spark-feladat | Igen      | Fájl   |

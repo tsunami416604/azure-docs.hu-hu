@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 9339d891e8fe895f598e1a2615fcfa66b053b3e0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 91368ac3b1d7948257fa9e55debc862567593425
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063855"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341390"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>A Linuxos Java-alkalmazás konfigurálása az Azure App Service-ben
 
@@ -60,6 +60,43 @@ Ha az alkalmazás [Logback](https://logback.qos.ch/) vagy [Log4j](https://loggin
 ### <a name="troubleshooting-tools"></a>Hibaelhárítási eszközök
 
 A beépített Java-rendszerképeket alapulnak a [Alpine Linux](https://alpine-linux.readthedocs.io/en/latest/getting_started.html) operációs rendszert. Használja a `apk` Csomagkezelő telepítéséhez bármely hibaelhárítási eszközei, és parancsokat.
+
+### <a name="flight-recorder"></a>Eseményrögzítő
+
+Az App Service összes Linuxos Java-rendszerképeket telepítve van, így könnyen csatlakozhat a JVM és indítsa el a profiler rögzítése, vagy hozzon létre egy halom memóriakép Zulu Eseményrögzítő rendelkezik.
+
+#### <a name="timed-recording"></a>Időzített rögzítése
+
+Első lépésként SSH-t az App Service és futtatása a `jcmd` parancsot a futó Java folyamatok listájának megtekintéséhez. Mellett magát jcmd megtekintheti és a egy folyamat azonosító szám (pid) fut a Java-alkalmazás.
+
+```shell
+078990bbcd11:/home# jcmd
+Picked up JAVA_TOOL_OPTIONS: -Djava.net.preferIPv4Stack=true
+147 sun.tools.jcmd.JCmd
+116 /home/site/wwwroot/app.jar
+```
+
+Hajtsa végre az alábbi parancsot a JVM 30 másodperces felvétel indításához. Ezzel a JVM profil, és hozzon létre egy JFR fájlt `jfr_example.jfr` a kezdőkönyvtárban. (Cserélje le a Java-alkalmazás pid 116.)
+
+```shell
+jcmd 116 JFR.start name=MyRecording settings=profile duration=30s filename="/home/jfr_example.jfr"
+```
+
+A 30 második intervallumban, ellenőrizheti a felvétel futtatásával lefolyása `jcmd 116 JFR.check`. Ez az adott Java-folyamatot az összes felvételek jelennek meg.
+
+#### <a name="continuous-recording"></a>Folyamatos rögzítése
+
+A Zulu Eseményrögzítő segítségével folyamatosan profil a Java-alkalmazás a modul teljesítményének minimális befolyásolásával ([forrás](https://assets.azul.com/files/Zulu-Mission-Control-data-sheet-31-Mar-19.pdf)). Ehhez futtassa a következő Azure CLI-paranccsal hozhat létre a szükséges konfigurációval JAVA_OPTS nevű Alkalmazásbeállítás. Alkalmazásbeállítás JAVA_OPTS tartalmát a rendszer átadja a `java` parancsot az alkalmazás indításakor.
+
+```azurecli
+az webapp config appsettings set -g <your_resource_group> -n <your_app_name> --settings JAVA_OPTS=-XX:StartFlightRecording=disk=true,name=continuous_recording,dumponexit=true,maxsize=1024m,maxage=1d
+```
+
+További információkért tekintse meg a [Jcmd parancsdokumentációja](https://docs.oracle.com/javacomponents/jmc-5-5/jfr-runtime-guide/comline.htm#JFRRT190).
+
+### <a name="analyzing-recordings"></a>Felvétel elemzése
+
+Használat [FTPS](../deploy-ftp.md) a JFR fájl letöltése a helyi gépen. A JFR fájl elemzése, töltse le és telepítse [Zulu alapvető ellenőrzési](https://www.azul.com/products/zulu-mission-control/). A Zulu alapvető vezérlőelemen útmutatásért lásd: a [Azul dokumentáció](https://docs.azul.com/zmc/) és a [telepítési utasításokat](https://docs.microsoft.com/en-us/java/azure/jdk/java-jdk-flight-recorder-and-mission-control).
 
 ## <a name="customization-and-tuning"></a>Testreszabás és hangolás
 

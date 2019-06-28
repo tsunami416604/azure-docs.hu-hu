@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 0b68819ba032d7655433aadd30fe2852941096ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 55db909f240756200d758fe89aabb217fb380d16
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61478878"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329816"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Használja ki az Azure Stream Analytics lekérdezési ezerszer
 Ez a cikk bemutatja, hogyan ezerszer kihasználásához az Azure Stream Analytics szolgáltatásban. Megismerheti a Stream Analytics-feladatok méretezése a bemeneti partíció konfigurálásával, valamint a elemzési lekérdezés definíciójának finomhangolásával.
@@ -60,7 +60,7 @@ Egy *zavaróan párhuzamos* feladat az Azure Stream Analytics a leginkább mére
 
 1. Ha a lekérdezés logikája attól függ, hogy ugyanazzal a kulccsal ugyanazon lekérdezés által feldolgozott, győződjön meg arról, hogy az események nyissa meg a bemeneti ugyanazon a partíción. Az Event Hubs vagy IoT hubot, ez azt jelenti, hogy az eseményadatokat kell rendelkeznie a **PartitionKey** set érték. A particionált feladók is használhatja. A blob Storage Ez azt jelenti, hogy az események küldhetők partíció ugyanabban a mappában. Ha a lekérdezés logikája nem igényel ugyanazon lekérdezés által feldolgozandó ugyanazzal a kulccsal, figyelmen kívül hagyhatja ezt a követelményt. Egy példa a logikai lenne egy egyszerű válassza project-szűrő lekérdezés.  
 
-2. Miután az adatokat a bemeneti oldalon van leírva, győződjön meg arról, hogy a lekérdezés particionálva van. Ez megköveteli, hogy használjon **PARTITION BY** az összes lépését. Több lépést engedélyezettek, de mindegyikük által ugyanazzal a kulccsal kell particionálni. Jelenleg a particionálókulcs értékre kell állítani **PartitionId** ahhoz, hogy a feladat teljes mértékben párhuzamosan.  
+2. Miután az adatokat a bemeneti oldalon van leírva, győződjön meg arról, hogy a lekérdezés particionálva van. Ez megköveteli, hogy használjon **PARTITION BY** az összes lépését. Több lépést engedélyezettek, de mindegyikük által ugyanazzal a kulccsal kell particionálni. 1\.0 és 1.1-es kompatibilitási szint alatt a particionálókulcs értékre kell állítani **PartitionId** ahhoz, hogy a feladat teljes mértékben párhuzamosan. Feladatok compatility szintű 1.2-es és újabb verziók esetében egyéni oszlopot adhat meg Partíciókulcsot az bemeneti között, és a feladat lesz paralellized automoatically PARTITION BY záradék nélkül is.
 
 3. A kimenet a legtöbb kihasználhatják a particionálás, azonban egy kimeneti típus használata, amely nem támogatja a particionálást a feladat nem lesz teljes mértékben párhuzamos. Tekintse meg a [kimeneti szakasz](#outputs) további részletekért.
 
@@ -87,7 +87,7 @@ Lekérdezés:
     WHERE TollBoothId > 100
 ```
 
-Ez a lekérdezés egy egyszerű szűrő. Ezért nem kell aggódnia a bemenet, amely küld az event hubs particionálási. Figyelje meg, hogy a lekérdezés tartalmaz **partíció által PartitionId**, így a #2. követelmény a korábban teljesít. A kimeneti kell konfigurálni az event hub kimeneti a feladat a partíciós kulcs értéke az **PartitionId**. Egy utolsó ellenőrzés, hogy ellenőrizze, hogy a bemeneti partíciók számának kimeneti partíciók száma egyenlő.
+Ez a lekérdezés egy egyszerű szűrő. Ezért nem kell aggódnia a bemenet, amely küld az event hubs particionálási. Figyelje meg, hogy mielőtt tartalmaznia kell 1.2-es kompatibilitási szintű feladatok **partíció által PartitionId** záradék, így #2. követelmény a korábban teljesít. A kimeneti kell konfigurálni az event hub kimeneti a feladat a partíciós kulcs értéke az **PartitionId**. Egy utolsó ellenőrzés, hogy ellenőrizze, hogy a bemeneti partíciók számának kimeneti partíciók száma egyenlő.
 
 ### <a name="query-with-a-grouping-key"></a>A csoportosítás kulccsal lekérdezése
 
@@ -141,6 +141,26 @@ Lekérdezés:
 Amint láthatja, a második lépésben használ **TollBoothId** particionálási kulcsként. Ez a lépés nem ugyanaz, mint az első lépés, és, ezért megköveteli tőlünk egy shuffle tennie. 
 
 Az előző példák azt mutatják néhány Stream Analytics-feladatokat, amelyeket egy zavaróan párhuzamos topológia felel meg (vagy nem). Ha azok megfelelnek, a lehetséges maximális méretezési rendelkeznek. Frissíti a feladatok, amelyek nem egyeznek meg ezeket a profilokat, útmutatást skálázás egyikét a jövőben elérhető lesz. Most használja az alábbi szakaszok az általános útmutatást.
+
+### <a name="compatibility-level-12---multi-step-query-with-different-partition-by-values"></a>1\.2 – több lépésből álló lekérdezés PARTITION BY értékei eltérőek a kompatibilitási szint 
+* Bemenet: 8 partícióval rendelkező eseményközpontot
+* Kimenet: 8 partícióval rendelkező eseményközpontot
+
+Lekérdezés:
+
+```SQL
+    WITH Step1 AS (
+    SELECT COUNT(*) AS Count, TollBoothId
+    FROM Input1
+    GROUP BY TumblingWindow(minute, 3), TollBoothId
+    )
+
+    SELECT SUM(Count) AS Count, TollBoothId
+    FROM Step1
+    GROUP BY TumblingWindow(minute, 3), TollBoothId
+```
+
+Kompatibilitási szint 1.2 alapértelmezés szerint lehetővé teszi a párhuzamos lekérdezés-végrehajtás. Például az előző szakaszban lekérdezés lesz parttioned, mindaddig, amíg a bemeneti partíciós kulcs "TollBoothId" oszlop van beállítva. PARTÍCIÓ által ParttionId záradék, nem szükséges.
 
 ## <a name="calculate-the-maximum-streaming-units-of-a-job"></a>A folyamatos átviteli egység egy feladat maximális kiszámítása
 Egy Stream Analytics-feladat által használt streamelési egységek teljes száma attól függ, hogy a lekérdezésben, a feladat, illetve az egyes lépések a partíciók számának megadott lépéseket.

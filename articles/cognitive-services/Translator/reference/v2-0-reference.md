@@ -3,19 +3,19 @@ title: Translator Text API 2.0-s verzió
 titleSuffix: Azure Cognitive Services
 description: A 2.0-s verziójú a Translator Text API dokumentációja.
 services: cognitive-services
-author: rajdeep-in
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
-ms.author: v-pawal
-ms.openlocfilehash: d2ff61908d7901fc464b58ee1ef9b5605b3026a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: swmachan
+ms.openlocfilehash: 88503c73e2ca9cf04e64ca3a47793e9b10ca325a
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389847"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357826"
 ---
 # <a name="translator-text-api-v20"></a>Translator Text API v2.0
 
@@ -522,7 +522,7 @@ Az AddtranslationsRequest elemben található elemek a következők:
 * `Options`: Kötelező. Lehetőségeket, ideértve a kategória, ContentType, Uri és felhasználói csoportja. Felhasználó megadása kötelező. Kategória, ContentType és Uri megadása nem kötelező. A megadott elemek betűrendbe szerepelnie kell.
 
 ### <a name="response-class-status-200"></a>Válasz osztály (állapota 200)
-AddTranslationArray metódus sikeres volt. 2018\. január 31. után mondat módosítások nem lesznek elfogadva. A szolgáltatás válaszol, és 410-es hibakód.
+AddTranslationArray metódus sikeres volt. 2018. január 31. után mondat módosítások nem lesznek elfogadva. A szolgáltatás válaszol, és 410-es hibakód.
 
 string
 
@@ -557,7 +557,7 @@ A kérelem URI azonosítója `https://api.microsofttranslator.com/V2/Http.svc/Br
 ### <a name="response-class-status-200"></a>Válasz osztály (állapota 200)
 A mondatok hosszának jelölő egész számok tömbje. A hossz a tömb mondatok számát, és az értékek a következők minden mondat hosszát.
 
-egész szám
+integer
 
 A válasz tartalomtípusa: application/xml 
 
@@ -663,7 +663,7 @@ A válasz tartalomtípusa: application/xml
 |szöveg|(üres)|Kötelező. Egy karakterlánc, amely a fordítandó szöveg. A szöveg mérete nem haladhatja meg a 10000 karakternél.|lekérdezés|string|
 |from|(üres)|Kötelező. Egy karakterlánc, amely a fordítandó szöveg nyelvkódja.|lekérdezés|string|
 |erre: |(üres)    |Kötelező. Egy karakterlánc, amely lefordítja a szöveget a nyelv kódja.|lekérdezés|string|
-|maxTranslations|(üres)|Kötelező. Egy egész számot a fordítások maximális számát jelölő való visszatéréshez.|lekérdezés|egész szám|
+|maxTranslations|(üres)|Kötelező. Egy egész számot a fordítások maximális számát jelölő való visszatéréshez.|lekérdezés|integer|
 |Engedélyezés| (üres)|Kötelező, ha a `appid` mező vagy `Ocp-Apim-Subscription-Key` fejléc nincs megadva. Engedélyezési jogkivonat: `"Bearer" + " " + "access_token"`.|string| header|
 |OCP-Apim-Subscription-Key|(üres)  |Kötelező, ha a `appid` mező vagy `Authorization` fejléc nincs megadva.|header|string|
 

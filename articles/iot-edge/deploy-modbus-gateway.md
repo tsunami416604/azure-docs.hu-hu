@@ -6,15 +6,15 @@ manager: philmea
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 06/20/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 1c9855f982b888e8e1d68bfe5233983db8c826ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 25be0629b2ef877d8757f515cb6ccd5942e58d5f
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61248012"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312800"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Modbus TCP-eszközök csatlakoztatása az IoT Edge-eszközátjárón keresztül
 
@@ -35,7 +35,7 @@ A cikk azt feltételezi, hogy Modbus TCP protokollt használ. A modul Modbus RTU
 
 Ha tesztelni kívánja a Modbus-átjáró funkcionalitását, a Microsoft rendelkezik egy mintamodullal, amelyet használhat. A modul az Azure piactéren érheti el [Modbus](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview), vagy a kép URI-t, **mcr.microsoft.com/azureiotedge/modbus:1.0**.
 
-Ha azt szeretné, hozzon létre saját modult, és testre szabni a környezethez, nincs-e egy nyílt forráskódú [Azure IoT Edge Modbus-modul](https://github.com/Azure/iot-edge-modbus) projektet a Githubon. Kövesse a projektben található útmutatót saját tárolórendszerkép létrehozásához. Ha saját tárolórendszerképet hoz létre, tekintse meg [Develop C# modulok Visual Studióban](how-to-visual-studio-develop-csharp-module.md) vagy [fejlesztése a Visual Studio Code modulok](how-to-vs-code-develop-module.md). E cikkekben utasításokat az új modul létrehozása és közzététele a tárolórendszerképeket egy regisztrációs adatbázisba.
+Ha azt szeretné, hozzon létre saját modult, és testre szabni a környezethez, nincs-e egy nyílt forráskódú [Azure IoT Edge Modbus-modul](https://github.com/Azure/iot-edge-modbus) projektet a Githubon. Kövesse a projektben található útmutatót saját tárolórendszerkép létrehozásához. Hozza létre a tárolórendszerképet, tekintse meg [Develop C# modulok Visual Studióban](how-to-visual-studio-develop-csharp-module.md) vagy [fejlesztése a Visual Studio Code modulok](how-to-vs-code-develop-module.md). E cikkekben utasításokat az új modul létrehozása és közzététele a tárolórendszerképeket egy regisztrációs adatbázisba.
 
 ## <a name="try-the-solution"></a>Próbálja ki a megoldást
 
@@ -85,12 +85,13 @@ Ez a szakasz végigvezeti a Microsoft mintát Modbus-modul üzembe helyezése az
 
 5. Az **Add Modules** (Modulok hozzáadása) lépésben kattintson a **Next** (Tovább) gombra.
 
-7. A **Specify Routes** (Útvonalak megadása) lépésben másolja a következő JSON-t a szövegmezőbe. Ez az útvonal a Modbus-modul által gyűjtött üzeneteket küldi el az IoT Hubnak. Ebben az útvonalban "modbusOutput" az a végpont, amelyet a Modbus-modul kimeneti adatokat használ, és "upstream" egy speciális cél, amely arra utasítja az IoT Edge hub az IoT Hub üzenetküldés.
+7. A **Specify Routes** (Útvonalak megadása) lépésben másolja a következő JSON-t a szövegmezőbe. Ez az útvonal a Modbus-modul által gyűjtött üzeneteket küldi el az IoT Hubnak. Ebben az útvonalban **modbusOutput** az a végpont a Modbus-modul kimeneti adatokat használ, és **$felső** egy speciális cél, amely arra utasítja az IoT Edge hub az IoT Hub üzenetküldés.
+
    ```JSON
    {
-    "routes": {
-      "modbusToIoTHub":"FROM /messages/modules/modbus/outputs/modbusOutput INTO $upstream"
-    }
+     "routes": {
+       "modbusToIoTHub":"FROM /messages/modules/modbus/outputs/modbusOutput INTO $upstream"
+     }
    }
    ```
 

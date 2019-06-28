@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: bb99a3c063f69aa5aeb00efdb51319a53d05b2d1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: aaab5ef4d8fc3d60a12f9e9f85f2846695fd1ab4
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067606"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329663"
 ---
 # <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>Az Azure Maps mobilitási szolgáltatás használatával valós idejű adatok kérése
 
@@ -113,22 +113,23 @@ Használjuk a "522" lehetőséget, hogy metro azonosítója, amely a "Seattle �
             }
         ]
     }
+    ```
 
 
-## Real-time data for bike docking station
+## <a name="real-time-data-for-bike-docking-station"></a>Valós idejű adatok kerékpárt dokkolóegység
 
-The [Get Transit Dock Info API](https://aka.ms/AzureMapsMobilityTransitDock) of the Azure Maps Mobility Service, allows to request static and real-time information such as availability and vacancy information for a given bike or scooter docking station. We will make a request to get real-time data for a docking station for bikes.
+A [első átvitel Dock adatokat API](https://aka.ms/AzureMapsMobilityTransitDock) az Azure Maps mobilitási szolgáltatás lehetővé teszi, hogy a statikus és valós idejű információk, például a rendelkezésre állás és a egy adott kerékpárt vagy scooter dokkolásának Betöltetlen állás adatait. Valós idejű adatokat beolvasni a dokkolóegységről kerékpárok használunk.
 
-In order to make a request to the Get Transit Dock Info API, you will need the **dockId** for that station. You can get the dock ID by making a search request to the [Get Nearby Transit API](https://aka.ms/AzureMapsMobilityNearbyTransit) and setting the **objectType** parameter to "bikeDock". Follow the steps below to get real-time data of a docking station for bikes.
+Annak érdekében, hogy egy kérést az első átvitel Dock Info API-hoz, szüksége lesz a **dockId** ennél az állomásnál. Azáltal, hogy egy keresési kérelmet, hogy a rögzítési hely Azonosítójának lekéréséhez a [közeli átvitel API első](https://aka.ms/AzureMapsMobilityNearbyTransit) és a beállítás a **objectType** "bikeDock" paramétert. Kerékpár dokkolóegységről, valós idejű adatokat lekérni az alábbi lépésekkel.
 
 
-### Get dock ID
+### <a name="get-dock-id"></a>Állapotazonosító beolvasása
 
-To get **dockID**, follow the steps below to make a request to the Get Nearby Transit API:
+Az első **dockID**, használatával indítson egy közeli átvitel beolvasása API az alábbi lépésekkel:
 
-1. In Postman, click **New Request** | **GET request** and name it **Get dock ID**.
+1. Kattintson a Postman **új kérelem** | **GET kérelem** , és nevezze el **Get dock azonosító**.
 
-2.  On the Builder tab, select the **GET** HTTP method, enter the following request URL, and click **Send**.
+2.  A jelentéskészítő lapon válassza ki a **első** HTTP-metódus, adja meg a következő kérés URL-címet, és kattintson a **küldése**.
  
     ```HTTP
     https://atlas.microsoft.com/mobility/transit/nearby/json?subscription-key={subscription-key}&api-version=1.0&metroId=121&query=40.7663753,-73.9627498&radius=100&objectType=bikeDock

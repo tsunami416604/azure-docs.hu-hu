@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/16/2019
-ms.openlocfilehash: f6971038be7404850d958de67eb4755ae7d21a29
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b0f513462f1e09718dc18e9ce454b82e8978961f
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65761970"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329614"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Példák a Stream Analytics-használat gyakori minták lekérdezése
 
@@ -157,7 +157,7 @@ Ellenőrizze például, hogy az eredményt adja vissza, amely a kezdődhet és v
 
 **Output2**:
 
-| Fordítás | Time | Count |
+| Fordítás | Time | Darabszám |
 | --- | --- | --- |
 | Toyota |2015-01-01T00:00:10.0000000Z |3 |
 
@@ -424,12 +424,12 @@ Például 2 egymást követő ábrázolja az azonos ügyeljen a megadott díjmen
 
 | Felhasználó | Funkció | Esemény | Time |
 | --- | --- | --- | --- |
-| user@location.com |RightMenu |Indítás |2015-01-01T00:00:01.0000000Z |
+| user@location.com |RightMenu |Start |2015-01-01T00:00:01.0000000Z |
 | user@location.com |RightMenu |vége |2015-01-01T00:00:08.0000000Z |
 
 **Kimeneti**:  
 
-| Felhasználó | Funkció | Időtartam |
+| Felhasználó | Funkció | Duration |
 | --- | --- | --- |
 | user@location.com |RightMenu |7 |
 
@@ -437,7 +437,12 @@ Például 2 egymást követő ábrázolja az azonos ügyeljen a megadott díjmen
 
 ```SQL
     SELECT
-        [user], feature, DATEDIFF(second, LAST(Time) OVER (PARTITION BY [user], feature LIMIT DURATION(hour, 1) WHEN Event = 'start'), Time) as duration
+        [user],
+    feature,
+    DATEDIFF(
+        second,
+        LAST(Time) OVER (PARTITION BY [user], feature LIMIT DURATION(hour, 1) WHEN Event = 'start'),
+        Time) as duration
     FROM input TIMESTAMP BY Time
     WHERE
         Event = 'end'
@@ -695,6 +700,15 @@ GROUP BY DeviceId,TumblingWindow(minute, 5)
 ```
 
 **MAGYARÁZAT**: [COUNT (DISTINCT idő)](/stream-analytics-query/count-azure-stream-analytics) egyedi érték számát adja vissza a Time oszlopban egy időtartományon belül. Ezután használhatja ezt a lépést kimenete az átlag kiszámításakor eszközönként ismétlődések elvetésével.
+
+## <a name="geofencing-and-geospatial-queries"></a>A Geokerítések és térinformatikai lekérdezéseket.
+Az Azure Stream Analytics beépített térinformatikai függvényekkel használható például flottakezelés forgatókönyvek megvalósítása, megosztás, a csatlakoztatott autók és nyomon követése ledolgozni biztosít. Térinformatikai adatok eseménystream részeként olvasódnak GeoJSON vagy wkt formátumú formátumban, vagy adatokat. További információkért tekintse meg a [Geokerítések és térinformatikai összesítési forgatókönyvek az Azure Stream Analytics](geospatial-scenarios.md) cikk.
+
+## <a name="language-extensibility-through-javascript-and-c"></a>JavaScript Language bővíthetőséget ésC#
+Az Azure Stream Ananlytics lekérdezés langugae is kiterjeszthető az egyéni függvények használata Javascriptben írt vagy C# nyelveket. További részletekért tekintse meg a delegációt cikkeket:
+* [Az Azure Stream Analytics JavaScript felhasználó által definiált függvények](stream-analytics-javascript-user-defined-functions.md)
+* [Az Azure Stream Analytics JavaScript felhasználó által definiált összesítések](stream-analytics-javascript-user-defined-aggregates.md)
+* [.NET Standard, felhasználó által definiált függvények az Azure Stream Analytics Edge-feladatok fejlesztése](stream-analytics-edge-csharp-udf-methods.md)
 
 ## <a name="get-help"></a>Segítségkérés
 

@@ -11,17 +11,17 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 6285348aa8067f356635dfff9ecd4eb34c431f0b
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.date: 06/25/2019
+ms.openlocfilehash: d8949f63dfa9b409cc14fe9c3bbed70f23a73c86
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147695"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357134"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dinamikusan méretezheti az adatbázis-erőforrások minimális állásidővel
 
-Az Azure SQL Database lehetővé teszi az adatbázis minimális állásidővel dinamikusan rendeljen több erőforrást.
+Az Azure SQL Database lehetővé teszi, hogy további erőforrásokat dinamikusan vehet fel az adatbázis minimális [állásidő](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/), azonban van egy kapcsoló időtartamon belül hol való kapcsolata megszakad az adatbázis egy rövid ideig, amely lehet a problémák elhárításáról újrapróbálkozási logika használata.
 
 ## <a name="overview"></a>Áttekintés
 

@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/18/2019
-ms.openlocfilehash: 4be73554df0b6bddaafe3910c80c855e127d79f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ac58bbbc252d66620ad410bffa805b75ec3042d4
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60771651"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341756"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Az Azure SQL Database Azure Stream Analytics-kimenet
 
@@ -39,7 +39,7 @@ Az alábbiakban az egyes szolgáltatásban, amelyekkel javíthatja a megoldás t
 
 - **Particionált tábla- és az indexek** – használatával egy [particionált](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) SQL-táblát és az azonos a partíciókulccsal (például PartitionId) oszlopot az a tábla particionált indexei jelentősen csökkentheti a versenyt között a partíciók írási műveletek során. A particionált táblára vonatkozóan kell létrehozni egy [partíciós függvényei](https://docs.microsoft.com/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017) és a egy [partícióséma](https://docs.microsoft.com/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017) az elsődleges fájlcsoportban. Meglévő adatok rendelkezésre állását is ez megnöveli a új adatok betöltése közben. Előfordulhat, hogy eléri a napló i/o-korlát növelhető a Termékváltozat frissítésével partíciók száma alapján.
 
-- **Egyedi kulcs hiba elkerülése érdekében** – Ha [több kulcsok protokollmegsértési figyelmeztető üzenetek](stream-analytics-common-troubleshooting-issues.md#handle-duplicate-records-in-azure-sql-database-output) Azure Stream Analytics tevékenységnaplóban győződjön meg, hogy a feladat egyedi korlátozás megsértése, valószínű, amelyek nem befolyásolják. során helyreállítási esetek. Ez elkerülhető az azzal a [figyelmen kívül HAGYÁSA\_Ismétlődő\_kulcs](stream-analytics-common-troubleshooting-issues.md#handle-duplicate-records-in-azure-sql-database-output) az indexek lehetőséget.
+- **Egyedi kulcs hiba elkerülése érdekében** – Ha [több kulcsok protokollmegsértési figyelmeztető üzenetek](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) Azure Stream Analytics tevékenységnaplóban győződjön meg, hogy a feladat egyedi korlátozás megsértése, valószínű, amelyek nem befolyásolják. során helyreállítási esetek. Ez elkerülhető az azzal a [figyelmen kívül HAGYÁSA\_Ismétlődő\_kulcs](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) az indexek lehetőséget.
 
 ## <a name="azure-data-factory-and-in-memory-tables"></a>Az Azure Data Factory és a táblák
 

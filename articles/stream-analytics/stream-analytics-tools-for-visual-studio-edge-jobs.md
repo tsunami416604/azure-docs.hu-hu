@@ -1,6 +1,6 @@
 ---
-title: Stream Analytics Data Box Edge-feladatok az Azure Stream Analytics Tools for Visual Studio
-description: Ez a cikk ismerteti, hogyan hozhat létre, hibakeresés, és hozzon létre a Stream Analytics Data Box Edge-feladatok a Stream Analytics tools for Visual Studio használatával.
+title: Stream Analytics Edge-feladatok az Azure Stream Analytics Tools for Visual Studio
+description: Ez a cikk ismerteti, hogyan hozhat létre, hibakeresése és a Stream Analytics tools for Visual Studio használatával feladatok létrehozása a Stream Analytics az IoT Edge-ben.
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 242fb2daebfe9eb6e5a0c73c2c4c0e91a3131032
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1601bf6c73d9f3450959773c85385bc8ef907a66
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304159"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329964"
 ---
-# <a name="develop-stream-analytics-data-box-edge-jobs-using-visual-studio-tools"></a>Visual Studio-eszközökkel Stream Analytics Data Box Edge-feladatok fejlesztése
+# <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>A Visual Studio-eszközökkel Stream Analytics Edge-feladatok fejlesztése
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan lehet Stream Analytics tools for Visual Studio használata. Megismerheti, hogyan hozhat létre, hibakeresése és a Stream Analytics Data Box Edge-feladatok létrehozása. Miután létrehozta és a feladat tesztelése, telepíteni kell az eszközöket az Azure Portalra léphet. 
+Ebben az oktatóanyagban elsajátíthatja, hogyan lehet Stream Analytics tools for Visual Studio használata. Megismerheti, hogyan hozhat létre, hibakeresése és a Stream Analytics Edge-feladatok létrehozása. Miután létrehozta és a feladat tesztelése, telepíteni kell az eszközöket az Azure Portalra léphet. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -28,15 +28,15 @@ Az oktatóanyag elvégzéséhez a következő előfeltételek szükségesek:
 
 * Kövesse a [telepítési utasításokat](stream-analytics-tools-for-visual-studio-edge-jobs.md) Stream Analytics tools for Visual Studio telepítése.
  
-## <a name="create-a-stream-analytics-data-box-edge-project"></a>A Stream Analytics Data Box Edge-projekt létrehozása 
+## <a name="create-a-stream-analytics-edge-project"></a>A Stream Analytics Edge-projekt létrehozása 
 
 Válassza ki a Visual Studióban a **fájl** > **új** > **projekt**. Keresse meg a **sablonok** a bal oldali listában > bontsa ki a **Azure Stream Analytics** > **Stream Analytics peremhálózati**  >   **Az Azure Stream Analytics alkalmazás él**. Adja meg a projektet, majd válassza ki a nevét, helyét és megoldás nevét **OK**.
 
-![Új Stream Analytics Data Box Edge-projektet a Visual Studióban](./media/stream-analytics-tools-for-visual-studio-edge-jobs/new-stream-analytics-edge-project.png)
+![Új Stream Analytics Edge-projektet a Visual Studióban](./media/stream-analytics-tools-for-visual-studio-edge-jobs/new-stream-analytics-edge-project.png)
 
 Lekérdezi a projekt létrehozása után lépjen a **Megoldáskezelőben** megtekintése a mappahierarchiában.
 
-![Stream Analytics Data Box Edge-feladatok megoldáskezelő-nézet](./media/stream-analytics-tools-for-visual-studio-edge-jobs/edge-project-in-solution-explorer.png)
+![Stream Analytics Edge-feladatok megoldáskezelő-nézet](./media/stream-analytics-tools-for-visual-studio-edge-jobs/edge-project-in-solution-explorer.png)
 
  
 ## <a name="choose-the-correct-subscription"></a>Válassza ki a megfelelő előfizetést
@@ -63,15 +63,14 @@ Lekérdezi a projekt létrehozása után lépjen a **Megoldáskezelőben** megte
  
 ## <a name="define-the-transformation-query"></a>A transzformációs lekérdezés definiálása
 
-A Stream Analytics Data Box Edge környezetekben üzembe helyezett Stream Analytics-feladatok támogatja a legtöbb [Stream Analytics lekérdezési nyelv leírása](https://msdn.microsoft.com/azure/stream-analytics/reference/stream-analytics-query-language-reference?f=255&MSPPError=-2147217396). A következő műveletek azonban még nem támogatottak a Stream Analytics Data Box Edge-feladatok: 
+A Stream Analytics az IoT Edge-környezetekben üzembe helyezett Stream Analytics-feladatok támogatja a legtöbb [Stream Analytics lekérdezési nyelv leírása](https://msdn.microsoft.com/azure/stream-analytics/reference/stream-analytics-query-language-reference?f=255&MSPPError=-2147217396). A következő műveletek azonban még nem támogatottak a Stream Analytics Edge-feladatok: 
 
 
 |**Kategória**  | **Parancs**  |
 |---------|---------|
-|Térinformatikai operátorok |<ul><li>CreatePoint</li><li>CreatePolygon</li><li>CreateLineString</li><li>ST_DISTANCE</li><li>ST_WITHIN</li><li>ST_OVERLAPS</li><li>ST_INTERSECTS</li></ul> |
-|Más operátorokkal | <ul><li>A PARTÍCIÓ SZERINT</li><li>A TÖBB MINT IDŐBÉLYEG</li><li>DISTINCT</li><li>A COUNT operátorban kifejezésparaméternek</li><li>A DATE és TIME függvények mikromásodperces</li><li>JavaScript UDA (Ez a funkció egyelőre előzetes verzióként érhető-feladatok a felhőbe telepített)</li></ul>   |
+|Más operátorokkal | <ul><li>A PARTÍCIÓ SZERINT</li><li>A TÖBB MINT IDŐBÉLYEG</li><li>JavaScript UDF</li><li>Felhasználó által definiált összesítések (UDA)</li><li>GetMetadataPropertyValue</li><li>Legfeljebb 14 összesítést használó egyetlen lépésben</li></ul>   |
 
-A portálon egy Stream Analytics Data Box Edge feladatot hoz létre, amikor a fordítóprogram automatikusan figyelmeztet, ha, de nem egy támogatott operátort használja.
+A portálon egy Stream Analytics peremhálózati feladatot hoz létre, amikor a fordítóprogram automatikusan figyelmeztet, ha, de nem egy támogatott operátort használja.
 
 A Visual studióból, a következő transzformációs lekérdezés definiálása a Lekérdezésszerkesztő (**script.asaql fájl**)
 
@@ -105,15 +104,15 @@ A lekérdezés teszteléséhez helyileg, akkor érdemes a mintaadatok feltölté
 
 2. Küldje el a feladatot, az Azure-ba, lépjen a Lekérdezésszerkesztő > Válasszon **elküldése az Azure-bA**.  
 
-3. Megjelenik egy előugró ablak. Válasszon egy meglévő Stream Analytics Data Box Edge-feladat frissítése, vagy hozzon létre egy újat. Amikor frissít egy meglévő feladat, azzal lecseréli az összes feladat konfigurációt, ebben a forgatókönyvben, publikálom a kódtárat egy új feladatot. Válassza ki **hozzon létre egy új Azure Stream Analytics-feladat** > adjon meg egy nevet az alábbihoz hasonló feladat **MyASAEdgeJob** > Válassza ki a szükséges **előfizetés**, **Erőforráscsoport**, és **hely** > válassza **elküldése**.
+3. Megjelenik egy előugró ablak. Válasszon egy meglévő Stream Analytics Edge-feladat frissítése, vagy hozzon létre egy újat. Amikor frissít egy meglévő feladat, azzal lecseréli az összes feladat konfigurációt, ebben a forgatókönyvben, publikálom a kódtárat egy új feladatot. Válassza ki **hozzon létre egy új Azure Stream Analytics-feladat** > adjon meg egy nevet az alábbihoz hasonló feladat **MyASAEdgeJob** > Válassza ki a szükséges **előfizetés**, **Erőforráscsoport**, és **hely** > válassza **elküldése**.
 
    ![Stream Analytics-feladat elküldése az Azure-bA a Visual Studióból](./media/stream-analytics-tools-for-visual-studio-edge-jobs/submit-stream-analytics-job-to-azure.png)
  
-   Most már a Stream Analytics Data Box Edge-feladat létrehozása. Olvassa el a [feladatok futtatása az IoT Edge-oktatóanyag](stream-analytics-edge.md) megtudhatja, hogyan telepítheti az eszközökre. 
+   Most már a Stream Analytics Edge-feladat létrehozása. Olvassa el a [feladatok futtatása az IoT Edge-oktatóanyag](stream-analytics-edge.md) megtudhatja, hogyan telepítheti az eszközökre. 
 
 ## <a name="manage-the-job"></a>A feladat kezeléséhez 
 
-Megtekintheti a feladat és a Server Explorerből feladatábrában állapotát. A **Stream Analytics** a **Server Explorer**, bontsa ki az előfizetést és az erőforráscsoportot, amelybe telepítette a Stream Analytics Data Box Edge-feladat. Megtekintheti a MyASAEdgejob állapotú **létrehozva**. Bontsa ki a projekt csomópontra, és kattintson duplán az, hogy a feladat nézet megnyitása.
+Megtekintheti a feladat és a Server Explorerből feladatábrában állapotát. A **Stream Analytics** a **Server Explorer**, bontsa ki az előfizetést és az erőforráscsoportot, amelybe telepítette a Stream Analytics Edge-feladatban. Megtekintheti a MyASAEdgejob állapotú **létrehozva**. Bontsa ki a projekt csomópontra, és kattintson duplán az, hogy a feladat nézet megnyitása.
 
 ![Server explorer feladat felügyeleti beállítások](./media/stream-analytics-tools-for-visual-studio-edge-jobs/server-explorer-options.png)
  

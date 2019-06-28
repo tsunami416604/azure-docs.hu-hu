@@ -10,12 +10,12 @@ ms.date: 01/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 5f8d8d96e15fe3b59cb288a9a1cf6c547312fe67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16f38f6aae11f7bf806b7bad76db8f739fb2823d
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65951315"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357081"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>RA-GRS használatával magas rendelkezésre állású alkalmazások tervezése
 
@@ -212,6 +212,33 @@ Az alábbi táblázat egy példát, hogy mi történne, ha egy alkalmazott tagja
 Ebben a példában feltételeztük az ügyfél vált, amennyiben az olvasó T5, a másodlagos régióból. Sikeresen tudja olvasni a **rendszergazdai szerepkör** entitás jelenleg, de az entitás tartalmazza a replikája nem konzisztens a száma a rendszergazdák számának értékét **alkalmazott** entitások számára jelenleg megjelölve a rendszergazdák a másodlagos régióban. Az ügyfél egyszerűen jelenjenek meg ezt az értéket, és annak a kockázata, hogy-e nem biztosítottak elegendő információt. Másik megoldásként az ügyfél kísérletet határozza meg, amely a **rendszergazdai szerepkör** egy potenciálisan inkonzisztens állapotban van, mert a frissítések sorrendje nem azért történt, és majd tájékoztatja a felhasználót az a tény.
 
 Ismeri fel, hogy esetleg ellentmondásos adatok rendelkezik, az ügyfél által használt értékét a *utolsó szinkronizálás időpontja* , hogy megkaphassa bármikor a storage szolgáltatás lekérdezése. Azonban igen, akkor az idő, mikor történt legutóbbi a másodlagos régióban lévő adatok konzisztens, és ha a szolgáltatás alkalmazott előtt adott pont a tranzakciók időben. Után a szolgáltatás beszúrja a fent bemutatott példában a **alkalmazott** beállítása a másodlagos régióban, a legutóbbi szinkronizálás időpontja entitás *T1*. Ez továbbra is *T1* amíg a szolgáltatásfrissítések a **alkalmazott** entitást, ha ezt a beállítást a másodlagos régióban *T6*. Ha az ügyfél lekéri a legutóbbi szinkronizálás időpontja, amikor az entitást, olvas be *T5*, azt is összehasonlíthatja az entitásra az időbélyegzővel. Ha a az entitás időbélyegzőjének későbbi, mint a legutóbbi szinkronizálás időpontja, majd az entitás egy potenciálisan inkonzisztens állapotban van, és elvégezhető függetlenül-e a megfelelő műveletet az alkalmazás. Ez a mező használatához arról, hogy mikor fejeződött be az utolsó frissítés az elsődleges.
+
+## <a name="getting-the-last-sync-time"></a>Bevezetés a legutóbbi szinkronizálás időpontja
+
+PowerShell vagy az Azure CLI használatával lekérheti a legutóbbi szinkronizálás időpontja meghatározni, ha az adatok utolsó írásának a másodlagos is.
+
+### <a name="powershell"></a>PowerShell
+
+A legutóbbi szinkronizálás időpontja a tárfiók beszerezni a PowerShell, ellenőrizze a tárfiók **GeoReplicationStats.LastSyncTime** tulajdonság. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire:
+
+```powershell
+$lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
+    -Name <storage-account> `
+    -IncludeGeoReplicationStats).GeoReplicationStats.LastSyncTime
+```
+
+### <a name="azure-cli"></a>Azure CLI
+
+A legutóbbi szinkronizálás időpontja a tárfiók lekérése az Azure CLI-vel, ellenőrizze a tárfiók **geoReplicationStats.lastSyncTime** tulajdonság. Használja a `--expand` paramétert a tulajdonságok értékeit adja vissza csoportban beágyazott **geoReplicationStats**. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire:
+
+```azurecli
+$lastSyncTime=$(az storage account show \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --expand geoReplicationStats \
+    --query geoReplicationStats.lastSyncTime \
+    --output tsv)
+```
 
 ## <a name="testing"></a>Tesztelés
 

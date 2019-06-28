@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 06/09/2019
 ms.author: raynew
-ms.openlocfilehash: 6a6db30bfe6e4dc1eed04d11b53113c90210a5cf
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 2cf9aee498c649cdbf973652a60fb2d1f3feb371
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275219"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312148"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Támogatási mátrix az Azure virtuális gépek egyik régióból a másikba való replikálásához
 
@@ -168,7 +168,7 @@ Bővítmények | Nem támogatott | Bővítmények a rendszer nem replikálja a f
 **Művelet** | **Részletek**
 -- | ---
 A replikált virtuális gép lemez átméretezése | Támogatott
-Adjon hozzá egy lemezt egy replikált virtuális gép | Nem támogatott.<br/><br/> Meg kell letiltani a virtuális gép adja hozzá a lemezt, és majd újból engedélyezze a replikációt.
+Adjon hozzá egy lemezt egy replikált virtuális gép | Támogatott
 
 ## <a name="replicated-machines---storage"></a>A replikált gépek – tárolás
 

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: ddd3b0889eedd55f809dbb57b2ef41a2ae3f9c94
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 89c4723e83979f89721677146810abdf99fb5d11
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65521397"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310469"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>az Azure Functions – Host.JSON referencia 2.x  
 
@@ -147,7 +147,7 @@ A feladat gazdagépen futó függvények listája. Üres tömb azt jelenti, hogy
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Azt jelzi, hogy a függvények az időtúllépési időtartama. A kiszolgáló nélküli Használatalapú csomagok esetében az érvényes értéktartomány: 1 másodperctől 10 percre, és az alapértelmezett érték 5 perc. Az App Service-csomag nem általános korlátozott, és az alapértelmezett futtatókörnyezet verziójának függ. A verzió 2.x, az alapértelmezett érték egy App Service-csomag érték 30 perc. A verzió van 1.x, *null*, ami azt jelenti, hogy nincs időkorlát.
+Azt jelzi, hogy a függvények az időtúllépési időtartama. A kiszolgáló nélküli Használatalapú csomagok esetében az érvényes értéktartomány: 1 másodperctől 10 percre, és az alapértelmezett érték 5 perc. A dedikált App Service-csomag nem általános korlátozott, és az alapértelmezett értéke 30 perc. Érték `-1` korlátlan streameken működő végrehajtását jelzi.
 
 ```json
 {

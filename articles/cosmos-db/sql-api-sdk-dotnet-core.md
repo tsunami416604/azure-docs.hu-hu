@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 91f15f9c19b480d950b2c715e6d9290e01184cf7
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 14350125f88c315a813eb64e3ce2b88dbec2aa24
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272371"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340197"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB .NET Core SDK-t az SQL API-hoz: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -50,10 +50,8 @@ Az Azure Cosmos DB .NET Core SDK legújabb verziójában funkcióparitás rendel
 * Streamek támogatását.
 * Frissített CosmosResponseMessage állapotkódot adja vissza, és csak throw kivétel, ha nem érkezik válasz-kiszolgálóról.
 
-### <a name="a-name250250"></a><a name="2.5.0"/>2.5.0
+### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
 
-* Tartalék egy másik régióba való írási kérések engedélyezése, ha az eredeti egy sikertelen
-* Írási kérés munkamenet újrapróbálkozási szabályzat hozzáadása
 * Nyomkövetés versenyhelyzet a lekérdezéseket, amelyek okozott az üres lap javításai
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
@@ -234,7 +232,7 @@ Az Azure Cosmos DB .NET Core SDK legújabb verziójában funkcióparitás rendel
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 
-* Összesítés lekérdezések (száma, MIN, MAX, SUM és átlagos) támogatása. Lásd: [összesítési támogatási](how-to-sql-query.md#Aggregates).
+* Összesítés lekérdezések (száma, MIN, MAX, SUM és átlagos) támogatása. Lásd: [összesítési támogatási](sql-query-aggregates.md).
 * Süllyesztett minimálisan 2500 RU/s 10,100 RU/s a particionált gyűjtemények átviteli sebességet.
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
@@ -257,7 +255,7 @@ Ha ez az SDK kapcsolatos kérdése van, küldése a [StackOverflow](https://stac
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
-| [2.5.0](#2.5.0) |2019. június 18. |--- |
+| [2.4.1](#2.4.1) |2019. június 20. |--- |
 | [2.4.0](#2.4.0) |2019. május 05. |--- |
 | [2.3.0](#2.3.0) |2019. április 04. |--- |
 | [2.2.3](#2.2.3) |2019. márciusi 11. |--- |

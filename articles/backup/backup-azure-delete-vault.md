@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: raynew
-ms.openlocfilehash: 8df4f17c9afbf10c6507e505c6540c3f66a42309
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 51de1c4ac17360282877f05d52c3ea8fa2c6d712
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275624"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310778"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Recovery Services-tároló törlése
 
@@ -124,7 +124,7 @@ Ez az eljárás egy példa, amely bemutatja, hogyan távolíthatja el az Azure F
 
 > [!NOTE]
 > Elem, a felügyeleti kiszolgáló konzolon vagy a MARS-konzolon egy védett kiszolgálón eltávolításához állítsa le a védelmet, és biztonsági másolatainak törlése. Biztonsági másolati elemek maradnak, ha a következő hiba fog megjelenni, amikor megpróbálja törölni, és a kiszolgáló regisztrációjának törlése:
-> 
+>
 >![nem sikerült törölni](./media/backup-azure-delete-vault/deletion-failed.png)
 
 6. Győződjön meg arról, hogy a törlési feladat befejeződött, ellenőrizze az Azure-üzenetek ![biztonsági mentési adatok törlése](./media/backup-azure-delete-vault/messages.png).
@@ -159,8 +159,8 @@ Ez az eljárás egy példa, amely bemutatja, hogyan távolíthatja el az Azure F
 
 > [!NOTE]
 > A biztonsági mentés felügyeleti kiszolgáló vagy az Azure Backup szolgáltatás ügynökének kiszolgálóhoz tartozó biztonsági másolati elemek ezen kiszolgáló Regisztrációk törlése előtt törölni kell. Biztonsági másolati elemek eltávolításához lépjen az SC DPM, a MABS és a MARS felügyeleti konzolt, amennyiben alkalmazhatók a kiszolgálón, és válassza ki a megfelelő beállításokat a védelem leállítása és a biztonsági másolatok törléséről. Ha bármely biztonsági mentési elemek még mindig társítva, a következő hiba jelenik meg:
-> 
-> 
+>
+>
 >![nem sikerült törölni](./media/backup-azure-delete-vault/deletion-failed.png)
 
 8. Győződjön meg arról, hogy a törlési feladat befejeződött, ellenőrizze az Azure-üzenetek ![biztonsági mentési adatok törlése](./media/backup-azure-delete-vault/messages.png).
