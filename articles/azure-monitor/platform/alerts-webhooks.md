@@ -72,20 +72,20 @@ A POST művelet a következő JSON-adattartalom és az összes mérőszám-alap�
 | Mező | Kötelező | Rögzített számú értékek | Megjegyzések |
 |:--- |:--- |:--- |:--- |
 | status |I |Aktivált, feloldva |A feltételek alapján a riasztás állapotának beállítása. |
-| Környezet |I | |A riasztás környezetét. |
+| context |I | |A riasztás környezetét. |
 | timestamp |I | |Az idő, amelyen a riasztás lett elindítva. |
 | id |I | |Minden riasztási szabály tartozik egy egyedi azonosítót. |
 | name |I | |A riasztás neve. |
 | description |I | |A riasztás leírása. |
 | conditionType |I |A metrika esemény |A riasztások két típusok támogatottak: metrika- és esemény. Metrikákhoz kapcsolódó riasztások egy metrikai feltétel teljesülésekor alapulnak. Egy esemény a tevékenységnaplóban miatti riasztás alapul. Ez az érték használatával ellenőrizze-e a riasztás egy metrikát, illetve egy esemény alapul-e. |
 | condition |I | |Ellenőrizze, hogy az adott mezők alapján a **conditionType** értéket. |
-| MetricName |A metrikákhoz kapcsolódó riasztások | |A mérőszám, amely meghatározza, mit figyeli a szabály neve. |
+| metricName |A metrikákhoz kapcsolódó riasztások | |A mérőszám, amely meghatározza, mit figyeli a szabály neve. |
 | metricUnit |A metrikákhoz kapcsolódó riasztások |Bájt, BytesPerSecond, Count, CountPerSecond, %, másodperc |Az egység a metrika az engedélyezett. Lásd: [megengedett értékek](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx). |
 | metricValue |A metrikákhoz kapcsolódó riasztások | |A metrika a riasztást kiváltó tényleges értéke. |
-| Küszöbérték |A metrikákhoz kapcsolódó riasztások | |A küszöbérték, a riasztás aktiválódik. |
+| threshold |A metrikákhoz kapcsolódó riasztások | |A küszöbérték, a riasztás aktiválódik. |
 | windowSize |A metrikákhoz kapcsolódó riasztások | |Az az időtartam, használt figyelése a riasztás a küszöbérték alapján. Az érték 5 perc és 1 nap között kell lennie. Az értéknek időtartama ISO 8601 formátumban kell lennie. |
 | timeAggregation |A metrikákhoz kapcsolódó riasztások |Átlagos, Last, maximális, minimális, None, összesen |A gyűjtött adatokat hogyan idővel nelze kombinovat. Az alapértelmezett érték: átlaga. Lásd: [megengedett értékek](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx). |
-| Operátor |A metrikákhoz kapcsolódó riasztások | |Az operátort, amelynek a szolgál hasonlítani a jelenlegi metrikaadatok a beállított küszöbértéket. |
+| operator |A metrikákhoz kapcsolódó riasztások | |Az operátort, amelynek a szolgál hasonlítani a jelenlegi metrikaadatok a beállított küszöbértéket. |
 | subscriptionId |I | |Az Azure-előfizetés azonosítóját. |
 | resourceGroupName |I | |Az erőforráscsoport az érintett erőforrás neve. |
 | resourceName |I | |Az érintett erőforrás erőforrás neve. |
