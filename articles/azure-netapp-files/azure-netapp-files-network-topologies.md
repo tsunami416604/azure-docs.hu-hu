@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: bf2262d8a222cec6c5d0d7e53ded7b2994481656
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 207fb003eb1fdaafe4f43f7cd41dd4b7662eddf9
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205693"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331980"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Az Azure NetApp Files hálózattervezési irányelvei
 
@@ -81,7 +81,7 @@ Ha a virtuális hálózatok közötti társviszonyban van egy másik virtuális 
 
 ### <a name="udrs-and-nsgs"></a>Udr-EK és NSG-kkel
 
-Hálózati biztonsági csoportok (NSG) egy következő ugrási Azure NetApp Files, meghatalmazott alhálózatok nem használható. Hasonlóképpen felhasználó által megadott útvonalak (udr-EK) még nem támogatottak. 
+Felhasználó által megadott útvonalak (udr-EK) és a hálózati biztonsági csoportok (NSG) nem támogatottak a delegált alhálózatok NetApp Azure-fájlok.
 
 Áthidaló megoldásként alkalmazhat az más alhálózatokra, amelyek akár vagy megtagadhatja a forgalmat az Azure NetApp Files, meghatalmazott alhálózat NSG-k.  
 

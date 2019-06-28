@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 256435dfd016ebbd86dbbe49f4abbb346fb1cd19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b033f463722ddb3a0b7beabdf659900e7d7188df
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736666"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330870"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Az Azure bejárati ajtajának Service kapcsolatos gyakori kérdések
 
@@ -75,11 +75,11 @@ Az Azure bejárati ajtajának Service ugyanezt a listát (jelenléti pontok) POP
 
 ### <a name="is-azure-front-door-service-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>Az Azure bejárati ajtajának Service az alkalmazásomhoz tartozó dedikált üzemelő, megosztott vagy ügyfelek között?
 
-Az Azure bejárati ajtajának szolgáltatás egy olyan globálisan elosztott több-bérlős szolgáltatás. Tehát bejárati ajtajának infrastruktúráját közösen használja az összes ügyfeleinek. Azonban a bejárati ajtajának létrehozásával meghatározhatja az alkalmazás számára szükséges konfigurációs és 
+Az Azure bejárati ajtajának szolgáltatás egy olyan globálisan elosztott több-bérlős szolgáltatás. Tehát bejárati ajtajának infrastruktúráját közösen használja az összes ügyfeleinek. Azonban a bejárati ajtajának profilt hoz létre, a az alkalmazás számára szükséges konfigurációs határoz meg, és nem a bejárati ajtajának végrehajtott módosítások hatással más bejárati ajtajának konfigurációs.
 
 ### <a name="is-http-https-redirection-supported"></a>Is HTTP->HTTPS redirection supported?
 
-Bejárati ajtajának jelenleg nem támogatja a átirányítási URL-címe.
+Igen. Sőt Azure bejárati ajtajának szolgáltatás támogatja a gazdagép, elérési út és a lekérdezési karakterlánc-átirányítást, valamint az átirányítási URL-cím része. Tudjon meg többet [URL-átirányítás](front-door-url-redirect.md). 
 
 ### <a name="in-what-order-are-routing-rules-processed"></a>Milyen sorrendben útválasztási szabályok feldolgozása?
 
@@ -141,6 +141,11 @@ Bejárati ajtajának támogatja a TLS 1.0, 1.1 és 1.2-es. A TLS 1.3 még nem t�
 
 Ahhoz, hogy biztonságosan tartalomtovábbításhoz bejárati ajtajának egyéni tartomány HTTPS-protokollt, kiválaszthatja az Azure bejárati ajtajának szolgáltatás által kezelt tanúsítványt használjon, vagy a saját tanúsítványt használjon.
 Kezdettől fogva beállítás rendelkezések egy szabványos SSL-tanúsítvány Digicert keresztül felügyelt, és tárolja az előtérben ajtó a Key Vault. Ha úgy dönt, hogy a saját tanúsítványt használ, akkor segítségével készítheti elő egy támogatott Hitelesítésszolgáltatótól származó tanúsítványt, és a egy szabványos SSL, a bővített ellenőrzés tanúsítvány vagy a helyettesítő tanúsítvány is lehet. Önaláírt tanúsítványok használata nem támogatott. Ismerje meg, [HTTPS engedélyezése egyéni tartomány](https://aka.ms/FrontDoorCustomDomainHTTPS).
+
+### <a name="does-front-door-support-auto-rotation-of-certificates"></a>Támogatja a bejárati ajtó a tanúsítványok automatikusan rotáló?
+
+A saját egyéni SSL-tanúsítvány automatikusan rotáló nem támogatott. Kérem a telepítő egy adott egyéni tartomány első alkalommal hasonlóan fogja pont bejárati ajtajának kell a megfelelő verziójának a Key vaultban és győződjön meg arról, hogy a szolgáltatásnév számára a bejárati ajtajának továbbra is rendelkezik-e a Key Vaulthoz való hozzáférése. A frissített tanúsítvány bevezetési művelet által bejárati ajtajának teljesen atomi, és nem okozza a termelési hatással a tulajdonos nevét a megadott, vagy a tanúsítvány SAN nem változik.
+</br>A felügyelt bejárati ajtajának tanúsítvány lehetőséget választotta a tanúsítványok olyan, automatikus elforgatott bejárati ajtajának szerint.
 
 ### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door-service"></a>Mik azok az aktuális Azure bejárati ajtajának szolgáltatás által támogatott titkosító csomagok?
 

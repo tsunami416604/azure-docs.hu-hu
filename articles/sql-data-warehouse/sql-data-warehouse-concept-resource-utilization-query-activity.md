@@ -7,15 +7,15 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 04/12/2019
+ms.date: 06/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: f80c1817d5c0ce79f2dc53f40a2cc4e00dd5c72b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5038ae99a804b456c2cc388f07899278cc0f9a24
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61420966"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312881"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse erőforrás kihasználtságát és a lekérdezés tevékenység figyelése
 Az Azure SQL Data warehouse-bA az Azure Portalon, a surface elemzéseket nyújt az adatraktár-számítási feladat gazdag figyelési élményt nyújt. Az Azure Portalon az ajánlott eszköz esetén az adattárház figyelését, konfigurálható adatmegőrzési pontokat, riasztások, javaslatok, és testre szabható diagramokat és irányítópultokat a metrikák és naplók biztosít. A portál lehetővé teszi, hogy az egyéb Azure figyelő szolgáltatási, például az Operations Management Suite (OMS) és az Azure Monitor (naplók) egy átfogó figyelési élményt nyújt a nem csupán az adattárház, hanem a teljes Azure analytics is integrálhatja Platform integrált figyelési megoldást. Ez a dokumentáció ismerteti, milyen monitorozási funkciók érhetők el optimalizálása és az elemzési platform az SQL Data Warehouse segítségével kezelheti. 
@@ -26,19 +26,20 @@ A következő metrikák érhetők el az SQL Data warehouse-hoz az Azure Portalon
 > [!NOTE]
 > Jelenleg csomópont szintjén CPU és i/o-metrikák nem tükrözik megfelelően data warehouse használatának. Ezeket a metrikákat a közeljövőben törlődnek, mivel a csapat javítja a figyelés és a hibaelhárítással kapcsolatos élményt javító SQL Data warehouse-hoz. 
 
-| Metrika neve                           | Leírás     | Aggregáció típusa |
-| --------------------------------------- | ---------------- | --------------------------------------- |
-| Processzorhasználat (%)                          | Az adatraktár összes csomópont CPU-kihasználtság | Maximum      |
-| Adat IO kihasználtsága (%)                      | Az adatraktár összes csomópont i/o-kihasználtsága | Maximum   |
-| Sikeres kapcsolatok                  | Az adatok sikeres kapcsolatok száma | Összes            |
-| Sikertelen kapcsolatok                      | A data warehouse-bA sikertelen kapcsolatok száma | Összes            |
-| Tűzfal által blokkolva                     | A data warehouse, amely le lett tiltva a bejelentkezések száma | Összes            |
-| DWU-korlát                              | Szolgáltatási szint célkitűzésének az adatraktár | Maximum   |
-| Százalékos DWU                          | Maximális között a CPU és adat IO (%) | Maximum   |
-| Alkalmazott DWU                                | DWU limit * DWU percentage | Maximum   |
-| Gyorsítótár találati százaléka | (a találatok gyorsítótárazása / gyorsítótár-tévesztés) * 100, ahol a gyorsítótárbeli találatok egyezik meg az oszlopcentrikus szegmensek összes találat, a helyi SSD-gyorsítótárban, és a gyorsítótár-tévesztés az oszlopcentrikus szegmensek tévesztések összegzi az összes csomópont helyi SSD-gyorsítótárban | Maximum |
-| Felhasznált gyorsítótár százalékos aránya | (gyorsítótár használt / kapacitás gyorsítótár) * csomópontokon gyorsítótárazza 100, ahol használt gyorsítótár a helyi SSD-gyorsítótár összes bájt összege az összes csomópont között pedig gyorsítótár kapacitás egyezik meg a tárolási kapacitás, helyi SSD | Maximum |
-| Helyi tempdb százalékos aránya | Helyi tempdb kihasználtsági összes számítási csomópontokon – értékek vannak kibocsátva 5 percenként | Maximum |
+| Metrika neve             | Leírás                                                  | Aggregáció típusa |
+| ----------------------- | ------------------------------------------------------------ | ---------------- |
+| Processzorhasználat (%)          | Az adatraktár összes csomópont CPU-kihasználtság      | Maximum          |
+| Adat IO kihasználtsága (%)      | Az adatraktár összes csomópont i/o-kihasználtsága       | Maximum          |
+| Memóriahasználat (%)       | Memóriahasználat (SQL Server) az adatraktár összes csomópont | Maximum          |
+| Sikeres kapcsolatok  | Az adatok sikeres kapcsolatok száma                 | Összes            |
+| Sikertelen kapcsolatok      | A data warehouse-bA sikertelen kapcsolatok száma           | Összes            |
+| Tűzfal által blokkolva     | A data warehouse, amely le lett tiltva a bejelentkezések száma     | Összes            |
+| DWU-korlát               | Szolgáltatási szint célkitűzésének az adatraktár                | Maximum          |
+| Százalékos DWU          | Maximális között a CPU és adat IO (%)        | Maximum          |
+| Alkalmazott DWU                | DWU limit * DWU percentage                                   | Maximum          |
+| Gyorsítótár találati százaléka    | (a találatok gyorsítótárazása / gyorsítótár-tévesztés) * 100, ahol a gyorsítótárbeli találatok egyezik meg az oszlopcentrikus szegmensek összes találat, a helyi SSD-gyorsítótárban, és a gyorsítótár-tévesztés az oszlopcentrikus szegmensek tévesztések összegzi az összes csomópont helyi SSD-gyorsítótárban | Maximum          |
+| Felhasznált gyorsítótár százalékos aránya   | (gyorsítótár használt / kapacitás gyorsítótár) * csomópontokon gyorsítótárazza 100, ahol használt gyorsítótár a helyi SSD-gyorsítótár összes bájt összege az összes csomópont között pedig gyorsítótár kapacitás egyezik meg a tárolási kapacitás, helyi SSD | Maximum          |
+| Helyi tempdb százalékos aránya | Helyi tempdb kihasználtsági összes számítási csomópontokon – értékek vannak kibocsátva 5 percenként | Maximum          |
 
 ## <a name="query-activity"></a>Leggyakoribb hosszú idejű lekérdezések
 Egy programozott élményt, amikor az SQL Data Warehouse a T-SQL-n keresztül a szolgáltatás számos új dinamikus felügyeleti nézetekkel (DMV-kkel). Ezek a nézetek hasznosak, ha aktívan hibaelhárítás és a teljesítmény szűk azonosítja a számítási feladatok.

@@ -8,17 +8,17 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/17/2019
-ms.openlocfilehash: acafd6d8f37edd3e16561a4e588556bb771619f8
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.date: 06/21/2019
+ms.openlocfilehash: 54296f0b4aed22457a5218154111a42ad01ec262
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206708"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329343"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Ismertetése és módosítása a folyamatos átviteli egységek
 
-A számítási feladatok végrehajtásához lefoglalt erőforrások folyamatos átviteli egységek (su) jelöli. Minél magasabb az SU-k száma, annál több processzor- és memória-erőforrás van lefoglalva a feladathoz. Ez a kapacitás lehetővé teszi, hogy a lekérdezés logikára koncentrálhat, és felügyelnie a hardvert, hogy futtassa a Stream Analytics-feladat időben kivonatot.
+A Stream Analytics-feladat végrehajtásához kiosztott számítási erőforrások folyamatos átviteli egységek (su) jelöli. Minél magasabb az SU-k száma, annál több processzor- és memória-erőforrás van lefoglalva a feladathoz. Ez a kapacitás lehetővé teszi, hogy a lekérdezés logikára koncentrálhat, és felügyelnie a hardvert, hogy futtassa a Stream Analytics-feladat időben kivonatot.
 
 A kis késésű streamfeldolgozás érdekében az Azure Stream Analytics-feladatok minden feldolgozást a memóriában hajtanak végre. Kevés a memória, a folyamatos átviteli feladat sikertelen lesz. Ennek eredményeképpen egy éles feladat, fontos egy folyamatos átviteli feladat erőforrás-használat figyelése, és ellenőrizze, hogy nincs elegendő erőforrás le legyen foglalva, hogy a feladatok 24/7 rendszert.
 
@@ -85,7 +85,7 @@ Például a következő lekérdezést, a szám társított `clusterid` számoss�
    GROUP BY  clusterid, tumblingwindow (minutes, 5)
    ```
 
-Annak érdekében, hogy az előző lekérdezést a magas Számosság által okozott problémák enyhítése, elküldheti események Event Hubs segítségével `clusterid`, és a horizontális felskálázás a lekérdezés azáltal, hogy a rendszer feldolgozza az egyes bemeneti partíció külön **partíció ÁLTAL** az alábbi példában látható módon:
+Annak érdekében, hogy minden az előző lekérdezést a magas Számosság által okozott problémák megoldásához, elküldheti események Event Hubs segítségével `clusterid`, és a horizontális felskálázás a lekérdezés azáltal, hogy a rendszer feldolgozza az egyes bemeneti partíció külön **partíció ÁLTAL** az alábbi példában látható módon:
 
    ```sql
    SELECT count(*) 

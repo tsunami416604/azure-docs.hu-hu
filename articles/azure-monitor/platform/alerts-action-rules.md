@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: 6e97826499842a257f6402bd5268edc4cd6a486e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 212e6b042caec5f24a620dc491dc674417816df7
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734933"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310379"
 ---
 # <a name="action-rules-preview"></a>Műveleti szabályokban (előzetes verzió)
 
@@ -30,6 +30,8 @@ Vannak gyakran számos forgatókönyv, ahol hasznos lenne, a riasztások, amelyn
 
 Bár a riasztási szabályok lehetővé teszik, hogy meghatározza a műveletcsoport, amely a riasztást aktivál, ügyfeleink gyakran általában egy közös műveletcsoportot hatókörébe tartozó műveletek teljes rendelkezik. Például az erőforráscsoport "ContosoRG" felelős csapat valószínűleg meghatároz az azonos műveletcsoportot "ContosoRG" meghatározott összes riasztási szabályt. Műveleti szabályokban lehetővé teszik, hogy a műveletcsoport is elindítható a hatókörnek a létrehozott bármely riasztás azáltal, hogy felvázolhassa ipari méretekben, a folyamat leegyszerűsítése érdekében. Lépjen vissza az előző példában, a csapat megadhatja azokat a "ContosoRG", amelyek kiváltják a benne létrehozott összes riasztás azonos műveletcsoportot egy művelet szabályt.
 
+> [!NOTE]
+> Műveleti szabályokban jelenleg nem vonatkozik a Service Health-riasztások.
 
 ## <a name="configuring-an-action-rule"></a>Egy művelet szabály konfigurálása
 
@@ -104,7 +106,7 @@ Végül az a következő adatokat, a művelet szabály konfigurálása
 
 ## <a name="example-scenarios"></a>Példaforgatókönyvek
 
-### <a name="scenario-1-suppression-of-alerts-based-on-severity"></a>1\. forgatókönyv: A riasztások súlyosság alapján letiltása
+### <a name="scenario-1-suppression-of-alerts-based-on-severity"></a>forgatókönyv 1: A riasztások súlyosság alapján letiltása
 
 A Contoso biztosítani szeretné a saját előfizetés "ContosoSub" minden hétvégi belül minden virtuális gép összes Sev4 riasztásaihoz értesítéseinek elrejtése.
 

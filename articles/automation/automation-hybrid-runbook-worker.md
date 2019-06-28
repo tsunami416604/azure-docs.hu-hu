@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 785cf5159615b4a81740e853f2b513f0e6d74aec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1453f5282d9e3a48e5ca5d734258d70e44424a5a
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65198455"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296228"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatizálhatja az erőforrások az adatközpontban vagy a felhőben a hibrid Runbook-feldolgozó
 
@@ -46,6 +46,7 @@ Telepítése és konfigurálása a Windows hibrid Runbook-feldolgozók, két mó
 
 Tekintse át a [információk a hálózat tervezése](#network-planning) egy hibrid Runbook-feldolgozó üzembe helyezése előtt. Miután a feldolgozó sikeresen telepített, tekintse át a [runbookok futtatása hibrid Runbook-feldolgozók](automation-hrw-run-runbooks.md) megtudhatja, hogyan konfigurálhatja a helyszíni adatközpont vagy egyéb felhőalapú környezetben lévő folyamatok automatizálásához a runbookokban.
 
+A számítógép egy hibrid Runbook-feldolgozó csoporthoz az Automation-fiókban az Automation-runbookok támogatása, mindaddig, amíg használja ugyanazt a fiókot a megoldás és a hibrid Runbook-feldolgozó csoport tagsága is hozzáadhat. Ez a funkció a hibrid runbook-feldolgozó 7.2.12024.0-s verziójától érhető el.
 ## <a name="remove-a-hybrid-runbook-worker"></a>Távolítsa el a hibrid Runbook-feldolgozók
 
 Egy vagy több hibrid forgatókönyv-feldolgozók eltávolíthatja a csoportból, vagy eltávolíthatja a csoport a követelményektől függően. A helyi számítógépről egy hibrid Runbook-feldolgozó eltávolításához használja az alábbi lépéseket:

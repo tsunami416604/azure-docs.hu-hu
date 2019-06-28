@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: ba803c493fd85a7be7bc6c5922171678cc6e0df0
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 4e62ae47de95f95600faa3dc27f6867b065e117b
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164451"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329979"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Kimenő adatait az Azure Stream Analytics ismertetése
 
@@ -30,7 +30,7 @@ Néhány kimenetek típusok támogatása [particionálás](#partitioning). [Kime
 
 Stream Analytics támogatja [Azure Data Lake Storage általános 1](../data-lake-store/data-lake-store-overview.md). Az Azure Data Lake Storage egy vállalati szintű, nagy kapacitású adattár a big Data típusú adatok adatelemzési számítási feladatokhoz. Data Lake Storage segítségével bármilyen méretű, típusú és műveleti és felderítési jellegű feldolgozási sebességét a adatait tárolja. Stream Analytics kell engedélyezni kell, hogy a Data Lake Storage eléréséhez.
 
-A Stream Analytics az Azure Data Lake Storage-kimenet jelenleg nem érhető el az Azure China (21Vianet) és az Azure Germany (T-Systems International) régióban.
+A Stream Analytics az Azure Data Lake Storage-kimenet jelenleg nem érhető el az Azure China 21Vianet és Azure Germany (T-Systems International) régióban.
 
 A következő táblázat felsorolja a tulajdonságnevek és a hozzájuk tartozó leírások a Data Lake Storage általános 1 kimenetének konfigurálásához.   
 
@@ -50,7 +50,7 @@ A következő táblázat felsorolja a tulajdonságnevek és a hozzájuk tartozó
 
 ## <a name="sql-database"></a>SQL Database
 
-Használhat [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) kimeneteként, amely a relációs jellegű adatokhoz vagy alkalmazásokhoz, amelyek egy relációs adatbázisban szolgáltatott tartalmaktól függnek. Stream Analytics-feladatok írni egy létező táblázat, SQL Database-ben. A következő tábla sémáját pontosan egyeznie kell a mezőket és azok típusát, a feladat kimenetének. Azt is megadhatja [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) keresztül az SQL Database kimenetként kimenetet. Írási teljesítmény javítására kapcsolatos további információkért tekintse meg a [Stream Analytics az Azure SQL Database kimenetként](stream-analytics-sql-output-perf.md) cikk. 
+Használhat [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) kimeneteként, amely a relációs jellegű adatokhoz vagy alkalmazásokhoz, amelyek egy relációs adatbázisban szolgáltatott tartalmaktól függnek. Stream Analytics-feladatok írni egy létező táblázat, SQL Database-ben. A következő tábla sémáját pontosan egyeznie kell a mezőket és azok típusát, a feladat kimenetének. Azt is megadhatja [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) keresztül az SQL Database kimenetként kimenetet. Írási teljesítmény javítására kapcsolatos további információkért tekintse meg a [Stream Analytics az Azure SQL Database kimenetként](stream-analytics-sql-output-perf.md) cikk.
 
 A következő táblázat felsorolja a tulajdonságnevek és a egy SQL Database-kimenet létrehozása leírását.
 
@@ -63,10 +63,10 @@ A következő táblázat felsorolja a tulajdonságnevek és a egy SQL Database-k
 | Jelszó | A jelszó az adatbázishoz való csatlakozáshoz. |
 | Tábla | A tábla neve, ahol a kimeneti íródik. A tábla neve a kis-és nagybetűket. Ez a tábla sémája pontosan egyeznie kell a mezőket és azok típusát, amely létrehozza a feladat kimenetének számát. |
 |Partícióséma öröklése| Örökli az előző lekérdezési lépésre, a particionálási séma az a tábla több írók teljes párhuzamos topológia engedélyezése beállítást. További információkért lásd: [az Azure SQL Database az Azure Stream Analytics-kimenetet](stream-analytics-sql-output-perf.md).|
-|Egyezés kötegek száma| A javasolt korlát küldi el minden tömeges rekordok száma a tranzakciós beszúrása.|
+|Maximális kötegszám| A javasolt felső határ küldi el minden tömeges rekordok száma a tranzakciós beszúrása.|
 
 > [!NOTE]
-> Az Azure SQL Database-feladat kimenetét a Stream Analytics, de egy Azure virtuális gépen futó SQL Server egy csatlakoztatott adatbázis a nem támogatott. támogatott kínál.
+> Az Azure SQL Database kínál a Stream Analytics, de egy Azure virtuális gépen futó SQL Server egy adatbázis csatolt vagy az SQL Azure felügyelt példány még nem támogatott a feladatok kimenetét esetében támogatott. Ez a jövőbeni kiadásokban változhat.
 
 ## <a name="blob-storage"></a>Blob Storage
 
@@ -108,7 +108,7 @@ Adatfolyamok az event hubs konfigurálása kimenetként néhány paramétert kel
 | Tulajdonság neve | Leírás |
 | --- | --- |
 | Kimeneti alias | A lekérdezés kimenete az eseményközpont lekérdezésekben használt rövid név. |
-| Eseményközpont-névtér |Egy az üzenetküldési entitások készletének tárolója. Egy új eseményközpont létrehozásakor egy eseményközpont-névtér is létrejött. |
+| Eseményközpont-névtér | Egy az üzenetküldési entitások készletének tárolója. Egy új eseményközpont létrehozásakor egy eseményközpont-névtér is létrejött. |
 | Event Hubs neve | Az event hub kimeneti neve. |
 | Eseményközpont szabályzatának neve | A megosztott elérési házirendet, amely az event hubs hozhatók létre **konfigurálása** fülre. Minden megosztott elérési házirend neve, hogy Ön meghatározott engedélyekkel és hozzáférési kulcsok van. |
 | Eseményközpont házirendjének kulcsa | A közös hozzáférési kulcs, amellyel hitelesíti a hozzáférést az eseményközpont-névteret. |
@@ -123,7 +123,7 @@ Adatfolyamok az event hubs konfigurálása kimenetként néhány paramétert kel
 
 Használhat [Power BI](https://powerbi.microsoft.com/) , az elemzési eredmények biztosított részletes megjelenítések élményt biztosít a Stream Analytics-feladat kimenetét. Ez a funkció a operatív irányítópultokat, a jelentéskészítéshez és a metrika adatvezérelt újságírás használható.
 
-A Stream Analytics a Power BI-kimenet jelenleg nem érhető el az Azure China (21Vianet) és az Azure Germany (T-Systems International) régióban.
+A Stream Analytics a Power BI-kimenet jelenleg nem érhető el az Azure China 21Vianet és Azure Germany (T-Systems International) régióban.
 
 A következő táblázat felsorolja a tulajdonságnevek és a hozzájuk tartozó leírások, a Power BI-kimenet konfigurálása.
 
@@ -209,17 +209,17 @@ Az alábbi táblázat a tulajdonság nevét és a hozzájuk tartozó leírások 
 
 A partíciók száma [a Service Bus-Termékváltozat és a mérete alapján](../service-bus-messaging/service-bus-partitioning.md). Partíciókulcs egyedi egész szám érték minden egyes partícióhoz.
 
-## <a name="service-bus-topics"></a>Service Bus-témák
+## <a name="service-bus-topics"></a>Service Bus-üzenettémák
 Service Bus-üzenetsorok, adjon meg egy-az-egyhez kommunikációs módszer a küldő a fogadó. [Service Bus-üzenettémakörök](https://msdn.microsoft.com/library/azure/hh367516.aspx) egy-a-többhöz típusú kommunikációt biztosítanak.
 
-A következő táblázat felsorolja a tulajdonságnevek és a hozzájuk tartozó leírások létrehozásához egy témakör-kimenet.
+A következő táblázat felsorolja a tulajdonság nevét és a hozzájuk tartozó leírások létrehozásához egy Service Bus-témakör kimeneti.
 
 | Tulajdonság neve | Leírás |
 | --- | --- |
 | Kimeneti alias |A lekérdezés kimenete a Service Bus-témakörbe lekérdezésekben használt rövid név. |
 | Service Bus-névtér |Egy az üzenetküldési entitások készletének tárolója. Egy új eseményközpont létrehozásakor egy Service Bus-névtér is létrejött. |
 | Téma neve |A témakörök üzenetküldési entitások, hasonlók az event hubs és üzenetsorok. Az eszközök és szolgáltatások szolgáltatásból lettek kialakítva. A témakör létrehozását követően is rendelkezzen egy adott névvel. A témakörbe küldött üzenetek nem érhetők el, kivéve, ha egy előfizetés jön létre, ezért győződjön meg arról van egy vagy több előfizetés témakör alatt. |
-| Téma házirendjének neve |Amikor létrehoz egy témát, akkor is létrehozhat megosztott elérési házirendeket a témakör a **konfigurálása** fülre. Minden megosztott elérési házirend neve, hogy Ön meghatározott engedélyekkel és hozzáférési kulcsok van. |
+| Téma házirendjének neve |Amikor létrehoz egy Service Bus-témakörbe, akkor is létrehozhat megosztott elérési házirendeket a témakör a **konfigurálása** fülre. Minden megosztott elérési házirend neve, hogy Ön meghatározott engedélyekkel és hozzáférési kulcsok van. |
 | Téma házirendjének kulcsa |A közös hozzáférési kulcs, amellyel hitelesíti a hozzáférést a Service Bus-névteret. |
 | Eseményszerializációs formátum |A kimeneti adatokat szerializálási formátuma. JSON, a fürt megosztott kötetei szolgáltatás és az avro-hoz támogatott. |
 | Encoding |Ha a CSV vagy JSON formátumot használja, egy kódolást kell adni. Jelenleg az UTF-8 az egyetlen támogatott kódolási formátum. |
@@ -231,7 +231,7 @@ A partíciók száma [a Service Bus-Termékváltozat és a mérete alapján](../
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 [Az Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) egy globálisan elosztott adatbázis-szolgáltatás, amely korlátlan, rugalmas skálázhatóságát szerte a világon, funkciókban gazdag lekérdezési és Automatikus indexelés sémafüggetlen adatmodellek keresztül biztosít. Azure Cosmos DB-hez gyűjtési beállítások a Stream Analytics kapcsolatos további információkért tekintse meg a [Stream Analytics az Azure Cosmos DB kimeneti](stream-analytics-documentdb-output.md) cikk.
 
-A Stream Analytics az Azure Cosmos DB-kimenet jelenleg nem érhető el az Azure China (21Vianet) és az Azure Germany (T-Systems International) régióban.
+A Stream Analytics az Azure Cosmos DB-kimenet jelenleg nem érhető el az Azure China 21Vianet és Azure Germany (T-Systems International) régióban.
 
 > [!Note]
 > Jelenleg az Azure Stream Analytics csak kapcsolatot támogat az Azure Cosmos DB az SQL API használatával.
@@ -253,7 +253,7 @@ Az alábbi táblázat ismerteti a tulajdonságait, egy Azure Cosmos DB kimeneti 
 ## <a name="azure-functions"></a>Azure Functions
 Az Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, amellyel igény szerinti explicit kiépítésére vagy infrastruktúra kezelése nélkül futtathat. Lehetővé teszi az Azure-ban vagy a partner szolgáltatásokban bekövetkező események által aktivált kódok implementálhatók. Az Azure Functions a triggerekre való válaszadási képessége lehetővé teszi a természetes kimeneti az Azure Stream Analytics. A kimeneti adapter lehetővé teszi a felhasználók számára a Stream Analytics és az Azure Functions összekapcsolása, és futtathat szkripteket vagy kódrészleteket különféle eseményekre válaszként.
 
-A Stream Analytics az Azure Functions-kimenet jelenleg nem érhető el az Azure China (21Vianet) és az Azure Germany (T-Systems International) régióban.
+A Stream Analytics az Azure Functions-kimenet jelenleg nem érhető el az Azure China 21Vianet és Azure Germany (T-Systems International) régióban.
 
 Az Azure Stream Analytics az Azure Functions via HTTP-eseményindító hív meg. Az Azure Functions kimeneti adapter érhető el a következő konfigurálható tulajdonsággal:
 
@@ -295,7 +295,7 @@ A következő táblázat összefoglalja a partíció-támogatás és a kimeneti 
 | Kimenet típusa | Particionálási támogatása | Partíciókulcs  | Kimeneti írók száma |
 | --- | --- | --- | --- |
 | Azure Data Lake Store | Igen | Használja {a date} és {time} az elérési út előtagmintája tokeneket. Válassza ki a dátum formátuma éééé/hh/nn, nn/hh/éééé vagy hh-nn-éééé. Az időformátum ÓÓ használható. | A bemeneti particionálási követi [teljes párhuzamosítható lekérdezések](stream-analytics-scale-jobs.md). |
-| Azure SQL Database | Igen | A PARTITION BY záradék a lekérdezés alapján. | A bemeneti particionálási követi [teljes párhuzamosítható lekérdezések](stream-analytics-scale-jobs.md). További információ eléréséhez jobban írni átviteli teljesítmény tölt be adatokat az Azure SQL Database-be című témakörben talál [az Azure SQL Database az Azure Stream Analytics-kimenetet](stream-analytics-sql-output-perf.md). |
+| Azure SQL Database | Igen, engedélyezni kell. | A PARTITION BY záradék a lekérdezés alapján. | Particionálás öröklik a beállítás engedélyezve van, ha követi a bemeneti particionálási [teljes párhuzamosítható lekérdezések](stream-analytics-scale-jobs.md). További információ eléréséhez jobban írni átviteli teljesítmény tölt be adatokat az Azure SQL Database-be című témakörben talál [az Azure SQL Database az Azure Stream Analytics-kimenetet](stream-analytics-sql-output-perf.md). |
 | Azure Blob Storage | Igen | Használja {a date} és {time} token az esemény mezőiből az elérésiút-minta. Válassza ki a dátum formátuma éééé/hh/nn, nn/hh/éééé vagy hh-nn-éééé. Az időformátum ÓÓ használható. Kimeneti BLOB lehet particionálni egy egyéni esemény egyetlen attribútum {fieldname} vagy {dátum és idő:\<specifikátor >}. | A bemeneti particionálási követi [teljes párhuzamosítható lekérdezések](stream-analytics-scale-jobs.md). |
 | Azure Event Hubs | Igen | Igen | Partíció igazítás függően változik.<br /> A partíciókulcs event hub kimeneti egyaránt igazodik a felsőbb rétegbeli (korábbi) lekérdezési lépésre, írók száma esetén ugyanaz, mint az event hub kimeneti partíciók száma. Minden egyes író használja a [EventHubSender osztály](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) eseményeket küldhet az adott partíció. <br /> Event hub kimeneti a partíciókulcs nem igazodik a felsőbb rétegbeli (korábbi) lekérdezés lépést, ha írók száma megegyezik a korábbi lépésben partíciók száma. Minden egyes író használja a [SendBatchAsync osztály](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) a **EventHubClient** az események küldése az összes kimeneti partíciót. |
 | Power BI | Nem | None | Nem alkalmazható. |
@@ -315,14 +315,14 @@ Az alábbi táblázat ismerteti azokat a kimeneti kötegelés szempontjai:
 | Kimenet típusa | Maximális üzenetméret | Köteg mérete optimalizálása |
 | :--- | :--- | :--- |
 | Azure Data Lake Store | Lásd: [korlátozza a Data Lake Storage](../azure-subscription-service-limits.md#data-lake-store-limits). | Használjon legfeljebb 4 MB / írási művelet. |
-| Azure SQL Database | 10 000 sorok maximális száma kiszolgálónként egyetlen tömeges beszúrás.<br />100 minimális sorok száma egyetlen tömeges beszúrás. <br />Lásd: [korlátozza az Azure SQL](../sql-database/sql-database-resource-limits.md). |  Minden batch először tömeges köteg maximális mérete együtt. Akkor is feloszthatja a batch megfelezése (amíg el nem éri a minimális köteg mérete) – Újrapróbálkozást lehetővé tevő hiba esetén az SQL-alapú. |
+| Azure SQL Database | Maximális kötegszám használatával konfigurálható. 10 000 maximális és 100 minimális sorok száma egyetlen tömeges beszúrás alapértelmezés szerint.<br />Lásd: [korlátozza az Azure SQL](../sql-database/sql-database-resource-limits.md). |  Minden batch először tömeges maximális kötegszám együtt. A Batch felére (csak minimális kötegek száma) – Újrapróbálkozást lehetővé tevő hibákat az SQL alapján van felosztva. |
 | Azure Blob Storage | Lásd: [korlátozza az Azure Storage](../azure-subscription-service-limits.md#storage-limits). | A maximális blob blokkblob mérete 4 MB.<br />A maximális blobok bock száma 50 000. |
-| Azure Event Hubs  | Egy üzenet 256 KB. <br />Lásd: [korlátozza az Event Hubs](../event-hubs/event-hubs-quotas.md). |  Bemeneti/kimeneti a particionálás nem igazítva, ha minden egyes esemény egyenként a csomagolt **EventData** és a egy köteg maximális mérete (prémium szintű termékváltozat 1 MB) legfeljebb küldi el. <br /><br />  Bemeneti/kimeneti particionálás van igazítva, ha több esemény van elhelyezve egy **EventData** példányt, az üzenetek maximális mérete legfeljebb és küldi el.  |
+| Azure Event Hubs  | 256 KB-os vagy 1 MB méretű üzenet. <br />Lásd: [korlátozza az Event Hubs](../event-hubs/event-hubs-quotas.md). |  Bemeneti/kimeneti a particionálás nem igazítva, ha minden egyes esemény egyenként a csomagolt `EventData` és a egy köteg maximális mérete legfeljebb küldi el. Ez is történik, ha [egyéni metaadat-tulajdonságot](#custom-metadata-properties-for-output) szolgálnak. <br /><br />  Bemeneti/kimeneti particionálás van igazítva, ha több esemény van elhelyezve egy `EventData` példányt, az üzenetek maximális mérete legfeljebb és küldi el. |
 | Power BI | Lásd: [Power BI Rest API-korlátok](https://msdn.microsoft.com/library/dn950053.aspx). |
 | Azure Table Storage | Lásd: [korlátozza az Azure Storage](../azure-subscription-service-limits.md#storage-limits). | Az alapértelmezett érték 100 entitást egyetlen tranzakciónként. Egy kisebb értékre, igény szerint konfigurálható. |
-| Az Azure Service Bus-üzenetsorba   | Egy üzenet 256 KB.<br /> Lásd: [korlátozza a Service Bus](../service-bus-messaging/service-bus-quotas.md). | Egy üzenet egy egyszeri esemény használja. |
-| Az Azure Service Bus-témakörbe | Egy üzenet 256 KB.<br /> Lásd: [korlátozza a Service Bus](../service-bus-messaging/service-bus-quotas.md). | Egy üzenet egy egyszeri esemény használja. |
-| Azure Cosmos DB   | Lásd: [Azure Cosmos DB korlátozza](../azure-subscription-service-limits.md#azure-cosmos-db-limits). | Kötegméret írási és olvasási gyakorisága dinamikusan módosulnak az Azure Cosmos DB-válaszok alapján. <br /> A Stream Analytics nincs előre meghatározott korlátozások is. |
+| Az Azure Service Bus-üzenetsorba   | Egy Standard szintű, a prémium szint 1 MB-os üzenet 256 KB.<br /> Lásd: [korlátozza a Service Bus](../service-bus-messaging/service-bus-quotas.md). | Egy üzenet egy egyszeri esemény használja. |
+| Az Azure Service Bus-témakörbe | Egy Standard szintű, a prémium szint 1 MB-os üzenet 256 KB.<br /> Lásd: [korlátozza a Service Bus](../service-bus-messaging/service-bus-quotas.md). | Egy üzenet egy egyszeri esemény használja. |
+| Azure Cosmos DB   | Lásd: [Azure Cosmos DB korlátozza](../azure-subscription-service-limits.md#azure-cosmos-db-limits). | Kötegméret írási és olvasási gyakorisága dinamikusan az Azure Cosmos DB-válaszok alapján vannak igazítva. <br /> A Stream Analytics nincs előre meghatározott korlátozások is. |
 | Azure Functions   | | Az alapértelmezett batch mérete 262 144 bájt (256 KB). <br /> Az alapértelmezett események száma kötegenkénti érték 100. <br /> A Köteg mérete nem konfigurálható, és növelhető vagy csökkenthető, a Stream Analytics [kimeneti beállítások](#azure-functions).
 
 ## <a name="next-steps"></a>További lépések

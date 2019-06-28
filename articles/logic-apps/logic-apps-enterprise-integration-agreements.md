@@ -8,16 +8,15 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: 447ffb8e-3e91-4403-872b-2f496495899d
-ms.date: 04/05/2019
-ms.openlocfilehash: 26d653b873e959f0804e0456ed87ee68c39413e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/22/2019
+ms.openlocfilehash: 4bfee4ec442c9e7b0351b0fd0c6a2b8e163a2541
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720669"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330306"
 ---
-# <a name="create-and-manage-trading-partner-agreements-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>Hozzon létre és kereskedelmipartner-egyezmények kezelése az Azure Logic Apps és az Enterprise Integration Pack használatával
+# <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Létrehozásához és kezeléséhez kereskedelmipartner-egyezmények az Azure Logic Appsben
 
 A [kereskedelmi partner](../logic-apps/logic-apps-enterprise-integration-partners.md) 
 *szerződés* segítségével a szervezetek és vállalatok egymással zökkenőmentesen szolgáltatásbusszal használni kívánt konkrét szabványos protokollt definiálásával vállalatközi (B2B) üzenet. Szerződés előnyei közös, például:
@@ -27,6 +26,8 @@ A [kereskedelmi partner](../logic-apps/logic-apps-enterprise-integration-partner
 * Is egyszerűen létrehozása, kezelése és használata a vállalati integrációs megoldások létrehozása.
 
 Ez a cikk bemutatja, hogyan hozhat létre egy AS2, EDIFACT vagy X12, amelyet használhat a B2B-forgatókönyvekhez integrációs megoldások létrehozását, nagyvállalati szerződés a [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) és [Azure Logic Apps](../logic-apps/logic-apps-overview.md). Miután egy szerződést hoz létre, akkor használhatja az AS2, EDIFACT vagy X12 B2B-üzenetek kicserélni az összekötőket.
+
+Szerződések RosettaNet üzenetváltásokban létrehozásával kapcsolatban lásd: [Exchange RosettaNet üzenetek](../logic-apps/logic-apps-enterprise-integration-rosettanet.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -65,8 +66,8 @@ Az Azure fő menüjéből válassza **minden szolgáltatás**. A keresőmezőbe 
    | **Gazdagép-identitás** | Igen | <*host-partner-identifier*> | A gazdagéppartner azonosítója |
    | **Vendégpartner** | Igen | <*guest-partner-name*> | A vendégpartner a szervezet, amely a fogadó partner üzleti jelenti. |
    | **Vendégidentitás** | Igen | <*Vendég-partner-azonosító*> | A vendégpartner azonosítója |
-   | **Beállítások** | Változó | Változó | Ezeket a tulajdonságokat adja meg a szerződés által fogadott összes bejövő üzenetek kezelése. További információkért tekintse meg a megfelelő típusát: <p>- [AS2-üzenetek beállításai](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT-üzenetek beállításai](logic-apps-enterprise-integration-edifact.md) <br>- [X12 üzenet beállításai](logic-apps-enterprise-integration-x12.md) |
-   | **Küldési beállítások** | Változó | Változó | Ezeket a tulajdonságokat adja meg a szerződés által küldött összes kimenő üzenetek kezelése. További információkért tekintse meg a megfelelő típusát: <p>- [AS2-üzenetek beállításai](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT-üzenetek beállításai](logic-apps-enterprise-integration-edifact.md) <br>- [X12 üzenet beállításai](logic-apps-enterprise-integration-x12.md) |
+   | **Beállítások** | Változó | Változó | Ezeket a tulajdonságokat adja meg, hogyan a fogadó partner a vendégpartner a szerződés minden bejövő üzenetet kap. További információkért tekintse meg a megfelelő típusát: <p>- [AS2-üzenetek beállításai](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT-üzenetek beállításai](logic-apps-enterprise-integration-edifact.md) <br>- [X12 üzenet beállításai](logic-apps-enterprise-integration-x12.md) |
+   | **Küldési beállítások** | Változó | Változó | Ezeket a tulajdonságokat adja meg, hogyan a fogadó partner a vendégpartner a szerződés minden kimenő üzeneteket küld. További információkért tekintse meg a megfelelő típusát: <p>- [AS2-üzenetek beállításai](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT-üzenetek beállításai](logic-apps-enterprise-integration-edifact.md) <br>- [X12 üzenet beállításai](logic-apps-enterprise-integration-x12.md) |
    |||||
 
 1. Ha befejezte a szerződés létrehozása a **Hozzáadás** lapon a **OK**, és térjen vissza az integrációs fiók.

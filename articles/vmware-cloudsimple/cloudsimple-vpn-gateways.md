@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c9689a468e8784eb4ec3590011e02a37d92d6b9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a91d0f75b7e27065bd2ee0ea430a859d265afacb
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083402"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67332038"
 ---
 # <a name="vpn-gateways-overview"></a>VPN-átjárók áttekintése
 
@@ -26,7 +26,7 @@ CloudSimple kétféle VPN-átjárók biztosítja:
 
 ## <a name="site-to-site-vpn-gateway"></a>Site-to-site VPN gateway
 
-Site-to-site VPN gateway titkosított adatforgalmat továbbíthat CloudSimple régió hálózaton és a egy a helyszíni adatközpont között szolgál. Alhálózatok vagy CIDR-tartományát, a helyszíni hálózat és a CloudSimple régió közötti hálózati forgalom meghatározására használja ezt a kapcsolatot.
+Site-to-site VPN gateway titkosított adatforgalmat továbbíthat CloudSimple régió hálózaton és a egy a helyszíni adatközpont között szolgál. Ez a kapcsolat használatával definiálása az alhálózatokhoz vagy CIDR-tartományt, a helyszíni hálózat és a CloudSimple régió közötti kommunikációhoz.
 
 A VPN gateway lehetővé teszi, hogy a magánfelhőben helyszíni szolgáltatásait, valamint a magánfelhőben, a helyszíni hálózatról szolgáltatásokhoz.  CloudSimple egy házirendalapú VPN-kiszolgálót biztosít a helyszíni hálózatról való kapcsolat létrehozásakor.
 
@@ -38,6 +38,9 @@ Site-to-site VPN használati esetek a következők:
 * Kisegítő lehetőségek, a helyszíni hálózaton a magánfelhőben futó számítási feladatokat.
 
 ![Site-to-Site VPN kapcsolati topológia](media/cloudsimple-site-to-site-vpn-connection.png)
+
+> [!IMPORTANT]
+> TCP MSS 1078 bájt vagy alacsonyabb kell állítani. Vagy ha a VPN-eszközök nem támogatják az MSS korlátozását, alternatív megoldásként beállíthatja MTU 1118 bájt az alagútkapcsolaton az helyette. 
 
 ### <a name="cryptographic-parameters"></a>Titkosítási paraméterek
 

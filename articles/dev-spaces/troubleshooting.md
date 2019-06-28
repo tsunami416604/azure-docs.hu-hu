@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: 'Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s '
-ms.openlocfilehash: 53571fdd7c5a93fef4df0832253542a5a6dfbec5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e0379bbc7f26ea30f65c5eac73633ca0371aa283
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058543"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331308"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -414,3 +414,12 @@ Jelenleg az Azure fejlesztési tárolóhelyek célja, hogy Linux-podok és csak 
 
 ### <a name="try"></a>Kipróbálás
 [Adjon hozzá egy mellékíz](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) az AKS-fürt Linux biztosításához a podok nem ütemezett futtatásához egy Windows-csomóponton.
+
+## <a name="error-found-no-untainted-linux-nodes-in-ready-state-on-the-cluster-there-needs-to-be-at-least-one-untainted-linux-node-in-ready-state-to-deploy-pods-in-azds-namespace"></a>Hiba történt "untainted Linux-csomópontok nem kész állapotú a fürtön. Szükség van legalább egy untainted Linux csomópont telepítése "azds" névtér podok kész állapotú."
+
+### <a name="reason"></a>Reason
+
+Az Azure fejlesztési szóközt nem hozható létre egy vezérlőt az AKS-fürt mert untainted csomópontja nem talált egy *készen* podok ütemezése az állapota. Az Azure fejlesztési tárolóhelyek igényel a legalább egy Linux-csomópont egy *készen* állapot, amely lehetővé teszi, hogy podok ütemezés tolerations megadása nélkül.
+
+### <a name="try"></a>Kipróbálás
+[A mellékíz konfigurációjának frissítése](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) az AKS-fürt legalább egy Linux biztosításához a csomópont lehetővé teszi, hogy podok ütemezés tolerations megadása nélkül. Arra is ügyeljen, hogy legalább egy Linux-csomópont, amely lehetővé teszi az ütemezés podok tolerations megadása nélkül szerepel a *készen* állapota. Ha a csomópont eléréséhez hosszú ideig tart a *készen* állapotba, és megpróbálhatja újraindítani a csomópontot.

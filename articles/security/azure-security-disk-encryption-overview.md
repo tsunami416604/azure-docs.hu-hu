@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9b00a5262b1e144aa47cd7fd640906225ff4fecd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 58c5c8321e505fe2c1c7d19c58fe0d031b75b3e4
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068791"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67294864"
 ---
 # <a name="azure-disk-encryption-overview"></a>Az Azure Disk Encryption áttekintése
 
@@ -45,7 +45,7 @@ Az Azure Disk Encryption támogatja a következő forgatókönyvet:
 Azt is a következő eseteket támogatja a virtuális gépek Ha engedélyezve vannak a Microsoft Azure-ban:
 
 * Az Azure Key Vault-integráció.
-* [Standard szintű virtuális gépek](https://azure.microsoft.com/pricing/details/virtual-machines/). [Linux rendszerű virtuális gépek](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) ezen a szinten belül meg kell felelnie a minimális memóriára vonatkozó követelmény, 7 GB. 
+* [Standard szintű virtuális gépek](https://azure.microsoft.com/pricing/details/virtual-machines/) , hogy megfelel a [minimálisan szükséges memória](azure-security-disk-encryption-prerequisites.md#supported-vm-sizes). 
 * A támogatott Azure-katalógus-rendszerképek virtuális gépek Windows és Linux rendszerű virtuális gépek, felügyelt lemezes és a méretezési csoport titkosításának engedélyezésével állítható be.
 * Az operációs rendszer és az adatok titkosításának letiltása meghajtók Windows virtuális gépek esetén a méretezési csoport virtuális gépei és felügyelt lemezes virtuális gépek.
 * Adatmeghajtók letiltását titkosításának Linux rendszerű virtuális gépekhez, a méretezési csoport virtuális gépei, és a felügyelt lemezes virtuális gépek.
@@ -56,7 +56,7 @@ Azt is a következő eseteket támogatja a virtuális gépek Ha engedélyezve va
 * A Linux rendszerű virtuális gép operációsrendszer- és adatlemezek titkosításának engedélyezése.
 
    > [!NOTE]
-   > Egyes Linux-disztribúciókon az operációs rendszer meghajtótitkosítás nem támogatott. További információkért lásd: a [Azure Disk Encryption – gyakori kérdések](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) cikk.
+   > Egyes Linux-disztribúciókon az operációs rendszer meghajtótitkosítás nem támogatott. További információkért lásd: a [az Azure Disk Encryption támogatott operációs rendszerek: Linux](azure-security-disk-encryption-prerequisites.md#linux).
    
 * A Windows tárolóhelyek elején a Windows Server 2016 rendszerben konfigurált virtuális gépek titkosításának engedélyezését.
 * Biztonsági mentése és visszaállítása titkosított virtuális gépek kulcstitkosítási kulcs-(KEK) és a nem KEK-forgatókönyvekhez.
@@ -93,8 +93,6 @@ Virtuális gépek a Windows és Linux rendszerhez készült Azure Disk Encryptio
 * [A PowerShell-lemez titkosítási parancsmagok](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-2.2.0).
 * [Az Azure CLI-vel lemez titkosítási parancsmagok](/cli/azure/vm/encryption?view=azure-cli-latest).
 * [Az Azure Resource Manager-lemez titkosítási sablonok](azure-security-disk-encryption-appendix.md#resource-manager-templates).
-
-Az Azure Disk Encryption Windows vagy Linux operációs rendszer futtató virtuális gépek esetén támogatott. A támogatott operációs rendszerekkel kapcsolatos további információkért lásd: [– gyakori kérdések](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport).
 
 > [!NOTE]
 > Nem jár további költségekkel együtt az Azure Disk Encryption Virtuálisgép-lemezek titkosítása. Standard szintű [Key Vault díjszabását ismertető](https://azure.microsoft.com/pricing/details/key-vault/) vonatkozik a kulcstartóhoz, amely a titkosítási kulcsok tárolására szolgál. 

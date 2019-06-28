@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 9c08cd52bba6391660bc5f28e5db2dbec1126951
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16d1739e01061a90d673e4bd79bba7bfe7ec3a90
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67118711"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295073"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>A Linux Azure Files-problémák hibaelhárítása
 
@@ -191,6 +191,40 @@ A storage-fiók felhasználó használja a fájlok másolása:
 - `Passwd [storage account name]`
 - `Su [storage account name]`
 - `Cp -p filename.txt /share`
+
+## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Nem lehet kapcsolódni, illetve egy Azure-fájlmegosztás csatlakoztatása
+
+### <a name="cause"></a>Ok
+
+Ez a probléma gyakori okai a következők:
+
+- Egy Linux-terjesztési nem kompatibilis ügyfél használ. Javasoljuk, hogy a következő Linux-disztribúció használatával kapcsolódhat az Azure-fájlmegosztások:
+
+    |   | SMB 2.1 <br>(Csatlakoztatása a virtuális gépek ugyanazon Azure-régióban) | SMB 3.0 <br>(Csatlakoztatása a helyszíni és a régiók közötti) |
+    | --- | :---: | :---: |
+    | Ubuntu Server | 14.04+ | 16.04+ |
+    | RHEL | 7+ | 7.5+ |
+    | CentOS | 7+ |  7.5+ |
+    | Debian | 8+ |   |
+    | openSUSE | 13.2+ | 42.3+ |
+    | SUSE Linux Enterprise Server | 12 | 12 SP3 + |
+
+- CIFS segédprogramok (cifs-utils) nincsenek telepítve az ügyfélre.
+- A minimális SMB/CIFS, 2.1-es verzió, az ügyfél nincs telepítve.
+- Az SMB 3.0 titkosítás nem támogatott az ügyfélen. Az SMB 3.0 titkosítás Ubuntu 16.4 vagy újabb, valamint SUSE 12.3 és az újabb verzió érhető el. Más disztribúciók kernel 4.11 és újabb verzió szükséges.
+- TCP-porton keresztül 445-ös, ami nem támogatott egy storage-fiókot kíván csatlakozni.
+- Próbál csatlakozni egy Azure-fájlmegosztás, az Azure virtuális, és a virtuális gép nem a storage-fiók ugyanabban a régióban.
+- Ha a [biztonságos átvitelre van szükség]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) beállítás engedélyezve van a tárfiókon, az Azure Files lehetővé teszi a csak az SMB 3.0-s titkosítással használó kapcsolatok.
+
+### <a name="solution"></a>Megoldás
+
+A probléma megoldásához használja a [eszköz hibaelhárítása az Azure Filesban hibák linuxon](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089). Ezzel az eszközzel:
+
+* Megismerheti, hogyan ellenőrzése a környezetben futtató ügyfélen.
+* Észleli a nem kompatibilis ügyfél-konfiguráció hozzáférési hibát okoz az Azure Files számára.
+* Helyi rögzítés részletes útmutatást biztosít.
+* A diagnosztikai nyomkövetéseket gyűjt.
+
 
 ## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: nem érhető el "&lt;elérési út&gt;": Bemeneti/kimeneti hiba
 
