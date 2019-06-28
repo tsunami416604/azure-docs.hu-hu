@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 294b376665ba6b62f79f826520bc933543b38bda
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e0181eea2895dbc2b3db3367c850140e3fad21d4
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059282"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331728"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Az Azure Machine Learning szolgáltatás működése: Architektúra és fogalmak
 
@@ -97,7 +97,10 @@ Modellek nevét és verzióját azonosítja. Minden alkalommal, amikor egy model
 
 Ha regisztrálja a modellt, akkor is további metaadat-címkéket adja meg, majd a címkék modellek keresésekor.
 
-Egy aktív központi telepítés által használt modellek nem törölhető.
+> [!TIP]
+> A regisztrált modell az egy vagy több fájlt, amely a modell alkotó logikai tárolója. Például ha egy modellt, amely több fájlok tárolják, regisztrálhatja őket egy adott modellt, az Azure Machine Learning-munkaterületet. A regisztrációt követően is, majd töltse le vagy a regisztrált modell üzembe helyezése és fogadására regisztrált összes fájlt.
+
+Egy aktív központi telepítés által használt regisztrált modell nem törölhető.
 
 A modellek regisztrálása egy példa: [betanításához egy kép osztályozási modell az Azure Machine Learning](tutorial-train-models-with-aml.md).
 

@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 6/21/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: deca4d1f66950e89148089d2984eb9cb35c470a8
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
-ms.translationtype: MT
+ms.openlocfilehash: 2567c47e41306a7940b6d065feb49ae80bb16198
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304573"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312687"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -89,7 +89,7 @@ Ez lehetővé teszi a következő esetekben:
 - **SNAT** – további portokat a kimenő SNAT-kapcsolatok, csökkentve az esetleges SNAT portfogyás érhető el. Jelenleg az Azure-tűzfal véletlenszerűen kiválaszt a nyilvános IP-forráscím-kapcsolathoz való használatra. Ha bármelyik alárendelt szűrés a hálózaton, lehetővé teszik a tűzfal társított összes nyilvános IP-címeket szeretne.
 
 > [!NOTE]
-> A nyilvános előzetes során Ha hozzáad vagy eltávolít egy nyilvános IP-címet a futó tűzfal DNAT-szabályok használatával meglévő bejövő kapcsolat funkció 40 – 120 másodpercen.
+> A nyilvános előzetes során Ha hozzáad vagy eltávolít egy nyilvános IP-címet a futó tűzfal DNAT-szabályok használatával meglévő bejövő kapcsolat funkció 40 – 120 másodpercen. A tűzfal rendelt, kivéve, ha a tűzfal nincs lefoglalva, vagy törölve első nyilvános IP-cím nem lehet eltávolítani.
 
 ### <a name="azure-monitor-logging"></a>Azure Monitor-naplózás
 
