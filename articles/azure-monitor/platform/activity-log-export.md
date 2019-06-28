@@ -114,7 +114,7 @@ Ha már létezik egy naplóprofil, először távolítsa el a meglévő log-prof
     | Name (Név) |Igen |A napló-profil neve. |
     | StorageAccountId |Nem |Erőforrás-azonosító a tárfiók, ahol a tevékenységnapló menteni. |
     | serviceBusRuleId |Nem |Service Bus Szabályazonosító a Service Bus-névtér szeretné, hogy a létrehozott event hubs. Ez a karakterlánc a következő formátumban: `{service bus resource ID}/authorizationrules/{key name}`. |
-    | Location egység |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeket gyűjtő vesszővel tagolt listája. |
+    | Location |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeket gyűjtő vesszővel tagolt listája. |
     | RetentionInDays |Igen |Amely események kell megtartani a tárfiókban, 1 és 2147483647 között eltelt napok száma. A nulla érték határozatlan ideig tárolja a naplókat. |
     | Category |Nem |Eseménykategóriák kell gyűjteni, vesszővel tagolt listája. Lehetséges értékek a következők _írási_, _törlése_, és _művelet_. |
 
@@ -159,7 +159,7 @@ Ha egy napló-profilja már létezik, akkor először távolítsa el a meglévő
     | locations |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeket gyűjtő szóközzel elválasztott listáját. Megtekintheti összes régiók listáját az előfizetéshez a `az account list-locations --query [].name`. |
     | days |Igen |Mely eseményeket meg kell őrizni, 1 és 365 közötti napok számát. A nulla érték határozatlan ideig tárolja a naplók (végtelen).  Ha nulla, majd az engedélyezett paramétert meg kell igaz értékre. |
     |enabled | Igen |IGAZ vagy hamis.  Engedélyezi vagy letiltja a megtartási házirend segítségével.  Igaz értéke esetén a nap paraméter 0-nál nagyobb számnak kell lennie.
-    | kategóriák |Igen |Eseménykategóriák, érdemes gyűjtik szóközzel elválasztott listáját. Lehetséges értékek: írási, törlési és művelet. |
+    | categories |Igen |Eseménykategóriák, érdemes gyűjtik szóközzel elválasztott listáját. Lehetséges értékek: írási, törlési és művelet. |
 
 
 
@@ -236,7 +236,7 @@ A JSON-elemek az alábbi táblázatban ismertetett.
 | correlationId |Általában egy GUID Azonosítót a karakterláncként. Ugyanaz a uber művelet eseményeket, amelyek megosztása a korrelációs azonosító tartozik. |
 | identity |Az engedélyezési és a jogcímek leíró JSON-blobját. |
 | authorization |Az esemény tulajdonságainak RBAC-blobját. Általában tartalmazza az "action", "szerepkör" és "hatókör" tulajdonság. |
-| szint |Az esemény szintjét. A következő értékek egyikét: _Kritikus fontosságú_, _hiba_, _figyelmeztetés_, _tájékoztató_, és _részletes_ |
+| level |Az esemény szintjét. A következő értékek egyikét: _Kritikus fontosságú_, _hiba_, _figyelmeztetés_, _tájékoztató_, és _részletes_ |
 | location |Régió, a helyét történt (vagy globális). |
 | properties |Állítsa be a `<Key, Value>` párok (azaz szótár), az esemény részleteit leíró. |
 
