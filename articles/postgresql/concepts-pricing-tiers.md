@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 42f290109ca380464cb07ac9f684cdde25b8fdcd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a92017c462ef62cbfb1aa6c2613a502d1cc5ffc6
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063768"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340739"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Az Azure Database for PostgreSQL - kiszolgáló egyetlen tarifacsomagok
 
@@ -67,7 +67,7 @@ A tárfiókok korlátai növeljük az általános célú és memóriahasználatr
 | IO | 3 IOPS/GB<br/>Minimum 100 IOPS<br/>Legfeljebb 20 000 iops-érték| 3 IOPS/GB<br/>Minimum 100 IOPS<br/>Legfeljebb 20 000 iops-érték |
 
 > [!IMPORTANT]
-> Nagy méretű tároló jelenleg nyilvános előzetes verzióban elérhető a következő régióban: USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA középső RÉGIÓJA, USA nyugati RÉGIÓJA, 2. nyugati RÉGIÓJA, Észak-Európa, Nyugat-Európa, Délkelet-Ázsia, kelet-japán, Korea középső régiója, Kelet-Ausztrália.
+> Nagy méretű tároló jelenleg nyilvános előzetes verzióban elérhető a következő régióban: USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA középső RÉGIÓJA, USA nyugati RÉGIÓJA, Észak-Európa, Nyugat-Európa, Délkelet-Ázsia, kelet-japán, Korea középső régiója, Kelet-Ausztrália.
 >
 >A nagy méretű tároló előzetes jelenleg nem támogatja:
 >

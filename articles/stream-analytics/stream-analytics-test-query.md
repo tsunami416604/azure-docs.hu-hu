@@ -7,18 +7,18 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 6/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: fca76b632e9bcc27ed762886eaea696a5696ad3f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0a76ecd12143e0bbaa9997bfc6d7295df9c4ec7
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761910"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340869"
 ---
 # <a name="test-a-stream-analytics-query-with-sample-data"></a>A Stream Analytics lekérdezési mintaadatokkal tesztelése
 
-Az Azure Stream Analytics használatával indítása és feladat leállítása nélkül tölthet fel adatokat, valamint mintalekérdezések az Azure Portalon.
+Az Azure Stream Analytics használatával az adatokat a bemeneti vagy a mintaadatok feltöltése a lekérdezések tesztelése az Azure Portalon indítása és feladat leállítása nélkül.
 
 ## <a name="upload-sample-data-and-test-the-query"></a>Mintaadatok feltöltése és a lekérdezés tesztelése
 
@@ -28,11 +28,15 @@ Az Azure Stream Analytics használatával indítása és feladat leállítása n
 
 3. A Stream Analytics a feladat oldal, a a **Feladattopológia** szakaszban kattintson **lekérdezés** a lekérdezés szerkesztő ablak megnyitásához. 
 
-4. Bemeneti mintaadatok a lekérdezés teszteléséhez kattintson a jobb gombbal bármelyik a bemeneteket.  Válassza ki **fájlból mintaadatok feltöltése**. Az adatok JSON-, CSV-vagy AVRO szerializálni kell. Minta beviteli UTF-8 kódolású legyen, és nem tömöríti. Csak a vessző (,) elválasztó a portálon a fürt megosztott kötetei szolgáltatás bemenet tesztelése esetén támogatott.
+4. A lekérdezés teszteléséhez, is majd vagy az adatokat a bemeneti élő, vagy feltöltése fájlból. Az adatok JSON-, CSV-vagy AVRO szerializálni kell. Minta beviteli UTF-8 kódolású legyen, és nem tömöríti. Csak a vessző (,) elválasztó a portálon a fürt megosztott kötetei szolgáltatás bemenet tesztelése esetén támogatott.
+
+    1. A bemeneti élő: kattintson a jobb gombbal bármelyik a bemeneteket. Válassza ki **mintaadatok bemenetből**. A következő képernyőn beállíthatja a minta időtartamára.
+
+    1. Fájl segítségével: kattintson a jobb gombbal bármelyik a bemeneteket. Válassza ki **fájlból mintaadatok feltöltése**. 
 
     ![Stream analytics query editor testovat dotaz](media/stream-analytics-test-query/stream-analytics-test-query-editor-upload.png)
 
-5. Válassza a feltöltés befejeződése után **tesztelése** a lekérdezést a mintaadatokkal tesztelheti.
+5. A mintavételi vagy a feltöltés befejeződése után válassza ki a **tesztelése** a lekérdezést a mintaadatokkal tesztelheti.
 
     ![Stream analytics-lekérdezés szerkesztő teszt mintaadatok](media/stream-analytics-test-query/stream-analytics-test-query-editor-test.png)
 

@@ -2,22 +2,22 @@
 title: Feladatok beküldése az R Tools for Visual Studio – Azure HDInsight
 description: Egy HDInsight-fürtön a Visual Studio helyi gépről R-feladatok elküldéséhez.
 ms.service: hdinsight
-author: maxluk
-ms.author: maxluk
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/27/2018
-ms.openlocfilehash: 8f1ed582b7abf43afd38ca5c358aa7e179bfecb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/19/2019
+ms.openlocfilehash: d977d5a25db0cbe641179bce860e9f67c60f29ab
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702271"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340799"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Feladatok beküldése az R Tools for Visual Studio használatával
 
-[Az R Tools for Visual Studio](https://www.visualstudio.com/vs/rtvs/) (RTVS) egy ingyenes, nyílt forráskódú bővítmény a Community (ingyenes), Professional, és Enterprise kiadás mindkét [Visual Studio 2017](https://www.visualstudio.com/downloads/), és [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129)vagy újabb verziója.
+[Az R Tools for Visual Studio](https://www.visualstudio.com/vs/rtvs/) (RTVS) egy ingyenes, nyílt forráskódú bővítmény a Community (ingyenes), Professional, és Enterprise kiadás mindkét [Visual Studio 2017](https://www.visualstudio.com/downloads/), és [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129)vagy újabb verziója. Nem áll rendelkezésre az RTVS [Visual Studio 2019](https://docs.microsoft.com/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?view=vs-2019).
 
 RTVS bővíti az R-munkafolyamat eszközök felajánlásával a [R Interaktivní okno](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL), az intellisense (kódkiegészítés), [jeleníti meg képi megjelenítés](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data) keresztül R-kódtárak ggplot2 és ggviz, például[R-kód hibakeresése](https://docs.microsoft.com/visualstudio/rtvs/debugging), stb.
 
@@ -48,7 +48,7 @@ RTVS bővíti az R-munkafolyamat eszközök felajánlásával a [R Interaktivní
 
 ## <a name="execute-local-r-methods"></a>Hajtsa végre a helyi R-metódusok
 
-1. Hozzon létre a [Machine Learning-szolgáltatások HDInsight-fürt](r-server-get-started.md).
+1. A Machine Learning-szolgáltatások HDInsight-fürt létrehozása.
 2. Telepítse a [RTVS bővítmény](https://docs.microsoft.com/visualstudio/rtvs/installation).
 3. Töltse le a [minták zip-fájl](https://github.com/Microsoft/RTVS-docs/archive/master.zip).
 4. Nyissa meg `examples/Examples.sln` elindíthatja a megoldást a Visual Studióban.
@@ -65,15 +65,9 @@ RTVS bővíti az R-munkafolyamat eszközök felajánlásával a [R Interaktivní
 
 PuTTY ellátott Windows számítógépre a Microsoft ML Server vagy a Microsoft R ügyfél használata esetén létrehozhat egy számítási környezetet, futtatandó elosztott `RevoScaleR` függvények a helyi ügyfélről a HDInsight-fürthöz. Használat `RxSpark` hozhat létre a számítási környezet, adja meg a felhasználónevet, az Apache Hadoop-fürt élcsomópont, SSH-kapcsolók, és így tovább.
 
-1. Az élcsomópont állomásnév megkereséséhez az Azure-ban a Machine Learning-szolgáltatások HDInsight-fürt panel megnyitásához, majd jelölje ki **Secure Shell (SSH)** az áttekintő panel felső menüjében.
+1. A Machine Learning-szolgáltatások élcsomópont címe a HDInsight a következő `CLUSTERNAME-ed-ssh.azurehdinsight.net` ahol `CLUSTERNAME` a Machine Learning-szolgáltatások fürt neve.
 
-    ![Secure Shell (SSH)](./media/r-server-submit-jobs-r-tools-vs/ssh.png)
-
-2. Másolás a **Határcsomópont állomásneve** értéket.
-
-    ![Határcsomópont állomásneve](./media/r-server-submit-jobs-r-tools-vs/edge-node.png)
-
-3. Illessze be az alábbi kód az R interaktív ablakban, a Visual Studióban, a változók értékeit, a telepítő a környezet megfelelő módosítása.
+1. Illessze be az alábbi kód az R interaktív ablakban, a Visual Studióban, a változók értékeit, a telepítő a környezet megfelelő módosítása.
 
     ```R
     # Setup variables that connect the compute context to your HDInsight cluster
@@ -103,7 +97,7 @@ PuTTY ellátott Windows számítógépre a Microsoft ML Server vagy a Microsoft 
     
     ![A Spark környezet beállítása](./media/r-server-submit-jobs-r-tools-vs/spark-context.png)
 
-4. Az R interaktív ablakban hajtsa végre a következő parancsokat:
+1. Az R interaktív ablakban hajtsa végre a következő parancsokat:
 
     ```R
     rxHadoopCommand("version") # should return version information
@@ -115,7 +109,7 @@ PuTTY ellátott Windows számítógépre a Microsoft ML Server vagy a Microsoft 
 
     ![Sikeres rx parancs végrehajtása](./media/r-server-submit-jobs-r-tools-vs/rx-commands.png)
 
-5. Ellenőrizze, hogy a `rxHadoopCopy` a rendszer sikeresen átmásolta a `people.json` fájlt a példa adatok mappából az újonnan létrehozott `/user/RevoShare/newUser` mappa:
+1. Ellenőrizze, hogy a `rxHadoopCopy` a rendszer sikeresen átmásolta a `people.json` fájlt a példa adatok mappából az újonnan létrehozott `/user/RevoShare/newUser` mappa:
 
     1. Az Azure-ban a Machine Learning-szolgáltatások HDInsight fürt ablaktáblán válassza **tárfiókok** elemet a bal oldali menüben.
 
@@ -131,7 +125,7 @@ PuTTY ellátott Windows számítógépre a Microsoft ML Server vagy a Microsoft 
 
         ![Másolt fájl](./media/r-server-submit-jobs-r-tools-vs/copied-file.png)
 
-6. Miután végzett, a jelenlegi Apache Spark-környezetet használja, le kell állítania. Több környezet nem futtathatók egyszerre.
+1. Miután végzett, a jelenlegi Apache Spark-környezetet használja, le kell állítania. Több környezet nem futtathatók egyszerre.
 
     ```R
     rxStopEngine(mySparkCluster)
@@ -141,4 +135,4 @@ PuTTY ellátott Windows számítógépre a Microsoft ML Server vagy a Microsoft 
 
 * [Számítási környezeti beállítások a HDInsight a Machine Learning-szolgáltatások](r-server-compute-contexts.md)
 * [ScaleR és SparkR](../hdinsight-hadoop-r-scaler-sparkr.md) légitársaság járatkésések becsléséhez példát tartalmaz.
-<!-- * You can also submit R jobs with the [R Studio Server](hdinsight-submit-jobs-from-r-studio-server.md) -->
+

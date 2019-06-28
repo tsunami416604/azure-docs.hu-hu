@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 9a19165f9ac15f7a40aea0501f960b06efbd63a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6446919c80e7e3fd379e6e39eb51712f9736ea7e
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304366"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341209"
 ---
 # <a name="api-management-policy-expressions"></a>Az API Management házirend-kifejezések
 Ez a cikk ismerteti a házirend-kifejezések szintaxisa C# 7. Minden egyes kifejezés férhet hozzá a implicit módon megadott [környezet](api-management-policy-expressions.md#ContextVariables) változót és a egy engedélyezett [részhalmazát](api-management-policy-expressions.md#CLRTypes) .NET-keretrendszer típusú.
@@ -74,7 +74,7 @@ Kifejezések használhatók vagy az összes API Management a szöveges értékek
 ## <a name="CLRTypes"></a> .NET-keretrendszer típusok engedélyezett a házirend-kifejezések
 A következő táblázat felsorolja a .NET-keretrendszer és a tagok, amelyek a házirend-kifejezések engedélyezettek.
 
-|Típus|Támogatott tagok|
+|Type|Támogatott tagok|
 |--------------|-----------------------|
 |Newtonsoft.Json.Formatting|Összes|
 |Newtonsoft.Json.JsonConvert|SerializeObject, DeserializeObject|
@@ -94,19 +94,19 @@ A következő táblázat felsorolja a .NET-keretrendszer és a tagok, amelyek a 
 |System.Byte|Összes|
 |System.Char|Összes|
 |System.Collections.Generic.Dictionary < TKey, TValue >|Összes|
-|System.Collections.Generic.HashSet<T>|Összes|
-|System.Collections.Generic.ICollection<T>|Összes|
+|System.Collections.Generic.HashSet\<T>|Összes|
+|System.Collections.Generic.ICollection\<T>|Összes|
 |System.Collections.Generic.IDictionary < TKey, TValue >|Összes|
-|System.Collections.Generic.IEnumerable<T>|Összes|
-|System.Collections.Generic.IEnumerator<T>|Összes|
-|System.Collections.Generic.IList<T>|Összes|
-|System.Collections.Generic.IReadOnlyCollection<T>|Összes|
+|System.Collections.Generic.IEnumerable\<T>|Összes|
+|System.Collections.Generic.IEnumerator\<T>|Összes|
+|System.Collections.Generic.IList\<T>|Összes|
+|System.Collections.Generic.IReadOnlyCollection\<T>|Összes|
 |System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>|Összes|
-|System.Collections.Generic.ISet<T>|Összes|
+|System.Collections.Generic.ISet\<T>|Összes|
 |System.Collections.Generic.KeyValuePair<TKey, TValue>|Összes|
-|System.Collections.Generic.List<T>|Összes|
-|System.Collections.Generic.Queue<T>|Összes|
-|System.Collections.Generic.Stack<T>|Összes|
+|System.Collections.Generic.List\<T>|Összes|
+|System.Collections.Generic.Queue\<T>|Összes|
+|System.Collections.Generic.Stack\<T>|Összes|
 |System.Convert|Összes|
 |System.DateTime|(Konstruktor), hozzáadása, napokHozzaadasa, AddHours, AddMilliseconds, AddMinutes, AddMonths, masodpercekHozzaadasa, AddTicks, AddYears, dátum, nap, DayOfWeek, DayOfYear, DaysInMonth, óra, IsDaylightSavingTime, IsLeapYear, MaxValue, ezredmásodperces, perc, a MinValue, hónap, most , Elemzés, a második, kivonás, órajel során végbemenő, TimeOfDay, ma, ToString, UtcNow, év|
 |System.DateTimeKind|(UTC)|

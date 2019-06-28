@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 92cb427149e6e6cbddfb96c6e4488017641e6482
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7dbb04a9d002fdcff49d28f69ee0975500bb7ed0
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761743"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340790"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Az Azure Stream Analytics kimenetek hibaelhárítása
 
@@ -90,6 +90,10 @@ Vegye figyelembe a következő megfigyeléseken, számos különböző típusú 
 * Elsődleges kulcs, vagy egy egyedi korlátozás, amely használja az ALTER INDEX az IGNORE_DUP_KEY nem állítható be kell, hogy dobja el és hozza létre újból az indexet.  
 * Az IGNORE_DUP_KEY beállítást használja az ALTER INDEX egyedi index, amely nem azonos az elsődleges kulcs vagy UNIQUE megkötést, és a CREATE INDEX vagy az INDEX definícióját használatával létrehozott állíthatja be.  
 * Mivel az ilyen indexek egyedisége nem kényszeríti IGNORE_DUP_KEY oszlopcentrikus indexek nem vonatkozik.  
+
+## <a name="column-names-are-lower-cased-by-azure-stream-analytics"></a>Oszlop nevek a következők szerint az Azure Stream Analytics alacsonyabb kisbetűsek
+Az eredeti (1.0) kompatibilitási szint használatakor az Azure Stream Analytics segítségével kisbetűsre módosítja az oszlopneveket. Ez a viselkedés a rendszerriasztások mechanizmusában újabb kompatibilitási szinten. Annak érdekében, hogy megőrizze a helyzet, azt javasoljuk, hogy az ügyfelek számára, hogy helyezze át az 1.1-es és újabb kompatibilitási szinten. További információt talál a [kompatibilitási szintje az Azure Stream Analytics-feladatok](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level).
+
 
 ## <a name="get-help"></a>Segítségkérés
 

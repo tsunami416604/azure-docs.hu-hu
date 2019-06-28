@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/05/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 30ebfec88182684f8e852808e978a51854389898
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e57291292d8957fd323f9be03bb7df0492484ea8
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073422"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341618"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues"></a>Hozzáférés egy alkalmazás hitelesítése az Azure Active Directoryval, blobok és üzenetsorok
 
@@ -121,7 +121,7 @@ Ezután explicit módon hozzárendelheti az **Storage-Blobadatok Közreműködő
 
 Ha az alkalmazás eléri az Azure Storage, azt, nem pedig a felhasználó nevében, ami azt jelenti, hogy a blob és üzenetsor erőforrásaihoz hozzáférnek, a bejelentkezett felhasználó engedélyeivel használatával. Ez a Kódpélda próbálkozzon, egy webalkalmazást, amely kéri a felhasználót, jelentkezzen be az Azure AD identitás van szükség. Hozzon létre egy saját, vagy a Microsoft által biztosított mintaalkalmazás használja.
 
-A befejezett minta-webalkalmazáshoz, amely tokenbeolvasás és a egy blob létrehozása az Azure Storage segítségével érhető el a [GitHub](http://aka.ms/aadstorage). Felülvizsgálata és a befejezett mintakódot futtató példakódok megértéséhez hasznos lehet. Az elkészült mintát futtatásával kapcsolatos útmutatásért lásd: részre [nézet, és futtassa az elkészült mintát](#view-and-run-the-completed-sample).
+A befejezett minta-webalkalmazáshoz, amely tokenbeolvasás és a egy blob létrehozása az Azure Storage segítségével érhető el a [GitHub](https://aka.ms/aadstorage). Felülvizsgálata és a befejezett mintakódot futtató példakódok megértéséhez hasznos lehet. Az elkészült mintát futtatásával kapcsolatos útmutatásért lásd: részre [nézet, és futtassa az elkészült mintát](#view-and-run-the-completed-sample).
 
 #### <a name="add-references-and-using-statements"></a>Mutató hivatkozásokat tudjon felvenni, és utasításokkal  
 
@@ -235,7 +235,7 @@ private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalCons
 
 ## <a name="view-and-run-the-completed-sample"></a>Megtekintheti, és a befejezett minta futtatása
 
-Futtassa a mintaalkalmazást, először klónoznia, vagy töltse le [GitHub](http://aka.ms/aadstorage). Frissítse az alkalmazást a következő szakaszokban leírtak szerint.
+Futtassa a mintaalkalmazást, először klónoznia, vagy töltse le [GitHub](https://aka.ms/aadstorage). Frissítse az alkalmazást a következő szakaszokban leírtak szerint.
 
 ### <a name="provide-values-in-the-settings-file"></a>Adja meg a beállítások fájlban
 

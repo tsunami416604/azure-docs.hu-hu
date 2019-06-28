@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 5102720242edd3ffc0a377bbddf0f7f3ade68b63
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9e90951f810c5101a46c29570af8ad71b42be637
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937222"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341017"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Offline Widevine androidhoz streaming
 
@@ -38,6 +38,9 @@ Az Android-lejátszó alkalmazások készítéséhez, hogy szerkezeti három be�
 > * Egy titkosított adathordozó-bővítmény (EME) és a Media forrás bővítmény (MSE) használatával, a Chrome mobilböngészőben v62 vagy újabb verziójú player létrehozása
 
 A cikket is offline streamelési Widevine védett tartalom kapcsolatos gyakori kérdésekre ad választ.
+
+> [!NOTE]
+> Kapcsolat nélküli DRM csak történik, hogy egyetlen kér licencet a tartalom letöltésekor. A szükségtelen díjak az esetleges hibákat.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 

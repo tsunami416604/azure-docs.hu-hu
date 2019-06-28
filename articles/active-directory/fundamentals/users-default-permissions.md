@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0cb0fe056ff7ff4794667d6b28782daad100609f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 206e501860691cccc0578a0df4eec2b161b99b4c
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65921033"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341371"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Mik azok az alapértelmezett felhasználói engedélyek az Azure Active Directoryban?
 Az Azure Active Directoryban (Azure AD-ban) minden felhasználóhoz alapértelmezett engedélyek készlete tartozik. A felhasználók hozzáférése a felhasználó típusát áll a [szerepkör-hozzárendelések](active-directory-users-assign-role-azure-portal.md), és az egyes objektumok tulajdonjogának. Ez a cikk az alapértelmezett engedélyeket ismerteti, valamint összehasonlítja a tag- és vendégfelhasználók alapértelmezett beállításait. Az alapértelmezett felhasználói engedélyek csak a felhasználói beállítások módosítható az Azure ad-ben.
@@ -34,7 +34,7 @@ A vendégekre vonatkozó alapértelmezett engedélyek korlátozásokat tartalmaz
 
 **Terület** | **Tagfelhasználók engedélyei** | **Vendégfelhasználók engedélyei**
 ------------ | --------- | ----------
-Felhasználók és kapcsolatok | Felhasználók és kapcsolatok összes nyilvános tulajdonságának olvasása<br>Vendégek meghívása<br>Saját jelszó módosítása<br>Saját mobiltelefonszám kezelése<br>Saját fénykép kezelése<br>Saját frissítési jogkivonatok érvénytelenítése | Saját tulajdonságok olvasása<br>Más felhasználók és kapcsolatok megjelenített nevének, e-mail-címének, bejelentkezési nevének, fényképének, egyszerű felhasználónevének, valamint felhasználótípus-tulajdonságainak olvasása<br>Saját jelszó módosítása
+Felhasználók és kapcsolatok | Felhasználók és kapcsolatok összes nyilvános tulajdonságának olvasása<br>Vendégek meghívása<br>Saját jelszó módosítása<br>Saját mobiltelefonszám kezelése<br>Saját fénykép kezelése<br>Saját frissítési jogkivonatok érvénytelenítése | Saját tulajdonságok olvasása<br>Olvassa el a megjelenített név, e-mail, jelentkezzen be a nevét, fénykép, egyszerű felhasználónév és a felhasználó tulajdonságait a más felhasználók és a kapcsolattartók<br>Saját jelszó módosítása
 Csoportok | Biztonsági csoportok létrehozása<br>Office 365-csoportok létrehozása<br>Minden csoporttulajdonság olvasása<br>Nem rejtett csoporttagságok olvasása<br>Felvett csoport rejtett Office 365-csoporttagságainak olvasása<br>Tulajdonságok, tulajdonosi és a felhasználó tulajdonában lévő csoportok tagságát kezelése<br>Vendégek hozzáadása saját csoportokhoz<br>Dinamikus tagsági beállítások kezelése<br>Saját csoportok törlése<br>Saját Office 365-csoportok visszaállítása | Minden csoporttulajdonság olvasása<br>Nem rejtett csoporttagságok olvasása<br>Csatlakozott csoport rejtett Office 365-csoporttagságainak olvasása<br>Saját csoportok kezelése<br>Vendégek hozzáadása saját csoportokhoz (ha engedélyezett)<br>Saját csoportok törlése<br>Saját Office 365-csoportok visszaállítása<br>Olvassa el a tartoznak, beleértve a tagsági csoportok tulajdonságait.
 Alkalmazások | Új alkalmazás regisztrálása (létrehozása)<br>Regisztrált és vállalati alkalmazások tulajdonságainak olvasása<br>Saját alkalmazások tulajdonságainak, hozzárendeléseinek és hitelesítő adatainak kezelése<br>Felhasználó alkalmazásjelszavának létrehozása vagy törlése<br>Saját alkalmazások törlése<br>Saját alkalmazások visszaállítása | Regisztrált és vállalati alkalmazások tulajdonságainak olvasása<br>Saját alkalmazások tulajdonságainak, hozzárendeléseinek és hitelesítő adatainak kezelése<br>Saját alkalmazások törlése<br>Saját alkalmazások visszaállítása
 Eszközök | Minden eszköztulajdonság olvasása<br>Saját eszközök minden tulajdonságának olvasása<br> | Nincs engedély<br>Saját eszközök törlése<br>
@@ -50,24 +50,83 @@ A tagfelhasználók alapértelmezett engedélyeinek korlátozására az alábbi 
 Engedély | Magyarázat beállítása
 ---------- | ------------
 Felhasználók regisztrálhatják-alkalmazás | Ezt a beállítást nem megakadályozza, hogy a felhasználók az alkalmazást az alkalmazásregisztrációk hozza létre. Lehetővé teszi majd adható vissza a megadott személyeknek a alkalmazásfejlesztő szerepkör hozzáadásával.
-Lehetővé teszi a felhasználók munkahelyi vagy iskolai fiókját a Linkedinnel | Ezt a beállítást nem megakadályozza, hogy a felhasználók munkahelyi vagy iskolai fiókjával kapcsolódjon a saját LinkedIn-fiók.  Lásd: [LinkedIn-fiók kapcsolatok az adatok megosztása és jóváhagyás](https://docs.microsoft.com/azure/active-directory/users-groups-roles/linkedin-user-consent) további információt.
+Lehetővé teszi a felhasználók munkahelyi vagy iskolai fiókját a Linkedinnel | Ezt a beállítást nem megakadályozza, hogy a felhasználók munkahelyi vagy iskolai fiókjával kapcsolódjon a saját LinkedIn-fiók. További információkért lásd: [LinkedIn-fiók kapcsolatok az adatok megosztása és jóváhagyás](https://docs.microsoft.com/azure/active-directory/users-groups-roles/linkedin-user-consent).
 Biztonsági csoportok létrehozásának képessége | Ha e beállítás értéke Nem, akkor a felhasználók nem hozhatnak létre biztonsági csoportokat. A globális rendszergazdák és felhasználói rendszergazdák is létrehozhatnak biztonsági csoportokat. További tudnivalók: [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../users-groups-roles/groups-settings-cmdlets.md).
 Office 365-csoportok létrehozásának képessége | Ha e beállítás értéke Nem, akkor a felhasználók nem hozhatnak létre Office 365-csoportokat. Ha e beállítás értéke Néhány, akkor egyes kiválasztott felhasználók létrehozhatnak Office 365-csoportokat. A globális rendszergazdák és felhasználói rendszergazdák továbbra is képesek lesznek az Office 365-csoportok létrehozásához. További tudnivalók: [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../users-groups-roles/groups-settings-cmdlets.md).
 Az Azure AD felügyeleti portálhoz való hozzáférés korlátozása | Ezt a beállítást Igen megakadályozza, hogy a felhasználók hozzáférését az Azure Active Directory csak az Azure Portalon keresztül.
-Egyéb felhasználók olvasásának képessége | Ez a beállítás csak a PowerShellben érhető el. Ha e beállítás értéke $false, akkor a nem rendszergazda felhasználók nem olvashatják a címtárban található felhasználói adatokat. Ez nem jelenti azt, hogy ne olvashatnák egyéb Microsoft-szolgáltatások (például az Exchange Online) felhasználói adatait. Ez a beállítás speciális esetekben alkalmazandó, ajánlott értéke: $false.
+Egyéb felhasználók olvasásának képessége | Ez a beállítás csak a PowerShellben érhető el. $False jelzőbit megakadályozza, hogy az összes nem rendszergazda jogosultságú felhasználói adatok olvasása a címtárból. Ez a jelző nem akadályozza meg a más Microsoft-szolgáltatások, például az Exchange online-hoz felhasználói információk olvasásakor. Ez a beállítás a különleges körülmények számára ideális, és nem ajánlott, ez a jelző $false értékre.
 
 ## <a name="object-ownership"></a>Objektumok tulajdonjoga
 
 ### <a name="application-registration-owner-permissions"></a>Alkalmazásregisztrációs tulajdonosi engedélyek
 Az alkalmazást regisztráló felhasználó automatikusan az adott alkalmazás tulajdonosává válik. Tulajdonosként kezelheti az alkalmazás metaadatait, például annak nevét és az előírt engedélyeket. Ezen kívül kezelheti az alkalmazás nem bérlőspecifikus konfigurációját, például az egyszeri bejelentkezést és a felhasználó-hozzárendelést. A tulajdonosok ezen kívül eltávolíthatnak vagy hozzáadhatnak más tulajdonosokat. A globális rendszergazdáktól eltérően a tulajdonosok csak saját alkalmazásaikat kezelhetik.
 
-<!-- ### Enterprise application owner permissions
-
-When a user adds a new enterprise application, they are automatically added as an owner for the tenant-specific configuration of the application. As an owner, they can manage the tenant-specific configuration of the application, such as the SSO configuration, provisioning, and user assignments. An owner can also add or remove other owners. Unlike Global Administrators, owners can manage only the applications they own. <!--To assign an enterprise application owner, see *Assigning Owners for an Application*.-->
+### <a name="enterprise-application-owner-permissions"></a>Vállalati alkalmazás tulajdonosi engedélyekkel
+Amikor egy felhasználó felvesz egy új vállalati alkalmazást, a rendszer automatikusan felveszi tulajdonosai. Tulajdonosként kezelhetik az alkalmazások, például az egyszeri bejelentkezés konfigurációs, kiépítés és felhasználói hozzárendelések bérlőspecifikus konfigurációját. A tulajdonosok ezen kívül eltávolíthatnak vagy hozzáadhatnak más tulajdonosokat. Ellentétben a globális rendszergazdák a tulajdonosok csak a saját alkalmazások is kezelheti.
 
 ### <a name="group-owner-permissions"></a>Csoporttulajdonosi engedélyek
-
 A csoportot létrehozó felhasználó automatikusan az adott csoport tulajdonosává válik. Tulajdonosként azokat is, például a nevét a csoport tulajdonságainak kezelése, valamint csoporttagság kezelése. A tulajdonosok ezen kívül eltávolíthatnak vagy hozzáadhatnak más tulajdonosokat. A globális rendszergazdák és felhasználói rendszergazdák eltérően tulajdonosai csak saját csoportok kezelésére. A csoporttulajdonosok hozzárendelésével kapcsolatban lásd: [Csoporttulajdonosok kezelése](active-directory-accessmanagement-managing-group-owners.md).
+
+### <a name="ownership-permissions"></a>Tulajdonosi engedélyekkel
+Az alábbi táblázatok ismertetik az Azure Active Directoryban tagfelhasználó szabályozhatják a birtokolt objektumok egyedi engedélyekkel. A felhasználó csak a saját objektumon rendelkezik ezekkel az engedélyekkel.
+
+#### <a name="owned-application-registrations"></a>Saját tulajdonú alkalmazásregisztráció
+A következő műveleteket végezhetnek a saját tulajdonú alkalmazások regisztrációját.
+
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| microsoft.directory/applications/audience/update | Frissítés az Azure Active Directoryban applications.audience tulajdonság. |
+| microsoft.directory/applications/authentication/update | Frissítés az Azure Active Directoryban applications.authentication tulajdonság. |
+| microsoft.directory/applications/basic/update | Alkalmazások az Azure Active Directory alapvető tulajdonságainak frissítése. |
+| microsoft.directory/applications/credentials/update | Frissítés az Azure Active Directoryban applications.credentials tulajdonság. |
+| microsoft.directory/applications/delete | Törölje az alkalmazást az Azure Active Directoryban. |
+| microsoft.directory/applications/owners/update | Az applications.owners tulajdonság az Azure Active Directory frissítéséhez. |
+| microsoft.directory/applications/permissions/update | Frissítés az Azure Active Directoryban applications.permissions tulajdonság. |
+| microsoft.directory/applications/policies/update | Frissítés az Azure Active Directoryban applications.policies tulajdonság. |
+| microsoft.directory/applications/restore | Állítsa vissza az alkalmazások az Azure Active Directoryban. |
+
+#### <a name="owned-enterprise-applications"></a>Vállalati tulajdonban lévő alkalmazások
+A következő műveleteket végezhetnek a vállalati tulajdonban lévő alkalmazásokhoz. Vállalati alkalmazás, szolgáltatásnév, egy vagy több alkalmazás-házirendek és néha egy alkalmazásobjektumot ugyanabban a bérlőben, mint az egyszerű szolgáltatás épül fel.
+
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| microsoft.directory/auditLogs/allProperties/read | Az Azure Active Directoryban Adatmodelltáblához (beleértve a rendszerjogosultságú tulajdonságai) az összes tulajdonság olvasása. |
+| microsoft.directory/policies/basic/update | Házirendek az Azure Active Directory alapvető tulajdonságainak frissítése. |
+| microsoft.directory/policies/delete | Törölje a szabályzatok az Azure Active Directoryban. |
+| microsoft.directory/policies/owners/update | Frissítés az Azure Active Directoryban policies.owners tulajdonság. |
+| microsoft.directory/servicePrincipals/appRoleAssignedTo/update | Frissítse a servicePrincipals.appRoleAssignedTo tulajdonság az Azure Active Directoryban. |
+| microsoft.directory/servicePrincipals/appRoleAssignments/update | Frissítse a users.appRoleAssignments tulajdonság az Azure Active Directoryban. |
+| microsoft.directory/servicePrincipals/audience/update | Frissítés az Azure Active Directoryban servicePrincipals.audience tulajdonság. |
+| microsoft.directory/servicePrincipals/authentication/update | Frissítés az Azure Active Directoryban servicePrincipals.authentication tulajdonság. |
+| microsoft.directory/servicePrincipals/basic/update | Az Azure Active Directoryban szolgáltatásnevek alapvető tulajdonságainak frissítése. |
+| microsoft.directory/servicePrincipals/credentials/update | Frissítés az Azure Active Directoryban servicePrincipals.credentials tulajdonság. |
+| microsoft.directory/servicePrincipals/delete | Szolgáltatásnevek törlése az Azure Active Directoryban. |
+| microsoft.directory/servicePrincipals/owners/update | Frissítse a servicePrincipals.owners tulajdonság az Azure Active Directoryban. |
+| microsoft.directory/servicePrincipals/permissions/update | Frissítés az Azure Active Directoryban servicePrincipals.permissions tulajdonság. |
+| microsoft.directory/servicePrincipals/policies/update | Frissítés az Azure Active Directoryban servicePrincipals.policies tulajdonság. |
+| microsoft.directory/signInReports/allProperties/read | Az Azure Active Directoryban signInReports (beleértve a rendszerjogosultságú tulajdonságai) az összes tulajdonság olvasása. |
+
+#### <a name="owned-devices"></a>Saját tulajdonú eszközökre
+A következő műveleteket végezhetnek saját tulajdonú eszközökre.
+
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| microsoft.directory/devices/bitLockerRecoveryKeys/read | Devices.bitLockerRecoveryKeys tulajdonság olvasása az Azure Active Directoryban. |
+| Microsoft.Directory/Devices/disable | Letilthatja az eszközöket az Azure Active Directoryban. |
+
+#### <a name="owned-groups"></a>Saját tulajdonú csoportok
+Felhasználói tulajdonban lévő csoportok a következő műveleteket tudják végrehajtani.
+
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| microsoft.directory/groups/appRoleAssignments/update | Frissítés az Azure Active Directoryban groups.appRoleAssignments tulajdonság. |
+| microsoft.directory/groups/basic/update | Az Azure Active Directory alapvető tulajdonságainak frissítése. |
+| microsoft.directory/groups/delete | Az Azure Active Directoryban csoportok törlése. |
+| microsoft.directory/groups/dynamicMembershipRule/update | Frissítés az Azure Active Directoryban groups.dynamicMembershipRule tulajdonság. |
+| microsoft.directory/groups/members/update | Frissítés az Azure Active Directoryban groups.members tulajdonság. |
+| microsoft.directory/groups/owners/update | Frissítse a groups.owners tulajdonság frissítése az Azure Active Directoryban. |
+| microsoft.directory/groups/restore | Csoportok visszaállítása az Azure Active Directoryban. |
+| microsoft.directory/groups/settings/update | Frissítés az Azure Active Directoryban groups.settings tulajdonság. |
 
 ## <a name="next-steps"></a>További lépések
 

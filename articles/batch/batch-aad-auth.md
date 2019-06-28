@@ -15,16 +15,16 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/18/2018
 ms.author: lahugh
-ms.openlocfilehash: 0ca22cfe99e77cd2ed3c5a966fb2412444103d71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5cda3f99a263e8eef13ee2e8d8e6453eda0f4cb6
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64922444"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341177"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>A Batch szolgáltatási megoldások és az Active Directory hitelesítést
 
-Az Azure Batch támogatja a hitelesítés a [Azure Active Directory] [ aad_about] (Azure AD). Az Azure AD egy, a Microsoft több-bérlős felhőalapú címtár- és identitáskezelési szolgáltatása. Azure magát az Azure AD, az ügyfelek, a szolgáltatás-rendszergazdák és a szervezeti felhasználók hitelesítéséhez.
+Az Azure Batch támogatja a hitelesítés a [Azure Active Directory][aad_about] (Azure AD). Az Azure AD egy, a Microsoft több-bérlős felhőalapú címtár- és identitáskezelési szolgáltatása. Azure magát az Azure AD, az ügyfelek, a szolgáltatás-rendszergazdák és a szervezeti felhasználók hitelesítéséhez.
 
 Az Azure AD-hitelesítés az Azure Batch használatakor hitelesítheti a két módszer egyikével:
 
@@ -64,7 +64,7 @@ Használja a **Azure Batch-erőforrás végpontjának** , a Batch szolgáltatás
 
 ## <a name="register-your-application-with-a-tenant"></a>Az alkalmazás regisztrálása a bérlőhöz
 
-Az első lépés az Azure AD-vel történő hitelesítéséhez az Azure AD-bérlő regisztrálja az alkalmazást. Az alkalmazás regisztrálása lehetővé teszi, hogy, hogy az Azure meghívható [Active Directory Authentication Library] [ aad_adal] (ADAL) a kódból. Az ADAL API-alkalmazását az Azure ad-ben való hitelesítéshez használt biztosít. Az alkalmazás regisztrálása kötelező e tervezi használni az integrált hitelesítés és a egy egyszerű szolgáltatást.
+Az első lépés az Azure AD-vel történő hitelesítéséhez az Azure AD-bérlő regisztrálja az alkalmazást. Az alkalmazás regisztrálása lehetővé teszi, hogy, hogy az Azure meghívható [Active Directory Authentication Library][aad_adal] (ADAL) a kódból. Az ADAL API-alkalmazását az Azure ad-ben való hitelesítéshez használt biztosít. Az alkalmazás regisztrálása kötelező e tervezi használni az integrált hitelesítés és a egy egyszerű szolgáltatást.
 
 Ha regisztrálja az alkalmazást, adja meg információkat az alkalmazásról, az Azure ad-hez. Az Azure AD majd biztosít egy Alkalmazásazonosítót (más néven egy *ügyfél-azonosító*), hogy használhatja-e az alkalmazás társítása az Azure ad-vel futásidőben. Az Alkalmazásazonosítót kapcsolatos további információkért lásd: [alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directoryban](../active-directory/develop/app-objects-and-service-principals.md).
 
@@ -324,31 +324,31 @@ from azure.common.credentials import ServicePrincipalCredentials
 Egyszerű szolgáltatás használata esetén meg kell adnia a bérlő azonosítója. A Bérlőazonosító lekéréséhez kövesse az ismertetett lépéseket [a Bérlőazonosító beszerzése az Azure Active Directory](#get-the-tenant-id-for-your-active-directory):
 
 ```python
-TENANT_ID = "<tenant-id>";
+TENANT_ID = "<tenant-id>"
 ```
 
 A Batch szolgáltatás-erőforrás végpontjának hivatkozni:  
 
 ```python
-RESOURCE = "https://batch.core.windows.net/";
+RESOURCE = "https://batch.core.windows.net/"
 ```
 
 A Batch-fiók hivatkozni:
 
 ```python
-BATCH_ACCOUNT_URL = "https://myaccount.mylocation.batch.azure.com";
+BATCH_ACCOUNT_URL = "https://myaccount.mylocation.batch.azure.com"
 ```
 
 Adja meg az Alkalmazásazonosítót (ügyfél-azonosító) az alkalmazáshoz. Az Alkalmazásazonosító az alkalmazás regisztrációját az Azure Portalon érhető el:
 
 ```python
-CLIENT_ID = "<application-id>";
+CLIENT_ID = "<application-id>"
 ```
 
 Adja meg a titkos kulcsot az Azure Portalról másolt:
 
 ```python
-SECRET = "<secret-key>";
+SECRET = "<secret-key>"
 ```
 
 Hozzon létre egy **ServicePrincipalCredentials** objektum:

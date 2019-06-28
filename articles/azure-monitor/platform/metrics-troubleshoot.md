@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: cff1bbefc3c54f7f9c02c646bd9eef528fe28c73
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73ef5cc00b5154dbdbc92911d17740c7d13038ec
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939573"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341980"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Mérőszámdiagramok hibaelhárítása
 
@@ -73,7 +73,7 @@ Gyűjteménye **vendég operációs rendszer** metrikák az Azure Diagnostics b�
 
 ## <a name="error-retrieving-data-message-on-dashboard"></a>"Adatok lekérése" hibaüzenet az irányítópulton
 
-Ez a probléma akkor közös, ha az irányítópulton, amely később elavult, és az Azure-ból eltávolított metrikával lett létrehozva. Ellenőrizze, hogy az eset, nyissa meg a **metrikák** az erőforrást, és ellenőrizze a rendelkezésre álló metrikák, a metrika hatókörbe lapján. Ha a mérték nem látható, a metrika az Azure-ból el lett távolítva. Általában a metrika elavult, amikor nincs jobban új metrikát, amely a resource Health egy hasonló perspektíva biztosít.
+Ez a probléma akkor fordulhat elő, az irányítópulton, amely később elavult, és az Azure-ból eltávolított metrikával létrehozásakor. Ellenőrizze, hogy az eset, nyissa meg a **metrikák** az erőforrást, és ellenőrizze a rendelkezésre álló metrikák, a metrika hatókörbe lapján. Ha a mérték nem látható, a metrika az Azure-ból el lett távolítva. Általában a metrika elavult, amikor nincs jobban új metrikát, amely a resource Health egy hasonló perspektíva biztosít.
 
 **Megoldás:** Frissítse a hibás csempe kiválasztásával a egy másik metrikát a diagram irányítópultra. Is [tekintse át a listában az elérhető mérőszámok az Azure-szolgáltatásokhoz](metrics-supported.md).
 

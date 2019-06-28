@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 06/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8b7e6d234984e84f5b238d657281dd8b1b9ec423
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4f1bc1415fbb875120d7b64128cae69e1e3f442c
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056887"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67339843"
 ---
 # <a name="tag-support-for-azure-resources"></a>Az Azure-erőforrások címkék támogatása
 Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkék](resource-group-using-tags.md). A címkével ellátott oszlop **támogatja a címkék** azt jelzi, hogy az erőforrástípust a címkével ellátott tulajdonság. A címkével ellátott oszlop **szóló jelentés a címke** azt jelzi, hogy az erőforrás típusát továbbítja a címke a jelentés.
@@ -864,8 +864,8 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | dnszones/TXT | Nem |  Nem |
 | expressRouteCircuits | Igen  | Nem |
 | expressRouteServiceProviders | Nem |  Nem |
-| frontdoors | Igen | Igen |
-| frontdoorWebApplicationFirewallPolicies | Igen | Igen |
+| frontdoors | Igen, de korlátozott (lásd: [vegye figyelembe az alábbi](#frontdoor)) | Igen |
+| frontdoorWebApplicationFirewallPolicies | Igen, de korlátozott (lásd: [vegye figyelembe az alábbi](#frontdoor)) | Igen |
 | getDnsResourceReference | Nem |  Nem |
 | interfaceEndpoints | Igen | Igen |
 | internalNotify | Nem |  Nem |
@@ -898,6 +898,10 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | vpnGateways | Igen | Nem |
 | vpnSites | Igen | Igen |
 | webApplicationFirewallPolicies | Igen | Igen |
+
+<a id="frontdoor" />
+
+Címkékkel láthatja az erőforrás létrehozásakor Azure bejárati ajtajának Service-ben, de frissítés és a címkék hozzáadása jelenleg nem támogatott.
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | Erőforrás típusa | Támogatja a címkék | A jelentés megjelölése |

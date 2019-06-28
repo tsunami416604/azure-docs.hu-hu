@@ -1,5 +1,5 @@
 ---
-title: Biztonságos hozzáférés az Azure Logic Apps |} A Microsoft Docs
+title: Biztonságos hozzáférés az Azure Logic Apps
 description: Biztonság hozzáadása az Azure Logic Apps, beleértve az eseményindítók, bemenetek és kimenetek, paraméterek és egyéb szolgáltatások
 services: logic-apps
 ms.service: logic-apps
@@ -7,15 +7,14 @@ ms.suite: integration
 author: kevinlam1
 ms.author: klam
 ms.reviewer: estfan, LADocs
-ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
 ms.date: 02/05/2019
-ms.openlocfilehash: 31b18e2dfbad1f572b5c9b0ae59f5e076db7cde2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 65369e5747f17c0e420d5775f1c5704cac9ca21b
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60995684"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341091"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>Biztonságos hozzáférés az Azure Logic Appsben
 
@@ -156,9 +155,9 @@ További engedélyezési protokollok hozzáadása a logikai alkalmazást, érdem
 
 Ahhoz, hogy csak adott felhasználók vagy csoportok, a logikai alkalmazás a műveletek futtatásához, korlátozhatja a hozzáférést a feladatokat, köztük a kezelése, megjelenítése és szerkesztése. A Logic Apps támogatja [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/role-assignments-portal.md), amelyet testre vagy hozzárendelése beépített szerepkörök tagjai az előfizetésében, például:
 
-* [A logikai alkalmazás Közreműködője](../role-based-access-control/built-in-roles.md#logic-app-contributor): Felhasználók megtekintése, szerkesztése és a logikai alkalmazás frissítése. 
+* [A logikai alkalmazás Közreműködője](../role-based-access-control/built-in-roles.md#logic-app-contributor): Lehetővé teszi logikai alkalmazások kezelése, de a hozzáférés nem módosítja őket.
 
-* [Logikai alkalmazás operátora](../role-based-access-control/built-in-roles.md#logic-app-operator): Felhasználók a logikai alkalmazás és a futtatási előzmények megtekintése és engedélyezheti vagy letilthatja a logikai alkalmazást. Ez a szerepkör szerkesztéséhez vagy a logikai alkalmazás frissítése.
+* [Logikai alkalmazás operátora](../role-based-access-control/built-in-roles.md#logic-app-operator): Lehetővé teszi, hogy elolvasta, engedélyezését és letiltását a logic apps esetében, de nem szerkeszthetők vagy frissíteni őket.
 
 Megakadályozásához módosítása vagy törlése a logikai alkalmazás, használhatja a [Azure erőforrás-zárolás](../azure-resource-manager/resource-group-lock-resources.md). Ez a képesség segít mindebben másokat megakadályozzon módosítása vagy törlése az éles erőforrásait.
 
