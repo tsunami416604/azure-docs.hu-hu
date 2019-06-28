@@ -91,27 +91,27 @@ Az automatikus skálázási beállítás séma mutatja be, a következő automat
 
 | `Section` | Elem neve | Leírás |
 | --- | --- | --- |
-| Beállítás | azonosító | Az automatikus skálázási beállítás erőforrás-azonosítója. Automatikus skálázási beállítások egy Azure Resource Manager-erőforrást is. |
+| Beállítás | id | Az automatikus skálázási beállítás erőforrás-azonosítója. Automatikus skálázási beállítások egy Azure Resource Manager-erőforrást is. |
 | Beállítás | name | Az automatikus skálázási beállítás neve. |
 | Beállítás | location | Az automatikus skálázási beállítás helyét. Ezen a helyen az erőforrás méretezése folyamatban helye eltérő lehet. |
 | properties | targetResourceUri | Az erőforrás-azonosító az erőforrás méretezése folyamatban van. Egy automatikus skálázási beállítás-erőforrásonként legfeljebb. |
-| properties | Profilok | Az automatikus skálázási beállítás egy vagy több profilt tevődik össze. Minden alkalommal, amikor az automatikus skálázási motor fut, végrehajtása egy profilt. |
-| Profil | name | A profil neve. Kiválaszthatja, hogy bármely név, amely segítséget nyújt a profil azonosításához. |
-| Profil | Capacity.maximum | Az engedélyezett maximális kapacitását. Biztosítja, hogy automatikus skálázási profil az végrehajtása közben nem méretezhetők az erőforrás felett ezt a számot. |
-| Profil | Capacity.minimum | Az engedélyezett minimális kapacitást. Ez biztosítja, hogy az automatikus skálázási profil az végrehajtása közben nem méretezhetők az erőforrás e szám alá. |
-| Profil | Capacity.default | Ha az erőforrás-metrika (az ebben az esetben a "vmss1" CPU) olvasása során, és a jelenlegi kapacitás nem éri el az alapértelmezett, automatikus méretezés elvégzi a horizontális felskálázást, az alapértelmezett. Ez az erőforrás rendelkezésre állásának biztosításához. Ha a jelenlegi kapacitás még magasabb, mint az alapértelmezett kapacitásértéket, automatikus méretezés nem méretezhetők a. |
-| Profil | szabályok | Automatikus skálázási automatikusan méretezi magát, a maximális és minimális kapacitás, a szabályok segítségével a profil között. Egy profil több szabály is lehet. Általában két szabályok vonatkoznak: egyet, hogy mikor horizontális felskálázás, a másik pedig, hogy mikor alatt. |
-| A szabály | metricTrigger | A metrikai feltétel teljesülésekor a szabály határozza meg. |
+| properties | profiles | Az automatikus skálázási beállítás egy vagy több profilt tevődik össze. Minden alkalommal, amikor az automatikus skálázási motor fut, végrehajtása egy profilt. |
+| profile | name | A profil neve. Kiválaszthatja, hogy bármely név, amely segítséget nyújt a profil azonosításához. |
+| profile | capacity.maximum | Az engedélyezett maximális kapacitását. Biztosítja, hogy automatikus skálázási profil az végrehajtása közben nem méretezhetők az erőforrás felett ezt a számot. |
+| profile | capacity.minimum | Az engedélyezett minimális kapacitást. Ez biztosítja, hogy az automatikus skálázási profil az végrehajtása közben nem méretezhetők az erőforrás e szám alá. |
+| profile | capacity.default | Ha az erőforrás-metrika (az ebben az esetben a "vmss1" CPU) olvasása során, és a jelenlegi kapacitás nem éri el az alapértelmezett, automatikus méretezés elvégzi a horizontális felskálázást, az alapértelmezett. Ez az erőforrás rendelkezésre állásának biztosításához. Ha a jelenlegi kapacitás még magasabb, mint az alapértelmezett kapacitásértéket, automatikus méretezés nem méretezhetők a. |
+| profile | rules | Automatikus skálázási automatikusan méretezi magát, a maximális és minimális kapacitás, a szabályok segítségével a profil között. Egy profil több szabály is lehet. Általában két szabályok vonatkoznak: egyet, hogy mikor horizontális felskálázás, a másik pedig, hogy mikor alatt. |
+| rule | metricTrigger | A metrikai feltétel teljesülésekor a szabály határozza meg. |
 | metricTrigger | MetricName | A metrika neve. |
 | metricTrigger |  metricResourceUri | Az erőforrás, amely bocsát ki a metrika erőforrás-Azonosítóját. A legtöbb esetben ez megegyezik az erőforrás méretezése folyamatban van. Bizonyos esetekben ez eltérő lehet. Például egy virtuálisgép-méretezési egy storage-üzenetsorban található üzenetek száma szerint méretezheti. |
 | metricTrigger | timeGrain | A metrika-mintavételezés időtartama. Ha például **TimeGrain = "PT1M"** azt jelenti, hogy a metrikák legyenek összesítve percenként, a statisztika elemben megadott összesítő metódus használatával. |
-| metricTrigger | statisztika | A timeGrain időszakban használt összesítési módszer. Ha például **statisztika = "Average"** és **timeGrain = "PT1M"** azt jelenti, hogy a metrikák legyenek összesítve 1 percenként átlaga. Ez a tulajdonság szabja meg, hogyan mintavételezés a metrikát. |
+| metricTrigger | statistic | A timeGrain időszakban használt összesítési módszer. Ha például **statisztika = "Average"** és **timeGrain = "PT1M"** azt jelenti, hogy a metrikák legyenek összesítve 1 percenként átlaga. Ez a tulajdonság szabja meg, hogyan mintavételezés a metrikát. |
 | metricTrigger | timeWindow | A metrikák visszakeresnünk időtartama. Ha például **timeWindow = "PT10M"** azt jelenti, hogy minden alkalommal, amikor az automatikus skálázási funkció az lekérdezi metrikák az elmúlt 10 percben. Az időtartomány lehetővé teszi, hogy a metrikák lesz normalizálva, és elkerülhető az átmeneti csúcsterhelésekre való reagálás. |
 | metricTrigger | timeAggregation | Az összesítési módszer összesíthetők a mintavételezett metrikák. Ha például **TimeAggregation = "Average"** kell összesíteni a mintavételezett metrikák átlaga. Az előző esetben a tíz 1 perces mintát venni, és az átlagos őket. |
-| A szabály | scaleAction | A szabály a metricTrigger kezdeményezése esetén végrehajtandó műveletet. |
+| rule | scaleAction | A szabály a metricTrigger kezdeményezése esetén végrehajtandó műveletet. |
 | scaleAction | direction | "Növelni" horizontális felskálázás, vagy "Csökkentéséhez" méret esetén.|
 | scaleAction | value | Mennyi növelése vagy csökkentése érdekében az erőforrás kapacitását. |
-| scaleAction | utáni | Mennyi ideig eltelte után a skálázási művelet újbóli skálázás előtt. Például ha **utáni = "PT10M"** , automatikus méretezés nem kísérli meg méretezését, ezáltal újra egy másik 10 perc. A utáni, hogy hozzáadását és eltávolítását a példányok után stabilizálódhatnak a metrikák engedélyezése. |
+| scaleAction | cooldown | Mennyi ideig eltelte után a skálázási művelet újbóli skálázás előtt. Például ha **utáni = "PT10M"** , automatikus méretezés nem kísérli meg méretezését, ezáltal újra egy másik 10 perc. A utáni, hogy hozzáadását és eltávolítását a példányok után stabilizálódhatnak a metrikák engedélyezése. |
 
 ## <a name="autoscale-profiles"></a>Automatikus méretezési profilok
 
