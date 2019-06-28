@@ -99,49 +99,49 @@ Az alábbi táblázat a Log Analytics és az Application Insights séma különb
 | Log Analytics-munkaterület tulajdonságai| Application Insights erőforrás-tulajdonságok|
 |------------|------------| 
 | AnonUserId | user_id|
-| Alkalmazásazonosító | appId|
-| Alkalmazásnév | Alkalmazásnév|
+| ApplicationId | appId|
+| ApplicationName | appName|
 | ApplicationTypeVersion | application_Version |
-| AvailabilityCount | az elemek száma |
-| AvailabilityDuration | Időtartam |
+| AvailabilityCount | itemCount |
+| AvailabilityDuration | duration |
 | AvailabilityMessage | message |
 | AvailabilityRunLocation | location |
 | AvailabilityTestId | id |
 | AvailabilityTestName | name |
 | AvailabilityTimestamp | timestamp |
-| Böngésző | client_browser |
-| Város | client_city |
+| Browser | client_browser |
+| City | client_city |
 | ClientIP | client_IP |
 | Computer | cloud_RoleInstance | 
-| Ország | client_CountryOrRegion | 
-| CustomEventCount | az elemek száma | 
+| Country | client_CountryOrRegion | 
+| CustomEventCount | itemCount | 
 | CustomEventDimensions | customDimensions |
 | CustomEventName | name | 
 | DeviceModel | client_Model | 
 | DeviceType | client_Type | 
-| ExceptionCount | az elemek száma | 
+| ExceptionCount | itemCount | 
 | ExceptionHandledAt | handledAt |
 | ExceptionMessage | message | 
 | ExceptionType | type |
-| Műveletazonosító: | operation_id |
+| OperationID | operation_id |
 | OperationName | operation_Name | 
-| Operációs rendszer | client_OS | 
-| PageViewCount | az elemek száma |
-| PageViewDuration | Időtartam | 
+| OS | client_OS | 
+| PageViewCount | itemCount |
+| PageViewDuration | duration | 
 | PageViewName | name | 
 | ParentOperationID | operation_Id | 
-| RequestCount | az elemek száma | 
-| RequestDuration | Időtartam | 
-| Kérelemazonosító: | id | 
+| RequestCount | itemCount | 
+| RequestDuration | duration | 
+| RequestID | id | 
 | RequestName | name | 
-| RequestSuccess | sikeres | 
-| ResponseCode | Eredménykód | 
-| Szerepkör | cloud_RoleName |
+| RequestSuccess | success | 
+| ResponseCode | resultCode | 
+| Role | cloud_RoleName |
 | RoleInstance | cloud_RoleInstance |
-| munkamenet-azonosító | session_Id | 
+| SessionId | session_Id | 
 | SourceSystem | operation_SyntheticSource |
 | TelemetryTYpe | type |
-| URL-cím | _url |
+| URL | _url |
 | UserAccountId | user_AccountId |
 
 ## <a name="next-steps"></a>További lépések
