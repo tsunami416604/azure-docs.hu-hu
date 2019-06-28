@@ -17,12 +17,12 @@ ms.date: 04/12/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd4b6dd31d620603b765fd33494f399f97915af3
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: be8048c05217fbdb2956e2a67be4eb3e17abed10
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784921"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341394"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Gyors útmutató: A Microsoft Graph API meghívása Univerzális Windows-platform- (UWP-) alkalmazásból
 
@@ -45,7 +45,7 @@ Ebben a rövid kód a minta azt mutatja be, hogyan egy univerzális Windows Plat
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Option 2: Regisztráljon, és manuális konfigurálása az alkalmazás és a kód a minta
 > [!div renderon="docs"]
-> #### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
+> #### <a name="step-1-register-your-application"></a>1\. lépés: Alkalmazás regisztrálása
 > Az alkalmazás regisztrálásához és az alkalmazás regisztrációs információinak a megoldáshoz való hozzáadásához kövesse az alábbi lépéseket:
 > 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
 > 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
@@ -60,8 +60,8 @@ Ebben a rövid kód a minta azt mutatja be, hogyan egy univerzális Windows Plat
 > 1. Alatt a **átirányítási URI-t** szakaszban jelölje be **URI hozzáadása**.  Típus **urn: ietf:wg:oauth:2.0:oob**.
 > 1. Kattintson a **Mentés** gombra.
 
-> [!div renderon="portal" class="sxs-lookup alert alert-info"]
-> #### <a name="step-1-configure-your-application"></a>1. lépés: Az alkalmazás konfigurálása
+> [!div renderon="portal" class="sxs-lookup"]
+> #### <a name="step-1-configure-your-application"></a>1\. lépés: Az alkalmazás konfigurálása
 > Ahhoz, hogy a rövid útmutató kódmintája működjön, hozzá kell adnia egy átirányítási URI-t a következő formában: **urn:ietf:wg:oauth:2.0:oob**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [A módosítás alkalmazása]()
@@ -69,11 +69,11 @@ Ebben a rövid kód a minta azt mutatja be, hogyan egy univerzális Windows Plat
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Már konfigurált](media/quickstart-v2-uwp/green-check.png) Az alkalmazása már konfigurálva van ezekkel az attribútumokkal.
 
-#### <a name="step-2-download-your-visual-studio-project"></a>2. lépés: A Visual Studio-projekt letöltése
+#### <a name="step-2-download-your-visual-studio-project"></a>2\. lépés: A Visual Studio-projekt letöltése
 
  - [A Visual Studio-projekt letöltése](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>3. lépés: A Visual Studio-projekt konfigurálása
+#### <a name="step-3-configure-your-visual-studio-project"></a>3\. lépés: A Visual Studio-projekt konfigurálása
 
 1. Csomagolja ki a zip-fájlt egy helyi mappába a lemez gyökerének közelében (például: **C:\Azure-Samples**).
 1. Nyissa meg a projektet a Visual Studióban. A rendszer kérheti egy UWP-SDK telepítése. Ebben az esetben elfogadja.
@@ -90,7 +90,7 @@ Ebben a rövid kód a minta azt mutatja be, hogyan egy univerzális Windows Plat
 > > [!TIP]
 > > Az érték *Alkalmazásazonosító*, lépjen a a **áttekintése** szakasz a portálon
 
-#### <a name="step-4-run-your-application"></a>4. lépés: Alkalmazás futtatása
+#### <a name="step-4-run-your-application"></a>4\. lépés: Az alkalmazás futtatása
 
 Ha szeretné kipróbálni a rövid útmutató a Windows-gépen:
 
@@ -128,7 +128,7 @@ PublicClientApp = new PublicClientApplicationBuilder.Create(ClientId)
 
 > |Az elemek magyarázata: ||
 > |---------|---------|
-> | `ClientId` | Az Azure Portalon regisztrált alkalmazás **alkalmazásazonosítója (ügyfél-azonosítója)**. Ezt az értéket az alkalmazás **Áttekintés** oldalán találja az Azure Portalon. |
+> | `ClientId` | Az Azure Portalon regisztrált alkalmazás **alkalmazásazonosítója (ügyfél-azonosítója)** . Ezt az értéket az alkalmazás **Áttekintés** oldalán találja az Azure Portalon. |
 
 ### <a name="requesting-tokens"></a>Jogkivonatok lekérése
 

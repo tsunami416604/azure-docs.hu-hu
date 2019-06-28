@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: bcb0c806d916b9dff4461cad829a1d75e8df7cf6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 35193380cc890a93d93c68bf5fc405572b5aa409
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60766267"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67339899"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Tanúsítványok és az App Service-környezet 
 
@@ -85,7 +85,9 @@ A tanúsítvány feltöltése az alkalmazáshoz, az ASE környezetben:
 
     84EC242A4EC7957817B8E48913E50953552DAFA6,6A5C65DC9247F762FE17BF8D4906E04FE6B31819
 
-A tanúsítvány azonos app service-csomag az alkalmazás, amelynek a beállítást, az összes alkalmazás számára elérhető lesz. Ha kell, hogy egy másik App Service-csomag alkalmazásokhoz érhető el, szüksége lesz a ismételje meg az Alkalmazásbeállítás művelet az alkalmazás az App Service-csomag. Annak ellenőrzéséhez, hogy van-e beállítva a tanúsítványt, nyissa meg a Kudu konzol, és adja ki a parancsot a dir parancs cert: \localmachine\root hibakeresési PowerShell-konzolján. 
+A tanúsítvány azonos app service-csomag az alkalmazás, amelynek a beállítást, az összes alkalmazás számára elérhető lesz. Ha kell, hogy egy másik App Service-csomag alkalmazásokhoz érhető el, szüksége lesz a ismételje meg az Alkalmazásbeállítás művelet az alkalmazás az App Service-csomag. Ellenőrizze, hogy a tanúsítvány van beállítva, nyissa meg a Kudu konzol és az alábbi parancsot a PowerShell hibakeresési konzolon:
+
+    dir cert:\localmachine\root
 
 Tesztek elvégzéséhez egy önaláírt tanúsítvány létrehozása és hozzon létre egy *.cer* fájl az alábbi PowerShell-lel: 
 

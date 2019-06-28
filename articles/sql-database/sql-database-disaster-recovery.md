@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 1e1bc92c684bf6ddbb7dc4ff0f882ad61ddeb27e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/21/2019
+ms.openlocfilehash: 00fa1128df03befda8b15be2d7f2c527f65f9973
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61075812"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341079"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Visszaállítása egy Azure SQL Database vagy feladatátvétel a másodlagos kiszolgálóra
 
@@ -34,7 +34,7 @@ Folyamatos üzletmenet – forgatókönyvek és a szolgáltatások ezeket a forg
 > Zónaredundáns prémium és az üzletileg kritikus adatbázisokat vagy készleteket használ, ha a helyreállítási folyamat automatikus, és a többi anyag nem vonatkozik.
 
 > [!NOTE]
-> Elsődleges és másodlagos adatbázisok ugyanazon a szolgáltatásszinten van szüksége. Is erősen ajánlott, hogy a másodlagos adatbázis jön létre a számítási mérete (dtu-k vagy virtuális magok) megegyezik az elsődleges. További információkért lásd: [verzióra történő frissítéshez vagy az elsődleges adatbázis alacsonyabb szolgáltatásszintre](sql-database-active-geo-replication.md#upgrading-or-downgrading-a-primary-database).
+> Elsődleges és másodlagos adatbázisok ugyanazon a szolgáltatásszinten van szüksége. Is erősen ajánlott, hogy a másodlagos adatbázis jön létre a számítási mérete (dtu-k vagy virtuális magok) megegyezik az elsődleges. További információkért lásd: [verzióra történő frissítéshez vagy az elsődleges adatbázis alacsonyabb szolgáltatásszintre](sql-database-active-geo-replication.md#upgrading-or-downgrading-primary-database).
 
 > [!NOTE]
 > Egy vagy több, feladatátvételi csoportok segítségével kezelheti a több adatbázis feladatátvételét.

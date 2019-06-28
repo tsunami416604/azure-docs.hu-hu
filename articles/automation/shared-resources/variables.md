@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0ac34f1d1e7fc2a967c7608f31f3b943f9380d01
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 622b4ab41162a7858097f717a103878f05917cd3
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65786190"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342162"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Az Azure Automation változó adategységek
 
@@ -28,7 +28,7 @@ Változó adategységek olyan értékek, amelyek elérhetők a runbookok és a D
 
 Automation-változók megmaradnak, mivel azok érhetők el még akkor is, ha a runbook vagy DSC-konfiguráció nem sikerül. Ez a viselkedés lehetővé teszi, hogy egy runbookot, amely egy másik alapján, vagy használja a ugyanaz a runbook vagy DSC-konfiguráció fut a következő futtatáskor kell beállítani az értéket.
 
-Egy változó létrehozásakor a megadhatja, hogy tárolja a titkosított. A titkosított változók biztonságos tárolása az Azure Automationben, és annak értéke nem lehet lekérdezni a [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) parancsmagot, amely az Azure PowerShell-modul részeként. Titkosított érték beolvasásának egyetlen módja a rendszer a **Get-AutomationVariable** tevékenység a runbookból vagy DSC-konfigurációból.
+Egy változó létrehozásakor a megadhatja, hogy tárolja a titkosított. A titkosított változók biztonságos tárolása az Azure Automationben, és annak értéke nem lehet lekérdezni a [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) parancsmagot, amely az Azure PowerShell-modul részeként. Titkosított érték beolvasásának egyetlen módja a rendszer a **Get-AutomationVariable** tevékenység a runbookból vagy DSC-konfigurációból. Ha szeretné módosítani egy titkosított változó nem titkosított, akkor is törölje, majd újra hozza létre a változót, nem titkosított.
 
 >[!NOTE]
 >Az Azure Automationben biztonságos eszközök tartalmazzák, hitelesítő adatok, tanúsítványok, kapcsolatok és a titkosított változókat. Ezek az eszközök titkosítottak és a létrehozott egyedi kulcs segítségével minden automation-fiókhoz tartozó Azure Automation tárolja. Ezt a kulcsot tárolja a rendszer által felügyelt Key Vault. A kulcs tárolása egy biztonságos objektumot, előtt betöltése a Key Vaultból és majd az eszköz titkosításához használt. Ez a folyamat az Azure Automation felügyeli.
@@ -42,7 +42,7 @@ Egy tömb vagy kivonattábla létrehozásával és mentésével, a változó vá
 Elérhető az Automation változó típusainak listáját a következők:
 
 * String
-* Egész szám
+* Integer
 * DateTime
 * Boolean
 * Null

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/8/2017
 ms.author: aljo
-ms.openlocfilehash: ee19be45915b3ff1253ec721f4334fead19647b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2445b37e8152d8f55dad6eff057d273851dc2209
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723594"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340677"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Az Azure Service Fabric Reliable gyűjtemény objektumszerializáló
 A Reliable Collections replikálni, és ellenőrizze, hogy a gép hibák és áramkimaradások tartós azok az elemek megőrzéséhez.
@@ -55,7 +55,7 @@ A Reliable State Manager a következő típusú beépített szerializáló rende
 
 Egyéni objektumszerializáló gyakran használják, a teljesítmény növelése és a hálózaton és lemezen lévő adatok titkosításához. Egyéb okok mellett egyéni objektumszerializáló általában hatékonyabb, mint az általános szerializáló mivel, nincs szükségük a típus adatainak szerializálásához. 
 
-[IReliableStateManager.TryAddStateSerializer<T> ](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) regisztrálható a megadott típus T. egyéni szerializálót Ez a regisztráció történjen, az annak érdekében, hogy helyreállítás megkezdése előtt az összes megbízható gyűjtemények férhetnek hozzá a megfelelő szerializáló a megőrzött adatok olvasása a StatefulServiceBase kialakításában.
+[IReliableStateManager.TryAddStateSerializer\<T >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) regisztrálható a megadott típus T. egyéni szerializálót Ez a regisztráció történjen, az annak érdekében, hogy helyreállítás megkezdése előtt az összes megbízható gyűjtemények férhetnek hozzá a megfelelő szerializáló a megőrzött adatok olvasása a StatefulServiceBase kialakításában.
 
 ```csharp
 public StatefulBackendService(StatefulServiceContext context)
@@ -73,10 +73,10 @@ public StatefulBackendService(StatefulServiceContext context)
 
 ### <a name="how-to-implement-a-custom-serializer"></a>Egy egyéni szerializáló megvalósítása
 
-Egy egyéni szerializáló kell megvalósítani a [IStateSerializer<T> ](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) felületet.
+Egy egyéni szerializáló kell megvalósítani a [IStateSerializer\<T >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) felületet.
 
 > [!NOTE]
-> IStateSerializer<T> túlterhelés írási és olvasási, amely tartalmaz egy további T alapérték nevű. Az API-t a különbözeti szerializálásra. Jelenleg a különbözeti szerializálási funkció nem lesz közzétéve. Ezért ezek két túlterheléssel nem nevezzük mindaddig, amíg a különbözeti szerializálási kitéve, és engedélyezve.
+> IStateSerializer\<T > túlterhelés írási és olvasási, amely tartalmaz egy további T alapérték nevű. Az API-t a különbözeti szerializálásra. Jelenleg a különbözeti szerializálási funkció nem lesz közzétéve. Ezért ezek két túlterheléssel nem nevezzük mindaddig, amíg a különbözeti szerializálási kitéve, és engedélyezve.
 
 Az alábbiakban egy példa négy tulajdonságot tartalmazó OrderKey nevű egyéni típus a
 

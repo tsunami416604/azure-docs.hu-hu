@@ -455,10 +455,10 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | trackType | string | A track típusa (hang / kép). |
-| TrackName | string | A track neve. |
-| Átviteli sebesség | egész szám | A szám sávszélességű. |
+| trackName | string | A track neve. |
+| bitrate | integer | A szám sávszélességű. |
 | timestamp | string | Az adathalmaz időbélyegét eltávolította. |
-| időskálára | string | Az időbélyeg-időskálára. |
+| timescale | string | Az időbélyeg-időskálára. |
 | Eredménykód | string | Az adatok adatköteget csepp OK. **FragmentDrop_OverlapTimestamp** vagy **FragmentDrop_NonIncreasingTimestamp**. |
 
 ### <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
@@ -495,13 +495,13 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | trackType | string | A track típusa (hang / kép). |
-| TrackName | string | A track nevét (vagy a kódoló vagy -esetén RTMP-kiszolgálót állít elő, a megadott *TrackType_Bitrate* formátumban). |
-| Átviteli sebesség | egész szám | A szám sávszélességű. |
+| trackName | string | A track nevét (vagy a kódoló vagy -esetén RTMP-kiszolgálót állít elő, a megadott *TrackType_Bitrate* formátumban). |
+| bitrate | integer | A szám sávszélességű. |
 | ingestUrl | string | Betöltési URL-címe, az élő esemény által biztosított. |
 | EncoderIp | string  | A kódoló IP-cím. |
 | encoderPort | string | A kódoló a stream forrását a port. |
 | timestamp | string | Első időbélyegzője az adathalmaz kapott. |
-| időskálára | string | Amelyben időbélyeg jelölt időskálára. |
+| timescale | string | Amelyben időbélyeg jelölt időskálára. |
 
 ### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
 
@@ -614,11 +614,11 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | trackType | string | A track típusa (hang / kép). |
 | trackName | string | A track nevét (vagy a kódoló vagy -esetén RTMP-kiszolgálót állít elő, a megadott *TrackType_Bitrate* formátumban). |
 | bitrate | integer | A szám sávszélességű. |
-| incomingBitrate | integer | Számított sávszélességű származó kódolóval adattömbök alapján. |
+| IncomingBitrate | integer | Számított sávszélességű származó kódolóval adattömbök alapján. |
 | lastTimestamp | string | Az elmúlt 20 másodperc nyomon kapott legújabb időbélyegző. |
 | timescale | string | Időskálára, amelyben időbélyeggel van megadva. |
-| overlapCount | integer | Adattömbök száma az elmúlt 20 másodperc kellett átfedett időbélyegzőnél. |
-| discontinuityCount | integer | Az elmúlt 20 másodperc megfigyelt folytonosság megszakítását száma. |
+| OverlapCount | integer | Adattömbök száma az elmúlt 20 másodperc kellett átfedett időbélyegzőnél. |
+| DiscontinuityCount | integer | Az elmúlt 20 másodperc megfigyelt folytonosság megszakítását száma. |
 | nonIncreasingCount | integer | A múltban időbélyegzőnél adattömbök száma az elmúlt 20 másodperc alatt érkezett. |
 | unexpectedBitrate | bool | Ha a várt és tényleges bitsebességre való átkódolása eltér az elmúlt 20 másodperc alatt több mint engedélyezett korlátot. IGAZ, ha, és csak akkor, ha, incomingBitrate > = 2 * sávszélességű vagy incomingBitrate < = vagy IncomingBitrate sávszélességű/2 = 0. |
 | state | string | Az élő esemény állapota. |

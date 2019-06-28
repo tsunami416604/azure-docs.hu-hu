@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 03/26/2019
-ms.openlocfilehash: ca53f4bfa80d6fdead24dc7d562c2240bb3fa86d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/18/2019
+ms.openlocfilehash: 826944fd3713f5cc3e99f20cb140055bfdb11a14
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60387451"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341426"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Létrehozásáról és használatáról az aktív georeplikáció
 
@@ -100,9 +100,6 @@ Elérése érdekében a valódi üzleti folytonosság, adatbázis-redundancia ad
 
   Minden másodlagos adatbázis külön-külön részt venni a rugalmas készlet vagy egyáltalán nem tudja bármilyen rugalmas készletben is. A készlet minden egyes másodlagos adatbázis választás külön, és nem függ semmilyen más másodlagos konfigurációjának adatbázis-(akár a elsődleges vagy másodlagos). Minden rugalmas készletet szerepel egy adott régión belül, így az azonos topológia több másodlagos adatbázis soha nem oszthatnak meg a rugalmas készlet.
 
-- **A másodlagos adatbázis konfigurálható számítási mérete**
-
-  Elsődleges és másodlagos adatbázisok ugyanazon a szolgáltatásszinten van szüksége. A másodlagos adatbázis jön létre a számítási mérete (dtu-k vagy virtuális magok) megegyezik az elsődleges is erősen ajánlott. A kisebb számítási méretű másodlagos fennáll a kockázata, egy nagyobb replikációs késés, a másodlagos lehetséges elérhetetlensége van, és ezért fennáll a kockázata, jelentős adatvesztés a feladatátvétel után. A közzétett RPO eredményeként = 5 mp nem garantálható. A többi kockázati, hogy a feladatátvételt követően az alkalmazás teljesítménye csökkenhet az új elsődleges számítási kapacitását hiánya miatt a nagyobb számítási méretre frissítéséig. A frissítés idején az adatbázis méretétől függ. Ezenkívül jelenleg ilyen szükségesek, hogy az elsődleges és másodlagos adatbázisok online és, ezért nem végezhető el, amíg a szolgáltatáskimaradás elhárítása után teljesítményköltségeket csökkenti. Ha úgy dönt, hogy a másodlagos létrehozása a kisebb számítási mérete, a napló i/o százalékos diagramra az Azure portal nyújt egy jó módszer a szükséges ahhoz, hogy a replikáció terhelés fenntartása másodlagos minimális számítási mérete. Például, ha az elsődleges adatbázis P6 (1000 DTU), és i/o-százalék naplót a másodlagos kell lennie legalább 50 %-a P4 (500 DTU). Is lekérhet használatával i/o-naplóadatok [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) vagy [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) adatbázis-nézeteket.  Az SQL-adatbázis számítási méretek további információkért lásd: [Mik az SQL Database szolgáltatási szinteken](sql-database-purchase-models.md).
 
 - **Felhasználó általi feladatátvétel és feladat-visszavétel**
 
@@ -112,7 +109,19 @@ Elérése érdekében a valódi üzleti folytonosság, adatbázis-redundancia ad
 
 Azt javasoljuk, [adatbázisszintű IP-tűzfalszabályainak](sql-database-firewall-configure.md) adatbázisok georeplikált, így ezek a szabályok az összes másodlagos adatbázis legyen azonos IP-tűzfalszabályainak elsődlegesként Database lehet replikálni. Ezzel a módszerrel nem kell az ügyfelek manuális konfigurálása és karbantartása, mind az elsődleges és másodlagos adatbázisok üzemeltetési kiszolgáló tűzfalszabályait. Ehhez hasonlóan használatával [tartalmazott adatbázis felhasználóit](sql-database-manage-logins.md) adatok hozzáférés biztosítja, mind az elsődleges, mind a másodlagos adatbázisok mindig azonos felhasználói hitelesítő adatokat, így a feladatátvétel során a nem a felhasználónevek és jelszavak eltérések miatt szolgáltatások. Igény szerinti hozzáadásával [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), ügyfelek kezelhetik a felhasználói hozzáférést az elsődleges és másodlagos adatbázisok, és szükségtelenné teszik a kezeléséhez hitelesítő adatait érvényesítette adatbázisokban.
 
-## <a name="upgrading-or-downgrading-a-primary-database"></a>A frissítés, vagy egy elsődleges adatbázis alacsonyabb szolgáltatásszintre
+## <a name="configuring-secondary-database"></a>Másodlagos adatbázis konfigurálása
+
+Elsődleges és másodlagos adatbázisok ugyanazon a szolgáltatásszinten van szüksége. A másodlagos adatbázis jön létre a számítási mérete (dtu-k vagy virtuális magok) megegyezik az elsődleges is erősen ajánlott. Ha az elsődleges adatbázis egy nagy írási számítási feladatok tapasztalja, alacsonyabb számítási méretű másodlagos nem lehet tudják azt tartani. Az ismétlés lag okoz, a másodlagos, potenciális elérhetetlensége, és ezért fennáll a kockázata, jelentős adatvesztés a feladatátvétel után. A közzétett RPO eredményeként = 5 mp nem garantálható. Azt is eredményezheti hibák vagy egyéb számítási feladatokat az elsődleges, elakad. 
+
+Az egyéb következményei egy imbalanced másodlagos konfigurációs, hogy a feladatátvételt követően az alkalmazás teljesítmény romlani fog az új elsődleges elegendő számítási kapacitás miatt. A szükséges szintre, és nem lesz lehetséges mindaddig, amíg a szolgáltatáskimaradás elhárítása után teljesítményköltségeket csökkenti egy újabb számítási frissítése szükséges lesz. 
+
+> [!NOTE]
+> Az elsődleges adatbázis frissítésével jelenleg nem lehetséges, ha a másodlagos offline állapotban van. 
+
+
+Ha úgy dönt, hogy a másodlagos létrehozása a kisebb számítási mérete, a napló i/o százalékos diagramra az Azure portal nyújt egy jó módszer a szükséges ahhoz, hogy a replikáció terhelés fenntartása másodlagos minimális számítási mérete. Például, ha az elsődleges adatbázis P6 (1000 DTU), és i/o-százalék naplót a másodlagos kell lennie legalább 50 %-a P4 (500 DTU). Is lekérhet használatával i/o-naplóadatok [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) vagy [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) adatbázis-nézeteket.  Az SQL-adatbázis számítási méretek további információkért lásd: [Mik az SQL Database szolgáltatási szinteken](sql-database-purchase-models.md).
+
+## <a name="upgrading-or-downgrading-primary-database"></a>A frissítés, vagy alacsonyabb verziójúra változtatása az elsődleges adatbázis
 
 Frissítés vagy Visszaléptetés a különböző számítási méret (belül ugyanazon a szolgáltatásszinten, nem az általános célú és a kritikus fontosságú üzleti között) az elsődleges adatbázis bármely másodlagos adatbázisok leválasztása nélkül is. Amikor frissít, javasoljuk, hogy először frissítse a másodlagos adatbázist, és utána frissítse az elsődleges. Ha alacsonyabb szolgáltatásszintre, fordított sorrendben: először alacsonyabbra az elsődleges, majd a gyűjteményt majd a másodlagos. Frissítésekor vagy eltérő szolgáltatási réteg az adatbázisról, a javaslat lép érvénybe.
 
@@ -134,7 +143,7 @@ A nagy kiterjedésű hálózaton magas késést, mert a folyamatos másolás has
 
 ## <a name="monitoring-geo-replication-lag"></a>Georeplikáció lag figyelése
 
-RPO megállapodást lag monitorozásához használja *replication_lag_sec* oszlopa [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) az elsődleges adatbázison. Késés másodpercben között a tranzakciókat az elsődleges véglegesítve és rögzítve a másodlagos jeleníti meg. Például a lag értéke 1 másodperc, ha azt jelenti, hogy ha az elsődleges kihatással van a kimaradások jelen pillanatban és feladatátvételi intiated, 1 másodperc, a legutóbbi transtions nem lesznek mentve. 
+RPO megállapodást lag monitorozásához használja *replication_lag_sec* oszlopa [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) az elsődleges adatbázison. Késés másodpercben között a tranzakciókat az elsődleges véglegesítve és rögzítve a másodlagos jeleníti meg. Például a lag értéke 1 másodperc, ha az azt jelenti, ha az elsődleges kihatással van a kimaradások jelen pillanatban és a feladatátvétel indításáig, 1 másodperc, a legutóbbi átmenetek nem lesznek mentve. 
 
 Alkalmazása megtörtént-e a másodlagos, azaz elérhető olvasni a másodlagos módosításokat az elsődleges adatbázison megállapodást lag mérésére összehasonlítása *last_commit* ugyanazt az értéket az elsődleges és a másodlagos adatbázis idő az adatbázis.
 

@@ -3,19 +3,19 @@ title: 'Gyors útmutató: Kétnyelvű szótár, Python – Translator Text API s
 titleSuffix: Azure Cognitive Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan kereshet alternatív fordításokat és használati példákat egy adott szöveghez a Python és a Translator Text REST API használatával.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 0a204238e86e23a10d698b1b8b0a465c6cbb75da
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.author: swmachan
+ms.openlocfilehash: d1d2dcfda401325c9faa1577e08292d7959369f6
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340974"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357916"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-python"></a>Gyors útmutató: Szavak keresése a kétnyelvű szótárban Python használatával
 

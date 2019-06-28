@@ -15,12 +15,12 @@ ms.date: 05/16/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 0789ab981590ac1b7531c1f05d85d7ada3a9f56b
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 5a63053cc7fa1c1c86669ce2cea56b68f1a7b4b6
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295266"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341505"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Az Azure-erőforrások beépített szerepkörök
 
@@ -98,8 +98,8 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 | [Lab Creator](#lab-creator) | Lehetővé teszi a létrehozását, kezelését, és törölje a felügyelt tesztkörnyezetek az Azure Lab-fiókokban. |
 | [Log Analytics-közreműködő](#log-analytics-contributor) | Log Analytics-közreműködő az összes monitorozási adat olvashatja és szerkesztheti a figyelési beállításokat. Figyelési beállítások szerkesztése magában foglalja a virtuális gépek; a Virtuálisgép-bővítmény hozzáadása tudni naplógyűjtemény konfigurálása céljából az Azure Storage; tárfiók kulcsainak beolvasását létrehozásáról és konfigurálásáról az Automation-fiókok; megoldások hozzáadását; és az Azure diagnostics konfigurálása az összes Azure-erőforrást. |
 | [Log Analytics olvasó](#log-analytics-reader) | Log Analytics olvasó megtekintheti és keresheti az összes figyelési adatot, valamint megtekintheti a figyelési beállításokat, beleértve az Azure diagnostics konfigurációjának megtekintését az összes Azure-erőforrások. |
-| [A logikai alkalmazás Közreműködője](#logic-app-contributor) | Lehetővé teszi, hogy a logikai alkalmazás kezelését, ezekhez nem biztosít hozzáférést. |
-| [Logikai alkalmazás operátora](#logic-app-operator) | Lehetővé teszi, hogy olvasását, engedélyezését és a logikai alkalmazás letiltása. |
+| [A logikai alkalmazás Közreműködője](#logic-app-contributor) | Lehetővé teszi logikai alkalmazások kezelése, de nem módosíthatja a hozzáférési hozzájuk. |
+| [Logikai alkalmazás operátora](#logic-app-operator) | Lehetővé teszi az olvasási, engedélyezéséhez és a tiltsa le a logic apps esetében, de nem szerkesztheti vagy frissítheti őket. |
 | [Felügyelt alkalmazás operátori szerepkör](#managed-application-operator-role) | Olvassa el, és műveleteket hajthat végre felügyelt alkalmazásokra vonatkozó erőforrásokhoz |
 | [Felügyelt alkalmazások Adatolvasó](#managed-applications-reader) | Olvassa el a felügyelt alkalmazás és igény szerinti hozzáférés kérése az erőforrások teszi lehetővé. |
 | [Managed Identity Contributor](#managed-identity-contributor) | Create, Read, Update, and Delete User Assigned Identity |
@@ -1620,7 +1620,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi, hogy a logikai alkalmazás kezelését, ezekhez nem biztosít hozzáférést. |
+> | **Leírás** | Lehetővé teszi logikai alkalmazások kezelése, de nem módosíthatja a hozzáférési hozzájuk. |
 > | **Azonosító** | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
@@ -1654,7 +1654,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi, hogy olvasását, engedélyezését és a logikai alkalmazás letiltása. |
+> | **Leírás** | Lehetővé teszi az olvasási, engedélyezéséhez és a tiltsa le a logic apps esetében, de nem szerkesztheti vagy frissítheti őket. |
 > | **Azonosító** | 515c2055-d9d4-4321-b1b9-bd0c9a0f79fe |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |

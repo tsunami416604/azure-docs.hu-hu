@@ -2,29 +2,23 @@
 title: Eszközkezelés az Azure portal használatával |} A Microsoft Docs
 description: Ismerje meg, hogyan használja az Azure portal-eszközök kezeléséhez.
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.subservice: devices
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48f162e5e6eb29e4a658000826ccf25389086342
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a4a0037d46db67460d507c6e92ab550f7d9c2fbe
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730439"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341418"
 ---
-# <a name="manage-device-identity-using-the-azure-portal"></a>Az Azure portal használatával eszközt identitás kezelése
+# <a name="manage-device-identities-using-the-azure-portal"></a>Az Azure portal használatával eszközidentitások kezelése
 
 Az eszköz identity management az Azure Active Directoryban (Azure AD) biztosíthatja, hogy a felhasználók az erőforrásokhoz hozzáférő eszközei megfeleljenek a biztonsági és megfelelőségi szabványoknak.
 
@@ -65,19 +59,19 @@ Az eszköz beállításai lapon konfigurálását teszi lehetővé:
 
 - **Felhasználók eszközöket csatlakoztathatnak az Azure AD** – Ez a beállítás lehetővé teszi a felhasználók, akik regisztrálhatják eszközeiket, [Azure AD join eszközök](overview.md#azure-ad-joined-devices). Az alapértelmezett érték **összes**.
 
->[!NOTE]
+> [!NOTE]
 > **Felhasználók eszközöket csatlakoztathatnak az Azure AD** beállítás csak akkor érvényes, az Azure AD join a Windows 10-es.
 
 - **További helyi rendszergazdák az Azure AD-hez csatlakoztatott eszközök** – kiválaszthatja, hogy az adott eszközön helyi rendszergazdai jogosultságokkal rendelkező felhasználók. Az itt hozzáadott felhasználók hozzáadódnak a *Device Administrators* az Azure AD-szerepkörhöz. Az Azure AD globális rendszergazdák és eszköztulajdonosok alapértelmezés szerint helyi rendszergazdai jogokat kapnak. Ez a beállítás akkor például az Azure AD prémium vagy nagyvállalati mobilitási csomag (EMS) termékeken keresztül elérhető premium edition képességet.
-- **A felhasználók regisztrálhatják eszközeiket az Azure ad-vel** – Ez a beállítás a Windows 10-es személyes, iOS, Android és MacOS rendszerű eszközök kell konfigurálnia kell [regisztrálva](overview.md#azure-ad-registered-devices) az Azure AD. Ha **None**, eszközök regisztrálása az Azure ad-vel nem engedélyezettek. Az Office 365-höz a Microsoft Intune- vagy mobileszköz-felügyeleti (MDM) beléptetési regisztráció szükséges. Ha ezen szolgáltatások bármelyikét konfigurálta **összes** van kiválasztva, és **NONE** nem érhető el.
-- **Eszközök csatlakoztatása a többtényezős hitelesítés megkövetelése** -kiválaszthatja a felhasználóknak kell-e egy második hitelesítési tényezőt ahhoz, hogy [illesztési](overview.md#azure-ad-joined-devices) az eszközt az Azure AD. Az alapértelmezett érték **nem**. Azt javasoljuk, hogy a multi-factor authentication megkövetelése az eszköz regisztrálásához ajánlatos. Mielőtt engedélyezné ezt a szolgáltatást a multi-factor Authentication hitelesítés, biztosítania kell, hogy a multi-factor Authentication hitelesítés van konfigurálva a felhasználók regisztrálják az eszközeiket. A másik az Azure multi-factor authentication szolgáltatások további információkért lásd: [az Azure multi-factor authentication – első lépések](../authentication/concept-mfa-whichversion.md). 
+- **A felhasználók regisztrálhatják eszközeiket az Azure ad-vel** – Ez a beállítás a Windows 10-es személyes, iOS, Android és MacOS rendszerű eszközök kell konfigurálnia kell [regisztrálva](overview.md#azure-ad-registered-devices) az Azure AD. Ha **None**, eszközök regisztrálása az Azure ad-vel nem engedélyezettek. Az Office 365-höz a Microsoft Intune- vagy mobileszköz-felügyeleti (MDM) beléptetési regisztráció szükséges. Ha ezen szolgáltatások bármelyikét konfigurálta **összes** van kiválasztva, és **NONE** nem érhető el. Ha engedélyezi ezt a beállítást, az Intune-ból, majd itt az lehetőség szürkén jelennek meg.
+- **Eszközök csatlakoztatása a többtényezős hitelesítés megkövetelése** -kiválaszthatja a felhasználóknak kell-e egy második hitelesítési tényezőt ahhoz, hogy [illesztési](overview.md#azure-ad-joined-devices) az eszközt az Azure AD. Az alapértelmezett érték **nem**. Azt javasoljuk, hogy a multi-factor authentication megkövetelése az eszköz regisztrálásához ajánlatos. Mielőtt engedélyezné ezt a szolgáltatást a multi-factor Authentication hitelesítés, biztosítania kell, hogy a felhasználók regisztrálják az eszközeiket, az Azure multi-factor Authentication hitelesítés van konfigurálva. További információkért tekintse meg a cikket [Azure multi-factor Authentication üzembe helyezési](../authentication/howto-mfa-getstarted.md). 
 
->[!NOTE]
+> [!NOTE]
 > **Eszközök csatlakoztatása a többtényezős hitelesítés megkövetelése** beállítás nem vonatkozik a hibrid Azure AD-csatlakoztatott eszközök.
 
 - **Eszközök maximális számát** – Ez a beállítás lehetővé teszi, hogy válassza ki, hogy a felhasználók még az Azure AD-eszközök maximális számát. Ha egy felhasználó eléri ezt a kvótát, azok vannak nem tud további eszközöket felvenni, amíg egy vagy több olyan meglévő eszközt el lesznek távolítva. Az eszközökre vonatkozó kvóta minden regisztrált eszközök Azure AD-hez vagy az Azure AD ma után kell fizetnie. Az alapértelmezett érték **20**.
 
->[!NOTE]
+> [!NOTE]
 > **Eszközök maximális számát** beállítás nem vonatkozik a hibrid Azure AD-csatlakoztatott eszközök.
 
 - **Felhasználók szinkronizálhatják a beállításokat és alkalmazásadatokat különböző eszközökön** – alapértelmezés szerint ez a beállítás **NONE**. Adott felhasználók vagy csoportok vagy az összes kijelölésével a felhasználói beállításokat és alkalmazásadatokat szinkronizálásának a Windows 10-es eszközeiket. További információ a Windows 10 sync működéséről.

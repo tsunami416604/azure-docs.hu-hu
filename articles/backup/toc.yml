@@ -144,8 +144,6 @@
           items:
             - name: Azure-beli virtuális gépek biztonsági mentésének kezelése
               href: backup-azure-manage-vms.md
-            - name: Azure-beli virtuális gépek biztonsági mentésével kapcsolatos riasztások monitorozása
-              href: backup-azure-monitor-vms.md
         - name: Azure-beli virtuális gépek visszaállítása
           items:
             - name: Azure-beli virtuális gépek visszaállítása a portálon

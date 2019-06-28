@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/03/2019
 ms.author: iainfou
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 94a6ce87cf313fe283631e594a63f210c775c7a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f57c1af4c497b51f5289559737fad5ce4cf2e85b
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808572"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67358032"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Hálózatkezelés a saját IP-címtartományok Azure Kubernetes Service (AKS) kubenet használata
 
@@ -38,9 +38,9 @@ A *kubenet*, csak a csomópontok kapnak IP-címet a virtuális hálózat alhál�
 
 ![Az AKS-fürt Kubenet hálózati modell](media/use-kubenet/kubenet-overview.png)
 
-Az Azure a 400 útvonalak legfeljebb egy udr-t, a támogatja, így nem lehet nagyobb, mint 400 csomópontok egy AKS-fürtöt. Az AKS szolgáltatások, például a [virtuális csomópontok] [ virtual-nodes] vagy a hálózati szabályzatok nem támogatottak olyan *kubenet*.
+Az Azure a 400 útvonalak legfeljebb egy udr-t, a támogatja, így nem lehet nagyobb, mint 400 csomópontok egy AKS-fürtöt. Az AKS szolgáltatások, például a [virtuális csomópontok][virtual-nodes] vagy a hálózati szabályzatok nem támogatottak olyan *kubenet*.
 
-A *Azure CNI*, minden egyes pod IP-alhálózat IP-címet kap, és közvetlenül kommunikálhatnak más podok és -szolgáltatásokhoz. Lehet, hogy a fürtök akkora, mint a megadott IP-címtartományt. Azonban az IP-címtartományt előre kell készülni, és az összes IP-címeket használnak fel az AKS-csomópontok támogatására képes podokat maximális száma alapján. Speciális hálózati funkciók és alkalmazási helyzetek például [virtuális csomópontok] [ virtual-nodes] vagy hálózati házirendek használata támogatott *Azure CNI*.
+A *Azure CNI*, minden egyes pod IP-alhálózat IP-címet kap, és közvetlenül kommunikálhatnak más podok és -szolgáltatásokhoz. Lehet, hogy a fürtök akkora, mint a megadott IP-címtartományt. Azonban az IP-címtartományt előre kell készülni, és az összes IP-címeket használnak fel az AKS-csomópontok támogatására képes podokat maximális száma alapján. Speciális hálózati funkciók és alkalmazási helyzetek például [virtuális csomópontok][virtual-nodes] vagy hálózati házirendek használata támogatott *Azure CNI*.
 
 ### <a name="ip-address-availability-and-exhaustion"></a>IP-cím elérhetőségét és az Erőforrásfogyás
 
@@ -62,7 +62,7 @@ A következő alapvető számítások a különbség a hálózati modellek össz
 
 ### <a name="virtual-network-peering-and-expressroute-connections"></a>Virtuális hálózatok közötti társviszony és ExpressRoute-kapcsolatok
 
-A helyszíni kapcsolatot, mindkettő *kubenet* és *Azure-CNI* hálózati módszer használható [Azure virtuális hálózatok közötti társviszony] [ vnet-peering]vagy [az ExpressRoute-kapcsolatok][express-route]. Tervezze meg gondosan megakadályozására között átfedés van, és helytelen forgalom-útválasztást, az IP-címtartományok. Például használja a túl sok a helyszíni hálózathoz egy *10.0.0.0/8* -címtartományt, amely az ExpressRoute-kapcsolaton keresztül hirdeti meg. Azt javasoljuk, hogy hozzon létre például az AKS-fürtök a címtartományon kívül az Azure virtual network alhálózatokra *172.16.0.0/16*.
+A helyszíni kapcsolatot, mindkettő *kubenet* és *Azure-CNI* hálózati módszer használható [Azure virtuális hálózatok közötti társviszony][vnet-peering] or [ExpressRoute connections][express-route]. Tervezze meg gondosan megakadályozására között átfedés van, és helytelen forgalom-útválasztást, az IP-címtartományok. Például használja a túl sok a helyszíni hálózathoz egy *10.0.0.0/8* -címtartományt, amely az ExpressRoute-kapcsolaton keresztül hirdeti meg. Azt javasoljuk, hogy hozzon létre például az AKS-fürtök a címtartományon kívül az Azure virtual network alhálózatokra *172.16.0.0/16*.
 
 ### <a name="choose-a-network-model-to-use"></a>Válassza ki a használandó hálózati modellt
 
@@ -81,18 +81,20 @@ Használat *Azure CNI* során:
 - Nem kívánja az udr-EK kezelése.
 - Speciális funkciók, például a virtuális csomópontok vagy a hálózati házirend van szüksége.
 
+Segít eldönteni, hogy melyik hálózati modellt használja, további információkért lásd: [hasonlítsa össze a hálózati modelleket és a támogatás hatóköre][network-comparisons].
+
 > [!NOTE]
 > Kuberouter lehetővé teszi a hálózati házirend engedélyezése kubenet használatakor és a egy AKS-fürt a daemonset is telepíthető. Felhívjuk a figyelmét arra, kube-útválasztó bétaverzióban van, és nem támogatott érhető el a Microsoft által a projekthez.
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Virtuális hálózat és alhálózat létrehozása
 
-A használatának első lépései *kubenet* és a saját virtuális hálózat alhálózatán, először hozzon létre egy erőforrás csoport a [az csoport létrehozása] [ az-group-create] parancsot. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
+A használatának első lépései *kubenet* és a saját virtuális hálózat alhálózatán, először hozzon létre egy erőforrás csoport a [az csoport létrehozása][az-group-create] parancsot. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Ha nem rendelkezik egy meglévő virtuális hálózatot és alhálózatot használni, hozzon létre a hálózati erőforrásokhoz a [az network vnet létrehozása] [ az-network-vnet-create] parancsot. A következő példában a virtuális hálózat neve *myVnet* a cím előtagja *192.168.0.0/16*. Egy alhálózat létre van hozva elnevezett *myAKSSubnet* a címelőtaggal rendelkező *192.168.1.0/24*.
+Ha nem rendelkezik egy meglévő virtuális hálózatot és alhálózatot használni, hozzon létre a hálózati erőforrásokhoz a [az network vnet létrehozása][az-network-vnet-create] parancsot. A következő példában a virtuális hálózat neve *myVnet* a cím előtagja *192.168.0.0/16*. Egy alhálózat létre van hozva elnevezett *myAKSSubnet* a címelőtaggal rendelkező *192.168.1.0/24*.
 
 ```azurecli-interactive
 az network vnet create \
@@ -105,7 +107,7 @@ az network vnet create \
 
 ## <a name="create-a-service-principal-and-assign-permissions"></a>Egyszerű szolgáltatás létrehozása és az engedélyek hozzárendelése
 
-Ahhoz, hogy egy AKS-fürt kommunikálhasson más Azure-erőforrásokkal, Azure Active Directory-szolgáltatásnevet kell használnia. A szolgáltatásnévnek kell a virtuális hálózatot és alhálózatot, amelyet az AKS-csomópontok használata kezelheti engedélyekkel kell rendelkeznie. Egyszerű szolgáltatás létrehozásához használja a [az ad sp create-for-rbac] [ az-ad-sp-create-for-rbac] parancsot:
+Ahhoz, hogy egy AKS-fürt kommunikálhasson más Azure-erőforrásokkal, Azure Active Directory-szolgáltatásnevet kell használnia. A szolgáltatásnévnek kell a virtuális hálózatot és alhálózatot, amelyet az AKS-csomópontok használata kezelheti engedélyekkel kell rendelkeznie. Egyszerű szolgáltatás létrehozásához használja a [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] parancsot:
 
 ```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
@@ -125,14 +127,14 @@ $ az ad sp create-for-rbac --skip-assignment
 }
 ```
 
-Rendelje hozzá a megfelelő delegálásokat a hátralévő lépések során, használja a [az network vnet show] [ az-network-vnet-show] és [az hálózati virtuális hálózat alhálózati show] [ az-network-vnet-subnet-show] parancsokat a szükséges erőforrás-azonosítók beolvasása. Változóként tárolt, a hátralévő lépések során hivatkozott erőforrások azonosítóit a részletekben:
+Rendelje hozzá a megfelelő delegálásokat a hátralévő lépések során, használja a [az network vnet show][az-network-vnet-show] and [az network vnet subnet show][az-network-vnet-subnet-show] parancsokat a szükséges erőforrás-azonosítók beolvasása. Változóként tárolt, a hátralévő lépések során hivatkozott erőforrások azonosítóit a részletekben:
 
 ```azurecli-interactive
 VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet --query id -o tsv)
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-Most már az AKS-fürthöz tartozó egyszerű szolgáltatás hozzárendelése *közreműködői* engedélyeket a virtuális hálózat használatával a [az szerepkör-hozzárendelés létrehozása] [ az-role-assignment-create] parancsot. Adja meg a saját  *\<appId >* , ahogyan az egyszerű szolgáltatás létrehozása az előző parancs kimenete:
+Most már az AKS-fürthöz tartozó egyszerű szolgáltatás hozzárendelése *közreműködői* engedélyeket a virtuális hálózat használatával a [az szerepkör-hozzárendelés létrehozása][az-role-assignment-create] parancsot. Adja meg a saját  *\<appId >* , ahogyan az egyszerű szolgáltatás létrehozása az előző parancs kimenete:
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
@@ -140,7 +142,7 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>AKS-fürt létrehozása a virtuális hálózatban
 
-Sikeresen létrehozott egy virtuális hálózatot és alhálózatot, és a létrehozott és hozzárendelt egy egyszerű szolgáltatás engedélyeit a hálózati erőforrások használata. Most hozzon létre egy AKS-fürt a virtuális hálózat és alhálózat használatával a [az aks létrehozása] [ az-aks-create] parancsot. Adja meg a saját szolgáltatásnév  *\<appId >* és  *\<jelszó >* , ahogyan az egyszerű szolgáltatás létrehozása az előző parancs kimenetében.
+Sikeresen létrehozott egy virtuális hálózatot és alhálózatot, és a létrehozott és hozzárendelt egy egyszerű szolgáltatás engedélyeit a hálózati erőforrások használata. Most hozzon létre egy AKS-fürt a virtuális hálózat és alhálózat használatával a [az aks létrehozása][az-aks-create] parancsot. Adja meg a saját szolgáltatásnév  *\<appId >* és  *\<jelszó >* , ahogyan az egyszerű szolgáltatás létrehozása az előző parancs kimenetében.
 
 A következő IP-címtartományok is vannak meghatározva, a fürt létrehozása a folyamat:
 
@@ -174,7 +176,7 @@ Amikor egy AKS-fürtöt hoz létre, egy hálózati biztonsági csoport és az ú
 
 ## <a name="next-steps"></a>További lépések
 
-Az AKS-fürt üzembe helyezve a meglévő virtuális hálózat alhálózatán most már használhatja a fürt szokásos módon. – Első lépések [alkalmazásokat az Azure-fejlesztési szóközzel] [ dev-spaces] vagy [Draft segítségével][use-draft], vagy [Helmhasználatávalalkalmazásokközpontitelepítése] [use-helm].
+Az AKS-fürt üzembe helyezve a meglévő virtuális hálózat alhálózatán most már használhatja a fürt szokásos módon. – Első lépések [alkalmazásokat az Azure-fejlesztési szóközzel][dev-spaces] or [using Draft][use-draft], vagy [Helm alkalmazások telepítéséről][használata – helm].
 
 <!-- LINKS - External -->
 [dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
@@ -196,3 +198,4 @@ Az AKS-fürt üzembe helyezve a meglévő virtuális hálózat alhálózatán mo
 [virtual-nodes]: virtual-nodes-cli.md
 [vnet-peering]: ../virtual-network/virtual-network-peering-overview.md
 [express-route]: ../expressroute/expressroute-introduction.md
+[network-comparisons]: concepts-network.md#compare-network-models

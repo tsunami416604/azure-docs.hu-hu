@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: abnarain
-ms.openlocfilehash: 7c86577abe1e8e158299e3a6aee2cff7f3568241
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7b0b637bdbab8f85c87d28473dda8f2e8f8a086e
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427139"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312064"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrációs modul az Azure Data Factoryban
 Az integrációs modul (Integration Runtime, IR), az Azure Data Factory által használt számítási infrastruktúra a következő adatintegrációs képességeket biztosítja különböző hálózati környezetekben:
@@ -40,7 +40,7 @@ Az alábbi táblázat ismerteti az integrációs modulok egyes típusainak képe
 
 Integrációs modul típusa | Nyilvános hálózat | Magánhálózat
 ------- | -------------- | ---------------
-Azure | Az adatfolyam<br/>Adatáthelyezés<br/>Tevékenység küldése | &nbsp;
+Azure | Adatfolyam<br/>Adatáthelyezés<br/>Tevékenység küldése | &nbsp;
 Saját üzemeltetésű | Adatáthelyezés<br/>Tevékenység küldése | Adatáthelyezés<br/>Tevékenység küldése
 Azure SSIS | SSIS-csomag végrehajtása | SSIS-csomag végrehajtása
 
@@ -74,7 +74,7 @@ Az Azure integrációs modulok létrehozásáról és konfigurálásáról az Az
 Egy saját üzemeltetésű IR a következőkre képes:
 
 - Másolási tevékenység futtatása felhőalapú adattárak és egy magánhálózaton lévő adattár között.
-- Az alábbi átalakítási tevékenységek számítási erőforrásokon, a helyszíni vagy Azure Virtual Network zahájeno: HDInsight Hive-tevékenység (BYOC Bring Your saját fürt), HDInsight Pig-tevékenység (BYOC), HDInsight MapReduce-tevékenység (BYOC), HDInsight Spark-tevékenység (BYOC), HDInsight Streaming-tevékenység (BYOC), Machine Learning Batch Execution-tevékenység, Machine Learning Update Resource-tevékenységek, Stored Procedure-tevékenység, Data Lake Analytics U-SQL-tevékenység, egyéni .NET-tevékenység, keresési tevékenység és metaadatok beolvasása tevékenység.
+- Az alábbi átalakítási tevékenységek számítási erőforrásokon, a helyszíni vagy Azure Virtual Network zahájeno: HDInsight Hive-tevékenység (BYOC Bring Your saját fürt), HDInsight Pig-tevékenység (BYOC), HDInsight MapReduce-tevékenység (BYOC), HDInsight Spark-tevékenység (BYOC), HDInsight Streaming-tevékenység (BYOC), Machine Learning Batch Execution-tevékenység, Machine Learning Update Resource-tevékenységek, Stored Procedure-tevékenység, Data Lake Analytics U-SQL-tevékenység, egyéni tevékenység (az Azure Batch fut), keresési tevékenység és metaadatok beolvasása tevékenység.
 
 > [!NOTE] 
 > Saját üzemeltetésű integrációs modullal támogathat saját illesztőt igénylő adattárakat (például SAP Hana, MySQL stb.).  További információk: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -95,7 +95,7 @@ A következő táblázat ismerteti a kimeneti JSON-fájl elemeinek.
 | Elem | Leírás |
 | --- | --- |
 | Version |Ez vonatkozik a Video API verziója. A jelenlegi verzió: 2. |
-| Időskála |"Órajel során végbemenő" a videó másodpercenként. |
+| Timescale |"Órajel során végbemenő" a videó másodpercenként. |
 | Offset |Időbélyegeket "órajelben." az idő eltolása Videó API-k 1.0-s verziójában ez mindig 0 lesz. A jövőben támogatott forgatókönyveket, ez az érték változhatnak. |
 | Framerate |Képkockák másodpercenkénti száma a videóban. |
 | Width, Height |A szélességét és magasságát (képpontban) hivatkozik. |

@@ -5,12 +5,12 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: e1b3b5fe603072069cb3a19c7597fcc1872fefd7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 5884bb5dc389e6abfd4fa23d28dd71ecd16ff423
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179101"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67347113"
 ---
 Szabványos virtuális gép (VM) rendszerképek lehetővé teszik a szervezetek migrálása a felhőbe, és győződjön meg, hogy a központi telepítések egységességét. Képek rendszerint előre definiált biztonsági és a konfigurációs beállításokat és a szükséges szoftvereket. A saját lemezkép-készítési folyamat beállítása szükséges idő, az infrastruktúra és a telepítés, de az Azure virtuális gép az Image Builder, csak adja meg a lemezkép leíró egy egyszerű konfigurálás küldheti el a szolgáltatás és a kép gyártja és forgalmazza.
  
@@ -33,7 +33,7 @@ Az előzetes verzióra támogatja ezeket a szolgáltatásokat:
 - A VHD formátum létrehozását.
  
 
-## <a name="regions"></a>Régiók
+## <a name="regions"></a>Regions
 Az Azure lemezkép Builder Service előzetes verziója az ezekben a régiókban elérhető lesz. Ezekben a régiókban kívül lemezképek terjeszthetők ki.
 - USA keleti régiója
 - USA 2. keleti régiója
@@ -65,9 +65,9 @@ Az Azure az Image Builder egy teljes körűen felügyelt Azure-szolgáltatás, a
 ![Az Azure az Image Builder folyamat elméleti rajza](./media/virtual-machines-image-builder-overview/image-builder-process.png)
 
 1. Hozzon létre egy .JSON kiterjesztésű fájlt a lemezkép-sablont. Ezt a .JSON kiterjesztésű fájlt a forrása, a testreszabások és a terjesztési információkat tartalmaz. Nincsenek a több példát a [Azure kép Builder GitHub-adattár](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts).
-1. Küldheti el a szolgáltatást, ez egy kép sablon összetevőt hoz létre a megadott erőforráscsoport. A háttérben az Image Builder tölti le a forrás lemezkép vagy ISO és szkriptek igény szerint. Ezek vannak tárolva egy külön erőforráscsoportot, amely automatikusan jön létre az előfizetésében, a következő formátumban: IT_<DestinationResourceGroup>_<TemplateName>. 
-1. A lemezkép-sablon létrehozása után a lemezkép ezután hozhat létre. A háttérben az Image Builder sablon és a forrás-fájlokat használja a IT_ létrehozása egy virtuális gép, hálózati és tárolási<DestinationResourceGroup>_<TemplateName> erőforráscsoportot.
-1. A lemezkép létrehozásának részeként az Image builder osztja el a kép azt a sablont, majd törli a további erőforrások az IT_<DestinationResourceGroup>_<TemplateName> a folyamat a létrehozott erőforráscsoport.
+1. Küldheti el a szolgáltatást, ez egy kép sablon összetevőt hoz létre a megadott erőforráscsoport. A háttérben az Image Builder tölti le a forrás lemezkép vagy ISO és szkriptek igény szerint. Ezek vannak tárolva egy külön erőforráscsoportot, amely automatikusan jön létre az előfizetésében, a következő formátumban: IT_\<DestinationResourceGroup>_\<TemplateName>. 
+1. A lemezkép-sablon létrehozása után a lemezkép ezután hozhat létre. A háttérben az Image Builder sablon és a forrás-fájlokat használja a IT_ létrehozása egy virtuális gép, hálózati és tárolási\<DestinationResourceGroup > _\<TemplateName > erőforráscsoportot.
+1. A lemezkép létrehozásának részeként az Image builder osztja el a kép azt a sablont, majd törli a további erőforrások az IT_\<DestinationResourceGroup > _\<TemplateName > a létrehozott erőforráscsoport a folyamat.
 
 
 ## <a name="permissions"></a>Engedélyek

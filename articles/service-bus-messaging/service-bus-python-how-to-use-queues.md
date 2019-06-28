@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 6d95e4a0a7aeedef2fc7e635d2e49ea68c3ba0ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b74238ee49fe0d96d218f1800a33a9d60badc6d5
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65992055"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341712"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>Service Bus-üzenetsorok használata pythonnal
 
@@ -45,13 +45,13 @@ A **ServiceBusClient** objektum lehetővé teszi, hogy az üzenetsorok. Adja hoz
 from azure.servicebus import ServiceBusClient
 ```
 
-Az alábbi kód létrehoz egy **ServiceBusClient** objektum. Cserélje le `mynamespace`, `sharedaccesskeyname`, és `sharedaccesskey` a névtér, közös hozzáférésű jogosultságkód (SAS-) kulcs nevét és értékét.
+Az alábbi kód létrehoz egy **ServiceBusClient** objektum. Cserélje le `<CONNECTION STRING>` a szolgáltatásbusz kapcsolati sztringje együtt.
 
 ```python
 sb_client = ServiceBusClient.from_connection_string('<CONNECTION STRING>')
 ```
 
-Tekintheti meg az értékeket a SAS-kulcs nevét és értékét az [az Azure portal] [ Azure portal] kapcsolati információkat, vagy a Visual Studio **tulajdonságok** panelen, amikor a szolgáltatás kiválasztása A Server Explorer (ahogyan az előző szakaszban látható) Bus-névteret.
+Tekintheti meg az értékeket a SAS-kulcs nevét és értékét az [az Azure portal][Azure portal] kapcsolati információkat, vagy a Visual Studio **tulajdonságok** panelen, amikor a Server Explorer (például a Service Bus-névtér kijelölése Lásd az előző szakaszban).
 
 ```python
 sb_client.create_queue("taskqueue")
@@ -128,7 +128,7 @@ Abban az esetben, ha az alkalmazás összeomlik, mielőtt azonban az üzenet fel
 ## <a name="next-steps"></a>További lépések
 Most, hogy megismerte a Service Bus-üzenetsorok alapjait, tekintse meg ezeket a további cikkeket.
 
-* [Üzenetsorok, témakörök és előfizetések][Queues, topics, and subscriptions]
+* [Queues, topics, and subscriptions][Queues, topics, and subscriptions] (Üzenetsorok, témakörök és előfizetések)
 
 [Azure portal]: https://portal.azure.com
 [Python Azure Service Bus package]: https://pypi.python.org/pypi/azure-servicebus  

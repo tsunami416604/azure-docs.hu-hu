@@ -3,19 +3,19 @@ title: 'Gyors útmutató: Átbetűzés szöveg-, node.js-szel – Translator Tex
 titleSuffix: Azure Cognitive Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan írhat (alakíthat) át szöveget egyik szkriptből a másikba a Node.js és a Translator Text REST API használatával. Ebben a példában egy japán nyelvű szövegből hozunk létre latin betűs átiratot.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: a76e2c386e9c82b70a7945b4670d60caf9856036
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: 1d9d6f062a155ce2296967bbb408ea2c81838fd3
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515121"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357953"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-with-nodejs"></a>Gyors útmutató: A Translator Text API használatával átbetűzés szöveget a node.js használatával
 

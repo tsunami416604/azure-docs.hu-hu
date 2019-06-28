@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: getroyer
-ms.openlocfilehash: 9b762f1b3f1c17e15b051e72f5d2cf98bef446bf
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 0ac50a5f52682c4315b8d08cf5632c4a6fa5242f
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137758"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357586"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Az Azure Data Science virtuális gépek használata
 
@@ -51,9 +51,9 @@ Ezen értékek lekérését az DSVM oldal az Azure Portalon.
 
 ## <a name="accessing-azure-notebooks-files-from-the-dsvm"></a>A dsvm-hez az Azure-jegyzetfüzetek fájlokhoz fér hozzá
 
-A fájl elérési utak a paritásos megőrzéséhez a **ingyenes számítási** szinten is tudja csak nyissa meg egy projektet egy adatelemző virtuális GÉPET egy időben. Nyisson meg egy új projektet, hogy le kell állítani a megnyitott projektben először.
+A fájlrendszer elérése a DSVM-verziók 19.06.15 vagy újabb. Ellenőrizze a verziót, először csatlakoznia kell a dsvm-hez (az IP-cím áll rendelkezésre az Azure Portalon) SSH-n keresztül. Ezután futtassa a következő parancs használatával a `<ip_address>`: `curl -H Metadata:true "http://<ip_address>/metadata/instance?api-version=2018-10-01"`. A kimenet a "verziójú" verziószáma látható.
 
-![Leállítás gombját, az Azure-jegyzetfüzetekben](media/shutdown.png)
+A fájl elérési utak a paritásos megőrzéséhez a **ingyenes számítási** szinten is tudja csak nyissa meg egy projektet egy adatelemző virtuális GÉPET egy időben. Nyisson meg egy új projektet, hogy le kell állítani a megnyitott projektben először.
 
 Ha egy projektet egy virtuális gépen fut, a fájlok csatlakoztatva vannak-e a gyökérkönyvtárban a Jupyter-kiszolgáló (könyvtárral JupyterHub), és cserélje le az alapértelmezett Azure notebookok fájlokat. Amikor leállítja a virtuális gépet a **leállítási** gomb a notebook UI, az Azure-jegyzetfüzetek visszaállítja az alapértelmezett fájlokat.
 

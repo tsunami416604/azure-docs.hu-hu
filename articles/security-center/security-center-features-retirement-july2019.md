@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
-ms.openlocfilehash: 069345f9c2d0fff0b580365153d8be13bb4ba204
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d364da9506124a35c724209c68ff72db4243e80
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952139"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341577"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>A Security Center-szolgáltatásokat (július 2019) kivonása
 
@@ -114,16 +114,18 @@ Javasoljuk, hogy a riasztások térkép a Security Center beépített funkcióin
 
 ## Egyéni riasztási szabályok (előzetes verzió)<a name="menu_customalerts"></a>
 
-Sajnáljuk, [kivonása az egyéni riasztások élmény](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) a 2019. június 30., mert az alapul szolgáló infrastruktúra kivonás alatt áll. Addig szerkesztheti a meglévő egyéni riasztási szabályok, de nem újakat adhat hozzá. Javasoljuk, hogy engedélyezze a [Azure Sentinel-](https://azure.microsoft.com/services/azure-sentinel/) automatikus áttelepítése a meglévő riasztásokat, és hozzon létre újakat. Másik lehetőségként a riasztásokat hozhat létre az Azure Monitor riasztások.
+Sajnáljuk, [kivonása az egyéni riasztások élmény](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) a 2019. június 30., mert az alapul szolgáló infrastruktúra kivonás alatt áll. Addig szerkesztheti a meglévő egyéni riasztási szabályok, de nem újakat adhat hozzá. Kivezetési dátum a következő bármely definiált egyéni riasztások nem lépnek érvénybe, és ezek a szabályok alapján biztonsági riasztások nem jön létre.
+Javasoljuk, hogy engedélyezze a [Azure Sentinel-](https://azure.microsoft.com/services/azure-sentinel/) , és hozza létre az egyéni riasztások. Másik lehetőségként a riasztásokat hozhat létre az Azure Monitor riasztások.
 
-Tartani a meglévő riasztásokat, és Azure Sentinel-telepítheti át őket:
+Tartani a meglévő riasztásokat, és létrehozása az Azure-Sentinel:
 
-1. Nyissa meg az Azure-Sentinel, és válassza ki a munkaterületet, amely tárolja az egyéni riasztások.
-1. Válassza ki **Analytics** automatikusan áttelepíteni a riasztások menüből.
+1. [Nyissa meg az Azure-Sentinel](https://portal.azure.com/#create/Microsoft.ASI/preview) , és válassza ki a munkaterületet, amely tárolja az egyéni riasztások
+1. Válassza ki **Analytics** a menüből
+1. Az alábbi utasításokat követve [oktatóanyag](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) az egyéni riasztások létrehozása az Azure-Sentinel
+
+Ha Ön nem szeretné használni az Azure-Sentinel, a riasztásokat is létrehozhat az Azure Monitor riasztások. Útmutatásért lásd: [létrehozása, megtekintése, és a riasztások kezelése az Azure Monitor használatával](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) és [Naplóriasztások az Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
 
 ![Egyéni riasztások][13]
-
-Ha Ön nem érdeklik az Azure-Sentinel transitioning, javasoljuk, hogy a riasztások létrehozása az Azure Monitor riasztások. Útmutatásért lásd: [létrehozása, megtekintése, és a riasztások kezelése az Azure Monitor használatával](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) és [Naplóriasztások az Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
 
 Egyéni riasztások használatból való kivonást egyaránt további információkért lásd: [egyéni riasztási szabályok az Azure Security Centerben (előzetes verzió)](https://docs.microsoft.com/azure/security-center/security-center-custom-alert).
 

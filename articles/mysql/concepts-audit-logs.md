@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: 35cbe04380e2113f986d1e7adf3f7fdf89cb9326
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a82afe6f5299609fd6dd57a54f04f49fad5d2268
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078871"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357641"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Auditnaplók az Azure Database for MySQL-hez
 
@@ -45,7 +45,7 @@ Egyéb úgy módosíthatja a paraméterek a következők:
 
 Naplók integrálva vannak az Azure monitort, diagnosztikai naplók. A MySQL-kiszolgáló a vizsgálati naplók engedélyezése, után az Azure Monitor naplók, az Event Hubs vagy Azure Storage kibocsátható őket. Diagnosztikai naplók az Azure Portalon engedélyezésével kapcsolatos további tudnivalókért tekintse meg a [auditálási napló portál cikk](howto-configure-audit-logs-portal.md#set-up-diagnostic-logs).
 
-## <a name="schemas"></a>Sémák
+## <a name="diagnostic-logs-schemas"></a>Diagnosztikai naplók sémák
 
 A következő szakaszok ismertetik, mit jelent az eseménytípus alapján MySQL auditnaplók kimenete. A kimeneti módszertől függően a mezők és a megjelenési sorrendben eltérőek lehetnek.
 

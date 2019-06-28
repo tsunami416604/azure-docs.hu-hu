@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: d3ff97dc86ea6932ba51a4a30e53edf1082d5305
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae5fdd51d9bc1a3e7e2521c6ca1ff64d884c96f8
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937471"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341776"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>Offline PlayReady Windows 10-es Streaming
 
@@ -27,6 +27,9 @@ Az Azure Media Services támogatja a DRM-védelemmel rendelkező offline letölt
 
 - [Offline FairPlay-streamelés iOS-hez](offline-fairplay-for-ios.md)
 - [Offline Widevine androidhoz Streaming](offline-widevine-for-android.md)
+
+> [!NOTE]
+> Kapcsolat nélküli DRM csak történik, hogy egyetlen kér licencet a tartalom letöltésekor. A szükségtelen díjak az esetleges hibákat.
 
 ## <a name="overview"></a>Áttekintés
 

@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: cherylmc
-ms.openlocfilehash: d8012fb75282d64f7d1858e02b842b1c770200f9
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 5fbd64d2f001a0fbe91de2d954889816a1819479
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191771"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67339441"
 ---
 # <a name="create-an-azure-bastion-host-preview"></a>Hozzon létre egy Azure bástyagazdagép (előzetes verzió)
 
@@ -41,7 +41,7 @@ Hogy részt vesz ebben az előzetes verzióban, regisztrálnia kell. Regisztrál
 
 Ez a szakasz segítséget nyújt a hozzon létre egy új megerősített Azure-erőforrást az Azure Portalról.
 
-1. (Kezdőlap) lapján a [ az Azure Portalon – előzetes verzió](http://aka.ms/BastionHost), kattintson a **+ erőforrás létrehozása**. Ellenőrizze, hogy a jelen előzetes, nem a normál Azure portal-portál eléréséhez megadott hivatkozás használata.
+1. (Kezdőlap) lapján a [ az Azure Portalon – előzetes verzió](https://aka.ms/BastionHost), kattintson a **+ erőforrás létrehozása**. Ellenőrizze, hogy a jelen előzetes, nem a normál Azure portal-portál eléréséhez megadott hivatkozás használata.
 
 1. Az a **új** lap a *keresés a piactéren* mezőbe írja be a **megerősített**, majd kattintson a **Enter** a keresési eredmények beolvasásához.
 

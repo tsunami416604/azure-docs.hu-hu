@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: aaeee4238110faa7a842073af8431b30b885db3c
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 4ae22a5cd6ad044a86db88986daf9cc7c05c00a2
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870039"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342311"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-function"></a>A függvényt egy Azure Storage-üzenetsor kötés hozzáadása
 
@@ -117,8 +117,8 @@ def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
         return func.HttpResponse(f"Hello {name}!")
     else:
         return func.HttpResponse(
-             "Please pass a name on the query string or in the request body",
-             status_code=400
+            "Please pass a name on the query string or in the request body",
+            status_code=400
         )
 ```
 
@@ -139,7 +139,7 @@ Másolja ki a `HttpTrigger` függvény URL-címét a futtatókörnyezetének kim
 
 Ezúttal a kimeneti kötés is létrehoz egy üzenetsort, nevű `outqueue` a Storage-fiók és a egy üzenetet küld az azonos karakterláncra.
 
-Ezután használhatja az Azure parancssori felület az új várólista megtekintéséhez, és a egy üzenet hozzáadásának ellenőrzéséhez. Az üzenetsor segítségével is megtekintheti a [Microsoft Azure Storage Explorer] [ Azure Storage Explorer] vagy a a [az Azure portal](https://portal.azure.com).
+Ezután használhatja az Azure parancssori felület az új várólista megtekintéséhez, és a egy üzenet hozzáadásának ellenőrzéséhez. Az üzenetsor segítségével is megtekintheti a [Microsoft Azure Storage Explorer][Azure Storage Explorer] vagy a a [az Azure portal](https://portal.azure.com).
 
 ### <a name="set-the-storage-account-connection"></a>Állítsa be a Tárfiók kapcsolata
 
