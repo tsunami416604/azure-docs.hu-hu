@@ -9,12 +9,12 @@ ms.subservice: ink-recognizer
 ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: aahi
-ms.openlocfilehash: 0dc672f0efc420ab73fd923191c2bd52fb571a4f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1785faf718b940794aebc045a3491be45eea03f5
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056843"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435217"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Gyors útmutató: Ismeri fel a digitális ink a szabadkézi felismerő REST API-t és a JavaScript
 
@@ -154,19 +154,20 @@ Ez a rövid útmutató forráskódja találhatók [GitHub](https://go.microsoft.
         xhttp.setRequestHeader("content-type", "application/json");
         xhttp.send(JSON.stringify(sampleJson));
         };
+        ```
 
-## Run the application and view the response
+## <a name="run-the-application-and-view-the-response"></a>Futtassa az alkalmazást, és tekintse meg a választ
 
-This application can be run within your web browser. A successful response is returned in JSON format. You can also find the JSON response on [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-response.json):
+Ez az alkalmazás a böngészőben futtatható. A sikeres válasz JSON formátumban. A JSON-válasz is megtalálhatja a [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-response.json):
 
-## Next steps
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [REST API reference](https://go.microsoft.com/fwlink/?linkid=2089907)
+> [REST API – referencia](https://go.microsoft.com/fwlink/?linkid=2089907)
 
-To see how the Ink Recognition API works in a digital inking app, take a look at the following sample applications on GitHub:
-* [C# and Universal Windows Platform(UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
-* [C# and Windows Presentation Foundation(WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
-* [Javascript web-browser app](https://go.microsoft.com/fwlink/?linkid=2089908)       
-* [Java and Android mobile app](https://go.microsoft.com/fwlink/?linkid=2089906)
-* [Swift and iOS mobile app](https://go.microsoft.com/fwlink/?linkid=2089805)
+A tinta Recognition API működését egy digitális szabadkézi alkalmazás megtekintéséhez tekintse meg a következő minta alkalmazásokat a Githubon:
+* [C# és Univerzális Windows-platform (Universal Windows Platform, UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
+* [C# és Windows megjelenítési alaprendszer (Windows Presentation Foundation, WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
+* [JavaScript-webböngészőalkalmazás](https://go.microsoft.com/fwlink/?linkid=2089908)       
+* [Java- és Android-mobilalkalmazás](https://go.microsoft.com/fwlink/?linkid=2089906)
+* [Swift- és iOS-mobilalkalmazás](https://go.microsoft.com/fwlink/?linkid=2089805)

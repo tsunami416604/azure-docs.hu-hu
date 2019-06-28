@@ -3,19 +3,19 @@ title: 'Gyors útmutató: Szöveg lefordítása Go – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid szöveges egyik nyelvről egy másikra a Translator Text API használatával a Go kevesebb mint 10 perc múlva fog fordítja le.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 02/21/2019
-ms.author: erhopf
-ms.openlocfilehash: f0690d2e95084712c4260ade9df493ee078979a0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/04/2019
+ms.author: swmachan
+ms.openlocfilehash: e23ff7c38d5f2410c3fd0569cd0fda0ba92cf607
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60879770"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445191"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-go"></a>Gyors útmutató: A Translator Text API segítségével lefordítani a Go használatával egy karakterlánc
 
@@ -138,6 +138,8 @@ if err != nil {
     log.Fatal(err)
 }
 ```
+
+Ha egy több szolgáltatást a Cognitive Services-előfizetést használ, akkor is tartalmaznia kell a `Ocp-Apim-Subscription-Region` az a kérelem paramétereit. [További információ a több szolgáltatásos előfizetéshez való hitelesítés közben](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
 
 ## <a name="handle-and-print-the-response"></a>Kezelni, és a válasz
 

@@ -7,13 +7,13 @@ ms.service: postgresql
 ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 5/6/2019
-ms.openlocfilehash: ed272afcfedaf6c781d2a96e5732fe2368914a67
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 06/25/2019
+ms.openlocfilehash: db0ff9facbd8609955c5ef1918b0f8a6aa53ea65
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073070"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447229"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Oktatóanyag: Egy Azure Database for PostgreSQL – Azure CLI használatával egyetlen kiszolgáló megtervezése 
 Ebben az oktatóanyagban az Azure CLI (parancssori felület) és egyéb segédprogramok segítségével a következőket sajátíthatja el:
@@ -121,15 +121,21 @@ Az eredmény JSON formátumban van. Jegyezze fel a következőket: **administrat
 Ha az ügyfélszámítógépen telepítve van a PostgreSQL, akkor használhatja a [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) helyi példányát vagy az Azure Cloud Console-t az Azure PostgreSQL-kiszolgálóhoz való csatlakozáshoz. Használjuk a psql parancssori segédprogramot az Azure-adatbázis PostgreSQL-kiszolgálóhoz való kapcsolódáshoz.
 
 1. Futtassa a következő psql-parancsot az Azure Database for PostgreSQL-adatbázishoz való kapcsolódáshoz:
-   ```azurecli-interactive
+   ```
    psql --host=<servername> --port=<port> --username=<user@servername> --dbname=<dbname>
    ```
 
    Például a következő parancs a **postgres** nevű alapértelmezett adatbázishoz kapcsolódik a **mydemoserver.postgres.database.azure.com** PostgreSQL-kiszolgálón a hozzáférési hitelesítő adatok használatával. Adja meg a `<server_admin_password>` kiszolgálói rendszergazdai jelszót, amelyet a jelszó megadásakor választott.
   
-   ```azurecli-interactive
+   ```
    psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
    ```
+
+   > [!TIP]
+   > Ha inkább a Postgres csatlakozni egy URL-címet használja, az URL-cím kódolása a @ karakter a felhasználónevet, a `%40`. Ha például a kapcsolati karakterláncot a psql-jének lenne,
+   > ```
+   > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
+   > ```
 
 2. Miután csatlakozott a kiszolgálóhoz, hozzon létre egy üres adatbázist, amikor a rendszer erre kéri:
    ```sql

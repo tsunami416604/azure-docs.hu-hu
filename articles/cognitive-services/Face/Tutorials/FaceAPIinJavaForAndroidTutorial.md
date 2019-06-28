@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 5c7f2e86d6fe63d309c74d7304f1c19a714b6471
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a809a4de588a388c4be8ca6efa245450699eeb64
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60815491"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441608"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Oktatóanyag: Keret arcok a képet, és Android-alkalmazás létrehozása
 
@@ -100,7 +100,7 @@ A **Project** (Projekt) panelen bontsa ki az **app** elemet, majd a **manifests*
 
 ## <a name="upload-image-and-detect-faces"></a>Arcok észlelése és a Rendszerkép feltöltése
 
-Az alkalmazás meghívásával arcokat észleli a **FaceServiceClient.detect** metódussal, amely becsomagolja a [hibakeresés](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) REST API-t és a egy listáját adja vissza **Face** példányok.
+Az alkalmazás meghívásával arcokat észleli a **faceClient.Face.DetectWithStreamAsync** metódussal, amely becsomagolja a [hibakeresés](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) REST API-t és a egy listáját adja vissza **Face** példányok.
 
 Minden egyes visszaküldött **Face** egy téglalapot elfoglalt helye, több választható arctulajdonságok kombinált tartalmazza. Ebben a példában csak a arcjelző négyszögek kérik.
 

@@ -3,19 +3,19 @@ title: 'Gyors útmutató: Kétnyelvű szótár szavak C# – Translator Text API
 titleSuffix: Azure Cognitive Services
 description: Ebből a gyorsútmutatóból megtudhatja, hogyan alternatív fordítások beolvasni egy kifejezést, és is ezek használati példák az eredetitől eltérő fordításokat, .NET Core és a Translator Text API használatával.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: a937ac1039d7a7552290257f42dd4bc45c8f0605
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: 0c8fb4eb50b5824126d2be2160dd341ed60955af
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514972"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448198"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-c"></a>Gyors útmutató: Szavak kétnyelvű szótár használataC#
 
@@ -89,6 +89,8 @@ System.Object[] body = new System.Object[] { new { Text = @"Elephants" } };
 var requestBody = JsonConvert.SerializeObject(body);
 ```
 
+
+
 ## <a name="instantiate-the-client-and-make-a-request"></a>Hozza létre az ügyfél és a egy kérés
 
 Ezek a sorok hozza létre a `HttpClient` és a `HttpRequestMessage`:
@@ -143,6 +145,8 @@ static string PrettyPrint(string s)
     return JsonConvert.SerializeObject(JsonConvert.DeserializeObject(s), Formatting.Indented);
 }
 ```
+
+Ha egy több szolgáltatást a Cognitive Services-előfizetést használ, akkor is tartalmaznia kell a `Ocp-Apim-Subscription-Region` az a kérelem paramétereit. [További információ a több szolgáltatásos előfizetéshez való hitelesítés közben](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
 
 ## <a name="put-it-all-together"></a>Az alkalmazás összeállítása
 

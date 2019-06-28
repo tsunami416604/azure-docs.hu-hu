@@ -3,19 +3,19 @@ title: 'Gyors útmutató: Konvertálja a szöveget parancsfájl, a Java - Transl
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban fog elsajátíthatja átírás (átalakítás) szöveg egy parancsfájlból származó Java és a Translator Text REST API egy másik használatával. Ebben a példában egy japán nyelvű szövegből hozunk létre latin betűs átiratot.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 353d5950372fe9a1255bf2b17dea4f8148d3ee6e
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: 599ff4d2e888e6495044bb2161bc11813064399b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514790"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445076"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-java"></a>Gyors útmutató: A Translator Text API használatával átbetűzés szöveg Java használatával
 
@@ -108,6 +108,7 @@ Adja hozzá ezeket a sorokat a `Transliterate` osztály. Láthatja, hogy az a `a
 String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
 String url = "https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0&language=ja&fromScript=jpan&toScript=latn";
 ```
+Ha egy több szolgáltatást a Cognitive Services-előfizetést használ, akkor is tartalmaznia kell a `Ocp-Apim-Subscription-Region` az a kérelem paramétereit. [További információ a több szolgáltatásos előfizetéshez való hitelesítés közben](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
 
 ## <a name="create-a-client-and-build-a-request"></a>Hozzon létre egy ügyfél és a egy kérelem létrehozása
 

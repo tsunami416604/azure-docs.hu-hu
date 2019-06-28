@@ -4,23 +4,24 @@ description: Ebben az oktatóanyagban fejlesztése az Azure IoT Edge-modul adatb
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/04/2019
+ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 5b7d903c8be74e4c0561bb4a857619c9c62f95a9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2c2a2659b6b9c77b36001af1602c904e7d200b56
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239655"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433054"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Oktatóanyag: Üzembe helyezni az Azure IoT Edge-modulok működik
 
-Az Azure Functions használatával olyan kódot helyezhet üzembe, amely közvetlenül az Azure IoT Edge-eszközökön valósítja meg az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő Azure-függvény létrehozásának és a szimulált IoT Edge-eszközön való üzembe helyezésének lépésein. Az Azure IoT Edge üzembe helyezése szimulált eszközön [Windows](quickstart.md) vagy [Linux](quickstart-linux.md) rendszeren című rövid útmutatóban létrehozott szimulált IoT Edge-eszközt fogja használni. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:     
+Az Azure Functions használatával olyan kódot helyezhet üzembe, amely közvetlenül az Azure IoT Edge-eszközökön valósítja meg az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő Azure-függvény létrehozásának és a szimulált IoT Edge-eszközön való üzembe helyezésének lépésein. Az Azure IoT Edge üzembe helyezése szimulált eszközön [Windows](quickstart.md) vagy [Linux](quickstart-linux.md) rendszeren című rövid útmutatóban létrehozott szimulált IoT Edge-eszközt fogja használni. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
+>
 > * Azure-függvény létrehozása a Visual Studio Code használatával.
 > * Docker-rendszerkép létrehozása és közzététele a tárolóregisztrációs adatbázisban a VS Code és a Docker használatával.
 > * A modul üzembe helyezése egy tárolóregisztrációs adatbázisból az IoT Edge-eszközön.
@@ -136,14 +137,14 @@ Adjunk néhány további programkódokat kellene megtervezni, hogy a modul feldo
 
                    if (messageBody != null && messageBody.machine.temperature > temperatureThreshold)
                    {
-                       // Send the message to the output as the temperature value is greater than the threashold.
+                       // Send the message to the output as the temperature value is greater than the threshold.
                        var filteredMessage = new Message(messageBytes);
                        // Copy the properties of the original message into the new Message object.
                        foreach (KeyValuePair<string, string> prop in messageReceived.Properties)
                        {filteredMessage.Properties.Add(prop.Key, prop.Value);}
                        // Add a new property to the message to indicate it is an alert.
                        filteredMessage.Properties.Add("MessageType", "Alert");
-                       // Send the message.       
+                       // Send the message.
                        await output.AddAsync(filteredMessage);
                        logger.LogInformation("Info: Received and transferred a message with temperature above the threshold");
                    }
@@ -160,12 +161,12 @@ Adjunk néhány további programkódokat kellene megtervezni, hogy a modul feldo
        class Machine
        {
            public double temperature {get; set;}
-           public double pressure {get; set;}         
+           public double pressure {get; set;}
        }
        class Ambient
        {
            public double temperature {get; set;}
-           public int humidity {get; set;}         
+           public int humidity {get; set;}
        }
    }
    ```
@@ -176,17 +177,17 @@ Adjunk néhány további programkódokat kellene megtervezni, hogy a modul feldo
 
 Az előző szakaszban létrehozott egy IoT Edge-megoldást, és hozzáadott egy kódot a **CSharpFunction** függvényhez, amely kiszűri az olyan üzeneteket, ahol a jelentett géphőmérséklet alacsonyabb az elfogadható határértéknél. Most létre kell hoznia a megoldást tárolórendszerképként, és le kell küldenie a tárolóregisztrációs adatbázisba.
 
-Ebben a szakaszban kétszer meg kell adnia a tárolóregisztrációs adatbázis hitelesítő adatait. Egyszer azért, hogy helyileg bejelentkezzen a fejlesztői gépről, hogy a Visual Studio Code le tudja küldeni a rendszerképeket a regisztrációs adatbázisba. Másodszor pedig az IoT Edge-megoldás **.env** kiterjesztésű fájlja miatt, ami engedélyezi a rendszerképek lekérését az IoT Edge-eszköz számára a beállításjegyzékből. 
+Ebben a szakaszban, a hitelesítő adatokat kér a tároló-beállításjegyzék második (volt az első a **.env** fájlt az IoT Edge-megoldás) jelentkezzen be a helyi fejlesztői gépen való, hogy a Visual Studio Code-ot is rendszerképek leküldése a tárolójegyzékbe.
 
 1. A VS Code integrált termináljának megnyitásához válassza a **View** (Nézet)  > **Terminal** (Terminál) elemet. 
 
 2. Az integrált terminálban az alábbi paranccsal jelentkezzen be a tárolóregisztrációs adatbázisba. Használja azt a felhasználónevet és bejelentkezési kiszolgálót, amelyet az Azure Container Registry-adatbázisból másolt ki korábban.
-     
+
     ```csh/sh
     docker login -u <ACR username> <ACR login server>
     ```
 
-    Amikor a rendszer kéri a jelszót, másolja be a tárolóregisztrációs adatbázis jelszavát, majd nyomja le az **Enter** billentyűt.
+    Ha kéri a jelszót, illessze be a tárolóregisztrációs adatbázis, és nyomja meg a jelszót (már nem lesz látható a terminálablakban) **Enter**.
 
     ```csh/sh
     Password: <paste in the ACR password and press enter>

@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f36b706213639c5bea383ec20ffc7f6d7ed01021
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: fd3b5766ec2bd8d1babf847598f1fbe5b6511ce7
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155701"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67432834"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Oktatóanyag: A machine learning, az IoT Edge-környezet beállítása
 
@@ -190,7 +190,7 @@ A parancsfájl nagyjából két percet vesz igénybe futtatni. Ha elkészült, a
 
 Az IoT hub létrehozása, a parancsfájl, amely az előző szakaszban ütköztünk is létrehozott egyéni végpontok és a egy útvonalat. Az IoT Hub útvonalak áll, a lekérdezés és a egy végpontot. Ha egy üzenet megfelel a kifejezésnek, az adatokat küld az útvonalon a kapcsolódó végpont a. -Végpontok lehetnek Event Hubs, Service Bus-üzenetsorok és témakörök. Ebben az esetben a végpont nem egy storage-fiókban található Blob-tárolóba. Az Azure portal használatával tekintse át a szkript által létrehozott útvonalban.
 
-1. Nyissa meg az [Azure Portalt](http://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 
 1. Válassza ki az összes szolgáltatás a bal oldali navigator szolgáltatásból, IoT írja be a keresőmezőbe, majd válassza **az IoT Hub**.
 

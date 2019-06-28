@@ -3,19 +3,19 @@ title: 'Gyors útmutató: Kétnyelvű szótár szavak Go – Translator Text API
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban a kifejezések alternatív fordításait és példáit keresi meg a szövegkörnyezetben a Translator Text API segítségével és Go használatával.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 56e67389c59cda70ebcc7705e279b84fcf11cf9d
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: bc92fb078c46c877f3b99389b1d14ad0f93e63b3
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514143"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445206"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-go"></a>Gyors útmutató: Szavak keresése a kétnyelvű szótárban a Go használatával
 
@@ -138,6 +138,8 @@ if err != nil {
     log.Fatal(err)
 }
 ```
+
+Ha egy több szolgáltatást a Cognitive Services-előfizetést használ, akkor is tartalmaznia kell a `Ocp-Apim-Subscription-Region` az a kérelem paramétereit. [További információ a több szolgáltatásos előfizetéshez való hitelesítés közben](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
 
 ## <a name="handle-and-print-the-response"></a>Kezelni, és a válasz
 

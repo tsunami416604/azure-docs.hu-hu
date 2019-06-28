@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A modell betanítását, és bontsa ki az űrlapadatok cURL - űrlap felismerő használatával'
+title: 'Gyors útmutató: A modell betanítását és a cURL - űrlap felismerő használatával űrlap adatokat nyerhet ki'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban az űrlap felismerő REST API-t fogjuk a curl használatával betanítja a modellt, és az adatok kinyerése az űrlapok.
 author: PatrickFarley
@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 3f3b74452ff1f866b0285eee962ab3678b151a30
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 144cd0380cfe2a49d5827f9ecc34ed197f4ad1cd
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331831"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441813"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Gyors útmutató: Űrlap felismerő modellek betanítása és űrlap adatokat nyerhet ki a REST API-val a curl használatával
 
@@ -26,7 +26,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 Rövid útmutató elvégzéséhez kell rendelkeznie:
 - Az űrlap felismerő korlátozott hozzáférésű előzetes verzióra való hozzáférést. Töltse ki az előzetes verzió eléréséhez, és küldje el a [űrlap felismerő hozzáférési kérelem](https://aka.ms/FormRecognizerRequestAccess) űrlap.
 - [cURL](https://curl.haxx.se/windows/) telepítve.
-- Az azonos típusú legalább öt űrlapok készlete. Ezeket az adatokat a modell betanításához használandó. Használhat egy [mintaadatkészlettel](https://go.microsoft.com/fwlink/?linkid=2090451) ebben a rövid útmutatóban. Töltse fel az adatok Azure Blob Storage-fiók gyökérmappájában.
+- Az azonos típusú legalább öt űrlapok készlete. Ezeket az adatokat a modell betanításához használandó. Használhat egy [minta adatkészlet](https://go.microsoft.com/fwlink/?linkid=2090451) ebben a rövid útmutatóban. Töltse fel az adatok Azure Blob Storage-fiók gyökérmappájában.
 
 ## <a name="create-a-form-recognizer-resource"></a>Űrlap felismerő erőforrás létrehozása
 

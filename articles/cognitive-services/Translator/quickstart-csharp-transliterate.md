@@ -3,19 +3,19 @@ title: 'Gyors útmutató: Konvertálja a szöveget parancsfájl, C# -fordítói 
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban fog elsajátíthatja átírás (átalakítás) szöveg egy parancsfájlból származó .NET Core és a Translator Text REST API egy másik használatával. Ebben a példában egy japán nyelvű szövegből hozunk létre latin betűs átiratot.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/13/2019
-ms.author: erhopf
-ms.openlocfilehash: 8e08372e591c9d600b42ae8e66baf7addf7806c9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: swmachan
+ms.openlocfilehash: f09f9081dd535762afd2e26e5e86476eb06f5133
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67123375"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445236"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-c"></a>Gyors útmutató: Szövegelemzés a következőkkel átbetűzés a Translator Text API használatávalC#
 
@@ -157,6 +157,8 @@ foreach (TransliterationResult o in deserializedOutput)
     Console.WriteLine("Transliterated to {0} script: {1}", o.Script, o.Text);
 }
 ```
+
+Ha egy több szolgáltatást a Cognitive Services-előfizetést használ, akkor is tartalmaznia kell a `Ocp-Apim-Subscription-Region` az a kérelem paramétereit. [További információ a több szolgáltatásos előfizetéshez való hitelesítés közben](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
 
 ## <a name="put-it-all-together"></a>Az alkalmazás összeállítása
 

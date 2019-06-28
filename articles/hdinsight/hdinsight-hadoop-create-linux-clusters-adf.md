@@ -7,17 +7,17 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 04/18/2019
-ms.openlocfilehash: 64f016ac0fa572cb8cf8504902108cffae267cec
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: e9773c2e8f6f8de3a44e45989aa577a5d8c2dcee
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293296"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433848"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Oktatóanyag: Az Azure Data Factory használatával HDInsight igény szerinti Apache Hadoop-fürtök létrehozása
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Ebből a cikkből megismerheti, hogyan hozhat létre egy [Apache Hadoop](https://hadoop.apache.org/) igény szerint, az Azure Data Factory használatával az Azure HDInsight a fürthöz. Ezt követően az adatfolyamatok az Azure Data Factory a Hive-feladatok futtatásához, majd törölheti a fürtöt. Ez az oktatóanyag végére elsajátíthatja, hogyan tesztelhetők a big Data típusú adatok feladatfuttatás ahol fürt létrehozását, a feladat futtatása és a fürt törlését végzett ütemezés szerint.
+Ebben az oktatóanyagban elsajátíthatja, hogyan hozhat létre egy [Apache Hadoop](https://hadoop.apache.org/) igény szerint, az Azure Data Factory használatával az Azure HDInsight a fürthöz. Ezt követően az adatfolyamatok az Azure Data Factory a Hive-feladatok futtatásához, majd törölheti a fürtöt. Ez az oktatóanyag végére elsajátíthatja, hogyan tesztelhetők a big Data típusú adatok feladatfuttatás ahol fürt létrehozását, a feladat futtatása és a fürt törlését végzett ütemezés szerint.
 
 Ez az oktatóanyag a következő feladatokat mutatja be: 
 
@@ -41,7 +41,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="create-preliminary-azure-objects"></a>Az Azure-objektumok előzetes létrehozása
 
-Ebben a szakaszban a hoz létre, igény szerinti HDInsight-fürt használt különféle objektumokat hoz létre. A létrehozott tárfiók tartalmazni fogja a minta [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) parancsfájl (`hivescript.hql`) minta szimulálásához használt [Apache Hive](https://hive.apache.org/) feladatot, amely a fürtön.
+Ebben a szakaszban a hoz létre, igény szerinti HDInsight-fürt használt különféle objektumokat hoz létre. A létrehozott tárfiók tartalmazni fogja a minta [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) parancsfájl (`partitionweblogs.hql`) minta szimulálásához használt [Apache Hive](https://hive.apache.org/) feladatot, amely a fürtön.
 
 Ebben a szakaszban egy Azure PowerShell-szkript hozhat létre a tárfiókot, másolja a szükséges fájlokat a storage-fiókon belül használja. Az Azure PowerShell példaszkript ebben a szakaszban a következő feladatokat hajtja végre:
 
@@ -49,7 +49,7 @@ Ebben a szakaszban egy Azure PowerShell-szkript hozhat létre a tárfiókot, má
 2. Létrehoz egy Azure-erőforráscsoportot.
 3. Létrehoz egy Azure Storage-fiókot.
 4. Hoz létre egy blobtárolót a tárfiókban
-5. Másolja át a minta HiveQL-parancsfájlt (**hivescript.hql**) a Blob-tároló. A parancsfájl mindig elérhető legyen [ https://hditutorialdata.blob.core.windows.net/adfv2hiveactivity/hivescripts/hivescript.hql ](https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql). A példaszkript egy másik nyilvános Blob-tárolóban már érhető el. Az alábbi PowerShell-szkript az Azure Storage-fiókot hoz létre, ezeket a fájlokat másolatot készít.
+5. Másolja át a minta HiveQL-parancsfájlt (**partitionweblogs.hql**) a Blob-tároló. A parancsfájl mindig elérhető legyen [ https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql ](https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql). A példaszkript egy másik nyilvános Blob-tárolóban már érhető el. Az alábbi PowerShell-szkript az Azure Storage-fiókot hoz létre, ezeket a fájlokat másolatot készít.
 
 > [!WARNING]  
 > A tárfiók típusának `BlobStorage` HDInsight-fürtök esetén nem használható.
@@ -155,7 +155,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 4. Az a **erőforrások** csempe, megjelenik egy erőforrás szerepel, kivéve, ha az erőforráscsoport megosztása más projektek. Ennek az erőforrásnak a korábban megadott nevét a tárfiók. Válassza ki a tárfiók nevét.
 5. Válassza ki a **Blobok** csempék.
 6. Válassza ki a **adfgetstarted** tároló. Megjelenik egy nevű mappába **hivescripts**.
-7. Nyissa meg a mappát, és ellenőrizze, hogy a minta parancsfájlt tartalmaz **hivescript.hql**.
+7. Nyissa meg a mappát, és ellenőrizze, hogy a minta parancsfájlt tartalmaz **partitionweblogs.hql**.
 
 ## <a name="understand-the-azure-data-factory-activity"></a>Megismerheti az Azure Data Factory-tevékenység
 
@@ -193,7 +193,7 @@ Ez a cikk a Hive-tevékenység, amely egy igény szerinti HDInsight Hadoop-fürt
     |Előfizetés | Válassza ki az Azure-előfizetését. |
     |Erőforráscsoport | Válassza ki **meglévő** , és válassza ki az erőforráscsoportot, a PowerShell-szkripttel létrehozott. |
     |Version | Maradjon a **V2**. |
-    |Location egység | A hely automatikusan értéke a korábban az erőforráscsoport létrehozásakor megadott helyre. A jelen oktatóanyag esetében a hely értéke **USA keleti Régiójában**. |
+    |Location | A hely automatikusan értéke a korábban az erőforráscsoport létrehozásakor megadott helyre. A jelen oktatóanyag esetében a hely értéke **USA keleti Régiójában**. |
 
     ![Az Azure portal segítségével Azure Data Factory létrehozása](./media/hdinsight-hadoop-create-linux-clusters-adf/create-data-factory-portal.png "létrehozása az Azure Data Factory az Azure portal használatával")
 
@@ -290,11 +290,11 @@ Ebben a szakaszban két társított szolgáltatást belül az adat-előállító
 
     1. A **parancsprogram társított szolgáltatás**válassza **HDIStorageLinkedService** a legördülő listából. Ezt az értéket egy korábban létrehozott storage-beli társított szolgáltatás.
 
-    1. A **fájl elérési útja**válassza **Browse Storage** , és keresse meg a helyet, ahol a minta Hive-parancsfájl áll rendelkezésre. Ha korábban a PowerShell-szkriptet futtatta, ezen a helyen kell lennie a `adfgetstarted/hivescripts/hivescript.hql`.
+    1. A **fájl elérési útja**válassza **Browse Storage** , és keresse meg a helyet, ahol a minta Hive-parancsfájl áll rendelkezésre. Ha korábban a PowerShell-szkriptet futtatta, ezen a helyen kell lennie a `adfgetstarted/hivescripts/partitionweblogs.hql`.
 
         ![Adja meg a folyamat Hive-szkript adatait](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "biztosítanak Hive-szkript adatait a folyamat")
 
-    1. Alatt **speciális** > **paraméterek**válassza **automatikus kitöltés parancsprogram**. Ez a beállítás keres a Hive-parancsfájl a paramétereket, futásidőben értékekre van szükség. A parancsfájlt használja (**hivescript.hql**) rendelkezik egy **kimeneti** paraméter. Adja meg a **érték** formátumban `wasb://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/` , hogy az Azure Storage egy létező mappára mutasson. Az elérési út megkülönbözteti a kis- és nagybetűket. Ez az, hogy az a szkript kimenetének tárolására szolgáló elérési utat.
+    1. Alatt **speciális** > **paraméterek**válassza **automatikus kitöltés parancsprogram**. Ez a beállítás keres a Hive-parancsfájl a paramétereket, futásidőben értékekre van szükség. A parancsfájlt használja (**partitionweblogs.hql**) rendelkezik egy **kimeneti** paraméter. Adja meg a **érték** formátumban `wasb://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/` , hogy az Azure Storage egy létező mappára mutasson. Az elérési út megkülönbözteti a kis- és nagybetűket. Ez az, hogy az a szkript kimenetének tárolására szolgáló elérési utat.
     
         ![Adja meg a Hive-parancsfájl paraméterek](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "paramétereket adja meg a Hive-parancsfájl")
 
@@ -338,7 +338,7 @@ Ebben a szakaszban két társított szolgáltatást belül az adat-előállító
 
         ![Az Azure Data Factory-folyamat kimenet ellenőrzése](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-verify-output.png "az Azure Data Factory-folyamat kimenet ellenőrzése")
 
-## <a name="clean-up-the-tutorial"></a>Az oktatóanyag tartalmának törlése
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az igény szerinti HDInsight-fürt létrehozása, és nem kell explicit módon törli a HDInsight-fürt. A fürt törlődik a folyamat létrehozásakor megadott konfigurációja alapján. Azonban a fürt törlése után is a fürthöz társított storage-fiókok továbbra is létezik. Ez szándékosan van is, hogy az adatok sértetlenek. Azonban ha nem szeretné megőrizni az adatokat, törölheti a létrehozott tárfiókot.
 
@@ -356,11 +356,8 @@ Másik lehetőségként törölheti a teljes erőforráscsoport ebben az oktató
 
 1. Adja meg az erőforráscsoport nevét a törlés megerősítéséhez, majd válassza ki **törlése**.
 
-
 ## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan hozhat létre, igény szerinti HDInsight-fürtöt, és futtassa az Azure Data Factory használatával [Apache Hive](https://hive.apache.org/) feladatok. Folytassa a következő cikkben megtudhatja, hogyan hozhat létre HDInsight-fürtök egyéni konfigurációval.
 
 > [!div class="nextstepaction"]
 >[Az Azure HDInsight-fürtök létrehozása egyéni konfiguráció](hdinsight-hadoop-provision-linux-clusters.md)
-
-

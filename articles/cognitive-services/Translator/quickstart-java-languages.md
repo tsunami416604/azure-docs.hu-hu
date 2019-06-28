@@ -3,19 +3,19 @@ title: 'Gyors útmutató: Támogatott nyelvek, a Java - listájának lekérése 
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban a fordítás, átbetűzésű és a Translator Text API használatával szótár keresési támogatott nyelvek listájának lekérése.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: ba93082d0fc98d18499b5e3154e782d3ffce26ec
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: 1c6db84acc2bca8e649f5f7acb1dcbdfd6d1269d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514805"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445129"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-java"></a>Gyors útmutató: Java használatával támogatott nyelvek listáját a Translator Text API használatával
 
@@ -103,6 +103,8 @@ Adja hozzá ezeket a sorokat a `GetLanguages` osztály:
 ```java
 String url = "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0";
 ```
+
+Ha egy több szolgáltatást a Cognitive Services-előfizetést használ, akkor is tartalmaznia kell a `Ocp-Apim-Subscription-Region` az a kérelem paramétereit. [További információ a több szolgáltatásos előfizetéshez való hitelesítés közben](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
 
 ## <a name="create-a-client-and-build-a-request"></a>Hozzon létre egy ügyfél és a egy kérelem létrehozása
 

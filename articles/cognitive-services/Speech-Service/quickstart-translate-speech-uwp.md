@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 123a05012db1494799bf523bda2972a18c8f2ff4
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 3b8f0c93e596185f4446d4058641b2efc45ce4a5
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465625"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67467070"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-c-uwp"></a>Gyors útmutató: Beszédfelismerés, beszédfelismerési SDK for fordítása C# (UWP)
 
-Rövid útmutatók érhetők el is [hang-szöveg transzformációs](quickstart-csharp-uwp.md) és [hang-és felhőközpontú virtuális asszisztensek](quickstart-virtual-assistant-csharp-uwp.md).
+Rövid útmutatók érhetők el is [hang-szöveg transzformációs](quickstart-csharp-uwp.md), [szöveg-hang transzformációs](quickstart-text-to-speech-csharp-uwp.md) és [hang-és felhőközpontú virtuális asszisztensek](quickstart-virtual-assistant-csharp-uwp.md).
 
 Ebben a rövid útmutatóban fog létrehozni egy egyszerű univerzális Windows Platform (UWP) alkalmazást, amely rögzíti a felhasználó beszéd, a számítógép mikrofon, a rendszer lefordítja a beszédfelismerési és transcribes a lefordított szöveg valós időben a parancssorba. Ez az alkalmazás a 64 bites Windows rendszerhez készült, és a beépített a [beszéd SDK NuGet-csomagot](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-ben.
 

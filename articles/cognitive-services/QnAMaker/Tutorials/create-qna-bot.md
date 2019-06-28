@@ -3,20 +3,20 @@ title: QnA robotot – Azure Bot Service – QnA Maker
 titleSuffix: Azure Cognitive Services
 description: A közzétételi oldalon egy meglévő Tudásbázis – kérdések és válaszok csevegőrobotot hozzon létre. Ez a robot a Bot keretrendszer SDK v4 használ. Nem kell a robotot hozhat létre bármilyen kód megírását, minden a kódot biztosítunk Önnek.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
-ms.date: 06/11/2019
-ms.author: tulasim
-ms.openlocfilehash: b3bae01d65685aa9ea7bfc95d1f1454741d37b5e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.topic: tutorial
+ms.date: 06/24/2019
+ms.author: diberry
+ms.openlocfilehash: 1d475d988847bd4cc9e37b91a0c5d28678cb05f2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053226"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446652"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>Oktatóanyag: A QnA robotot létrehozása az Azure Bot Service v4
 
@@ -52,7 +52,7 @@ Hozzon létre egy robot a Tudásbázis ügyfélalkalmazást.
     |Robot neve|`my-tutorial-kb-bot`|Ez az az Azure-erőforrás neve a robot.|
     |Előfizetés|Tekintse meg a cél.|Válassza ki a ugyanahhoz az előfizetéshez, a QnA Maker erőforrások létrehozásához használt.|
     |Erőforráscsoport|`my-tutorial-rg`|Az összes bot kapcsolódó Azure-erőforrások használt erőforráscsoport.|
-    |Location egység|`west us`|A robot Azure-erőforrás helye.|
+    |Location|`west us`|A robot Azure-erőforrás helye.|
     |Tarifacsomag|`F0`|Az Azure bot service az ingyenes szintet.|
     |App neve|`my-tutorial-kb-bot-app`|Ez a webes alkalmazás csak a robot támogatásához. Ezzel nem kell az ugyanazon alkalmazás neve, ahogy a QnA Maker szolgáltatás már használja. A QnA Maker webalkalmazás osztanak meg minden egyéb erőforrás nem támogatott.|
     |SDK-nyelv|C#|Ez az az alapul szolgáló programozási nyelv, a bot framework SDK-t használják. A választható lehetőségek: [ C# ](https://github.com/Microsoft/botbuilder-dotnet) vagy [Node.js](https://github.com/Microsoft/botbuilder-js).|
@@ -84,12 +84,6 @@ Hozzon létre egy robot a Tudásbázis ügyfélalkalmazást.
 
     Azure Robotokat kapcsolatos további információkért lásd: [használata a QnA Maker megválaszolandó kérdések](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-qna?view=azure-bot-service-4.0&tabs=cs)
 
-## <a name="related-to-qna-maker-bots"></a>A QnA Maker robotokat kapcsolatos
-
-* A QnA Maker súgó robot, a QnA Maker Portal használt érhető el egy [bot minta](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-support-bot).
-    ![A QnA Maker súgó bot ikonra a piros robot](../media/qnamaker-tutorials-create-bot/answer-bot-icon.PNG)
-* [Egészségügyi robotokat](https://docs.microsoft.com/HealthBot/qna_model_howto) használata a QnA Maker egy saját [nyelvi modellek](https://docs.microsoft.com/HealthBot/qna_model_howto).
-
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Amikor elkészült, ebben az oktatóanyagban robottal, távolítsa el a robotot az Azure Portalon. 
@@ -103,6 +97,16 @@ Létrehozott egy új erőforráscsoportot, meg kell keresnie a robot kapcsolód�
 * A Cognitive Services-szolgáltatás
 * Az App Service-ben
 * Igény szerint is tartalmazhat az application insights szolgáltatást és az application insights-adatok a storage
+
+
+## <a name="related-to-qna-maker-bots"></a>A QnA Maker robotokat kapcsolatos
+
+* A QnA Maker súgó robot, a QnA Maker Portal használt érhető el egy [bot minta](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-support-bot).
+    ![A QnA Maker súgó bot ikonra a piros robot](../media/qnamaker-tutorials-create-bot/answer-bot-icon.PNG)
+* [Egészségügyi robotokat](https://docs.microsoft.com/HealthBot/qna_model_howto) használata a QnA Maker egy saját [nyelvi modellek](https://docs.microsoft.com/HealthBot/qna_model_howto).
+
+
+[!INCLUDE [Bot Information](../../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]
 
 ## <a name="next-steps"></a>További lépések
 

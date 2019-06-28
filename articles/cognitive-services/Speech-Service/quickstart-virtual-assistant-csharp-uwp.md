@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: 9d29fdbfc82f221dac3b304dcf9de8c230b4d5e2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4044f8d48efae4e8423f780c85e0f3ccfde12461
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056787"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67467057"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Gyors útmutató: Hozzon létre egy hang-és felhőközpontú virtuális asszisztensek UWP Speech-SDK-val
 
-Rövid útmutatók érhetők el is [hang-szöveg transzformációs](quickstart-csharp-uwp.md) és [tolmácsolás –](quickstart-translate-speech-uwp.md).
+Rövid útmutatók érhetők el is [hang-szöveg transzformációs](quickstart-csharp-uwp.md), [szöveg-hang transzformációs](quickstart-text-to-speech-csharp-uwp.md) és [tolmácsolás –](quickstart-translate-speech-uwp.md).
 
 Ebben a cikkben dolgoznia egy C# univerzális Windows Platform (UWP) alkalmazás használatával az [beszéd SDK](speech-sdk.md). A program egy korábban létrehozott és beállított bot ahhoz, hogy egy hang-és felhőközpontú virtuális asszisztensek élmény az ügyfélalkalmazás fog csatlakozni. Az alkalmazást a [Speech SDK NuGet-csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-tel (annak bármely kiadásával) lehet összeállítani.
 
@@ -32,14 +32,11 @@ Ebben a cikkben dolgoznia egy C# univerzális Windows Platform (UWP) alkalmazás
 Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* Egy Azure-előfizetés kulcsot, a beszéd-szolgáltatások a **westus2** régióban. Ez az előfizetés létrehozása a [az Azure portal](https://portal.azure.com).
+* Egy Azure-előfizetés beszédszolgáltatások kulcs. [Igényeljen ingyenesen egy](get-started.md) vagy hozza létre a [az Azure portal](https://portal.azure.com).
 * Egy korábban létrehozott bot konfigurálva a [közvetlen vonal beszédfelismerő csatornát](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
     > [!NOTE]
-    > A közvetlen vonal Speech (előzetes verzió) jelenleg csak az elérhető a **westus2** régióban.
-
-    > [!NOTE]
-    > A 30 napos próbaverziójára, a standard tarifacsomag ismertetett [próbálja ki ingyenesen beszédszolgáltatások](get-started.md) korlátozódik **westus** (nem **westus2**) és így nem kompatibilis a közvetlen Sor Speech. Ingyenes és standard szintje **westus2** előfizetések kompatibilisek.
+    > A közvetlen vonal Speech (előzetes verzió) egy részhalmazát beszédszolgáltatások régiók jelenleg érhető el. Tekintse meg [hang-és felhőközpontú virtuális asszisztensek támogatott régiók listáját](regions.md#voice-first-virtual-assistants) és ellenőrizze, hogy az erőforrások üzembe ezen régiók egyikében.
 
 ## <a name="optional-get-started-fast"></a>Nem kötelező: A gyors kezdéshez
 
@@ -63,7 +60,7 @@ Ez a rövid útmutató azt ismerteti, lépésről lépésre, hogyan, hogy egy eg
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    
+
         <Grid>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center"  Margin="20,50,0,0" VerticalAlignment="Center" Width="800">
                 <Button x:Name="EnableMicrophoneButton" Content="Enable Microphone"  Margin="0,0,10,0" Click="EnableMicrophone_ButtonClicked" Height="35"/>
@@ -111,7 +108,7 @@ Ez a rövid útmutató azt ismerteti, lépésről lépésre, hogyan, hogy egy eg
     {
         public sealed partial class MainPage : Page
         {
-            private SpeechBotConnector botConnector;
+            private DialogServiceConnector connector;
 
             private enum NotifyType
             {
@@ -230,7 +227,7 @@ Ez a rövid útmutató azt ismerteti, lépésről lépésre, hogyan, hogy egy eg
                 });
             }
 
-            private void InitializeBotConnector()
+            private void InitializeDialogServiceConnector()
             {
                 // New code will go here
             }
@@ -243,31 +240,31 @@ Ez a rövid útmutató azt ismerteti, lépésről lépésre, hogyan, hogy egy eg
     }
     ```
 
-1. Ezután létre fog hozni a `SpeechBotConnector` az előfizetés adatait. Adja hozzá a következő metódus törzsét `InitializeBotConnector`, kicserélve a karakterláncokat `YourChannelSecret`, `YourSpeechSubscriptionKey`, és `YourServiceRegion` robotja, beszéd-előfizetéssel, a saját értékeire és [régió](regions.md).
+1. Ezután létre fog hozni a `DialogServiceConnector` az előfizetés adatait. Adja hozzá a következő metódus törzsét `InitializeDialogServiceConnector`, kicserélve a karakterláncokat `YourChannelSecret`, `YourSpeechSubscriptionKey`, és `YourServiceRegion` robotja, beszéd-előfizetéssel, a saját értékeire és [régió](regions.md).
 
     > [!NOTE]
-    > Előzetes verzióban elérhető a közvetlen vonal beszédfelismerő csatornát jelenleg csak támogatja a **westus2** régióban.
+    > A közvetlen vonal Speech (előzetes verzió) egy részhalmazát beszédszolgáltatások régiók jelenleg érhető el. Tekintse meg [hang-és felhőközpontú virtuális asszisztensek támogatott régiók listáját](regions.md#voice-first-virtual-assistants) és ellenőrizze, hogy az erőforrások üzembe ezen régiók egyikében.
 
     > [!NOTE]
     > A robot konfigurálása és lekérése egy csatorna kapcsolatos tudnivalókat lásd: a Bot Framework dokumentációjában [a közvetlen vonal beszédfelismerő csatornát](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
     ```csharp
-    // create a BotConnectorConfig by providing a bot secret key and Cognitive Services subscription key
+    // create a DialogServiceConfig by providing a bot secret key and Cognitive Services subscription key
     // the RecoLanguage property is optional (default en-US); note that only en-US is supported in Preview
     const string channelSecret = "YourChannelSecret"; // Your channel secret
     const string speechSubscriptionKey = "YourSpeechSubscriptionKey"; // Your subscription key
-    const string region = "YourServiceRegion"; // Your subscription service region. Note: only 'westus2' is currently supported
+    const string region = "YourServiceRegion"; // Your subscription service region. Note: only a subset of regions are currently supported
 
-    var botConnectorConfig = BotConnectorConfig.FromSecretKey(channelSecret, speechSubscriptionKey, region);
-    botConnectorConfig.SetProperty(PropertyId.SpeechServiceConnection_RecoLanguage, "en-US");
-    botConnector = new SpeechBotConnector(botConnectorConfig);
+    var botConfig = DialogServiceConfig.FromBotSecret(channelSecret, speechSubscriptionKey, region);
+    botConfig.SetProperty(PropertyId.SpeechServiceConnection_RecoLanguage, "en-US");
+    connector = new DialogServiceConnector(botConfig);
     ```
 
-1. `SpeechBotConnector` a robot tevékenységei, speech recognition eredmények és más információkat több eseményt támaszkodik. Adja hozzá ezeket az eseményeket, Hozzáfűzés, a következő metódus törzsét végén kezelők `InitializeBotConnector`.
+1. `DialogServiceConnector` a robot tevékenységei, speech recognition eredmények és más információkat több eseményt támaszkodik. Adja hozzá ezeket az eseményeket, Hozzáfűzés, a következő metódus törzsét végén kezelők `InitializeDialogServiceConnector`.
 
     ```csharp
     // ActivityReceived is the main way your bot will communicate with the client and uses bot framework activities
-    botConnector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
+    connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
     {
         NotifyUser($"Activity received, hasAudio={activityReceivedEventArgs.HasAudio} activity={activityReceivedEventArgs.Activity}");
 
@@ -277,7 +274,7 @@ Ez a rövid útmutató azt ismerteti, lépésről lépésre, hogyan, hogy egy eg
         }
     };
     // Canceled will be signaled when a turn is aborted or experiences an error condition
-    botConnector.Canceled += (sender, canceledEventArgs) =>
+    connector.Canceled += (sender, canceledEventArgs) =>
     {
         NotifyUser($"Canceled, reason={canceledEventArgs.Reason}");
         if (canceledEventArgs.Reason == CancellationReason.Error)
@@ -286,47 +283,47 @@ Ez a rövid útmutató azt ismerteti, lépésről lépésre, hogyan, hogy egy eg
         }
     };
     // Recognizing (not 'Recognized') will provide the intermediate recognized text while an audio stream is being processed
-    botConnector.Recognizing += (sender, recognitionEventArgs) =>
+    connector.Recognizing += (sender, recognitionEventArgs) =>
     {
         NotifyUser($"Recognizing! in-progress text={recognitionEventArgs.Result.Text}");
     };
     // Recognized (not 'Recognizing') will provide the final recognized text once audio capture is completed
-    botConnector.Recognized += (sender, recognitionEventArgs) =>
+    connector.Recognized += (sender, recognitionEventArgs) =>
     {
         NotifyUser($"Final speech-to-text result: '{recognitionEventArgs.Result.Text}'");
     };
     // SessionStarted will notify when audio begins flowing to the service for a turn
-    botConnector.SessionStarted += (sender, sessionEventArgs) =>
+    connector.SessionStarted += (sender, sessionEventArgs) =>
     {
         NotifyUser($"Now Listening! Session started, id={sessionEventArgs.SessionId}");
     };
     // SessionStopped will notify when a turn is complete and it's safe to begin listening again
-    botConnector.SessionStopped += (sender, sessionEventArgs) =>
+    connector.SessionStopped += (sender, sessionEventArgs) =>
     {
         NotifyUser($"Listening complete. Session ended, id={sessionEventArgs.SessionId}");
     };
     ```
 
-1. A létrehozott konfigurációt, és az eseménykezelőket, regisztrálva a `SpeechBotConnector` most már ugyanúgy kell figyelnie. Adja hozzá a következő törzse a `ListenButton_ButtonClicked` metódus az a `MainPage` osztály.
+1. A létrehozott konfigurációt, és az eseménykezelőket, regisztrálva a `DialogServiceConnector` most már ugyanúgy kell figyelnie. Adja hozzá a következő törzse a `ListenButton_ButtonClicked` metódus az a `MainPage` osztály.
 
     ```csharp
     private async void ListenButton_ButtonClicked(object sender, RoutedEventArgs e)
     {
-        if (botConnector == null)
+        if (connector == null)
         {
-            InitializeBotConnector();
+            InitializeDialogServiceConnector();
             // Optional step to speed up first interaction: if not called, connection happens automatically on first use
-            var connectTask = botConnector.ConnectAsync();
+            var connectTask = connector.ConnectAsync();
         }
 
         try
         {
             // Start sending audio to your speech-enabled bot
-            var listenTask = botConnector.ListenOnceAsync();
+            var listenTask = connector.ListenOnceAsync();
 
             // You can also send activities to your bot as JSON strings -- Microsoft.Bot.Schema can simplify this
             string speakActivity = @"{""type"":""message"",""text"":""Greeting Message"", ""speak"":""Hello there!""}";
-            await botConnector.SendActivityAsync(speakActivity);
+            await connector.SendActivityAsync(speakActivity);
 
         }
         catch (Exception ex)
@@ -359,10 +356,12 @@ Ez a rövid útmutató azt ismerteti, lépésről lépésre, hogyan, hogy egy eg
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerkedés a C# példák a Githubon](https://aka.ms/csspeech/samples)
+> [Létrehozni és üzembe helyezni egy alapszintű robot](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
 ## <a name="see-also"></a>Lásd még
 
-- [Beszéd fordítása](how-to-translate-speech-csharp.md)
-- [Akusztikai modellek testreszabása](how-to-customize-acoustic-models.md)
-- [Nyelvi modellek testreszabása](how-to-customize-language-model.md)
+- [Hang-és felhőközpontú virtuális asszisztensek kapcsolatban](voice-first-virtual-assistants.md)
+- [Ingyenes beszédszolgáltatások előfizetési kulcs lekérése](get-started.md)
+- [Egyéni ébresztési szavakat](speech-devices-sdk-create-kws.md)
+- [A közvetlen vonal Speech csatlakozni a robot](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [Ismerkedés a C# példák a Githubon](https://aka.ms/csspeech/samples)

@@ -9,16 +9,16 @@ ms.subservice: form-recognizer
 ms.topic: overview
 ms.date: 04/08/2019
 ms.author: pafarley
-ms.openlocfilehash: 8fb382227c71fce7ebe062057adf5edfb90a1a92
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 82ee2aa5627ac5fa4584f5af6b6b80cc2813c667
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65601623"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441833"
 ---
 # <a name="what-is-form-recognizer"></a>Mi a Form Recognizer?
 
-Az Azure Form Recognizer egy Cognitive Services-szolgáltatás, amely gépi tanulási technológiával azonosítja és nyeri ki a kulcs-érték párokat és táblaadatokat az űrlapdokumentumokból. Ezután strukturált adatokat ad vissza, amelyek tartalmazzák az eredeti fájlban lévő kapcsolatokat. Az egyéni űrlap felismerő modell egy egyszerű REST API használatával csökkenthető, és egyszerűen integrálhatja a munkafolyamat vagy alkalmazás hívása. A kezdéshez csak kell öt űrlap dokumentumok vagy egy ugyanolyan típusú, mint a bemeneti anyagot találhat az üres formájában. Gyorsan hozzáférhet pontos eredményeket, amelyek az adott tartalom (nagy erőforrásigényű) kézi beavatkozás vagy kiterjedt data science szakértelem nélkül.
+Az Azure Form Recognizer egy Cognitive Services-szolgáltatás, amely gépi tanulási technológiával azonosítja és nyeri ki a kulcs-érték párokat és táblaadatokat az űrlapdokumentumokból. Ezután strukturált adatokat ad vissza, amelyek tartalmazzák az eredeti fájlban lévő kapcsolatokat. Az egyéni űrlap felismerő modell egy egyszerű REST API használatával csökkenthető, és egyszerűen integrálhatja a munkafolyamat vagy alkalmazás hívása. A kezdéshez csak kell öt kitöltött dokumentumok vagy két ki vannak töltve űrlap plusz egy ugyanolyan típusú, mint a bemeneti anyagot találhat az üres formájában. Gyorsan hozzáférhet pontos eredményeket, amelyek az adott tartalom (nagy erőforrásigényű) kézi beavatkozás vagy kiterjedt data science szakértelem nélkül.
 
 ## <a name="request-access"></a>Hozzáférés kérése
 Űrlap felismerő egy korlátozott hozzáférésű előzetes verzióban érhető el. Töltse ki az előzetes verzió eléréséhez, és küldje el a [űrlap felismerő hozzáférési kérelem](https://aka.ms/FormRecognizerRequestAccess) űrlap. Az űrlap kér információt, a vállalat és a felhasználói forgatókönyvet, amely űrlap felismerő fog használni. Ha a kérést az Azure Cognitive Services-csapat jóváhagyja, kap egy e-mailt a szolgáltatás eléréséhez szükséges utasításokat.
@@ -35,22 +35,7 @@ Után a modell betanítását, tesztelése és újratanítása azt, és végül,
 
 ## <a name="input-requirements"></a>A bemeneti követelmények
 
-Űrlap felismerő működik a fenti követelményeknek megfelelő bemeneti dokumentum:
-
-* Formátumban kell lennie, JPG, PNG vagy PDF-fájl (szöveges vagy beolvasott). Beágyazott szöveg PDF-fájlok nincsenek ajánlott, mert nem fordulhat elő hiba karakterfelismerés és helyen.
-* Fájl mérete kisebb, mint 4 megabájt (MB) kell lennie.
-* Képek a dimenziók 50 x 50 képpont méretű és 4200 x 4200 képpont között kell lennie.
-* Nyomtatott dokumentumok gépről beolvasott, űrlapok magas színvonalú vizsgálatok kell lennie.
-* Szöveg kell használnia a Latin ábécében (angol nyelvű karakter).
-* Adatok (nem kézzel írott) kell nyomtatni.
-* Kulcsokat és értékeket kell tartalmaznia.
-* Kulcsokkal fölött, vagy az értékek, de nem alábbi balra vagy jobbra is megjelenhetnek.
-
-Űrlap felismerő jelenleg nem támogatja az ilyen típusú bemeneti adatok:
-
-* Összetett táblázatok (beágyazott táblákat, egyesített fejlécek vagy cellák és így tovább).
-* Jelölőnégyzetek vagy választógomb gombot.
-* PDF-dokumentumok hosszabb, mint az 50.
+[!INCLUDE [input requirements](./includes/input-requirements.md)]
 
 ## <a name="where-do-i-start"></a>Hogyan kezdjek hozzá?
 
@@ -68,7 +53,7 @@ A következő API-k használatával betanítása és strukturált adatok kinyer�
 
 | REST API | Leírás |
 |-----|-------------|
-| Betanítás | Az űrlapok elemzése ugyanabból a típusú öt űrlapok vagy egy üres képernyő használatával új modell betanításához.  |
+| Betanítás | Az űrlapok elemzése ugyanolyan típusú öt űrlapok használatával új modell betanításához. Vagy egy üres képernyő és a két ki vannak töltve űrlap betanításához.  |
 | Elemzés  |Egyetlen dokumentum, kulcs-érték párok és táblák kibontani az űrlapot a egyéni modell adatfolyamként átadott elemzése.  |
 
 Fedezze fel a [REST API-referencia dokumentumban](https://aka.ms/form-recognizer/api). 

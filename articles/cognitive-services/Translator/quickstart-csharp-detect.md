@@ -3,19 +3,19 @@ title: 'Gyors útmutató: Szöveg nyelvfelismerés C# – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban megismerheti, hogyan észleli a .NET Core és a Translator Text REST API használatával megadott szöveg nyelvét fogja.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/13/2019
-ms.author: erhopf
-ms.openlocfilehash: 76e97a5241c1e39d02d8f33bf1894743d32e6244
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: swmachan
+ms.openlocfilehash: eaf9fa86437d2c69a9a1a68fba797f69c1339dd1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67123403"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448242"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-c"></a>Gyors útmutató: A Translator Text API használatával észleli a szöveg nyelv használatávalC#
 
@@ -178,6 +178,8 @@ foreach (DetectResult o in deserializedOutput)
 }
 ```
 
+Ha egy több szolgáltatást a Cognitive Services-előfizetést használ, akkor is tartalmaznia kell a `Ocp-Apim-Subscription-Region` az a kérelem paramétereit. [További információ a több szolgáltatásos előfizetéshez való hitelesítés közben](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
+
 ## <a name="put-it-all-together"></a>Az alkalmazás összeállítása
 
 Az utolsó lépés az, hogy a hívás `DetectTextRequest()` a a `Main` függvény. Keresse meg `static void Main(string[] args)` és cserélje le ezt a kódot:
@@ -195,7 +197,6 @@ static async Task Main(string[] args)
     await DetectTextRequest(subscriptionKey, host, route, breakSentenceText);
 }
 ```
-
 ## <a name="run-the-sample-app"></a>Mintaalkalmazás futtatása
 
 Ennyi az egész, készen áll a mintaalkalmazás futtatásához. A parancssor (vagy a terminál-munkamenetben) lépjen a projektkönyvtárba, majd futtassa:

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 5/24/2019
 ms.author: travisw
-ms.openlocfilehash: 5991388e47981c83eec24b0d8f955f7c292180da
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7e82b2ef9500defe0d08351da1e3487e4671155f
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67081532"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67467041"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-in-java-on-android-by-using-the-speech-sdk"></a>Gyors útmutató: Hozzon létre egy hang-és felhőközpontú virtuális asszisztensek a Java Android rendszeren a Speech SDK-val
 
@@ -30,15 +30,12 @@ Ez az alkalmazás a Speech SDK Maven-csomag és az Android Studio 3.3 épül. A 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Azure-előfizetés beszédszolgáltatások a kulcsot a **westus2** régióban. Ez az előfizetés létrehozása a [az Azure portal](https://portal.azure.com).
+* Egy Azure-előfizetés beszédszolgáltatások kulcs. [Igényeljen ingyenesen egy](get-started.md) vagy hozza létre a [az Azure portal](https://portal.azure.com).
 * Egy korábban létrehozott bot konfigurálva a [közvetlen vonal beszédfelismerő csatornát](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 * [Az Android Studio](https://developer.android.com/studio/) v3.3 vagy újabb
- 
-    > [!NOTE]
-    > A közvetlen vonal Speech (előzetes verzió) jelenleg csak az elérhető a **westus2** régióban.
 
     > [!NOTE]
-    > A 30 napos próbaverziójára, a standard tarifacsomag ismertetett [próbálja ki ingyenesen beszédszolgáltatások](get-started.md) korlátozódik **westus** (nem **westus2**) és így nem kompatibilis a közvetlen Sor Speech. Ingyenes és standard szintje **westus2** előfizetések kompatibilisek.
+    > A közvetlen vonal Speech (előzetes verzió) egy részhalmazát beszédszolgáltatások régiók jelenleg érhető el. Tekintse meg [hang-és felhőközpontú virtuális asszisztensek támogatott régiók listáját](regions.md#Voice-first virtual assistants) és ellenőrizze, hogy az erőforrások üzembe ezen régiók egyikében.
 
 ## <a name="create-and-configure-a-project"></a>Projekt létrehozása és konfigurálása
 
@@ -126,8 +123,8 @@ A szöveg és a felhasználói felületének grafikus ábrázolása kell kinézn
 
     import com.microsoft.cognitiveservices.speech.audio.AudioConfig;
     import com.microsoft.cognitiveservices.speech.audio.PullAudioOutputStream;
-    import com.microsoft.cognitiveservices.speech.dialog.BotConnectorConfig;
-    import com.microsoft.cognitiveservices.speech.dialog.SpeechBotConnector;
+    import com.microsoft.cognitiveservices.speech.dialog.DialogServiceConfig;
+    import com.microsoft.cognitiveservices.speech.dialog.DialogServiceConnector;
 
     import org.json.JSONException;
     import org.json.JSONObject;
@@ -139,10 +136,10 @@ A szöveg és a felhasználói felületének grafikus ábrázolása kell kinézn
         private static String channelSecret = "YourChannelSecret";
         // Replace below with your own speech subscription key
         private static String speechSubscriptionKey = "YourSpeechSubscriptionKey";
-        // Replace below with your own speech service region (note: only 'westus2' is currently supported)
+        // Replace below with your own speech service region (note: only a subset of regions are currently supported)
         private static String serviceRegion = "YourSpeechServiceRegion";
 
-        private SpeechBotConnector botConnector;
+        private DialogServiceConnector connector;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -160,24 +157,24 @@ A szöveg és a felhasználói felületének grafikus ábrázolása kell kinézn
         }
 
         public void onBotButtonClicked(View v) {
-            // Recreate the SpeechBotConnector on each button press, ensuring that the existing one is closed
-            if (botConnector != null) {
-                botConnector.close();
-                botConnector = null;
+            // Recreate the DialogServiceConnector on each button press, ensuring that the existing one is closed
+            if (connector != null) {
+                connector.close();
+                connector = null;
             }
 
-            // Create the SpeechBotConnector from the channel and speech subscription information
-            BotConnectorConfig config = BotConnectorConfig.fromSecretKey(channelSecret, speechSubscriptionKey, serviceRegion);
-            botConnector = new SpeechBotConnector(config, AudioConfig.fromDefaultMicrophoneInput());
+            // Create the DialogServiceConnector from the channel and speech subscription information
+            DialogServiceConfig config = DialogServiceConfig.fromBotSecret(channelSecret, speechSubscriptionKey, serviceRegion);
+            connector = new DialogServiceConnector(config, AudioConfig.fromDefaultMicrophoneInput());
 
             // Optional step: preemptively connect to reduce first interaction latency
-            botConnector.connectAsync();
+            connector.connectAsync();
 
-            // Register the SpeechBotConnector's event listeners
+            // Register the DialogServiceConnector's event listeners
             registerEventListeners();
 
             // Begin sending audio to your bot
-            botConnector.listenOnceAsync();
+            connector.listenOnceAsync();
         }
 
         private void registerEventListeners() {
@@ -185,32 +182,32 @@ A szöveg és a felhasználói felületének grafikus ábrázolása kell kinézn
             TextView activityText = (TextView) this.findViewById(R.id.activityText); // 'activityText' is the ID of your text view
 
             // Recognizing will provide the intermediate recognized text while an audio stream is being processed
-            botConnector.recognizing.addEventListener((o, recoArgs) -> {
+            connector.recognizing.addEventListener((o, recoArgs) -> {
                 recoText.setText("  Recognizing: " + recoArgs.getResult().getText());
             });
 
             // Recognized will provide the final recognized text once audio capture is completed
-            botConnector.recognized.addEventListener((o, recoArgs) -> {
+            connector.recognized.addEventListener((o, recoArgs) -> {
                 recoText.setText("  Recognized: " + recoArgs.getResult().getText());
             });
 
             // SessionStarted will notify when audio begins flowing to the service for a turn
-            botConnector.sessionStarted.addEventListener((o, sessionArgs) -> {
+            connector.sessionStarted.addEventListener((o, sessionArgs) -> {
                 recoText.setText("Listening...");
             });
 
             // SessionStopped will notify when a turn is complete and it's safe to begin listening again
-            botConnector.sessionStopped.addEventListener((o, sessionArgs) -> {
+            connector.sessionStopped.addEventListener((o, sessionArgs) -> {
             });
 
             // Canceled will be signaled when a turn is aborted or experiences an error condition
-            botConnector.canceled.addEventListener((o, canceledArgs) -> {
+            connector.canceled.addEventListener((o, canceledArgs) -> {
                 recoText.setText("Canceled (" + canceledArgs.getReason().toString() + ") error details: {}" + canceledArgs.getErrorDetails());
-                botConnector.disconnectAsync();
+                connector.disconnectAsync();
             });
 
             // ActivityReceived is the main way your bot will communicate with the client and uses bot framework activities.
-            botConnector.activityReceived.addEventListener((o, activityArgs) -> {
+            connector.activityReceived.addEventListener((o, activityArgs) -> {
                 try {
                     // Here we use JSONObject only to "pretty print" the condensed Activity JSON
                     String rawActivity = activityArgs.getActivity().serialize();
@@ -257,7 +254,7 @@ A szöveg és a felhasználói felületének grafikus ábrázolása kell kinézn
 
    * Ahogy korábban már említettük, az `onBotButtonClicked` metódus kezeli azt, ha a gombra kattintanak. Egy gomb megnyomása elindítja a robot való egyetlen interakció ("be").
 
-   * A `registerEventListeners` módszer bemutatja az események SpeechBotConnector és egyszerű kezelését a bejövő tevékenységek által használt.
+   * A `registerEventListeners` módszer bemutatja az események által használt a `DialogServiceConnector` és bejövő tevékenységek egyszerű kezelését.
 
 1. Ugyanebben a fájlban cserélje le a konfigurációs karakterláncokat az erőforrások megfelelően:
 
@@ -265,7 +262,7 @@ A szöveg és a felhasználói felületének grafikus ábrázolása kell kinézn
 
     * A `YourSpeechSubscriptionKey` helyére írja be az előfizetési kulcsot.
 
-    * Cserélje le `YourServiceRegion` együtt a [régió](regions.md) az előfizetéséhez tartozó (Megjegyzés: csak a "westus2" jelenleg támogatott).
+    * Cserélje le `YourServiceRegion` együtt a [régió](regions.md) beszédszolgáltatások régiók csak egy részhalmazát jelenleg támogatott a közvetlen vonal beszédszolgáltatásokkal az előfizetéshez társított. További információkért lásd: [régiók](regions.md#voice-first-virtual-assistants).
 
 ## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
 
@@ -286,9 +283,11 @@ Után az alkalmazás és a hozzá tartozó tevékenység üzemeltet, kattintson 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ismerkedés a Java-példák a Githubon](https://aka.ms/csspeech/samples)
-> [Csatlakozás közvetlen vonal beszédfelismerés robotjait](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+> [Létrehozni és üzembe helyezni egy alapszintű robot](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
 ## <a name="see-also"></a>Lásd még
 - [Hang-és felhőközpontú virtuális asszisztensek kapcsolatban](voice-first-virtual-assistants.md)
+- [Ingyenes beszédszolgáltatások előfizetési kulcs lekérése](get-started.md)
 - [Egyéni ébresztési szavakat](speech-devices-sdk-create-kws.md)
+- [A közvetlen vonal Speech csatlakozni a robot](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [Ismerkedés a Java-példák a Githubon](https://aka.ms/csspeech/samples)

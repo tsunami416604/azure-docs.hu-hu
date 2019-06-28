@@ -6,13 +6,13 @@ ms.author: raagyema
 ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
-ms.date: 5/16/2019
-ms.openlocfilehash: 94988f4f287730c69b51e44bcbfa4e3d63d139fa
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.date: 06/25/2019
+ms.openlocfilehash: 421d5cde46b466c0c13a52755abdf137e52f2f6b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515697"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443106"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Oktatóanyag: Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure portal használatával tervezése
 
@@ -56,7 +56,7 @@ Kövesse az alábbi lépéseket az Azure-adatbázis PostgreSQL-kiszolgálóhoz l
     Adatforrás | *Nincsenek* | Válassza ki *nincs* az új kiszolgáló létrehozása az alapoktól. (Ha egy meglévő Azure Database for PostgreSQL-kiszolgáló georedundáns biztonsági mentéséből hoz létre kiszolgálót, válassza a *Biztonsági mentés* lehetőséget).
     Rendszergazdai felhasználónév |*myadmin*| A kiszolgálóhoz való csatlakozáshoz használt bejelentkezési fiókja. A rendszergazdai bejelentkezési név nem lehet **azure_superuser**, **azure_pg_admin**, **admin**, **administrator**, **root**, **guest** és **public**. Nem kezdődhet a következővel: **pg_** .
     Jelszó |Az Ön jelszava| Egy új jelszó a kiszolgálói rendszergazdai fiók számára. A jelszó 8–128 karakterből állhat. A jelszónak tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: Angol nagybetűs betűket, angol kisbetűs karakterek, számjegyek (0 – 9) és nem alfanumerikus karakterek (!, $, #, %, stb.).
-    Location egység|A felhasználókhoz legközelebb eső régió| A felhasználókhoz legközelebb eső hely.
+    Location|A felhasználókhoz legközelebb eső régió| A felhasználókhoz legközelebb eső hely.
     Version|A legújabb főverzió| A legújabb PostgreSQL-főverzió, hacsak nincsenek más konkrét követelmények.
     Számítás és tárolás | **Általános célú**, **5. generációs**, **2 virtuális mag**, **5 GB**, **7 nap**, **Georedundáns** | Az új kiszolgáló számítási, tárolási és biztonsági mentési konfigurációi. Válassza ki **kiszolgáló konfigurálása**. majd az **Általános célú** lapot. *Velikost haldy 5*, *4 virtuális magot kapnak*, *100 GB-os*, és *7 nap* az alapértelmezett értékei lesznek **számítási generáció**,  **virtuális mag**, **tárolási**, és **biztonsági mentések megőrzési időszaka**. Hagyhatja ezeket, vagy módosítsa a csúszkák. A kiszolgáló georedundáns tárhelyre való biztonsági mentésének engedélyezéséhez válassza a **Biztonsági másolat redundanciabeállításai** területen a **Georedundáns** lehetőséget. A tarifacsomag beállításának mentéséhez válassza az **OK** gombot. A következő képernyőkép ezeket a beállításokat tartalmazza.
 
@@ -88,7 +88,7 @@ Az Azure Database for PostgreSQL szolgáltatás a kiszolgáló szintjén haszná
 
 2. A kiszolgáló lapján válassza a **Kapcsolatbiztonság** elemet. 
 
-3. Kattintson a **Szabálynév** alatti szövegmezőbe, és adjon hozzá egy új tűzfalszabályt az IP-címtartomány összekapcsolhatóságának engedélyezéséhez. Adja meg az IP-címtartományt. Kattintson a **Save** (Mentés) gombra.
+3. Kattintson a szövegmező alatt található **szabálynév,** , és adjon hozzá egy új tűzfalszabályt az IP-címtartomány megadásához. Adja meg az IP-címtartományt. Kattintson a **Save** (Mentés) gombra.
 
    ![Azure-adatbázis PostgreSQL-hez - Tűzfalszabály létrehozása](./media/tutorial-design-database-using-azure-portal/5-firewall-2.png)
 
@@ -113,38 +113,36 @@ Amikor létrehozta az Azure Database for PostgreSQL-kiszolgálót, az alapértel
    ![Azure-adatbázis PostgreSQL-hez - Kiszolgáló-rendszergazdai bejelentkezés](./media/tutorial-design-database-using-azure-portal/6-server-name.png)
 
 
-## <a name="connect-to-postgresql-database-using-psql-in-cloud-shell"></a>Csatlakozás a PostgreSQL-adatbázishoz a psql használatával a Cloud Shell-ben
+## <a name="connect-to-postgresql-database-using-psql"></a>Csatlakozás a PostgreSQL-adatbázishoz a psql használatával
+Ha az ügyfélszámítógépen telepítve van a PostgreSQL, akkor használhatja a [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) helyi példányát vagy az Azure Cloud Console-t az Azure PostgreSQL-kiszolgálóhoz való csatlakozáshoz. Használjuk a psql parancssori segédprogramot az Azure-adatbázis PostgreSQL-kiszolgálóhoz való kapcsolódáshoz.
 
-Használjuk a [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) parancssori segédprogramot az Azure Database for PostgreSQL-kiszolgálóhoz való kapcsolódáshoz. 
-1. Indítsa el az Azure Cloud Shell-t a felső navigációs ablakban található terminálikonnal.
-
-   ![Azure-adatbázis PostgreSQL-hez - Azure Cloud Shell terminálikon](./media/tutorial-design-database-using-azure-portal/7-cloud-shell.png)
-
-2. Az Azure Cloud Shell megnyílik a böngészőben, amely lehetővé teszi a bash-parancsok beírását.
-
-   ![Azure-adatbázis PostgreSQL-hez - Azure Shell Bash parancssor](./media/tutorial-design-database-using-azure-portal/8-bash.png)
-
-3. A Cloud Shell parancssornál csatlakozzon az Azure-adatbázis PostgreSQL-kiszolgálóhoz a psql-parancsok használatával. A következő formátum segítségével kapcsolódhat egy [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) segédprogrammal rendelkező Azure-adatbázis PostgreSQL-kiszolgálóhoz:
-   ```bash
-   psql --host=<myserver> --port=<port> --username=<server admin login> --dbname=<database name>
+1. Futtassa a következő psql-parancsot az Azure Database for PostgreSQL-adatbázishoz való kapcsolódáshoz:
+   ```
+   psql --host=<servername> --port=<port> --username=<user@servername> --dbname=<dbname>
    ```
 
-   Például a következő parancs a **postgres** nevű alapértelmezett adatbázishoz kapcsolódik a **mydemoserver.postgres.database.azure.com** PostgreSQL-kiszolgálón a hozzáférési hitelesítő adatok használatával. Adja meg a kiszolgáló-rendszergazdai jelszavát, amikor a rendszer kéri.
-
-   ```bash
+   Például a következő parancs a **postgres** nevű alapértelmezett adatbázishoz kapcsolódik a **mydemoserver.postgres.database.azure.com** PostgreSQL-kiszolgálón a hozzáférési hitelesítő adatok használatával. Adja meg a `<server_admin_password>` kiszolgálói rendszergazdai jelszót, amelyet a jelszó megadásakor választott.
+  
+   ```
    psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
    ```
 
-## <a name="create-a-new-database"></a>Új adatbázis létrehozása
-Miután csatlakozott a kiszolgálóhoz, hozzon létre egy üres adatbázist, amikor a rendszer kéri.
-```bash
-CREATE DATABASE mypgsqldb;
-```
+   > [!TIP]
+   > Ha inkább a Postgres csatlakozni egy URL-címet használja, az URL-cím kódolása a @ karakter a felhasználónevet, a `%40`. Ha például a kapcsolati karakterláncot a psql-jének lenne,
+   > ```
+   > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
+   > ```
 
-Amikor a rendszer kéri, hajtsa végre a következő parancsot, a kapcsolat átváltásához az újonnan létrehozott adatbázisra **mypgsqldb**.
-```bash
-\c mypgsqldb
-```
+2. Miután csatlakozott a kiszolgálóhoz, hozzon létre egy üres adatbázist, amikor a rendszer erre kéri:
+   ```sql
+   CREATE DATABASE mypgsqldb;
+   ```
+
+3. Amikor a rendszer kéri, hajtsa végre a következő parancsot, hogy az újonnan létrehozott **mypgsqldb** adatbázishoz kapcsolódhasson:
+   ```sql
+   \c mypgsqldb
+   ```
+
 ## <a name="create-tables-in-the-database"></a>Táblák létrehozása az adatbázisban
 Most, hogy tudja, hogyan csatlakozhat az Azure Database for PostgreSQL szolgáltatáshoz, elvégezhet néhány alapvető feladatot:
 

@@ -6,26 +6,24 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 05/24/2019
+ms.date: 06/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1013d16295c0348593a207b1af5e0d0d399dd116
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: e1a52072ab3309454742d2d3e8582b58a33666e3
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295325"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448710"
 ---
-# <a name="tutorial-build-an-apache-spark-machine-learning-application-in-hdinsight"></a>Oktatóanyag: Az Apache Spark machine learning-alkalmazás a HDInsight létrehozása 
+# <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Oktatóanyag: Az Apache Spark machine learning-az Azure HDInsight application készítése 
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan használhatja a [Jupyter Notebook](https://jupyter.org/) hozhat létre egy [Apache Spark](https://spark.apache.org/) machine learning-alkalmazás az Azure HDInsight. 
+Ebben az oktatóanyagban elsajátíthatja, hogyan használhatja a [Jupyter Notebook](https://jupyter.org/) hozhat létre egy [Apache Spark](https://spark.apache.org/) machine learning-alkalmazás az Azure HDInsight.
 
 Az [MLib](https://spark.apache.org/docs/latest/ml-guide.html) a Spark skálázható Machine Learning-kódtára, amely gyakori tanulási algoritmusokat és segédeszközöket tartalmaz, beleértve a besorolást, regressziót, fürtözést, együttműködési szűrést, dimenziócsökkentést, valamint mögöttes optimalizálási primitíveket.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Az Apache Spark machine learning-alkalmazás fejlesztése
-
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,7 +33,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="understand-the-data-set"></a>Az adatkészlet értelmezése
 
-Az alkalmazás a minta HVAC.csv fájl adatait használja, amely alapértelmezés szerint minden fürtön elérhető. A fájl `\HdiSamples\HdiSamples\SensorSampleData\hvac`. Az adatok néhány HVAC-rendszerrel felszerelt épület célhőmérsékletét és jelenlegi hőmérsékletét mutatják. A **System** (Rendszer) oszlop tartalmazza a rendszer-azonosítót, míg a **SystemAge** (Rendszer kora) oszlop azt mutatja, hogy az épületben hány éve működik a HVAC-rendszer. Az adatokból egy rendszer-azonosító és a rendszer kora alapján előrejelezhető, hogy egy épület melegebb vagy hidegebb lesz-e a célhőmérséklet alapján.
+Az alkalmazás használja a minta **HVAC.csv** alapértelmezés szerint minden fürtön elérhető adatokat. A fájl `\HdiSamples\HdiSamples\SensorSampleData\hvac`. Az adatok néhány HVAC-rendszerrel felszerelt épület célhőmérsékletét és jelenlegi hőmérsékletét mutatják. A **System** (Rendszer) oszlop tartalmazza a rendszer-azonosítót, míg a **SystemAge** (Rendszer kora) oszlop azt mutatja, hogy az épületben hány éve működik a HVAC-rendszer. Az adatokból egy rendszer-azonosító és a rendszer kora alapján előrejelezhető, hogy egy épület melegebb vagy hidegebb lesz-e a célhőmérséklet alapján.
 
 ![Pillanatkép a Spark Machine Learning-példához használt adatokról](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "Pillanatkép a Spark Machine Learning-példához használt adatokról")
 
@@ -44,7 +42,8 @@ Az alkalmazás a minta HVAC.csv fájl adatait használja, amely alapértelmezés
 Ebben az alkalmazásban egy Spark [ML-folyamat](https://spark.apache.org/docs/2.2.0/ml-pipeline.html) által fogja elvégezni egy dokumentum besorolását. A gépi tanulási folyamatok egységes, magas szintű API-kat tartalmaznak. Ezek olyan adathalmazokra épülnek, amelyek segítenek a gépi tanulási folyamatok létrehozásában és finomhangolásában. A folyamat során a dokumentumokat szavakra osztja fel, a szavakat átalakítja egy numerikus vektorrá, majd végül a vektorok és címkék alapján létrehoz egy előrejelzési modellt. Az alkalmazást az alábbi lépések végrehajtásával hozhatja létre.
 
 1. Hozzon létre egy Jupyter notebookot a PySpark-kernellel. Az utasításokért lásd: [Jupyter notebook létrehozása](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook).
-2. Importálja a forgatókönyvhöz szükséges típusokat. Illessze be a következő kódrészletet egy üres cellába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt. 
+
+1. Importálja a forgatókönyvhöz szükséges típusokat. Illessze be a következő kódrészletet egy üres cellába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt. 
 
     ```PySpark
     from pyspark.ml import Pipeline
@@ -86,9 +85,9 @@ Ebben az alkalmazásban egy Spark [ML-folyamat](https://spark.apache.org/docs/2.
     training = documents.toDF()
     ```
 
-    A kódrészletben adjon meg egy függvényt, amely összehasonlítja a jelenlegi hőmérsékletet a célhőmérséklettel. Ha a jelenlegi hőmérséklet a magasabb, akkor az épület meleg, ezt az **1.0** érték jelzi. Ellenkező esetben az épület hideg, amit a **0.0** érték jelez. 
+    A kódrészletben adjon meg egy függvényt, amely összehasonlítja a jelenlegi hőmérsékletet a célhőmérséklettel. Ha a jelenlegi hőmérséklet a magasabb, akkor az épület meleg, ezt az **1.0** érték jelzi. Ellenkező esetben az épület hideg, amit a **0.0** érték jelez.
 
-4. Konfigurálja a Spark Machine Learning-folyamatot, amely három lépést tartalmaz: tokenizer, hashingTF és lr. 
+4. Konfigurálja a Spark Machine Learning-folyamatot, amely három lépést tartalmaz: tokenizer, hashingTF és lr.
 
     ```PySpark
     tokenizer = Tokenizer(inputCol="SystemInfo", outputCol="words")
@@ -100,20 +99,20 @@ Ebben az alkalmazásban egy Spark [ML-folyamat](https://spark.apache.org/docs/2.
     További információ a folyamat és annak működéséről: [Apache Spark machine learning-folyamat](https://spark.apache.org/docs/latest/ml-pipeline.html).
 
 5. Igazítsa a folyamatot a betanítási dokumentumhoz.
-   
+
     ```PySpark
     model = pipeline.fit(training)
     ```
 
 6. Ellenőrizze a betanítási dokumentumban az alkalmazás előrehaladási állapotát.
-   
+
     ```PySpark
     training.show()
     ```
    
     Az eredmény az alábbihoz hasonlóan fog kinézni:
 
-    ```
+    ```output
     +----------+----------+-----+
     |BuildingID|SystemInfo|label|
     +----------+----------+-----+
@@ -147,8 +146,8 @@ Ebben az alkalmazásban egy Spark [ML-folyamat](https://spark.apache.org/docs/2.
     Figyelje meg, hogy a tényleges hőmérséklet alacsonyabb, mint a célhőmérséklet, ami arra utal, hogy az épület hideg. Ezért a betanítási anyag kimenetének első sorában található **label** (címke) értéke **0.0**, ami azt jelenti, hogy az épület nem meleg.
 
 7. Készítsen elő egy adathalmazt, amelyen lefuttatja a betanított modellt. Ehhez meg kell adnia a rendszer azonosítóját és korát (amit a tanítás kimenetében a **SystemInfo** tulajdonság jelöl), a modell pedig előrejelzi, hogy az adott azonosítójú és korú rendszerrel felszerelt épület melegebb (1.0) vagy hűvösebb (0.0) lesz-e.
-   
-    ```PySpark   
+
+    ```PySpark
     # SystemInfo here is a combination of system ID followed by system age
     Document = Row("id", "SystemInfo")
     test = sc.parallelize([(1L, "20 25"),
@@ -157,10 +156,11 @@ Ebben az alkalmazásban egy Spark [ML-folyamat](https://spark.apache.org/docs/2.
                     (4L, "9 22"),
                     (5L, "17 10"),
                     (6L, "7 22")]) \
-        .map(lambda x: Document(*x)).toDF() 
+        .map(lambda x: Document(*x)).toDF()
     ```
-8. Végül végezze el az előrejelzést a tesztadatok alapján. 
-   
+
+8. Végül végezze el az előrejelzést a tesztadatok alapján.
+
     ```PySpark
     # Make predictions on test documents and print columns of interest
     prediction = model.transform(test)
@@ -171,7 +171,7 @@ Ebben az alkalmazásban egy Spark [ML-folyamat](https://spark.apache.org/docs/2.
 
     Az eredmény az alábbihoz hasonlóan fog kinézni:
 
-    ```   
+    ```output  
     Row(SystemInfo=u'20 25', prediction=1.0, probability=DenseVector([0.4999, 0.5001]))
     Row(SystemInfo=u'4 15', prediction=0.0, probability=DenseVector([0.5016, 0.4984]))
     Row(SystemInfo=u'16 9', prediction=1.0, probability=DenseVector([0.4785, 0.5215]))
@@ -179,16 +179,33 @@ Ebben az alkalmazásban egy Spark [ML-folyamat](https://spark.apache.org/docs/2.
     Row(SystemInfo=u'17 10', prediction=1.0, probability=DenseVector([0.4925, 0.5075]))
     Row(SystemInfo=u'7 22', prediction=0.0, probability=DenseVector([0.5015, 0.4985]))
     ```
-   
+
    Az előrejelzés első sorában az látható, hogy 20-as azonosítójú, 25 éves HVAC rendszer esetében az épület meleg (**előrejelzés = 1.0**). A DenseVector első értéke (0.49999) a 0.0 előrejelzésnek, a második értéke (0.5001) az 1.0 előrejelzésnek felel meg. A kimenetben – annak ellenére, hogy a második érték csak kicsivel nagyobb – a modell által mutatott előrejelzés: **prediction = 1.0**.
+
 10. Állítsa le a notebookot az erőforrások felszabadításához. Ehhez a notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Ez a művelet leállítja és bezárja a notebookot.
 
 ## <a name="use-anaconda-scikit-learn-library-for-spark-machine-learning"></a>Anaconda scikit-learn kódtár használata a Spark Machine Learninghez
 A HDInsight-alapú Apache Spark-fürtök Anaconda-kódtárakat tartalmaznak. Ezek közé tartozik a **scikit-learn** gépi tanulási kódtár. A kódtár különböző adathalmazokat tartalmaz, amelyek használatával példaalkalmazások hozhatók létre közvetlenül egy Jupyter notebookból. Példák a scikit-learn kódtár használatára: [https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html).
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha nem folytatja az alkalmazás használatához, törölje az alábbi lépéseket követve létrehozott fürtöt:
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+
+1. Az a **keresési** tetején típus **HDInsight**.
+
+1. Válassza ki **HDInsight-fürtök** alatt **szolgáltatások**.
+
+1. A HDInsight-fürtök megjelenő listában válassza ki a **...**  ebben az oktatóanyagban létrehozott fürt mellett.
+
+1. Válassza a **Törlés** elemet. Válassza ki **Igen**.
+
+![HDInsight-fürt törlése](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "HDInsight-fürt törlése")
+
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtudhatta, hogyan hozhat létre egy Apache Spark machine learning-alkalmazás az Azure HDInsight a Jupyter Notebook használatával. A következő oktatóanyag azt mutatja be, hogyan használhatja az IntelliJ IDEA-t Spark-feladatokhoz. 
+Ebben az oktatóanyagban megtudhatta, hogyan hozhat létre egy Apache Spark machine learning-alkalmazás az Azure HDInsight a Jupyter Notebook használatával. A következő oktatóanyag azt mutatja be, hogyan használhatja az IntelliJ IDEA-t Spark-feladatokhoz.
 
 > [!div class="nextstepaction"]
 > [Alkalmazás létrehozása a Scala Maven használatával intellij-vel](./apache-spark-create-standalone-application.md)

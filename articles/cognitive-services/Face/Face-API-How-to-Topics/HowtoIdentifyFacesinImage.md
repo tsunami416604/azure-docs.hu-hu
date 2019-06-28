@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 1696a20094357d084ba54739767509b8d50c4ad5
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: f02f6ebb83f7fbc274797e944d59a5f1e973075c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341293"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67438474"
 ---
 # <a name="example-identify-faces-in-images"></a>Példa: Arcazonosítás képeken
 
@@ -42,10 +42,12 @@ https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&retu
 ```
 
 Alternatív megoldásként adja meg az előfizetési kulcsot a HTTP-kérelem fejléce **ocp-apim-subscription-key: &lt;Az előfizetői&gt;** .
-Egy ügyféloldali kódtár használata esetén az előfizetési kulcs áthalad az FaceServiceClient osztály a konstruktor. Példa:
+Egy ügyféloldali kódtár használata esetén az előfizetési kulcs áthalad az FaceClient osztály a konstruktor. Példa:
  
 ```csharp 
-faceServiceClient = new FaceServiceClient("<Subscription Key>");
+private readonly IFaceClient faceClient = new FaceClient(
+            new ApiKeyServiceClientCredentials("<subscription key>"),
+            new System.Net.Http.DelegatingHandler[] { });
 ```
  
 Az előfizetési kulcsot, keresse fel az Azure Marketplace-en az Azure Portalról. További információkért lásd: [előfizetések](https://azure.microsoft.com/try/cognitive-services/).
@@ -59,17 +61,17 @@ Ebben a lépésben egy "MyFriends" nevű is lehet PersonGroup Anna, számlázás
 ### <a name="step-21-define-people-for-the-persongroup"></a>2\.1. lépés: Adja meg a személyeknek az is lehet PersonGroup.
 A személy az identitás alapegysége. Egy személyhez tartozhat egy vagy több ismert arc is. Egy is lehet PersonGroup személyek gyűjteménye. Mindenki, aki egy adott is lehet PersonGroup van meghatározva. Azonosító egy is lehet PersonGroup alapján történik. A feladat, hogy hozzon létre egy is lehet PersonGroup, és hozza létre a személyek, például Anna, számlázási és Clare.
 
-Először hozzon létre egy új is lehet PersonGroup használatával a [is lehet PersonGroup - létrehozása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) API-t. A megfelelő ügyfélkódtár API a FaceServiceClient osztály CreatePersonGroupAsync metódusa. A csoport azonosítója, amely a csoport létrehozásához megadott egy egyedülálló megoldás minden egyes előfizetés esetén. Akkor is is beolvasása, frissítése vagy törlése Persongroup más is lehet PersonGroup API-k használatával. 
+Először hozzon létre egy új is lehet PersonGroup használatával a [is lehet PersonGroup - létrehozása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) API-t. A megfelelő ügyféloldali kódtár API-t a FaceClient osztály CreatePersonGroupAsync módszer. A csoport azonosítója, amely a csoport létrehozásához megadott egy egyedülálló megoldás minden egyes előfizetés esetén. Akkor is is beolvasása, frissítése vagy törlése Persongroup más is lehet PersonGroup API-k használatával. 
 
 Után egy csoport van definiálva, meghatározhatja a benne lévő személyek a [személy is lehet PersonGroup - létrehozása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) API-t. Az ügykódtár metódusa a CreatePersonAsync. Létrehozásuk után egy ARC adhat hozzá minden egyes személy.
 
 ```csharp 
 // Create an empty PersonGroup
 string personGroupId = "myfriends";
-await faceServiceClient.CreatePersonGroupAsync(personGroupId, "My Friends");
+await faceClient.PersonGroup.CreateAsync(personGroupId, "My Friends");
  
 // Define Anna
-CreatePersonResult friend1 = await faceServiceClient.CreatePersonAsync(
+CreatePersonResult friend1 = await faceClient.PersonGroupPerson.CreateAsync(
     // Id of the PersonGroup that the person belonged to
     personGroupId,    
     // Name of the person
@@ -79,7 +81,7 @@ CreatePersonResult friend1 = await faceServiceClient.CreatePersonAsync(
 // Define Bill and Clare in the same way
 ```
 ### <a name="step2-2"></a> 2.2. lépés: Arcfelismerés, és regisztrálja őket a megfelelő személyekhez
-Az észleléshez „POST” webkérést küldünk a [Face – Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API-nak, a képfájlt a HTTP-kérés törzsébe tesszük. Ha használja az ügyféloldali kódtár, arcfelismerés történik a DetectAsync metódus az FaceServiceClient osztály segítségével.
+Az észleléshez „POST” webkérést küldünk a [Face – Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API-nak, a képfájlt a HTTP-kérés törzsébe tesszük. Ha használja az ügyféloldali kódtár, arcfelismerés történik a DetectAsync metódus az FaceClient osztály segítségével.
 
 Minden olyan lapot észlelt, hívja [is lehet PersonGroup személy – Face hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) a megfelelő személynek történő hozzáadáshoz.
 
@@ -94,7 +96,7 @@ foreach (string imagePath in Directory.GetFiles(friend1ImageDir, "*.jpg"))
     using (Stream s = File.OpenRead(imagePath))
     {
         // Detect faces in the image and add to Anna
-        await faceServiceClient.AddPersonFaceAsync(
+        await faceClient.PersonGroupPerson.AddFaceFromStreamAsync(
             personGroupId, friend1.PersonId, s);
     }
 }
@@ -107,7 +109,7 @@ Ha a lemezkép lapot tartalmaz, csak a legnagyobb face egészül ki. A személy 
 Az is lehet PersonGroup azonosítójának használatával, végrehajtása előtt kell betanítani. Az is lehet PersonGroup kell lennie retrained, miután hozzáad vagy eltávolít minden olyan személy, vagy ha egy személy regisztrált face szerkesztése. A betanítást a [PersonGroup – Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249) API használatával végezzük. Használja az ügyféloldali kódtár, esetén a TrainPersonGroupAsync metódus hívása:
  
 ```csharp 
-await faceServiceClient.TrainPersonGroupAsync(personGroupId);
+await faceClient.PersonGroup.TrainAsync(personGroupId);
 ```
  
 Képzési az egy aszinkron folyamat. Előfordulhat, hogy nem kell befejeződött volna után is a TrainPersonGroupAsync metódus adja vissza. Szüksége lehet a képzés állapotának lekérdezése. Használja a [is lehet PersonGroup - képzési állapotának beolvasása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395247) ügyfélkódtár API-t vagy GetPersonGroupTrainingStatusAsync metódust. A következő kód bemutatja egy egyszerű logikai is lehet PersonGroup Várakozás képzés Befejezés:
@@ -116,7 +118,7 @@ Képzési az egy aszinkron folyamat. Előfordulhat, hogy nem kell befejeződött
 TrainingStatus trainingStatus = null;
 while(true)
 {
-    trainingStatus = await faceServiceClient.GetPersonGroupTrainingStatusAsync(personGroupId);
+    trainingStatus = await faceClient.PersonGroup.GetTrainingStatusAsync(personGroupId);
  
     if (trainingStatus.Status != Status.Running)
     {
@@ -140,10 +142,10 @@ string testImageFile = @"D:\Pictures\test_img1.jpg";
 
 using (Stream s = File.OpenRead(testImageFile))
 {
-    var faces = await faceServiceClient.DetectAsync(s);
+    var faces = await faceClient.Face.DetectAsync(s);
     var faceIds = faces.Select(face => face.FaceId).ToArray();
  
-    var results = await faceServiceClient.IdentifyAsync(personGroupId, faceIds);
+    var results = await faceClient.Face.IdentifyAsync(faceIds, personGroupId);
     foreach (var identifyResult in results)
     {
         Console.WriteLine("Result of face: {0}", identifyResult.FaceId);
@@ -155,7 +157,7 @@ using (Stream s = File.OpenRead(testImageFile))
         {
             // Get top 1 among all candidates returned
             var candidateId = identifyResult.Candidates[0].PersonId;
-            var person = await faceServiceClient.GetPersonAsync(personGroupId, candidateId);
+            var person = await faceClient.PersonGroupPerson.GetAsync(personGroupId, candidateId);
             Console.WriteLine("Identified as {0}", person.Name);
         }
     }

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: b3498cc8c73d74f06eea59c1a87047adf52ca6d4
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: bbab179d5c70274ea5c6ae4120384dd168247298
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357988"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445163"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-java"></a>Gyors útmutató: A Translator Text API segítségével észlelheti a szöveg nyelvét, a Java használatával
 
@@ -108,6 +108,8 @@ Adja hozzá ezeket a sorokat a `Detect` osztály:
 String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
 String url = "https://api.cognitive.microsofttranslator.com/detect?api-version=3.0";
 ```
+
+Ha egy több szolgáltatást a Cognitive Services-előfizetést használ, akkor is tartalmaznia kell a `Ocp-Apim-Subscription-Region` az a kérelem paramétereit. [További információ a több szolgáltatásos előfizetéshez való hitelesítés közben](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
 
 ## <a name="create-a-client-and-build-a-request"></a>Hozzon létre egy ügyfél és a egy kérelem létrehozása
 

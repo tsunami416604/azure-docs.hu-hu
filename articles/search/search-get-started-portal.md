@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Hozzon létre, betöltését és az Azure portal – Azure Search-index lekérdezése'
-description: Hozhat létre, és az első beépített mintaadatok és az adatok importálása varázsló használata az Azure Portalon az Azure Search-index lekérdezése.
+title: 'Gyors útmutató: Hozzon létre, betöltését és használata az Azure portal – Azure Search-index lekérdezése'
+description: Az Azure Portalon az adatok importálása varázsló segítségével létrehozása, betöltése és lekérdezése az első Azure Search-index.
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
@@ -10,14 +10,14 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: e5baa0876dc976553e8e541cef6b481329500bf6
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 90857ec2fabb1b807d3e3001f99ea3897d7d628a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606445"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443871"
 ---
-# <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>Gyors útmutató: Az Azure Search-importálási, az indexelés és a lekérdezések beépített portal-eszközök használata
+# <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>Gyors útmutató: Az Azure portal használatával egy Azure Search-index létrehozása
 > [!div class="op_single_selector"]
 > * [Portál](search-get-started-portal.md)
 > * [PowerShell](search-howto-dotnet-sdk.md)
@@ -56,7 +56,7 @@ A keresési lekérdezések egy [*index*](search-what-is-an-index.md) alapján is
 
 Ebben az oktatóanyagban egy beépített mintaadathalmazt használunk, amely könnyedén bejárható egy [*indexelővel*](search-indexer-overview.md) az **Adatok importálása** varázslón keresztül. Az indexelők adatforrás-specifikus webbejárók, amelyek metaadatokat és tartalmakat képesek olvasni a támogatott Azure-adatforrásokból. Általában az indexelők programozott módon használják, de a portálon hozzáférhetnek azokhoz a **adatimportálás** varázsló. 
 
-### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>1. lépés – az adatok importálása varázsló elindításához, és hozzon létre egy adatforrást
+### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>1\. lépés – az adatok importálása varázsló elindításához, és hozzon létre egy adatforrást
 
 1. Az Azure Search szolgáltatás irányítópultján kattintson **adatimportálás** a parancssávon hozhat létre, és a search-index feltöltéséhez.
 
@@ -70,7 +70,7 @@ Ebben az oktatóanyagban egy beépített mintaadathalmazt használunk, amely kö
 
    ![Cognitive Search következő oldal gomb](media/search-get-started-portal/next-button-add-cog-search.png)
 
-### <a name="step-2---skip-cognitive-skills"></a>2. lépés – Kihagyás kognitív képességek
+### <a name="step-2---skip-cognitive-skills"></a>2\. lépés – Kihagyás kognitív képességek
 
 A varázsló támogatja az egy [kognitív képességeket folyamat](cognitive-search-concept-intro.md) számára a Cognitive Services AI-algoritmusok beépítése az indexelés. 
 
@@ -81,7 +81,7 @@ Azt fogjuk ezt a lépést kihagyhatja a lépést, és helyezze közvetlenül a *
 > [!TIP]
 > Az AI-indexelő például elolvasásával egy [rövid](cognitive-search-quickstart-blob.md) vagy [oktatóanyag](cognitive-search-tutorial-blob.md).
 
-### <a name="step-3---configure-index"></a>3. lépés – index konfigurálása
+### <a name="step-3---configure-index"></a>3\. lépés – index konfigurálása
 
 Az index létrehozása általában egy kódalapú gyakorlatban befejeződött az adatok betöltése előtt. Azonban ez az oktatóanyag azt mutatja, ahogy a varázsló hozhat létre egy alapszintű index fel tud térképezni semmilyen adatforrás esetében. Az indexhez szükség van legalább egy névre és egy mezőgyűjteményre, amely mezők közül az egyiket a dokumentum kulcsaként kell megjelölni. Ez az egyes dokumentumok egyedi azonosítására szolgál. Ezenkívül azt is megadhatja a nyelvi elemzőket vagy javaslattevőket Ha azt szeretné, hogy az automatikus kiegészítés vagy a javasolt lekérdezések.
 
@@ -106,7 +106,7 @@ Alapértelmezés szerint a varázsló átvizsgálja a adatforrást egyedi azonos
 
    ![Következő oldal indexelő létrehozása](media/search-get-started-portal/next-button-create-indexer.png)
 
-### <a name="step-4---configure-indexer"></a>4. lépés – az indexelő konfigurálása
+### <a name="step-4---configure-indexer"></a>4\. lépés – az indexelő konfigurálása
 
 Továbbra is az **Adatok importálása** varázslóban maradva kattintson az **Indexelő** > **Név** lehetőségre, és gépelje be az indexelő nevét.
 
@@ -200,7 +200,7 @@ Az értékkorlátozó szűrők megjelennek a keresési kérésekben. A facet par
 
 #### <a name="example-faceted-with-scope-reduction-searchfacetcitytop2"></a>Példa (hatókörszűkítéssel korlátozva): `search=*&facet=city&$top=2`
 
-* A **search=*** egy üres keresés. Az üres keresések mindenben keresnek. Az üres lekérdezések elküldésének egyik oka a teljes dokumentumkészlet szűrése vagy értékkorlátozása lehet. Például akkor, ha azt szeretné, hogy egy értékkorlátozó navigációs szerkezet az index összes városából álljon.
+* A **search=** * egy üres keresés. Az üres keresések mindenben keresnek. Az üres lekérdezések elküldésének egyik oka a teljes dokumentumkészlet szűrése vagy értékkorlátozása lehet. Például akkor, ha azt szeretné, hogy egy értékkorlátozó navigációs szerkezet az index összes városából álljon.
 
 * A **facet** paraméter olyan navigációs szerkezetet ad vissza, amelyet továbbíthat egy felhasználói felületi vezérlőnek. Kategóriákat és egy számot ad vissza. Jelen esetben a kategóriák alapját a városok száma jelenti. Az Azure Searchben nincs összesítés, de megbecsülheti az összesítést a `facet` használatával, amely az egyes kategóriákban lévő dokumentumok számát adja meg.
 

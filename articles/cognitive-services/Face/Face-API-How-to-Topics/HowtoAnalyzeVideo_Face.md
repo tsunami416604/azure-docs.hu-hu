@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 936c516385c88191428a46d22c14b3991885340b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b175e68277ab456bea7eaa7b82619d61e45bf722
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60816163"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442742"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>Példa: Videók valós idejű elemzése
 
@@ -160,7 +160,9 @@ namespace VideoFrameConsoleApplication
             FrameGrabber<Face[]> grabber = new FrameGrabber<Face[]>();
             
             // Create Face API Client. Insert your Face API key here.
-            FaceServiceClient faceClient = new FaceServiceClient("<Subscription Key>");
+            private readonly IFaceClient faceClient = new FaceClient(
+            new ApiKeyServiceClientCredentials("<subscription key>"),
+            new System.Net.Http.DelegatingHandler[] { });
 
             // Set up our Face API call.
             grabber.AnalysisFunction = async frame => return await faceClient.DetectAsync(frame.Image.ToMemoryStream(".jpg"));
@@ -213,7 +215,7 @@ A minta használatához hajtsa végre az alábbi lépéseket:
 
 Ha készen áll, integrálni **hivatkozhat a saját projektek a VideoFrameAnalyzer könyvtárban.** 
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ebben az útmutatóban megismerhette, közel valós idejű elemzés futtatása az élő video-adatfolyamokat a Face, a Computer Vision és az Emotion API-k használatával, és hogyan használható a mintakód a kezdéshez. Kiindulópontként használhat az alkalmazás ingyenes API-val, a kulcsok a [Azure Cognitive Services-előfizetés lapján](https://azure.microsoft.com/try/cognitive-services/). 
 

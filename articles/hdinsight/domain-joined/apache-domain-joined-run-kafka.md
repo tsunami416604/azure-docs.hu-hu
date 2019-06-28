@@ -6,17 +6,17 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
-ms.date: 06/18/2019
-ms.openlocfilehash: 3a7d3a5d066db349bd3002b244d3a9f88777369b
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 06/24/2019
+ms.openlocfilehash: ba16a975aa3b1e60393006ef49a7e422c572931e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274346"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441373"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Oktatóanyag: Az Apache Kafka-házirendek konfigurálása a HDInsight vállalati biztonsági csomaggal (előzetes verzió)
 
-Megtudhatja, hogyan konfigurálhatja a vállalati biztonsági csomag (ESP) az Apache Kafka-fürtök az Apache Ranger-házirendet. Az ESP-fürtök egy tartományhoz csatlakoznak, lehetővé téve a felhasználók számára a tartományi hitelesítő adatokkal való hitelesítést. Ebben az oktatóanyagban két Ranger-házirendet hoz létre, amelyek korlátozzák a hozzáférést a `sales*` és `marketingspend` témakörökhöz.
+Megtudhatja, hogyan konfigurálhatja a vállalati biztonsági csomag (ESP) az Apache Kafka-fürtök az Apache Ranger-házirendet. Az ESP-fürtök egy tartományhoz csatlakoznak, lehetővé téve a felhasználók számára a tartományi hitelesítő adatokkal való hitelesítést. Ebben az oktatóanyagban két Ranger-házirendet hoz létre, amelyek korlátozzák a hozzáférést a `sales` és `marketingspend` témakörökhöz.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -26,20 +26,13 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Témakörök létrehozása egy Kafka-fürtön
 > * Ranger-házirendek tesztelése
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="prerequisite"></a>Előfeltétel
 
-* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-
-* Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-
-* Hozzon létre egy [HDInsight Kafka-fürtöt az Enterprise Security Package csomaggal](apache-domain-joined-configure-using-azure-adds.md).
+A [HDInsight Kafka-fürt a vállalati biztonsági csomaggal](./apache-domain-joined-configure-using-azure-adds.md).
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Csatlakozás az Apache Ranger felügyeleti felhasználói felületéhez
 
-1. Egy böngészőből lépjen be a Ranger rendszergazdai felhasználói felületére a következő címen: `https://<ClusterName>.azurehdinsight.net/Ranger/`. Ne felejtse el átírni a `<ClusterName>` elemet a Kafka-fürtje nevére.
-
-    > [!NOTE]  
-    > A Ranger hitelesítő adatai nem ugyanazok, mint a Hadoop-fürthöz használt hitelesítő adatok. Ha meg szeretné akadályozni, hogy a böngészők gyorsítótárazott Hadoop hitelesítő adatokat használjanak, egy új InPrivate-böngészőablakból csatlakozzon a Ranger rendszergazdai felhasználói felületéhez.
+1. Egy böngészőből lépjen be a Ranger rendszergazdai felhasználói felületére a következő címen: `https://ClusterName.azurehdinsight.net/Ranger/`. Ne felejtse el átírni a `ClusterName` elemet a Kafka-fürtje nevére. A Ranger hitelesítő adatai nem ugyanazok, mint a Hadoop-fürthöz használt hitelesítő adatok. Ha meg szeretné akadályozni, hogy a böngészők gyorsítótárazott Hadoop hitelesítő adatokat használjanak, egy új InPrivate-böngészőablakból csatlakozzon a Ranger rendszergazdai felhasználói felületéhez.
 
 2. Jelentkezzen be az Azure Active Directory (AD) rendszergazdai hitelesítő adataival. Az Azure AD rendszergazdai hitelesítő adatok nem azonosak a HDInsight-fürt hitelesítő adataival vagy a Linux rendszerű HDInsight-csomópont SSH hitelesítő adataival.
 
@@ -47,7 +40,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="create-domain-users"></a>Tartományi felhasználók létrehozása
 
-A [HDInsight-fürt létrehozása az Enterprise Security Package csomaggal](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds) oktatóanyag ismerteti a **sales_user** és **marketing_user** tartományi felhasználók létrehozását. Az éles forgatókönyvekben a tartományi felhasználókat az Active Directory-bérlő adja meg.
+A [HDInsight-fürt létrehozása az Enterprise Security Package csomaggal](./apache-domain-joined-configure-using-azure-adds.md) oktatóanyag ismerteti a **sales_user** és **marketing_user** tartományi felhasználók létrehozását. Az éles forgatókönyvekben a tartományi felhasználókat az Active Directory-bérlő adja meg.
 
 ## <a name="create-ranger-policy"></a>Ranger-házirend létrehozása
 
@@ -55,11 +48,11 @@ Hozzon létre egy Ranger-házirendet a **sales_user** és **marketing_user** fel
 
 1. Nyissa meg a **Ranger rendszergazdai felhasználói felületét**.
 
-2. Kattintson a **\<Fürtnév > _kafka** lehetőségre a **Kafka** területen. Előfordulhat, hogy a felsorolásban megjelenik egy előre beállított házirend.
+2. Válassza ki  **\<ClusterName > _kafka** alatt **Kafka**. Előfordulhat, hogy a felsorolásban megjelenik egy előre beállított házirend.
 
-3. Kattintson az **Add New Policy** (Új házirend hozzáadása) lehetőségre, majd adja meg a következő értékeket:
+3. Válassza ki **új házirend hozzáadása** , és adja meg a következő értékeket:
 
-   |**Beállítás**  |**Ajánlott érték**  |
+   |Beállítás  |Ajánlott érték  |
    |---------|---------|
    |Szabályzat neve  |  hdi sales* policy   |
    |Témakör   |  sales* |
@@ -71,16 +64,15 @@ Hozzon létre egy Ranger-házirendet a **sales_user** és **marketing_user** fel
    * \* – Nulla vagy több karaktert helyettesíthet.
    * ? – Egy tetszőleges karaktert helyettesít.
 
-   ![Házirend létrehozása az Apache Ranger rendszergazdai felhasználói felületen](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)   
+   ![Házirend létrehozása az Apache Ranger rendszergazdai felhasználói felületen](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)
 
-   >[!NOTE]
-   >Várjon néhány pillanatot, míg a Ranger szinkronizálódik az Azure AD-vel, ha a rendszer nem tölt be automatikusan egy tartományi felhasználót a **Select User** (Felhasználó kiválasztása) beállításhoz.
+   Várjon néhány pillanatot, míg a Ranger szinkronizálódik az Azure AD-vel, ha a rendszer nem tölt be automatikusan egy tartományi felhasználót a **Select User** (Felhasználó kiválasztása) beállításhoz.
 
-4. A házirend mentéséhez kattintson a **Hozzáadás** gombra.
+4. Válassza ki **Hozzáadás** mentse a szabályzatot.
 
-5. Kattintson az **Add New Policy** (Új házirend hozzáadása) lehetőségre, majd adja meg a következő értékeket:
+5. Válassza ki **új házirend hozzáadása** és adja meg a következő értékeket:
 
-   |**Beállítás**  |**Ajánlott érték**  |
+   |Beállítás  |Ajánlott érték  |
    |---------|---------|
    |Szabályzat neve  |  hdi marketing policy   |
    |Témakör   |  marketingspend |
@@ -89,7 +81,7 @@ Hozzon létre egy Ranger-házirendet a **sales_user** és **marketing_user** fel
 
    ![Házirend létrehozása az Apache Ranger rendszergazdai felhasználói felületen](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png)  
 
-6. A házirend mentéséhez kattintson a **Hozzáadás** gombra.
+6. Válassza ki **Hozzáadás** mentse a szabályzatot.
 
 ## <a name="create-topics-in-a-kafka-cluster-with-esp"></a>Témakörök létrehozása egy Kafka-fürtön az ESP-vel
 
@@ -97,11 +89,11 @@ Két témakör létrehozásához `salesevents` és `marketingspend`:
 
 1. A következő paranccsal nyisson meg egy SSH-kapcsolatot a fürttel:
 
-   ```bash
+   ```cmd
    ssh DOMAINADMIN@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-   Cserélje le `DOMAINADMIN` során konfigurált-fürthöz tartozó rendszergazdai felhasználóval [fürtlétrehozás](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds#create-a-hdinsight-cluster-with-esp), és cserélje le `CLUSTERNAME` a fürt nevére. Ha a rendszer kéri, adja meg a jelszót a rendszergazdai felhasználói fiókkal. Az `SSH` HDInsighttal való használatával kapcsolatos további információkat [az SSH a HDInsighttal való használatáról szóló cikkben](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) találhat.
+   Cserélje le `DOMAINADMIN` során konfigurált-fürthöz tartozó rendszergazdai felhasználóval [fürtlétrehozás](./apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp), és cserélje le `CLUSTERNAME` a fürt nevére. Ha a rendszer kéri, adja meg a jelszót a rendszergazdai felhasználói fiókkal. Az `SSH` HDInsighttal való használatával kapcsolatos további információkat [az SSH a HDInsighttal való használatáról szóló cikkben](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md) találhat.
 
 2. Használja az alábbi parancsokat a fürtnév változóként való mentéséhez és egy JSON-elemző segédprogram, a `jq` telepítéséhez. Ha a rendszer kéri, adja meg a Kafka-fürt nevét.
 
@@ -116,12 +108,11 @@ Két témakör létrehozásához `salesevents` és `marketingspend`:
    export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`; \
    ```
 
-   > [!Note]  
-   > Mielőtt továbblépne, konfigurálnia kell a fejlesztési környezetet, ha még nem tette volna meg. A következő összetevőkre lesz szüksége: Java JDK, Apache Maven, valamint egy SSH-ügyfél SCP-vel. További információkért lásd: [beállítási utasítások](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
-   
+   Mielőtt továbblépne, szükség lehet a fejlesztési környezet beállítása, ha rendelkezik nem tette meg. Szüksége lesz összetevők például a Java JDK, Apache-Maven és SSH-ügyfelet, az SCP-je. További információkért lásd: [beállítási utasítások](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
+
 1. Töltse le az [Apache Kafka tartományhoz csatlakoztatott előállítói és fogyasztói példákat](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
 
-1. Kövesse a lépéseket 2. és 3 alatt **létrehozása és üzembe helyezése a példa** a [oktatóanyag: Az Apache Kafka Producer és Consumer API-k használata](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-producer-consumer-api#build-and-deploy-the-example)
+1. Kövesse a lépéseket 2. és 3 alatt **létrehozása és üzembe helyezése a példa** a [oktatóanyag: Az Apache Kafka Producer és Consumer API-k használata](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example)
 
 1. Futtassa az alábbi parancsot:
 
@@ -154,7 +145,7 @@ Konfigurálva, a Ranger-házirendek alapján **sales_user** termék/felhasználh
 
    Például: `export KAFKABROKERS=wn0-khdicl.contoso.com:9092,wn1-khdicl.contoso.com:9092`
 
-4. Hajtsa végre a 3. lépés alatt **létrehozása és üzembe helyezése a példa** a [oktatóanyag: Az Apache Kafka Producer és Consumer API-k használata](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-producer-consumer-api#build-and-deploy-the-example) annak érdekében, hogy a `kafka-producer-consumer.jar` is rendelkezésre áll **sales_user**.
+4. Hajtsa végre a 3. lépés alatt **létrehozása és üzembe helyezése a példa** a [oktatóanyag: Az Apache Kafka Producer és Consumer API-k használata](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) annak érdekében, hogy a `kafka-producer-consumer.jar` is rendelkezésre áll **sales_user**.
 
 5. Ellenőrizze, hogy **sales_user1** hozhatnak, témakörbe `salesevents` futtassa az alábbi parancsot:
 
@@ -194,7 +185,17 @@ Konfigurálva, a Ranger-házirendek alapján **sales_user** termék/felhasználh
 
    ![A Ranger felhasználói felület házirendnaplózása](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha nem folytatja az alkalmazás használatához, törölje a Kafka-fürt, amely az alábbi lépéseket követve létrehozta:
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Az a **keresési** tetején típus **HDInsight**.
+1. Válassza ki **HDInsight-fürtök** alatt **szolgáltatások**.
+1. A HDInsight-fürtök megjelenő listában kattintson a **...**  ebben az oktatóanyagban létrehozott fürt mellett. 
+1. Kattintson a **Törlés** gombra. Kattintson a **Yes** (Igen) gombra.
+
 ## <a name="next-steps"></a>További lépések
 
-* [Az Apache Kafka a saját kulcs használata](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-byok)
-* [Bevezetés az Apache Hadoop-biztonság, a vállalati biztonsági csomag](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-introduction)
+> [!div class="nextstepaction"]
+> [Az Apache Kafka a saját kulcs használata](../kafka/apache-kafka-byok.md)

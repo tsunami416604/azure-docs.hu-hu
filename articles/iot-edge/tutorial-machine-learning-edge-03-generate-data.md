@@ -8,14 +8,14 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f3cf23f491aad1766f2d4087c440cc080dbe345e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a93b1128fe1ea0e03efc9060f2c3c4a93145f838
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057651"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67432860"
 ---
-# <a name="tutorial-generate-simulated-device-data"></a>Oktatóanyag: Szimulált eszköz adatok létrehozása
+# <a name="tutorial-generate-simulated-device-data"></a>Oktatóanyag: Szimulált eszközadatok létrehozása
 
 > [!NOTE]
 > Ez a cikk egy sorozat része az IoT Edge-ben az Azure Machine Learning használatával kapcsolatos oktatóanyagot. Ha érkezett, ez a cikk közvetlenül, javasoljuk, hogy először a [először cikk](tutorial-machine-learning-edge-01-intro.md) a sorozat a legjobb eredmények.
@@ -153,7 +153,7 @@ A kapott az IoT hubnak küldött adatok a storage-tárolóba, az előző cikkben
 
 1. Kattintson egy ezek a mappák feliratú adatfájlok **00** és **01** megfelelő partícióra.
 
-1. A fájlok nyelven írták [Avro](http://avro.apache.org/) formátumban, de duplán kattint egy ezeket a fájlokat egy új böngészőlapon nyissa meg, és adatok részben jelennek meg. Ha Ehelyett nyissa meg a fájlt a program a rendszer kéri, használhatja a VS Code, és megfelelően alakul.
+1. A fájlok nyelven írták [Avro](https://avro.apache.org/) formátumban, de duplán kattint egy ezeket a fájlokat egy új böngészőlapon nyissa meg, és adatok részben jelennek meg. Ha Ehelyett nyissa meg a fájlt a program a rendszer kéri, használhatja a VS Code, és megfelelően alakul.
 
 1. Nem kell próbál meg olvasni, vagy az adatok értelmezéséhez most; a következő cikkben tesszük azt.
 

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 06/13/2019
-ms.openlocfilehash: fba9159fc4752a701c891fbe92a2e7e8023f0a54
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 06/25/2019
+ms.openlocfilehash: b6ef08be346aebd220b7234253ce45c4615e38a9
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165929"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445512"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Oktatóanyag: Az Apache Kafka on HDInsight az Apache Storm használata
 
@@ -410,7 +410,7 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Storm-fürtök 
       | --- | --- |
       | Előfizetés | Az Azure-előfizetése |
       | Erőforráscsoport | Az erőforrásokat tartalmazó erőforráscsoport. |
-      | Location egység | Az az Azure-régió, amelyben az erőforrások létrejönnek. |
+      | Location | Az az Azure-régió, amelyben az erőforrások létrejönnek. |
       | Kafka-fürt neve | A Kafka-fürt neve. |
       | Storm-fürt neve | A Storm-fürt neve. |
       | Fürt bejelentkezési felhasználóneve | A fürtök rendszergazdai felhasználóneve. |
@@ -629,15 +629,9 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 2. Keresse meg a törölni kívánt erőforráscsoportot, és kattintson a jobb gombbal a lista jobb oldalán lévő __Továbbiak__ gombra (...).
 3. Válassza az __Erőforráscsoport törlése__ elemet, és erősítse meg a választását.
 
-> [!WARNING]  
-> A HDInsight-fürt számlázása a fürt létrehozásakor kezdődik és a fürt törlésekor fejeződik be. A számlázás percalapú, ezért mindig érdemes törölni a fürtöt, ha az már nincs használatban.
-> 
-> A Kafka on HDInsight-fürt törlése a Kafkában tárolt összes adatot is törli.
-
 ## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtudhatta, hogyan használható egy [Apache Storm](https://storm.apache.org/) olvasni és írni topológia [Apache Kafka](https://kafka.apache.org/) a HDInsight. Azt is megtanulta, hogyan tárolhatja az adatokat a [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) kompatibilis, a HDInsight által használt tárterület.
 
-A HDInsight Kafka használatával kapcsolatos további tudnivalókért lásd: a [a Apache Kafka Producer és Consumer API-k](kafka/apache-kafka-producer-consumer-api.md) dokumentumot.
-
-A topológiák Linux-alapú HDInsighton való telepítésével és monitorozásával kapcsolatos információkért tekintse meg [a Linux-alapú HDInsight alatt futó Apache Storm-topológiák üzembe helyezését és felügyeletét](storm/apache-storm-deploy-monitor-topology-linux.md) ismertető dokumentumot.
+> [!div class="nextstepaction"]
+> [Az Apache Kafka Producer és Consumer API-val](kafka/apache-kafka-producer-consumer-api.md)

@@ -5,26 +5,27 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/01/2018
+ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: a0530739428e18d01209f94345ae53dfb743d80b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 12b141f9aa75231adae9f64c57709f290883b420
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239684"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433940"
 ---
-# <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Oktatóanyag: Hajtsa végre a képek besorolása a Custom Vision Service a peremhálózaton
+# <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Oktatóanyag: Képosztályozás végrehajtása a peremhálózaton a Custom Vision Service használatával
 
-Az Azure IoT Edge hatékonyabbá teheti IoT-megoldását a felhőben található számítási feladatok peremhálózatra történő áthelyezése által. Ez a képesség hasznos a nagy mennyiségű adatot feldolgozó szolgáltatások, például számítógépes látástechnológiai modellek esetében. A [Custom Vision Service](../cognitive-services/custom-vision-service/home.md) szolgáltatással egyéni képosztályozókat hozhat létre és helyezhet üzembe tárolóként egy eszközön. Ezzel a két szolgáltatással megállapításokat tehet képekről vagy videostreamekről anélkül, hogy az adatokat először át kellene helyeznie az oldalról. A Custom Vision egy olyan osztályozót biztosít, amely a megállapítások létrehozásához összehasonlítja a képet egy betanított modellel. 
+Az Azure IoT Edge hatékonyabbá teheti IoT-megoldását a felhőben található számítási feladatok peremhálózatra történő áthelyezése által. Ez a képesség hasznos a nagy mennyiségű adatot feldolgozó szolgáltatások, például számítógépes látástechnológiai modellek esetében. A [Custom Vision Service](../cognitive-services/custom-vision-service/home.md) szolgáltatással egyéni képosztályozókat hozhat létre és helyezhet üzembe tárolóként egy eszközön. Ezzel a két szolgáltatással megállapításokat tehet képekről vagy videostreamekről anélkül, hogy az adatokat először át kellene helyeznie az oldalról. A Custom Vision egy olyan osztályozót biztosít, amely a megállapítások létrehozásához összehasonlítja a képet egy betanított modellel.
 
-Egy IoT Edge-eszközön található Custom Vision például meg tudja határozni, hogy egy autópályán az átlagosnál nagyobb vagy kisebb-e a forgalom, vagy hogy egy parkolóház egy bizonyos sorában elérhetők-e parkolóhelyek. Ezeket a megállapításokat műveletvégzés céljából meg lehet osztani egy másik eszközzel. 
+Egy IoT Edge-eszközön található Custom Vision például meg tudja határozni, hogy egy autópályán az átlagosnál nagyobb vagy kisebb-e a forgalom, vagy hogy egy parkolóház egy bizonyos sorában elérhetők-e parkolóhelyek. Ezeket a megállapításokat műveletvégzés céljából meg lehet osztani egy másik eszközzel.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni: 
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
+>
 > * Képosztályozó létrehozása a Custom Vision használatával.
 > * IoT Edge-modul létrehozása, amely lekérdezi a Custom Vision eszközön található webkiszolgálót.
 > * A képosztályozó eredményeinek küldése az IoT Hubnak.
@@ -72,10 +73,11 @@ A képosztályozó létrehozása és betanítása után exportálhatja azt Docke
    | ----- | ----- |
    | Name (Név) | Adja meg a projekt nevét, például az **EdgeTreeClassifier** nevet. |
    | Leírás | Választható projektleírás. |
-   | Erőforráscsoport | Fogadja el az alapértelmezett **Limited trial** (Korlátozott próbaverzió) lehetőséget. |
+   | Erőforráscsoport | Válasszon egyet az Azure-erőforráscsoportok, amely tartalmazza a Custom Vision Service erőforrás vagy **létrehozása új** Ha még nem még felvett egy. |
    | Project Types (Projekttípusok) | **Classification** (Osztályozás) |
-   | Classification Types (Osztályozási típusok) | **Multiclass (single tag per image)** (Multiclass (egyetlen címke képenként)) | 
+   | Classification Types (Osztályozási típusok) | **Multiclass (single tag per image)** (Multiclass (egyetlen címke képenként)) |
    | Tartományok | **General (compact)** (Általános (kompakt)) |
+   | Exportálás képességek | **Alapszintű platformok (Tensorflow, CoreML, ONNX,...)** |
 
 5. Válassza a **Create project** (Projekt létrehozása) lehetőséget.
 

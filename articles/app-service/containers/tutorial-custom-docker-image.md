@@ -16,16 +16,16 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 8463ffcb9d9983ff435c01f75dd48f68bde31767
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 72602cb1fda88497172b1837eab98d5e9ce41776
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62117585"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435431"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Oktatóanyag: Egyéni rendszerkép készítése és futtatása az App Service-ben privát tárolójegyzékből származó
 
-[App Service-ben](app-service-linux-intro.md) biztosít beépített Docker-rendszerképek Linux támogatással a különböző verziók, például a PHP 7.0 és Node.js 4.5. Az App Service a Docker tárolótechnológiát használja beépített és egyéni rendszerképek tárolásához, egy szolgáltatásként nyújtott platformon. Ebben az oktatóanyagban megismerheti, hogyan elkészíthet egy egyéni rendszerképet, és futtassa az App Service-ben. Ez a minta akkor hasznos, ha a beépített rendszerképek nem tartalmazzák a választott nyelvet, vagy ha az alkalmazás egy meghatározott konfigurációt igényel, amelyet a beépített rendszerképek nem tartalmaznak.
+[App Service-ben](app-service-linux-intro.md) biztosít beépített Docker-rendszerképek Linux támogatással a különböző verziók, például a PHP 7.3 és a Node.js 10.14. Az App Service a Docker tárolótechnológiát használja beépített és egyéni rendszerképek tárolásához, egy szolgáltatásként nyújtott platformon. Ebben az oktatóanyagban megismerheti, hogyan elkészíthet egy egyéni rendszerképet, és futtassa az App Service-ben. Ez a minta akkor hasznos, ha a beépített rendszerképek nem tartalmazzák a választott nyelvet, vagy ha az alkalmazás egy meghatározott konfigurációt igényel, amelyet a beépített rendszerképek nem tartalmaznak.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -211,7 +211,7 @@ A webalkalmazás létrehozása után az Azure CLI az alábbi példához hasonló
 
 ### <a name="configure-registry-credentials-in-web-app"></a>A web App alkalmazásban a tárolójegyzék hitelesítő adatainak konfigurálása
 
-Az App Service, kérje le a saját rendszerképét, információkra lesz szüksége a beállításjegyzék és a lemezkép. A Cloud shellben megadnia őket a [ `az webapp config container set` ](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) parancsot. Cserélje le  *\<alkalmazás-neve >*,  *\<azure-tároló-beállításjegyzék-neve >*,  _\<registry-username >_, és  _\<jelszó >_.
+Az App Service, kérje le a saját rendszerképét, információkra lesz szüksége a beállításjegyzék és a lemezkép. A Cloud shellben megadnia őket a [ `az webapp config container set` ](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) parancsot. Cserélje le  *\<alkalmazás-neve >* ,  *\<azure-tároló-beállításjegyzék-neve >* ,  _\<registry-username >_ , és  _\<jelszó >_ .
 
 ```azurecli-interactive
 az webapp config container set --name <app-name> --resource-group myResourceGroup --docker-custom-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0 --docker-registry-server-url https://<azure-container-registry-name>.azurecr.io --docker-registry-server-user <registry-username> --docker-registry-server-password <password>

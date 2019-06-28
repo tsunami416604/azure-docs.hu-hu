@@ -12,18 +12,18 @@ ms.author: joke
 ms.reviwer: sstein
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: eb5066185f9301450a68276dd4b2ce2123231b34
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 53e10636535c553ac5fa17b5f4aac1000cd138bc
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61476063"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445374"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Rugalmasfeladat-ügynök létrehozása a PowerShell használatával
 
 A [rugalmas feladatok](sql-database-job-automation-overview.md#elastic-database-jobs) lehetővé teszik egy vagy több Transact-SQL- (T-SQL-) szkript több adatbázisban történő, párhuzamos futtatását.
 
-Ebben az oktatóanyagban megismerkedhet a lekérdezések több adatbázisban történő futtatásának lépéseivel:
+Ebben az oktatóanyagban elsajátíthatja a lekérdezések futtatása több adatbázisban szükséges lépéseket:
 
 > [!div class="checklist"]
 > * Rugalmasfeladat-ügynök létrehozása
@@ -71,7 +71,7 @@ Get-Module Az.Sql
 
 A rugalmasfeladat-ügynök létrehozásához [feladat-adatbázisként](sql-database-job-automation-overview.md#job-database) használható (S0 vagy magasabb szintű) adatbázisra van szükség. 
 
-*Az alábbi szkript egy új erőforráscsoportot, kiszolgálót és feladat-adatbázisként használható adatbázist hoz létre. A feladatok futtatásához az alábbi szkript létrehoz egy második kiszolgálót is, 2 üres adatbázissal.*
+*Az alábbi szkript egy új erőforráscsoportot, kiszolgálót és feladat-adatbázisként használható adatbázist hoz létre. Az alábbi parancsfájlt is létrehoz egy második kiszolgáló elleni feladatok végrehajtásához két üres adatbázis.*
 
 A rugalmas feladatokhoz nem tartoznak külön elnevezési követelmények, így tetszőleges elnevezési konvenciót alkalmazhat, ha az megfelel [az Azure követelményeinek](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
 
@@ -285,6 +285,23 @@ $JobExecution | Get-AzSqlElasticJobStepExecution
 # Get the job target execution details
 $JobExecution | Get-AzSqlElasticJobTargetExecution -Count 2
 ```
+
+### <a name="job-execution-states"></a>Feladat-végrehajtási állapotok
+
+Az alábbi táblázat a lehetséges feladat-végrehajtási állapotok:
+
+|Állapot|Leírás|
+|:---|:---|
+|**Létrehozva** | A feladat-végrehajtási imént létrehozott, és nincs még folyamatban van.|
+|**InProgress** | A feladat végrehajtása folyamatban van.|
+|**WaitingForRetry** | A feladat végrehajtása nem tudja elvégezni a műveletet, és próbálkozzon újra vár.|
+|**Succeeded** | A feladat végrehajtása sikeresen befejeződött.|
+|**SucceededWithSkipped** | A feladat végrehajtása sikeresen befejeződött, de néhány gyermekre ki lett hagyva.|
+|**Nem sikerült** | A feladat végrehajtása nem sikerült és értékesíthetik az újrapróbálkozásokat.|
+|**TimedOut** | A feladat végrehajtása túllépte az időkorlátot.|
+|**Meg lett szakítva** | A feladat végrehajtása meg lett szakítva.|
+|**Kihagyva** | A feladat végrehajtása a rendszer kihagyta, mert az ugyanazon feladat lépésének egy másik végrehajtása már futott a azonos cél.|
+|**WaitingForChildJobExecutions** | A feladat-végrehajtási vár, hogy a gyermek végrehajtásának befejezéséhez.|
 
 ## <a name="schedule-the-job-to-run-later"></a>A feladat ütemezése későbbi futtatáshoz
 

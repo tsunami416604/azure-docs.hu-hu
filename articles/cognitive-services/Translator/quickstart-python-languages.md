@@ -3,19 +3,19 @@ title: 'Gyors útmutató: Első Python - támogatott nyelvek listáját a Transl
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban lekéri a fordításhoz, átíráshoz és szótárban való kereséshez támogatott nyelvek, valamint példák listáját a Translator Text API és a Python használatával.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 81b2ed578e1731c1848e05a986f27c044c976e7b
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.author: swmachan
+ms.openlocfilehash: 23a850723e4f7b4df2a8fca969380156586d6aae
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340963"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444921"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-python"></a>Gyors útmutató: A Python használatával támogatott nyelvek listáját a Translator Text API használatával
 
@@ -69,6 +69,8 @@ headers = {
     'X-ClientTraceId': str(uuid.uuid4())
 }
 ```
+
+Ha egy több szolgáltatást a Cognitive Services-előfizetést használ, akkor is tartalmaznia kell a `Ocp-Apim-Subscription-Region` az a kérelem paramétereit. [További információ a több szolgáltatásos előfizetéshez való hitelesítés közben](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
 
 ## <a name="create-a-request-to-get-a-list-of-supported-languages"></a>Kérelem létrehozása a támogatott nyelvek listájának lekérésére
 

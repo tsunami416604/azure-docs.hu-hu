@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: raynew
-ms.openlocfilehash: cb8b188f8d5313852ce57481031faafc28e247b3
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 5dbdeeba68ae75069b61bd6dc069279ec3c5e5de
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204314"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443014"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Információk az Azure-beli virtuális gépeken futó SQL Server Backupról
 
@@ -59,7 +59,7 @@ Az Azure Backup nemrég jelentettük be támogatása [EOS SQL-adatbázisai](http
 2. .NET-keretrendszer 4.5.2-es vagy újabb kell telepítenie a virtuális gépen
 3. Az FCI és a tükrözött adatbázisok biztonsági mentés nem támogatott
 
-Összes olyan [szempontok és korlátozások](#feature-consideration-and-limitations) , valamint ezen verziójára érvényesek. Ez a szolgáltatás eddig: általánosan elérhető az idő az ügyfélnek nem kell fizetnie.
+Felhasználók a szolgáltatás eddig: általánosan elérhető az idő nem kell fizetnie. Összes olyan [szempontok és korlátozások](#feature-consideration-and-limitations) , valamint ezen verziójára érvényesek. Könyvtárából tekintse meg a [Előfeltételek](backup-sql-server-database-azure-vms.md#prerequisites) SQL Server 2008 és 2008 R2, amely többek között a kiszolgálókon a védelem konfigurálása előtt a [beállításkulcs](backup-sql-server-database-azure-vms.md#add-registry-key-to-enable-registration) (Ez a lépés nem lenne szükség esetén a szolgáltatás általánosan elérhető).
 
 
 ## <a name="feature-consideration-and-limitations"></a>A szolgáltatás szempontok és korlátozások
@@ -193,13 +193,13 @@ Adjon hozzá **NT AUTHORITY\SYSTEM** és **NT Service\AzureWLBackupPluginSvc** b
 8. Ismételje meg a lépést (1-7 fent) ugyanabban a sorrendben NT Service\AzureWLBackupPluginSvc bejelentkezési hozzáadása az SQL Server-példányt. Ha a bejelentkezés már létezik, győződjön meg arról, azt a sysadmin (rendszergazda) kiszolgálói szerepkörrel rendelkezik, és az állapot Grant engedélyt az adatbázismotorhoz való csatlakozáshoz, és jelentkezzen be az engedélyezve van.
 9. Engedély megadása után **adatbázisok újbóli felderítése** a portálon: Tároló **->** biztonsági mentési infrastruktúra **->** számítási feladatok Azure-beli virtuális gépen:
 
-    ![Adatbázisok újbóli felderítése az Azure Portalon](media/backup-azure-sql-database/sql-rediscover-dbs.png)
+    ![Az Azure portal adatbázisok újbóli felderítése](media/backup-azure-sql-database/sql-rediscover-dbs.png)
 
 Azt is megteheti automatizálhatja a engedélyeket ad adminisztrátori módban a következő PowerShell-parancsok futtatásával. A példány neve alapértelmezés szerint MSSQLSERVER van beállítva. A példány nevét a argumentum a parancsfájlt, ha változás kell lennie:
 
 ```powershell
 param(
-    [Parameter(Mandatory=$false)] 
+    [Parameter(Mandatory=$false)]
     [string] $InstanceName = "MSSQLSERVER"
 )
 if ($InstanceName -eq "MSSQLSERVER")
@@ -211,7 +211,7 @@ else
     $fullInstance = $env:COMPUTERNAME + "\" + $InstanceName   # In case of named instance
 }
 try
-{ 
+{
     sqlcmd.exe -S $fullInstance -Q "sp_addsrvrolemember 'NT Service\AzureWLBackupPluginSvc', 'sysadmin'" # Adds login with sysadmin permission if already not available
 }
 catch
@@ -220,7 +220,7 @@ catch
     Write-Host $_.Exception|format-list -force
 }
 try
-{ 
+{
     sqlcmd.exe -S $fullInstance -Q "sp_addsrvrolemember 'NT AUTHORITY\SYSTEM', 'sysadmin'" # Adds login with sysadmin permission if already not available
 }
 catch

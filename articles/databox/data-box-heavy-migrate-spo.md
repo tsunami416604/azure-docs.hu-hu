@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 06/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 5628a1b3ea42c91f49f78699c37bb2b306275e9e
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 1c432ee5851115e029b55722b6b238b4672e8345
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730846"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446714"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>A fájl megosztási tartalmainak migrálása a SharePoint online-hoz az Azure Data Box (nagy erőforrásigényű) használata
 
@@ -81,7 +81,7 @@ A legjobb teljesítmény és a kapcsolat azt javasoljuk, hogy létrehozott egy A
 
 1. Jelentkezzen be az Azure Portalon, majd [hozzon létre egy virtuális gépet](../virtual-machines/windows/quick-create-portal.md).
 2. [Az Azure-fájlmegosztást az alakzatot a virtuális gép csatlakoztatása](../storage/files/storage-how-to-use-files-windows.md#mount-the-azure-file-share-with-file-explorer).
-3. [Töltse le a SharePoint-áttelepítési eszköz](http://spmtreleasescus.blob.core.windows.net/install/default.htm) , és telepítse az Azure virtuális gép.
+3. [Töltse le a SharePoint-áttelepítési eszköz](https://spmtreleasescus.blob.core.windows.net/install/default.htm) , és telepítse az Azure virtuális gép.
 4. A SharePoint-áttelepítési eszköz elindításához. Kattintson a **jelentkezzen be a** , és adja meg az Office 365-felhasználónevével és jelszavával.
 5. Amikor a rendszer kéri **hol van az adatok?** válassza **fájlmegosztás**. Az elérési útját adja meg az Azure-fájlmegosztás hol helyezkedik el az adatokat.
 6. Kövesse a lépéseket, normál, beleértve a célhelyen. További információért ugorjon [a SharePoint-áttelepítési eszköz használata](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool).

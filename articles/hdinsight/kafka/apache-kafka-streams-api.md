@@ -7,24 +7,23 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 04/02/2019
-ms.openlocfilehash: d76ac8cc1673f1df8981a543321d34aa57cd0896
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.date: 06/25/2019
+ms.openlocfilehash: 0639ecaa0e4ae0581a6c88e1ea9a47de870a8355
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295476"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446394"
 ---
-# <a name="tutorial-apache-kafka-streams-api"></a>Oktatóanyag: Apache Kafka streams API
+# <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>Oktatóanyag: Az Azure HDInsight, az Apache Kafka streams API használata
 
-Ismerje meg, hogyan hozhat létre az Apache Kafka Streams API-t használó alkalmazások, és futtassa a Kafka HDInsight. 
+Ismerje meg, hogyan hozhat létre az Apache Kafka Streams API-t használó alkalmazások, és futtassa a Kafka HDInsight.
 
 A jelen oktatóanyagban használt alkalmazás egy streamelési szószámláló. Szöveges adatokat olvas be egy Kafka-témakörből, kigyűjti az egyes szavakat, majd eltárolja a szavakat és azok számát egy másik Kafka-témakörben.
 
-> [!NOTE]  
-> A Kafka adatfolyam-feldolgozás gyakran történik az Apache Spark és Apache Storm használatával. A Kafka (a HDInsight 3.5-ös és 3.6-os) 1.1.0-s a Kafka Streams API-t vezetett be. Ez az API lehetővé teszi az adatstreamek a bemeneti és kimeneti témakörök közötti átalakítását. Bizonyos esetekben ez alternatív megoldás lehet a streamelési Storm- vagy Spark-megoldások létrehozása helyett. 
->
-> A Kafka Streams megoldással kapcsolatos további információkért tekintse meg [a Streams bevezető](https://kafka.apache.org/10/documentation/streams/) dokumentációját az Apache.org webhelyen.
+A Kafka adatfolyam-feldolgozás gyakran történik az Apache Spark és Apache Storm használatával. A Kafka (a HDInsight 3.5-ös és 3.6-os) 1.1.0-s a Kafka Streams API-t vezetett be. Ez az API lehetővé teszi az adatstreamek a bemeneti és kimeneti témakörök közötti átalakítását. Bizonyos esetekben ez alternatív megoldás lehet a streamelési Storm- vagy Spark-megoldások létrehozása helyett.
+
+A Kafka Streams megoldással kapcsolatos további információkért tekintse meg [a Streams bevezető](https://kafka.apache.org/10/documentation/streams/) dokumentációját az Apache.org webhelyen.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -68,8 +67,7 @@ A `pom.xml` fájl fontosabb elemei a következők:
     </dependency>
     ```
 
-    > [!NOTE]  
-    > A `${kafka.version}` bejegyzés a `pom.xml` fájl `<properties>..</properties>` szakaszában van meghatározva, és a HDInsight-fürt Kafka-verziójához van konfigurálva.
+    A `${kafka.version}` bejegyzés a `pom.xml` fájl `<properties>..</properties>` szakaszában van meghatározva, és a HDInsight-fürt Kafka-verziójához van konfigurálva.
 
 * Beépülő modulok: Maven beépülő modulok különféle képességeket biztosítanak. Ebben a projektben a következő beépülő modulokat használjuk:
 
@@ -206,8 +204,7 @@ A projekt összeállításához és a Kafka on HDInsight-fürtön való üzembe 
    * `RekeyedIntermediateTopic`: Ez a témakör segítségével újraparticionálni az adatokat, a count frissít a `countByKey` operátor.
    * `wordcount-example-Counts-changelog`: Ez a témakör az állapottárolóhoz, használja a `countByKey` művelet
 
-     > [!IMPORTANT]  
-     > A Kafka on HDInsight a témakörök automatikus létrehozására is konfigurálható. További információkért tekintse meg [a témakörök automatikus létrehozásának konfigurálását](apache-kafka-auto-create-topics.md) ismertető dokumentumot.
+    A Kafka on HDInsight a témakörök automatikus létrehozására is konfigurálható. További információkért tekintse meg [a témakörök automatikus létrehozásának konfigurálását](apache-kafka-auto-create-topics.md) ismertető dokumentumot.
 
 ## <a name="run-the-code"></a>A kód futtatása
 
@@ -217,8 +214,7 @@ A projekt összeállításához és a Kafka on HDInsight-fürtön való üzembe 
     java -jar kafka-streaming.jar $KAFKABROKERS $KAFKAZKHOSTS &
     ```
 
-    > [!NOTE]  
-    > Apache log4j kapcsolatos figyelmeztetést kaphat. Ezt figyelmen kívül hagyhatja.
+    Apache log4j kapcsolatos figyelmeztetést kaphat. Ezt figyelmen kívül hagyhatja.
 
 2. A bejegyzések a `test` témakörbe való küldéséhez az alábbi parancs használatával indítsa el az előállító alkalmazást:
 
@@ -232,8 +228,7 @@ A projekt összeállításához és a Kafka on HDInsight-fürtön való üzembe 
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --topic wordcounts --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer --from-beginning
     ```
 
-    > [!NOTE]  
-    > A `--property` paraméterek utasítják a konzolfogyasztót, hogy a kulcsot (szó) a számlálóval (érték) együtt írja ki. Ez a paraméter emellett az értékek a Kafkából való beolvasásához használandó deszerializálót is konfigurálja.
+    A `--property` paraméterek utasítják a konzolfogyasztót, hogy a kulcsot (szó) a számlálóval (érték) együtt írja ki. Ez a paraméter emellett az értékek a Kafkából való beolvasásához használandó deszerializálót is konfigurálja.
 
     A kimenet az alábbi szöveghez hasonló:
    
@@ -250,8 +245,7 @@ A projekt összeállításához és a Kafka on HDInsight-fürtön való üzembe 
         jumped  13640
         jumped  13641
    
-    > [!NOTE]  
-    > A `--from-beginning` paraméter arra konfigurálja a fogyasztót, hogy a témakörben tárolt rekordok elején kezdjen. A számláló minden egyes szó beolvasásával nő, így a témakör az egyes szavakhoz több bejegyzést is tartalmaz, növekvő számlálóval.
+    A `--from-beginning` paraméter arra konfigurálja a fogyasztót, hogy a témakörben tárolt rekordok elején kezdjen. A számláló minden egyes szó beolvasásával nő, így a témakör az egyes szavakhoz több bejegyzést is tartalmaz, növekvő számlálóval.
 
 4. A __Ctrl + C__ billentyűparanccsal zárhatja be az előállítót. A __Ctrl + C__ billentyűparancs ismételt lenyomásával zárhatja be az alkalmazást és a fogyasztót is.
 
@@ -264,9 +258,19 @@ A projekt összeállításához és a Kafka on HDInsight-fürtön való üzembe 
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic wordcount-example-Counts-changelog --zookeeper $KAFKAZKHOSTS
     ```
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha törölni szeretné a jelen oktatóanyag által létrehozott erőforrásokat, akkor törölje az erőforráscsoportot. Az erőforráscsoport törlésekor a kapcsolódó HDInsight-fürt, valamint az esetlegesen az erőforráscsoporthoz társított egyéb erőforrások is törlődnek.
+
+Az erőforráscsoport eltávolítása az Azure Portallal:
+
+1. Az Azure Portalon bontsa ki a bal oldalon a szolgáltatásmenüt, és válassza az __Erőforráscsoportok__ lehetőséget az erőforráscsoportok listájának megjelenítéséhez.
+2. Keresse meg a törölni kívánt erőforráscsoportot, és kattintson a jobb gombbal a lista jobb oldalán lévő __Továbbiak__ gombra (...).
+3. Válassza az __Erőforráscsoport törlése__ elemet, és erősítse meg a választását.
+
 ## <a name="next-steps"></a>További lépések
 
-Ebben a dokumentumban megismerkedett az Apache Kafka Streams API használata a HDInsight alatt futó Kafka. Az alábbiak további információt biztosítanak a Kafka használatával kapcsolatban:
+Ebben a dokumentumban megismerkedett az Apache Kafka Streams API használata a HDInsight alatt futó Kafka. Használja a következő tudhat meg többet a Kafka használata.
 
-* [Az Apache Kafka-naplók elemzése](apache-kafka-log-analytics-operations-management.md)
-* [Adatok replikálása Apache Kafka-fürtök között](apache-kafka-mirroring.md)
+> [!div class="nextstepaction"]
+> [Az Apache Kafka-naplók elemzése](apache-kafka-log-analytics-operations-management.md)

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.author: v-pettur
 author: PeterTurcan
 ms.date: 05/01/2019
-ms.openlocfilehash: 48dde6ebe19f5a6c14008fd4e5e27a9fb0151928
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 01c0819fd0bf525739675ad756031cafc1a51673
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304123"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67434677"
 ---
 # <a name="c-tutorial-add-autocompletion-and-suggestions---azure-search"></a>C#oktatóanyag: Autocompletion és javaslatok – Azure Search hozzáadása
 
@@ -69,11 +69,11 @@ Az automatikus kiegészítés funkció a szkriptben nevű nem áll megírása ma
     ```cs
     <head>
         <meta charset="utf-8">
-        <title>Autocomplete demo</title>
-        <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+        <title>Typeahead</title>
+        <link href="https://code.jquery.com/ui/1.12.1/themes/start/jquery-ui.css"
               rel="stylesheet">
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-        <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
         <link rel="stylesheet" href="~/css/hotels.css" />
     </head>
@@ -461,9 +461,9 @@ Vegye figyelembe a következő takeaways a projekt:
 
 ## <a name="next-steps"></a>További lépések
 
-A autocompletion és javaslatokkal kapcsolatos problémák egyike, hogy azok olyan ismétlődő hívásokat a kiszolgáló (egy a karakterek minimális számát beírása után minden kulcs körvonal elérése). Ha ezek a lassabb, mint a várt választ hívások eredményei, majd a felhasználói élmény lecsökken. Értékkorlátozással használatával köszönhetően érdekes elkerülése érdekében ezen ismételt hívások, és áttekintjük a Tovább gombra.
+A következő oktatóanyagban van a felhasználói élmény javítása érdekében egy másik módja egy pillantást értékkorlátozással használatával szűkítheti a keresést egyetlen kattintással.
 
 > [!div class="nextstepaction"]
-> [C#Oktatóanyag: A navigációs és hálózati hatékonyság – Azure Search értékkorlátozással használata](tutorial-csharp-facets.md)
+> [C#Oktatóanyag: A navigációt – Azure Search értékkorlátozással használata](tutorial-csharp-facets.md)
 
 

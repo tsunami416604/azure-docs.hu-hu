@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 126bb05109e624fb1198ea16b07cd7836103f9e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e76ca7198bfded725d89f04fd162d470a85da904
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67100882"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442839"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Oktatóanyag: HR2day Merces által az Azure Active Directory-integráció
 
@@ -112,7 +112,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés által Merces HR2day
     > [!NOTE]
     > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [Merces ügyfél-támogatási csapata által HR2day](mailto:servicedesk@merces.nl) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-5. A HR2day Merces alkalmazás által a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+5. A HR2day Merces alkalmazás által a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
 
     ![image](common/edit-attribute.png)
 
@@ -218,7 +218,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 ### <a name="create-hr2day-by-merces-test-user"></a>HR2day Merces teszt felhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon hívja a HR2day Merces hoz létre. Együttműködve [által Merces HR2day támogatási csoportjának](mailto:servicedesk@merces.nl) felhasználót is hozzáadhat a a HR2day Merces platformja. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói Britta Simon hívja a HR2day Merces hoz létre. Együttműködve [által Merces HR2day támogatási csoportjának](mailto:servicedesk@merces.nl) felhasználót is hozzáadhat a a HR2day Merces platformja. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 > [!NOTE]
 > Ha manuálisan hozzon létre egy felhasználót van szüksége, lépjen kapcsolatba a [Merces ügyfél-támogatási csapata által HR2day](mailto:servicedesk@merces.nl).

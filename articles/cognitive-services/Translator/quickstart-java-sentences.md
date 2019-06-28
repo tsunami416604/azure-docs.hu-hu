@@ -3,19 +3,19 @@ title: 'Gyors útmutató: Mondat visszaadni, a Java - Get a Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban fog megtudhatja, miként állapítható meg, a Java és a Translator Text API használatával mondat hossza.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 748f8cfa1e105b5c6d7b9b3fc073eac9f38a63dd
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: 252be03bfb0f24f0de5868d64d5add0e635cef34
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514855"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445108"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-java"></a>Gyors útmutató: A Translator Text API segítségével meghatározhatja, mondat hossza Java használatával
 
@@ -108,6 +108,7 @@ Adja hozzá ezeket a sorokat a `LengthSentence` osztály. Láthatja, hogy az a `
 String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
 String url = "https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0&language=en";
 ```
+Ha egy több szolgáltatást a Cognitive Services-előfizetést használ, akkor is tartalmaznia kell a `Ocp-Apim-Subscription-Region` az a kérelem paramétereit. [További információ a több szolgáltatásos előfizetéshez való hitelesítés közben](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
 
 ## <a name="create-a-client-and-build-a-request"></a>Hozzon létre egy ügyfél és a egy kérelem létrehozása
 

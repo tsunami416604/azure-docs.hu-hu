@@ -4,11 +4,11 @@ ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/06/2019
-ms.openlocfilehash: 71f6c5790ac98e819a7f251432b7cb0a731adc58
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8ba1f0fdae5e971bae1400f058bfd8ebf40e2590
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179441"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435196"
 ---
-Rendelkeznie kell egy [Cognitive Services API-fiók](../articles/cognitive-services/cognitive-services-apis-create-account.md) a szabadkézi felismerő API-hozzáféréssel rendelkező. Ha nem rendelkezik Azure-előfizetéssel, ingyenesen [létrehozhat egyet](https://azure.microsoft.com/try/cognitive-services/). Megtekintheti az előfizetési kulcs, a [az Azure portal](../articles/cognitive-services/cognitive-services-apis-create-account.md#access-your-resource) a fiók létrehozását követően vagy [Azure-webhelyen](https://azure.microsoft.com/try/cognitive-services/my-apis) ingyenes próbaverzió aktiválása után.
+Rendelkeznie kell egy [Cognitive Services API-fiók](../articles/cognitive-services/cognitive-services-apis-create-account.md) a szabadkézi felismerő API-hozzáféréssel rendelkező. Ha nem rendelkezik Azure-előfizetéssel, ingyenesen [létrehozhat egyet](https://azure.microsoft.com/try/cognitive-services/). Megtekintheti az előfizetési kulcs, a [az Azure portal](../articles/cognitive-services/cognitive-services-apis-create-account.md#get-the-keys-for-your-subscription) a fiók létrehozását követően vagy [Azure-webhelyen](https://azure.microsoft.com/try/cognitive-services/my-apis) ingyenes próbaverzió aktiválása után.

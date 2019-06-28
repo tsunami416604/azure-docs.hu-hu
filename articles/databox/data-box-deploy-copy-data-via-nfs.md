@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 05/15/2019
+ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 672bcc3d0cb15ef348d090ed6c5a38d6912465ef
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: c74ed93383ea880900a5428a6f24b5b44a3ff135
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496315"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443149"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Oktatóanyag: Adatok másolása az Azure Data Box NFS-n keresztül
 
@@ -88,6 +88,12 @@ A Data Box-megosztáshoz való kapcsolódás után a következő lépés az adat
 - Ha a Data Box által éppen feltöltés alatt álló adatokat egyidejűleg egy másik alkalmazás is feltölti a Data Boxon kívül, ez a feltöltési feladatok meghiúsulásához és az adatok meghibásodásához vezethet.
 - Azt javasoljuk, hogy ne használjon egyidejűleg SMB-t és NFS-t az Azure-ban, illetve ne másolja ugyanazokat az adatokat ugyanarra a célhelyre. Ilyen esetekben a végeredmény nem garantálható.
 - **Mindig hozzon létre egy mappát azokhoz a fájlokhoz, amelyeket másolni szeretne a megosztás alatt, majd másolja a fájlokat a létrehozott mappába**. Blokkblob típusú a mappában létrehozott, és a blob megosztások lap egy tárolóban, amelyhez data nahrávají blobként jelöli. Nem lehet másolni a fájlokat közvetlenül a *legfelső szintű* mappát a storage-fiókban.
+- Ha a kis-és nagybetűket könyvtár- és keresztneveket az NFS-megosztások az NFS a Data Box fürtjét: 
+    - Az esetben a rendszer megőrzi a nevében.
+    - A fájlok és nagybetűk nincsenek megkülönböztetve.
+    
+    Például, ha a Másolás `SampleFile.txt` és `Samplefile.Txt`, a neve, ha a Data Box másolt megőrzi az eset, de a második fájl felülírja az elsőt, mivel ezek számítanak ugyanazt a fájlt.
+
 
 Linux rendszerű gazdagép esetében használjon egy, a Robocopyhoz hasonló másolási segédprogramot. Ilyen például az [rsync](https://rsync.samba.org/), a [FreeFileSync](https://www.freefilesync.org/), a [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) vagy az [Ultracopier](https://ultracopier.first-world.info/).  
 

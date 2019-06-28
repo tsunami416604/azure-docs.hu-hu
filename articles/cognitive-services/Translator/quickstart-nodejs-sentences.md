@@ -3,19 +3,19 @@ title: 'Gyors útmutató: Első mondat visszaadni, a node.js-szel – Translator
 titleSuffix: Azure Cognitive Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan állapíthatja meg a mondatok hosszúságát (karakterben) a Node.js és a Translator Text REST API használatával.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 2046c0712d392771cc973de9a431191173533435
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: 7a39e52e9145ac6cab298026b4098206e904943c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515136"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445005"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-with-nodejs"></a>Gyors útmutató: A Translator Text API segítségével meghatározhatja, mondat hossza, a node.js használatával
 
@@ -90,9 +90,11 @@ let options = {
 };
 ```
 
-### <a name="authentication"></a>Hitelesítés
+A kérelmek hitelesítésének legegyszerűbb módja az, hogy átadja az előfizetői azonosítót `Ocp-Apim-Subscription-Key` fejlécként, amit ebben a példában alkalmazunk. Alternatív megoldásként hozzáférési jogkivonatra cserélheti az előfizetői azonosítóját, és átadhatja a hozzáférési jogkivonatot is `Authorization` fejlécként a kérelem ellenőrzése céljából. 
 
-A kérelmek hitelesítésének legegyszerűbb módja az, hogy átadja az előfizetői azonosítót `Ocp-Apim-Subscription-Key` fejlécként, amit ebben a példában alkalmazunk. Alternatív megoldásként hozzáférési jogkivonatra cserélheti az előfizetői azonosítóját, és átadhatja a hozzáférési jogkivonatot is `Authorization` fejlécként a kérelem ellenőrzése céljából. További információért lásd: [Hitelesítés](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Ha egy több szolgáltatást a Cognitive Services-előfizetést használ, akkor is tartalmaznia kell a `Ocp-Apim-Subscription-Region` a kérés fejlécébe. 
+
+További információért lásd: [Hitelesítés](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="make-the-request-and-print-the-response"></a>A kérelem indítása és a válasz megjelenítése
 

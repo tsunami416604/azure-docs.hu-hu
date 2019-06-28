@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A modell betanítását, és a REST API-val rendelkező Python - űrlap felismerő űrlap adatokat nyerhet ki'
+title: 'Gyors útmutató: A modell betanítását, és bontsa ki az űrlapadatok REST API a Pythonnal – űrlap felismerő használatával'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban, segítségével, az űrlap felismerő REST API a Pythonnal betanítja a modellt, és az adatok kinyerése az űrlapok.
 author: PatrickFarley
@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 04c7663073a710fe39017b01edd0623a837d6354
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: b01b42af99575f512ccc76b0a56e4d18106c319f
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331810"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441804"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Gyors útmutató: Űrlap felismerő modellek betanítása és űrlap adatokat nyerhet ki a REST API a pythonnal
 
@@ -26,7 +26,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 Rövid útmutató elvégzéséhez kell rendelkeznie:
 - Az űrlap felismerő korlátozott hozzáférésű előzetes verzióra való hozzáférést. Töltse ki az előzetes verzió eléréséhez, és küldje el a [űrlap felismerő hozzáférési kérelem](https://aka.ms/FormRecognizerRequestAccess) űrlap.
 - [Python](https://www.python.org/downloads/) telepítve (Ha a minta futtatása helyben szeretné).
-- Az azonos típusú legalább öt űrlapok készlete. Ezeket az adatokat a modell betanításához használandó. Használhat egy [mintaadatkészlettel](https://go.microsoft.com/fwlink/?linkid=2090451) ebben a rövid útmutatóban. Töltse fel az adatok Azure Blob Storage-fiók gyökérmappájában.
+- Az azonos típusú legalább öt űrlapok készlete. Ezeket az adatokat a modell betanításához használandó. Használhat egy [minta adatkészlet](https://go.microsoft.com/fwlink/?linkid=2090451) ebben a rövid útmutatóban. Töltse fel az adatok Azure Blob Storage-fiók gyökérmappájában.
 
 ## <a name="create-a-form-recognizer-resource"></a>Űrlap felismerő erőforrás létrehozása
 
@@ -53,7 +53,6 @@ Egy űrlap felismerő modell betanításához az Azure blob-tárolóban a dokume
 
 1. Cserélje le `<Endpoint>` az űrlap felismerő erőforrás Azure-régióban, ahol beszerzett az előfizetési kulcsok a végpont URL-címet.
 1. Cserélje le `<SAS URL>` együtt az Azure Blob storage-tároló megosztott hozzáférési jogosultságkód (SAS) URL-címe. Ez lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, és válassza ki **Get közös hozzáférésű jogosultságkód**. Kattintson a következő párbeszédpanelen, és másolja az értéket a **URL-cím** szakaszban. Az űrlap kell rendelkeznie: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
-1. Cserélje le `<file type>` az a fájl típusa. Támogatott típusok: `application/pdf`, `image/jpeg`, `image/png`.
 1. Cserélje le `<Subscription key>` az előfizetés az előző lépésben kimásolt kulccsal.
     ```python
     ########### Python Form Recognizer Train #############
@@ -64,7 +63,7 @@ Egy űrlap felismerő modell betanításához az Azure blob-tárolóban a dokume
     source = r"<SAS URL>"
     headers = {
         # Request headers
-        'Content-Type': '<file type>',
+        'Content-Type': 'application/json',
         'Ocp-Apim-Subscription-Key': '<Subscription Key>',
     }
     url = base_url + "/train" 
