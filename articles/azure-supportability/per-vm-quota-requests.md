@@ -7,18 +7,27 @@ ms.date: 06/07/2019
 ms.topic: article
 ms.service: azure
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: f921b4a95c1b0cfb29d84c0bacc17d268af6e6c5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 79879cd7f5ea5af1b794735f32e6e1367458e124
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67082819"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310723"
 ---
-# <a name="vm-series-vcpu-limit-increase"></a>Virtuálisgép-sorozatok vCPU korlát növelésének
+# <a name="vm-series-vcpu-limit-increase"></a>Virtuálisgép-sorozatok vCPU-korlátjának növelése
+
+Virtuális gépek és virtuálisgép-méretezési csoportok erőforrás-kezelő vCPU-kvóták kényszerítettek, az egyes előfizetésekhez, minden régióban két szinten. 
+
+Az első szintje a **teljes regionális vcpu-k korlát** (között az összes Virtuálisgép-sorozatok), és a második réteg a **Virtuálisgép-sorozatok / vcpu-k korlátozza** (például a D-sorozat vcpu-k). A Virtuálisgép-sorozat az új és meglévő Vcpu használati összege egy új virtuális Gépet, hogy kell telepíteni, amikor nem haladhatja meg a vCPU-kvóta az adott virtuális gép adatsor jóváhagyott. További az összes meglévő és új vCPU-számot telepített összes Virtuálisgép-sorozatok nem haladhatja meg a jóváhagyott az előfizetéshez tartozó összes regionális vcpu-k kvótáját. Ha ezeket a kvótákat valamelyikét túllépése esetén a virtuális gép üzembe helyezése nem engedélyezett lesz.
+A Virtuálisgép-sorozatok vcpu-k kvótakorlátozását növekedést is kérhető az Azure Portalról. A Virtuálisgép-sorozatok kvóta emelése automatikusan megnövelje a teljes regionális vcpu-k korlátot is ugyanilyen mértékben csökken. 
+
+Ha egy új előfizetés jön létre, az alapértelmezett teljes regionális vcpu-k nem lehet alapértelmezett vCPU-kvóták minden egyes Virtuálisgép-sorozatok összege. Emiatt egy előfizetésben, de a teljes regionális vcpu-k az összes üzemelő példányhoz nincs elegendő kvótája elegendő kvótával, minden egyes Virtuálisgép-sorozatot, amely számára telepíteni kívánja. Ebben az esetben kell igényelnie explicit módon teljes regionális vcpu-k korlát növelését. Regionális vcpu-k teljes korlát nem lehet hosszabb jóváhagyott kvóta összege az összes Virtuálisgép-sorozatok a régió között.
+
+A kvóták tájékozódhat a [virtuális gép vCPU-kvóták lap](https://docs.microsoft.com/azure/virtual-machines/windows/quotas) és [Azure-előfizetés- és Szolgáltatáskorlátok](https://aka.ms/quotalimits) lap. 
 
 Most már igényelhet növelését **súgó + támogatás** panel vagy a **Usages + kvóta** panel a portálon. 
 
-## <a name="request-per-vm-vcpu-quota-increase-at-subscription-level-using-the-help--support-blade"></a>Virtuális gép vCPU kvótanövelést előfizetési szinten az egy kérelem a **súgó + támogatás** panel
+## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-the-help--support-blade"></a>Virtuálisgép-sorozatok vCPU kvótanövelést előfizetési szinten az egy kérelem a **súgó + támogatás** panel
 
 Kövesse az alábbi utasításokat a hozzon létre egy támogatási kérést az Azure súgó + támogatás panelen elérhető az Azure Portalon keresztül. 
 
@@ -59,7 +68,7 @@ Kövesse az alábbi utasításokat a hozzon létre egy támogatási kérést az 
 ![Új korlátok](./media/resource-manager-core-quotas-request/new-limits.png)
 
 
-## <a name="request-per-vm-vcpu-quota-increase-at-subscription-level-using-usages--quota-blade"></a>Virtuális gép vCPU kvótanövelést előfizetési szinten az egy kérelem **Usages + kvóta** panel
+## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-usages--quota-blade"></a>Virtuálisgép-sorozatok vCPU kvótanövelést előfizetési szinten az egy kérelem **Usages + kvóta** panel
 
 Kövesse az alábbi parancs használatával hozzon létre egy támogatási kérést az Azure "használati + kvóta" keresztül utasításokat az Azure-portálon elérhető panelje. 
 

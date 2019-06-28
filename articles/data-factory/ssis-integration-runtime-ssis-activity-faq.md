@@ -12,12 +12,12 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: 7789970b47f0e55adee5bbe9da9f303aee6cdb25
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: a018a383de855a05b14aa6e1f1c465f8868f672d
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190121"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312167"
 ---
 # <a name="troubleshooting-package-execution-in-ssis-integration-runtime"></a>Hibaelhárítási-csomagok végrehajtása az SSIS integrációs modul
 
@@ -110,6 +110,11 @@ Ez a cikk a leggyakoribb hibákat, amelyek akkor ütközhet, amikor végrehajtá
   * Azure Analysis Services-hitelesítést, amely még nem támogatott az SSIS integrációs modul egyik lehetséges oka, hogy felhasználónév/jelszó az MFA engedélyezve van konfigurálva. Próbálja ki az egyszerű szolgáltatás használata az Azure Analysis Service-hitelesítés:
     1. Egyszerű szolgáltatás AAS előkészítése [https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal](https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal)
     2. A Csatlakozáskezelő, konfigurálja a "A megadott felhasználónév és jelszó használata": "AppID" állítsa be a felhasználónevet és jelszót "clientSecret"
+
+### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-managed-identity"></a>Hibaüzenet jelenik meg: "ADONET forrás nem sikerült beszerezni a kapcsolat {GUID} a következő hiba miatt: "NT AUTHORITY\NÉVTELEN bejelentkezés" felhasználó bejelentkezése sikertelen volt "felügyelt identitás használata
+
+* Lehetséges ok és a javasolt művelet:
+  * Ellenőrizze, hogy a kezelő hitelesítési módszer konfigurálása nem "Active Directory jelszavas hitelesítést", ha a "ConnectUsingManagedIdentity" paraméter értéke True. Konfigurálható a "SQL-hitelesítés", ehelyett amely lenne figyelmen kívül lesz hagyva "ConnectUsingManagedIdentity" van beállítva
 
 ### <a name="package-takes-unexpected-long-time-to-execute"></a>Csomag végrehajtása váratlan hosszú időt vesz igénybe.
 

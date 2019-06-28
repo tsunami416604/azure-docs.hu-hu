@@ -88,7 +88,7 @@ Karakterlánc-függvények csak karakterláncok működik.
 | [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Kezdő pozíciójának egy karakterláncrészt adja vissza. |
 | [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Az utolsó előfordulás a kezdő pozíciójának a substring visszaadása. |
 | [replace](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Cserélje le a megadott karakterlánc részkarakterláncot, és a frissített karakterláncot ad vissza. |
-| [split](../logic-apps/workflow-definition-language-functions-reference.md#split) | Egy tömb, amely tartalmazza a karakterláncrész, vesszővel elválasztva egy nagyobb karakterláncból alapján egy megadott elválasztó karakter az eredeti karakterláncot adja vissza. |
+| [felosztás](../logic-apps/workflow-definition-language-functions-reference.md#split) | Egy tömb, amely tartalmazza a karakterláncrész, vesszővel elválasztva egy nagyobb karakterláncból alapján egy megadott elválasztó karakter az eredeti karakterláncot adja vissza. |
 | [startsWith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | Annak ellenőrzése, hogy e karakterlánc kezdődik-e egy adott karakterláncrészletet. |
 | [substring](../logic-apps/workflow-definition-language-functions-reference.md#substring) | Karaktert adja vissza egy karakterláncból, a megadott pozíciónál kezdve. |
 | [toLower](../logic-apps/workflow-definition-language-functions-reference.md#toLower) | Kis formátumban adja vissza. |
@@ -104,17 +104,17 @@ Gyűjtemények, általában tömbök, karakterláncok és egyes esetekben szót�
 
 | Gyűjtemény függvény | Tevékenység |
 | ------------------- | ---- |
-| [contains](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Ellenőrizze, hogy egy gyűjtemény rendelkezik-e egy adott elemet. |
-| [empty](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Ellenőrizze, hogy egy gyűjtemény üres. |
-| [first](../logic-apps/workflow-definition-language-functions-reference.md#first) | Az első elem visszaadása egy gyűjteményt. |
-| [intersection](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Vissza, amely rendelkezik *csak* a gyakori elemek a megadott gyűjtemények között. |
-| [item](../logic-apps/workflow-definition-language-functions-reference.md#item) | Ismétlődő műveletet keresztül egy tömb, belül vissza az aktuális elem a tömbben a művelet aktuális iteráció során. |
+| [tartalmaz](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Ellenőrizze, hogy egy gyűjtemény rendelkezik-e egy adott elemet. |
+| [üres](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Ellenőrizze, hogy egy gyűjtemény üres. |
+| [első](../logic-apps/workflow-definition-language-functions-reference.md#first) | Az első elem visszaadása egy gyűjteményt. |
+| [Metszet](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Vissza, amely rendelkezik *csak* a gyakori elemek a megadott gyűjtemények között. |
+| [Elem](../logic-apps/workflow-definition-language-functions-reference.md#item) | Ismétlődő műveletet keresztül egy tömb, belül vissza az aktuális elem a tömbben a művelet aktuális iteráció során. |
 | [join](../logic-apps/workflow-definition-language-functions-reference.md#join) | Adja vissza, amely rendelkezik *összes* elemet a tömb a megadott karakter választja el. |
 | [last](../logic-apps/workflow-definition-language-functions-reference.md#last) | Az utolsó elem visszaadása egy gyűjteményt. |
-| [length](../logic-apps/workflow-definition-language-functions-reference.md#length) | A tömb vagy karakterlánc elemek számának visszaadása. |
+| [Hossza](../logic-apps/workflow-definition-language-functions-reference.md#length) | A tömb vagy karakterlánc elemek számának visszaadása. |
 | [skip](../logic-apps/workflow-definition-language-functions-reference.md#skip) | A gyűjtemény elejéről eltávolítandó elemek, és vissza *összes többi* elemek. |
-| [take](../logic-apps/workflow-definition-language-functions-reference.md#take) | Az első gyűjtemény elemek visszaadása. |
-| [union](../logic-apps/workflow-definition-language-functions-reference.md#union) | Vissza, amely rendelkezik *összes* elemet a megadott gyűjteményekkel a. |
+| [hajtsa végre a megfelelő](../logic-apps/workflow-definition-language-functions-reference.md#take) | Az első gyűjtemény elemek visszaadása. |
+| [Union](../logic-apps/workflow-definition-language-functions-reference.md#union) | Vissza, amely rendelkezik *összes* elemet a megadott gyűjteményekkel a. |
 |||
 
 <a name="comparison-functions"></a>
@@ -126,8 +126,8 @@ Kapcsolatos minden funkció teljes körű referenciáért lásd: a [betűrend sz
 
 | Logikai összehasonlító függvény | Tevékenység |
 | --------------------------- | ---- |
-| [and](../logic-apps/workflow-definition-language-functions-reference.md#and) | Ellenőrzése, hogy az összes kifejezés igaz. |
-| [equals](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Ellenőrizze, hogy mindkét értéket egyenértékűek. |
+| [és](../logic-apps/workflow-definition-language-functions-reference.md#and) | Ellenőrzése, hogy az összes kifejezés igaz. |
+| [egyenlő](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Ellenőrizze, hogy mindkét értéket egyenértékűek. |
 | [greater](../logic-apps/workflow-definition-language-functions-reference.md#greater) | Ellenőrizze, hogy az első érték nagyobb, mint a második érték. |
 | [greaterOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#greaterOrEquals) | Ellenőrizze, hogy az első érték kisebb, mint a második érték egyenlő. |
 | [if](../logic-apps/workflow-definition-language-functions-reference.md#if) | Ellenőrizze, hogy egy kifejezés true vagy FALSE (hamis). Az eredmény alapján a megadott érték visszaadása. |
@@ -2904,7 +2904,7 @@ not(equals(1, 1))
 
 <a name="or"></a>
 
-### <a name="or"></a>vagy
+### <a name="or"></a>or
 
 Ellenőrizze, hogy legalább egy kifejezés igaz.
 Igaz értéket ad vissza, ha legalább egy kifejezés értéke true, vagy vissza false (hamis), amikor az összes false (hamis).

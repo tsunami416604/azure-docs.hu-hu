@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 666430a11fb95871eb601b2a38eb7b97ad16119f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 362f0b32ea99d0b888ea9f1efa0cd4ea74eb2fa1
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66498949"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67338497"
 ---
 # <a name="app-service-networking-features"></a>Az App Service hálózatkezelési szolgáltatások
 
@@ -112,7 +112,7 @@ A Szolgáltatásvégpontok lehetővé teszi, hogy zárolását **bejövő** hozz
 ![Szolgáltatásvégpontok](media/networking-features/service-endpoints.png)
 
 * Egy Application Gateway az alkalmazással való zárolását, így az alkalmazás bejövő forgalmát beállítása
-* Az alkalmazást, hogy a virtuális hálózatban található erőforrások Testricting hozzáférést. Ide tartozhatnak a virtuális gépek, ASE vagy akár egyéb VNet-integráció használó alkalmazások 
+* Az alkalmazás a virtuális hálózat erőforrásaihoz való hozzáférés korlátozása. Ide tartozhatnak a virtuális gépek, ASE vagy akár egyéb VNet-integráció használó alkalmazások 
 
 ![a Szolgáltatásvégpontok az application gateway segítségével](media/networking-features/service-endpoints-appgw.png)
 
@@ -136,7 +136,7 @@ Ez a szolgáltatás általában arra használják:
 
 A funkció lehetővé teszi, hogy egy bejövő tűzfalra watering nélkül a helyszíni erőforrásokhoz való hozzáférés, mivel, népszerű fejlesztőkkel. A más kimenő App Service hálózatkezelési szolgáltatásokat is nagyon Azure virtuális hálózatkezeléssel kapcsolatos. Hibrid kapcsolatok egy virtuális hálózaton keresztül egy függőség nem rendelkezik, és hálózati igényeinek megfelelően többféle is használható. Fontos megjegyezni, hogy az App Service hibrid kapcsolataira szolgáltatás nem gondoskodik és nem tudja, mi végeznek megkönnyítése. Tegyük fel, hogy ezzel el egy adatbázist, egy webszolgáltatás, vagy egy tetszőleges TCP szoftvercsatorna-nagyszámítógépes a is. A szolgáltatás lényegében alagutak TCP-csomagokat. 
 
-Bár a hibrid kapcsolatok népszerű fejlesztéshez, is szolgál számos éles alkalmazásokban is. Ez nagyszerű választás a webszolgáltatás vagy az adatbázis eléréséhez, de nem megfelelő helyzetek járó egy nagyszerű sok kapcsolat létrehozása folyamatban. 
+Bár a hibrid kapcsolatok népszerű fejlesztéshez, is szolgál számos éles alkalmazásokban is. Kiválóan alkalmazható a webszolgáltatás vagy az adatbázis eléréséhez, de nem megfelelő helyzetek járó sok kapcsolat létrehozása. 
 
 ### <a name="gateway-required-vnet-integration"></a>Átjáró szükséges a VNet-integráció 
 

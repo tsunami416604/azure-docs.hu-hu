@@ -7,15 +7,15 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: bwren
-ms.openlocfilehash: b395b7bccbf93b56e84d5e7b5a4ed7355eaca335
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 7605bf36c41c5b1276d29076173efd52409afaa9
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296327"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310344"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Az Azure Monitor log-lekérdezések áttekintése
-Napló lekérdezések segítségével teljes mértékben kihasználják a értékét a gyűjtött adatok [Azure Monitor naplóira](../platform/data-platform-logs.md). Egy hatékony lekérdezési nyelvet lehetővé teszi több táblából származó adatokat, Nagy adatkészleteken, összesítéséhez és minimális programozással összetett műveleteket végez. Gyakorlatilag bármilyen kérdésre választ, és elemzési végre mindaddig, amíg a kapcsolódó adatokat összegyűjtötte-e, és megismerheti a megfelelő lekérdezés létrehozása.
+Napló lekérdezések segítségével teljes mértékben kihasználják a gyűjtött adatok értékét [Azure Monitor naplóira](../platform/data-platform-logs.md). Egy hatékony lekérdezési nyelvet lehetővé teszi több táblából származó adatokat, Nagy adatkészleteken, összesítéséhez és minimális programozással összetett műveleteket végez. Gyakorlatilag bármilyen kérdésre választ, és elemzési végre mindaddig, amíg a kapcsolódó adatokat összegyűjtötte-e, és megismerheti a megfelelő lekérdezés létrehozása.
 
 Egyes funkciók az Azure monitorban például [insights](../insights/insights-overview.md) és [megoldások](../insights/solutions-inventory.md) anélkül, hogy Ön az alapul szolgáló lekérdezések Teljesítménynapló-adatok feldolgozása. Teljes mértékben kihasználják a funkciókat a Azure monitor, tisztában kell lennie a lekérdezések tevődnek hogyan, és hogyan használhatja ezeket interaktív módon az Azure Monitor naplóira lévő adatok elemzéséhez.
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/14/2016
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 198fedbbd1e97dcda15c9124109e50664f58f8e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 907816d4f44a953ae338f6ca505b8fb3e048234e
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66139724"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329651"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Az Azure App Service-alkalmazás klónozása a PowerShell használatával
 
@@ -28,7 +28,7 @@ ms.locfileid: "66139724"
 
 A Microsoft Azure PowerShell 1.1.0-s verzió kiadása, egy új beállítás lett elérhető a `New-AzWebApp` , amellyel az App Service-ben újonnan létrehozott alkalmazást egy másik régióban, vagy ugyanabban a régióban a meglévő alkalmazás klónozása. Ez a beállítás lehetővé teszi, hogy üzembe alkalmazások számos különböző régiók között, gyorsan és egyszerűen.
 
-Alkalmazásklónozás jelenleg csak prémium szintű app service-csomagok esetén támogatott. Az új szolgáltatást használ App Service biztonsági másolat szolgáltatás ugyanazokkal a korlátozásokkal, lásd: [biztonsági mentése az Azure App Service alkalmazás](manage-backup.md).
+Alkalmazásklónozás Standard, Premium, a prémium V2 és elkülönített app service-csomagok esetén támogatott. Az új szolgáltatást használ App Service biztonsági másolat szolgáltatás ugyanazokkal a korlátozásokkal, lásd: [biztonsági mentése az Azure App Service alkalmazás](manage-backup.md).
 
 ## <a name="cloning-an-existing-app"></a>Meglévő alkalmazás klónozása
 Forgatókönyv: USA déli középső régiójában, és a egy meglévő alkalmazást szeretne klónozza a tartalmát egy új alkalmazást, az USA északi középső régiójában. Ez az új alkalmazás létrehozása az Azure Resource Managerre vonatkozó verziójának PowerShell-parancsmag használatával elvégezhető a `-SourceWebApp` lehetőséget.

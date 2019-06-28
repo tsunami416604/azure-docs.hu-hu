@@ -7,17 +7,19 @@ ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/15/2019
-ms.openlocfilehash: ff2930fbe0e53c4b3c1223f87919c0913296d07c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/21/2019
+ms.openlocfilehash: a41c3f60d4b949f78c0755f97c9ef7e6302d78d8
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66515920"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330002"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Az Azure Stream Analytics hibáinak elhárítása a diagnosztikai naplók használatával
 
 Néha előfordul Azure Stream Analytics-feladat váratlanul feldolgozása leáll. Fontos tudni az ilyen esemény hibaelhárítása. A hibákat váratlan lekérdezési eredmény, az eszközök kapcsolata vagy váratlan szolgáltatásleállás okozhatja. A diagnosztikai naplók a Stream Analytics segítségével, azonosíthatja az okot, problémák, amikor fordulhat elő, és a helyreállítási idő csökkentése.
+
+Erősen ajánlott az összes éles feladat diagnosztikai naplók engedélyezése.
 
 ## <a name="log-types"></a>Napló típusa
 
@@ -62,7 +64,7 @@ Erősen ajánlott bekapcsolni a diagnosztikai naplókat, és elküldi azokat az 
 
     ![Panel Navigálás a diagnosztikai naplók](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  Hozzon létre egy **neve** a **diagnosztikai beállítások** melletti jelölőnégyzetet, és **Küldés a Log Analyticsnek**. Ezután adjon hozzá egy meglévő, vagy hozzon létre egy új **Log analytics-munkaterület**. Jelölje be a **végrehajtási** és **szerzői műveletek** alatt **LOG**, és **AllMetrics** alatt **METRIKA** . Kattintson a **Save** (Mentés) gombra.
+2.  Hozzon létre egy **neve** a **diagnosztikai beállítások** melletti jelölőnégyzetet, és **Küldés a Log Analyticsnek**. Ezután adjon hozzá egy meglévő, vagy hozzon létre egy új **Log analytics-munkaterület**. Jelölje be a **végrehajtási** és **szerzői műveletek** alatt **LOG**, és **AllMetrics** alatt **METRIKA** . Kattintson a **Save** (Mentés) gombra. Javasoljuk, hogy használja a Log Analytics-munkaterület ugyanabban a régióban az Azure a Stream Analytics-feladatot, további költségek elkerülése érdekében.
 
     ![Diagnosztikai naplók beállításai](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
 
@@ -113,7 +115,7 @@ Feladatvégrehajtási naplók rendelkezik, amely a Stream Analytics-feladat vég
 
 ### <a name="data-errors"></a>Adathibák
 
-Ez a kategória-naplók van bármilyen hiba, amely, amíg a feladat adatainak feldolgozása folyamatban van. Ezek a naplók általában read, adatok szerializálási, során jönnek létre, és írási műveleteket. Ezek a naplók nem tartalmazzák a csatlakozási hibák. Kapcsolódási hibák általános események kell kezelni.
+Ez a kategória-naplók van bármilyen hiba, amely, amíg a feladat adatainak feldolgozása folyamatban van. Ezek a naplók általában read, adatok szerializálási, során jönnek létre, és írási műveleteket. Ezek a naplók nem tartalmazzák a csatlakozási hibák. Kapcsolódási hibák általános események kell kezelni. További különböző különböző okainak [bemeneti és kimeneti adathibák](https://docs.microsoft.com/azure/stream-analytics/data-errors).
 
 Name (Név) | Leírás
 ------- | -------
@@ -149,4 +151,4 @@ Korrelációs azonosító | [GUID](https://en.wikipedia.org/wiki/Universally_uni
 * [Stream Analytics használatának első lépései](stream-analytics-real-time-fraud-detection.md)
 * [Stream Analytics-feladatok méretezése](stream-analytics-scale-jobs.md)
 * [Stream Analytics lekérdezési nyelv leírása](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Stream Analytics felügyeleti REST API-referencia](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Stream Analytics adathibák](https://docs.microsoft.com/azure/stream-analytics/data-errors)

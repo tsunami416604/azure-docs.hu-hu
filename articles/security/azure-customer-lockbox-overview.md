@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: article
 ms.author: cabailey
 manager: barbkess
-ms.date: 05/07/2019
-ms.openlocfilehash: 468e392cd2c45d79cbb24f8d737a6e83fbcd2725
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/20/2019
+ms.openlocfilehash: 0ee2dde5a941d069f5b745eafb35df780f657a47
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65079270"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312620"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Ügyfél kulcstároló, Microsoft Azure
 
@@ -97,7 +97,7 @@ A következő szolgáltatások és alkalmazási helyzetek jelenleg nyilvánosan 
 ### <a name="remote-desktop-access-to-virtual-machines"></a>A virtuális gépek távoli asztali hozzáférés
 
 Ügyfél kulcstároló jelenleg engedélyezve van a távoli asztali hozzáférés a virtuális gépekhez érkező kérések. A következő számítási feladatokkal támogatottak:
-- Platformszolgáltatás (PaaS) – 1. verzió
+- Platformszolgáltatás (PaaS) – az Azure Cloud Services (webes és feldolgozói szerepkör)
 - Szolgáltatott infrastruktúra (IaaS) – Windows és Linux (csak az Azure Resource Manager)
 - Virtuális gép méretezési – Windows és Linux
 

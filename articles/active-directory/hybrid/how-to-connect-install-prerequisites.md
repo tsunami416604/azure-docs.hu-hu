@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d17823c4ef4917f9f312b8f2f327e2b0395cfa3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2916c9aba7d404ff4ad380d249bd507fadf71ea
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67109435"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310078"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a témakör ismerteti az előfeltételeket és az Azure AD Connect hardverkövetelményeit.
@@ -52,7 +52,7 @@ Előtt az Azure AD Connectet telepíti, akkor kell néhány dolgot.
 >Az Azure AD Connect-kiszolgáló kritikus identitási adatokat tartalmaz, és leírtak szerint a 0. rétegbeli összetevő kezelendők [az Active Directory felügyeleti réteg modellje](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#ADATM_BM)
 
 * Az Azure AD Connect nem telepíthető Small Business Server vagy Windows Server Essentials 2019 előtt (a Windows Server Essentials 2019 támogatott). A kiszolgáló Windows Server standard vagy jobb kell használnia.
-* Az Azure AD Connect telepítése tartományvezérlőn nem ajánlott, mert ajánlott biztonsági eljárások és megakadályozhatja, hogy az Azure AD Connect telepítése megfelelően szigorúbb beállításokat
+* Az Azure AD Connect telepítése tartományvezérlőn nem ajánlott, mert ajánlott biztonsági eljárások és megakadályozhatja, hogy az Azure AD Connect telepítése megfelelően szigorúbb beállításokat.
 * Az Azure AD Connect-kiszolgáló egy teljes grafikus felhasználói Felülettel telepítve kell rendelkeznie. Ez **nem támogatott** telepítése server core-on.
 >[!IMPORTANT]
 >Az Azure AD Connect telepítése small business server, server essentials vagy a server core rendszeren nem támogatott.
@@ -141,7 +141,7 @@ További információk, problémák adódnak a kapcsolódással, amikor: [csatla
 Az Azure AD Connect a Microsoft PowerShell és a .NET-keretrendszer 4.5.1-es függ. Ez a verzió vagy újabb verzió van telepítve a kiszolgálón van szüksége. A Windows Server verziójától függően tegye a következőket:
 
 * Windows Server 2012R2
-  * A Microsoft PowerShell alapértelmezés szerint telepítve van. Nincs szükség műveletre.
+  * A Microsoft PowerShell alapértelmezés szerint telepítve van. Semmit nem kell tenni.
   * .NET-keretrendszer 4.5.1-es vagy újabb Windows Update szolgáltatáson keresztül érhető el. Győződjön meg arról, hogy telepítette a legújabb frissítéseket a Windows Server, a Vezérlőpulton.
 * Windows Server 2008 R2 és Windows Server 2012
   * A Microsoft PowerShell legújabb verziója érhető el a **Windows Management Framework 4.0**, elérhető [Microsoft Download Center](https://www.microsoft.com/downloads).

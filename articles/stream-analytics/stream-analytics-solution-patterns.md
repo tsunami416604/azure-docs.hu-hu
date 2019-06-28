@@ -6,27 +6,27 @@ ms.author: zhongc
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: 80843abe130f1388a5d4081adab7b9128446763b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/21/2019
+ms.openlocfilehash: 5929ff439bc31e16643e5c57868cd6b68f9cd99c
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65761978"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329577"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Az Azure Stream Analytics megoldás minták
 
 Számos más-szolgáltatásokhoz hasonlóan az Azure Stream Analytics legjobb szolgál más szolgáltatásokkal nagyobb teljes körű megoldást hozhat létre. Ez a cikk ismerteti az Azure Stream Analytics-megoldások egyszerű és a különféle architekturális mintái. Ezek a minták olyan összetett megoldások a hozhat létre. Az ebben a cikkben leírt minták számos esetben használható. Példák a forgatókönyvre jellemző minták érhetők el a [Azure-megoldások architektúrái](https://azure.microsoft.com/solutions/architecture/?product=stream-analytics).
 
-## <a name="create-a-stream-analytics-job-with-a-real-time-dashboard"></a>Hozzon létre egy Stream Analytics-feladatot egy valós idejű irányítópult
+## <a name="create-a-stream-analytics-job-to-power-real-time-dashboarding-experience"></a>Hozzon létre egy Stream Analytics-feladat power valós idejű dashboarding élmény
 
-Az Azure Stream Analytics a könnyű használata akkor is gyorsan üzembe valós idejű irányítópultok és riasztások. Egy egyszerű megoldást a jól alkalmazkodik az Event Hubs vagy IoT hubot, és [-csatornák a streamelési adatkészlet a Power BI-irányítópult](/power-bi/service-real-time-streaming). További információkért tekintse meg a részletes oktatóanyag [a Stream Analytics-szel telefonhívás-adatok elemzése és megjelenítése a Power BI-irányítópult eredményt](stream-analytics-manage-job.md).
+Az Azure Stream Analytics akkor is gyorsan üzembe valós idejű irányítópultok és riasztások. Egy egyszerű megoldást a jól alkalmazkodik az Event Hubs vagy IoT hubot, és [-csatornák a streamelési adatkészlet a Power BI-irányítópult](/power-bi/service-real-time-streaming). További információkért tekintse meg a részletes oktatóanyag [a Stream Analytics-szel telefonhívás-adatok elemzése és megjelenítése a Power BI-irányítópult eredményt](stream-analytics-manage-job.md).
 
 ![ASA Power BI dashboard](media/stream-analytics-solution-patterns/pbidashboard.png)
 
 Ez a megoldás csak pár perc alatt az Azure Portalról építhetők fel. Nincs a nincs kiterjedt kódolásra vesz részt, és az SQL-nyelv segítségével az üzleti logika express.
 
-A valós idejű irányítópult megoldás minta kínál a legkisebb késés az eseményforrás egy böngészőben a Power BI-irányítópulton. Az Azure Stream Analytics egy csak az Azure-szolgáltatás ezt a beépített funkciót.
+Ez a minta megoldás kínál a legkisebb késés az eseményforrás egy böngészőben a Power BI-irányítópulton. Az Azure Stream Analytics egy csak az Azure-szolgáltatás ezt a beépített funkciót.
 
 ## <a name="use-sql-for-dashboard"></a>Irányítópult SQL használata
 
@@ -34,19 +34,19 @@ A Power BI-irányítópultot kínál a kis késleltetésű, de nem használható
 
 ![ASA SQL-irányítópult](media/stream-analytics-solution-patterns/sqldashboard.png)
 
-Az SQL database több rugalmasságot tesz lehetővé késések rovására. Ez a megoldás akkor optimális nagyobb, mint egy második késési követelményekkel rendelkező feladatok. Ezzel a módszerrel maximalizálja a Power BI további szelet segédprogramot, és az adatok menően jelentésekhez. Más irányítópult megoldásokkal, például a Tableau, a rugalmasságot is kaphat.
+Az SQL database több rugalmasságot tesz lehetővé egy némileg nagyobb késést rovására. Ez a megoldás akkor optimális nagyobb, mint egy második késési követelményekkel rendelkező feladatok. Ezzel a módszerrel maximalizálása érdekében további szelet Power BI képességeit, és az adatok menően jelentésekhez, és sokkal több Vizualizáció beállítások. Más irányítópult megoldásokkal, például a Tableau, a rugalmasságot is kaphat.
 
-Az SQL nem nagy átviteli sebességű adattár, és az Azure Stream Analytics egy SQL Database maximális átviteli sebesség MB/s-24. A eseményforrások a megoldás a magasabb adatok előállításához, ha szeretné használni feldolgozási logikáját a Stream Analytics SQL a kimenő forgalom csökkentése érdekében. A mintát technikák, például szűrhet, az ablakos összesítéseket, az időalapú illesztéseket megfelelő, és elemzési függvények használhatók. A kimeneti arány SQL tovább optimalizálható leírt technikákkal [az Azure SQL Database az Azure Stream Analytics-kimenetet](stream-analytics-sql-output-perf.md).
+Az SQL nem nagy átviteli sebességű adattár áll. Az Azure Stream Analytics egy SQL Database maximális átviteli sebesség jelenleg körülbelül 24 MB/s. A eseményforrások a megoldás a magasabb adatok előállításához, ha szeretné használni feldolgozási logikáját a Stream Analytics SQL a kimenő forgalom csökkentése érdekében. A mintát technikák, például szűrhet, az ablakos összesítéseket, az időalapú illesztéseket megfelelő, és elemzési függvények használhatók. A kimeneti arány SQL tovább optimalizálható leírt technikákkal [az Azure SQL Database az Azure Stream Analytics-kimenetet](stream-analytics-sql-output-perf.md).
 
 ## <a name="incorporate-real-time-insights-into-your-application-with-event-messaging"></a>Építhet be valós idejű betekintést az alkalmazás esemény üzenetkezeléssel
 
 A második legnépszerűbb Stream Analytics használata valós idejű riasztásokat generálni. Megoldás ebben a mintában az üzleti logikát a Stream Analytics észleléséhez használható [historikus és térbeli mintázatok](stream-analytics-geospatial-functions.md) vagy [rendellenességek](stream-analytics-machine-learning-anomaly-detection.md), majd a termék riasztási jelek. Ellentétben a Stream Analytics, a Power BI használja elsődleges végpont irányítópult megoldást, azonban több köztes adatfogadókba használható. Ezek fogadóként közé tartozik az Event Hubs, a Service Bus és az Azure Functions. Mint az alkalmazás builder kell döntse el, melyik adatfogadó leginkább a forgatókönyvnek.
 
-Alsóbb rétegbeli esemény fogyasztói logikai riasztásokat generálni a már meglévő üzleti munkafolyamatot a kell végrehajtani. Mivel az Azure Functions egyéni logikát valósíthat meg, a Funkciók, a leggyorsabb módot kínálni arra is elvégezheti ezt az integrációt. -Üzembehelyezési útmutató az Azure-függvény használatával tekintheti meg a Stream Analytics-feladat kimenetét [Azure Functions futtatása Azure Stream Analytics-feladatokból](stream-analytics-with-azure-functions.md). Az Azure Functions támogatja a különböző típusú, beleértve a szöveges és az e-mail értesítések is. Logikai alkalmazás ilyen az integráció, az Event Hubs a Stream Analytics és a logikai alkalmazás között is használhatók.
+Alsóbb rétegbeli esemény fogyasztói logikai riasztásokat generálni a már meglévő üzleti munkafolyamatot a kell végrehajtani. Mivel az egyéni logikát valósíthat meg az Azure Functions, az Azure Functions, a leggyorsabb módot kínálni arra is elvégezheti ezt az integrációt. -Üzembehelyezési útmutató az Azure-függvény használatával tekintheti meg a Stream Analytics-feladat kimenetét [Azure Functions futtatása Azure Stream Analytics-feladatokból](stream-analytics-with-azure-functions.md). Az Azure Functions támogatja a különböző típusú, beleértve a szöveges és az e-mail értesítések is. Logikai alkalmazás ilyen az integráció, az Event Hubs a Stream Analytics és a logikai alkalmazás között is használhatók.
 
 ![ASA esemény üzenetkezelési alkalmazás](media/stream-analytics-solution-patterns/eventmessagingapp.png)
 
-Event hubs is –, másrészt a legrugalmasabb integrációs pontot biztosít. Az Event hubs-Eseményközpontok eseményeinek számos olyan szolgáltatásokhoz, mint az Azure Data Explorer és a Time Series Insight használhatnak fel. Szolgáltatások közvetlenül az Event Hubs fogadó a csatlakoztathatók az Azure Stream Analytics a megoldás végrehajtásához. Az Event Hubs egyben a legmagasabb szintű teljesítmény üzenetközvetítő ilyen integrációs forgatókönyvek az Azure-ban elérhető.
+Event hubs is –, másrészt a legrugalmasabb integrációs pontot biztosít. Az Event hubs-Eseményközpontok eseményeinek számos olyan szolgáltatásokhoz, mint az Azure Data Explorer és a Time Series Insights használhatnak fel. Szolgáltatások közvetlenül az Event Hubs fogadó a csatlakoztathatók az Azure Stream Analytics a megoldás végrehajtásához. Az Event Hubs egyben a legmagasabb szintű teljesítmény üzenetközvetítő ilyen integrációs forgatókönyvek az Azure-ban elérhető.
 
 ## <a name="dynamic-applications-and-websites"></a>A dinamikus alkalmazások és webhelyek
 

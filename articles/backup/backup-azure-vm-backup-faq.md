@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: sogup
-ms.openlocfilehash: 9d4d1db808446cb010e6551bdcec514fc550d802
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fdf8e6c19711f6ce38d430a9dffab185cad961b
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966316"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296173"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Gyakori kérdések – biztonsági mentése Azure virtuális gépek
 
@@ -89,6 +89,9 @@ Pillanatképek nem használhatók a WA-kompatibilis lemezen. Azonban az Azure Ba
 Az Azure Backup a WA-kompatibilis lemez nem készíthető, de lehet kizárni, biztonsági másolatból. Azonban a biztonsági mentés módszer nem biztosítja adatbázis-konzisztencia, mert a WA-kompatibilis lemezen lévő adatokat nem készül. Ez a konfiguráció lemezek készíthető, ha azt szeretné, operációsrendszer-lemez biztonsági mentés, és a lemezek, amelyek nem WA-kompatibilis.
 
 Privát előzetes verzió, az SAP HANA biztonsági mentés egy 15 perces RPO-val futtatja azt. Az SQL-adatbázis biztonsági mentése hasonló módon épül, és az SAP HANA által hitelesített külső megoldások a backInt felületet használja. Ha érdekli, e-mailt küldjön `AskAzureBackupTeam@microsoft.com` témájával **regisztrálhat az Azure virtuális gépeken futó SAP HANA biztonsági mentéséhez a privát előzetes verzió**.
+
+### <a name="what-is-the-maximum-delay-i-can-expect-in-backup-start-time-from-the-scheduled-backup-time-i-have-set-in-my-vm-backup-policy"></a>Mi az a maximális késleltetés kell beállítani a saját virtuális gép biztonsági mentési szabályzat ütemezett biztonsági mentésének ideje a biztonsági mentés kezdő időpontja is várható?
+Az ütemezett biztonsági mentést az ütemezett biztonsági mentés időpontja 2 órán belül aktiválódik. Az ex. Ha 100 virtuális gép 2:00 órakor ütemezett biztonsági mentés kezdő időpontja, majd szerint max. 4:00-kor összes 100VMs rendelkezik biztonságimásolat-készítő feladat folyamatban van. Ha ütemezett biztonsági mentések szünetelnek miatt a szolgáltatáskimaradás, és folytatódik és újra megpróbálja majd biztonsági mentés indításához ez 2 óra ütemezett időszakon kívül.
 
 
 ## <a name="restore"></a>Visszaállítás

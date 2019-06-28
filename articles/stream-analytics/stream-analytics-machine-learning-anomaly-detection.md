@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: fdf98a0c0c40010bb55955b54dc7b04db8e199f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/21/2019
+ms.openlocfilehash: 88c0aea851bcf70206b5f68d7865c487441905f6
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66493265"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329901"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Anomáliadetektálás az Azure Stream Analytics szolgáltatásban
 
@@ -21,7 +21,7 @@ Elérhető a felhőben és az Azure IoT Edge segítségével, az Azure Stream An
 
 A machine learning-modellek tegyük fel, egységesen mintavételezett idősorozat. Ha az idősor nem egységes, beszúrhat egy összesítési lépés egy átfedésmentes ablak anomáliadetektálás hívása előtt.
 
-A machine learning-műveletek nem támogatják a szezonalitás trendeket vagy több változós összefüggéseket.
+A machine learning-műveletek nem támogatják szezonalitás trendeket vagy több változós összefüggéseket jelenleg.
 
 ## <a name="model-accuracy-and-performance"></a>Modell pontosságát és teljesítmény
 
@@ -29,9 +29,9 @@ A machine learning-műveletek nem támogatják a szezonalitás trendeket vagy t�
 
 A függvények milyen, amint láthatta, amennyiben alapján normál létrehozásával működnek. Kiugró értékek a létrehozott normál, a megbízhatósági szint belül hasonlítja azonosítja. Az ablak mérete a normál működéshez a modell betanítását, így ha anomália található, felismerni képes lenne szükséges minimális események alapján.
 
-Ne feledje, hogy a modell válaszidő az előzmények mérete nő, mert porovnání a múltban történt eseményekről megnövelt számú. Javasoljuk, hogy csak az események a jobb teljesítmény érdekében szükséges számát tartalmazzák.
+A modell válaszidő növeli előzmények méretű, mert porovnání a múltban történt eseményekről megnövelt számú. Javasoljuk, hogy csak az események a jobb teljesítmény érdekében szükséges számát tartalmazzák.
 
-A time series hiányosságok lehet a modell nem fogadott események bizonyos időpontokban a időben. Ebben a helyzetben a Stream Analytics használatával imputálási intézi. Az előzmények mérete, valamint egy időtartamot, az azonos csúszóablakban a rendszer kiszámítja, amellyel események várhatóan érkeznek átlagos sebességét.
+A time series hiányosságok lehet a modell nem fogadott események bizonyos időpontokban a időben. Ebben a helyzetben a Stream Analytics imputálási logikai kapcsolattal történik. Az előzmények mérete, valamint egy időtartamot, az azonos csúszóablakban a rendszer kiszámítja, amellyel események várhatóan érkeznek átlagos sebességét.
 
 ## <a name="spike-and-dip"></a>Megnövekedett és dedikált IP-címmel
 
@@ -40,7 +40,7 @@ Egy time series eseménystream ideiglenes protokollmegvalósításokat, csúcsok
 
 ![Megnövekedett és a dip anomáliadetektálási – példa](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
 
-Az azonos csúszóablakban, a második ugrásszerű kisebb, mint az elsőt, ha a kiszámított pontszámot a kisebb kiugrást a nem elegendő az első kiugrás belül a megbízhatósági szint esetében a pontszámot képest megadott jelentős. A modell megbízhatósági szint beállítás ilyen rendellenességek olvasásra csökkenő próbálhatja ki. Azonban ha elkezdi túl sok értesítéseket kaphat, egy magasabb megbízhatósági intervallum használhatja.
+Az azonos csúszóablakban, a második ugrásszerű kisebb, mint az elsőt, ha a kiszámított pontszámot a kisebb kiugrást a nem elegendő az első kiugrás belül a megbízhatósági szint esetében a pontszámot képest megadott jelentős. A modell megbízhatósági szint ilyen rendellenességek észlelése csökkenő próbálhatja ki. Azonban ha elkezdi túl sok értesítéseket kaphat, egy magasabb megbízhatósági intervallum használhatja.
 
 A következő példalekérdezés feltételezi, hogy a bemeneti arány egy 2 perces csúszóablakban másodpercenként egy esemény-120 eseményeit. A végső SELECT utasítás kibontása, és megjeleníti a pontszám és anomáliadetektálási 95 %-os megbízhatósági szint állapotát.
 
