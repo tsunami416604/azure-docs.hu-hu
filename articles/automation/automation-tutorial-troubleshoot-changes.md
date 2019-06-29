@@ -11,12 +11,12 @@ ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 77dda5f113a10f0bfb59457b1059563c58db0dde
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 92f25d956bc8f1f930ae6ebbf7ee48c144bf8a30
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62116634"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476857"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>A környezet változásainak hibaelhárítása
 
@@ -197,7 +197,7 @@ A **Riasztási logika** területen a **Küszöbérték** legyen **0**. Ha elkés
 
 A **Műveletcsoportok**válassza **hozzon létre új**. A műveletcsoport műveletek csoportja, amelyeket több riasztáson is alkalmazhat. Ezek a műveletek a teljesség igénye nélkül a következők lehetnek: e-mail-értesítések, runbookok, webhookok stb. A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok létrehozásáról és kezeléséről](../azure-monitor/platform/action-groups.md) szóló cikkben talál.
 
-A **riasztás részletei**, adjon meg egy nevet és leírást a riasztás. A **Súlyosság** paraméter értéke legyen **Tájékoztató (Sev 2)**, **Figyelmeztető (Sev 1)** vagy **Kritikus (Sev 0)**.
+A **riasztás részletei**, adjon meg egy nevet és leírást a riasztás. A **Súlyosság** paraméter értéke legyen **Tájékoztató (Sev 2)** , **Figyelmeztető (Sev 1)** vagy **Kritikus (Sev 0)** .
 
 A **Műveletcsoport neve** mezőben adja meg a riasztás nevét és egy rövid nevet. A rendszer a rövid nevet használja a műveletcsoport teljes neve helyett, amikor értesítéseket küld a csoport használatával.
 
@@ -211,7 +211,7 @@ A riasztási e-mail tárgyának testreszabásához kattintson az **E-mail tárgy
 
 Az alábbi képen egy, a W3SVC szolgáltatás leállítása esetén kapott e-mailre látható példa.
 
-![e-mail](./media/automation-tutorial-troubleshoot-changes/email.png)
+![email](./media/automation-tutorial-troubleshoot-changes/email.png)
 
 ## <a name="next-steps"></a>További lépések
 

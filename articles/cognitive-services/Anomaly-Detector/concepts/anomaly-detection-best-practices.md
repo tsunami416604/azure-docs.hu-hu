@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 766d009be3cd664d928a3c12f5fea38c26bbbdde
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ad4a67d7737733e4c910d3495be29860769f27e
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64692195"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477814"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Az Anomáliadetektálási detector használatával API használatának ajánlott eljárásai
 
@@ -51,7 +51,7 @@ Alább az azonos adatkészlet batch anomáliadetektálás használatával. A mű
 
 ## <a name="data-preparation"></a>Adatok előkészítése
 
-Az Anomáliadetektálási detector használatával API elfogadja a time series adatok JSON-kérelem objektum formázva. Időbeli adatsorok lehet egymást követő sorrendben idővel bármely numerikus adatokkal. Elküldheti az idősoros adatokat, a windows az Anomáliadetektálási detector használatával API-végpont az API-k teljesítményének javítása érdekében. Elküldheti az adatpontok minimális száma 12, a maximális pedig 8640 pontokat. 
+Az Anomáliadetektálási detector használatával API elfogadja a time series adatok JSON-kérelem objektum formázva. Időbeli adatsorok lehet egymást követő sorrendben idővel bármely numerikus adatokkal. Elküldheti az idősoros adatokat, a windows az Anomáliadetektálási detector használatával API-végpont az API-k teljesítményének javítása érdekében. Elküldheti az adatpontok minimális száma 12, a maximális pedig 8640 pontokat. [Granularitási](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) milyen sebességgel: az adatok mintavételezése típusúként van definiálva. 
 
 Az Anomáliadetektálási detector használatával API-nak elküldött adatpontok rendelkeznie kell az egyezményes világidő (UTC) érvényes időbélyeget, és numerikus érték. 
 
@@ -68,6 +68,15 @@ Az Anomáliadetektálási detector használatával API-nak elküldött adatponto
         "value": 29615278
       },
     ]
+}
+```
+
+Ha az adatok mintavételezése nem szabványos időközönként, megadhatja azt hozzáadásával a `customInterval` attribútum a kérelemben. Például ha az sorozat mintavételezés 5 percenként, adhat hozzá a következő a JSON-kérelem:
+
+```json
+{
+    "granularity" : "minutely", 
+    "customInterval" : 5
 }
 ```
 

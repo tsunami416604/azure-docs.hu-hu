@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 05/09/2019
+ms.date: 06/28/2019
 ms.author: aahi
-ms.openlocfilehash: 9ae894bee803c60b56a1bfacd5667f355aa44d2b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 835dc8d25ad1d6a30020408636b556c3f247200d
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800004"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478379"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: A Text Analytics kognitív szolgáltatás hívásához Python REST API használatával 
 <a name="HOLTop"></a>
@@ -49,7 +49,6 @@ Hozzon létre egy új Python-alkalmazás a kedvenc szerkesztőjében, vagy IDE. 
 import requests
 # pprint is used to format the JSON response
 from pprint import pprint
-from IPython.display import HTML
 ```
 
 Hozzon létre változókat az előfizetési kulcs és a végpont a Text Analytics REST API-hoz. Győződjön meg arról, hogy a régió végpontját, a regisztráció során használt felel meg (például `westcentralus`). Ha egy ingyenes próba-kulcsot használ, nem kell bármin változtatni.
@@ -90,7 +89,7 @@ languages = response.json()
 pprint(languages)
 ```
 
-### <a name="output"></a>Kimenet
+### <a name="output"></a>Output
 
 ```json
 {
@@ -160,7 +159,7 @@ sentiments = response.json()
 pprint(sentiments)
 ```
 
-### <a name="output"></a>Kimenet
+### <a name="output"></a>Output
 
 A dokumentumok értelmezhetőségi pontszámot 0,0 és 1,0, között van, a nagyobb pozitív vélemények jelző magasabb pontszámot.
 
@@ -192,7 +191,7 @@ A dokumentumok értelmezhetőségi pontszámot 0,0 és 1,0, között van, a nagy
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="extract-key-phrases"></a>Kulcsszavak keresése
+## <a name="extract-key-phrases"></a>Kulcsszavak kinyerése
  
 A kulcskifejezések kinyerése azon dokumentumok, a hozzáfűző `keyPhrases` , a Szövegelemzés bázisvégpont kialakításához, a nyelv észlelése URL-CÍMÉT. Például:`https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
     
@@ -220,7 +219,7 @@ key_phrases = response.json()
 pprint(key_phrases)
 ```
 
-### <a name="output"></a>Kimenet
+### <a name="output"></a>Output
 
 ```json
 {
@@ -290,7 +289,7 @@ response  = requests.post(entities_url, headers=headers, json=documents)
 entities = response.json()
 ```
 
-### <a name="output"></a>Kimenet
+### <a name="output"></a>Output
 
 ```json
 {'documents': [{'id': '1',

@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 38276757d0472582c3cf5035e1f52d34158a7e38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1692032b093cd6189cac3ea3f63c563d9accd8ed
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61433621"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477833"
 ---
 # <a name="project-acoustics-unrealwwise-design-tutorial"></a>Projekt Akusztika Unreal/Wwise tervezési oktatóanyag
 Ez az oktatóanyag ismerteti a Tervező telepítő és a projekt Akusztika Unreal és Wwise.
@@ -122,6 +122,11 @@ A kényszerített terhelés csempe tervezet funkció használata kezelheti a str
 Csempe méretéhez már állítson be kényszerített terhelés csempe hívása előtt. Ha például ezt be ACE-fájlt, a csempe méretének beállítása és a egy régióban adatfolyam ehhez hasonló:
 
 ![Képernyőkép a Streamelési beállítások az Unreal](media/streaming-setup.png)
+
+Ebben a példában használt Akusztika adatok betöltése tervezet függvény a következő paraméterekkel rendelkezik:
+
+* **Cél:** A AcousticsSpace actor.
+* **Új Bake:** A Akusztika adategységet, nem tölthető be. Hagyja üresen és hogy ez a beállítás azt null el lesz az aktuális bake betöltése egy új nélkül.
 
 ### <a name="optionally-query-for-surface-proximity"></a>Szükség esetén a surface közelségi lekérdezés
 Ha azt szeretné, hogy milyen közel felületek körül a figyelő egy adott irányba, a lekérdezés távolság függvényt is használhatja. Ez a funkció akkor lehet hasznos, a késleltetett fényt irányt vagy más surface közelségi által készített játék logika. A lekérdezés nem kevésbé költséges, mint egy ray cast, mert a Akusztika keresési tábla kikerülnek az eredményeket.
