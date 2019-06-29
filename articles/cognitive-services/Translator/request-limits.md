@@ -3,19 +3,19 @@ title: Kérelmekre vonatkozó korlátok – Translator Text API
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk felsorolja a Translator Text API kérelmekre vonatkozó korlátok. Díjait értéket, és a egy korlátja kérelmenként 5000 karakternél nem kérelem gyakorisága alapján. Karakter korlátozások, a F0 legfeljebb 2 millió karakter / óra alapú előfizetés.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: d04677362e0ba3ace59d55ede9bd6241f17130e9
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.author: swmachan
+ms.openlocfilehash: a7621cc80a38d9a07872a94d8e5221dc04023b86
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67269229"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435030"
 ---
 # <a name="request-limits-for-translator-text"></a>A Translator Text kérelmekre vonatkozó korlátok
 
@@ -38,7 +38,11 @@ Az alábbi táblázat listák tömb elem és karakter korlátok, a Translator Te
 
 ## <a name="character-limits-per-hour"></a>Karakter korlátozások / óra
 
-A karakteres korlátot óránként a Translator Text előfizetési szint alapján történik. Az óránkénti kvóta egyenletesen fel kell használni az óra során. Ha Ön vagy előremutató ezeket a korlátokat, vagy túl nagy a kvóta egy részét, egy rövid idő alatt, valószínűleg kap kívüli kvóta választ. Nincs korlátozva van az egyidejű kérelmek.
+A karakteres korlátot óránként a Translator Text előfizetési szint alapján történik. 
+
+Az óránkénti kvóta egyenletesen fel kell használni az óra során. Például: 2 millió karakter / óra F0 réteg korlát, karaktert kell használni gyorsabban nagyjából 33,300 karakter / perc csúszóablakban (60 perc osztva 2 millió karakter).
+
+Ha Ön vagy előremutató ezeket a korlátokat, vagy túl nagy a kvóta egy részét, egy rövid idő alatt, valószínűleg kap kívüli kvóta választ. Nincs korlátozva van az egyidejű kérelmek.
 
 | Szint | Karakteres korlátot |
 |------|-----------------|

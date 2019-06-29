@@ -9,17 +9,17 @@ ms.subservice: form-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 45303f1f75e80a66c3cb85154d458a970c214370
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: f38752928832b7dee6a7e55f1d25374a64391bbe
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295487"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441886"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Telepítse és futtassa az űrlap felismerő tárolók
 Az Azure űrlap felismerő gépi tanulási technológia azonosíthatja és kulcs-érték párok és táblák kinyerése űrlapok vonatkozik. Értékek és táblabejegyzéseket társítja a kulcs-érték párok, és azt majd megjeleníti a strukturált adatok, amely tartalmazza a kapcsolatokat az eredeti fájlt. 
 
-Csökkentheti az összetettséget, és könnyedén integrálhatja egy egyéni űrlap felismerő modell a munkafolyamat automation vagy más alkalmazás, meghívhatja a modell egy egyszerű REST API-val. Szükség esetén, így eredmények gyorsan, pontosan, és az adott tartalom szabott csak öt dokumentumok (vagy egy üres képernyő). Nem nehéz kézi beavatkozás vagy kiterjedt data science szakértelmet nem szükséges. És nincs szükség adatok címkézési vagy adatok jegyzet.
+Csökkentheti az összetettséget, és könnyedén integrálhatja egy egyéni űrlap felismerő modell a munkafolyamat automation vagy más alkalmazás, meghívhatja a modell egy egyszerű REST API-val. Szükség esetén, így eredmények gyorsan, pontosan, és az adott tartalom szabott csak öt űrlap dokumentumok (vagy egy üres képernyő és két ki vannak töltve formában). Nem nehéz kézi beavatkozás vagy kiterjedt data science szakértelmet nem szükséges. És nincs szükség adatok címkézési vagy adatok jegyzet.
 
 |Függvény|Szolgáltatások|
 |-|-|
@@ -31,7 +31,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Mielőtt használná az űrlap felismerő tárolók, a következő előfeltételeknek kell megfelelnie:
 
-|Kötelező|Cél|
+|Szükséges|Cél|
 |--|--|
 |Docker-motor| A Docker-motor telepítve van szüksége egy [gazdaszámítógép](#the-host-computer). A docker csomagokat biztosít, a Docker-környezet konfigurálása a [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), és [Linux](https://docs.docker.com/engine/installation/#supported-platforms). A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> A Windows a Linux-tárolók támogatása is Docker kell konfigurálni.<br><br>|
 |Docker-ismeretek | A Docker fő fogalmaira, például a beállításjegyzékek, adattárak, tárolók, és tárolórendszerképeket és alapszintű ismerete alapvető ismeretekkel kell `docker` parancsokat.|

@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 8c7476a82df75d8ba653a2a8e6c0f9f557b53c42
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: dd8ed146c507d8d39ba99c6573321ee80bc891c9
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341874"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442565"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>Entitás hozzáadása a példa kimondott szöveg 
 
 Példa utterances Példák szöveges felhasználói kérdések vagy parancsok. Language Understanding (LUIS) elemre, hozzá kell [példa utterances](luis-concept-utterance.md) , egy [szándékot](luis-concept-intent.md).
 
-Általában ad hozzá egy példa utterance (kifejezés) megjelölésű először, és ezután entitások létrehozása és a szándék oldalon utterances címkézését. Ha az entitások nem vznikla először, tekintse meg [entitások hozzáadása](luis-how-to-add-entities.md).
+Általában egy példa utterance (kifejezés) ad hozzá egy leképezési első, és ezután entitások létrehozása és a kimondott szöveg címke a **leképezések** lapot. Ha az entitások nem vznikla először, tekintse meg [entitások hozzáadása](luis-how-to-add-entities.md).
 
 ## <a name="marking-entities-in-example-utterances"></a>Jelölés entitások példa kimondott szöveg
 
@@ -32,7 +32,7 @@ Bizonyos entitástípusok, előre összeállított entitások és a reguláris k
 
 ## <a name="add-a-simple-entity"></a>Egy egyszerű entitás hozzáadása
 
-A következő eljárással hozzon létre, és egy egyéni entitást belül a következő utterance (kifejezés) címke a szándék oldalon:
+A következő eljárással hozzon létre, és egy egyéni entitást belül a következő utterance (kifejezés) címkével a a **leképezések** oldalon:
 
 ```text
 Are there any SQL server jobs?
@@ -65,9 +65,9 @@ A vállalat részleg listát, akkor is rendelkezik normalized értékek: `Accoun
 
     Hozzáadhat további listaelemek vagy több elemet a szinonimák más utterances címkézéssel, vagy az a entitás szerkesztésével a **entitások** a bal oldali navigációs menüben. [Szerkesztési](luis-how-to-add-entities.md#add-list-entities) az entitásokat a további elemek a megfelelő szinonimák, vagy egy lista importálásával beírását lehetőségeket kínál. 
 
-## <a name="add-composite-entity"></a>Összetett entitás hozzáadása
+## <a name="add-a-composite-entity"></a>Egy összetett entitás hozzáadása
 
-Összetett entitások jönnek létre a meglévő **entitások** egy fölérendelt entitásba. 
+Összetett entitások jönnek létre a meglévő **entitások** egy szülőentitás kialakításához. 
 
 Az utterance (kifejezés), feltéve, hogy `Does John Smith work in Seattle?`, egy összetett utterance (kifejezés) térhet vissza az alkalmazott nevét, az Entitásadatok `John Smith`, és a hely `Seattle` összetett entitásokban. A gyermekentitások már léteznie kell az alkalmazást, és a példa utterance (kifejezés) az összetett entitás létrehozása előtt kell megjelölni.
 
@@ -131,15 +131,15 @@ Elvégezhető műveletek a példa kimondott szöveg, a kiválasztott csoporthoz 
 
 ### <a name="remove-entity-labels-from-utterances"></a>Beszédmódok entitás címkék eltávolítása
 
-Gép megismert entitások címkék eltávolíthatók az utterance (kifejezés), a szándék oldalon. Ha a gép megismerte az entitás nem áll, akkor nem lehet eltávolítani az utterance (kifejezés). Ha egy nem gép megismert entitások eltávolítása az utterance (kifejezés) van szüksége, kell törölni az entitást a teljes alkalmazásban. 
+Gép megismert entitások címkék eltávolíthatók az utterance (kifejezés), a leképezések oldalon. Ha a gép megismerte az entitás nem áll, akkor nem lehet eltávolítani az utterance (kifejezés). Ha egy nem gép megismert entitások eltávolítása az utterance (kifejezés) van szüksége, kell törölni az entitást a teljes alkalmazásban. 
 
 Egy entitás gép megtanult címke eltávolítása az utterance (kifejezés), válassza ki az entitást az utterance (kifejezés). Válassza ki **címke eltávolítása** az entitás legördülő mezőben, amely akkor jelenik meg.
 
-### <a name="add-prebuilt-entity-label"></a>Előre összeállított entitások címke hozzáadása
+### <a name="add-a-prebuilt-entity-label"></a>Előre összeállított entitások címke hozzáadása
 
 Ha az előre összeállított entitások ad hozzá a LUIS-alkalmazás, nem kell címke utterances az entitásokhoz. Adja hozzá őket, illetve előre összeállított entitások kapcsolatos további tudnivalókért lásd: [entitások hozzáadása](luis-how-to-add-entities.md#add-a-prebuilt-entity-to-your-app).
 
-### <a name="add-regular-expression-entity-label"></a>Reguláris kifejezés entitás címke hozzáadása
+### <a name="add-a-regular-expression-entity-label"></a>Reguláris kifejezés entitás címke hozzáadása
 
 Ha a reguláris kifejezés entitásokat ad hozzá a LUIS-alkalmazás, nem kell címke utterances az entitásokhoz. Reguláris kifejezés entitásokat, és hogyan adja hozzá őket kapcsolatos további információkért lásd: [entitások hozzáadása](luis-how-to-add-entities.md#add-regular-expression-entities-for-highly-structured-concepts).
 
@@ -149,7 +149,7 @@ Ha a reguláris kifejezés entitásokat ad hozzá a LUIS-alkalmazás, nem kell c
 Lásd: [Hozzáadás minta a leképezés vagy entitás oldalon meglévő utterance (kifejezés)](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page).
 
 
-### <a name="add-patternany-entity"></a>Pattern.any entitás hozzáadása
+### <a name="add-a-patternany-entity"></a>Egy pattern.any entitás hozzáadása
 
 Pattern.any entitásokat ad hozzá a LUIS-alkalmazás, ha meg nem címkét az entitásokhoz kimondott szöveg. Csak azok a minták érvényes. Adja hozzá őket, illetve pattern.any entitások kapcsolatos további tudnivalókért lásd: [entitások hozzáadása](luis-how-to-add-entities.md#add-patternany-entities-to-capture-free-form-entities).
 
@@ -159,4 +159,4 @@ Miután hozzáadása, szerkesztése vagy eltávolítása a kimondott szöveg, [b
 
 ## <a name="next-steps"></a>További lépések
 
-Beszédmódok a szándék fog vonatkozni a címkézés, után most már létrehozhat egy [összetett entitást](luis-how-to-add-entities.md).
+Címkézés a kimondott szöveg után a **leképezések**, most már létrehozhat egy [összetett entitást](luis-how-to-add-entities.md).

@@ -3,19 +3,19 @@ title: 'Gyors útmutató: Támogatott nyelvek listája C# – Translator Text AP
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban a fordítás, átbetűzésű és a Translator Text API használatával szótár keresési támogatott nyelvek listájának lekérése.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: e5e57757fbd80ca8e90b9997440050a751914a8a
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: 5b5bf33c70b9f8827f1f55378e9caf4d1c858bed
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514954"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449423"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-c"></a>Gyors útmutató: Használja a támogatott nyelvek listáját a Translator Text API használatávalC#
 
@@ -114,6 +114,8 @@ var jsonResponse = response.Content.ReadAsStringAsync().Result;
 Console.WriteLine(PrettyPrint(jsonResponse));
 Console.WriteLine("Press any key to continue.");
 ```
+
+Ha egy több szolgáltatást a Cognitive Services-előfizetést használ, akkor is tartalmaznia kell a `Ocp-Apim-Subscription-Region` az a kérelem paramétereit. [További információ a több szolgáltatásos előfizetéshez való hitelesítés közben](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
 
 Nyomtatása válasz "Viszonylag nyomtatási" (a válasz formázás), adja hozzá ezt a funkciót a Program osztályhoz:
 ```

@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: fa516c5050bfd53add761bea56c74a58057263c7
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 8f246e5b3d96855bd40ff50e2f382d8576fee021
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465690"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466105"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-core"></a>Gyors útmutató: A .NET Core lefordítja a beszéd, a beszéd SDK-val
 
-Rövid útmutatók érhetők el is [hang-szöveg transzformációs](quickstart-csharp-dotnet-windows.md) és [szöveg-hang transzformációs](quickstart-text-to-speech-dotnet-windows.md).
+Rövid útmutatók érhetők el is [hang-szöveg transzformációs](quickstart-csharp-dotnet-windows.md) és [szöveg-hang transzformációs](quickstart-text-to-speech-dotnetcore.md).
 
 Ebben a rövid útmutatóban fog létrehozni egy egyszerű .NET Core-alkalmazást, amely rögzíti a felhasználó beszéd, a számítógép mikrofon, a rendszer lefordítja a beszédfelismerési és transcribes a lefordított szöveg valós időben a parancssorba. Ez az alkalmazás a 64 bites Windows rendszerhez készült, és a beépített a [beszéd SDK NuGet-csomagot](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-ben.
 

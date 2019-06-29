@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 0fe30bc6bdd1bba03df349305d8846e78063bd26
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 6df40909e2072ac2126344ba5b696c9e520e9955
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342216"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67434147"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Telepítse és futtassa a Speech Service-tárolók
 
@@ -25,7 +25,7 @@ A két speech tárolók **hang-szöveg transzformációs** és **szöveg-hang tr
 
 |Függvény|Szolgáltatások|legfrissebb|
 |-|-|--|
-|Speech-to-text| <li>Transcribes folyamatos valós idejű beszéd vagy kötegelt hangfelvételeket szöveggé a köztes eredményeket.|1.1.1|
+|Speech-to-text| <li>Transcribes folyamatos valós idejű beszéd vagy kötegelt hangfelvételeket szöveggé a köztes eredményeket.|1.1.2|
 |Szövegfelolvasás| <li>Az írott szöveget természetesnek hangzó beszéddé alakítja. az egyszerű szöveges beviteli vagy beszéd összefoglaló Markup Language (SSML). |1.1.0|
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
@@ -101,10 +101,10 @@ Az összes címke kivételével `latest` a következő formátumban, ahol a `<cu
 A következő kód a következő példa a formátumra:
 
 ```
-1.0.0-amd64-en-us-preview
+1.1.2-amd64-en-us-preview
 ```
 
-A következő táblázat sorolja fel az támogatott nyelveit **hang-szöveg transzformációs** a 1.1.1 a verziót a tároló:
+A következő táblázat sorolja fel az támogatott nyelveit **hang-szöveg transzformációs** a 1.1.2 a verziót a tároló:
 
 |Nyelvi kódot|Tags|
 |--|--|
@@ -129,7 +129,7 @@ Az összes címke kivételével `latest` a következő formátumban, ahol a `<cu
 A következő kód a következő példa a formátumra:
 
 ```
-1.0.0-amd64-en-us-jessarus-preview
+1.1.0-amd64-en-us-jessarus-preview
 ```
 
 A következő táblázat sorolja fel az támogatott nyelveit **szöveg-hang transzformációs** a az 1.1.0-s verzióját a tároló:

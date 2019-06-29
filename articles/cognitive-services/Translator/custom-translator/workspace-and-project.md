@@ -3,19 +3,19 @@ title: Mi egy munkaterületet, és a projektet? -Egyéni a fordítót
 titleSuffix: Azure Cognitive Services
 description: A munkaterület egy munkaterület létrehozása és az egyéni fordítási rendszerek kiépítésének. Munkaterület több projektek, a modellek és a dokumentumok tartalmazhatnak. Egy projektet egy modellt, a dokumentumok és a teszteket egy burkoló. Minden projekt automatikusan összes dokumentumot, amely a rendszer feltölti a munkaterülethez, amelyek rendelkeznek a megfelelő nyelvű pár tartalmaz.
 services: cognitive-services
-author: rajdeep-in
+author: swmachan
 manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-pawal
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 312688ddccd6a65745b919e4c396a95f40a58d3e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c35f3911b591a0d9adccdc48dbdc17f8afb5ea00
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66382319"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447343"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Mi az egyéni a fordítót munkaterület?
 

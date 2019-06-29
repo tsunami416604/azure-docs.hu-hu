@@ -8,17 +8,42 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 06/26/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: f22b0fcac6099482addfcf56a20e0e828866326e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 09296585ab0ab61f39c18cae6c533c0bbd91926a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606349"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449250"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
+
+## <a name="speech-sdk-160-2019-june-release"></a>Speech SDK 1.6.0: A 2019-júniusi kiadásba
+**Példák**
+*   A szöveg-beszéd átalakítás, az UWP- és Unity a gyors üzembe helyezési minták
+*   IOS Swift gyors üzembe helyezési minta
+*   Beszéd & leképezés felismerése és fordítási Unity-minták
+*   A DialogServiceConnector frissített gyors üzembe helyezési minták
+
+**Fejlesztések / módosítása**
+* Párbeszédpanel névtér:
+    * SpeechBotConnector DialogServiceConnector kapott:
+    * BotConfig DialogServiceConfig kapott:
+    * BotConfig::FromChannelSecret() újra lett társítva DialogServiceConfig::FromBotSecret()
+    * Az összes meglévő közvetlen vonal Speech az ügyfelek továbbra is támogatottak, miután a átnevezése
+* Proxy, állandó kapcsolat támogatásához Szövegfelolvasás REST-adapter frissítése
+* Chybová zpráva javítják a régió érvénytelen átadott
+
+**Hibajavítások**
+*   Javítás a szöveg-beszéd átalakítás: ahol SpeakTextAsync jövőbeli visszaadott hang renderelési befejeződéséig várakozás nélkül
+*   Pro sestavování karakterláncokat javítás C# teljes nyelvi támogatás engedélyezéséhez
+*   Javítás a .NET core alkalmazás probléma net461 cílová architektura minták az alap függvénytár betöltése
+*   Natív kódtárak telepítése a kimeneti mappába, a minták alkalmanként problémák javítása
+*   Javítás a web socket megbízhatóan bezárása
+*   Javítás a lehetséges összeomlási linuxon nagyon nagy terhelés alatt kapcsolat megnyitása közben
+
 
 ## <a name="speech-sdk-151"></a>SDK 1.5.1 beszéd
 

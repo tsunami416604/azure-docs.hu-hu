@@ -6,18 +6,18 @@ author: dsk-2015
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 12/17/2018
+ms.date: 06/26/2019
 ms.author: dkshir
-ms.openlocfilehash: 096df62305af91ac85ce9ddbcff5b0160aaa4e8a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f826c6652937caab8b140b489626eef97612baea
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60534578"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67462208"
 ---
-# <a name="tutorial-deploy-azure-digital-twins-and-configure-a-spatial-graph"></a>Oktatóanyag: Az Azure Digital Twins üzembe helyezése és egy térbeli diagram konfigurálása
+# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Oktatóanyag: Az Azure digitális Twins előzetes telepítheti és konfigurálhatja a térbeli grafikon
 
-Az Azure digitális Twins szolgáltatás használatával egyesítheti személyek, helyek és eszközök egy összefüggő információszállá térbeli rendszerben. Ez az oktatóanyag-sorozat bemutatja, hogyan használhatja az Azure digitális Twins észleléséhez helyiségben foglaltsága hőmérséklet és a légi minőségű optimális feltételekkel. 
+Az Azure digitális Twins előzetes szolgáltatás használatával egyesítheti személyek, helyek és eszközök egy összefüggő információszállá térbeli rendszerben. Ez az oktatóanyag-sorozat bemutatja, hogyan használhatja az Azure digitális Twins észleléséhez helyiségben foglaltsága hőmérséklet és a légi minőségű optimális feltételekkel. 
 
 Ezekben az oktatóanyagokban végigvezeti egy .NET-konzolalkalmazást hozhat létre egy forgatókönyv irodaépület. Az épületen belül minden egyes emelet több emeleteken és a rendelkezik. A termek eszközöket tartalmazó olyan csatlakoztatott mozgásfelismerés, környezeti hőmérséklet és légi minőségét. 
 
@@ -103,7 +103,7 @@ A kibontott minta mappában nyissa meg a fájlt **digital-twins-samples-csharp\d
 1. A Visual Studio Code-ban nyissa meg a [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) fájlt a **foglaltsága-quickstart** projekt. Frissítse a következő értékeket:
    * **ClientId**: Adja meg az Azure AD-alkalmazás regisztrációjának alkalmazás azonosítója. Ezt az Azonosítót az szakaszban feljegyzett ahol Ön [Alkalmazásengedélyek beállítása](#permissions).
    * **Bérlő**: Adja meg a címtár-azonosító, a [Azure AD-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant). Ezt az Azonosítót az szakaszban is feljegyzett ahol, [Alkalmazásengedélyek beállítása](#permissions).
-   * **BaseUrl**: Adja meg a digitális Twins-példány URL-CÍMÉT. Az URL-Címének lekéréséhez, cserélje le a helyőrzőket az URL-CÍMBEN szereplő értékek a példány: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Az URL-címet is beszerezheti a felügyeleti API URL-Címének a módosításával [a telepítésről szóló rész](#deploy). Cserélje le **swagger /** a **api/v1.0/**.
+   * **BaseUrl**: Adja meg a digitális Twins-példány URL-CÍMÉT. Az URL-Címének lekéréséhez, cserélje le a helyőrzőket az URL-CÍMBEN szereplő értékek a példány: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Az URL-címet is beszerezheti a felügyeleti API URL-Címének a módosításával [a telepítésről szóló rész](#deploy). Cserélje le **swagger /** a **api/v1.0/** .
 
 1. Minta használatával megvizsgálhatja digitális Twins szolgáltatások listájának megtekintéséhez. Futtassa az alábbi parancsot:
 

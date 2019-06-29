@@ -6,18 +6,18 @@ author: dsk-2015
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 12/27/2018
+ms.date: 06/26/2019
 ms.author: dkshir
-ms.openlocfilehash: ad6c2625dc56dc3a3155183a04b712122a3b10f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 738e78ce06d98960c87414948e045cc4abe37d6b
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60533536"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67462189"
 ---
-# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins"></a>Oktatóanyag: Üzembe helyezheti a létrehozása és használata az Azure digitális Twins feltételek figyelése
+# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Oktatóanyag: Üzembe helyezheti a létrehozása és használata az Azure digitális Twins előzetes feltételek figyelése
 
-Ez az oktatóanyag bemutatja, hogyan monitorozhatja a terek kívánt hőmérsékletét és komfortszintjét az Azure Digital Twins használatával. Miután [konfigurálja a minta létrehozása](tutorial-facilities-setup.md), üzembe helyezése a az épület, és felhasználói függvények futhatnak az érzékelőktől kapott adatok ebben az oktatóanyagban szereplő lépések segítségével.
+Ez az oktatóanyag bemutatja, hogyan használhatja az Azure digitális Twins előzetes verzióját figyelni kívánt hőmérséklet feltételeket és a kényelmi szint a szóközöket. Miután [konfigurálja a minta létrehozása](tutorial-facilities-setup.md), üzembe helyezése a az épület, és felhasználói függvények futhatnak az érzékelőktől kapott adatok ebben az oktatóanyagban szereplő lépések segítségével.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -43,14 +43,14 @@ Meghatározhat adott feltételkészleteket, az eszköz vagy az érzékelőadatok
 
 Az a **foglaltsága-quickstart** projekt minta, nyissa meg a fájlt **src\actions\provisionSample.yaml** Visual Studio Code-ban. Figyelje meg a **megfeleltetők** típussal kezdődő szakaszt. Minden ilyen típusú bejegyzést hoz létre egy megfeleltetőben megadott a megadott **neve**. A megfeleltetőben megadott figyelni fogja az érzékelő típusú **dataTypeValue**. Figyelje meg, hogy miként kapcsolódik a nevű terület *fókusz szoba A1*, amely rendelkezik egy **eszközök** néhány érzékelők tartalmazó csomópont. Üzembe helyez egy megfeleltetőben megadott érzékelőktől egyik követő, győződjön meg arról, hogy a **dataTypeValue** megegyezik az érzékelő **dataType**. 
 
-Adja hozzá a következő megfeleltetőben megadott, a meglévő matchers alatt. Ellenőrizze, hogy a kulcsok vannak elhelyezve, és a tárolóhelyek tabulátorokkal nem cserélhető le.
+Adja hozzá a következő megfeleltetőben megadott, a meglévő matchers alatt. Ellenőrizze, hogy a kulcsok vannak elhelyezve, és a tárolóhelyek tabulátorokkal nem cserélhető le. Ezek a sorok is megtalálhatók a *provisionSample.yaml* ellátva kibővített sorok fájlt. Akkor is távolítsa el őket eltávolításával a `#` karakter minden sor elé.
 
 ```yaml
       - name: Matcher Temperature
         dataTypeValue: Temperature
 ```
 
-Ez megfeleltetőben megadott fogja követni az SAMPLE_SENSOR_TEMPERATURE érzékelő, amelyet a [első oktatóanyaga](tutorial-facilities-setup.md). Ezek a sorok is megtalálhatók a *provisionSample.yaml* ellátva kibővített sorok fájlt. Akkor is távolítsa el őket eltávolításával a `#` karakter minden sor elé.
+Ez megfeleltetőben megadott fogja követni az SAMPLE_SENSOR_TEMPERATURE érzékelő, amelyet a [első oktatóanyaga](tutorial-facilities-setup.md). 
 
 <a id="udf"></a>
 

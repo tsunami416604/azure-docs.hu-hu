@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 06/13/2019
+ms.date: 06/25/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 0314c0e03402d53c7f79eed2efe11db953d184e6
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 7e7a1f119a2f2b0e60645cb776b26c124910cacb
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147507"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448215"
 ---
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>Oktatóanyag: Vissza az Azure Data Box-lemezek, és ellenőrizze az adatok feltöltése az Azure-bA
 
@@ -88,7 +88,7 @@ Ha az eszköz visszaadása Európában, tegye a következőket.
 
 ### <a name="pick-up-in-asia-pacific-region"></a>Vegye fel az ázsiai és csendes-óceáni régióban
 
-Ebben a régióban a japán, koreai és Ausztrália begyűjtés útmutatást tartalmaz.
+Ebben a régióban japán, koreai, Ausztrália és Szingapúr begyűjtés vonatkozó utasításokat tartalmazza.
 
 #### <a name="pick-up-in-australia"></a>Az ausztráliai felvétele
 
@@ -103,43 +103,64 @@ Az ausztráliai Azure-adatközpontok rendelkezik egy kiegészítő biztonsági �
 
 #### <a name="pick-up-in-japan"></a>A japán felvétele
 
-1. Ellenőrizze, hogy a visszaadott connote, japán Post Chakubarai tartalmazza.
-2. A küldő adatai, a connote a nevét és címét adatokat írnak a vállalata.
-3. Japán Post begyűjtési kérelmet szám 0800-0800-111 (ingyenes tárcsázás) hívja meg. Tárcsázza a felvételi cím 7 számjegyű irányítószám, és ezután a legközelebbi post office továbbítja.
-    - Begyűjtési kérelmet elérhető időpontokat megfelelő bejegyzés irodáit függenek.
-    - Tájékoztassa arról, hogy a szállítmány van-e a japán Post Chakubarai Yu-csomag.
-    - Használja a Chakubarai jelent, amely már tartalmazta.
-4. Ha a japán Post Chakubarai jelent nem tartalmazza, e-mail- *Quantium megoldások* , `Customerservice.JP@quantiumsolutions.com`. *Quantium megoldások* japán Post folytattuk a munkát, és kérje meg őket ahhoz, hogy a connote felvétel után fog igényelni.
-    - A hivatkozás jelzi a Chakubarai száma tartalomtérkép érhető el japán Post hozzászólást oszlopot jelent.
-    - Adja meg a szállítási címhez, ahogy az alábbi:   
-        ```
-        3F N7 Prologis Park Tokyo Ohta, 1-3-6 Tokai Ohta-ku, Tokyo 143-0001
-        Microsoft Service Center c/o Quantium Solutions Japan
-        TEL: 03-5755-0150
-        ```
+1. A küldő adatai, a kísérő a nevét és címét adatokat írnak a vállalata.
+2. Az e-mail-Quantium megoldás az alábbi e-mail-sablon használatával.
 
-Ha a Chakubarai jelent hiányzik, kérheti a begyűjtés e-mailen keresztül. A következő e-mail-sablon használatával kérelem begyűjtést.
+    - Ha a japán Post Chakubarai kísérő nem tartalmaz, vagy nincs megadva, vegye figyelembe, hogy az e-mail tartalma. Quantium megoldások japán japán Post ahhoz, hogy a kísérő felvétel után fog igényelni.
+    - Ha több megrendelések, az e-mailben, győződjön meg, hogy az egyes begyűjtést.
 
-```
-To: Customerservice.JP@quantiumsolutions.com
-Subject: Pickup request for Azure Data Box Disk｜Job Name： 
-Body: 
-- Azure Data Box Disk job name：
-- Reference number:  
-- Requested pickup date：mmdd (Select a requested time slot from below).
-    a. 08：00-13：00 
-    b. 13：00-15：00 
-    c. 15：00-17：00 
-    d. 17：00-19：00 
-```
+    ```
+    To: Customerservice.JP@quantiumsolutions.com
+    Subject: Pickup request for Azure Data Box Disk｜Job Name： 
+    Body: 
+    - Japan Post Yu-Pack tracking number (reference number)：
+    - Requested pickup date：mmdd (Select a requested time slot from below).
+        a. 08：00-13：00 
+        b. 13：00-15：00 
+        c. 15：00-17：00 
+        d. 17：00-19：00 
+    ```
+
+3. Egy megerősítő e-mailt kap a Quantium megoldások után, de már begyűjtést. A megerősítő e-mailt a Chakubarai kísérő információkat is biztosít.
+
+Szükség esetén is ügyfélszolgálatot Quantium megoldás (japán nyelv), a következő információkat: 
+
+- E-mail cím:Customerservice.JP@quantiumsolutions.com 
+- Telefon: 03-5755-0150 
 
 #### <a name="pick-up-in-korea"></a>Koreai felvétele
 
-1. Győződjön meg arról, hogy tartalmazza a visszatérési connote.
-2. Felvétel kérése:
-    1. Hívás *Quantium Solutions International* telefonszámon 070-8231-1418 office órában (10-kor, 17: 00 hétfőtől péntekig). Ajánlat *Microsoft felvételre* és a egy gyűjtemény elrendezése connote száma.  
-    2. Ha az információs vonal foglalt, e-mailben `microsoft@rocketparcel.com`, az az e-mail tárgyát *Microsoft Pickup* és hivatkozásként van listázva connote számát.
+1. Győződjön meg arról, hogy tartalmazza a visszatérési kísérő.
+2. A kérelem begyűjtés, kísérő megléte esetén:
+    1. Hívás *Quantium Solutions International* telefonszámon 070-8231-1418 office órában (10-kor, 17: 00 hétfőtől péntekig). Ajánlat *Microsoft Azure begyűjtés* és a egy gyűjtemény rendezheti a kérelem száma.  
+    2. Ha az információs vonal foglalt, e-mailben `microsoft@rocketparcel.com`, az az e-mail tárgyát *a Microsoft Azure begyűjtés* és a kérelmek száma hivatkozásként van listázva.
     3. Ha a courier nem érkezik a gyűjteményhez, hívja *Quantium Solutions International* információs vonal alternatív szabályokat. 
+    4. A felvételi ütemezés egy megerősítő e-mailt kap.
+3. Erre a lépésre csak akkor, ha nem áll rendelkezésre a kísérő szükség. Felvétel kérése:
+    1. Hívás *Quantium Solutions International* telefonszámon 070-8231-1418 office órában (10-kor, 17: 00 hétfőtől péntekig). Ajánlat *Microsoft Azure begyűjtés* és a egy gyűjtemény rendezheti a kérelem száma. Adja meg, hogy kell-e egy új kísérő gyűjtemény elrendezése. Adja meg a feladó (ügyfél), a fogadó információkat (Azure-adatközpont) és a hivatkozás (szolgáltatási kérelem) számát. 
+    2. Ha az információs vonal foglalt, e-mailben `microsoft@rocketparcel.com`, az az e-mail tárgyát *a Microsoft Azure begyűjtés* és a kérelmek száma hivatkozásként van listázva.
+    3. Ha a courier nem érkezik a gyűjteményhez, hívja *Quantium Solutions International* információs vonal alternatív szabályokat. 
+    4. Ha a kérés telefonos kapcsolaton keresztül kap eszkalációra megerősítést.
+
+### <a name="pick-up-in-singapore"></a>Vegye fel a szingapúri
+
+1. Nyomtassa ki a szállítási címkét, és csatolja a boxot. Ha a címke megsérült vagy elveszett:
+    - Lépjen az **Áttekintés > Levélcímke letöltése** menüpontra.
+
+        ![Fuvarlevélcímke letöltése](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
+
+        Ez a művelet egy, az alábbiakban is látható, a visszaküldéshez szükséges fuvarlevélcímkét tölt le.
+
+        ![Példa a fuvarlevélcímkére](media/data-box-disk-deploy-picked-up/exmple-shipping-label.png)
+    - Elhelyezi a címkét az eszközön. Győződjön meg arról, hogy a felirat látható.
+
+2. Felvétel kérése:
+    - Hívás **SingPost** telefonszámon **6845 6485** office munkaidőben (9 -kor, 17: 00 hétfőtől péntekig).  
+    - Ajánlat *Microsoft Azure begyűjtés* és a egy gyűjtemény elrendezése (szám nyomon követése a visszaszállítási címke) kérelem szolgáltatást. 
+    - A felvételi ütemezés eszkalációra megerősítést fog kapni. 
+    - Ha a courier nem érkezik a gyűjteményhez, hívja **SingPost** , **6845 6485** alternatív szabályokat. 
+3. A courier az oldalon. 
+
 
 ## <a name="verify-data-upload-to-azure"></a>Az Azure-ba történő adatfeltöltés ellenőrzése
 

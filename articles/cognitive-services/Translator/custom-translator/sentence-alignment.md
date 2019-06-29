@@ -2,19 +2,19 @@
 title: Párosítás és -igazításának – egyéni a fordítót Mondatkezdő
 titleSuffix: Azure Cognitive Services
 description: A betanítási futtatás során mondatokat párhuzamos dokumentumokban található a párosított vagy igazítva. Egyéni a fordítót fordítások egy mondatban tanul, egyszerre egy mondatát, a fordítás ezt a mondatot, olvassa el. Ezután azt igazítja szavak és kifejezések ezen két mondatokban egymáshoz.
-author: rajdeep-in
+author: swmachan
 manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-pawal
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 99538fd18067377efcc9e744e9ec611e0f685273
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f73c40704e10a8e2368ee1eb369ee3dccdf269ee
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389600"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448310"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Mondat párosítási és párhuzamos dokumentumokban igazítása
 

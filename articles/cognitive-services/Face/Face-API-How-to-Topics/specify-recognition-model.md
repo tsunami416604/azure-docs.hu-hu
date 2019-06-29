@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: longl
-ms.openlocfilehash: 88b0ac853c64e1e32a2d1c429bdf8655158f030d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8d5c416183a7d475a46c5e538577069612baf8e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65411478"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449008"
 ---
 # <a name="specify-a-face-recognition-model"></a>Arcfelismerési modell megadása
 
@@ -53,7 +53,7 @@ Ha meghagyja a hozzá nem rendelt, az alapértelmezett modellverziója (_recogni
 
 ```csharp
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
-var faces = await faceServiceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recognitionModel: "recognition_02", returnRecognitionModel: true);
+var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recognitionModel: "recognition_02", returnRecognitionModel: true);
 ```
 
 ## <a name="identify-faces-with-specified-model"></a>Arcazonosítás megadott modellel
@@ -67,7 +67,7 @@ Tekintse meg a következő mintakód a .NET ügyféloldali kódtár.
 ```csharp
 // Create an empty PersonGroup with "recognition_02" model
 string personGroupId = "mypersongroupid";
-await faceServiceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_02");
+await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_02");
 ```
 
 Ebben a kódban egy **is lehet PersonGroup** azonosítójú `mypersongroupid` jön létre, és használatára van beállítva a _recognition_02_ modell arcfelismerési funkciókat kibontásához.
@@ -83,7 +83,7 @@ Adja meg a felismerés modell hasonlóság keresés is. Rendelhet a modell verzi
 Tekintse meg a következő mintakód a .NET ügyféloldali kódtár.
 
 ```csharp
-await faceServiceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_02");
+await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_02");
 ```
 
 Ez a kód létrehozza a face listát `My face collection`révén a _recognition_02_ modell a a kivonási funkció. Ha a face listáját egy új felismert arc hasonló arcokat keres, a face kell az észlelt ([A Face – észlelése]) használatával a _recognition_02_ modell. A modell az előző szakaszban látható módon kell lennie a konzisztens.

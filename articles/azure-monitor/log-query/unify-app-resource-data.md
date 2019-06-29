@@ -14,7 +14,7 @@ ms.date: 02/19/2019
 ms.author: magoedte
 ms.openlocfilehash: 3f3de81197b05d4f025a3fd8638cffe4b07cecad
 ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/13/2019
 ms.locfileid: "61424643"
@@ -100,7 +100,7 @@ Az alábbi táblázat a Log Analytics és az Application Insights séma különb
 |------------|------------| 
 | AnonUserId | user_id|
 | ApplicationId | appId|
-| ApplicationName | appName|
+| Alkalmazásnév | Alkalmazásnév|
 | ApplicationTypeVersion | application_Version |
 | AvailabilityCount | itemCount |
 | AvailabilityDuration | duration |

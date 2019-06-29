@@ -3,19 +3,19 @@ title: 'Gyors útmutató: Első mondat visszaadni, nyissa meg – Translator Tex
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban kideríti egy szövegben a mondatok hosszát a Translator Text API és a Go segítségével.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: erhopf
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 02/21/2019
-ms.author: erhopf
-ms.openlocfilehash: 441aa1cd0c43b50c8c1212e7ba8840ed97a890d1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/04/2019
+ms.author: swmachan
+ms.openlocfilehash: a2ed5fdd9ff8042bcf23fb5ce31880ae4167483a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61468074"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449624"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-go"></a>Gyors útmutató: A Translator Text API segítségével határozza meg a Go használatával mondat hossza
 
@@ -137,6 +137,8 @@ if err != nil {
     log.Fatal(err)
 }
 ```
+
+Ha egy több szolgáltatást a Cognitive Services-előfizetést használ, akkor is tartalmaznia kell a `Ocp-Apim-Subscription-Region` az a kérelem paramétereit. [További információ a több szolgáltatásos előfizetéshez való hitelesítés közben](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
 
 ## <a name="handle-and-print-the-response"></a>Kezelni, és a válasz
 

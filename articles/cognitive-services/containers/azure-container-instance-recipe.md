@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: db73d4e30c960eb09e6b5fbc9411901c69c28b01
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 45a03a0912681b4fc33ef8df88fa00fd5458f720
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272969"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445820"
 ---
 # <a name="deploy-and-run-container-on-azure-container-instance-aci"></a>Üzembe helyezése és futtatása a tárolót az Azure Container Instance (aci) Szolgáltatásban
 
@@ -35,46 +35,7 @@ Ez a megoldás együttműködik egy Cognitive Services-tárolóra. A Cognitive S
 
 Csúcsos zárójelpárban van, minden változót `<>`, ki kell cserélni a saját értékeire. Ez a csere magában foglalja a csúcsos zárójeleket.
 
-## <a name="step-2-launch-your-container-on-azure-container-instances-aci"></a>2\. lépés: Indítsa el a tároló az Azure Container Instances (ACI)
-
-**Az Azure Container Instance (ACI) erőforrás létrehozásához.**
-
-1. Nyissa meg a [létrehozás](https://ms.portal.azure.com/#create/Microsoft.ContainerInstances) Container Instances lapot.
-
-1. Az a **alapjai** lapra, adja meg a következő adatokat:
-
-    |Oldal|Beállítás|Érték|
-    |--|--|--|
-    |Alapvető beállítások|Előfizetés|Válassza ki előfizetését.|
-    |Alapvető beállítások|Erőforráscsoport|Válassza ki az elérhető erőforráscsoportot vagy hozzon létre például egy új `cognitive-services`.|
-    |Alapvető beállítások|Tárolónév|Írjon be egy nevet, például `cognitive-container-instance`. Ez a név alacsonyabb nagybetűs kell lennie.|
-    |Alapvető beállítások|Location egység|Válassza ki a régiót, üzembe helyezéshez.|
-    |Alapvető beállítások|Lemezkép típusa|`Public`|
-    |Alapvető beállítások|Kép neve|Adja meg a Cognitive Services-tároló helyét. Ez lehet ugyanazon a helyen használt a `docker pull` parancs _például_: <br>`mcr.microsoft.com/azure-cognitive-services/sentiment`|
-    |Alapvető beállítások|Operációs rendszer típusa|`Linux`|
-    |Alapvető beállítások|Méret|A javasolt javaslatokat az adott a Cognitive Services-tároló méretének módosítása.:<br>2 mag<br>4 GB
-    ||||
-  
-1. Az a **hálózatkezelés** lapra, adja meg a következő adatokat:
-
-    |Oldal|Beállítás|Érték|
-    |--|--|--|
-    |Hálózat|Portok|Szerkessze a meglévő portot a TCP `80` való `5000`. Ez azt jelenti, hogy a tároló 5000-es porton lévő adatokhoz hozzáférést biztosító.|
-    ||||
-
-1. Az a **speciális** lapra, adja meg a szükséges beállításokat a Tárolópéldány erőforrás számlázási tároló áthaladását a következő adatokat:
-
-    |Speciális lap kulcs|Speciális lap érték|
-    |--|--|
-    |`apikey`|Átmásolja a **kulcsok** az erőforrás oldalán. Csak az egyik a két kulcs van szüksége. Egy 32 alfanumerikus karakterből álló karakterlánc szóközöket vagy kötőjeleket, nélkül `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
-    |`billing`|Átmásolja a **áttekintése** az erőforrás oldalán. |
-    |`eula`|`accept`|
-
-    Ha a tárolón a konfigurációs beállításait, például csatlakoztatása bemeneti, kimeneti csatlakoztatása vagy naplózási, ezeket a beállításokat is hozzá kell adni.
-
-1. Válassza ki **ellenőrzés és létrehozás**.
-1. Ellenőrzés elvégzése után válassza **létrehozás** a létrehozási folyamat befejezéséhez.
-1. Válassza a harang ikont a felső navigációs. Ez az az értesítési ablakot. Ekkor megjelenik egy kék **erőforrás megnyitása** gombra az erőforrás létrehozásakor. Válassza ki ezt a gombot választva nyissa meg az új erőforrás.
+[!INCLUDE [Create a Text Analytics Containers on Azure Container Instances (ACI)](./includes/create-aci-resource.md)]
 
 ## <a name="use-the-container-instance"></a>A Tárolópéldány használata
 

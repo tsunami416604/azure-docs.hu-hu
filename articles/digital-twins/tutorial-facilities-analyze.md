@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 12/18/2018
 ms.author: dkshir
-ms.openlocfilehash: 0c441974b40f35bcc39aec05e5ffe66b68e46c10
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 897050513449c099ce75c248eef00a38aac98ad9
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60534766"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67462299"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>Oktatóanyag: Megjelenítését és elemzését az Azure digitális Twins tárolóhelyek események a Time Series Insights használatával
 
@@ -52,7 +52,7 @@ Használhatja a [az Event Hubs](../event-hubs/event-hubs-about.md) szolgáltatá
 
 1. Adjon meg egy **neve** az Event Hubs-névtér esetében. Válasszon **Standard** a **tarifacsomag**, a **előfizetés**, a **erőforráscsoport** a digitális Twins példány használt és a **hely**. Kattintson a **Létrehozás** gombra.
 
-1. Az Event Hubs névtér központi telepítés esetén válassza ki a névtér **erőforrás**.
+1. Az Event Hubs névtér központi telepítését, válassza ki a **áttekintése** ablaktáblán, majd válassza ki **erőforrás megnyitása**.
 
     ![Event Hubs-névtér üzembe helyezés után](./media/tutorial-facilities-analyze/open-event-hub-ns.png)
 
@@ -132,17 +132,19 @@ Használhatja a [az Event Hubs](../event-hubs/event-hubs-about.md) szolgáltatá
 
 1. Keressen a **Time Series Insights** kifejezésre, és válasszon ki egy új Time Series Insights-erőforrást. Kattintson a **Létrehozás** gombra.
 
-1. Adja meg a Time Series Insights-példány **nevét**, majd válassza ki az **előfizetését**. Válassza ki a **erőforráscsoport** a digitális Twins példány használt és a **hely**. Kattintson a **Létrehozás** gombra.
+1. Adja meg a Time Series Insights-példány **nevét**, majd válassza ki az **előfizetését**. Válassza ki a **erőforráscsoport** a digitális Twins példány használt és a **hely**. Válassza ki **tovább: Eseményforrás** gomb vagy a **eseményforrás** fülre.
 
     ![A Time Series Insights-példányok létrehozását szolgáló kiválasztások](./media/tutorial-facilities-analyze/create-tsi.png)
 
-1. A példány üzembe helyezését követően nyissa meg a Time Series Insights-környezetet, és nyissa meg a **eseményforrások** ablaktáblán. Válassza ki a **Hozzáadás** tetején egy felhasználói csoport hozzáadása gombot.
-
-1. Az **Új eseményforrás** panelen adja meg a **nevet**, és ellenőrizze, hogy a többi érték megfelelően van-e beállítva. Válassza ki **ManageSend** a **eseményközpont szabályzatának neve**, majd válassza ki a fogyasztói csoportot, amely az előző szakaszban létrehozott **eseményközpontbeli fogyasztói csoport**. Kattintson a **Létrehozás** gombra.
+1. Az a **eseményforrás** lapra, adja meg egy **neve**, jelölje be **Event Hub** , a **adatforrástípust**, és ellenőrizze, hogy a többi érték van kijelölve megfelelően. Válassza ki **ManageSend** a **Eseményközpont hozzáférési szabályzat neve**, majd válassza ki a fogyasztói csoportot, amely az előző szakaszban létrehozott **Eseményközpontbeli fogyasztói csoport**. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
     ![Eseményforrás létrehozása szolgáló kiválasztások](./media/tutorial-facilities-analyze/tsi-event-source.png)
 
-1. Nyissa meg a **áttekintése** a Time Series Insights-környezethez, és válassza a panel a **Ugrás a környezet** gombra az oldal tetején. Ha megjelenik egy figyelmeztetés adatok elérése, nyissa meg a **az adathozzáférési házirendek** panelen a Time Series Insights-példány, válassza **hozzáadása**, jelölje be **közreműködői** szerepkört, és válassza ki a megfelelő felhasználó.
+1. Az a **felülvizsgálat + létrehozás** panelre, tekintse át a megadott információkat, és válassza **létrehozás**.
+
+1. A központi telepítési panelen válassza ki az imént létrehozott Time Series Insights-erőforrást. Ekkor megnyílik a **áttekintése** panelen a Time Series Insights-környezethez.
+
+1. Válassza ki a **Ugrás a környezet** gombra az oldal tetején. Ha megjelenik egy figyelmeztetés adatok elérése, nyissa meg a **az adathozzáférési házirendek** panelen a Time Series Insights-példány, válassza **hozzáadása**, jelölje be **közreműködői** szerepkört, és válassza ki a megfelelő felhasználó.
 
 1. A **Ugrás a környezet** gombra kattintva megnyílik a [Time Series Insights explorer](../time-series-insights/time-series-insights-explorer.md). Bármely esemény nem jelenik meg, ha a navigáljon az eszköz események szimulálása a **eszközkapcsolattal** digitális Twins minta, és futó projekt `dotnet run`.
 

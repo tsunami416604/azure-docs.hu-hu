@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: 61a76412d7619784582e1fddd2a5b60244159ebc
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 5b406f9c7f8c16038561853170896d2cd95dc383
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272940"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444853"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>A nyelv észlelése tároló üzembe Azure Kubernetes Service-ben
 
@@ -81,7 +81,7 @@ A tároló üzembe helyezése az Azure Kubernetes Service, a tárolórendszerké
     A get-eredményeket menteni a **adatbázis bejelentkezési kiszolgálójának nevével** tulajdonság. Ez lesz szükség, az üzemeltetett tárolók cím része az `language.yml` fájlt.
 
     ```console
-    >az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
+    > az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
     {
         "adminUserEnabled": false,
         "creationDate": "2019-01-02T23:49:53.783549+00:00",
@@ -407,8 +407,8 @@ az group delete --name cogserv-container-rg
 
 ## <a name="next-steps"></a>További lépések
 
-* Több [Cognitive Services-tárolók](../cognitive-services-container-support.md)
-* A csatlakoztatott szolgáltatás használata a Text Analytics] (.. / vs-szöveg-csatlakoztatott-service.md)
+> [!div class="nextstepaction"]
+> [A cognitive Services-tárolók](../cognitive-services-container-support.md)
 
 <!--
 kubectl get secrets

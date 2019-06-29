@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/20/2019
+ms.date: 06/21/2019
 ms.author: dapine
-ms.openlocfilehash: 061d335767b7b1b61973c28861759d4d12c6c476
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: c4ef58f35b3d038f360ff962c70e92711bc205ce
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295639"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446507"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Telepítse és futtassa a Text Analytics tárolók
 
-A Text Analytics tárolók biztosítják a természetes nyelvi feldolgozás speciális a nyers szöveg fölé, és magában foglal három fő funkciót: hangulatelemzést, kulcsszókeresést és nyelvfelismerést. Entitáskapcsolás jelenleg nem támogatott egy tárolóban. 
+A Text Analytics tárolók biztosítják a természetes nyelvi feldolgozás speciális a nyers szöveg fölé, és magában foglal három fő funkciót: hangulatelemzést, kulcsszókeresést és nyelvfelismerést. Entitáskapcsolás jelenleg nem támogatott egy tárolóban.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -32,7 +32,7 @@ Annak érdekében, hogy a Text Analytics tárolók futtatásához rendelkeznie k
 
 Szövegelemzés tárolók használata előtt a következő előfeltételeknek kell megfelelnie:
 
-|Kötelező|Cél|
+|Szükséges|Cél|
 |--|--|
 |Docker-motor| A Docker-motor telepítve van szüksége egy [gazdaszámítógép](#the-host-computer). A docker csomagokat biztosít, a Docker-környezet konfigurálása a [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), és [Linux](https://docs.docker.com/engine/installation/#supported-platforms). A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> **A Windows**, a Docker Linux-tárolók támogatása is kell konfigurálni.<br><br>|
 |Docker-ismeretek | A Docker fő fogalmaira, például a beállításjegyzékek, adattárak, tárolók, és tárolórendszerképeket, valamint alapszintű ismerete alapvető ismeretekkel kell `docker` parancsokat.| 

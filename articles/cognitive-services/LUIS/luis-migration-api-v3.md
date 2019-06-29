@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: diberry
-ms.openlocfilehash: fb4cf119195b3be23dc8f2cb98bd019769583473
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 4c08c95a05d4f22e2338a7264409aec0f64a4755
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341842"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442521"
 ---
-# <a name="preview-migrate-to-api-version-3x--for-luis-apps"></a>Előzetes verzió: API-verzió át 3.x LUIS-alkalmazások
+# <a name="preview-migrate-to-api-version-3x-for-luis-apps"></a>Előzetes verzió: API-verzió át 3.x LUIS-alkalmazások
 
 A lekérdezés előrejelzési végpont API-k megváltoztak. Ez az útmutató segítségével megismerheti a 3-as verziójú végpont API-k áttelepítése. 
 
@@ -44,6 +44,27 @@ A következő LUIS funkciókra **nem támogatott** a V3 API-ban:
 
 [Referenciadokumentációt](https://aka.ms/luis-api-v3) V3 érhető el.
 
+## <a name="endpoint-url-changes-by-slot-name"></a>Végpont URL-cím módosításainak tárolóhely neve
+
+A v3-as HTTP végpont hívás formátuma megváltozott.
+
+|METÓDUS|URL-cím|
+|--|--|
+|GET|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0-preview</b>/apps/<b>{APP-ID}</b>/slots/<b>{SLOT-NAME}</b>/predict?query=<b>{QUERY}</b>|
+|POST|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0-preview</b>/apps/<b>{APP-ID}</b>/slots/<b>{SLOT-NAME}</b>/predict|
+|||
+
+## <a name="endpoint-url-changes-by-version-id"></a>Végpont URL-cím módosításainak Verzióazonosító
+
+Ha szeretné lekérdezni a verziójával, akkor először [API-n keresztül közzétenni](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b) együtt a `"directVersionPublish":true`. A lekérdezés a végpontot, tárolóhely neve helyett a verzió-Azonosítójára hivatkozik.
+
+
+|METÓDUS|URL-cím|
+|--|--|
+|GET|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0-preview</b>/apps/<b>{APP-ID}</b>/versions/<b>{VERSION-ID}</b>/predict?query=<b>{QUERY}</b>|
+|POST|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0-preview</b>/apps/<b>{APP-ID}</b>/versions/<b>{VERSION-ID}</b>/predict|
+|||
+
 ## <a name="prebuilt-entities-with-new-json"></a>Az új JSON előre összeállított entitások
 
 A v3-as választ objektum változások a következők [előre összeállított entitások](luis-reference-prebuilt-entities.md). 
@@ -54,7 +75,7 @@ A v3-as választ objektum változások a következők [előre összeállított e
 
 A V3 API különböző lekérdezési karakterlánc paraméterei rendelkezik.
 
-|Válaszparaméter-név|Type|Version|Alapértelmezett|Cél|
+|Válaszparaméter-név|Típus|Version|Alapértelmezett|Cél|
 |--|--|--|--|--|
 |`log`|boolean|V2 & V3|false|Query Store naplófájlban.| 
 |`query`|string|Csak a v3|Nincs alapértelmezett érték - szükség a GET-kérés|**A v2-ben**, kell elvégezni, ha az utterance (kifejezés) szerepel a `q` paraméter. <br><br>**A v3-as**, az funkciók átadott a `query` paraméter.|
@@ -82,7 +103,7 @@ A V3 API különböző lekérdezési karakterlánc paraméterei rendelkezik.
 }
 ```
 
-|Tulajdonság|Type|Version|Alapértelmezett|Cél|
+|Tulajdonság|Típus|Version|Alapértelmezett|Cél|
 |--|--|--|--|--|
 |`dynamicLists`|tömb|Csak a v3|Nem kötelező.|[A dinamikus listák](#dynamic-lists-passed-in-at-prediction-time) lehetővé teszi, hogy terjessze ki egy meglévő betanított és közzétett listája entitás már megtalálható a LUIS-alkalmazás.|
 |`externalEntities`|tömb|Csak a v3|Nem kötelező.|[Külső entitások](#external-entities-passed-in-at-prediction-time) lehetővé teszik a LUIS-alkalmazás azonosíthatja és entitások felirat alatt modult, amely a meglévő entitások szolgáltatások használhatók. |

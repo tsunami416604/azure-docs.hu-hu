@@ -3,19 +3,19 @@ title: Nyelvi támogatás – Translator Text API
 titleSuffix: Azure Cognitive Services
 description: A Translator Text API által támogatott természetes nyelvek listáját.
 services: cognitive-services
-author: rajdeep-in
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/04/2019
-ms.author: v-pawal
-ms.openlocfilehash: 924324b11f49a50bfb5f00e117b33c0cc572e3bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: swmachan
+ms.openlocfilehash: 14ab1988f28de214036fa80fa36a4006a3359f30
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514985"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435884"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>A Translator Text API nyelvéhez és régiójához támogatása
 
@@ -28,7 +28,7 @@ A Translator Text API a következő nyelveket támogatja a szöveg a fordítás.
 **V2 Translator API**
 
 > [!NOTE]
-> 2018\. április 30. v2 kivezettük. Telepítse át az alkalmazások V3 kizárólag a v3-as elérhető új funkciók előnyeinek kihasználásához.
+> 2018. április 30. v2 kivezettük. Telepítse át az alkalmazások V3 kizárólag a v3-as elérhető új funkciók előnyeinek kihasználásához.
 
 * Csak statisztikai: Nincs Neurális rendszer nem érhető el ehhez a nyelvhez.
 * Neurális érhető el: Egy Neurális rendszeren érhető el. Használja ezt a paramétert `category=generalnn` hozzáférhetnek a Neurális rendszerhez.

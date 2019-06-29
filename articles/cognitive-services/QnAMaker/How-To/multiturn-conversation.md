@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 06/12/2019
+ms.date: 06/26/2019
 ms.author: diberry
-ms.openlocfilehash: 1e46c935d298f2fe7ebfa4bce471288c9ab8a606
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: a126456159776254408df8325f97fcee967835e2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67271948"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442723"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Hozzon létre egy témakör több hellyé követő utasításokat használatával
 
@@ -229,33 +229,14 @@ Az előző szakaszban a kért választ, és bármely követő utasításokat kö
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "promptsToAdd": [
+                "prompts": [
                     {
                         "displayOrder": 0,
                         "qnaId": 16,
                         "qna": null,
                         "displayText": "Use the sign-in screen"
-                    },
-                    {
-                        "displayOrder": 1,
-                        "qnaId": 17,
-                        "qna": null,
-                        "displayText": "Use Windows Hello to sign in"
-                    },
-                    {
-                        "displayOrder": 2,
-                        "qnaId": 18,
-                        "qna": null,
-                        "displayText": "Sign out"
-                    },
-                    {
-                        "displayOrder": 0,
-                        "qnaId": 79,
-                        "qna": null,
-                        "displayText": "Create a Windows Account"
                     }
-                ],
-                "promptsToDelete":[]
+                ]
             }
         },
         {
@@ -269,15 +250,14 @@ Az előző szakaszban a kért választ, és bármely követő utasításokat kö
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "promptsToAdd": [
+                "prompts": [
                     {
                         "displayOrder": 0,
                         "qnaId": 16,
                         "qna": null,
                         "displayText": "Turn off the device"
                     }
-                ],
-                "promptsToDelete":[]
+                ]
             }
         },
         {
@@ -291,15 +271,14 @@ Az előző szakaszban a kért választ, és bármely követő utasításokat kö
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "promptsToAdd": [],
-                "promptsToDelete":[]
+                "prompts": []
             }
         }
     ]
 }
 ```
 
-A `promptsToAdd` tömb biztosít a szöveg a `displayText` tulajdonság és a `qnaId` flow értéket, így ezek a válaszok megjelenítheti a következő megjelenített választható lehetőségként a beszélgetést, majd küldése a következő kérelmet a QnA Maker kijelölt értéket. 
+A `prompts` tömb biztosít a szöveg a `displayText` tulajdonság és a `qnaId` flow értéket, így ezek a válaszok megjelenítheti a következő megjelenített választható lehetőségként a beszélgetést, majd küldése a kiválasztott `qnaId` vissza a QnA Maker, a következő kérés . 
 
 <!--
 
@@ -345,8 +324,7 @@ A QnA Maker _GenerateAnswer_ JSON-válasz tartalmazza a nyomon követési utasí
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "promptsToAdd": [],
-                "promptsToDelete":[]
+                "prompts": []
             }
         },
         {
@@ -360,15 +338,14 @@ A QnA Maker _GenerateAnswer_ JSON-válasz tartalmazza a nyomon követési utasí
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "promptsToAdd": [
+                "prompts": [
                     {
                         "displayOrder": 0,
                         "qnaId": 4,
                         "qna": null,
                         "displayText": "Ports and connectors"
                     }
-                ],
-                "promptsToDelete":[]
+                ]
             }
         },
         {
@@ -382,8 +359,7 @@ A QnA Maker _GenerateAnswer_ JSON-válasz tartalmazza a nyomon követési utasí
             "metadata": [],
             "context": {
                 "isContextOnly": true,
-                "promptsToAdd": [],
-                "promptsToDelete":[]
+                "prompts": []
             }
         }
     ]
@@ -407,6 +383,16 @@ A [szöveg és sorrendben jelennek meg](https://docs.microsoft.com/rest/api/cogn
 FIX - Need to go to parent, then answer column, then edit answer. 
 
 -->
+
+## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Tudásbázis létrehozása több kapcsolja utasításokat létrehozása API-val
+
+Tudásbázis eset több kapcsolja utasításokat használatával hozhat létre a [QnA Maker API létrehozása](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create). Az utasításokat az ad hozzá a `context` tulajdonság `prompts` tömb. 
+
+
+## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>Hozzáadhat vagy törölhet több kapcsolja utasításokat a frissítés API-val
+
+Hozzáadhat, vagy törölje a használatával több kapcsolja utasításokat a [QnA Maker API-t frissítés](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update).  Az utasításokat az ad hozzá a `context` tulajdonság `promptsToAdd` tömböt, és a `promptsToDelete` tömb. 
+
 
 ## <a name="next-steps"></a>További lépések
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/03/2019
 ms.author: chlandsi
-ms.openlocfilehash: 67f2531b24796de1e00505fdc757f3c2244c5054
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 3eb65b5d41317a4cfc31917a4b08d931ba9c7aa6
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002349"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466615"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>Gyors útmutató: A beszédfelismerés SDK-val macOS rendszeren beszédfelismerést Objective-C nyelven
 
@@ -67,13 +67,7 @@ A további párbeszédpaneleken válassza az alábbi lehetőségeket:
 ## <a name="install-the-sdk-as-a-cocoapod"></a>Egy CocoaPod, az SDK telepítése
 
 1. Telepítse a CocoaPod Függőségkezelő leírtak szerint a [telepítési utasításokat](https://guides.cocoapods.org/using/getting-started.html).
-1. Lépjen abba a könyvtárba, a mintaalkalmazást (`helloworld`). Helyezze el egy szövegfájlt nevű `Podfile` és ebben a könyvtárban az alábbi tartalommal:
-    ```
-    target 'helloworld' do
-        platform :osx, '10.13'
-        pod 'MicrosoftCognitiveServicesSpeech-macOS', '~> 1.5.1'
-    end
-    ```
+1. Lépjen abba a könyvtárba, a mintaalkalmazást (`helloworld`). Helyezze el egy szövegfájlt nevű `Podfile` és ebben a könyvtárban az alábbi tartalommal: [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-macos/helloworld/Podfile)]
 1. Keresse meg a `helloworld` könyvtárat egy terminált, és futtassa a parancsot a `pod install`. A művelet létrehoz egy `helloworld.xcworkspace` mind a mintaalkalmazást, és a Speech SDK függőségként tartalmazó Xcode-munkaterületet. Ez a munkaterület a következő használható.
 
 ## <a name="add-the-sample-code"></a>A mintakód hozzáadása
@@ -87,7 +81,7 @@ A további párbeszédpaneleken válassza az alábbi lehetőségeket:
 ## <a name="build-and-run-the-sample"></a>A minta létrehozása és futtatása
 
 1. Tegye láthatóvá a hibakeresési kimenetet (**View** > **Debug Area** > **Activate Console**).
-1. Hozhat létre és futtassa a példakód kiválasztásával **termék** -> **futtatása** a menüből, vagy kattintson a **lejátszása** gombra.
+1. Hozhat létre és futtassa a példakód kiválasztásával **termék** > **futtatása** a menüből, vagy kattintson a **lejátszása** gombra.
 1. Után kattintson a gombra, és mondja ki néhány szót, megjelenik a szöveg van írva a képernyő alsó részén. Amikor első alkalommal futtatja az alkalmazást, a rendszer az alkalmazás hozzáférést biztosít a számítógép mikrofon kell kérni.
 
 ## <a name="next-steps"></a>További lépések

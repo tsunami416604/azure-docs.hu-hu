@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
-ms.openlocfilehash: bf87db232484a8ba4fa1e3b8e4de921f152e2345
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 42b30b14e561fd3851a41701d2ecb8d98d5a02ed
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62110118"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445569"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>Kiemelheti a szöveg decoration jelölők használatával
 
@@ -56,7 +56,7 @@ Ha `textDecorations` van **igaz**, a Bing tartalmazhatnak a következő jelölő
 |U + E018|\<sup >|Felső tartalom kezdetét jelöli
 |U + E019|\</ sup >|Felső tartalom végét jelöli
 
-A következő példa bemutatja egy `Computation` választ, amely tartalmazza az index jelölők log(2) lekérdezés időszakra. A `expression` mező tartalmazza a jelölők, csak ha "textDecoration van **igaz**.
+A következő példa bemutatja egy `Computation` választ, amely tartalmazza az index jelölők log(2) lekérdezés időszakra. A `expression` mező tartalmazza a jelölők, csak ha `textDecoration` van **igaz**.
 
 ![számítási jelölők](./media/bing-markers-computation.PNG) 
 

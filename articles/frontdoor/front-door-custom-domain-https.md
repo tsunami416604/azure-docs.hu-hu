@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: fc4db12f722d1330f0642e155c02a1936373e256
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 48733a8c2a554fc62c7731b6c0fb4ef5b8d45159
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65520491"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450181"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Oktatóanyag: HTTPS konfigurálása egyéni tartományon bejárati ajtajának
 
@@ -77,12 +77,11 @@ A saját tanúsítványát is használhatja a HTTPS szolgáltatás engedélyezé
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Az Azure Key Vault-fiók és a tanúsítvány előkészítése
  
 1. Az Azure Key Vault: Az egyéni HTTPS engedélyezése kívánt bejárati ajtajának, azonos előfizetéshez tartozó futó Azure Key Vault-fiókot kell rendelkeznie. Ha még nem rendelkezik Azure Key Vault-fiókkal, hozzon létre egyet.
- 
-2. Az Azure Key Vault-tanúsítványok: Ha már rendelkezik egy tanúsítvánnyal, akkor is feltölti azt közvetlenül az Azure Key Vault-fiók, vagy létrehozhat egy új tanúsítványt közvetlenül az Azure Key Vault az egyik a partner CAs, hogy az Azure Key Vault integrálható.
 
 > [!WARNING]
-> </br> – Az Azure Front Door Service jelenleg csak olyan Key Vault-fiókokat támogat, amelyek a Front Door-konfigurációval megegyező előfizetésben vannak. Ha nem a Front Door-előfizetéshez tartozó Key Vault-tárolót választ, az hibát eredményez.
-> </br> – Az Azure Front Door Service jelenleg csak a jelszó **nélküli**, PFX-szel feltöltött tanúsítványokat támogatja.
+> Az Azure bejárati ajtajának szolgáltatás jelenleg csak támogatja a Key Vault-fiókok a bejárati ajtajának konfigurációjaként ugyanabban az előfizetésben. Ha nem a Front Door-előfizetéshez tartozó Key Vault-tárolót választ, az hibát eredményez.
+
+2. Az Azure Key Vault-tanúsítványok: Ha már rendelkezik egy tanúsítvánnyal, akkor is feltölti azt közvetlenül az Azure Key Vault-fiók, vagy létrehozhat egy új tanúsítványt közvetlenül az Azure Key Vault az egyik a partner CAs, hogy az Azure Key Vault integrálható.
 
 #### <a name="register-azure-front-door-service"></a>Az Azure Front Door Service regisztrálása
 
@@ -141,13 +140,13 @@ Ha saját tanúsítványt használ, nem szükséges tartományérvényesítés.
 
 A CNAME rekordnak a következő formátumban kell lennie, ahol a *Név* az Ön egyéni tartományának neve, az *Érték* pedig a Front Door alapértelmezett .azurefd.net eszközneve:
 
-| Name (Név)            | Típus  | Value                 |
+| Name (Név)            | Típus  | Érték                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 
 A CNAME rekordokkal kapcsolatos további információért tekintse meg a [CNAME DNS-rekord létrehozását ismertető](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain) részt.
 
-Ha a CNAME rekordja a megfelelő formátumban van, a DigiCert automatikusan ellenőrzi az egyéni tartománynevet, és létrehoz egy dedikált tanúsítványt. A DigitCert nem küld visszaigazoló e-mailt, és nem kell jóváhagynia a kérést. A tanúsítvány egy évig érvényes, és a lejárata előtt automatikusan megújul. Lépjen tovább a [Várakozás a propagálásra](#wait-for-propagation) részhez. 
+Ha a CNAME rekordja a megfelelő formátumban van, a DigiCert automatikusan ellenőrzi az egyéni tartománynevet, és létrehoz egy dedikált tanúsítványt. A DigitCert nem küld visszaigazoló e-mailt, és nem kell jóváhagynia a kérést. A tanúsítvány egy évig érvényes, és tanúsítványtárolóban lesznek után járjon le. Lépjen tovább a [Várakozás a propagálásra](#wait-for-propagation) részhez. 
 
 Az automatikus érvényesítés általában eltart néhány percig. Ha a tartománya egy órán belül sincs érvényesítve, nyisson meg egy támogatási jegyet.
 
@@ -170,7 +169,7 @@ webmaster@&lt;az-ön-tartományneve.com&gt;
 hostmaster@&lt;az-ön-tartományneve.com&gt;  
 postmaster@&lt;az-ön-tartományneve.com&gt;  
 
-Pár percen belül a következőhöz hasonló e-mailt kell kapnia, amely a kérés jóváhagyására kéri. Ha spam szűrőt használ, adja hozzá a(z) admin@digicert.com címet az engedélyezési listához. Ha 24 órán belül nem kapja meg az e-mailt, lépjen kapcsolatba a Microsoft támogatási szolgálatával.
+Pár percen belül a következőhöz hasonló e-mailt kell kapnia, amely a kérés jóváhagyására kéri. Ha levélszemétszűrőt használ, adja hozzá admin@digicert.com , az engedélyezési lista. Ha 24 órán belül nem kapja meg az e-mailt, lépjen kapcsolatba a Microsoft támogatási szolgálatával.
 
 Ha a jóváhagyási hivatkozásra kattint, a rendszer átirányítja egy online jóváhagyási űrlapra. Kövesse az űrlap utasításait; két ellenőrzési lehetősége van:
 
@@ -178,7 +177,7 @@ Ha a jóváhagyási hivatkozásra kattint, a rendszer átirányítja egy online 
 
 - Jóváhagyhatja az adott gazdanevet, amelyet a kéréshez használtak. A további kérésekhez további jóváhagyás szükséges.
 
-A jóváhagyás után a DigiCert befejezi az egyéni tartománynév tanúsítványának létrehozását. A tanúsítvány egy évig érvényes, és a lejárata előtt automatikusan megújul.
+A jóváhagyás után a DigiCert befejezi az egyéni tartománynév tanúsítványának létrehozását. A tanúsítvány egy évig érvényes, és még annak lejárta előtt tanúsítványtárolóban lesznek.
 
 ## <a name="wait-for-propagation"></a>Várakozás a propagálásra
 
@@ -190,17 +189,17 @@ Az alábbi táblázat a műveleti folyamatot mutatja, amely a HTTPS engedélyez�
 
 | Műveleti lépés | Műveleti allépés részletei | 
 | --- | --- |
-| 1. Kérés elküldése | Kérés elküldése |
+| 1\. Kérés elküldése | Kérés elküldése |
 | | A HTTPS-kérés küldése folyamatban van. |
 | | A HTTPS-kérés elküldése sikerült. |
-| 2. Tartományérvényesítés | A tartomány automatikusan érvényesítve lesz, ha a CNAME révén le van képezve a Front Door alapértelmezett .azurefd.net előtérbeli gazdagépéhez. Ha nincs, akkor visszaigazolási kérelem érkezik a tartomány regisztrációs rekordjában megadott e-mail-címre (WHOIS regisztráló). Minél hamarabb igazolja vissza a tartományt. |
+| 2\. Tartományérvényesítés | A tartomány automatikusan érvényesítve lesz, ha a CNAME révén le van képezve a Front Door alapértelmezett .azurefd.net előtérbeli gazdagépéhez. Ha nincs, akkor visszaigazolási kérelem érkezik a tartomány regisztrációs rekordjában megadott e-mail-címre (WHOIS regisztráló). Minél hamarabb igazolja vissza a tartományt. |
 | | Sikerült ellenőrizni a tartomány tulajdonjogát. |
 | | A tartomány tulajdonjogának ellenőrzési kérelme lejárt (az ügyfél valószínűleg nem válaszolt 6 napon belül). A HTTPS nem lesz engedélyezve a tartományon. * |
 | | A tartomány tulajdonjogának ellenőrzésére vonatkozó kérelem vissza lett utasítva az ügyfél által. A HTTPS nem lesz engedélyezve a tartományon. * |
-| 3. Tanúsítvány üzembe helyezése | A hitelesítésszolgáltató jelenleg azon tanúsítvány kibocsátását végzi, amely a HTTPS tartományban való engedélyezéséhez szükséges. |
+| 3\. Tanúsítvány üzembe helyezése | A hitelesítésszolgáltató jelenleg azon tanúsítvány kibocsátását végzi, amely a HTTPS tartományban való engedélyezéséhez szükséges. |
 | | A tanúsítvány kibocsátása megtörtént, és a Front Doorban való üzembe helyezése folyamatban van. A folyamat akár 1 órát is igénybe vehet. |
 | | A tanúsítvány sikeresen üzembe lett helyezve a Front Doorhoz. |
-| 4. Befejezve | Sikerült engedélyezni a HTTPS-t a tartományban. |
+| 4\. Befejezve | Sikerült engedélyezni a HTTPS-t a tartományban. |
 
 \* Ez az üzenet csak akkor jelenik meg, ha hiba történt. 
 
@@ -234,9 +233,9 @@ Az alábbi táblázat a műveleti folyamatot mutatja, amely a HTTPS letiltásako
 
 | Műveleti folyamat | Művelet részletei | 
 | --- | --- |
-| 1. Kérés elküldése | A kérelem elküldése folyamatban van |
-| 2. Tanúsítvány megszüntetése | Tanúsítvány törlése |
-| 3. Befejezve | Tanúsítvány törölve |
+| 1\. Kérés elküldése | A kérelem elküldése folyamatban van |
+| 2\. Tanúsítvány megszüntetése | Tanúsítvány törlése |
+| 3\. Befejezve | Tanúsítvány törölve |
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 

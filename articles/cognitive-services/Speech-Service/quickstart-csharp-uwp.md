@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 674bb3f22f7b8c7c7ea3b52c2f27d862a9961fcb
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 5a42f9196bc7803a794f031819948d50934009f8
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466252"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466783"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Gyors útmutató: A beszédfelismerés SDK-val beszédfelismerést egy UWP-alkalmazásban
 
-Rövid útmutatók érhetők el is [tolmácsolás –](quickstart-translate-speech-uwp.md) és [hang-és felhőközpontú virtuális asszisztensek](quickstart-virtual-assistant-csharp-uwp.md).
+Rövid útmutatók érhetők el is [szöveg-hang transzformációs](quickstart-text-to-speech-csharp-uwp.md), [tolmácsolás –](quickstart-translate-speech-uwp.md) és [hang-és felhőközpontú virtuális asszisztensek](quickstart-virtual-assistant-csharp-uwp.md).
 
 Szükség esetén válasszon egy másik programozási nyelvet és/vagy a környezetben:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]

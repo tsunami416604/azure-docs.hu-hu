@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/08/2019
-ms.openlocfilehash: d7bd2555753df4c12404844c86be8f0339d88e23
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.date: 06/28/2019
+ms.openlocfilehash: 96bfb80602efe8e63f814fc9bf6cff3ae52e5983
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415688"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461541"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Oktatóanyag: PostgreSQL online migrálása az Azure Database for PostgreSQL-be DMS használatával
 
@@ -24,6 +24,7 @@ Azure Database Migration Service segítségével az adatbázisokat át egy helys
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
+>
 > * Telepítse át a minta séma pg_dump segédprogram használatával.
 > * Egy Azure Database Migration Service-példány létrehozása.
 > * Migrálási projekt létrehozása az Azure Database Migration Service használatával.
@@ -65,11 +66,11 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 * Hozzon létre egy kiszolgálószintű [tűzfalszabály](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) az Azure Database for PostgreSQL, hogy az Azure Database Migration Service eléréséhez a céladatbázisokhoz. Adja meg a virtuális hálózat, Azure Database Migration Service használt alhálózat tartományán.
 * A CLI meghívásának két módja van:
 
-    * Az Azure portál jobb felső sarkában kattintson a Cloud Shell gombra:
+  * Az Azure portál jobb felső sarkában kattintson a Cloud Shell gombra:
 
        ![Cloud Shell gomb a Microsoft Azure Portal-on](media/tutorial-postgresql-to-azure-postgresql-online/cloud-shell-button.png)
 
-    * Telepítse és futtassa a CLI-t helyileg. A CLI 2.0 egy parancssori eszköz az Azure-erőforrások kezeléséhez.
+  * Telepítse és futtassa a CLI-t helyileg. A CLI 2.0 egy parancssori eszköz az Azure-erőforrások kezeléséhez.
 
        A CLI letöltéséhez kövesse [Az Azure CLI 2.0 telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) című cikkben lévő utasításokat. A cikk a CLI 2.0 verzióját támogató platformokat is felsorolja.
 
@@ -77,9 +78,9 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 * Engedélyezze a logikai replikálást a postgresql.config fájlban, és állítsa be a következő paramétereket:
 
-    * wal_level = **logical**
-    * max_replication_slots = [tárhelyek száma], az ajánlott beállítás **5 tárhely**
-    * max_wal_senders = [párhuzamos feladatok száma] – a max_wal_senders paraméter megadja a párhuzamosan futtatható feladatok számát, az ajánlott beállítás **10 feladat**
+  * wal_level = **logical**
+  * max_replication_slots = [tárhelyek száma], az ajánlott beállítás **5 tárhely**
+  * max_wal_senders = [párhuzamos feladatok száma] – a max_wal_senders paraméter megadja a párhuzamosan futtatható feladatok számát, az ajánlott beállítás **10 feladat**
 
 ## <a name="migrate-the-sample-schema"></a>A mintaséma migrálása
 
@@ -115,8 +116,7 @@ Ahhoz, hogy az összes adatbázis-objektumot táblasémaként, indexekként és 
     ```
 
 4. Ha a sémában idegen kulcsok szerepelnek, a migrálás első betöltése és folyamatos szinkronizálása sikertelen lesz. Hajtsa végre a következő szkriptet a PgAdmin alkalmazásban vagy a psql-ben a ’drop foreign key’ és az ’add foreign key’ szkript kibontásához a célhelyen (Azure Database for PostgreSQL).
-
-    
+  
     ```
     SELECT Queries.tablename
            ,concat('alter table ', Queries.tablename, ' ', STRING_AGG(concat('DROP CONSTRAINT ', Queries.foreignkey), ',')) as DropQuery
@@ -141,7 +141,7 @@ Ahhoz, hogy az összes adatbázis-objektumot táblasémaként, indexekként és 
           AND ccu.table_schema = tc.table_schema
     WHERE constraint_type = 'FOREIGN KEY') Queries
       GROUP BY Queries.tablename;
-     ```
+    ```
 
     Futtassa a ’drop foreign key’-t (ez a második oszlop) a lekérdezési eredményben.
 

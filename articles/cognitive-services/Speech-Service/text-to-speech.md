@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: erhopf
-ms.openlocfilehash: c5f7b0b739e9311e2527e63db7279d2075f0f1ff
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: da7259585ad66ac9b58131ce834d82e7b3d4bcf2
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341286"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466949"
 ---
 # <a name="what-is-text-to-speech"></a>Mi az szöveg-hang transzformációs?
 
@@ -24,7 +24,7 @@ Az Azure Speech Services szöveg-hang transzformációs egy szolgáltatása, ame
 Szöveg-hang transzformációs technológia lehetővé teszi a tartalomkészítők, a felhasználóknak a különböző módokon zajló interakciót. Szöveg-hang transzformációs javíthatja a kisegítő lehetőségek biztosításával a felhasználók és használhatja a tartalmakat hallhatóan lehetőség. Hogy a felhasználó egy készült kisegítő funkciók, tanulás fogyatékossággal, vagy elérésével navigációs információra van szüksége, szöveg-hang transzformációs javíthatja a meglévő felületet nyújt. Szöveg-hang transzformációs is egy hang robotok és a virtuális asszisztensek értékes bővítmény.
 
 
-Beszéd összefoglaló Markup Language (SSML), egy XML-alapú jelölőnyelv, kihasználva az szöveg-hang transzformációs szolgáltatással a fejlesztők megadhatja a beviteli szöveg szintetizált lesz konvertálva. SSML, a módosíthatja lényegét, írásmódja, arány, a kötet és más, és beszéljen. További információt ad vissza, lásd: [SSML](#speech-synthesis-markup-language-ssml).
+Beszéd összefoglaló Markup Language (SSML), egy XML-alapú jelölőnyelv, kihasználva az szöveg-hang transzformációs szolgáltatással a fejlesztők megadhatja a beviteli szöveg szintetizált lesz konvertálva. SSML, a módosíthatja lényegét, írásmódja, arány, a kötet és más, és beszéljen. További információkért lásd: [SSML](#speech-synthesis-markup-language-ssml).
 
 ### <a name="standard-voices"></a>Standard beszédhangot
 
@@ -87,7 +87,10 @@ Rövid útmutatók, kevesebb mint 10 perc múlva a kódot futtató úgy tervezt�
 
 | Rövid útmutató (SDK) | Platform | API-referencia |
 |------------|----------|---------------|
+| [C#, .NET Core](quickstart-text-to-speech-dotnetcore.md) | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
 | [C#, .NET-keretrendszer](quickstart-text-to-speech-dotnet-windows.md) | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
+| [C#, UWP](quickstart-text-to-speech-csharp-uwp.md) | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
+| [C#, Unity](quickstart-text-to-speech-csharp-unity.md) | Windows, Android | [Tallózás](https://aka.ms/csspeech/csharpref) |
 | [C++](quickstart-text-to-speech-cpp-windows.md) | Windows | [Tallózás](https://aka.ms/csspeech/cppref) |
 | [C++](quickstart-text-to-speech-cpp-linux.md) | Linux | [Tallózás](https://aka.ms/csspeech/cppref) |
 

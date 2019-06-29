@@ -3,24 +3,24 @@ title: V3 – Translator Text API áttelepítése
 titlesuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan V2 át a Translator Text API v3-as.
 services: cognitive-services
-author: rajdeep-in
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: v-pawal
-ms.openlocfilehash: 81b2e5c9c659a3811d7417d87b811a86f4350a52
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: swmachan
+ms.openlocfilehash: 8a2530a4eb4365a022ab11279b344a5d2852430b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66382920"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448303"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API V2 V3 áttelepítése
 
 > [!NOTE]
-> 2018\. április 30. v2 kivezettük. Telepítse át az alkalmazások V3 kizárólag a v3-as elérhető új funkciók előnyeinek kihasználásához.
+> 2018. április 30. v2 kivezettük. Telepítse át az alkalmazások V3 kizárólag a v3-as elérhető új funkciók előnyeinek kihasználásához.
 > 
 > A Microsoft Translator Hub jén kivonjuk a forgalomból 2019. május 17. [Fontos állapotTelepítési információit és a dátumok](https://www.microsoft.com/translator/business/hub/).  
 

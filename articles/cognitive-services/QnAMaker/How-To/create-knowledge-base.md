@@ -3,20 +3,20 @@ title: Tudásbázis létrehozása
 titleSuffix: QnA Maker API - Azure Cognitive Services
 description: A QnA Maker API szolgáltatás hozzáadása portál használatához Tudásbázis chit csevegési hozhat létre. Ez lehetővé teszi, hogy az alkalmazás vonzó. A robot chit csevegési kiindulási pontjaként adja hozzá a felső chit csevegési előre megadott készlete a KB, és időt takaríthat meg a teljesen új rögzíti őket költsége.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 05/10/2019
-ms.author: tulasim
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 6b64315d8639cf8a7204ee809598567ec76fd188
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c674d33d7f0958fbce8f080f43404c480c7410c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65541797"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447445"
 ---
 # <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>Gyors útmutató: A QnA Maker API-portál használatával Tudásbázis létrehozása
 

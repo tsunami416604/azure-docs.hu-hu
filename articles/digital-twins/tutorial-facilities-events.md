@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 12/18/2018
 ms.author: dkshir
-ms.openlocfilehash: 524ca96687e9395b65ec513326ad0fd4f7c6d429
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2a2364068a1fcba46509408672e5be7440fcfba5
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60533697"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67462250"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Oktatóanyag: Az Azure digitális Twins tárolóhelyek értesítéseket fogadjon a Logic Apps használatával
 
@@ -76,16 +76,16 @@ Egy [event grid-témakör](../event-grid/concepts.md#topics) irányíthatja a fe
       - SpaceChange
       - TopologyOperation
       - UdfCustom
-      connectionString: Primary_connection_string_for_your_Event_Grid
-      secondaryConnectionString: Secondary_connection_string_for_your_Event_Grid
-      path: Event_Grid_Topic_Path
+      connectionString: <Primary connection string for your Event Grid>
+      secondaryConnectionString: <Secondary connection string for your Event Grid>
+      path: <Event Grid Topic Name without https:// and /api/events, e.g. eventgridname.region.eventgrid.azure.net>
     ```
 
-1. Cserélje le a helyőrző `Primary_connection_string_for_your_Event_Grid` értékét **YOUR_KEY_1**.
+1. Cserélje le a helyőrző `<Primary connection string for your Event Grid>` értékét **YOUR_KEY_1**.
 
-1. Cserélje le a helyőrző `Secondary_connection_string_for_your_Event_Grid` értékét **YOUR_KEY_2**.
+1. Cserélje le a helyőrző `<Secondary connection string for your Event Grid>` értékét **YOUR_KEY_2**.
 
-1. Cserélje le az `Event_Grid_Topic_Path` helyőrzőt az Event Grid-témakör elérési útjára. Az elérési út lekérése eltávolításával **https://** és a záró erőforrás az elérési út a **téma végpontja** URL-CÍMÉT. Ennek a következő formátumhoz hasonlónak kell lennie: *yourEventGridName.yourLocation.eventgrid.azure.net*.
+1. Cserélje le a helyőrző **elérési út** az elérési útját az event grid-témakör. Az elérési út lekérése eltávolításával **https://** és a záró erőforrás az elérési út a **téma végpontja** URL-CÍMÉT. Ennek a következő formátumhoz hasonlónak kell lennie: *yourEventGridName.yourLocation.eventgrid.azure.net*.
 
     > [!IMPORTANT]
     > Az értékeket idézőjelek nélkül adja meg. Ellenőrizze, hogy van legalább egy szóköz karakter után a kettőspont a YAML-fájlt. Minden online YAML-érvényesítő használatával is ellenőrizheti a YAML-fájl tartalmának [ezzel az eszközzel](https://onlineyamltools.com/validate-yaml).
@@ -114,7 +114,7 @@ Használhatja a [Azure Logic Apps](../logic-apps/logic-apps-overview.md) szolgá
 
 1. Nyissa meg a Logic Apps-erőforrások telepítése, és nyissa meg a **Logikaialkalmazás-Tervező** ablaktáblán. 
 
-1. Válassza az **Event Grid-esemény bekövetkezésekor** triggert. Jelentkezzen be a bérlő az Azure-fiókkal amikor a rendszer kéri. Válassza ki **hozzáférést** az Event Grid-erőforrás, amikor a rendszer kéri. Válassza a **Folytatás** elemet.
+1. Válassza ki a **akkor fordul elő, amikor egy Event Grid erőforrás-esemény** eseményindító. Jelentkezzen be a bérlő az Azure-fiókkal amikor a rendszer kéri. Válassza ki **hozzáférést** az Event Grid-erőforrás, ha a rendszer kéri. Válassza a **Folytatás** elemet.
 
 1. Az a **(előzetes verzió) erőforrás-esemény bekövetkezésekor** ablakban: 
    
@@ -134,7 +134,7 @@ Használhatja a [Azure Logic Apps](../logic-apps/logic-apps-overview.md) szolgá
 
    b. Az a **tartalom** mezőben válassza **törzs** származó a **dinamikus tartalom** listája.
 
-   c. Válassza ki **adattartalom létrehozni a sémát használja minta**. Illessze be a következő JSON-adattartalom, és válassza ki **kész**.
+   c. Válassza a **Séma létrehozása hasznosadat-minta használatával** lehetőséget. Illessze be a következő JSON-adattartalom, és válassza ki **kész**.
 
     ```JSON
     {
@@ -174,7 +174,7 @@ Használhatja a [Azure Logic Apps](../logic-apps/logic-apps-overview.md) szolgá
 
    a. Válassza ki **művelet hozzáadása**, és válassza ki **Office 365 Outlook**.
 
-   b. Az a **műveletek** listáról válassza ki **e-mail küldése**. Válassza ki **jelentkezzen be a** és az e-mail-fiók hitelesítő adataival. Válassza ki **hozzáférést** amikor a rendszer kéri.
+   b. Az a **műveletek** listáról válassza ki **e-mail küldése**. Válassza ki **jelentkezzen be a** és az e-mail-fiók hitelesítő adataival. Válassza ki **hozzáférést** Ha a rendszer kéri.
 
    c. A **Címzett** mezőben adja meg az e-mail-azonosítóját az értesítések fogadásához. A **tulajdonos**, írja be a szöveget **digitális Twins értesítési területen a gyenge légi minőségi**. Válassza ki **TopologyObjectId** származó a **dinamikus tartalom** listázása **JSON elemzése**.
 

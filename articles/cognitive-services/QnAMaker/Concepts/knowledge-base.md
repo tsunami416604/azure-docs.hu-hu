@@ -3,20 +3,20 @@ title: Tudásbázis – QnA Maker
 titleSuffix: Azure Cognitive Services
 description: A QnA Maker Tudásbázis kérdés-válasz (QnA) párok, és nem kötelező, a kérdések és válaszok párjaihoz társított metaadatokat tartalmaz.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/04/2019
-ms.author: tulasim
+ms.date: 06/25/2019
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 02111ac90fe97ddaddbd41ad42410e7e76f1c405
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b9562a1686c4de4f4e2ef57a7d91bbf18dce63ef
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61379275"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447604"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>Mit jelent a QnA Maker Knowledge base?
 
@@ -37,6 +37,28 @@ Egy egyetlen QnA, jelöli QnA numerikus azonosító, több változatának (alter
 Részletes tartalom, például egy Tudásbázis képes feldolgozni, QnA Maker megkísérli a tartalom átalakításához a markdown formátumhoz. Olvasási [ez](https://aka.ms/qnamaker-docs-markdown-support) blog tudni, hogy a markdown-formátumok jelentésséma a legtöbb csevegési ügyfelek.
 
 Metaadatokat tartalmazó mezőket állnak, amelyek egy pontosvesszővel elválasztott kulcs-érték párok **(termék: aprító)** . A kulcs és az értéket csak szöveg kell lennie. A metaadat-kulcs nem tartalmazhat szóközöket. Metaadatok kulcsonként csak egy értéket támogatja.
+
+## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>Hogyan dolgozza fel a QnA Maker válassza ki a legjobb választ a felhasználó lekérdezése
+
+A betanított és [közzétett](/quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) QnA Maker Tudásbázis kap egy felhasználó, egy robot vagy más ügyfélalkalmazás a [GenerateAnswer API](/how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api). A következő ábra szemlélteti a folyamatot, amikor a felhasználó lekérdezése érkezik.
+
+![Felhasználói lekérdezés rangsorolási folyamata](../media/qnamaker-concepts-knowledgebase/rank-user-query-first-with-azure-search-then-with-qna-maker.png)
+
+A folyamat az alábbi táblázat magyarázza:
+
+|Lépés|Cél|
+|--|--|
+|1|Az ügyfélalkalmazás elküldi a felhasználói lekérdezés a [GenerateAnswer API](/how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api).|
+|2|A QnA Maker alkalmazásával feldolgozza azokat a felhasználói lekérdezési nyelv észlelése, spellers és szóhatároló.|
+|3|Alter felhasználó lekérdezése a keresési eredmények elérése érdekében ajánlott az előfeldolgozási venni.|
+|4|Azure Search-Index, a módosított lekérdezés küldődik fogadása a `top` eredmények száma. Ha a helyes válasz nem a ezekkel az eredményekkel, értékének növelése `top` némileg. Általában 10 értéket `top` 90 %-a lekérdezések működik.|
+|5|A QnA Maker helyességét a lehívott Azure keresési eredmények között, a felhasználó lekérdezése meghatározásához speciális featurization vonatkozik. |
+|6|A rangsorolás betanított modell a szolgáltatás pontszám, az 5. lépést, az Azure Search eredmények rangsor használ.|
+|7|Az új eredmények visszakerülnek az ügyfélalkalmazásnak rangsorolt sorrendben.|
+|||
+
+Használt funkciók közé tartozik, de nem érvényesülnek a word-szintű szemantikát, kifejezés szintű egy korpusz, és meghatározhatja a hasonlóság és a relevancia alapján végzett között két szöveges karakterlánc részletes megismert szemantikai modellek fontossággal bír.
+
 
 ## <a name="next-steps"></a>További lépések
 

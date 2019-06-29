@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: d8330ff663a7adc2f1cae3ed6bdf1cec2fa972c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae075dbc922932a4eaffd9126560c159d33459d0
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808451"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466963"
 ---
 # <a name="ship-an-application"></a>Szállítási alkalmazás
 
@@ -46,6 +46,9 @@ A szükséges beszéd SDK-fájlokat is telepíthető az alkalmazás könyvtárá
 
 >[!NOTE]
 > A fájl a kiadás 1.3.0 kezdve `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (tartalmazza a szükséges a korábbi kiadásokban) többé nem szükséges. A funkció most már integrálva van a core SDK-t.
+
+>[!NOTE]
+> A Windows Forms-alkalmazás (.NET Framework) C# projektre, győződjön meg arról, hogy a könyvtárakat a projekthez központi telepítési beállítások szerepelnek. Ez alapján ellenőrizheti `Properties -> Publish Section`. Kattintson a `Application Files` gombra, és keresse meg a megfelelő könyvtárakat a listában görgetve. Ellenőrizze, hogy az értéke `Included`. A Visual Studio közzétett vagy üzembe helyezett projekt esetén a fájl tartalmazza.
 
 ## <a name="linux"></a>Linux
 

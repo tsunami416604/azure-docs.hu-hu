@@ -5,19 +5,19 @@ services: digital-twins
 author: dsk-2015
 ms.service: digital-twins
 ms.topic: include
-ms.date: 12/17/2018
+ms.date: 6/26/2019
 ms.author: dkshir
 ms.custom: include file
-ms.openlocfilehash: 0c89c8353d410ddd54e8a59f3838c914702b96ca
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9771e312269eb78e0dc4535a61e9287b5b169d7c
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179782"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67459166"
 ---
 1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
 
-1. A bal oldali panelen válassza ki a **erőforrás létrehozása**. Keressen a **digital twins** kifejezésre, és válassza a **Digital Twins (előzetes verzió)** lehetőséget. Válassza ki **létrehozás** az üzembe helyezés elindításához.
+1. A bal oldali panelen válassza ki a **erőforrás létrehozása**. Keresse meg **digitális twins**, és válassza ki **digitális Twins**. Válassza ki **létrehozás** az üzembe helyezés elindításához.
 
    ![Hozzon létre egy új digitális Twins példányt szolgáló kiválasztások](./media/create-digital-twins-portal/create-digital-twins.png)
 

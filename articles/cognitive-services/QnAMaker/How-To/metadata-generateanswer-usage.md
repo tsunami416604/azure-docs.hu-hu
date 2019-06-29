@@ -3,19 +3,19 @@ title: Az API – QnA Maker GenerateAnswer metaadatok
 titleSuffix: Azure Cognitive Services
 description: QnA Maker segítségével adhat hozzá a metaadatokat, kulcs/érték párok formájában a kérdés-válasz csoportjai. Szűrheti az eredményeket a felhasználói lekérdezések, és tárolására is használható információk követő témák.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 06/17/2019
-ms.author: tulasim
-ms.openlocfilehash: d1e7a29e4ca94405e2d6b2000309ef6e2c3a777c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 06/27/2019
+ms.author: diberry
+ms.openlocfilehash: 99c076d7f26638833b568935e766cf319d21945e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164613"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443473"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Válasz a GenerateAnswer API és a metaadatok
 
@@ -37,13 +37,13 @@ Minden egyes QnA entitás rendelkezik egy egyedi és állandó. Az Alkalmazásaz
 
 ## <a name="get-answer-predictions-with-the-generateanswer-api"></a>Első válasz előrejelzéseket GenerateAnswer API-val
 
-A GenerateAnswer API-t a robot vagy alkalmazás használhatja a Tudásbázisban, a felhasználói kérdés, a legmegfelelőbb beszerezni a kérdés és válasz állítja be.
+Használja a [GenerateAnswer API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) a robot vagy alkalmazás a felhasználói kérdés a Tudásbázisban, a legmegfelelőbb beszerezni a kérdés és válasz úgy állítja be.
 
 <a name="generateanswer-endpoint"></a>
 
 ## <a name="publish-to-get-generateanswer-endpoint"></a>GenerateAnswer végpont közzététele 
 
-A Tudásbázis, vagy a közzététel után a [QnA Maker portal](https://www.qnamaker.ai), vagy a [API](https://go.microsoft.com/fwlink/?linkid=2092179), kérheti a GenerateAnswer végpont adatait.
+A Tudásbázis, vagy a közzététel után a [QnA Maker portal](https://www.qnamaker.ai), vagy a [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish), kérheti a GenerateAnswer végpont adatait.
 
 A végpont adatait beolvasni:
 1. Jelentkezzen be itt: [https://www.qnamaker.ai](https://www.qnamaker.ai).
@@ -59,34 +59,21 @@ A végpont adatait is beszerezheti a **beállítások** a Tudásbázis lapján.
 
 ## <a name="generateanswer-request-configuration"></a>GenerateAnswer kérelem konfiguráció
 
-A HTTP POST-kérelmet GenerateAnswer hívható meg. Az mintakódot, amely bemutatja, hogyan hívhat meg GenerateAnswer, lásd: a [útmutatóink](../quickstarts/csharp.md).
+A HTTP POST-kérelmet GenerateAnswer hívható meg. Az mintakódot, amely bemutatja, hogyan hívhat meg GenerateAnswer, lásd: a [útmutatóink](../quickstarts/csharp.md). 
 
-A **kérelem URL-címe** formátuma a következő: 
+A POST-kérés használja:
+
+* Szükséges [URI-paraméterek](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
+* Szükséges [fejléc tulajdonság](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/get-answer-from-knowledge-base-nodejs#add-a-post-request-to-send-question-and-get-an-answer), `Authorization`, a biztonság
+* Szükséges [törzs tulajdonságai](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto). 
+
+A GenerateAnswer URL-cím formátuma a következő: 
 
 ```
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
-|HTTP-kérelem tulajdonság|Name (Név)|Típus|Cél|
-|--|--|--|--|
-|URL-cím útvonal-paraméter|Tudásbázis-azonosító|string|A Tudásbázis GUID azonosítója.|
-|URL-cím útvonal-paraméter|QnAMaker végponti gazdagép|string|Az Azure-előfizetésében üzembe helyezve a végpont állomásneve. Ez az elérhető a **beállítások** lapon a Tudásbázis közzététele után. |
-|Fejléc|Content-Type|string|Az API-nak küldött törzs médiatípusa. Alapértelmezett érték: ''|
-|Fejléc|Engedélyezés|string|A végpont kulcs (EndpointKey: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
-|Bejegyzés törzse|JSON-objektum|JSON|A kérdés beállításokkal.|
-
-
-JSON-törzse többféle beállításokkal rendelkezik:
-
-|JSON-törzse tulajdonság|Kötelező|Típus|Cél|
-|--|--|--|--|
-|`question`|Szükséges|string|Egy felhasználó kérdést kell küldeni a tudásbázist.|
-|`top`|Nem kötelező|egész szám|A kimenetben: rangsorolt eredmények száma. Az alapértelmezett érték az 1.|
-|`userId`|Nem kötelező|string|Azonosíthatja a felhasználó egyedi azonosítója. Ezt az Azonosítót a csevegési naplók lesznek rögzítve.|
-|`scoreThreshold`|Nem kötelező|egész szám|Csak azokat a válaszokat, a rendszer magabiztossági pontszámot a küszöbérték fölött lesz visszaadva. Az alapértelmezett érték a 0.|
-|`isTest`|Nem kötelező|Boolean|Ha igaz érték esetén eredményét adja vissza `testkb` Search-index közzétett index helyett.|
-|`strictFilters`|Nem kötelező|string|Ha meg van adva, arra utasítja a QnA Maker, a választ csak, amelyek rendelkeznek a megadott metaadatok. Használat `none` jelzi a válasz nem fájlmetaadat-szűrők kell rendelkeznie. |
-|`RankerType`|Nem kötelező|string|Ha a megadott `QuestionOnly`, arra utasítja a QnA Maker kérdések csak kereséséhez. Ha nincs megadva, a QnA Maker kérdéseket és válaszokat keres.
+Állítsa be a HTTP-fejléc tulajdonságot, ne felejtse el `Authorization` értéke az a karakterlánc `EndpointKey ` a záró szóköz majd a végpont kulcs található a **beállítások** lap.
 
 Egy példa JSON-törzse hasonlóan néz ki:
 
@@ -109,19 +96,7 @@ Egy példa JSON-törzse hasonlóan néz ki:
 
 ## <a name="generateanswer-response-properties"></a>GenerateAnswer válasz tulajdonságai
 
-A sikeres válasz állapota 200-as és a egy JSON-választ adja vissza. 
-
-|Válaszok tulajdonság (pontszám szerint rendezve)|Cél|
-|--|--|
-|pontszám|0 és 100 közötti rangsorolási pontszám.|
-|Azonosító|A válasz rendelt egyedi azonosítója.|
-|Kérdések|A felhasználó által megadott kérdéseket.|
-|Válasz|A választ a kérdésére.|
-|source|A forrás, amelyről a választ ki kell olvasni vagy menti a Tudásbázis neve.|
-|metaadatok|A válasz társított metaadatokat.|
-|metadata.name|Metaadat-neve. (karakterlánc, a maximális hossz: 100, a szükséges)|
-|Metadata.Value|Metaadat-értékben. (karakterlánc, a maximális hossz: 100, a szükséges)|
-
+A [válasz](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#successful_query) egy JSON-objektum, például az összes információhoz hozzájuthat a választ, a következő megjelenítéséhez kapcsolja be a beszélgetést, ha elérhető.
 
 ```json
 {

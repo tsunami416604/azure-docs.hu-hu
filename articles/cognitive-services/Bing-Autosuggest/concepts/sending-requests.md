@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 06/25/2019
 ms.author: scottwhi
-ms.openlocfilehash: abcce52e126e01d25434a90260a220c9aa337f5b
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: be3262daf7ea2a637133ad658efe07ba9426415b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66382695"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449071"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>A Bing Autosuggest API kérések küldését.
 
@@ -95,11 +95,11 @@ A következő példa egy olyan kérést mutat be, amely a *sail* sztringre adja 
 
 Ha első alkalommal hívja meg bármelyik Bing API-t, ne használja az ügyfél-azonosító fejlécét. Csak akkor használja az ügyfél-azonosító fejlécét, ha korábban már meghívott egy Bing API-t, és visszakapott egy ügyfél-azonosítót a felhasználó és az eszköz kombinációjához.
 
-Alább az előző kérelemre adott válasz látható. A válasz tartalmaz egy webes javaslatcsoportot a keresési lekérdezési javaslatok listájával. Minden javaslat tartalmaz egy `displayText`, `query` és `url` mezőt.
+Az alábbi javaslat csoportja egy, a fenti irányuló kérelemre adott válasz. A csoport a keresési lekérdezés javaslatok, minden javaslat többek között a listáját tartalmazza egy `displayText`, `query`, és `url` mező.
 
 A `displayText` mező tartalmazza a javasolt lekérdezést, amelyet a keresőmező legördülő listájának feltöltéséhez használ. A válaszban szereplő összes javaslatot meg kell jelenítenie az adott sorrendben.  
 
-Ha a felhasználó egy lekérdezést a legördülő listából, ezzel az egyik hívja a [Bing Search APIs](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) megjeleníti az eredményeket, és a Bing eredménye lapot a visszaadott küldenie a felhasználót `url` mező. Az alábbi példában a Bing Web Search API.
+Ha a felhasználó egy lekérdezést a legördülő listából, ezzel az egyik hívja a [Bing Search APIs](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) megjeleníti az eredményeket, és a Bing eredménye lapot a visszaadott küldenie a felhasználót `url` mező.
 
 ```json
 BingAPIs-TraceId: 76DD2C2549B94F9FB55B4BD6FEB6AC

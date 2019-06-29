@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 518f1048224a97943756c5b51b83cd509f82e11e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1ad618e9eb70fd75f433030584c0f6538532928f
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072502"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466991"
 ---
 # <a name="speech-service-supported-regions"></a>Beszédszolgáltatás támogatott régiók
 
@@ -35,7 +35,7 @@ A beszédfelismerés SDK érhető el ezekben a régiókban a **beszédfelismeré
   Régió | Beszéd SDK paraméter | Speech-portál testreszabása
  ------|-------|--------
  USA nyugati régiója | `westus` | https://westus.cris.ai
- USA 2. nyugati régiója | `westus2` | https://westus2.cris.ai
+ USA nyugati régiója, 2. | `westus2` | https://westus2.cris.ai
  USA keleti régiója | `eastus` | https://eastus.cris.ai
  USA 2. keleti régiója | `eastus2` | https://eastus2.cris.ai
  USA középső régiója | `centralus` | https://centralus.cris.ai
@@ -73,6 +73,20 @@ Az elérhető régiók **szándékának felismerése** a Speech SDK-n keresztül
  Dél-Amerika | Dél-Brazília | `brazilsouth`
 
 Ez a közzétételi által támogatott régiók részhalmazát a [hangfelismerési szolgáltatás (LUIS)](/azure/cognitive-services/luis/luis-reference-regions).
+
+### <a name="voice-first-virtual-assistants"></a>Hang-és felhőközpontú virtuális asszisztensek
+
+A [beszéd SDK](speech-sdk.md) támogatja **hang-és felhőközpontú virtuális asszisztensek** képességek az ezekben a régiókban:
+
+Régió | Beszéd SDK paraméter
+-------|---------------------
+USA nyugati régiója | `westus`
+USA nyugati régiója, 2. | `westus2`
+USA keleti régiója | `eastus`
+USA 2. keleti régiója | `eastus2`
+Nyugat-Európa | `westeurope`
+Észak-Európa | `northeurope`
+Délkelet-Ázsia | `southeastasia`
 
 ## <a name="rest-apis"></a>REST API-k
 

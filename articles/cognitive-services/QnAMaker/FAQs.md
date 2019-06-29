@@ -3,20 +3,20 @@ title: Gyakori kérdések – QnA Maker
 titleSuffix: Azure Cognitive Services
 description: A összeállított lista a QnA Maker szolgáltatással kapcsolatban leggyakrabban feltett kérdések segítségével fogad el a szolgáltatást, gyorsabb és jobb eredményeket.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 06/11/2019
-ms.author: tulasim
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 896680b38d6861b09b133680487aa90ad11dec77
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d96c5829dfaa57e66b4afec203c27110b8627ac1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064346"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447564"
 ---
 # <a name="frequently-asked-questions-for-qna-maker"></a>QnA Maker eszközzel kapcsolatos gyakori kérdések
 
