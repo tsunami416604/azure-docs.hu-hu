@@ -5,15 +5,15 @@ metadata:
   title: A QnA Maker dokumentációja – Microsoft Cognitive Services | Microsoft Docs
   description: 'Megismerheti a QnA Maker szolgáltatást, illetve hogy a szolgáltatás tudásbázisai hogyan működnek a kérdésekkel és válaszokkal.'
   services: cognitive-services
-  author: tulasim88
-  manager: cgronlun
+  author: diberry
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: qna-maker
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 12/18/2018
-  ms.author: tulasim
+  ms.author: diberry
 abstract:
   description: 'A QnA Maker egy olyan felhőalapú API-szolgáltatás, amely egy beszélgetés típusú, kérdésekből és válaszokból álló réteget hoz létre az adatok alapján. A QnA Maker lehetővé teszi egy kérdés-válasz szolgáltatás működtetését olyan félig strukturált tartalomból, mint a GYIK-dokumentumok, URL-címek és termékútmutatók. A QnA Maker szolgáltatás egyezteti a felhasználók természetes nyelvi kérdéseit a Tudásbázisban szereplő kérdésekkel és válaszokkal, majd a lehető legjobban megfelelő választ adja vissza.'
   aside:

@@ -94,7 +94,7 @@
             - name: R Server a HDInsightban
               href: /azure/hdinsight/r-server/r-server-overview?context=azure/machine-learning/team-data-science-process/context/ml-context
             - name: R Server a HDInsightban – első lépések
-              href: /azure/hdinsight/r-server/r-server-get-started?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: /azure/hdinsight/r-server/r-server-overview?context=azure/machine-learning/team-data-science-process/context/ml-context
         - name: Azure Machine Learning-munkaterület
           href: /azure/machine-learning/studio/create-workspace?context=azure/machine-learning/team-data-science-process/context/ml-context
     - name: Üzleti igények elemzése

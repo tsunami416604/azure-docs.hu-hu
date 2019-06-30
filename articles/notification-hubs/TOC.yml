@@ -50,10 +50,6 @@
           href: xamarin-notification-hubs-ios-push-notification-apns-get-started.md
         - name: Honosított leküldéses értesítések küldése iOS-eszközökre
           href: notification-hubs-ios-xplat-localized-apns-push-notification.md
-    - name: Kindle
-      items:
-        - name: Leküldéses értesítések küldése az Amazon Device Messaging használatával
-          href: notification-hubs-kindle-amazon-adm-push-notification.md
     - name: Windows Phone
       items:
         - name: Leküldéses értesítések küldése alkalmazásokba
@@ -129,8 +125,6 @@
           href: configure-windows-push-notification-service.md
         - name: A Microsoft Push Notification szolgáltatás konfigurálása
           href: configure-microsoft-push-notification-service.md
-        - name: Az Android Device Messaging konfigurálása
-          href: configure-android-device-messaging.md
         - name: A felhőalapú Baidu-értesítés konfigurálása
           href: configure-baidu-cloud-push.md
     - name: Regisztráció az alkalmazás háttérrendszerével

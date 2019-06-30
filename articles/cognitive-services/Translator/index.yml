@@ -5,14 +5,14 @@ metadata:
   title: 'A Translator Text dokumentációja – Rövid útmutatók, oktatóanyagok és API-referencia – Azure Cognitive Services | Microsoft Docs'
   description: 'Ismerje meg, hogyan fordíthat le szövegeket több nyelvre a Translator Text használatával.'
   services: cognitive-services
-  author: v-pawal
+  author: swmachan
   manager: Chris.Wendt
   ms.service: cognitive-services
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 06/04/2019
-  ms.author: v-jansko
+  ms.author: swmachan
 abstract:
   description: 'A Translator Text egy felhőalapú gépi fordítási szolgáltatás, amellyel közel valós időben fordíthat le szövegeket egy egyszerű REST API-hívással. Az API modern idegi gépi fordítási technológiát használ, és statisztikai gépi fordító technológiával is rendelkezik. A Custom Translator a Translator Text API bővítménye, amellyel neurális fordítási rendszereket hozhat létre. A testre szabott fordítási rendszerrel a Translator Text API vagy a <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/"> Microsoft Speech Services</a> használatával fordíthat le szövegeket. A neurális és a statisztikai gépi fordítás által támogatott nyelvek listájáért lásd: <a href="languages.md">Támogatott nyelvek</a>.'
 sections:

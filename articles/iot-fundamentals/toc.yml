@@ -8,11 +8,13 @@
       href: iot-services-and-technologies.md
 - name: Biztonság
   items:
-    - name: Biztonsági architektúra
-      href: iot-security-architecture.md
-    - name: Ajánlott biztonsági eljárások
-      href: iot-security-best-practices.md
-    - name: Biztonságos üzembe helyezés
-      href: iot-security-deployment.md
+    - name: Javaslatok
+      href: security-recommendations.md
     - name: Biztonság az alapoktól
       href: iot-security-ground-up.md
+    - name: Ajánlott biztonsági eljárások
+      href: iot-security-best-practices.md
+    - name: Biztonsági architektúra
+      href: iot-security-architecture.md
+    - name: Biztonságos üzembe helyezés
+      href: iot-security-deployment.md

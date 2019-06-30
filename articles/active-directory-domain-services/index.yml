@@ -5,8 +5,8 @@ metadata:
   title: Az Azure AD Domain Services dokumentációja
   description: 'Ismerje meg, hogy az Active Directory Domain Services hogyan használható az Azure virtuális gépek tartományhoz csatlakoztatására tartományvezérlő nélkül. Az oktatóanyagok és egyéb dokumentációk bemutatják a virtuális gépek csoportházirendekkel végzett kezelését.'
   keywords: 'Azure AD, Azure, tartományhoz való csatlakozás, csoportházirend, LDAP, Kerberos, tartományvezérlő, DC, átemelés'
-  author: MikeStephens-MS
-  ms.author: mstephen
+  author: iainfoulds
+  ms.author: iainfou
   manager: daveba
   ms.date: 05/22/2019
   ms.topic: landing-page

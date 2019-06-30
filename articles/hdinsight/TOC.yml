@@ -13,6 +13,6 @@
 - name: Apache Storm
   href: ./storm/apache-storm-quickstart.md
 - name: ML-szolgáltatások
-  href: ./r-server/r-server-overview.md
+  href: ./r-server/machine-learning-services-quickstart-job-rstudio.md
 - name: Alkalmasság vállalati használatra
   href: ./domain-joined/apache-domain-joined-run-hbase.md

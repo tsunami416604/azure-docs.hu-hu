@@ -19,6 +19,8 @@
               href: service-bus-quickstart-powershell.md
             - name: Azure CLI
               href: service-bus-quickstart-cli.md
+            - name: Azure Resource Manager-sablon
+              href: service-bus-resource-manager-namespace-queue.md
         - name: Üzenetek küldése és fogadása
           items:
             - name: .NET
@@ -40,7 +42,11 @@
     - name: Service Bus-témakörök és -előfizetések
       items:
         - name: Témakörök és előfizetések létrehozása
-          href: service-bus-quickstart-topics-subscriptions-portal.md
+          items:
+            - name: Azure Portal
+              href: service-bus-quickstart-topics-subscriptions-portal.md
+            - name: Azure Resource Manager-sablon
+              href: service-bus-resource-manager-namespace-topic.md
         - name: Üzenetek közzététele és feliratkozás rájuk
           items:
             - name: .NET
@@ -187,10 +193,6 @@
           items:
             - name: Névtér létrehozása
               href: service-bus-resource-manager-namespace.md
-            - name: Névtér és üzenetsor létrehozása
-              href: service-bus-resource-manager-namespace-queue.md
-            - name: Névtér létrehozása témakörrel és előfizetéssel
-              href: service-bus-resource-manager-namespace-topic.md
             - name: Engedélyezési szabály létrehozása névtérhez és üzenetsorhoz
               href: service-bus-resource-manager-namespace-auth-rule.md
             - name: 'Névtér létrehozása témakörrel, előfizetéssel és szabállyal'

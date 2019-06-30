@@ -14,14 +14,17 @@
     - name: A Video Indexer API használata
       href: video-indexer-use-apis.md
 - name: Alapelvek
-  href: video-indexer-concepts.md
   items:
+    - name: Áttekintés
+      href: video-indexer-concepts.md
     - name: A Video Indexer és a Media Services előzetes beállításainak összehasonlítása
       href: compare-video-indexer-with-media-services-presets.md
     - name: Több bérlő kezelése
       href: manage-multiple-tenants.md
     - name: Tartalommodellek testreszabása
       items:
+        - name: Áttekintés
+          href: customize-content-models-overview.md
         - name: Márkák
           href: customize-brands-model-overview.md
         - name: Nyelv
@@ -86,3 +89,5 @@
       href: faq.md
     - name: Megfelelőség
       href: 'https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942'
+    - name: Kibocsátási megjegyzések
+      href: release-notes.md

@@ -14,8 +14,6 @@
   items:
     - name: ESP-fürtök tervezése
       href: apache-domain-joined-architecture.md
-    - name: ESP-fürtök létrehozása és szinkronizálás a helyszíni rendszerrel
-      href: apache-domain-joined-create-configure-enterprise-security-cluster.md
     - name: ESP-fürtök konfigurálása az Azure AD DS-sel
       href: apache-domain-joined-configure-using-azure-adds.md
     - name: Azure AD-felhasználók szinkronizálása HDInsight-fürttel
@@ -30,26 +28,30 @@
       href: ../spark/apache-spark-eclipse-tool-plugin.md
     - name: Az Apache Oozie használata ESP-fürtökben
       href: hdinsight-use-oozie-domain-joined-clusters.md
-- name: Adatok védelme
-  href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
-- name: Hálózati hozzáférés
+    - name: Adatok védelme
+      href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+    - name: Hálózati hozzáférés
+      items:
+        - name: HDInsight az Azure VNetben
+          href: ../hdinsight-extend-hadoop-virtual-network.md
+        - name: A HDInsight csatlakoztatása a helyszíni hálózathoz
+          href: ../connect-on-premises-network.md
+        - name: Az Apache HBase-fürt létrehozása az Azure VNetben
+          href: ../hbase/apache-hbase-provision-vnet.md
+        - name: Az Apache HBase-fürt replikációja az Azure VNetben
+          href: ../hbase/apache-hbase-replication.md
+    - name: Monitorozás Azure Monitor-naplókkal
+      items:
+        - name: Az Azure Monitor-naplók használata
+          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
+        - name: Lekérdezések használata az Azure Monitor-naplókkal
+          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
+        - name: Fürtteljesítmény monitorozása
+          href: ../hdinsight-key-scenarios-to-monitor.md
+- name: Útmutató
   items:
-    - name: HDInsight az Azure VNetben
-      href: ../hdinsight-extend-hadoop-virtual-network.md
-    - name: A HDInsight csatlakoztatása a helyszíni hálózathoz
-      href: ../connect-on-premises-network.md
-    - name: Az Apache HBase-fürt létrehozása az Azure VNetben
-      href: ../hbase/apache-hbase-provision-vnet.md
-    - name: Az Apache HBase-fürt replikációja az Azure VNetben
-      href: ../hbase/apache-hbase-replication.md
-- name: Monitorozás Azure Monitor-naplókkal
-  items:
-    - name: Az Azure Monitor-naplók használata
-      href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
-    - name: Lekérdezések használata az Azure Monitor-naplókkal
-      href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
-    - name: Fürtteljesítmény monitorozása
-      href: ../hdinsight-key-scenarios-to-monitor.md
+    - name: ESP-fürtök létrehozása és szinkronizálás a helyszíni rendszerrel
+      href: apache-domain-joined-create-configure-enterprise-security-cluster.md
 - name: Referencia
   items:
     - name: Kódminták
