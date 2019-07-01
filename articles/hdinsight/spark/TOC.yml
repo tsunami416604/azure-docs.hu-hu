@@ -40,8 +40,6 @@
       href: ../hdinsight-sdk-python-samples.md
 - name: Alapelvek
   items:
-    - name: Apache Spark-lekérdezések futtatása IntelliJ használatával
-      href: apache-spark-intellij-tool-plugin.md
     - name: Apache Spark-lekérdezések futtatása VSCode használatával
       href: ../hdinsight-for-vscode.md
     - name: HDInsight-alapú Apache Hadoop-összetevők

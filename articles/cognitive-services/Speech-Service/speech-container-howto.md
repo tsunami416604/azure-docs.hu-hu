@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 6df40909e2072ac2126344ba5b696c9e520e9955
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8f395788d4dd3c845155a52bd6b4666998838fcd
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67434147"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490233"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Telepítse és futtassa a Speech Service-tárolók
 
@@ -25,7 +25,7 @@ A két speech tárolók **hang-szöveg transzformációs** és **szöveg-hang tr
 
 |Függvény|Szolgáltatások|legfrissebb|
 |-|-|--|
-|Speech-to-text| <li>Transcribes folyamatos valós idejű beszéd vagy kötegelt hangfelvételeket szöveggé a köztes eredményeket.|1.1.2|
+|Speech-to-text| <li>Transcribes folyamatos valós idejű beszéd vagy kötegelt hangfelvételeket szöveggé a köztes eredményeket.|1.1.3|
 |Szövegfelolvasás| <li>Az írott szöveget természetesnek hangzó beszéddé alakítja. az egyszerű szöveges beviteli vagy beszéd összefoglaló Markup Language (SSML). |1.1.0|
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
@@ -34,7 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Beszédfelismerési tárolókhoz használata előtt a következő előfeltételeknek kell megfelelnie:
 
-|Szükséges|Cél|
+|Kötelező|Cél|
 |--|--|
 |Docker-motor| A Docker-motor telepítve van szüksége egy [gazdaszámítógép](#the-host-computer). A docker csomagokat biztosít, a Docker-környezet konfigurálása a [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), és [Linux](https://docs.docker.com/engine/installation/#supported-platforms). A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> **A Windows**, a Docker Linux-tárolók támogatása is kell konfigurálni.<br><br>|
 |Docker-ismeretek | A Docker fő fogalmaira, például a beállításjegyzékek, adattárak, tárolók, és tárolórendszerképeket, valamint alapszintű ismerete alapvető ismeretekkel kell `docker` parancsokat.| 
@@ -101,10 +101,10 @@ Az összes címke kivételével `latest` a következő formátumban, ahol a `<cu
 A következő kód a következő példa a formátumra:
 
 ```
-1.1.2-amd64-en-us-preview
+1.1.3-amd64-en-us-preview
 ```
 
-A következő táblázat sorolja fel az támogatott nyelveit **hang-szöveg transzformációs** a 1.1.2 a verziót a tároló:
+A következő táblázat sorolja fel az támogatott nyelveit **hang-szöveg transzformációs** a 1.1.3 a verziót a tároló:
 
 |Nyelvi kódot|Tags|
 |--|--|

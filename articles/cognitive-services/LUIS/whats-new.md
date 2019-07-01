@@ -9,20 +9,24 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/20/2019
+ms.date: 06/25/2019
 ms.author: diberry
-ms.openlocfilehash: 515b40c9976ba901787182c249228f98f1938078
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2efc48df906117a8d01ea8c309f001d2f623444f
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66431127"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485076"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding újdonságai
 
 Ismerje meg, hogy a szolgáltatás újdonságai. Ezek az elemek előfordulhat, hogy kibocsátási megjegyzései, videók, blogbejegyzések és egyéb információk. Ezen a lapon, hogy naprakészen követhesse a szolgáltatás a könyvjelzők közé.  
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések 
+
+### <a name="june-24-2019"></a>2019. június 24.
+
+* [OrdinalV2 előre összeállított entitások](luis-reference-prebuilt-ordinal-v2.md) támogatása mellett, például rendezés korábbi, és az utolsó. Csak angol kulturális.
 
 ### <a name="may-6-2019---build-conference"></a>Május 6 2019 - //Build konferencián
 

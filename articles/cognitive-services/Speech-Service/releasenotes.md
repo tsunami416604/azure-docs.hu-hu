@@ -11,16 +11,17 @@ ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 09296585ab0ab61f39c18cae6c533c0bbd91926a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 609443a4926fabd991846faee4a0a7dffe3a696b
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449250"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490179"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
 
 ## <a name="speech-sdk-160-2019-june-release"></a>Speech SDK 1.6.0: A 2019-júniusi kiadásba
+
 **Példák**
 *   A szöveg-beszéd átalakítás, az UWP- és Unity a gyors üzembe helyezési minták
 *   IOS Swift gyors üzembe helyezési minta
@@ -35,6 +36,9 @@ ms.locfileid: "67449250"
     * Az összes meglévő közvetlen vonal Speech az ügyfelek továbbra is támogatottak, miután a átnevezése
 * Proxy, állandó kapcsolat támogatásához Szövegfelolvasás REST-adapter frissítése
 * Chybová zpráva javítják a régió érvénytelen átadott
+* Swift/Objective-C:
+    * Továbbfejlesztett hibajelentés: Módszer, amely hibát eredményezhet a két verziója mostantól szerepelnek: Egy által elérhetővé tett egy `NSError` objektum hibakezelést és a egy másikkal, amelyik kivételt jelez. Az előbbi jelennek meg a Swift. Ez a változás meglévő Swift-kód kiigazítása szükséges.
+    * Továbbfejlesztett eseménykezelés
 
 **Hibajavítások**
 *   Javítás a szöveg-beszéd átalakítás: ahol SpeakTextAsync jövőbeli visszaadott hang renderelési befejeződéséig várakozás nélkül
@@ -43,6 +47,8 @@ ms.locfileid: "67449250"
 *   Natív kódtárak telepítése a kimeneti mappába, a minták alkalmanként problémák javítása
 *   Javítás a web socket megbízhatóan bezárása
 *   Javítás a lehetséges összeomlási linuxon nagyon nagy terhelés alatt kapcsolat megnyitása közben
+*   Javítsa ki a keretrendszer csomagot a macOS-hez a hiányzó metaadatok
+*   Kapcsolatos problémák megoldásához `pip install --user` a Windows
 
 
 ## <a name="speech-sdk-151"></a>SDK 1.5.1 beszéd

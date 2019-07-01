@@ -247,7 +247,7 @@ Az alábbi táblázat belül a tevékenység JSON-definíció tulajdonságainak 
 
 | Tulajdonság | Leírás | Szükséges |
 | -------- | ----------- | -------- |
-| név | A társított szolgáltatás neve. | Igen |
+| name | A társított szolgáltatás neve. | Igen |
 | Tulajdonságok - típus | A társított szolgáltatás típusa. Példa: Azure Storage, Azure SQL Database. |
 | typeProperties | A typeProperties szakasz eltérő az összes adattárat vagy számítási környezet elemek rendelkezik. Című adatokat tárolja az összes adat tárolására társított szolgáltatásokat és [számítási környezetek](#compute-environments) minden számítási társított szolgáltatás |
 
@@ -286,7 +286,7 @@ A következő táblázat ismerteti a fenti JSON-tulajdonságok:
 
 | Tulajdonság | Leírás | Szükséges | Alapértelmezett |
 | --- | --- | --- | --- |
-| név | Az adatkészlet nevét. Lásd: [Azure Data Factory – elnevezési szabályok](data-factory-naming-rules.md) elnevezési szabályait. |Igen |n/a |
+| name | Az adatkészlet nevét. Lásd: [Azure Data Factory – elnevezési szabályok](data-factory-naming-rules.md) elnevezési szabályait. |Igen |n/a |
 | type | Az adatkészlet típusa. Adjon meg egy Azure Data Factory által támogatott fájltípusok (például: AzureBlob, AzureSqlTable). Lásd: [ADATTÁRAK](#data-stores) az adattárak és a Data Factory által támogatott típus a következő szakaszban. |
 | structure | Az adatkészlet sémája. Tartalmaz oszlopokat, azok típusok, stb. | Nem |n/a |
 | typeProperties | A kijelölt típushoz tartozó tulajdonságok. Lásd: [ADATTÁRAK](#data-stores) támogatott típusok és azok tulajdonságait a következő szakaszban. |Igen |n/a |
@@ -298,7 +298,7 @@ Minden egyes oszlopának a **struktúra** szakaszban a következő tulajdonságo
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| név |Az oszlop neve. |Igen |
+| name |Az oszlop neve. |Igen |
 | type |Az oszlop adattípusát.  |Nem |
 | culture |.NET-alapú kulturális környezet esetén a típus van megadva, és a .NET-típus használandó `Datetime` vagy `Datetimeoffset`. Az alapértelmezett szint a `en-us`. |Nem |
 | format |Formázó karakterlánc típus van megadva, és a .NET-típus esetén használandó `Datetime` vagy `Datetimeoffset`. |Nem |

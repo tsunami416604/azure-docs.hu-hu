@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 06/25/2019
 ms.author: diberry
-ms.openlocfilehash: 752a26b21854ec9030fc1945024ae461445815a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16529c8334ae9f2eed5715abb22dcbcdbebec7c4
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65146717"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485116"
 ---
 # <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>A LUIS-alkalmazásokon sorszámnál előre összeállított entitás
 Sorszámok az objektumon belüli egy numerikus ábrázolását: `first`, `second`, `third`. Az entitás már be van tanítva, mert nem kell tartalmazó sorszámnál való az alkalmazás leképezések példa beszédmódok hozzáadása. Támogatott sorszámnál entitás [számos országban](luis-reference-prebuilt-entities.md). 
@@ -130,4 +130,4 @@ A következő JSON-ja az a `verbose` paraméter beállítása `true`:
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a [százalékos](luis-reference-prebuilt-percentage.md), [telefonszám](luis-reference-prebuilt-phonenumber.md), és [hőmérséklet](luis-reference-prebuilt-temperature.md) entitásokat. 
+További információ a [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md), [telefonszám](luis-reference-prebuilt-phonenumber.md), és [hőmérséklet](luis-reference-prebuilt-temperature.md) entitásokat. 

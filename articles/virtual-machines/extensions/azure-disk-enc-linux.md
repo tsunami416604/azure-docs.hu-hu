@@ -152,7 +152,7 @@ Használatával `AADClientCertificate`:
 | KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
 | KeyEncryptionKeyURL | url | string |
 | (nem kötelező) KeyVaultURL | url | string |
-| Hozzáférési kód | password | string | 
+| Passphrase | password | string | 
 | SequenceVersion | uniqueidentifier | string |
 | VolumeType | Az operációs rendszer, az adatok, az összes | string |
 
