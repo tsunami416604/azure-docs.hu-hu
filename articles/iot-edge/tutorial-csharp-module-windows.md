@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 122028217a78463fa2ceaed63248a74257206345
-ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+ms.openlocfilehash: d7ccce1f21b1caa2268317b7239617a80ddce10b
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66808775"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485932"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Oktatóanyag: Fejlesztés a C# IoT Edge-modul a Windows-eszközök
 
@@ -54,7 +54,7 @@ Ez az oktatóanyag elkezdéséhez kell elvégezte az előző oktatóanyagban a f
 * [A docker CE](https://docs.docker.com/install/) konfigurált Windows-tárolók futtatásához.
 
 > [!TIP]
-> Ha a Visual Studio 2017 (15.7 vagy újabb verzió) használ, plrease töltse le és telepítse [Azure IoT Edge-eszközök (előzetes verzió)](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) VS 2017 a Visual Studio marketplace-ről
+> Ha a Visual Studio 2017 (15.7 vagy újabb verzió) használ, plrease töltse le és telepítse [Azure IoT Edge-eszközök](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) VS 2017 a Visual Studio marketplace-ről
 
 ## <a name="create-a-module-project"></a>A modul projekt létrehozása
 

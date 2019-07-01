@@ -25,6 +25,8 @@
           href: howto-create-tenant.md
         - name: Azure AD-alkalmazásobjektum és -felhasználó létrehozása
           href: howto-aad-app-configuration.md
+    - name: Különálló Prometheus üzembe helyezése Azure Red Hat OpenShift-fürtön
+      href: howto-deploy-prometheus.md
 - name: Referencia
   items:
     - name: Az Azure Red Hat OpenShift parancssori felülete

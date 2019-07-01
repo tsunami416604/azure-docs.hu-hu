@@ -30,6 +30,8 @@
   items:
     - name: Billentyűparancsok
       href: azure-portal-keyboard-shortcuts.md
+    - name: Az Azure Portal URL-címeinek megbízhatósági listára helyezése
+      href: azure-portal-safelist-urls.md
     - name: Az Azure-irányítópultok struktúrája
       href: azure-portal-dashboards-structure.md
 - name: További források

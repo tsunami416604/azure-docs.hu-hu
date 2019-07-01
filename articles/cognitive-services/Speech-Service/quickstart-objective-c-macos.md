@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/03/2019
 ms.author: chlandsi
-ms.openlocfilehash: 3eb65b5d41317a4cfc31917a4b08d931ba9c7aa6
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 49e39a40093f2efdf0fabbbf9f383576b2cebe22
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466615"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484992"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>Gyors útmutató: A beszédfelismerés SDK-val macOS rendszeren beszédfelismerést Objective-C nyelven
 
@@ -34,7 +34,7 @@ Mielőtt elkezdené, a következő előfeltételek listáját:
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-A Cognitive Services Speech SDK jelenlegi verziója az `1.5.1`.
+A Cognitive Services Speech SDK jelenlegi verziója az `1.6.0`.
 
 A Cognitive Services beszédfelismerő SDK machez egy keretrendszer csomag terjesztése.
 Az Xcode-projektekhez, használható egy [CocoaPod](https://cocoapods.org/), vagy a letöltött https://aka.ms/csspeech/macosbinary és a manuálisan csatolt. Ez az útmutató egy CocoaPod használja.

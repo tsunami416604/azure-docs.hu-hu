@@ -88,7 +88,7 @@
           href: stream-analytics-test-query.md
         - name: Eredmények megtekintése az irányítópulton
           href: stream-analytics-power-bi-dashboard.md
-        - name: Feladat törlése
+        - name: Feladat leállítása vagy törlése
           href: stream-analytics-clean-up-your-job.md
         - name: Feladatok párosítása a megbízhatóság érdekében
           href: stream-analytics-job-reliability.md

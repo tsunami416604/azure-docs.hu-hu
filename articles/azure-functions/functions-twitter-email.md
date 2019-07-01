@@ -4,19 +4,19 @@ description: Létrehozhat egy függvényt, amely integrálható az Azure Logic A
 services: functions, logic-apps, cognitive-services
 keywords: munkafolyamat, felhőalapú alkalmazások, felhőszolgáltatások, üzleti folyamatok, rendszerintegráció, vállalati alkalmazásintegráció, EAI
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 ms.assetid: 60495cc5-1638-4bf0-8174-52786d227734
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 5e0ef8287b7ce257cd551a1ace043ccbed72b50b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 11e0170464d8ed901253925eb62cce12d42c0008
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61036967"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480034"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Az Azure Logic Apps szolgáltatással integrálható függvények létrehozása
 
@@ -58,7 +58,7 @@ A Cognitive Services API-k egyéni erőforrásként érhetők el az Azure-ban. A
     | Beállítás      |  Ajánlott érték   | Leírás                                        |
     | --- | --- | --- |
     | **Name (Név)** | MyCognitiveServicesAccnt | Válasszon egy egyedi fióknevet. |
-    | **Hely** | USA nyugati régiója | Az Önhöz legközelebbi helyet használja. |
+    | **Location** | USA nyugati régiója | Az Önhöz legközelebbi helyet használja. |
     | **Tarifacsomag** | F0 | Kezdjen a legalacsonyabb szinttel. Ha kifogy a hívásokból, lépjen magasabb szintre.|
     | **Erőforráscsoport** | myResourceGroup | Ugyanazt az erőforráscsoportot használja minden olyan szolgáltatáshoz, amely az oktatóanyagban szóba kerül.|
 
@@ -145,7 +145,7 @@ Ezzel létrehozott egy olyan függvényt, amely kategorizálja a véleményponts
     | ----------------- | ------------ | ------------- |
     | **Name (Név)** | TweetSentiment | Válasszon egy megfelelő nevet az alkalmazáshoz. |
     | **Erőforráscsoport** | myResourceGroup | Válassza ki a korábban is használt meglévő erőforráscsoportot. |
-    | **Hely** | USA keleti régiója | Válassza ki az Önhöz legközelebb eső helyet. |    
+    | **Location** | USA keleti régiója | Válassza ki az Önhöz legközelebb eső helyet. |    
 
 4. Miután megadta a megfelelő beállításértékeket, kattintson a **Létrehozás** gombra a logikai alkalmazás létrehozásához. 
 

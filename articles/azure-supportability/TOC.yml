@@ -5,14 +5,17 @@
 - name: Hozzáférési jogosultságok a támogatáskérések létrehozásához és kezeléséhez
   href: create-manage-support-requests-using-access-control.md
 - name: Kvótanövelési kérések
-  href: resource-manager-core-quotas-request.md
   items:
-    - name: Virtuálisgép-sorozatok vCPU-korlátjának növelése
-      href: per-vm-quota-requests.md
-    - name: A teljes regionális vCPU-korlát növelése
-      href: regional-quota-requests.md
-    - name: Hálózatkezelési korlát növelése
-      href: networking-quota-requests.md
+    - name: Kvótanövelési kérések Resource Manager-alapú üzemi modellhez
+      items:
+        - name: Virtuálisgép-sorozatok vCPU-korlátjának növelése
+          href: per-vm-quota-requests.md
+        - name: A teljes regionális vCPU-korlát növelése
+          href: regional-quota-requests.md
+        - name: Hálózatkezelési korlát növelése
+          href: networking-quota-requests.md
+    - name: Kvótanövelési kérések klasszikus üzemi modellhez
+      href: classic-deployment-model-quota-increase-requests.md
 - name: A régióval vagy termékváltozattal kapcsolatos előfizetési problémák elhárítása
   href: sku-series-unavailable.md
 - name: Referencia

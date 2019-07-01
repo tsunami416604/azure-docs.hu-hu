@@ -447,6 +447,18 @@
                   href: app/proactive-arm-config.md
                 - name: E-mailes értesítések
                   href: app/proactive-email-notification.md
+            - name: Rendelkezésre állás
+              items:
+                - name: URL-tesztek
+                  href: app/monitor-web-app-availability.md
+                - name: Többlépéses tesztek
+                  href: app/availability-multistep.md
+                - name: Rendelkezésre állási riasztások
+                  href: app/availability-alerts.md
+                - name: Hibaelhárítás
+                  href: app/troubleshoot-availability.md
+            - name: Teljesítménytesztelés
+              href: app/performance-testing.md
             - name: Erőforrás létrehozása
               href: app/create-new-resource.md
             - name: Alkalmazásadatok küldése a Log Analyticsbe
@@ -554,6 +566,8 @@
                       href: insights/container-insights-enable-existing-clusters.md
                 - name: Elemzés
                   href: insights/container-insights-analyze.md
+                - name: Ügynökgyűjtemény-beállítások konfigurálása
+                  href: insights/container-insights-agent-config.md
                 - name: Monitorozás letiltása
                   href: insights/container-insights-optout.md
                 - name: Élő naplók megtekintése
@@ -795,8 +809,6 @@
           items:
             - name: Alkalmazásriasztási szabályok
               items:
-                - name: Rendelkezésre állás
-                  href: app/monitor-web-app-availability.md
                 - name: Metrikákhoz kapcsolódó riasztások
                   href: app/alerts.md
             - name: Platformmetrika riasztási szabályai

@@ -10,18 +10,18 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 90857ec2fabb1b807d3e3001f99ea3897d7d628a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4a1944c5c5f169274cf45bd3ebfb6df47942dd5a
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443871"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485638"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>Gyors útmutató: Az Azure portal használatával egy Azure Search-index létrehozása
 > [!div class="op_single_selector"]
 > * [Portál](search-get-started-portal.md)
 > * [PowerShell](search-howto-dotnet-sdk.md)
-> * [Postman](search-fiddler.md)
+> * [Postman](search-get-started-postman.md)
 > * [C#](search-create-index-dotnet.md)
 >*
 
@@ -34,7 +34,7 @@ Egy gyors felkészülési Azure Search-fogalmakról próbálja meg a beépített
 > * Meglévő index, és azt módosítására szolgáló beállítások megtekintése
 > * Ismerje meg a teljes szöveges keresés, szűrőket, értékkorlátozással, intelligens keresés és a geosearch **keresési ablak**
 
-Ha az eszközök túl vannak korlátozza, érdemes lehet egy [kódalapú bevezetését programozási Azure search .NET-keretrendszerben](search-howto-dotnet-sdk.md) vagy [Postman vagy a REST API-hívások Fiddler](search-fiddler.md).
+Ha az eszközök túl vannak korlátozza, érdemes lehet egy [kódalapú bevezetését programozási Azure search .NET-keretrendszerben](search-howto-dotnet-sdk.md) vagy [Postman vagy a REST API-hívások Fiddler](search-get-started-postman.md).
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. Vagy megtekinthet egy 6 perces bemutatót az oktatóanyag lépéseiről. A bemutató nagyjából az [Azure Search áttekintővideójának](https://channel9.msdn.com/Events/Connect/2016/138) harmadik percénél kezdődik.
 
@@ -274,4 +274,4 @@ Az Azure Searchöt behatóbban is megismerheti az alábbi programozási eszköz�
 
 * [-Index létrehozása .NET SDK használatával](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
 * [-Index létrehozása REST API-k használatával](https://docs.microsoft.com/azure/search/search-create-index-rest-api)
-* [-Index létrehozása Postman vagy a Fiddlerre, és az Azure Search REST API-k használatával](search-fiddler.md)
+* [-Index létrehozása Postman vagy a Fiddlerre, és az Azure Search REST API-k használatával](search-get-started-postman.md)

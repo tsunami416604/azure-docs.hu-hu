@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 4750937ee7ef6230ed4635d739a102a501b19a30
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 4a9af96c1defab4cbb10d917b5faa7e0e3ab837f
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341803"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485068"
 ---
 # <a name="what-are-the-speech-services"></a>Mi az a Speech Services?
 
@@ -41,6 +41,8 @@ Ezeket a funkciókat az Azure Speech Services alkotják. Ebben a táblázatban h
 
 Ismerje meg, mi az az Azure Speech Services új.
 
+* Június 2019
+    * Kiadás dátuma: Speech 1.6.0-s SDK. Frissítéseket, fejlesztéseket és ismert problémák teljes listáját lásd: [kibocsátási megjegyzések](releasenotes.md).
 * 2019. május - dokumentációja már elérhető a [beszélgetés Beszédátírási](conversation-transcription-service.md), [Center meghívása átírást](call-center-transcription.md), és [hang-és felhőközpontú virtuális asszisztensek](voice-first-virtual-assistants.md).
 * 2019. május
     * Kiadás dátuma: SDK 1.5.1 Speech. Frissítéseket, fejlesztéseket és ismert problémák teljes listáját lásd: [kibocsátási megjegyzések](releasenotes.md).

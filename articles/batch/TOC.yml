@@ -27,6 +27,8 @@
       href: tutorial-rendering-batchexplorer-blender.md
     - name: Párhuzamos R-szimuláció
       href: tutorial-r-doazureparallel.md
+    - name: OCR Batch-feladattal és Azure Functions-függvényekkel
+      href: tutorial-batch-functions.md
 - name: Példák
   items:
     - name: Kódminták

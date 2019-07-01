@@ -10,14 +10,14 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/21/2019
+ms.date: 06/28/2019
 ms.custom: mvc
-ms.openlocfilehash: 772f815a3db0490cb461d07c56a37956ce15b383
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: c576020118778e34b80187ec056fca22a4d9c5b1
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330392"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485827"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Oktatóanyag: Egy eszköz belső vezérlőprogram frissítési folyamata megvalósítása
 
@@ -186,7 +186,7 @@ A következő képernyőkép a háttéralkalmazás kimenetét mutatja, és kieme
 
 ![Háttéralkalmazás](./media/tutorial-firmware-update/BackEnd2.png)
 
-Az IoT Hub eszközidentitás-jegyzékének késése miatt előfordulhat, hogy nem jelenik meg a háttéralkalmazásnak küldött összes állapotfrissítés. A mérőszámokat a portálon is megtekintheti az IoT Hub **Automatikus eszközkezelés -> IoT-eszköz konfigurációja** szakaszában:
+Mivel az automatikus eszközkonfigurációkat futtassa a létrehozás időpontjában, és majd át 5 percenként, akkor előfordulhat, hogy nem jelenik meg minden állapotának frissítése a háttéralkalmazás küld. A mérőszámokat a portálon is megtekintheti az IoT Hub **Automatikus eszközkezelés -> IoT-eszköz konfigurációja** szakaszában:
 
 ![A konfiguráció megtekintése a portálon](./media/tutorial-firmware-update/portalview.png)
 

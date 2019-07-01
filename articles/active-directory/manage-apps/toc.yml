@@ -45,24 +45,22 @@
           href: application-proxy-network-topology.md
         - name: Távelérési megoldások összehasonlítása
           href: application-proxy-migration.md
+    - name: Egyszeri bejelentkezés
+      items:
+        - name: Mi az az egyszeri bejelentkezés?
+          href: what-is-single-sign-on.md
+        - name: Egyszeri bejelentkezés üzembe helyezésének tervezése
+          href: plan-sso-deployment.md
+    - name: Egy kattintással indítható SSO
+      items:
+        - name: Mi az egy kattintással indítható SSO
+          href: one-click-sso-tutorial.md
     - name: Felhasználók és csoportok üzembe helyezése
       items:
         - name: Felhasználók automatikus üzembe helyezése
-          href: configure-automatic-user-provisioning-portal.md
-        - name: SaaS-alkalmazások
           href: user-provisioning.md
-        - name: SCIM-kompatibilis alkalmazások
+        - name: Automatikus üzembe helyezés SCIM-kompatibilis alkalmazásokhoz
           href: use-scim-to-provision-users-and-groups.md
-        - name: Alkalmazásattribútumok testreszabása
-          href: Customize-application-attributes.md
-        - name: Kifejezések írása attribútumleképezésekhez
-          href: functions-for-customizing-application-data.md
-        - name: Hatókörszűrők
-          href: define-conditional-rules-for-provisioning-user-accounts.md
-        - name: Jelentés a felhasználók automatikus átadásáról
-          href: check-status-user-account-provisioning.md
-        - name: A felhasználók átadásának hibaelhárítása
-          href: application-provisioning-config-problem.md
     - name: Alkalmazások biztonsága
       items:
         - name: Alkalmazás-hozzáférési lehetőségek
@@ -75,18 +73,8 @@
           href: tenant-restrictions.md
         - name: SAML-jogkivonat titkosításának konfigurálása (előzetes verzió)
           href: howto-saml-token-encryption.md
-    - name: Egyszeri bejelentkezés
-      items:
-        - name: Mi az az egyszeri bejelentkezés?
-          href: what-is-single-sign-on.md
-        - name: Egyszeri bejelentkezés üzembe helyezésének tervezése
-          href: plan-sso-deployment.md
     - name: Végfelhasználói portálok
       href: end-user-experiences.md
-    - name: Egy kattintással indítható SSO
-      items:
-        - name: Mi az egy kattintással indítható SSO
-          href: one-click-sso-tutorial.md
 - name: Útmutatók
   items:
     - name: Felhőalkalmazás hozzáadása
@@ -157,12 +145,20 @@
               href: application-proxy-configure-single-sign-on-on-premises-apps.md
     - name: Felhasználók átadásának konfigurálása
       items:
-        - name: Mennyi időt vesz igénybe az átadás?
-          href: application-provisioning-when-will-provisioning-finish-specific-user.md
-        - name: Felhasználók átadásának konfigurálása – katalógusbeli alkalmazás
+        - name: Felhasználók átadása katalógusbeli alkalmazásokban
           href: application-provisioning-config-how-to.md
-        - name: Attribútum szinkronizálása leképezéshez – katalógusbeli alkalmazás
-          href: user-provisioning-sync-attributes-for-mapping.md
+        - name: A felhasználók automatikus átadásának konfigurálása
+          href: configure-automatic-user-provisioning-portal.md
+        - name: Alkalmazásattribútumok testreszabása
+          href: Customize-application-attributes.md
+        - name: Kifejezések írása attribútumleképezésekhez
+          href: functions-for-customizing-application-data.md
+        - name: Hatókörszűrők
+          href: define-conditional-rules-for-provisioning-user-accounts.md
+        - name: Az átadási állapot ellenőrzése
+          href: application-provisioning-when-will-provisioning-finish-specific-user.md
+        - name: Jelentés a felhasználók automatikus átadásáról
+          href: check-status-user-account-provisioning.md
     - name: Felhasználók hozzárendelése és alkalmazások hozzáférésének kezelése
       items:
         - name: Felhasználói beleegyezés konfigurálása
@@ -235,10 +231,12 @@
               href: configure-password-single-sign-on-non-gallery-applications-problems.md
         - name: A felhasználók átadásának hibaelhárítása
           items:
+            - name: A felhasználók átadásának hibaelhárítása
+              href: application-provisioning-config-problem.md
+            - name: Attribútum szinkronizálása leképezéshez – katalógusbeli alkalmazás
+              href: user-provisioning-sync-attributes-for-mapping.md
             - name: Órákat vesz igénybe – katalógusbeli alkalmazás
               href: application-provisioning-when-will-provisioning-finish.md
-            - name: Probléma a felhasználók átadásának konfigurálásakor – katalógusbeli alkalmazás
-              href: application-provisioning-config-problem.md
             - name: Probléma a rendszergazdai hitelesítő adatok mentésekor a felhasználók átadását végző katalógusbeli alkalmazás konfigurálása közben
               href: application-provisioning-config-problem-storage-limit.md
             - name: A felhasználók átadása nem történik meg – katalógusbeli alkalmazás

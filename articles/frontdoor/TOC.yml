@@ -46,6 +46,8 @@
       href: front-door-routing-methods.md
     - name: URL-átírás
       href: front-door-url-rewrite.md
+    - name: URL-átirányítás
+      href: front-door-url-redirect.md
     - name: WAF
       items:
         - name: Áttekintés
@@ -58,6 +60,14 @@
           href: waf-front-door-monitor.md
 - name: Útmutatók
   items:
+    - name: Forgalom átirányítása
+      items:
+        - name: HTTP–HTTPS-átirányítással rendelkező Front Door konfigurálása
+          href: front-door-how-to-redirect-https.md
+    - name: Egyéni tartományok előkészítése
+      items:
+        - name: Gyökértartomány vagy Apex-tartomány előkészítése
+          href: front-door-how-to-onboard-apex-domain.md
     - name: Hibaelhárítás
       items:
         - name: Útválasztással kapcsolatos problémák elhárítása

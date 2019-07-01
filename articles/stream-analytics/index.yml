@@ -9,17 +9,17 @@ metadata:
   ms.author: mamccrea
   ms.service: stream-analytics
   ms.topic: landing-page
-  ms.date: 05/08/2019
+  ms.date: 06/21/2019
 abstract:
-  description: 'A Stream Analytics egy teljeskörűen felügyelt, kiszolgáló nélküli eseményfeldolgozó motor, amely lehetővé teszi alkalmazásokból vagy IoT-eszközökből származó adatfolyamok valós idejű elemzését. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerheti az Azure Stream Analytics használatát.'
+  description: 'A Stream Analytics egy olyan teljes körűen felügyelt PaaS-szolgáltatás, amely például IoT-eszközökből, alkalmazásokból és kattintássorozatokból származó gyors adatfolyamok valós idejű elemzését és feldolgozását teszi lehetővé, továbbá szükség esetén riasztásokat küld, és végrehajtja a szükséges műveleteket. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerheti az Azure Stream Analytics használatát.'
   aside:
     image:
       alt: null
       height: 110
       src: ./media/index/streaming-analytics-thumbnail.png
       width: 250
-    title: 'Valós idejű elemzés és gépi tanulás az Azure Stream Analytics használatával. (1:15:05)'
-    href: 'https://myignite.techcommunity.microsoft.com/sessions/65358?source=sessions#ignite-html-anchor'
+    title: 'Legyen szó a felhőről vagy egy intelligens peremhálózatról, valós idejű döntéseket hozhat meg az Azure Stream Analytics segítségével. (1:02:11)'
+    href: 'https://azure.microsoft.com/resources/videos/build-2019-from-cloud-to-the-intelligent-edge-drive-real-time-decisions-with-azure-stream-analytics/'
     width: 250
 sections:
   - title: 5 perces gyors útmutatók

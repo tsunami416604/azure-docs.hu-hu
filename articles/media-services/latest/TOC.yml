@@ -223,6 +223,14 @@
             - name: A REST-tel
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-rest-howto.md
+        - name: Részklipkészítés videóból
+          items:
+            - name: .NET-tel
+              href: subclip-video-dotnet-howto.md
+              displayName: 'subclipping, clip, edit, trim, clipping'
+            - name: A REST-tel
+              href: subclip-video-rest-howto.md
+              displayName: 'subclipping, clip, edit, trim, clipping'
     - name: Az Event Grid használata
       items:
         - name: Események monitorozása – Portál

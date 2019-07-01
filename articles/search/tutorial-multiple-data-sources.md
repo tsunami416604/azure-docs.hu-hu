@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/21/2019
 ms.author: v-rodixo
 ms.custom: seodec2018
-ms.openlocfilehash: 4186c422836771de4f8a283616d77214b91bfc02
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 8ce3c66432f3d2d0cb973886498aa46e7820698c
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462701"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485262"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Oktatóanyag: Egy Azure Search-index a különböző forrásokból származó adatok egyesítése
 
@@ -28,7 +28,7 @@ Ebben az oktatóanyagban C#, a .NET SDK, az Azure Search, és az Azure Portalon 
 > * Mintaadatok feltöltése és adatforrások létrehozása
 > * A dokumentum-kulcs azonosításához
 > * Adja meg, és az index létrehozása
-> * Index Szálloda adatokat a cosmos DB
+> * Index Szálloda adatokat az Azure Cosmos DB-ből
 > * Egyesítse hotel room adatok blob storage-ból
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -61,7 +61,7 @@ Az Azure Search szolgáltatás kezelése, szüksége van a szolgáltatás URL-C�
 
 1. A **beállítások** > **kulcsok**, a szolgáltatás a teljes körű rendszergazdai kulcs beszerzése. Nincsenek két felcserélhetők adminisztrációs kulcsot, az üzletmenet folytonosságának megadott abban az esetben egy vihető kell. Használható vagy az elsődleges vagy másodlagos kulcsot a kérések hozzáadása, módosítása és törlése objektumokat.
 
-![Egy HTTP-végpontját és hozzáférési kulcs lekérése](media/search-fiddler/get-url-key.png "HTTP végpontját és hozzáférési kulcs beszerzése")
+![Egy HTTP-végpontját és hozzáférési kulcs lekérése](media/search-get-started-postman/get-url-key.png "HTTP végpontját és hozzáférési kulcs beszerzése")
 
 Minden kérelemhez szükséges halasztása minden kérelemnél a szolgáltatásnak küldött api-kulcsát. Érvényes kulcs megbízhatósági, egy kérelem alapon, a kérés és az azt kezelő szolgáltatás küldő alkalmazás közötti kapcsolatot hoz létre.
 
@@ -134,7 +134,7 @@ A több adatforrásból származó adatok indexelése, ha egyes adatok forrása 
 
 Az Azure Search-indexelők használatával Mezőleképezések nevezze át, és akkor formázza újra datová Pole az indexelési folyamat során, hogy a forrásadatok a megfelelő indexmezőt lehet irányítani.
 
-Például a mintaadatokat CosmosDB Szálloda azonosító neve **HotelId**. De a Szálloda termek blob JSON-fájlokat, a Szálloda azonosító neve **azonosító**. A program leképezésével kezeli ezt a **azonosító** a blobokon át a mezőt a **HotelId** kulcsmező az indexben.
+Például a mintaadatokat az Azure Cosmos DB Szálloda azonosító neve **HotelId**. De a Szálloda termek blob JSON-fájlokat, a Szálloda azonosító neve **azonosító**. A program leképezésével kezeli ezt a **azonosító** a blobokon át a mezőt a **HotelId** kulcsmező az indexben.
 
 > [!NOTE]
 > A legtöbb esetben automatikusan létrehozott dokumentum kulcsok, például az egyes indexelők által alapértelmezés szerint létrehozott ne legyen jó dokumentum kulcsokat a kombinált indexeket. Az általános, jelentéssel bíró, egyedi kulcs értékét, amely már létezik a használni kívánt, vagy lehet egyszerűen hozzáadni, az adatforrásokat.
@@ -146,8 +146,8 @@ Miután az adatok és a konfigurációs beállítások vannak érvényben, a min
 Ez egyszerű C#/.NET-konzolalkalmazást a következő feladatokat hajtja végre:
 * Létrehoz egy új Azure Search-index, az adatok szerkezete alapján a C# Szálloda osztály (Ez a cím és a hely osztályokat is hivatkozik).
 * Létrehoz egy Azure Cosmos DB-adatforrásból és a egy indexelőt, amely az Azure Cosmos DB-adatai index mezőire.
-* Futtatja a cosmos DB az indexelő Szálloda adatok betöltéséhez.
-* Létrehoz egy Azure Blob Storage adatforrás és a egy indexelőt, amely leképezi a JSOn-Blobadatok index mezőire.
+* Futtatja az Azure Cosmos DB-indexelő Szálloda adatok betöltéséhez.
+* Létrehoz egy Azure Blob Storage adatforrás és a egy indexelőt, amely leképezi a JSON-Blobadatok index mezőire.
 * Termek adatok betöltése az Azure blob storage-indexelő futtatja.
 
  A program futtatása előtt a kódot, és ez a minta az index és indexelő meghatározásainak tanulmányozására egy percig is tarthat. A megfelelő kód a következő két fájlban található meg:

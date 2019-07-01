@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 5/23/2019
 ms.author: travisw
-ms.openlocfilehash: 92e75e2db516df513ff5997f3efcd85bccbeade2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a8118d80e85d562fa4137ed1f1844e6bf9f1793e
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067621"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485036"
 ---
 1. Indítsa el az Android Studio alkalmazást, majd az üdvözlőablakban válassza a **Start a new Android Studio project** (Új Android Studio-projekt indítása) elemet.
 
@@ -27,7 +27,7 @@ Az Android Studio előkészíti az új Android-projektet. Ezután úgy kell konf
 
 [!INCLUDE [License Notice](cognitive-services-speech-service-license-notice.md)]
 
-A Cognitive Services Speech SDK jelenlegi verziója az `1.5.1`.
+A Cognitive Services Speech SDK jelenlegi verziója az `1.6.0`.
 
 A beszédfelismerés SDK for Android van csomagolva, mint egy [AAR (Androidos függvénytár)](https://developer.android.com/studio/projects/android-library), amely tartalmazza a szükséges kódtárak és Android-engedélyek megadása kötelező.
 A Maven tárházból, https vannak tárolva:\//csspeechstorage.blob.core.windows.net/maven/.
@@ -42,7 +42,7 @@ Készítse elő a projektet a Speech SDK használatára. A Project Structure (Pr
 
    ![A Project Structure (Projektstruktúra) ablak képernyőképe](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. A megnyíló ablakban adja meg az androidos Speech SDK nevét és verzióját: `com.microsoft.cognitiveservices.speech:client-sdk:1.5.1`. Ezután kattintson az **OK** gombra.
+1. A megnyíló ablakban adja meg az androidos Speech SDK nevét és verzióját: `com.microsoft.cognitiveservices.speech:client-sdk:1.6.0`. Ezután kattintson az **OK** gombra.
    A Speech SDK-nak ezek után meg kell jelennie a függőségek listáján, a következő módon:
 
    ![A Project Structure (Projektstruktúra) ablak képernyőképe](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-08-dependency-added-1.0.0.png)
