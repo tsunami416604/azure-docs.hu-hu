@@ -62,11 +62,11 @@ A REST API vagy a Resource Manager-sablon használatakor közé tartozik az ért
 
 | Mező | Kötelező? | Leírás |
 | --- | --- | --- |
-| A művelet |igen |Az értéknek kell lennie a "Méretezés" |
+| operation |igen |Az értéknek kell lennie a "Méretezés" |
 | sendToSubscriptionAdministrator |igen |érték lehet "igaz" vagy "false" |
 | sendToSubscriptionCoAdministrators |igen |érték lehet "igaz" vagy "false" |
 | customEmails |igen |érték lehet null értékű [] vagy e-mailek karakterlánc tömbje |
-| Webhookok |igen |az érték lehet null értékű vagy érvénytelen Uri |
+| webhooks |igen |az érték lehet null értékű vagy érvénytelen Uri |
 | serviceUri |igen |egy érvényes https Uri |
 | properties |igen |értéknek üresnek kell lennie {} vagy kulcs-érték párok |
 
@@ -106,12 +106,12 @@ Ha az automatikus skálázási értesítés jön létre, a webhook hasznos adata
 | Mező | Kötelező? | Leírás |
 | --- | --- | --- |
 | status |igen |Az állapot, amely azt jelzi, hogy létrejött-e egy automatikus skálázási műveletet |
-| A művelet |igen |Példányok tervezni "Horizontális Felskálázás" lesz, és példányok csökkenését, a "Méretezés a" |
-| Környezet |igen |Az automatikus skálázási művelet környezet |
+| operation |igen |Példányok tervezni "Horizontális Felskálázás" lesz, és példányok csökkenését, a "Méretezés a" |
+| context |igen |Az automatikus skálázási művelet környezet |
 | timestamp |igen |Időbélyeg, ha az automatikus skálázási műveletet |
 | id |Igen |Automatikus skálázási beállítás erőforrás-kezelő azonosítója |
 | name |Igen |Az automatikus skálázási beállítás neve |
-| Részletek |Igen |A művelet az autoscale szolgáltatás igénybe vett és a példányszám módosítása ismertetése |
+| details |Igen |A művelet az autoscale szolgáltatás igénybe vett és a példányszám módosítása ismertetése |
 | subscriptionId |Igen |A célként megadott erőforrás méretezése folyamatban van, előfizetés-azonosítója |
 | resourceGroupName |Igen |A célként megadott erőforrás méretezése folyamatban van, az erőforráscsoport neve |
 | resourceName |Igen |A célként megadott erőforrás folyamatban méretezett neve |
@@ -120,5 +120,5 @@ Ha az automatikus skálázási értesítés jön létre, a webhook hasznos adata
 | portalLink |Igen |A célként megadott erőforrás összefoglaló oldala az Azure portál hivatkozása |
 | oldCapacity |Igen |Az aktuális (régi) példányok száma, amikor az automatikus méretezés tartott egy skálázási műveletet |
 | newCapacity |Igen |Az új példányok száma, amelyek az automatikus méretezés az erőforrás méretezése |
-| Tulajdonságok |Nem |Választható. < Kulcs értéke > Set párok (például Dictionary < karakterlánc, karakterlánc >). A Tulajdonságok mező kitöltése nem kötelező. Egy egyéni felhasználói felület vagy a Logic app-alapú munkafolyamat, a kulcsok és értékek, amelyek használatával a hasznos átadhatók is megadhatja. Egyéni tulajdonságok vissza átadása a kimenő webhook hívása egy másik módja az, hogy a webhook URI-JÁT magát (lekérdezési paraméterek) használata |
+| properties |Nem |Választható. < Kulcs értéke > Set párok (például Dictionary < karakterlánc, karakterlánc >). A Tulajdonságok mező kitöltése nem kötelező. Egy egyéni felhasználói felület vagy a Logic app-alapú munkafolyamat, a kulcsok és értékek, amelyek használatával a hasznos átadhatók is megadhatja. Egyéni tulajdonságok vissza átadása a kimenő webhook hívása egy másik módja az, hogy a webhook URI-JÁT magát (lekérdezési paraméterek) használata |
 
