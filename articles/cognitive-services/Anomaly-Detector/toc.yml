@@ -8,7 +8,7 @@
 - name: Gyors útmutatók
   expanded: true
   items:
-    - name: Adatok rendellenességeinek észlelése
+    - name: REST API
       items:
         - name: 'A C# használata'
           href: quickstarts/detect-data-anomalies-csharp.md
@@ -16,6 +16,12 @@
           href: quickstarts/detect-data-anomalies-java.md
         - name: A Python használata
           href: quickstarts/detect-data-anomalies-python.md
+    - name: SDK
+      items:
+        - name: 'A C# használata'
+          href: quickstarts/detect-data-anomalies-csharp-sdk.md
+        - name: A Python használata
+          href: quickstarts/detect-data-anomalies-python-sdk.md
 - name: Oktatóanyagok
   items:
     - name: Rendellenességek vizualizálása kötegként a Power BI használatával

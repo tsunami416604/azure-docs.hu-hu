@@ -564,6 +564,8 @@
                       href: insights/container-insights-enable-new-cluster.md
                     - name: Engedélyezés meglévő fürtön
                       href: insights/container-insights-enable-existing-clusters.md
+                    - name: Régióleképezések
+                      href: insights/container-insights-region-mapping.md
                 - name: Elemzés
                   href: insights/container-insights-analyze.md
                 - name: Ügynökgyűjtemény-beállítások konfigurálása

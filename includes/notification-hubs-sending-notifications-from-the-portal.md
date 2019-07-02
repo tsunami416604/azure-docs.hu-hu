@@ -4,18 +4,18 @@ ms.service: service-bus
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
-ms.openlocfilehash: 6c424f1ac77e70b8f1fd561ad5134ec86f652fa6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 405415b1068d70badf86ee14a6ed2df09a14f0f8
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179370"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509141"
 ---
-A leküldéses értesítések küldése általában olyan háttérszolgáltatásokon keresztül történik egy kompatibilis könyvtár használatával, mint a Mobile Apps vagy az ASP.NET. Ha a háttérszolgáltatáshoz nem érhető el kódtár, az értesítések küldéséhez használhatja közvetlenül a REST API-t is.
+A leküldéses értesítések küldése általában olyan háttérszolgáltatásokon keresztül történik egy kompatibilis könyvtár használatával, mint a Mobile Apps vagy az ASP.NET. Ha a szalagtár nem érhető el a háttérrendszerének, közvetlenül az értesítési üzenetek küldéséhez használhatja a REST API-t.
 
-Az alábbi listában egyéb oktatóprogramok találhatók, amelyek az értesítések küldésével kapcsolatosak:
+Íme egy listában egyéb oktatóprogramok érdemes áttekinteni az értesítések küldéséhez:
 
-* Azure Mobile Apps: Egy példa bemutatja, hogyan küldhetők értesítések a Mobile Apps háttér-Notification Hubs szolgáltatással integrált: [leküldéses értesítések hozzáadása az iOS-alkalmazások](../articles/app-service-mobile/app-service-mobile-ios-get-started-push.md).  
+* Azure Mobile Apps: Egy példa bemutatja, hogyan küldhetők értesítések a háttérrendszer a Notification Hubs szolgáltatással integrált Mobile Apps: [leküldéses értesítések hozzáadása az iOS-alkalmazások](../articles/app-service-mobile/app-service-mobile-ios-get-started-push.md).  
 * ASP.NET: [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára](../articles/notification-hubs/notification-hubs-aspnet-backend-ios-apple-apns-notification.md).
 * Azure Notification Hub Java SDK: Lásd: [hogyan használható a Notification Hubs javából](../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md) a küldhetők értesítések a Javával. Ez az Eclipse-ben lett tesztelve Android-fejlesztéshez.
 * PHP: [Php-ből a Notification Hubs használatával miként](../articles/notification-hubs/notification-hubs-php-push-notification-tutorial.md).

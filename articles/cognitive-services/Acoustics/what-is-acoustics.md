@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: overview
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 1fc125322b83a0eb51095fac21dee05c7ffb39c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 73b8980b0ea2d1adbd814026f026358e25dcbb55
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61432449"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502954"
 ---
 # <a name="what-is-project-acoustics"></a>Mi az a Project Acoustics?
 Projekt Akusztika egy olyan wave Akusztika motor 3D interaktív élmény. A modellek wave hatások, például az olyan összetett jelenetekhez diffraction, portaling és visszhang hatások manuális zóna jelölőnyelvi nélkül. Játékmotor és hang közbenső integrációs is tartalmaz. Projekt Akusztika filozófia hasonlít a statikus megvilágítási: os részletes fizika kapcsolat nélküli fizikai alapterv biztosít, és a egy egyszerűsített modult használja kifejező tervezési vezérlőkkel művészi céljai.
@@ -51,7 +51,7 @@ A projekt Akusztika futásidejű beépülő modulok jelenleg a következő platf
   * Az Xbox bináris fájljait és támogatás lépjen kapcsolatba velünk a regisztrációs űrlapot az alábbi
 
 ## <a name="contact-us"></a>Kapcsolat
-* [Projekt Akusztika fórumok](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics)
+* [Akusztika vitafórum projektre, és adja ki a jelentés](https://github.com/microsoft/ProjectAcoustics/issues)
 * [Iratkozzon fel a projekt Akusztika a frissítések fogadásához](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u)
 
 ## <a name="next-steps"></a>További lépések

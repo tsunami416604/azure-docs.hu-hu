@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2804a50cc1ef7bb257e1549afabdef466ce3c2f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4819c283a136057ad7c3ffd755fd9e157d99a1bf
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112197"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509451"
 ---
 # <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>Áttelepíteni a klasszikus szabályzat megköveteli a multi-factor Authentication hitelesítés az Azure Portalon
 
@@ -28,7 +28,7 @@ Ez a cikk a forgatókönyv bemutatja, hogyan telepíthet át egy klasszikus szab
 
 ![Azure Active Directory](./media/policy-migration/33.png)
 
-Az áttelepítési folyamat a következő lépéseket tartalmazza:
+Az áttelepítési folyamat a következő lépésekből áll:
 
 1. [Nyissa meg a klasszikus szabályzatot](#open-a-classic-policy) beolvasni a konfigurációs beállításokat.
 1. Hozzon létre egy új Azure AD feltételes hozzáférési szabályzat cserélje le a klasszikus szabályzatot. 
@@ -76,42 +76,32 @@ Az áttelepítési folyamat a következő lépéseket tartalmazza:
 
    1. Ha az összes felhasználó lehetőséget jelölte meg a klasszikus szabályzat van, kattintson a **minden felhasználó**. 
 
-   ![Feltételes hozzáférés](./media/policy-migration/35.png)
+      ![Feltételes hozzáférés](./media/policy-migration/35.png)
 
    1. Ha a klasszikus szabályzatot a kijelölt csoportok, kattintson a **válassza ki a felhasználók és csoportok**, majd válassza ki a szükséges felhasználókat és csoportokat.
 
-   ![Feltételes hozzáférés](./media/policy-migration/36.png)
+      ![Feltételes hozzáférés](./media/policy-migration/36.png)
 
    1. Ha a kizárt csoportok, kattintson a **kizárása** lapra, és válassza ki a szükséges felhasználókat és csoportokat. 
 
-   ![Feltételes hozzáférés](./media/policy-migration/37.png)
+      ![Feltételes hozzáférés](./media/policy-migration/37.png)
 
 1. A a **új** oldal megnyitásához a **Felhőalkalmazások** lap a **hozzárendelés** területén kattintson **Felhőalkalmazások**.
-
 1. Az a **Felhőalkalmazások** lapon, a következő lépésekkel:
-
-   ![Feltételes hozzáférés](./media/policy-migration/08.png)
-
    1. Kattintson a **alkalmazások kiválasztása**.
-
    1. Kattintson a **Kiválasztás** gombra.
-
    1. Az a **kiválasztása** lapon válassza ki a felhőalapú alkalmazás, és kattintson a **kiválasztása**.
-
    1. Az a **Felhőalkalmazások** kattintson **kész**.
-
 1. Ha rendelkezik **többtényezős hitelesítés megkövetelése** kiválasztott:
 
    ![Feltételes hozzáférés](./media/policy-migration/26.png)
 
    1. Az a **hozzáférés-vezérlés** területén kattintson **Grant**.
 
-   ![Feltételes hozzáférés](./media/policy-migration/27.png)
+      ![Feltételes hozzáférés](./media/policy-migration/27.png)
 
    1. Az a **Grant** kattintson **hozzáférést**, és kattintson a **többtényezős hitelesítés megkövetelése**.
-
    1. Kattintson a **Kiválasztás** gombra.
-
 1. Kattintson a **a** a szabályzat engedélyezéséhez.
 
    ![Feltételes hozzáférés](./media/policy-migration/30.png)

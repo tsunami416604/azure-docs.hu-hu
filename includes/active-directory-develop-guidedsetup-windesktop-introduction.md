@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: ae17ef749a353cd60227e31ba4dadf328b1dc935
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 301abe95b245603e5414eef84ce74cdc8de01d19
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66482299"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509864"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>A Microsoft Graph API hívása Windows asztali alkalmazások
 
@@ -28,7 +28,7 @@ Ez az útmutató azt ismerteti, hogyan natív Windows asztali .NET (XAML) alkalm
 Az útmutató befejezése után, az alkalmazás fogja tudni személyes fiókok (beleértve az Outlook.com-os, live.com, és mások) használó védett API hívása. Az alkalmazás is használja a munkahelyi és iskolai fiókok bármely vállalat vagy szervezet, amely az Azure Active Directory.  
 
 > [!NOTE]
-> Útmutató a Visual Studio 2015 Update 3 vagy a Visual Studio 2019 van szükség. Ezek egyikét nincs? [Töltse le az ingyenes Visual Studio 2019](https://www.visualstudio.com/downloads/).
+> Útmutató a Visual Studio 2015 Update 3, a Visual Studio 2017 vagy Visual Studio 2019 igényel. Nem rendelkezik ezen verzióinak? [Töltse le az ingyenes Visual Studio 2019](https://www.visualstudio.com/downloads/).
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Ez az útmutató által létrehozott mintaalkalmazás működése
 

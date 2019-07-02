@@ -10,12 +10,12 @@ ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
 manager: mmontwil
-ms.openlocfilehash: 0677eb4c65da242f8cfcb20754ec88ffb02c5929
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 517951be2bc99f7607facaed3c9b04260fc6d3d8
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393162"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503191"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-java"></a>Azure fejlesztői szóközöket a Java használatának első lépései
 
@@ -137,18 +137,27 @@ Keresse meg a konzolkimenetben az `up` parancs által létrehozott nyilvános UR
 
 ```
 (pending registration) Service 'webfrontend' port 'http' will be available at <url>
+Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890abcdef1234.eus.azds.io/
 Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 ```
 
-Nyissa meg ezt az URL-t egy böngészőablakban, és betöltődik a webalkalmazás. Ahogy a tároló futni kezd, a rendszer `stdout` és `stderr` kimenetet streamel a terminálablakba.
+A nyilvános kimenetében a szolgáltatás URL-Címének azonosítása a `up` parancsot. A végződik `.azds.io`. A fenti példában a nyilvános URL-je `http://webfrontend.1234567890abcdef1234.eus.azds.io/`.
+
+A webalkalmazás megtekintéséhez nyissa meg a nyilvános URL-címet egy böngészőben. Azt is Észreveheti `stdout` és `stderr` kimeneti adatfolyamként történő a *azds nyomkövetési* terminálablakot, együttműködhet a webalkalmazás. Azt is láthatja a HTTP-kéréseket nyomon követésére, mivel azok halad át a rendszer. Ez megkönnyíti az, hogy bonyolult, több szolgáltatásos hívások nyomon követheti a fejlesztés során. A fejlesztői, szóközök által hozzáadott instrumentation a kérelem követési biztosít.
 
 > [!Note]
-> Első alkalommal több percet is igénybe vehet, hogy rendelkezésre álljon a nyilvános DNS. Ha az URL-címe nem oldható meg, használhatja a tulajdonos alternatív `http://localhost:<portnumber>` URL-címet, a konzol kimenete jelenik meg. Ha a localhost URL-t használja, úgy tűnhet, hogy a tároló helyileg fut, de valójában az AKS-ben fut. Az Ön kényelme, valamint a helyi gép és a szolgáltatás közötti interakció elősegítése érdekében az Azure Dev Spaces egy ideiglenes SSH-csatornát hoz létre az Azure-ban futó tárolóhoz. Visszatérhet és kipróbálhatja a nyilvános URL-címet később, amikor kész a DNS-rekord.
-> ### <a name="update-a-content-file"></a>Tartalomfájlok frissítése
-> Az Azure Dev Spaces nem csupán a Kubernetesben futó kódok lekérésére szolgál – a segítségével gyorsan és iteratívan lehet megtekinteni a kódmódosítások életbe lépését a felhőben lévő Kubernetes-környezetben.
+> A nyilvános URL-cím mellett is használhatja a tulajdonos alternatív `http://localhost:<portnumber>` URL-címet, a konzol kimenete jelenik meg. Ha a localhost URL-t használja, úgy tűnhet, hogy a tároló helyileg fut, de valójában az AKS-ben fut. Az Azure fejlesztési szóközt használja a Kubernetes *port-továbbító* funkció leképezheti a localhost portját a tároló futtatását az aks-ben. Ez lehetővé teszi, hogy a helyi gépen a szolgáltatással való interakcióhoz.
+
+### <a name="update-a-content-file"></a>Tartalomfájlok frissítése
+Az Azure Dev Spaces nem csupán a Kubernetesben futó kódok lekérésére szolgál – a segítségével gyorsan és iteratívan lehet megtekinteni a kódmódosítások életbe lépését a felhőben lévő Kubernetes-környezetben.
 
 1. A terminálablakban nyomja le a `Ctrl+C` billentyűkombinációt (az `azds up` leállításához).
-1. Nyissa meg a `src/main/java/com/ms/sample/webfrontend/Application.java` nevű kódfájlt, és szerkessze az üdvözlőüzenetet: `return "Hello from webfrontend in Azure!";`
+1. Nyissa meg `src/main/java/com/ms/sample/webfrontend/Application.java`, és szerkesztheti az üdvözlő üzenetet a [19. sor](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19):
+
+    ```java
+    return "Hello from webfrontend in Azure!";
+    ```
+
 1. Mentse a fájlt.
 1. Futtassa az `azds up` parancsot a terminálablakban.
 
@@ -181,7 +190,7 @@ Ez hozzáadja az Azure Dev Spaceshez készült hibakeresési konfigurációt a `
 ![](media/get-started-java/debug-configuration.png)
 
 > [!Note]
-> Ha nem lát Azure Dev Spaces-parancsokat a parancspalettán, győződjön meg róla, hogy a VS Code Azure Dev Spaceshez készült bővítménye telepítve van. Győződjön meg arról, hogy a VS Code-ban megnyitott munkaterület az azds.yaml fájlt tartalmazó mappa.
+> Ha nem lát Azure Dev Spaces-parancsokat a parancspalettán, győződjön meg róla, hogy a VS Code Azure Dev Spaceshez készült bővítménye telepítve van. Ellenőrizze, hogy a munkaterület a VS Code-ban megnyitott a mappába, amelyben `azds.yaml`.
 
 ### <a name="debug-the-container-in-kubernetes"></a>A tároló hibakeresése a Kubernetesben
 A kód a Kubernetesben való hibakereséséhez nyomja le az **F5** billentyűt.
@@ -189,7 +198,7 @@ A kód a Kubernetesben való hibakereséséhez nyomja le az **F5** billentyűt.
 Az `up` parancshoz hasonlóan a kód szinkronizálva lesz a Dev Spaces-térbe, továbbá létrejön és települ egy tároló a Kubernetesben. Ezúttal persze a hibakereső a távoli tárolóhoz van csatlakoztatva.
 
 > [!Tip]
-> A VS Code-állapotsáv egy kattintható URL-címet jelenít meg.
+> A VS Code állapotsor bekapcsolja a narancssárga, amely azt jelzi, hogy a hibakeresőt csatolva van. Megjeleníti egy kattintható URL-címet, amely segítségével nyissa meg az alkalmazás is.
 
 ![](media/common/vscode-status-bar-url.png)
 
@@ -207,9 +216,9 @@ public String greeting()
 }
 ```
 
-Mentse a fájlt, és a **Hibakeresési műveletek panelen** kattintson a **Frissítés** gombra.
+Mentse a fájlt, majd a a **hibakeresési műveletek panel**, kattintson a **indítsa újra a** gombra.
 
-![](media/get-started-java/debug-action-refresh.png)
+![](media/common/debug-action-refresh.png)
 
 Ahelyett, hogy a kód minden szerkesztése alkalmával újra létrehozna és üzembe helyezne egy új tárolórendszerképet, ami általában sok időt vesz igénybe, az Azure Dev Spaces növekményesen újrafordítja a kódot a meglévő tárolón belül, hogy gyorsabb szerkesztési/hibakeresési ciklust biztosítson.
 

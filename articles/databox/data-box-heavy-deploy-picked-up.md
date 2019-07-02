@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 05/28/2019
+ms.date: 07/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 31185900ede0fae74a04f98eaecee7379fb1c4fe
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 3903e14e8923f6d29f2a88c61aead0cfc605b5b5
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427812"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508671"
 ---
 # <a name="tutorial-return-azure-data-box-heavy-and-verify-data-upload-to-azure-preview"></a>Oktatóanyag: Vissza az Azure Data Box (nagy erőforrásigényű), és ellenőrizze az adatok feltöltése az Azure-ba (előzetes verzió)
 
@@ -43,11 +43,11 @@ Mielőtt elkezdené, győződjön meg arról, hogy:
 ## <a name="ship-data-box-heavy-back"></a>Szállítási adatok Box nehéz vissza
 
 1. Győződjön meg arról, hogy az eszköz be van kapcsolva, és minden kábel el lesznek távolítva. Várólistában hozzá tartozó, és a 4 tápkábelek biztonságosan érheti el az eszközt vissza a tálca helyezze.
-2. Ha az eszköz van az USA vagy Európa szállítási, a szállítmányozó FedEx.
+2. Az eszköz mobilplatform LTL árufuvarozási FedEx az Egyesült Államokban és DHL az EU-n keresztül
 
-    1. Hívja meg a helyi számot a szállítási szolgáltató a begyűjtés ütemezéséhez.
-    2. Kapcsolatfelvétel [Box Adatműveletek](mailto:DataBoxOps@microsoft.com) tájékoztatja a begyűjtés kapcsolatban, valamint hogy a visszaszállítási címkét.
-    3. Győződjön meg arról, hogy a szállítási címkét képernyőn jelenik meg a törölje az eszköz elől.
+    1. Kapcsolatfelvétel [Box Adatműveletek](mailto:DataBoxOps@microsoft.com) tájékoztatja a begyűjtés kapcsolatban, valamint hogy a visszaszállítási címkét.
+    2. Hívja meg a helyi számot a szállítási szolgáltató a begyűjtés ütemezéséhez.
+    3. Győződjön meg arról, hogy a szállítási címkét a szállítmány külső ezzel a beállítással hangsúlyosan megjelenik-e.
     4. Győződjön meg arról, hogy a korábbi szállítmány a régi szállítási címkéit az eszközről törlődnek.
 3. A Data Box nehéz mértékének és a szolgáltató által beolvasott, miután a rendelés állapota a portálon frissítései **mértékének**. A nyomkövetési azonosító is megjelenik.
 
