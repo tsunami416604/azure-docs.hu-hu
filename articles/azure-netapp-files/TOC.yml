@@ -19,12 +19,20 @@
       href: azure-netapp-files-resource-limits.md
     - name: Az Azure NetApp Files metrikái
       href: azure-netapp-files-metrics.md
-    - name: Az Azure NetApp Files teljesítményével kapcsolatos mérőszámok
-      href: azure-netapp-files-performance-benchmarks.md
+    - name: Teljesítmény
+      items:
+        - name: Az Azure NetApp Files teljesítményével kapcsolatos mérőszámok
+          href: azure-netapp-files-performance-benchmarks.md
+        - name: Az Azure NetApp Files teljesítményével kapcsolatos szempontok
+          href: azure-netapp-files-performance-considerations.md
+        - name: Kötetteljesítmény és metrikák teljesítménytesztelése az Azure NetApp Files segítségével
+          href: azure-netapp-files-performance-metrics-volumes.md
     - name: Az Azure NetApp Files költségmodellje
       href: azure-netapp-files-cost-model.md
     - name: Az Azure NetApp Files hálózattervezési irányelvei
       href: azure-netapp-files-network-topologies.md
+    - name: Megoldásarchitektúrák az Azure NetApp Filesszal
+      href: azure-netapp-files-solution-architectures.md
     - name: Gyakori kérdések az Azure NetApp Filesról
       href: azure-netapp-files-faqs.md
 - name: Útmutatók

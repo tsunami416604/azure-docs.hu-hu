@@ -2,7 +2,7 @@
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Mi az az Adatkezelő?
+    - name: Mi az az Azure Data Explorer?
       href: data-explorer-overview.md
 - name: Gyors útmutatók
   expanded: true
@@ -15,8 +15,6 @@
       items:
         - name: Webes felhasználói felület
           href: web-query-data.md
-        - name: Python
-          href: python-query-data.md
 - name: Oktatóanyagok
   items:
     - name: Adatok betöltése kód használata nélkül
@@ -68,12 +66,18 @@
       items:
         - name: Lekérdezések írása
           href: write-queries.md
-        - name: Idősorozat-elemzések
-          href: time-series-analysis.md
-        - name: Anomáliadetektálás és -előrejelzés
-          href: anomaly-detection.md
-        - name: Gépi tanulás
-          href: machine-learning-clustering.md
+        - name: Adatok lekérdezése az Azure Data Lake-ben
+          href: data-lake-query-data.md
+        - name: Python
+          href: python-query-data.md
+        - name: Idősorozat-elemzés és gépi tanulás
+          items:
+            - name: Idősorozat-elemzések
+              href: time-series-analysis.md
+            - name: Anomáliadetektálás és -előrejelzés
+              href: anomaly-detection.md
+            - name: Gépi tanulás
+              href: machine-learning-clustering.md
     - name: Adatok vizualizációja
       items:
         - name: Power BI

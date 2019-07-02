@@ -137,6 +137,8 @@
           href: overview-opc-twin.md
         - name: Mi az az OPC-tároló?
           href: overview-opc-vault.md
+        - name: Mi az az OPC Publisher?
+          href: overview-opc-publisher.md
         - name: Mi az a csatlakoztatott gyár?
           href: iot-accelerators-connected-factory-features.md
     - name: Gyors útmutatók
@@ -153,8 +155,6 @@
           items:
             - name: Az irányítópult használata
               href: iot-accelerators-connected-factory-dashboard.md
-            - name: Az OPC-közzétevő használata
-              href: 'https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md'
             - name: A megoldásgyorsító konfigurálása
               href: iot-accelerators-connected-factory-configure.md
             - name: A megoldásgyorsító testreszabása
@@ -177,6 +177,12 @@
                   href: howto-opc-vault-deploy-existing-client-server-communication.md
             - name: OPC-tároló létrehozása az alapoktól
               href: howto-opc-vault-deploy-scratch.md
+        - name: OPC Publisher
+          items:
+            - name: Az OPC Publisher konfigurálása
+              href: howto-opc-publisher-configure.md
+            - name: Az OPC Publisher futtatása
+              href: howto-opc-publisher-run.md
     - name: További források
       items:
         - name: GitHub-adattár

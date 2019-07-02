@@ -55,34 +55,22 @@ sections:
         className: cardsM
         columns: 1
         items:
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>Az oktatóanyag feltölt egy helyi videófájlt, majd kódolja és streameli a kódolt tartalmat.<p/>'
+          - html: '<p>Az oktatóanyag feltölt egy helyi videófájlt, majd kódolja és streameli a kódolt tartalmat.<p/>'
             href: /azure/media-services/latest/stream-files-tutorial-with-api
             title: Feltöltött fájl kódolása és videó streamelése
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>Az oktatóanyag ismerteti, hogyan kell beállítani egy élő eseményt. Ezután bemutatja, hogyan hozhat létre átmenő típusú élő eseményt a .NET használatával.</p>'
+          - html: '<p>Az oktatóanyag ismerteti, hogyan kell beállítani egy élő eseményt. Ezután bemutatja, hogyan hozhat létre átmenő típusú élő eseményt.</p>'
             href: /azure/media-services/latest/stream-live-tutorial-with-api
             title: Élő közvetítés
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>Az oktatóanyag bemutatja, hogyan elemezhet videókat az Azure Media Services API-val.</p>'
+          - html: '<p>Az oktatóanyag bemutatja, hogyan elemezhet videókat az Azure Media Services API-val.</p>'
             href: /azure/media-services/latest/analyze-videos-tutorial-with-api
             title: Videó elemzése
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>Ismerje meg, hogyan kell konfigurálni és használni a Media Services API-kat a tartalmak 128 bites AES-titkosítással történő dinamikus titkosítására.</p>'
+          - html: '<p>Ismerje meg, hogyan kell konfigurálni és használni a Media Services API-kat a tartalmak 128 bites AES-titkosítással történő dinamikus titkosítására.</p>'
             href: /azure/media-services/latest/protect-with-aes128
             title: Dinamikus titkosítás 128 bites AES-titkosítással
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>Ismerje meg, hogyan kell konfigurálni és használni a Media Services API-kat a tartalmak több DRM-mel (PlayReady, Widevine és FairPlay) történő dinamikus titkosítására.</p>'
+          - html: '<p>Ismerje meg, hogyan kell konfigurálni és használni a Media Services API-kat a tartalmak több DRM-mel (PlayReady, Widevine és FairPlay) történő dinamikus titkosítására.</p>'
             href: /azure/media-services/latest/protect-with-drm
             title: Dinamikus titkosítás több DRM-mel
-          - image:
-              src: media/index/rest.svg
-            html: '<p>Az oktatóanyag bemutatja, hogyan kell kódolni egy távoli fájlt URL-cím alapján, majd streamelni a videót.</p>'
+          - html: '<p>Az oktatóanyag bemutatja, hogyan kell kódolni egy távoli fájlt URL-cím alapján, majd streamelni a videót.</p>'
             href: /azure/media-services/latest/stream-files-tutorial-with-rest
             title: Távoli fájl kódolása és videó streamelése
   - title: Példák

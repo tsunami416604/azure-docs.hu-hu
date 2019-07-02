@@ -43,6 +43,11 @@ sections:
             image:
               src: ../media/index/i_get-started.svg
             title: Tárolók telepítése és futtatása
+          - href: /azure/cognitive-services/form-recognizer/build-training-data-set
+            html: <p>Egyéni modell betanítására optimalizált adathalmaz létrehozása.</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Betanítási adathalmaz létrehozása
   - title: 5 perces gyors útmutatók
     items:
       - type: paragraph

@@ -252,6 +252,8 @@
           href: troubleshoot-azure-files.md
         - name: SQL Server
           href: backup-sql-server-azure-troubleshoot.md
+        - name: SAP HANA biztonsági mentések Azure-beli virtuális gépeken
+          href: backup-azure-sap-hana-database-troubleshoot.md
         - name: Rendszerállapot
           href: backup-azure-system-state-troubleshoot.md
     - name: Az Azure Backup számítási feladatainak monitorozása

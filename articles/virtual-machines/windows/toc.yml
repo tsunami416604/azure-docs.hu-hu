@@ -267,13 +267,13 @@
           items:
             - name: Áttekintés
               href: ../linux/image-builder-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-            - name: A CLI használata
+            - name: Az Azure parancssori felület használatával
               href: image-builder.md
-            - name: Használat katalógusokkal
+            - name: Buildelés rendszerkép-katalógusokhoz
               href: image-builder-gallery.md
-            - name: Rendszerképverzió frissítése
+            - name: Meglévő rendszerkép frissítése
               href: image-builder-gallery-update-image-version.md
-            - name: Szkriptek használata az Azure Storage-ban
+            - name: Szkriptek tárolása
               href: ../linux/image-builder-user-assigned-identity.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
             - name: Sablonreferencia
               href: ../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json

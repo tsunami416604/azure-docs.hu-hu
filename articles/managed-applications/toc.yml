@@ -29,10 +29,18 @@
       href: sample-projects.md
 - name: Alapelvek
   items:
-    - name: Egyéni szolgáltatók
+    - name: Egyéni Azure erőforrás-szolgáltatók
       href: custom-providers-overview.md
+    - name: Meghatározás megtekintése összetevő
+      href: concepts-view-definition.md
 - name: Útmutatók
   items:
+    - name: Egyéni erőforrás-szolgáltatók
+      items:
+        - name: Egyéni műveletek hozzáadása az Azure-hoz
+          href: custom-providers-action-endpoint-how-to.md
+        - name: Egyéni erőforrások hozzáadása az Azure-hoz
+          href: custom-providers-resources-endpoint-how-to.md
     - name: Kiadók
       items:
         - name: Portálfelület létrehozása
@@ -57,6 +65,12 @@
           href: approve-just-in-time-access.md
 - name: Referencia
   items:
+    - name: Egyéni erőforrás-szolgáltatók
+      items:
+        - name: Egyéni erőforrásproxy – referencia
+          href: custom-providers-proxy-resource-endpoint-reference.md
+        - name: Egyéni erőforrás-gyorsítótár – referencia
+          href: custom-providers-proxy-cache-resource-endpoint-reference.md
     - name: Azure CLI
       href: /cli/azure/managedapp
     - name: PowerShell

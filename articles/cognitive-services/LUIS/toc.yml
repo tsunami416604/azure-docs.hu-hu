@@ -302,6 +302,8 @@
           href: luis-reference-prebuilt-number.md
         - name: Sorszám entitás
           href: luis-reference-prebuilt-ordinal.md
+        - name: 2-es verziójú sorszám entitás
+          href: luis-reference-prebuilt-ordinal-v2.md
         - name: Százalék entitás
           href: luis-reference-prebuilt-percentage.md
         - name: PersonName entitás

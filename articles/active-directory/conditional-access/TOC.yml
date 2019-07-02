@@ -19,6 +19,8 @@
 - name: Alapelvek
   expanded: false
   items:
+    - name: Feltételes hozzáférés bevezetése
+      href: howto-conditional-access-adoption-kit.md
     - name: Alapvető védelmi szabályzatok
       href: concept-baseline-protection.md
     - name: Feltételek

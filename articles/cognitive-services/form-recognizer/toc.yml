@@ -17,6 +17,8 @@
               href: quickstarts/python-train-extract.md
 - name: Útmutatók
   items:
+    - name: Betanítási adathalmaz létrehozása
+      href: build-training-data-set.md
     - name: Tárolók használata
       items:
         - name: Tárolók telepítése és futtatása

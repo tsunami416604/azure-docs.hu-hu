@@ -58,6 +58,12 @@
       href: cross-network-connectivity.md
     - name: Gyakori Azure-beli biztonsági attribútumok
       href: expressroute-security-attributes.md
+    - name: Magas rendelkezésre állás tervezése
+      href: designing-for-high-availability-with-expressroute.md
+    - name: Tervezés a vészhelyreállítást szem előtt tartva
+      items:
+        - name: Magánhálózati társviszony-létesítés
+          href: designing-for-disaster-recovery-with-expressroute-privatepeering.md
 - name: Útmutatók
   items:
     - name: Kapcsolatcsoport létrehozása és módosítása

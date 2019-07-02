@@ -58,6 +58,8 @@
       href: 'https://aka.ms/adpricing'
     - name: Régiónkénti rendelkezésre állás
       href: 'https://aka.ms/adregion'
+    - name: Felhasználó által létrehozott tartalom
+      href: user-generated-content.md
     - name: Csatlakozzon az Anomaly Detector Advisors csoporthoz a Microsoft Teamsben
       href: 'https://aka.ms/adadvisorsjoin'
     - name: Referencia megoldásarchitektúra

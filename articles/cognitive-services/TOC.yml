@@ -31,8 +31,10 @@
           href: ../aks/tutorial-kubernetes-prepare-app.md
 - name: Gyors útmutatók
   items:
-    - name: Fiók létrehozása
+    - name: Fiókok létrehozása az Azure Portalon
       href: cognitive-services-apis-create-account.md
+    - name: Fiók létrehozása az Azure CLI-vel
+      href: cognitive-services-apis-create-account-cli.md
     - name: Hitelesítés
       href: authentication.md
     - name: Diagnosztikai naplózás

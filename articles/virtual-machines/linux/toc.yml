@@ -274,13 +274,13 @@
           items:
             - name: Áttekintés
               href: image-builder-overview.md
-            - name: A CLI használata
+            - name: Az Azure parancssori felület használatával
               href: image-builder.md
             - name: Sablonreferencia
               href: image-builder-json.md
-            - name: Használat katalógusokkal
+            - name: Buildelés rendszerkép-katalógusokhoz
               href: image-builder-gallery.md
-            - name: Rendszerképverzió frissítése
+            - name: Meglévő rendszerkép frissítése
               href: image-builder-gallery-update-image-version.md
             - name: Hibaelhárítás
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'

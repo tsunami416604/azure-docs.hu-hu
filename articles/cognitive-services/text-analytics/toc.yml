@@ -70,8 +70,16 @@
           href: how-tos/text-analytics-how-to-install-containers.md
         - name: Tárolók konfigurálása
           href: text-analytics-resource-container-config.md
-        - name: Az Azure Kubernetes Service futtatása
-          href: How-tos/text-analytics-how-to-use-container-instance.md
+        - name: Container Instances (ACI)
+          items:
+            - name: Hangulatelemzés
+              href: how-tos/use-sentiment-analysis-on-aci.md
+        - name: Kubernetes Service (AKS) használata
+          items:
+            - name: Nyelvfelismerés
+              href: how-tos/use-language-detection-on-aks.md
+            - name: Hangulatelemzés
+              href: how-tos/use-sentiment-analysis-on-aks.md
     - name: A Text Analytics csatlakoztatott szolgáltatás használata
       href: vs-text-connected-service.md
 - name: Referencia

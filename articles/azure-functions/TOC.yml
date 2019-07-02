@@ -45,6 +45,8 @@
           href: functions-add-output-binding-storage-queue-python.md
         - name: Storage – portál
           href: functions-integrate-storage-queue-output-binding.md
+        - name: Storage – Visual Studio Code
+          href: functions-add-output-binding-storage-queue-vs-code.md
 - name: Oktatóanyagok
   items:
     - name: A Functions és a Logic Apps
@@ -136,6 +138,8 @@
           href: functions-test-a-function.md
         - name: Helyi fejlesztés és hibakeresés
           href: functions-develop-local.md
+        - name: Visual Studio Code – fejlesztés
+          href: functions-develop-vs-code.md
         - name: A Visual Studio fejlesztése
           href: functions-develop-vs.md
         - name: A Core Tools fejlesztése
@@ -282,13 +286,10 @@
           href: functions-bindings-timer.md
         - name: Twilio
           href: functions-bindings-twilio.md
-    - name: host.json-referencia
+    - name: host.json 2.x referencia
       href: functions-host-json.md
-      items:
-        - name: Functions 2.x
-          href: functions-host-json.md
-        - name: Functions 1.x
-          href: functions-host-json-v1.md
+    - name: host.json 1.x referencia
+      href: functions-host-json-v1.md
     - name: Hálózatkezelés – GYIK
       href: functions-networking-faq.md
     - name: OpenAPI-referencia

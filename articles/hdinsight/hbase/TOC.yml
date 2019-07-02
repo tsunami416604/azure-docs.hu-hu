@@ -11,16 +11,16 @@
       href: apache-hbase-phoenix-squirrel-linux.md
     - name: Az Apache HBase lekérdezése – HBase-felület
       href: ./query-hbase-with-hbase-shell.md
-- name: Bevezetés
+- name: Oktatóanyagok
   items:
-    - name: Első lépések az Apache HBase-ben és a NoSQL-ben
+    - name: Az Apache HBase használata a HDInsightban
       href: apache-hbase-tutorial-get-started-linux.md
+- name: Alapelvek
+  items:
     - name: HDInsight-alkalmazások telepítése
       href: ../hdinsight-apps-install-applications.md
     - name: A fürtök kapacitástervezése
       href: ../hdinsight-capacity-planning.md
-- name: Alapelvek
-  items:
     - name: HDInsight-alapú Apache Hadoop-összetevők
       href: ../hdinsight-component-versioning.md
     - name: HDInsight 4.0

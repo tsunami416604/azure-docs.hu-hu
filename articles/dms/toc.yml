@@ -54,8 +54,10 @@
       href: pre-reqs.md
     - name: Hálózati topológiák az Azure SQL DB felügyelt példányainak migrálásához
       href: resource-network-topologies.md
-    - name: Ismert problémák
+    - name: Hibaelhárítás és ismert problémák
       items:
+        - name: Forrásadatbázis csatlakozási problémáinak hibaelhárítása
+          href: known-issues-troubleshooting-dms-source-connectivity.md
         - name: Gyakori hibák elhárítása
           href: known-issues-troubleshooting-dms.md
         - name: Ismert problémák – Online migrálás az Azure SQL DB-be

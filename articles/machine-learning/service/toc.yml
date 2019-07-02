@@ -106,6 +106,8 @@
       href: concept-accelerate-with-fpgas.md
     - name: Az ONNX és az ONNX Runtime
       href: concept-onnx.md
+    - name: Adateltérések monitorozása
+      href: concept-data-drift.md
     - name: Biztonság
       items:
         - name: Vállalati biztonság áttekintése
@@ -151,12 +153,6 @@
         - name: Adatok megismerése
           displayName: 'data, eda, exploratory, analysis, etl, dataset, summary statistics, profile, explore, data preparation, dataprep'
           href: how-to-explore-prepare-data.md
-        - name: Adatdefiníciók verziószámozása és kezelése
-          displayName: 'data, etl, dataset, data preparation, dataprep, version'
-          href: how-to-manage-dataset-definitions.md
-        - name: Pillanatfelvétel készítése az adatokról
-          displayName: 'snapshots, profile, summary statistics, data copy'
-          href: how-to-create-dataset-snapshots.md
         - name: Adatok lekérése adattárból
           displayName: blob get fileshare access storage
           href: how-to-access-data.md
@@ -178,12 +174,16 @@
           href: how-to-set-up-training-targets.md
         - name: Becslők létrehozása a betanítás során
           href: how-to-train-ml-models.md
+        - name: A Scikit-learn használata
+          href: how-to-train-scikit-learn.md
         - name: A TensorFlow használata
           href: how-to-train-tensorflow.md
         - name: A Keras használata
           href: how-to-train-keras.md
         - name: A PyTorch használata
           href: how-to-train-pytorch.md
+        - name: A Chainer használata
+          href: how-to-train-chainer.md
         - name: Hiperparaméterek hangolása
           displayName: parameter
           href: how-to-tune-hyperparameters.md
@@ -211,6 +211,8 @@
         - name: Előrejelzési modellek automatikus betanítása
           displayName: time series
           href: how-to-auto-train-forecast.md
+        - name: A pontossági mutatók megtekintése
+          href: how-to-understand-accuracy-metrics.md
     - name: Modellek üzembe helyezése és kiszolgálása
       items:
         - name: Az üzembe helyezés módja és helye
@@ -224,6 +226,9 @@
           href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
         - name: Egyéni Docker-rendszerkép
           href: how-to-deploy-custom-docker-image.md
+        - name: Meglévő modellek üzembe helyezése
+          displayName: publish existing model
+          href: how-to-deploy-existing-model.md
         - name: Hibaelhárítás
           href: how-to-troubleshoot-deployment.md
     - name: Webszolgáltatások felhasználása
@@ -239,6 +244,8 @@
         - name: Modelladatok gyűjtése és kiértékelése
           displayName: track production
           href: how-to-enable-data-collection.md
+        - name: Adateltérés észlelése
+          href: how-to-monitor-data-drift.md
         - name: Monitorozás az Application Insights segítségével
           href: how-to-enable-app-insights.md
     - name: Újrahasználható munkafolyamatok létrehozása
