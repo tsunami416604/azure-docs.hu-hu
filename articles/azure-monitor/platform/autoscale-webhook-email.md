@@ -10,7 +10,7 @@ ms.author: ancav
 ms.subservice: autoscale
 ms.openlocfilehash: 25ef2541dfa0b4cbd6e11d64381da645acfe653a
 ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/13/2019
 ms.locfileid: "60787297"
@@ -18,7 +18,7 @@ ms.locfileid: "60787297"
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Automatikus skálázási műveletek segítségével szeretne küldeni az e-mailt és webhookot riasztási értesítéseket az Azure monitorban
 Ez a cikk bemutatja, hogyan lehet beállítani eseményindítók, hogy hívás meghatározott webes URL-címek, vagy küldjön e-mailek automatikus skálázási műveletek az Azure-ban alapján.  
 
-## <a name="webhooks"></a>Webhookok
+## <a name="webhooks"></a>webhooks
 Webhookok lehetővé teszik az Azure-riasztási értesítések átirányítása utófeldolgozási vagy egyéni értesítések más rendszerekre. Például a riasztás útválasztást, amely képes kezelni egy bejövő webes kérelem küldése SMS-log-hibák, értesítse csevegés használatával, vagy üzenetküldés egy team services-szolgáltatások, és így tovább. A webhook URI érvényes HTTP vagy HTTPS-végpontot kell lennie.
 
 ## <a name="email"></a>E-mail
@@ -62,7 +62,7 @@ A REST API vagy a Resource Manager-sablon használatakor közé tartozik az ért
 
 | Mező | Kötelező? | Leírás |
 | --- | --- | --- |
-| operation |igen |Az értéknek kell lennie a "Méretezés" |
+| A művelet |igen |Az értéknek kell lennie a "Méretezés" |
 | sendToSubscriptionAdministrator |igen |érték lehet "igaz" vagy "false" |
 | sendToSubscriptionCoAdministrators |igen |érték lehet "igaz" vagy "false" |
 | customEmails |igen |érték lehet null értékű [] vagy e-mailek karakterlánc tömbje |
@@ -106,7 +106,7 @@ Ha az automatikus skálázási értesítés jön létre, a webhook hasznos adata
 | Mező | Kötelező? | Leírás |
 | --- | --- | --- |
 | status |igen |Az állapot, amely azt jelzi, hogy létrejött-e egy automatikus skálázási műveletet |
-| operation |igen |Példányok tervezni "Horizontális Felskálázás" lesz, és példányok csökkenését, a "Méretezés a" |
+| A művelet |igen |Példányok tervezni "Horizontális Felskálázás" lesz, és példányok csökkenését, a "Méretezés a" |
 | context |igen |Az automatikus skálázási művelet környezet |
 | timestamp |igen |Időbélyeg, ha az automatikus skálázási műveletet |
 | id |Igen |Automatikus skálázási beállítás erőforrás-kezelő azonosítója |
