@@ -153,14 +153,14 @@ A következő táblázat ismerteti a használt paraméterek és értékek metrik
 | A paraméter | value |
 | --- | --- |
 | Name (Név) |simpletestdiskwrite |
-| Ez a riasztási szabály helye |USA keleti régiója |
+| Ez a riasztási szabály helye |East US |
 | ResourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| A létrehozott riasztás MetricName |\PhysicalDisk (aránya _teljes) \Disk Lemezírások/mp. Tekintse meg a `Get-MetricDefinitions` parancsmaggal kapcsolatos hogyan kérheti le a pontos metrikus nevek |
+| A létrehozott riasztás MetricName |\PhysicalDisk(_Total)\Disk Writes/sec. See the `Get-MetricDefinitions` cmdlet about how to retrieve the exact metric names |
 | Operátor |GreaterThan |
 | Küszöbérték (száma/s az a mérőszám) |1 |
 | Ablakméret (Igen) |00:05:00 |
-| naplózási gyűjtő (statisztikai mérőszám, amely ebben az esetben használja a átlagos száma) |Átlag |
+| naplózási gyűjtő (statisztikai mérőszám, amely ebben az esetben használja a átlagos száma) |Average |
 | egyéni e-mailek (karakterlánc-tömbben) |'foo@example.com','bar@example.com' |
 | e-mail küldése a tulajdonosoknak, közreműködőknek és olvasóknak |-SendToServiceOwners |
 
