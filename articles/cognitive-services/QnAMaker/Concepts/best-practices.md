@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: c796114d124c64ac1c373baacabe00c7dcd70aa7
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: dd4f85822a5e6615e7ea6e31b4231c04c9d4e88c
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447632"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542855"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Ajánlott eljárások a QnA Maker Tudásbázis
 
@@ -97,7 +97,7 @@ Győződjön meg arról, amelyek a lehető legjobban kihasználják támogatja a
 
 ### <a name="choosing-a-threshold"></a>Egy küszöbértéket kiválasztása
 
-Az alapértelmezett [megbízhatósági pontszám](confidence-score.md#) használt, egy küszöbértéket 50, azonban az is [küszöbértékének módosítása](confidence-score.md#set-threshold) a KB igényei alapján. Mivel minden KB különböző, teszteléséhez, és válassza ki a küszöbérték, amely a legjobb megoldás az olyan adatbázisoknál a KB. 
+Az alapértelmezett [megbízhatósági pontszám](confidence-score.md) használt, egy küszöbértéket 50, azonban az is [küszöbértékének módosítása](confidence-score.md#set-threshold) a KB igényei alapján. Mivel minden KB különböző, teszteléséhez, és válassza ki a küszöbérték, amely a legjobb megoldás az olyan adatbázisoknál a KB. 
 
 ### <a name="choosing-ranker-type"></a>Rangsorolás típusának kiválasztása
 Alapértelmezés szerint a QnA Maker – kérdések és válaszok keres. Ha azt szeretné, csak a kérdések keresgélnie, készítése a választ valamely kérdésre, használja a `RankerType=QuestionOnly` a GenerateAnswer kérelem bejegyzés törzse.

@@ -98,7 +98,7 @@ Az ügyfelek *kell* támogatja a standard átirányítási módszerek által meg
 
 Az ügyfelek *kell* beszédszolgáltatás megfelelő végpont használata. A végpont mód és a nyelvi alapul. A táblázatban néhány példa látható.
 
-| Mód | Útvonal | Szolgáltatás-URI |
+| Mód | Path | Szolgáltatás-URI |
 | -----|-----|-----|
 | Interaktív | /speech/recognition/interactive/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
 | beszélgetés | /speech/recognition/conversation/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US |
@@ -252,9 +252,9 @@ A következő fejléceket szükség az összes `audio` üzeneteket.
 
 | Fejléc         |  Érték     |
 | ------------- | ---------------- |
-| Útvonal | `audio` |
+| Path | `audio` |
 | X-RequestId | A "no-dash" formátumban UUID |
-| X-időbélyeg | Ügyfél UTC óra ISO 8601 formátumú időbélyeg |
+| X-Timestamp | Ügyfél UTC óra ISO 8601 formátumú időbélyeg |
 | Content-Type | A hang tartalomtípus. A típusnak kell lennie, vagy *audio/x-wav* (PCM) vagy *audio/szintetikus* (szintetikus). |
 
 #### <a name="supported-audio-encodings"></a>Hang kódolást támogatja
@@ -308,8 +308,8 @@ Az automatikus beszédfelismerés ideális megoldást készíthet, az alkalmazá
 | Mező | Leírás |
 | ------------- | ---------------- |
 | WebSocket-üzenetek kódolása | Text |
-| Útvonal | `telemetry` |
-| X-időbélyeg | Ügyfél UTC óra ISO 8601 formátumú időbélyeg |
+| Path | `telemetry` |
+| X-Timestamp | Ügyfél UTC óra ISO 8601 formátumú időbélyeg |
 | Content-Type | `application/json` |
 | Törzs | Egy JSON-struktúrát, amely a kapcsolja ügyfél-információkat tartalmaz |
 
@@ -330,7 +330,7 @@ A `speech.startDetected` az üzenet azt jelzi, hogy beszédszolgáltatás az aud
 | Mező | Leírás |
 | ------------- | ---------------- |
 | WebSocket-üzenetek kódolása | Text |
-| Útvonal | `speech.startDetected` |
+| Path | `speech.startDetected` |
 | Content-Type | az Application/json; charset = utf-8 |
 | Törzs | A JSON-szerkezet speech kezdetét észlelésekor a feltételek kapcsolatos információkat tartalmazó. A *eltolás* ebben a struktúrában mező eltolását (100 nanoszekundumos egységekben) Ha speech észlelt az audio-adatfolyamot, a stream elején viszonyítva. |
 
@@ -355,7 +355,7 @@ Beszédfelismerés, során beszédszolgáltatás rendszeres időközönként ál
 | Mező | Leírás |
 | ------------- | ---------------- |
 | WebSocket-üzenetek kódolása | Text |
-| Útvonal | `speech.hypothesis` |
+| Path | `speech.hypothesis` |
 | X-RequestId | A "no-dash" formátumban UUID |
 | Content-Type | application/json |
 | Törzs | A beszédfelismerés elmélet JSON struktúrában |
@@ -387,7 +387,7 @@ Amikor beszédszolgáltatás határozza meg, hogy arról, hogy vannak-e elegend�
 | Mező | Leírás |
 | ------------- | ---------------- |
 | WebSocket-üzenetek kódolása | Text |
-| Útvonal | `speech.phrase` |
+| Path | `speech.phrase` |
 | Content-Type | application/json |
 | Törzs | A beszédfelismerés kifejezés JSON-struktúra |
 
@@ -415,7 +415,7 @@ A `speech.endDetected` üzenet Megadja, hogy az ügyfélalkalmazás álljon le, 
 | Mező | Leírás |
 | ------------- | ---------------- |
 | WebSocket-üzenetek kódolása | Text |
-| Útvonal | `speech.endDetected` |
+| Path | `speech.endDetected` |
 | Törzs | A JSON-szerkezet, amely tartalmazza az eltolást, beszéd végén észlelésekor. Az eltolás jelenik meg az 100 nanoszekundumos egységek eltolás kezdete és hang felismerés szolgálja ki. |
 | Content-Type | az Application/json; charset = utf-8 |
 
@@ -440,7 +440,7 @@ A `turn.start` jelzi a egy kapcsolja be a szolgáltatás szempontjából. A `tur
 | Mező | Leírás |
 | ------------- | ---------------- |
 | WebSocket-üzenetek kódolása | Text |
-| Útvonal | `turn.start` |
+| Path | `turn.start` |
 | Content-Type | az Application/json; charset = utf-8 |
 | Törzs | JSON-struktúra |
 
@@ -467,7 +467,7 @@ A `turn.end` szempontjából a szolgáltatás egy kapcsolja végén jelzi. A `tu
 | Mező | Leírás |
 | ------------- | ---------------- |
 | WebSocket-üzenetek kódolása | Text |
-| Útvonal | `turn.end` |
+| Path | `turn.end` |
 | Törzs | None |
 
 #### <a name="sample-message"></a>Mintaüzenet

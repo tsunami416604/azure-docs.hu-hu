@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: tutorial
 ms.date: 04/24/2019
-ms.openlocfilehash: 8d108e1683be03a79e87990b983f2eda3eadba90
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 08ef140eb860637cc0c09619abe7051cc007e99f
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797540"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540295"
 ---
 # <a name="tutorial-work-with-azure-storage-queues"></a>Oktatóanyag: Azure Storage-üzenetsorok használata
 
@@ -227,6 +227,14 @@ Hozzon létre egy új módszer üzenet küldése az üzenetsorba. Adja hozzá a 
    ```
 
 2. Mentse a fájlt.
+
+Egy üzenet, amely tartalmazhat egy XML-kérelem, az UTF-8 kódolást, és lehet, hogy legfeljebb 64 KB méretű formátumban kell lennie. Ha egy üzenet bináris adatokat tartalmaz, azt javasoljuk, hogy Ön a Base64 kódolás az üzenetet.
+
+Alapértelmezés szerint a time-to-live üzenet maximális értéke 7 nap. Megadhatja, hogy az üzenet time-to-live bármilyen pozitív szám. Segítségével adhat hozzá egy üzenet, amely nem jár le, `Timespan.FromSeconds(-1)` a hívásában **AddMessageAsync**.
+
+```csharp
+await theQueue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
+```
 
 ## <a name="dequeue-messages"></a>Üzenet eltávolítása a sorból
 

@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: article
-ms.date: 4/03/2019
+ms.date: 7/01/2019
 ms.author: aahi
-ms.openlocfilehash: 62d34b859a0cf71320c478b7cab4a2914e5ee308
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bd5118b42f32a521df8e3acfffb68391d4021791
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60579864"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67541534"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Keresési lekérdezéseket küld a Bing Visual Search API
 
-Ez a cikk ismerteti a paramétereket és a kéréseket a Bing Visual Search API, valamint a válasz-objektum attribútumai.
+Ez a cikk ismerteti a paramétereket és a kéréseket a Bing Visual Search API, valamint a válasz-objektum attribútumai. 
 
 Betekintést nyerhet kép három módon:
 
@@ -192,6 +192,9 @@ Content-Disposition: form-data; name="knowledgeRequest"
 ```
 
 ## <a name="bing-visual-search-responses"></a>A Bing Visual Search válaszai
+
+
+[!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 
 Ha vannak elérhető megállapítások a képhez, a válasz egy vagy több `tags` mezőt tartalmaz, bennük a megállapításokkal. A `image` mező tartalmazza a bemeneti kép insights token:
 

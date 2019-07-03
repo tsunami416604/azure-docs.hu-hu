@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 07/02/2019
 ms.author: dapine
-ms.openlocfilehash: fff876de41e0069573b73779a16ebf06a3dd58c8
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 86b23c5f69fd96fe5c5614d99483e1936895ad9e
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295256"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537102"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Telepítse és futtassa a LUIS docker-tárolók
  
@@ -175,16 +175,7 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 |{AUTHORING_KEY} | Az Authoring Tool kulcs a LUIS-fiók a közzétett LUIS-alkalmazás.<br/>Az Authoring Tool kulcs kap a **felhasználói beállítások** a LUIS-portál oldalain. |
 |{AZURE_REGION} | A megfelelő Azure-régió:<br/><br/>```westus``` – USA nyugati RÉGIÓJA<br/>```westeurope``` – Nyugat-Európa<br/>```australiaeast``` – Ausztrália keleti régiója |
 
-A következő CURL-parancs segítségével a közzétett csomag, a saját értékei behelyettesítésével:
-
-```bash
-curl -X GET \
-https://{AZURE_REGION}.api.cognitive.microsoft.com/luis/api/v2.0/package/{APPLICATION_ID}/slot/{APPLICATION_ENVIRONMENT}/gzip  \
- -H "Ocp-Apim-Subscription-Key: {AUTHORING_KEY}" \
- -o {APPLICATION_ID}_{APPLICATION_ENVIRONMENT}.gz
-```
-
-Sikeres művelet esetén a válasz a LUIS alkalmazáscsomag-fájl. Mentse a fájlt a bemeneti csatlakoztatási a tároló megadott tárolási helyen található. 
+A közzétett csomag letöltéséhez tekintse meg a [itt az API-dokumentáció][download-published-package]. Ha sikeresen letöltötte, a válasz egy LUIS alkalmazáscsomag-fájl. Mentse a fájlt a bemeneti csatlakoztatási a tároló megadott tárolási helyen található. 
 
 ### <a name="export-trained-apps-package-from-api"></a>API-ból betanított alkalmazáscsomag exportálása
 
@@ -203,16 +194,7 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 |{AUTHORING_KEY} | Az Authoring Tool kulcs a LUIS-fiók a közzétett LUIS-alkalmazás.<br/>Az Authoring Tool kulcs kap a **felhasználói beállítások** a LUIS-portál oldalain.  |
 |{AZURE_REGION} | A megfelelő Azure-régió:<br/><br/>```westus``` – USA nyugati RÉGIÓJA<br/>```westeurope``` – Nyugat-Európa<br/>```australiaeast``` – Ausztrália keleti régiója |
 
-A következő CURL-parancs segítségével a betanított csomag:
-
-```bash
-curl -X GET \
-https://{AZURE_REGION}.api.cognitive.microsoft.com/luis/api/v2.0/package/{APPLICATION_ID}/versions/{APPLICATION_VERSION}/gzip  \
- -H "Ocp-Apim-Subscription-Key: {AUTHORING_KEY}" \
- -o {APPLICATION_ID}_v{APPLICATION_VERSION}.gz
-```
-
-Sikeres művelet esetén a válasz a LUIS alkalmazáscsomag-fájl. Mentse a fájlt a bemeneti csatlakoztatási a tároló megadott tárolási helyen található. 
+A betanított csomag letöltéséhez tekintse meg a [itt az API-dokumentáció][download-trained-package]. Ha sikeresen letöltötte, a válasz egy LUIS alkalmazáscsomag-fájl. Mentse a fájlt a bemeneti csatlakoztatási a tároló megadott tárolási helyen található. 
 
 ## <a name="run-the-container-with-docker-run"></a>A tároló futtatásához `docker run`
 
@@ -237,11 +219,9 @@ Billing={BILLING_ENDPOINT} ^
 ApiKey={ENDPOINT_KEY}
 ```
 
-* Ez a példa a könyvtárat használja ki a `c:` meghajtón a Windows-engedély ütközések elkerülése érdekében. Ha szeretné használni a bemeneti könyvtár egy adott címtárhoz, előfordulhat, hogy kell biztosítania a docker szolgáltatás engedéllyel. 
+* Ez a példa a könyvtárat használja ki a `C:` meghajtón a Windows-engedély ütközések elkerülése érdekében. Ha szeretné használni a bemeneti könyvtár egy adott címtárhoz, előfordulhat, hogy kell biztosítania a docker szolgáltatás engedéllyel. 
 * Ne módosítsa az argumentumok sorrendje, kivéve, ha nagyon ismeri a docker-tárolókat.
 * Ha eltérő operációs rendszert használ, használja a megfelelő konzol/terminálon, a mappa szintaxis csatlakoztatása és a rendszer a folytatási jelző karakter. Ezek a példák feltételezik, egy Windows-konzol sor folytatási karakterrel `^`. A tároló egy olyan Linux operációs rendszer, mert a célként megadott csatlakoztatási szintaxissal egy Linux-stílusú mappát.
-
-
 
 Ezzel a paranccsal:
 
@@ -324,7 +304,6 @@ A LUIS-portálról, válassza ki az alkalmazást, majd válassza ki **végpont n
 
 Miután feltöltötte a napló, [tekintse át a végpont](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-review-endpoint-utterances) utterances a LUIS-portálon.
 
-
 <!--  ## Validate container is running -->
 
 [!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
@@ -362,14 +341,13 @@ A LUIS alkalmazás használhatja, ha azt **nem tartalmazza a** valamelyik a köv
 
 Alkalmazás nem támogatott konfigurációk|Részletek|
 |--|--|
-|A tároló nem támogatott kultúrák| Holland (Hollandia, NL)<br>Japán (ja-JP)<br>Német csak támogatott a [1.0.1 jogkivonatokat létrehozó vagy újabb](luis-language-support.md#custom-tokenizer-versions).|
+|A tároló nem támogatott kultúrák| Holland (Hollandia, NL)<br>Japán (ja-JP)<br>Német csak támogatott a [1.0.2-es jogkivonatokat létrehozó](luis-language-support.md#custom-tokenizer-versions).|
 |Entitások nem támogatott kulturális környezetek listája|[KeyPhrase](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-keyphrase) kulturális környezetek listája az előre összeállított entitások|
 |Nem támogatott entitásokat (en-US) angol kulturális környezet|[GeographyV2](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-geographyv2) előre összeállított entitások|
 |Beszéd betanítási művelet|Külső függőségek nem támogatottak a tárolóban.|
 |Hangulatelemzés|Külső függőségek nem támogatottak a tárolóban.|
 
-<!--blogs/samples/video coures -->
-
+<!--blogs/samples/video courses -->
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>Összefoglalás
@@ -390,3 +368,7 @@ Ebben a cikkben megtanulta, fogalmak és letöltése, telepítése és Language 
 * Felülvizsgálat [tárolók konfigurálása](luis-container-configuration.md) a konfigurációs beállítások
 * Tekintse meg [hibaelhárítás](troubleshooting.md) LUIS funkció kapcsolatos problémák megoldásához.
 * Több [Cognitive Services-tárolók](../cognitive-services-container-support.md)
+
+<!-- Links - external -->
+[download-published-package]: https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagepublishedapplicationasgzip
+[download-trained-package]: https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagetrainedapplicationasgzip

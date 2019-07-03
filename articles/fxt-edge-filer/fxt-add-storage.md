@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0a16e654ff92c450438ac91c590b42d22201d015
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4a69aa7838e08c83b47c5f0248e821edf86b3990
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450456"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543349"
 ---
 # <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>Oktatóanyag: Háttér-tároló hozzáadása és konfigurálása a virtuális névtér 
 
@@ -59,7 +59,7 @@ Egy mag filer megadása gombra kattintva a **létrehozás** gombot a **Core File
 
 ![A Létrehozás gombra alapvető kiemelik a Core kiemelik kezelése lapon az eszközlista feletti](media/fxt-cluster-config/create-core-filer-button.png)
 
-A **hozzáadása új Core Filer** varázsló végigvezeti egy alapvető filer a háttérrendszer tárolási mutató létrehozásának folyamatán. A fürt beállítási útmutató részletes leírását a folyamat, amely nem egyezik, NFS vagy NAS-tárolási és a felhőalapú (hivatkozások olyan fent) rendelkezik. 
+A **hozzáadása új Core Filer** varázsló végigvezeti egy alapvető filer mutat a háttér-tároló létrehozásának folyamatán. A fürt beállítási útmutató részletes leírását a folyamat, amely nem egyezik, NFS vagy NAS-tárolási és a felhőalapú (hivatkozások olyan fent) rendelkezik. 
 
 Altevékenységek a következők:
 
@@ -77,7 +77,7 @@ Altevékenységek a következők:
 
 * A felhőalapú a felhőalapú szolgáltatás és a hozzáférési hitelesítő adatokat, többek között a más paramétereket kell megadnia. További információkért olvassa el a [Cloud service és a protokoll](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html#cloud-service-and-protocol) az útmutató a fürt konfiguráció.
 
-  ![A felhő alapvető fontosságú filer információk az új Core Filer varázsló](media/fxt-cluster-config/new-core-filer-cloud3.png) <!-- xxx get an Azure version of this screenshot xxx -->
+  ![A felhő alapvető fontosságú filer információk az új Core Filer varázsló](media/fxt-cluster-config/new-core-filer-cloud3.png) 
   
   Ha már hozzáadott ehhez a fürthöz tartozó felhőalapú hozzáférési hitelesítő adatokat, azok szerepelnek a listán. Frissítse és adja hozzá a hitelesítő adatokat a **fürt** > **Felhőhöz tartozó hitelesítő adatok** beállítások lapon. 
 
@@ -135,7 +135,7 @@ Használja a **VServer** > **kezelése VServers** hozhat létre egy új vserver 
 
 ### <a name="create-a-junction"></a>A szinkronizációs pont létrehozása
 
-A *csatlakozási* egy háttérrendszer. tárolási elérési útja képez le az ügyfél által látható névtérben.
+A *csatlakozási* az ügyfél által látható névtér képez le egy háttér-tároló elérési útja.
 
 Ez a rendszer egyszerűsíti az elérési utat az ügyfél csatlakoztatási pontokat használ, és megfelelő, zökkenőmentes méretezése kapacitás, mert egy virtuális elérési út lehetővé teszi több mag kiemelik a storage használhatja.
 
@@ -161,4 +161,4 @@ A fürt beállítási útmutató a cikk [hozzáférés szabályozása alapvető 
 Tárolóeszközök hozzáadása és konfigurálása az ügyfél által használt névtér, után végezze el a fürt kezdeti beállítása: 
 
 > [!div class="nextstepaction"]
-> [A fürt hálózati beállítások konfigurálása](fxt-configure-network.md)
+> [A fürt hálózati beállításainak konfigurálása](fxt-configure-network.md)

@@ -1,5 +1,5 @@
 ---
-title: Kép lekérdezéseket - küldenek a Bing Image Search API
+title: Testre szabhatja, és javasolt kép keresési lekérdezéseket – a Bing Image Search API
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg a keresési lekérdezéseket küld a Bing Image Search API testreszabása.
 services: cognitive-services
@@ -9,22 +9,20 @@ ms.assetid: C2862E98-8BCC-423B-9C4A-AC79A287BE38
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 32ced1d06a10f33e9d71ef09ba51d22e9e406f73
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d833b017004365e9dad7241e360f42ff41a55883
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66384402"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542744"
 ---
-# <a name="send-queries-to-the-bing-image-search-api"></a>Lekérdezéseket küld a Bing Image Search API
+# <a name="customize-and-suggest-image-search-queries"></a>Testre szabhatja, és javasolt kép keresési lekérdezések
 
-A Bing Image Search API-Bing.com/Images hasonló élményt nyújt. Használhatja egy keresési lekérdezést küld a Bing, majd megfelelő rendszerképek listájának.
+Ez a cikk segítségével testre szabhatja a lekérdezések és a keresési kifejezéseket, a Bing Image Search API küldendő javaslat.
 
-## <a name="use-and-suggest-search-terms"></a>Használjon, és javaslatot a keresési feltételek
-
-Miután egy keresési kifejezést adja meg, akkor URL-kódolása az előfizetési időszak előtt állítsa be a [ **q** ](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) lekérdezési paraméter. Ha például meg *hajózási dinghies*állítsa be `q` való `sailing+dinghies` vagy `sailing%20dinghies`.
+## <a name="suggest-search-terms"></a>Keresési kifejezések javaslat
 
 Ha az alkalmazás egy keresőmezőt, ahol a keresési feltételek kerülnek, használhatja a [a Bing Autosuggest API](../../bing-autosuggest/get-suggested-search-terms.md) élményének növelése érdekében. Az API-t javasolt keresőkifejezéseket valós időben jelenítheti meg. Az API-t adja vissza a részleges keresési kifejezéseket, és a Cognitive Services alapján javasolt lekérdezési karakterláncokat.
 

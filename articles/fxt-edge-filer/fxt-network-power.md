@@ -4,14 +4,14 @@ description: A hálózati portok kábelezése és kiemelt Azure FXT Edge Filer h
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: tutorial
-ms.date: 06/20/2019
+ms.date: 07/01/2019
 ms.author: v-erkell
-ms.openlocfilehash: 444835a94559a352bfd749cfa1cb2cd8c3a39373
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ae179e8ce2a2ba772a7fb14825660e0fff9e7410
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450309"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542952"
 ---
 # <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>Oktatóanyag: Hálózati kapcsolatok létrehozása, és adja meg az Azure FXT Edge Filer csomópontra power
 
@@ -43,7 +43,7 @@ A különböző portok az Azure FXT Edge Filer hátoldalán azonosítani.
 
 Ez a cikk is ismerteti, hogyan [csatlakozás hálózati áramellátás Visszaállt](#connect-power-cables) a csomópont. 
 
-Ez a cikk is ismerteti a csomóponthoz csatlakozás [soros port](#serial-port-only-when-necessary), de a soros port csak speciális hibaelhárításhoz. 
+Ez a cikk is ismerteti a csomóponthoz csatlakozás [soros port](#serial-port-only-when-necessary), ha szükséges, speciális hibaelhárításhoz. 
 
 ### <a name="network-ports"></a>Hálózati portok 
 
@@ -75,7 +75,7 @@ A rendszer használandó kapcsolattípusokat attól függ, hogy az adatközponti
   * SFP28 típus 25GbE képességgel közvetlen Iker koaxiális kábelt csatolása
   * SFP28 típus 10 gbe-kompatibilis közvetlen Iker koaxiális kábelt csatolása
 
-* Az 1 gbe hálózati portok szolgálnak a fürt felügyeleti forgalmat. Ellenőrizze a **1 GB-os mgmt hálózati** lehetőséget a fürt létrehozásakor (ismertetett [konfigurálása a felügyeleti hálózat](fxt-cluster-create.md#configure-the-management-network)). Kábelezése a portokat szabványos Cat5 vagy jobb kábellel, a támogatott kábelek lista leírtak szerint.
+* Az 1 gbe hálózati portok szolgálnak a fürt felügyeleti forgalmat. Ellenőrizze a **1 GB-os mgmt hálózati** lehetőséget a fürt létrehozásakor, ha azt szeretné, hozzon létre egy fizikailag elkülönített hálózatot fürtbeállításokhoz (ismertetett [konfigurálása a felügyeleti hálózat](fxt-cluster-create.md#configure-the-management-network)). Kábelezése a portokat szabványos Cat5 vagy jobb kábellel, a támogatott kábelek lista leírtak szerint.
 
   Hagyhatja az uncabled, ha azt tervezi, hogy a nagy sebességű portok használata az összes forgalom 1gbe-es portokat. Alapértelmezés szerint az 1 gbe hálózati portok nem használ, ha egy nagyobb sebességű adatok port érhető el.  
 
@@ -115,12 +115,12 @@ Kövesse ezeket az utasításokat a kábelek keresztül a CMA útvonal:
 1. A szolgáltatás helyzetben CMA, az útvonal a kábel csomagot a belső és külső kosarak (2) keresztül.
 1. A kosarak végén az előre telepített hook és loop hevederek használatával biztonságossá tétele a kábelek (3).
 1. A CMA párhuzamos visszaimportálni a tálca (4) helyen.
-1. Az előre telepített állapotát mutató kábellel hátulján a rendszerben található, és gondoskodhat a kábel átirányítására a CMA keresztül. A külső CMA kosárhoz (5) sarkában csatolása a kábel másik végén. 
+1. Telepítse a állapotát mutató kábel hátulján a rendszerben található, és gondoskodhat a kábel haladnia a CMA. A külső CMA kosárhoz (5) sarkában csatolása a kábel másik végén. 
 
    > [!CAUTION]
    > A kábelek kiálló potenciális károknak elkerülése érdekében biztonságos bármely Slack-en az állapotát jelző kábelen után ez kábelen keresztül a CMA útválasztást. 
 
-![Telepített kábelekkel CMA ábrája](media/cma-cabling-scan-400.png)
+![Telepített kábelekkel CMA ábrája](media/fxt-install/cma-cabling-400.png)
 
 > [!NOTE]
 >  Ha nem telepíti a CMA, használja a két hook, és a sín Kit irányíthatja a kábelek, a rendszer hátulján található a megadott hevederek ikonjához.
@@ -129,7 +129,7 @@ Kövesse ezeket az utasításokat a kábelek keresztül a CMA útvonal:
 >  2. A kábelek óvatosan, kötegeli őket lekérése, és a bal oldalon, a rendszer összekötők törlése.
 >  3. A hozzászóláslánc a hook és loop hevederek tooled tárolóhely a a külső CMA szögletes zárójelek, a rendszer a kábel csomagjaiból biztonságossá minden oldalán keresztül.
 > 
->     ![Átirányítva a CMA nélkül kábelek](media/fxt-route-cables-no-cma-400.png)
+>     ![Átirányítva a CMA nélkül kábelek](media/fxt-install/fxt-route-cables-no-cma-400.png)
 
 ## <a name="about-ip-address-requirements"></a>IP-cím követelményeiről
 

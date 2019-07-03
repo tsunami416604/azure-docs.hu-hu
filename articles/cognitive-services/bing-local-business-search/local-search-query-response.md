@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 06/26/2018
 ms.author: rosh; v-gedod
-ms.openlocfilehash: 45f7adab684b7b6097328a42abb60c8d58c1acc2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e2911ebe9157507534717a4177d4380813dd2ff6
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65796776"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67541557"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Küldés és helyi üzleti keresési Bing-API-kérések és válaszok használatával
 
@@ -37,6 +37,8 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search[?q][&localC
 ## <a name="using-responses"></a>Válaszok használatával
 
 A helyi vállalati keresési Bing-API a JSON-válaszok tartalmaznak egy `SearchResponse` objektum. Az API-t adja vissza a releváns keresési eredmények a `places` mező. Ha nincs találat a `places` mezőben nem szerepel a választ.
+
+[!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
 ```
 {

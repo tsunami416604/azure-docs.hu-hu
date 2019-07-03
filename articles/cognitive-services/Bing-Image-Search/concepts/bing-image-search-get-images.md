@@ -11,12 +11,12 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: f169f969a1acf4cefc8cee27f74a99730491176a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 309bbca762149f8804742d9ef02d4c3e8dfcdc6b
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389414"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542766"
 ---
 # <a name="get-images-from-the-web-with-the-bing-image-search-api"></a>Képek bekérése a weben a Bing Image Search API az
 
@@ -31,10 +31,11 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
+Használja a [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) lekérdezési paraméter esetében az url-kódolású keresőkifejezést. Ha például meg *hajózási dinghies*állítsa be `q` való `sailing+dinghies` vagy `sailing%20dinghies`.
+
 > [!IMPORTANT]
 > * Egy kiszolgálóról, és nem az ügyféltől érkező összes kérés kell tenni.
 > * Ha most először bármely, a Bing keresési API-k hívása, az ügyfél-ID fejléc nem tartalmaznak. Csak tartalmazza az ügyfél-Azonosítót, ha korábban már meghívta a Bing-API, amely az ügyfél-Azonosítót a felhasználó és eszköz kombinációt adja vissza.
-> * Képek a válaszban megadott sorrendben kell megjeleníteni.
 
 ## <a name="get-images-from-a-specific-web-domain"></a>Rendszerképek lekérése egy adott webes tartományból
 
@@ -46,17 +47,6 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghi
 
 > [!NOTE]
 > Adott válaszok segítségével a `site:` operátort tartalmazhatnak felnőtt tartalom, függetlenül attól, hogy a [biztonságos keresési](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) beállítás. Csak `site:` Ha tisztában a tartalmat a tartományon.
-
-A következő példa azt mutatja be, hogyan kérhet le olyan kis méretű képeket a ContosoSailing.com webhelyről, amelyeket a Bing az elmúlt héten fedezett fel.  
-
-```http
-GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghies+site:contososailing.com&size=small&freshness=week&mkt=en-us HTTP/1.1  
-Ocp-Apim-Subscription-Key: 123456789ABCDE  
-X-MSEdge-ClientIP: 999.999.999.999  
-X-Search-Location: lat:47.60357;long:-122.3295;re:100  
-X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>  
-Host: api.cognitive.microsoft.com  
-```
 
 ## <a name="filter-images"></a>Rendszerképek szűrése
 
@@ -73,9 +63,6 @@ Host: api.cognitive.microsoft.com
 
 Ha egy konkrét tartományban található képeket szeretne lekérni, használja a [site:](https://msdn.microsoft.com/library/ff795613.aspx) lekérdezési operátort.
 
- > [!NOTE]
- > Adott válaszok segítségével a `site:` operátort tartalmazhatnak felnőtt tartalom, függetlenül attól, hogy a [biztonságos keresési](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) beállítás. Csak `site:` Ha tisztában a tartalmat a tartományon.
-
 Az alábbi példa bemutatja, hogyan kis képek beolvasni a Bing által az elmúlt héten felderített ContosoSailing.com.  
 
 ```http
@@ -90,6 +77,10 @@ Host: api.cognitive.microsoft.com
 ## <a name="bing-image-search-response-format"></a>Bing – Képkeresés válaszának formátuma
 
 A Bing a válaszüzenet tartalmaz egy [lemezképek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) választ, amely fontos lehet a lekérdezés megállapítani a Cognitive Services rendszerképek listáját tartalmazza. Minden egyes [kép](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) objektum a lista tartalmazza a kép a következő információkat: az URL-címet, annak méretét, a dimenziók, a kódolási formátum, a képet, és a miniatűr dimenziók Miniatűr URL-CÍMÉT.
+
+> [!NOTE]
+> * Képek a válaszban megadott sorrendben kell megjeleníteni.
+> * Mert az URL-formátumok és paraméterek előzetes értesítés nélkül változhatnak, használja az URL-címekhez,-van. Az URL-formátum vagy nincs másként jelölve paraméterek függőségek nem kell tennie.
 
 ```json
 {
