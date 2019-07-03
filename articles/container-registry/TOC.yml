@@ -93,6 +93,8 @@
       items:
         - name: Az ACR-feladatok áttekintése
           href: container-registry-tasks-overview.md
+        - name: Ütemezett feladatok
+          href: container-registry-tasks-scheduled.md
         - name: Többlépéses feladatok
           href: container-registry-tasks-multi-step.md
         - name: Használat felügyelt identitással

@@ -197,6 +197,9 @@
         - name: Kísérletek nyomon követése az MLflow használatával
           displayName: 'log, monitor, metrics'
           href: how-to-use-mlflow.md
+        - name: Kísérletek megjelenítése a TensorBoard használatával
+          displayName: 'log, monitor, metrics'
+          href: how-to-monitor-tensorboard.md
     - name: Gépi tanulás automatizálása
       displayName: 'automl, auto ml'
       items:
@@ -304,6 +307,8 @@
               href: ../algorithm-module-reference/add-rows.md
             - name: Ismétlődő sorok eltávolítása
               href: ../algorithm-module-reference/remove-duplicate-rows.md
+            - name: Adatok összekapcsolása
+              href: ../algorithm-module-reference/join-data.md
             - name: Adatok felosztása
               href: ../algorithm-module-reference/split-data.md
             - name: Adatok normalizálása
@@ -352,12 +357,14 @@
               href: ../algorithm-module-reference/two-class-support-vector-machine.md
             - name: K-közép csoportosítás
               href: ../algorithm-module-reference/k-means-clustering.md
-        - name: Python nyelvi modulok
+        - name: Python és R nyelvi modulok
           items:
             - name: Python-szkript futtatása
               href: ../algorithm-module-reference/execute-python-script.md
             - name: Python-modell létrehozása
               href: ../algorithm-module-reference/create-python-model.md
+            - name: R-szkript végrehajtása
+              href: ../algorithm-module-reference/execute-r-script.md
         - name: Hibaüzenetek és -kódok
           href: ../algorithm-module-reference/machine-learning-module-error-codes.md
 - name: További források

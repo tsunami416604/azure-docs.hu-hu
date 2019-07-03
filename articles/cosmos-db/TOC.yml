@@ -460,10 +460,12 @@
               href: tutorial-query-graph.md
         - name: Útmutatók
           items:
-            - name: Gráfadatok importálása
-              href: bulk-executor-graph-dotnet.md
+            - name: Gráfadatok modellezése
+              href: graph-modeling.md
             - name: Gráfadatok particionálása
               href: graph-partitioning.md
+            - name: Gráfadatok importálása
+              href: bulk-executor-graph-dotnet.md
             - name: Gremlin-lekérdezések optimalizálása
               href: graph-execution-profile.md
             - name: A Spring Data tárolása és kezelése

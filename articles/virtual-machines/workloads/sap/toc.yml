@@ -168,6 +168,8 @@
               href: high-availability-guide-suse-netapp-files.md
             - name: Magas rendelkezésre állás Red Hat Enterprise Linux rendszeren (A)SCS példányhoz
               href: high-availability-guide-rhel.md
+            - name: Magas rendelkezésre állás Red Hat Enterprise Linux rendszeren (A)SCS példányhoz az Azure NetApp Filesszal
+              href: high-availability-guide-rhel-netapp-files.md
         - name: Az Azure infrastruktúra előkészítése
           items:
             - name: Windows közös lemezzel (A)SCS példányhoz
@@ -194,6 +196,8 @@
               href: high-availability-guide-suse-netapp-files.md
             - name: Magas rendelkezésre állás SAP NetWeaverhez Red Hat Enterprise Linuxon
               href: high-availability-guide-rhel.md
+            - name: Red Hat Enterprise Linux NFS-sel (A)SCS példányhoz Azure NetApp Filesszal
+              href: high-availability-guide-rhel-netapp-files.md
         - name: SAP több biztonsági azonosítóval
           items:
             - name: Windows közös lemezzel (A)SCS példányhoz

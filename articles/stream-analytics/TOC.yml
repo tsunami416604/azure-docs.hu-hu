@@ -36,6 +36,8 @@
   items:
     - name: Streaming Analytics-technológia kiválasztása
       href: streaming-technologies.md
+    - name: Feladatfejlesztési eszköz kiválasztása
+      href: feature-comparison.md
     - name: Feladatok bemenettípusai
       items:
         - name: Bemenetek áttekintése

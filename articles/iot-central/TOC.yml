@@ -62,7 +62,7 @@
         - name: Használatos eszközök készletei
           href: howto-use-device-sets.md
         - name: Verzióeszköz-sablon
-          href: howto-version-devicetemplate.md
+          href: howto-version-device-template.md
     - name: Figyelés és elemzés
       items:
         - name: Telemetriaszabály létrehozása
@@ -105,6 +105,8 @@
           href: howto-prepare-images.md
         - name: Az alkalmazás irányítópultjának konfigurálása
           href: howto-configure-homepage.md
+        - name: Irányítópult-csempék használata
+          href: howto-use-tiles.md
         - name: Az alkalmazás felhasználói felületének testreszabása
           href: howto-customize-ui.md
         - name: Alkalmazássablonok használata
