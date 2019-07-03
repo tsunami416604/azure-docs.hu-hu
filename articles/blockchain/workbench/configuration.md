@@ -41,11 +41,11 @@ A blockchain-alkalmazások konfigurációs metaadatok, a munkafolyamatok és a f
 
 | Mező | Leírás | Kötelező |
 |-------|-------------|:--------:|
-| Alkalmazásnév | Egyedi alkalmazásnevet. A megfelelő intelligens szerződést kell használnia az azonos **ApplicationName** a vonatkozó szerződési osztályhoz.  | Igen |
-| displayName | Az alkalmazás rövid megjelenített neve. | Igen |
-| Leírás | Az alkalmazás leírását. | Nem |
+| ApplicationName | Egyedi alkalmazásnevet. A megfelelő intelligens szerződést kell használnia az azonos **ApplicationName** a vonatkozó szerződési osztályhoz.  | Igen |
+| DisplayName | Az alkalmazás rövid megjelenített neve. | Igen |
+| Description | Az alkalmazás leírását. | Nem |
 | ApplicationRoles | A gyűjtemény [ApplicationRoles](#application-roles). Felhasználói szerepkörök számára is reagálhat, vagy hogy részt vegyen, az alkalmazáson belül.  | Igen |
-| A munkafolyamatok | A gyűjtemény [munkafolyamatok](#workflows). Mindegyik munkafolyamat az üzleti logika szabályozásához állapotautomata funkcionál. | Igen |
+| Workflows | A gyűjtemény [munkafolyamatok](#workflows). Mindegyik munkafolyamat az üzleti logika szabályozásához állapotautomata funkcionál. | Igen |
 
 Egy vonatkozó példáért lásd: [konfigurációs fájl példa](#configuration-file-example).
 
