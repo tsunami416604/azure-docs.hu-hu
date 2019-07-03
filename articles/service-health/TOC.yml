@@ -7,7 +7,7 @@
 - name: Gyors útmutatók
   items:
     - name: Szolgáltatások állapoteseményeire vonatkozó riasztások beállítása
-      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
+      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md
 - name: Alapelvek
   items:
     - name: Az Azure állapota oldal
@@ -19,9 +19,9 @@
 - name: Útmutató
   items:
     - name: Szolgáltatások állapoteseményeire vonatkozó riasztások beállítása
-      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
+      href: alerts-activity-log-service-notifications.md
     - name: Szolgáltatás állapotára vonatkozó értesítések megtekintése az Azure Portalon
-      href: ../azure-monitor/platform/service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
+      href: service-notifications.md
     - name: Riasztások küldése külső rendszereknek webhookon keresztül
       href: service-health-alert-webhook-guide.md
     - name: Riasztások küldése a ServiceNow-nak

@@ -4,14 +4,14 @@ description: Hibrid tárolási gyorsítótár-fürt létrehozása az Azure FXT E
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: tutorial
-ms.date: 06/20/2019
+ms.date: 07/01/2019
 ms.author: v-erkell
-ms.openlocfilehash: 1bfe8f0efce0a844263fc65df0ad927114886769
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 94ec2b088940f4f1f683a4f88ae312879d909bc1
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450540"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543541"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>Oktatóanyag: Az Azure FXT Edge Filer fürt létrehozása
 
@@ -34,7 +34,10 @@ Ez az eljárás 15 tart és 45 perc, attól függően, mekkora kutatási kell te
 
 Végezze el ezeket az előfeltételeket az oktatóanyag elindítása előtt:
 
-* Az Adatközpont legalább három Azure FXT Edge Filer hardverrendszer telepítése 
+* Telepítse az Azure FXT Edge Filer hardverrendszer az Adatközpont 
+
+  Csak a fürt létrehozásához egy csomópont van szükség, de kell [vegyen fel legalább két, több csomópontot](fxt-add-nodes.md) ahhoz, hogy a fürt konfigurálása és lekérése készen áll a használatra. 
+
 * Megfelelő teljesítmény és a hálózati kábel csatlakozni a rendszer  
 * Legalább egy Azure FXT Edge Filer csomóponton energiagazdálkodási és [a gyökér szintű jelszó beállítása](fxt-node-password.md)
 
@@ -114,7 +117,7 @@ A parancs használata `ifconfig` ebbe a rendszerbe rendelt címek.
 
 Ha például a parancs `ifconfig | grep -B5 inet` internetcímek portok keres, és a port azonosító megjelenítése helyi öt sornyi biztosít.
 
-Jegyezze fel a ifconfig jelentésben szereplő IP-címeket. Port nevekkel-címek, például e0a vagy e0b megfelelő lehetőség. Ne használja a felsorolt e7 * nevekkel, mivel ezeket a neveket csak használt portok IPMI, IP-címek nem rendszeres hálózati portokat.  
+Jegyezze fel a ifconfig jelentésben szereplő IP-címeket. Port nevekkel-címek, például e0a vagy e0b megfelelő lehetőség. Ne használja a felsorolt e7 * nevekkel, mivel ezeket a neveket csak használt portok iDRAC/IPMI-szolgáltatás tetszőleges IP-címet.  
 
 ## <a name="load-the-cluster-configuration-wizard"></a>A konfigurációs varázsló betöltése
 
@@ -213,7 +216,7 @@ A beállítások a **felügyeleti** szakasz is a hálózat, amely a fürt rendsz
 
 * **MTU** – szükség esetén módosítsa a maximális átviteli egység (MTU) a fürt felügyeleti hálózat.
 
-* **Használat 1 GB-os mgmt hálózati** -bejelöli ezt a jelölőnégyzetet, ha a két 1 gbe hálózati portok a FXT csomópontokon hozzárendelendő csak a felügyeleti hálózathoz. Ha nem jelöli be ezt a jelölőnégyzetet, a felügyeleti hálózat elérhető legnagyobb sebességű portot használja. 
+* **Használat 1 GB-os mgmt hálózati** -bejelöli ezt a jelölőnégyzetet, ha a két 1 gbe hálózati portok a FXT csomópontokon hozzárendelendő csak a felügyeleti hálózathoz. (Az összes többi forgalom elérhető 25GbE/darab 10 gbe-portok kell rendelkeznie.) Ha nem jelöli be ezt a jelölőnégyzetet, a felügyeleti hálózat elérhető legnagyobb sebességű portot használja. 
 
 ### <a name="configure-the-cluster-network"></a>Konfigurálja a fürthálózatot 
 
@@ -281,7 +284,7 @@ A Vezérlőpult webes felület segítségével állítsa be az új fürthöz. K�
 
 Jelentkezzen be a felhasználónevet használva a webes felületén `admin` és a jelszót, megadhatja, ha a fürt létrehozásához.
 
-![a webböngésző vezérlő megjelenítése a bejelentkezési mezők panel](media/fxt-cluster-config/admin-login.png)
+![a webböngésző vezérlő megjelenítése a bejelentkezési mezők panel](media/fxt-cluster-create/admin-login.png)
 
 A Vezérlőpult megnyílik, és megjeleníti a **irányítópult** lapot. A fürt létrehozása az előadások, a figyelmeztető üzeneteket és a törölje.
 
@@ -289,7 +292,7 @@ Kattintson a **beállítások** lap segítségével konfigurálhatja a fürt.
 
 Az a **beállítások** lapon, a bal oldali oldalsáv látható a konfigurációs lapok tartalmazó menü. Az oldalak kategória szerint vannak rendszerezve. Kattintson a + vagy - vezérlőelem az eszközkategória-név, bővítését, vagy elrejtheti az egyes oldalak tetején.
 
-![Beállítások lapon a Vezérlőpult (a böngészőben) a fürt > betölteni általános beállítások lapja](media/fxt-cluster-config/settings-tab-populated.png)
+![Beállítások lapon a Vezérlőpult (a böngészőben) a fürt > betölteni általános beállítások lapja](media/fxt-cluster-create/settings-tab-populated.png)
 
 ## <a name="cluster-setup-steps"></a>Fürt beállítási lépéseket
 
@@ -315,7 +318,7 @@ Ezeket a lépéseket a legtöbb vagy összes fürtök esetén van szükség.
 
   Olvasási [konfigurálása a névtér](fxt-add-storage.md#configure-the-namespace) részleteiről. Ez a lépés tartalmazza:
   * Vservers létrehozása
-  * Elhelyezni az ügyfél hálózati nézet és a háttérkiszolgáló storage közötti pontokra beállítása 
+  * Az ügyfél hálózati nézet és a háttér-tárolás között elhelyezni pontokra beállítása 
   * Meghatározása az ügyfél IP-címek által üzemeltetett mindegyik vserver
 
   > [!Note] 
@@ -370,7 +373,7 @@ Kövesse az alábbi lépéseket, állítsa be a támogatási feltöltések.
 
 1. Keresse meg a **fürt** > **támogatási** beállítások lapon. Fogadja el az adatvédelmi nyilatkozatát. 
 
-   ![Képernyőfelvétel: a Vezérlőpulton, és a megerősítés gombra az előugró ablakban fogadja el az adatvédelmi szabályzatot](media/fxt-cluster-config/fxt-privacy-policy.png)
+   ![Képernyőfelvétel: a Vezérlőpulton, és a megerősítés gombra az előugró ablakban fogadja el az adatvédelmi szabályzatot](media/fxt-cluster-create/fxt-privacy-policy.png)
 
 1. Kattintson a háromszögre balra **Customer Info** a szakasz kibontásához.
 1. Kattintson a **Revalidate feltöltési információk** gombra.
@@ -378,13 +381,13 @@ Kövesse az alábbi lépéseket, állítsa be a támogatási feltöltések.
 1. Jelölje be a **statisztikák figyelése**, **általános információkat feltöltése**, és **összeomlási adatokat feltölteni**.
 1. Kattintson a **Submit** (Küldés) gombra.  
 
-   ![Képernyőkép, amely tartalmazza a customer info szakaszban támogatási beállítások oldal befejeződött](media/fxt-cluster-config/fxt-support-info.png)
+   ![Képernyőkép, amely tartalmazza a customer info szakaszban támogatási beállítások oldal befejeződött](media/fxt-cluster-create/fxt-support-info.png)
 
 1. Kattintson a háromszögre balra **biztonságos proaktív támogatási (Szervizcsomagok)** a szakasz kibontásához.
 1. Jelölje be a **Szervizcsomagok hivatkozás engedélyezése**.
 1. Kattintson a **Submit** (Küldés) gombra.
 
-   ![Befejezett proaktív támogatja biztonságos szakaszban támogatási beállítások oldalon tartalmazó képernyőképe](media/fxt-cluster-config/fxt-support-sps.png)
+   ![Befejezett proaktív támogatja biztonságos szakaszban támogatási beállítások oldalon tartalmazó képernyőképe](media/fxt-cluster-create/fxt-support-sps.png)
 
 ## <a name="next-steps"></a>További lépések
 

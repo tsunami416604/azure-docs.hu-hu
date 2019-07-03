@@ -4,18 +4,21 @@ description: Ismerje meg, hogy több főkiszolgálós konfigurálása az Azure C
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/23/2019
+ms.date: 07/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: e33aa10673f4c4b061f8961959f20b7b3416ec84
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 73b4ada713e264aaa2504fe4d4f504e07ae45181
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204785"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67538078"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Több főkiszolgálós konfigurálása az Azure Cosmos DB használó alkalmazásokban
 
-Az alkalmazás a több főkiszolgálós szolgáltatását használja, többrégiós írási műveletek engedélyezése, és a többkiszolgálós funkció konfigurálása az Azure Cosmos DB-ben. Konfigurálja a többhelyű, át kell adnia a régió, ahol az alkalmazás központi telepítése történik a SetCurrentLocation tulajdonság nevére. Ezzel automatikusan feltölti a PreferredLocations tulajdonság átadott helyről geo-közelsége alapján. Ha egy új régióban később ad hozzá a fiókot, az alkalmazás nem rendelkezik frissítése vagy újratelepítése, automatikusan észleli a közelebb régióban, és fog automatikus-home, be kell egy regionális esemény következik be.
+Fiók létrehozása után a több írási régióval engedélyezve van, módosítania kell két a ConnectionPolicy az alkalmazás számára a DocumentClient engedélyezése az Azure Cosmos DB a több főkiszolgálós, és többkiszolgálós képességekkel. A ConnectionPolicy belül állítsa igaz értékre, és a régiót, ahol az alkalmazás központi telepítése történik SetCurrentLocation nevét UseMultipleWriteLocations. Ez kitölti a PreferredLocations tulajdonság átadott helyről geo-közelsége alapján. Ha egy új régióban később ad hozzá a fiókot, az alkalmazás nem rendelkezik frissítése vagy újratelepítése, automatikusan észleli a közelebb régióban, és fog automatikus-home, be kell egy regionális esemény következik be.
+
+> [!TIP]
+> Cosmos-fiókok létrehozott nem kezdetben konfigurált több főkiszolgálós leállás nulla telepíthető át. További tudnivalókért tekintse meg, [több írási régiók konfigurálása](how-to-manage-database-account.md#configure-multiple-write-regions)
 
 ## <a id="netv2"></a>.NET SDK-val v2
 

@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a93b1128fe1ea0e03efc9060f2c3c4a93145f838
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 666172e3685b923ca0d0e5fa02878341fcd0a216
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67432860"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543878"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Oktatóanyag: Szimulált eszközadatok létrehozása
 
@@ -121,9 +121,9 @@ Most, hogy a projekt létrehozásához, csatlakozni az IoT hub eléréséhez a k
 
 1. Vegye figyelembe, hogy a rendszer hozzáadja az IoT hub és az, hogy az eszközök megjelennek zöld jelzi, hogy adatokat küld a rendszer ezen eszköz segítségével.
 
-1. Megtekintheti a jobb gombbal kattint, bármely eszközön, és válassza a hubnak küldött üzeneteket **figyelési D2C üzenet Start**. Az üzenetek jelennek meg a Visual Studio Code-ban a tesztkimenet ablaktáblán.
+1. Megtekintheti a jobb gombbal kattint, bármely eszközön, és válassza a hubnak küldött üzeneteket **Start beépített esemény végpont**. Az üzenetek jelennek meg a Visual Studio Code-ban a tesztkimenet ablaktáblán.
 
-1. Leállíthatja a figyelést parancsra kattintva a **Azure IoT Hub-eszközkészlet** kimeneti ablaktáblában, és válassza a **Stop Monitoring D2C üzenet**.
+1. Leállíthatja a figyelést parancsra kattintva a **Azure IoT Hub-eszközkészlet** kimeneti ablaktáblában, és válassza a **leállítása beépített esemény végpont**.
 
 1. Lehetővé teszi az alkalmazás, befejezését, ami eltarthat néhány percig.
 

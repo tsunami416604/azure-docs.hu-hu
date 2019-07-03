@@ -25,7 +25,7 @@ Ebben a cikkben bemutatjuk hogyan lehet:
 * Első metro terület azonosítója használatával a [Metro terület API beszerzése](https://aka.ms/AzureMapsMobilityMetro)
 * Kérelem közeli átvitel nem használja tovább [közeli átvitel első](https://aka.ms/AzureMapsMobilityNearbyTransit) szolgáltatás.
 * Lekérdezés [első átvitel útvonalak API](https://aka.ms/AzureMapsMobilityTransitRoute) útvonal megtervezéséhez a nyilvános átvitel használatával.
-* Tranzit útválasztási geometry és az útvonal használatára vonatkozó részletes ütemezése a [első átvitel Útiterv API](https://aka.ms/ https://azure.microsoft.com/services/azure-maps/).
+* Tranzit útválasztási geometry és az útvonal használatára vonatkozó részletes ütemezése a [első átvitel Útiterv API](https://aka.ms/https://azure.microsoft.com/services/azure-maps/).
 
 
 ## <a name="prerequisites"></a>Előfeltételek

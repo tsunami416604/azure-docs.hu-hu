@@ -68,7 +68,7 @@ Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
 name | Az if-condition tevékenység neve. | String | Igen
 type | Meg kell **IfCondition** | String | Igen
-kifejezés | IGAZ vagy hamis kifejezés | Logikai érték kifejezéstípus eredménnyel | Igen
+expression | IGAZ vagy hamis kifejezés | Logikai érték kifejezéstípus eredménnyel | Igen
 ifTrueActivities | Ha a kifejezés értéke végrehajtott tevékenységek `true`. | Array | Igen
 ifFalseActivities | Ha a kifejezés értéke végrehajtott tevékenységek `false`. | Array | Igen
 

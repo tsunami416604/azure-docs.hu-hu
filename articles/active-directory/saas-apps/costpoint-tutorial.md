@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/11/2019
+ms.date: 06/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ebc5d1d7cac78066fa4e6028b1921211cb05bf5
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: f21c7896f0ed2afba3a302b4686289cf331ba510
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144640"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536849"
 ---
 # <a name="tutorial-integrate-costpoint-with-azure-active-directory"></a>Oktatóanyag: Costpoint integrálása az Azure Active Directoryval
 
@@ -78,14 +78,18 @@ Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyez�
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszban az alkalmazás előre konfigurálva, és a szükséges URL-címek vannak már előre fel van töltve az Azure-ral. A felhasználónak szüksége van a konfiguráció mentéséhez kattintson a **mentése** gombra, és hajtsa végre a következő lépést:
+4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre az alábbi lépéseket:
 
-    a. Kattintson a **további URL-címet beállítani**.
+    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<CostpointURI>`
 
-    b. Az a **továbbítási állapot** szövegmezőbe írjon be egy értéket a következő minta használatával:`<SYSTEM VALUE>`
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<CostpointURI>/LoginServlet.cps`
+
+    c. Kattintson a **további URL-címet beállítani**.
+
+    d. Az a **továbbítási állapot** szövegmezőbe írjon be egy értéket a következő minta használatával:`<SYSTEM VALUE>`
 
     > [!NOTE]
-    > A továbbítási állapot értéke nem valódi. Frissítse a tényleges továbbítási állapot ezt az értéket. Kapcsolattartó [Costpoint ügyfél-támogatási csapatának](https://www.deltek.com/about/contact-us) lekérni ezt az értéket.
+    > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és továbbítási állapot ezeket az értékeket. Kapcsolattartó [Costpoint ügyfél-támogatási csapatának](https://www.deltek.com/about/contact-us) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
 5. Ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett módban hajtsa végre a következő lépést:
 

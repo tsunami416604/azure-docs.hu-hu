@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 780da9359aaf645abc9b685fa9d90bbea9199759
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: b7d68f6f7079872b81b750ba71997117aaa27d33
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962163"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550572"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-app"></a>A felhasználók és a Microsoft Graph meghívása iOS-alkalmazások
 
@@ -65,7 +65,7 @@ Ebben az oktatóanyagban létrehoz egy új projektet. Ha ehelyett töltse le a b
 
 Két módon regisztrálhatja alkalmazását, a következő két szakasz leírtak szerint.
 
-### <a name="register-your-app"></a>Alkalmazás regisztrálása
+### <a name="register-your-app"></a>Az alkalmazás regisztrálása
 
 1. Nyissa meg a [az Azure portal](https://aka.ms/MobileAppReg) > Válasszon `New registration`. 
 2. Adjon meg egy **neve** az alkalmazás > `Register`. **Ne állítson be egy átirányítási URI-t ezen a ponton**. 
@@ -382,7 +382,7 @@ Miután megkapta a jogkivonatot keresztül `self.accessToken`, az alkalmazás ha
 
 | Fejléc kulcs    | value                 |
 | ------------- | --------------------- |
-| Engedélyezés | Tulajdonosi < hozzáférési jogkivonat > |
+| Authorization | Tulajdonosi \<hozzáférési jogkivonat > |
 
 Adja hozzá a következőt `ViewController.swift`:
 

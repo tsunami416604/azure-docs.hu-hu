@@ -72,6 +72,8 @@
               href: manage-private-cloud.md
             - name: Magánfelhő bővítése
               href: expand-private-cloud.md
+            - name: Magánfelhő zsugorítása
+              href: shrink-private-cloud.md
             - name: Azure-előfizetés leképezése
               href: azure-subscription-mapping.md
             - name: Jogosultságok eszkalációja

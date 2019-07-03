@@ -12,12 +12,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa18bc637ec31a1f83b5cab090e008715c5e0c2a
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 0f6707c780931eac58e2a870c321385e63bd948a
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825012"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550467"
 ---
 # <a name="tutorial-configure-saml-based-single-sign-on-for-an-application-with-azure-active-directory"></a>Oktatóanyag: Az Azure Active Directory a SAML-alapú egyszeri bejelentkezés az alkalmazás konfigurálása
 
@@ -74,11 +74,11 @@ A tartomány és az URL-címek konfigurálása:
 
     | Konfigurációs beállítás | SP által kezdeményezve | Identitásszolgáltató által kezdeményezve | Leírás |
     |:--|:--|:--|:--|
-    | Azonosító (EntityID) | Néhány alkalmazáshoz szükséges | Néhány alkalmazáshoz szükséges | Egyedi módon azonosítja az alkalmazást, amelyhez az egyszeri bejelentkezést konfigurálja. Azure ad-ben az azonosító az alkalmazás SAML-jogkivonat célközönség paraméterként küld. Ellenőrizze, hogy az alkalmazás várható. Ez az érték az alkalmazás által megadott SAML-metaadatok entitásazonosítójaként is megjelenik.|
-    | Válasz-URL | Választható | Szükséges | Megadja, hogy az alkalmazás hová várja az SAML-jogkivonatot. A válasz URL-címet más néven a tényfeldolgozó szolgáltatás (Assertion Consumer Service, ACS) URL-címének hívják. |
-    | Bejelentkezési URL | Szükséges | Ne adjon meg | Amikor egy felhasználó megnyitja ezt az URL-címet, a szolgáltató átirányítja az Azure AD-re a felhasználó hitelesítése és beléptetése érdekében. Az Azure AD az URL-cím használatával indítsa el az alkalmazást az Office 365 vagy az Azure AD hozzáférési Panel. Ha üres, az Azure AD egyszeri bejelentkezés elindításához, amikor egy felhasználó elindítja az alkalmazást az identitásszolgáltató támaszkodik.|
-    | Továbbítási állapot | Választható | Választható | Megadja az alkalmazásnak, hogy hová irányítsa át a felhasználót a hitelesítés befejezése után. Az érték általában az alkalmazás érvényes URL-címet. Egyes alkalmazások használják, ez a mező eltérően. További információt az alkalmazás forgalmazójától kérhet.
-    | Kijelentkezési URL | Választható | Választható | Az alkalmazásnak a SAML kijelentkezési válaszok elküldésére használatosak.
+    | Azonosító (entitásazonosító) | Néhány alkalmazáshoz szükséges | Néhány alkalmazáshoz szükséges | Egyedi módon azonosítja az alkalmazást, amelyhez az egyszeri bejelentkezést konfigurálja. Azure ad-ben az azonosító az alkalmazás SAML-jogkivonat célközönség paraméterként küld. Ellenőrizze, hogy az alkalmazás várható. Ez az érték az alkalmazás által megadott SAML-metaadatok entitásazonosítójaként is megjelenik.|
+    | Válasz URL-cím | Optional | Kötelező | Megadja, hogy az alkalmazás hová várja az SAML-jogkivonatot. A válasz URL-címet más néven a tényfeldolgozó szolgáltatás (Assertion Consumer Service, ACS) URL-címének hívják. |
+    | Bejelentkezési URL-cím | Kötelező | Ne adjon meg | Amikor egy felhasználó megnyitja ezt az URL-címet, a szolgáltató átirányítja az Azure AD-re a felhasználó hitelesítése és beléptetése érdekében. Az Azure AD az URL-cím használatával indítsa el az alkalmazást az Office 365 vagy az Azure AD hozzáférési Panel. Ha üres, az Azure AD egyszeri bejelentkezés elindításához, amikor egy felhasználó elindítja az alkalmazást az identitásszolgáltató támaszkodik.|
+    | Továbbítási állapot | Optional | Optional | Megadja az alkalmazásnak, hogy hová irányítsa át a felhasználót a hitelesítés befejezése után. Az érték általában az alkalmazás érvényes URL-címet. Egyes alkalmazások használják, ez a mező eltérően. További információt az alkalmazás forgalmazójától kérhet.
+    | Kijelentkezési URL | Optional | Optional | Az alkalmazásnak a SAML kijelentkezési válaszok elküldésére használatosak.
 
 
 2. Az alapvető SAML-konfigurációs beállítások szerkesztéséhez válassza ki a **szerkesztése** (a Ceruza) ikonra a jobb felső sarkában a **alapszintű SAML-konfigurációja** szakaszban.
@@ -138,16 +138,16 @@ Felhasználó vagy csoport hozzárendelése az alkalmazáshoz:
 
 Már majdnem kész.  Utolsó lépésként szeretne használni az Azure AD SAML identitás-szolgáltatóként az alkalmazás beállítása. 
 
-1. Görgessen le a **beállítása <applicationName>**  szakaszban. A jelen oktatóanyag esetében ez a szakasz hívja **állítsa be a GitHub-tesztelési**. 
+1. Görgessen le a **beállítása \<applicationName >** szakaszban. A jelen oktatóanyag esetében ez a szakasz hívja **állítsa be a GitHub-tesztelési**. 
 2. Ebben a szakaszban szereplő minden sornál másolja az értéket. Ezt követően illessze be az egyes értékek a megfelelő sort a **alapszintű SAML-konfigurációja** szakaszban. Például másolja a **bejelentkezési URL-cím** értéket a **állítsa be a GitHub-tesztelési** szakaszt, és illessze be azt a **bejelentkezési URL-** mezőbe a **alapszintű SAML-konfigurációja**  szakaszt, és így tovább.
 3. Ha korábban beillesztett értékek a megfelelő mezőkbe, **mentése**.
 
-## <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+## <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Készen áll a beállítások teszteléséhez.  
 
 1. Nyissa meg az alkalmazás egyszeri bejelentkezési beállításait. 
-2. Görgessen a **egyszeri bejelentkezésre az ellenőrzése <applicationName>**  szakaszban. A jelen oktatóanyag esetében ez a szakasz hívja **állítsa be a GitHub-tesztelési**.
+2. Görgessen a **egyszeri bejelentkezésre az ellenőrzése \<applicationName >** szakaszban. A jelen oktatóanyag esetében ez a szakasz hívja **állítsa be a GitHub-tesztelési**.
 3. Válassza ki **teszt**. Megjelennek a tesztelési beállítások.
 4. Válassza ki **jelentkezzen be a jelenlegi felhasználói fiók**. Ez a vizsgálat Ha egyszeri bejelentkezést működik, a rendszergazda először megtekintheti, hogy
 

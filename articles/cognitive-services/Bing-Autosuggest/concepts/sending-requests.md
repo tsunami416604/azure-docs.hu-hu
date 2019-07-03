@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 06/25/2019
+ms.date: 06/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: be3262daf7ea2a637133ad658efe07ba9426415b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: fe35901f7d084fd96cb4c164e957391bfe2346a9
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449071"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542630"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>A Bing Autosuggest API kérések küldését.
 
-Ha az alkalmazás lekérdezéseket küld a Bing Search APIs valamelyik, a Bing Autosuggest API segítségével a felhasználók keresési élmény javításához. A Bing Autosuggest API kifejezést a keresőmezőbe a részleges lekérdezési karakterlánc alapján javasolt lekérdezések listáját adja vissza. A keresőmezőbe az alkalmazás megadott karakterek, mivel javaslatok megjelenítheti egy legördülő listában. Ez a cikk segítségével további tudnivalók a kérések küldését az API-t.
+Ha az alkalmazás lekérdezéseket küld a Bing Search APIs valamelyik, a Bing Autosuggest API segítségével a felhasználók keresési élmény javításához. A Bing Autosuggest API kifejezést a keresőmezőbe a részleges lekérdezési karakterlánc alapján javasolt lekérdezések listáját adja vissza. A keresőmezőbe az alkalmazás megadott karakterek, mivel javaslatok megjelenítheti egy legördülő listában. Ez a cikk segítségével további tudnivalók a kérések küldését az API-t. 
 
 ## <a name="bing-autosuggest-api-endpoint"></a>A Bing Autosuggest API-végpont
 
@@ -44,7 +44,7 @@ Az automatikus kiegészítési API-t használó alapszintű kérések példáké
 ## <a name="bing-autosuggest-api-requests"></a>A Bing Autosuggest API-kérelmek
 
 > [!NOTE]
-> A Bing Autosuggest API kéréseket a HTTPS protokollt kell használnia.
+> * A Bing Autosuggest API kéréseket a HTTPS protokollt kell használnia.
 
 Javasoljuk, hogy minden kérelem egy kiszolgálóról induljon. A kulcs terjesztése egy ügyfélalkalmazás részeként további lehetőség rosszindulatú külső-hozzáférést biztosít. Ezenkívül kiszolgálótól érkező hívások egyetlen frissítési pontot biztosít a jövőbeli frissítések.
 
@@ -100,6 +100,8 @@ Az alábbi javaslat csoportja egy, a fenti irányuló kérelemre adott válasz. 
 A `displayText` mező tartalmazza a javasolt lekérdezést, amelyet a keresőmező legördülő listájának feltöltéséhez használ. A válaszban szereplő összes javaslatot meg kell jelenítenie az adott sorrendben.  
 
 Ha a felhasználó egy lekérdezést a legördülő listából, ezzel az egyik hívja a [Bing Search APIs](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) megjeleníti az eredményeket, és a Bing eredménye lapot a visszaadott küldenie a felhasználót `url` mező.
+
+[!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 
 ```json
 BingAPIs-TraceId: 76DD2C2549B94F9FB55B4BD6FEB6AC

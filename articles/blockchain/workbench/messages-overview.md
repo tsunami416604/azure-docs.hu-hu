@@ -36,8 +36,8 @@ A kérelemhez szükséges a következő mezőket:
 | **Name (Név)**             | **Leírás**                                      |
 |----------------------|------------------------------------------------------|
 | requestId            | Az ügyfél által megadott GUID azonosítója                                |
-| Keresztnév            | A felhasználó utóneve                              |
-| Vezetéknév             | A felhasználó vezetékneve                               |
+| firstName            | A felhasználó utóneve                              |
+| lastName             | A felhasználó vezetékneve                               |
 | emailAddress         | A felhasználó e-mail címe                           |
 | externalId           | A felhasználó Azure AD objektum azonosítója                      |
 | connectionId         | A blockchain-kapcsolat egyedi azonosítója |

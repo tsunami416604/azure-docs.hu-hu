@@ -126,8 +126,8 @@ Kapcsolatos minden funkció teljes körű referenciáért lásd: a [betűrend sz
 
 | Logikai összehasonlító függvény | Tevékenység |
 | --------------------------- | ---- |
-| [és](../logic-apps/workflow-definition-language-functions-reference.md#and) | Ellenőrzése, hogy az összes kifejezés igaz. |
-| [egyenlő](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Ellenőrizze, hogy mindkét értéket egyenértékűek. |
+| [and](../logic-apps/workflow-definition-language-functions-reference.md#and) | Ellenőrzése, hogy az összes kifejezés igaz. |
+| [equals](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Ellenőrizze, hogy mindkét értéket egyenértékűek. |
 | [greater](../logic-apps/workflow-definition-language-functions-reference.md#greater) | Ellenőrizze, hogy az első érték nagyobb, mint a második érték. |
 | [greaterOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#greaterOrEquals) | Ellenőrizze, hogy az első érték kisebb, mint a második érték egyenlő. |
 | [if](../logic-apps/workflow-definition-language-functions-reference.md#if) | Ellenőrizze, hogy egy kifejezés true vagy FALSE (hamis). Az eredmény alapján a megadott érték visszaadása. |
@@ -1743,7 +1743,7 @@ endsWith('hello world', 'universe')
 
 <a name="equals"></a>
 
-### <a name="equals"></a>egyenlő
+### <a name="equals"></a>equals
 
 Ellenőrizze, hogy e egyaránt értékek, kifejezések vagy objektumok egyenértékűek.
 Igaz értéket ad vissza is egyenértékű, vagy adja vissza, ha azok még nem egyenértékű false (hamis).

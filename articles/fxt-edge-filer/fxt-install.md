@@ -5,14 +5,14 @@ services: ''
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: tutorial
-ms.date: 06/20/2019
+ms.date: 07/01/2019
 ms.author: v-erkell
-ms.openlocfilehash: 45f4e12a06e012a06e0b2659d729fce3a191cd32
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ed9eca88e5ccc386b25acb95fa729a3cfb95cbd0
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450421"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543446"
 ---
 # <a name="tutorial-install-azure-fxt-edge-filer"></a>Oktatóanyag: Az Azure FXT Edge Filer telepítése 
 
@@ -34,9 +34,7 @@ Az oktatóanyag a beállítási lépések tartalmazza:
 Mielőtt elkezdené, győződjön meg arról, hogy az adatközpont és az állvány fogja használni a következő jellemzőkkel rendelkezik:
 
 * Egy 1 elérhető u tárolóhely a az állványra szerelt célhelyeként csatlakoztassa az eszközt.
-* AC-tápegység és hűtéssel rendszerek, amelyek az Azure FXT Edge Filer igényeinek. 
-
-  Tervezési és a telepítés méretezése segítségért olvassa el a [energiagazdálkodási és hőmérsékleti specifikációk](fxt-specs.md#power-and-thermal-specifications) adattábla minősítések és hőmérsékleti kimeneti közös körülmények között.  
+* AC-tápegység és hűtéssel rendszerek, amelyek az Azure FXT Edge Filer igényeinek. (Olvasás [energiagazdálkodási és hőmérsékleti specifikációk](fxt-specs.md#power-and-thermal-specifications) tervezési és a telepítés méretezése.)  
 
   > [!NOTE] 
   > A két redundáns áramforrások ellátási egység (PSUs) teljes körű kihasználása használja Áramelosztó egységek két eltérő ágként Kapcsolatcsoportok hálózati áramellátás Visszaállt csatlakoztatása. Olvasási [tápkábelek csatlakoztatása](fxt-network-power.md#connect-power-cables) részleteiről.  
@@ -156,8 +154,6 @@ A rendszer az állványra szerelt szállításra való előkészítését, vagy 
 
 Egy nem kötelező kábel felügyeleti arm (CMA) az a FXT Edge Filer van megadva. A nyomtatott telepíti azt a útmutatás a csomagot. 
 
-<!-- need current images in electronic form from Dell - these are scans -->
-
 1. Csomagolja ki, és azonosíthatja a kábel felügyeleti arm kit összetevői:
    * CMA rendszertálca (1)
    * CMA (2)
@@ -168,7 +164,7 @@ Egy nem kötelező kábel felügyeleti arm (CMA) az a FXT Edge Filer van megadva
    > [!TIP] 
    > Biztonságos szállításra, az állvány egyik kiszolgálója a CMA, ikonjához, kosarak és a tálca tie burkolja, és szilárdan cinch őket. Ily módon a CMA biztonságossá tétele a rendszer instabil környezetben is biztonságos.
 
-   ![CMA részek ábrája](media/fxt-install/cma-parts-scan-400.png)
+   ![CMA részek ábrája](media/fxt-install/cma-kit-400.png)
 
 2. Telepítse a CMA rendszertálca.
 
@@ -178,7 +174,7 @@ Egy nem kötelező kábel felügyeleti arm (CMA) az a FXT Edge Filer van megadva
    1. Küldje le a tálca előre mindaddig, amíg azt helyen kattint. (1)
    1. A tálca törléséhez nyomja össze a zárolás-kiadás gombok a központ felé, és a fogadó szögletes zárójelek (2) kívül a tálca lekéréses.
 
-   ![CMA rendszertálca telepítés ábrája](media/fxt-install/cma-tray-scan-400.png)
+   ![CMA rendszertálca telepítés ábrája](media/fxt-install/cma-tray-install-400.png)
 
 3. Telepítse a CMA melléklet zárójeleket. 
 
@@ -188,7 +184,7 @@ Egy nem kötelező kábel felügyeleti arm (CMA) az a FXT Edge Filer van megadva
    > * Az egyszerűség kedvéért csatlakoztassa a CMA ellentétes a tápegységek (oldalán A). Ha csatlakoztatva van, a B oldalon, a CMA bontani kell ahhoz, hogy távolítsa el a külső tápegység. 
    > * Mindig az szolgáltat az energiagazdálkodási eltávolítása előtt távolítsa el a tálca. 
 
-   ![CMA zárójel telepítés ábrája](media/fxt-install/cma-brackets-scan-400.png)
+   ![CMA zárójel telepítés ábrája](media/fxt-install/cma-bracket-l-r-install-400.png)
 
    1. Válassza ki a megfelelő CMA melléklet zárójelet az oldal, ahol szeretné csatlakoztatni a CMA, (B oldalt vagy oldalt tartalmazó).
    1. A CMA melléklet zárójelet telepítse a megfelelő ügyféloldali A vagy B oldal megjelölés hátulján a dia sín található.
@@ -200,11 +196,11 @@ Egy nem kötelező kábel felügyeleti arm (CMA) az a FXT Edge Filer van megadva
    1. A többi zárolás, a legkülső zárójelet végén fér, mindaddig, amíg a zárolás végez (2). 
    1. A CMA eltávolításához működésűeknek mindkét zárolás van életben billentyűkombináció lenyomásával a CMA kiadási gombok felső részén a belső és külső reteszes házak (3).
 
-   ![Fő CMA telepítés ábrája](media/fxt-install/cma-install-scan-400.png)
+   ![Fő CMA telepítés ábrája](media/fxt-install/cma-install-400.png)
 
    Erről a rendszer a hozzáférés és a szolgáltatás a CMA is elforgatva. Oldalpántos végén a CMA, erről a tálca unseat (1), hogy elvégezhető. Miután a tálca a unseated, párhuzamos a CMA, erről a rendszer (2).
 
-   ![Illusztráció: CMA elforgatott nyissa meg a szolgáltatás](media/fxt-install/cma-open-scan-400.png)
+   ![Illusztráció: CMA elforgatott nyissa meg a szolgáltatás](media/fxt-install/cma-swing-over-tray-400.png)
 
 ## <a name="install-the-front-bezel-optional"></a>Telepítse az első bezel (nem kötelező)
 
@@ -222,7 +218,7 @@ Az első bezel eltávolítása:
 1. Nyomja le a kiadási gomb bal oldalán, és kérje le a bezel, erről a váz bal oldalán.
 1. A jobb oldali záró kihúzása, és távolítsa el a bezel.
    
-   ![A kép a kiadási gomb bal oldalán a bezel és annak eltávolításáról kiindulásként passzív bal oldaláról](media/fxt-install/remove-bezel-updated-600.png)
+   ![A kép a kiadási gomb bal oldalán a bezel és annak eltávolításáról kiindulásként passzív bal oldaláról](media/fxt-install/remove-bezel-edited-600.png)
 
 ## <a name="next-steps"></a>További lépések
 

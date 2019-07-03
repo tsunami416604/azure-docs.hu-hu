@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 6b7c3099415aed9529727a1de30cd832189db58d
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 36ed354304cb1c88e48088f4b36c1ad0350af0dc
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450379"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543028"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>Oktatóanyag: A fürt hálózati beállítások konfigurálása 
 
@@ -23,7 +23,7 @@ Az oktatóanyagban érintett témák köre:
 
 > [!div class="checklist"]
 > * Hálózati beállítások körét előfordulhat, hogy a fürt létrehozása után frissíteni kell
-> * Melyik FXT Edge Filer használati esetek szükséges egy AD-kiszolgáló vagy a DNS-kiszolgáló 
+> * Melyik Azure FXT Edge Filer használati esetek szükséges egy AD-kiszolgáló vagy a DNS-kiszolgáló 
 > * Ciklikus időszeletelési DNS (RRDNS) automatikusan betölteni az ügyfél érkező kérések elosztása a FXT fürt konfigurálása
 
 A lépések elvégzéséhez szükséges idő attól függ, a rendszer hány konfigurációs módosítások szükségesek:
@@ -105,7 +105,7 @@ Az optimális teljesítmény érdekében konfigurálja a DNS-kiszolgáló, ügyf
 
 Egy fürt vserver a bal oldalon látható, és IP-címek a center és a jobb oldalon jelennek meg. Minden egyes ügyfél-hozzáférési pont konfigurálása a rekordok és -mutatók szemléltetett módon.
 
-![Fürt ciklikus időszeletelési DNS diagram – részletes helyettesítő szöveg hivatkozás a következő kép](media/fxt-rrdns-diagram.png) 
+![Fürt ciklikus időszeletelési DNS diagram – részletes helyettesítő szöveg hivatkozás a következő kép](media/fxt-cluster-config/fxt-rrdns-diagram.png) 
 [részletes leírása](https://azure.github.io/Avere/legacy/Azure-FXT-EdgeFilerDNSconfiguration-alt-text.html)
 
 Minden ügyfél által használt IP-cím a fürt rendelkeznie kell egy egyedi nevet a belső használatra. (Az alábbi ábrán az ügyfél IP-címek vs1 nevesített – ügyfél - IP-* ajánlattartalomnak, de éles környezetben valószínűleg használjon valami hasonló ügyfél * tömörebb.)

@@ -8,8 +8,6 @@
       href: azure-portal-supported-browsers-devices.md
 - name: Alapelvek
   items:
-    - name: Azure-irányítópultok létrehozása és megosztása
-      href: azure-portal-dashboards.md
     - name: Irányítópultok megosztása szerepköralapú hozzáférés-vezérléssel
       href: azure-portal-dashboard-share-access.md
     - name: Azure-irányítópultok létrehozása programozott módon
@@ -20,6 +18,8 @@
       href: azure-portal-change-theme-high-contrast.md
     - name: 'Kedvencek hozzáadása, eltávolítása és rendezése'
       href: azure-portal-add-remove-sort-favorites.md
+    - name: Azure-irányítópultok létrehozása és megosztása
+      href: azure-portal-dashboards.md
     - name: Egyéni Markdown-csempe használata
       href: azure-portal-markdown-tile.md
     - name: Felhasználói beállítások exportálása vagy törlése

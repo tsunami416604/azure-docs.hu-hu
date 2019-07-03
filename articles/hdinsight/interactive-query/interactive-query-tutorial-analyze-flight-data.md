@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 06/25/2019
 ms.author: hrasheed
 ms.custom: hdinsightactive,mvc
-ms.openlocfilehash: 41284712942b2d01510f91d5cc50d92ae3241127
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 403e165d7ebe8365ffa0fd2f5f3779d3b4fab68f
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462715"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543634"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Oktatóanyag: A kinyerési, átalakítási és adatok betöltése az Azure HDInsight interaktív lekérdezés használata
 
@@ -32,7 +32,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 * Egy HDInsight interaktív lekérdezési fürtöt. Lásd: [Apache Hadoop-fürtök létrehozása az Azure portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) válassza **interaktív lekérdezés** a **fürt típusa**.
 
-* Az Azure SQL-adatbázis. Egy Azure SQL-adatbázist használ céladattárként. Ha még nem rendelkezik SQL-adatbázissal, olvassa el az [Azure SQL-adatbázis az Azure Portalon történő létrehozását](/../sql-database/sql-database-single-database-get-started.md) ismertető cikket.
+* Az Azure SQL-adatbázis. Egy Azure SQL-adatbázist használ céladattárként. Ha még nem rendelkezik SQL-adatbázissal, olvassa el az [Azure SQL-adatbázis az Azure Portalon történő létrehozását](/azure/sql-database/sql-database-single-database-get-started) ismertető cikket.
 
 * Egy SSH-ügyfél. További információkért lásd: [HDInsight (az Apache Hadoop) SSH-val csatlakozhat](../hdinsight-hadoop-linux-use-ssh-unix.md).
 

@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: dd74b82d4edad2b0176a3724176d924c2387f6fe
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b48d8d74843947c3e40dc80234560b0147be6eea
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450323"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542962"
 ---
 # <a name="tutorial-mount-the-cluster"></a>Oktatóanyag: A fürt csatlakoztatása
 
@@ -61,11 +61,9 @@ Nincsenek a mount parancs három elemek:
 
 A fürt elérési út a vserver kombinációját *IP-cím* plusz elérési útját egy *névtér csatlakozási*. A névtér szinkronizációs pont a virtuális elérési utat, ha definiálva, [hozzáadva a tárolórendszer](fxt-add-storage.md#create-a-junction).
 
-Például, ha a használt ``/avere/files`` a névtér elérési útjaként az ügyfelek csatlakoztatni szeretné *IP_cím*: / avere vagy fájlokat a helyi csatlakoztatási ponton. 
+Például, ha a használt ``/fxt/files`` a névtér elérési útjaként az ügyfelek csatlakoztatni szeretné *IP_cím*: / fxt vagy fájlokat a helyi csatlakoztatási ponton. 
 
-<!-- to do: update screenshot to use fxt/files instead of avere/files -->
-
-![A névtér elérési út mezőbe fájlokkal/avere / "Új szinkronizációs pont hozzáadása" párbeszédpanelen](media/fxt-mount/fxt-create-junction-example.png)
+![A névtér elérési út mezőbe fájlokkal/avere / "Új szinkronizációs pont hozzáadása" párbeszédpanelen](media/fxt-mount/fxt-junction-example.png)
 
 Az IP-cím a megadott a vserver az ügyfél által használt IP-címek egyike. A számos ügyfél által használt IP-címek a Vezérlőpult fürt két helyen található:
 

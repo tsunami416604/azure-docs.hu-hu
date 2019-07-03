@@ -22,10 +22,6 @@
           href: bastion-vm-full-screen.md
     - name: Hálózati biztonsági csoportok használata
       href: bastion-nsg.md
-- name: Referencia
-  items:
-    - name: REST
-      href: 'https://docs.microsoft.com/rest/api/network-gateway'
 - name: További források
   items:
     - name: Bastion – GYIK

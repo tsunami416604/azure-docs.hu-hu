@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 86d6653aceeb7a44e3758b629d74db516235fcf8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c78fa8ec470f04bcd88ab403249f77a65120c707
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102338"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550394"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>Oktatóanyag: A CX Suite bizonyulhat az Azure Active Directory-integráció
 
@@ -119,7 +119,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés CX Suite bizonyulhat
 
     a. Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címe: `https://cxsuite.foresee.com/`
 
-    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: https:\//www.okta.com/saml2/service-provider/<UniqueID>
+    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: https:\//www.okta.com/saml2/service-provider/\<UniqueID >
 
     > [!Note]
     > Ha a **azonosító** értéke nem kérdezhető le az automatikus polulated, majd töltse ki az értéket manuálisan a következők szerint minta felett. Az azonosító értéke nem valódi. Ez az érték frissítse a tényleges azonosítója. Kapcsolattartó [fája CX Suite ügyfél-támogatási csapatának](mailto:support@foresee.com) lekérni ezt az értéket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.

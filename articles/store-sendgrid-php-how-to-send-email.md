@@ -36,7 +36,7 @@ A SendGrid van egy [e-mail felhő alapú szolgáltatás] , amely megbízható bi
 * Továbbítás vásárlói kapcsolatos kérdésekben
 * E-mail-értesítések az alkalmazásból
 
-További információkért lásd: [ https://sendgrid.com ] [ https://sendgrid.com].
+További információkért lásd: [https://sendgrid.com][https://sendgrid.com].
 
 ## <a name="create-a-sendgrid-account"></a>A SendGrid-fiók létrehozása
 

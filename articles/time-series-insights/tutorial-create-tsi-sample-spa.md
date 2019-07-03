@@ -4,20 +4,20 @@ description: Ismerje meg, hogyan hozhat létre egy egyoldalas webalkalmazást, a
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 04/25/2019
+ms.date: 06/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 2f25267b95e9ed5f7d5f6e6373fb9e3807927a7f
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: e415c681ae5a35de6e8ff76e09cfef8cc8cc98f8
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735348"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67544069"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Oktatóanyag: Azure Time Series Insights egyoldalas webalkalmazás létrehozása
 
-Ez az oktatóanyag végigvezeti a felhasználót az Azure Time Series Insights-adatok eléréséhez a saját egyoldalas webes alkalmazás (SPA) létrehozásának folyamatán. 
+Ez az oktatóanyag végigvezeti a felhasználót az Azure Time Series Insights-adatok eléréséhez a saját egyoldalas webes alkalmazás (SPA) létrehozásának folyamatán.
 
 Ezen oktatóanyag segítségével elsajátíthatja a következőket:
 
@@ -50,55 +50,14 @@ Ez az oktatóanyag a mintaalkalmazás a Time Series Insights-környezet adatait 
 
 ## <a name="register-the-application-with-azure-ad"></a>Az alkalmazás regisztrálása az Azure AD-ben
 
-Mielőtt az alkalmazás létrehozásához, az Azure ad-vel kell regisztrálni. Regisztráció az identitás konfigurációs kínálja fel, hogy az alkalmazás használhatja OAuth-támogatás az egyszeri bejelentkezés. OAuth gyógyfürdők Implicit engedélyezés engedélyezési típusa használatára van szükség. Frissítse az engedély az alkalmazásjegyzékben. Az alkalmazásjegyzék az alkalmazás identitáskonfigurációjának JSON-ábrázolása.
-
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) az Azure-előfizetés fiók használatával.  
-1. Válassza az **Azure Active Directory** > **Alkalmazásregisztrációk** > **Új alkalmazás regisztrálása** lehetőséget.
-
-   [![Az Azure portal – kezdje az Azure AD alkalmazás regisztrálása](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration.png#lightbox)
-
-1. Az a **létrehozás** panelen adja meg a szükséges paramétereket.
-
-   Paraméter|Leírás
-   ---|---
-   **Name (Név)** | Adjon meg egy kifejező regisztrációs nevet.  
-   **Alkalmazás típusa** | Hagyja meg **Web app és az API**.
-   **Bejelentkezési URL** | Adja meg a bejelentkezési (kezdőlap) lapján az alkalmazás URL-CÍMÉT. Az alkalmazás újabb üzemel az Azure App Service-ben, mert egy URL-címet kell használnia a a https:\//azurewebsites.net tartományhoz. Ebben a példában a név a regisztrációs néven alapul.
-
-   Válassza ki **létrehozás** hozhat létre az új alkalmazás regisztrálása.
-
-   [![Azure portal – lehetőség a létrehozása az Azure AD alkalmazás regisztrációs panelen](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-create.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-create.png#lightbox)
-
-1. Erőforrás alkalmazások biztosítanak a REST API-k, amelyek más alkalmazások is használják. Az API-k is az Azure ad-vel van regisztrálva. API-k az ügyfélalkalmazások számára részletes, biztonságos hozzáférést biztosítanak a megjelenítésével befejeztük *hatókörök*. Mivel az alkalmazás az Azure Time Series Insights API-hívások, meg kell adnia az API-t és a hatókör. Az engedélyt az API-t és a hatókör futásidőben. Válassza ki **beállítások** > **szükséges engedélyek** > **Hozzáadás**.
-
-   [![Az Azure portal – hozzáadásához az Azure AD-engedélyekről az hozzáadása lehetőség](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms.png#lightbox)
-
-1. Az a **API-hozzáférés hozzáadása** ablaktáblán válassza előbb **1 API kiválasztása** , adja meg az Azure Time Series Insights API. Az a **API kiválasztása** ablaktáblában a Keresés mezőbe írja be **az azure time**. Ezután válassza ki **Azure Time Series Insights** az eredménylistában. Válassza a **Kiválasztás** lehetőséget
-
-   [![Az Azure portal – a keresési lehetőség az Azure AD-engedélyekről hozzáadása](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms-api.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms-api.png#lightbox)
-
-1. Jelölje ki az API-hoz, a hatókör az **API-hozzáférés hozzáadása** ablaktáblán válassza előbb **2 Select engedélyek**. Az a **hozzáférés engedélyezése** panelen válassza a **hozzáférés az Azure Time Series Insights szolgáltatás** hatókör. Válassza a **Kiválasztás** lehetőséget Visszatér a **API-hozzáférés hozzáadása** ablaktáblán. Válassza a **Done** (Kész) lehetőséget.
-
-   [![Az Azure portal - hozzáadása az Azure AD-engedélyekről hatókör beállítása](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms-api-scopes.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms-api-scopes.png#lightbox)
-
-1. Az a **szükséges engedélyek** ablaktáblán, az Azure Time Series Insights API mostantól látható. Emellett meg kell adnia a előtti hozzájárulási engedélyt az alkalmazáshoz hozzáférni az API-hoz és a hatókör az összes felhasználó számára. Válassza ki **engedélyeket**, majd válassza ki **Igen**.
-
-   [![Az Azure portal – a Grant engedélyek beállítás hozzáadásához az Azure AD szükséges engedélyek](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-required-permissions-consent.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-required-permissions-consent.png#lightbox)
-
-1. Hogy taglaltak szerint is frissítenie kell az alkalmazásjegyzékben. A vízszintes menü felső részén a panelen (a "navigációs"), válassza ki az alkalmazás nevét, térjen vissza a **regisztrált alkalmazás** ablaktáblán. Válassza ki **Manifest**, módosítsa a `oauth2AllowImplicitFlow` tulajdonságot `true`, majd válassza ki **mentése**.
-
-   [![Azure portal – a jegyzékfájl frissítése az Azure ad-ben](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-update-manifest.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-update-manifest.png#lightbox)
-
-1. A webhely-navigációs válassza ki az alkalmazás nevét, térjen vissza a **regisztrált alkalmazás** ablaktáblán. Másolja le az értékeket a **kezdőlap** és **Alkalmazásazonosító** az alkalmazáshoz. Az oktatóanyag későbbi részében használhatja ezeket a tulajdonságokat.
-
-   [![Azure portal – Másolás a kezdőlap URL-címe és az Alkalmazásazonosító az alkalmazás értékei](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-application.png)](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-application.png#lightbox)
+[!INCLUDE [Azure Active Directory app registration](../../includes/time-series-insights-aad-registration.md)]
 
 ## <a name="build-and-publish-the-web-application"></a>A webalkalmazás létrehozása és közzététele
 
 1. Hozzon létre egy könyvtárat az alkalmazás projektfájljainak tárolásához. Ezt követően folytassa a következő URL-címek mindegyike. Kattintson a jobb gombbal a **Raw** hivatkozásra az oldal jobb felső sarkában, és válassza ki **Mentés másként** , mentse a fájlokat a projekt könyvtárában.
 
-   - [*index.HTML*](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html): HTML és JavaScript a laphoz
-   - [*sampleStyles.css*]( https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css): Stíluslap
+   - [*index.HTML*](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html): a HTML és JavaScript a laphoz
+   - [*sampleStyles.css*]( https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css): a CSS-stílus lap
 
    > [!NOTE]
    > A böngésző függően előfordulhat, hogy módosítani szeretné a kiterjesztések .html vagy .css a fájl mentése előtt.
@@ -142,7 +101,7 @@ Mielőtt az alkalmazás létrehozásához, az Azure ad-vel kell regisztrálni. R
       <link rel="stylesheet" type="text/css" href="../../dist/tsiclient.css"> -->
       ```
 
-   1. Konfigurálásához az alkalmazásnak, hogy az Azure AD alkalmazás regisztrációs Azonosítót használja, módosítsa a `clientID` és `postLogoutRedirectUri` értékeket kell használnia a tartozó értékeket **Alkalmazásazonosító** és **kezdőlap** a9.lépésbenkimásolt[ Az alkalmazás regisztrálása az Azure ad-vel](#register-the-application-with-azure-ad).
+   1. Konfigurálásához az alkalmazásnak, hogy az Azure AD alkalmazás regisztrációs Azonosítót használja, módosítsa a `clientID` használt értéket a a **Alkalmazásazonosító** a másolt **3. lépés** amikor, [az alkalmazás regisztrálva az Azure AD használata](#register-the-application-with-azure-ad). Ha létrehozott egy **kijelentkezési URL-címe** az Azure ad-ben, állítsa be ezt az értéket a `postLogoutRedirectUri` értéket.
 
       [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-153&highlight=4-5)]
 
@@ -182,9 +141,9 @@ Mielőtt az alkalmazás létrehozásához, az Azure ad-vel kell regisztrálni. R
 
 Hibakód/állapot | Leírás
 ---------------------| -----------
-*AADSTS50011: A válaszcím nem az alkalmazás regisztrálva van.* | Az Azure AD-regisztrációs hiányzik a **válasz URL-cím** tulajdonság. Lépjen a **beállítások** > **válasz URL-címek** számára az Azure AD-alkalmazás regisztrációja. Ellenőrizze, hogy a **bejelentkezési** a 3. lépésben megadott URL-cím [regisztrálnia kell az alkalmazást az Azure ad-vel](#register-the-application-with-azure-ad) megtalálható.
-*AADSTS50011: A kérésben megadott URL-címet a válasz nem felel meg a válasz URL-címek az alkalmazáshoz konfigurált: '\<Application ID GUID>'.* | A `postLogoutRedirectUri` 6. lépésben megadott [hozhat létre, és tegye közzé a webalkalmazást](#build-and-publish-the-web-application) meg kell egyeznie a megadott érték **beállítások** > **válasz URL-címek** a az Azure AD-alkalmazás regisztrációja. Ügyeljen arra, hogy tartozó értéknek a módosításához is **cél URL-címe** használandó *https* száma 5. lépés [hozhat létre, és tegye közzé a webalkalmazást](#build-and-publish-the-web-application).
-A webalkalmazás betöltődik, de az még egy stílus nélküli, csak szöveges bejelentkezési oldala, amelyen egy fehér háttér. | Győződjön meg arról, hogy ha az elérési utak tárgyalt 4. lépés [hozhat létre, és tegye közzé a webalkalmazást](#build-and-publish-the-web-application) helyes-e. Ha a webalkalmazás nem találja a .css fájlokat, akkor a lapok nem a megfelelő stílussal jelennek meg.
+*AADSTS50011: A válaszcím nem az alkalmazás regisztrálva van.* | Az Azure AD-regisztrációs hiányzik a **válasz URL-cím** tulajdonság. Lépjen a **beállítások** > **válasz URL-címek** számára az Azure AD-alkalmazás regisztrációja. Ellenőrizze, hogy a **átirányítási URI-t** a adhat meg kellett **2. lépés** amikor, [az alkalmazást, hogy az Azure ad-ben regisztrált](#register-the-application-with-azure-ad) megtalálható.
+*AADSTS50011: A kérésben megadott URL-címet a válasz nem felel meg a válasz URL-címek az alkalmazáshoz konfigurált: '\<Application ID GUID>'.* | A `postLogoutRedirectUri` megadott **6. lépés** a [hozhat létre, és tegye közzé a webalkalmazást](#build-and-publish-the-web-application) meg kell egyeznie a megadott érték **beállítások**  >  **Válasz URL-címek** a az Azure AD-alkalmazás regisztrációja. Ügyeljen arra, hogy tartozó értéknek a módosításához is **cél URL-címe** használandó *https* kiszolgálónként **5. lépés** a [hozhat létre, és tegye közzé a webalkalmazást](#build-and-publish-the-web-application).
+A webalkalmazás betöltődik, de az még egy stílus nélküli, csak szöveges bejelentkezési oldala, amelyen egy fehér háttér. | Győződjön meg arról, hogy az elérési utak tárgyalt **4. lépés** a [hozhat létre, és tegye közzé a webalkalmazást](#build-and-publish-the-web-application) helyes-e. Ha a webalkalmazás nem találja a .css fájlokat, akkor a lapok nem a megfelelő stílussal jelennek meg.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

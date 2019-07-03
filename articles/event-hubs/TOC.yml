@@ -63,14 +63,16 @@
       href: event-hubs-availability-and-consistency.md
     - name: Méretezhetőség
       href: event-hubs-scalability.md
+    - name: Geo-vészhelyreállítás
+      items:
+        - name: Georeplikációs vészhelyreállítás és georeplikáció
+          href: event-hubs-geo-dr.md
     - name: Biztonság
       items:
         - name: Az Azure-erőforrásokhoz készült felügyelt identitások
           href: event-hubs-managed-service-identity.md
         - name: Szerepköralapú hozzáférés-vezérlés (előzetes verzió)
           href: event-hubs-role-based-access-control.md
-        - name: Georeplikációs vészhelyreállítás és georeplikáció
-          href: event-hubs-geo-dr.md
         - name: A hitelesítési és biztonsági modell áttekintése
           href: event-hubs-authentication-and-security-model-overview.md
         - name: Biztonsági attribútumok

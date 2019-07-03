@@ -8,7 +8,7 @@ metadata:
   author: cherylmc
   ms.service: Bastion
   ms.topic: landing-page
-  ms.date: 06/13/2019
+  ms.date: 07/02/2019
   ms.author: cherylmc
 abstract:
   description: 'Megtudhatja, hogy csatlakozhat egy virtuális géphez az Azure Bastionnal. Biztonságos és zökkenőmentes RDP-/SSH-kapcsolatokat konfigurálhat a virtuális gépeihez közvetlenül az Azure Portalon SSL használatával. Ha az Azure Bastionon keresztül csatlakozik, a virtuális gépeinek nincs szüksége nyilvános IP-címre.'
@@ -33,11 +33,3 @@ sections:
           - html: <a href="/azure/bastion/bastion-connect-vm-ssh">Csatlakozás Windows rendszerű virtuális géphez</a>
           - html: <a href="/azure/bastion/bastion-connect-vm-rdp">Csatlakozás Linux rendszerű virtuális géphez</a>
           - html: <a href="/azure/bastion/bastion-faq">Az Azure Bastion GYIK elolvasása</a>
-  - title: Referencia
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="https://msdn.microsoft.com/library/azure/mt586720">REST API-referencia</a></p>'
