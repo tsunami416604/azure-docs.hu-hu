@@ -221,8 +221,8 @@ A nyilvános kulcsot beszerezheti a tranzakció csomópont listából. Másolja 
 
     | Érték | Leírás
     |-------|-------------
-    | \<az alfa csomópont nyilvános kulcs\> | Az alfa csomópont nyilvános kulcs
-    | \<Ethereum fiók címe\> | Az alapértelmezett tranzakció csomópontjában létrehozott Ethereum fiók címe
+    | \<<alpha node public key\> | Az alfa csomópont nyilvános kulcs
+    | \<Ethereum account address\> | Az alapértelmezett tranzakció csomópontjában létrehozott Ethereum fiók címe
 
     Ebben a példában a kezdeti értéke, a **storeData** 42 értékre van állítva.
 
@@ -392,8 +392,8 @@ Mivel mi nem deklarálható **béta** csomópont található nyilvános kulcs **
 
     | Érték | Leírás
     |-------|-------------
-    | \<az alfa csomópont nyilvános kulcs\> | Az alfa csomópont nyilvános kulcs
-    | \<Ethereum fiók címe\> | Ethereum-fiók cím alapértelmezett tranzakció csomópontjában létrehozott.
+    | \<alpha node public key\> | Az alfa csomópont nyilvános kulcs
+    | \<Ethereum account address\> | Ethereum-fiók cím alapértelmezett tranzakció csomópontjában létrehozott.
 
     **privateFor** határozza meg a csomópontok, amelyhez a tranzakció áll rendelkezésre. Ebben a példában a fiók az alapértelmezett tranzakció csomópont leadott is privát tranzakciók a **alpha** csomópont. Az összes titkos tranzakció résztvevők nyilvános kulcsok hozzá kell.
 
