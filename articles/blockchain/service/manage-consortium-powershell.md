@@ -145,8 +145,8 @@ Ez a parancsmag használatával részletek a tag vagy tagjainak listázása.
 
 | Paraméter | Leírás | Szükséges |
 |-----------|-------------|:--------:|
-| Name (Név) | A Blockchain-szolgáltatás tag kapcsolatos részleteket lekérni kívánt nevét. Ha egy név van megadva, a tag adatait adja vissza. Ha a name nincs megadva, az összes consortium tagok listáját adja vissza. | Nem |
-| A tagok | Importálás – ConsortiumManagementContracts származó tagok objektum | Igen |
+| Name | A Blockchain-szolgáltatás tag kapcsolatos részleteket lekérni kívánt nevét. Ha egy név van megadva, a tag adatait adja vissza. Ha a name nincs megadva, az összes consortium tagok listáját adja vissza. | Nem |
+| Members | Importálás – ConsortiumManagementContracts származó tagok objektum | Igen |
 | Web3Client | New-Web3Connection szerzett Web3Client objektum | Igen |
 
 #### <a name="example"></a>Példa
@@ -174,8 +174,8 @@ Ez a parancsmag használatával a blockchain-tag eltávolítása.
 
 | Paraméter | Leírás | Kötelező |
 |-----------|-------------|:--------:|
-| Name (Név) | Tag neve eltávolítása | Igen |
-| A tagok | Importálás – ConsortiumManagementContracts származó tagok objektum | Igen |
+| Name | Tag neve eltávolítása | Igen |
+| Members | Importálás – ConsortiumManagementContracts származó tagok objektum | Igen |
 | Web3Account | Importálás – Web3Account szerzett Web3Account objektum | Igen |
 | Web3Client | New-Web3Connection szerzett Web3Client objektum | Igen |
 
@@ -196,10 +196,10 @@ Consortium rendszergazdák **DisplayName** és **szerepkör** összes tagjához.
 
 | Paraméter | Leírás | Kötelező |
 |-----------|-------------|:--------:|
-| Name (Név) | A blockchain tag neve | Igen |
-| displayName | Új megjelenített név | Nem |
+| Name | A blockchain tag neve | Igen |
+| DisplayName | Új megjelenített név | Nem |
 | AccountAddress | Fiók címe | Nem |
-| A tagok | Importálás – ConsortiumManagementContracts származó tagok objektum | Igen |
+| Members | Importálás – ConsortiumManagementContracts származó tagok objektum | Igen |
 | Web3Account | Importálás – Web3Account szerzett Web3Account objektum | Igen |
 | Web3Client |  New-Web3Connection szerzett Web3Client objektum| Igen |
 
@@ -223,8 +223,8 @@ Ez a parancsmag használatával új tagok számára a consortium meghívása.
 | Paraméter | Leírás | Szükséges |
 |-----------|-------------|:--------:|
 | SubscriptionId | A tag meghívása az Azure-előfizetés azonosítója | Igen |
-| Szerepkör | A consortium szerepkör. Az értékek lehetnek a rendszergazda vagy felhasználó. A rendszergazda a consortium rendszergazdai szerepkör nem. FELHASZNÁLÓ a consortium szerepét. | Igen |
-| A tagok | Importálás – ConsortiumManagementContracts származó tagok objektum | Igen |
+| Role | A consortium szerepkör. Az értékek lehetnek a rendszergazda vagy felhasználó. A rendszergazda a consortium rendszergazdai szerepkör nem. FELHASZNÁLÓ a consortium szerepét. | Igen |
+| Members | Importálás – ConsortiumManagementContracts származó tagok objektum | Igen |
 | Web3Account | Importálás – Web3Account szerzett Web3Account objektum | Igen |
 | Web3Client | New-Web3Connection szerzett Web3Client objektum | Igen |
 
@@ -243,7 +243,7 @@ Ez a parancsmag használatával beolvasása vagy listázása egy consortium tag 
 | Paraméter | Leírás | Szükséges |
 |-----------|-------------|:--------:|
 | SubscriptionId | A tag meghívása az Azure előfizetés-azonosítója. Ha az előfizetés-azonosító nincs megadva, a adja vissza, az előfizetés-azonosítók a meghívás részletei. Ha az előfizetés-azonosító, a rendszer az összes tag meghívók listáját adja vissza. | Nem |
-| A tagok | Importálás – ConsortiumManagementContracts származó tagok objektum | Igen |
+| Members | Importálás – ConsortiumManagementContracts származó tagok objektum | Igen |
 | Web3Client | New-Web3Connection szerzett Web3Client objektum | Igen |
 
 #### <a name="example"></a>Példa
@@ -270,7 +270,7 @@ Ez a parancsmag használatával consortium tagja meghívás visszavonása.
 | Paraméter | Leírás | Kötelező |
 |-----------|-------------|:--------:|
 | SubscriptionId | Azure-előfizetési Azonosítóját a tag visszavonása | Igen |
-| A tagok | Importálás – ConsortiumManagementContracts származó tagok objektum | Igen |
+| Members | Importálás – ConsortiumManagementContracts származó tagok objektum | Igen |
 | Web3Account | Importálás – Web3Account szerzett Web3Account objektum | Igen |
 | Web3Client | New-Web3Connection szerzett Web3Client objektum | Igen |
 
@@ -290,8 +290,8 @@ Ez a parancsmag segítségével beállíthatja a **szerepkör** meglévő meghí
 | Paraméter | Leírás | Kötelező |
 |-----------|-------------|:--------:|
 | SubscriptionId | A tag meghívása az Azure-előfizetés azonosítója | Igen |
-| Szerepkör | Meghívó új consortium szerepkör. Az értékek lehetnek **felhasználói** vagy **rendszergazdai**. | Igen |
-| A tagok |  Importálás – ConsortiumManagementContracts származó tagok objektum | Igen |
+| Role | Meghívó új consortium szerepkör. Az értékek lehetnek **felhasználói** vagy **rendszergazdai**. | Igen |
+| Members |  Importálás – ConsortiumManagementContracts származó tagok objektum | Igen |
 | Web3Account | Importálás – Web3Account szerzett Web3Account objektum | Igen |
 | Web3Client | New-Web3Connection szerzett Web3Client objektum | Igen |
 
