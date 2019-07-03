@@ -152,9 +152,9 @@ A következő fejlécek az összes ügyfél által kezdeményezett szükségesek
 
 | Fejléc | Érték |
 |----|----|
-| Útvonal | Ebben a dokumentumban meghatározottak szerint az üzenet elérési út |
+| Path | Ebben a dokumentumban meghatározottak szerint az üzenet elérési út |
 | X-RequestId | A "no-dash" formátumban UUID |
-| X-időbélyeg | Ügyfél UTC óra ISO 8601 formátumú időbélyeg |
+| X-Timestamp | Ügyfél UTC óra ISO 8601 formátumú időbélyeg |
 
 #### <a name="x-requestid-header"></a>X-RequestId: fejléc
 
@@ -181,8 +181,8 @@ Az ügyfelek *kell* küldése egy `speech.config` azokat a csatlakozást beszéd
 
 | Fejléc neve | Érték |
 |----|----|
-| Útvonal | `speech.config` |
-| X-időbélyeg | Ügyfél UTC óra ISO 8601 formátumú időbélyeg |
+| Path | `speech.config` |
+| X-Timestamp | Ügyfél UTC óra ISO 8601 formátumú időbélyeg |
 | Content-Type | az Application/json; charset = utf-8 |
 
 Csakúgy, mint a Speech Service protokoll ügyfél által kezdeményezett összes üzenet a `speech.config` üzenet *kell* tartalmaznak egy *X-időbélyeg* fejlécet, amely rögzíti, amikor az üzenet el lett küldve az ügyfél UTC idő a szolgáltatásnak. A `speech.config` üzenet *nem* szükséges egy *X-RequestId:* fejléc, mert ez az üzenet nincs hozzárendelve egy adott speech kérelmet.
@@ -227,9 +227,9 @@ A system.version eleme a `speech.config` üzenet a beszéd, az ügyfélalkalmaz�
 
 | Mező | Leírás | Használat |
 |-|-|-|
-| Device.Manufacturer | Az eszköz hardver gyártója | Szükséges |
+| device.manufacturer | Az eszköz hardver gyártója | Szükséges |
 | device.model | Az eszköz modellje | Szükséges |
-| Device.Version | Az eszköz szoftverének verziója, eszköz gyártója által biztosított. Ezt az értéket megadja az eszközt, hogy a gyártó által nyomon követhetők egy verziója. | Szükséges |
+| device.version | Az eszköz szoftverének verziója, eszköz gyártója által biztosított. Ezt az értéket megadja az eszközt, hogy a gyártó által nyomon követhetők egy verziója. | Szükséges |
 
 ### <a name="message-audio"></a>üzenet `audio`
 
