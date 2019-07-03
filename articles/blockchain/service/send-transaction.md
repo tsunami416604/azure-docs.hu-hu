@@ -221,7 +221,7 @@ A nyilvános kulcsot beszerezheti a tranzakció csomópont listából. Másolja 
 
     | Érték | Leírás
     |-------|-------------
-    | \<<alpha node public key\> | Az alfa csomópont nyilvános kulcs
+    | \<alpha node public key\> | Az alfa csomópont nyilvános kulcs
     | \<Ethereum account address\> | Az alapértelmezett tranzakció csomópontjában létrehozott Ethereum fiók címe
 
     Ebben a példában a kezdeti értéke, a **storeData** 42 értékre van állítva.
