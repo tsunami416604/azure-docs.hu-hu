@@ -24,6 +24,9 @@
       maintainContext: true
 - name: Útmutató
   items:
+    - name: Hive számítási feladatok migrálása HDInsight 4.0-be
+      href: apache-hive-migrate-workloads.md
+      maintainContext: true
     - name: Fürttároló használata
       items:
         - name: Az Azure Storage használata
@@ -100,6 +103,9 @@
           href: ./apache-hadoop-connect-hive-power-bi-directquery.md
         - name: A Power BI csatlakoztatása az Apache Hadoophoz
           href: ../hadoop/apache-hadoop-connect-hive-power-bi.md
+          maintainContext: true
+        - name: A Hive lekérdezése a PowerShell és az ODBC használatával
+          href: apache-hive-query-odbc-driver-powershell.md
           maintainContext: true
         - name: Az Excel csatlakoztatása az Apache Hadoophoz
           href: ../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
@@ -333,11 +339,6 @@
         - name: Fürtteljesítmény monitorozása
           href: ../hdinsight-key-scenarios-to-monitor.md
           maintainContext: true
-- name: Útmutató
-  items:
-    - name: Hive számítási feladatok migrálása HDInsight 4.0-be
-      href: apache-hive-migrate-workloads.md
-      maintainContext: true
 - name: Referencia
   items:
     - name: Kódminták
