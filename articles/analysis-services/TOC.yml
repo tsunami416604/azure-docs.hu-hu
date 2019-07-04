@@ -1,8 +1,8 @@
-- name: Analysis Services – dokumentáció
+- name: Az Azure Analysis Services dokumentációja
   href: index.md
 - name: Áttekintés
   items:
-    - name: Mi az Analysis Services?
+    - name: Mi az Azure Analysis Services?
       href: analysis-services-overview.md
 - name: Gyors útmutatók
   items:

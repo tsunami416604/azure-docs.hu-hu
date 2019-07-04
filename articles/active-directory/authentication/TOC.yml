@@ -144,6 +144,8 @@
               href: active-directory-certificate-based-authentication-ios.md
     - name: Jelentéskészítés
       items:
+        - name: Használat és elemzések
+          href: howto-authentication-methods-usage-insights.md
         - name: SSPR-jelentések
           href: howto-sspr-reporting.md
         - name: MFA-jelentések

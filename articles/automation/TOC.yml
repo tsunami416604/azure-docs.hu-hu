@@ -124,6 +124,8 @@
         - name: Runbookok hibaelhárítása
           href: troubleshoot/runbooks.md
           displayName: troubleshoot
+        - name: Virtuális gépek indítása és leállítása
+          href: troubleshoot/start-stop-vm.md
 - name: Frissítéskezelés
   items:
     - name: A frissítéskezelés áttekintése
@@ -313,6 +315,8 @@
   items:
     - name: Azure Automation-feladat adatainak továbbítása a Log Analyticsbe
       href: automation-manage-send-joblogs-log-analytics.md
+    - name: A Log Analytics-munkaterület leképezéseihez támogatott régiók
+      href: how-to/region-mappings.md
 - name: Migrate (Áttelepítés)
   items:
     - name: Migrálás az Orchestratorból

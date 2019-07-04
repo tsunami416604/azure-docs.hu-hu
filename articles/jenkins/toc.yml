@@ -31,6 +31,8 @@
               maintainContext: true
             - name: Üzembe helyezés az AKS-ben kék/zöld minta használatával
               href: jenkins-aks-blue-green-deployment.md
+            - name: A CI/CD és az Azure Dev Spaces használata
+              href: tutorial-jenkins-dev-spaces.md
         - name: App Service
           items:
             - name: Azure-erőforrások létrehozás egy folyamat feladatában

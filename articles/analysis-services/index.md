@@ -8,14 +8,14 @@ layout: LandingPage
 ms.service: azure-analysis-services
 ms.topic: landing-page
 ms.date: 05/09/2019
-ms.openlocfilehash: acfbc3d44e5e7604f03b3e67db5846487a726d40
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: c69b1204332a94b21f845d1330bc39e3f4ac7144
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510272"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540851"
 ---
-# <a name="analysis-services-documentation"></a>Analysis Services – dokumentáció
+# <a name="azure-analysis-services-documentation"></a>Az Azure Analysis Services dokumentációja
 
 Ismerje meg, hogyan építhet ki és felügyelhet adatmodellezési megoldásokat az Analysis Services használatával. Az oktatóanyagok és az egyéb dokumentációk bemutatják, hogyan hozhat létre vállalati szintű BI-megoldásokat táblázatos adatok használatával felhőalapú vagy helyszíni környezetben.
 
@@ -31,7 +31,7 @@ Ismerje meg, hogyan építhet ki és felügyelhet adatmodellezési megoldásokat
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Tudnivalók az Analysis Services-ről</h3>
+                        <h3>Az Azure Analysis Services ismertetése</h3>
                     </div>
                 </div>
             </div>
@@ -67,7 +67,7 @@ Ismerje meg, hogyan építhet ki és felügyelhet adatmodellezési megoldásokat
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Analysis Services-kiszolgáló létrehozása</h3>
+                        <h3>Azure Analysis Services-kiszolgáló létrehozása</h3>
                     </div>
                 </div>
             </div>
@@ -110,8 +110,8 @@ Ismerje meg, hogyan építhet ki és felügyelhet adatmodellezési megoldásokat
                 <div class="card">
                     <div class="cardText">
                         <h3>Egyéb</h3>
-                        <p><a href="https://msdn.microsoft.com/library/gg413422.aspx">DAX</a></p>
-                        <p><a href="https://msdn.microsoft.com/library/mt211003.aspx">Power Query M</a></p>
+                        <p><a href="https://docs.microsoft.com/dax/data-analysis-expressions-dax-reference">DAX</a></p>
+                        <p><a href="https://docs.microsoft.com/powerquery-m/power-query-m-reference">Power Query M</a></p>
                     </div>
                 </div>
             </div>

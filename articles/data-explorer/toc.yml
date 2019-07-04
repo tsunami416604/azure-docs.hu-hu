@@ -11,10 +11,8 @@
       href: create-cluster-database-portal.md
     - name: Mintaadatok betöltése
       href: ingest-sample-data.md
-    - name: Adatok lekérdezése
-      items:
-        - name: Webes felhasználói felület
-          href: web-query-data.md
+    - name: Adatok lekérdezése a webes felülettel
+      href: web-query-data.md
 - name: Oktatóanyagok
   items:
     - name: Adatok betöltése kód használata nélkül
@@ -88,14 +86,14 @@
               href: power-bi-imported-query.md
             - name: SQL-lekérdezés
               href: power-bi-sql-query.md
-        - name: ODBC-összekötő
-          href: connect-odbc.md
-        - name: Sisense
-          href: sisense.md
         - name: Grafana
           href: grafana.md
+        - name: ODBC-összekötő
+          href: connect-odbc.md
         - name: Tableau
           href: tableau.md
+        - name: Sisense
+          href: sisense.md
     - name: Kezelés
       items:
         - name: Adatbázis-engedélyek kezelése

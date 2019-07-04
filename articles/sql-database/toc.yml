@@ -8,6 +8,8 @@
       href: sql-database-paas-vs-sql-server-iaas.md
     - name: Kibocsátási megjegyzések
       href: sql-database-release-notes.md
+    - name: Átjáró IP-címeinek migrálási frissítései
+      href: sql-database-gateway-migration.md
 - name: Gyors útmutatók
   expanded: true
   items:
