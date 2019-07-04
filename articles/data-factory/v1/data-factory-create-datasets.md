@@ -81,7 +81,7 @@ A következő táblázat ismerteti a fenti JSON-tulajdonságok:
 
 | Tulajdonság | Leírás | Szükséges | Alapértelmezett |
 | --- | --- | --- | --- |
-| név |Az adatkészlet nevét. Lásd: [Azure Data Factory – elnevezési szabályok](data-factory-naming-rules.md) elnevezési szabályait. |Igen |n/a |
+| name |Az adatkészlet nevét. Lásd: [Azure Data Factory – elnevezési szabályok](data-factory-naming-rules.md) elnevezési szabályait. |Igen |n/a |
 | type |Az adatkészlet típusa. Adja meg a Data Factory által támogatott típusú (például: AzureBlob, AzureSqlTable). <br/><br/>További információkért lásd: [adatkészlettípus](#Type). |Igen |NA |
 | structure |Az adatkészlet sémája.<br/><br/>További információkért lásd: [adatkészlet-szerkezetekben](#Structure). |Nem |n/a |
 | typeProperties | A típus tulajdonságokat különböznek az egyes (például: Az Azure Blob, az Azure SQL-tábla). További információ a támogatott típusok és a hozzájuk tartozó tulajdonságok: [adatkészlettípus](#Type). |Igen |n/a |
@@ -193,7 +193,7 @@ Minden egyes oszlopának struktúrája a következő tulajdonságokat tartalmazz
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| név |Az oszlop neve. |Igen |
+| name |Az oszlop neve. |Igen |
 | type |Az oszlop adattípusát.  |Nem |
 | culture |. NET-alapú kulturális környezetet használni, amikor a típus a .NET-típus: `Datetime` vagy `Datetimeoffset`. A mező alapértelmezett értéke: `en-us`. |Nem |
 | format |Formázó karakterlánc típus egy .NET-típus esetén használandó: `Datetime` vagy `Datetimeoffset`. |Nem |
