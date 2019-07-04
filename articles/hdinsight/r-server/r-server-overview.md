@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/12/2019
-ms.openlocfilehash: 26dd7554cc713d85a9e03649bcb6d41139cbdf27
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: a5e4c7acd407cef1bb5fc43d7e40014a6b088a0a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137180"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448890"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Mi a Machine Learning-szolgáltatások az Azure HDInsight
 
@@ -27,7 +27,7 @@ A modellek vagy elemzési eredő előrejelzéseket letölthető a helyszíni has
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>Machine Learning Services a HDInsight használatának első lépései
 
-Az Azure HDInsight egy Machine Learning-szolgáltatások-fürt létrehozásához válassza a **Machine Learning-szolgáltatások** fürt típusát az Azure portal használatával egy HDInsight-fürt létrehozásakor. A Machine Learning-szolgáltatások fürttípus ML Server is tartalmaz, az adatcsomópontok a fürt és a egy élcsomópontot, szolgál a Machine Learning-alapú elemzési alkotóelemeit zónának. Lásd: [Machine Learning Services a HDInsight használatának első lépései](r-server-get-started.md) bemutató hogyan hozhat létre a fürtöt.
+Az Azure HDInsight egy Machine Learning-szolgáltatások-fürt létrehozásához válassza a **Machine Learning-szolgáltatások** fürt típusát az Azure portal használatával egy HDInsight-fürt létrehozásakor. A Machine Learning-szolgáltatások fürttípus ML Server is tartalmaz, az adatcsomópontok a fürt és a egy élcsomópontot, szolgál a Machine Learning-alapú elemzési alkotóelemeit zónának. Lásd: [Apache Hadoop-fürtök létrehozása az Azure portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) bemutató hogyan hozhat létre a fürtöt.
 
 ## <a name="why-choose-ml-services-in-hdinsight"></a>Miért válassza ki a Machine Learning-szolgáltatások, a HDInsight?
 
@@ -68,13 +68,13 @@ A Machine Learning szolgáltatások a HDInsight a következő szolgáltatásokat
 
 Alapértelmezett tároló a HDInsight-fürtök a HDFS-fájlrendszer vagy egy Azure Storage-fiókot, vagy egy Azure Data Lake Storage társítható. Ez a társítás biztosítja, hogy feltöltött adatokat a fürthöz a tároló elemzése során állandó történik, és az adatok érhető el a fürt törlése után is. Az adatok átvitelét a beállítást választ ki, beleértve a portálalapú feltöltési funkció a storage-fiók kezeléséhez különféle eszközök és a [AzCopy](../../storage/common/storage-use-azcopy.md) segédprogramot.
 
-Lehetősége van további Blob való hozzáférés engedélyezése, és a Data lake tárolja az folyamat függetlenül használja az elsődleges tárolási lehetőség fürtkiépítési során. Lásd: [Machine Learning Services a HDInsight használatának első lépései](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-get-started) való hozzáadásáról a hozzáférés további fiókokra. Lásd: [Azure tárolási lehetőségei Machine Learning-szolgáltatások HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage) cikk további több tárfiók használatával kapcsolatban.
+Lehetősége van további Blob való hozzáférés engedélyezése, és a Data lake tárolja az folyamat függetlenül használja az elsődleges tárolási lehetőség fürtkiépítési során.  Lásd: [Azure tárolási lehetőségei Machine Learning-szolgáltatások HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage) cikk további több tárfiók használatával kapcsolatban.
 
 Is [Azure Files](../../storage/files/storage-how-to-use-files-linux.md) tárolási beállításként való használatra az élcsomóponti operacionalizáláshoz. Az Azure Files lehetővé teszi az Azure Storage-ban a Linux fájlrendszerbe létrehozott fájlmegosztást. HDInsight-fürtön a Machine Learning Services ezen adatok tárolási lehetőségekről további információkért lásd: [Azure tárolási lehetőségei Machine Learning-szolgáltatások HDInsight](r-server-storage.md).
 
 ## <a name="access-ml-services-edge-node"></a>Hozzáférés a Machine Learning-szolgáltatások élcsomóponthoz
 
-Csatlakozhat a Microsoft ML Server, az élcsomóponton, egy böngészővel. Telepíti a rendszer alapértelmezés szerint a fürt létrehozásakor. További információkért lásd: [lekérése és a gépi Tanulási szolgáltatások HDInsight stared](r-server-get-started.md). Akkor is csatlakozhat a fürt határcsomópontjához a parancssorból az R-konzol eléréséhez az SSH és PuTTY használatával.
+Csatlakozhat a Microsoft ML Server, az élcsomóponton, egy böngészővel. Telepíti a rendszer alapértelmezés szerint a fürt létrehozásakor.  Akkor is csatlakozhat a fürt határcsomópontjához a parancssorból az R-konzol eléréséhez az SSH és PuTTY használatával.
 
 ## <a name="develop-and-run-r-scripts"></a>Fejlesztés és R-szkriptek futtatása
 
@@ -142,6 +142,6 @@ Az árak egy Machine Learning-szolgáltatások HDInsight-fürthöz társított h
 
 Machine Learning-szolgáltatások HDInsight-fürtökön való használatával kapcsolatos további tudnivalókért lásd a következő témaköröket:
 
-* [Ismerkedés a Machine Learning-szolgáltatások HDInsight-fürt](r-server-get-started.md)
+* [Egy Machine Learning-szolgáltatások az RStudio Server használata Azure HDInsight-fürtön R-szkriptek végrehajtása](machine-learning-services-quickstart-job-rstudio.md)
 * [Számítási környezeti beállítások az ML-szolgáltatások HDInsighton belüli fürtjében](r-server-compute-contexts.md)
 * [A Machine Learning-szolgáltatások HDInsight-fürt tárolási lehetőségek](r-server-storage.md)

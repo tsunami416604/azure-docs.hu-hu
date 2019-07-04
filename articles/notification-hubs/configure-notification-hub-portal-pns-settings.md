@@ -10,16 +10,16 @@ ms.workload: mobile
 ms.topic: quickstart
 ms.date: 02/14/2019
 ms.author: jowargo
-ms.openlocfilehash: ee627a168e6ca9bb758d994a3f75cc6185976971
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 1037d8d4652f238f03d8e80b0c59a5f396ab5605
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203686"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445719"
 ---
 # <a name="set-up-push-notifications-in-a-notification-hub-in-the-azure-portal"></a>Egy értesítési központ, az Azure Portalon a leküldéses értesítések beállítása
 
-Az Azure Notification Hubs biztosít egy leküldéses összetevő, amely könnyen használható és, amely elvégzi a horizontális felskálázást. A Notification Hubs használatával bármilyen platformon (iOS, Android, Windows, Kindle, Baidu) értesítések küldése és bármely háttér (felhőbeli vagy helyszíni). További információkért lásd: [Mi az Azure Notification Hubs?](notification-hubs-push-notification-overview.md).
+Az Azure Notification Hubs biztosít egy leküldéses összetevő, amely könnyen használható és, amely elvégzi a horizontális felskálázást. A Notification Hubs használatával bármilyen platformon (iOS, Android, Windows, Baidu), és bármely háttérrendszerből (felhőbeli vagy helyszíni) értesítések küldése. További információkért lásd: [Mi az Azure Notification Hubs?](notification-hubs-push-notification-overview.md).
 
 Ebben a rövid a platform notification system (PNS) beállításokat fogjuk a Notification Hubs leküldéses értesítések több platformon beállításához. Ez a rövid útmutató bemutatja, milyen lépéseket kell tennie az Azure Portalon.
 
@@ -35,7 +35,7 @@ Fel az Apple Push Notification Service (APNS) beállítása:
 
    a. Ha **tanúsítvány**:
    * A fájl ikonra, és válassza a *.p12* feltölteni kívánt fájlt.
-   * Adja meg a jelszót.
+   * Adjon meg egy jelszót.
    * Válassza a **Védőfal** módot. Vagy a leküldéses értesítések küldéséhez felhasználók, akik megvásárolták az alkalmazást az áruházból, válassza ki a **éles** mód.
 
      ![Képernyőkép az APNS-tanúsítvány konfigurálása az Azure Portalon](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
@@ -95,17 +95,6 @@ A Windows Phone állítsa be a Microsoft leküldéses értesítési szolgáltat�
 
 További információkért lásd: [leküldéses értesítések Windows Phone-alkalmazások, a Notification Hubs használatával](notification-hubs-windows-mobile-push-notifications-mpns.md).
       
-## <a name="amazon-device-messaging"></a>Amazon Device Messaging
-
-Leküldéses értesítések az Amazon Device Messaging (ADM) beállítása:
-
-1. Az Azure Portalon az a **értesítési központ** lapon jelölje be **Amazon (ADM)** a bal oldali menüből.
-2. Adjon meg értéket a **ügyfél-azonosító** és **titkos Ügyfélkód**.
-3. Kattintson a **Mentés** gombra.
-    
-   ![Képernyőfelvétel: az ADM-beállítások az Azure Portalon](./media/notification-hubs-kindle-get-started/notification-hub-adm-settings.png)
-
-További információkért lásd: [Notification Hubs használatának első lépései Kindle-alkalmazásokhoz](notification-hubs-kindle-amazon-adm-push-notification.md).
 
 ## <a name="baidu-android-china"></a>Baidu (Android China)
 
@@ -131,5 +120,4 @@ Leküldéses értesítések küldése a különböző platformok kapcsolatos tov
 - [Leküldéses értesítések küldése Android-eszközök a Notification Hubs és a Google FCM használatával](notification-hubs-android-push-notification-google-fcm-get-started.md)
 - [Leküldéses értesítések küldéséhez egy Windows-eszközön futó UWP-alkalmazás](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)
 - [Egy Windows Phone 8-alkalmazást, az MPNS leküldéses értesítések küldése](notification-hubs-windows-mobile-push-notifications-mpns.md)
-- [Leküldéses értesítések küldéséhez Kindle-alkalmazások](notification-hubs-kindle-amazon-adm-push-notification.md)
 - [Leküldéses értesítések a Notification Hubs és a Baidu felhőalapú leküldéses használatával](notification-hubs-baidu-china-android-notifications-get-started.md)

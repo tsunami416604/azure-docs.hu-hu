@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 650dfa7284b41407e9b128a2096548d7acfc1567
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: fd81115f4e811366b6b115d1c73a9be7ca26698b
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393794"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485625"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Azure Search szolgáltatás létrehozása a portálon
 
@@ -94,7 +94,7 @@ Ne felejtse el rögzíteni a szolgáltatást az irányítópulton, így a bejele
 
 ## <a name="get-a-key-and-url-endpoint"></a>Egy kulcsot és -végpont URL-cím beszerzése
 
-Néhány kivételtől eltekintve az új szolgáltatás használatához, hogy megadta az URL-végpontot és a egy engedélyezési api-kulcsát. Rövid útmutatók, oktatóanyagok, mint például [Ismerkedés az Azure Search REST API-k (Postman)](search-fiddler.md) és [a .NET használatával az Azure Search használata](search-howto-dotnet-sdk.md), minták és egyéni kód minden olyan végpont szükséges, és futtathatók az adott erőforrás kulcsát.
+Néhány kivételtől eltekintve az új szolgáltatás használatához, hogy megadta az URL-végpontot és a egy engedélyezési api-kulcsát. Rövid útmutatók, oktatóanyagok, mint például [Ismerkedés az Azure Search REST API-k (Postman)](search-get-started-postman.md) és [a .NET használatával az Azure Search használata](search-howto-dotnet-sdk.md), minták és egyéni kód minden olyan végpont szükséges, és futtathatók az adott erőforrás kulcsát.
 
 1. Áttekintés oldalát keresse meg és másolja az URL-végpontot, az oldal jobb oldalán.
 

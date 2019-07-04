@@ -15,12 +15,12 @@ ms.workload: tbd
 ms.date: 05/11/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 8470bb21894ca963d5b8f891a19c1c556f7f69a4
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 73c14b3d3023dcca113589d63276216fcfdd17f1
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340769"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67513443"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Gyors útmutató: Az Azure Cache használata pythonnal Redis
 
@@ -48,7 +48,9 @@ Ez a rövid útmutató bemutatja, hogyan csatlakozhat egy Azure Cache redis az o
 
 Az alábbi példában *pip3* a Python3 a redis-py csomag telepítéséhez használja a Visual Studio 2019 fejlesztői parancssort emelt szintű rendszergazdai jogosultságokkal fut a Windows 10.
 
+```python
     pip3 install redis
+```
 
 ![A redis-py telepítése](./media/cache-python-get-started/cache-python-install-redis-py.png)
 

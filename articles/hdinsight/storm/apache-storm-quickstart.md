@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 06/14/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 49da6ad20b29193f0430a66658f1bf80625704b3
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 12001aef970d3b465a7f5c8e0c7af072b8f4ec80
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274125"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428446"
 ---
 # <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>Gyors útmutató: Létrehoz és felügyel egy Azure HDInsight az Apache Storm-topológia
 
@@ -108,4 +108,4 @@ Törölje a fürtöt, tekintse meg a [törlése egy HDInsight-fürtön a böngé
 Ez a rövid útmutatóban egy, az Apache származó példa használt [storm-starter](https://github.com/apache/storm/tree/v2.0.0/examples/storm-starter) projekt hozhat létre és figyelhet az Apache Storm-topológia egy meglévő Apache Storm-fürt. Folytassa a következő cikkben talál a kezelése és figyelése Apache Storm-topológiák alapjait.
 
 > [!div class="nextstepaction"]
->[Üzembe helyezés és kezelés az Azure HDInsight az Apache Storm-topológiák ](./apache-storm-deploy-monitor-topology-linux.md)
+>[Üzembe helyezés és kezelés az Azure HDInsight az Apache Storm-topológiák](./apache-storm-deploy-monitor-topology-linux.md)

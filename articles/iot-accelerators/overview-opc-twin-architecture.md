@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: d1c10e056de1bc61b5365550bf2543d2cdf61229
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 002e2e06201688638df98e16c45282187f593a3a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62106830"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444307"
 ---
 # <a name="opc-twin-architecture"></a>Az OPC-Twin-architektúra
 
@@ -35,6 +35,6 @@ Az alábbi ábrák bemutatják az OPC-Twin-architektúra.
 
    ![Az OPC-Twin működése](media/overview-opc-twin-architecture/opc-twin3.png)
 
-1. Az ikereszköz szolgáltatás REST-felület is használható az OPC-közzétevő figyelt elemek és -előfizetések létrehozására. Az OPC-közzétevő lehetővé teszi, hogy a telemetria OPC UA-kiszolgálórendszerekkel küldését az IoT hubnak. Az OPC-közzétevő kapcsolatos további információkért lásd: a [az OPC-közzétevő](https://github.com/Azure/iot-edge-opc-publisher) tárházban a Githubon.
+1. Az ikereszköz szolgáltatás REST-felület is használható az OPC-közzétevő figyelt elemek és -előfizetések létrehozására. Az OPC-közzétevő lehetővé teszi, hogy a telemetria OPC UA-kiszolgálórendszerekkel küldését az IoT hubnak. Az OPC-közzétevő kapcsolatos további információkért lásd: [Mi az az OPC-közzétevő](overview-opc-publisher.md).
 
    ![Az OPC-Twin működése](media/overview-opc-twin-architecture/opc-twin4.png)

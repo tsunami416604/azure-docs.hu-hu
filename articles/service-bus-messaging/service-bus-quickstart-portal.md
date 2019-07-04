@@ -9,15 +9,15 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/10/2019
 ms.author: spelluru
-ms.openlocfilehash: a946443e1d1e66a1ae8f70671ff328cdf47ff009
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 315f8d30b7c7559947c599edd0e18eaa5a99ac22
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65992019"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67513641"
 ---
 # <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Gyors útmutató: A Service Bus-üzenetsor létrehozása az Azure portal használatával
-Ebből a rövid útmutatóból megismerheti, hogyan használhatja az [Azure Portalt][Azure portal] egy Service Bus-üzenetsorral való üzenetváltásra egy üzenetküldési névtér és egy azon belüli üzenetsor létrehozásával, valamint az adott névsor hitelesítő adatainak lekérésével. Az eljárás ezután bemutatja, hogyan küldhet és fogadhat üzeneteket az üzenetsorból a [.NET Standard-kódtárral](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
+Ez a rövid útmutató azt ismerteti, hogyan küldhet és fogadhat üzeneteket a Service Bus-üzenetsorba, használja a [az Azure portal][Azure portal] hozhat létre egy üzenetkezelési névteret és a egy adott névtéren belül várólista, valamint az, hogy az engedélyezési hitelesítő adatok beszerzése a névtér. Az eljárás ezután bemutatja, hogyan küldhet és fogadhat üzeneteket az üzenetsorból a [.NET Standard-kódtárral](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
@@ -35,7 +35,7 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette a kö
 
 ## <a name="send-and-receive-messages"></a>Üzenetek küldése és fogadása
 
-Miután kiépítette a névteret és az üzenetsort, valamint beszerezte a szükséges hitelesítő adatokat, készen áll az üzenetek küldésére és fogadására. A kódot [ebben a GitHub-mintamappában](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters) vizsgálhatja meg.
+Miután kiépítette a névteret és az üzenetsort, valamint beszerezte a szükséges hitelesítő adatokat, készen áll az üzenetek küldésére és fogadására. A kódot [ebben a GitHub-mintamappában](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters) vizsgálhatja meg.
 
 A kód futtatásához tegye a következőt:
 

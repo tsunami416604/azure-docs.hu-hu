@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 05/22/2019
+ms.date: 06/26/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: a4bbb43cb00eeb5a9e741016e1648ce915935eb9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 931de532aa6e09b2cd00955df6ba1f05d7e4f42c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236594"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428497"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Az ASP.NET Core-webalkalmazás monitorozásának indítása
 
@@ -47,16 +47,16 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
 1. Válassza az **Erőforrás létrehozása** > **Fejlesztői eszközök** > **Application Insights** elemet.
 
-   ![Application Insights-erőforrások hozzáadása](./media/dotnetcore-quick-start/1createresourceappinsight.png)
+   > [!NOTE]
+   >Ha az első alkalommal Application Insights-erőforrás létrehozása,. További információkért látogasson el a [hozzon létre egy Application Insights-erőforrás](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) doc.
 
     Megjelenik egy konfigurációs mező. Az adatbeviteli mezők kitöltéséhez használja az alábbi táblát.
 
-    | Beállítások        |  Érték           | Leírás  |
+   | Beállítások        |  Érték           | Leírás  |
    | ------------- |:-------------|:-----|
-   | **Name (Név)**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név |
-   | **Alkalmazás típusa** | ASP.NET-es webalkalmazás | A figyelt alkalmazás típusa |
+   | **Name**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név |
    | **Erőforráscsoport**     | myResourceGroup      | Az App Insights-adatokat futtató új erőforráscsoport neve |
-   | **Hely** | USA keleti régiója | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
+   | **Location** | East US | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
 
 2. Kattintson a **Create** (Létrehozás) gombra.
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6e8e2843ad8e00b1fe334200b9b1a5c8a7c2c5df
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 075a3cea426fd5f54ef142648754fa9a9e2810b4
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64706954"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508314"
 ---
 # <a name="what-is-azure-files"></a>Mi az Azure Files?
 Az Azure Files teljes körűen felügyelt felhőbeli fájlmegosztást nyújt, amely az iparági szabványos [Server Message Block (SMB) protokollon](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) keresztül érhető el. Az Azure-fájlmegosztások párhuzamosan több felhőalapú vagy helyszíni Windows, Linux vagy macOS rendszerű üzemelő példány által is csatlakoztathatóak. Emellett az Azure-fájlmegosztások gyorsítótárazhatók Windows Servereken az Azure File Sync használatával az adatok felhasználási helyéhez közeli gyors elérés érdekében.
@@ -21,7 +21,7 @@ Az Azure Files teljes körűen felügyelt felhőbeli fájlmegosztást nyújt, am
 ## <a name="videos"></a>Videók
 | Az Azure File Sync bemutatása (2 perc) | Azure Files Sync-kel (Ignite 2017) (85 perc)  |
 |-|-|
-| [![A Bevezetés az Azure File Sync használatába című videó képernyőképe – kattintson a lejátszáshoz!](./media/storage-files-introduction/azure-file-sync-video-snapshot.png)](https://www.youtube.com/watch?v=Zm2w8-TRn-o) | [![Az Azure Files Sync-kel bemutató képernyőképe – kattintson a lejátszáshoz!](./media/storage-files-introduction/azure-files-ignite-2017-video.png)](https://www.youtube.com/watch?v=r26jWDGF_rg) |
+| [![A Bevezetés az Azure File Sync használatába című videó képernyőképe – kattintson a lejátszáshoz!](./media/storage-files-introduction/azure-file-sync-video-snapshot.png)](https://www.youtube.com/watch?v=Zm2w8-TRn-o) | [![Az Azure Files Sync-kel bemutató képernyőképe – kattintson a lejátszáshoz!](./media/storage-files-introduction/ignite-2018-video.png)](https://www.youtube.com/watch?v=GMzh2M66E9o) |
 
 ## <a name="why-azure-files-is-useful"></a>Miért hasznos az Azure Files?
 Az Azure-fájlmegosztások az alábbiakra használhatók:
@@ -29,7 +29,7 @@ Az Azure-fájlmegosztások az alábbiakra használhatók:
 * **Helyszíni fájlkiszolgálók lecserélése vagy kiegészítése**:  
     Az Azure Files használatával teljes mértékben lecserélheti vagy kiegészítheti a hagyományos helyszíni fájlkiszolgálókat vagy NAS-eszközöket. Az Azure-fájlmegosztások közvetlenül csatlakoztathatók a népszerű operációs rendszerekhez (például Windows, macOS és Linux) a földrajzi helyüktől függetlenül. Az Azure-fájlmegosztások az Azure File Sync használatával replikálhatók helyszíni vagy felhőalapú Windows Serverekre, az adatok a használat helyéhez közeli nagy teljesítményű és elosztott gyorsítótárazása érdekében.
 
-* **Alkalmazások „átemelése”**:  
+* **Alkalmazások „átemelése”** :  
     Az Azure Files segítségével könnyedén „átemelhetők” azok az alkalmazások a felhőbe, amelyekhez fájlmegosztás szükséges a fájlalkalmazások és a felhasználók adatainak tárolásához. Az Azure Files az alkalmazást és az adatokat egyaránt az Azure-ba áthelyező „klasszikus”, és az adatokat az Azure Filesba áthelyező és az alkalmazást továbbra is a helyszíni környezetben futtató „hibrid” átemelési forgatókönyvet is támogatja. 
 
 * **A felhőalapú fejlesztés egyszerűsítése**:  

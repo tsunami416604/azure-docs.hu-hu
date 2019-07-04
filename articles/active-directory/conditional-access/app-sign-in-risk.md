@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8de4e785bbe2496ca38b33512da1c85f9ff76f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bdbdd0253478200d39501444ae649b87b77e65a4
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112780"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509052"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Gyors útmutató: Letiltja a hozzáférést az Azure Active Directory feltételes hozzáférés a munkamenet kockázata észlelésekor  
 
@@ -33,11 +33,8 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 - **Hozzáférés az Azure AD Premium P2 kiadás** -közben a feltételes hozzáférés egy Azure AD Premium P1 képesség, mivel ebben a rövid útmutatóban a forgatókönyv szüksége van az Identity Protection egy P2 kiadás kell.
-
 - **Identity Protection** – ebben a rövid útmutatóban példahelyzet Identity Protection engedélyezni kell. Ha nem ismeri az Identity Protection használatának engedélyezése, [engedélyezése az Azure Active Directory Identity Protection](../identity-protection/enable.md).
-
-- **Tor böngésző** – a [Tor böngésző](https://www.torproject.org/projects/torbrowser.html.en) célja, hogy segít megőrizni az adatvédelemmel kapcsolatban. Identity Protection észleli a bejelentkezési, Tor böngészőből **névtelen IP-címekről történő bejelentkezések**, amely rendelkezik egy közepes méretű kockázati szintű. További információkért tekintse át [Az Azure Active Directory kockázati eseményeivel](../reports-monitoring/concept-risk-events.md) foglalkozó cikket.  
-
+- **Tor böngésző** – a [Tor böngésző](https://www.torproject.org/projects/torbrowser.html.en) célja, hogy segít megőrizni az adatvédelemmel kapcsolatban. Identity Protection észleli a bejelentkezési Tor böngészőből, névtelen IP-címek, amelyek közepes kockázat szintje történő bejelentkezések. További információkért tekintse át [Az Azure Active Directory kockázati eseményeivel](../reports-monitoring/concept-risk-events.md) foglalkozó cikket.  
 - **Tesztfiók nevű Alain Charon** – Ha nem tudja, hogyan hozzon létre egy olyan fiókot, lásd: [adja hozzá a felhőalapú felhasználók](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
 ## <a name="test-your-sign-in"></a>A bejelentkezés tesztelése
@@ -67,7 +64,6 @@ Ez a szakasz bemutatja, hogyan hozhat létre feltételes hozzáférési szabály
 **A feltételes hozzáférési szabályzat konfigurálása:**
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) globális rendszergazdai, biztonsági rendszergazdai vagy feltételes hozzáférési rendszergazdájaként.
-
 1. Az Azure Portalon, a bal oldali navigációs sávon kattintson **Azure Active Directory**.
 
    ![Azure Active Directory](./media/app-sign-in-risk/02.png)
@@ -93,13 +89,9 @@ Ez a szakasz bemutatja, hogyan hozhat létre feltételes hozzáférési szabály
    ![Feltételes hozzáférés](./media/app-sign-in-risk/107.png)
 
    1. Kattintson a **válassza ki a felhasználók és csoportok**, majd válassza ki **felhasználók és csoportok**.
-
    1. Kattintson a **Kiválasztás** gombra.
-
    1. Az a **válassza** lapra, jelölje be **Alain Charon**, és kattintson a **kiválasztása**.
-
    1. Az a **felhasználók és csoportok** kattintson **kész**.
-
 1. Kattintson a **Felhőalkalmazások**.
 
    ![Felhőalkalmazások](./media/app-sign-in-risk/08.png)
@@ -109,9 +101,7 @@ Ez a szakasz bemutatja, hogyan hozhat létre feltételes hozzáférési szabály
    ![Feltételes hozzáférés](./media/app-sign-in-risk/109.png)
 
    1. Kattintson a **az összes felhőalapú alkalmazások**.
-
    1. Kattintson a **Done** (Kész) gombra.
-
 1. Kattintson a **feltételek**.
 
    ![Hozzáférés-vezérlés](./media/app-sign-in-risk/19.png)
@@ -121,15 +111,10 @@ Ez a szakasz bemutatja, hogyan hozhat létre feltételes hozzáférési szabály
    ![Bejelentkezési kockázati szint](./media/app-sign-in-risk/21.png)
 
    1. Kattintson a **bejelentkezési kockázat**.
-
    1. Mint **konfigurálása**, kattintson a **Igen**.
-
    1. Bejelentkezési kockázati szintet, válassza ki a **Közepes**.
-
    1. Kattintson a **Kiválasztás** gombra.
-
    1. Az a **feltételek** kattintson **kész**.
-
 1. Az a **hozzáférés-vezérlés** területén kattintson **Grant**.
 
    ![Hozzáférés-vezérlés](./media/app-sign-in-risk/10.png)
@@ -139,9 +124,7 @@ Ez a szakasz bemutatja, hogyan hozhat létre feltételes hozzáférési szabály
    ![Feltételes hozzáférés](./media/app-sign-in-risk/105.png)
 
    1. Válassza ki **blokkolhatja**.
-
    1. Kattintson a **Kiválasztás** gombra.
-
 1. Az a **házirend engedélyezése** területén kattintson **a**.
 
    ![Szabályzat engedélyezése](./media/app-sign-in-risk/18.png)
@@ -185,7 +168,6 @@ Ha tesztelni szeretné a szabályzatot, próbálja meg, jelentkezzen be a [az Az
 Ha már nincs rá szükség, törölje a tesztfelhasználó számára, a Tor-böngésző és a feltételes hozzáférési szabályzatot:
 
 - Ha nem ismeri az Azure AD-felhasználó törlése, lásd: [felhasználók törlése az Azure ad-ből](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
-
 - Törli a szabályzatot, válassza ki a szabályzatot, és kattintson **törlése** a gyorselérési eszköztáron.
 
    ![Multi-Factor Authentication](./media/app-sign-in-risk/33.png)

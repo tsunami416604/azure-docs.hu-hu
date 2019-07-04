@@ -17,12 +17,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa400d678fb1e0793ea1a0cfd53bdfb715a5bc77
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 067e2b73ce914860126b66668ca8cbeb28a4d7d1
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785023"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540727"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Gyors útmutató: Egy token beszerzéséhez és a Microsoft Graph API hívása Windows asztali alkalmazások
 
@@ -44,7 +44,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan írhat egy Windows asztali .N
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Option 2: Regisztráljon, és manuális konfigurálása az alkalmazás és a kód a minta
 >
-> #### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
+> #### <a name="step-1-register-your-application"></a>1\. lépés: Alkalmazás regisztrálása
 > Az alkalmazás regisztrálásához és az alkalmazás regisztrációs információinak a megoldáshoz való kézi hozzáadásához kövesse az alábbi lépéseket:
 >
 > 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
@@ -60,7 +60,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan írhat egy Windows asztali .N
 > 1. Kattintson a **Mentés** gombra.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. lépés: Az alkalmazás konfigurálása az Azure Portalon
+> #### <a name="step-1-configure-your-application-in-azure-portal"></a>1\. lépés: Az alkalmazás konfigurálása az Azure Portalon
 > Ahhoz, hogy a rövid útmutató kódmintája működjön, hozzá kell adnia egy válasz URL-t a következő formában: **urn:ietf:wg:oauth:2.0:oob**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [A módosítás alkalmazása]()
@@ -68,11 +68,11 @@ Ebből a rövid útmutatóból megtudhatja, hogyan írhat egy Windows asztali .N
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Már konfigurált](media/quickstart-v2-windows-desktop/green-check.png) Az alkalmazása már konfigurálva van ezekkel az attribútumokkal.
 
-#### <a name="step-2-download-your-visual-studio-project"></a>2. lépés: A Visual Studio-projekt letöltése
+#### <a name="step-2-download-your-visual-studio-project"></a>2\. lépés: A Visual Studio-projekt letöltése
 
 [Töltse le a Visual Studio-projekt](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip) ([projekt megtekintése a Githubon](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/))
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>3. lépés: A Visual Studio-projekt konfigurálása
+#### <a name="step-3-configure-your-visual-studio-project"></a>3\. lépés: A Visual Studio-projekt konfigurálása
 
 1. Csomagolja ki a zip-fájlt egy helyi mappába a lemez gyökerének közelében (például: **C:\Azure-Samples**).
 1. Nyissa meg a projektet a Visual Studióban.
@@ -82,6 +82,9 @@ Ebből a rövid útmutatóból megtudhatja, hogyan írhat egy Windows asztali .N
     private static string ClientId = "Enter_the_Application_Id_here";
     private static string Tenant = "Enter_the_Tenant_Info_Here";
     ```
+> [!div renderon="portal"]
+> > [!NOTE]
+> > Ez a rövid útmutató Enter_the_Supported_Account_Info_Here támogatja.
 
 > [!div renderon="docs"]
 > Az elemek magyarázata:
@@ -123,7 +126,7 @@ PublicClientApplicationBuilder.Create(ClientId)
 
 > |Az elemek magyarázata: ||
 > |---------|---------|
-> | `ClientId` | Az Azure Portalon regisztrált alkalmazás **alkalmazásazonosítója (ügyfél-azonosítója)**. Ezt az értéket az alkalmazás **Áttekintés** oldalán találja az Azure Portalon. |
+> | `ClientId` | Az Azure Portalon regisztrált alkalmazás **alkalmazásazonosítója (ügyfél-azonosítója)** . Ezt az értéket az alkalmazás **Áttekintés** oldalán találja az Azure Portalon. |
 
 ### <a name="requesting-tokens"></a>Jogkivonatok lekérése
 

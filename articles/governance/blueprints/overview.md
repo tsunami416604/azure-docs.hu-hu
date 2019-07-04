@@ -7,12 +7,12 @@ ms.date: 02/08/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 8b340eeaaae41815482f4dfed4168dfd8367aba9
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 5f403ee7d2bf4a0730ceaa9b5a95b3e7b11f3695
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67143911"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428774"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Az Azure-tervek szolgáltatás áttekintése
 
@@ -109,7 +109,7 @@ Tervek hozzárendeléséhez vagy a hozzárendelés megszüntetéséhez a fiókna
 A fenti engedélyek mindegyikének birtokában szerepelnek a **tulajdonosa** szerepkör. A **közreműködői** szerepkör rendelkezik tervezet és törlési tervezet engedélyek létrehozása, de nem rendelkezik a tervezet-hozzárendelési engedélyt. Ha ezek a beépített szerepkörök nem felelnek meg a biztonsági követelményeinek, létrehozhat [egyéni szerepköröket](../../role-based-access-control/custom-roles.md).
 
 > [!NOTE]
-> Ha egy rendszer által hozzárendelt felügyelt identitás, az egyszerű szolgáltatás Azure tervrajz igényel a **tulajdonosa** annak érdekében, hogy a központi telepítés engedélyezése a hozzárendelt előfizetés szerepkört. A portál használata esetén ezt a szerepkört a rendszer automatikusan biztosítja és visszavonja az üzembe helyezéshez. A REST API használata esetén a szerepkört manuálisan kell biztosítani, de az üzembe helyezés befejeződése a rendszer szintén automatikusan visszavonja. Ha egy felhasználó által hozzárendelt felügyelt identitás, csak a tervezet-hozzárendelés létrehozása a felhasználónak **tulajdonosa** engedélyeket.
+> Ha egy rendszer által hozzárendelt felügyelt identitás, az egyszerű szolgáltatás Azure tervezetek igényel a **tulajdonosa** annak érdekében, hogy a központi telepítés engedélyezése a hozzárendelt előfizetés szerepkört. A portál használata esetén ezt a szerepkört a rendszer automatikusan biztosítja és visszavonja az üzembe helyezéshez. A REST API használata esetén a szerepkört manuálisan kell biztosítani, de az üzembe helyezés befejeződése a rendszer szintén automatikusan visszavonja. Ha egy felhasználó által hozzárendelt felügyelt identitás, csak a tervezet-hozzárendelés létrehozása a felhasználónak **tulajdonosa** engedélyeket.
 
 ## <a name="video-overview"></a>Áttekintő videó
 

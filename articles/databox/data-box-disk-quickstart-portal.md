@@ -9,20 +9,42 @@ ms.topic: quickstart
 ms.date: 02/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: a01da3218b07307faa8e94acab1473c82bd86c41
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 65bf4e973ce33b2898abf585fe306a8bc85c64a0
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306206"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477802"
 ---
+::: zone target="docs"
+
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal"></a>Gyors útmutató: Üzembe helyezése az Azure Data Box-lemezek az Azure portal használatával
+
+::: zone-end
+
+::: zone target="chromeless"
+
+# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>Ismerkedés az Azure Data Box-lemezek az Azure portal használatával
+
+::: zone-end
+
+::: zone target="docs"
 
 A rövid útmutató az Azure Data Box Disk az Azure Portal használatával való üzembe helyezését írja le. A lépések bemutatják, hogyan hozhat gyorsan létre rendeléseket, hogyan kaphatja kézhez, csomagolhatja ki és csatlakoztathatja a meghajtókat, majd másolhatja rájuk az adatokat azok az Azure-ba való feltöltéséhez.
 
 Részletes részletes üzembe helyezés és a nyomkövetési utasításokat, keresse fel [oktatóanyag: Az Azure Data Box-lemezek ORDER](data-box-disk-deploy-ordered.md). 
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+::: zone-end
+
+::: zone target="chromeless"
+
+A rövid útmutató az Azure Data Box Disk az Azure Portal használatával való üzembe helyezését írja le. A lépések tartalmazzák az előfeltételek áttekintése, a lemez zárolásának feloldásához, csatlakozás és másolja az adatokat a lemezeket, így, amely feltölti az Azure-bA.
+
+::: zone-end
+
+::: zone target="docs"
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,6 +55,23 @@ Előkészületek:
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
 Jelentkezzen be az Azure Portalra a [https://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredataboxfromdiskdocs) webhelyen.
+
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="prerequisites"></a>Előfeltételek
+
+- A sorrend a Data Box-lemezek használatával helyezi el a [oktatóanyag: Az Azure Data Box-lemezek ORDER](data-box-disk-deploy-ordered.md).
+- Megkapta a meghajtókat, és a portálon a feldolgozás **Kézbesítve** állapotra frissül.
+- Rendelkezik egy ügyfélszámítógép érhető el, amelyről az adatokat másolja. Az ügyfélszámítógépen:
+
+    - Futtassa a [támogatott operációs rendszert](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
+    - Rendelkezik [szükséges szoftverek](data-box-disk-system-requirements.md#other-required-software-for-windows-clients) telepítve van, ha egy Windows-ügyfelet.
+
+::: zone-end
+
+::: zone target="docs"
 
 ## <a name="order"></a>Rendelés
 
@@ -123,3 +162,5 @@ Ebben a rövid útmutatóban egy Azure Data Box Disk-meghajtót helyezett üzemb
 
 > [!div class="nextstepaction"]
 > [A Data Box Disk az Azure Portal használatával történő kezelése](data-box-portal-ui-admin.md)
+
+::: zone-end

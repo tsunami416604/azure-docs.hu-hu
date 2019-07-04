@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5dda96786cde980fbec1b2f90bb7f755453b468a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1335f4abebffaf8ae0034ec023d2a988be1c39eb
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60772014"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514525"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>Gyors útmutató: Linux virtuális gép létrehozása az Azure CLI-vel
 
@@ -49,7 +49,7 @@ az group create --name myResourceGroup --location eastus
 
 Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal.
 
-A következő példa létrehoz egy *myVM* nevű virtuális gépet, és hozzáad egy *azureuser* nevű felhasználói fiókot. A `--generate-ssh-keys` paraméter használható automatikusan, SSH-kulcs, és tegye a kulcsok alapértelmezett helyén (*~/.ssh*). Ha konkrét kulcsokat szeretne használni, használja az `--ssh-key-value` paramétert.
+A következő példa létrehoz egy *myVM* nevű virtuális gépet, és hozzáad egy *azureuser* nevű felhasználói fiókot. A `--generate-ssh-keys` paraméter használható automatikusan, SSH-kulcs, és tegye a kulcsok alapértelmezett helyén ( *~/.ssh*). Ha konkrét kulcsokat szeretne használni, használja az `--ssh-key-value` paramétert.
 
 ```azurecli-interactive
 az vm create \
@@ -62,7 +62,7 @@ az vm create \
 
 A virtuális gép és a kapcsolódó erőforrások létrehozása csak néhány percet vesz igénybe. A következő kimeneti példa azt mutatja be, hogy a virtuális gép létrehozási művelete sikeres volt.
 
-```
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",

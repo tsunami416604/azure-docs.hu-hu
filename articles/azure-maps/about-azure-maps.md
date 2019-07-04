@@ -9,16 +9,28 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 2368d097cc0bfe82d0b869c3c8eb48760cc41616
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 5f41263113568cf9f3771119135be8db37119181
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275107"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442941"
 ---
 # <a name="what-is-azure-maps"></a>Mi az Azure Maps?
 
-Az Azure Maps olyan térinformatikai szolgáltatások alapulniuk elérhető pontos földrajzi kontextusának biztosításához a webes és mobil alkalmazások a legfrissebb társítási adatok gyűjteménye. Renderelési REST API-k áll az Azure Maps **Maps** több stílusok és szatellit képanyag, **keresésével** címek, helyek és hasznos helyek szerte a világon; **Útválasztás** point-to-point, multipoint, multipoint optimalizálás, isochrone, kereskedelmi járművek, befolyásolják a forgalom és mátrix útválasztás; iparágvezető forgalmat, és események megtekintése **Mobilitási** nyilvános átvitel során, bikeshare, scooter megosztás és autó igénylő szolgáltatások információikat megtervezhetik az útvonalakat, kihasználva a szállítás és a valós idejű adatok alternatív módja; létrehozó felhasználó helye keresztül **Földrajzi hely meghatározásának**; és helyre való konvertálást **időzónák**, valamint beolvasása idő egy helyen. Az Azure Maps továbbá lehetővé teszi a szolgáltatások **Geokerítések**, térkép **adatok** helyadatokhoz, az Azure-ban; üzemeltető - tárolót és **térbeli Operations** helyére térinformatikai elemzés révén intelligencia. Azure Maps-szolgáltatások érhetők el közvetlenül a REST API-ként vagy keresztül vagy a robusztus **Web SDK** vagy **Android SDK**. Ezek az eszközök lehetővé teszik a fejlesztők gyorsan üzembe helyezheti és méretezzen olyan megoldásokat, amelyek az Azure-felhőben az Azure megoldásokba. Regisztráljon az ingyenes [Azure Maps-fiók](https://azure.microsoft.com/services/azure-maps/) ma és a kezdő fejlesztésének!
+Az Azure Maps friss térképadatokat használó pontos földrajzi kontextusának biztosításához a webes és mobilalkalmazások térinformatikai szolgáltatások gyűjteménye. Az Azure Maps biztosítja:
+
+* REST API-k több stílusok és szatellit képanyag a maps megjelenítése.
+* Címek, helyek és a világ különböző pontjain hasznos helyek keresése.
+* Útválasztási pont-pont típusú, multipoint, multipoint optimalizálás, isochrone, kereskedelmi járművek, befolyásolják a forgalom és mátrix Útválasztás; forgalom és események megtekintése.
+* A mobilitási szolgáltatások nyilvános átvitel és alternatív szállítási lehetőségek (például bikeshare scooter megosztás és autó megosztás), és valós időben útvonalak megtervezése. 
+* Létrehozó felhasználói hely földrajzi hely meghatározásának keresztül, és a hely az időzóna. 
+* A geokerítések és az adattárolás, a helyre vonatkozó adatokat az Azure-ban üzemeltetett szolgáltatások. 
+* Térinformatikai elemzés révén intelligencia helyét. 
+
+Kívül REST API-k az Azure Maps-szolgáltatások érhetők el a Web SDK-t vagy az Android SDK-t. Ezek az eszközök segítségével a fejlesztők gyorsan fejleszthet és méretezni a megoldásokat, amelyek az Azure-megoldások. 
+
+Iratkozzon fel az ingyenes [Azure Maps-fiók](https://azure.microsoft.com/services/azure-maps/) , és kezdje el a fejlesztést.
 
 A következő videó részletesen bemutatja az Azure Mapset:
 
@@ -30,15 +42,15 @@ A következő videó részletesen bemutatja az Azure Mapset:
 
 ### <a name="web-sdk"></a>Web SDK
 
-Az Azure Maps Web SDK lehetővé teszi a saját tartalmat és a webes vagy mobilalkalmazásaiba való megjelenítéshez képanyag interaktív leképezések testreszabása. Ez a vezérlő a WebGL-t használja, amely lehetővé teszi nagy adatkészletek nagy teljesítményű renderelését. Az az SDK-ban a JavaScript- vagy TypeScript nyelven fejleszthet.
+Az Azure Maps Web SDK lehetővé teszi a saját tartalmat és a webes vagy mobilalkalmazásaiba való megjelenítéshez képanyag interaktív leképezések testreszabása. Ez a vezérlő felhasznál vagy a Web GL, így nagy méretű adatkészleteket, nagy teljesítményű leképezhetők. Fejlesztés SDK-val JavaScript- vagy TypeScript használatával.
 
-![Azure Maps Web SDK](media/about-azure-maps/Introduction_WebMapControl.png)
+![Példaleképezés sokaság módosítása](media/about-azure-maps/Introduction_WebMapControl.png)
 
 ### <a name="android-sdk"></a>Android SDK
 
-Az Azure Maps Android SDK hatékony mobil leképezés alkalmazások létrehozását teszi lehetővé. 
+Az Azure Maps Android SDK használatával mobil leképezés alkalmazások létrehozását. 
 
-![Az Azure Maps SDK Androidra](media/about-azure-maps/AndroidSDK.png)
+![Térkép példák a mobileszközökön](media/about-azure-maps/AndroidSDK.png)
 
 ## <a name="services-in-azure-maps"></a>Az Azure Maps szolgáltatásai
 
@@ -46,46 +58,68 @@ Az Azure Maps áll a következő kilenc földrajzi kontextusának biztosításá
 
 ### <a name="data-service"></a>Adatszolgáltatás
 
-Adatok versenyképesség a térképek szolgáltatáshoz, és közelebb a vásárlói adatokat és az Azure Maps szolgáltatás fogja késés csökkentése érdekében, hatékonyság növeléséhez, majd hozzon létre világos, hatékony, új forgatókönyvek fel az alkalmazások. Data Service lehetővé teszi, hogy töltse fel és térinformatikai adatokat tároló térbeli műveletek vagy lemezkép-összeállításban csökkentheti a késéseket, a hatékonyság növeléséhez, valamint az alkalmazások új forgatókönyveket. Ez a szolgáltatás a részletekért látogasson el a [adatok Service API-k](https://docs.microsoft.com/rest/api/maps/data) lapot.
+Adatok a versenyképesség a térképek szolgáltatáshoz. Data Service használatával feltöltésére és tárolására, a földrajzi adatok térbeli műveletek vagy lemezkép-összeállítás való használatra.  Oszloptárat közelebb a vásárlói adatokat az Azure Maps szolgáltatás csökkenti a késést, növelhetik hatékonyságukat, és hozzon létre új forgatókönyvek használhatók az alkalmazásokban. Ez a szolgáltatás részletes ismertetéséért tekintse meg a [adatok szolgáltatás API-dokumentáció](https://docs.microsoft.com/rest/api/maps/data).
 
-### <a name="mobility-service"></a>A mobilitási szolgáltatás
+### <a name="mobility-service"></a>Mobilitási szolgáltatás
 
-Az Azure Maps a mobilitási szolgáltatás valós idejű hely intelligencia biztosítsanak közeli nyilvános átviteli szolgáltatások, beleértve a leáll, az útvonal-információk és az utazási idő becsléseket. A szolgáltatás lehetővé teszi, hogy a keresés adott objektumtípus, például a nyilvános átvitel közben leáll, átvitel objektum objektum részletei készletét visszaadása egy megadott helyen körül kerékpárok/robogó/autók megosztott. A szolgáltatás lehetővé teszi, hogy a fejlesztők is kérelem átvitel soradatok alapvető információkat és a további részleteket, például a geometriai, az leáll, ütemezett listája és a valós idejű továbbításához beérkező kérelmek és szolgáltatási riasztások. Hány elérhető megosztott kerékpárok van hátra a legközelebbi dock által rögzített állomások információt kérő felhasználók is kérheti. A mobilitási szolgáltatás is rendelkezik a kereshetővé elérhető autó megosztás járművek, például a jövőbeli rendelkezésre állás és a jelenlegi ösztönzésének szint visszaadása.
-Az Azure Maps a mobilitási szolgáltatás lehetővé teszi, hogy valós idejű trip tervezési, a legjobb útvonal lehetséges beállítások visszaadó és többféle közlekedési formára, beleértve a metro (város) területen elérhető Séta, kerékpározáshoz és nyilvános átvitel biztosít. Emellett a fejlesztők is kérhető az átvitel Útiterv részletei további információkkal ilyen geometry, az útvonal és részletes Útiterv ütemezéseket.
+Az Azure Maps a mobilitási szolgáltatás lehetővé teszi, hogy a valós idejű trip megtervezése. Azt adja vissza a legjobb útvonal lehetséges beállításokat, és többféle közlekedési formára biztosít. Metro (város) területek módokban walking kerékpározáshoz és nyilvános átvitel tartalmazhatnak. A fejlesztők is kérhető az átvitel Útiterv részleteknek, például a geometriai, az leáll, ütemezett listája és a valós idejű beérkező kérelmek és szolgáltatási riasztások.
 
-További információ a szolgáltatás és a különféle szolgáltatások kapcsolatban lásd: a [API-dokumentáció](https://docs.microsoft.com/rest/api/maps/mobility)
+A szolgáltatás lehetővé teszi adott objektumtípus, például megosztott kerékpárok, robogó vagy autók keresések körül egy helyre. Felhasználók kérhetik hány elérhető megosztott kerékpárok van hátra a legközelebb elhelyezkedő dockhoz. Ezek elérhető autó-share járművek megkeresheti, és részletes jövőbeli rendelkezésre állást és a jelenlegi ösztönzésének szint.
+
+A szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [mobilitási API-dokumentáció](https://docs.microsoft.com/rest/api/maps/mobility).
 
 ### <a name="render-service"></a>Megjelenítő szolgáltatás
 
-A Render Service segítségével a fejlesztők térképészeti jellegű webes és mobilalkalmazásokat fejleszthetnek. A szolgáltatás használhat nagy felbontású rasztergrafikákat, amelyek 19 nagyítási szinten érhetők el, vagy teljes körűen testreszabható, vektorformátumú térképeket.
+A renderelési szolgáltatás segít a fejlesztőknek a webes és mobilalkalmazásokat fejleszthetnek leképezés létrehozása. A szolgáltatás használhat nagy felbontású rasztergrafikákat, amelyek 19 nagyítási szinten érhetők el, vagy teljes körűen testreszabható, vektorformátumú térképeket.
 
-![Azure Maps – Map.png](media/about-azure-maps/Introduction_Map.png)
+![Példa egy térkép a renderelési szolgáltatás](media/about-azure-maps/Introduction_Map.png)
 
-A megjelenítő szolgáltatás mostantól előzetes verziójú API-kat biztosít, amelyeken keresztül a fejlesztők műholdképekkel dolgozhatnak. További részletekért olvassa el az [Azure Maps megjelenítő API-jait](https://docs.microsoft.com/rest/api/maps/render) bemutató cikket.
+A megjelenítő szolgáltatás mostantól előzetes verziójú API-kat biztosít, amelyeken keresztül a fejlesztők műholdképekkel dolgozhatnak. További tudnivalókért olvassa el a [Render API-dokumentáció](https://docs.microsoft.com/rest/api/maps/render).
 
 ### <a name="route-service"></a>Útvonal szolgáltatás
 
 Az útvonal szolgáltatás robusztus geometriai számításokat biztosít valós infrastruktúrákat és több közlekedési módot alkalmazó útvonalak számításához. A szolgáltatás lehetővé teszi a fejlesztők számára, hogy többféle közlekedési formára (autó, teherautó, kerékpár, gyalog) vonatkozóan számítsák ki az útvonalakat. Olyan tényezők figyelembe vételére is képes, mint a forgalmi viszonyok, a súlykorlátozások vagy a veszélyes anyagok szállítása.
 
-![Azure Maps – Route.png](media/about-azure-maps/Introduction_Route.png)
+![Példa egy térkép a Route service-ből](media/about-azure-maps/Introduction_Route.png)
 
-Az útvonal szolgáltatás most előzetes verzióban speciális funkciókat kínál: több útvonal kötegelt feldolgozása, különböző indulási és célállomások közötti utazási idők és távolságok mátrixa, vagy a rendelkezésre álló idő vagy üzemanyag alapján megtehető útvonalak vagy távolságok keresése. Az útvonaltervezési képességekkel kapcsolatos további részletekért olvassa el az [Azure Maps útvonal API-jait](https://docs.microsoft.com/rest/api/maps/route) bemutató cikket.
+A Route service előzetes verziója speciális szolgáltatásokra, például kínálja: 
+
+* Több útvonal kérelmek kötegelt feldolgozásához.
+* Mátrixok az utazási időt és a távolság források és a célhelyek között.
+* Útvonalak keresése vagy az, hogy milyen távolságra felhasználók is utazási idő vagy ösztönzésének követelmények alapján. 
+
+Az útválasztási lehetőségeket részleteiért olvassa el a [útvonal API-dokumentáció](https://docs.microsoft.com/rest/api/maps/route).
 
 ### <a name="search-service"></a>Keresési szolgáltatás
 
-A keresési szolgáltatás lehetővé teszi a fejlesztők számára, hogy címeket, helyeket és bejegyzett vállalkozásokat keressenek név, kategória vagy egyéb földrajzi adatok alapján. A keresési szolgáltatás képes [fordított geokódolással](https://en.wikipedia.org/wiki/Reverse_geocoding) meghatározni a címeket és útkereszteződéseket a hosszúsági és szélességi koordináták alapján.
+A keresési szolgáltatás segít a fejlesztőknek a címek, helyek, cégjegyzékeket keressenek név vagy a kategória, keresése és egyéb földrajzi adatok. A Search service képes [fordított geokódolással](https://en.wikipedia.org/wiki/Reverse_geocoding) címeket és útkereszteződéseket a földrajzi szélesség és hosszúság alapján.
 
-![Azure Maps – Search.png](media/about-azure-maps/Introduction_Search.png)
+![Keresés a térképen – példa](media/about-azure-maps/Introduction_Search.png)
 
-A keresési szolgáltatás emellett speciális funkciókat is biztosít: útvonal mentén való keresés, nagyobb területen való keresés, keresési kérések csoportjának kötegelt végrehajtása, valamint nagyobb terület keresése egyetlen helypont helyett. A kötegelt és a területi keresés API-jai jelenleg előzetes verzióban érhetők el. A keresési képességekkel kapcsolatos további részletekért olvassa el az [Azure Maps keresési API-jait](https://docs.microsoft.com/rest/api/maps/search) bemutató cikket.
+A keresési szolgáltatás többek között speciális funkciókat is biztosít:
 
-### <a name="spatial-operations"></a>Térműveletek
+* Keressen rá egy útvonalon.
+* Keressen rá egy szélesebb körű területen belül.
+* Batch-keresési kérelmek egy csoporthoz.
+* Keresse meg a nagyobb területet a hely pont helyett. 
 
-Az Azure Maps térbeli műveletei helyére vonatkozó információt is, és a-t a megalapozottabb történik időt és a helyet, a folyamatban lévő események ügyfeleink engedélyezésével közel valós idejű elemzés és prediktív modellezés az események valós időben elemezhetők. Szolgáltatás használatát teszi lehetővé az Azure Maps natív módon, ha a hely intelligencia üzembe helyezhető a közös térinformatikai matematikai számítások, beleértve a szolgáltatások, mint a legközelebbi pont, nagy kör távolság és pufferek. További információ a szolgáltatás és a különféle szolgáltatások kapcsolatban lásd: a [API-dokumentáció](https://docs.microsoft.com/rest/api/maps/spatial).
+A kötegelt és a területi keresés API-jai jelenleg előzetes verzióban érhetők el. A keresési képességek a további tudnivalókért olvassa el a [keresési API-dokumentáció](https://docs.microsoft.com/rest/api/maps/search).
+
+### <a name="spatial-operations-service"></a>Térbeli Operations szolgáltatás
+
+Az Azure Maps térbeli Operations szolgáltatás helyére vonatkozó információ vesz igénybe, és tájékoztatja a felhasználókat a munkaidő és a hely folyamatban lévő eseményekre segítségével valós időben elemzi azokat. Ezáltal a közel valós idejű elemzés és prediktív modellezés az események. 
+
+A szolgáltatás lehetővé teszi az ügyfelek számára, hogy növelje a hely intelligencia üzembe helyezhető a közös térinformatikai matematikai számítások, beleértve a legközelebbi pont, nagy kör távolság és pufferek. További információt a szolgáltatás és a különböző szolgáltatások, olvassa el a [térbeli műveletek API-dokumentáció](https://docs.microsoft.com/rest/api/maps/spatial).
 
 ### <a name="time-zone-service"></a>Időzóna szolgáltatás
 
-Az időzóna szolgáltatás lehetővé teszi a jelenlegi, korábbi és jövőbeli időzónaadatok lekérdezését hosszúsági/szélességi koordináták vagy egy [IANA-azonosító](https://www.iana.org/) alapján. Emellett a Time Zone Service használatával a Microsoft Windows időzóna-azonosítói IANA-időzónákká alakíthatók egy adott időzóna UTC-hez képest számolt eltérésének és az aktuális helyi idejének lekérésével. A Time Zone Service lekérdezéseire adott tipikus JSON-válasz a következő mintához hasonló:
+A Time Zone service lehetővé teszi a lekérdezés jelenlegi, korábbi és jövőbeli időzónaadatok vagy szélesség/hosszúság pár használatával vagy egy [IANA-azonosító](https://www.iana.org/). A Time Zone service lehetővé teszi számára:
+
+* A Microsoft Windows időzóna-azonosítói IANA időzónák konvertálása.
+* Beolvasása egy időzóna eltolódása az UTC Időzóna.
+* Az aktuális idő beolvasása az időzónát. 
+
+Egy tipikus JSON-válasz a Time Zone service, az alábbi mintához hasonlóan néz ki:
 
 ```JSON
 {
@@ -105,40 +139,40 @@ Az időzóna szolgáltatás lehetővé teszi a jelenlegi, korábbi és jövőbel
 }
 ```
 
-A szolgáltatással kapcsolatos részletekért lépjen az [Azure Maps időzóna API-jainak](https://docs.microsoft.com/rest/api/maps/timezone) oldalára.
+Ez a szolgáltatás részletes ismertetéséért olvassa el a [időzóna API-dokumentáció](https://docs.microsoft.com/rest/api/maps/timezone).
 
 ### <a name="traffic-service"></a>Forgalom szolgáltatás
 
-A forgalmi szolgáltatás egy fejlesztők számára készült webszolgáltatás-csomag, amellyel forgalmi adatokat igénylő webes és mobilalkalmazások fejleszthetők. A szolgáltatás két adattípust biztosít:
+A Traffic service olyan webes szolgáltatás, amely a fejlesztők a webes és mobil alkalmazások forgalmi adatokat igénylő létrehozása. A szolgáltatás két adattípust biztosít:
 
-* Forgalom áramlása – valós időben megfigyelt menetsebességek és menetidők a hálózaton belüli összes fontos útra vonatkozóan;
-* Forgalom incidensek - naprakész képet forgalmi dugókról és incidensek a közúti hálózati körül.
+* Forgalom áramlását: Valós idejű megfigyelt sebesség és a hálózat összes fő utak utazási idejét.
+* Incidensek forgalmat: Naprakész képet forgalmi dugókról és incidensek a közúti hálózati körül.
 
-![Azure Maps – Forgalom](media/about-azure-maps/Introduction_Traffic.png)
+![Példa a forgalomra vonatkozó információkat a térképen](media/about-azure-maps/Introduction_Traffic.png)
 
-További részletekért lépjen az [Azure Maps forgalmi API-jainak](https://docs.microsoft.com/rest/api/maps/traffic) oldalára.
+További információkért lásd: a [forgalom API-dokumentáció](https://docs.microsoft.com/rest/api/maps/traffic).
 
-### <a name="ip-to-location"></a>IP-alapú helymeghatározás
+### <a name="ip-to-location-service"></a>Hely szolgáltatás IP-cím
 
-Az IP – hely szolgáltatással az adott IP-címhez előre megtekinthető a kikeresett kétbetűs országkód. Ezzel a szolgáltatással az alkalmazásban a földrajzi helytől függő egyedi tartalommal javíthatja, növelheti a felhasználói élményt.
+Az IP-cím helye szolgáltatás használatával az IP-címet a lekért kétbetűs ország kód előnézetének megtekintéséhez. Ez a szolgáltatás segítségével testre szabni, és a felhasználói élmény fokozása azáltal, hogy testre szabott alkalmazás tartalom földrajzi helye alapján.
 
-Az IP-alapú helymeghatározási szolgáltatás REST API-kkal kapcsolatos információiért lépjen az [Azure Maps Geolocation API-jainak](https://docs.microsoft.com/rest/api/maps/geolocation) oldalára.
+A helymeghatározó szolgáltatás az IP-cím a REST API-k további tudnivalókért olvassa el a [Azure Maps földrajzi hely meghatározásának API-dokumentáció](https://docs.microsoft.com/rest/api/maps/geolocation).
 
 ## <a name="programming-model"></a>A programozási modell
 
-Az Azure Maps a mobilitás jegyében készült, és különböző platformokon futó alkalmazásokat is képes kiszolgálni. Egy nyelvfüggetlen és a JSON-kimeneteket a [REST API-k](https://docs.microsoft.com/rest/api/maps/) használatával támogató programozási modellt használ.
+Az Azure Maps a mobilitás jegyében készült, és segíthet a többplatformos alkalmazásokat fejleszthet. Nyelvtől és támogatja a JSON-kimenet keresztül programozási modellt használ [REST API-k](https://docs.microsoft.com/rest/api/maps/).
 
 Az Azure Maps továbbá tartalmaz egy kényelmes [JavaScript-térképvezérlőt](https://docs.microsoft.com/javascript/api/azure-maps-control), amelynek egyszerű programozási modellje lehetővé teszi a webes és mobilalkalmazások gyors és egyszerű fejlesztését.
 
 ## <a name="usage"></a>Használat
 
-A Maps szolgáltatásainak eléréséhez csupán létre kell hozni egy Azure Maps-fiókot az [Azure Portalon](https://portal.azure.com).
+Az Azure Maps-szolgáltatásokhoz való hozzáférését fog kérdése a [az Azure portal](https://portal.azure.com) és a egy az Azure Maps-fiók létrehozása.
 
-Az Azure Maps kulcsalapú hitelesítési sémát használ. A fiókhoz két előre létrehozott kulcs is jár. Bármelyik kulcs használható az Azure Maps szolgáltatásnak küldött kérésben, amivel megkezdheti ezeknek a helyhez kapcsolódó képességeknek az alkalmazásba integrálását.
+Az Azure Maps kulcsalapú hitelesítési sémát használ. A fiók már létrehozott két kulcsot tartalmaz. Bármelyik kulcs használható az Azure Maps szolgáltatásnak küldött kérésben, amivel megkezdheti ezeknek a helyhez kapcsolódó képességeknek az alkalmazásba integrálását.
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
-Az Azure Maps API jelenleg az összes országban és régióban kivételével az alábbi régiókban érhető el:
+Az Azure Maps API-k jelenleg ezek kivételével az összes országban és régióban érhető el:
 
 * Argentína
 * Kína
@@ -147,11 +181,11 @@ Az Azure Maps API jelenleg az összes országban és régióban kivételével az
 * Pakisztán
 * Dél-Korea
 
-Győződjön meg arról, hogy az aktuális IP-címe helye nem a nem támogatott országok/régiók fenti egyikében.
+Győződjön meg arról, hogy az aktuális IP-címe helye nem a nem támogatott országok/régiók egyikében.
 
 ## <a name="next-steps"></a>További lépések
 
-Próbálja ki az Azure Maps kipróbálunk egy mintaalkalmazást:
+Próbálja meg egy mintaalkalmazást, amely bemutatja az Azure Maps:
 
 > [!div class="nextstepaction"]
 > [Rövid útmutató: Webes alkalmazás létrehozása](quick-demo-map-app.md)

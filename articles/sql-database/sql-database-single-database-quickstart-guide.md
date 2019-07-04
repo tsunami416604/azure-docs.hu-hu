@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 0dc9d18ea4dae6ea0f45d1a91392eb1994e6e80e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7b52453bab661531461a2bec2f15f7659ec15a1c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60331689"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441723"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Ismerkedés az Azure SQL Database önálló adatbázisok
 
@@ -51,3 +51,4 @@ PowerShell vagy az Azure CLI használatával létrehozása, konfigurálása és 
 - Hogyan speciális keresés-a-k [egy önálló adatbázis használata az Azure SQL Database](sql-database-howto-single-database.md).
 - Keresse meg a további mintaszkriptek írt [PowerShell](sql-database-powershell-samples.md) és [Azure CLI-vel](sql-database-cli-samples.md).
 - Tudjon meg többet a [felügyeleti API](sql-database-single-databases-manage.md) , hogy az adatbázisok konfigurálásához használhatja.
+- [Azonosítsa a megfelelő Azure SQL Database/Managed példány Termékváltozat a helyszíni adatbázis](/sql/dma/dma-sku-recommend-sql-db/).

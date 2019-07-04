@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
 manager: jeconnoc
-ms.openlocfilehash: 3f502b84145b81153d5e39a03cca104d4285c581
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: bab7b4daf8b03115c73b6fbaefe352cecc761b6f
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393430"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503001"
 ---
 # <a name="quickstart-develop-with-net-core-on-kubernetes-using-azure-dev-spaces-visual-studio-code"></a>Gyors útmutató: Fejlesztés a Kubernetes Azure fejlesztési szóközöket (Visual Studio Code) használatával a .NET Core használatával
 
@@ -191,7 +191,7 @@ ViewData["Message"] = "Your application description page in Azure while debuggin
 
 Mentse a fájlt. Kattintson a *Debug* majd *indítsa újra a hibakeresés* vagy a a *hibakeresési eszköztár*, kattintson a *indítsa újra a hibakeresés* gombra.
 
-![](media/get-started-netcore/debug-action-refresh.png)
+![](media/common/debug-action-refresh.png)
 
 Egy böngészőben nyissa meg a szolgáltatást, és figyelje meg, hogy a frissített üzenet jelenik meg.
 

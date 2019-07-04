@@ -11,12 +11,12 @@ ms.reviewer: seguler
 ms.date: 05/20/2019
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: b16bbeee299f4879c14856a8041e6517968efebf
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: a971f2b4b63b3fd35777d1d890da8451b84bb086
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66481382"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67544046"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -222,7 +222,7 @@ const sasString = "<Add the SAS you generated earlier>";
 const containerName = "testcontainer";
 const containerURL = new azblob.ContainerURL(
     `https://${accountName}.blob.core.windows.net/${containerName}?${sasString}`,
-    azblob.StorageURL.newPipeline(new azblob.AnonymousCredential)));
+    azblob.StorageURL.newPipeline(new azblob.AnonymousCredential));
 ```
 
 Ez a kód a fiók adatai és a SAS létrehozásához használja a [ContainerURL](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL) példányt, amely hasznos létrehozására és kezelésére szolgáló tárolót.
@@ -317,7 +317,7 @@ const uploadFiles = async () => {
 }
 
 selectButton.addEventListener("click", () => fileInput.click());
-fileInput.addEventListener("input", uploadFiles);
+fileInput.addEventListener("change", uploadFiles);
 ```
 
 Ez a kód csatlakozik a **kiválasztása és feltöltése a fájlok** gombra kattintva a rejtett `file-input` elemet. Ezzel a módszerrel a gomb `click` esemény aktiválása a bemeneti fájllal `click` esemény, és megjeleníti a Fájlkereső. Miután válassza ki a fájlokat, és zárja be a párbeszédpanelt, a `input` esemény következik be, és a `uploadFiles` függvény neve. Ez a függvény meghívja a böngésző csak [uploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/#uploadbrowserdatatoblockblob-aborter--blob---arraybuffer---arraybufferview--blockbloburl--iuploadtoblockbloboptions-) függvény az összes kiválasztott fájl esetében. Minden hívás adnak hozzá egy listát, úgy, hogy azok is összes kell várni a egyszerre, párhuzamosan feltölteni kívánt fájlok okozó ígéret adja vissza.

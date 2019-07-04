@@ -1,12 +1,19 @@
 ---
-ms.openlocfilehash: 0b0d2ead4a10d037b09c2a532eb21372ffd0cb82
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+author: ggailey777
+ms.service: azure-functions
+ms.topic: include
+ms.date: 05/27/2019
+ms.author: glenga
+ms.openlocfilehash: 8110d0a9d574c6691322df2162ca877b031cbc59
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178900"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442288"
 ---
-Az Azure Functions 2.x alapértelmezett kötések hivatkozik, nyissa meg a *host.json* fájlt, és frissítse tartalmát a következő kód megfelelően.
+A kötési bővítményeket telepítésének legegyszerűbb módja az, hogy engedélyezze [bővítmény csomagjaiból](../articles/azure-functions/functions-bindings-register.md#extension-bundles). Csomagok csomagok előre meghatározott bővítmény engedélyezve van, automatikusan települ.
+
+Ahhoz, hogy a bővítmény csomagjaiból, nyissa meg a *host.json* fájlt, és frissítse a tartalmát a felel meg a következő kódot:
 
 ```json
 {

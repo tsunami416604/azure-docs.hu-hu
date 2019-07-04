@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 0d6762c8f3034923ddc0fe7dcf0cc2df34bd3629
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 22c1e3050915fc697a62862620ef492ef22f80b8
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332107"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542837"
 ---
 # <a name="what-is-azure-virtual-network"></a>Mi az Azure Virtual Network?
 
@@ -27,7 +27,7 @@ Az Azure Virtual Network (VNet) az alapvető építőeleme a magánhálózaton a
 ## <a name="vnet-concepts"></a>VNet fogalmaival
 
 - **Címtér:** Virtuális hálózat létrehozásakor meg kell adnia egy egyéni magánhálózati IP-címteret nyilvános és magánhálózati (RFC 1918) címek használatával. Az Azure magánhálózati IP-címet rendel hozzá a virtuális hálózatokon belüli erőforrásokhoz a hozzárendelt címtérből. Például ha telepít egy virtuális Gépet a virtuális hálózat a címtér, 10.0.0.0/16, a virtuális gép lesz hozzárendelve 10.0.0.4 például egy magánhálózati IP-címet.
-- **Alhálózatok:** Alhálózatok lehetővé teszi a virtuális hálózat szegmentálása egy vagy több alárendelt hálózatokba és kiosztani a virtuális hálózat címtere a minden alhálózat egy része. Ezután telepítheti az Azure-erőforrások egy meghatározott alhálózatban. Csakúgy, mint egy hagyományos hálózatban, alhálózatok lehetővé teszik a virtuális hálózati címtér oszthatja be szegmenset, amely a szervezet belső hálózat megfelelő. Ez a cím foglalási hatékonyságát is javítja. Hálózati biztonsági csoportok használata alhálózatok belüli erőforrások biztonságát. További információkért lásd: [biztonsági csoportok](/security-overview.md).
+- **Alhálózatok:** Alhálózatok lehetővé teszi a virtuális hálózat szegmentálása egy vagy több alárendelt hálózatokba és kiosztani a virtuális hálózat címtere a minden alhálózat egy része. Ezután telepítheti az Azure-erőforrások egy meghatározott alhálózatban. Csakúgy, mint egy hagyományos hálózatban, alhálózatok lehetővé teszik a virtuális hálózati címtér oszthatja be szegmenset, amely a szervezet belső hálózat megfelelő. Ez a cím foglalási hatékonyságát is javítja. Hálózati biztonsági csoportok használata alhálózatok belüli erőforrások biztonságát. További információkért lásd: [biztonsági csoportok](security-overview.md).
 - **Régiók**: Egyetlen régió/hely; virtuális hálózat hatókörét azonban különféle régiókból származó több virtuális hálózat csatlakozhatnak egymáshoz a virtuális hálózatok közötti Társviszony segítségével.
 - **Előfizetés:** Virtuális hálózat előfizetés hatókörét. Több virtuális hálózatot is megvalósíthat az egyes Azure-[előfizetéseken](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) és Azure-[régiókon](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region) belül.
 

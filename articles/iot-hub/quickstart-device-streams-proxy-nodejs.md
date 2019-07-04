@@ -1,21 +1,20 @@
 ---
 title: Az Azure IoT Hub device Node.js rövid adatfolyamok az SSH és az RDP-t (előzetes verzió) |} A Microsoft Docs
 description: Ebben a rövid útmutatóban futtat egy mintául szolgáló Node.js-alkalmazás, amely proxyként való SSH- és RDP-forgatókönyvek az IoT Hub eszköz adatfolyamokat.
-author: rezasherafat
-manager: briz
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
-ms.author: rezas
-ms.openlocfilehash: 1d77f3a10e286246e23ae522e95aa23c487cca2f
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.author: robinsh
+ms.openlocfilehash: 83339273d9161c3947df191d10e788980db39b28
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735111"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446025"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>Gyors útmutató: SSH és az RDP engedélyezése egy IoT Hub eszköz adatfolyam felett egy Node.js-proxyalkalmazást (előzetes verzió) használatával
 

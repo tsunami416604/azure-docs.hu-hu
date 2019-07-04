@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 06/17/2019
+ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 5f8fd9b2ecb58b34476bf8ecca7aa08dfc446040
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 39d39b313cd2e65989989080d4cb0729b0be1e65
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273389"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561452"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Oktatóanyag: Az Azure Data Box-lemezek ORDER
 
@@ -87,7 +87,7 @@ A következő lépésekkel sorrend a Data Box-lemezek.
     |Azure-beli célrégió| Válasszon ki egy régiót a tárfiókhoz.<br> Jelenleg csak az USA régióiban, Nyugat-és Észak-Európában, Kanadában és Ausztráliában működő tárfiókok támogatottak. |
     |Adatok becsült mérete (TB)| Adjon meg egy becsült mennyiséget TB-ban. <br>Az adatmennyiség alapján a Microsoft kiküldi Önnek a megfelelő számú 8 TB-os SSD-t (7 TB felhasználható kapacitás). <br>5 lemez maximális felhasználható kapacitása 35 TB. |
     |Lemez hozzáférési kulcsa| Ha bejelölte az **Egyéni kulcs használata az Azure által létrehozott hozzáférési kulcs helyett** lehetőséget, adja meg a lemez hozzáférési kulcsát. <br> Adja meg egy 12 – 32 karakter alfanumerikus kulcsát, amelynek legalább egy numerikus és a egy különleges karakter. Az engedélyezett speciális karakterek a következők: `@?_+`. <br> Úgy is dönthet, hogy kihagyja ezt a lehetőséget, és az Azure által létrehozott hozzáférési kulcsot használja a lemezek feloldásához.|
-    |A rendeltetési tárolási hely     | Válassza ki a tárfiókot, a felügyelt lemezek vagy mindkettőhöz. <br> A megadott Azure-régió alapján, válassza ki a tárfiók egy meglévő tárfiókot a szűrt listájából. A Data Box legfeljebb 10 tárfiókkal köthető össze. <br> Ezenkívül létrehozhat egy új **általános célú v1**, **általános célú v2**, vagy **Blob storage-fiók**. <br>Storage-fiókok, amelyek rendelkeznek a konfigurált szabályok nem használható. A storage-fiókok kell **engedélyezze a hozzáférést minden hálózatból elérhető** a tűzfalak és virtuális hálózatok szakaszban.|
+    |A rendeltetési tárolási hely     | Válassza ki a tárfiókot, a felügyelt lemezek vagy mindkettőhöz. <br> A megadott Azure-régió alapján, válassza ki a tárfiók egy meglévő tárfiókot a szűrt listájából. Csak 1 storage-fiókot a Data Box-lemezek kapcsolhatók ki. <br> Ezenkívül létrehozhat egy új **általános célú v1**, **általános célú v2**, vagy **Blob storage-fiók**. <br>Storage-fiókok a virtuális hálózatok támogatottak. Ahhoz, hogy a Data Box szolgáltatás-biztonságos tárfiókokkal működik, a megbízható szolgáltatások belül a tárfiók hálózati tűzfal beállításainak engedélyezése. További információkért lásd: hogyan [hozzáadása az Azure Data Box megbízható szolgáltatásként](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).|
 
     Ha a storage-fiókot használ a célhelyet, az alábbi képernyőképen láthatja:
 

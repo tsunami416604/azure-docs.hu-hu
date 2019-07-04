@@ -113,8 +113,8 @@ Gyűjtemények, általában tömbök, karakterláncok és egyes esetekben szót�
 | [last](../logic-apps/workflow-definition-language-functions-reference.md#last) | Az utolsó elem visszaadása egy gyűjteményt. |
 | [Hossza](../logic-apps/workflow-definition-language-functions-reference.md#length) | A tömb vagy karakterlánc elemek számának visszaadása. |
 | [skip](../logic-apps/workflow-definition-language-functions-reference.md#skip) | A gyűjtemény elejéről eltávolítandó elemek, és vissza *összes többi* elemek. |
-| [hajtsa végre a megfelelő](../logic-apps/workflow-definition-language-functions-reference.md#take) | Az első gyűjtemény elemek visszaadása. |
-| [Union](../logic-apps/workflow-definition-language-functions-reference.md#union) | Vissza, amely rendelkezik *összes* elemet a megadott gyűjteményekkel a. |
+| [take](../logic-apps/workflow-definition-language-functions-reference.md#take) | Az első gyűjtemény elemek visszaadása. |
+| [union](../logic-apps/workflow-definition-language-functions-reference.md#union) | Vissza, amely rendelkezik *összes* elemet a megadott gyűjteményekkel a. |
 |||
 
 <a name="comparison-functions"></a>
@@ -3492,7 +3492,7 @@ subtractFromTime('2018-01-02T00:00:00Z', 1, 'Day', 'D')
 
 <a name="take"></a>
 
-### <a name="take"></a>hajtsa végre a megfelelő
+### <a name="take"></a>take
 
 Az első gyűjtemény elemek visszaadása.
 
@@ -3776,7 +3776,7 @@ trim(' Hello World  ')
 
 <a name="union"></a>
 
-### <a name="union"></a>Union
+### <a name="union"></a>union
 
 Vissza, amely rendelkezik *összes* elemet a megadott gyűjteményekkel a.
 Az eredmény jelenik meg, hogy egy elem egy gyűjteményt a függvénynek átadott is megjelennek. Ha egy vagy több elemet ugyanazzal a névvel rendelkezik, az eredmény ilyen nevű legutóbbi elem jelenik meg.

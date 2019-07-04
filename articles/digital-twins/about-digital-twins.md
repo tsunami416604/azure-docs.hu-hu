@@ -3,31 +3,30 @@ title: Az Azure Digital Twins áttekintése | Microsoft Docs
 description: További információ a térbeli intelligenciát megvalósító Azure IoT-megoldásról, az Azure Digital Twinsről.
 author: julieseto
 ms.author: jseto
-ms.date: 12/14/2018
+ms.date: 05/31/2019
 ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 manager: bertvanhoof
 ms.custom: mvc
-ms.openlocfilehash: 41a6b040c04c3a212a7ee89897b29f5ec96048d7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0bbbb924cace93e44af84fd96926a2d7153dd5f8
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072180"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67459018"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Az Azure Digital Twins áttekintése
 
-Az Azure Digital Twins egy Azure IoT-szolgáltatás, amellyel a fizikai környezet átfogó modelljei hozhatók létre. Térbeli üzletiintelligencia-grafikonokkal modell, kapcsolatokat és a személyek, szóközöket és eszközök közötti interakciókat tud létrehozni.
+Az Azure digitális Twins előzetes verziója egy Azure IoT-szolgáltatás, amely a fizikai környezet átfogó modelleket hoz létre. Térbeli üzletiintelligencia-grafikonokkal modell, kapcsolatokat és a személyek, szóközöket és eszközök közötti interakciókat tud létrehozni.
 
-Az Azure digitális Twins lekérdezheti, ha egy fizikai helyet próbálják számos különböző érzékelőktől származó adatok. A szolgáltatás segít a streamelési adatok digitális és a fizikai világszerte hivatkozó újrafelhasználható, rugalmasan méretezhető, kijelölése figyelembe felhasználói környezetek készíthetők. Az alkalmazások egyedi vonatkozó környezetfüggő funkciókhoz tovább növeli. Az Azure digitális Twins is használható a következő példa feladatokat:
+Az Azure digitális Twins lekérdezheti, ha egy fizikai helyet próbálják számos különböző érzékelőktől származó adatok. A szolgáltatás segít a streamelési adatok digitális és a fizikai világszerte hivatkozó újrafelhasználható, rugalmasan méretezhető, kijelölése figyelembe felhasználói környezetek készíthetők. Az alkalmazások egyedi vonatkozó környezetfüggő funkciókhoz tovább növeli. 
+
+Az Azure digitális Twins vonatkozik minden típusú környezetek, például, adattárházak, iroda, iskolák, a kórházak és bankok. Akkor is használható stadionokban, gyárak, ideiglenes sok, parkot, az intelligens hálózatok és városokat. Egyes forgatókönyvekben, ahol az Azure digitális Twins hasznos lehet a következők:
 
 - Előrejelezheti a karbantartási igényeket Factory.
 - Valós idejű energia követelményei az elektromos rács elemzése.
 - Optimalizálja az Office használatát, rendelkezésre álló területet.
-
-Az Azure digitális Twins környezetek minden típusú vonatkozik. Csak néhány példa adattárházakhoz, iroda, iskolák, a kórházak és bankok. Akkor is használható stadionokban, gyárak, ideiglenes sok, parkot, az intelligens hálózatok és városokat. Az alábbi példák az Azure digitális Twins használható:
-
 - Napi hőmérséklet több állapotok nyomon követésére.
 - Foglalt drónos elérési utak figyelésére.
 - Autonóm járművek azonosításához.
@@ -46,15 +45,15 @@ Az Azure digitális Twins rendelkezik az alábbi főbb képességeket.
 
 ### <a name="spatial-intelligence-graph"></a>Térbeliintelligencia-diagramok
 
-A [ *térbeli intelligencia graph*](./concepts-objectmodel-spatialgraph.md), vagy *térbeli graph*, a fizikai környezet virtuális ábrázolásai. Használhatja a személyek, helyek és eszközök közötti kapcsolatok modellezésére.
+A [ *térbeli intelligencia graph*](./concepts-objectmodel-spatialgraph.md#graph), vagy *térbeli graph*, a fizikai környezet virtuális ábrázolásai. Használhatja a személyek, helyek és eszközök közötti kapcsolatok modellezésére.
 
 Fontolja meg egy intelligens segédprogram alkalmazást, amely magában foglalja a több használati fogyasztásmérők csatlakoztatva a helyek között. Az intelligens segédprogram vállalati pontosan kell figyelni és előre jelezni az elektromos áram használati és számlázási. Egyes eszközök és érzékelők a hely és az ügyfél, amely, számlázunk kontextusú modellezni kell. A térbeli intelligencia graph segítségével az ilyen típusú összetett kapcsolatok modellezésére.
 
 ### <a name="digital-twin-object-models"></a>Digitális ikerobjektum-modellek
 
-[Digitális két objektummodellt](./concepts-objectmodel-spatialgraph.md) előre definiált eszköz-protokollok és a sémát. A megoldás tartomány-specifikus igényeihez, leegyszerűsítheti a fejlesztést, és rendezve.
+[Digitális két objektummodellt](./concepts-objectmodel-spatialgraph.md#model) előre definiált eszköz-protokollok és a sémát. A megoldás tartomány-specifikus igényeihez, leegyszerűsítheti a fejlesztést, és rendezve.
 
-Ilyen például, egy hely foglaltsága alkalmazás használhat előre definiált típusok, például a telephelyi, épület, emelet és hely.
+Előfordulhat, hogy például, hogy egy hely foglaltsága alkalmazást előre definiált típusok, például a telephelyi, épület, emelet és hely használja.
 
 ### <a name="multiple-and-nested-tenants"></a>Többszörös és beágyazott bérlők
 

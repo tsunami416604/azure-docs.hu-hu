@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Gyors, tárolók, mikroszolgáltatások és a Java Azure-beli Kubernetes-fejlesztés
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Java, Helm, szolgáltatás-háló, szolgáltatás háló az Útválasztás, a kubectl, k8s
 manager: jeconnoc
-ms.openlocfilehash: 2a7ff71a8143883226c10754afc9757aea310c63
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: b3074fc280098d0aa55292c48a1562b8dfeb3cc0
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393460"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503080"
 ---
 # <a name="quickstart-develop-with-java-on-kubernetes-using-azure-dev-spaces"></a>Gyors útmutató: Fejlesztés Java nyelven, a Kubernetes Azure fejlesztési tárolóhelyek használatával
 
@@ -195,7 +195,7 @@ return "Hello from webfrontend in Azure while debugging!";
 
 Mentse a fájlt. Kattintson a *Debug* majd *indítsa újra a hibakeresés* vagy a a *hibakeresési eszköztár*, kattintson a *indítsa újra a hibakeresés* gombra.
 
-![Frissítse a hibakeresés](media/get-started-java/debug-action-refresh.png)
+![Frissítse a hibakeresés](media/common/debug-action-refresh.png)
 
 Egy böngészőben nyissa meg a szolgáltatást, és figyelje meg, hogy a frissített üzenet jelenik meg.
 

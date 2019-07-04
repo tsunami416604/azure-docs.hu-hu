@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: f47735a6e41ae14cb439e10803b82c0dbd3e64d7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 68f24d4d019af873a0ca45792a3cbcc3dd3c3c3f
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67115030"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476042"
 ---
 # <a name="quickstart-use-a-cloud-based-notebook-server-to-get-started-with-azure-machine-learning"></a>Gyors útmutató: Ismerkedés az Azure Machine Learning felhőalapú notebook server használatával
 
@@ -74,9 +74,12 @@ Miután a virtuális gép fut, használja a **Notebook virtuális gépek** szaka
 
 1. A felső foldername a Jupyter notebook weblapon, az a felhasználónév.  Válassza ki a mappát.
 
+    > [!TIP]
+    > Ebben a mappában található a [tároló](concept-workspace.md#resources) a munkaterületen található, nem pedig a notebook virtuális gépre.  A virtuális gép notebook törölheti, és továbbra is a munkát tartani.  Amikor létrehoz egy új jegyzetfüzetet VM később, betöltése a ugyanabban a mappában lesz.
+
 1. A minták foldername tartalmaz egy verziószámot, például **minták – 1.0.33.1**.  Válassza ki a mintákat tartalmazó mappára.
 
-1. Válassza ki a **rövid** notebookot.
+1. Válassza ki a **rövid** mappát.
 
 ## <a name="run-the-notebook"></a>A notebook futtatása
 
@@ -115,11 +118,11 @@ Miután a virtuális gép fut, használja a **Notebook virtuális gépek** szaka
 
 1. Kattintson a **az Azure-portálra mutató hivatkozást** futtatás adatainak megtekintéséhez a munkaterületén.  Ez a hivatkozás megnyitja a munkaterületet az Azure Portalon.
 
-1. A grafikon láthatja a naplózott értékek is automatikusan létrejön a munkaterületen. Mindig automatikusan létrejön egy diagram, amikor több értéket naplóz ugyanazzal a névparaméterrel.
+1. A grafikon láthatja a naplózott értékek is automatikusan létrejön a munkaterületen. Mindig automatikusan létrejön egy diagram, amikor több értéket naplóz ugyanazzal a névparaméterrel. Például:
 
    ![Előzmények megtekintése](./media/quickstart-run-cloud-notebook/web-results.png)
 
-Mivel a kódot a hozzávetőleges pi véletlenszerű értéket használ, a grafikon különböző értékek jelennek meg.  
+Mivel a kódot a hozzávetőleges pi véletlenszerű értéket használ, a grafikon megjelenése eltérő lehet.  
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -154,7 +157,9 @@ Ebben a rövid útmutatóban elvégezte ezeket a feladatokat:
 * A jegyzetfüzet futtatásához.
 * A naplózott hiba értékeinek megtekintése a munkaterületén.  Ez a példa bemutatja, hogyan segíthet a munkaterület a szkriptben létrehozott információk nyomon követésében. 
 
-A Jupyter Notebook weblapon böngésszen más notebookjait tudhat meg többet az Azure Machine Learning szolgáltatás a mintákat tartalmazó mappára.
+A Jupyter Notebook weblapon az a **rövid** mappát, nyissa meg és futtassa a **02.deploy-web-service.ipynb** notebook megtudhatja, hogyan webszolgáltatás üzembe helyezése.
+
+Is a Jupyter Notebook weblapon böngészhet a más notebookjait tudhat meg többet az Azure Machine Learning szolgáltatás a mintákat tartalmazó mappára.
 
 Részletes munkafolyamat élményt biztosít betanítása és a modell üzembe helyezése a Machine Learning-oktatóanyagokat követve:  
 

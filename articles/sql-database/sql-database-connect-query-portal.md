@@ -8,17 +8,17 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: AyoOlubeko
-ms.author: ayolubek
+author: Ninarn
+ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/12/2019
-ms.openlocfilehash: b2109afe6760eb87269a33ed74784149c2bf3e03
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/28/2019
+ms.openlocfilehash: 52041ba3c057e871b60f283f293dd79a18f3b21e
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61409064"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508761"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Gyors útmutató: Csatlakozás és adatok lekérdezése az Azure portal SQL-Lekérdezésszerkesztő használatával
 
@@ -32,14 +32,14 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
   || Önálló adatbázis |
   |:--- |:--- |
-  | Létrehozás| [Portál](sql-database-single-database-get-started.md) | 
-  || [Parancssori felület](scripts/sql-database-create-and-configure-database-cli.md) | 
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | 
-  | Konfigurálás | [kiszolgálószintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)| 
+  | Hozzon létre| [Portál](sql-database-single-database-get-started.md) |
+  || [Parancssori felület](scripts/sql-database-create-and-configure-database-cli.md) |
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
+  | Konfigurálás | [kiszolgálószintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)|
   |||
 
 > [!NOTE]
-> Győződjön meg arról, hogy a **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítás **ON** az SQL server Tűzfalbeállításaiban. Ezt a lehetőséget biztosít az SQL-lekérdezésszerkesztőnek az adatbázisokhoz és az adattárházakhoz.
+> A Lekérdezésszerkesztő használ a 443-as és 1443 való kommunikációhoz.  Ellenőrizze, hogy engedélyezte, hogy ezeket a portokat a kimenő HTTPS-forgalmat. Is kell a kimenő IP-cím hozzáadása a kiszolgálón engedélyezett tűzfalszabályok eléréséhez az adatbázisok és az adattárházakhoz.
 
 ## <a name="sign-in-the-azure-portal"></a>Jelentkezzen be az Azure Portalon
 
@@ -49,13 +49,13 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 1. Válassza ki **SQL-adatbázisok** a bal oldali menüben válassza ki **mySampleDatabase**.
 
-2. A bal oldali menüben, kereséséhez és kijelöléséhez **Lekérdezésszerkesztő (előzetes verzió)**. A **bejelentkezési** lap jelenik meg.
+2. A bal oldali menüben, kereséséhez és kijelöléséhez **Lekérdezésszerkesztő (előzetes verzió)** . A **bejelentkezési** lap jelenik meg.
 
     ![lekérdezésszerkesztő keresése](./media/sql-database-connect-query-portal/find-query-editor.PNG)
 
 3. Az a **engedélyezési típus** legördülő menüjében válassza **SQL Server-hitelesítés** , és adja meg a felhasználói Azonosítót és jelszót a kiszolgálói rendszergazdai fiók az adatbázis létrehozásakor használt.
 
-    ![bejelentkezés](./media/sql-database-connect-query-portal/login-menu.png) 
+    ![bejelentkezés](./media/sql-database-connect-query-portal/login-menu.png)
 
 4. Kattintson az **OK** gombra.
 
@@ -78,8 +78,8 @@ Az Active Directory (AD) rendszergazda konfigurálása lehetővé teszi, hogy eg
 
 4. AD admin oldal eszköztárán válassza **mentése**.
 
-5. Keresse meg a **mySampleDatabase** adatbázisra, majd a bal oldali menüből válassza **Lekérdezésszerkesztő (előzetes verzió)**. A **bejelentkezési** lap jelenik meg. Ha Ön AD rendszergazda, majd a jobb oldali alatt **Active Directory egyszeri bejelentkezés**, megjelenik egy üzenet közli, hogy már bejelentkezett. 
-   
+5. Keresse meg a **mySampleDatabase** adatbázisra, majd a bal oldali menüből válassza **Lekérdezésszerkesztő (előzetes verzió)** . A **bejelentkezési** lap jelenik meg. Ha Ön AD rendszergazda, majd a jobb oldali alatt **Active Directory egyszeri bejelentkezés**, megjelenik egy üzenet közli, hogy már bejelentkezett.
+
 6. Kattintson az **OK** gombra.
 
 
@@ -160,7 +160,7 @@ Futtassa a következő [törlése](https://msdn.microsoft.com/library/ms189835.a
 
 Ha a Lekérdezésszerkesztő néhány dolgot lehet.
 
-* A virtuális hálózaton nem használható a Lekérdezésszerkesztő az SQL server-adatbázisok lekérdezése.
+* A Lekérdezésszerkesztő használ a 443-as és 1443 való kommunikációhoz.  Ellenőrizze, hogy engedélyezte, hogy ezeket a portokat a kimenő HTTPS-forgalmat. Is kell a kimenő IP-cím hozzáadása a kiszolgálón engedélyezett tűzfalszabályok eléréséhez az adatbázisok és az adattárházakhoz.
 
 * F5 billentyű lenyomásával frissíti a Lekérdezésszerkesztő lapja, és bármilyen szerkesztett lekérdezést elvész.
 

@@ -11,14 +11,14 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 4ae22a5cd6ad044a86db88986daf9cc7c05c00a2
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: c2565a5549cbca08b987883e5905f09070b5ab2c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342311"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443203"
 ---
-# <a name="add-an-azure-storage-queue-binding-to-your-function"></a>A függvényt egy Azure Storage-üzenetsor kötés hozzáadása
+# <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Egy Azure Storage-üzenetsor kötést ad hozzá a Python-függvény
 
 Az Azure Functions lehetővé teszi a saját integrációs kód írása nélkül funkciók Azure-szolgáltatások és más erőforrásokhoz kapcsolódni. Ezek *kötések*, amelyek képviselik, bemeneti és kimeneti is deklarált belül a függvény definícióját. A függvény kötések származó adatok megadott paraméterekként. Egy trigger egy speciális típusú bemeneti kötést. Függvény csak egy eseményindító tartozik, míg képes rendelkezik több bemeneti és kimeneti kötéseit. További tudnivalókért lásd: [Azure Functions eseményindítók és kötések fogalmak](functions-triggers-bindings.md).
 
@@ -32,7 +32,7 @@ Ez a cikk a Kezdés előtt hajtsa végre a [, a Python a rövid útmutató 1. r�
 
 ## <a name="download-the-function-app-settings"></a>Töltse le a függvényalkalmazás-beállításokat
 
-Az előző cikkben a rövid útmutatóban létrehozott egy függvényalkalmazást és egy tárfiókot az Azure-ban. Ez a fiók kapcsolati karakterláncára lesz biztonságosan tárolva alkalmazás beállításai az Azure-ban. Ebben a cikkben írt üzenetek ugyanazzal a fiókkal az üzenetsor-tárolóba. Csatlakozhat a tárfiókhoz a függvény helyi futtatás során, a beállítások töltse le a local.settings.json fájlhoz. Futtassa a következő az Azure Functions Core Tools parancsot letöltési beállítások local.Settings.JSON fájlhoz, és cserélje le `<APP_NAME>` az előző cikkben a függvényalkalmazás nevére:
+A korábbi rövid útmutatóban a cikkben létrehozott egy függvényalkalmazást a szükséges tárfiók együtt az Azure-ban. Ez a fiók kapcsolati karakterláncára lesz biztonságosan tárolva alkalmazás beállításai az Azure-ban. Ebben a cikkben írt üzenetek ugyanazzal a fiókkal az üzenetsor-tárolóba. Csatlakozhat a tárfiókhoz a függvény helyi futtatás során, a beállítások töltse le a local.settings.json fájlhoz. Futtassa a következő az Azure Functions Core Tools parancsot letöltési beállítások local.Settings.JSON fájlhoz, és cserélje le `<APP_NAME>` az előző cikkben a függvényalkalmazás nevére:
 
 ```bash
 func azure functionapp fetch-app-settings <APP_NAME>
@@ -44,6 +44,12 @@ Előfordulhat, hogy kell jelentkezzen be az Azure-fiókjával.
 > Titkos kódok tartalmaz, mert a local.settings.json fájllal soha nem lekérdezi közzétenni, és ki kell zárni a forráskezelőből.
 
 Az érték szükséges `AzureWebJobsStorage`, azaz a Tárfiók kapcsolati sztringje. Ez a kapcsolat segítségével győződjön meg arról, hogy a kimeneti kötés megfelelően működik-e.
+
+## <a name="enable-extension-bundles"></a>Bővítmény csomagjaiból engedélyezése
+
+[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
+
+Most már hozzáadhat egy a tároló kimeneti kötése a projekthez.
 
 ## <a name="add-an-output-binding"></a>Kimeneti kötés hozzáadása
 
@@ -133,7 +139,7 @@ func host start
 ```
 
 > [!NOTE]  
-> Mivel az előző cikkben korábban is engedélyezheti a host.json a bővítmény csomagok a [tárolási kötési bővítmény](functions-bindings-storage-blob.md#packages---functions-2x) letöltötte és telepítette a rendszerindítás során.
+> Mivel az előző cikkben korábban is engedélyezheti a host.json a bővítmény csomagok a [tárolási kötési bővítmény](functions-bindings-storage-blob.md#packages---functions-2x) letöltötte és telepítette a indításakor, valamint a más Microsoft-kötési bővítményeket.
 
 Másolja ki a `HttpTrigger` függvény URL-címét a futtatókörnyezetének kimenetéből, majd illessze be a böngészője címsorába. Az URL-címhez fűzze hozzá a `?name=<yourname>` lekérdezési sztringet, és hajtsa végre a kérelmet. Ahogyan az előző cikkben kell megjelennie a böngészőben ugyanazt a választ.
 

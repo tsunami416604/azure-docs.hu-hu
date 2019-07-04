@@ -9,37 +9,31 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: ec0425ff2188ecf1816d5f5841394c8e32f301d2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 4f3d31fa25ea5781bc3af7297719b77723597e17
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178916"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444608"
 ---
 ## <a name="publish-the-project-to-azure"></a>A projekt közzététele az Azure-ban
 
 A Visual Studio Code lehetővé teszi a függvényprojekt közzétételét közvetlenül az Azure-ba. A folyamat során létrehoz egy függvényalkalmazást és az azokhoz tartozó erőforrásokat az Azure-előfizetésében. A függvényalkalmazás végrehajtási környezetet biztosít a függvények számára. A projektet a rendszer becsomagolja, és az Azure-előfizetésben lévő új függvényalkalmazásban helyezi üzembe.
 
-A cikk azt feltételezi, hogy Ön új függvényalkalmazást hoz létre. 
+Alapértelmezés szerint a Visual Studio létrehozza az összes Azure-erőforrások a függvényalkalmazás létrehozásához szükséges. Ezek az erőforrások nevei a függvényalkalmazás nevét, válassza a alapulnak. Ha szüksége a létrehozott erőforrások teljes körű hozzáféréssel rendelkezik, akkor ehelyett [közzététele a speciális beállításokkal](../articles/azure-functions/functions-develop-vs-code.md#enabled-publishing-with-advanced-create-options).
+
+Ez a szakasz azt feltételezi, hogy hoz létre egy új függvényalkalmazást az Azure-ban.
 
 > [!IMPORTANT]
 > Meglévő függvényalkalmazásba való közzététel felülírja az adott alkalmazás tartalmát az Azure-ban.
 
-1. Az a **Azure: Függvények** területen válassza ki az üzembe helyezés, a Függvényalkalmazás ikon.
-
-    ![A függvényalkalmazás beállításai](./media/functions-publish-project-vscode/function-app-publish-project.png)
+1. A Visual Studio Code-nyomja le az F1 billentyűt a parancskatalógus megnyitásához. A parancskatalógus keresése és kiválasztása `Azure Functions: Deploy to function app...`.
 
 1. Ha nincs bejelentkezve, kéri **jelentkezzen be Azure**. Emellett **hozzon létre egy ingyenes Azure-fiókkal**. Sikeres bejelentkezés után a böngészőből lépjen vissza a Visual Studio Code-ot. 
 
 1. Ha több előfizetéssel rendelkezik **válasszon ki egy előfizetést** a függvényalkalmazás, majd válassza ki **+ új Függvényalkalmazás létrehozása az Azure-ban**.
 
 1. Írjon be egy globálisan egyedi nevet a függvényalkalmazás azonosításához, majd nyomja le az Enter billentyűt. A függvényalkalmazás nevéhez használható érvényes karakterek a következők: `a-z`, `0-9` és `-`.
-
-1. Válassza a **+ Create New Resource Group** (Új erőforráscsoport létrehozása) lehetőséget, adjon meg egy erőforráscsoport-nevet (pl. `myResourceGroup`), majd nyomja le az Enter billentyűt. Használhat meglévő erőforráscsoportot is.
-
-1. Válasszon **+ létrehozás új Tárfiók**, egy globálisan egyedi nevet az új tárfiók a függvényalkalmazást, és nyomja le az Enter által használt típus. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat. Meglévő fiókot is használhat.
-
-1. Válasszon ki egy helyet egy, a közelben, vagy a függvények által elért más szolgáltatások közelében található [régióban](https://azure.microsoft.com/regions/).
 
     Amikor lenyomja az ENTER billentyűt, a következő Azure-erőforrások jönnek létre az előfizetésben:
 

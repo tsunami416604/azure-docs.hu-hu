@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90a484224c35abd492db2409e6ec8e91c398d71a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 08453928ab000cf906c451fa6c1cd619a00ee4ca
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106782"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561204"
 ---
 # <a name="tutorial-integrate-appraisd-with-azure-active-directory"></a>Oktatóanyag: Appraisd integrálása az Azure Active Directoryval
 
@@ -89,7 +89,7 @@ Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyez�
     > [!NOTE]
     > A tényleges bejelentkezési URL- és a továbbítási állapot értéke a Appraisd egyszeri bejelentkezési konfiguráció lapon, az oktatóanyag későbbi részében ismertetett kap.
 
-1. Appraisd alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg, hol **nameidentifier** le van képezve a **user.userprincipalname**. Appraisd alkalmazás vár **nameidentifier** a leképezendő **user.mail**, így kell szerkesztenie a attribútumleképezés kattintva **szerkesztése**  ikonra, és módosítsa a attribútumleképezés.
+1. Appraisd alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg, hol **nameidentifier** le van képezve a **user.userprincipalname**. Appraisd alkalmazás vár **nameidentifier** a leképezendő **user.mail**, így kell szerkesztenie a attribútumleképezés kattintva **szerkesztése** ikonra, és módosítsa a Attribútumleképzés.
 
     ![image](common/edit-attribute.png)
 

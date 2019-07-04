@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: fd377d731b9e916414c7d1a568c7267e73d6bf33
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 00c536120ed9507d5ecc6fe930429d12514945b3
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137237"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483819"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Mi az Azure HDInsight alatt futó Apache Storm?
 
@@ -44,7 +44,7 @@ A HDInsight alatt futó Storm a következő szolgáltatásokat biztosítja:
 
 A valós idejű elemzési megoldásaikhoz Apache Stormot használó vállalatok listája itt található: [Az Apache Stormot használó vállalatok](https://storm.apache.org/documentation/Powered-By.html).
 
-A Storm használatának megkezdéséhez lásd [Apache Storm on HDInsight – első lépések](apache-storm-tutorial-get-started-linux.md).
+A Storm használatának megkezdéséhez lásd [létrehozása és a egy Azure HDInsight az Apache Storm-topológia figyelő](apache-storm-quickstart.md).
 
 ## <a name="how-does-apache-storm-work"></a>Hogyan működik az Apache Storm
 
@@ -68,7 +68,7 @@ Az alapértelmezett konfiguráció szerint az Apache Storm-fürtök csak egyetle
 
 ## <a name="ease-of-creation"></a>Könnyű létrehozás
 
-Az új Storm-fürtök percek alatt létrehozhatók a HDInsightban. További információkat a Storm-fürtök létrehozásáról [a HDInsight alatt futó Storm bemutatásában](apache-storm-tutorial-get-started-linux.md) talál.
+Az új Storm-fürtök percek alatt létrehozhatók a HDInsightban. Egy Storm-fürt létrehozásával kapcsolatos további információkért lásd: [Apache Hadoop-fürtök létrehozása az Azure portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="ease-of-use"></a>Könnyű használat
 
@@ -176,5 +176,5 @@ A naplózás konfigurálását bemutató példatopológiát a HDInsight alatt fu
 
 További információ a HDInsight Apache Storm valós idejű elemzési megoldásairól:
 
-* [A HDInsight Apache Storm használatának első lépései](apache-storm-tutorial-get-started-linux.md)
+* [Létrehoz és felügyel egy Azure HDInsight az Apache Storm-topológia](apache-storm-quickstart.md)
 * [HDInsight alatt futó Apache Storm példatopológiái](apache-storm-example-topology.md)

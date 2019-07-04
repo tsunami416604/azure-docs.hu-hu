@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: ea890a49fc7b6a153ece183b153f5bc2a49760b5
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 5ef30fbf647492f79c64508d8306868aa1f6b278
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496571"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444580"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Egy HTTP által aktivált függvény létrehozása az Azure-ban
 
@@ -32,9 +32,9 @@ Mielőtt elkezdené, az alábbiakkal kell rendelkeznie:
 
 + Telepítés [Python 3.6-os](https://www.python.org/downloads/).
 
-+ Telepítés [Azure Functions Core Tools](./functions-run-local.md#v2) 2.6.666 verzió vagy újabb.
++ Telepítés [Azure Functions Core Tools](./functions-run-local.md#v2) 2.6.1071 vagy újabb verzióját.
 
-+ Telepítse a [Azure CLI-vel](/cli/azure/install-azure-cli) verzió 2.x-es vagy újabb.
++ Telepítse a [Azure CLI-vel](/cli/azure/install-azure-cli) verzió 2.x-es vagy újabb verziója.
 
 + Aktív Azure-előfizetés.
 
@@ -44,18 +44,18 @@ Mielőtt elkezdené, az alábbiakkal kell rendelkeznie:
 
 Helyi fejlesztés és Python-funkciók teszteléséhez a Python 3.6-os környezetben kell működniük. Futtassa a következő parancsokat, létrehozása és aktiválása nevű virtuális környezetet `.env`.
 
-### <a name="bash-or-a-terminal-window"></a>Bash- vagy egy terminálablakban:
+### <a name="bash"></a>Bash:
 
 ```bash
-python3.6 -m venv .env
-source .env/bin/activate
+python3.6 -m venv .venv
+source .venv/bin/activate
 ```
 
 ### <a name="powershell-or-a-windows-command-prompt"></a>PowerShell vagy egy Windows parancssorban:
 
 ```powershell
-py -3.6 -m venv .env
-.env\scripts\activate
+py -3.6 -m venv .venv
+.venv\scripts\activate
 ```
 
 A fennmaradó parancsok futtatása a virtuális környezeten belül.
@@ -66,7 +66,7 @@ A Functions-projekt megegyezik egy függvényalkalmazást az Azure-ban. Több f�
 
 A virtuális környezetben, futtassa a következő parancsot, kiválasztása **python** , a worker futásidejű.
 
-```command
+```console
 func init MyFunctionProj
 ```
 
@@ -78,25 +78,17 @@ Nevű mappa _MyFunctionProj_ jön létre, amely tartalmazza a következő három
 
 Keresse meg az új MyFunctionProj mappa:
 
-```command
+```console
 cd MyFunctionProj
 ```
 
 Ezután frissítse a host.json fájl kiterjesztése csomagok engedélyezéséhez.  
 
-## <a name="reference-bindings"></a>Referencia-kötések
-
-Bővítmény csomagjaiból megkönnyíti a kötési bővítményeket le hozzáadása. Még nincs szükség telepíti a .NET Core 2.x SDK. Bővítmény-csomagok a Core Tools 2.6.1071 verzióját vagy újabb verzió szükséges. 
-
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
-
-Most a függvény adhat hozzá a projekthez.
-
 ## <a name="create-a-function"></a>Függvény létrehozása
 
 Függvény hozzáadása a projekthez, futtassa a következő parancsot:
 
-```command
+```console
 func new
 ```
 

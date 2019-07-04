@@ -4,20 +4,20 @@ description: Ez az útmutató a Stream Analytics-feladatok létrehozásának els
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 06/03/2019
+ms.date: 06/21/2019
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 4efb8aa21622abddca1add3d8b2fcb523cf45da5
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: e05d293760b88cd02fdffae60e762f040a4d1311
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66493384"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449228"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Gyors útmutató: Stream Analytics-feladat létrehozása az Azure portal használatával
 
-Az útmutató azt mutatja be, hogy hogyan kezdhet hozzá egy Stream Analytics-feladat létrehozásához. Ebben a rövid útmutatóban a Stream Analytics-feladat, amely beolvassa a valós idejű streamelési adatok és a egy nagyobb, mint 27 hőmérséklet-szűrők üzenetek határozhatók meg. A Stream Analytics-feladat adatokat olvasni az IoT Hub device, átalakítja az adatokat, és írhat vissza az adatokat blob Storage-tárolóba. A rövid útmutatóban használt bemeneti adatok egy Raspberry Pi online szimulátor hozza létre. 
+Az útmutató azt mutatja be, hogy hogyan kezdhet hozzá egy Stream Analytics-feladat létrehozásához. Ebben a rövid útmutatóban a Stream Analytics-feladat, amely beolvassa a valós idejű streamelési adatok és a egy nagyobb, mint 27 hőmérséklet-szűrők üzenetek határozhatók meg. A Stream Analytics-feladat adatokat olvasni az IoT Hub, az adatok átalakításához, és írhat vissza az adatokat blob Storage-tárolóba. A rövid útmutatóban használt bemeneti adatok egy Raspberry Pi online szimulátor hozza létre. 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -27,7 +27,7 @@ Az útmutató azt mutatja be, hogy hogyan kezdhet hozzá egy Stream Analytics-fe
 
 ## <a name="prepare-the-input-data"></a>A bemeneti adatok előkészítése
 
-Mielőtt meghatározná a Stream Analytics-feladat, készítse elő az adatokat, amelyeket később a feladat bemeneti van konfigurálva. A feladat bemeneti adatainak előkészítéséhez, hajtsa végre az alábbi lépéseket:
+Mielőtt meghatározná a Stream Analytics-feladat, készítse elő a bemeneti adatok. A valós idejű érzékelőadatok az IoT hubnak, amely később konfigurálva, a feladat bemeneti lett töltve. A feladat bemeneti adatainak előkészítéséhez, hajtsa végre az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
@@ -91,7 +91,7 @@ Mielőtt meghatározná a Stream Analytics-feladat, készítse elő az adatokat,
    |Feladat neve   |  MyASAJob   |   Adjon meg egy nevet a Stream Analytics-feladat azonosításához. A Stream Analytics-feladat neve csak alfanumerikus karaktereket, kötőjeleket és aláhúzásjeleket tartalmazhat, és legalább 3, de legfeljebb 63 karakter hosszúságú lehet. |
    |Előfizetés  | \<Az Ön előfizetése\> |  Válassza ki a feladathoz használni kívánt Azure-előfizetést. |
    |Erőforráscsoport   |   asaquickstart-resourcegroup  |   Válassza ki ugyanazt az erőforráscsoportot, az IoT hubhoz. |
-   |Location egység  |  \<Válassza ki a felhasználóihoz legközelebb eső régiót\> | Válassza ki azt a földrajzi helyet, ahol a Stream Analytics-feladatot üzemeltetni szeretné. A nagyobb teljesítmény és az adatátviteli díjak csökkentése érdekében válassza a felhasználóihoz legközelebb eső helyet. |
+   |Location  |  \<Válassza ki a felhasználóihoz legközelebb eső régiót\> | Válassza ki azt a földrajzi helyet, ahol a Stream Analytics-feladatot üzemeltetni szeretné. A nagyobb teljesítmény és az adatátviteli díjak csökkentése érdekében válassza a felhasználóihoz legközelebb eső helyet. |
    |Streamelési egységek  | 1  |   A streamelési egységek a feladatok végrehajtásához felhasznált számítási erőforrásokat jelölik. Ez az érték alapértelmezés szerint 1. A streamelési egységek skálázásával kapcsolatos további tudnivalókért olvassa el a [Skálázás streamelési egységekkel](stream-analytics-streaming-unit-consumption.md) című cikket.   |
    |Üzemeltetési környezet  |  Felhő  |   A Stream Analytics-feladatok a felhőben vagy a peremhálózaton is üzembe helyezhetők. Felhőalapú lehetővé teszi, hogy az Azure felhőben üzembe helyezni, és peremhálózati lehetővé teszi az IoT Edge-eszköz üzembe helyezését. |
 
@@ -179,7 +179,7 @@ Ebben a szakaszban konfigurálhatja a Stream Analytics-feladat bemenete az IoT H
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölje az erőforráscsoportot, a streamelési feladatot és az összes kapcsolódó erőforrást. A feladat törlésével megakadályozhatja, hogy a feladat által felhasznált streamelési egységek kiszámlázásra kerüljenek. Ha a feladatot a jövőben is szeretné használni, leállíthatja, és később újraindíthatja amikor ismét szükség van rá. Ha már nem használja a feladatot, akkor a következő lépésekkel az útmutatóban létrehozott összes erőforrást törölheti:
+Ha már nincs rá szükség, törölje az erőforráscsoportot, a Stream Analytics-feladat, és minden kapcsolódó erőforrás. A feladat törlésével megelőzheti a feladat által használt streamelési egységek kiszámlázását. Ha a feladatot a jövőben is szeretné használni, leállíthatja, és később újraindíthatja amikor ismét szükség van rá. Ha már nem használja a feladatot, akkor a következő lépésekkel az útmutatóban létrehozott összes erőforrást törölheti:
 
 1. Az Azure Portal bal oldali menüjében válassza az **Erőforráscsoportok** menüpontot, majd válassza ki a létrehozott erőforrás nevét.  
 

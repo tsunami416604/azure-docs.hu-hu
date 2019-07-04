@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/06/2018
 ms.author: mhopkins
 ms.reviewer: cbrooks
-ms.openlocfilehash: 41cb37eb9d96752d4732731d2a36d9bc892cbaa5
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: c3743c62dcbdccc2a119cfec570df96c622390c7
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66159820"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540318"
 ---
 # <a name="quickstart-use-net-to-create-a-queue-in-azure-storage"></a>Gyors útmutató: Üzenetsor létrehozása az Azure Storage-ban a .NET használatával
 
@@ -187,9 +187,9 @@ Console.WriteLine();
 
 A minta ezután egy üzenetet ad hozzá a várólista-jének. 
 
-Egy üzenet, amely tartalmazhat egy XML-kérelem, az UTF-8 kódolást, és lehet, hogy legfeljebb 64 KB méretű formátumban kell lennie. Egy üzenet bináris adatokat tartalmaz, akkor a Microsoft azt javasolja, hogy Ön a Base64 kódolás az üzenetet.
+Egy üzenet, amely tartalmazhat egy XML-kérelem, az UTF-8 kódolást, és lehet, hogy legfeljebb 64 KB méretű formátumban kell lennie. Ha egy üzenet bináris adatokat tartalmaz, azt javasoljuk, hogy Ön a Base64 kódolás az üzenetet.
 
-Alapértelmezés szerint a time-to-live üzenet maximális értéke 7 nap. Megadhat bármilyen pozitív szám, az üzenet time-to-live, valamint a-1 érték azt jelzik, hogy az üzenet nem jár le.
+Alapértelmezés szerint a time-to-live üzenet maximális értéke 7 nap. Megadhatja, hogy az üzenet time-to-live bármilyen pozitív szám.
 
 ```csharp
 // Create a message and add it to the queue. Set expiration time to 14 days.
@@ -199,6 +199,12 @@ Console.WriteLine("Added message '{0}' to queue '{1}'", message.Id, queue.Name);
 Console.WriteLine("Message insertion time: {0}", message.InsertionTime.ToString());
 Console.WriteLine("Message expiration time: {0}", message.ExpirationTime.ToString());
 Console.WriteLine();
+```
+
+Segítségével adhat hozzá egy üzenet, amely nem jár le, `Timespan.FromSeconds(-1)` a hívásában [AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync).
+
+```csharp
+await queue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
 ```
 
 ### <a name="peek-a-message-from-the-queue"></a>Belepillantás egy üzenetet az üzenetsorból

@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 6/21/2019
+ms.date: 6/26/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 2567c47e41306a7940b6d065feb49ae80bb16198
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
-ms.translationtype: HT
+ms.openlocfilehash: 9a875f4450b700fc9db74b4402471e282f8e9dab
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312687"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442913"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -24,15 +24,13 @@ Az Azure Firewall egy felügyelt, felhőalapú hálózatbiztonsági szolgáltat�
 
 Központilag hozhatja létre, érvényesítheti és naplózhatja az alkalmazás- és hálózatelérési szabályzatokat az előfizetésekre és a virtuális hálózatokra vonatkozóan. Az Azure Firewall statikus nyilvános IP-címet használ a virtuális hálózat erőforrásaihoz, így a külső tűzfalak azonosíthatják a virtuális hálózatból érkező forgalmat.  A szolgáltatás teljesen integrálva van az Azure Monitorral a naplózás és az elemzés érdekében.
 
-## <a name="features"></a>Szolgáltatások
-
 Az Azure Firewall az alábbi szolgáltatásokat kínálja:
 
-### <a name="built-in-high-availability"></a>Beépített magas rendelkezésre állás
+## <a name="built-in-high-availability"></a>Beépített magas rendelkezésre állás
 
 Magas rendelkezésre állású épül, így további terheléselosztók szükségesek, és semmit nem kell konfigurálnia.
 
-### <a name="availability-zones-public-preview"></a>A rendelkezésre állási zónák (nyilvános előzetes verzió)
+## <a name="availability-zones-public-preview"></a>A rendelkezésre állási zónák (nyilvános előzetes verzió)
 
 Az Azure tűzfal span megnövelt rendelkezésre állás érdekében több rendelkezésre állási zónában való üzembe helyezéskor konfigurálható. A rendelkezésre állási zónákban a rendelkezésre állás 99,99 %-os növekszik. További információkért tekintse meg az Azure-tűzfal [szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/azure-firewall/v1_0/). A 99,99 %-os SLA-t érhető el, ha két vagy több rendelkezésre állási zónák vannak kijelölve.
 
@@ -47,41 +45,41 @@ Azure-beli tűzfal rendelkezésre állási zónák rendelkezésre állási zón�
 
 Rendelkezésre állási zónákkal kapcsolatos további információkért lásd: [Mik a rendelkezésre állási zónák az Azure-ban?](../availability-zones/az-overview.md)
 
-### <a name="unrestricted-cloud-scalability"></a>Korlátlan felhőalapú skálázhatóság
+## <a name="unrestricted-cloud-scalability"></a>Korlátlan felhőalapú skálázhatóság
 
 Az Azure Firewall akármeddig felskálázható a változó hálózati forgalom kezeléséhez, így a költségvetést nem szükséges a csúcsforgalomhoz igazítania.
 
-### <a name="application-fqdn-filtering-rules"></a>Alkalmazások teljes tartománynevére vonatkozó szűrési szabályok
+## <a name="application-fqdn-filtering-rules"></a>Alkalmazások teljes tartománynevére vonatkozó szűrési szabályok
 
 A kimenő HTTP/S-forgalom korlátozható teljes tartománynevek (FQDN) egy megadott listájára (helyettesítő karakterek is alkalmazhatók). Ez a funkció nem szükséges SSL-lezárást.
 
-### <a name="network-traffic-filtering-rules"></a>Hálózati forgalomra vonatkozó szűrési szabályok
+## <a name="network-traffic-filtering-rules"></a>Hálózati forgalomra vonatkozó szűrési szabályok
 
 Központilag hozhat létre *engedélyező* vagy *tiltó* hálózatszűrési szabályokat forrás és cél IP-cím, port és protokoll alapján. Az Azure Firewall teljes mértékben állapotalapú, így képes megkülönböztetni különböző típusú kapcsolatok érvényes csomagjait. A szabályok több előfizetésen és virtuális hálózaton érvényesíthetők és naplózhatók.
 
-### <a name="fqdn-tags"></a>FQDN-címkék
+## <a name="fqdn-tags"></a>FQDN-címkék
 
 Az FQDN-címkékkel egyszerűen engedélyezheti a jól ismert Azure-szolgáltatások hálózati forgalmát a tűzfalon keresztül. Tegyük fel például, hogy engedélyezni kívánja a Windows Update hálózati forgalmát a tűzfalon keresztül. Létrehozhat egy alkalmazásszabályt, és hozzáadhatja a Windows Update címkéjét. A Windows Update hálózati forgalma ezután akadálytalanul áthaladhat a tűzfalon.
 
-### <a name="service-tags"></a>Szolgáltatáscímkék
+## <a name="service-tags"></a>Szolgáltatáscímkék
 
 A szolgáltatáscímkék IP-címelőtagok csoportjait jelölik, így a segítségükkel csökkenthető a biztonsági szabályok létrehozásának összetettsége. Nem lehet a hozzon létre saját szolgáltatáscímkéket, és adja meg, hogy mely IP-címek egyes címkék. A szolgáltatáscímkékben lévő címelőtagokat a Microsoft kezeli, és a címek változásával automatikusan frissíti a szolgáltatáscímkéket.
 
-### <a name="threat-intelligence"></a>Fenyegetésészlelési intelligencia
+## <a name="threat-intelligence"></a>Fenyegetésészlelési intelligencia
 
 Engedélyezheti a veszélyforrás-felderítésen alapuló szűrést a tűzfalon az ismert kártékony IP-címekről és tartományokból származó vagy azokba irányuló adatforgalomról való riasztáshoz és annak letiltásához. Az IP-címek és a tartományok a Microsoft Threat Intelligence hírcsatornájáról származnak.
 
-### <a name="outbound-snat-support"></a>Kimenő SNAT-támogatás
+## <a name="outbound-snat-support"></a>Kimenő SNAT-támogatás
 
 A rendszer a kimenő virtuális hálózati forgalomhoz tartozó minden IP-címet lefordít az Azure Firewall nyilvános IP-címére (forráshálózati címfordítás, SNAT). Azonosíthatja és engedélyezheti a virtuális hálózatból a távoli internetes célhelyekre irányuló forgalmat. Az Azure tűzfal nem SNAT, ha a cél IP-cím egy magánhálózati IP-címtartományt egy [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). Ha a szervezet magánhálózatok egy nyilvános IP-címtartományt használja, Azure tűzfal fog SNAT a forgalmat a tűzfal magánhálózati IP-címek AzureFirewallSubnet egyikére.
 
-### <a name="inbound-dnat-support"></a>Bejövő DNAT-támogatás
+## <a name="inbound-dnat-support"></a>Bejövő DNAT-támogatás
 
 A tűzfal nyilvános IP-címére érkező bejövő hálózati forgalmat a rendszer lefordítja (Destination Network Address Translation, célhálózati címfordítás), és a virtuális hálózat magánhálózati IP-címeire szűri.
 
-### <a name="multiple-public-ips-public-preview"></a>Több nyilvános IP-címek (nyilvános előzetes verzió)
+## <a name="multiple-public-ips-public-preview"></a>Több nyilvános IP-címek (nyilvános előzetes verzió)
 
-(Legfeljebb 600) több nyilvános IP-címet társíthatja a tűzfal.
+(Legfeljebb 100) több nyilvános IP-címet társíthatja a tűzfal.
 
 Ez lehetővé teszi a következő esetekben:
 
@@ -91,7 +89,7 @@ Ez lehetővé teszi a következő esetekben:
 > [!NOTE]
 > A nyilvános előzetes során Ha hozzáad vagy eltávolít egy nyilvános IP-címet a futó tűzfal DNAT-szabályok használatával meglévő bejövő kapcsolat funkció 40 – 120 másodpercen. A tűzfal rendelt, kivéve, ha a tűzfal nincs lefoglalva, vagy törölve első nyilvános IP-cím nem lehet eltávolítani.
 
-### <a name="azure-monitor-logging"></a>Azure Monitor-naplózás
+## <a name="azure-monitor-logging"></a>Azure Monitor-naplózás
 
 Az összes esemény és az Azure Monitor lehetővé teszi, hogy egy tárfiókba, az események streamelése az eseményközpontba naplóinak archiválása, vagy küldhet nekik az Azure Monitor naplóira integrált részei.
 
@@ -113,6 +111,7 @@ A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési sza
 |Első nyilvános IP-cím nem távolítható el.|A tűzfal rendelt, kivéve, ha a tűzfal nincs lefoglalva, vagy törölve első nyilvános IP-cím nem lehet eltávolítani.|Ez az elvárt működés.|
 |Ha ad hozzá, vagy távolítsa el a nyilvános IP-címet, a DNAT szabályok funkció ideiglenesen.| Hozzáadásakor, vagy távolítsa el a futó tűzfal egy nyilvános IP-címet, meglévő bejövő kapcsolat DNAT-szabályok használatával nem működnek a 40-120 másodperc.|Ez az egy korlátozás ennek a funkciónak a nyilvános előzetes verzióját.|
 |A rendelkezésre állási zónák csak a telepítés során lehet konfigurálni.|A rendelkezésre állási zónák csak a telepítés során lehet konfigurálni. A rendelkezésre állási zónák nem lehet konfigurálni, a tűzfal üzembe helyezése után.|Ez az elvárt működés.|
+|A bejövő kapcsolatoknál SNAT|DNAT, a nyilvános IP-cím tűzfalon keresztüli kapcsolatokat mellett egy, a tűzfal a forgalmon forrásoldali hálózati címfordítást (bejövő) azok magánhálózati IP-címek. Ez a követelmény ma (is az aktív nva-k) szimmetrikus útválasztásának biztosításához.|Megőrizheti az eredeti forrásra HTTP/s, érdemes lehet [XFF](https://en.wikipedia.org/wiki/X-Forwarded-For) fejlécek. Például, mint például az szolgáltatást használ [Azure bejárati ajtajának](../frontdoor/front-door-http-headers-protocol.md#front-door-service-to-backend) a tűzfal előtt. WAF Azure bejárati ajtajának és lánc részeként a tűzfalhoz is hozzáadhat.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
 ms.author: victorh
-ms.openlocfilehash: 7012bbe98e41a3eb273b26e7e4ade705a6eaf8e1
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: aedace031eaedf2709993b5185979e8777821759
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147571"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444840"
 ---
 # <a name="what-is-azure-private-dns"></a>Mi az Azure Private DNS?
 
@@ -59,6 +59,13 @@ Az Azure DNS az alábbi képességeket biztosítja:
 * **A privát zónához kapcsolódó virtuális hálózatok között támogatott továbbítása DNS-feloldás**. Közötti – virtuális hálózat DNS-feloldás nincs nincs explicit függőség úgy, hogy a virtuális hálózatok társviszonyban állnak egymással. Érdemes azonban, más esetekben (például HTTP-forgalom) virtuális hálózatok társviszonyba állítása.
 
 * **A virtuális hálózat hatókörén belül támogatott névkeresési DNS**. A privát zónák rendelt virtuális hálózaton belül egy privát IP-címet a DNS-névkeresési adja vissza, amely tartalmazza a gazdagép/rekord neve és a zóna nevét a utótagként teljes Tartománynevét.
+
+## <a name="known-issues"></a>Ismert problémák
+A következő elemek ismert hibák és az előzetes kiadásban problémák:
+* Ha törli a privát DNS-zónához társított virtuális hálózat, azzal nem törli a saját DNS-zóna mutató hivatkozásokat. A hivatkozás sikertelen lesz, ha hozza létre újra a virtuális hálózat azonos nevű és az erőforráscsoportot, és próbálja meg újra csatolása bármely saját DNS-zóna. A probléma megkerüléséhez, hozzon létre a virtuális hálózat egy másik erőforráscsoportban vagy egy másik nevet a ugyanabban az erőforráscsoportban.
+* Virtuális hálózat egy másik erőforráscsoportba vagy előfizetésbe helyezi át, ha nem frissíti a hivatkozásokat, a saját DNS-zóna. A névfeloldás az áthelyezett virtuális hálózat továbbra is működik, azonban megjelenik a virtuális hálózat régi ARM-azonosítók megtekintheti a virtuális hálózati kapcsolatok a privát DNS-zóna.
+* Jelenleg társított virtuális hálózatok, az Egyesült Arab Emírségek északi régiója, Egyesült Arab Emírségek középső, Dél-Afrika nyugati régiója, Dél-Afrika északi régiója, kelet-Kanadában, Dél-Franciaország lévő üzemeltetett sikertelen lehet, és láthatja a DNS-feloldási időszakos probléma. 
+
 
 ## <a name="other-considerations"></a>Egyéb szempontok
 

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 01/09/2019
+ms.date: 07/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 198e7d8d32e7142a266881e2f4ddbc3ed573c521
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e78dd093c4bbf0cf1bdbd5280ffaa63286e585d4
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60533885"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537125"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Gyors útmutató: Kiszolgáló tűzfalának konfigurálása – Portal
 
@@ -33,7 +33,7 @@ Ez a rövid útmutató segítséget nyújt az Azure Analysis Services-kiszolgál
 1. Kattintson a kiszolgálóra az Áttekintés oldal megnyitásához. 
 2. A **BEÁLLÍTÁSOK** > **Tűzfal** > **Tűzfal engedélyezése** részben kattintson a **Be** lehetőségre.
 3. A DirectQuery-hozzáférés a Power BI szolgáltatásból történő engedélyezéséhez a **Hozzáférés engedélyezése Power BI-ból** területen kattintson a **Be** lehetőségre.  
-4. (Opcionális) Adjon meg egy vagy több IP-címtartományt. Adjon meg egy nevet, valamint egy kezdő és egy záró IP-címet mindegyik tartomány számára. 
+4. (Opcionális) Adjon meg egy vagy több IP-címtartományt. Adjon meg egy nevet, valamint egy kezdő és egy záró IP-címet mindegyik tartomány számára. Tűzfalszabály-név legfeljebb 128 karakter lehet, és csak nagybetűket, kisbetűket, számokat, aláhúzásjel és kötőjel tartalmazhat. Nem állhat kizárólag szóközökből, és más speciális karakterek nem engedélyezettek.
 5. Kattintson a **Save** (Mentés) gombra.
 
      ![Tűzfalbeállítások](./media/analysis-services-qs-firewall/aas-qs-firewall.png)

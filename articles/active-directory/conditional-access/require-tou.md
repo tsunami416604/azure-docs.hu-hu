@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a3523a050a021f3a98c144efe14d692704fba63
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ba684209b497792cd2f520f6b530168959e62d7f
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112216"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67506913"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Gyors útmutató: Felhőbeli alkalmazások elérése előtt el kell fogadni a használati feltételeket tartalmazó fájl megkövetelése
 
@@ -54,11 +54,8 @@ A szakasz ismerteti a lépéseket egy minta használati feltételek létrehozás
 **A használati feltételeket tartalmazó fájl létrehozása:**
 
 1. A Microsoft Word hozzon létre egy új dokumentumot.
-
 1. Típus **a használati feltételeket tartalmazó fájl**, és a számítógépre, majd mentse a dokumentumot **mytou.pdf**.
-
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) globális rendszergazdai, biztonsági rendszergazdai vagy feltételes hozzáférési rendszergazdájaként.
-
 1. Az Azure Portalon, a bal oldali navigációs sávon kattintson **Azure Active Directory**.
 
    ![Azure Active Directory](./media/require-tou/02.png)
@@ -80,17 +77,11 @@ A szakasz ismerteti a lépéseket egy minta használati feltételek létrehozás
    ![Használati feltételek](./media/require-tou/112.png)
 
    1. Az a **neve** szövegmezőbe írja be **saját használati feltételek**.
-
    1. Az a **megjelenítendő név** szövegmezőbe írja be **saját használati feltételek**.
-
    1. Töltse fel a PDF-fájl használati feltételeit.
-
    1. Mint **nyelvi**válassza **angol**.
-
    1. Mint **bontsa ki a használati feltételeket, hogy a felhasználók**válassza **a**.
-
    1. Mint **érvényesítése a feltételes hozzáférési szabályzatok sablonjaival**válassza **egyéni házirend**.
-
    1. Kattintson a **Create** (Létrehozás) gombra.
 
 ## <a name="create-your-conditional-access-policy"></a>A feltételes hozzáférési szabályzat létrehozása
@@ -125,13 +116,9 @@ Ez a szakasz bemutatja, hogyan hozhat létre feltételes hozzáférési szabály
    ![Felhasználók és csoportok](./media/require-tou/24.png)
 
    1. Kattintson a **válassza ki a felhasználók és csoportok**, majd válassza ki **felhasználók és csoportok**.
-
    1. Kattintson a **Kiválasztás** gombra.
-
    1. Az a **válassza** lapra, jelölje be **Isabella Simonsen**, és kattintson a **kiválasztása**.
-
    1. Az a **felhasználók és csoportok** kattintson **kész**.
-
 1. Kattintson a **Felhőalkalmazások**.
 
    ![Felhőalkalmazások](./media/require-tou/08.png)
@@ -141,13 +128,9 @@ Ez a szakasz bemutatja, hogyan hozhat létre feltételes hozzáférési szabály
    ![Válassza ki a felhőalapú alkalmazások](./media/require-tou/26.png)
 
    1. Kattintson a **alkalmazások kiválasztása**.
-
    1. Kattintson a **Kiválasztás** gombra.
-
    1. A a **válassza** lapra, jelölje be **a Microsoft Azure Management**, és kattintson a **válassza**.
-
    1. Az a **Felhőalkalmazások** kattintson **kész**.
-
 1. Az a **hozzáférés-vezérlés** területén kattintson **Grant**.
 
    ![Hozzáférés-vezérlés](./media/require-tou/10.png)
@@ -157,11 +140,8 @@ Ez a szakasz bemutatja, hogyan hozhat létre feltételes hozzáférési szabály
    ![Támogatás](./media/require-tou/111.png)
 
    1. Válassza ki **hozzáférést**.
-
    1. Válassza ki **a használati feltételek**.
-
    1. Kattintson a **Kiválasztás** gombra.
-
 1. Az a **házirend engedélyezése** területén kattintson **a**.
 
    ![Szabályzat engedélyezése](./media/require-tou/18.png)
@@ -172,7 +152,7 @@ Ez a szakasz bemutatja, hogyan hozhat létre feltételes hozzáférési szabály
 
 Most, hogy a feltételes hozzáférési szabályzat van beállítva, érdemes tudni, hogy a várt módon működik-e azt. Első lépésként, a feltételes hozzáférés használata a Mi történik, ha a házirend eszközzel egy jelentkezzen be a tesztfelhasználó szimulálásához. A szimuláció megbecsüli a bejelentkezésnek a szabályzatokra gyakorolt hatását, és létrehoz egy szimulációs jelentést.  
 
-A mi inicializálni a szabályzat kiértékelési eszközével, ha:
+Inicializálása a **mi történik, ha** házirend kiértékelési eszközével, állítsa be:
 
 - **Isabella Simonsen** felhasználóként
 - **A Microsoft Azure Management** felhőalapú alkalmazásként
@@ -199,15 +179,10 @@ Kattintson a **mi történik, ha** tartalmazó szimuláció jelentést hoz létr
    ![Felhőalkalmazások](./media/require-tou/16.png)
 
    1. Kattintson a **Felhőalkalmazások**.
-
    1. Az a **felhőalapú alkalmazások lapjának**, kattintson a **alkalmazások kiválasztása**.
-
    1. Kattintson a **Kiválasztás** gombra.
-
    1. A a **válassza** lapra, jelölje be **a Microsoft Azure Management**, és kattintson a **válassza**.
-
    1. A felhőalapú alkalmazások lapján kattintson a **kész**.
-
 1. Kattintson a **mi történik, ha**.
 
 ## <a name="test-your-conditional-access-policy"></a>A feltételes hozzáférési házirend tesztelése
@@ -223,7 +198,6 @@ Ha tesztelni szeretné a szabályzatot, próbálja meg, jelentkezzen be a [az Az
 Ha már nincs rá szükség, törölje a tesztfelhasználó számára, és a feltételes hozzáférési szabályzatot:
 
 - Ha nem ismeri az Azure AD-felhasználó törlése, lásd: [felhasználók törlése az Azure ad-ből](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
-
 - Törli a szabályzatot, válassza ki a szabályzatot, és kattintson **törlése** a gyorselérési eszköztáron.
 
     ![Multi-Factor Authentication](./media/require-tou/33.png)

@@ -4,19 +4,19 @@ description: Ebben a rövid útmutató egy IoT Edge-eszköz létrehozása és ü
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/19/2019
+ms.date: 07/02/2019
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 5c790d39ea471a599e8a6b46004b3e350834c318
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 58dc2f5d8862c0b51b36e028d52275b2c8e732be
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573952"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537563"
 ---
-# <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-device"></a>Gyors útmutató: Az első IoT Edge-modul üzembe egy Linux rendszerű eszközön
+# <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-device"></a>Gyors útmutató: Az első IoT Edge-modul üzembe helyezése Linux-eszközön
 
 Az Azure IoT Edge kiterjeszti a felhő képességeit IoT-eszközeire. Ebben a rövid útmutatóban megismerheti, hogyan helyezhet üzembe előre összeállított kódot távolról egy IoT Edge-eszközön a felhőalapú felület használatával.
 
@@ -55,15 +55,14 @@ Felhőerőforrások:
 
 IoT Edge-eszköz:
 
-* Egy Linux rendszerű eszköz vagy virtuális gép, amely IoT Edge-eszközként szolgál majd. A Microsoft által biztosított használjon [Ubuntu rendszeren az Azure IoT Edge](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) virtuális gépet, mely előtelepíti tudnivalót az IoT Edge futtatják egy eszközön. Hozza létre a virtuális gép a következő paranccsal:
+* Egy Linux rendszerű eszköz vagy virtuális gép, amely IoT Edge-eszközként szolgál majd. A Microsoft által biztosított használjon [Ubuntu rendszeren az Azure IoT Edge](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) virtuális gépet, mely előtelepíti tudnivalót az IoT Edge futtatják egy eszközön. Hozza létre a virtuális gép a következő parancsokkal:
 
    ```azurecli-interactive
+   az vm image accept-terms --urn microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest
    az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
    ```
 
    Hozzon létre, és az új virtuális gép elindítása néhány percig is eltarthat.
-
-   Előfordulhat, hogy kap egy `MarketplacePurchaseEligibilityFailed` ezen a ponton hiba. Ha ez történik, el kell fogadnia a feltételeket a [Ubuntu rendszeren az Azure IoT Edge](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) kattintva `Get It Now`. Jelentkezzen be, és mielőtt újra próbálkozna a parancs a feltételek elfogadása.
 
    Amikor létrehoz egy új virtuális gépet, jegyezze fel a a **publicIpAddress**, amely a create parancs kimenete részeként van megadva. A nyilvános IP-cím használatával fog csatlakozni a virtuális géphez az útmutató későbbi részében.
 

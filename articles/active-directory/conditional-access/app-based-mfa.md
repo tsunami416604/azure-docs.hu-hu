@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db191587f02fa8fa8934cac7a001ea31c233cbdb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 36cb3b1555a339249528e290e376454dd78f1e53
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112754"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509058"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Gyors útmutató: Többtényezős hitelesítés konkrét alkalmazások esetén az Azure Active Directory feltételes hozzáférés
 
-A felhasználók bejelentkezési élmény egyszerűsítése, érdemes, hogy jelentkezzen be a felhőalapú alkalmazások, a felhasználónév és jelszó használatával. Azonban sok környezet rendelkezik, amelynek tanácsos igényelnek, például a többtényezős hitelesítés (MFA) a Fiókellenőrzés erősebb egyfajta legalább néhány alkalmazással. Ez lehet például IGAZ, a szervezet e-mail rendszer vagy a HR-alkalmazások eléréséhez. Az Azure Active Directoryban (Azure AD) a cél a feltételes hozzáférési szabályzattal együtt is elérheti.
+A bejelentkezési élmény a felhasználók egyszerűbben érdemes, hogy jelentkezzen be a felhőalapú alkalmazások, a felhasználónév és jelszó használatával. Azonban sok környezet rendelkezik, amelynek tanácsos igényelnek, például a többtényezős hitelesítés (MFA) a Fiókellenőrzés erősebb egyfajta legalább néhány alkalmazással. Ez a szabályzat lehet igaz, a hozzáférés a szervezet e-mail system vagy a HR-alkalmazások. Az Azure Active Directoryban (Azure AD) a cél a feltételes hozzáférési szabályzattal együtt is elérheti.
 
 Ez a rövid útmutató ismerteti, hogyan konfigurálható egy [Azure AD feltételes hozzáférési szabályzat](../active-directory-conditional-access-azure-portal.md) a multi-factor authentication szolgáltatás egy kijelölt felhőalkalmazás a környezetben, amely igényel.
 
@@ -33,14 +33,13 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 Ebben a rövid útmutatóban a forgatókönyv végrehajtásához szükséges:
 
 - **Hozzáférés az Azure AD Premium Edition** – Azure AD feltételes hozzáférése egy Azure AD Premium-funkció.
-
 - **Tesztfiók nevű Isabella Simonsen** – Ha nem tudja, hogyan hozzon létre egy olyan fiókot, lásd: [adja hozzá a felhőalapú felhasználók](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
 Ebben a rövid útmutatóban a forgatókönyvhöz szükséges, hogy felhasználónkénti MFA nincs engedélyezve a tesztfiók. További információkért lásd: [igénylése a kétlépéses ellenőrzés egy felhasználó](../authentication/howto-mfa-userstates.md).
 
-## <a name="test-your-sign-in"></a>A bejelentkezés tesztelése
+## <a name="test-your-experience"></a>A felhasználói élmény tesztelése
 
-Ebben a lépésben az a célja, hogy egy benyomást kell szereznie a bejelentkezési élmény a feltételes hozzáférési szabályzat nélkül.
+Ebben a lépésben az a célja, hogy egy benyomást kell szereznie egy feltételes hozzáférési szabályzat nélkül a felhasználói élményt.
 
 **A környezet inicializálása:**
 
@@ -67,7 +66,6 @@ Ez a szakasz bemutatja, hogyan hozhat létre feltételes hozzáférési szabály
 **A feltételes hozzáférési szabályzat konfigurálása:**
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) globális rendszergazdai, biztonsági rendszergazdai vagy feltételes hozzáférési rendszergazdájaként.
-
 1. Az Azure Portalon, a bal oldali navigációs sávon kattintson **Azure Active Directory**.
 
    ![Azure Active Directory](./media/app-based-mfa/02.png)
@@ -93,11 +91,8 @@ Ez a szakasz bemutatja, hogyan hozhat létre feltételes hozzáférési szabály
    ![Felhasználók és csoportok](./media/app-based-mfa/24.png)
 
    1. Kattintson a **válassza ki a felhasználók és csoportok**, majd válassza ki **felhasználók és csoportok**.
-
    1. Kattintson a **Kiválasztás** gombra.
-
    1. Az a **válassza** lapra, jelölje be **Isabella Simonsen**, és kattintson a **kiválasztása**.
-
    1. Az a **felhasználók és csoportok** kattintson **kész**.
 
 1. Kattintson a **Felhőalkalmazások**.
@@ -109,11 +104,8 @@ Ez a szakasz bemutatja, hogyan hozhat létre feltételes hozzáférési szabály
    ![Válassza ki a felhőalapú alkalmazások](./media/app-based-mfa/26.png)
 
    1. Kattintson a **alkalmazások kiválasztása**.
-
    1. Kattintson a **Kiválasztás** gombra.
-
    1. A a **válassza** lapra, jelölje be **a Microsoft Azure Management**, és kattintson a **válassza**.
-
    1. Az a **Felhőalkalmazások** kattintson **kész**.
 
 1. Az a **hozzáférés-vezérlés** területén kattintson **Grant**.
@@ -125,9 +117,7 @@ Ez a szakasz bemutatja, hogyan hozhat létre feltételes hozzáférési szabály
    ![Támogatás](./media/app-based-mfa/11.png)
 
    1. Válassza ki **hozzáférést**.
-
    1. Válassza ki **többtényezős hitelesítés megkövetelése**.
-
    1. Kattintson a **Kiválasztás** gombra.
 
 1. Az a **házirend engedélyezése** területén kattintson **a**.
@@ -138,9 +128,9 @@ Ez a szakasz bemutatja, hogyan hozhat létre feltételes hozzáférési szabály
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Egy szimulált bejelentkezési kiértékelése
 
-Most, hogy a feltételes hozzáférési szabályzat van beállítva, érdemes tudni, hogy a várt módon működik-e azt. Első lépésként, a feltételes hozzáférés használata a Mi történik, ha a házirend eszközzel egy jelentkezzen be a tesztfelhasználó szimulálásához. A szimuláció megbecsüli a bejelentkezésnek a szabályzatokra gyakorolt hatását, és létrehoz egy szimulációs jelentést.  
+Most, hogy a feltételes hozzáférési szabályzat van beállítva, érdemes tudni, hogy a várt módon működik-e azt. Első lépésként használja a feltételes hozzáférés, mi történik, ha a házirend eszköz szimulálása tesztelési felhasználói bejelentkezési. A szimuláció becslése a hatása a bejelentkezéskor a szabályzatok rendelkezik, és szimuláció jelentést hoz létre.  
 
-A mi inicializálni a szabályzat kiértékelési eszközével, ha:
+Inicializálása a **mi történik, ha** házirend kiértékelési eszközével, állítsa be:
 
 - **Isabella Simonsen** felhasználóként
 - **A Microsoft Azure Management** felhőalapú alkalmazásként
@@ -167,22 +157,18 @@ Kattintson a **mi történik, ha** tartalmazó szimuláció jelentést hoz létr
    ![Felhőalkalmazások](./media/app-based-mfa/16.png)
 
    1. Kattintson a **Felhőalkalmazások**.
-
    1. Az a **felhőalapú alkalmazások lapjának**, kattintson a **alkalmazások kiválasztása**.
-
    1. Kattintson a **Kiválasztás** gombra.
-
    1. A a **válassza** lapra, jelölje be **a Microsoft Azure Management**, és kattintson a **válassza**.
-
    1. A felhőalapú alkalmazások lapján kattintson a **kész**.
 
 1. Kattintson a **mi történik, ha**.
 
 ## <a name="test-your-conditional-access-policy"></a>A feltételes hozzáférési házirend tesztelése
 
-Az előző szakaszban megtanulhatta egy szimulált bejelentkezési kiértékelése. A szimuláció mellett is érdemes tesztelnie a feltételes hozzáférési szabályzat, győződjön meg arról, hogy az elvárt módon működik.
+Az előző szakaszban megtanulhatta, hogyan értékelheti ki egy szimulált bejelentkezési. A szimuláció mellett is érdemes tesztelnie a feltételes hozzáférési szabályzat, győződjön meg arról, hogy az elvárt módon működik.
 
-Ha tesztelni szeretné a szabályzatot, próbálja meg, jelentkezzen be a [az Azure portal](https://portal.azure.com) használatával a **Isabella Simonsen** fiók teszteléséhez. Megjelenik egy párbeszédpanel, amely a fiók regisztrálásához további biztonsági ellenőrzéshez szükséges.
+A szabályzat teszteléséhez próbáljon meg bejelentkezni a [az Azure portal](https://portal.azure.com) használatával a **Isabella Simonsen** fiók teszteléséhez. Megjelenik egy párbeszédpanel, a további biztonsági ellenőrzéshez a fiók beállítása szükséges.
 
 ![Multi-Factor Authentication](./media/app-based-mfa/22.png)
 

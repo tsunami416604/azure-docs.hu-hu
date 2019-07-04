@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: mhopkins
 ms.reviewer: seguler
-ms.openlocfilehash: f426ee10017533c21021d618d613dc0931767988
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e2deda6bc9a5d13a631e9917f3020cfa68ee1e10
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149434"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536168"
 ---
 # <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript"></a>Gyors útmutató: Blobok feltöltése, letöltése, lista, és törölje az Azure Storage v10 SDK for JavaScript
 
-Ebből a rövid útmutatóból megtudhatja, hogyan lehet a [JavaScripthez készült Azure Storage SDK 10-es verziójának](https://github.com/Azure/azure-storage-js) használatával a Node.js-ben a blobokat fel- és letölteni, listázni és törölni, valamint a tárolókat kezelni.
+Ebből a rövid útmutatóból megtudhatja, hogyan lehet a [JavaScripthez készült Azure Storage SDK 10-es verziójának](https://github.com/Azure/azure-sdk-for-js) használatával a Node.js-ben a blobokat fel- és letölteni, listázni és törölni, valamint a tárolókat kezelni.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -99,7 +99,7 @@ A hitelesítő adatokat a rendszer környezeti változókból olvassa be a vonat
 
 ```javascript
 if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').load();
+    require('dotenv').config();
 }
 ```
 

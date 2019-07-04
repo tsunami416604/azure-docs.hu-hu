@@ -1,6 +1,6 @@
 ---
-title: PowerShell példa – georeplikációs feladatátvételi csoport – egyetlen Azure SQL-adatbázis | Microsoft Docs
-description: Az Azure PowerShell példaszkript az aktív georeplikációs feladatátvételi beállítása csoport egyetlen Azure SQL Database-adatbázishoz, és a feladatai átvételéhez.
+title: PowerShell példaszkript – aktív georeplikáció – Azure SQL Database önálló adatbázisok |} A Microsoft Docs
+description: Az Azure PowerShell példaszkript az aktív georeplikáció egy az Azure SQL Database-adatbázis beállítása és a feladatai átvételéhez.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,14 +12,14 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: a90753d075f7f4db9dbae95fde979d471db3247c
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 1733e117c2a5b0d58e37c3f5af451f949bd253f9
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729196"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561489"
 ---
-# <a name="use-powershell-to-configure-an-active-geo-replication-failover-group-for-a-single-database-in-azure-sql-database"></a>Önálló adatbázis egy aktív georeplikációs feladatátvételi csoport konfigurálása Azure SQL Database-ben a PowerShell használatával
+# <a name="use-powershell-to-configure-active-geo-replication-for-a-single-database-in-azure-sql-database"></a>Egy önálló adatbázis aktív georeplikáció konfigurálása az Azure SQL Database-ben a PowerShell használatával
 
 Ez a PowerShell-példaszkript az aktív georeplikációs feladatátvételi csoport egyetlen adatbázishoz konfigurálja, és átadja a feladatait az adatbázis egy másodlagos replikára.
 

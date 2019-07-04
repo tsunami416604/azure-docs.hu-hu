@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: f6420d073b4fe348b8533eaaaa5209323f35a25f
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: cb1cdbbd525d60342a6b0f1f7dfbfc9f81bc33ce
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754261"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514597"
 ---
 # <a name="azure-cosmos-db-build-a-python-application-using-azure-cosmos-db-sql-api-account"></a>Az Azure Cosmos DB: Azure Cosmos DB SQL API-fiók használatával Python-alkalmazás létrehozása
 
@@ -184,13 +184,13 @@ Az alábbi kódrészletek mind a `CosmosGetStarted.py` fájlból származnak.
 
 4. A beépített terminál ablakában győződjön meg róla, hogy az „azure-cosmos-db-python-getting-started” mappában van. Ha más mappában van, akkor váltson erre a mintamappára az alábbi parancs futtatásával. 
 
-    ```
+    ```cmd
     cd "\git-samples\azure-cosmos-db-python-getting-started"`
     ```
 
 5. Futtassa az alábbi parancsot az azure-cosmos csomag telepítéséhez. 
 
-    ```
+    ```python
     pip3 install azure-cosmos
     ```
 
@@ -198,7 +198,7 @@ Az alábbi kódrészletek mind a `CosmosGetStarted.py` fájlból származnak.
 
 6. Hajtsa végre az alábbi parancsot az Azure Cosmos dB-ben az új dokumentumokat létrehozó és mentő mintakód futtatásához.
 
-    ```
+    ```python
     python CosmosGetStarted.py
     ```
 

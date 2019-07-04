@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b434e5b0c4524af642eb1255597cd3e7674571c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 7e8b0e17248dff3c53b96fd240a7566f09b22fae
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545803"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482683"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Gyors útmutató: Ügyfélalkalmazás konfigurálása a webes API-k elérésére
 
@@ -110,7 +110,7 @@ Ha hitelesítő adatokat szeretne hozzáadni webalkalmazásához:
 
 ## <a name="add-permissions-to-access-web-apis"></a>Webes API-k elérésére vonatkozó engedélyek hozzáadása
 
-[![API-engedélyek hozzáadása](./media/quickstart-update-azure-ad-app-preview/api-permissions-expanded.png)](./media/quickstart-update-azure-ad-app-preview/api-permissions-expanded.png#lightbox)
+[![A képernyő, ahol hozzáadhat API-engedélyek megjelenítése](./media/quickstart-update-azure-ad-app-preview/api-permissions-expanded.png)](./media/quickstart-update-azure-ad-app-preview/api-permissions-expanded.png#lightbox)
 
 Ha erőforrás-API-k ügyfélről való elérésére vonatkozó engedélyt vagy engedélyeket kíván hozzáadni:
 

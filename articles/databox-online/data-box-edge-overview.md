@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 06/11/2019
+ms.date: 06/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 438e25a72361866acd449024b6e7e8c06ed6c9c7
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 3972f9f93cc6323601102f1a54bb067a8995d9e4
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144231"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484762"
 ---
 # <a name="what-is-azure-data-box-edge"></a>Mi az Azure Data Box Edge? 
 
@@ -55,7 +55,7 @@ A Data Box Edge az alábbi képességekkel rendelkezik:
 |Képesség |Leírás  |
 |---------|---------|
 |Nagy teljesítmény     | Teljesen automatizált és nagymértékben optimalizált adatátvitel és sávszélesség.|
-|Támogatott protokollok     | A standard SMB és NFS protokollok támogatása az adatbetöltéshez. <br> A támogatott verziókkal kapcsolatos további információért tekintse meg [a Data Box Edge rendszerkövetelményeit](https://aka.ms/dbe-docs).|
+|Támogatott protokollok     | A standard SMB és NFS protokollok támogatása az adatbetöltéshez. <br> A támogatott verziókkal kapcsolatos további információért tekintse meg [a Data Box Edge rendszerkövetelményeit](data-box-edge-system-requirements.md).|
 |Számítás       |Lehetővé teszi az adatok elemzését, feldolgozását és szűrését.|
 |Az adatok elérése     | Az adatok közvetlen elérése az Azure Storage-blobokból és az Azure Filesból felhőalapú API-k használatával az adatok további feldolgozásához a felhőben.|
 |Gyors hozzáférés     | Az eszközön helyi gyorsítótár található, amellyel gyorsabban elérhetők a legutóbb használt fájlok.|
@@ -75,13 +75,13 @@ A Data Box Edge megoldás a Data Box Edge-erőforrásból, a Data Box Edge fizik
 
     <!--![The Data Box Edge service in Azure portal](media/data-box-overview/data-box-Edge-service1.png)-->
 
-    További információ: [A Data Box Edge szolgáltatás használata a Data Box Edge eszköz felügyeletére](https://aka.ms/dbe-docs).
+    További információért ugorjon [létrehozása a Data Box peremhálózati eszköz egy megrendelés](data-box-edge-deploy-prep.md#create-a-new-resource).
 
 * **Data Box helyi webes felhasználói felület** – A helyi webes felhasználói felülettel diagnosztikát futtathat, leállíthatja és újraindíthatja a Data Box Edge eszközt, megtekintheti a másolási naplókat, valamint szolgáltatáskérések elküldése érdekében kapcsolatba léphet a Microsoft ügyfélszolgálatával.
 
     <!--![The Data Box Edge local web UI](media/data-box-Edge-overview/data-box-Edge-local-web-ui.png)-->
 
-    A webalapú felhasználói felület használatáról a [Data Box a webalapú felhasználói felülettel végzett felügyeletéről](https://aka.ms/dbe-docs) szóló cikkből tájékozódhat.
+    A webalapú felhasználói felület használatáról a [Data Box a webalapú felhasználói felülettel végzett felügyeletéről](data-box-edge-manage-access-power-connectivity-mode.md) szóló cikkből tájékozódhat.
 
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség

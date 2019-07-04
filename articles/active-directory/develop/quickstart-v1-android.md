@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a05d8b9182451fc52dd1860dac1dcce57ba2c55
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 6023e4bd4028cf1679051b6665297afd00b1eba7
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121997"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482659"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Gyors útmutató: A felhasználók és a Microsoft Graph API hívása Androidos alkalmazásokból
 
@@ -45,7 +45,7 @@ Első lépésként szüksége lesz egy Azure AD-bérlőre, ahol felhasználókat
 
 ## <a name="scenario-sign-in-users-and-call-the-microsoft-graph"></a>Forgatókönyv: A felhasználók, és hívja a Microsoft Graph
 
-![Topológia](./media/quickstart-v1-android/active-directory-android-topology.png)
+![Látható az Azure AD és az Android topológia](./media/quickstart-v1-android/active-directory-android-topology.png)
 
 Az alkalmazást minden Azure AD-fiókhoz használhatja. Az egybérlős és a több-bérlős forgatókönyveket is támogatja (az egyes lépésekben részletezzük). A cikk bemutatja, hogyan hozhat létre egy olyan alkalmazást, amely csatlakoztatja a vállalati felhasználókat, és hozzáfér az Azure- és O365-adataikhoz a Microsoft Graph-on keresztül. A hitelesítési folyamat során a végfelhasználónak be kell majd jelentkeznie, és hozzájárulását kell adnia az alkalmazás engedélyeihez, néhány esetben pedig szükség lehet egy rendszergazdára is a hozzájárulás megadásához. A minta logikájának nagy része megmutatja, hogyan hitelesíthet egy végfelhasználót, illetve hogyan kezdeményezhet egy alapszintű hívást a Microsoft Graph-ba.
 
@@ -76,7 +76,7 @@ mAuthContext.acquireToken(
 mAuthResult.getAccessToken()
 ```
 
-## <a name="step-1-register-and-configure-your-app"></a>1. lépés: Regisztráljon, és az alkalmazás konfigurálása
+## <a name="step-1-register-and-configure-your-app"></a>1\. lépés: Regisztráljon, és az alkalmazás konfigurálása
 
 Szüksége lesz egy natív ügyfélalkalmazásra, amely az [Azure Portalon](https://portal.azure.com) keresztül regisztrálva lett a Microsoftnál.
 
@@ -100,7 +100,7 @@ Szüksége lesz egy natív ügyfélalkalmazásra, amely az [Azure Portalon](http
     - `Application ID`
     - `Redirect URI`
 
-## <a name="step-2-get-the-sample-code"></a>2. lépés: A mintakód letöltése
+## <a name="step-2-get-the-sample-code"></a>2\. lépés: A mintakód letöltése
 
 1. Klónozza a kódot.
     ```
@@ -109,14 +109,14 @@ Szüksége lesz egy natív ügyfélalkalmazásra, amely az [Azure Portalon](http
 2. Nyissa meg a mintát az Android Studióban.
     - Válassza az **Open an existing Android Studio project** (Létező Android Studio-projekt megnyitása) lehetőséget.
 
-## <a name="step-3-configure-your-code"></a>3. lépés: A kód konfigurálása
+## <a name="step-3-configure-your-code"></a>3\. lépés: A kód konfigurálása
 
 A mintakódhoz tartozó összes konfigurációt megtalálja az ***src/main/java/com/azuresamples/azuresampleapp/MainActivity.java*** fájlban.
 
 1. Cserélje le a `CLIENT_ID` állandót az `ApplicationID` értékére.
 2. Cserélje le a `REDIRECT URI` állandót az előbb konfigurált `Redirect URI`-értékre (`http://localhost`).
 
-## <a name="step-4-run-the-sample"></a>4. lépés: Minta futtatása
+## <a name="step-4-run-the-sample"></a>4\. lépés: Minta futtatása
 
 1. Válassza a **Build > Clean Project** (Létrehozás > Új projekt) lehetőséget.
 2. Válassza a **Run > Run app** (Futtatás > Alkalmazás futtatása) lehetőséget.

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 321e555bbcc0e69dd1a96f746e46b9b5119f7d01
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e178326c4a165a9bebbef6b0162cc79c1f9a0727
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165419"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67459514"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>Gyors útmutató: Az Apache Hadoop-fürt létrehozása az Azure HDInsight az Azure portal használatával
 
@@ -47,7 +47,7 @@ Ebben a szakaszban egy Hadoop-fürtöt hozhat létre a HDInsightban az Azure Por
     |Secure Shell- (SSH-) felhasználónév | Az alapértelmezett felhasználónév az **sshuser**.  SSH-felhasználónévként más nevet is megadhat. |
     |Fürt bejelentkezési jelszavának használata az SSH-hoz| Jelölje be ezt a jelölőnégyzetet, ha ugyanazt a jelszót kívánja használni az SSH-felhasználóhoz, mint amelyet a fürt bejelentkezési fiókjához adott meg.|
     |Erőforráscsoport     | Hozzon létre egy erőforráscsoportot, vagy válasszon ki egy már meglévőt.  Az erőforráscsoport az Azure összetevőit tartalmazó tároló.  Ebben az esetben az erőforráscsoport a HDInsight-fürtöt és a függő Azure Storage-fiókot tartalmazza. |
-    |Location egység    | Válassza ki, melyik Azure-helyen kívánja létrehozni a fürtöt.  A legjobb teljesítmény érdekében válassza az Önhöz legközelebb eső helyet. |
+    |Location    | Válassza ki, melyik Azure-helyen kívánja létrehozni a fürtöt.  A legjobb teljesítmény érdekében válassza az Önhöz legközelebb eső helyet. |
 
     ![HDInsight – Linux – első lépések – fürt alapvető beállításainak megadása](./media/apache-hadoop-linux-create-cluster-get-started-portal/quick-create-basics.png "Alapvető beállítások megadása HDInsight-fürt létrehozásához")
 
@@ -151,4 +151,4 @@ Miután végzett a gyors üzembe helyezéssel, érdemes törölni a fürtöt. A 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Linux-alapú HDInsight-fürt Resource Manager-sablonnal, és hogyan hajthat végre alapszintű Hive-lekérdezéseket. A következő cikkben megtudhatja, hogyan végezheti el az adatok kinyerési, átalakítási és betöltési (ETL) műveleteit a Hadoop használatával a HDInsighton.
 
 > [!div class="nextstepaction"]
->[A kinyerési, átalakítási és az Apache Hive használata a HDInsight adatok betöltése](../hdinsight-analyze-flight-delay-data-linux.md)
+>[A kinyerési, átalakítási és a HDInsight interaktív lekérdezés segítségével adatok betöltése](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)

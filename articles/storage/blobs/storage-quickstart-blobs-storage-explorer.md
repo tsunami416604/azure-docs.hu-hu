@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/15/2018
 ms.author: tamram
-ms.openlocfilehash: 3424b46dff8f2904f41d0e8c1acf96788c51773f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 929ba7e28bca608359e76f9eeb130c61ba3235a0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60391945"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435806"
 ---
 # <a name="quickstart-use-azure-storage-explorer-to-create-a-blob-in-object-storage"></a>Gyors útmutató: Blob létrehozása objektumtárban az Azure Storage Explorer használatával
 
@@ -47,7 +47,7 @@ A csatlakozás befejeztével az Azure Storage Explorer betöltést követően me
 
 A blobok minden esetben egy tárolóba lesznek feltöltve. Így a blobok csoportjait ugyanúgy rendszerezheti, ahogy a fájlokat a számítógép mappáiban.
 
-Tároló létrehozásához bontsa ki az előző lépésben létrehozott tárfiókot. Válassza a **Blobtárolók** lehetőséget, kattintson a jobb gombbal, majd válassza a **Blobtároló létrehozása** lehetőséget. Adja meg a blobtároló nevét. A blobtárolók elnevezésére vonatkozó szabályokat és korlátozásokat a [tárolók létrehozását és engedélyek beállítását](storage-quickstart-blobs-dotnet.md#create-the-container-and-set-permissions) ismertető szakaszban találja. Ha végzett, nyomja le az **Enter** billentyűt a blobtároló létrehozásához. A sikeresen létrehozott blobtároló megjelenik a kiválasztott tárfiókhoz tartozó **Blobtárolók** mappában.
+Tároló létrehozásához bontsa ki az előző lépésben létrehozott tárfiókot. Válassza a **Blobtárolók** lehetőséget, kattintson a jobb gombbal, majd válassza a **Blobtároló létrehozása** lehetőséget. Adja meg a blobtároló nevét. Tekintse meg a [hozzon létre egy tárolót](storage-quickstart-blobs-dotnet.md#create-a-container) listáját szakaszában blobtárolók elnevezésére vonatkozó szabályokat és korlátozásokat. Ha végzett, nyomja le az **Enter** billentyűt a blobtároló létrehozásához. A sikeresen létrehozott blobtároló megjelenik a kiválasztott tárfiókhoz tartozó **Blobtárolók** mappában.
 
 ## <a name="upload-blobs-to-the-container"></a>Blobok feltöltése a tárolóba
 

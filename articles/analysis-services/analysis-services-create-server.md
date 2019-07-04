@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 04/01/2019
+ms.date: 07/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e54c18eb405ffa36260e9980705784130bc0ca4c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aae5b87e49b6d64e4c9ee854b65821d65969e66b
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61023730"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536808"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Gyors útmutató: Kiszolgáló létrehozása – Portal
 
@@ -37,7 +37,7 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre erőforrást egy Azure An
 
 2. Az **Analysis Services** területen töltse ki a kötelező mezőket, majd válassza a **Létrehozás** lehetőséget.
    
-   * **Kiszolgálónév**: Írjon be egy egyedi nevet a kiszolgáló hivatkozni.
+   * **Kiszolgálónév**: Írjon be egy egyedi nevet a kiszolgáló hivatkozni. A kiszolgáló nevét kell kezdődniük egy kisbetűt és 3 és 128 kisbetűk és számok között. Nem állhat kizárólag szóközökből, és speciális karakterek nem engedélyezettek.
    * **Előfizetés**: Válassza ki az előfizetést, a kiszolgáló társítva lesz.
    * **Erőforráscsoport**: Hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy már rendelkezik. Az erőforráscsoportok segítségével Azure-erőforrások gyűjteményét kezelheti. További információ: [erőforráscsoportok](../azure-resource-manager/resource-group-overview.md).
    * **Hely**: Az Azure-adatközpont helyét a kiszolgáló üzemelteti. A legnagyobb felhasználói bázisához legközelebb eső helyet válassza ki.

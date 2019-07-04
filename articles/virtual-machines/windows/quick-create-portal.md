@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 03/19/2019
+ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 08c33068845855fca85f793c21264582be423c2f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b3f972fadfa972b581474c1a61769564f81260af
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61078158"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560465"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>Gyors útmutató: Windowsos virtuális gép létrehozása az Azure Portalon
 
@@ -95,7 +95,7 @@ A portálon válassza ki a virtuális gépet, majd a virtuális gép áttekinté
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális gép erőforráscsoportját, kattintson a **Törlés** elemre, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
+Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Válassza ki az erőforráscsoportot a virtuális géphez, majd válassza ki **törlése**. Erősítse meg a nevét, az erőforrás-csoport befejezi az erőforrások törlése.
 
 ## <a name="next-steps"></a>További lépések
 

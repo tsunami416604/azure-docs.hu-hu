@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 04/01/2019
+ms.date: 07/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 443d6ca86f8ac40bd2df186fd189a333cb7b7425
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: ac27f3b1ea777e7a88a44a16edf8867f97381297
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65416016"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508997"
 ---
 # <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
 
@@ -41,7 +41,7 @@ Az Azure Analysis Services **fejlesztői**, **alap-** és **standard** szinten i
 
 Ezt a szintet kiértékeléshez, valamint fejlesztési és tesztelési forgatókönyvekhez ajánljuk. Egyetlen csomagban tartalmazza a standard szintű csomagéval megegyező funkciókat, de korlátozott feldolgozási teljesítménnyel, QPU-val és memóriamérettel rendelkezik. Kibővített lekérdezésreplika ehhez a szinthez *nem érhető el*. Ehhez a szinthez nem tartozik SLA.
 
-|Csomag  |QPU-k  |Memória (GB)  |
+|Felkészülés  |QPU-k  |Memória (GB)  |
 |---------|---------|---------|
 |D1    |    20     |    3     |
 
@@ -50,7 +50,7 @@ Ezt a szintet kiértékeléshez, valamint fejlesztési és tesztelési forgatók
 
 Ezt a szintet olyan éles környezetben való használatra ajánlunk, amelyben kis méretű táblázatos modellek, korlátozott mennyiségű párhuzamos felhasználó és egyszerűbb adatfrissítési követelmények szerepelnek. Kibővített lekérdezésreplika ehhez a szinthez *nem érhető el*. A perspektívák, a több partíció használata és a DirectQuery táblázatosmodell-funkciók *nem támogatottak* ezen a szinten.  
 
-|Csomag  |QPU-k  |Memória (GB)  |
+|Felkészülés  |QPU-k  |Memória (GB)  |
 |---------|---------|---------|
 |B1    |    40     |    10     |
 |B2    |    80     |    20     |
@@ -59,7 +59,7 @@ Ezt a szintet olyan éles környezetben való használatra ajánlunk, amelyben k
 
 Ez a szint olyan létfontosságú, éles környezetben használt alkalmazásokhoz ideális, amelyek rugalmasságot követelnek meg a párhuzamos felhasználói tevékenységekre vonatkozóan, és amelyek gyorsan növekvő adatmodelleket használnak. Támogatja a speciális adatfrissítést az adatmodellek közel valós idejű frissítése érdekében, valamint az összes táblázatos modellezési funkciót is.
 
-|Csomag  |QPU-k  |Memória (GB)  |
+|Felkészülés  |QPU-k  |Memória (GB)  |
 |---------|---------|---------|
 |S0    |    40     |    10     |
 |S1    |    100     |    25     |
@@ -78,39 +78,39 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 
 |Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
-|Dél-Brazília     |    B1, B2, S0, S1, S2, S4, D1     |     1.    |
-|Közép-Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1.    |
-|USA keleti régiója     |     B1, B2, S0, S1, S2, S4, D1    |    1.     |
+|Dél-Brazília     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
+|Közép-Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
+|East US     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |USA 2. keleti régiója     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
-|USA 2. keleti régiója     |     S8, S9   |    1.    |
-|USA északi középső régiója     |     B1, B2, S0, S1, S2, S4, D1     |    1.     |
-|USA középső régiója     |    B1, B2, S0, S1, S2, S4, D1     |    1.     |
-|USA déli középső régiója     |    B1, B2, S0, S1, S2, S4, D1     |    1.     |
+|USA 2. keleti régiója     |     S8, S9   |    1    |
+|USA északi középső régiója     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
+|USA középső régiója     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|USA déli középső régiója     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA nyugati középső régiója   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |USA nyugati régiója     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
 |USA nyugati régiója     |    S8, S9   |    2  |
 |USA 2. nyugati régiója    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
-|USA 2. nyugati régiója    |    S8, S9  |    1.     |
+|USA 2. nyugati régiója    |    S8, S9  |    1     |
 
 ### <a name="europe"></a>Európa
 
 |Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
 |Észak-Európa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
-|Egyesült Királyság déli régiója     |    B1, B2, S0, S1, S2, S4, D1      |     1.    |
+|Az Egyesült Királyság déli régiója     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
 |Nyugat-Európa     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
-|Nyugat-Európa    |   S8, S9  |  1.  |
+|Nyugat-Európa    |   S8, S9  |  1  |
 
 ### <a name="asia-pacific"></a>Ázsia és a Csendes-óceáni térség 
 
 |Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
 |Kelet-Ausztrália     |    B1, B2, S0, S1, S2, S4     |    3     |
-|Kelet-Ausztrália     |    S8, S9    |    1.     |
-|Délkelet-Ausztrália     | B1, B2, S0, S1, S2, S4, D1       |    1.     |
-|Kelet-Japán     |   B1, B2, S0, S1, S2, S4, D1       |    1.     |
-|Délkelet-Ázsia     |     B1, B2, S0, S1, S2, S4, S8, S9, D1     |   1.      |
-|Nyugat-India     |    B1, B2, S0, S1, S2, S4, D1     |    1.     |
+|Kelet-Ausztrália     |    S8, S9    |    1     |
+|Délkelet-Ausztrália     | B1, B2, S0, S1, S2, S4, D1       |    1     |
+|Kelet-Japán     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
+|Délkelet-Ázsia     |     B1, B2, S0, S1, S2, S4, S8, S9, D1     |   1      |
+|Nyugat-India     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
 ## <a name="scale-to-your-needs"></a>Igényei szerint méretezhető
 

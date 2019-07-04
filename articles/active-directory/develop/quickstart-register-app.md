@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 156b26454aad6d6fd3230e19b47a938841331aec
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 9ec1d5fb13d7fb191bfee6194e69a217bcaddbb9
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545708"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482573"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Gyors útmutató: Alkalmazás regisztrálása a Microsoft identity platform használatával
 
@@ -46,7 +46,7 @@ Ez a rövid útmutató bemutatja, hogyan adhat hozzá, és regisztrálni egy alk
        | **Tetszőleges szervezeti címtárban található fiókok** | Akkor válassza ezt a lehetőséget, ha szeretne minden üzleti és az oktatási ügyfelet megcélozni.<br><br>E lehetőség választása esetén az alkalmazás csak több Azure AD-bérlős lesz.<br><br>Ha csak egy Azure AD-bérlősként regisztrálta az alkalmazást, a **Hitelesítés** panelen átválthatja több Azure AD-bérlősre, illetve visszaállíthatja egy Azure AD-bérlősre. |
        | **Tetszőleges szervezeti címtárban található fiókok és személyes Microsoft-fiókok** | Akkor válassza ezt a lehetőséget, ha a lehető legszélesebb ügyfélkört szeretbé megcélozni.<br><br>E lehetőség választása esetén az alkalmazás több Azure AD-bérlős lesz, és személyes Microsoft-fiókok is használhatók lesznek.<br><br>Ha több Azure AD-bérlősként regisztrálta az alkalmazást, és engedélyezte a személyes Microsoft-fiókok használatát, ezen nem változtathat a felhasználói felületen. Ehelyett az alkalmazásjegyzék-szerkesztőt kell használnia a támogatott fióktípusok módosításához. |
 
-   - **Átirányítási URI (nem kötelező)** – válassza ki a készített alkalmazás típusát – **webes** vagy **nyilvános ügyfél (mobil és asztali)**, majd adja meg az alkalmazása átirányítási URI-ját (vagy válasz URL-címét).
+   - **Átirányítási URI (nem kötelező)** – válassza ki a készített alkalmazás típusát – **webes** vagy **nyilvános ügyfél (mobil és asztali)** , majd adja meg az alkalmazása átirányítási URI-ját (vagy válasz URL-címét).
        - Webalkalmazás esetében adja meg alkalmazás alap URL-címét. A `http://localhost:31544` például a helyi gépen futó webalkalmazás URL-címe lehet. A felhasználók ezzel az URL-címmel jelentkeznek be egy webes ügyfélalkalmazásba.
        - Nyilvános ügyfélalkalmazások esetében adja meg az URI-t, amelyet az Azure AD a jogkivonatválaszok visszaadására használ. Adjon meg az alkalmazáshoz tartozó értéket, például: `myapp://auth`.
 
@@ -54,11 +54,11 @@ Ez a rövid útmutató bemutatja, hogyan adhat hozzá, és regisztrálni egy alk
 
 1. Miután végzett, válassza a **Regisztrálás** lehetőséget.
 
-    [![Új alkalmazás regisztrálása az Azure Portalon](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png#lightbox)
+    [![Megjeleníti a képernyőn egy új alkalmazás regisztrálása az Azure Portalon](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png#lightbox)
 
 Az Azure AD egyedi alkalmazásazonosítót (ügyfélazonosítót) rendel az alkalmazásához, Önt pedig átirányítja az alkalmazás **Áttekintés** lapjára. Ha alkalmazását szeretné további funkciókkal bővíteni, más beállítási lehetőségeket, többek között védjegyzést, tanúsítványokat és titkos kulcsokat és API-engedélyeket is kiválaszthat.
 
-[![Az újonnan regisztrált alkalmazás áttekintőlapja](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png#lightbox)
+[![Példa egy újonnan regisztrált app – áttekintés oldalra](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png#lightbox)
 
 ## <a name="next-steps"></a>További lépések
 
