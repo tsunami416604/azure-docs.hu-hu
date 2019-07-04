@@ -478,7 +478,7 @@ Amikor adatok áthelyezése Azure táblából, a következő & [Azure Table Stor
 | OData-adatok típusa | .NET Type | Részletek |
 | --- | --- | --- |
 | Edm.Binary |byte[] |Bájttömb legfeljebb 64 KB-os. |
-| Edm.Boolean |logikai |Logikai érték. |
+| Edm.Boolean |bool |Logikai érték. |
 | Edm.DateTime |DateTime |Egy 64 bites érték, egyezményes világidő (UTC) szerint kifejezett. A támogatott dátum és idő tartomány kezdődik 12:00 éjféltől. január 1, i 1601. (C.E.,) (UTC). A tartomány vége. December 31-9999. |
 | Edm.Double |double |Egy 64 bites lebegőpontos értéket. |
 | Edm.Guid |Guid |A 128 bites globálisan egyedi azonosítóját. |
