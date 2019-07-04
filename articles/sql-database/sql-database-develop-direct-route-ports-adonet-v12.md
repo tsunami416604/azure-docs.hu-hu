@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 04/03/2019
-ms.openlocfilehash: ddb115370c62371e769ef98e0031f7e0379bafbf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d861ccb93de7aa0b84b20215afb5fddf49aa94c9
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61075497"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67427961"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Az ADO.NET 4.5 szoftverrel 1433-ason túli
 
@@ -81,7 +81,7 @@ Ez a szakasz a termékváltozatokra hivatkozó monikerek értelmezi. Emellett eg
 
 * Csatlakozás az Azure SQL Database V12 átirányítás https://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
 
-* [TDS protokollverziók listája](http://www.freetds.org/userguide/tdshistory.htm)
+* [TDS protokollverziók listája](https://www.freetds.org/userguide/tdshistory.htm)
 * [Az SQL Database fejlesztési áttekintése](sql-database-develop-overview.md)
 * [Az Azure SQL Database-tűzfal](sql-database-firewall-configure.md)
 * [Útmutató: A tűzfal beállításainak konfigurálása az SQL Database szolgáltatásban](sql-database-configure-firewall-settings.md)

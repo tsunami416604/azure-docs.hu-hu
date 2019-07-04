@@ -10,12 +10,12 @@ ms.date: 05/21/2019
 ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.subservice: queues
-ms.openlocfilehash: 44f1953d01f827db1cbb65f9029c62569425745e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 59995715ab42b4682befa7d1512b14427740dea2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077045"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446860"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Az Azure Queue Storage használatának első lépései a .NET-keretrendszerrel
 
@@ -82,7 +82,7 @@ NuGet használatával szerezze be ezeket a csomagokat. Kövesse az alábbi lép�
 > [!NOTE]
 > A Storage ügyféloldali kódtárak csomagok is megtalálhatók a [Azure SDK for .NET](https://azure.microsoft.com/downloads/). Azt javasoljuk azonban, telepítenie a tároló ügyfélkódtárai a Nugetből ellenőrizze, hogy mindig a legújabb verzióra.
 >
-> A .NET-keretrendszerhez készült Storage ügyfélkódtáraival ODataLib-függőségeit a nem a WCF-adatszolgáltatások a Nugeten elérhető ODataLib-csomagok által megoldott. Az ODataLib-kódtárak letölthetők közvetlenül, vagy a kódprojektje hivatkozhat rájuk a NuGeten keresztül. A tároló ügyfélkódtárai által használt konkrét ODataLib-csomagok [OData](http://nuget.org/packages/Microsoft.Data.OData/), [Edm](http://nuget.org/packages/Microsoft.Data.Edm/), és [Spatial](http://nuget.org/packages/System.Spatial/). Ezek a kódtárak az Azure Table storage osztályai használják, amíg azok szükséges függőségek a Storage ügyfélkódtárai való programozáshoz.
+> A .NET-keretrendszerhez készült Storage ügyfélkódtáraival ODataLib-függőségeit a nem a WCF-adatszolgáltatások a Nugeten elérhető ODataLib-csomagok által megoldott. Az ODataLib-kódtárak letölthetők közvetlenül, vagy a kódprojektje hivatkozhat rájuk a NuGeten keresztül. A tároló ügyfélkódtárai által használt konkrét ODataLib-csomagok [OData](https://nuget.org/packages/Microsoft.Data.OData/), [Edm](https://nuget.org/packages/Microsoft.Data.Edm/), és [Spatial](https://nuget.org/packages/System.Spatial/). Ezek a kódtárak az Azure Table storage osztályai használják, amíg azok szükséges függőségek a Storage ügyfélkódtárai való programozáshoz.
 
 ### <a name="determine-your-target-environment"></a>A célkörnyezet meghatározása
 

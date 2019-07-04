@@ -16,12 +16,12 @@ ms.date: 06/13/2018
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: 6f4bd125847aa789f6f3ed06e808b40738e12260
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1c8d4d2b26b356c524523d73d53fd641eef5f3cb
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304107"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465835"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Add a disk to a Linux VM (Lemez hozzáadása Linux rendszerű virtuális géphez)
 Ez a cikk bemutatja, hogyan való állandó lemez csatolása a virtuális gép így megőrizheti az adatait – még akkor is, ha a virtuális gép a karbantartás vagy átméretezése miatt van kiépíteni.
@@ -73,6 +73,9 @@ A kimenet a következő példához hasonló:
 [    8.079653] sd 3:0:1:0: [sdb] Attached SCSI disk
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
+
+> [!NOTE]
+> Javasoljuk, hogy fdisk legújabb verzióját használja, vagy válogatottak, amely a disztribúció érhetők el.
 
 Itt *sdc* a lemezt, amelyet meg szeretnénk. Particionálja a lemezt a `parted`, ha a lemez mérete 2 tebibytes (TiB) vagy nagyobb, akkor kell használnia a GPT particionálás, ha alatt 2TiB, használhatja az MBR vagy GPT particionálás. Ha MBR particionálás használata esetén használhatja `fdisk`. Adja meg egy elsődleges lemez 1 partíción, és fogadja el a többi alapértelmezett értéket. A következő példa elindítja a `fdisk` folyamatát */dev/sdc*:
 

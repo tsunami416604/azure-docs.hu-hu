@@ -3,17 +3,17 @@ title: Az Azure IoT Hub Device Provisioning Service automatikus kiépítés hasz
 description: Hogyan használható az Azure IoT Hub Device Provisioning Service automatikus kiépítés az MXChip IoT DevKit regisztrálása az IoT hubbal.
 author: liydu
 ms.author: liydu
-ms.date: 12/18/2018
+ms.date: 06/25/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: jeffya
-ms.openlocfilehash: 80e4895e0b276e701a6d7f10d8fc67649db0f188
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c809077b0ec14240d231e9b281285080f68596b3
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62122832"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439505"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Az MXChip IoT DevKit IoT Hub-regisztráció az Azure IoT Hub Device Provisioning Service automatikus kiépítés használatával
 
@@ -30,7 +30,7 @@ A [MXChip IoT DevKit](https://aka.ms/iot-devkit) egy teljes körű Arduino-kompa
 
 Ez az oktatóanyag lépéseinek végrehajtásához először a következő feladatokat végezheti el:
 
-* A fejlesztői készlet Wi-Fi konfigurálása és a fejlesztési környezet előkészítését a lépéseket követve [IoT DevKit AZ3166 csatlakoztatása az Azure IoT hubba a felhőben](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started).
+* A fejlesztői készlet Wi-Fi konfigurálása és a fejlesztési környezet előkészítését hajtsa végre a következő lépéseket az "A fejlesztési környezet előkészítése" szakaszban [IoT DevKit AZ3166 csatlakoztatása az Azure IoT hubba a felhőben](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started#prepare-the-development-environment).
 * Frissítés a legújabb belső vezérlőprogramjának (1.3.0 vagy újabb) az a [frissítés DevKit belső vezérlőprogram](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/) oktatóanyag.
 * Létrehozzák és összekapcsolják az IoT Hub Device Provisioning service-példánnyal a lépéseket követve [állítsa be az IoT Hub Device Provisioning Service az Azure Portallal](/azure/iot-dps/quick-setup-auto-provision).
 

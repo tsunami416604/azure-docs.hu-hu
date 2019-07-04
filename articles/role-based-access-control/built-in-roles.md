@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 05/16/2019
+ms.date: 06/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 5a63053cc7fa1c1c86669ce2cea56b68f1a7b4b6
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: b92bc0a6c5d51ad26e069a363619edbdf0daa7c0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341505"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442873"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Az Azure-erőforrások beépített szerepkörök
 
@@ -54,11 +54,17 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 | [Automation-Runbook operátora](#automation-runbook-operator) | Olvassa el a Runbook-tulajdonságok –, a runbook-feladatok létrehozásához. |
 | [Avere Közreműködője](#avere-contributor) | Létrehozhat és -Avere vFXT fürt kezelése. |
 | [Avere operátor](#avere-operator) | A fürt kezeléséhez a Avere vFXT fürt által használt |
+| [Az Azure Event Hubs-adatok tulajdonosa (előzetes verzió)](#azure-event-hubs-data-owner-preview) | Az Azure Event Hubs-erőforrások teljes hozzáférést tesz lehetővé. |
+| [Az Azure Event Hubs adatokat fogadó (előzetes verzió)](#azure-event-hubs-data-receiver-preview) | Lehetővé teszi, hogy az Azure Event Hubs-erőforrásokhoz való hozzáférést kapnak. |
+| [Az Azure Event Hubs adatokat küldő (előzetes verzió)](#azure-event-hubs-data-sender-preview) | Lehetővé teszi a küldési hozzáférés az Azure Event Hubs-erőforrások. |
 | [Az Azure Kubernetes Service-fürt rendszergazdai szerepkör](#azure-kubernetes-service-cluster-admin-role) | Fürt rendszergazdai hitelesítő adatok a művelet listázza. |
 | [Az Azure Kubernetes Service-fürt felhasználói szerepkör](#azure-kubernetes-service-cluster-user-role) | Fürt felhasználói hitelesítő adatok a művelet listázza. |
 | [Az Azure Maps olvasója (minta)](#azure-maps-data-reader-preview) | Olvassa el a hozzáférést az Azure maps-fiók kapcsolódó adatok leképezése. |
+| [Az Azure Service Bus adatok tulajdonosa (előzetes verzió)](#azure-service-bus-data-owner-preview) | Az Azure Service Bus-erőforrások teljes hozzáférést tesz lehetővé. |
+| [Az Azure Service Bus adatokat fogadó (előzetes verzió)](#azure-service-bus-data-receiver-preview) | Lehetővé teszi, hogy az Azure Service Bus-erőforrások hozzáférést kapnak. |
+| [Az Azure Service Bus adatokat küldő (előzetes verzió)](#azure-service-bus-data-sender-preview) | Küldés az Azure Service Bus-erőforrások hozzáférésének engedélyezése. |
 | [Az Azure Stack-regisztráció tulajdonosa](#azure-stack-registration-owner) | Lehetővé teszi az Azure Stack-regisztrációk kezelését. |
-| [Biztonsági mentési közreműködő](#backup-contributor) | Lehetővé teszi a felügyelt biztonsági mentési szolgáltatás, de nem tárolók létrehozása és adhat hozzáférést másoknak |
+| [Biztonsági mentési közreműködő](#backup-contributor) | Lehetővé teszi a felügyelt biztonsági mentési szolgáltatás, de nem tudja létrehozni tárolók és adhat hozzáférést másoknak |
 | [Biztonságimásolat-felelős](#backup-operator) | Lehetővé teszi a biztonsági mentési szolgáltatásai, kivéve a biztonsági mentés, a tárolók létrehozását és a másoknak való hozzáférés megadását eltávolításának kezelését |
 | [Biztonsági mentési olvasó](#backup-reader) | Megtekintheti a biztonsági mentési szolgáltatásai, de nem végezhet módosításokat |
 | [Számlázási olvasó](#billing-reader) | Olvasási hozzáférést biztosít a számlázási adatokat |
@@ -88,7 +94,6 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 | [DevTest Labs User](#devtest-labs-user) | Lehetővé teszi, hogy csatlakozik, kezdő, újraindítását és leállítását a virtuális gépek az Azure DevTest Labs-környezetben. |
 | [DNS-zóna Közreműködője](#dns-zone-contributor) | Lehetővé teszi a DNS-zónák és -rekordhalmazok az Azure DNS kezelését, de nem teszi lehetővé az azokhoz való hozzáférés szabályozásához. |
 | [DocumentDB-Fiókközreműködő](#documentdb-account-contributor) | Kezelheti az Azure Cosmos DB-fiókokhoz. Az Azure Cosmos DB DocumentDB nevén. |
-| [Event Hubs-adatok tulajdonosa](#event-hubs-data-owner) | Teljes hozzáférést biztosít az Azure Event Hubs-erőforrások | 
 | [EventGrid EventSubscription Közreműködője](#eventgrid-eventsubscription-contributor) | Lehetővé teszi EventGrid esemény-előfizetési műveletek kezelését. |
 | [EventGrid EventSubscription olvasó](#eventgrid-eventsubscription-reader) | Olvassa el az esemény-előfizetések EventGrid teszi lehetővé. |
 | [HDInsight-fürt operátor](#hdinsight-cluster-operator) | Lehetővé teszi, hogy olvassa el, és a HDInsight-fürt konfigurációjának módosítását. |
@@ -119,7 +124,6 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 | [Biztonsági rendszergazda](#security-admin) | A Security Center csak: Megtekintheti biztonsági házirendek, biztonsági állapotot, szerkessze a biztonsági szabályzatok, riasztások megtekintése és javaslatok, riasztások és javaslatok elvetése |
 | [Biztonságkezelő (örökölt)](#security-manager-legacy) | Ez az örökölt szerepkör. Használja helyette a biztonsági rendszergazda |
 | [Biztonsági olvasó](#security-reader) | A Security Center csak: Megtekintheti a javaslatok és riasztások, a biztonsági házirendek, a biztonsági állapotot, de nem végezhet módosításokat megtekintése |
-| [Service Bus adatok tulajdonosa](#service-bus-data-owner) | Az Azure Service Bus-erőforrások teljes hozzáférésének engedélyezése |
 | [Site Recovery-közreműködő](#site-recovery-contributor) | Lehetővé teszi a Site Recovery szolgáltatást, kivéve a tárolók létrehozását és a szerepkör-hozzárendelés kezelését |
 | [Site Recovery-operátor](#site-recovery-operator) | Lehetővé teszi a feladatátvétel és feladat-visszavétel, de nem biztosít egyéb Site Recovery felügyeleti műveleteket |
 | [Site Recovery-olvasó](#site-recovery-reader) | Lehetővé teszi a Site Recovery állapotának megtekintését, de nem biztosít egyéb felügyeleti műveleteket |
@@ -130,15 +134,15 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 | [SQL Managed Instance Contributor](#sql-managed-instance-contributor) | Lehetővé teszi, hogy az SQL felügyelt példányok kezelése és a szükséges hálózati konfiguráció, de nem adhat hozzáférést másoknak. |
 | [SQL Security Manager](#sql-security-manager) | Lehetővé teszi az SQL Server-kiszolgálók és adatbázisok, de ezekhez nem biztosít hozzáférést a biztonsági házirendek kezelését. |
 | [SQL Server Contributor](#sql-server-contributor) | Lehetővé teszi, hogy SQL Server-kiszolgálók és adatbázisok kezelése, de nem érhető el, és nem a biztonsági-házirendjeinek. |
-| [Tárfiók-közreműködő](#storage-account-contributor) | Lehetővé teszi tárfiókok kezelését, de ezekhez nem biztosít hozzáférést. |
-| [Tárolási fiók fő operátora – szolgáltatási szerepkör](#storage-account-key-operator-service-role) | A Tárfiók kulcsának operátorai jogosultak a Tárfiókokhoz kulcsok listázására és újragenerálására |
-| [Storage-Blobadatok Közreműködője](#storage-blob-data-contributor) | Lehetővé teszi, hogy olvasási, írási és törlési hozzáférésének Azure Storage-blobtárolók és -adatok |
-| [Tárolási Blob adatok tulajdonosa](#storage-blob-data-owner) | Lehetővé teszi a teljes körű hozzáférést az Azure Storage-blobtárolók és adatait, beleértve a POSIX hozzáférés-vezérlés hozzárendelése. |
-| [Storage-Blobadatok olvasója](#storage-blob-data-reader) | Az Azure Storage-blobtárolók és -adatok olvasási hozzáférésének engedélyezése |
-| [Storage-Üzenetsorbeli adatok Közreműködője](#storage-queue-data-contributor) | Lehetővé teszi, hogy olvasási, írási és törlési hozzáférésének Azure Storage üzenetsorok és üzenetsorbeli üzenetek számára |
-| [Tárolási üzenetsor üzenetet processzor](#storage-queue-data-message-processor) | Lehetővé teszi, hogy a betekintési, kap, és törlési hozzáférésének Azure Storage-üzenetsor üzenetei |
-| [Tárolási üzenetsor adatok üzenet küldője](#storage-queue-data-message-sender) | Lehetővé teszi, hogy az Azure Storage-üzenetsorbeli üzenetek küldéséhez |
-| [Storage-Üzenetsorbeli adatok olvasója](#storage-queue-data-reader) | Azure Storage-üzenetsorok és üzenetsorbeli üzenetek olvasási hozzáférésének engedélyezése |
+| [Tárfiók-közreműködő](#storage-account-contributor) | Lehetővé teszi tárfiókok kezelését. Nem biztosít hozzáférést a tárfiókban lévő adatokat. |
+| [Tárolási fiók fő operátora – szolgáltatási szerepkör](#storage-account-key-operator-service-role) | Engedélyek listázása és a tárfiók hozzáférési kulcsainak újragenerálása. |
+| [Storage-Blobadatok Közreműködője](#storage-blob-data-contributor) | Olvasási, írási és Azure Storage-tárolók és blobok törlése. A megadott művelet műveletek szükségesek kapcsolatban lásd: [hívása blob és üzenetsor Adatműveletek engedélyeinek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
+| [Tárolási Blob adatok tulajdonosa](#storage-blob-data-owner) | Az Azure Storage-blobtárolók és adatait, beleértve a POSIX hozzáférés-vezérlés hozzárendelése teljes hozzáférést biztosít. A megadott művelet műveletek szükségesek kapcsolatban lásd: [hívása blob és üzenetsor Adatműveletek engedélyeinek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
+| [Storage-Blobadatok olvasója](#storage-blob-data-reader) | Olvassa el, és az Azure Storage-tárolók és blobok listázása. A megadott művelet műveletek szükségesek kapcsolatban lásd: [hívása blob és üzenetsor Adatműveletek engedélyeinek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
+| [Storage-Üzenetsorbeli adatok Közreműködője](#storage-queue-data-contributor) | Olvasási, írási és törlési Azure Storage üzenetsorok és üzenetsorbeli üzenetek. A megadott művelet műveletek szükségesek kapcsolatban lásd: [hívása blob és üzenetsor Adatműveletek engedélyeinek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
+| [Tárolási üzenetsor üzenetet processzor](#storage-queue-data-message-processor) | Belepillantás, lekérése és egy Azure Storage-üzenetsorba egy üzenet törlése. A megadott művelet műveletek szükségesek kapcsolatban lásd: [hívása blob és üzenetsor Adatműveletek engedélyeinek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
+| [Tárolási üzenetsor adatok üzenet küldője](#storage-queue-data-message-sender) | Üzenetek hozzáadása az Azure Storage üzenetsorába. A megadott művelet műveletek szükségesek kapcsolatban lásd: [hívása blob és üzenetsor Adatműveletek engedélyeinek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
+| [Storage-Üzenetsorbeli adatok olvasója](#storage-queue-data-reader) | Olvassa el, és az Azure Storage üzenetsorok és üzenetsorbeli üzenetek listázása. A megadott művelet műveletek szükségesek kapcsolatban lásd: [hívása blob és üzenetsor Adatműveletek engedélyeinek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). |
 | [Támogatáskérési közreműködő](#support-request-contributor) | Lehetővé teszi a támogatási kérések létrehozásához és kezeléséhez |
 | [Traffic Manager-közreműködő](#traffic-manager-contributor) | Lehetővé teszi a Traffic Manager-profilok kezelését, de nem teszi lehetővé az azokhoz való hozzáférés szabályozásához. |
 | [Felhasználói hozzáférés rendszergazdája](#user-access-administrator) | Azure-erőforrásokhoz való felhasználói hozzáférés kezelését teszi lehetővé. |
@@ -548,6 +552,51 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
+## <a name="azure-event-hubs-data-owner-preview"></a>Az Azure Event Hubs-adatok tulajdonosa (előzetes verzió)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Az Azure Event Hubs-erőforrások teljes hozzáférést tesz lehetővé. |
+> | **Azonosító** | f526a384-b230-433a-b45c-95f59c4a2dec |
+> | **Műveletek** |  |
+> | Microsoft.EventHub/* |  |
+> | **notActions** |  |
+> | *none* |  |
+> | **DataActions** |  |
+> | Microsoft.EventHub/* |  |
+> | **NotDataActions** |  |
+> | *none* |  |
+
+## <a name="azure-event-hubs-data-receiver-preview"></a>Az Azure Event Hubs adatokat fogadó (előzetes verzió)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Lehetővé teszi, hogy az Azure Event Hubs-erőforrásokhoz való hozzáférést kapnak. |
+> | **Azonosító** | a638d3c7-ab3a-418d-83e6-5f17a39d4fde |
+> | **Műveletek** |  |
+> | Microsoft.EventHub/*/eventhubs/consumergroups/read |  |
+> | **notActions** |  |
+> | *none* |  |
+> | **DataActions** |  |
+> | Microsoft.EventHub/*/receive/action |  |
+> | **NotDataActions** |  |
+> | *none* |  |
+
+## <a name="azure-event-hubs-data-sender-preview"></a>Az Azure Event Hubs adatokat küldő (előzetes verzió)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Lehetővé teszi a küldési hozzáférés az Azure Event Hubs-erőforrások. |
+> | **Azonosító** | 2b629674-e913-4c01-ae53-ef4638d8f975 |
+> | **Műveletek** |  |
+> | Microsoft.EventHub/*/eventhubs/read |  |
+> | **notActions** |  |
+> | *none* |  |
+> | **DataActions** |  |
+> | Microsoft.EventHub/*/send/action |  |
+> | **NotDataActions** |  |
+> | *none* |  |
+
 ## <a name="azure-kubernetes-service-cluster-admin-role"></a>Az Azure Kubernetes Service-fürt rendszergazdai szerepkör
 > [!div class="mx-tableFixed"]
 > | | |
@@ -593,6 +642,55 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
+## <a name="azure-service-bus-data-owner-preview"></a>Az Azure Service Bus adatok tulajdonosa (előzetes verzió)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Az Azure Service Bus-erőforrások teljes hozzáférést tesz lehetővé. |
+> | **Azonosító** | 090c5cfd-751d-490a-894a-3ce6f1109419 |
+> | **Műveletek** |  |
+> | Microsoft.ServiceBus/* |  |
+> | **notActions** |  |
+> | *none* |  |
+> | **DataActions** |  |
+> | Microsoft.ServiceBus/* |  |
+> | **NotDataActions** |  |
+> | *none* |  |
+
+## <a name="azure-service-bus-data-receiver-preview"></a>Az Azure Service Bus adatokat fogadó (előzetes verzió)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Lehetővé teszi, hogy az Azure Service Bus-erőforrások hozzáférést kapnak. |
+> | **Azonosító** | 4f6d3b9b-027b-4f4c-9142-0e5a2a2247e0 |
+> | **Műveletek** |  |
+> | Microsoft.ServiceBus/*/queues/read |  |
+> | Microsoft.ServiceBus/*/topics/read |  |
+> | Microsoft.ServiceBus/*/topics/subscriptions/read |  |
+> | **notActions** |  |
+> | *none* |  |
+> | **DataActions** |  |
+> | Microsoft.ServiceBus/*/receive/action |  |
+> | **NotDataActions** |  |
+> | *none* |  |
+
+## <a name="azure-service-bus-data-sender-preview"></a>Az Azure Service Bus adatokat küldő (előzetes verzió)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Küldés az Azure Service Bus-erőforrások hozzáférésének engedélyezése. |
+> | **Azonosító** | 69a216fc-b8fb-44d8-bc22-1f3c2cd27a39 |
+> | **Műveletek** |  |
+> | Microsoft.ServiceBus/*/queues/read |  |
+> | Microsoft.ServiceBus/*/topics/read |  |
+> | Microsoft.ServiceBus/*/topics/subscriptions/read |  |
+> | **notActions** |  |
+> | *none* |  |
+> | **DataActions** |  |
+> | Microsoft.ServiceBus/*/send/action |  |
+> | **NotDataActions** |  |
+> | *none* |  |
+
 ## <a name="azure-stack-registration-owner"></a>Az Azure Stack-regisztráció tulajdonosa
 > [!div class="mx-tableFixed"]
 > | | |
@@ -625,7 +723,6 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | A tárolólista |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | Biztonsági mentési feladatok létrehozása és kezelése |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Feladatok exportálása |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | Hozzon létre, és biztonsági másolatokat kezelő kapcsolatos metaadatok kezelése |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Hozzon létre, és biztonsági másolatokat kezelő operations eredményeinek kezelése |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/* | Biztonsági mentési szabályzatok létrehozása és kezelése |
@@ -691,7 +788,6 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | A tárolólista |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | Biztonsági mentési feladatok létrehozása és kezelése |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Feladatok exportálása |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Hozzon létre, és biztonsági másolatokat kezelő operations eredményeinek kezelése |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | A szabályzatművelet eredményeinek beolvasása. |
@@ -758,7 +854,6 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | A feladatművelet eredményét adja vissza. |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/read | Összes feladatobjektum visszaadása |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Feladatok exportálása |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | A Recovery Services-tárolóval kapcsolatos biztonsági mentés eredményét adja vissza. |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | A szabályzatművelet eredményeinek beolvasása. |
@@ -1409,22 +1504,6 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="event-hubs-data-owner"></a>Event Hubs-adatok tulajdonosa
-
-> [!div class="mx-tableFixed"]
-> | | |
-> | --- | --- |
-> | **Leírás** | Az Azure Event Hubs-erőforrások teljes hozzáférést tesz lehetővé. |
-> | **Azonosító** | f526a384-b230-433a-b45c-95f59c4a2dec |
-> | **Műveletek** |  |
-> | Microsoft.EventHubs/* | Lehetővé teszi, hogy a teljes felügyeleti hozzáférés az Event Hubs-névtér |
-> | **notActions** |  |
-> | *none* |  |
-> | **DataActions** |  |
-> | Microsoft.EventHubs/* | Lehetővé teszi, hogy a teljes adathozzáférést Event Hubs-névtér |
-> | **NotDataActions** |  |
-> | *none* |  |
-
 ## <a name="eventgrid-eventsubscription-contributor"></a>EventGrid EventSubscription Közreműködője
 > [!div class="mx-tableFixed"]
 > | | |
@@ -1721,9 +1800,9 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **Leírás** | Create, Read, Update, and Delete User Assigned Identity |
 > | **Azonosító** | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
 > | **Műveletek** |  |
-> | Microsoft.ManagedIdentity/userAssignedIdentities/*/read |  |
-> | Microsoft.ManagedIdentity/userAssignedIdentities/*/write |  |
-> | Microsoft.ManagedIdentity/userAssignedIdentities/*/delete |  |
+> | Microsoft.ManagedIdentity/userAssignedIdentities/read | Lekérdezi egy meglévő felhasználóhoz hozzárendelt identitás |
+> | Microsoft.ManagedIdentity/userAssignedIdentities/write | Egy új felhasználóhoz hozzárendelt identitás létrehozása vagy frissítése egy meglévő felhasználóhoz hozzárendelt identitás társított címkék |
+> | Microsoft.ManagedIdentity/userAssignedIdentities/delete | Töröl egy meglévő felhasználóhoz hozzárendelt identitás |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
@@ -2073,22 +2152,6 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | *none* |  |
 > | **DataActions** |  |
 > | *none* |  |
-> | **NotDataActions** |  |
-> | *none* |  |
-
-## <a name="service-bus-data-owner"></a>Service Bus adatok tulajdonosa
-
-> [!div class="mx-tableFixed"]
-> | | |
-> | --- | --- |
-> | **Leírás** | Az Azure Service Bus-erőforrások teljes hozzáférést tesz lehetővé. |
-> | **Azonosító** | 090c5cfd-751d-490a-894a-3ce6f1109419 |
-> | **Műveletek** |  |
-> | Microsoft.ServiceBus/* | Lehetővé teszi, hogy a teljes felügyeleti hozzáférés a Service Bus-névtér |
-> | **notActions** |  |
-> | *none* |  |
-> | **DataActions** |  |
-> | Microsoft.ServiceBus/* | Lehetővé teszi, hogy a teljes adathozzáférést a Service Bus-névtér |
 > | **NotDataActions** |  |
 > | *none* |  |
 

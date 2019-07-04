@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd7055794860398ecc6296d0174a691e7fac4450
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ac3dbd3f2148c14780c380cc0c7f2fab2a41e165
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235253"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482404"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Alkalmazástípusok a Microsoft identity platform
 
@@ -55,7 +55,7 @@ Számos modern alkalmazás egylapos alkalmazás előtérrendszerét elsősorban 
 
 Ebből a folyamatból, az alkalmazás fogad jogkivonatok közvetlenül a Microsoft identity platform authorize végponton, minden olyan kiszolgálók közötti adatcsere nélkül. Hitelesítési logikát, és a munkamenet idő szükséges kezelése teljes mértékben a JavaScript-kliens nélkül extra oldal átirányítja az helyezze el.
 
-![Implicit hitelesítési folyamat](./media/v2-app-types/convergence-scenarios-implicit.svg)
+![Megjeleníti az implicit hitelesítési folyamat](./media/v2-app-types/convergence-scenarios-implicit.svg)
 
 Ebben a forgatókönyvben működés közben látni, próbálja ki az egyoldalas alkalmazás Kódminták egyikét a [első lépések a Microsoft identity platform](v2-overview.md#getting-started) szakaszban.
 
@@ -80,7 +80,7 @@ A Microsoft identity platform végponthoz használt tokenek különböző típus
 
 A webalkalmazásokban server a bejelentkezési hitelesítési folyamat veszi magas szintű lépéseket:
 
-![Webes alkalmazás hitelesítési folyamata](./media/v2-app-types/convergence-scenarios-webapp.svg)
+![A webes alkalmazás hitelesítési folyamatát mutatja](./media/v2-app-types/convergence-scenarios-webapp.svg)
 
 Az azonosító jogkivonat érvényesítése és a Microsoft identity platform végpont-tól kapott nyilvános aláírókulcs győződjön meg, hogy a felhasználó identitását. Egy munkamenetcookie-t be van állítva, a felhasználó lapkérések azonosítására használható.
 
@@ -106,7 +106,7 @@ Egy webes API-t adhat a felhasználóknak engedélyezve van a hibajelentések va
 
 Egy webes API hozzáférési jogkivonatok is fogad az összes típusú alkalmazásokat, beleértve a kiszolgáló webalkalmazások, asztali és mobilalkalmazások, egyoldalas alkalmazások, kiszolgálóoldali démonok és akár egyéb webes API-k. A magas szintű folyamat egy webes API-hoz a következőhöz hasonló:
 
-![Webes API-hitelesítési folyamat](./media/v2-app-types/convergence-scenarios-webapi.svg)
+![Megjeleníti a webes API-hitelesítési folyamat](./media/v2-app-types/convergence-scenarios-webapi.svg)
 
 Egy webes API biztonságossá OAuth2 hozzáférési jogkivonatok használatával kapcsolatban tekintse meg a webes API-Kódminták a [első lépések a Microsoft identity platform](v2-overview.md#getting-started) szakaszban.
 
@@ -118,7 +118,7 @@ Eszköz telepített alkalmazások, például az asztali és mobil alkalmazások 
 
 Ezt a folyamatot az alkalmazás megkapja az engedélyezési kódot a Microsoft identity platform végpontról a felhasználó bejelentkezésekor. Az engedélyezési kód háttér-szolgáltatásokat a bejelentkezett felhasználó nevében engedélyt az alkalmazásnak jelöli. Az alkalmazás a háttérben, az OAuth 2.0 hozzáférési jogkivonatban és a egy frissítési jogkivonat a hozzáférési kód tudjon cserélni. Az alkalmazás a hozzáférési jogkivonat segítségével végezhet hitelesítést a webes API-k HTTP-kérelmekre, és a frissítési jogkivonat használatával új hozzáférési jogkivonatok kaphat, ha a korábbi hozzáférési jogkivonatok lejárnak.
 
-![Natív alkalmazás hitelesítési folyamata](./media/v2-app-types/convergence-scenarios-native.svg)
+![A natív alkalmazás hitelesítési folyamatát mutatja](./media/v2-app-types/convergence-scenarios-native.svg)
 
 ## <a name="daemons-and-server-side-apps"></a>Démonok és a kiszolgálóoldali alkalmazások
 
@@ -126,6 +126,6 @@ Alkalmazások, amelyek hosszú ideig futó folyamatokat, vagy egy felhasználói
 
 Ebből a folyamatból, az alkalmazás közvetlenül kommunikál a `/token` hozzáférést szerezni a végpont:
 
-![Démon alkalmazások hitelesítési folyamat](./media/v2-app-types/convergence-scenarios-daemon.svg)
+![A démon alkalmazás hitelesítési folyamatát mutatja](./media/v2-app-types/convergence-scenarios-daemon.svg)
 
 Démon alkalmazások létrehozásának, tekintse meg a [ügyfél hitelesítő adatai dokumentáció](v2-oauth2-client-creds-grant-flow.md), vagy próbálkozzon egy [.NET mintaalkalmazás](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).

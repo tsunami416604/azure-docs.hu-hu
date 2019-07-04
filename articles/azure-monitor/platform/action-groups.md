@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 5/30/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: f4f10191ea28f73732f81eb9dc25321f82683652
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 796ae0e3be3a2e43d7f27d5932cdba0cf660f36b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66416966"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441909"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Az Azure Portalon a műveleti csoportok létrehozása és kezelése
 ## <a name="overview"></a>Áttekintés ##
@@ -56,6 +56,8 @@ Műveletcsoportok konfigurálása Azure Resource Manager-sablonok használatár�
     b. **Művelet típusa**: Válassza ki az e-mailek és SMS és leküldéses/Hangvétel, a logikai alkalmazás, Webhookot, ITSM vagy Automation-Runbook.
 
     c. **Részletek**: A művelet típusa alapján, adjon meg egy telefonszám, e-mail címét, webhook URI-t, az Azure app, ITSM-kapcsolat vagy Automation-runbook. ITSM-művelet, továbbá adja meg **munkaelem** és a többi mező az ITSM-eszközhöz van szükség.
+    
+    d. **Gyakori riasztási séma**: Ha szeretné engedélyezni a [gyakori riasztási séma](https://aka.ms/commonAlertSchemaDocs), amely biztosítja az előnyt, hogy a bővíthető egyetlen és egységes riasztási hasznos között az összes riasztás services, az Azure monitorban.
 
 1. Válassza ki **OK** a műveletcsoport létrehozásához.
 

@@ -4,18 +4,18 @@ description: Modulok IoT Edge-eszköz üzembe helyezése az Azure portal haszná
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/19/2019
+ms.date: 06/25/2019
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 9d7729dce5419c5813de3c4dfce55c40098f5988
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8337c8672eb886d79b38b2a38a74037f88604497
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60595238"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448544"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Az Azure Portalról az Azure IoT Edge-modulok telepítése
 
@@ -43,7 +43,7 @@ Az Azure Portalon rendelkezik egy varázslót, amely manifest nasazení, a JSON-
 
 ### <a name="add-modules"></a>Modulok hozzáadása
 
-1. Az a **beállításjegyzék-beállítások** szakasz az oldal bármely privát tárolójegyzékek, amelyek tartalmazzák a modul rendszerképek eléréséhez hitelesítő adatok megadása.
+1. Az a **tároló-beállításjegyzékek beállításai** szakasz az oldal bármely privát tárolójegyzékek, amelyek tartalmazzák a modul rendszerképek eléréséhez hitelesítő adatok megadása.
 
 1. Az a **üzembe helyezési modulok** című oldalon válassza **Hozzáadás**.
 

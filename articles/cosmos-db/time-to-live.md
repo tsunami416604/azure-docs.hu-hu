@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 692e0ec575904ff0a70b8c73268d2df62e776bb6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b32665b09eb02c337a12ac3cfc2b474fa82711a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978781"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447245"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Élettartam (TTL) az Azure Cosmos DB 
 
@@ -45,6 +45,42 @@ Az élettartam időtartamot másodpercben, és az idő, elem utolsó módosítá
 * Egy tároló TTL -1 értékre van állítva, ha egy elem ebben a tárolóban, amely rendelkezik az idő az élő set-n, n másodperc múlva lejár, és a fennmaradó elemek nem jár le. 
 
 Élettartam alapján elemek törlése díjmentes. Nem kell további költenie (azaz nincs további Kérelemegységet felhasznált) élettartam lejárta következtében elem törlésekor.
+
+## <a name="examples"></a>Példák
+
+Ez a szakasz néhány példa az eltérő élettartam tárolók és elemek rendelt értékeket mutatja:
+
+### <a name="example-1"></a>1\. példa
+
+Élettartam tárolón értéke null értékre (DefaultTimeToLive = null)
+
+|A cikk élettartam| Eredmény|
+|---|---|
+|élettartam = null|    TTL le van tiltva. Az elem soha nem jár le (alapértelmezett).|
+|élettartam -1 =   |TTL le van tiltva. Az elem nem jár.|
+|élettartam = 2000 |TTL le van tiltva. Az elem nem jár.|
+
+
+### <a name="example-2"></a>2\. példa
+
+Tároló TTL -1 értékre van állítva (DefaultTimeToLive = -1)
+
+|A cikk élettartam| Eredmény|
+|---|---|
+|élettartam = null |Élettartam engedélyezve van. Az elem soha nem jár le (alapértelmezett).|
+|élettartam -1 =   |Élettartam engedélyezve van. Az elem nem jár.|
+|élettartam = 2000 |Élettartam engedélyezve van. Az elem 2000 másodperc múlva lejár.|
+
+
+### <a name="example-3"></a>3\. példa
+
+Élettartam tárolón 1000 értékre van állítva (DefaultTimeToLive = 1000)
+
+|A cikk élettartam| Eredmény|
+|---|---|
+|élettartam = null|    Élettartam engedélyezve van. A cikk 1 000 másodperc (alapértelmezett) után lejár.|
+|élettartam -1 =   |Élettartam engedélyezve van. Az elem nem jár.|
+|élettartam = 2000 |Élettartam engedélyezve van. Az elem 2000 másodperc múlva lejár.|
 
 ## <a name="next-steps"></a>További lépések
 

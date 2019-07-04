@@ -5,21 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 12/17/2018
+ms.date: 06/25/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94b35f0530dacfadb799f1d44d7a9eb666def6c9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 735c3db14963c1f3cfe700a97dee9fedb70e29f5
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65891956"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441111"
 ---
-# <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Adja hozzá a Google B2B vendégfelhasználó Identitásszolgáltatóként
+# <a name="add-google-as-an-identity-provider-for-b2b-guest-users-preview"></a>Adja hozzá a Google Identitásszolgáltatóként B2B vendégfelhasználó (előzetes verzió)
+
+|     |
+| --- |
+| Google összevonási az Azure Active Directory nyilvános előzetes verziójú funkció. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
+|     |
 
 A Google összevonási beállításával engedélyezheti a meghívott felhasználók jelentkezhetnek be a megosztott alkalmazások és erőforrások a saját Google-fiókok esetében a Microsoft Accounts (msa-k) vagy az Azure AD-fiókok létrehozása nélkül.  
 > [!NOTE]

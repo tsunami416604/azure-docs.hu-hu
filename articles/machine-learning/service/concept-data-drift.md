@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cody-dkdc
 ms.author: copeters
 ms.date: 06/20/2019
-ms.openlocfilehash: 56761c32484d4f5b27800e56143c62d3731da852
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: a03e3124647869e7148f271810bb523986a851c6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332598"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442387"
 ---
 # <a name="what-is-data-drift-monitoring-preview"></a>Mi az adatok konfigurációsodródás monitorozási (előzetes verzió)?
 
@@ -37,7 +37,7 @@ Ha úgy véli, hogy a bemeneti adatok az üzembe helyezett modell változhat, é
 
 ## <a name="how-data-drift-is-monitored-in-azure-machine-learning-service"></a>Hogyan felügyelik adatok eltéréseket az Azure Machine Learning szolgáltatás
 
-Használatával **Azure Machine Learning szolgáltatás**, adatkészletek és a központi telepítések keresztül figyelt adatok eltéréseket. Adatok eltéréseket monitorozásához – általában a betanítási adatkészletet egy modell - alapkonfiguráció adatkészlet van megadva. Egy második adatkészlet - az alapkonfiguráció élelmiszer-általában a bemeneti adatok modellezése a központi telepítés – összeállításunkat lett tesztelve. Mindkét adatkészletek [profiled](how-to-create-dataset-snapshots.md) és az adatok bemeneti konfigurációsodródás figyelési szolgáltatás. Egy gépi tanulási modell tanítása észleli a különbség a két adatkészlet között. A modell teljesítményét az eltéréseket együttható, amely méri a két adatkészlet között eltéréseket mértékétől alakítja át. Használatával [model e](machine-learning-interpretability-explainability.md) számítja ki a Funkciók, az eltéréseket együttható hozzájáruló. Az adatkészlet profilban, a nyomon követett statisztikai információkat talál az egyes szolgáltatásokról. 
+Használatával **Azure Machine Learning szolgáltatás**, adatkészletek és a központi telepítések keresztül figyelt adatok eltéréseket. Adatok eltéréseket monitorozásához – általában a betanítási adatkészletet egy modell - alapkonfiguráció adatkészlet van megadva. Egy második adatkészlet - az alapkonfiguráció élelmiszer-általában a bemeneti adatok modellezése a központi telepítés – összeállításunkat lett tesztelve. Mindkét adatkészletek [profiled](how-to-explore-prepare-data.md#explore-with-summary-statistics) és az adatok bemeneti konfigurációsodródás figyelési szolgáltatás. Egy gépi tanulási modell tanítása észleli a különbség a két adatkészlet között. A modell teljesítményét az eltéréseket együttható, amely méri a két adatkészlet között eltéréseket mértékétől alakítja át. Használatával [model e](machine-learning-interpretability-explainability.md) számítja ki a Funkciók, az eltéréseket együttható hozzájáruló. Az adatkészlet profilban, a nyomon követett statisztikai információkat talál az egyes szolgáltatásokról. 
 
 ## <a name="data-drift-metric-output"></a>Eltolódás metrika kimeneti adatok
 

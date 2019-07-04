@@ -1,20 +1,19 @@
 ---
 title: Azure Stream Analytics az IoT Edge segítségével
 description: Edge-feladatok létrehozása az Azure Stream Analytics, és az Azure IoT Edge futtató eszközre telepítse őket.
-services: stream-analytics
+ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 4/2/2019
+ms.date: 07/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4ecea8864a565997b8df119d870e7efee8448143
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 17b9d11b75e2677e22fa2e38c21a69f018a4bee8
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60803968"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508345"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics az IoT Edge segítségével
  
@@ -111,7 +110,7 @@ Az IoT Edge dokumentációja ismerteti ezeket a lépéseket [Windows](https://do
 
 > [!Note]
 > Ezzel a lépéssel ASA mappát hoz létre a "EdgeJobs" a tároló neve (Ha még nem létezik már). Minden egyes üzemelő példányhoz egy új almappát a "EdgeJobs" mappában jön létre.
-> Annak érdekében, hogy a feladat üzembe a peremhálózati eszközökre, az ASA egy közös hozzáférésű jogosultságkód (SAS) a feladat definícióját fájlt hoz létre. A SAS-kulcsát biztonságosan átkerülnek a ikereszközök használata az IoT Edge-eszközökön. Ez a kulcs lejáratának napjától létrehozása a három év meghatározva.
+> Ha a feladat az IoT Edge-eszközökre telepíti központilag, ASA egy közös hozzáférésű jogosultságkód (SAS) a feladat definícióját fájlt hoz létre. A SAS-kulcsát biztonságosan átkerülnek a ikereszközök használata az IoT Edge-eszközökön. Ez a kulcs lejáratának napjától létrehozása a három év meghatározva. Amikor frissítette az IoT Edge-feladatok, SAS változik, de nem módosítja a rendszerkép verziószámát. Egyszer, **frissítése**, kövesse a telepítési munkafolyamat és a egy frissítési értesítés az eszköz be van jelentkezve.
 
 
 IoT Edge-telepítések kapcsolatos további információkért lásd: [ezt oldal](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
@@ -203,9 +202,31 @@ A referenciaadatok frissítése két módja van:
 * [Az Azure Stream Analytics az IoT Edge-ben licenc](https://go.microsoft.com/fwlink/?linkid=862827). 
 * [Harmadik felekre vonatkozó megjegyzés, az Azure Stream Analytics az IoT Edge-ben](https://go.microsoft.com/fwlink/?linkid=862828).
 
+## <a name="azure-stream-analytics-module-image-information"></a>Az Azure Stream Analytics modul képinformációk 
+
+A fájlverzió-információkat a 2019-06-27 volt utoljára frissítve:
+
+- Kép: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-amd64`
+   - alaplemezkép: microsoft/dotnet:2.1.6-runtime-alpine3.7
+   - platform:
+      - architektúra: amd64
+      - az operációs rendszer: linux
+  
+- Kép: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-arm32v7`
+   - alaplemezkép: microsoft/dotnet:2.1.6-runtime-bionic-arm32v7
+   - platform:
+      - architektúra: arm
+      - az operációs rendszer: linux
+  
+- Kép: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-windows-amd64`
+   - alaplemezkép: microsoft/dotnet:2.1.6-runtime-nanoserver-1809
+   - platform:
+      - architektúra: amd64
+      - az operációs rendszer: windows
+      
+      
 ## <a name="get-help"></a>Segítségkérés
 További segítségre van szüksége, próbálja meg a [Azure Stream Analytics-fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
-
 
 ## <a name="next-steps"></a>További lépések
 

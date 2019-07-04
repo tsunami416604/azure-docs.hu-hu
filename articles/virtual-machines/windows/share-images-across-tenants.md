@@ -10,17 +10,20 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/05/2019
 ms.author: cynthn
-ms.openlocfilehash: 56c0e906203a010a1356beae4b6e5d66e34cfc2b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5b3c4e5380c65b2ab6c736e7fabe1813fe32afc2
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65159840"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466502"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>Az Azure-bérlőre kiterjedő katalógus Virtuálisgép-rendszerképek megosztása
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
+
+> [!IMPORTANT]
+> A portál nem használhat egy másik azure-bérlőhöz egy rendszerképből egy virtuális gép üzembe helyezéséhez. Virtuális gép létrehozása a bérlők között megosztott kép, kell használnia a [Azure CLI-vel](../linux/share-images-across-tenants.md) vagy a PowerShell használatával.
 
 ## <a name="create-a-vm-using-powershell"></a>Hozzon létre egy virtuális Gépet PowerShell-lel
 

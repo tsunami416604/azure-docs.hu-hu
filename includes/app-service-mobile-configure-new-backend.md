@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: crdun
 ms.custom: include file
-ms.openlocfilehash: a7c994f85d90e94d514bb4e4f91a6644ed45432c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a7e543dcad9ad1b016d1244451cd87cda5ad7492
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66455197"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440220"
 ---
 1. Töltse le az ügyfél SDK rövid útmutatók, a következő platformokhoz:
     
@@ -100,6 +100,4 @@ ms.locfileid: "66455197"
 
         4. Válassza ki **App Service-ben** megfelelően cél közzététele, majd kattintson **meglévő**, majd kattintson a **közzététel** gombra az ablak alján.
 
-        5. Jelentkezzen be a Visual Studio az Azure-előfizetésében először kell. Válassza ki a `Subscription`, `Resource Group`, majd válassza ki az alkalmazás nevére. Amikor elkészült, kattintson a **OK**, ez lesz helyi üzembe helyezés a .NET kiszolgálói projektet, hogy az éppen illeszkedik az App Service-ben. Az üzembe helyezést, a rendszer átirányítja `http://{zumoappname}.azurewebsites.net/` a böngészőben.
-        
-           ![Háttérbeli működik](./media/app-service-mobile-configure-new-backend/backend-is-up.png)
+        5. Jelentkezzen be a Visual Studio az Azure-előfizetésében először kell. Válassza ki a `Subscription`, `Resource Group`, majd válassza ki az alkalmazás nevére. Amikor elkészült, kattintson a **OK**, ez lesz helyi üzembe helyezés a .NET kiszolgálói projektet, hogy az éppen illeszkedik az App Service-ben. Az üzembe helyezést, a rendszer átirányítja `http://{zumoappname}.azurewebsites.net/` a böngészőben.                   

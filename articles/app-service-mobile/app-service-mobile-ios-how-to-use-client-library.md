@@ -3,7 +3,7 @@ title: Hogyan használja iOS SDK és Azure Mobile Apps
 description: Hogyan használja iOS SDK és Azure Mobile Apps
 services: app-service\mobile
 documentationcenter: ios
-author: conceptdev
+author: elamalani
 editor: ''
 ms.assetid: 4e8e45df-c36a-4a60-9ad4-393ec10b7eb9
 ms.service: app-service-mobile
@@ -11,19 +11,24 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 10/01/2016
-ms.author: crdun
-ms.openlocfilehash: b6f93cc3c35ab18ecd50ccd6b3090985497baabf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 38d992e55a8e1f0a057a96f3e13c93c9dbd0c4a9
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62122455"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440382"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Hogyan lehet Azure Mobile Apps-Klienskódtárának használata iOS-re
 
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
+> [!NOTE]
+> A Visual Studio App Center fektet a mobilalkalmazás-fejlesztés központi új, integrált szolgáltatások. A fejlesztők a **hozhat létre**, **teszt** és **terjesztése** állíthat be folyamatos integrációt és teljesítést folyamat szolgáltatások. Az alkalmazás telepítve van, a fejlesztők monitorozható az állapot és az alkalmazás használatával használatát a **Analytics** és **diagnosztikai** -szolgáltatásokat, és kapcsolatba léphet a felhasználókat a **leküldéses** a szolgáltatás. A fejlesztők is kihasználhatják a **Auth** azok a felhasználók hitelesítéséhez és **adatok** szolgáltatás és a felhőbeli alkalmazások adatainak szinkronizálása. Tekintse meg [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=/app-service-mobile-ios-how-to-use-client-library) még ma.
+>
+
+## <a name="overview"></a>Áttekintés
 Ez az útmutató bemutatja, hogy a legújabb használatával általános forgatókönyveinek végrehajtásával [Azure Mobile Apps iOS SDK][1]. Ha most ismerkedik az Azure Mobile Apps, először végezzen [Azure Mobile Apps alkalmazások gyors üzembe helyezési] egy háttérrendszer létrehozásához hozzon létre egy táblát, és töltse le egy előre elkészített iOS Xcode-projektben. Ebben az útmutatóban koncentrálunk az ügyféloldali iOS SDK-t. A háttérrendszer a kiszolgálóoldali SDK kapcsolatos további információkért lásd: a kiszolgáló SDK HOWTOs.
 
 ## <a name="reference-documentation"></a>Segédanyagok
@@ -435,7 +440,7 @@ Legalább a `id` attribútumot kell beállítani, amikor az így törli.
 
 Egyéni API-val tehetők közzé olyan háttérrendszer-funkciót. Nem kell olyan művelet leképezése. Nem csak, így az jobban szabályozhatja az üzenetkezelési, is olvasási/készletet a fejlécek, és módosítsa a válasz törzse formátuma. További információt az egyéni API-k létrehozása a háttérkiszolgálón, [egyéni API-k](app-service-mobile-node-backend-how-to-use-server-sdk.md#work-easy-apis)
 
-Egyéni API hívása hívja `MSClient.invokeAPI`. A kérés- és tartalom JSON-fájlként kell kezelni. Egyéb adathordozó-típusok használandó [használja más `invokeAPI` ] [ 5].  Győződjön meg arról, hogy egy `GET` kérelem helyett egy `POST` kérelem, az adatkészlet-paraméternek `HTTPMethod` való `"GET"` és paraméter `body` való `nil` (mivel a GET-kérések nem rendelkezik az üzenet törzse.) Ha az egyéni API támogatja a más HTTP-műveletek, módosítsa `HTTPMethod` megfelelően.
+Egyéni API hívása hívja `MSClient.invokeAPI`. A kérés- és tartalom JSON-fájlként kell kezelni. Egyéb adathordozó-típusok használandó [használja más `invokeAPI` ][5].  Győződjön meg arról, hogy egy `GET` kérelem helyett egy `POST` kérelem, az adatkészlet-paraméternek `HTTPMethod` való `"GET"` és paraméter `body` való `nil` (mivel a GET-kérések nem rendelkezik az üzenet törzse.) Ha az egyéni API támogatja a más HTTP-műveletek, módosítsa `HTTPMethod` megfelelően.
 
 **Objective-C**:
 
@@ -516,7 +521,7 @@ Az összes címke a program eltávolítja a biztonság a kérelemből.  Címkék
 
 Amikor egy Azure App Service-mobilháttérmodul hívja, a befejezési blokk tartalmaz egy `NSError` paraméter. Ha hiba történik, a paraméter nem üres. A kódban ellenőrizze ezt a paramétert és kezelni a hibát, ha szükséges, ahogyan az az előző kódrészleteket is.
 
-A fájl [ `<WindowsAzureMobileServices/MSError.h>` ] [ 6] határozza meg az állandókat `MSErrorResponseKey`, `MSErrorRequestKey`, és `MSErrorServerItemKey`. A hibára vonatkozó további adatok lekérése:
+A fájl [ `<WindowsAzureMobileServices/MSError.h>` ][6] határozza meg az állandókat `MSErrorResponseKey`, `MSErrorRequestKey`, és `MSErrorServerItemKey`. A hibára vonatkozó további adatok lekérése:
 
 **Objective-C**:
 
@@ -548,7 +553,7 @@ if (error.code == MSErrorPreconditionFailed) {
 
 Az Active Directory Authentication Library (ADAL) segítségével bejelentkezhetnek a felhasználók az alkalmazásokba az Azure Active Directoryval. Ügyfél folyamat hitelesítést egy identitásszolgáltató SDK használatával használata helyett a `loginWithProvider:completion:` metódust.  Client flow hitelesítést biztosít egy több natív UX működésével, és lehetővé teszi, hogy további testreszabási.
 
-1. A mobil-háttéralkalmazás az AAD-bejelentkezés konfigurálása a következő a [konfigurálása App Service-ben az Active Directory-bejelentkezés] [ 7] oktatóanyag. Ellenőrizze, hogy a natív ügyfélalkalmazás regisztrációja nem kötelező lépése. IOS-, azt javasoljuk, hogy az átirányítási URI-ja a következő formában `<app-scheme>://<bundle-id>`. További információkért lásd: a [ADAL iOS rövid][8].
+1. A mobil-háttéralkalmazás az AAD-bejelentkezés konfigurálása a következő a [konfigurálása App Service-ben az Active Directory-bejelentkezés][7] oktatóanyag. Ellenőrizze, hogy a natív ügyfélalkalmazás regisztrációja nem kötelező lépése. IOS-, azt javasoljuk, hogy az átirányítási URI-ja a következő formában `<app-scheme>://<bundle-id>`. További információkért lásd: a [ADAL iOS rövid][8].
 2. Telepítse a Cocoapods segítségével adal-t. Szerkessze a következő definícióját tartalmazza a Podfile cseréje **YOUR-projekt** az Xcode-projektben nevére:
 
         source 'https://github.com/CocoaPods/Specs.git'
@@ -635,8 +640,8 @@ func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> V
 
 A Facebook SDK IOS rendszerhez készült segítségével bejelentkezhetnek a felhasználók Facebook használatával, az alkalmazásba.  Az ügyfél-hitelesítési folyamat a következő használata helyett a `loginWithProvider:completion:` metódust.  Az ügyfél-hitelesítési folyamat több natív UX betekintést nyújt, és lehetővé teszi, hogy további testreszabási.
 
-1. A mobile Apps-háttéralkalmazást, a Facebook-bejelentkezés konfigurálása a következő a [Facebook-bejelentkezés konfigurálása az App Service] [ 9] oktatóanyag.
-2. Telepítse a Facebook SDK iOS rendszerhez az alábbi a [Facebook SDK (iOS) – első lépések a] [ 10] dokumentációját. Helyett az alkalmazások létrehozásának folyamatába, az iOS platform adhat hozzá a meglévő regisztrációt.
+1. A mobile Apps-háttéralkalmazást, a Facebook-bejelentkezés konfigurálása a következő a [Facebook-bejelentkezés konfigurálása App Service-ben][9] oktatóanyag.
+2. Telepítse a Facebook SDK iOS rendszerhez az alábbi a [Facebook SDK (iOS) – első lépések a][10] dokumentációját. Helyett az alkalmazások létrehozásának folyamatába, az iOS platform adhat hozzá a meglévő regisztrációt.
 3. App Delegát néhány Objective-C kódjának a Facebook-dokumentáció tartalmazza. Ha használ **Swift**, AppDelegate.swift is használhatja a következő fordítása:
 
     ```swift

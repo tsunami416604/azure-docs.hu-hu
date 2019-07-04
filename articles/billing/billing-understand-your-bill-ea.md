@@ -1,25 +1,22 @@
 ---
-title: Az Azure enterprise-elszámolások ismertetése |} A Microsoft Docs
-description: Ismerje meg az Azure Enterprise-megállapodások a használatának és számlájának értelmezése
-services: ''
-documentationcenter: ''
+title: Az Azure enterprise-elszámolások ismertetése
+description: Útmutató az Azure Enterprise-megállapodások a használatának és számlájának értelmezése.
 author: adpick
 manager: dougeby
-editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/01/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: be20ad0583558949f65b9706f0a478669360bf3d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02ddaf4878367524291ce54a4e12fc9b4fee4cd2
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64571212"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490287"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>A nagyvállalati szerződés Azure-elszámolások ismertetése
 
@@ -59,7 +56,7 @@ Hasonlítsa össze a kombinált teljes összege jelenik meg a vállalati portál
 
 1. Jelentkezzen be a [az Enterprise portal](https://ea.azure.com).
 1. Válassza ki **jelentések**.
-1. A lap jobb felső sarokban a Váltás a nézet **M** való **C** , majd az az időszak, a számlán.  
+1. A lap jobb felső sarkában a Váltás a nézet **M** való **C** , majd az az időszak, a számlán.  
     ![Képernyőkép a M + használati összegzés C lehetőséget.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
 1. Összesített mennyisége **teljes felhasználás** és **Azure Marketplace-en** meg kell egyeznie a **kiterjesztett mennyiségén** a számlán.
 1. A díjak kapcsolatos további információért lépjen **használati adatok letöltése**.  
@@ -100,7 +97,7 @@ Hasonlítsa össze a teljes használati mennyiséget, a vállalati portál **jel
 
 1. Jelentkezzen be a [az Enterprise portal](https://ea.azure.com).
 1. Válassza ki **jelentések**.
-1. A lap jobb felső sarokban a Váltás a nézet **M** való **C** , majd az az időszak, a számlán.  
+1. A lap jobb felső sarkában a Váltás a nézet **M** való **C** , majd az az időszak, a számlán.  
     ![Képernyőkép a M + használati összegzés C lehetőséget.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
 1. A **teljes felhasználás** összeg meg kell egyeznie a **kiterjesztett mennyiségén** a szolgáltatás kerettúllépési számlán.  
 1. További információ a díjakról, keresse fel **használati adatok letöltése** > **speciális jelentés letöltése**. A jelentés nem tartalmazza a adók vagy foglalások kell fizetni, vagy a piactér-díjak.  
@@ -124,7 +121,7 @@ Hasonlítsa össze az Azure Marketplace-en található összes **jelentések** >
 
 1. Jelentkezzen be a [az Enterprise portal](https://ea.azure.com).
 1. Válassza ki **jelentések**.
-1. A lap jobb felső sarokban a Váltás a nézet **M** való **C** , majd az az időszak, a számlán.  
+1. A lap jobb felső sarkában a Váltás a nézet **M** való **C** , majd az az időszak, a számlán.  
      ![Képernyőkép a M + használati összegzés C lehetőséget.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)  
 1. A **Azure Marketplace-en** összesen meg kell egyeznie a **teljes értékesítés** a marketplace-számlában.
 1. További információ a használat alapú költségek, keresse fel **használati adatok letöltése**. A **piactér-díjak**válassza **letöltése**. A jelentés nem tartalmazza az adókat és az egyszeri vásárlásokat.  

@@ -8,19 +8,19 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/24/2018
-ms.openlocfilehash: 10ec4b55bab741f19adaf193295659b7876fe02c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 72e8b1331005db59be572e033bfaaaf5ceeea0b3
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64685220"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433607"
 ---
 # <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Az Apache Hadoop-fürt létrehozása biztonságos átvitellel rendelkező tárfiókok az Azure HDInsight
 
 A [biztonságos átvitelt szükséges](../storage/common/storage-require-secure-transfer.md) funkció megnöveli az Azure Storage-fiók biztonságát azáltal, hogy minden, a fiókra beérkező kérést biztonságos kapcsolat használatára kényszerít. Ezt a funkciót és a wasbs sémát csak a HDInsight-fürt 3.6-os vagy újabb verziója támogatja.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az oktatóanyag elindításának feltétele:
+Ez a cikk elkezdéséhez kell rendelkeznie:
 
 * **Azure-előfizetés**: Egy ingyenes egy hónapos próbafiók létrehozásához keresse meg a [azure.microsoft.com/free](https://azure.microsoft.com/free).
 * **Engedélyezett biztonságos átvitellel rendelkező Azure-tárfiók** Az utasításokért lásd a [Tárfiók létrehozása](../storage/common/storage-quickstart-create-account.md) és a [Biztonságos átvitel megkövetelése](../storage/common/storage-require-secure-transfer.md) szakaszokat.
@@ -31,7 +31,7 @@ Az oktatóanyag elindításának feltétele:
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 
-Ebben a szakaszban egy Hadoop-fürtöt hozhat létre a HDInsightban egy [Azure Resource Manager-sablonnal](../azure-resource-manager/resource-group-template-deploy.md). A sablonban található [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-existing-default-storage-account/). Nem kell a Resource Manager-sablonok használatára vonatkozó tapasztalattal rendelkeznie az oktatóanyag követéséhez. Egyéb fürtlétrehozási módszerekhez és az oktatóanyagban használt tulajdonságok megértéséhez tekintse meg a [Create HDInsight clusters](hdinsight-hadoop-provision-linux-clusters.md) (HDInsight-fürtök létrehozása) című témakört.
+Ebben a szakaszban egy Hadoop-fürtöt hozhat létre a HDInsightban egy [Azure Resource Manager-sablonnal](../azure-resource-manager/resource-group-template-deploy.md). A sablonban található [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-existing-default-storage-account/). Nem kell a Resource Manager-sablonok használatára vonatkozó tapasztalattal rendelkeznie a cikk lépéseinek követéséhez. Egyéb Fürtlétrehozási módszerekhez és ebben a cikkben használt tulajdonságok megértéséhez, lásd: [létre HDInsight-fürtök](hdinsight-hadoop-provision-linux-clusters.md).
 
 1. Az alábbi képre kattintva jelentkezzen be az Azure-ba, és nyissa meg a Resource Manager-sablont az Azure Portalon.
 
@@ -61,12 +61,12 @@ További, biztonságos átvitel használatára képes tárfiókok hozzáadásár
 - Szkriptműveleteket használata további, biztonságos átvitel használatára képes tárfiókok meglévő HDInsight-fürthöz történő hozzáadásához. További információkért lásd: [Add additional storage accounts to HDInsight](hdinsight-hadoop-add-storage.md) (További tárfiókok hozzáadása a HDInsighthoz).
 
 ## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban megtanulhatta, hogyan hozhat létre HDInsight-fürtöt, és hogyan engedélyezheti a biztonságos átvitelt a tárfiókokba.
+Ebben a cikkben megtanulhatta, hogyan hozhat létre egy HDInsight-fürtöt, és engedélyezheti a biztonságos átvitelt a tárfiókokba.
 
 A HDInsight használatával történő adatelemzésről az alábbi cikkekben talál további információt:
 
 * További információ a [Apache Hive](https://hive.apache.org/) a HDInsight, beleértve a Visual Studióban a Hive-lekérdezések végrehajtásához lásd: [Apache Hive használata a HDInsight][hdinsight-use-hive].
-* További információ [Apache Pig](https://pig.apache.org/), adatok átalakítására szolgáló lásd [Apache Pig használata a HDInsight-][hdinsight-use-pig].
+* További információ [Apache Pig](https://pig.apache.org/), adatok átalakítására szolgáló lásd [Apache Pig használata a HDInsight][hdinsight-use-pig].
 * További információ [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html), tekintse meg a hadoopon adatokat feldolgozó programok írására úgy [Apache Hadoop MapReduce használata a HDInsight-][hdinsight-use-mapreduce].
 * A HDInsight-adatok elemzésére a HDInsight Tools for Visual Studio használatával kapcsolatos további információkért lásd: [for HDInsight Visual Studio Apache Hadoop-eszközök használatának megkezdéséhez](hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 

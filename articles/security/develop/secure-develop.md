@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: bcd66d1a8077b4cc87c184f34b43cc5846a83f2f
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: f68f6c366571b8f0f04f8507606c1a4008ab0405
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144424"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443248"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Az Azure-ban a biztonságos alkalmazások fejlesztése
 Ebben a cikkben azt jelenthet biztonsági tevékenységeket és a vezérlőket, fontolja meg a felhőalapú alkalmazások fejlesztése során. Biztonsági kérdések és megfontolandó ajánlásoktól végrehajtására és ellenőrzés fázisai a Microsoft a fogalmak [biztonságos fejlesztési Életciklussal (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) terjed ki. A célja, hogy a tevékenységek és az Azure-szolgáltatások, amelyek segítségével egy biztonságosabb alkalmazások fejlesztése a meghatározásához.
@@ -139,7 +139,7 @@ A [tesztelés fuzz](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/
 
 Után kódkiegészítés biztosítja, hogy bármilyen tervezési vagy megvalósítási módosítja egy alkalmazás vagy a rendszer fontolóra vette, tekintse át a támadási felületet. Ez segít, győződjön meg arról, hogy minden olyan új támadási felületek kialakulását modelljei, beleértve a módosítások eredményeképpen létrehozott tekintse át és problémák elhárításáról.
 
-Az alkalmazás vizsgálatával hozhat létre egy képet a támadási felületet. A Microsoft kínál a támadási felület elemzése nevű eszközt [támadási Surface Analyzer](https://www.microsoft.com/download/details.aspx?id=24487). Számos kereskedelmi dinamikus tesztelés és-eszközök vagy a szolgáltatások, beleértve a biztonsági rés választja [OWASP ott a támadás Proxy projekt](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project), [Arachni](http://arachni-scanner.com/), [Skipfish](http://code.google.com/p/skipfish/), és [w3af](http://w3af.sourceforge.net/). E beolvasó eszközök feltérképezi az alkalmazását, és képezze le az alkalmazás a részei, amely a weben keresztül érhető el. Az Azure Marketplace is kereshet hasonló [fejlesztői eszközök](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1).
+Az alkalmazás vizsgálatával hozhat létre egy képet a támadási felületet. A Microsoft kínál a támadási felület elemzése nevű eszközt [támadási Surface Analyzer](https://www.microsoft.com/download/details.aspx?id=24487). Számos kereskedelmi dinamikus tesztelés és-eszközök vagy a szolgáltatások, beleértve a biztonsági rés választja [OWASP ott a támadás Proxy projekt](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project), [Arachni](http://arachni-scanner.com/), [Skipfish](https://code.google.com/p/skipfish/), és [w3af](http://w3af.sourceforge.net/). E beolvasó eszközök feltérképezi az alkalmazását, és képezze le az alkalmazás a részei, amely a weben keresztül érhető el. Az Azure Marketplace is kereshet hasonló [fejlesztői eszközök](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1).
 
 ### <a name="perform-security-penetration-testing"></a>Hajtsa végre a biztonsági behatolásvizsgálat
 

@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 999c75d07ef7e24d4d75587b6b42a4ab1b2192cf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3141f3a1d6a9f09261dee4113276af72168e35e8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596109"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444693"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Frissítse az adattárház Gen2-re
 
@@ -32,42 +32,42 @@ A következő táblázat összefoglalja régió szerint, amikor a alacsonyabb Ge
 
 | **Régió** | **Alacsonyabb Gen2 érhető el** | **Az automatikus frissítések megkezdése** |
 |:--- |:--- |:--- |
-| Kelet-Ausztrália |Elérhető |2019\. június 1. |
-| Délkelet-Ausztrália |Elérhető |2019\. május 1. |
-| Dél-Brazília |Elérhető |2019\. június 1. |
-| Közép-Kanada |Elérhető |2019\. június 1. |
+| Kelet-Ausztrália |Elérhető |2019. június 1. |
+| Délkelet-Ausztrália |Elérhető |2019. május 1. |
+| Dél-Brazília |Elérhető |2019. június 1. |
+| Közép-Kanada |Elérhető |2019. június 1. |
 | Kelet-Kanada |\* |\* |
-| USA középső régiója |Elérhető |2019\. június 1. |
+| USA középső régiója |Elérhető |2019. június 1. |
 | Kelet-Kína |\* |\* |
 | Kelet-Kína 2 |\* |Csak Gen2 |
 | Észak-Kína |\* |\* |
 | Észak-Kína 2 |Elérhető |Csak Gen2 |
-| Kelet-Ázsia |Elérhető |2019\. június 1. |
-| USA keleti régiója |Elérhető |2019\. június 1. |
-| USA 2. keleti régiója |Elérhető |2019\. június 1. |
-| Közép-Franciaország |\* |2019\. június 1. |
+| Kelet-Ázsia |Elérhető |2019. június 1. |
+| East US |Elérhető |2019. június 1. |
+| USA 2. keleti régiója |Elérhető |2019. június 1. |
+| Közép-Franciaország |\* |2019. június 1. |
 | Közép-Németország |\* |\* |
-| Németország nyugati középső régiója |2019\. szeptember 1.|2020\. január 2. |
-| Közép-India |Elérhető |2019\. június 1. |
-| Dél-India |Elérhető |2019\. június 1. |
-| Kelet-Japán |Elérhető |2019\. június 1. |
-| Nyugat-Japán |Elérhető |2019\. május 1. |
-| Korea középső régiója |Elérhető |2019\. június 1. |
-| Korea déli régiója |Elérhető |2019\. május 1. |
-| USA északi középső régiója |Elérhető |2019\. május 1. |
-| Észak-Európa |Elérhető |2019\. június 1. |
-| USA déli középső régiója |Elérhető |2019\. június 1. |
-| Délkelet-Ázsia |Elérhető |2019\. június 1. |
-| Az Egyesült Királyság déli régiója |Elérhető, a 2019 |2019\. június 1. |
+| Németország nyugati középső régiója |2019. szeptember 1.|2020. január 2. |
+| Közép-India |Elérhető |2019. június 1. |
+| Dél-India |Elérhető |2019. június 1. |
+| Kelet-Japán |Elérhető |2019. június 1. |
+| Nyugat-Japán |Elérhető |2019. május 1. |
+| Korea középső régiója |Elérhető |2019. június 1. |
+| Korea déli régiója |Elérhető |2019. május 1. |
+| USA északi középső régiója |Elérhető |2019. május 1. |
+| Észak-Európa |Elérhető |2019. június 1. |
+| USA déli középső régiója |Elérhető |2019. június 1. |
+| Délkelet-Ázsia |Elérhető |2019. június 1. |
+| Az Egyesült Királyság déli régiója |Elérhető, a 2019 |2019. június 1. |
 | Az Egyesült Királyság nyugati régiója |\*|\* |
-| USA nyugati középső régiója |2019\. szeptember 2. |2020\. január 2.|
-| Nyugat-Európa |Elérhető |2019\. június 1. |
-| USA nyugati régiója |Elérhető |2019\. június 1. |
-| USA nyugati régiója, 2. |Elérhető |2019\. június 1. |
+| USA nyugati középső régiója |2019. szeptember 2. |2020. január 2.|
+| Nyugat-Európa |Elérhető |2019. június 1. |
+| USA nyugati régiója |Elérhető |2019. június 1. |
+| USA nyugati régiója, 2. |Elérhető |2019. június 1. |
 
 ## <a name="automatic-upgrade-process"></a>Az automatikus frissítési folyamat
 
-A fenti rendelkezésre állási diagram alapján, azt fogja ütemezni a Gen1-példányok automatikus frissítéseket. Váratlan megakadás rendelkezésre az adatraktár elkerülése érdekében az automatikus frissítésekre lesz ütemezve a karbantartási ütemezéshez során. Hozzon létre egy új Gen1 példányt lehetővé teszi az automatikus frissítés Gen2-re alatt álló régióban letiltásra kerül. Ütemezések szerint további információkért lásd: [karbantartási ütemezés megtekintése](viewing-maintenance-schedule.md)
+A fenti rendelkezésre állási diagram alapján, azt fogja ütemezni a Gen1-példányok automatikus frissítéseket. Váratlan megakadás rendelkezésre az adatraktár elkerülése érdekében az automatikus frissítésekre lesz ütemezve a karbantartási ütemezéshez során. Hozzon létre egy új Gen1 példányt lehetővé teszi az automatikus frissítés Gen2-re alatt álló régióban letiltásra kerül. Az automatikus frissítéseinek elvégzése után Gen1 elavulttá válik. Ütemezések szerint további információkért lásd: [karbantartási ütemezés megtekintése](viewing-maintenance-schedule.md)
 
 A frissítési folyamat is szükség lesz egy rövid dobja el a kapcsolat (körülbelül 5 perc), hogy indítsa újra az adattárházba.  Az adattárház újra lett indítva, miután teljes mértékben elérhető lesz. Azonban a teljesítménye léphetnek fel, a frissítési folyamat továbbra is a háttérben lévő adatfájlok frissítése. Változnak, hogy a teljesítményromlást fordított időt az adatfájlokat méretétől függ.
 

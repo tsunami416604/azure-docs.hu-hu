@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/14/2019
 ms.author: aljo
-ms.openlocfilehash: 193a24aebff8f7de60752e53bbc1b18dd5c54f33
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 779051135a994574cb2bed7bfc4879270ec1d8fa
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60482198"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443032"
 ---
 # <a name="remove-a-service-fabric-node-type"></a>Távolítsa el a Service Fabric-csomópont típusa
 Ez a cikk azt ismerteti, hogyan méretezzünk át egy Azure Service Fabric-fürtöt egy meglévő csomóponttípus eltávolítása egy fürtről. Service Fabric-fürt, amelybe mikroszolgáltatásokat helyezhet üzembe és felügyelhet virtuális vagy fizikai gépek hálózaton keresztül csatlakozó készlete áll. Egy számítógép vagy virtuális Gépet, amely egy fürt része csomópontoknak nevezzük. Virtuálisgép-méretezési csoportok olyan számítási Azure-erőforrások üzembe helyezése és kezelése a virtuális gépek gyűjteményét készletként használt. Minden csomópont-típus egy Azure-fürtön definiált [külön méretezési csoportként](service-fabric-cluster-nodetypes.md). Mindegyik csomóponttípus kezelhetők külön-külön. Egy Service Fabric-fürt létrehozását követően méretezheti a fürt vízszintesen csomópont típusa (virtuálisgép-méretezési) és az összes hozzá tartozó csomópont eltávolításával.  Méretezheti a fürt bármikor, még akkor is, ha a számítási feladatok a fürtön futnak.  A fürt skálázható, mivel az alkalmazások automatikus méretezése is.
@@ -50,7 +50,7 @@ Egy csomópont típusa, amely bronz eltávolításakor a csomópontokon írja be
 
 ## <a name="recommended-node-type-removal-process"></a>Csomópont típusa eltávolítást javasolt
 
-A csomóponttípus eltávolításához futtassa a [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) parancsmagot.  A parancsmag befejezése hosszabb időt vesz igénybe.  Ezután futtassa [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) egyes az eltávolítani kívánt csomópontokat.
+A csomóponttípus eltávolításához futtassa a [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) parancsmagot.  A parancsmag befejezése hosszabb időt vesz igénybe.  Után minden virtuális gép nyugdíjba mennek (jelöli, a "Ki") a fabric: / rendszer/InfrastructureService / [NodeType csomóponttípus neve] jelennek meg hibás állapotú.
 
 ```powershell
 $groupname = "mynodetype"
@@ -64,7 +64,14 @@ Connect-ServiceFabricCluster -ConnectionEndpoint mytestcluster.eastus.cloudapp.a
           -X509Credential -ServerCertThumbprint <thumbprint> `
           -FindType FindByThumbprint -FindValue <thumbprint> `
           -StoreLocation CurrentUser -StoreName My
+```
 
+Ezután frissítheti az csomóponttípus eltávolítása a fürterőforrás. A ARM-sablon üzembe helyezéséhez használjon, vagy a fürterőforrás keresztül szerkesztése a [az Azure resource manager](https://resources.azure.com). Ekkor elindul a fürt frissítése ezzel a művelettel eltávolítja a fabric: / rendszer/InfrastructureService / [NodeType csomóponttípus neve], hiba állapotba kerül.
+
+A csomópontok "Üzemen kívül" a Service Fabric Explorert a rendszer továbbra is megjelenik. Futtatás [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) egyes az eltávolítani kívánt csomópontokat.
+
+
+```powershell
 $nodes = Get-ServiceFabricNode | Where-Object {$_.NodeType -eq $nodetype} | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending
 
 Foreach($node in $nodes)

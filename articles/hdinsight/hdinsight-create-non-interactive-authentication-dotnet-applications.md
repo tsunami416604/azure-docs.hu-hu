@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8b96c38d5bb24a267ad0203083e485d1780f28c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9eb83c0c42bb1ba3de1aa81ab3d5f339f4d40233
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241465"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433668"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Hozzon létre egy .NET HDInsight-alkalmazás nem interaktív hitelesítés
 Az alkalmazás saját identitás (nem interaktív), vagy a bejelentkezett felhasználó az alkalmazás (interaktív) alatt a Microsoft .NET Azure HDInsight alkalmazását futtathatja. Ez a cikk bemutatja, hogyan hozhat létre egy .NET-alkalmazás csatlakoztatása az Azure és a HDInsight kezelése nem interaktív hitelesítéssel. A minta egy interaktív alkalmazás: [csatlakozhat az Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight). 
@@ -28,13 +28,13 @@ A nem interaktív .NET-alkalmazás lesz szüksége:
 * Egy HDInsight-fürtön. Tekintse meg a [kezdeti lépéseket ismertető oktatóanyag](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
 
 ## <a name="assign-a-role-to-the-azure-ad-application"></a>Szerepkör hozzárendelése az Azure AD-alkalmazás
-Az Azure AD-alkalmazás hozzárendelése egy [szerepkör](../role-based-access-control/built-in-roles.md), biztosítania jogosultságokkal műveletek végrehajtásához. Beállíthatja a hatókör szintjén is az előfizetés, erőforráscsoport vagy erőforrás. Az engedélyek öröklődnek hatókör alacsonyabb szintre. (Például egy alkalmazás az Olvasó szerepkörhöz, egy erőforráscsoport hozzáadása azt jelenti, hogy az alkalmazás olvashatja, az erőforráscsoportot és a benne erőforrást.) Ebben az oktatóanyagban, állítsa be a hatókört az erőforráscsoport szintjén. További információkért lásd: [az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése a szerepkör-hozzárendelésekkel](../role-based-access-control/role-assignments-portal.md).
+Az Azure AD-alkalmazás hozzárendelése egy [szerepkör](../role-based-access-control/built-in-roles.md), biztosítania jogosultságokkal műveletek végrehajtásához. Beállíthatja a hatókör szintjén is az előfizetés, erőforráscsoport vagy erőforrás. Az engedélyek öröklődnek hatókör alacsonyabb szintre. (Például egy alkalmazás az Olvasó szerepkörhöz, egy erőforráscsoport hozzáadása azt jelenti, hogy az alkalmazás olvashatja, az erőforráscsoportot és a benne erőforrást.) Ebben a cikkben, állítsa be a hatókört az erőforráscsoport szintjén. További információkért lásd: [az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése a szerepkör-hozzárendelésekkel](../role-based-access-control/role-assignments-portal.md).
 
 **A tulajdonosi szerepkör hozzáadása az Azure AD-alkalmazás**
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A bal oldali menüben válassza az **Erőforráscsoportok** elemet.
-3. Válassza ki az erőforráscsoportot, amely rendelkezik a HDInsight-fürt, amelyre később az oktatóanyagban a Hive-lekérdezést fog futni. Ha nagy számú erőforráscsoportok, a szűrő segítségével keresse meg a megfelelőt.
+3. Válassza ki az erőforráscsoportot, amely rendelkezik a HDInsight-fürt, amelyre a cikk későbbi részében fogja futtatni a Hive-lekérdezést. Ha nagy számú erőforráscsoportok, a szűrő segítségével keresse meg a megfelelőt.
 4. Válassza ki az erőforráscsoport menüben **hozzáférés-vezérlés (IAM)** .
 5. Válassza ki a **szerepkör-hozzárendelések** lapján megtekintheti a jelenlegi szerepkör-hozzárendeléseket.
 6. A lap tetején válassza **szerepkör-hozzárendelés hozzáadása**.

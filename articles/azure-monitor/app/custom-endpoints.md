@@ -9,14 +9,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/10/2019
+ms.date: 06/25/2019
 ms.author: mbullwin
-ms.openlocfilehash: 6e49fc96a9664b9f37b7b02fc0183f94a05db263
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d086815373b84c0f2a70144a505108875fc04981
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078442"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443324"
 ---
  # <a name="application-insights-overriding-default-endpoints"></a>Az Application Insights alapértelmezett végpontok felülbírálása
 
@@ -25,6 +25,9 @@ Az Application Insightsból történő adatküldéshez bizonyos régiókban, kel
 ## <a name="sdk-code-changes"></a>SDK-kód módosítása
 
 ### <a name="net-with-applicationinsightsconfig"></a>Az applicationinsights.config .NET
+
+> [!NOTE]
+> Visszaállít egy SDK-frissítés végrehajtása a rendszer automatikusan felülírja az applicationinsights.config fájlban. SDK frissítése után mindenképpen adja meg újra a régió meghatározott végpontot értékeket.
 
 ```xml
 <ApplicationInsights>
@@ -123,8 +126,8 @@ appInsights.Configuration.start();
 A végpontok környezeti változókat is konfigurálható:
 
 ```
-Instrumentation Key: “APPINSIGHTS_INSTRUMENTATIONKEY”
-Profile Endpoint: “Profile_Query_Endpoint_address”
+Instrumentation Key: "APPINSIGHTS_INSTRUMENTATIONKEY"
+Profile Endpoint: "Profile_Query_Endpoint_address"
 Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 ```
 
@@ -132,22 +135,34 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 ```javascript
 <script type="text/javascript">
-var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){i[e]=function(){var n=arguments;i.queue.push(function(){i[e].apply(i,n)})}}var i={config:e};i.initialize=!0;var a=document,t=window;setTimeout(function(){var n=a.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/next/ai.2.min.js",a.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{i.cookie=a.cookie}catch(e){}i.queue=[],i.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var o="Track"+r[0];if(n("start"+o),n("stop"+o),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var s=t[r];t[r]=function(e,n,a,t,o){var c=s&&s(e,n,a,t,o);return!0!==c&&i["_"+r]({message:e,url:n,lineNumber:a,columnNumber:t,error:o}),c},e.autoExceptionInstrumented=!0}return i}
-(
-    {
-    instrumentationKey:"INSTRUMENTATION_KEY",
-    endpointUrl: "TelemetryChannel_Endpoint_Address"
-  }
-);
-window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
-</script>
+   var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){
+      function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/next/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t
+   }({
+      instrumentationKey:"INSTRUMENTATION_KEY"
+      endpointUrl: "TelemetryChannel_Endpoint_Address"
+   });
 
+   window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+</script>
 ```
 
 ## <a name="regions-that-require-endpoint-modification"></a>Végpont módosítását igénylő régiók
 
-Az egyedüli olyan régió végpont módosításokat igénylő jelenleg [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights).
+Az egyedüli olyan régió, amelyek megkövetelik a végpont jelenleg [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights) és [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide).
 
-## <a name="next-step"></a>Következő lépés
+|Régió |  Végpont neve | Érték |
+|-----------------|:------------|:-------------|
+| Azure China | Telemetria-csatorna | `https://dc.applicationinsights.azure.cn/v2/track` |
+| Azure China | QuickPulse (élő mérőszámok) |`https://quickpulse.applicationinsights.azure.cn/QuickPulseService.svc` |
+| Azure China | Profil lekérdezés |`https://dc.applicationinsights.azure.cn/api/profiles/{0}/appId`  |
+| Azure Government | Telemetria-csatorna |`https://dc.applicationinsights.us/v2/track` |
+| Azure Government | QuickPulse (élő mérőszámok) |`https://quickpulse.applicationinsights.us/QuickPulseService.svc` |
+| Azure Government | Profil lekérdezés |`https://dc.applicationinsights.us/api/profiles/{0}/appId` |
+
+> [!NOTE]
+> Kód nélküli ügynök/bővítmény alapú monitorozása az Azure App Services **jelenleg nem támogatott** ezekben a régiókban. Amint ez a funkció elérhetővé válik az ebben a cikkben frissülni fog.
+
+## <a name="next-steps"></a>További lépések
 
 - Az Azure Government az egyéni módosítás kapcsolatos további információkért tekintse meg a részletes útmutatást [Azure figyelési és felügyeleti](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights).
+- Azure China kapcsolatos további információkért tekintse meg a [Azure China forgatókönyv](https://docs.microsoft.com/azure/china/).

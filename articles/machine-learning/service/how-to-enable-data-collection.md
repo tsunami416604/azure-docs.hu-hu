@@ -11,19 +11,19 @@ ms.author: marthalc
 author: marthalc
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: df2f0731aff6c90ef83b26041a9d383ce14974c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f596fb3a066017f0236de5b79586891dd21efb11
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024248"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443982"
 ---
 # <a name="collect-data-for-models-in-production"></a>A modellek éles adatok gyűjtése
 
 Ebből a cikkből megismerheti a bemeneti modell adatok gyűjtésére az Azure Machine Learning-szolgáltatások üzembe helyezte az Azure Kubernetes-fürt (AKS) egy Azure Blob storage-bA. 
 
 Ha engedélyezve van, az összegyűjtött adatok segítségével:
-* Üzemi környezetben elérhető adatokat beírja a modell adatait drifts figyelése
+* [Adatok drifts figyelése](how-to-monitor-data-drift.md) , termelési adatok kerül, a modell
 
 * Jobb döntéseket hozhat a mikor újratanítása vagy a modell optimalizálása
 

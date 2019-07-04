@@ -11,12 +11,12 @@ ms.date: 06/18/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: ec6177bb353602f20040f05215678e3a8a161ebc
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 2c90dcf1672a3d3505aaa19aec953ad97f5289bb
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190838"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446221"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Létrehozhat és konfigurálhat egy saját üzemeltetésű integrációs modul
 Az integrációs modul (IR) a számítási infrastruktúra, amellyel Azure Data Factory adatintegrációs képességeket biztosítja különböző hálózati környezetekben. Integrációs modul kapcsolatos részletekért lásd: [Integration runtime áttekintése](concepts-integration-runtime.md).
@@ -74,7 +74,7 @@ A következő magas szintű adatok folyamat lépéseit egy saját üzemeltetés�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az operációs rendszerek támogatott verzióinak a Windows 7 Service Pack 1, Windows 8.1, Windows 10, Windows Server 2008 R2 SP1, Windows Server 2012, Windows Server 2012 R2 és a Windows Server 2016 rendszer. A saját üzemeltetésű integrációs modult egy tartományvezérlő telepítése nem támogatott.
+- Az operációs rendszerek támogatott verziók a következők: Windows 7 Service Pack 1, Windows 8.1, Windows 10, Windows Server 2008 R2 SP1, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016 és Windows Server 2019. A saját üzemeltetésű integrációs modult egy tartományvezérlő telepítése nem támogatott.
 - .NET-keretrendszer 4.6.1-es verzióját vagy újabb verzió szükséges. Ha a saját üzemeltetésű integrációs modult egy Windows 7 gépre telepíti, telepítse a .NET-keretrendszer 4.6.1-es vagy újabb. Lásd: [.NET-keretrendszer követelményei a System](/dotnet/framework/get-started/system-requirements) részleteiről.
 - Az ajánlott konfiguráció, a saját üzemeltetésű integrációs modul gép legalább 2 GHz-es, négy magot, 8 GB RAM és a egy 80 GB-os lemezt.
 - Ha szeretné a gazdagépen, a saját üzemeltetésű integrációs modul nem válaszol kérelmek. A számítógépen egy megfelelő energiasémát beállítani, a saját üzemeltetésű integrációs modul telepítése előtt. Ha a számítógép hibernált állapotba van konfigurálva, a saját üzemeltetésű integrációs modul telepítése kéri egy üzenetet.

@@ -10,36 +10,44 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: e0181eea2895dbc2b3db3367c850140e3fad21d4
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 2196e375db582202997b838d05c902db95b3a3ad
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331728"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461463"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Az Azure Machine Learning szolgáltatás működése: Architektúra és fogalmak
 
 Ismerje meg az architektúra, fogalmak és a munkafolyamat az Azure Machine Learning szolgáltatás. A szolgáltatás és az általános munkafolyamat a szolgáltatás fő összetevőit az alábbi ábrán láthatók:
 
-[![Munkafolyamat és az Azure Machine Learning szolgáltatás architektúrája](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
+![Munkafolyamat és az Azure Machine Learning szolgáltatás architektúrája](./media/concept-azure-machine-learning-architecture/workflow.png)
 
 ## <a name="workflow"></a>Munkafolyamat
 
-A machine learning munkafolyamat általában ez a sorozat a következőképpen:
+A gépi tanulási a modell a munkafolyamat általában a következők szerint zajlik:
 
-1. Fejlesztés a gépi tanulási parancsfájlok képzési **Python** vagy vizuális felhasználói felülettel.
-1. Létrehozhat és konfigurálhat egy **számítási célt**.
-1. **Küldje el a parancsfájlok** a konfigurált számítási célnak az adott környezetben való futtatásához. Során képzés, a parancsfájlok olvasni vagy írni **adattárolója**. Végrehajtás a rekordokat a rendszer menti és **fut** a a **munkaterület** és szerint csoportosított **kísérletek**.
-1. **A kísérlet lekérdezése** a naplózott mérőszámok az aktuális és korábbi fut a. A metrikák nem szükséges teljesítendő jelzik, ha 1. lépés, és a parancsfájlok iterálása ikonjához.
-1. Miután megtalálta a megfelelő futtató, regisztrálja a megőrzött modellel a **modell beállításjegyzék**.
-1. A pontozó szkript, amely a modell fejlesztése és **a modell üzembe helyezése** , egy **webszolgáltatás** az Azure-ban, vagy a- **IoT Edge-eszköz**.
+1. **Train**
+    + Fejlesztés a gépi tanulási parancsfájlok képzési **Python** vagy vizuális felhasználói felülettel.
+    + Létrehozhat és konfigurálhat egy **számítási célt**.
+    + **Küldje el a parancsfájlok** a konfigurált számítási célnak az adott környezetben való futtatásához. Során képzés, a parancsfájlok olvasni vagy írni **adattárolója**. Végrehajtás a rekordokat a rendszer menti és **fut** a a **munkaterület** és szerint csoportosított **kísérletek**.
 
-Ezek az az alábbi lépéseket fogja végrehajtani:
-+ [Az Azure Machine Learning SDK a Pythonhoz](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
-+ [Az Azure Machine Learning parancssori felület](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)
-+ [Az Azure Machine Learning a VS Code-bővítmény](how-to-vscode-tools.md)
-+  A [vizuális felhasználói felületet (előzetes verzió) az Azure Machine Learning szolgáltatás](ui-concept-visual-interface.md)
+1. **Csomag** – Miután megtalálta a megfelelő futtatás, a megőrzött modellek regisztrálása a **modell beállításjegyzék**.
 
+1. **Érvényesítése** - **lekérdezése a kísérlet** a naplózott mérőszámok az aktuális és korábbi fut a. A metrikák nem szükséges teljesítendő jelzik, ha 1. lépés, és a parancsfájlok iterálása ikonjához.
+
+1. **Üzembe helyezés** -fejleszthet, amelyek a modell egy pontozószkriptre és **a modell üzembe helyezése** , egy **webszolgáltatás** az Azure-ban, vagy a- **IoT Edge-eszköz**.
+
+1. **A figyelő** -figyelő **adatok eltéréseket** egy üzembe helyezett modell betanítási adatkészletet tanuláshoz és következtetésekhez adatok között. Szükség esetén vissza a modell új betanítási adatok újratanítás 1. lépés: a ikonjához.
+
+## <a name="tools-for-azure-machine-learning"></a>Az Azure Machine Learning eszközök 
+
+Használja ezeket az eszközöket az Azure Machine Learning:
+
++  A szolgáltatás bármely Python-környezetben a használata a [Azure Machine Learning SDK Pythonhoz készült](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
++ A machine learning-tevékenységek a automatizálhatja a [Azure Machine Learning parancssori](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli).
++ Kód írása a Visual Studio Code- [Azure Machine Learning VS Code-bővítménnyel](how-to-vscode-tools.md) 
++ Használja a [vizuális felhasználói felületet (előzetes verzió) az Azure Machine Learning szolgáltatás](ui-concept-visual-interface.md) kódírás nélkül a munkafolyamat lépések végrehajtásához.
 
 ## <a name="glossary-of-concepts"></a>Szószedet fogalmak
 

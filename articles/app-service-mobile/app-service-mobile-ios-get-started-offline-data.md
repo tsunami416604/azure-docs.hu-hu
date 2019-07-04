@@ -2,7 +2,7 @@
 title: IOS-mobilalkalmazásokban offline szinkronizálás engedélyezése |} A Microsoft Docs
 description: Ismerje meg a mobilalkalmazások az Azure App Service-ben a cache és a szinkronizálási offline adatok használata az iOS-alkalmazások.
 documentationcenter: ios
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 services: app-service\mobile
@@ -12,17 +12,21 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 10/01/2016
-ms.author: crdun
-ms.openlocfilehash: 1283f812799fe71ef6987dbc7fab092aed4d3417
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: f7ae3e7a33ae7df70214ed171b00cc2accbaccb5
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62112650"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446371"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>IOS-mobilalkalmazásokban offline szinkronizálás engedélyezése
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
+
+> [!NOTE]
+> A Visual Studio App Center fektet a mobilalkalmazás-fejlesztés központi új, integrált szolgáltatások. A fejlesztők a **hozhat létre**, **teszt** és **terjesztése** állíthat be folyamatos integrációt és teljesítést folyamat szolgáltatások. Az alkalmazás telepítve van, a fejlesztők monitorozható az állapot és az alkalmazás használatával használatát a **Analytics** és **diagnosztikai** -szolgáltatásokat, és kapcsolatba léphet a felhasználókat a **leküldéses** a szolgáltatás. A fejlesztők is kihasználhatják a **Auth** azok a felhasználók hitelesítéséhez és **adatok** szolgáltatás és a felhőbeli alkalmazások adatainak szinkronizálása. Tekintse meg [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-ios-get-started-offline-data) még ma.
+>
 
 ## <a name="overview"></a>Áttekintés
 Ez az oktatóanyag bemutatja, hogy a kapcsolat nélküli szinkronizálás iOS-hez készült Azure App Service Mobile Apps szolgáltatással. A kapcsolat nélküli szinkronizálja végfelhasználók használhatják a megtekintése, hozzáadása és módosíthassanak adatokat, akkor is, ha nincs hálózati kapcsolat rendelkeznek egy mobilalkalmazást. Változások a helyi adatbázisban vannak tárolva. Miután az eszköz ismét online, a rendszer szinkronizálja a módosításokat, a távoli háttérrendszerrel.

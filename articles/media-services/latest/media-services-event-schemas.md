@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: reference
 ms.date: 02/13/2019
 ms.author: juliako
-ms.openlocfilehash: f9fe689e6911c5e9497ee82132e8b70bd9aada7e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2d1e648a9ea33beb1347a4a635388ee04e46215b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60322233"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449753"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>A Media Services-események Azure Event Grid-sémák
 
@@ -200,7 +200,7 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| Kimenetek | Tömb | A feladat kimeneti beolvasása.|
+| outputs | Array | A feladat kimeneti beolvasása.|
 
 ### <a name="joboutputstatechange"></a>JobOutputStateChange
 
@@ -320,7 +320,7 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | ingestUrl | string | Betöltési URL-címe, az élő esemény által biztosított. |  
 | EncoderIp | string | A kódoló IP-cím. |
 | encoderPort | string | A kódoló a stream forrását a port. |
-| Eredménykód | string | Az internetkapcsolat visszautasították okát. A eredménykódok az alábbi táblázatban láthatók. |
+| resultCode | string | Az internetkapcsolat visszautasították okát. A eredménykódok az alábbi táblázatban láthatók. |
 
 Az eredmény kódok a következők:
 
@@ -401,7 +401,7 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | ingestUrl | string | Betöltési URL-címe, az élő esemény által biztosított. |  
 | EncoderIp | string | A kódoló IP-cím. |
 | encoderPort | string | A kódoló a stream forrását a port. |
-| Eredménykód | string | A kódoló leválasztása a okát. Lehet, hogy biztonságos kapcsolat bontása vagy hiba történt. A eredménykódok az alábbi táblázatban láthatók. |
+| resultCode | string | A kódoló leválasztása a okát. Lehet, hogy biztonságos kapcsolat bontása vagy hiba történt. A eredménykódok az alábbi táblázatban láthatók. |
 
 Az eredmény hibakódok a következők:
 
@@ -459,7 +459,7 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | bitrate | integer | A szám sávszélességű. |
 | timestamp | string | Az adathalmaz időbélyegét eltávolította. |
 | timescale | string | Az időbélyeg-időskálára. |
-| Eredménykód | string | Az adatok adatköteget csepp OK. **FragmentDrop_OverlapTimestamp** vagy **FragmentDrop_NonIncreasingTimestamp**. |
+| resultCode | string | Az adatok adatköteget csepp OK. **FragmentDrop_OverlapTimestamp** vagy **FragmentDrop_NonIncreasingTimestamp**. |
 
 ### <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
 

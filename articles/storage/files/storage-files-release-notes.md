@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 6/13/2019
+ms.date: 6/27/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: d9bbc76fe60a5d363cd05b75df33f6fce00d7e9a
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 2399fcaa683e5807d2a5cd69d3dd3357d804fd28
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303407"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449956"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Az Azure File Sync ügynök kibocsátási megjegyzései
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. A Windows Server-telepítéseket az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -26,7 +26,8 @@ Az Azure File Sync ügynök alábbi verziói támogatottak:
 | Mérföldkő | Az ügynök verziószáma | Kiadási dátum | Állapot |
 |----|----------------------|--------------|------------------|
 | 7-es verziója Engedje - [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 2019. június 19. | [Fokozatos bevezetéssel](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#automatic-agent-lifecycle-management) |
-| Június a 2019 -. kumulatív frissítés [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 2019. június 13. | Támogatott (ajánlott verzió) |
+| Június a 2019 -. kumulatív frissítés [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | 2019. június 27. | Támogatott (ajánlott verzió) |
+| Június a 2019 -. kumulatív frissítés [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 2019. június 13. | Támogatott |
 | 2019. május kumulatív - [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 2019. május 7. | Támogatott |
 | 6-os verziója Engedje - [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 2019. április 21-én. | Támogatott |
 | Április a 2019 -. kumulatív frissítés [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 2019. április 4. | Támogatott |
@@ -113,6 +114,14 @@ A következő elemek nem szinkronizálhatók, de a rendszer többi része továb
 ### <a name="cloud-tiering"></a>Felhőbeli rétegzés
 - Ha egy rétegzett fájlt a Robocopy használatával másik helyre másol, az eredményül kapott fájl nem lesz rétegzett. Előfordulhat, hogy az offline attribútum be lesz állítva, mert a Robocopy helytelenül belefoglalja ezt az attribútumot a másolási műveletekbe.
 - Másolja a fájlt a robocopy használatával, ha használja a/MIR lehetőséget a fájl időbélyegeket megőrzése érdekében. Ez biztosítja, elért fájlokat hamarabb számítógépen rétegzett régebbi fájlokat.
+
+## <a name="agent-version-6300"></a>Ügynök verziója 6.3.0.0
+Az alábbi kibocsátási megjegyzések olyan verziójára 6.3.0.0 az Azure File Sync ügynök 2019. június 27. Ezek a megjegyzések kibocsátási megjegyzéseinek kiegészítéséül verzió 6.0.0.0 kívül vannak.
+
+Ebben a kiadásban megoldott problémák listája:  
+- Fér hozzá, vagy a kiszolgálói végpont helye böngészés SMB-n keresztül a Windows Server 2012 R2 lassú 
+- Az Azure File Sync v6-ügynök telepítése után nagyobb CPU-kihasználtság
+- A felhő rétegezési telemetriai fejlesztései
 
 ## <a name="agent-version-6200"></a>Ügynök verziója 6.2.0.0
 Az alábbi kibocsátási megjegyzések olyan verziójára 6.2.0.0 az Azure File Sync ügynök 2019. június 13. Ezek a megjegyzések kibocsátási megjegyzéseinek kiegészítéséül verzió 6.0.0.0 kívül vannak.

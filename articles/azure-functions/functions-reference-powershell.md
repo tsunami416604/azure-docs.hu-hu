@@ -10,12 +10,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha, glenga
-ms.openlocfilehash: fa82725174645a0e5f1d957d8423c97547682542
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 489c94f37b6c88db001dee437cc6ed89383e6053
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065482"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442175"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Az Azure Functions PowerShell fejlesztői útmutatója
 
@@ -58,7 +58,7 @@ PSFunctionApp
 
 A projekt gyökerében van egy megosztott [ `host.json` ](functions-host-json.md) fájlt, amely a függvényalkalmazás konfigurálása használható. Minden függvény rendelkezik a saját kódfájl (.ps1) és a kötési konfigurációs fájlt egy mappába (`function.json`). A function.json fájlt szülő könyvtár nevét, mindig a függvényalkalmazás nevére.
 
-Bizonyos kötések meglétének megkövetelése egy `extensions.csproj` fájlt. Kötési bővítményeket, a szükséges [verzió 2.x](functions-versions.md) , a Functions futtatókörnyezete vannak meghatározva a `extensions.csproj` fájlt, a tényleges függvénytárfájlok a `bin` mappát. Ha helyileg fejlesztésével, akkor meg kell [regisztrálja a kötési bővítményeket](functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles). Amikor fejlesztéséről az Azure Portalon, a regisztrációt, készen áll.
+Bizonyos kötések meglétének megkövetelése egy `extensions.csproj` fájlt. Kötési bővítményeket, a szükséges [verzió 2.x](functions-versions.md) , a Functions futtatókörnyezete vannak meghatározva a `extensions.csproj` fájlt, a tényleges függvénytárfájlok a `bin` mappát. Ha helyileg fejlesztésével, akkor meg kell [regisztrálja a kötési bővítményeket](functions-bindings-register.md#extension-bundles). Amikor fejlesztéséről az Azure Portalon, a regisztrációt, készen áll.
 
 A PowerShell a Függvényalkalmazások, szükség esetén előfordulhat, egy `profile.ps1` amely akkor fut, amikor a függvényalkalmazás futni kezd (más néven ismert egy  *[hidegindítási](#cold-start)* . További információkért lásd: [PowerShell profil](#powershell-profile).
 
@@ -304,7 +304,7 @@ A parancsprogramhoz átadott támogatásikérelem-objektum típusa nem `HttpRequ
 
 | Tulajdonság  | Description                                                    | Típus                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | Egy objektum, amely tartalmazza a kérelem törzsében. `Body` az adatok alapján a legjobb típus szerializált. Például ha az adatok JSON, azt át egy kivonattáblát. Ha az adatok egy karakterlánc, azt átadott karakterlánc formájában. | objektum |
+| **`Body`**    | Egy objektum, amely tartalmazza a kérelem törzsében. `Body` az adatok alapján a legjobb típus szerializált. Például ha az adatok JSON, azt át egy kivonattáblát. Ha az adatok egy karakterlánc, azt átadott karakterlánc formájában. | object |
 | **`Headers`** | Egy szótár, amely tartalmazza a kérelem fejlécében.                | Dictionary < karakterlánc, karakterlánc ><sup>*</sup> |
 | **`Method`** | A kérelem HTTP-metódus.                                | string                    |
 | **`Params`**  | Egy objektum, amely tartalmazza a kérés útválasztási paramétereit. | Dictionary < karakterlánc, karakterlánc ><sup>*</sup> |
@@ -319,7 +319,7 @@ Vissza kell küldeni a választ objektum típusa nem `HttpResponseContext`, amel
 
 | Tulajdonság      | Description                                                 | Típus                      |
 |---------------|-------------------------------------------------------------|---------------------------|
-| **`Body`**  | Egy objektum, amely a válasz törzse tartalmazza.           | objektum                    |
+| **`Body`**  | Egy objektum, amely a válasz törzse tartalmazza.           | object                    |
 | **`ContentType`** | Egy rövid aktuális állítja a tartalomtípus a válaszhoz. | string                    |
 | **`Headers`** | A válaszfejlécek tartalmazó objektum.               | Dictionary, vagy a kivonattábla kulcsa   |
 | **`StatusCode`**  | A válasz HTTP-állapotkódot.                       | karakterlánc- vagy int             |

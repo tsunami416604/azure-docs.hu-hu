@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: 726da603b5f583c85f4b7c4262c6e97f565a3678
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.date: 06/27/2019
+ms.openlocfilehash: aab3aaafd410c4f85eba7a246d0922128908bf93
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67339932"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445434"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL-hez tarifacsomagok
 
@@ -62,12 +62,12 @@ A tárfiókok korlátai növeljük az általános célú és memóriahasználatr
 |              | **Általános célú** | **Memóriahasználatra optimalizált** |
 |:-------------|:--------------------|:---------------------|
 | Tárolási típus | Azure Premium Storage | Azure Premium Storage |
-| Tároló mérete | 32 GB és 16 TB| 32-16 TB |
+| Tároló mérete | 32 GB és 16 TB| 32 GB és 16 TB |
 | Növekmény tárméret | 1 GB | 1 GB |
 | IO | 3 IOPS/GB<br/>Minimum 100 IOPS<br/>Legfeljebb 20 000 iops-érték| 3 IOPS/GB<br/>Minimum 100 IOPS<br/>Legfeljebb 20 000 iops-érték |
 
 > [!IMPORTANT]
-> Nagy méretű tároló jelenleg nyilvános előzetes verzióban elérhető a következő régióban: USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA középső RÉGIÓJA, USA nyugati RÉGIÓJA, Észak-Európa, Nyugat-Európa, Délkelet-Ázsia, kelet-japán, Korea középső régiója, Kelet-Ausztrália.
+> Nagy méretű tároló jelenleg nyilvános előzetes verzióban elérhető a következő régióban: USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA középső RÉGIÓJA, USA nyugati RÉGIÓJA, Észak-Európa, Nyugat-Európa, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Délkelet-Ázsia, Kelet-Ázsiában, japán, kelet-japán nyugati régiója, Korea középső régiója, Korea déli régiója, Kelet-Ausztrália, Kelet-Ausztrália Dél-India.
 >
 > A nagy méretű tároló előzetes jelenleg nem támogatja:
 >

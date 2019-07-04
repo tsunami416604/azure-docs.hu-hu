@@ -8,12 +8,12 @@ ms.date: 05/21/2019
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: af155b5adb2e4b45412a8b84818852ed1b1c5e72
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0812828f8d7c0be38fb03c06f4a10019e2ed153c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966095"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447298"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Az Azure Storage Table tervezési útmutatója: Tervezési méretezhető és Nagytejesítményű táblákat
 
@@ -255,7 +255,7 @@ Számos tervek megfelel a követelményeknek, engedélyezéséhez keresési enti
 A Table service által visszaadott lekérdezési eredményeket növekvő sorrendben alapján rendezi a rendszer **PartitionKey** , majd az **RowKey**.
 
 > [!NOTE]
-> Lekérdezés eredményeit az Azure Table API az Azure DB által visszaadott nem partíciós kulcs vagy a sorkulcs alapján vannak rendezve. Szolgáltatások közötti különbségekről részletes listájáért lásd: [Table API az Azure Cosmos DB és az Azure Table storage-ban közötti különbségek](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
+> Lekérdezés eredményeit az Azure Table API az Azure Cosmos DB által visszaadott nem partíciós kulcs vagy a sorkulcs alapján vannak rendezve. Szolgáltatások közötti különbségekről részletes listájáért lásd: [Table API az Azure Cosmos DB és az Azure Table storage-ban közötti különbségek](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
 
 Kulcsok az Azure Storage-táblába karakterlánc-értékeket és annak érdekében, hogy numerikus értékek megfelelően rendezni, meg kell alakíthatja át őket egy rögzített hosszúságú és nullákkal kitölti őket. Például, ha az alkalmazott azonosító értéket használja a **rowkey tulajdonságok esetén** egy egész érték alkalmazott azonosítója alakítsuk **123** való **00000123**. 
 
@@ -723,7 +723,7 @@ Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalós
 Lekérni a *n* használatával a partíció legutóbb hozzáadott entitásokat egy **RowKey** érték, amely fordított dátum és idő sorrendben rendezi.  
 
 > [!NOTE]
-> Az Azure Table API az Azure DB által visszaadott lekérdezések eredményeit a partíciókulcs és a sorkulcs szerint nem rendezi. Ezért ez a minta akkor alkalmas Azure Table Storage és Azure Cosmos DB. Szolgáltatások közötti különbségekről részletes listájáért lásd: [az Azure Cosmos DB Table API és az Azure Table Storage közötti különbségek](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
+> Az Azure Table API az Azure Cosmos DB által visszaadott lekérdezések eredményeit a partíciókulcs és a sorkulcs szerint nem rendezi. Ezért ez a minta akkor alkalmas Azure Table Storage és Azure Cosmos DB. Szolgáltatások közötti különbségekről részletes listájáért lásd: [az Azure Cosmos DB Table API és az Azure Table Storage közötti különbségek](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
 
 #### <a name="context-and-problem"></a>Kontextus és probléma
 Általános követelmény, hogy tudja lekérni a legutóbb létrehozott entitások, például a 10 legújabb kiadás egy alkalmazott által küldött jogcímek. Tábla lekérdezése támogatási egy **$top** visszaadjon az első lekérdezés *n* bizonyos entitások: az utolsó n entitások vissza egy készlet nincs egyenértékű lekérdezési művelet.  

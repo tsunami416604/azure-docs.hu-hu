@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 91dd1ebc457bfeed5c9e8d0d62ecc23740ca5d8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 398efd36e6c8d82a5090b7446c95abb2d1bfbca1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65979550"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428762"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -72,6 +72,10 @@ Az összes Azure Policy minta vannak [Azure Policy minták](../samples/index.md)
 
 ## <a name="mode"></a>Mód
 
+**Mód** van konfigurálva, attól függően, ha a házirend van-e állítva egy Azure Resource Manager vagy az egy erőforrás-szolgáltató tulajdonság.
+
+### <a name="resource-manager-modes"></a>Resource Manager-üzemmódok
+
 A **mód** meghatározza, hogy mely erőforrástípusokat szabályzat lesz kiértékelve. A támogatott módok a következők:
 
 - `all`: erőforráscsoportok és az összes erőforrástípus kiértékelése
@@ -80,6 +84,13 @@ A **mód** meghatározza, hogy mely erőforrástípusokat szabályzat lesz kiér
 Azt javasoljuk, hogy állítsa **mód** való `all` a legtöbb esetben. A portál használatával létrehozott összes szabályzat-definíciókat a `all` mód. Ha a PowerShell vagy az Azure CLI-vel, megadhatja a **mód** paraméter manuálisan. Ha a szabályzat-definíció nem tartalmaz egy **mód** érték, a rendszer alapértelmezés szerint `all` az Azure PowerShell, az `null` Azure CLI-ben. A `null` módja megegyezik `indexed` visszamenőleges kompatibilitás támogatására.
 
 `indexed` lehet, amelyeket a címkék vagy a szabályzatok létrehozásakor használt. Bár nem kötelező, megakadályozza, hogy a címkék és a helyek való jelenik meg, nem kompatibilis a megfelelőségi eredmények nem támogató erőforrások. A kivétel **erőforráscsoportok**. Házirendeket kikényszerítő helyet vagy egy erőforráscsoportba tartozó címkéket kell beállítania **mód** való `all` és a kifejezetten a cél a `Microsoft.Resources/subscriptions/resourceGroups` típusa. Egy vonatkozó példáért lásd: [erőforráscímkék csoport kényszerítése](../samples/enforce-tag-rg.md). A címkék támogató erőforrások listáját lásd: [címkézése Azure-erőforrások támogatása](../../../azure-resource-manager/tag-support.md).
+
+### <a name="resource-provider-modes"></a>Erőforrás-szolgáltató módok
+
+Csak erőforrás-szolgáltató mód a jelenleg támogatott `Microsoft.ContainerService.Data` a már a betegfelvétel vezérlő szabályok kezelésére szolgáló [Azure Kubernetes Service](../../../aks/intro-kubernetes.md).
+
+> [!NOTE]
+> [A Kubernetes az Azure Policy](rego-for-aks.md) nyilvános előzetes verzióban érhető el, és csak a beépített szabályzatdefiníciókat támogatja.
 
 ## <a name="parameters"></a>Paraméterek
 
@@ -389,6 +400,7 @@ Az Azure Policy hatása a következő típusokat támogatja:
 - **AuditIfNotExists**: lehetővé teszi a naplózást, ha egy erőforrás nem létezik.
 - **DeployIfNotExists**: üzembe helyezi egy erőforrást, ha még nem létezik
 - **Letiltott**: nem erőforrások megfelelőségét, a szabály kiértékelése
+- **EnforceRegoPolicy**: a nyílt házirendügynök tartózkodások vezérlő konfigurálása az Azure Kubernetes Service (előzetes verzió)
 
 A **hozzáfűzése**, meg kell adnia a következő adatokat:
 

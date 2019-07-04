@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: howto
 ms.date: 05/30/2019
-ms.openlocfilehash: 542813e0f82a1a52142a2b82bea3fdb101fdec28
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: af5ddd50556b493cddf27d1ebb766d9bf6105107
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077177"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433436"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Kimenő hálózati adatforgalmat tűzfal (előzetes verzió) használata Azure HDInsight-fürtök konfigurálása
 
@@ -54,13 +54,13 @@ Az a **adja hozzá az alkalmazás szabálygyűjtemény** képernyőn, a követke
 
 1. Adja meg egy **neve**, **prioritású**, és kattintson a **engedélyezése** a a **művelet** legördülő menüben, majd írja be a következő szabályokat a **FQDN címkék szakasz** :
 
-   | **Name (Név)** | **Forrás címe** | **Teljes tartománynév-címke** | **Megjegyzések** |
+   | **Name** | **Forrás címe** | **Teljes tartománynév-címke** | **Megjegyzések** |
    | --- | --- | --- | --- |
    | Rule_1 | * | HDInsight és a Windows Update | HDI szolgáltatásokhoz szükséges |
 
 1. A következő szabályok hozzáadása a **cél teljes tartománynevek szakasz** :
 
-   | **Name (Név)** | **Forrás címe** | **Protokoll: Port** | **Cél teljes TARTOMÁNYNEVEK** | **Megjegyzések** |
+   | **Name** | **Forrás címe** | **Protokoll: Port** | **Cél teljes TARTOMÁNYNEVEK** | **Megjegyzések** |
    | --- | --- | --- | --- | --- |
    | Rule_2 | * | https:443 | login.windows.net | Lehetővé teszi, hogy a Windows bejelentkezési tevékenység |
    | Rule_3 | * | https:443,http:80 | <storage_account_name.blob.core.windows.net> | Ha a fürt WASB használatával, majd egy szabály hozzáadása a WASB. A csak HTTPS protokollt használó kapcsolatok ellenőrizze, hogy ["biztonságos átvitelre van szükség"](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) engedélyezve van a tárfiókon. |
@@ -78,7 +78,7 @@ A hálózati szabályok megfelelően konfigurálja a HDInsight-fürt létrehozá
 1. A a **adja hozzá a hálózati szabályok gyűjteményéhez** képernyőn írja be egy **neve**, **prioritású**, és kattintson a **engedélyezése** a a **művelet** legördülő menüben.
 1. Hozza létre a következő szabályokat a **IP-címek** szakaszban:
 
-   | **Name (Név)** | **Protocol (Protokoll)** | **Forrás címe** | **Célcím** | **Célport** | **Megjegyzések** |
+   | **Name** | **Protocol (Protokoll)** | **Forrás címe** | **Célcím** | **Célport** | **Megjegyzések** |
    | --- | --- | --- | --- | --- | --- |
    | Rule_1 | UDP | * | * | `123` | Időszolgáltatás |
    | Rule_2 | Bármely | * | DC_IP_Address_1, DC_IP_Address_2 | `*` | Vállalati biztonsági csomag (ESP) használ, majd vegyen fel egy hálózati IP-címek szakaszában, amely lehetővé teszi a kommunikációt az AAD-DS ESP fürtök esetén. Az IP-címeit az AAD-DS szakaszban lévő tartományvezérlőkre találhatja meg a portálon | 
@@ -87,9 +87,9 @@ A hálózati szabályok megfelelően konfigurálja a HDInsight-fürt létrehozá
 
 1. Hozza létre a következő szabályokat a **Szolgáltatáscímkék** szakaszban:
 
-   | **Name (Név)** | **Protocol (Protokoll)** | **Forrás címe** | **Szolgáltatáscímkék** | **Célport** | **Megjegyzések** |
+   | **Name** | **Protocol (Protokoll)** | **Forrás címe** | **Szolgáltatáscímkék** | **Célport** | **Megjegyzések** |
    | --- | --- | --- | --- | --- | --- |
-   | Rule_7 | TCP | * | * | `1433,11000-11999,14000-14999` | A Szolgáltatáscímkék szakaszban hálózati szabályt, amely lehetővé teszi, hogy jelentkezzen és naplózási SQL-forgalmat, kivéve, ha az SQL Server konfigurált Szolgáltatásvégpontok a HDInsight-alhálózatot, amely fog kerülni a tűzfalon az SQL konfigurálása. |
+   | Rule_7 | TCP | * | SQL | `1433` | A Szolgáltatáscímkék szakaszban hálózati szabályt, amely lehetővé teszi, hogy jelentkezzen és naplózási SQL-forgalmat, kivéve, ha az SQL Server konfigurált Szolgáltatásvégpontok a HDInsight-alhálózatot, amely fog kerülni a tűzfalon az SQL konfigurálása. |
 
 1. Kattintson a **Hozzáadás** a hálózati szabálygyűjtemény létrehozásának befejezéséhez.
 
@@ -114,12 +114,12 @@ Például az útvonaltáblát az "USA középső Régiója", az Egyesült Állam
 
 | Útvonal neve | Címelőtag | A következő ugrás típusa | A következő ugrás címe |
 |---|---|---|---|
-| 168.61.49.99 | 168.61.49.99/32 | Internet | n/a |
-| 23.99.5.239 | 23.99.5.239/32 | Internet | n/a |
-| 168.61.48.131 | 168.61.48.131/32 | Internet | n/a |
-| 138.91.141.162 | 138.91.141.162/32 | Internet | n/a |
-| 13.67.223.215 | 13.67.223.215/32 | Internet | n/a |
-| 40.86.83.253 | 40.86.83.253/32 | Internet | n/a |
+| 168.61.49.99 | 168.61.49.99/32 | Internet | NA |
+| 23.99.5.239 | 23.99.5.239/32 | Internet | NA |
+| 168.61.48.131 | 168.61.48.131/32 | Internet | NA |
+| 138.91.141.162 | 138.91.141.162/32 | Internet | NA |
+| 13.67.223.215 | 13.67.223.215/32 | Internet | NA |
+| 40.86.83.253 | 40.86.83.253/32 | Internet | NA |
 | 0.0.0.0 | 0.0.0.0/0 | Virtuális berendezés | 10.1.1.4 |
 
 Az útválasztási táblázat konfigurálása:

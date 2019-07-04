@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 06/24/2019
 ms.author: orspodek
-ms.openlocfilehash: f501257903f3b7c621512f06d1c8c7109e22db1e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 438adcd70c1be308c2b5779de0442486b303cfdd
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60394506"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449634"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Adatok másolása, vagy az Azure az adatkezelőt az Azure Data Factory használatával
 
@@ -140,6 +140,7 @@ Adatok másolása az Azure az adatkezelőt, állítsa be a **típus** tulajdons�
 | type | A **típus** értékre kell állítani a másolási tevékenység forrása tulajdonságát: **AzureDataExplorerSource** | Igen |
 | query | Megadott olvasási kérést egy [KQL formátum](/azure/kusto/query/). Használja az egyéni KQL lekérdezés referenciaként. | Igen |
 | queryTimeout | A várakozási idő előtt a lekérdezési kérés túllépi az időkorlátot. Alapértelmezett érték 10 perc (00: 10:00); engedélyezett maximális értéke 1 óra (01: 00:00). | Nem |
+| noTruncation | Azt jelzi, hogy a visszaadott eredménykészlet csonkolása. Alapértelmezés szerint az eredmény után 500 000 rekord vagy 64 MB-os csonkolva lettek. Csonkolási erősen ajánlott a tevékenység a megfelelő működéshez. |Nem |
 
 >[!NOTE]
 >Alapértelmezés szerint az Azure Data Explorer forrás rendelkezik 500 000 rekord vagy 64 MB-os méretkorlátot. Csonkolási nélkül a rekordok lekéréséhez is megadhat `set notruncation;` , a lekérdezés elején. Tekintse meg [lekérdezési korlátok](https://docs.microsoft.com/azure/kusto/concepts/querylimits) a további részleteket.

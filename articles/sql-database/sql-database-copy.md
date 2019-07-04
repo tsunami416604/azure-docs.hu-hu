@@ -12,16 +12,16 @@ ms.author: sahsan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 06/03/2019
-ms.openlocfilehash: ba787ccd51bf5ea9ec8e06e341a0f698afb5a7e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6a4d3fd0f7b670bbb0b01385252b405829a91baa
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688070"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442317"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Az Azure SQL database tranzakciós szempontból konzisztens másolatot másolása
 
-Az Azure SQL Database egy meglévő Azure SQL database tranzakciós szempontból konzisztens másolatot létrehozni ugyanazon a kiszolgálón vagy egy másik kiszolgálóra több módszert is biztosít. SQL-adatbázis másolhatja az Azure portal, PowerShell vagy a T-SQL használatával. 
+Az Azure SQL Database számára, hogy tranzakciós szempontból konzisztens másolatot készít egy meglévő Azure SQL database számos módszer biztosítja ([önálló adatbázis](sql-database-single-database.md)) ugyanazon a kiszolgálón vagy egy másik kiszolgálóra. SQL-adatbázis másolhatja az Azure portal, PowerShell vagy a T-SQL használatával. 
 
 ## <a name="overview"></a>Áttekintés
 
@@ -94,7 +94,7 @@ Ezzel a paranccsal az 1. kiszolgálón Adatbázis1 egy új adatbázisra, 2. adat
 
 ### <a name="copy-a-sql-database-to-a-different-subscription"></a>SQL-adatbázis másolása egy másik előfizetésbe
 
-A lépések descrbed használhatja az előző szakaszban az adatbázis másolása egy SQL Database-kiszolgáló egy másik előfizetésben található. Ellenőrizze, hogy használjon olyan bejelentkezési azonosítót, amely rendelkezik a forrásadatbázis adatbázis tulajdonosa ugyanazt a nevet és jelszót, és azt a dbmanager szerepkör tagjának, vagy a kiszolgálószintű fő bejelentkezéssel. 
+Az előző szakaszban leírt lépések segítségével másolja az adatbázist egy SQL Database-kiszolgáló egy másik előfizetésben található. Ellenőrizze, hogy használjon olyan bejelentkezési azonosítót, amely rendelkezik a forrásadatbázis adatbázis tulajdonosa ugyanazt a nevet és jelszót, és azt a dbmanager szerepkör tagjának, vagy a kiszolgálószintű fő bejelentkezéssel. 
 
 > [!NOTE]
 > A [az Azure portal](https://portal.azure.com) nem támogatja másik előfizetésbe való másolás, mert a portál meghívja az ARM API-t, és az előfizetés-tanúsítványok használatával mindkét georeplikációs részt vevő kiszolgálók eléréséhez.  

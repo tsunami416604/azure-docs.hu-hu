@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: ca9b3607041f75b1c866aa2813308312ad5d1017
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8bea47467d141869b1a668668bc57451a882a54b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65023750"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448453"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Hogyan dolgozza fel, és információt nyerhet ki képekből a kognitív keresés forgatókönyvek
 
@@ -30,7 +30,7 @@ Ez a cikk ismerteti részletesebben képfeldolgozó, és útmutatást kínál a 
 
 Dokumentumfeltörést részeként nincsenek konfigurációs paraméterei indexelő képfájlok vagy a fájlok a beágyazott képek kezelése új készletét. Ezeket a paramétereket az alárendelt feldolgozáshoz további rendszerképeket normalizálása szolgálnak. Képek normalizálása megkönnyíti a több egységes. Nagy méretű képek átméretezése egy maximális magasságának és szélességének ellenőrizze fogyóeszközök. A lemezképek biztosít a metaadatok a tájolás esetén kép elforgatása a függőleges betöltése módosul. Metaadatok korrekciók létrehozott minden egyes képe egy összetett típus rögzíti a rendszer. 
 
-Nem kapcsolhatja ki rendszerképet normalizálási. Képek ciklustevékenység képességeit normalizált lemezképek várható.
+Nem kapcsolhatja ki rendszerképet normalizálási. Képek ciklustevékenység képességeit normalizált lemezképek várható. Az indexelő a lemezkép normalizálási kompatibilitásának előfeltétele, hogy a képességek alkalmazási lehetőségét az indexelő csatlakoztatni.
 
 | Konfigurációs paraméter | Leírás |
 |--------------------|-------------|

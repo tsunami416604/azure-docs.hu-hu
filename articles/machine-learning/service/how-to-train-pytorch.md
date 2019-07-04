@@ -11,16 +11,16 @@ author: mx-iao
 ms.reviewer: peterlu
 ms.date: 06/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: fc80fcde8de3fb2d6dd6f59804f6019b76aa8727
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 8def58eb003fcc817c21151416744cf391b5f38f
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295597"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443930"
 ---
 # <a name="train-and-register-pytorch-models-at-scale-with-azure-machine-learning-service"></a>Betanítása és ipari méretekben PyTorch modellek regisztrálása az Azure Machine Learning szolgáltatás
 
-Ez a cikk bemutatja, hogyan betanítása és regisztrálnia kell egy PyTorch modell Azure Machine Learning szolgáltatás használatával. -Alapú [learning oktatóanyagban a PyTorch átviteli](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html) , amely összeállítja a Neurális hálózat (DNN) besorolás hangyák és méhek-lemezképekhez.
+Ez a cikk bemutatja, hogyan betanítása és regisztrálnia kell egy PyTorch modell Azure Machine Learning szolgáltatás használatával. -Alapú [learning oktatóanyagban a PyTorch átviteli](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html) , amely összeállítja a Neurális hálózat (DNN) besorolás csirkék és pulyka-lemezképekhez.
 
 [PyTorch](https://pytorch.org/) Neurális hálózatok (DNN) létrehozása gyakran használt nyílt forráskódú számítási keretrendszer. Az Azure Machine Learning szolgáltatás gyors horizontális felskálázása lehetséges nyílt forráskódú betanítási feladatokat a rugalmas felhőalapú számítási erőforrások használatával. Is nyomon követheti a betanítási futtatás, a verzió modellek üzembe helyezése a modelleket, és még sok más.
 
@@ -75,19 +75,19 @@ ws = Workspace.from_config()
 
 ### <a name="create-an-experiment"></a>Kísérlet létrehozása
 
-Hozzon létre egy kísérletet és a egy mappát a betanítási szkriptekhez tárolásához. Ebben a példában egy "pytorch-hymenoptera" nevű kísérlet létrehozása.
+Hozzon létre egy kísérletet és a egy mappát a betanítási szkriptekhez tárolásához. Ebben a példában egy "pytorch madarakkal" nevű kísérlet létrehozása.
 
 ```Python
-project_folder = './pytorch-hymenoptera'
+project_folder = './pytorch-birds'
 os.makedirs(project_folder, exist_ok=True)
 
-experiment_name = 'pytorch-hymenoptera'
+experiment_name = 'pytorch-birds'
 experiment = Experiment(ws, name=experiment_name)
 ```
 
 ### <a name="get-the-data"></a>Az adatok lekérése
 
-Az adatkészlet körülbelül 120 betanító kép minden egyes hangyák és méhek, az egyes osztályok 75 érvényesítési képekkel áll. Hymenoptera, amely tartalmazza az hangyák és méhek rovarok sorrendjét. Töltse le és csomagolja ki az adatkészletet a tanítási szkriptet részeként `pytorch_train.py`.
+Az adatkészlet körülbelül 120 betanító kép minden egyes pulyka és csirke, az egyes osztályok 100 érvényesítési képekkel áll. Rendelkezéseitől töltse le és csomagolja ki az adatkészletet a tanítási szkriptet részeként `pytorch_train.py`. A lemezképek a részhalmazát képezik a [nyílt lemezképek v5 adatkészlet](https://storage.googleapis.com/openimages/web/index.html).
 
 ### <a name="prepare-training-scripts"></a>Készítse elő a betanítási szkriptekhez
 

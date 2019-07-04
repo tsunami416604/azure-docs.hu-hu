@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/25/2019
+ms.date: 06/27/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 1b760612d8d9a5ed0817ce662ed190f3477cd125
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5518d019800d2d194369225a060b9b728e21520
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65235846"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465451"
 ---
 # <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Hozzon létre egy megosztott lemezkép-katalógus az Azure portal használatával
 
@@ -53,6 +53,10 @@ Ha ez a cikk végighalad cserélje le az erőforráscsoportot és a virtuális g
 ## <a name="create-vms-from-an-image"></a>Virtuális gépek létrehozása egy rendszerképből
 
 A rendszerkép verziószámát befejeződése után létrehozhat egy vagy több új virtuális gépeket. 
+
+> [!IMPORTANT]
+> A portál nem használhat egy másik azure-bérlőhöz egy rendszerképből egy virtuális gép üzembe helyezéséhez. Virtuális gép létrehozása a bérlők között megosztott kép, kell használnia a [Azure CLI-vel](shared-images.md#create-a-vm) vagy [Powershell](../windows/shared-images.md#create-vms-from-an-image).
+
 
 Ez a példa létrehoz egy virtuális gép nevű *myVMfromImage*, a a *myResourceGroup* a a *USA keleti Régiójában* adatközpont.
 

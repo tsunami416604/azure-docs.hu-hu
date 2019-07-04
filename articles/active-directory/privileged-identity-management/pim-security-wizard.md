@@ -14,12 +14,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6f978612cbbf0c326c3e66f25a0fbf4b749cc73
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: aa4fd850ac2116dc7f353eea87845501fff020bb
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60286932"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476225"
 ---
 # <a name="azure-ad-roles-security-wizard-in-pim"></a>Az Azure AD szerepkörök biztonsági varázsló az PIM-ben
 
@@ -43,27 +43,27 @@ A varázsló második lépése lehetővé teszi a rendszergazda szerepkör-hozz�
 
 1. Kattintson a **Azure AD-szerepkörök** majd **varázsló**.
 
-    ![Az Azure AD-szerepkörök – varázsló](./media/pim-security-wizard/wizard-start.png)
+    ![Azure AD-szerepkörök – a 3 lépésben futtassa a varázslót megjelenítő varázslólap](./media/pim-security-wizard/wizard-start.png)
 
 1. Kattintson a **1 felderítési kiemelt szerepköröket**.
 
 1. Tekintse át a megtekintheti, hogy mely felhasználók, állandó és jogosult kiemelt szerepkörök listáját.
 
-    ![Kiemelt szerepkörű felhasználók felderítése](./media/pim-security-wizard/discover-privileged-roles-users.png)
+    ![Fedezze fel a kiemelt szerepkörök - szerepkör panelen állandó és jogosult tagok megjelenítése](./media/pim-security-wizard/discover-privileged-roles-users.png)
 
 1. Kattintson a **tovább** válassza ki a kívánt jogosult tagok.
 
-    ![Jogosult tag átalakítása](./media/pim-security-wizard/convert-members-eligible.png)
+    ![A tagok átalakítása jogosult lapon jelölje be a tagok számára szeretné tenni a jogosult szerepkörök a beállításokkal](./media/pim-security-wizard/convert-members-eligible.png)
 
 1. Miután kiválasztotta a tagok, kattintson a **tovább**.
 
-    ![Változások áttekintése](./media/pim-security-wizard/review-changes.png)
+    ![Tekintse át a módosításokat oldaláról, tagok lemezszáma állandó szerepkör-hozzárendelésekkel](./media/pim-security-wizard/review-changes.png)
 
 1. Kattintson a **OK** az állandó hozzárendelés átalakítása jogosult.
 
     Az átalakítás befejeződése után megjelenik egy értesítés.
 
-    ![Értesítések](./media/pim-security-wizard/notification-completion.png)
+    ![Értesítés, hogy egy állapota](./media/pim-security-wizard/notification-completion.png)
 
 Ha szeretne további kiemelt szerepkörök hozzárendeléseit jogosulttá alakításához, ismét futtathatja a varázslót. Ha szeretné használni a PIM felület helyett a varázsló, [hozzárendelése az Azure AD-szerepköröket a PIM](pim-how-to-add-role-to-user.md).
 

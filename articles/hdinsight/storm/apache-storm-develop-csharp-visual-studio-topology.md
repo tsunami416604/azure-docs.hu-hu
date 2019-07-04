@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 14aa45808f44f7ca6fe34b70ef282a99f230bf0d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9d459f88cd252303384acb4a72d0af0cce6ee226
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64687754"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428472"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Az Apache Storm C#-topológiák fejlesztése a Data Lake tools for Visual Studio használatával
 
@@ -28,7 +28,7 @@ Egy Linux-alapú fürtök C#-topológiák használatához frissítenie kell a Mi
 
 | HDInsight-verzió | Az Apache Storm-verzió | SCP.NET-verzió | Monó alapértelmezett verzió |
 |:-----------------:|:-------------:|:---------------:|:--------------------:|
-| 3.3 |0.10.x |0.10.x.x</br>(csak a Windows-alapú HDInsight) | n/a |
+| 3.3 |0.10.x |0.10.x.x</br>(csak a Windows-alapú HDInsight) | NA |
 | 3.4 | 0.10.0.x | 0.10.0.x | 3.2.8 |
 | 3.5 | 1.0.2.x | 1.0.0.x | 4.2.1 |
 | 3.6 | 1.1.0.x | 1.0.0.x | 4.2.8 |
@@ -559,7 +559,7 @@ Linux-alapú HDInsight-fürtök győződjön meg arról, hogy a projekt használ
 
 ### <a name="test-a-topology-locally"></a>A topológia a helyi tesztelése
 
-Bár könnyen topológia üzembe helyezése egy fürtön, bizonyos esetekben az szükség lehet a topológia helyileg tesztelheti. A következő eljárással futtathatja és tesztelheti a példatopológiát ebben az oktatóanyagban helyileg a fejlesztési környezetben.
+Bár könnyen topológia üzembe helyezése egy fürtön, bizonyos esetekben az szükség lehet a topológia helyileg tesztelheti. A következő eljárással futtathatja és tesztelheti a példatopológiát ebben a cikkben a helyi fejlesztési környezetében.
 
 > [!WARNING]  
 > Helyi tesztelés csak akkor működik, a basic, a C#-topológiák csak. Hibrid topológiák vagy a topológiák több adatfolyam használó helyi tesztelése nem használható.

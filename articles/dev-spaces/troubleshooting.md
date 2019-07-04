@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: 'Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s '
-ms.openlocfilehash: e0379bbc7f26ea30f65c5eac73633ca0371aa283
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 651ae9d9f9a622724e1ee606219ba940995aa555
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331308"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441745"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -423,3 +423,19 @@ Az Azure fejlesztési szóközt nem hozható létre egy vezérlőt az AKS-fürt 
 
 ### <a name="try"></a>Kipróbálás
 [A mellékíz konfigurációjának frissítése](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) az AKS-fürt legalább egy Linux biztosításához a csomópont lehetővé teszi, hogy podok ütemezés tolerations megadása nélkül. Arra is ügyeljen, hogy legalább egy Linux-csomópont, amely lehetővé teszi az ütemezés podok tolerations megadása nélkül szerepel a *készen* állapota. Ha a csomópont eléréséhez hosszú ideig tart a *készen* állapotba, és megpróbálhatja újraindítani a csomópontot.
+
+## <a name="error-azure-dev-spaces-cli-not-installed-properly-when-running-az-aks-use-dev-spaces"></a>"Az Azure fejlesztési tárolóhelyek CLI nincs megfelelően telepítve" hiba futtatásakor `az aks use-dev-spaces`
+
+### <a name="reason"></a>Reason
+Frissítés az Azure fejlesztési tárolóhelyek CLI módosítani a telepítési útvonalat. Egy korábban 2.0.63, mint az Azure CLI verziójának használ, ez a hiba jelenhet meg. Az Azure CLI verziójának megjelenítéséhez használja `az --version`.
+
+```bash
+$ az --version
+azure-cli                         2.0.60 *
+...
+```
+
+Annak ellenére, hogy a hibaüzenet futtatásakor `az aks use-dev-spaces` 2.0.63 előtt az Azure CLI-verzióval, a telepítés sikeres legyen. Használja továbbra is `azds` probléma nélkül.
+
+### <a name="try"></a>Kipróbálás
+A telepítést, a [Azure CLI-vel](/cli/azure/install-azure-cli?view=azure-cli-latest) 2.0.63 vagy újabb. Ez megoldja a hibaüzenetet kapja, amikor fut `az aks use-dev-spaces`. Másik lehetőségként továbbra is használni az Azure CLI és az Azure fejlesztési tárolóhelyek CLI jelenlegi verziójával.

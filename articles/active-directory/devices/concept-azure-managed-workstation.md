@@ -1,6 +1,6 @@
 ---
-title: Miért fontosak a biztonságos munkaállomások – Azure Active Directory
-description: Ismerje meg, miért hozzon létre szervezetek biztonságos Azure által felügyelt munkaállomások
+title: Biztonságos, Azure által felügyelt munkaállomások – Azure Active Directory ismertetése
+description: Tudnivalók a biztonságos, Azure által felügyelt munkaállomásokra, és miért vagyunk fontos megérteni.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,96 +11,105 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05d21910d1b3601346fbd038cbc25f8f2be61f99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02a6ddef294c4872f2d7e50e8940ecbb4b4b7bc4
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110697"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491593"
 ---
-# <a name="building-secure-workstations"></a>Biztonságos munkaállomások készítése
+# <a name="understand-secure-azure-managed-workstations"></a>Biztonságos, Azure által felügyelt munkaállomások ismertetése
 
-Biztonságos, elkülönített munkaállomások különösen fontosak bizalmas szerepkörök, például a rendszergazdák, fejlesztők és üzemeltetők a kritikus szolgáltatások biztonságát. Számos további biztonsági vezérlők és biztosítékok sikertelen, vagy nem hatása, ha az alapul szolgáló ügyfél munkaállomás biztonsága sérült a biztonsága.
+Biztonságos és elszigetelt munkaállomások különösen fontosak bizalmas szerepkörök, például a rendszergazdák, a fejlesztők és a kritikus fontosságú szolgáltatási operátorok biztonságát. Ügyfélbiztonság munkaállomás biztonsága sérül, ha sok biztonsági vezérlők és biztosítékok sikertelen vagy érvénytelen.
 
-Ez a dokumentum ismerteti, milyen buildeléséhez részletes részletes utasításokat, beleértve a biztonsági vezérlőket indítása beállítása biztonságos ügyfél munkaállomás. Az ilyen típusú munkaállomások esetenként egy emelt hozzáférési szintű munkaállomásokat (PAW), amely ebben a leírásban használt, és építeni nevezzük. Az útmutató azonban úgy tűnik, a szolgáltatás kezelése a felhőalapú technológia, és Windows 10RS5, Microsoft Defender ATP-ben, az Azure Active Directory és az Intune kezdődően bevezetett biztonsági képességek jelennek meg.
+Ez a dokumentum ismerteti, milyen kialakításához szükséges biztonságos munkaállomást, gyakran egy emelt hozzáférési szintű munkaállomásokat (PAW) néven ismert. A cikk részletes utasításokat az első biztonsági vezérlőket is tartalmaz. Ez az útmutató azt ismerteti, hogyan felhőalapú technológiáját kezelheti a szolgáltatást. A Windows 10RS5, Microsoft Defender komplex veszélyforrások elleni védelem (ATP), az Azure Active Directory és Intune-ban bevezetett biztonsági képességeket támaszkodik.
 
 > [!NOTE]
-> Ez a cikk leírja a biztonságos munkaállomás és az fontos fogalma. Ha már ismeri a fogalom, és szeretné hagyni a központi telepítés, kérjük, olvassa el [hogyan helyezhet üzembe egy biztonságos munkaállomás](https://docs.microsoft.com/azure/active-directory/devices/howto-azure-managed-workstation).
+> Ez a cikk leírja a biztonságos munkaállomás és az fontos fogalma. Ha már ismeri a fogalom, és szeretné hagyni a központi telepítés, látogasson el a [üzembe helyezése egy biztonságos munkaállomás](https://docs.microsoft.com/azure/active-directory/devices/howto-azure-managed-workstation).
 
-## <a name="why-securing-workstation-access-is-important"></a>Miért munkaállomás hozzáférés biztonságossá tétele fontos
+## <a name="why-secure-workstation-access-is-important"></a>Miért fontos biztonságos munkaállomás hozzáférés
 
-A cloud services és a bárhonnan dolgozhatnak gyors bevezetése hozott létre egy új módszer kiaknázása. A támadók közzé gyenge biztonsági ellenőrzéseket az eszközökön, ahol a rendszergazdák működik, és tudni privilegizált erőforrásokhoz való hozzáférés elnyeréséhez.
+A cloud services és a bárhonnan dolgozhatnak gyors bevezetése új kiaknázása metódus hozott létre. Lehetőségeinek kihasználásával egyszerű biztonsági ellenőrzéseket az eszközökön, amikor a rendszergazdák működik, a támadók privilegizált erőforrásokhoz való hozzáférést kaphatnak.
 
-Leírtak szerint a [veszély Verizontól jelentés](https://enterprise.verizon.com/resources/reports/dbir/), és [biztonsági információs jelentései](https://aka.ms/sir) kiemelt visszaél és ellátási lánc támadások az öt legaktívabb mechanizmusok megsérti a szervezetben használt közé tartoznak, és a a második leggyakrabban észlelt ügyfélkódos incidensek jelentett 2018-ban.
+Kiemelt visszaél és ellátási lánc támadások a felső öt módszereket használó támadók közel jár a megszegéshez szervezetek között. Is zajlik, a második leggyakrabban észlelt taktika incidensek jelentett a következők szerint 2018-ban a [veszély Verizontól jelentés](https://enterprise.verizon.com/resources/reports/dbir/), és a [biztonsági információs jelentései](https://aka.ms/sir).
 
-Legtöbb támadók kövesse az alábbi elérési utat:
+A legtöbb támadók kövesse az alábbi lépéseket:
 
-* Felderítés, iparág, megtalálni a gyakran jellemző kipróbálása
-* Elemezheti az összegyűjtött információk alapján azonosíthatja a legjobb azt jelenti, hogy a mintavételezéskor alacsony érték munkaállomás (beszivárgás) eléréséhez
-* Adatmegőrzés, és azt jelenti, hogy áthelyezéséhez tekintse [oldalirányban](https://en.wikipedia.org/wiki/Network_Lateral_Movement)
-* Bizalmas adatokat eltulajdonítani
+1. Felderítés kereshet olyan módon, gyakran az iparágban.
+1. Elemzési információkat gyűjthet, és a egy munkaállomás, amely alacsony érték kezeli behatolni a legjobb módszer azonosítására.
+1. Adatmegőrzés áthelyezése azt jelenti, hogy a keresett [oldalirányban](https://en.wikipedia.org/wiki/Network_Lateral_Movement).
+1. Bizalmas adatok kiszűrése.
 
-A támadók gyakran behatolni a felderítést úgy tűnik, alacsony kockázatú vagy undervalued eszközök. Ezek az érintett eszközök majd keresse meg az oldalirányú Mozgás lehetőséget, a rendszergazda felhasználók és eszközök keresése és a nagy értékű adatok sikeresen eltulajdonítani információkhoz után ezek a rendszerjogosultságú felhasználói szerepkörök kapnak azonosítására szolgálnak.
+Felderítése során hajtanak a támadók gyakran úgy tűnik, alacsony kockázatú vagy undervalued behatolni. Keresse meg az oldalirányú Mozgás lehetőséget, és a rendszergazda felhasználók és eszközök ezen sebezhető eszközöket használnak. Emelt szintű felhasználói szerepköröket hozzáférést kapnak, miután a támadók azonosíthatja az értékes adatokat, és sikeresen próbál kiszűrni a rendszerből, hogy adatokat.
 
 ![Tipikus biztonsági sérülés minta](./media/concept-azure-managed-workstation/typical-timeline.png)
 
-Ez a dokumentum az adatok védelme számítási elkülöníti a felügyeleti és az oldalirányú mozgás elleni védelem érdekében szolgáltatások megoldást kínál, vagy támadások, a kevésbé értékes hatékonyságnövelő eszközök. A kialakítás csökkenti sikeres végrehajtásához megsértése által a lánc előtt beszivárgás kezeléséhez, vagy bizalmas felhőalapú erőforrások eléréséhez használt eszköz használhatatlanná teszi. A megoldás leírt felhasznál natív Azure-szolgáltatások része a Microsoft 365 nagyvállalati verzió stack többek között:
+Ez a dokumentum ismerteti a megoldás, amely segít megvédeni a számítási eszközök ilyen oldalirányú támadások ellen. A megoldás felügyeleti és szolgáltatásai számára a kevésbé értékes hatékonyságnövelő eszközök, a használhatatlanná tévő a láncban, mielőtt az eszköz, amely hozzáfér a bizalmas felhőalapú erőforrásokhoz is lehet beszűrődéses különíti el. A megoldás a natív Azure-a Microsoft 365 nagyvállalati verzió verem részét képező szolgáltatásokat használja:
 
-* Az eszköz kezelését, ideértve az alkalmazás- és URL-cím engedélyezése az Intune-ban
-* Autopilot-eszköz beállítása és üzembe helyezés és frissítés 
+* Kezelés és a egy biztonságos elemek listájához, alkalmazások és az URL-címek az Intune-ban
+* Autopilot-eszköz beállítása, üzembe helyezéséhez és frissítés
 * A felhasználókezelést, a feltételes hozzáférés és a multi-factor authentication szolgáltatás Azure ad-ben
 * Windows 10 (aktuális verzió) az eszköz állapotának igazolási és a felhasználói élmény
-* A Microsoft Defender komplex veszélyforrások elleni védelem (ATP) az endpoint protection, észlelés és válasz a cloud management
-* Az Azure AD PIM felügyeletére engedélyezés, beleértve a csak az idő szerinti (JIT) privilegizált erőforrásokhoz való hozzáférés
+* Defender ATP a felhő által felügyelt endpoint protection észlelés és válasz
+* Az engedélyezési és – igény (szerinti JIT) kezelése az Azure AD PIM privilegizált erőforrásokhoz való hozzáférés
 
-## <a name="who-benefit-from-using-a-secure-workstation"></a>Akik előnye a biztonságos munkaállomás
+## <a name="who-benefits-from-a-secure-workstation"></a>Akik számos előnyt biztosít egy biztonságos munkaállomásról?
 
-Minden felhasználó és operátorok kihasználhatják a biztonságos munkaállomás használatával. A támadó feltörések egy számítógép vagy eszköz teheti több szempontot, beleértve a megszemélyesíteni minden gyorsítótárazott fiókokat, és a hitelesítő adatok használata és bejelentkeztek az adott eszközön használt tokenek. A kockázat teszi biztonságossá tétele bármely kiemelt szerepkörhöz, beleértve a rendszergazdai jogokat, ezért fontos, ahol egy rendszerjogosultságú fiókot használt eszközök azok az oldalirányú mozgás és a jogosultság-eszkalációs támadásokat célértékei használt eszközök. Ezek a fiókok használhatók az eszközök különböző például:
+Minden felhasználó és operátorok hasznot egy biztonságos munkaállomás használata esetén. A támadó károsan befolyásolja az adott számítógép vagy eszköz tudja megszemélyesíteni az összes gyorsítótárazott fiókok. Ha bejelentkezett az eszközre, akkor is használhatják és jogkivonatokat. A kockázat teszi fontos az emelt szintű szerepköröket, beleértve a rendszergazdai jogokat használt biztonságos eszközöket. A kiemelt jogosultságú fiókok eszközök azok az oldalirányú mozgás és a jogosultság-eszkalációs támadásokat céljainak. Ezek a fiókok például használható különböző eszközök:
 
-* A helyszíni és felhőalapú rendszerek rendszergazdái
-* Fejlesztői munkaállomások kritikus rendszerek
-* Közösségi fiókok rendszergazdai magas-nal
-* Például a SWIFT fizetési terminálok szigorúan bizalmas munkaállomások
-* A munkaállomások kereskedelmi titkok kezelése
+* A helyszíni vagy felhőalapú rendszerek rendszergazdája
+* Fejlesztői munkaállomásán kritikus rendszerek
+* Közösségi fiók rendszergazdája magas-nal
+* Szigorúan bizalmas munkaállomás, például a terminál SWIFT fizetés
+* Munkaállomás kezelési kereskedelmi titkok
 
-A Microsoft azt javasolja, ahol ezek a fiókok használhatók kockázat csökkentéséhez emelt szintű munkaállomások emelt szintű biztonsági ellenőrzések. További útmutatást találhat a [Azure Active Directory szolgáltatás üzembe helyezési útmutató](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-checklist-p2), [Office 365 ütemterv](https://aka.ms/o365secroadmap), és [biztonságossá tétele emelt szintű hozzáférés védelmének ütemterve](https://aka.ms/sparoadmap)).
+Kockázatcsökkentés, emelt szintű biztonsági vezérlőket az emelt szintű munkaállomások, győződjön meg arról, hogy használja a fenti fiókok kell megvalósítania. További információkért lásd: a [Azure Active Directory szolgáltatás üzembe helyezési útmutató](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-checklist-p2), [Office 365 ütemterv](https://aka.ms/o365secroadmap), és [biztonságossá tétele emelt szintű hozzáférés védelmének ütemterve](https://aka.ms/sparoadmap)).
 
-## <a name="why-dedicated-workstations"></a>Miért dedikált munkaállomásokat
+## <a name="why-use-dedicated-workstations"></a>Miért érdemes használni a dedikált munkaállomásokat?
 
-Bár lehetséges biztonsági hozzáadása egy meglévő eszközt, akkor célszerűbb szeretne kezdeni egy biztonságos alaprendszerrel. Kezdve egy ismert jó eszköz és az ismert biztonsági vezérlők helyez számos szervezet karbantartásához, amely a legjobb helyzetben nagyobb biztonsági szintet. A támadási vektorok hangvételt, mintha levelezéshez és böngészéshez által engedélyezett egyre növekvő számú egyre nehéz lehet, hogy egy eszköz megbízható biztosítása esetén. Ez az útmutató működik egy dedikált munkaállomást feltételezve elkülöníti a standard szintű hatékonyságot, Tallózás, és e-mailes feladatok végezhető el. Termelékenység, a webböngészést és a egy eszközről az e-mailek eltávolításának negatív hatással lehet a hatékonyságot, de ez a biztosíték általában elfogadható forgatókönyvekhez, ahol a feldolgozás feladatokat nem explicit módon igényelnek, és a túl magas a biztonsági incidensek kockázatát.
+Bár lehetséges biztonsági hozzáadása egy meglévő eszközt, akkor célszerűbb szeretne kezdeni egy biztonságos alaprendszerrel. A magas biztonsági szintű a legjobb helyzetben a szervezet helyezi, kezdő, ismeri-eszközzel rendelkező biztonságos, és végrehajtja az ismert biztonsági vezérlőket.
+
+E-mailek és a webböngészés támadási vektorok egyre nagyobb számban egyre rögzített, és ellenőrizze, hogy egy eszközt, hogy a megbízható teszi. Ez az útmutató feltételezi, hogy dedikált munkaállomást el különítve a standard szintű hatékonyságot, tallózása és e-mailt. Termelékenység, a webböngészést és a egy eszközről az e-mailek eltávolításának negatív hatással lehet a hatékonyságot. Azonban ez a biztosíték, általában elfogadható forgatókönyvekhez, ahol a feldolgozás feladatokat nem explicit módon igényelnek, és a túl magas a biztonsági incidensek kockázatát.
 
 > [!NOTE]
-> Tetszőleges websites, a szolgáltatások, például az Azure, Office 365-höz, más felhőszolgáltatók és a SaaS-jól ismert felügyeleti webhelyei kis számú eléréséhez használt webböngésző különböző nagy kockázatot jelent az általános hozzáférési webböngészés itt hivatkozik az alkalmazások.
+> Tetszőleges webhelyekhez, amely lehet a magas kockázatú tevékenység általános hozzáférési webböngészés itt hivatkozik. Az ilyen böngészés egy különböznek kis számú jól ismert felügyeleti webhelyei szolgáltatások, például az Azure, Office 365-höz, más felhőszolgáltatók és a SaaS-alkalmazások eléréséhez használt webböngésző.
 
-Tartalmazottsági stratégiák fokozott biztonsági intézkedésekkel száma és típusa, a vezérlőelemek ahhoz, hogy hozzáférhessen az érzékeny eszközökre, hogy rendelkezik egy támadó növelésével adja meg. A modell itt fejlesztett felügyeleti jogosultságokat az egyes eszközöktől egy rétegzett jogosultság modellel tartalmazottsági biztosít.
+Tartalmazottsági stratégiák elősegíti a biztonság megerősítését száma és típusa, amelyek egy támadó pereket hozzáférjenek bizalmas eszközök növelésével. A jelen cikkben ismertetett modell egy rétegzett jogosultság tervezési használja, és korlátozza a rendszergazdai jogosultságokat az egyes eszközöktől.
 
 ## <a name="supply-chain-management"></a>Ellátásilánc-kezelés
 
-Munkaállomás biztonságos kulcskezelésnek fontos szerepe van a ellátási lánc megoldás megbízható, a munkaállomás használata esetén a gyökér megbízhatósági. Ez a megoldás a legfelső szintű megbízhatóság használatával foglalkozik a [Microsoft Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot) technológia. Egy biztonságos munkaállomás Microsoft Autopilot lehetővé teszi a Microsoft optimalizált OEM a Windows 10-es eszközök, amelyek egy korábbi hibátlan állapotra a gyártótól származó használhatja. Helyett rendszerképének alaphelyzetbe állítása, amely nem lehet megbízható eszköz, a Microsoft Autopilot alakíthatja át egy Windows eszköz "üzleti használatra kész" állapotba alkalmazása, beállítások és szabályzatok, alkalmazások telepítése, és használja is a Windows 10-es kiadásának megváltoztatása (például a Windows 10 Pro, Windows 10 Enterprise, a speciális funkciók támogatásához).
+Munkaállomás biztonságos kulcskezelésnek fontos szerepe van egy ellátási lánc megoldás ahol egy megbízható Munkaállomás megbízhatósági root nevű használ. Ebben a megoldásban a a megbízható legfelső szintű használ [Microsoft Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot) technológia. Egy munkaállomás biztonságos, Autopilot lehetővé teszi Microsoft optimalizált OEM a Windows 10-es eszközöket használhatja. Ezek az eszközök ismert megfelelő állapotban a gyártótól származnak. Helyett rendszerképének alaphelyzetbe állítása a potenciálisan nem biztonságos eszközök, az Autopilot alakíthatja át egy Windows eszköz "üzleti használatra kész" állapotba. Azt vonatkozik, beállítások és szabályzatok, alkalmazások telepítése, és még akkor is megváltozik a Windows 10-es kiadása. Például Autopilot előfordulhat, hogy egy eszköz Windows telepítés módosítása a Windows 10 Pro, Windows 10 Enterprise, hogy azt a speciális funkciók is használhatók.
 
 ![Biztonságos munkaállomás szintek](./media/concept-azure-managed-workstation/supplychain.png)
 
 ## <a name="device-roles-and-profiles"></a>Eszköz szerepkörök és profilok
 
-Az útmutató során több biztonsági profilok és szerepkörök kibocsátásokban megtörténik egy biztonságosabb megoldás, a felhasználóknak, fejlesztők és informatikai munkatársak elérését. Ezek a profilok rendelkezik lett igazítva közös felhasználók támogatására azoknál a szervezeteknél, egy továbbfejlesztett, illetve biztonságos munkaállomásról közben használhatósága és kockázati terheléselosztás előnyeit. Útmutatást nyújt elfogadott iparági szabványokon alapuló beállítások konfigurációját. Ez az útmutató segítségével mutatja be egy metódus az eszköz vagy felhasználó biztonsági házirend és a technológia segítségével biztonsági funkciókat és a kockázatok kezelésében nyújt segítséget a kockázatok csökkentése és korlátozások a Windows 10-es.
+Ez az útmutató számos biztonsági profilok hivatkozik, és a szerepköröket, amelyek segítségével a felhasználók, a fejlesztők és informatikai munkatársak biztonságosabb megoldásokat hozhat létre. Ezek a profilok egyenleg használhatósága és kockázatok közös felhasználó esetében, amely egy kibővített vagy biztonságos munkaállomásról előnyeit. A beállítások az itt elérhető konfigurációk elfogadott iparági szabványok alapulnak. Ez az útmutató bemutatja, hogyan erősíti a Windows 10-es, és így csökkenthető a társított eszköz vagy felhasználó biztonsági sérülése. Így kezeléséhez a biztonsági funkciókat és a kockázatok házirend- és technológia használatával hajtja végre.
 ![Biztonságos munkaállomás szintek](./media/concept-azure-managed-workstation/seccon-levels.png)
 
-* **Alacsony biztonsági** – felügyelt standard munkaállomás jó kiindulási pontot biztosít a legtöbb otthoni, és üzleti célú használatra. Ezek az eszközök Azure ad-ben regisztrált és az Intune által felügyelt. A profil lehetővé teszi a felhasználóknak minden olyan alkalmazások futtatására, és bármely webhelyen keresse. Egy kártevőirtó megoldást, például [Microsoft Defender](https://www.microsoft.com/windows/comprehensive-security) engedélyezni kell.
-* **Fokozott biztonsági** – egy belépési szintű védett megoldás jó van otthoni felhasználók, kis az üzleti felhasználók, valamint általános fejlesztők számára.
-   * A bővített munkaállomás biztosít egy csoportházirend-alapú azt jelenti, hogy az alacsony biztonsági profil a biztonság növelése érdekében. Ez a profil lehetővé teszi egy biztonságos azt jelenti, hogy az ügyfelek adataival, és használhatják a hatékonyságnövelő eszközök, például az e-mailek és a webböngészés ellenőrzése. Bővített munkaállomásról a felhasználói viselkedést, valamint egy munkaállomás profil használata naplózása naplórendek engedélyezésével, és a naplózás az Intune-hoz használható. Ezt a profilt a munkaállomás lehetővé teszi a biztonsági vezérlők és házirendek ismertetett a tartalmat, és telepítve van az a fokozott munkaállomás – Windows 10-es (1809) parancsfájlt. A központi telepítés is kihasználja speciális kártevő védelem használatával [a speciális veszélyforrások elleni védelem (ATP)](https://docs.microsoft.com/office365/securitycompliance/office-365-atp)
-* **Magas biztonsági** – a leghatékonyabb azt jelenti, hogy a munkaállomás a támadási felület csökkentése érdekében, hogy távolítsa el a munkaállomás adminisztrálhatják lehetővé teszi. Helyi rendszergazdai jogosultságok eltávolítása lépés, és fokozza a biztonságot, és is befolyásolja a hatékonyságot, ha nem megfelelően megvalósított. A magas biztonsági profil épül, amely a fokozott biztonság profilt egy jelentős változás, a helyi rendszergazda eltávolítása Ez a profil célja lehet egy vezető például nagy profil felhasználó vagy felhasználók, előfordulhat, hogy forduljon a bizalmas adatok, például a bérszámfejtési vagy szolgáltatásokat, és folyamatok jóváhagyásának felhasználókkal.
-   * A magas biztonsági felhasználói profil igénylést magasabb ellenőrzött környezetben, miközben továbbra is megtekintheti a termelékenység tevékenységgel, például a levelezés és a egy egyszerű felület használatára fenntartása mellett a webböngészést végrehajtásához. A felhasználók elvárják szolgáltatások, például cookie-kat, Kedvencek és más parancsikonok működéséhez érhető el. Ezek a felhasználók azonban előfordulhat, hogy nincs szüksége arra, módosítására és hibakeresése az eszközt, és nem kell telepíteni az illesztőprogramokat. A magas biztonsági profil a magas biztonsági – a Windows 10-es (1809) parancsfájl használatával lett telepítve.
-* **Speciális** – a fejlesztők és rendszergazdák vonzó célpontjai támadók számára, ezek a szerepkörök módosítani tudja a támadók számára érdekes rendszerek. A speciális munkaállomás részéről az erőfeszítés, a magas biztonsági munkaállomás, és további emphases a helyi alkalmazások kezelésére, korlátozza az internetes webhelyek és korlátozza a termelékenységet, amelyek nagy biztonsági kockázatot például az ActiveX, az üzembe helyezett vesz igénybe. Java, a böngésző beépülő modul és a egy Windows eszköz számos más ismert magas kockázatú vezérlőket. Ezt a profilt a munkaállomás lehetővé teszi a biztonsági vezérlők és szabályzatok ismertetett a tartalmat, és telepítve van az DeviceConfiguration_NCSC – Windows 10-es (1803) SecurityBaseline parancsfájl.
-* **Védett** – a támadó kedvezőtlenül befolyásolhatja a egy rendszergazdai fiók is általában kárt okoznának jelentős üzleti adatok ellopása, adatok módosítását vagy szolgáltatáskimaradás lép fel. A megerősített állapotban a munkaállomás lehetővé teszi a biztonsági vezérlőket és a szabályzatok, amelyek korlátozzák a közvetlen befolyása alatt helyi kezelés, és a hatékonyságnövelő eszközök el lesznek távolítva. Ennek eredményeképpen az eszköz veszélyeztetése létesítése nehezebb, mint a levelezés, és a közösségi média le vannak tiltva a leggyakoribb módja sikeres adathalász támadások tükröző.  A biztonságos munkaállomás – Windows 10-es (1809) SecurityBaseline szkriptet a biztonságos munkaállomás helyezhetők.
+* **Alacsony biztonsági** – felügyelt, a standard munkaállomás jó kiindulási pontot biztosít a legtöbb otthoni és üzleti célú használatra. Ezek az eszközök az Azure AD-ben regisztrált és felügyelt Intune-nal. Ez a profil lehetővé teszi a felhasználóknak minden olyan alkalmazások futtatására, és bármely webhelyen keresse. Egy kártevőirtó megoldást, például [Microsoft Defender](https://www.microsoft.com/windows/comprehensive-security) engedélyezni kell.
+
+* **Fokozott biztonsági** – a belépő szintű, védett megoldás az otthoni felhasználók kis az üzleti felhasználók és általános fejlesztők számára hasznos.
+
+   A továbbfejlesztett munkaállomás módja a csoportházirend-alapú alacsony biztonsági profiljának biztonságának növelése érdekében. Biztosít egy biztonságos azt jelenti, hogy hatékonyságnövelő eszközök, mint például az e-mailek és a webböngészés használatát az ügyfél adatokkal dolgozni. Naplózási házirendek és az Intune használatával figyelheti a továbbfejlesztett munkaállomásról a felhasználói viselkedés, és a profil használata. A továbbfejlesztett munkaállomás-profilt a Windows 10-es (1809) parancsfájl telepít, és használja ki speciális kártevő védelem használatával [a speciális veszélyforrások elleni védelem (ATP)](https://docs.microsoft.com/office365/securitycompliance/office-365-atp).
+
+* **Magas biztonsági** – a leghatékonyabb azt jelenti, hogy a munkaállomás a támadási felület csökkentése érdekében, hogy távolítsa el a munkaállomás adminisztrálhatják lehetővé teszi. Helyi rendszergazdai jogosultságok eltávolítása a lépést, amely javítja a biztonságot, azonban ez befolyásolhatja a termelékenység nem megfelelően megvalósított. A magas biztonsági profil épül, amely a fokozott biztonság profilt egy jelentős változás: a helyi rendszergazda eltávolítása Ez a profil célja nagy profil felhasználók számára: vezetők, a bérszámfejtési és a bizalmas adatok felhasználók, a jóváhagyók a szolgáltatások és -folyamatok.
+
+   A magas biztonsági felhasználó több ellenőrzött környezetben igénylést, miközben továbbra is megtekintheti például a levelezéshez és böngészéshez használható egyszerű élmény tevékenységek végrehajtására. A felhasználók elvárják szolgáltatások, például cookie-kat, Kedvencek és más parancsikonok működéséhez. Ezek a felhasználók azonban nem követelhet meg a módosítása, vagy ha hibaelhárításra eszköz lehetővé teszi. Akkor is nem kell telepíteni az illesztőprogramokat. A magas biztonsági profil a magas biztonsági – a Windows 10-es (1809) parancsfájl használatával lett telepítve.
+
+* **Speciális** – támadók célba fejlesztők és rendszergazdák számára, mert azok módosíthatja annak a támadók rendszerek. A speciális munkaállomás kibővíti a házirendeket a magas biztonsági munkaállomás helyi alkalmazások kezelésére és a websites korlátozásával. Emellett meggátolja a magas kockázatú hatékonyságnövelő funkciókat, például az ActiveX, a Java, a böngésző beépülő modulok és egyéb Windows-vezérlők. Ezt a profilt az DeviceConfiguration_NCSC – Windows 10-es (1803) SecurityBaseline parancsfájl.
+
+* **Védett** – a támadó károsan befolyásolja az egy rendszergazdai fiók is kárt okoznának jelentős üzleti adatok ellopása, adatok módosítását vagy szolgáltatáskimaradás lép fel. A megerősített állapotban a munkaállomás lehetővé teszi, hogy a biztonsági vezérlőket és a szabályzatok, amelyek korlátozzák a helyi kezelés közvetlen ellenőrzése. Egy biztonságos munkaállomás rendelkezik nincs hatékonyságnövelő eszközök így nehezebb a veszélyezteti az eszközt. A leggyakoribb vektor adathalász támadások blokkol: e-mailek és a közösségi médiában.  A biztonságos munkaállomás – Windows 10-es (1809) SecurityBaseline szkriptet a biztonságos munkaállomás helyezhetők.
 
    ![Biztonságos munkaállomás](./media/concept-azure-managed-workstation/secure-workstation.png)
 
-   Egy biztonságos munkaállomást biztosít a rendszergazda a megerősített munkaállomás, amely rendelkezik tiszta Alkalmazásvezérlés, és az alkalmazásőr. A munkaállomás használandó hitelesítő adatokat, az eszköz és a biztonsági rés kiaknázása a gazdagép védelmét a rosszindulatú működést. Emellett az összes helyi lemezek van titkosítva, a Bitlocker titkosítást.
+   Egy biztonságos munkaállomás egy megerősített munkaállomás, amely rendelkezik tiszta Alkalmazásvezérlés és az alkalmazásőr rendelkező rendszergazda biztosít. A munkaállomás rés kiaknázása elleni védelem, a credential guard és a device guard használatával a gazdagép védelmét a rosszindulatú működést. Az összes helyi lemez BitLocker is titkosítva van.
 
-* **Elkülönített** – egyéni offline példánkban az értéktartományon (ebben az esetben nem a telepítési parancsprogram biztosított) végéig jelöli. Szervezetek szükség lehet egy elszigetelt üzleti kritikus például a nagy értékű gyártósor vagy életre támogatási rendszerek igénylő függvény nem támogatott/nem tartalmazó régebbi operációs rendszerek kezelése. Fontos biztonsági és a cloud services nem érhető el, mert szervezetek előfordulhat, hogy kézzel ezeket a számítógépeket kezelése/frissítése vagy egy elkülönített Active Directory-erdő architektúra (például a továbbfejlesztett biztonsági felügyeleti környezet (ESAE)) használata kezelheti őket. Ezen esetekben eltávolítása az egyszerű Intune-ban, és az ATP kivételével minden hozzáférés állapotának ellenőrzése kell tekinteni.
-   * [Az Intune hálózati kommunikáció követelmény](https://docs.microsoft.com/intune/network-bandwidth-use)
-   * [Szükséges a ATP hálózati kommunikáció](https://docs.microsoft.com/azure-advanced-threat-protection/configure-proxy)
+* **Elkülönített** – egyéni, offline példánkban az értéktartományon végéig jelöli. Ebben az esetben nem a telepítési parancsprogram biztosított. Szüksége lehet üzleti szempontból kritikus fontosságú függvény, amely nem támogatott vagy veszéllyel régebbi operációs rendszert kell kezelni. Például a nagy értékű gyártósor vagy életre – támogatási rendszer. Fontos biztonsági és a cloud services nem érhető el, mert Ön kezelhesse és frissíthesse az ezeken a számítógépeken, manuálisan vagy egy elkülönített Active Directory-erdő architektúrával például a továbbfejlesztett biztonsági felügyeleti környezet (ESAE). Ilyen körülmények között fontolja meg az alapszintű Intune és az ATP állapot-ellenőrzések kivételével minden hozzáférés eltávolítása.
+
+  * [Az Intune hálózati kommunikáció követelmény](https://docs.microsoft.com/intune/network-bandwidth-use)
+  * [Szükséges a ATP hálózati kommunikáció](https://docs.microsoft.com/azure-advanced-threat-protection/configure-proxy)
 
 ## <a name="next-steps"></a>További lépések
 
-[Egy biztonságos Azure által felügyelt munkaállomás üzembe helyezése](howto-azure-managed-workstation.md)
+[Üzembe helyezése az Azure által kezelt biztonságos munkaállomás](howto-azure-managed-workstation.md).

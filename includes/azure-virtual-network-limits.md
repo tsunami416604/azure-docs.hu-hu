@@ -5,15 +5,15 @@ services: networking
 author: anavinahar
 ms.service: networking
 ms.topic: include
-ms.date: 06/13/2019
+ms.date: 06/25/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: bb13ecb2d9014dbf56823734ac28703df9755b4b
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 3e66bf61caf786473d89eab9a6567bb05aff0d19
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67277274"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67457375"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Hálózatkezelési korlátok – Azure Resource Manager az alábbi korlátozások érvényesek, csak a hálózati erőforrások kezelhető **Azure Resource Manager** régiónként és előfizetésenként. Ismerje meg, hogyan [megtekintheti az aktuális erőforrás-használat elleni az előfizetési korlátok](../articles/networking/check-usage-against-limits.md).
 
@@ -75,7 +75,7 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 
 | Resource | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
-| Virtuális hálózatok |50 |100 |
+| Virtuális hálózatok |100 |100 |
 | Helyi hálózati helyek |20 |Forduljon a támogatási szolgálathoz. |
 | DNS-kiszolgálók száma virtuális hálózatonként |20 |20 |
 | Magánhálózati IP-címek száma virtuális hálózatonként |4,096 |4,096 |
@@ -84,8 +84,8 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | NSG-ben szereplő NSG-szabályok |1,000 |1,000 |
 | Felhasználó által megadott útvonaltáblák |200 |200 |
 | Felhasználó által megadott útvonalak száma útvonaltáblánként |400 |400 |
-| Nyilvános IP-címek (dinamikus) |5 |Forduljon a támogatási szolgálathoz. |
-| Fenntartott nyilvános IP-címek |20 |Forduljon a támogatási szolgálathoz. |
+| Nyilvános IP-címek (dinamikus) |500 |500 |
+| Fenntartott nyilvános IP-címek |500 |500 |
 | Nyilvános virtuális IP-címek száma üzemelő példányonként |5 |Forduljon a támogatási szolgálathoz. |
 | Privát VIP (belső terheléselosztás) száma üzemelő példányonként |1 |1 |
 | Végponthozzáférés-vezérlési listák (ACL) |50 |50 |

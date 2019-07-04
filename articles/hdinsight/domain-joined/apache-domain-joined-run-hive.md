@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: d485799547644ccb3c34a8841e8b20d8a45444bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8ffe2cfc19a7ce94e47046839f6973793b73c118
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707358"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441415"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Apache Hive-szabályzatok konfigurálása a HDInsightban az Enterprise Security Package csomaggal
 Ismerje meg, az Apache Hive Apache Ranger-házirendek konfigurálása. Ebben a cikkben két Ranger-házirendet hoz létre a hivesampletable nevű táblához való hozzáférés korlátozása érdekében. A hivesampletable HDInsight-fürtöket tartalmaz. Miután konfigurálta a házirendeket, az Excel és az ODBC-illesztőprogram használatával kapcsolódjon a HDInsight Hive-tábláihoz.
@@ -37,7 +37,7 @@ Ismerje meg, az Apache Hive Apache Ranger-házirendek konfigurálása. Ebben a c
     A Ranger jelenleg csak a Yarn és a Hive rendszerrel működik.
 
 ## <a name="create-domain-users"></a>Tartományi felhasználók létrehozása
-Lásd: [egy HDInsight-fürt létrehozása a ESP](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp), hiveuser1 és egy hiveuser2 létrehozásával kapcsolatos információkat. Ebben az oktatóanyagban használja a két felhasználói fiókokat.
+Lásd: [egy HDInsight-fürt létrehozása a ESP](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp), hiveuser1 és egy hiveuser2 létrehozásával kapcsolatos információkat. Ez a cikk a két felhasználói fiókokat fogja használni.
 
 ## <a name="create-ranger-policies"></a>Ranger-házirendek létrehozása
 Ebben a szakaszban két Ranger-házirendet a hivesampletable eléréséhez hozzon létre. Adjon kiválasztási engedélyt a különböző oszlopcsoportokra vonatkozóan. Mindkét felhasználó használatával létrehozott [egy HDInsight-fürt létrehozása a ESP](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp). A következő szakaszban a két házirendet Excelben fogja tesztelni.

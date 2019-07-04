@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 03/07/2019
 ms.author: brahmnes
-ms.openlocfilehash: 7ff93dffe2dd82bdbba204b4235a297b337438f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf06c7c21d30fb107baee0d43b33b221c7da2773
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60784076"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439891"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>.NET-alkalmazások az Azure App Service-ben a Snapshot Debugger engedélyezése
 
@@ -29,6 +29,8 @@ Snapshot Debugger engedélyezése az alkalmazáshoz, hajtsa végre az alábbi ut
 * [Az Azure Service Fabric-szolgáltatások](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Az Azure virtuális gépek és virtuálisgép-méretezési csoportokban](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [A helyi virtuális vagy fizikai gépek](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+
+Egy előzetes verziója a .NET Core használatakor kövesse az utasításokat [Snapshot Debugger engedélyezése más környezetek](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) először felvenni a [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet csomag az alkalmazással együtt, és ezután fejezze be az alábbi utasításokat. 
 
 Application Insights Snapshot Debugger előre telepítve van az App Services modul részeként, de a get-pillanatképeket az App Service-alkalmazáshoz bekapcsolásához kell. Miután telepített egy alkalmazást, akkor is, ha a forráskódot is szerepelnek az Application Insights SDK-t, akkor kövesse az alábbi lépéseket a snapshot debugger engedélyezése.
 
@@ -52,7 +54,9 @@ Azt javasoljuk, hogy a pillanatkép-hibakereső diagnosztikai alkalmazás kivét
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Application Insights a Visual Studio használata](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio)
+- Hozzon létre a forgalmat az alkalmazásához, elindíthat egy kivételt. Várjon 10 – 15 percet kell küldeni az Application Insights-példány pillanatképeket.
+- Lásd: [pillanatképek](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json#view-snapshots-in-the-portal) az Azure Portalon.
+- Segítség a pillanatkép-hibakereső kapcsolatos hibák elhárítása: [pillanatkép-hibakereső hibaelhárítási](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json).
 
 [Enablement UI]: ./media/snapshot-debugger/enablement-ui.png
 [snapshot-debugger-app-setting]:./media/snapshot-debugger/snapshot-debugger-app-setting.png
