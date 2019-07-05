@@ -30,7 +30,7 @@ CORS-kérések két típusa van *egyszerű kérelmek* és *összetett kérelmeke
 
 ### <a name="for-simple-requests"></a>Egyszerű kérések:
 
-1. A böngésző elküldi a CORS-kérést és a egy további **forrás** HTTP-kérelem fejléce. Ez a fejléc értéke a forrás, amely a szülő oldal, amely kombinációja típusúként van definiálva kiszolgált *protokoll* *tartomány,* és *port.*  Ha egy lap HTTPS\:/ / www.contoso.com próbál meg elérni a fabrikam.com forrás a felhasználó adatait, a következő kérés fejlécében küldendő fabrikam.com:
+1. A böngésző elküldi a CORS-kérést és a egy további **forrás** HTTP-kérelem fejléce. Ez a fejléc értéke a forrás, amely a szülő oldal, amely kombinációja típusúként van definiálva kiszolgált *protokoll* *tartomány,* és *port.*  Ha egy lap HTTPS\://www.contoso.com próbál meg elérni a fabrikam.com forrás a felhasználó adatait, a következő kérés fejlécében küldendő fabrikam.com:
 
    `Origin: https://www.contoso.com`
 
