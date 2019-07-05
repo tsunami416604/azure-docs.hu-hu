@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: hrasheed
-ms.openlocfilehash: 6b9577bcf8b527abb0cb7b8720ed83ec8321655b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a844465f7ba2222acd7efaf100c7b682c15adb2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64724477"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433518"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>A HDInsight további tárfiókok hozzáadása
 
@@ -196,6 +196,9 @@ Ha módosítja a tárfiók kulcsát, HDInsight már nem tud hozzáférni a tárf
 Parancsfájl művelet ismételt futtatása does __nem__ frissíteni a kulcsot, mert a parancsfájl ellenőrzi, hogy a storage-fiókhoz tartozó bejegyzés már létezik. Ha már létezik egy bejegyzést, azt nem végezze el a módosításokat.
 
 A probléma megkerüléséhez, el kell távolítania a meglévő bejegyzést a tárfiókhoz. Az alábbi lépések segítségével, meglévő bejegyzés eltávolításához:
+
+> [!IMPORTANT]  
+> A tárfiók hívóbetűjét, a fürt csatlakoztatott elsődleges tárfiók elforgatás nem támogatott.
 
 1. Egy webböngészőben nyissa meg az Ambari webes felhasználói Felületet, a HDInsight-fürt számára. Az URI-ja `https://CLUSTERNAME.azurehdinsight.net`. Cserélje le a `CLUSTERNAME` elemet a fürt nevére.
 

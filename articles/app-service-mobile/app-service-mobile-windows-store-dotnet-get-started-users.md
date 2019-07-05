@@ -3,7 +3,7 @@ title: Hitelesítés hozzáadása az univerzális Windows Platform (UWP-) alkalm
 description: 'Ismerje meg, hogyan hitelesítheti a felhasználókat az identitás-szolgáltatóktól, beleértve a különféle univerzális Windows Platform (UWP) alkalmazás az Azure App Service Mobile Apps segítségével: Aad-ben, a Google, Facebook, Twitter vagy Microsoft.'
 services: app-service\mobile
 documentationcenter: windows
-author: conceptdev
+author: elamalani
 manager: panarasi
 editor: ''
 ms.assetid: 6cffd951-893e-4ce5-97ac-86e3f5ad9466
@@ -12,18 +12,23 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/05/2017
-ms.author: panarasi
-ms.openlocfilehash: 7caaa1ca4cdaf7290b7ce05d17c07e565e7b51d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 9a3a6a8d063836094c1285a5ab4c17ee403fc347
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62127998"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440230"
 ---
 # <a name="add-authentication-to-your-windows-app"></a>Hitelesítés hozzáadása a Windows-alkalmazáshoz
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
+> [!NOTE]
+> A Visual Studio App Center fektet a mobilalkalmazás-fejlesztés központi új, integrált szolgáltatások. A fejlesztők a **hozhat létre**, **teszt** és **terjesztése** állíthat be folyamatos integrációt és teljesítést folyamat szolgáltatások. Az alkalmazás telepítve van, a fejlesztők monitorozható az állapot és az alkalmazás használatával használatát a **Analytics** és **diagnosztikai** -szolgáltatásokat, és kapcsolatba léphet a felhasználókat a **leküldéses** a szolgáltatás. A fejlesztők is kihasználhatják a **Auth** azok a felhasználók hitelesítéséhez és **adatok** szolgáltatás és a felhőbeli alkalmazások adatainak szinkronizálása. Tekintse meg [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-windows-store-dotnet-get-started-users) még ma.
+>
+
+## <a name="overview"></a>Áttekintés
 Ez a témakör bemutatja, hogyan felhőalapú hitelesítés hozzáadása az alkalmazásához. Ebben az oktatóanyagban, hitelesítés hozzáadása az univerzális Windows Platform (UWP) gyorsútmutató-projekt egy identitásszolgáltatóval, amelyet támogat az Azure App Service Mobile Apps-alkalmazáshoz. Folyamatban sikeresen hitelesíti és a Mobile Apps-háttéralkalmazást, után jelenik meg a felhasználói azonosító értékét.
 
 Ez az oktatóanyag a Mobile Apps – első lépések alapján. Először végezze el az oktatóanyag [Mobile Apps használatának első lépései](app-service-mobile-windows-store-dotnet-get-started.md).

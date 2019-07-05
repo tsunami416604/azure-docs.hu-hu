@@ -3,7 +3,7 @@ title: Hitelesítés hozzáadása az Azure Mobile Apps iOS rendszeren
 description: Ismerje meg, hogyan hitelesítheti a felhasználókat az IOS-es alkalmazás identitás-szolgáltatóktól, többek között az aad-ben, Google, Facebook, Twitter és a Microsoft számos az Azure Mobile Apps segítségével.
 services: app-service\mobile
 documentationcenter: ios
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: ef3d3cbe-e7ca-45f9-987f-80c44209dc06
@@ -12,17 +12,21 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/23/2017
-ms.author: crdun
-ms.openlocfilehash: 8c1c52790065015977add7e32a06063057b24dad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 88e278ced5cbddb132cdc2f760864df119762088
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62128149"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449131"
 ---
 # <a name="add-authentication-to-your-ios-app"></a>Hitelesítés hozzáadása az iOS-alkalmazás
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
+
+> [!NOTE]
+> A Visual Studio App Center fektet a mobilalkalmazás-fejlesztés központi új, integrált szolgáltatások. A fejlesztők a **hozhat létre**, **teszt** és **terjesztése** állíthat be folyamatos integrációt és teljesítést folyamat szolgáltatások. Az alkalmazás telepítve van, a fejlesztők monitorozható az állapot és az alkalmazás használatával használatát a **Analytics** és **diagnosztikai** -szolgáltatásokat, és kapcsolatba léphet a felhasználókat a **leküldéses** a szolgáltatás. A fejlesztők is kihasználhatják a **Auth** azok a felhasználók hitelesítéséhez és **adatok** szolgáltatás és a felhőbeli alkalmazások adatainak szinkronizálása. Tekintse meg [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-ios-get-started-users) még ma.
+>
 
 Ebben az oktatóanyagban a hitelesítés hozzáadása az [iOS – gyorsútmutató] projekt támogatott identitásszolgáltatóval. Ez az oktatóanyag alapján a [iOS – gyorsútmutató] oktatóanyaggal, amely először el kell végeznie.
 
@@ -77,7 +81,7 @@ Az xcode-ban, nyomja le az ENTER **futtatása** az alkalmazás elindításához.
     }
     ```
 
-    Változás *google* való *microsoftaccount*, *twitter*, *facebook*, vagy *windowsazureactivedirectory* használatakor nem Google az identitás-szolgáltatóként. Ha használja a Facebookot, meg kell [engedélyezési lista Facebook tartományok] [ 1] az alkalmazásban.
+    Változás *google* való *microsoftaccount*, *twitter*, *facebook*, vagy *windowsazureactivedirectory* használatakor nem Google az identitás-szolgáltatóként. Ha használja a Facebookot, meg kell [engedélyezési lista Facebook tartományok][1] az alkalmazásban.
 
     Cserélje le a **urlScheme** és a egy egyedi nevet az alkalmazásnak.  A urlScheme legyen ugyanaz, mint a megadott URL-séma protokoll a **engedélyezett külső átirányítási URL-címeket** mezőt az Azure Portalon. A urlScheme a hitelesítés-visszahívás használják a hitelesítési kérelem befejeződése után az alkalmazásnak váltani.
 
@@ -163,7 +167,7 @@ Az xcode-ban, nyomja le az ENTER **futtatása** az alkalmazás elindításához.
     }
     ```
 
-    Változás *google* való *microsoftaccount*, *twitter*, *facebook*, vagy *windowsazureactivedirectory* használatakor nem Google az identitás-szolgáltatóként. Ha használja a Facebookot, meg kell [engedélyezési lista Facebook tartományok] [ 1] az alkalmazásban.
+    Változás *google* való *microsoftaccount*, *twitter*, *facebook*, vagy *windowsazureactivedirectory* használatakor nem Google az identitás-szolgáltatóként. Ha használja a Facebookot, meg kell [engedélyezési lista Facebook tartományok][1] az alkalmazásban.
 
     Cserélje le a **urlScheme** és a egy egyedi nevet az alkalmazásnak.  A urlScheme legyen ugyanaz, mint a megadott URL-séma protokoll a **engedélyezett külső átirányítási URL-címeket** mezőt az Azure Portalon. A urlScheme a hitelesítés-visszahívás használják a hitelesítési kérelem befejeződése után az alkalmazásnak váltani.
 

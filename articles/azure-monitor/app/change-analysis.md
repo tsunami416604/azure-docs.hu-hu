@@ -10,16 +10,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cawa
-ms.openlocfilehash: 2a31131b662d01f9841a3f1c5b0a6c459a117e77
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 45df8f9e57223ea60a11c6af2187d362184cae2b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075365"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443350"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Alkalmazáselemzés módosítása (előzetes verzió) használata az Azure monitorban
 
-Amikor egy élő probléma, illetve leállás történik, való megfelelés gyors megállapítása az alapvető ok, kritikus fontosságú. Standard figyelési megoldások előfordulhat, hogy riasztást küld, a problémát. Előfordulhat, hogy még jelzik összetevő nem működik. Azonban ez a riasztás nem mindig azonnal ismertetik a hiba okát. Biztos, hogy a hely működött öt perccel ezelőtt történt, és most már rendelkezik a megszakadt. Mi változott, az utolsó öt perc alatt? Ez az a kérdés, amely Alkalmazáselemzés módosítása az Azure monitorban választ. 
+Amikor egy élő probléma, illetve leállás történik, való megfelelés gyors megállapítása az alapvető ok, kritikus fontosságú. Standard figyelési megoldások előfordulhat, hogy riasztást küld, a problémát. Előfordulhat, hogy még jelzik összetevő nem működik. Azonban ez a riasztás nem mindig azonnal ismertetik a hiba okát. Biztos, hogy a hely működött öt perccel ezelőtt történt, és most már rendelkezik a megszakadt. Mi változott, az utolsó öt perc alatt? Ez az a kérdés, amely Alkalmazáselemzés módosítása az Azure monitorban választ.
 
 Kialakításához hatékonyságát a [Azure Erőforrás-grafikon](https://docs.microsoft.com/azure/governance/resource-graph/overview), módosítás elemzés révén betekintést kaphat az Azure-alkalmazás módosítások observability növelheti és csökkentheti az MTTR (kijavításához középidős).
 
@@ -62,21 +62,18 @@ Az Azure monitorban módosítása elemzési jelenleg be van építve az önkiszo
 
     ![A "rendelkezésre állás és teljesítmény" hibaelhárítási lehetőségek képernyőképe](./media/change-analysis/availability-and-performance.png)
 
-1. Válassza ki **alkalmazás-összeomlások**.
+1. Válassza ki **alkalmazások módosítására**. Nem, amely a szolgáltatás is elérhető **alkalmazás összeomlik**.
 
-   ![Képernyőkép az "Alkalmazás összeomlik" gomb](./media/change-analysis/application-crashes-tile.png)
+   ![Képernyőkép az "Alkalmazás összeomlik" gomb](./media/change-analysis/application-changes.png)
 
 1. Ahhoz, hogy a módosítás elemzés, válassza ki **engedélyezés**.
 
-   ![Képernyőkép a beállítások "Alkalmazás összeomlik"](./media/change-analysis/application-crashes.png)
+   ![Képernyőkép a beállítások "Alkalmazás összeomlik"](./media/change-analysis/enable-changeanalysis.png)
 
-1. A teljes módosítása elemzési funkciók előnyeit, kapcsolja be a **módosítása elemzési**, **kód módosításait keressen**, és **mindig**. Ezután válassza a **Save** (Mentés) lehetőséget.
+1. Kapcsolja be a **módosítása elemzési** válassza **mentése**.
 
     ![A "Change elemzése engedélyezése" felhasználói felület képernyőképe](./media/change-analysis/change-analysis-on.png)
 
-    - Engedélyezése **módosítása elemzési** erőforrásszintű módosítások észleléséhez. 
-    - Engedélyezése **kód módosításait keressen** üzembe helyezési fájlokat és Helykonfigurációk változásait. 
-    - Engedélyezése **mindig a** rendszervizsgálatok módosítása a teljesítmény optimalizálása érdekében. De vegye figyelembe, hogy ez a beállítás további díjak eredményezhet.
 
 1. Változás elemzési eléréséhez, válassza **diagnosztizálása és a problémák megoldásához** > **rendelkezésre állás és teljesítmény** > **alkalmazás összeomlik**. Ekkor megjelenik egy grafikont is tartalmaz, ezeket a módosításokat az idő múlásával módosításainak összegzi:
 
@@ -106,7 +103,7 @@ Ha az előfizetés számos webes alkalmazásokat tartalmazza, nem elég hatékon
         Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.ChangeAnalysis" -ListAvailable #Check for feature flag availability
         Register-AzureRmProviderFeature -FeatureName PreviewAccess -ProviderNamespace Microsoft.ChangeAnalysis #Register feature flag
         ```
-    
+
 1. A módosítás elemzési az előfizetéshez tartozó erőforrás-szolgáltató regisztrálása.
 
    - Lépjen a **előfizetések**, és válassza ki az előfizetést, a módosítás szolgáltatásban engedélyezni kívánja. Ezután válassza ki az erőforrás-szolgáltatók:
@@ -121,12 +118,12 @@ Ha az előfizetés számos webes alkalmazásokat tartalmazza, nem elég hatékon
 
         ```PowerShell
         Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState #Check if RP is ready for registration
-    
+
         Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis" #Register the Change Analysis RP
         ```
 
         A PowerShell használatával beállíthat egy rejtett címkét egy webalkalmazás, futtassa a következő parancsot:
-    
+
         ```powershell
         $webapp=Get-AzWebApp -Name <name_of_your_webapp>
         $tags = $webapp.Tags
