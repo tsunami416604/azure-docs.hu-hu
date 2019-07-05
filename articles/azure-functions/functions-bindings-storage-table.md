@@ -4,19 +4,19 @@ description: Megtudhatja, hogyan használhatja az Azure Table storage-kötések 
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: az Azure functions, függvények, eseményfeldolgozás, dinamikus számítás, kiszolgáló nélküli architektúra
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 0c9cd513f4d5842d14077bb7470ebd18c7a46340
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 002ea00364056f0780146b79936a6bc04e289973
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64511870"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480081"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Az Azure storage táblakötések az Azure Functions szolgáltatáshoz
 
@@ -507,7 +507,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**Táblanév** | **TableName** | A tábla neve.| 
 |**partitionKey** | **PartitionKey** |Választható. A partíciókulcs a tábla entitás olvasni. Tekintse meg a [használati](#input---usage) hogyan használja ezt a tulajdonságot a következő szakaszban.| 
 |**Rowkey tulajdonságok esetén** |**Rowkey tulajdonságok esetén** | Választható. A sorkulcs beolvasni a tábla entitás. Tekintse meg a [használati](#input---usage) hogyan használja ezt a tulajdonságot a következő szakaszban.| 
-|**hajtsa végre a megfelelő** |**hajtsa végre a megfelelő** | Választható. Olvassa el a JavaScript entitások maximális számát. Tekintse meg a [használati](#input---usage) hogyan használja ezt a tulajdonságot a következő szakaszban.| 
+|**take** |**hajtsa végre a megfelelő** | Választható. Olvassa el a JavaScript entitások maximális számát. Tekintse meg a [használati](#input---usage) hogyan használja ezt a tulajdonságot a következő szakaszban.| 
 |**filter** |**Szűrő** | Választható. JavaScript a bemeneti tábla OData szűrési kifejezés. Tekintse meg a [használati](#input---usage) hogyan használja ezt a tulajdonságot a következő szakaszban.| 
 |**kapcsolat** |**kapcsolat** | A tárolási kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a maradékot Itt a neve is megadhat. Például, ha a beállított `connection` a "MyStorage", a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyStorage." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc nevű Alkalmazásbeállítás `AzureWebJobsStorage`.|
 
@@ -532,7 +532,7 @@ A Table storage bemeneti kötésnek a következő eseteket támogatja:
 
   Állítsa be a `filter` és `take` tulajdonságait. Nem állít be `partitionKey` vagy `rowKey`. A bemeneti tábla entitás (vagy entitások) használatával eléréséhez `context.bindings.<name>`. A deszerializált objektum rendelkezik `RowKey` és `PartitionKey` tulajdonságait.
 
-## <a name="output"></a>Kimenet
+## <a name="output"></a>Output
 
 Használja az Azure Table-tároló kimeneti kötését entitások írni az Azure Storage-fiók egyik táblájában.
 

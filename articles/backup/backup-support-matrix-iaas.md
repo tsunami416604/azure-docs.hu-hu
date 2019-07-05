@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 07/02/2019
 ms.author: raynew
-ms.openlocfilehash: ef522785d5074187871c25c54deae84b156d69b1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e395b10d9a99fdb454f3f02c7027e7acff64b434
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66743178"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508196"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM backup-támogatási mátrixa
 Használhatja a [Azure Backup szolgáltatás](backup-overview.md) a helyszíni gépek és a számítási feladatok és Azure-beli virtuális gépek (VM) biztonsági mentése. Ez a cikk összegzi a támogatási beállításait és korlátozások biztonsági mentésekor az Azure-beli virtuális gépek az Azure Backup szolgáltatással.
@@ -164,7 +164,7 @@ Adatlemez mérete | Az egyes lemezek legfeljebb 4095 GB is lehet.<br/><br/> Ha a
 Tárolási típus | Standard HDD, standard SSD, prémium szintű SSD. <br/><br/> Standard SSD akkor támogatott, ha a tárolók az Azure VM backup (vagyis az azonnali visszaállítása) a legújabb verzióra frissül. [További információk](backup-instant-restore-capability.md).
 Felügyelt lemezek | Támogatott.
 Titkosított lemezek | Támogatott.<br/><br/> Az Azure virtuális gépek engedélyezve van az Azure Disk Encryption (a vagy anélkül, hogy az Azure AD-alkalmazás) is készíthető.<br/><br/> Titkosított virtuális gépek nem állítható helyre, a fájl vagy mappa szintjén. A teljes virtuális Gépet helyre kell állítania.<br/><br/> Engedélyezheti a titkosítást az Azure Backup által már védett virtuális gépeken.
-Az engedélyezett Írásgyorsító lemezek | Nem támogatott.<br/><br/> Ha futtatja a legújabb Azure VM backup (más néven [azonnali visszaállítása](backup-instant-restore-capability.md)), lemezeket zárhat ki a biztonsági másolatból engedélyezett Írásgyorsító.
+Az engedélyezett Írásgyorsító lemezek | Nem támogatott.<br/><br/> Az Azure backup automatikusan kizárja a biztonsági mentés során engedélyezett Írásgyorsító lemezek. Mivel ezek nem készül biztonsági másolat, nem lesz képes ezek a lemezek visszaállítása a virtuális gép helyreállítási pontját.
 A deduplikált lemezek biztonsági mentése | Nem támogatott.
 Lemez hozzáadása a védett virtuális gép | Támogatott.
 A védett virtuális gépek a lemez átméretezése | Támogatott.
@@ -233,8 +233,8 @@ Backup támogatja a tömörítést, a biztonsági mentési forgalom, a következ
 
 **Gép** | **Tömörítse a MABS és DPM (TCP)** | **A tároló (HTTPS) tömörítése**
 --- | --- | ---
-A helyi Windows számítógépek DPM/MABS nélkül | n/a | ![Igen][green]
-Azure-beli virtuális gépek | n/a | n/a
+A helyi Windows számítógépek DPM/MABS nélkül | NA | ![Igen][green]
+Azure-beli virtuális gépek | NA | NA
 Helyszíni/Azure-beli virtuális gépek DPM-mel | ![Igen][green] | ![Igen][green]
 Helyszíni/Azure-beli virtuális gépek a MABS | ![Igen][green] | ![Igen][green]
 

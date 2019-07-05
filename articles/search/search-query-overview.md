@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 95f5dde12ad9e34a0a04c988a816538ac30e01e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 422e9209609eac19b7952557674c99789d9f6088
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65595977"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485188"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Hogyan lehet lekérdezést adhat az Azure Search szolgáltatásban
 
@@ -29,7 +29,7 @@ A következő táblázat felsorolja az API-k és a lekérdezések elküldése az
 | Módszer | Leírás |
 |-------------|-------------|
 | [A keresési ablak (portál)](search-explorer.md) | Itt egy keresősáv és a lehetőségek a kiválasztott index és api-verziót. A eredmény JSON-dokumentumok formájában. <br/>[Részletek](search-get-started-portal.md#query-index) | 
-| [Postman vagy a Fiddler](search-fiddler.md) | Webes tesztelési eszközök remek választásnak bizonyulnak az vonatkozókat REST-hívások. A REST API-t minden lehetséges művelet támogatja az Azure Search szolgáltatásban. Ebből a cikkből megtudhatja, hogyan állíthat be egy HTTP-kérelem fejléce és az Azure Search-küldési kérelmek törzsében.  |
+| [Postman vagy a Fiddler](search-get-started-postman.md) | Webes tesztelési eszközök remek választásnak bizonyulnak az vonatkozókat REST-hívások. A REST API-t minden lehetséges művelet támogatja az Azure Search szolgáltatásban. Ebből a cikkből megtudhatja, hogyan állíthat be egy HTTP-kérelem fejléce és az Azure Search-küldési kérelmek törzsében.  |
 | [A SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Az Azure Search-index lekérdezése használható ügyfél.  <br/>[Részletek](search-howto-dotnet-sdk.md#core-scenarios)  |
 | [Dokumentumok keresése (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | GET vagy POST metódus az indexen, további bemeneti lekérdezési paraméterek használatával.  |
 

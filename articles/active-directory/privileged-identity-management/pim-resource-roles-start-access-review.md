@@ -15,12 +15,12 @@ ms.date: 04/29/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78e4de5bbc56f95c0e903b1dac4e8481373716f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0067bd6dc2f47c5460220295d486910d9195782d
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65143521"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476271"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-pim"></a>A PIM az Azure-erőforrásszerepkörök hozzáférési felülvizsgálat létrehozása
 
@@ -44,7 +44,7 @@ Ez a cikk ismerteti, hogyan hozhat létre kiemelt Azure-erőforrások szerepkör
 
 1. Kattintson a kezelés, **hozzáférési felülvizsgálatokkal**.
 
-    ![Azure-erőforrás - hozzáférési felülvizsgálatok](./media/pim-resource-roles-start-access-review/access-reviews.png)
+    ![Azure-erőforrás - hozzáférési felülvizsgálatok listáját megjelenítő az összes értékelést állapotát](./media/pim-resource-roles-start-access-review/access-reviews.png)
 
 
 [!INCLUDE [Privileged Identity Management access reviews](../../../includes/active-directory-privileged-identity-management-access-reviews.md)]
@@ -54,7 +54,7 @@ Ez a cikk ismerteti, hogyan hozhat létre kiemelt Azure-erőforrások szerepkör
 
 Miután megadta a hozzáférési felülvizsgálat beállításait, kattintson a **Start**. A hozzáférési felülvizsgálat megjelenik a listában, az azt jelzi, hogy annak állapotát.
 
-![A hozzáférési felülvizsgálatok listája](./media/pim-resource-roles-start-access-review/access-reviews-list.png)
+![A hozzáférési felülvizsgálatok listáját megjelenítő lépésekhez tekintse át az állapotát](./media/pim-resource-roles-start-access-review/access-reviews-list.png)
 
 Alapértelmezés szerint az Azure AD-e-mailt küld felülvizsgálók elindítja a felülvizsgálatot követően rövid időn belül. Ha nem rendelkezik Azure ad-ben az e-mailt, mindenképpen tájékoztatja a felülvizsgálatot, amely a hozzáférési felülvizsgálat várakozik, amíg befejeződnek. Mutathat nekik az utasításokat, hogy hogyan [tekintse át az Azure-erőforrásszerepkörök hozzáférést](pim-resource-roles-perform-access-review.md).
 
@@ -62,7 +62,7 @@ Alapértelmezés szerint az Azure AD-e-mailt küld felülvizsgálók elindítja 
 
 Követheti a folyamat állapotát, a felülvizsgálók a legteljesebb körű áttekintette a **áttekintése** a hozzáférési felülvizsgálat lapján. Nincs hozzáférési jogosultsága a könyvtárban, amíg nem módosítják a [felülvizsgálat befejezése](pim-resource-roles-complete-access-review.md).
 
-![A hozzáférési felülvizsgálatok folyamatban](./media/pim-resource-roles-start-access-review/access-review-overview.png)
+![Hozzáférési felülvizsgálat részleteit megjelenítő áttekintés lap](./media/pim-resource-roles-start-access-review/access-review-overview.png)
 
 Ha ez egy egyszeri tekintse át, majd a hozzáférési felülvizsgálati időszak felett van, vagy a rendszergazda a hozzáférési felülvizsgálat leállítása után kövesse a lépéseket a [fejezze be a hozzáférési felülvizsgálatok az Azure-erőforrásszerepkörök](pim-resource-roles-complete-access-review.md) megtekintéséhez és a alkalmazni az eredményeket.  
 

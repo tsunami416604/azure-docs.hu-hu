@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/05/2019
-ms.openlocfilehash: bd0e8099be5422d561541aeb8911c9a1610befcb
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 29fdb200075a5b5843944a7a890cc2f8ad61f1ee
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272762"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543858"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-image"></a>Modell üzembe helyezése egy egyéni Docker-rendszerkép használata
 
@@ -55,14 +55,14 @@ Ebben a szakaszban található információk azt feltételezi, hogy egy Azure Co
 
     Amikor lemezképek használatával tárolja a __a munkaterület a tárolóregisztrációs adatbázis__, nem kell hitelesíteni a regisztrációs adatbázisba. Hitelesítés a munkaterület kezeli.
 
-    > [!TIP]
-    > A tároló-beállításjegyzékbe a munkaterület jön létre az első alkalommal betanítani, vagy a modell üzembe helyezése a munkaterület használata. Ha már létrehozott egy új munkaterületet, de nem betanított vagy létrehozott egy modellt, nem az Azure Container Registry a munkaterületet fog léteznek.
+    > [!WARNING]
+    > A munkaterület az Azure Container Rzegistry van __jön létre, betanítását, vagy a modell üzembe helyezése__ a munkaterület használatával. Ha már létrehozott egy új munkaterületet, de nem betanított vagy létrehozott egy modellt, nem az Azure Container Registry a munkaterületet fog léteznek.
 
     Lekérésével kapcsolatos információk az Azure Container Registry a munkaterület nevére, tekintse meg a [Get tárolóregisztrációs adatbázis nevét](#getname) című szakaszát.
 
     Amikor rendszerképekből tárolja egy __önálló tárolóregisztrációs adatbázis__, szüksége lesz egy legalább olvasási hozzáféréssel rendelkezik egyszerű szolgáltatás konfigurálása. Majd adja meg a szolgáltatásnév-Azonosítót (felhasználónév) és a jelszót bárki által használt rendszerképek a beállításjegyzékből. A kivétel az, ha elvégezte a tároló-beállításjegyzék nyilvánosan elérhető-e.
 
-    Egy privát Azure Container Registry létrehozásával kapcsolatos információkért lásd: [hozzon létre egy privát tárolójegyzékben](/azure/container-registry/container-registery-get-started-azure-cli).
+    Egy privát Azure Container Registry létrehozásával kapcsolatos információkért lásd: [hozzon létre egy privát tárolójegyzékben](/azure/container-registry/container-registry-get-started-azure-cli).
 
     Információ a szolgáltatásnevek használata az Azure Container Registryvel: [Azure Tárolóregisztrációs adatbázis hitelesítési szolgáltatásnevekkel](/azure/container-registry/container-registry-auth-service-principal).
 
@@ -80,8 +80,8 @@ Ebben a szakaszban található információk azt feltételezi, hogy egy Azure Co
 
 Ebben a szakaszban megtudhatja, hogyan tehet szert az Azure Container Registry neve az Azure Machine Learning szolgáltatás a munkaterülethez.
 
-> [!TIP]
-> A tároló-beállításjegyzékbe a munkaterület jön létre az első alkalommal betanítani, vagy a modell üzembe helyezése a munkaterület használata. Ha már létrehozott egy új munkaterületet, de nem betanított vagy létrehozott egy modellt, nem az Azure Container Registry a munkaterületet fog léteznek.
+> [!WARNING]
+> Az Azure Container Registry a munkaterület __jön létre, betanítását, vagy a modell üzembe helyezése__ a munkaterület használatával. Ha már létrehozott egy új munkaterületet, de nem betanított vagy létrehozott egy modellt, nem az Azure Container Registry a munkaterületet fog léteznek.
 
 Ha már betanított vagy üzembe helyezve az Azure Machine Learning szolgáltatás használatával, a munkaterület egy tároló-beállításjegyzéket hoztuk létre. A tárolóregisztrációs adatbázis nevét, használja az alábbi lépéseket:
 
@@ -153,9 +153,9 @@ Az ebben a szakaszban az útmutatóban egyéni Docker-rendszerkép létrehozása
     Run ID: cda was successful after 2m56s
     ```
 
-Az Azure Container Registry rendszerképek további információkért lásd: [létrehozása és futtatása egy tárolórendszerképet az Azure Container Registry feladatok használatával](/docs.microsoft.com/azure/container-registry/container-registry-quickstart-task-cli.md)
+Az Azure Container Registry rendszerképek további információkért lásd: [létrehozása és futtatása egy tárolórendszerképet az Azure Container Registry feladatok használatával](https://docs.microsoft.com/azure/container-registry/container-registry-quickstart-task-cli)
 
-További információ a meglévő rendszerképek feltöltése egy Azure Container registrybe: [az első rendszerkép leküldése egy privát Docker-tárolójegyzék](/azure/container-registry/container-registry-get-started-docker-cli.md).
+További információ a meglévő rendszerképek feltöltése egy Azure Container registrybe: [az első rendszerkép leküldése egy privát Docker-tárolójegyzék](/azure/container-registry/container-registry-get-started-docker-cli).
 
 ## <a name="use-a-custom-image"></a>Egyéni rendszerkép használata
 

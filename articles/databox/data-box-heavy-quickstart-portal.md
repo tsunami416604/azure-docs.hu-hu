@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: quickstart
 ms.date: 06/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 930da7367b3f5d7e20617afedef007efea97c51a
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 3467b25c085fb86d4aed3918d5446d118f76ffb8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66518581"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446734"
 ---
 # <a name="quickstart-deploy-azure-data-box-heavy-using-the-azure-portal"></a>Gyors útmutató: Üzembe helyezése az Azure Data Box (nagy erőforrásigényű) az Azure portal használatával
 
@@ -57,7 +57,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure Portalra a [http://portal.azure.com](http://portal.azure.com) webhelyen.
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 ## <a name="order"></a>Rendelés
 
@@ -95,7 +95,7 @@ Ebben a lépésben a befejezéséhez körülbelül 10 – 15 percet vesz igényb
 
 Ez a lépés kb. 5–7 percet vesz igénybe.
 
-1. Az eszköz jelszavát az [Azure Portal](http://portal.azure.com) **Általános > Eszköz adatai** lapján találja. Ugyanazt a jelszót mindkét csomópontját az eszköz használható.
+1. Az eszköz jelszavát az [Azure Portal](https://portal.azure.com) **Általános > Eszköz adatai** lapján találja. Ugyanazt a jelszót mindkét csomópontját az eszköz használható.
 2. És a 255.255.255.0 alhálózati maszkkal 192.168.100.5 statikus IP-cím hozzárendelése az Ethernet-adaptert a számítógépen a Data Box (nagy erőforrásigényű) való kapcsolódáshoz használ. Nyissa meg az eszköz helyi webes felületét a következő helyen: `https://192.168.100.10`. A csatlakozás az eszköz bekapcsolását követően 5 percet is igénybe vehet.
 3. Jelentkezzen be az Azure Portalról beszerzett jelszóval. Egy hibaüzenet jelenik meg, miszerint a webhely biztonsági tanúsítványa hibás. A böngészőspecifikus utasításokat követve lépjen a weblapra.
 4. Alapértelmezés szerint a hálózati adapterek (kivéve a MGMT) beállításai DHCP. Ha szükséges, konfigurálja ezeket az adaptereket statikus, és adjon meg egy IP-címet.

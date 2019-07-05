@@ -5,14 +5,14 @@ author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 6/27/2019
 ms.author: raynew
-ms.openlocfilehash: 8f4e78f7e16f775a852b4c8172d1fa9fd70ec341
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6a0e07f338da039be1660e59510b24bcd44eed0c
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417848"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491743"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Milyen számítási feladatokat tud védeni az Azure Site Recovery?
 
@@ -35,7 +35,7 @@ A Site Recovery az alábbi módokon járul hozzá az alkalmazásszintű védelem
 * Alkalmazásfüggetlen, így egy támogatott gépen futó bármilyen számítási feladatok replikációját biztosítja.
 * Közel szinkron replikációt biztosít, amelynek esetében a helyreállítási időkorlát mindössze 30 másodperc is lehet, így megfelel a legtöbb kritikus fontosságú üzleti alkalmazás igényeinek.
 * Alkalmazáskonzisztens pillanatképeket rögzít egy- vagy többszintű alkalmazásokról.
-* Együttműködik az SQL Server AlwaysOn szolgáltatással, és számos más alkalmazásszintű replikációs technológiát is képes felhasználni (például AD-replikáció, SQL AlwaysOn, Exchange adatbázis-elérhetőségi csoportok (DAG) és Oracle Data Guard).
+* Integráció az SQL Server AlwaysOn, és számos más alkalmazásszintű replikációs technológiák, köztük a AD a replikáció az SQL AlwaysOn, Exchange adatbázis-elérhetőségi csoportok (dag).
 * Külső szkripteket és manuális műveleteket is tartalmazó, rugalmas helyreállítási tervekkel rendelkezik, amelyekkel egész alkalmazáscsoportokat állíthat helyre egyetlen kattintással.
 * A Site Recovery és az Azure fejlett hálózatkezelési funkciói leegyszerűsítik az alkalmazáshálózati követelményeket, ideértve az IP-címek lefoglalását, a terheléselosztók konfigurálását, valamint az Azure Traffic Manager integrációját, ami alacsony helyreállítási időre vonatkozó célkitűzéssel rendelkező hálózatváltást garantál.
 * A szolgáltatás gazdag, éles használatra kész és alkalmazásspecifikus parancsprogramokat tartalmazó automatizációs kódtárat tartalmaz, amely letölthető, és beépíthető a helyreállítási tervekbe.

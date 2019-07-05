@@ -12,12 +12,12 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd84b44c89c856036640757b7760d7c10bd36173
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4951984d05e75b0271cf6592c77c54ad13678994
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824843"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476556"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>A végfelhasználók beleegyezik abba, hogy egy alkalmazás az Azure Active Directoryban módszer konfigurálása
 Megtudhatja, hogyan konfigurálhatja a felhasználók engedélyt adjanak az Alkalmazásengedélyek módon. Egyszerűsítheti a felhasználói élmény azáltal, hogy biztosítja a rendszergazdai jóváhagyás. Ez a cikk a különböző módokon konfigurálhatja a felhasználói beleegyezés biztosít. A módszerek alkalmazni az Azure Active Directory (Azure AD) bérlő összes végfelhasználók számára. 
@@ -38,9 +38,10 @@ Rendszergazda hozzájárulását egy vállalati alkalmazást:
 2. Kattintson a **minden szolgáltatás** a bal oldali navigációs menü tetején. A **Azure Active Directory-bővítmény** nyílik meg.
 3. A szűrő keresőmezőbe írja be a **"Azure Active Directory"** , és válassza ki a **Azure Active Directory** elemet.
 4. Kattintson a navigációs menü **vállalati alkalmazások**.
-5. Kattintson a **Grant rendszergazdai jóváhagyás**. Ön kéri, jelentkezzen be az alkalmazás felügyelheti.
-6. Jelentkezzen be egy olyan fiókkal, amely rendelkezik rendszergazdai hozzájárulás az alkalmazáshoz tartozó engedélyeket. 
-7. Hozzájárul az Alkalmazásengedélyek.
+5. Válassza ki az alkalmazás beleegyezést.
+6. Válassza ki **engedélyek** majd **biztosítson rendszergazdai jóváhagyás**. Ön kéri, jelentkezzen be az alkalmazás felügyelheti.
+7. Jelentkezzen be egy olyan fiókkal, amely rendelkezik rendszergazdai hozzájárulás az alkalmazáshoz tartozó engedélyeket. 
+8. Hozzájárul az Alkalmazásengedélyek.
 
 Ez a beállítás csak akkor működik, ha az alkalmazás: 
 
@@ -54,8 +55,8 @@ Rendszergazdai jóváhagyás megadni, amikor regisztrál egy alkalmazást:
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) globális rendszergazdaként.
 2. Keresse meg a **Alkalmazásregisztrációk** panelen.
 3. Válassza ki a jóváhagyási kérelmet.
-4. Válassza ki **szükséges engedélyek**.
-5. Kattintson a **engedélyek megadása** a panel tetején.
+4. Válassza ki **API-engedélyek**.
+5. Kattintson a **biztosítson rendszergazdai jóváhagyás**.
 
 
 ## <a name="grant-admin-consent-through-a-url-request"></a>Rendszergazdai jóváhagyás-kérés URL-cím megadása

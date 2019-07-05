@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 06/05/2019
+ms.date: 06/30/2019
 ms.author: juliako
-ms.openlocfilehash: 6b5422e2eb67eb309c086c023df9f733940e5e44
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 937dc6eefbbfc37aaeee0801f410f9f99cb0c787
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735079"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67488689"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>A Video Indexer widgetek beágyazása az alkalmazásokba
 
@@ -32,6 +32,8 @@ A **Kognitív elemzési vezérlő** az összes vizuális elemzést tartalmazza, 
 |Name (Név)|Meghatározás|Leírás|
 |---|---|---|
 |widgets|Vesszővel elválasztott sztringek|Lehetővé teszi annak szabályozását, mely elemzéseket szeretné megjeleníteni. <br/>Példa: a `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` csak a személyekre és márkákra vonatkozó felhasználói felületi elemzéseket jeleníti meg.<br/>Elérhető lehetőségek: people, keywords, annotations, brands, sentiments, transcript, search.<br/>Nem támogatott a version=2 paraméterű URL-címek esetében<br/><br/>**Megjegyzés:** A widgetek URL paraméter nem támogatott a 2. verzióban. |
+|Területi beállítás|Egy rövid nyelvi kód|Az insights nyelvi szabályozza. Az alapértelmezett szint a `en`. Például: `language=de`.|
+|tabulátor|A kijelölt alapértelmezett lap|Az insights lapon megjelenített alapértelmezés szerint szabályozza. `tab=timeline` az insights rendereli a kiválasztott ütemterv lap.|
 
 ### <a name="player-widget"></a>Lejátszó vezérlő
 
@@ -39,12 +41,12 @@ A **Lejátszó** vezérlő lehetővé teszi a videó streamelését adaptív át
 
 |Name (Név)|Meghatározás|Leírás|
 |---|---|---|
-|t|Kezdés utáni másodpercek|Beállítja, hogy a lejátszó az adott időponttól induljon el.<br/>Például: t=60|
-|captions|Nyelvkód|Lekéri a vezérlő betöltése közben a megadott nyelvű feliratot, amely elérhető lesz a feliratmenüben.<br/>Például: captions=en-US|
-|showCaptions|Logikai érték|Beállítja, hogy a lejátszó betöltésekor a feliratok megjelenítése már engedélyezve legyen.<br/>Például: showCaptions=true|
-|type||Aktivál egy audiólejátszó felületet (a videólejátszó rész el lesz távolítva).<br/>Például: type=audio|
-|autoplay|Logikai érték|Jelzi, hogy a lejátszó a betöltést követően automatikusan lejátssza-e a videót (az alapértelmezett érték a true).<br/>Például: autoplay=false|
-|language|Nyelvkód|A lejátszó nyelvét szabályozza (az alapértelmezett érték: en-US)<br/>Például: language=de-DE|
+|t|A kezdetektől másodperc|Beállítja, hogy a lejátszó az adott időponttól induljon el.<br/>Példa: `t=60`.|
+|captions|A nyelvi kód|Lekéri a vezérlő betöltése közben a megadott nyelvű feliratot, amely elérhető lesz a feliratmenüben.<br/>Példa: `captions=en-US`.|
+|showCaptions|Logikai érték|Beállítja, hogy a lejátszó betöltésekor a feliratok megjelenítése már engedélyezve legyen.<br/>Példa: `showCaptions=true`.|
+|type||Aktivál egy audiólejátszó felületet (a videólejátszó rész el lesz távolítva).<br/>Példa: `type=audio`.|
+|autoplay|Logikai érték|Jelzi, hogy a lejátszó a betöltést követően automatikusan lejátssza-e a videót (az alapértelmezett érték a true).<br/>Példa: `autoplay=false`.|
+|language|A nyelvi kód|A lejátszó nyelvét szabályozza (az alapértelmezett érték: en-US)<br/>Példa: `language=de-DE`.|
 
 ## <a name="embedding-public-content"></a>Nyilvános tartalom beágyazása
 

@@ -4,17 +4,17 @@ description: Egy webhookot, amely lehetővé teszi, hogy az ügyfél az Azure Au
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 153bb0304102906f7be64ae55dd0e0f6bb8d7146
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e0e0cdfd5bdda125ed38173df56e0fb7a84f71a
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61305020"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477928"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Azure Automation-runbook kezdve egy webhook
 
@@ -30,10 +30,10 @@ Egyéb módszerek runbook elindítása webhookok összehasonlíthatja [runbook e
 
 A következő táblázat ismerteti a tulajdonságokat, amelyeket konfigurálnia kell egy webhook.
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--- |:--- |
 | Name (Név) |Egy webhook azt szeretné, mivel ez az ügyfél nem elérhetővé tett bármilyen nevet megadhat. Ez csak az Ön számára azonosítására szolgál a runbookot, az Azure Automationben. <br> Ajánlott eljárásként meg kell nevezze el a webhook az azokat használó ügyfél kapcsolatos. |
-| URL-cím |A webhook URL-címe az az egyedi cím, egy HTTP POST-indítani a runbookot, a webhook csatolva a meghívó ügyfél. A webhook létrehozásakor automatikusan létrejön. Egy egyéni URL-cím nem adható meg. <br> <br> Az URL-címet tartalmaz egy biztonsági jogkivonatot, amely lehetővé teszi a runbook által egy külső rendszer további hitelesítésre. Ezért azt kell kezelni, mint egy jelszó. Biztonsági okokból csak megtekintheti az URL-cím az Azure Portalon a webhook létrehozásakor. Megjegyzés: az URL-címet egy biztonságos helyre későbbi használat céljából. |
+| URL |A webhook URL-címe az az egyedi cím, egy HTTP POST-indítani a runbookot, a webhook csatolva a meghívó ügyfél. A webhook létrehozásakor automatikusan létrejön. Egy egyéni URL-cím nem adható meg. <br> <br> Az URL-címet tartalmaz egy biztonsági jogkivonatot, amely lehetővé teszi a runbook által egy külső rendszer további hitelesítésre. Ezért azt kell kezelni, mint egy jelszó. Biztonsági okokból csak megtekintheti az URL-cím az Azure Portalon a webhook létrehozásakor. Megjegyzés: az URL-címet egy biztonságos helyre későbbi használat céljából. |
 | Lejárat dátuma |Egy tanúsítványt, mint például az egyes webhookok van ekkor már nem használható lejárati dátuma. A lejárati dátum után a a webhook létrehozásakor mindaddig, amíg a webhook lejárt nem módosítható. |
 | Enabled |Webhook alapértelmezés szerint engedélyezve van, a létrehozásakor. Ha beállította azt le van tiltva, akkor nincs ügyfél is használhassák. Beállíthatja a **engedélyezve** tulajdonság a webhookot, vagy bármikor egyszer létrehozásakor jön létre. |
 

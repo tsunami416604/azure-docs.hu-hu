@@ -3,13 +3,13 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 05/14/2019
-ms.openlocfilehash: c7ff7ab0800449c2a3aa9d58bd036981caccaa1c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
-ms.translationtype: MT
+ms.date: 07/01/2019
+ms.openlocfilehash: 9e0caa8b98133dad3af083e8910d0603bbd2563b
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179087"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67489906"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances-ri"></a>Fizessen elő az Azure Reserved VM Instances (RI) rendelkező virtuális gépek
 
@@ -17,7 +17,7 @@ Fizessen elő a virtuális gépekhez, és pénzt takaríthat meg az Azure Reserv
 
 Megvásárolhatja a fenntartott VM-példány a [az Azure portal](https://portal.azure.com). Egy példány vásárlása:
 
-- Meg kell egy tulajdonosi szerepkör legalább egy vállalati vagy használatalapú fizetéses előfizetésre.
+- A vállalati legalább egy előfizetést vagy használatalapú díjszabással előfizetés-tulajdonosi szerepkör kell lennie.
 - Vállalati előfizetés esetén **fenntartott példányok hozzáadása** engedélyezve kell lennie a [a nagyvállalati szerződések portáljának](https://ea.azure.com). Vagy, ha ez a beállítás le van tiltva, az előfizetés egy nagyvállalati szerződés rendszergazdájának kell lennie.
 - A Cloud Solution Provider (CSP) program csak a felügyeleti ügynökök vagy értékesítési ügynökök is vásárolhatnak foglalást.
 
@@ -73,8 +73,8 @@ Fenntartott VM-példányok néhány kivétellel a legtöbb Virtuálisgép-méret
     | Mező      | Leírás|
     |------------|--------------|
     |Name (Név)        |A Foglalás neve.|
-    |Előfizetés|Kell fizetnem a Foglalás használt előfizetés. A fizetési módot, az előfizetés fel van töltve a Foglalás az előzetes költségek. Az előfizetés típusúnak kell lennie a nagyvállalati szerződés (számok kínálnak: MS-AZR-0017P vagy MS-AZR - 0148 P) vagy a használatalapú fizetés (számok kínálnak: MS-AZR-0003P vagy MS-AZR-0023P). Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. Használatalapú fizetéses előfizetéseknél a díjakat az előfizetéshez tartozó hitelkártyára terheljük vagy a számlafizetési módnak megfelelően számlázzuk.|    
-    |Scope       |A Foglalás hatóköre egy előfizetés vagy több előfizetés (megosztott hatókör) is foglalkozik. Ha ki: <ul><li>Ebben az előfizetésben virtuális gépek egyetlen előfizetés – a foglalási kedvezményt alkalmazza. </li><li>Közös – a foglalási kedvezményt alkalmazza a rendszer olyan előfizetéseket, a számlázási környezetben futó virtuális gépek. A vállalati ügyfelek a megosztott hatókörrel a regisztráció és a regisztráció belüli összes előfizetésre tartalmazza. Használatalapú fizetéses ügyfelek számára a megosztott hatókörrel a fiók rendszergazdája által létrehozott összes utólagos elszámolású előfizetések.</li></ul>|
+    |Előfizetés|Kell fizetnem a Foglalás használt előfizetés. A fizetési módot, az előfizetés fel van töltve a Foglalás az előzetes költségek. Az előfizetés típusúnak kell lennie a nagyvállalati szerződés (számok kínálnak: MS-AZR-0017P vagy MS-AZR - 0148 P) vagy az utólagos elszámolású díjszabás szerint egyes előfizetéssel (számok kínálnak: MS-AZR-0003P vagy MS-AZR-0023P). Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. Az utólagos elszámolású díjszabás szerint az előfizetés az előfizetés bankkártyával vagy számla ellenében fizetési módot, a díjakat számlázzuk ki.|    
+    |Scope       |A Foglalás hatóköre egy előfizetés vagy több előfizetés (megosztott hatókör) is foglalkozik. Ha ki: <ul><li>Ebben az előfizetésben virtuális gépek egyetlen előfizetés – a foglalási kedvezményt alkalmazza. </li><li>Közös – a foglalási kedvezményt alkalmazza a rendszer olyan előfizetéseket, a számlázási környezetben futó virtuális gépek. A vállalati ügyfelek a megosztott hatókörrel a regisztráció és a regisztráció belüli összes előfizetésre tartalmazza. A megosztott hatókörrel rendelkező utólagos elszámolású díjszabás szerint előfizetések élvező vásárlók esetében az utólagos elszámolású díjszabás szerint a fiók rendszergazdája által létrehozott összes előfizetés.</li></ul>|
     |Régió    |Az Azure-régió, amelyet a Foglalás jelez.|    
     |Virtuális gép mérete     |A Virtuálisgép-példányok méretétől.|
     |Optimalizálás     |Virtuálisgép-példányok rugalmassága mérete alkalmazza a foglalási kedvezményt többi virtuális géphez ugyanazon [VM-méret csoport](https://aka.ms/RIVMGroups). Kapacitás prioritása priorizálja az Adatközpont-kapacitás az üzemelő példányok. Ez kínál a további megbízhatósági arra, hogy indítsa el a Virtuálisgép-példányok, amikor szüksége van rájuk. Kapacitás prioritása csak akkor használható, ha a Foglalás hatóköre egy előfizetés. |
@@ -98,7 +98,7 @@ Miután megvásárolta, közvetlenül a következő típusú módosításokat ne
 - Egy meglévő foglalás régió
 - SKU
 - Mennyiség
-- Időtartam
+- Duration
 
 Azonban továbbra is *exchange* egy foglalást, ha módosítani szeretné.
 
@@ -121,7 +121,7 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
     - [Mik az Azure-foglalásokat?](../articles/billing/billing-save-compute-costs-reservations.md)
     - [Az Azure-ban foglalások kezelése](../articles/billing/billing-manage-reserved-vm-instance.md)
     - [Megismerheti, hogyan kell alkalmazni a foglalási kedvezményt](../articles/billing/billing-understand-vm-reservation-charges.md)
-    - [A használatalapú fizetéses előfizetést foglalás használati adatai](../articles/billing/billing-understand-reserved-instance-usage.md)
+    - [Foglalás utólagos elszámolású díjszabás szerint az előfizetés használati adatai](../articles/billing/billing-understand-reserved-instance-usage.md)
     - [A nagyvállalati beléptetés foglalás használati adatai](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
     - [Windows szoftverek díjait nem tartalmazza a foglalások](../articles/billing/billing-reserved-instance-windows-software-costs.md)
     - [A Partner Center Felhőszolgáltató (CSP) program Azure foglalások](https://docs.microsoft.com/partner-center/azure-reservations)

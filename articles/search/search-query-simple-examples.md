@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 0c47212e51725e7d4a173c441709dca739d4e357
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4658de97bc8b8a175934286a5be3f074968ff7bd
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024531"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485366"
 ---
 # <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Az "egyszerű" szintaxis használatával az Azure Search lekérdezési példák
 
@@ -27,7 +27,7 @@ Az alternatív lekérdezés szintaxisa [teljes Lucene](https://docs.microsoft.co
 
 Az alábbi példák kihasználhatja az elérhető feladatok által biztosított adatkészlet alapján álló i állások keresési indexet a [város, New York OpenData](https://nycopendata.socrata.com/) kezdeményezésére. Ezek az adatok nem az aktuális vagy a teljes kell tekinteni. Az index van a Microsoft, ami azt jelenti, hogy nem kell egy Azure-előfizetést, vagy próbálja ki ezeket a lekérdezéseket az Azure Search által nyújtott védőfal szolgáltatásokat.
 
-Amire szüksége a Postman vagy egy egyenértékű eszközt tud kiállítani a HTTP-kérelem a GET. További információkért lásd: [REST-ügyfelekkel Intéző](search-fiddler.md).
+Amire szüksége a Postman vagy egy egyenértékű eszközt tud kiállítani a HTTP-kérelem a GET. További információkért lásd: [REST-ügyfelekkel Intéző](search-get-started-postman.md).
 
 ### <a name="set-the-request-header"></a>Állítsa be a kérelem fejléce
 

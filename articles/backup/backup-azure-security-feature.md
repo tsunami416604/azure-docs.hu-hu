@@ -2,18 +2,18 @@
 title: Biztonsági szolgáltatások hibrid biztonsági mentésekhez, amely használja az Azure Backup védelme érdekében
 description: Biztonsági funkciók használata az Azure Backup biztonságosabb a biztonsági másolatok készítése
 services: backup
-author: trinadhk
+author: utraghuv
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.author: trinadhk
-ms.openlocfilehash: 2ba94963238cd5ee96df5c178a072addc5ddd75e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: utraghuv
+ms.openlocfilehash: eaa0c0dc45b37491cd55033b49e2f78d219d416b
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60620697"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565715"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Biztonsági szolgáltatások hibrid biztonsági mentésekhez, amely használja az Azure Backup védelme érdekében
 Növeli a biztonsági problémákat, például a kártevők, a zsarolóprogramok és a behatolás, kapcsolatos elvárásainak. Lehet, hogy a biztonsági kérdésekkel költséges, pénzt és a adatok tekintetében. Az ilyen támadások ellen védő, az Azure Backup mostantól biztosít biztonsági szolgáltatások hibrid biztonsági mentésekhez védelme érdekében. Ez a cikk bemutatja, hogyan engedélyezheti és használja ezeket a funkciókat az Azure Recovery Services agent és az Azure Backup Server használatával. Ezek a szolgáltatások a következők:

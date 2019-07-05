@@ -1,5 +1,5 @@
 ---
-title: Eszközök a Media Services – Azure |} A Microsoft Docs
+title: Az Azure Media Services eszközök |} A Microsoft Docs
 description: Ez a cikk biztosítja az eszközök vannak, és hogyan használják az Azure Media Services ismertetése.
 services: media-services
 documentationcenter: ''
@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/11/2019
+ms.date: 07/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2afcf2066238414cd08e32901ffccf2a44718b6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bd9774cf045d9ed7f16a637fcb2eb1378b48686
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65551758"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565818"
 ---
 # <a name="assets"></a>Objektumok
 
@@ -87,9 +87,22 @@ curl -X PUT \
 
 Egy teljes példa: [hozzon létre egy feladat bemenete egy helyi fájlból](job-input-from-local-file-how-to.md). A Media Services v3-as, a feladat bemenetének is létrehozhatók a HTTPS URL (lásd: [hozzon létre egy feladat bemenete HTTPS URL-címet](job-input-from-http-how-to.md)).
 
-## <a name="filtering-ordering-paging"></a>Szűrési, rendezési, stránkování
+## <a name="map-v3-asset-properties-to-v2"></a>V2 térkép a v3-as eszköz tulajdonságai
 
-Lásd: [szűrése, rendezése, a Media Services entitások lapozás](entities-overview.md).
+Az alábbi táblázat a [eszköz](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)a tulajdonságok a v3-as leképezése az eszköz tulajdonságok a v2-ben.
+
+|V3 tulajdonságai|v2 tulajdonságai|
+|---|---|
+|azonosító – (egyedi) az Azure Resource Manager elérési útját, lásd a példákat a [eszköz](https://docs.microsoft.com/rest/api/media/assets/createorupdate)||
+|név – (egyedi) lásd: [elnevezési konvenciók](media-services-apis-overview.md#naming-conventions) ||
+|alternateId|AlternateId|
+|assetId|-Azonosító (egyedi) értékkel kezdődik a `nb:cid:UUID:` előtag.|
+|Létrehozva|Létrehozva|
+|description|Name (Név)|
+|módosítás dátuma|módosítás dátuma|
+|storageAccountName|StorageAccountName|
+|storageEncryptionFormat| Beállítások - létrehozási beállítások|
+|type||
 
 ## <a name="storage-side-encryption"></a>Storage ügyféloldali titkosítása
 
@@ -104,6 +117,10 @@ Az inaktív eszközök védelmére, titkosítani kell az eszközök által a sto
 <sup>1</sup> közben a Media Services támogatja a tartalom kezelésére, a titkosítatlan/bármilyen titkosítás nélkül, ez nem ajánlott.
 
 <sup>2</sup> a Media Services v3, tárolás titkosítása (AES-256 titkosítás) van csak támogatott a visszamenőleges kompatibilitás a Media Services v2 létrehozásakor a rendszer az eszközöket. Tehát v3 együttműködik a meglévő tárhely eszközök titkosított, de nem teszi meg újakat.
+
+## <a name="filtering-ordering-paging"></a>Szűrési, rendezési, stránkování
+
+Lásd: [szűrése, rendezése, a Media Services entitások lapozás](entities-overview.md).
 
 ## <a name="next-steps"></a>További lépések
 

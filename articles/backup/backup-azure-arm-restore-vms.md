@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: geg
-ms.openlocfilehash: 19b249a76a339ce870609fbcdceaf70bf79a6ea2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 62e10f382882e70d488f9814cb00c2b86b8b9691
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65906505"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460220"
 ---
 # <a name="restore-azure-vms"></a>Azure-beli virtuális gépek visszaállítása
 
@@ -185,7 +185,7 @@ Számos virtuális gép visszaállítása után jegyezze fel az alábbiakkal:
 
 - Jelen a biztonsági mentés konfigurálása során bővítmények telepítve van, de nincs engedélyezve. Ha problémát észlel, telepítse újra a bővítményeket.
 - Ha a biztonsági másolatban szereplő virtuális gép statikus IP-címet, akkor a visszaállított virtuális Gépet ütközés elkerülése érdekében a dinamikus IP-cím lesz. Is [statikus IP-címet ad hozzá a visszaállított virtuális Gépet](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm).
-- A visszaállított virtuális Gépet egy rendelkezésre állási nincs beállítva. Ha a szervezeti egység használja a helyreállítás lemez Önnek is [adja meg a rendelkezésre állási](../virtual-machines/windows/tutorial-availability-sets.md) Amikor létrehozta a virtuális Gépet a lemezről a megadott sablonban vagy a PowerShell használatával.
+- A visszaállított virtuális Gépet egy rendelkezésre állási nincs beállítva. Ha a lemez visszaállítási beállítást használja, akkor is [adja meg a rendelkezésre állási](../virtual-machines/windows/tutorial-availability-sets.md) Amikor létrehozta a virtuális Gépet a lemezről a megadott sablonban vagy a PowerShell használatával.
 - Ha cloud-init-alapú Linux-disztribúciók, például az Ubuntu, a biztonsági okokból a jelszót a visszaállítás után le van tiltva. A visszaállított virtuális gép a VMAccess bővítmény használatához [alaphelyzetbe állíthatja a jelszót](../virtual-machines/linux/reset-password.md). Azt javasoljuk, hogy SSH-kulcsokat használnak-e a disztribúciók, így nem kell a jelszót a visszaállítás után.
 
 

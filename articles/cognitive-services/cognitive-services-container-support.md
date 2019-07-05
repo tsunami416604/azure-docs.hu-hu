@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/11/2019
 ms.author: dapine
-ms.openlocfilehash: 8ebc3d9f3339e2f703a1f374363b72b86f63d903
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 263a67f885615941624befcb52c408158e680062
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204036"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67566111"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Az Azure Cognitive Servicesben tároló támogatása
 
@@ -107,7 +107,7 @@ Az egyes tárolók követelményeknek, is, beleértve a kiszolgáló, és lefogl
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg [tároló receptek](/containers/container-reuse-recipe.md) is használhatja a Cognitive Services szolgáltatással.
+Ismerje meg [tároló receptek](/azure/cognitive-services/containers/container-reuse-recipe) is használhatja a Cognitive Services szolgáltatással.
 
 Telepítse, és ismerje meg a tárolók az Azure Cognitive Services által biztosított funkciókat:
 

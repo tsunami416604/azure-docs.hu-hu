@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/19/2019
-ms.openlocfilehash: efa4cc070f47174634c8dc67b37f10bc3d112d08
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.date: 06/26/2019
+ms.openlocfilehash: 412ce3c5245f3f22bfb03740a0451670dc6a90a7
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293210"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448107"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - kiszolgáló egyetlen PostgreSQL-bővítmények
 PostgreSQL lehetővé teszi az adatbázis-bővítményekkel funkcióinak bővítése érdekében. Bővítmények lehetővé teszik több kapcsolódó SQL objektumok együtt kötegelést betöltve, vagy eltávolítja az adatbázisból, egyetlen paranccsal egyetlen csomagban. Után az adatbázis betöltése, bővítmények működhet, mint a beépített funkciók. A PostgreSQL-bővítmények további információkért lásd: [csomagolási kapcsolódó objektumot egy bővítmény](https://www.postgresql.org/docs/9.6/static/extend-extensions.html).
@@ -48,7 +48,7 @@ Az alábbi táblázatok sorolják fel a standard szintű PostgreSQL-bővítmény
 > | [pg\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | Kezeli a particionált táblákat idő vagy azonosítót. |
 > | [pg\_trgm](https://www.postgresql.org/docs/9.6/static/pgtrgm.html) | Függvények és operátorok biztosít alfanumerikus szöveg trigram megfelelt a hasonlóságot meghatározásához. |
 > | [tablefunc](https://www.postgresql.org/docs/9.6/static/tablefunc.html) | Olyan függvények, amelyeknek teljes táblákat, beleértve a Kereszttábla módosítására. |
-> | [uuid-ossp](https://www.postgresql.org/docs/9.6/static/uuid-ossp.html) | Univerzálisan egyedi azonosítói (az UUID azonosítók) hoz létre. |
+> | [uuid-ossp](https://www.postgresql.org/docs/9.6/static/uuid-ossp.html) | Univerzálisan egyedi azonosítói (az UUID azonosítók) hoz létre. (Lásd alább a kiterjesztés egy megjegyzés). |
 > | [orafce](https://github.com/orafce/orafce) | Funkciók és a kereskedelmi adatbázisokból emulált csomagok egy részét biztosítja. |
 
 ### <a name="full-text-search-extensions"></a>Teljes szöveges keresés bővítmények
@@ -118,6 +118,10 @@ A lekérdezés végrehajtási adatok pg_stat_statements biztosít, és a kiszolg
 dblink és postgres_fdw lehetővé teszi a másikra, vagy egy másik adatbázisba ugyanazon a kiszolgálón egy PostgreSQL-kiszolgálóhoz csatlakozni. A fogadó kiszolgálón kell, hogy a küldő kiszolgáló a tűzfalon keresztül érkező kapcsolatokat. Amikor ezek a bővítmények segítségével csatlakozik, Azure Database for PostgreSQL-kiszolgálók között, ezt "Azure-szolgáltatásokhoz való hozzáférés engedélyezése" ON értékre állításával teheti. Ez is van szükség, ha a bővítmények az iterációhoz vissza ugyanazon a kiszolgálón a használandó. Az "Azure-szolgáltatásokhoz való hozzáférés engedélyezése" beállítás az Postgres server kapcsolatbiztonság alatt az Azure portal oldalán található. "Hozzáférés engedélyezése az Azure-szolgáltatások" listáinak az összes Azure IP-címek bekapcsolásával.
 
 Jelenleg PostgreSQL-hez készült Azure Database-ből kimenő kapcsolatok nem támogatottak, más, Azure Database for PostgreSQL-kiszolgálók kapcsolatok kivételével.
+
+## <a name="uuid"></a>uuid
+Ha azt tervezi, használandó `uuid_generate_v4()` uuid-ossp kiterjesztése, fontolja meg, és összehasonlítása `gen_random_uuid()` teljesítmény kedvezményekre pgcrypto kiterjesztése.
+
 
 ## <a name="timescaledb"></a>TimescaleDB
 TimescaleDB egy idősorozat-adatbázis, amely a PostgreSQL-hez készült bővítményeként van csomagolva. TimescaleDB idő-orientált analitikai funkciókat biztosít, optimalizálás, és méretezhető Postgres idősorozat-számítási feladatokhoz.

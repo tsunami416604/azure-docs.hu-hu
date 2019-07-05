@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: tylerfox
-ms.openlocfilehash: a7e129f43b957b271c77f451ab198a9068bb0797
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7c894bcb3183714a76578a6750c8e85493e3094
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64718998"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508073"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>A HDInsight Apache Hadoop-fürtök kezelése az Azure PowerShell használatával
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
@@ -150,10 +150,6 @@ Ugyanezt az eljárást, mint a Grant/revoke HTTP-access. Ha a fürt a HTTP-hozz�
 ## <a name="find-the-default-storage-account"></a>Keresse meg az alapértelmezett tárfiókot
 A következő PowerShell-parancsfájlt mutat be az alapértelmezett tárfiók neve és a kapcsolódó információk lekérése:
 
-> [!IMPORTANT]  
-> A tartozó értékeket `DefaultStorageAccount`, és `DefaultStorageContainer` a rendszer nem adja vissza [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) amikor [biztonságos átvitelre](../storage/common/storage-require-secure-transfer.md) engedélyezve van a tárfiókon.
-
-
 ```powershell
 #Connect-AzAccount
 $clusterName = "<HDInsight Cluster Name>"
@@ -197,10 +193,6 @@ Lásd: [futtassa a szerepel a HDInsight MapReduce-példák](hadoop/apache-hadoop
 **Az Apache Hive-feladatok elküldése**
 
 Lásd: [PowerShell használatával futtassa az Apache Hive lekérdezések](hadoop/apache-hadoop-use-hive-powershell.md).
-
-**Az Apache Pig-feladatok elküldése**
-
-Lásd: [futtatása Apache Pig-feladatok PowerShell-lel](hadoop/apache-hadoop-use-pig-powershell.md).
 
 **Az Apache Sqoop-feladatok elküldése**
 

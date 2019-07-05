@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b784cafce08634f1026a908e8ccdaaed41b62a42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e1b92b174d48c710a763857951d66d00956fa0f9
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111617"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483069"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Hogyan és miért érdemes az Azure AD-alkalmazások felvétele
 
@@ -79,8 +79,10 @@ Alkalmazás objektumok, például az egyszerű szolgáltatások is több útvona
 * Programozott módon az Azure AD Graph API vagy a Powershellen keresztül
 
 ## <a name="how-are-application-objects-and-service-principals-related-to-each-other"></a>Hogyan alkalmazásobjektumok és egyszerű szolgáltatások kapcsolódnak egymáshoz?
+
 Egy alkalmazás egy objektum egy vagy több szolgáltatásnevek minden azokat a címtárakat, ahol működik (beleértve az alkalmazás kezdőkönyvtár) által hivatkozott kezdőkönyvtárral rendelkezik.
-![Egy diagram, így bemutatja, hogyan alkalmazásobjektumok és egyszerű szolgáltatások kommunikáljanak egymással és az Azure AD-példányban.][apps_service_principals_directory]
+
+![Alkalmazás objektumok és az egyszerű szolgáltatások közötti kapcsolat látható][apps_service_principals_directory]
 
 A fenti ábrán a Microsoft fenntart két címtár belsőleg (lásd a bal oldalon), hogy az alkalmazás-közzétételhez használja:
 
@@ -96,6 +98,7 @@ Az alkalmazásokat, amelyek adja hozzá saját magát (-kiszolgálókként **(az
 * Alkalmazások közzététele az Azure AD-alkalmazásproxy használatával
 
 ### <a name="notes-and-exceptions"></a>Megjegyzések és kivételek
+
 * Nem minden szolgáltatásnevek mutathat vissza egy alkalmazásobjektumot. Elkészítésekor az Azure AD eredetileg alkalmazásokhoz nyújtott szolgáltatások korlátozottabbak voltak, és az egyszerű szolgáltatás létrehozásához szükséges Alkalmazásidentitás elegendő volt. Az eredeti egyszerű szolgáltatás minősége közelebb a Windows Server Active Directory-szolgáltatásfiók lett. Ezért fontos továbbra is létre lehet hozni az egyszerű szolgáltatások segítségével különböző utakat, például az Azure AD PowerShell használatával egy alkalmazásobjektumot létrehozása nélkül. Az Azure AD Graph API egyszerű szolgáltatás létrehozása előtt egy objektum szükséges.
 * Nem az összes fent leírt adatokat jelenleg közvetlenül programozott módon. Az alábbiakban csak a felhasználói felületen érhető el:
   * Jogcím-átalakítási szabályok
@@ -105,6 +108,7 @@ Az alkalmazásokat, amelyek adja hozzá saját magát (-kiszolgálókként **(az
   * [Egyszerű szolgáltatás](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Alkalmazások miért tegye integrálása az Azure ad-vel?
+
 Alkalmazások felvétele az Azure ad-ben kihasználhatja a biztosít, beleértve a szolgáltatások valamelyikét:
 
 * Alkalmazás hitelesítése és engedélyezése
@@ -116,6 +120,7 @@ Alkalmazások felvétele az Azure ad-ben kihasználhatja a biztosít, beleértve
 * Alkalmazás közzététele és a proxy - közzétenni egy alkalmazást az interneten egy privát hálózatról
 
 ## <a name="who-has-permission-to-add-applications-to-my-azure-ad-instance"></a>Kinek van engedélye alkalmazásokat a saját Azure AD-példányt?
+
 Bár vannak bizonyos feladatokat, hogy csak a globális rendszergazdák teheti meg (például alkalmazások hozzáadása az app-katalógusából, és a Proxy használatát egy alkalmazás konfigurálása) alapértelmezés szerint a címtár összes felhasználója jogosult alkalmazás regisztrálása objektumok fejlesztés és a saját belátása szerint értékeli mely alkalmazások azok megosztás/adjon hozzáférést a hozzájárulási szervezeti adatait az. Ha egy személy jelentkezni egy alkalmazásba, és hozzájárulás megadása az első felhasználót a címtárban, egy egyszerű szolgáltatást, amely hoz létre a bérlőben; Ellenkező esetben a hozzájárulás megadása adatokat fog tárolni a meglévő egyszerű szolgáltatást.
 
 Így a felhasználók regisztrálása és járul hozzá az alkalmazások előfordulhat, hogy kezdetben eredményes vonatkozó, de vegye figyelembe a következőket:
@@ -132,10 +137,11 @@ Továbbra is szeretné, hogy a felhasználók a címtárban, alkalmazások regis
 
 * Megakadályozza, hogy a felhasználók saját maguk alkalmazások jóváhagyják:
   1. Az Azure Portalon nyissa meg a [felhasználói beállítások](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) a vállalati alkalmazások szakaszában.
-  2. Változás **felhasználók engedélyezhetik, hogy az alkalmazások hozzáférjenek a céges adatok saját nevükben való** való **nem**. 
+  2. Változás **felhasználók engedélyezhetik, hogy az alkalmazások hozzáférjenek a céges adatok saját nevükben való** való **nem**.
      
      > [!NOTE]
-     > Ha úgy dönt, hogy kapcsolja ki a felhasználói beleegyezés, egy rendszergazda lesz szükséges, hogy engedélyt adjanak az minden olyan új alkalmazás a felhasználó kell használnia.    
+     > Ha úgy dönt, hogy kapcsolja ki a felhasználói beleegyezés, egy rendszergazda lesz szükséges, hogy engedélyt adjanak az minden olyan új alkalmazás a felhasználó kell használnia.
+
 * Megakadályozza, hogy a felhasználók a saját alkalmazások regisztrálása:
   1. Az Azure Portalon nyissa meg a [felhasználói beállítások](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings) szakaszban az Azure Active Directory
   2. Változás **felhasználók regisztrálhatnak alkalmazásokat** való **nem**.
@@ -145,4 +151,3 @@ Továbbra is szeretné, hogy a felhasználók a címtárban, alkalmazások regis
 
 <!--Image references-->
 [apps_service_principals_directory]:../media/active-directory-how-applications-are-added/HowAppsAreAddedToAAD.jpg
-

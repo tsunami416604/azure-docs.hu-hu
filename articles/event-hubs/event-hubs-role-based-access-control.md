@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 05/21/2019
 ms.author: shvija
-ms.openlocfilehash: ae970b9612154a6463c4bf44a65da71a20c81635
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dfdeee9591b5d6ccbadadaef83c6598dd0e850d8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978316"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448140"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Aktív Directory Role-Based hozzáférés-vezérlés (előzetes verzió)
 
@@ -29,10 +29,10 @@ Azure AD RBAC használó alkalmazások nem kell kezelni a SAS-szabályok és a k
 ## <a name="event-hubs-roles-and-permissions"></a>Event Hubs szerepkörök és engedélyek
 Az Azure Event Hubs-névtérré való hozzáférésre biztosít a következő beépített RBAC-szerepkörök:
 
-A [Event Hubs-adatok tulajdonosa (előzetes verzió)](../role-based-access-control/built-in-roles.md#service-bus-data-owner) szerepkör lehetővé teszi az adatokhoz való hozzáférést az Event Hubs-névtér és az entitások (üzenetsorok, témakörök, előfizetések és szűrők)
+A [Azure Event Hubs adatok tulajdonosa (előzetes verzió)](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner-preview) szerepkör lehetővé teszi az adatokhoz való hozzáférést az Event Hubs-névtér és az entitások (üzenetsorok, témakörök, előfizetések és szűrők)
 
 >[!IMPORTANT]
-> Korábban támogatva a felügyelt identitás hozzáadása a **tulajdonosa** vagy **közreműködői** szerepkör. Azonban, adat-hozzáférési jogosultságokat a **tulajdonosa** és **közreműködői** szerepkör már nem összes régió megfelel. Ha használja a **tulajdonosa** vagy **közreműködői** szerepkör, kapcsolót használó a **Event Hubs-adatok tulajdonosa** szerepkör.
+> Korábban támogatva a felügyelt identitás hozzáadása a **tulajdonosa** vagy **közreműködői** szerepkör. Azonban, adat-hozzáférési jogosultságokat a **tulajdonosa** és **közreműködői** szerepkör már nem összes régió megfelel. Ha használja a **tulajdonosa** vagy **közreműködői** szerepkör, kapcsolót használó a **Azure Event Hubs adatok tulajdonosa (előzetes verzió)** szerepkör.
 
 
 ## <a name="use-event-hubs-with-an-azure-ad-domain-user-account"></a>Event Hubs használata az Azure AD tartományi felhasználói fiók

@@ -4,17 +4,17 @@ description: Ez a cikk nyújt információt hibaelhárításáról Desired State
 services: automation
 ms.service: automation
 ms.subservice: ''
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7cb0d77a266dbe8afd331782965e7e9a44663671
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 53fef426c927c690a3b697055f467f6cd35c532c
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514463"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477520"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Hibaelhárítás a Desired State Configuration (DSC)
 
@@ -164,6 +164,24 @@ Ez a hiba általában akkor fordul elő, amikor a csomópont hozzá van rendelve
 
 * Győződjön meg arról, hogy egy csomópont-konfiguráció neve, amely pontosan megegyezik-e a szolgáltatás a csomópont még való hozzárendelése.
 * Dönthet úgy, hogy tartalmazza a csomópont-konfiguráció neve, mely a bevezetési a csomópontot, de nem a csomópont-konfiguráció hozzárendelése
+
+### <a name="failure-linux-temp-noexec"></a>Forgatókönyv: A Linux-konfiguráció alkalmazása, hiba történik az általános hiba
+
+#### <a name="issue"></a>Probléma
+
+A Linux-konfiguráció alkalmazásakor hiba történik, amely tartalmazza a hiba:
+
+```error
+This event indicates that failure happens when LCM is processing the configuration. ErrorId is 1. ErrorDetail is The SendConfigurationApply function did not succeed.. ResourceId is [resource]name and SourceInfo is ::nnn::n::resource. ErrorMessage is A general error occurred, not covered by a more specific error code..
+```
+
+#### <a name="cause"></a>Ok
+
+Ügyfelek azonosította, hogy ha az ügynökszámítógépen hely noexec értéke, DSC jelenlegi verziója nem fogja tudni konfiguráció alkalmazása.
+
+#### <a name="resolution"></a>Megoldás:
+
+* Távolítsa el a noexec beállítást az ügynökszámítógépen helyről.
 
 ## <a name="next-steps"></a>További lépések
 

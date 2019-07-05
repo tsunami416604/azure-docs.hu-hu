@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: jingwang
-ms.openlocfilehash: 4cd61db3ec0e8d88c9b1c6d6ba427b120b3f1af1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3c846ab3e81e7ab8a4948aa4ed96cfa75e8eb3f4
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66152419"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449686"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Adatmásolás az SAP Business warehouse-hoz az Azure Data Factory használatával
 
@@ -125,7 +125,7 @@ Az Azure Portalon nyissa meg az adat-előállítóhoz. Válassza ki **létrehoz�
 
     ![Tevékenység kimeneti részleteinek megtekintése](media/load-sap-bw-data/activity-output-details.png)
 
-## <a name="do-an-incremental-copy-from-sap-bw-open-hub"></a>Hajtsa végre a növekményes SAP BW Open hubról
+## <a name="incremental-copy-from-sap-bw-open-hub"></a>Az SAP BW Open Hub növekményes másolását.
 
 > [!TIP]
 > Lásd: [SAP BW Open Hub összekötő különbözeti kinyerési folyamat](connector-sap-business-warehouse-open-hub.md#delta-extraction-flow) megtudhatja, hogyan adat-előállítóban az SAP BW Open Hub összekötő növekményes adatokat másol az SAP BW. Ez a cikk is segíthet alapszintű összekötő-konfiguráció ismertetése.

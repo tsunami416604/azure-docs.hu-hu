@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 manager: craigg
-ms.date: 06/13/2019
-ms.openlocfilehash: 89df33f453217585e8f0b8ff13d06ee223474fae
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 06/26/2019
+ms.openlocfilehash: a0846a7d03cc2f63af6747c8b8514b563c1d4a5d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272245"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447805"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Áttekintés az Azure SQL Database felügyelt példány erőforráskorlátok
 
@@ -42,6 +42,9 @@ Az Azure SQL Database felügyelt példány két hardvergenerációk telepíthet�
 | Maximális In-Memory OLTP memória | Instance-határérték: 3 GB / virtuális mag<br/>Adatbázis-korlátozások:<br/> – 8 magos: 8 GB adatbázisonként<br/> – 16 magos: 20 GB / adatbázis<br/> – 24-core: 36 GB adatbázisonként | Instance-határérték: 2,5 GB / virtuális mag<br/>Adatbázis-korlátozások:<br/> – 8 magos: 13 GB adatbázisonként<br/> – 16 magos: 32 GB / adatbázis |
 | Maximális Egypéldányos tárolás (általános célú) |  8 TB | 8 TB |
 | Maximális Egypéldányos tárolás (üzletileg kritikus) | 1 TB | 1 TB-os, 2 TB vagy 4 TB-os attól függően, a magok számát |
+
+> [!IMPORTANT]
+> Új Gen4 adatbázisok már nem támogatottak a Kelet-Ausztrália régióban.
 
 ### <a name="service-tier-characteristics"></a>Szolgáltatási szint tulajdonságok
 

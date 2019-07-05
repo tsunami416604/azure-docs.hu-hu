@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.openlocfilehash: b2407200b995ad956f233248f6cdd58488b583d6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a535510ce56147f708f1cd8219cf898e6e0df36b
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64688791"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483791"
 ---
 # <a name="example-apache-storm-topologies-and-components-for-apache-storm-on-hdinsight"></a>Az Apache Storm-topológiapéldák és Apache Storm on HDInsight összetevők
 
@@ -41,10 +41,10 @@ Az alábbiakban a létrehozott és a segítségével a Microsoft által karbanta
 
 ### <a name="next-steps"></a>További lépések
 
-* [Bevezetés a HDInsight-alapú Apache Storm használatába][2b8c3488]
+* [Létrehoz és felügyel egy Azure HDInsight az Apache Storm-topológia](./apache-storm-quickstart.md)
 * [Ismerje meg, hogyan helyezheti üzembe és felügyelheti az Apache Storm on HDInsight az Apache Storm-topológiák][6eb0d3b8]
 
-[2b8c3488]:apache-storm-tutorial-get-started-linux.md "Ismerje meg, hogyan hozzon létre egy Apache Storm HDInsight-fürtön, és a Storm irányítópultjának használatával például topológiák üzembe helyezése."
+
 [6eb0d3b8]:apache-storm-deploy-monitor-topology-linux.md "Ismerje meg, hogyan helyezheti üzembe és kezelhetők a topológiák a web-alapú Apache Storm irányítópultjának és a Storm felhasználói felületének vagy a HDInsight Tools for Visual Studio használatával."
 [16fce2d1]:apache-storm-develop-csharp-visual-studio-topology.md "Ismerje meg, hogyan hozhat létre a HDInsight Tools for Visual Studio használatával C# Storm-topológiák."
 [5797064f]:apache-storm-develop-java-topology.md "Útmutató a Storm-topológiák létrehozása javában mavennel, hozzon létre egy alapszintű wordcount topológiát."

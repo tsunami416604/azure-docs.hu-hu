@@ -8,16 +8,16 @@ ms.workload: web
 ms.topic: article
 ms.date: 2/04/2019
 ms.author: msangapu-msft
-ms.openlocfilehash: 6b4e145a693aabbf1a00d732e2fd602e7c887a03
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e6284174089419cd201d094bcb1a8c7e865d2892
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956012"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484425"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Tartalom továbbítása az Azure Storage a linuxon futó App Service-ben
 
-Ez az útmutató bemutatja, hogyan statikus tartalmak továbbítása a Linuxon futó App Service használatával [Azure Storage](/azure/storage/common/storage-introduction). Értékelemek közé tartozik a védett tartalom, a tartalom hordozhatóságot, több alkalmazás és a több való továbbítása során a hozzáférést. 
+Ez az útmutató bemutatja, hogyan statikus tartalmak továbbítása a Linuxon futó App Service használatával [Azure Storage](/azure/storage/common/storage-introduction). Értékelemek közé tartozik a védett tartalom, a tartalom hordozhatóságot, több alkalmazás és a több való továbbítása során a hozzáférést.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -28,6 +28,8 @@ Ez az útmutató bemutatja, hogyan statikus tartalmak továbbítása a Linuxon f
 
 > [!NOTE]
 > Az Azure Storage nem alapértelmezett tároló, és külön kell fizetnie, nem találhatók meg a webalkalmazás.
+>
+> Használata a saját storage nem támogatja a tárolási tűzfal-konfiguráció infrastruktúra jelentette korlátok miatt.
 >
 
 Hozzon létre egy Azure [Azure storage-fiók](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-cli).

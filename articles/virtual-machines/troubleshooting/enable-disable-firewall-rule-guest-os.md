@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: ed3d89bc15f960947a48ac4364bd14f3fdf50cc2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7a547efb7af69c58f8e04615d24dd7c230f0c8b0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60505560"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444648"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Engedélyezheti vagy tilthatja le egy tűzfalszabályt egy Azure virtuális gép vendég operációs rendszeren
 
@@ -99,7 +99,7 @@ Ha a virtuális gép online állapotban, és a egy másik virtuális Géphez ugy
 
 1.  A hibaelhárító virtuális Géphez, indítsa el a Beállításszerkesztőt (regedit.exe), és válassza ki **fájl** > **csatlakozás hálózati beállításjegyzék**.
 
-2.  Nyissa meg a *CÉLGÉPEN*\SYSTEM ágban, és adja meg a következő értékeket:
+2.  Nyissa meg a *CÉLGÉPEN*\SYSTEM ágban, és adja meg a következő értékeket:
 
     * Egy szabály engedélyezéséhez nyissa meg a következő beállításazonosítót:
     
@@ -123,26 +123,26 @@ Ha a virtuális gép online állapotban, és a egy másik virtuális Géphez ugy
 
 Ha bármilyen módszerrel nem éri el a virtuális gép, egyéni Szkriptbővítmény használatával sikertelen lesz, és el közvetlenül a rendszerlemez mivel OFFLINE módban működik.
 
-Mielőtt végrehajtaná ezeket a lépéseket, pillanatkép készítése a rendszerlemezt az érintett virtuális gép biztonsági mentéséhez. További információkért lásd: [lemez pillanatképének elkészítése](../windows/snapshot-copy-managed-disk.md).
+Mielőtt végrehajtaná ezeket a lépéseket, pillanatkép készítése a rendszerlemezt az érintett virtuális gép biztonsági mentéséhez. További információkért lásd: [lemez pillanatképének elkészítése](../windows/snapshot-copy-managed-disk.md).
 
 1.  [A rendszer lemez csatolása egy helyreállítási virtuális Géphez](troubleshoot-recovery-disks-portal-windows.md).
 
 2.  Indítsa el a helyreállítási virtuális Gépet egy távoli asztali kapcsolatot.
 
-3.  Győződjön meg arról, hogy a lemez megjelölt **Online** a Lemezkezelés konzol. Vegye figyelembe, hogy a meghajtó betűjele, amely hozzá van rendelve a csatolt rendszerlemezt.
+3.  Győződjön meg arról, hogy a lemez megjelölt **Online** a Lemezkezelés konzol. Vegye figyelembe, hogy a meghajtó betűjele, amely hozzá van rendelve a csatolt rendszerlemezt.
 
 4.  Végezze el a módosításokat, mielőtt a \windows\system32\config mappájába másolatának létrehozása, abban az esetben egy, a módosítások visszaállítása szükséges.
 
 5.  A hibaelhárító virtuális Géphez indítsa el a Beállításszerkesztőt (regedit.exe).
 
-6.  Jelölje ki a **HKEY_LOCAL_MACHINE** kulcsát, és válassza ki **fájl** > **a struktúra betöltése** a menüből.
+6.  Jelölje ki a **HKEY_LOCAL_MACHINE** kulcsát, és válassza ki **fájl** > **a struktúra betöltése** a menüből.
 
     ![Regedit](./media/enable-or-disable-firewall-rule-guest-os/load-registry-hive.png)
 
 7.  Keresse meg, és nyissa meg a \windows\system32\config\SYSTEM fájlt. 
 
     > [!Note]
-    > A név megadását kéri. Adja meg **BROKENSYSTEM**, majd **HKEY_LOCAL_MACHINE**. Ekkor megjelenik egy további kulcs nevű **BROKENSYSTEM**. A hibaelhárításhoz, ezek a probléma struktúrák csatlakoztatási azt **BROKENSYSTEM**.
+    > A név megadását kéri. Adja meg **BROKENSYSTEM**, majd **HKEY_LOCAL_MACHINE**. Ekkor megjelenik egy további kulcs nevű **BROKENSYSTEM**. A hibaelhárításhoz, ezek a probléma struktúrák csatlakoztatási azt **BROKENSYSTEM**.
 
 8.  Hajtsa végre a következő módosításokat a BROKENSYSTEM ág:
 
@@ -164,7 +164,7 @@ Mielőtt végrehajtaná ezeket a lépéseket, pillanatkép készítése a rendsz
         
         **v2.22 |} A művelet = engedélyezése |} Aktív = FALSE |} Dir = In |} Protokoll = 6 |} Profil = Domain |} Profil privát = |} Profil = nyilvános |} LPort 3389-es = |} App=%SystemRoot%\System32\svchost.exe| SVC = termservice |} Name =\@FirewallAPI.dll,-28775 |} Leírás =\@FirewallAPI.dll,-28756 |} EmbedCtxt =\@FirewallAPI.dll,-28752 |}**
 
-9.  Jelöljön ki **BROKENSYSTEM**, majd válassza ki **fájl** > **struktúra** a menüből.
+9.  Jelöljön ki **BROKENSYSTEM**, majd válassza ki **fájl** > **struktúra** a menüből.
 
 10. [Válassza le a rendszer lemezt, és hozza létre újból a virtuális gép](troubleshoot-recovery-disks-portal-windows.md).
 

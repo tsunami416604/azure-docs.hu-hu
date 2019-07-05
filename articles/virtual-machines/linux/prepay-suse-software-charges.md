@@ -1,23 +1,21 @@
 ---
-title: Fizessen elő az szoftvercsomagok – alap - fenntartások Azure |} A Microsoft Docs
+title: Fizessen elő az szoftvercsomagok – alap - fenntartások Azure
 description: Ismerje meg, hogyan lehet szoftverfrissítési csomagok megtakarítást érhet el a használatalapú fizetéses költségekhez képest kifizetése.
-documentationcenter: ''
-author: yashesvi
+author: bandersmsft
 manager: yashesvi
-editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/12/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: e15dcdbbcaed32d836bb751ef93ce17e90bd6905
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8e9d07bf01536d7865bd79f667a937037d96837
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60771243"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67489885"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Előre fizetés Azure-szoftvercsomagokért
 
@@ -25,22 +23,22 @@ Fizessen elő a SUSE és a RedHat szoftver kihasználtságát az Azure-ban, ha p
 
 SUSE és RedHat szoftverfrissítési csomagok az Azure Portalon vásárolhat. A csomag vásárlása:
 
-- Legalább egy vállalati vagy használatalapú fizetéses előfizetésre a tulajdonosi szerepkörrel kell rendelkeznie.
+- Legalább egy vállalati vagy önálló előfizetést a használatalapú díjszabás a tulajdonosi szerepkörrel kell rendelkeznie.
 - Vállalati előfizetés esetén a **fenntartott példányok hozzáadása** beállítást engedélyezni kell a [a nagyvállalati szerződések portáljának](https://ea.azure.com/). Ha a beállítás le van tiltva, az előfizetéshez tartozó nagyvállalati szerződés rendszergazdájának kell lennie.
 - A Cloud Solution Provider (CSP) program a felügyeleti ügynökök vagy értékesítési ügynökök vásárolhatja meg a szoftverfrissítési csomagok.
 
 ## <a name="buy-a-software-plan"></a>Szoftverfrissítési csomag vásárlása
 
-1. Jelentkezzen be az Azure Portalon, majd [foglalások](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
+1. Jelentkezzen be az Azure Portalon, és nyissa meg [foglalások](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
 2. Kattintson a **Hozzáadás** , és válassza ki a szoftver tervet, amely szeretne vásárolni.
 Adja meg a kötelező mezőket. SUSE Linux rendszerű virtuális gép vagy a RedHat rendszerű virtuális Gépet, amely megfelel az Ön a vásárlás attribútumait lekérdezi a kedvezményt. A tényleges száma üzemelő példánya, amely a kedvezményt lekérése a hatókör és a kiválasztott mennyiség függenek.
 3. Válasszon egy előfizetést. Azt a csomagot szolgál.
-Az előfizetés fizetési módja az előzetes költségek, a Foglalás díját. Az előfizetés típusúnak kell lennie a nagyvállalati szerződés (számok kínálnak: MS-AZR-0017P vagy MS-AZR - 0148 P) vagy a használatalapú fizetés (számok kínálnak: MS-AZR-0003P vagy MS-AZR-0023P).
+Az előfizetés fizetési módja az előzetes költségek, a Foglalás díját. Az előfizetés típusúnak kell lennie a nagyvállalati szerződés (számok kínálnak: MS-AZR-0017P vagy MS-AZR - 0148 P) és a használatalapú díjszabás az egyes szerződés (számok kínálnak: MS-AZR-0003P vagy MS-AZR-0023P).
     - Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva.
-    - Használatalapú fizetéses előfizetésre az előfizetés bankkártyával vagy számla ellenében a fizetési módot, a díjakat számlázzuk ki.
+    - Az egyes előfizetésre, használatalapú díjszabás bankkártyával vagy számla ellenében az előfizetés fizetési módot, a díjakat számlázzuk ki.
 4. Válassza ki a hatókört. A hatókör egy előfizetést vagy több előfizetés (megosztott hatókör) is foglalkozik.
     - Egyetlen előfizetés – a csomag kedvezményt van alkalmazza a megfelelő használati az előfizetésben.
-    - Közös – a csomag kedvezményt van alkalmazza a megfelelő példányok a számlázási környezetben minden előfizetésben. Nagyvállalati ügyfeleink esetén a számlázási környezetben a regisztráció és az összes előfizetés tartalmazza a regisztrációt. Használatalapú fizetéses ügyfelek számára a számlázási környezetben a fiók rendszergazdája által létrehozott összes utólagos elszámolású előfizetések.
+    - Közös – a csomag kedvezményt van alkalmazza a megfelelő példányok a számlázási környezetben minden előfizetésben. Nagyvállalati ügyfeleink esetén a számlázási környezetben a regisztráció és az összes előfizetés tartalmazza a regisztrációt. A használatalapú díjszabási ügyfelekkel az egyes csomagok a számlázási környezetben használatalapú díjszabási előfizetések, a fiók rendszergazdája által létrehozott minden egyes csomagok.
 5. Válasszon ki egy terméket, választhat a virtuális gép mérete és a kép típusa. Csak a kiválasztott virtuális gép méretét a kedvezmény érvényes.
 6. Válasszon egy egyéves vagy hároméves kifejezést.
 7. Válassza ki a mennyiség, amely a számlázási kedvezményt kaphat fizetett Virtuálisgép-példányok száma.

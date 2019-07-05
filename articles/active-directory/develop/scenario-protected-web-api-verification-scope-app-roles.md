@@ -16,24 +16,24 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b700825be9a7fe23fe4b50a2d69d4de71f7dc038
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 23ff03316a1f9409d4d6e4b7ddf52d0c8cc7a909
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67116453"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551539"
 ---
-# <a name="protected-web-api---adding-authorization-to-your-api"></a>Védett webes API - engedélyezési ad hozzá az API-hoz
+# <a name="protected-web-api-adding-authorization-to-your-api"></a>Védett webes API-hoz: Engedélyt ad hozzá az API-hoz
 
-Ez a cikk bemutatja, hogyan adhat engedélyt a webes API-nak. Ez a védelem biztosítja, hogy, csak hívja meg:
+Ez a cikk bemutatja, hogyan adhat engedélyt a webes API-hoz. Ez a védelem biztosítja, hogy az API-t kizárólag a neve:
 
-- alkalmazások megfelelő hatókörökkel felhasználók nevében 
-- vagy a megfelelő alkalmazás-szerepkörök démon alkalmazások.
+- Alkalmazások, felhasználók, akik rendelkeznek a megfelelő hatókörök nevében.
+- Démon alkalmazások, amelyek rendelkeznek a megfelelő alkalmazás-szerepkörök.
 
-Az ASP.NET / ASP.NET Core webes API, amellyel biztosítható, kell hozzáadni a `[Authorize]` attribútum:
+Egy ASP.NET/ASP.NET Core webes API-k védelme érdekében kell hozzáadni a `[Authorize]` attribútum a következők közül:
 
-- a vezérlő magát, ha azt szeretné, hogy a védeni kívánt vezérlő a műveletek
-- vagy az egyéni vezérlő művelet az API-hoz.
+- A vezérlő magát, ha azt szeretné, hogy a védeni kívánt vezérlő a műveletek
+- Az egyéni vezérlő művelet az API-hoz
 
 ```CSharp
     [Authorize]
@@ -43,22 +43,22 @@ Az ASP.NET / ASP.NET Core webes API, amellyel biztosítható, kell hozzáadni a 
     }
 ```
 
-Azonban ez a védelem nem elegendő. Azt, hogy az ASP.NET csak guaranties / ASP.NET Core fogja ellenőrizni a jogkivonatot. Az API-t, győződjön meg arról, hogy a jogcímek, vár, különösen a webes API meghívásához használt token kérelmezte van szüksége:
+Azonban ez a védelem nem elegendő. Ez garantálja, hogy csak, hogy a jogkivonat érvényesítéséhez ASP.NET/ASP.NET Core lesz. Győződjön meg arról, hogy a webes API a jogcímek kérelmezte meghívásához használt token azt vár, különösen az API-t kell:
 
-- a **hatókörök** Ha egy felhasználó nevében az API neve
-- a **alkalmazás-szerepkörök** , ha az API nem hívható meg egy démon alkalmazásból.
+- A *hatókörök*, ha az API hívása egy felhasználó nevében.
+- A *alkalmazás-szerepkörök*, ha az API nem hívható meg egy démon alkalmazásból.
 
 ## <a name="verifying-scopes-in-apis-called-on-behalf-of-users"></a>A felhasználók nevében nevű API-k hatókörök ellenőrzése
 
-Ha egy ügyfélalkalmazás egy felhasználó nevében hívja meg az API-t, majd egy adott hatókörökkel, az API tulajdonosi jogkivonat kéréséhez szükséges (lásd: [helykódot |} Tulajdonosi jogkivonat](scenario-protected-web-api-app-configuration.md#bearer-token))
+Ha egy ügyfélalkalmazás egy felhasználó nevében hívja meg az API-t, kell egy tulajdonosi jogkivonat, amely rendelkezik az API hatóköreinek adott kérelem. (Lásd: [helykódot |} Tulajdonosi jogkivonat](scenario-protected-web-api-app-configuration.md#bearer-token).)
 
 ```CSharp
 [Authorize]
 public class TodoListController : Controller
 {
     /// <summary>
-    /// The Web API will only accept tokens 1) for users, 2) having the `access_as_user` scope for
-    /// this API
+    /// The web API will accept only tokens 1) for users, 2) that have the `access_as_user` scope for
+    /// this API.
     /// </summary>
     const string scopeRequiredByAPI = "access_as_user";
 
@@ -67,7 +67,7 @@ public class TodoListController : Controller
     public IEnumerable<TodoItem> Get()
     {
         VerifyUserHasAnyAcceptedScope(scopeRequiredByAPI);
-        // Do the work and return the result
+        // Do the work and return the result.
         ...
     }
 ...
@@ -76,15 +76,15 @@ public class TodoListController : Controller
 
 A `VerifyUserHasAnyAcceptedScope` metódus az alábbihoz hasonlóra kellene tennie:
 
-- Győződjön meg arról, hogy a jogcímek nevű `http://schemas.microsoft.com/identity/claims/scope` vagy `scp`
-- Győződjön meg arról, hogy a jogcím tartalmazó a hatókör, az API által várt értékkel rendelkezik.
+- Győződjön meg arról, hogy a jogcím nevű `http://schemas.microsoft.com/identity/claims/scope` vagy `scp`.
+- Győződjön meg arról, hogy a jogcím értéke, amely tartalmazza az API által várt hatókörébe.
 
 ```CSharp
     /// <summary>
-    /// When applied to an <see cref="HttpContext"/>, verifies that the user authenticated in the 
-    /// Web API has any of the accepted scopes.
-    /// If the authenticated user does not have any of these <paramref name="acceptedScopes"/>, the
-    /// method throws an HTTP Unauthorized with the message telling which scopes are expected in the token
+    /// When applied to a <see cref="HttpContext"/>, verifies that the user authenticated in the 
+    /// web API has any of the accepted scopes.
+    /// If the authenticated user doesn't have any of these <paramref name="acceptedScopes"/>, the
+    /// method throws an HTTP Unauthorized error with a message noting which scopes are expected in the token.
     /// </summary>
     /// <param name="acceptedScopes">Scopes accepted by this API</param>
     /// <exception cref="HttpRequestException"/> with a <see cref="HttpResponse.StatusCode"/> set to 
@@ -107,12 +107,12 @@ A `VerifyUserHasAnyAcceptedScope` metódus az alábbihoz hasonlóra kellene tenn
     }
 ```
 
-A mintakód olyan ASP.NET Core. Az ASP.NET csak cserélje le a `HttpContext.User` által `ClaimsPrincipal.Current`, és a jogcímtípus `"http://schemas.microsoft.com/identity/claims/scope"` által `"scp"` (lásd az alábbi kódrészletben is)
+A mintakód olyan ASP.NET Core. Az ASP.NET, csak cserélje le `HttpContext.User` a `ClaimsPrincipal.Current`, és cserélje le a jogcímtípus `"http://schemas.microsoft.com/identity/claims/scope"` a `"scp"`. (Lásd a cikk későbbi részében a kódtöredék.)
 
 ## <a name="verifying-app-roles-in-apis-called-by-daemon-apps"></a>Alkalmazás-szerepkörök által démon alkalmazások API-k ellenőrzése
 
-A webes API-t hívja meg, ha egy [démon alkalmazás](scenario-daemon-overview.md), majd az alkalmazást a webes API-alkalmazás számára van szükség. Úgy tapasztaltuk [scenario-protected-web-api-app-registration.md#how-to-expose-application-permissions--app-roles-] az, hogy az API-t tesz elérhetővé az ilyen engedélyek (mint például a `access_as_application` alkalmazás szerepkör).
-Most már van szüksége az API-k, ellenőrizze, hogy az tartalmazza a tokent kapott a `roles` jogcímek és az, hogy ez a jogcím értéke azt vár. Ez az ellenőrzés során a kód hasonlít a kódot, amely ellenőrzi a delegált engedélyeket, kivéve, hogy a tesztelés helyett `scopes`, a tartományvezérlő műveleti tesztelést `roles`:
+Ha a webes API-t hívja meg a [démon alkalmazás](scenario-daemon-overview.md), amelyet az alkalmazás van szükség a webes API-alkalmazás számára. Úgy tapasztaltuk [adatokhoz hozzáférést biztosító alkalmazás-engedélyeket (alkalmazás-szerepkörök)](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#exposing-application-permissions-app-roles) , hogy az API-t tesz elérhetővé az ilyen engedélyek (például a `access_as_application` alkalmazás szerepkör).
+Most már van szüksége az API-k, ellenőrizze, hogy az tartalmazza a tokent kapott a `roles` és, hogy ez a jogcím értéke, vár a kérelmet. Ez az ellenőrzés során a kód hasonlít a kódot, amely ellenőrzi a delegált engedélyeket, kivéve, hogy a tesztelés helyett `scopes`, a tartományvezérlő műveleti tesztelést `roles`:
 
 ```CSharp
 [Authorize]
@@ -132,7 +132,7 @@ private void ValidateAppRole(string appRole)
 {
     //
     // The `role` claim tells you what permissions the client application has in the service.
-    // In this case we look for a `role` value of `access_as_application`
+    // In this case, we look for a `role` value of `access_as_application`.
     //
     Claim roleClaim = ClaimsPrincipal.Current.FindFirst("roles");
     if (roleClaim == null || !roleClaim.Value.Split(' ').Contains(appRole))
@@ -146,13 +146,13 @@ private void ValidateAppRole(string appRole)
 }
 ```
 
-A mintakód az ASP.NET-hez. ASP.NET Core, csak cserélje `ClaimsPrincipal.Current` által `HttpContext.User` és a `"roles"` jogcím neve alapján `"http://schemas.microsoft.com/identity/claims/roles"` (lásd a fenti kódrészletben)
+A mintakód az ASP.NET-hez. Az ASP.NET Core, csak cserélje le `ClaimsPrincipal.Current` a `HttpContext.User`, és cserélje le a `"roles"` jogcím nevét `"http://schemas.microsoft.com/identity/claims/roles"`. (Lásd a cikk korábbi részeiben kódrészlet.)
 
-### <a name="accepting-app-only-tokens-if-the-web-api-should-only-be-called-by-daemon-apps"></a>Csak alkalmazás-jogkivonatokról fogad, ha a webes API-t kell lze volat pouze démon alkalmazások
+### <a name="accepting-app-only-tokens-if-the-web-api-should-be-called-only-by-daemon-apps"></a>Csak az alkalmazásra vonatkozó jogkivonatokat fogad, ha hívandó meg a webes API-k csak a démon alkalmazások
 
-A `roles` jogcím használják a felhasználók a felhasználó-hozzárendelés minták (lásd: [hogyan: Alkalmazás-szerepkörök hozzáadása az alkalmazásban, és fogadhatók a jogkivonat](howto-add-app-roles-in-azure-ad-apps.md)). Csak ellenőrzése a szerepkörök jogosultak az alkalmazások jelentkezik be, a felhasználók és fordítva, ha a szerepköröket is hozzárendelhető. Javasoljuk, hogy a különböző szerepkörök deklarálva a felhasználók és alkalmazások ezt zavarok megelőzése érdekében.
+A `roles` jogcímet is szolgál a felhasználó-hozzárendelés minták felhasználója számára. (Lásd: [hogyan: Alkalmazás-szerepkörök hozzáadása az alkalmazásban, és fogadhatók a jogkivonat](howto-add-app-roles-in-azure-ad-apps.md).) Csak ellenőrzése a szerepkörök jogosultak az alkalmazások jelentkezik be, a felhasználók és fordítva, ha a szerepköröket is hozzárendelhető. Azt javasoljuk, hogy a felhasználók és alkalmazások ezt zavarok megelőzése érdekében különböző szerepkörök deklarálható.
 
-Ha azt szeretné, hogy csak a webes API meghívásához démon alkalmazások, érdemes feltétel hozzáadása, ha az alkalmazás-szerepkör, ellenőrizze, hogy, hogy a jogkivonat-e egy csak alkalmazás token:
+Ha azt szeretné, hogy a webes API hívása csak démon alkalmazások, feltétel hozzáadása, ha az alkalmazás-szerepkör, ellenőrizze, hogy, hogy a jogkivonat-e egy csak alkalmazás token:
 
 ```CSharp
 string oid = ClaimsPrincipal.Current.FindFirst("oid");
@@ -160,7 +160,7 @@ string sub = ClaimsPrincipal.Current.FindFirst("sub");
 bool isAppOnlyToken = oid == sub;
 ```
 
-A más néven inverz feltétel ellenőrzése csak egy felhasználót, jelentkezzen be az API meghívása az alkalmazások lehetővé teszi.
+Ellenőrzi a más néven inverz feltételt lehetővé teszi a csak a felhasználó jelentkezzen be az API meghívása az alkalmazások.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2edbf5548f5e230986f0a1786d67fb4580e574e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7b9d272c8a01eeed58278a6e7f0cec147b01a10e
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235455"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482936"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Az Azure Active Directory hozzájárulási keretrendszer
 
@@ -50,7 +50,7 @@ A következő lépések bemutatják, hogyan beleegyezése élmény az alkalmazá
 
 1. Miután a felhasználó jelentkezett be, az Azure AD határozza meg, ha a felhasználónak megjelenítendő egy hozzájárulást kérő lap. Ez a döntés e a felhasználó (vagy a szervezet rendszergazdája) már megadta az alkalmazás jóváhagyásának alapul. Jóváhagyás nem már rendelkezik, ha az Azure AD felkéri a felhasználót a hozzájárulásra, és megjeleníti a működéséhez szükséges engedélyekkel. A beleegyezés párbeszédpanelen megjelenő engedélykészletet egyeznek a kiválasztott azokkal a **delegált engedélyek** az Azure Portalon.
 
-    ![Felhasználói jóváhagyás élmény](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
+    ![A beleegyezés párbeszédpanelen látható engedélyeket egy példát mutat be](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
 
 1. Miután a felhasználó engedélyezi a jóváhagyás, az engedélyezési kódot az alkalmazás, amely váltják a hozzáférési jogkivonat beszerzése és a frissítési token vissza küld vissza. Ezzel a folyamattal kapcsolatos további információkért lásd: [webes API-alkalmazás típusa](web-api.md).
 

@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 717607de6d9d193a7373637d0d0fcd879b54fed0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73b832002d1c15505e8ae845ac2585548c8e080f
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544868"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482143"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Engedélyek és jóváhagyás az a Microsoft identity platform végpont
 
@@ -89,7 +89,7 @@ Ha egy alkalmazás segítségével hajtja végre a bejelentkezési [OpenID Conne
 
 A `email` hatókör használható a `openid` hatókörrel és a többi. Az alkalmazás-hozzáférés a felhasználó elsődleges e-mail címének formájában nyújt a `email` jogcím. A `email` jogcím szerepel egy token csak akkor, ha e-mail-címmel társítva, a felhasználói fiókkal, amely nem mindig ez a helyzet. Ha az a `email` hatókör, az alkalmazás fel kell készülnöm kezelésére egy esetet, amelyben a `email` jogcím nem szerepel a jogkivonatban.
 
-### <a name="profile"></a>Profil
+### <a name="profile"></a>profile
 
 A `profile` hatókör használható a `openid` hatókörrel és a többi. Jelentős mennyiségű felhasználóval kapcsolatos információkat nyújt az alkalmazás eléréséhez. Az hozzá tudjon férni információkat is tartalmaz, de nem csak az a felhasználó Utónév, Vezetéknév, elsődleges felhasználónév és objektum azonosítója. Egy adott felhasználó a id_tokens paraméter elérhető profil jogcímek teljes listáját lásd: a [ `id_tokens` referencia](id-tokens.md).
 
@@ -124,7 +124,7 @@ Miután a felhasználó megadja a hitelesítő adatokat, a Microsoft identity pl
 > [!NOTE]
 > Jelenleg a `offline_access` ("karbantartása hozzáférést rendelkezik adott adatokhoz való hozzáférés") és `user.read` ("a bejelentkezés és a profilja olvasását") engedélyeket a kezdeti beleegyezik, az alkalmazás automatikusan tartalmazza.  Ezek az engedélyek általában szükség a megfelelő alkalmazás működéséhez - `offline_access` frissítési jogkivonatok, kritikus fontosságú, az alkalmazás hozzáférést biztosít a natív és a web apps közben `user.read` hozzáférést nyújt a `sub` jogcím, így az ügyfél vagy az alkalmazásnak, hogy megfelelően a felhasználó azonosítására idő- és hozzáférés kezdetleges felhasználói információkat.  
 
-![Munkahelyi fiók jóváhagyás](./media/v2-permissions-and-consent/work_account_consent.png)
+![Példaként szolgáló képernyőképen, amely bemutatja a munkahelyi fiók jóváhagyás](./media/v2-permissions-and-consent/work_account_consent.png)
 
 Amikor a felhasználó a engedély kérelmet jóváhagyja, jóváhagyás rögzíti, és a felhasználó nem rendelkezik a későbbi bejelentkezések az alkalmazásnak újra jóváhagyást.
 
@@ -199,9 +199,9 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 | Paraméter | Állapot | Leírás |
 | --- | --- | --- |
-| `tenant` | Szükséges | A directory-bérlőhöz, amelyet szeretne az engedélyt. A megadott GUID vagy rövid név formátumban, vagy az általános hivatkozott `common` a példában látható módon. |
+| `tenant` | Kötelező | A directory-bérlőhöz, amelyet szeretne az engedélyt. A megadott GUID vagy rövid név formátumban, vagy az általános hivatkozott `common` a példában látható módon. |
 | `client_id` | Kötelező | A **Alkalmazásazonosítót (ügyfél)** , amely a [az Azure-portál – alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) az alkalmazáshoz rendelt felhasználói élményt. |
-| `redirect_uri` | Szükséges |Az átirányítási URI-t a válasz az alkalmazás kezelni kell elküldeni kívánt helyre. Ez pontosan egyeznie kell az átirányítási URI-k, amelyek az alkalmazás regisztrációs portál regisztrált. |
+| `redirect_uri` | Kötelező |Az átirányítási URI-t a válasz az alkalmazás kezelni kell elküldeni kívánt helyre. Ez pontosan egyeznie kell az átirányítási URI-k, amelyek az alkalmazás regisztrációs portál regisztrált. |
 | `state` | Ajánlott | A kérésben is a token válaszban visszaadott érték. Bármilyen tartalmat karakterlánc lehet. Az állapot használatával kódolása a felhasználói állapot az alkalmazás információ előtt a hitelesítési kérelmet, például az oldal vagy voltak a nézetet. |
 
 Ezen a ponton a az Azure AD bérlői rendszergazdával, jelentkezzen be a kérés teljesítéséhez szükséges. A rendszergazda hagyja jóvá a kért az alkalmazás regisztrációs portál az alkalmazáshoz tartozó összes engedélyt kell adnia.

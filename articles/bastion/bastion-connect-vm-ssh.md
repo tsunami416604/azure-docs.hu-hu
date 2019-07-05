@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: cherylmc
-ms.openlocfilehash: 572043598c71a400e154c5c2e9e6c2f1e9b4ab49
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 69548541d16db95f633400808f72aebaf59cff08
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191797"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477783"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion-preview"></a>Csatlakozás Azure megerősített (előzetes verzió) használata Linux rendszerű virtuális géphez SSH-val
 
@@ -42,7 +42,7 @@ Annak érdekében, hogy a kapcsolat létrehozása a következő szerepkörök sz
 ## <a name="username"></a>Csatlakozás: Felhasználónév és jelszó használatával
 
 
-1. Az a [az Azure portal](https://aka.ms/BastionHost) a megerősített előzetes verzió, lépjen a virtuális gép, amelyhez csatlakozni kíván, majd kattintson **Connect**. A virtuális Gépet kell Linux rendszerű virtuális gép, ha az SSH-kapcsolatot használ.
+1.  Használat [ezt a hivatkozást](https://aka.ms/BastionHost) Azure megerősített a betekintő portál lap megnyitásához. Keresse meg a virtuális gép, amelyhez csatlakozni kíván, majd kattintson a **Connect**. A virtuális Gépet kell Linux rendszerű virtuális gép, ha az SSH-kapcsolatot használ.
 1. Connect gombra kattint, az oldalsó sáv megjelenik, amely három lap található – RDP, SSH és a megerősített. Megerősített lett üzembe helyezve, a virtuális hálózathoz, ha a megerősített lap alapértelmezés szerint aktív. Ha a virtuális hálózat a megerősített töltötte, tekintse meg [konfigurálása megerősített](bastion-create-host-portal.md). Ha nem látja, akkor **megerősített** felsorolt, nem nyitott a betekintő portálon. Nyissa meg a portál használatával [ezt a hivatkozást](https://aka.ms/BastionHost).
 
       ![Virtuális gép csatlakoztatása](./media/bastion-connect-vm-ssh/bastion.png)
@@ -52,7 +52,7 @@ Annak érdekében, hogy a kapcsolat létrehozása a következő szerepkörök sz
 
 ## <a name="privatekey"></a>Csatlakozás: Manuálisan adja meg a titkos kulcsot
 
-1. Az a [az Azure portal](https://aka.ms/BastionHost) a megerősített előzetes verzió, lépjen a virtuális gép, amelyhez csatlakozni kíván, majd kattintson **Connect**. A virtuális Gépet kell Linux rendszerű virtuális gép, ha az SSH-kapcsolatot használ.
+1.  Használat [ezt a hivatkozást](https://aka.ms/BastionHost) Azure megerősített a betekintő portál lap megnyitásához. Keresse meg a virtuális gép, amelyhez csatlakozni kíván, majd kattintson a **Connect**. A virtuális Gépet kell Linux rendszerű virtuális gép, ha az SSH-kapcsolatot használ.
 1. Connect gombra kattint, az oldalsó sáv megjelenik, amely három lap található – RDP, SSH és a megerősített. Megerősített lett üzembe helyezve, a virtuális hálózathoz, ha a megerősített lap alapértelmezés szerint aktív. Ha a virtuális hálózat a megerősített töltötte, tekintse meg [konfigurálása megerősített](bastion-create-host-portal.md). Ha nem látja, akkor **megerősített** felsorolt, nem nyitott a betekintő portálon. Nyissa meg a portál használatával [ezt a hivatkozást](https://aka.ms/BastionHost).
 
       ![Virtuális gép csatlakoztatása](./media/bastion-connect-vm-ssh/bastion.png)
@@ -63,7 +63,7 @@ Annak érdekében, hogy a kapcsolat létrehozása a következő szerepkörök sz
 
 ## <a name="ssh"></a>Csatlakozás: A titkos kulcsfájl használata
 
-1. Az a [az Azure portal](https://aka.ms/BastionHost) a megerősített előzetes verzió, lépjen a virtuális gép, amelyhez csatlakozni kíván, majd kattintson **Connect**. A virtuális Gépet kell Linux rendszerű virtuális gép, ha az SSH-kapcsolatot használ.
+1.  Használat [ezt a hivatkozást](https://aka.ms/BastionHost) Azure megerősített a betekintő portál lap megnyitásához. Keresse meg a virtuális gép, amelyhez csatlakozni kíván, majd kattintson a **Connect**. A virtuális Gépet kell Linux rendszerű virtuális gép, ha az SSH-kapcsolatot használ.
 
     ![Virtuális gép csatlakoztatása](./media/bastion-connect-vm-ssh/connect.png)
 

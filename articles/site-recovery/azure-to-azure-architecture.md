@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: 25cf3914274e73e0789aa87e9288649d1b0cb1eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9f985260175e5f54a17799ef07b3a280f42b716e
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399577"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491888"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Az Azure-ból Azure-ba történő vészhelyreállítás architektúrája
 
@@ -31,7 +31,7 @@ A következő összetevők kapnak szerepet Azure virtuális gépek vészhelyreá
 **Virtuális gépek a forrásrégióban** | A több Azure virtuális gépek egyike egy [forrásrégió támogatott](azure-to-azure-support-matrix.md#region-support).<br/><br/> Virtuális gépek futtathat bármely [támogatott operációs rendszert](azure-to-azure-support-matrix.md#replicated-machine-operating-systems).
 **Forrás Virtuálisgép-tároló** | Azure virtuális gépek kezelhetők, vagy nem felügyelt lemezek terjednek rendelkezik tárfiókok között.<br/><br/>[Ismerje meg](azure-to-azure-support-matrix.md#replicated-machines---storage) támogatott az Azure storage.
 **Forrás Virtuálisgép-hálózatok** | Virtuális gépek egy vagy több alhálózatot a virtuális hálózat (VNet) a forrásrégióban található. [További](azure-to-azure-support-matrix.md#replicated-machines---networking) érvényes hálózati követelmények.
-**A gyorsítótár tárfiókja** | A gyorsítótárfiók a forrás-hálózatban van szüksége. A replikáció során virtuális gépek változásainak gyorsítótárában vannak tárolva a céloldali tárolóra való elküldése előtt.<br/><br/> Gyorsítótár használata biztosítja, hogy éles üzemi alkalmazások pedig a virtuális gép futó csak minimális hatással van.<br/><br/> [További](azure-to-azure-support-matrix.md#cache-storage) gyorsítótár tárolási követelményekkel kapcsolatos. 
+**A gyorsítótár tárfiókja** | A gyorsítótárfiók a forrás-hálózatban van szüksége. A replikáció során virtuális gépek változásainak gyorsítótárában vannak tárolva a céloldali tárolóra való elküldése előtt.  Gyorsítótárfiókok Standard kell lennie.<br/><br/> Gyorsítótár használata biztosítja, hogy éles üzemi alkalmazások pedig a virtuális gép futó csak minimális hatással van.<br/><br/> [További](azure-to-azure-support-matrix.md#cache-storage) gyorsítótár tárolási követelményekkel kapcsolatos. 
 **Célerőforrások** | Célerőforrások replikáció során, és a egy feladatátvétel esetén használt. Alapértelmezés szerint a Site Recovery állíthat be célerőforrás, vagy hozzon létre és testre szabhatja őket.<br/><br/> A célrégióban ellenőrizze a tudja létrehozni a virtuális gépeket, és hogy előfizetése rendelkezik-e elegendő erőforrás a célrégióban szükséges Virtuálisgép-méretek támogatják. 
 
 ![Forrás és cél replikációs](./media/concepts-azure-to-azure-architecture/enable-replication-step-1.png)

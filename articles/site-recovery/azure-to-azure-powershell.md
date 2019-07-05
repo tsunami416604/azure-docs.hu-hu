@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: c585b300a65091bee3320a21b7bce7ba94d269ec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 766b004217d6679dcba00c581ade4fe911b5f8b9
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258800"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491866"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Azure PowerShell-lel az Azure virtuális gépek vészhelyreállításának beállítása
 
@@ -600,6 +600,14 @@ Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $Repli
 ```
 
 Ismételt védelem befejezése után a feladatátvételi fordított irányban (USA nyugati RÉGIÓJA, USA keleti régiója) és a feladat-visszavétel forrásrégió is kezdeményezhető.
+
+## <a name="disable-replication"></a>A replikálás letiltása
+
+Remove-ASRReplicationProtectedItem parancsmaggal letilthatja a replikáció.
+
+```azurepowershell
+Remove-ASRReplicationProtectedItem -ReplicationProtectedItem $ReplicatedItem
+```
 
 ## <a name="next-steps"></a>További lépések
 Nézet a [Azure Site Recovery PowerShell-referencia](https://docs.microsoft.com/powershell/module/az.RecoveryServices) megtudhatja, hogyan hajthat végre egyéb feladatok, például a helyreállítási tervek létrehozása és tesztelése a Powershellen keresztül a helyreállítási terv feladatátvételét.

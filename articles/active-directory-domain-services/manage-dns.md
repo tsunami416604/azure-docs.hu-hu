@@ -3,7 +3,7 @@ title: Az Azure AD Domain Services DNS kezelése |} A Microsoft Docs
 description: Azure AD Domain Services DNS-ének kezelése
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.author: mstephen
-ms.openlocfilehash: 3c844b6ede63b2e036f05b5b7f6cb3803eb4b47c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: 6753c26a99bb38e92613a6bad753e7dd101ba68e
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245879"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67473141"
 ---
 # <a name="administer-dns-on-an-azure-ad-domain-services-managed-domain"></a>Az Azure AD tartományi szolgáltatások által kezelt tartomány DNS-kezelés
 Az Azure Active Directory Domain Services által biztosított DNS-feloldás a felügyelt tartományhoz tartozó (tartománynevek feloldását) DNS-kiszolgáló is tartalmaz. Egyes esetekben szükség lehet DNS konfigurálása a felügyelt tartományon. You may need to create DNS records for machines that are not joined to the domain, configure virtual IP addresses for load-balancers or setup external DNS forwarders. Ebből kifolyólag az "AAD DC rendszergazdák" csoportba tartozó felhasználók kapnak a felügyelt tartomány DNS felügyeleti jogosultságokkal.

@@ -15,12 +15,12 @@ ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cd5bbba681acaa0c32e681f7cb4809142fe11f9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6f73d3bf5e502a758dd46561059c15a2970d9b6
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66113244"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67471828"
 ---
 # <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>Tekintse át a hozzáférési csoportokhoz vagy alkalmazásokhoz az Azure AD hozzáférési felülvizsgálatokkal
 
@@ -40,7 +40,7 @@ Hozzáférési felülvizsgálat végrehajtása első lépése, hogy keresse meg 
 
 1. Keresse meg a Microsoft, amely rákérdez, hogy tekintse át a hozzáférést egy e-mailt. Íme egy példa e-mailt, tekintse át a hozzáférés egy csoportra.
 
-    ![E-mailek hozzáférési felülvizsgálat](./media/perform-access-review/access-review-email.png)
+    ![Példa e-mailt a Microsoft egy csoporthoz való hozzáférés áttekintése](./media/perform-access-review/access-review-email.png)
 
 1. Kattintson a **felülvizsgálat indítása** nyissa meg a hozzáférési felülvizsgálat mutató hivatkozást.
 
@@ -48,7 +48,7 @@ Ha nem rendelkezik az e-mailt, Észreveheti, hogy a függőben lévő hozzáfér
 
 1. Jelentkezzen be a MyApps portálról, [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
 
-    ![MyApps portálról](./media/perform-access-review/myapps-access-panel.png)
+    ![MyApps portálról, amelyekhez alkalmazások listázása](./media/perform-access-review/myapps-access-panel.png)
 
 1. Az oldal jobb felső sarkában kattintson a felhasználó szimbólumára. Ekkor megjelenik a neve és az alapértelmezett szervezete. Ha egynél több szervezet szerepel a listán, válassza ki azt a szervezetet, amely a hozzáférési felülvizsgálatot kérte.
 
@@ -56,7 +56,7 @@ Ha nem rendelkezik az e-mailt, Észreveheti, hogy a függőben lévő hozzáfér
 
     A csempe nem látható, ha nincsenek végrehajtandó hozzáférési felülvizsgálatok az adott szervezetre vonatkozóan, és ilyenkor semmilyen műveletre nincs szükség.
 
-    ![A hozzáférési felülvizsgálatok listája](./media/perform-access-review/access-reviews-list.png)
+    ![Függőben lévő hozzáférési felülvizsgálatok az alkalmazások és azon csoportok listája](./media/perform-access-review/access-reviews-list.png)
 
 1. Kattintson a **felülvizsgálat megkezdése** hivatkozásra a hozzáférési felülvizsgálatot végrehajtására vonatkozó szándékát.
 
@@ -66,7 +66,7 @@ Miután megnyitotta a hozzáférési felülvizsgálatot, az adatgyűjtés kiterj
 
 Ha a kérés a saját hozzáférés felülvizsgálata, az oldal fog kinézni. További információkért lásd: [hozzáférés felülvizsgálata maga a csoportokat vagy alkalmazásokat](review-your-access.md).
 
-![Hozzáférési felülvizsgálat végrehajtása](./media/perform-access-review/perform-access-review.png)
+![Nyissa meg hozzáférési felülvizsgálat át kell tekinteni a felhasználók listázása](./media/perform-access-review/perform-access-review.png)
 
 Két módon, hogy jóváhagyja vagy megtagadja a hozzáférést:
 
@@ -81,7 +81,7 @@ Két módon, hogy jóváhagyja vagy megtagadja a hozzáférést:
 
 1. Kattintson a **jóváhagyása** vagy **megtagadása**. Ha bizonytalan, rákattinthat **nem tudjuk**. Ez a felhasználó a hozzáférés fenntartása azt eredményezi, de a kijelölt fog szerepelni a vizsgálati naplók.
 
-    ![Hozzáférési felülvizsgálat végrehajtása](./media/perform-access-review/approve-deny.png)
+    ![A művelet ablak, amely tartalmazza a jóváhagyás, elutasítás, és nem tudja, a beállítások](./media/perform-access-review/approve-deny.png)
 
 1. Ha szükséges, adja meg az okot a **OK** mezőbe.
 
@@ -102,11 +102,11 @@ Ahhoz, hogy a hozzáférési felülvizsgálatok egyszerűbben és gyorsabban az 
 
 1. Kattintson a lap alján, a kék sáv **ajánlatok elfogadása**.
 
-    ![Ajánlatok elfogadása](./media/perform-access-review/accept-recommendations.png)
+    ![Listázás az elfogadás javaslatok gomb megjelenítése nyílt hozzáférési felülvizsgálat](./media/perform-access-review/accept-recommendations.png)
 
     Láthatja, hogy a javasolt művelet összegzését.
 
-    ![Összefoglaló ajánlatok elfogadása](./media/perform-access-review/accept-recommendations-summary.png)
+    ![Ablak, amely a javasolt művelet összegzését jeleníti meg](./media/perform-access-review/accept-recommendations-summary.png)
 
 1. Kattintson a **Ok** , fogadja el a javaslatokat.
 

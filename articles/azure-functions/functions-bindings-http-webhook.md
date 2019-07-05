@@ -4,19 +4,19 @@ description: Megtudhatja, hogyan használja a HTTP-eseményindítók és kötés
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: azure functions, functions, event processing, webhooks, dynamic compute, serverless architecture, HTTP, API, REST
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: f9f43720ff36b6dfac51a1626413ff7c2e590cd0
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 53626c1d8fe0b9301883280a9f0925eb38ad1d99
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342262"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480457"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Az Azure Functions – HTTP-eseményindítók és kötések
 
@@ -757,7 +757,7 @@ Teljes körűen biztonságossá tételéhez a függvény végpontok éles körny
 
 Ezek függvény alkalmazási szintű biztonsági módszer használata esetén állítsa be a HTTP-eseményindítóval aktivált függvényt hitelesítési szintet `anonymous`.
 
-### <a name="webhooks"></a>Webhookok
+### <a name="webhooks"></a>webhooks
 
 > [!NOTE]
 > Webhook mód csak verzió érhető el a Functions futtatókörnyezet 1.x. A módosítás a HTTP-eseményindítók verzióban teljesítményének növelése 2.x.

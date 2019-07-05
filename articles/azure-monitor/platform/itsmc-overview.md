@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: abbd26779cefaf52c6f2247a5d27db25f280c930
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f2574cc64e157ff0f8a6cb875a832db88cf13dd6
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60395805"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67479804"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Csatlakozás az Azure ITSM-eszközeit IT Service Management-összekötő használatával
 
@@ -62,7 +62,9 @@ Kapcsolat létrehozása előtt kell hozzáadni az ITSM-összekötő megoldással
 
 3. Az a **OMS-munkaterület** területen válassza ki az Azure Log Analytics-munkaterületet, amelyre telepíteni a megoldás.
    >[!NOTE]
-   >Az Azure Monitor folyamatos Váltás a Microsoft Operations Management Suite (OMS) részeként az OMS-munkaterületek most nevezzük Log Analytics-munkaterületek.
+   > * Az Azure Monitor folyamatos Váltás a Microsoft Operations Management Suite (OMS) részeként az OMS-munkaterületek most nevezzük Log Analytics-munkaterületek.
+   > * Az ITSM-összekötő csak a Log Analytics-munkaterületek az alábbi régiókban telepíthető: USA keleti RÉGIÓJA, Nyugat-Európa, Délkelet-Ázsia, Délkelet-Ausztrália, USA nyugati középső RÉGIÓJA, kelet-japán, közép-India, Dél-Egyesült Királyság központi Kanada.
+
 4. Az a **OMS-munkaterület beállításait** területen válassza ki az erőforráscsoport, ahol szeretné a megoldás-erőforrás létrehozásához.
 
    ![ITSMC munkaterület](media/itsmc-overview/itsmc-solution-workspace.png)

@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: ef97f17bf159511ce94f90cd00623e05489acb92
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 0a7140f70db78c8511f3c4da00b2f9c11c368163
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274728"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477705"
 ---
 # <a name="mapping-data-flow-parameters"></a>Data Flow paraméterek leképezése
 
@@ -37,6 +37,12 @@ Paramétereket ad hozzá az adatfolyamot, kattintson a data flow vászon által�
 Paraméterek, amellyel bármely flow-kifejezésben. Paraméterek $ előtaggal kell kezdődnie, és nem módosíthatók. A Kifejezésszerkesztő "Parameters" lapján elérhető paraméterek listáját megtalálja.
 
 ![Adatfolyam paraméterkifejezésben](media/data-flow/parameter-expression.png "adatfolyam paraméter kifejezés")
+
+## <a name="use-parameters-in-your-data-flow"></a>Paraméterek használata az adatok folyamatban
+
+* Az átalakítási kifejezések belül paraméterértékeket is használhatja. A paraméterlistából paraméterek lapján található a Kifejezésszerkesztőben. ![Adatfolyam-paraméterek használata](media/data-flow/params9.png "paraméterek használatát adatfolyam")
+
+* Paramétereket is használhatók a dinamikus értékek beállítása a forrás és fogadó-átalakítási beállítások. Konfigurálható mezőket belül kattint, látni fogja a "Dinamikus contect hozzáadása" hivatkozást jelennek meg. Nincs kattintva léphet egy Kifejezésszerkesztő használható paraméterek használatához a dinamikus értékeket. ![Adatfolyam dinamikus tartalom](media/data-flow/params6.png "adatfolyam dinamikus tartalom")
 
 ## <a name="set-mapping-data-flow-parameters-from-pipeline"></a>A folyamat adatfolyam leképezési paraméterek beállítása
 

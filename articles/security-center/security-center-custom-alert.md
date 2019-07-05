@@ -14,27 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: ab7165c3315e3a53f90900be8eaf1b9c614a2b07
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 984bd4d5db210679884655721be0cbcdac8c1705
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341129"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485283"
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Egyéni riasztási szabályok az Azure Security Centerben (előzetes verzió)
 Ebből a dokumentumból megismerheti az Azure Security Center egyéni riasztási szabályainak létrehozásához szükséges lépéseket.
 
 > [!NOTE]
-> Egyéni riasztások jén kivonjuk a forgalomból 2019. június 30.
+> Egyéni riasztások eltávolították a Security Centerből. 
 
 ## <a name="retirement-of-custom-alert-rules-in-azure-security-center"></a>Használatból való kivonást egyaránt az egyéni riasztási szabályok az Azure Security Centerben
 
-Egyéni riasztásainak kivonjuk a forgalomból 2019. június 30., használatból való kivonást egyaránt az alapul szolgáló infrastruktúra-alapú miatt. Amíg elavult időkeretét, a felhasználók tudni meglévő egyéni riasztási szabályok szerkesztése, de nem fogja tudni újakat vehet fel. Elavulással kapcsolatos bármely definiált egyéni riasztások nem lépnek érvénybe a biztonsági riasztások alapján egyéni értesítések ezeket a szabályokat nem jön létre.
+Egyéni riasztásainak használatból való kivonást egyaránt az alapul szolgáló infrastruktúra hivatkozni, mert eltávolították a 2019. június 30. bármilyen egyéni riasztások retriement előtt meghatározott nem lépnek érvénybe, és a biztonsági riasztások alapján egyéni értesítések ezeket a szabályokat létrehozni. Továbbra is megtekintheti az egyéni riasztási szabályok lekérdezések a Security Center annak érdekében, hogy újra hozza létre az alábbi lehetőségeket:
+
 Felhasználók vagy az alábbi intézkedéseket javasoljuk:
 - Engedélyezése [Azure Sentinel-](https://azure.microsoft.com/services/azure-sentinel/) és a beépített [analytics](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) funkció újból létrehozni a riasztási szabályok
 - Hozza létre újból a riasztásokat az Azure Monitor riasztások
                                      
-Tartani a meglévő riasztásokat, és Azure Sentinel-telepítheti át őket, kérjük, [indítsa el az Azure-Sentinel](https://portal.azure.com/#create/Microsoft.ASI/preview). Első lépésként válassza ki a munkaterületet, az egyéni értesítések tárolására, és válassza a "Analytics" menüpont a riasztások egyéni szabályok beállítása. Látogasson el a [dokumentáció](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) további információt.
+Tartani a meglévő riasztásokat, és hozza létre őket ismét az Azure-Sentinel, kérjük, [indítsa el az Azure-Sentinel](https://portal.azure.com/#create/Microsoft.ASI/preview). Első lépésként válassza ki a munkaterületet, az egyéni értesítések tárolására, és válassza a "Analytics" menüpont a riasztások egyéni szabályok beállítása. Látogasson el a [dokumentáció](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats) további információt.
 
 > [!NOTE]
 > Egyéni riasztások használatával [keresési](https://docs.microsoft.com/azure/azure-monitor/log-query/search-queries) vagy [Union](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html) utasítások lekérdezések nem támogatottak az Azure-Sentinel. Ezek a riasztások kérjük, módosítsa az áttelepítés előtt.

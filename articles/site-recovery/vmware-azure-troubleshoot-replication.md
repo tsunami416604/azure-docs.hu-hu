@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 06/27/2019
 ms.author: mayg
-ms.openlocfilehash: 3221b2bd18b8b0756f280d88fffc6016d0498b8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c005dcee78e2a9338dc7a816e06d9a78a2f355b6
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924824"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491673"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware virtuális gépek és fizikai kiszolgálók replikációjával kapcsolatos problémák elhárítása
 
@@ -77,6 +77,13 @@ Keresztül a fenti biztosítása, ha nincs kapcsolat, a sávszélességet vagy i
         - VSS-szolgáltatás
         - Az Azure Site Recovery VSS Provider
         - A VDS szolgáltatás
+
+- Ha Exchange vagy az SQL-számítási feladatok futnak, tekintse meg a naplókat, az ezen alkalmazás írók hibák. Gyakori hibák és azok megoldási rögzítve lesznek a következő cikkeket:
+    -  [Az SQL Server-adatbázis automatikus beállítás igaz értékre van beállítva.](https://support.microsoft.com/help/4504104)
+    - [SQL Server 2008 R2 értesítő – Újrapróbálkozást lehetővé nem tevő – hiba](https://support.microsoft.com/help/4504103)
+    - [Ismert probléma az SQL Server 2016 és 2017.](https://support.microsoft.com/help/4493364)
+    - [Gyakori hiba az Exchange-kiszolgálók 2013 és 2016](https://support.microsoft.com/help/4037535)
+
 
 ### <a name="source-machines-with-high-churn-error-78188"></a>Magas adatváltozású [78188 hiba] a forrásgépek
 

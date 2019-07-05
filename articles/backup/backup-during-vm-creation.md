@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: raynew
-ms.openlocfilehash: 54449d9ea14fef6b2373aa8e0ea3341417c2d3fe
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a19653f7ae3900fd7999f347ef4d3ef710be1430
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057979"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67436333"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Biztonsági mentés engedélyezése Azure-beli virtuális gép létrehozásakor
 
@@ -54,7 +54,8 @@ Ha még nem jelentkezett be a fiókjába, jelentkezzen be a [az Azure portal](ht
 
 
 > [!NOTE]
-> Az Azure Backup szolgáltatás létrehoz egy külön erőforráscsoportot (nem a virtuális gép erőforráscsoportja) pillanatkép, a névadási tárolására **AzureBackupRG_geography_number** (Példa: AzureBackupRG_northeurope_1). Ebben az erőforráscsoportban lévő adatok lesznek megőrizve a időtartam napban megadott *megőrzése azonnali helyreállítási pillanatképének* szakaszban az Azure virtuális gép biztonsági mentési házirend.  Egy zárolás alkalmazza ezt az erőforráscsoportot, a biztonsági mentési hibáját okozhatja.
+> Az Azure Backup szolgáltatás létrehoz egy külön erőforráscsoportot (nem a virtuális gép erőforráscsoportja) pillanatkép, a névadási tárolására **AzureBackupRG_geography_number** (Példa: AzureBackupRG_northeurope_1). Ebben az erőforráscsoportban lévő adatok lesznek megőrizve a időtartam napban megadott *megőrzése azonnali helyreállítási pillanatképének* szakaszban az Azure virtuális gép biztonsági mentési házirend.  Egy zárolás alkalmazza ezt az erőforráscsoportot, a biztonsági mentési hibáját okozhatja.<br>
+Ebben az erőforráscsoportban kell is zárható ki minden olyan név/kód korlátozások, egy eszközkorlátozási szabályzatot blokkolhatja az erőforrás azt újra a biztonsági mentési hibák miatt a gyűjtemények létrehozása.
 
 
 ## <a name="start-a-backup-after-creating-the-vm"></a>Biztonsági mentést elindítani a virtuális gép létrehozása után

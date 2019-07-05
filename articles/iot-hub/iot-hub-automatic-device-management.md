@@ -6,14 +6,14 @@ manager: bruz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/13/2018
+ms.date: 06/28/2019
 ms.author: chrisgre
-ms.openlocfilehash: 598bf82e375f472b2f723c3462ba7ba7b4d25fbe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff4e236569cc728b7011ffa26554277f281397fd
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61333643"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485845"
 ---
 # <a name="automatic-iot-device-management-at-scale-using-the-azure-portal"></a>Automatikus az Azure portal használatával nagy mennyiségű IoT-Eszközfelügyelet
 
@@ -29,7 +29,9 @@ Automatikus felügyeleti funkcióit ikereszközök készletét frissítése a k�
 
 * A **tartalmat** hozzáadva vagy frissítve a célzott eszközök ikerállapotának a kívánt tulajdonságok meghatározása. A tartalom elérési útját a módosítani kívánt tulajdonságok szakasza tartalmaz.
 
-* A **metrikák** határozza meg, például konfigurációs állapotait összesítő számát **sikeres**, **folyamatban lévő**, és **hiba**. Egyéni metrikák megadott eszközön lekérdezések ikereszköz jelentett tulajdonságait.  Rendszermérőszámokat olyan alapértelmezett mérőszámokat, amelyek az ikereszköz állapotát, például az ikereszközök szánt számát és a twins, amelyek sikeresen frissítve lett-e számát mérjük. 
+* A **metrikák** határozza meg, például konfigurációs állapotait összesítő számát **sikeres**, **folyamatban lévő**, és **hiba**. Egyéni metrikák megadott eszközön lekérdezések ikereszköz jelentett tulajdonságait.  Rendszermérőszámokat olyan alapértelmezett mérőszámokat, amelyek az ikereszköz állapotát, például az ikereszközök szánt számát és a twins, amelyek sikeresen frissítve lett-e számát mérjük.
+
+Automatikus eszközkonfigurációkat futtassa először jön létre a konfigurációt követően rövid időn belül, majd öt perces időközönként. Metrikák lekérdezések futtatása minden egyes futásakor az automatikus eszköz konfigurálása.
 
 ## <a name="implement-device-twins-to-configure-devices"></a>Eszközök konfigurálása ikereszközök megvalósítása
 

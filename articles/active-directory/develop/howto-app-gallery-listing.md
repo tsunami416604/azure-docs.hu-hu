@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 005e5c92a16760d8eec5dc37526f4b1f2dbd751c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41b407b4343db4f594049c4b1027fe4279dab840
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540534"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482951"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Útmutató: Az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában
 
@@ -117,21 +117,21 @@ Frissítse vagy távolítsa el a meglévő alkalmazások az Azure AD-alkalmazás
 
 Ügyfelek kattintva egy alkalmazás listázása a kérést küldhet, **App ügyfelek kérései** -> **új kérés elküldése**.
 
-![Ügyfél kért alkalmazások csempére](./media/howto-app-gallery-listing/customer-submit-request.png)
+![Megjeleníti az ügyfél kért alkalmazások csempére](./media/howto-app-gallery-listing/customer-submit-request.png)
 
 Az alábbi, a folyamat az ügyfél kért alkalmazások –
 
-![Ügyfél kért alkalmazások folyamat](./media/howto-app-gallery-listing/customer-request.png)
+![Megjeleníti az ügyfél kért alkalmazások folyamat](./media/howto-app-gallery-listing/customer-request.png)
 
 ## <a name="timelines"></a>Idősor
 
 A folyamat a tőzsdei a SAML 2.0 vagy WS-Fed alkalmazás a katalógus ütemtervét 7 – 10 munkanapon.
 
-   ![Idősor listázása a katalógusban a saml-kérelem](./media/howto-app-gallery-listing/timeline.png)
+   ![Idősor listázása a katalógusban a SAML-kérelem](./media/howto-app-gallery-listing/timeline.png)
 
 A folyamat a tőzsdei a katalógusban OpenID Connect alkalmazás ütemtervét 2 – 5 munkanapon.
 
-   ![Idősor listázása a katalógusban a saml-kérelem](./media/howto-app-gallery-listing/timeline2.png)
+   ![Idősor listázása a katalógusban a SAML-kérelem](./media/howto-app-gallery-listing/timeline2.png)
 
 ## <a name="escalations"></a>Eszkalálást
 

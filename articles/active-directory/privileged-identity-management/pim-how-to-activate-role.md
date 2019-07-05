@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/09/2019
+ms.date: 06/28/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa820d6c140251fce6b09110e65b45005b53afcc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e7b3e02222580da67a4eeb4159e4fc5dc3b9a98f
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60289620"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67501673"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>A PIM saját Azure AD-szerepkörök aktiválása
 
@@ -41,25 +41,25 @@ Amikor szüksége van egy Azure AD-szerepkör, aktiválás segítségével kérh
 
 1. Kattintson a **saját szerepkörök** megjeleníthetők a jogosult az Azure AD-szerepkörökhöz.
 
-    ![Az Azure AD-szerepkörök – saját szerepkörök](./media/pim-how-to-activate-role/directory-roles-my-roles.png)
+    ![Az Azure AD-szerepkörök – saját szerepkörök jogosultak vagy aktív szerepkörök lista megjelenítése](./media/pim-how-to-activate-role/directory-roles-my-roles.png)
 
 1. Keresse meg egy szerepkör, amely aktiválni szeretné.
 
-    ![Az Azure AD-szerepkörök – a szerepkörök listáján](./media/pim-how-to-activate-role/directory-roles-my-roles-activate.png)
+    ![Az Azure AD-szerepkörök – a jogosult szerepkörök listáját megjelenítő hivatkozás aktiválása](./media/pim-how-to-activate-role/directory-roles-my-roles-activate.png)
 
 1. Kattintson a **aktiválás** a szerepkör aktiválási részletei ablak megnyitásához.
 
 1. Ha a szerepkör megköveteli a multi-factor authentication (MFA), kattintson a **a folytatás előtt azonosítsa magát**. Csak egyszer munkamenetenként hitelesítésre van.
 
-    ![Ellenőrizze a többtényezős hitelesítéssel, mielőtt a szerepkör aktiválása](./media/pim-how-to-activate-role/directory-roles-my-roles-mfa.png)
+    ![Ellenőrizze a szerepkör aktiválása előtt MFA-val saját identitás panel](./media/pim-how-to-activate-role/directory-roles-my-roles-mfa.png)
 
 1. Kattintson a **saját identitás ellenőrzése** és kövesse az utasításokat a további biztonsági ellenőrzést nyújtanak.
 
-    ![További biztonsági ellenőrzés](./media/pim-how-to-activate-role/additional-security-verification.png)
+    ![További biztonsági ellenőrzési lapot kapcsolatba lépni Önnel, hogy miként kérése](./media/pim-how-to-activate-role/additional-security-verification.png)
 
 1. Kattintson a **aktiválás** az aktiválási panel megnyitásához.
 
-    ![Az aktiválás panel](./media/pim-how-to-activate-role/directory-roles-activate.png)
+    ![Aktiválási ablak kezdő időpontja, időtartama, jegy és ok megadása](./media/pim-how-to-activate-role/directory-roles-activate.png)
 
 1. Ha szükséges, adja meg egy egyéni Aktiválás kezdete.
 
@@ -67,19 +67,19 @@ Amikor szüksége van egy Azure AD-szerepkör, aktiválás segítségével kérh
 
 1. Az a **aktiválási OK** adja meg az aktiválási kérés okát. Egyes szerepkörök szükséges egy probléma jegyszám fogja tartalmazni.
 
-    ![Befejezett aktiválási panel](./media/pim-how-to-activate-role/directory-roles-activation-pane.png)
+    ![Egy egyéni kezdő időpontja, időtartama, jegy és OK befejezett aktiválási panelről](./media/pim-how-to-activate-role/directory-roles-activation-pane.png)
 
 1. Kattintson a **aktiválása**.
 
     Ha a szerepkör nem igényel jóváhagyási, egy **aktiválási állapota** panelen megjelennek az aktiválási állapotát jeleníti meg.
 
-    ![Aktiválási állapota](./media/pim-how-to-activate-role/activation-status.png)
+    ![Aktiválási állapot oldalról az aktiválás három fázisa](./media/pim-how-to-activate-role/activation-status.png)
 
     Ha minden szakasz befejeződött, kattintson a **Kijelentkezés** jelentkezzen ki az Azure Portalon mutató hivatkozást. Amikor bejelentkezik vissza a portálra, most már használhatja a szerepkört.
 
     Ha a [a szerepkör megköveteli a jóváhagyási](./azure-ad-pim-approval-workflow.md) aktiválni, egy értesítés jelenik meg a böngészőben arról értesíti, a kérelem van függőben lévő jóváhagyási jobb felső sarkában található.
 
-    ![Értesítés függőben lévő kérelem](./media/pim-how-to-activate-role/directory-roles-activate-notification.png)
+    ![Aktiválási kérelem függőben lévő jóváhagyási értesítés](./media/pim-how-to-activate-role/directory-roles-activate-notification.png)
 
 ## <a name="view-the-status-of-your-requests"></a>A kérések állapotának megtekintése
 
@@ -91,7 +91,7 @@ Megtekintheti a függőben lévő aktiválási kéréseit állapotát.
 
 1. Kattintson a **saját kérések** a kérések listájának megtekintéséhez.
 
-    ![Az Azure AD-szerepkörök – saját kérések](./media/pim-how-to-activate-role/directory-roles-my-requests.png)
+    ![Az Azure AD-szerepkörök – saját kérések listája](./media/pim-how-to-activate-role/directory-roles-my-requests.png)
 
 ## <a name="deactivate-a-role"></a>A szerepkör inaktiválása
 
@@ -123,15 +123,19 @@ Jóváhagyást igénylő szerepkörök aktiválási nincs szükség, ha egy füg
 
     Ha a Mégse gombra kattint, a kérelem meg lesz szakítva. A szerepkör aktiválását ismét el küldjön új aktiválási kérelmet.
 
-   ![Függőben lévő kérelem megszakítása](./media/pim-how-to-activate-role/directory-role-cancel.png)
+   ![Saját kérések listája, a Mégse gomb kiemelésével](./media/pim-how-to-activate-role/directory-role-cancel.png)
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-### <a name="permissions-not-granted-after-activating-a-role"></a>A szerepkör aktiválása után nem rendelkezik engedélyekkel
+### <a name="permissions-are-not-granted-after-activating-a-role"></a>Nem engedélyekkel a szerepkör aktiválása után
 
-A PIM szerepkör aktiválásakor a kívánt felügyeleti portál eléréséhez vagy funkciók belül egy adott felügyeleti számítási feladatok végrehajtása előtt legalább 10 percet vesz igénybe. Az aktiválás befejeződése után jelentkezzen ki az Azure Portalon, és jelentkezzen be újra az újonnan aktivált szerepkör használatának megkezdéséhez.
+A PIM szerepkör aktiválásakor az aktiválás előfordulhat, hogy nem azonnal továbbítódik az összes portálok, a kiemelt szerepkörű igénylő. Előfordul akkor is, ha propagálja a módosítást, webes gyorsítótárazás a portál az eredményezhet a módosítás nem hatállyal. Ha az aktiválás késik, Íme, mit kell tennie.
 
-További hibaelhárítási lépéseket lásd: [emelt szintű engedélyek hibaelhárítása](https://social.technet.microsoft.com/wiki/contents/articles/37568.troubleshooting-elevated-permissions-with-azure-ad-privileged-identity-management.aspx).
+1. Jelentkezzen ki az Azure Portalon, és majd jelentkezzen be újra.
+
+    Aktiválja az Azure AD-szerepkörhöz, látni fogja az aktiválás fázisa. Ha minden szakasz befejeződött, megjelenik egy **Kijelentkezés** hivatkozásra. Ez a hivatkozás segítségével jelentkezzen ki. Aktiválási késleltetést a legtöbb esetben ez fogja megoldani.
+
+1. A PIM ellenőrizze, hogy a szerepkör tagjaként szerepel.
 
 ## <a name="next-steps"></a>További lépések
 

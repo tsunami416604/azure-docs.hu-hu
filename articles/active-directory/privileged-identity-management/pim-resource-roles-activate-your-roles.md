@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/09/2019
+ms.date: 06/28/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04e8615cc5534255308c35fa1f675ef3a85aa84e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bdce060006f65f2b0fb08023066ee504578bc552
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60438453"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67501662"
 ---
 # <a name="activate-my-azure-resource-roles-in-pim"></a>A PIM saját Azure-erőforrás szerepkörök aktiválása
 
@@ -38,37 +38,37 @@ Amikor szüksége van egy Azure-erőforrás szerepkör, aktiválás segítségé
 
 1. Kattintson a **saját szerepkörök**.
 
-    ![Az Azure AD-szerepkörök és az Azure-erőforrások szerepköreihez – saját szerepkörök](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
+    ![Saját szerepkörök oldalról aktiválhatja szerepkörök](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
 
 1. Kattintson a **Azure-erőforrások szerepköreihez** a jogosult Azure-erőforrások szerepköreihez listájának megtekintéséhez.
 
-   ![Azure-erőforrásszerepkörök](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png) 
+   ![Saját szerepkörök - Azure-erőforrás szerepkörök oldal](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png) 
 
 1. Az a **Azure-erőforrásszerepkörök** list, keresse meg a szerepkör aktiválásához.
 
-    ![Azure-erőforrások szerepköreihez - szerepkörök listáját](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate.png)
+    ![Azure-erőforrások szerepköreihez - jogosult szerepkörök listáját](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate.png)
 
 1. Kattintson a **aktiválás** az aktiválás panel megnyitásához.
 
 1. Ha a szerepkör megköveteli a multi-factor authentication (MFA), kattintson a **a folytatás előtt azonosítsa magát**. Csak egyszer munkamenetenként hitelesítésre van.
 
-    ![Ellenőrizze a többtényezős hitelesítéssel, mielőtt a szerepkör aktiválása](./media/pim-resource-roles-activate-your-roles/resources-my-roles-mfa.png)
+    ![A szerepkör aktiválása előtt MFA-val saját identitás ellenőrzése](./media/pim-resource-roles-activate-your-roles/resources-my-roles-mfa.png)
 
 1. Kattintson a **saját identitás ellenőrzése** és kövesse az utasításokat a további biztonsági ellenőrzést nyújtanak.
 
-    ![További biztonsági ellenőrzés](./media/pim-resource-roles-activate-your-roles/resources-mfa-enter-code.png)
+    ![Képernyőn megadhatja például a PIN-kód biztonsági ellenőrzés](./media/pim-resource-roles-activate-your-roles/resources-mfa-enter-code.png)
 
 1. Ha meg szeretné határozni a csökkentett hatókört, kattintson a **hatókör** az erőforrás-szűrő ablaktábla megnyitásához.
 
     Ajánlott eljárás az, csak a szükséges erőforrások hozzáférés kérése. A Resource szűrő panelen az erőforráscsoport vagy erőforrás-hozzáférést is megadhat.
 
-    ![Aktiválja - Erőforrásszűrő](./media/pim-resource-roles-activate-your-roles/resources-my-roles-resource-filter.png)
+    ![Aktiválja - erőforrás keresőablak hatókör megadása](./media/pim-resource-roles-activate-your-roles/resources-my-roles-resource-filter.png)
 
 1. Ha szükséges, adja meg egy egyéni Aktiválás kezdete. A tag aktiválása a kijelölt idő után az.
 
 1. Az a **OK** adja meg az aktiválási kérés okát.
 
-    ![Befejezett aktiválás panel](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-done.png)
+    ![Hatókör, kezdő időpontja, időtartama és OK befejezett aktiválás panelről](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-done.png)
 
 1. Kattintson a **aktiválása**.
 
@@ -76,7 +76,7 @@ Amikor szüksége van egy Azure-erőforrás szerepkör, aktiválás segítségé
 
     Ha a [a szerepkör megköveteli a jóváhagyási](pim-resource-roles-approval-workflow.md) aktiválni, egy értesítés jelenik meg a böngészőben arról értesíti, a kérelem van függőben lévő jóváhagyási jobb felső sarkában található.
 
-    ![Értesítés függőben lévő kérelem](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
+    ![Aktiválási kérelem függőben lévő jóváhagyási értesítés](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
 
 ## <a name="use-a-role-immediately-after-activation"></a>Olyan szerepkört használjon az aktiválás után azonnal
 
@@ -102,7 +102,7 @@ Megtekintheti a függőben lévő aktiválási kéréseit állapotát.
 
 1. Kattintson a **saját kérések** kéri az Azure ad-ben és az Azure resource szerepkörök listájának megtekintéséhez.
 
-    ![Az Azure AD-szerepkörök és az Azure-erőforrások szerepköreihez – saját kérések](./media/pim-resource-roles-activate-your-roles/resources-my-requests.png)
+    ![Saját kérések – Azure-erőforrás oldalról a függőben lévő kérelmek](./media/pim-resource-roles-activate-your-roles/resources-my-requests.png)
 
 1. Görgessen jobbra megtekintéséhez a **állapot kérése** oszlop.
 
@@ -118,22 +118,19 @@ Jóváhagyást igénylő szerepkörök aktiválási nincs szükség, ha egy füg
 
     Ha a Mégse gombra kattint, a kérelem meg lesz szakítva. A szerepkör aktiválását ismét el küldjön új aktiválási kérelmet.
 
-   ![Függőben lévő kérelem megszakítása](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
+   ![Saját kérések listájáról a megszakítási műveletet kiemelésével](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-### <a name="permissions-not-granted-after-activating-a-role"></a>A szerepkör aktiválása után nem rendelkezik engedélyekkel
+### <a name="permissions-are-not-granted-after-activating-a-role"></a>Nem engedélyekkel a szerepkör aktiválása után
 
-A PIM szerepkör aktiválásakor a kívánt felügyeleti portál eléréséhez vagy funkciók belül egy adott felügyeleti számítási feladatok végrehajtása előtt legalább 10 percet vesz igénybe. Az aktiválás befejeződése után jelentkezzen ki az Azure Portalon, és jelentkezzen be újra az újonnan aktivált szerepkör használatának megkezdéséhez.
+A PIM szerepkör aktiválásakor az aktiválás előfordulhat, hogy nem azonnal továbbítódik az összes portálok, a kiemelt szerepkörű igénylő. Előfordul akkor is, ha propagálja a módosítást, webes gyorsítótárazás a portál az eredményezhet a módosítás nem hatállyal. Ha az aktiválás késik, Íme, mit kell tennie.
 
-További hibaelhárítási lépéseket lásd: [emelt szintű engedélyek hibaelhárítása](https://social.technet.microsoft.com/wiki/contents/articles/37568.troubleshooting-elevated-permissions-with-azure-ad-privileged-identity-management.aspx).
+1. Jelentkezzen ki az Azure Portalon, és majd jelentkezzen be újra.
 
-### <a name="cannot-activate-a-role-due-to-a-resource-lock"></a>A szerepkör erőforrás-zárolás miatt nem lehet aktiválni.
+    Egy Azure-erőforrás szerepkör aktiválásakor látni fogja az aktiválás fázisa. Ha minden szakasz befejeződött, megjelenik egy **Kijelentkezés** hivatkozásra. Ez a hivatkozás segítségével jelentkezzen ki. Aktiválási késleltetést a legtöbb esetben ez fogja megoldani.
 
-Ha egy üzenetet kap, hogy egy Azure-erőforrás zárolva van, a szerepkör aktiválásához meg, lehetséges, egy erőforrás hatókörébe tartozó szerepkör-hozzárendelés egy erőforrás-zárolással rendelkezik. Zárolások erőforrásai a váratlan módosítások vagy véletlen törlés elleni védelmét. Egy zárolás is megakadályozza, hogy a PIM az aktiválási időszak végén az erőforrást a szerepkör-hozzárendelés eltávolítása. A PIM nem tud megfelelően működni, a zárolás alkalmazásakor, mivel a PIM megakadályozza, hogy a felhasználók korlátozhatják az erőforrás-szerepköröket. Két módon, hogy meg lehet oldani a problémát:
-
-- Törölheti a zárolást, leírtak szerint [váratlan módosítások megelőzése érdekében zárolhat erőforrásokat](../../azure-resource-manager/resource-group-lock-resources.md).
-- Ha meg szeretné tartani a zárolás, a szerepkör-hozzárendelés véglegesítéséhez, vagy break üvegből fiók használata.
+1. A PIM ellenőrizze, hogy a szerepkör tagjaként szerepel.
 
 ## <a name="next-steps"></a>További lépések
 

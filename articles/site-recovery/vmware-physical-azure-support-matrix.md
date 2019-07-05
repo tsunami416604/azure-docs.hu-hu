@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/18/2019
+ms.date: 06/27/2019
 ms.author: raynew
-ms.openlocfilehash: 3ff6a1a52048e805f9236349d4fc8d45a14b78ea
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 5dc98048099264942552862498b5137b4954c200
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341455"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491649"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók Azure-támogatási mátrixa
 
@@ -186,8 +186,8 @@ Vendég-kiszolgáló iSCSI | Nem
 Vendég-kiszolgáló SMB 3.0-s | Nem
 Vendég-kiszolgáló RDM | Igen<br/><br/> N/A fizikai kiszolgálókhoz
 Vendég-kiszolgáló > 1 TB-os lemez | Igen<br/><br/>Legfeljebb 4095 GB-ig<br/><br/> Lemez 1024 MB-nál nagyobbnak kell lennie.
-Vendég-kiszolgáló, 4K fizikai logikai és a 4 k szektormérete lemez | Igen
-512-bájtos fizikai szektorméretet és a Vendég/server 4K logikai lemez | Igen
+Vendég-kiszolgáló, 4K fizikai logikai és a 4 k szektormérete lemez | Nem
+512-bájtos fizikai szektorméretet és a Vendég/server 4K logikai lemez | Nem
 Csíkozott lemez a Vendég/kiszolgáló kötet > 4 TB-ig <br/><br/>Logikaikötet-kezelő (LVM)| Igen
 Vendég-kiszolgáló – tárolóhelyek | Nem
 Vendég/server gyakran használt adatok hozzáadása/eltávolítása lemez | Nem
@@ -218,7 +218,7 @@ Titkosítás inaktív (SSE)| Igen
 Prémium szintű Storage | Igen
 Importálási/exportálási szolgáltatás | Nem
 A virtuális hálózatok az Azure Storage-tűzfalak | Igen.<br/> Cél tárolási illetve gyorsítótárfiók (replikációs adatainak tárolására használt) a következőn:.
-Általános célú v2-tárfiókok (gyakori és ritka elérésű szinten) | Nem
+Általános célú v2-tárfiókok (gyakori és ritka elérésű szinten) | Igen (tranzakciós díjakat a V2 a V1 képest jelentősen nagyobb)
 
 ## <a name="azure-compute"></a>Az Azure compute
 
@@ -286,7 +286,7 @@ Tárolás, hálózat, Azure-beli virtuális gépek erőforráscsoportok között
 
 ## <a name="obtain-latest-components"></a>Szerezze be a legújabb összetevői
 
-**Name (Név)** | **Leírás** | **Részletek**
+**Name** | **Leírás** | **Részletek**
 --- | --- | ---
 Konfigurációs kiszolgáló | Telepített helyszíni.<br/> Koordinálja a helyszíni VMware-kiszolgálók vagy fizikai gépek és Azure közötti kommunikációt. | - [Ismerje meg](vmware-physical-azure-config-process-server-overview.md) a konfigurációs kiszolgálón.<br/> - [Ismerje meg](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) a legújabb verzióra való frissítést.<br/> - [Ismerje meg](vmware-azure-deploy-configuration-server.md) a konfigurációs kiszolgálót állít be. 
 Folyamatkiszolgáló | Alapértelmezés szerint telepítve van a konfigurációs kiszolgálón.<br/> Fogadja a replikációs adatokat, gyorsítótárazással, tömörítéssel és titkosítás segítségével optimalizálja őket, és elküldi azt az Azure-bA.<br/> Az üzembe helyezés növekedésével további folyamatkiszolgálók nagyobb mértékű replikációs forgalom kezelésére is hozzáadhat. | - [Ismerje meg](vmware-physical-azure-config-process-server-overview.md) a folyamatkiszolgáló.<br/> - [Ismerje meg](vmware-azure-manage-process-server.md#upgrade-a-process-server) a legújabb verzióra való frissítést.<br/> - [Ismerje meg](vmware-physical-large-deployment.md#set-up-a-process-server) horizontális felskálázási folyamatkiszolgáló beállítása.

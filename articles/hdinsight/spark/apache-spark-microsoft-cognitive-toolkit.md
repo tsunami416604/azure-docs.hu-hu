@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: 3462255311eaa6e418f97de5da598eb985b2a935
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aaa690b62b44f5f21db0861d99d45734cf210db0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64695048"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448681"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>A Microsoft Cognitive Toolkit deep learning-modell az Azure HDInsight Spark-fürt használata
 
@@ -25,13 +25,13 @@ Ebben a cikkben hajtsa végre a következő lépéseket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés**. Az oktatóanyag elindításához Azure-előfizetéssel kell rendelkeznie. Lásd: [Ingyenes Azure-fiók létrehozása még ma](https://azure.microsoft.com/free).
+* **Azure-előfizetés**. Ez a cikk elkezdéséhez Azure-előfizetéssel kell rendelkeznie. Lásd: [Ingyenes Azure-fiók létrehozása még ma](https://azure.microsoft.com/free).
 
 * **Az Azure HDInsight Spark-fürt**. Ebben a cikkben egy Spark 2.0-fürt létrehozása. Útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
 ## <a name="how-does-this-solution-flow"></a>Hogyan nem ez a megoldás flow?
 
-Ebben a megoldásban ez a cikk és a egy Jupyter notebookot, ez az oktatóanyag részeként feltöltött között oszlik meg. Ebben a cikkben, kövesse az alábbi lépéseket:
+Ebben a megoldásban ez a cikk és a egy Jupyter notebookot, ez a cikk részeként feltöltött között oszlik meg. Ebben a cikkben, kövesse az alábbi lépéseket:
 
 * Szkriptműveletet futtatunk egy HDInsight Spark-fürt telepítése a Microsoft Cognitive Toolkit- és Python-csomagokat.
 * Töltse fel a Jupyter notebookot, amely a megoldás fut, hogy a HDInsight Spark-fürtön.
@@ -83,7 +83,7 @@ A Microsoft Cognitive Toolkit használata az Azure HDInsight Spark-fürt, be kel
 
 4. Kattintson a **feltöltése** újra.
 
-5. A notebook követően kattintson a notebook nevére, és kövesse az utasításokat, magát a jegyzetfüzet töltse be az adatokat, és hajtsa végre az oktatóanyag.
+5. A notebook követően kattintson a notebook nevére, és kövesse az utasításokat, magát a jegyzetfüzet töltse be az adatokat, és végezze el a cikk útmutatást.
 
 ## <a name="see-also"></a>Lásd még
 * [Áttekintés: Az Apache Spark on Azure HDInsight](apache-spark-overview.md)

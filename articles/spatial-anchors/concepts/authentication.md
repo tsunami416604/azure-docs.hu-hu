@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 2b3f4cf4099459b655fc0e370935ddc8079de810
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c7ffa432c9311ba9d4ecf4ba82c375e2dad988d0
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073943"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478550"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Hitelesítés és engedélyezés az Azure térbeli horgonyokra mutató
 
@@ -45,9 +45,45 @@ Két kulcs érhetik el, melyek mind egyszerre érvényes hozzáférés a térbel
 
 Az SDK-t a fiókkulcsok; hitelesítésről beépített támogatással rendelkezik. egyszerűen szeretne a AccountKey tulajdonsága a cloudSession objektumon. 
 
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
 ```csharp
 this.cloudSession.Configuration.AccountKey = @"MyAccountKey";
 ```
+
+# <a name="objctabobjc"></a>[ObjC](#tab/objc)
+
+```objc
+_cloudSession.configuration.accountKey = @"MyAccountKey";
+```
+
+# <a name="swifttabswift"></a>[Swift](#tab/swift)
+
+```swift
+_cloudSession!.configuration.accountKey = "MyAccountKey"
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+```java
+mCloudSession.getConfiguration().setAccountKey("MyAccountKey");
+```
+
+# <a name="c-ndktabcpp"></a>[C++SZÜNETTEL](#tab/cpp)
+
+```cpp
+auto configuration = cloudSession_->Configuration();
+configuration->AccountKey(R"(MyAccountKey)");
+```
+
+# <a name="c-winrttabcppwinrt"></a>[C++WinRT](#tab/cppwinrt)
+
+```cpp
+auto configuration = m_cloudSession.Configuration();
+configuration.AccountKey(LR"(MyAccountKey)");
+```
+
+***
 
 Miután ez megtörtént, az SDK-t az exchange, a hozzáférési token-fiók kulcsát, és a jogkivonatok az alkalmazáshoz szükséges gyorsítótár fogja kezelni. 
 
@@ -77,9 +113,45 @@ Alkalmazások Azure Active Directory-felhasználók, az ajánlott módszer az Az
 
 Az adott az alkalmazás beszerzése az adal-t egy Azure AD-jogkivonattal; képesnek kell lennie Beállíthatja, hogy az Azure AD-token, a **auhenticationtoken mezőbe helyezi** a felhő munkamenet konfigurációs objektum. 
 
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
 ```csharp
 this.cloudSession.Configuration.AuthenticationToken = @"MyAuthenticationToken";
 ```
+
+# <a name="objctabobjc"></a>[ObjC](#tab/objc)
+
+```objc
+_cloudSession.configuration.authenticationToken = @"MyAuthenticationToken";
+```
+
+# <a name="swifttabswift"></a>[Swift](#tab/swift)
+
+```swift
+_cloudSession!.configuration.authenticationToken = "MyAuthenticationToken"
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+```java
+mCloudSession.getConfiguration().setAuthenticationToken("MyAuthenticationToken");
+```
+
+# <a name="c-ndktabcpp"></a>[C++SZÜNETTEL](#tab/cpp)
+
+```cpp
+auto configuration = cloudSession_->Configuration();
+configuration->AuthenticationToken(R"(MyAuthenticationToken)");
+```
+
+# <a name="c-winrttabcppwinrt"></a>[C++WinRT](#tab/cppwinrt)
+
+```cpp
+auto configuration = m_cloudSession.Configuration();
+configuration.AuthenticationToken(LR"(MyAuthenticationToken)");
+```
+
+***
 
 ## <a name="azure-ad-service-authentication"></a>Azure AD-hitelesítés
 
@@ -132,9 +204,45 @@ Ha az engedélyezési fejléc módon formázott: `Bearer <accoundId>:<accountKey
  
 MR tokenre majd küld vissza az ügyfélnek. Az ügyfélalkalmazás ezután állíthatja, a hozzáférési jogkivonatot a felhő munkamenet-konfigurációt.
 
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
 ```csharp
 this.cloudSession.Configuration.AccessToken = @"MyAccessToken";
 ```
+
+# <a name="objctabobjc"></a>[ObjC](#tab/objc)
+
+```objc
+_cloudSession.configuration.accessToken = @"MyAccessToken";
+```
+
+# <a name="swifttabswift"></a>[Swift](#tab/swift)
+
+```swift
+_cloudSession!.configuration.accessToken = "MyAccessToken"
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+```java
+mCloudSession.getConfiguration().setAccessToken("MyAccessToken");
+```
+
+# <a name="c-ndktabcpp"></a>[C++SZÜNETTEL](#tab/cpp)
+
+```cpp
+auto configuration = cloudSession_->Configuration();
+configuration->AccessToken(R"(MyAccessToken)");
+```
+
+# <a name="c-winrttabcppwinrt"></a>[C++WinRT](#tab/cppwinrt)
+
+```cpp
+auto configuration = m_cloudSession.Configuration();
+configuration.AccessToken(LR"(MyAccessToken)");
+```
+
+***
 
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 

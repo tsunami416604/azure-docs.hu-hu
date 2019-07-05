@@ -1,34 +1,30 @@
 ---
-title: A feltételek az árlista megismerheti a Microsoft vevői szerződés – Azure |} A Microsoft Docs
-description: Ismerje meg a használati és az Azure-előfizetés számlájának értelmezése
-services: ''
-documentationcenter: ''
-author: jureid
+title: A feltételek az árlista megismerheti a Microsoft vevői szerződés – Azure
+description: Útmutató a Microsoft vevői szerződés a használatának és számlájának értelmezése.
+author: bandersmsft
 manager: jureid
-editor: ''
 tags: billing
-ms.assetid: 32eea268-161c-4b93-8774-bc435d78a8c9
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/19/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: eb6184e10d38cdcfad7070663e36f6610d009cdb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4d83228fbec395d604e5ce3f988d2a6157f21eed
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371359"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490665"
 ---
-# <a name="understand-the-terms-in-your-price-sheet-for-a-microsoft-customer-agreement"></a>A Microsoft vevői szerződés feltételeit az árlista ismertetése
+# <a name="terms-in-your-microsoft-customer-agreement-price-sheet"></a>A Microsoft Ügyfélszerződéséhez árlista feltételek
 
-Ez a cikk a Microsoft vevői szerződés számlázási fiók vonatkozik. [Ellenőrizze, hogy egy Microsoft Ügyfélszerződéséhez hozzáférést](#check-access-to-a-microsoft-customer-agreement).
+Ez a cikk a Microsoft vevői szerződés vonatkozik Azure-számlázási fiókba. [Ellenőrizze, hogy egy Microsoft Ügyfélszerződéséhez hozzáférést](#check-access-to-a-microsoft-customer-agreement).
 
 Ha Ön a tulajdonos, közreműködő, olvasó vagy számla ellenében Manager számlázási profilja letöltheti a szervezet árlista az Azure Portalról. Lásd: [megtekintése és letöltése a szervezet céljai díjszabás](billing-ea-pricing.md).
 
-## <a name="detailed-terms-and-descriptions-in-your-microsoft-customer-agreement-price-sheet"></a>Részletes használati és a Microsoft Ügyfélszerződéséhez árlista leírása
+## <a name="terms-and-descriptions-in-your-price-sheet"></a>Feltételek és az árlista leírása
 
 Az alábbi szakasz ismerteti a Microsoft Ügyfélszerződéséhez árlista látható a fontos fogalmakat.
 

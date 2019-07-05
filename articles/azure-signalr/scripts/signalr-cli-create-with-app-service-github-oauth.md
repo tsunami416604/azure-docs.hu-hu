@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/22/2018
 ms.author: zhshang
 ms.custom: mvc
-ms.openlocfilehash: 84020448019867744d08806acbbd47adbc1a83e3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 16fa44c5fa0b674fe27e2ec8e2dc8e640742ec63
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66128371"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565778"
 ---
 # <a name="create-a-web-app-that-uses-signalr-service-and-github-authentication"></a>SignalR szolgáltatást és GitHub-hitelesítést használó webalkalmazás létrehozása
 
@@ -46,8 +46,8 @@ A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatk
 | Parancs | Megjegyzések |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az signalr create](/cli/azure/ext/signalr/signalr#ext-signalr-az-signalr-create) | Létrehoz egy Azure SignalR szolgáltatási erőforrást. |
-| [az signalr key list](/cli/azure/ext/signalr/signalr/key#ext-signalr-az-signalr-key-list) | Felsorolja az alkalmazás által a tartalomfrissítések SignalRrel történő valós idejű leküldése során használt kulcsokat. |
+| [az signalr create](/cli/azure/signalr#az-signalr-create) | Létrehoz egy Azure SignalR szolgáltatási erőforrást. |
+| [az signalr key list](/cli/azure/signalr/key#az-signalr-key-list) | Felsorolja az alkalmazás által a tartalomfrissítések SignalRrel történő valós idejű leküldése során használt kulcsokat. |
 | [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) | Létrehoz egy webalkalmazások futtatására szolgáló Azure App Service-csomagot. |
 | [az webapp create](/cli/azure/webapp#az-webapp-create) | Létrehoz egy Azure-webalkalmazást az App Service futtatási csomaggal. |
 | [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) | Új alkalmazásbeállításokat ad a webalkalmazáshoz. Ezeket az alkalmazásbeállításokat használja a rendszer a SignalR kapcsolati sztringje és a GitHub OAuth titkos alkalmazáskulcsok tárolásához. |

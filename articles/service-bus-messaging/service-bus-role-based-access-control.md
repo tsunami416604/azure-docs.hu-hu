@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
 ms.author: aschhab
-ms.openlocfilehash: e4571a8918b7877b728b54129e47ffcf4af9b46a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6f5390162ce56a0e77ef41740d7e88f3546c5530
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65979627"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444734"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Aktív Directory Role-Based hozzáférés-vezérlés (előzetes verzió)
 
@@ -33,12 +33,12 @@ Azure AD RBAC használó alkalmazások nem kell kezelni a SAS-szabályok és a k
 
 Az Azure biztosít a beépített RBAC-szerepkörök, amelyek engedélyezik a hozzáférést egy Service Bus-névtér alatt:
 
-* [Service Bus adatok tulajdonosa (előzetes verzió)](../role-based-access-control/built-in-roles.md#service-bus-data-owner): Lehetővé teszi, hogy a data access Service Bus-névtér és az entitások (üzenetsorok, témakörök, előfizetések és szűrők)
+* [Az Azure Service Bus adatok tulajdonosa (előzetes verzió)](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner-preview): Lehetővé teszi, hogy a data access Service Bus-névtér és az entitások (üzenetsorok, témakörök, előfizetések és szűrők)
 
 >[!IMPORTANT]
 > Korábban támogatva a felügyelt identitás hozzáadása a **"Owner"** vagy **"Közreműködő"** szerepkör.
 >
-> Azonban, adat-hozzáférési jogosultságokat a **"Owner"** és **"Közreműködő"** szerepkör már nem lesz érvényes. Ha használta a **"Owner"** vagy **"Közreműködő"** szerepkört, majd azokat felhasználja módosítani kell a kell a **"Service Bus adatok tulajdonosa"** szerepkör.
+> Azonban, adat-hozzáférési jogosultságokat a **"Owner"** és **"Közreműködő"** szerepkör már nem lesz érvényes. Ha használta a **"Owner"** vagy **"Közreműködő"** szerepkört, majd azokat felhasználja módosítani kell a kell a **"Az Azure Service Bus adatok tulajdonosa (előzetes verzió)"** szerepkör.
 
 ## <a name="use-service-bus-with-an-azure-ad-domain-user-account"></a>A Service Bus használata egy Azure AD tartományi felhasználói fiók
 

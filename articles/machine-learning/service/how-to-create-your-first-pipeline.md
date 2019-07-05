@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: c87685673052d2cfbc961d3bb717c9cd274872af
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 948594a43cec92aa62386b041ce8c96a0558995e
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059236"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466915"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Hozzon létre, és a egy machine learning-folyamat futtatása az Azure Machine Learning-SDK használatával
 
@@ -58,7 +58,7 @@ A folyamat futtatásához szükséges erőforrások létrehozásához:
 ### <a name="set-up-a-datastore"></a>Egy adattár beállítása
 Egy adattár tárolja az adatokat a folyamat eléréséhez. Az egyes munkaterületeken tartozik egy alapértelmezett adattárhoz. További adattárainak regisztrálhat. 
 
-A munkaterület létrehozásakor [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) és [Azure Blob storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) alapértelmezés szerint a munkaterülethez csatlakozik. Az Azure Files a munkaterülethez tartozó alapértelmezett datastore, de is használhatja a Blob storage-adattárhoz. További tudnivalókért lásd: [való használata az Azure Files, Azure-Blobok és Azure-lemezek](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks). 
+A munkaterület létrehozásakor [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) és [Azure Blob storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) alapértelmezés szerint a munkaterülethez csatlakozik. Az Azure Blob Storage a munkaterülethez tartozó alapértelmezett datastore, de is használhatja a Blob storage-adattárhoz. További tudnivalókért lásd: [való használata az Azure Files, Azure-Blobok és Azure-lemezek](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks). 
 
 ```python
 # Default datastore (Azure file storage)

@@ -14,26 +14,119 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: b753b565b7dae6cdc244d05d051df964eda3c6f2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1a051f3a0c55e207e6a53955d1cb4b9ea7e54a4d
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65620487"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67544144"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>A Microsoft Azure Storage Explorer kibocsátási megjegyzései
 
-Ez a cikk az Azure Storage Explorer 1.8.1 kiadás kibocsátási megjegyzései, valamint a korábbi verziók kibocsátási megjegyzései tartalmazza.
+Ez a cikk az Azure Storage Explorer 1.9.0-s kiadás kibocsátási megjegyzései, valamint a korábbi verziók kibocsátási megjegyzései tartalmazza.
 
 [A Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) egy önálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 
+## <a name="version-190"></a>Verzió 1.9.0-s
+7/1/2019
+
+### <a name="download-azure-storage-explorer-190"></a>Az Azure Storage Explorer 1.9.0-s letöltése
+- [Az Azure Storage Explorer 1.9.0-s Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Az Azure Storage Explorer 1.9.0-s Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Az Azure Storage Explorer 1.9.0-s linuxhoz](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>Új
+
+* Most már csatolhat Blob tárolók, Azure ad-ben (RBAC vagy ACL engedélyeket). Ez a funkció célja segítség a felhasználóknak, akik hozzáférhetnek a tárolókat, de nem a Storage-fiókok, amelyek a tárolók. Tekintse meg az első lépések útmutató további információt Ez a funkció.
+* Beszerzése és az RBAC bérleti most már dolgozhat. [#1354](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1354)
+* Hozzáférési szabályzatok kezelése és a beállítás mostantól nyilvános hozzáférés szintje RBAC együttműködve. [#1355](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1355)
+* Blob törlése mappák most az RBAC fog működni. [#1450](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1450)
+* Most már dolgozhat, az RBAC a blob hozzáférési szint módosítása. [#1446](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1446)
+* Most már gyorsan visszaállíthatja a gyorselérési "Súgó" keresztül → "Visszaállítási". [#1327](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1327)
+
+### <a name="preview-features"></a>Előzetes állapotú szolgáltatások
+
+* Eszköz kód flow bejelentkezés már elérhető az előzetes verzióra. Az engedélyezéshez, lépjen a "Betekintő" → "Használható eszköz kód folyamat Sign-in". Azt javasoljuk, hogy minden olyan felhasználók, akik rendelkeznek üres jelentkezzen be a windows próbálkozzon ezzel a funkcióval kapcsolatos problémák, előfordulhat, hogy bizonyul megbízhatóbb formájában jelentkezzen be.
+* Az Azcopyval integrált, a Storage Explorer jelenleg érhető el az előzetes verzióra. Az engedélyezéshez nyissa meg a "Betekintő", "Használata az AzCopy a továbbfejlesztett Blob feltöltése és letöltése" →. Az Azcopyval befejezett BLOB átvitelek gyorsabb lehet, és további nagy teljesítményt nyújtva.
+
+### <a name="fixes"></a>Javítások
+
+* Rögzített éppen nem tölthető be egy fiók több mint 50 előfizetéssel. [#1416](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1416)
+* Rögzített nem működik az információs sáv jelenik meg, amikor egy közvetlen hivatkozást nem sikerül a "Bejelentkezés" gomb. [#1358](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1358)
+* Rögzített, nem a macOS rendszeren .app fájlok feltöltése folyamatban van. [#1119](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1119)
+* Rögzített "Próbálkozzon újra az összes" egy sikertelen blob átnevezése nem működik. [#992](https://www.github.com/Microsoft/AzureStorageExplorer/issues/992)
+* Rögzített "Mégse" blob megnyitása közben nem működik. [#1464](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1464)
+* Kijavítva a termékben több helyesírási és elemleírás problémákat. Köszönet ezeket a problémákat jelentő összes! [#1303](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1303), [#1328](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1328), [#1329](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1329), [#1331](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1331), [#1336](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1336), [#1352](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1352), [#1368](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1368), [#1395](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1395)
+
+### <a name="known-issues"></a>Ismert problémák
+
+* A AzCopy Blob letöltését, ha az MD5-tel, a nagy méretű fájlok nem ellenőrzött folyamatban van. A Storage SDK-ban egy hiba miatt nem lehetséges. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* Az RBAC használatával, a Tártallózó engedélyekkel kell rendelkeznie a néhány felügyeleti réteg a tárolási erőforrások eléréséhez. Tekintse meg a [hibaelhárítási útmutató](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) további információ.
+* ADLS Gen2 Blobok rendszer proxy mögött elérésére tett kísérlet sikertelen lehet.
+* Például egy blob-tároló SAS URI-t, összekapcsolnia erőforrás leválasztása okozhatja, hogy a hiba, amely megakadályozza más megfelelően jelenik meg a mellékleteket. A probléma megkerüléséhez frissítse a a csoport csomópontot. Tekintse meg a #537 további információt.
+* Ha VS használ a Mac számítógépen, és minden eddiginél hozott létre egyéni AAD-konfigurációt, előfordulhat, hogy nem tudja jelentkezik be. A probléma megkerüléséhez tartalmának törlése ~ /. IdentityService/AadConfigurations. Ha ezt nem feloldása, ennél a hibánál megjegyzést.
+* Azurite még nem teljes körűen megvalósítva összes Storage API-t. Emiatt lehetséges, hogy nem várt hibák vagy viselkedés fejlesztési tárterülettel Azurite használatakor.
+* Ritka esetekben a fa fókusz előfordulhat, hogy elakadnak a gyors hozzáférés. Ezt követően a fókuszt, frissítse az összes is.
+* Feltöltés a OneDrive-mappából egy NodeJS hibája miatt nem működik. Kijavítva a hiba, de Electron még nincs integrálva. Dolgozik a probléma, amikor a blobtárolóba való feltöltéshez, vagy egy blob-tárolóba való letöltéséhez körül, használhatja a kísérleti AzCopy funkció.
+* Ha az Azure Stack célozza, bizonyos fájlokat, a hozzáfűző blobok feltöltése meghiúsulhat.
+* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ez, mert a Mégse gombra szűrő áthidaló használjuk az alábbiakban ismertetjük.
+* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
+* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
+* Az Azure Stack nem támogatja a következő funkciókat. Ezek a szolgáltatások használata közben az Azure Stack használatával próbál erőforrások váratlan hibákhoz vezethet.
+   * Fájlmegosztások
+   * Hozzáférési szintek
+   * Helyreállítható törlés
+   * ADLS Gen2
+* A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer egy üres (üres) fő ablakot jelenít meg, próbálkozzon a Storage Explorer indítása a parancssorból, és a GPU-gyorsítás letiltása hozzáadásával a `--disable-gpu` váltani:
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* Storage Explorer linuxon futó szükséges bizonyos függőségekkel, először telepíteni kell. Ellenőrizze a Storage Explorer [hibaelhárítási útmutató](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) további információt.
+
+## <a name="previous-releases"></a>Korábbi kiadások
+
+* [1.8.1-es verzió](#version-181)
+* [Verzió 1.8.0-as](#version-180)
+* [1.7.0-ás verzió](#version-170)
+* [Verzió 1.6.2-es verzióján](#version-162)
+* [1.6.1-es verzió](#version-161)
+* [1.6.0-s verziójának](#version-160)
+* [Verzió 1.5.0](#version-150)
+* [Verzió 1.4.4](#version-144)
+* [Verzió 1.4.3](#version-143)
+* [1.4.2 verziója](#version-142)
+* [1.4.1 verzió](#version-141)
+* [Verzió 1.3.0](#version-130)
+* [1.2.0-s vagy annál újabb verzió](#version-120)
+* [1.1.0-s verzió](#version-110)
+* [1.0.0-s verziójának](#version-100)
+* [Verzió 0.9.6](#version-096)
+* [Verzió 0.9.5](#version-095)
+* [0.9.4 és 0.9.3-as verzió](#version-094-and-093)
+* [Verzió 0.9.2](#version-092)
+* [0.9.1 és 0.9.0-s verziója](#version-091-and-090)
+* [Verzió 0.8.16](#version-0816)
+* [Verzió 0.8.14](#version-0814)
+* [Verzió 0.8.13](#version-0813)
+* [0.8.12 és 0.8.11 és 0.8.10 verzió](#version-0812-and-0811-and-0810)
+* [0.8.9 és 0.8.8 verzió](#version-089-and-088)
+* [Verzió 0.8.7](#version-087)
+* [Verzió 0.8.6](#version-086)
+* [Verzió 0.8.5](#version-085)
+* [Verzió 0.8.4](#version-084)
+* [Verzió 0.8.3](#version-083)
+* [Verzió 0.8.2](#version-082)
+* [Verzió 0.8.0](#version-080)
+* [Verzió 0.7.20160509.0](#version-07201605090)
+* [Verzió 0.7.20160325.0](#version-07201603250)
+* [Verzió 0.7.20160129.1](#version-07201601291)
+* [Verzió 0.7.20160105.0](#version-07201601050)
+* [Verzió 0.7.20151116.0](#version-07201511160)
+
 ## <a name="version-181"></a>1\.8.1-es verzió
 5/13/2019
-
-### <a name="download-azure-storage-explorer-181"></a>1\.8.1. az Azure Storage Explorer letöltése
-- [Az Azure Storage Explorer 1.8.1 Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Az Azure Storage Explorer 1.8.1 Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Az Azure Storage Explorer 1.8.1 linuxhoz](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="hotfixes"></a>Gyorsjavítások
 * Bizonyos esetekben kattintson a "Betöltés több" az erőforráscsoport szintjén nem meghaladná a következő oldalt. Ez megoldottuk. [#1359](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1359)
@@ -89,52 +182,8 @@ Ez a cikk az Azure Storage Explorer 1.8.1 kiadás kibocsátási megjegyzései, v
 
 * Storage Explorer linuxon futó szükséges bizonyos függőségekkel, először telepíteni kell. Ellenőrizze a Storage Explorer [hibaelhárítási útmutató](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) további információt.
 
-## <a name="previous-releases"></a>Korábbi kiadások
-
-* [Verzió 1.8.0-as](#version-180)
-* [1.7.0-ás verzió](#version-170)
-* [Verzió 1.6.2-es verzióján](#version-162)
-* [1.6.1-es verzió](#version-161)
-* [1.6.0-s verziójának](#version-160)
-* [Verzió 1.5.0](#version-150)
-* [Verzió 1.4.4](#version-144)
-* [Verzió 1.4.3](#version-143)
-* [1.4.2 verziója](#version-142)
-* [1.4.1 verzió](#version-141)
-* [Verzió 1.3.0](#version-130)
-* [1.2.0-s vagy annál újabb verzió](#version-120)
-* [1.1.0-s verzió](#version-110)
-* [1.0.0-s verziójának](#version-100)
-* [Verzió 0.9.6](#version-096)
-* [Verzió 0.9.5](#version-095)
-* [0.9.4 és 0.9.3-as verzió](#version-094-and-093)
-* [Verzió 0.9.2](#version-092)
-* [0.9.1 és 0.9.0-s verziója](#version-091-and-090)
-* [Verzió 0.8.16](#version-0816)
-* [Verzió 0.8.14](#version-0814)
-* [Verzió 0.8.13](#version-0813)
-* [0.8.12 és 0.8.11 és 0.8.10 verzió](#version-0812-and-0811-and-0810)
-* [0.8.9 és 0.8.8 verzió](#version-089-and-088)
-* [Verzió 0.8.7](#version-087)
-* [Verzió 0.8.6](#version-086)
-* [Verzió 0.8.5](#version-085)
-* [Verzió 0.8.4](#version-084)
-* [Verzió 0.8.3](#version-083)
-* [Verzió 0.8.2](#version-082)
-* [Verzió 0.8.0](#version-080)
-* [Verzió 0.7.20160509.0](#version-07201605090)
-* [Verzió 0.7.20160325.0](#version-07201603250)
-* [Verzió 0.7.20160129.1](#version-07201601291)
-* [Verzió 0.7.20160105.0](#version-07201601050)
-* [Verzió 0.7.20151116.0](#version-07201511160)
-
 ## <a name="version-180"></a>Verzió 1.8.0-as
 5/1/2019
-
-### <a name="download-azure-storage-explorer-180"></a>Az Azure Storage Explorer 1.8.0-as letöltése
-- [Az Azure Storage Explorer 1.8.0-as Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Az Azure Storage Explorer 1.8.0-as Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Az Azure Storage Explorer 1.8.0-as linuxhoz](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>Új
 
@@ -1277,7 +1326,7 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
 * Számos fontos biztonsági frissítések kihasználása érdekében 1.7.2-es verzióra Electron
 * Most már gyorsan elérheti a online – hibaelhárítási útmutató a Súgó menü
 * Storage Explorer hibaelhárítási [útmutató][2]
-* [Utasítások] [ 3] Azure Stack-előfizetéshez való csatlakozásról
+* [Utasítások][3] Azure Stack-előfizetéshez való csatlakozásról
 
 ### <a name="known-issues"></a>Ismert problémák
 
@@ -1302,7 +1351,7 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
 #### <a name="new"></a>Új
 
 * Storage Explorer hibaelhárítási [útmutató][2]
-* [Utasítások] [ 3] Azure Stack-előfizetéshez való csatlakozásról
+* [Utasítások][3] Azure Stack-előfizetéshez való csatlakozásról
 
 #### <a name="fixes"></a>Javítások
 

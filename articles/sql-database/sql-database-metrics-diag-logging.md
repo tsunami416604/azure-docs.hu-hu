@@ -11,17 +11,17 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 089f5335a65151c9c576346995f0bee34b5d10b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/21/2019
+ms.openlocfilehash: 6824a7151a0c007d6fe4ba021f274886a3cf0dcb
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65791897"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447826"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database-metrikák és diagnosztikai naplózás
 
-Ebben a témakörben, megtudhatja, hogyan naplózási diagnostics telemetriai adatainak az Azure SQL Database az Azure portal, PowerShell, az Azure CLI, Azure Monitor REST API és az Azure Resource Manager-sablon használatával. Ezek a diagnosztikai erőforrás-használat és a lekérdezés-végrehajtási statisztikák méréséhez használható. 
+Ebben a témakörben, megtudhatja, hogyan naplózási diagnostics telemetriai adatainak az Azure SQL Database az Azure portal, PowerShell, az Azure CLI, Azure Monitor REST API és az Azure Resource Manager-sablon használatával. Ezek a diagnosztikai erőforrás-használat és a lekérdezés-végrehajtási statisztikák méréséhez használható.
 
 Önálló adatbázisok, rugalmas készletek a készletezett adatbázisok és példányok adatbázisai a felügyelt példány is könnyebben alkalmazásteljesítmény-figyelés a metrikák és diagnosztikai naplók streamelése. Az adatbázis erőforrás-használat, a dolgozók és a munkamenetek és a egy, a következő Azure-erőforrások kapcsolat továbbítására konfigurálhatja:
 
@@ -119,7 +119,7 @@ Rugalmas készlet erőforrás diagnostics telemetriai adatainak streamelésének
 1. Emellett konfigurálhatja adatfolyam-diagnosztika telemetria hajtsa végre a következő szakaszban leírt figyelni szeretné a rugalmas készleten belül minden egyes adatbázishoz.
 
 > [!IMPORTANT]
-> Rugalmas készletek a diagnostics telemetriai adatainak azonkívül szükség diagnostics telemetriai adatainak az egyes adatbázisok konfigurálása a rugalmas készlet módon lentebb. 
+> Rugalmas készletek a diagnostics telemetriai adatainak azonkívül szükség diagnostics telemetriai adatainak az egyes adatbázisok konfigurálása a rugalmas készlet módon lentebb.
 
 ### <a name="configure-streaming-of-diagnostics-telemetry-for-single-database-or-database-in-elastic-pool"></a>Adatfolyam-diagnosztika telemetria egyetlen adatbázishoz vagy rugalmas készlet adatbázis konfigurálása
 
@@ -181,7 +181,7 @@ Felügyelt példány erőforrás diagnostics telemetriai adatainak streamelésé
 1. Emellett konfigurálhatja adatfolyamként diagnostics telemetriai adatainak az egyes példányok adatbázisok belül a következő felügyelt példányt szeretné figyelni a következő szakaszban leírt lépéseket követve.
 
 > [!IMPORTANT]
-> Azonkívül, hogy a diagnostics telemetriai adatainak a felügyelt példány, szükség diagnostics telemetriai adatainak minden példány adatbázis konfigurálása módon lentebb. 
+> Azonkívül, hogy a diagnostics telemetriai adatainak a felügyelt példány, szükség diagnostics telemetriai adatainak minden példány adatbázis konfigurálása módon lentebb.
 
 ### <a name="configure-streaming-of-diagnostics-telemetry-for-instance-databases"></a>Konfigurálja a diagnostics telemetriai adatainak adatfolyamként például adatbázisok
 
@@ -261,6 +261,7 @@ Adja meg a munkaterület erőforrás-azonosító \<$WSID\> paraméterként a par
     PS C:\> $WSID = "/subscriptions/<subID>/resourcegroups/<RG_NAME>/providers/microsoft.operationalinsights/workspaces/<WS_NAME>"
     PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
     ```
+
    Cserélje le \<subID\> az előfizetés-azonosító, a \<RG_NAME\> az az erőforráscsoport nevét, és \<WS_NAME\> munkaterület nevét.
 
 ### <a name="azure-cli"></a>Azure CLI
@@ -396,10 +397,6 @@ A rugalmas készlet-adatok tárolására szolgáló blob nevében hasonlóan né
 ```powershell
 insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription ID}/ RESOURCEGROUPS/{resource group name}/PROVIDERS/Microsoft.SQL/servers/{resource_server}/ elasticPools/{elastic_pool_name}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
-
-### <a name="download-metrics-and-logs-from-storage"></a>Metrikák és naplók letöltése a Storage-ból
-
-Ismerje meg, hogyan [metrikák és diagnosztikai naplók letöltése a Storage-ból](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-the-sample-application).
 
 ## <a name="data-retention-policy-and-pricing"></a>Az adatmegőrzési házirend és díjszabás
 
@@ -719,5 +716,3 @@ Az Event Hubs szolgáltatásról, olvassa el:
 
 - [Mi az Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
 - [Bevezetés az Event Hubs használatába](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
-
-Az Azure Storage szolgáltatással kapcsolatos további tudnivalókért lásd: [metrikák és diagnosztikai naplók letöltése a Storage-ból](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-the-sample-application).

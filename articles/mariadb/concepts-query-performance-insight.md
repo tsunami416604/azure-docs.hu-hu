@@ -5,22 +5,34 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/12/2019
-ms.openlocfilehash: be9d5c4745cb03d9d3eaa324b7191d82b9d4a14e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/27/2019
+ms.openlocfilehash: 48ff1fdc08e0df463ec48fd1415c7b67d5beb744
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079417"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67462105"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mariadb"></a>Azure Database for MariaDB a lekérdezési Terheléselemző
 
 **A következőkre vonatkozik:**  Azure Database for MariaDB 10.2
 
 > [!NOTE]
-> Lekérdezési Terheléselemző az előzetes verzióban. Lekérdezési Terheléselemző támogatása az Azure Portalon tesszük elérhetővé, és előfordulhat, hogy még nem érhető el a régióban.
+> Lekérdezési Terheléselemző az előzetes verzióban.
 
 Lekérdezési Terheléselemző segít gyorsan azonosítani a leghosszabban futó lekérdezések vannak, hogyan változnak idővel és milyen feladatot hatással vannak, azokat.
+
+## <a name="common-scenarios"></a>Gyakori forgatókönyvek
+
+### <a name="long-running-queries"></a>Hosszú ideig futó lekérdezések
+
+- Leghosszabb futó lekérdezések azonosítása az elmúlt óra X
+- Erőforrások várakozik a legfontosabb N lekérdezések azonosítása
+ 
+### <a name="wait-statistics"></a>Várjon statisztika
+
+- Várjon jellegű ismertetése, lekérdezés
+- Az erőforrás várakozik és ott, ahol az erőforrás-versengés trendek ismertetése
 
 ## <a name="permissions"></a>Engedélyek
 
@@ -36,11 +48,20 @@ A Microsoft Azure Portal [Lekérdezési terheléselemző](concepts-query-perform
 
 Az Azure Database for MariaDB kiszolgáló portáloldalán válassza **lekérdezési Terheléselemző** alatt a **intelligens teljesítmény** a menüsávon szakaszában.
 
-![Lekérdezési Terheléselemző hosszú ideig futó lekérdezések](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png)
+### <a name="long-running-queries"></a>Hosszú ideig futó lekérdezések
 
 A **hosszú ideig futó lekérdezések** lapon látható a 5 leggyakoribb lekérdezések által végrehajtásonkénti, átlagos időtartam összesített 15 perces időközönként. Több lekérdezés megtekintéséhez válassza ki a **száma a lekérdezések** legördülő menü. A diagram színei ekkor egy adott lekérdezésazonosító tekintetében változhatnak.
 
 Kattintással és húzással egy adott időablakra szűkítheti a diagramot. Használhatja a bejövő és kimenő ikonok nagyítás egy kisebb vagy nagyobb időszakban rendre megtekintéséhez.
+
+![Lekérdezési Terheléselemző hosszú ideig futó lekérdezések](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png)
+
+### <a name="wait-statistics"></a>Várjon statisztika 
+
+> [!NOTE]
+> Várjon statisztika céljára lekérdezési teljesítménnyel kapcsolatos problémák elhárítása. Javasoljuk, hogy csak a hibaelhárításhoz kapcsolható be.
+
+Várjon statisztika a várakozási eseményeket, amelyek egy adott lekérdezés végrehajtása közben nézetét jeleníti meg. További információ a várakozási eseménytípusokat a [MySQL-motor dokumentációja](https://go.microsoft.com/fwlink/?linkid=2098206).
 
 Válassza ki a **várjon statisztika** fülre kattintva megtekintheti a megfelelő Vizualizációk a várakozik a kiszolgálón.
 

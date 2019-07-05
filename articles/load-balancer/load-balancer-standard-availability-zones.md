@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2018
 ms.author: kumud
-ms.openlocfilehash: 6f33be6e418366f57d243f578035b5c87079c99e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0820285555110e8e85bff814f4774d6da6443f69
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60734456"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491985"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>A Standard Load Balancer és a rendelkezésre állási zónák
 
@@ -186,7 +186,7 @@ Load Balancer szolgáltatás szándékosan rugalmasan rendelkezésre állási z�
 
 Load Balancer egyszerűen rendelkezik, a zónaredundáns előtérbeli egyetlen IP-cím lehet. Egy zónaredundáns IP-cím biztonságosan tudjon kiszolgálni, minden zónában zónaszintű erőforrás és mindaddig, amíg egy zóna kifogástalan állapotú a régión belül egy vagy több zóna hibák hibatűrését. Ellentétben a zónaszintű előtérbeli a szolgáltatást, hogy a megfelelő zónát egy egyetlen zóna és -megosztások sorsát csökkentését.
 
-Zóna redundancia nem jelenti azt, hitless datapath vagy vezérlősík;  fontos kifejezetten az adatsík. Zónaredundáns folyamat használhatja a zónák, és egy ügyfél folyamatok fogja használni a kifogástalan állapotú zónakészleten egy régióban. Kifogástalan állapotú zónák használata ezen a ponton az idő a forgalom adatfolyamait zóna meghibásodása esetén nem változik.  Egy zónát használó zóna sikertelen időpontjában adatforgalmakat érintheti, de helyreállíthatja az alkalmazások, és ezek a folyamatok a fennmaradó kifogástalan zónák újraküldési vagy reestablishment régióban továbbra is, az Azure rendelkezik hiperkonvergens körül a zóna hiba után.
+Zóna redundancia nem jelenti azt, hitless datapath vagy vezérlősík;  fontos kifejezetten az adatsík. Zónaredundáns folyamat használhatja a zónák, és egy ügyfél folyamatok fogja használni a kifogástalan állapotú zónakészleten egy régióban. Kifogástalan állapotú zónák használata ezen a ponton az idő a forgalom adatfolyamait zóna meghibásodása esetén nem változik.  Egy zónát használó zóna sikertelen időpontjában adatforgalmakat érintheti, de alkalmazások állíthatja helyre. Ezek a folyamatok továbbra is a fennmaradó kifogástalan zónák az újraküldési vagy reestablishment, régión belüli Azure egy konvergált körül a zóna hiba után.
 
 ### <a name="xzonedesign"></a> Adatbázisközi zóna határok
 

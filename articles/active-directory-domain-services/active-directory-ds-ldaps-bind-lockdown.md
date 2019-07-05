@@ -3,7 +3,7 @@ title: Kötést létrehozni biztonságos LDAP (LDAPS) használatával egy Azure 
 description: Kötést létrehozni biztonságos LDAP (LDAPS) használatával az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 6871374a-0300-4275-9a45-a39a52c65ae4
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/20/2019
-ms.author: mstephen
-ms.openlocfilehash: 47c9553b4191fe6dbae8d92d75dfae83f191a063
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/28/2019
+ms.author: iainfou
+ms.openlocfilehash: df0b3d27eec478280a33be831a2431eccdf05a74
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66234851"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483383"
 ---
 # <a name="bind-to-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>Kötést létrehozni biztonságos LDAP (LDAPS) használatával az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 
@@ -35,6 +35,11 @@ Először nyissa meg az LDP, és csatlakozzon ahhoz a felügyelt tartományhoz. 
 
 Ezután kötést létrehozni a felügyelt tartományhoz. Kattintson a **kapcsolat** kattintson **kötési...**  menüjében. Adja meg a "AAD DC rendszergazdák" csoportba tartozó felhasználói fiók.
 
+> [!IMPORTANT]
+> Felhasználók (és szolgáltatásfiókok) nem hajtható végre egyszerű LDAP-kötések, ha az Azure AD Domain Services-példányon a Jelszókivonat-szinkronizálás az NTLM le van tiltva.  További információk az NTLM Jelszókivonat-szinkronizálás letiltása, [biztonságossá tétele az Azure AD tartományi szolgáltatásokkal felügyelt tartományban](secure-your-domain.md).
+>
+>
+
 Válassza ki **nézet**, majd válassza ki **fa** menüjében. Az Alap DN mezőt üresen hagyja, és kattintson az OK gombra. Keresse meg a tárolót, amelyet szeretne keresését, kattintson a jobb gombbal a tárolóra, és válassza ki a keresés.
 
 > [!TIP]
@@ -43,7 +48,7 @@ Válassza ki **nézet**, majd válassza ki **fa** menüjében. Az Alap DN mezőt
 >
 >
 
-További információ - [LDAP-lekérdezés alapjai](https://technet.microsoft.com/library/aa996205.aspx)
+További információ - [LDAP-lekérdezés alapjai](https://docs.microsoft.com/windows/desktop/ad/creating-a-query-filter)
 
 
 ## <a name="task-6-lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet"></a>6\. feladat: Zárolását, így a felügyelt tartomány secure LDAP-hozzáférését az interneten keresztül
@@ -66,7 +71,7 @@ A minta az alábbi táblázatban az NSG zárol secure LDAP-hozzáférését az i
 ## <a name="related-content"></a>Kapcsolódó tartalom
 * [Az Azure AD tartományi szolgáltatások – első lépések útmutató](create-instance.md)
 * [Az Azure AD Domain Services tartomány kezelése](manage-domain.md)
-* [LDAP-lekérdezés alapjai](https://technet.microsoft.com/library/aa996205.aspx)
+* [LDAP-lekérdezés alapjai](https://docs.microsoft.com/windows/desktop/ad/creating-a-query-filter)
 * [A Csoportházirend kezelése az Azure AD tartományi szolgáltatásokhoz](manage-group-policy.md)
 * [Hálózati biztonsági csoportok](../virtual-network/security-overview.md)
 * [Hálózati biztonsági csoport létrehozása](../virtual-network/tutorial-filter-network-traffic.md)

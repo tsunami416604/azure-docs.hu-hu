@@ -5,18 +5,18 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 05/27/2019
+ms.date: 07/01/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 4014827366afc492d73757a0ac5e1acb64262c51
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 953a549a44d224f9d196c6d6842bdcae04cca975
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66474781"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485914"
 ---
-# <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge-preview"></a>Használja a Visual Studio 2019 fejlesztésről és hibakeresésről modulok az Azure IoT Edge (előzetes verzió)
+# <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Használja a Visual Studio 2019 fejlesztésről és hibakeresésről modulok az Azure IoT Edge-hez
 
 Az Azure IoT Edge kapcsolhatja az üzleti logikára modulokat. Ez a cikk bemutatja, hogyan a fő eszköz fejlesztésről és hibakeresésről modulok Visual Studio 2019 adatokként.
 
@@ -40,10 +40,10 @@ Mivel ez a cikk a Visual Studio 2019 használja, mint a fő fejlesztőeszközt, 
 
 Miután készen áll a Visual Studio 2019, emellett kell a következő eszközök és -összetevők:
 
-- Töltse le és telepítse [Azure IoT Edge-eszközök (előzetes verzió)](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) egy IoT Edge-projekt létrehozása a Visual Studio 2019 létrehozása a Visual Studio marketplace-ről.
+- Töltse le és telepítse [Azure IoT Edge-eszközök](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) egy IoT Edge-projekt létrehozása a Visual Studio 2019 létrehozása a Visual Studio marketplace-ről.
 
 > [!TIP]
-> Ha a Visual Studio 2017-et használ, plrease töltse le és telepítse [Azure IoT Edge-eszközök (előzetes verzió)](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) VS 2017 a Visual Studio marketplace-ről
+> Ha a Visual Studio 2017-et használ, plrease töltse le és telepítse [Azure IoT Edge-eszközök](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) VS 2017 a Visual Studio marketplace-ről
 
 - Töltse le és telepítse [a Docker Community Edition](https://docs.docker.com/install/) a fejlesztői gépen való létrehozásához és futtatásához a modul rendszerképeit. Állítsa be a Docker CE futtatását Linux-tároló mód vagy a Windows tároló módban kell.
 

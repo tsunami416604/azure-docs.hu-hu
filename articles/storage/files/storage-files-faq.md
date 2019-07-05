@@ -8,12 +8,12 @@ ms.date: 01/02/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: cdffbfd11a0f1c7d99818fa00f550965774b9b31
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c32d9954b3c90a5f7e9c5475acdb141f7154cf76
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65190067"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540360"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Files kapcsolatos gyakori kérdések (GYIK)
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabványnak megfelelő keresztül érhető el a felhőben [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Azure-fájlmegosztások párhuzamosan csatlakoztathatja felhőbeli vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. A Windows Server-gépek Azure-fájlmegosztások közel, ahol az adatok felhasználásának gyors hozzáférés az Azure File Sync használatával képes gyorsítótárazni.
@@ -73,10 +73,10 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
 
 * <a id="tier-options"></a>
   **Milyen tárolási rétegek az Azure Files támogatottak?**  
-    Az Azure Files jelenleg csak a standard szintű tárolási réteg támogatja. Nem kell, hogy az jelenleg támogatja a premium storage és a ritkán használt adatok megosztásához ütemtervek. 
+    Az Azure Files támogatja a két tárolási réteget: premium és standard. Standard fájlmegosztások az általános célú-(GPv1- vagy GPv2-) tárfiókokban jönnek, és a prémium szintű fájlmegosztások FileStorage tárfiókokban jönnek létre. Létrehozásával kapcsolatos további [standard fájlmegosztások](storage-how-to-create-file-share.md) és [prémium fájlmegosztások](storage-how-to-create-premium-fileshare.md). 
     
     > [!NOTE]
-    > Azure-fájlmegosztások nem hozható létre, csak blob storage-fiókok vagy a prémium szintű storage-fiókok.
+    > A Blob storage-fiókok nem hozhat létre Azure-fájlmegosztások vagy *prémium* általános célú-(GPv1- vagy GPv2-) tárfiókok. Standard szintű Azure-fájlmegosztások létrehozott kell *standard* általános célú fiókok csak és a prémium szintű Azure-fájlmegosztások FileStorage tárfiókok csak létre kell hozni. *Prémium szintű* általános célú-(GPv1- és GPv2-) tárfiókok vannak, csak a prémium szintű lapblobok esetében. 
 
 * <a id="give-us-feedback"></a>
   **Szeretném tekintse meg az Azure Files hozzáadott egy adott szolgáltatáshoz. Hozzáadhatja azt?**  
@@ -356,8 +356,8 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
     Az Azure Files méretezhetőségi és teljesítménycéljai kapcsolatos információkért lásd: [Azure Files méretezhetőségi és teljesítménycéljai](storage-files-scale-targets.md).
 
 * <a id="need-larger-share"></a>
-**Az Azure Files jelenleg érhetők el, mint nagyobb fájlmegosztás van szükségem. Növelheti a saját Azure-fájlmegosztás méretét?**  
-    Nem. Az Azure-fájlmegosztás maximális mérete 5 Tib-ra. Ez jelenleg rögzített korlátja, amely azt nem lehet beállítani. Folyamatban van egy megoldás 100 Tib-ra a megosztás méretének növeléséhez, de ütemtervek megosztásához jelenleg nem áll rendelkezésre.
+**Milyen Azure-fájlmegosztások érhető el?**  
+    Azure-beli fájlmegosztás méretek (prémium és standard) legfeljebb 100 Tib-ra méretezheti. Prémium szintű megosztások méretét legfeljebb 100 Tib-ra, egy GA ajánlat érhetők el. Standard megosztások fájlméretek legfeljebb 5 Tib-ra állnak rendelkezésre, egy GA kínál, és bár akár 100 TiB előzetes verzióban érhető el. Tekintse meg a [nagyobb fájlmegosztások (standard szintű) üzembe helyezésével](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) előkészítéséhez az útmutatás tervezési útmutató a fájl nagyobb része a standard szintű csomag előzetesével megosztja.
 
 * <a id="open-handles-quota"></a>
 **Hány ügyfelek hozzáférhetnek a egyszerre ugyanazt a fájlt?**    

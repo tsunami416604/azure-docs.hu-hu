@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/18/2019
+ms.date: 6/27/2019
 ms.author: mayg
-ms.openlocfilehash: bf4cce8a224db81b8db7fae6a69b8b578bb3d47a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 35fa26112a6026ab05bd59b38621de7ee802c715
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60772303"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491893"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Az Azure Site Recovery az Azure ExpressRoute
 
@@ -25,20 +25,15 @@ Ez a cikk bemutatja, hogyan használhatja az Azure ExpressRoute az Azure Site Re
 
 ExpressRoute-kapcsolatcsoport a helyszíni infrastruktúra és a egy kapcsolatszolgáltatón keresztül a Microsoft-felhőszolgáltatások közötti logikai kapcsolatot jelöli. Több ExpressRoute-Kapcsolatcsoportok rendezheti. Minden kapcsolatnak az azonos vagy eltérő régiókban is lehetnek, és a helyszíni eredetű különböző kapcsolatszolgáltatók keresztül lehet csatlakoztatni. További információ az ExpressRoute-Kapcsolatcsoportok [Itt](../expressroute/expressroute-circuit-peerings.md).
 
-## <a name="expressroute-routing-domains"></a>ExpressRoute útválasztási tartományok
-
-ExpressRoute-kapcsolatcsoport több útválasztási tartomány társítva van:
--   [Az Azure privát társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#privatepeering) – Azure számítási szolgáltatások, azaz a virtuális gépek (IaaS), és a privát társviszony-létesítési tartományon keresztül csatlakozhat egy virtuális hálózaton belül üzembe helyezett cloud services (PaaS). A privát társviszony-létesítési tartomány egy megbízható kiterjesztése az alaphálózat számít a Microsoft Azure-bA.
--   [Az Azure nyilvános társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#publicpeering) – például az Azure Storage, SQL Database és Websites szolgáltatásokhoz a nyilvános IP-címek érhetők el. A nyilvános IP-címeket, beleértve a virtuális IP-címek a felhőalapú szolgáltatások keresztül a nyilvános társviszony-létesítési útválasztási tartomány-ban üzemeltetett szolgáltatások privát módon csatlakozhat. Új létrehozás a már nyilvános társviszony-létesítés elavult, és a Microsoft Peering kell használni helyette az Azure PaaS-szolgáltatások.
--   [Microsoft társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) -kapcsolatot a Microsoft online szolgáltatásaihoz (az Office 365, Dynamics 365 és Azure PaaS-szolgáltatások) van a Microsoft társviszony-létesítésen keresztül. Microsoft társviszony-létesítésre kapcsolódni az Azure PaaS-szolgáltatások az ajánlott útválasztási tartomány.
-
-Tudjon meg többet, és hasonlítsa össze az ExpressRoute útválasztási tartományok [Itt](../expressroute/expressroute-circuit-peerings.md#peeringcompare).
+ExpressRoute-kapcsolatcsoport több útválasztási tartomány társítva van. Tudjon meg többet, és hasonlítsa össze az ExpressRoute útválasztási tartományok [Itt](../expressroute/expressroute-circuit-peerings.md#peeringcompare).
 
 ## <a name="on-premises-to-azure-replication-with-expressroute"></a>A helyszíni az Azure-bA az expressroute-tal
 
 Az Azure Site Recovery lehetővé teszi a vészhelyreállítást és migrálás az Azure-bA a helyszíni [Hyper-V virtuális gépek](hyper-v-azure-architecture.md), [VMware virtuális gépek](vmware-azure-architecture.md), és [fizikai kiszolgálók](physical-azure-architecture.md). Az összes helyszíni – Azure forgatókönyvek esetén, a replikációs adatokat fogadja és egy Azure Storage-fiókban tárolt. A replikáció során a virtuális gép díjakat nem kell fizetnie. Ha feladatátvételt végez az Azure-ba, a Site Recovery automatikusan létrehozza az Azure IaaS virtuális gépeket.
 
-A Site Recovery replikálja az adatokat az Azure Storage-fiók egy nyilvános végpontot keresztül. A Site Recovery replikációjára ExpressRoute használatához használhat [nyilvános társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#publicpeering) (az új létrehozások elavult) vagy [Microsoft társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#microsoftpeering). Microsoft társviszony-létesítés a replikáció ajánlott útválasztási tartományhoz. Ügyeljen arra, hogy a [hálózati követelmények](vmware-azure-configuration-server-requirements.md#network-requirements) is teljesülnek-e a replikáció. Miután a virtuális gépek vagy kiszolgálók átadja a feladatokat az Azure virtuális hálózat, elérheti azokat használó [magánhálózati társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#privatepeering). Replikáció nem támogatott a privát társviszony-létesítésen keresztül.
+A Site Recovery replikálja az adatokat egy Azure Storage-fiók vagy a replika felügyelt lemezt a cél Azure-régió, egy nyilvános végpontot keresztül. A Site Recovery replikációs forgalom az ExpressRoute használatához használhat [Microsoft társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) vagy egy meglévő [nyilvános társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#publicpeering) (az új létrehozások elavult). Microsoft társviszony-létesítés a replikáció ajánlott útválasztási tartományhoz. Vegye figyelembe, hogy a replikáció nem támogatott a privát társviszony-létesítésen keresztül.
+
+Ügyeljen arra, hogy a [hálózati követelmények](vmware-azure-configuration-server-requirements.md#network-requirements) a konfigurációs kiszolgáló számára is teljesülnek. Adott URL-címek kapcsolat szükséges konfigurációs kiszolgáló által a Site Recovery replikációs vezénylését. Ez a kapcsolat ExpressRoute nem használható. 
 
 Abban az esetben proxyt használ, a helyszíni és a replikációs forgalom az expressroute-ot használni szeretne, a konfigurációs és Folyamatkiszolgálók a proxymegkerülési lista konfigurálnia kell. Kövesse az alábbi lépéseket:
 
@@ -48,6 +43,8 @@ Abban az esetben proxyt használ, a helyszíni és a replikációs forgalom az e
 - Azon megkerülési listája, adja hozzá az Azure storage URL-címe *. blob.core.windows.net
 
 Ez biztosítja, hogy a csak a replikációs forgalom expressroute-on keresztül folyamatok, miközben a kommunikáció proxyn keresztül is.
+
+Miután a virtuális gépek vagy kiszolgálók átadja a feladatokat az Azure virtuális hálózat, elérheti azokat használó [magánhálózati társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#privatepeering). 
 
 A kombinált forgatókönyvhöz az alábbi ábrán jelölt: ![A – helyszíni – Azure ExpressRoute használatával](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
 

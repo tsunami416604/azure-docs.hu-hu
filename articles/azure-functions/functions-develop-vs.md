@@ -10,16 +10,16 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: c6104a977a02211dcab17a5f232991d0d9cbb852
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ed3b42c61456f110925e34473dbb326dafc1b80
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050734"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447711"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Fejlesztés az Azure Functions Visual Studio használatával  
 
-Az Azure Functions Tools for Visual Studio 2019, amely lehetővé teszi fejlesztése, tesztelése és üzembe helyezése a Visual Studio-bővítmény C# funkciók az Azure-bA. Ha ez az első és az Azure Functions, többet is megtudhat a [Bevezetés az Azure Functions](functions-overview.md).
+Az Azure Functions Tools, amely lehetővé teszi fejlesztése, tesztelése és üzembe helyezése a Visual Studio-bővítmény C# funkciók az Azure-bA. Ha ez az első és az Azure Functions, többet is megtudhat a [Bevezetés az Azure Functions](functions-overview.md).
 
 Az Azure Functions Tools az alábbi előnyöket nyújtja: 
 
@@ -42,13 +42,11 @@ Az Azure Functions Tools tartalmazza az Azure-fejlesztési számítási [Visual 
 
 Győződjön meg arról, hogy naprakész állapotban-e a Visual Studio és az, hogy használja a [legfrissebb](#check-your-tools-version) , az Azure Functions tools.
 
-### <a name="other-requirements"></a>Egyéb követelmények
+### <a name="azure-resources"></a>Azure-erőforrások
 
-Hozzon létre és helyezhet üzembe functions, akkor is szüksége lesz:
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-* Aktív Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) érhetők el.
-
-* Egy Azure Storage-fiók. Storage-fiók létrehozásához lásd: [hozzon létre egy tárfiókot](../storage/common/storage-quickstart-create-account.md).
+Más erőforrások, amelyek van szüksége, például az Azure Storage-fiókot, a közzétételi folyamat során az előfizetésben jönnek létre.
 
 ### <a name="check-your-tools-version"></a>Az eszközök verziójának ellenőrzéséhez
 
@@ -80,12 +78,20 @@ A projekt sablont hoz létre egy C#-projektben, telepíti a `Microsoft.NET.Sdk.F
 
 * **host.json**: A Functions gazdagép konfigurálását teszi lehetővé. Ezek a beállítások is alkalmazható, ha helyileg és az Azure-ban futó is. További információkért lásd: [host.json referencia](functions-host-json.md).
 
-* **local.settings.json**: Kezeli a függvények helyi futtatás során használt beállításokat. Az Azure nem használja ezeket a beállításokat, azokat a [Azure Functions Core Tools](functions-run-local.md). Ez a fájl használatával adja meg az alkalmazás beállításait a függvények szükséges környezeti változókat. Egy új elem hozzáadása a **értékek** tömb minden egyes kapcsolathoz, a functions-kötéseket a projekt által igényelt. További információkért lásd: [helyi beállításfájl](functions-run-local.md#local-settings-file) az Azure Functions Core Tools cikkben.
+* **local.settings.json**: Kezeli a függvények helyi futtatás során használt beállításokat. Ezek a beállítások nem használatosak, amikor az Azure-ban futó. További információkért lásd: [helyi beállításfájl](#local-settings-file).
 
     >[!IMPORTANT]
     >Mivel a local.settings.json fájlban a titkos kulcsokat is tartalmazhatnak, a projekt forrásvezérlőből kell zárni. A **Copy to Output Directory** ezt a fájlt mindig kell beállítása **másolás, ha újabb**. 
 
 További információkért lásd: [funkciók hordozhatóosztálytár-projektjének](functions-dotnet-class-library.md#functions-class-library-project).
+
+[!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
+
+A local.settings.json beállítások nem lesznek feltöltve automatikusan, a projekt közzétételekor. Győződjön meg arról, hogy ezek a beállítások is léteznek a függvényalkalmazásban, az Azure-ban, fel kell tölteni őket a projekt közzététele után. További tudnivalókért lásd: [Alkalmazásbeállítások függvény](#function-app-settings).
+
+Az értékek **kapcsolati Sztringjei** soha nem kerülnek közzétételre.
+
+A függvény alkalmazás beállítások értékeit is elolvashatja a kódban környezeti változókként. További információkért lásd: [környezeti változók](functions-dotnet-class-library.md#environment-variables).
 
 ## <a name="configure-the-project-for-local-development"></a>A helyi fejlesztési projekt konfigurálása
 
@@ -133,8 +139,9 @@ Az előre lefordított függvények a függvény által használt kötéseket ha
         }
     }
     ```
+
     A kötés-specifikus attribútum alkalmazza a rendszer minden egyes belépési pont metódushoz megadott kötési paraméter. Az attribútum a kötési információ paraméterekként vesz igénybe. Az előző példában az első paramétere rendelkezik egy **QueueTrigger** attribútum a alkalmazni, üzenetsor által aktivált függvény jelzi. A várólista nevét és kapcsolati karakterlánc beállítás neve adhatók be a paramétereket a **QueueTrigger** attribútum. További információkért lásd: [Azure Queue storage – Azure Functions kötések](functions-bindings-storage-queue.md#trigger---c-example).
-    
+
 A fenti eljárással további funkciók hozzáadása a függvényalkalmazás projektjét. A projektben egyes funkciót egy másik eseményindító rendelkezhet, de a következő függvénynek rendelkeznie kell a pontosan egy eseményindító. További információkért lásd: [Azure Functions eseményindítók és kötések fogalmak](functions-triggers-bindings.md).
 
 ## <a name="add-bindings"></a>Adhat hozzá kötéseket
@@ -183,11 +190,14 @@ Az Azure Functions Core Tools használatával kapcsolatos további tudnivalóké
 
 ## <a name="publish-to-azure"></a>Közzététel az Azure platformon
 
+Közzététel a Visual Studióból, ha két üzembe helyezési módszer egyikét használják:
+
+* [Web Deploy](functions-deployment-technologies.md#web-deploy-msdeploy): a csomagok és telepíti az összes IIS-kiszolgálón Windows alkalmazásokat.
+* [Futtatás-a-Package engedélyezve van az üzembe helyezés zip](functions-deployment-technologies.md#zip-deploy): az Azure Functions üzemelő példányok esetén ajánlott.
+
+A következő lépések segítségével a projekt közzététele egy függvényalkalmazáshoz az Azure-ban.
+
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
-
-### <a name="deployment-technology"></a>Központi telepítési technológia
-
-Közzététel a Visual Studióban, a két technológia egyik használja a központi telepítésének végrehajtása: [Web Deploy](functions-deployment-technologies.md#web-deploy-msdeploy) és [Zip üzembe helyezés a Run-a-Package engedélyezve (ajánlott)](functions-deployment-technologies.md#zip-deploy).
 
 ## <a name="function-app-settings"></a>A függvényalkalmazás beállításai
 

@@ -13,12 +13,12 @@ ms.subservice: pim
 ms.date: 04/09/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07259d90c7119dec4ca9139e10af2fb20a439425
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e1760d0e0bd356a05d84c07eda005e0526da5d13
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60289402"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476520"
 ---
 # <a name="assign-azure-ad-roles-in-pim"></a>Az Azure AD PIM-szerepkörök hozzárendelése
 
@@ -42,17 +42,17 @@ Kövesse az alábbi lépéseket, hogy egy felhasználó jogosult az Azure AD-ren
 
 1. Kattintson a **szerepkörök** vagy **tagok**.
 
-    ![Azure AD-szerepkörök](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
+    ![Kiemelt szerepkörök és a tagok menüpontok az Azure AD-szerepkörök](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
 
 1. Kattintson a **tag hozzáadása** felügyelt tagok hozzáadása párbeszédpanel megnyitásához.
 
 1. Kattintson a **Szerepkörválasztás**, kattintson a kezelése, és kattintson a kívánt szerepkört **kiválasztása**.
 
-    ![Szerepkör kiválasztása](./media/pim-how-to-add-role-to-user/pim-select-a-role.png)
+    ![Válassza ki az Azure AD-szerepköröket szerepkör ablaktábla](./media/pim-how-to-add-role-to-user/pim-select-a-role.png)
 
 1. Kattintson a **tagok kiválasztása**, válassza ki a felhasználókat, rendelje hozzá a szerepkörhöz, és kattintson a kívánt **kiválasztása**.
 
-    ![Szerepkör kiválasztása](./media/pim-how-to-add-role-to-user/pim-select-members.png)
+    ![A tagok panel, amelyen kiválaszthatja a felhasználó kiválasztása](./media/pim-how-to-add-role-to-user/pim-select-members.png)
 
 1. Felügyelt tagok kattintson a Hozzáadás **OK** a felhasználó hozzáadása a szerepkörhöz.
 
@@ -60,7 +60,7 @@ Kövesse az alábbi lépéseket, hogy egy felhasználó jogosult az Azure AD-ren
 
      Ha a szerepkör van hozzárendelve, a kiválasztott felhasználó megjelenik a tagok listája, **jogosult** a szerepkörhöz.
 
-    ![A szerepkör jogosult felhasználó](./media/pim-how-to-add-role-to-user/pim-directory-role-eligible.png)
+    ![Szerepkör tagjai szerepelnek együtt az aktiválási állapota](./media/pim-how-to-add-role-to-user/pim-directory-role-eligible.png)
 
 1. Most, hogy a felhasználó nem jogosult a szerepkörhöz, tudassa vele, hogy azokat, az aktiválást található utasítások szerint [aktiválja a saját Azure AD-szerepköröket a PIM](pim-how-to-activate-role.md).
 
@@ -76,17 +76,17 @@ Alapértelmezés szerint az új felhasználók jogosultak csak az Azure AD-rends
 
 1. Kattintson a **tagok**.
 
-    ![A tagok listája](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
+    ![Az Azure AD-szerepkörök – tagok listája ábrázoló szerepkör és aktiválási állapota](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
 
 1. Kattintson egy **jogosult** állandóvá kívánt szerepkört.
 
 1. Kattintson a **további** majd **márka perm**.
 
-    ![Állandóvá tétel szerepkör-hozzárendelés](./media/pim-how-to-add-role-to-user/pim-make-perm.png)
+    ![Nyissa meg a panel, amely egy olyan szerepkörhöz a további menüpontok egy felhasználó listázása](./media/pim-how-to-add-role-to-user/pim-make-perm.png)
 
     A szerepkör most már szerepel az **állandó**.
 
-    ![Az állandó módosítása tagok listája](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members-permanent.png)
+    ![Tagok listája, amely mostantól állandó szerepkör és az aktiválási állapot megjelenítése](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members-permanent.png)
 
 ## <a name="remove-a-user-from-a-role"></a>Felhasználó eltávolítása a szerepkörből
 
@@ -100,17 +100,17 @@ Kövesse az alábbi lépéseket egy adott felhasználó eltávolítása Azure AD
 
 1. Kattintson a **tagok**.
 
-    ![A tagok listája](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
+    ![Az Azure AD-szerepkörök – tagok listája ábrázoló szerepkör és az aktiválási állapot](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
 
 1. Kattintson az eltávolítani kívánt szerepkör-hozzárendelés.
 
 1. Kattintson a **további** majd **eltávolítása**.
 
-    ![A szerepkör eltávolítása](./media/pim-how-to-add-role-to-user/pim-remove-role.png)
+    ![Nyissa meg a panelen egy felhasználót, hogy egy állandó szerepkör a további menü Beállítások listázása](./media/pim-how-to-add-role-to-user/pim-remove-role.png)
 
 1. Az üzenet, amely arra kéri, hogy erősítse meg, kattintson a **Igen**.
 
-    ![A szerepkör eltávolítása](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
+    ![Üzenet rákérdez, tag eltávolítása szerepkörből](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
 
     A szerepkör-hozzárendelés eltávolítása.
 
@@ -140,13 +140,13 @@ Kövesse az alábbi lépéseket a felhasználói hozzáférés rendszergazdája 
 
 1. Az a **kiválasztása** listában keresse meg és válassza ki a **MS-PIM** egyszerű szolgáltatást.
 
-   ![A PIM-MS-engedélyek hozzáadása](./media/pim-how-to-add-role-to-user/ms-pim-add-permissions.png)
+   ![Szerepkör-hozzárendelési ablaktáblán vehet - MS-PIM egyszerű szolgáltatás engedélyeit](./media/pim-how-to-add-role-to-user/ms-pim-add-permissions.png)
 
 1. Válasszon **mentése** a szerepkör hozzárendelése.
 
    Néhány pillanat múlva a MS-PIM egyszerű szolgáltatást a felhasználói hozzáférés rendszergazdájának szerepköre az előfizetések szintjén van hozzárendelve.
 
-   ![User Access Administrator role for MS-PIM](./media/pim-how-to-add-role-to-user/ms-pim-user-access-administrator.png)
+   ![Hozzáférés-vezérlés (IAM) paneljéről, amelyen látható a felhasználói hozzáférés rendszergazdája szerepkör-hozzárendelést a PIM MS](./media/pim-how-to-add-role-to-user/ms-pim-user-access-administrator.png)
 
 
 ## <a name="next-steps"></a>További lépések

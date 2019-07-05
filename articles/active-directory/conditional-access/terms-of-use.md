@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0534613a9df3177290e9b4b57e9830fe62f9741a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f891642761a2f692158efbd9111ff96444c4269d
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112128"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476190"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Az Azure Active Directory – használati feltételek
 
@@ -74,11 +74,11 @@ A használati feltételek dokumentuma véglegesítése után a következő eljá
 1. Jelentkezzen be az Azure-ban, egy globális rendszergazdai, biztonsági rendszergazdának vagy feltételes hozzáférésű rendszergazda.
 1. Lépjen a **Használati feltételekre** a következőn: [https://aka.ms/catou](https://aka.ms/catou).
 
-   ![Használati feltételek panel](./media/terms-of-use/tou-blade.png)
+   ![Feltételes hozzáférés – feltételek használata panel](./media/terms-of-use/tou-blade.png)
 
 1. Kattintson az **Új feltételek** lehetőségre.
 
-   ![Használati feltételek hozzáadása](./media/terms-of-use/new-tou.png)
+   ![Új kifejezés használata ablaktábla adja meg a használati beállítások használata](./media/terms-of-use/new-tou.png)
 
 1. Az a **neve** mezőbe írjon be egy nevet a használati feltételeket, amely használható az Azure Portalon.
 1. Az a **megjelenítendő név** mezőbe írja be a címet látják a felhasználók bejelentkezéskor.
@@ -88,7 +88,7 @@ A használati feltételek dokumentuma véglegesítése után a következő eljá
 1. A végfelhasználók számára, hogy fogadja el a használati feltételeket minden eszközön érnek el a szükséges, állítsa be **kérése a felhasználóktól minden eszközön jóváhagyást** való **a**. További információkért lásd: [eszközönkénti használati feltételeit](#per-device-terms-of-use).
 1. Ha szeretne érvényessége lejár a használati feltételek jóváhagyásai ütemezés szerint, állítsa **címtárbérlőhöz lejár** való **a**. Érték beállítása a esetén két további beállítások jelennek meg.
 
-   ![A hozzájárulások lejárnak](./media/terms-of-use/expire-consents.png)
+   ![Jóváhagyási beállítások állítsa be a kezdő dátum, gyakorisága és időtartama lejár](./media/terms-of-use/expire-consents.png)
 
 1. Használja a **től elévülési** és **gyakorisága** beállításainak megadásával határozza meg a használati feltételeket az ütemezés használata lejárhat. Az alábbi táblázatban néhány példa beállítások láthatók:
 
@@ -115,7 +115,7 @@ A használati feltételek dokumentuma véglegesítése után a következő eljá
 
 1. A **feltételes hozzáférési**, használja a **sablonnal feltételes hozzáférési szabályzat kényszerítése** listát használva jelölje ki a sablon kényszeríteni a használati feltételeket.
 
-   ![Feltételes hozzáférés sablonok](./media/terms-of-use/conditional-access-templates.png)
+   ![Feltételes hozzáférés legördülő listából válasszon ki egy házirendsablont a](./media/terms-of-use/conditional-access-templates.png)
 
    | Sablon | Leírás |
    | --- | --- |
@@ -133,11 +133,11 @@ A használati feltételek dokumentuma véglegesítése után a következő eljá
 
    Ha egy egyéni feltételes hozzáférési sablont választott, majd egy új képernyő jelenik meg, amely lehetővé teszi, hogy az egyéni feltételes hozzáférési szabályzat létrehozása.
 
-   ![Egyéni szabályzat](./media/terms-of-use/custom-policy.png)
+   ![Ha úgy döntött, hogy az egyéni feltételes hozzáférési szabályzat sablon új feltételes hozzáférési panel](./media/terms-of-use/custom-policy.png)
 
    Meg kell jelennie az új használati feltételek.
 
-   ![Használati feltételek hozzáadása](./media/terms-of-use/create-tou.png)
+   ![Új használati szereplő panel használata a használati feltételek](./media/terms-of-use/create-tou.png)
 
 ## <a name="view-report-of-who-has-accepted-and-declined"></a>Jelentés megtekintése, akik elfogadó és elutasító
 
@@ -145,19 +145,19 @@ A használati feltételek panel megjeleníti a feltételeket elfogadó, illetve 
 
 1. Jelentkezzen be az Azure-ba, és lépjen a **Használati feltételekre** a [https://aka.ms/catou](https://aka.ms/catou) címen.
 
-   ![Használati feltételek panel](./media/terms-of-use/view-tou.png)
+   ![Használja panel felhasználó show száma ajánlati feltételek elfogadó és elutasító](./media/terms-of-use/view-tou.png)
 
 1. A használati feltételeket, kattintson a számokat **elfogadva** vagy **elutasítva** a felhasználók aktuális állapotának megtekintéséhez.
 
-   ![Használati feltételek jóváhagyásai](./media/terms-of-use/accepted-tou.png)
+   ![A használati feltételek címtárbérlőhöz panel, amelyek fogadták el a felhasználók listázása](./media/terms-of-use/accepted-tou.png)
 
 1. Az egyes felhasználók számára az előzmények megtekintéséhez kattintson a három pontra ( **...** ), majd **előzményeinek megtekintése**.
 
-   ![Előzménynapló menüje megtekintése](./media/terms-of-use/view-history-menu.png)
+   ![Egy felhasználó előzmények helyi menü megjelenítése](./media/terms-of-use/view-history-menu.png)
 
    A korábbi panelen, megjelenik az összes a fogad, csökken, illetve lejárhat.
 
-   ![Panel előzményeinek megtekintése](./media/terms-of-use/view-history-pane.png)
+   ![Előzményei panel felsorolja az előzmények megtekintése fogad, csökken, és a egy felhasználó lejárhat](./media/terms-of-use/view-history-pane.png)
 
 ## <a name="view-azure-ad-audit-logs"></a>Naplók megtekintése az Azure AD
 
@@ -169,31 +169,31 @@ Ismerkedés az Azure AD-naplók, kövesse az alábbi eljárást:
 1. Válassza ki a használati feltételeket.
 1. Kattintson a **Naplók megtekintése** elemre.
 
-   ![Használati feltételek panel](./media/terms-of-use/audit-tou.png)
+   ![Panel használata a nézet feltételeit audit naplók opció kiemelésével](./media/terms-of-use/audit-tou.png)
 
 1. Az Azure AD naplókat megjelenítő képernyőjén naplózása, szűrheti az adatokat a megadott listákat az adott naplózási információkra cél használatával.
 
    A **Letöltés** elemre kattintva az információkat helyi felhasználás céljából egy .csv fájlba is mentheti.
 
-   ![Naplók](./media/terms-of-use/audit-logs-tou.png)
+   ![Az Azure AD naplók ajánlati dátuma, a cél-házirend kezdeményezte, és a tevékenység képernyő](./media/terms-of-use/audit-logs-tou.png)
 
    Ha egy napló gombra kattint, további tevékenység részletei ablaktábla jelenik meg.
 
-   ![Tevékenység részletei](./media/terms-of-use/audit-log-activity-details.png)
+   ![Tevékenység részletei naplók, tevékenység állapota, által kezdeményezett tevékenységek, megjelenítése a szabályzatok célzásához](./media/terms-of-use/audit-log-activity-details.png)
 
 ## <a name="what-terms-of-use-looks-like-for-users"></a>Milyen használati feltételek tűnik a felhasználók számára
 
 A használati feltételeket tartalmazó fájl létrehozása és kényszerítése, ha felhasználók, akik érintett bejelentkezés során a következő képernyő jelenik meg.
 
-![Felhasználói web-bejelentkezés](./media/terms-of-use/user-tou.png)
+![Példa használati feltételei jelenik meg, amikor egy felhasználó bejelentkezik](./media/terms-of-use/user-tou.png)
 
 A felhasználók a használati feltételek megtekintése és, ha szükséges, használja a gombok, nagyíthat és.
 
-![Nagyítás gombokkal használati feltételek megtekintése](./media/terms-of-use/zoom-buttons.png)
+![Nagyítás gombokkal felhasználási feltételek megtekintése](./media/terms-of-use/zoom-buttons.png)
 
 A következő képernyőn látható használati feltételeket tartalmazó fájl hogyan néz ki a mobileszközökön.
 
-![Felhasználói utazó bejelentkezés](./media/terms-of-use/mobile-tou.png)
+![Példa használati feltételei jelenik meg, amikor egy felhasználó bejelentkezik a mobileszközökön](./media/terms-of-use/mobile-tou.png)
 
 A felhasználóknak csak kell fogadja el a használati feltételeket egyszer, és nem láthatják a használati feltételeket újra a későbbi bejelentkezések.
 
@@ -204,11 +204,11 @@ A felhasználók áttekinthetik és tekintse meg a használati feltételeket, am
 1. Jelentkezzen be itt: [https://myapps.microsoft.com](https://myapps.microsoft.com).
 1. A jobb felső sarokban, kattintson a nevére, és válassza **profil**.
 
-   ![Profil](./media/terms-of-use/tou14.png)
+   ![A felhasználói panelen nyissa meg a MyApps webhelyen](./media/terms-of-use/tou14.png)
 
 1. A Profi lapon kattintson a **Használati feltételek áttekintése** elemre.
 
-   ![Profil – használati feltételek áttekintése](./media/terms-of-use/tou13a.png)
+   ![Bemutató kapcsolat használata a felülvizsgálati használati felhasználó profillapján](./media/terms-of-use/tou13a.png)
 
 1. Itt áttekintheti az elfogadott használati feltételeket.
 
@@ -223,7 +223,7 @@ Szerkesztheti a használati feltételeket tartalmazó fájl bizonyos részleteit
 
    Ha más beállítás, amelyet szeretne módosítani, például PDF-dokumentum, kérése a felhasználóktól minden eszközön hozzájárulás, hozzájárulást, hamarosan lejár időtartama reacceptance, vagy a feltételes hozzáférési szabályzat, előtt létre kell hoznia egy új használati feltételek.
 
-   ![Használati feltételeket tartalmazó fájl szerkesztése](./media/terms-of-use/edit-tou.png)
+   ![Ablaktábla megjelenítése név használata feltételeket tartalmazó fájl szerkesztése, és bontsa ki a beállítások](./media/terms-of-use/edit-tou.png)
 
 1. Kattintson a **mentése** a módosítások mentéséhez.
 
@@ -237,12 +237,12 @@ Az alábbi eljárás ismerteti, hogyan lehet a használati feltételek használa
 1. Válassza ki a szerkeszteni kívánt használati feltételeket.
 1. A részleteket tartalmazó ablaktáblán kattintson a **nyelvek** fülre.
 
-   ![Használati feltételek hozzáadása](./media/terms-of-use/languages-tou.png)
+   ![Használati feltételeinek kiválasztott és nyelvek lap megjelenítése a részletek panelen](./media/terms-of-use/languages-tou.png)
 
 1. Kattintson a **nyelv hozzáadása**.
 1. A honosított PDF-fájl feltöltése a Hozzáadás használati használata nyelvi ablaktáblán, és válassza ki a nyelvet.
 
-   ![Használati feltételek hozzáadása](./media/terms-of-use/language-add-tou.png)
+   ![Kifejezések használata nyelvi ablaktábla honosított PDF-fájlok feltöltése beállításokkal hozzáadása](./media/terms-of-use/language-add-tou.png)
 
 1. Kattintson a **Hozzáadás** a nyelv hozzáadása.
 
@@ -273,7 +273,7 @@ Ha a felhasználó eszköze nincs tartományhoz csatlakoztatva, egy üzenet csat
 
 Ha a felhasználó nem használja a Windows 10-es és a Microsoft Edge, a következőhöz hasonló üzenetet kapja [csatlakoztassák az eszközüket](../user-help/user-help-join-device-on-network.md#to-join-an-already-configured-windows-10-device).
 
-![Windows 10-es és a Microsoft Edge - illesztési eszköz kérése](./media/terms-of-use/per-device-win10-edge.png)
+![Windows 10-es és a Microsoft Edge - üzenetet, amely az eszköz regisztrálva kell lennie](./media/terms-of-use/per-device-win10-edge.png)
 
 Ha Chrome, kérni fogja telepíteni a [Windows 10-es fiókok bővítmény](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji).
 
@@ -281,7 +281,7 @@ Ha Chrome, kérni fogja telepíteni a [Windows 10-es fiókok bővítmény](https
 
 Ha egy felhasználó által nem támogatott böngészőt használ, azokat egy másik böngészőben használandó adnia.
 
-![Nem támogatott böngészők](./media/terms-of-use/per-device-browser-unsupported.png)
+![Regisztrálni kell az eszközt, de a böngésző nem támogatott jelző üzenet](./media/terms-of-use/per-device-browser-unsupported.png)
 
 ## <a name="delete-terms-of-use"></a>Használati feltételek törlése
 
@@ -292,7 +292,7 @@ Korábbi használati feltételeket az alábbi eljárással törölheti.
 1. Kattintson a **Feltételek törlése** lehetőségre.
 1. A megjelenő üzenetben, amely a törlés megerősítését kéri, kattintson az **Igen** lehetőségre.
 
-   ![Használati feltételek törlése](./media/terms-of-use/delete-tou.png)
+   ![Használati feltételeket tartalmazó fájl törlése a megerősítést kérő üzenet](./media/terms-of-use/delete-tou.png)
 
    Már megtekintheti a használati feltételeket.
 
@@ -316,7 +316,7 @@ A legtöbb szervezet tartalmaznak egy folyamat a felhasználók számára, hogy 
 
 Használati feltételek csak jelenik meg, ha a felhasználó egy vendégfiókba rendelkezik az Azure ad-ben. SharePoint online-ban jelenleg rendelkezik olyan [alkalmi külső megosztási címzett felülettel](/sharepoint/what-s-new-in-sharing-in-targeted-release) megosztani egy dokumentumot vagy egy mappát, amely nem igényel a felhasználót, hogy a Vendég fiókkal rendelkezik. Ebben az esetben a használati feltételeket tartalmazó fájl nem jelenik meg.
 
-![Minden vendégfelhasználó](./media/terms-of-use/b2b-guests.png)
+![Felhasználók és csoportok panelen – például lapon az összes vendég felhasználók beállítás be van jelölve](./media/terms-of-use/b2b-guests.png)
 
 ## <a name="support-for-cloud-apps-preview"></a>Felhőbeli alkalmazások (előzetes verzió) támogatása
 
@@ -326,13 +326,13 @@ Másik felhőalapú alkalmazások, például az Azure Information Protection és
 
 Az Azure Information Protection alkalmazásra vonatkozó feltételes hozzáférési házirend konfigurálása és a használati feltételek kérése, amikor egy felhasználó hozzáfér egy védett dokumentumot. Ezzel elindítja a használati feltételeket, mielőtt a felhasználó első alkalommal fér hozzá a védett dokumentum.
 
-![Az Azure Information Protection cloud app](./media/terms-of-use/cloud-app-info-protection.png)
+![Felhőbeli alkalmazások panelről a Microsoft Azure Information Protection alkalmazás kiválasztva](./media/terms-of-use/cloud-app-info-protection.png)
 
 ### <a name="microsoft-intune-enrollment"></a>A Microsoft Intune-regisztráció
 
 Feltételes hozzáférési szabályzatot konfigurálni ahhoz a Microsoft Intune regisztrációs alkalmazást, és a használati feltételeket, mielőtt az eszköz Intune-beli regisztrációját megkövetelése. További információkért lásd: az olvasási [kiválasztani a feltételek megoldást kínál a szervezet blogbejegyzés](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
 
-![A Microsoft Intune felhőalapú alkalmazás](./media/terms-of-use/cloud-app-intune.png)
+![Felhőbeli alkalmazások panelről a Microsoft Intune alkalmazás kiválasztva](./media/terms-of-use/cloud-app-intune.png)
 
 > [!NOTE]
 > Az Intune-regisztráció alkalmazás nem támogatott a [eszközönkénti használati feltételeit](#per-device-terms-of-use).

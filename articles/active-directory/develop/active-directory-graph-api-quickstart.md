@@ -19,12 +19,12 @@ ms.author: ryanwi
 ms.reviewer: sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05b3d749eb3e2bc767889831b4c1ff01833a3f39
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a2ae83b655bfe607b1061168649ec74f02ab4064
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544666"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483184"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>Útmutató: Az Azure AD Graph API használata
 
@@ -65,7 +65,7 @@ Az Azure AD Graph Explorer, az Azure AD Graph API segítségével a directory-ad
 
 Az alábbi képernyőképen a jelennének meg az Azure AD Graph Explorer keresse meg, jelentkezzen be, és adja meg a létrehozott kimeneti `https://graph.windows.net/GraphDir1.OnMicrosoft.com/users?api-version=1.6` a bejelentkezett felhasználó összes felhasználó megjelenítéséhez:
 
-![Az Azure AD graph api-tallózó](./media/active-directory-graph-api-quickstart/graph_explorer.png)
+![Példa a kimenetre az Azure AD Graph API-tallózó](./media/active-directory-graph-api-quickstart/graph_explorer.png)
 
 **Az Azure AD Graph Explorer betöltése**: Betölti az eszközt, navigáljon a [ https://graphexplorer.azurewebsites.net/ ](https://graphexplorer.azurewebsites.net/). Kattintson a **bejelentkezési** , és jelentkezzen be az Azure AD Graph Explorer futtatásához a bérlő Azure ad-ben fiókja hitelesítő adataival. Ha az Azure AD Graph Explorer futtatja a saját bérlőn, Ön vagy a rendszergazdához kell jóváhagyást bejelentkezés során. Ha rendelkezik Office 365-előfizetéssel, automatikusan rendelkezik az Azure AD-bérlő. Hitelesítő adatokkal kell bejelentkezni az Office 365-höz, sőt, az Azure AD-felhasználók esetében, és használhatja ezeket a hitelesítő adatokat az Azure AD Graph Explorer.
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: dapine
-ms.openlocfilehash: 4d5e1da01be531550915a38bed17dd8e57be907a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a419ed3b9c0d2c4db9c552642dc5c662786f6730
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67454949"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561250"
 ---
 # <a name="deploy-a-sentiment-analysis-container-to-azure-kubernetes-services-aks"></a>Hangulatelemzés a tároló üzembe helyezése az Azure Kubernetes-szolgáltatások (AKS)
 
@@ -69,7 +69,7 @@ Ez az eljárás több eszközt, hogy telepítve legyen, és helyi futtatása sz�
     code .
     ```
 
-1. Belül a szövegszerkesztőben hozzon létre egy új fájlt _sentiment.yaml_ és illessze be a következő yaml-kódot:
+1. Belül a szövegszerkesztőben hozzon létre egy új fájlt _sentiment.yaml_ és illessze be a következő yaml-kódot. Ne felejtse el a `billing/value` és `apikey/value` saját.
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -91,9 +91,9 @@ Ez az eljárás több eszközt, hogy telepítve legyen, és helyi futtatása sz�
             - name: EULA
               value: "accept"
             - name: billing
-              value: "https://westus2.api.cognitive.microsoft.com/"
+              value: # < Your endpoint >
             - name: apikey
-              value: "16c12e3419f54ba49a3222177cef781d"
+              value: # < Your API Key >
      
     --- 
     apiVersion: v1
@@ -115,7 +115,7 @@ Ez az eljárás több eszközt, hogy telepítve legyen, és helyi futtatása sz�
     kuberctl apply -f sentiment.yaml
     ```
 
-    Miután a parancs sikeresen telepítve van a telepítési konfigurációt, a következőhöz hasonló üzenetet egy kimenet:
+    A parancs után sikeresen alkalmazta a telepítési konfigurációt, egy üzenet a következő kimenet hasonlít:
 
     ```
     deployment.apps "sentiment" created

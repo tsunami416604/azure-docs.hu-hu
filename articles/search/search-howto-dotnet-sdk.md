@@ -7,20 +7,16 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 06/19/2019
 ms.author: brjohnst
-ms.openlocfilehash: d0921761b565d9e61374bf340f812af4d43f192a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9f0af40d442747181636b50612f7d2162ead6a86
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66426755"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450019"
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>Az Azure Search .NET-alkalmazás használata
-
-> [!Important]
-> Ez a tartalom még fejlesztés alatt áll. Az Azure Search .NET SDK 9.0-s verziója érhető el a NuGet. Ez az áttelepítési útmutató az új verzióra frissítése elmagyarázni frissítése dolgozunk. Kövessen bennünket.
->
 
 Ez a cikk ahhoz, hogy működik és a egy forgatókönyv a [Azure Search .NET SDK](https://aka.ms/search-sdk). A .NET SDK használatával egy fejlett keresési funkciókat megvalósítása az Azure Search használatával az alkalmazás.
 
@@ -40,21 +36,21 @@ A különböző klienskódtárak például osztályok definiálása `Index`, `Fi
 * [Microsoft.Azure.Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
 * [Microsoft.Azure.Search.Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
 
-Az Azure Search .NET SDK jelenlegi verziója már általánosan elérhető. Ha szeretné, hogy visszajelzést ahhoz, hogy döntsön a következő verziót, tekintse meg a [visszajelzésküldő oldala](https://feedback.azure.com/forums/263029-azure-search/).
+Ha visszajelzést küldhet az SDK egy következő frissítés, szeretné, tekintse meg a [visszajelzésküldő oldala](https://feedback.azure.com/forums/263029-azure-search/) , vagy hozzon létre egy problémát a [GitHub](https://github.com/azure/azure-sdk-for-net/issues) és az "Azure Search" díjszabásunkban a probléma címe.
 
-A .NET SDK-verziót támogatja `2017-11-11` , a [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/). Ez a verzió mostantól támogatja a szinonimák, valamint az indexelő növekményes fejlesztései. 
+A .NET SDK-verziót támogatja `2019-05-06` , a [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/). Ez a verzió támogatja az [komplex típusok](search-howto-complex-data-types.md), [cognitive search](cognitive-search-concept-intro.md), [automatikus kiegészítés](https://docs.microsoft.com/rest/api/searchservice/autocomplete), és [JsonLines elemzési mód](search-howto-index-json-blobs.md) során az Azure-Blobok indexelése. 
 
 Ez az SDK nem támogatja a [felügyeleti műveletek](https://docs.microsoft.com/rest/api/searchmanagement/) például létrehozása és a keresési szolgáltatások méretezése és API-kulcsok kezelése. Ha a Search-erőforrások kezelése a .NET-alkalmazásból van szüksége, használhatja a [Azure Search .NET SDK-t felügyeleti](https://aka.ms/search-mgmt-sdk).
 
 ## <a name="upgrading-to-the-latest-version-of-the-sdk"></a>Az SDK legújabb verziójára
-Ha már használ az Azure Search .NET SDK egy régebbi verzióját, és szeretné az új általánosan elérhető verzióra frissít, [Ez a cikk](search-dotnet-sdk-migration-version-5.md) azt ismerteti, hogyan.
+Ha már használ az Azure Search .NET SDK egy régebbi verzióját, és szeretné, frissítsen a legújabb általánosan elérhető verziót [Ez a cikk](search-dotnet-sdk-migration-version-9.md) azt ismerteti, hogyan.
 
 ## <a name="requirements-for-the-sdk"></a>Az SDK-követelményei
 1. A Visual Studio 2017-es vagy újabb verziója.
 2. A saját Azure Search szolgáltatást. Az SDK használatához szüksége lesz a szolgáltatás és a egy vagy több API-kulcs neve. [Szolgáltatás létrehozása a portálon](search-create-service-portal.md) segít a fenti lépéseket.
 3. Az Azure Search .NET SDK letöltése [NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.Search) "NuGet-csomagok kezelése" a Visual Studio használatával. Csak keresse meg a csomag neveként `Microsoft.Azure.Search` on NuGet.org (vagy egy másik csomagot a fenti nevek, ha csak az funkciók egy részét).
 
-Az Azure Search .NET SDK támogatja az alkalmazások a .NET-keretrendszer 4.5.2-es vagy újabb, valamint a .NET Core.
+Az Azure Search .NET SDK támogatja az alkalmazások a .NET-keretrendszer 4.5.2-es vagy újabb, valamint a .NET Core 2.0-s és újabb.
 
 ## <a name="core-scenarios"></a>Használhatók a legfontosabb forgatókönyvek
 Számos dolgot kell hajtsa végre az alkalmazás. Ebben az oktatóanyagban alapvető forgatókönyvekben foglalkozik:
@@ -77,13 +73,15 @@ static void Main(string[] args)
 
     SearchServiceClient serviceClient = CreateSearchServiceClient(configuration);
 
+    string indexName = configuration["SearchIndexName"];
+
     Console.WriteLine("{0}", "Deleting index...\n");
-    DeleteHotelsIndexIfExists(serviceClient);
+    DeleteIndexIfExists(indexName, serviceClient);
 
     Console.WriteLine("{0}", "Creating index...\n");
-    CreateHotelsIndex(serviceClient);
+    CreateIndex(indexName, serviceClient);
 
-    ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
+    ISearchIndexClient indexClient = serviceClient.Indexes.GetClient(indexName);
 
     Console.WriteLine("{0}", "Uploading documents...\n");
     UploadDocuments(indexClient);
@@ -124,20 +122,20 @@ A következő néhány sort a "Hotels" nevet, először törlése, ha már léte
 
 ```csharp
 Console.WriteLine("{0}", "Deleting index...\n");
-DeleteHotelsIndexIfExists(serviceClient);
+DeleteIndexIfExists(indexName, serviceClient);
 
 Console.WriteLine("{0}", "Creating index...\n");
-CreateHotelsIndex(serviceClient);
+CreateIndex(indexName, serviceClient);
 ```
 
 Ezután az index kell kell feltöltenie. Az index feltöltésére, szükségünk lesz a `SearchIndexClient`. Beszerzése utólag két módja van: hozhat létre, vagy meghívásával `Indexes.GetClient` a a `SearchServiceClient`. Használjuk az utóbbi kényelmi célokat szolgál.
 
 ```csharp
-ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
+ISearchIndexClient indexClient = serviceClient.Indexes.GetClient(indexName);
 ```
 
 > [!NOTE]
-> A keresőalkalmazásokban az indexkezelést és -feltöltést általában a keresési lekérdezésektől eltérő elem végzi. A `Indexes.GetClient` kényelmes megoldás az index feltöltésére, mivel így nem szükséges újabb `SearchCredentials` objektumot biztosítania. Ezt azon rendszergazdai kulcs átadásával hajtja végre, amelyet a `SearchServiceClient` elemnek az új `SearchIndexClient` objektumban történő létrehozásakor használt. A lekérdezéseket végrehajtó alkalmazás részeként azonban jobb megoldás a `SearchIndexClient` közvetlen létrehozása, így az egy rendszergazdai kulcs helyett lekérdezési kulcs formájában adható át. Ez megfelel a minimális jogosultság elvének, és biztonságosabbá teszi az alkalmazás segítségével. További információk az adminisztrációs kulcsok és a lekérdezési kulcsok annak [Itt](https://docs.microsoft.com/rest/api/searchservice/#authentication-and-authorization).
+> Egy tipikus keresőalkalmazást, az index kezelését és feltöltését előfordulhat, hogy kell kezelnie egy külön keresési lekérdezések az összetevőt. `Indexes.GetClient` egy kényelmes megoldás az index feltöltése, mivel így nem szükséges további `SearchCredentials`. Ezt azon rendszergazdai kulcs átadásával hajtja végre, amelyet a `SearchServiceClient` elemnek az új `SearchIndexClient` objektumban történő létrehozásakor használt. Azonban a lekérdezéseket végrehajtó alkalmazás részeként érdemes létrehozni a `SearchIndexClient` közvetlenül, hogy formájában adható át, amely csak lehetővé teszi, hogy olvassa el az adatokat, egy rendszergazdai kulcs helyett lekérdezési kulcs. Ez megfelel a minimális jogosultság elvének, és biztonságosabbá teszi az alkalmazás segítségével. További információk az adminisztrációs kulcsok és a lekérdezési kulcsok annak [Itt](https://docs.microsoft.com/rest/api/searchservice/#authentication-and-authorization).
 > 
 > 
 
@@ -151,7 +149,7 @@ UploadDocuments(indexClient);
 Végül azt néhány keresési lekérdezéseket, és megjeleníti az eredményeket. Most használjuk a különböző `SearchIndexClient`:
 
 ```csharp
-ISearchIndexClient indexClientForQueries = CreateSearchIndexClient(configuration);
+ISearchIndexClient indexClientForQueries = CreateSearchIndexClient(indexName, configuration);
 
 RunQueries(indexClientForQueries);
 ```
@@ -159,47 +157,60 @@ RunQueries(indexClientForQueries);
 Hogy közelebbről vesz igénybe a `RunQueries` metódus később. Íme a kódot, amellyel létrehozza az új `SearchIndexClient`:
 
 ```csharp
-private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot configuration)
+private static SearchIndexClient CreateSearchIndexClient(string indexName, IConfigurationRoot configuration)
 {
     string searchServiceName = configuration["SearchServiceName"];
     string queryApiKey = configuration["SearchServiceQueryApiKey"];
 
-    SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, "hotels", new SearchCredentials(queryApiKey));
+    SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, indexName, new SearchCredentials(queryApiKey));
     return indexClient;
 }
 ```
 
 Most használjuk egy lekérdezési kulcsot, mert nem kell írási hozzáférést az index. Ezt az információt adhat meg a `appsettings.json` -fájlját a [mintaalkalmazás](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo).
 
-Futtatásakor az alkalmazás egy érvényes szolgáltatásnév és API-kulcsokat, a kimeneti példához hasonlóan kell kinéznie:
+Futtatásakor az alkalmazás egy érvényes szolgáltatásnév és API-kulcsokat, a kimeneti példához hasonlóan kell kinéznie: (Egyes konzolkimenet helyébe a "..." illusztrációs célokat szolgálnak.)
 
     Deleting index...
-    
+
     Creating index...
-    
+
     Uploading documents...
-    
+
     Waiting for documents to be indexed...
-    
-    Search the entire index for the term 'budget' and return only the hotelName field:
-    
-    Name: Roach Motel
-    
-    Apply a filter to the index to find hotels cheaper than $150 per night, and return the hotelId and description:
-    
-    ID: 2   Description: Cheapest hotel in town
-    ID: 3   Description: Close to town hall and the river
-    
+
+    Search the entire index for the term 'motel' and return only the HotelName field:
+
+    Name: Secret Point Motel
+
+    Name: Twin Dome Motel
+
+
+    Apply a filter to the index to find hotels with a room cheaper than $100 per night, and return the hotelId and description:
+
+    HotelId: 1
+    Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York. A few minutes away is Times Square and the historic centre of the city, as well as other places of interest that make New York one of America's most attractive and cosmopolitan cities.
+
+    HotelId: 2
+    Description: The hotel is situated in a  nineteenth century plaza, which has been expanded and renovated to the highest architectural standards to create a modern, functional and first-class hotel in which art and unique historical elements coexist with the most modern comforts.
+
+
     Search the entire index, order by a specific field (lastRenovationDate) in descending order, take the top two results, and show only hotelName and lastRenovationDate:
-    
-    Name: Fancy Stay        Last renovated on: 6/27/2010 12:00:00 AM +00:00
-    Name: Roach Motel       Last renovated on: 4/28/1982 12:00:00 AM +00:00
-    
-    Search the entire index for the term 'motel':
-    
-    ID: 2   Base rate: 79.99        Description: Cheapest hotel in town     Description (French): Hôtel le moins cher en ville      Name: Roach Motel       Category: Budget        Tags: [motel, budget]   Parking included: yes   Smoking allowed: yes    Last renovated on: 4/28/1982 12:00:00 AM +00:00 Rating: 1/5     Location: Latitude 49.678581, longitude -122.131577
-    
-    Complete.  Press any key to end application...
+
+    Name: Triple Landscape Hotel
+    Last renovated on: 9/20/2015 12:00:00 AM +00:00
+
+    Name: Twin Dome Motel
+    Last renovated on: 2/18/1979 12:00:00 AM +00:00
+
+
+    Search the hotel names for the term 'hotel':
+
+    HotelId: 3
+    Name: Triple Landscape Hotel
+    ...
+
+    Complete.  Press any key to end application... 
 
 Ez a cikk végén található az alkalmazás a teljes forráskódot biztosítunk.
 
@@ -209,11 +220,11 @@ Ezután azt fogja annak minden egyes meghívott módszerek közelebbről is `Mai
 Miután létrehozott egy `SearchServiceClient`, `Main` törli a "hotels" index, ha már létezik. A törlés végzi el a következő metódust:
 
 ```csharp
-private static void DeleteHotelsIndexIfExists(SearchServiceClient serviceClient)
+private static void DeleteIndexIfExists(string indexName, SearchServiceClient serviceClient)
 {
-    if (serviceClient.Indexes.Exists("hotels"))
+    if (serviceClient.Indexes.Exists(indexName))
     {
-        serviceClient.Indexes.Delete("hotels");
+        serviceClient.Indexes.Delete(indexName);
     }
 }
 ```
@@ -228,14 +239,14 @@ Ez a módszer az adott `SearchServiceClient` annak ellenőrzéséhez, ha az inde
 Ezután `Main` hoz létre egy új "hotels" index a metódus meghívásának hatására:
 
 ```csharp
-private static void CreateHotelsIndex(SearchServiceClient serviceClient)
+private static void CreateIndex(string indexName, SearchServiceClient serviceClient)
 {
     var definition = new Index()
     {
-        Name = "hotels",
+        Name = indexName,
         Fields = FieldBuilder.BuildForType<Hotel>()
     };
-
+    
     serviceClient.Indexes.Create(definition);
 }
 ```
@@ -250,7 +261,7 @@ Ez a módszer létrehoz egy új `Index` objektum listáját `Field` objektumok s
 Mezők mellett is adhat pontozási profilok, javaslattevőket vagy CORS-beállítások az Index (ezeket a paramétereket a mintát az áttekinthetőség). Az Index objektum és azok részlegei a további információt talál a [SDK-leírás](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index)is, a a [Azure Search REST API-referencia](https://docs.microsoft.com/rest/api/searchservice/).
 
 ### <a name="populating-the-index"></a>Hozzáláthat a tárgymutató
-A következő lépés `Main` , hogy az újonnan létrehozott index feltöltéséhez. Az index feltöltése történik, a következő metódusban:
+A következő lépés `Main` tölti fel az újonnan létrehozott indexben. Az index feltöltése történik, a következő metódusban: (Néhány kódot írni a "..." illusztrációs célokat szolgálnak.  Tekintse meg a teljes minta megoldás az adatok teljes sokaság kódot.)
 
 ```csharp
 private static void UploadDocuments(ISearchIndexClient indexClient)
@@ -258,40 +269,90 @@ private static void UploadDocuments(ISearchIndexClient indexClient)
     var hotels = new Hotel[]
     {
         new Hotel()
-        { 
-            HotelId = "1", 
-            BaseRate = 199.0, 
-            Description = "Best hotel in town",
-            DescriptionFr = "Meilleur hôtel en ville",
-            HotelName = "Fancy Stay",
-            Category = "Luxury", 
-            Tags = new[] { "pool", "view", "wifi", "concierge" },
-            ParkingIncluded = false, 
-            SmokingAllowed = false,
-            LastRenovationDate = new DateTimeOffset(2010, 6, 27, 0, 0, 0, TimeSpan.Zero), 
-            Rating = 5, 
-            Location = GeographyPoint.Create(47.678581, -122.131577)
+        {
+            HotelId = "1",
+            HotelName = "Secret Point Motel",
+            ...
+            Address = new Address()
+            {
+                StreetAddress = "677 5th Ave",
+                ...
+            },
+            Rooms = new Room[]
+            {
+                new Room()
+                {
+                    Description = "Budget Room, 1 Queen Bed (Cityside)",
+                    ...
+                },
+                new Room()
+                {
+                    Description = "Budget Room, 1 King Bed (Mountain View)",
+                    ...
+                },
+                new Room()
+                {
+                    Description = "Deluxe Room, 2 Double Beds (City View)",
+                    ...
+                }
+            }
         },
         new Hotel()
-        { 
-            HotelId = "2", 
-            BaseRate = 79.99,
-            Description = "Cheapest hotel in town",
-            DescriptionFr = "Hôtel le moins cher en ville",
-            HotelName = "Roach Motel",
-            Category = "Budget",
-            Tags = new[] { "motel", "budget" },
-            ParkingIncluded = true,
-            SmokingAllowed = true,
-            LastRenovationDate = new DateTimeOffset(1982, 4, 28, 0, 0, 0, TimeSpan.Zero),
-            Rating = 1,
-            Location = GeographyPoint.Create(49.678581, -122.131577)
+        {
+            HotelId = "2",
+            HotelName = "Twin Dome Motel",
+            ...
+            {
+                StreetAddress = "140 University Town Center Dr",
+                ...
+            },
+            Rooms = new Room[]
+            {
+                new Room()
+                {
+                    Description = "Suite, 2 Double Beds (Mountain View)",
+                    ...
+                },
+                new Room()
+                {
+                    Description = "Standard Room, 1 Queen Bed (City View)",
+                    ...
+                },
+                new Room()
+                {
+                    Description = "Budget Room, 1 King Bed (Waterfront View)",
+                    ...
+                }
+            }
         },
-        new Hotel() 
-        { 
-            HotelId = "3", 
-            BaseRate = 129.99,
-            Description = "Close to town hall and the river"
+        new Hotel()
+        {
+            HotelId = "3",
+            HotelName = "Triple Landscape Hotel",
+            ...
+            Address = new Address()
+            {
+                StreetAddress = "3393 Peachtree Rd",
+                ...
+            },
+            Rooms = new Room[]
+            {
+                new Room()
+                {
+                    Description = "Standard Room, 2 Queen Beds (Amenities)",
+                    ...
+                },
+                new Room ()
+                {
+                    Description = "Standard Room, 2 Double Beds (Waterfront View)",
+                    ...
+                },
+                new Room()
+                {
+                    Description = "Deluxe Room, 2 Double Beds (Cityside)",
+                    ...
+                }
+            }
         }
     };
 
@@ -316,7 +377,7 @@ private static void UploadDocuments(ISearchIndexClient indexClient)
 }
 ```
 
-Ez a metódus négy részből áll. Az első létrehoz egy tömbjét `Hotel` objektumok erre a célra a bemeneti adatok feltöltése az indexbe. Ezek az adatok nem változtatható az egyszerűség kedvéért. A saját alkalmazásában az adatok valószínűleg például egy SQL database egy külső adatforrásból származnak.
+Ez a metódus négy részből áll. Az első létrehoz egy tömböt a 3-ból `Hotel` objektumok mindegyike 3 `Room` objektumok erre a célra a bemeneti adatok feltöltése az indexbe. Ezek az adatok nem változtatható az egyszerűség kedvéért. A saját alkalmazásában az adatok valószínűleg például egy SQL database egy külső adatforrásból származnak.
 
 A második rész létrehoz egy `IndexBatch` tartalmazó dokumentumokat. Azt adja meg a műveletet, létrehozása, ebben az esetben meghívásával, a batch a alkalmazni kívánt `IndexBatch.Upload`. A batch majd töltenek fel az Azure Search-index által a `Documents.Index` metódust.
 
@@ -346,29 +407,23 @@ using Microsoft.Azure.Search.Models;
 using Microsoft.Spatial;
 using Newtonsoft.Json;
 
-// The SerializePropertyNamesAsCamelCase attribute is defined in the Azure Search .NET SDK.
-// It ensures that Pascal-case property names in the model class are mapped to camel-case
-// field names in the index.
-[SerializePropertyNamesAsCamelCase]
 public partial class Hotel
 {
     [System.ComponentModel.DataAnnotations.Key]
     [IsFilterable]
     public string HotelId { get; set; }
 
-    [IsFilterable, IsSortable, IsFacetable]
-    public double? BaseRate { get; set; }
+    [IsSearchable, IsSortable]
+    public string HotelName { get; set; }
 
     [IsSearchable]
+    [Analyzer(AnalyzerName.AsString.EnLucene)]
     public string Description { get; set; }
 
     [IsSearchable]
     [Analyzer(AnalyzerName.AsString.FrLucene)]
-    [JsonProperty("description_fr")]
+    [JsonProperty("Description_fr")]
     public string DescriptionFr { get; set; }
-
-    [IsSearchable, IsFilterable, IsSortable]
-    public string HotelName { get; set; }
 
     [IsSearchable, IsFilterable, IsSortable, IsFacetable]
     public string Category { get; set; }
@@ -376,35 +431,129 @@ public partial class Hotel
     [IsSearchable, IsFilterable, IsFacetable]
     public string[] Tags { get; set; }
 
-    [IsFilterable, IsFacetable]
+    [IsFilterable, IsSortable, IsFacetable]
     public bool? ParkingIncluded { get; set; }
 
-    [IsFilterable, IsFacetable]
-    public bool? SmokingAllowed { get; set; }
+    // SmokingAllowed reflects whether any room in the hotel allows smoking.
+    // The JsonIgnore attribute indicates that a field should not be created 
+    // in the index for this property and it will only be used by code in the client.
+    [JsonIgnore]
+    public bool? SmokingAllowed => (Rooms != null) ? Array.Exists(Rooms, element => element.SmokingAllowed == true) : (bool?)null;
 
     [IsFilterable, IsSortable, IsFacetable]
     public DateTimeOffset? LastRenovationDate { get; set; }
 
     [IsFilterable, IsSortable, IsFacetable]
-    public int? Rating { get; set; }
+    public double? Rating { get; set; }
+
+    public Address Address { get; set; }
 
     [IsFilterable, IsSortable]
     public GeographyPoint Location { get; set; }
+
+    public Room[] Rooms { get; set; }
 }
 ```
 
-Az első szembetűnő dolog, hogy, hogy minden egyes nyilvános tulajdonsága `Hotel` felel meg az index definícióját, de egy lényeges különbséggel mező: Az egyes mezők neve során minden egyes nyilvános tulajdonsága neve kezdődik ("nagybetűs"), kisbetűvel `Hotel` egy nagybetűt ("Pascal eset") kezdődik. Ebben a forgatókönyvben a közös hajtható végre adatkötés, ahol a célséma van-e az alkalmazás fejlesztőjének a vezérlőn kívüli .NET-alkalmazásokban. A .NET elnevezési irányelveinek megsértése helyett (a tulajdonságnevek kisbetűs megadásával), utasíthatja az SDK-t a tulajdonságnevek automatikus kisbetűs leképezésére a `[SerializePropertyNamesAsCamelCase]` attribútummal.
+Az első szembetűnő dolog, hogy, hogy minden egyes nyilvános tulajdonsága nevére a `Hotel` osztály ugyanazzal a névvel, az Indexdefiníció egy mező lesz leképezve. Ha szeretné az egyes mezők kezdje kisbetűvel ("nagybetűs"), utasíthatja az SDK-t a tulajdonságnevek tulajdonságnevek automatikus kisbetűs leképezésére a `[SerializePropertyNamesAsCamelCase]` attribútum az osztály. Ebben a forgatókönyvben szokás a .NET-alkalmazások, amelyek hajtható végre adatkötés, ahol a célséma kívül esik a vezérlő az alkalmazás fejlesztőjének pokyny Pro pojmenování a .NET-ben a "Pascal eset" megsértő nélkül.
 
 > [!NOTE]
 > Az Azure Search .NET SDK a [NewtonSoft JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm) könyvtárat használja az egyéni modellek JSON-ból és JSON-ba történő szerializálására és deszerializálására. A szerializálás szükség szerint testre szabható. További információkért lásd: [egyéni szerializálás a JSON.NET](#JsonDotNet).
 > 
 > 
 
-A második szembetűnő dolog, hogy az attribútumokat, amelyek minden egyes nyilvános tulajdonsága megadhat (például `IsFilterable`, `IsSearchable`, `Key`, és `Analyzer`). Ezek az attribútumok leképezése közvetlenül a [megfelelő attribútumok az Azure Search-index](https://docs.microsoft.com/rest/api/searchservice/create-index#request). A `FieldBuilder` osztályt használja ezeket a tulajdonságokat Meződefiníciók az index létrehozására.
+A második szembetűnő dolog, hogy minden tulajdonság van kitüntetett attribútumokkal rendelkező például `IsFilterable`, `IsSearchable`, `Key`, és `Analyzer`. Ezek az attribútumok leképezése közvetlenül a [megfelelő mezőt az Azure Search-index attribútumok](https://docs.microsoft.com/rest/api/searchservice/create-index#request). A `FieldBuilder` osztályt használja ezeket a tulajdonságokat Meződefiníciók az index létrehozására.
 
-Tudnivalók a harmadik lényeg a `Hotel` osztály a nyilvános tulajdonságok adattípusa. Ezeket a tulajdonságokat a .NET-típusú képezze le az index definícióját a mezőtípusokra. Például a rendszer a `Edm.String` típusú `Category` szöveges tulajdonságot a `category` mezőbe képezi le. Hasonló típusleképezés történik a `bool?` és `Edm.Boolean`, illetve a `DateTimeOffset?` és `Edm.DateTimeOffset` között is. A típusleképezés vonatkozó szabályainak dokumentációja az [Azure Search .NET SDK-referenciában](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get), a `Documents.Get` metódusnál található. A `FieldBuilder` osztály a megfelelőségről gondoskodik, de továbbra is lehet annak megértése, abban az esetben szerializációs hárítsa el kell.
+Tudnivalók a harmadik lényeg a `Hotel` osztály a nyilvános tulajdonságok adattípusa. Az indexdefinícióban a rendszer ezen .NET tulajdonságtípusokat képezi le a nekik megfelelő mezőtípusokra. Például a rendszer a `Edm.String` típusú `Category` szöveges tulajdonságot a `category` mezőbe képezi le. Nincsenek közötti hasonló Típusleképezés `bool?`, `Edm.Boolean`, `DateTimeOffset?`, és `Edm.DateTimeOffset` és így tovább. A típusleképezés vonatkozó szabályainak dokumentációja az [Azure Search .NET SDK-referenciában](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get), a `Documents.Get` metódusnál található. A `FieldBuilder` osztály a megfelelőségről gondoskodik, de továbbra is lehet annak megértése, abban az esetben szerializációs hárítsa el kell.
 
-A saját osztályok dokumentumokként használandó képessége mindkét irányban; működik Is lekérdezheti a keresési eredményeket, és rendelkezik az SDK-val automatikusan deszerializáltathatja azokat a választott típusra láthatóak lesznek a következő szakaszban.
+Adott figyelje meg, hogy történjen a `SmokingAllowed` tulajdonság?
+
+```csharp
+[JsonIgnore]
+public bool? SmokingAllowed => (Rooms != null) ? Array.Exists(Rooms, element => element.SmokingAllowed == true) : (bool?)null;
+```
+
+A `JsonIgnore` attribútum a tulajdonság arra utasítja a `FieldBuilder` nem szerializálható, mezőként az indexbe.  Ez az ügyféloldali számított tulajdonságok segítők, használhatja az alkalmazás létrehozása nagyszerű lehetőséget.  Ebben az esetben a `SmokingAllowed` tulajdonság mutatja, hogy `Room` a a `Rooms` gyűjtemény lehetővé teszi, hogy a fogyasztási.  Ha az összes false (hamis), az azt jelzi, hogy a teljes Szálloda nem engedélyezi a fogyasztási.
+
+Egyes tulajdonságok, például `Address` és `Rooms` olyan .NET-osztályok példányai.  Ezek a Tulajdonságok adatstruktúrákat jelölnek az adattárakon összetettebb, és emiatt szükséges mezőket egy [összetett adattípusú](https://docs.microsoft.com/azure/search/search-howto-complex-data-types) az indexben.
+
+A `Address` tulajdonság több értékek egy halmazát jelölik a `Address` alább meghatározott osztály:
+
+```csharp
+using System;
+using Microsoft.Azure.Search;
+using Microsoft.Azure.Search.Models;
+using Newtonsoft.Json;
+
+namespace AzureSearch.SDKHowTo
+{
+    public partial class Address
+    {
+        [IsSearchable]
+        public string StreetAddress { get; set; }
+
+        [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+        public string City { get; set; }
+
+        [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+        public string StateProvince { get; set; }
+
+        [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+        public string PostalCode { get; set; }
+
+        [IsSearchable, IsFilterable, IsSortable, IsFacetable]
+        public string Country { get; set; }
+    }
+}
+```
+
+Ez az osztály az Egyesült Államokban vagy Kanadában címek leírására szolgáló standard értékeket tartalmazza. Használhatja például a logikai mezőket csoportosíthatja az indexben.
+
+A `Rooms` tulajdonság tömbjét adja `Room` objektumok:
+
+```csharp
+using System;
+using Microsoft.Azure.Search;
+using Microsoft.Azure.Search.Models;
+using Newtonsoft.Json;
+
+namespace AzureSearch.SDKHowTo
+{
+    public partial class Room
+    {
+        [IsSearchable]
+        [Analyzer(AnalyzerName.AsString.EnMicrosoft)]
+        public string Description { get; set; }
+
+        [IsSearchable]
+        [Analyzer(AnalyzerName.AsString.FrMicrosoft)]
+        [JsonProperty("Description_fr")]
+        public string DescriptionFr { get; set; }
+
+        [IsSearchable, IsFilterable, IsFacetable]
+        public string Type { get; set; }
+
+        [IsFilterable, IsFacetable]
+        public double? BaseRate { get; set; }
+
+        [IsSearchable, IsFilterable, IsFacetable]
+        public string BedOptions { get; set; }
+
+        [IsFilterable, IsFacetable]
+        public int SleepsCount { get; set; }
+
+        [IsFilterable, IsFacetable]
+        public bool? SmokingAllowed { get; set; }
+
+        [IsSearchable, IsFilterable, IsFacetable]
+        public string[] Tags { get; set; }
+    }
+}
+```
+
+Az adatmodellben a .NET-keretrendszer és az annak megfelelő indexsémát úgy kell megtervezni a keresési funkciót, a végfelhasználó számára szeretné támogatásához. A .NET-ben, vagyis a dokumentum az indexben, minden felső szintű objektum egy keresési eredmény, bemutatja az Ön felhasználói felületén felel meg. Például egy Szálloda keresési alkalmazásban a végfelhasználók számára is szeretne keresni Szálloda neve, Szálloda funkcióját, vagy egy adott hely jellemzőit. Ismertetjük, néhány lekérdezési példa egy kicsit később.
+
+A saját osztályok használatát az indexben található dokumentumok interakcióba képessége mindkét irányban; működik Is lekérdezheti a keresési eredményeket, és rendelkezik az SDK-val automatikusan deszerializáltathatja azokat a választott típusra láthatóak lesznek a következő szakaszban.
 
 > [!NOTE]
 > Az Azure Search .NET SDK támogatja a `Document` osztályt használó, dinamikus dokumentumtípusokat is, amely alatt a mezők neveinek értékekre történő kulcs/érték-leképezését értjük. Ez olyan helyzetekben hasznos, ha például a tervezés időpontjában az indexséma még nem ismert, illetve ha az adott modellosztályokhoz történő kötés nehézkes volna. Az SDK-ban lévő összes, dokumentumokkal foglalkozó módszer a `Document` osztállyal kompatibilis túlterhelésekkel rendelkezik, valamint olyan szigorú típusmegadású túlterhelésekkel, amelyek általános típusú paramétert vesznek fel. Kizárólag az utóbbiakat használjuk a mintakód ebben az oktatóanyagban. A [ `Document` osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.document) örököl `Dictionary<string, object>`.
@@ -441,26 +590,26 @@ private static void RunQueries(ISearchIndexClient indexClient)
     SearchParameters parameters;
     DocumentSearchResult<Hotel> results;
 
-    Console.WriteLine("Search the entire index for the term 'budget' and return only the hotelName field:\n");
+    Console.WriteLine("Search the entire index for the term 'motel' and return only the HotelName field:\n");
 
     parameters =
         new SearchParameters()
         {
-            Select = new[] { "hotelName" }
+            Select = new[] { "HotelName" }
         };
 
-    results = indexClient.Documents.Search<Hotel>("budget", parameters);
+    results = indexClient.Documents.Search<Hotel>("motel", parameters);
 
     WriteDocuments(results);
 
-    Console.Write("Apply a filter to the index to find hotels cheaper than $150 per night, ");
+    Console.Write("Apply a filter to the index to find hotels with a room cheaper than $100 per night, ");
     Console.WriteLine("and return the hotelId and description:\n");
 
     parameters =
         new SearchParameters()
         {
-            Filter = "baseRate lt 150",
-            Select = new[] { "hotelId", "description" }
+            Filter = "Rooms/any(r: r/BaseRate lt 100)",
+            Select = new[] { "HotelId", "Description" }
         };
 
     results = indexClient.Documents.Search<Hotel>("*", parameters);
@@ -474,8 +623,8 @@ private static void RunQueries(ISearchIndexClient indexClient)
     parameters =
         new SearchParameters()
         {
-            OrderBy = new[] { "lastRenovationDate desc" },
-            Select = new[] { "hotelName", "lastRenovationDate" },
+            OrderBy = new[] { "LastRenovationDate desc" },
+            Select = new[] { "HotelName", "LastRenovationDate" },
             Top = 2
         };
 
@@ -483,10 +632,10 @@ private static void RunQueries(ISearchIndexClient indexClient)
 
     WriteDocuments(results);
 
-    Console.WriteLine("Search the entire index for the term 'motel':\n");
+    Console.WriteLine("Search the entire index for the term 'hotel':\n");
 
     parameters = new SearchParameters();
-    results = indexClient.Documents.Search<Hotel>("motel", parameters);
+    results = indexClient.Documents.Search<Hotel>("hotel", parameters);
 
     WriteDocuments(results);
 }
@@ -521,26 +670,28 @@ Vegyük viszont minden, a lekérdezések közelebbről. Az első lekérdezés v�
 parameters =
     new SearchParameters()
     {
-        Select = new[] { "hotelName" }
+        Select = new[] { "HotelName" }
     };
 
-results = indexClient.Documents.Search<Hotel>("budget", parameters);
+results = indexClient.Documents.Search<Hotel>("motel", parameters);
 
 WriteDocuments(results);
 ```
 
-Ebben az esetben azt hotels, amelyek megfelelnek a "budget" szóra keres, és szeretnénk visszatéréshez csak a Szálloda neve, azokat a `Select` paraméter. Az eredmények a következők:
+Ebben az esetben azt a "amelyben" szót a teljes indexben keres bármely kereshető mezőjében, és csak szeretnénk lekérni a Szálloda neve által megadott a `Select` paraméter. Az eredmények a következők:
 
-    Name: Roach Motel
+    Name: Secret Point Motel
 
-Ezután szeretnénk keresse meg a "Hotels" kisebb, mint 150 USD éjszakai arány, és csak a Szálloda azonosítója és a leírását adja vissza:
+    Name: Twin Dome Motel
+
+A következő lekérdezés az érdekesebb egy kicsit.  Bármilyen egy éjszakai arány kisebb, mint 100 USD elegendő hellyel rendelkezik, és csak a Szálloda-Azonosítót és a leírást ad vissza, amely a következők:
 
 ```csharp
 parameters =
     new SearchParameters()
     {
-        Filter = "baseRate lt 150",
-        Select = new[] { "hotelId", "description" }
+        Filter = "Rooms/any(r: r/BaseRate lt 100)",
+        Select = new[] { "HotelId", "Description" }
     };
 
 results = indexClient.Documents.Search<Hotel>("*", parameters);
@@ -548,12 +699,15 @@ results = indexClient.Documents.Search<Hotel>("*", parameters);
 WriteDocuments(results);
 ```
 
-Ez a lekérdezés használ egy OData `$filter` kifejezés, `baseRate lt 150`, a dokumentumok indexben szűréséhez. Talál további információt az OData-szűrőszintaxis, amely támogatja az Azure Search [Itt](https://docs.microsoft.com/rest/api/searchservice/OData-Expression-Syntax-for-Azure-Search).
+Ez a lekérdezés használ egy OData `$filter` kifejezés, `Rooms/any(r: r/BaseRate lt 100)`, a dokumentumok indexben szűréséhez. Ez a [bármely szereplő](https://docs.microsoft.com/azure/search/search-query-odata-collection-operators) a alkalmazni az "BaseRate lt 100' a termek gyűjtemény minden eleméhez. Talál további információt az OData-szűrőszintaxis, amely támogatja az Azure Search [Itt](https://docs.microsoft.com/azure/search/query-odata-filter-orderby-syntax).
 
 Az alábbiakban a lekérdezési eredmények:
 
-    ID: 2   Description: Cheapest hotel in town
-    ID: 3   Description: Close to town hall and the river
+    HotelId: 1
+    Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York...
+
+    HotelId: 2
+    Description: The hotel is situated in a nineteenth century plaza, which has been expanded and renovated to...
 
 Ezután szeretnénk megtalálni a felső két hotels, amely rendelkezik lett utoljára felújított és a Szálloda neve és az utolsó felújítás dátumának megjelenítése. A kód itt látható: 
 
@@ -561,8 +715,8 @@ Ezután szeretnénk megtalálni a felső két hotels, amely rendelkezik lett uto
 parameters =
     new SearchParameters()
     {
-        OrderBy = new[] { "lastRenovationDate desc" },
-        Select = new[] { "hotelName", "lastRenovationDate" },
+        OrderBy = new[] { "LastRenovationDate desc" },
+        Select = new[] { "HotelName", "LastRenovationDate" },
         Top = 2
     };
 
@@ -578,18 +732,23 @@ Az eredmények a következők:
     Name: Fancy Stay        Last renovated on: 6/27/2010 12:00:00 AM +00:00
     Name: Roach Motel       Last renovated on: 4/28/1982 12:00:00 AM +00:00
 
-Végül szeretnénk található összes "Hotels" megfelelő "amelyben" szót:
+Végül szeretnénk található összes Szálloda neve megegyezik a "hotel" szót:
 
 ```csharp
-parameters = new SearchParameters();
-results = indexClient.Documents.Search<Hotel>("motel", parameters);
+parameters = new SearchParameters()
+{
+    SearchFields = new[] { "HotelName" }
+};
+results = indexClient.Documents.Search<Hotel>("hotel", parameters);
 
 WriteDocuments(results);
 ```
 
 Az alábbiakban az eredményeket, amely az összes mező tartalmazza, mivel nem azt adta meg, és a `Select` tulajdonság:
 
-    ID: 2   Base rate: 79.99        Description: Cheapest hotel in town     Description (French): Hôtel le moins cher en ville      Name: Roach Motel       Category: Budget        Tags: [motel, budget]   Parking included: yes   Smoking allowed: yes    Last renovated on: 4/28/1982 12:00:00 AM +00:00 Rating: 1/5     Location: Latitude 49.678581, longitude -122.131577
+    HotelId: 3
+    Name: Triple Landscape Hotel
+    ...
 
 Ez a lépés befejezi az oktatóanyag, de itt nem állnak le. ** A következő lépések további erőforrások az Azure Search-ról további adja meg.
 

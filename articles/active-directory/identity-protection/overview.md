@@ -17,16 +17,16 @@ ms.date: 01/29/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a1154e6484ebc86743202239dcd94f0772c8011
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 660793cdba61b5438283ea54a9f7349bdfbc98e1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67204518"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440512"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Mi az Azure Active Directory Identity Protection?
 
-Az Azure Active Directory Identity Protection lehetővé teszi a szervezetek számára, hogy a kapcsolódó felhasználói identitások észlelt gyanús tevékenységek automatikus válaszok beállítása.
+Az Azure Active Directory [identitás](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology) védelem lehetővé teszi a szervezetek számára, hogy a kapcsolódó felhasználói identitások észlelt gyanús tevékenységek automatikus válaszok beállítása.
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -69,7 +69,7 @@ Az Azure Active Directory Identity Protection több mint egy olyan figyelési é
 
 Terheléselosztás a felügyeleti tevékenységek körül az Identity Protection implementáció számos szerepköröket rendelhet. Az Azure AD Identity Protection 3 címtárszerepkört támogat:
 
-| Szerepkör | Teheti meg | Nem hajtható végre |
+| Role | Teheti meg | Nem hajtható végre |
 | :-- | --- | --- |
 | Globális rendszergazda | Teljes hozzáférés az Identity Protection előkészítése Identity Protection| |
 | Biztonsági rendszergazda | Teljes hozzáférés az Identity Protection | Identity Protection előkészítése, a felhasználó a jelszavak alaphelyzetbe állítása |

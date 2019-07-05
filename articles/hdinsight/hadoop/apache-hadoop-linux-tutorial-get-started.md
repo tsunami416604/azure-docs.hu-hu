@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 8eb297c555d2d7f95419b2a9aa11a26cf5c7230f
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 89d25c9c0a45b740bfb60a71f6d85bfbf4a4686a
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137470"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67459874"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Gyors útmutató: Az Apache Hadoop-fürt létrehozása az Azure HDInsight használata a Resource Manager-sablon
 
@@ -81,4 +81,4 @@ Miután végzett a gyors üzembe helyezéssel, érdemes törölni a fürtöt. A 
 Ebből a gyors útmutatóból megtudhatta, hogyan Apache Hadoop-fürt létrehozása a Resource Manager-sablon használatával HDInsight. A következő cikkben megtudhatja, hogyan végezheti el az adatok kinyerési, átalakítási és betöltési (ETL) műveleteit a Hadoop használatával a HDInsighton.
 
 > [!div class="nextstepaction"]
->[A kinyerési, átalakítási és az Apache Hive használata a HDInsight adatok betöltése](../hdinsight-analyze-flight-delay-data-linux.md)
+>[A kinyerési, átalakítási és a HDInsight interaktív lekérdezés segítségével adatok betöltése](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)

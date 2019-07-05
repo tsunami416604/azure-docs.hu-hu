@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e34e6257b4800387470cdc1b7d624bf3ebd1d3e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 95b7cbcf4e485dc93d49b9559dcb7d0d4f597ebe
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65989226"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550356"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-microsoft-identity-platform"></a>Egyszeri bejelentkezés nem katalógusból származó alkalmazásokhoz a Microsoft identity platform konfigurálása
 
@@ -186,7 +186,7 @@ Az alkalmazás egy új felhasználó vagy csoport hozzárendelése:
 3. Válassza ki **felhasználók és csoportok (\<szám > kijelölt)** . A **felhasználók és csoportok** elérhető felhasználók és csoportok listáját tartalmazó lap jelenik meg,.
 4. Típus vagy görgessen lefelé, keresse meg a felhasználót vagy csoportot szeretne hozzárendelni a listából.
 5. Válassza ki a felhasználó vagy csoport, amelyet szeretne hozzáadni, és válassza ki a **kiválasztása** gombra. A **felhasználók és csoportok** lap eltűnik.
-6. Az a **hozzáadása hozzárendelések** lapon jelölje be **hozzárendelése**. A  **<application name> -felhasználók és csoportok** lap jelenik meg a listában szereplő további felhasználóival.
+6. Az a **hozzáadása hozzárendelések** lapon jelölje be **hozzárendelése**. A  **\<alkalmazás neve >-felhasználók és csoportok** lap jelenik meg a listában szereplő további felhasználóival.
 
    ![Alkalmazás-felhasználók és csoportok](./media/configure-single-sign-on-non-gallery-applications/application-users-and-groups.png)
 

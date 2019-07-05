@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 462a99ffab8038f34b1ffd038ce5c8e8ec9a8565
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a6a5b0e3957141b9ea17a378a7cbeff33a0124e
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024432"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485204"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>Hozzon létre egy alapszintű indexet az Azure Search szolgáltatásban
 
@@ -36,7 +36,7 @@ A jobb oldali index tervezési érkező több ismétlések keresztül általába
   
    Amikor rákattint **létrehozás**, a fizikai struktúrák támogatása az index összes jönnek létre a search szolgáltatás.
 
-3. Töltse le az index séma használatával [Index REST API első](https://docs.microsoft.com/rest/api/searchservice/get-index) és a egy webes tesztelési eszköz, például [Postman](search-fiddler.md). Most már az index a portálon létrehozott JSON-ábrázolását. 
+3. Töltse le az index séma használatával [Index REST API első](https://docs.microsoft.com/rest/api/searchservice/get-index) és a egy webes tesztelési eszköz, például [Postman](search-get-started-postman.md). Most már az index a portálon létrehozott JSON-ábrázolását. 
 
    Vált át egy megközelítéssel ezen a ponton. A portál nem áll iteráció is használható, mert már nem szerkesztheti a már létrehozott index. De a hátralévő műveletekkel Postman és a REST is használható.
 
@@ -48,7 +48,7 @@ A jobb oldali index tervezési érkező több ismétlések keresztül általába
 
 Fizikai struktúrák jönnek létre a szolgáltatást, mert [elvetését, majd újra létre kellene hoznia indexek](search-howto-reindex.md) szükség, amikor változtatásokat hajtunk egy meglévő mező definícióját. Ez azt jelenti, hogy, a fejlesztés során meg kell terveznie a gyakori újraépíteni. Érdemes lehet a győződjön meg arról, hogy az adatok egy részéből működő újraépíti go gyorsabban. 
 
-Iteratív tervezési kód, nem pedig a portál megközelítést, ajánlott. Használ, a portálon az index definícióját, ha akkor adja meg az egyes készítse el az index definícióját. Alternatív megoldásként eszközök, például [Postman és a REST API-val](search-fiddler.md) proof-of-concept tesztelési-fejlesztési projektek esetén továbbra is a korai szakaszában hasznosak. Az index definícióját a kérelem törzsében szereplő növekményes módosításokat, és majd a szolgáltatás hozza létre újból az indexet egy frissített séma használatával való elküldéséhez.
+Iteratív tervezési kód, nem pedig a portál megközelítést, ajánlott. Használ, a portálon az index definícióját, ha akkor adja meg az egyes készítse el az index definícióját. Alternatív megoldásként eszközök, például [Postman és a REST API-val](search-get-started-postman.md) proof-of-concept tesztelési-fejlesztési projektek esetén továbbra is a korai szakaszában hasznosak. Az index definícióját a kérelem törzsében szereplő növekményes módosításokat, és majd a szolgáltatás hozza létre újból az indexet egy frissített séma használatával való elküldéséhez.
 
 ## <a name="components-of-an-index"></a>Az index összetevői
 
@@ -160,16 +160,22 @@ A séma meghatározásakor az index minden egyes mezőjéhez nevet, típust és 
 Részletesebb információkat az Azure Search által [támogatott adattípusokról itt](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types) talál.
 
 ### <a name="index-attributes"></a>Index attribútumainak
+
+Pontosan egy mezőt az indexben lévő kell lennie a kijelölt egy **kulcs** mező, amely egyedileg azonosítja az egyes dokumentumok.
+
+Egyéb attribútumai határozzák meg, hogyan egy mezőt egy alkalmazás használatban van. Ha például a **kereshető** attribútumot hozzá van rendelve minden mezőnek szerepelnie kell a teljes szöveges keresés. 
+
+Az API-k használatával hozhat létre az indexet különböző alapértelmezett viselkedés rendelkezik. Az a [REST API-k](https://docs.microsoft.com/rest/api/searchservice/Create-Index), alapértelmezés szerint engedélyezve vannak a legtöbb attribútumok (például **kereshető** és **lekérhető** karakterláncot tartalmazó mezők esetében igaz), és gyakran csak be kell állítani őket, ha szeretné kikapcsolni őket. A .NET SDK-t ennek az ellenkezője is igaz. Bármely vlastnost be nem állított be alapértelmezés szerint a rendszer letiltja a megfelelő keresési viselkedés, hacsak Ön kifejezetten engedélyezi.
+
 | Attribútum | Leírás |
 | --- | --- |
-| *Kulcs* |Az egyes dokumentumok egyedi azonosítóját megadó sztring, amelyet a dokumentumok keresésére használunk. Minden egyes indexnek egy kulccsal kell rendelkeznie. A kulcs kizárólag egyetlen mező lehet, annak típusa pedig Edm.String kell legyen. |
-| *Lekérhető* |Megadja, hogy az adott mező visszaadható-e egy keresési eredményben. |
-| *Szűrhető* |Lehetővé teszi az adott mező szűrőlekérdezésekben történő használatát. |
-| *Rendezhető* |Lehetővé teszi egy lekérdezés számára, hogy az adott mezőt használja egy rendezés alapjaként. |
-| *Értékkorlátozó* |Lehetővé teszi az adott mező [értékkorlátozott navigációs](search-faceted-navigation.md) szerkezetben történő használatát a felhasználó által önállóan irányított szűrések során. Általában olyan ismétlődő értékeket tartalmazó mezők, amelyek dokumentumok csoportosítására használhatók (például adott márkához vagy szolgáltatási kategóriához tartozó dokumentumok esetében). |
-| *Kereshető* |Azt jelzi, hogy az adott mező teljes szöveges keresésre alkalmas. |
+| `key` |Az egyes dokumentumok egyedi azonosítóját megadó sztring, amelyet a dokumentumok keresésére használunk. Minden egyes indexnek egy kulccsal kell rendelkeznie. A kulcs kizárólag egyetlen mező lehet, annak típusa pedig Edm.String kell legyen. |
+| `retrievable` |Megadja, hogy az adott mező visszaadható-e egy keresési eredményben. |
+| `filterable` |Lehetővé teszi az adott mező szűrőlekérdezésekben történő használatát. |
+| `Sortable` |Lehetővé teszi egy lekérdezés számára, hogy az adott mezőt használja egy rendezés alapjaként. |
+| `facetable` |Lehetővé teszi az adott mező [értékkorlátozott navigációs](search-faceted-navigation.md) szerkezetben történő használatát a felhasználó által önállóan irányított szűrések során. Általában olyan ismétlődő értékeket tartalmazó mezők, amelyek dokumentumok csoportosítására használhatók (például adott márkához vagy szolgáltatási kategóriához tartozó dokumentumok esetében). |
+| `searchable` |Azt jelzi, hogy az adott mező teljes szöveges keresésre alkalmas. |
 
-Részletesebb információkat az Azure Search [indexattribútumairól itt](https://docs.microsoft.com/rest/api/searchservice/Create-Index) talál.
 
 ## <a name="storage-implications"></a>Storage – következmények
 

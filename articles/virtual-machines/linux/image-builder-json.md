@@ -7,12 +7,12 @@ ms.date: 05/10/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: cf8264cbad3c5c88c58cff3b95cb5c68adf0686c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a577a2a2a3b21cb027ba699450631a627f4f7a39
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65538292"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67501878"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Előzetes verzió: Az Azure az Image Builder-sablon létrehozása 
 
@@ -51,11 +51,11 @@ A `type` erőforrástípusa, amelynek kell `"Microsoft.VirtualMachineImages/imag
     "apiVersion": "2019-05-01-preview",
 ```
 
-## <a name="location"></a>Location egység
+## <a name="location"></a>Location
 
 A hely az a régió, ahol létrejön az egyéni rendszerképet. Az Image Builder előzetes verzióra a következő régiókban érhető el:
 
-- USA keleti régiója
+- East US
 - USA 2. keleti régiója
 - USA nyugati középső régiója
 - USA nyugati régiója
@@ -331,6 +331,8 @@ Ez Windows-könyvtárak és a Linux elérési út támogatott, de van néhány e
  
  
 Ha hiba előfordulásakor töltse le a fájlt, vagy a megadott könyvtárba helyezze a Testreszabás lépés sikertelen lesz, és ez lesz a customization.log.
+
+>> Megjegyzés! A fájl rendszertestreszabó csak ideális kis letöltéseket, < 20 MB-ot. Nagyobb méretű fájlok letöltése egy parancsfájl vagy beágyazott parancs használatával, a használható kóddal töltse le a fájlokat, például a Linux `wget` vagy `curl`, Windows, `Invoke-WebRequest`.
 
 A fájl rendszertestreszabó fájlokat az Azure Storage-ból letölthető használatával [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
 

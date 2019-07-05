@@ -1,28 +1,22 @@
 ---
 title: Vállalati Állapothordozás engedélyezése az Azure Active Directoryban |} A Microsoft Docs
-description: Gyakori kérdések Enterprise State Roaming beállítások a Windows-eszközökön. Enterprise State Roaming nyújt a felhasználók számára egységes felületet a Windows-eszközök között, és csökkenti az új eszköz konfigurálásához szükséges időt.
+description: Gyakori kérdések Enterprise State Roaming beállítások a Windows-eszközökön.
 services: active-directory
-keywords: Vállalati állapothordozás, a windows-felhő, vállalati állapothordozás engedélyezése
-documentationcenter: ''
-author: tanning
-manager: daveba
-editor: curtand
-ms.subservice: devices
-ms.assetid: f71d66fd-7f9e-45eb-9cfe-5d989870f8a4
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 10/25/2018
+ms.subservice: devices
+ms.topic: conceptual
+ms.date: 06/28/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
+ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88e825ebc08b4bfbd65f81b7b2480ead9be314b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45c1fc6340df6a5400864b2e1222a2c65e586232
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954953"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482029"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>A vállalati állapothordozás engedélyezése az Azure Active Directoryban
 Enterprise State Roaming egy prémium szintű Azure AD vagy Enterprise Mobility + Security (EMS) licenccel rendelkező minden szervezet számára érhető el. Az Azure AD-előfizetés beszerzése További információkért lásd: a [Azure ad-ben termékoldalán](https://azure.microsoft.com/services/active-directory).
@@ -32,9 +26,7 @@ Vállalati Állapothordozás engedélyezése esetén a szervezete automatikusan 
 ## <a name="to-enable-enterprise-state-roaming"></a>To enable Enterprise State Roaming
 
 1. Jelentkezzen be a [Azure AD felügyeleti központ](https://aad.portal.azure.com/).
-
 1. Válassza ki **az Azure Active Directory** &gt; **eszközök** &gt; **Enterprise State Roaming**.
-
 1. Válassza ki **felhasználók szinkronizálhatják a beállításokat és alkalmazásadatokat különböző eszközökön**. További információkért lásd: [eszközbeállítások konfigurálása](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal).
   
    ![Felhasználók feliratú eszközbeállítást képe szinkronizálhatják a beállításokat és alkalmazásadatokat különböző eszközökön](./media/enterprise-state-roaming-enable/device-settings.png)
@@ -44,12 +36,12 @@ Az Enterprise State Roaming szolgáltatás használata Windows 10 rendszerű esz
 ## <a name="data-storage"></a>Adattárolás
 Enterprise State Roaming adatokat egy vagy több üzemeltetett [Azure-régiók](https://azure.microsoft.com/regions/) , hogy ajánlott zárás ország/régió értékre van állítva, az Azure Active Directory-példányban. Enterprise State Roaming adatok particionálása három fő földrajzi régió alapján: Észak-Amerikában, az EMEA-régióban és a APAC. A bérlő Enterprise State Roaming adatok helyben található, és a földrajzi régió, és nem replikál a rendszer régiók.  Példa:
 
-Ország/régió érték | a data-ban üzemeltetett rendelkezik
----------------------|-------------------------
-Egy EMEA ország/régió például Franciaország vagy Zambia | Egy vagy több Azure-régiót Európán 
-Például az Egyesült Államok vagy Kanada Észak-amerikai ország/régió | egy vagy több Azure-régiót belül az Egyesült Államok
-Az APAC ország/régió például az ausztráliai vagy Új-Zéland | egy vagy több Azure-régiót Ázsia belül
-Dél-amerikai és Antarktisz régiók | egy vagy több Azure-régióban az Egyesült Államok belül
+| Ország/régió érték | a data-ban üzemeltetett rendelkezik |
+| -------------------- | ------------------------ |
+| Egy EMEA ország/régió például Franciaország vagy Zambia | Egy vagy több Azure-régiót Európán |
+| Például az Egyesült Államok vagy Kanada Észak-amerikai ország/régió | egy vagy több Azure-régiót belül az Egyesült Államok |
+| Az APAC ország/régió például az ausztráliai vagy Új-Zéland | egy vagy több Azure-régiót Ázsia belül |
+| Dél-amerikai és Antarktisz régiók | egy vagy több Azure-régióban az Egyesült Államok belül |
 
 Ország/régió értékét az Azure AD-címtár létrehozása folyamat részeként van beállítva, és ezt követően nem módosítható. Ha további részleteket az adatok tárolási helye, küldjön el egy jegyet az [az Azure-támogatás](https://azure.microsoft.com/support/options/).
 
@@ -57,11 +49,8 @@ Ország/régió értékét az Azure AD-címtár létrehozása folyamat részeké
 Kövesse az alábbi lépéseket egy felhasználó eszköz szinkronizálása állapotjelentése megtekintéséhez.
 
 1. Jelentkezzen be a [Azure AD felügyeleti központ](https://aad.portal.azure.com/).
-
 1. Válassza ki **Azure Active Directory** &gt; **felhasználók** &gt; **minden felhasználó**.
-
 1. Válassza ki a felhasználót, és válassza **eszközök**.
-
 1. A **megjelenítése**válassza **beállításokat és alkalmazásadatokat Szinkronizáló eszközöket** szinkronizálási állapotának megjelenítéséhez.
   
    ![Eszközbeállítás szinkronizálási adatokat ábrázoló kép](./media/enterprise-state-roaming-enable/sync-status.png)

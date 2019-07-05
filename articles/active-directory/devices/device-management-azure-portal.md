@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4a0037d46db67460d507c6e92ab550f7d9c2fbe
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 6f33b52255b1401e3595687612610a4688ad026d
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341418"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461442"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Az Azure portal használatával eszközidentitások kezelése
 
@@ -57,14 +57,14 @@ Az eszköz beállításai lapon konfigurálását teszi lehetővé:
 
 ![Az Intune-eszközök kezelése](./media/device-management-azure-portal/21.png)
 
-- **Felhasználók eszközöket csatlakoztathatnak az Azure AD** – Ez a beállítás lehetővé teszi a felhasználók, akik regisztrálhatják eszközeiket, [Azure AD join eszközök](overview.md#azure-ad-joined-devices). Az alapértelmezett érték **összes**.
+- **Felhasználók eszközöket csatlakoztathatnak az Azure AD** – Ez a beállítás lehetővé teszi a felhasználók, akik az Azure AD-hez csatlakoztatott eszközként regisztrálhatják az eszközeiket. Az alapértelmezett érték **összes**.
 
 > [!NOTE]
 > **Felhasználók eszközöket csatlakoztathatnak az Azure AD** beállítás csak akkor érvényes, az Azure AD join a Windows 10-es.
 
 - **További helyi rendszergazdák az Azure AD-hez csatlakoztatott eszközök** – kiválaszthatja, hogy az adott eszközön helyi rendszergazdai jogosultságokkal rendelkező felhasználók. Az itt hozzáadott felhasználók hozzáadódnak a *Device Administrators* az Azure AD-szerepkörhöz. Az Azure AD globális rendszergazdák és eszköztulajdonosok alapértelmezés szerint helyi rendszergazdai jogokat kapnak. Ez a beállítás akkor például az Azure AD prémium vagy nagyvállalati mobilitási csomag (EMS) termékeken keresztül elérhető premium edition képességet.
-- **A felhasználók regisztrálhatják eszközeiket az Azure ad-vel** – Ez a beállítás a Windows 10-es személyes, iOS, Android és MacOS rendszerű eszközök kell konfigurálnia kell [regisztrálva](overview.md#azure-ad-registered-devices) az Azure AD. Ha **None**, eszközök regisztrálása az Azure ad-vel nem engedélyezettek. Az Office 365-höz a Microsoft Intune- vagy mobileszköz-felügyeleti (MDM) beléptetési regisztráció szükséges. Ha ezen szolgáltatások bármelyikét konfigurálta **összes** van kiválasztva, és **NONE** nem érhető el. Ha engedélyezi ezt a beállítást, az Intune-ból, majd itt az lehetőség szürkén jelennek meg.
-- **Eszközök csatlakoztatása a többtényezős hitelesítés megkövetelése** -kiválaszthatja a felhasználóknak kell-e egy második hitelesítési tényezőt ahhoz, hogy [illesztési](overview.md#azure-ad-joined-devices) az eszközt az Azure AD. Az alapértelmezett érték **nem**. Azt javasoljuk, hogy a multi-factor authentication megkövetelése az eszköz regisztrálásához ajánlatos. Mielőtt engedélyezné ezt a szolgáltatást a multi-factor Authentication hitelesítés, biztosítania kell, hogy a felhasználók regisztrálják az eszközeiket, az Azure multi-factor Authentication hitelesítés van konfigurálva. További információkért tekintse meg a cikket [Azure multi-factor Authentication üzembe helyezési](../authentication/howto-mfa-getstarted.md). 
+- **A felhasználók regisztrálhatják eszközeiket az Azure ad-vel** – ezzel a beállítással lehetővé teszi a Windows 10-es személyes, iOS, Android és MacOS rendszerű eszközöket regisztrálni kell az Azure ad-ben konfigurálni kell. Ha **None**, eszközök regisztrálása az Azure ad-vel nem engedélyezettek. Az Office 365-höz a Microsoft Intune- vagy mobileszköz-felügyeleti (MDM) beléptetési regisztráció szükséges. Ha ezen szolgáltatások bármelyikét konfigurálta **összes** van kiválasztva, és **NONE** nem érhető el.
+- **Eszközök csatlakoztatása a többtényezős hitelesítés megkövetelése** – kiválaszthatja a felhasználóknak kell-e adnia egy további hitelesítési tényezőt ahhoz, hogy csatlakoztassák az eszközüket az Azure ad-hez. Az alapértelmezett érték **nem**. Azt javasoljuk, hogy a multi-factor authentication megkövetelése az eszköz regisztrálásához ajánlatos. Mielőtt engedélyezné ezt a szolgáltatást a multi-factor Authentication hitelesítés, biztosítania kell, hogy a multi-factor Authentication hitelesítés van konfigurálva a felhasználók regisztrálják az eszközeiket. A másik az Azure multi-factor authentication szolgáltatások további információkért lásd: [az Azure multi-factor authentication – első lépések](../authentication/concept-mfa-whichversion.md). 
 
 > [!NOTE]
 > **Eszközök csatlakoztatása a többtényezős hitelesítés megkövetelése** beállítás nem vonatkozik a hibrid Azure AD-csatlakoztatott eszközök.

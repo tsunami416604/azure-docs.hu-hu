@@ -14,12 +14,12 @@ ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1755d627473b0ae47bbc4bc74a3f0d2210e5372b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7413fcf7992195753cba86a50b7d53a144b36023
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60440613"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476428"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Az Azure AD Privileged Identity Management (PIM) üzembe helyezése
 
@@ -99,7 +99,7 @@ Az alábbi szakasz segítségével, amelyek szerepet játszanak a projekt össze
 
 #### <a name="stakeholders-pim-for-azure-ad-roles"></a>Érintettek: A PIM az Azure AD-szerepkörök
 
-| Name (Név) | Szerepkör | Műveletek |
+| Name (Név) | Role | Műveletek |
 | --- | --- | --- |
 | Név és e-mail | **Identitás-mérnök vagy az Azure globális rendszergazda**<br/>Az identitás meghatározása, hogy ez a változás az alapvető identity management infrastruktúra a szervezetben való igazításának felelős csapat képviselőjével. | ÍGY/R/I |
 | Név és e-mail | **Szolgáltatás tulajdonosa / manager sor**<br/>Egy szolgáltatás vagy -szolgáltatásokra informatikai tulajdonosai képviselőjével. Azok a kulcs döntéseket, és segítsen a PIM vezethet be a csapat számára. | ÍGY/R/I |
@@ -109,7 +109,7 @@ Az alábbi szakasz segítségével, amelyek szerepet játszanak a projekt össze
 
 #### <a name="stakeholders-pim-for-azure-resource-roles"></a>Érintettek: A PIM az Azure-erőforrásszerepkörök
 
-| Name (Név) | Szerepkör | Műveletek |
+| Name (Név) | Role | Műveletek |
 | --- | --- | --- |
 | Név és e-mail | **Előfizetés és erőforrás-tulajdonos**<br/>Az egyes előfizetésekhez vagy erőforrás, amely a PIM használata telepítendő informatikai tulajdonosai képviselőjével | ÍGY/R/I |
 | Név és e-mail | **Biztonsági tulajdonosa**<br/>A biztonsági csapat, amely képes jelentkezzen ki, hogy a csomag megfelel a szervezet biztonsági követelményeinek képviselőjével. | EZÉRT / R |
@@ -143,7 +143,7 @@ Kövesse az alábbi lépéseket az Azure AD-szerepkörökhöz tartozó minimáli
 
 1. Listája, aki rendelkezik az emelt szintű szerepkörök a szervezetben. Használhatja a [PIM varázsló](pim-security-wizard.md#run-the-wizard) az alábbihoz hasonló lap beolvasásához.
 
-    ![Kiemelt szerepkörök észlelése](./media/pim-deployment-plan/discover-privileged-roles-users.png)
+    ![Kiemelt szerepkörök paneljéről, amelyen látható, aki rendelkezik kiemelt szerepköröket felderítése](./media/pim-deployment-plan/discover-privileged-roles-users.png)
 
 1. A szervezet minden globális rendszergazda, a megtudhatja, miért szükséges a szerepkör. Alapján az előző dokumentációját, olvasása, ha a személy feladatot végezhet el egy vagy több részletes rendszergazdai szerepköröket, kell azokat távolítani a globális rendszergazdai szerepkör és hozzárendeléseket ennek megfelelően az Azure Active Directory belül (referenciaként: A Microsoft jelenleg csak rendelkezik a globális rendszergazdai szerepkörrel rendelkező körülbelül 10 rendszergazdák. További információ: [hogyan használja a Microsoft a PIM](https://www.microsoft.com/itshowcase/Article/Content/887/Using-Azure-AD-Privileged-Identity-Management-for-elevated-access)).
 
@@ -151,7 +151,7 @@ Kövesse az alábbi lépéseket az Azure AD-szerepkörökhöz tartozó minimáli
 
 3\. és 4 automatizálását, a hozzáférési felülvizsgálat függvény PIM belül használhat. Leírt lépések végrehajtásával [az Azure AD-szerepkörök hozzáférési felülvizsgálat indítása a PIM](pim-how-to-start-security-review.md), beállíthatja a hozzáférési felülvizsgálat minden Azure AD-szerepkörhöz, amely egy vagy több tagja van.
 
-![Hozzáférési felülvizsgálat létrehozása](./media/pim-deployment-plan/create-access-review.png)
+![Hozzon létre egy hozzáférési felülvizsgálati panel az Azure AD-szerepkörök](./media/pim-deployment-plan/create-access-review.png)
 
 A felülvizsgálatot állítsa be **tagok (saját)** . Ez küld egy e-mailt el a szerepkör tagjai az összes használhassa őket, ellenőrizze, hogy szükségük van-e a hozzáférést. Emellett kapcsolja **a jóváhagyás oka szükséges** speciális beállításai között szereplő, hogy a felhasználók is állapot miért szükséges a szerepkör. Ezen információ alapján lesz távolítsa el a felhasználókat a szükségtelen szerepkörök, és a globális rendszergazdák esetén a részletes rendszergazdai szerepkörök delegálása.
 
@@ -240,7 +240,7 @@ A PIM-megoldások megvalósításának előtt tanácsos a PIM beállításokat a
 
 #### <a name="pim-settings-for-azure-ad-roles"></a>Az Azure AD-szerepköröket a PIM beállításai
 
-| Szerepkör | MFA megkövetelése | Értesítés | Incidens jegy | Jóváhagyás szükséges | Jóváhagyó | Aktiválás időtartama | Az állandó rendszergazdai |
+| Role | MFA megkövetelése | Értesítés | Incidens jegy | Jóváhagyás szükséges | Jóváhagyó | Aktiválás időtartama | Az állandó rendszergazdai |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Globális rendszergazda | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Más globális rendszergazdákat | 1 óra | A vészelérési fiókok |
 | Exchange-rendszergazda | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | None | 2 óra | None |
@@ -248,7 +248,7 @@ A PIM-megoldások megvalósításának előtt tanácsos a PIM beállításokat a
 
 #### <a name="pim-settings-for-azure-resource-roles"></a>Az Azure-erőforrások szerepköreihez tartozó PIM-beállítások
 
-| Szerepkör | MFA megkövetelése | Értesítés | Jóváhagyás szükséges | Jóváhagyó | Aktiválás időtartama | Aktív felügyeleti | Aktív lejárata | Jogosult lejárata |
+| Role | MFA megkövetelése | Értesítés | Jóváhagyás szükséges | Jóváhagyó | Aktiválás időtartama | Aktív felügyeleti | Aktív lejárata | Jogosult lejárata |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Kritikus fontosságú előfizetéseket tulajdonosa | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Az előfizetés további tulajdonosok folyamatokhoz | 1 óra | None | n/a | 3 hónap |
 | Felhasználói hozzáférés rendszergazdája kevésbé fontos előfizetések | :heavy_check_mark: | :heavy_check_mark: | :x: | None | 1 óra | None | n/a | 3 hónap |
@@ -258,7 +258,7 @@ A következő táblázat ismerteti az egyes beállításoknak.
 
 | Beállítás | Leírás |
 | --- | --- |
-| Szerepkör | A beállításokat a szerepkör nevét. |
+| Role | A beállításokat a szerepkör nevét. |
 | MFA megkövetelése | Hogy a jogosult felhasználónak kell hajthatok végre MFA a szerepkör aktiválása előtt.<br/><br/> :heavy_check_mark: **A Microsoft javasolja** , MFA kényszerítése minden rendszergazdai szerepkörhöz, különösen akkor, ha a szerepkörök rendelkeznek vendégfelhasználókat. |
 | Értesítés | Értéke true, globális rendszergazda, a kiemelt szerepkörű rendszergazda, és a biztonsági rendszergazda a szervezet egy e-mail értesítést kap, amikor egy jogosult felhasználó aktiválja a szerepkörét.<br/><br/>**Megjegyzés:** Egyes szervezetek nem rendelkezik rendszergazdai fiókjait, az alábbi e-mail-értesítések kötött e-mail-címmel, egy másodlagos e-mail-cím beállítása, így a rendszergazdák fog kapni e-mailek kell végezze. |
 | Incidens jegy | E a jogosult felhasználónak szüksége van egy incidens jegyszám rögzíti, ha a szerepkör aktiválása. Ez a beállítás segítségével a szervezetek egy belső incidensszám nemkívánatos aktiválások csökkentése érdekében az egyes aktiválási azonosításához.<br/><br/> :heavy_check_mark: **A Microsoft javasolja** kihasználhatja a PIM elősegítsék a belső rendszerbe történő incidens jegy számának. Ez különösen hasznos a jóváhagyókat, akik az aktiválási környezet szükséges. |
@@ -318,7 +318,7 @@ Most, hogy azonosította a tesztfelhasználókat, ebben a lépésben használat�
 
 Ebben a szakaszban ellenőrizze, hogy megfelelően működik-e az összes konfigurációs beállítása a a szerepkörök használjon. Az alábbi táblázat segítségével a tesztek dokumentálja. Ebben a szakaszban segítségével optimalizálható a kommunikációt az érintett felhasználók is kell.
 
-| Szerepkör | Az aktiválás során normális működés | A tényleges eredmények |
+| Role | Az aktiválás során normális működés | A tényleges eredmények |
 | --- | --- | --- |
 | Globális rendszergazda | (1) a többtényezős hitelesítés megkövetelése<br/>(2) jóváhagyása szükséges<br/>(3) jóváhagyó értesítést kap, és hagyhatja jóvá<br/>(4) szerepkör előre beállított idő után jár le |  |
 | Előfizetés tulajdonosának *X* | (1) a többtényezős hitelesítés megkövetelése<br/>(2) a jogosult hozzárendelés beállított idő elteltével lejár |  |

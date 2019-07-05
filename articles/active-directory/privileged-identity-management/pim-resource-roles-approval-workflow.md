@@ -15,12 +15,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f645b7077ef43dc7eb4d70261b6b601b5e4af1b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9d2e8b4ae1a01cd299d910c4e88655885c7d00dc
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60288481"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476386"
 ---
 # <a name="approve-or-deny-requests-for-azure-resource-roles-in-pim"></a>Hagyja jóvá vagy utasítsa a PIM az Azure-erőforrások szerepköreihez tartozó kérelmek
 
@@ -38,15 +38,15 @@ Delegált jóváhagyójaként e-mailben értesítést fog kapni, ha egy Azure-er
 
 1. Kattintson a **kérések jóváhagyása**.
 
-    ![Azure-erőforrás - kérelmek jóváhagyása](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
+    ![Kérelmek - Azure-erőforrások oldaláról, tekintse át a kérelem jóváhagyása](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
 
     Az a **szerepkör-aktiválásokhoz tartozó kérelmek** szakaszban jóváhagyásra váró kérelmek listáját láthatja.
 
 ## <a name="approve-requests"></a>Kérések jóváhagyása
 
-1. Keresse meg és kattintson a jóváhagyni kívánt kérést. Egy jóváhagyási panel jelenik meg.
+1. Keresse meg és kattintson a jóváhagyni kívánt kérést. Egy jóváhagyása vagy elutasítása ablak jelenik meg.
 
-    ![Hagyja jóvá a kérelmek panel](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+    ![Kérelmek jóváhagyása – jóváhagyása vagy elutasítása részleteiről és az indoklás mező panel](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
 
 1. Az a **indoklás** mezőbe írja be az okot.
 
@@ -54,13 +54,13 @@ Delegált jóváhagyójaként e-mailben értesítést fog kapni, ha egy Azure-er
 
     A jóváhagyással megjelenik egy értesítés.
 
-    ![Értesítés jóváhagyása](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
+    ![Hagyja jóvá az értesítés, hogy a kérés jóváhagyva](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
 
 ## <a name="deny-requests"></a>Kérelmek elutasítása
 
-1. Keresse meg és kattintson a kérelemhez, amely meg szeretné tagadni. Egy jóváhagyási panel jelenik meg.
+1. Keresse meg és kattintson a kérelemhez, amely meg szeretné tagadni. Egy jóváhagyása vagy elutasítása ablak jelenik meg.
 
-    ![Hagyja jóvá a kérelmek panel](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+    ![Kérelmek jóváhagyása – jóváhagyása vagy elutasítása részleteiről és az indoklás mező panel](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
 
 1. Az a **indoklás** mezőbe írja be az okot.
 

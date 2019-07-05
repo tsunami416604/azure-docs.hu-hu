@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: raynew
-ms.openlocfilehash: 5ed41013535e4591d88bff5c017c1fcf4c4053cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a16ed7134fc9f3c159715f58f116de3fb30e8aca
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65237807"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481108"
 ---
 # <a name="back-up-an-sap-hana-database"></a>Az SAP HANA-adatbázis biztonsági mentése
 
@@ -22,15 +22,13 @@ ms.locfileid: "65237807"
 > [!NOTE]
 > Ez a funkció jelenleg nyilvános előzetes verzióban érhető el. Jelenleg nem éles üzemre, és nem rendelkezik a garantált szolgáltatási szerződést. 
 
-
 ## <a name="scenario-support"></a>A forgatókönyv támogatása
 
 **Támogatás** | **Részletek**
 --- | ---
 **Támogatott helyeken** | Délkelet-Ausztrália, Kelet-Ausztrália <br> Dél-Brazília <br> Kanada közép-India, kelet-Kanada <br> Délkelet-Ázsia, Kelet-Ázsia <br> USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA nyugati középső RÉGIÓJA, USA nyugati RÉGIÓJA, USA nyugati RÉGIÓJA 2, USA északi középső RÉGIÓJA, USA középső RÉGIÓJA, USA déli középső RÉGIÓJA<br> India középső régiója, Dél-India <br> Kelet-Japán, Nyugat-Japán<br> Korea középső régiója, Korea déli régiója <br> Észak-Európa, Nyugat-Európa <br> Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója
 **Virtuális gépek támogatott operációs rendszerek** | SLES 12 SP2 és SP3 verziót kell használnia.
-**HANA támogatott verziói** | A HANA SSDC 1.x, on HANA MDC 2.x < = SPS03
-
+**HANA támogatott verziói** | A HANA SDC 1.x, on HANA MDC 2.x < = SPS03
 
 ### <a name="current-limitations"></a>Aktuális korlátozások
 
@@ -39,12 +37,9 @@ ms.locfileid: "65237807"
 - Vertikális Felskálázás módban lévő adatbázisok csak készíteni.
 - Biztonsági másolatot készíthet az adatbázisnaplók 15 percenként. Naplóalapú biztonsági mentések csak a flow, az adatbázis sikeres teljes biztonsági mentés befejezése után kezdődik.
 - Teljes és különbségi biztonsági másolatok is igénybe vehet. A növekményes biztonsági mentés jelenleg nem támogatott.
-- A biztonsági mentési szabályzat nem módosíthatók, az SAP HANA biztonsági mentésekhez való alkalmazása után. Ha szeretne biztonsági másolatot készíteni, eltérő beállításokkal, hozzon létre egy új szabályzatot, vagy egy másik szabályzat hozzárendelése. 
-    - Hozzon létre egy új szabályzatot, a tárolóban kattintson **házirendek** > **biztonsági mentési házirendek** >  **+ Hozzáadás** > **az SAP HANA Az Azure virtuális gép**, és adja meg a házirend-beállításokat.
-    - A jelenlegi házirend nevére kattintva szabályzatot rendel egy másik, az adatbázis futó virtuális gép tulajdonságait. Ezután a a **biztonsági mentési szabályzat** lapon kiválaszthatja, hogy egy másik szabályzatot a biztonsági mentés használandó.
-
-
-
+- A biztonsági mentési szabályzat nem módosíthatók, az SAP HANA biztonsági mentésekhez való alkalmazása után. Ha szeretne biztonsági másolatot készíteni, eltérő beállításokkal, hozzon létre egy új szabályzatot, vagy egy másik szabályzat hozzárendelése.
+  - Hozzon létre egy új szabályzatot, a tárolóban kattintson **házirendek** > **biztonsági mentési házirendek** >  **+ Hozzáadás** > **az SAP HANA Az Azure virtuális gép**, és adja meg a házirend-beállításokat.
+  - A jelenlegi házirend nevére kattintva szabályzatot rendel egy másik, az adatbázis futó virtuális gép tulajdonságait. Ezután a a **biztonsági mentési szabályzat** lapon kiválaszthatja, hogy egy másik szabályzatot a biztonsági mentés használandó.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -57,14 +52,16 @@ Győződjön meg arról, hogy a biztonsági mentések konfigurálása előtt haj
 
         ![Csomag telepítési lehetőség](./media/backup-azure-sap-hana-database/hana-package.png)
 
-2.  A virtuális gép telepítése és engedélyezése ODBC illesztőprogram-csomagot a hivatalos SLES csomag/adathordozó használatával a zypper használatával, az alábbiak szerint:
+2. A virtuális gép telepítése és engedélyezése ODBC illesztőprogram-csomagot a hivatalos SLES csomag/adathordozó használatával a zypper használatával, az alábbiak szerint:
 
-    ``` 
+    ```unix
     sudo zypper update
     sudo zypper install unixODBC
     ```
-4.  Engedélyezi a csatlakozást a virtuális gépről az internethez, hogy az általa elérhető Azure-ban, az alábbi eljárásban leírtak szerint.
 
+3. Engedélyezi a csatlakozást a virtuális gépről az internethez, hogy elérheti az Azure, az eljárásban leírt módon [alább](#set-up-network-connectivity).
+
+4. Az előzetes regisztráció szkriptet futtathatja a virtuális gép HANA helyéül legfelső szintű felhasználóként. A parancsprogram [a portálon](#discover-the-databases) a flow-ban, és állítsa be a szükséges a [jobb gombbal az engedélyek](backup-azure-sap-hana-database-troubleshoot.md#setting-up-permissions).
 
 ### <a name="set-up-network-connectivity"></a>Állítsa be a hálózati kapcsolat
 
@@ -80,7 +77,7 @@ Megoldás előkészítése a nyilvános előzetes verzióban az alábbiak szerin
 - A portálon regisztrálja meg előfizetési Azonosítóját a Recovery Services-szolgáltató által [Ez a cikk a következő](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors#solution-3---azure-portal). 
 - PowerShell esetén futtassa ezt a parancsmagot. Mint "Regisztrálva" teljesítéséhez.
 
-    ```
+    ```powershell
     PS C:>  Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
     ```
 
@@ -89,7 +86,6 @@ Megoldás előkészítése a nyilvános előzetes verzióban az alábbiak szerin
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ## <a name="discover-the-databases"></a>Az adatbázisok felderítése
-
 
 1. A tárolóban lévő **első lépések**, kattintson a **biztonsági mentés**. A **a számítási feladat futtató?** válassza **SAP HANA Azure-beli virtuális gépen**.
 2. Kattintson a **felderítés indítása**. Ez elindítja a a tárolórégióban nem védett Linuxos virtuális gépek felderítése.
@@ -104,7 +100,7 @@ Megoldás előkészítése a nyilvános előzetes verzióban az alábbiak szerin
 6. Az Azure Backup a virtuális gép összes SAP HANA-adatbázis deríti fel. Felderítés alatt az Azure Backup a virtuális Gépet regisztrálja a tárolóban, és a virtuális gép egy kiterjesztést telepít. Nincs ügynök telepítve van az adatbázisban.
 
     ![SAP HANA-adatbázisok felderítése](./media/backup-azure-sap-hana-database/hana-discover.png)
-    
+
 ## <a name="configure-backup"></a>Biztonsági mentés konfigurálása  
 
 Most már engedélyezheti a biztonsági mentés.
@@ -116,6 +112,7 @@ Most már engedélyezheti a biztonsági mentés.
 5. A biztonsági mentési konfiguráció állapotának nyomon követéséhez a **értesítések** területén a portálon.
 
 ### <a name="create-a-backup-policy"></a>A biztonsági mentési szabályzat létrehozása
+
 Biztonsági mentési szabályzat határozza meg, amikor a biztonsági másolatokat készít, és mennyi ideig tartott használ.
 
 - Egy szabályzat jön létre a tároló szintjén.
@@ -189,6 +186,5 @@ Ha azt szeretné, hogy helyi (HANA Studio használatával) biztonsági másolato
 
 ## <a name="next-steps"></a>További lépések
 
+[Ismerje meg](backup-azure-sap-hana-database-troubleshoot.md) közös kapcsolatos hibák elhárítása Azure virtuális gépeken futó SAP HANA biztonsági mentés használata során.
 [Ismerje meg](backup-azure-arm-vms-prepare.md) Azure virtuális gépek biztonsági mentésének.
-
-

@@ -11,19 +11,19 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/23/2019
-ms.openlocfilehash: e29ef2616a43223ec582575ca6363f78b26e5f22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80137c7f1ecebab4d2da0c4b7ba0ca9292dad22e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66753059"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443971"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Ismerje meg, és előkészíti az adatokat az adatkészlet osztályhoz (előzetes verzió)
 
 Ismerje meg, és az azureml-adatkészletek csomaggal, az adatok előkészítése az [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). A [adatkészlet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) osztály (előzetes verzió) segítségével megvizsgálhatja és készítse elő adatait funkciók megadásával: mintavétel, összefoglaló statisztikák és intelligens átalakításokat. Adatátalakítási lépéseket mentett [az adatkészlet-definíciók](how-to-manage-dataset-definitions.md) az képes a más sémák több nagy fájlok nagy mértékben skálázható módon.
 
 > [!Important]
-> Néhány adatkészlet osztályok (előzetes verzió) függőségekkel rendelkezik a [azureml-adatelőkészítés](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) csomag (elérhetővé tétel GA). Miközben átalakítási függvényeket közvetlenül a GA'ed elvégezhető [Data Prep funkciók](how-to-transform-data.md), azt javasoljuk, hogy az adatkészlet csomag burkolókat ebben a cikkben ismertetett, ha egy új megoldást épít. Az Azure Machine Learning-adatkészletek (előzetes verzió) lehetővé teszi nemcsak az adatátalakítás, hanem [-pillanatkép adatainak](how-to-create-dataset-snapshots.md) és tárolása [rendszerverzióval ellátott adatkészlet-definíciókban](how-to-manage-dataset-definitions.md). Az adatkészletek az adatkészleteket az AI-megoldások kezelésével kapcsolatos bővített funkciókat kínál a Data Prep SDK következő verziójában.
+> Néhány adatkészlet osztályok (előzetes verzió) függőségekkel rendelkezik a [azureml-adatelőkészítés](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) csomag (elérhetővé tétel GA). Miközben átalakítási függvényeket közvetlenül a GA'ed elvégezhető [Data Prep funkciók](how-to-transform-data.md), azt javasoljuk, hogy az adatkészlet csomag burkolókat ebben a cikkben ismertetett, ha egy új megoldást épít. Az Azure Machine Learning-adatkészletek (előzetes verzió) lehetővé teszi nemcsak az adatátalakítás, hanem [-pillanatkép adatainak](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_snapshot.datasetsnapshot?view=azure-ml-py) és tárolása [rendszerverzióval ellátott adatkészlet-definíciókban](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset?view=azure-ml-py). Az adatkészletek az adatkészleteket az AI-megoldások kezelésével kapcsolatos bővített funkciókat kínál a Data Prep SDK következő verziójában.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -63,7 +63,7 @@ top_n_sample_dataset = dataset.sample('top_n', {'n': 5})
 top_n_sample_dataset.to_pandas_dataframe()
 ```
 
-||azonosító|Eset száma|Dátum|Letiltás|IUCR|Elsődleges típusa|...|
+||id|Eset száma|Dátum|Letiltás|IUCR|Elsődleges típusa|...|
 -|--|-----------|----|-----|----|------------|---
 0|10498554|HZ239907|4/4/2016 23:56|007XX E 111TH ST|1153|MEGTÉVESZTŐ ELJÁRÁS|...
 1|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD ELENTÉS MENTÉSE|890|LOPÁS|...
@@ -80,7 +80,7 @@ simple_random_sample_dataset = dataset.sample('simple_random', {'probability':0.
 simple_random_sample_dataset.to_pandas_dataframe()
 ```
 
-||azonosító|Eset száma|Dátum|Letiltás|IUCR|Elsődleges típusa|...|
+||id|Eset száma|Dátum|Letiltás|IUCR|Elsődleges típusa|...|
 -|--|-----------|----|-----|----|------------|---
 0|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD ELENTÉS MENTÉSE|890|LOPÁS|...
 1|10519196|HZ261252|4/15/2016 10:00|104XX S SACRAMENTÓI ELENTÉS MENTÉSE|1154|MEGTÉVESZTŐ ELJÁRÁS|...
@@ -103,7 +103,7 @@ sample_dataset = dataset.sample('stratified', {'columns': ['Primary Type'], 'fra
 sample_dataset.to_pandas_dataframe()
 ```
 
-||azonosító|Eset száma|Dátum|Letiltás|IUCR|Elsődleges típusa|...|
+||id|Eset száma|Dátum|Letiltás|IUCR|Elsődleges típusa|...|
 -|--|-----------|----|-----|----|------------|---
 0|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD ELENTÉS MENTÉSE|890|LOPÁS|...
 1|10534446|HZ277630|4/15/2016 10:00|055XX N KEDZIE ELENTÉS MENTÉSE|890|LOPÁS|...
@@ -119,7 +119,7 @@ dataset.get_profile()
 
 ||Típus|Min|Max|Darabszám|Hiányzó száma|Nem hiányzó száma|Hiányzó százalék|Hibák száma|Üres száma|0,1 % ki osztóérték|1 % ki osztóérték|5 %-os ki osztóérték|25 %-os ki osztóérték|50 %-os ki osztóérték|75 %-os ki osztóérték|95 %-os ki osztóérték|99 %-os ki osztóérték|99,9 %-os ki osztóérték|középérték|Szórás|Variancia|Döntés|Értékek
 -|----|---|---|-----|-------------|-----------------|---------------|-----------|-----------|-------------|-----------|-----------|------------|------------|------------|------------|------------|--------------|----|------------------|--------|--------|--------
-azonosító|FieldType.INTEGER|1.04986e + 07|1.05351e + 07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e + 07|1.04992e + 07|1.04986e + 07|1.05166e + 07|1.05209e + 07|1.05259e + 07|1.05351e + 07|1.05351e + 07|1.05351e + 07|1.05195e + 07|12302.7|1.51358e + 08|-0.495701|-1.02814
+id|FieldType.INTEGER|1.04986e + 07|1.05351e + 07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e + 07|1.04992e + 07|1.04986e + 07|1.05166e + 07|1.05209e + 07|1.05259e + 07|1.05351e + 07|1.05351e + 07|1.05351e + 07|1.05195e + 07|12302.7|1.51358e + 08|-0.495701|-1.02814
 Eset száma|FieldType.STRING|HZ239907|HZ278872|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Dátum|FieldType.DATE|2016-04-04 23:56:00+00:00|2016-04-15 17:00:00+00:00|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Letiltás|FieldType.STRING|004XX S KILBOURN ELENTÉS MENTÉSE|113XX S VALÓ MENTÉSE|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
@@ -140,7 +140,7 @@ Y koordinátája|FieldType.INTEGER|1.8315e + 06|1.908e + 06|10.0|7.0|3.0|0.7|0.0
 Frissítés dátuma|FieldType.DATE|2016-05-11 15:48:00+00:00|2016-05-27 15:45:00+00:00|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Szélesség|FieldType.DECIMAL|41.6928|41.9032|10.0|7.0|3.0|0.7|0.0|0.0|41.6928|41.6928|41.6928|41.7057|41.7441|41.8634|41.9032|41.9032|41.9032|41.78|0.109695|0.012033|0.292478|-2.33333
 Hosszúság|FieldType.DECIMAL|-87.6764|-87.6043|10.0|7.0|3.0|0.7|0.0|0.0|-87.6764|-87.6764|-87.6764|-87.6734|-87.6645|-87.6194|-87.6043|-87.6043|-87.6043|-87.6484|0.0386264|0.001492|0.344429|-2.33333
-Location egység|FieldType.STRING||(41.903206037, -87.676361925)|10.0|0.0|10.0|0.0|0.0|7.0||||||||||||||
+Location|FieldType.STRING||(41.903206037, -87.676361925)|10.0|0.0|10.0|0.0|0.0|7.0||||||||||||||
 
 ## <a name="impute-missing-values"></a>Hiányzó imputálására
 
@@ -162,7 +162,7 @@ ds_def = ds_def.keep_columns(['ID', 'Arrest', 'Latitude', 'Longitude'])
 ds_def.head(3)
 ```
 
-||azonosító|Letartóztatás| Szélesség|Hosszúság|
+||id|Letartóztatás| Szélesség|Hosszúság|
 -|---------|-----|---------|----------|
 |0|10498554|False (Hamis)|41.692834|-87.604319|
 |1|10516598|False (Hamis)| 41.744107 |-87.664494|
@@ -215,7 +215,7 @@ ds_def.head(3)
 
 Ahogyan az alábbi táblázatban kimeneti, a hiányzó földrajzi szélesség volt imputált a `MEAN` értékét `Arrest==False` -87 a csoportot, és a hiányzó hosszúsági volt imputált.
 
-||azonosító|Letartóztatás|Szélesség|Hosszúság
+||id|Letartóztatás|Szélesség|Hosszúság
 -|---------|-----|---------|----------
 0|10498554|False (Hamis)|41.692834|-87.604319
 1|10516598|False (Hamis)|41.744107|-87.664494
@@ -228,7 +228,7 @@ dataset = dataset.update_definition(ds_def, 'Impute Missing')
 dataset.head(3)
 ```
 
-||azonosító|Letartóztatás|Szélesség|Hosszúság
+||id|Letartóztatás|Szélesség|Hosszúság
 -|---------|-----|---------|----------
 0|10498554|False (Hamis)|41.692834|-87.604319
 1|10516598|False (Hamis)|41.744107|-87.664494
@@ -258,7 +258,7 @@ ds_def.get_profile()
 
 ||Típus|Min|Max|Darabszám|Hiányzó száma|Nem hiányzó száma|Hiányzó százalék|Hibák száma|Üres száma|0,1 % ki osztóérték|1 % ki osztóérték|5 %-os ki osztóérték|25 %-os ki osztóérték|50 %-os ki osztóérték|75 %-os ki osztóérték|95 %-os ki osztóérték|99 %-os ki osztóérték|99,9 %-os ki osztóérték|középérték|Szórás|Variancia|Döntés|Értékek
 -|----|---|---|-----|-------------|-----------------|---------------|-----------|-----------|-------------|-----------|-----------|------------|------------|------------|------------|------------|--------------|----|------------------|--------|--------|--------
-azonosító|FieldType.INTEGER|1.04986e + 07|1.05351e + 07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e + 07|1.04992e + 07|1.04986e + 07|1.05166e + 07|1.05209e + 07|1.05259e + 07|1.05351e + 07|1.05351e + 07|1.05351e + 07|1.05195e + 07|12302.7|1.51358e + 08|-0.495701|-1.02814
+id|FieldType.INTEGER|1.04986e + 07|1.05351e + 07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e + 07|1.04992e + 07|1.04986e + 07|1.05166e + 07|1.05209e + 07|1.05259e + 07|1.05351e + 07|1.05351e + 07|1.05351e + 07|1.05195e + 07|12302.7|1.51358e + 08|-0.495701|-1.02814
 Letartóztatás|FieldType.BOOLEAN|False (Hamis)|False (Hamis)|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Szélesség|FieldType.DECIMAL|41.6928|41.9032|10.0|0.0|10.0|0.0|0.0|0.0|41.6928|41.7185|41.6928|41.78|41.78|41.78|41.9032|41.9032|41.9032|41.78|0.0517107|0.002674|0.837593|1.05
 Hosszúság|FieldType.INTEGER|-87|-87|10.0|0.0|10.0|0.0|3.0|0.0|-87|-87|-87|-87|-87|-87|-87|-87|-87|-87|0|0|NaN|NaN
@@ -288,7 +288,7 @@ dataset = Dataset.auto_read_files('./data/crime.csv')
 dataset.head(3)
 ```
 
-||azonosító|Eset száma|Dátum|Letiltás|...|
+||id|Eset száma|Dátum|Letiltás|...|
 -|---------|-----|---------|----|---
 0|10498554|HZ239907|2016-04-04 23:56:00|007XX E 111TH ST|...
 1|10516598|HZ258664|2016-04-15 17:00:00|082XX S MARSHFIELD ELENTÉS MENTÉSE|...
@@ -310,7 +310,7 @@ ds_def.keep_columns(['ID','Date','Date_Time_Range']).head(3)
 
 Az alábbi táblázatban figyelje meg, hogy egy olyan új oszlop Date_Time_Range szereplő rekordok a megadott formátumban.
 
-||azonosító|Dátum|Date_Time_Range
+||id|Dátum|Date_Time_Range
 -|--------|-----|----
 0|10498554|2016-04-04 23:56:00|2016-04-04 10 PM – 12 AM
 1|10516598|2016-04-15 17:00:00|2016-04-15 4PM-6PM
@@ -376,8 +376,6 @@ dataset = dataset.update_definition(ds_def, 'fuzzy grouping')
 ```
 
 ## <a name="next-steps"></a>További lépések
-
-* [Az adatkészlet-definíciók életciklusának kezelése](how-to-manage-dataset-definitions.md).
 
 * Tekintse meg a automatizált machine learning [oktatóanyag](tutorial-auto-train-models.md) regressziós modell példát.
 

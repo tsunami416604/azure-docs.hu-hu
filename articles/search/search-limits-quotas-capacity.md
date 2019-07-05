@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/17/2019
+ms.date: 07/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 419c533aabd67637efa64777387c491dd890596e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6940be7f64aa9ae16258fa936d197e2715235ab
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024641"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485398"
 ---
 # <a name="service-limits-in-azure-search"></a>Az Azure Search szolgáltatási korlátai
 Maximális korlátozza a storage, a számítási feladatok és az indexek, dokumentumok, mennyiségét, és más objektumok függenek, hogy Ön [üzembe helyezése az Azure Search](search-create-service-portal.md) , **ingyenes**, **alapszintű**,  **Standard szintű**, vagy **tárolásra optimalizált** díjcsomagok árából.
@@ -29,7 +29,7 @@ Maximális korlátozza a storage, a számítási feladatok és az indexek, dokum
 + **Tárolási optimalizált** további összes tárhely, tárolási sávszélességet és a memória, mint a dedikált gépen üzemel **Standard**. Tárolási optimalizált két szinten érhető el: 1 és 2.
 
 > [!NOTE]
-> Tárolásra optimalizált szolgáltatásszintjét jelenleg előzetes verzióként érhető el egy vizsgálat és a Kísérletezési céljából a cél az, hogy visszajelzéseket kedvezményes áron. Végső díjszabás lesz bejelentve később, amikor ezek a rétegek általánosan elérhetők. Azt javasoljuk, hogy az éles környezetben ezek a rétegek tanúsítványokkal szemben.
+> . Július 1-től az összes szint általánosan elérhetők, beleértve a tárolásra optimalizált szint. Az összes díjszabás találhatók a [díjszabása](https://azure.microsoft.com/pricing/details/search/) lap.
 
   Nagy kapacitású S3 (S3 HD) van fejthetők vissza az adott munkaterhelés konkrét: [több-bérlős](search-modeling-multitenant-saas-applications.md) és nagy mennyiségű (1 millió indexenkénti, három példányban indexek szolgáltatásonként) kis méretű indexeket. Ez a szint nem biztosít a [indexelő szolgáltatás](search-indexer-overview.md). Az S3 HD adatbetöltés kell kihasználni a ügyfélleküldéses módszer használatával a forrás és a indexet az adatok leküldéséhez API-hívások. 
 
@@ -64,7 +64,7 @@ Maximális korlátozza a storage, a számítási feladatok és az indexek, dokum
 
 ## <a name="document-limits"></a>A dokumentum korlátok 
 
-2018\. október már nem léteznek a dokumentum korlátait minden olyan új szolgáltatás bármely számlázható szint szerint kalkuláljuk (alap, S1, S2, S3 szintű, S3 HD) bármelyik régióban hozza létre. Bár a legtöbb régióban kellett volna 2017 November/December óta száma korlátlan, öt régióban, amely továbbra is a dokumentum készletként volt. Attól függően, hol és mikor egy keresési szolgáltatás hozta létre akkor előfordulhat, hogy fut egy szolgáltatás, amely dokumentumot korlátok továbbra is vonatkozik.
+2018. október már nem léteznek a dokumentum korlátait minden olyan új szolgáltatás bármely számlázható szint szerint kalkuláljuk (alap, S1, S2, S3 szintű, S3 HD) bármelyik régióban hozza létre. Bár a legtöbb régióban kellett volna 2017 November/December óta száma korlátlan, öt régióban, amely továbbra is a dokumentum készletként volt. Attól függően, hol és mikor egy keresési szolgáltatás hozta létre akkor előfordulhat, hogy fut egy szolgáltatás, amely dokumentumot korlátok továbbra is vonatkozik.
 
 Annak megállapításához, hogy a szolgáltatás rendelkezik-e a dokumentum korlátok, ellenőrizze a szolgáltatás áttekintés oldalán a használati csempét. Dokumentum-száma korlátlan, vagy egy réteg korlát hatálya alá tartozik, a rendszer.
 

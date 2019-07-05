@@ -1,47 +1,42 @@
 ---
-title: Nyomon követheti az Azure kreditegyenlegét Microsoft Ügyfélszerződéséhez |} A Microsoft Docs
-description: Ismerkedjen meg az Azure-kredit egyenleg keresése a Microsoft ügyfél-szerződés.
-services: ''
-documentationcenter: ''
-author: amberbhargava
+title: Nyomon követheti az Azure kreditegyenlegét egy Microsoft Ügyfélszerződéséhez
+description: Ismerje meg, hogyan ellenőrizheti az Azure-kredit egyenleg a Microsoft ügyfél-szerződés.
+author: bandersmsft
 manager: amberb
-editor: banders
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/28/2019
-ms.author: amberb
-ms.openlocfilehash: 1e8c3e6863b9cd8f2f5ced18a57918c32c865e75
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/01/2019
+ms.author: banders
+ms.openlocfilehash: 352737b3ea61a51a39e066d4211c8f4ceae74184
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60372266"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490967"
 ---
-# <a name="track-azure-credit-balance-for-microsoft-customer-agreement"></a>Nyomon követheti az Azure kreditegyenlegét Microsoft Ügyfélszerződéséhez
+# <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>A Microsoft vevői szerződés program Azure kreditegyenlegét nyomon követése
 
-Az Azure Portalon ellenőrizheti az Azure-kredit egyenleg a Microsoft ügyfél-szerződés. Kreditek használatával, amelyek a kreditek hatálya termékek kell fizetnie.
+Az Azure Portalon ellenőrizheti az Azure-kredit egyenleg a Microsoft ügyfél-szerződés. Kreditek használatával fizetni a díjat a kreditek alá esnek.
 
-Ha olyan termékhez, nem terjed ki a kreditek használhatja, vagy a felhasználás mértéke elérné a kreditegyenlegét számítunk fel. További információkért lásd: [termékhez, az Azure-kreditek nem terjed ki.](#products-that-arent-covered-by-azure-credits)
+Ha olyan termékhez, nem terjed ki a kreditek használhatja, vagy a felhasználás mértéke elérné a kreditegyenlegét számítunk fel. További információkért lásd: [termékhez, az Azure-kreditek nem terjed ki. () #products-that-aren't-covered-by-azure-credits).
 
 Ez a cikk a Microsoft vevői szerződés számlázási fiók vonatkozik. [Ellenőrizze, hogy egy Microsoft Ügyfélszerződéséhez hozzáférést](#check-access-to-a-microsoft-customer-agreement).
 
-## <a name="check-credit-balance-in-the-azure-portal"></a>Az Azure Portalon kreditegyenlegét ellenőrzése
+## <a name="check-your-credit-balance"></a>Ellenőrizze a kreditegyenlegét
 
 1. Jelentkezzen be az [Azure Portalra]( https://portal.azure.com).
 
-2. A Keresés **Cost Management és számlázás**.
+2. Keresse meg **Cost Management és számlázás**.
 
-   ![Képernyőkép a Keresés a portál a Költségkezelés + számlázás](./media/billing-mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
+    ![Képernyőkép a Keresés a portál a Költségkezelés + számlázás](./media/billing-mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
-3. Lépjen a számlázási profilra. A hozzáférésétől függően előfordulhat, hogy ki kell választania egy számlázási fiókot. Válassza ki a számlázási fiók **profilok számlázási** és a egy számlázási profilja majd.
+3.  Válassza ki **az Azure-kreditek** bal oldalán. A hozzáférést, attól függően szükség lehet egy számlázási fiók vagy számlázási-profilt válassza, majd **az Azure-kreditek**.
 
-4. Válassza ki **az Azure-kreditek**.
-
-5. Az Azure-kreditek lap az alábbi információkat jeleníti meg:
+4. Az Azure-kreditek lap az alábbi információkat jeleníti meg:
 
    ![Képernyőkép a kreditegyenlegét és a egy számlázási profil tranzakciók](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-overview.png)
 
@@ -57,16 +52,18 @@ Ez a cikk a Microsoft vevői szerződés számlázási fiók vonatkozik. [Ellen�
 
    ![Képernyőkép a kreditek sorolja fel a számlázási profil](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-list.png)
 
-   | Kifejezés                 | Meghatározás                           |
-   |----------------------|--------------------------------------------------------|
-   | source               | A kreditek megszerzése forrása |
-   | Kezdő dátum           | A dátum, amikor Ön szerezte be, a kredit |
-   | Lejárat dátuma      | A dátum, amikor a kreditek érvényessége lejár |
-   | Mérleg              | Az egyenleg a legutóbbi számla kezdődően |
-   | Az eredeti összeg      | Kredit az eredeti összeg |
-   | Állapot               | Kredit aktuális állapotát. Állapot lehet aktív, használt, lejárt vagy hamarosan lejár |
+   | Kifejezés | Meghatározás |
+   |---|---|
+   | Becsült terheléselosztása | Nem számlázott jogosult költségek a jelenlegi kivonva levonása után rendelkezik Azure-kredit összege|
+   | Aktuális egyenleg | Azure-kredit előtt figyelembe véve a nem számlázott kredit jogosult díjak összege. Ez összeadásával kapott új Azure-kreditek kreditegyenlegét a legutóbbi számla időpontjában|
+   | source | A kreditek megszerzése forrása |
+   | Kezdő dátum | A dátum, amikor Ön szerezte be, a kredit |
+   | Lejárat dátuma | A dátum, amikor a kreditek érvényessége lejár |
+   | Mérleg | Az egyenleg a legutóbbi számla kezdődően |
+   | Az eredeti összeg | Kredit az eredeti összeg |
+   | Állapot | Kredit aktuális állapotát. Állapot lehet aktív, használt, lejárt vagy hamarosan lejár |
 
-## <a name="how-credits-are-used-in-microsoft-customer-agreement"></a>A Microsoft vevői szerződés kreditek használata
+## <a name="how-credits-are-used"></a>Hogyan használhatók a kreditek
 
 A Microsoft vevői szerződés számlázási fiók számlázási profilok használhatja a számlákat és a fizetési módok kezeléséhez. A havi számla jön létre minden egyes számlázási profilja, és a fizetési módok használatával a számla.
 
@@ -78,7 +75,7 @@ Az Azure-kreditek a fizetési módok tartoznak. Kredit a Microsoft, például a 
 
 - Canonical
 - Citrix XenApp Essentials rendszerbe
-- A Citrix xendesktop-példányok 
+- A Citrix xendesktop-példányok
 - Regisztrált felhasználó
 - Openlogic
 - Távoli hozzáférési jogok a XenApp Essentials regisztrált felhasználó

@@ -12,15 +12,15 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2019
+ms.date: 07/01/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 033e0865f23034b94e3133e0ba5890eca4e746ea
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1848891a0a37235c9769b3cee18262239e19df5a
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080888"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502663"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Az Azure Batch-készlet számítási csomópontok Virtuálisgép-méretének kiválasztása
 
@@ -51,8 +51,8 @@ Minden promóciós vagy előzetes Virtuálisgép-méretek nem szerepel a listán
 | [Memóriahasználatra optimalizált méretek](../virtual-machines/linux/sizes-memory.md) | None | Nem érhető el |
 | Fsv2-sorozat | Minden méretben | Bármely |
 | H-sorozat | Minden méretben | Bármely |
-| Hb sorozat | Minden méretben | Felhasználói előfizetés mód |
-| Hc sorozat | Minden méretben | Felhasználói előfizetés mód |
+| Hb-series<sup>2</sup> | Minden méretben | Bármely |
+| Hibrid kapcsolat sorozat<sup>2</sup> | Minden méretben | Bármely |
 | Ls-sorozat | Minden méretben | Bármely |
 | Lsv2 sorozat | None | Nem érhető el |
 | M sorozat | Standard m 64 MS (az alacsony prioritású csak), Standard m128s (csak az alacsony prioritású verzió esetén) | Bármely |  

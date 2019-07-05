@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: 872837c774368820527b12778b1a7dd4ddc5c7af
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 21bf96866c14615009a17279ff2fdd04bf4116ad
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60369169"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490262"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>Az Azure-foglalások megtekintése az Azure Portalon
 
@@ -32,7 +32,7 @@ További információkért lásd: [hozzáadása vagy módosítása egy foglalás
 Tulajdonos vagy olvasó, foglalás megtekintése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A Keresés **foglalások**.
+2. Keresse meg **foglalások**.
     ![Az Azure portál keresési bemutató képernyőkép](./media/billing-view-reservation/portal-reservation-search.png)  
 3. A listán megjelenik minden foglalást, amelyekben a tulajdonos vagy olvasó szerepkört. Minden egyes foglalás látható az utolsó ismert kihasználtsági százaléka.  
     ![Foglalások listáját megjelenítő példa](./media/billing-view-reservation/view-reservations.png)
@@ -49,7 +49,7 @@ A Foglalás hatóköre módosítani szeretné, ha a Foglalás felosztása vagy m
 Foglalás tranzakciók megtekintése az Azure Portalon
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A Keresés **Cost Management és számlázás**.
+1. Keresse meg **Cost Management és számlázás**.
 
     ![Az Azure portál keresési bemutató képernyőkép](./media/billing-view-reservation/portal-cm-billing-search.png)
 

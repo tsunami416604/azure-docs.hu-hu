@@ -4,19 +4,19 @@ description: Az Azure Powershell használata kezelheti az Azure Cosmos DB fióko
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: samples
-ms.date: 05/23/2019
+ms.date: 07/03/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: f720b678f2c7a6e564ef3e8fa9ae071b004ed1a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 40f041f1b41077824aa3141f6196901b51415c35
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66243392"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565913"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>PowerShell-lel az Azure Cosmos DB SQL API-erőforrások kezelése
 
-Ez az útmutató ismerteti parancsfájlt a PowerShell használatával, és az Azure Cosmos DB, ideértve a fiók, adatbázis, tároló és átviteli sebesség a kezelés automatizálása. Az Azure Cosmos DB kezelésére szolgál, nem az Azure Cosmos DB-specifikus parancsmagokon keresztül, de a AzResource parancsmag segítségével közvetlenül az erőforrás-szolgáltató. A tulajdonságokat, amelyeket az Azure Cosmos DB erőforrás-szolgáltató a PowerShell-lel kezelhető összes megtekintése: [Azure Cosmos DB erőforrás-szolgáltató sémáján](/azure/templates/microsoft.documentdb/allversions)
+Ez az útmutató ismerteti parancsfájlt a PowerShell használatával, és az Azure Cosmos DB-erőforrásokat, beleértve a fiók, adatbázis, tároló és átviteli sebesség a kezelés automatizálása. Az Azure Cosmos DB kezelése az AzResource parancsmagot közvetlenül az Azure Cosmos DB erőforrás-szolgáltató kezeli. A tulajdonságokat, amelyeket az Azure Cosmos DB erőforrás-szolgáltató a PowerShell-lel kezelhető összes megtekintése: [Azure Cosmos DB erőforrás-szolgáltató sémáján](/azure/templates/microsoft.documentdb/allversions)
 
 A platformok közötti kezelése az Azure Cosmos DB, használhatja [Azure CLI-vel](manage-with-cli.md), a [REST API-val][rp-rest-api], vagy a [az Azure portal](create-sql-api-dotnet.md#create-account).
 
@@ -24,7 +24,7 @@ A platformok közötti kezelése az Azure Cosmos DB, használhatja [Azure CLI-ve
 
 ## <a name="getting-started"></a>Első lépések
 
-Kövesse a [telepítése és konfigurálása az Azure PowerShell-lel] [ powershell-install-configure] telepítéséhez, és jelentkezzen be az Azure Powershell-fiókjával.
+Kövesse a [telepítése és konfigurálása az Azure PowerShell-lel][powershell-install-configure] telepítéséhez, és jelentkezzen be az Azure Powershell-fiókjával.
 
 * Ha szeretné, hajtsa végre a következő parancsokat a felhasználó jóváhagyásának kérése nélkül, fűzze hozzá a `-Force` jelző a következő paranccsal.
 * Az alábbi parancsokat a rendszer szinkron.
@@ -45,17 +45,17 @@ A következő szakaszok bemutatják, hogyan lehet az Azure Cosmos-fiók kezelés
 
 ### <a id="create-account"></a> Egy Azure Cosmos-fiók létrehozása
 
-Ez a parancs lehetővé teszi, hogy hozzon létre egy Azure Cosmos DB-adatbázisfiók. Konfigurálja az új adatbázis-fiók vagy egyetlen régióban vagy [többrégiós] [ distribute-data-globally] az egy adott [konzisztencia-szabályzat](consistency-levels.md).
+Ez a parancs létrehoz egy Azure Cosmos DB-adatbázisfiók a [több régiót][distribute-data-globally], kötött elavulás [konzisztencia-szabályzat](consistency-levels.md).
 
 ```azurepowershell-interactive
 # Create an Azure Cosmos Account for Core (SQL) API
 $resourceGroupName = "myResourceGroup"
-$location = "West US"
+$location = "West US 2"
 $accountName = "mycosmosaccount" # must be lower case.
 
 $locations = @(
-    @{ "locationName"="West US"; "failoverPriority"=0 },
-    @{ "locationName"="East US"; "failoverPriority"=1 }
+    @{ "locationName"="West US 2"; "failoverPriority"=0 },
+    @{ "locationName"="East US 2"; "failoverPriority"=1 }
 )
 
 $consistencyPolicy = @{
@@ -68,7 +68,7 @@ $CosmosDBProperties = @{
     "databaseAccountOfferType"="Standard";
     "locations"=$locations;
     "consistencyPolicy"=$consistencyPolicy;
-    "enableMultipleWriteLocations"="true"
+    "enableMultipleWriteLocations"="false"
 }
 
 New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
@@ -76,8 +76,8 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Name $accountName -PropertyObject $CosmosDBProperties
 ```
 
-* `$accountName` Az Azure Cosmos-fiók neve. Csak kisbetűket, alfanumerikus fogad, és a "-" karakter, és 3 – 50 karakter közötti.
-* `$location` Az Azure Cosmos-fiók helye.
+* `$accountName` Az Azure Cosmos-fiók neve. Csak kisbetűket, alfanumerikus fogad, és a "-" karakter, és 3. és 31 karakter közötti.
+* `$location` Az Azure Cosmos-fiók erőforrás helye.
 * `$locations` A replika régiók, az adatbázis fiókjához tartozó. 0, a feladatátvétel prioritási értékkel rendelkező adatbázis-fiókonként egy írási régiót kell lennie.
 * `$consistencyPolicy` Az Azure Cosmos-fiók alapértelmezett konzisztencia szintjét. További információkért lásd: [Azure Cosmos DB-ben Konzisztenciaszintek](consistency-levels.md).
 * `$CosmosDBProperties` A Cosmos DB az Azure erőforrás-kezelő szolgáltató üzembe helyezi a fiók a tulajdonságértékek kerülnek.
@@ -111,7 +111,7 @@ Ez a parancs lehetővé teszi az Azure Cosmos DB-adatbázis fiók tulajdonságai
 * Több főkiszolgálós engedélyezése
 
 > [!NOTE]
-> Ez a parancs lehetővé teszi, hogy hozzá és távolíthat el a régióban, de nem engedélyezi, hogy módosítsa a feladatátvételi prioritások. Feladatátvételi prioritások módosítása esetén lásd: [módosítása az Azure Cosmos-fiók feladatátvételi prioritását](#modify-failover-priority).
+> Ez a parancs lehetővé teszi, hogy hozzá és távolíthat el a régióban, de nem engedélyezi, hogy módosítsa a feladatátvételi prioritások. Feladatátvételi prioritás módosítása esetén lásd: [módosítása az Azure Cosmos-fiók feladatátvételi prioritását](#modify-failover-priority).
 
 ```azurepowershell-interactive
 # Update an Azure Cosmos Account and set Consistency level to Session
@@ -148,7 +148,7 @@ Remove-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a id="update-tags"></a> Frissítheti a címkéket egy Azure Cosmos-fiók
 
-Az alábbi példa azt ismerteti, hogyan állíthatja be [Azure-erőforráscímkék] [ azure-resource-tags] egy Azure Cosmos-fiók.
+Az alábbi példa azt ismerteti, hogyan állíthatja be [Azure-erőforráscímkék][azure-resource-tags] egy Azure Cosmos-fiók.
 
 > [!NOTE]
 > Ez a parancs kombinálva, a létrehozás vagy frissítés parancsok hozzáfűzésével a `-Tags` jelzőt mellékel a megfelelő paraméter.
@@ -224,12 +224,12 @@ Select-Object $keys
 
 ### <a id="modify-failover-priority"></a> Feladatátvételi prioritás módosítása
 
-A többrégiós adatbázisfiókhoz módosíthatja, hogy az Azure Cosmos DB-adatbázisfiók megtalálható a különböző régiók feladatátvételi prioritását. Feladatátvétel a Azure Cosmos DB-fiókot a további információkért lásd: [globális adatterjesztés az Azure Cosmos DB][distribute-data-globally].
+A többrégiós adatbázisfiókhoz módosíthatja a sorrendet, amelyben egy Cosmos-fiók lépteti másodlagos olvasási-replikák egy regionális feladatátvétel replikán kell az elsődleges írási. Ha a régió `failoverPriority=0` van módosítani, ez a parancs is használható kezdeményezni a vészhelyreállítási tervek tesztelésére egy vészhelyreállítási próbát.
 
-Az alábbi példában azt feltételezik, hogy a fiók rendelkezik-e egy westus aktuális feladatátvételi prioritását = 0 és az USA keleti régiója = 1. Ebben a példában az alábbi régiókban lesznek tükrözés.
+Az alábbi példában azt feltételezik, hogy a fiók rendelkezik-e egy westus aktuális feladatátvételi prioritását = 0 és az USA keleti régiója = 1, és a régiók tükrözés.
 
 > [!CAUTION]
-> Ez a művelet aktivál egy manuális feladatátvételt az új régiók egy failoverPriority nulla, a fiók.
+> Ez a művelet aktivál egy Azure Cosmos-fiók manuális feladatátvételt.
 
 ```azurepowershell-interactive
 # Change the failover priority for an Azure Cosmos Account
@@ -253,6 +253,7 @@ A következő szakaszok bemutatják, hogyan kezelheti az Azure Cosmos-adatbázis
 
 * [Hozzon létre egy Azure Cosmos database.](#create-db)
 * [Megosztott adattovábbítási kapacitással rendelkező Azure Cosmos-adatbázis létrehozása](#create-db-ru)
+* [Egy Azure Cosmos Database az átviteli sebesség lekérdezése](#get-db-ru)
 * [-Fiókban lévő összes az Azure Cosmos-adatbázis listázása](#get-all-db)
 * [Egy Azure Cosmos-adatbázis beolvasása](#get-db)
 * [Egy Azure Cosmos-adatbázis törlése](#delete-db)
@@ -268,7 +269,8 @@ $resourceName = $accountName + "/sql/" + $databaseName
 
 $DataBaseProperties = @{
     "resource"=@{"id"=$databaseName}
-} 
+}
+
 New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databases" `
     -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
     -Name $resourceName -PropertyObject $DataBaseProperties
@@ -290,6 +292,21 @@ $DataBaseProperties = @{
 New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databases" `
     -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
     -Name $resourceName -PropertyObject $DataBaseProperties
+```
+
+### <a id="get-db-ru"></a>Egy Azure Cosmos Database az átviteli sebesség lekérdezése
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "database1"
+$containerName = "container1"
+$databaseThroughputResourceType = "Microsoft.DocumentDb/databaseAccounts/apis/databases/settings"
+$databaseThroughputResourceName = $accountName + "/sql/" + $databaseName + "/throughput"
+
+Get-AzResource -ResourceType $databaseThroughputResourceType `
+    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
+    -Name $databaseThroughputResourceName  | Select-Object Properties
 ```
 
 ### <a id="get-all-db"></a>Egy fiók minden Azure Cosmos-adatbázis beolvasása
@@ -336,6 +353,7 @@ Remove-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/data
 A következő szakaszok bemutatják, hogyan kezelheti az Azure Cosmos-tárolót, többek között:
 
 * [Egy Azure Cosmos-tároló létrehozása](#create-container)
+* [Az Azure Cosmos-tároló átviteli sebesség lekérdezése](#get-container-ru)
 * [Hozzon létre egy Azure Cosmos-tárolóhoz megosztott átviteli sebesség](#create-container-ru)
 * [Egyéni indexelési hozzon létre egy Azure Cosmos-tárolóhoz](#create-container-custom-index)
 * [Hozzon létre egy Azure Cosmos-tárolóhoz indexelése ki van kapcsolva](#create-container-no-index)
@@ -348,7 +366,7 @@ A következő szakaszok bemutatják, hogyan kezelheti az Azure Cosmos-tárolót,
 ### <a id="create-container"></a>Egy Azure Cosmos-tároló létrehozása
 
 ```azurepowershell-interactive
-# Create an Azure Cosmos container with default indexes and throughput at 400 RU 
+# Create an Azure Cosmos container with default indexes and throughput at 400 RU
 $resourceGroupName = "myResourceGroup"
 $accountName = "mycosmosaccount"
 $databaseName = "database1"
@@ -357,17 +375,33 @@ $resourceName = $accountName + "/sql/" + $databaseName + "/" + $containerName
 
 $ContainerProperties = @{
     "resource"=@{
-        "id"=$containerName; 
+        "id"=$containerName;
         "partitionKey"=@{
-            "paths"=@("/myPartitionKey"); 
+            "paths"=@("/myPartitionKey");
             "kind"="Hash"
         }
-    }; 
+    };
     "options"=@{ "Throughput"="400" }
-} 
+}
+
 New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databases/containers" `
     -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
     -Name $resourceName -PropertyObject $ContainerProperties
+```
+
+### <a id="get-container-ru"></a>Az Azure Cosmos-tároló átviteli sebesség lekérdezése
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "database1"
+$containerName = "container1"
+$containerThroughputResourceType = "Microsoft.DocumentDb/databaseAccounts/apis/databases/containers/settings"
+$containerThroughputResourceName = $accountName + "/sql/" + $databaseName + "/" + $containerName + "/throughput"
+
+Get-AzResource -ResourceType $containerThroughputResourceType `
+    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
+    -Name $containerThroughputResourceName  | Select-Object Properties
 ```
 
 ### <a id="create-container-ru"></a>Hozzon létre egy Azure Cosmos-tárolóhoz megosztott átviteli sebesség
@@ -383,12 +417,13 @@ $ContainerProperties = @{
     "resource"=@{
         "id"=$containerName; 
         "partitionKey"=@{
-            "paths"=@("/myPartitionKey"); 
+            "paths"=@("/myPartitionKey");
             "kind"="Hash"
         }
-    }; 
+    };
     "options"=@{}
-} 
+}
+
 New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databases/containers" `
     -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
     -Name $resourceName -PropertyObject $ContainerProperties 
@@ -412,20 +447,10 @@ $ContainerProperties = @{
             "kind"="Hash"
         }; 
         "indexingPolicy"=@{
-            "indexingMode"="Consistent"; 
+            "indexingMode"="Consistent";
             "includedPaths"= @(@{
                 "path"="/*";
-                "indexes"= @(@{
-                        "kind"="Range";
-                        "dataType"="number";
-                        "precision"=-1
-                    },
-                    @{
-                        "kind"="Range";
-                        "dataType"="string";
-                        "precision"=-1
-                    }
-                )
+                "indexes"= @()
             });
             "excludedPaths"= @(@{
                 "path"="/myPathToNotIndex/*"
@@ -433,7 +458,7 @@ $ContainerProperties = @{
         }
     };
     "options"=@{ "Throughput"="400" }
-} 
+}
 
 New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databases/containers" `
     -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
@@ -443,7 +468,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
 ### <a id="create-container-no-index"></a>Hozzon létre egy Azure Cosmos-tárolóhoz indexelése ki van kapcsolva
 
 ```azurepowershell-interactive
-# Create an Azure Cosmos container with no indexing 
+# Create an Azure Cosmos container with no indexing
 $resourceGroupName = "myResourceGroup"
 $accountName = "mycosmosaccount"
 $databaseName = "database1"
@@ -454,9 +479,9 @@ $ContainerProperties = @{
     "resource"=@{
         "id"=$containerName; 
         "partitionKey"=@{
-            "paths"=@("/myPartitionKey"); 
+            "paths"=@("/myPartitionKey");
             "kind"="Hash"
-        }; 
+        };
         "indexingPolicy"=@{
             "indexingMode"="none"
         }
@@ -481,26 +506,16 @@ $resourceName = $accountName + "/sql/" + $databaseName + "/" + $containerName
 
 $ContainerProperties = @{
     "resource"=@{
-        "id"=$containerName; 
+        "id"=$containerName;
         "partitionKey"=@{
-            "paths"=@("/myPartitionKey"); 
+            "paths"=@("/myPartitionKey");
             "kind"="Hash"
         }; 
         "indexingPolicy"=@{
-            "indexingMode"="Consistent"; 
+            "indexingMode"="Consistent";
             "includedPaths"= @(@{
                 "path"="/*";
-                "indexes"= @(@{
-                        "kind"="Range";
-                        "dataType"="number";
-                        "precision"=-1
-                    },
-                    @{
-                        "kind"="Range";
-                        "dataType"="string";
-                        "precision"=-1
-                    }
-                )
+                "indexes"= @()
             });
             "excludedPaths"= @()
         };
@@ -513,9 +528,9 @@ $ContainerProperties = @{
             })
         };
         "defaultTtl"= 100;
-    }; 
+    };
     "options"=@{ "Throughput"="400" }
-} 
+}
 
 New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databases/containers" `
     -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
@@ -527,7 +542,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
 Hozzon létre egy tárolt eljárás használatával ütközésfeloldási házirend, állítsa `"mode"="custom"` és a megoldási elérési útjának beállítása a tárolt eljárás neveként `"conflictResolutionPath"="myResolverStoredProcedure"`. Állítsa a ConflictsFeed írni az összes ütközést, és külön-külön kezelni, `"mode"="custom"` és `"conflictResolutionPath"=""`
 
 ```azurepowershell-interactive
-# Create container with last-writer-wins conflict resolution policy 
+# Create container with last-writer-wins conflict resolution policy
 $resourceGroupName = "myResourceGroup"
 $accountName = "mycosmosaccount"
 $databaseName = "database1"
@@ -538,16 +553,17 @@ $ContainerProperties = @{
     "resource"=@{
         "id"=$containerName;
         "partitionKey"=@{
-            "paths"=@("/myPartitionKey"); 
+            "paths"=@("/myPartitionKey");
             "kind"="Hash"
-        }; 
+        };
         "conflictResolutionPolicy"=@{
-            "mode"="lastWriterWins"; 
+            "mode"="lastWriterWins";
             "conflictResolutionPath"="/myResolutionPath"
         }
-    }; 
+    };
     "options"=@{ "Throughput"="400" }
-} 
+}
+
 New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databases/containers" `
     -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
     -Name $resourceName -PropertyObject $ContainerProperties
@@ -556,7 +572,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
 ### <a id="list-all-container"></a>Az adatbázis összes az Azure Cosmos-tárolót
 
 ```azurepowershell-interactive
-# List all Azure Cosmos containers in a database 
+# List all Azure Cosmos containers in a database
 $resourceGroupName = "myResourceGroup"
 $accountName = "mycosmosaccount"
 $databaseName = "database1"

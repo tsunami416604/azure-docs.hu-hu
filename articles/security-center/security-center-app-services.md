@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2019
 ms.author: v-mohabe
-ms.openlocfilehash: b18267b1443b257a575bf2e1199b9f8fa8c419fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6a6b5b6e247bd7c105286b86257a6ae11c1d1c60
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966809"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551858"
 ---
 # <a name="protect-app-service-with-azure-security-center"></a>App Service-ben az Azure Security Center védelme
 Ez a cikk segít az Azure Security Center segítségével történő figyeléséhez és védelméhez az alkalmazások futtatása az App Service.
@@ -47,9 +47,8 @@ A Security Center natív módon integrálva van az App Service-ben, így nem kel
 ## <a name="enabling-monitoring-and-protection-of-app-service"></a>Figyelés és az App Service protection engedélyezése
 
 1. Az Azure-ban válassza ki a Security Center.
-2. Lépjen a **biztonsági házirend** , és válasszon egy előfizetést.
-3. Kattintson annak az előfizetésnek a sor végén található **beállításainak szerkesztése**.
-4. A **tarifacsomag**, a a **App Service-ben** sor, a tervet az Váltás **engedélyezve**.
+2. Lépjen a **díjszabási & beállítások** , és válasszon egy előfizetést.
+3. A **tarifacsomag**, a a **App Service-ben** sor, a tervet az Váltás **engedélyezve**.
 
 ![App service be-vagy kikapcsolása](./media/security-center-app-services/app-services-toggle.png)
 

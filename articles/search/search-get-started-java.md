@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés az Azure Search Java – Azure Search szolgáltatással
-description: Üzemeltetett felhőalapú keresőalkalmazás felépítése az Azure rendszerben a Java programozási nyelv használatával.
+title: 'Java rövid útmutató: Létrehozása, betöltése és lekérdezése az indexek az Azure Search REST API-k – Azure Search használatával'
+description: Azt ismerteti, hogyan-index létrehozása, adatok betöltése és lekérdezések futtatása a Java és az Azure Search REST API-k használatával.
 services: search
 author: jj09
 manager: jlembicz
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 08/26/2018
 ms.author: jjed
 ms.custom: seodec2018
-ms.openlocfilehash: d16f20e3c2dfa3d670006e44f0072a3871d41c3f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 83f41f248d99ce55daef40e168e5f7b175e08107
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61289801"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450097"
 ---
-# <a name="get-started-with-azure-search-in-java"></a>Bevezetés az Azure Search használatába Java nyelven
+# <a name="quickstart-create-an-azure-search-index-in-java"></a>Gyors útmutató: Azure Search-index létrehozása javában
 > [!div class="op_single_selector"]
 > * [Portál](search-get-started-portal.md)
 > * [.NET](search-howto-dotnet-sdk.md)
@@ -25,7 +25,7 @@ ms.locfileid: "61289801"
 
 Ismerje meg, hogyan hozhat létre olyan egyéni Java keresőalkalmazást, amely az Azure Search szolgáltatást használja a keresésekhez. Ez az oktatóanyag az [Azure Search szolgáltatás REST API](https://msdn.microsoft.com/library/dn798935.aspx)-ját használja ebben a gyakorlatban az objektumok és műveletek összeállításához.
 
-A minta futtatásához rendelkeznie kell egy Azure Search szolgáltatással, amelyre az [Azure portálon](https://portal.azure.com) regisztrálhat. A részletes utasításokat lásd: [Azure Search szolgáltatás létrehozása a portálon](search-create-service-portal.md).
+A minta futtatásához rendelkeznie kell egy Azure Search-szolgáltatással, amelyre az [Azure Portalon](https://portal.azure.com) regisztrálhat. A részletes utasításokat lásd: [Azure Search szolgáltatás létrehozása a portálon](search-create-service-portal.md).
 
 A minta összeállításához és teszteléséhez a következő szoftvereket használtuk:
 
@@ -36,7 +36,7 @@ A minta összeállításához és teszteléséhez a következő szoftvereket has
 ## <a name="about-the-data"></a>Tudnivalók az adatokról
 A mintaalkalmazás az [Amerikai Egyesült Államok geológiai szolgáltatásainak (United States Geological Services, USGS)](https://geonames.usgs.gov/domestic/download_data.htm) adatait használja, az adatkészlet méretének csökkentése érdekében Rhode Island államra szűrve. Ezeket az adatokat fogjuk használni egy olyan keresőalkalmazás létrehozásához, amely jellegzetes épületeket, például kórházakat és iskolákat, valamint geológiai jellegzetességeket, például folyókat, tavakat és hegycsúcsokat ad vissza eredményül.
 
-Ebben az alkalmazásban a **SearchServlet.java** program egy [indexelő](https://msdn.microsoft.com/library/azure/dn798918.aspx) szerkezet segítségével létrehozza és betölti az indexet, amelyhez egy nyilvános Azure SQL-adatbázisból kéri le a szűrt USGS-adatkészletet. Az előre meghatározott hitelesítő adatokat és az online adatforrás kapcsolódási adatait a programkód tartalmazza. Az adatelérés szempontjából nincs szükség további konfigurációra.
+Ebben az alkalmazásban a **SearchServlet.java** program segítségével létrehozza és betölti az indexet egy [indexelő](https://msdn.microsoft.com/library/azure/dn798918.aspx) szerkezet a szűrt USGS-adatkészletet egy Azure SQL Database-ből. Az előre meghatározott hitelesítő adatokat és az online adatforrás kapcsolódási adatait a programkód tartalmazza. Az adatelérés szempontjából nincs szükség további konfigurációra.
 
 > [!NOTE]
 > Az adatkészlethez olyan szűrőt alkalmaztunk, hogy az ingyenes tarifacsomag 10 000 dokumentumos korlátja alatt maradjunk. Ha a standard csomagot használja, arra nem vonatkozik ez a korlátozás, és módosíthatja úgy a kódot, hogy nagyobb adatkészletet használhasson. Az egyes tarifacsomagok kapacitásával kapcsolatos részletes információkat lásd: [Korlátozások és megkötések](search-limits-quotas-capacity.md).
@@ -51,15 +51,15 @@ Az alábbi lista a példához kapcsolódó fájlokat ismerteti.
 * SearchServiceClient.java: HTTP-kérelmeket kezeli
 * SearchServiceHelper.java: Egy statikus módszereket biztosító segítőosztály
 * Document.Java: Az adatmodellt biztosítja
-* a Config.Properties: Beállítja a Search szolgáltatás URL-CÍMÉT és api-kulcsát
+* a Config.Properties: Beállítja a Search szolgáltatás URL-címe és `api-key`
 * pom.xml: Maven-függőség
 
 <a id="sub-2"></a>
 
-## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>Az Azure Search szolgáltatás szolgáltatásnevének és API-kulcsának megkeresése
-Az Azure Search szolgáltatásba történő minden REST API-hívás esetében meg kell adnia a szolgáltatás URL-címét és API-kulcsát. 
+## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>A szolgáltatás nevét és `api-key` az Azure Search szolgáltatás
+Azure Search szolgáltatásba történő minden REST API-hívások megkövetelése, hogy megadta-e a szolgáltatás URL-CÍMÉT és a egy `api-key`. 
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Az ugrás sávon kattintson a **Keresési szolgáltatás** elemre, hogy megjelenjen az előfizetéséhez kapcsolódó összes Azure Search szolgáltatás.
 3. Válassza ki a használni kívánt szolgáltatást.
 4. A szolgáltatás irányítópultján megjelennek az alapvető információkat tartalmazó csempék, valamint az adminisztrációs kulcsok eléréséhez szükséges kulcs ikon.
@@ -84,10 +84,10 @@ Minden további fájlmódosítás és utasításfuttatás az ebben a mappában l
 3. Kattintson a **Befejezés**gombra.
 4. A **Project Explorer** (Projektböngésző) segítségével megtekintheti és szerkesztheti a fájlokat. Ha az még nincs megnyitva, kattintson a **Window** (Ablak)  > **Show View** (Nézet megjelenítése)  > **Project Explorer** (Projektböngésző) lehetőségre, vagy nyissa meg a megfelelő parancsikonnal.
 
-## <a name="configure-the-service-url-and-api-key"></a>A szolgáltatás URL-címének és API-kulcsának konfigurálása
-1. A **Project Explorer** (Projektböngésző) nézetben kattintson duplán a **config.properties** elemre, hogy szerkeszthesse a kiszolgáló nevét és az API-kulcsot tartalmazó konfigurációs beállításokat.
-2. Tekintse meg a jelen cikkben korábban ismertetett lépéseket, ahol a szolgáltatás URL-címét és API-kulcsát megtalálhatta az [Azure portálon](https://portal.azure.com), és az adott értékeket írja be **config.properties** fájlba.
-3. A **config.properties** fájlban található „API-kulcsot” cserélje ki a szolgáltatásához tartozó API-kulcsra. Következő, a szolgáltatás nevét (az URL-cím első összetevője https://servicename.search.windows.net) cserél "szolgáltatás neve" ugyanabban a fájlban.
+## <a name="configure-the-service-url-and-api-key"></a>A szolgáltatás URL-cím konfigurálása és `api-key`
+1. A **Project Explorer**, kattintson duplán a **config.properties** szerkesztése a kiszolgálónevet tartalmazó konfigurációs beállításokat és `api-key`.
+2. Tekintse meg a lépéseket, a cikkben, amelyekben megtalálhatók-e a szolgáltatás URL-címe és `api-key` a a [az Azure portal](https://portal.azure.com), írja be értékének lekéréséhez **config.properties**.
+3. A **config.properties**, "API-kulcsot" cserélje le a `api-key` a szolgáltatáshoz. Következő, a szolgáltatás nevét (az URL-cím első összetevője https://servicename.search.windows.net) cserél "szolgáltatás neve" ugyanabban a fájlban.
    
     ![][5]
 

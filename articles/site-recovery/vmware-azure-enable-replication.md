@@ -3,15 +3,15 @@ title: Vészhelyreállítás az Azure-bA az Azure Site Recovery VMware virtuáli
 description: Ez a cikk ismerteti az Azure-bA vész-helyreállítási VMware virtuális gépek engedélyezése az Azure Site Recovery használatával.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.date: 05/10/2019
+ms.date: 06/28/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: add0f8252bdae6857b28deeb7de4c1d09973e452
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f4e4afb4d94a7b2e2a6b246a371cf6234577463
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540771"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491735"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Az Azure-bA VMware virtuális gépek replikálásának engedélyezése
 
@@ -37,11 +37,13 @@ Ha VMware virtuális gépeket replikál, tartsa szem előtt ezeket az informáci
 ## <a name="enable-replication"></a>A replikáció engedélyezése
 
 Mielőtt végrehajtaná a jelen szakaszban ismertetett lépéseket, vegye figyelembe a következő információkat:
-* Az Azure Site Recovery most már közvetlenül az összes új replikációk felügyelt lemezek replikálja. A folyamatkiszolgáló replikációs naplók ír a gyorsítótárfiók a célrégióban. Ezek a naplók segítségével hozza létre a replikált felügyelt lemezeken lévő helyreállítási pontokat.
+* Az Azure Site Recovery most már közvetlenül az összes új replikációk felügyelt lemezek replikálja. A folyamatkiszolgáló replikációs naplók ír a gyorsítótárfiók a célrégióban. Ezek a naplók található replikált felügyelt lemezeken elnevezési konvenciót, asrseeddisk rendelkező helyreállítási pontok létrehozásához használt.
+* A managed Disks szolgáltatásba replikálása PowerShell-támogatás érhető el [Az.RecoveryServices Modulverzió 2.0.0-s és újabb verziók](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview) 
 * A feladatátvétel időpontjában a kiválasztott helyreállítási pont szolgál a célként szolgáló felügyelt lemez létrehozása.
 * Virtuális gépek replikálása céltárfiókokat korábban beállított szabályzat nem vonatkozik.
 * Egy új virtuális gép tárfiókokba történő replikálást csak akkor használható, a Representational State Transfer (REST) API-t és a Powershell használatával. Azure REST API-verzió 2016-08-10-es vagy a 2018-01-10 használja a storage-fiókokhoz való replikálásához.
 
+Kövesse az alábbi lépéseket a replikáció engedélyezése:
 1. Lépjen a **2. lépés: Alkalmazás replikálása** > **forrás**. Először a replikáció engedélyezése után válassza **+ replikálás** további virtuális gépek replikációjának engedélyezéséhez a tárolóban.
 2. Az a **forrás** lap > **forrás**, válassza ki a konfigurációs kiszolgálót.
 3. A **gép típusa**válassza **virtuális gépek** vagy **fizikai gépek**.

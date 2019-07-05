@@ -7,12 +7,12 @@ ms.service: governance
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: dacoulte
-ms.openlocfilehash: f94cec7919edc6cf6ebb6618d38b8591feb1278b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d68e7d9ec3b60b93f0050250d7e7d718db7aa5b8
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60683230"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67488480"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Felügyeleti szolgáltatások az Azure-ban – áttekintés
 
@@ -48,7 +48,7 @@ Kezelheti az erőforrásokat és az adatok biztonságát. Egy biztonsági progra
 
 ## <a name="protect"></a>Védelem
 
-Védelem gondoskodik az alkalmazások és adatok érhető el, még akkor is, amelyek Öntől leállások hivatkozik. Az Azure-ban erről a védelemről két szolgáltatás gondoskodik. [Az Azure Backup](../backup/backup-introduction-to-azure-backup.md)biztosít a biztonsági mentés és helyreállítás az adatok a felhőben vagy a helyszínen. [Az Azure Site Recovery](../site-recovery/site-recovery-overview.md) biztosítja az üzletmenet-folytonossági és az azonnali katasztrófa során.
+Védelem gondoskodik az alkalmazások és adatok érhető el, még akkor is, amelyek Öntől leállások hivatkozik. Az Azure-ban erről a védelemről két szolgáltatás gondoskodik. Az [Azure Backup](../backup/backup-introduction-to-azure-backup.md) helyreállítható biztonsági másolatokat készít az adatokról, és azokat a felhőben vagy helyszíni gépeken tárolja. [Az Azure Site Recovery](../site-recovery/site-recovery-overview.md) biztosítja az üzletmenet-folytonossági és az azonnali katasztrófa során.
 
 ## <a name="migrate"></a>Migrate (Áttelepítés)
 
