@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 07/01/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 717c0f110ebbeee53e2c9b9207350385288d57c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 699707953ae06afa9cbf3cc7286f94917ba0efca
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991387"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490109"
 ---
 # <a name="understand-and-work-with-scopes"></a>A hatókörök ismertetése és használata
 
@@ -100,19 +100,19 @@ Az Azure-előfizetések a regisztrációs fiókok beágyazott. Számlázási fel
 
 Számlázási felhasználóknak nem kell hozzáférést a felügyeleti csoportokhoz, mert ezek nem explicit módon tartoznak egy adott számlázási fiók. Hozzáférés rendelkeznie kell a felügyeleti csoportok explicit módon. Felügyeleti csoportok összesítő költségeket az összes beágyazott előfizetésből. Azonban használatalapú vásárlások csak tartalmaznak. Például a foglalásokat és a külső Piactéri ajánlatok elérhetőségének vásárlások azok nem tartalmaznak. Ezeket a díjakat megtekintéséhez használja a nagyvállalati szerződés számlázási fiók.
 
-## <a name="individual-agreement-pay-as-you-go-scopes"></a>Az egyes megállapodás (használatalapú fizetés) hatókörök
+## <a name="individual-agreement-scopes"></a>Az egyes szerződés hatókörök
 
-(PAYG) használatalapú fizetéses előfizetéseket, beleértve az kapcsolódó típusok, például az ingyenes vagy próbaverziója, és fejlesztési/tesztelési ajánlatok, nem kell explicit számlázási fiók hatókör. Ehelyett minden előfizetési csomaghoz tartozik egy fiók tulajdonosa vagy a fiókadminisztrátor, például a nagyvállalati szerződéssel rendelkező fiók tulajdonosától.
+Az egyes ajánlatok létrehozott Azure-előfizetésekre, mint használatalapú fizetéssel és kapcsolódó típusok, pl. ingyenes próbaverzió, és fejlesztési/tesztelési ajánlatok, nem kell explicit számlázási fiók hatókör. Ehelyett minden előfizetési csomaghoz tartozik egy fiók tulajdonosa vagy a fiókadminisztrátor, például a nagyvállalati szerződéssel rendelkező fiók tulajdonosától.
 
 - [**Számlázási fiók** ](../billing/billing-view-all-accounts.md) – egy vagy több Azure-előfizetésekre vonatkozó egyetlen fióktulajdonos jelöli. Ez jelenleg nem támogatja a több személynek és összesített költsége nézetekhez való hozzáférés való hozzáférés biztosítása.
 
     Erőforrás típusa: Nem alkalmazható
 
-Használatalapú előfizetés fiók-Adminisztrátorok megtekintheti és kezelheti a számlázási adatokat, például a számlákat és kifizetéseket, az a [Azure Account Center](https://account.azure.com/subscriptions). Nem lehet azonban, költségadatok megtekintése, vagy kezelheti az erőforrásokat az Azure Portalon. A fiókadminisztrátor hozzáférést, a Cost Management szerepkörök azt korábban említettük, használhatók.
+Önálló Azure-előfizetést fiókrendszergazdák megtekintheti és kezelheti a számlázási adatokat, például a számlákat és kifizetéseket, az a [Azure Account Center](https://account.azure.com/subscriptions). Nem lehet azonban, költségadatok megtekintése, vagy kezelheti az erőforrásokat az Azure Portalon. A fiókadminisztrátor hozzáférést, a Cost Management szerepkörök azt korábban említettük, használhatók.
 
-Használatalapú előfizetés fiók-Adminisztrátorok nagyvállalati szerződéssel rendelkező, ellentétben a számláikat, az Azure Portalon látható. Ne feledje, hogy a Cost Management olvasó és a Cost Management közreműködői szerepkör nem ad meg a számlákat való hozzáférést. További információkért lásd: [PAYG számla hozzáférés biztosításának módja](../billing/billing-manage-access.md#give-access-to-billing).
+Önálló Azure-előfizetést fiókrendszergazdák ellentétben a nagyvállalati szerződéssel rendelkező, a számláikat, az Azure Portalon látható. Ne feledje, hogy a Cost Management olvasó és a Cost Management közreműködői szerepkör nem ad meg a számlákat való hozzáférést. További információkért lásd: [számla hozzáférés biztosításának módja](../billing/billing-manage-access.md##give-read-only-access-to-billing).
 
-## <a name="customer-agreement-scopes"></a>Ügyfél szerződés hatókörök
+## <a name="microsoft-customer-agreement-scopes"></a>A Microsoft Ügyfélszerződéséhez hatókörök
 
 A Microsoft Ügyfélszerződéséhez számlázási fiókok rendelkeznek a következő hatókörök:
 
@@ -148,7 +148,7 @@ Cloud Solution Provider (CSP) partner nem támogatottak a Cost Management még m
 
 ## <a name="switch-between-scopes-in-cost-management"></a>Váltás a Cost Management hatókörök
 
-Az Azure Portalon a Cost Management minden nézetek az alábbiak egy **hatókör** megszámlálásához, a bal felső a nézetet. Segítségével gyorsan a hatókör módosítása. Kattintson a **hatókör** megszámlálásához a Hatókörválasztó megnyitásához. Azt jeleníti meg a számlázási fiókok, a legfelső szintű felügyeleti csoport és a gyökérszintű felügyeleti csoport nem beágyazva foglalt olyan előfizetéseket. A hatókör kiválasztásához kattintson a kiemelés, és kattintson a háttér **kiválasztása** alján. Részletezés a beágyazott hatókörökre, például az erőforráscsoportok található egy előfizetésben, kattintson a hatókör neve hivatkozásra. A szülő hatókörnek bármely beágyazott szinten kiválasztásához kattintson **válassza ezt &lt;hatókör&gt;**  a Hatókörválasztó tetején.
+Az Azure Portalon a Cost Management minden nézetek az alábbiak egy **hatókör** felső – bal oldalán a nézet a kijelölés megszámlálásához. Segítségével gyorsan a hatókör módosítása. Kattintson a **hatókör** megszámlálásához a Hatókörválasztó megnyitásához. Azt jeleníti meg a számlázási fiókok, a legfelső szintű felügyeleti csoport és a gyökérszintű felügyeleti csoport nem beágyazva foglalt olyan előfizetéseket. A hatókör kiválasztásához kattintson a kiemelés, és kattintson a háttér **kiválasztása** alján. Részletezés a beágyazott hatókörökre, például az erőforráscsoportok található egy előfizetésben, kattintson a hatókör neve hivatkozásra. A szülő hatókörnek bármely beágyazott szinten kiválasztásához kattintson **válassza ezt &lt;hatókör&gt;**  a Hatókörválasztó tetején.
 
 ## <a name="identify-the-resource-id-for-a-scope"></a>Az erőforrás-azonosítója egy hatókör azonosítása
 

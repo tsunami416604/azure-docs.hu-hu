@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 0610f57e264189961a6803bee5bb93c1ec9fb103
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f9df42725e41fb514370dbdb828ad5b1305ea78
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66753999"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485451"
 ---
 # <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Az Azure Search-indexelők használatával a Cosmos DB indexelése
 
@@ -133,7 +133,7 @@ A Cosmos DB-fiók választhatja ki kívánja-e a gyűjtemény összes dokumentum
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 – állítsa össze a kérés bemenetek
 
-Az egyes kérések meg kell adnia a szolgáltatás nevét és adminisztrációs kulcsot az Azure Search (a POST-fejléc), és a tárfiók nevét és kulcsát a blob Storage. Használhat [Postman](search-fiddler.md) HTTP-kéréseket küldhet az Azure Search.
+Az egyes kérések meg kell adnia a szolgáltatás nevét és adminisztrációs kulcsot az Azure Search (a POST-fejléc), és a tárfiók nevét és kulcsát a blob Storage. Használhat [Postman](search-get-started-postman.md) HTTP-kéréseket küldhet az Azure Search.
 
 Másolja az alábbi négy értéket a Jegyzettömbbe, így beillesztheti őket egy kérelem:
 

@@ -7,23 +7,23 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: pabouwer
-ms.openlocfilehash: 33d86ab8c88b45c7787620773f0df6e7fe888cf3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7c234e181e10499e532436bfde05ed89bdc7d28
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65850416"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465688"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Telepítheti és használhatja Istio Azure Kubernetes Service (AKS)
 
-[Istio] [ istio-github] van egy nyílt forráskódú service háló, amely kínál a legfontosabb funkciók között a mikroszolgáltatások, Kubernetes-fürtben. Ilyen például a forgalomkezelést, felügyeltszolgáltatás-identitás és a biztonsági, a házirend betartatása és observability. Istio kapcsolatos további információkért tekintse meg a hivatalos [Istio mi?] [ istio-docs-concepts] dokumentációját.
+[Istio][istio-github] is an open-source service mesh that provides a key set of functionality across the microservices in a Kubernetes cluster. These features include traffic management, service identity and security, policy enforcement, and observability. For more information about Istio, see the official [What is Istio?][istio-docs-concepts] dokumentációját.
 
 Ez a cikk bemutatja, hogyan Istio telepítéséhez. A Istio `istioctl` bináris ügyfél telepítve van az ügyfélszámítógép és az Istio összetevői telepítve vannak, egy Kubernetes-fürtöt az aks-en.
 
 > [!NOTE]
 > Ezek az utasítások hivatkozhat Istio verzió `1.1.3`.
 >
-> A Istio `1.1.x` kiadásokban a Kubernetes-verzió alapján Istio csapat által tesztelt `1.11`, `1.12`, `1.13`. További Istio verziók annak [GitHub - kiadások Istio] [ istio-github-releases] és információkkal szolgál a kiadások, [Istio – kibocsátási megjegyzések] [ istio-release-notes].
+> A Istio `1.1.x` kiadásokban a Kubernetes-verzió alapján Istio csapat által tesztelt `1.11`, `1.12`, `1.13`. További Istio verziók annak [GitHub - Istio kiadásokban][istio-github-releases] and information about each of the releases at [Istio - Release Notes][istio-release-notes].
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -40,7 +40,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 Ebben a cikkben részletes lépései azt feltételezik, hogy létrehozott egy AKS-fürt (Kubernetes `1.11` és újabb, az RBAC engedélyezve), és kiépített egy `kubectl` kapcsolatot a fürttel. Ha ezek az elemek bármelyikét segítségre van szüksége, tekintse meg a [AKS gyors][aks-quickstart].
 
-Szüksége lesz [Helm] [ helm] kövesse ezeket az utasításokat, és Istio telepítéséhez. Javasoljuk, hogy a verzió `2.12.2` vagy később megfelelően telepítette és konfigurálta a fürtben. Ha a telepítése Helm segítségre van szüksége, tekintse meg a [AKS Helm telepítéssel kapcsolatos útmutató][helm-install]. Az összes Istio podok is kell ütemezni Linux-csomópontokon való futtatáshoz.
+Szüksége lesz [Helm][helm] kövesse ezeket az utasításokat, és Istio telepítéséhez. Javasoljuk, hogy a verzió `2.12.2` vagy később megfelelően telepítette és konfigurálta a fürtben. Ha a telepítése Helm segítségre van szüksége, tekintse meg a [AKS Helm telepítéssel kapcsolatos útmutató][helm-install]. Az összes Istio podok is kell ütemezni Linux-csomópontokon való futtatáshoz.
 
 Ez a cikk elkülöníti a Istio telepítéssel kapcsolatos útmutató több különálló lépésekre. A végeredmény megegyezik a hivatalos Istio telepítése struktúra [útmutatást][istio-install-helm].
 
@@ -83,6 +83,8 @@ A PowerShellben használja `Invoke-WebRequest` töltse le a legújabb Istio kiad
 $ISTIO_VERSION="1.1.3"
 
 # Windows
+# Use TLS 1.2
+[Net.ServicePointManager]::SecurityProtocol = "tls12"
 $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -URI "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istio-$ISTIO_VERSION-win.zip" -OutFile "istio-$ISTIO_VERSION.zip"
 Expand-Archive -Path "istio-$ISTIO_VERSION.zip" -DestinationPath .
 ```
@@ -167,13 +169,13 @@ Most már továbbléphet a következő szakaszban [telepítse a Istio renderelé
 > [!IMPORTANT]
 > Győződjön meg arról, hogy futtatja a lépéseket ebben a szakaszban a letöltött és kibontott Istio kiadás a legfelső szintű mappából.
 
-Istio használ [egyéni erőforrás-definíciókban (renderelési szótárak)] [ kubernetes-crd] kezelheti a futtatókörnyezet konfigurációját. Először telepíteni a Istio renderelési szótárak, mivel a Istio-összetevők függőségi rajtuk kell. Használja a Helm és a `istio-init` diagram a Istio renderelési szótárak történő telepítéséhez a `istio-system` névtér az AKS-fürt:
+Istio használ [egyéni erőforrás-definíciókban (renderelési szótárak)][kubernetes-crd] kezelheti a futtatókörnyezet konfigurációját. Először telepíteni a Istio renderelési szótárak, mivel a Istio-összetevők függőségi rajtuk kell. Használja a Helm és a `istio-init` diagram a Istio renderelési szótárak történő telepítéséhez a `istio-system` névtér az AKS-fürt:
 
 ```azurecli
 helm install install/kubernetes/helm/istio-init --name istio-init --namespace istio-system
 ```
 
-[Feladatok] [ kubernetes-jobs] részeként üzembe helyezett a `istio-init` Helm-diagramot a renderelési szótárak telepítéséhez. Ezek a feladatok között fürt a környezettől függően 1 – 2 percet vesz igénybe. Ellenőrizheti, hogy a feladat sikeresen befejeződött-e meg a következők szerint:
+[Feladatok][kubernetes-jobs] részeként üzembe helyezett a `istio-init` Helm-diagramot a renderelési szótárak telepítéséhez. Ezek a feladatok között fürt a környezettől függően 1 – 2 percet vesz igénybe. Ellenőrizheti, hogy a feladat sikeresen befejeződött-e meg a következők szerint:
 
 ```azurecli
 kubectl get jobs -n istio-system
@@ -208,7 +210,7 @@ Ha van erre a pontra, majd, amely azt jelenti, hogy sikeresen telepítette a Ist
 > [!IMPORTANT]
 > Győződjön meg arról, hogy futtatja a lépéseket ebben a szakaszban a letöltött és kibontott Istio kiadás a legfelső szintű mappából.
 
-Azt fogjuk telepíteni [Grafana] [ grafana] és [Kiali] [ kiali] a Istio telepítésének részeként. Grafana biztosít analitikai és monitorozási irányítópultokat, és Kiali tartalmaz egy szolgáltatás háló observability irányítópultot. A telepítő az egyes összetevők szükséges hitelesítő adatokat, amelyeket meg kell adni egy [titkos][kubernetes-secrets].
+Azt fogjuk telepíteni [Grafana][grafana] and [Kiali][kiali] a Istio telepítésének részeként. Grafana biztosít analitikai és monitorozási irányítópultokat, és Kiali tartalmaz egy szolgáltatás háló observability irányítópultot. A telepítő az egyes összetevők szükséges hitelesítő adatokat, amelyeket meg kell adni egy [titkos][kubernetes-titkok].
 
 Azt is telepíthető a Istio összetevők, mielőtt azt a titkos kulcsok Grafana és Kiali kell létrehoznia. A környezetének megfelelő parancsok futtatásával hozzon létre a titkos adatokat.
 
@@ -344,7 +346,7 @@ Ezen a ponton Istio telepítette az AKS-fürt. Győződjön meg arról, hogy van
 
 ## <a name="validate-the-istio-installation"></a>A Istio a telepítés ellenőrzése
 
-Először győződjön meg arról, hogy létrejöttek-e a várt szolgáltatásokat. Használja a [kubectl get svc] [ kubectl-get] parancsot a futó szolgáltatások megtekintéséhez. Lekérdezés a `istio-system` névteret, ahol az Istio és a bővítmény összetevők telepítette a `istio` Helm-diagramot:
+Először győződjön meg arról, hogy létrejöttek-e a várt szolgáltatásokat. Használja a [kubectl get svc][kubectl-get] parancsot a futó szolgáltatások megtekintéséhez. Lekérdezés a `istio-system` névteret, ahol az Istio és a bővítmény összetevők telepítette a `istio` Helm-diagramot:
 
 ```console
 kubectl get svc --namespace istio-system --output wide
@@ -379,7 +381,7 @@ tracing                  ClusterIP      10.0.165.210   <none>          80/TCP   
 zipkin                   ClusterIP      10.0.126.211   <none>          9411/TCP                                                                                                                                     118s      app=jaeger
 ```
 
-Ezután erősítse meg, hogy létrejöttek-e a szükséges podok. Használja a [kubectl get pods] [ kubectl-get] parancsot, majd újra lekérdezése a `istio-system` névteret:
+Ezután erősítse meg, hogy létrejöttek-e a szükséges podok. Használja a [kubectl get pods][kubectl-get] parancsot, majd újra lekérdezése a `istio-system` névteret:
 
 ```console
 kubectl get pods --namespace istio-system
@@ -409,11 +411,11 @@ kiali-5c4cdbb869-s28dv                   1/1       Running     0          6m26s
 prometheus-67599bf55b-pgxd8              1/1       Running     0          6m26s
 ```
 
-Meg kell adni két `istio-init-crd-*` a podok egy `Completed` állapotát. Ezek a podok is elvégzi a feladatokat a renderelési szótárak korábbi lépésben létrehozott felelős. Az összes többi a podok állapotúnak kell lennie egy a `Running`. Ha a podok még nem rendelkezik a fenti állapotok megjelenése, várja meg egy-két percet tesznek. Ha bármely podok jelentéséhez, használja a [kubectl ismertetik a pod] [ kubectl-describe] parancs állapotát, valamint a kimeneti.
+Meg kell adni két `istio-init-crd-*` a podok egy `Completed` állapotát. Ezek a podok is elvégzi a feladatokat a renderelési szótárak korábbi lépésben létrehozott felelős. Az összes többi a podok állapotúnak kell lennie egy a `Running`. Ha a podok még nem rendelkezik a fenti állapotok megjelenése, várja meg egy-két percet tesznek. Ha bármely podok jelentéséhez, használja a [kubectl ismertetik a pod][kubectl-describe] parancs állapotát, valamint a kimeneti.
 
 ## <a name="accessing-the-add-ons"></a>A bővítmények elérése
 
-A megvásárolt bővítmények számától megtörtént-e a telepítés a fenti, amely olyan további funkciókat biztosítanak a Istio. A bővítmények a felhasználói felületek nem érhetőek nyilvánosan egy külső ip-cím. A kiegészítő felhasználói felületek elérése a [kubectl port-továbbító] [ kubectl-port-forward] parancsot. Ez a parancs az AKS-fürt az ügyfélszámítógép és a megfelelő pod közötti biztonságos kapcsolatot hoz létre.
+A megvásárolt bővítmények számától megtörtént-e a telepítés a fenti, amely olyan további funkciókat biztosítanak a Istio. A bővítmények a felhasználói felületek nem érhetőek nyilvánosan egy külső ip-cím. A kiegészítő felhasználói felületek elérése a [kubectl port-továbbító][kubectl-port-forward] parancsot. Ez a parancs az AKS-fürt az ügyfélszámítógép és a megfelelő pod közötti biztonságos kapcsolatot hoz létre.
 
 Adja meg a hitelesítő adatok számukra a cikkben korábban a Grafana és Kiali hozzáadott egy további biztonsági réteget.
 

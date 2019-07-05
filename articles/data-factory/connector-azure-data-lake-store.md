@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 07/02/2019
 ms.author: jingwang
-ms.openlocfilehash: aedfa381f6520a5295467821097b38dd28dcd60c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: df88c3e2e07165182c917eaf30a5f37451fbd073
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057914"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509582"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory"></a>Másolja az adatokat, vagy az Azure Data Lake Storage Gen1 Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Azure Data Factory használt verzióját:"]
@@ -81,7 +81,7 @@ Egyszerű szolgáltatásnév hitelesítése használandó entitás alkalmazás r
 >A lista kezdve a legfelső szintű mappák, be kell az egyszerű szolgáltatás nyújtott engedélye **gyökér szintű "Execute" engedéllyel rendelkező**. Ez igaz, ha használja a:
 >- **Másolás eszköz** a szerző másolási folyamat.
 >- **Data Factory felhasználói felülete** tesztelheti a kapcsolatot, és lépjen a mappák létrehozása alatt.
->Ha kérdése merül fel a gyökér szintű engedély kapcsolatban, hagyja ki a kapcsolat tesztelése, és adjon meg az elérési út manuális létrehozása alatt. A másolási tevékenység működik, amíg a egyszerű szolgáltatást kell másolni a fájlokat a megfelelő engedéllyel rendelkező kapnak.
+>Ha kapcsolatos engedély gyökér szintű során szerzői, hagyja ki a kapcsolat és a bemeneti engedély paraent útvonala majd válassza a Tallózás gombra a megadott elérési út. Másolja a tevékenység működése, mindaddig, amíg az egyszerű szolgáltatás átmásolni a fájlokat a megfelelő engedéllyel rendelkező kapnak.
 
 A következő tulajdonságok támogatottak:
 
@@ -135,7 +135,7 @@ Azure-erőforrások hitelesítéshez használandó felügyelt identitások:
 >A lista kezdve a legfelső szintű mappák, be kell az engedély az engedély megadása a felügyelt identitás **gyökér szintű "Execute" engedéllyel rendelkező**. Ez igaz, ha használja a:
 >- **Másolás eszköz** a szerző másolási folyamat.
 >- **Data Factory felhasználói felülete** tesztelheti a kapcsolatot, és lépjen a mappák létrehozása alatt.
->Ha kérdése merül fel a gyökér szintű engedély kapcsolatban, hagyja ki a kapcsolat tesztelése, és adjon meg az elérési út manuális létrehozása alatt. A másolási tevékenység, amíg a felügyelt identitást kapnak a átmásolni a fájlokat a megfelelő engedéllyel rendelkező működik.
+>Ha kapcsolatos engedély gyökér szintű során szerzői, hagyja ki a kapcsolat és a bemeneti engedély megadása a szülő elérési utat a Tallózás gombra, majd válassza a megadott elérési út. Másolja a tevékenység működése, mindaddig, amíg az egyszerű szolgáltatás átmásolni a fájlokat a megfelelő engedéllyel rendelkező kapnak.
 
 Az Azure Data Factoryben nem kell meghatároznia semmilyen tulajdonságot a Data Lake Store általános adatok mellett a társított szolgáltatás.
 

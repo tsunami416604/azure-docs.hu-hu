@@ -2,28 +2,21 @@
 title: Mik azok a hozzáférés-vezérlés az Azure Active Directory feltételes hozzáférés? | Microsoft Docs
 description: Ismerje meg, hogyan hozzáférés-vezérlés az Azure Active Directory feltételes hozzáférés során.
 services: active-directory
-keywords: Feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-ben a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési szabályzatok
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
 ms.date: 06/15/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 206b5fef3e4e686bd237fe0f45cfb91dccd4626f
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: a5fc672898a56d8b3e1486b1d8d84cf532fa2b6d
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67136498"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509411"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Mik azok a hozzáférés-vezérlés az Azure Active Directory feltételes hozzáférés?
 
@@ -34,7 +27,6 @@ A [Azure Active Directory (Azure AD) feltételes hozzáférés](../active-direct
 A feltételes hozzáférés, a környezetben
 
 - "**Ebben az esetben**" nevezzük **feltételek**
-
 - "**Majd ehhez**" nevezzük **hozzáférés-vezérlés**
 
 Egy feltétel utasítást a vezérlők együttes használata a feltételes hozzáférési szabályzatot jelöli.
@@ -46,7 +38,6 @@ Egyes vezérlőelemek követelmény, hogy teljesülnek a személy által vagy re
 Vezérlők két típusa van:
 
 - **Engedélyezési vezérlők** - kapu hozzáférés
-
 - **Munkamenet-vezérlők** – hozzáférés korlátozása a munkameneten belül
 
 Ez a témakör ismerteti a különféle vezérlők az Azure AD feltételes hozzáférése által biztosított. 
@@ -65,7 +56,6 @@ Az engedély teljesen letiltja a hozzáférést, vagy a kívánt vezérlők kiv�
 Ez a vezérlő segítségével a többtényezős hitelesítést a megadott felhő-alkalmazás elérésére. Ez a vezérlő támogatja a következő multi-factor Authentication szolgáltatók:
 
 - Azure Multi-Factor Authentication
-
 - Egy a helyszíni többtényezős hitelesítési szolgáltató az Active Directory összevonási szolgáltatások (AD FS) együtt.
 
 Multi-factor authentication szolgáltatás használatával segít az erőforrások védelme az elsődleges hitelesítő adatokat egy érvényes felhasználó hozzáférést szerzett előfordulhat, hogy jogosulatlan felhasználók ne férhessenek hozzá.
@@ -76,9 +66,11 @@ Konfigurálhatja, amelyek a eszközalapú feltételes hozzáférési szabályzat
 
 Az eszköz regisztrálva kell lennie az Azure AD, mielőtt azt is megfelelőként megjelölt. Három lehetősége van az eszköz regisztrálása: 
 
-- [Az Azure ad-ben regisztrált eszközök](../devices/overview.md#azure-ad-registered-devices)
-- [Az Azure AD-csatlakoztatott eszközök](../devices/overview.md#azure-ad-joined-devices)  
-- [Hibrid Azure AD-hez csatlakoztatott eszközök](../devices/overview.md#hybrid-azure-ad-joined-devices)
+- Azure AD-ben regisztrált eszközök
+- Azure AD-hez csatlakoztatott eszközök  
+- Hibrid Azure AD-csatlakoztatott eszközök
+
+Ezek a beállítások a cikkben említett [eszközidentitás mi?](../devices/overview.md)
 
 További információkért lásd: [a feltételes hozzáféréssel felhőalapú alkalmazás-hozzáférés igénylése a felügyelt eszközök](require-managed-devices.md).
 
@@ -106,16 +98,11 @@ Az Azure AD-alkalmazás házirend által védett megjelölhető előtt regisztr�
 
 Védett ügyfélalkalmazások, a támogatott házirend listájáért lásd [alkalmazás alkalmazásvédelmi szabályzat követelménye úgy](technical-reference.md#app-protection-policy-requirement).
 
-
 ### <a name="terms-of-use"></a>Használati feltételek
 
 Ön megkövetelheti, hogy a felhasználó a bérlőben, hogy engedélyt adjanak az a használati feltételeket, mielőtt erőforrásokhoz való hozzáférést megkapják. Rendszergazdaként konfigurálhatja, és a PDF-dokumentumok feltöltésével testre szabhatja a használati feltételeket. Ha egy felhasználó hányadik hetére esik a hozzáférés egy alkalmazás hatókörének csak kapnak Ha született a használati feltételeket.
 
-### <a name="custom-controls-preview"></a>Egyéni vezérlők (előzetes verzió)
-
-Egyéni vezérlők a feltételes hozzáférés, hogy a felhasználók átirányítása egy kompatibilis szolgáltatás megfelelnek a további Azure Active Directory-en kívül is hozzáadhat. Ez lehetővé teszi, hogy egyes külső többtényezős hitelesítés és hitelesítési szolgáltatók feltételes hozzáférési követelmények lépjenek. Ez a vezérlő eleget kell tenniük a felhasználók a külső szolgáltatást a rendszer átirányítja, hajtja végre a szükséges hitelesítés vagy érvényesítési tevékenységek és vissza az Azure Active Directory átirányítja. Ha a felhasználó sikeresen hitelesített vagy érvényesítve, a felhasználó továbbra is a feltételes hozzáférési folyamat. 
-
-## <a name="custom-controls"></a>Egyéni vezérlők
+## <a name="custom-controls-preview"></a>Egyéni vezérlők (előzetes verzió)
 
 Egyéni vezérlők, amelyek az Azure Active Directory Premium P1 kiadás képességet. Egyéni vezérlők használatakor a rendszer átirányítja a felhasználók egy kompatibilis a szolgáltatás további Azure Active Directoryn kívül követelmények teljesítéséhez. Ez a vezérlő eleget kell tenniük a felhasználók a külső szolgáltatást a rendszer átirányítja, hajtja végre a szükséges hitelesítés vagy érvényesítési tevékenységek és vissza az Azure Active Directory átirányítja. Az Azure Active Directory ellenőrzi a választ, és ha a felhasználó sikeresen hitelesített vagy érvényesítve, a felhasználó továbbra is a feltételes hozzáférési folyamat.
 
@@ -157,10 +144,8 @@ Kattintson a **új egyéni vezérlő**, a JSON-adatok a vezérlőelem egy szöve
 Egyéni vezérlő törlése, akkor előbb ellenőrizze, hogy azt nem használja a bármely feltételes hozzáférési szabályzat. A befejezést követően:
 
 1. Nyissa meg az egyéni vezérlők listája
-
-2. Kattintson...  
-
-3. Válassza a **Törlés** elemet.
+1. Kattintson...  
+1. Válassza a **Törlés** elemet.
 
 ### <a name="editing-custom-controls"></a>Egyéni vezérlők szerkesztése
 
@@ -179,11 +164,9 @@ Ez a vezérlő segítségével az eszköz információkat adnak át a kiválaszt
 További tudnivalókért lásd:
 
 - [Korlátozott hozzáférés a SharePoint online-nal engedélyezése](https://aka.ms/spolimitedaccessdocs)
-
 - [Az Exchange Online korlátozott hozzáférés engedélyezése](https://aka.ms/owalimitedaccess)
 
 ## <a name="next-steps"></a>További lépések
 
 - Ha azt szeretné tudni, hogyan lehet feltételes hozzáférési szabályzat konfigurálása, lásd: [megkövetelése MFA konkrét alkalmazások esetén az Azure Active Directory feltételes hozzáférés](app-based-mfa.md).
-
 - Ha készen áll a környezetre vonatkozó feltételes hozzáférési szabályzatok konfigurálására, tekintse meg a [gyakorlati tanácsok az Azure Active Directory feltételes hozzáférés](best-practices.md).

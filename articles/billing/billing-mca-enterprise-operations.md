@@ -1,8 +1,6 @@
 ---
-title: Nagyvállalati Szerződés a feladatokat a Microsoft ügyfél-szerződés – Azure |} A Microsoft Docs
+title: A Microsoft ügyfél-szerződés – Azure nagyvállalati szerződés a feladatokat
 description: Ismerje meg, hogyan végezheti el az új számlázási fiók a nagyvállalati szerződés feladatokat.
-services: ''
-documentationcenter: ''
 author: amberbhargava
 manager: amberb
 editor: banders
@@ -12,20 +10,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/24/2018
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 9b76fa935263904957c87cd062c84d0607771369
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9404908b7c486801480474c5a2c9ff7688e1de48
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371333"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490710"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>A Microsoft vevői szerződés az Ön számlázási fiókjához a teljes nagyvállalati szerződés feladatok
 
 Ha a szervezet egy Microsoft Ügyfélszerződéséhez, hogy újítsa meg a nagyvállalati szerződésre való beléptetésről van bejelentkezve, a szerződés egy új számlázási fiók jön létre. A számlázás pedig az új fiók eltérően a nagyvállalati szerződéshez vannak rendezve. Ez a cikk bemutatja, hogyan használhatja az új számlázási fiók a nagyvállalati szerződés végrehajtott feladatok végrehajtásához.
 
-## <a name="how-billing-is-organized-in-the-new-account"></a>Hogyan vannak rendezve, a számlázás az új fiók
+## <a name="billing-organization-in-the-new-account"></a>Az új fiók számlázási szervezetben
 
 A következő ábra ismerteti, hogyan vannak rendezve, a számlázás az új számlázási fiók.
 
@@ -33,16 +31,16 @@ A következő ábra ismerteti, hogyan vannak rendezve, a számlázás az új sz�
 
 | Nagyvállalati Szerződés   | Microsoft Ügyfélszerződés    |
 |------------------------|--------------------------------------------------------|
-| Regisztráció            | A számlázási profilja segítségével kezelheti a számlázási szervezetben, a nagyvállalati szerződésre való beléptetésről hasonló. Vállalati rendszergazdák a számlázási profilja tulajdonosai lesznek. Számlázási profilokkal kapcsolatos további tudnivalókért lásd: [számlázási a profilok megismerése](billing-mca-overview.md#understand-billing-profiles).
-| Részleg            | Egy számla szakasz használata a költségeket, a nagyvállalati szerződésre való beléptetésről részlegek hasonló rendszerezéséhez. Részleg számla szakaszok válik, és a részleg rendszergazdái válnak a megfelelő számla szakaszok tulajdonosai. Számla szakaszok kapcsolatos további információkért lásd: [Understand számla szakaszok](billing-mca-overview.md#understand-invoice-sections). |
+| Regisztráció            | A számlázási profilja segítségével kezelheti a számlázási szervezetben, a nagyvállalati szerződésre való beléptetésről hasonló. Vállalati rendszergazdák a számlázási profilja tulajdonosai lesznek. Számlázási profilokkal kapcsolatos további tudnivalókért lásd: [számlázási a profilok megismerése](billing-mca-overview.md#billing-profiles).
+| Részleg            | Egy számla szakasz használata a költségeket, a nagyvállalati szerződésre való beléptetésről részlegek hasonló rendszerezéséhez. Részleg számla szakaszok válik, és a részleg rendszergazdái válnak a megfelelő számla szakaszok tulajdonosai. Számla szakaszok kapcsolatos további információkért lásd: [Understand számla szakaszok](billing-mca-overview.md#invoice-sections). |
 | Fiók               | A fiókok létrejöttek a nagyvállalati szerződésbe, az új számlázási fiók nem támogatottak. A fiók előfizetés tartozik, azok számára a megfelelő számla szakaszra. Fióktulajdonosok is előfizetéseinek létrehozásához és kezeléséhez a számla szakaszokat. |
 
-## <a name="changes-for-enterprise-administrators-in-the-new-billing-account"></a>A vállalati rendszergazdák az új számlázási fiók módosítása
+## <a name="changes-for-enterprise-administrators"></a>A vállalati rendszergazdák módosítása
 
 A következő módosításokat vállalati rendszergazdák nagyvállalati szerződéssel, van egy Microsoft-ügyfél megállapodás megújítani a alkalmazni.
 
-- A regisztráció egy számlázási profil jön létre. A számlázási profilja kezelheti a számlázás a szervezete számára, mint a nagyvállalati szerződésre való beléptetésről fogja használni. További információ a számlázási profilok [számlázási a profilok megismerése](billing-mca-overview.md#understand-billing-profiles).
-- Egy számla szakasz mindegyik részlege a nagyvállalati szerződésre való beléptetésről jön létre. A számla szakaszok használni a szervezeti egységek kezelése. Létrehozhat új számla szakaszok további szervezeti egységek beállításához. Számla szakaszok kapcsolatos további információkért lásd: [számla szakaszokban megismerheti](billing-mca-overview.md#understand-invoice-sections).
+- A regisztráció egy számlázási profil jön létre. A számlázási profilja kezelheti a számlázás a szervezete számára, mint a nagyvállalati szerződésre való beléptetésről fogja használni. További információ a számlázási profilok [számlázási a profilok megismerése](billing-mca-overview.md#billing-profiles).
+- Egy számla szakasz mindegyik részlege a nagyvállalati szerződésre való beléptetésről jön létre. A számla szakaszok használni a szervezeti egységek kezelése. Létrehozhat új számla szakaszok további szervezeti egységek beállításához. Számla szakaszok kapcsolatos további információkért lásd: [számla szakaszokban megismerheti](billing-mca-overview.md#invoice-sections).
 - A számla szakaszok az Azure-előfizetés létrehozója szerepkör segítségével engedélyezze a más Azure-előfizetéssel, például a nagyvállalati szerződésre való beléptetésről létrehozott fiókok létrehozása.
 - Szeretné használni a [az Azure portal](https://portal.azure.com) számlázás a szervezet helyett az Azure nagyvállalati szerződések portálján kezelheti.
 
@@ -76,7 +74,7 @@ A havi számla jön létre minden egyes számlázási profilja az Ön számláz�
 
 Az Azure használat és költségek csv-fájl letöltésére megismerkedni, lásd: [használati adatok letöltése a Microsoft vevői szerződés hatálya alá tartozó](billing-download-azure-daily-usage.md#download-usage-for-your-microsoft-customer-agreement).
 
-Töltse le az árlista ismertetését lásd: [töltse le a Microsoft vevői szerződés díjszabását](billing-ea-pricing.md#view-and-download-pricing-for-your-microsoft-customer-agreement).
+Töltse le az árlista ismertetését lásd: [töltse le a Microsoft vevői szerződés díjszabását](billing-ea-pricing.md#microsoft-customer-agreement-pricing).
 
 Adózási dokumentumok letöltése kapcsolatban lásd: [adó dokumentumok megtekintése a Microsoft vevői szerződés hatálya alá tartozó](billing-mca-download-tax-document.md#view-and-download-tax-documents).
 
@@ -92,13 +90,13 @@ Hozzon létre egy saját igényei szerint, például a nagyvállalati szerződé
 
 ### <a name="create-a-new-account"></a>Új fiók létrehozása
 
-Felhasználók hozzárendelése az Azure-előfizetés létrehozója szerepkör számla szakaszok adni nekik az Azure-előfizetéssel, például a nagyvállalati szerződésre való beléptetésről létrehozott fiókok létrehozásához szükséges engedéllyel. További információkért lásd: [engedélyezze a más Azure-előfizetések létrehozására](billing-mca-create-subscription.md#give-others-permission-to-create-azure-subscriptions).
+Felhasználók hozzárendelése az Azure-előfizetés létrehozója szerepkör számla szakaszok adni nekik az Azure-előfizetéssel, például a nagyvállalati szerződésre való beléptetésről létrehozott fiókok létrehozásához szükséges engedéllyel. További információkért lásd: [engedélyezze a más Azure-előfizetések létrehozására](billing-mca-create-subscription.md#give-others-permission).
 
-## <a name="changes-for-department-administrators-in-the-new-billing-account"></a>A részleg rendszergazdái az új számlázási fiók módosítása
+## <a name="changes-for-department-administrators"></a>A részleg rendszergazdái módosítása
 
 A következő módosításokat részleg rendszergazdái nagyvállalati szerződéssel, van egy Microsoft-ügyfél megállapodás megújítani a alkalmazni.
 
-- Egy számla szakasz mindegyik részlege a nagyvállalati szerződésre való beléptetésről jön létre. A számla szakasz a department(s) kezelésére fogja használni. Számla szakaszok kapcsolatos további információkért lásd: [számla szakaszokban megismerheti](billing-mca-overview.md#understand-invoice-sections).
+- Egy számla szakasz mindegyik részlege a nagyvállalati szerződésre való beléptetésről jön létre. A számla szakasz a department(s) kezelésére fogja használni. Számla szakaszok kapcsolatos további információkért lásd: [számla szakaszokban megismerheti](billing-mca-overview.md#invoice-sections).
 - A számla szakaszban az Azure-előfizetés létrehozója szerepkör segítségével engedélyezze a más Azure-előfizetéssel, például a nagyvállalati szerződésre való beléptetésről létrehozott fiókok létrehozása.
 - Az Azure Portalon való kezelése helyett az Azure nagyvállalati szerződések portálján, a szervezet használni kívánt.
 
@@ -118,7 +116,7 @@ Adja meg, a számla a szakasz a kezelésével kapcsolatos információkért lás
 
 ### <a name="create-a-new-account-in-your-department"></a>Hozzon létre egy új fiókot a osztály
 
-A számla a szakasz a részleg számára létrehozott Azure-előfizetés létrehozója szerepkört rendelje hozzá a felhasználókat. További információkért lásd: [engedélyezze a más Azure-előfizetések létrehozására](billing-mca-create-subscription.md#give-others-permission-to-create-azure-subscriptions).
+A számla a szakasz a részleg számára létrehozott Azure-előfizetés létrehozója szerepkört rendelje hozzá a felhasználókat. További információkért lásd: [engedélyezze a más Azure-előfizetések létrehozására](billing-mca-create-subscription.md#give-others-permission).
 
 ### <a name="view-charges-for-accounts-in-your-departments"></a>A szervezeti fiókokat a költségek megtekintése
 
@@ -126,7 +124,7 @@ A fiókok, a nagyvállalati szerződésre való beléptetésről létrejöttek a
 
 Összesített költségét a részleg egy fiókhoz tartoztak előfizetések megtekintéséhez be kell egy erőforrás minden egyes előfizetés esetén. Ezt követően használhatja azt, hogy a használat és költségek az Azure file szűrése a költséghely szerint az előfizetéseket.
 
-## <a name="changes-for-account-owners-in-the-new-billing-account"></a>A fióktulajdonosok az új számlázási fiók módosítása
+## <a name="changes-for-account-owners"></a>A fióktulajdonosok módosítása
 
 A nagyvállalati szerződés a fióktulajdonosok kérjen engedélyt az új számlázási fiók az Azure-előfizetések létrehozására. A meglévő Azure-előfizetések tartoznak a számla a szakasz a részleg számára létrehozott. Ha fiókja egy szervezeti egység nem tartozik, az előfizetés tartozik egy alapértelmezett számla szakasz nevű számla szakaszban.
 

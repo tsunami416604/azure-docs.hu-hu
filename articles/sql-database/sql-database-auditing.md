@@ -12,12 +12,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: 3efdf5c256a22529c9d19e9ae1dce5d2db9516a5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1b3a6a18d10b9d9f6ab6456ae2911e54f5c56a71
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65827773"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67544089"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 
@@ -138,7 +138,7 @@ Ha úgy döntött, hogy auditnaplók írni az Event Hubs:
 
 Ha úgy döntött, hogy auditnaplók írni az Azure storage-fiók, több módon használhatja a naplók megtekintéséhez:
 
-- Naplók a telepítés során választott fiókban vannak összesítve. Például egy eszköz használatával megvizsgálhatja auditnaplók [Azure Storage Explorer](https://storageexplorer.com/). Az Azure storage-ban naplói nevű tárolóban lévő blob fájlok kerülnek mentésre **sqldbauditlogs**. A tároló mappa a hierarchiával kapcsolatos további részletekért elnevezési konvenciók és a napló formátuma, tekintse meg a [Blob auditálási napló fájlformátum referenciája](https://go.microsoft.com/fwlink/?linkid=829599).
+- Naplók a telepítés során választott fiókban vannak összesítve. Például egy eszköz használatával megvizsgálhatja auditnaplók [Azure Storage Explorer](https://storageexplorer.com/). Az Azure storage-ban naplói nevű tárolóban lévő blob fájlok kerülnek mentésre **sqldbauditlogs**. A tároló mappa a hierarchiával kapcsolatos további részletekért elnevezési konvenciók és a napló formátuma, tekintse meg a [SQL Database naplózási naplóformátum](https://go.microsoft.com/fwlink/?linkid=829599).
 
 - Használja a [az Azure portal](https://portal.azure.com).  Nyissa meg a megfelelő adatbázis. Az adatbázis tetején **naplózási** kattintson **naplók megtekintése**.
 
@@ -233,10 +233,12 @@ Georeplikált adatbázisokhoz amikor engedélyezi a naplózást az elsődleges a
 
 **PowerShell-parancsmagok (beleértve a WHERE záradék támogatási további szűréshez)** :
 
-- [Naplózási házirend (Set-AzSqlDatabaseAuditing) adatbázis frissítése](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
-- [Létrehozni vagy frissíteni a kiszolgáló naplózási házirend (Set-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)
-- [Get Database Auditing Policy (Get-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseauditing)
-- [Get Server Auditing Policy (Get-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverauditing)
+- [Naplózási házirend (Set-AzSqlDatabaseAudit) adatbázis frissítése](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseaudit)
+- [Létrehozni vagy frissíteni a kiszolgáló naplózási házirend (Set-AzSqlServerAudit)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveraudit)
+- [Get Database Auditing Policy (Get-AzSqlDatabaseAudit)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseaudit)
+- [Get Server Auditing Policy (Get-AzSqlServerAudit)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserveraudit)
+- [Remove Database Auditing Policy (Remove-AzSqlDatabaseAudit)](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabaseaudit)
+- [Remove Server Auditing Policy (Remove-AzSqlServerAudit)](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlserveraudit)
 
 A parancsfájl példa: [PowerShell-lel, naplózás és fenyegetésészlelés konfigurálása](scripts/sql-database-auditing-and-threat-detection-powershell.md).
 

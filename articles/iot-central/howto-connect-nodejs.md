@@ -3,17 +3,17 @@ title: Egy általános Node.js ügyfél-alkalmazás csatlakoztatása az Azure Io
 description: Eszköz a fejlesztők egy általános Node.js-eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz.
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/05/2019
+ms.date: 06/14/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 5497e4956fbdc74eced302867c33a66d07d6a184
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 90e4a061e38fdd3a13a640363069fae3a18e0b49
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60888941"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444216"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Az Azure IoT Central-alkalmazást (Node.js) egy általános ügyfél-alkalmazás csatlakoztatása
 
@@ -69,6 +69,18 @@ Adja hozzá a következő esemény a **mérések** oldalon:
 > [!NOTE]
 > Az esemény mérték adattípusa karakterlánc.
 
+### <a name="location-measurements"></a>Hely mérések
+
+Adja hozzá a következő helyen mértéket a **mérések** oldalon:
+
+| Megjelenített név | Mezőnév  |
+| ------------ | ----------- |
+| Location     | location    |
+
+Az adattípus tevődik össze két hely mérési lebegőpontos számok hosszúsági és szélességi és a egy nem kötelező lebegőpontos számot a magasság.
+
+Adja meg a mezők neve pontosan, ahogy az a tábla az eszköz sablonba be. A mező neve nem egyezik meg a megfelelő eszköz kód tulajdonságneveket, ha a hely nem lehet megjeleníteni az alkalmazásban.
+
 ### <a name="device-properties"></a>Eszköztulajdonságok
 
 Adja hozzá a következő eszköztulajdonságokat a **tulajdonságok** oldalon:
@@ -97,7 +109,7 @@ Adja hozzá a következő parancsot a **parancsok** oldalon:
 
 | Megjelenített név    | Mezőnév     | Alapértelmezett időtúllépés | Adattípus |
 | --------------- | -------------- | --------------- | --------- |
-| visszaszámlálás       | Visszaszámlálás      | 30              | szám    |
+| Visszaszámlálás       | Visszaszámlálás      | 30              | szám    |
 
 Az alábbi beviteli mező hozzáadása a visszaszámlálási parancsot:
 
@@ -144,12 +156,14 @@ A következő lépések bemutatják, hogyan hozhat létre, amely megvalósítja 
     ```javascript
     var connectionString = '{your device connection string}';
     var targetTemperature = 0;
+    var locLong = -122.1215;
+    var locLat = 47.6740;
     var client = clientFromConnectionString(connectionString);
     ```
 
     Frissítse a helyőrző `{your device connection string}` együtt a [eszköz kapcsolati karakterláncának](tutorial-add-device.md#generate-connection-string). Ebben a példában inicializálása `targetTemperature` nullára, az eszköz aktuális olvasásakor vagy egy értéket az ikereszközről használhatja.
 
-1. Telemetria, állapotát és esemény mérések küldése az Azure IoT Central alkalmazáshoz, adja hozzá a fájlhoz a következő függvényt:
+1. Telemetria, állapot, esemény és hely mérések küldése az Azure IoT Central alkalmazáshoz, adja hozzá a fájlhoz a következő függvényt:
 
     ```javascript
     // Send device measurements.
@@ -158,12 +172,18 @@ A következő lépések bemutatják, hogyan hozhat létre, amely megvalósítja 
       var humidity = 70 + (Math.random() * 10);
       var pressure = 90 + (Math.random() * 5);
       var fanmode = 0;
+      var locationLong = locLong - (Math.random() / 100);
+      var locationLat = locLat - (Math.random() / 100);
       var data = JSON.stringify({
         temperature: temperature,
         humidity: humidity,
         pressure: pressure,
         fanmode: (temperature > 25) ? "1" : "0",
-        overheat: (temperature > 35) ? "ER123" : undefined });
+        overheat: (temperature > 35) ? "ER123" : undefined,
+        location: {
+            lon: locationLong,
+            lat: locationLat }
+        });
       var message = new Message(data);
       client.sendEvent(message, (err, res) => console.log(`Sent message: ${message.getData()}` +
         (err ? `; error: ${err.toString()}` : '') +
@@ -320,6 +340,10 @@ Az Azure IoT központi alkalmazás kezelőként a valódi eszköz a következők
 * A telemetria megtekintése a **mérések** oldalon:
 
     ![Telemetria megtekintése](media/howto-connect-nodejs/viewtelemetry.png)
+
+* A hely megtekintése a **mérések** oldalon:
+
+    ![Nézet helye mérések](media/howto-connect-nodejs/viewlocation.png)
 
 * Tekintse meg az eszköz tulajdonság értékeket, a rendszer küldi az eszközről a **tulajdonságok** lapot. Az eszköz tulajdonságot csempék frissítése, amikor az eszköz csatlakozik:
 

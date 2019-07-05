@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 06/30/2019
 ms.author: raynew
-ms.openlocfilehash: a02a2be7fb3ed942b1359949e18ba7d3dee824ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d1471188999182623a57db50d3205a859c160a2
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399975"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491800"
 ---
 # <a name="fail-over-vms-and-physical-servers"></a>Virtuális gépek és fizikai kiszolgálók feladatátvételét 
 
@@ -70,9 +70,9 @@ Virtuális gépek/fizikai kiszolgálók is támogatja a Site Recovery használat
 
 > [!NOTE]
 > A Hyper-v virtuális gépek egy a helyszíni helyről egy másik helyszíni helyre feladatátvételkor térjen vissza a helyszíni elsődleges helyhez kell első **fordított-replikálás** a virtuális gép biztonsági elsődleges helyhez, majd a feladatátvétel indítása. Ha az elsődleges virtuális gép nem áll rendelkezésre, majd elindítása előtt, hogy **fordított-replikálás** kell a virtuális gép visszaállítása biztonsági másolatból.   
-> 
-> 
-> ## <a name="failover-job"></a>Feladatátvételi feladat
+ 
+ 
+## <a name="failover-job"></a>Feladatátvételi feladat
 
 ![Feladatátvétel](./media/site-recovery-failover/FailoverJob.png)
 
@@ -111,7 +111,7 @@ Előfordulhat, hogy automatizálni szeretné bizonyos műveleteket feladatátvé
 ## <a name="post-failover-considerations"></a>Feladatátvételi szempontokat részletező cikkben közzététele
 Vegye figyelembe a következőket érdemes feladatátvétel után:
 ### <a name="retaining-drive-letter-after-failover"></a>Meghajtóbetűjel megőrzése feladatátvétel után
-A meghajtó betűjelét, a virtuális gépek a feladatátvételt követően megőrzéséhez beállíthatja a **TÁROLÓHÁLÓZATI szabályzata** a virtuális gép **OnlineAll**. [További információ](https://support.microsoft.com/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure).
+Az Azure Site Recovery meghajtóbetűjeleket megőrzési kezeli. [További információ](vmware-azure-exclude-disk.md#example-1-exclude-the-sql-server-tempdb-disk) elvégzéséhez, ha úgy dönt, hogy bizonyos lemezek kizárása a.
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Felkészülés az Azure virtuális gépekhez való kapcsolódásra a feladatátvételt követően
 

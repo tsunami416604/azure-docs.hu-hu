@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 765db8461465b74ac068782c1b91d3c68b73f7d4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/26/2019
+ms.openlocfilehash: 13ea60c62283db35ce4bf9fde6c3b36ba7f88013
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079521"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439220"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>Naplózási naplók az Azure Database for MariaDB
 
@@ -44,7 +44,7 @@ Egyéb úgy módosíthatja a paraméterek a következők:
 
 Naplók integrálva vannak az Azure monitort, diagnosztikai naplók. Miután engedélyezte a naplók a MariaDB-kiszolgálón, az Azure Monitor naplók, az Event Hubs vagy Azure Storage kibocsátható őket. Diagnosztikai naplók az Azure Portalon engedélyezésével kapcsolatos további tudnivalókért tekintse meg a [auditálási napló portál cikk](howto-configure-audit-logs-portal.md#set-up-diagnostic-logs).
 
-## <a name="schemas"></a>Sémák
+## <a name="diagnostic-logs-schemas"></a>Diagnosztikai naplók sémák
 
 A következő szakaszok ismertetik, mit jelent az eseménytípus alapján MariaDB auditnaplók kimenete. A kimeneti módszertől függően a mezők és a megjelenési sorrendben eltérőek lehetnek.
 
@@ -54,7 +54,7 @@ A következő szakaszok ismertetik, mit jelent az eseménytípus alapján MariaD
 |---|---|
 | `TenantId` | A bérlő azonosítója |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated` [UTC] | Időbélyeg mikor lett rögzítve a napló (UTC) |
+| `TimeGenerated [UTC]` | Időbélyeg mikor lett rögzítve a napló (UTC) |
 | `Type` | A napló típusa. Mindig `AzureDiagnostics` |
 | `SubscriptionId` | GUID Azonosítóját az előfizetést, amelyhez a kiszolgáló tartozik. |
 | `ResourceGroup` | A kiszolgáló tartozik az erőforráscsoport neve |
@@ -64,13 +64,13 @@ A következő szakaszok ismertetik, mit jelent az eseménytípus alapján MariaD
 | `Resource` | A kiszolgáló neve |
 | `Category` | `MySqlAuditLogs` |
 | `OperationName` | `LogEvent` |
-| `event_class` | `connection_log` |
-| `event_subclass` | `CONNECT`, `DISCONNECT` |
-| `connection_id` | A MariaDB által létrehozott egyedi Kapcsolatazonosító |
-| `host` | Üres |
-| `ip` | Kapcsolódás a MariaDB ügyfél IP-címe |
-| `user` | A lekérdezést végrehajtó felhasználó neve |
-| `db` | Csatlakoztatott adatbázis neve |
+| `event_class_s` | `connection_log` |
+| `event_subclass_s` | `CONNECT`, `DISCONNECT` |
+| `connection_id_d` | A MariaDB által létrehozott egyedi Kapcsolatazonosító |
+| `host_s` | Üres |
+| `ip_s` | Kapcsolódás a MariaDB ügyfél IP-címe |
+| `user_s` | A lekérdezést végrehajtó felhasználó neve |
+| `db_s` | Csatlakoztatott adatbázis neve |
 | `\_ResourceId` | Erőforrás-URI |
 
 ### <a name="general"></a>Általános kérdések
@@ -81,7 +81,7 @@ Az alábbi séma általános, DML_SELECT, DML_NONSELECT, DML, DDL, Kapcsolattár
 |---|---|
 | `TenantId` | A bérlő azonosítója |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated` [UTC] | Időbélyeg mikor lett rögzítve tshe log (UTC) |
+| `TimeGenerated [UTC]` | Időbélyeg mikor lett rögzítve a napló (UTC) |
 | `Type` | A napló típusa. Mindig `AzureDiagnostics` |
 | `SubscriptionId` | GUID Azonosítóját az előfizetést, amelyhez a kiszolgáló tartozik. |
 | `ResourceGroup` | A kiszolgáló tartozik az erőforráscsoport neve |
@@ -91,15 +91,16 @@ Az alábbi séma általános, DML_SELECT, DML_NONSELECT, DML, DDL, Kapcsolattár
 | `Resource` | A kiszolgáló neve |
 | `Category` | `MySqlAuditLogs` |
 | `OperationName` | `LogEvent` |
-| `event_class` | `general_log` |
-| `event_subclass` | `LOG`, `ERROR`, `RESULT` |
+| `LogicalServerName_s` | A kiszolgáló neve |
+| `event_class_s` | `general_log` |
+| `event_subclass_s` | `LOG`, `ERROR`, `RESULT` |
 | `event_time` | Lekérdezés indítsa el a másodperc, a UNIX-időbélyege |
-| `error_code` | Hibakód: Ha a lekérdezés nem sikerült. `0` azt jelenti, hogy nem történt hiba |
-| `thread_id` | A lekérdezés végrehajtása szál azonosítója |
-| `host` | Üres |
-| `ip` | Kapcsolódás a MariaDB ügyfél IP-címe |
-| `user` | A lekérdezést végrehajtó felhasználó neve |
-| `sql_text` | A lekérdezés teljes szövege |
+| `error_code_d` | Hibakód: Ha a lekérdezés nem sikerült. `0` azt jelenti, hogy nem történt hiba |
+| `thread_id_d` | A lekérdezés végrehajtása szál azonosítója |
+| `host_s` | Üres |
+| `ip_s` | Kapcsolódás a MariaDB ügyfél IP-címe |
+| `user_s` | A lekérdezést végrehajtó felhasználó neve |
+| `sql_text_s` | A lekérdezés teljes szövege |
 | `\_ResourceId` | Erőforrás-URI |
 
 ### <a name="table-access"></a>Tábla hozzáférés
@@ -108,7 +109,7 @@ Az alábbi séma általános, DML_SELECT, DML_NONSELECT, DML, DDL, Kapcsolattár
 |---|---|
 | `TenantId` | A bérlő azonosítója |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated` [UTC] | Időbélyeg mikor lett rögzítve a napló (UTC) |
+| `TimeGenerated [UTC]` | Időbélyeg mikor lett rögzítve a napló (UTC) |
 | `Type` | A napló típusa. Mindig `AzureDiagnostics` |
 | `SubscriptionId` | GUID Azonosítóját az előfizetést, amelyhez a kiszolgáló tartozik. |
 | `ResourceGroup` | A kiszolgáló tartozik az erőforráscsoport neve |
@@ -118,12 +119,13 @@ Az alábbi séma általános, DML_SELECT, DML_NONSELECT, DML, DDL, Kapcsolattár
 | `Resource` | A kiszolgáló neve |
 | `Category` | `MySqlAuditLogs` |
 | `OperationName` | `LogEvent` |
-| `event_class` | `table_access_log` |
-| `event_subclass` | `READ`, `INSERT`, `UPDATE`, vagy `DELETE` |
-| `connection_id` | A MariaDB által létrehozott egyedi Kapcsolatazonosító |
-| `db` | Elérhető adatbázis neve |
-| `table` | Elért tábla neve |
-| `sql_text` | A lekérdezés teljes szövege |
+| `LogicalServerName_s` | A kiszolgáló neve |
+| `event_class_s` | `table_access_log` |
+| `event_subclass_s` | `READ`, `INSERT`, `UPDATE`, vagy `DELETE` |
+| `connection_id_d` | A MariaDB által létrehozott egyedi Kapcsolatazonosító |
+| `db_s` | Elérhető adatbázis neve |
+| `table_s` | Elért tábla neve |
+| `sql_text_s` | A lekérdezés teljes szövege |
 | `\_ResourceId` | Erőforrás-URI |
 
 ## <a name="next-steps"></a>További lépések

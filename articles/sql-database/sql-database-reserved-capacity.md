@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 04/26/2019
-ms.openlocfilehash: 74a52df4eab8a3e471e541889cde74846af00fb8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/01/2019
+ms.openlocfilehash: 8c4fd3d49b4df3b3d18802e49d51aa54c0b58333
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64574185"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67566149"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Fizessen elő az SQL-adatbázis számítási erőforrásokat, hogy az Azure SQL Database szolgáltatás számára fenntartott kapacitás
 
@@ -28,7 +28,7 @@ Nem kell a Foglalás hozzárendelése meghatározott SQL Database-példányok (�
 
 Azure SQL Database szolgáltatás számára fenntartott kapacitás megvásárolhatja a [az Azure portal](https://portal.azure.com). Az SQL Database szolgáltatás számára fenntartott kapacitás vásárlása:
 
-- A tulajdonos szerepkör legalább egy vállalati vagy használatalapú fizetéses előfizetésre kell lennie.
+- A tulajdonos szerepkör legalább egy vállalati vagy önálló-előfizetést, utólagos elszámolású díjszabás szerint kell lennie.
 - Vállalati előfizetés esetén **fenntartott példányok hozzáadása** engedélyezve kell lennie a [a nagyvállalati szerződések portáljának](https://ea.azure.com). Vagy, ha ez a beállítás le van tiltva, az előfizetés egy nagyvállalati szerződés rendszergazdájának kell lennie.
 - A Cloud Solution Provider (CSP) program keretében csak a felügyeleti ügynökök vagy értékesítési ügynökök vásárolhatja meg az SQL Database szolgáltatás számára fenntartott kapacitás.
 
@@ -44,26 +44,25 @@ Például tegyük fel, hogy futtatja egy általános célú, Gen5 – 16 virtuá
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki **minden szolgáltatás** > **foglalások**.
-3. Válassza ki **Hozzáadás** és a termék típusának kiválasztása panelen válassza ki **SQL Database** , egy új foglalást vásárolhat SQL Database-hez.
-4. Adja meg a kötelező mezőket. Meglévő vagy új önálló adatbázisok, rugalmas készletek vagy a kiválasztott attribútumok felügyelt példányokat beolvasni a fenntartott kapacitás kedvezményes jogosultak. SQL Database-példány, amely a kedvezmény a tényleges száma attól függ, a hatókör és a kiválasztott mennyiség.
+3. Válassza ki **Hozzáadás** és a vásárlási foglalások panelen válassza ki **SQL Database** , egy új foglalást vásárolhat SQL Database-hez.
+4. Kitöltés a kötelező mezőket. Meglévő vagy új önálló adatbázisok, rugalmas készletek vagy a kiválasztott attribútumok felügyelt példányokat beolvasni a fenntartott kapacitás kedvezményes jogosultak. SQL Database-példány, amely a kedvezmény a tényleges száma attól függ, a hatókör és a kiválasztott mennyiség.
+    ![Képernyőkép, mielőtt beküldi az SQL Database szolgáltatás számára fenntartott kapacitás vásárlás](./media/sql-database-reserved-vcores/sql-reserved-vcores-purchase.png)
 
-   ![Képernyőkép, mielőtt beküldi az SQL Database szolgáltatás számára fenntartott kapacitás vásárlás](./media/sql-database-reserved-vcores/sql-reserved-vcores-purchase.png)
+A következő táblázat ismerteti a kötelező mezőket.
 
-    | Mező      | Leírás|
-    |:------------|:--------------|
-    |Name (Név)        |A Foglalás neve.|
-    |Előfizetés|Az SQL Database szolgáltatás számára fenntartott kapacitás foglalási díjfizetéséhez használt előfizetés. A fizetési módot, az előfizetés fel van töltve az SQL Database szolgáltatás számára fenntartott kapacitás foglalás az előzetes költségek. Az előfizetés típusúnak kell lennie a nagyvállalati szerződés (számok kínálnak: MS-AZR-0017P vagy MS-AZR - 0148 P) vagy a használatalapú fizetés (számok kínálnak: MS-AZR-0003P vagy MS-AZR-0023P). Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. Használatalapú fizetéses előfizetéseknél a díjakat az előfizetéshez tartozó hitelkártyára terheljük vagy a számlafizetési módnak megfelelően számlázzuk.|
-    |Scope       |A virtuális mag foglalás hatóköre egy előfizetés vagy több előfizetés (megosztott hatókör) is foglalkozik. Ha ki: <br/><br/>**Egy előfizetés** -rendszer alkalmazza a virtuális mag foglalási kedvezményt SQL Database-példány ebben az előfizetésben. <br/><br/>**Előfizetés megosztott** – a virtuális mag foglalási kedvezményt a számlázási környezetben előfizetésekkel példányai az SQL Database vonatkozik. A vállalati ügyfelek a megosztott hatókörrel a regisztráció és a regisztráció belüli összes előfizetésre tartalmazza. Használatalapú fizetéses ügyfelek számára a megosztott hatókörrel a fiók rendszergazdája által létrehozott összes utólagos elszámolású előfizetések.|
-    |Régió      |Az Azure-régióban, az SQL Database által fenntartott kapacitás foglalás.|
-    |Központi telepítési típus|Az SQL erőforrás típusa, amely szeretné megvásárolni a foglalást.|
-    |Teljesítményszint|Az SQL Database-példány szolgáltatási szintjei.
-    |Kifejezés        |Egy vagy három év.|
-    |Mennyiség    |Az SQL Database megvásárolt példányainak számát fenntartott kapacitás foglalás. A mennyiség a futó kérheti le a számlázási kedvezményt SQL Database-példányok számát. Például ha 10 SQL Database-példányt futtat az USA keleti régiójában, majd kell megadni mennyiség 10 az összes futó gépek juttatása maximalizálása érdekében. |
-    |||
+| Mező      | Leírás|
+|------------|--------------|
+|Előfizetés|Az SQL Database szolgáltatás számára fenntartott kapacitás foglalási díjfizetéséhez használt előfizetés. A fizetési módot, az előfizetés fel van töltve az SQL Database szolgáltatás számára fenntartott kapacitás foglalás az előzetes költségek. Az előfizetés típusúnak kell lennie a nagyvállalati szerződés (számok kínálnak: MS-AZR-0017P vagy MS-AZR - 0148 P) vagy egy egyéni megállapodás költségeit a használatalapú díjszabás (számok kínálnak: MS-AZR-0003P vagy MS-AZR-0023P). Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. Használatalapú díjszabás az egyes előfizetésre az előfizetés bankkártyával vagy számla ellenében fizetési módot, a díjakat számlázzuk ki.|
+|Scope       |A virtuális mag foglalás hatóköre egy előfizetés vagy több előfizetés (megosztott hatókör) is foglalkozik. Ha ki: <br/><br/>**A megosztott**, a virtuális mag foglalási kedvezményt a számlázási környezetben előfizetésekkel példányai az SQL Database vonatkozik. A vállalati ügyfelek a megosztott hatókörrel a regisztráció és a regisztráció belüli összes előfizetésre tartalmazza. Használatalapú fizetéses ügyfelek számára a megosztott hatókörrel a fiók rendszergazdája által létrehozott összes utólagos elszámolású előfizetések.<br/><br/>**Egy előfizetés**, SQL Database-példány ebben az előfizetésben a virtuális mag foglalási kedvezményt vonatkozik. <br/><br/>**Egyetlen erőforráscsoportra**, a foglalási kedvezményt a kijelölt előfizetésben és az adott előfizetésen belül a kiválasztott erőforráscsoportba tartozó SQL Database-példányok vonatkozik.|
+|Régió      |Az Azure-régióban, az SQL Database által fenntartott kapacitás foglalás.|
+|Központi telepítési típus|Az SQL erőforrás típusa, amely szeretné megvásárolni a foglalást.|
+|Teljesítményszint|Az SQL Database-példány szolgáltatási szintjei.
+|Kifejezés        |Egy vagy három év.|
+|Mennyiség    |Az SQL Database megvásárolt példányainak számát fenntartott kapacitás foglalás. A mennyiség a futó kérheti le a számlázási kedvezményt SQL Database-példányok számát. Például ha 10 SQL Database-példányt futtat az USA keleti régiójában, majd kell megadni mennyiség 10 az összes futó gépek juttatása maximalizálása érdekében. |
 
-5. Tekintse át az SQL-adatbázis költsége a szolgáltatás számára fenntartott kapacitás foglalása az **költségek** szakaszban.
-6. Válassza a **Beszerzés** lehetőséget.
-7. Válassza ki **megtekintése a Foglalás** a vásárlás állapotának megjelenítéséhez.
+1. Tekintse át az SQL-adatbázis költsége a szolgáltatás számára fenntartott kapacitás foglalása az **költségek** szakaszban.
+1. Válassza a **Beszerzés** lehetőséget.
+1. Válassza ki **megtekintése a Foglalás** a vásárlás állapotának megjelenítéséhez.
 
 ## <a name="cancellations-and-exchanges"></a>Lemondás és cseréje
 
@@ -76,6 +75,10 @@ Exchange-hez vagy a visszatérítés foglalások kapcsolatos további informáci
 ## <a name="vcore-size-flexibility"></a>virtuális mag mérete rugalmasság
 
 virtuális mag mérete rugalmasan segít kisebbre vagy nagyobbra méretezhetők a teljesítményszint és a régiót, a lefoglalt kapacitás juttatás elvesztése nélkül. Az SQL Database szolgáltatás számára fenntartott kapacitás emellett lehetőséget biztosít átmenetileg áthelyezheti a gyakori elérésű adatbázisok készletek és az önálló adatbázisok közötti (belül az azonos régióban és a teljesítmény szint) a normál működés részeként a lefoglalt kapacitás elvesztése nélkül előnyeit. Egy nem alkalmazott puffer tartja a foglalás, hatékonyan kezelheti a teljesítmény-használatnak a költségvetés túllépése nélkül.
+
+## <a name="need-help-contact-us"></a>Segítség Kapcsolat
+
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>További lépések
 
@@ -91,7 +94,3 @@ Azure-foglalások kapcsolatos további információkért tekintse meg a követke
 - [A használatalapú fizetéses előfizetést foglalás használati adatai](../billing/billing-understand-reserved-instance-usage.md)
 - [A nagyvállalati beléptetés foglalás használati adatai](../billing/billing-understand-reserved-instance-usage-ea.md)
 - [A Partner Center Felhőszolgáltató (CSP) program Azure foglalások](https://docs.microsoft.com/partner-center/azure-reservations)
-
-## <a name="need-help-contact-us"></a>Segítség Kapcsolat
-
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

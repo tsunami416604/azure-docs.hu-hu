@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 09a2b616e2bba93be86241c64d37daec7d6dea3b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ce3d86d37940f66065debce30b348371b7aa6af
+ms.sourcegitcommit: 3107874d7559ea975e4d55ae33cdf45f4b5485e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029760"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67568251"
 ---
 # <a name="exceptions-and-error-codes-for-algorithm--module-reference"></a>Kivételek és Algoritmusokra és modulokra vonatkozó referenciák hibakód alapján
 
@@ -251,15 +251,16 @@ Ha a modell volt képzett, speciális képzési modulok bármelyikével, csatlak
 |----|----|----|
 |minden besorolás|[Tanítási modell](train-model.md) |[Pontszám modell](score-model.md)|
 |minden olyan regressziós modell|[Tanítási modell](train-model.md) |[Pontszám modell](score-model.md)|
-<!--| Fürtszolgáltatás modellek| [Fürtözési modelljét train](train-clustering-model.md) vagy [Szögtartomány fürtszolgáltatás](sweep-clustering.md)| [Adatok hozzárendelése fürtökhöz](assign-data-to-clusters.md)|
-| rendellenességek észlelése – egy szintű SVM | [Rendellenességek észlelése tanítási](train-anomaly-detection-model.md) |[Pontszám modell](score-model.md)|
-| anomáliadetektálás - PEM |[Tanítási modell](train-model.md) |[Pontszám modell](score-model.md) </br> A modell kiértékelésére további lépésekre van szükség. |
-| anomáliadetektálás - idősor|  [Time Series Anomáliadetektálás](time-series-anomaly-detection.md) |Modell betanítja adatokból, és értékeket állít elő. A modul nem hoz létre egy betanított learner, és nincs további pontozási nem szükséges. |
-| javaslatok modell| [Matchbox ajánló betanítása](train-matchbox-recommender.md) | [Pontszám Matchbox ajánló](score-matchbox-recommender.md) |
-| képek besorolása | [Lépcsőzetes elrendezés imagenet képek besorolása](pretrained-cascade-image-classification.md) | [Pontszám modell](score-model.md) |
-|Vowpal Wabbit modellek| [7 – 4 modell betanításához a Vowpal Wabbit verzió](train-vowpal-wabbit-version-7-4-model.md) | [Vowpal Wabbit verzió 7 – 4 modell pontozása](score-vowpal-wabbit-version-7-4-model.md) |   
-|Vowpal Wabbit modellek| [7 – 10 modell betanításához a Vowpal Wabbit verzió](train-vowpal-wabbit-version-7-10-model.md) | [Vowpal Wabbit verzió 7 – 10 modell pontozása](score-vowpal-wabbit-version-7-10-model.md) |
-|Vowpal Wabbit modellek| [Vowpal Wabbit 8-as verzió modell betanítása](score-vowpal-wabbit-version-8-model.md) | [Pontszám Vowpal Wabbit 8-as verzió modell](score-vowpal-wabbit-version-8-model.md) |-->
+
+<!--| clustering models| [Train Clustering Model](train-clustering-model.md) or [Sweep Clustering](sweep-clustering.md)| [Assign Data to Clusters](assign-data-to-clusters.md)|
+| anomaly detection - One-Class SVM | [Train Anomaly Detection Model](train-anomaly-detection-model.md) |[Score Model](score-model.md)|
+| anomaly detection - PCA |[Train Model](train-model.md) |[Score Model](score-model.md) </br> Some additional steps are required to evaluate the model. |
+| anomaly detection - time series|  [Time Series Anomaly Detection](time-series-anomaly-detection.md) |Model trains from data and generates scores. The module does not create a trained learner and no additional scoring is required. |
+| recommendation model| [Train Matchbox Recommender](train-matchbox-recommender.md) | [Score Matchbox Recommender](score-matchbox-recommender.md) |
+| image classification | [Pretrained Cascade Image Classification](pretrained-cascade-image-classification.md) | [Score Model](score-model.md) |
+|Vowpal Wabbit models| [Train Vowpal Wabbit Version 7-4 Model](train-vowpal-wabbit-version-7-4-model.md) | [Score Vowpal Wabbit Version 7-4 Model](score-vowpal-wabbit-version-7-4-model.md) |   
+|Vowpal Wabbit models| [Train Vowpal Wabbit Version 7-10 Model](train-vowpal-wabbit-version-7-10-model.md) | [Score Vowpal Wabbit Version 7-10 Model](score-vowpal-wabbit-version-7-10-model.md) |
+|Vowpal Wabbit models| [Train Vowpal Wabbit Version 8 Model](score-vowpal-wabbit-version-8-model.md) | [Score Vowpal Wabbit Version 8 Model](score-vowpal-wabbit-version-8-model.md) |-->
   
 |Kivétel üzenetek|  
 |------------------------|  

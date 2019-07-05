@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 722097f1a61a10cd45c0c330e998021cd1abf0c8
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 94aca33b2f12c1c39297221a856296dcca052b0f
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147964"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565800"
 ---
 # <a name="get-started-with-azcopy"></a>Bevezetés az AZCopy használatába
 
@@ -61,16 +61,21 @@ Ez a tábla használja útmutatóként:
 | Tárolási típus | Az engedély jelenleg támogatott metódus |
 |--|--|
 |**Blob Storage** | Azure AD & SAS |
-|**A BLOB storage (idősorozatokra névtér)** | Csak Azure ad-ben |
+|**A BLOB storage (idősorozatokra névtér)** | Azure AD & SAS |
 |**A File storage** | Csak a SAS |
 
 ### <a name="option-1-use-azure-ad"></a>Option 1: Az Azure AD használata
 
+Azure AD-vel, egyszer helyett SAS-token hozzáfűzni kívánt minden egyes parancsot kellene hitelesítő adatokat adja meg.  
+
 Engedély szükséges a szint alapul e azt tervezi, hogy a fájlok feltöltése vagy egyszerűen letöltheti a fájlokat.
 
-Ha csak szeretné letölteni a fájlokat, majd ellenőrizze, hogy a [Storage-Blobadatok olvasója](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) hozzá lett rendelve a személyazonosságát.
+Ha csak szeretné letölteni a fájlokat, majd ellenőrizze, hogy a [Storage-Blobadatok olvasója](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) a felhasználói identitás vagy az egyszerű szolgáltatás hozzá lett rendelve. 
 
-Ha azt szeretné, a fájlok feltöltése, majd győződjön meg arról, hogy egyik szerepkör van rendelve az identitás:
+> [!NOTE]
+> Felhasználói identitások és a szolgáltatásnevek olyan egyes *rendszerbiztonsági tag*, ezért használjuk a kifejezés *rendszerbiztonsági tag* Ez a cikk további részében.
+
+Ha azt szeretné, fájlok feltöltéséhez, majd győződjön meg arról, hogy egyik szerepkör van rendelve a rendszerbiztonsági tag:
 
 - [Storage-Blobadatok Közreműködője](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)
 - [Tárolási Blob adatok tulajdonosa](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
@@ -84,13 +89,16 @@ Ezek a szerepkörök rendelhetők az identitás, ezek a hatókörök egyikében:
 
 Győződjön meg arról, és szerepkörök hozzárendelése kapcsolatban lásd: [hozzáférést biztosít az Azure blob és üzenetsor az adatokat az RBAC az Azure Portalon](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-Nem kell egy ilyen szerepkörbe, rendelt személyazonosságát, ha az identitás bekerül a céltároló vagy könyvtár hozzáférés-vezérlési lista (ACL) rendelkezik. A hozzáférés-vezérlési listában az identitás írási engedélye a célként megadott könyvtárban, és végrehajtási engedéllyel a tárolót és minden egyes szülőkönyvtárhoz van szüksége.
+> [!NOTE] 
+> Ne feledje, hogy az RBAC szerepkör-hozzárendelések propagálása akár öt percet is igénybe vehet.
+
+Nem kell egy ilyen szerepkörbe, ha a rendszerbiztonsági tag hozzá van rendelve a céltároló vagy könyvtár hozzáférés-vezérlési lista (ACL) a rendszerbiztonsági tag rendelt rendelkezik. A hozzáférés-vezérlési listában a rendszerbiztonsági tag írási engedélye a célként megadott könyvtárban, és végrehajtási engedéllyel a tárolót és minden egyes szülőkönyvtárhoz van szüksége.
 
 További tudnivalókért lásd: [hozzáférés-vezérlés az Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
 
-#### <a name="authenticate-your-identity"></a>A személyazonosság hitelesítéséhez
+#### <a name="authenticate-a-user-identity"></a>Hitelesítés a felhasználói identitás
 
-Miután meggyőződött arról, hogy az identitás megadta-e a szükséges jogosultsági szintet, nyisson meg egy parancssort, írja be a következő parancsot, és nyomja le az ENTER billentyűt.
+Miután meggyőződött arról, hogy a felhasználói identitás már megkapta a szükséges jogosultsági szintet, nyisson meg egy parancssort, írja be a következő parancsot, és nyomja le az ENTER billentyűt.
 
 ```azcopy
 azcopy login
@@ -109,6 +117,72 @@ Ez a parancs visszaadja a hitelesítési kódot és a egy webhely URL-CÍMÉT. N
 ![Tároló létrehozása](media/storage-use-azcopy-v10/azcopy-login.png)
 
 A bejelentkezési ablak jelenik meg. Ezt az ablakot jelentkezzen be Azure-fiókjába az Azure-fiók hitelesítő adataival. Miután sikeresen bejelentkezett, zárja be a böngészőablakot, és megkezdheti az AzCopy használatával.
+
+<a id="service-principal" />
+
+#### <a name="authenticate-a-service-principal"></a>Egy egyszerű szolgáltatásnév hitelesítése
+
+Ez a egy remek lehetőség, ha azt tervezi, hogy az AzCopy használata belül egy parancsprogramot, amelynek felhasználói beavatkozás nélkül. 
+
+Ahhoz, hogy futtatni a parancsfájlt, hogy jelentkezzen be interaktívan legalább egyszer, hogy hozzá lehet adni az AzCopy az egyszerű szolgáltatás hitelesítő adatait.  Ezeket a hitelesítő adatokat, hogy a parancsfájl nem kell megadnia a bizalmas adatokat egy biztonságos és titkosított fájlban tárolódnak.
+
+A fiókja visszaszerzéséhez jelentkezzen ügyfélkódot használatával vagy a jelszót a szolgáltatásnév alkalmazásregisztráció társított tanúsítvány használatával. 
+
+Az egyszerű szolgáltatásnév létrehozása kapcsolatos további információkért lásd: [hogyan: A portál használatával hozzon létre egy Azure AD alkalmazás és -szolgáltatásnév erőforrások eléréséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+
+További szolgáltatásnevekkel kapcsolatos általános információkért lásd: [alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
+
+##### <a name="using-a-client-secret"></a>Ügyfél titkos kulcs használatával
+
+Kezdeni a beállítást a `AZCOPY_SPA_CLIENT_SECRET` környezeti változót, az ügyfél titkos kulcsát, az egyszerű szolgáltatás a alkalmazásregisztráció. 
+
+> [!NOTE]
+> Ellenőrizze, hogy ezt az értéket a parancssorból, és nem a környezeti változót az operációs rendszer beállításai. Ezzel a módszerrel értéke csak az aktuális munkamenet érhető el.
+
+Ez a példa bemutatja, hogyan sikerült ezt megteheti a PowerShellben.
+
+```azcopy
+$env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
+```
+
+> [!NOTE]
+> Fontolja meg egy parancssort ebben a példában látható módon. Ezzel a módszerrel a titkos ügyfélkulcsot többé nem jelenik meg a konzol eszközparancs-előzmények. 
+
+Ezután írja be a következő parancsot, és nyomja le az ENTER billentyűt.
+
+```azcopy
+azcopy login --service-principal --application-id <application-id>
+```
+
+Cserélje le a `<application-id>` az egyszerű szolgáltatás Alkalmazásazonosítója helyőrzőt a alkalmazásregisztráció.
+
+##### <a name="using-a-certificate"></a>Egy tanúsítvány használatával
+
+Ha inkább a saját hitelesítő adatok használata a hitelesítéshez, az alkalmazás regisztrációs tanúsítvány feltöltése, és majd, amelynek használatával a bejelentkezéshez.
+
+Az alkalmazás regisztrációját a tanúsítvány feltöltését, mellett is kell rendelkezik a géphez vagy AzCopy futtató virtuális gép mentett tanúsítvány egy példányát. Ez a tanúsítvány másolatát kell lennie. PFX vagy. PEM formátumban, és tartalmaznia kell a titkos kulcsot. A titkos kulcs jelszóval védett kell lennie. Ha Windows használ, és a tanúsítvány létezik csak a tanúsítványtárolóban, ügyeljen arra, hogy a tanúsítvány exportálása PFX-fájlba (a titkos kulcsot is beleértve). Útmutatásért lásd: [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate?view=win10-ps)
+
+Következő lépésként állítsa a `AZCOPY_SPA_CERT_PASSWORD` környezeti változót, a tanúsítvány jelszavát.
+
+> [!NOTE]
+> Ellenőrizze, hogy ezt az értéket a parancssorból, és nem a környezeti változót az operációs rendszer beállításai. Ezzel a módszerrel értéke csak az aktuális munkamenet érhető el.
+
+Ez a példa bemutatja, hogyan sikerült ezt megteheti a PowerShellben.
+
+```azcopy
+$env:AZCOPY_SPA_CERT_PASSWORD="$(Read-Host -prompt "Enter key")"
+```
+
+Ezután írja be a következő parancsot, és nyomja le az ENTER billentyűt.
+
+```azcopy
+azcopy login --service-principal --certificate-path <path-to-certificate-file>
+```
+
+Cserélje le a `<path-to-certificate-file>` helyőrzőt a relatív vagy a teljes elérési útját a tanúsítványfájlt. Az AzCopy az elérési út menti ezt a tanúsítványt, de azt nem mentheti a tanúsítvány egy példányát, ezért ügyeljen arra, hogy a tanúsítvány helyen.
+
+> [!NOTE]
+> Fontolja meg egy parancssort ebben a példában látható módon. Ezzel a módszerrel a jelszó többé nem jelenik meg a konzol eszközparancs-előzmények. 
 
 ### <a name="option-2-use-a-sas-token"></a>Option 2: SAS-tokennel
 
@@ -134,7 +208,11 @@ Példaparancsok megkereséséhez tekintse meg az alábbi cikkek valamelyikére.
 
 - [Adatok áthelyezése az AzCopy és az Amazon S3 gyűjtő](storage-use-azcopy-s3.md)
 
+- [Adatok áthelyezése az AzCopy és az Azure Stack-tároló](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-transfer#azcopy)
+
 ## <a name="use-azcopy-in-a-script"></a>Az AzCopy használata a parancsfájl
+
+Ahhoz, hogy futtatni a parancsfájlt, hogy jelentkezzen be interaktívan legalább egyszer, hogy hozzá lehet adni az AzCopy az egyszerű szolgáltatás hitelesítő adatait.  Ezeket a hitelesítő adatokat, hogy a parancsfájl nem kell megadnia a bizalmas adatokat egy biztonságos és titkosított fájlban tárolódnak. Példák: a [az egyszerű szolgáltatásnév hitelesítése](#service-principal) című szakaszát.
 
 Az AzCopy az idő múlásával [letöltési hivatkozás](#download-and-install-azcopy) AzCopy új verzióinak mutasson. A szkript letölti az AzCopy, ha a parancsfájl előfordulhat, hogy működését gátolja, ha az AzCopy egy újabb verzióját módosítja a parancsfájl attól függ, hogy szolgáltatásokat. 
 

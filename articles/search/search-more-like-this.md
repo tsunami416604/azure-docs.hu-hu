@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 5723f1ab7258a9e0d672b5c0fd9fd0b9c4dc8721
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4d1c691e570d3cfc7e0475c02e4c60ed6ffa8440
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522926"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485355"
 ---
 # <a name="morelikethis-in-azure-search"></a>az Azure Search moreLikeThis
 
@@ -50,4 +50,4 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06-Preview
 Minden olyan webes tesztelési eszköz segítségével kísérletezhet a funkció.  Ehhez a gyakorlathoz Postman használatát javasoljuk.
 
 > [!div class="nextstepaction"]
-> [Ismerkedés az Azure Search REST API-k Postman](search-fiddler.md)
+> [Ismerkedés az Azure Search REST API-k Postman](search-get-started-postman.md)

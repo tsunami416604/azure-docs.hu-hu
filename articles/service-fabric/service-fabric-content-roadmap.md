@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: atsenthi
-ms.openlocfilehash: a95baeb60ddff38e2aa1e36e7728c012d9d44930
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1227871f2003ded7b9cb92eaf32bd9a984958f9f
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540705"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537805"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Így biztosan ismerje meg a Service Fabric?
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások csomagolását, üzembe helyezését és kezelését.  A Service Fabric rendelkezik egy nagy támadási azonban és sok további.  Ez a cikk egy szinopszist, Service fabric biztosítja, és ismerteti az alapfogalmakat, programozási modelleket, alkalmazás-életciklus során, tesztelés, fürtök és az állapotmonitorozást. Olvassa el a [áttekintése](service-fabric-overview.md) és [Mik azok a mikroszolgáltatások?](service-fabric-overview-microservices.md) bevezetést, és hogyan a Service Fabric mikroszolgáltatások létrehozására használható. Ez a cikk egy átfogó tartalmak listája nem tartalmaz, de a hivatkozások áttekintése és első lépéseket bemutató cikkekben a Service Fabric minden területéhez. 
@@ -27,16 +27,18 @@ Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a sk
 ## <a name="core-concepts"></a>Alapfogalmak
 [A Service Fabric terminológiája](service-fabric-technical-overview.md), [alkalmazásmodell](service-fabric-application-model.md), és [támogatott programozási modellek](service-fabric-choose-framework.md) további fogalmakat és leírások, de az alapokat az alábbiakban.
 
-### <a name="design-time-application-type-service-type-application-package-and-manifest-service-package-and-manifest"></a>Tervezési idő: alkalmazástípus, szolgáltatástípus, virtuálisalkalmazás-csomag és a jegyzékfájl, szolgáltatáscsomag és manifest
-Az alkalmazástípus hozzárendeli egy gyűjteményhez típusú szolgáltatás neve/verziója. Van definiálva: egy *ApplicationManifest.xml* fájlt, amely egy alkalmazás-csomag könyvtárában van beágyazva. Az alkalmazáscsomag majd át lesznek másolva a Service Fabric-fürt lemezképtárolójába. Tento typ aplikace, majd futtatja a fürtön belül, amely ezután létrehozhat egy elnevezett alkalmazást. 
+### <a name="design-time-service-type-service-package-and-manifest-application-type-application-package-and-manifest"></a>Tervezési idő: szolgáltatás típusa, szolgáltatáscsomag és jegyzékfájl, alkalmazástípus, alkalmazáscsomagot és manifest
+A szolgáltatás típus egy szolgáltatás kódcsomagok, adatok csomagokat és konfigurációs csomagokat rendelt neve/verziója. Ez a ServiceManifest.xml fájlban van meghatározva. A szolgáltatás típusának végrehajtható kód és a szolgáltatás konfigurációs beállítások, amelyek a futási időben töltődnek be, és a statikus adatok, amelyek a szolgáltatás által felhasznált tevődik össze.
 
-A szolgáltatás típus egy szolgáltatás kódcsomagok, adatok csomagokat és konfigurációs csomagokat rendelt neve/verziója. A ServiceManifest.xml fájlban van ágyazva egy szolgáltatási csomag könyvtárában van definiálva. A szolgáltatási csomag könyvtárában majd hivatkozik egy alkalmazáscsomagot *ApplicationManifest.xml* fájlt. A fürtön belüli után egy elnevezett alkalmazást hozhat létre egy elnevezett szolgáltatás az alkalmazástípus szolgáltatás típusok közül. A szolgáltatás írja le annak *ServiceManifest.xml* fájlt. A szolgáltatás típusának végrehajtható kód és a szolgáltatás konfigurációs beállítások, amelyek a futási időben töltődnek be, és a statikus adatok, amelyek a szolgáltatás által felhasznált tevődik össze.
+Egy szolgáltatási csomagot a szolgáltatás típusának ServiceManifest.xml fájlt, amely hivatkozik a kódot, statikus adatok és a service Type konfigurációs csomagokat tartalmazó lemez könyvtár. Például egy szolgáltatási csomagot sikerült tekintse meg a kódot, a statikus adatok és a egy adatbázis-szolgáltatás alkotó konfigurációs csomagokat.
+
+Az alkalmazástípus hozzárendeli egy gyűjteményhez típusú szolgáltatás neve/verziója. Ez az ApplicationManifest.xml fájl határozza meg.
 
 ![A Service Fabric alkalmazás és szolgáltatás típusainak][cluster-imagestore-apptypes]
 
-Az alkalmazáscsomag egy lemez könyvtárra, amelyben az alkalmazás típusának *ApplicationManifest.xml* fájlt, amely hivatkozik a szolgáltatási csomagokat az egyes szolgáltatástípusokról, hogy az alkalmazás típusát. Például egy e-mailek alkalmazástípus az alkalmazáscsomag tartalmazhat várólista szolgáltatáscsomagot, egy előtérbeli service-csomag és egy adatbázis-szolgáltatás csomag mutató hivatkozásokat. A Service Fabric-fürt lemezképtárolójába lesz másolva a fájlokat az alkalmazás-csomag könyvtárában. 
+Az alkalmazáscsomag egy lemez könyvtárat, amely tartalmazza az alkalmazás típusának ApplicationManifest.xml fájlt, amely hivatkozik a szolgáltatási csomagokat az egyes szolgáltatástípusokról, hogy az alkalmazás típusát. Például egy e-mailek alkalmazástípus az alkalmazáscsomag tartalmazhat várólista szolgáltatáscsomagot, egy előtérbeli service-csomag és egy adatbázis-szolgáltatás csomag mutató hivatkozásokat.  
 
-Egy szolgáltatási csomagot egy lemez könyvtárra, amelyben a szolgáltatás típusának *ServiceManifest.xml* fájlt, amely a kódban, a statikus adatok, és a konfigurációs csomagokat a service Type hivatkozik. A fájlok a szolgáltatási csomag könyvtárában az alkalmazástípus által hivatkozott *ApplicationManifest.xml* fájlt. Például egy szolgáltatási csomagot sikerült tekintse meg a kódot, a statikus adatok és a egy adatbázis-szolgáltatás alkotó konfigurációs csomagokat.
+A Service Fabric-fürt lemezképtárolójába lesz másolva a fájlokat az alkalmazás-csomag könyvtárában. Tento typ aplikace, majd futtatja a fürtön belül, amely ezután létrehozhat egy elnevezett alkalmazást. Miután létrehozott egy elnevezett alkalmazást, létrehozhat egy elnevezett szolgáltatás az alkalmazástípus szolgáltatás típusok közül. 
 
 ### <a name="run-time-clusters-and-nodes-named-applications-named-services-partitions-and-replicas"></a>Futási idő: fürtök és a csomópontok, alkalmazások, szolgáltatások, a partíciók és a replikák nevű nevű
 A [Service Fabric-fürt](service-fabric-deploy-anywhere.md) virtuális és fizikai gépek hálózaton keresztül csatlakozó készlete, amelyen mikroszolgáltatásokat helyezhet üzembe és felügyelhet. A fürtök több ezer gépre skálázhatók.

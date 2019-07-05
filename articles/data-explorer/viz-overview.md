@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: 85c37b6d626fc9942f5df956e738431d2727d282
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/30/2019
+ms.openlocfilehash: d1c73d8eb65ed5d67d5250b4a3bca3b80450001e
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66481834"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536717"
 ---
 # <a name="data-visualization-with-azure-data-explorer"></a>Az Azure Data Explorer adatmegjelenítés 
 
@@ -21,22 +21,42 @@ Az Azure Data Explorer egy gyors és hatékonyan méretezhető exploration szolg
 
 Adatvizualizációk és jelentéskészítés a kritikus fontosságú lépés az adatok elemzési folyamat során. Azure adatkezelő számos BI szolgáltatás támogatja, így használhatja azt, amelyik leginkább megfelel a forgatókönyv és a költségvetés.
 
-* Az Azure Data Explorer Vizualizációk: Kusto lekérdezési nyelv segítségével a [ `render operator` ](/azure/kusto/query/renderoperator) kínál különféle vizualizációtípusokat ábrázolhatja a lekérdezés eredményeit. A rendellenességek észlelése és előrejelzését, gépi tanulási és egyéb hasznosak a lekérdezés vizualizációkat.
+## <a name="kusto-query-language-visualizations"></a>Kusto-lekérdezés nyelvi Vizualizációk
 
-* [Power BI](https://powerbi.microsoft.com): Az Azure Data Explorer lehetővé teszi, hogy a Power bi-hoz, különböző módszerekkel: 
+A Kusto-lekérdezés nyelv [ `render operator` ](/azure/kusto/query/renderoperator) kínál a különböző Vizualizációk, például a táblák, tortadiagramot vagy sávdiagramot ábrázolhatja a lekérdezési eredmények. A rendellenességek észlelése és előrejelzését, gépi tanulási és egyéb hasznosak a lekérdezés vizualizációkat.
+
+## <a name="power-bi"></a>Power BI
+
+Az Azure Data Explorer lehetővé teszi, hogy csatlakozni [Power BI](https://powerbi.microsoft.com) különböző módszerekkel: 
 
   * [Beépített natív Power BI-összekötő](/azure/data-explorer/power-bi-connector)
 
   * [Importálás az Azure Data Explorer lekérdezése Power BI-bA](/azure/data-explorer/power-bi-imported-query)
  
-  * [SQL-lekérdezés](/azure/data-explorer/power-bi-sql-query).
+  * [SQL-lekérdezés](/azure/data-explorer/power-bi-sql-query)
 
-* [Microsoft Excel](https://products.office.com/excel): Az Azure Data Explorer lehetővé teszi, hogy a Kapcsolódás az Excelhez a beépített natív Excel-összekötő használatával, vagy importálhat egy lekérdezést az Azure Data Explorer Excel formátumba.
+## <a name="microsoft-excel"></a>Microsoft Excel
 
-* [Grafana](https://grafana.com): Grafana biztosít az Azure Data Explorer beépülő modul, amely lehetővé teszi, hogy az Azure Data Explorer adatainak megjelenítése. Ön [beállítása Azure adatkezelő adatforrásként Grafana számára, és ezután megjelenítheti az adatokat](/azure/data-explorer/grafana)
+Az Azure Data Explorer lehetővé teszi, hogy csatlakozni [Microsoft Excel](https://products.office.com/excel) Excel-összekötő használatával a beépített natív, vagy importálhat egy lekérdezést az Azure Data Explorer Excel formátumba.
 
-* [Sisense](https://www.sisense.com): Az Azure Data Explorer lehetővé teszi az Sisense csatlakozni a JDBC-összekötő segítségével. Ön [beállítása az Azure Data Explorer adatforrásként Sisense számára, és ezután megjelenítheti az adatokat](/azure/data-explorer/sisense).
+## <a name="grafana"></a>Grafana
 
-* [A tableau](https://www.tableau.com): Az Azure Data Explorer lehetővé teszi, hogy csatlakozzon a Tableau az [ODBC-összekötő és a Tableau megjeleníthetők](/azure/data-explorer/connect-odbc).
+[Grafana](https://grafana.com) biztosít az Azure Data Explorer beépülő modul, amely lehetővé teszi, hogy az Azure Data Explorer adatainak megjelenítése. Ön [beállítása Azure adatkezelő adatforrásként Grafana számára, és ezután megjelenítheti az adatokat](/azure/data-explorer/grafana). 
 
-* [Qlik](https://www.qlik.com): Az Azure Data Explorer lehetővé teszi, hogy a Qlik használatával csatlakozni a [ODBC-összekötő](/azure/data-explorer/connect-odbc).
+## <a name="odbc-connector"></a>ODBC-összekötő
+
+Az Azure Data Explorer biztosít egy [megnyitott adatbázis-kapcsolat (ODBC) összekötő](connect-odbc.md) így minden olyan alkalmazás, amely támogatja a ODBC csatlakozhatnak az Azure Data Explorer.
+
+## <a name="tableau"></a>A tableau
+
+Az Azure Data Explorer lehetővé teszi, hogy csatlakozni [Tableau](https://www.tableau.com) használatával a [ODBC-összekötő](/azure/data-explorer/connect-odbc) , majd [megjelenítheti az adatokat, a Tableau](tableau.md).
+
+## <a name="qlik"></a>Qlik
+
+Az Azure Data Explorer lehetővé teszi, hogy csatlakozni [Qlik](https://www.qlik.com) használatával a [ODBC-összekötő](/azure/data-explorer/connect-odbc) Qlik Sense irányítópultokat hozhat létre és megjelenítheti az adatokat. Használja az alábbi videó, tudhat meg az Azure Data Explorer adatok vizualizálása a Qlik. 
+
+> [!VIDEO https://www.youtube.com/embed/nhWIiBwxjjU]  
+
+## <a name="sisense"></a>Sisense
+
+Az Azure Data Explorer lehetővé teszi, hogy csatlakozni [Sisense](https://www.sisense.com) a JDBC-összekötő segítségével. Ön [beállítása az Azure Data Explorer adatforrásként Sisense számára, és ezután megjelenítheti az adatokat](/azure/data-explorer/sisense).

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/06/2019
+ms.date: 07/03/2019
 ms.author: Kumud
-ms.openlocfilehash: ec68038a5b0fe7edca095e0d9b190d5da09c8e82
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 08670c8aa6d5c9830ab84bc848bac38063bd41c0
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754699"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550923"
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>A Standard Load Balancer metrikák és egészségügyi diagnosztikája
 
@@ -37,12 +37,12 @@ A Standard Load Balancer különböző konfigurációkban adja meg a következő
 
 | Metrika | Erőforrás típusa | Leírás | Ajánlott összesítés |
 | --- | --- | --- | --- |
-| Az adatok elérési útja elérhetősége (virtuális IP-cím elérhető)| Nyilvános load balancer | Standard Load Balancer folyamatosan gyakorol az adatok útvonalat egy adott régión belül a terheléselosztó előtérrendszerhez, egészen az SDN-verem, amely támogatja a virtuális Géphez való. Kifogástalan állapotú példányok továbbra is, a mérés követi az alkalmazás elosztott terhelésű forgalmat az adott elérési úton. Az adatok elérési útja, az ügyfelek által használt is ellenőrzi. A mérték az alkalmazás számára, és nem ütközik más műveleteket.| Átlag |
-| Mintavétel állapota (DIP elérhető) |  Nyilvános és a belső terheléselosztó | A standard Load Balancer állapot-ellenőrzés elvégzése egy elosztott szolgáltatás, amely figyeli az alkalmazás végponti állapotát a konfigurációs beállításoknak megfelelően használja. Ez a metrika megadja egy összesítés vagy a végpont szűrt nézete a load balancer készletben minden példány végpont. Láthatja hogyan a Load Balancer megtekinti az alkalmazás állapotát a állapot-mintavételi konfigurációt jelzett módon. |  Átlag |
-| Szinkronizálás a Mi (szinkronizálás) csomagok |  Nyilvános load balancer | A standard Load Balancer nem megszakítja az Transmission Control Protocol (TCP), és együttműködik a TCP vagy UDP-csomag folyamatok. Folyamatok és azok kézfogások mindig a forrás- és a Virtuálisgép-példány között vannak. A TCP protokoll forgatókönyvek hatékonyabb elhárításához végezhet SZIN felhasználása csomagok számlálók tudni, hogy hány TCP-kapcsolat kísérletet tesz. A metrika a fogadott TCP SZIN csomagok számát jelenti.| Átlag |
-| SNAT-kapcsolatok |  Nyilvános terheléselosztó |A standard Load Balancer a kimenő forgalom, amely a nyilvános IP-cím előtérrendszerhez vannak masqueraded számát jelenti. Forrás hálózati cím címfordítás (SNAT) portjait egy kimeríthető erőforrást. Ez a metrika biztosíthat az arra utalhat, hogy hogyan érdemes az alkalmazás van szüksége az SNAT a kimenő folyamatokhoz. Sikeres és sikertelen kimenő SNAT folyamatok számlálói készül jelentés, és használható ismertetünk az elhárításukkal és a kimenő forgalom állapotának ismertetése.| Átlag |
-| Bájt számlálók |  Nyilvános és a belső terheléselosztó | A standard Load Balancer az adatokat az előtérbeli feldolgozott jelentések.| Átlag |
-| Csomag-számlálók |  Nyilvános és a belső terheléselosztó | A standard Load Balancer a csomagok előtér feldolgozott jelentések.| Átlag |
+| Az adatok elérési útja elérhetősége (virtuális IP-cím elérhető)| Nyilvános load balancer | Standard Load Balancer folyamatosan gyakorol az adatok útvonalat egy adott régión belül a terheléselosztó előtérrendszerhez, egészen az SDN-verem, amely támogatja a virtuális Géphez való. Kifogástalan állapotú példányok továbbra is, a mérés követi az alkalmazás elosztott terhelésű forgalmat az adott elérési úton. Az adatok elérési útja, az ügyfelek által használt is ellenőrzi. A mérték az alkalmazás számára, és nem ütközik más műveleteket.| Average |
+| Mintavétel állapota (DIP elérhető) |  Nyilvános és a belső terheléselosztó | A standard Load Balancer állapot-ellenőrzés elvégzése egy elosztott szolgáltatás, amely figyeli az alkalmazás végponti állapotát a konfigurációs beállításoknak megfelelően használja. Ez a metrika megadja egy összesítés vagy a végpont szűrt nézete a load balancer készletben minden példány végpont. Láthatja hogyan a Load Balancer megtekinti az alkalmazás állapotát a állapot-mintavételi konfigurációt jelzett módon. |  Average |
+| Szinkronizálás a Mi (szinkronizálás) csomagok |  Nyilvános load balancer | A standard Load Balancer nem megszakítja az Transmission Control Protocol (TCP), és együttműködik a TCP vagy UDP-csomag folyamatok. Folyamatok és azok kézfogások mindig a forrás- és a Virtuálisgép-példány között vannak. A TCP protokoll forgatókönyvek hatékonyabb elhárításához végezhet SZIN felhasználása csomagok számlálók tudni, hogy hány TCP-kapcsolat kísérletet tesz. A metrika a fogadott TCP SZIN csomagok számát jelenti.| Average |
+| SNAT-kapcsolatok |  Nyilvános terheléselosztó |A standard Load Balancer a kimenő forgalom, amely a nyilvános IP-cím előtérrendszerhez vannak masqueraded számát jelenti. Forrás hálózati cím címfordítás (SNAT) portjait egy kimeríthető erőforrást. Ez a metrika biztosíthat az arra utalhat, hogy hogyan érdemes az alkalmazás van szüksége az SNAT a kimenő folyamatokhoz. Sikeres és sikertelen kimenő SNAT folyamatok számlálói készül jelentés, és használható ismertetünk az elhárításukkal és a kimenő forgalom állapotának ismertetése.| Average |
+| Bájt számlálók |  Nyilvános és a belső terheléselosztó | A standard Load Balancer az adatokat az előtérbeli feldolgozott jelentések.| Average |
+| Csomag-számlálók |  Nyilvános és a belső terheléselosztó | A standard Load Balancer a csomagok előtér feldolgozott jelentések.| Average |
 
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>A load balancer-metrikák megtekintése az Azure Portalon
 
@@ -85,7 +85,7 @@ Az adatok elérési útja rendelkezésre állását a Standard Load Balancer-er�
 A metrika egy aktív, a sávon kívüli mérési hozza létre. Egy ellenőrzési szolgáltatás a régión belül a mérték a forgalom származik. A szolgáltatás aktiválva van, amint egy nyilvános előtéri egy központi telepítés létrehozásához, és hogy továbbra is fennáll, amíg el nem távolítja az előtér. 
 
 >[!NOTE]
->Belső előtérrendszerek jelenleg nem támogatottak. 
+>A belső terheléselosztó előtérrendszer adatok elérési útja, rendelkezésre állását (a virtuális IP-cím rendelkezésre állási) nem érhető el. 
 
 A csomag megfelelő az üzemelő példány az előtérbeli és a szabály rendszeresen jön létre. Bejárja a régió a forrásból a gazdagépre ahol egy virtuális Gépet, a háttér-készletben megtalálható. A load balancer infrastruktúra azonos terhelés terheléselosztás és a fordítás műveleteket hajtja végre, mint az összes többi forgalom. Ez a Hálózatfigyelő a sávon kívüli az elosztott terhelésű végpont. A mintavétel érkezik a számítási gazdagépen, ahol a háttérkészlet megfelelő állapotú virtuális gép megtalálható, miután a számítási gazdagép állít elő, az ellenőrzési szolgáltatásnak választ. A virtuális gép nem látja ezt a forgalmat.
 
@@ -208,6 +208,10 @@ A resource health különböző állapotok, és ezek leírását az alábbi táb
 | Elérhető | A nyilvános standard load balancer erőforrás, kifogástalan állapotú és elérhető. |
 | Nem elérhető | A nyilvános standard load balancer-erőforrás állapota nem megfelelő. Az egészségügyi diagnosztizálása kiválasztásával **Azure Monitor** > **metrikák**.<br>(*Nem érhető el* állapota is jelezheti azt, hogy az erőforrás nem csatlakozik a nyilvános standard load balancer.) |
 | Ismeretlen | Erőforrás-állapot az nyilvános standard load balancer-erőforrás még nem lett frissítve.<br>(*Ismeretlen* állapota is jelezheti azt, hogy az erőforrás nem csatlakozik a nyilvános standard load balancer.)  |
+
+## <a name="limitations"></a>Korlátozások 
+
+- A belső terheléselosztó előtérrendszer adatok elérési útja, rendelkezésre állását (a virtuális IP-cím rendelkezésre állási) nem érhető el.
 
 ## <a name="next-steps"></a>További lépések
 

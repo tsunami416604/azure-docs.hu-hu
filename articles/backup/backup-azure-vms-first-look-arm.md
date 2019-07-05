@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: raynew
-ms.openlocfilehash: 906024ecb3e95c75c45efddafbbf76944c6aea29
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 80739fac8317014c74c6a86cef9aa23696cfb42e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058070"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443001"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>A virtuális gép beállításainak biztonsági mentése Azure virtuális gép
 
@@ -72,7 +72,8 @@ Annak érdekében, hogy az Azure virtuális gépek biztonsági mentése, az Azur
 
 
 > [!NOTE]
-> Az Azure Backup szolgáltatás létrehoz egy külön erőforráscsoportot (nem a virtuális gép erőforráscsoportja) pillanatkép, a névadási tárolására **AzureBackupRG_geography_number** (Példa: AzureBackupRG_northeurope_1). Ebben az erőforráscsoportban lévő adatok az Azure virtuális gépek biztonsági szabályzat "Megőrzése azonnali helyreállítási pillanatképének" szakaszában az időtartam napban megadott lesznek megőrizve. Egy zárolás alkalmazza ezt az erőforráscsoportot, a biztonsági mentési hibáját okozhatja.
+> Az Azure Backup szolgáltatás létrehoz egy külön erőforráscsoportot (nem a virtuális gép erőforráscsoportja) pillanatkép, a névadási tárolására **AzureBackupRG_geography_number** (Példa: AzureBackupRG_northeurope_1). Ebben az erőforráscsoportban lévő adatok az Azure virtuális gépek biztonsági szabályzat "Megőrzése azonnali helyreállítási pillanatképének" szakaszában az időtartam napban megadott lesznek megőrizve. Egy zárolás alkalmazza ezt az erőforráscsoportot, a biztonsági mentési hibáját okozhatja.<br>
+Ebben az erőforráscsoportban kell is zárható ki minden olyan név/kód korlátozások, egy eszközkorlátozási szabályzatot blokkolhatja az erőforrás azt újra a biztonsági mentési hibák miatt a gyűjtemények létrehozása.
 
 
 ## <a name="run-a-backup-immediately"></a>A biztonsági mentés azonnali futtatása

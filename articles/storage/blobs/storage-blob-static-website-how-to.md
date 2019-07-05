@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.author: normesta
 ms.date: 05/28/2019
-ms.openlocfilehash: 61477767c59dd521e3f46db4445238a5a1ea759e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5ab24a99b22fae172b5308ba7477953f27ecfd44
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071434"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435952"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Az Azure Storage-ban statikus webhely üzemeltetése
 
@@ -44,13 +44,7 @@ Statikus webhely üzemeltetése használatával engedélyezheti a [Azure parancs
 
 1. Először nyissa meg a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest), vagy, ha [telepített](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) helyileg, az Azure CLI, nyissa meg például a Windows PowerShell-parancs konzolalkalmazást.
 
-2. A megnyitott parancssori ablakban a storage előzetes bővítmény telepítése.
-
-   ```azurecli-interactive
-   az extension add --name storage-preview
-   ```
-
-3. Ha egynél több előfizetéssel társítva a személyazonosságát, majd állítsa be az aktív előfizetés az előfizetési a storage-fiók, amely a statikus webhelye üzemeltetésére lesz.
+2. Ha egynél több előfizetéssel társítva a személyazonosságát, majd állítsa be az aktív előfizetés az előfizetési a storage-fiók, amely a statikus webhelye üzemeltetésére lesz.
 
    ```azurecli-interactive
    az account set --subscription <subscription-id>
@@ -58,7 +52,7 @@ Statikus webhely üzemeltetése használatával engedélyezheti a [Azure parancs
 
    Cserélje le a `<subscription-id>` helyőrző értéket cserélje az előfizetés Azonosítóját.
 
-4. Engedélyezze a statikus webhely üzemeltetése.
+3. Engedélyezze a statikus webhely üzemeltetése.
 
    ```azurecli-interactive
    az storage blob service-properties update --account-name <storage-account-name> --static-website --404-document <error-document-name> --index-document <index-document-name>
@@ -70,7 +64,7 @@ Statikus webhely üzemeltetése használatával engedélyezheti a [Azure parancs
 
    * Cserélje le a `<index-document-name>` helyőrzőt az index dokumentum nevét. Ez a dokumentum a gyakran "index.html".
 
-5. Töltse fel az objektumok a *$web* tároló forráskönyvtárból.
+4. Töltse fel az objektumok a *$web* tároló forráskönyvtárból.
 
    > [!NOTE]
    > Ha az Azure Cloud Shell használata esetén ügyeljen arra, hogy egy `\` kontextusban való megnevezésekor escape-karakter a `$web` tároló (például: `\$web`). Ha az Azure parancssori felület helyi telepítését használja, majd nem kell az escape-karaktert használhatja.

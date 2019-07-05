@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3820a5d7becef275ed3408f01cc53ad8590ba60e
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 2966f90dcb381e439c00a6540ef9a01bd24f8743
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272416"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561175"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Adathiány hibaelhárítása – Application Insights .NET-hez
 ## <a name="some-of-my-telemetry-is-missing"></a>Láthatók a telemetriai adatok némelyike hiányzik
@@ -28,13 +28,13 @@ ms.locfileid: "67272416"
 
 *Véletlenszerűen adódtak az adatvesztést.*
 
-* Ellenőrizze, hogy ha késést tapasztal az adatvesztést, [Telemetriai csatorna](telemetry-channels.md#does-applicationinsights-channel-offer-guaranteed-telemetry-delivery-or-what-are-the-scenarios-where-telemetry-can-be-lost)
+* Ellenőrizze, hogy ha késést tapasztal az adatvesztést, [Telemetriai csatorna](telemetry-channels.md#does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost)
 
 * Keressen Telemetriai csatorna esetleges ismert problémáiról [Github-adattár](https://github.com/Microsoft/ApplicationInsights-dotnet/issues)
 
 *Konzolalkalmazás vagy a webalkalmazás adatvesztés adódtak, amikor az alkalmazás arra készül, hogy állítsa le.*
 
-* SDK csatorna telemetriai tartja a pufferben lévő, és elküldi őket, és kötegekben. Ha az alkalmazás bezáródott, szükség lehet explicit módon hívja [Flush()](api-custom-events-metrics.md#flushing-data). Viselkedését `Flush()` attól függ, a tényleges [csatorna](telemetry-channels.md#built-in-telemetrychannels) használt.
+* SDK csatorna telemetriai tartja a pufferben lévő, és elküldi őket, és kötegekben. Ha az alkalmazás bezáródott, szükség lehet explicit módon hívja [Flush()](api-custom-events-metrics.md#flushing-data). Viselkedését `Flush()` attól függ, a tényleges [csatorna](telemetry-channels.md#built-in-telemetry-channels) használt.
 
 ## <a name="no-data-from-my-server"></a>Nincsenek a kiszolgálón lévő adatok
 *Az alkalmazás telepítése a webkiszolgálón, és be van kapcsolva, nem látható semmilyen telemetriai adatot belőle. A fejlesztői gépen, dolgoztam OK.*
@@ -215,7 +215,9 @@ Kövesse az alábbi utasításokat a keretrendszer hibaelhárítási naplók rö
 
 ### <a name="net-core"></a>.NET Core
 
-1. Telepítse a [Microsoft.AspNetCore.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNetCore.ApplicationInsights.HostingStartup) NuGet-csomagot. A verzióhoz meg kell egyeznie a jelenlegi verziója `Microsoft.ApplicationInsights`
+1. Telepítse a [Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) NuGet-csomagot. A verzióhoz meg kell egyeznie a jelenlegi verziója `Microsoft.ApplicationInsights`
+
+A legújabb Microsoft.ApplicationInsights.AspNetCore 2.7.1-es verziójához, és Microsoft.ApplicationInsights 2.10 verzió hivatkozik. Ezért a Microsoft.AspNet.ApplicationInsights.HostingStartup telepítendő verzióját 2.10.0 kell lennie
 
 2. Módosítsa `ConfigureServices` metódus az a `Startup.cs` osztály.:
 

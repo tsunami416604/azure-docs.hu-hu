@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 06/25/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5fbd64d2f001a0fbe91de2d954889816a1819479
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 4a52383e6ab24c6ae1e2be0b67293d65dfa04466
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67339441"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477880"
 ---
 # <a name="create-an-azure-bastion-host-preview"></a>Hozzon létre egy Azure bástyagazdagép (előzetes verzió)
 
@@ -33,15 +33,11 @@ A nyilvános előzetes verzióban korlátozva az Azure nyilvános elérhetőség
 
 [!INCLUDE [available regions](../../includes/bastion-regions-include.md)]
 
-Hogy részt vesz ebben az előzetes verzióban, regisztrálnia kell. Regisztráljon az előzetes verzióra, tegye a következőket:
-
-[!INCLUDE [register](../../includes/bastion-preview-register-include.md)]
-
 ## <a name="createhost"></a>Hozzon létre egy bástyagazdagép
 
 Ez a szakasz segítséget nyújt a hozzon létre egy új megerősített Azure-erőforrást az Azure Portalról.
 
-1. (Kezdőlap) lapján a [ az Azure Portalon – előzetes verzió](https://aka.ms/BastionHost), kattintson a **+ erőforrás létrehozása**. Ellenőrizze, hogy a jelen előzetes, nem a normál Azure portal-portál eléréséhez megadott hivatkozás használata.
+1. (Kezdőlap) lapján a [Azure portal – megerősített előzetes](https://aka.ms/BastionHost), kattintson a **+ erőforrás létrehozása**. Ellenőrizze, hogy a jelen előzetes, nem a normál Azure portal-portál eléréséhez megadott hivatkozás használata.
 
 1. Az a **új** lap a *keresés a piactéren* mezőbe írja be a **megerősített**, majd kattintson a **Enter** a keresési eredmények beolvasásához.
 
@@ -72,7 +68,7 @@ Ez a szakasz segítséget nyújt a hozzon létre egy új megerősített Azure-er
 
 Bástyagazdagép a portálon hozzon létre egy meglévő virtuális gép használatával, ha különböző beállítások automatikusan alapértelmezés szerint a virtuális gép és/vagy a virtuális hálózat megfelelő.
 
-1. Az a [betekintő portálon](https://aka.ms/BastionHost), keresse meg a virtuális géphez, majd kattintson a **Connect**.
+1. Az a [Azure portal – megerősített előzetes](https://aka.ms/BastionHost), keresse meg a virtuális géphez, majd kattintson a **Connect**.
 
     ![Virtuális gép csatlakoztatása](./media/bastion-create-host-portal/vmsettings.png)
 

@@ -1,32 +1,26 @@
 ---
-title: Megismerheti a díjat a Microsoft Ügyfélszerződéséhez számlán – Azure |} A Microsoft Docs
-description: Ismerje meg, hogyan olvashatók és érthetők a díjait a számlán
-services: ''
-documentationcenter: ''
+title: A számlán a Microsoft Ügyfélszerződéséhez – Azure költségek ismertetése
+description: Megtudhatja, hogyan olvashatók és érthetők a díjait a számlán.
 author: jureid
 manager: jureid
-editor: ''
 tags: billing
-ms.assetid: 32eea268-161c-4b93-8774-bc435d78a8c9
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/19/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: f93152ae3db926fb989c219d1e515abaf0281bf4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ee250589133abb1944ff17e39dc650cbae4279c6
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60372185"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490679"
 ---
-# <a name="understand-the-charges-on-your-microsoft-customer-agreements-invoice"></a>A Microsoft Ügyfélszerződéséhez számlán a költségek ismertetése
+# <a name="understand-charges-on-your-microsoft-customer-agreement-invoice"></a>A Microsoft Ügyfélszerződéséhez számla költségek ismertetése
 
-A számla a költségek elemzésével, az egyes tranzakciók képes megérteni.
-
-A Microsoft vevői szerződés számlázási fiók, a számlán minden hónapban, minden elszámolási profil jön létre. A számlán minden költséget az előző hónap tartalmazza. Az Azure Portalon is megtekintheti a számlákat. További információkért lásd: [számlákat letölteni a Microsoft vevői szerződés](billing-download-azure-invoice-daily-usage-date.md#download-invoices-for-a-microsoft-customer-agreement).
+A számla a költségek elemzésével, az egyes tranzakciók képes megérteni. A Microsoft vevői szerződés számlázási fiók, a számla alapján jön létre minden egyes számlázási profilok hónap. A számlán minden költséget az előző hónap tartalmazza. Az Azure Portalon is megtekintheti a számlákat. További információkért lásd: [számlákat letölteni a Microsoft vevői szerződés](billing-download-azure-invoice-daily-usage-date.md#download-invoices-for-a-microsoft-customer-agreement).
 
 Ez a cikk a Microsoft vevői szerződés számlázási fiók vonatkozik. [Ellenőrizze, hogy egy Microsoft Ügyfélszerződéséhez hozzáférést](#check-access-to-a-microsoft-customer-agreement).
 
@@ -34,11 +28,11 @@ Ez a cikk a Microsoft vevői szerződés számlázási fiók vonatkozik. [Ellen�
 
 1. Jelentkezzen be az [Azure Portalra](https://www.azure.com).
 
-2. A Keresés **Cost Management és számlázás**.
+2. Keresse meg **Cost Management és számlázás**.
 
     ![Költségkezelés + számlázás az Azure portál keresési bemutató képernyőkép](./media/billing-understand-your-bill-mca/billing-search-cost-management-billing.png)
 
-3. Válassza ki **összes tranzakció** a képernyő bal oldalán. Attól függően, a hozzáférés, előfordulhat, hogy egy számlázási fiók és egy számlázási profil kiválasztásához, majd válassza ki **összes tranzakció**.
+3. Válassza ki **összes tranzakció** az oldal bal oldalán. A hozzáférést, attól függően előfordulhat, hogy rendelkezik számlázási fiók, számlázási profilja vagy az invoice szakasz válassza, majd válassza a **összes tranzakció**.
 
 4. Az összes tranzakció lapon az alábbi információkat jeleníti meg:
 
@@ -55,31 +49,31 @@ Ez a cikk a Microsoft vevői szerződés számlázási fiók vonatkozik. [Ellen�
     |Számla szakasz     | Az ebben a szakaszban az billing invoice profil megjelenik a tranzakció |
     |Számlázási profilja     | A tranzakció megjelenik-e a számlán a számlázási profilja |
 
-5. Keresés a tranzakciók, a számla szűréséhez azonosítója.
+5. Keresse meg a számlán azonosító a számla a tranzakciók szűréséhez.
 
 ### <a name="view-transactions-by-invoice-sections"></a>A számla szakaszok tranzakciók megtekintése
 
-Számla szakaszok segítségével rendszerezheti egy számlázási profilja számlán a költségeket. További információkért lásd: [számla szakaszban megismerheti](billing-mca-overview.md#understand-invoice-sections). Ha számla alapján jön létre, a számlán jelenik meg a számlázási profilja szakaszai kell fizetni.
+Számla szakaszokból rendszerezheti egy számlázási profilja számla költségeit. További információkért lásd: [számla szakaszban megismerheti](billing-mca-overview.md#invoice-sections). Számla alapján jön létre, ha a számlázási profilban szereplő összes szakasz díjai a számlán jelennek meg.
 
-Az alábbi képen látható a könyvelési részleg számla szakasz díjai minta számlán.
+Az alábbi képen látható a könyvelési részleg számla szakaszának díjak minta számlán.
 
 ![Példa a kép a részletek a számla szakasz információkat](./media/billing-understand-your-bill-mca/invoicesection-details.png)
 
-Miután azonosította a költségek, számlák szakasz, megtekintheti a tranzakciók az Azure Portalon, a költségek ismertetése.
+A költségek, számlák szakasz azonosítása, megtekintheti a tranzakciók az Azure Portalon, a költségek ismertetése.
 
 1. Nyissa meg az összes tranzakció lapon megtekintheti az adott számlához tranzakciókat az Azure Portalon. További információkért lásd: [tranzakciók számla megtekintése az Azure Portalon](#view-transactions-for-an-invoice-in-the-azure-portal).
 
-2. Szűrés számlanév szakaszban megtekintheti a számla szakaszának tranzakciókat.
+2. Szűrés a számla szakasznév tranzakciók megtekintéséhez.
 
-## <a name="understand-pending-charges-to-estimate-your-next-invoice"></a>A következő számla becslése érdekében függőben lévő díjak ismertetése
+## <a name="review-pending-charges-to-estimate-your-next-invoice"></a>Függőben van a következő számla becslése érdekében a költségek áttekintése
 
-A Microsoft vevői szerződés számlázási fiók, a számlázása a díjakat, amíg becslés, és függőben lévő tekinthető. Függőben lévő díjak a következő számla becslése érdekében az Azure Portalon tekintheti meg. A függőben lévő díjak becsült, és nem tartalmazzák a forgalmi adót, így a tényleges díjak a következő számla változhatnak a függőben lévő kell fizetni.
+A Microsoft vevői szerződés számlázási fiókban díjak becsült és függőben lévő minősülnek mindaddig, amíg a számlázás. Függőben lévő díjak a következő számla becslése érdekében az Azure Portalon tekintheti meg. Függőben lévő díjak összegek becslések, és nem tartalmazzák a forgalmi adót. A tényleges díjak a következő számla változnak, a függőben lévő kell fizetni.
 
 ### <a name="view-summary-of-pending-charges"></a>Függőben lévő díjak összegzésének megtekintése
 
-1. Jelentkezzen be az [Azure Portalra](https://www.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. A Keresés **Cost Management és számlázás**.
+2. Keresse meg **Cost Management és számlázás**.
 
    ![Költségkezelés + számlázás az Azure portál keresési bemutató képernyőkép](./media/billing-understand-your-bill-mca/billing-search-cost-management-billing.png)
 
@@ -91,45 +85,45 @@ A Microsoft vevői szerződés számlázási fiók, a számlázása a díjakat, 
 
    ![Költségkezelés + számlázás az Azure portál keresési bemutató képernyőkép](./media/billing-understand-your-bill-mca/mca-billing-profile-summary.png)
 
-A hónap elejétől számított díjakat a függőben lévő díjak az aktuális hónaphoz és számlázása a számla jön létre a hónap során. A számla a múlt hónapban még nem jön létre, akkor a díjak a múlt hónapban is vannak függőben lévő és a következő számla fogja tartalmazni.
+A hónap elejétől számított díjakat a függőben lévő díjak az aktuális hónaphoz és számlázása a számla jön létre a hónap során. A számla a múlt hónapban még nem jön létre, akkor a díjak a múlt hónapban is vannak függőben lévő és a következő számlán.
 
 ### <a name="view-pending-transactions"></a>Függőben lévő tranzakciók megtekintése
 
-Ha azonosította a függőben lévő díjak, az egyes tranzakciók hozzájáruló a költségek elemzésével is ismernie kell fizetni. Ezen a ponton függőben lévő használati díjak nem jelennek meg az összes tranzakció oldalon. A függőben lévő használati díjak az Azure-előfizetések oldalon tekintheti meg. További információkért lásd: [függőben lévő használati díjak megtekintése](#view-pending-usage-charges)
+Azonosíthatja a függőben lévő díjakat, ha az egyes tranzakciók hozzájáruló a költségek elemzésével is ismernie kell fizetni. Ezen a ponton függőben lévő használati díjak nem jelennek meg az összes tranzakció oldalon. A függőben lévő használati díjak az Azure-előfizetések oldalon tekintheti meg. További információkért lásd: [függőben lévő használati díjak megtekintése](#view-pending-usage-charges)
 
-1. Jelentkezzen be az [Azure Portalra](https://www.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. A Keresés **Cost Management és számlázás**.
+2. Keresse meg **Cost Management és számlázás**.
 
    ![Költségkezelés + számlázás az Azure portál keresési bemutató képernyőkép](./media/billing-understand-your-bill-mca/billing-search-cost-management-billing.png)
 
 3. Válassza ki a számlázási profilt. A hozzáférést, attól függően előfordulhat, hogy rendelkezik számlázási fiók kiválasztása. Válassza ki a számlázási fiók **profilok számlázási** válassza ki a számlázási profilja.
 
-4. Válassza ki **összes tranzakció** a képernyő bal oldalán.
+4. Válassza ki **összes tranzakció** az oldal bal oldalán.
 
-5. Keresse meg **függőben lévő**. Használja a **Timespan** szűrőt a függőben lévő az aktuális vagy a múlt hónapban díjak megtekintése.
+5. Keresse meg *függőben lévő*. Használja a **Timespan** szűrőt a függőben lévő az aktuális vagy a múlt hónapban díjak megtekintése.
 
    ![A függőben lévő tranzakciók lista bemutató képernyőkép](./media/billing-understand-your-bill-mca/mca-pending-transactions-list.png)
 
 ### <a name="view-pending-usage-charges"></a>Függőben lévő használati díjak megtekintése
 
-1. Jelentkezzen be az [Azure Portalra](https://www.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. A Keresés **Cost Management és számlázás**.
+2. Keresse meg *Cost Management és számlázás*.
 
    ![Költségkezelés + számlázás az Azure portál keresési bemutató képernyőkép](./media/billing-understand-your-bill-mca/billing-search-cost-management-billing.png)
 
 3. Válassza ki a számlázási profilt. A hozzáférést, attól függően előfordulhat, hogy rendelkezik számlázási fiók kiválasztása. Válassza ki a számlázási fiók **profilok számlázási** válassza ki a számlázási profilja.
 
-4. Válassza ki **minden előfizetés** a képernyő bal oldalán.
+4. Válassza ki **minden előfizetés** egyet az oldal bal oldalán.
 
-5. Az Azure-előfizetések lapon megjeleníti a számlázási profilja aktuális és a díjak a múlt hónapban az egyes előfizetésekhez. A hónap elejétől számított díjakat a függőben lévő díjak az aktuális hónaphoz és számlázása a számla jön létre a hónap során. A számla a múlt hónapban még nem jön létre, akkor a díjak a múlt hónapban is vannak függőben.
+5. Az Azure-előfizetések lapon megjeleníti a számlázási profilja az aktuális és a díjak a múlt hónapban az egyes előfizetésekhez. A hónap elejétől számított díjakat a függőben lévő díjak az aktuális hónaphoz és számlázása a számla jön létre a hónap során. A számla a múlt hónapban még nem jön létre, akkor a díjak a múlt hónapban is vannak függőben.
 
     ![Képernyőkép az Azure-előfizetések számlázási profilja listája](./media/billing-understand-your-bill-mca/mca-billing-profile-subscriptions-list.png)
 
 ## <a name="analyze-your-azure-usage-charges"></a>Az Azure-használati díjakhoz elemzése
 
-Az Azure használat és költségek csv-fájl segítségével elemezheti a használat alapú költségek. Letöltheti a fájlt, egy számla vagy vonatkozó díjakat függőben van. További információkért lásd: [az Azure számlázási és napi használati adatainak lekérése](billing-download-azure-invoice-daily-usage-date.md).
+Az Azure használat és költségek CSV-fájl segítségével elemezheti a használat alapú költségek. Letöltheti a fájlt az adott számlához vagy a függőben lévő díjak. További információkért lásd: [az Azure számlázási és napi használati adatainak lekérése](billing-download-azure-invoice-daily-usage-date.md).
 
 ### <a name="view-detailed-usage-by-invoice-section"></a>Számla szakaszban részletes használati adatok megtekintéséhez
 
@@ -151,15 +145,14 @@ A következő lépések végigvezetik a könyvelési részleg számla szakaszán
 
 ![Képernyőkép, amely megjeleníti a használati és charges szakasz számla alapján szűrt fájl](./media/billing-understand-your-bill-mca/billing-usage-file-filtered-by-invoice-section.png)
 
-<!--Todo Add screenshot of usage file -->
 
 ### <a name="view-detailed-usage-by-subscription"></a>Részletes használati adatok megtekintéséhez az előfizetés szerint
 
-Szűrhet az Azure használat és költségek csv-fájl a szolgáltatások használati díjai egyeztetéséhez. Az összes előfizetés megtekintéséhez a számlázási profilja: [függőben lévő használati díjak megtekintése](#view-pending-usage-charges).
+Szűrhet az Azure használat és költségek CSV-fájl a szolgáltatások használati díjai egyeztetéséhez. Az összes előfizetés megtekintéséhez a számlázási profilja: [függőben lévő használati díjak megtekintése](#view-pending-usage-charges).
 
-Ha azonosította a előfizetést kell fizetni, a költségek elemzése az Azure használat és költségek csv-fájl használatával.
+Amikor azonosította előfizetést kell fizetni, a költségek elemzése az Azure használat és költségek CSV-fájl használatával.
 
-Az alábbi képernyőképen az előfizetések listáját jeleníti meg az Azure Portalon.
+Az alábbi képen látható az előfizetések listáját az Azure Portalon.
 
 ![Képernyőkép az Azure-előfizetések számlázási profilja listája](./media/billing-understand-your-bill-mca/mca-billing-profile-subscriptions-list-highlighted.png)
 
@@ -176,7 +169,7 @@ Ha már korábban fizetett a számlán, az állapot, a fizetési módot, az Azur
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>A Microsoft Ügyfélszerződéséhez való hozzáférés ellenőrzése
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolat
+## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 

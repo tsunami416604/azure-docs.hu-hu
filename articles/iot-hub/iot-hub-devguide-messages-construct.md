@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: e80fb136220330ddc53d513b22ebcfa19a35117b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e2aafa195fa463a405e2132cd41fada8d6903961
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66252802"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450081"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub-üzenetek létrehozása és olvasása
 
@@ -55,7 +55,7 @@ Az alábbi táblázat az IoT Hub-üzenetek a rendszer tulajdonságai készletét
 | sequence-number |Minden egyes felhőből az eszközre irányuló üzenetek IoT Hub által hozzárendelt szám (soronként eszköz egyedi). | A nem C2D üzenetek; Ellenkező esetben igen. |
 | erre: |A megadott cél [felhőből az eszközre](iot-hub-devguide-c2d-guidance.md) üzeneteket. | A nem C2D üzenetek; Ellenkező esetben igen. |
 | absolute-expiry-time |Dátum és idő, az üzenetek lejáratkor. | Igen |
-| iothub-enqueuedtime |Dátum és idő a [felhőből az eszközre](iot-hub-devguide-c2d-guidance.md) által az IoT Hub-üzenet érkezett. | A nem C2D üzenetek; Ellenkező esetben igen. |
+| iothub-enqueuedtime |Dátum és idő a [eszközről a felhőbe](iot-hub-devguide-d2c-guidance.md) által az IoT Hub-üzenet érkezett. | A nem D2C-messages; Ellenkező esetben igen. |
 | korrelációs azonosító |A válaszüzenetben általában az üzenetazonosító, a kérelem, a kérés-válasz mintákat tartalmazó karakterlánc típusú tulajdonság. | Igen |
 | felhasználói azonosító |Adja meg a forrás, az üzenetek használt azonosító. Az IoT Hub által előállított üzeneteket, ha van-e állítva `{iot hub name}`. | Nem |
 | iothub-ack |Egy visszajelzés üzenet generátort. Ez a tulajdonság használják a felhőből az eszközre irányuló üzenetek létrehozni az üzenet a használatalapú eredményeként visszajelzés üzeneteket az IoT Hub kérése az eszköz. A lehetséges értékek: **nincs** (alapértelmezett): Nincs visszajelzés üzenet jön létre, **pozitív**: visszajelzés üzenetet kap, ha az üzenet fejeződött be, **negatív**: kap egy visszajelzési üzenetek anélkül, hogy az eszköz végzi üzenet lejárt (vagy kézbesítések maximális száma elérte a) Ha vagy **teljes**: pozitív és negatív. <!-- robinsh For more information, see [Message feedback][lnk-feedback].--> | Igen |

@@ -8,18 +8,18 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: howto
 ms.date: 05/09/2019
-ms.openlocfilehash: 7457c06f9f151cb310704a985c79572c7b770859
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e9cb9a902cf60fbd3b297a72a7dfa836ee18c835
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67166228"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484583"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Hozzon létre, és az Azure HDInsight vállalati biztonsági csomag fürtök konfigurálása
 
 A vállalati biztonsági csomag az Azure HDInsight hozzáférést biztosít az Apache Hadoop-fürtöket az Azure Active Directory-alapú hitelesítés, a több felhasználó támogatása és a szerepköralapú hozzáférés-vezérlés. HDInsight ESP-fürtök teszik lehetővé a szervezetek mely szigorú vállalati biztonsági szabályzatoknak, bizalmas adatok feldolgozását biztonságos formátumhoz.
 
-Ez az útmutató célja megfelelően van konfigurálva a szükséges erőforrásokat úgy, hogy a helyszíni felhasználók bejelentkezhetnek az ESP engedélyezve van a HDInsight-fürt. Ez a cikk végigvezeti a lépéseken, hozzon létre egy Azure HDInsight-fürtön vállalati biztonsági csomag engedélyezve van szükség. A lépések Windows IaaS virtuális gép létrehozása az Active Directory & tartománynév szolgáltatásokat (DNS) engedélyezve van erről. Ez a kiszolgáló helyettesítője fog működni a **tényleges** a helyszíni környezetben, és lehetővé teszi, hogy később a saját környezetében megismételheti a beállítási és konfigurációs lépéseket folytassa. Ez az útmutató segítségével hozhat létre a Jelszókivonat-szinkronizálás használata az Azure Active Directory hibrid identitás környezetben is.
+Ez az útmutató célja megfelelően konfigurálhatja a szükséges erőforrást, úgy, hogy a helyszíni felhasználók jelentkezhetnek be az ESP engedélyezve van a HDInsight-fürt. Ez a cikk végigvezeti a lépéseken, hozzon létre egy Azure HDInsight-fürtön vállalati biztonsági csomag engedélyezve van szükség. A lépések Windows IaaS virtuális gép létrehozása az Active Directory & tartománynév szolgáltatásokat (DNS) engedélyezve van erről. Ez a kiszolgáló helyettesítője fog működni a **tényleges** a helyszíni környezetben, és lehetővé teszi, hogy később a saját környezetében megismételheti a beállítási és konfigurációs lépéseket folytassa. Ez az útmutató segítségével hozhat létre a Jelszókivonat-szinkronizálás használata az Azure Active Directory hibrid identitás környezetben is.
 
 Ez az útmutató hivatott kiegészíteni [használata vállalati biztonsági csomag a HDInsight](apache-domain-joined-architecture.md)
 
@@ -208,7 +208,7 @@ További információkért lásd: [engedélyezése az Active Directory Domain Se
 1. Jelentkezzen be az Azure portálra.
 1. Kattintson a **erőforrás létrehozása**, adja meg **Domain services** válassza **Azure AD tartományi szolgáltatások**.
 1. Az a **alapjai** képernyő a következő lépéseket:
-    1. A **könyvtárnév** válassza ki az ebben az oktatóanyagban létrehozott Azure Active Directory **HDIFabrikam**.
+    1. A **könyvtárnév** válassza ki az ebben a cikkben létrehozott Azure Active Directory **HDIFabrikam**.
     1. Adjon meg egy **DNS-tartománynév** , **HDIFabrikam.com**.
     1. Válassza ki előfizetését.
     1. Adja meg az erőforráscsoportot **HDIFabrikam-CentralUS** és a **hely** , **USA középső RÉGIÓJA**.
@@ -219,7 +219,7 @@ További információkért lásd: [engedélyezése az Active Directory Domain Se
 
     ![hálózat kiválasztása](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image086.png)
 
-1. Az a **rendszergazdai csoport** képernyőn megjelenik egy értesítés, hogy a csoport neve **AAD DC rendszergazdák** felügyelheti ezt a csoportot már létrejött. Igény szerint módosíthatja a csoport tagságát, de ez nem kötelező a jelen oktatóanyag lépéseit. Kattintson az **OK** gombra.
+1. Az a **rendszergazdai csoport** képernyőn megjelenik egy értesítés, hogy a csoport neve **AAD DC rendszergazdák** felügyelheti ezt a csoportot már létrejött. Igény szerint módosíthatja a csoport tagságát, de ez nem kötelező ez a cikk lépéseit. Kattintson az **OK** gombra.
 
     ![rendszergazdai csoport megtekintése](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image088.png)
 

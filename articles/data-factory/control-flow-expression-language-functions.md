@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 4c51974498539a0305312d6501bcfa9ebc3b2e88
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d48d9e89085e08ac4da9db15458e3a3aa8152bb5
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64573549"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67541220"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Kifejezések és függvények az Azure Data Factoryben
 > [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
@@ -139,6 +139,9 @@ A következő példában a folyamathoz szükséges **inputPath** és **outputPat
     }
 }
 ```
+#### <a name="tutorial"></a>Oktatóanyag
+Ez [oktatóanyag](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-passing-parameters/Azure%20data%20Factory-Whitepaper-PassingParameters.pdf) ismerteti, hogyan át a paramétereket egy folyamat és a tevékenységek is közötti érvénnyel a tevékenységek között.
+
   
 ## <a name="functions"></a>Functions  
  Kifejezések belül függvények hívása. Az alábbi szakaszok ismertetik a funkciók használható egy kifejezésben.  
@@ -167,21 +170,21 @@ A következő példában a folyamathoz szükséges **inputPath** és **outputPat
 |Függvény neve|Leírás|  
 |-------------------|-----------------|  
 |tartalmaz|Igaz értéket ad eredményül, ha a dictionary tartalmazza a legfontosabb, értéket tartalmaz, vagy karakterlánc részkarakterláncot tartalmaz. Ha például a következő kifejezést ad vissza `true:``contains('abacaba','aca')`<br /><br /> **Paraméter száma**: 1<br /><br /> **Név**: Gyűjteményen belül<br /><br /> **Leírás**: Kötelező. A gyűjtemény, amelyben keresni kíván.<br /><br /> **Paraméter száma**: 2<br /><br /> **Név**: Objektum keresése<br /><br /> **Leírás**: Kötelező. A keresendő objektum a **gyűjteményen belül**.|  
-|length|Egy tömb vagy karakterlánc elemeinek számát adja vissza. Ha például a következő kifejezést ad vissza `3`:  `length('abc')`<br /><br /> **Paraméter száma**: 1<br /><br /> **Név**: Gyűjtemény<br /><br /> **Leírás**: Kötelező. A gyűjtemény hosszának beolvasása.|  
-|üres|Igaz értéket ad eredményül, ha az objektum, tömb vagy karakterlánc üres. Ha például a következő kifejezést ad vissza `true`:<br /><br /> `empty('')`<br /><br /> **Paraméter száma**: 1<br /><br /> **Név**: Gyűjtemény<br /><br /> **Leírás**: Kötelező. Ellenőrizze, hogy üres gyűjtemény.|  
+|length|Egy tömb vagy karakterlánc elemeinek számát adja vissza. Ha például a következő kifejezést ad vissza `3`:  `length('abc')`<br /><br /> **Paraméter száma**: 1<br /><br /> **Név**: Collection<br /><br /> **Leírás**: Kötelező. A gyűjtemény hosszának beolvasása.|  
+|üres|Igaz értéket ad eredményül, ha az objektum, tömb vagy karakterlánc üres. Ha például a következő kifejezést ad vissza `true`:<br /><br /> `empty('')`<br /><br /> **Paraméter száma**: 1<br /><br /> **Név**: Collection<br /><br /> **Leírás**: Kötelező. Ellenőrizze, hogy üres gyűjtemény.|  
 |Metszet|Egyetlen olyan tömböt vagy objektumot a közös elemeit adja vissza a tömbök vagy objektumok át. Például ez a függvény visszaad `[1, 2]`:<br /><br /> `intersection([1, 2, 3], [101, 2, 1, 10],[6, 8, 1, 2])`<br /><br /> A függvény paramétereit egy objektumhalmazban vagy egy tömbökből álló halmazban (nem egy objektumhalmazban) lehet. Ha két objektum ugyanazzal a névvel, a végső objektumban az utolsó adott nevű objektum jelenik meg.<br /><br /> **Paraméter száma**: 1... *n*<br /><br /> **Név**: Gyűjtemény *n*<br /><br /> **Leírás**: Kötelező. A kiértékelendő gyűjtemények. Az objektum összes gyűjtemény megjelenjen az eredményben az átadott kell lennie.|  
-|Union|Egyetlen olyan tömböt vagy objektumot az elemek tömbök vagy objektumok bármelyikében szereplő átadott azt adja vissza. Például ez a függvény visszaad `[1, 2, 3, 10, 101]:`<br /><br /> :  `union([1, 2, 3], [101, 2, 1, 10])`<br /><br /> A függvény paramétereit egy objektumhalmazban vagy egy tömbökből álló halmazban (nem egy objektumhalmazban) lehet. Ha két objektum a végső kimenet ugyanazzal a névvel, a végső objektumban az utolsó adott nevű objektum jelenik meg.<br /><br /> **Paraméter száma**: 1... *n*<br /><br /> **Név**: Gyűjtemény *n*<br /><br /> **Leírás**: Kötelező. A kiértékelendő gyűjtemények. Olyan objektum, amely a gyűjtemények bármelyikében megjelenik az eredmény jelenik meg.|  
-|első|Az átadott tömb vagy karakterlánc az első elemét adja vissza. Például ez a függvény visszaad `0`:<br /><br /> `first([0,2,3])`<br /><br /> **Paraméter száma**: 1<br /><br /> **Név**: Gyűjtemény<br /><br /> **Leírás**: Kötelező. A gyűjtemény, az első objektumot.|  
-|utolsó|Az átadott tömb vagy karakterlánc az utolsó elemét adja vissza. Például ez a függvény visszaad `3`:<br /><br /> `last('0123')`<br /><br /> **Paraméter száma**: 1<br /><br /> **Név**: Gyűjtemény<br /><br /> **Leírás**: Kötelező. A gyűjtemény, az utolsó objektumot.|  
-|hajtsa végre a megfelelő|Visszaadja az első **száma** az átadott tömb vagy karakterlánc elemeit, például ez a függvény visszaad `[1, 2]`:  `take([1, 2, 3, 4], 2)`<br /><br /> **Paraméter száma**: 1<br /><br /> **Név**: Gyűjtemény<br /><br /> **Leírás**: Kötelező. A gyűjtemény, az első **száma** objektumait ki.<br /><br /> **Paraméter száma**: 2<br /><br /> **Név**: Darabszám<br /><br /> **Leírás**: Kötelező. A beolvasandó objektumok száma a **gyűjtemény**. Pozitív egész számnak kell lennie.|  
-|Kihagyás|Elemeit adja vissza, a tömb indexpozíciónál kezdődő **száma**, például ez a függvény visszaad `[3, 4]`:<br /><br /> `skip([1, 2 ,3 ,4], 2)`<br /><br /> **Paraméter száma**: 1<br /><br /> **Név**: Gyűjtemény<br /><br /> **Leírás**: Kötelező. A gyűjtemény, amelynek az első **száma** objektumait ki.<br /><br /> **Paraméter száma**: 2<br /><br /> **Név**: Count<br /><br /> **Leírás**: Kötelező. Elejéről eltávolítandó objektumok száma **gyűjtemény**. Pozitív egész számnak kell lennie.|  
+|union|Egyetlen olyan tömböt vagy objektumot az elemek tömbök vagy objektumok bármelyikében szereplő átadott azt adja vissza. Például ez a függvény visszaad `[1, 2, 3, 10, 101]:`<br /><br /> :  `union([1, 2, 3], [101, 2, 1, 10])`<br /><br /> A függvény paramétereit egy objektumhalmazban vagy egy tömbökből álló halmazban (nem egy objektumhalmazban) lehet. Ha két objektum a végső kimenet ugyanazzal a névvel, a végső objektumban az utolsó adott nevű objektum jelenik meg.<br /><br /> **Paraméter száma**: 1... *n*<br /><br /> **Név**: Gyűjtemény *n*<br /><br /> **Leírás**: Kötelező. A kiértékelendő gyűjtemények. Olyan objektum, amely a gyűjtemények bármelyikében megjelenik az eredmény jelenik meg.|  
+|első|Az átadott tömb vagy karakterlánc az első elemét adja vissza. Például ez a függvény visszaad `0`:<br /><br /> `first([0,2,3])`<br /><br /> **Paraméter száma**: 1<br /><br /> **Név**: Collection<br /><br /> **Leírás**: Kötelező. A gyűjtemény, az első objektumot.|  
+|utolsó|Az átadott tömb vagy karakterlánc az utolsó elemét adja vissza. Például ez a függvény visszaad `3`:<br /><br /> `last('0123')`<br /><br /> **Paraméter száma**: 1<br /><br /> **Név**: Collection<br /><br /> **Leírás**: Kötelező. A gyűjtemény, az utolsó objektumot.|  
+|take|Visszaadja az első **száma** az átadott tömb vagy karakterlánc elemeit, például ez a függvény visszaad `[1, 2]`:  `take([1, 2, 3, 4], 2)`<br /><br /> **Paraméter száma**: 1<br /><br /> **Név**: Collection<br /><br /> **Leírás**: Kötelező. A gyűjtemény, az első **száma** objektumait ki.<br /><br /> **Paraméter száma**: 2<br /><br /> **Név**: Count<br /><br /> **Leírás**: Kötelező. A beolvasandó objektumok száma a **gyűjtemény**. Pozitív egész számnak kell lennie.|  
+|Kihagyás|Elemeit adja vissza, a tömb indexpozíciónál kezdődő **száma**, például ez a függvény visszaad `[3, 4]`:<br /><br /> `skip([1, 2 ,3 ,4], 2)`<br /><br /> **Paraméter száma**: 1<br /><br /> **Név**: Collection<br /><br /> **Leírás**: Kötelező. A gyűjtemény, amelynek az első **száma** objektumait ki.<br /><br /> **Paraméter száma**: 2<br /><br /> **Név**: Count<br /><br /> **Leírás**: Kötelező. Elejéről eltávolítandó objektumok száma **gyűjtemény**. Pozitív egész számnak kell lennie.|  
   
 ## <a name="logical-functions"></a>Logikai függvények  
  Ezek a függvények feltételek belül lehetnek hasznosak, bármilyen típusú logikai kiértékeléséhez használható.  
   
 |Függvény neve|Leírás|  
 |-------------------|-----------------|  
-|egyenlő|Igaz értéket ad eredményül, ha két érték egyenlő. Például ha parameter1 foo, a következő kifejezés termékazonosítóhoz `true`: `equals(pipeline().parameters.parameter1), 'foo')`<br /><br /> **Paraméter száma**: 1<br /><br /> **Név**: 1 objektum<br /><br /> **Leírás**: Kötelező. Az objektumhoz hasonlítandó **objektum 2**.<br /><br /> **Paraméter száma**: 2<br /><br /> **Név**: Objektum 2<br /><br /> **Leírás**: Kötelező. Az objektumhoz hasonlítandó **objektum 1**.|  
+|equals|Igaz értéket ad eredményül, ha két érték egyenlő. Például ha parameter1 foo, a következő kifejezés termékazonosítóhoz `true`: `equals(pipeline().parameters.parameter1), 'foo')`<br /><br /> **Paraméter száma**: 1<br /><br /> **Név**: 1 objektum<br /><br /> **Leírás**: Kötelező. Az objektumhoz hasonlítandó **objektum 2**.<br /><br /> **Paraméter száma**: 2<br /><br /> **Név**: Objektum 2<br /><br /> **Leírás**: Kötelező. Az objektumhoz hasonlítandó **objektum 1**.|  
 |kevesebb|Igaz értéket ad eredményül, ha az első argumentum kisebb a másodiknál. Vegye figyelembe, hogy értékeket csak egész szám típusú, lebegőpontos vagy karakterlánc lehet. Ha például a következő kifejezést ad vissza `true`:  `less(10,100)`<br /><br /> **Paraméter száma**: 1<br /><br /> **Név**: 1 objektum<br /><br /> **Leírás**: Kötelező. Az objektum, ellenőrizze, hogy kevesebb mint **objektum 2**.<br /><br /> **Paraméter száma**: 2<br /><br /> **Név**: Objektum 2<br /><br /> **Leírás**: Kötelező. Ellenőrizze, hogy nagyobb, mint az objektum **objektum 1**.|  
 |lessOrEquals|Igaz értéket ad eredményül, ha az első argumentum értéke kisebb vagy egyenlő a másodiknál. Vegye figyelembe, hogy értékeket csak egész szám típusú, lebegőpontos vagy karakterlánc lehet. Ha például a következő kifejezést ad vissza `true`:  `lessOrEquals(10,10)`<br /><br /> **Paraméter száma**: 1<br /><br /> **Név**: 1 objektum<br /><br /> **Leírás**: Kötelező. Az objektum, ellenőrizze, hogy kisebb vagy egyenlő **objektum 2**.<br /><br /> **Paraméter száma**: 2<br /><br /> **Név**: Objektum 2<br /><br /> **Leírás**: Kötelező. Az objektum, ellenőrizze, hogy nagyobb vagy egyenlő **objektum 1**.|  
 |nagyobb|Igaz értéket ad eredményül, ha az első argumentum értéke nagyobb a másodiknál. Vegye figyelembe, hogy értékeket csak egész szám típusú, lebegőpontos vagy karakterlánc lehet. Ha például a következő kifejezést ad vissza `false`:  `greater(10,10)`<br /><br /> **Paraméter száma**: 1<br /><br /> **Név**: 1 objektum<br /><br /> **Leírás**: Kötelező. Ellenőrizze, hogy nagyobb, mint az objektum **objektum 2**.<br /><br /> **Paraméter száma**: 2<br /><br /> **Név**: Objektum 2<br /><br /> **Leírás**: Kötelező. Az objektum, ellenőrizze, hogy kevesebb mint **objektum 1**.|  
@@ -189,18 +192,18 @@ A következő példában a folyamathoz szükséges **inputPath** és **outputPat
 |és|Igaz értéket ad eredményül, ha mindkét paraméter igaz. Mindkét argumentumot kell lennie a logikai értékek. A következő értéket ad vissza `false`:  `and(greater(1,10),equals(0,0))`<br /><br /> **Paraméter száma**: 1<br /><br /> **Név**: Logikai 1<br /><br /> **Leírás**: Kötelező. Az első argumentum, amelyet be kell `true`.<br /><br /> **Paraméter száma**: 2<br /><br /> **Név**: Logikai 2<br /><br /> **Leírás**: Kötelező. A második argumentum kell `true`.|  
 |vagy|Igaz értéket ad eredményül, ha a paraméterek bármelyike igaz. Mindkét argumentumot kell lennie a logikai értékek. A következő értéket ad vissza `true`:  `or(greater(1,10),equals(0,0))`<br /><br /> **Paraméter száma**: 1<br /><br /> **Név**: Logikai 1<br /><br /> **Leírás**: Kötelező. Az első argumentum, amely lehet `true`.<br /><br /> **Paraméter száma**: 2<br /><br /> **Név**: Logikai 2<br /><br /> **Leírás**: Kötelező. A második argumentum értéke lehet `true`.|  
 |nem|Igaz értéket ad eredményül, ha a paraméter `false`. Mindkét argumentumot kell lennie a logikai értékek. A következő értéket ad vissza `true`:  `not(contains('200 Success','Fail'))`<br /><br /> **Paraméter száma**: 1<br /><br /> **Név**: Boolean<br /><br /> **Leírás**: Igaz értéket ad eredményül, ha a paraméter `false`. Mindkét argumentumot kell lennie a logikai értékek. A következő értéket ad vissza `true`:  `not(contains('200 Success','Fail'))`|  
-|Ha|Ha a megadott kifejezést kapott alapján egy megadott értéket adja vissza `true` vagy `false`.  Ha például a következő értéket ad vissza `"yes"`: `if(equals(1, 1), 'yes', 'no')`<br /><br /> **Paraméter száma**: 1<br /><br /> **Név**: kifejezés<br /><br /> **Leírás**: Kötelező. A kifejezés egy logikai érték, amely meghatározza, hogy melyik értéket adja vissza.<br /><br /> **Paraméter száma**: 2<br /><br /> **Név**: True (Igaz)<br /><br /> **Leírás**: Kötelező. A visszaadandó érték, ha a kifejezés `true`.<br /><br /> **Paraméter száma**: 3<br /><br /> **Név**: False (Hamis)<br /><br /> **Leírás**: Kötelező. A visszaadandó érték, ha a kifejezés `false`.|  
+|Ha|Ha a megadott kifejezést kapott alapján egy megadott értéket adja vissza `true` vagy `false`.  Ha például a következő értéket ad vissza `"yes"`: `if(equals(1, 1), 'yes', 'no')`<br /><br /> **Paraméter száma**: 1<br /><br /> **Név**: kifejezés<br /><br /> **Leírás**: Kötelező. A kifejezés egy logikai érték, amely meghatározza, hogy melyik értéket adja vissza.<br /><br /> **Paraméter száma**: 2<br /><br /> **Név**: True<br /><br /> **Leírás**: Kötelező. A visszaadandó érték, ha a kifejezés `true`.<br /><br /> **Paraméter száma**: 3<br /><br /> **Név**: False (Hamis)<br /><br /> **Leírás**: Kötelező. A visszaadandó érték, ha a kifejezés `false`.|  
   
 ## <a name="conversion-functions"></a>Konverziós függvények  
  Ezek a függvények használhatók minden nyelven natív típusok között:  
   
 -   string  
   
--   egész szám  
+-   integer  
   
 -   float  
   
--   logikai  
+-   boolean  
   
 -   tömbök  
   

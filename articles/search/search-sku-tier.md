@@ -7,31 +7,31 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 07/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 00422209302bbcc2139be4f6b490f0bb2816c051
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 892a79f898e2448096ad4b252a18e0713bb32e52
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65539278"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485293"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Válasszon egy tarifacsomagot az Azure Search
 
-Amikor létrehoz egy Azure Search szolgáltatást egy [erőforrás létrehozása](search-create-service-portal.md) tarifacsomag vagy SKU, amely a szolgáltatás teljes élettartama rögzített címen. A szolgáltatásszintek ingyenes, alapszintű, Standard és tárolásra optimalizált. Standard és a különböző konfigurációkat, és a kapacitások tárolásra optimalizált érhetők el.
+Amikor létrehoz egy Azure Search szolgáltatást egy [erőforrás létrehozása](search-create-service-portal.md) árképzési szint (vagy Termékváltozat), amelyek rögzítik a szolgáltatás teljes élettartama. A szolgáltatásszintek ingyenes, alapszintű, Standard és tárolásra optimalizált. Standard és a különböző konfigurációkat, és a kapacitások tárolásra optimalizált érhetők el.
 
-A legtöbb ügyfél indítsa el az ingyenes szinttel, azokat is kiértékelheti, hogy a szolgáltatás. Majd frissítse a fejlesztési és éles környezetekben a magasabb szintű egyik. Az ingyenes, beleértve az erőforrás-igényes cognitive Search azokat az összes útmutatóink és oktatóanyagaink segítségével hajthatja végre.
+A legtöbb ügyfél indítsa el az ingyenes szinttel, azokat is kiértékelheti, hogy a szolgáltatás. Utáni kiértékelése szokás használatával hozhat létre egy második szolgáltatást fejlesztési és éles környezetekben a magasabb csomagok valamelyikére. Az ingyenes, beleértve az erőforrás-igényes cognitive Search azokat az összes útmutatóink és oktatóanyagaink segítségével hajthatja végre.
 
 > [!NOTE]
-> A Microsoft jelenleg biztosít a tárolásra optimalizált szolgáltatásszintek, teszteléséhez és a kísérleti,. a cél az, hogy visszajelzéseket kedvezményes áron egy előzetes verzióban érhető el. Végső díjszabás lesz bejelentve később, amikor ezek a rétegek általánosan elérhetők. Azt javasoljuk, hogy az éles környezetben ezek a rétegek tanúsítványokkal szemben.
+> . Július 1-től az összes szint általánosan elérhetők, beleértve a tárolásra optimalizált szint. Az összes díjszabás találhatók a [díjszabása](https://azure.microsoft.com/pricing/details/search/) lap.
 
 Rétegek helyett az szolgáltatást (szolgáltatásokat) üzemeltető a hardver jellemzőit tükrözik, és vannak különbözteti meg:
 
 + Indexeket hozhat létre száma.
 + Méretétől és sebességétől partíciók (fizikai tároló).
 
-Bár minden szinten, beleértve az ingyenes szint általánosan funkcióparitás ajánl fel, nagyobb méretű számítási feladatokat a magasabb szintű szüksége lehet diktálni. Ha például [mesterséges indexeléshez a Cognitive Services](cognitive-search-concept-intro.md) rendelkezik hosszú ideig futó képességeit, hogy időtúllépés egy ingyenes szolgáltatás, ha az adatkészlet nem kisebb.
+Bár minden szinten, beleértve az ingyenes szint általánosan funkcióparitás ajánl fel, nagyobb méretű számítási feladatokat a magasabb szintű szüksége lehet diktálni. Ha például [a Cognitive Services mesterséges Intelligencia Adatbővítés](cognitive-search-concept-intro.md) rendelkezik hosszú ideig futó képességeit, hogy időtúllépés egy ingyenes szolgáltatás, ha az adatkészlet nem kisebb.
 
 > [!NOTE] 
 > Funkcióparitás kivételt [indexelők](search-indexer-overview.md), amelyek nem állnak rendelkezésre az S3 HD.
@@ -60,7 +60,11 @@ A következő táblázat felsorolja az elérhető tarifacsomag. Talál további 
 
 ## <a name="how-billing-works"></a>A számlázás működése
 
-Háromféleképpen költségek az Azure Search szolgáltatásban, és a rögzített és változó összetevőből áll. Ez a szakasz ismerteti a számlázási három összetevővel: alapvető szolgáltatási költségei, a kimenő adatforgalom díját és a mesterséges Intelligencia bővített indexelés.
+A költségek az Azure Search három módja van. Ez a szakasz ismerteti a három számlázási összetevők: 
+
++ Core service ára
++ kimenő forgalom (vagy a sávszélesség) díjak
++ Mesterséges Intelligencia végrehajtott információbeolvasás
 
 ### <a name="core-service-costs-fixed-and-variable"></a>Core szolgáltatási költségei (rögzített és változó)
 
@@ -98,9 +102,9 @@ Használatával [Azure Search-indexelők](search-indexer-overview.md) előfordul
 
 Díjak terhelik kimenő különböző régiókban lévő szolgáltatások esetén. Ezek a díjak nem az Azure Search számla valójában egy részét. Ezek még itt említett mert használata adatok és AI-bővített indexelők segítségével szerez adatokat különböző régiókban, látni fogja a költségek megjelennek a teljes számlája összegét.
 
-### <a name="ai-enriched-indexing-with-cognitive-services"></a>AI-bővített indexelés kognitív szolgáltatásokkal
+### <a name="ai-enrichments-with-cognitive-services"></a>Mesterséges Intelligencia végrehajtott információbeolvasás a Cognitive Services
 
-A [mesterséges indexeléshez a Cognitive Services](cognitive-search-concept-intro.md), meg kell terveznie a számlázható Azure Cognitive Services-erőforrás, ugyanabban a régióban, az Azure Search, a használatalapú fizetéses feldolgozási S0 tarifacsomagjának csatolni. Nincs társított csatolása a Cognitive Services rögzített költség nélkül. Csak kell fizetnie kell a feldolgozása.
+A [a Cognitive Services mesterséges Intelligencia Adatbővítés](cognitive-search-concept-intro.md), meg kell terveznie a számlázható Azure Cognitive Services-erőforrás, ugyanabban a régióban, az Azure Search, a használatalapú fizetéses feldolgozási S0 tarifacsomagjának csatolni. Nincs társított csatolása a Cognitive Services rögzített költség nélkül. Csak kell fizetnie kell a feldolgozása.
 
 Kép kinyerési dokumentumfeltörést során egy Azure Search díj. A dokumentumok kinyert lemezképek száma alapján számlázzuk ki. Szövegkinyerés jelenleg díjmentes.
 

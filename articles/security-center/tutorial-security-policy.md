@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/05/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 7f738350743b0b80bf39a322043c514081721def
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7ff05421222ff0f4312d703366cfd443eee06450
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967846"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551729"
 ---
 # <a name="working-with-security-policies"></a>Biztonsági szabályzatok használata
 
@@ -32,7 +32,7 @@ PowerShell-lel házirendek beállításával kapcsolatos utasításokért lásd:
 > A Security Center az Azure Policy segítségével az integráció elindult. Meglévő ügyfelek automatikusan átkerülnek az új beépített kezdeményezésére az Azure Policy, a Security Center az előző biztonsági házirendek helyett. Ez a változás nem érinti az erőforrások vagy az új kezdeményezés az Azure Policy-jelenléte kivételével környezettel.
 
 ## <a name="what-are-security-policies"></a>Mik azok a biztonsági szabályzatok?
-A biztonsági szabályzat határozza meg a számítási feladatokhoz tartozó kívánt konfigurációkat, és segít biztosítani a vállalati vagy hatósági követelményeknek való megfelelést. Az Azure Policy az Azure-előfizetésekre vonatkozó szabályzatokat határozhat meg, és testre szabni azokat a számítási feladatok típusának vagy az adatok érzékenységéhez. A szabályozott adatokat, például személyazonosításra alkalmas adatokat használó alkalmazások például szükség lehet egy magasabb biztonsági szintet, mint a többi munkaterhelését. Házirend beállítása a felügyeleti csoportok vagy előfizetések között, állítsa őket a [Azure Policy](../governance/policy/overview.md).
+A biztonsági szabályzat határozza meg a számítási feladatokhoz tartozó kívánt konfigurációkat, és segít biztosítani a vállalati vagy hatósági követelményeknek való megfelelést. Az Azure Policy az Azure-előfizetésekre vonatkozó szabályzatokat határozhat meg, és testre szabni azokat a számítási feladatok típusának vagy az adatok érzékenységéhez. Alkalmazásokat, amelyek használják a szabályozott adatokat, például a személyes adatok vagy az ügyféladatok, például szükség lehet egy magasabb biztonsági szintet, mint a többi munkaterhelését. Házirend beállítása a felügyeleti csoportok vagy előfizetések között, állítsa őket a [Azure Policy](../governance/policy/overview.md).
 
 A biztonsági szabályzatokat a biztonsági javaslatokkal kap az Azure Security Centerben. Segít azonosítani a potenciális biztonsági réseket és elhárítani a fenyegetéseket az azoknak való megfelelés figyelése Juthat az Önnek legmegfelelőbb lehetőség meghatározásával kapcsolatos további információkért lásd a [beépített biztonsági házirendek](security-center-policy-definitions.md).
 
@@ -73,13 +73,6 @@ Biztonsági szabályzatok megtekintése a Security Centerben:
    > [!NOTE]
    > - A Security Center irányítópultján valószínűleg-előfizetések nagyobb számú **előfizetési lefedettség** , mint az előfizetések alatt látható **házirendkezelés**. Az Előfizetési lefedettség alatt a Standard, Ingyenes és „nem lefedett” előfizetések is megjelennek. A "nem kezelt" előfizetések nincs engedélyezve a Security Center, és nem jelennek meg a **házirendkezelés**.
    >
-
-   A táblázatban lévő oszlopok a következők:
-
-   - **Szabályzati kezdeményezés hozzárendelése** – Security Center [beépített szabályzatok](security-center-policy-definitions.md) és a egy előfizetést vagy felügyeleti csoporthoz hozzárendelt kezdeményezések.
-   - **Lefedettség** – tarifacsomag kiválasztása, ingyenes vagy standard szintű, a felügyeleti csoport, az előfizetés vagy a munkaterület számítógépen futó azonosítja.  A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md).
-   - **Beállítások** – előfizetések még a hivatkozás **beállításainak szerkesztése**. Kiválasztásával **beállításainak szerkesztése** frissítése lehetővé teszi a [a Security Center beállítások](security-center-policies-overview.md) minden egyes előfizetés vagy a felügyeleti csoport számára.
-   - **Biztonságos pontszám** – a [biztonságos pontszám](security-center-secure-score.md) mérhető, mennyire vannak biztonságban a számítási feladatok biztonsági állapotáról, és segít rangsorolhatja javítására vonatkozó javaslatokat.
 
 2. Válassza ki az előfizetést vagy felügyeleti csoportot, amelynek meg szeretné tekinteni házirendeket.
 
@@ -132,11 +125,11 @@ A natív integrációt olyan Azure-szabályzat részeként az Azure Security Cen
 
 Az Azure Policy alapfogalmaival: 
 
-- A **szabályzatdefiníció** szabály 
+- A **szabályzatdefiníció** szabály 
 
-- Egy **kezdeményezés** szabályzatdefiníciók (szabályok) gyűjteménye 
+- Egy **kezdeményezés** szabályzatdefiníciók (szabályok) gyűjteménye 
 
-- Egy **hozzárendelés** egy alkalmazás egy szabályzatot vagy kezdeményezést, amelyek egy adott hatókörhöz (felügyeleti csoport, előfizetési, stb.) 
+- Egy **hozzárendelés** egy alkalmazás egy szabályzatot vagy kezdeményezést, amelyek egy adott hatókörhöz (felügyeleti csoport, előfizetési, stb.) 
 
 A Security Center rendelkezik egy beépített kezdeményezés, amely tartalmazza az összes annak biztonsági házirendjei. Annak érdekében, hogy a Security Center-szabályzatok az Azure-erőforrások felmérése, a hozzárendelés a felügyeleti csoport, vagy az értékelni kívánt előfizetést kell létrehoznia.  
 

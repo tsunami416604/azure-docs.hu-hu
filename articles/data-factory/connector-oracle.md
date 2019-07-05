@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 06/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 3fa7612b9e4cd8a714e60879229bd0d39349494f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 04f623a889a87c325b1f53e3b39656ca4b703961
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60405936"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509228"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Adatok másolása az és Oracle az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
@@ -30,13 +30,16 @@ Ez a cikk ismerteti, hogyan használja a másolási tevékenység az Azure Data 
 
 Oracle-adatbázisból adatokat másolhatja bármely támogatott fogadó adattárba. Is másolhatja adatokat bármely támogatott forrásadattárból Oracle-adatbázishoz. A másolási tevékenység által források vagy fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
-Pontosabban az Oracle-összekötő az Oracle-adatbázis következő verzióit támogatja. Támogatja az alap- vagy Objektumazonosító hitelesítések is:
+Pontosabban az Oracle-összekötő támogatja:
 
-- Oracle 12c R1 (12.1)
-- Oracle 11g R1 vagy R2 (11.1, 11.2)
-- Oracle 10g R1 vagy R2 (10.1, 10,2)
-- Oracle 9i R1 vagy R2 (9.0.1, 9.2)
-- Oracle-8i R3 (8.1.7-es)
+- Oracle-adatbázis következő verziói:
+  - Oracle 12c R1 (12.1)
+  - Oracle 11g R1 vagy R2 (11.1, 11.2)
+  - Oracle 10g R1 vagy R2 (10.1, 10,2)
+  - Oracle 9i R1 vagy R2 (9.0.1, 9.2)
+  - Oracle-8i R3 (8.1.7-es)
+- Másolja az adatokat az **alapszintű** vagy **OID** üzenetküldéshez használ.
+- Párhuzamos másolási Oracle forrásból. Lásd: [Oracle másolási párhuzamos](#parallel-copy-from-oracle) részletei szakaszban.
 
 > [!Note]
 > Oracle-proxy kiszolgáló nem támogatott.
@@ -190,16 +193,24 @@ Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját l
 
 ### <a name="oracle-as-a-source-type"></a>Oracle-forrás típusa
 
+> [!TIP]
+>
+> További információkat talál a [Oracle másolási párhuzamos](#parallel-copy-from-oracle) hogyan lehet adatokat betölteni az Oracle hatékonyan navigálhat az adatparticionálás szakaszán.
+
 Adatok másolása az Oracle, állítsa be a forrás típusaként a másolási tevékenység **OracleSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban.
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása típusa tulajdonságát állítsa **OracleSource**. | Igen |
-| oracleReaderQuery | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem |
+| oracleReaderQuery | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`.<br>Ha engedélyezi a particionált terhelés, kell megfelelő beépített partíció történt a lekérdezés környezet igénybe vételét. Példák a [Oracle másolási párhuzamos](#parallel-copy-from-oracle) szakaszban. | Nem |
+| partitionOptions | Az adatparticionálási adatokat betölteni az Oracle használt beállításokat megadja. <br>Lehetővé teszi az értékek a következők: **Nincs** (alapértelmezett), **PhysicalPartitionsOfTable** és **DynamicRange**.<br>Ha engedélyezve van a partíció lehetőséget (nem "nincs"), állítsa is be **[ `parallelCopies` ](copy-activity-performance.md#parallel-copy)** beállítása 4, például a másolási tevékenység, amely meghatározza, hogy a párhuzamos párhuzamossági egy időben betölteni az adatokat az Oracle az adatbázis. | Nem |
+| partitionSettings | Adja meg a csoport, az adatparticionálás beállításait. <br>Alkalmazza, ha partíció lehetőséget nem `None`. | Nem |
+| partitionNames | A lista a fizikai partíciók, amely kell másolni. <br>Alkalmazza, ha partíció lehetőséget `PhysicalPartitionsOfTable`. Ha a lekérdezések használatával lekérheti a forrásadatokat, a környezet igénybe vételét `?AdfTabularPartitionName` WHERE záradékban. A példa [Oracle másolási párhuzamos](#parallel-copy-from-oracle) szakaszban. | Nem |
+| partitionColumnName | Adja meg a forrásoszlop neve **az egész típusú** particionálásával tartomány párhuzamos másolásához használni kívánt. Ha nincs megadva, a tábla elsődleges kulcsa nem észlelt, és szerepel partícióoszlop automatikus. <br>Alkalmazza, ha partíció lehetőséget `DynamicRange`. Ha a lekérdezések használatával lekérheti a forrásadatokat, a környezet igénybe vételét `?AdfRangePartitionColumnName` WHERE záradékban. A példa [Oracle másolási párhuzamos](#parallel-copy-from-oracle) szakaszban. | Nem |
+| partitionUpperBound | Az adatokat másolja a partíciós oszlopának legnagyobb értékét. <br>Alkalmazza, ha partíció lehetőséget `DynamicRange`. Ha a lekérdezések használatával lekérheti a forrásadatokat, a környezet igénybe vételét `?AdfRangePartitionUpbound` WHERE záradékban. A példa [Oracle másolási párhuzamos](#parallel-copy-from-oracle) szakaszban. | Nem |
+| partitionLowerBound | Minimális érték a partícióoszlop adatmásolás céljából. <br>Alkalmazza, ha partíció lehetőséget `DynamicRange`. Ha a lekérdezések használatával lekérheti a forrásadatokat, a környezet igénybe vételét `?AdfRangePartitionLowbound` WHERE záradékban. A példa [Oracle másolási párhuzamos](#parallel-copy-from-oracle) szakaszban. | Nem |
 
-"OracleReaderQuery" nem ad meg, ha a az adatkészlet "struktúra" szakaszban megadott oszlopok segítségével lekérdezést (`select column1, column2 from mytable`) az Oracle-adatbázis futtatásához. Ha az adatkészlet-definícióban nem tartalmaz "szerkezet", az összes oszlop ki van jelölve, a táblából.
-
-**Példa**
+**. Példa: alapszintű lekérdezési partíció nélkül használatával adatok másolása**
 
 ```json
 "activities":[
@@ -230,6 +241,8 @@ Adatok másolása az Oracle, állítsa be a forrás típusaként a másolási te
     }
 ]
 ```
+
+További példák a [Oracle másolási párhuzamos](#parallel-copy-from-oracle) szakaszban.
 
 ### <a name="oracle-as-a-sink-type"></a>Oracle, a fogadó típusa
 
@@ -271,6 +284,54 @@ Adatok másolása az Oracle, állítsa a fogadó típusa a másolási tevékenys
         }
     }
 ]
+```
+
+## <a name="parallel-copy-from-oracle"></a>Az Oracle párhuzamos másolása
+
+Data factory Oracle-összekötő használatával adatait átmásolhatja az Oracle, nagy teljesítményű párhuzamos particionálás beépített adatokat biztosít. A másolási tevékenység adatok particionálási beállításai -> Oracle-forrás található:
+
+![Partíciós beállítások](./media/connector-oracle/connector-oracle-partition-options.png)
+
+Ha engedélyezi a particionált másolási, adat-előállító párhuzamos lekérdezések fut az Oracle forrás partíció betölteni az adatokat. A párhuzamos párhuzamossági van beállítva, és keresztül **[ `parallelCopies` ](copy-activity-performance.md#parallel-copy)** másolási tevékenység beállítást. Például, ha a beállított `parallelCopies` négy, egyidejűleg állít elő, a data factory és a megadott partíció lehetőséget és a beállításokat, az Oracle-adatbázis adatait minden lekérése során részének alapján négy lekérdezések futtatása.
+
+Használata javasolt, párhuzamos másolás engedélyezéséhez az adatparticionálás, különösen akkor, ha nagy mennyiségű adat tölthető be, Oracle-adatbázisból. A különböző helyzetekhez javasolt konfigurációk a következők:
+
+| Forgatókönyv                                                     | Ajánlott beállítások                                           |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| A teljes terhelés fizikai partícióval rendelkező nagy táblából          | **Beállítás particionálása**: Fizikai partíciók tábla. <br><br/>A futtatás során a data Factory automatikusan észleli a fizikai partíciók, és adatok másolása-partíciókat. |
+| A teljes terhelés nagy táblából, az adatparticionálás egészszám-oszloppal rendelkező fizikai partíciók nélkül | **Beállítások particionálása**: Dinamikus tartományának partíció.<br>**Partícióoszlop**: Adja meg az adatok particionálása használt oszlop. Ha nem a megadott, elsődleges kulcsának oszlopa szolgál. |
+| Nagy mennyiségű adat használatával Ez alatt a egyéni lekérdezés fizikai partícióval rendelkező betöltése | **Beállítás particionálása**: Fizikai partíciók tábla.<br>**Lekérdezés**: `SELECT * FROM <TABLENAME> PARTITION("?AdfTabularPartitionName") WHERE <your_additional_where_clause>`.<br>**Partíció neve**: Adja meg az adatokat másolni a partíció neve. Ha nincs megadva, az ADF automatikusan észleli a fizikai partíciók az Oracle-adatkészletben megadott táblába.<br><br>Data factory cserélje le a futtatás során `?AdfTabularPartitionName` a partíciók tényleges nevét és a küldési és Oracle-ig. |
+| Nagy mennyiségű adatot, egyéni lekérdezés használata, ez alatt egészszám-oszloppal közben fizikai partíciók nélkül az adatok particionálása betöltése | **Beállítások particionálása**: Dinamikus tartományának partíció.<br>**Lekérdezés**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`.<br>**Partícióoszlop**: Adja meg az adatok particionálása használt oszlop. Egész szám adattípusú particionáló oszlop ellen.<br>**Partíció felső határérték** és **partíció alsó határérték**: Adja meg, hogy szeretné-e be csak alsó és felső tartományba eső adatokat partícióoszlop szűrést.<br><br>Data factory cserélje le a futtatás során `?AdfRangePartitionColumnName`, `?AdfRangePartitionUpbound`, és `?AdfRangePartitionLowbound` a tényleges oszlop nevét és értékét az egyes tartományok particionálja, és Oracle küldje. <br>Például, ha a partíció oszlop "ID" csoportot az alsó határ értékének 1 és 80-as, a párhuzamos készletet, 4, mint a felső határérték ADF adatbeolvasás 4 partíció azonosítójú között [1,20], [21, 40], [41, 60] és [61, 80]. |
+
+**Példa: lekérdezés fizikai partíciónként**
+
+```json
+"source": {
+    "type": "OracleSource",
+    "query": "SELECT * FROM <TABLENAME> PARTITION(\"?AdfTabularPartitionName\") WHERE <your_additional_where_clause>",
+    "partitionOption": "PhysicalPartitionsOfTable",
+    "partitionSettings": {
+        "partitionNames": [
+            "<partitionA_name>",
+            "<partitionB_name>"
+        ]
+    }
+}
+```
+
+**Példa: lekérdezés dinamikus tartományának partíció**
+
+```json
+"source": {
+    "type": "OracleSource",
+    "query": "SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>",
+    "partitionOption": "DynamicRange",
+    "partitionSettings": {
+        "partitionColumnName": "<partition_column_name>",
+        "partitionUpperBound": "<upper_value_of_partition_column>",
+        "partitionLowerBound": "<lower_value_of_partition_column>"
+    }
+}
 ```
 
 ## <a name="data-type-mapping-for-oracle"></a>Adattípus-leképezés Oracle

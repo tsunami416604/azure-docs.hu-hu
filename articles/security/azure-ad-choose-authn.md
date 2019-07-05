@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: 35fb529be28fc985460421c185872c7e35603341
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 26fca12060363f4ad05baaeceb6fb800a0d76216
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274275"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449270"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Válassza ki a megfelelő hitelesítési módszert az Azure Active Directory hibrid identitáskezelési megoldás 
 
@@ -81,7 +81,7 @@ Döntési kérdések adatai:
    * Többhelyes kapcsolat a helyszíni hitelesítési megoldás.
 5. Az Azure AD Identity Protection igényel Jelszókivonatok szinkronizálása függetlenül attól, hogy melyik bejelentkezési módszert választja, adja meg a *kiszivárgott hitelesítő adatokkal rendelkező felhasználók* jelentést. Szervezetek számára történő Jelszókivonat-szinkronizálás feladatátvételt is, ha az elsődleges bejelentkezési módszer nem jár sikerrel, és a hiba esemény előtt konfigurálva volt.
 
->[!NOTE]
+> [!NOTE]
 > Az Azure AD Identity Protection megkövetelése [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) licenceket.
 
 ## <a name="detailed-considerations"></a>Részletes szempontok
@@ -94,7 +94,10 @@ Döntési kérdések adatai:
 
 * **Speciális forgatókönyvek**. Ha szervezetek választja, akkor lehet is használható elemzéseket készítsenek identitások használata az Azure AD Premium P2 szintű Azure AD Identity Protection jelentéseket. Ilyen például, a kiszivárgott hitelesítő adatok a jelentés. Windows Hello for Business rendelkezik [konkrét követelmények, a Jelszókivonat-szinkronizálás használata esetén](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). [Az Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync) üzembe helyezése felhasználók a felügyelt tartomány vállalati hitelesítő adataikkal történő Jelszókivonat-szinkronizálás szükséges.
 
-    A Jelszókivonat-szinkronizálás a többtényezős hitelesítést igénylő szervezeteknek az Azure AD többtényezős hitelesítést kell használnia. Azon szervezetek külső vagy a helyszíni többtényezős hitelesítési módszer nem használható.
+    Jelszókivonat-szinkronizálást a többtényezős hitelesítést kell használnia a többtényezős hitelesítés az Azure AD igénylő szervezeteknek vagy [feltételes hozzáférés az egyéni vezérlők](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls). Azon szervezetek nem használható külső vagy a helyszínen egy többtényezős hitelesítési módszereket, amelyek összevonási támaszkodik.
+
+> [!NOTE]
+> Az Azure AD feltételes hozzáférés szükséges [Azure AD Premium P1](https://azure.microsoft.com/pricing/details/active-directory/) licenceket.
 
 * **Üzletmenet-folytonossági**. A Jelszókivonat-szinkronizálás használata a felhőalapú hitelesítés egy felhőalapú szolgáltatás, amely az összes Microsoft-adatközpontok méretezhető, magas rendelkezésre állású. Ahhoz, hogy a Jelszókivonat-szinkronizálás nem hosszabb ideig leáll, üzembe helyezése átmeneti módban a készenléti konfigurációban egy második Azure AD Connect-kiszolgáló.
 
@@ -115,7 +118,7 @@ Tekintse meg [Jelszókivonat-szinkronizálás megvalósítása](https://docs.mic
 
 * **Speciális forgatókönyvek**. Az átmenő hitelesítés az helyi fiók házirend megköveteli a bejelentkezés alkalmával. Ha például a hozzáférés megtagadva állapot le van tiltva, egy helyi felhasználói fiók zárolva, amikor vagy [jelszava lejárt](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) vagy az órákat, amikor a felhasználó számára engedélyezett bejelentkezni kívül esik. 
 
-    Többtényezős hitelesítés az átmenő hitelesítést igénylő szervezeteknek az Azure multi-factor Authentication (MFA) kell használnia. Ezek a szervezetek egy külső vagy a helyszíni többtényezős hitelesítési módszer nem használható. Speciális funkciók szükséges, hogy a Jelszókivonat-szinkronizálás üzemel-e úgy dönt, hogy átmenő hitelesítést. Ilyen például, a kiszivárgott hitelesítő adatok a jelentés az Identity Protection.
+    Többtényezős hitelesítés az átmenő hitelesítést kell használnia az Azure multi-factor Authentication (MFA) igénylő szervezeteknek vagy [feltételes hozzáférés az egyéni vezérlők](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls). Azon szervezetek nem használható egy külső vagy a helyszíni többtényezős hitelesítési módszer, amelynek összevonási támaszkodik. Speciális funkciók szükséges, hogy a Jelszókivonat-szinkronizálás üzemel-e úgy dönt, hogy átmenő hitelesítést. Ilyen például, a kiszivárgott hitelesítő adatok a jelentés az Identity Protection.
 
 * **Üzletmenet-folytonossági**. Azt javasoljuk, hogy a két további átmenő hitelesítési ügynökök telepítése. Ezek a kiegészítő funkciók az Azure AD Connect-kiszolgáló az első ügynök mellett vannak. Ez további üzembe helyezési biztosítja a magas rendelkezésre állás, a hitelesítési kérelmek. Három ügynök telepítve van, ha egy ügynök továbbra is sikertelen lehet, ha egy másik ügynök karbantartás miatt nem üzemel. 
 
@@ -136,7 +139,7 @@ Tekintse meg [átmenő hitelesítés végrehajtására](https://docs.microsoft.c
 * **Speciális forgatókönyvek**. Egy összevont hitelesítési megoldás általában kötelező, ha az ügyfél rendelkezik egy hitelesítési követelmények, amely az Azure AD nem támogatja natív módon. Részletes információkat lásd: [válassza ki a bejelentkezési jobb lehetőséget](https://blogs.msdn.microsoft.com/samueld/2017/06/13/choosing-the-right-sign-in-option-to-connect-to-azure-ad-office-365/). Vegye figyelembe a következő általános követelményeknek:
 
   * A hitelesítés, amely szükséges az intelligens kártyákkal vagy tanúsítványokkal.
-  * A helyszíni MFA-kiszolgálóval, vagy többtényezős külső szolgáltatók.
+  * A helyszíni MFA-kiszolgálóval, vagy többtényezős egy összevont identitáskezelési szolgáltató igénylő külső szolgáltatók.
   * Hitelesítés a harmadik fél hitelesítési megoldások használatával. Tekintse meg a [az Azure AD összevonás kompatibilitási listája](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-compatibility).
   * Jelentkezzen be, amely szükséges az sAMAccountName, például TARTOMÁNY\felhasználónév, helyett egy egyszerű felhasználónév (UPN), például user@domain.com.
 

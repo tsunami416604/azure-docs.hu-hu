@@ -10,12 +10,12 @@ ms.date: 05/02/2019
 manager: jlembicz
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 567124f50745080da12178a458957a0f6c8266b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 99abcc70a81622e4efbe85722d457bd1846b6e15
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024317"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485216"
 ---
 # <a name="synonyms-in-azure-search"></a>Az Azure Search szolgáltatásban a szinonimák
 
@@ -25,7 +25,7 @@ Az Azure Search szolgáltatásban a szinonima bővítése lekérdezések során 
 
 ## <a name="create-synonyms"></a>A szinonimák létrehozása
 
-Nem szinonimák létrehozására szolgáló portál támogatott, de a REST API vagy .NET SDK-t is használhatja. REST – első lépések, azt javasoljuk [a postmannel](search-fiddler.md) és az API-kérések kialakításában: [Hozzon létre Szinonimatérképet](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). A C# fejlesztők, megkezdheti az [szinonimák hozzáadása az Azure-keresés- C# ](search-synonyms-tutorial-sdk.md).
+Nem szinonimák létrehozására szolgáló portál támogatott, de a REST API vagy .NET SDK-t is használhatja. REST – első lépések, azt javasoljuk [a postmannel](search-get-started-postman.md) és az API-kérések kialakításában: [Hozzon létre Szinonimatérképet](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). A C# fejlesztők, megkezdheti az [szinonimák hozzáadása az Azure-keresés- C# ](search-synonyms-tutorial-sdk.md).
 
 Igény szerint ha használ [ügyfél által felügyelt kulcsokat](search-security-manage-encryption-keys.md) Szolgáltatásoldali titkosítás inaktív, a alkalmazhat protection által a szinonimatérkép tartalmát.
 

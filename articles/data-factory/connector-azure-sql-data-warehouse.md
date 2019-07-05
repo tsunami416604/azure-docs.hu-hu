@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 68d2f126ee32f61d13d170712bf58581101036e8
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 24ee419e5c6eb4b8c148c61c232d2ab7ab07c74b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206070"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449592"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Data Warehouse-ból az Azure Data Factory használatával 
 > [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
@@ -472,7 +472,10 @@ A követelmények nem teljesülnek, ha az Azure Data Factory ellenőrzi a beáll
 
 Ha a forrásadatok nem felel meg az előző szakaszban, lehetővé teszik az adatok másolása egy átmeneti előkészítési Azure Blob storage példány keresztül. Az Azure Premium Storage nem lehet. Ebben az esetben az Azure Data Factory automatikusan futtatja átalakítások az adatok PolyBase adatok formátuma követelményeinek kielégítése érdekében. Ezután használja a PolyBase adatok betöltése az SQL Data Warehouse-bA. Végül, megtisztítja az ideiglenes adatokat a blob storage-ból. Lásd: [szakaszos Másolás](copy-activity-performance.md#staged-copy) részletes másolhat adatokat egy előkészítési Azure Blob storage-példány használatával.
 
-Ez a funkció használatához hozzon létre egy [Azure Storage társított szolgáltatás](connector-azure-blob-storage.md#linked-service-properties) hivatkozik, amely Azure storage-fiókban az átmeneti blob-tárolóval. Adja meg a `enableStaging` és `stagingSettings` tulajdonságok a másolási tevékenység az alábbi kódban látható módon:
+Ez a funkció használatához hozzon létre egy [Azure Blob Storage társított szolgáltatás](connector-azure-blob-storage.md#linked-service-properties) hivatkozik, amely Azure storage-fiókban az átmeneti blob-tárolóval. Adja meg a `enableStaging` és `stagingSettings` tulajdonságok a másolási tevékenység az alábbi kódban látható módon.
+
+>[!IMPORTANT]
+>Ha az átmeneti Azure Storage-szolgáltatásvégpont van beállítva, kell használnia felügyelt identitás hitelesítés – tekintse meg [hatását a virtuális hálózati Szolgáltatásvégpontok használatával és az Azure storage](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Ismerje meg a szükséges konfigurációk Data factoryben [Azure Blob - felügyelt identitásnak hitelesítési](connector-azure-blob-storage.md#managed-identity).
 
 ```json
 "activities":[

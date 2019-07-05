@@ -15,12 +15,12 @@ ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ef72f1649c3f3e0af7fba53b2e8dbcee49d4b59
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c83a38b68fcc2e70b4e17bd62e11ac429dd32950
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734564"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67471905"
 ---
 # <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>A csoportok a hozzáférési felülvizsgálat létrehozása és alkalmazások az Azure AD hozzáférési felülvizsgálatokkal
 
@@ -43,7 +43,7 @@ További információkért lásd: [mely felhasználók rendelkeznie kell licence
 
 1. Kattintson a **új hozzáférési felülvizsgálat** egy új hozzáférési felülvizsgálat létrehozása.
 
-    ![Hozzáférési felülvizsgálat - vezérlők](./media/create-access-review/access-reviews.png)
+    ![A hozzáférési felülvizsgálatok az Identitáskezelést panel](./media/create-access-review/access-reviews.png)
 
 1. A hozzáférési felülvizsgálat neve. A felülvizsgálat igény szerint adjon meg leírást. A nevet és leírást a felülvizsgálóknak jelennek meg.
 
@@ -91,7 +91,7 @@ További információkért lásd: [mely felhasználók rendelkeznie kell licence
 
 1. Adja meg, mi történik, a felülvizsgálat befejezése után, bontsa ki a **befejezést követő művelet beállításai** szakaszban.
 
-    ![Befejezést követő művelet beállításai](./media/create-access-review/upon-completion-settings.png)
+    ![Hozzáférési felülvizsgálat - befejezést követő művelet beállításai létrehozása](./media/create-access-review/upon-completion-settings.png)
 
 1. Ha szeretne automatikusan remove hozzáférést a felhasználók számára, hogy el lett utasítva, **eredmények automatikus alkalmazása az erőforrás** való **engedélyezése**. Ha szeretné manuálisan alkalmazza az eredményeket, ha a felülvizsgálatot követően, állítsa a kapcsolót **letiltása**.
 
@@ -106,7 +106,7 @@ További információkért lásd: [mely felhasználók rendelkeznie kell licence
 
 1. Szeretne megadni további beállításokat, bontsa ki a **speciális beállítások** szakaszban.
 
-    ![Speciális beállítások](./media/create-access-review/advanced-settings.png)
+    ![Hozzáférési felülvizsgálat - speciális beállítások létrehozása](./media/create-access-review/advanced-settings.png)
 
 1. Állítsa be **javaslatok megjelenítése** való **engedélyezése** lehet megjeleníteni a felülvizsgálók a rendszer javaslatok alapján a felhasználó hozzáférési adatokat.
 
@@ -122,7 +122,7 @@ További információkért lásd: [mely felhasználók rendelkeznie kell licence
 
 Miután megadta a hozzáférési felülvizsgálat beállításait, kattintson a **Start**. A hozzáférési felülvizsgálat megjelenik a listában, az azt jelzi, hogy annak állapotát.
 
-![A hozzáférési felülvizsgálatok listája](./media/create-access-review/access-reviews-list.png)
+![A hozzáférési felülvizsgálatok listáját és azok állapotát](./media/create-access-review/access-reviews-list.png)
 
 Alapértelmezés szerint az Azure AD-e-mailt küld felülvizsgálók elindítja a felülvizsgálatot követően rövid időn belül. Ha nem rendelkezik Azure ad-ben az e-mailt, mindenképpen tájékoztatja a felülvizsgálatot, amely a hozzáférési felülvizsgálat várakozik, amíg befejeződnek. Mutathat nekik az utasításokat, hogy hogyan [csoportokhoz vagy alkalmazásokhoz való hozzáférés felülvizsgálata](perform-access-review.md). Ha áttekintésre vendégek tekintse át a saját hozzáférését, azokat az utasítások megjelenítése, hogy hogyan [hozzáférés felülvizsgálata maga a csoportokat vagy alkalmazásokat](review-your-access.md).
 

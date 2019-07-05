@@ -6,13 +6,13 @@ manager: evansma
 ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: f2787cd74525e7676befb133a6106ce83d9c2a20
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/27/2019
+ms.openlocfilehash: dc086bc1252c084b717807213b5ba4c7f9d7bb97
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072631"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514057"
 ---
 # <a name="create-a-new-saas-offer"></a>Hozzon létre egy új SaaS-ajánlat
 
@@ -42,7 +42,9 @@ Példa: test-ajánlat – 1.
 
 Kattintson a **Létrehozás** gombra.  Egy **ajánlat áttekintése** lap jön létre ezt az ajánlatot.  
 
-![A Partner Center ajánlat áttekintése](./media/commercial-marketplace-offer-overview.png)
+<!---
+![Offer overview on Partner Center](./media/commercial-marketplace-offer-overview.png)
+-->
 
 ## <a name="offer-overview"></a>Az ajánlat áttekintése
 
@@ -260,11 +262,11 @@ Manuálisan adja hozzá az e-mail címeket legfeljebb tíz (10), vagy élő erd�
 
 ## <a name="technical-configuration"></a>Technikai konfiguráció
 
-A **műszaki konfigurációs** lapon határozza meg a technikai részleteket (URL-cím, webhookot, bérlő azonosítója és alkalmazás azonosítója) az ajánlat csatlakozhat. Ez a kapcsolat lehetővé teszi számunkra megszerzésére, ha az ajánlat létrehozásához az ügyfél az Azure-előfizetés erőforrásként.
+A **műszaki konfigurációs** lapon határozza meg a technikai részleteket (URL-cím, webhookot, bérlő azonosítója és alkalmazás azonosítója) az ajánlat csatlakozhat. Ez a kapcsolat lehetővé teszi számunkra, hogy az ajánlatot a végfelhasználó ügyfél kiépítése megszerzésére, ha. Az összegyűjtött mezők használatát ismertető ábrák dokumentációját elérhetővé válnak [SaaS teljesítése API-k](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2).
 
-- **Kezdőlap URL-címe** (kötelező): Adja meg a webhely URL-címet, az ügyfelek felé irányuló az ajánlatot a piactérről beszerzése után megjelenni. Az URL-cím is a végpontot, amely fog kapni a kapcsolat API-k a Microsoft kereskedelmi megkönnyítése érdekében.
+- **Kezdőlap URL-címe** (kötelező): Adja meg a webhely URL-címe, amely az ügyfelek az ajánlatot a piactérről beszerzése után fog megjelenni. Az URL-cím lesz a végpontot, amely egy jogkivonatot kap, amikor egy ügyfél irányítja a rendszer a lapot. A jogkivonat kicserélhetők részletesen bemutatja, hogyan hárítsa el az API-k teljesítése kiépítése. Ezeket az adatokat, és minden más gyűjtött használható a felhasználói élmény a beépített felhasználói interaktív weblap részeként a regisztráció befejezéséhez, majd aktiválja a beszerzési.
 
-- **Kapcsolat webhook** (kötelező): Az összes aszinkron esemény, amelyet a Microsoft küld Önnek a vásárló nevében (például: Azure-előfizetés felment érvénytelen), kérjük, adjon meg egy kapcsolati webhook. Ha még nem rendelkezik egy webhook rendszer helyben, a legegyszerűbb konfiguráció kell egy HTTP végpont logikai alkalmazást, amely minden, az csökkentheti a közzétett események figyelésére és majd kezelni őket megfelelően-e (pl. https:\//prod-1westus.logic.azure.com:443/work). További információkért lásd: [hívása, eseményindító, vagy HTTP-végpontokat, a logic apps-munkafolyamatok beágyazása](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
+- **Kapcsolat webhook** (kötelező): Az összes aszinkron esemény, amelyet a Microsoft küld Önnek a vásárló nevében (például: SaaS-előfizetés felment érvénytelen), kérjük, adjon meg egy kapcsolati webhook. Ha még nem rendelkezik egy webhook rendszer helyben, a legegyszerűbb konfiguráció kell egy HTTP végpont logikai alkalmazást, amely minden, az csökkentheti a közzétett események figyelésére és majd kezelni őket megfelelően-e (pl. https:\//prod-1westus.logic.azure.com:443/work). További információkért lásd: [hívása, eseményindító, vagy HTTP-végpontokat, a logic apps-munkafolyamatok beágyazása](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
 
 - **Azure AD-bérlő azonosítója** (kötelező): Az Azure-portálon belül kérjük, [hozzon létre egy Azure Active Directory (AD) alkalmazást](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) egy hitelesített kommunikáció mögött van, hogy a Microsoft ellenőrizheti a kapcsolatot a két szolgáltatás között. Található a [bérlőazonosító](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-id), nyissa meg az Azure Active Directoryban, és válassza **tulajdonságok**, majd keresse meg a **címtár-azonosító** száma szerepel (például) 50c464d3-4930-494c-963c-1e951d15360e).
 
@@ -438,7 +440,7 @@ Az Ön nevében a Test Drive üzembe helyezéséhez, hozza létre, majd adjon me
 
 - **Azure AD-alkalmazás azonosítója** (kötelező): Adja meg az Azure Active Directory (AD) [Alkalmazásazonosító](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key). Ez Azonosítójának megkereséséhez jelentkezzen be a [az Azure portal](https://portal.azure.com/), az Active Directory lapon válassza a bal oldali menüben válassza ki **alkalmazásregisztrációk**, majd keresse meg a **Alkalmazásazonosító** száma a felsorolt (pl. 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **Az Azure AD-Alkalmazáskulcs** (kötelező): Adja meg az Azure Active Directory (AD) [alkalmazáskulcsot](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key). Ez Azonosítójának megkereséséhez jelentkezzen be a [az Azure portal](https://portal.azure.com/), az Active Directory lapon válassza a bal oldali menüben válassza ki **alkalmazásregisztrációk** , majd **beállítások**  >  **Kulcsok**.
+- **Az Azure AD alkalmazás titkos** (kötelező): Adja meg az Azure AD-alkalmazás [titkos Ügyfélkód](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key). Ez az érték megkereséséhez jelentkezzen be a [az Azure portal](https://portal.azure.com/). Válassza ki a **Azure Active Directory** lapra a bal oldali menüben válassza a **alkalmazásregisztrációk**, majd válassza ki a test drive alkalmazását. Majd **tanúsítványok és titkos kulcsok**válassza **új titkos ügyfélkulcsot**, adjon meg egy leírást, válassza ki **soha** alatt **lejárat**, majd Válasszon **Hozzáadás**. Ellenőrizze, hogy másolja le az értéket. (Nem elhagyni a lapot előtt ezt megteheti, vagy pedig nem kell az értéket a hozzáférést.)
 
 Ne felejtse el **mentése** mielőtt a következő szakaszban!
 

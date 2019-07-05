@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/19/2019
-ms.openlocfilehash: 7f9100686eaab8c4c75e3d862026b18b6c46ed09
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50db9a588cd953bbd0e912ec942194a8deeffe4c
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65203702"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484043"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>Bootstrap használatával HDInsight-fürtök testre szabása
 
@@ -133,7 +133,7 @@ Rendszerindítási használhatja a Resource Manager-sablon:
 ![HDInsight Hadoop fürt bootstrap Azure Resource Manager-sablon testre szabása](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
 
 ## <a name="see-also"></a>Lásd még
-* [A HDInsight Apache Hadoop-fürtök létrehozása] [ hdinsight-provision-cluster] útmutatás egy HDInsight-fürt létrehozása más egyéni beállításai használatával.
+* [A HDInsight Apache Hadoop-fürtök létrehozása][hdinsight-provision-cluster] útmutatás egy HDInsight-fürt létrehozása más egyéni beállításai használatával.
 * [Parancsfájlművelet-parancsfájlok fejlesztése a HDInsight][hdinsight-write-script]
 * [Telepítse, és az Apache Spark használata a HDInsight-fürtökön][hdinsight-install-spark]
 * [Telepítse, és az Apache Giraph használata a HDInsight-fürtökön](hdinsight-hadoop-giraph-install.md).
@@ -149,9 +149,6 @@ Rendszerindítási használhatja a Resource Manager-sablon:
 ## <a name="appendix-powershell-sample"></a>A függelék: PowerShell-minta
 
 A PowerShell-szkript létrehoz egy HDInsight-fürtöt, és személyre szabható egy Hive-beállítást. Ügyeljen arra, hogy adjon meg értéket a `$nameToken`, `$httpPassword`, és `$sshPassword`.
-
-> [!IMPORTANT]  
-> A tartozó értékeket `DefaultStorageAccount`, és `DefaultStorageContainer` a rendszer nem adja vissza [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) amikor [biztonságos átvitelre](../storage/common/storage-require-secure-transfer.md) engedélyezve van a tárfiókon.
 
 > [!WARNING]  
 > A tárfiók típusának `BlobStorage` HDInsight-fürtök esetén nem használható.

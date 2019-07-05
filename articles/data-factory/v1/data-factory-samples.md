@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 03127dc777588f669ef07af52c8f73d986bfe0ea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7ebc57e09691af1583815ae9672e1afb820145b
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61260042"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67462067"
 ---
 # <a name="azure-data-factory---samples"></a>Az Azure Data Factory - minták
 > [!NOTE]
@@ -30,20 +30,20 @@ A [GitHub Azure-DataFactory-tárház](https://github.com/azure/azure-datafactory
 
 | Sample | Leírás |
 |:--- |:--- |
-| [ADF-forgatókönyv](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFWalkthrough) |Ez a minta Azure Data Factory használatával történő információkká alakítsa adatait a naplófájlokat a naplófájlok feldolgozásának egy végpontok közötti forgatókönyv biztosít. <br/><br/>Ez az útmutató a Data Factory-folyamatot mintanaplók folyamatok gyűjti bővíti az adatokat a naplókból a referenciaadatok és alakítja át a közelmúltban indította el marketingkampány hatékonyságának kiértékelheti, hogy az adatok. |
-| [JSON-minták](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON) |Ezt a mintát gyakran használt esetekben JSON példákat. |
-| [HTTP-adatok letöltési segédprogramja minta](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample) |A minta ezen adása letöltése az Azure Blob Storage .NET egyéni tevékenység használatával adatokat egy HTTP-végpontot. |
-| [Adatbázisközi AppDomain Dot Net tevékenység minta](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) |Ez a minta lehetővé teszi, hozzon létre egy egyéni .NET-tevékenységet, amely nem korlátozza az ADF indítója (például WindowsAzure.Storage verze 4.3.0 Newtonsoft.Json v6.0.x, stb.) által használt szerelvény verziója. |
-| [R-szkript futtatásához](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample) |Ez a példa a Data Factory egyéni tevékenység RScript.exe meghívásához használt tartalmazza. Ez a minta csak (a saját nem igény szerinti) HDInsight-fürt, amely már rendelkezik az R telepítve van rajta működik. |
-| [HDInsight Hadoop-fürtön a Spark-feladatok meghívása](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/Spark) |Ez a példa bemutatja, hogyan MapReduce tevékenység használatával Spark-program meghívása. A spark-program csak adatokat másol egy Azure Blob-tárolóból egy másik. |
-| [Twitter-elemzése Azure Machine Learning kötegelt pontozási tevékenység használatával](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-AzureMLBatchScoringActivity) |Ez a példa bemutatja, hogyan AzureMLBatchScoringActivity elindításához egy Azure Machine Learning-modellhez, amely végrehajtja a twitter-vélemények elemzése, pontozási, előrejelzési stb. |
-| [Az egyéni tevékenység Twitter elemzése](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) |Ez a példa bemutatja, hogyan .NET egyéni tevékenység elindításához egy Azure Machine Learning-modellhez, amely végrehajtja a twitter-vélemények elemzése, pontozási, előrejelzési stb. |
-| [Az Azure Machine Learning paraméteres folyamatok](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ParameterizedPipelinesForAzureML/) |A példa azt mutatja egy teljes körű C# kód pontozó- és egy másik régióban paraméterrel egy parameters.txt fájlt, amely tartalmazza ezt a mintát forrását a régiók listáját az egyes átképezési N folyamatok üzembe helyezéséhez. |
-| [Referencia az Azure Stream Analytics-feladatok adatok frissítése](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ReferenceDataRefreshForASAJobs) |Ez a példa bemutatja, hogyan használata Azure Data Factory és az Azure Stream Analytics együttesen futtassa a lekérdezéseket a referenciaadatok, és a frissítés a referenciaadatoknál ütemezés beállításához. |
-| [Hibrid folyamat helyszíni Hortonworks Hadoop-keretrendszerrel](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HybridPipelineWithOnPremisesHortonworksHadoop) |A minta egy számítási célnak egy helyi Hadoop-fürtöt használja, mint más számítási célnak jelentene, mint egy HDInsight-alapú Hadoop-fürtöt az adat-előállító feladatokat futtató. |
-| [JSON-átalakítás eszköz](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSONConversionTool) |Ez az eszköz lehetővé teszi JSONs próbaverzióról 2015-07-01-preview legújabb vagy 2015-07-01-preview (alapértelmezett) előtti verziót. |
-| [U-SQL-minta bemeneti fájl](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/U-SQL%20Sample%20Input%20File) |Ezt a fájlt egy U-SQL-tevékenység által használt mintafájl. |
-| [Blob, fájl törlése](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/DeleteBlobFileFolderCustomActivity) | Ez a példa bemutatja egy C# fájlt, amely törli a fájlokat a forrás az Azure Blob helyére, a fájlok másolása után az ADF egyéni .net-tevékenység részeként használható.|
+| [ADF-forgatókönyv](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFWalkthrough) |Ez a minta Azure Data Factory használatával történő információkká alakítsa adatait a naplófájlokat a naplófájlok feldolgozásának egy végpontok közötti forgatókönyv biztosít. <br/><br/>Ez az útmutató a Data Factory-folyamatot mintanaplók folyamatok gyűjti bővíti az adatokat a naplókból a referenciaadatok és alakítja át a közelmúltban indította el marketingkampány hatékonyságának kiértékelheti, hogy az adatok. |
+| [JSON-minták](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON) |Ezt a mintát gyakran használt esetekben JSON példákat. |
+| [HTTP-adatok letöltési segédprogramja minta](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample) |A minta ezen adása letöltése az Azure Blob Storage .NET egyéni tevékenység használatával adatokat egy HTTP-végpontot. |
+| [Adatbázisközi AppDomain Dot Net tevékenység minta](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Ez a minta lehetővé teszi, hozzon létre egy egyéni .NET-tevékenységet, amely nem korlátozza az ADF indítója (például WindowsAzure.Storage verze 4.3.0 Newtonsoft.Json v6.0.x, stb.) által használt szerelvény verziója. |
+| [R-szkript futtatásához](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |Ez a példa a Data Factory egyéni tevékenység RScript.exe meghívásához használt tartalmazza. Ez a minta csak (a saját nem igény szerinti) HDInsight-fürt, amely már rendelkezik az R telepítve van rajta működik. |
+| [HDInsight Hadoop-fürtön a Spark-feladatok meghívása](https://docs.microsoft.com/azure/data-factory/tutorial-transform-data-spark-portal) |Ez a példa bemutatja, hogyan MapReduce tevékenység használatával Spark-program meghívása. A spark-program csak adatokat másol egy Azure Blob-tárolóból egy másik. |
+| [Twitter-elemzése Azure Machine Learning kötegelt pontozási tevékenység használatával](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |Ez a példa bemutatja, hogyan AzureMLBatchScoringActivity elindításához egy Azure Machine Learning-modellhez, amely végrehajtja a twitter-vélemények elemzése, pontozási, előrejelzési stb. |
+| [Az egyéni tevékenység Twitter elemzése](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Ez a példa bemutatja, hogyan .NET egyéni tevékenység elindításához egy Azure Machine Learning-modellhez, amely végrehajtja a twitter-vélemények elemzése, pontozási, előrejelzési stb. |
+| [Az Azure Machine Learning paraméteres folyamatok](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |A példa azt mutatja egy teljes körű C# kód pontozó- és egy másik régióban paraméterrel egy parameters.txt fájlt, amely tartalmazza ezt a mintát forrását a régiók listáját az egyes átképezési N folyamatok üzembe helyezéséhez. |
+| [Referencia az Azure Stream Analytics-feladatok adatok frissítése](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs) |Ez a példa bemutatja, hogyan használata Azure Data Factory és az Azure Stream Analytics együttesen futtassa a lekérdezéseket a referenciaadatok, és a frissítés a referenciaadatoknál ütemezés beállításához. |
+| [Hibrid folyamat helyszíni Hortonworks Hadoop-keretrendszerrel](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HybridPipelineWithOnPremisesHortonworksHadoop) |A minta egy számítási célnak egy helyi Hadoop-fürtöt használja, mint más számítási célnak jelentene, mint egy HDInsight-alapú Hadoop-fürtöt az adat-előállító feladatokat futtató. |
+| [JSON-átalakítás eszköz](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSONConversionTool) |Ez az eszköz lehetővé teszi JSONs próbaverzióról 2015-07-01-preview legújabb vagy 2015-07-01-preview (alapértelmezett) előtti verziót. |
+| [U-SQL-minta bemeneti fájl](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/U-SQL%20Sample%20Input%20File) |Ezt a fájlt egy U-SQL-tevékenység által használt mintafájl. |
+| [Blob, fájl törlése](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/DeleteBlobFileFolderCustomActivity) | Ez a példa bemutatja egy C# fájlt, amely törli a fájlokat a forrás az Azure Blob helyére, a fájlok másolása után az ADF egyéni .net-tevékenység részeként használható.|
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
 Az alábbi Azure Resource Manager-sablonok a Data Factory a Githubon találja.

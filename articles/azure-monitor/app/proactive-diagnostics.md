@@ -12,17 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: mbullwin
-ms.openlocfilehash: edbd7000001ae6927078e2f1bb9e348cc78f9efa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8ee2dea364253d871d5624242d15d8a81ab6f08f
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61299668"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465901"
 ---
 # <a name="smart-detection-in-application-insights"></a>Az Application Insights intelligens detektálás
- Intelligens észlelés automatikusan figyelmezteti, az esetleges teljesítményproblémákat okozhat a webalkalmazásban. Proaktív elemzése a telemetriát, amely elküldi az alkalmazás végrehajt [Application Insights](../../azure-monitor/app/app-insights-overview.md). Ha hirtelen megnövekedhet a hibaarányok, vagy a rendellenes mintákat ügyfél vagy kiszolgáló teljesítményét, riasztást kap. Ez a funkció nincs konfigurációs van szüksége. Ha az alkalmazása elég telemetriát küld működik.
+ Intelligens észlelés automatikusan figyelmezteti, potenciális teljesítménybeli problémák és a rendellenes hibák webalkalmazásban. Proaktív elemzése a telemetriát, amely elküldi az alkalmazás végrehajt [Application Insights](../../azure-monitor/app/app-insights-overview.md). Ha hirtelen megnövekedhet a hibaarányok, vagy a rendellenes mintákat ügyfél vagy kiszolgáló teljesítményét, riasztást kap. Ez a funkció nincs konfigurációs van szüksége. Ha az alkalmazása elég telemetriát küld működik.
 
-Az intelligens észlelési riasztásokkal is elérheti, mind az e-mailt kap, és az intelligens detektálási panelen.
+Az intelligens detektálási által kiadott, mind az e-mailt kap, és az intelligens detektálási panelen észlelések érheti el.
 
 ## <a name="review-your-smart-detections"></a>Tekintse át az intelligens észlelés
 Észlelések kétféleképpen deríthet fel:
@@ -32,24 +32,24 @@ Az intelligens észlelési riasztásokkal is elérheti, mind az e-mailt kap, és
     ![Értesítő e-mail](./media/proactive-diagnostics/03.png)
   
     A big Data típusú gombra kattintva nyissa meg a további részleteket a portálon.
-* **Az intelligens detektálási csempe** az alkalmazás áttekintése panel megjeleníti a legutóbbi riasztások száma. Kattintson a csempére, és a egy új figyelmeztetések listájának megtekintéséhez.
+* **Az intelligens detektálási panel** az Application Insightsban. Válassza ki **intelligens detektálás** alatt a **vizsgálat** menüjében. Itt megtekintheti a legutóbbi észlelési listáját.
 
 ![Legutóbbi észlelés megtekintése](./media/proactive-diagnostics/04.png)
 
-Válasszon ki egy riasztást, a részletek megtekintéséhez.
+Válassza ki az észlelést a részletek megtekintéséhez.
 
 ## <a name="what-problems-are-detected"></a>Milyen problémákat észlelt?
-Észlelés három fő típusba sorolhatók:
+Intelligens detektálás észleli, és értesíti kapcsolatos számos különböző probléma, például:
 
 * [Intelligens detektálás – rendellenes hibák](../../azure-monitor/app/proactive-failure-diagnostics.md). A machine learning sikertelen kérelmek az alkalmazás a várt arány beállításához használjuk, a terhelés és egyéb tényezők használatával történik. Ha a Hibaarány megfelelően a várt boríték kívül, küldünk egy riasztást.
 * [Intelligens detektálás – teljesítménnyel kapcsolatos anomáliák](../../azure-monitor/app/proactive-performance-diagnostics.md). Ha egy művelet és a függőségi időtartam válaszideje rendszer lelassul kiinduló alapkonfigurációt képest, vagy ha azt azonosítható a rendellenes minta válaszidejének vagy a lapbetöltési idő értesítéseket kap.   
-* [Intelligens detektálás – Azure-Felhőszolgáltatás problémák](https://azure.microsoft.com/blog/proactive-notifications-on-cloud-service-issues-with-azure-diagnostics-and-application-insights/). Riasztásokat kaphat, ha az alkalmazás üzemel az Azure Cloud Services és a egy szerepkörpéldány rendelkezik a hibák, gyakori újrahasznosítás vagy futásidejű összeomlások.
+* Általános romlását és a problémák, például [számolt nyomkövetési](https://docs.microsoft.com/azure/azure-monitor/app/proactive-trace-severity), [memóriavesztés](https://docs.microsoft.com/azure/azure-monitor/app/proactive-potential-memory-leak), [Abnormal kivételek mennyiségi növekménye](https://docs.microsoft.com/azure/azure-monitor/app/proactive-exception-volume) és [biztonsági kizárási mintákat](https://docs.microsoft.com/azure/azure-monitor/app/proactive-application-security-detection-pack).
 
 (A Súgó az egyes értesítések hivatkozások az ide tartozó cikkekre.)
 
 ## <a name="smart-detection-email-notifications"></a>Az intelligens észlelési e-mail-értesítések
 
-Minden intelligens detektálási szabályok, kivéve a szabályokat, az előzetes verzióként megjelölt e-mail értesítések küldéséhez észlelések esetén alapértelmezés szerint vannak konfigurálva.
+Minden intelligens detektálási szabályok, kivéve megjelölve szabályok _előzetes_, e-mail-értesítések küldése az észlelések esetén alapértelmezés szerint úgy vannak konfigurálva.
 
 Az intelligens detektálási szabályra adott e-mail-értesítések konfigurálása teheti meg az intelligens detektálási megnyitásával **beállítások** panelre, és válassza a szabályt, amely megnyitja a **szabály szerkesztése** panelen.
 

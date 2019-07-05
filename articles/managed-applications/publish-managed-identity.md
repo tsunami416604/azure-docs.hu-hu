@@ -8,12 +8,12 @@ ms.reviewer: ''
 ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
-ms.openlocfilehash: be141e208016784b689262394798012c2212ba5b
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
-ms.translationtype: HT
+ms.openlocfilehash: 9fb5f7a4a62c2d323059f7c0b879482e93feef2f
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312231"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67434864"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>Az Azure felügyelt alkalmazások felügyelt identitással
 
@@ -323,7 +323,22 @@ A jogkivonat a felügyelt alkalmazás most már keresztül érhetők el a `listT
 
 ``` HTTP
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Solutions/applications/{applicationName}/listTokens?api-version=2018-09-01-preview HTTP/1.1
+
+{
+    "authorizationAudience": "https://management.azure.com/",
+    "userAssignedIdentities": [
+        "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{userAssignedIdentityName}"
+    ]
+}
 ```
+
+A kérelem törzsében paraméterei:
+
+Paraméter | Kötelező | Leírás
+---|---|---
+authorizationAudience | *no* | Az Alkalmazásazonosító URI-t a cél erőforrás. Azt is van a `aud` (célközönség) jogcím a kiállított jogkivonat. Az alapértelmezett érték "https://management.azure.com/"
+userAssignedIdentities | *no* | A lista a felhasználó által hozzárendelt felügyelt identitások a jogkivonat beszerzésére. Ha nincs megadva, `listTokens` visszaküldi a jogkivonatot a rendszer által hozzárendelt felügyelt identitás.
+
 
 Egy mintaválasz hasonló lehet:
 
@@ -345,6 +360,18 @@ Content-Type: application/json
     ]
 }
 ```
+
+A válasz tartalmazni fogja a jogkivonatok alatt álló tömb a `value` tulajdonság:
+
+Paraméter | Leírás
+---|---
+access_token | A kért hozzáférési jogkivonatot.
+expires_in | A hozzáférési jogkivonat érvényes lesz a másodpercek számát.
+expires_on | Az időtartomány, ha a hozzáférési jogkivonat lejár. Ez jelzi a másodpercek számát az alapidőpont.
+not_before | Az időtartomány, ha a hozzáférési jogkivonat érvénybe lép. Ez jelzi a másodpercek számát az alapidőpont.
+authorizationAudience | A `aud` (célközönség) a hozzáférési jogkivonat a kérelem volt. Ez a ugyanaz, mint a megadott a `listTokens` kérelmet.
+resourceId | Az Azure-erőforrás azonosítója a kibocsátott jogkivonat. Ez a felügyelt alkalmazás Azonosítóját vagy a felhasználó által hozzárendelt identitás azonosítója.
+token_type | A jogkivonat típusa.
 
 ## <a name="next-steps"></a>További lépések
 

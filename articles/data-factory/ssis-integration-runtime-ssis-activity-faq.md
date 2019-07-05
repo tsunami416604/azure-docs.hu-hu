@@ -1,6 +1,6 @@
 ---
-title: Csomagok végrehajtása az SSIS integrációs modul hibaelhárítás |} A Microsoft Docs
-description: Ez a cikk a elhárításához nyújt útmutatást az SSIS-csomagok végrehajtása az SSIS integrációs modul
+title: Csomagok végrehajtása az SSIS integrációs modul az hibaelhárítása |} A Microsoft Docs
+description: Ez a cikk nyújt hibaelhárítási útmutatót az SSIS integrációs modult az SSIS-csomag végrehajtása
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,129 +12,121 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: a018a383de855a05b14aa6e1f1c465f8868f672d
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 68a5d5278e1181695695647cff187d4b95624b40
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312167"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537634"
 ---
-# <a name="troubleshooting-package-execution-in-ssis-integration-runtime"></a>Hibaelhárítási-csomagok végrehajtása az SSIS integrációs modul
+# <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Csomagok végrehajtása az SSIS integrációs modul az hibaelhárítása
 
-Ez a cikk a leggyakoribb hibákat, amelyek akkor ütközhet, amikor végrehajtása SSIS-csomagok az SSIS integrációs modul, a lehetséges okok és a műveletek a hibák megoldása tartalmazza.
+Ez a cikk tartalmazza a leggyakoribb hibákat, amelyek, még az SSIS integrációs modul az SQL Server Integration Services (SSIS) csomagjainak végrehajtása közben. A hibák megoldása a lehetséges okait és műveleteket ismerteti.
 
-## <a name="where-can-i-find-logs-for-troubleshoot"></a>Hol található hibaelhárítás a naplók
+## <a name="where-to-find-logs-for-troubleshooting"></a>Hol található a naplók hibaelhárítási
 
-* Az ADF-portál segítségével a SSIS-csomag végrehajtása tevékenység többek között a végrehajtás eredménye, hibaüzeneteket és a művelet azonosítója. a kimenet ellenőrzése Részletek található [a folyamat figyelése](how-to-invoke-ssis-package-ssis-activity.md#monitor-the-pipeline)
+Az Azure Data Factory-portál segítségével ellenőrizze az SSIS-csomag végrehajtása tevékenység kimenetét. A kimenet tartalmazza a végrehajtás eredménye, hibaüzeneteket és a művelet azonosítója. További információkért lásd: [a folyamat figyelése](how-to-invoke-ssis-package-ssis-activity.md#monitor-the-pipeline).
 
-* Az SSIS katalógus (SSISDB) tekintse meg a részletes naplókat végrehajtására használható. Részletes található [figyelő futtató csomagok és egyéb műveletek](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017)
+Az SSIS-katalógus (SSISDB) használatával tekintse meg a részletes naplókat végrehajtására. További információkért lásd: [figyelő futtató csomagok és egyéb műveletek](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017).
 
-## <a name="common-errors-causes-and-solution"></a>Gyakori hibák, okok és megoldás
+## <a name="common-errors-causes-and-solutions"></a>Gyakori hibák, okait és megoldásait
 
-### <a name="error-message-connection-timeout-expired-or-the-service-has-encountered-an-error-processing-your-request-please-try-again"></a>Chybová zpráva: `"Connection Timeout Expired."` vagy `"The service has encountered an error processing your request. Please try again."`
+### <a name="error-message-connection-timeout-expired-or-the-service-has-encountered-an-error-processing-your-request-please-try-again"></a>Hibaüzenet jelenik meg: "Kapcsolat időkorlátja lejárt" vagy "a szolgáltatás észlelt hiba történt a kérelem feldolgozása közben. Próbálkozzon újra."
 
-* Lehetséges ok és a javasolt művelet:
-  * Az adatok forrás és a cél túl van terhelve. Ellenőrizze a terhelés, az adatokat forrás/cél, és rendelkezik-e elegendő a kapacitása. Például Azure SQL használata esetén ajánlott kell figyelembe venni méretezési fel, ha az adatbázis valószínűleg időtúllépés.
-  * SSIS integrációs modul és az adatokat forrás és a cél között a hálózat nem stabil, különösen akkor, ha a kapcsolat nem régiók közötti vagy a helyszíni és az azure között. Javasolt újrapróbálkozási minta az SSIS-csomag alkalmazása a következő lépésekben:
-    * Győződjön meg arról, hogy az SSIS-csomagok újrafuttathatja nélkül mellékhatása hiba esetén (például. az adatvesztést, adatok dup...)
-    * Konfigurálja a **újra** és **újrapróbálkozási időköz** SSIS csomag tevékenység hajtsa végre az Általános lapon ![tulajdonságainak Általános lapján](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
-    * Az ADO.NET és OLEDB forrás és a cél-összetevő ConnectRetryCount és ConnectRetryInterval állíthatók be a kezelő az SSIS-csomag vagy SSIS-tevékenység
+Az alábbiakban a lehetséges okok és a javasolt művelet:
+* Az adatok forrása vagy túl van terhelve. Ellenőrizze az adatforrás vagy a cél a terhelés, és rendelkezik-e elegendő a kapacitása. Például ha használta az Azure SQL Database, érdemes felskálázni, ha az adatbázis valószínűleg időtúllépés.
+* Az SSIS integrációs modul és az adatforrás vagy a cél között a hálózat nem stabil, különösen akkor, ha a kapcsolat nem régiók közötti vagy a helyszíni és az Azure között. Az újrapróbálkozási minta az SSIS-csomag a alkalmazni az alábbi lépéseket:
+  * Ellenőrizze, hogy az SSIS-csomagok hiba esetén (például az adatvesztést vagy adatdeduplikáció) hatásai nélkül futtathatja.
+  * Konfigurálása **újra** és **újrapróbálkozási időköz** , **SSIS-csomag végrehajtása** tevékenységet a **általános** lapon. ![Az Általános lapon tulajdonságainak megadása](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+  * Az ADO.NET és OLE DB forrás vagy cél-összetevő beállítása **ConnectRetryCount** és **ConnectRetryInterval** a Csatlakozáskezelő az SSIS-csomag vagy SSIS-tevékenység.
 
-### <a name="error-message-ado-net-source-has-failed-to-acquire-the-connection--with-the-following-error-message-a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-server-the-server-was-not-found-or-was-not-accessible"></a>Hibaüzenet jelenik meg: `"ADO NET Source has failed to acquire the connection '...' with the following error message: "A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible."`
+### <a name="error-message-ado-net-source-has-failed-to-acquire-the-connection--with-a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-server-the-server-was-not-found-or-was-not-accessible"></a>Hibaüzenet jelenik meg: "A"..."beszerezni a kapcsolatot a ADO NET forrás nem sikerült" az "A hálózattal kapcsolatos vagy példányspecifikus hiba történt az SQL Server-kapcsolat létrehozásakor. A kiszolgáló nem található vagy nem volt elérhető."
 
-* Lehetséges ok és a javasolt művelet:
-  * A probléma általában azt jelenti, hogy az adatokat forrás és a cél nem érhető el az SSIS integrációs modult, amely különböző okok miatt okozhatja:
-    * Ellenőrizze, hogy megfelelően van átadja az adatokat forrás és a cél nevét/IP-cím
-    * Győződjön meg arról, hogy a tűzfal megfelelően van-e beállítva
-    * Győződjön meg arról, hogy a virtuális hálózat megfelelően van konfigurálva, ha az adatokat forrás és a cél helyi.
-      * A probléma-e a vNet konfigurációját egy Azure virtuális gép ugyanazon a vneten kiépítésével ellenőrizheti. Majd ellenőrizze, hogy az adatokat forrás és a cél elérhető lesz az Azure virtuális gép
-      * SSIS integrációs modul, a virtuális hálózat használatával kapcsolatos további részleteket talál [egy Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz](join-azure-ssis-integration-runtime-virtual-network.md)
+A probléma általában azt jelenti, hogy az adatforrás, vagy a cél nem érhető el, az SSIS integrációs modul. Az okok eltérőek lehetnek. Próbálja ki ezeket a műveleteket:
+* Ellenőrizze, hogy az adatok forrása vagy áthaladva is nevét/IP-cím megfelelően.
+* Győződjön meg arról, hogy a tűzfal megfelelően van-e beállítva.
+* Győződjön meg arról, hogy a virtuális hálózat megfelelően van konfigurálva, ha az adatok forrása vagy a helyszínen:
+  * Ellenőrizheti, hogy a probléma-e a virtuális hálózati konfiguráció szerint az azonos virtuális hálózatban lévő Azure virtuális gép kiépítése. Ezután ellenőrizze, hogy az adatforrás vagy a cél elérhető lesz az Azure virtuális Gépen.
+  * Virtuális hálózat egy SSIS integrációs modul az való használatával kapcsolatos további információk [egy Azure-SSIS integrációs modul csatlakoztatása virtuális hálózat](join-azure-ssis-integration-runtime-virtual-network.md).
 
-### <a name="error-message-ado-net-source-has-failed-to-acquire-the-connection--with-the-following-error-message-could-not-create-a-managed-connection-manager"></a>Hibaüzenet: "`ADO NET Source has failed to acquire the connection '...' with the following error message: "Could not create a managed connection manager.`"
+### <a name="error-message-ado-net-source-has-failed-to-acquire-the-connection--with-could-not-create-a-managed-connection-manager"></a>Hibaüzenet jelenik meg: "A"..."beszerezni a kapcsolatot a ADO NET forrás nem sikerült" a "Nem sikerült létrehozni a felügyelt kapcsolatot kezelő."
 
-* Lehetséges ok és a javasolt művelet:
-  * A csomagban használt ADO.NET-szolgáltató nincs telepítve az SSIS integrációs modul. A szolgáltató az egyéni beállításai használatával is telepítheti. Egyéni telepítés részleteinek található [testreszabása az Azure-SSIS integrációs modul beállítása](how-to-configure-azure-ssis-ir-custom-setup.md)
+A lehetséges oka, hogy a csomagban használt ADO.NET-szolgáltató nincs telepítve az SSIS integrációs modul. A szolgáltató egy egyéni telepítés használatával telepítheti. További információt az egyéni telepítés annak [testreszabása az Azure-SSIS integrációs modul beállítása](how-to-configure-azure-ssis-ir-custom-setup.md).
 
-### <a name="error-message-the-connection--is-not-found"></a>Hibaüzenet: "`The connection '...' is not found`"
+### <a name="error-message-the-connection--is-not-found"></a>Hibaüzenet jelenik meg: "Kapcsolat"..." nem található"
 
-* Lehetséges ok és a javasolt művelet:
-  * Ez a hiba azért lehet, mert egy ismert probléma az SSMS régi verzióját. A csomag tartalmaz egy egyéni összetevőt (például SSIS Azure Feature Pack vagy 3. fél összetevők), amely nincs telepítve a számítógépen, ahol az ssms-ben az üzembe helyezés szolgál, ha az összetevő által SSMS eltávolításra kerül, és a hibát. Frissítés [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a legújabb verzióra, amely rendelkezik a probléma kijavítva.
+Egy ismert probléma az SQL Server Management Studio (SSMS) régebbi verziójú ezt a hibát okozhat. Ha a csomag tartalmaz egy egyéni összetevő (például SSIS Azure Feature Pack vagy -partnerétől összetevők), amely nincs telepítve a számítógépen, ahol az ssms-ben az üzembe helyezés szolgál, SSMS távolítsa el az összetevőt, és okozza a problémát. Frissítés [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a legújabb verzióra, amely rendelkezik a probléma kijavítva.
 
 ### <a name="error-message-there-is-not-enough-space-on-the-disk"></a>Hibaüzenet jelenik meg: "Nem áll elég hely a lemezen"
 
-* Lehetséges ok és a javasolt művelet:
-  * Ez a hiba azt jelenti, hogy a helyi lemezt használja SSIS integrációs modul csomópontjának. Ellenőrizze-e a csomag vagy egyéni telepítés lenne felhasználása sok lemez szóközöket.
-    * A lemez a csomagot használja fel, ha akkor szabadul fel a csomag végrehajtása befejeződése után.
-    * Ha a lemezt az egyéni telepítés által felhasznált, szüksége lesz a SSIS integrációs modul leállításához, módosítsa a parancsfájlt, és indítsa újra az SSIS integrációs modul. A teljes Azure Blob-tároló megadott egyéni telepítés SSIS integrációs modul csomópont feletti lesznek másolva, ezért ellenőrizze, hogy van-e a tárolóban található minden felesleges tartalmat.
+Ez a hiba azt jelenti, hogy a helyi lemez szerepel az SSIS integrációs modul csomópontját. Ellenőrizze-e a csomag vagy egyéni telepítés fogyassza sok lemezterület:
+* A lemez a csomagot használja fel, ha akkor szabadul fel a csomag végrehajtása befejeződése után.
+* Ha a lemezt az egyéni telepítés használja fel, fog kell leállítani az SSIS integrációs modul, módosítsa a parancsfájlt, és indítsa újra az integration runtime. A teljes Azure blob-tároló megadott egyéni telepítés lesznek másolva az SSIS integrációs modul csomópontját, így ellenőrzi, hogy van-e a tárolóban található minden felesleges tartalmat.
 
 ### <a name="error-message-cannot-open-file-"></a>Hibaüzenet jelenik meg: "Fájl nem nyitható meg a"...""
 
-* Lehetséges ok és a javasolt művelet:
-  * Ez a hiba akkor fordul elő, amikor a csomag végrehajtása a fájl nem található az SSIS integrációs modul helyi lemez.
-    * Csomag, az SSIS integrációs modul végrehajtása abszolút elérési út használata nem ajánlott. Aktuális végrehajtási munkakönyvtár (.) vagy a temp mappa (% TEMP %) helyette.
-    * Ha egyes fájlok SSIS integrációs modul csomópontján megőrzéséhez szükséges, ajánlott útján a fájlok előkészítéséhez [testre szabhatja a telepítő](how-to-configure-azure-ssis-ir-custom-setup.md). A végrehajtási munkakönyvtárban lévő fájlok törlődnek, a végrehajtás befejezése után.
-    * Egy másik lehetőség, hogy az Azure File használata helyett az SSIS integrációs modul csomópontja tárolja. További részleteket tekinthet meg [ https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-files-file-shares?view=sql-server-2017#use-azure-file-shares ](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-files-file-shares?view=sql-server-2017#use-azure-file-shares).
+Ez a hiba akkor fordul elő, amikor a csomag végrehajtása egy fájlt a helyi lemezen lévő az SSIS integrációs modul nem található. Próbálja ki ezeket a műveleteket:
+* Ne használjon abszolút elérési útját a csomagot, amely az SSIS integrációs modul az folyamatban van. Az aktuális végrehajtási munkakönyvtár (.) vagy a temp mappa (% TEMP %) helyette.
+* Ha néhány fájlt a SSIS integrációs modul csomópontjait megőrzéséhez van szüksége, készítse elő a fájlok leírtak szerint [testre szabhatja a telepítő](how-to-configure-azure-ssis-ir-custom-setup.md). A munkakönyvtárban lévő fájlok törlődnek, a végrehajtás befejezése után.
+* Az Azure Files használata helyett a fájl az SSIS integrációs modul csomópontja tárolja. További információkért lásd: [az Azure-fájlmegosztások](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-files-file-shares?view=sql-server-2017#use-azure-file-shares).
 
 ### <a name="error-message-the-database-ssisdb-has-reached-its-size-quota"></a>Hibaüzenet jelenik meg: "A"SSISDB"adatbázis elérte a mérete kvótáját"
 
-* Lehetséges ok és a javasolt művelet:
-  * Az Azure SQL vagy a felügyelt példányon létrehozott SSIS integrációs modul létrehozása során az SSISDB elérte a kvótáját.
-    * Érdemes megfontolni a probléma megoldásához az adatbázis dtu-k. Részleteket tekinthet meg [https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server)
-    * Ellenőrizze, hogy a csomag számos naplókat hoz létre. Ha igen, rugalmas feladat beállítható úgy, hogy ezek a naplók törlése. Tekintse meg [Azure Elastic Database-feladatok az SSISDB-naplók törlése](how-to-clean-up-ssisdb-logs-with-elastic-jobs.md) részletek.
+Egy lehetséges oka, hogy az SSISDB-adatbázis létrehozásakor egy SSIS integrációs modult az Azure SQL database, vagy egy felügyelt példányra létrehozott elérte a kvótáját. Próbálja ki ezeket a műveleteket:
+* Érdemes megfontolni a dtu-k, az adatbázis. Az információk [egy Azure SQL Database-kiszolgálóhoz tartozó SQL Database erőforráskorlátok](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server).
+* Ellenőrizze, hogy a csomag számos naplókat hoz létre. Ha igen, ezek a naplók karbantartása rugalmas feladat konfigurálhatja. További információkért lásd: [Azure rugalmas adatbázis-feladatok az SSISDB-naplók törlése](how-to-clean-up-ssisdb-logs-with-elastic-jobs.md).
 
 ### <a name="error-message-the-request-limit-for-the-database-is--and-has-been-reached"></a>Hibaüzenet jelenik meg: "A kérelem az adatbázis határértéke... és elérte."
 
-* Lehetséges ok és a javasolt művelet:
-  * Ha a csomagok számát az SSIS integrációs modul párhuzamosan futtatja, a hiba akkor jelentkezik, mert elérte a kérelem korlátozás az SSISDB. Érdemes megfontolni a DTC-t, az SSISDB a probléma megoldásához. Részleteket tekinthet meg [https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server)
+Csomagok számát az SSIS integrációs modul párhuzamosan futnak, ha ez a hiba fordulhat elő, mert az SSISDB eléri a kérelmi korlátjának. Érdemes megfontolni az SSISDB DTC-től a probléma megoldásához. Az információk [egy Azure SQL Database-kiszolgálóhoz tartozó SQL Database erőforráskorlátok](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server).
 
 ### <a name="error-message-ssis-operation-failed-with-unexpected-operation-status-"></a>Hibaüzenet jelenik meg: "SSIS-művelet sikertelen volt. váratlan művelet állapota: …"
 
-* Lehetséges ok és a javasolt művelet:
-  * A hiba többnyire egy átmeneti hiba okozza, így próbálja meg újra futtatni a csomag végrehajtása. Javasolt újrapróbálkozási minta az SSIS-csomag alkalmazása a következő lépésekben:
-    * Ellenőrizze, hogy az SSIS-csomagok újra futtathatja a hiba nélkül mellékhatása (például az adatvesztést, adatok dup...)
-    * Konfigurálja a **újra** és **újrapróbálkozási időköz** SSIS csomag tevékenység hajtsa végre az Általános lapon ![tulajdonságainak Általános lapján](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
-    * Az ADO.NET és OLEDB forrás és a cél-összetevő ConnectRetryCount és ConnectRetryInterval állíthatók be a kezelő az SSIS-csomag vagy SSIS-tevékenység
+A hiba többnyire egy átmeneti hiba okozza, így próbálja meg újra futtatni a csomag végrehajtása. Az újrapróbálkozási minta az SSIS-csomag a alkalmazni az alábbi lépéseket:
+
+* Ellenőrizze, hogy az SSIS-csomagok hiba esetén (például az adatvesztést vagy adatdeduplikáció) hatásai nélkül futtathatja.
+* Konfigurálása **újra** és **újrapróbálkozási időköz** , **SSIS-csomag végrehajtása** tevékenységet a **általános** lapon. ![Az Általános lapon tulajdonságainak megadása](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+* Az ADO.NET és OLE DB forrás vagy cél-összetevő beállítása **ConnectRetryCount** és **ConnectRetryInterval** a Csatlakozáskezelő az SSIS-csomag vagy SSIS-tevékenység.
 
 ### <a name="error-message-there-is-no-active-worker"></a>Hibaüzenet jelenik meg: "Nincs nincs aktív feldolgozó."
 
-* Lehetséges ok és a javasolt művelet:
-  * Ez a hiba általában azt jelenti, az SSIS integrációs modul egy nem megfelelő állapotban van. Ellenőrizze az állapotot és a részletek hibák az Azure Portalon: [https://docs.microsoft.com/azure/data-factory/monitor-integration-runtime#azure-ssis-integration-runtime](https://docs.microsoft.com/azure/data-factory/monitor-integration-runtime#azure-ssis-integration-runtime)
+Ez a hiba általában azt jelenti, az SSIS integrációs modul állapota nem kifogástalan. Ellenőrizze az Azure Portalon, az állapot és a részletes hibaüzenetek. További információkért lásd: [Azure-SSIS integrációs modul](https://docs.microsoft.com/azure/data-factory/monitor-integration-runtime#azure-ssis-integration-runtime).
 
 ### <a name="error-message-your-integration-runtime-cannot-be-upgraded-and-will-eventually-stop-working-since-we-cannot-access-the-azure-blob-container-you-provided-for-custom-setup"></a>Hibaüzenet jelenik meg: "Az integrációs modul nem lehet frissíteni, és végül fog tovább működni, mivel jelenleg nem érhető el az Azure Blob-tárolóba, a megadott egyéni telepítő."
 
-* Ez a hiba akkor fordul elő, amikor SSIS integrációs modul nem tud hozzáférni a tárolási kapacitással, az egyéni telepítés. Ellenőrizze, hogy a megadott SAS Uri érvényes, és még nem járt le.
+Ez a hiba akkor fordul elő, ha az SSIS integrációs modul nem tud hozzáférni a tárolási kapacitással, az egyéni telepítés. Ellenőrizze, hogy a közös hozzáférésű jogosultságkód (SAS) URI-t, amely a megadott érvényes, és még nem járt le.
 
 ### <a name="error-message-microsoft-ole-db-provider-for-analysis-services-hresult-0x80004005-description-com-error-com-error-mscorlib-exception-has-been-thrown-by-the-target-of-an-invocation"></a>Hibaüzenet jelenik meg: "A Microsoft OLE DB-szolgáltató az Analysis Serviceshez. "Hresult: 0x80004005 leírását: " COM-hiba: COM-hiba: mscorlib; A meghívott objektum kivételt adott vissza"
 
-* Lehetséges ok és a javasolt művelet:
-  * Azure Analysis Services-hitelesítést, amely még nem támogatott az SSIS integrációs modul egyik lehetséges oka, hogy felhasználónév/jelszó az MFA engedélyezve van konfigurálva. Próbálja ki az egyszerű szolgáltatás használata az Azure Analysis Service-hitelesítés:
-    1. Egyszerű szolgáltatás AAS előkészítése [https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal](https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal)
-    2. A Csatlakozáskezelő, konfigurálja a "A megadott felhasználónév és jelszó használata": "AppID" állítsa be a felhasználónevet és jelszót "clientSecret"
+Egy lehetséges oka, hogy az Azure Analysis Services hitelesítési felhasználónév vagy jelszó az Azure multi-factor Authentication engedélyezve van konfigurálva. A hitelesítés az SSIS integrációs modul nem támogatott. Próbálja meg egy egyszerű szolgáltatást az Azure Analysis Services-hitelesítéshez használandó:
+1. Egyszerű szolgáltatás előkészítése leírtak szerint [automatizálása szolgáltatásnevekkel](https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal).
+2. A Csatlakozáskezelő konfigurálása **megadott felhasználónévvel és jelszóval**: állítsa be **AppID** felhasználóneve és **clientSecret** jelszóként.
 
-### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-managed-identity"></a>Hibaüzenet jelenik meg: "ADONET forrás nem sikerült beszerezni a kapcsolat {GUID} a következő hiba miatt: "NT AUTHORITY\NÉVTELEN bejelentkezés" felhasználó bejelentkezése sikertelen volt "felügyelt identitás használata
+### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>Hibaüzenet jelenik meg: "ADONET forrás nem sikerült beszerezni a kapcsolat {GUID} a következő hiba miatt: "NT AUTHORITY\NÉVTELEN bejelentkezés" felhasználó bejelentkezése sikertelen volt "egy felügyelt identitás használata
 
-* Lehetséges ok és a javasolt művelet:
-  * Ellenőrizze, hogy a kezelő hitelesítési módszer konfigurálása nem "Active Directory jelszavas hitelesítést", ha a "ConnectUsingManagedIdentity" paraméter értéke True. Konfigurálható a "SQL-hitelesítés", ehelyett amely lenne figyelmen kívül lesz hagyva "ConnectUsingManagedIdentity" van beállítva
+Ellenőrizze, hogy nem konfigurálja a hitelesítési módszer a Csatlakozáskezelő, **Active Directory jelszavas hitelesítést** Ha a paraméter *ConnectUsingManagedIdentity* van **igaz** . Beállíthatja úgy, mint **SQL-hitelesítés** helyette, amely figyelmen kívül hagyja Ha *ConnectUsingManagedIdentity* van beállítva.
 
-### <a name="package-takes-unexpected-long-time-to-execute"></a>Csomag végrehajtása váratlan hosszú időt vesz igénybe.
+### <a name="package-execution-takes-too-long"></a>Csomag végrehajtása túl sokáig tart.
 
-* Lehetséges ok és a javasolt művelet:
-  * Túl sok csomagot végrehajtások a az SSIS integrációs modul be van ütemezve. Ebben az esetben egy üzenetsorba tartozó végrehajtásához viszont minden céljából vár.
-    * Maximális párhuzamos végrehajtások száma kiszolgálónként integrációs modul csomópontok száma = * csomópontonkénti maximális párhuzamos végrehajtása
-    * Tekintse meg [Azure-SSIS integrációs modul létrehozása az Azure Data Factoryban](create-azure-ssis-integration-runtime.md) , hogy hogyan állítsa be a csomópontok száma és a maximális párhuzamos végrehajtás csomópontonkénti.
-  * SSIS integrációs modul le van állítva, vagy a nem kifogástalan állapotú. Ellenőrizze [Azure-SSIS integrációs modul](monitor-integration-runtime.md#azure-ssis-integration-runtime) segítségével ellenőrizheti az SSIS integrációs modul állapota és hibái.
-  * Javasolt beállítani az időkorlátot, ha biztos benne, hogy a csomag végrehajtása kell befejeződött, egy bizonyos idő alatt: ![Az Általános lapon tulajdonságainak megadása](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+Az alábbiakban a lehetséges okok és a javasolt művelet:
+* Túl sok csomagot végrehajtások a az SSIS integrációs modul be van ütemezve. Minden céljából egy üzenetsorban lévő viszont Várakozás lesz.
+  * A képlettel határozza meg a maximális: 
+    
+    Maximális párhuzamos végrehajtások száma kiszolgálónként integrációs modul csomópontok száma = * csomópontonkénti maximális párhuzamos végrehajtása
+  * Ismerje meg, hogyan állíthatja be a csomópontok száma és a csomópontonkénti maximális párhuzamos futtatáshoz, lásd: [Azure-SSIS integrációs modul létrehozása az Azure Data Factoryban](create-azure-ssis-integration-runtime.md).
+* Az SSIS integrációs modul le van állítva, vagy a nem kifogástalan állapotú. Ellenőrizze az SSIS integrációs modul állapotának és a hibák kezelésével kapcsolatos információkért lásd: [Azure-SSIS integrációs modul](monitor-integration-runtime.md#azure-ssis-integration-runtime).
+
+Azt javasoljuk, hogy a beállítása egy időtúllépési a **általános** lapon: ![Az Általános lapon állítsa be a tulajdonságokat](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png).
 
 ### <a name="poor-performance-in-package-execution"></a>Gyenge teljesítményt, a csomag végrehajtása
 
-* Lehetséges ok és a javasolt művelet:
+Próbálja ki ezeket a műveleteket:
 
-  * Ellenőrizze, hogy van-e az SSIS integrációs modul az adatforrás és a cél ugyanabban a régióban.
+* Győződjön meg arról, az SSIS integrációs modul adatokat forrás és cél és ugyanabban a régióban.
 
-  * Engedélyezze a "Teljesítmény" naplózási szint
+* A csomag végrehajtása naplózási szintjének beállítása **teljesítmény** az egyes összetevők meg a végrehajtási időtartamának információkat gyűjthet. További információkért lásd: [Integration Services (SSIS) naplózás](https://docs.microsoft.com/sql/integration-services/performance/integration-services-ssis-logging).
 
-      Beállíthatja, hogy a "Teljesítmény" gyűjtött részletes időtartama információk az egyes összetevők a végrehajtás a csomag végrehajtása naplózási szintjét. Részleteket tekinthet meg: [https://docs.microsoft.com/sql/integration-services/performance/integration-services-ssis-logging](https://docs.microsoft.com/sql/integration-services/performance/integration-services-ssis-logging)
-
-  * Ellenőrizze az integrációs modul teljesítményének az integrációs modul figyelő lap az Azure Portalon.
-    * Hogyan SSIS integrációs modul monitorozása: [Az Azure-SSIS integrációs modul](monitor-integration-runtime.md#azure-ssis-integration-runtime)
-    * Az SSIS integrációs modul CPU/memória használati előzmények érhető el: a Data Factory a metrikák az Azure Portalon ![metrikák SSIS integrációs modul monitorozása](media/ssis-integration-runtime-ssis-activity-faq/monitor-metrics-ssis-integration-runtime.png)
+* Ellenőrizze az integrációs modul teljesítményének az Azure Portalon:
+  * Az SSIS integrációs modul monitorozása kapcsolatos információkért lásd: [Azure-SSIS integrációs modul](monitor-integration-runtime.md#azure-ssis-integration-runtime).
+  * Az adat-előállító metrikáinak megtekintése az Azure Portalon az SSIS integrációs modul CPU/memória előzmények keresheti.
+    ![Az SSIS integrációs modul metrikák figyelése](media/ssis-integration-runtime-ssis-activity-faq/monitor-metrics-ssis-integration-runtime.png)

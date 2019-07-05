@@ -1,27 +1,24 @@
 ---
-title: Az Azure-foglalások használati adatai használatalapú fizetéses előfizetésre |} A Microsoft Docs
-description: Ismerje meg, hogyan olvashatja be a használat megértéséhez, hogyan kell alkalmazni a foglalást az Azure használatalapú fizetéses előfizetésében.
-services: billing
-documentationcenter: ''
-author: manish-shukla01
-manager: manshuk
-editor: ''
+title: Az Azure-foglalás használat az utólagos elszámolású díjszabás szerint az egyes előfizetésre
+description: Ismerje meg, hogyan olvashatja be a használat megértéséhez, hogyan kell alkalmazni az Azure utólagos elszámolású díjszabás szerint egyes előfizetés-foglalás.
+author: bandersmsft
+manager: yashr
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/13/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 14bd7b61038bf938f7d370eaf6e16d71b5da43ca
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 11f05c3de50f2f82173b6666d304887fbc2038cc
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370356"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490367"
 ---
-# <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>A használatalapú fizetéses előfizetést Azure foglalás használati adatai
+# <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Az Azure-foglalás egyes előfizetésének utólagos elszámolású díjszabás szerint előfizetés használati adatai
 
 Használja a reservationid értékhez a [foglalási lap](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) és a használatot részletező fájl a a [fiókok az Azure portal](https://account.azure.com) a Foglalás használat kiértékeléséhez.
 
@@ -62,7 +59,7 @@ Szűrés **további adatok** , és írja be a **Foglalásazonosító**. Az aláb
 4. **Mérőszám azonosítója** a Foglalás mérő azonosítója. Ez az érték költsége 0 USD. Ez a mérőszám azonosítója megjelenik az összes virtuális gép, amely jogosult a foglalási kedvezményt.
 5. Standard_DS1_v2 egy vCPU virtuális gép és a virtuális gép központi telepítése az Azure Hybrid Benefit nélkül. Tehát ez az érték magában foglalja a Windows-szoftverek külön díjfizetés nélkül. A mérőszám a D sorozatú virtuális gép 1 mag, lásd: [Azure számára fenntartott VM-példányok Windows szoftverek díjait](billing-reserved-instance-windows-software-costs.md). Ha az Azure Hybrid Benefit, a rendszer nem alkalmazza ezt külön díjfizetés nélkül.
 
-## <a name="usage-for-sql-database--cosmos-db-reserved-capacity-reservations"></a>Az SQL Database és a Cosmos DB használatát fenntartott kapacitás foglalások
+## <a name="usage-for-sql-database--cosmos-db-reservations"></a>Az SQL Database és a Cosmos DB-lefoglalási használat
 
 A következő szakaszok példaként az Azure SQL Database használatával a használati jelentés ismertetik. Ugyanezen lépések segítségével használatának megtekintése az Azure Cosmos DB is.
 

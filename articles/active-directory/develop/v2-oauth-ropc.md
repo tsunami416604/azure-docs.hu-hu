@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04d2be76072866da2b21718f60fd0c9a5923b15b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da111311de7b873be6453862ffcbd56fe546ea7f
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545108"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482377"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>A Microsoft identity platform és az OAuth 2.0-s erőforrás tulajdonos jelszavára vonatkozó hitelesítőadat
 
@@ -39,7 +39,7 @@ A Microsoft identity platform támogatja a [erőforrás tulajdonos jelszavára v
 
 Az alábbi ábrán látható a ROPC folyamatot.
 
-![ROPC folyamat](./media/v2-oauth2-ropc/v2-oauth-ropc.svg)
+![Az erőforrás tulajdonosa jelszavát hitelesítőadat folyamatot bemutató ábra.](./media/v2-oauth2-ropc/v2-oauth-ropc.svg)
 
 ## <a name="authorization-request"></a>Engedélyezési kérés
 
@@ -47,7 +47,7 @@ A ROPC flow-t egyetlen kérelem&mdash;azonosítása és a felhasználói hiteles
 
 > [!TIP]
 > Próbálja ki a Postmanben a kérelem végrehajtása!
-> [![A Postmanben futtatása](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> [![Próbálja meg futtatni a postmanben a kérelem](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 
 ```
@@ -69,7 +69,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `tenant` | Kötelező | A directory-bérlővel, amelyet a felhasználó be szeretne. Ez lehet GUID vagy rövid név formátumban. Ez a paraméter nem állítható be `common` vagy `consumers`, de beállítható `organizations`. |
 | `grant_type` | Kötelező | Meg kell `password`. |
 | `username` | Kötelező | A felhasználó e-mail címét. |
-| `password` | Szükséges | A felhasználó jelszavát. |
+| `password` | Kötelező | A felhasználó jelszavát. |
 | `scope` | Ajánlott | Szóközzel elválasztott listáját [hatókörök](v2-permissions-and-consent.md), vagy az alkalmazáshoz szükséges jogosultságokkal. A interaktív folyamatban a rendszergazda vagy a felhasználónak jóvá kell hagynia ezeken a hatókörökön előre. |
 
 ### <a name="successful-authentication-response"></a>A sikeres hitelesítési válaszra.

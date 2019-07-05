@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6ae271fc464e2a5735ef95a428b3070066058ddc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5234835f5fbfd5617e6b0440ff38fa900051470a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696146"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450110"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>HDInsight Tools for IntelliJ with hortonworks – tesztkörnyezet használata
 
@@ -24,7 +24,7 @@ Ismerje meg, hogyan Apache Scala-alkalmazások fejlesztése, és tesztelje az al
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
+Ez a cikk elkezdéséhez a következőkkel kell rendelkeznie:
 
 - Hortonworks Data Platform (HDP) 2.4 a Hortonworks Sandbox fut a helyi számítógépen. HDP beállításával kapcsolatban lásd: [Ismerkedjen meg a Hadoop-tesztkörnyezet, a virtuális gépen az Apache Hadoop-ökoszisztéma](apache-hadoop-emulator-get-started.md). 
     > [!NOTE]
@@ -142,7 +142,7 @@ Az emulátor egy projekt elküldése:
 2. Hajtsa végre a következő lépéseket:
 
     1. Az a **Spark-fürt (csak Linux)** legördülő listára, válassza ki a helyi hortonworks – tesztkörnyezet.
-    2. Az a **Main osztály neve** mezőben válassza ki vagy adja meg a fő osztály nevét. Ebben az oktatóanyagban a név **GroupByTest**.
+    2. Az a **Main osztály neve** mezőben válassza ki vagy adja meg a fő osztály nevét. Ebben a cikkben a név **GroupByTest**.
 
 3. Válassza ki **elküldése**. A feladat beküldése naplókat a Spark küldésének eszköz ablakban láthatók.
 

@@ -4,7 +4,7 @@ description: Az Azure App Service linuxon – gyakori kérdések.
 keywords: az Azure app service, webalkalmazás, – gyakori kérdések, linux, oss, tárolók, többtárolós, multicontainer webalkalmazás
 services: app-service
 documentationCenter: ''
-author: yili
+author: msangapu-msft
 manager: stefsch
 editor: ''
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
-ms.author: yili
+ms.author: msangapu-msft
 ms.custom: seodec18
-ms.openlocfilehash: dbf63ff47b11c2e75966b4a4b91fb1b00b40d216
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d465a93a23b7f0098471e0074240dfcbe9658736
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65594281"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448440"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Az Azure App Service linuxon – gyakori kérdések
 
@@ -119,10 +119,7 @@ Igen, a Git telepítése során a Kudu kell észleli, hogy telepít egy PHP-alka
 
 **Saját egyéni tároló használok. A platform csatlakoztatni az SMB-megosztáson szeretném a `/home/` könyvtár.**
 
-Azt is teheti meg, hogy a `WEBSITES_ENABLE_APP_SERVICE_STORAGE` Alkalmazásbeállítás *igaz*. Ne feledje, hogy ennek hatására tároló újraindul, ha a platform tárolási végighalad a változást.
-
->[!NOTE]
->Ha a `WEBSITES_ENABLE_APP_SERVICE_STORAGE` beállítás nincs megadva, vagy állítsa *hamis*, a `/home/` könyvtár nem megoszthatók méretezési példány, és ott írt fájlok nem maradnak meg újraindítások között.
+Ha `WEBSITES_ENABLE_APP_SERVICE_STORAGE` beállítás **meghatározatlan** , vagy állítsa *igaz*, a `/home/` directory **meg lesz osztva** méretezési példány, és írtfájlok**megmaradnak** újraindítások között. Explicit módon beállítás `WEBSITES_ENABLE_APP_SERVICE_STORAGE` való *hamis* letiltja a csatlakoztatási.
 
 **Saját egyéni tároló indítása hosszú időt vesz igénybe, és a platform újraindítja a tárolót, mielőtt végzett indul el.**
 

@@ -5,20 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/12/2019
-ms.openlocfilehash: ad3e2157e7b8748174cc8b81d1debd5de0ba77b9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/27/2019
+ms.openlocfilehash: a2f9b7597022822272692d20976e1da654b9d524
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079482"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67462052"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mariadb"></a>Teljesítménnyel kapcsolatos javaslatok az Azure Database for MariaDB
 
-**A következőkre vonatkozik:** Azure Database for MariaDB 10.2s
+**A következőkre vonatkozik:** Azure Database for MariaDB 10.2
 
 > [!NOTE]
-> Teljesítménnyel kapcsolatos javaslatok az előzetes verzióban. Teljesítménnyel kapcsolatos javaslatok támogatása az Azure Portalon tesszük elérhetővé, és előfordulhat, hogy még nem érhető el a régióban.
+> Teljesítménnyel kapcsolatos javaslatok az előzetes verzióban.
 
 A teljesítménnyel kapcsolatos javaslatok funkció elemzi az adatbázisokat hozhat létre személyre szabott javaslatok a jobb teljesítmény érdekében. Az ajánlások előállításához, különböző adatbázis jellemzőit, beleértve a sémát az elemzés megvizsgálja. Engedélyezése [Query Store](concepts-query-store.md) használja ki teljesen a teljesítménnyel kapcsolatos javaslatok a szolgáltatás a kiszolgálón. Ha teljesítmény-séma ki, ne tudják bekapcsolni a Query Store lehetővé teszi a performance_schema és a egy részét a szolgáltatás számára szükséges teljesítményt séma eszközöket. Után minden teljesítmény javaslat megvalósítása, tesztelnie kell a teljesítményt, ezek a módosítások hatásának vizsgálatában.
 

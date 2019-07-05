@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 2583e7e218e765e0d7745978582e19a5a4fe17ce
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ea048c6adbb4e00ae8543810f1dc571376038c62
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60550201"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67436249"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Azure Batch-készlet létrehozása egy virtuális hálózaton belül
 
@@ -56,7 +56,7 @@ Előfordulhat, hogy kell követelmények a szervezetben (kényszerített) átir�
 
 Győződjön meg arról, hogy működik-e az Azure Batch-készlet számítási csomópontok egy virtuális hálózatban, amely rendelkezik a kényszerített bújtatás engedélyezve van, adja hozzá a következő [felhasználó által megadott útvonalak](../virtual-network/virtual-networks-udr-overview.md) , alhálózat:
 
-* A Batch szolgáltatás és a készlet számítási csomópontjait ahhoz, hogy feladatütemezés közötti kommunikációhoz szükséges. Ez a kommunikáció engedélyezéséhez adjon hozzá egy felhasználó által megadott útvonal abban a régióban, ahol a Batch-fiók létezik-e a Batch szolgáltatás által használt IP-címeket. A Batch szolgáltatás IP-címeinek beszerzéséhez forduljon az Azure ügyfélszolgálatához.
+* A Batch szolgáltatás és a készlet számítási csomópontjait ahhoz, hogy feladatütemezés közötti kommunikációhoz szükséges. Ez a kommunikáció engedélyezéséhez adjon hozzá egy felhasználó által megadott útvonal abban a régióban, ahol a Batch-fiók létezik-e a Batch szolgáltatás által használt IP-címeket. A Batch szolgáltatás IP-címek listájának beszerzésével kapcsolatban lásd: [címkék a helyszíni szolgáltatás](../virtual-network/security-overview.md#service-tags-in-on-premises)
 
 * Győződjön meg arról, hogy a kimenő forgalmat az Azure Storage (pontosabban az űrlap URL `<account>.table.core.windows.net`, `<account>.queue.core.windows.net`, és `<account>.blob.core.windows.net`) nincs letiltva a helyszíni hálózati berendezések keresztül.
 

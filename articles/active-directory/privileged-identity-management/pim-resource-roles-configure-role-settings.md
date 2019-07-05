@@ -15,12 +15,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d42c693fae6b538136d1e8c93094a0ea9e2077
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c6da92ccd50707e676a1f5d583fe22ae8b3d8b73
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60288377"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476319"
 ---
 # <a name="configure-azure-resource-role-settings-in-pim"></a>A PIM Azure szerepkör-beállítások konfigurálása
 
@@ -38,19 +38,19 @@ Kövesse az alábbi lépéseket egy Azure-erőforrás szerepkör beállításain
 
 1. Kattintson az erőforrás szeretne felügyelni, mint például egy előfizetést vagy felügyeleti csoportot.
 
-    ![Azure-erőforrások kezelése listája](./media/pim-resource-roles-configure-role-settings/resources-list.png)
+    ![Azure-erőforrások lapon kezelhetők erőforrások listázása](./media/pim-resource-roles-configure-role-settings/resources-list.png)
 
 1. Kattintson a **szerepkör-beállítások**.
 
-    ![Szerepkör-beállítások](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
+    ![Szerepkör-beállítások lapon listázása az Azure-erőforrásszerepkörök](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
 1. Kattintson a szerepkör, amelynek beállításait konfigurálni szeretné.
 
-    ![Szerepkör-beállítás részletei](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
+    ![Szerepkör beállítások részletei oldalon több hozzárendelés és aktiválás beállítások listázása](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
 
 1. Kattintson a **szerkesztése** a szerepkör-beállítások panel megnyitásához.
 
-    ![Szerepkör-beállítások szerkesztése](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+    ![Szerepkör beállításai lapon-hozzárendelés és aktiválás beállításainak frissítése beállításokkal szerkesztése](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
 
     A szerepkör beállítás panelen az egyes szerepkörökhöz vannak több beállítást is beállíthat.
 
@@ -109,7 +109,7 @@ Ha szeretné a szerepkör aktiválásához jóváhagyás szükséges, kövesse a
 
 1. Kattintson a **jóváhagyók kiválasztása** válassza a-tag vagy a csoport panel megnyitásához.
 
-    ![Tag vagy csoport kijelölése](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
+    ![Egy tag vagy a csoport panelen válassza ki a jóváhagyók kiválasztása](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
 1. Válasszon ki legalább egy tagot vagy csoportot, és kattintson a **kiválasztása**. A tagok és csoportok tetszőleges kombinációját is hozzáadhat. Ki kell választania legalább egy jóváhagyó. Nincsenek nem alapértelmezett jóváhagyónak.
 

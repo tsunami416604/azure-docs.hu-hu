@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: 491f19abfd87c28ede45e98a24f31fe7e599b18b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9a02a56df85c5c6aa9fd177ad42a2f9bfb303e44
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64691417"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491955"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>A Traffic Analytics séma és adatok összesítése
 
@@ -32,13 +32,57 @@ A TRAFFIC Analytics egy felhőalapú megoldás, amely a felhőbeli hálózatok f
 
 ### <a name="data-aggregation"></a>Adatösszesítés
 
-1. Egy NSG-t "FlowIntervalStartTime_t" és "FlowIntervalEndTime_t" között található összes Folyamatnaplók rögzítve lesznek a tárfiókban lévő perces időközönként blobként előtt a Traffic Analytics által feldolgozott. 
+1. Egy NSG-t "FlowIntervalStartTime_t" és "FlowIntervalEndTime_t" között található összes Folyamatnaplók rögzítve lesznek a tárfiókban lévő perces időközönként blobként előtt a Traffic Analytics által feldolgozott.
 2. Traffic Analytics feldolgozási időköz alapértelmezett értéke 60 másodperc. Ez azt jelenti, hogy a Traffic Analytics választja ki a BLOB storage összesítés 60 percenként.
 3. Folyamatok, amelyek a forrás IP-címe, cél IP-címe, Célport, NSG neve, NSG-szabályt, folyamat iránya, és Transport layer protocol (TCP vagy UDP) (Megjegyzés: Forrásport összesítés ki van zárva) vannak clubbed egy flow-bA a Traffic Analytics
 4. Ez a rekord egyetlen leírással ellátott (részleteit az alábbi szakaszban) és a fogadott adatokat a Log Analytics forgalom Analytics.This folyamat is igénybe vehet legfeljebb 1 óra max.
-5. FlowStartTime_t jelzi a első előfordulása ilyen egy összesített folyamat (azonos négy rekordos) a folyamat napló feldolgozása "FlowIntervalStartTime_t" és "FlowIntervalEndTime_t" közötti időköz. 
+5. FlowStartTime_t jelzi a első előfordulása ilyen egy összesített folyamat (azonos négy rekordos) a folyamat napló feldolgozása "FlowIntervalStartTime_t" és "FlowIntervalEndTime_t" közötti időköz.
 6. A TA bármilyen erőforrás a flow, a felhasználói felületen megadott teljes folyamatok alapegységét az NSG-t, de Log Anlaytics felhasználó csak az egyetlen, csökkentett rekordot fog megjelenni. Összes folyamat megtekintéséhez használja a blob_id mező, amely a Storage-ból lehet rá hivatkozni. Teljes száma, hogy rekord megegyeznek az egyes folyamatok, a blob látható.
 
+Az az alábbi lekérdezés minden néz ki segít flow naplók az elmúlt 30 napban helyszíni rendszerből.
+```
+AzureNetworkAnalytics_CL
+| where SubType_s == "FlowLog" and FlowStartTime_t >= ago(30d) and FlowType_s == "ExternalPublic"
+| project Subnet_s  
+```
+A blob elérési útja a folyamatok a fent említett lekérdezésben megtekintéséhez használja az alábbi lekérdezést:
+
+```
+let TableWithBlobId =
+(AzureNetworkAnalytics_CL
+   | where SubType_s == "Topology" and ResourceType == "NetworkSecurityGroup" and DiscoveryRegion_s == Region_s and IsFlowEnabled_b
+   | extend binTime = bin(TimeProcessed_t, 6h),
+            nsgId = strcat(Subscription_g, "/", Name_s),
+            saNameSplit = split(FlowLogStorageAccount_s, "/")
+   | extend saName = iif(arraylength(saNameSplit) == 3, saNameSplit[2], '')
+   | distinct nsgId, saName, binTime)
+| join kind = rightouter (
+   AzureNetworkAnalytics_CL
+   | where SubType_s == "FlowLog"  
+   | extend binTime = bin(FlowEndTime_t, 6h)
+) on binTime, $left.nsgId == $right.NSGList_s  
+| extend blobTime = format_datetime(todatetime(FlowIntervalStartTime_t), "yyyy MM dd hh")
+| extend nsgComponents = split(toupper(NSGList_s), "/"), dateTimeComponents = split(blobTime, " ")
+| extend BlobPath = strcat("https://", saName,
+                        "@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIPTIONS/", nsgComponents[0],
+                        "/RESOURCEGROUPS/", nsgComponents[1],
+                        "/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/", nsgComponents[2],
+                        "/y=", dateTimeComponents[0], "/m=", dateTimeComponents[1], "/d=", dateTimeComponents[2], "/h=", dateTimeComponents[3],
+                        "/m=00/macAddress=", replace(@"-", "", MACAddress_s),
+                        "/PT1H.json")
+| project-away nsgId, saName, binTime, blobTime, nsgComponents, dateTimeComponents;
+
+TableWithBlobId
+| where SubType_s == "FlowLog" and FlowStartTime_t >= ago(30d) and FlowType_s == "ExternalPublic"
+| project Subnet_s , BlobPath
+```
+
+A fenti lekérdezés való közvetlen hozzáféréshez a blob URL-címet hoz létre. A helyőrzőket az URL-cím nem éri el:
+
+```
+https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroup}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
+
+```
 
 ### <a name="fields-used-in-traffic-analytics-schema"></a>A Traffic Analytics séma használt mezők
 
@@ -46,10 +90,10 @@ A TRAFFIC Analytics – Naplóelemzés, épül, így a Traffic Analytics által 
 
 Az alábbiakban a séma- és azok jelölésére mezői
 
-| Mező | Formátum | Megjegyzések | 
+| Mező | Formátum | Megjegyzések |
 |:---   |:---    |:---  |
 | TableName | AzureNetworkAnalytics_CL | Tábla Anlaytics forgalmi adatok
-| SubType_s | Forgalomnapló | A folyamat-naplók altípusa |
+| SubType_s | Forgalomnapló | A folyamat-naplók altípusa. Csak a "Forgalomnapló" használja, más SubType_s értékei a következők számára a termék belső működése |
 | FASchemaVersion_s |   1   | Scehma verziója. Nem tükrözi az NSG-folyamat napló verziója |
 | TimeProcessed_t   | Dátuma és időpontja (UTC)  | Idő, amikor a Traffic Analytics feldolgozásra a nyers Folyamatnaplók a storage-fiókból |
 | FlowIntervalStartTime_t | Dátuma és időpontja (UTC) |  A flow log feldolgozási időszakának kezdési időpontját. Ez az időt, amelyből a folyamat időköz mérése |
@@ -61,10 +105,10 @@ Az alábbiakban a séma- és azok jelölésére mezői
 | DestIP_s | Cél IP-címe | AzurePublic esetén üres lesz, és ExternalPublic folyamatok |
 | VMIP_s | IP-címét a virtuális gép | Használt AzurePublic és ExternalPublic folyamatok |
 | PublicIP_s | Nyilvános IP-címek | Használt AzurePublic és ExternalPublic folyamatok |
-| DestPort_d | Célport | Amikor a forgalom nem bejövő port | 
-| L4Protocol_s  | * T <br> * U  | Átviteli protokoll. T = TCP <br> U = UDP | 
+| DestPort_d | Célport | Amikor a forgalom nem bejövő port |
+| L4Protocol_s  | * T <br> * U  | Átviteli protokoll. T = TCP <br> U = UDP |
 | L7Protocol_s  | Protokollnév | Célport származik |
-| FlowDirection_s | * I = bejövő<br> * O = kimenő | A folyamat megfelelően folyamat napló be/ki NSG iránya | 
+| FlowDirection_s | * I = bejövő<br> * O = kimenő | A folyamat megfelelően folyamat napló be/ki NSG iránya |
 | FlowStatus_s  | * A Hálózatibiztonságicsoport-szabály által engedélyezett = <br> * D = Hálózatibiztonságicsoport-szabály által megtagadva  | A folyamat engedélyezett/nblocked NSG-t a flow-log megfelelően állapota |
 | NSGList_s | \<SUBSCRIPTIONID>\/<RESOURCEGROUP_NAME>\/<NSG_NAME> | Hálózati biztonsági csoport (NSG) a folyamat társított |
 | NSGRules_s | \<A 0 érték indexazonosító) >< NSG_RULENAME >\<folyamat iránya >\<Flow állapot >\<FlowCount ProcessedByRule > |  NSG-szabályt, amely engedélyezi vagy megtagadja a folyamat |
@@ -85,7 +129,7 @@ Az alábbiakban a séma- és azok jelölésére mezői
 | Subnet_s | < ResourceGroup_Name > / < VNET_Name > /\<SubnetName > | A NIC_s társított alhálózati |
 | Subnet1_s | < ResourceGroup_Name > / < VNET_Name > /\<SubnetName > | A folyamat a forrás IP-címmel társított alhálózat |
 | Subnet2_s | < ResourceGroup_Name > / < VNET_Name > /\<SubnetName >    | A cél IP-cím a folyamathoz társított alhálózati |
-| ApplicationGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<ApplicationGatewayName> | A forrás IP-címe a folyamathoz társított az Application gateway | 
+| ApplicationGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<ApplicationGatewayName> | A forrás IP-címe a folyamathoz társított az Application gateway |
 | ApplicationGateway2_s | \<SubscriptionID>/\<ResourceGroupName>/\<ApplicationGatewayName> | A cél IP-cím a folyamathoz társított az Application gateway |
 | LoadBalancer1_s | \<SubscriptionID>/\<ResourceGroupName>/\<LoadBalancerName> | A forrás IP-címe a folyamat hozzárendelve terheléselosztó |
 | LoadBalancer2_s | \<SubscriptionID>/\<ResourceGroupName>/\<LoadBalancerName> | A folyamat a cél IP-cím hozzárendelve terheléselosztó |
@@ -96,7 +140,7 @@ Az alábbiakban a séma- és azok jelölésére mezői
 | ConnectingVNets_s | Virtuális hálózat neve szóközzel tagolt listája | Küllős topológia esetén hub virtuális hálózatok elkészül a Itt |
 | Country_s | Kétbetűs országkód: (ISO 3166-1 alpha-2) | A folyamat típus ExternalPublic feltöltve. PublicIPs_s mező összes IP-címet oszt megegyező országkódnak |
 | AzureRegion_s | Az Azure-régióban helyek | A folyamat típus AzurePublic feltöltve. Összes IP-cím mezőben PublicIPs_s megosztja az Azure-régió |
-| AllowedInFlows_d | | Bejövő volt megengedett folyamatok száma. Ez a folyamatok, amelyek az ugyanazon négy rekordos megosztott számát jelöli, amelyen a folyamatot rögzítésének netweork adapterhez bejövő | 
+| AllowedInFlows_d | | Bejövő volt megengedett folyamatok száma. Ez a folyamatok, amelyek az ugyanazon négy rekordos megosztott számát jelöli, amelyen a folyamatot rögzítésének netweork adapterhez bejövő |
 | DeniedInFlows_d |  | Bejövő forgalom, amely el lett utasítva száma. (A hálózati adapterhez, amelyen a folyamatot rögzítésének bejövő) |
 | AllowedOutFlows_d | | Kimenő forgalom (a hálózati adapterhez, amelyen a folyamatot rögzítésének kimenő) volt megengedett száma |
 | DeniedOutFlows_d  | | (A hálózati adapterhez, amelyen a folyamatot rögzítésének kimenő) el lett utasítva kimenő folyamatok száma |
@@ -107,27 +151,21 @@ Az alábbiakban a séma- és azok jelölésére mezői
 | OutboundBytes_d | Rögzített böngészőállapot a hálózati adaptert, ahol az NSG-szabály lett alkalmazva, elküldött bájtok száma | Ez csak a séma NSG 2 verzió folyamat kitöltése |
 | CompletedFlows_d  |  | Ez csak a séma NSG 2 verzió folyamat nullától eltérő értékkel van feltöltve |
 | PublicIPs_s | <PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Bejegyzés adható sávok |
-    
+
 ### <a name="notes"></a>Megjegyzések
-    
-1. AzurePublic és ExternalPublic folyamatok esetén az ügyfél saját Azure virtuális gép IP VMIP_s mezőben van feltöltve, míg a nyilvános IP-címek vannak feltöltését a PublicIPs_s mezőben. Ezen két adatfolyam típusok esetén használandó VMIP_s és PublicIPs_s SrcIP_s és DestIP_s mező helyett. AzurePublic és ExternalPublicIP címét, az azt összesítés tovább, úgy, hogy az ügyfelek log analytics-munkaterület betöltött rekordok száma minimális. (Ez a mező hamarosan elavulttá válik, és azt kell használnia SrcIP_ és DestIP_s attól függően, hogy az azure virtuális gép volt-e a a forrás vagy a cél a flow-ban) 
-1. A folyamatok típusáról részletei: A folyamatban érintett IP-címek alapján, hogy kategorizálása a folyamatok, a következő folyamat-típusok: 
-1. IntraVNet – mindkét IP-címet a folyamat az azonos Azure virtuális hálózatban található. 
-1. Virtuális hálózatok közötti - IP-címek a folyamatot a két különböző Azure virtuális hálózat található. 
-1. S2S – az IP-címek (webhelyek) az egyik tartozik Azure Virtual Network közben az IP-cím tartozik ügyfél hálózatán (hely), az Azure Virtual Network VPN-átjárón keresztül vagy Express Route csatlakoztatott. 
+
+1. AzurePublic és ExternalPublic folyamatok esetén az ügyfél saját Azure virtuális gép IP VMIP_s mezőben van feltöltve, míg a nyilvános IP-címek vannak feltöltését a PublicIPs_s mezőben. Ezen két adatfolyam típusok esetén használandó VMIP_s és PublicIPs_s SrcIP_s és DestIP_s mező helyett. AzurePublic és ExternalPublicIP címét, az azt összesítés tovább, úgy, hogy az ügyfelek log analytics-munkaterület betöltött rekordok száma minimális. (Ez a mező hamarosan elavulttá válik, és azt kell használnia SrcIP_ és DestIP_s attól függően, hogy az azure virtuális gép volt-e a a forrás vagy a cél a flow-ban)
+1. A folyamatok típusáról részletei: A folyamatban érintett IP-címek alapján, hogy kategorizálása a folyamatok, a következő folyamat-típusok:
+1. IntraVNet – mindkét IP-címet a folyamat az azonos Azure virtuális hálózatban található.
+1. Virtuális hálózatok közötti - IP-címek a folyamatot a két különböző Azure virtuális hálózat található.
+1. S2S – az IP-címek (webhelyek) az egyik tartozik Azure Virtual Network közben az IP-cím tartozik ügyfél hálózatán (hely), az Azure Virtual Network VPN-átjárón keresztül vagy Express Route csatlakoztatott.
 1. P2S - (pont hely) az IP-címek egyike tartozik, Azure Virtual Network, amíg az ügyfél hálózatán (hely), az Azure Virtual Network VPN-átjárón keresztül csatlakozik az IP-cím tartozik.
-1. AzurePublic – az IP-címek egyike tartozik, Azure Virtual Network közben az IP-cím tartozik, a Microsoft által birtokolt Azure belső, nyilvános IP-címek. Ügyfél tulajdonában lévő nyilvános IP-cím nem része a folyamat típusát. Például minden ügyfél saját VM forgalmat küld egy Azure-szolgáltatás (Storage-végponthoz) lenne kategorizált, ez a folyamat típus alatt. 
-1. ExternalPublic – az IP-címek egyike tartozik, az Azure virtuális hálózat egy nyilvános IP-címet, amely nem az Azure-ban az IP-cím pedig nem készül jelentés, a Traffic Analytics feldolgozó között a feldolgozás alatt ASC adatcsatornákban lévő kártevő " FlowIntervalStartTime_t"és"FlowIntervalEndTime_t". 
-1. MaliciousFlow – az IP-címek egyike tartozik az azure virtual network egy nyilvános IP-címet, amely nem az Azure-ban és az elvártnak megfelelően az ASC-hírcsatornák, a Traffic Analytics feldolgozó között a feldolgozás alatt lévő kártevő IP-címe pedig" FlowIntervalStartTime_t"és"FlowIntervalEndTime_t". 
+1. AzurePublic – az IP-címek egyike tartozik, Azure Virtual Network közben az IP-cím tartozik, a Microsoft által birtokolt Azure belső, nyilvános IP-címek. Ügyfél tulajdonában lévő nyilvános IP-cím nem része a folyamat típusát. Például minden ügyfél saját VM forgalmat küld egy Azure-szolgáltatás (Storage-végponthoz) lenne kategorizált, ez a folyamat típus alatt.
+1. ExternalPublic – az IP-címek egyike tartozik, az Azure virtuális hálózat egy nyilvános IP-címet, amely nem az Azure-ban az IP-cím pedig nem készül jelentés, a Traffic Analytics feldolgozó között a feldolgozás alatt ASC adatcsatornákban lévő kártevő " FlowIntervalStartTime_t"és"FlowIntervalEndTime_t".
+1. MaliciousFlow – az IP-címek egyike tartozik az azure virtual network egy nyilvános IP-címet, amely nem az Azure-ban és az elvártnak megfelelően az ASC-hírcsatornák, a Traffic Analytics feldolgozó között a feldolgozás alatt lévő kártevő IP-címe pedig" FlowIntervalStartTime_t"és"FlowIntervalEndTime_t".
 1. UnknownPrivate – az IP-címek egyike tartozik Azure virtuális hálózaton az IP-cím tartozik, magánhálózati IP-címtartományt, ahogyan az az RFC 1918, és nem sikerült leképezni a Traffic Analytics által birtokolt, hely vagy az Azure Virtual Network ügyfél számára.
 1. Ismeretlen – nem lehet hozzárendelni, vagy az IP-címek a folyamatokban a vásárlói topológia az Azure-ban, valamint a helyszíni (hely).
 1. Egyes mezőnevek z vagy _d lesz hozzáfűzve. Ezek nem jelölésére a forrás és cél.
 
 ### <a name="next-steps"></a>További lépések
 Válaszok a gyakori kérdésekre, lásd: [Traffic analytics – gyakori kérdések](traffic-analytics-faq.md) funkció kapcsolatos részletekért lásd: [Traffic analytics – dokumentáció](traffic-analytics.md)
-    
-
-
-    
-
-

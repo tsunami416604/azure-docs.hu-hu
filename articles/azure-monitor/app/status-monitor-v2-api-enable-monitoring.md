@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: e87bfad11eee5b86d35e6b4f2846b094c467e0ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e0d5363e253e89b32b5eca14366504f0ace39043
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734173"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67479641"
 ---
-# <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring-v021-alpha"></a>A figyelő v2 API állapota: Enable-ApplicationInsightsMonitoring (v0.2.1-alpha)
+# <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring-v031-alpha"></a>A figyelő v2 API állapota: Enable-ApplicationInsightsMonitoring (v0.3.1-alpha)
 
 Ez a cikk ismerteti, amely tagja a parancsmag a [Az.ApplicationMonitor PowerShell-modul](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
@@ -68,9 +68,9 @@ Ebben a példában:
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap 
     @(@{MachineFilter='.*';AppFilter='WebAppExclude'},
-      @{MachineFilter='.*';AppFilter='WebAppOne';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx1'},
-      @{MachineFilter='.*';AppFilter='WebAppTwo';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx2'},
-      @{MachineFilter='.*';AppFilter='.*';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault'})
+      @{MachineFilter='.*';AppFilter='WebAppOne';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx1'}},
+      @{MachineFilter='.*';AppFilter='WebAppTwo';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx2'}},
+      @{MachineFilter='.*';AppFilter='.*';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault'}})
 
 ```
 
@@ -88,7 +88,7 @@ Létrehozhat több számítógép egy telepítési szkript beállításával `Ma
 > Alkalmazások egyezni fog a sorrendben, a szabályok biztosított szabályok alapján. Úgy kell megadnia a legtöbb speciális szabályok először, és a legtöbb általános szabályokat tartanak.
 
 #### <a name="schema"></a>Séma
-`@(@{MachineFilter='.*';AppFilter='.*';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'})`
+`@(@{MachineFilter='.*';AppFilter='.*';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'}})`
 
 - **MachineFilter** szükséges C# regex a számítógép vagy virtuális gép neve.
     - ". *" megfelelő összes
@@ -108,13 +108,19 @@ A rendszerállapot-motor többletterheléssel, és alapértelmezés szerint ki v
 ### <a name="-acceptlicense"></a>-AcceptLicense
 **Nem kötelező.** Használja ezt a kapcsolót a licenc és az adatvédelmi nyilatkozatot távfelügyelt telepítés fogadására.
 
+### <a name="-ignoresharedconfig"></a>-IgnoreSharedConfig
+Amikor a webkiszolgálók fürttel rendelkezik, előfordulhat, hogy használni egy [a megosztott konfiguráció](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211).
+A beállítás nem lehet kártevő program férkőzik be ezt a megosztott konfigurációt.
+Ez a szkript sikertelen lesz, és az üzenet, hogy szükség-e kiegészítő telepítési lépéseket.
+Ez a kapcsoló használatával figyelmen kívül hagyhatja ezt az ellenőrzést, és továbbra is az előfeltételek telepítése. További információkért lásd: [ismert ütközés – az iis-megosztott-konfiguráció](status-monitor-v2-troubleshoot.md#conflict-with-iis-shared-configuration)
+
 ### <a name="-verbose"></a>-Verbose
 **Általános paraméter.** Ez a kapcsoló használatával jeleníti meg a részletes naplókat.
 
 ### <a name="-whatif"></a>-WhatIf 
 **Általános paraméter.** Használja ezt a kapcsolót, tesztelése és ellenőrzése a bemeneti paramétereket ténylegesen a figyelés engedélyezése nélkül.
 
-## <a name="output"></a>Kimenet
+## <a name="output"></a>Output
 
 
 #### <a name="example-output-from-a-successful-enablement"></a>Példa a kimenetre való sikeres engedélyezése

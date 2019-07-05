@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 55b18246861e452a4ac170094ee902bd6954fe89
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 39edbc77215d3a4f6477beae3be9d7d47cbba4f0
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190407"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540922"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Üzembe helyezés és monitorozás az Azure CLI használatával nagy mennyiségű IoT Edge-modulok
 
-Hozzon létre egy **IoT Edge automatikus központi telepítési** az Azure parancssori felületének használatával sok eszköz a folyamatban lévő központi telepítések felügyeletéhez szükséges egyszerre. Az IoT Edge-hez az automatikus központi telepítések részét képezik a [automatikus kezelés](/iot-hub/iot-hub-automatic-device-management.md) az IoT Hub szolgáltatást. Központi telepítések dinamikus folyamatokat, amelyek lehetővé teszik több eszközökre telepíti központilag a több modul, nyomon követheti az állapotát és a modulok állapotát, és szükség esetén módosítható. 
+Hozzon létre egy **IoT Edge automatikus központi telepítési** az Azure parancssori felületének használatával sok eszköz a folyamatban lévő központi telepítések felügyeletéhez szükséges egyszerre. Az IoT Edge-hez az automatikus központi telepítések részét képezik a [automatikus kezelés](/azure/iot-hub/iot-hub-automatic-device-management) az IoT Hub szolgáltatást. Központi telepítések dinamikus folyamatokat, amelyek lehetővé teszik több eszközökre telepíti központilag a több modul, nyomon követheti az állapotát és a modulok állapotát, és szükség esetén módosítható. 
 
 További információkért lásd: [automatikus telepítések megismerheti az IoT Edge egy eszközök vagy ipari méretekben](module-deployment-monitoring.md).
 

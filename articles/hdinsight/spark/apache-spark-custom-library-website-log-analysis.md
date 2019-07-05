@@ -8,19 +8,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: bef71f210e015dc10cd6f5c0c655d0d3beee3655
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5492f4865e464cf8bedaee6e9b0ab25532e21459
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64728918"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448759"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Egy egyéni Python-kódtár használata a HDInsight az Apache Spark-fürt webhelynaplók elemzése
 
 Ez a jegyzetfüzet bemutatja, hogyan elemezheti a naplófájlok adatait egy egyéni kódtár az Apache Spark on HDInsight használatával. Az egyéni tárát használja használjuk az nevű Python-kódtár **iislogparser.py**.
 
 > [!TIP]  
-> Ebben az oktatóanyagban egyben egy Jupyter notebookot HDInsight szolgáltatásban létrehozott (Linux) Spark-fürtön elérhető. A jegyzetfüzet-megoldás lehetővé teszi a notebookból magát a Python-kódrészletek futtatását. Egy jegyzetfüzetet belül, az oktatóanyag elvégzéséhez hozzon létre egy Spark-fürtöt, indítsa el a Jupyter notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`), majd futtassa a notebook **-naplók elemzése a Spark használatával egyéni library.ipynb** alatt a **PySpark**  mappát.
+> Ez a cikk is egy Jupyter notebookot HDInsight szolgáltatásban létrehozott (Linux) Spark-fürtön elérhető. A jegyzetfüzet-megoldás lehetővé teszi a notebookból magát a Python-kódrészletek futtatását. Hajthatja végre a cikk a jegyzetfüzet belül, Spark-fürt létrehozása, indítsa el a Jupyter notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`), és futtassa a notebook **-naplók elemzése a Spark használatával egyéni library.ipynb** alatt a **PySpark** mappát.
 >
 >
 

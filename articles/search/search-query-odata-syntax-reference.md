@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: cccfb749af07d1deeeda6e94de9c2cd5ce5396f3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ebe41ba61ac5136900328db9c35acb8551dcd5b2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079664"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428662"
 ---
 # <a name="odata-expression-syntax-reference-for-azure-search"></a>Az Azure Search OData kifejezés szintaxisának referenciája
 
-Használja az Azure Search [OData-kifejezések](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) paraméterként egész az API-t. Leggyakrabban, az OData-kifejezések használhatók a `$orderby` és `$filter` paramétereket. Ezek a kifejezések több szolgáló szerződéses klauzulák, függvényeket és operátorokat tartalmazó összetett lehet. Azonban, még akkor is egyszerű OData-kifejezések például elérési út szerepel az Azure Search REST API számos részein tulajdonság. Például elérésiút-kifejezésekben használhatók összetett mezők mindenhol az API-t, például amikor listaelem az optimálisnál mezők az alárendelt mezőkre hivatkozhatnak egy [javaslattevő](index-add-suggesters.md), amely egy [pontozó függvény](index-add-scoring-profiles.md), a `$select` paraméter , vagy akár [fielded keresés a Lucene-lekérdezésekre](query-lucene-syntax.md).
+Használja az Azure Search [OData-kifejezések](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) paraméterként egész az API-t. Leggyakrabban, az OData-kifejezések használhatók a `$orderby` és `$filter` paramétereket. Ezek a kifejezések több szolgáló szerződéses klauzulák, függvényeket és operátorokat tartalmazó összetett lehet. Azonban, még akkor is egyszerű OData-kifejezések például elérési út szerepel az Azure Search REST API számos részein tulajdonság. Például elérésiút-kifejezésekben használhatók összetett mezők mindenhol az API-t, például amikor listaelem az optimálisnál mezők az alárendelt mezőkre hivatkozhatnak egy [javaslattevő](index-add-suggesters.md), amely egy [pontozó függvény](index-add-scoring-profiles.md), a `$select` paraméter , vagy akár [fielded keresés a Lucene-lekérdezésekre](query-lucene-syntax.md).
 
 Ez a cikk ismerteti egy hivatalos szintaxis használatával az OData-kifejezések minden űrlapok. Emellett van egy [interaktív diagram](#syntax-diagram) vizuálisan Fedezze fel a szintaxis segítségével.
 

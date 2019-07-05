@@ -12,12 +12,12 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 59e0e4cf82af9851dacf3ec030575ed392571331
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 683297e32c40f73c64dc40b18f279d92e2396e8d
+ms.sourcegitcommit: 3107874d7559ea975e4d55ae33cdf45f4b5485e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61475813"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67568274"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Rugalmas adatbázis-feladatok létrehozása és kezelése Transact-SQL (T-SQL) használatával
 
@@ -426,7 +426,7 @@ A következő tárolt eljárások a [feladatok adatbázis](sql-database-job-auto
 
 
 
-### <a name="spaddjob"></a>sp_add_job
+### <a name="sp_add_job"></a>sp_add_job
 
 Hozzáad egy új feladatot. 
   
@@ -492,7 +492,7 @@ Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói 
 
 Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztését.
 
-### <a name="spupdatejob"></a>sp_update_job
+### <a name="sp_update_job"></a>sp_update_job
 
 Frissíti egy meglévő feladat.
 
@@ -555,7 +555,7 @@ Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedél
 
 
 
-### <a name="spdeletejob"></a>sp_delete_job
+### <a name="sp_delete_job"></a>sp_delete_job
 
 Egy meglévő feladat törlése.
 
@@ -587,7 +587,7 @@ Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedél
 
 
 
-### <a name="spaddjobstep"></a>sp_add_jobstep
+### <a name="sp_add_jobstep"></a>sp_add_jobstep
 
 Egy lépést ad egy feladathoz.
 
@@ -713,7 +713,7 @@ Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedél
 
 
 
-### <a name="spupdatejobstep"></a>sp_update_jobstep
+### <a name="sp_update_jobstep"></a>sp_update_jobstep
 
 Egy feladat lépésének frissíti.
 
@@ -838,7 +838,7 @@ Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedél
 
 
 
-### <a name="spdeletejobstep"></a>sp_delete_jobstep
+### <a name="sp_delete_jobstep"></a>sp_delete_jobstep
 
 Egy feladat lépésének távolít el egy feladatot.
 
@@ -884,7 +884,7 @@ Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedél
 
 
 
-### <a name="spstartjob"></a>sp_start_job
+### <a name="sp_start_job"></a>sp_start_job
 
 Elindul egy feladat végrehajtása.
 
@@ -915,7 +915,7 @@ Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói 
 
 Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztését.
 
-### <a name="spstopjob"></a>sp_stop_job
+### <a name="sp_stop_job"></a>sp_stop_job
 
 Egy feladat végrehajtása leáll.
 
@@ -944,7 +944,7 @@ Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói 
 Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztését.
 
 
-### <a name="spaddtargetgroup"></a>sp_add_target_group
+### <a name="sp_add_target_group"></a>sp_add_target_group
 
 Cél csoport hozzáadása.
 
@@ -975,7 +975,7 @@ Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói 
 
 Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztését.
 
-### <a name="spdeletetargetgroup"></a>sp_delete_target_group
+### <a name="sp_delete_target_group"></a>sp_delete_target_group
 
 A célként megadott csoport törlése.
 
@@ -1003,7 +1003,7 @@ Alapértelmezés szerint a a sysadmin (rendszergazda) rögzített kiszolgálói 
 
 Ezek a szerepkörök engedélyeivel kapcsolatos részletekért lásd: a engedély szakasz ebben a dokumentumban. Csak a sysadmin (rendszergazda) tagjai a tárolt eljárás segítségével más felhasználók tulajdonában lévő feladatok az attribútumok szerkesztését.
 
-### <a name="spaddtargetgroupmember"></a>sp_add_target_group_member
+### <a name="sp_add_target_group_member"></a>sp_add_target_group_member
 
 Egy adatbázis vagy adatbázisokat ad hozzá egy célcsoportot.
 
@@ -1092,7 +1092,7 @@ SELECT * FROM [jobs].target_group_members WHERE target_group_name= N'Servers Mai
 GO
 ```
 
-### <a name="spdeletetargetgroupmember"></a>sp_delete_target_group_member
+### <a name="sp_delete_target_group_member"></a>sp_delete_target_group_member
 
 A cél a csoporttag eltávolítása egy célcsoportot.
 
@@ -1143,7 +1143,7 @@ EXEC jobs.sp_delete_target_group_member
 GO
 ```
 
-### <a name="sppurgejobhistory"></a>sp_purge_jobhistory
+### <a name="sp_purge_jobhistory"></a>sp_purge_jobhistory
 
 Eltávolít egy feladat replikálásielőzmény-rekord.
 
@@ -1204,7 +1204,7 @@ A következő nézetek érhetők el a [feladatok adatbázis](sql-database-job-au
 |[target_group_members](#target_groups_members-view)     |   Minden célként megadott csoport minden tagját mutatja.      |
 
 
-### <a name="jobsexecutions-view"></a>jobs_executions megtekintése
+### <a name="jobs_executions-view"></a>jobs_executions megtekintése
 
 [jobs].[jobs_executions]
 
@@ -1251,7 +1251,7 @@ Az összes feladat látható.
 |**schedule_end_time**| datetime2(7)|   Dátum és idő a feladat volt a legutóbbi művelet befejeződött.|
 
 
-### <a name="jobversions-view"></a>job_versions megtekintése
+### <a name="job_versions-view"></a>job_versions megtekintése
 
 [feladatok]. [job_versions]
 
@@ -1299,13 +1299,13 @@ Minden egyes feladat jelenlegi verziója minden lépéseit mutatja be.
 |**max_parallelism**|   int|    Adatbázisok száma, amelyek a feladat lépésének fut egyszerre rugalmas készlet maximális számát. Az alapértelmezett érték NULL, tehát nincs korlátozva. |
 
 
-### <a name="jobstepversions-view"></a>jobstep_versions megtekintése
+### <a name="jobstep_versions-view"></a>jobstep_versions megtekintése
 
 [feladatok]. [jobstep_versions]
 
 Minden egyes feladat összes verzióját az összes lépéseit mutatja be. A séma megegyezik az [feladatlépésnél](#jobsteps-view).
 
-### <a name="targetgroups-view"></a>target_groups megtekintése
+### <a name="target_groups-view"></a>target_groups megtekintése
 
 [feladatok]. [target_groups]
 
@@ -1316,7 +1316,7 @@ Az összes cél csoportok listája.
 |**target_group_name**| nvarchar(128)   |A célcsoportot, egy adatbázis-gyűjtemény neve. 
 |**target_group_id**    |uniqueidentifier   |A célként megadott csoport egyedi azonosítója.
 
-### <a name="targetgroupsmembers-view"></a>target_groups_members view
+### <a name="target_groups_members-view"></a>target_groups_members view
 
 [jobs].[target_groups_members]
 

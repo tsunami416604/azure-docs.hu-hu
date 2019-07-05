@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 06/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 73384868deb8f0e33b233e363c42a12adbcbe402
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 05faf77d22f77da87e7c22d47473e6debf0f77c8
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237568"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460898"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Adatok modellezése az Azure Time Series Insights előzetes verziója
 
@@ -29,12 +29,12 @@ A frissítés használatával kapcsolatos további tudnivalókért olvassa el a 
 
 1. Nyissa meg a Time Series modellek választó panel, és válassza ki **típusok** a menüből. A Time Series modellek típusok összpontosíthat a panel összecsukása.
 
-    [![Hozzon létre egy egyetlen típusa](media/v2-update-how-to-tsm/portal_one.png)](media/v2-update-how-to-tsm/portal_one.png#lightbox)
+    [![Hozzon létre egy egyetlen típusa](media/v2-update-how-to-tsm/portal-one.png)](media/v2-update-how-to-tsm/portal-one.png#lightbox)
 
 1. Válassza a **Hozzáadás** lehetőséget.
 1. Adjon meg, amelyeket típusok is vonatkozik, és válassza a **létrehozás**. Ez a művelet rekordtípust hoz létre a környezetben.
 
-    [![-Típus hozzáadása](media/v2-update-how-to-tsm/portal_two.png)](media/v2-update-how-to-tsm/portal_two.png#lightbox)
+    [![-Típus hozzáadása](media/v2-update-how-to-tsm/portal-two.png)](media/v2-update-how-to-tsm/portal-two.png#lightbox)
 
 ### <a name="bulk-upload-one-or-more-types"></a>Tömeges feltöltés egy vagy több típusa
 
@@ -42,21 +42,21 @@ A frissítés használatával kapcsolatos további tudnivalókért olvassa el a 
 1. Válassza ki a típusú hasznos adatait tartalmazó fájlt.
 1. Válassza a **Feltöltés** lehetőséget.
 
-    [![Töltse fel a JSON-ban](media/v2-update-how-to-tsm/portal_three.png)](media/v2-update-how-to-tsm/portal_three.png#lightbox)
+    [![Töltse fel a JSON-ban](media/v2-update-how-to-tsm/portal-three.png)](media/v2-update-how-to-tsm/portal-three.png#lightbox)
 
 ### <a name="edit-a-single-type"></a>Egyetlen gazdagéptípust szerkesztése
 
 1. Válassza ki a típusát, és válassza ki **szerkesztése**. 
 1. Végezze el a szükséges módosításokat, és válassza ki **mentése**.
 
-    [![A típus szerkesztése](media/v2-update-how-to-tsm/portal_four.png)](media/v2-update-how-to-tsm/portal_four.png#lightbox)
+    [![A típus szerkesztése](media/v2-update-how-to-tsm/portal-four.png)](media/v2-update-how-to-tsm/portal-four.png#lightbox)
 
 ### <a name="delete-a-type"></a>A típus törlése
 
 1. Válassza ki a típusát, és válassza ki **törlése**.
 1. Ha nincsenek példányok hozzárendelve a típusok, akkor az törlődik.
 
-    [![A típus törlése](media/v2-update-how-to-tsm/portal_five.png)](media/v2-update-how-to-tsm/portal_five.png#lightbox)
+    [![A típus törlése](media/v2-update-how-to-tsm/portal-five.png)](media/v2-update-how-to-tsm/portal-five.png#lightbox)
 
 ## <a name="hierarchies"></a>Hierarchiák
 
@@ -64,19 +64,19 @@ A frissítés használatával kapcsolatos további tudnivalókért olvassa el a 
 
 1. Nyissa meg a Time Series modellek választó panel, és válassza ki **hierarchiák** a menüből. A Time Series modellek hierarchiák összpontosíthat a panel összecsukása.
 
-    [![Válassza ki a hierarchiák](media/v2-update-how-to-tsm/portal_six.png)](media/v2-update-how-to-tsm/portal_six.png#lightbox)
+    [![Válassza ki a hierarchiák](media/v2-update-how-to-tsm/portal-six.png)](media/v2-update-how-to-tsm/portal-six.png#lightbox)
 
 1. Válassza a **Hozzáadás** lehetőséget.
 
-    [![Egy hierarchia hozzáadása](media/v2-update-how-to-tsm/portal_seven.png)](media/v2-update-how-to-tsm/portal_seven.png#lightbox)
+    [![Egy hierarchia hozzáadása](media/v2-update-how-to-tsm/portal-seven.png)](media/v2-update-how-to-tsm/portal-seven.png#lightbox)
 
 1. Válassza ki **hozzáadása szint** a jobb oldali ablaktáblán.
 
-    [![Adjon hozzá egy szint](media/v2-update-how-to-tsm/portal_eight.png)](media/v2-update-how-to-tsm/portal_eight.png#lightbox)
+    [![Adjon hozzá egy szint](media/v2-update-how-to-tsm/portal-eight.png)](media/v2-update-how-to-tsm/portal-eight.png#lightbox)
 
 1. Adja meg a hierarchia adatait, és válassza ki **létrehozás**.
 
-    [![Hozzon létre egy szint](media/v2-update-how-to-tsm/portal_nine.png)](media/v2-update-how-to-tsm/portal_nine.png#lightbox)
+    [![Hozzon létre egy szint](media/v2-update-how-to-tsm/portal-nine.png)](media/v2-update-how-to-tsm/portal-nine.png#lightbox)
 
 ### <a name="bulk-upload-one-or-more-hierarchies"></a>Tömeges feltöltés egy vagy több hierarchiák
 
@@ -84,21 +84,21 @@ A frissítés használatával kapcsolatos további tudnivalókért olvassa el a 
 1. Válassza ki a hierarchia hasznos adatait tartalmazó fájlt.
 1. Válassza a **Feltöltés** lehetőséget.
 
-    [![Tömeges feltöltés hierarchiák](media/v2-update-how-to-tsm/portal_ten.png)](media/v2-update-how-to-tsm/portal_ten.png#lightbox)
+    [![Tömeges feltöltés hierarchiák](media/v2-update-how-to-tsm/portal-ten.png)](media/v2-update-how-to-tsm/portal-ten.png#lightbox)
 
 ### <a name="edit-a-single-hierarchy"></a>Egyetlen hierarchia szerkesztése
 
 1. Válassza ki a hierarchiában, és válassza ki **szerkesztése**.
 1. Végezze el a szükséges módosításokat, és válassza ki **mentése**.
 
-    [![Egyetlen hierarchia szerkesztése](media/v2-update-how-to-tsm/portal_eleven.png)](media/v2-update-how-to-tsm/portal_eleven.png#lightbox)
+    [![Egyetlen hierarchia szerkesztése](media/v2-update-how-to-tsm/portal-eleven.png)](media/v2-update-how-to-tsm/portal-eleven.png#lightbox)
 
 ### <a name="delete-a-hierarchy"></a>Egy hierarchia törlése
 
 1. Válassza ki a hierarchiában, és válassza ki **törlése**. 
 1. Ha nincsenek példányok hozzárendelve a hierarchiában, akkor az törlődik.
 
-    [![Egy hierarchia törlése](media/v2-update-how-to-tsm/portal_twelve.png)](media/v2-update-how-to-tsm/portal_twelve.png#lightbox)
+    [![Egy hierarchia törlése](media/v2-update-how-to-tsm/portal-twelve.png)](media/v2-update-how-to-tsm/portal-twelve.png#lightbox)
 
 ## <a name="instances"></a>példányok
 
@@ -106,11 +106,11 @@ A frissítés használatával kapcsolatos további tudnivalókért olvassa el a 
 
 1. Nyissa meg a Time Series modellek választó panel, és válassza ki **példányok** a menüből. A Time Series modellek példányok összpontosíthat a panel összecsukása.
 
-    [![Egyetlen példány létrehozása](media/v2-update-how-to-tsm/portal_thirteen.png)](media/v2-update-how-to-tsm/portal_thirteen.png#lightbox)
+    [![Egyetlen példány létrehozása](media/v2-update-how-to-tsm/portal-thirteen.png)](media/v2-update-how-to-tsm/portal-thirteen.png#lightbox)
 
 1. Válassza a **Hozzáadás** lehetőséget.
 
-    [![Egy példány hozzáadása](media/v2-update-how-to-tsm/portal_fourteen.png)](media/v2-update-how-to-tsm/portal_fourteen.png#lightbox)
+    [![Egy példány hozzáadása](media/v2-update-how-to-tsm/portal-fourteen.png)](media/v2-update-how-to-tsm/portal-fourteen.png#lightbox)
 
 1. Adja meg a példány részleteit, típusa és a hierarchia társítás, válassza ki és **létrehozás**.
 
@@ -119,7 +119,7 @@ A frissítés használatával kapcsolatos további tudnivalókért olvassa el a 
 1. Válassza ki **JSON feltöltése**.
 1. Válassza ki a példányok hasznos adatait tartalmazó fájlt.
 
-    [![Tömeges feltöltés egy vagy több példány](media/v2-update-how-to-tsm/portal_fifteen.png)](media/v2-update-how-to-tsm/portal_fifteen.png#lightbox)
+    [![Tömeges feltöltés egy vagy több példány](media/v2-update-how-to-tsm/portal-fifteen.png)](media/v2-update-how-to-tsm/portal-fifteen.png#lightbox)
 
 1. Válassza a **Feltöltés** lehetőséget.
 
@@ -128,7 +128,7 @@ A frissítés használatával kapcsolatos további tudnivalókért olvassa el a 
 1. Válassza ki azt a példányt, és válassza ki **szerkesztése**. 
 1. Végezze el a szükséges módosításokat, és válassza ki **mentése**.
 
-    [![Egyetlen példány szerkesztése](media/v2-update-how-to-tsm/portal_sixteen.png)](media/v2-update-how-to-tsm/portal_sixteen.png#lightbox)
+    [![Egyetlen példány szerkesztése](media/v2-update-how-to-tsm/portal-sixteen.png)](media/v2-update-how-to-tsm/portal-sixteen.png#lightbox)
 
 ## <a name="next-steps"></a>További lépések
 

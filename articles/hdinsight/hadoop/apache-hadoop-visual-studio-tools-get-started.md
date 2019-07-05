@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 42ef03d604caacf5ba18773b88e892237b5f0eae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 485f3a4b6a5fde532229873fe1f3feaa30ece523
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688530"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450198"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>A Data Lake Tools for Visual Studio használatával csatlakozhat az Azure HDInsight és az Apache Hive-lekérdezések futtatása
 
@@ -29,7 +29,7 @@ A Data Lake Tools for Visual Studio mind az Azure Data Lake Analytics, mind a HD
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez és a Data Lake Tools for Visual Studio használatához a következőkre van szüksége:
+Ez a cikk befejeződik, és a Data Lake Tools for Visual Studio használata szüksége van a következő elemek:
 
 * Egy Azure-beli HDInsight-fürt. Egy HDInsight-fürt létrehozása: [Azure HDInsight az Apache Hadoop használatának első lépései](apache-hadoop-linux-tutorial-get-started.md). Interaktív Apache Hive-lekérdezések futtatásához, szükség van egy [HDInsight interaktív lekérdezés](../interactive-query/apache-interactive-query-get-started.md) fürt.  
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24b54a3645fe97903219841dd148c0942dfcda76
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 203b752f9da67ebf60e373fe7ce0893b4fd7fcb5
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112385"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560965"
 ---
 # <a name="baseline-policy-require-mfa-for-service-management-preview"></a>Alapvető házirendet: Többtényezős hitelesítés a service management (előzetes verzió)
 
@@ -31,8 +31,6 @@ Azure Resource Manager használatával kezelheti a szolgáltatásokat a magas jo
 **Többtényezős hitelesítés a service management** van egy [alapvető házirendet](concept-baseline-protection.md) elérése az Azure Portalon, az Azure PowerShell vagy az Azure CLI bármely felhasználó többtényezős hitelesítés szükséges, amely. Ez a szabályzat minden felhasználóra elérése az Azure Resource Manager, függetlenül attól, ha egy rendszergazda vonatkozik.
 
 Után ez a szabályzat engedélyezve van a bérlő, akkor minden felhasználó bejelentkezik az Azure felügyeleti erőforrásokhoz és a többtényezős hitelesítés merül fel. Ha a felhasználó MFA-kiszolgáló nincs regisztrálva, a felhasználó kell regisztrálni a Microsoft Authenticator alkalmazás használatával a folytatáshoz.
-
-![Többtényezős hitelesítés az Azure Resource Manager](./media/howto-baseline-protect-azure/baseline-policy-require-mfa-for-service-management.png)
 
 Interaktív bejelentkezés segítségével végrehajtásához [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/authenticate-azureps), használja a [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) parancsmagot.
 
@@ -54,17 +52,6 @@ Ha a CLI megnyithatja az alapértelmezett böngészőt, akkor megnyitja, és bet
 
 Mivel a **többtényezős hitelesítés megkövetelése Szolgáltatáskezelési** minden Azure Resource Manager-felhasználóra vonatkozik szabályzat, több szempontok lesz szükség ahhoz, hogy egy zökkenőmentes üzembe helyezési. Ezeket a szempontok közé tartoznak, felhasználók és az Azure AD nem tudja vagy nem kell végrehajtani, az MFA, valamint az alkalmazások és az ügyfelek a szervezet által használt, modern hitelesítést nem támogató szolgáltatás alapelvek azonosító.
 
-### <a name="user-exclusions"></a>Felhasználói szerepkör kivételei
-
-Ez a alapvető házirend kizárhat felhasználókat lehetőséget biztosít. Mielőtt engedélyezné a szabályzat a bérlőhöz tartozó, javasoljuk, kivéve a következő fiókokat:
-
-* **A vészelérési** vagy **break üvegből** fiókok bérlői szintű fiókzárolás elkerülése érdekében. A rendszergazdák kizárása a bérlő nem valószínű esetben a válságkezelési hozzáférés rendszergazdai fiók segítségével jelentkezzen be a bérlő hajtsa végre a megfelelő lépéseket szereznie.
-   * További információ a cikkben található [vészelérési fiókok kezelése az Azure ad-ben](../users-groups-roles/directory-emergency-access.md).
-* **Szolgáltatásfiókok** és **alapelvek szolgáltatás**, például az Azure AD Connect szinkronizálási-fiók. Szolgáltatásfiókok olyan nem interaktív fiókokat, amelyek nem kapcsolódnak egy konkrét felhasználóhoz. Ezek a háttér-szolgáltatások által általában használt, és az alkalmazások programozott hozzáférés engedélyezése. Szolgáltatásfiókok ki kell zárni, mivel az MFA programozott módon nem lehet végrehajtani.
-   * Ha a szervezete ezeket a fiókokat a parancsfájlokban vagy a kódot használja, fontolja meg, és cserélje le őket az [felügyelt identitások](../managed-identities-azure-resources/overview.md). Ideiglenes Áthidaló megoldásként ezeket a konkrét fiókokat is kizárása az alapvető házirendet.
-* Felhasználók, akik nem rendelkeznek, vagy nem fogja tudni használni a okostelefonja.
-   * Ezt a szabályzatot a felhasználók regisztráljanak a többtényezős hitelesítés a Microsoft Authenticator alkalmazással igényel.
-
 ## <a name="enable-the-baseline-policy"></a>Az alapkonfiguráció-házirend engedélyezése
 
 A szabályzat **alapvető házirendet: Többtényezős hitelesítés a service management (előzetes verzió)** előre konfigurálva, és jelennek meg az oldal tetején a feltételes hozzáférés paneljén, az Azure Portalon lépve.
@@ -75,7 +62,6 @@ A szabályzat engedélyezéséhez, és a rendszergazdák védelmére:
 1. Keresse meg a **az Azure Active Directory** > **feltételes hozzáférési**.
 1. A házirendek listájából válassza ki **alapvető házirendet: Többtényezős hitelesítés a service management (előzetes verzió)** .
 1. Állítsa be **házirend engedélyezése** való **a házirend azonnal használható**.
-1. Bármely felhasználó kizárások hozzáadása kattintva **felhasználók** > **kizárt felhasználók kiválasztása** majd ki kell zárni a felhasználóknak. Kattintson a **kiválasztása** majd **kész**.
 1. Kattintson a **mentése**.
 
 ## <a name="next-steps"></a>További lépések

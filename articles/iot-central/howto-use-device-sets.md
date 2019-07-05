@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: 68599a539b3d79b759142d2178aa753f895ea37f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e1e7b91e0808b9e23e653acd43b95f24a46c7d27
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052941"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503210"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Eszköz használata az Azure IoT központi alkalmazás beállítása
 
 Ez a cikk bemutatja, hogyan kezelőként eszközével állít be az Azure IoT Central alkalmazáshoz.
 
-Egy eszköz csoportot az eszközöket, amelyek vannak csoportosítva, mivel bizonyos megadott feltételeknek megfelelő összes listája. Eszközök kezelése, megjelenítését és elemzését a nagy mennyiségű eszközt eszközök kisebb, logikai csoportokba csoportosításával súgó állítja be. Az összes légkondicionálóját eszközök listáját például Budapesten található összes eszközt, amelynek a technikus feladata a Seattle technikus engedélyezéséhez létrehozása. Ez a cikk bemutatja, hogyan hozhat létre, és az eszköz csoportjainak konfigurálása.
+Egy eszköz csoportot az eszközöket, amelyek vannak csoportosítva, mivel azok megfelelnek bizonyos megadott feltételeknek megfelelő listája. Eszközök kezelése, megjelenítését és elemzését a nagy mennyiségű eszközt eszközök kisebb, logikai csoportokba csoportosításával súgó állítja be. Például egy eszköz listáját Seattle megtalálhatja az eszközöket, amelyhez még felelős technikus engedélyezéséhez az légkondicionálóját eszközök beállítása is létrehozhat. Ez a cikk bemutatja, hogyan hozhat létre, és az eszköz csoportjainak konfigurálása.
 
 ## <a name="create-a-device-set"></a>Hozzon létre egy eszköz csoportot
 
@@ -44,7 +44,7 @@ Eszköz létrehozásához állítsa be:
 
 ## <a name="configure-the-dashboard-for-your-device-set"></a>Az eszköz beállítása az irányítópulton konfigurálása
 
-Miután létrehozta az eszköz beállítása, konfigurálhatja a **irányítópult**. A **irányítópult** van a kezdőlap helyezheti el képek és hivatkozások. Azt is megteheti, hogy az eszköz beállítása az eszközök rácsok.
+Miután létrehozta az eszköz beállítása, konfigurálhatja a **irányítópult**. A **irányítópult** , a kezdőlap elérését, ahol elhelyezi képek és hivatkozások. Azt is megteheti, hogy az eszköz beállítása az eszközök rácsok.
 
 1. Válasszon **eszköz csoportok** a bal oldali navigációs menüben.
 
@@ -85,19 +85,20 @@ Miután létrehozta az eszköz beállítása, konfigurálhatja a **irányítópu
   
     1. Válassza a **Done** (Kész) lehetőséget.
 
-### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>Helyek térképe konfigurálása az eszköz beállítása az irányítópult
+Csempék az Azure IoT Central használatával kapcsolatos további tudnivalókért lásd: [irányítópult-csempék használata](howto-use-tiles.md).
 
-Hozzáadhat egy helyek térképe jeleníthetik meg az eszközök helyét egy térképen állítja be.
+### <a name="configure-a-location-map-in-your-device-sets-dashboard"></a>Az eszköz beállítása irányítópulton a helyek térképe konfigurálása
 
-Annak érdekében, hogy adjon hozzá egy eszközhöz, helyek térképe irányítópult rendelkeznie kell konfigurált helyre tulajdonságot állítja az eszköz sablonban, lásd: [hozzon létre egy hely tulajdonságot az Azure Maps segítségével](howto-set-up-template.md).
+Hozzáadhat egy térkép jeleníthetik meg az eszköz beállítása az eszközök helyét.
 
-1. Az eszköz beállítása irányítópulton válassza ki a térkép a könyvtárból.
-2. Adjon címet, és válassza ki a helyet jelölő tulajdonsághoz korábban konfigurálta a Eszköztulajdonság részeként.
-3. Mentés, és megjelenik a csempén, az eszköz beállítása az eszközök helyét megjelenítése térképen.
-4. Most egy operátor nézetek, az eszköz állítja be az irányítópultot, az üzemeltető konfigurálta az összes csempe látható, ha például a helye térkép megjelenítése egyetlen pillantással eszközök helyét!
+Szeretne hozzáadni, az eszköz olyan térképet beállítja az irányítópulton, konfigurálnia kell egy hely mérési vagy a location tulajdonsághoz a eszköz sablonban. További tudnivalókért lásd: [hozzon létre egy helyen mérési](howto-set-up-template.md) vagy [hozzon létre egy hely tulajdonságot](howto-set-up-template.md).
 
-> [!NOTE]
-> A térkép méretezheti át a kívánt méretre. PIN-kódot kell választania a térkép jeleníti meg az eszközinformációkat, nevét és helyét. Kiválaszthatja az előugró ablak az eszköz tulajdonság lap megnyitásához.
+1. Az eszközön állítsa **irányítópult**válassza **térkép** a könyvtárból.
+2. Cím hozzáadásához, és válassza ki a helyet mérési vagy korábban konfigurált tulajdonság.
+3. Válassza ki **mentése** , és a szolgáltatástérkép csempe megjeleníti az utolsó ismert helyek, az eszköz az eszköz beállítása.
+4. Ha az operátor megtekinti a csoportok irányítópultját, az üzemeltető konfigurálta, ideértve a hely térkép minden csempe fog látni.
+
+Átméretezheti a szolgáltatástérkép csempe az irányítópulton. Az eszköz adatait, nevét és helyét a térképen a PIN-kód kiválasztása jeleníti meg. Válassza ki az előugró ablak az eszköz tulajdonság lap megnyitásához.
 
 ## <a name="configure-the-list-for-your-device-set"></a>A lista az eszköz készlet konfigurálása
 

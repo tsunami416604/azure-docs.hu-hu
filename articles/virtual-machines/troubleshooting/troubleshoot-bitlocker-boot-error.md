@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 116748d7887ebf2ad821e3159c7c1bdcc2428121
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: e60188496e060eeea14fc7b7f1cc9a662551b286
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64684759"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485159"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>A BitLocker rendszerindítási hibák-beli virtuális gépen
 
@@ -48,7 +48,7 @@ A probléma megoldásához állítsa le és felszabadítja a virtuális Gépet, 
 Ez a módszer nem nem a hárítsa el a problémát, ha manuálisan állítsa vissza a blokktitkosítási kulcsot-fájlt az alábbi lépésekkel:
 
 1. Pillanatkép készítése a rendszerlemezt az érintett virtuális gépek biztonsági mentéséhez. További információkért lásd: [lemez pillanatképének elkészítése](../windows/snapshot-copy-managed-disk.md).
-2. [A rendszer lemez csatolása egy helyreállítási virtuális Géphez](troubleshoot-recovery-disks-portal-windows.md) , amely a BitLocker titkosítja. Ez futtatásához szükséges a [kezelése-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) parancsot, amely csak a BitLocker-titkosítású virtuális gépen érhető el.
+2. [A rendszer lemez csatolása egy helyreállítási virtuális Géphez](troubleshoot-recovery-disks-portal-windows.md). Futtatásához a [kezelése-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) parancsot a 7. lépés a **a BitLocker meghajtótitkosítás** funkciót engedélyezni kell a helyreállítási virtuális Gépet.
 
     Felügyelt lemez csatolása, amikor egy "titkosítási beállításait tartalmazza, és ezért nem használható adatlemezként" hibaüzenetet kaphat. Ebben az esetben futtassa a következő parancsfájlt, és próbálkozzon újra a lemez csatlakoztatásához:
 
@@ -106,7 +106,7 @@ Ez a módszer nem nem a hárítsa el a problémát, ha manuálisan állítsa vis
 
     Ha a **tartalomtípus** érték **rendelkeznek BEk-KEL burkolt be**, nyissa meg a [kulcs titkosítási kulcs-(KEK-) forgatókönyveket](#key-encryption-key-scenario).
 
-    Most, hogy a meghajtó a blokktitkosítási kulcsot fájl nevét, hogy a titkos kulcs-fájlnév létrehozásához. A meghajtó feloldásához fájl rendelkeznek BEk-KEL. 
+    Most, hogy a meghajtó a blokktitkosítási kulcsot fájl nevét, hogy a titkos kulcs-fájlnév létrehozásához. A meghajtó feloldásához fájl rendelkeznek BEk-KEL.
 
 6.  Töltse le a blokktitkosítási kulcsot a helyreállító lemez. Az alábbi minta a blokktitkosítási kulcsot fájlt a C:\BEK mappába menti. Győződjön meg arról, hogy a `C:\BEK\` elérési út létezik, a parancsfájlok futtatása előtt.
 
@@ -120,14 +120,14 @@ Ez a módszer nem nem a hárítsa el a problémát, ha manuálisan állítsa vis
     [System.IO.File]::WriteAllBytes($path,$bekFileBytes)
     ```
 
-7.  A blokktitkosítási kulcsot fájl segítségével a csatlakoztatott lemez zárolásának feloldásához, futtassa a következő parancsot:
+7.  A blokktitkosítási kulcsot fájl segítségével a csatlakoztatott lemez zárolásának feloldásához, futtassa a következő parancsot.
 
     ```powershell
     manage-bde -unlock F: -RecoveryKey "C:\BEK\EF7B2F5A-50C6-4637-9F13-7F599C12F85C.BEK
     ```
     Ebben a példában a csatlakoztatott operációsrendszer-lemez az meghajtó F. Győződjön meg arról, hogy a helyes meghajtóbetűjelet használja. 
 
-    - Ha a lemez sikeresen feloldotta a Blokktitkosítási kulcs használatával. azt is vegye figyelembe a BItLocker probléma fogja megoldani. 
+    - Ha a lemez sikeresen feloldotta a Blokktitkosítási kulcs használatával. azt is vegye figyelembe a BitLocker probléma fogja megoldani. 
 
     - A Blokktitkosítási kulcs használatával nem a lemez zárolásának feloldásához, ha átmeneti kikapcsolásához a BitLocker a következő parancs futtatásával védelem felfüggesztése
     
@@ -254,7 +254,7 @@ A Kulcsalapú titkosítás kulcsa esetben kövesse az alábbi lépéseket:
     ```
     Ebben a példában a csatlakoztatott operációsrendszer-lemez az meghajtó F. Győződjön meg arról, hogy a helyes meghajtóbetűjelet használja. 
 
-    - Ha a lemez sikeresen feloldotta a Blokktitkosítási kulcs használatával. azt is vegye figyelembe a BItLocker probléma fogja megoldani. 
+    - Ha a lemez sikeresen feloldotta a Blokktitkosítási kulcs használatával. azt is vegye figyelembe a BitLocker probléma fogja megoldani. 
 
     - A Blokktitkosítási kulcs használatával nem a lemez zárolásának feloldásához, ha átmeneti kikapcsolásához a BitLocker a következő parancs futtatásával védelem felfüggesztése
     

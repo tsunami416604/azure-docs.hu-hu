@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6bf61e2afd96e3923938ac4f815d34ae08f7c618
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97866a1f1299c028cdc8f86245308ae4a8b5db88
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64694224"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502682"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Partnerazonosító csatolása az Azure-fiókok
 
-Partnerként követheti a hatás az ügyfélesetekből között. A Partnerazonosítóra kapcsolat egy ügyfél-erőforrások kezeléséhez használt fiókokhoz.
+Microsoft-partnerek biztosítanak a szolgáltatások, amelyek segítségével az ügyfelek üzleti és a Microsoft-termékeket használó üzleti célok elérése. Kezelése a vásárló nevében eljáró, konfigurálását és támogató Azure-szolgáltatások, a partner felhasználókat kell az ügyfél-környezethez. Partner rendszergazdai hivatkozással partnerek társíthat a partner network-azonosító szolgáltatásnyújtásra használt hitelesítő adatok.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -141,11 +141,11 @@ A hivatkozás a felhasználói fiók szintjén társítva. Csak szerkesztheti, v
 
 **Melyik MPN-azonosító kell használni, ha a vállalata rendelkezik több?**
 
-Használhat bármilyen érvényes MPN-azonosító kivéve virtuális organization(v-org) MPN-azonosító. A legtöbb partnerek az MPN-azonosító használata a földrajzi hely, ahol az ügyfél-alapú vagy szolgáltatások vannak célszolgáltatásnak válassza.
+Helyet Partnerfiókokhoz és a kapcsolódó MPN-azonosítók használt kapcsolásának partnerazonosítóját.  Tudjon meg többet [Partnerfiókokhoz](https://docs.microsoft.com/partner-center/account-structure)
 
 **Hol található a Partnerazonosítójával társított reporting befolyásolt bevétel?**
 
-Befolyásolt bevételi jelentési címen található [saját irányítópult](https://partner.microsoft.com/membership/reports/myinsights). Válassza ki a Partner felügyeleti hivatkozás partner társítási típust kell.
+Felhőalapú termék Teljesítményjelentések készítése érhető el partnereink a Partnerközpont [saját irányítópult](https://partner.microsoft.com/membership/reports/myinsights). Válassza ki a Partner felügyeleti hivatkozás partner társítási típust kell.
 
 **Miért nem látom a saját felhasználói a jelentések?**
 

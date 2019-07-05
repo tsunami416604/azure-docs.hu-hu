@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6d461725d0d4c86ee7aa5b450d42c01ca77ffb16
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9433714c06dfad09270a6033f38a99471bcd517a
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107682"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67513621"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Hogyan használható az Azure Monitor-munkafüzetek a Azure Active Directory-jelentések
 
@@ -57,7 +57,7 @@ Munkafüzetek elérése:
 
 2. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory**.
 
-3. Az a **figyelés** szakaszban jelölje be **Insights**. 
+3. Az a **figyelés** szakaszban jelölje be **munkafüzetek**. 
 
     ![Válassza ki a Insights](./media/howto-use-azure-monitor-workbooks/41.png)
 
@@ -93,7 +93,7 @@ Minden egyes trend a következő kategóriák szerint szűrheti:
 
 Minden egyes trend meg információkat a következő kategóriák szerint használhatja:
 
-- Location egység
+- Location
 
     ![Bejelentkezések hely szerint](./media/howto-use-azure-monitor-workbooks/45.png)
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 00b94174debf915fac3ae5fb37f382c0dc46abfb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 157a421ce2cb4442597bfb0f75ae042a10a8ee03
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755000"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443757"
 ---
 # <a name="azure-storage-account-overview"></a>Az Azure storage-fiókok áttekintése
 
@@ -68,7 +68,7 @@ Képest az általános célú v2 és blob storage-fiókok a block blob storage-f
 
 Block blob storage-fiókok jelenleg nem támogatják a gyakori és ritka elérésű, valamint az archív elérési szint rétegezést.
 
-### <a name="filestorage-preview-storage-accounts"></a>Storage-fiókok FileStorage (előzetes verzió)
+### <a name="filestorage-storage-accounts"></a>FileStorage storage-fiókok
 
 FileStorage tárfiók tárolja, és a prémium szintű fájlmegosztásokat hozhat létre egy specializált tárfiók. Storage-fiókok FileStorage egyedi, dedikált teljesítmény jellemzőkkel, például IOPS tartalékkapacitás kínálnak. További információ a következő jellemzőkkel: a [fájl megosztási teljesítményszintek](../files/storage-files-planning.md#file-share-performance-tiers) tervezési útmutató a fájlok szakaszában.
 
@@ -88,7 +88,7 @@ Ne feledje ezeket a szabályokat a tárfiók elnevezésekor:
 
 Block blob storage-fiókok adja meg a prémium teljesítményszinten tárolására a blokkblobok és hozzáfűző blobok.
 
-FileStorage (előzetes verzió) tárfiókok az Azure-fájlmegosztások adja meg a prémium teljesítményszinten.
+FileStorage tárfiókok az Azure-fájlmegosztások adja meg a prémium teljesítményszinten.
 
 ## <a name="access-tiers-for-block-blob-data"></a>A blokkblobok adataival elérési szint
 

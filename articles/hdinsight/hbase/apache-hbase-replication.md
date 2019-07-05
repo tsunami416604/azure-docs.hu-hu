@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: 95a1055df283765b24322f6f8efe3efcb9b19022
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 38d3c61acee9dca18ab1f863d878e02f7437a600
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707976"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433722"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Az Apache HBase-fürt replikációja az Azure virtuális hálózatok beállítása
 
@@ -21,7 +21,7 @@ Ismerje meg, hogyan állítható be [Apache HBase](https://hbase.apache.org/) re
 
 Fürt-replikáció az a forrás-küldéses metódussal. HBase-fürtöt a forrás vagy cél, vagy teljesíteni tudja mindkét szerepkört egyszerre. Replikáció az aszinkron. A replikációs célja végső konzisztenciát. Amikor a forrás és a egy oszlopcsalád szerkesztését kap, ha a replikáció engedélyezve van, a Szerkesztés az összes cél fürtök propagálja. Amikor adatok replikálódnak az egyik fürtről a másikra, a forrás fürt és az összes olyan fürtben, amely már használt fel, az adatok nyomon követi, replikációs hurkok elkerülése érdekében.
 
-Ebben az oktatóanyagban beállította egy forrás-cél replikációs. Más fürt topológiákat, tekintse meg a [Apache HBase referencia-útmutató](https://hbase.apache.org/book.html#_cluster_replication).
+Ebben a cikkben beállított egy forrás-cél replikációs. Más fürt topológiákat, tekintse meg a [Apache HBase referencia-útmutató](https://hbase.apache.org/book.html#_cluster_replication).
 
 A HBase replikációs használati eseteinek egyetlen virtuális hálózaton az alábbiak:
 
@@ -39,7 +39,7 @@ A HBase replikációs használati eseteinek két virtuális hálózat a követke
 Fürtök használatával replikálhatja [műveleti parancsfájl](../hdinsight-hadoop-customize-cluster-linux.md) parancsfájlokat [GitHub](https://github.com/Azure/hbase-utils/tree/master/replication).
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az oktatóanyag elindításához Azure-előfizetéssel kell rendelkeznie. Lásd: [az Azure ingyenes próbaverziójára első](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+Ez a cikk elkezdéséhez Azure-előfizetéssel kell rendelkeznie. Lásd: [az Azure ingyenes próbaverziójára első](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 ## <a name="set-up-the-environments"></a>A környezetek beállítása
 
@@ -68,7 +68,7 @@ Egyes változtatható értékek a sablonban:
 
 | Tulajdonság | Érték |
 |----------|-------|
-| Location egység | USA nyugati régiója |
+| Location | USA nyugati régiója |
 | Virtuális hálózat neve | &lt;ClusterNamePrevix>-vnet1 |
 | Címtér-előtagját | 10.1.0.0/16 |
 | Alhálózat neve | 1\. alhálózata |
@@ -85,7 +85,7 @@ Egyes változtatható értékek a sablonban:
 
 | Tulajdonság | Érték |
 |----------|-------|
-| Location egység | USA keleti régiója |
+| Location | East US |
 | Virtuális hálózat neve | &lt;ClusterNamePrevix>-vnet2 |
 | Címtér-előtagját | 10.2.0.0/16 |
 | Alhálózat neve | 1\. alhálózata |
@@ -396,7 +396,7 @@ A `print_usage()` szakaszában a [parancsfájl](https://raw.githubusercontent.co
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtudhatta, hogyan állíthat be egy virtuális hálózaton belül, vagy két virtuális hálózat között az Apache HBase-replikálás. A HDInsight és az Apache HBase kapcsolatos további információkért tanulmányozza a következő cikkeket:
+Ebben a cikkben megtanulta, hogyan állíthat be egy virtuális hálózaton belül, vagy két virtuális hálózat között az Apache HBase-replikálás. A HDInsight és az Apache HBase kapcsolatos további információkért tanulmányozza a következő cikkeket:
 
 * [A HDInsight Apache HBase használatának első lépései](./apache-hbase-tutorial-get-started-linux.md)
 * [HDInsight az Apache HBase – áttekintés](./apache-hbase-overview.md)

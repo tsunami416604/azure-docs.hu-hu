@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 108d17d3e0ca5f32648f9d4f6cf4b5f9a2984d0c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ba08cd7fdecda99c04d5bb1007b3e5f61cd1bd5c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66495809"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446770"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Tracking és az eseménynaplózás az Azure Data Box-és az Azure Data Box (nagy erőforrásigényű)
 
@@ -29,7 +29,7 @@ Az alábbi táblázat a Data Box vagy a Data Box nehéz rendelés lépéseket, �
 | Adatok másolása eszköz        | [Nézet *error.xml* fájlok](#view-error-log-during-data-copy) az adatok másolása                                                             |
 | A szállítás előkészítése            | [A AJ fájlokat](#inspect-bom-during-prepare-to-ship) vagy az eszközön lévő fájlok                                      |
 | Adatok feltöltése az Azure-bA       | [Felülvizsgálat *copylogs* ](#review-copy-log-during-upload-to-azure) adatok során hibák feltöltése az Azure-adatközpont                         |
-| Adatok törlését az eszközről   | [Felügyeleti lánc naplók lánc megtekintéséhez](#get-chain-of-custody-logs-after-data-erasure) többek között a naplók és a rendelési előzmények                                                   |
+| Adatok törlését az eszközről   | [Felügyeleti lánc naplók lánc megtekintéséhez](#get-chain-of-custody-logs-after-data-erasure) többek között a naplók és a rendelési előzmények                |
 
 Ez a cikk ismerteti részletesen ismertetjük a különböző mechanizmusokat vagy nyomon követése és naplózása a Data Box vagy a Data Box nehéz sorrendben elérhető eszközöket. Ebben a cikkben található információk, Data Box mind a Data Box nehéz vonatkozik. Az ezt követő szakaszokban Data Box mutató hivatkozásokat is érvényesek a Data Box (nagy erőforrásigényű).
 
@@ -203,7 +203,7 @@ A Data Box szolgáltatás hoz létre minden egyes rendelés feldolgozása, *copy
 
 Egy ciklikus redundancia ellenőrzése (CRC) számítási történik a feltöltés során, az Azure-bA. Az adatok másolását, és összehasonlítja az adatok feltöltése után CRCs. CRC eltérés azt jelzi, hogy a megfelelő fájlokat nem sikerült feltölteni.
 
-Alapértelmezés szerint a naplók copylog nevű tárolóba kerülnek. A naplókat tárolja az alábbi elnevezési szabályt követik:
+Alapértelmezés szerint a naplók nevű tárolóba írták `copylog`. A naplókat tárolja az alábbi elnevezési szabályt követik:
 
 `storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`.
 
@@ -245,7 +245,41 @@ Azure-bA feltöltendő hibákkal is elvégezheti.
   <FilesErrored>2</FilesErrored>
 </CopyLog>
 ```
+Íme egy példa egy `copylog` ahol a tárolók, amely nem felelt meg az Azure elnevezési konvencióinak lettek átnevezve, során az adatok feltöltése az Azure-bA.
 
+A következő formátumban van az új egyedi nevet az tárolók `DataBox-GUID` és az adatokat a tároló a új átnevezve tárolóba kerülnek. A `copylog` a régi és a tároló az új tároló nevét adja meg.
+
+```xml
+<ErroredEntity Path="New Folder">
+   <Category>ContainerRenamed</Category>
+   <ErrorCode>1</ErrorCode>
+   <ErrorMessage>The original container/share/blob has been renamed to: DataBox-3fcd02de-bee6-471e-ac62-33d60317c576 :from: New Folder :because either the name has invalid character(s) or length is not supported</ErrorMessage>
+  <Type>Container</Type>
+</ErroredEntity>
+```
+
+Íme egy példa egy `copylog` , a blobok vagy a fájlokat, amely nem felelt meg az Azure elnevezési konvencióinak, lett átnevezve során az adatok feltöltése az Azure-bA. Az új blob vagy fájlneveket SHA256 kivonatoló tároló relatív elérési útja alakítja, és töltődnek fel a cél típusa alapján elérési útja. A cél a blokkblobok, lapblobok vagy az Azure Files lehet.
+
+A `copylog` a régi és az új blob vagy a fájl neve és elérési útját megadja az Azure-ban.
+
+```xml
+<ErroredEntity Path="TesDir028b4ba9-2426-4e50-9ed1-8e89bf30d285\Ã">
+  <Category>BlobRenamed</Category>
+  <ErrorCode>1</ErrorCode>
+  <ErrorMessage>The original container/share/blob has been renamed to: PageBlob/DataBox-0xcdc5c61692e5d63af53a3cb5473e5200915e17b294683968a286c0228054f10e :from: Ã :because either name has invalid character(s) or length is not supported</ErrorMessage>
+  <Type>File</Type>
+</ErroredEntity><ErroredEntity Path="TesDir9856b9ab-6acb-4bc3-8717-9a898bdb1f8c\Ã">
+  <Category>BlobRenamed</Category>
+  <ErrorCode>1</ErrorCode>
+  <ErrorMessage>The original container/share/blob has been renamed to: AzureFile/DataBox-0xcdc5c61692e5d63af53a3cb5473e5200915e17b294683968a286c0228054f10e :from: Ã :because either name has invalid character(s) or length is not supported</ErrorMessage>
+  <Type>File</Type>
+</ErroredEntity><ErroredEntity Path="TesDirf92f6ca4-3828-4338-840b-398b967d810b\Ã">
+  <Category>BlobRenamed</Category>
+  <ErrorCode>1</ErrorCode>
+  <ErrorMessage>The original container/share/blob has been renamed to: BlockBlob/DataBox-0xcdc5c61692e5d63af53a3cb5473e5200915e17b294683968a286c0228054f10e :from: Ã :because either name has invalid character(s) or length is not supported</ErrorMessage>
+  <Type>File</Type>
+</ErroredEntity>
+```
 
 ## <a name="get-chain-of-custody-logs-after-data-erasure"></a>Adatok a törlés után lánc felügyeleti lánc naplók lekérése
 

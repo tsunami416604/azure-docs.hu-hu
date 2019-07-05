@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: banders
-ms.openlocfilehash: 45b5d2c94a72cb23ef2b4a8db100623b0c58b0a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f58969b167b6c0f0a66d46731ad76c1f6e9acc41
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66023398"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491452"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>Késedelmes egyenleg az Azure-előfizetés
 
@@ -34,7 +34,7 @@ Ha Ön a [felhasználóifiók-adminisztrátor](billing-subscription-transfer.md#
 ## <a name="resolve-past-due-balance-in-the-azure-portal"></a>Késedelmes egyenleg az Azure Portalon
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) fiókadminisztrátorként
-1. A Keresés **Cost Management és számlázás**.
+1. Keresse meg **Cost Management és számlázás**.
 1. Az Áttekintés lapon látni fogja az előfizetések listáját. Ha az előfizetés állapotának határidő, kattintson a **egyenleg rendezésére** hivatkozásra.
     ![Képernyőkép a hátralékos egyenleg hivatkozás](./media/billing-azure-subscription-past-due-balance/settle-balance-entry-point.png)
 1. A teljes fennmaradó egyenleget ki nem egyenlített díjakat jeleníti meg az összes Microsoft-szolgáltatás sikertelen fizetési mód használatával.

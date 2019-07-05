@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 06/29/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: c402b82b91b02f8d9619c851d09c689fd103c9fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b8c2b50e00c8e9727b09a454504d214a3060fe4
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67116440"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502694"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Az Azure digitális Twins Swagger dokumentációja
 
@@ -92,14 +92,12 @@ A példák is hibakódok javításához vagy javítása sikertelen tesztek segí
 
 ## <a name="swagger-oauth-20-authorization"></a>OAuth 2.0 engedélyezési swagger
 
-Interaktív módon az OAuth 2.0 által védett kérelmek tesztelésével kapcsolatos további tudnivalókért tekintse meg a [dokumentációs](https://swagger.io/docs/specification/authentication/oauth2/).
-
 > [!NOTE]
-> A résztvevő felhasználó, aki létrehozta az Azure digitális Twins erőforrás terület rendszergazdai szerepkör-hozzárendelés lesz, és tudni hozzon létre további szerepkör-hozzárendelések más felhasználók számára.
+> * A résztvevő felhasználó, aki létrehozta az Azure digitális Twins erőforrás terület rendszergazdai szerepkör-hozzárendelés lesz, és tudni hozzon létre további szerepkör-hozzárendelések más felhasználók számára. Ezek a felhasználók és azok szerepköreivel jogosult-e az API-kat.
 
-1. Kövesse a [ebben a rövid útmutatóban](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) hozhat létre egy Azure AD-alkalmazást típusú ***webalkalmazás / API***. Vagy használhat egy meglévő alkalmazás regisztrációja.
+1. Kövesse a [ebben a rövid útmutatóban](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) vagy [az Azure digitális Twins alkalmazás regisztrálása az Azure Active Directory örökölt](./how-to-use-legacy-aad.md) létrehozása és konfigurálása az Azure AD-alkalmazást. Másik lehetőségként egy meglévő alkalmazásregisztráció felhasználhatja.
 
-2. Vegye fel az alkalmazásregisztráció a következő válasz URL-cím:
+1. Vegye fel az alkalmazásregisztráció a következő válasz URL-cím:
 
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
@@ -108,29 +106,23 @@ Interaktív módon az OAuth 2.0 által védett kérelmek tesztelésével kapcsol
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | A felügyeleti REST API dokumentációjában található URL-címe a portálon  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
-3. Adja meg az alkalmazást, elérheti az Azure digitális Twins engedélyeket. A **szükséges engedélyek**, adja meg `Azure Digital Twins` válassza **delegált engedélyek**. Válassza ki **engedélyek megadása**.
-
-    ![Az Azure AD-alkalmazásregisztrációk api hozzáadása](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)
-
-4. Az OAuth 2.0 implicit engedélyezési folyamat engedélyezése az alkalmazásjegyzék konfigurálása. Válassza ki **Manifest** az alkalmazásjegyzékben, az alkalmazás megnyitásához. Állítsa be *oauth2AllowImplicitFlow* való `true`.
-
-    ![Az Azure AD implicit folyamat](../../includes/media/digital-twins-permissions/aad-app-allow-implicit-flow.png)
-
-5. Másolja ki az Azure AD-alkalmazás azonosítója.
+1. Másolja ki az Azure AD-alkalmazás azonosítója.
 
 Elvégezte az Azure Active Directory eszközregisztrációs:
 
-6. Válassza ki a **engedélyezés** gomb a swagger-lapon.
+1. Válassza ki a **engedélyezés** gomb a swagger-lapon.
 
     [![Válassza ki a Swagger gomb engedélyezése](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
 
-7. Illessze be az Alkalmazásazonosítót a **client_id** mező.
+1. Illessze be az Alkalmazásazonosítót a **client_id** mező.
 
     [![Swagger client_id mező](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
 
-8. Ezután a következő modális sikeres irányítja.
+1. Ezután a következő modális sikeres irányítja.
 
-    [![Swagger-átirányítási modális paneljére](media/how-to-use-swagger/swagger_auth_redirect.PNG)](media/how-to-use-swagger/swagger_auth_redirect.PNG#lightbox)
+    [![Swagger-átirányítási modális paneljére](media/how-to-use-swagger/swagger_auth_redirect.png)](media/how-to-use-swagger/swagger_auth_redirect.png#lightbox)
+
+Interaktív módon az OAuth 2.0 által védett kérelmek tesztelésével kapcsolatos további tudnivalókért tekintse meg a [dokumentációs](https://swagger.io/docs/specification/authentication/oauth2/).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2018
 ms.author: monhaber
-ms.openlocfilehash: d42b929807bf67b73d0587232608efc0cea6d717
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1737856067b2490db4a993b4383b320cb13a7774
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752572"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551768"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>A Windows Defender komplex veszélyforrások elleni védelem az Azure Security Centerrel
 
@@ -71,7 +71,7 @@ A kiszolgálók felvétele a Security centerhez, kattintson a **nyissa meg az Az
 
 ## <a name="enable-windows-defender-atp-integration"></a>A Windows Defender ATP-integráció engedélyezése
 
-Ha engedélyezve van a Windows Defender ATP-integráció megtekintéséhez jelölje ki **a Security center** > **biztonsági házirend** > **előfizetés**  >  **Beállításainak szerkesztése**.
+Ha engedélyezve van a Windows Defender ATP-integráció megtekintéséhez jelölje ki **a Security center** > **díjszabási & beállítások** > kattintson az előfizetésre.
 
   ![Az Azure Security Center Szabályzatkezelés](media/security-center-wdatp/policy-management.png)
 

@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 07/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 6879dd975f97ba2746165e87a135e5d90e8b229f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5955b21ae405f15960974fcbc81b8383f3322509
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60308728"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485703"
 ---
 # <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Méretezési csoport partíciókat és -replikákat a lekérdezés és a számítási feladatok indexeléséhez az Azure Search
 Miután [válasszon egy tarifacsomagot](search-sku-tier.md) és [egy keresési szolgáltatás kiépítése](search-create-service-portal.md), a következő lépés az, hogy szükség esetén a replikákat és partíciókat, a szolgáltatás által használt számának növelésére. Minden egyes számlázási egységek rögzített számú kínálja. Ez a cikk ismerteti azokat az egységeket optimális konfigurációt, amely elosztja a lekérdezés-végrehajtás, indexelési és tárolási követelményeinek elérésére lefoglalása.
@@ -47,6 +47,7 @@ Szeretné növelni, vagy a lefoglalást a replikák és partíciók, javasoljuk,
 Általában az alkalmazások keresése, mint a partíciók több replika kell, különösen akkor, ha a szolgáltatási műveletek vannak torzítatlan lekérdezési számítási feladatok felé. A szakasz a [magas rendelkezésre állású](#HA) ismerteti az okokat.
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) , és válassza ki a keresési szolgáltatást.
+
 2. A **beállítások**, nyissa meg a **méretezési** lap használatával módosíthatja a replikák és partíciók. 
 
    Az alábbi képernyőfelvételen egy standard szintű service, egy replikát, illetve a partíciót. A képlet alsó azt jelzi, hogy hány keresési egységek éppen használt (1). Ha azt az Egységár 100 USD (nem a tényleges díj) volt, ez a szolgáltatás futtatásának havi díja lesz 100 USD átlagosan.
@@ -108,6 +109,7 @@ Mivel a szolgáltatás egyszerűen és viszonylag gyorsan vertikális, általáb
 Általános javaslatok a magas rendelkezésre állás érdekében a következők:
 
 * Csak olvasható munkaterhelések (lekérdezések) magas rendelkezésre álláshoz két replika
+
 * Három vagy több replikát, a magas rendelkezésre állású olvasási és írási számítási feladatok (lekérdezések és az indexelés, egyes dokumentumok hozzáadása, frissített vagy törölt)
 
 Szolgáltatói szerződések (SLA) az Azure Search lekérdezési műveletek vagy egy index frissítéseit hozzáadása, frissítése vagy törlése a dokumentumok álló célozzák meg.

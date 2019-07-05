@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 6c0732b33608105009eda9bba2e4970e8e12e652
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dd6259173792585a83effd42c75ff9a7a7d572e4
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050579"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448390"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -68,6 +68,9 @@ Az alábbi lépéseket a Core Tools telepítése Windows npm-et használja. Is [
     ```bash
     npm install -g azure-functions-core-tools
     ```
+
+   Eltarthat néhány percig, az npm segítségével való töltse le és telepítse a Core Tools csomagot.
+
 1. Ha nem tervezi használni [bővítmény csomagjaiból], telepítése a [.NET Core 2.x SDK for Windows](https://www.microsoft.com/net/download/windows).
 
 #### <a name="brew"></a>A homebrew-val MacOS
@@ -82,6 +85,7 @@ Az alábbi lépéseket a Homebrew használatával a Core Tools telepítése macO
     brew tap azure/functions
     brew install azure-functions-core-tools
     ```
+
 1. Ha nem tervezi használni [bővítmény csomagjaiból], telepítse [.NET Core macOS-hez készült SDK 2.x](https://www.microsoft.com/net/download/macos).
 
 
@@ -115,6 +119,7 @@ Az alábbi lépések az [APT](https://wiki.debian.org/Apt) Core Tools telepíté
     ```bash
     sudo apt-get install azure-functions-core-tools
     ```
+
 1. Ha nem szeretne használni [bővítmény csomagjaiból], telepítse [.NET Core 2.x-es SDK linuxhoz](https://www.microsoft.com/net/download/linux).
 
 ## <a name="create-a-local-functions-project"></a>Egy helyi Functions-projekt létrehozása
@@ -163,53 +168,16 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 > [!IMPORTANT]
 > Alapértelmezés szerint verzió 2.x verzióját az Core Tools hoz létre a funkció a .NET-futtatókörnyezet, az alkalmazás projektek [C# osztály projektek](functions-dotnet-class-library.md) (.csproj). Ezek a C# a projektek, amely használható a Visual Studióval vagy a Visual Studio Code-ot, összeállítása tesztelése során, és az Azure-ba való közzétételekor. Ha inkább a az azonos C#-szkript (.csx) létrehozását és használatát a fájlok verziójában létrehozott 1.x és a portálon, meg kell adni a `--csx` paraméter létrehozása és központi telepítésekor a funkciók.
 
-## <a name="register-extensions"></a>Bővítmények regisztrálása
+[!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
-A verzió 2.x verzióját az Azure Functions futtatókörnyezettel, explicit módon regisztrálnia kell a kötési bővítményeket (kötés esetében), amelyek használatával a függvényalkalmazást.
+[!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-[!INCLUDE [Register extensions](../../includes/functions-core-tools-install-extension.md)]
-
-További információkért lásd: [Azure Functions eseményindítók és kötések fogalmak](./functions-bindings-expressions-patterns.md).
-
-## <a name="local-settings-file"></a>Local settings file (Helyi beállításfájl)
-
-A fájl local.settings.json Alkalmazásbeállítások, a kapcsolati karakterláncok és a beállítások az Azure Functions Core Tools tárolja. A local.settings.json fájlban beállítások csak által használt funkciók eszközök helyi futtatás során. Alapértelmezés szerint ezek a beállítások nem települnek át automatikusan az Azure-bA a projekt közzétételekor. Használja a `--publish-local-settings` váltson [közzétételekor](#publish) , hogy ezek a beállítások lettek hozzáadva a függvényalkalmazáshoz az Azure-ban. Az értékek **kapcsolati Sztringjei** soha nem kerülnek közzétételre. A fájl az alábbi struktúrával rendelkezik:
-
-```json
-{
-  "IsEncrypted": false,
-  "Values": {
-    "FUNCTIONS_WORKER_RUNTIME": "<language worker>",
-    "AzureWebJobsStorage": "<connection-string>",
-    "AzureWebJobsDashboard": "<connection-string>",
-    "MyBindingConnection": "<binding-connection-string>"
-  },
-  "Host": {
-    "LocalHttpPort": 7071,
-    "CORS": "*",
-    "CORSCredentials": false
-  },
-  "ConnectionStrings": {
-    "SQLConnectionString": "<sqlclient-connection-string>"
-  }
-}
-```
-
-| Beállítás      | Leírás                            |
-| ------------ | -------------------------------------- |
-| **`IsEncrypted`** | Ha a beállítása `true`, minden értéket a helyi gép kulcsa segítségével titkosítja. A használt `func settings` parancsokat. Alapértelmezett érték `false`. |
-| **`Values`** | Alkalmazásbeállítások és a helyi futtatás során használt kapcsolati karakterláncok gyűjteménye. Ezeket az értékeket felelnek meg az alkalmazásbeállításokat a függvényalkalmazáshoz az Azure-ban, mint például [ `AzureWebJobsStorage` ]. Számos eseményindítók és kötések rendelkezik olyan tulajdonságot, amely hivatkozik a kapcsolati karakterlánc Alkalmazásbeállítás, például `Connection` számára a [Blob storage-eseményindító](functions-bindings-storage-blob.md#trigger---configuration). Az ilyen tulajdonságok szüksége lesz a megadott alkalmazás-beállítás a `Values` tömb. <br/>[`AzureWebJobsStorage`] az eseményindítók nem HTTP beállítás kötelező alkalmazást. <br/>Verzió 2.x verzióját a Functions futtatókörnyezete van szükség a [ `FUNCTIONS_WORKER_RUNTIME` ] beállítást, amely a projekt Core Tools által generált. <br/> Ha rendelkezik a [az Azure storage emulator](../storage/common/storage-use-emulator.md) telepítve helyben, beállíthatja [ `AzureWebJobsStorage` ] való `UseDevelopmentStorage=true` és Core Tools használja az emulátorban. Ez akkor hasznos, a fejlesztés során, de a telepítés előtt egy tényleges storage-kapcsolattal kell tesztelni. |
-| **`Host`** | Ebben a szakaszban beállítások testre szabhatja a Functions gazdafolyamat helyi futtatás során. |
-| **`LocalHttpPort`** | Beállítja az alapértelmezett portot használja, amikor a függvények helyi állomás (`func host start` és `func run`). A `--port` parancssori kapcsoló elsőbbséget élvez ezt az értéket. |
-| **`CORS`** | Meghatározza az engedélyezett eredetek [eltérő eredetű erőforrások megosztása (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). Források szóközök nélküli szövegláncként egy vesszővel tagolt lista formájában vannak megadva. A helyettesítő karaktert tartalmazó értéket (\*) támogatott, amely lehetővé teszi a kérelmek bármilyen forrásból. |
-| **`CORSCredentials`** |  Ha true értékre állítsa `withCredentials` kérelmek |
-| **`ConnectionStrings`** | Ne használja a gyűjtemény a kapcsolati karakterláncokat a függvénykötésnek használják. Ez a gyűjtemény csak használják, amely általában a kapcsolati karakterláncok keretrendszereket a `ConnectionStrings` szakaszában egy konfigurációs fájlba, például [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Kapcsolati karakterláncok ezt az objektumot a rendszer felveszi a környezetbe, a szolgáltató típusát [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx). Ebben a gyűjteményben lévő elemek az Azure-ban nincs közzétéve a többi alkalmazás beállításokkal. Ezekre az értékekre, explicit módon kell hozzáadnia a `Connection strings` gyűjteménye, a függvényalkalmazás-beállításokat. Létrehozásakor egy [ `SqlConnection` ](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) a függvénykódban, tárolja a kapcsolati karakterlánc értékét a **Alkalmazásbeállítások** a portálon a kapcsolatokkal. |
+Alapértelmezés szerint ezek a beállítások nem települnek át automatikusan az Azure-bA a projekt közzétételekor. Használja a `--publish-local-settings` váltson [közzétételekor](#publish) , hogy ezek a beállítások lettek hozzáadva a függvényalkalmazáshoz az Azure-ban. Vegye figyelembe, hogy az értékek **kapcsolati Sztringjei** soha nem kerülnek közzétételre.
 
 A függvény alkalmazás beállítások értékeit is elolvashatja a kódban környezeti változókként. További információkért tekintse meg a környezeti változók szakaszban az alábbi nyelvspecifikus referencia-témakörök:
 
 * [C# előre lefordított](functions-dotnet-class-library.md#environment-variables)
 * [C# script (.csx)](functions-reference-csharp.md#environment-variables)
-* [F#parancsprogram (.fsx)](functions-reference-fsharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
@@ -439,7 +407,7 @@ A következő közzétételi beállítások verziója, a 1.x és 2.x vonatkoznak
 
 | Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
-| **`--publish-local-settings -i`** |  Közzétételi beállítások a local.settings.json az Azure-ba, kéri a felhasználót, felülírása, ha a beállítás már létezik. A storage emulatort használja, ha módosítja az Alkalmazásbeállítás- [tényleges tárolási kapcsolat](#get-your-storage-connection-strings). |
+| **`--publish-local-settings -i`** |  Közzétételi beállítások a local.settings.json az Azure-ba, kéri a felhasználót, felülírása, ha a beállítás már létezik. Ha a storage emulatort használja, először változtassa meg az Alkalmazásbeállítás- [tényleges tárolási kapcsolat](#get-your-storage-connection-strings). |
 | **`--overwrite-settings -y`** | Alkalmazásbeállítások felülírja a rendszer kéri le. Ha `--publish-local-settings -i` szolgál.|
 
 A következő közzétételi beállítások verziójában csak támogatott 2.x:
@@ -495,6 +463,6 @@ A fájl egy programhiba vagy szolgáltatás kérelmet [nyisson meg egy GitHub-pr
 [Az Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
 [Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
-["FUNCTIONS_WORKER_RUNTIME"]: functions-app-settings.md#functions_worker_runtime
+[`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 [`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage
-[bővítmény csomagjaiból]: functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles
+[bővítmény csomagjaiból]: functions-bindings-register.md#extension-bundles

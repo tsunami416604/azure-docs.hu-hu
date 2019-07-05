@@ -1,5 +1,5 @@
 ---
-title: Az Azure Service Bus-metrikák az Azure Monitor (előzetes verzió) |} A Microsoft Docs
+title: Az Azure Service Bus-metrikák az Azure Monitor |} A Microsoft Docs
 description: Service Bus-entitások monitorozása az Azure Monitor használatával
 services: service-bus-messaging
 documentationcenter: .NET
@@ -10,14 +10,14 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 11/06/2018
 ms.author: aschhab
-ms.openlocfilehash: fdb0152ef398dbd53a8a2a99a10d90254252908b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80a4b1e60202b88f6ed3c1574bd4684575a9b153
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65921231"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67538069"
 ---
-# <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Az Azure Service Bus-metrikák az Azure Monitor (előzetes verzió)
+# <a name="azure-service-bus-metrics-in-azure-monitor"></a>Az Azure Service Bus-metrikák az Azure monitorban
 
 Service Bus-metrikák teszik lehetővé az Azure-előfizetésében erőforrások állapotát. Metrikai adatok széles skáláját felmérheti a Service Bus-erőforrások, nem csak a névterek szintjén, hanem az entitások szintjén általános állapotát. A statisztikai lehet fontos, mert ezek segítségével figyelheti a Service Bus állapotát. Metrikák is segít kiváltó problémák elhárítása anélkül, hogy forduljon az Azure ügyfélszolgálatához.
 
@@ -38,7 +38,7 @@ Az idő függvényében segítségével figyelheti a mérőszámokat a [az Azure
 
 ![][1]
 
-Metrikák a névtér keresztül közvetlenül is elérheti. Ehhez válassza ki a névteret, és kattintson a **metrikák (előnézet)** . Az entitás hatókörének szűrt metrikák megjelenítéséhez válassza ki az entitást, és kattintson a **metrikák (előnézet)** .
+Metrikák a névtér keresztül közvetlenül is elérheti. Ehhez válassza ki a névteret, és kattintson a **metrikák**. Az entitás hatókörének szűrt metrikák megjelenítéséhez válassza ki az entitást, és kattintson a **metrikák**.
 
 ![][2]
 
@@ -46,7 +46,9 @@ Dimenziók támogató metrikákhoz a kívánt dimenzió értékkel kell szűrni.
 
 ## <a name="billing"></a>Számlázás
 
-Metrikák az Azure Monitor használata az előzetes verzió ingyenes. Azonban használ további megoldásokat, amelyek fogadni a mérőszámadatokat, akkor előfordulhat, hogy után kell díjat ezek a megoldások által. Ha például számítjuk fel az Azure Storage által archiválja mérőszámok az Azure Storage-fiók. Emellett számítjuk fel az Azure Monitor-naplók által, adatfolyam-metrikák adatait az Azure Monitor naplóira fejlett analitikai Ha.
+Mérőszámok és riasztások az Azure Monitor egy riasztásonként elszámolással számlázzuk. Ezek a díjak a portál elérhetőnek kell lennie, ha be állítva a riasztást, és azt mentése előtt. 
+
+További megoldásokat pedig a mérőszámadatokat biztosít ezen megoldások által közvetlenül számítjuk fel. Ha például számítjuk fel az Azure Storage által archiválja mérőszámok az Azure Storage-fiók. Emellett a számlázás a Log Analytics által speciális elemzésekre szolgáló Log Analytics-metrikák adatok streamelése az, ha.
 
 Az alábbi mérőszámok segítségével a szolgáltatás állapotának áttekintése. 
 
@@ -61,11 +63,11 @@ Számít az adatok és a felügyeleti műveletek kérések száma.
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| A bejövő kérések (előnézet) | Egy meghatározott időtartamon belül a Service Bus szolgáltatás felé irányuló kérelmek száma. <br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
-|Sikeres kérések (előnézet)|A sikeres kérelmek száma a Service Bus szolgáltatásnak egy meghatározott időtartamon belül.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
-|Kiszolgálóhibák (előzetes verzió)|Egy meghatározott időtartamon belül a Service Bus szolgáltatás hibája miatt nem feldolgozott kérelmek száma.<br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
-|Felhasználói hibák (előzetes verzió – tekintse meg a következő szakasz)|Egy meghatározott időtartamon belül a felhasználói hibák miatt nem feldolgozott kérelmek száma.<br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
-|Szabályozott kérelmeinek száma (előzetes verzió)|Szabályozott volt, mert túllépte a használati kérelmek száma.<br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+| Bejövő kérelmek| Egy meghatározott időtartamon belül a Service Bus szolgáltatás felé irányuló kérelmek száma. <br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Sikeres kérelmek|A sikeres kérelmek száma a Service Bus szolgáltatásnak egy meghatározott időtartamon belül.<br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Kiszolgálóhibák|Egy meghatározott időtartamon belül a Service Bus szolgáltatás hibája miatt nem feldolgozott kérelmek száma.<br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Felhasználói hibáinak száma (lásd a következő szakasz)|Egy meghatározott időtartamon belül a felhasználói hibák miatt nem feldolgozott kérelmek száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Szabályozott kérelmeinek száma|Szabályozott volt, mert túllépte a használati kérelmek száma.<br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
 
 ### <a name="user-errors"></a>Felhasználói hibák
 
@@ -79,18 +81,18 @@ A következő két típusú hibák besorolt felhasználói hibáinak száma:
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-|Bejövő üzenetek (előzetes verzió)|Események vagy adott időszakon belül Service Busnak küldött üzenetek számát.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
-|Kimenő üzenetek (előzetes verzió)|Események vagy egy meghatározott időtartamon belül a Service Bus Beérkezett üzenetek száma.<br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
-| Üzenetek (előzetes verzió) | Az üzenetsor vagy témakör üzeneteinek száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Dimenzió: EntityName |
-| ActiveMessages (előzetes verzió) | Az üzenetsor vagy témakör aktív üzeneteinek száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Dimenzió: EntityName |
-| Kézbesítetlen lettered üzenetek (előzetes verzió) | Az üzenetsor vagy témakör kézbesítetlen lettered üzeneteinek száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/>Dimenzió: EntityName |
-| Ütemezett üzenetek (előzetes verzió) | Ütemezett, az üzenetsor vagy témakör üzeneteinek száma. <br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Átlag  <br/> Dimenzió: EntityName |
+|Bejövő üzenetek|Események vagy adott időszakon belül Service Busnak küldött üzenetek számát.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Kimenő üzenetek|Események vagy egy meghatározott időtartamon belül a Service Bus Beérkezett üzenetek száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+| Üzenetek| Az üzenetsor vagy témakör üzeneteinek száma. <br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Average <br/> Dimenzió: EntityName |
+| ActiveMessages| Az üzenetsor vagy témakör aktív üzeneteinek száma. <br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Average <br/> Dimenzió: EntityName |
+| Üzenetek kézbesíthetetlen levelek lettered| Az üzenetsor vagy témakör kézbesítetlen lettered üzeneteinek száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Average <br/>Dimenzió: EntityName |
+| Ütemezett üzenetek| Ütemezett, az üzenetsor vagy témakör üzeneteinek száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Average  <br/> Dimenzió: EntityName |
 
 ## <a name="connection-metrics"></a>Kapcsolati metrika
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-|Aktív kapcsolatai (előzetes verzió)|A névtér, valamint egy entitására aktív kapcsolatok száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|ActiveConnections|A névtér, valamint egy entitására aktív kapcsolatok száma.<br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
 
 ## <a name="resource-usage-metrics"></a>Erőforrás-használati metrikák
 
@@ -99,8 +101,8 @@ A következő két típusú hibák besorolt felhasználói hibáinak száma:
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-|Processzorhasználat névterenként (előzetes verzió)|Százalékos processzorhasználat a névteret.<br/><br/> Szervezeti egység: Százalék <br/> Aggregation Type: Maximum <br/> Dimenzió: EntityName|
-|Memória mérete névterenként (előzetes verzió)|A névtér százalékos memóriahasználatát.<br/><br/> Szervezeti egység: Százalék <br/> Aggregation Type: Maximum <br/> Dimenzió: EntityName|
+|Processzorhasználat névterenként|Százalékos processzorhasználat a névteret.<br/><br/> Szervezeti egység: Százalék <br/> Aggregation Type: Maximum <br/> Dimenzió: EntityName|
+|Memória mérete névterenként|A névtér százalékos memóriahasználatát.<br/><br/> Szervezeti egység: Százalék <br/> Aggregation Type: Maximum <br/> Dimenzió: EntityName|
 
 ## <a name="metrics-dimensions"></a>Metrikák dimenziók
 
@@ -124,7 +126,7 @@ Az Azure Service Bus a következő dimenziókat támogatja a mérőszámok az Az
         ![Válassza ki a névteret](./media/service-bus-metrics-azure-monitor/select-namespace.png)
 1. Válassza ki **adja meg a feltételeket**, és a következő műveleteket hajthatja végre a a **jellogika konfigurálása** oldalon:
     1. Válassza ki **metrikák** a **típus jelezze**. 
-    2. Válasszon egy olyan jelet. Példa: **Hibák (előzetes verzió) szolgáltatás**. 
+    2. Válasszon egy olyan jelet. Példa: **Szolgáltatási hibák**. 
 
         ![Válassza ki a kiszolgáló-hibák](./media/service-bus-metrics-azure-monitor/select-server-errors.png)
     1. Válassza ki **nagyobb** a **feltétel**.

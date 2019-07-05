@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 5022d765b5dfa4f1f973b7fb4370d5314bb887b8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 461df93400380ac74fa87eebc81fa06f77d7bf76
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60542869"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551654"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Hogyan hozhat létre virtuális gépet vagy virtuális merevlemez képe
 
@@ -30,7 +30,9 @@ Szeretne létrehozni egy virtuális gépet (VM) több példányát használja az
 
 Hozzon létre egy másolatot a meglévő Linuxos virtuális gép vagy hibakeresés céljából, vagy a helyszíni virtuális gépről egyéni Linux VHD feltöltése, lásd: [feltöltése és a egy Linux virtuális gép létrehozása egyéni rendszerképből](upload-vhd.md).  
 
-Is **Packer** az egyéni konfiguráció létrehozásához. További információkért lásd: [Packer használatával Linux virtuálisgép-rendszerképek létrehozása az Azure-ban](build-image-with-packer.md).
+Használhatja a **Azure virtuális gép az Image Builder (nyilvános előzetes verzió)** szolgáltatást hozhat létre az egyéni rendszerkép, nincs szükség további olyan eszközöket, vagy a telepítő folyamatok, egyszerűen megad egy rendszerkép-konfiguráció létrehozása és az Image Builder fog létrehozni a lemezképet. További információkért lásd: [Ismerkedés az Azure virtuális gép az Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview).
+
+Emellett használja **Packer** az egyéni konfiguráció létrehozásához. További információkért lásd: [Packer használatával Linux virtuálisgép-rendszerképek létrehozása az Azure-ban](build-image-with-packer.md).
 
 Mielőtt létrehozná a lemezképet a következőkre lesz szüksége:
 

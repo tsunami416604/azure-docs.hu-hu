@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 982c5dcc052f92afe381235db0bf066262fd82c6
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 357be801914017aceb7e827a3b49960cf7c3e386
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304282"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565407"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrálás fürtkonfigurációk részletes szerepköralapú hozzáféréséhez
 
@@ -25,7 +25,7 @@ Jövőben fér hozzá a titkos adatokat lesz szükség a `Microsoft.HDInsight/cl
 
 Is elérhetőkké váltak egy új [HDInsight-fürt operátor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) szerepkör, amely fogja tudni beolvasni a titkos kulcsok a rendszergazdai engedélyekkel, közreműködő vagy tulajdonos engedély megadása nélkül. Összefoglalásképpen:
 
-| Szerepkör                                  | Korábban                                                                                       | A jövőben       |
+| Role                                  | Korábban                                                                                       | A jövőben       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
 | Olvasó                                | -Olvasási hozzáférés, beleértve a titkos kulcsok                                                                   | -Olvasási hozzáférést, **kivételével** titkos kulcsok |           |   |   |
 | HDInsight-fürt operátor<br>(Új szerepkör) | –                                                                                              | -Olvasási/írási hozzáférést, beleértve a titkos kulcsok         |   |   |
@@ -121,10 +121,10 @@ Frissítse [verzió 5.0.0](https://www.nuget.org/packages/Microsoft.Azure.Manage
 
 Frissítse [1.0.0-s verziójának](https://pypi.org/project/azure-mgmt-hdinsight/1.0.0/) és újabb verzióiban a HDInsight SDK Pythonhoz készült. Minimális kódmódosítás szükséges lehet, ha ezek a változások által érintett metódus használja:
 
-- [`ConfigurationsOperations.get`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurations_operations.configurationsoperations?view=azure-python#get-resource-group-name--cluster-name--configuration-name--custom-headers-none--raw-false----operation-config-) fog **már nem ad vissza a bizalmas paraméterek** , például tárelérési kulcsok (hely) vagy HTTP-hitelesítő adatok (átjáró).
-    - Lekérdezheti az összes beállításokat, beleértve a bizalmas paraméterek [ `ConfigurationsOperations.list` ](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurations_operations.configurationsoperations?view=azure-python#list-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) a jövőben.  Vegye figyelembe, hogy az "Olvasó" szerepkörrel rendelkező felhasználók nem fognak tudni ezt a módszert használja. Ez lehetővé teszi szabályozható, amelyen a felhasználók hozzáférhessenek a fürt bizalmas adatokat. 
-    - Csak HTTP-átjáró használt kérheti [ `ConfigurationsOperations.get_gateway_settings` ](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clusters_operations.clustersoperations?view=azure-python#get-gateway-settings-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-).
-- [`ConfigurationsOperations.update`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clusters_operations.clustersoperations?view=azure-python#update-resource-group-name--cluster-name--tags-none--custom-headers-none--raw-false----operation-config-) most már elavult és felváltotta [ `ClusterOperations.update_gateway_settings` ](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clusters_operations.clustersoperations?view=azure-python#update-gateway-settings-resource-group-name--cluster-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-).
+- [`ConfigurationsOperations.get`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#get-resource-group-name--cluster-name--configuration-name--custom-headers-none--raw-false----operation-config-) fog **már nem ad vissza a bizalmas paraméterek** , például tárelérési kulcsok (hely) vagy HTTP-hitelesítő adatok (átjáró).
+    - Lekérdezheti az összes beállításokat, beleértve a bizalmas paraméterek [ `ConfigurationsOperations.list` ](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#list-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) a jövőben.  Vegye figyelembe, hogy az "Olvasó" szerepkörrel rendelkező felhasználók nem fognak tudni ezt a módszert használja. Ez lehetővé teszi szabályozható, amelyen a felhasználók hozzáférhessenek a fürt bizalmas adatokat. 
+    - Csak HTTP-átjáró használt kérheti [ `ClusterOperations.get_gateway_settings` ](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#get-gateway-settings-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-).
+- [`ConfigurationsOperations.update`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#update-resource-group-name--cluster-name--configuration-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) most már elavult és felváltotta [ `ClusterOperations.update_gateway_settings` ](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#update-gateway-settings-resource-group-name--cluster-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-).
 
 ### <a name="sdk-for-java"></a>SDK For Java
 

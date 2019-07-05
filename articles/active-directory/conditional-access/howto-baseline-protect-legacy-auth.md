@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e55bf4a66dcd8c1c7cfbc881d6f93c3a12f5dc00
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8e9ea8956d87e2ec47cc65495e81d8a0f0ad8cb
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112323"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560920"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>Alapvető házirendet: Az örökölt hitelesítés letiltása (előzetes verzió)
 
@@ -28,8 +28,6 @@ A felhasználók egyszerűen hozzáférhetnek számára a felhőalapú alkalmaz�
 Minden megalkuvás bejelentkezési kísérletek többsége még ma, régebbi hitelesítési származnak. Az örökölt hitelesítés nem támogatja a többtényezős hitelesítés (MFA). Ha már rendelkezik egy többtényezős hitelesítési szabályzat engedélyezve van a címtárban, kiderítsék hitelesítés örökölt protokoll használatával, és többtényezős hitelesítés kihagyása.
 
 A legjobb módszer a rosszindulatú hitelesítési kérést hoz létre örökölt protokollok fiókja védelme érdekében, hogy minden egy helyen letiltja ezeket a kísérleteket. Hogy egyszerűbb legyen, régebbi protokollokra által végrehajtott összes bejelentkezési kérés, létrehozott egy alapvető házirendet, amelyet éppen ezt.
-
-![Az örökölt hitelesítés letiltása a feltételes hozzáférés](./media/howto-baseline-protect-legacy-auth/baseline-policy-block-legacy-authentication.png)
 
 **Az örökölt hitelesítés letiltása** van [alapvető házirendet](concept-baseline-protection.md) , amely blokkolja a régebbi protokollokkal végzett minden hitelesítési kérelemre. Sikeresen jelentkezzen be az összes felhasználó számára a modern hitelesítést kell használni. A referenciakonfiguráció házirendek együtt használja, régebbi protokollokra érkező összes kérés le lesz tiltva, és minden felhasználó kell többtényezős hitelesítés minden alkalommal, amikor szükséges. Ez a szabályzat nem tiltja le az Exchange ActiveSync.
 
@@ -74,11 +72,11 @@ Ha MacOS használ, javasoljuk, Office for Mac 2016 vagy újabb verzióra. A nat�
 
 Windows-alapú Outlook-felhasználók számára a modern hitelesítést használnak, az Exchange online-hoz kell lennie a modern hitelesítés engedélyezése is. Ha a modern hitelesítés le van tiltva, az Exchange Online, Outlook Windows-alapú ügyfelek támogató modern authentication (Outlook 2013-as vagy újabb) alapszintű hitelesítés fogja használni az Exchange Online-postaládákhoz való kapcsolódáshoz.
 
-A SharePoint Online engedélyezve van a modern hitelesítés alapértelmezett. 2017\. augusztus 1. után létrehozott címtárakat a modern hitelesítés alapértelmezés szerint engedélyezve van az Exchange online-ban. Azonban ha korábban rendelkezett letiltott modern hitelesítést, vagy ez a dátum előtt létrehozott egy könyvtárat használja, kövesse az alábbi cikkben leírtak [modern hitelesítés engedélyezése az Exchange Online-ban](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
+A SharePoint Online engedélyezve van a modern hitelesítés alapértelmezett. 2017. augusztus 1. után létrehozott címtárakat a modern hitelesítés alapértelmezés szerint engedélyezve van az Exchange online-ban. Azonban ha korábban rendelkezett letiltott modern hitelesítést, vagy ez a dátum előtt létrehozott egy könyvtárat használja, kövesse az alábbi cikkben leírtak [modern hitelesítés engedélyezése az Exchange Online-ban](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
 
 ### <a name="step-4-skype-for-business"></a>4\. lépés: Skype Vállalati verzió
 
-Skype vállalati verzió által az örökölt hitelesítési kérelmek megelőzése érdekében elengedhetetlen a Skype vállalati online a modern hitelesítés engedélyezése. 2017\. augusztus 1. után létrehozott címtárakat modern hitelesítést a Skype vállalati verzió alapértelmezés szerint engedélyezve van.
+Skype vállalati verzió által az örökölt hitelesítési kérelmek megelőzése érdekében elengedhetetlen a Skype vállalati online a modern hitelesítés engedélyezése. 2017. augusztus 1. után létrehozott címtárakat modern hitelesítést a Skype vállalati verzió alapértelmezés szerint engedélyezve van.
 
 Ahhoz, hogy a modern hitelesítést a Skype vállalati verzió, javasoljuk, hogy Microsoft Teams, amely támogatja a modern hitelesítést alapértelmezés szerint való áttérés. Azonban ha nem tudja tr jelenleg, meg fog engedélyeznie kell a modern hitelesítést a Skype vállalati Online úgy, hogy a Skype vállalati ügyfelek számára a modern hitelesítést használó. Kövesse az alábbi lépéseket a cikk [Skype for Business topológiákat támogatja a Modern hitelesítést használó](https://docs.microsoft.com/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported), a Modern hitelesítés engedélyezése a Skype for Business lépéseket.
 
@@ -111,7 +109,6 @@ A szabályzat engedélyezéséhez és a szervezet védelme érdekében:
 1. Keresse meg a **az Azure Active Directory** > **feltételes hozzáférési**.
 1. A házirendek listájából válassza ki **alapvető házirendet: Az örökölt hitelesítés letiltása (előzetes verzió)** .
 1. Állítsa be **házirend engedélyezése** való **a házirend azonnal használható**.
-1. Bármely felhasználó kizárások hozzáadása kattintva **felhasználók** > **kizárt felhasználók kiválasztása** majd ki kell zárni a felhasználóknak. Kattintson a **kiválasztása** majd **kész**.
 1. Kattintson a **mentése**.
 
 ## <a name="next-steps"></a>További lépések

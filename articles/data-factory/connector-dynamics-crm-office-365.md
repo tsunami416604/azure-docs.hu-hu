@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 07/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 481b19d0121e93c84d123579e91bcbfb9fb50815
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f7bf3ce8c01e82fa69b3b041b573b4b31a719d2
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66356961"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514093"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása (Common Data Service) Dynamics 365 vagy Dynamics CRM-hez és az Azure Data Factory használatával
 
@@ -27,7 +27,13 @@ Ez a cikk ismerteti az Azure Data Factory másolási tevékenység használatáv
 
 Adatokat másolhat a Dynamics 365 (Common Data Service) vagy a Dynamics CRM bármely támogatott fogadó adattárba. Is másolhatja adatokat bármely támogatott forrásadattárból (Common Data Service) Dynamics 365 vagy Dynamics CRM-hez. A másolási tevékenység által források vagy fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
-A Dynamics-összekötő a következő Dynamics-verziók és a hitelesítési típusokat támogatja. (Internetes Elérésű az internetre irányuló rövid a telepítés.)
+A Dynamics-összekötő Dynamics-verziót támogatja mindkét 9.x online vagy helyszíni 7.x. Pontosabban,
+
+- A Dynamics CRM 2015 verzió 7.x térképek
+- Verzió 8.x maps Dynamics CRM 2016 és a Dynamics 365 előzetes verziója
+- Verzió 9.x térképek, a Dynamics 365 újabb verziójára
+
+Tekintse meg az alábbi táblázat a támogatott hitelesítési típusok és a vonatkozó Dynamics-verziók és termékeinek konfigurációi. (Internetes Elérésű az internetre irányuló rövid a telepítés.)
 
 | Dynamics-verziók | Hitelesítési típusok | A kapcsolódószolgáltatás-minták |
 |:--- |:--- |:--- |
@@ -43,6 +49,8 @@ A Dynamics 365, a következő alkalmazástípusokat támogatja:
 - Dynamics 365 for Marketing
 
 Többi alkalmazástípus esetében például pénzügyi, és nem támogatott az összekötő által Operations, szakembereket, stb.
+
+A Dynamics-összekötő a beépített [Dynamics XRM eszközöket](https://docs.microsoft.com/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools).
 
 >[!TIP]
 >Adatokat másolni **Dynamics 365 Finance and Operations**, használhatja a [Dynamics AX-összekötő](connector-dynamics-ax.md).
@@ -341,9 +349,8 @@ A Data Factory megfelelő adattípusokat konfigurálja a forrás Dynamics adatt�
 | AttributeType.State | Int32 | ✓ | ✓ |
 | AttributeType.Status | Int32 | ✓ | ✓ |
 
-
 > [!NOTE]
-> AttributeType.CalendarRules és AttributeType.PartyList Dynamics adattípusok nem támogatottak.
+> AttributeType.CalendarRules, AttributeType.MultiSelectPicklist és AttributeType.PartyList Dynamics adattípusok nem támogatottak.
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység, Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

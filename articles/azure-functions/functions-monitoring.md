@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: fecf6759dd7b277dda10fa2656e6ae9407490370
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 581b7cc09089b5f48938bc9677eca6b9dc3731d3
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64922967"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442296"
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 
@@ -623,6 +623,10 @@ Folyamatos átviteli naplók megtekintése a portálon, válassza ki a **platfor
 Ez az alkalmazás csatlakozik a napló streamelési szolgáltatás, és az alkalmazásnaplókat az ablakban jelenik meg. Választhat **alkalmazásnaplókat** és **webalkalmazás-naplók**.  
 
 ![Folyamatos átviteli naplók megtekintése a portálon](./media/functions-monitoring/streaming-logs-window.png)
+
+### <a name="visual-studio-code"></a>Visual Studio Code
+
+[!INCLUDE [functions-enable-log-stream-vs-code](../../includes/functions-enable-log-stream-vs-code.md)]
 
 ### <a name="azure-cli"></a>Azure CLI
 

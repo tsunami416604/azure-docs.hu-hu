@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b2ffd2949c2540265539a743cb41d8070d7ba2a
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 4474283b9a233e39497cd05f0f04ea0984f02401
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204636"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560940"
 ---
-# <a name="baseline-policy-require-mfa-for-admins"></a>Alapvető házirendet: MFA megkövetelése rendszergazdáktól
+# <a name="baseline-policy-require-mfa-for-admins-preview"></a>Alapvető házirendet: Többtényezős hitelesítés megkövetelése a rendszergazdák (előzetes verzió)
 
 Kiemelt jogosultságú fiókok hozzáféréssel rendelkező felhasználó ugyanolyan korlátlan hozzáféréssel rendelkezik a környezetben. A teljesítmény, a fiókokra, mert kezelje őket gondosan. Egy közös módszerrel történő kiemelt jogosultságú fiókok védelméhez, hogy egy fiókhitelesítés erősebb formája kérése, amikor használhassák jelentkezhetnek be. Az Azure Active Directoryban azzal, hogy a többtényezős hitelesítés (MFA) egy erősebb fiókhitelesítés kaphat.
 
-**Többtényezős hitelesítés a rendszergazdák számára** van egy [alapvető házirendet](concept-baseline-protection.md) , hogy a többtényezős Hitelesítést igényel, és minden alkalommal jelentkezik be a következő emelt szintű rendszergazdai szerepkörök egyike:
+**Többtényezős hitelesítés (előzetes verzió) rendszergazdák** van egy [alapvető házirendet](concept-baseline-protection.md) , hogy a többtényezős Hitelesítést igényel, és minden alkalommal jelentkezik be a következő emelt szintű rendszergazdai szerepkörök egyike:
 
 * Globális rendszergazda
 * SharePoint-rendszergazda
@@ -35,11 +35,9 @@ Kiemelt jogosultságú fiókok hozzáféréssel rendelkező felhasználó ugyano
 
 Követően a rendszergazdák házirend szükséges többtényezős hitelesítés engedélyezése, a fenti kilenc rendszergazdai szerepköröket kell regisztrálni a multi-factor Authentication az Authenticator alkalmazás használatával. MFA-regisztráció befejezése után a rendszergazdák hajthatok végre MFA minden egyetlen alkalommal be kell.
 
-![Többtényezős hitelesítés megkövetelése a rendszergazdák alapvető házirendet](./media/howto-baseline-protect-administrators/baseline-policy-require-mfa-for-admins.png)
-
 ## <a name="deployment-considerations"></a>Telepítési szempontok
 
-Mivel a **többtényezős hitelesítés megkövetelése a rendszergazdák számára** házirend vonatkozik az összes kritikus rendszergazdák, különböző szempontok lesz szükség ahhoz, hogy egy zökkenőmentes üzembe helyezési. Ezeket a szempontok közé tartoznak, felhasználók és az Azure AD nem tudja vagy nem kell végrehajtani, az MFA, valamint az alkalmazások és az ügyfelek a szervezet által használt, modern hitelesítést nem támogató szolgáltatás alapelvek azonosító.
+Mivel a **rendszergazdák (előzetes verzió) a többtényezős hitelesítés megkövetelése** házirend vonatkozik az összes kritikus rendszergazdák, különböző szempontok lesz szükség ahhoz, hogy egy zökkenőmentes üzembe helyezési. Ezeket a szempontok közé tartoznak, felhasználók és az Azure AD nem tudja vagy nem kell végrehajtani, az MFA, valamint az alkalmazások és az ügyfelek a szervezet által használt, modern hitelesítést nem támogató szolgáltatás alapelvek azonosító.
 
 ### <a name="legacy-protocols"></a>Örökölt protokollok
 
@@ -48,28 +46,16 @@ E-mail az örökölt hitelesítési protokollok (IMAP, SMTP, POP3, stb.) segíts
 > [!WARNING]
 > Mielőtt engedélyezné ezt a házirendet, győződjön meg arról, a rendszergazdák nem használja az örökölt hitelesítési protokollok. Tekintse meg a cikket [hogyan: Az Azure AD feltételes hozzáférés letiltása a régebbi hitelesítési](howto-baseline-protect-legacy-auth.md#identify-legacy-authentication-use) további információt.
 
-### <a name="user-exclusions"></a>Felhasználói szerepkör kivételei
-
-Ez a alapvető házirend kizárhat felhasználókat lehetőséget biztosít. Mielőtt engedélyezné a szabályzat a bérlőhöz tartozó, javasoljuk, kivéve a következő fiókokat:
-
-* **A vészelérési** vagy **break üvegből** fiókok bérlői szintű fiókzárolás elkerülése érdekében. A rendszergazdák kizárása a bérlő nem valószínű esetben a válságkezelési hozzáférés rendszergazdai fiók segítségével jelentkezzen be a bérlő hajtsa végre a megfelelő lépéseket szereznie.
-   * További információ a cikkben található [vészelérési fiókok kezelése az Azure ad-ben](../users-groups-roles/directory-emergency-access.md).
-* **Szolgáltatásfiókok** és **alapelvek szolgáltatás**, például az Azure AD Connect szinkronizálási-fiók. Szolgáltatásfiókok olyan nem interaktív fiókokat, amelyek nem kapcsolódnak egy konkrét felhasználóhoz. Ezek a háttér-szolgáltatások által általában használt, és az alkalmazások programozott hozzáférés engedélyezése. Szolgáltatásfiókok ki kell zárni, mivel az MFA programozott módon nem lehet végrehajtani.
-   * Ha a szervezete ezeket a fiókokat a parancsfájlokban vagy a kódot használja, fontolja meg, és cserélje le őket az [felügyelt identitások](../managed-identities-azure-resources/overview.md). Ideiglenes Áthidaló megoldásként ezeket a konkrét fiókokat is kizárása az alapvető házirendet.
-* Felhasználók, akik nem rendelkeznek, vagy nem fogja tudni használni a okostelefonja.
-   * Ez a szabályzat a rendszergazdák számára, hogy a multi-factor Authentication használata a Microsoft Authenticator alkalmazás regisztrálása igényel.
-
 ## <a name="enable-the-baseline-policy"></a>Az alapkonfiguráció-házirend engedélyezése
 
-A szabályzat **alapvető házirendet: Többtényezős hitelesítés a rendszergazdák számára** előre konfigurálva, és jelennek meg az oldal tetején a feltételes hozzáférés paneljén, az Azure Portalon lépve.
+A szabályzat **alapvető házirendet: Többtényezős hitelesítés (előzetes verzió) rendszergazdák** előre konfigurálva, és jelennek meg az oldal tetején a feltételes hozzáférés paneljén, az Azure Portalon lépve.
 
 A szabályzat engedélyezéséhez, és a rendszergazdák védelmére:
 
 1. Jelentkezzen be a **az Azure portal** globális rendszergazdai, biztonsági rendszergazdai vagy feltételes hozzáférésű rendszergazda.
 1. Keresse meg a **az Azure Active Directory** > **feltételes hozzáférési**.
-1. A házirendek listájából válassza ki **alapvető házirendet: Többtényezős hitelesítés a rendszergazdák számára**.
+1. A házirendek listájából válassza ki **alapvető házirendet: Többtényezős hitelesítés (előzetes verzió) rendszergazdák**.
 1. Állítsa be **házirend engedélyezése** való **a házirend azonnal használható**.
-1. Bármely felhasználó kizárások hozzáadása kattintva **felhasználók** > **kizárt felhasználók kiválasztása** majd ki kell zárni a felhasználóknak. Kattintson a **kiválasztása** majd **kész**.
 1. Kattintson a **mentése**.
 
 > [!WARNING]

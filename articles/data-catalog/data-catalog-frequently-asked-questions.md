@@ -1,19 +1,17 @@
 ---
 title: Az Azure Data Catalog – gyakori kérdések
 description: – Gyakori kérdések az Azure Data Catalog, beleértve az adatforrás-felderítés jegyzet és felügyeleti képességeket.
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 5c7e209a-458c-4bb4-96bb-7ed178f9528a
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 7c5241b9df23bb0334a39f2c684fd1bdff40b4c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/01/2019
+ms.openlocfilehash: 6ab5c67129b16cde5ca74e72effdf56ec0a22711
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61004041"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508885"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Az Azure Data Catalog – gyakori kérdések
 Ez a cikk az Azure Data Catalog szolgáltatással kapcsolatos gyakori kérdésekre adott válaszokat ismerteti.
@@ -36,7 +34,7 @@ A Data Catalog úgy tervezték, technikai és nem technikai jellegű felhasznál
 Data Catalog-szolgáltatások érhetők el jelenleg a következő adatközpontokban:
 
 * USA nyugati régiója
-* USA keleti régiója
+* East US
 * Nyugat-Európa
 * Észak-Európa
 * Kelet-Ausztrália
@@ -103,9 +101,6 @@ Problémák jelentése, megoszthatják az információkat, és tegyen fel kérd�
 
 ## <a name="does-the-catalog-work-with-another-data-source-that-im-interested-in"></a>A katalógus, amely a következők érdekelnek más adatforrással működik?
 Aktívan dolgozunk további adatforrások hozzáadása a Data Catalog szolgáltatásba. Ha szeretne egy adott adatforrás támogatott lásd, javasolja azt (vagy a támogatási hangtípus, ha már javasolt) nyissa meg a [az Azure visszajelzés – fórumok a Data Catalog](https://feedback.azure.com/forums/906052-data-catalog).
-
-## <a name="how-is-azure-data-catalog-related-to-the-data-catalog-in-power-bi-for-office-365"></a>Milyen az Azure Data Catalog kapcsolódik a Power bi-ban a Data Catalog az Office 365?
-A Power bi-ban a Data Catalog továbbfejlesztett változata, az Azure Data Catalog is felfoghatók. Től 2017 spring az Azure Data Catalog segítségével lehetővé teszik a megosztási és felderítési lekérdezéseket az Excel 2016-ban és a Power Query az Excel programhoz. A Data Catalog képességei az Excelben a Power BI Pro licenccel rendelkező felhasználók számára érhetők el.
 
 ## <a name="what-permissions-do-i-need-to-register-assets-with-data-catalog"></a>Milyen engedélyekkel van szükségem az eszközök regisztrálása a Data Catalog?
 Az adatkatalógus-regisztráló eszköz futtatásához az adatforrás, amely lehetővé teszi, hogy a metaadatok olvasása a forrásból a engedélyek szükségesek. Előzetes is tartalmazza, az engedélyeket, amelyek lehetővé teszik, hogy olvassa el az adatokat a segédprogramot a regisztrálni kívánt objektumokat kell rendelkeznie.

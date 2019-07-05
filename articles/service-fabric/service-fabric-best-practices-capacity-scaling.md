@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 58c50eac60f1a8a47aac9a88125bc3e0132ec3db
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ba4763e8d4835911d33d21c0f5bb431851a649b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059159"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444714"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Kapacitástervezés és skálázás az Azure Service Fabrichez
 
@@ -78,6 +78,8 @@ A csomópont tulajdonságait és a bejelentett elhelyezési korlátozások hajts
 2. Futtatás `Get-ServiceFabricNode` , győződjön meg arról, hogy a csomópont átváltott le van tiltva. Ha nem, akkor várjon, amíg a csomópont le van tiltva. Ez előfordulhat, hogy az egyes csomópontok néhány órát is igénybe vehet. Nem folytatható, amíg a csomópont átváltott le van tiltva.
 3. Egy adott csomópont típusa a virtuális gépek számának csökkentéséhez. A legmagasabb szintű Virtuálisgép-példány már törlődni fog.
 4. Ismételje meg az 1 – 3 igény szerint, de az elsődleges csomóponttípusok kevesebb, mint a megbízhatósági szint kódhiba a példányok száma soha nem méretezhető. Lásd: [tervezése a Service Fabric-fürt kapacitása](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) ajánlott példányok listáját.
+5. Után minden virtuális gép nyugdíjba mennek (jelöli, a "Ki") a fabric: / rendszer/InfrastructureService / [node-name] jelennek meg hibás állapotú. Ezután frissítheti az csomóponttípus eltávolítása a fürterőforrás. A ARM-sablon üzembe helyezéséhez használjon, vagy a fürterőforrás keresztül szerkesztése a [az Azure resource manager](https://resources.azure.com). Ekkor elindul a fürt frissítése ezzel a művelettel eltávolítja a fabric: / rendszer/InfrastructureService / [csomóponttípus], hiba állapotba kerül.
+ 6. Követően, hogy szükség esetén törölheti a VMScaleSet, továbbra is látni fogja a csomópontok, a "Ki" a Service Fabric Explorerből tekintheti azonban. Az utolsó lépés lenne, az őket karbantartani `Remove-ServiceFabricNodeState` parancsot.
 
 ### <a name="example-scenario"></a>Példaforgatókönyv
 A függőleges skálázási művelet végrehajtása egy támogatott forgatókönyv: a Service Fabric-fürt és az alkalmazás nem felügyelt lemezt az áttelepítendő alkalmazás állásidő nélkül felügyelt lemezekre. 

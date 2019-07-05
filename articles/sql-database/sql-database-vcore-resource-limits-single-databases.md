@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/22/2019
-ms.openlocfilehash: ca29bfdb381c5cab0625a320679331c82f63c887
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c89aa3b4ecf0c07cfbb579cdc18fac6e822bc047
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67118074"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536230"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>A Virtuálismag-alapú vásárlási modell segítségével az önálló adatbázisok számára erőforráskorlátok
 
@@ -34,6 +34,9 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 > Skálázás útmutatást és szempontokat, lásd: [a különálló adatbázisok](sql-database-single-database-scale.md).
 
 ## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Általános célú szolgáltatásszint: Tárterületet és számítási méretek
+
+> [!IMPORTANT]
+> Új Gen4 adatbázisok már nem támogatottak a Kelet-Ausztrália régióban.
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>Általános célú szolgáltatásszint: 4. generációs számítási platform (1. rész)
 
@@ -157,6 +160,9 @@ A [kiszolgáló nélküli számítási kapacitás](sql-database-serverless.md) e
 
 ## <a name="business-critical-service-tier-for-provisioned-compute-tier"></a>Üzleti kritikus szolgáltatási szinten a kiépített számítási kapacitás
 
+> [!IMPORTANT]
+> Új Gen4 adatbázisok már nem támogatottak a Kelet-Ausztrália régióban.
+
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Üzleti kritikus fontosságú szolgáltatási szint: 4. generációs számítási platform (1. rész)
 
 |Számítási mérete|BC_Gen4_1|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
@@ -268,7 +274,7 @@ A [kiszolgáló nélküli számítási kapacitás](sql-database-serverless.md) e
 |Max. napló mérete (TB)|1 |1 |1 |1 |1 |1 |1 |1 |
 |A TempDB mérete (GB)|64|128|256|384|384|384|384|384|
 |Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
-|Cél IOPS (64 KB)|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|
+|Cél IOPS (64 KB)| [1. megjegyzést:](#note-1) |[1. megjegyzést:](#note-1)|[1. megjegyzést:](#note-1) |[1. megjegyzést:](#note-1) |[1. megjegyzést:](#note-1) |[1. megjegyzést:](#note-1) |[1. megjegyzést:](#note-1) | [1. megjegyzést:](#note-1) |
 |IO-késés (becsült)|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|
 |Egyidejű feldolgozók (kérelmek) maximális|200|400|800|1600|2400|3200|4000|8000|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|30000|30000|
@@ -278,7 +284,11 @@ A [kiszolgáló nélküli számítási kapacitás](sql-database-serverless.md) e
 |Biztonsági mentési tárterület |7|7|7|7|7|7|7|7|
 |||
 
-## <a name="next-steps"></a>További lépések
+### <a name="note-1"></a>1\. megjegyzést:
+
+Nagy kapacitású egy többrétegű architektúra gyorsítótár-több szinten. Hatékony IOPS a számítási feladat függ.
+
+### <a name="next-steps"></a>További lépések
 
 - Önálló adatbázis dtu-k erőforráskorlátok, lásd: [erőforráskorlátok és önálló adatbázisokat a DTU-alapú vásárlási modell használatával](sql-database-dtu-resource-limits-single-databases.md)
 - Rugalmas készletek erőforráskorlátok virtuális mag, lásd: [erőforráskorlátok a rugalmas készletek a Virtuálismag-alapú vásárlási modell használatával](sql-database-vcore-resource-limits-elastic-pools.md)

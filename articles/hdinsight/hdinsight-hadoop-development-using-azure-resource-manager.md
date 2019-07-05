@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 36b43ce6636bf918e1e8c42af4c2746865f5ccd1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 320611f05190d755c85a94a8e8eb9a1c04b3310e
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523347"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508818"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Áttelepítés az Azure Resource Manager-alapú fejlesztői eszközöket a HDInsight-fürtök
 
@@ -52,7 +52,7 @@ Ha használja a `azure hdinsight job` küldhetők be feladatok a HDInsight-fürt
 
 * [És a Hadoop MapReduce feladatok futtatása HDInsight a cURL használatával](hadoop/apache-hadoop-use-mapreduce-curl.md)
 * [Apache Hive-lekérdezések futtatásához az Apache Hadoop a HDInsight a cURL használatával](hadoop/apache-hadoop-use-hive-curl.md)
-* [Az Apache Hadoop Apache Pig-feladatok futtatása HDInsight a cURL használatával](hadoop/apache-hadoop-use-pig-curl.md)
+
 
 Apache Hadoop MapReduce, az Apache Hive- és Apache Pig futása egyéb módjaival kapcsolatos tudnivalókat lásd: [MapReduce használata a hadooppal a HDInsight](hadoop/hdinsight-use-mapreduce.md), [Apache Hive használata a HDInsight az Apache Hadoop](hadoop/hdinsight-use-hive.md), és [Apache Pig használata a HDInsight az Apache Hadoop](hadoop/hdinsight-use-pig.md).
 
@@ -213,7 +213,6 @@ Régi parancs (ASM):
 #### <a name="other-samples"></a>Más minták
 * [HDInsight-fürtök létrehozása](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
 * [Az Apache Hive-feladatok elküldése](hadoop/apache-hadoop-use-hive-powershell.md)
-* [Az Apache Pig-feladatok elküldése](hadoop/apache-hadoop-use-pig-powershell.md)
 * [Az Apache Sqoop-feladatok elküldése](hadoop/apache-hadoop-use-sqoop-powershell.md)
 
 ## <a name="migrating-to-the-new-hdinsight-net-sdk"></a>Az új HDInsight .NET SDK-ba való migrálás
@@ -231,7 +230,6 @@ Ebben a szakaszban mutató hivatkozások segítségével további információt 
 | Interaktív módon az Azure Active Directory .NET SDK-val alkalmazások hitelesítése |Lásd: [.NET SDK használatával futtassa az Apache Hive lekérdezések](hadoop/apache-hadoop-use-hive-dotnet-sdk.md). Ebben a cikkben a kódrészlet az interaktív hitelesítési módszert használ. |
 | Az alkalmazás nem interaktív .NET SDK-val az Azure Active Directory használatával hitelesíti |Lásd: [for HDInsight nem interaktív alkalmazások létrehozása](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |
 | .NET SDK használatával egy Apache Hive-feladat elküldése |Lásd: [küldje el az Apache Hive-feladatok](hadoop/apache-hadoop-use-hive-dotnet-sdk.md) |
-| .NET SDK használatával egy Apache Pig-feladat elküldése |Lásd: [küldje el az Apache Pig-feladatokhoz](hadoop/apache-hadoop-use-pig-dotnet-sdk.md) |
 | Az Apache Sqoop feladat .NET SDK használatával |Lásd: [feladatok beküldése az Apache sqoop használatával](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md) |
 | .NET SDK-t használó HDInsight-fürtök listázása |Lásd: [lista HDInsight-fürtök](hdinsight-administer-use-dotnet-sdk.md#list-clusters) |
 | .NET SDK-t használó HDInsight-fürtök méretezése |Lásd: [méretezési HDInsight-fürtök](hdinsight-administer-use-dotnet-sdk.md#scale-clusters) |

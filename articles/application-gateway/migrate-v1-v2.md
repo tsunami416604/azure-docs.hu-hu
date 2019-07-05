@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: f55beca65a19ee9e47708000976dd42a6f252e2e
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 0fd605d7d502970dccd37da1f3f70fdadb1094a1
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154162"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550451"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrálása az Azure Application Gateway webalkalmazási tűzfal v1, v2 és
 
@@ -76,7 +76,8 @@ A szkript futtatása:
 
 1. Futtatás `Get-Help AzureAppGWMigration.ps1` , vizsgálja meg a szükséges paramétereket:
 
-   `AzureAppGwMigration.ps1
+   ```
+   AzureAppGwMigration.ps1
     -resourceId <v1 application gateway Resource ID>
     -subnetAddressRange <subnet space you want to use>
     -appgwName <string to use to append>
@@ -84,7 +85,8 @@ A szkript futtatása:
     -trustedRootCertificates <comma-separated Trusted Root Cert objects as above>
     -privateIpAddress <private IP string>
     -publicIpResourceName <public IP name string>
-    -validateMigration -enableAutoScale`
+    -validateMigration -enableAutoScale
+   ```
 
    A parancsfájl paramétereit:
    * **erőforrás-azonosító: [String]: Szükséges** – Ez az a meglévő Standard v1 vagy a v1-gateway WAF az Azure erőforrás-azonosítója. A karakterlánc-érték megkereséséhez nyissa meg az Azure Portalon, válassza ki az application gateway vagy a WAF-erőforrás, és kattintson a **tulajdonságok** az átjáróhoz tartozó hivatkozás. Az erőforrás-azonosító az adott oldalon található.

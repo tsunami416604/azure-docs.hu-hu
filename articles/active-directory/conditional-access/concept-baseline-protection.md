@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39a591a335d022ef7b2b99fdec930ddf0496cd47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 970fdaba1870097e253b51c70e523e399bc88dfc
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112592"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440769"
 ---
 # <a name="what-are-baseline-policies"></a>Mik azok az eredeti szabályzatok?
 
@@ -30,18 +30,18 @@ Egyéni feltételes hozzáférési szabályzatok kezelése egy prémium szintű 
 
 Nincsenek négy alapvető szabályzatok, ami lehetővé teszi a szervezetek számára:
 
-* [Többtényezős hitelesítés a rendszergazdák számára](howto-baseline-protect-administrators.md)
+* [Többtényezős hitelesítés megkövetelése a rendszergazdák (előzetes verzió)](howto-baseline-protect-administrators.md)
 * [Végfelhasználói protection (előzetes verzió)](howto-baseline-protect-end-users.md)
 * [Az örökölt hitelesítés letiltása (előzetes verzió)](howto-baseline-protect-legacy-auth.md)
 * [Többtényezős hitelesítés a service management (előzetes verzió)](howto-baseline-protect-azure.md)
 
 Ezek a szabályzatok mind a négy örökölt hitelesítési folyamatok például a POP, IMAP és régebbi Office asztali ügyfelek negatív hatással lesz.
 
-### <a name="require-mfa-for-admins"></a>MFA megkövetelése rendszergazdáktól
+### <a name="require-mfa-for-admins-preview"></a>Többtényezős hitelesítés megkövetelése a rendszergazdák (előzetes verzió)
 
 A power és így hozzáférhet a rendszergazdai fiókok, mert kezelje őket gondosan. Egy közös módszerrel történő kiemelt jogosultságú fiókok védelméhez, hogy egy erősebb formája fiókhitelesítés szükséges való bejelentkezéshez használt. Az Azure Active Directoryban azzal, hogy a rendszergazdák számára, hogy a regisztrálása és használata az Azure multi-factor Authentication szolgáltatás egy erősebb fiókhitelesítés kaphat.
 
-[Többtényezős hitelesítés a rendszergazdák számára](howto-baseline-protect-administrators.md) van alapkonfiguráció szabályzata előírja a többtényezős hitelesítés (MFA) a következő-címtárbeli szerepkörökhöz tartozó, a rendszer a legtöbb emelt szintű Azure AD-szerepkörök:
+[Többtényezős hitelesítés (előzetes verzió) rendszergazdák](howto-baseline-protect-administrators.md) van alapkonfiguráció szabályzata előírja a többtényezős hitelesítés (MFA) a következő-címtárbeli szerepkörökhöz tartozó, a rendszer a legtöbb emelt szintű Azure AD-szerepkörök:
 
 * Globális rendszergazda
 * SharePoint-rendszergazda
@@ -52,7 +52,7 @@ A power és így hozzáférhet a rendszergazdai fiókok, mert kezelje őket gond
 * Számlázási rendszergazda
 * Felhasználói adminisztrátor
 
-Ha a szervezete ezeket a fiókokat a parancsfájlokban vagy a kódot használja, fontolja meg, és cserélje le őket az [felügyelt identitások](../managed-identities-azure-resources/overview.md). Ideiglenes Áthidaló megoldásként a referenciakonfiguráció házirendből zárhat ki egyedi felhasználói fiókokhoz.
+Ha a szervezete ezeket a fiókokat a parancsfájlokban vagy a kódot használja, fontolja meg, és cserélje le őket az [felügyelt identitások](../managed-identities-azure-resources/overview.md).
 
 ### <a name="end-user-protection-preview"></a>Végfelhasználói protection (előzetes verzió)
 
@@ -96,7 +96,7 @@ További információkért lásd:
 
 * [Öt lépést a személyazonosság-infrastruktúra védelme](../../security/azure-ad-secure-steps.md)
 * [Mi az az Azure Active Directory feltételes hozzáférés?](overview.md)
-* [Többtényezős hitelesítés a rendszergazdák számára](howto-baseline-protect-administrators.md)
+* [Többtényezős hitelesítés megkövetelése a rendszergazdák (előzetes verzió)](howto-baseline-protect-administrators.md)
 * [Végfelhasználói protection (előzetes verzió)](howto-baseline-protect-end-users.md)
 * [Az örökölt hitelesítés letiltása (előzetes verzió)](howto-baseline-protect-legacy-auth.md)
 * [Többtényezős hitelesítés a service management (előzetes verzió)](howto-baseline-protect-azure.md)

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: a3806a7f64f30e5073182f96f552b8584cf1ce0c
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: b8f1626da730178d2cd9c2f31c4f9876102b3d46
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147255"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477847"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>Azure VPN Gateway OpenVPN ügyfelek konfigurálása
 
@@ -67,9 +67,9 @@ Győződjön meg arról, hogy végrehajtotta a OpenVPN konfigurálása a VPN-át
 4. Töltse ki a pont–hely ügyféltanúsítványra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású nyilvános kulcsával. PEM formátumú tanúsítvány esetén egyszerűen nyissa meg a .cer-fájlt, és másolja a Base64-kódolású kulcsot a tanúsítványfejlécek között. Lásd: [nyilvános kulcs exportálása](vpn-gateway-certificates-point-to-site.md#cer) a tanúsítványt a kódolt nyilvános kulcs lekérésével kapcsolatos információk.
 5. Töltse ki a titkos kulcsra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású titkos kulcsával. Lásd: [a titkos kulcs exportálását választom](https://openvpn.net/community-resources/how-to/#pki) hogyan lehet kigyűjteni a titkos kulccsal kapcsolatos információkat.
 6. Ne módosítson semmilyen egyéb mezőt. Az ügyfélbemenet kitöltött konfigurációjával csatlakozhat a VPN-hez.
-7. Kattintson duplán a profil fájlt tunnelblik a profil létrehozásához.
-8. Indítsa el az alkalmazások mappából Tunnelblik.
-9. Kattintson a tálcán Tunnelblik ikonra, és válasszon csatlakozzon.
+7. Kattintson duplán a profil fájlt Tunnelblick a profil létrehozásához.
+8. Indítsa el az alkalmazások mappából Tunnelblick.
+9. Kattintson a tálcán Tunnelblick ikonra, és válasszon csatlakozzon.
 
 > [!IMPORTANT]
 >Csak iOS 11.0-s vagy újabb verzió és a MacOS 10.13 és újabb OpenVPN protokoll használata támogatott.

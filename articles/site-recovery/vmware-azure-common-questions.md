@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 05/30/2019
+ms.date: 06/27/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 59be8e0585f0bedcafc868ee42f5113509c9c4ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79118fb053c7064fa29730680feb0434f45f031a
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417780"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491697"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Az Azure-bA VMware kapcsolatos gyakori kérdésekre
 
@@ -85,6 +85,10 @@ A részletes becsült költségek, futtassa a deployment planner eszköz a [VMwa
 ### <a name="is-there-any-difference-in-cost-between-replicating-to-storage-or-directly-to-managed-disks"></a>Van bármilyen költségek replikálása tárolóba vagy közvetlenül a felügyelt lemezek közötti különbség?
 
 A felügyelt lemezek tárfiókokban kissé különbözően díjkötelesek. [További](https://azure.microsoft.com/pricing/details/managed-disks/) kapcsolatos felügyelt lemezek díjszabása.
+
+### <a name="is-there-any-difference-in-cost-when-replicating-to-general-purpose-v2-storage-account"></a>Van-e költség eltérést az általános célú v2-tárfiók való replikáláskor?
+
+Általában látni fogja a GPv2-tárfiókok a felmerült, mivel az Azure Site Recovery (nagy erőforrásigényű) tranzakciók tranzakciós költség növekedését. [További információ](../storage/common/storage-account-upgrade.md#pricing-and-billing) becsléséhez a módosítása.
 
 ## <a name="mobility-service"></a>Mobilitási szolgáltatás
 
@@ -293,7 +297,7 @@ Frissítések 9,24 verziók és az újabb most megjelenített a [állapotát, am
 
 ### <a name="how-do-i-update-the-process-server-to-version-924-or-later-for-accurate-health-information"></a>Hogyan frissíthetem a folyamatkiszolgáló pontos állapotinformációkat 9.24 vagy újabb verzióra?
 
-Kezdve [verzió 9,24](service-updates-how-to.md#links-to-currently-supported-update-rollups), további riasztások lettek hozzáadva a folyamatkiszolgáló állapotát. [Frissítse a Site Recovery-összetevők 9.24 vagy újabb verzió] (service-updates-how-to.md#links-to-currently-supported-update-rollups), hogy az összes riasztások jönnek létre.
+Kezdve [verzió 9,24](service-updates-how-to.md#links-to-currently-supported-update-rollups), további riasztások lettek hozzáadva a folyamatkiszolgáló állapotát. [Frissítse a Site Recovery-összetevők 9.24 vagy újabb verzió](service-updates-how-to.md#links-to-currently-supported-update-rollups) úgy, hogy az összes riasztások jönnek létre.
 
 ## <a name="failover-and-failback"></a>Feladatátvétel és feladat-visszavétel
 

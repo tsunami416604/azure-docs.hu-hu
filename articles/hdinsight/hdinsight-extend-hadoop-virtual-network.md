@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: 0dbcc99850d0a8b3b7306fac2bd8f89e6c941e4c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 61a208f3e84125acc2a3cb22d3abccf16587e581
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163662"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543675"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Az Azure Virtual Network használata Azure HDInsight kiterjesztése
 
@@ -67,9 +67,7 @@ Kövesse a lépéseket ebben a szakaszban egy új HDInsight hozzáadása egy meg
 
     Miután csatlakozott, a Resource Manager-hálózaton telepített HDInsight kezelheti a klasszikus hálózati erőforrásokhoz.
 
-2. Használják-e a kényszerített bújtatást? Kényszerített bújtatás az alhálózat-beállítással, amely kényszeríti a kimenő internetes forgalmat egy eszközön, az ellenőrzés és naplózás. HDInsight nem támogatja a kényszerített bújtatás. Távolítsa el a kényszerített bújtatás HDInsight egy meglévő alhálózat egy környezetbe való üzembe helyezés előtt, vagy hozzon létre egy új alhálózatot a HDInsight nem kényszerített bújtatással.
-
-3. Használják a hálózati biztonsági csoportok, a felhasználó által megadott útvonalakat vagy a virtuális hálózati berendezések irányuló forgalom korlátozásához, vagy onnan máshová a virtuális hálózaton?
+2. Használják a hálózati biztonsági csoportok, a felhasználó által megadott útvonalakat vagy a virtuális hálózati berendezések irányuló forgalom korlátozásához, vagy onnan máshová a virtuális hálózaton?
 
     Felügyelt szolgáltatásként a HDInsight több IP-címek az Azure-adatközpontban korlátlan hozzáférést igényel. Engedélyezi a kommunikációt az ezen IP-címek, bármely meglévő hálózati biztonsági csoportok vagy a felhasználó által megadott útvonalak frissítése.
     
@@ -108,7 +106,7 @@ Kövesse a lépéseket ebben a szakaszban egy új HDInsight hozzáadása egy meg
 
         További információkért lásd: a [útvonalakkal kapcsolatos hibaelhárítás](../virtual-network/diagnose-network-routing-problem.md) dokumentumot.
 
-4. Hozzon létre egy HDInsight-fürtöt, és válassza ki az Azure Virtual Network konfigurálása során. A fürt létrehozását megértéséhez használja az alábbi dokumentumokban lépéseket:
+3. Hozzon létre egy HDInsight-fürtöt, és válassza ki az Azure Virtual Network konfigurálása során. A fürt létrehozását megértéséhez használja az alábbi dokumentumokban lépéseket:
 
     * [HDInsight létrehozása az Azure Portalon](hdinsight-hadoop-create-linux-clusters-portal.md)
     * [HDInsight létrehozása az Azure PowerShell-lel](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
@@ -247,14 +245,14 @@ Kényszerített bújtatás egy felhasználó által meghatározott útválasztá
 
 ## <a id="hdinsight-ip"></a> Szükséges IP-címek
 
-> [!IMPORTANT]  
-> Az Azure-állapot és a felügyeleti szolgáltatások kommunikálni a HDInsight képesnek kell lennie. A hálózati biztonsági csoportok vagy a felhasználó által megadott útvonalakat, ha ezeknek a szolgáltatásoknak a HDInsight eléréséhez az IP-címekről érkező forgalom.
->
+Ha hálózati biztonsági csoportok vagy felhasználó által megadott útvonalakat forgalom szabályozása, engedélyeznie kell Azure-állapot és a felügyeleti szolgáltatás IP-címekről érkező forgalmat, hogy a HDInsight-fürt kommunikálnak. Az IP-címek közül néhány konkrét régióban, és ezek közül a alkalmazni az összes Azure-régióban. Szükség lehet az Azure DNS szolgáltatással érkező adatforgalom engedélyezéséhez, ha egyéni DNS nem használ. Az alhálózaton belüli virtuális gépek közötti forgalmat is engedélyeznie kell. Az alábbi lépések segítségével engedélyezni kell az IP-címek keresése:
+
+> [!Note]  
 > Ha nem használja a hálózati biztonsági csoportok vagy felhasználó által megadott útvonalak forgalom szabályozása, figyelmen kívül hagyhatja ebben a szakaszban.
 
-Ha hálózati biztonsági csoportokat használ, engedélyeznie kell az Azure állapota és a felügyeleti szolgáltatások elérni a HDInsight-fürtök 443-as porton érkező forgalmat. Az alhálózaton belüli virtuális gépek közötti forgalmat is engedélyeznie kell. Az alábbi lépések segítségével engedélyezni kell az IP-címek keresése:
+1. Ha az Azure által biztosított DNS-szolgáltatás használja, engedélyezze a hozzáférést __168.63.129.16__ 53-as porton. További információkért lásd: a [névfeloldás virtuális gépek és a szerepkör példányai](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) dokumentumot. Ha egyéni DNS használja, kihagyhatja ezt a lépést.
 
-1. Mindig engedélyeznie kell a következő IP-címekről érkező forgalmat:
+2. Az Azure állapotát és a felügyeleti szolgáltatásokat, amelyek a alkalmazni az összes Azure-régióban a következő IP-címekről érkező forgalom engedélyezése:
 
     | Forrás IP-címe | Cél  | Direction |
     | ---- | ----- | ----- |
@@ -263,12 +261,12 @@ Ha hálózati biztonsági csoportokat használ, engedélyeznie kell az Azure ál
     | 168.61.48.131 | \*:443 | Bejövő |
     | 138.91.141.162 | \*:443 | Bejövő |
 
-2. Ha a HDInsight-fürt a következő régiók valamelyikében van, majd engedélyeznie kell a régió felsorolt IP-címekről érkező forgalmat:
+3. Az Azure állapotát és a felügyeleti szolgáltatások, az adott régióban, ahol az erőforrások találhatók felsorolt IP-címekről érkező adatforgalom engedélyezéséhez:
 
     > [!IMPORTANT]  
     > Ha nem szerepel az Azure-régiót használ, csak használja az 1. lépésben négy IP-címek.
 
-    | Ország | Régió | Engedélyezett forrás IP-címei | Engedélyezett cél | Direction |
+    | Country | Régió | Engedélyezett forrás IP-címei | Engedélyezett cél | Direction |
     | ---- | ---- | ---- | ---- | ----- |
     | Ázsia | Kelet-Ázsia | 23.102.235.122</br>52.175.38.134 | \*:443 | Bejövő |
     | &nbsp; | Délkelet-Ázsia | 13.76.245.160</br>13.76.136.249 | \*:443 | Bejövő |
@@ -296,15 +294,13 @@ Ha hálózati biztonsági csoportokat használ, engedélyeznie kell az Azure ál
     | Egyesült Királyság | Az Egyesült Királyság nyugati régiója | 51.141.13.110</br>51.141.7.20 | \*:443 | Bejövő |
     | &nbsp; | Az Egyesült Királyság déli régiója | 51.140.47.39</br>51.140.52.16 | \*:443 | Bejövő |
     | Egyesült Államok | USA középső régiója | 13.89.171.122</br>13.89.171.124 | \*:443 | Bejövő |
-    | &nbsp; | USA keleti régiója | 13.82.225.233</br>40.71.175.99 | \*:443 | Bejövő |
+    | &nbsp; | East US | 13.82.225.233</br>40.71.175.99 | \*:443 | Bejövő |
     | &nbsp; | USA északi középső régiója | 157.56.8.38</br>157.55.213.99 | \*:443 | Bejövő |
     | &nbsp; | USA nyugati középső régiója | 52.161.23.15</br>52.161.10.167 | \*:443 | Bejövő |
     | &nbsp; | USA nyugati régiója | 13.64.254.98</br>23.101.196.19 | \*:443 | Bejövő |
     | &nbsp; | USA nyugati régiója, 2. | 52.175.211.210</br>52.175.222.222 | \*:443 | Bejövő |
 
     Az IP-címek az Azure Government használatára vonatkozó információért lásd: a [Azure Government intelligencia és elemzés](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) dokumentumot.
-
-3. Is engedélyeznie kell a hozzáférést a __168.63.129.16__. Ez a cím az Azure rekurzív feloldó. További információkért lásd: a [névfeloldás virtuális gépek és a szerepkör példányai](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) dokumentumot.
 
 További információkért lásd: a [hálózati forgalom szabályozása](#networktraffic) szakaszban.
 

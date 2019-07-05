@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 06/14/2019
+ms.date: 07/02/2019
 ms.author: shvija
-ms.openlocfilehash: 007e016672f8548956b37b961805183a504d6bf0
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 29e494b23176f9e936816a371a09e1c4ffeceae0
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154085"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537996"
 ---
 # <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>Gyors útmutató: Eseményközpont létrehozása Azure Resource Manager-sablon használatával
 
@@ -31,7 +31,11 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="create-an-event-hub"></a>Eseményközpont létrehozása
 
-Ez a rövid egy [meglévő Resource Manager-sablon](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json). További sablonminták talál [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/?term=eventhub&pageNumber=1&sort=Popular).
+Ez a rövid egy [meglévő gyorsindítási sablon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json):
+
+[!code-json[create-azure-event-hub-namespace](~/quickstart-templates/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json)]
+
+További sablonminták talál [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/?term=eventhub&pageNumber=1&sort=Popular).
 
 A sablon üzembe helyezéséhez:
 
@@ -41,7 +45,7 @@ A sablon üzembe helyezéséhez:
    $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
    $resourceGroupName = "${projectName}rg"
-   $templateUri = "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json"
+   $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json"
 
    New-AzResourceGroup -Name $resourceGroupName -Location $location
    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -projectName $projectName

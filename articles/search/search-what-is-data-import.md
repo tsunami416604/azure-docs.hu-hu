@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 83ca0c11ab0065929d939b7345cbd15869740bb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b56a31a58937ddbea08ff22c3d1c0c71942f47f1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024346"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445403"
 ---
 # <a name="data-import-overview---azure-search"></a>Adatok importálása áttekintése – Azure Search
 
@@ -36,7 +36,7 @@ Az alábbi API-kat használhatja egy vagy több dokumentum indexbe való betölt
 
 A portálon keresztül történő adatleküldéshez jelenleg nincsenek támogató eszközök.
 
-Minden egyes módszert szeretné megismerni, lásd: [a rövid útmutató: A PowerShell és a REST API használatával az Azure Search-index létrehozása](search-create-index-rest-api.md) vagy [a rövid útmutató: Az Azure Search-index létrehozása C# ](search-import-data-dotnet.md).
+Minden egyes módszert szeretné megismerni, lásd: [a rövid útmutató: Egy PowerShell-lel az Azure Search-index létrehozása](search-create-index-rest-api.md) vagy [ C# a rövid útmutató: .NET SDK használatával egy Azure Search-index létrehozása](search-get-started-dotnet.md).
 
 <a name="indexing-actions"></a>
 
@@ -44,9 +44,9 @@ Minden egyes módszert szeretné megismerni, lásd: [a rövid útmutató: A Powe
 
 A dokumentum alapon, indexelési művelet típusát adja meg, hogy a dokumentum fel kell tölteni a teljes körű, egyesített meglévő dokumentum tartalommal vagy törölt szabályozhatja.
 
-A REST API-ban ki az Azure Search-index végponti URL-cím a JSON-kéréstörzsekkel HTTP POST-kérelmet. A "value" tömbben található minden JSON-objektum tartalmazza a dokumentum kulcsát, és adja meg az indexelési művelet hozzáadások, a frissítések, vagy a dokumentumok tartalmának törlése. A kód példa: [dokumentumok betöltése](search-create-index-rest-api.md#load-documents).
+A REST API-ban ki az Azure Search-index végponti URL-cím a JSON-kéréstörzsekkel HTTP POST-kérelmet. A "value" tömbben található minden JSON-objektum tartalmazza a dokumentum kulcsát, és adja meg e indexelési művelet hozzáadása, frissítése vagy dokumentum tartalmának törlése. A kód példa: [dokumentumok betöltése](search-get-started-dotnet.md#load-documents).
 
-A .NET SDK-csomag fel az adatokat egy `IndexBatch` objektum. Egy `IndexBatch` magában foglalja egy gyűjteményét `IndexAction` objektumok, amelyek mindegyike tartalmaz egy olyan dokumentumot vagy tulajdonságot, amely az Azure Search az adott dokumentumon végrehajtandó műveletet. A kód példa: [IndexBatch létrehozása](search-import-data-dotnet.md#construct-indexbatch).
+A .NET SDK-csomag fel az adatokat egy `IndexBatch` objektum. Egy `IndexBatch` magában foglalja egy gyűjteményét `IndexAction` objektumok, amelyek mindegyike tartalmaz egy olyan dokumentumot vagy tulajdonságot, amely az Azure Search az adott dokumentumon végrehajtandó műveletet. A kód példa: a [ C# rövid](search-get-started-dotnet.md).
 
 
 | @search.action | Leírás | Az egyes dokumentumok kötelező mezői | Megjegyzések |

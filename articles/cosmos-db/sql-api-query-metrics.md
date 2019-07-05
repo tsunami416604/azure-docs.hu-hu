@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 61bb102e17d9980d991fdf423174d7110cd5433d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d61d3d00de5b46f7dad44625509eabe6836ca7cf
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237863"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447259"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Az Azure Cosmos DB lekérdezési teljesítmény hangolása
 
@@ -272,7 +272,7 @@ Az alábbiakban néhány mintalekérdezést, és a mérőszámok egyes értelmez
 
 
 ## <a name="next-steps"></a>További lépések
-* A támogatott SQL-lekérdezési operátorokkal vagy kulcsszavak kapcsolatos további információkért lásd: [SQL-lekérdezés](how-to-sql-query.md). 
+* A támogatott SQL-lekérdezési operátorokkal vagy kulcsszavak kapcsolatos további információkért lásd: [SQL-lekérdezés](sql-query-getting-started.md). 
 * Kérelemegység kapcsolatos további információkért lásd: [kérelemegységek](request-units.md).
 * Indexelési házirend kapcsolatos további információkért lásd: [indexelési szabályzat](index-policy.md) 
 

@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 5b2b7f3cd6bfa219b794edc63d6bf8b2784b713c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 737da27fd8da292b6c1f8997d4bd300bbec8740e
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62120738"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565530"
 ---
 # <a name="azure-functions-developers-guide"></a>Az Azure Functions fejlesztői útmutatója
 Az Azure Functions, a speciális szoftverfrissítési funkciókat ossza meg néhány alapvető technikai kapcsolatos fogalmakról és összetevőkről, függetlenül a nyelvet, vagy a kötés használja. Mielőtt megkezdi a munkát egy adott nyelven vagy a kötési adatait tanuló, mindenképpen olvassa végig az áttekintés, amely mindegyik vonatkozik.
@@ -107,5 +107,5 @@ További információkért lásd a következőket:
 * [Az Azure Functions eseményindítók és kötések](functions-triggers-bindings.md)
 * [Az Azure Functions helyi kódolása és tesztelése](./functions-develop-local.md)
 * [Azure Functions – ajánlott eljárások](functions-best-practices.md)
-* [Az Azure Functions C# – fejlesztői referencia](functions-reference-csharp.md)
+* [Az Azure Functions C# – fejlesztői referencia](functions-dotnet-class-library.md)
 * [Az Azure Functions NodeJS fejlesztői segédanyagai](functions-reference-node.md)

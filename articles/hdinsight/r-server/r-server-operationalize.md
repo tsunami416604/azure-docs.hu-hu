@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 916c4fae8eed9451080f92e97743876e89bd25ea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 36d2ebe00f735089633240914421e2259181e63e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64719749"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448970"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Machine Learning-szolgáltatások az Azure HDInsight-fürt üzembe helyezése
 
@@ -21,9 +21,9 @@ Után végezze el az adatok modellezése a HDInsight fürt Machine Learning-szol
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Egy Machine Learning-szolgáltatások HDInsight-fürt**: Útmutatásért lásd: [Ismerkedés a Machine Learning szolgáltatások a HDInsight](r-server-get-started.md).
+* Egy Machine Learning-szolgáltatások HDInsight fürt. Lásd: [Apache Hadoop-fürtök létrehozása az Azure portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) válassza **Machine Learning-szolgáltatások** a **fürt típusa**.
 
-* **A Secure Shell (SSH) ügyfél**: Egy SSH-ügyféllel távolról csatlakozhat a HDInsight-fürthöz, és közvetlenül a fürtön futtasson parancsokat szolgál. További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* A Secure Shell (SSH) ügyfél: Egy SSH-ügyféllel távolról csatlakozhat a HDInsight-fürthöz, és közvetlenül a fürtön futtasson parancsokat szolgál. További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>Egy beépített konfigurációban a Machine Learning-szolgáltatások-fürt üzembe helyezése
 

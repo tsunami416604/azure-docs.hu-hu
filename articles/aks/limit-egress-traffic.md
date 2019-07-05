@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: iainfou
-ms.openlocfilehash: 43ba7593336372bbbd7a3a4bb9821665a42bbf29
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 52a9ba20b60e8ef6cdb743546cd842e4ee24b3fd
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752182"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441919"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>Előnézet - korlát irányuló kimenő adatforgalmat a fürtcsomópontok és a szükséges portokat és szolgáltatásokat az Azure Kubernetes Service (AKS) az adathozzáférés szabályozása
 
@@ -30,19 +30,22 @@ Ez a cikk ismerteti, milyen hálózati portok és teljes tartománynevek (FQDN) 
 
 Az Azure CLI 2.0.66 verziójára van szükség, vagy később telepített és konfigurált. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
-Korlátozhatja a kimenő forgalomért AKS-fürt létrehozása, először engedélyeznie kell az előfizetés szolgáltatásjelzőre. Ez a funkció a regisztráció bármilyen alap rendszer tárolórendszerképek MCR vagy ACR használni létrehozott AKS-fürtök konfigurálása. Regisztrálja a *AKSLockingDownEgressPreview* jelző funkciót, használja a [az a funkció regisztrálása] [ az-feature-register] parancsot az alábbi példában látható módon:
+Korlátozhatja a kimenő forgalomért AKS-fürt létrehozása, először engedélyeznie kell az előfizetés szolgáltatásjelzőre. Ez a funkció a regisztráció bármilyen alap rendszer tárolórendszerképek MCR vagy ACR használni létrehozott AKS-fürtök konfigurálása. Regisztrálja a *AKSLockingDownEgressPreview* jelző funkciót, használja a [az a funkció regisztrálása][az-feature-register] parancsot az alábbi példában látható módon:
+
+> [!CAUTION]
+> A funkció egy adott előfizetés regisztrálásakor nem jelenleg regisztrációjának ezt a funkciót. Miután engedélyezte az egyes előzetes verziójú funkciók, alapértelmezett érték az összes AKS-fürt, majd az előfizetésben létrehozott használható. Nem engedélyezi az előzetes verziójú funkciók az éles üzemű előfizetéseket. Használjon különálló előfizetést előzetes verziójú funkciók teszteléséhez, és visszajelzést.
 
 ```azurecli-interactive
 az feature register --name AKSLockingDownEgressPreview --namespace Microsoft.ContainerService
 ```
 
-Az állapot megjelenítése néhány percet vesz igénybe *regisztrált*. A regisztrációs állapot ellenőrzéséhez használatával a [az szolgáltatáslistát] [ az-feature-list] parancsot:
+Az állapot megjelenítése néhány percet vesz igénybe *regisztrált*. A regisztrációs állapot ellenőrzéséhez használatával a [az szolgáltatáslistát][az-feature-list] parancsot:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSLockingDownEgressPreview')].{Name:name,State:properties.state}"
 ```
 
-Ha elkészült, frissítse a regisztrációját a *Microsoft.ContainerService* erőforrás-szolgáltató használatával a [az provider register] [ az-provider-register] parancsot:
+Ha elkészült, frissítse a regisztrációját a *Microsoft.ContainerService* erőforrás-szolgáltató használatával a [az provider register][az-provider-register] parancsot:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -54,7 +57,7 @@ Felügyeleti és üzemeltetési célra az AKS-fürt csomópontjain kíván elér
 
 Az AKS-fürt biztonságának növelése érdekében érdemes korlátozni a kimenő forgalomért. A fürt kérni alap rendszer tárolórendszerképeket MCR vagy ACR van konfigurálva. Ily módon a kimenő forgalomért zárolását, ha meg kell adnia bizonyos portokat és a teljes tartománynevek, hogy az AKS-csomópontok megfelelően szükséges külső szolgáltatásokkal kommunikálni. Ezek engedélyezett portok és teljes tartománynevek nélkül az AKS-csomópontok nem az API-kiszolgálóval folytatott kommunikációra és az alapvető összetevők telepítése.
 
-Használhat [Azure tűzfal] [ azure-firewall] vagy 3. fél tűzfalat a kimenő forgalom biztonságát, és adja meg ezeket a szükséges portok és -címeket. Az AKS nem hoz létre automatikusan ezeket a szabályokat az Ön számára. A következő portokat és címek referenciaként szolgálnak a hálózati tűzfal a létrehozásakor a megfelelő szabályokat.
+Használhat [Azure tűzfal][azure-firewall] vagy 3. fél tűzfalat a kimenő forgalom biztonságát, és adja meg ezeket a szükséges portok és -címeket. Az AKS nem hoz létre automatikusan ezeket a szabályokat az Ön számára. A következő portokat és címek referenciaként szolgálnak a hálózati tűzfal a létrehozásakor a megfelelő szabályokat.
 
 Az aks-ben portokat és a címek két készletnyi vannak:
 
@@ -62,7 +65,7 @@ Az aks-ben portokat és a címek két készletnyi vannak:
 * A [címek és portok az AKS-fürtök esetén nem kötelező ajánlott](#optional-recommended-addresses-and-ports-for-aks-clusters) nem szükséges az összes forgatókönyvek, de más szolgáltatásokkal való integrációt, mint például az Azure Monitor nem fog megfelelően működni. Tekintse át a lehetséges portokat és teljes tartománynevek listáját, és a szolgáltatások és az AKS-fürt használt összetevők engedélyezése.
 
 > [!NOTE]
-> Csak a szolgáltatás jelző regisztráció engedélyezése után létrehozott új AKS-fürtök a kimenő forgalom korlátozása működik. A meglévő fürtök esetén [hajtsa végre a fürt frissítési művelet] [ aks-upgrade] használatával a `az aks upgrade` parancsot, mielőtt a kimenő forgalomért korlátozza.
+> Csak a szolgáltatás jelző regisztráció engedélyezése után létrehozott új AKS-fürtök a kimenő forgalom korlátozása működik. A meglévő fürtök esetén [hajtsa végre a fürt frissítési művelet][aks-upgrade] használatával a `az aks upgrade` parancsot, mielőtt a kimenő forgalomért korlátozza.
 
 ## <a name="required-ports-and-addresses-for-aks-clusters"></a>Szükséges portok és a címek az AKS-fürtök
 

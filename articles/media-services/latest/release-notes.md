@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 06/07/2019
 ms.author: juliako
-ms.openlocfilehash: aa4e37e3b360727feb998ef5e9ca9b776c4b0e53
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: b3e772ebb05f79abb70e58e63a93c3336a413e38
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303950"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542550"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Az Azure Media Services v3 kibocsátási megjegyzései
 
@@ -84,7 +84,7 @@ További információkért lásd: [felhők és melyik Media Services v3 létezik
 
 ## <a name="march-2019"></a>2019. március
 
-A dinamikus csomagolás mostantól támogatja a Dolby Atmos. További információkért lásd: [dinamikus becsomagolás által támogatott hang kodekek](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging).
+A dinamikus csomagolás mostantól támogatja a Dolby Atmos. További információkért lásd: [dinamikus becsomagolás által támogatott hang kodekek](dynamic-packaging-overview.md#audio-codecs).
 
 Most már megadhatja az eszköz vagy a fiók szűrők, a Streamelési lokátor alkalmazandó listáját. További információkért lásd: [szűrők társítása Streamelési lokátor](filters-concept.md#associating-filters-with-streaming-locator).
 

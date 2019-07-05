@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 42429f0e8e541d0481f991761ead63e4751fcc3d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: be804ac1aea76daf5f17e62dd97b8b57b8fdf1fb
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64719720"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67458811"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Az Azure HDInsight hozzáférést Grafana
 
@@ -66,7 +66,7 @@ Ebben a szakaszban egy interaktív lekérdezési fürt a HDInsight egy Azure Res
     
 
 > [!NOTE]  
-> Egyéb fürtlétrehozási módszerekhez és az oktatóanyagban használt tulajdonságok megértéséhez tekintse meg a [Create HDInsight clusters](../hdinsight-hadoop-provision-linux-clusters.md) (HDInsight-fürtök létrehozása) című témakört. 
+> Egyéb Fürtlétrehozási módszerekhez és ebben a cikkben használt tulajdonságok megértéséhez, lásd: [létre HDInsight-fürtök](../hdinsight-hadoop-provision-linux-clusters.md). 
 
 ## <a name="access-the-grafana-dashboard"></a>Hozzáférés a lesz a Grafana irányítópultja
 
@@ -108,7 +108,7 @@ A cikk befejezése után érdemes törölni a fürtöt. A HDInsight az Azure Sto
 Ebben a cikkben megtanulta, hogyan hozhat létre egy Linux-alapú HDInsight-fürt Resource Manager-sablon használatával, és hogyan hajthat végre alapszintű Apache Hive-lekérdezéseket. A következő cikkben megtudhatja, hogyan végezheti el az adatok kinyerési, átalakítási és betöltési (ETL) műveleteit a Hadoop használatával a HDInsighton.
 
 > [!div class="nextstepaction"]
->[A kinyerési, átalakítási és az Apache Hive használata a HDInsight adatok betöltése](../hdinsight-analyze-flight-delay-data-linux.md)
+>[A kinyerési, átalakítási és a HDInsight interaktív lekérdezés segítségével adatok betöltése](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 
 Ha készen áll dolgozni a saját adataival, és szeretne többet megtudni a HDInsight adattárolási módszereiről, illetve arról, hogyan kerülnek az adatok a HDInsightba, tekintse meg a következő cikkeket:
 

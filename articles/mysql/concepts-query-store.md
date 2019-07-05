@@ -5,20 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/05/2019
-ms.openlocfilehash: 5cd88eeb2016a90a95f0e54a334eb3c88cb75744
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/27/2019
+ms.openlocfilehash: a24bba0786201f4ea1d1be431107f7bfe26a2a8f
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078741"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461721"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Azure Database Query Store a MySQL teljesítményének figyeléséhez
 
 **A következőkre vonatkozik:**  Azure Database for MySQL 5.7.
 
 > [!NOTE]
-> Query Store az előzetes verzióban. Query Store támogatása az Azure Portalon tesszük elérhetővé, és előfordulhat, hogy még nem érhető el a régióban.
+> Query Store az előzetes verzióban.
 
 Az Azure Database for MySQL-hez a Query Store szolgáltatás lehetővé teszi nyomon követheti a lekérdezési teljesítmény az idő függvényében. Query Store egyszerűbbé teszi a teljesítménnyel kapcsolatos hibaelhárítás segít gyorsan található leghosszabban futó és a leginkább erőforrás-igényes lekérdezéseket. Query Store automatikusan rögzíti a lekérdezések és a futásidejű statisztikája előzményeit, és megőrzi őket a felülvizsgálatra. Elválasztja a idő Windows adatokat, így láthatja, hogy az adatbázis használati mintái. Az összes felhasználó, adatbázisok és lekérdezések tárolódik a **mysql** séma-adatbázis az Azure Database for MySQL-példányt.
 
@@ -29,10 +29,6 @@ A lekérdezéstár használható számos forgatókönyv esetében, beleértve a 
 - Romlott lekérdezések észlelése
 - Amely meghatározza, hogy hányszor egy lekérdezést hajtott egy adott időtartományban
 - A lekérdezés átlagos végrehajtási idő összehasonlítása a különböző időtartományok nagy változásokat megtekintéséhez
-- Leghosszabb futó lekérdezések azonosítása az elmúlt óra X
-- Erőforrások várakozik a legfontosabb N lekérdezések azonosítása
-- Várjon jellegű ismertetése, lekérdezés
-- Az erőforrás várakozik és ott, ahol az erőforrás-versengés trendek ismertetése
 
 ## <a name="enabling-query-store"></a>Query Store engedélyezése
 
@@ -120,7 +116,7 @@ Lekérdezések vannak normalizált literálok és konstansok eltávolítása ut�
 
 Ez a nézet az összes adat Query Store adja vissza. Az egyes különálló adatbázisok azonosító, a felhasználói Azonosítót és a lekérdezés azonosítóját. egy sor van
 
-| **Name (Név)** | **Adattípus** | **IS_NULLABLE** | **Leírás** |
+| **Name** | **Adattípus** | **IS_NULLABLE** | **Leírás** |
 |---|---|---|---|
 | `schema_name`| varchar(64) | NO | A séma neve |
 | `query_id`| bigint(20) | NO| Az adott lekérdezés jön létre, ha ugyanabból a lekérdezés végrehajtja a különböző séma, új azonosító egyedi Azonosítót hoz létre. |
@@ -153,7 +149,7 @@ Ez a nézet az összes adat Query Store adja vissza. Az egyes különálló adat
 
 Ez a nézet értéket ad vissza a Query Store eseményadatai várjon. Az egyes különböző adatbázis-azonosító, a felhasználói azonosító, a lekérdezés Azonosítóját és a esemény egy sor van.
 
-| **Name (Név)**| **Adattípus** | **IS_NULLABLE** | **Leírás** |
+| **Name**| **Adattípus** | **IS_NULLABLE** | **Leírás** |
 |---|---|---|---|
 | `interval_start` | timestamp | NO| Az intervallum (15 perces növekmény) kezdete|
 | `interval_end` | timestamp | NO| Intervallum (15 perces növekmény)|
@@ -167,7 +163,7 @@ Ez a nézet értéket ad vissza a Query Store eseményadatai várjon. Az egyes k
 
 ### <a name="functions"></a>Functions
 
-| **Name (Név)**| **Leírás** |
+| **Name**| **Leírás** |
 |---|---|
 | `mysql.az_purge_querystore_data(TIMESTAMP)` | A megadott időbélyeg előtt az összes lekérdezés tároló adatainak kiürítése |
 | `mysql.az_procedure_purge_querystore_event(TIMESTAMP)` | Az összes pon várjon eseményadatok előtt az adott időbélyeg |

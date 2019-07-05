@@ -1,6 +1,6 @@
 ---
 title: Hibaelhárítási útmutató az Azure Files teljesítmény
-description: A prémium szintű Azure-fájlmegosztásokat (előzetes verzió) és a kapcsolódó megoldások teljesítményproblémák ismert.
+description: Teljesítménnyel kapcsolatos problémák az Azure-fájlmegosztások és a kapcsolódó megoldások ismert.
 services: storage
 author: gunjanj
 ms.service: storage
@@ -8,22 +8,22 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 5ae0bb736a7cc0bbc38df5905abc5d8a71f60eb9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c35501f3afbeed519fb5304229f25be1cbd5f9b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65190053"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445674"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Az Azure Files teljesítménnyel kapcsolatos problémáinak elhárítása
 
-Ez a cikk felsorolja a prémium szintű Azure-fájlmegosztások (előzetes verzió) kapcsolatos néhány gyakori problémát. Amikor ezeket a problémákat észlelt vannak lehetséges okait és megkerülő megoldások közöl.
+Ez a cikk felsorolja az egyes Azure-fájlmegosztások kapcsolatos gyakori problémák. Amikor ezeket a problémákat észlelt vannak lehetséges okait és megkerülő megoldások közöl.
 
 ## <a name="high-latency-low-throughput-and-general-performance-issues"></a>Nagy a késés, az alacsony átviteli sebesség és az általános, teljesítménnyel kapcsolatos problémák
 
 ### <a name="cause-1-share-experiencing-throttling"></a>1\. ok: Megosztás kiszolgálnia szabályozása
 
-A megosztáson található alapértelmezett kvóta 100 GB, amely biztosít 100 alapkonfiguráció iops-érték (legfeljebb 300 eszközcsomag egy óránál potenciális). Kiépítés és IOPS fennálló kapcsolatot további információkért lásd: a [megosztások kiosztott](storage-files-planning.md#provisioned-shares) szakasz a tervezési útmutató.
+A premium-megosztáson található alapértelmezett kvóta 100 GB, amely biztosít 100 alapkonfiguráció iops-érték (legfeljebb 300 eszközcsomag egy óránál potenciális). Kiépítés és IOPS fennálló kapcsolatot további információkért lásd: a [megosztások kiosztott](storage-files-planning.md#provisioned-shares) szakasz a tervezési útmutató.
 
 Győződjön meg arról, ha a megosztás szabályozás alatt áll, az használhatja az Azure-mérőszámok a portálon.
 
@@ -39,7 +39,7 @@ Győződjön meg arról, ha a megosztás szabályozás alatt áll, az használha
 
 1. Válassza ki **tranzakciók** kívánt mérőszámként.
 
-1. Szűrheti a **ResponseType** , és ellenőrizze, hogy egyetlen kérést van-e válaszkód **SuccessWithThrottling**.
+1. Szűrheti a **ResponseType** , és ellenőrizze, hogy egyetlen kérést van-e válaszkód **SuccessWithThrottling** (az SMB-) vagy **ClientThrottlingError** (a többi).
 
 ![Prémium szintű fileshares metrikák lehetőségei](media/storage-troubleshooting-premium-fileshares/metrics.png)
 
@@ -72,11 +72,11 @@ Ha az ügyfél által használt alkalmazás egyszálas, ez jelentősen alacsonya
 
 ### <a name="cause"></a>Ok
 
-Az ügyfél virtuális gép található, mint a prémium szintű fájlmegosztáshoz egy másik régióban.
+Az ügyfél virtuális gép található, mint a fájlmegosztáshoz egy másik régióban.
 
 ### <a name="solution"></a>Megoldás
 
-- Futtassa az alkalmazást, amely a prémium szintű fájlmegosztás megegyező régióban található virtuális gép.
+- Futtassa az alkalmazást, amely a fájlmegosztáshoz és ugyanabban a régióban található virtuális gép.
 
 ## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>Az ügyfél nem tudja elérni a hálózat által támogatott maximális átviteli sebesség
 
@@ -121,6 +121,10 @@ A CentOS vagy RHEL i/o-mélysége nagyobb, mint egy nem támogatott.
 
 - Frissítés a CentOS 8 / RHEL 8.
 - Ubuntu módosítsa.
+
+## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Lassú fájl másolása és a Linux Azure-fájlokból
+
+Ha lassú fájl másolása és az Azure Files, vessen egy pillantást a [lassú fájl másolása és a Linux Azure-fájlokból](storage-troubleshoot-linux-file-connection-problems.md#slow-file-copying-to-and-from-azure-files-in-linux) a Linux-hibaelhárítás című útmutató.
 
 ## <a name="jitterysaw-tooth-pattern-for-iops"></a>A minta érzékeny vagy saw-tooth iops
 

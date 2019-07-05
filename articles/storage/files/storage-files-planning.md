@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0672f25b30bfb34a6ee99b0f4710d01cf0871300
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 6506a93914cfbc10f37980c4b916a93aa9aad75d
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67150321"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67564402"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 
@@ -83,29 +83,24 @@ Standard fájlmegosztások merevlemezes (HDD) meghajtók élvezik. Normál fájl
 Legfeljebb 5 TiB méretű standard szintű fájlmegosztások állnak rendelkezésre, a végleges verzió ajánlat. Amíg nagyobb fájlmegosztások, megosztásaitól, nagyobb, mint 5 TiB, legfeljebb 100 Tib-ra, amely jelenleg előzetes ajánlatként érhető el.
 
 > [!IMPORTANT]
-> - Megköveteli, hogy hozzon létre egy új általános célú tárfiók (nem bontsa ki a meglévő tárfiókok).
-> - A rendszer csak az LRS érhető el.
-> - Három régióban érhető el: 2. nyugati RÉGIÓJA, Nyugat-Európa és Délkelet-ázsiai régióban.
-> - LRS, GRS-fiók alakítása nem lehetséges az előfizetés, a nagyobb megosztások fájlelőnézet elfogadása után létrehozott új tárfiókok a.
+> Tekintse meg a [nagyobb fájlmegosztások (standard szintű) üzembe helyezésével](#onboard-to-larger-file-shares-standard-tier) szakasz lépéseit felvétele, valamint a hatókör és az előzetes verzió korlátozásai.
 
-A fájl nagyobb megosztás méretek némelyikével előzetes előkészítése, szeretné, ha ez elküldése [űrlap](https://aka.ms/azurefilesatscalesurvey). 
+### <a name="premium-file-shares"></a>Prémium szintű fájlmegosztások
 
-### <a name="premium-file-shares-preview"></a>Prémium szintű fájlmegosztások (előzetes verzió)
-
-Prémium szintű fájlmegosztások (előzetes verzió) élvezik tartós állapotú lemezt (SSD). Prémium szintű fájlmegosztások konzisztens nagy teljesítményű és kis késésű, belül a legtöbb i/o-műveletek, i/o-igényes számítási feladatokhoz egyszámjegyű ideje ezredmásodpercben adja meg. Ez teszi őket a megfelelő számos különböző számítási feladatokhoz – például adatbázisokat, webhelyszolgáltatás, fejlesztőkörnyezetet, stb. Prémium szintű fájlmegosztások csak egy üzembe helyezett számlázási modell érhető el. Prémium szintű fájlmegosztások a egy külön, standard fájlmegosztásokból telepítési modellt használja.
+Prémium szintű fájlmegosztások élvezik tartós állapotú meghajtókhoz (SSD). Prémium szintű fájlmegosztások konzisztens nagy teljesítményű és kis késésű, belül a legtöbb i/o-műveletek, i/o-igényes számítási feladatokhoz egyszámjegyű ideje ezredmásodpercben adja meg. Ez teszi őket a számos különböző számítási feladatok, például adatbázisok, a webhely üzemeltetése és a fejlesztési környezetek alkalmasak. Prémium szintű fájlmegosztások csak egy üzembe helyezett számlázási modell érhető el. Prémium szintű fájlmegosztások a egy külön, standard fájlmegosztásokból telepítési modellt használja.
 
 Az Azure Backup elérhető prémium szintű fájlmegosztások és Azure Kubernetes Service támogatja a prémium szintű fájlmegosztások, az 1.13 verzió vagy újabb.
 
 Ha szeretné, hogyan hozzon létre egy prémium szintű fájlmegosztást, tekintse meg a cikk a tárgyban: [A prémium szintű Azure file storage-fiók létrehozása](storage-how-to-create-premium-fileshare.md).
 
-Jelenleg nem lehet közvetlenül alakíthatja szabványos fájlmegosztás és a egy prémium szintű fájlmegosztás között. Ha szeretné, vagy csomagra váltani, hozzon létre egy új fájlmegosztást az adott réteg, és manuálisan másolja az adatokat az eredeti megosztásáról az új megosztásban hozott létre. Ehhez a támogatott Azure-fájlok másolása eszközök, például az AzCopy használatával.
+Jelenleg nem lehet közvetlenül alakíthatja szabványos fájlmegosztás és a egy prémium szintű fájlmegosztás között. Ha szeretné, vagy csomagra váltani, hozzon létre egy új fájlmegosztást az adott réteg, és manuálisan másolja az adatokat az eredeti megosztásáról az új megosztásban hozott létre. Ehhez a támogatott Azure-fájlok másolása eszközök, például Robocopy vagy az AzCopy használatával.
 
 > [!IMPORTANT]
-> Prémium szintű fájlmegosztások továbbra is előzetes verzióban, csak az LRS érhető el, és, amelyek a storage-fiókok kínálják a legtöbb régiókban érhető el. Ismerje meg, ha a prémium szintű fájlmegosztások érhetők el jelenleg az Ön régiójában, tekintse meg a [elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/?products=storage) oldal az Azure-hoz.
+> Prémium szintű fájlmegosztások csak az LRS érhető el, és, amelyek a storage-fiókok kínálják a legtöbb régiókban érhető el. Ismerje meg, ha a prémium szintű fájlmegosztások érhetők el jelenleg az Ön régiójában, tekintse meg a [elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/?products=storage) oldal az Azure-hoz.
 
 ### <a name="provisioned-shares"></a>Kiépített megosztások
 
-Prémium szintű fájlmegosztások (előzetes verzió) egy rögzített GiB/IOPS/teljesítmény arány alapján vannak üzembe helyezve. Az egyes üzembe helyezett GiB a megosztás fogja kiállítani egy IOPS és 0,1 MiB/s átviteli legfeljebb fájlmegosztás maximális vonatkozó korlátok. Kiépítés engedélyezett minimum 100 GB, a minimális IOPS és átviteli sebesség.
+Prémium szintű fájlmegosztások vannak üzembe helyezve egy rögzített GiB/IOPS/teljesítmény arány alapján. Az egyes üzembe helyezett GiB a megosztás fogja kiállítani egy IOPS és 0,1 MiB/s átviteli legfeljebb fájlmegosztás maximális vonatkozó korlátok. Kiépítés engedélyezett minimum 100 GB, a minimális IOPS és átviteli sebesség.
 
 Az elérhető legjobb lehetőség alapján minden megosztás is megnövelheti arra GiB kiosztott tárolás három IOPS legfeljebb 60 percet vagy hosszabb ideig a megosztás méretétől függően. Új megosztások indítsa el a teljes burst kreditet kap, a kiépített lemezkapacitás alapján.
 
@@ -137,6 +132,9 @@ Az alábbi táblázatban néhány példa az ezekben a képletekben a létesítet
 |51,200      | 51,200  | Legfeljebb 100 000 | 3,132 | 2,088   |
 |102,400     | 100,000 | Legfeljebb 100 000 | 6,204 | 4,136   |
 
+> [!NOTE]
+> Fájl megosztások teljesítmény azonban a gépek hálózati korlátai, rendelkezésre álló hálózati sávszélességet, i/o-méretek, párhuzamosság közül sok más tényező függvénye. A maximális teljesítmény méretezhetőség, a terhelés elosztását több virtuális gép között. Tekintse meg [hibaelhárítási útmutató](storage-troubleshooting-files-performance.md) néhány gyakori teljesítményproblémák és a lehetséges megoldások.
+
 ### <a name="bursting"></a>Tartalékkapacitás
 
 Prémium szintű fájlmegosztásokat is megnövelheti arra az iops-érték legfeljebb három tényező. Tartalékkapacitás automatikusan végbemegy, és működik, a rendszer alapján. Tartalékkapacitás akkor működik a legjobb lehetőség alapján, és a hirtelen korlát nem garantálja, fájlmegosztások is megnövelheti arra *akár* korlátot.
@@ -160,7 +158,7 @@ Megosztás-jóváírások három állapota van:
 
 Az Azure standard szintű fájlmegosztásokat három adatredundanciával kapcsolatos lehetőségek támogatja: a helyileg redundáns tárolás (LRS), a zónaredundáns tárolás (ZRS) és a georedundáns tárolás (GRS).
 
-Fájlok a prémium szintű Azure-fájlmegosztások csak támogatja a helyileg redundáns tárolás (LRS).
+Prémium szintű Azure fájlmegosztásokat csak a helyileg redundáns tárolás (LRS) támogatják.
 
 A következő szakaszok ismertetik a különböző adatredundanciával kapcsolatos lehetőségek közötti különbségek:
 
@@ -192,6 +190,48 @@ Tartsa szem ezeken a pontokon, ha a replikációs beállítás használata:
 * Zónaredundáns tárolás (ZRS) szinkron replikációt a magas rendelkezésre állást biztosít, és lehet, hogy bizonyos helyzetekben, mint a GRS jobb választás. A zrs-t további információkért lásd: [ZRS](../common/storage-redundancy-zrs.md).
 * Aszinkron replikációs késleltetés az adatok írása az elsődleges régióra, ha azt a rendszer a másodlagos régióba replikálja az idő foglalja magában. Regionális katasztrófa esetén módosítások, amelyek még nem lett replikálása még a másodlagos régióba lehetséges, hogy elvesznek, ha az adatok nem állíthatók vissza az elsődleges régióból.
 * A grs Tárolással a replika nem érhető el olvasási vagy írási hozzáférést, kivéve, ha a Microsoft kezdeményezi egy feladatátvételt a másodlagos régióba. A feladatátvétel esetén sem fog rendelkezik olvasási, és befejeződött a feladatátvétel után az adatok írási hozzáféréssel. További információkért tekintse meg [vészhelyreállítási útmutató](../common/storage-disaster-recovery-guidance.md).
+
+## <a name="onboard-to-larger-file-shares-standard-tier"></a>Nagyobb előkészítése fájlmegosztások (standard szintű)
+
+Ez a szakasz csak a standard szintű fájlmegosztások vonatkozik. Minden prémium szintű fájlmegosztások érhetők el 100 Tib-ra, egy GA ajánlat.
+
+### <a name="restrictions"></a>Korlátozások
+
+- Megköveteli, hogy hozzon létre egy új általános célú tárfiók (nem bontsa ki a meglévő tárfiókok).
+- LRS, GRS-fiók alakítása nem lehetséges az előfizetés, a nagyobb megosztások fájlelőnézet elfogadása után létrehozott új tárfiókok a.
+
+### <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
+
+Standard fájlmegosztások legfeljebb 5 TiB minden régióban érhetők el. Bizonyos régiókban érhető el a felső korlát 100 Tib-ra, az alábbi táblázatban felsorolt ezekben a régiókban:
+
+|Régió  |Támogatott redundancia  |Támogatja a meglévő tárfiókok  |
+|---------|---------|---------|
+|Délkelet-Ázsiában     |LRS|Nem         |
+|Nyugat-Európa     |LRS|Nem         |
+|USA nyugati régiója, 2.     |LRS, ZRS|Nem         |
+
+
+### <a name="steps-to-onboard"></a>Lépések végrehajtásával előkészítése
+
+Regisztrálja az előfizetést a nagyobb megosztások fájlelőnézet, futtassa a következő PowerShell-parancsokat:
+
+```powershell
+Register-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
+Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
+```
+Az előfizetés jóváhagyása automatikus mindkét parancsok futtatása után.
+
+A regisztrációs állapot ellenőrzéséhez futtathatja a következő parancsot:
+
+```powershell
+Get-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
+```
+
+Előfordulhat, hogy az állapot való frissítése akár 15 percet is igénybe **regisztrált**. Miután az állapot **regisztrált**, kell tudni használni a szolgáltatást.
+
+### <a name="use-larger-file-shares"></a>Nagyobb fájlmegosztások használata
+
+Nagyobb fájlmegosztások használatának megkezdéséhez hozzon létre egy új általános célú v2-tárfiók és a egy új fájlmegosztást.
 
 ## <a name="data-growth-pattern"></a>Növekedési adatmintát
 

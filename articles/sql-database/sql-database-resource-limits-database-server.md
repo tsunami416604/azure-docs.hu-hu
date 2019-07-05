@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 manager: craigg
 ms.date: 04/18/2019
-ms.openlocfilehash: 06e61d30f0d4e598c48f190572b8b4343f351043
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e4c0a6cd25587b33c06526b57e6acdbebb69c8b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65762785"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445628"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Az Azure SQL Database-kiszolgálóhoz tartozó SQL Database erőforráskorlátok
 
@@ -44,6 +44,9 @@ Ez a cikk egy SQL Database-kiszolgáló, amely felügyeli az önálló adatbázi
 > Adatbázisok száma megközelíti a korlátot, egy SQL Database-kiszolgálón, ahogy az alábbi fordulhat elő:
 > - Növelje a várakozási ideje a lekérdezések futtatása a master adatbázison.  Ez magában foglalja az erőforrás-kihasználtsági statisztikáinak például sys.resource_stats nézetét.
 > - A felügyeleti műveletek késése növelése, és a renderelési enumerálni a kiszolgálón lévő adatbázisokat érintő portál modelladatok között.
+
+### <a name="storage-size"></a>Tároló mérete
+- Az önálló adatbázisok rources tekintse meg vagy [DTU-alapú erőforráskorlátok](sql-database-dtu-resource-limits-single-databases.md) vagy [Virtuálismag-alapú erőforráskorlátok](sql-database-vcore-resource-limits-single-databases.md) a tároló mérete vonatkozó korlátok tarifacsomag.
 
 ## <a name="what-happens-when-database-resource-limits-are-reached"></a>Mi történik, ha az adatbázis erőforrás-korlátozások elérésekor
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/06/2019
 ms.author: v-mohabe
-ms.openlocfilehash: b1280274122800147c442b73b360bc5141530a0e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 86d48360e37f26d19d15c62a8109c030d421c661
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050603"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551888"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Az adatgyűjtést az Azure Security Centerben
 A Security Center adatokat gyűjt az Azure-beli virtuális gépek (VM), a virtual machine scale sets, IaaS-tárolók és nem Azure-beli (pl. helyszíni) számítógépek biztonsági rések és fenyegetések monitorozásához. Az adatgyűjtés a Microsoft Monitoring Agent segítségével történik, amely a biztonsághoz kapcsolódó különböző konfigurációkat és eseménynaplókat olvas be a gépről, és elemzés céljából átmásolja az adatokat az Ön munkaterületére. Az ilyen adatok többek között: operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép nevét, az IP-címeket, és bejelentkezett felhasználó. A Microsoft Monitoring Agent ügynököt az összeomlási memóriaképeket is átmásolja a munkaterülethez.
@@ -46,12 +46,12 @@ Amikor az Automatikus kiépítés egy, a Security Center a Microsoft Monitoring 
 
 
 A Microsoft Monitoring Agent automatikus kiépítésének engedélyezése:
-1. A Security Center főmenüjében válassza **biztonsági házirend**.
-2. Kattintson a **beállításainak szerkesztése** a beállítások oszlop a listában a kívánt előfizetés.
+1. A Security Center főmenüjében válassza **díjszabási & beállítások**.
+2. Kattintson a megfelelő előfizetésre
 
    ![Előfizetés kiválasztása][7]
 
-3. A **Biztonsági szabályzat** területen válassza az **Adatgyűjtés** elemet.
+3. Válassza ki **adatgyűjtés**.
 4. A **automatikus kiépítés**válassza **a** az Automatikus kiépítés engedélyezéséhez.
 5. Kattintson a **Mentés** gombra.
 
@@ -131,11 +131,11 @@ Egy meglévő Log Analytics-munkaterület kiválasztása:
 
 5. Válassza ki a tarifacsomagot állítsa be a Microsoft Monitoring agent szeretne a kívánt munkaterülethez. <br>Egy meglévő munkaterületet használja, állítsa be a munkaterület tarifacsomagja. Ez telepíti a security Center megoldás a munkaterület Ha egyik még nem létezik.
 
-    a.  A Security Center főmenüjében válassza **biztonsági házirend**.
+    a.  A Security Center főmenüjében válassza **díjszabási & beállítások**.
      
-    b.  Válassza ki a kívánt munkaterületet, amelyben szeretné az ügynököt csatlakoztatja kattintva **beállításainak szerkesztése** a beállítások oszlop a listában a kívánt előfizetés.
-        ![Válassza ki a munkaterület][8] c. Állítsa a tarifacsomagot.
-        ![Válasszon tarifacsomagot][9] 
+    b.  Válassza ki a kívánt munkaterületet, ahol csatlakoztassa az ügynököt kíván.
+        ![Válassza ki a munkaterület][7] c. Állítsa a tarifacsomagot.
+        ![Válasszon tarifacsomagot][9]
    
    >[!NOTE]
    >Ha már rendelkezik a munkaterület egy **biztonsági** vagy **SecurityCenterFree** a megoldás engedélyezve van, a díjszabás a rendszer automatikusan beállítja. 
@@ -165,8 +165,8 @@ Ezen készletek tervezték, hogy a tipikus forgatókönyvek. Ellenőrizze, hogy 
 
 Meghatározni az eseményeket, fog tartozni a **közös** és **minimális** események, működtünk az ügyfelekkel és az iparági normák megismerheti az egyes események és a használatuk szűretlen gyakoriságát. Ez a folyamat használjuk a következő irányelveket:
 
-- **Minimális** – győződjön meg arról, hogy ez csak olyan eseményeket, amelyek esetleg jelzik a sikeres biztonsági incidenseinek és a fontos eseményekről, amelyek nagyon kevés üzenettel rendelkező vonatkozik-e. Például a felhasználó sikeres és sikertelen bejelentkezés (esemény azonosítók 4624, 4625-ös számú) tartalmazza, de jelentkezzen ki, amely a naplózás fontos, de nem értelmezhető az észlelést, és viszonylag nagy mennyiségű nem tartalmaz. Ezen adatok mennyisége a legtöbb, a bejelentkezési események és folyamat létrehozása event (esemény azonosítója 4688).
-- **Közös** – adjon meg egy teljes felhasználói auditnapló ebben a készletben. A készlet például felhasználói bejelentkezéseket és a felhasználói kijelentkezésre (event ID 4634) tartalmazza. Például a biztonsági csoportok változásait, legfontosabb tartomány tartományvezérlő Kerberos műveleti és az eseményeket, amelyek a szervezetek által ajánlott műveletek naplózási tartalmazza.
+- **Minimális** – győződjön meg arról, hogy ez csak olyan eseményeket, amelyek esetleg jelzik a sikeres biztonsági incidenseinek és a fontos eseményekről, amelyek nagyon kevés üzenettel rendelkező vonatkozik-e. Például a felhasználó sikeres és sikertelen bejelentkezés (esemény azonosítók 4624, 4625-ös számú) tartalmazza, de nem tartalmaz jelentkezzen ki, amely viszonylag nagy mennyiségű, és a naplózás fontos, de nem értelmezhető az észlelést. Ezen adatok mennyisége a legtöbb, a bejelentkezési események és folyamat létrehozása event (esemény azonosítója 4688).
+- **Közös** – adjon meg egy teljes felhasználói auditnapló ebben a készletben. A készlet például felhasználói bejelentkezéseket és a felhasználói bejelentkezési tudni (event ID 4634) tartalmazza. Például a biztonsági csoportok változásait, legfontosabb tartomány tartományvezérlő Kerberos műveleti és az eseményeket, amelyek a szervezetek által ajánlott műveletek naplózási tartalmazza.
 
 Eseményeket, amelyek nagyon kevés a Rendszeríró a közös állítja be a fő motiváció kiválasztása az összes esemény keresztül csökkentése és a meghatározott események kiszűrésére.
 
@@ -191,7 +191,7 @@ Eseményeket, amelyek nagyon kevés a Rendszeríró a közös állítja be a fő
 >
 
 A szűrési házirend kiválasztásához:
-1. Az a **az adatgyűjtést a biztonsági házirend** panelen jelölje be a szűrési házirend alapján **biztonsági események**.
+1. Az a **adatgyűjtés** lapra, jelölje be a szűrési házirend alapján **biztonsági események**.
 2. Kattintson a **Mentés** gombra.
 
    ![Válassza ki a házirend szűrése][5]

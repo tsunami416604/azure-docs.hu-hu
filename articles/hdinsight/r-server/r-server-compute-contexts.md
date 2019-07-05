@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 9dac7aa19e428c964bd10c3ef62df949393e8d1f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a2c66c5c4f1abe535eb51dba9101757ce6d26157
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64681771"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444349"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Számítási környezeti beállítások a HDInsight a Machine Learning-szolgáltatások
 
@@ -76,6 +76,5 @@ Emellett olvassa el a [elosztott számítástechnikai áttekintése](https://doc
 Ebben a cikkben megismerkedett a beállításokat, adja meg, hogyan végrehajtási párhuzamosíthatók-e között a peremhálózati csomópont vagy a HDInsight-fürt magok számára elérhető. Machine Learning-szolgáltatások és a HDInsight-fürtök együttes használatával kapcsolatos további tudnivalókért lásd a következő témaköröket:
 
 * [Az Apache Hadoophoz készült gépi Tanulási szolgáltatások – áttekintés](r-server-overview.md)
-* [Ismerkedés az Apache Hadoophoz készült gépi Tanulási szolgáltatások](r-server-get-started.md)
 * [A HDInsight Machine Learning-szolgáltatásokhoz az Azure tárolási lehetőségek](r-server-storage.md)
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 6dcb6853daf34fede590011d165c0ba9001cbac6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02b4eb6c367510e8994aa7723fe3fdd3e43af0e6
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721633"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67462180"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Apache Hadoop on HDInsight és az SQL Database közötti adatok importálása és exportálása az Apache Sqoop használatával
 
@@ -98,5 +98,5 @@ Az SQL Serverről az Azure-tárolóba.
 Most már megtanulhatta, hogyan használható a sqoop használatával. További tudnivalókért lásd:
 
 * [Az Apache Oozie használata a HDInsight](../hdinsight-use-oozie-linux-mac.md): Az Oozie-munkafolyamatokkal Sqoop műveletet használja.
-* [HDInsight használatával repülőjáratok késési adatainak elemzése](../hdinsight-analyze-flight-delay-data-linux.md): Repülőjáratok késési adatainak elemzése az Apache Hive használatával, és a Sqoop használatával egy Azure SQL database-adatok exportálása.
+* [HDInsight használatával repülőjáratok késési adatainak elemzése](../interactive-query/interactive-query-tutorial-analyze-flight-data.md): Repülőjáratok késési adatainak elemzése interaktív lekérdezés használatával, és a Sqoop használatával egy Azure SQL database-adatok exportálása.
 * [Adatok feltöltése a HDInsight](../hdinsight-upload-data.md): Keresse meg a HDInsight vagy az Azure Blob storage-ba történő feltöltéséhez más módszerekkel.

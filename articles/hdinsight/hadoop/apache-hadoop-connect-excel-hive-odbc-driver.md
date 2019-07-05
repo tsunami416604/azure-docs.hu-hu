@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: fcb9171d2285efab0f65e6ab424908bc42c0ea2f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 01e7ca184f2be755f23cd402e0694ea282e3b85e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66391893"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441394"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Excel csatlakoztatása az Azure HDInsight az Apache Hadoop és a Microsoft Hive ODBC-illesztő
 
@@ -32,7 +32,7 @@ Ez a cikk elkezdéséhez a következőkkel kell rendelkeznie:
 * Egy munkaállomás, Office 2010 Professional Plus rendszert vagy újabb, vagy az Excel 2010 vagy újabb.
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>A Microsoft Hive ODBC-illesztőprogram telepítése
-Töltse le és telepítse a [a Microsoft Hive ODBC-illesztő](https://go.microsoft.com/fwlink/?LinkID=286698) olyanra, amely megfelel az alkalmazás hol fogja használni az ODBC-illesztő verziójának.  Ebben az oktatóanyagban az illesztőprogram Office Excel szolgál.
+Töltse le és telepítse a [a Microsoft Hive ODBC-illesztő](https://go.microsoft.com/fwlink/?LinkID=286698) olyanra, amely megfelel az alkalmazás hol fogja használni az ODBC-illesztő verziójának.  Ebben a cikkben az illesztőprogram Office Excel szolgál.
 
 ## <a name="create-apache-hive-odbc-data-source"></a>Az Apache Hive ODBC-adatforrás létrehozása
 A következő lépések bemutatják, hogyan hozhat létre egy Hive ODBC-adatforrásból.

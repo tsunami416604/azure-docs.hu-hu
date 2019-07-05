@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c3c97e786e2147f043a63b90b886e01eb5944cb4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a051b0e853b60dfc1f5b6c3453d9ed8361f1748
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66507676"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67438824"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Az alkalmazás egyéni szabályzat használata az Azure Active Directory B2C a felhasználói felület testreszabása
 
@@ -31,7 +31,7 @@ Hajtsa végre a [egyéni szabályzatok – első lépések](active-directory-b2c
 
 A lap felhasználói felületének testreszabása szolgáltatással, testre szabhatja a megjelenését és működését minden olyan egyéni szabályzatot. Lehetősége van fenntartani az alkalmazása és az Azure AD B2C közötti márkabeli és vizuális egységességet is.
 
-Itt látható, hogyan működik: Az Azure AD B2C az ügyfél böngészőjében kódja fut, és egy modern néven ismert megközelítés [eltérő eredetű erőforrások megosztása (CORS)](https://www.w3.org/TR/cors/). Először is a testre szabott HTML-tartalmat tartalmazó egyéni házirendekben a megadhatja egy URL-címet. Az Azure AD B2C egyesíti a felhasználói felület elemeit az URL-ről betöltött HTML-tartalommal, majd megjeleníti az oldalt az ügyfélnek.
+Ez a következőképpen működik: Az Azure AD B2C az ügyfél böngészőjében kódja fut, és egy modern néven ismert megközelítés [eltérő eredetű erőforrások megosztása (CORS)](https://www.w3.org/TR/cors/). Először is a testre szabott HTML-tartalmat tartalmazó egyéni házirendekben a megadhatja egy URL-címet. Az Azure AD B2C egyesíti a felhasználói felület elemeit az URL-ről betöltött HTML-tartalommal, majd megjeleníti az oldalt az ügyfélnek.
 
 ## <a name="create-your-html5-content"></a>A HTML5-alapú tartalom létrehozása
 
@@ -79,18 +79,19 @@ A HTML-tartalmat, Blob Storage-tároló, tegye a következőket:
 
 Blob storage-ban hozzon létre egy nyilvános tárolóban, tegye a következőket:
 
-1. Kattintson a **áttekintése** fülre.
-2. Kattintson a **tároló**.
-3. A **neve**, típus **$root**.
-4. Állítsa be **típus eléréséhez** való **Blob**.
-5. Kattintson a **$root** , nyissa meg az új tárolóhoz.
+1. A **Blob service** a bal oldali menüben válassza ki a **Blobok**.
+2. Kattintson a **+ tároló**.
+3. A **neve**, adja meg *legfelső szintű*. Ez a név szabadon, például lehet *tartománynév*, használjuk, de *legfelső szintű* ebben a példában az egyszerűség kedvéért.
+4. A **nyilvános hozzáférés szintje**válassza **Blob**, majd **OK**.
+5. Kattintson a **legfelső szintű** , nyissa meg az új tárolóhoz.
 6. Kattintson a **Feltöltés** gombra.
 7. Kattintson a Tovább gombra a mappa ikont **válasszon ki egy fájlt**.
-8. Lépjen a **testreszabása ui.html**, amely az oldal-UI testreszabása szakaszban korábban létrehozott.
-9. Kattintson a **Feltöltés** gombra.
-10. Válassza ki a feltöltött testreszabás-ui.html blob.
-11. A **URL-cím**, kattintson a **másolási**.
-12. Egy böngészőben beilleszteni a másolt URL-címet, és nyissa meg a helyet. Ha a hely nem érhető el, ellenőrizze, hogy a tároló hozzáférési típus értéke **blob**.
+8. Keresse meg és válassza **testreszabása ui.html** az oldal-UI testreszabása szakaszban korábban létrehozott.
+9. Ha szeretne feltölteni egy almappát, bontsa ki a **speciális** , és adja meg a mappa nevét a **feltöltés mappába**.
+10. Válassza a **Feltöltés** lehetőséget.
+11. Válassza ki a **testreszabása ui.html** feltöltött blobot.
+12. Jobb oldalán a **URL-cím** szövegmezőben válassza ki a **példányt vágólapra** ikonra az URL-cím másolása a vágólapra.
+13. Webböngésző keresse meg az URL-cím ellenőrzése érhető el a feltöltött blobot kimásolt. Ha nem érhető el, például ha hibát tapasztal egy `ResourceNotFound` hiba, ellenőrizze, hogy a tároló hozzáférési típus értéke **blob**.
 
 ## <a name="configure-cors"></a>A CORS konfigurálása
 
@@ -159,6 +160,7 @@ Konfigurálhatja a felhasználói felületének testreszabását, másolja a **C
 
 ## <a name="reference"></a>Leírások
 
+### <a name="sample-templates"></a>Példasablonok
 Mintasablonok felhasználói felületének testreszabását itt találja:
 
 ```
@@ -174,6 +176,16 @@ A sample_templates/wingtip mappa a következő HTML-fájlokat tartalmazza:
 | *selfasserted.html* | Sablonként használni ezt a fájlt egy közösségi fiók regisztrálására szolgáló oldal, egy helyi fiók regisztrálási oldala vagy egy helyi fiók bejelentkezési oldalára. |
 | *unified.html* | Ez a fájl sablonként használni egy egyesített regisztrálási vagy bejelentkezési oldal. |
 | *updateprofile.html* | Ez a fájl sablonként használni a profil frissítés laphoz. |
+
+A lépések a következők a minta használatával. 
+1. Klónozza a tárházat a helyi gépen. Válassza ki a Szolgáltatássablon mappáját, sample_templates alatt. Használhat `wingtip` vagy `contoso`.
+2. Található összes fájl feltöltése a `css`, `fonts`, és `images` mappákat a Blob storage a korábbi szakaszokban ismertetett módon. 
+3. Ezután nyissa meg az egyes \*.html fájl vagy gyökerében `wingtip` vagy `contoso` (amelyik választotta az első lépésben), és cserélje le az összes példányát "http://localhost" a 2. lépésben feltöltött css, képek és betűkészletek fájlok URL-címei.
+4. Mentse a \*.html fájlokat, majd azok feltöltése a Blob storage.
+5. Most módosítsa a kiterjesztések fájlt, amint azt korábban említettük a [módosítsa a kiterjesztések fájlt](#modify-the-extensions-file).
+6. Ha hiányzik a betűtípusokat, képeket vagy css, ellenőrizze a hivatkozást a bővítmények házirendben, és a \*.html-fájlokat.
+
+### <a name="content-defintion-ids"></a>Tartalom triggerdefiníció azonosítók
 
 A regisztrálási vagy bejelentkezési egyéni szabályzat szakaszban módosítsa a tartalom definíciója konfigurált `api.idpselections`. A teljes körű tartalom az Azure AD B2C-identitás-kezelőfelületi keretrendszer és a hozzájuk tartozó leírások által elfogadottakkal szerepkördefiníció-azonosítók az alábbi táblázatban vannak:
 

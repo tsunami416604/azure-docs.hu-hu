@@ -3,13 +3,13 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 07/01/2019
-ms.openlocfilehash: 9e0caa8b98133dad3af083e8910d0603bbd2563b
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: HT
+ms.date: 07/03/2019
+ms.openlocfilehash: 31c6521ca77d9d85fc8388d7ebc5d25defc69bd0
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67489906"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67568334"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances-ri"></a>Fizessen elő az Azure Reserved VM Instances (RI) rendelkező virtuális gépek
 
@@ -66,20 +66,19 @@ Fenntartott VM-példányok néhány kivétellel a legtöbb Virtuálisgép-méret
 ## <a name="buy-a-reserved-vm-instance"></a>A fenntartott VM-példány vásárlása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza ki **minden szolgáltatás** > **foglalások**.
-3. Válassza ki **Hozzáadás** , egy új foglalást vásárolhat.
-4. Adja meg a kötelező mezőket. Futó virtuális Gépre, válassza ki az attribútumok minősítéséhez lekérése a foglalási kedvezményt a megfelelő példányok. A Virtuálisgép-példányok, amely a kedvezmény a tényleges száma attól függ, a hatókör és a kiválasztott mennyiség.
+1. Válassza ki **minden szolgáltatás** > **foglalások**.
+1. Válassza ki **Hozzáadás** új foglalást vásárolhat, majd **virtuális gép**.
+1. Adja meg a kötelező mezőket. Futó virtuális Gépre, válassza ki az attribútumok minősítéséhez lekérése a foglalási kedvezményt a megfelelő példányok. A Virtuálisgép-példányok, amely a kedvezmény a tényleges száma attól függ, a hatókör és a kiválasztott mennyiség.
 
-    | Mező      | Leírás|
-    |------------|--------------|
-    |Name (Név)        |A Foglalás neve.|
-    |Előfizetés|Kell fizetnem a Foglalás használt előfizetés. A fizetési módot, az előfizetés fel van töltve a Foglalás az előzetes költségek. Az előfizetés típusúnak kell lennie a nagyvállalati szerződés (számok kínálnak: MS-AZR-0017P vagy MS-AZR - 0148 P) vagy az utólagos elszámolású díjszabás szerint egyes előfizetéssel (számok kínálnak: MS-AZR-0003P vagy MS-AZR-0023P). Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. Az utólagos elszámolású díjszabás szerint az előfizetés az előfizetés bankkártyával vagy számla ellenében fizetési módot, a díjakat számlázzuk ki.|    
-    |Scope       |A Foglalás hatóköre egy előfizetés vagy több előfizetés (megosztott hatókör) is foglalkozik. Ha ki: <ul><li>Ebben az előfizetésben virtuális gépek egyetlen előfizetés – a foglalási kedvezményt alkalmazza. </li><li>Közös – a foglalási kedvezményt alkalmazza a rendszer olyan előfizetéseket, a számlázási környezetben futó virtuális gépek. A vállalati ügyfelek a megosztott hatókörrel a regisztráció és a regisztráció belüli összes előfizetésre tartalmazza. A megosztott hatókörrel rendelkező utólagos elszámolású díjszabás szerint előfizetések élvező vásárlók esetében az utólagos elszámolású díjszabás szerint a fiók rendszergazdája által létrehozott összes előfizetés.</li></ul>|
-    |Régió    |Az Azure-régió, amelyet a Foglalás jelez.|    
-    |Virtuális gép mérete     |A Virtuálisgép-példányok méretétől.|
-    |Optimalizálás     |Virtuálisgép-példányok rugalmassága mérete alkalmazza a foglalási kedvezményt többi virtuális géphez ugyanazon [VM-méret csoport](https://aka.ms/RIVMGroups). Kapacitás prioritása priorizálja az Adatközpont-kapacitás az üzemelő példányok. Ez kínál a további megbízhatósági arra, hogy indítsa el a Virtuálisgép-példányok, amikor szüksége van rájuk. Kapacitás prioritása csak akkor használható, ha a Foglalás hatóköre egy előfizetés. |
-    |Kifejezés        |Egy vagy három év.|
-    |Mennyiség    |A Foglalás belül megvásárolt példányok száma. A mennyiség a futó kérheti le a számlázási kedvezményt Virtuálisgép-példányok számát. Például ha 10 Standard_D2 virtuális gépeket futtat az USA keleti régiójában, majd kell megadni mennyiség 10 az összes futó gépek juttatása maximalizálása érdekében. |
+| Mező      | Leírás|
+|------------|--------------|
+|Előfizetés|Kell fizetnem a Foglalás használt előfizetés. A fizetési módot, az előfizetés fel van töltve a Foglalás az előzetes költségek. Az előfizetés típusúnak kell lennie a nagyvállalati szerződés (számok kínálnak: MS-AZR-0017P vagy MS-AZR - 0148 P) vagy az utólagos elszámolású díjszabás szerint egyes előfizetéssel (számok kínálnak: MS-AZR-0003P vagy MS-AZR-0023P). Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. Az utólagos elszámolású díjszabás szerint az előfizetés az előfizetés bankkártyával vagy számla ellenében fizetési módot, a díjakat számlázzuk ki.|    
+|Scope       |A Foglalás hatóköre egy előfizetés vagy több előfizetés (megosztott hatókör) is foglalkozik. Ha ki: <ul><li>**Erőforrás-csoport hatóköre egyetlen** – vonatkozik a foglalási kedvezményt a megfelelő erőforrások csak a kiválasztott erőforráscsoportban.</li><li>**Egyetlen előfizetéses hatókört** – alkalmazza a foglalási kedvezményt a megfelelő erőforrások a kijelölt előfizetésben.</li><li>**A megosztott hatókör** – alkalmazza a foglalási kedvezményt támogatásra jogosult előfizetések, a számlázási környezetben lévő erőforrások megfelelő. Nagyvállalati szerződéssel rendelkező ügyfeleknek a számlázási környezetben a regisztrációt. Az utólagos elszámolású díjszabás szerint az egyes előfizetések a számlázási hatóköre a fiók rendszergazdája által létrehozott összes jogosult előfizetéssel.</li></ul>|
+|Régió    |Az Azure-régió, amelyet a Foglalás jelez.|    
+|Virtuális gép mérete     |A Virtuálisgép-példányok méretétől.|
+|Optimalizálás     |Virtuálisgép-példányok rugalmassága mérete alapértelmezés szerint van kiválasztva. Kattintson a speciális beállításokat alkalmazza a foglalási kedvezményt a többi virtuális géphez ugyanazon a példány mérete rugalmasan értékének módosításához [VM-méret csoport](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md). Kapacitás prioritása priorizálja az Adatközpont-kapacitás az üzemelő példányok. Ez kínál a további megbízhatósági arra, hogy indítsa el a Virtuálisgép-példányok, amikor szüksége van rájuk. Kapacitás prioritása csak akkor használható, ha a Foglalás hatóköre egy előfizetés. |
+|Kifejezés        |Egy vagy három év.|
+|Mennyiség    |A Foglalás belül megvásárolt példányok száma. A mennyiség a futó kérheti le a számlázási kedvezményt Virtuálisgép-példányok számát. Például ha 10 Standard_D2 virtuális gépeket futtat az USA keleti régiójában, majd kell megadni mennyiség 10 az összes futó gépek juttatása maximalizálása érdekében. |
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2PjmT]
 

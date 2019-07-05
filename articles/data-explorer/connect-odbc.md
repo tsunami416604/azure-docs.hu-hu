@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: 02ae9673f1dc402ee1500b466d7e259263ef3262
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/30/2019
+ms.openlocfilehash: 65795b5b4dea8d2cdeecf5f78f9de751f275dac0
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66494854"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537592"
 ---
 # <a name="connect-to-azure-data-explorer-with-odbc"></a>Csatlakozás az Azure Data Explorer ODBC
 
@@ -20,7 +20,13 @@ Nyissa meg az adatbázis-kapcsolat ([ODBC](/sql/odbc/reference/odbc-overview)) v
 
 A színfalak mögött alkalmazások hívja az ODBC-felületén, függvények, amelyek az adatbázis-specifikus modulokat, vagyis úgynevezett megvalósított *illesztőprogramok*. Az Azure Data Explorer támogatja az SQL Server kommunikációs protokoll egy részét ([MS-TDS](/azure/kusto/api/tds/)), ezért az ODBC-illesztőprogram SQL Serverhez is használ.
 
-Ebből a cikkből megismerheti, hogyan kell használni az Azure Data Explorer bármely olyan alkalmazásból, amely támogatja a ODBC csatlakozhat az SQL Server ODBC-illesztőprogramját.
+Használja az alábbi videó, tudhat meg egy ODBC-kapcsolat létrehozásához. 
+
+> [!VIDEO https://www.youtube.com/embed/qA5wxhrOwog]
+
+Lehetőségként [ODBC-adatforrás konfigurálása](#configure-the-odbc-data-source) alább részletesen. 
+
+A cikkből megismerheti, hogyan kell használni az Azure Data Explorer bármely olyan alkalmazásból, amely támogatja a ODBC csatlakozhat az SQL Server ODBC-illesztőprogramját. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 

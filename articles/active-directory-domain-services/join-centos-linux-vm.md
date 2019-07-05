@@ -3,7 +3,7 @@ title: 'Az Azure Active Directory tartományi szolgáltatások: CentOS virtuáli
 description: CentOS Linux rendszerű virtuális gép csatlakoztatása az Azure AD tartományi szolgáltatások
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 16100caa-f209-4cb0-86d3-9e218aeb51c6
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
-ms.author: mstephen
-ms.openlocfilehash: 23046dc356097a7b8cdbbc91c05a6419fc52d19f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: d34f6c9ea014759ec2ba310786cd524ff69094af
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66246074"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67473340"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-a-managed-domain"></a>CentOS Linux rendszerű virtuális gép csatlakoztatása felügyelt tartományokhoz
 Ez a cikk bemutatja, hogyan CentOS Linux rendszerű virtuális gép csatlakoztatása az Azure AD tartományi szolgáltatásokkal felügyelt tartományban az Azure-ban.

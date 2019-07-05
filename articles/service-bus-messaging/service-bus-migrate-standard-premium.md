@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 65c207b4d03e7d156c8c871a3642601fd0489ead
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57ab281e8d07537c22bd3cf60306dfb1c7e81541
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991423"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67566064"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>A prémium szint meglévő standard szintű Azure Service Bus-névterek áttelepítése
 Korábban az Azure Service Bus névtér csak a standard szinten érhető el. Névterek olyan több-bérlős beállítását, amely az alacsony átviteli sebesség és a fejlesztői környezetben vannak optimalizálva. A prémium szint dedikált erőforrások névterenként előre jelezhető késés és nagyobb átviteli sebesség, fix áron kínál. A prémium szint nagy átviteli sebességű és újabb nagyvállalati funkciókat igényelnek, éles üzemi környezetek van optimalizálva.
@@ -117,6 +117,28 @@ Az Azure portal használatával történő áttelepítés ugyanazon logikai foly
 1. Tekintse át a módosításokat az összefoglalás lapon. Válassza ki **az áttelepítés befejezése** váltani a névterek és az áttelepítés befejezéséhez.
     ![Váltson a névtér - kapcsoló menü][] a Megerősítés lapon jelenik meg, ha az áttelepítés akkor fejeződött be.
     ![Kapcsoló névtér - sikeres][]
+
+## <a name="caveats"></a>Figyelmeztetések
+
+Az Azure Service Bus Standard csomag által nyújtott funkciók némelyike nem támogatottak az Azure Service Bus prémium szintű. Ezek a tervezési által, mivel a prémium szint kiszámítható teljesítménye és adatelérési sebessége a dedikált erőforrásokkal kínál.
+
+Íme a prémium és a megoldás - által nem támogatott funkciók listáját 
+
+### <a name="express-entities"></a>Expressz entitások
+
+   Bármely állapotüzenet-adatokat nem véglegesíteni a storage expressz entitások nem támogatottak a prémium szintű. Dedikált erőforrások jelentős teljesítményének növelése, hogy adatait megőrzi, minden vállalati üzenetkezelési rendszert a várt módon, hogy Mindeközben megadva.
+   
+   Az áttelepítés során a standard szintű névtérben az expressz entitások bármelyikét fog létrejönni a prémium szintű névtér nem express egységként.
+   
+   Ha az Azure Resource Manager (ARM) sablonok, győződjön meg arról, hogy eltávolítja a "enableExpress" jelző a telepítési konfigurációt, hogy az automatizált munkafolyamatok hibamentes.
+
+### <a name="partitioned-entities"></a>Particionált entitások
+
+   Particionált entitások jobb szolgáltatáson a rendelkezésre állás egy több-bérlős beállításában adja meg a Standard szint is támogatott. A prémium szintű névterenként elérhető dedikált erőforrások kiépítését, az ez már nincs szükség.
+   
+   Az áttelepítés során a standard szintű névtérben található bármely particionált entitás jön létre a prémium szintű névtér nem particionált egységként.
+   
+   Ha az ARM-sablon egy adott üzenetsor vagy témakör "enablePartitioning', 'true' állítja be, majd azt figyelmen kívül a közvetítő által.
 
 ## <a name="faqs"></a>Gyakori kérdések
 

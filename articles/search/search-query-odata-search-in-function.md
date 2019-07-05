@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f72a59aac448796cf15220e15a3c8a4f12803bb5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a61291e547021077341a5f1b3db7422afa5b9440
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079729"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449984"
 ---
 # <a name="odata-searchin-function-in-azure-search"></a>OData `search.in` függvényt az Azure Search szolgáltatásban
 
@@ -40,7 +40,7 @@ Van azonban egy rövidebb módja a használatával, ezt a `search.in` függvény
 > Rövidebb, és könnyebben olvasható, használatával amellett `search.in` is biztosít [teljesítménybeli előnyök](#bkmk_performance) és elkerülhető az egyes [szűrők korlátozásai méretezés](search-query-odata-filter.md#bkmk_limits) Ha több száz vagy akár több ezer értékek a szűrő tartalmazza. Ebből kifolyólag javasoljuk, hogy használatával `search.in` helyett egy összetettebb vagy műveletet egyenlőség kifejezésekre.
 
 > [!NOTE]
-> OData-szabványt 4.01 verziója nemrég bevezetett rendelkezik a [ `in` operátor](http://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230), hasonló viselkedést, amelynek a `search.in` függvényt az Azure Search szolgáltatásban. Azonban az Azure Search nem támogatja ez az operátor így kell használni a `search.in` inkább működik.
+> OData-szabványt 4.01 verziója nemrég bevezetett rendelkezik a [ `in` operátor](https://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230), hasonló viselkedést, amelynek a `search.in` függvényt az Azure Search szolgáltatásban. Azonban az Azure Search nem támogatja ez az operátor így kell használni a `search.in` inkább működik.
 
 ## <a name="syntax"></a>Szintaxis
 

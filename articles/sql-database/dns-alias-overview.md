@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: genemi, ayolubek, jrasnick
 manager: craigg
-ms.date: 06/19/2019
-ms.openlocfilehash: d15e629343e015af5f83e1d185c6a46fc48fa3c4
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 06/26/2019
+ms.openlocfilehash: bb38f73308fb1eb67be310120cb589cb9412e737
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275199"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461829"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Az Azure SQL Database DNS-alias
 
@@ -30,6 +30,7 @@ A DNS-alias gyakori használati módjai a következő esetekben:
 - Hozzon létre egy könnyen megjegyezhető nevet egy Azure SQL Serverhez.
 - Az alias kezdeti fejlesztése során egy SQL Database-kiszolgálók teszt utalhat. Amikor az alkalmazás élesíti, módosíthatja az aliast, tekintse meg az üzemi kiszolgáló. Teszt az éles környezetbe való áttérés nem igényel a konfigurációinak módosításairól számos, az adatbázis-kiszolgálóhoz csatlakozó ügyfelek.
 - Tegyük fel, hogy a csak az alkalmazás-adatbázis áthelyezése egy másik SQL Database-kiszolgálóhoz. Itt módosíthatja a alias konfigurációit több ügyfél módosítása nélkül.
+- Egy regionális kimaradás során a geo-visszaállítás helyreállítani az adatbázist egy másik kiszolgálóra és a régiót használhatja. Módosíthatja a meglévő alias az új kiszolgálóra mutassanak, hogy a meglévő ügyfélalkalmazás sikerült újból csatlakozni hozzá. 
 
 ## <a name="domain-name-system-dns-of-the-internet"></a>Tartománynévrendszer (DNS) az Internet
 

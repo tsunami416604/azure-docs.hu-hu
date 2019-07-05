@@ -14,18 +14,18 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce0d99fb283be8cbeba6f8a7954ff49161a2d511
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6875ab8f184c67b02c91d1a8e312959f3ba9553b
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60288549"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476422"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-pim"></a>Biztonsági riasztások az Azure AD-szerepkörök konfigurálása az PIM-ben
 
 Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) riasztásokat állít elő, ha bármi gyanúsat vagy nem biztonságos tevékenységre van a környezetben. Riasztást vált ki, amikor megjelenik a PIM-irányítópulton. Válassza ki a riasztást a felhasználók vagy szerepkörök a riasztást kiváltó felsoroló jelentés megtekintéséhez.
 
-![A PIM biztonsági riasztások – képernyőkép](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
+![Az Azure AD-szerepkörök – riasztások és a súlyossági felsoroló riasztási panelen](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 
 ## <a name="security-alerts"></a>Biztonsági riasztások
 
@@ -122,11 +122,11 @@ Testre szabhatja a PIM-a környezetet és biztonsági célok biztonsági riaszt�
 
 1. Kattintson a **beállítások** , majd **riasztások**.
 
-    ![Biztonsági riasztások beállítások megnyitása](./media/pim-how-to-configure-security-alerts/settings-alerts.png)
+    ![Az Azure AD-szerepkörök – a riasztások a kiválasztott beállítások](./media/pim-how-to-configure-security-alerts/settings-alerts.png)
 
 1. Kattintson a riasztás nevét. a riasztás beállításainak konfigurálása.
 
-    ![Biztonsági riasztások beállításai](./media/pim-how-to-configure-security-alerts/security-alert-settings.png)
+    ![A kiválasztott biztonsági riasztást, a riasztási beállítások ablaktábla](./media/pim-how-to-configure-security-alerts/security-alert-settings.png)
 
 ## <a name="next-steps"></a>További lépések
 

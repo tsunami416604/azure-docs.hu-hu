@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 06/26/2019
 ms.reviewer: mbullwin
 ms.author: harelbr
-ms.openlocfilehash: 3ab50c92543615488d9ced599df433bf7e1e4061
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6bb89eec0b4905e101bed87d3d3fc617dec589e0
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61461561"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477861"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok használatával az Application Insights intelligens detektálási szabályok kezelése
 
@@ -29,12 +29,14 @@ Ez a módszer használható, az Azure Resource Manager automation, illetve a meg
 
 A következő értékeket a intelligens detektálási szabályra konfigurálhatja:
 - Ha a szabály engedélyezve van (az alapértelmezett érték **igaz**.)
-- Ha e-maileket küldjön el az előfizetés-tulajdonost, közreműködőknek és olvasóknak, amikor egy észlelési található (az alapértelmezett érték **igaz**.)
+- Ha e-maileket küldjön el az előfizetéshez társított felhasználók [Monitoring Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) és [közreműködő figyelése](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) szerepkörök, amikor egy észlelési talál (az alapértelmezett érték **igaz**.)
 - Bármilyen e-mail további címzettjei ki kell értesítést kaphat, ha egy észlelési található.
-- * E-mail-konfiguráció nem érhető el, az intelligens detektálási szabályok megjelölve _előzetes_.
+    -  E-mail-konfiguráció nem érhető el, az intelligens detektálási szabályok megjelölve _előzetes_.
 
 Ahhoz, hogy a szabály konfigurálása Azure Resource Manageren keresztül, az intelligens észlelési szabály konfigurációja már elérhető az Application Insights-erőforrást, nevű belül belső erőforrásként **ProactiveDetectionConfigs**.
 Maximális rugalmassággal egyedi értesítési beállításokat minden intelligens detektálási szabályra is konfigurálhatók.
+
+## 
 
 ## <a name="examples"></a>Példák
 
@@ -136,12 +138,46 @@ Ellenőrizze, hogy cserélje le az Application Insights-erőforrás nevét, és 
 
 ```
 
+### <a name="failure-anomalies-v2-non-classic-alert-rule"></a>Sikertelen rendellenességek v2 (nem klasszikus) végrehajtásának riasztási szabálya
+
+Az Azure Resource Manager-sablon azt mutatja be, rendellenes hibák v2 riasztási szabály konfigurálása egy 2 súlyosságát. Az új verzió a rendellenes hibák riasztási szabály része az új Azure-platform riasztások, és lecseréli a klasszikus verzióra, amely részeként kivezetjük a [klasszikus riasztások használatból való kivonást egyaránt folyamat](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        {
+            "type": "microsoft.alertsmanagement/smartdetectoralertrules",
+            "apiVersion": "2019-03-01",
+            "name": "Failure Anomalies - my-app",
+            "properties": {
+                  "description": "Detects a spike in the failure rate of requests or dependencies",
+                  "state": "Enabled",
+                  "severity": "2",
+                  "frequency": "PT1M",
+                  "detector": {
+                  "id": "FailureAnomaliesDetector"
+                  },
+                  "scope": ["/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/MyResourceGroup/providers/microsoft.insights/components/my-app"],
+                  "actionGroups": {
+                        "groupIds": ["/subscriptions/00000000-1111-2222-3333-444444444444/resourcegroups/MyResourceGroup/providers/microsoft.insights/actiongroups/MyActionGroup"]
+                  }
+            }
+        }
+    ]
+}
+```
+
+> [!NOTE]
+> Az Azure Resource Manager-sablon a rendellenes hibák v2 riasztási szabály az egyedi, és eltér a hagyományos intelligens detektálási szabályok a cikkben ismertetett.   
+
 ## <a name="smart-detection-rule-names"></a>Intelligens detektálási szabályok neve
 
 Alább az intelligens detektálási szabályok nevének táblázatát, mivel azok megjelennek a portálon, és azok belső nevekkel, amelyek az Azure Resource Manager-sablonban használandó.
 
 > [!NOTE]
-> Intelligens detektálási szabályok megjelölve az előzetes verzió nem támogatja e-mail-értesítéseket. Ezért csak akkor állíthat ezek a szabályok engedélyezve tulajdonságát. 
+> Intelligens detektálási szabályok megjelölve _előzetes_ nem támogatják az e-mail-értesítéseket. Ezért csak akkor állíthat a _engedélyezve_ ezek a szabályok tulajdonsága. 
 
 | Az Azure portal szabály neve | A belső név
 |:---|:---|
@@ -154,18 +190,7 @@ Alább az intelligens detektálási szabályok nevének táblázatát, mivel azo
 | Rendellenes növekedése a kivételek mennyiségének (előzetes verzió) | extension_exceptionchangeextension |
 | Potenciális memóriavesztést észlelt (előzetes verzió) | extension_memoryleakextension |
 | Potenciális biztonsági problémát észlelt (előzetes verzió) | extension_securityextensionspackage |
-| Erőforrás-kihasználtsági problémát észlelt (előzetes verzió) | extension_resourceutilizationextensionspackage |
-
-## <a name="who-receives-the-classic-alert-notifications"></a>Ki kapja a (klasszikus) riasztási értesítések?
-
-Ez a szakasz csak az intelligens detektálás klasszikus riasztások vonatkozik, és segít optimalizálni a riasztási értesítések biztosítják, hogy csak a kívánt címzettek megkapják az értesítéseket. Ismerje meg jobban a különbség a [klasszikus riasztások](../platform/alerts-classic.overview.md) , majd tekintse át a riasztások új kezelőfelülete a [riasztások áttekintő cikkben](../platform/alerts-overview.md). Intelligens detektálás jelenleg csak a klasszikus riasztások élmény támogatási riasztást küld. Ez az egyetlen kivétel a [intelligens detektálás riasztások az Azure-felhőszolgáltatás](./proactive-cloud-services.md). Riasztás szabályozhatja az Azure-felhő az intelligens detektálás riasztásokhoz kapcsolódó értesítések használata services [Műveletcsoportok](../platform/action-groups.md).
-
-* Az intelligens észlelés és klasszikus riasztási értesítéseket meghatározott címzettek használatát javasoljuk.
-
-* Intelligens detektálás riasztások a **tömeges/csoport** jelölőnégyzetet, a beállítást, ha engedélyezve van, felhasználóknak küld az előfizetésben tulajdonos, közreműködő vagy olvasó szerepkört. Gyakorlatilag _összes_ az előfizetés az Application Insights-erőforráshoz hozzáféréssel rendelkező felhasználók terjed ki, és értesítéseket kap. 
-
-> [!NOTE]
-> Ha jelenleg használja a **tömeges/csoport** jelölőnégyzetet, a beállítást, és tiltsa le, nem állíthatja vissza a módosítást.
+| Rendellenes növekedése a napi adatmennyiség (előzetes verzió) | extension_billingdatavolumedailyspikeextension |
 
 ## <a name="next-steps"></a>További lépések
 

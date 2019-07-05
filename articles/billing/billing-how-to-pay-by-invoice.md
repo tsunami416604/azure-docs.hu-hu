@@ -1,7 +1,6 @@
 ---
-title: Azure-előfizetésekre vonatkozó számlás fizetés |} A Microsoft Docs
-description: Ismerteti, hogyan lehet Azure-előfizetésekre vonatkozó számlás fizetés
-documentationcenter: ''
+title: Azure-előfizetésekre vonatkozó számlás fizetés
+description: Ismerteti, hogyan lehet Azure-előfizetésekre vonatkozó számlás fizetés.
 author: bandersmsft
 manager: jureid
 tags: billing
@@ -10,23 +9,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/06/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 7af8789d61069f37d34d07653177e839caf35304
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9ca726ef737ce4750018d2461bc4bcd6c7ebb5f5
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076514"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491228"
 ---
-# <a name="pay-azure-subscription-by-invoice"></a>Azure-előfizetés számlás fizetés
+# <a name="pay-for-your-azure-subscription-by-invoice"></a>Az Azure-előfizetését a számlás fizetés
 
-Ha számla ellenében, ez azt jelenti, a számla invoice 30 napon belül kell fizetnie. Lesz jogosult az Azure-előfizetését a számlás fizetés, küldje el az Azure-támogatási kérést. Miután jóváhagyják a kérelmét, átválthat a számlázás használatalapú előfizetés a a [az Azure portal](https://portal.azure.com).
+Ha számla ellenében, ez azt jelenti, a számla a számla dátuma szerint ellenőrzés/átviteli átviteli számított 30 napon belül kell fizetnie. Lesz jogosult az Azure-előfizetését a számlás fizetés, küldje el az Azure-támogatási kérést. Miután jóváhagyják a kérelmét, átválthat az használatalapú (ellenőrzés/átviteli átvitel) számlázása a a [az Azure portal](https://portal.azure.com).
 
 > [!IMPORTANT]
-> * Számlás fizetés csak vállalati fiókok esetében érhető el.
+> * Számlás fizetési (ellenőrzés/átviteli átvitel) csak vállalati fiókok esetében érhető el.
 > * Az összes ki nem egyenlített díjakat használatalapú számlához való váltása előtt kell fizetnie.
-> * Miután használatalapú számlázás, nem válthat vissza a hitelkártya vagy bankkártya kártya fizetési.
 
 ## <a name="request-to-pay-by-invoice"></a>A számla ellenében irányuló kérelem
 
@@ -70,12 +68,18 @@ Ha számla ellenében, ez azt jelenti, a számla invoice 30 napon belül kell fi
 
 Szükséges hitelképességét miatt szükséges hitel összegét, küldünk a kreditet, ellenőrizze az alkalmazás.
 
-## <a name="switch-to-invoice-pay"></a>Váltás a használatalapú számlázás
+## <a name="switch-to-invoice-pay-checkwire-transfer"></a>Váltás a számlázás használatalapú (ellenőrzés/átviteli átvitel)
 
-Ha jóváhagyja, a számla ellenében, átválthat az Azure-előfizetés a számlás fizetési mód a [az Azure portal](https://portal.azure.com).
+Ha jóváhagyja, a számla ellenében, használatalapú (ellenőrzés/átviteli átvitel) az Azure Portalon a számlához való válthat.
+
+Ha a Microsoft Online Services Program fiókkal rendelkezik, az Azure-előfizetés átviteli ellenőrzés/átviteli válthat. Ha rendelkezik egy Microsoft Ügyfélszerződéséhez, átválthat a számlázási ellenőrzése/átviteli átviteli profilját. [Ismerje meg, hogyan ellenőrizheti a fiók típusa](#check-access-to-a-microsoft-customer-agreement).
+
+### <a name="switch-azure-subscription-to-checkwire-transfer"></a>Váltson Azure-előfizetés ellenőrzése/átviteli átvitel
+
+Az Azure-előfizetés fizetési (ellenőrzés/átviteli átvitel) a számlához való váltás az alábbi lépésekkel. **Miután használatalapú (ellenőrzés/átviteli átvitel) a számlázandó nem válthat vissza hitelkártya**.
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) fiók rendszergazdaként.
-1. A Keresés **Cost Management és számlázás**.
+1. Keresse meg **Cost Management és számlázás**.
 
     ![Keresés bemutató képernyőkép](./media/billing-how-to-pay-by-invoice/search.png)
 
@@ -85,9 +89,32 @@ Ha jóváhagyja, a számla ellenében, átválthat az Azure-előfizetés a szám
 
     ![Képernyőkép a fizetés számla gomb](./media/billing-how-to-pay-by-invoice/pay-by-invoice.png)
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolat
+### <a name="switch-billing-profile-to-checkwire-transfer"></a>Váltson a számlázási ellenőrzése/átviteli átviteli-profil
+
+Ellenőrzés/átviteli átviteli számlázási profilt Váltás az alábbi lépésekkel. Vegye figyelembe, hogy csak az a személy, aki az Azure-ban regisztrált módosíthatja az alapértelmezett szolgáltatási díj fizetési módjának számlázási profilja.
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. A Keresés **Cost Management és számlázás**.
+1. A bal oldali menüben kattintson a **számlázási profilok**.
+
+    ![Képernyőkép a számlázási profilja menü](./media/billing-how-to-pay-by-invoice/billing-profile.png)
+
+1. Válassza ki a számlázási profilt.
+1. A bal oldali menüben válassza **fizetési módok**.
+
+   ![Képernyőkép a fizetési módok menü](./media/billing-how-to-pay-by-invoice/billing-profile-payment-methods.png)
+
+1. Kattintson a kék szalagcím, amely szerint a jogosult ellenőrzés/átviteli átviteli szerint kell fizetnie.
+
+    ![Váltson át az ellenőrzés/átviteli kék szalagcím bemutató képernyőkép](./media/billing-how-to-pay-by-invoice/customer-led-switch-to-invoice.png)
+
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>A Microsoft Ügyfélszerződéséhez való hozzáférés ellenőrzése
+[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
+
+## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>További lépések
+
 - Ha szükséges, a számlázási kapcsolattartási adatok frissítése a [Azure Account Center](https://account.azure.com/Profile).

@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 06/26/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e850b915cd01b6bacd70d6df7752eeb83f7101d0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf888b72cca806822ca7a37542e71a5be0c8d5c3
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153857"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443729"
 ---
 # <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-using-powershell"></a>Az RBAC a PowerShell-lel az Azure blob és üzenetsor adatokhoz való hozzáférés engedélyezése
 
@@ -30,7 +30,7 @@ Ez a cikk ismerteti az Azure PowerShell használatával a beépített RBAC-szere
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
-## <a name="determine-resource-scope"></a>Erőforrás-hatókör meghatározása 
+## <a name="determine-resource-scope"></a>Erőforrás-hatókör meghatározása
 
 [!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
 
@@ -54,9 +54,9 @@ Storage Queue Data Message Sender         Allows for sending of Azure Storage qu
 Storage Queue Data Reader                 Allows for read access to Azure Storage queues and queue messages
 ```
 
-## <a name="assign-an-rbac-role-to-a-user"></a>Az RBAC szerepkör hozzárendelése felhasználóhoz
+## <a name="assign-an-rbac-role-to-a-security-principal"></a>Az RBAC szerepkör hozzárendelése egy rendszerbiztonsági tag
 
-Az RBAC szerepkör hozzárendelése felhasználóhoz, használja a [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) parancsot. A parancs formátuma a hozzárendelés hatókörét is különböznek egymástól a rendszer. Az alábbi példák bemutatják, hogyan szerepkör hozzárendelése a felhasználók a különböző hatókörök.
+Az RBAC-szerepkört rendel egy rendszerbiztonsági tag, használja a [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) parancsot. A parancs formátuma a hozzárendelés hatókörét is különböznek egymástól a rendszer. Az alábbi példák bemutatják a szerepkör hozzárendelése a felhasználók a különböző hatókörök, de használhatja ugyanazt a parancsot egy szerepkör hozzárendelése minden rendszerbiztonsági tag.
 
 ### <a name="container-scope"></a>Tároló hatókör
 

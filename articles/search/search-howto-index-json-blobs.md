@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 4f3fb624f5e6137c9edb0be97adc16d8c808ebd9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f60a41c48b3e78b860dca0e93d399420900dbd46
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523072"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485438"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>Az Azure Search Blob indexelőjével JSON-blobok indexelése
 Ez a cikk bemutatja, hogyan konfigurálhatja az Azure Search blob [indexelő](search-indexer-overview.md) nyerje strukturált JSON-dokumentumokat az Azure Blob storage-ban, és lehetővé teszi az Azure Search kereshető. Ezt a munkafolyamatot hoz létre az Azure Search-index, és betölti azt a meglévő, a JSON-blobok kinyert szöveget. 
@@ -118,7 +118,7 @@ A REST API-t használhatja az Azure Search szolgáltatásban az összes indexel�
 
 Áttekintheti [REST kódpéldákat](#rest-example) végén található ez a szakasz bemutatja, hogyan három összes objektum létrehozásához. Kapcsolatos is tartalmaz részleteket ebben a szakaszban [JSON-elemzési módok](#parsing-modes), [blobokat egyetlen](#parsing-single-blobs), [JSON-tömbök](#parsing-arrays), és [tömbök beágyazott](#nested-json-arrays).
 
-Indexelő kódalapú JSON, használja a [Postman](search-fiddler.md) és a REST API-t ezen objektumok létrehozása:
+Indexelő kódalapú JSON, használja a [Postman](search-get-started-postman.md) és a REST API-t ezen objektumok létrehozása:
 
 + [index](https://docs.microsoft.com/rest/api/searchservice/create-index)
 + [Adatforrás](https://docs.microsoft.com/rest/api/searchservice/create-data-source)
@@ -136,7 +136,7 @@ Az Azure Blob storage-ban JSON-blobok jellemzően egy JSON-dokumentumok és a eg
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 – állítsa össze a kérés bemenetek
 
-Az egyes kérések meg kell adnia a szolgáltatás nevét és adminisztrációs kulcsot az Azure Search (a POST-fejléc), és a tárfiók nevét és kulcsát a blob Storage. Használhat [Postman](search-fiddler.md) HTTP-kéréseket küldhet az Azure Search.
+Az egyes kérések meg kell adnia a szolgáltatás nevét és adminisztrációs kulcsot az Azure Search (a POST-fejléc), és a tárfiók nevét és kulcsát a blob Storage. Használhat [Postman](search-get-started-postman.md) HTTP-kéréseket küldhet az Azure Search.
 
 Másolja az alábbi négy értéket a Jegyzettömbbe, így beillesztheti őket egy kérelem:
 

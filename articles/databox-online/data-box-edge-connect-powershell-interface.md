@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 8cd89b21e80662ec50746e0c7721a5544cfbce30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6af95b7f8bde6e77ba356fec9dde123e26a9a4a8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64717503"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448625"
 ---
 # <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Windows Powershellen keresztül az Azure Data Box peremhálózati eszköz kezelése
 
@@ -52,8 +52,9 @@ IoT Edge-tanúsítványokat az IoT Edge-eszköz és előfordulhat, hogy csatlako
 Az alábbi példa bemutatja a használat, a parancsmag az IoT Edge-tanúsítványok telepítése:
 
 ```
-Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username/password"
+Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
 ```
+Ez a parancsmag futtatásakor meg kell adnia a jelszót a hálózati megosztáshoz kéri.
 
 További információ a tanúsítványok, nyissa meg [Azure IoT Edge-tanúsítványok](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) vagy [telepítse a tanúsítványokat az átjáró a](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway#install-certificates-on-the-gateway).
 
@@ -75,13 +76,12 @@ Ha a számítási szerepkör konfigurálva van az eszközön, a PowerShell-felü
     Az alábbi példa bemutatja ennek a parancsmagnak a használatát:
 
     ```powershell
-    Get-AzureDataBoxEdgeComputeRoleLogs -Path "\\hcsfs\logs\myacct" -Credential "username/password" -RoleInstanceName "IotRole" -FullLogCollection
+    Get-AzureDataBoxEdgeComputeRoleLogs -Path "\\hcsfs\logs\myacct" -Credential "username" -FullLogCollection
     ```
 
     Itt látható a parancsmag paraméterei leírása:
     - `Path`: Adja meg a megosztást, ahol szeretné létrehozni a számítási log csomagot egy hálózati elérési útját.
-    - `Credential`: Adja meg a felhasználónevet és jelszót a hálózati megosztáson.
-    - `RoleInstanceName`: Adja meg ezt a karakterláncot `IotRole` ehhez a paraméterhez.
+    - `Credential`: Adja meg a felhasználónevet a hálózati megosztáson. Ez a parancsmag futtatásakor adja meg a megosztás jelszót kell.
     - `FullLogCollection`: Ez a paraméter gondoskodik arról, hogy a napló csomag tartalmazza az összes számítási napló. Alapértelmezés szerint a napló csomagot a naplók csak egy részhalmazát tartalmazza.
 
 ## <a name="monitor-and-troubleshoot-compute-modules"></a>Monitorozás és hibaelhárítás számítási modulok

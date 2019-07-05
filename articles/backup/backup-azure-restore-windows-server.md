@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 9/7/2018
 ms.author: saurse
-ms.openlocfilehash: d58b51f06c21c787e4aa720c803ab6533544d55c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9c2f8ce0dfb866826de549946bc3ee1acc2b677f
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60238619"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460259"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Fájlok visszaállítása Windows az Azure Resource Manager-alapú üzemi modell használatával
 
@@ -97,7 +97,7 @@ Ezeket a lépéseket a következő kifejezésekkel tartalmazza:
 * *Minta tároló* – a Recovery Services-tároló, amely a forrásgép és a célként megadott gép regisztrálva vannak. <br/>
 
 > [!NOTE]
-> Biztonsági mentések nem lehet visszaállítani a célszámítógépen az operációs rendszer korábbi verzióját futtató. Például egy biztonsági egy Windows 7 rendszerű számítógépen a Windows 8 (vagy újabb) állíthatók vissza. Egy biztonsági egy Windows 8 rendszerű számítógép nem állítható vissza egy Windows 7 rendszerű számítógépen.
+> Biztonsági mentések nem lehet visszaállítani a célszámítógépen az operációs rendszer korábbi verzióját futtató. Például egy biztonsági egy Windows 7 rendszerű számítógépen Windows 7 (vagy újabb) állíthatók vissza. Egy biztonsági egy Windows 8 rendszerű számítógép nem állítható vissza egy Windows 7 rendszerű számítógépen.
 >
 >
 

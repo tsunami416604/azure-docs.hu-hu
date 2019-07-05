@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yossiy
 ms.author: mbullwin
-ms.openlocfilehash: cfa00504cd2a05985fde2af3357418eac8baceeb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46944603fdf45a2a7a14641086959bf61b3f773e
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61299055"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465888"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Intelligens detektálás – rendellenes hibák
 [Az Application Insights](../../azure-monitor/app/app-insights-overview.md) automatikus értesítést küld közel valós időben Ha a webalkalmazás a sikertelen kérelmek arányának rendellenes növekedése. Azt észleli, hogy egy szokatlan megnövekedhet a HTTP-kérések vagy sikertelenként jelentett függőségi hívások sebessége. A kéréseket, a sikertelen kérések esetében általában a válaszkódot 400 vagy magasabb. Könnyebben osztályozhatja és diagnosztizálhatja a problémát, jellemzőit, a hibák és a kapcsolódó telemetriai adatok elemzése az értesítés megtalálható. Emellett mutató hivatkozások találhatók az Application Insights portálon további elemzés céljából. A szolgáltatás nincs beállítás és konfiguráció, nem kell, gépi tanulási algoritmusok használatával előrejelezheti a normál hibaszázalék.
 
-Ez a funkció működik, a Java és az ASP.NET web apps, a felhőben vagy a saját kiszolgálókon. Is működik minden olyan alkalmazás, amely létrehozza a kérés és a függőségi telemetria – például ha egy feldolgozói szerepkör, amely meghívja ezt [TrackRequest()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) vagy [TrackDependency()](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency).
+Ez a funkció működik a webalkalmazás, a felhőben vagy a saját kiszolgálókon üzemeltetett létrehozó kérés és a függőségi telemetria – például ha rendelkezik egy feldolgozói szerepkör, amely meghívja [TrackRequest()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) vagy [TrackDependency()](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency).
 
 Miután beállította [a projekt Application Insights](../../azure-monitor/app/app-insights-overview.md), és az alkalmazása a telemetria bizonyos minimális mennyiségű hoz létre, a megadott rendellenes hibák az intelligens detektálási ismerje meg az alkalmazás normál viselkedését, még mielőtt 24 óráig tart be van kapcsolva, és riasztásokat küldhet.
 
@@ -43,6 +43,26 @@ Figyelje meg, amely megadja, hogy:
 * A hibák társított jellemző mintát. Az ebben a példában van egy adott válaszkód, a kérés nevét (művelet) és az Alkalmazásverzió. Amely azonnal bemutatja, hol kell elkezdeni keresi a kódban. Egyéb lehetőségek lehet az adott böngésző vagy az ügyfél operációs rendszerrel.
 * A kivétel, naplókivonatok és függőségi hiba (adatbázisok vagy más külső összetevők), amely a megadott hibák társítani kell jelennek meg.
 * Az Application Insights telemetria a megfelelő keresések közvetlen hivatkozást.
+
+## <a name="failure-anomalies-v2"></a>Hiba-anomáliák v2
+A rendellenes hibák riasztási szabály új verziója már elérhető. Az új verzió az új Azure riasztási platformon fut, és bemutatja a fejlesztések különböző keresztül a meglévő verziót.
+
+### <a name="whats-new-in-this-version"></a>Ez a verzió újdonságai?
+- Gyorsabb észlelési problémák
+- Műveletek – a levélforgalmi a riasztási szabály létrehozása és egy társított [műveletcsoport](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) nevű, "Application Insights intelligens detektálás", amely tartalmazza az e-mail és webhook-műveletek, és további műveletek indításához kiterjeszthető Ha a riasztás akkor következik be.
+- Információ a fókuszban lévő értesítések – Ez a riasztási szabály küldött e-mailekre most küldi el alapértelmezés szerint az előfizetéshez tartozó figyelési olvasó és közreműködő figyelése szerepkörökhöz rendelt felhasználók számára. Ezzel kapcsolatban további információk érhetők el [Itt](https://docs.microsoft.com/azure/azure-monitor/app/proactive-email-notification).
+- ARM-sablonok – lásd a példa konfiguráció egyszerűbb [Itt](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config).
+- Gyakori riasztási séma-támogatás – Ez a riasztási szabály által küldött értesítések kövesse a [gyakori riasztási séma](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema).
+- E-mail-sablon – E-mail értesítések a riasztási szabály a konzisztens tekintse meg, és úgy gondolja, a más riasztástípusok egységes. Ez a változás a rendellenes hibák riasztások részletes diagnosztikai információt lekérni a beállítás már nem érhető el.
+
+### <a name="how-do-i-get-the-new-version"></a>Hogyan szerezhetem be az új verziót?
+- Újonnan létrehozott Application Insights-erőforrások már felhasznált a rendellenes hibák riasztási szabály az új verzióval.
+- Meglévő Application Insights-erőforrások klasszikus verziója a rendellenes hibák riasztási szabály fog kapni az új verzió egyszer üzemeltetési előfizetésüket, az új riasztások platformra való áttelepítése keretében az [klasszikus riasztások használatból való kivonást egyaránt folyamat ](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement).
+
+> [!NOTE]
+> Az új verziót a rendellenes hibák riasztási szabály ingyenes marad. Ezenkívül, e-mail és webhook-műveletek által aktivált a társított "Application Insights intelligens detektálás" műveletcsoport-példányok előfizetésenkénti is.
+> 
+> 
 
 ## <a name="benefits-of-smart-detection"></a>Intelligens detektálás előnyei
 Szokásos [metrikákhoz kapcsolódó riasztások](../../azure-monitor/app/alerts.md) jelzi, hogy probléma lehet. De intelligens detektálás elindítja a diagnosztikai munka, nagy mennyiségű, egyébként külön kellene Ön megteheti az elemzés végrehajtásához. Az eredmények eligazíthatja csomagolva, kap, annak megakadályozása, hogy gyorsan, a probléma okát.

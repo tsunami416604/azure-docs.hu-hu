@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: 4df65819256e6a81a07927d463d130fbfdf9317a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85e7b40778305395bb0f4a9403b4aeafc4607654
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255009"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565702"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Biztonsági mentése és helyreállítása Azure virtuális gépeken a PowerShell-lel
 
@@ -447,7 +447,7 @@ $restorejob
 >
 >
 
-Adjon meg egy további paraméter **TargetResourceGroupName** a felügyelt lemezek visszaállítja RG megadásához. 
+Adjon meg egy további paraméter **TargetResourceGroupName** a felügyelt lemezek visszaállítja RG megadásához.
 
 > [!NOTE]
 > Erősen ajánlott a használata a **TargetResourceGroupName** paramétere visszaállítása felügyelt lemezek jelentős teljesítménynövekedést eredményez, mivel. Ezenkívül modulból Az Azure Powershell 1.0-s és újabb verziók, ez a paraméter megadása kötelező esetén visszaállítást a felügyelt lemezekkel rendelkező
@@ -483,6 +483,15 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob
 ```
 
 Miután a lemezek visszaállítását, nyissa meg a következő szakaszban a virtuális gép létrehozásához.
+
+## <a name="replace-disks-in-azure-vm"></a>Cserélje le a lemezeket az Azure virtuális Gépen
+
+Cserélje le a lemezeket és a konfigurációs adatait, hajtsa végre az alábbi lépéseket:
+
+- 1\. lépés: [A lemezek visszaállítása](backup-azure-vms-automation.md#restore-the-disks)
+- 2\. lépés: [PowerShell-lel adatlemez leválasztása](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell)
+- 3\. lépés: [Adatlemez csatolása a Windows virtuális géphez a PowerShell-lel](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps)
+
 
 ## <a name="create-a-vm-from-restored-disks"></a>Hozzon létre egy virtuális gép a helyreállított lemezek alapján
 
@@ -718,6 +727,7 @@ A következő szakaszban azok "VMConfig" fájlt használó virtuális gép létr
       ```powershell  
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
       ```
+
 
 ## <a name="restore-files-from-an-azure-vm-backup"></a>Fájlok visszaállítása egy Azure virtuális gép biztonsági mentése
 

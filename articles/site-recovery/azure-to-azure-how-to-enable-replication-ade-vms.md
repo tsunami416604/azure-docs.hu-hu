@@ -2,18 +2,18 @@
 title: Konfigurálja az Azure Disk Encryption-kompatibilis virtuális gépek replikálása az Azure Site Recovery |} A Microsoft Docs
 description: Ez a cikk ismerteti az Azure Disk Encryption-kompatibilis virtuális gépek egy Azure-régióból a másikba replikáció konfigurálását a Site Recovery használatával.
 services: site-recovery
-author: sujayt
+author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 4943b730bb46ee00200d84faf95a7ccb069d3aa8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b2e9bf7fbe7d5940b517d97dcc15d21c30835001
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790995"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449220"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Az Azure Disk Encryption-kompatibilis virtuális gépek replikálása másik Azure-régióba
 
@@ -22,23 +22,23 @@ Ez a cikk ismerteti az Azure Disk Encryption-kompatibilis virtuális gépek repl
 >[!NOTE]
 >Az Azure Site Recovery jelenleg csak Azure virtuális gépeken futó, amelyek vagy egy Windows operációs rendszert futtató támogatja [engedélyezett a titkosítás az Azure Active Directoryval (Azure AD)](https://aka.ms/ade-aad-app).
 
-## <a name="required-user-permissions"></a>Szükséges felhasználói engedélyek
+## <a id="required-user-permissions"></a> Szükséges felhasználói engedélyek
 A Site Recovery a felhasználónak szüksége van a key vault létrehozása az a cél régióban, és másolja a kulcsokat a régió.
 
 A virtuális gépek lemeztitkosítás engedélyezve van az Azure Portalról a replikáció engedélyezése a felhasználónak a következő engedélyekkel:
 
 - Key vault-engedélyek
-    - Lista
+    - List
     - Hozzon létre
     - Lekérés
 
 -   A Key vault titkos kód engedélyei
-    - Lista
+    - List
     - Hozzon létre
     - Lekérés
 
 - A Key vault Kulcsengedélyek (csak a virtuális gépek kulcstitkosítási kulcs segítségével titkosíthatja a lemeztitkosítási kulcsok esetén szükséges)
-    - Lista
+    - List
     - Lekérés
     - Hozzon létre
     - Titkosítás
@@ -139,18 +139,25 @@ Használhat [parancsfájl](#copy-disk-encryption-keys-to-the-dr-region-by-using-
 
 ## <a id="trusted-root-certificates-error-code-151066"></a>A key vault engedélyekkel kapcsolatos problémák hibaelhárítása Azure – Azure VM-replikáció során
 
-**1. ok:** Előfordulhat, hogy a kijelölt a cél régióból egy már létrehozott key vault, amely nem rendelkezik a szükséges engedélyekkel, ahelyett, hogy a Site Recovery hozzon létre egyet. Győződjön meg arról, hogy rendelkezik-e a key vault, a szükséges engedélyekkel, a fentebb leírt módon.
+Az Azure Site Recovery legalább olvasási engedéllyel a forrás régió Key vaulttal és a célként megadott régióban key vault olvassa el a titkos kulcsot, és másolja azt a célként megadott régióban key vault vonatkozó írási engedély szükséges. 
+
+**1. ok:** Nem rendelkezik "GET" engedéllyel a **forrás régió a Key vault** , olvassa el a kulcsokat. </br>
+**Hogyan háríthatja el:** Függetlenül attól, hogy Ön az előfizetés-rendszergazda vagy sem fontos, hogy Ön jogosult lekérése a key vaultban.
+
+1. Lépjen a forrás régió a Key vault amely ebben a példában a "ContososourceKeyvault" > **hozzáférési házirendek** 
+2. A **rendszerbiztonsági tag kijelölése** adja hozzá például a felhasználói név: "dradmin@contoso.com"
+3. A **Kulcsengedélyek** GET kiválasztása 
+4. A **titkos engedélyt** GET kiválasztása 
+5. A hozzáférési szabályzat mentése
+
+**2. ok:** Nem rendelkezik szükséges engedéllyel az **cél régió a Key vault** írni a kulcsokat. </br>
 
 *Például*: A key vault rendelkező virtuális gép replikálása próbál *ContososourceKeyvault* a forrásrégióban található.
 Minden engedély is van a forrás key vaultnak régióban. Azonban a védelem, során válasszon a már létrehozott key vault ContosotargetKeyvault, amely nem rendelkezik engedélyekkel. Hiba történik.
 
-**Hogyan háríthatja el:** Lépjen a **kezdőlap** > **Keyvaults** > **ContososourceKeyvault** > **hozzáférési házirendek** és adja hozzá a megfelelő engedélyekkel.
+A szükséges engedéllyel [cél Key vault](#required-user-permissions)
 
-**2. ok:** Előfordulhat, hogy kiválasztotta a cél régióból egy már létrehozott key vault, amely nem rendelkezik visszafejtése titkosítása engedélyek ahelyett, hogy a Site Recovery hozzon létre egyet. Győződjön meg arról, hogy rendelkezik-e visszafejtése-titkosítják az engedélyeket is amelyet épp titkosít a kulcs a forrásrégióban.</br>
-
-*Például*: Replikálja a virtuális Gépet, amely rendelkezik key vault próbál *ContososourceKeyvault* a forrásrégióban található. A szükséges engedéllyel rendelkezik a forrás régió kulcstartón. Azonban a védelem, során válasszon a már létrehozott key vault ContosotargetKeyvault, amely nem rendelkezik engedélyekkel titkosítására és visszafejtésére. Hiba történik.</br>
-
-**Hogyan háríthatja el:** Lépjen a **kezdőlap** > **Keyvaults** > **ContososourceKeyvault** > **hozzáférési házirendek**. Adjon hozzá engedélyeket a **Kulcsengedélyek** > **titkosítási műveletek**.
+**Hogyan háríthatja el:** Lépjen a **kezdőlap** > **Keyvaults** > **ContosotargetKeyvault** > **hozzáférési házirendek** és adja hozzá a megfelelő engedélyekkel.
 
 ## <a name="next-steps"></a>További lépések
 

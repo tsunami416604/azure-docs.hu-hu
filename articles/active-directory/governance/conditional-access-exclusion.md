@@ -16,12 +16,12 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8611338acf7a1299e9c3a4f5347fb633604254e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 880593773ca7801da2874dc2a09a4bddf910a503
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110397"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67471838"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Az Azure AD hozzáférési felülvizsgálatok felhasználók ki vannak zárva a feltételes hozzáférési szabályzatok kezelése
 
@@ -36,7 +36,7 @@ INFORMATIKAI rendszergazdaként használhat [Azure AD feltételes hozzáférési
 
 Másik példaként használható [nevesített helyek](../conditional-access/location-condition.md) a feltételes hozzáférés konfigurálása megyék és régióban, amelyről nem szeretné, hogy a felhasználók a bérlőhöz való hozzáféréshez.
 
-![Nevesített helyek](./media/conditional-access-exclusion/named-locations.png)
+![A feltételes hozzáférés nevesített helyek](./media/conditional-access-exclusion/named-locations.png)
 
 Bizonyos esetekben azonban felhasználók rendelkezhet egy indokolt, ezek a blokkolt országokból/régiókból származó bejelentkezni. Ha például felhasználók előfordulhat, hogy utazás közben dolgoztak munkahelyi vagy személyes okokból. Ebben a példában a feltételes hozzáférési szabályzat blokkolja ezen országok vagy régiók rendelkezhet egy dedikált felhőbeli biztonsági csoport a felhasználókat, akik nem tartoznak a szabályzat alól. Felhasználók, akiknek hozzáférésre van szükségük, utazás közben is hozzáadhat magukat a csoportba történő [az Azure AD önkiszolgáló csoportkezelés](../users-groups-roles/groups-self-service-management.md).
 
@@ -68,7 +68,7 @@ Kövesse az alábbi lépéseket, hozzon létre egy új Azure AD-csoport és a eg
 
 1. Válassza ki a felhasználók, érdemes lehet a kizárási csoport része, és kattintson a **létrehozás**.
 
-    ![Új csoport ablaktábla](./media/conditional-access-exclusion/new-group.png)
+    ![Új csoport panel az Azure Active Directoryban](./media/conditional-access-exclusion/new-group.png)
 
 ### <a name="create-a-conditional-access-policy-that-excludes-the-group"></a>Egy feltételes hozzáférési szabályzat, amely nem tartalmazza a csoport létrehozása
 
@@ -93,7 +93,7 @@ Most már létrehozhat egy feltételes hozzáférési szabályzatot, amely a kiz
 
 1. Folytassa a a szervezeti követelmények alapján feltételes hozzáférési házirend beállításával.
 
-    ![Kizárt felhasználók kiválasztása](./media/conditional-access-exclusion/select-excluded-users.png)
+    ![Kizárt felhasználók panelen válassza a feltételes hozzáférés](./media/conditional-access-exclusion/select-excluded-users.png)
 
 Nézzük terjed ki a két példa, ahol a hozzáférési felülvizsgálatok használhatja a feltételes hozzáférési szabályzatok kizárások kezelése.
 
@@ -116,7 +116,7 @@ Tegyük fel, hogy a feltételes hozzáférési szabályzatot, hogy bizonyos orsz
 
 6. Engedélyezi az e-mail értesítések, így a felhasználók értesítést kapjanak a kezdő és a hozzáférési felülvizsgálat befejezése után.
 
-    ![Hozzáférési felülvizsgálat létrehozása](./media/conditional-access-exclusion/create-access-review-1.png)
+    ![Hozzon létre egy hozzáférési felülvizsgálat panel például 1](./media/conditional-access-exclusion/create-access-review-1.png)
 
 ## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>2\. példa Az örökölt hitelesítési elérő felhasználók számára a hozzáférési felülvizsgálat
 
@@ -134,7 +134,7 @@ Tegyük fel, hogy a feltételes hozzáférési szabályzatot, hogy blokkolja az 
 
 6. Engedélyezi az e-mail értesítések, így a felhasználók értesítést kapjanak a kezdő és a hozzáférési felülvizsgálat befejezése után.
 
-    ![Hozzáférési felülvizsgálat létrehozása](./media/conditional-access-exclusion/create-access-review-2.png)
+    ![Hozzon létre egy hozzáférési felülvizsgálat panel például 2](./media/conditional-access-exclusion/create-access-review-2.png)
 
 **A Pro-tipp**: Ha sok Kizárási csoportokat, és ezért létre kell hoznia a több hozzáférési felülvizsgálatok, most már van API, amely lehetővé teszi, hogy hozzon létre, és programozott módon kezelheti azokat a Microsoft Graph béta végpontját. Első lépésként tekintse meg a [az Azure AD hozzáférési felülvizsgálatok API-referencia](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/accessreviews_root) és [példa beolvasása az Azure AD hozzáférési felülvizsgálatok keresztül a Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096).
 
@@ -148,11 +148,11 @@ Most, hogy minden a helyen, a csoport, a feltételes hozzáférési szabályzat 
 
 1. Kattintson a **eredmények** , akik jóváhagyták. a listán maradnak, és aki el lett távolítva.
 
-    ![Hozzáférési felülvizsgálati eredmények](./media/conditional-access-exclusion/access-reviews-results.png)
+    ![Hozzáférési felülvizsgálati eredmények megjelenítése, aki jóvá lett hagyva](./media/conditional-access-exclusion/access-reviews-results.png)
 
 1. Kattintson a **Auditnaplók** a felülvizsgálat alatt végrehajtott műveletek megtekintéséhez.
 
-    ![A hozzáférési felülvizsgálatok auditnaplók](./media/conditional-access-exclusion/access-reviews-audit-logs.png)
+    ![A hozzáférési felülvizsgálatok auditnaplók műveletek listázása](./media/conditional-access-exclusion/access-reviews-audit-logs.png)
 
 INFORMATIKAI rendszergazdaként, hogy a szabályzatokhoz kizárási csoportok kezelése néha elkerülhetetlen. Azonban ezek a csoportok karbantartása, magukat, és naplózás, ezeket a változásokat is megkönnyíti az Azure AD hozzáférési megtekintésével azokat a vállalat tulajdonosa vagy felhasználói rendszeresen ellenőrzi.
 

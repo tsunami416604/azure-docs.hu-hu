@@ -7,12 +7,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 55db43bf3037fcba59e7ad783c6d8c06f1886bdb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8227ff0c56e147db66c4cdc93083d671b08d1d98
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142830"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433416"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Az Apache Hadoop megadásához és a munkafolyamat futtatása a Linux-alapú Azure HDInsight Apache Oozie használata
 
@@ -127,7 +127,7 @@ A következő lépések segítségével hozzon létre egy Hive lekérdezés (Hiv
 
    * `${hiveDataFolder}`: A tábla az adatfájlok tárolására helyét tartalmazza.
 
-     A munkafolyamat-definíciós fájlt, ebben az oktatóanyagban workflow.xml továbbítja ezeket az értékeket a futásidőben HiveQL-parancsfájlt.
+     A munkafolyamat-definíciós fájlt, ez a cikk workflow.xml továbbítja ezeket az értékeket a futásidőben HiveQL-parancsfájlt.
 
 4. Mentse a fájlt, jelölje ki a Ctrl + X, adja meg `Y`, majd válassza ki **Enter**.  
 
@@ -708,7 +708,7 @@ Például a feladat ebben a dokumentumban, akkor használja az alábbi lépések
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtudhatta, az Oozie-munkafolyamatokkal definiálása és az Oozie-feladatok futtatása. További információ a HDInsight használatáról, tekintse meg a következő cikkeket:
+Ebben a cikkben megtanulta, az Oozie-munkafolyamatokkal definiálása és az Oozie-feladatok futtatása. További információ a HDInsight használatáról, tekintse meg a következő cikkeket:
 
 * [A HDInsight Apache Hadoop-feladatok adatok feltöltése][hdinsight-upload-data]
 * [A HDInsight az Apache Hadoop Apache Sqoop használata][hdinsight-use-sqoop]

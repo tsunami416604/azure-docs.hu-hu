@@ -8,12 +8,12 @@ ms.author: kasparks
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: bdba3f135f852312af1692f77643095d865f1d06
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d78d8a689b860162a742e85c155205f072a3667c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66254674"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446779"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Az Azure Advisorral az alkalmazás rendelkezésre állásának javítása
 
@@ -93,6 +93,9 @@ Az Azure Advisor azonosítja, amely a Java SDK korábbi verzióját használja, 
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Az Azure Cosmos DB Spark-összekötő frissítése a legújabb verzióra a Mavenről
 
 Az Azure Advisor azonosítja a Cosmos DB Spark-összekötő régi verzióját használja, javasoljuk, hogy a legújabb verzióra való frissítést a Mavenből a legújabb javításokat, teljesítménnyel kapcsolatos fejlesztések és új funkciók az Azure Cosmos DB-fiókokhoz. [További tudnivalók a Cosmos DB Spark-összekötő](https://aka.ms/cosmosdb/spark-connector)
+
+## <a name="enable-virtual-machine-replication"></a>Virtuális gépek replikálásának engedélyezése
+Egy másik régióba engedélyezve van a replikáció nem rendelkező virtuális gépek esetén nem hibatűrőek az regionális üzemkimaradások utáni helyreállításon. Virtuális gépek replikálásához bármely negatív hatás az üzletmenetre csökkenti a az Azure-régióban leállás ideje alatt. Az Advisor észlelni fogja a virtuális gépek, amelyek nem rendelkeznek a replikáció engedélyezve van, és javasoljuk, hogy engedélyezze a replikációt, így leállás esetén gyorsan szakaszhoz a virtuális gépek egy távoli Azure-régióban. [További tudnivalók a virtuálisgép-replikációt](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Magas rendelkezésre állás – javaslatok az Advisor elérése
 

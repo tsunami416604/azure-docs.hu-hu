@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 35ef708cdcedc2d7bafedb8bf3686e4b468177df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dc2c3e557f295bd3125c09d9b839716159dcf50b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64723685"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446460"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Az Apache Kafka on HDInsight az Azure Kubernetes Service használata
 
@@ -35,7 +35,7 @@ Jelen dokumentum céljából feltételezzük, hogy Ön ismeri a létrehozásár�
 * Azure Kubernetes Service
 * Azure virtuális hálózatok
 
-Jelen dokumentum céljából feltételezzük is, hogy rendelkezik bizonnyal a [Azure Kubernetes Service-oktatóanyag](../../aks/tutorial-kubernetes-prepare-app.md). Ebben az oktatóanyagban létrehoz egy container service létrehoz egy Kubernetes-fürtöt, egy tároló-beállításjegyzéket, és konfigurálja a `kubectl` segédprogramot.
+Jelen dokumentum céljából feltételezzük is, hogy rendelkezik bizonnyal a [Azure Kubernetes Service-oktatóanyag](../../aks/tutorial-kubernetes-prepare-app.md). Ebben a cikkben létrehoz egy container service, létrehoz egy Kubernetes-fürtöt, egy tároló-beállításjegyzéket, és konfigurálja a `kubectl` segédprogramot.
 
 ## <a name="architecture"></a>Architektúra
 

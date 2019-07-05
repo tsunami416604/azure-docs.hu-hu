@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: 1b55a2b053b86d3260fdca201357445d2556c444
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 062b565369c3b6e877d36f883a152ca6c013e0cf
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60793973"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67479662"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Az Application Insights SDK-t a telemetria szűrése és előfeldolgozása
 
@@ -53,62 +53,58 @@ A telemetriai adatok szűréséhez, írása a telemetriai adatokat feldolgozó, 
 
     Figyelje meg, hogy a Telemetriai processzorok feldolgozási láncolatától hozhatnak létre. Amikor példányosítania telemetriai processzorra, átadhatja egy hivatkozást a láncban következő processzor. Ha a telemetriai adatok pont számára a folyamat módszer van, annak működik, és ekkor meghívja a következő telemetriai adatokat feldolgozó a lánc.
 
-    ```csharp
+```csharp
+using Microsoft.ApplicationInsights.Channel;
+using Microsoft.ApplicationInsights.Extensibility;
 
-    using Microsoft.ApplicationInsights.Channel;
-    using Microsoft.ApplicationInsights.Extensibility;
+public class SuccessfulDependencyFilter : ITelemetryProcessor
+{
 
-    public class SuccessfulDependencyFilter : ITelemetryProcessor
-      {
+    private ITelemetryProcessor Next { get; set; }
 
-        private ITelemetryProcessor Next { get; set; }
+    // You can pass values from .config
+    public string MyParamFromConfigFile { get; set; }
 
-        // You can pass values from .config
-        public string MyParamFromConfigFile { get; set; }
+    // Link processors to each other in a chain.
+    public SuccessfulDependencyFilter(ITelemetryProcessor next)
+    {
+        this.Next = next;
+    }
+    public void Process(ITelemetry item)
+    {
+        // To filter out an item, just return
+        if (!OKtoSend(item)) { return; }
+        // Modify the item if required
+        ModifyItem(item);
 
-        // Link processors to each other in a chain.
-        public SuccessfulDependencyFilter(ITelemetryProcessor next)
-        {
-            this.Next = next;
-        }
-        public void Process(ITelemetry item)
-        {
-            // To filter out an item, just return
-            if (!OKtoSend(item)) { return; }
-            // Modify the item if required
-            ModifyItem(item);
-
-            this.Next.Process(item);
-        }
-
-        // Example: replace with your own criteria.
-        private bool OKtoSend (ITelemetry item)
-        {
-            var dependency = item as DependencyTelemetry;
-            if (dependency == null) return true;
-
-            return dependency.Success != true;
-        }
-
-        // Example: replace with your own modifiers.
-        private void ModifyItem (ITelemetry item)
-        {
-            item.Context.Properties.Add("app-version", "1." + MyParamFromConfigFile);
-        }
+        this.Next.Process(item);
     }
 
-    ```
+    // Example: replace with your own criteria.
+    private bool OKtoSend (ITelemetry item)
+    {
+        var dependency = item as DependencyTelemetry;
+        if (dependency == null) return true;
+
+        return dependency.Success != true;
+    }
+
+    // Example: replace with your own modifiers.
+    private void ModifyItem (ITelemetry item)
+    {
+        item.Context.Properties.Add("app-version", "1." + MyParamFromConfigFile);
+    }
+}
+```
 3. Illessze be az applicationinsights.config fájlban:
 
 ```xml
-
-    <TelemetryProcessors>
-      <Add Type="WebApplication9.SuccessfulDependencyFilter, WebApplication9">
-         <!-- Set public property -->
-         <MyParamFromConfigFile>2-beta</MyParamFromConfigFile>
-      </Add>
-    </TelemetryProcessors>
-
+<TelemetryProcessors>
+  <Add Type="WebApplication9.SuccessfulDependencyFilter, WebApplication9">
+     <!-- Set public property -->
+     <MyParamFromConfigFile>2-beta</MyParamFromConfigFile>
+  </Add>
+</TelemetryProcessors>
 ```
 
 (Ez a mintavételi szűrő táblafiókhoz ahol ugyanabban a szegmensben.)
@@ -123,15 +119,13 @@ A .config fájlt a karakterlánc-értékeket az osztályban található nyilván
 **Másik lehetőségként** lehet inicializálni a kód a szűrőt. A láncban a processzor beszúrása – például a Global.asax.cs AppStart - megfelelő inicializálási osztályban:
 
 ```csharp
+var builder = TelemetryConfiguration.Active.TelemetryProcessorChainBuilder;
+builder.Use((next) => new SuccessfulDependencyFilter(next));
 
-    var builder = TelemetryConfiguration.Active.TelemetryProcessorChainBuilder;
-    builder.Use((next) => new SuccessfulDependencyFilter(next));
+// If you have more processors:
+builder.Use((next) => new AnotherProcessor(next));
 
-    // If you have more processors:
-    builder.Use((next) => new AnotherProcessor(next));
-
-    builder.Build();
-
+builder.Build();
 ```
 
 Ezt követően létrehozott TelemetryClients fogja használni a processzorok.
@@ -141,22 +135,19 @@ Ezt követően létrehozott TelemetryClients fogja használni a processzorok.
 Szűrje ki a robotok és a webes tesztek. Bár a Metrikaböngésző lehetővé teszi meghatározott szintetikus források szűréséhez, ezt a beállítást az SDK szűrésével csökkentheti az adatforgalmat.
 
 ```csharp
+public void Process(ITelemetry item)
+{
+  if (!string.IsNullOrEmpty(item.Context.Operation.SyntheticSource)) {return;}
 
-    public void Process(ITelemetry item)
-    {
-      if (!string.IsNullOrEmpty(item.Context.Operation.SyntheticSource)) {return;}
-
-      // Send everything else:
-      this.Next.Process(item);
-    }
-
+  // Send everything else:
+  this.Next.Process(item);
+}
 ```
 
 #### <a name="failed-authentication"></a>A sikertelen hitelesítés
 Szűrje a kérések a "401-es" választ ki.
 
 ```csharp
-
 public void Process(ITelemetry item)
 {
     var request = item as RequestTelemetry;
@@ -170,7 +161,6 @@ public void Process(ITelemetry item)
     // Send everything else:
     this.Next.Process(item);
 }
-
 ```
 
 #### <a name="filter-out-fast-remote-dependency-calls"></a>Szűrje ki a gyors távoli függőségi hívások
@@ -182,7 +172,6 @@ Ha csak szeretné, amelyek lassú hívások diagnosztizálása, kiszűrhetők a 
 >
 
 ```csharp
-
 public void Process(ITelemetry item)
 {
     var request = item as DependencyTelemetry;
@@ -193,7 +182,6 @@ public void Process(ITelemetry item)
     }
     this.Next.Process(item);
 }
-
 ```
 
 #### <a name="diagnose-dependency-issues"></a>Függőségi problémák diagnosztikája
@@ -214,40 +202,39 @@ Ha megad egy telemetriainicializáló, azt nevezzük, amikor a Track*() módszer
 *C#*
 
 ```csharp
+using System;
+using Microsoft.ApplicationInsights.Channel;
+using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.ApplicationInsights.Extensibility;
 
-    using System;
-    using Microsoft.ApplicationInsights.Channel;
-    using Microsoft.ApplicationInsights.DataContracts;
-    using Microsoft.ApplicationInsights.Extensibility;
-
-    namespace MvcWebRole.Telemetry
+namespace MvcWebRole.Telemetry
+{
+  /*
+   * Custom TelemetryInitializer that overrides the default SDK
+   * behavior of treating response codes >= 400 as failed requests
+   *
+   */
+  public class MyTelemetryInitializer : ITelemetryInitializer
+  {
+    public void Initialize(ITelemetry telemetry)
     {
-      /*
-       * Custom TelemetryInitializer that overrides the default SDK
-       * behavior of treating response codes >= 400 as failed requests
-       *
-       */
-      public class MyTelemetryInitializer : ITelemetryInitializer
-      {
-        public void Initialize(ITelemetry telemetry)
+        var requestTelemetry = telemetry as RequestTelemetry;
+        // Is this a TrackRequest() ?
+        if (requestTelemetry == null) return;
+        int code;
+        bool parsed = Int32.TryParse(requestTelemetry.ResponseCode, out code);
+        if (!parsed) return;
+        if (code >= 400 && code < 500)
         {
-            var requestTelemetry = telemetry as RequestTelemetry;
-            // Is this a TrackRequest() ?
-            if (requestTelemetry == null) return;
-            int code;
-            bool parsed = Int32.TryParse(requestTelemetry.ResponseCode, out code);
-            if (!parsed) return;
-            if (code >= 400 && code < 500)
-            {
-                // If we set the Success property, the SDK won't change it:
-                requestTelemetry.Success = true;
-                // Allow us to filter these requests in the portal:
-                requestTelemetry.Context.Properties["Overridden400s"] = "true";
-            }
-            // else leave the SDK to set the Success property      
+            // If we set the Success property, the SDK won't change it:
+            requestTelemetry.Success = true;
+            // Allow us to filter these requests in the portal:
+            requestTelemetry.Context.Properties["Overridden400s"] = "true";
         }
-      }
+        // else leave the SDK to set the Success property      
     }
+  }
+}
 ```
 
 **Az inicializáló betöltése**
@@ -255,24 +242,24 @@ Ha megad egy telemetriainicializáló, azt nevezzük, amikor a Track*() módszer
 Az applicationinsights.config fájlban:
 
 ```xml
-    <ApplicationInsights>
-      <TelemetryInitializers>
-        <!-- Fully qualified type name, assembly name: -->
-        <Add Type="MvcWebRole.Telemetry.MyTelemetryInitializer, MvcWebRole"/>
-        ...
-      </TelemetryInitializers>
-    </ApplicationInsights>
+<ApplicationInsights>
+  <TelemetryInitializers>
+    <!-- Fully qualified type name, assembly name: -->
+    <Add Type="MvcWebRole.Telemetry.MyTelemetryInitializer, MvcWebRole"/>
+    ...
+  </TelemetryInitializers>
+</ApplicationInsights>
 ```
 
 *Másik lehetőségként* példányosítható az inicializáló a kódban, például a Global.aspx.cs osztályból:
 
 ```csharp
-    protected void Application_Start()
-    {
-        // ...
-        TelemetryConfiguration.Active.TelemetryInitializers
-        .Add(new MyTelemetryInitializer());
-    }
+protected void Application_Start()
+{
+    // ...
+    TelemetryConfiguration.Active.TelemetryInitializers
+    .Add(new MyTelemetryInitializer());
+}
 ```
 
 
@@ -295,7 +282,7 @@ Ezután regisztrálja az egyéni inicializáló az applicationinsights.xml fájl
 
 ```xml
 <Add type="mypackage.MyConfigurableContextInitializer">
-<Param name="some_config_property" value="some_value" />
+    <Param name="some_config_property" value="some_value" />
 </Add>
 ```
 
@@ -305,43 +292,42 @@ Ezután regisztrálja az egyéni inicializáló az applicationinsights.xml fájl
 Szúrjon be egy telemetriainicializáló közvetlenül a portáltól kapott inicializálási kód után:
 
 ```JS
+<script type="text/javascript">
+    // ... initialization code
+    ...({
+        instrumentationKey: "your instrumentation key"
+    });
+    window.appInsights = appInsights;
 
-    <script type="text/javascript">
-        // ... initialization code
-        ...({
-            instrumentationKey: "your instrumentation key"
+
+    // Adding telemetry initializer.
+    // This is called whenever a new telemetry item
+    // is created.
+
+    appInsights.queue.push(function () {
+        appInsights.context.addTelemetryInitializer(function (envelope) {
+            var telemetryItem = envelope.data.baseData;
+
+            // To check the telemetry items type - for example PageView:
+            if (envelope.name == Microsoft.ApplicationInsights.Telemetry.PageView.envelopeType) {
+                // this statement removes url from all page view documents
+                telemetryItem.url = "URL CENSORED";
+            }
+
+            // To set custom properties:
+            telemetryItem.properties = telemetryItem.properties || {};
+            telemetryItem.properties["globalProperty"] = "boo";
+
+            // To set custom metrics:
+            telemetryItem.measurements = telemetryItem.measurements || {};
+            telemetryItem.measurements["globalMetric"] = 100;
         });
-        window.appInsights = appInsights;
+    });
 
+    // End of inserted code.
 
-        // Adding telemetry initializer.
-        // This is called whenever a new telemetry item
-        // is created.
-
-        appInsights.queue.push(function () {
-            appInsights.context.addTelemetryInitializer(function (envelope) {
-                var telemetryItem = envelope.data.baseData;
-
-                // To check the telemetry item�s type - for example PageView:
-                if (envelope.name == Microsoft.ApplicationInsights.Telemetry.PageView.envelopeType) {
-                    // this statement removes url from all page view documents
-                    telemetryItem.url = "URL CENSORED";
-                }
-
-                // To set custom properties:
-                telemetryItem.properties = telemetryItem.properties || {};
-                telemetryItem.properties["globalProperty"] = "boo";
-
-                // To set custom metrics:
-                telemetryItem.measurements = telemetryItem.measurements || {};
-                telemetryItem.measurements["globalMetric"] = 100;
-            });
-        });
-
-        // End of inserted code.
-
-        appInsights.trackPageView();
-    </script>
+    appInsights.trackPageView();
+</script>
 ```
 
 Elérhető a telemetryItem nem egyéni tulajdonságok összegzése, lásd: [Application Insights exportálása adatmodell](../../azure-monitor/app/export-data-model.md).

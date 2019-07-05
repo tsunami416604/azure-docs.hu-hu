@@ -16,12 +16,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47e9033b33c70a72a1685696f75a442e88eed033
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f83cb38567feb51ba7959ada7730d66ded677bf9
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60289724"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476541"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-pim"></a>Hagyja jóvá vagy utasítsa a PIM az Azure AD-szerepkörökhöz tartozó kérelmek
 
@@ -41,7 +41,7 @@ Delegált jóváhagyójaként e-mailben értesítést fog kapni, ha egy Azure AD
 
 1. Kattintson a **kérések jóváhagyása**.
 
-    ![A PIM az Azure AD-szerepkörök – szerepkör](./media/azure-ad-pim-approval-workflow/pim-directory-roles-approve-requests.png)
+    ![Az Azure AD-szerepkörök – kérések jóváhagyása](./media/azure-ad-pim-approval-workflow/pim-directory-roles-approve-requests.png)
 
     Jóváhagyásra váró láthatja a kérések listáját.
 
@@ -49,27 +49,27 @@ Delegált jóváhagyójaként e-mailben értesítést fog kapni, ha egy Azure AD
 
 1. Válassza ki a kérelmeket, és kattintson a kívánt **jóváhagyás** megnyitásához a jóváhagyás kijelölt kérések ablaktáblán.
 
-    ![A PIM jóváhagyása kérések listája](./media/azure-ad-pim-approval-workflow/pim-approve-requests-list.png)
+    ![Jóváhagyási kérelmek lista a jóváhagyás lehetőség kiemelésével](./media/azure-ad-pim-approval-workflow/pim-approve-requests-list.png)
 
 1. Az a **jóváhagyási OK** mezőbe írja be az okot.
 
-    ![A PIM hagyja jóvá a kijelölt kérések](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
+    ![A jóváhagyás okát ablaktáblán kijelölt kérések jóváhagyása](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
 
 1. Kattintson a **jóváhagyása**.
 
     A jóváhagyással frissülni fog az állapotjelzőben.
 
-    ![A PIM hagyja jóvá a kijelölt kérések](./media/azure-ad-pim-approval-workflow/pim-approve-status.png)
+    ![Kijelölt kérések ablaktábla jóváhagyása után a Jóváhagyás gombra kattint](./media/azure-ad-pim-approval-workflow/pim-approve-status.png)
 
 ## <a name="deny-requests"></a>Kérelmek elutasítása
 
 1. Válassza ki a kérések elutasítása, és kattintson a kívánt **Megtagadás** , nyissa meg a Megtagadás kijelölt kérések ablaktáblán.
 
-    ![A PIM jóváhagyása kérések listája](./media/azure-ad-pim-approval-workflow/pim-deny-requests-list.png)
+    ![Jóváhagyási kérelmek lista Megtagadás lehetőséggel kiemelve](./media/azure-ad-pim-approval-workflow/pim-deny-requests-list.png)
 
 1. Az a **elutasítás oka** mezőbe írja be az okot.
 
-    ![A PIM megtagadása kijelölt kérések](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
+    ![A Megtagadás okát ablaktáblán kijelölt kérések elutasítása](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
 
 1. Kattintson a **megtagadása**.
 

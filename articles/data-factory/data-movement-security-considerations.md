@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 635b45fe7f0108795c34f51081fa374c604036b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3dab2da2d54efe73b7b782800b190ea8aac2b5cd
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66153236"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460686"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factoryban történő futtatásának biztonsági szempontjai
 > [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
@@ -119,7 +119,7 @@ A hitelesítő adatokat a helyszíni adattárakban mindig titkosítva, és táro
 
 
 #### <a name="ports-used-when-encrypting-linked-service-on-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modult a társított szolgáltatás titkosításához használt portok
-Alapértelmezés szerint a PowerShell 8050 portot használja a gépen a saját üzemeltetésű integrációs modul a biztonságos kommunikáció érdekében. Ha szükséges, a port megváltoztatható.  
+Alapértelmezés szerint a PowerShell 8060 portot használja a gépen a saját üzemeltetésű integrációs modul a biztonságos kommunikáció érdekében. Ha szükséges, a port megváltoztatható.  
 
 ![Az átjáró HTTPS-portja](media/data-movement-security-considerations/https-port-for-gateway.png)
 
@@ -197,7 +197,7 @@ Igen. További részleteket [itt](https://azure.microsoft.com/blog/sharing-a-sel
 
 **Mik azok a saját üzemeltetésű integrációs modul működjön a port követelményei?**
 
-A saját üzemeltetésű integrációs modul lehetővé teszi a HTTP-alapú kapcsolatokat az internet eléréséhez. A saját üzemeltetésű integrációs modult, hogy ezt a kapcsolatot a 443-as kimenő portokat kell megnyitni. Nyissa meg a bejövő portot 8050 csak a gépek szintjén (nem a vállalati tűzfalon szint) a hitelesítőadat-kezelő alkalmazást. Ha az Azure SQL Database vagy Azure SQL Data Warehouse a forrás vagy cél használják, meg kell nyitnia az 1433-as portot is. További információkért lásd: a [tűzfal-konfigurációk és IP-címek engedélyezési](#firewall-configurations-and-whitelisting-ip-address-of-gateway) szakaszban. 
+A saját üzemeltetésű integrációs modul lehetővé teszi a HTTP-alapú kapcsolatokat az internet eléréséhez. A saját üzemeltetésű integrációs modult, hogy ezt a kapcsolatot a 443-as kimenő portokat kell megnyitni. Nyissa meg a bejövő portot 8060 csak a gépek szintjén (nem a vállalati tűzfalon szint) a hitelesítőadat-kezelő alkalmazást. Ha az Azure SQL Database vagy Azure SQL Data Warehouse a forrás vagy cél használják, meg kell nyitnia az 1433-as portot is. További információkért lásd: a [tűzfal-konfigurációk és IP-címek engedélyezési](#firewall-configurations-and-whitelisting-ip-address-of-gateway) szakaszban. 
 
 
 ## <a name="next-steps"></a>További lépések

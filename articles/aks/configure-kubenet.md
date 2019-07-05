@@ -5,15 +5,15 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 06/03/2019
+ms.date: 06/26/2019
 ms.author: iainfou
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: f57c1af4c497b51f5289559737fad5ce4cf2e85b
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 269dd670ed82234b77e06c389ae1c9a5c294010c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67358032"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441956"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Hálózatkezelés a saját IP-címtartományok Azure Kubernetes Service (AKS) kubenet használata
 
@@ -48,7 +48,7 @@ A *Azure CNI*, gyakori probléma a hozzárendelt IP-címtartomány túl kicsi, m
 
 Biztonság sérülését, mint használó egy AKS-fürtöt hozhat létre *kubenet* és a egy meglévő virtuális hálózat alhálózatához csatlakozik. Ez a megközelítés lehetővé teszi, hogy a csomópontok megadott IP-címek fenntartott IP-címek meghozni a potenciális podok futtatható a fürt összes nagy számú nélkül kapnak.
 
-A *kubenet*, egy sokkal kisebb IP-címtartományt használjon, és képes támogatni a nagy méretű fürtök és alkalmazások számára. Például akkor is igaz az olyan */27* IP-címtartományt, a futhat egy 20-25 csomópontot tartalmazó fürt méretezése vagy frissítéséhez elegendő hely a. A fürt mérete legfeljebb támogatná *2200-2750* podok (az alapértelmezett legfeljebb 110 podok száma csomópontonként). Podok konfigurálható a csomópontonkénti maximális számának *kubenet* az aks-ben: 250.
+A *kubenet*, egy sokkal kisebb IP-címtartományt használjon, és képes támogatni a nagy méretű fürtök és alkalmazások számára. Például akkor is igaz az olyan */27* IP-címtartományt, a futhat egy 20-25 csomópontot tartalmazó fürt méretezése vagy frissítéséhez elegendő hely a. A fürt mérete legfeljebb támogatná *2200-2750* podok (az alapértelmezett legfeljebb 110 podok száma csomópontonként). Podok konfigurálható a csomópontonkénti maximális számának *kubenet* az aks-ben a 110-es.
 
 A következő alapvető számítások a különbség a hálózati modellek összehasonlítása:
 

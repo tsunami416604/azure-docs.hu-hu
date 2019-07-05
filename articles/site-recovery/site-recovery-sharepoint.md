@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: 5f477cf20b817d7a6c8be856636bf1e3755b5424
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4b4edec43d01878bbc5899487f6ee1d2816eb135
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61472111"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491836"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Állítsa be az Azure Site Recovery használata vész-helyreállítási SharePoint Többrétegű alkalmazások vészhelyreállítása
 
@@ -65,7 +65,7 @@ Ez a cikk létrehozására, VMware virtuális gépeknek a Windows Server 2012 R2
 **Hyper-V** | Igen | Igen
 **VMware** | Igen | Igen
 **Fizikai kiszolgáló** | Igen | Igen
-**Azure** | n/a | Igen
+**Azure** | NA | Igen
 
 ### <a name="sharepoint-versions"></a>SharePoint-verziók
 A következő SharePoint server-verziók támogatottak.
@@ -111,7 +111,7 @@ Internetkapcsolattal rendelkező helyek ["Priority" típusú Traffic Manager-pro
 
 | **ahol** | **Forrás** | **Target**|
 | --- | --- | --- |
-| Public DNS | Nyilvános DNS-ben a SharePoint-webhelyek <br/><br/> Például: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
+| Nyilvános DNS | Nyilvános DNS-ben a SharePoint-webhelyek <br/><br/> Például: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
 | On-premises DNS | sharepointonprem.contoso.com | Nyilvános IP-címet a helyszíni farm |
 
 
@@ -196,7 +196,7 @@ Hajtsa végre a [Ez az útmutató](site-recovery-test-failover-to-azure.md) fela
 
 Feladatátvételi teszt során ad útmutatást és DNS-beli [feladatátvételi szempontokat részletező cikkben, az Active Directory és DNS-](site-recovery-active-directory.md#test-failover-considerations) dokumentum.
 
-Feladatátvételi teszt végezni az SQL Always ON rendelkezésre állási csoportok útmutatásért tekintse meg [feladatátvételi teszt során az SQL Server Always On](site-recovery-sql.md#steps-to-do-a-test-failover) dokumentumot.
+Feladatátvételi teszt végezni az SQL Always ON rendelkezésre állási csoportok útmutatásért tekintse meg [alkalmazás Vészhelyreállítás végrehajtása az Azure Site Recovery és a feladatátvételi teszt során](site-recovery-sql.md#disaster-recovery-of-application) dokumentumot.
 
 ## <a name="doing-a-failover"></a>Feladatátvétel végrehajtása
 Hajtsa végre a [Ez az útmutató](site-recovery-failover.md) a feladatátvétel végrehajtása.

@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ccac719c78ce2844a8dd37a80445e11baa4a488
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22f3e4cde892a70ec331523524508a50008a4073
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962875"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483006"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Miért frissíti a Microsoft identity platform (2.0-s verzió)?
 
@@ -46,7 +46,7 @@ A Microsoft identity platform végponton és való hozzáférés a fogyasztónak
 
 Adja meg az OAuth 2.0 szükséges engedélyeiket előre, például az 1.0-s verziójú Azure AD-végpont használatával alkalmazások szükségesek:
 
-![Engedélyek regisztrációs felhasználói felület](./media/azure-ad-endpoint-comparison/app_reg_permissions.png)
+![Az engedélyek regisztrációs felhasználói Felületet megjelenítő példa](./media/azure-ad-endpoint-comparison/app_reg_permissions.png)
 
 Közvetlenül az alkalmazás regisztrálása a beállított engedélyeket is **statikus**. Az alkalmazás az Azure Portalon megadott statikus engedélyei tartsa a kódot, jó és egyszerű, míg a fejlesztők tükrözze lehetséges problémák:
 

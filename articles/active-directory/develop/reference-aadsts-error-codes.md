@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10ac2f4ac83240acf644fc1529c9c14f5e9631a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d6ed5c80d5c3241a9a328a2427ed8b920790635
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111289"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482489"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Hitelesítés és hitelesítési hibakódok
 
@@ -215,6 +215,7 @@ Az Azure Active Directory (Azure AD) biztonsági jogkivonat-szolgáltatás (STS)
 | AADSTS90093 | GraphUserUnauthorized - grafikon a kéréshez a rendszer tiltott hibakódú adott vissza. |
 | AADSTS90094 | AdminConsentRequired – a rendszergazdai jóváhagyást szükség. |
 | AADSTS90100 | InvalidRequestParameter - paraméter üres vagy érvénytelen. |
+| AADSTS901002 | AADSTS901002: A "resource" kérelem paraméter nem támogatott. |
 | AADSTS90101 | InvalidEmailAddress – a megadott adatok nem egy érvényes e-mail címet. Az e-mail-cím a következő formátumban kell lennie `someone@example.com`. |
 | AADSTS90102 | InvalidUriParameter - az érték egy érvényes abszolút URI Azonosítónak kell lennie. |
 | AADSTS90107 | InvalidXml – a kérelem érvénytelen. Győződjön meg arról, hogy az adatok nem tartalmazhat érvénytelen karaktereket.|

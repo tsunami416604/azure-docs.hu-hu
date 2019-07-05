@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 2e655627267546d88f76a2487817bca3153ee91d
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 69ec3869f7bfd74b150db537a01e604cae87570f
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "65074019"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441983"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Biztonsággal kapcsolatos fogalmait, alkalmazások és-fürtök az Azure Kubernetes Service (AKS)
 
@@ -36,7 +36,7 @@ Alapértelmezés szerint a Kubernetes API-kiszolgáló nyilvános IP-címet hasz
 
 AKS-csomópontok olyan Azure virtuális gépek kezelése és fenntartása. Linux-csomópontok egy optimalizált Ubuntu terjesztési Moby tároló modullal futtassa. A Windows Server-csomópontok (jelenleg előzetes verzióban érhető el az aks-ben) futtassa egy Windows Server optimalizált 2019 kiadási, és is használhatja az Moby container modul. AKS-fürt létrehozásakor vagy skálázható fel, a rendszer automatikusan telepíti a csomópontok a legújabb operációs rendszer biztonsági frissítéseit és konfigurációkat.
 
-Az Azure platform automatikusan alkalmazza az éjszakai alapon Linux-csomópontok operációs rendszer biztonsági javítások. Ha Linux operációs rendszer biztonsági frissítést igényel a gazdagépet újra kell indítani, hogy újraindítás nem automatikusan történik. Manuálisan indítsa újra a Linux-csomópontokat, vagy egy általánosan használt megközelítés használandó [Kured][kured], egy nyílt forráskódú újraindítás démon a Kubernetes esetében. Kured fut, mint egy [DaemonSet] [ aks-daemonsets] , és figyeli a-fájljának jelenlétét, arról, hogy a számítógép újraindítása nem szükséges minden egyes csomópont. Újraindítások felügyelt ugyanazzal a fürtön [Ez a három csomópontunk, és a kiürítési folyamat](#cordon-and-drain) mint a fürtfrissítések.
+Az Azure platform automatikusan alkalmazza az éjszakai alapon Linux-csomópontok operációs rendszer biztonsági javítások. Ha Linux operációs rendszer biztonsági frissítést igényel a gazdagépet újra kell indítani, hogy újraindítás nem automatikusan történik. Manuálisan indítsa újra a Linux-csomópontokat, vagy egy általánosan használt megközelítés használandó [Kured][kured] , an open-source reboot daemon for Kubernetes. Kured runs as a [DaemonSet][aks-daemonsets] , és figyeli a-fájljának jelenlétét, arról, hogy a számítógép újraindítása nem szükséges minden egyes csomópont. Újraindítások felügyelt ugyanazzal a fürtön [Ez a három csomópontunk, és a kiürítési folyamat](#cordon-and-drain) mint a fürtfrissítések.
 
 A Windows Server-csomópontok (jelenleg előzetes verzióban érhető el az aks-ben) a Windows Update futtatása és automatikusan alkalmazza a legújabb frissítéseket. A Windows Update kiadási ciklus, és a saját érvényesítési folyamat rendszeres időközönként meg kell hajtsa végre a Windows Server-csomóponton vagy tárolókészleteit a frissítés az AKS-fürt. A frissítés során hoz létre a csomópontokat, amelyeken a legújabb Windows Server-rendszerképet és azok javításait, majd eltávolítja a régebbi csomópontok. Ezen folyamatról további információkért lásd: [frissítése az aks-ben csomópontkészletek][nodepool-upgrade].
 
@@ -73,7 +73,7 @@ A forgalmat a virtuális hálózatok szűrése, az Azure hálózati biztonsági 
 
 A Kubernetes *titkos* bizalmas adatok behelyezése podok, például a hozzáférési hitelesítő adatokhoz vagy kulcsokhoz szolgál. Először hozzon létre egy titkos kulcsot, a Kubernetes API-val. A pod vagy a központi telepítés határozza meg, ha egy adott titkos kód lehet igényelni. A titkos kulcs tárolása pedig a titkos kulcsok csupán útmutatóul szolgálnak a csomópontokra, amelyeken az ütemezett podot működéséhez szükség van rá *tmpfs*nem írt lemezre. A legutóbbi pod egy csomóponton, amely megköveteli a titkos kulcs törlése esetén a titkos kulcsot a csomópont tmpfs lesz törölve. Titkos kulcsok egy adott névtéren belül vannak tárolva, és csak az azonos névtérben podok hozzáférhet.
 
-Titkos kulcsok használata csökkenti a bizalmas adatokat a pod vagy a service YAML manifest definiált. Ehelyett lehetősége kérni a Kubernetes API-kiszolgálóhoz a YAML-jegyzékfájlban részeként tárolt titkos kulcsot. Ez a módszer csak az adott pod hozzáférést biztosít a titkos kulcsot.
+Titkos kulcsok használata csökkenti a bizalmas adatokat a pod vagy a service YAML manifest definiált. Ehelyett lehetősége kérni a Kubernetes API-kiszolgálóhoz a YAML-jegyzékfájlban részeként tárolt titkos kulcsot. Ez a módszer csak az adott pod hozzáférést biztosít a titkos kulcsot. Ne feledje: a nyers titkos jegyzékfájlok tartalmazza a titkos adatokat base64 formátumban (lásd: a [dokumentációs][secret-risks] további részletekért). Ezért ezt a fájlt kell kezelni, mint a bizalmas adatokat, és soha nem véglegesített verziókövetési.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -92,6 +92,7 @@ További kapcsolódó ajánlott eljárások: [ajánlott eljárások a fürt bizt
 <!-- LINKS - External -->
 [kured]: https://github.com/weaveworks/kured
 [kubernetes-network-policies]: https://kubernetes.io/docs/concepts/services-networking/network-policies/
+[secret-risks]: https://kubernetes.io/docs/concepts/configuration/secret/#risks
 
 <!-- LINKS - Internal -->
 [aks-daemonsets]: concepts-clusters-workloads.md#daemonsets

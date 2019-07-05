@@ -5,45 +5,80 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 06/28/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: abf48f3edc090550647b6865e96afeabe3727cf5
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 86c4bf328430bbc623d8e493eec5db520d50ef82
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190535"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485982"
 ---
 # <a name="monitor-azure-file-sync"></a>Az Azure File Sync monitorozása
 
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
 
-Ez a cikk ismerteti az Azure File Sync üzembe helyezésének figyelése az Azure portal és a Windows Server használatával.
+Ez a cikk ismerteti az Azure File Sync üzembe helyezésének figyelése az Azure Monitor, a Storage Sync Service és a Windows Server használatával.
 
 Az alábbi figyelési lehetőségek érhetők el jelenleg.
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-monitor"></a>Azure Monitor
 
-Az Azure Portalon megtekintheti a regisztrált kiszolgáló állapot, a kiszolgálói végpont állapota (szinkronizálási állapot) és a metrikákat.
+Használat [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) kattintva megtekintheti a metrikákat, és a szinkronizálási szolgáltatás riasztások konfigurálása a felhőbeli rétegezés és a kapcsolat a kiszolgálóval.  
 
-### <a name="storage-sync-service"></a>Társzinkronizálási szolgáltatás
+### <a name="metrics"></a>Mérőszámok
+
+Metrikák az Azure File Sync alapértelmezés szerint engedélyezve vannak, és az Azure Monitor küldött 15 percenként.
+
+Az Azure Monitor az Azure File Sync metrikák megtekintéséhez jelölje ki a **Társzinkronizálási szolgáltatás** erőforrástípus.
+
+A következő metrikák az Azure File Sync az Azure monitorban érhetők el:
+
+| Metrika neve | Leírás |
+|-|-|
+| Szinkronizált bájt | Átvitt adatok (feltöltési és letöltési) mérete.<br><br>Szervezeti egység: Bájt<br>Aggregation Type: Összeg<br>Alkalmazható dimenziók: Kiszolgálói végpont nevét, szinkronizálási irány, szinkronizálási csoport neve |
+| A felhő rétegezési visszaírási | Idézni adatok mérete.<br><br>**Megjegyzés**: A jövőben ez a metrika távolítja el. A felhő rétegezési visszaírási mérete metrika használatával figyeli idézni adatok mérete.<br><br>Szervezeti egység: Bájt<br>Aggregation Type: Összeg<br>A dimenzió alkalmazható: Kiszolgáló neve |
+| A felhő rétegezési visszaírási mérete | Idézni adatok mérete.<br><br>Szervezeti egység: Bájt<br>Aggregation Type: Összeg<br>A dimenzió alkalmazható: Kiszolgáló neve, szinkronizálási csoport neve |
+| Alkalmazás által a rétegzési visszaírási mérete felhő | Az alkalmazás által idézni adatok mérete.<br><br>Szervezeti egység: Bájt<br>Aggregation Type: Összeg<br>A dimenzió alkalmazható: Alkalmazás neve, kiszolgáló neve, szinkronizálási csoport neve |
+| A felhő rétegezési visszaírási átviteli sebesség | Visszaírási átviteli adatok mérete.<br><br>Szervezeti egység: Bájt<br>Aggregation Type: Összeg<br>A dimenzió alkalmazható: Kiszolgáló neve, szinkronizálási csoport neve |
+| Nem szinkronizálja a fájlokat | Fájlok, amelyek nem szinkronizálása száma.<br><br>Szervezeti egység: Darabszám<br>Aggregation Type: Összeg<br>Alkalmazható dimenziók: Kiszolgálói végpont nevét, szinkronizálási irány, szinkronizálási csoport neve |
+| Fájlok szinkronizálása | Fájlok száma (feltöltési és letöltési) át.<br><br>Szervezeti egység: Count<br>Aggregation Type: Összeg<br>Alkalmazható dimenziók: Kiszolgálói végpont nevét, szinkronizálási irány, szinkronizálási csoport neve |
+| Kiszolgáló online állapotát | A kiszolgálótól kapott szívverések száma.<br><br>Szervezeti egység: Count<br>Aggregation Type: Maximum<br>A dimenzió alkalmazható: Kiszolgáló neve |
+| Szinkronizálási munkamenet eredménye | Munkamenet eredmény szinkronizálása (1 = sikeres szinkronizálási munkamenet; 0 = sikertelen szinkronizálási munkamenet)<br><br>Szervezeti egység: Darabszám<br>Az összesítés típusa: Maximum<br>Alkalmazható dimenziók: Kiszolgálói végpont nevét, szinkronizálási irány, szinkronizálási csoport neve |
+
+### <a name="alerts"></a>Riasztások
+
+Riasztások beállítása az Azure Monitor, válassza ki a Storage Sync Service, és válassza ki a [Azure File Sync metrika](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#metrics) használata a riasztás.  
+
+Az alábbi táblázat példákat figyelése és a megfelelő metrika használata a riasztás:
+
+| Forgatókönyv | A riasztás használandó metrika |
+|-|-|
+| Kiszolgálói végpont állapota a portálon hiba = | Szinkronizálási munkamenet eredménye |
+| Fájlok szinkronizálása egy kiszolgálóra, vagy a felhőbeli végpont nem működnek | Nem szinkronizálja a fájlokat |
+| Regisztrált kiszolgáló nem működik a Storage Sync Service folytatott kommunikációhoz | Kiszolgáló online állapotát |
+| Felhőbeli rétegezési visszaírási mérete túllépte a 500GiB egy nap alatt  | A felhő rétegezési visszaírási mérete |
+
+Az Azure monitorban riasztásokat konfigurálásával kapcsolatos további tudnivalókért lásd: [áttekintése a Microsoft Azure-ban riasztások]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
+
+## <a name="storage-sync-service"></a>Társzinkronizálási szolgáltatás
 
 Regisztrált kiszolgáló állapota, a kiszolgáló végpontonkénti állapotot és a mérőszámok megtekintéséhez nyissa meg a Storage Sync Service az Azure Portalon. A regisztrált kiszolgáló állapotának megtekintéséhez a **regisztrált kiszolgálókat** panel és a kiszolgáló, a végpontonkénti állapotot a **csoportok szinkronizálása** panelen.
 
-Regisztrált kiszolgáló állapota:
+### <a name="registered-server-health"></a>Regisztrált kiszolgáló állapota
 
 - Ha a **regisztrált kiszolgáló** állapota **Online**, a kiszolgáló sikeresen kommunikálnak a szolgáltatással.
 - Ha a **regisztrált kiszolgáló** állapota **megjelenik Offline**, ellenőrizze, hogy fut-e a Storage Sync figyelő (AzureStorageSyncMonitor.exe) folyamat a kiszolgálón. Ha a kiszolgáló egy tűzfal vagy proxy mögött van, tekintse meg [Ez a cikk](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy) a tűzfal és proxy konfigurálása.
 
-Kiszolgálói végpont állapota:
+### <a name="server-endpoint-health"></a>Kiszolgálói végpont állapota
 
 - A kiszolgálói végpont állapota a portálon a szinkronizálási naplózott a telemetriai adatok eseménynaplójában a kiszolgálón (9102 és 9302-azonosító) alapul. Ha a szinkronizálási munkamenet egy átmeneti hiba miatt nem sikerül, például hiba meg lett szakítva, szinkronizálási továbbra is jelenhet meg kifogástalan állapotú a portálon mindaddig, amíg a jelenlegi szinkronizálási munkamenet lehetővé teszi a folyamatban. 9302-es Azonosítójú esemény segítségével határozza meg, ha a fájlok vannak folyamatban van a alkalmazni. További információkért lásd: [rendszerállapot szinkronizálni](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) és [szinkronizálása folyamatban](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
 - Ha a portál megjeleníti a szinkronizálási hiba, mert a szinkronizálási folyamat nem készít, tekintse meg a [hibaelhárítási dokumentáció](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) útmutatást.
 
-Metrikák:
+### <a name="metric-charts"></a>Mérőszám-diagramok
 
-- A következő metrikák teljesítményobjektumok a Storage Sync Service portálon:
+- A következő mérőszám-diagramok a teljesítményobjektumok a Storage Sync Service portálon:
 
   | Metrika neve | Leírás | Név panel |
   |-|-|-|
@@ -57,26 +92,6 @@ Metrikák:
 
   > [!Note]  
   > A Storage Sync Service portálon diagramnak egy időtartomány 24 óra. Különböző időtartományok vagy méretek megtekintéséhez használja az Azure Monitor.
-
-### <a name="azure-monitor"></a>Azure Monitor
-
-Használat [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) sync monitorozása, felhőbeli rétegezés és a kapcsolat a kiszolgálóval. Metrikák az Azure File Sync alapértelmezés szerint engedélyezve vannak, és az Azure Monitor küldött 15 percenként.
-
-Az Azure Monitor az Azure File Sync metrikák megtekintéséhez jelölje ki a **Társzinkronizálási szolgáltatás** erőforrástípus.
-
-A következő metrikák az Azure File Sync az Azure monitorban érhetők el:
-
-| Metrika neve | Leírás |
-|-|-|
-| Szinkronizált bájt | Átvitt adatok (feltöltési és letöltési) mérete.<br><br>Szervezeti egység: Bájt<br>Aggregation Type: Összeg<br>Alkalmazható dimenziók: Kiszolgálói végpont nevét, szinkronizálási irány, szinkronizálási csoport neve |
-| A felhő rétegezési visszaírási | Idézni adatok mérete.<br><br>Megjegyzés: A jövőben ez a metrika távolítja el. A felhő rétegezési visszaírási mérete metrika használatával figyeli idézni adatok mérete.<br><br>Szervezeti egység: Bájt<br>Aggregation Type: Összeg<br>A dimenzió alkalmazható: Kiszolgáló neve |
-| A felhő rétegezési visszaírási mérete | Idézni adatok mérete.<br><br>Szervezeti egység: Bájt<br>Aggregation Type: Összeg<br>A dimenzió alkalmazható: Kiszolgáló neve, szinkronizálási csoport neve |
-| Alkalmazás által a rétegzési visszaírási mérete felhő | Az alkalmazás által idézni adatok mérete.<br><br>Szervezeti egység: Bájt<br>Aggregation Type: Összeg<br>A dimenzió alkalmazható: Alkalmazás neve, kiszolgáló neve, szinkronizálási csoport neve |
-| A felhő rétegezési visszaírási átviteli sebesség | Visszaírási átviteli adatok mérete.<br><br>Szervezeti egység: Bájt<br>Aggregation Type: Összeg<br>A dimenzió alkalmazható: Kiszolgáló neve, szinkronizálási csoport neve |
-| Nem szinkronizálja a fájlokat | Fájlok, amelyek nem szinkronizálása száma.<br><br>Szervezeti egység: Count<br>Aggregation Type: Összeg<br>Alkalmazható dimenziók: Kiszolgálói végpont nevét, szinkronizálási irány, szinkronizálási csoport neve |
-| Fájlok szinkronizálása | Fájlok száma (feltöltési és letöltési) át.<br><br>Szervezeti egység: Count<br>Aggregation Type: Összeg<br>Alkalmazható dimenziók: Kiszolgálói végpont nevét, szinkronizálási irány, szinkronizálási csoport neve |
-| Kiszolgáló online állapotát | A kiszolgálótól kapott szívverések száma.<br><br>Szervezeti egység: Count<br>Aggregation Type: Maximum<br>A dimenzió alkalmazható: Kiszolgáló neve |
-| Szinkronizálási munkamenet eredménye | Munkamenet eredmény szinkronizálása (1 = sikeres szinkronizálási munkamenet; 0 = sikertelen szinkronizálási munkamenet)<br><br>Szervezeti egység: Darabszám<br>Az összesítés típusa: Maximum<br>Alkalmazható dimenziók: Kiszolgálói végpont nevét, szinkronizálási irány, szinkronizálási csoport neve |
 
 ## <a name="windows-server"></a>Windows Server
 

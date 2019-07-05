@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmon
 ms.service: multiple
 ms.topic: article
-ms.date: 04/28/2019
+ms.date: 07/01/2019
 ms.author: raynew
-ms.openlocfilehash: 5ed9dc595c537d8a923d3eb056dcb002cf225f7c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81ba993e6cbe55b45d34325545754bec561ce479
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427118"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514462"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Üzleti folytonosság és vészhelyreállítás recovery (BCDR): Azure – párosított régiók
 
@@ -42,7 +42,7 @@ Minden egyes Azure-régió párban áll egy regionális párokból érdemes egy�
 | India |Nyugat-India |Dél-India |
 | Japán |Kelet-Japán |Nyugat-Japán |
 | Korea |Korea középső régiója |Korea déli régiója |
-| Észak-Amerika |USA keleti régiója |USA nyugati régiója |
+| Észak-Amerika |East US |USA nyugati régiója |
 | Észak-Amerika |USA 2. keleti régiója |USA középső régiója |
 | Észak-Amerika |USA északi középső régiója |USA déli középső régiója |
 | Észak-Amerika |USA nyugati régiója, 2. |USA nyugati középső régiója 
@@ -77,7 +77,7 @@ Javasoljuk, hogy úgy beállítani, hogy üzleti folytonossági vészhelyreáll�
 
 ![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure Compute (IaaS)** – további számítási erőforrásokat előzetesen győződjön meg, hogy az erőforrások elérhetők egy másik régióban egy katasztrófa során kell kiépítenie. További információkért lásd: [műszaki útmutatást az Azure rugalmassága](resiliency/resiliency-technical-guidance.md).
 
-![Tárolási](./media/best-practices-availability-paired-regions/2Green.png) **Azure Storage** -Georedundáns tárolás (GRS) alapértelmezés szerint konfigurálva, egy Azure Storage-fiók létrehozásakor. A grs Tárolással az adatok automatikus replikációja háromszor az elsődleges régióban, és három alkalommal a párosított régióban. További információkért lásd: [Azure Storage Redundanciabeállításainál](storage/common/storage-redundancy.md).
+![Tárolási](./media/best-practices-availability-paired-regions/2Green.png) **Azure Storage** – felügyelt lemezek használata ismertetése [régiók közötti biztonsági mentések](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines) az Azure Backup szolgáltatással, és [virtuális gépek replikálása](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication) egy adott régióban található a másikra, az Azure Site Recoveryvel. Ha a storage-fiókokat használ, majd georedundáns tárolás (GRS) van konfigurálva alapértelmezés szerint egy Azure Storage-fiók létrehozásakor. A grs Tárolással az adatok automatikus replikációja háromszor az elsődleges régióban, és három alkalommal a párosított régióban. További információkért lásd: [Azure Storage Redundanciabeállításainál](storage/common/storage-redundancy.md).
 
 ![Az Azure SQL](./media/best-practices-availability-paired-regions/3Green.png) **Azure SQL Database** – az Azure SQL Database Georeplikációja, konfigurálhatja a tranzakciók bármely régióba aszinkron replikációját a világ; azonban javasoljuk, hogy ezeket az erőforrásokat a telepít egy párosított régió legtöbb vész-helyreállítási helyzetekben. További információkért lásd: [Georeplikáció az Azure SQL Database](sql-database/sql-database-geo-replication-overview.md).
 

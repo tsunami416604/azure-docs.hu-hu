@@ -1,91 +1,130 @@
 ---
-title: Egyéni szolgáltatók az Azure előzetes verziójának áttekintése
-description: Egyéni erőforrás-szolgáltató létrehozásához az Azure Resource Managerrel kapcsolatos fogalmakat ismerteti
-author: MSEvanhi
+title: Az Azure egyéni erőforrás-szolgáltatók áttekintése
+description: További tudnivalók az Azure egyéni erőforrás-szolgáltatók és bővítése az Azure API adatsík a munkafolyamatok megfelelően.
+author: jjbfour
 ms.service: managed-applications
 ms.topic: conceptual
-ms.date: 05/01/2019
-ms.author: evanhi
-ms.openlocfilehash: bbfb10f612690af0f4fd3683e0f58986a21048d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/19/2019
+ms.author: jobreen
+ms.openlocfilehash: f418cd6c5470740ce123448ddbbe54cb6e89dabe
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65159855"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67475945"
 ---
-# <a name="azure-custom-providers-preview-overview"></a>Az Azure egyéni szolgáltatók minta áttekintése
+# <a name="azure-custom-resource-providers-overview"></a>Az Azure egyéni erőforrás-szolgáltatók áttekintése
 
-Az Azure egyéni szolgáltatók bővítheti Azure-bA és a szolgáltatás. Létrehozhat saját erőforrás-szolgáltató, beleértve a testre szabott erőforrástípusainak és műveleteinek. Az egyéni szolgáltató integrálva van az Azure Resource Managerrel. Használhatja a Resource Manager funkciók, például a sablon-üzembehelyezések és a szerepköralapú hozzáférés-vezérlés, üzembe helyezését, és saját szolgáltatás védelme.
+Az Azure egyéni erőforrás-szolgáltatók a egy bővíthetőség platformja, az Azure-bA. Ez lehetővé teszi, hogy megadhat egyéni API-k, az alapértelmezett feldúsítani használható Azure-élményt. Ez a dokumentáció részletesen ismerteti:
 
-Ez a cikk az egyéni szolgáltatók és annak képességeit áttekintést nyújt. Az alábbi képen látható a munkahelyi flow-erőforrások és a egy egyéni szolgáltató definiált műveletek.
+- Hogyan készíthet és helyezhet üzembe egy Azure egyéni erőforrás-szolgáltató.
+- Hogyan hasznosítható Azure egyéni erőforrás-szolgáltatók kiterjesztése a meglévő munkafolyamatokba.
+- Hol található a kezdéshez útmutatók és Kódminták.
 
 ![Egyéni szolgáltatók áttekintése](./media/custom-providers-overview/overview.png)
 
 > [!IMPORTANT]
 > Egyéni szolgáltatók jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="define-your-custom-provider"></a>Az egyéni szolgáltató megadása
+## <a name="what-can-custom-resource-providers-do"></a>Mit lehet egyéni erőforrás-szolgáltatók?
 
-Indítsa el, hogy az Azure Resource Manager az egyéni szolgáltató ismertek. Helyez üzembe az Azure egyéni szolgáltató erőforrás, amely használja az erőforrás típusát **Microsoft.CustomProviders/resourceProviders**. Az adott erőforrás erőforrásokhoz és műveletekhez tartozó meghatározása a szolgáltatás.
+Íme néhány példa a Mit érhet el az Azure egyéni erőforrás-szolgáltatók:
 
-Például, ha a szolgáltatáshoz szükség van egy nevű erőforrástípust **felhasználók**, az egyéni szolgáltató definíciója közé tartozik-e az erőforrás típusát. Egyes erőforrástípusok adjon meg egy végpontot, amely az adott erőforrástípus REST műveleteket (GET, PUT, DELETE) biztosít. A végpont üzemeltethető bármilyen környezetben, és hogyan a szolgáltatás végzi el az erőforrástípus műveleteket az logikáját tartalmazza.
+- Terjessze ki az Azure Resource Manager REST API-t a belső és külső szolgáltatások közé tartozik.
+- Engedélyezze a meglévő Azure-munkafolyamatok épülő egyéni példahelyzetekre.
+- Testre szabhatja az Azure Resource Manager-sablonok vezérlő és a hatása.
 
-Az erőforrás-szolgáltató az egyéni műveletek is meghatározhat. Műveletek a POST műveletek képviseli. Műveletek használata a műveleteket, például Indítás, Leállítás vagy újraindítás. Megad egy végpontot, amely kezeli a kérelmet.
+## <a name="what-is-a-custom-resource-provider"></a>Mi az egyéni erőforrás-szolgáltató
 
-Az alábbi példa bemutatja, hogyan definiálhat egy egyéni szolgáltató a művelet és a egy erőforrás típusa.
+Az Azure egyéni erőforrás-szolgáltató között az Azure és a végpont szerződés létrehozásával történik. Ez a Szerződés meghatározása új erőforráshoz és művelethez egy új erőforrást keresztül listáját **Microsoft.CustomProviders/resourceProviders**. Az egyéni erőforrás-szolgáltató lesz majd elérhetővé ezen új API-k az Azure-ban. Az Azure egyéni erőforrás-szolgáltató három részből állnak: egyéni erőforrás-szolgáltató, **végpontok**, és az egyéni erőforrásokat.
 
-```json
+## <a name="how-to-build-custom-resource-providers"></a>Hogyan hozhat létre egyéni erőforrás-szolgáltatók
+
+Egyéni erőforrás-szolgáltatók a következők: Azure és a végpontok közötti szerződések listáját. A jelen szerződés ismerteti, hogyan kell használják az Azure-végpont. Az erőforrás-szolgáltató működik, mint a proxy, és továbbítja a kérelmeket és válaszokat, és a megadott **végpont**. Erőforrás-szolgáltató két típusú szerződéseket is megadhatja: [ **erőforrástípusok** ](./custom-providers-resources-endpoint-how-to.md) és [ **műveletek**](./custom-providers-action-endpoint-how-to.md). Ezek segítségével szolgáltatásvégpont-definíció engedélyezve vannak. Egy végpont-definíció három mezőből áll: **neve**, **routingType**, és **végpont**.
+
+Minta-végpont:
+
+```JSON
 {
-  "apiVersion": "2018-09-01-preview",
-  "type": "Microsoft.CustomProviders/resourceProviders",
-  "name": "[parameters('funcName')]",
-  "location": "[parameters('location')]",
-  "properties": {
-    "actions": [
-      {
-        "name": "ping",
-        "routingType": "Proxy",
-        "endpoint": "[concat('https://', parameters('funcName'), '.azurewebsites.net/api/{requestPath}')]"
-      }
-    ],
-    "resourceTypes": [
-      {
-        "name": "users",
-        "routingType": "Proxy,Cache",
-        "endpoint": "[concat('https://', parameters('funcName'), '.azurewebsites.net/api/{requestPath}')]"
-      }
-    ]
-  }
-},
-```
-
-A **routingType**, az elfogadott értékek a következők `Proxy` és `Cache`. Proxy: kérelmek az erőforrástípushoz a vagy művelet a végpont által kezelt. Az ügyfélgyorsítótár beállítása csak támogatott erőforrástípus esetében nem műveleteket. Adja meg a gyorsítótárban, is meg kell a proxy. Gyorsítótár azt jelenti, hogy a végpont érkező válaszokat tárolódnak az olvasási műveletek optimalizálása érdekében. Az ügyfélgyorsítótár beállítása használatával megkönnyíti, amely egységes és megfelelő más Resource Manager szolgáltatással API-k megvalósításához.
-
-## <a name="deploy-your-resource-types"></a>A következő típusú erőforrások üzembe helyezése
-
-Az egyéni szolgáltató meghatározása, után telepítheti a testre szabott erőforrástípusok. Az alábbi példa bemutatja a JSON és a sablon üzembe helyezéséhez az erőforrástípust az egyéni szolgáltató szerepeltetni kívánt. Az erőforrástípus is üzembe helyezhetők az egyéb Azure-erőforrások ugyanabban a sablonban.
-
-```json
-{
-    "apiVersion": "2018-09-01-preview",
-    "type": "Microsoft.CustomProviders/resourceProviders/users",
-    "name": "[concat(parameters('rpname'), '/santa')]",
-    "location": "[parameters('location')]",
-    "properties": {
-        "FullName": "Santa Claus",
-        "Location": "NorthPole"
-    }
+  "name": "{endpointDefinitionName}",
+  "routingType": "Proxy",
+  "endpoint": "https://{endpointURL}/"
 }
 ```
 
-## <a name="manage-access"></a>Hozzáférés kezelése
+Tulajdonság | Szükséges | Leírás
+---|---|---
+name | *igen* | A végpont-definíció neve. Azure fogja elérhetővé tenni ezt a nevet, a saját API-n keresztül "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/<br>resourceProviders/{resourceProviderName}/{endpointDefinitionName}'
+routingType | *no* | Meghatározza, hogy a Szerződéstípus a **végpont**. Ha nincs megadva, az alapértelmezés lesz az "Proxyszolgáltató".
+endpoint | *igen* | A végpontot irányíthatja a kérelmeket. Ez a válasz, valamint a kérés ügyféloldali eredő esetleges kezeli.
 
-Az Azure [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) az erőforrás-szolgáltató való hozzáférés kezelése. Hozzárendelhet [beépített szerepkörök](../role-based-access-control/built-in-roles.md) például tulajdonos, közreműködő vagy olvasó a felhasználók számára. Vagy megadhat [egyéni szerepkörök](../role-based-access-control/custom-roles.md) kifejezetten az erőforrás-szolgáltató az műveletek.
+### <a name="building-custom-resources"></a>Egyéni erőforrások készítése
+
+**Erőforrástípusok** ismertetik az Azure-hoz hozzáadott új egyéni erőforrásokat. Ezek teszik elérhetővé a alapszintű CRUD REST-alapú módszerek. Lásd: [egyéni erőforrások létrehozásával kapcsolatos további](./custom-providers-resources-endpoint-how-to.md)
+
+Egyéni erőforrás-szolgáltató minta **erőforrástípusok**:
+
+```JSON
+{
+  "properties": {
+    "resourceTypes": [
+      {
+        "name": "myCustomResources",
+        "routingType": "Proxy",
+        "endpoint": "https://{endpointURL}/"
+      }
+    ]
+  },
+  "location": "eastus"
+}
+```
+
+API-k a következőkhöz az Azure-bA a fenti példa:
+
+HttpMethod | Minta URI | Leírás
+---|---|---
+PUT | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}?api-version=2018-09-01-preview | Az új erőforrás létrehozása az Azure REST API-hívással.
+DELETE | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}?api-version=2018-09-01-preview | Az Azure REST API-hívás egy meglévő erőforrás törléséhez.
+GET | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}?api-version=2018-09-01-preview | Az Azure REST API-hívás egy meglévő erőforrás lekérése.
+GET | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources?api-version=2018-09-01-preview | Az Azure REST API-hívás a meglévő erőforrások listájának beolvasása.
+
+### <a name="building-custom-actions"></a>Az egyéni műveletek létrehozása
+
+**Műveletek** az Azure-hoz hozzáadott új műveleteit. Ezen felül az erőforrás-szolgáltató közzétett vagy beágyazva egy **resourceType**. Lásd: [további információk az egyéni műveletek létrehozása](./custom-providers-action-endpoint-how-to.md)
+
+Egyéni erőforrás-szolgáltató minta **műveletek**:
+
+```JSON
+{
+  "properties": {
+    "actions": [
+      {
+        "name": "myCustomAction",
+        "routingType": "Proxy",
+        "endpoint": "https://{endpointURL}/"
+      }
+    ]
+  },
+  "location": "eastus"
+}
+```
+
+API-k a következőkhöz az Azure-bA a fenti példa:
+
+HttpMethod | Minta URI | Leírás
+---|---|---
+POST | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomAction?api-version=2018-09-01-preview | Az Azure REST API-hívás aktiválása a műveletet.
+
+## <a name="looking-for-help"></a>Segítségre van szüksége
+
+Ha kérdései vannak az Azure egyéni erőforrás-szolgáltató fejlesztéshez, próbálja meg kéri [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers). Hasonló kérdés előfordulhat, hogy már megtörtént ismételt és válaszolt, nézzen könyvelési előtt először. A címke hozzáadása ```azure-custom-providers``` gyors válaszol!
 
 ## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megismerhette egyéni szolgáltatókat. Nyissa meg a következő cikk az egyéni szolgáltató létrehozásához.
 
-> [!div class="nextstepaction"]
-> [Oktatóanyag: Hozzon létre egyéni szolgáltatót és az egyéni erőforrások üzembe helyezése](create-custom-provider.md)
+- [Oktatóanyag: Az Azure egyéni erőforrás-szolgáltató létrehozása és telepítése az egyéni erőforrások](./create-custom-provider.md)
+- [Útmutató: Az egyéni műveletek hozzáadása az Azure REST API-val](./custom-providers-action-endpoint-how-to.md)
+- [Útmutató: Egyéni erőforrások hozzáadása az Azure REST API-val](./custom-providers-resources-endpoint-how-to.md)

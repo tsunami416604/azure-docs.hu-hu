@@ -16,12 +16,12 @@ ms.subservice: pim
 ms.date: 04/09/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74607f6a746558238ead65036d708b515d370035
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 84bd491d992ed15df288d9226b58bfe832e0692a
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60441407"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476496"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-pim"></a>A PIM az Azure-erőforrások szerepköreihez tartozó tevékenység és a naplózási előzmények megtekintése
 
@@ -43,11 +43,11 @@ Milyen műveletek egy adott felhasználó tartott a különböző erőforrások 
 
     A felhasználói műveletek az Azure-erőforrások grafikus nézetének dátum szerint láthatja. Azt is bemutatja a legutóbbi szerepkör-aktiválások, hogy ugyanazon időszakra.
 
-    ![Felhasználói adatok](media/azure-pim-resource-rbac/rbac-user-details.png)
+    ![Erőforrás tevékenység összegzése és a szerepkör-aktiválások rendelkező felhasználói adatok](media/azure-pim-resource-rbac/rbac-user-details.png)
 
 1. Kattintson egy adott szerepkör aktiválásának megjelenítéséhez a részletek és a megfelelő Azure-erőforrás tevékenység, amely történt, miközben a felhasználó volt aktív.
 
-    ![Válassza ki a szerepkör aktiválása](media/azure-pim-resource-rbac/rbac-user-resource-activity.png)
+    ![Kiválasztott szerepkör-aktiválás és dátum szerint jelenik meg a tevékenység részletei](media/azure-pim-resource-rbac/rbac-user-resource-activity.png)
 
 ## <a name="export-role-assignments-with-children"></a>Szerepkör-hozzárendeléseit a gyermekkel rendelkező kifejezések
 
@@ -63,11 +63,11 @@ Megfelelőségi követelményt rendelkezhet, ahol meg kell adnia szerepkör-hozz
 
 1. Kattintson a **exportálása** az exportálási tagsági panel megnyitásához.
 
-    ![Tagság ablaktábla exportálása](media/azure-pim-resource-rbac/export-membership.png)
+    ![Tagság ablaktábla exportálni az összes tag exportálása](media/azure-pim-resource-rbac/export-membership.png)
 
 1. Kattintson a **exportálja az összes tag** exportálhatja egy CSV-fájlban szereplő összes szerepkör-hozzárendelések.
 
-    ![CSV-fájl exportálása](media/azure-pim-resource-rbac/export-csv.png)
+    ![Exportált CSV fil az Excel, a szerepkör-hozzárendelések](media/azure-pim-resource-rbac/export-csv.png)
 
 ## <a name="view-resource-audit-history"></a>Erőforrás-naplózási előzmények megtekintése
 
@@ -83,15 +83,15 @@ Erőforrás naplózása megtekintheti az összes szerepkör tevékenység egy er
 
 1. Szűrés egy előre definiált dátum- vagy egyéni tartomány használatával előzményeit.
 
-    ![Erőforrás naplózása szűrése](media/azure-pim-resource-rbac/rbac-resource-audit.png)
+    ![Naplózási erőforráslista szűrőkkel](media/azure-pim-resource-rbac/rbac-resource-audit.png)
 
 1. A **naplózás típusa**válassza **Activate (hozzárendelt + aktiválva)** .
 
-    ![Tevékenység részletei](media/azure-pim-resource-rbac/rbac-audit-activity.png)
+    ![Aktiválás naplózási típus szerint szűrt erőforrások naplózási listája](media/azure-pim-resource-rbac/rbac-audit-activity.png)
 
 1. A **művelet**, kattintson a **(tevékenységet)** a felhasználó számára a felhasználói tevékenység részletei az Azure-erőforrások számára.
 
-    ![Felhasználói tevékenység részletei](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
+    ![Felhasználói tevékenység részleteit egy adott művelet](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
 
 ## <a name="view-my-audit"></a>Saját naplózás megtekintése
 
@@ -107,7 +107,7 @@ Saját naplózás lehetővé teszi a személyes szerepkör tevékenység megteki
 
 1. Szűrés egy előre definiált dátum- vagy egyéni tartomány használatával előzményeit.
 
-    ![Személyes szerepkör tevékenység](media/azure-pim-resource-rbac/my-audit-time.png)
+    ![A jelenlegi felhasználó listáját naplózása](media/azure-pim-resource-rbac/my-audit-time.png)
 
 ## <a name="next-steps"></a>További lépések
 

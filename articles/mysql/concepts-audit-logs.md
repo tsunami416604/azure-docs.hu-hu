@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: a82afe6f5299609fd6dd57a54f04f49fad5d2268
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.date: 06/26/2019
+ms.openlocfilehash: 86750cea5e7f0d4726f3e0e9a03795ef2a602d8b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357641"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443848"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Auditnaplók az Azure Database for MySQL-hez
 
@@ -55,7 +55,7 @@ A következő szakaszok ismertetik, mit jelent az eseménytípus alapján MySQL 
 |---|---|
 | `TenantId` | A bérlő azonosítója |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated` [UTC] | Időbélyeg mikor lett rögzítve a napló (UTC) |
+| `TimeGenerated [UTC]` | Időbélyeg mikor lett rögzítve a napló (UTC) |
 | `Type` | A napló típusa. Mindig `AzureDiagnostics` |
 | `SubscriptionId` | GUID Azonosítóját az előfizetést, amelyhez a kiszolgáló tartozik. |
 | `ResourceGroup` | A kiszolgáló tartozik az erőforráscsoport neve |
@@ -65,13 +65,14 @@ A következő szakaszok ismertetik, mit jelent az eseménytípus alapján MySQL 
 | `Resource` | A kiszolgáló neve |
 | `Category` | `MySqlAuditLogs` |
 | `OperationName` | `LogEvent` |
-| `event_class` | `connection_log` |
-| `event_subclass` | `CONNECT`, `DISCONNECT`, `CHANGE USER` (csak MySQL 5.7-es érhető el) |
-| `connection_id` | MySQL által létrehozott egyedi Kapcsolatazonosító |
-| `host` | Üres |
-| `ip` | A MySQL-hez csatlakozó ügyfél IP-címe |
-| `user` | A lekérdezést végrehajtó felhasználó neve |
-| `db` | Csatlakoztatott adatbázis neve |
+| `LogicalServerName_s` | A kiszolgáló neve |
+| `event_class_s` | `connection_log` |
+| `event_subclass_s` | `CONNECT`, `DISCONNECT`, `CHANGE USER` (csak MySQL 5.7-es érhető el) |
+| `connection_id_d` | MySQL által létrehozott egyedi Kapcsolatazonosító |
+| `host_s` | Üres |
+| `ip_s` | A MySQL-hez csatlakozó ügyfél IP-címe |
+| `user_s` | A lekérdezést végrehajtó felhasználó neve |
+| `db_s` | Csatlakoztatott adatbázis neve |
 | `\_ResourceId` | Erőforrás-URI |
 
 ### <a name="general"></a>Általános kérdések
@@ -82,7 +83,7 @@ Az alábbi séma általános, DML_SELECT, DML_NONSELECT, DML, DDL, Kapcsolattár
 |---|---|
 | `TenantId` | A bérlő azonosítója |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated` [UTC] | Időbélyeg mikor lett rögzítve a napló (UTC) |
+| `TimeGenerated [UTC]` | Időbélyeg mikor lett rögzítve a napló (UTC) |
 | `Type` | A napló típusa. Mindig `AzureDiagnostics` |
 | `SubscriptionId` | GUID Azonosítóját az előfizetést, amelyhez a kiszolgáló tartozik. |
 | `ResourceGroup` | A kiszolgáló tartozik az erőforráscsoport neve |
@@ -92,15 +93,16 @@ Az alábbi séma általános, DML_SELECT, DML_NONSELECT, DML, DDL, Kapcsolattár
 | `Resource` | A kiszolgáló neve |
 | `Category` | `MySqlAuditLogs` |
 | `OperationName` | `LogEvent` |
-| `event_class` | `general_log` |
-| `event_subclass` | `LOG`, `ERROR`, `RESULT` (csak MySQL 5.6-os érhető el) |
+| `LogicalServerName_s` | A kiszolgáló neve |
+| `event_class_s` | `general_log` |
+| `event_subclass_s` | `LOG`, `ERROR`, `RESULT` (csak MySQL 5.6-os érhető el) |
 | `event_time` | Lekérdezés indítsa el a másodperc, a UNIX-időbélyege |
-| `error_code` | Hibakód: Ha a lekérdezés nem sikerült. `0` azt jelenti, hogy nem történt hiba |
-| `thread_id` | A lekérdezés végrehajtása szál azonosítója |
-| `host` | Üres |
-| `ip` | A MySQL-hez csatlakozó ügyfél IP-címe |
-| `user` | A lekérdezést végrehajtó felhasználó neve |
-| `sql_text` | A lekérdezés teljes szövege |
+| `error_code_d` | Hibakód: Ha a lekérdezés nem sikerült. `0` azt jelenti, hogy nem történt hiba |
+| `thread_id_d` | A lekérdezés végrehajtása szál azonosítója |
+| `host_s` | Üres |
+| `ip_s` | A MySQL-hez csatlakozó ügyfél IP-címe |
+| `user_s` | A lekérdezést végrehajtó felhasználó neve |
+| `sql_text_s` | A lekérdezés teljes szövege |
 | `\_ResourceId` | Erőforrás-URI |
 
 ### <a name="table-access"></a>Tábla hozzáférés
@@ -109,7 +111,7 @@ Az alábbi séma általános, DML_SELECT, DML_NONSELECT, DML, DDL, Kapcsolattár
 |---|---|
 | `TenantId` | A bérlő azonosítója |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated` [UTC] | Időbélyeg mikor lett rögzítve a napló (UTC) |
+| `TimeGenerated [UTC]` | Időbélyeg mikor lett rögzítve a napló (UTC) |
 | `Type` | A napló típusa. Mindig `AzureDiagnostics` |
 | `SubscriptionId` | GUID Azonosítóját az előfizetést, amelyhez a kiszolgáló tartozik. |
 | `ResourceGroup` | A kiszolgáló tartozik az erőforráscsoport neve |
@@ -119,12 +121,13 @@ Az alábbi séma általános, DML_SELECT, DML_NONSELECT, DML, DDL, Kapcsolattár
 | `Resource` | A kiszolgáló neve |
 | `Category` | `MySqlAuditLogs` |
 | `OperationName` | `LogEvent` |
-| `event_class` | `table_access_log` |
-| `event_subclass` | `READ`, `INSERT`, `UPDATE`, vagy `DELETE` |
-| `connection_id` | MySQL által létrehozott egyedi Kapcsolatazonosító |
-| `db` | Elérhető adatbázis neve |
-| `table` | Elért tábla neve |
-| `sql_text` | A lekérdezés teljes szövege |
+| `LogicalServerName_s` | A kiszolgáló neve |
+| `event_class_s` | `table_access_log` |
+| `event_subclass_s` | `READ`, `INSERT`, `UPDATE`, vagy `DELETE` |
+| `connection_id_d` | MySQL által létrehozott egyedi Kapcsolatazonosító |
+| `db_s` | Elérhető adatbázis neve |
+| `table_s` | Elért tábla neve |
+| `sql_text_s` | A lekérdezés teljes szövege |
 | `\_ResourceId` | Erőforrás-URI |
 
 ## <a name="next-steps"></a>További lépések

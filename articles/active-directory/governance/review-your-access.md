@@ -15,12 +15,12 @@ ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b38422b22885ad96c6681abe58b897155809521
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22f12255bf14ca424a8a79107e7ca8e403552b62
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66113188"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67471747"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Hozzáférés felülvizsgálata maga a csoportokat vagy alkalmazásokat az Azure AD hozzáférési felülvizsgálatokkal
 
@@ -40,7 +40,7 @@ Hozzáférési felülvizsgálat végrehajtása első lépése, hogy keresse meg 
 
 1. Keresse meg a Microsoft, amely rákérdez, hogy tekintse át a hozzáférést egy e-mailt. Íme egy példa e-mailt a csoportba hozzáférés felülvizsgálata.
 
-    ![E-mailek hozzáférési felülvizsgálat](./media/review-your-access/access-review-email.png)
+    ![Példa e-mailt a Microsoft egy csoporthoz a hozzáférés felülvizsgálata](./media/review-your-access/access-review-email.png)
 
 1. Kattintson a **hozzáférés felülvizsgálata** nyissa meg a hozzáférési felülvizsgálat mutató hivatkozást.
 
@@ -48,7 +48,7 @@ Ha nem rendelkezik az e-mailt, Észreveheti, hogy a függőben lévő hozzáfér
 
 1. Jelentkezzen be a MyApps portálról, [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
 
-    ![MyApps portálról](./media/review-your-access/myapps-access-panel.png)
+    ![MyApps portálról, amelyekhez alkalmazások listázása](./media/review-your-access/myapps-access-panel.png)
 
 1. Az oldal jobb felső sarkában kattintson a felhasználó szimbólumára. Ekkor megjelenik a neve és az alapértelmezett szervezete. Ha egynél több szervezet szerepel a listán, válassza ki azt a szervezetet, amely a hozzáférési felülvizsgálatot kérte.
 
@@ -56,7 +56,7 @@ Ha nem rendelkezik az e-mailt, Észreveheti, hogy a függőben lévő hozzáfér
 
     A csempe nem látható, ha nincsenek végrehajtandó hozzáférési felülvizsgálatok az adott szervezetre vonatkozóan, és ilyenkor semmilyen műveletre nincs szükség.
 
-    ![A hozzáférési felülvizsgálatok listája](./media/review-your-access/access-reviews-list.png)
+    ![Függőben lévő hozzáférési felülvizsgálatok listáját az alkalmazásokban és a csoportok](./media/review-your-access/access-reviews-list.png)
 
 1. Kattintson a **felülvizsgálat megkezdése** hivatkozásra a hozzáférési felülvizsgálatot végrehajtására vonatkozó szándékát.
 
@@ -68,13 +68,13 @@ Miután megnyitotta a hozzáférési felülvizsgálatot, láthatja a hozzáfér�
 
     Ha a kérés hozzáférés felülvizsgálata mások számára, az oldal fog kinézni. További információkért lásd: [csoportokhoz vagy alkalmazásokhoz való hozzáférés felülvizsgálata](perform-access-review.md).
 
-    ![Hozzáférési felülvizsgálat végrehajtása](./media/review-your-access/perform-access-review.png)
+    ![Nyissa meg hozzáférési felülvizsgálat kéri, hogy továbbra is hozzá kell férnie egy csoportot](./media/review-your-access/perform-access-review.png)
 
 1. Kattintson a **Igen** tartsa a hozzáférést, vagy kattintson a **nem** a hozzáférést.
 
 1. Ha rákattint **Igen**, adja meg az indoklást szüksége lehet a **OK** mezőbe.
 
-    ![Hozzáférési felülvizsgálat végrehajtása](./media/review-your-access/perform-access-review-submit.png)
+    ![Hozzáférési felülvizsgálat kéri, hogy továbbra is hozzá kell férnie egy csoport befejeződött](./media/review-your-access/perform-access-review-submit.png)
 
 1. Kattintson a **Submit** (Küldés) gombra.
 

@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 86e30c465a605681519565261beec75d88ccd472
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 4f77eafd3309d7c1d679c126b1a5eb1ff0e9a28d
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190805"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490095"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Forrás átalakításában adatfolyam-leképezés 
 
@@ -146,6 +146,12 @@ Ha a szöveges fájl nincs meghatározott sémája rendelkezik, válassza ki a *
 Módosíthatja az oszlop adattípusait később származtatott oszlopot átalakításban. Válassza ki az átalakítás használatával módosíthatja az oszlopok neveit.
 
 ![Alapértelmezett adatformátumok a célnyelven beállításainak](media/data-flow/source2.png "alapértelmezett formátumok")
+
+### <a name="add-dynamic-content"></a>Dinamikus tartalom hozzáadása
+
+Ha a beállítás panel mezők belül kattint, megjelenik egy "Dinamikus tartalom hozzáadása" hivatkozást. Ide kattintva, elindul a Kifejezésszerkesztőt. Ez a, amelyen beállíthatja értékek beállítások segítségével dinamikusan kifejezések, statikus konstansértékekkel vagy paramétereit.
+
+![Paraméterek](media/data-flow/params6.png "paraméterek")
 
 ## <a name="next-steps"></a>További lépések
 

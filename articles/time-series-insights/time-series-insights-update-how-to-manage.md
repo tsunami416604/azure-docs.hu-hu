@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 06/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6251df2317ceff9dded92f2d829bfab0503fdf1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f626ce2e009a18afcb4d04b7caa6850ea58c7483
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237588"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446812"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>Üzembe helyezése és kezelése az Azure Time Series Insights előzetes verziója
 
@@ -45,7 +45,7 @@ Az alábbi lépések bemutatják, hogyan hozhat létre az Azure Time Series Insi
 
 1. Válassza ki a **PAYG** gomb alatt a **Termékváltozat** menü. Adja meg a környezet nevét, és válassza ki, melyik előfizetést csoporthoz, és melyik erőforráscsoport. Ezután válassza ki a környezetet üzemeltetni, a támogatott helyét.
 
-   [![Hozzon létre egy Azure Time Series Insights-példányt.](media/v2-update-manage/manage_three.PNG)](media/v2-update-manage/manage_three.PNG#lightbox)
+   [![Hozzon létre egy Azure Time Series Insights-példányt.](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
 
 1. Adjon meg egy Idősorozat-azonosító.
 
@@ -56,7 +56,7 @@ Az alábbi lépések bemutatják, hogyan hozhat létre az Azure Time Series Insi
 
 1. Az Azure storage-fiók létrehozása a tárfiók nevének kiválasztásával, és a egy replikációs választott kijelölése. Ez így automatikusan létrehoz egy Azure Storage-általános célú v1 fiók. Az Azure Time Series Insights – előzetes környezet, amely a korábban kiválasztott ugyanabban a régióban jön.
 
-    [![A példány az Azure storage-fiók létrehozása](media/v2-update-manage/manage_five.PNG)](media/v2-update-manage/manage_five.PNG#lightbox)
+    [![A példány az Azure storage-fiók létrehozása](media/v2-update-manage/manage-five.png)](media/v2-update-manage/manage-five.png#lightbox)
 
 1. Szükség esetén az eseményforrás is hozzáadhat.
 
@@ -67,11 +67,11 @@ Az alábbi lépések bemutatják, hogyan hozhat létre az Azure Time Series Insi
      > [!TIP]
      > Az üzenet sorba helyezésekor nem feltétlenül a legjobb konfigurált beállítást, a batch-esemény vagy előzményadatokat forgatókönyvek feltöltés. Ellenőrizze, hogy ellenőrizze a döntést, vagy használjon egy időbélyeg-tulajdonság az ezekben az esetekben.
 
-     [![Esemény (forrás) lapot](media/v2-update-manage/manage_two.PNG)](media/v2-update-manage/manage_two.PNG#lightbox)
+     [![Esemény (forrás) lapot](media/v2-update-manage/manage-two.png)](media/v2-update-manage/manage-two.png#lightbox)
 
 1. Győződjön meg arról, hogy a környezet van kiépítve a kívánt beállításokat.
 
-    [![Felülvizsgálat + Létrehozás lap](media/v2-update-manage/manage_three.PNG)](media/v2-update-manage/manage_three.PNG#lightbox)
+    [![Felülvizsgálat + Létrehozás lap](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
 
 ## <a name="manage-the-environment"></a>A környezet kezelése
 
@@ -88,7 +88,7 @@ Az Azure Time Series Insights – előzetes környezet az Azure portal használa
 
 * Az Azure Portalon **referenciaadatok** panel az Azure Time Series Insights – előzetes eltávolították, mert referenciaadatok nem PAYG környezet egyik összetevője.
 
-[![Time Series Insights előzetes verziójú környezet az Azure Portalon](media/v2-update-manage/manage_four.PNG)](media/v2-update-manage/manage_four.PNG#lightbox)
+[![Time Series Insights előzetes verziójú környezet az Azure Portalon](media/v2-update-manage/manage-four.png)](media/v2-update-manage/manage-four.png#lightbox)
 
 ## <a name="next-steps"></a>További lépések
 

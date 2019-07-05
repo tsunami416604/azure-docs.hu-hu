@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: 8827feaf1d541edc7c0b54d8af951ddab79c5aaa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a60e41d3195c0f7d88fd3ba14336d693d2f528e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808619"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446680"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Oracle-alkalmazási megoldások integrálása a Microsoft Azure és az Oracle-felhő-infrastruktúra (előzetes verzió)
 
@@ -74,5 +74,7 @@ Identitás egyike a Microsoft és az Oracle közti partneri kapcsolatról core t
 Jelenleg ez az integráció lehetővé teszi, hogy egyetlen központi helyen, amely az Azure Active Directory kezeléséhez. Azure ad-ben a directory módosításainak szinkronizálása a megfelelő Oracle-könyvtárat, és egyszeri bejelentkezést a több felhőre kiterjedő Oracle-megoldásokról szolgál.
 
 ## <a name="next-steps"></a>További lépések
+
+Első lépések a [a felhőbe irányuló hálózati](configure-azure-oci-networking.md) Azure és a OCI között. 
 
 További információkért és OCI kapcsolatos tanulmányok, tekintse meg a [Oracle Felhőbeli](https://docs.cloud.oracle.com/iaas/Content/home.htm) dokumentációját.

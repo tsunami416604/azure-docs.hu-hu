@@ -7,12 +7,12 @@ ms.service: cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: 3dcce64d86574a3e898531b2e2587b81d04f098d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7e75a6ffe28aa74ea2fad30bbe2728317712d86b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080771"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443495"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Verizon Premium szabályok adatbázismotor-funkciók az Azure CDN
 
@@ -456,7 +456,7 @@ A módját, mely gyorsítótárban beállítások nyomon követi, mert ez a funk
 - Ügyfél IP-címe
 - Cookie-k paraméter
 - Cookie-k paramétert reguláris kifejezés
-- Ország
+- Country
 - Eszköz
 - Microsoft Edge Cname
 - Hivatkozó tartomány
@@ -588,7 +588,7 @@ A módját, mely gyorsítótárban beállítások nyomon követi, mert ez a funk
 - Ügyfél IP-címe
 - Cookie-k paraméter
 - Cookie-k paramétert reguláris kifejezés
-- Ország
+- Country
 - Eszköz
 - Edge Cname
 - Hivatkozó tartomány
@@ -715,7 +715,7 @@ A módját, mely gyorsítótárban beállítások nyomon követi, mert ez a funk
 - Ügyfél IP-címe
 - Cookie-k paraméter
 - Cookie-k paramétert reguláris kifejezés
-- Ország
+- Country
 - Eszköz
 - Edge Cname
 - Hivatkozó tartomány
@@ -799,7 +799,7 @@ A módját, mely gyorsítótárban beállítások nyomon követi, mert ez a funk
 - Ügyfél IP-címe
 - Cookie-k paraméter
 - Cookie-k paramétert reguláris kifejezés
-- Ország
+- Country
 - Eszköz
 - Edge Cname
 - Hivatkozó tartomány
@@ -867,7 +867,7 @@ A módját, mely gyorsítótárban beállítások nyomon követi, mert ez a funk
 - Ügyfél IP-címe
 - Cookie-k paraméter
 - Cookie-k paramétert reguláris kifejezés
-- Ország
+- Country
 - Eszköz
 - Edge Cname
 - Hivatkozó tartomány
@@ -1128,7 +1128,7 @@ Ez a funkció lehetővé teszi, hogy egy ügyfél egyéni fejléc keresztül cí
 
 Győződjön meg arról, hogy a megadott fejléc neve nem egyezik a következő neveket bármelyikét:
 
-- A fejlécnevek standard kérelmet. Standard fejlécnevek listája található [RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
+- A fejlécnevek standard kérelmet. Standard fejlécnevek listája található [RFC 2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
 - Fejléc fenntartott nevek:
     - továbbított számára
     - host

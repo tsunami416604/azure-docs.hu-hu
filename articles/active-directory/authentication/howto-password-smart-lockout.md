@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/31/2018
+ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c81a9f3891130f1c6fc2f1a665d7065fb983227
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 150ecbdfcc21ee7ec0bf54fd5b824bc93e0c76ce
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60358140"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483309"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Az Azure Active Directory intelligens zárolás
 
@@ -41,7 +41,9 @@ Intelligens zárolás integrálható legyen az a hibrid telepítések esetén a 
 Használata esetén [átmenő hitelesítés](../hybrid/how-to-connect-pta.md), győződjön meg arról, hogy szüksége:
 
 * Az Azure ad-ben fiókzárolás küszöbértéke **kevesebb** , mint az Active Directory számítógépfiókok zárolási küszöbértéke. Állítsa be az értékét, úgy, hogy az Active Directory számítógépfiókok zárolási küszöbértéke hosszabb, mint az Azure ad-ben Fiókzárolás küszöbe legalább két-három alkalommal. 
-* Az Azure ad-ben a fiókzárolás időtartama **másodpercek alatt** van **hosszabb** , mint az Active Directory Fiókzárolás időtartama után **perc**.
+* Az Azure ad-ben a fiókzárolás időtartama hosszabb, mint az Active Directory Fiókzárolás időtartama után kell beállítani. Vegye figyelembe, hogy az Azure AD-időtartam értéke másodpercek alatt, miközben az AD időtartamát percekben van megadva. 
+
+Például ha azt szeretné, hogy az Azure ad-ben számláló AD értéke magasabb lehet, majd az Azure AD lenne 120 másodperc (2 perc) közben az a helyszíni AD 1 perc (60 másodpercet) értékre van állítva.
 
 > [!IMPORTANT]
 > Jelenleg a rendszergazda nem fiókok zárolásának feloldása a felhasználók felhőbeli ha azok zárolva van az intelligens zárolás funkció. A rendszergazdának meg kell várnia a fiókzárolás időtartama lejár.

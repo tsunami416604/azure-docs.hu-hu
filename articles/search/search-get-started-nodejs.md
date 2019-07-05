@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés az Azure Search node.js-szel – Azure Search szolgáltatással
-description: Keresőalkalmazás felépítési útmutatója az Azure egy üzemeltetett felhőalapú keresőszolgáltatásához a Node.js programozási nyelv használatával.
+title: 'NODE.js – rövid útmutató: Létrehozása, betöltése és lekérdezése az indexek az Azure Search REST API-k – Azure Search használatával'
+description: Azt ismerteti, hogyan-index létrehozása, adatok betöltése és lekérdezések futtatása Node.js és az Azure Search REST API-k használatával.
 author: jj09
 manager: jlembicz
 services: search
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 04/26/2017
 ms.author: jjed
 ms.custom: seodec2018
-ms.openlocfilehash: 1b37b3c52abd3750c3452a46bdf5b0c5954de4dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 44b7f1f49d6764418dcc0e72cb667e17a2b920c6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61289203"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450025"
 ---
-# <a name="get-started-with-azure-search-in-nodejs"></a>Bevezetés az Azure Search használatába Node.js-ben
+# <a name="quickstart-create-an-azure-search-index-in-nodejs"></a>Gyors útmutató: Az Azure Search-index létrehozása a Node.js-ben
 > [!div class="op_single_selector"]
 > * [Portál](search-get-started-portal.md)
 > * [.NET](search-howto-dotnet-sdk.md)
@@ -32,7 +32,7 @@ A minta futtatásához rendelkeznie kell egy Azure Search-szolgáltatással, ame
 ## <a name="about-the-data"></a>Tudnivalók az adatokról
 A mintaalkalmazás az [Amerikai Egyesült Államok geológiai szolgáltatásainak (United States Geological Services, USGS)](https://geonames.usgs.gov/domestic/download_data.htm) adatait használja, az adatkészlet méretének csökkentése érdekében Rhode Island államra szűrve. Ezeket az adatokat fogjuk használni egy olyan keresőalkalmazás létrehozásához, amely jellegzetes épületeket, például kórházakat és iskolákat, valamint geológiai jellegzetességeket, például folyókat, tavakat és hegycsúcsokat ad vissza eredményül.
 
-Ebben az alkalmazásban a **DataIndexer** program egy [indexelő](https://msdn.microsoft.com/library/azure/dn798918.aspx) szerkezet segítségével létrehozza és betölti az indexet, amelyhez egy nyilvános Azure SQL-adatbázisból kéri le a szűrt USGS-adatkészletet. A hitelesítő adatokat és az online adatforrás csatlakozási adatait a programkód tartalmazza. Nincs szükség további konfigurációra.
+Ebben az alkalmazásban a **DataIndexer** program segítségével létrehozza és betölti az indexet egy [indexelő](https://msdn.microsoft.com/library/azure/dn798918.aspx) szerkezet a szűrt USGS-adatkészletet egy Azure SQL Database-ből. A hitelesítő adatokat és az online adatforrás csatlakozási adatait a programkód tartalmazza. Nincs szükség további konfigurációra.
 
 > [!NOTE]
 > Az adatkészlethez olyan szűrőt alkalmaztunk, hogy az ingyenes tarifacsomag 10 000 dokumentumos korlátja alatt maradjunk. Ha a standard csomagot használja, arra nem vonatkozik ez a korlátozás. Az egyes tarifacsomagok kapacitásával kapcsolatos részletes információkat lásd: [A Search szolgáltatásra vonatkozó korlátozások](search-limits-quotas-capacity.md).

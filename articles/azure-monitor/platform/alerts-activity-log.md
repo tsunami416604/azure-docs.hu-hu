@@ -5,14 +5,14 @@ author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/15/2018
+ms.date: 06/25/2019
 ms.author: vinagara
-ms.openlocfilehash: f25321fa5a13ed5a39a62a4115bb0bc10306d36f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8183c7070b5d42e1c7a96fc0d64974658b2ec7d0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244956"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448926"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és használata az Azure Monitor tevékenységnapló-riasztások kezelése  
 
@@ -24,16 +24,17 @@ Ezek a riasztások az Azure-erőforrásokhoz, van egy Azure Resource Manager-sab
 > [!IMPORTANT]
 > Riasztások a szolgáltatás állapotával kapcsolatos értesítés nem hozható létre a tevékenység log riasztás létrehozása a felületen keresztül. Című cikk nyújt tájékoztatást, létrehozásával és használatával a szolgáltatás állapotával kapcsolatos értesítésekre, [tevékenységnapló-riasztások a szolgáltatás állapotára vonatkozó értesítések fogadásához](alerts-activity-log-service-notifications.md).
 
+A riasztási szabályok létrehozásakor a következőket biztosítja:
+
+- A hatókör előfizetés különbözik nem az előfizetés ahol a riasztás létrejött.
+- Feltételek kell lennie a szint/állapot/hívó / erőforráscsoport vagy erőforrás-azonosító / erőforrás típusa / az eseménykategóriát, amelyen a riasztás úgy van konfigurálva.
+- Nem "anyOf" feltétel vagy a beágyazott feltételeknek a riasztás konfigurálásakor JSON (alapvetően csak egy allOf esetén megengedett semmilyen további allOf anyOf).
+- Ha a kategória: "rendszergazda". A fenti feltételek legalább egyikének a riasztásban szereplő adjon meg. Nem hozható létre egy riasztást, amely minden alkalommal, amikor létrejön egy esemény a Tevékenységnaplókban aktiválja.
+
+
 ## <a name="azure-portal"></a>Azure Portal
 
-> [!NOTE]
-> 
->  A riasztási szabályok létrehozásakor a következőket biztosítja:
-> 
-> - A hatókör előfizetés különbözik nem az előfizetés ahol a riasztás létrejött.
-> - Feltételek kell lennie a szint/állapot/hívó / erőforráscsoport vagy erőforrás-azonosító / erőforrás típusa / az eseménykategóriát, amelyen a riasztás úgy van konfigurálva.
-> - Nem "anyOf" feltétel vagy a beágyazott feltételeknek a riasztás konfigurálásakor JSON (alapvetően csak egy allOf esetén megengedett semmilyen további allOf anyOf).
-> - Ha a kategória: "rendszergazda". A fenti feltételek legalább egyikének a riasztásban szereplő adjon meg. Nem hozható létre egy riasztást, amely minden alkalommal, amikor létrejön egy esemény a Tevékenységnaplókban aktiválja.
+Az Azure portal használatával, felhasználó is létrehozása és módosítása tevékenység naplóriasztási szabály. És a felhasználói élményt integrálva van az Azure tevékenységnapló - zökkenőmentes riasztás létrehozása adott események a lényeges biztosítása érdekében.
 
 ### <a name="create-with-azure-portal"></a>Hozzon létre az Azure Portalon
 
@@ -220,11 +221,11 @@ ahol a sampleActivityLogAlert.parameters.json a riasztási szabály létrehozás
 
 A tevékenységnapló-riasztások rendelkezhetnek dedikált elérhető PowerShell-parancsmagokkal:
 
-- [Set-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Set-AzActivityLogAlert?view=azps-1.3.0) : Létrehoz egy új vagy meglévő tevékenységnapló-riasztás frissítése.
-- [Get-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Get-AzActivityLogAlert?view=azps-1.3.0) : Lekérdezi egy vagy több tevékenység log riasztás erőforrásai.
-- [Enable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Enable-AzActivityLogAlert?view=azps-1.3.0) : Lehetővé teszi a meglévő tevékenységnapló-riasztás, és beállítja a címkéket.
-- [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert?view=azps-1.3.0) : Letiltja a meglévő tevékenységnapló-riasztás, és beállítja a címkéket.
-- [Remove-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert?view=azps-1.3.0)    : Eltávolítja a tevékenységnapló-riasztás.
+- [Set-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Set-AzActivityLogAlert) : Létrehoz egy új vagy meglévő tevékenységnapló-riasztás frissítése.
+- [Get-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Get-AzActivityLogAlert) : Lekérdezi egy vagy több tevékenység log riasztás erőforrásai.
+- [Enable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Enable-AzActivityLogAlert) : Lehetővé teszi a meglévő tevékenységnapló-riasztás, és beállítja a címkéket.
+- [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert) : Letiltja a meglévő tevékenységnapló-riasztás, és beállítja a címkéket.
+- [Remove-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert)    : Eltávolítja a tevékenységnapló-riasztás.
 
 ## <a name="cli"></a>parancssori felület
 

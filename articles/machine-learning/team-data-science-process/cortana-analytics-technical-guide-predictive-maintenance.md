@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: e2f0f1e7ac8f510c4ff5be7933c55278fef74694
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: feccaea0451ae36d841aae95ed0baf54f90c2700
+ms.sourcegitcommit: 3107874d7559ea975e4d55ae33cdf45f4b5485e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60715522"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67568263"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>Technikai útmutató a Cortana Intelligence Megoldássablon prediktív karbantartás a légi közlekedésben
 
@@ -88,7 +88,7 @@ Az Azure Event Hubs szolgáltatás általános; adatok feladható a hub CSV vagy
 
 Ez a dokumentum nem ismerteti, hogy az adatokat, de egyszerűen küldhet eseményeket vagy adatokat egy Azure Event Hub, Event Hub API-val.
 
-### <a name="azure-stream-analytics"></a>Azure Stream Analytics
+### <a name="azure-stream-analytics-1"></a>Az Azure Stream Analytics
 Az Azure Stream Analytics szolgáltatás segítségével közel valós idejű adatstreamek olvasása és ad ki adatokat a forrásból tetszőleges számú.
 
 A karbantartás a légi és Űrközlekedés Megoldássablon, az Azure Stream Analytics-lekérdezés áll négy sub-lekérdezések minden lekérdezés felhasználni az eseményeket az Azure Event Hubs szolgáltatásból a kimenetek négy különböző helyekre. Ezeket a kimeneteket három Power BI-adatkészletek és a egy Azure Storage-helyen állnak.

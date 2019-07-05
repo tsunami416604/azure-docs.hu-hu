@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: a021ed2be3a94add7500a98d71a962bb580078e9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9a7c186f7c5fb46078eaa5729e79fdcc256ecc6d
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66729466"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460213"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Az Azure Functions JavaScript-fejlesztői útmutató
 
@@ -52,7 +52,7 @@ FunctionsProject
 
 A projekt gyökerében van egy megosztott [host.json](functions-host-json.md) fájlt, amely a függvényalkalmazás konfigurálása használható. Minden függvény rendelkezik a saját kódfájl (.js) és a kötési konfigurációs fájl (function.json) nevű mappa. Nevére `function.json`a könyvtár (szülő) mindig a függvényalkalmazás nevére.
 
-A kötési bővítményeket szükséges [verzió 2.x](functions-versions.md) a Functions runtime vannak meghatározva a `extensions.csproj` fájlt, a tényleges függvénytárfájlok a `bin` mappát. Ha helyileg fejlesztésével, akkor meg kell [regisztrálja a kötési bővítményeket](./functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles). Amikor fejlesztéséről az Azure Portalon, a regisztrációt, készen áll.
+A kötési bővítményeket szükséges [verzió 2.x](functions-versions.md) a Functions runtime vannak meghatározva a `extensions.csproj` fájlt, a tényleges függvénytárfájlok a `bin` mappát. Ha helyileg fejlesztésével, akkor meg kell [regisztrálja a kötési bővítményeket](./functions-bindings-register.md#extension-bundles). Amikor fejlesztéséről az Azure Portalon, a regisztrációt, készen áll.
 
 ## <a name="exporting-a-function"></a>Egy függvény exportálása
 
@@ -60,7 +60,7 @@ JavaScript-függvények keresztül kell exportálni [ `module.exports` ](https:/
 
 Alapértelmezés szerint a Functions futtatókörnyezete keres a függvényhez `index.js`, ahol `index.js` közös szülő könyvtárába annak megfelelő `function.json`. Az alapértelmezett esetben az exportált függvény kell lennie, a fájl csak export vagy az Exportálás nevű `run` vagy `index`. Konfigurálja a fájl helyét, és exportálja a függvényalkalmazás nevére, olvassa el [konfigurálása a függvény belépési pont](functions-reference-node.md#configure-function-entry-point) alatt.
 
-Az exportált függvény végrehajtása a átadott argumentumok számos. Az első argumentum vesz mindig van egy `context` objektum. Ha a függvény szinkron (nem ad vissza egy megtartva), át kell adnia a `context` objektumot, mint hívása `context.done` megfelelő használata szükséges.
+Az exportált függvény végrehajtása a átadott argumentumok számos. Az első argumentum vesz mindig van egy `context` objektum. Ha a függvény szinkron (ígéret nem ad vissza), át kell adnia a `context` objektumot, mint hívása `context.done` megfelelő használata szükséges.
 
 ```javascript
 // You should include context, other arguments are optional
@@ -399,7 +399,7 @@ Ha HTTP-eseményindítók használata során a HTTP kérés- és objektumokat sz
     ```
 + ** _[Csak válasz]_  Meghívásával `context.res.send(body?: any)`.** HTTP-választ jön létre a bemeneti `body` , a válasz törzse. `context.done()` implicit módon nevezzük.
 
-+ ** _[Csak válasz]_  Meghívásával `context.done()`.** HTTP-kötést egy különleges visszaadja a választ, az átadott a `context.done()` metódust. A következő HTTP-kimeneti kötés határozza meg a `$return` kimeneti paraméterként:
++ ** _[Csak válasz]_  Meghívásával `context.done()`.** Egy speciális típusú HTTP-kötést ad vissza a választ, amely az átadott a `context.done()` metódust. A következő HTTP-kimeneti kötés határozza meg a `$return` kimeneti paraméterként:
 
     ```json
     {
@@ -421,7 +421,7 @@ Az alábbi táblázat az egyes főverziója a Functions futtatókörnyezete ált
 | Functions-verzió | NODE.js-verzió | 
 |---|---|
 | 1.x | 6.11.2 (futásidejű zárolta) |
-| 2.x  | _Aktív LTS_ és páros számú _aktuális_ Node.js-verzió (8.11.1 és ajánlott 10.14.1). A verzió-beállításokat a WEBSITE_NODE_DEFAULT_VERSION [Alkalmazásbeállítás](functions-how-to-use-azure-function-app-settings.md#settings).|
+| 2.x  | _Aktív LTS_ és _karbantartási LTS_ Node.js-verzió (8.11.1 és ajánlott 10.14.1). A verzió-beállításokat a WEBSITE_NODE_DEFAULT_VERSION [Alkalmazásbeállítás](functions-how-to-use-azure-function-app-settings.md#settings).|
 
 Láthatja, hogy a jelenlegi verzió a modul által használt, a fenti alkalmazás beállítás bejelölésével vagy a Nyomtatás `process.version` a függvényeket.
 
@@ -576,7 +576,7 @@ A helyi fejlesztése és üzembe helyezés a TypeScript projekt módon a fejlesz
 
 A [a Visual Studio Code az Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) bővítmény lehetővé teszi a TypeScript használatával funkciók fejlesztése. A Core-eszközök esetében az Azure Functions bővítmény követelmény.
 
-TypeScript függvényalkalmazás létrehozása a Visual Studio Code, egyszerűen válasszon `TypeScript` amikor létrehoz egy függvényalkalmazást, és a rendszer kéri, válassza ki a nyelvet.
+A Visual Studio Code TypeScript függvényalkalmazás létrehozásához válassza a `TypeScript` függvényalkalmazások létrehozásakor nyelvet.
 
 Amikor lenyomja **F5** futtathatják az alkalmazást helyileg, transpilation történik a gazdagép (func.exe) inicializálása előtt. 
 
@@ -584,7 +584,7 @@ Telepítésekor meg kell adnia a függvényalkalmazás Azure-bA a **függvényal
 
 ### <a name="azure-functions-core-tools"></a>Az Azure Functions Core Tools
 
-TypeScript függvényalkalmazás-projekt Core Tools használatával létrehozásához, a typescript nyelvi beállítás a függvényalkalmazás létrehozásakor kell megadnia. Ez a következő módszerek egyikével teheti meg:
+TypeScript függvényalkalmazás-projekt Core Tools használatával létrehozásához, a TypeScript nyelvi beállítás a függvényalkalmazás létrehozásakor kell megadnia. Ez a következő módszerek egyikével teheti meg:
 
 - Futtassa a `func init` parancs, jelölje be `node` a nyelvi modult, és válassza ki, `typescript`.
 
@@ -614,6 +614,55 @@ Fejlesztése az Azure Functions a kiszolgáló nélküli üzemeltetési modell, 
 ### <a name="connection-limits"></a>Kapcsolat korlátozásai
 
 Szolgáltatásspecifikus ügyfél az Azure Functions alkalmazások használatakor ne hozzon létre egy új ügyfél minden függvény meghívási. Ehelyett hozzon létre egy statikus ügyfél a globális hatókörben. További információkért lásd: [kapcsolatok az Azure Functions kezelése](manage-connections.md).
+
+### <a name="use-async-and-await"></a>Használat `async` és `await`
+
+Az Azure Functions a JavaScript írásakor kell írt kód használatával a `async` és `await` kulcsszavakat. Írás a kód használatával `async` és `await` helyett visszahívások vagy `.then` és `.catch` Ígéreteinket az segít a két gyakori problémák elkerülése érdekében:
+ - Nem kezelt kivételeket dob, amely [a Node.js-folyamat összeomlási](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly), potenciálisan érintő egyéb feladatok végrehajtása.
+ - Nem várt viselkedést, például a hiányzó naplóinak context.log, aszinkron hívás, amely nem megfelelően várni okozzák.
+
+Az aszinkrón metódust az alábbi példában a `fs.readFile` , második paraméterként egy hiba-és felhőközpontú visszahívási függvény hívása. Ez a kód hatására a fent említett problémák is. Egy kivételt, amely nem a megfelelő hatókörben explicit módon érint a teljes folyamat (probléma #1) leállt. Hívó `context.done()` a visszahívás hatókörén kívül függvény azt jelenti, hogy a függvény meghívása előtt a rendszer olvassa be a fájl végül (#2 ki). Ebben a példában hívása `context.done()` hiányzó túl korai eredményez a naplóbejegyzéseket kezdve `Data from file:`.
+
+```javascript
+// NOT RECOMMENDED PATTERN
+const fs = require('fs');
+
+module.exports = function (context) {
+    fs.readFile('./hello.txt', (err, data) => {
+        if (err) {
+            context.log.error('ERROR', err);
+            // BUG #1: This will result in an uncaught exception that crashes the entire process
+            throw err;
+        }
+        context.log(`Data from file: ${data}`);
+        // context.done() should be called here
+    });
+    // BUG #2: Data is not guaranteed to be read before the Azure Function's invocation ends
+    context.done();
+}
+```
+
+Használatával a `async` és `await` kulcsszavak elkerülhetők az mindkét ezeket a hibákat. A Node.js-segédprogram függvény használjon [ `util.promisify` ](https://nodejs.org/api/util.html#util_util_promisify_original) kapcsolja be a hiba-és felhőközpontú visszahívási stílusú funkciókat deklaráltuk funkciók be.
+
+Az alábbi példában minden olyan függvény végrehajtása során fellépő nem kezelt kivételek csak sikertelen az egyes hívás, amely olyan kivételt váltott ki. A `await` kulcsszó azt jelenti, hogy a lépések következő `readFileAsync` csak végrehajtása után `readFile` befejeződött. A `async` és `await`, emellett nem kell meghívni a `context.done()` visszahívás.
+
+```javascript
+// Recommended pattern
+const fs = require('fs');
+const util = require('util');
+const readFileAsync = util.promisify(fs.readFile);
+
+module.exports = async function (context) {
+    try {
+        const data = await readFileAsync('./hello.txt');
+    } catch (err) {
+        context.log.error('ERROR', err);
+        // This rethrown exception will be handled by the Functions Runtime and will only fail the individual invocation
+        throw err;
+    }
+    context.log(`Data from file: ${data}`);
+}
+```
 
 ## <a name="next-steps"></a>További lépések
 

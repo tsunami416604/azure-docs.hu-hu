@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/13/2019
-ms.openlocfilehash: adc5a601a04936a376d7c69b26c2429940ebdf6e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b79efa6ee1f4c052a0037a971fc36d8a9ae0ce58
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306472"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67458732"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Az Azure Red Hat OpenShift az Azure Active Directory-integráció
 
@@ -26,7 +26,7 @@ A Microsoft Azure Red Hat OpenShift engedélyre van szüksége a fürt nevében 
 
 Az a [az Azure portal](https://portal.azure.com), győződjön meg arról, hogy a bérlő a felhasználónév felső területen jelenik meg, a portál jobb:
 
-![Képernyőkép a portal a bérlő szerepel a jobb felső sarokban](./media/howto-create-tenant/tenant-callout.png) Ha rossz bérlőhöz jelenik meg, kattintson a jobb felső sarokban a felhasználónevére, majd kattintson a **címtár váltása**, és válassza ki a megfelelő bérlő a a **összes Könyvtárak** listája.
+![Képernyőkép a portal a bérlő szerepel a jobb felső sarokban](./media/howto-create-tenant/tenant-callout.png) Ha rossz bérlőhöz megjelenik, kattintson a jobb felső sarokban a felhasználónevére, majd kattintson **címtár váltása**, és válassza ki a megfelelő bérlő, a **összes Könyvtárak** listája.
 
 Hozzon létre egy új Azure Active Directory globális rendszergazdai felhasználót, jelentkezzen be az Azure Red Hat OpenShift fürt.
 
@@ -43,7 +43,7 @@ Hozzon létre egy új Azure Active Directory globális rendszergazdai felhaszná
 A fürt rendszergazdai hozzáférést a az Azure AD biztonsági csoportok tagságát szinkronizálja az OpenShift csoport "osa-ügyfél-Adminisztrátorok". Ha nincs megadva, a fürt rendszergazdai hozzáférés nélkül kapnak.
 
 1. Nyissa meg a [Azure Active Directory-csoportok](https://portal.azure.com/#blade/Microsoft_AAD_IAM/GroupsManagementMenuBlade/AllGroups) panelen.
-2. Kattintson a **+ új csoport**
+2. Kattintson a **+ új csoport**.
 3. Adja meg a csoport nevét és leírását.
 4. Állítsa be **csoporttípust** való **biztonsági**.
 5. Állítsa be **tagságtípusának** való **hozzárendelt**.
@@ -54,7 +54,7 @@ A fürt rendszergazdai hozzáférést a az Azure AD biztonsági csoportok tagsá
 7. A tagok listában válassza ki a fent létrehozott Azure AD-felhasználót.
 8. A portál alján kattintson a **kiválasztása** , majd **létrehozás** a biztonsági csoport létrehozásához.
 
-    Jegyezze fel a csoport azonosító értéke
+    Jegyezze fel a csoport azonosító értéke.
 
 9. A csoport létrehozását követően láthatja az összes csoportot a listában. Kattintson az új csoport.
 10. A megjelenő lapon másolja le a **Objektumazonosító**. Ezt az értéket hivatkozni fogunk `GROUPID` a a [hozzon létre egy Azure Red Hat OpenShift fürtöt](tutorial-create-cluster.md) oktatóanyag.
@@ -83,17 +83,34 @@ Hozzon létre egy ügyfél titkos kulcsot az Azure Active Directory-alkalmazás 
 4. Állítsa be **lejárat** igény szerint például időtartama **2 évben**.
 5. Kattintson a **Hozzáadás** jelenik meg a kulcs értékét, és a **ügyfél titkos kódok** lap részében.
 6. Másolja le a kulcs értékét. Ezt az értéket hivatkozni fogunk `SECRET` a a [hozzon létre egy Azure Red Hat OpenShift fürtöt](tutorial-create-cluster.md) oktatóanyag.
- 
+
 ![A tanúsítványok és titkos kulcsok panel képernyőképe](./media/howto-create-tenant/create-key.png)
- 
-További információ az Azure-alkalmazás objektumának: [alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals).
+
+Az Azure-alkalmazás objektumának kapcsolatos további információkért lásd: [alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals).
 
 Részletekért hozzon létre egy új Azure AD-alkalmazást, lásd: [alkalmazás regisztrálása az Azure Active Directory 1.0-s verziójú végpontján az](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app).
 
+## <a name="add-api-permissions"></a>API-engedélyek hozzáadása
+
+1. Az a **kezelés** szakaszban kattintson **API-engedélyek**.
+2. Kattintson a **adjon hozzá engedélyt** válassza **Azure Active Directory Graph** majd **delegált engedélyek**
+3. Bontsa ki a **felhasználói** az alábbi listában, és ellenőrizze, hogy a **User.Read** engedélyezve van.
+4. Görgessen fel, és válassza ki **Alkalmazásengedélyek**.
+5. Bontsa ki a **Directory** a lentebbi listában, majd engedélyezze a **Directory.ReadAll**
+6. Kattintson a **engedélyek hozzáadása** a módosítások elfogadásához.
+7. Az API-engedélyek panelen most meg kell jelennie mindkét *User.Read* és *Directory.ReadAll*. Vegye figyelembe a figyelmeztetést, **rendszergazdai jóváhagyás szükséges** oszlop melletti *Directory.ReadAll*.
+8. Ha Ön a *Azure előfizetés-rendszergazda*, kattintson a **adja meg a rendszergazdai jóváhagyás *Előfizetésnevet***  alatt. Ha nem a *Azure előfizetés-rendszergazda*, a jóváhagyási kérjen a rendszergazdától.
+![Az API-engedélyek panel képernyőképe. Hozzáadott User.Read és Directory.ReadAll engedélyek, Directory.ReadAll szükséges rendszergazdai jóváhagyás](./media/howto-aad-app-configuration/permissions-required.png)
+
+> [!IMPORTANT]
+> A fürt a Rendszergazdák csoport szinkronizálási csak hozzájárulás megadása után fog működni. Látni fogja a zöld körön be van jelölve, egy üzenet "nyújtott *Előfizetésnevet*" az a *rendszergazdai jóváhagyás szükséges* oszlop.
+
+A rendszergazdák és más szerepkörök kezelése a részletekért lásd: [hozzáadása vagy módosítása az Azure-előfizetés rendszergazdái](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator).
+
 ## <a name="resources"></a>További források
 
-* [Alkalmazások és az Azure Active Directory egyszerű szolgáltatási objektumok](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)  
-* [Rövid útmutató: Alkalmazás regisztrálása az az Azure Active Directory 1.0-s verziójú végpontján](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)  
+* [Alkalmazások és az Azure Active Directory egyszerű szolgáltatási objektumok](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
+* [Rövid útmutató: Alkalmazás regisztrálása az az Azure Active Directory 1.0-s verziójú végpontján](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
 
 ## <a name="next-steps"></a>További lépések
 

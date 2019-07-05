@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/02/2018
+ms.date: 06/28/2019
 ms.author: wesmc
-ms.openlocfilehash: 49e0db690818e67f96f5bcefa4f581b1db6da451
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ea7b38f509fcdaa4e41ce17db3beca44b05a59b2
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64697333"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514480"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>A megoldás a megfelelő IoT Hub-csomag kiválasztása
 
@@ -62,6 +62,9 @@ Miután létrehozta az IoT hub, frissítheti az alapszintű csomag a standard sz
 
 A partíció konfigurációját változatlan marad, az alapszintű csomag a standard szintű csomag áttelepítésekor.
 
+> [!NOTE]
+> Az ingyenes szint nem támogatja a frissítés alapszintű vagy standard.
+
 ## <a name="iot-hub-rest-apis"></a>IoT Hub REST API-k
 
 A támogatott képességek közötti különbség az alapszintű és standard csomagokról az IoT Hub azt jelenti, hogy egyes API-hívások nem működik az alapszintű csomag hubs használatával. Az alábbi táblázat azt mutatja, melyik API-k érhetők el:
@@ -70,26 +73,25 @@ A támogatott képességek közötti különbség az alapszintű és standard cs
 | --- | ---------- | ------------- |
 | [Eszköz törlése](https://docs.microsoft.com/rest/api/iothub/service/deletedevice) | Igen | Igen |
 | [Eszköz](https://docs.microsoft.com/rest/api/iothub/service/getdevice) | Igen | Igen |
-| Modul törlése | Igen | Igen |
-| Modul beolvasása | Igen | Igen |
+| [Modul törlése](https://docs.microsoft.com/rest/api/iothub/service/deletemodule) | Igen | Igen |
+| [Modul beolvasása](https://docs.microsoft.com/rest/api/iothub/service/getmodule) | Igen | Igen |
 | [Beállításjegyzék statisztikájának beolvasása](https://docs.microsoft.com/rest/api/iothub/service/getdeviceregistrystatistics) | Igen | Igen |
 | [Szolgáltatások statisztikájának beolvasása](https://docs.microsoft.com/rest/api/iothub/service/getservicestatistics) | Igen | Igen |
 | [Hozzon létre vagy az eszköz frissítése](https://docs.microsoft.com/rest/api/iothub/service/createorupdatedevice) | Igen | Igen |
-| A PUT-modul | Igen | Igen |
+| [Létrehozni vagy frissíteni a modul](https://docs.microsoft.com/rest/api/iothub/service/createorupdatemodule) | Igen | Igen |
 | [Query IoT Hub](https://docs.microsoft.com/rest/api/iothub/service/queryiothub) | Igen | Igen |
-| Lekérdezés-modulok | Igen | Igen |
 | [Fájl feltöltése SAS URI létrehozása](https://docs.microsoft.com/rest/api/iothub/device/createfileuploadsasuri) | Igen | Igen |
 | [Értesítés e kötve eszköz](https://docs.microsoft.com/rest/api/iothub/device/receivedeviceboundnotification) | Igen | Igen |
 | [Esemény küldése](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | Igen | Igen |
-| A modul esemény küldése | Igen | Igen |
+| A modul esemény küldése | Az AMQP és MQTT csak | Az AMQP és MQTT csak |
 | [Fájlfeltöltés állapota frissítése](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | Igen | Igen |
-| [A tömeges eszköz művelet](/rest/api/iot-dps/runbulkenrollmentgroupoperation/runbulkenrollmentgroupoperation) | Igen, kivéve az IoT Edge-képességek | Igen | 
+| [A tömeges eszköz művelet](https://docs.microsoft.com/rest/api/iothub/service/bulkcreateorupdatedevices) | Igen, kivéve az IoT Edge-képességek | Igen |
 | [A parancs üzenetsor kiürítése](https://docs.microsoft.com/rest/api/iothub/service/purgecommandqueue) |   | Igen |
 | [Ikereszköz beolvasása](https://docs.microsoft.com/rest/api/iothub/service/gettwin) |   | Igen |
-| Ikermodul beolvasása |   | Igen |
+| [Ikermodul beolvasása](https://docs.microsoft.com/rest/api/iothub/service/getmoduletwin) |   | Igen |
 | [Eszközmetódus meghívása](https://docs.microsoft.com/rest/api/iothub/service/invokedevicemethod) |   | Igen |
-| [Ikereszköz frissítése](https://docs.microsoft.com/rest/api/iothub/service/updatetwin) |   | Igen | 
-| Ikermodul frissítése |   | Igen | 
+| [Ikereszköz frissítése](https://docs.microsoft.com/rest/api/iothub/service/updatetwin) |   | Igen |
+| [Ikermodul frissítése](https://docs.microsoft.com/rest/api/iothub/service/updatemoduletwin) |   | Igen |
 | [Értesítési eszköz kötött Abandon](https://docs.microsoft.com/rest/api/iothub/device/abandondeviceboundnotification) |   | Igen |
 | [Teljes eszközhöz kötött értesítés](https://docs.microsoft.com/rest/api/iothub/device/completedeviceboundnotification) |   | Igen |
 | [Feladat megszakítása](https://docs.microsoft.com/rest/api/iothub/service/canceljob) |   | Igen |

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/10/2018
+ms.date: 06/26/2018
 ms.author: jingwang
-ms.openlocfilehash: 49f07b4aaadfd45e9743bde58dc715230e5bc983
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e54a69b6c2b48e50c089f8b6b7458cf91133dd85
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074067"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443305"
 ---
 # <a name="copy-data-from-sap-table-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával az SAP-tábla
 
@@ -206,16 +206,16 @@ Adatok másolása az SAP-tábla, a következő tulajdonságok támogatottak.
 
 | Tulajdonság                         | Leírás                                                  | Szükséges |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
-| type                             | A type tulajdonságot állítsa **SapTableSource**.       | Igen      |
+| type                             | A type tulajdonságot állítsa **SapTableSource**.         | Igen      |
 | Sorszám                         | A lekérdezni kívánt sorok száma.                              | Nem       |
 | rfcTableFields                   | Az SAP-táblából másolhatja a mezők. Például: `column0, column1`. | Nem       |
 | rfcTableOptions                  | Beállítások szűrése az SAP-táblában lévő sorokat. Például: `COLUMN0 EQ 'SOMEVALUE'`. Lásd a táblázat alatti további leírását. | Nem       |
-| customRfcReadTableFunctionModule | Egyéni RFC függvénymodul, amelyek segítségével adatokat olvasni az SAP-táblát. | Nem       |
+| customRfcReadTableFunctionModule | Egyéni RFC függvénymodul, amelyek segítségével adatokat olvasni az SAP-táblát.<br>Egyéni RFC függvénymodul segítségével megadhatja, hogyan az adatok lekérésének forrása az SAP-rendszerhez, és az ADF vissza. Miközben, vegye figyelembe az egyéni függvénymodul hasonló felhasználói felületet megvalósítva (importálás, exportálás táblák), mint/SAPDS/RFC_READ_TABLE2 ADF használják alapértelmezés szerint hasonló rendelkeznie kell. | Nem       |
 | partitionOption                  | A partíció mechanizmus SAP tábla olvasni. A támogatott lehetőségek a következők: <br/>- **Egyik sem**<br/>- **PartitionOnInt** (normál egész szám vagy nulla, például 0000012345 a bal oldali margója egész értékek)<br/>- **PartitionOnCalendarYear** ("YYYY" formátumban 4 számjegy)<br/>- **PartitionOnCalendarMonth** (6 számjegyű "YYYYMM" formátumban)<br/>- **PartitionOnCalendarDate** (8 jegy "ÉÉÉÉHHNN" formátumban) | Nem       |
-| partitionColumnName              | Az adatok particionálása az oszlop neve. | Nem       |
+| partitionColumnName              | Az adatok particionálása az oszlop neve.                | Nem       |
 | partitionUpperBound              | A megadott oszlop maximális értéke `partitionColumnName` eljárást particionálása a használni kívánt. | Nem       |
 | partitionLowerBound              | A megadott oszlop legkisebb értékének `partitionColumnName` eljárást particionálása a használni kívánt. | Nem       |
-| maxPartitionsNumber              | Felosztása a adatokat a partíciók maximális száma. | Nem       |
+| maxPartitionsNumber              | Felosztása a adatokat a partíciók maximális száma.     | Nem       |
 
 >[!TIP]
 >- Ha az SAP-tábla nagy mennyiségű adatok, például több milliárd sorok, `partitionOption` és `partitionSetting` az adatok ossza fel kisebb partíciókra, ebben az esetben az adatok partíciók, és mindegyik beolvasva rendszer beolvassa az egy egyetlen SAP-kiszolgálóhoz RFC-hívás.<br/>

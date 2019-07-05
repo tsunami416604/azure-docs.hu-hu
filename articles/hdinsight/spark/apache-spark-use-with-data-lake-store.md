@@ -8,16 +8,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 203f704862c4cbcef58d7ef902380c1dbbf00076
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 5a98cb2356c25329e091514dd1d6181dfc2690be
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137080"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448660"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>A Data Lake Storage Gen1 adatok elemzése a HDInsight Spark-fürt használatával
 
-Ebben az oktatóanyagban használja [Jupyter Notebook](https://jupyter.org/) egy feladatot, amely adatokat olvas be egy Data Lake-tárfiókra futtatása HDInsight Spark-fürtön elérhető.
+Ebben a cikkben használhatja [Jupyter Notebook](https://jupyter.org/) egy feladatot, amely adatokat olvas be egy Data Lake-tárfiókra futtatása HDInsight Spark-fürtön elérhető.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 56a25c95d9bc01078b3eff3729a8a693ee3cf510
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f6422bf2ccc42c12d8f2d20a5a7ece8d37e8b48e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65520256"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449722"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Az Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 
@@ -23,6 +23,8 @@ Az Azure Storage egy többrétegű biztonsági modellt biztosít. Ez a modell le
 Egy alkalmazás, amely hozzáfér a storage-fiók, a hálózati szabályok akkor vannak érvényben, amikor a kérést a megfelelő engedély szükséges. Engedélyezési blobok és üzenetsorok az Azure Active Directory (Azure AD) hitelesítő adatokkal, érvényes fiók hozzáférési kulccsal vagy SAS-jogkivonat használatával támogatott.
 
 > [!IMPORTANT]
+> Az Azure File Sync egyelőre nem támogatják az tűzfalak és virtuális hálózatok. Ha használja az Azure File Sync szolgáltatást a tárfiók, és engedélyeznie kell ezeket, az Azure File Sync nem szinkronizálódnak.
+>
 > Alapértelmezés szerint ne tudják bekapcsolni a tűzfalszabályok a tárfiók beérkező adatok blokkolja, kivéve, ha a kérések származhatnak olyan szolgáltatás, amely egy Azure virtuális hálózaton (VNet) belül. Blokkolt közé tartoznak az egyéb Azure-szolgáltatások, a naplózás és mérőszámok szolgáltatások, az Azure Portalról, és így tovább.
 >
 > Az Azure-szolgáltatások, amelyek azáltal, hogy az alhálózat, a szolgáltatáspéldány virtuális hálózaton belüli működnie hozzáférést biztosíthat. Korlátozott számú keresztül forgatókönyvek engedélyezése a [kivételek](#exceptions) az alábbi szakaszban ismertetett mechanizmus. Az Azure portal eléréséhez kell egy gépen belül a megbízható (IP vagy virtuális hálózatok közötti) beállításával lehet.

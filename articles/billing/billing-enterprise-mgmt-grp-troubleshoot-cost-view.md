@@ -1,30 +1,28 @@
 ---
-title: Azure vállalati költségek nézet hibaelhárítása |} A Microsoft Docs
+title: Hibaelhárítás Azure vállalati költségek nézet
 description: Megtudhatja, hogyan lehetséges, hogy az Azure Portalon szervezeti költség nézetekkel kapcsolatos problémák megoldásához.
-author: rthorn17
-manager: adpick
-editor: ''
-ms.assetid: ''
+author: bandersmsft
+manager: amberb
 ms.service: billing
 ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2017
+ms.date: 07/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: d35996b16d615a198b9a6039386f6b295172f388
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 83f7f424b265582a3830c02973cbbb9962ddfbfb
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60615780"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491273"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>Vállalati költségek nézet hibaelhárítása
 
 Vállalati belépéseket, belül számos beállítás, amely a felhasználót a regisztrációs belül nem jelenik meg a költségek tartoznak.  Ezek a beállítások a beléptetés adminisztrátora kezeli. Vagy, ha a regisztráció nem vásárolta meg közvetlenül a Microsoft, a beállításokat a partner által kezelt.  Ezen cikk segítségével megtudhatja, Mik azok a beállítások, és hogy azok hatással a regisztráció. Ezek a beállítások az Azure szerepköralapú hozzáférés-vezérlés (RBAC) szerepkörök függetlenek egymástól.
 
-## <a name="enabling-access-to-costs"></a>Költségek való hozzáférés engedélyezése
+## <a name="enable-access-to-costs"></a>Engedélyezze a hozzáférést a költségek
 
 Nem engedélyezett, üzenetet látja, vagy *"költség nézetek le vannak tiltva a regisztrációs."* Ha a költségadatok keres?
 ![Képernyőkép a "nem engedélyezett" előfizetéshez tartozó aktuális költség mezőben.](media/billing-enterprise-mgmt-groups/unauthorized.png)
@@ -41,8 +39,11 @@ A következő okok valamelyike lehet:
 
 ## <a name="asset-is-unavailable"></a>Eszköz nem érhető el.
 
-Ha "az eszköz nem érhető el" hibaüzenetet kap amikor megpróbál hozzáférni egy előfizetést vagy felügyeleti csoportot, akkor nem rendelkezik a megfelelő szerepkört ezen elem megtekintéséhez.  
+Ha hibaüzenetet kap **az objektum nem érhető el** amikor megpróbál hozzáférni egy előfizetést, vagy a felügyeleti csoportban, majd nem rendelkezik a megfelelő szerepkört ezen elem megtekintéséhez.  
 
 !["Az eszköz nem érhető el" üzenet megjelenítő képernyőkép.](media/billing-enterprise-mgmt-groups/asset-not-found.png)
 
 Hozzáférés kérése az Azure előfizetés vagy a felügyeleti csoport rendszergazdája. További információkért lásd: [rbac-RÓL és az Azure portal-hozzáférés kezelése](../role-based-access-control/role-assignments-portal.md).
+
+## <a name="next-steps"></a>További lépések
+- Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).

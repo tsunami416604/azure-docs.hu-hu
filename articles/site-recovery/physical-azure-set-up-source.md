@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/14/2019
+ms.date: 07/0/2019
 ms.author: ramamill
-ms.openlocfilehash: 5f0578026e95378065fc68198434e347a87eb1fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 44588fedd53b363c43a369eeb1917ccaec58d948
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123914"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508780"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>Állítsa be a konfigurációs kiszolgáló, valamint fizikai kiszolgálók Azure-bA
 
@@ -24,7 +24,7 @@ Ez a cikk ismerteti, hogyan állítható be a helyszíni környezetben való fiz
 A cikk feltételezi, hogy már rendelkezik:
 - A Recovery Services-tároló az a [az Azure portal](https://portal.azure.com "az Azure portal").
 - Fizikai számítógép, amelyen a konfigurációs kiszolgáló telepítése.
-- Ha, le lett tiltva a TLS 1.0-t a gépen, amelyen a konfigurációs kiszolgálót telepít, ellenőrizze, hogy engedélyezve van-e a TLs 1.2-es és, hogy a .NET-keretrendszer 4.6-os vagy újabb verziója telepítve van a számítógépen (az erős titkosítás le van tiltva). [További információk](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
+- Ha, le lett tiltva a TLS 1.0-t a gépen, amelyen a konfigurációs kiszolgálót telepít, ellenőrizze, hogy engedélyezve van-e a TLs 1.2-es és, hogy a .NET-keretrendszer 4.6-os vagy újabb verziója telepítve van a számítógépen (az erős titkosítás engedélyezve van). [További információk](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
 
 ### <a name="configuration-server-minimum-requirements"></a>Konfigurációs kiszolgáló minimális követelményei
 A következő táblázat felsorolja a minimális hardver-, szoftver, és a konfigurációs kiszolgáló hálózati követelményei.

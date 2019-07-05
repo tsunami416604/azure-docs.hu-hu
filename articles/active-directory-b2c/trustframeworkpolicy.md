@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1102aee9d7fa5fe3df0e048398cdc8bd71ff0a3c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a0ba48acf6ec3d221d9c4b5e95b380a2154171f
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512303"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537045"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -38,7 +38,7 @@ Egyéni szabályzat jelenik meg egy vagy több XML-formátumú fájlt, amely hie
 
 A **TrustFrameworkPolicy** elem tartalmazza a következő attribútumokat:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 |---------- | -------- | ----------- |
 | PolicySchemaVersion | Igen | A séma verziója, amely a szabályzat végrehajtható. Az értéknek kell lennie `0.3.0.0` |
 | TenantObjectId | Nem | Az Azure Active Directory (Azure AD) B2C-bérlő objektum egyedi azonosítója. |
@@ -132,7 +132,7 @@ B2C_1A_TrustFrameWorkBase or B2C_1A_TrustFrameworkExtensionPolicy:
 
 ```XML
 <UserJourneys>
-  <UserJourney Id="SignOrSignIn">
+  <UserJourney Id="SignUpOrSignIn">
   ...
 ```
 

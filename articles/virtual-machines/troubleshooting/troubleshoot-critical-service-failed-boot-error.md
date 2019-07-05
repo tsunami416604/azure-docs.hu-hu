@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: e828a8fc4211a0f0c4b53a9e18fa1c2fb6f6916b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ca3fe83d7072ba774c8124c5108652ab7223041d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60593223"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449817"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Windows látható "Kritikus szolgáltatás sikertelen" kék képernyő egy Azure virtuális gép indításakor
 Ez a cikk ismerteti a "Kritikus szolgáltatás sikertelen" hibát tapasztalhat, amikor elindítja a Windows virtuális gép (VM) a Microsoft Azure-ban. A problémák megoldása érdekében hibaelhárítási lépéseket biztosít. 
@@ -30,7 +30,7 @@ Ez a cikk ismerteti a "Kritikus szolgáltatás sikertelen" hibát tapasztalhat, 
 
 Windows virtuális gép nem indul el. Amikor ellenőrizheti a rendszerindító képernyőképek a [rendszerindítási diagnosztika](./boot-diagnostics.md), kék képernyőn láthatja az alábbi hibaüzenetek valamelyike:
 
-- "A számítógép hibába ütközött a problémát, és indítsa újra kell. Újraindíthatja. További információt a problémáról és a lehetséges javításokat, http://windows.com/stopcode. Ha kapcsolatba lép a támogatási szakember, tegye lehetővé számukra a ezt az információt: Állítsa le a kódot: NEM SIKERÜLT A KRITIKUS FONTOSSÁGÚ SZOLGÁLTATÁS" 
+- "A számítógép hibába ütközött a problémát, és indítsa újra kell. Újraindíthatja. További információt a problémáról és a lehetséges javításokat, https://windows.com/stopcode. Ha kapcsolatba lép a támogatási szakember, tegye lehetővé számukra a ezt az információt: Állítsa le a kódot: NEM SIKERÜLT A KRITIKUS FONTOSSÁGÚ SZOLGÁLTATÁS" 
 - "A számítógép hibába ütközött a problémát, és indítsa újra kell. Csak adatok néhány hiba adatait, és hogy fog indítsa újra az Ön számára. Ha tudni szeretné, használja a keresési online később esetében ez a hiba: CRITICAL_SERVICE_FAILED"
 
 ## <a name="cause"></a>Ok

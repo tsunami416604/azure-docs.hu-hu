@@ -3,7 +3,7 @@ title: Ismerkedés a Mobile Apps hitelesítése a Xamarin Forms-alkalmazás |} A
 description: Ismerje meg, hogyan hitelesítheti a felhasználókat az identitás-szolgáltatóktól, többek között az aad-ben, Google, Facebook, Twitter és a Microsoft számos Xamarin Forms-alkalmazás a Mobile Apps segítségével.
 services: app-service\mobile
 documentationcenter: xamarin
-author: panarasi
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 9c55e192-c761-4ff2-8d88-72260e9f6179
@@ -12,23 +12,27 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/24/2018
-ms.author: panarasi
-ms.openlocfilehash: 2945cefc18a378b31700104049f1a14a1f320136
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: f1777fcb5a4e7899da982bd9d1d35905cb408ad2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66019792"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446301"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>Hitelesítés hozzáadása a Xamarin Forms-alkalmazás
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
+
+> [!NOTE]
+> A Visual Studio App Center fektet a mobilalkalmazás-fejlesztés központi új, integrált szolgáltatások. A fejlesztők a **hozhat létre**, **teszt** és **terjesztése** állíthat be folyamatos integrációt és teljesítést folyamat szolgáltatások. Az alkalmazás telepítve van, a fejlesztők monitorozható az állapot és az alkalmazás használatával használatát a **Analytics** és **diagnosztikai** -szolgáltatásokat, és kapcsolatba léphet a felhasználókat a **leküldéses** a szolgáltatás. A fejlesztők is kihasználhatják a **Auth** azok a felhasználók hitelesítéséhez és **adatok** szolgáltatás és a felhőbeli alkalmazások adatainak szinkronizálása. Tekintse meg [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started-users) még ma.
+>
 
 ## <a name="overview"></a>Áttekintés
 Ez a témakör bemutatja, hogyan hitelesítheti felhasználóit egy App Service Mobile Apps, az ügyfél-alkalmazásból. Ebben az oktatóanyagban hozzáadja a Xamarin Forms eszközkészlethez példaprojekthez egy identitásszolgáltatótól az App Service által támogatott hitelesítési. Folyamatban sikeresen hitelesíti és a Mobile Apps, a felhasználói azonosító értéke megjelenik, és lesz korlátozva táblák adatainak eléréséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ebben az oktatóanyagban, a legjobb eredmény érdekében ajánlott először végezzen a [Xamarin Forms-alkalmazás létrehozása] [ 1] oktatóanyag. Az oktatóanyag elvégzéséhez után egy Xamarin Forms-projektet, amely egy többplatformos TodoList alkalmazás.
+Ebben az oktatóanyagban, a legjobb eredmény érdekében ajánlott először végezzen a [Xamarin Forms-alkalmazás létrehozása][1] oktatóanyag. Az oktatóanyag elvégzéséhez után egy Xamarin Forms-projektet, amely egy többplatformos TodoList alkalmazás.
 
 Ha nem használja a letöltött gyorsútmutató-kiszolgálói projektet, hozzá kell adnia a hitelesítési kiterjesztés csomagot a projekthez. Kiszolgáló bővítménycsomagok kapcsolatos további információkért lásd: [használható a .NET háttérkiszolgáló-SDK az Azure Mobile Apps a][2].
 
@@ -53,7 +57,8 @@ Hitelesítésre van szükség, hogy az alkalmazás egy új URL-séma meghatároz
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 ## <a name="add-authentication-to-the-portable-class-library"></a>Hitelesítés hozzáadása a hordozható osztálytárat
-Mobile Apps használja a [LoginAsync] [ 3] a metódust a [MobileServiceClient] [ 4] bejelentkezni egy felhasználó az App Service használatával a hitelesítés. Ez a minta egy hitelesítési kiszolgáló által felügyelt folyamatot, amely a szolgáltató bejelentkezési felületen jeleníti meg az alkalmazás használja. További információkért lásd: [hitelesítési kiszolgáló által kezelt][5]. Az éles alkalmazásban jobb felhasználói élmény biztosítása érdekében érdemes lehet inkább használatával [hitelesítési ügyfél által felügyelt][6].
+A Mobile Apps használja a [LoginAsync][3] extension method on the [MobileServiceClient][4] to sign in a user with App Service authentication. This sample
+uses a server-managed authentication flow that displays the provider's sign-in interface in the app. For more information, see [Server-managed authentication][5]. Az éles alkalmazásban jobb felhasználói élmény biztosítása érdekében érdemes lehet inkább használatával [hitelesítési ügyfél által felügyelt][6].
 
 A Xamarin Forms eszközkészlethez projekt hitelesítéshez, adja meg egy **IAuthenticate** az alkalmazás a hordozható osztálytár felületének. Majd adja hozzá a **bejelentkezési** gombra a felhasználói felületen meghatározott a hordozható osztálytár, amelyre kattintva indítsa el a hitelesítést. Adatok betöltése a mobil-háttéralkalmazást a sikeres hitelesítés után.
 

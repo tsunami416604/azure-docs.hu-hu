@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
-ms.openlocfilehash: ff65f3937069be87e922dad9287ba22380632329
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a41155b90257f7eaec85c3adbd975a0a37e24d91
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66810037"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560421"
 ---
 # <a name="known-issues-with-hb-series-and-hc-series-vms"></a>A HB és a HC sorozatú virtuális gépek ismert problémái
 
@@ -31,13 +31,13 @@ HB sorozatú virtuális gépek jelenleg csak közzéteheti 228 GB RAM Memóriát
 
 Az Azure gyorsított hálózatkezelés van nincs engedélyezve, de fogja, hogy az előzetes verzió alatt. Ha ez a funkció támogatott ügyfelek értesíteni fogjuk.
 
+## <a name="qp0-access-restriction"></a>qp0 hozzáférési korlátozás
+
+Biztonsági rések, várólista pár is előfordulhat, hogy alacsony szintű hardver hozzáférés elkerülése érdekében 0 nem érhető el a Vendég virtuális gépeket. Ez csak érintheti műveletek általában társított felügyeleti hálózati adapter ConnectX-5 és egyes InfiniBand diagnosztikai például ibdiagnet, de nem magukat a végfelhasználói alkalmazások futtatásához.
+
 ## <a name="ud-transport"></a>UD átviteli
 
-Indításkor HB sorozat nem támogatja a dinamikus csatlakoztatott átviteli (DCT). Idővel DCT támogatása hajtják végre. Megbízható kapcsolat (RC) és a nem megbízható Hálózathatáron Datagram (UD) átvitel használata támogatott.
-
-## <a name="azure-batch"></a>Azure Batch
-
-HB sorozatú virtuális gépek előzetes verzióban érhető el, amelyek használja egy Batch-fiókot felhasználói előfizetési módban nem szolgáltatási módban.
+Indításkor a HB és a hibrid kapcsolat-sorozat nem támogatja a dinamikus csatlakoztatott átviteli (DCT). Idővel DCT támogatása hajtják végre. Megbízható kapcsolat (RC) és a nem megbízható Hálózathatáron Datagram (UD) átvitel használata támogatott.
 
 ## <a name="gss-proxy"></a>GSS Proxy
 

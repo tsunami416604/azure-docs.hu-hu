@@ -14,12 +14,12 @@ ms.date: 04/27/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a0680ddf2c9e654455933bf09699ab81e8ab65d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e69bebfaeb28709b43ea74b7d33289426371a2bf
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65141839"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476452"
 ---
 # <a name="create-an-access-review-of-azure-ad-roles-in-pim"></a>A PIM az Azure AD-szerepkörök hozzáférési felülvizsgálat létrehozása
 
@@ -41,7 +41,7 @@ Ez a cikk azt ismerteti, hogyan hozhat létre egy vagy több hozzáférési fel�
 
 1. Kattintson a kezelés, **hozzáférési felülvizsgálatokkal**.
 
-    ![Az Azure AD-szerepkörök – a hozzáférési felülvizsgálatok](./media/pim-how-to-start-security-review/access-reviews.png)
+    ![Az Azure AD-szerepkörök – a hozzáférési felülvizsgálatok listáját megjelenítő az összes értékelést állapotát](./media/pim-how-to-start-security-review/access-reviews.png)
 
 
 [!INCLUDE [Privileged Identity Management access reviews](../../../includes/active-directory-privileged-identity-management-access-reviews.md)]
@@ -51,7 +51,7 @@ Ez a cikk azt ismerteti, hogyan hozhat létre egy vagy több hozzáférési fel�
 
 Miután megadta a hozzáférési felülvizsgálat beállításait, kattintson a **Start**. A hozzáférési felülvizsgálat megjelenik a listában, az azt jelzi, hogy annak állapotát.
 
-![A hozzáférési felülvizsgálatok listája](./media/pim-how-to-start-security-review/access-reviews-list.png)
+![A hozzáférési felülvizsgálatok listáját megjelenítő elindított értékelések állapotát](./media/pim-how-to-start-security-review/access-reviews-list.png)
 
 Alapértelmezés szerint az Azure AD-e-mailt küld felülvizsgálók elindítja a felülvizsgálatot követően rövid időn belül. Ha nem rendelkezik Azure ad-ben az e-mailt, mindenképpen tájékoztatja a felülvizsgálatot, amely a hozzáférési felülvizsgálat várakozik, amíg befejeződnek. Mutathat nekik az utasításokat, hogy hogyan [tekintse át az Azure AD-szerepkörök hozzáférési](pim-how-to-perform-security-review.md).
 
@@ -59,7 +59,7 @@ Alapértelmezés szerint az Azure AD-e-mailt küld felülvizsgálók elindítja 
 
 Követheti a folyamat állapotát, a felülvizsgálók a legteljesebb körű áttekintette a **áttekintése** a hozzáférési felülvizsgálat lapján. Nincs hozzáférési jogosultsága a könyvtárban, amíg nem módosítják a [felülvizsgálat befejezése](pim-how-to-complete-review.md).
 
-![A hozzáférési felülvizsgálatok folyamatban](./media/pim-how-to-start-security-review/access-review-overview.png)
+![Hozzáférési felülvizsgálat részleteit megjelenítő áttekintés lap](./media/pim-how-to-start-security-review/access-review-overview.png)
 
 Ha ez egy egyszeri tekintse át, majd a hozzáférési felülvizsgálati időszak felett van, vagy a rendszergazda a hozzáférési felülvizsgálat leállítása után kövesse a lépéseket a [Azure AD-szerepkörök hozzáférési felülvizsgálat befejezése](pim-how-to-complete-review.md) megtekintéséhez és a alkalmazni az eredményeket.  
 

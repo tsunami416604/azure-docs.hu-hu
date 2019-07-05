@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2019
 ms.author: spelluru
-ms.openlocfilehash: d8892b2d00008c9d67f8bc28d1abb7d562dfd95c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ffc8ed3f84284ff69e9515cba0982790b823a37
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079885"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543770"
 ---
 # <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Elosztott és együttműködő fejlesztés az Azure DevTest Labs-erőforrások ajánlott eljárásai
 Az elosztott együttműködési fejlesztési lehetővé teszi a különböző csapatok vagy személyek fejlesztéséhez és karbantartásához alap egy kódot. Sikeres legyen, a fejlesztési folyamatot hozhat létre, megoszthatja és integrálhatja az adatokat képes függ. A legfontosabb fejlesztési elve szerint az Azure DevTest Labs is használható. Nincsenek számos különböző típusú erőforrás kulcsok tesztkörnyezetben általában egy vállalaton belül különböző labs között elosztott. A különböző típusú erőforrások fióktevékenységekkel két területekre:
@@ -37,7 +37,7 @@ Egy gyakori forrása labs éjszakai történik az üzembe helyezett egyéni rend
 [A képletek](devtest-lab-manage-formulas.md) labor-specifikusak, és nem kell egy terjesztési mechanizmus. A lab tagok képletek fejlesztésének teheti meg. 
 
 ## <a name="code-repository-based-resources"></a>Tárház-alapú erőforrások kód
-Nincsenek kódtárházakhoz, összetevők és környezet alapján két különböző funkciókkal. Ez a cikk az funkciók és a leghatékonyabban beállítva az adattárak és a munkafolyamat engedélyezése az elérhető összetevők és a környezetek a szervezet vagy csapat szintjén testre szabhatók az keresztül haladnak.  Ez a munkafolyamat szabványon alapul [forráskód szabályozhatja elágazási stratégia](/devops/repos/tfvc/branching-strategies-with-tfvc?view=azure-devops). 
+Nincsenek kódtárházakhoz, összetevők és környezet alapján két különböző funkciókkal. Ez a cikk az funkciók és a leghatékonyabban beállítva az adattárak és a munkafolyamat engedélyezése az elérhető összetevők és a környezetek a szervezet vagy csapat szintjén testre szabhatók az keresztül haladnak.  Ez a munkafolyamat szabványon alapul [forráskód szabályozhatja elágazási stratégia](/azure/devops/repos/tfvc/branching-strategies-with-tfvc?view=azure-devops). 
 
 ### <a name="key-concepts"></a>Fő fogalmak
 Az adatforrás adatai összetevők metaadatokat, parancsfájlok tartalmaz. Információk a környezetek szolgáltatás metaadatok és a Resource Manager-sablonok és minden kiegészítő fájlt, mint például a PowerShell-parancsfájlok, DSC-parancsfájlok, Zip-fájlokat és így tovább.  
@@ -49,7 +49,7 @@ A leggyakrabban használt konfiguráció verziókövetési (SCC), hogy állítsa
 - Üzleti egység/osztás-szintű erőforrások
 - Csapat-specifikus erőforrásokat.
 
-Ezeket a szinteket mindegyike egy másik adattár, ahol a főágban van szükség, a gyártási minőségű mutató hivatkozás. A [ágak](/devops/repos/git/git-branching-guidance?view=azure-devops) minden tárház lenne megadott erőforrások (összetevők és sablonok) fejlesztését. Ez a struktúra igazítja a DevTest Labs segítségével könnyedén csatlakoztathatók a tárházak több és több ágat, a szervezet labs egy időben. Az adattár neve szerepel a felhasználói felület (UI) nincsenek azonos nevek kialakuló bizonytalanság elkerülése érdekében, a leírást és a közzétevő.
+Ezeket a szinteket mindegyike egy másik adattár, ahol a főágban van szükség, a gyártási minőségű mutató hivatkozás. A [ágak](/azure/devops/repos/git/git-branching-guidance?view=azure-devops) minden tárház lenne megadott erőforrások (összetevők és sablonok) fejlesztését. Ez a struktúra igazítja a DevTest Labs segítségével könnyedén csatlakoztathatók a tárházak több és több ágat, a szervezet labs egy időben. Az adattár neve szerepel a felhasználói felület (UI) nincsenek azonos nevek kialakuló bizonytalanság elkerülése érdekében, a leírást és a közzétevő.
      
 Az alábbi ábrán látható két tárházak: egy vállalati-tárházat az informatikai részleg által kezelt, és a egy R & D hányadosának osztási tárakba.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 899bf4bbf201ae785a4f49c7f278de75fb48945e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02a8b825a513c75ef7c037348ccaecdf5026ded2
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64926258"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560477"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure-fájlmegosztás használata Windowson
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások zökkenőmentesen használhatóak Windowson és Windows Serveren. Ebben a cikkben az Azure-fájlmegosztások Windowson és Windows Serveren való használatának szempontjairól olvashat.
@@ -234,7 +234,7 @@ A következő táblázat részletes leírást ad az SMB 1 állapotáról minden 
 
 | Windows-verzió                           | SMB 1 alapértelmezett állapota | Letiltási/eltávolítási módszer       | 
 |-------------------------------------------|----------------------|-----------------------------|
-| Windows Server 2019 (előzetes verzió)             | Letiltva             | Eltávolítás Windows-funkcióval |
+| A Windows Server 2019                       | Letiltva             | Eltávolítás Windows-funkcióval |
 | Windows Server, 1709+ verziók            | Letiltva             | Eltávolítás Windows-funkcióval |
 | Windows 10, 1709+ verziók                | Letiltva             | Eltávolítás Windows-funkcióval |
 | Windows Server 2016                       | Enabled              | Eltávolítás Windows-funkcióval |
@@ -246,7 +246,7 @@ A következő táblázat részletes leírást ad az SMB 1 állapotáról minden 
 | Windows 7                                 | Enabled              | Letiltás a beállításjegyzékkel       | 
 
 ### <a name="auditing-smb-1-usage"></a>Az SMB 1 használatának naplózása
-> Érintett kiadások: Windows Server 2019 (előzetes verzió), Windows Server félévi csatorna (1709-es és 1803-as verzió), Windows Server 2016, Windows 10 (1507-es, 1607-es, 1703-as, 1709-es és 1803-as verzió), Windows Server 2012 R2 és Windows 8.1
+> A Windows Server 2019, a Windows Server félévi csatorna (1709-es és 1803 verziók), a Windows Server 2016, a Windows 10-es (1507-es, 1607-es, 1703-as, 1709-es és 1803 verzió), a Windows Server 2012 R2 és a Windows 8.1 vonatkozik
 
 Mielőtt eltávolítja az SMB 1-et a környezetből, naplózhatja az SMB 1 használatát, hogy nyomon tudja követni, károsodik-e bármelyik ügyfél a változtatás miatt. Ha kérelem merül fel az SMB 1-gyel rendelkező SMB-megosztásokkal kapcsolatban, a rendszer egy naplózási eseményt rögzít az eseménynaplóba az `Applications and Services Logs > Microsoft > Windows > SMBServer > Audit` útvonalon. 
 
@@ -260,7 +260,7 @@ Set-SmbServerConfiguration –AuditSmb1Access $true
 ```
 
 ### <a name="removing-smb-1-from-windows-server"></a>Az SMB 1 eltávolítása a Windows Serverről
-> Érintett kiadások: Windows Server 2019 (előzetes verzió), Windows Server félévi csatorna (1709-es és 1803-as verzió), Windows Server 2016, Windows Server 2012 R2
+> A Windows Server 2019, a Windows Server félévi csatorna (1709-es és 1803 verzió), Windows Server 2016, Windows Server 2012 R2 rendszerre vonatkozik
 
 Az SMB 1 Windows Server-példányról történő eltávolításához hajtsa végre a következő parancsmagot egy emelt szintű PowerShell-munkamenetből:
 

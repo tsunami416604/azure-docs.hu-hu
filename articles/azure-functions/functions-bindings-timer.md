@@ -4,7 +4,7 @@ description: Az Azure Functions időzített eseményindítók használatának el
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: az Azure functions, függvények, eseményfeldolgozás, dinamikus számítás, kiszolgáló nélküli architektúra
 ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.service: azure-functions
@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: db80155b39602ad5810c83e03913fb0f3ccb4281
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 1a26950f355fd10d9dd502851886a8b8101d4a83
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342230"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508279"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Az Azure Functions időzítő eseményindító 
 
@@ -261,7 +261,7 @@ Azure Functions az a [NCronTab](https://github.com/atifaziz/NCrontab) könyvtár
 
 Minden mező a következő típusú értékek egyike lehet:
 
-|Type  |Példa  |Adatvezérelt  |
+|Típus  |Példa  |Adatvezérelt  |
 |---------|---------|---------|
 |Egy adott érték |<nobr>"0 5 * * * *"</nobr>|hh:05:00, ahol az ÓÓ az óránként (óránként):|
 |Minden érték (`*`)|<nobr>"0 * 5 * * *"</nobr>|címen 5:mm: 00 minden nap, ahol az mm percenként az óra (60 naponta alkalommal)|
@@ -269,12 +269,7 @@ Minden mező a következő típusú értékek egyike lehet:
 |Értékek egy halmazát (`,` operátor)|<nobr>"5,8,10 * * * * *"</nobr>|hh:mm:05, valamint hh:mm:08 és hh:mm:10 óó: pp esetén percenként, óránként (3-szor perc)|
 |Az intervallum értéke (`/` operátor)|<nobr>"0 */5 * * * *"</nobr>|hh:05:00, hh:10:00, hh:15:00, és így tovább – hh:55:00, ahol az ÓÓ az minden óra (12-szer egy óra)|
 
-Adja meg a hónap és nap számértékeket, nevek vagy rövidítések neveket is használhatja:
-
-* Napi numerikus értékek 0 és 6 ahol 0 a vasárnap karakterlánccal kezdődik.
-* Nevek angolul jelennek meg. Például: `Monday`, `January`.
-* Nevek és nagybetűk nincsenek megkülönböztetve.
-* Nevek rövidíthető. Három betű alapvetően ajánlott kifejezés rövidítését jelöli.  Például: `Mon`, `Jan`. 
+[!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
 ### <a name="cron-examples"></a>CRON-példák
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: getroyer
-ms.openlocfilehash: 0ac50a5f52682c4315b8d08cf5632c4a6fa5242f
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: fe9886429a5e894f40c04b1f65094e412c1dc9e2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357586"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441208"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Az Azure Data Science virtuális gépek használata
 
@@ -51,7 +51,7 @@ Ezen értékek lekérését az DSVM oldal az Azure Portalon.
 
 ## <a name="accessing-azure-notebooks-files-from-the-dsvm"></a>A dsvm-hez az Azure-jegyzetfüzetek fájlokhoz fér hozzá
 
-A fájlrendszer elérése a DSVM-verziók 19.06.15 vagy újabb. Ellenőrizze a verziót, először csatlakoznia kell a dsvm-hez (az IP-cím áll rendelkezésre az Azure Portalon) SSH-n keresztül. Ezután futtassa a következő parancs használatával a `<ip_address>`: `curl -H Metadata:true "http://<ip_address>/metadata/instance?api-version=2018-10-01"`. A kimenet a "verziójú" verziószáma látható.
+A fájlrendszer elérése a DSVM-verziók 19.06.15 vagy újabb. Ellenőrizze a verziót, először a dsvm-hez, SSH-n keresztül kapcsolódni, majd futtassa a következő parancsot: `curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018-10-01"` (Itt látható a pontos IP-címet kell használnia). A kimenet a "verziójú" verziószáma látható.
 
 A fájl elérési utak a paritásos megőrzéséhez a **ingyenes számítási** szinten is tudja csak nyissa meg egy projektet egy adatelemző virtuális GÉPET egy időben. Nyisson meg egy új projektet, hogy le kell állítani a megnyitott projektben először.
 

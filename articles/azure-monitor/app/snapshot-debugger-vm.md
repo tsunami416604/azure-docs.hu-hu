@@ -12,16 +12,18 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 03/07/2019
 ms.author: brahmnes
-ms.openlocfilehash: ac937ddb1bcaed6813a0de4d631f820eff01e26f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c6ff8696775c0631a173bc44f7d8c67174ad19e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60783500"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444492"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>.NET-alkalmazások az Azure Service Fabric, a Felhőszolgáltatás és a virtuális gépek Snapshot Debugger engedélyezése
 
-Ha az ASP.NET- vagy ASP.NET core alkalmazás futtatása az Azure App Service-ben, az alábbi utasításokat is használható. Kivéve, ha az alkalmazás egy pillanatkép-hibakereső konfigurációs van szüksége, erősen javasoljuk, hogy [Snapshot Debugger engedélyezése az Application Insights portál oldalán keresztül](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json). Ha az alkalmazás Azure Service Fabric, a Cloud Service, a virtuális gép fut, vagy a helyszíni gépek, az alábbi utasítások alapján kell használni. 
+Ha az ASP.NET- vagy ASP.NET core alkalmazás futtatása az Azure App Service-ben, azt javasoljuk hogy [Snapshot Debugger engedélyezése az Application Insights portál oldalán keresztül](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json). Azonban ha az alkalmazás egy pillanatkép-hibakereső konfigurációs, vagy egy .NET core előzetes verzióját, majd ezeket az utasításokat kell követni ***emellett*** vonatkozó utasítások [keresztül engedélyezése az Application Insights-portál oldalának](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json).
+
+Ha az alkalmazás Azure Service Fabric, a Cloud Service, a virtuális gép fut, vagy a helyszíni gépek, az alábbi utasítások alapján kell használni. 
     
 ## <a name="configure-snapshot-collection-for-aspnet-applications"></a>Az ASP.NET-alkalmazások pillanatkép gyűjtésének konfigurálása
 
@@ -66,7 +68,7 @@ Ha az ASP.NET- vagy ASP.NET core alkalmazás futtatása az Azure App Service-ben
 4. A pillanatképek összegyűjtése csak az Application insights jelentett kivételek. Bizonyos esetekben (például a .NET-platformról a régebbi verzióiban), szüksége lehet [kivételek gyűjtésének konfigurálása](../../azure-monitor/app/asp-net-exceptions.md#exceptions) kivételek a portál pillanatképek megtekintéséhez.
 
 
-## <a name="configure-snapshot-collection-for-aspnet-core-20-applications"></a>Pillanatkép-gyűjtemény ASP.NET Core 2.0-alkalmazások konfigurálása
+## <a name="configure-snapshot-collection-for-applications-using-aspnet-core-20-or-above"></a>Alkalmazások használata az ASP.NET Core 2.0 vagy újabb pillanatkép gyűjtésének konfigurálása
 
 1. [Az Application Insights engedélyezése az ASP.NET Core webes alkalmazásban](../../azure-monitor/app/asp-net-core.md), ha még nem tette azt.
 
@@ -76,52 +78,70 @@ Ha az ASP.NET- vagy ASP.NET core alkalmazás futtatása az Azure App Service-ben
 2. Tartalmazza a [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet-csomagot az alkalmazásban.
 
 3. Módosítsa az alkalmazást, `Startup` osztály hozzáadása és konfigurálása a Snapshot Collector telemetriai processzor.
+    1. Ha [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet csomag verziója 1.3.5 vagy újabb szolgál, majd adja hozzá a következő using utasításokat a `Startup.cs`.
 
-    Adja hozzá a következő using utasításokat a `Startup.cs`
+       ```csharp
+            using Microsoft.ApplicationInsights.SnapshotCollector;
+       ```
 
-   ```csharp
-   using Microsoft.ApplicationInsights.SnapshotCollector;
-   using Microsoft.Extensions.Options;
-   using Microsoft.ApplicationInsights.AspNetCore;
-   using Microsoft.ApplicationInsights.Extensibility;
-   ```
+       Adja hozzá a következő metódus ConfigureServices végén a `Startup` osztály `Startup.cs`.
 
-   Adja hozzá a következő `SnapshotCollectorTelemetryProcessorFactory` osztályt az `Startup` osztály.
+       ```csharp
+            services.AddSnapshotCollector((configuration) =>
+            {
+                IConfigurationSection section = Configuration.GetSection(nameof(SnapshotCollectorConfiguration));
+                if (section.Value != null)
+                {
+                    section.Bind(configuration);
+                }
+            });
 
-   ```csharp
-   class Startup
-   {
-       private class SnapshotCollectorTelemetryProcessorFactory : ITelemetryProcessorFactory
+       ```
+    2. Ha [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet csomag verziója 1.3.4 vagy az alábbiakban használt, majd adja hozzá a következő using utasításokat a `Startup.cs`.
+
+       ```csharp
+       using Microsoft.ApplicationInsights.SnapshotCollector;
+       using Microsoft.Extensions.Options;
+       using Microsoft.ApplicationInsights.AspNetCore;
+       using Microsoft.ApplicationInsights.Extensibility;
+       ```
+    
+       Adja hozzá a következő `SnapshotCollectorTelemetryProcessorFactory` osztályt az `Startup` osztály.
+    
+       ```csharp
+       class Startup
        {
-           private readonly IServiceProvider _serviceProvider;
-
-           public SnapshotCollectorTelemetryProcessorFactory(IServiceProvider serviceProvider) =>
-               _serviceProvider = serviceProvider;
-
-           public ITelemetryProcessor Create(ITelemetryProcessor next)
+           private class SnapshotCollectorTelemetryProcessorFactory : ITelemetryProcessorFactory
            {
-               var snapshotConfigurationOptions = _serviceProvider.GetService<IOptions<SnapshotCollectorConfiguration>>();
-               return new SnapshotCollectorTelemetryProcessor(next, configuration: snapshotConfigurationOptions.Value);
+               private readonly IServiceProvider _serviceProvider;
+    
+               public SnapshotCollectorTelemetryProcessorFactory(IServiceProvider serviceProvider) =>
+                   _serviceProvider = serviceProvider;
+    
+               public ITelemetryProcessor Create(ITelemetryProcessor next)
+               {
+                   var snapshotConfigurationOptions = _serviceProvider.GetService<IOptions<SnapshotCollectorConfiguration>>();
+                   return new SnapshotCollectorTelemetryProcessor(next, configuration: snapshotConfigurationOptions.Value);
+               }
+           }
+           ...
+        ```
+        Adja hozzá a `SnapshotCollectorConfiguration` és `SnapshotCollectorTelemetryProcessorFactory` szolgáltatások a rendszerindítási folyamat számára:
+    
+        ```csharp
+           // This method gets called by the runtime. Use this method to add services to the container.
+           public void ConfigureServices(IServiceCollection services)
+           {
+               // Configure SnapshotCollector from application settings
+               services.Configure<SnapshotCollectorConfiguration>(Configuration.GetSection(nameof(SnapshotCollectorConfiguration)));
+    
+               // Add SnapshotCollector telemetry processor.
+               services.AddSingleton<ITelemetryProcessorFactory>(sp => new SnapshotCollectorTelemetryProcessorFactory(sp));
+    
+               // TODO: Add other services your application needs here.
            }
        }
-       ...
-    ```
-    Adja hozzá a `SnapshotCollectorConfiguration` és `SnapshotCollectorTelemetryProcessorFactory` szolgáltatások a rendszerindítási folyamat számára:
-
-    ```csharp
-       // This method gets called by the runtime. Use this method to add services to the container.
-       public void ConfigureServices(IServiceCollection services)
-       {
-           // Configure SnapshotCollector from application settings
-           services.Configure<SnapshotCollectorConfiguration>(Configuration.GetSection(nameof(SnapshotCollectorConfiguration)));
-
-           // Add SnapshotCollector telemetry processor.
-           services.AddSingleton<ITelemetryProcessorFactory>(sp => new SnapshotCollectorTelemetryProcessorFactory(sp));
-
-           // TODO: Add other services your application needs here.
-       }
-   }
-   ```
+       ```
 
 4. Szükség esetén a Snapshot Debugger konfigurációt testre appsettings.json SnapshotCollectorConfiguration szakasz hozzáadása. A pillanatkép-hibakereső konfiguráció az összes beállítás megadása nem kötelező. Íme egy példa konfiguráció egyenértékű, az alapértelmezett konfiguráció:
 
@@ -172,5 +192,5 @@ Ha az ASP.NET- vagy ASP.NET core alkalmazás futtatása az Azure App Service-ben
 ## <a name="next-steps"></a>További lépések
 
 - Hozzon létre a forgalmat az alkalmazásához, elindíthat egy kivételt. Várjon 10 – 15 percet kell küldeni az Application Insights-példány pillanatképeket.
-- Lásd: [pillanatképek](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json) az Azure Portalon.
-- Segítség a Profiler kapcsolatos hibák elhárítása: [pillanatkép-hibakereső hibaelhárítási](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json).
+- Lásd: [pillanatképek](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json#view-snapshots-in-the-portal) az Azure Portalon.
+- Segítség a pillanatkép-hibakereső kapcsolatos hibák elhárítása: [pillanatkép-hibakereső hibaelhárítási](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json).

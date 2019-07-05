@@ -1,5 +1,5 @@
 ---
-title: Válassza ki a lapon szerződést – Azure Active Directory B2C |} A Microsoft Docs
+title: Válasszon ki egy oldal szerződést – Azure Active Directory B2C-vel
 description: Útmutató az Azure Active Directory B2C lap szerződés kiválasztása.
 services: active-directory-b2c
 author: mmacy
@@ -7,21 +7,25 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 07/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7aab43695f0b11590d8bd2aa011073ba04d95250
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7098d805b0e3f1527587fc3411cd4c3b234b057
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512996"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540393"
 ---
 # <a name="select-a-page-contract-in-azure-active-directory-b2c-using-custom-policies"></a>Válassza ki a lap szerződés az Azure Active Directory B2C-vel egyéni szabályzatok használatával
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Ügyféloldali JavaScript-kódot engedélyezheti az Azure Active Directory (Azure AD) B2C-szabályzatok, legyen szó a felhasználói folyamatok vagy egyéni szabályzatokkal. JavaScript engedélyezése az alkalmazások számára, hozzá kell adnia egy elem a [egyéni házirendet](active-directory-b2c-overview-custom.md), válassza ki a lap szerződést, és használja [b2clogin.com](b2clogin.md) a kérelmek a. Egy lap szerződés álló elemeket, amelyeket az Azure AD B2C biztosít, és az Ön által megadott tartalom. Ez a cikk leírja, hogyan lap szerződés kiválasztása az Azure AD B2C egy egyéni házirendek konfigurálásával.
+Ügyféloldali JavaScript-kódot engedélyezheti az Azure Active Directory (Azure AD) B2C-szabályzatok felhasználói folyamatok vagy egyéni házirendeket használ-e. JavaScript engedélyezése az alkalmazások számára, hozzá kell adnia egy elem a [egyéni házirendet](active-directory-b2c-overview-custom.md), válassza ki a lap szerződést, és használja [b2clogin.com](b2clogin.md) a kérelmek a.
+
+Egy lap szerződés álló elemeket, amelyeket az Azure AD B2C biztosít, és az Ön által megadott tartalom.
+
+Ez a cikk leírja, hogyan lap szerződés kiválasztása az Azure AD B2C egy egyéni házirendek konfigurálásával.
 
 > [!NOTE]
 > Ha a felhasználói folyamatok JavaScript engedélyezni szeretné, tekintse meg [JavaScript és a lap szerződés az Azure Active Directory B2C verziók](user-flow-javascript-overview.md).
@@ -42,27 +46,54 @@ A egyéni szabályzatait, szükség lehet [ContentDefinitions](contentdefinition
 </ContentDefinition>
 ```
 
-Oldal szerződés kiválasztása módosítja a **DataUri** lévő értékeknek a [ContentDefinitions](contentdefinitions.md) azokban a házirendekben. A régi váltásával **DataUri** értékek új értékeivel, nem módosítható csomagot választjuk. Ez a csomag használatára előnye, hogy tudni fogja, nem módosíthatja és nem várt viselkedést okozhat az oldalon. 
+Oldal szerződés kiválasztása módosítja a **DataUri** lévő értékeknek a [ContentDefinitions](contentdefinitions.md) azokban a házirendekben. A régi váltásával **DataUri** értékek új értékeivel, nem módosítható csomagot választjuk. Ez a csomag használatára előnye, hogy tudni fogja, nem módosíthatja és nem várt viselkedést okozhat az oldalon.
 
-Egy lap szerződés, használja a következő táblázatban található **DataUri** értékeket. 
+Egy lap szerződés, használja a következő táblázatban található **DataUri** értékeket.
 
 | Régi DataUri érték | Új DataUri érték |
 | ----------------- | ----------------- |
-| urn: com:microsoft:aad:b2c:elements:idpselection:1.0.0 | urn: com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0 |
-| urn: com:microsoft:aad:b2c:elements:unifiedssd:1.0.0 | urn: com:microsoft:aad:b2c:elements:contract:unifiedssd:1.0.0 | 
-| urn: com:microsoft:aad:b2c:elements:claimsconsent:1.0.0 | urn: com:microsoft:aad:b2c:elements:contract:claimsconsent:1.0.0 |
-| urn: com:microsoft:aad:b2c:elements:multifactor:1.0.0 | urn: com:microsoft:aad:b2c:elements:contract:multifactor:1.0.0 |
-| urn: com:microsoft:aad:b2c:elements:multifactor:1.1.0 | urn: com:microsoft:aad:b2c:elements:contract:multifactor:1.1.0 |
-| urn: com:microsoft:aad:b2c:elements:selfasserted:1.0.0 | urn: com:microsoft:aad:b2c:elements:contract:selfasserted:1.0.0 |
-| urn: com:microsoft:aad:b2c:elements:selfasserted:1.1.0 | urn: com:microsoft:aad:b2c:elements:contract:selfasserted:1.1.0 | 
-| urn: com:microsoft:aad:b2c:elements:unifiedssp:1.0.0 | urn: com:microsoft:aad:b2c:elements:contract:unifiedssp:1.0.0 |
-| urn: com:microsoft:aad:b2c:elements:unifiedssp:1.1.0 | urn: com:microsoft:aad:b2c:elements:contract:unifiedssp:1.1.0 |
-| urn: com:microsoft:aad:b2c:elements:globalexception:1.0.0 | urn: com:microsoft:aad:b2c:elements:contract:globalexception:1.0.0 |
-| urn: com:microsoft:aad:b2c:elements:globalexception:1.1.0 | urn: com:microsoft:aad:b2c:elements:contract:globalexception:1.1.0 |
+| `urn:com:microsoft:aad:b2c:elements:claimsconsent:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:claimsconsent:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:globalexception:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.1.0` |
+| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:multifactor:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.1.0` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.1.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssd:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.1.0` |
+
+## <a name="version-change-log"></a>Módosítási napló verziója
+
+Oldal szerződéses csomagok javításai és továbbfejlesztései foglalandó elemek lap rendszeres időközönként frissülnek. A következő módosítási napló adja meg a módosításokat, minden egyes verziójában bevezetett.
+
+### <a name="110"></a>1.1.0
+
+- Kivétel lap (globalexception)
+  - Kisegítő lehetőségek javítása
+  - Távolítja el az alapértelmezett üzenetet, amikor nincs kapcsolat a szabályzatból
+  - Alapértelmezett CSS eltávolítva
+- Többtényezős hitelesítés lap (többtényezős)
+  - "Ellenőrizze a kód" gombja eltávolítva
+  - A kód most már csak veszi a bemeneti mező legfeljebb hat (6) karaktereket bevinni.
+  - A lap automatikusan megpróbálja ellenőrizni a megadott, amikor egy 6 jegyű kódot is meg kell adni, nem kell, ha rájuk kattint a gombok nélkül kód
+  - Ha a kód ezután a rendszer automatikusan törli a bemeneti mező helytelen
+  - Kísérlettel három (3), hibás kóddal B2C hibaüzenetet küld vissza a szolgáltatás a
+  - Kisegítő lehetőségek javításai
+  - Alapértelmezett CSS eltávolítva
+- Self-asserted page (selfasserted)
+  - Eltávolított Mégse riasztás
+  - Hiba elemek CSS-osztály
+  - Továbbfejlesztett hiba-logika megjelenítése/elrejtése
+  - Alapértelmezett CSS eltávolítva
+- Egyesített megosztottszolgáltatás-ellátó (unifiedssp)
+  - A bejelentkezve maradás (KMSI) vezérlőelem hozzáadva megtartása
+
+### <a name="100"></a>1.0.0
+
+- Kezdeti kiadás
 
 ## <a name="next-steps"></a>További lépések
 
 További információ az alkalmazások felhasználói felületének testreszabását [egyéni szabályzat használata az Azure Active Directory B2C az alkalmazás a felhasználói felület testreszabása](active-directory-b2c-ui-customization-custom.md).
-
-
-

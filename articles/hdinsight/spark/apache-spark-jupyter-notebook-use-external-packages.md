@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6af25b95aa3a38c4a2e9f3bd8147604dccae0abb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02b5b7a3673b3df3ba27e7814851e3519e473633
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64715149"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448730"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Külső csomagok használata Jupyter notebookok a HDInsight az Apache Spark-fürtök
 > [!div class="op_single_selector"]
@@ -61,7 +61,7 @@ Az alábbiakkal kell rendelkeznie:
 
 1. A fenti kódrészletben a maven-koordinátái a Maven központi tárházból külső csomag vár. Ebben a kódrészletben `com.databricks:spark-csv_2.10:1.4.0` van a maven-koordináta az **spark-fürt megosztott kötetei szolgáltatás** csomagot. Itt látható, hogyan hozhat létre egy csomag koordinátáit.
    
-    a. Keresse meg a csomagot a Maven tárházból. Ebben az oktatóanyagban használjuk [spark-fürt megosztott kötetei szolgáltatás](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
+    a. Keresse meg a csomagot a Maven tárházból. Ebben a cikkben használjuk [spark-fürt megosztott kötetei szolgáltatás](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
    
     b. Gyűjtse össze a tárházban, a tartozó értékeket **GroupId**, **ArtifactId**, és **verzió**. Győződjön meg arról, hogy beszerezte az értékek egyeznek-e a fürt. Ebben az esetben egy Scala 2.10 és Spark 1.4.0-s csomagot használjuk, de előfordulhat, hogy ki kell választania a különböző verzióit a megfelelő Scala és Spark-verzió a fürtben. Talál a Scala-verziót a fürtön futtatásával `scala.util.Properties.versionString` a Spark Jupyter kernel, illetve Spark-submit. Keresheti meg, a Spark-verziót a fürtön futó `sc.version` Jupyter notebookokban.
    

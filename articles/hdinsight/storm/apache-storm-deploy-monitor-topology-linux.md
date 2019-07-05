@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: c8b05886ae338bb73b0f4ddce4d02a1f1a926a45
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ac1a4c77589f4ef88c9ee862cb871b376ca8a0fe
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078245"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483856"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Üzembe helyezés és kezelés az Azure HDInsight az Apache Storm-topológiák 
 
@@ -21,11 +21,12 @@ Ebben a dokumentumban megismerkedhet a kezeléséhez és monitorozásához [Apac
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Egy Linux-alapú Storm on HDInsight-fürt**: lásd: [Apache Storm on HDInsight – első lépések](apache-storm-tutorial-get-started-linux.md) fürt létrehozásának lépései
+* Egy HDInsight az Apache Storm-fürt. Lásd: [Apache Hadoop-fürtök létrehozása az Azure portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) válassza **Storm** a **fürt típusa**.
 
-* (Nem kötelező) **SSH és SCP-ismeretek**: További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* (Nem kötelező) **a visual Studio**: Az Azure SDK 2.5.1-es vagy újabb verzió és a Data Lake Tools for Visual Studio. További információkért lásd: [Ismerkedés a Data Lake Tools for Visual Studio használatával](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
+* (Nem kötelező) Az SSH és SCP való ismerkedés során bizonyulhat: További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+
+* (Nem kötelező) A Visual Studio: Az Azure SDK 2.5.1-es vagy újabb verzió és a Data Lake Tools for Visual Studio. További információkért lásd: [Ismerkedés a Data Lake Tools for Visual Studio használatával](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
     A Visual Studio következő verzióinak valamelyike:
 

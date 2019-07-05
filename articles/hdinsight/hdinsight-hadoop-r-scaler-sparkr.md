@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2017
-ms.openlocfilehash: 78ea29b9b37c55a588a44f8d4b69486b89ee2fee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48792a90a42d0cfe5c0b34c872b3d474d6a784f1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64684828"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433508"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>ScaleR és SparkR a HDInsight egyesítése
 
@@ -536,9 +536,7 @@ Ez a cikk mutattuk be, hogyan kombinálhatók az adatkezelés a ScaleR modell fe
 
 - Az Apache Spark Machine Learning-kiszolgáló használatának további információkért lásd: a [útmutató az első lépésekhez](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started).
 
-- A Machine Learning-kiszolgáló általános információkért lásd: a [R – első lépések](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node) cikk.
-
-- A Machine Learning szolgáltatások a HDInsight további információkért lásd: [áttekintése, gépi Tanulási szolgáltatásokat, a HDInsight](r-server/r-server-overview.md) és [Machine Learning-szolgáltatások az Azure HDInsight – első lépések](r-server/r-server-get-started.md).
+- A Machine Learning szolgáltatások a HDInsight további információkért lásd: [áttekintése, gépi Tanulási szolgáltatásokat, a HDInsight](r-server/r-server-overview.md).
 
 SparkR használata további információkat lásd:
 

@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfc9c027806cb1a3f65e67eda771894a7250ee67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b7ffef5c3a7c8dd21654b6364013b1718bea1292
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417654"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482987"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>A Microsoft identity platform protokollok
 
@@ -36,7 +36,7 @@ A Microsoft identity platform végpontja identitás--szolgáltatásként az ipar
 
 A gyakorlatilag az összes OAuth 2.0 és OpenID Connect folyamatok találhatók négy felek részt az exchange:
 
-![Az OAuth 2.0-szerepkörök](./media/active-directory-v2-flows/protocols-roles.svg)
+![Az OAuth 2.0 szerepkörök bemutató ábra.](./media/active-directory-v2-flows/protocols-roles.svg)
 
 * A **az engedélyezési kiszolgáló** a Microsoft identity platform végpontja és biztosításáért felelős a felhasználó identitását, biztosítása és erőforrásokhoz való hozzáférés visszavonása, és a kiállító tokeneket. Az engedélyezési kiszolgáló más néven az identitásszolgáltató - biztonságosan kezelési semmit sem kell elvégezni a megbízhatósági kapcsolatok egy folyamatot a felek között, a felhasználói adatok és azok elérhető.
 * A **erőforrás tulajdonosa** van általában a végfelhasználó számára. A nyilvános, az adatok tulajdonosa, és a teljesítményt, hogy a harmadik felek, adatok vagy az erőforrás eléréséhez.

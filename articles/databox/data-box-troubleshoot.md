@@ -6,22 +6,37 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 0c454c5f19ebefc7f91df62511448dbedb93dfc4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bc0681a8ea15f736a7b253d6bd7ba2f7928d2a32
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257288"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439404"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box és az Azure Data Box nehéz kapcsolatos problémák elhárítása
 
-Ez a cikk részletesen hibáinak elhárítása az Azure Data Boxn vagy az Azure Data Box nehéz használatakor jelenhet információkat.
+Ez a cikk részletesen hibáinak elhárítása az Azure Data Box- vagy Azure Data Box nehéz használatakor jelenhet információkat. A cikk a lehetséges hibák látható, ha az adatok másolásakor a Data Box, vagy ha a Data Box data nahrávají listáját tartalmazza.
 
-## <a name="errors-during-data-copy"></a>Adatok másolása során hibák
+## <a name="error-classes"></a>Hiba-osztályok
 
-Az alábbiakban láthatók az adatmásolás során hibákat foglalja össze.
+A Data Box és a Data Box gyakori hibák a következőképpen lehet összefoglalni:
+
+| Hiba kategória *        | Leírás        | Javasolt művelet    |
+|----------------------------------------------|---------|--------------------------------------|
+| Tároló vagy a megosztás neve | A tároló vagy a megosztás neve ne hajtsa végre az Azure elnevezési szabályainak.  |Töltse le a hibaüzenetben szerepel. <br> Nevezze át a tárolók vagy megosztásokhoz. [További információk](#container-or-share-name-errors).  |
+| Tároló vagy a fájlmegosztás maximális mérete | A tárolók vagy megosztások teljes adatmennyiség meghaladja az Azure.   |Töltse le a hibaüzenetben szerepel. <br> Csökkentheti az általános adatokat a tároló vagy a megosztást. [További információk](#container-or-share-size-limit-errors).|
+| Objektum- vagy fájl maximális mérete | Az objektum vagy a fájlokat a tárolók vagy megosztások meghaladja az Azure.|Töltse le a hibaüzenetben szerepel. <br> A tároló vagy a megosztás méretének csökkentése. [További információk](#object-or-file-size-limit-errors). |    
+| Adatok vagy a fájl típusa | Az adatok formátumát, vagy a fájl típusa nem támogatott. |Töltse le a hibaüzenetben szerepel. <br> Lapblobok és a felügyelt lemezek adatok legyenek 512-bájt igazítva, és az előre létrehozott mappába másolja. [További információk](#data-or-file-type-errors). |
+| A nem kritikus blob- vagy hibák  | A blob- vagy nem követi az Azure elnevezési szabályait, vagy a fájl típusa nem támogatott. | A blob vagy a fájlok nem másolható, vagy lehet módosítani a neveket. [Ezek a hibák elhárításával](#non-critical-blob-or-file-errors). |
+
+\* Az első négy hibakategóriák kritikus hibák és a szállításra való folytatás előtt ki kell javítani.
+
+
+## <a name="container-or-share-name-errors"></a>Tároló vagy a megosztás neve hiba
+
+Ezek a tároló és a megosztás nevét kapcsolódó hibák.
 
 ### <a name="errorcontainerorsharenamelength"></a>ERROR_CONTAINER_OR_SHARE_NAME_LENGTH     
 
@@ -78,17 +93,9 @@ Az alábbiakban láthatók az adatmásolás során hibákat foglalja össze.
 
     További információkért tekintse meg az Azure elnevezési szabályai [a tároló nevének](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) és [megosztási név](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
 
-### <a name="errorcontainerorsharenamedisallowedfortype"></a>ERROR_CONTAINER_OR_SHARE_NAME_DISALLOWED_FOR_TYPE
+## <a name="container-or-share-size-limit-errors"></a>Tároló vagy a megosztás méretének korlátja hibák
 
-**Hiba leírása:** Helytelen a tároló nevének felügyelt lemez megosztások vannak megadva.
-
-**Javasolt megoldás:** Felügyelt lemezek, minden megosztás belül a következő mappák jönnek létre, amelyek megfelelnek a tárfiókban lévő tárolók: Prémium szintű SSD-, Standard HDD, és Standard SSD. Ezek a mappák felel meg a felügyelt lemez teljesítményszintjét.
-
-- Győződjön meg arról, hogy az egyik létező mappát, másolja ki a lap Blobadatok (VHD). Csak a meglévő tárolók származó adatokat az Azure-bA feltöltött.
-- Ha más mappát, amely prémium SSD-re, a standard szintű HDD és a Standard SSD ugyanazon a szinten jön nem felel meg egy érvényes teljesítményszinttel, és nem használható.
-- Távolítsa el a fájlokat vagy mappákat, a teljesítményszintek kívül.
-
-További információkért lásd: [a felügyelt lemezek másolása](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box).
+Ezek a engedélyezett egy tároló vagy a megosztott adatok mérete meghaladja a adatokkal kapcsolatos hibákat.
 
 ### <a name="errorcontainerorsharecapacityexceeded"></a>ERROR_CONTAINER_OR_SHARE_CAPACITY_EXCEEDED
 
@@ -97,6 +104,65 @@ További információkért lásd: [a felügyelt lemezek másolása](data-box-dep
 **Javasolt megoldás:** Az a **csatlakozás és másolás** oldalon, a helyi webes felhasználói felületen, töltse le és tekintse át a hiba fájlt.
 
 Azonosítsa a mappákat, amelyek a probléma a hibanaplókat, és ügyeljen arra, hogy a fájlok abban a mappában található 5 TB-os.
+
+
+## <a name="object-or-file-size-limit-errors"></a>Objektum vagy a fájl méretének korlátja hibák
+
+Ezek olyan objektumot, vagy a fájlt, amely az Azure-ban engedélyezett maximális méretet meghaladó adatokkal kapcsolatos hibákat. 
+
+### <a name="errorbloborfilesizelimit"></a>ERROR_BLOB_OR_FILE_SIZE_LIMIT
+
+**Hiba leírása:** A fájl mérete meghaladja a maximális méretet a feltöltéshez.
+
+**Javasolt megoldás:** A blob vagy a fájlméret meghaladja a maximálisan engedélyezett a feltöltés.
+
+- Az a **csatlakozás és másolás** oldalon, a helyi webes felhasználói felületen, töltse le és tekintse át a hiba fájlt.
+- Győződjön meg arról, hogy a blobok és fájlok mérete nem haladja meg az Azure objektum méretbeli korlátokat.
+
+## <a name="data-or-file-type-errors"></a>Adatok vagy a fájl típusa hiba
+
+Ezek a nem támogatott fájltípus vagy adattípus található a tároló vagy a megosztást a kapcsolódó hibák. 
+
+### <a name="errorbloborfilesizealignment"></a>ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT
+
+**Hiba leírása:** A blob vagy a fájl nincs megfelelően igazítva.
+
+**Javasolt megoldás:** A Data Box vagy a Data Box nehéz csak támogatja fájlok 512 bájt lap blob megosztás igazított (például VHD/VHDX). A lap blob megosztáshoz másolt adatokat az Azure-bA feltöltött lapblobként.
+
+Távolítsa el a nem VHD/VHDX adatokat a lap blob megosztásból. Blokkblob vagy általános adatok az Azure files megosztások is használhatja.
+
+További információkért lásd: [áttekintése, Page blobs](../storage/blobs/storage-blob-pageblob-overview.md).
+
+### <a name="errorbloborfiletypeunsupported"></a>ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED
+
+**Hiba leírása:** Egy nem támogatott fájltípus egy felügyelt lemez megosztás jelen. Kizárólag rögzített VHD-k engedélyezettek.
+
+**Javasolt megoldás:**
+
+- Ellenőrizze, hogy csak a felügyelt lemezek rögzített VHD feltöltése.
+- A VHDX-fájlok vagy **dinamikus** és **különbséglemez** VHD-k nem támogatottak.
+
+### <a name="errordirectorydisallowedfortype"></a>ERROR_DIRECTORY_DISALLOWED_FOR_TYPE
+
+**Hiba leírása:** A könyvtár nem engedélyezett egy már létező mappa a felügyelt lemezek. Ezek a mappák kizárólag rögzített VHD-k engedélyezettek.
+
+**Javasolt megoldás:** Felügyelt lemezek, minden egyes megosztáson belüli a következő három mappák jönnek létre, amelyek megfelelnek a tárfiókban lévő tárolók: Prémium szintű SSD-, Standard HDD, és Standard SSD. Ezek a mappák felel meg a felügyelt lemez teljesítményszintjét.
+
+- Győződjön meg arról, hogy az egyik létező mappát, másolja ki a lap Blobadatok (VHD).
+- Ezeket a meglévő mappákat a nem engedélyezett a mappát vagy könyvtárat. Távolítsa el a már meglévő mappákban létrehozott minden olyan mappát.
+
+További információkért lásd: [a felügyelt lemezek másolása](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box).
+
+### <a name="reparsepointerror"></a>REPARSE_POINT_ERROR
+
+**Hiba leírása:** Szimbolikus hivatkozások nem engedélyezettek a Linux. 
+
+**Javasolt megoldás:** A szimbolikus hivatkozásokat rendszerint hivatkozások csövek és egyéb fájlokat. A csatolást távolítsa el vagy feloldani a hivatkozásokat, és másolja az adatokat.
+
+
+## <a name="non-critical-blob-or-file-errors"></a>A nem kritikus blob- vagy hibák
+
+Az alábbiakban láthatók az adatmásolás során hibákat foglalja össze.
 
 ### <a name="errorbloborfilenamecharactercontrol"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_CONTROL
 
@@ -163,42 +229,16 @@ További információkért tekintse meg a blob és fájl nevét az Azure elnevez
 - Az a **csatlakozás és másolás** oldalon, a helyi webes felhasználói felületen, töltse le és tekintse át a hiba fájlt.
 - Győződjön meg arról, hogy a [blob-nevek](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) és [fájlneveket](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) felelnek meg az Azure elnevezési konvencióinak.
 
-### <a name="errorbloborfilesizelimit"></a>ERROR_BLOB_OR_FILE_SIZE_LIMIT
 
-**Hiba leírása:** A fájl mérete meghaladja a maximális méretet a feltöltéshez.
+### <a name="errorcontainerorsharenamedisallowedfortype"></a>ERROR_CONTAINER_OR_SHARE_NAME_DISALLOWED_FOR_TYPE
 
-**Javasolt megoldás:** A blob vagy a fájlméret meghaladja a maximálisan engedélyezett a feltöltés.
+**Hiba leírása:** Helytelen a tároló nevének felügyelt lemez megosztások vannak megadva.
 
-- Az a **csatlakozás és másolás** oldalon, a helyi webes felhasználói felületen, töltse le és tekintse át a hiba fájlt.
-- Győződjön meg arról, hogy a blobok és fájlok mérete nem haladja meg az Azure objektum méretbeli korlátokat.
+**Javasolt megoldás:** Felügyelt lemezek, minden megosztás belül a következő mappák jönnek létre, amelyek megfelelnek a tárfiókban lévő tárolók: Prémium szintű SSD-, Standard HDD, és Standard SSD. Ezek a mappák felel meg a felügyelt lemez teljesítményszintjét.
 
-### <a name="errorbloborfilesizealignment"></a>ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT
-
-**Hiba leírása:** A blob vagy a fájl nincs megfelelően igazítva.
-
-**Javasolt megoldás:** A Data Box vagy a Data Box nehéz csak támogatja fájlok 512 bájt lap blob megosztás igazított (például VHD/VHDX). A lap blob megosztáshoz másolt adatokat az Azure-bA feltöltött lapblobként.
-
-Távolítsa el a nem VHD/VHDX adatokat a lap blob megosztásból. Blokkblob vagy általános adatok az Azure files megosztások is használhatja.
-
-További információkért lásd: [áttekintése, Page blobs](../storage/blobs/storage-blob-pageblob-overview.md).
-
-### <a name="errorbloborfiletypeunsupported"></a>ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED
-
-**Hiba leírása:** Egy nem támogatott fájltípus egy felügyelt lemez megosztás jelen. Kizárólag rögzített VHD-k engedélyezettek.
-
-**Javasolt megoldás:**
-
-- Ellenőrizze, hogy csak a felügyelt lemezek rögzített VHD feltöltése.
-- A VHDX-fájlok vagy **dinamikus** és **különbséglemez** VHD-k nem támogatottak.
-
-### <a name="errordirectorydisallowedfortype"></a>ERROR_DIRECTORY_DISALLOWED_FOR_TYPE
-
-**Hiba leírása:** A könyvtár nem engedélyezett egy már létező mappa a felügyelt lemezek. Ezek a mappák kizárólag rögzített VHD-k engedélyezettek.
-
-**Javasolt megoldás:** Felügyelt lemezek, minden egyes megosztáson belüli a következő három mappák jönnek létre, amelyek megfelelnek a tárfiókban lévő tárolók: Prémium szintű SSD-, Standard HDD, és Standard SSD. Ezek a mappák felel meg a felügyelt lemez teljesítményszintjét.
-
-- Győződjön meg arról, hogy az egyik létező mappát, másolja ki a lap Blobadatok (VHD).
-- Ezeket a meglévő mappákat a nem engedélyezett a mappát vagy könyvtárat. Távolítsa el a már meglévő mappákban létrehozott minden olyan mappát.
+- Győződjön meg arról, hogy az egyik létező mappát, másolja ki a lap Blobadatok (VHD). Csak a meglévő tárolók származó adatokat az Azure-bA feltöltött.
+- Ha más mappát, amely prémium SSD-re, a standard szintű HDD és a Standard SSD ugyanazon a szinten jön nem felel meg egy érvényes teljesítményszinttel, és nem használható.
+- Távolítsa el a fájlokat vagy mappákat, a teljesítményszintek kívül.
 
 További információkért lásd: [a felügyelt lemezek másolása](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box).
 

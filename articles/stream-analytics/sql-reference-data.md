@@ -1,5 +1,5 @@
 ---
-title: Egy SQL Database-ből a referenciaadatok használata az Azure Stream Analytics-feladat (előzetes verzió)
+title: Referenciaadatok használata az Azure Stream Analytics-feladat egy SQL Database-ből
 description: Ez a cikk ismerteti a referenciaadat-bemenetek SQL-adatbázis használata az Azure Stream Analytics-feladat az Azure Portalon, és a Visual Studióban.
 services: stream-analytics
 author: mamccrea
@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: f0e62c27885e2f6d5097194e1b9d869e167c4a4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae1954b99e268e8bc44c4ba29bbc79d7734fda6e
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304973"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461737"
 ---
-# <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job-preview"></a>Egy SQL Database-ből a referenciaadatok használata az Azure Stream Analytics-feladat (előzetes verzió)
+# <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Referenciaadatok használata az Azure Stream Analytics-feladat egy SQL Database-ből
 
 Az Azure Stream Analytics támogatja az Azure SQL Database bemenete referenciaadatokat forrásaként. Használhatja az SQL Database referenciaadatok a Stream Analytics-feladatot az Azure Portalon, és a Visual Studióban a Stream Analytics tools for. Ez a cikk bemutatja, hogyan hajtsa végre a két módszert.
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 4e62ae47de95f95600faa3dc27f6867b065e117b
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 17214bb4904cc540de0a7d6f753b7e70abfa564c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329979"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443648"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Kimenő adatait az Azure Stream Analytics ismertetése
 
@@ -229,7 +229,7 @@ A következő táblázat felsorolja a tulajdonság nevét és a hozzájuk tartoz
 A partíciók száma [a Service Bus-Termékváltozat és a mérete alapján](../service-bus-messaging/service-bus-partitioning.md). A partíciós kulcs egyedi egész szám érték minden egyes partícióhoz.
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
-[Az Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) egy globálisan elosztott adatbázis-szolgáltatás, amely korlátlan, rugalmas skálázhatóságát szerte a világon, funkciókban gazdag lekérdezési és Automatikus indexelés sémafüggetlen adatmodellek keresztül biztosít. Azure Cosmos DB-hez gyűjtési beállítások a Stream Analytics kapcsolatos további információkért tekintse meg a [Stream Analytics az Azure Cosmos DB kimeneti](stream-analytics-documentdb-output.md) cikk.
+[Az Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) egy globálisan elosztott adatbázis-szolgáltatás, amely korlátlan, rugalmas skálázhatóságát szerte a világon, funkciókban gazdag lekérdezési és Automatikus indexelés sémafüggetlen adatmodellek keresztül biztosít. A Stream Analytics az Azure Cosmos DB-tároló lehetőségekkel kapcsolatos tudnivalókért lásd: a [Stream Analytics az Azure Cosmos DB kimeneti](stream-analytics-documentdb-output.md) cikk.
 
 A Stream Analytics az Azure Cosmos DB-kimenet jelenleg nem érhető el az Azure China 21Vianet és Azure Germany (T-Systems International) régióban.
 
@@ -247,7 +247,7 @@ Az alábbi táblázat ismerteti a tulajdonságait, egy Azure Cosmos DB kimeneti 
 | Fiókazonosító | A neve vagy URI-t az Azure Cosmos DB-fiók végpontját. |
 | Fiókkulcs | A közös hozzáférési kulcs az Azure Cosmos DB-fiókot. |
 | Adatbázis | Az Azure Cosmos DB-adatbázis nevét. |
-| Gyűjtemény neve | Az Azure Cosmos DB a gyűjtemény neve. Az Azure Cosmos DB korlátlan tárolókra az ajánlott módszer számára az adatok particionálása, az Azure Cosmos DB automatikusan méretezi a számítási feladatok alapján. |
+| Tárolónév | A tároló nevének használható, amely léteznie kell a Cosmos DB-ben. Példa:  <br /><ul><li> _MyContainer_: "MyContainer" nevű tárolóban már léteznie kell.</li>|
 | Dokumentumazonosító |Választható. A kimeneti eseményekben a melyik beszúrási vagy frissítési műveletek alapulnak az elsődleges kulcs megadásához használt mező neve.
 
 ## <a name="azure-functions"></a>Azure Functions
@@ -302,10 +302,10 @@ A következő táblázat összefoglalja a partíció-támogatás és a kimeneti 
 | Azure Table Storage | Igen | Minden olyan kimeneti oszlop.  | A bemeneti particionálási követi [teljes mértékben a lekérdezések párhuzamosíthatók](stream-analytics-scale-jobs.md). |
 | Az Azure Service Bus-témakörbe | Igen | Automatikusan kiválasztja. A partíciók száma alapján a [Service Bus-Termékváltozat és a méret](../service-bus-messaging/service-bus-partitioning.md). A partíciós kulcs egyedi egész szám érték minden egyes partícióhoz.| Ugyanaz, mint a kimenet a témakör a partíciók száma.  |
 | Az Azure Service Bus-üzenetsorba | Igen | Automatikusan kiválasztja. A partíciók száma alapján a [Service Bus-Termékváltozat és a méret](../service-bus-messaging/service-bus-partitioning.md). A partíciós kulcs egyedi egész szám érték minden egyes partícióhoz.| Ugyanaz, mint a kimeneti várólistában lévő partíciók száma. |
-| Azure Cosmos DB | Igen | Használja a {partition} token a gyűjteménynévminta. A {partition} értéket a PARTITION BY záradék a lekérdezés alapul. | A bemeneti particionálási követi [teljes mértékben a lekérdezések párhuzamosíthatók](stream-analytics-scale-jobs.md). |
+| Azure Cosmos DB | Igen | A PARTITION BY záradék a lekérdezés alapján. | A bemeneti particionálási követi [teljes mértékben a lekérdezések párhuzamosíthatók](stream-analytics-scale-jobs.md). |
 | Azure Functions | Nem | None | Nem alkalmazható. |
 
-A konzolkimeneti adapter nincs particionálva, ha az egyik bemeneti partíciók adatainak hiánya miatt késői érkezési mennyi ideig akár késést. Ezekben az esetekben a kimeneti egyetlen író, amely szűk keresztmetszeteket okozhat a folyamatban, az egyesített. Késedelmes érkezési házirenddel kapcsolatos további tudnivalókért lásd: [Azure Stream Analytics esemény rendelés szempontok](stream-analytics-out-of-order-and-late-events.md).
+A kimeneti írók száma használatával is szabályozható `INTO <partition count>` (lásd: [INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)) záradékot a lekérdezést, amely a kívánt feladattopológia hasznos lehet. A konzolkimeneti adapter nincs particionálva, ha az egyik bemeneti partíciók adatainak hiánya miatt késői érkezési mennyi ideig akár késést. Ezekben az esetekben a kimeneti egyetlen író, amely szűk keresztmetszeteket okozhat a folyamatban, az egyesített. Késedelmes érkezési házirenddel kapcsolatos további tudnivalókért lásd: [Azure Stream Analytics esemény rendelés szempontok](stream-analytics-out-of-order-and-late-events.md).
 
 ## <a name="output-batch-size"></a>Kimeneti kötegmérete
 Az Azure Stream Analytics használ a változó méretű kötegekben kimenetek írása és dolgozza fel. A Stream Analytics-motor általában egy üzenet nem írni egy időben, és kötegeket használja a hatékonyság. Ha a kimenő és bejövő események száma túl magas, a Stream Analytics nagyobb kötegek használ. Ha a kilépő üzenetek gyakorisága alacsony, kisebb kötegekben használ tartani alacsony késést.

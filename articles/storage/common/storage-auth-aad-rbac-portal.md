@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ebb67ff295a934b4e125e298018c27a095adc590
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 959d96a9bc1dd9f28e62d904248cd1f18d73c27d
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153869"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67563930"
 ---
 # <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-in-the-azure-portal"></a>Hozzáférés engedélyezése az Azure blob és üzenetsor adatok RBAC használata az Azure Portalon
 
@@ -42,6 +42,11 @@ Miután meghatározta a megfelelő szerepkör-hozzárendelés hatókörét, lép
 
 A következő szakaszok ismertetik az egyes lépéseket részletesen.
 
+> [!NOTE]
+> Az Azure Storage-fiók tulajdonosai akkor nem lesznek automatikusan hozzárendelve engedélyeket az adatok eléréséhez. Kell explicit módon saját magának egy RBAC szerepkör hozzárendelése az Azure Storage. Az előfizetés, erőforráscsoport, tárfiók, vagy egy tároló vagy üzenetsor szintjén rendelhet.
+> 
+> A hatókörrel rendelkező egy tároló vagy egy üzenetsor, ha a tárfiók engedélyezve hierarchikus névtérrel rendelkező szerepkör nem rendelhető hozzá.
+
 ### <a name="assign-a-built-in-rbac-role"></a>Beépített RBAC-szerepkör hozzárendelése
 
 Mielőtt egy szerepkört rendel egy rendszerbiztonsági tag, mindenképp vegye figyelembe a hatókörébe tartozó engedélyeket oszt ki. Tekintse át a [erőforrás hatókörének meghatározásához](#determine-resource-scope) szakasz dönthet arról, hogy a megfelelő hatókörben.
@@ -65,11 +70,6 @@ Az itt bemutatott eljárás hozzárendel egy szerepkör hatóköre egy tároló,
     ![Képernyőkép a lista megjelenítve egy szerepkörhöz rendelt felhasználók](media/storage-auth-aad-rbac-portal/container-scoped-role.png)
 
 A storage-fiók, erőforráscsoport vagy előfizetés hatóköre szerepkör hozzárendelése hasonló lépéseket követheti.
-
-> [!NOTE]
-> Az Azure Storage-fiók tulajdonosai akkor nem lesznek automatikusan hozzárendelve engedélyeket az adatok eléréséhez. Kell explicit módon saját magának egy RBAC szerepkör hozzárendelése az Azure Storage. Az előfizetés, erőforráscsoport, tárfiók, vagy egy tároló vagy üzenetsor szintjén rendelhet.
-> 
-> A hatókörrel rendelkező egy tároló vagy egy üzenetsor, ha a tárfiók engedélyezve hierarchikus névtérrel rendelkező szerepkör nem rendelhető hozzá.
 
 ### <a name="assign-the-reader-role-for-portal-access"></a>A portál elérésére szolgáló olvasó szerepkör hozzárendelése
 

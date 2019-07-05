@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: lahugh
-ms.openlocfilehash: 886dea0e53519870aaa27dea721a9eb78515cf86
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80cba5e1b5e38e31dea2272cc4e33b4a95940e41
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64706328"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565617"
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>Hozzon létre egy virtuálisgép-készletek egyéni rendszerkép használatával 
 
@@ -49,7 +49,7 @@ Az Azure-ban előkészítheti egy felügyelt rendszerképet egy Azure virtuális
 
 ### <a name="prepare-a-vm"></a>A virtuális gép előkészítése
 
-A kép egy új virtuális Gépet hoz létre, ha első fél Azure Marketplace-rendszerkép használata az alaprendszerképet a felügyelt lemezkép számára, támogatja a kötegelt. Belső rendszerképeket csak akár alaprendszerképként is használható. Azure Batch által támogatott Azure Marketplace-en képhivatkozásokkal teljes listájának lekéréséhez tekintse meg a [lista csomóponti ügynök SKU-k](/rest/api/batchservice/account/listnodeagentskus) műveletet.
+A kép egy új virtuális Gépet hoz létre, ha első fél Azure Marketplace-rendszerkép használata az alaprendszerképet a felügyelt lemezkép számára, támogatja a kötegelt. Belső rendszerképeket csak akár alaprendszerképként is használható. Azure Batch által támogatott Azure Marketplace-en képhivatkozásokkal teljes listájának lekéréséhez tekintse meg a [lista csomóponti ügynök SKU-k](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) műveletet.
 
 > [!NOTE]
 > További licenc és az alaplemezkép beszerzési feltételek rendelkező külső lemezképe nem használható. A Marketplace-rendszerképek kapcsolatos információkért tekintse meg az útmutató a [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms

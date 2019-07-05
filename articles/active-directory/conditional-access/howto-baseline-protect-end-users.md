@@ -11,20 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5b72be0dbe35cf95eed404c7c1407c53f5f2ecb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2644e0e35139ac470b89f6af1b95cf510f60a0a
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112347"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561009"
 ---
 # <a name="baseline-policy-end-user-protection-preview"></a>Alapvető házirendet: Végfelhasználói protection (előzetes verzió)
 
 Hogy általában úgy gondolja, hogy a rendszergazdai fiókok biztosítják a multi-factor Authentication (MFA) védelemre van szükségük csak fiókokat. A rendszergazdák bizalmas adatok széles körű hozzáférése, és módosíthatja az előfizetés kiterjedő beállítások. Kártékony elemek azonban általában a cél végfelhasználók számára. Hozzáfér, ezek kártékony elemek nevében az eredeti fióktulajdonos információk hozzáférés kérése, vagy töltse le a adathalász támadások, a teljes cég számára a végrehajtásához a teljes címtárra. Egy közös módszer védelmét az összes felhasználó számára, akkor kötelező, például a többtényezős hitelesítést (MFA) a Fiókellenőrzés erősebb formája.
 
 Biztonság és a használhatóság megfelelő egyensúly eléréséhez nem megkérdezi a felhasználókat minden egyetlen alkalommal be. Hitelesítési kéréseket, amelyek tükrözik a normál felhasználói viselkedést, ugyanarról a helyről ugyanarra az eszközre jelentkezik be például a biztonsági sérülés alacsony esélyét rendelkezik. Csak bejelentkezések kockázatos minősülnek, és kiderítsék jellemzői megjelenítése a rendszer kéri az MFA megoldandó feladatot is teremthet.
-
-![Többtényezős hitelesítés a felhasználók számára](./media/howto-baseline-protect-end-users/baseline-policy-end-user-protection.png)
 
 Végfelhasználói védelem, a kockázatalapú MFA [alapvető házirendet](concept-baseline-protection.md) , amely védi a minden felhasználó egy könyvtárban, beleértve az összes rendszergazdai szerepköröket. Minden felhasználó számára a multi-factor Authentication használatával az Authenticator alkalmazás regisztrálása a szabályzat engedélyezése szükséges. Felhasználók az MFA regisztrációs kérés figyelmen kívül a 14 nap elteltével, a rendszer letiltja a jelentkezik be, amíg nem regisztrálják az MFA-hoz. A multi-factor Authentication regisztrálása után felhasználók felszólítást kapnak a multi-factor Authentication csak a kockázatos bejelentkezési kísérlet során. Feltört felhasználói fiókok le lesznek tiltva, amíg a jelszavát alaphelyzetbe áll, és a kockázati események elutasítottnak.
 
@@ -60,17 +58,6 @@ E-mail az örökölt hitelesítési protokollok (IMAP, SMTP, POP3, stb.) segíts
 > [!WARNING]
 > Mielőtt engedélyezné ezt a házirendet, győződjön meg arról, a felhasználók nem használja az örökölt hitelesítési protokollok. Tekintse meg a cikket [hogyan: Az Azure AD feltételes hozzáférés letiltása a régebbi hitelesítési](howto-baseline-protect-legacy-auth.md#identify-legacy-authentication-use) további információt.
 
-### <a name="user-exclusions"></a>Felhasználói szerepkör kivételei
-
-Ez a alapvető házirend kizárhat felhasználókat lehetőséget biztosít. Mielőtt engedélyezné a szabályzat a bérlőhöz tartozó, javasoljuk, kivéve a következő fiókokat:
-
-* **A vészelérési** vagy **break üvegből** fiókok bérlői szintű fiókzárolás elkerülése érdekében. A rendszergazdák kizárása a bérlő nem valószínű esetben a válságkezelési hozzáférés rendszergazdai fiók segítségével jelentkezzen be a bérlő hajtsa végre a megfelelő lépéseket szereznie.
-   * További információ a cikkben található [vészelérési fiókok kezelése az Azure ad-ben](../users-groups-roles/directory-emergency-access.md).
-* **Szolgáltatásfiókok** és **alapelvek szolgáltatás**, például az Azure AD Connect szinkronizálási-fiók. Szolgáltatásfiókok olyan nem interaktív fiókokat, amelyek nem kapcsolódnak egy konkrét felhasználóhoz. Ezek a háttér-szolgáltatások által általában használt, és az alkalmazások programozott hozzáférés engedélyezése. Szolgáltatásfiókok ki kell zárni, mivel az MFA programozott módon nem lehet végrehajtani.
-   * Ha a szervezete ezeket a fiókokat a parancsfájlokban vagy a kódot használja, fontolja meg, és cserélje le őket az [felügyelt identitások](../managed-identities-azure-resources/overview.md). Ideiglenes Áthidaló megoldásként ezeket a konkrét fiókokat is kizárása az alapvető házirendet.
-* Felhasználók, akik nem rendelkeznek, vagy nem fogja tudni használni a okostelefonja.
-   * Ezt a szabályzatot a felhasználók regisztráljanak a többtényezős hitelesítés a Microsoft Authenticator alkalmazással igényel.
-
 ## <a name="enable-the-baseline-policy"></a>Az alapkonfiguráció-házirend engedélyezése
 
 A szabályzat **alapvető házirendet: Végfelhasználói protection (előzetes verzió)** előre konfigurálva, és jelennek meg az oldal tetején a feltételes hozzáférés paneljén, az Azure Portalon lépve.
@@ -81,7 +68,6 @@ A szabályzat engedélyezéséhez és a felhasználók védelmét:
 1. Keresse meg a **az Azure Active Directory** > **feltételes hozzáférési**.
 1. A házirendek listájából válassza ki **alapvető házirendet: Végfelhasználói protection (előzetes verzió)** .
 1. Állítsa be **házirend engedélyezése** való **a házirend azonnal használható**.
-1. Bármely felhasználó kizárások hozzáadása kattintva **felhasználók** > **kizárt felhasználók kiválasztása** majd ki kell zárni a felhasználóknak. Kattintson a **kiválasztása** majd **kész**.
 1. Kattintson a **mentése**.
 
 ## <a name="next-steps"></a>További lépések

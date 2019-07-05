@@ -6,14 +6,14 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 06/28/2019
 ms.author: sogup
-ms.openlocfilehash: 5fdf8e6c19711f6ce38d430a9dffab185cad961b
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 0248e169f5d502cce8723f594f438b87ab088f3a
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296173"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551614"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Gyakori kérdések – biztonsági mentése Azure virtuális gépek
 
@@ -46,10 +46,6 @@ Ha Ön egy virtuális gép közreműködő, engedélyezheti a virtuális gép bi
 Ha a Recovery Services-tároló és a virtuális gép eltérő erőforráscsoportokban, győződjön meg arról, van is írási engedélye a Recovery Services-tároló az erőforráscsoportban.  
 
 
-### <a name="what-azure-vms-can-you-back-up-using-azure-backup"></a>Milyen Azure-beli virtuális gépek is biztonsági másolatot készíteni az Azure Backup használatával?
-
-Tekintse át a [támogatási mátrix](backup-support-matrix-iaas.md) részletei és korlátozásokról.
-
 ### <a name="does-an-on-demand-backup-job-use-the-same-retention-schedule-as-scheduled-backups"></a>Egy igény szerinti biztonsági mentési feladat használja ugyanazt a megőrzési ütemezést, ütemezett biztonsági mentések?
 Nem. Adja meg a megőrzési tartomány egy igény szerinti biztonsági mentési feladat. Alapértelmezés szerint 30 napig őrzi meg a portálról elindításakor.
 
@@ -73,17 +69,12 @@ Ha zárolhatja az Azure Backup szolgáltatás által létrehozott erőforráscso
 
 Távolítsa el a zárolást, és törölje a jelet ebből az erőforráscsoportból a visszaállításipont-gyűjtemény annak érdekében, hogy a jövőbeni biztonsági mentések sikeres, a felhasználónak kell [kövesse az alábbi lépéseket](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) eltávolítása a visszaállításipont-gyűjtemény.
 
-### <a name="does-the-backup-policy-consider-daylight-saving-time-dst"></a>Vegye figyelembe a nyári időszámításra (cél) a biztonsági mentési szabályzatot?
-Nem. A dátum és idő a helyi számítógépen a alkalmazni aktuális nyári időszámítás helyi. Ütemezett biztonsági mentések beállított ideje a helyi idő nyári Időszámítás miatt eltérhetnek.
-
-### <a name="how-many-data-disks-can-i-attach-to-a-vm-backed-up-by-azure-backup"></a>Hány adatlemez csatolható a virtuális gép biztonsági mentése az Azure Backup?
-Az Azure Backup legfeljebb 16 lemez a biztonsági mentést virtuális gépeket. 16 lemez támogatása megtalálható a [azonnali visszaállítása](backup-instant-restore-capability.md).
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Biztosítja az Azure támogatja a biztonsági mentést standard SSD felügyelt lemez?
 Az Azure Backup támogatja [SSD standard szintű felügyelt lemezek](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). SSD-managed Disks szolgáltatásba az Azure virtuális gépek adjon meg egy új típusú tartós tárolási. SSD felügyelt lemezek támogatása megtalálható a [azonnali visszaállítása](backup-instant-restore-capability.md).
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Hogy készíthető lemez írási gyorsító WA-kompatibilis virtuális gépek?
-Pillanatképek nem használhatók a WA-kompatibilis lemezen. Azonban az Azure Backup szolgáltatás is WA-kompatibilis lemezének kizárása a biztonsági másolatból. Lemez kizárása a virtuális gépek WA-kompatibilis lemezek csak azonnali visszaállítása frissített előfizetések esetén támogatott.
+Pillanatképek nem használhatók a WA-kompatibilis lemezen. Azonban az Azure Backup szolgáltatás is WA-kompatibilis lemezének kizárása a biztonsági másolatból.
 
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>Írási gyorsító (CS) lemezekkel rendelkező virtuális gép van, és az SAP HANA telepítve. Hogyan készíthetek biztonsági másolatot?
 Az Azure Backup a WA-kompatibilis lemez nem készíthető, de lehet kizárni, biztonsági másolatból. Azonban a biztonsági mentés módszer nem biztosítja adatbázis-konzisztencia, mert a WA-kompatibilis lemezen lévő adatokat nem készül. Ez a konfiguráció lemezek készíthető, ha azt szeretné, operációsrendszer-lemez biztonsági mentés, és a lemezek, amelyek nem WA-kompatibilis.
@@ -93,6 +84,8 @@ Privát előzetes verzió, az SAP HANA biztonsági mentés egy 15 perces RPO-val
 ### <a name="what-is-the-maximum-delay-i-can-expect-in-backup-start-time-from-the-scheduled-backup-time-i-have-set-in-my-vm-backup-policy"></a>Mi az a maximális késleltetés kell beállítani a saját virtuális gép biztonsági mentési szabályzat ütemezett biztonsági mentésének ideje a biztonsági mentés kezdő időpontja is várható?
 Az ütemezett biztonsági mentést az ütemezett biztonsági mentés időpontja 2 órán belül aktiválódik. Az ex. Ha 100 virtuális gép 2:00 órakor ütemezett biztonsági mentés kezdő időpontja, majd szerint max. 4:00-kor összes 100VMs rendelkezik biztonságimásolat-készítő feladat folyamatban van. Ha ütemezett biztonsági mentések szünetelnek miatt a szolgáltatáskimaradás, és folytatódik és újra megpróbálja majd biztonsági mentés indításához ez 2 óra ütemezett időszakon kívül.
 
+### <a name="what-is-the-minimum-allowed-retention-range-for-daily-backup-point"></a>Mi az a minimális megengedett megőrzési időtartam napi biztonsági mentési pont?
+Az Azure virtuális gép biztonsági mentési szabályzat mentése 7 nap a minimális megőrzési 9999 nap támogatja. Egy meglévő virtuális gép biztonsági mentési szabályzathoz 7 napon belül bármilyen módosítása kell egy frissítést a felel meg a minimális megőrzési időtartam 7 nap.
 
 ## <a name="restore"></a>Visszaállítás
 

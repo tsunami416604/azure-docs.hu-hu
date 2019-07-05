@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 05/20/2019
-ms.openlocfilehash: bd1f06c93a75673f86f0c52f78cad8a60f7a1a1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b48257cc8e10deb1ec922806f62a6c435069f66f
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65961447"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67467097"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Csatlakozás az Azure virtuális hálózatok az Azure Logic Apps integrációs service-környezet (ISE) használatával
 
@@ -64,7 +64,7 @@ Integrációs service Environment-környezetekkel kapcsolatos további informác
 
 Egy integrációs service-környezet (ISE) és a virtuális hálózat használatakor telepítő gyakran okoz problémát tapasztalja egy vagy több letiltott portot. Az összekötők, használhat olyan kapcsolatokat hozhat létre az ISE-ben és a cél rendszer között is szükség lehet a saját port követelmények. Például ha az FTP-összekötő használatával kommunikálnak az FTP-rendszerek, győződjön meg arról, a portot használja, hogy elérhető legyen-e az FTP-rendszer 21-es porton, a Parancsküldés, például.
 
-A forgalom szabályozása, amelyen központi telepítését ISE-ben a virtuális hálózat alhálózatok között, beállíthatja [hálózati biztonsági csoportok](../virtual-network/security-overview.md) által [alhálózatok közötti hálózati forgalom szűrése](../virtual-network/tutorial-filter-network-traffic.md). Az ISE-ben azonban bizonyos portokat nyissa meg a hálózati biztonsági csoportokat használ a virtuális hálózaton kell rendelkeznie. Ezzel a módszerrel az ISE-ben elérhető marad, és megfelelően tudnak működni úgy, hogy ne veszítse el a hozzáférést, az ISE-ben. Ellenkező esetben ha minden szükséges portok elérhetők, az ISE-ben nem működik.
+A forgalom szabályozása, amelyen központi telepítését az ISE-ben a virtuális hálózati alhálózatokon keresztül, igény szerint beállíthatja [hálózati biztonsági csoportok (NSG-k)](../virtual-network/security-overview.md) által a virtuális hálózat [alhálózatokközöttihálózatiforgalomszűrése](../virtual-network/tutorial-filter-network-traffic.md). Ha úgy dönt, ezt az útvonalat, ellenőrizze, hogy, hogy az ISE megnyílik az adott portok, a virtuális hálózaton, amely az NSG-t használja az alábbi táblázatban leírtak szerint. Ha rendelkezik meglévő NSG-k vagy a tűzfal a virtuális hálózaton, győződjön meg arról, hogy megnyitják ezeket a portokat. Ezzel a módszerrel az ISE-ben elérhető marad, és megfelelően tudnak működni úgy, hogy ne veszítse el a hozzáférést, az ISE-ben. Ellenkező esetben ha minden szükséges portok elérhetők, az ISE-ben nem működik.
 
 Ezek a táblázatok ismertetik a portokat a virtuális hálózat, amely az ISE-ben, és ahol azokat a portokat használja beolvasása. A [Resource Manager-szolgáltatáscímkék](../virtual-network/security-overview.md#service-tags) IP-címelőtagokat, amelyek segítenek a minimálisra összetettségét, amikor a biztonsági szabályok létrehozása egy csoportját jelöli.
 
@@ -117,7 +117,7 @@ A keresőmezőbe írja be szűrőként "integrációs szolgáltatás környezet"
    | **Előfizetés** | Igen | <*Azure-előfizetés-neve*> | Az Azure-előfizetés a környezet használata |
    | **Erőforráscsoport** | Igen | <*Azure-resource-group-name*> | Az Azure erőforráscsoport, ahol szeretné létrehozni a környezetet |
    | **Integráció Service-környezet neve** | Igen | <*environment-name*> | A környezet nevét |
-   | **Hely** | Igen | <*Azure-datacenter-region*> | Az Azure-adatközpontrégiót használhatják az üzembe helyezés a környezet |
+   | **Location** | Igen | <*Azure-datacenter-region*> | Az Azure-adatközpontrégiót használhatják az üzembe helyezés a környezet |
    | **Ha extra kapacitásra** | Igen | 0 és 10 | Az ISE-erőforrás használandó további feldolgozási egységek száma. Létrehozása után adja hozzá a kapacitás, lásd: [hozzáadása ISE kapacitás](#add-capacity). |
    | **Virtuális hálózat** | Igen | <*Azure-virtual-network-name*> | Az Azure virtuális hálózat, ahol szeretné a környezet betöltése, hogy a logic apps, a környezetben hozzáférhessen a virtuális hálózat. Ha nem rendelkezik egy hálózati [először hozza létre az Azure-beli virtuális hálózathoz](../virtual-network/quick-create-portal.md). <p>**Fontos**: Is *csak* észrevegye hajtható végre, ha a hoz létre az ISE-ben. |
    | **Alhálózatok** | Igen | <*subnet-resource-list*> | Az ISE-ben szükséges négy *üres* alhálózatok a környezetében az erőforrások létrehozásához. Minden egyes alhálózat létrehozásához [a táblázat alatti lépéseket követve](#create-subnet).  |

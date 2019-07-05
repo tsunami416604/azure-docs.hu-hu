@@ -15,22 +15,22 @@ ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 827c42763eee39c717cedc90469ae765cc331272
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3c7ce8b79644a9ffc9481ba825ec5623a9268983
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66253840"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476333"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-pim"></a>Az Azure-erőforrások szerepköreihez tartozó biztonsági riasztások konfigurálása az PIM-ben
 Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) riasztásokat állít elő, ha bármi gyanúsat vagy nem biztonságos tevékenységre van a környezetben. Riasztást vált ki, amikor megjelenik a riasztások lapon. 
 
-![Riasztások lap](media/pim-resource-roles-configure-alerts/rbac-alerts-page.png)
+![Azure-erőforrások – riasztások oldal száma, riasztás és kockázati szint listázása](media/pim-resource-roles-configure-alerts/rbac-alerts-page.png)
 
 ## <a name="review-alerts"></a>Riasztások áttekintése
 Válasszon ki egy riasztást, a felhasználók vagy szerepkör, amely kiváltotta a riasztást, valamint szervizelési tanácsokat felsoroló jelentés megtekintéséhez.
 
-![Riasztási jelentés](media/pim-resource-roles-configure-alerts/rbac-alert-info.png)
+![Riasztási jelentés megjelenítése a legutóbbi vizsgálat idő, leírás, kárenyhítési lépések, típus, súlyosság, biztonsági kockázat, és hogyan lehet legközelebb megakadályozni](media/pim-resource-roles-configure-alerts/rbac-alert-info.png)
 
 ## <a name="alerts"></a>Riasztások
 | Riasztás | Severity | Eseményindító | Ajánlás |
@@ -47,10 +47,12 @@ Válasszon ki egy riasztást, a felhasználók vagy szerepkör, amely kiváltott
 
 ## <a name="configure-security-alert-settings"></a>Biztonsági riasztási beállításainak konfigurálása
 Lépjen a riasztások oldaláról **beállítások**.
-![Beállítások](media/pim-resource-roles-configure-alerts/rbac-navigate-settings.png)
+
+![Kiemelt beállításokkal a riasztások oldaláról](media/pim-resource-roles-configure-alerts/rbac-navigate-settings.png)
 
 A különböző riasztások beállításai a környezetet és biztonsági célok testreszabásához.
-![A beállítások testre szabása](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
+
+![Lap engedélyezze és konfigurálja a beállításokat egy riasztás beállítása](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
 
 ## <a name="next-steps"></a>További lépések
 

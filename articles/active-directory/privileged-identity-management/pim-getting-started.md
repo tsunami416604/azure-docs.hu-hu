@@ -14,12 +14,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 651dc4efa653e7a4eb77f153280579ffd87fe8f7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 408991ffc3922986234f7d40e1cd589b1d126ba1
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60289999"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476482"
 ---
 # <a name="start-using-pim"></a>Ismerkedés a PIM-mel
 
@@ -56,25 +56,25 @@ A címtár PIM használatának megkezdéséhez először engedélyeznie kell a P
 
 1. Kattintson a lista **hozzájárulás megadása a PIM számára**.
 
-    ![Hozzájárulás megadása a PIM számára](./media/pim-getting-started/consent-pim.png)
+    ![Hozzájárulás megadása a PIM számára, miközben a PIM engedélyezése](./media/pim-getting-started/consent-pim.png)
 
 1. Kattintson a **saját identitás ellenőrzése** igazolhatja személyazonosságát, az Azure MFA Megismeréséhez. Válasszon egy fiókot, a rendszer.
 
-    ![Válasszon egy fiókot](./media/pim-getting-started/pick-account.png)
+    ![Válasszon ki egy fiók ablakban igazolhatja személyazonosságát](./media/pim-getting-started/pick-account.png)
 
 1. Ha további információt az ellenőrzéshez szükséges, hogy rendszer végigvezeti a folyamat. További információkért lásd: [segítség a kétlépcsős ellenőrzéshez](https://go.microsoft.com/fwlink/p/?LinkId=708614).
 
-    ![További információ szükséges](./media/pim-getting-started/more-information-required.png)
+    ![További információ ablak szükséges, ha a szervezet további információra van szüksége](./media/pim-getting-started/more-information-required.png)
 
     Például előfordulhat, hogy megkérdezi, hogy telefonos ellenőrzésének biztosításához.
 
-    ![További biztonsági ellenőrzés](./media/pim-getting-started/additional-security-verification.png)
+    ![További biztonsági ellenőrzési lapot kapcsolatba lépni Önnel, hogy miként kérése](./media/pim-getting-started/additional-security-verification.png)
 
 1. Ha az ellenőrzési folyamat befejezte, kattintson a **hozzájárulás** gombra.
 
 1. A megjelenő üzenetben kattintson **Igen** jóváhagyást a PIM szolgáltatáshoz.
 
-    ![Hozzájárulás megadása a PIM-üzenet](./media/pim-getting-started/consent-pim-message.png)
+    ![Hozzájárulás megadása a PIM jóváhagyási folyamat minősítendő üzenet](./media/pim-getting-started/consent-pim-message.png)
 
 ## <a name="sign-up-pim-for-azure-ad-roles"></a>Iratkozzon fel a PIM az Azure AD-szerepkörök
 
@@ -100,7 +100,7 @@ Miután engedélyezte a PIM a címtáron, kell iratkozzon fel a PIM kezelése az
 
 A PIM beállítása után az identitáskezelési feladatokat is végezhet.
 
-![Felső szintű PIM-tevékenységek – képernyőkép](./media/pim-getting-started/pim-quickstart-tasks.png)
+![Navigációs ablak a PIM ábrázoló feladatokat, és beállítások kezelése](./media/pim-getting-started/pim-quickstart-tasks.png)
 
 | Feladat + kezelése | Leírás |
 | --- | --- |
@@ -125,11 +125,11 @@ Nyissa meg a PIM megkönnyítése, hozzá kell adnia a PIM csempe az Azure porta
 
 1. Ellenőrizze **panel rögzítése az irányítópulton** rögzítése az irányítópulton a PIM rövid panelt.
 
-    ![Panel rögzítése az irányítópulton](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
+    ![A PIM panel rögzítése az irányítópulton Rajzszög ikonra](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
 
     Az Azure-irányítópulton ekkor megjelenik egy csempe ehhez hasonló:
 
-    ![A PIM rövid csempe](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
+    ![A PIM rövid irányítópulton lévő csempe](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
 
 ## <a name="next-steps"></a>További lépések
 

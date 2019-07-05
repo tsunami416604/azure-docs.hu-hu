@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb0cfb06e95cadbb549f669e5d59bdb0d795c896
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 357c83cfd0ae3fed8b13419e72f50fcb90c04186
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545862"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550659"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>Xamarin Android-specifikus MSAL.NET megfontolások
 Ez a cikk ismerteti a figyelembe kell venni bizonyos Xamarin Android használata a Microsoft-hitelesítési tár .NET (MSAL.NET) esetén.
@@ -97,7 +97,7 @@ Ezek a problémák elhárításához, a következőket kell elvégeznie:
 
 ### <a name="error-the-name-authenticationcontinuationhelper-does-not-exist-in-the-current-context"></a>Hiba: A név "AuthenticationContinuationHelper" nem létezik az aktuális környezetben
 
-Ennek oka valószínűleg az, hogy a Visual Studio megfelelően nem frissítette a Android.csproj* fájlt. Egyes esetekben a **<HintPath>** filepath helytelenül tartalmaz helyett netstandard13 **monoandroid90**.
+Ennek oka valószínűleg az, hogy a Visual Studio megfelelően nem frissítette a Android.csproj* fájlt. Egyes esetekben a  **\<HintPath >** filepath helytelenül tartalmaz helyett netstandard13 **monoandroid90**.
 
 ```xml
 <Reference Include="Microsoft.Identity.Client, Version=3.0.4.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae,

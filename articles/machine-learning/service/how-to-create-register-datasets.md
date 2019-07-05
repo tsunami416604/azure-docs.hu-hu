@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/21/2019
-ms.openlocfilehash: b4c22caae86e20b8379db2b7feffb1ca82001239
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a879fa17244977277dab3e2e66c5888a44759764
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66753150"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444030"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Hozzon létre, és az Azure Machine Learning (előzetes verzió) adatkészletek elérése
 
@@ -150,5 +150,4 @@ dataset = workspace.datasets['dataset_crime']
 ## <a name="next-steps"></a>További lépések
 
 * [Ismerje meg, és adatkészletek előkészítése](how-to-explore-prepare-data.md).
-* [Az adatkészlet-definíciók életciklusának kezelése](how-to-manage-dataset-definitions.md).
 * Példa adatkészleteket használó, tekintse meg a [notebookok minta](https://aka.ms/dataset-tutorial).

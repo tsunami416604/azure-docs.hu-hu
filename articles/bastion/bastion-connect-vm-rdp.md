@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: cherylmc
-ms.openlocfilehash: c8a4b09a27325f31e548d1b345b2932c6ab6315c
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 376b7042a513dd50647dc8f88bf1de70f65bb21c
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191888"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478409"
 ---
 # <a name="connect-to-a-windows-virtual-machine-using-azure-bastion-preview"></a>Windows virtuális gépek Azure megerősített (előzetes verzió) segítségével csatlakozhat
 
@@ -34,7 +34,7 @@ Annak érdekében, hogy a kapcsolat létrehozása a következő szerepkörök sz
 
 ## <a name="rdp"></a>Csatlakozás RDP-vel
 
-1. Az a [az Azure portal](https://aka.ms/BastionHost) a megerősített előzetes verzió, lépjen a virtuális gép, amelyhez csatlakozni kíván, majd kattintson **Connect**. A virtuális gép lehet egy Windows virtuális gép RDP-kapcsolatok használatakor.
+1. Használat [ezt a hivatkozást](https://aka.ms/BastionHost) Azure megerősített a betekintő portál lap megnyitásához. Keresse meg a virtuális gép, amelyhez csatlakozni kíván, majd kattintson a **Connect**. A virtuális gép lehet egy Windows virtuális gép RDP-kapcsolatok használatakor.
 
     ![Virtuális gép csatlakoztatása](./media/bastion-connect-vm-rdp/connect.png)
 

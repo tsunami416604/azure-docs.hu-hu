@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 06/21/2019
+ms.date: 7/2/2019
 ms.author: victorh
-ms.openlocfilehash: 9ec37197376c815c4fb9072164520a707b02be2b
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: a5a53766df3338bb36913b589ebda970de55ec94
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312726"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491932"
 ---
 # <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses-using-azure-powershell"></a>Üzembe helyezés az Azure-tűzfalak több nyilvános IP-címek Azure PowerShell-lel
 
@@ -21,7 +21,7 @@ ms.locfileid: "67312726"
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Az Azure tűzfal legfeljebb 600 nyilvános IP-címmel is telepítheti.
+Az Azure tűzfal legfeljebb 100 nyilvános IP-címmel is telepítheti.
 
 Ez a funkció lehetővé teszi, hogy a következő esetekben:
 

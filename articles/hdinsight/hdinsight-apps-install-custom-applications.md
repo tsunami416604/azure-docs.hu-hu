@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0acac29ee49bc94c195d0e13e55fff3a735ad36b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fbee86f09246684a0e553114e367907ddabfa16
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65859817"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445502"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Egyéni Apache Hadoop-alkalmazások telepítése Azure HDInsight platformon
 
@@ -107,7 +107,7 @@ A HDInsight-alkalmazások többféleképpen törölhetők.
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A bal oldali menüben kattintson a **HDInsight Clusters** (HDInsight-fürtök) elemre.  Ha nem látja, kattintson a **Browse** (Tallózás), majd a **HDInsight Clusters** (HDInsight-fürtök) elemre.
 3. Kattintson arra a fürtre, amelyre az alkalmazást telepítette.
-4. A **Settings** (Beállítások) panelen kattintson az **Applications** (Alkalmazások) elemre a **General** (Általános) kategóriában. Ekkor a telepített alkalmazások listája jelenik meg. A **hue** elem ebben az oktatóanyagban az **Installed Apps** (Telepített alkalmazások) panelen található.
+4. A **Settings** (Beállítások) panelen kattintson az **Applications** (Alkalmazások) elemre a **General** (Általános) kategóriában. Ekkor a telepített alkalmazások listája jelenik meg. Ebben a cikkben **hue** szerepel a **telepített alkalmazások** panelen.
 5. Kattintson a jobb gombbal az eltávolítani kívánt alkalmazásra, majd kattintson a **Delete** (Törlés) lehetőségre.
 6. Kattintson a **Yes** (Igen) gombra a megerősítéshez.
 
