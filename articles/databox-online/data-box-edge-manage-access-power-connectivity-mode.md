@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 06/03/2019
+ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 8937f4c47f0fa84d4ec371e951cff8a2fdaa8481
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2426ecd9c480b0cc236295384ae04c60051f37ce
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476897"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442955"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge"></a>Az Azure Data Box Edge kezelheti a hozzáférést, a teljesítmény és a csatlakozási mód
 
@@ -66,7 +66,7 @@ A Data Box peremhálózati eszköz, vagy a hitelesítő adatokat igénylő valam
 -  Egy fájlmegosztás létrehozása egy kapcsolódó tárfiók.
 -  Az eszközön a megosztások hozzáféréssel rendelkező felhasználó létrehozása.
 
-Rendelkeznie kell egy `User` tudni igény szerint az Active Directory-bérlő eléréséhez `Read all directory objects`. Nem lehet a vendégfelhasználó, mivel azok nem rendelkezik engedélyekkel `Read all directory objects`. Ha Ön egy Vendég, majd a műveletek, például az aktiválási kulcs, a Data Box Edge-eszközön a megosztás létrehozása egy felhasználó létrehozása az összes sikertelen lesz.
+Rendelkeznie kell egy `User` tudni igény szerint az Active Directory-bérlő eléréséhez `Read all directory objects`. Nem lehet a vendégfelhasználó, mivel azok nem rendelkezik engedélyekkel `Read all directory objects`. Ha Ön egy Vendég, majd a műveletek, például. generációs egy aktiválási kulcsot, a Data Box peremhálózati eszköz, a felhasználó létrehozásának, Edge konfigurációját a megosztás létrehozási számítási szerepkör, eszköz-jelszó alaphelyzetbe állítása az összes sikertelen lesz.
 
 Hozzáférést biztosítania a felhasználóknak, hogy az Azure Active Directory Graph API-val kapcsolatos további információkért lásd: [rendszergazdák, a felhasználók és a vendégfelhasználók hozzáférés alapértelmezett](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
 

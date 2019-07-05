@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97bad4d9cd599890dd5e26cbc77f81156c0f1070
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 4dbe3039845b1c9160e4f4fa3007cad1f588f71e
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204670"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560758"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>A meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure multi-factor Authentication
 
@@ -76,14 +76,14 @@ Amikor telepíti a bővítményt, az Azure AD-bérlő szükség van a címtár a
 
 A hálózati házirend-kiszolgálónak képesnek kell lennie kommunikálni a következő URL-címek a 80-as és 443-as portokon keresztül.
 
-* https:\//adnotifications.windowsazure.com  
-* https:\//login.microsoftonline.com
+- [https://adnotifications.windowsazure.com](https://adnotifications.windowsazure.com)
+- [https://login.microsoftonline.com](https://login.microsoftonline.com)
 
 Ezenkívül a következő URL-kapcsolat végrehajtásához szükséges a [beállítása a PowerShell parancsfájl használatával adapter](#run-the-powershell-script)
 
-- https:\//login.microsoftonline.com
-- https:\//provisioningapi.microsoftonline.com
-- https:\//aadcdn.msauth.net
+- [https://login.microsoftonline.com](https://login.microsoftonline.com)
+- [https://provisioningapi.microsoftonline.com](https://provisioningapi.microsoftonline.com)
+- [https://aadcdn.msauth.net](https://aadcdn.msauth.net)
 
 ## <a name="prepare-your-environment"></a>A környezet előkészítése
 
@@ -121,9 +121,14 @@ Nincsenek két tényező befolyásolja, hogy mely hitelesítési módszerek érh
 1. Az a RADIUS-ügyfél között használt jelszó-titkosítási algoritmus (VPN-, Netscaler kiszolgáló, vagy egyéb) és az NPS-kiszolgálókon.
    - **A PAP** a felhőben, az Azure MFA hitelesítési módszereket támogatja: telefonhívás, egyirányú SMS, mobilalkalmazásbeli értesítés és mobilalkalmazásbeli ellenőrző kód.
    - **CHAPv2** és **EAP** telefonhívás- és mobilalkalmazás-értesítés támogatja.
-2. A beviteli módok, hogy az ügyfélalkalmazás (VPN-, Netscaler kiszolgáló, vagy egyéb) képes kezelni. Például rendelkezik néhány azt jelenti, hogy a felhasználó egy ellenőrző kódot SMS vagy mobilalkalmazás írja be a VPN-ügyfél?
 
-Központi telepítésekor az NPS-bővítményt, a tényezők segítségével kiértékelheti, hogy melyik módszer a felhasználók számára érhető el. Ha a RADIUS-ügyfél a PAP FUNKCIÓT támogatja, de az ügyfél UX nem rendelkezik egy ellenőrző kódot a beviteli mezőket, majd telefonhívás- és mobilalkalmazás-értesítés a két módon támogatott.
+      > [!NOTE]
+      > Központi telepítésekor az NPS-bővítményt, a tényezők segítségével kiértékelheti, hogy melyik módszer a felhasználók számára érhető el. Ha a RADIUS-ügyfél a PAP FUNKCIÓT támogatja, de az ügyfél UX nem rendelkezik egy ellenőrző kódot a beviteli mezőket, majd telefonhívás- és mobilalkalmazás-értesítés a két módon támogatott.
+      >
+      > Ezenkívül ha a VPN-ügyfél felhasználói felület támogatja a beviteli mezőjében, és konfigurálta a hálózati házirend - a hitelesítés sikeres lehet, azonban a hálózati házirendben beállított RADIUS-attribútumok egyike sem lépnek érvénybe, sem a hálózati eszköz eléréséhez, például az RRAS-kiszolgáló, sem a VPN-ügyfél. Ennek eredményeképpen a VPN-ügyfél lehet, mint a kívánt vagy annál kisebb nincs hozzáférés több hozzáférést.
+      >
+
+2. A beviteli módok, hogy az ügyfélalkalmazás (VPN-, Netscaler kiszolgáló, vagy egyéb) képes kezelni. Például rendelkezik néhány azt jelenti, hogy a felhasználó egy ellenőrző kódot SMS vagy mobilalkalmazás írja be a VPN-ügyfél?
 
 Is [tiltsa le a nem támogatott hitelesítési módszerek](howto-mfa-mfasettings.md#verification-methods) az Azure-ban.
 
@@ -132,11 +137,10 @@ Is [tiltsa le a nem támogatott hitelesítési módszerek](howto-mfa-mfasettings
 Mielőtt üzembe helyezése és az NPS-bővítményének használatához, felhasználókat a kétlépéses ellenőrzés végrehajtásához szükség van a multi-factor Authentication regisztrálni kell. Több azonnal a bővítményt, az üzembe helyezés teszteléséhez legalább egy tesztet fiók szükséges, amely teljes mértékben a multi-factor Authentication regisztrálva.
 
 Az első lépések tesztfiók tegye a következőket:
-1. Jelentkezzen be a [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup) test-fiókkal. 
-2. Kövesse az utasításokat követve állítsa be egy ellenőrzési módszert.
-3. Hozzon létre egy feltételes hozzáférési szabályzat vagy [módosíthatja a felhasználói állapot](howto-mfa-userstates.md) kétlépéses ellenőrzés megkövetelése a test-fiók. 
 
-A felhasználók emellett kövesse az alábbi lépéseket, mielőtt NPS-bővítményéhez hitelesíteni tudja regisztrálni.
+1. Jelentkezzen be a [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup) test-fiókkal.
+2. Kövesse az utasításokat követve állítsa be egy ellenőrzési módszert.
+3. [Feltételes hozzáférési szabályzat létrehozása](howto-mfa-getstarted.md#create-conditional-access-policy) a többtényezős hitelesítés megkövetelése a test-fiók.
 
 ## <a name="install-the-nps-extension"></a>Az NPS-bővítményének telepítése
 
@@ -188,6 +192,14 @@ Ha az előző számítógép-tanúsítvány lejárt, és a egy új tanúsítván
 
 > [!NOTE]
 > Ha a PowerShell-parancsfájlt a tanúsítványok generálása helyett a saját tanúsítványok használ, győződjön meg arról, a hálózati házirend-kiszolgáló elnevezési egyezmény igazítása. A tulajdonos nevének kell **CN =\<TenantID\>, OU = Microsoft NPS-bővítményének**. 
+
+### <a name="certificate-rollover"></a>Tanúsítványváltás
+
+A kiadással 1.0.1.32 NPS-bővítmény, több tanúsítvány olvasásakor mostantól támogatott. Ez a képesség segít elősegítik a működés közbeni tanúsítvány frissítéseket, azok lejárta előtt. Ha a szervezet az NPS-bővítményt egy korábbi verziója fut, akkor verziójára kell frissíteniük 1.0.1.32 vagy újabb verziója.
+
+Által létrehozott tanúsítványokat a `AzureMfaNpsExtnConfigSetup.ps1` parancsfájl 2 évig érvényesek. INFORMATIKAI szervezetek figyelje a tanúsítványok lejárati. Az NPS-bővítményének tanúsítványai kerülnek, a helyi számítógép tanúsítványtárolójának személyes alatt, és ki a bérlői azonosító által a parancsfájl.
+
+A tanúsítvány közeleg a lejárati dátum, amikor egy új tanúsítvány lecseréli kell létrehozni.  Ez a folyamat valósul meg a `AzureMfaNpsExtnConfigSetup.ps1` újra, és az azonos bérlő azonosítója, amikor a rendszer kéri. Ezt a folyamatot meg kell ismételni minden egyes hálózati házirend-kiszolgálón a környezetben.
 
 ## <a name="configure-your-nps-extension"></a>Az NPS-bővítményének konfigurálása
 
@@ -291,6 +303,10 @@ Ha rendelkezik egy érvényes tanúsítványt, ellenőrizze a helyi számítóg�
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>A TLS/SSL-protokollok és titkosítócsomagok kezelése
 
 Javasoljuk, hogy régebbi és gyengébb titkosítási csomagok letiltása vagy eltávolítása, ha a szervezete által megkövetelt. A tennivalókat az [AD FS által használt SSL/TLS-protokollok és titkosítócsomagok kezelését](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) ismertető rész tartalmazza.
+
+### <a name="additional-troubleshooting"></a>További hibaelhárítás
+
+További hibaelhárítási útmutató és a lehetséges megoldások a cikkben található [oldja meg a hibaüzeneteket az NPS-bővítményt az Azure multi-factor Authentication](howto-mfa-nps-extension-errors.md).
 
 ## <a name="next-steps"></a>További lépések
 

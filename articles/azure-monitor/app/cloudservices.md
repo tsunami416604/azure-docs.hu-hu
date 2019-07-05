@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: eb7cbb80be12498242363eb8141a468e08cba73a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 64995ad0560efd06bfa0084c948527e8a01e1890
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66478328"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443337"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights az Azure cloud services
-[Az Application Insights] [ start] figyelheti [Azure felhőszolgáltatásbeli alkalmazások](https://azure.microsoft.com/services/cloud-services/) a rendelkezésre állási, teljesítmény, hibák és használati adatok az Application Insights SDK-k egyesül [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) a cloud Services szolgáltatások adatait. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
+[Az Application Insights][start] figyelheti [Azure felhőszolgáltatásbeli alkalmazások](https://azure.microsoft.com/services/cloud-services/) a rendelkezésre állási, teljesítmény, hibák és használati adatok az Application Insights SDK-k [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)a cloud Services szolgáltatások adatait. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
 
 ![Áttekintő irányítópult](./media/cloudservices/overview-graphs.png)
 
@@ -80,7 +80,7 @@ A telemetriai adatokat küld a megfelelő erőforrásokon, akkor állítsa be az
 
 Ha minden szerepkör egy külön erőforrás létrehozása döntött, és esetleg egy külön készletet az egyes, a legegyszerűbb minden hozni őket az Application Insights portálon. Ha sokat hoz létre erőforrásokat, [automatizálhatják a](../../azure-monitor/app/powershell.md).
 
-1. Az a [az Azure portal][portal]válassza **új** > **fejlesztői szolgáltatások**  >   **Az Application Insights**.  
+1. Az a [az Azure portal][portal]válassza **új** > **fejlesztői szolgáltatások** > **Application Insights**.  
 
     ![Application Insights panel](./media/cloudservices/01-new.png)
 
@@ -136,7 +136,38 @@ A Visual Studióban konfigurálja külön az Application Insights SDK-t az egyes
 1. Állítsa be a *ApplicationInsights.config* fájlt mindig a kimeneti könyvtárba kell másolni.  
     Egy üzenet a *.config* fájlt arra kéri, hogy ott helyezze a kialakítási kulcsot. A felhőalapú alkalmazások esetén célszerű azonban jobb azt a a *.cscfg* fájlt. Ez a megközelítés biztosítja, hogy a szerepkör megfelelően legyen azonosítva a portálon.
 
-#### <a name="run-and-publish-the-app"></a>Az alkalmazás futtatása és közzététele
+## <a name="set-up-status-monitor-to-collect-full-sql-queries-optional"></a>Állítsa be az állapotfigyelő összegyűjtése a teljes SQL lekérdezések (nem kötelező)
+
+Ez a lépés csak akkor szükséges, ha teljes SQL-lekérdezések a .NET-keretrendszer rögzíteni kívánja. 
+
+1. A `\*.csdef` file Add [indítási feladat](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks) az egyes szerepkörökhöz hasonlóan 
+
+    ```xml
+    <Startup>
+      <Task commandLine="AppInsightsAgent\InstallAgent.bat" executionContext="elevated" taskType="simple">
+        <Environment>
+          <Variable name="ApplicationInsightsAgent.DownloadLink" value="http://go.microsoft.com/fwlink/?LinkID=522371" />
+          <Variable name="RoleEnvironment.IsEmulated">
+            <RoleInstanceValue xpath="/RoleEnvironment/Deployment/@emulated" />
+          </Variable>
+        </Environment>
+      </Task>
+    </Startup>
+    ```
+    
+2. Töltse le [InstallAgent.bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) és [InstallAgent.ps1](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1), helyezze át azokat a `AppInsightsAgent` minden szerepkör projekt mappájába. Ügyeljen arra, hogy másolja őket a kimeneti könyvtárat a Visual Studio fájltulajdonságok keresztül vagy a fordítási parancsprogramot.
+
+3. Az összes feldolgozói szerepkörök esetében adja hozzá a környezeti változókat: 
+
+    ```xml
+      <Environment>
+        <Variable name="COR_ENABLE_PROFILING" value="1" />
+        <Variable name="COR_PROFILER" value="{324F817A-7420-4E6D-B3C1-143FBED6D855}" />
+        <Variable name="MicrosoftInstrumentationEngine_Host" value="{CA487940-57D2-10BF-11B2-A3AD5A13CBC0}" />
+      </Environment>
+    ```
+    
+## <a name="run-and-publish-the-app"></a>Az alkalmazás futtatása és közzététele
 
 1. Futtassa az alkalmazást, és jelentkezzen be az Azure-bA. 
 
@@ -146,10 +177,10 @@ A Visual Studióban konfigurálja külön az Application Insights SDK-t az egyes
 1. További telemetriai funkciók hozzáadása (lásd a következő szakaszban), majd tegye közzé az alkalmazást, hogy élő diagnosztikai és használati visszajelzéseket kaphat. 
 
 Ha nem szerepel megjeleníthető adat, tegye a következőket:
-1. Az egyes események megtekintéséhez nyissa meg a [keresési] [ diagnostic] csempére.
+1. Az egyes események megtekintéséhez nyissa meg a [keresési][diagnostic] csempére.
 1. Az alkalmazásban nyissa meg különböző oldalakat, hogy létrejöjjön valamennyi telemetria.
 1. Várjon néhány másodpercet, és kattintson a **frissítése**.  
-    További információkért lásd: [hibaelhárítás][qna].
+    További információk: [Hibaelhárítás][qna].
 
 ## <a name="view-azure-diagnostics-events"></a>Az Azure diagnosztikai események megtekintése
 Annak a [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) információk az Application insights szolgáltatásban a következő helyeken:

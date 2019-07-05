@@ -8,25 +8,26 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 6ad6f9414df17f9edff7565752ef3845e0d3c88e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c2bf19a2599d59b9ff2b3d189b26134f1528a878
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66116205"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448572"
 ---
 # <a name="understand-azure-policy-effects"></a>Az Azure Policy hatások ismertetése
 
 Minden egyes szabályzatdefiníciót az Azure Policy egy egyetlen hatása. A hatás határozza meg, mi történik, ha a szabály kiértékelése történik az egyeztetéshez. A hatás eltérően viselkednek, ha azok egy új erőforrást, egy frissíteni az erőforrás vagy egy meglévő erőforrást.
 
-Jelenleg a szabályzat-definíció által támogatott hat hatások:
+Következmények egy szabályzat-definícióban jelenleg támogatja:
 
-- Hozzáfűzés
-- Naplózás
-- AuditIfNotExists
-- Megtagadás
-- DeployIfNotExists
-- Letiltva
+- [Hozzáfűzése](#append)
+- [Naplózás](#audit)
+- [AuditIfNotExists](#auditifnotexists)
+- [Elutasítás](#deny)
+- [DeployIfNotExists](#deployifnotexists)
+- [Letiltva](#disabled)
+- [EnforceRegoPolicy](#enforceregopolicy) (előzetes verzió)
 
 ## <a name="order-of-evaluation"></a>Kiértékelési sorrend
 
@@ -38,6 +39,8 @@ Kérelem létrehozása vagy frissítése egy erőforrást az Azure Resource Mana
 - **Naplózási** Ezután kiértékeli a kérést az erőforrás-szolgáltató fog előtt.
 
 Miután az erőforrás-szolgáltató, sikerkódot küld vissza **AuditIfNotExists** és **DeployIfNotExists** értékeli annak megállapításához, hogy további megfelelőségi naplózás vagy a művelet szükséges.
+
+Jelenleg nem minden a kiértékelési sorrend a **EnforceRegoPolicy** érvénybe.
 
 ## <a name="disabled"></a>Letiltva
 
@@ -332,6 +335,58 @@ Példa: SQL Server-adatbázisok, hogy ha engedélyezve van-e a transparentDataEn
                     }
                 }
             }
+        }
+    }
+}
+```
+
+## <a name="enforceregopolicy"></a>EnforceRegoPolicy
+
+Erről a szabályzat-definíció használatos *mód* , `Microsoft.ContainerService.Data`. Már a betegfelvétel ellenőrzési szabályokat meghatározott átadására szolgál [Rego](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego) való [nyissa meg a házirendügynök](https://www.openpolicyagent.org/) (OPA) a [Azure Kubernetes Service](../../../aks/intro-kubernetes.md).
+
+> [!NOTE]
+> [A Kubernetes az Azure Policy](rego-for-aks.md) nyilvános előzetes verzióban érhető el, és csak a beépített szabályzatdefiníciókat támogatja.
+
+### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy evaluation
+
+A megnyitott házirendügynök már a betegfelvétel vezérlő kiértékeli minden új kérelem valós időben a fürtön.
+5 percenként, a fürt teljes vizsgálat befejeződött, és az eredményeket az Azure Policy jelentett.
+
+### <a name="enforceregopolicy-properties"></a>EnforceRegoPolicy properties
+
+A **részletek** EnforceRegoPolicy hatás tulajdonság a altulajdonságok, amelyek ismertetik a Rego már a betegfelvétel ellenőrzési szabály.
+
+- **policyId** [kötelező]
+  - Egy egyedi nevet a Rego már a betegfelvétel ellenőrzési szabály átadott paraméterként.
+- **a házirend** [kötelező]
+  - Adja meg az URI-ját a Rego már a betegfelvétel ellenőrzési szabály.
+- **policyParameters** [opcionális]
+  - Minden olyan paramétereket és értékeket adnak át a rego szabályzat határozza meg.
+
+### <a name="enforceregopolicy-example"></a>EnforceRegoPolicy example
+
+Példa: Rego már a betegfelvétel ellenőrzési szabály, hogy csak a megadott tárolórendszerképeket az aks-ben.
+
+```json
+"if": {
+    "allOf": [
+        {
+            "field": "type",
+            "equals": "Microsoft.ContainerService/managedClusters"
+        },
+        {
+            "field": "location",
+            "equals": "westus2"
+        }
+    ]
+},
+"then": {
+    "effect": "EnforceRegoPolicy",
+    "details": {
+        "policyId": "ContainerAllowedImages",
+        "policy": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/KubernetesService/container-allowed-images/limited-preview/gatekeeperpolicy.rego",
+        "policyParameters": {
+            "allowedContainerImagesRegex": "[parameters('allowedContainerImagesRegex')]"
         }
     }
 }

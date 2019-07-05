@@ -197,7 +197,7 @@
         - name: Kísérletek nyomon követése az MLflow használatával
           displayName: 'log, monitor, metrics'
           href: how-to-use-mlflow.md
-        - name: Kísérletek megjelenítése a TensorBoard használatával
+        - name: Futtatások megjelenítése a TensorBoard használatával
           displayName: 'log, monitor, metrics'
           href: how-to-monitor-tensorboard.md
     - name: Gépi tanulás automatizálása

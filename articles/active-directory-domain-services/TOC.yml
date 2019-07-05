@@ -37,10 +37,12 @@
       items:
         - name: Forgatókönyvek
           href: scenarios.md
-        - name: Virtuális hálózat kiválasztása
+        - name: Virtuális hálózat tervezése
           href: network-considerations.md
     - name: Azure AD DS kezelése
       items:
+        - name: Biztonsági naplózási események engedélyezése (előzetes verzió)
+          href: security-audit-events.md
         - name: Felügyelt tartomány állapotának az ellenőrzése
           href: check-health.md
         - name: Hatókörön belüli szinkronizálás konfigurálása az Azure AD-ből egy felügyelt tartományra

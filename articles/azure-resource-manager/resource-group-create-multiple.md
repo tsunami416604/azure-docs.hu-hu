@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/06/2019
+ms.date: 07/01/2019
 ms.author: tomfitz
-ms.openlocfilehash: 99fd4215de4dd118558acc008fcfa6490ea0093d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22317372a7d954286ebcb0b59aea293c746b2a58
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66807380"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508175"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Erőforrás, tulajdonság vagy változó iteráció az Azure Resource Manager-sablonokban
 
@@ -50,6 +50,8 @@ Ha meg kell adnia e egy erőforrás üzembe van helyezve egyáltalán, lásd: [f
 Adja meg az ismétlések száma, megad egy értéket a count tulajdonság. A szám legfeljebb 800.
 
 A szám nem lehet negatív szám. Ha telepít egy sablont, amely a REST API-verzió **2019-05-10** vagy újabb, beállíthatja száma nulla. A REST API korábbi verziói nem támogatják a száma nulla. Jelenleg az Azure CLI vagy a PowerShell nem támogatja a nulla, a count, azonban, hogy támogatni fogja egy későbbi kiadásban.
+
+Legyen óvatos használatával [módú központi telepítés befejezéséhez](deployment-modes.md) példánnyal. Telepítse újra a teljes mód egy erőforráscsoportba, ha olyan erőforrások, a másolási ciklust megoldása után a sablonban megadott nem törlődnek.
 
 A számláló a korlátok ugyanazok, hogy egy erőforrás, változó vagy tulajdonság használják-e.
 

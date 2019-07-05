@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.author: iainfou
-ms.openlocfilehash: e7f45a3a0e62b2b559002b71bd8816e050f062ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9231b3629c10043e72efad4231111e56fd54c626
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072650"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447165"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Gyakorlati tanácsok a tárolási és biztonsági másolatokat az Azure Kubernetes Service (AKS)
 
@@ -38,7 +38,6 @@ Az alábbi táblázat ismerteti a rendelkezésre álló tárhely és azok képes
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
 | A megosztott konfiguráció       | Azure Files   | Igen | Igen | Igen | Igen |
 | Strukturált adatokat        | Azure Disks   | Igen | Nem  | Nem  | Igen |
-| Alkalmazásadatok, csak olvasható megosztás | [Dysk (előzetes verzió)][dysk] | Igen | Igen | Nem  | Nem |
 | Teljes strukturálatlan adatmennyiséget tárolni rendszerműveletekről fájl | [BlobFuse (előzetes verzió)][blobfuse] | Igen | Igen | Igen | Nem |
 
 A két elsődleges típusú kötetek az aks-ben biztosított Azure-lemezek vagy az Azure Files biztonsági. A biztonság növelése érdekében mindkét tárolási típust kínál, amely titkosítja az inaktív adatok alapértelmezés szerint az Azure Storage Service Encryption (SSE) használja. Lemezek jelenleg nem lehet a az AKS csomópont szintjén az Azure Disk Encryption használatával titkosított.
@@ -83,17 +82,17 @@ Tartós kötet jogcím (PVC) dinamikusan hozhat létre tárolási igény szerint
 
 A dinamikusan létrehozása és a kötetek fogalmak, lásd: [állandó kötetek jogcímek][aks-concepts-storage-pvcs].
 
-Ezek a kötetek működés közben, olvassa el dinamikusan létrehozása, és a egy tartós kötet használata [Azure Disks] [ dynamic-disks] vagy [Azure Files][dynamic-files].
+Ezek a kötetek működés közben, olvassa el dinamikusan létrehozása, és a egy tartós kötet használata [Azure Disks][dynamic-disks] or [Azure Files][dynamic-files].
 
 A storage osztálydefiníciókat részeként állítsa be a megfelelő *reclaimPolicy*. Ez reclaimPolicy az alapul szolgáló Azure storage-erőforrások viselkedését vezérlő, amikor a pod törlődik, és a tartós kötet már nem szükséges. Az alapul szolgáló tárolási erőforrás törölték, vagy a jövőbeli podot segítségével őrzi meg. A reclaimPolicy állíthatja *megőrzése* vagy *törlése*. Ismerje meg az alkalmazások igényeihez, és rendszeres ellenőrzéseket a nem használt tárolási megoldás, amely használja, és a számlázás a lehető legkevesebb megőrzött tárolás megvalósítása.
 
-Tárolási osztály lehetőségekkel kapcsolatos további információkért lásd: [tárolási VISSZAIGÉNYLÉSE házirendek][reclaim-policy].
+Tárolási osztály lehetőségekkel kapcsolatos további információkért lásd: [tárolási házirendek VISSZAIGÉNYLÉSE][reclaim-policy].
 
 ## <a name="secure-and-back-up-your-data"></a>Biztonságos és az adatok biztonsági mentése
 
 **Ajánlott eljárásokkal kapcsolatos útmutatás** – használja a megfelelő eszköz a tárolási típus, például Velero vagy az Azure Site Recovery az adatok biztonsági mentése. Győződjön meg arról, és biztonsági, az ezeket a biztonsági mentéseket.
 
-Amikor az alkalmazások tárolására és felhasználását adatait megőrzi a lemezen, vagy a fájlokat, kell tennie a rendszeres biztonsági mentést, vagy az adatok pillanatképeit. Az Azure Disks beépített pillanatkép technológiákat használhatnak fel. Szükség lehet az alkalmazások kiüríteni a lemezre, a pillanatkép-készítési művelet végrehajtása előtt ír hurok. [Velero] [ velero] további fürterőforrások és konfigurációkkal állandó kötetek biztonsági mentése. Ha nem tudja [állapot eltávolítása az alkalmazások][remove-state], biztonsági mentése az adatok állandó kötetekről, és rendszeresen tesztelje a visszaállítási műveleteket, ellenőrizze az adatok integritásának megőrzése, és a szükséges folyamatokat.
+Amikor az alkalmazások tárolására és felhasználását adatait megőrzi a lemezen, vagy a fájlokat, kell tennie a rendszeres biztonsági mentést, vagy az adatok pillanatképeit. Az Azure Disks beépített pillanatkép technológiákat használhatnak fel. Szükség lehet az alkalmazások kiüríteni a lemezre, a pillanatkép-készítési művelet végrehajtása előtt ír hurok. [Velero][velero] can back up persistent volumes along with additional cluster resources and configurations. If you can't [remove state from your applications][remove-state], biztonsági mentése az adatok állandó kötetekről, és rendszeresen tesztelje a visszaállítási műveleteket, ellenőrizze az adatok integritásának megőrzése, és a szükséges folyamatokat.
 
 Ismerje meg, az adatok biztonsági mentése, és ha kell fokozatosan leválasztani az adatokat a pillanatkép más megközelítést vonatkozó korlátozások. Adatok biztonsági mentése nem feltétlenül lehetővé teszik a fürt üzembe helyezése az alkalmazás-környezet helyreállításához. Ezen forgatókönyvekkel kapcsolatos további információkért lásd: [ajánlott eljárások az üzleti folytonossági és vészhelyreállítási helyreállítási az aks-ben][best-practices-multi-region].
 
@@ -103,7 +102,6 @@ Storage ajánlott eljárások az aks-ben összpontosított ebben a cikkben. A Ku
 
 <!-- LINKS - External -->
 [velero]: https://github.com/heptio/velero
-[dysk]: https://github.com/Azure/kubernetes-volume-drivers/tree/master/flexvolume/dysk
 [blobfuse]: https://github.com/Azure/azure-storage-fuse
 
 <!-- LINKS - Internal -->

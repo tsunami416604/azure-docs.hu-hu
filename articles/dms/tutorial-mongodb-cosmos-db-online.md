@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/29/2019
-ms.openlocfilehash: 0bd271dbf173885cbd5f7835c5dc6b672a3e6035
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.date: 07/04/2019
+ms.openlocfilehash: 17f1b36ba5d5b699cce621db3917ef92654047ff
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66298959"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565579"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>Oktatóanyag: Azure Cosmos DB API a mongodb-hez MongoDB át online a DMS használatával
 
@@ -150,7 +150,14 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
      * JSON-memóriaképek blob-tárolóban lévő fájlokat tartalmazó adatbázisok elnevezett mappákba kell elhelyezni. Minden adatbázis mappában található fájlokat kell helyezni egy almappát "adatok" néven, és elnevezett, a következő formátumban *gyűjtemény*.json. Metaadat-fájlok (ha vannak) kell helyezni egy almappát "metaadatok" nevű, és használja ugyanazt a formátumot, nevű *gyűjtemény*.json. A metaadatok fájlok ugyanebben a formátumban kell lennie, mert a MongoDB bsondump eszköz állítja elő.
 
-   Olyan esetekben, mely DNS-névfeloldás nem lehetséges az IP-címet is használhatja.
+    > [!IMPORTANT]
+    > Önaláírt tanúsítvány használata a mongo-kiszolgálón nem ajánlott. Azonban ha egy használja, kérjük lépjen kapcsolatba a kiszolgálóra történő **kapcsolati karakterlánc mód** , és győződjön meg arról, hogy rendelkezik-e a kapcsolati karakterlánc ""
+    >
+    >```
+    >&sslVerifyCertificate=false
+    >```
+
+    Olyan esetekben, mely DNS-névfeloldás nem lehetséges az IP-címet is használhatja.
 
    ![Forrás adatainak megadása](media/tutorial-mongodb-to-cosmosdb-online/dms-specify-source1.png)
 
@@ -206,7 +213,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
    A migrálási tevékenység ablak megjelenik, és a **állapot** a tevékenység megjelenik.
 
-   ![Tevékenységállapot](media/tutorial-mongodb-to-cosmosdb-online/dms-activity-status1.png)
+   ![A tevékenység állapota](media/tutorial-mongodb-to-cosmosdb-online/dms-activity-status1.png)
 
 ## <a name="monitor-the-migration"></a>A migrálás monitorozása
 
