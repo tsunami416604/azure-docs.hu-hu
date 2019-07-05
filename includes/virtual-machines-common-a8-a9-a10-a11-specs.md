@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/29/2018
 ms.author: azcspmt;jonbeck;cynthn;danlep;amverma
 ms.custom: include file
-ms.openlocfilehash: 5cbc19d5aade2bbcc8b8dca277352d1b17d1d35a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88d9491bae1fcc6acb7ab631514aa4f6244f593d
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755175"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67538032"
 ---
 ## <a name="deployment-considerations"></a>Telepítési szempontok
 * **Azure-előfizetés** –, több nagy számítási igényű példányok üzembe helyezése, fontolja meg a használatalapú fizetéses előfizetésre, vagy egyéb fizetési lehetőségeket. Amennyiben [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) használ, csak korlátozott számú számítási magot használhat az Azure-ban.
@@ -34,6 +34,6 @@ A nagy számítási igényű példányok (A8, A9, H16r, H16mr, HB és hibrid kap
 Ez az interfész lehetővé teszi az RDMA-kompatibilis példány egy InfiniBand (IB) hálózat, operációs EDR díjakon HB, a hibrid kapcsolat, az FDR H16r, H16mr és RDMA-kompatibilis az N sorozatú virtuális gépek díjait és a8-as és a9-es virtuális gépek díjait QDR protokollt használó kommunikációra. Ezek az RDMA-képességeinek képes javítani a méretezhetőségi és az egyes Message Passing Interface (MPI) alkalmazásokhoz. További információ a sebesség további részletek a táblák ezen a lapon.
 
 > [!NOTE]
-> Az Azure-on keresztül IB IP csak a támogatott az SR-IOV engedélyezve van a virtuális gépek (jelenleg HB és a hibrid kapcsolat). RDMA-kompatibilis példányainak IB feletti RDMA esetén támogatott.
+> Az Azure-on keresztül IB IP csak a támogatott az SR-IOV engedélyezve van a virtuális gépek (SR-IOV InfiniBand, jelenleg HB és a hibrid kapcsolat). RDMA-kompatibilis példányainak IB feletti RDMA esetén támogatott.
 >
 

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a62f44783d63131812794a4b55f0e9f9f3b45f27
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4a51401bcb8d282fef10b0b06e646b652bf5f8e8
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66742479"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67513396"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>A rendszer a tartományok közötti Identity Management (SCIM) használatával automatikus kiépítésére a felhasználók és csoportok alkalmazásokhoz az Azure Active Directoryból
 
@@ -35,7 +35,7 @@ A fő Ez a cikk célja az SCIM 2.0-s, amely az Azure AD a katalógusban nem szer
  
 
 >[!IMPORTANT]
->2018\. December 18. utolsó frissítés az Azure AD SCIM megvalósítási viselkedését. Mi változott a további információkért lásd: [SCIM 2.0 protokoll megfelelőség az Azure AD-felhasználó kiépítési szolgáltatás](application-provisioning-config-problem-scim-compatibility.md).
+>2018. December 18. utolsó frissítés az Azure AD SCIM megvalósítási viselkedését. Mi változott a további információkért lásd: [SCIM 2.0 protokoll megfelelőség az Azure AD-felhasználó kiépítési szolgáltatás](application-provisioning-config-problem-scim-compatibility.md).
 
 ![][0]
 *1. ábra: Egy alkalmazás vagy identitás tároló, amely megvalósítja az SCIM való üzembe helyezést, az Azure Active Directoryból*
@@ -259,10 +259,10 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 
 #### <a name="get-user"></a>Felhasználó beolvasása
 
-###### <a name="request"></a>Kérés
+###### <a name="request-1"></a>Kérelem
 *GET /Users/5d48a0a8e9f04aa38008* 
 
-###### <a name="response"></a>Válasz
+###### <a name="response-1"></a>Válasz
 *HTTP/1.1-ES 200 OK*
 ```json
 {
@@ -290,10 +290,10 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 ```
 #### <a name="get-user-by-query"></a>A lekérdezés által felhasználó beolvasása
 
-##### <a name="request"></a>Kérés
+##### <a name="request-2"></a>Kérelem
 *GET /Users?filter=userName eq "Test_User_dfeef4c5-5681-4387-b016-bdf221e82081"*
 
-##### <a name="response"></a>Válasz
+##### <a name="response-2"></a>Válasz
 *HTTP/1.1-ES 200 OK*
 ```json
 {
@@ -329,10 +329,10 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 
 #### <a name="get-user-by-query---zero-results"></a>Felhasználó által a lekérdezés - eredmény beolvasása
 
-##### <a name="request"></a>Kérés
+##### <a name="request-3"></a>Kérelem
 *GET/felhasználók? filter = felhasználónév-eq "felhasználó nem létező"*
 
-##### <a name="response"></a>Válasz
+##### <a name="response-3"></a>Válasz
 *HTTP/1.1-ES 200 OK*
 ```json
 {
@@ -347,7 +347,7 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 
 #### <a name="update-user-multi-valued-properties"></a>Felhasználó frissítése [többértékű tulajdonságai]
 
-##### <a name="request"></a>Kérés
+##### <a name="request-4"></a>Kérelem
 *PATCH /Users/6764549bef60420686bc HTTP/1.1*
 ```json
 {
@@ -367,7 +367,7 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 }
 ```
 
-##### <a name="response"></a>Válasz
+##### <a name="response-4"></a>Válasz
 *HTTP/1.1-ES 200 OK*
 ```json
 {
@@ -396,7 +396,7 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 
 #### <a name="update-user-single-valued-properties"></a>Felhasználó frissítése [egyértékű tulajdonságai]
 
-##### <a name="request"></a>Kérés
+##### <a name="request-5"></a>Kérelem
 *PATCH /Users/5171a35d82074e068ce2 HTTP/1.1*
 ```json
 {
@@ -409,7 +409,7 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 }
 ```
 
-##### <a name="response"></a>Válasz
+##### <a name="response-5"></a>Válasz
 *HTTP/1.1-ES 200 OK*
 ```json
 {
@@ -439,10 +439,10 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 
 #### <a name="delete-user"></a>Felhasználó törlése
 
-##### <a name="request"></a>Kérés
+##### <a name="request-6"></a>Kérelem
 *DELETE /Users/5171a35d82074e068ce2 HTTP/1.1*
 
-##### <a name="response"></a>Válasz
+##### <a name="response-6"></a>Válasz
 *HTTP/1.1 204 Nincs tartalom*
 
 ### <a name="group-operations"></a>Csoport-műveletek
@@ -454,7 +454,7 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 
 #### <a name="create-group"></a>Csoport létrehozása
 
-##### <a name="request"></a>Kérés
+##### <a name="request-7"></a>Kérelem
 *POST/groups HTTP/1.1-es*
 ```json
 {
@@ -468,7 +468,7 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 }
 ```
 
-##### <a name="response"></a>Válasz
+##### <a name="response-7"></a>Válasz
 *HTTP/1.1 201-es létrehozása*
 ```json
 {
@@ -488,10 +488,10 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 
 #### <a name="get-group"></a>Csoport lekérése
 
-##### <a name="request"></a>Kérés
+##### <a name="request-8"></a>Kérelem
 *GET /Groups/40734ae655284ad3abcc?excludedAttributes=members HTTP/1.1*
 
-##### <a name="response"></a>Válasz
+##### <a name="response-8"></a>Válasz
 *HTTP/1.1-ES 200 OK*
 ```json
 {
@@ -509,10 +509,10 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 
 #### <a name="get-group-by-displayname"></a>DisplayName Get-csoportosítás
 
-##### <a name="request"></a>Kérés
+##### <a name="request-9"></a>Kérelem
 *GET /Groups?excludedAttributes=members&filter=displayName eq "displayName" HTTP/1.1*
 
-##### <a name="response"></a>Válasz
+##### <a name="response-9"></a>Válasz
 *HTTP/1.1-ES 200 OK*
 ```json
 {
@@ -536,7 +536,7 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 ```
 #### <a name="update-group-non-member-attributes"></a>Frissítési csoport [harmadik attribútumok]
 
-##### <a name="request"></a>Kérés
+##### <a name="request-10"></a>Kérelem
 *PATCH /Groups/fa2ce26709934589afc5 HTTP/1.1*
 ```json
 {
@@ -549,12 +549,12 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 }
 ```
 
-##### <a name="response"></a>Válasz
+##### <a name="response-10"></a>Válasz
 *HTTP/1.1 204 Nincs tartalom*
 
 ### <a name="update-group-add-members"></a>Frissítési csoport [tagok hozzáadása]
 
-##### <a name="request"></a>Kérés
+##### <a name="request-11"></a>Kérelem
 *PATCH /Groups/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
 {
@@ -570,12 +570,12 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 }
 ```
 
-##### <a name="response"></a>Válasz
+##### <a name="response-11"></a>Válasz
 *HTTP/1.1 204 Nincs tartalom*
 
 #### <a name="update-group-remove-members"></a>Frissítési csoport [Remove tagok]
 
-##### <a name="request"></a>Kérés
+##### <a name="request-12"></a>Kérelem
 *PATCH /Groups/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
 {
@@ -591,15 +591,15 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 }
 ```
 
-##### <a name="response"></a>Válasz
+##### <a name="response-12"></a>Válasz
 *HTTP/1.1 204 Nincs tartalom*
 
 #### <a name="delete-group"></a>Csoport törlése
 
-##### <a name="request"></a>Kérés
+##### <a name="request-13"></a>Kérelem
 *DELETE /Groups/cdb1ce18f65944079d37 HTTP/1.1*
 
-##### <a name="response"></a>Válasz
+##### <a name="response-13"></a>Válasz
 *HTTP/1.1 204 Nincs tartalom*
 
 

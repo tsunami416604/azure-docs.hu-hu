@@ -5,16 +5,16 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: 5884bb5dc389e6abfd4fa23d28dd71ecd16ff423
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 6eedc095f155a77cddf48211dbc4a677bf188112
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67347113"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509857"
 ---
 Szabványos virtuális gép (VM) rendszerképek lehetővé teszik a szervezetek migrálása a felhőbe, és győződjön meg, hogy a központi telepítések egységességét. Képek rendszerint előre definiált biztonsági és a konfigurációs beállításokat és a szükséges szoftvereket. A saját lemezkép-készítési folyamat beállítása szükséges idő, az infrastruktúra és a telepítés, de az Azure virtuális gép az Image Builder, csak adja meg a lemezkép leíró egy egyszerű konfigurálás küldheti el a szolgáltatás és a kép gyártja és forgalmazza.
  
-Az Azure virtuális gép az Image Builder (az Azure az Image Builder) lehetővé teszi egy Windows vagy Linux-alapú Azure Marketplace kép, már létező egyéni rendszerképek vagy a Red Hat Enterprise Linux (RHEL) ISO, és kezdje el saját egyéni. Mert az Image Builder épül [HashiCorp Packer](https://packer.io/), a meglévő Packer rendszerhéj webhelykiépítőt parancsfájlokat is importálhat. Megadhatja azt is, hova szeretné a lemezképek, szolgáltatott, az Azure Shared lemezkép-katalógusában (virtual-machines-common-shared-image-galleries.md), egy felügyelt rendszerképet, vagy egy virtuális Merevlemezt.
+Az Azure virtuális gép az Image Builder (az Azure az Image Builder) lehetővé teszi egy Windows vagy Linux-alapú Azure Marketplace kép, már létező egyéni rendszerképek vagy a Red Hat Enterprise Linux (RHEL) ISO, és kezdje el saját egyéni. Mert az Image Builder épül [HashiCorp Packer](https://packer.io/), a meglévő Packer rendszerhéj webhelykiépítőt parancsfájlokat is importálhat. Azt is megadhatja, hogy hova szeretné a lemezképek lévő üzemeltetett a [Azure közös lemezkép-katalógusában](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries), egy felügyelt rendszerképet, vagy egy virtuális Merevlemezt.
 
 > [!IMPORTANT]
 > Az Azure az Image Builder jelenleg nyilvános előzetes verzióban érhető el.
@@ -35,7 +35,7 @@ Az előzetes verzióra támogatja ezeket a szolgáltatásokat:
 
 ## <a name="regions"></a>Regions
 Az Azure lemezkép Builder Service előzetes verziója az ezekben a régiókban elérhető lesz. Ezekben a régiókban kívül lemezképek terjeszthetők ki.
-- USA keleti régiója
+- East US
 - USA 2. keleti régiója
 - USA nyugati középső régiója
 - USA nyugati régiója
@@ -50,6 +50,12 @@ AIB Azure Marketplace-en alap operációsrendszer-lemezképeket fogja támogatni
 - Windows 2016
 - Windows 2019
 
+AIB támogatni fogja az RHEL ISO's, forrásaként:
+- RHEL 7.3.
+- 7\.4 RHEL
+- RHEL 7.5
+
+RHEL 7.6 nem támogatott, de a tesztelt.
 
 ## <a name="how-it-works"></a>Működés
 

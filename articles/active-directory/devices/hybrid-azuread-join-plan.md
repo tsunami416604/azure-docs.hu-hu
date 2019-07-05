@@ -2,27 +2,21 @@
 title: Hibrid Azure Active Directory join megvalósítása az Azure Active Directoryban (Azure AD) tervezése |} A Microsoft Docs
 description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja a hibrid Azure Active Directory-csatlakoztatott eszközöket.
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.subservice: devices
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/10/2019
+ms.topic: conceptual
+ms.date: 06/28/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54a1c349ae7cdd66c09db412331c344d6512ecd3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c476c2b326045db37c54a358d68f4b5f8bbaed9a
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110594"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509591"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>kézikönyv: A hibrid Azure Active Directory join megvalósítás megtervezése
 
@@ -83,7 +77,7 @@ Hibrid Azure AD-csatlakozás jelenleg nem támogatott, ha a környezet áll-e eg
 
 Hibrid Azure AD-csatlakozás jelenleg nem támogatott virtuális asztali infrastruktúra (VDI) használata esetén.
 
-Hibrid Azure ad-ben nem támogatott a FIPS előírásainak megfelelő TPM. Ha az eszközök rendelkezik a FIPS-kompatibilis TPM-mel, akkor le kell tiltania őket a hibrid Azure AD-csatlakozás folytatása előtt. A Microsoft nem biztosít minden olyan eszközt, a TPM letiltása FIPS-módban, a TPM gyártója függ. Lépjen kapcsolatba a hardver OEM támogatása.
+Hibrid Azure AD join nem támogatott a FIPS előírásainak megfelelő TPM. Ha az eszközök rendelkezik a FIPS-kompatibilis TPM-mel, akkor le kell tiltania őket a hibrid Azure AD-csatlakozás folytatása előtt. A Microsoft nem biztosít minden olyan eszközt, a TPM letiltása FIPS-módban, a TPM gyártója függ. Lépjen kapcsolatba a hardver OEM támogatása.
 
 Hibrid Azure AD-csatlakozás a tartományvezérlőn (DC) szerepkört futtató Windows Server nem támogatott.
 
@@ -99,13 +93,11 @@ Ha a Windows 10-tartományhoz csatlakozó eszközök még [Azure ad-ben regisztr
 - Folyamatban van az Azure AD-ban regisztrálva a beállításkulcs - HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin" hozzáadásával megakadályozhatja a tartományba léptetett eszköz = dword: 00000001.
 - Ez a változás már elérhető a Windows 10 1803 kiadásban a alkalmazni KB4489894. Azonban ha Windows Hello for Business konfigurálva, a felhasználóra szükség, re-telepítő Windows Hello for Business kettős állapota után távolítsa el.
 
-
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Tekintse át a hibrid Azure AD-csatlakozás vezérelt érvényesítése
 
 Előfeltételek az összes érvényesítve van, amikor Windows-eszközök automatikusan regisztrálnak az Azure AD-bérlő eszközökként. Az Azure ad-ben ezek eszközidentitások állapotát a hibrid Azure AD-csatlakozás nevezik. Ebben a cikkben ismertetett fogalmakat további információt a cikkekben található [eszköz Identitáskezelés az Azure Active Directoryban bemutatása](overview.md) és [a hibrid Azure Active Directory join megtervezése megvalósítás](hybrid-azuread-join-plan.md).
 
 Szervezetek előfordulhat, hogy szeretné a hibrid Azure AD-csatlakozás szabályozott ellenőrzés előtt teszi lehetővé, és egyszerre a teljes szervezet. Tekintse át a [vezérelt érvényesítése hibrid Azure AD-csatlakozás](hybrid-azuread-join-control.md) tudni, hogyan végezheti el azt.
-
 
 ## <a name="select-your-scenario-based-on-your-identity-infrastructure"></a>Az Ön identitáskezelési infrastruktúráját alapuló forgatókönyv kiválasztása
 
@@ -135,8 +127,6 @@ A forgatókönyv, amely megfelel az Ön identitáskezelési infrastruktúráját
 
 - [Összevont környezetben hibrid Azure Active Directory-csatlakozás konfigurálása](hybrid-azuread-join-federated-domains.md)
 - [Hibrid Azure Active Directory-csatlakozás felügyelt környezet konfigurálása](hybrid-azuread-join-managed-domains.md)
-
-
 
 ## <a name="review-on-premises-ad-upn-support-for-hybrid-azure-ad-join"></a>Tekintse át a helyszíni hibrid Azure AD-csatlakozás AD UPN támogatása
 

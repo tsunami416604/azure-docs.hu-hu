@@ -12,27 +12,31 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/18/2016
+ms.date: 05/21/2019
 ms.author: cawa
-ms.openlocfilehash: f46467871a5ae0147b5dc60881bda4175eabac56
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 56c20c995a95058b5039b7268c7b7b1426e900fa
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60458395"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442983"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Azure Blob Storage-erőforrások kezelése a Storage Explorerben
+
 ## <a name="overview"></a>Áttekintés
+
 [Az Azure Blob Storage](storage/blobs/storage-dotnet-how-to-use-blobs.md) szolgáltatás nagy mennyiségű strukturálatlan adat, például szöveg vagy bináris adatot, amely segítségével bárhonnan elérhetők HTTP- vagy HTTPS keresztül a világon tárolására használható.
 A Blob Storage segítségével bárki számára nyilvánosan elérhetővé tehet adatokat, vagy privát módon tárolhat alkalmazásadatokat. Ebből a cikkből megismerheti, hogyan használhatja a Storage Explorer a blob-tárolók és blobok lesz.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
 * [A Storage Explorer letöltése és telepítése](https://www.storageexplorer.com)
 * [Csatlakozhat egy Azure storage-fiók vagy szolgáltatás](vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-blob-container"></a>Blobtároló létrehozása
+
 Minden BLOB egy blob-tárolóba, amely egyszerűen csak a blobok logikai csoportosítása kell lennie. Egy fiók korlátlan számú tárolót tartalmazhat, és minden tároló korlátlan számú BLOB tárolhatja.
 
 A következő lépések bemutatják, hogyan hozhat létre egy blobtárolót a Storage Explorerben.
@@ -42,7 +46,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy blobtárolót a St
 3. Kattintson a jobb gombbal **Blobtárolók**, majd válassza a helyi menüből – **Blobtároló létrehozása**.
 
    ![Místní nabídka objektu blob tárolók létrehozása][0]
-4. Szövegmező alatt megjelenik a **Blobtárolók** mappát. Adja meg a blobtároló nevét. Tekintse meg a [hozza létre a tárolót, valamint engedélyeket állíthat be](storage/blobs/storage-quickstart-blobs-dotnet.md#create-the-container-and-set-permissions) információ a blobtárolók elnevezésére vonatkozó szabályokat és korlátozásokat.
+4. Szövegmező alatt megjelenik a **Blobtárolók** mappát. Adja meg a blobtároló nevét. Lásd: [hozzon létre egy tárolót](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container) információ a blobtárolók elnevezésére vonatkozó szabályokat és korlátozásokat.
 
    ![Blob-tárolók beviteli mező létrehozása][1]
 5. Nyomja meg **Enter** billentyűt a blobtároló létrehozásához vagy **Esc** megszakítja. Ha a blob-tároló sikeresen létrejött, megjelenik a a **Blob-tárolók** a kiválasztott tárfiókhoz tartozó mappában.
@@ -50,6 +54,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy blobtárolót a St
    ![Blob Container created][2]
 
 ## <a name="view-a-blob-containers-contents"></a>A blob-tároló tartalmának megtekintése
+
 BLOB-tárolók a blobok és mappák (blobok is tartalmazhat) tartalmaznak.
 
 A következő lépések bemutatják, hogyan tekintheti meg a Storage Explorer blob-tároló tartalmát:
@@ -66,6 +71,7 @@ A következő lépések bemutatják, hogyan tekintheti meg a Storage Explorer bl
    ![A BLOB-tároló szerkesztő][3]
 
 ## <a name="delete-a-blob-container"></a>A blob-tároló törlése
+
 BLOB-tárolók egyszerűen hozhatja létre és igény szerint törölve. (Az egyes blobok törlése, tekintse át a részt, hogyan [kezelése a blob-tárolóban lévő blobokat](#managing-blobs-in-a-blob-container).)
 
 A következő lépések bemutatják, hogyan törölhet egy blobtárolót a Storage Explorerben:
@@ -82,6 +88,7 @@ A következő lépések bemutatják, hogyan törölhet egy blobtárolót a Stora
    ![Blob tároló megerősítő törlése][5]
 
 ## <a name="copy-a-blob-container"></a>Egy blob-tárolóba másolja.
+
 Storage Explorer lehetővé teszi, hogy egy blob-tárolóba másolja a vágólapra, és a egy másik tárfiókba történő illessze be a blob-tárolóba. (Az egyes blobok másolása, tekintse át a részt, hogyan [kezelése a blob-tárolóban lévő blobokat](#managing-blobs-in-a-blob-container).)
 
 A következő lépések bemutatják, hogyan másolhat át egy blob-tároló egyik tárfiókból a másikba.
@@ -97,6 +104,7 @@ A következő lépések bemutatják, hogyan másolhat át egy blob-tároló egyi
    ![Illessze be a tároló místní nabídka objektu blob][7]
 
 ## <a name="get-the-sas-for-a-blob-container"></a>SAS lekérése blob tárolóhoz
+
 A [közös hozzáférésű jogosultságkód (SAS)](storage/common/storage-dotnet-shared-access-signature-part-1.md) delegált hozzáférést biztosít a tárfiókon lévő erőforrásokhoz.
 Ez azt jelenti, hogy egy adott időszakra megadhatja az ügyfeleknek a tárfiókban lévő objektumokra vonatkozó engedélyek bizonyos készletét a tár hozzáférési kulcsainak megosztása nélkül.
 
@@ -119,6 +127,7 @@ A következő lépések bemutatják, hogyan hozhat létre a blobtároló SAS:
 8. Ha elkészült, válassza a **Bezárás** lehetőséget.
 
 ## <a name="manage-access-policies-for-a-blob-container"></a>A blob-tároló hozzáférési szabályzatainak kezelése
+
 A következő lépések bemutatják, hogyan kezelheti a (hozzáadása és eltávolítása) egy blob-tárolóba tartozó hozzáférési szabályzatok:
 
 1. Nyissa meg a Storage Explorert.
@@ -129,7 +138,7 @@ A következő lépések bemutatják, hogyan kezelheti a (hozzáadása és eltáv
    ![Hozzáférési szabályzatok kezelése helyi menü][11]
 5. A **hozzáférési szabályzatok** párbeszédpanel megjelennek az összes kijelölt blob-tárolóban a már létrehozott hozzáférési szabályzatok.
 
-   ![Hozzáférési házirend beállításai][12]        
+   ![Hozzáférési házirend beállításai][12]
 6. A hozzáférésiszabályzat-kezelési feladattól függően kövesse az alábbi lépéseket:
 
    * **Új hozzáférési szabályzat hozzáadása** – Válassza a **Hozzáadás** lehetőséget. A **Hozzáférési szabályzatok** megjeleníti az újonnan létrehozott és hozzáadott hozzáférési szabályzatot (az alapértelmezett beállításokkal).
@@ -137,6 +146,7 @@ A következő lépések bemutatják, hogyan kezelheti a (hozzáadása és eltáv
    * **Hozzáférési szabályzat eltávolítása** – Válassza az **Eltávolítás** parancsot az eltávolítani kívánt hozzáférési szabályzat mellett.
 
 ## <a name="set-the-public-access-level-for-a-blob-container"></a>Állítsa be a nyilvános hozzáférés szintje blob tárolóhoz
+
 Alapértelmezés szerint minden blob-tároló "Nincs nyilvános hozzáférés" van beállítva.
 
 A következő lépések bemutatják, hogyan adja meg a blob-tároló egy nyilvános hozzáférés szintje.
@@ -153,6 +163,7 @@ A következő lépések bemutatják, hogyan adja meg a blob-tároló egy nyilvá
 6. Kattintson az **Alkalmaz** gombra.
 
 ## <a name="managing-blobs-in-a-blob-container"></a>A blob-tárolóban lévő blobok kezelése
+
 Miután létrehozott egy blob-tároló, blob feltöltése a blob-tárolóba, letölt egy blobot a helyi számítógépen, nyisson meg egy blobot a helyi számítógépen, és még sok más.
 
 A következő lépések bemutatják, hogyan kezelheti a blobokat (és mappák) egy blob tárolóból.
@@ -175,7 +186,7 @@ A következő lépések bemutatják, hogyan kezelheti a blobokat (és mappák) e
      2. A **Fájlok feltöltése** párbeszédpanelen válassza a **Fájlok** szövegbeviteli mező jobb oldalán lévő, három pontot ( **…** ) ábrázoló gombot a feltölteni kívánt fájl(ok) kiválasztásához.
 
         ![A fájl beállításai][16]
-     3. Adja meg a típusát **Blob típusát**. Lásd: [hozza létre a tárolót, valamint engedélyeket állíthat be](storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-the-container) további információt.
+     3. Adja meg a típusát **Blob típusát**. Lásd: [hozzon létre egy tárolót](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container) további információt.
      4. Nem kötelezően megadhat egy célmappát, amelybe fel lesz töltve a kijelölt fájlt vagy fájlokat. Ha a célmappa nem létezik, a rendszer létrehozza.
      5. Válassza a **Feltöltés** lehetőséget.
    * **Mappa feltöltése a blob-tárolóba**
@@ -186,7 +197,7 @@ A következő lépések bemutatják, hogyan kezelheti a blobokat (és mappák) e
      2. A **Mappa feltöltése** párbeszédpanelen a **Mappa** szövegbeviteli mező jobb oldalán lévő, három pontot ( **…** ) ábrázoló gombbal válassza ki a mappát, amelynek a tartalmát fel kívánja tölteni.
 
         ![Töltse fel a mappa beállításai][18]
-     3. Adja meg a típusát **Blob típusát**. Lásd: [hozza létre a tárolót, valamint engedélyeket állíthat be](storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-the-container) további információt.
+     3. Adja meg a típusát **Blob típusát**. Lásd: [hozzon létre egy tárolót](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container) további információt.
      4. Igény szerint megadhat egy célmappát, amelybe a kiválasztott mappa tartalma fel lesz töltve. Ha a célmappa nem létezik, a rendszer létrehozza.
      5. Válassza a **Feltöltés** lehetőséget.
    * **Letölt egy blobot a helyi számítógépre**
@@ -213,6 +224,7 @@ A következő lépések bemutatják, hogyan kezelheti a blobokat (és mappák) e
      3. Válassza az **Igen** lehetőséget a megerősítési párbeszédpanelen.
 
 ## <a name="next-steps"></a>További lépések
+
 * A [Storage Explorer legújabb kibocsátási megjegyzéseinek és videóinak megtekintése](https://www.storageexplorer.com).
 * Annak megismerése, hogyan [hozhat létre alkalmazásokat Azure-blobok, -táblák, -üzenetsorok és -fájlok használatával](https://azure.microsoft.com/documentation/services/storage/).
 

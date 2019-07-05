@@ -7,12 +7,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 5ffbee1b4fdfc08b111e199e73baae19341b1022
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85753e788284396262053aad8cf567ad5cd71fee
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65775667"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509287"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Az Azure Data Catalog támogatott adatforrások
 
@@ -152,7 +152,7 @@ Nyilvános API-t és a egy kattintással közzéteheti metaadat-egyszer regisztr
       <td></td>
     </tr>
     <tr>
-      <td>Az SQL Data Warehouse-nézet</td>
+      <td>Az Azure SQL Data Warehouse-nézet</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -165,7 +165,7 @@ Nyilvános API-t és a egy kattintással közzéteheti metaadat-egyszer regisztr
       <td>✓</td>
       <td>✓</td>
       <td>Az Excel, a Power BI Desktopban</td>
-      <td></td>
+      <td>Az SQL Server 2008 és újabb verziókban.</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services KPI</td>
@@ -173,7 +173,7 @@ Nyilvános API-t és a egy kattintással közzéteheti metaadat-egyszer regisztr
       <td>✓</td>
       <td>✓</td>
       <td>Az Excel, a Power BI Desktopban</td>
-      <td></td>
+      <td>Az SQL Server 2008 és újabb verziókban.</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services-mérték</td>
@@ -181,7 +181,7 @@ Nyilvános API-t és a egy kattintással közzéteheti metaadat-egyszer regisztr
       <td>✓</td>
       <td>✓</td>
       <td>Az Excel, a Power BI Desktopban</td>
-      <td></td>
+      <td>Az SQL Server 2008 és újabb verziókban.</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services-tábla</td>
@@ -189,15 +189,15 @@ Nyilvános API-t és a egy kattintással közzéteheti metaadat-egyszer regisztr
       <td>✓</td>
       <td>✓</td>
       <td>Az Excel, a Power BI Desktopban</td>
-      <td></td>
+      <td>Az SQL Server 2008 és újabb verziókban.</td>
     </tr>
     <tr>
       <td>SQL Server Reporting Services jelentés</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>Böngésző</td>
-      <td>Natív üzemmódú kiszolgálók csak. SharePoint-módban nem támogatott.</td>
+      <td>Browser</td>
+      <td>Natív üzemmódú kiszolgálók csak. SharePoint-módban nem támogatott. Az SQL Server 2008 és újabb verziói csak</td>
     </tr>
     <tr>
       <td>Az SQL Server-tábla</td>
@@ -205,7 +205,7 @@ Nyilvános API-t és a egy kattintással közzéteheti metaadat-egyszer regisztr
       <td>✓</td>
       <td>✓</td>
       <td>Az Excel, a Power BI Desktopban, SQL Server-adatok eszközök</td>
-      <td></td>
+      <td>Az SQL Server 2008 és újabb verziókban.</td>
     </tr>
     <tr>
       <td>Az SQL Server-nézet</td>
@@ -213,7 +213,7 @@ Nyilvános API-t és a egy kattintással közzéteheti metaadat-egyszer regisztr
       <td>✓</td>
       <td>✓</td>
       <td>Az Excel, a Power BI Desktopban, SQL Server-adatok eszközök</td>
-      <td></td>
+      <td>Az SQL Server 2008 és újabb verziókban.</td>
     </tr>
     <tr>
       <td>Teradata-tábla</td>

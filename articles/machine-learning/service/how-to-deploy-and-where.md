@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 05/31/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: b5a08b9b998f8d0b30091af016af564e836d4651
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: dcb90eb8ee25b8b0c780006f3555a5a9b815ffdd
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331647"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514283"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
@@ -100,6 +100,8 @@ Regisztrálhat egy külsőleg létrehozott modell azáltal, hogy egy **helyi el�
 **Becsült időtartam**: Körülbelül 10 másodperc.
 
 További információkért lásd: a dokumentáció a a [Model class](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py).
+
+További információk a modellek betanított kívül az Azure Machine Learning szolgáltatásban, lásd: [hogyan helyezhet üzembe egy meglévő modell](how-to-deploy-existing-model.md).
 
 <a name="target"></a>
 
@@ -259,16 +261,22 @@ További példa parancsprogramokat tekintse meg az alábbi példák:
 
 ### <a name="2-define-your-inferenceconfig"></a>2. A InferenceConfig definiálása
 
-A következtetésekhez konfigurációs ismerteti, hogyan konfigurálhatja a modellt, hogy előrejelzéseket végezzen. A következő példa bemutatja, hogyan hozhat létre egy következtetésekhez konfigurációt:
+A következtetésekhez konfigurációs ismerteti, hogyan konfigurálhatja a modellt, hogy előrejelzéseket végezzen. Az alábbi példa bemutatja, hogyan hozhat létre egy következtetésekhez konfigurációt. Ez a konfiguráció a futtatókörnyezet, a bejegyzés parancsfájl és (opcionálisan) a conda-környezet fájl határozza meg:
 
 ```python
-inference_config = InferenceConfig(source_directory="C:/abc",
-                                   runtime= "python",
+inference_config = InferenceConfig(runtime= "python",
                                    entry_script="x/y/score.py",
                                    conda_file="env/myenv.yml")
 ```
 
+További információkért lásd: a [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) referencia osztály.
+
+Az egyéni Docker-rendszerkép használata következtetésekhez konfigurációs információkért lásd: [modell üzembe helyezése egy egyéni Docker-rendszerkép használatával hogyan](how-to-deploy-custom-docker-image.md).
+
 ### <a name="cli-example-of-inferenceconfig"></a>InferenceConfig a CLI-példa
+
+A következő JSON-dokumentum következtetésekhez konfiguráció például a machine learning-CLI való használatra:
+
 ```JSON
 {
    "entryScript": "x/y/score.py",
@@ -277,6 +285,23 @@ inference_config = InferenceConfig(source_directory="C:/abc",
    "sourceDirectory":"C:/abc",
 }
 ```
+
+Ebben a fájlban a következő entitásokat érvényesek:
+
+* __entryScript__: A lemezkép futtatásához szükséges kódot tartalmazó helyi fájl elérési útja.
+* __futásidejű__: Melyik futásidejű használandó kép. Aktuális támogatott futtatókörnyezet a következők: "a spark-py" és "python".
+* __condaFile__ (nem kötelező): A kép használandó conda környezet definícióját tartalmazó helyi fájl elérési útja.
+* __extraDockerFileSteps__ (nem kötelező): Kép beállítása során futtatandó további Docker lépéseket tartalmazó helyi fájl elérési útja.
+* __sourceDirectory__ (nem kötelező): Elérési út mappákba, amely tartalmazza az összes fájl a lemezkép létrehozásához.
+* __enableGpu__ (nem kötelező): E engedélyezése GPU támogatja a képen. A GPU-lemezképet kell használni a Microsoft Azure-szolgáltatásokra például az Azure Container Instances, az Azure Machine Learning COMPUTE számítási, Azure Virtual Machines és Azure Kubernetes Service-ben. Alapértelmezett érték: False.
+* __baseImage__ (nem kötelező): Egyéni kép kiindulási lemezképként szolgál. Ha nincs alaplemezkép van megadva, majd az alaprendszerképet használható futásidejű paraméter megadott ki-alapú.
+* __baseImageRegistry__ (nem kötelező): Regisztrációs adatbázisba, amely tartalmazza az alap rendszerképet.
+* __cudaVersion__ (nem kötelező): CUDA rendszerképeket, amelyeket a GPU-támogatásra van szüksége a telepítendő verzióját. A GPU-lemezképet kell használni a Microsoft Azure-szolgáltatásokra például az Azure Container Instances, az Azure Machine Learning COMPUTE számítási, Azure Virtual Machines és Azure Kubernetes Service-ben. Támogatott verziók a következők: 9.0, 9.1 és 10.0-s verzióját. Ha "enable_gpu" van beállítva, az alapértelmezett "9.1".
+
+Ezek az entitások leképezése paramétereit a [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) osztály.
+
+Ezekkel a következő parancs a modell üzembe helyezése a parancssori felület használatával mutatja be:
+
 ```azurecli-interactive
 az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 ```
@@ -287,8 +312,6 @@ Ebben a példában a konfiguráció a következő elemeket tartalmazza:
 * Hogy ez a modell futtatásához szükséges Python
 * A [bejegyzés parancsfájl](#script), amely a telepített szolgáltatásnak küldött webes kérések kezelésére szolgál
 * A conda-fájlt, amely leírja a következtetésekhez szükséges Python-csomagok
-
-InferenceConfig funkciójával kapcsolatos további információkért lásd: a [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) referencia osztály.
 
 Az egyéni Docker-rendszerkép használata következtetésekhez konfigurációs információkért lásd: [modell üzembe helyezése egy egyéni Docker-rendszerkép használatával hogyan](how-to-deploy-custom-docker-image.md).
 
@@ -309,9 +332,7 @@ Az alábbi táblázat mutatja be, az egyes számítási célnak üzembe helyezé
 A következő szakaszok bemutatják, hogyan hozhat létre a telepítési konfigurációt, és, amellyel a webszolgáltatás üzembe helyezése.
 
 ### <a name="optional-profile-your-model"></a>Nem kötelező: A modell kiértékelése
-A modell szolgáltatás a telepítés előtt érdemes profilt, hogy optimális CPU és memória-követelmények meghatározása.
-
-Ön a modell az SDK-t vagy a parancssori felület használatával teheti profil.
+A modell szolgáltatás a telepítés előtt érdemes profilt, hogy optimális CPU és memória-követelmények meghatározása. Ön a modell az SDK-t vagy a parancssori felület használatával teheti profil.
 
 További információ az SDK-dokumentáció itt megtekinthet: https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-
 
@@ -544,6 +565,34 @@ service.update(models = [new_model])
 print(service.state)
 print(service.get_logs())
 ```
+
+## <a name="continuous-model-deployment"></a>Folyamatos modell-üzembehelyezés 
+
+Folyamatos üzembe helyezése a Machine Learning-bővítménnyel, a modellek [Azure DevOps](https://azure.microsoft.com/services/devops/). A Machine Learning-bővítmény használatával az Azure DevOps, üzembe helyezési folyamat is indíthat, amikor egy új gépi tanulási modellt regisztrálva van az Azure Machine Learning szolgáltatás munkaterületén. 
+
+1. Regisztráljon [Azure folyamatok](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops), amely lehetővé teszi a folyamatos integrációt és teljesítést az alkalmazás bármely platformra/bármely felhőbeli. Az Azure folyamatok [eltér a gépi Tanulási folyamatok](concept-ml-pipelines.md#compare). 
+
+1. [Az Azure DevOps-projekt létrehozása.](https://docs.microsoft.com/azure/devops/organizations/projects/create-project?view=azure-devops)
+
+1. Telepítse a [folyamatokat az Azure Machine Learning-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml&targetId=6756afbe-7032-4a36-9cb6-2771710cadc2&utm_source=vstsproduct&utm_medium=ExtHubManageList) 
+
+1. Használat __kapcsolatok szolgáltatás__ állíthatja be az Azure Machine Learning szolgáltatás munkaterületén egyszerű szolgáltatáskapcsolódási el az összes összetevőt. Nyissa meg a projekt beállításait, kattintson a szolgáltatáskapcsolatokat, és válassza ki az Azure Resource Manager.
+
+    ![view-service-connection](media/how-to-deploy-and-where/view-service-connection.png) 
+
+1. Mint AzureMLWorkspace meghatározása a __szint hatókörét__ , és töltse ki a további paramétereket.
+
+    ![view-azure-resource-manager](media/how-to-deploy-and-where/resource-manager-connection.png)
+
+1. A gépi tanulási modellt az Azure-folyamatok használatával folyamatosan üzembe helyezéséhez a folyamatok majd __kiadási__. Adjon hozzá egy új összetevőt, és válassza az AzureML modell összetevő és az előző lépésben létrehozott szolgáltatáskapcsolódási. Válassza ki a modell és verzió központi telepítés indításához. 
+
+    ![select-AzureMLmodel-artifact](media/how-to-deploy-and-where/enable-modeltrigger-artifact.png)
+
+1. A modell összetevő modell eseményindítón engedélyezése. Ha bekapcsolja az eseményindító minden alkalommal a megadott verzió (vagyis) a legújabb verzió), hogy a modell regisztrálása a munkaterületen, az Azure DevOps kibocsátási folyamat akkor indul el. 
+
+    ![enable-model-trigger](media/how-to-deploy-and-where/set-modeltrigger.png)
+
+Minta projektek és példákért tekintse meg [a MLOps tárház](https://github.com/Microsoft/MLOps)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Az üzembe helyezett webszolgáltatáshoz törölheti `service.delete()`.

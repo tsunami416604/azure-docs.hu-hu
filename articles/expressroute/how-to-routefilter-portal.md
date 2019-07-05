@@ -5,15 +5,15 @@ services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 07/01/2019
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 0515b5e85c3bcf56f1f238620d6036d1be0bec7e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 55b5207e4c05712b4d96d4272f9ae193cc4c1720
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60839281"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508603"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Microsoft társviszony-létesítés útvonalszűrőinek konfigurálása: Azure Portal
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Minden szolgáltatásokhoz való kapcsolódás van szükség, ha az előtagok so
 
 Ha az ExpressRoute-kapcsolatcsoport Microsoft társviszony-létesítés van konfigurálva, a Microsoft peremhálózati útválasztói létesíteni két BGP-munkamenetet a peremhálózati útválasztóhoz (Öné vagy a kapcsolatszolgáltató). Nincsenek útvonalak meghirdetve a hálózatán. Ha engedélyezni szeretné az útvonalhirdetéseket a hálózaton, társítania kell egy útvonalszűrőt.
 
-Az útvonalszűrőkkel azonosíthatja az ExpressRoute-kapcsolatcsoport Microsoft társviszony-létesítésén keresztül használni kívánt szolgáltatásokat. Ez tulajdonképpen az összes BGP-közösségérték engedélyezési listája. Miután meghatározott és egy ExpressRoute-kapcsolatcsoporthoz csatolt egy útvonalszűrő erőforrást, a BGP-közösségértékekhez rendelt összes előtag meg van hirdetve a hálózaton.
+Az útvonalszűrőkkel azonosíthatja az ExpressRoute-kapcsolatcsoport Microsoft társviszony-létesítésén keresztül használni kívánt szolgáltatásokat. Lényegében minden a BGP-Közösség értékét szeretné engedélyezni listája legyen. Miután meghatározott és egy ExpressRoute-kapcsolatcsoporthoz csatolt egy útvonalszűrő erőforrást, a BGP-közösségértékekhez rendelt összes előtag meg van hirdetve a hálózaton.
 
 Rendeljen hozzá útvonalszűrőket az Office 365-szolgáltatások rajtuk legyen, engedélyezési felhasználásához az Office 365 szolgáltatás expressroute-on keresztül kell rendelkeznie. Ha nem jogosult az Office 365 szolgáltatás expressroute-on keresztül felhasználásához, rendeljen hozzá útvonalszűrőket a művelet sikertelen lesz. Az engedélyezési folyamat kapcsolatos további információkért lásd: [Office 365-höz készült Azure ExpressRoute](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd). Dynamics 365-szolgáltatásokhoz való kapcsolódás nem igényel előzetes engedélyek.
 
@@ -79,7 +79,7 @@ A Microsoft társviszony-létesítésen keresztül elérhető szolgáltatások t
 
 ### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Győződjön meg a használni kívánt értékek listáját
 
-Ellenőrizze a BGP-Közösség értékét az útvonalszűrőt használni kívánt listáját. Tegyük fel a Dynamics 365-szolgáltatásokhoz a BGP-közösségérték 12076:5040.
+Készítsen listát [BGP-Közösség értékét](expressroute-routing.md#bgp) útvonalszűrőt használni szeretne. 
 
 ## <a name="filter"></a>2. lépés: Egy útvonalszűrőhöz és a egy Állapotszűrő szabály létrehozása
 
@@ -108,7 +108,7 @@ Kiválaszthatja a kívánt szolgáltatást, a legördülő listából csatlakozi
 
 ## <a name="attach"></a>3. lépés: Az útvonalszűrőt csatlakoztatása egy ExpressRoute-kapcsolatcsoporttal
 
-Jelölje ki a "kapcsolatcsoport hozzáadása" gombra, és a legördülő listából válassza ki az ExpressRoute-kapcsolatcsoport útvonalszűrőt csatolhat egy kapcsolatcsoporthoz.
+Jelölje ki a "kapcsolatcsoport hozzáadása" gombra, és a legördülő listából az ExpressRoute-kapcsolatcsoport útvonalszűrőt csatolhat egy kapcsolatcsoporthoz.
 
 ![Hozzon létre egy útvonalszűrőhöz](./media/how-to-routefilter-portal/AddCktToRouteFilter.png)
 
@@ -137,7 +137,7 @@ A BGP-Közösség értékét "Manage szabály" gomb kiválasztásával csatlakoz
 
 ### <a name="detach"></a>Egy útvonalszűrőhöz az ExpressRoute-kapcsolatcsoport leválasztása
 
-Az útvonalszűrőt kapcsolatcsoport leválasztása, a kapcsolatcsoport kattintson a jobb gombbal, majd kattintson a "szüntesse meg az".
+Az útvonalszűrőt kapcsolatcsoport leválasztása, kattintson a jobb gombbal a kapcsolatcsoportot, majd kattintson a "szüntesse meg az".
 
 ![Hozzon létre egy útvonalszűrőhöz](./media/how-to-routefilter-portal/DetachRouteFilter.png) 
 
@@ -150,4 +150,6 @@ Egy útvonalszűrőhöz a Törlés gombra kattintva törölheti.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az ExpressRoute-tal kapcsolatban: [ExpressRoute – Gyakori kérdések](expressroute-faqs.md).
+* További információ az ExpressRoute-tal kapcsolatban: [ExpressRoute – Gyakori kérdések](expressroute-faqs.md).
+
+* Útválasztó-konfigurációs minták kapcsolatos információkért lásd: [útválasztó-konfigurációs minták és kezeli az útválasztást](expressroute-config-samples-routing.md). 

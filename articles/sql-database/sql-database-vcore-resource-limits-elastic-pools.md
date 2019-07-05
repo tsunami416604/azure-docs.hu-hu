@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 05/23/2019
-ms.openlocfilehash: 98bd70d9f6eb70cb7848dfa74e19c78e55a34991
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/26/2019
+ms.openlocfilehash: 4e63e1e477ce82221e5121815b609326cc2c1112
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66240352"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447171"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>Rugalmas készletek használata a Virtuálismag-alapú vásárlási modell korlátok erőforráskorlátok
 
@@ -36,6 +36,9 @@ A szolgáltatási rétegben, a számítási méretét és a tárolási mennyisé
 > A rugalmas készletek az egyes adatbázisok erőforráskorlátok kívül címkészleteket, amelyek azonos az önálló adatbázisokat azonos számítási mérete általában. Például a maximális egyidejű feldolgozók GP_Gen4_1 adatbázishoz 200 feldolgozók. Tehát egy adatbázis GP_Gen4_1 készletben a maximális egyidejű feldolgozók egyben 200 feldolgozók. Vegye figyelembe, GP_Gen4_1 készlet egyidejű feldolgozók száma 210.
 
 ## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Általános célú szolgáltatásszint: Tárterületet és számítási méretek
+
+> [!IMPORTANT]
+> Új Gen4 adatbázisok már nem támogatottak a Kelet-Ausztrália régióban.
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>Általános célú szolgáltatásszint: 4. generációs számítási platform (1. rész)
 
@@ -149,6 +152,9 @@ A szolgáltatási rétegben, a számítási méretét és a tárolási mennyisé
 \* A maximális egyidejű feldolgozók (kérelmek) bármely önálló adatbázis, lásd: [egyetlen adatbázis erőforráskorlátok](sql-database-vcore-resource-limits-single-databases.md). Például ha Gen5 és a maximális virtuális mag értéke a rugalmas készlet használ, 2, a maximális egyidejű feldolgozók válik a 200-as.  Ha az adatbázisonkénti maximális virtuális mag 0,5, majd egyidejű feldolgozók maximális érték: 50 mivel a Gen5 legfeljebb 100 egyidejű feldolgozók száma virtuális mag.  Egyéb maximális virtuális mag beállítások, amelyek kevesebb 1 virtuális mag adatbázisonként vagy kevesebb, az egyidejű feldolgozók maximális száma a hasonlóképpen átméretezése.
 
 ## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Üzleti kritikus fontosságú szolgáltatási szint: Tárterületet és számítási méretek
+
+> [!IMPORTANT]
+> Új Gen4 adatbázisok már nem támogatottak a Kelet-Ausztrália régióban.
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Üzleti kritikus fontosságú szolgáltatási szint: 4. generációs számítási platform (1. rész)
 

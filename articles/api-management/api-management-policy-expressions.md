@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 6446919c80e7e3fd379e6e39eb51712f9736ea7e
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 22be5509a93d0713b8113ba17debfda3cf576006
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341209"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508955"
 ---
 # <a name="api-management-policy-expressions"></a>Az API Management házirend-kifejezések
 Ez a cikk ismerteti a házirend-kifejezések szintaxisa C# 7. Minden egyes kifejezés férhet hozzá a implicit módon megadott [környezet](api-management-policy-expressions.md#ContextVariables) változót és a egy engedélyezett [részhalmazát](api-management-policy-expressions.md#CLRTypes) .NET-keretrendszer típusú.
@@ -74,7 +74,7 @@ Kifejezések használhatók vagy az összes API Management a szöveges értékek
 ## <a name="CLRTypes"></a> .NET-keretrendszer típusok engedélyezett a házirend-kifejezések
 A következő táblázat felsorolja a .NET-keretrendszer és a tagok, amelyek a házirend-kifejezések engedélyezettek.
 
-|Type|Támogatott tagok|
+|Típus|Támogatott tagok|
 |--------------|-----------------------|
 |Newtonsoft.Json.Formatting|Összes|
 |Newtonsoft.Json.JsonConvert|SerializeObject, DeserializeObject|
@@ -210,13 +210,13 @@ Nevű változó `context` implicit módon érhető el az összes szabályzatban 
 
 |Környezeti változó|Engedélyezett metódusok, tulajdonságok és értékei|
 |----------------------|-------------------------------------------------------|
-|Környezet|[API](#ref-context-api): [IApi](#ref-iapi)<br /><br /> [Üzembe helyezés](#ref-context-deployment)<br /><br /> Eltelt idő: Időtartomány - időbélyeg értékét, a pontos idő közötti időintervallum<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [Művelet](#ref-context-operation)<br /><br /> [A termék](#ref-context-product)<br /><br /> [Kérés](#ref-context-request)<br /><br /> RequestId: GUID - kérelem egyedi azonosítója<br /><br /> [Válasz](#ref-context-response)<br /><br /> [Előfizetés](#ref-context-subscription)<br /><br /> Időbélyeg: Dátum és idő – időpont, amikor a kérelem érkezett<br /><br /> Nyomkövetés: logikai - azt jelzi, hogy nyomkövetés be- vagy kikapcsolása <br /><br /> [Felhasználó](#ref-context-user)<br /><br /> [Változók](#ref-context-variables): IReadOnlyDictionary < karakterlánc, objektum ><br /><br /> typ void Trace(message: string)|
+|context|[API](#ref-context-api): [IApi](#ref-iapi)<br /><br /> [Üzembe helyezés](#ref-context-deployment)<br /><br /> Eltelt idő: Időtartomány - időbélyeg értékét, a pontos idő közötti időintervallum<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [Művelet](#ref-context-operation)<br /><br /> [A termék](#ref-context-product)<br /><br /> [Kérés](#ref-context-request)<br /><br /> RequestId: GUID - kérelem egyedi azonosítója<br /><br /> [Válasz](#ref-context-response)<br /><br /> [Előfizetés](#ref-context-subscription)<br /><br /> Időbélyeg: Dátum és idő – időpont, amikor a kérelem érkezett<br /><br /> Nyomkövetés: logikai - azt jelzi, hogy nyomkövetés be- vagy kikapcsolása <br /><br /> [Felhasználó](#ref-context-user)<br /><br /> [Változók](#ref-context-variables): IReadOnlyDictionary < karakterlánc, objektum ><br /><br /> typ void Trace(message: string)|
 |<a id="ref-context-api"></a>context.Api|ID: karakterlánc<br /><br /> IsCurrentRevision: logikai<br /><br />  Name: karakterlánc<br /><br /> Elérési út: karakterlánc<br /><br /> Verzió: karakterlánc<br /><br /> ServiceUrl: [IUrl](#ref-iurl)<br /><br /> Verzió: karakterlánc |
 |<a id="ref-context-deployment"></a>context.Deployment|Régió: karakterlánc<br /><br /> Szolgáltatásnév: karakterlánc<br /><br /> Tanúsítványok: IReadOnlyDictionary<string, X509Certificate2>|
 |<a id="ref-context-lasterror"></a>context.LastError|Forrás: karakterlánc<br /><br /> OK: karakterlánc<br /><br /> Üzenet: karakterlánc<br /><br /> Hatókör: karakterlánc<br /><br /> A szakasz: karakterlánc<br /><br /> Elérési út: karakterlánc<br /><br /> PolicyId: karakterlánc<br /><br /> További információ a környezetben. LastError, lásd: [hibakezelés](api-management-error-handling-policies.md).|
 |<a id="ref-context-operation"></a>a környezet. A művelet|ID: karakterlánc<br /><br /> Módszer: karakterlánc<br /><br /> Name: karakterlánc<br /><br /> UrlTemplate: karakterlánc|
 |<a id="ref-context-product"></a>a környezet. A termék|API-kat: IEnumerable<[IApi](#ref-iapi)\><br /><br /> ApprovalRequired: logikai<br /><br /> Csoportok: IEnumerable <[IGroup](#ref-igroup)\><br /><br /> ID: karakterlánc<br /><br /> Name: karakterlánc<br /><br /> Állapot: enum ProductState {NotPublished, közzétett}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: logikai|
-|<a id="ref-context-request"></a>context.Request|Szervezet: [IMessageBody](#ref-imessagebody)<br /><br /> Tanúsítvány: System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> [A fejlécek](#ref-context-request-headers): IReadOnlyDictionary < string, string [] ><br /><br /> IP-cím: karakterlánc<br /><br /> MatchedParameters: IReadOnlyDictionary < karakterlánc, karakterlánc ><br /><br /> Módszer: karakterlánc<br /><br /> OriginalUrl: [IUrl](#ref-iurl)<br /><br /> URL-címe: [IUrl](#ref-iurl)|
+|<a id="ref-context-request"></a>context.Request|Szervezet: [IMessageBody](#ref-imessagebody) vagy `null` , ha a kérés nem rendelkezik a szervezet.<br /><br /> Tanúsítvány: System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> [A fejlécek](#ref-context-request-headers): IReadOnlyDictionary < string, string [] ><br /><br /> IP-cím: karakterlánc<br /><br /> MatchedParameters: IReadOnlyDictionary < karakterlánc, karakterlánc ><br /><br /> Módszer: karakterlánc<br /><br /> OriginalUrl: [IUrl](#ref-iurl)<br /><br /> URL-címe: [IUrl](#ref-iurl)|
 |<a id="ref-context-request-headers"></a>karakterlánc-környezet. Request.Headers.GetValueOrDefault (headerName: karakterlánc, a DefaultValue érték: karakterlánc)|headerName: karakterlánc<br /><br /> alapértelmezett érték: karakterlánc<br /><br /> Vesszővel tagolt kérelem fejléce értékeit adja vissza vagy `defaultValue` a fejléc nem található.|
 |<a id="ref-context-response"></a>a környezet. Válasz|Szervezet: [IMessageBody](#ref-imessagebody)<br /><br /> [A fejlécek](#ref-context-response-headers): IReadOnlyDictionary < string, string [] ><br /><br /> StatusCode: int<br /><br /> StatusReason: karakterlánc|
 |<a id="ref-context-response-headers"></a>karakterlánc-környezet. Response.Headers.GetValueOrDefault (headerName: karakterlánc, a DefaultValue érték: karakterlánc)|headerName: karakterlánc<br /><br /> alapértelmezett érték: karakterlánc<br /><br /> Fejléc értékek vesszővel elválasztott választ ad vissza, vagy `defaultValue` a fejléc nem található.|

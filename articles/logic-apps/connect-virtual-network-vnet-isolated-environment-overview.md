@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 1ef8c8eec3865f2a6e363e7da1dbda9504b81c05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f981452b06ec06f2be1b8fe0319cd49a678ccfe0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65546432"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441579"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Azure virtuális hálózati erőforrásokhoz való hozzáférés Azure Logic Apps integrációs service-környezetek (ISEs) használatával
 
@@ -35,7 +35,7 @@ A logikai alkalmazás most már közvetlenül elérheti a rendszerek, belül vag
 Ez az Áttekintés részletesebben ismerteti hogyan egy ISE lehetővé teszi a logic apps és az integrációs fiókok az Azure virtuális hálózat közvetlen hozzáférést, és összehasonlítja az ISE-ben és a globális Logic Apps szolgáltatás között.
 
 > [!NOTE]
-> A Logic apps, beépített eseményindítók, beépített műveleteket és összekötők, amely az ISE-ben használt árképzési csomag eltér a fogyasztás alapú díjszabással. További információkért lásd: [Logic Apps díjszabási](../logic-apps/logic-apps-pricing.md).
+> A Logic apps, beépített eseményindítók, beépített műveleteket és összekötők, amely az ISE-ben használt árképzési csomag eltér a fogyasztás alapú díjszabással. További információkért lásd: [Logic Apps díjszabási](../logic-apps/logic-apps-pricing.md). Az ISE-ben is növekedett a korlátok a Futási időtartam, tárterület adatmegőrzése, átviteli sebesség, HTTP-kérés és válasz időtúllépések, üzenet méretek és egyéni összekötő kérelmeket. További információkért lásd: [korlátozások és konfiguráció az Azure Logic Apps](logic-apps-limits-and-config.md).
 
 <a name="difference"></a>
 
@@ -61,14 +61,14 @@ ISE-ben, és nem ISE csatlakozók közötti különbség a helyeken, ahol az ese
 
   ![Válassza ki az ISE-összekötők](./media/connect-virtual-network-vnet-isolated-environment-overview/select-ise-connectors.png)
 
+Az ISE-ben is kínál megnövelt korlátok futási időtartam, tárterület adatmegőrzése, átviteli sebesség, HTTP-kérés és válasz időtúllépések, üzenet méretek és egyéni összekötő kérelmeket. További információkért lásd: [korlátozások és konfiguráció az Azure Logic Apps](logic-apps-limits-and-config.md).
+
 ### <a name="access-to-on-premises-data-sources"></a>A helyszíni adatforrásokhoz való hozzáférés
 
 A helyszíni rendszerek Azure-beli virtuális hálózathoz csatlakozó behelyezése egy ISE-ben, e hálózat, a logic apps közvetlenül hozzáférhetnek ezekhez a rendszerekhez ezek az elemek egyikének használatával:
 
 * ISE-verziót, hogy a rendszer, például az SQL Server-összekötő
-  
 * HTTP-művelet
-  
 * Egyéni összekötő
 
   * Ha egyéni összekötők a helyszíni adatátjáró igénylő, és létrehozott egy ISE kívül összekötőket, a logic apps egy ISE-ben is használhatja ezeket az összekötőket.

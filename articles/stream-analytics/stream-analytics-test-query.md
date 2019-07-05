@@ -9,18 +9,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 6/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: c0a76ecd12143e0bbaa9997bfc6d7295df9c4ec7
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 1a9caf83c6f4cd4ed15290afc872043c11234552
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340869"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508700"
 ---
 # <a name="test-a-stream-analytics-query-with-sample-data"></a>A Stream Analytics lekérdezési mintaadatokkal tesztelése
 
 Az Azure Stream Analytics használatával az adatokat a bemeneti vagy a mintaadatok feltöltése a lekérdezések tesztelése az Azure Portalon indítása és feladat leállítása nélkül.
 
-## <a name="upload-sample-data-and-test-the-query"></a>Mintaadatok feltöltése és a lekérdezés tesztelése
+## <a name="upload-or-sample-data-from-a-live-source-to-test-the-query"></a>Feltöltés vagy mintaadatokat is abból az élő forrást a lekérdezés teszteléséhez
 
 1. Jelentkezzen be az Azure portálra. 
 
@@ -30,7 +30,7 @@ Az Azure Stream Analytics használatával az adatokat a bemeneti vagy a mintaada
 
 4. A lekérdezés teszteléséhez, is majd vagy az adatokat a bemeneti élő, vagy feltöltése fájlból. Az adatok JSON-, CSV-vagy AVRO szerializálni kell. Minta beviteli UTF-8 kódolású legyen, és nem tömöríti. Csak a vessző (,) elválasztó a portálon a fürt megosztott kötetei szolgáltatás bemenet tesztelése esetén támogatott.
 
-    1. A bemeneti élő: kattintson a jobb gombbal bármelyik a bemeneteket. Válassza ki **mintaadatok bemenetből**. A következő képernyőn beállíthatja a minta időtartamára.
+    1. A bemeneti élő: kattintson a jobb gombbal bármelyik a bemeneteket. Válassza ki **mintaadatok bemenetből**. A következő képernyőn beállíthatja a minta időtartamára. Mintavételi események élő forrásból fogja lekérni legfeljebb 1000 esemény vagy 1 MB (amelyik előbb bekövetkezik), így az adatok mintavételezése nem biztos, hogy a megadott teljes időtartam alatt.
 
     1. Fájl segítségével: kattintson a jobb gombbal bármelyik a bemeneteket. Válassza ki **fájlból mintaadatok feltöltése**. 
 

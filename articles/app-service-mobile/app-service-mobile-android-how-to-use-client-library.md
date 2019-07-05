@@ -3,7 +3,7 @@ title: Az Azure Mobile Apps SDK használata az Android |} A Microsoft Docs
 description: Az Azure Mobile Apps SDK használata az Android rendszerhez
 services: app-service\mobile
 documentationcenter: android
-author: conceptdev
+author: elamalani
 manager: crdun
 ms.assetid: 5352d1e4-7685-4a11-aaf4-10bd2fa9f9fc
 ms.service: app-service-mobile
@@ -11,16 +11,20 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
-ms.date: 03/07/2019
-ms.author: crdun
-ms.openlocfilehash: 45b5ac0c9b3535e5cc5efdc6827d694b41e0b8dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 6a6db136926a7f9d631c717f5cab6c025d97fb48
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60859392"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443545"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Az Azure Mobile Apps SDK használata az Android rendszerhez
+
+> [!NOTE]
+> A Visual Studio App Center fektet a mobilalkalmazás-fejlesztés központi új, integrált szolgáltatások. A fejlesztők a **hozhat létre**, **teszt** és **terjesztése** állíthat be folyamatos integrációt és teljesítést folyamat szolgáltatások. Az alkalmazás telepítve van, a fejlesztők monitorozható az állapot és az alkalmazás használatával használatát a **Analytics** és **diagnosztikai** -szolgáltatásokat, és kapcsolatba léphet a felhasználókat a **leküldéses** a szolgáltatás. A fejlesztők is kihasználhatják a **Auth** azok a felhasználók hitelesítéséhez és **adatok** szolgáltatás és a felhőbeli alkalmazások adatainak szinkronizálása. Tekintse meg [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-android-how-to-use-client-library) még ma.
+>
 
 Ez az útmutató bemutatja, hogyan megvalósítása a gyakori forgatókönyvek, például az Android ügyféloldali SDK-t, a Mobile Apps segítségével:
 
@@ -29,11 +33,11 @@ Ez az útmutató bemutatja, hogyan megvalósítása a gyakori forgatókönyvek, 
 * A hibakezelést.
 * Az ügyfél testreszabásáról.
 
-Ez az útmutató az Android ügyféloldali SDK összpontosít.  További információ a kiszolgálóoldali SDK-k a Mobile Apps, lásd: [.NET háttérrendszeri SDK használata] [ 10] vagy [használata a Node.js háttérrendszeri SDK][11].
+Ez az útmutató az Android ügyféloldali SDK összpontosít.  További információ a kiszolgálóoldali SDK-k a Mobile Apps, lásd: [.NET háttérrendszeri SDK használata][10] or [How to use the Node.js backend SDK][11].
 
 ## <a name="reference-documentation"></a>Segédanyagok
 
-Annak a [Javadocs API-referencia] [ 12] az Android ügyféloldali kódtár, a Githubon.
+Annak a [Javadocs API-referencia][12] az Android ügyféloldali kódtár, a Githubon.
 
 ## <a name="supported-platforms"></a>A támogatott platformok
 
@@ -45,7 +49,7 @@ Végezze el a [Mobile Apps – első lépések](app-service-mobile-android-get-s
 
 Ha úgy dönt, nem a rövid útmutató elvégzéséhez, hajtsa végre a következő feladatokat:
 
-* [a Mobile Apps-háttéralkalmazás létrehozása] [ 13] használata az Android-alkalmazás.
+* [a Mobile Apps-háttéralkalmazás létrehozása][13] használata az Android-alkalmazás.
 * Az Android Studióban [frissítés a Gradle soubory sestavení](#gradle-build).
 * [Engedélyezi az internetes engedély](#enable-internet).
 
@@ -197,17 +201,17 @@ public final void setPriority(Integer priority) {
 }
 ```
 
-Megtudhatja, hogyan hozhat létre további táblákat a Mobile Apps-háttéralkalmazást, lásd: [hogyan: Adja meg a táblavezérlőnek] [ 15] (.NET-háttérrendszer) vagy [használata a dinamikus sémák definiálása táblák] [ 16] (Node.js-háttérrendszer).
+Megtudhatja, hogyan hozhat létre további táblákat a Mobile Apps-háttéralkalmazást, lásd: [hogyan: Adja meg a táblavezérlőnek][15] (.NET backend) or [Define Tables using a Dynamic Schema][16] (Node.js-háttérrendszer).
 
 Az Azure Mobile Apps háttértáblára öt speciális mezők érhetők el az ügyfeleknek, amelyek négy határozza meg:
 
-* `String id`: A rekord globálisan egyedi azonosítója.  Ajánlott eljárásként, győződjön meg arról, az azonosítója a karakterláncos leképezését egy [UUID] [ 17] objektum.
+* `String id`: A rekord globálisan egyedi azonosítója.  Ajánlott eljárásként, győződjön meg arról, az azonosítója a karakterláncos leképezését egy [UUID][17] objektum.
 * `DateTimeOffset updatedAt`: A dátum/idő az utolsó frissítés.  A updatedAt mező a kiszolgáló úgy van beállítva, és az Ügyfélkód soha nem kell beállítania.
 * `DateTimeOffset createdAt`: A dátum/idő, hogy az objektumot létrehozták.  A createdAt mező a kiszolgáló úgy van beállítva, és az Ügyfélkód soha nem kell beállítania.
 * `byte[] version`: Általában jelölt karakterlánc, a verzió is állítja be a kiszolgáló.
 * `boolean deleted`: Azt jelzi, hogy a rekord törölve lett, de még nem lett kiürítve.  Ne használjon `deleted` tulajdonságként az osztályban található.
 
-Az `id` mező kötelező.  A `updatedAt` mező és `version` mező kapcsolat nélküli szinkronizálás használhatók (a növekményes szinkronizálás és az ütközés feloldásához jelölik).  A `createdAt` mező egy referencia-mezőt, és az ügyfél nem használja.  A neveket a Tulajdonságok "közötti átvitel közbeni" nevei, és nem állítható.  Azonban létrehozhat egy leképezési az objektum és a "közötti átvitel közbeni" neveket között a [gson] [ 3] könyvtár.  Példa:
+Az `id` mező kötelező.  A `updatedAt` mező és `version` mező kapcsolat nélküli szinkronizálás használhatók (a növekményes szinkronizálás és az ütközés feloldásához jelölik).  A `createdAt` mező egy referencia-mezőt, és az ügyfél nem használja.  A neveket a Tulajdonságok "közötti átvitel közbeni" nevei, és nem állítható.  Azonban létrehozhat egy leképezési az objektum és a "közötti átvitel közbeni" neveket között a [gson][3] könyvtár.  Példa:
 
 ```java
 package com.example.zumoappname;
@@ -267,7 +271,7 @@ public class ToDoItem
 
 ### <a name="create-a-table-reference"></a>Hozzon létre egy táblahivatkozás
 
-Egy tábla eléréséhez, először hozzon létre egy [MobileServiceTable] [ 8] meghívásával objektum a **getTable** metódust a [MobileServiceClient] [9].  Ez a módszer két túlterheléssel rendelkezik:
+Egy tábla eléréséhez, először hozzon létre egy [MobileServiceTable][8] meghívásával objektum a **getTable** metódust a [MobileServiceClient][9].  Ez a módszer két túlterheléssel rendelkezik:
 
 ```java
 public class MobileServiceClient {
@@ -310,7 +314,7 @@ List<MyDataTable> results = mDataTable
     .get()              // Converts the async into a sync result
 ```
 
-Az előző példában (akár a maximális méretének beállítása a kiszolgáló) minden eredményt visszaad.  A `.execute()` metódus hajtja végre a lekérdezést a háttérkiszolgálón.  A lekérdezés alakítja át egy [OData v3] [ 19] lekérdezést, mielőtt a Mobile Apps háttéralkalmazásból továbbítását.  Kézhezvétele után a Mobile Apps háttéralkalmazásból alakítja át a lekérdezést egy SQL-utasítás előtt futtassa a jelentést az SQL Azure-példányon.  Hálózati tevékenység eltarthat egy ideig, mivel a `.execute()` metódus adja vissza egy [ `ListenableFuture<E>` ] [ 18].
+Az előző példában (akár a maximális méretének beállítása a kiszolgáló) minden eredményt visszaad.  A `.execute()` metódus hajtja végre a lekérdezést a háttérkiszolgálón.  A lekérdezés alakítja át egy [OData v3][19] lekérdezést, mielőtt a Mobile Apps háttéralkalmazásból továbbítását.  Kézhezvétele után a Mobile Apps háttéralkalmazásból alakítja át a lekérdezést egy SQL-utasítás előtt futtassa a jelentést az SQL Azure-példányon.  Hálózati tevékenység eltarthat egy ideig, mivel a `.execute()` metódus adja vissza egy [ `ListenableFuture<E>` ][18].
 
 ### <a name="filtering"></a>Visszaadott adatok szűrése
 
@@ -697,7 +701,7 @@ mJsonToDoTable = mClient.getTable("ToDoItem");
 Miután létrehozott egy példányát a **MobileServiceJsonTable**, gyakorlatilag az azonos API elérhető gépelt programozási modell rendelkezik. Bizonyos esetekben a módszerek igénybe egy Típusos paraméter helyett egy típusos paraméterek.
 
 ### <a name="json_insert"></a>A típus nélküli táblába INSERT
-A következő kód bemutatja, hogyan teheti a Beszúrás. Az első lépés az, hogy hozzon létre egy [JsonObject][1], amely része a [gson] [ 3] könyvtár.
+A következő kód bemutatja, hogyan teheti a Beszúrás. Az első lépés az, hogy hozzon létre egy [JsonObject][1] , which is part of the [gson][3] könyvtár.
 
 ```java
 JsonObject jsonItem = new JsonObject();
@@ -1081,7 +1085,7 @@ Cserélje le a `onSuccess()` metódust bármilyen kódot szeretne használni a s
 
 Az Active Directory Authentication Library (ADAL) segítségével bejelentkezhetnek a felhasználók az alkalmazásokba az Azure Active Directoryval. Az ügyfél-flow bejelentkezés a következő gyakran használata helyett a `loginAsync()` módszerek, mert több natív UX betekintést nyújt, és lehetővé teszi, hogy további testreszabási.
 
-1. A mobil-háttéralkalmazás az AAD-bejelentkezés konfigurálása a következő a [konfigurálása App Service-ben az Active Directory-bejelentkezés] [ 22] oktatóanyag. Ellenőrizze, hogy a natív ügyfélalkalmazás regisztrációja nem kötelező lépése.
+1. A mobil-háttéralkalmazás az AAD-bejelentkezés konfigurálása a következő a [konfigurálása App Service-ben az Active Directory-bejelentkezés][22] oktatóanyag. Ellenőrizze, hogy a natív ügyfélalkalmazás regisztrációja nem kötelező lépése.
 2. Telepítse az adal-t módosításával a build.gradle fájllal, hogy az alábbi definíciókat tartalmazza:
 
     ```gradle
@@ -1276,7 +1280,7 @@ private class CustomHeaderFilter implements ServiceFilter {
 
 ### <a name="conversions"></a>Automatikus szerializálási konfigurálása
 
-Megadhatja, hogy a konvertálási stratégia, amely minden oszlop használatával vonatkozik a [gson] [ 3] API-t. Az Android-klienskódtár használ [gson] [ 3] szerializálni a Java-objektumok JSON-adatokat az Azure App Service-ben az adatok elküldése előtt a háttérben.  A következő kódban a **setFieldNamingStrategy()** metódussal adja meg a stratégiát. Ez a példa törli a kezdeti karaktert ("m"), majd kisbetűs és a következő karakter minden mező nevét. Például azt szeretné információkká "közepes" "id".  Csökkentése érdekében a konvertálási stratégia megvalósításához `SerializedName()` jegyzetek a legtöbb mezőkben.
+Megadhatja, hogy a konvertálási stratégia, amely minden oszlop használatával vonatkozik a [gson][3] API-t. Az Android-klienskódtár használ [gson][3] szerializálni a Java-objektumok JSON-adatokat az Azure App Service-ben az adatok elküldése előtt a háttérben.  A következő kódban a **setFieldNamingStrategy()** metódussal adja meg a stratégiát. Ez a példa törli a kezdeti karaktert ("m"), majd kisbetűs és a következő karakter minden mező nevét. Például azt szeretné információkká "közepes" "id".  Csökkentése érdekében a konvertálási stratégia megvalósításához `SerializedName()` jegyzetek a legtöbb mezőkben.
 
 ```java
 FieldNamingStrategy namingStrategy = new FieldNamingStrategy() {

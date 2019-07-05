@@ -1,34 +1,26 @@
 ---
-title: Az Azure Application Gateway - sablonok létrehozása |} A Microsoft Docs
-description: Ez az oldal utasításokat tartalmaz egy Azure Application Gateway Azure Resource Manager-sablonnal történő létrehozásához
-documentationcenter: na
+title: Az Azure Application Gateway - sablonok létrehozása
+description: Ez a cikk utasításait követve hozzon létre egy Azure application gateway Azure Resource Manager-sablonnal
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/31/2017
+ms.topic: conceptual
+ms.date: 6/26/2019
 ms.author: victorh
-ms.openlocfilehash: 7ff6db5acb150207f975931155386a308c48888b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a762e8c9ed1981173f3729837456ac2cfea081b8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66134106"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449536"
 ---
-# <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Application Gateway létrehozása az Azure Resource Manager-sablonokkal
+# <a name="create-an-application-gateway-using-the-azure-resource-manager-template"></a>Hozzon létre egy application gateway Azure Resource Manager-sablonnal
 
-Az Azure Application Gateway egy 7. rétegbeli terheléselosztó. Feladatátvételt és teljesítményalapú útválasztást biztosít a HTTP-kérelmek számára különböző kiszolgálók között, függetlenül attól, hogy a felhőben vagy a helyszínen találhatóak. Az Application Gateway számos alkalmazáskézbesítési vezérlőszolgáltatást (ADC) biztosít, beleértve a HTTP-terheléselosztást, a cookie-alapú munkamenet-affinitást, a Secure Sockets Layer- (SSL-) alapú kiszervezést, az egyéni állapotmintákat, a többhelyes támogatást és még sok mást. Keresse meg a támogatott szolgáltatások teljes listáját, keresse fel [Application Gateway áttekintése](overview.md)
+Az Azure Application Gateway egy 7. rétegbeli terheléselosztó. Feladatátvételt és teljesítményalapú útválasztást biztosít a HTTP-kérelmek számára különböző kiszolgálók között, függetlenül attól, hogy a felhőben vagy a helyszínen találhatóak. Az Application Gateway számos alkalmazáskézbesítési vezérlőszolgáltatást (ADC) biztosít, beleértve a HTTP-terheléselosztást, a cookie-alapú munkamenet-affinitást, a Secure Sockets Layer- (SSL-) alapú kiszervezést, az egyéni állapotmintákat, a többhelyes támogatást és még sok mást. Keresse meg a támogatott szolgáltatások teljes listáját, keresse fel [Application Gateway áttekintése](application-gateway-introduction.md)
 
-Ebben a cikkben bemutatjuk, hogyan letöltése és a egy meglévő módosítása [Azure Resource Manager-sablon](../azure-resource-manager/resource-group-authoring-templates.md) a Githubról, majd a sablont a Githubból, Powershellből és az Azure CLI telepítése.
+Ebben a cikkben bemutatjuk, hogyan letöltése és a egy meglévő módosítása [Azure Resource Manager-sablon](../azure-resource-manager/resource-group-authoring-templates.md) a Githubról, majd a sablont a Githubból, az Azure PowerShell és az Azure CLI telepítése.
 
-Ha egyszerűen üzembe a sablont, közvetlenül a Githubból módosítása nélkül, ugorjon a sablont a GitHub.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Ha egyszerűen helyezi üzembe a sablont, közvetlenül a Githubból módosítása nélkül, ugorjon a sablont a GitHub.
 
 ## <a name="scenario"></a>Forgatókönyv
 
@@ -42,7 +34,7 @@ Ebben a forgatókönyvben az alábbiakat fogja tenni:
 > [!NOTE]
 > Ezek a beállítások a sablon paraméterei. A sablon testreszabásához módosíthatja a szabályokat, a figyelőt, SSL és egyéb lehetőségek az azuredeploy.json fájlban.
 
-![Forgatókönyv](./media/create-vmss-template/scenario.png)
+![Forgatókönyv](./media/application-gateway-create-gateway-arm-template/scenario.png)
 
 ## <a name="download-and-understand-the-azure-resource-manager-template"></a>Az Azure Resource Manager-sablon letöltése és megismerése
 
@@ -51,9 +43,9 @@ A GitHubból letöltheti a meglévő Azure Resource Manager-sablont, amellyel l�
 1. Navigáljon a [engedélyezett webalkalmazási tűzfallal rendelkező Application Gateway létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-application-gateway-waf).
 1. Kattintson az **azuredeploy.json**, majd a **RAW** elemre.
 1. Mentse a fájlt egy helyi mappába a számítógépén.
-1. Ha már ismeri az Azure Resource Manager-sablonokat, akkor ugorjon a 7. lépéshez.
-1. Nyissa meg a mentett fájlt, és tekintse meg a tartalom alatt **paraméterek** sorban
-1. Az Azure Resource Manager-sablonparaméterek az üzembe helyezés során kitölthető paraméterek helyőrzőiként működnek.
+1. Ha ismeri az Azure Resource Manager-sablonok, ugorjon a 7.
+2. Nyissa meg a mentett fájlt, és tekintse meg a tartalom alatt **paraméterek** sorban
+3. Az Azure Resource Manager-sablonparaméterek az üzembe helyezés során kitölthető paraméterek helyőrzőiként működnek.
 
    | Paraméter | Leírás |
    | --- | --- |
@@ -70,7 +62,7 @@ A GitHubból letöltheti a meglévő Azure Resource Manager-sablont, amellyel l�
 
    * **type**. A sablon által létrehozott erőforrástípus. Ebben az esetben a típus `Microsoft.Network/applicationGateways`, amely egy application gateway jelöli.
    * **Név** Az erőforrás neve. Figyelje meg a `[parameters('applicationGatewayName')]`, mely azt jelenti, hogy a név bemenetként, vagy egy paraméterfájl üzembe helyezés során.
-   * **properties**. Az erőforrás tulajdonságainak listája. A sablon az Application Gateway létrehozása során a virtuális hálózatot és a nyilvános IP-címet használja. A JSON-szintaxist és egy sablon az application gateway tulajdonságainak: [Microsoft.Network/applicationGateways](/azure/templates/microsoft.network/applicationgateways).
+   * **properties**. Az erőforrás tulajdonságainak listája. A sablon az Application Gateway létrehozása során a virtuális hálózatot és a nyilvános IP-címet használja.
 
 1. Lépjen vissza a [ https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf/ ](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf).
 1. Kattintson a **azuredeploy-parameters.json**, és kattintson a **RAW**.
@@ -116,48 +108,50 @@ A GitHubból letöltheti a meglévő Azure Resource Manager-sablont, amellyel l�
      }
      ```
 
-1. Mentse a fájlt. A JSON-sablont és a paramétersablont online JSON érvényesítési eszközök, például a [JSlint.com](https://www.jslint.com/) segítségével tesztelheti.
+1. Mentse a fájlt. A JSON-sablont és online JSON érvényesítési eszközök, például segítségével tesztelheti [JSlint.com](https://www.jslint.com/).
 
-## <a name="deploy-the-azure-resource-manager-template-by-using-powershell"></a>Az Azure Resource Manager-sablon üzembe helyezése a PowerShell használatával
+## <a name="deploy-the-azure-resource-manager-template-using-azure-powershell"></a>Azure PowerShell-lel az Azure Resource Manager-sablon üzembe helyezése
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Ha még nem használta az Azure Powershellt, tekintse meg: [Azure PowerShell telepítése és konfigurálása annak](/powershell/azure/overview) és kövesse az utasításokat az Azure-ba való bejelentkezéshez, és válassza ki az előfizetését.
 
-1. Bejelentkezés a Powershellbe
+1. Csatlakozás az Azure szolgáltatáshoz
 
-    ```powershell
-    Login-AzAccount
+    ```azurepowershell
+    Connect-AzAccount
     ```
 
 1. Keresse meg a fiókot az előfizetésekben.
 
-    ```powershell
+    ```azurepowershell
     Get-AzSubscription
     ```
 
-    A rendszer kérni fogja a hitelesítő adatokkal történő hitelesítést.
+    A saját hitelesítő adatait kéri.
 
 1. Válassza ki, hogy melyik Azure előfizetést fogja használni.
 
-    ```powershell
+    ```azurepowershell
     Select-AzSubscription -Subscriptionid "GUID of subscription"
     ```
 
-1. Szükség esetén hozzon létre egy erőforráscsoportot a **New-AzureResourceGroup** parancsmaggal. A következő példában egy az USA keleti régiójában AppgatewayRG nevű erőforráscsoportot hoz létre.
+1. Ha szükséges, hozzon létre egy erőforrás csoport a **New-AzureResourceGroup** parancsmagot. A következő példában egy az USA keleti régiójában AppgatewayRG nevű erőforráscsoportot hoz létre.
 
-    ```powershell
+    ```azurepowershell
     New-AzResourceGroup -Name AppgatewayRG -Location "West US"
     ```
 
-1. Futtassa a **New-AzResourceGroupDeployment** parancsmagot, hogy az új virtuális hálózat az előző sablonnal és paraméterfájlokkal üzembe helyezhesse fájljainak letöltött és módosított.
+1. Futtassa a **New-AzResourceGroupDeployment** parancsmagot, hogy az új virtuális hálózat használatával előző sablonnal és paraméterfájlokkal üzembe fájljainak letöltött és módosított.
     
-    ```powershell
+    ```azurepowershell
     New-AzResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
     -TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
     ```
 
-## <a name="deploy-the-azure-resource-manager-template-by-using-the-azure-cli"></a>Az Azure Resource Manager-sablon üzembe helyezése az Azure CLI használatával
+## <a name="deploy-the-azure-resource-manager-template-using-the-azure-cli"></a>Az Azure CLI használatával az Azure Resource Manager-sablon üzembe helyezése
 
-Az Azure parancssori felület használatával a letöltött Azure Resource Manager-sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
+Az Azure CLI-vel letöltött Azure Resource Manager-sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
 
 1. Ha még sosem használta az Azure CLI-t, akkor tekintse meg [Az Azure CLI telepítése és konfigurálása](/cli/azure/install-azure-cli) című szakaszt, és kövesse az utasításokat addig a pontig, ahol ki kell választania az Azure-fiókot és -előfizetést.
 
@@ -171,13 +165,13 @@ Az Azure parancssori felület használatával a letöltött Azure Resource Manag
     
     **-l (vagy --location)** . Az Azure-régió, ahol az új erőforráscsoport létrejön. Esetünkben az rendelkezik *westus*.
 
-1. Futtassa a `az group deployment create` parancsmagot, hogy az új virtuális hálózat sablonnal és paraméterfájlokkal üzembe helyezhesse fájljainak letöltött és módosított az előző lépésben. A kimenet után látható lista ismerteti a használt paramétereket.
+1. Futtassa a `az group deployment create` parancsmagot, hogy az új virtuális hálózat sablonnal és paraméterfájlokkal üzembe fájljainak letöltött és módosított az előző lépésben. A kimenet után látható lista ismerteti a használt paramétereket.
 
     ```azurecli
     az group deployment create --resource-group appgatewayRG --name TestAppgatewayDeployment --template-file azuredeploy.json --parameters @azuredeploy-parameters.json
     ```
 
-## <a name="deploy-the-azure-resource-manager-template-by-using-click-to-deploy"></a>Az Azure Resource Manager-sablon üzembe helyezése kattintással végrehajtható üzembe helyezéssel
+## <a name="deploy-the-azure-resource-manager-template-using-click-to-deploy"></a>Használatával, kattintson a üzembe helyezése Azure Resource Manager-sablon üzembe helyezése
 
 Az Azure Resource Manager-sablonok használatának másik módja a kattintással végrehajtható üzembe helyezés. Ez egy egyszerű mód a sablonok Azure portállal történő használatára.
 
@@ -185,21 +179,22 @@ Az Azure Resource Manager-sablonok használatának másik módja a kattintással
 
 1. Kattintson a **Deploy to Azure** (Üzembe helyezés az Azure-ban) elemre.
 
-    ![Üzembe helyezés az Azure-ban](./media/create-vmss-template/deploytoazure.png)
+    ![Üzembe helyezés az Azure-ban](./media/application-gateway-create-gateway-arm-template/deploytoazure.png)
     
 1. Töltse ki a központi telepítési sablon paramétereit a portálon, majd kattintson az **OK** gombra.
 
-    ![Paraméterek](./media/create-vmss-template/ibiza1.png)
+    ![Paraméterek](./media/application-gateway-create-gateway-arm-template/ibiza1.png)
     
 1. Válassza ki **elfogadom a feltételeket és a fenti feltételeket** kattintson **beszerzési**.
 
-1. Az Egyéni üzembe helyezés panelen kattintson a **Létrehozás** gombra.
+1. Az egyéni üzembe helyezés oldalon kattintson a **létrehozás**.
 
 ## <a name="providing-certificate-data-to-resource-manager-templates"></a>Tanúsítvány adatokat szolgáltat a Resource Manager-sablonok
 
 Amikor az SSL-sablonnal a tanúsítványt kell adni egy base64-karakterlánc helyett feltöltése folyamatban. Konvertálja a .pfx- vagy .cer Base64 kódolású karakterlánc használja a következő parancsok egyikét. A következő parancsokat egy base64-karakterlánc, amely a sablonhoz adható meg, alakítsa át a tanúsítványt. A várható kimenete egy karakterlánc, amely egy változó tárolja, és a sablonban beillesztett.
 
 ### <a name="macos"></a>macOS
+
 ```bash
 cert=$( base64 <certificate path and name>.pfx )
 echo $cert
@@ -214,9 +209,9 @@ echo $cert
 
 Ebben a cikkben létrehozott összes erőforrás törléséhez hajtsa végre az alábbi lépések egyikét:
 
-### <a name="powershell"></a>PowerShell
+### <a name="azure-powershell"></a>Azure PowerShell
 
-```powershell
+```azurepowershell
 Remove-AzResourceGroup -Name appgatewayRG
 ```
 
@@ -228,12 +223,11 @@ az group delete --name appgatewayRG
 
 ## <a name="next-steps"></a>További lépések
 
-Ha azt szeretné, SSL-alapú kiszervezés konfigurálása, látogassa meg: [Konfigurálja az application gateway SSL-alapú kiszervezéshez](tutorial-ssl-cli.md).
+Ha azt szeretné, SSL-alapú kiszervezés konfigurálása, lásd: [Konfigurálja az application gateway SSL-alapú kiszervezéshez](application-gateway-ssl.md).
 
-Ha szeretne egy belső terheléselosztó használata application gateway konfigurálása, látogassa meg: [Application gateway létrehozása belső terheléselosztóval (ILB)](redirect-internal-site-cli.md).
+Ha szeretne egy belső terheléselosztó használata application gateway konfigurálása, lásd: [Application gateway létrehozása belső terheléselosztóval (ILB)](application-gateway-ilb.md).
 
 Ha további általános információra van szüksége a terheléselosztás beállításaival kapcsolatban:
 
 * [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
-

@@ -16,38 +16,38 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22fe71c38678ae789a93ecbc956f24f0b0ebeb01
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e4622cffedc159ce85166eafe571ccb26c2c1b4d
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111129"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536852"
 ---
-# <a name="protected-web-api---app-registration"></a>Védett webes API - alkalmazás regisztrációja
+# <a name="protected-web-api-app-registration"></a>Védett webes API-hoz: Alkalmazásregisztráció
 
-Ez a cikk azt ismerteti, hogy egy védett webes API-alkalmazás regisztrációs adatait.
+Ez a cikk ismerteti a alkalmazásregisztráció tulajdonságairól védett webes API-hoz.
 
-Lásd: [a rövid útmutató: Alkalmazás regisztrálása a Microsoft identity platform az](quickstart-register-app.md) hogyan kell regisztrálni az alkalmazás általános lépéseit.
+Lásd: [a rövid útmutató: Alkalmazás regisztrálása a Microsoft identity platform az](quickstart-register-app.md) regisztrál egy alkalmazást, az általános lépéseit.
 
 ## <a name="accepted-token-version"></a>Token elfogadott verzió
 
-A Microsoft identity platform végpont kiadhatnak kétféle jogkivonatokat: 1.0-s verziójú jogkivonatok és 2.0-s verziójú jogkivonatok. Ezek a jogkivonatok többet tudhat [hozzáférési jogkivonatokat](access-tokens.md). Az elfogadott token verzió attól függ, a **támogatott fióktípusok** választotta, hogy az alkalmazás létrehozásakor:
+A Microsoft identity platform végpont kiadhatnak kétféle jogkivonatokat: 1.0-s verziójú jogkivonatok és 2.0-s verziójú jogkivonatok. Ezek a jogkivonatok kapcsolatos további információkért lásd: [hozzáférési jogkivonatokat](access-tokens.md). Az elfogadott token verzió attól függ, a **támogatott fióktípusok** választotta, hogy az alkalmazás létrehozásakor:
 
 - Ha értékét **támogatott fióktípusok** van **fiókok minden olyan szervezeti directory és személyes Microsoft-fiókok (például a Skype, Xbox, Outlook.com)** , az elfogadott token verzió v2.0 lesz.
 - Ellenkező esetben az elfogadott jogkivonat-verzió lesz az 1.0-s verziója.
 
-Az alkalmazás létrehozása után módosíthatja az elfogadott token verzió az alábbi lépéseket:
+Miután létrehozta az alkalmazást, határozza meg, vagy módosítsa a elfogadott token verzióját az alábbi lépéseket:
 
 1. Az Azure Portalon válassza ki az alkalmazást, és válassza ki a **Manifest** az alkalmazáshoz.
-2. A jegyzékfájlban, keressen **"accessTokenAcceptedVersion"** , és láthatja, hogy a kulcs értéke **2**. Ez a tulajdonság lehetővé teszi, hogy az Azure ad-ben tudja, hogy a webes API 2.0-s verziójú jogkivonatokat fogad. Ha **null**, az elfogadott jogkivonat-verzió lesz 1.0-s verziója.
-3. Kattintson a **Mentés** gombra.
+2. A jegyzékfájlban, keressen **"accessTokenAcceptedVersion"** . Vegye figyelembe, hogy a kulcs értéke **2**. Ez a tulajdonság megadja, hogy az Azure Active Directory (Azure AD), hogy a webes API 2.0-s verziójú jogkivonatokat fogad. Ha az érték **null**, a elfogadott token verziószáma 1.0-s verziója.
+3. Ha módosította a token verzióját, válassza ki a **mentése**.
 
 > [!NOTE]
-> Szolgáltatás a webes API-nak eldönteni, melyik token verziója (1.0 vagy 2.0-s verzió) fogad el. Ügyfelek kérnek egy jogkivonatot a webes API-t a Microsoft identity platform v2.0-végpont használatával, ha azok egy jogkivonatot, amely azt jelzi, hogy melyik verzió van fogadja el a webes API-t fog kapni.
+> A webes API-t adja meg, melyik token verziója (1.0 vagy 2.0-s verzió), fogadja. Ügyfelek számára a webes API-hoz jogkivonatot kérhet a Microsoft identity platform v2.0-végpont, ha azok egy jogkivonatot, amely azt jelzi, hogy melyik verzió van fogadja el a webes API-t fog kapni.
 
 ## <a name="no-redirect-uri"></a>Nincs átirányítási URI-ja
 
-Webes API-k nem kell semmilyen felhasználó nem bejelentkezett interaktív módon való regisztrálása átirányítási URI-t.
+Webes API-k nem szükséges regisztrálni az átirányítási URI-t, mert nincs bejelentkezett felhasználó interaktív módon.
 
 ## <a name="expose-an-api"></a>Tegye elérhetővé az API-k
 
@@ -55,50 +55,50 @@ Egy másik webes API-kat az adott érték a közzétett API-t és a közzétett 
 
 ### <a name="resource-uri-and-scopes"></a>Erőforrás-URI és hatókörök
 
-Hatókörök: általában az űrlap `resourceURI/scopeName`. A Microsoft Graph, a hatókörök például parancsikonok rendelkezik `User.Read`, de ez a karakterlánc csak a parancsikont `https://graph.microsoft.com/user.read`.
+Hatókörök rendszerint a `resourceURI/scopeName`. A Microsoft Graph, a hatókörök van például a parancsikonok `User.Read`. Ez a karakterlánc a parancsikont `https://graph.microsoft.com/user.read`.
 
-Alkalmazásregisztráció, során kell határozza meg a következő paraméterekkel:
+Alkalmazásregisztráció, során kell ezek a paraméterek megadása:
 
-- Az erőforrás-URI - az alkalmazásregisztrációs portálon alapértelmezés szerint azt javasolja, hogy használhatja `api://{clientId}`. Az erőforrás URI-t az egyedi, de nem emberi olvasható. Módosítsa azt, de győződjön meg arról, hogy annak egyediségét.
-- Egy vagy több **hatókörök** (az ügyfélalkalmazások számára, akkor jelenik meg **delegált engedélyek** a webes API-hoz)
-- Egy vagy több **alkalmazás-szerepkörök** (az ügyfélalkalmazások számára, akkor jelenik meg **Alkalmazásengedélyek** a webes API-hoz)
+- Az erőforrás URI azonosítója. Alapértelmezés szerint az alkalmazásregisztrációs portálon azt javasolja, hogy használhatja `api://{clientId}`. Az erőforrás URI-t az egyedi, de nem emberi olvasható. Módosítsa azt, de ellenőrizze, hogy az új érték (egyedi).
+- Egy vagy több *hatókörök*. (Az ügyfélalkalmazások számára, akkor fognak megjelenni *delegált engedélyek* a webes API-hoz.)
+- Egy vagy több *alkalmazás-szerepkörök*. (Az ügyfélalkalmazások számára, akkor fognak megjelenni *Alkalmazásengedélyek* a webes API-hoz.)
 
-A hatókörök is jelennek meg a beleegyezést kérő oldalon, a végfelhasználók számára, akik használják az alkalmazást. Ezért meg kell adnia a megfelelő karakterláncok, amelyek ismertetik a hatókör:
+A hatókörök is jelennek meg a beleegyezést kérő oldalon, a végfelhasználók számára az alkalmazás számára látható. Ezért meg kell adnia a megfelelő karakterláncok, amelyek ismertetik a hatókör:
 
-- A végfelhasználó által látott módon
-- A bérlői rendszergazda, aki rendszergazdai jóváhagyás adhat a
+- Mivel a végfelhasználó által látott.
+- Ahogy a bérlői rendszergazda, jogosultságot tud biztosítani a rendszergazdai jóváhagyás.
 
-### <a name="how-to-expose-delegated-permissions-scopes"></a>Hogyan lehet elérhetővé tenni a delegált engedélyeket (hatóköröket)
+### <a name="exposing-delegated-permissions-scopes"></a>Adatokhoz hozzáférést biztosító delegált engedélyeket (hatóköröket)
 
-1. Válassza ki a **közzé API-k** szakaszában az alkalmazás regisztrálása és:
-   1. Válassza a **Hatókör hozzáadása** lehetőséget.
-   1. Ha a rendszer kéri, fogadja el a javasolt Alkalmazásazonosító URI-ja (api :// {clientId}) kiválasztásával **menti és folytatja azt**.
-   1. Adja meg a következő paraméterekkel:
-      - A **hatókör neve**, használjon `access_as_user`.
-      - A **ki hagyhatja jóvá**, győződjön meg arról, hogy a **rendszergazdák és felhasználók** beállítás.
-      - A **rendszergazdai jóváhagyás megjelenítendő neve**, típus `Access TodoListService as a user`.
-      - A **rendszergazdai jóváhagyás leírása**, típus `Accesses the TodoListService Web API as a user`.
-      - A **felhasználói jóváhagyás megjelenítendő neve**, típus `Access TodoListService as a user`.
-      - A **felhasználói jóváhagyás leírása**, típus `Accesses the TodoListService Web API as a user`.
+1. Válassza ki a **közzé API-k** az alkalmazás regisztrációja szakaszában.
+1. Válassza a **Hatókör hozzáadása** lehetőséget.
+1. Ha a rendszer kéri, fogadja el a javasolt Alkalmazásazonosító URI-ja (`api://{clientId}`) kiválasztásával **menti és folytatja azt**.
+1. Adja meg ezeket a paramétereket:
+      - A **hatókör neve**, használjon **access_as_user**.
+      - A **ki hagyhatja jóvá**, győződjön meg arról, hogy **rendszergazdák és felhasználók** van kiválasztva.
+      - A **rendszergazdai jóváhagyás megjelenítendő neve**, adja meg **felhasználói hozzáférési TodoListService**.
+      - A **rendszergazdai jóváhagyás leírása**, adja meg **fér hozzá a TodoListService webes API-t egy felhasználóval**.
+      - A **felhasználói jóváhagyás megjelenítendő neve**, adja meg **felhasználói hozzáférési TodoListService**.
+      - A **felhasználói jóváhagyás leírása**, adja meg **fér hozzá a TodoListService webes API-t egy felhasználóval**.
       - Tartsa **állapot** beállítása **engedélyezve**.
       - Válassza ki **hatókör hozzáadása**.
 
-### <a name="case-where-your-web-api-is-called-by-daemon-application"></a>Eset, ahol hívja meg a webes API démon alkalmazás
+### <a name="if-your-web-api-is-called-by-a-daemon-app"></a>Ha a démon alkalmazás hívja meg a webes API
 
-A bekezdés elsajátíthatja a védett webes API regisztrálása, hogy a démon alkalmazások biztonságosan hívható lesz:
+Ebben a szakaszban megismerheti fogja a védett webes API regisztrálása, így biztonságosan hívható démon alkalmazások.
 
-- tegye elérhetővé kell **Alkalmazásengedélyek**. Alkalmazásengedélyek csak deklarálja, mivel démon alkalmazások nem használhatnak felhasználókat, és ezért delegált engedélyeket értelme.
-- bérlői rendszergazdák csak olyan alkalmazások, amelyek már regisztrált, hogy szeretné-e hozzáférni a webes API-alkalmazások engedélyek egyikét a webalkalmazás az Azure AD-probléma jogkivonatok szükség lehet.
+- tegye elérhetővé kell *Alkalmazásengedélyek*. Csak az alkalmazás engedélyeit fogja deklarálnia, mert a démon alkalmazások nem használhatják a felhasználókkal, így delegált engedélyeket nincs értelme megtiltani.
+- Bérlői rendszergazdák probléma tokenek csak egy alkalmazás engedélyeket a webes API-k eléréséhez regisztrált alkalmazások számára a webes API-hoz való lehet szükség az Azure Active Directory (Azure AD).
 
-#### <a name="how-to-expose-application-permissions-app-roles"></a>Hogyan lehet elérhetővé tenni az Alkalmazásengedélyek (alkalmazás-szerepkörök)
+#### <a name="exposing-application-permissions-app-roles"></a>Illetéktelenül elért fiók(ok) Alkalmazásengedélyek (alkalmazás-szerepkörök)
 
 Alkalmazásengedélyek elérhetővé, szüksége lesz a jegyzékfájl szerkesztése.
 
-1. Kattintson az alkalmazás alkalmazásregisztráció, **Manifest**.
-1. A jegyzékfájl szerkesztése megkeresésével a `appRoles` beállítást, és a egy vagy több alkalmazás-szerepkörök hozzáadása. A szerepkör-definíció az alábbi példa JSON-kódblokkot van megadva.  Hagyja a `allowedMemberTypes` "Alkalmazás" csak. Győződjön meg arról, hogy a **azonosító** egy egyedi GUID és **displayName** és **érték** nem tartalmazhat szóközt.
+1. Válassza ki az alkalmazás alkalmazásregisztráció, **Manifest**.
+1. A jegyzékfájl szerkesztése megkeresésével a `appRoles` beállítást, és a egy vagy több alkalmazás-szerepkörök hozzáadása. A szerepkör-definíció van megadva a következő példa JSON-kódblokkot. Hagyja a `allowedMemberTypes` beállítása `"Application"` csak. Győződjön meg arról, hogy a `id` egy egyedi GUID Azonosítót, és `displayName` és `value` nem tartalmazhat szóközt.
 1. A jegyzékfájl mentése.
 
-Tartalmának `appRoles` kell lennie a következő (a `id` lehet bármilyen egyedi GUID azonosítója)
+A következő minta bemutatja a tartalmát `appRoles`. (A `id` bármilyen egyedi GUID azonosító lehet.)
 
 ```JSon
 "appRoles": [
@@ -115,26 +115,26 @@ Tartalmának `appRoles` kell lennie a következő (a `id` lehet bármilyen egyed
 ],
 ```
 
-#### <a name="how-to-ensure-that-azure-ad-issues-tokens-for-your-web-api-only-to-allowed-clients"></a>Hogyan ellenőrizhető, hogy az Azure AD jogkivonatokat a webes API-hoz csak engedélyezett ügyfelek
+#### <a name="ensuring-that-azure-ad-issues-tokens-for-your-web-api-to-only-allowed-clients"></a>Annak biztosítása, hogy az Azure AD jogkivonatokat a webes API-t csak engedélyezett ügyfelek
 
-Az alkalmazás-szerepkör (Ez a fejlesztői módja nagyon) ellenőrzi a webes API-t. De jogkivonatok kiállítása a webes API-hoz csak az API eléréséhez a bérlői rendszergazda által jóváhagyott alkalmazások az Azure Active Directory is konfigurálhatja. A további biztonsági hozzáadása:
+A webes API ellenőrzi az alkalmazás-szerepkör. (Ez a fejlesztői módja Alkalmazásengedélyek elérhetővé.) De a webes API-hoz jogkivonatok kiállítása csak az API eléréséhez a bérlői rendszergazda által jóváhagyott alkalmazások az Azure ad-ben is beállítható. A fokozott biztonság hozzáadása:
 
-1. Az alkalmazás **áttekintése** az alkalmazás regisztrációs lapra, jelölje be az alkalmazás nevére a hivatkozás **felügyelt alkalmazás a helyi címtárban**. Ez a mező címét levágása. Megteheti például, olvassa el: `Managed application in ...`
+1. Az alkalmazás **áttekintése** az alkalmazás regisztrációs lapra, jelölje be a hivatkozás alatt az alkalmazás nevével **felügyelt alkalmazás a helyi címtárban**. Előfordulhat, hogy csonkolja a cím mezőhöz. Például előfordulhat, hogy, lásd **felügyelt alkalmazás a...**
 
    > [!NOTE]
    >
-   > Ha bejelöli ezt a hivatkozást fog váltani a **vállalati alkalmazás áttekintése** a szolgáltatásnevet, a bérlőben, amelyben létrehozta az alkalmazáshoz társított oldal. A böngésző Vissza gomb használatával az alkalmazás regisztrációs oldalra navigálhat.
+   > Amikor kiválasztja ezt a hivatkozást, kattintva megnyithatja a **vállalati alkalmazás áttekintése** a szolgáltatásnevet, a bérlőben, amelyben létrehozta az alkalmazáshoz társított oldal. A böngésző Vissza gomb használatával az alkalmazás regisztrációs oldalra navigálhat.
 
-1. Válassza ki a **tulajdonságok** lapját a **kezelés** szakasz a vállalati alkalmazás lapok
-1. Ha azt szeretné, hogy aad-ben való hozzáférés kikényszerítéséhez a webes API-nak csak egyes ügyfelek, **kell felhasználó-hozzárendelés?** való **Igen**.
+1. Válassza ki a **tulajdonságok** lapját a **kezelés** a vállalati alkalmazás lapok szakaszában.
+1. Ha azt szeretné, hogy engedélyezi a hozzáférést a webes API-hoz csak egyes ügyfelek az Azure AD, **kell felhasználó-hozzárendelés?** való **Igen**.
 
    > [!IMPORTANT]
    >
-   > Beállításával **kell felhasználó-hozzárendelés?** való **Igen**, AAD ellenőrizni fogja az ügyfelek az alkalmazás szerepkör-hozzárendeléseit, amikor azok a hozzáférési jogkivonatot a webes API-hoz. Ha az ügyfél nem volt rendelve bármely AppRoles, aad-ben csak a következő hibát adna vissza: `invalid_client: AADSTS501051: Application xxxx is not assigned to a role for the xxxx`
+   > Ha **kell felhasználó-hozzárendelés?** való **Igen**, az Azure AD ellenőrizni fogja az ügyfelek a szerepkör-hozzárendeléseit, amikor azok a hozzáférési jogkivonatot a webes API-hoz. Ha az ügyfél nincs hozzárendelve egyetlen alkalmazás-szerepkör, az Azure AD vissza, a hiba `invalid_client: AADSTS501051: Application <application name> is not assigned to a role for the <web API>`.
    >
-   > Ha a **kell felhasználó-hozzárendelés?** való **nem**, <span style='background-color:yellow; display:inline'>Azure ad-ben nem ellenőrizze a szerepkör-hozzárendeléseit, amikor egy ügyfél hozzáférési jogkivonatot kér a webes API</span>. Ezért (az ügyfélhitelesítő adatok folyamata segítségével bármely ügyfél) démon ügyfelek továbbra is tudná hozzáférési jogkivonat beszerzése az API-hoz csak a célközönség megadásával. Bármely alkalmazás tudná az API eléréséhez a hozzá tartozó engedélyek kérése nélkül. Most, ez a lehetőség nem majd végén, a webes API mindig, a következő szakaszban leírtak szerint ellenőrizheti, hogy rendelkezik-e az alkalmazás a megfelelő szerepkör (amely a bérlői rendszergazda által engedélyezett volt), ellenőrzi, hogy rendelkezik-e a hozzáférési jogkivonat egy `roles` jogcímet, és a megfelelő érték t kérelmét (esetünkben megan `access_as_application`).
+   > Ha a **kell felhasználó-hozzárendelés?** beállítása **nem**, *Azure ad-ben nem ellenőrizze a szerepkör-hozzárendeléseit, amikor egy ügyfél a webes API-hoz egy hozzáférési jogkivonatot kér*. Bármely démon ügyfél (azaz bármely ügyfél az ügyfélhitelesítő adatok folyamata segítségével) fogja tudni hozzáférési jogkivonat beszerzése az API-hoz csak a célközönség megadásával. Bármely alkalmazás fogja tudni az API eléréséhez a hozzá tartozó engedélyek kérése nélkül. De a webes API mindig, az előző szakaszban leírtak szerint ellenőrizheti, hogy az alkalmazás rendelkezik-e a megfelelő szerepkör (amely a bérlői rendszergazda által engedélyezett). Az API-t az ellenőrzést végez ellenőrzése, hogy a hozzáférési jogkivonat rendelkezik-e a szerepkörök és a kérelmet, hogy ez a jogcím értéke helyes-e. (Ebben az esetben az értéke `access_as_application`.)
 
-1. Válassza ki **mentése**
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="next-steps"></a>További lépések
 

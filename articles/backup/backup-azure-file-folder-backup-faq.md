@@ -5,34 +5,30 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 07/02/2019
 ms.author: dacurwin
-ms.openlocfilehash: 56dc87b1cdf36d761c46133004a05f8fa225a091
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d4d1044a30d4ebc551cf1305993aba2a201c4c94
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808293"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514451"
 ---
-# <a name="common-questions-about-backing-up-files-and-folders"></a>Fájlok és mappák biztonsági mentésével kapcsolatos gyakori kérdések 
+# <a name="common-questions-about-backing-up-files-and-folders"></a>Fájlok és mappák biztonsági mentésével kapcsolatos gyakori kérdések
 
 Ez a cikk gyakori kérdésekre adott válaszok abound biztonsági mentése a fájlok és mappák, a Microsoft Azure Recovery Services-(MARS) ügynökkel az rendelkezik a [Azure Backup](backup-overview.md) szolgáltatás.
 
 ## <a name="general"></a>Általános kérdések
 
-### <a name="why-does-the-mars-agent-need-net-framework-452-or-higher"></a>Miért a MARS-ügynök kell .NET-keretrendszer 4.5.2-es vagy újabb verziója?
-
-Elérhető az új funkciók [azonnali helyreállítás](backup-azure-restore-windows-server.md#use-instant-restore-to-recover-data-to-the-same-machine) szüksége van a .NET-keretrendszer 4.5.2-es vagy újabb verziója.
-
 ## <a name="configure-backups"></a>Biztonsági mentések konfigurálása
 
-### <a name="where-can-i-download-the-latest-version-of-the-mars-agent"></a>Ahonnan letöltheti a MARS-ügynök legújabb verzióját? 
-A legújabb MARS-ügynök, amikor Windows Serveres gépek, a System Center DPM és a Microsoft Azure Backup server biztonsági mentésével érhető el az [letöltése](https://aka.ms/azurebackup_agent). 
+### <a name="where-can-i-download-the-latest-version-of-the-mars-agent"></a>Ahonnan letöltheti a MARS-ügynök legújabb verzióját?
+A legújabb MARS-ügynök, amikor Windows Serveres gépek, a System Center DPM és a Microsoft Azure Backup server biztonsági mentésével érhető el az [letöltése](https://aka.ms/azurebackup_agent).
 
 ### <a name="how-long-are-vault-credentials-valid"></a>Mennyi ideig vannak a tároló hitelesítő adatainak érvényes?
 A tároló hitelesítő adatai 48 óra után lejárnak. Ha lejár a hitelesítőadat-fájlja, töltse le a fájlt újra az Azure Portalról.
 
-### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>Milyen meghajtókról készíthetek biztonsági másolatot fájlokhoz és mappákhoz? 
+### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>Milyen meghajtókról készíthetek biztonsági másolatot fájlokhoz és mappákhoz?
 
 Nem lehet biztonsági másolatot készíteni a következő típusú meghajtókat és a kötetek:
 
@@ -45,29 +41,20 @@ Nem lehet biztonsági másolatot készíteni a következő típusú meghajtókat
 
 ### <a name="what-file-and-folder-types-are-supported"></a>Milyen fájl- és típusok támogatottak?
 
-A következő típusok támogatottak:
-
-* Titkosított
-* Tömörített
-* Ritka
-* Tömörített + ritka
-* A rögzített hivatkozások: Nem támogatott, átugorva
-* Újraelemzési pont: Nem támogatott, átugorva
-* Titkosított + ritka: Nem támogatott, átugorva
-* Tömörített Stream: Nem támogatott, átugorva
-* Újraelemzési pontok, beleértve az elosztott Fájlrendszeri hivatkozásokat és a csatlakozási pontok
-
+[További](backup-support-matrix-mars-agent.md#supported-file-types-for-backup) fájlok és mappák biztonsági mentésének támogatott típusaival kapcsolatban.
 
 ### <a name="can-i-use-the-mars-agent-to-back-up-files-and-folders-on-an-azure-vm"></a>A MARS-ügynök használatával fájlok és mappák biztonsági mentése az Azure virtuális gépen?  
-Igen. Az Azure Backup Virtuálisgép-szintű biztonsági mentést biztosít az Azure virtuális gépek a VM-bővítmény használata az Azure-beli Virtuálisgép-ügynök. Ha azt szeretné, a fájlok és mappák biztonsági mentése a virtuális gép vendég Windows operációs rendszeren, ehhez a MARS-ügynök is telepítheti. 
+Igen. Az Azure Backup Virtuálisgép-szintű biztonsági mentést biztosít az Azure virtuális gépek a VM-bővítmény használata az Azure-beli Virtuálisgép-ügynök. Ha azt szeretné, a fájlok és mappák biztonsági mentése a virtuális gép vendég Windows operációs rendszeren, ehhez a MARS-ügynök is telepítheti.
 
-### <a name="can-i-use-the-mars-agent-to-back-up-files-and-folders-on-temporary-storage-for-the-azure-vm"></a>A MARS-ügynök használatával fájlok és mappák biztonsági mentése az ideiglenes tároló az Azure virtuális gép? 
-Igen. Telepítse a MARS-ügynök, és a fájlok és mappák biztonsági mentése a vendég Windows operációs rendszeren egy ideiglenes tárolóra. – Biztonsági mentési feladat sikertelen kapcsolatos ideiglenes tároló adatait törli.
+### <a name="can-i-use-the-mars-agent-to-back-up-files-and-folders-on-temporary-storage-for-the-azure-vm"></a>A MARS-ügynök használatával fájlok és mappák biztonsági mentése az ideiglenes tároló az Azure virtuális gép?
+Igen. Telepítse a MARS-ügynök, és a fájlok és mappák biztonsági mentése a vendég Windows operációs rendszeren egy ideiglenes tárolóra.
+
+- Biztonsági mentési feladat sikertelen, amikor az ideiglenes tároló adatait törli.
 - Ha az ideiglenes tároló adatait törli, csak visszaállíthatja állandó tárolóba.
 
 ### <a name="how-do-i-register-a-server-to-another-region"></a>Hogyan regisztrálhatom a kiszolgáló egy másik régióban?
 
-Biztonsági mentési adatokat a tároló, amelyben a kiszolgáló regisztrálva van az Adatközpont érkezik. Az Adatközpont módosításának legegyszerűbb módja eltávolítása, majd telepítse újra az ügynököt, majd pedig regisztrálhatja az új tárolóra a gép van szüksége a régióban
+Biztonsági mentési adatokat a tároló, amelyben a kiszolgáló regisztrálva van az Adatközpont érkezik. Az Adatközpont módosításának legegyszerűbb módja eltávolítása, majd telepítse újra az ügynököt, majd pedig regisztrálhatja az új tárolóra a gép van szüksége a régióban.
 
 ### <a name="does-the-mars-agent-support-windows-server-2012-deduplication"></a>A MARS-ügynök támogatás Windows Server 2012 adatdeduplikáció nem?
 Igen. A MARS-ügynök átalakítja a deduplikált adatokat normális adatokká, amikor előkészíti a biztonsági mentési műveletet. Majd optimalizálja az adatokat a biztonsági mentéshez, titkosítja az adatokat és ezután elküldi a titkosított adatokat a tárolóba.
@@ -80,7 +67,7 @@ Ha átnevez egy Windows-gépen, minden aktuálisan konfigurált biztonsági ment
 
 - Szeretne regisztrálni a számítógép új nevét a Backup-tárolóban.
 - Ha regisztrálja az új nevet a tárolóval, az első művelet van egy *teljes* biztonsági mentés.
-- Ha a régi kiszolgálónévvel a tárolóba mentett adatok helyreállítása van szüksége, használja a a lehetőséget az adat-helyreállító varázslóban egy másodlagos helyre történő helyreállításához. [További információk](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine). 
+- Ha a régi kiszolgálónévvel a tárolóba mentett adatok helyreállítása van szüksége, használja a a lehetőséget az adat-helyreállító varázslóban egy másodlagos helyre történő helyreállításához. [További információk](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>Mi a fájl maximális elérési út hossza biztonsági mentés?
 A MARS-ügynök az NTFS támaszkodik, és használja a fájl elérési útja hossz-specifikációját korlátozza a [Windows API](/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths). Ha a védeni kívánt fájlok hosszabb, mint az engedélyezett értéket, készítsen biztonsági másolatot a mappa vagy a lemezmeghajtóról készítse.  
@@ -143,8 +130,8 @@ A következő attribútumok vagy kombinációik nem támogatottak a gyorsítót�
 Sem a gyorsítótármappa, sem a metaadatok virtuális merevlemez-meghajtója nem rendelkezik a szükséges attribútumokkal az Azure Backup-ügynökhöz.
 
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>Van mód a biztonsági mentéshez használt sávszélesség nagyságának?
- 
-Igen, használhatja a **tulajdonságainak módosítása** lehetőség a MARS-ügynök a sávszélességet és az időzítési beállításához. [További](backup-configure-vault.md#enable-network-throttling)**.
+
+Igen, használhatja a **tulajdonságainak módosítása** lehetőség a MARS-ügynök a sávszélességet és az időzítési beállításához. [További információk](backup-configure-vault.md#enable-network-throttling).
 
 ## <a name="restore"></a>Visszaállítás
 

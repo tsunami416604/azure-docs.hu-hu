@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: allensu
-ms.openlocfilehash: 7aee68ef41b696549aa1db4386d467b55cd2d981
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8df1c29bc5230e925d05be9fd356de050a9b0f06
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071072"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550359"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager végpont figyelése
 
@@ -102,7 +102,7 @@ A végpont állapota nem megfelelő, ha a következő események bármelyike el�
 - Ha a monitorozási protokoll HTTP vagy HTTPS:
     - Nem 200-as értékű választ, vagy egy választ, amely nem tartalmazza a megadott állapot tartomány a **állapot állapotkód-tartományok várható** (beleértve a különböző 2xx kódot, vagy 301/302 átirányítási) beállításnál érkezik.
 - Ha a monitorozási protokoll TCP: 
-    - Nem sikerült Nyugtát vagy külön – Nyugtázási válasz fogadása a SZINKRONIZÁLÁSI kísérlet egy kapcsolat létrehozása a Traffic Manager által küldött irányuló kérelemre adott válasz.
+    - Nem sikerült Nyugtát vagy külön – Nyugtázási válasz fogadása a Traffic Manager által küldött sikertelen bejelentkezési kísérletet egy kapcsolat létrehozása a szinkronizálás a mi irányuló kérelemre adott válasz.
 - Az időkorlát. 
 - Bármely más kapcsolati probléma eredményez a végpont nem érhető el.
 
