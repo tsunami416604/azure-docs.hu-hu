@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 1f808161087dff614ef83aacc606501bce96d3eb
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 039b1628571b786a4997c08f96cc9aa0f347c7f7
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155132"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446704"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Oracle-adatbázis tervezése és megvalósítása az Azure-ban
 
@@ -147,7 +147,7 @@ A hálózati sávszélesség-követelmények alapján, közül választhat a kü
 - A virtuális gépek használata [gyorsított hálózatkezelés](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) jobb hálózati teljesítmény.
 - Az egyes Linux distrubutions, érdemes lehet engedélyezni az [TRIM/UNMAP támogatási](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support).
 - Telepítés [Oracle Enterprise Managert](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) egy különálló virtuális gépen.
-- Nagyon nagy lapok vannak linux rendszeren alapértelmezés szerint nincs engedélyezve. Érdemes lehet engedélyezni az hatalmas lapokat, és állítsa be `use_large_pages = ONLY ` az Oracle dB-ben. Ez segíthet a teljesítmény növelése érdekében. További információ található [Itt](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390).
+- Nagyon nagy lapok vannak linux rendszeren alapértelmezés szerint nincs engedélyezve. Érdemes lehet engedélyezni az hatalmas lapokat, és állítsa be `use_large_pages = ONLY` az Oracle dB-ben. Ez segíthet a teljesítmény növelése érdekében. További információ található [Itt](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390).
 
 ### <a name="disk-types-and-configurations"></a>Lemeztípusok és konfigurációk
 

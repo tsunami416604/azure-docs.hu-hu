@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 47cd0621a601e3f1ef53572bc7bb8bc1c7ea76ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cd75ba9d407399703a382596019d5f370808b20a
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991997"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543665"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>Service Bus-üzenettémák és előfizetések használata pythonnal
 
@@ -79,9 +79,9 @@ bus_service.create_topic('mytopic', topic_options)
 Témakörök, előfizetések is jönnek létre az a **ServiceBusService** objektum. Előfizetés neve, és rendelkezhetnek olyan szűrőkkel, amelyek az előfizetés virtuális üzenetsorának üzenetet korlátoz.
 
 > [!NOTE]
-> Előfizetések állandó, és továbbra is megmarad, amíg azokat, vagy a témakört, amelyre előfizetett, a rendszer törli.
+> Alapértelmezés szerint az előfizetések állandó, és továbbra is megmarad, amíg azokat, vagy a témakört, amelyre előfizetett, a rendszer törli.
 > 
-> 
+> Használhat az előfizetéseket, azzal automatikusan törli a [auto_delete_on_idle tulajdonság](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python).
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Előfizetés létrehozása az alapértelmezett (MatchAll) szűrővel
 
@@ -95,7 +95,7 @@ bus_service.create_subscription('mytopic', 'AllMessages')
 
 Is meghatározhat szűrőket, amelyek lehetővé teszik annak meghatározását, amely egy témakörbe küldött üzenetek egy adott témakör-előfizetésben kell megjeleníteni.
 
-A legrugalmasabb típusú szűrő előfizetések által támogatott egy **SqlFilter**, amely megvalósítja az SQL92 egy részhalmazát. Az SQL-szűrők az üzenettémába közzétett üzenetek tulajdonságain működnek. Az SQL-szűrőkkel használható kifejezésekkel kapcsolatos további információkat az [SqlFilter.SqlExpression][SqlFilter.SqlExpression] szintaxisa tartalmaz.
+A legrugalmasabb típusú szűrő előfizetések által támogatott egy **SqlFilter**, amely megvalósítja az SQL92 egy részhalmazát. Az SQL-szűrők az üzenettémába közzétett üzenetek tulajdonságain működnek. Az SQL-szűrőkkel használható kifejezésekkel kapcsolatos további információkért lásd az [SqlFilter.SqlExpression][SqlFilter.SqlExpression] szintaxisát.
 
 Az előfizetéshez szűrők is hozzáadhat a **létrehozása\_szabály** módszere a **ServiceBusService** objektum. Ez a módszer lehetővé teszi új szűrőket hozzáadni egy meglévő előfizetéshez.
 
@@ -178,7 +178,7 @@ Abban az esetben, ha az alkalmazás összeomlik, mielőtt azonban az üzenet fel
 
 ## <a name="delete-topics-and-subscriptions"></a>Témakörök és előfizetések törlése
 
-Üzenettémák és előfizetések állandóak, és explicit módon kell-e törölve keresztül a [az Azure portal] [ Azure portal] vagy programozott módon. Az alábbi példa bemutatja, hogyan lehet törölni a témakör nevű `mytopic`:
+Üzenettémák és előfizetések állandóak, kivéve, ha a [auto_delete_on_idle tulajdonság](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) van beállítva. Ezek lehetnek keresztül törölve a [az Azure portal][Azure portal] vagy programozott módon. Az alábbi példa bemutatja, hogyan lehet törölni a témakör nevű `mytopic`:
 
 ```python
 bus_service.delete_topic('mytopic')

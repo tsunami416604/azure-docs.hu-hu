@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 214462977c160685a943cb64c517da37d96d8e47
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bc67fb216451bd19fe8cfb327c101aa989228b01
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057360"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536911"
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>LDAP-hitelesítés és Azure multi-factor Authentication-kiszolgáló
 
@@ -25,7 +25,7 @@ Alapértelmezés szerint az Azure Multi-Factor Authentication-kiszolgáló úgy 
 Használja az Azure multi-factor Authentication LDAP-proxyként, helyezze be az Azure multi-factor Authentication kiszolgáló az LDAP-ügyfél (például VPN-készülék, alkalmazás) és az LDAP-címtárkiszolgáló között. Az Azure Multi-Factor Authentication-kiszolgálót úgy kell konfigurálni, hogy az ügyfélkiszolgálókkal és az LDAP-címtárral is kommunikáljon. Ebben a konfigurációban az Azure Multi-Factor Authentication-kiszolgáló fogadja az ügyfélkiszolgálóktól és alkalmazásoktól érkező LDAP-kéréseket, majd továbbítja őket a cél LDAP-címtárkiszolgálónak az elsődleges hitelesítő adatok ellenőrzéséhez. Az LDAP-címtár érvényesíti az elsődleges hitelesítő adatokat, ha az Azure multi-factor Authentication második személyazonosság-ellenőrzést hajt végre, és visszaküldi a választ az LDAP-ügyfél. A teljes hitelesítés csak akkor lesz sikeres, ha az LDAP-kiszolgálón való hitelesítés és a kétlépéses hitelesítés is sikeres.
 
 > [!IMPORTANT]
-> 2019\. július 1-től a Microsoft már nem szavatolnak MFA-kiszolgáló az új üzembe helyezésekhez. Új felhasználókat szeretné a felhasználóktól többtényezős hitelesítést kell használnia a felhőalapú Azure multi-factor Authentication. Meglévő ügyfeleink, akik aktiválták az MFA-kiszolgáló előtt július 1 lesz a legújabb verzió, a jövőbeli frissítések letöltéséhez és a szokásos módon aktiváló hitelesítő adatok előállítása.
+> 2019. július 1-től a Microsoft már nem szavatolnak MFA-kiszolgáló az új üzembe helyezésekhez. Új felhasználókat szeretné a felhasználóktól többtényezős hitelesítést kell használnia a felhőalapú Azure multi-factor Authentication. Meglévő ügyfeleink, akik aktiválták az MFA-kiszolgáló előtt július 1 lesz a legújabb verzió, a jövőbeli frissítések letöltéséhez és a szokásos módon aktiváló hitelesítő adatok előállítása.
 
 ## <a name="configure-ldap-authentication"></a>LDAP-hitelesítés konfigurálása
 
@@ -49,6 +49,9 @@ További LDAP-ügyfelek hozzáadásához ismételje meg ezeket a lépéseket.
 ### <a name="configure-the-ldap-directory-connection"></a>Az LDAP-címtár kapcsolatának konfigurálása
 
 Ha az Azure Multi-Factor Authentication LDAP-hitelesítések fogadására van konfigurálva, a hitelesítéseket az LDAP-címtárnak kell proxykapcsolaton keresztül átadnia. Ezért a Cél lapon csak egyetlen, szürkén megjelenő lehetőség látható LDAP-cél használatához.
+
+> [!NOTE]
+> Címtár-integráció a könyvtárak eltérő Active Directory Domain Services működése nem garantált.
 
 1. Az LDAP-címtár kapcsolatának konfigurálásához kattintson a **Címtár-integráció** ikonra.
 2. A Beállítások lapon jelölje be a **Megadott LDAP-konfiguráció használata** választógombot.

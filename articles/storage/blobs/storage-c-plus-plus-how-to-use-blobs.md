@@ -9,12 +9,12 @@ ms.date: 03/21/2018
 ms.author: mhopkins
 ms.reviewer: seguler
 ms.subservice: blobs
-ms.openlocfilehash: 519190b6aeb313f25eddd717bce1a72148c8c518
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 32601fc15e6b6a25a1005b6d95499d4aae4fb0d2
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148455"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461183"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>A c++ segítségével Blob storage használata
 
@@ -68,7 +68,7 @@ Az Azure storage emulator indításához válassza ki a **Start** gombra vagy ny
 
 Az alábbi minták azt feltételezik, hogy az ezen két módszer egyikével kérte le a Storage kapcsolati sztringjét.  
 
-## <a name="retrieve-your-connection-string"></a>A kapcsolati sztring lekérése
+## <a name="retrieve-your-storage-account"></a>A storage-fiók beolvasása
 Használhatja a **cloud_storage_account** osztály, amely a Storage-fiók adatait jelöli. A Storage-fiók információit a **parse** metódussal kérheti le a Storage kapcsolati sztringjéből.  
 
 ```cpp

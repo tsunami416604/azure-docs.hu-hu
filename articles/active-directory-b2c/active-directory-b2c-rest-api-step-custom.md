@@ -1,5 +1,5 @@
 ---
-title: REST API-jogcímek cseréje – Azure Active Directory B2C |} A Microsoft Docs
+title: REST API-jogcímek cseréje – Azure Active Directory B2C-vel
 description: Adja hozzá az Active Directory B2C-vel egyéni szabályzatok REST API-val jogcím cseréje.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bc0cea765816bfac066b05aca65f668fbce0c8ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0bdef508e12a3b11143149b330da73838b53f860
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508768"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439015"
 ---
 # <a name="add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Adja hozzá a REST API-val jogcím cseréje az Azure Active Directory B2C-vel egyéni szabályzatok
 
@@ -28,7 +28,7 @@ A kapcsolati a jogcímek az exchange között a REST API-jogcímek és az Azure 
 - Megtervezhetők úgy, mint egy vezénylési lépés.
 - Egy külső műveletet is indíthat. Például a külső adatbázis azt is naplózhat egy eseményt.
 - Olyan érték beolvasása, és tárolja a felhasználói adatbázis használható.
-- Módosíthatja a folyamat végrehajtása. 
+- Módosíthatja a folyamat végrehajtása.
 
 A forgatókönyv, amely ebben a cikkben szerepel az alábbi műveleteket tartalmazza:
 
@@ -45,9 +45,16 @@ A forgatókönyv, amely ebben a cikkben szerepel az alábbi műveleteket tartalm
 
 Ebben a szakaszban az Azure-függvény értéket kap előkészítése `email`, és visszaadja az érték `city` , amely használható az Azure AD B2C által jogcímként.
 
-Módosítsa a run.csx fájlt az Azure-függvény, amely létrehozta a következő kóddal: 
+Módosítsa a run.csx fájlt az Azure-függvény, amely létrehozta a következő kóddal:
 
-```
+```csharp
+#r "Newtonsoft.Json"
+
+using System.Net;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
+using Newtonsoft.Json;
+
 public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 {
   log.LogInformation("C# HTTP trigger function processed a request.");
@@ -77,9 +84,9 @@ public class ResponseContent
 
 ## <a name="configure-the-claims-exchange"></a>A jogcímek az exchange konfigurálása
 
-A technikai profil biztosít a konfiguráció a jogcím Exchange-hez. 
+A technikai profil biztosít a konfiguráció a jogcím Exchange-hez.
 
-Nyissa meg a *TrustFrameworkExtensions.xml* fájlt, és adja hozzá a következő XML-elemeket belül a **ClaimsProvider** elemet.
+Nyissa meg a *TrustFrameworkExtensions.xml* fájlt, és adja hozzá a következő **ClaimsProvider** XML-elem található a **ClaimsProviders** elemet.
 
 ```XML
 <ClaimsProvider>
@@ -134,7 +141,7 @@ Lépés hozzáadása a profil szerkesztése felhasználói interakciósorozat. M
 ```XML
 <OrchestrationStep Order="6" Type="ClaimsExchange">
   <ClaimsExchanges>
-    <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-LookUpLoyaltyWebHook" />
+    <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-WebHook" />
   </ClaimsExchanges>
 </OrchestrationStep>
 ```
@@ -188,7 +195,7 @@ A felhasználói út tartalomdefinícióinak végső XML példához hasonlóan k
     <!-- Add a step 6 to the user journey before the JWT token is created-->
     <OrchestrationStep Order="6" Type="ClaimsExchange">
       <ClaimsExchanges>
-        <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-LookUpLoyaltyWebHook" />
+        <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-WebHook" />
       </ClaimsExchanges>
     </OrchestrationStep>
     <OrchestrationStep Order="7" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
@@ -204,13 +211,15 @@ Szerkessze a *ProfileEdit.xml* fájlt, és `<OutputClaim ClaimTypeReferenceId="c
 Az új jogcímet ad hozzá, miután a technikai profil példához hasonlóan néz ki:
 
 ```XML
-<DisplayName>PolicyProfile</DisplayName>
-    <Protocol Name="OpenIdConnect" />
-    <OutputClaims>
-      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
-      <OutputClaim ClaimTypeReferenceId="city" />
-    </OutputClaims>
-    <SubjectNamingInfo ClaimType="sub" />
+<TechnicalProfile Id="PolicyProfile">
+  <DisplayName>PolicyProfile</DisplayName>
+  <Protocol Name="OpenIdConnect" />
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+    <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+    <OutputClaim ClaimTypeReferenceId="city" />
+  </OutputClaims>
+  <SubjectNamingInfo ClaimType="sub" />
 </TechnicalProfile>
 ```
 

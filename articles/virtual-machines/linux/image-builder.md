@@ -7,12 +7,12 @@ ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: 854645af95d780053d94668921e41ac189bbbfb7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 345b10a0d66456d795a63e3aacd941ade0e0159c
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65159510"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67467000"
 ---
 # <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>Előzetes verzió: Linux rendszerű virtuális gép létrehozása az Azure az Image Builder
 
@@ -21,6 +21,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy testre szabott Linux-rendszerképe
 - Letöltések és a futtatások rendszerhéj (ScriptUri) – egy [héjszkript](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript.sh).
 - Rendszerhéj (beágyazott) - parancsok futtatása. Ebben a példában a soron belüli parancsokat tartalmazza, létrehoz egy könyvtárat, és az operációs rendszer frissítése.
 - Fájl - példányt egy [fájlt a Githubról](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) , a virtuális gépen egy olyan könyvtárba.
+
 
 Fogjuk használni .json mintasablon a kép konfigurálása. Itt van a .json fájlt használjuk: [helloImageTemplateLinux.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json). 
 
@@ -57,7 +58,7 @@ az provider register -n Microsoft.VirtualMachineImages
 az provider register -n Microsoft.Storage
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="setup-example-variables"></a>Példa változók beállítása
 
 Fogjuk használni néhány információt ismételten, ezért hozunk létre változókat, amelyek adott információk tárolására.
 
@@ -79,14 +80,17 @@ Hozzon létre egy változót az előfizetés-azonosítóhoz. A használatával l
 subscriptionID=<Your subscription ID>
 ```
 
-Hozza létre az erőforráscsoportot.
+## <a name="create-the-resource-group"></a>Hozza létre az erőforráscsoportot.
+Ez a rendszerkép konfigurációs sablon összetevő és a lemezkép tárolására szolgál.
 
 ```azurecli-interactive
 az group create -n $imageResourceGroup -l $location
 ```
 
+## <a name="set-permissions-on-the-resource-group"></a>Az erőforráscsoport engedélyeinek beállítása
+Engedélyt az Image Builder "közreműködői" erőforráscsoporthoz tartozik, a lemezkép létrehozásához. A rendszerkép összeállítását a megfelelő engedélyek nélkül sikertelen lesz. 
 
-Az Image Builder engedélyt az adott erőforráscsoportba tartozó erőforrások létrehozásához. A `--assignee` értéke az Image Builder szolgáltatás regisztrációs Azonosítót. 
+A `--assignee` értéke az Image Builder szolgáltatás regisztrációs Azonosítót. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -95,9 +99,9 @@ az role assignment create \
     --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
 ```
 
-## <a name="download-the-json-example"></a>Töltse le a .json példa
+## <a name="download-the-template-example"></a>A sablon példa letöltése
 
-Töltse le a példában .JSON kiterjesztésű fájlt, és konfigurálja azt a létrehozott változókat.
+Paraméteres lemezkép configuration mintasablon létrejött kell használni. Töltse le a minta .json fájlt, és konfigurálja azt a korábban beállított változókat.
 
 ```azurecli-interactive
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json -o helloImageTemplateLinux.json
@@ -109,7 +113,19 @@ sed -i -e "s/<imageName>/$imageName/g" helloImageTemplateLinux.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateLinux.json
 ```
 
-## <a name="create-the-image"></a>A rendszerkép létrehozása
+Ebben a példában .json igény szerint módosíthatja. Például értékének növelése `buildTimeoutInMinutes` hosszabb ideig futó buildek engedélyezésére. Szerkesztheti a fájlt a Cloud Shell használatával `vi`.
+
+```azurecli-interactive
+vi helloImageTemplateLinux.json
+```
+
+> [!NOTE]
+> A forrás lemezkép, meg kell mindig [adjon meg egy verziót](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure), nem használhat `latest`.
+>
+> Hozzáadásakor, vagy módosítsa az erőforráscsoport, a lemezkép terjesztési helyének, győződjön meg arról, hogy szüksége a [vannak beállítva az erőforráscsoport](#set-permissions-on-the-resource-group).
+
+
+## <a name="submit-the-image-configuration"></a>Küldje el a rendszerkép-konfiguráció
 Küldje el a rendszerkép-konfiguráció a virtuális gép az Image Builder-szolgáltatáshoz
 
 ```azurecli-interactive
@@ -121,7 +137,26 @@ az resource create \
     -n helloImageTemplateLinux01
 ```
 
+Ha sikeresen befejeződik, azt fogja adja vissza egy sikert jelző üzenettel, és hozzon létre egy rendszerképet a jelentéskészítő konfigurációs sablon összetevőt a $imageResourceGroup. Az erőforráscsoportot a portálon megtekintheti, ha engedélyezi a "Rejtett típusok megjelenítése".
+
+Emellett a háttérben, az Image Builder erőforráscsoportot hoz létre egy átmeneti az előfizetésében. Az Image Builder a rendszerkép összeállítását az átmeneti erőforráscsoportot használ. Az erőforráscsoport nevét a következő formátumban lesz: `IT_<DestinationResourceGroup>_<TemplateName>`.
+
+> [!IMPORTANT]
+> Az átmeneti erőforráscsoport ne törölje közvetlenül. Ha törli a lemezképet sablon összetevő, automatikusan törli az előkészítési erőforráscsoportot. További információkért lásd: a [tisztítása](#clean-up) szakaszban Ez a cikk végén található.
+
+Ha a szolgáltatás a kép konfigurációs sablon elküldése közben. hibát jelez, tekintse meg a [hibaelhárítási](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting) lépéseket. A sablon törlése, mielőtt ismét megpróbálkozik a build elküldése is kell. A sablon törlése:
+
+```azurecli-interactive
+az resource delete \
+    --resource-group $imageResourceGroup \
+    --resource-type Microsoft.VirtualMachineImages/imageTemplates \
+    -n helloImageTemplateLinux01
+```
+
+## <a name="start-the-image-build"></a>Indítsa el a rendszerkép összeállítását
+
 Indítsa el a rendszerkép összeállítását.
+
 
 ```azurecli-interactive
 az resource invoke-action \
@@ -131,7 +166,9 @@ az resource invoke-action \
      --action Run 
 ```
 
-Várjon, amíg a build elkészült. Ez nagyjából 15 percet is igénybe vehet.
+Várjon, amíg a build elkészült, ebben a példában, 10 – 15 percet is igénybe vehet.
+
+Ha hibát észlel, tekintse át ezeket [hibaelhárítási](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting) lépéseket.
 
 
 ## <a name="create-the-vm"></a>Virtuális gép létrehozása
@@ -179,14 +216,20 @@ További részletes információ a ezt a .json fájlt, tekintse meg a [Image bui
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-Ha elkészült, törölheti az erőforrást.
+Amikor elkészült, törölheti az erőforrásokat.
+
+A kép builder sablon törlése.
 
 ```azurecli-interactive
 az resource delete \
     --resource-group $imageResourceGroup \
     --resource-type Microsoft.VirtualMachineImages/imageTemplates \
     -n helloImageTemplateLinux01
+```
 
+A kép az erőforráscsoport törlése.
+
+```bash
 az group delete -n $imageResourceGroup
 ```
 

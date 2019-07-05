@@ -12,12 +12,12 @@ ms.date: 5/14/2019
 author: swinarko
 ms.author: sawinark
 manager: craigg
-ms.openlocfilehash: a67436f09d6e28db8d19679e446ac4cf98383709
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f3d0aaee624bdba169f13313bb57a3ebe8075592
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65593800"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490058"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Az Azure-SSIS integrációs modul az Azure Active Directory-hitelesítés engedélyezése
 
@@ -146,17 +146,7 @@ Az Azure SQL Database felügyelt példánya támogatja a hoz létre egy adatbáz
 
 ### <a name="configure-azure-ad-authentication-for-azure-sql-database-managed-instance"></a>Az Azure SQL Database felügyelt példány az Azure AD-hitelesítés konfigurálása
 
-1.   Az Azure Portalon, válassza ki a **minden szolgáltatás** -> **SQL Server-kiszolgálók** a bal oldali navigációs sávon.
-
-2.   Válassza ki a felügyelt példány az Azure AD-hitelesítést kell konfigurálni.
-
-3.   Az a **beállítások** a panel, válassza ki a szakasz **Active Directory-rendszergazda**.
-
-4.   A parancssávon válassza ki a **rendszergazda beállítása**.
-
-5.   Válassza ki az Azure AD felhasználói fiók lehet végezni a kiszolgáló rendszergazdája, és válassza ki a **kiválasztása**.
-
-6.   A parancssávon válassza ki a **mentése**.
+Kövesse a [üzembe helyezése az Azure Active Directory-rendszergazda, a felügyelt példány](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-managed-instance).
 
 ### <a name="add-the-managed-identity-for-your-adf-as-a-user-in-azure-sql-database-managed-instance"></a>Adja hozzá a felügyelt identitás számára az ADF felhasználóként az Azure SQL Database felügyelt példánya
 
@@ -164,7 +154,7 @@ A következő lépéshez szükséges [Microsoft SQL Server Management Studio](h
 
 1.  SSMS elindításához.
 
-2.  Csatlakozhat a felügyelt példány az SQL/Active Directory-rendszergazdai fiók használatával.
+2.  A felügyelt példányhoz az SQL Server-fiókot, amely csatlakozik egy **SysAdmin (rendszergazda)** . Ez egy átmeneti korlátozás, amely a rendszer eltávolítja, miután az Azure AD kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) az Azure SQL Database felügyelt példánya lesz általánosan elérhető a Ha megpróbálja használni az Azure AD rendszergazdai fiókot létrehozni a bejelentkezési adatait a következő hiba jelenik meg: Msg 15247, szint 16, az állapot-1, 1 felhasználó sor felhasználónak nincs engedélye a művelet végrehajtására.
 
 3.  Az a **Object Explorer**, bontsa ki a **adatbázisok** -> **rendszeradatbázisok** mappát.
 

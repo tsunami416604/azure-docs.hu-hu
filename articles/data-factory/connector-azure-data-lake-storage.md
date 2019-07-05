@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/10/2019
+ms.date: 07/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 536d7a572eddc2cf75f6ce135c3cd4f4f2635416
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 9f60c6258da77c0aaa99d16e178f4b3531ce90d9
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203295"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509249"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Másolja az adatokat, vagy az Azure Data Lake Storage Gen2 Azure Data Factory használatával
 
@@ -115,7 +115,7 @@ Egyszerű szolgáltatásnév hitelesítése használatához kövesse az alábbi 
 >A lista mappákat a fiók szintjén, vagy a kapcsolat teszteléséhez, be kell állítania a szolgáltatásnév az engedély megadása az engedély **tárfiók IAM a "Storage-Blobadatok olvasója" engedéllyel rendelkező**. Ez igaz, ha használja a:
 >- **Másolás eszköz** a szerző másolási folyamat.
 >- **Data Factory felhasználói felülete** tesztelheti a kapcsolatot, és lépjen a mappák létrehozása alatt. 
->Ha a fiók szintjén engedély kapcsolatos elvárásainak, kihagyhatja kapcsolat tesztelése és a bemeneti elérési út manuális létrehozása alatt. A másolási tevékenység továbbra is működik, amíg az egyszerű szolgáltatás átmásolni a fájlokat a megfelelő engedéllyel rendelkező kapnak.
+>Ha kétségei vannak, létrehozása alatt a fiók szintjén engedély megadására vonatkozó hagyja ki a kapcsolat és a bemeneti engedély megadása a szülő elérési utat a Tallózás gombra, majd válassza a megadott elérési útja. Másolja a tevékenység működése, mindaddig, amíg az egyszerű szolgáltatás átmásolni a fájlokat a megfelelő engedéllyel rendelkező kapnak.
 
 Ezek a Tulajdonságok támogatottak a társított szolgáltatást:
 
@@ -169,7 +169,7 @@ Azure-erőforrás-hitelesítéshez használandó felügyelt identitások, köves
 >Listára mappákat a fiók szintjén, vagy a kapcsolat teszteléséhez, be kell állítania az engedély az engedély megadása a felügyelt identitás **IAM a "Storage-Blobadatok olvasója" engedéllyel rendelkező tárfiók**. Ez igaz, ha használja a:
 >- **Másolás eszköz** a szerző másolási folyamat.
 >- **Data Factory felhasználói felülete** tesztelheti a kapcsolatot, és lépjen a mappák létrehozása alatt. 
->Ha a fiók szintjén engedély kapcsolatos elvárásainak, kihagyhatja kapcsolat tesztelése és a bemeneti elérési út manuális létrehozása alatt. A másolási tevékenység továbbra is működik, amíg a felügyelt identitást kapnak a átmásolni a fájlokat a megfelelő engedéllyel rendelkező.
+>Ha kétségei vannak, létrehozása alatt a fiók szintjén engedély megadására vonatkozó hagyja ki a kapcsolat és a bemeneti engedély megadása a szülő elérési utat a Tallózás gombra, majd válassza a megadott elérési útja. Másolja a tevékenység működése, mindaddig, amíg az egyszerű szolgáltatás átmásolni a fájlokat a megfelelő engedéllyel rendelkező kapnak.
 
 >[!IMPORTANT]
 >Ha a PolyBase használatával adatok betöltése az Data Lake Storage Gen2 az SQL Data Warehouse, a Data Lake Storage Gen2 felügyelt identitás-hitelesítés használata esetén, győződjön meg arról is lépéseket 1. és 2 a [Ez az útmutató](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) 1) regisztrálja az SQL Adatbázis-kiszolgáló az Azure Active Directoryval (Azure AD) és 2) a Storage-Blobadatok Közreműködője szerepkör hozzárendelése az SQL Database-kiszolgáló; a Data Factory kezeli, a többi. Ha a Data Lake Storage Gen2 van konfigurálva az Azure Virtual Network-végponttal, az adatok betöltése a PolyBase használatával kell használnia felügyelt identitás hitelesítési PolyBase igényeinek megfelelően.

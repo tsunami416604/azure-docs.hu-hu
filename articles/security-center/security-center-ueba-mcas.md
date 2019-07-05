@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7ffb9684045031c5bca7a79a15db7cb16fc99e9b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: af7896ec4afaeefda7261542bf593a89a7bb9ae8
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60332397"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551789"
 ---
 # <a name="ueba-for-azure-resources-and-users"></a>Azure-erőforrások és -felhasználók UEBA-elemzése 
 
@@ -55,8 +55,8 @@ A Security Center támogatja a Cloud App Security rendellenességek észlelése 
 
 Ezek a riasztások alapértelmezés szerint engedélyezve vannak, de letilthatja azokat:
 
-1. Válassza ki a Security Center panel **biztonsági házirend**. Az előfizetés használatára szeretne átállni, kattintson a **beállításainak szerkesztése**.
-2.  Kattintson a **Fenyegetésészlelés**.
+1. Válassza ki a Security Center panel **díjszabási & beállítások** , és válassza ki a megfelelő előfizetést.
+2. Kattintson a **Fenyegetésészlelés**.
 3. Alatt **Integrációk engedélyezése**, törölje a jelet **engedélyezése a Microsoft Cloud App Security az adatok eléréséhez**, és kattintson a **mentése**.
 
    ![Fenyegetés-észlelési riasztás](./media/security-center-ueba-mcas/security-center-mcas-optout.png)

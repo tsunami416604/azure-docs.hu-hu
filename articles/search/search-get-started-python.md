@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Python és a REST API-k – Azure Search szolgáltatásban'
-description: Hozzon létre, betöltését és a Python, a Jupyter notebookok és az Azure Search REST API-index lekérdezése.
+title: 'Python rövid útmutató: Létrehozása, betöltése és lekérdezése az indexek az Azure Search REST API-k – Azure Search használatával'
+description: Azt ismerteti, hogyan-index létrehozása, adatok betöltése és a Python, a Jupyter notebookok és az Azure Search REST API-lekérdezések futtatásához.
 ms.date: 06/20/2019
 author: heidisteen
 manager: cgronlun
@@ -10,23 +10,23 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 227da2739216961dcd1f2fb8c643703a1b62e51a
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 613879abd4c5c09450b690b793500a99428cff29
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67302279"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485475"
 ---
-# <a name="quickstart-create-an-azure-search-index-using-jupyter-python-notebooks"></a>Gyors útmutató: Jupyter Python notebookok használatával egy Azure Search-index létrehozása
+# <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>Gyors útmutató: Az Azure Search-index létrehozása a Python, a Jupyter notebookok használatával
 > [!div class="op_single_selector"]
 > * [Python (REST)](search-get-started-python.md)
 > * [PowerShell (REST)](search-create-index-rest-api.md)
 > * [C#](search-create-index-dotnet.md)
-> * [Postman (REST)](search-fiddler.md)
+> * [Postman (REST)](search-get-started-postman.md)
 > * [Portál](search-create-index-portal.md)
 > 
 
-Létrehozó, betöltődik, és Python használatával Azure Search-index lekérdezése Jupyter notebook létrehozása és a [Azure Search REST API-k](https://docs.microsoft.com/rest/api/searchservice/). Ez a cikk azt ismerteti, hogyan hozhat létre egy notebookot lépésről lépésre, vág bele. Másik lehetőségként egy befejezett notebook futtatható. Ha szeretné letölteni, nyissa meg a[azure-aearch – python-samples-tárház](https://github.com/Azure-Samples/azure-search-python-samples).
+Létrehozó, betöltődik, és Python használatával Azure Search-index lekérdezése Jupyter notebook létrehozása és a [Azure Search REST API-k](https://docs.microsoft.com/rest/api/searchservice/). Ez a cikk azt ismerteti, hogyan hozhat létre egy notebookot lépésről lépésre, vág bele. Másik lehetőségként egy befejezett notebook futtatható. Ha szeretné letölteni, nyissa meg a[azure-search-python-samples-tárház](https://github.com/Azure-Samples/azure-search-python-samples).
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -46,7 +46,7 @@ A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-c
 
 1. A **beállítások** > **kulcsok**, a szolgáltatás a teljes körű rendszergazdai kulcs beszerzése. Nincsenek két felcserélhetők adminisztrációs kulcsot, az üzletmenet folytonosságának megadott abban az esetben egy vihető kell. Használható vagy az elsődleges vagy másodlagos kulcsot a kérések hozzáadása, módosítása és törlése objektumokat.
 
-![Egy HTTP-végpontját és hozzáférési kulcs lekérése](media/search-fiddler/get-url-key.png "HTTP végpontját és hozzáférési kulcs beszerzése")
+![Egy HTTP-végpontját és hozzáférési kulcs lekérése](media/search-get-started-postman/get-url-key.png "HTTP végpontját és hozzáférési kulcs beszerzése")
 
 Minden kérelemhez szükséges halasztása minden kérelemnél a szolgáltatásnak küldött api-kulcsát. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
@@ -275,7 +275,7 @@ Ez a lépés bemutatja, hogyan kérdezhet le egy index használatával a [Search
 
     ![Keresés az indexekben](media/search-get-started-python/search-index.png "keresés az indexekben")
 
-1. Próbálja meg néhány további lekérdezést példák betekintést nyerhet a szintaxis. A következő példákban cserélje le a keresési karakterlánc, és futtassa újból a keresési kérelmet. 
+1. Próbálja meg néhány további lekérdezést példák betekintést nyerhet a szintaxis. Lecserélheti a `searchstring` az alábbi példák és majd futtassa újból a keresési kérelmet. 
 
    Szűrő alkalmazásához: 
 

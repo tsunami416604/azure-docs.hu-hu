@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: d34da8928e06f04756e24f5cc3e4c430c2892f79
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 4f502984a09f81b5aaf0568c84b75832f8164151
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341585"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67541051"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Az Azure Cosmos DB .NET SDK-t az SQL API-hoz: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -48,13 +48,18 @@ ms.locfileid: "67341585"
 * Streamek támogatását. 
 * Frissített CosmosResponseMessage állapotkódot adja vissza, és csak throw kivétel, ha nem érkezik válasz-kiszolgálóról. 
 
+### <a name="a-name251251"></a><a name="2.5.1"/>2.5.1
+
+* SDK-k System.Net.Http most verzióegyezéseket határozzák meg a NuGet-csomag.
+* Lehetővé teszi egy másik régióba tartalék írási kérelmeket, ha az eredeti egyik meghibásodna.
+* Adja hozzá a munkamenet újrapróbálkozási házirend írni.
+
 ### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
 
 * Nyomkövetés versenyhelyzet a lekérdezéseket, amelyek okozott az üres lap javításai
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
 
-* SDK-k System.Net.Http verzióegyezéseket határozzák meg a NuGet-csomag
 * A LINQ-lekérdezések a Decimális pontosság mérete nagyobb.
 * Hozzáadott új osztályok CompositePath, CompositePathSortOrder, SpatialSpec, SpatialType és PartitionKeyDefinitionVersion
 * DocumentCollection a hozzáadott TimeToLivePropertyPath
@@ -379,6 +384,7 @@ Az Azure Cosmos DB egy kivont SDK használatával bármilyen kérelmeket a szolg
 
 | Version | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [2.5.1](#2.5.1) |2019. július 02 |--- |
 | [2.4.1](#2.4.1) |2019. június 20. |--- |
 | [2.4.0](#2.4.0) |2019. május 05. |--- |
 | [2.3.0](#2.3.0) |2019. április 04. |--- |

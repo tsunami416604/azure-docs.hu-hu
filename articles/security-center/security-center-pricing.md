@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/17/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 8f6f94fa8602dcc2b8eed19262f595cb18c40b57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 547aed05746cb3f6c73c420169c727cc98c4ac4f
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65968305"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551737"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>A Security Center Standard csomagra váltásával fokozott biztonságot érhet
 Az Azure Security Center egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít az Azure-ban, a helyszínen és egyéb felhőszolgáltatásokban futó számítási feladatokhoz. Átláthatóvá és ellenőrizhetővé hibrid felhőbeli számítási feladatokhoz, amely csökkenti a fenyegetéseket, és intelligens észlelés segít lépést tartani, gyorsan fejlődő kibertámadások aktív védelmet kínál.
@@ -28,7 +28,7 @@ Az Azure Security Center egységes biztonsági felügyeletet és fejlett fenyege
 A Security Center két szinten érhető el:
 
 - A **ingyenes** réteg minden Azure-előfizetés automatikusan engedélyezve van, és biztosítja a biztonsági házirend, folyamatos biztonsági értékelés és végrehajtható biztonsági ajánlásokat az Azure-erőforrások védelmére.
-- A **Standard** szint bővíti ki az ingyenes szinten a magán- és más nyilvános felhőkben futó munkaterhelések, így egyesített biztonságkezelést és fenyegetések elleni védelmet a hibrid felhőalapú számítási feladatokhoz. A Standard is tarifacsomag speciális fenyegetésészlelési képességeket tartalmaz, amely a beépített viselkedéselemzés és a gépi tanulás használatával azonosíthatja a támadásokat és a nulladik napi támadások, a hozzáférés- és alkalmazásvezérlőket használ a hálózati támadások és kártevők kitettség csökkentése érdekében, és További. A Standard szintű díjmentesen próbálhatja ki. A Security Center támogatja az Azure erőforrások, többek között a virtuális gép, Virtuálisgép-méretezési csoportok, App Service, az SQL Server-kiszolgálók és a Storage-fiókok. Ha az Azure Security Center Standard választhatják a nem támogatott erőforrástípus alapján. 
+- A **Standard** szint bővíti ki az ingyenes szinten a magán- és más nyilvános felhőkben futó munkaterhelések, így egyesített biztonságkezelést és fenyegetések elleni védelmet a hibrid felhőalapú számítási feladatokhoz. A Standard is tarifacsomag speciális fenyegetésészlelési képességeket tartalmaz, amely a beépített viselkedéselemzés és a gépi tanulás használatával azonosíthatja a támadásokat és a nulladik napi támadások, a hozzáférés- és alkalmazásvezérlőket használ a hálózati támadások és kártevők kitettség csökkentése érdekében, és További. A Standard szintű díjmentesen próbálhatja ki. Támogatja az Azure Security Center Standard erőforrásokat, beleértve a virtuális gépek, virtuálisgép-méretezési csoportok, App Service, az SQL Server-kiszolgálók és a Storage-fiókok. Ha az Azure Security Center Standard választhatják a nem támogatott erőforrástípus alapján. 
 
 
 További információkért lásd: a Security Center [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/security-center/).
@@ -40,9 +40,9 @@ A Standard szintre, amely örökli az előfizetés összes erőforrásának fris
 
 A standard szintű csomag lekéréséhez:
 
-1. Válassza ki **biztonsági házirend** a a **a Security Center** főmenü.
+1. Válassza ki **díjszabási & beállítások** a a **a Security Center** főmenü.
 2. A Standard kívánt előfizetés kiválasztásához.
-3. Az a **biztonsági házirend** panelen válassza ki **tarifacsomag**.
+3. Válassza ki **tarifacsomag**.
 4. Válassza ki **Standard** frissítése.
 5. Kattintson a **Save** (Mentés) gombra.
 

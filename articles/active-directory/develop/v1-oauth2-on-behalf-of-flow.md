@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc352c6867779fd8f4487acdb1d11c0fabe4b9f7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51fd5c8f406ea54c7fc8e81c674e41b30d7ad406
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110992"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482419"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Szolgáltatások közötti hívások használat meghatalmazott felhasználói identitás az On-meghatalmazásos folyamat
 
@@ -38,7 +38,7 @@ Az OAuth 2.0-alapú meghatalmazásos (OBO) a folyamat lehetővé teszi, hogy egy
 
 OBO folyamat elindul, a felhasználó hitelesítését az alkalmazást a [OAuth 2.0 hitelesítési kód adja meg a folyamat](v1-protocols-oauth-code.md). Ezen a ponton az alkalmazás által a középső rétegbeli webes API-hoz (API-t A) a felhasználói jogcímek és jóváhagyás API A. eléréséhez tartalmazó hozzáférési token (jogkivonat A) Ezután API egy kérést egy hitelesített az alsóbb rétegbeli webes API-hoz (API-t, B).
 
-Ezeket a lépéseket az On-meghatalmazásos folyamat alkotják: ![OAuth2.0--meghatalmazásos folyamat](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
+Ezeket a lépéseket az On-meghatalmazásos folyamat alkotják: ![A lépéseit mutatja be a OAuth2.0--meghatalmazásos folyamat](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
 
 1. Az ügyfélalkalmazás kérést küld egy API-t a jogkivonattal A.
 1. API-t A hitelesíti magát az Azure AD-kiállítási végpont, és b API eléréséhez tokent kér

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 06/09/2019
+ms.date: 06/27/2019
 ms.author: raynew
-ms.openlocfilehash: 2cf9aee498c649cdbf973652a60fb2d1f3feb371
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 55275144746dbc1a3ead7c7c12a6901ab6f9269e
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312148"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514125"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Támogatási mátrix az Azure virtuális gépek egyik régióból a másikba való replikálásához
 
@@ -70,7 +70,7 @@ Ez a táblázat összefoglalja a Site Recovery által replikáció közben haszn
 
 **Beállítás** | **Támogatás** | **Részletek**
 --- | --- | ---
-Általános célú V2 tárfiókok (gyors és lassú elérésű szint) | Nem támogatott. | A korlátozás létezik a gyorsítótárban mivel lényegesen nagyobb, mint a V1-tárfiókok tranzakciós költségeinek a v2-ben.
+Általános célú V2 tárfiókok (gyors és lassú elérésű szint) | Támogatott | A GPv2 használatát nem ajánlott, mert lényegesen nagyobb, mint a V1-tárfiókok tranzakciós költségeinek a v2-ben.
 Virtuális hálózatok az Azure Storage-tűzfalak  | Támogatott | Ha engedélyezve van a tűzfal gyorsítótárfiókot vagy a célként megadott tárfiók használ, ügyeljen arra, hogy ["Allow megbízható Microsoft-szolgáltatások"](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 
 
@@ -82,7 +82,7 @@ A Site Recovery támogatja a a jelen szakaszban felsorolt operációs rendszert 
 
 **Operációs rendszer** | **Részletek**
 --- | ---
-A Windows Server 2019 |
+A Windows Server 2019 | A Server Core, kiszolgáló asztali kezelőfelülettel
 Windows Server 2016  | A Server Core, kiszolgáló asztali kezelőfelülettel
 Windows Server 2012 R2 |
 Windows Server 2012 |
@@ -151,7 +151,7 @@ SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.22 | SP1 3.12.49-11-default 3
 
 **Beállítás** | **Támogatás** | **Részletek**
 --- | --- | ---
-Méret | Minden olyan Azure virtuális gép méretét legalább 2 processzormag és 1 GB RAM | Győződjön meg arról [Azure virtuálisgép-méretek](../virtual-machines/windows/sizes.md).
+Size | Minden olyan Azure virtuális gép méretét legalább 2 processzormag és 1 GB RAM | Győződjön meg arról [Azure virtuálisgép-méretek](../virtual-machines/windows/sizes.md).
 Rendelkezésre állási csoportok | Támogatott | Ha engedélyezi az alapértelmezett beállításokat az Azure virtuális gép replikációját, a rendelkezésre állási csoport automatikusan jön létre a forrás területi beállításokat. Ezek a beállítások módosítása
 Rendelkezésre állási zónák | Támogatott |
 Hybrid Use Benefit (HUB) | Támogatott | Ha a forrásoldali virtuális gép van engedélyezve, HUB licence feladatátvételi teszt vagy feladatátvétel a virtuális gép is használ a HUB licenc.
@@ -208,7 +208,7 @@ RA-GRS | Támogatott |
 ZRS | Nem támogatott |
 Ritkán használt adatok és a gyakori elérésű tárolási | Nem támogatott | Virtuálisgép-lemezek nem támogatottak a ritkán használt adatok és a gyakori elérésű tárolási
 Virtuális hálózatok az Azure Storage-tűzfalak  | Támogatott | Ha a virtuális hálózati hozzáférés korlátozása a storage-fiókokra, lehetővé teszi az [engedélyezése a Microsoft-szolgáltatások megbízható](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
-Általános célú V2-tárfiókok (mindkét gyakori és ritka elérésű szint) | Nem | Tranzakciós költségek növelése jelentősen képest általános célú V1-tárfiókok
+Általános célú V2-tárfiókok (mindkét gyakori és ritka elérésű szint) | Igen | Tranzakciós költségek növelése jelentősen képest általános célú V1-tárfiókok
 
 >[!IMPORTANT]
 > Teljesítménybeli problémák elkerülése érdekében győződjön meg arról, hogy a virtuális gép lemez méretezhetőségi és teljesítménycéljai kövesse [Linux](../virtual-machines/linux/disk-scalability-targets.md) vagy [Windows](../virtual-machines/windows/disk-scalability-targets.md) virtuális gépeket. Alapértelmezett beállításokat használja, a Site Recovery létrehozza a szükséges lemezek és a storage-fiókok esetében az adatforrás-konfiguráció alapján. Ha testre szabhatja, és válassza ki a saját beállításait, hajtsa végre a forrás virtuális gépeknek lemez méretezhetőségi és teljesítménycéljai.
@@ -246,7 +246,7 @@ Több IP-cím | Nem támogatott | Amikor feladatátvételt hajt végre egy virtu
 Traffic Manager     | Támogatott | A Traffic Manager előre is megadhatja, hogy a végpont a forrásrégióban rendszeres időközönként, valamint a végponti feladatátvétel esetén a célrégióban adatforgalmat.
 Azure DNS | Támogatott |
 Egyéni DNS  | Támogatott |
-Hitelesített proxykiszolgálói | Támogatott | [Learn more].(site-recovery-azure-to-azure-networking-guidance.md)   
+Hitelesített proxykiszolgálói | Támogatott | [További információ](site-recovery-azure-to-azure-networking-guidance.md)    
 Authenticated Proxy | Nem támogatott | Ha a virtuális gép egy hitelesített proxyt használ a kimenő hálózati kapcsolatot, azt nem lehet replikálni az Azure Site Recovery használatával.    
 A helyszíni VPN-helyek közötti kapcsolat<br/><br/>(a vagy ExpressRoute nélkül)| Támogatott | Győződjön meg arról, hogy úgy, hogy a Site Recovery nem adatforgalmat helyszíni az udr-EK és NSG-k vannak konfigurálva. [További információ](site-recovery-azure-to-azure-networking-guidance.md)    
 Virtuális hálózatok közötti kapcsolat | Támogatott | [További információ](site-recovery-azure-to-azure-networking-guidance.md)  

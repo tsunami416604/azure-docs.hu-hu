@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: 535ae91abc04b2fdcebb6a2083db95ec50f61798
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 49d1e171d4d4b2210a98c59332f4842e23a2f2b9
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275581"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537844"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Az Azure SQL nagy kapacitású adatbázisokkal kapcsolatos gyakori kérdések
 
@@ -38,7 +38,7 @@ A nagy kapacitású szolgáltatási réteg csak a Virtuálismag-alapú vásárl�
 
 ### <a name="how-does-the-hyperscale-service-tier-differ-from-the-general-purpose-and-business-critical-service-tiers"></a>A nagy kapacitású szolgáltatásszint Miben különbözik az általános célú és a kritikus fontosságú üzleti szolgáltatási szintekről származó
 
-Rétegek elsősorban különbözteti meg a Virtuálismag-alapú szolgáltatás a rendelkezésre állás, a tárolási típust és az iops-érték alapján.
+A Virtuálismag-alapú szolgáltatás rétegek elsősorban különbözteti meg a rendelkezésre állás, a tárolási típust és az iops-érték alapján.
 
 - Az általános célú szolgáltatásszint alkalmas a legtöbb üzleti számítási feladathoz, amelyek egy elosztott terhelésű számítási és tárolási lehetőségek, ha i/o várakozási ideje vagy a feladatátvételi idők nem állnak a prioritás.
 - A nagy kapacitású szolgáltatásszint nagyon nagy méretű adatbázisok számítási feladatokhoz van optimalizálva.
@@ -53,7 +53,7 @@ Rétegek elsősorban különbözteti meg a Virtuálismag-alapú szolgáltatás a
 | **Tárolás típusa** | Összes |Prémium szintű távtároló (példányonként) | Helyi SSD-gyorsítótárban (példányonként) megszüntetése összekapcsolt tárolóval | Adathozzáférésnek köszönhetően gyors helyi SSD-tárolás (példányonként) |
 | **Tároló mérete** | Önálló adatbázis / rugalmas készlet | 5 GB – 4 TB-IG | 100 TB-ig | 5 GB – 4 TB-IG |
 | | Felügyelt példány  | 32 GB – 8 TB | – | 32 GB – 4 TB-IG |
-| **I/o-teljesítmény** | Egyetlen adatbázisonként ** | A 7000-es maximális IOPS / virtuális mag 500 IOPS | Ismeretlen még | 5000 iops-érték 200 000 maximális iops|
+| **I/o-teljesítmény** | Egyetlen adatbázisonként ** | A 7000-es maximális IOPS / virtuális mag 500 IOPS | Nagy kapacitású egy többrétegű architektúra gyorsítótár-több szinten. Hatékony IOPs a számítási feladat függ. | 5000 iops-érték 200 000 maximális iops|
 | | Felügyelt példány | Fájl méretétől függ. | – | Felügyelt példány: Fájl méretétől függ.|
 |**Rendelkezésre állás**|Összes|1 replika, olvasási méretű, nem a helyi gyorsítótár | Több replika, legfeljebb 15 olvasási szintű, a részleges helyi gyorsítótár | 3 replika, 1 olvasási szintű, a zónaredundáns magas rendelkezésre ÁLLÁSÚ, teljes helyi gyorsítótár |
 |**Biztonsági másolatok**|Összes|RA-GRS, 7 – 35 nap (alapértelmezés szerint 7 nap)| RA-GRS, 7 – 35 nap (alapértelmezés szerint 7 nap), állandó idő időponthoz recovery (PITR) | RA-GRS, 7 – 35 nap (alapértelmezés szerint 7 nap) |
@@ -92,7 +92,7 @@ Az SQL Database rendkívüli biztosít a számítási feladatok igény szerint a
   Nagy kapacitású erőforrások, például CPU és memória szempontjából az elsődleges számítási méret vertikális és majd vertikális leskálázás, állandó időben. A tároló meg van osztva, mert vertikális felskálázása és leskálázást mérete nem egy adat-művelet.  
 - **Bejövő és kimenő méretezése**
 
-  A nagy kapacitású az olvasási kérések kiszolgálására használhatja egy vagy több további számítási csomópontok létrehozására is kap. Ez azt jelenti, hogy segítségével a számítási csomópontok csak olvasható csomópontként a az elsődleges számítási a olvasási számítási feladatok kiszervezése. A csak olvasható, ezek a csomópontok segédanyagként is használható, készenléti a feladatátvétel esetén keresztül az elsődleges kiszolgálóról.
+  A nagy kapacitású az olvasási kérések kiszolgálására használhatja egy vagy több további számítási csomópontok létrehozására is kap. Ez azt jelenti, hogy segítségével a számítási csomópontok csak olvasható csomópontként a az elsődleges számítási a olvasási számítási feladatok kiszervezése. A csak olvasható, ezek a csomópontok segédanyagként is használható, készenléti k, az elsődleges kiszolgálóról feladatátvétel esetén.
 
   Az egyes ezek további számítási csomópontok állandó időben teheti meg, és a egy online művelet kiépítése. Ezek csak olvasható számítási csomópontot állításával kapcsolódhat a `ApplicationIntent` argumentum a kapcsolati karakterláncot a `readonly`. Kapcsolatok jelölése `readonly` automatikusan kapcsolódóak pedig az egyik a csak olvasható számítási csomópontot is.
 
@@ -120,7 +120,7 @@ Az SQL Database rendkívüli támogatja az összes SQL Server számítási felad
 
 ### <a name="how-can-i-choose-between-azure-sql-data-warehouse-and-sql-database-hyperscale"></a>Hogyan választhat az Azure SQL Data Warehouse és az SQL Database rendkívüli között
 
-Ha Ön jelenleg az SQL Server használata az adattárházak, interaktív elemzési lekérdezések futtatása az SQL Database rendkívüli remek választás mert viszonylag kis adattárházak (például néhány TB legfeljebb 10's TB-os) is üzemeltethet alacsonyabb költségek és az adatok áttelepíthetők  adatraktár-számítási feladat az SQL Database rendkívüli a T-SQL-kód módosítása nélkül.
+Jelenleg futó interaktív lekérdezések az SQL Server használata az adattárházak, ha az SQL Database rendkívüli remek választás oka (például legfeljebb 10 TB-os egység néhány TB) viszonylag kis data warehouse-adattárházak üzemeltethető alacsonyabb költségekkel és áttelepítheti az adatokat w T-SQL-kód módosítása nélkül az SQL Database rendkívüli számítási arehouse.
 
 Ha az összetett lekérdezések nagy méretű data analytics fut, és a Parallel Data warehouse-ba (PDW), Teradata vagy más nagymértékben párhuzamos processzor (MPP)) adattárházak, az SQL Data warehouse-bA lehet, hogy a legjobb választás.
   
@@ -349,7 +349,7 @@ Végfelhasználói. Nem automatikus.
 
 Igen. Automatikusan vertikálisan ideiglenes db számítási növekedésével.  
 
-### <a name="can-i-provision-multiple-primary-computes-such-as-a-multi-master-system-where-multiple-primary-compute-heads-can-drive-a-higher-level-of-concurrency"></a>Több elsődleges számítási erőforrások, például egy több főkiszolgálós rendszert, amelyben több elsődleges számítási aknázni ösztönözheti a magasabb szintű egyidejűség helyezhetek üzembe
+### <a name="can-i-provision-multiple-primary-compute-nodes-such-as-a-multi-master-system-where-multiple-primary-compute-heads-can-drive-a-higher-level-of-concurrency"></a>Lehet például egy több főkiszolgálós rendszert, amelyben több elsődleges számítási aknázni ösztönözheti a magasabb szintű egyidejűség több elsődleges számítási csomópontok létrehozásához
 
 Nem. Csak az elsődleges számítási csomópont olvasási/írási kérelmeket fogadó. Másodlagos számítási csomópontok csak olvasási kérelmek fogadásához.
 
@@ -369,11 +369,11 @@ Nem. Csak kapcsolódás olvasási szintű replika megadásával `ApplicationInte
 
 ### <a name="does-the-system-do-intelligent-load-balancing-of-the-read-workload"></a>A rendszer feladata olvasási számítási intelligens terheléselosztás
 
-Nem. A csak olvasási munkaterhelés újra irányított egy véletlenszerű olvasási szintű replikára.
+Nem. A csak olvasható munkaterhelés a rendszer átirányítja egy véletlenszerű olvasási szintű replikára.
 
 ### <a name="can-i-scale-updown-the-secondary-compute-nodes-independently-of-the-primary-compute"></a>Felfelé és lefelé a másodlagos számítási csomópontok az elsődleges számítási függetlenül is méretezheti
 
-Nem. A másodlagos számítási csomópontok is használhatók a magas rendelkezésre ÁLLÁSÚ, ezért az elsődleges, a feladatátvétel azonos konfigurációjú lehetnek.
+Nem. A másodlagos számítási csomópontok is használják a magas rendelkezésre ÁLLÁSÚ, így ugyanazt a konfigurációt, mint az elsődleges, a feladatátvétel esetén sem szükséges.
 
 ### <a name="do-i-get-different-temp-db-sizing-for-my-primary-compute-and-my-additional-secondary-compute-nodes"></a>Kaphatok különböző ideiglenes db méretezése a saját elsődleges számítási és a saját másodlagos számítási csomópontot
 

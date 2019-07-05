@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bdd91f8ee1228febe71244530a63fe992df56d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7582cd8453b25f071c18566f09d2155a6377a0a6
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110845"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482170"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>A Microsoft identity platform és az OAuth 2.0-alapú meghatalmazásos folyamat
 
@@ -42,7 +42,7 @@ Tegyük fel, hogy a felhasználó hitelesítése egy alkalmazást a a a [OAuth 2
 
 A következő lépések a OBO folyamatot jelent, és segítségével. a következő ábra ismerteti.
 
-![OAuth2.0--meghatalmazásos folyamat](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
+![Megjeleníti a OAuth2.0--meghatalmazásos folyamat](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
 
 1. Az ügyfélalkalmazás kérést küld egy API-t A jogkivonattal (az egy `aud` jogcím "a" API-t).
 1. API-t A végzi el a hitelesítést a Microsoft identity platform kiállítási végpont, és b API eléréséhez tokent kér
@@ -73,8 +73,8 @@ A közös titkos kulcsot használja, amikor egy szolgáltatások közötti hozz�
 | `client_id` | Kötelező | Az alkalmazás (ügyfél) AZONOSÍTÓJÁT, amely [az Azure portal - alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) oldalon az alkalmazás hozzá van rendelve. |
 | `client_secret` | Kötelező | Az ügyfél titkos kulcsát az alkalmazás az Azure Portal - alkalmazás regisztrációs lapján létrehozott. |
 | `assertion` | Kötelező | A kérésben használt token értékét. |
-| `scope` | Szükséges | Szóközzel elválasztott a jogkivonat kérése hatókörök listája. További információkért lásd: [hatókörök](v2-permissions-and-consent.md). |
-| `requested_token_use` | Szükséges | Itt adhatja meg, hogyan kell feldolgozni a kérelmet. A OBO folyamatban az értékét állítsa `on_behalf_of`. |
+| `scope` | Kötelező | Szóközzel elválasztott a jogkivonat kérése hatókörök listája. További információkért lásd: [hatókörök](v2-permissions-and-consent.md). |
+| `requested_token_use` | Kötelező | Itt adhatja meg, hogyan kell feldolgozni a kérelmet. A OBO folyamatban az értékét állítsa `on_behalf_of`. |
 
 #### <a name="example"></a>Példa
 
@@ -101,12 +101,12 @@ A service to service hozzáférési jogkivonat kérése tanúsítvánnyal az al�
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| `grant_type` | Szükséges | A jogkivonat kérése típusa. A kérést a jwt-t, az értéknek kell lennie `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
+| `grant_type` | Kötelező | A jogkivonat kérése típusa. A kérést a jwt-t, az értéknek kell lennie `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
 | `client_id` | Kötelező |  Az alkalmazás (ügyfél) AZONOSÍTÓJÁT, amely [az Azure portal - alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) oldalon az alkalmazás hozzá van rendelve. |
-| `client_assertion_type` | Szükséges | Az értéknek kell lennie `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
+| `client_assertion_type` | Kötelező | Az értéknek kell lennie `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
 | `client_assertion` | Kötelező | Egy helyességi feltétel (egy JSON webes jogkivonat) létrehozására és aláírására a tanúsítványt igénylő regisztrált hitelesítő adatként az alkalmazáshoz. A tanúsítvány és a helyességi feltétel formátumát regisztrálni, lásd: [hitelesítő tanúsítvány](active-directory-certificate-credentials.md). |
 | `assertion` | Kötelező | A kérésben használt token értékét. |
-| `requested_token_use` | Szükséges | Itt adhatja meg, hogyan kell feldolgozni a kérelmet. A OBO folyamatban az értékét állítsa `on_behalf_of`. |
+| `requested_token_use` | Kötelező | Itt adhatja meg, hogyan kell feldolgozni a kérelmet. A OBO folyamatban az értékét állítsa `on_behalf_of`. |
 | `scope` | Kötelező | A jogkivonat kérése hatóköreinek szóközzel elválasztott listáját. További információkért lásd: [hatókörök](v2-permissions-and-consent.md).|
 
 Figyelje meg, hogy paraméterei szinte teljesen megegyezik a közös titkos kulcsot, kivéve ha az a kérelem esetén a `client_secret` paraméter váltotta fel két paramétert: egy `client_assertion_type` és `client_assertion`.

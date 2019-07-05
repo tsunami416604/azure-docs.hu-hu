@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: iainfou
-ms.openlocfilehash: d80ad5abecc968a9fe3c82d62ddd8577856a3c54
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: afb554307fd255d1863fc1508cef3703d4dc9f9e
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65835182"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561167"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Az Azure Active Directory integrálása az Azure Kubernetes Service-ben az Azure CLI használatával
 
@@ -43,13 +43,13 @@ Az Azure AD-hitelesítés OpenID-kapcsolattal az AKS-fürtök van megadva. OpenI
 A belül a Kubernetes-fürt Webhook Eszközjogkivonattal történő hitelesítés segítségével ellenőrizze a hitelesítési tokenek. Webhook tokent használó hitelesítés biztosítását konfigurálja és kezeli az AKS-fürt részeként. A Webhook eszközjogkivonattal történő hitelesítés további információkért lásd: a [webhook authentication – dokumentáció][kubernetes-webhook].
 
 > [!NOTE]
-> AKS-hitelesítéshez az Azure AD konfigurálása, ha két Azure AD-alkalmazás vannak konfigurálva. Ez a művelet egy Azure-bérlő rendszergazdája kell elvégezni.
+> AKS-hitelesítéshez az Azure AD konfigurálása, ha a két Azure AD-alkalmazások úgy vannak konfigurálva. Ez a művelet egy Azure-bérlő rendszergazdája kell elvégezni.
 
 ## <a name="create-azure-ad-server-component"></a>Az Azure AD-kiszolgáló-összetevő létrehozása
 
 Integrálható az aks-sel, hozzon létre, és az identitás-kérelmek-végpontként szolgáló Azure AD-alkalmazást használja. Az első Azure AD alkalmazást kell az Azure AD biztonságicsoport-tagság felhasználó beolvasása.
 
-Hozzon létre a kiszolgáló alkalmazást összetevő a a [az ad-alkalmazás létrehozása] [ az-ad-app-create] parancsot, majd a frissítés a csoporttagság-jogcímek használata a [az ad app update] [ az-ad-app-update] parancsot. Az alábbi példában a *aksname* definiált változó a [megkezdése előtt](#before-you-begin) szakaszt, és létrehoz egy változót
+Hozzon létre a kiszolgáló alkalmazást összetevő a a [az ad-alkalmazás létrehozása][az-ad-app-create] command, then update the group membership claims using the [az ad app update][az-ad-app-update] parancsot. Az alábbi példában a *aksname* definiált változó a [megkezdése előtt](#before-you-begin) szakaszt, és létrehoz egy változót
 
 ```azurecli-interactive
 # Create the Azure AD application
@@ -62,7 +62,7 @@ serverApplicationId=$(az ad app create \
 az ad app update --id $serverApplicationId --set groupMembershipClaims=All
 ```
 
-Most hozzon létre egy szolgáltatásnevet a server alkalmazás használata a [létrehozásához az ad sp] [ az-ad-sp-create] parancsot. A szolgáltatásnévnek segítségével hitelesítse magát az Azure platformon. Kérje le a szolgáltatás egyszerű titkos használja a [az ad sp hitelesítő adatok alaphelyzetbe állítása] [ az-ad-sp-credential-reset] parancsot, és rendelje hozzá a nevű változóhoz *serverApplicationSecret* az egyik használatra a a következő lépéseket:
+Most hozzon létre egy szolgáltatásnevet a server alkalmazás használata a [létrehozásához az ad sp][az-ad-sp-create] command. This service principal is used to authenticate itself within the Azure platform. Then, get the service principal secret using the [az ad sp credential reset][az-ad-sp-credential-reset] parancsot, és rendelje hozzá a nevű változóhoz *serverApplicationSecret* használható a következő lépések egyikét:
 
 ```azurecli-interactive
 # Create a service principal for the Azure AD application
@@ -80,7 +80,7 @@ Az Azure AD engedélyre van szüksége a következő műveletek végrehajtásáh
 * Címtáradatok olvasása
 * Bejelentkezés és felhasználói profil olvasása
 
-Ezek segítségével engedélyeket rendelhet a [az ad app engedély hozzáadása] [ az-ad-app-permission-add] parancsot:
+Ezek segítségével engedélyeket rendelhet a [az ad app engedély hozzáadása][az-ad-app-permission-add] parancsot:
 
 ```azurecli-interactive
 az ad app permission add \
@@ -89,7 +89,7 @@ az ad app permission add \
     --api-permissions e1fe6dd8-ba31-4d61-89e7-88639da4683d=Scope 06da0dbc-49e2-44d2-8312-53f166ab848a=Scope 7ab1d382-f21e-4acd-a863-ba3e13f7da61=Role
 ```
 
-Végül adja meg a kiszolgálói alkalmazás használatára vonatkozó az előző lépésben hozzárendelt engedélyeket a [az ad-alkalmazás engedélymegadásának] [ az-ad-app-permission-grant] parancsot. Ez a lépés sikertelen lesz, ha a jelenlegi fiókot nem Bérlői rendszergazda. Akkor is jogosultságokat kell adni az Azure AD-alkalmazásokhoz, amelyek egyébként szükséges rendszergazdai jóváhagyás használatával információkat kérhet a [az ad app engedély rendszergazdai-jóváhagyás][az-ad-app-permission-admin-consent]:
+Végül adja meg a kiszolgálói alkalmazás használatára vonatkozó az előző lépésben hozzárendelt engedélyeket a [az ad-alkalmazás engedélymegadásának][az-ad-app-permission-grant] command. This step fails if the current account is not a tenant admin. You also need to add permissions for Azure AD application to request information that may otherwise require administrative consent using the [az ad app permission admin-consent][az-ad-app-permission-admin-consent]:
 
 ```azurecli-interactive
 az ad app permission grant --id $serverApplicationId --api 00000003-0000-0000-c000-000000000000
@@ -98,7 +98,7 @@ az ad app permission admin-consent --id  $serverApplicationId
 
 ## <a name="create-azure-ad-client-component"></a>Az Azure AD ügyfél összetevő létrehozása
 
-A második Azure AD-alkalmazást használja, amikor egy felhasználó bejelentkezik az AKS-fürtöt, a Kubernetes parancssori felülettel (`kubectl`). Az ügyfélalkalmazás a hitelesítési kérelmet telik el a felhasználót, és ellenőrzi a saját hitelesítő adataival és engedélyeivel. Az ügyfél összetevő az Azure AD-alkalmazás létrehozása a [az ad-alkalmazás létrehozása] [ az-ad-app-create] parancsot:
+A második Azure AD-alkalmazást használja, amikor egy felhasználó bejelentkezik az AKS-fürtöt, a Kubernetes parancssori felülettel (`kubectl`). Az ügyfélalkalmazás a hitelesítési kérelmet telik el a felhasználót, és ellenőrzi a saját hitelesítő adataival és engedélyeivel. Az ügyfél összetevő az Azure AD-alkalmazás létrehozása a [az ad-alkalmazás létrehozása][az-ad-app-create] parancsot:
 
 ```azurecli-interactive
 clientApplicationId=$(az ad app create \
@@ -108,19 +108,19 @@ clientApplicationId=$(az ad app create \
     --query appId -o tsv)
 ```
 
-Hozzon létre egy szolgáltatásnevet a használó ügyfélalkalmazás a [létrehozásához az ad sp] [ az-ad-sp-create] parancsot:
+Hozzon létre egy szolgáltatásnevet a használó ügyfélalkalmazás a [létrehozásához az ad sp][az-ad-sp-create] parancsot:
 
 ```azurecli-interactive
 az ad sp create --id $clientApplicationId
 ```
 
-Szerezze be a server app oAuth2 Azonosítóját, hogy a két alkalmazás-összetevők használatával közötti hitelesítési folyamat a [az ad app show] [ az-ad-app-show] parancsot. A következő lépésben használja az oAuth2-Azonosítóját.
+Szerezze be a server app oAuth2 Azonosítóját, hogy a két alkalmazás-összetevők használatával közötti hitelesítési folyamat a [az ad app show][az-ad-app-show] parancsot. A következő lépésben használja az oAuth2-Azonosítóját.
 
 ```azurecli-interactive
 oAuthPermissionId=$(az ad app show --id $serverApplicationId --query "oauth2Permissions[0].id" -o tsv)
 ```
 
-A hozzáférés biztosítása az ügyfélalkalmazásnak és az oAuth2-kommunikáció használata az alkalmazás-összetevők server flow használatával a [hozzáadása az ad app engedély] [ az-ad-app-permission-add] parancsot. A kiszolgálói alkalmazás használatával kommunikál az ügyfélalkalmazás ezután engedélyeket a [az ad-alkalmazás engedélymegadásának] [ az-ad-app-permission-grant] parancsot:
+A hozzáférés biztosítása az ügyfélalkalmazásnak és az oAuth2-kommunikáció használata az alkalmazás-összetevők server flow használatával a [hozzáadása az ad app engedély][az-ad-app-permission-add] command. Then, grant permissions for the client application to communication with the server application using the [az ad app permission grant][az-ad-app-permission-grant] parancsot:
 
 ```azurecli-interactive
 az ad app permission add --id $clientApplicationId --api $serverApplicationId --api-permissions $oAuthPermissionId=Scope
@@ -129,7 +129,7 @@ az ad app permission grant --id $clientApplicationId --api $serverApplicationId
 
 ## <a name="deploy-the-cluster"></a>A fürt üzembe helyezése
 
-A két Azure AD-alkalmazások létrehozása most már létre magát az AKS-fürtöt. Először is hozzon létre egy erőforrás csoport a [az csoport létrehozása] [ az-group-create] parancsot. A következő parancs létrehozza az erőforráscsoportot a *EastUS* régió:
+A két Azure AD-alkalmazások létrehozása most már létre magát az AKS-fürtöt. Először is hozzon létre egy erőforrás csoport a [az csoport létrehozása][az-group-create] parancsot. A következő parancs létrehozza az erőforráscsoportot a *EastUS* régió:
 
 Hozzon létre egy erőforráscsoportot, a fürt:
 
@@ -137,7 +137,7 @@ Hozzon létre egy erőforráscsoportot, a fürt:
 az group create --name myResourceGroup --location EastUS
 ```
 
-Az Azure-előfizetés használatának a Bérlőazonosító beszerzése a [az fiók show] [ az-account-show] parancsot. Ezt követően a használatával az AKS-fürt létrehozása a [az aks létrehozása] [ az-aks-create] parancsot. A parancs az AKS-fürt létrehozása a kiszolgáló és az ügyfél biztosítja alkalmazásazonosítót, a server application szolgáltatás egyszerű titka és a bérlő Azonosítóját:
+Az Azure-előfizetés használatának a Bérlőazonosító beszerzése a [az fiók show][az-account-show] command. Then, create the AKS cluster using the [az aks create][az-aks-create] parancsot. A parancs az AKS-fürt létrehozása a kiszolgáló és az ügyfél biztosítja alkalmazásazonosítót, a server application szolgáltatás egyszerű titka és a bérlő Azonosítóját:
 
 ```azurecli-interactive
 tenantId=$(az account show --query tenantId -o tsv)
@@ -153,7 +153,7 @@ az aks create \
     --aad-tenant-id $tenantId
 ```
 
-Végül kérje a fürt rendszergazdai hitelesítő adatok használatával a [az aks get-credentials] [ az-aks-get-credentials] parancsot. Az alábbi lépések egyikét, a normál kap *felhasználói* fürt hitelesítő adatait, tekintse meg az Azure AD-hitelesítés folyamat.
+Végül kérje a fürt rendszergazdai hitelesítő adatok használatával a [az aks get-credentials][az-aks-get-credentials] parancsot. Az alábbi lépések egyikét, a normál kap *felhasználói* fürt hitelesítő adatait, tekintse meg az Azure AD-hitelesítés folyamat.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name $aksname --admin
@@ -163,7 +163,7 @@ az aks get-credentials --resource-group myResourceGroup --name $aksname --admin
 
 Az AKS-fürtöt az Azure Active Directory-fiókkal használhatók legyenek, a szerepkör kötés vagy a fürt szerepkör-kötést kell létrehozni. *Szerepkörök* határozza meg az engedélyeket, és *kötések* azokat alkalmazni a kívánt felhasználókat. Ezeket a hozzárendeléseket is alkalmazható, egy adott névtérhez vagy az egész fürt között. További információkért lásd: [használatával RBAC-hitelesítés][rbac-authorization].
 
-Az egyszerű felhasználónév (UPN) beolvasni a felhasználó bejelentkezett használatával a [az ad aláírt felhasználói show] [ az-ad-signed-in-user-show] parancsot. Ez a felhasználói fiók engedélyezve van a következő lépésben az Azure AD-integrációhoz.
+Az egyszerű felhasználónév (UPN) beolvasni a felhasználó bejelentkezett használatával a [az ad aláírt felhasználói show][az-ad-signed-in-user-show] parancsot. Ez a felhasználói fiók engedélyezve van a következő lépésben az Azure AD-integrációhoz.
 
 ```azurecli-interactive
 az ad signed-in-user show --query userPrincipalName -o tsv
@@ -189,7 +189,7 @@ subjects:
   name: userPrincipalName_or_objectId
 ```
 
-Létrehozhatja a ClusterRoleBinding a [a kubectl a alkalmazni] [ kubectl-apply] parancsot, majd adja meg a YAML-jegyzékfájl:
+Létrehozhatja a ClusterRoleBinding a [a kubectl a alkalmazni][kubectl-apply] parancsot, majd adja meg a YAML-jegyzékfájl:
 
 ```console
 kubectl apply -f basic-azure-ad-binding.yaml
@@ -203,7 +203,7 @@ Most tekintsük tesztelése az AKS-fürtöt az Azure AD-hitelesítés integráci
 az aks get-credentials --resource-group myResourceGroup --name $aksname --overwrite-existing
 ```
 
-Mostantól használhatja a [kubectl get pods] [ kubectl-get] parancsot minden névtér több podok megtekintéséhez:
+Mostantól használhatja a [kubectl get pods][kubectl-get] parancsot minden névtér több podok megtekintéséhez:
 
 ```console
 kubectl get pods --all-namespaces

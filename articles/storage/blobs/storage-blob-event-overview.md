@@ -2,96 +2,57 @@
 title: Reagálás az Azure Blob storage-események |} A Microsoft Docs
 description: Az Azure Event Griddel előfizethet Blob Storage-eseményekre.
 services: storage,event-grid
-author: normesta
-ms.author: normesta
-ms.reviewer: cbrooks
+author: cbrooksmsft
+ms.author: cbrooks
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: 146b33c1a52838279f000a7f793902e2f35dbfaa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0655d02fd5d0d64c22db286236b2a26f9e70619
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65826528"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444682"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reagálás Blob storage-események
 
-Az Azure Storage-események lehetővé teszik az alkalmazások létrehozását és törlését, a korszerű, kiszolgáló nélküli architektúra használatával blobok reagálni. Így összetettebb kódja vagy költséges és hatékony lekérdezési szolgáltatások nélkül hajtja végre.  Ehelyett eseményt leküld [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) például előfizetők [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/), vagy akár a saját egyéni http-figyelőt, és csak akkor Mit kell fizetni.
+Az Azure Storage-események lehetővé teszik az alkalmazások reagálhat rájuk, létrehozását és törlését a blobok, például a modern, kiszolgáló nélküli architektúra használatával. Így összetettebb kódja vagy költséges és hatékony lekérdezési szolgáltatások nélkül hajtja végre.
 
-BLOB storage-események megbízhatóan érkeznek a Event grid szolgáltatás, amely gazdag újrapróbálkozási szabályzatok és a kézbesíthetetlen levelek kézbesítési révén az alkalmazások megbízható kézbesítést szolgáltatásokat biztosít. További tudnivalókért lásd: [Event Grid az üzenetek kézbesítését, és ismételje meg](https://docs.microsoft.com/azure/event-grid/delivery-and-retry).
+Ehelyett eseményt leküld [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) előfizetők számára, például az Azure Functions az Azure Logic Apps, vagy akár saját egyéni http-figyelőt, és csak mit kell fizetni.
 
-Blob storage esemény gyakori forgatókönyvek kép vagy videó feldolgozása, keresési indexelő vagy minden fájl alapú munkafolyamat tartalmazza.  Aszinkron fájlfeltöltéseket egy kiválóan alkalmas eseményeket a rendszer.  Módosítások ritkák, de a forgatókönyvhöz szükséges azonnali válaszképességét, eseményalapú architektúrát különösen hatékony is lehet.
+BLOB storage-események megbízhatóan kapnak az Event Grid szolgáltatás, amely az alkalmazások gazdag újrapróbálkozási szabályzatok és a kézbesíthetetlen levelek kézbesítési megbízható kézbesítést szolgáltatásokat biztosít.
 
-Vessen egy pillantást [útvonal Blob storage-események az egyéni webes végpont - CLI](storage-blob-event-quickstart.md) vagy [útvonal Blob storage-események az egyéni webes végpont - PowerShell](storage-blob-event-quickstart-powershell.md) rövid példában. 
+Blob storage esemény gyakori forgatókönyvek kép vagy videó feldolgozása, keresési indexelő vagy minden fájl alapú munkafolyamat tartalmazza. Aszinkron fájlfeltöltéseket egy kiválóan alkalmas eseményeket a rendszer. Módosítások ritkák, de a forgatókönyvhöz szükséges azonnali válaszképességét, eseményalapú architektúrát különösen hatékony is lehet.
+
+Ha azt szeretné, ez most már kipróbálhatja, tekintse meg az alábbi rövid útmutató cikkek valamelyikére:
+
+|Ha szeretne ezzel az eszközzel:    |Ebben a cikkben talál: |
+|--|-|
+|Azure Portal    |[Rövid útmutató: Webes végpont az Azure Portallal Blob storage-események átirányítása](https://docs.microsoft.com/azure/event-grid/blob-event-quickstart-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure CLI    |[Rövid útmutató: Storage-események átirányítása webes végpontra a PowerShell-lel](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|PowerShell    |[Rövid útmutató: Storage-események átirányítása az Azure CLI-vel webes végpontra](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+
+## <a name="the-event-model"></a>Az esemény-modell
+
+Event Grid használ [esemény-előfizetések](../../event-grid/concepts.md#event-subscriptions) eseményt üzenetek továbbítását-előfizetők számára. Ez a rendszerkép eseménykezelőket, esemény-közzétevők és esemény-előfizetések közötti kapcsolatot illusztráltuk.
 
 ![Event Grid-modell](./media/storage-blob-event-overview/event-grid-functional-model.png)
 
-## <a name="blob-storage-accounts"></a>Blob Storage-fiókok
-Blobtároló események általános célú v2 tárfiókokban vagy Blob tárfiókokban érhetők el. **Általános célú v2** tárfiókok összes tárolási szolgáltatás, így a Blobok, fájlok, üzenetsorok és táblák összes funkcióját támogatják. A **Blob Storage-fiók** egy speciális tárfiók a strukturálatlan adatok blobként (objektumként) való tárolására az Azure Storage-ban. A Blob Storage-fiókok olyanok, mint a meglévő általános célú tárfiókjai, és a jelenlegi rendszereivel megegyező szintű tartósságot, rendelkezésre állást, méretezhetőséget és teljesítményt nyújtanak, beleértve a 100%-os API-konzisztenciát a blokkblobokhoz és a hozzáfűző blobokhoz. További információkat az [Azure Storage-fiókok áttekintésében](../common/storage-account-overview.md) találhat.
+Első lépésként fizessen elő a egy végpontot egy eseményt. Ezt követően esemény kiváltásakor az Event Grid szolgáltatás adatokat küld, hogy az eseményről a végpont.
 
-## <a name="available-blob-storage-events"></a>Elérhető a Blob storage-események
-Event grid használ [esemény-előfizetések](../../event-grid/concepts.md#event-subscriptions) eseményt üzenetek továbbítását-előfizetők számára.  A BLOB storage esemény-előfizetések is tartalmazzák kétféle esemény:  
+Tekintse meg a [Blob storage-események sémája](../../event-grid/event-schema-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) cikk megtekintéséhez:
 
-> |Esemény neve|Leírás|
-> |----------|-----------|
-> |`Microsoft.Storage.BlobCreated`|Akkor, ha egy blob jön létre vagy keresztül lecseréli a `PutBlob`, `PutBlockList`, vagy `CopyBlob` műveletek|
-> |`Microsoft.Storage.BlobDeleted`|Blob törlése keresztül aktivált egy `DeleteBlob` művelet|
-
-## <a name="event-schema"></a>Eseményséma
-BLOB storage-események összes kell reagálni az igények változásaira az adatokban adatokat tartalmazzák.  A Blob storage esemény is azonosítani, mert az esemény típusa tulajdonság "Microsoft.Storage" karakterlánccal kezdődik. További információ a használati Event Grid-esemény tulajdonságainak leírása itt található [Event Grid-esemény séma](../../event-grid/event-schema.md).  
-
-> |Tulajdonság|Típus|Leírás|
-> |-------------------|------------------------|-----------------------------------------------------------------------|
-> |topic|string|Teljes Azure Resource Manager azonosítója, amely az eseményt bocsát ki a tárfiókot.|
-> |subject|string|Az objektum azonos kiterjesztett Azure Resource Manager formátumban, amelyek bemutatják a storage-fiókok, szolgáltatások és tárolók az Azure RBAC használatával az esemény tárgyát képező relatív erőforrás elérési útja.  Ez a formátum tartalmazza a blob nevét megőrzi.|
-> |eventTime|string|Az esemény létrejött, az ISO 8601 formátumú dátum/idő|
-> |eventType|string|"Microsoft.Storage.BlobCreated" or "Microsoft.Storage.BlobDeleted"|
-> |Azonosító|string|Egyedi azonosító, ha az esemény|
-> |dataVersion|string|Az adatobjektum sémaverziója.|
-> |metadataVersion|string|A legfelső szintű tulajdonságok sémaverziója.|
-> |data|objektum|A blob storage-specifikus eseményadatok gyűjtése|
-> |data.contentType|string|A BLOB, a Content-Type fejlécében a blobból kellene visszaadnia a tartalom típusa|
-> |data.contentLength|szám|Egész számot jelölő bájt, számos, a Content-Length fejlécet a blobból kellene visszaadnia hasonlóan a blob mérete.  BlobCreated esemény, de nem BlobDeleted küldi.|
-> |Data.URL|string|Az URL-cím az objektum, amely az esemény tárgya|
-> |data.eTag|string|Az etag címkéje az objektumot, ha ez az esemény történt.  Nem érhető el a BlobDeleted eseményhez.|
-> |Data.API|string|Az api-művelet ezt az eseményt kiváltó neve. BlobCreated események az értéke "PutBlob", "PutBlockList" vagy "CopyBlob". BlobDeleted események az értéke "DeleteBlob". Ezeket az értékeket az azonos api nevei, amelyek szerepelnek az Azure Storage-diagnosztikai naplók. Lásd: [naplózott műveletek és az állapotüzenetek](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).|
-> |data.sequencer|string|Egy nem átlátszó karakterláncértéket, amely a logikai eseménysorozatát bármely adott blob neve.  Felhasználók szabványos karakterláncok összehasonlítása segítségével megismerheti a relatív eseménysorozat két azonos blob neve.|
-> |data.requestId|string|Szolgáltatás által létrehozott kérelemazonosító a storage API-művelet. Az Azure Storage-diagnosztikai naplók "fejléc-kérelem-azonosító" mező a naplók használatával, és adja vissza a megoldásig API-hívás az "x-ms-request-id" fejléc korrelációját használható. Lásd: [naplóformátum](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format).|
-> |data.clientRequestId|string|A storage API-művelet ügyfél által biztosított kérés azonosítója. Használható az Azure Storage diagnosztikai naplókat a naplók "client-request-id" mezője összekapcsolását, és az ügyfélkérések használja az "x-ms-client-request-id" fejléc adható meg. Lásd: [naplóformátum](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
-> |data.storageDiagnostics|objektum|Diagnosztikai adatok az Azure Storage szolgáltatás időnként tartalmazza. Ha igen, figyelmen kívül hagyja az eseményfelhasználók által.|
-|data.blobType|string|A blob típusa. Érvényes értékek: "BlockBlob" vagy "PageBlob".| 
-
-Íme egy példa egy BlobCreated esemény:
-```json
-[{
-  "topic": "/subscriptions/319a9601-1ec0-0000-aebc-8fe82724c81e/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myaccount",
-  "subject": "/blobServices/default/containers/testcontainer/blobs/file1.txt",
-  "eventType": "Microsoft.Storage.BlobCreated",
-  "eventTime": "2017-08-16T01:57:26.005121Z",
-  "id": "602a88ef-0001-00e6-1233-1646070610ea",
-  "data": {
-    "api": "PutBlockList",
-    "clientRequestId": "799304a4-bbc5-45b6-9849-ec2c66be800a",
-    "requestId": "602a88ef-0001-00e6-1233-164607000000",
-    "eTag": "0x8D4E44A24ABE7F1",
-    "contentType": "text/plain",
-    "contentLength": 447,
-    "blobType": "BlockBlob",
-    "url": "https://myaccount.blob.core.windows.net/testcontainer/file1.txt",
-    "sequencer": "00000000000000EB000000000000C65A",
-  },
-  "dataVersion": "",
-  "metadataVersion": "1"
-}]
-
-```
-
-További információkért lásd: [Blob storage-események sémája](../../event-grid/event-schema-blob-storage.md).
+> [!div class="checklist"]
+> * Teljes listáját a Blob storage-események, és hogyan minden eseményt akkor indítja el.
+> * Az adatokat az Event Grid egy példát az egyes ezeket az eseményeket küld el.
+> * Minden kulcs-érték párt az adatokban megjelenő célját.
 
 ## <a name="filtering-events"></a>Események szűrése
-Esemény-előfizetések a BLOB az esemény típusa, valamint a tároló neve és a létrehozott vagy törölt objektum blob neve alapján szűrhetők.  Szűrők alkalmazható esemény-előfizetések vagy során a [létrehozási](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest) az esemény-előfizetés vagy [egy későbbi időpontban](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest). Az Event Grid során alapján tárgy szűrőket "kezdődik" és "vége" egyezést, így az előfizető kézbesíti az eseményeket egy megfelelő témát. 
+
+Esemény-előfizetések a BLOB az esemény típusa, valamint a tároló neve és a létrehozott vagy törölt objektum blob neve alapján szűrhetők.  Szűrők alkalmazható esemény-előfizetések vagy során a [létrehozási](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest) az esemény-előfizetés vagy [egy későbbi időpontban](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest). Az Event Grid során alapján tárgy szűrőket "kezdődik" és "vége" egyezést, így az előfizető kézbesíti az eseményeket egy megfelelő témát.
+
+Szűrők alkalmazásával kapcsolatos további tudnivalókért lásd: [események szűréséhez állítsa be az Event Gridhez](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
 
 A Blob storage-események tárgya a formátumot használja:
 
@@ -122,6 +83,7 @@ Létrehozott egy blobnév előtagja megosztása adott tárolóhoz blobot esemén
 Egyezik meg a létrehozott blob utótag megosztása adott tárolóhoz blobot eseményeit, használja a `subjectEndsWith` például ".log" vagy "jpg" szűrőt. További információkért lásd: [Event Griddel kapcsolatos fogalmak](../../event-grid/concepts.md#event-subscriptions).
 
 ## <a name="practices-for-consuming-events"></a>Eljárások az események felhasználásához
+
 Az alkalmazásokat, amelyek a Blob storage-események kezeléséhez kövesse kell néhány ajánlott eljárást:
 > [!div class="checklist"]
 > * Több előfizetés is beállíthatók úgy, hogy az azonos eseménykezelő események átirányítása, fontos, nem egy adott forrásból származó események feltételezik, de ellenőrzéséhez győződjön meg arról, hogy a tárfiók várt származnak üzenet a témakörben.
@@ -130,6 +92,7 @@ Az alkalmazásokat, amelyek a Blob storage-események kezeléséhez kövesse kel
 > * A blobType mező segítségével megismerheti, hogy milyen típusú műveletek engedélyezettek a blob, és melyik ügyféloldali kódtár típusait, a blob eléréséhez használ. Érvényes értékek a következők egyikét `BlockBlob` vagy `PageBlob`. 
 > * Az URL-cím mezőt használja a `CloudBlockBlob` és `CloudAppendBlob` konstruktorok hozzáférjen a blobhoz.
 > * Hagyja figyelmen kívül nem ismeri a mezőket. Ez az eljárás fog megakadályozhatja, hogy rugalmas, előfordulhat, hogy a jövőben hozzáadott új funkciókhoz.
+> * Ha azt szeretné, hogy a **Microsoft.Storage.BlobCreated** az esemény akkor váltódik csak akkor, ha teljesen elkötelezte magát a Blokkblobok, a vonatkozó esemény szűrése a `CopyBlob`, `PutBlob`, `PutBlockList` vagy `FlushWithClose` REST API-hívások. Ezen API-hívások eseményindító a **Microsoft.Storage.BlobCreated** esemény csak azután adatok elkötelezett a Blokkblobok. Egy szűrő létrehozásával kapcsolatban lásd: [események szűréséhez állítsa be az Event Gridhez](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
 
 
 ## <a name="next-steps"></a>További lépések

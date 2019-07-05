@@ -1,19 +1,19 @@
 ---
-title: Az Azure Cosmos DB korlátok
+title: Az Azure Cosmos DB korlátai
 description: Ez a cikk ismerteti az Azure Cosmos DB korlátok.
 author: arramac
 ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2019
-ms.openlocfilehash: 0086327661df637dc0ae60208ed9424b4610ef0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 28eb7c6a11f71fa87835bcfe78e635753965bac3
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969492"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561235"
 ---
-# <a name="limits-in-azure-cosmos-db"></a>Az Azure Cosmos DB korlátok
+# <a name="limits-in-azure-cosmos-db"></a>Az Azure Cosmos DB korlátai
 
 Ez a cikk az Azure Cosmos DB szolgáltatásban a korlátok áttekintést nyújt.
 
@@ -37,7 +37,6 @@ Miután létrehozott egy Azure Cosmos-fiók az előfizetéshez tartozó, adatai 
 
 Cosmos-tároló (vagy megosztott átviteli adatbázis) rendelkeznie kell egy minimum átviteli sebesség 400 kérelemegységet. A tároló növekedésével a minimális támogatott átviteli is függ a következő tényezőket:
 
-* A maximális tároló felhasznált storage szolgáltatás felhasznált tárhely GB-onként 40 kérelemegységet egységekben mérjük. Például ha egy tároló 100 GB adatot tartalmaz, akkor az átviteli sebességet kell lennie legalább 4000 Kérelemegységet
 * A maximális létesített átviteli sebesség minden eddiginél a tárolón. A szolgáltatás támogatja egy tárolót a 10 %-a kiépített maximális emelő teljesítményét. Például ha az átviteli sebességet 10000 kérelemegység-ra nőtt, majd a legkisebb lehetséges kiosztott átviteli sebesség lenne 1000 kérelemegység
 * Egy megosztott átviteli adatbázisban, minden eddiginél létrehozott tárolók száma tárolónként 100 kérelemegység mérni. Például ha öt tárolók egy megosztott átviteli adatbázisban létrehozott, majd az átviteli sebességet kell lennie legalább 500 kérelemegység
 
@@ -48,7 +47,6 @@ Az aktuális és a minimális átviteli sebességet egy tároló vagy egy adatb�
 | Minimális RUs tárolónként ([dedikált átviteli sebesség kiosztott mód](databases-containers-items.md#azure-cosmos-containers)) | 400 |
 | Az adatbázisonkénti minimális kérelemegység ([megosztott átviteli sebesség kiosztott mód](databases-containers-items.md#azure-cosmos-containers)) | 400 |
 | Egy megosztott átviteli adatbázison belül tárolónként minimális kérelemegység | 100 |
-| Minimális RUs felhasznált tárhely GB-onként | 40 |
 
 A cosmos DB támogatja a rugalmas méretezhetőség az átviteli sebesség (RU) tároló vagy az adatbázis az SDK-k vagy a portálon keresztül. A tárolók egy méretezési csoport tartományba 10 – 100-szor, minimális és maximális értékek közötti szinkron módon történik, és azonnal méretezhető. Ha a kért átviteli sebesség értéke kívül esik a tartományon, aszinkron módon történik méretezés. Aszinkron skálázás órát is igénybe perc függően a kért átviteli sebesség és a tárolóban lévő adatok tárolási mérete.  
 

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: glenga
-ms.openlocfilehash: 88e5f1ac7834caa32302a3817e1779d0d733a7b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 83a98a493068d3427e34f3ac2ca5c24baa48dda1
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65787541"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508241"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Az Azure Functions futtatása egy csomagfájlt
 
@@ -45,7 +45,7 @@ Ahhoz, hogy a függvényalkalmazás futtatásához egy csomagból, egyszerűen h
 | Érték  | Leírás  |
 |---------|---------|
 | **`1`**  | Windows rendszeren futó függvény alkalmazásokhoz ajánlott. Futtassa a csomag-fájlból a `d:\home\data\SitePackages` mappában található a függvényalkalmazást. Ha nem [üzembe helyezése a zip üzembe helyezésével](#integration-with-zip-deployment), ez utóbbi lehetőség megköveteli a mappát, rendelkeznie kell egy fájlt `packagename.txt`. Ez a fájl csak a mappában, anélkül, hogy minden szóközt az alkalmazáscsomag-fájl nevét tartalmazza. |
-|**`<url>`**  | Szeretne futtatni egy adott csomag-fájl helyét. A Blob storage használata esetén használjon egy privát tároló egy [közös hozzáférésű Jogosultságkód (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#attach-a-storage-account-by-using-a-shared-access-signature-sas) ahhoz, hogy a Functions futtatókörnyezete eléréséhez a csomaghoz. Használhatja a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) csomag fájlok feltöltése a Blob storage-fiók.         |
+|**`<url>`**  | Szeretne futtatni egy adott csomag-fájl helyét. A Blob storage használata esetén használjon egy privát tároló egy [közös hozzáférésű Jogosultságkód (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) ahhoz, hogy a Functions futtatókörnyezete eléréséhez a csomaghoz. Használhatja a [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) csomag fájlok feltöltése a Blob storage-fiók.         |
 
 > [!CAUTION]
 > Amikor fut egy függvényalkalmazást a Windows, a külső URL-cím lehetőséget poskytne rosszabb hidegindítási teljesítményét. Amikor Windows helyeznek üzembe a függvényalkalmazás, állítsa be `WEBSITE_RUN_FROM_PACKAGE` való `1` , és tegye közzé zip üzembe helyezéssel.
@@ -59,7 +59,7 @@ Az alábbiakban látható egy függvényalkalmazást az Azure Blob storage-ban �
 
 ## <a name="integration-with-zip-deployment"></a>Integráció a zip-telepítés
 
-[Üzembe helyezés zip] [ Zip deployment for Azure Functions] Azure App Service-ben, amely lehetővé teszi a függvényalkalmazás projektjét, szolgáltatása a `wwwroot` könyvtár. A projekt üzembe helyezési .zip fájlként van csomagolva. Az API-kkal segítségével helyezze üzembe a csomagot, hogy a `d:\home\data\SitePackages` mappát. Az a `WEBSITE_RUN_FROM_PACKAGE` alkalmazás beállítás értékét `1`, a zip-üzembe helyezési API-k másolja a csomagot a `d:\home\data\SitePackages` ahelyett, hogy a fájlok kibontása `d:\home\site\wwwroot`. Azt is létrehoz a `packagename.txt` fájlt. A függvényalkalmazás van, majd futtassa a csomag egy újraindítás után, és `wwwroot` csak olvashatóvá válik. Zip fejlesztésével kapcsolatos további információkért lásd: [Azure Functions üzembe helyezés Zip](deployment-zip-push.md).
+[Üzembe helyezés zip][Zip deployment for Azure Functions] Azure App Service-ben, amely lehetővé teszi a függvényalkalmazás projektjét, szolgáltatása a `wwwroot` könyvtár. A projekt üzembe helyezési .zip fájlként van csomagolva. Az API-kkal segítségével helyezze üzembe a csomagot, hogy a `d:\home\data\SitePackages` mappát. Az a `WEBSITE_RUN_FROM_PACKAGE` alkalmazás beállítás értékét `1`, a zip-üzembe helyezési API-k másolja a csomagot a `d:\home\data\SitePackages` ahelyett, hogy a fájlok kibontása `d:\home\site\wwwroot`. Azt is létrehoz a `packagename.txt` fájlt. A függvényalkalmazás van, majd futtassa a csomag egy újraindítás után, és `wwwroot` csak olvashatóvá válik. Zip fejlesztésével kapcsolatos további információkért lásd: [Azure Functions üzembe helyezés Zip](deployment-zip-push.md).
 
 ## <a name="adding-the-websiterunfrompackage-setting"></a>A WEBSITE_RUN_FROM_PACKAGE beállítás hozzáadása
 

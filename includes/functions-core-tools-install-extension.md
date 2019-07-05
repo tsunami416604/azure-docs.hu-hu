@@ -2,48 +2,42 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: functions
-author: craigshoemaker
+author: ggailey777
 ms.service: functions
 ms.topic: include
-ms.date: 09/25/2018
-ms.author: cshoe
+ms.date: 05/25/2019
+ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: fc5b43dcdee394fea023124171fb42c1a18224dc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d62da82b4a4dd35532dd8776a9111689db469201
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178885"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448367"
 ---
-Bővítmény csomagjaiból győződjön meg arról, a beállítás keresztül elérhető Azure Functions csapata által közzétett összes kötése a *host.json* fájlt. A helyi fejlesztési, gondoskodjon arról, hogy a legújabb verziójának [Azure Functions Core Tools](../articles/azure-functions/functions-run-local.md#install-the-azure-functions-core-tools).
+## <a name="register-extensions"></a>Bővítmények regisztrálása
 
-Bővítmény csomagok használatához frissítse a *host.json* -fájl a következő bejegyzés `extensionBundle`:
+HTTP- és időzítő eseményindító kivételével Functions kötések verze modulu runtime a 2.x bővítménycsomagok vannak implementálva. A verzió 2.x verzióját az Azure Functions futtatókörnyezettel, explicit módon regisztrálnia kell a bővítmények a függvényekben használt kötési típusok. A kivételek, a HTTP-kötések és az időzítési eseményindítóktól bővítmények nem igénylő.
 
-```json
-{
-    "version": "2.0",
-    "extensionBundle": {
-        "id": "Microsoft.Azure.Functions.ExtensionBundle",
-        "version": "[1.*, 2.0.0)"
-    }
-}
+Választhatja a kötési bővítményeket külön-külön telepíti, vagy egy köteg kiterjesztéshivatkozásának souboru projektu host.json is hozzáadhat. Bővítmény csomagjaiból eltávolítja az esélye a csomag kompatibilitási problémák több kötési típus használatakor. Az ajánlott módszer regisztrálásához a kötési bővítményeket. Bővítmény csomagjaiból is eltávolítja a követelménynek, telepíti a .NET Core 2.x SDK. 
+
+### <a name="extension-bundles"></a>bővítmény-csomagok
+
+[!INCLUDE [Register extensions](functions-extension-bundles.md)]
+
+További tudnivalókért lásd: [regisztrálása az Azure Functions kötési bővítményeket](../articles/azure-functions/functions-bindings-register.md#extension-bundles). Kötések a functions.json-fájl hozzáadása előtt hozzá kell adnia a host.json a bővítmény kötegeket.
+
+### <a name="register-individual-extensions"></a>Az egyes bővítmények regisztrálása
+
+Bővítmények, amelyek nem a csomag egyik gyermekszoftver telepítenie kell, ha manuálisan regisztrálhatja az egyes bővítménycsomagok adott kötések. 
+
+> [!NOTE]
+> Manuálisan kell regisztrálni extensions segítségével `func extensions install`, rendelkeznie kell a .NET Core SDK-t 2.x.
+
+Miután frissítette a *function.json* -fájl, amely a függvénynek szüksége van, futtassa a következő parancsot a projektmappában összes kötését.
+
+```bash
+func extensions install
 ```
 
-- A `id` tulajdonság hivatkozik, a Microsoft Azure Functions bővítmény csomagjaiból névterét.
-- A `version` hivatkozik a csomag verzióját.
-
-Verziók növekmény csomagot a csomag módosításokat csomagként. Főverzió változások történhetnek, csak ha a csomag-csomagok áthelyezése egy főverzió. A `version` tulajdonságot használ a [időköz jelölése verzió tartományok megadása](https://docs.microsoft.com/nuget/reference/package-versioning#version-ranges-and-wildcards). A Functions futtatókörnyezete mindig választja, a verziótartományon vagy időköz által meghatározott maximális megengedhető verziójára.
-
-Után a bővítmény csomagjaiból hivatkozik a projektben, majd az összes alapértelmezett kötéseket érhetők el az funkciók. A kötések érhető el a [kiterjesztésű csomag](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json) vannak:
-
-|Csomag  |Version  |
-|---------|---------|
-|Microsoft.Azure.WebJobs.Extensions.CosmosDB|3.0.3|
-|Microsoft.Azure.WebJobs.Extensions.DurableTask|1.8.0-as|
-|Microsoft.Azure.WebJobs.Extensions.EventGrid|2.0.0|
-|Microsoft.Azure.WebJobs.Extensions.EventHubs|3.0.3|
-|Microsoft.Azure.WebJobs.Extensions.SendGrid|3.0.0|
-|Microsoft.Azure.WebJobs.Extensions.ServiceBus|3.0.3|
-|Microsoft.Azure.WebJobs.Extensions.SignalRService|1.0.0|
-|Microsoft.Azure.WebJobs.Extensions.Storage|3.0.4|
-|Microsoft.Azure.WebJobs.Extensions.Twilio|3.0.0|
+A parancs beolvassa a *function.json* fájlra kattintva látható, mely csomagokat kell, telepíti őket, és ismét létrehozza a bővítmények projekt. Az új kötések felveszi a jelenlegi verzió, hanem nem frissíti a meglévő kötéseit. Használja a `--force` lehetőséget, ha meglévő kötések a legújabb verzióra újakat telepítésekor.

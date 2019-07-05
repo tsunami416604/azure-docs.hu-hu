@@ -1,18 +1,18 @@
 ---
 title: Az Azure IoT Hub lekérdezési nyelv ismertetése |} A Microsoft Docs
 description: Fejlesztői útmutató – a leírását az SQL-szerű IoT Hub lekérdezési nyelvet, az IoT hub eszköz/ikermodulokkal és feladatok kapcsolatos információk olvashatók be.
-author: rezasherafat
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
-ms.author: rezas
-ms.openlocfilehash: 4fbb731d9908e791a6fce2b087d9b734b98a25cb
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.author: robinsh
+ms.openlocfilehash: 03d2ca0b7d6b53215c5293f84c8b22a2dc0d8297
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137732"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450057"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub lekérdezési nyelv az eszköz és a modul twins, feladatokkal és üzenet-útválasztása
 
@@ -328,8 +328,8 @@ SELECT <select_list>
 
 A **< from_specification > a** záradék feltételezheti, hogy csak három értékeket: **ESZKÖZÖKRŐL** lekérdezés ikereszközök, hogy **devices.modules a** a lekérdezés ikermodulokkal, vagy **devices.jobs a** lekérdezés feladat eszközönkénti részletek.
 
-
 ## <a name="where-clause"></a>WHERE záradék
+
 A **ahol < filter_condition >** záradék használata nem kötelező. Azt is meghatározza, hogy a JSON-dokumentumok a KIINDULÓ gyűjtemény egy vagy több feltételt meg kell felelniük az eredmény része. Bármely JSON-dokumentumok a megadott feltételeknek, a "true", az eredmény szerepeltetni kell kiértékelni.
 
 Az engedélyezett feltételek a részben ismertetett [kifejezések és feltételekkel](iot-hub-devguide-query-language.md#expressions-and-conditions).
@@ -366,6 +366,7 @@ SELECT [TOP <max number>] <projection list>
 Jelenleg kijelölt záradékok eltérő **kiválasztása*** csak az ikereszközök összesített lekérdezéseket támogat.
 
 ## <a name="group-by-clause"></a>GROUP BY záradék
+
 A **GROUP BY < group_specification >** (nem kötelező), amely végrehajtja a után a szűrő megadva a WHERE záradékban, és mielőtt a leképezésben megadott SELECT záradékban. Azt a dokumentumok egy attribútum alapján csoportosítja. A csoportok használatban vannak a SELECT záradékban megadott összesített értékeket létrehozásához.
 
 Például egy lekérdezés GROUP BY használatával a következő:
@@ -393,9 +394,9 @@ A GROUP BY záradék jelenleg csak támogatott ikereszközök lekérdezésekor.
 > [!IMPORTANT]
 > Az előfizetési időszak `group` jelenleg számít egy speciális kulcsszót a lekérdezésekben. Abban az esetben, használhat `group` a tulajdonság nevét, fontolja meg a zárójelek hibák, például elkerülése érdekében tesszük `SELECT * FROM devices WHERE tags.[[group]].name = 'some_value'`.
 >
->
 
 ## <a name="expressions-and-conditions"></a>Kifejezések és feltételekkel
+
 Magas szinten egy *kifejezés*:
 
 * A JSON típusú (például a logikai érték, szám, karakterlánc, tömb vagy objektum) kifejezés.
@@ -443,6 +444,7 @@ Szeretné megtudni, mi minden szimbólum a kifejezések szintaxisát a rövidít
 | string_literal |Karakterlánc-literálnak sorozata, nulla vagy több Unicode-karaktereket vagy escape-karaktersorozatokat által képviselt Unicode karakterláncokat is. Karakterlánc-literálnak aposztrófok és idézőjelek közé vannak. Kilépés engedélyezett: `\'`, `\"`, `\\`, `\uXXXX` a 4 hexadecimális számjegy által meghatározott Unicode-karaktereket. |
 
 ### <a name="operators"></a>Operátorok
+
 A következő operátor használata támogatott:
 
 | Termékcsalád | Operátorok |
@@ -452,6 +454,7 @@ A következő operátor használata támogatott:
 | Összehasonlítás |=, !=, <, >, <=, >=, <> |
 
 ### <a name="functions"></a>Functions
+
 Ha a lekérdezése az ikrekhez és a feladatok az egyetlen támogatott függvény lesz:
 
 | Függvény | Leírás |

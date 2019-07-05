@@ -1,5 +1,5 @@
 ---
-title: Az Azure Cosmos DB Ownership(TCO) teljes költsége
+title: Tulajdonosi (TCO) az Azure Cosmos DB használatával
 description: Ez a cikk összehasonlítja a teljes tulajdonosi költség, az Azure Cosmos DB az IaaS és a helyszíni adatbázisok
 author: rimman
 ms.service: cosmos-db
@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: e603435a49894a9b8faa2df9b49a8572b94eecb5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 861aacb3e4c288ea7f55c5906534b728e9cd22b6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65965586"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447202"
 ---
-# <a name="total-cost-of-ownershiptco-with-azure-cosmos-db"></a>Az Azure Cosmos DB Ownership(TCO) teljes költsége
+# <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Tulajdonosi (TCO) az Azure Cosmos DB használatával
 
-Az Azure Cosmos DB-a részletes több-bérlős és erőforrás-szabályozási tervezték. Ez a kialakítás lehetővé teszi, hogy az Azure Cosmos DB-mentse jelentősen alacsonyabb költségek és a Súgó felhasználókat kezeljen. Jelenleg az Azure Cosmos DB támogatja a több mint 280 ügyfél munkaterheléseinek egyetlen gépen a sűrűséget folyamatosan növekvő, és több ezer ügyfél munkaterheléseinek a fürtön belül. Ez egy fürtben lévő különböző gépek és a további tudnivalókat a adatközponton belül több fürt között elosztja a terhelést ügyfelek munkaterhelések replikák [Azure Cosmos DB: Hogyan lehet továbbítani rá határát, globálisan elosztott adatbázisokat](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/). Erőforrás-szabályozási, több-bérlős és natív integrációt olyan Azure-infrastruktúra részeit, mert az Azure Cosmos DB átlagosan 4, 6 felébe, MongoDB, Cassandra vagy más nyílt Forráskódú nosql-alapú IaaS-on, és akár 10 alkalommal olcsóbb, mint az adatbázis fut az a helyszínen futó motorokkal. Tekintse meg a papír [a teljes tulajdonosi költség, (nem), egy NoSQL-adatbázis felhőszolgáltatás](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf).
+Az Azure Cosmos DB-a részletes több-bérlős és erőforrás-szabályozási tervezték. Ez a kialakítás lehetővé teszi, hogy az Azure Cosmos DB-mentse jelentősen alacsonyabb költségek és a Súgó felhasználókat kezeljen. Jelenleg az Azure Cosmos DB támogatja a több mint 280 ügyfél munkaterheléseinek egyetlen gépen a sűrűséget folyamatosan növekvő, és több ezer ügyfél munkaterheléseinek a fürtön belül. Ez egy fürtben lévő különböző gépek és egy adatközponton belül több fürt között elosztja a terhelést replikák ügyfelei számítási feladatok. További tudnivalókért lásd: [Azure Cosmos DB: Hogyan lehet továbbítani rá határát, globálisan elosztott adatbázisokat](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/). Erőforrás-szabályozási, több-bérlős és natív integrációt olyan Azure-infrastruktúra részeit, mert az Azure Cosmos DB átlagosan 4, 6 felébe, MongoDB, Cassandra vagy más nyílt Forráskódú nosql-alapú IaaS-on, és akár 10 alkalommal olcsóbb, mint az adatbázis fut az a helyszínen futó motorokkal. Tekintse meg a papír [a teljes tulajdonosi költség, (nem), egy NoSQL-adatbázis felhőszolgáltatás](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf).
 
 A nyílt Forráskódú nosql-alapú adatbázis megoldások, például az Apache Cassandra, MongoDB, a HBase- és motorok helyszíni lettek tervezve. Ha egy felügyelt szolgáltatásként érhető el azok a kiépített fürtök kezeléséhez és monitorozásához támogatási bérlői adatbázist a Resource Manager-sablon egyenértékű. Nyílt Forráskódú nosql-alapú architektúrák működési jelentős többletterhelést igényel, és azzal a szakértelemmel bonyolult és költséges találja. Másrészről az Azure Cosmos DB az olyan teljes körűen felügyelt felhőszolgáltatás, amely lehetővé teszi a fejlesztők számára, hogy fókusz üzleti innováció kezeléséről és adatbázis-infrastruktúra karbantartása helyett. 
 

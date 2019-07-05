@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 335b5b87de0a625e357bdfaa7d5a4c0a7a9e4997
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 4c184b3c38db53caed31b9fc463ad68f11c73479
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67339397"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550333"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Linux rendszerű virtuális gépek kapcsolatos gyakori kérdések
 Ez a cikk foglalkozik az Azure Resource Manager-alapú üzemi modellel létrehozott Linux virtuális gépek kapcsolatos gyakori kérdésekre. Ez a témakör Windows verziója: [– gyakori kérdések a Windows Virtual Machines szolgáltatásról](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -29,7 +29,7 @@ Ez a cikk foglalkozik az Azure Resource Manager-alapú üzemi modellel létrehoz
 Minden előfizető kiszolgálószoftvereket futtathat az Azure-beli virtuális gépeken. További információkért lásd: [Linux-Disztribúciók Azure-Endorsed](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Mennyi tárhelyet használhatok egy virtuális gép esetén?
-Minden adatlemez akár 4 TB-ig (4095 GB) lehet. A használható adatlemezek száma a virtuális gép méretétől függ. Részletek: [Virtuális gépek méretei](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Az egyes adatlemezek akár 32 767 GIB-ra is lehet. A használható adatlemezek száma a virtuális gép méretétől függ. Részletek: [Virtuális gépek méretei](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Azure Managed Disks szolgáltatást ajánljuk lemezes tárolás ajánlatokra használatra az Azure Virtual Machines hosszú távú adattárolásra az adatok. Egy-egy virtuális géppel több felügyelt lemez is használható. A felügyelt lemezek ajánlat kétféle tartós tárolási lehetőséget kínál: Premium and Standard Managed Disks. Díjszabási információkért tekintse meg a [Managed Disks díjszabását ismertető](https://azure.microsoft.com/pricing/details/managed-disks).
 

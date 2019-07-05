@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 manager: craigg
-ms.date: 05/06/2019
-ms.openlocfilehash: 520dba611e6791fca990e21173424a914c3d8e14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/26/2019
+ms.openlocfilehash: e9d1ce3bcd3bf958be0a7837e8416300af03f5a2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66693332"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449734"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>A virtuális mag szolgáltatási szintek közül választhat, és telepítse át a dtu-k szolgáltatásszintek
 
@@ -28,6 +28,8 @@ A virtuális mag (más néven vCore)-alapú vásárlási modell lehetővé teszi
 
 Gen4 hardver / virtuális mag lényegesen több memóriát biztosít. Azonban Gen5 hardver lehetővé teszi a vertikális felskálázása a számítási erőforrások sokkal magasabb.
 
+> [!IMPORTANT]
+> Új Gen4 adatbázisok már nem támogatottak a Kelet-Ausztrália régióban.
 > [!NOTE]
 > A DTU-alapú szolgáltatásszintek kapcsolatos információkért lásd: [szolgáltatásszintek esetében a DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md). A szolgáltatási szintek esetében a DTU-alapú és a Virtuálismag-alapú beszerzési modell közti különbségekkel kapcsolatos további információkért lásd: [vásárlási modellek az Azure SQL Database](sql-database-purchase-models.md).
 

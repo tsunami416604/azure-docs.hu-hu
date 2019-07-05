@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c22d44b02b3cc25c855361cab17132c46fa04794
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d896a45931512b925491e05ff6e5eef8a856d83d
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65783704"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481327"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Külön hálózatok és helyek összekötőcsoportok használatával az alkalmazások közzététele
 
@@ -42,7 +42,7 @@ Ezen lépések összekötő csoportok létrehozásához.
 1. Válassza ki **Azure Active Directory** > **vállalati alkalmazások** > **alkalmazásproxy**.
 2. Válassza ki **új összekötőcsoport**. Az új Összekötőcsoport panel jelenik meg.
 
-   ![Válassza ki az új összekötőcsoport](./media/application-proxy-connector-groups/new-group.png)
+   ![Megjeleníti a képernyőt egy új összekötőcsoport](./media/application-proxy-connector-groups/new-group.png)
 
 3. Adja meg az új összekötő csoport nevét, majd használja a legördülő menüből válassza ki, mely összekötők az ebbe a csoportba tartoznak.
 4. Kattintson a **Mentés** gombra.
@@ -74,25 +74,25 @@ Alkalmazások hálózatokban, amelyek nem részei a fő vállalati hálózat leh
 
 Igénybe vehet egy olyan szervezet, amely több, saját IaaS csatlakozó virtuális gépek virtuális hálózati üzemeltetett példaként. Ahhoz, hogy az alkalmazottak ezek az alkalmazások használatát, e magánhálózatok site-to-site VPN használatát a vállalati hálózathoz csatlakozik. Jó élményt biztosít az alkalmazottak, amelyek a helyszínen található. Azonban nem lehet ideális megoldás a távoli alkalmazottak számára, mert a szükséges további helyszíni infrastruktúra irányíthatja a hozzáférést, ahogy az az alábbi ábrán látható:
 
-![Azure ad IaaS hálózati](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
+![Az Azure AD IaaS hálózati bemutató ábra](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
   
 Az Azure AD Application Proxy connector csoportok egy közös szolgáltatást, hogy az alkalmazások biztonságos elérését minden további függőség létrehozása a vállalati hálózaton nélkül engedélyezheti:
 
-![Azure ad IaaS több Felhőszolgáltatóknak](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
+![Az Azure AD IaaS több Felhőszolgáltatóknak](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
 
 ### <a name="multi-forest--different-connector-groups-for-each-forest"></a>Többerdős – különböző összekötőcsoportok az egyes erdőkhöz
 
 A legtöbb ügyfél, aki telepítette szolgáltatásalkalmazás-Proxy az egyszeri bejelentkezéses (SSO) képességeket használ Kerberos által korlátozott delegálás (KCD) végrehajtásával. Ennek érdekében a csatlakozó gépek is engedélyezheti – delegálja a felhasználók felé az alkalmazás egy tartományhoz csatlakoztatni kell. KCD támogatja az erdők közötti képességeit. De különböző több erdőt tartalmazó környezetek között nincs megbízhatóság közöttük rendelkező vállalatok esetében egy összekötőt nem használható minden olyan erdőben. 
 
 Ebben az esetben egyedi összekötők telepíthető erdőnként, és állítsa be, amely csak az adott erdőre felhasználók kiszolgálása érdekében közzétett alkalmazások kiszolgálására. Minden egyes összekötőcsoport jelöli egy másik erdőben találhatók. Amíg a bérlő és a felhasználói élményt a legtöbb egységesített van minden olyan erdőben, a felhasználókhoz rendelhető erdő alkalmazásokhoz az Azure AD-csoportok használatával.
- 
+
 ### <a name="disaster-recovery-sites"></a>Vész-helyreállítási hely
 
 Attól függően, hogyan vannak megvalósítva a helyek egy vész-helyreállítási hely elvégezhető két többféle módon is:
 
 * A DR-hely aktív – aktív üzemmód, ahol a fő helye pontosan ugyanúgy történik, és azonos hálózati és AD-beállításokat a épül fel, ha az összekötők is létrehozhat a DR hely ugyanazt a összekötő tartozik, mint a fő helye. Ez lehetővé teszi az Azure AD észleli a feladatátvételeket az Ön számára.
 * Ha a DR hely elkülönül a fő helye, egy másik összekötőcsoport a DR-helyet hozhat létre, és vagy (1.) kell biztonsági mentési alkalmazások vagy (2) manuálisan átirányít a meglévő alkalmazást a Vészhelyreállítás összekötőcsoportot, igény szerint.
- 
+
 ### <a name="serve-multiple-companies-from-a-single-tenant"></a>Több vállalatot továbbítása az egyetlen új bérlő
 
 Nincsenek a számos különböző módon, amelyben egyetlen szolgáltató üzembe helyezi és kezeli az Azure AD egy modell megvalósításához kapcsolódó szolgáltatások több vállalatok számára. Összekötőcsoportok segítségként a rendszergazdának a elkülönítse az összekötők és az alkalmazások különböző csoportokba. Egyik lehetőség, amelyhez a kisvállalatok számára ideális, hogy egyetlen Azure AD bérlői, míg a különböző vállalatok a saját tartománynév és a hálózatok. Ez a is M & A-forgatókönyveinek és olyan helyzetekben, egy egyetlen IT-részleg szolgál a szabályozási és üzleti okokból több vállalat. 
@@ -100,32 +100,30 @@ Nincsenek a számos különböző módon, amelyben egyetlen szolgáltató üzemb
 ## <a name="sample-configurations"></a>Minta-konfigurációk
 
 Amely valósítható meg, például a következő összekötő-csoportokat.
- 
+
 ### <a name="default-configuration--no-use-for-connector-groups"></a>Alapértelmezett konfiguráció – összekötőcsoportok nem használható
 
 Összekötőcsoportok nem használja, ha a konfiguráció következő lenne:
 
-![Azure ad nem Összekötőcsoportok](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
- 
+![Példa az Azure AD nem Összekötőcsoportok](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
+
 Ebben a konfigurációban is használhatók a kisebb telepítésekhez és a teszteket. Jól, ha a szervezet rendelkezik egy egybesimított hálózati topológia fog működni.
- 
+
 ### <a name="default-configuration-and-an-isolated-network"></a>Alapértelmezett konfiguráció és a egy elkülönített hálózat
 
-Ez a konfiguráció az alapértelmezett értéktől, amelyben van egy adott alkalmazás, például az IaaS virtuális hálózat egy elkülönített hálózaton futó továbbfejlesztett változata: 
+Ez a konfiguráció az alapértelmezett értéktől, amelyben van egy adott alkalmazás, például az IaaS virtuális hálózat egy elkülönített hálózaton futó továbbfejlesztett változata:
 
-![Azure ad nem Összekötőcsoportok](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
- 
+![Példa az Azure AD nem Összekötőcsoportok](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
+
 ### <a name="recommended-configuration--several-specific-groups-and-a-default-group-for-idle"></a>Ajánlott konfiguráció – több adott csoportok és a egy alapértelmezett csoport üresjárati
 
 Az ajánlott konfiguráció nagy és összetett szervezetek számára, hogy az alapértelmezett összekötőcsoport rendelkezik, mint egy csoportot, amely nem szolgál az alkalmazásokat, és a tétlen vagy újonnan telepített összekötők szolgál. Minden alkalmazás fájlnévkiterjesztései, egyéni összekötő csoportok használatával. Ez lehetővé teszi a fent leírt forgatókönyveket összetettségét.
 
-Az alábbi példában a vállalat rendelkezik két adatközpontban, A és B való két összekötőt, amely minden hely szolgálnak. Minden hely rendelkezik rajta futó különböző alkalmazásokhoz. 
+Az alábbi példában a vállalat rendelkezik két adatközpontban, A és B való két összekötőt, amely minden hely szolgálnak. Minden hely rendelkezik rajta futó különböző alkalmazásokhoz.
 
-![Azure ad nem Összekötőcsoportok](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
- 
+![Vállalati 2 adatközpontok és a 2-összekötők – példa](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
+
 ## <a name="next-steps"></a>További lépések
 
 * [Az Azure AD-alkalmazásproxy-összekötők ismertetése](application-proxy-connectors.md)
 * [Egyszeri bejelentkezés engedélyezése](what-is-single-sign-on.md)
-
-

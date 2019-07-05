@@ -17,12 +17,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84a8c2954473401a9e57cba045907c60862ed61f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fc58d1a9bc06345165d4c322ea347c59166b614
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65546238"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483241"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Útmutató: Migrálás az Azure Access Control Service-ből
 
@@ -110,7 +110,7 @@ Kövesse az ebben a szakaszban megtudhatja, hogy az alkalmazások, amelyek ACS h
 
 ## <a name="retirement-schedule"></a>Kivezetési ütemezése
 
-2017\. November minden hozzáférés-vezérlés összetevői teljes körűen támogatott, és működik. Az egyetlen korlátozás, amely akkor [nem hozható létre új hozzáférés-vezérlés névterek, a klasszikus Azure portálon keresztül](https://azure.microsoft.com/blog/acs-access-control-service-namespace-creation-restriction/).
+2017. November minden hozzáférés-vezérlés összetevői teljes körűen támogatott, és működik. Az egyetlen korlátozás, amely akkor [nem hozható létre új hozzáférés-vezérlés névterek, a klasszikus Azure portálon keresztül](https://azure.microsoft.com/blog/acs-access-control-service-namespace-creation-restriction/).
 
 A következő hozzáférés-vezérlés összetevői kivezetése ütemezése:
 
@@ -119,7 +119,7 @@ A következő hozzáférés-vezérlés összetevői kivezetése ütemezése:
 - **2018. november 7**: Véglegesen állítsa le az összes hozzáférés-vezérlés összetevői. Ez magában foglalja a hozzáférés-vezérlési felügyeleti portálon, a felügyeleti szolgáltatás, STS és a jogkivonatok átalakítását szabályalapú motor. Ezen a ponton minden olyan hozzáférés-vezérlés küldött kérelmek (található \<névtér\>. accesscontrol.windows.net) sikertelen. Kell áttelepítette az összes meglévő alkalmazások és szolgáltatások más technológiák is a megadott idő előtti.
 
 > [!NOTE]
-> Egy szabályzat letiltja a névterek, amely nem kérte token egy ideig. 2018\. szeptember korai ennyi ideig jelenleg, 14 nap inaktivitás után, de ez 7 nap inaktivitás az elkövetkező hetektől csonkolva lesz. Ha rendelkezik, amely jelenleg nincs engedélyezve a hozzáférés-vezérlés névtereket, [töltse le és telepítse az ACS PowerShell](#download-and-install-acs-powershell) kívánja újból engedélyezni a namespace(s).
+> Egy szabályzat letiltja a névterek, amely nem kérte token egy ideig. 2018. szeptember korai ennyi ideig jelenleg, 14 nap inaktivitás után, de ez 7 nap inaktivitás az elkövetkező hetektől csonkolva lesz. Ha rendelkezik, amely jelenleg nincs engedélyezve a hozzáférés-vezérlés névtereket, [töltse le és telepítse az ACS PowerShell](#download-and-install-acs-powershell) kívánja újból engedélyezni a namespace(s).
 
 ## <a name="migration-strategies"></a>Migrálási stratégiák
 
@@ -283,10 +283,10 @@ Bizonyos esetekben előfordulhat, hogy az Azure AD és az Azure AD B2C-vel nem e
 
 Ezekben az esetekben érdemes megfontolni a felhő egy másik hitelesítési szolgáltatást a webes alkalmazásba való migrálás. Azt javasoljuk, hogy a következő opciók megismerését. Hozzáférés-vezérlés hasonló képességeket kínálnak az alábbi beállításokat:
 
-|     |     | 
+|     |     |
 | --- | --- |
-| ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) egy olyan rugalmas felhőalapú identitásszolgáltatás, által létrehozott [magas szintű áttelepítési útmutató az ügyfelek a hozzáférés-vezérlés](https://auth0.com/acs), és szinte az összes funkció, amely az ACS támogatja. |
-| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [A ping Identity](https://www.pingidentity.com) hasonló az ACS-két megoldást kínál. PingOne olyan felhőalapú identitásszolgáltatás, amely ugyanazokat a szolgáltatásokat, mint az ACS számos támogatja, és a PingFederate hasonlít egy a helyszíni identitás-megoldás, amely nagyobb rugalmasságot biztosít. Tekintse meg [Ping tartozó ACS használatból való kivonást egyaránt útmutatást](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) termékek használatával kapcsolatos további részletekért. |
+| ![Az ábra az Auth0-embléma](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) egy olyan rugalmas felhőalapú identitásszolgáltatás, által létrehozott [magas szintű áttelepítési útmutató az ügyfelek a hozzáférés-vezérlés](https://auth0.com/acs), és szinte az összes funkció, amely az ACS támogatja. |
+| ![Az ábra a Ping Identity-embléma](./media/active-directory-acs-migration/rsz_ping.png) | [A ping Identity](https://www.pingidentity.com) hasonló az ACS-két megoldást kínál. PingOne olyan felhőalapú identitásszolgáltatás, amely ugyanazokat a szolgáltatásokat, mint az ACS számos támogatja, és a PingFederate hasonlít egy a helyszíni identitás-megoldás, amely nagyobb rugalmasságot biztosít. Tekintse meg [Ping tartozó ACS használatból való kivonást egyaránt útmutatást](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) termékek használatával kapcsolatos további részletekért. |
 
 A Ping Identity és az Auth0 használata a célja, hogy győződjön meg arról, hogy minden hozzáférés-vezérlés ügyfél rendelkezik egy áttelepítési útvonal az alkalmazások és szolgáltatások számára, hogy a hozzáférés-vezérlés áthelyezéséhez szükséges munka mennyiségét.
 
@@ -345,10 +345,10 @@ Bizonyos esetekben előfordulhat, hogy az Azure AD-ügyfél hitelesítő adatait
 
 Ezekben az esetekben érdemes lehet egy másik felhőalapú hitelesítési szolgáltatást a webes alkalmazásba való migrálás. Azt javasoljuk, hogy a következő opciók megismerését. Hozzáférés-vezérlés hasonló képességeket kínálnak az alábbi beállításokat:
 
-|     |     | 
+|     |     |
 | --- | --- |
-| ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) egy olyan rugalmas felhőalapú identitásszolgáltatás, által létrehozott [magas szintű áttelepítési útmutató az ügyfelek a hozzáférés-vezérlés](https://auth0.com/acs), és szinte az összes funkció, amely az ACS támogatja. |
-| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [A ping Identity](https://www.pingidentity.com) hasonló az ACS-két megoldást kínál. PingOne olyan felhőalapú identitásszolgáltatás, amely ugyanazokat a szolgáltatásokat, mint az ACS számos támogatja, és a PingFederate hasonlít egy a helyszíni identitás-megoldás, amely nagyobb rugalmasságot biztosít. Tekintse meg [Ping tartozó ACS használatból való kivonást egyaránt útmutatást](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) termékek használatával kapcsolatos további részletekért. |
+| ![Az ábra az Auth0-embléma](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) egy olyan rugalmas felhőalapú identitásszolgáltatás, által létrehozott [magas szintű áttelepítési útmutató az ügyfelek a hozzáférés-vezérlés](https://auth0.com/acs), és szinte az összes funkció, amely az ACS támogatja. |
+| ![Az ábra a Ping Identity-embléma](./media/active-directory-acs-migration/rsz_ping.png) | [A ping Identity](https://www.pingidentity.com) hasonló az ACS-két megoldást kínál. PingOne olyan felhőalapú identitásszolgáltatás, amely ugyanazokat a szolgáltatásokat, mint az ACS számos támogatja, és a PingFederate hasonlít egy a helyszíni identitás-megoldás, amely nagyobb rugalmasságot biztosít. Tekintse meg [Ping tartozó ACS használatból való kivonást egyaránt útmutatást](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) termékek használatával kapcsolatos további részletekért. |
 
 A Ping Identity és az Auth0 használata a célja, hogy győződjön meg arról, hogy minden hozzáférés-vezérlés ügyfél rendelkezik egy áttelepítési útvonal az alkalmazások és szolgáltatások számára, hogy a hozzáférés-vezérlés áthelyezéséhez szükséges munka mennyiségét.
 

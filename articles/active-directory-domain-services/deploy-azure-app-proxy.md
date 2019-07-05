@@ -3,7 +3,7 @@ title: 'Az Azure Active Directory tartományi szolgáltatások: Az Azure Active 
 description: Az Azure AD-alkalmazásproxy használata az Azure Active Directory Domain Services felügyelt tartomány
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
-ms.author: mstephen
-ms.openlocfilehash: 202d33c95742f951b57e68f491f139aef068767c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: e9ccbd81a8efeb69ea073d89edd6579a6d59699a
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66246179"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67473611"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Üzembe helyezése az Azure AD-alkalmazásproxy a az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 Az Azure Active Directory (AD) alkalmazásproxy segítségével támogatja a távoli dolgozók tegye közzé a helyszíni alkalmazások számára az interneten keresztül érhető el. Az Azure AD tartományi szolgáltatásokat most lift-and-shift régi alkalmazásait az Azure infrastruktúra-szolgáltatások a helyszínen futó segítségével. Ezután közzéteheti ezeket az alkalmazásokat az Azure AD-alkalmazásproxy segítségével biztonságos távoli hozzáférést biztosít a felhasználók számára a szervezetben.

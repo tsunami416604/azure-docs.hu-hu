@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: apimpm
-ms.openlocfilehash: 34c4ef2885a82b6c392b814eeb624e616e341d48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a57f8e44d19432f82abe4fa5e7bafce900db3394
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304348"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448016"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Az Azure API Management csomagjairól szolgáltatásalapú összehasonlítása
 
@@ -40,6 +40,7 @@ Minden API Management [tarifacsomag](https://aka.ms/apimpricing) kínál külön
 | [Git-felügyeletet](api-management-configuration-repository-git.md)                        | Nem                            | Igen            | Igen            | Igen            | Igen            |
 | Közvetlen felügyelet API                                                                        | Nem                            | Igen            | Igen            | Igen            | Igen            |
 | Az Azure Monitor-naplók és mérőszámok                                                               | Nem                | Igen            | Igen            | Igen            | Igen            |
+| Statikus IP-cím                                                               | Nem                | Igen            | Igen            | Igen            | Igen            |
 
 <sup>1</sup> lehetővé teszi az Azure ad-ben használható (és az Azure AD B2C-t) egy identitás-szolgáltatója felhasználó jelentkezzen be a fejlesztői portálon.<br/>
 <sup>2</sup> kapcsolódó funkciókat többek között például felhasználók, csoportok, problémák, alkalmazások és az e-mail-sablonok és értesítések.<br/>

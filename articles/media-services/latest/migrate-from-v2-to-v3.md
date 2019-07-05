@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: b9293dc8be4fb50a657093090b0e6d76de5b5d31
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: b85b06552dcd0fc419302882f05814adbd454f46
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303519"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542566"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Migrálási útmutató segítséget nyújt a Media Services v2 áthelyezését v3
 
@@ -60,6 +60,7 @@ Ha rendelkezik egy fejlett még ma a videószolgáltatás a [örökölt Media Se
 * Az eszközök létrehozni a v3-as, a Media Services támogatja a csak a [Azure Storage kiszolgálóoldali tártitkosítás](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
     * V3 API-k használata a v2 API-kkal, amelyek korábban létrehozott eszközök [tártitkosítás](../previous/media-services-rest-storage-encryption.md) Media Services által kínált (AES-256).
     * Nem hozható létre új eszközök az örökölt AES 256 [tártitkosítás](../previous/media-services-rest-storage-encryption.md) v3 API-k használatával.
+* Az eszköz tulajdonságok a v3-as különböznek a v2-ben látható [hogyan képezze le a Tulajdonságok](assets-concept.md#map-v3-asset-properties-to-v2).
 * A v3-as SDK-k most vannak választva a a Storage SDK-t biztosít a Storage SDK-t szeretné használni, és elkerülhetők a verziókezelés problémák verzióját jobban szabályozhatja. 
 * V3 API-k a kódolási átviteli sebességek összes bit / másodperc. Ez eltér attól a Media Encoder Standard készletek v2. Például az átviteli sebesség a v2-ben ezt kell megadni, mint 128 (kbps), de a v3-as lenne 128000 (bit/másodperc). 
 * Entitások AssetFiles AccessPolicies és IngestManifests v3 nem szerepelnek.

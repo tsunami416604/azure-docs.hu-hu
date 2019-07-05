@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bc2acaa24637c3297af8e91f01b67e5d30f2931
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 794a99481d9394229e77168e75c48f4110735578
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60357536"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536923"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Jelentéskészítési lehetőségek az Azure AD-jelszókezelés
 
@@ -175,6 +175,7 @@ Az alábbi lista ismerteti ezt a tevékenységet, részletesen:
 
 ## <a name="next-steps"></a>További lépések
 
+* [SSPR és az MFA használatát és a jelentéskészítés insights](howto-authentication-methods-usage-insights.md)
 * [Hogyan végezhető el az SSPR sikeres bevezetése?](howto-sspr-deployment.md)
 * [Új jelszó kérése vagy jelszó módosítása](../user-help/active-directory-passwords-update-your-own-password.md).
 * [Regisztráció új jelszó önkiszolgáló kérésére](../user-help/active-directory-passwords-reset-register.md).

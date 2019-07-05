@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: f372c2a85a9a03c7ead779bd4db64722891c9a4c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5b2c153646021aeb8ee0dbb787cfce41af19568d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60201510"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443674"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>IoT-megoldás készítése a Stream Analytics használatával
 
@@ -138,7 +138,8 @@ Számos forrásanyag is könnyen üzembe helyezhető egy erőforráscsoportba ta
 10. Néhány pillanat múlva megjelenik egy értesítés, győződjön meg arról, hogy a **üzembe helyezés sikeres**.
 
 ### <a name="review-the-azure-stream-analytics-tollapp-resources"></a>Az Azure Stream Analytics TollApp erőforrások áttekintése
-1. Bejelentkezés az Azure Portalra
+
+1. Jelentkezzen be az Azure Portalra
 
 2. Keresse meg az erőforráscsoport, amely az előző szakaszban lettek elnevezve.
 
@@ -171,7 +172,7 @@ Számos forrásanyag is könnyen üzembe helyezhető egy erőforráscsoportba ta
    - **Regisztrációs** bemeneti adatok egy Azure Blob tárolási kapcsolat, a keresésekben használt szükség szerint statikus registration.json fájlra mutat. A referenciaadat-bemenetek használja a lekérdezés szintaxisa újabb változata.
 
 4. Vizsgálja meg a TollApp minta feladat kimenetére.
-   - **A cosmos DB** kimenete egy Cosmos adatbázis-gyűjtemény, amely megkapja a kimeneti fogadó eseményeket. Vegye figyelembe, hogy ez a kimenet be a folyamatos átviteli lekérdezési záradék szerepel.
+   - **A cosmos DB** kimenete egy Cosmos-adatbázis tároló, amely megkapja a kimeneti eseményekben a fogadó. Vegye figyelembe, hogy ez a kimenet be a folyamatos átviteli lekérdezési záradék szerepel.
 
 ## <a name="start-the-tollapp-streaming-job"></a>A TollApp streamelési feladat indítása
 Kövesse az alábbi lépéseket a streamelési feladat indítása:

@@ -5,15 +5,15 @@ author: msvijayn
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 06/25/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 809c98c1e2e51ae51d7fe03f2165a5d9eecb05cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cad1b0ab484d172000bd62146a88a27bfab1e9f2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64681803"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448768"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhook-műveletek a riasztási szabály
 Ha egy [riasztás jön létre az Azure-ban](alerts-log.md), lehetősége van a [konfigurálása a Műveletcsoportok használatával](action-groups.md) egy vagy több művelet végrehajtásához.  Ez a cikk ismerteti a rendelkezésre álló különböző webhook-műveletek és a részletek az egyéni JSON-alapú webhook konfigurálásáról.
@@ -51,9 +51,10 @@ Webhookok tartalmaznak egy URL-CÍMÉT és a egy hasznos, amely a külső szolg�
 | Keresési intervallum kezdő időpont |#searchintervalstarttimeutc |(UTC), a lekérdezés kezdete format - hh/nn/éééé óó: pp: ss de. / du.... 
 | SearchQuery |#searchquery |Naplóbeli keresési lekérdezés a riasztási szabály által használt. |
 | SearchResults |"IncludeSearchResults": true|A lekérdezés által visszaadott JSON táblázat, csak az első 1000 rekord; rekordok Ha a "IncludeSearchResults": true adnak hozzá a egyéni JSON webhook definíciója adható meg a legfelső szintű tulajdonsággal. |
+| Riasztás típusa| #alerttype | A riasztási szabály konfigurálva – típusát [Metrikamérés](alerts-unified-log.md#metric-measurement-alert-rules) vagy [száma az eredmények](alerts-unified-log.md#number-of-results-alert-rules).|
 | WorkspaceID |#workspaceid |A Log Analytics-munkaterület azonosítója. |
 | Alkalmazásazonosító |#applicationid |Az Application Insights azonosítója alkalmazást. |
-| Előfizetés azonosítója |#subscriptionid |Az Application insights szolgáltatással használt Azure-előfizetésében azonosítója. 
+| Előfizetés azonosítója |#subscriptionid |A használt Azure-előfizetés azonosítója. 
 
 > [!NOTE]
 > LinkToSearchResults átadja SearchQuery, keresési intervallum StartTime & keresési intervallum befejezési idő például paramétereket az URL-címben Analytics szakaszban megtekintése az Azure Portalon. Az Azure portal mérete megközelítőleg 2000 karakterből áll, és automatikusan URI tartozik *nem* riasztásokat, ha paraméterek értékét az említett korlátját meghaladja a megadott hivatkozás megnyitása. Felhasználók manuálisan bevinni részleteit az eredmények megtekintése az Analytics-portálon, vagy használja a [Application Insights Analytics REST API](https://dev.applicationinsights.io/documentation/Using-the-API) vagy [Log Analytics REST API](/rest/api/loganalytics/) eredmények programozott módon lekéréséhez 
@@ -88,8 +89,18 @@ Az alábbiakban a egy hasznosadat-minta egy szabványos webhook művelet *egyén
 
 ```json
 {
-    "WorkspaceId":"12345a-1234b-123c-123d-12345678e",
-    "AlertRuleName":"AcmeRule","SearchQuery":"search *",
+    "SubscriptionId":"12345a-1234b-123c-123d-12345678e",
+    "AlertRuleName":"AcmeRule",
+    "SearchQuery":"Perf | where ObjectName == \"Processor\" and CounterName == \"% Processor Time\" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer",
+    "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
+    "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
+    "AlertThresholdOperator": "Greater Than",
+    "AlertThresholdValue": 0,
+    "ResultCount": 2,
+    "SearchIntervalInSeconds": 3600,
+    "LinkToSearchResults": "https://portal.azure.com/#Analyticsblade/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+    "Description": "log alert rule",
+    "Severity": "Warning",
     "SearchResult":
         {
         "tables":[
@@ -107,15 +118,8 @@ Az alábbiakban a egy hasznosadat-minta egy szabványos webhook művelet *egyén
                     }
                 ]
         },
-    "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
-    "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
-    "AlertThresholdOperator": "Greater Than",
-    "AlertThresholdValue": 0,
-    "ResultCount": 2,
-    "SearchIntervalInSeconds": 3600,
-    "LinkToSearchResults": "https://workspaceID.portal.mms.microsoft.com/#Workspace/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
-    "Description": null,
-    "Severity": "Warning"
+    "WorkspaceId":"12345a-1234b-123c-123d-12345678e",
+    "AlertType": "Metric measurement"
  }
  ```
 
@@ -131,7 +135,17 @@ Az alábbiakban a egy hasznosadat-minta egy szabványos webhook *egyéni Json-be
     "schemaId":"Microsoft.Insights/LogAlert","data":
     { 
     "SubscriptionId":"12345a-1234b-123c-123d-12345678e",
-    "AlertRuleName":"AcmeRule","SearchQuery":"search *",
+    "AlertRuleName":"AcmeRule",
+    "SearchQuery":"requests | where resultCode == \"500\"",
+    "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
+    "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
+    "AlertThresholdOperator": "Greater Than",
+    "AlertThresholdValue": 0,
+    "ResultCount": 2,
+    "SearchIntervalInSeconds": 3600,
+    "LinkToSearchResults": "https://portal.azure.com/AnalyticsBlade/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+    "Description": null,
+    "Severity": "3",
     "SearchResult":
         {
         "tables":[
@@ -149,16 +163,8 @@ Az alábbiakban a egy hasznosadat-minta egy szabványos webhook *egyéni Json-be
                     }
                 ]
         },
-    "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
-    "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
-    "AlertThresholdOperator": "Greater Than",
-    "AlertThresholdValue": 0,
-    "ResultCount": 2,
-    "SearchIntervalInSeconds": 3600,
-    "LinkToSearchResults": "https://analytics.applicationinsights.io/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
-    "Description": null,
-    "Severity": "3",
-    "ApplicationId": "123123f0-01d3-12ab-123f-abc1ab01c0a1"
+    "ApplicationId": "123123f0-01d3-12ab-123f-abc1ab01c0a1",
+    "AlertType": "Number of results"
     }
 }
 ```

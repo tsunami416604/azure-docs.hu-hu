@@ -5,27 +5,27 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 07/01/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: f4c296aeefacc9516303ad75dd8b7d67325e38ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4c1c987befe928d316b11c6ecd379be76f8f80d4
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969056"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490150"
 ---
 # <a name="understand-cost-management-data"></a>A Cost Management adatainak értelmezése
 
-Ez a cikk segít jobban megismerheti, mit tartalmaz az Azure Cost Managementben. És ismerteti, hogy milyen gyakran adatot dolgoz fel, összegyűjtött megjelenített és lezárt. A számlázás az Azure-használat havonta. Azonban az Azure-előfizetés típusa határozza meg, ha az elszámolási hónap vége. Különféle tényezők alapján, hogy milyen gyakran a Cost Management kap a használati adatok változik. E tényezők közé tartozik, mennyi ideig tart az adatok feldolgozásához, és hogy milyen gyakran Azure-szolgáltatások használati a számlázási rendszerhez gridre bocsáthatja ki.
+Ez a cikk segít jobban megismerheti az Azure költség- és használati adatokat, amely az Azure Cost Management része. Ismerteti, hogy milyen gyakran adatot dolgoz fel, összegyűjtött megjelenített és lezárt. A számlázás az Azure-használat havonta. Bár a számlázási ciklusa havi időszakokat, ciklus kezdő és záró dátumát régiónként eltérő előfizetés-típus. Különféle tényezők alapján, hogy milyen gyakran a Cost Management kap a használati adatok változik. E tényezők közé tartozik, mennyi ideig tart az adatok feldolgozásához, és hogy milyen gyakran Azure-szolgáltatások használati a számlázási rendszerhez gridre bocsáthatja ki.
 
-A Cost Management minden használati és beszerzési, beleértve a foglalásokat és a nagyvállalati szerződés (EA) fiókok külső ajánlatokat tartalmaz. A Microsoft ügyfél-szerződés (MCA) fiókok és a használatalapú fizetéses előfizetéseket csak az Azure és a Marketplace-szolgáltatások használati tartalmazza. Támogatás és más költségei nem szerepelnek. Költségek becslése mindaddig, amíg a számla alapján jön létre, és nem kéttényezős kredittel jutalmazzuk.
+A Cost Management minden használati és beszerzési, beleértve a foglalásokat és a nagyvállalati szerződés (EA) fiókok külső ajánlatokat tartalmaz. A Microsoft ügyfél-szerződés (MCA) fiókok és az utólagos elszámolású díjszabás szerint az egyes előfizetések csak az Azure és a Marketplace-szolgáltatások használati tartalmazza. Támogatás és más költségei nem szerepelnek. Költségek becslése mindaddig, amíg a számla alapján jön létre, és nem kéttényezős kredittel jutalmazzuk.
 
-## <a name="supported-microsoft-offers"></a>Támogatott Microsoft-ajánlatok
+## <a name="supported-microsoft-azure-offers"></a>Támogatott Microsoft Azure-ajánlatok
 
-Az alábbi információkat jeleníti meg a jelenleg támogatott [Microsoft Azure-ajánlatokról](https://azure.microsoft.com/support/legal/offer-details/) az Azure Cost Managementben.  Azure-ajánlatot az Azure-előfizetés, amely rendelkezik a típusa.
+Az alábbi információkat jeleníti meg a jelenleg támogatott [Microsoft Azure-ajánlatokról](https://azure.microsoft.com/support/legal/offer-details/) Azure Cost Management. Az Azure-ajánlatot aláírt szerződése határozza meg, hogy rendelkezik Azure-előfizetés.
 
 | Category  | **Ajánlat neve** | **Kvóta azonosítója** | **Csomag száma** |
 | --- | --- | --- | --- |
@@ -49,7 +49,7 @@ Az alábbi információkat jeleníti meg a jelenleg támogatott [Microsoft Azure
 | **Visual Studio** | [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p)            | MSDN_2014-09-01 | MS-AZR-0063P |
 | **Visual Studio** | [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p)  | MSDN_2014-09-01 | MS-AZR-0064P |
 
-Az alábbi táblázat az ajánlatok nem támogatott.
+Az alábbi táblázat az Azure-ajánlatok, amelyeket a Cost Management nem támogat.
 
 | Category  | **Ajánlat neve** | **Kvóta azonosítója** | **Csomag száma** |
 | --- | --- | --- | --- |
@@ -66,7 +66,7 @@ Az alábbi táblázat az ajánlatok nem támogatott.
 | **Támogatási csomagok** | Az Azure Government Pro-Direct Support | Default_2014-09-01 | MS-AZR-USGOV-0042P |
 | **Támogatási csomagok** | Az Azure Government fejlesztői támogatás  | Default_2014-09-01 | MS-AZR-USGOV-0043P |
 
-Használatalapú fizetés, az MSDN és a Visual Studio ajánlat kategóriák élvező vásárlók esetében az adatok a Cost Management 2018-10-02-től érhető el. Mielőtt 2018-10-02-előfizetéséhez tartozó adatok eléréséhez használható a [Azure Account Center](https://account.azure.com/subscriptions) részletesen a használati adatok letöltése CSV-fájl, vagy használhatja a [használati részletek API](/rest/api/consumption/usagedetails).
+Használatalapú fizetés élvező vásárlók esetében az MSDN és a Visual Studio ajánlat kategóriák, Költségkezelés 2018-10-02-től érhetők el az adatok. Mielőtt 2018-10-02-előfizetéséhez tartozó adatok eléréséhez használható a [Azure Account Center](https://account.azure.com/subscriptions) részletesen a használati adatok letöltése CSV-fájl, vagy használhatja a [használati részletek API](/rest/api/consumption/usagedetails).
 
 ## <a name="determine-your-offer-type"></a>Az ajánlat típusát határozza meg
 Ha nem lát adatokat egy előfizetéshez, és meg szeretné határozni, ha az előfizetés a támogatott ajánlatok hatálya alá tartozik, ellenőrizheti, hogy az előfizetés támogatott. Ellenőrzése, hogy támogatott-e egy Azure-előfizetést, jelentkezzen be a [az Azure portal](https://portal.azure.com). Válassza ki **minden szolgáltatás** a bal oldali menü ablaktáblán. A szolgáltatások listájában jelölje ki **előfizetések**. Előfizetési lista menüjében kattintson az ellenőrizni kívánt előfizetést. Az előfizetés az Áttekintés lap jelenik meg, és láthatja a **ajánlat** és **Ajánlatazonosító**. Az alábbi képen egy példa látható.
@@ -116,7 +116,7 @@ Használatalapú fizetéses előfizetések – Ha az elszámolási hónap május
 
 ### <a name="rerated-data"></a>Rerated adatok
 
-Ha használja a [Cost Management API-k](https://aka.ms/costmgmt/docs), Power bi-ban, vagy az Azure Portalon adatok lekéréséhez, várható első újra értékelik, és ennek megfelelően módosítja, a számla bezárásáig a jelenlegi számlázási időszak fel díjat.
+Ha használja a [Cost Management API-k](index.yml), Power bi-ban, vagy az Azure Portalon adatok lekéréséhez, várható első újra értékelik, és ennek megfelelően módosítja, a számla bezárásáig a jelenlegi számlázási időszak fel díjat.
 
 ## <a name="usage-data-update-frequency-varies"></a>Használati adatok frissítési gyakoriság változik
 
@@ -129,7 +129,7 @@ Egyes szolgáltatások gyakoribb a többinél generuje használat. Tehát hamara
 
 ## <a name="historical-data-might-not-match-invoice"></a>Korábbi adatok nem egyeznek meg a számlán
 
-Előzményadatok kredit-alapú, és előre fizetési ajánlat esetén előfordulhat, hogy nem egyezik a számlán. Néhány Azure használatalapú fizetés, az MSDN és a Visual Studio ajánlat az Azure-kreditek és a speciális kiállítása óta befizetett összegek a számla is rendelkezhetnek. A Cost Management látható előzményadatok azonban csak a becsült használati díjak alapján. A Cost Management előzményadatok nagyságú befizetések és jóváírások nem tartalmazza. Ennek eredményeképpen a korábbi adatok jelennek meg az alábbi ajánlatok nem felel meg pontosan az a számla.
+Előzményadatok kredit-alapú, és előre fizetési ajánlat esetén előfordulhat, hogy nem egyezik a számlán. Néhány használatalapú Azure-előfizetés, az MSDN és a Visual Studio kínál is az Azure-kreditek és a speciális kifizetések alkalmazta a számlán. A Cost Management látható előzményadatok azonban csak a becsült használati díjak alapján. A Cost Management előzményadatok nagyságú befizetések és jóváírások nem tartalmazza. Ennek eredményeképpen a korábbi adatok jelennek meg az alábbi ajánlatok nem felel meg pontosan az a számla.
 
 -   MS-AZR-0029P
 -   MS-AZR-0064P

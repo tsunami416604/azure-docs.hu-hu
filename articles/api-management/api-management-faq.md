@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: edc3c2ddcddaa8a51ae634a7abcd3a61aab530e9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7e93dc12b9932fed90c7f9fa3145e56a3488b32
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357257"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448024"
 ---
 # <a name="azure-api-management-faqs"></a>Az Azure API Management – gyakori kérdések
 Válaszok a gyakori kérdésekre, minták és ajánlott eljárások az Azure API Management.
@@ -65,7 +65,7 @@ Az API Management-átjáró és a háttér-szolgáltatások közötti kapcsolat 
 
 * Egyszerű HTTP-hitelesítés használata. További információkért lásd: [importálása és közzététele az első API](import-and-publish.md).
 * Ismertetett módon kihasználhassák a kölcsönös hitelesítés SSL [háttérszolgáltatások ügyfél használatával biztonságossá tétele a Tanúsítványalapú hitelesítés az Azure API Management](api-management-howto-mutual-certificates.md).
-* IP-címei engedélyezési listára helyezhetők a háttér-szolgáltatáshoz felhasználhat. Minden szinten az API Management, az átjáró IP-címét állandó marad, néhány [figyelmeztetések](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules). Beállíthatja, hogy az IP-címet az engedélyezési listán. Az API Management-példány IP-címét is kap az Azure portal irányítópultján.
+* IP-címei engedélyezési listára helyezhetők a háttér-szolgáltatáshoz felhasználhat. Az API Management Használatalapú csomag kivételével az összes szint, az átjáró IP-címét állandó marad, néhány [figyelmeztetések](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules). Beállíthatja, hogy az IP-címet az engedélyezési listán. Az API Management-példány IP-címét is kap az Azure portal irányítópultján.
 * Az API Management-példány csatlakozhat egy Azure virtuális hálózaton.
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>Hogyan másolja az API Management-szolgáltatáspéldány egy új példányt?

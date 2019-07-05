@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.openlocfilehash: a4c601e81390efa3bb53a6f07225bb6e939bc9bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ec4e9cbfd1d70c128f530bd996793a49c8a7d00
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64726440"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484124"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Az Apache HBase Java-alkalmazások
 
@@ -34,9 +34,6 @@ A lépéseket, a jelen dokumentum-használat [Apache Maven](https://maven.apache
 * Ha a PowerShell használatával, akkor a [AZ modul](https://docs.microsoft.com/powershell/azure/overview).
 
 * Egy szövegszerkesztő. Ez a cikk a Microsoft Notepad használja.
-
-> [!IMPORTANT]  
-> Az Azure PowerShell-parancsmagok [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) és [Get-AzHDInsightJobOutput](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightjoboutput) jelenleg nem működnek a mikor [biztonságos átvitelre](../../storage/common/storage-require-secure-transfer.md) engedélyezve van a tárfiók .
 
 ## <a name="test-environment"></a>Tesztkörnyezet
 Az ebben a cikkben használt környezet a Windows 10 rendszerű számítógép volt.  A parancsok végrehajtódtak parancsot, és a különböző fájlok is szerkeszthetők a Jegyzettömb alkalmazásban. Ennek megfelelően módosítsa a környezetnek.

@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: 2b6adcf4231aa44a4f28d277e963efa16de8af81
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: afc0bb990f69521efb2557a6a086c0de5126f82c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399341"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440420"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Megismerheti, és az Azure Active Directory Application Proxy CORS hiba elhárításához nyújthatnak segítséget
 
-[Eltérő eredetű erőforrások megosztása (CORS)](http://www.w3.org/TR/cors/) néha kihívást az alkalmazások és API-k az Azure Active Directory Application Proxy-n keresztül közzétett. Ez a cikk ismerteti az Azure AD Application Proxy CORS problémákat és megoldásokat.
+[Eltérő eredetű erőforrások megosztása (CORS)](https://www.w3.org/TR/cors/) néha kihívást az alkalmazások és API-k az Azure Active Directory Application Proxy-n keresztül közzétett. Ez a cikk ismerteti az Azure AD Application Proxy CORS problémákat és megoldásokat.
 
 A böngésző biztonsági általában megakadályozható, hogy egy weblap AJAX-kérelmeket küldjön egy másik tartományhoz. Ez a korlátozás nevezzük a *azonoseredet-* , és megakadályozza, hogy egy rosszindulatú webhely érzékeny adatok olvasása a másik helyről. Előfordulhat azonban, hogy ahhoz, hogy a webes API hívása más helyekre. A CORS egy W3C szabvány, amely lehetővé teszi, hogy egy kiszolgáló enyhíteni az azonos eredethez házirendet, és néhány eltérő eredetű kérések engedélyezése elutasítása mellett más.
 

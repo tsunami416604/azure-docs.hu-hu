@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan használhatja az Azure Queue storage eseményin
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: az Azure functions, függvények, eseményfeldolgozás, dinamikus számítás, kiszolgáló nélküli architektúra
 ms.service: azure-functions
 ms.devlang: multiple
@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 72460136f5fa0dcfec78716fc02e0aaf9e860840
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9604ef276625d1fcc9164a9b75b94ebc22cb51e1
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66472295"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480144"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Az Azure storage üzenetsorkötések az Azure Functions szolgáltatáshoz
 
@@ -307,7 +307,7 @@ Az üzenetsor eseményindító automatikusan megakadályozza, hogy egy függvén
 
 A [host.json](functions-host-json.md#queues) fájl üzenetsor eseményindító viselkedését vezérlő beállításokat tartalmaz. Tekintse meg a [host.json beállítások](#hostjson-settings) rendelkezésre álló beállítások részletei szakaszban.
 
-## <a name="output"></a>Kimenet
+## <a name="output"></a>Output
 
 Használja az Azure üzenetsor-tároló kimeneti kötését üzeneteket írni egy üzenetsorba.
 

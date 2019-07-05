@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: d9dc9f3a4ab964b66e3a2cb03f4aad442c5665e9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7095992253fbbe5aafce1eab889965250f5d59a8
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64573608"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551368"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Testre szabhatja az operációs rendszer biztonsági konfigurációival az Azure Security Centerben (előzetes verzió)
 
@@ -56,13 +56,11 @@ Testre szabhatja az alapértelmezett operációs rendszer biztonsági konfigurá
 
 1.  Nyissa meg a **Security Center** irányítópultját.
 
-2.  A bal oldali panelen válassza ki a **biztonsági házirend**.      
+2.  A bal oldali panelen válassza ki a **díjszabási & beállítások**.
 
     ![Biztonsági szabályzatok listája](media/security-center-customize-os-security-config/manual-provision.png)
 
-3.  Az előfizetés testre szeretné szabni a sorban kattintson **beállításainak szerkesztése**.
-
-4. Válassza ki **biztonsági konfigurációk szerkesztése**.  
+4. Válassza ki a megfelelő előfizetést, és válassza ki **biztonsági konfigurációk szerkesztése**.  
 
     ![A "Biztonsági konfigurációk szerkesztése" ablak](media/security-center-customize-os-security-config/blade.png)
 

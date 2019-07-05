@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
 ms.author: monhaber
-ms.openlocfilehash: 76e691df0a026802682b57ff78496f6b66d7ff79
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: ed94b92a34e2989c9f2226c344ac4d34a279eeac
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154820"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551836"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-public-preview"></a>Speciális biztonsági SQL-kiszolgálók Azure-beli virtuális gépeken (nyilvános előzetes verzió)
 Azure virtuális gépeken futó SQL-kiszolgálók speciális biztonsági egységes csomag egy tapasztalt SQL biztonsági funkciók. Felszínre hozza a és az adatbázis biztonsági réseinek csökkentése és az adatbázis fenyegetést jelezhet rendellenes tevékenységeket észleli a funkciót jelenleg (a nyilvános előzetes verzió) tartalmaz. 
@@ -95,7 +95,7 @@ Megtekintheti és kezelheti a jelenlegi biztonsági riasztásokat.
 
 Beállíthatja a címzettek felkérése az e-mailben értesítést küld az ASC miatti riasztások olyankor jönnek listáját. Az e-mail tartalmazza a riasztás az Azure Security Center az összes releváns részlet közvetlen hivatkozás. 
 
-1. Lépjen a **a Security Center** > **biztonsági házirend** , és kattintson a megfelelő előfizetés sorában **beállítások szerkesztése >** .
+1. Lépjen a **a Security Center** > **díjszabási & beállítások** , és kattintson a megfelelő előfizetésre
 
     ![Előfizetési beállítások](./media/security-center-advanced-iaas-data/subscription-settings.png)
 

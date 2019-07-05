@@ -3,22 +3,22 @@ title: Linuxos Java-alkalmazások – az Azure App Service konfigurálása |} A 
 description: Ismerje meg, hogyan konfigurálhatja a linuxon futó Azure App Service-ben futó Java alkalmazásokat.
 keywords: az Azure app Service-ben, webalkalmazás, linux, oss, java, a java EE-alapú, jee, javaee
 services: app-service
-author: rloutlaw
-manager: angerobe
+author: bmitchell287
+manager: douge
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 03/28/2019
-ms.author: routlaw
+ms.date: 06/26/2019
+ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 91368ac3b1d7948257fa9e55debc862567593425
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 51ca597208b582e95fd305886dcf163744825eee
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341390"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509643"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>A Linuxos Java-alkalmazás konfigurálása az Azure App Service-ben
 
@@ -53,7 +53,7 @@ További információkért lásd: [folyamatos átviteli naplók az Azure CLI-vel
 
 ### <a name="app-logging"></a>Alkalmazás-naplózás
 
-Engedélyezése [alkalmazásnaplózás](../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enablediag) az Azure Portalon keresztül vagy [Azure CLI-vel](/cli/azure/webapp/log#az-webapp-log-config) App Service-ben az alkalmazás normál konzolkimenet és standard szintű konzol hibaadatfolyamok írni a helyi konfigurálása fájlrendszer- vagy Azure Blob Storage. Az App Service helyi fájlrendszer naplózása példány le van tiltva 12 óra után van konfigurálva. Ha hosszabb adatmegőrzés megadásához, az alkalmazás kiírhatja a kimenetet egy Blob storage-tároló konfigurálása. A Java- és Tomcat alkalmazásnaplókat megtalálható a `/home/LogFiles/Application/` könyvtár.
+Engedélyezése [alkalmazásnaplózás](../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enablediag) az Azure Portalon keresztül vagy [Azure CLI-vel](/cli/azure/webapp/log#az-webapp-log-config) App Service-ben az alkalmazás normál konzolkimenet és standard szintű konzol hibaadatfolyamok írni a helyi konfigurálása fájlrendszer- vagy Azure Blob Storage. Az App Service helyi fájlrendszer naplózása példány le van tiltva 12 óra után van konfigurálva. Ha hosszabb adatmegőrzés megadásához, az alkalmazás kiírhatja a kimenetet egy Blob storage-tároló konfigurálása. A Java- és Tomcat alkalmazásnaplókat megtalálható a */home/LogFiles/alkalmazás/* könyvtár.
 
 Ha az alkalmazás [Logback](https://logback.qos.ch/) vagy [Log4j](https://logging.apache.org/log4j) nyomkövetés, is továbbíthatja, tekintse át az Azure Application Insights a nyomkövetések utasításai a naplózási keretrendszer konfigurációs [Ismerkedés a Java-nyomkövetési naplókat az Application Insights](/azure/application-insights/app-insights-java-trace-logs).
 
@@ -76,7 +76,7 @@ Picked up JAVA_TOOL_OPTIONS: -Djava.net.preferIPv4Stack=true
 116 /home/site/wwwroot/app.jar
 ```
 
-Hajtsa végre az alábbi parancsot a JVM 30 másodperces felvétel indításához. Ezzel a JVM profil, és hozzon létre egy JFR fájlt `jfr_example.jfr` a kezdőkönyvtárban. (Cserélje le a Java-alkalmazás pid 116.)
+Hajtsa végre az alábbi parancsot a JVM 30 másodperces felvétel indításához. Ezzel a JVM profil, és hozzon létre egy JFR fájlt *jfr_example.jfr* a kezdőkönyvtárban. (Cserélje le a Java-alkalmazás pid 116.)
 
 ```shell
 jcmd 116 JFR.start name=MyRecording settings=profile duration=30s filename="/home/jfr_example.jfr"
@@ -96,7 +96,7 @@ További információkért tekintse meg a [Jcmd parancsdokumentációja](https:/
 
 ### <a name="analyzing-recordings"></a>Felvétel elemzése
 
-Használat [FTPS](../deploy-ftp.md) a JFR fájl letöltése a helyi gépen. A JFR fájl elemzése, töltse le és telepítse [Zulu alapvető ellenőrzési](https://www.azul.com/products/zulu-mission-control/). A Zulu alapvető vezérlőelemen útmutatásért lásd: a [Azul dokumentáció](https://docs.azul.com/zmc/) és a [telepítési utasításokat](https://docs.microsoft.com/en-us/java/azure/jdk/java-jdk-flight-recorder-and-mission-control).
+Használat [FTPS](../deploy-ftp.md) a JFR fájl letöltése a helyi gépen. A JFR fájl elemzése, töltse le és telepítse [Zulu alapvető ellenőrzési](https://www.azul.com/products/zulu-mission-control/). A Zulu alapvető vezérlőelemen útmutatásért lásd: a [Azul dokumentáció](https://docs.azul.com/zmc/) és a [telepítési utasításokat](https://docs.microsoft.com/java/azure/jdk/java-jdk-flight-recorder-and-mission-control).
 
 ## <a name="customization-and-tuning"></a>Testreszabás és hangolás
 
@@ -133,7 +133,7 @@ Az egyetlen alkalmazást futtató és egy üzembe helyezési pont az App Service
 
 Amikor alkalmazás halommemória finomhangolásának beállításai, tekintse át az App Service-csomag részletei, és több alkalmazás és üzembe helyezési pont figyelembe kell keresnie a optimális lefoglalt memória.
 
-Ha helyez üzembe egy JAR-alkalmazást, azt kell elnevezni `app.jar` , hogy a beépített rendszerképpel helyesen azonosítani tudja az alkalmazás. (A Maven bővítménnyel nem, automatikusan az Átnevezés.) Ha nem szeretné, a JAR átnevezése `app.jar`, feltöltheti azt a héjparancsfájlt, a parancs futtatása a JAR. Illessze be a parancsfájl teljes elérési útja a [indítási fájl](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#startup-file) szövegmezőben, hogy a portál konfigurációs szakaszban.
+Ha helyez üzembe egy JAR-alkalmazást, azt kell elnevezni *app.jar* , hogy a beépített rendszerképpel helyesen azonosítani tudja az alkalmazás. (A Maven bővítménnyel nem, automatikusan az Átnevezés.) Ha nem szeretné, a JAR átnevezése *app.jar*, feltöltheti azt a héjparancsfájlt, a parancs futtatása a JAR. Illessze be a parancsfájl teljes elérési útja a [indítási fájl](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#startup-file) szövegmezőben, hogy a portál konfigurációs szakaszban.
 
 ### <a name="turn-on-web-sockets"></a>Kapcsolja be a web sockets
 
@@ -173,7 +173,7 @@ Ha a Java-alkalmazás különösen nagy, növelje az indítási időkorlátot. E
 
 ## <a name="secure-applications"></a>Biztonságos alkalmazások
 
-Az App Service Linux rendszeren futó Java-alkalmazások rendelkeznek ugyanazokat a [ajánlott biztonsági eljárások](/azure/security/security-paas-applications-using-app-services) más alkalmazásokként. 
+Az App Service Linux rendszeren futó Java-alkalmazások rendelkeznek ugyanazokat a [ajánlott biztonsági eljárások](/azure/security/security-paas-applications-using-app-services) más alkalmazásokként.
 
 ### <a name="authenticate-users"></a>Felhasználók hitelesítése
 
@@ -215,7 +215,7 @@ Ez a funkció letiltásához hozzon létre egy nevű Alkalmazásbeállítás `WE
 
 #### <a name="spring-boot"></a>Spring Boot
 
-Spring Boot fejlesztők használhatják a [Azure Active Directory Spring Boot starter](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable) ismerős Spring biztonsági jegyzetek és API-kat használó alkalmazások biztonságossá tételéhez. Ügyeljen arra, hogy növelje a fejléc maximális méretét a a `application.properties` fájlt. Javasoljuk, hogy a egy értéke `16384`.
+Spring Boot fejlesztők használhatják a [Azure Active Directory Spring Boot starter](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable) ismerős Spring biztonsági jegyzetek és API-kat használó alkalmazások biztonságossá tételéhez. Ügyeljen arra, hogy növelje a fejléc maximális méretét a a *application.properties* fájlt. Javasoljuk, hogy a egy értéke `16384`.
 
 ### <a name="configure-tlsssl"></a>A TLS/SSL konfigurálása
 
@@ -239,11 +239,11 @@ Ez a szakasz bemutatja, hogyan csatlakozhat az Azure App Service Linux rendszere
 ### <a name="configure-new-relic"></a>Konfigurálja a New relic-bővítménnyel
 
 1. Hozzon létre egy NewRelic fiókot [NewRelic.com](https://newrelic.com/signup)
-2. Töltse le a Java ügynököt a NewRelic, fog rendelkezni a fájl nevét hasonló `newrelic-java-x.x.x.zip`.
+2. Töltse le a Java ügynököt a NewRelic, fog rendelkezni a fájl nevét hasonló *newrelic-java-x.x.x.zip*.
 3. Másolja a licenckulcsot, meg kell, hogy később konfigurálja az ügynököt.
-4. [SSH-t az App Service-példányhoz](app-service-linux-ssh-support.md) , és hozzon létre egy új könyvtárat `/home/site/wwwroot/apm`.
-5. A kicsomagolt NewRelic Java ügynököt fájlok feltöltése egy könyvtárat `/home/site/wwwroot/apm`. Az ügynök számára a fájlok kell lennie a `/home/site/wwwroot/apm/newrelic`.
-6. A következő YAML-fájl módosítása `/home/site/wwwroot/apm/newrelic/newrelic.yml` és licenc helyőrző értékét cserélje le a saját licenckulcsot.
+4. [SSH-t az App Service-példányhoz](app-service-linux-ssh-support.md) , és hozzon létre egy új könyvtárat */home/site/wwwroot/apm*.
+5. A kicsomagolt NewRelic Java ügynököt fájlok feltöltése egy könyvtárat */home/site/wwwroot/apm*. Az ügynök számára a fájlok kell */home/site/wwwroot/apm/newrelic*.
+6. A következő YAML-fájl módosítása */home/site/wwwroot/apm/newrelic/newrelic.yml* és licenc helyőrző értékét cserélje le a saját licenckulcsot.
 7. Az Azure Portalon keresse meg az alkalmazást az App Service-ben, és hozzon létre egy új alkalmazás-beállítás.
     - Ha az alkalmazás **Java használata**, nevű környezeti változó létrehozásához `JAVA_OPTS` értékkel `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`.
     - Ha használ **Tomcat**, nevű környezeti változó létrehozásához `CATALINA_OPTS` értékkel `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`.
@@ -253,25 +253,25 @@ Ez a szakasz bemutatja, hogyan csatlakozhat az Azure App Service Linux rendszere
 ### <a name="configure-appdynamics"></a>AppDynamics konfigurálása
 
 1. Hozzon létre egy AppDynamics fiókot a [AppDynamics.com](https://www.appdynamics.com/community/register/)
-1. Töltse le a Java ügynököt az AppDynamics webhelyről, a fájlnév hasonló lesz. `AppServerAgent-x.x.x.xxxxx.zip`
-1. [SSH-t az App Service-példányhoz](app-service-linux-ssh-support.md) , és hozzon létre egy új könyvtárat `/home/site/wwwroot/apm`.
-1. A Java ügynököt fájlok feltöltése egy könyvtárat `/home/site/wwwroot/apm`. Az ügynök számára a fájlok kell lennie a `/home/site/wwwroot/apm/appdynamics`.
-1. Az Azure Portalon keresse meg az alkalmazást az App Service-ben, és hozzon létre egy új alkalmazás-beállítás.
+2. Töltse le a Java ügynököt az AppDynamics webhelyről, a fájlnév hasonló lesz *AppServerAgent-x.x.x.xxxxx.zip*
+3. [SSH-t az App Service-példányhoz](app-service-linux-ssh-support.md) , és hozzon létre egy új könyvtárat */home/site/wwwroot/apm*.
+4. A Java ügynököt fájlok feltöltése egy könyvtárat */home/site/wwwroot/apm*. Az ügynök számára a fájlok kell */home/site/wwwroot/apm/appdynamics*.
+5. Az Azure Portalon keresse meg az alkalmazást az App Service-ben, és hozzon létre egy új alkalmazás-beállítás.
     - Használata **Java használata**, nevű környezeti változó létrehozásához `JAVA_OPTS` értékkel `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` ahol `<app-name>` az App Service neve.
     - Ha használ **Tomcat**, nevű környezeti változó létrehozásához `CATALINA_OPTS` értékkel `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` ahol `<app-name>` az App Service neve.
     - Ha használ **WildFly**, az AppDynamics dokumentációjában [Itt](https://docs.appdynamics.com/display/PRO45/JBoss+and+Wildfly+Startup+Settings) a Java ügynököt és a JBoss konfiguráció telepítésével kapcsolatos útmutatásért.
-    
+
 ## <a name="configure-jar-applications"></a>JAR-alkalmazások konfigurálása
 
 ### <a name="starting-jar-apps"></a>JAR alkalmazások indítása
 
-Alapértelmezés szerint az App Service-ben vár az JAR-alkalmazás neve lehet `app.jar`. Ha ezt a nevet, legyen automatikusan elindul. A Maven-felhasználók számára, megadhatja a JAR-nevet többek között `<finalName>app</finalName>` a a `<build>` szakaszában a `pom.xml`. [Akkor is képes ugyanerre a Gradle](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName) beállításával a `archiveFileName` tulajdonság.
+Alapértelmezés szerint az App Service-ben vár az JAR-alkalmazás neve lehet *app.jar*. Ha ezt a nevet, legyen automatikusan elindul. A Maven-felhasználók számára, megadhatja a JAR-nevet többek között `<finalName>app</finalName>` a a `<build>` szakaszában a *pom.xml*. [Akkor is képes ugyanerre a Gradle](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName) beállításával a `archiveFileName` tulajdonság.
 
 Ha egy másik nevet a JAR használni kívánt, meg kell adni a [indítási parancs](app-service-linux-faq.md#built-in-images) , amely végrehajtja a JAR-fájlt. Például: `java -jar my-jar-app.jar`. Az érték beállítható az indítási parancs a portálon, a Configuration > általános beállításait, vagy nevű alkalmazás-beállítás `STARTUP_COMMAND`.
 
 ### <a name="server-port"></a>Kiszolgálóport
 
-Az App Service Linux irányítja a kérelmeket, 80-as porton, a 80-as portot is figyelnie kell az alkalmazást. Ezt megteheti az alkalmazás konfigurációjában is (például a Spring `application.properties` fájl), vagy az indítási parancs (például `java -jar spring-app.jar --server.port=80`). Tekintse meg a következő dokumentáció közös Java-keretrendszerek:
+Az App Service Linux irányítja a kérelmeket, 80-as porton, a 80-as portot is figyelnie kell az alkalmazást. Ezt megteheti az alkalmazás konfigurációjában is (például a Spring *application.properties* fájl), vagy az indítási parancs (például `java -jar spring-app.jar --server.port=80`). Tekintse meg a következő dokumentáció közös Java-keretrendszerek:
 
 - [Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-properties-and-configuration.html#howto-use-short-command-line-arguments)
 - [SparkJava](http://sparkjava.com/documentation#embedded-web-server)
@@ -309,24 +309,24 @@ Következő lépésként határozza meg, ha az adatforrás elérhető, több alk
 
 #### <a name="application-level-data-sources"></a>Alkalmazásszintű adatforrások
 
-1. Hozzon létre egy `context.xml` fájlt a `META-INF/` könyvtárat a projekthez. Hozzon létre a `META-INF/` könyvtárat, ha még nem létezik.
+1. Hozzon létre egy *context.xml* fájlt a *META-INF /* könyvtárat a projekthez. Hozzon létre a *META-INF /* könyvtárat, ha még nem létezik.
 
-2. A `context.xml`, adjon hozzá egy `Context` elem az adatforrás JNDI címre mutat. Cserélje le a `driverClassName` helyőrzőt az illesztőprogram osztály neve a fenti táblázatból.
+2. A *context.xml*, adjon hozzá egy `Context` elem az adatforrás JNDI címre mutat. Cserélje le a `driverClassName` helyőrzőt az illesztőprogram osztály neve a fenti táblázatból.
 
     ```xml
     <Context>
         <Resource
-            name="jdbc/dbconnection" 
+            name="jdbc/dbconnection"
             type="javax.sql.DataSource"
             url="${dbuser}"
             driverClassName="<insert your driver class name>"
-            username="${dbpassword}" 
+            username="${dbpassword}"
             password="${connURL}"
         />
     </Context>
     ```
 
-3. Az alkalmazás frissítése `web.xml` az alkalmazásban az adatforrás használata.
+3. Az alkalmazás frissítése *Web.xml fájlt* az alkalmazásban az adatforrás használata.
 
     ```xml
     <resource-env-ref>
@@ -337,24 +337,25 @@ Következő lépésként határozza meg, ha az adatforrás elérhető, több alk
 
 #### <a name="shared-server-level-resources"></a>Kiszolgálószintű megosztott erőforrások
 
-1. Másolja ki a tartalmát `/usr/local/tomcat/conf` be `/home/tomcat/conf` az App Service Linux rendszeren az SSH használatával, ha nem rendelkezik olyan konfigurációs van már példány.
-    ```
+1. Másolja ki a tartalmát */usr/local/tomcat/conf* be */home/tomcat/conf* az App Service Linux rendszeren az SSH használatával, ha nem rendelkezik olyan konfigurációs van már példány.
+
+    ```bash
     mkdir -p /home/tomcat
     cp -a /usr/local/tomcat/conf /home/tomcat/conf
     ```
 
-2. Adja hozzá az olyan környezet eleme a `server.xml` belül a `<Server>` elemet.
+2. Adja hozzá az olyan környezet eleme a *server.xml* belül a `<Server>` elemet.
 
     ```xml
     <Server>
     ...
     <Context>
         <Resource
-            name="jdbc/dbconnection" 
+            name="jdbc/dbconnection"
             type="javax.sql.DataSource"
             url="${dbuser}"
             driverClassName="<insert your driver class name>"
-            username="${dbpassword}" 
+            username="${dbpassword}"
             password="${connURL}"
         />
     </Context>
@@ -362,7 +363,7 @@ Következő lépésként határozza meg, ha az adatforrás elérhető, több alk
     </Server>
     ```
 
-3. Az alkalmazás frissítése `web.xml` az alkalmazásban az adatforrás használata.
+3. Az alkalmazás frissítése *Web.xml fájlt* az alkalmazásban az adatforrás használata.
 
     ```xml
     <resource-env-ref>
@@ -375,7 +376,8 @@ Következő lépésként határozza meg, ha az adatforrás elérhető, több alk
 
 Végül a Tomcat osztályútvonal helyezze az illesztőprogram JAR-fájlok kivételével, és indítsa újra az App Service.
 
-1. Győződjön meg arról, hogy a JDBC-illesztőprogram fájlokat is helyezheti őket a Tomcat classloader rendelkezésére állnak a `/home/tomcat/lib` könyvtár. (Létrehozza ezt a könyvtárat, ha ezt még nem létezik.) Ezeket a fájlokat feltöltheti az App Service-példányhoz, hajtsa végre az alábbi lépéseket:
+1. Győződjön meg arról, hogy a JDBC-illesztőprogram fájlokat is helyezheti őket a Tomcat classloader rendelkezésére állnak a */home/tomcat/lib* könyvtár. (Létrehozza ezt a könyvtárat, ha ezt még nem létezik.) Ezeket a fájlokat feltöltheti az App Service-példányhoz, hajtsa végre az alábbi lépéseket:
+
     1. Az a [Cloud Shell](https://shell.azure.com), a webalkalmazás bővítményének telepítése:
 
       ```azurecli-interactive
@@ -388,7 +390,7 @@ Végül a Tomcat osztályútvonal helyezze az illesztőprogram JAR-fájlok kivé
       az webapp remote-connection create --resource-group <resource-group-name> --name <app-name> --port <port-on-local-machine>
       ```
 
-    3. Az SFTP-ügyféllel a helyi bújtatás port csatlakozik és tölt fel a fájlokat, és a `/home/tomcat/lib` mappát.
+    3. Az SFTP-ügyféllel a helyi bújtatás port csatlakozik és tölt fel a fájlokat, és a */home/tomcat/lib* mappát.
 
     Az FTP-ügyfél segítségével azt is megteheti, töltse fel a JDBC-illesztővel. Kövesse az alábbi [vonatkozó, az FTP-hitelesítő adatok első](../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
@@ -396,13 +398,13 @@ Végül a Tomcat osztályútvonal helyezze az illesztőprogram JAR-fájlok kivé
 
 ### <a name="spring-boot"></a>Spring Boot
 
-Csatlakozás adatforrásokhoz a Spring Boot-alkalmazások, javasoljuk, hogy kapcsolati karakterláncainak létrehozása és betöltése őket a `application.properties` fájlt.
+Csatlakozás adatforrásokhoz a Spring Boot-alkalmazások, javasoljuk, hogy kapcsolati karakterláncainak létrehozása és betöltése őket a *application.properties* fájlt.
 
 1. Az App Service-oldal a "Konfiguráció" területen állítsa be a karakterlánc nevét, az érték mezőbe illessze be a JDBC kapcsolati karakterlánc és állítsa be az "Egyéni" típusát. Tárhelybeállítás, igény szerint állíthatja be ezt a kapcsolati karakterláncot.
 
     Ez a kapcsolati karakterlánc érhető el az alkalmazás nevű környezeti változóban `CUSTOMCONNSTR_<your-string-name>`. A fentiekben létrehozott kapcsolati karakterlánc neve például `CUSTOMCONNSTR_exampledb`.
 
-2. Az a `application.properties` fájlt, hivatkozhat a környezeti változó neve a kapcsolati karakterláncot. A jelen példában a következő lenne használjuk.
+2. Az a *application.properties* fájlt, hivatkozhat a környezeti változó neve a kapcsolati karakterláncot. A jelen példában a következő lenne használjuk.
 
     ```yml
     app.datasource.url=${CUSTOMCONNSTR_exampledb}
@@ -415,47 +417,49 @@ Tekintse át a [adatok elérése a Spring Boot-dokumentáció](https://docs.spri
 > [!NOTE]
 > A Java Enterprise Edition App Service Linux rendszeren jelenleg előzetes verzióban érhető el. Ez a verem **nem** javasolt az éles néző munka. információk a Java SE- és Tomcat implementációt.
 
-Linuxon futó Azure App Service lehetővé teszi, hogy elkészítheti, telepítheti és méretezheti a Java Enterprise (Java EE-alapú) alkalmazásait egy teljes körűen felügyelt Linux-alapú szolgáltatás a Java-fejlesztőknek.  A Java Enterprise alapul szolgáló futtatókörnyezethez a nyílt forráskódú [Wildfly](https://wildfly.org/) alkalmazáskiszolgáló.
+Linuxon futó Azure App Service lehetővé teszi, hogy elkészítheti, telepítheti és méretezheti a Java Enterprise (Java EE-alapú) alkalmazásait egy teljes körűen felügyelt Linux-alapú szolgáltatás a Java-fejlesztőknek.  A Java Enterprise alapul szolgáló futtatókörnyezethez a nyílt forráskódú [WildFly](https://wildfly.org/) alkalmazáskiszolgáló.
 
-[Méretezés App Service-szel](#scale-with-app-service)
-[testreszabás alkalmazás kiszolgálókonfiguráció](#customize-application-server-configuration)
-[modulok és a függőségek](#modules-and-dependencies)
-[adatok források](#data-sources)
-[üzenetkezelési szolgáltatók engedélyezése](#enable-messaging-providers)
-[munkamenet felügyeleti gyorsítótár konfigurálása](#configure-session-management-caching)
+Ez a szakasz a következő alszakaszokat tartalmazza:
+
+- [Méretezés App Service-ben](#scale-with-app-service)
+- [Alkalmazás-kiszolgálókonfiguráció testreszabása](#customize-application-server-configuration)
+- [Modulok és a függőségek telepítése](#install-modules-and-dependencies)
+- [Adatforrások konfigurálása](#configure-data-sources)
+- [Üzenetkezelési szolgáltatók engedélyezése](#enable-messaging-providers)
+- [Munkamenet-kezelés gyorsítótár konfigurálása](#configure-session-management-caching)
 
 ### <a name="scale-with-app-service"></a>Méretezés App Service-ben
 
 A linuxon futó App Service-ben WildFly kiszolgáló önálló módban, nem tartományi konfigurációban futtatja. Horizontális felskálázás az App Service-csomag, az egyes WildFly példányok önálló kiszolgálóként van konfigurálva.
 
- Az alkalmazás méretezése vízszintesen vagy függőlegesen a [szabályok méretezése](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md) , illetve [a példányszám növelése](../web-sites-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+Az alkalmazás méretezése vízszintesen vagy függőlegesen a [szabályok méretezése](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md) , illetve [a példányszám növelése](../web-sites-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
 ### <a name="customize-application-server-configuration"></a>Alkalmazás-kiszolgálókonfiguráció testreszabása
 
-Webes alkalmazás példányai állapot nélküli, így minden egyes új példány indítása kell konfigurálni az alkalmazás számára szükséges Wildfly konfiguráció támogatásához indításakor.
+Webes alkalmazás példányai állapot nélküli, így minden egyes új példány indítása kell konfigurálni az alkalmazás számára szükséges WildFly konfiguráció támogatásához indításakor.
 Írhat egy indítási Bash-szkript a WildFly parancssori felület meghívásához:
 
 - Adatforrás létrehozása
 - Üzenetkezelési-szolgáltatók konfigurálása
-- Más modulok és a függőségek hozzáadása a Wildfly kiszolgáló konfigurációját.
+- Más modulok és a függőségek hozzáadása a WildFly kiszolgáló konfigurációját.
 
- A parancsfájl Wildfly működik-e, de az alkalmazás indítása előtt lefut. A parancsfájlt kell használnia a [JBOSS CLI](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface) volat z `/opt/jboss/wildfly/bin/jboss-cli.sh` bármely konfigurációs vagy a kiszolgáló újraindítása után szükséges változtatásokat a kiszolgáló konfigurálása.
+A parancsfájl WildFly működik-e, de az alkalmazás indítása előtt lefut. A parancsfájlt kell használnia a [JBOSS CLI](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface) volat z */opt/jboss/wildfly/bin/jboss-cli.sh* bármely konfigurációs vagy a kiszolgáló újraindítása után szükséges változtatásokat a kiszolgáló konfigurálása.
 
-Ne használja az interaktív mód a parancssori felület Wildfly konfigurálásához. Helyette megadhat egy parancsfájlt a parancsok JBoss CLI használatával az `--file` parancsot, például:
+Ne használja az interaktív mód a parancssori felület WildFly konfigurálásához. Helyette megadhat egy parancsfájlt a parancsok JBoss CLI használatával az `--file` parancsot, például:
 
 ```bash
 /opt/jboss/wildfly/bin/jboss-cli.sh -c --file=/path/to/your/jboss_commands.cli
 ```
 
-Töltse fel az indítási parancsfájl `/home/site/deployments/tools` App Service-példányában. Lásd: [ebben a dokumentumban](../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#userscope) hitelesítő adatait az FTP beszerzésével kapcsolatban.
+Az App Service-ben a példányt a hely az indítási szkript feltöltése FTP használatával a */home* könyvtárat, például */home/site/deployments/tools*. További információ: [alkalmazás üzembe helyezése az Azure App Service-ben FTP/S használatával](https://docs.microsoft.com/azure/app-service/deploy-ftp).
 
-Állítsa be a **indítási parancsfájl** mezőben az Azure Portalon, az indítási parancsfájl helyét például `/home/site/deployments/tools/your-startup-script.sh`.
+Állítsa be a **indítási parancsfájl** mezőben az Azure Portalon, az indítási parancsfájl helyét például */home/site/deployments/tools/your-startup-script.sh*.
 
 Adja meg [Alkalmazásbeállítások](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) átadandó környezeti változók a parancsfájl az alkalmazás konfigurációjában. Alkalmazásbeállítások tartsa meg a kapcsolati karakterláncok és egyéb titkok verziókövetés kívül az alkalmazás konfigurálásához szükséges.
 
-### <a name="modules-and-dependencies"></a>Modulok és a függőségek
+### <a name="install-modules-and-dependencies"></a>Modulok és a függőségek telepítése
 
-Modulok és azok függőségeit a Wildfly osztályútvonal JBoss parancssori felületén történő telepítéséhez szüksége lesz a következő fájlok létrehozása a saját címtárban. Egyes modulok és a függőségek előfordulhat, hogy kell az például JNDI elnevezési további konfigurációs vagy más API-specifikus konfigurációs, így ez a lista a következőkre lesz szüksége a legtöbb esetben egy függőségi konfigurálása minimális készletét.
+Modulok és azok függőségeit a WildFly osztályútvonal JBoss parancssori felületén történő telepítéséhez szüksége lesz a következő fájlok létrehozása a saját címtárban. Egyes modulok és a függőségek előfordulhat, hogy kell az például JNDI elnevezési további konfigurációs vagy más API-specifikus konfigurációs, így ez a lista a következőkre lesz szüksége a legtöbb esetben egy függőségi konfigurálása minimális készletét.
 
 - Egy [XML modul leíró](https://jboss-modules.github.io/jboss-modules/manual/#descriptors). Az XML-fájl nevét, attribútumokat és függőségeit, a modul határozza meg. Ez [module.xml példafájl](https://access.redhat.com/documentation/en-us/jboss_enterprise_application_platform/6/html/administration_and_configuration_guide/example_postgresql_xa_datasource) Postgres modul, a JAR-fájl JDBC függőség és egyéb szükséges modul függőségek meghatározása.
 - Minden szükséges JAR csomagfájlfüggőségekről a modul.
@@ -463,23 +467,170 @@ Modulok és azok függőségeit a Wildfly osztályútvonal JBoss parancssori fel
 - A Bash indítási szkript meghívása a JBoss parancssori Felületet, és hajtsa végre a parancsfájlt az előző lépésben. Ez a fájl lesz hajtható végre, ha az App Service-példány újraindítása, vagy ha új példányok horizontális felskálázás során felhasznált. Az indítási szkript, ahol hajthatja végre minden egyéb konfigurációt az alkalmazáshoz, a JBoss parancsokat a rendszer átadja a JBoss CLI. Legalább Ez a fájl lehet az JBoss CLI parancshoz készített parancsfájl átadása a JBoss CLI egyetlen paranccsal:
 
 ```bash
-`/opt/jboss/wildfly/bin/jboss-cli.sh -c --file=/path/to/your/jboss_commands.cli`
+/opt/jboss/wildfly/bin/jboss-cli.sh -c --file=/path/to/your/jboss_commands.cli
 ```
 
-Ha a fájlok és tartalmak a modul, az alábbi lépésekkel, a modul hozzáadása a Wildfly kiszolgáló.
+Ha a fájlok és tartalmak a modul, az alábbi lépésekkel, a modul hozzáadása a WildFly kiszolgáló.
 
-1. FTP-fájlok `/home/site/deployments/tools` App Service-példányában. Ez a dokumentum útmutatást talál első FTP hitelesítő adatait.
-2. Az a **konfigurációs** > **általános beállítások** oldal az Azure portal, állítsa be a "indítási parancsfájl" mező helyére az indítási héjparancsfájlt, például `/home/site/deployments/tools/your-startup-script.sh` .
+1. Az App Service-ben a példányt a hely a fájlok feltöltése FTP használatával a */home* könyvtárat, például */home/site/deployments/tools*. További információ: [alkalmazás üzembe helyezése az Azure App Service-ben FTP/S használatával](../deploy-ftp.md).
+2. Az a **konfigurációs** > **általános beállítások** az Azure portál oldalán állítsa be a **indítási parancsfájl** mezőt az indítási parancsfájl helyét Példa */home/site/deployments/tools/startup.sh*.
 3. Az App Service-példány újraindítása billentyűkombináció lenyomásával a **indítsa újra a** gombra a **áttekintése** szakaszában a portálon vagy az Azure CLI használatával.
 
-### <a name="configure-data-source-connections"></a>Adatforrás-kapcsolatok konfigurálása
+### <a name="configure-data-sources"></a>Adatforrások konfigurálása
 
-Az adatforrás-kapcsolat Wildfly konfigurálásához kövesse a modulok telepítése és a függőségek szakaszban fent leírt eljárást. Követheti ugyanezeket a lépéseket minden olyan Azure-adatbázis szolgáltatás.
+WildFly/JBoss egy adatforrás eléréséhez konfigurálásához használja a "telepítés modulok és függőségei" szakasz a fent vázolt általános folyamata. Az alábbi szakasz részletesen adott ezt a folyamatot a PostgreSQL, a MySQL és az SQL Server-adatforrásokhoz.
 
-1. Az adatbázis íz a JDBC-illesztőprogram letöltése. Az egyszerűség kedvéért az alábbiakban a illesztőprogramokat [Postgres](https://jdbc.postgresql.org/download.html) és [MySQL](https://dev.mysql.com/downloads/connector/j/). A letöltés beolvasni a .jar-fájl kicsomagolása.
-2. Kövesse a lépéseket vázlat "Modul és függőségei" létrehoznia és feltöltenie az XML-modul leíró, JBoss CLI-példaszkript, indítási szkriptet és .jar JDBC-függőséget a.
+Ez a szakasz azt feltételezi, hogy már rendelkezik egy alkalmazást, egy App Service-példány és egy Azure Database service egy példányát. Az alábbi utasítások tekintse meg az App Service-neve, az erőforráscsoportot és az adatbázis-kapcsolati adatok. Ezt az információt az Azure Portalon is megtalálhatja.
 
-A Wildfly konfigurálásáról [PostgreSQL](https://developer.jboss.org/blogs/amartin-blog/2012/02/08/how-to-set-up-a-postgresql-jdbc-driver-on-jboss-7) , [MySQL](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#Using_other_Databases-Using_MySQL_as_the_Default_DataSource), és [SQL Database](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#d0e3898) érhető el. Ezeket testre szabott útmutatót, valamint a fent az általános megközelítés segítségével adatforrás-definíciók ad hozzá a kiszolgálóhoz.
+Ha inkább egy mintaalkalmazással kezdettől fogva a teljes folyamat meg, lásd: [oktatóanyag: A Java EE-alapú és a Postgres-webalkalmazás létrehozása az Azure-ban](tutorial-java-enterprise-postgresql-app.md).
+
+A következő lépések elmagyarázzák, a meglévő App Service és az adatbázis kapcsolódás követelményeinek.
+
+1. A JDBC-illesztőprogram letöltése [PostgreSQL](https://jdbc.postgresql.org/download.html), [MySQL](https://dev.mysql.com/downloads/connector/j/), vagy [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server). A letöltött archívum az illesztőprogram beszerzése a .jar-fájl kicsomagolása.
+
+2. Hozzon létre egy fájlt vagy hasonló néven *module.xml* , és adja hozzá a következő kódot. Cserélje le a `<module name>` helyőrzőt (beleértve a csúcsos zárójeleket) `org.postgres` , a PostgreSQL-hez `com.mysql` MySQL,-hez vagy `com.microsoft` SQL Serverhez. Cserélje le `<JDBC .jar file path>` az előző lépésben a .jar kiterjesztésű fájl nevével, beleértve a teljes elérési útját fogja elhelyezni a fájlt az App Service-példányában. Ez lehet bármely helyére a */home* könyvtár.
+
+    ```xml
+    <?xml version="1.0" ?>
+    <module xmlns="urn:jboss:module:1.1" name="<module name>">
+        <resources>
+           <resource-root path="<JDBC .jar file path>" />
+        </resources>
+        <dependencies>
+            <module name="javax.api"/>
+            <module name="javax.transaction.api"/>
+        </dependencies>
+    </module>
+    ```
+
+3. Hozzon létre egy fájlt vagy hasonló néven *datasource-commands.cli* , és adja hozzá a következő kódot. Cserélje le `<JDBC .jar file path>` az előző lépésben használt értékkel. Cserélje le `<module file path>` a fájl nevét és az előző lépésben, például az App Service elérési */home/module.xml*.
+
+    **PostgreSQL**
+
+    ```console
+    module add --name=org.postgres --resources=<JDBC .jar file path> --module-xml=<module file path>
+
+    /subsystem=datasources/jdbc-driver=postgres:add(driver-name=postgres,driver-module-name=org.postgres,driver-class-name=org.postgresql.Driver,driver-xa-datasource-class-name=org.postgresql.xa.PGXADataSource)
+
+    data-source add --name=postgresDS --driver-name=postgres --jndi-name=java:jboss/datasources/postgresDS --connection-url=$DATABASE_CONNECTION_URL --user-name=$DATABASE_SERVER_ADMIN_FULL_NAME --password=$DATABASE_SERVER_ADMIN_PASSWORD --use-ccm=true --max-pool-size=5 --blocking-timeout-wait-millis=5000 --enabled=true --driver-class=org.postgresql.Driver --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter --jta=true --use-java-context=true --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker
+
+    reload --use-current-server-config=true
+    ```
+
+    **MySQL**
+
+    ```console
+    module add --name=com.mysql --resources=<JDBC .jar file path> --module-xml=<module file path>
+
+    /subsystem=datasources/jdbc-driver=mysql:add(driver-name=mysql,driver-module-name=com.mysql,driver-class-name=com.mysql.cj.jdbc.Driver)
+
+    data-source add --name=mysqlDS --jndi-name=java:jboss/datasources/mysqlDS --connection-url=$DATABASE_CONNECTION_URL --driver-name=mysql --user-name=$DATABASE_SERVER_ADMIN_FULL_NAME --password=$DATABASE_SERVER_ADMIN_PASSWORD --use-ccm=true --max-pool-size=5 --blocking-timeout-wait-millis=5000 --enabled=true --driver-class=com.mysql.cj.jdbc.Driver --jta=true --use-java-context=true --exception-sorter-class-name=com.mysql.cj.jdbc.integration.jboss.ExtendedMysqlExceptionSorter
+
+    reload --use-current-server-config=true
+    ```
+
+    **SQL Server**
+
+    ```console
+    module add --name=com.microsoft --resources=<JDBC .jar file path> --module-xml=<module file path>
+
+    /subsystem=datasources/jdbc-driver=sqlserver:add(driver-name=sqlserver,driver-module-name=com.microsoft,driver-class-name=com.microsoft.sqlserver.jdbc.SQLServerDriver,driver-datasource-class-name=com.microsoft.sqlserver.jdbc.SQLServerDataSource)
+
+    data-source add --name=sqlDS --jndi-name=java:jboss/datasources/sqlDS --driver-name=sqlserver --connection-url=$DATABASE_CONNECTION_URL --validate-on-match=true --background-validation=false --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.mssql.MSSQLValidConnectionChecker --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensions.mssql.MSSQLExceptionSorter
+
+    reload --use-current-server-config=true
+    ```
+
+    Ez a fájl futtatja az indítási szkript a következő lépésben leírtak szerint. Azt a JDBC-illesztőprogram telepítése WildFly modulként, WildFly megfelelő adatforrás létrehozza, és újra betölti a kiszolgálót, és ellenőrizze, hogy a módosítások érvénybe léptetéséhez.
+
+4. Hozzon létre egy fájlt vagy hasonló néven *startup.sh* , és adja hozzá a következő kódot. Cserélje le `<JBoss CLI script>` a fájlt az előző lépésben létrehozott nevét. Így feltétlenül foglalja bele a teljes elérési útja a helyre fogja elhelyezni a fájlt az App Service-példányában, például */home/datasource-commands.cli*.
+
+    ```bash
+    #!/usr/bin/env bash
+    /opt/jboss/wildfly/bin/jboss-cli.sh -c --file=<JBoss CLI script>
+    ```
+
+5. FTP használatával töltse fel a JDBC .jar-fájl, a modul XML-fájlt, a JBoss CLI-szkript és az indítási szkript az App Service-példányhoz. Ezeket a fájlokat a helyezi az előző lépések, például a megadott */home*. További információ az FTP, lásd: [alkalmazás üzembe helyezése az Azure App Service-ben FTP/S használatával](https://docs.microsoft.com/azure/app-service/deploy-ftp).
+
+6. Az Azure CLI használatával beállítások hozzáadása az App Service, amely az adatbázis-kapcsolati adatok tárolásához. Cserélje le `<resource group>` és `<webapp name>` azokra az értékekre az App Service használja. Cserélje le `<database server name>`, `<database name>`, `<admin name>`, és `<admin password>` az adatbázis kapcsolati adatát. Az App Service-ben és az adatbázis adatait kaphat az Azure Portalról.
+
+    **PostgreSQL:**
+
+    ```bash
+    az webapp config appsettings set \
+        --resource-group <resource group> \
+        --name <webapp name> \
+        --settings \
+            DATABASE_CONNECTION_URL=jdbc:postgresql://<database server name>:5432/<database name>?ssl=true \
+            DATABASE_SERVER_ADMIN_FULL_NAME=<admin name> \
+            DATABASE_SERVER_ADMIN_PASSWORD=<admin password>
+    ```
+
+    **MySQL:**
+
+    ```bash
+    az webapp config appsettings set \
+        --resource-group <resource group> \
+        --name <webapp name> \
+        --settings \
+            DATABASE_CONNECTION_URL=jdbc:mysql://<database server name>:3306/<database name>?ssl=true\&useLegacyDatetimeCode=false\&serverTimezone=GMT \
+            DATABASE_SERVER_ADMIN_FULL_NAME=<admin name> \
+            DATABASE_SERVER_ADMIN_PASSWORD=<admin password>
+    ```
+
+    **SQL Server:**
+
+    ```bash
+    az webapp config appsettings set \
+        --resource-group <resource group> \
+        --name <webapp name> \
+        --settings \
+            DATABASE_CONNECTION_URL=jdbc:sqlserver://<database server name>:1433;database=<database name>;user=<admin name>;password=<admin password>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+    ```
+
+    A DATABASE_CONNECTION_URL értékei minden egyes adatbázis-kiszolgáló különböző, és eltér az értékeket az Azure Portalon. Az itt (és a fenti kódrészletek) látható URL-formátumok: WildFly használatra szükséges:
+
+    * **PostgreSQL:** `jdbc:postgresql://<database server name>:5432/<database name>?ssl=true`
+    * **MySQL:** `jdbc:mysql://<database server name>:3306/<database name>?ssl=true\&useLegacyDatetimeCode=false\&serverTimezone=GMT`
+    * **SQL Server:** `jdbc:sqlserver://<database server name>:1433;database=<database name>;user=<admin name>;password=<admin password>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;`
+
+7. Az Azure Portalon keresse meg az App Service-ben, és keresse meg a **konfigurációs** > **általános beállítások** lapot. Állítsa be a **indítási parancsfájl** mező nevét és helyét az indítási szkript, például */home/startup.sh*.
+
+A következő újraindításakor az App Service, azt fogja az indítási szkript futtatásához, és hajtsa végre a szükséges konfigurációs lépéseket. Ha tesztelni szeretné, hogy ez a konfiguráció megfelelően történik, eléréséhez az App Service, SSH-val, és majd az indítási szkript futtatásához saját maga a Bash használatával. Az App Service-naplókat is ellenőrizheti. Ezek a beállítások kapcsolatos további információkért lásd: [naplózása és az alkalmazások hibakeresése](#logging-and-debugging-apps).
+
+Ezt követően kell az alkalmazás az WildFly konfigurációjának frissítése és ismételt üzembe helyezése. Ehhez a következő lépések szükségesek:
+
+1. Nyissa meg a *src/main/resources/META-INF/persistence.xml* fájlt az alkalmazás és a Keresés a `<jta-data-source>` elemet. Cserélje le annak tartalmát, ahogy az itt látható:
+
+    **PostgreSQL**
+
+    ```xml
+    <jta-data-source>java:jboss/datasources/postgresDS</jta-data-source>
+    ```
+
+    **MySQL**
+
+    ```xml
+    <jta-data-source>java:jboss/datasources/mysqlDS</jta-data-source>
+    ```
+
+    **SQL Server**
+
+    ```xml
+    <jta-data-source>java:jboss/datasources/postgresDS</jta-data-source>
+    ```
+
+2. Építse újra, és telepítse újra az alkalmazást, a Bash parancssorban a következő paranccsal:
+
+    ```bash
+    mvn package -DskipTests azure-webapp:deploy
+    ```
+
+3. Az App Service-példány újraindítása billentyűkombináció lenyomásával a **indítsa újra a** gombra a **áttekintése** szakaszban az Azure Portal vagy az Azure CLI használatával.
+
+Az App Service-példányhoz konfigurálva van az adatbázis eléréséhez.
+
+További információ az adatbázis-kapcsolat konfigurálása a WildFly, lásd: [PostgreSQL](https://developer.jboss.org/blogs/amartin-blog/2012/02/08/how-to-set-up-a-postgresql-jdbc-driver-on-jboss-7), [MySQL](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#Using_other_Databases-Using_MySQL_as_the_Default_DataSource), vagy [SQL Server](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#d0e3898).
 
 ### <a name="enable-messaging-providers"></a>Üzenetkezelési szolgáltatók engedélyezése
 
@@ -500,7 +651,7 @@ Alapértelmezés szerint a linuxon futó App Service használja munkamenet-affin
 - Ha egy alkalmazáspéldány újraindítják, vagy horizontálisan, a kiszolgáló a felhasználói munkamenet-állapot elvesznek.
 - Ha alkalmazások hosszú munkamenet időtúllépés beállításai vagy a felhasználók rögzített számú, új példányok terhelést kap, mivel csak az új munkamenetek a rendszer átirányítja az újonnan elindított példányok maximumára egy kis ideig is eltarthat.
 
-Beállíthatja, hogy egy külső állapotszolgáltatót tároló használandó Wildfly [Azure Cache redis](/azure/azure-cache-for-redis/). Kell [tiltsa le a meglévő ARR-példány affinitás](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) konfigurációját, és kapcsolja ki a munkamenetek cookie-alapú útválasztást, és beavatkozás nélkül konfigurált Wildfly munkamenet áruház engedélyezése.
+Beállíthatja, hogy egy külső állapotszolgáltatót tároló használandó WildFly [Azure Cache redis](/azure/azure-cache-for-redis/). Kell [tiltsa le a meglévő ARR-példány affinitás](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) konfigurációját, és kapcsolja ki a munkamenetek cookie-alapú útválasztást, és beavatkozás nélkül konfigurált WildFly munkamenet áruház engedélyezése.
 
 ## <a name="docker-containers"></a>Docker-tárolók
 
@@ -534,4 +685,3 @@ Ha egy támogatott Java-futtatókörnyezet megszűnik, az érintett modul haszn�
 Látogasson el a [Azure Java-fejlesztőknek készült](/java/azure/) center az Azure gyors útmutatók, oktatóanyagok és Java-dokumentáció található.
 
 Általános kérdések linuxos App Service használatával kapcsolatban, amelyek nem a Java fejlesztési adott válaszok a [App Service Linux – gyakori kérdések](app-service-linux-faq.md).
-

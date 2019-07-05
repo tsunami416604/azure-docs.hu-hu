@@ -2,26 +2,21 @@
 title: Hibaelhárítás az Azure Active Directory hibrid csatlakoztatott Windows 10 és Windows Server 2016 eszközök |} A Microsoft Docs
 description: Hibaelhárítás az Azure Active Directory hibrid-hez csatlakoztatott eszközök a Windows 10 és Windows Server 2016-ban.
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
 ms.subservice: devices
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 11/08/2017
+ms.topic: troubleshooting
+ms.date: 06/28/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3671623312f0da00c8f6172a101529a5cd12be1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dfb4b03fb57efecff587a91dfc2ad293be96d9ba
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110548"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481607"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-windows-10-and-windows-server-2016-devices"></a>Hibaelhárítás az Azure Active Directory hibrid csatlakoztatott Windows 10 és Windows Server 2016-eszközök 
 
@@ -35,14 +30,10 @@ Más Windows-ügyfelek számára, lásd: [hibaelhárítás hibrid Azure Active D
 Ez a cikk feltételezi, hogy [konfigurált hibrid Azure Active Directory-hez csatlakoztatott eszközök](hybrid-azuread-join-plan.md) támogatásához a következő esetekben:
 
 - Eszközalapú feltételes hozzáférés
-
 - [Vállalati barangolás beállításai](../active-directory-windows-enterprise-state-roaming-overview.md)
-
 - [Vállalati Windows Hello](../active-directory-azureadjoin-passport-deployment.md)
 
-
 Ez a dokumentum nyújt hibaelhárítási útmutatót kapcsolatos lehetséges problémák megoldását. 
-
 
 A Windows 10 és Windows Server 2016, a hibrid Azure Active Directory join támogatja a Windows 10, 2015 novemberi frissítés vagy újabb verzió. Az Évfordulós frissítés használatát javasoljuk.
 
@@ -53,8 +44,6 @@ A Windows 10 és Windows Server 2016, a hibrid Azure Active Directory join támo
 1. Nyissa meg a parancssort rendszergazdaként
 
 2. Típus **dsregcmd/status**
-
-
 
 ```
 +----------------------------------------------------------------------+
@@ -101,8 +90,6 @@ WamDefaultAuthority: organizations
          AzureAdPrt: YES
 ```
 
-
-
 ## <a name="step-2-evaluate-the-join-status"></a>2\. lépés: A csatlakozás állapota kiértékelése 
 
 Tekintse át a következő mezőket, és győződjön meg arról, hogy rendelkeznek-e a várt értékek:
@@ -114,22 +101,14 @@ Ez a mező jelzi, hogy az eszköz csatlakozott-e az Azure ad-ben. Ha az érték 
 **Lehetséges okok:**
 
 - A számítógép a csatlakozzon a hitelesítés sikertelen.
-
 - A szervezet, amely nem a számítógép felderítette van egy HTTP-proxy
-
 - A számítógép nem érhető el a hitelesítést az Azure AD vagy az Azure DRS-regisztráció
-
 - A számítógép nem a szervezet belső hálózati vagy VPN-lehet közvetlen üzemel egy a helyszíni AD-tartományvezérlő.
-
 - Ha a számítógép TPM, rossz állapotban lehet.
-
 - Van egy kiszolgálóhiba, a szolgáltatások a dokumentum a korábban feljegyzett, hogy ki kell újra ellenőrzése. Néhány gyakori példa:
-
-    - Az összevonási kiszolgálón nincs engedélyezve a WS-Trust végpontok
-
-    - Az összevonási kiszolgálón nem engedélyezi a számítógépekről érkező bejövő hitelesítés integrált Windows-hitelesítés használata a hálózaton.
-
-    - Nem, amely az ellenőrzött tartomány nevét az Azure ad-ben az AD-erdőhöz, ahol a számítógép tartozik a Szolgáltatáskapcsolati pont objektum
+   - Az összevonási kiszolgálón nincs engedélyezve a WS-Trust végpontok
+   - Az összevonási kiszolgálón nem engedélyezi a számítógépekről érkező bejövő hitelesítés integrált Windows-hitelesítés használata a hálózaton.
+   - Nem, amely az ellenőrzött tartomány nevét az Azure ad-ben az AD-erdőhöz, ahol a számítógép tartozik a Szolgáltatáskapcsolati pont objektum
 
 ---
 
@@ -150,9 +129,7 @@ Ez a mező jelzi, hogy az eszköz regisztrálva van-e személyes eszközként az
 Ezek a mezők azt jelzik, hogy a felhasználó sikeresen hitelesítést az Azure AD az eszközre való bejelentkezéskor. Ha az értékek **nem**, előfordulhat, hogy onnan:
 
 - Hibás tárkulcs (Találkozhatunk) (Ellenőrizze az emelt szintű futtatás közben KeySignTest) regisztráláskor az eszközhöz társított TPM-ben.
-
 - Alternatív bejelentkezési Azonosítóval
-
 - A HTTP-Proxy nem található.
 
 ## <a name="next-steps"></a>További lépések

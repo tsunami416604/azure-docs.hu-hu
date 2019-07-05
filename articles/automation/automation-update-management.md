@@ -4,17 +4,17 @@ description: Ebből a cikkből megismerheti, hogyan használható az Azure Updat
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f4fd47ae4f1ebc50de916b537b165eba1c5efb11
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 3bfec413430de588be6c4423702d41779a8426d0
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205028"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477984"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -223,7 +223,7 @@ Frissítések alkalmazása folyamatban, az ubuntu rendszeren karbantartási idő
 
 Hozzon létre egy új frissítéstelepítést, jelölje be **frissítések központi telepítésének ütemezése**. A **új frissítéstelepítés** lap megnyitásakor. Adja meg az értékeket az alábbi táblázatban leírt tulajdonságokkal, és kattintson a **létrehozás**:
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 | --- | --- |
 | Name (Név) |A frissítéstelepítést beazonosító egyedi név. |
 |Operációs rendszer| Linux vagy Windows|

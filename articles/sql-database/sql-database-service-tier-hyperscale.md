@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: a953af3d9cd5a6748b79465a59b4a4284e58714c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4aeda5612b2b3e9e2073a65320b238266c8bb33a
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070131"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537868"
 ---
 # <a name="hyperscale-service-tier-for-up-to-100-tb"></a>Akár 100 TB kapacitású szolgáltatási szintjei
 
@@ -38,7 +38,7 @@ A nagy kapacitású szolgáltatás az Azure SQL Database szintje a legújabb szo
 A nagy kapacitású szolgáltatási rétegben az Azure SQL Database az alábbi további képességeket biztosítja:
 
 - Akár 100 TB-os adatbázisméret támogatása
-- Így szinte azonnali biztonsági mentéseket (az Azure Blob storage szolgáltatásban tárolt pillanatképeket alapján) adatbázis-számítási i/o-hatása méretétől függetlenül   
+- Így szinte azonnali biztonsági mentéseket (az Azure Blob storage szolgáltatásban tárolt pillanatképeket alapján) adatbázis-számítási erőforrások i/o-hatása méretétől függetlenül  
 - A perc helyett órák vagy napok adatbázis visszaállítás (pillanatképeket alapján) gyors (nem a adatművelet mérete)
 - Magasabb szintű általános teljesítményt, nagyobb log átviteli sebességet és a tranzakció véglegesítése gyorsabb függetlenül az adatmennyiség miatt
 - Gyors horizontális felskálázás-– telepíthet egy vagy több csak olvasható csomópont a olvasási számítási feladatok kiszervezése és használatra, a ritkáról gyakori elérésű standbys
@@ -69,7 +69,7 @@ Nagy kapacitású szolgáltatási szinten érhető el csak [Virtuálismag-modell
 
 - **Tárolási**:
 
-  Adja meg az adatbázisonkénti maximális mérete egy nagy kapacitású adatbázis konfigurálása során nem kell. A rugalmas méretezés szintjén az adatbázis tárolási díjai a tényleges használat alapján lesznek kiszámlázva. Automatikusan lefoglalta közötti 10 GB-os és 100 TB-os lépésekben, amely dinamikusan módosulnak, 10 GB-os és 40GB között.  
+  Adja meg az adatbázisonkénti maximális mérete egy nagy kapacitású adatbázis konfigurálása során nem kell. A rugalmas méretezés szintjén az adatbázis tárolási díjai a tényleges használat alapján lesznek kiszámlázva. Tároló lefoglalása automatikusan történik 10 GB-os és 100 TB között, amely dinamikusan módosulnak, 10 GB-os és 40 GB-os léptékben.  
 
 Nagy kapacitású díjszabással kapcsolatos további információkért lásd: [Azure SQL Database – díjszabás](https://azure.microsoft.com/pricing/details/sql-database/single/)
 
@@ -161,7 +161,7 @@ Jelenleg az Azure SQL Database rendkívüli szinten érhető el a következő r�
 - Kelet-Kína 2
 - Észak-Kína 2
 - Kelet-Ázsia
-- USA keleti régiója
+- East US
 - East Us 2
 - Közép-Franciaország
 - Kelet-Japán
@@ -225,7 +225,7 @@ Ezek azok a nagy kapacitású szolgáltatási réteg GA kezdődően az aktuális
 
 | Probléma | Leírás |
 | :---- | :--------- |
-| Egy logikai kiszolgáló a biztonsági másolatok kezelése ablak nem jelenik meg a rendkívül nagy adatbázisok az SQL Serverből lesznek szűrve  | Nagy kapacitású rendelkezik egy külön metódusba biztonsági mentések kezeléséhez, és mint ilyen a hosszú távú adatmegőrzési és az idő a biztonsági mentés megőrzési beállításait pont csak akkor érvényesíthetők / érvénytelenné válnak. Ennek megfelelően a nagy kapacitású adatbázisok nem jelennek meg a biztonsági mentés kezelése ablak. |
+| Egy logikai kiszolgáló a biztonsági másolatok kezelése ablak nem jelenik meg a rendkívül nagy adatbázisok az SQL Serverből lesznek szűrve  | Nagy kapacitású rendelkezik egy külön metódusba biztonsági mentések kezeléséhez, és mint ilyen a hosszú távú megőrzési és az idő a biztonsági mentés megőrzési beállításait pont csak akkor érvényesíthetők / érvénytelenné válnak. Ennek megfelelően a nagy kapacitású adatbázisok nem jelennek meg a biztonsági mentés kezelése ablak. |
 | Adott időpontnak megfelelő helyreállítás | Adatbázis áttelepítése, a nagy kapacitású szolgáltatási rétegben, miután egy-időponthoz az áttelepítés előtt visszaállítás nem támogatott.|
 | Állítsa vissza a nem – nagy kapacitású DB Hypserscale és fordítva | Nagy kapacitású adatbázis nem állítható vissza egy nagy kapacitású nem adatbázisba, és nem is, nem nagy kapacitású adatbázis visszaállítása egy nagy kapacitású adatbázisba.|
 | Ha egy adatbázisfájl növekedésével az áttelepítést egy aktív számítási feladatok során, és átlép egy fájl határ az 1 TB-os, az áttelepítés sikertelen | Megoldások: <br> – Ha lehetséges, telepítse át az adatbázis nincs frissítés futó számítási feladat esetén.<br> – Próbálkozzon újra az áttelepítést, a sikeres lesz, amíg az 1 TB-os határ nem áthaladnak a migrálás során.|

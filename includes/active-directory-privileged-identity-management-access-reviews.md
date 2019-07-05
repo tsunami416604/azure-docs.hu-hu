@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/29/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: 364d4a11772e6bb72e2e258503f3cce49dc61453
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d791c4ba46587ac5709d72cb31bc76f087118b03
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179814"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476247"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>Hozzon létre egy vagy több hozzáférési felülvizsgálatok
 
@@ -25,7 +25,7 @@ ms.locfileid: "67179814"
 
 1. Állítsa be a **kezdő dátum**. Alapértelmezés szerint a hozzáférési felülvizsgálat egyszer végbemegy, létrejön egy időben kezdődik, és egy hónap alatt végződik. Módosíthatja a kezdő és záró dátumát férnek hozzá egy tekintse át kezdő legutóbbi és a jövőben azonban hány nappal kívánja.
 
-    ![Hozzáférési felülvizsgálat - létrehozása kezdési és befejezési dátuma](./media/active-directory-privileged-identity-management-access-reviews/start-end-dates.png)
+    ![Indítsa el a dátum, a gyakoriságot, a időtartama, a teljes, hányszor, és a befejező dátum](./media/active-directory-privileged-identity-management-access-reviews/start-end-dates.png)
 
 1. Ahhoz, hogy a hozzáférési felülvizsgálat ismétlődési, módosítsa a **gyakorisága** beállítást **egyszer** való **heti**, **havi**,  **Negyedéves**, **évente**, vagy **félig annually**. Használja a **időtartama** meghatározásához, hány napig lesz az ismétlődő sorozatának kritika nyissa meg a felülvizsgálóknak a bemenetet a csúszka vagy a beviteli mezőben. Például a maximális időtartam, amely lehet a havi felülvizsgálat 27 nap, kerülje az átfedésben lévő értékelések.
 
@@ -33,22 +33,22 @@ ms.locfileid: "67179814"
 
 1. Az a **felhasználók** területen válassza ki, hogy meg szeretné tekinteni a tagságát egy vagy több szerepkört.
 
-    ![Hozzáférési felülvizsgálat létrehozása - felhasználók](./media/active-directory-privileged-identity-management-access-reviews/users.png)
+    ![Felhasználók hatókör-szerepkörtagság felülvizsgálata](./media/active-directory-privileged-identity-management-access-reviews/users.png)
 
     > [!NOTE]
     > Több szerepkör kiválasztása több hozzáférési felülvizsgálatok hoz létre. Ha például öt szerepkör kiválasztása hoz létre öt külön a hozzáférési felülvizsgálatok.
 
     Az Azure AD-szerepkörök hozzáférési felülvizsgálat létrehozásakor, az alábbiakban látható egy példa a felülvizsgálati tagsági lista.
 
-    ![Hozzáférési felülvizsgálat létrehozása - szerepkörtagság felülvizsgálata](./media/active-directory-privileged-identity-management-access-reviews/review-membership.png)
+    ![Az Azure AD-szerepköröket felülvizsgálati tagsági ablaktáblán választhat](./media/active-directory-privileged-identity-management-access-reviews/review-membership.png)
 
     Hozzáférési felülvizsgálat Azure-erőforrásszerepkörök létrehozásakor, az alábbiakban látható egy példa a felülvizsgálati tagsági lista.
 
-    ![Hozzáférési felülvizsgálat létrehozása - szerepkörtagság felülvizsgálata](./media/active-directory-privileged-identity-management-access-reviews/review-membership-azure-resource-roles.png)
+    ![Tekintse át a tagság ablaktábla listaelem Azure-erőforrások szerepköreihez választhat](./media/active-directory-privileged-identity-management-access-reviews/review-membership-azure-resource-roles.png)
 
 1. Az a **felülvizsgálók** területen válassza ki egy vagy több személyt, tekintse át az összes felhasználó. Vagy tekintse át a saját hozzáférését tagokból ki.
 
-    ![Hozzáférési felülvizsgálat - felülvizsgálók létrehozása](./media/active-directory-privileged-identity-management-access-reviews/reviewers.png)
+    ![Felülvizsgálók listája a kiválasztott felhasználókra vagy tagok (saját)](./media/active-directory-privileged-identity-management-access-reviews/reviewers.png)
 
     - **A kijelölt felhasználók** -használja ezt a beállítást, ha nem ismeri ki hozzá kell férnie. Ezzel a beállítással a felülvizsgálat hozzárendelheti egy erőforrás tulajdonosa vagy a csoport kezelőjének végrehajtásához.
     - **Tagok (saját)** -használja ezt a beállítást szeretné, hogy a felhasználók, ellenőrizze a saját szerepkör-hozzárendeléseket.
@@ -57,7 +57,7 @@ ms.locfileid: "67179814"
 
 1. Adja meg, mi történik, a felülvizsgálat befejezése után, bontsa ki a **befejezést követő művelet beállításai** szakaszban.
 
-    ![Befejezést követő művelet beállításai](./media/active-directory-privileged-identity-management-access-reviews/upon-completion-settings.png)
+    ![Befejezéskor automatikus beállítások vonatkoznak, és érdemes felülvizsgálati nem válaszol](./media/active-directory-privileged-identity-management-access-reviews/upon-completion-settings.png)
 
 1. Ha szeretne automatikusan remove hozzáférést a felhasználók számára, hogy el lett utasítva, **eredmények automatikus alkalmazása az erőforrás** való **engedélyezése**. Ha szeretné manuálisan alkalmazza az eredményeket, ha a felülvizsgálatot követően, állítsa a kapcsolót **letiltása**.
 
@@ -72,7 +72,7 @@ ms.locfileid: "67179814"
 
 1. Szeretne megadni további beállításokat, bontsa ki a **speciális beállítások** szakaszban.
 
-    ![Speciális beállítások](./media/active-directory-privileged-identity-management-access-reviews/advanced-settings.png)
+    ![Speciális beállítások megjelenítése javaslatokat, a jóváhagyási e-mail értesítések és emlékeztetők oka szükséges](./media/active-directory-privileged-identity-management-access-reviews/advanced-settings.png)
 
 1. Állítsa be **javaslatok megjelenítése** való **engedélyezése** lehet megjeleníteni a felülvizsgálók a rendszer javaslatok alapján a felhasználó hozzáférési adatokat.
 

@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
-ms.date: 04/17/2019
+ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 2f86b74299b5d47a87ed0b8e89a992f0f91a84be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4017a3be5e03e1a9b85b4002b8069a1adc3a6b83
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924632"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551566"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Csatlakozás az Azure IoT Hub IoT DevKit AZ3166
 
@@ -30,6 +30,8 @@ Használhatja a [MXChip IoT DevKit](https://microsoft.github.io/azure-iot-develo
 * Útmutató a fejlesztési környezet előkészítését, és az IoT DevKit az alkalmazás fejlesztése.
 
 Még nem rendelkezik egy fejlesztői készlet? Próbálja ki a [DevKit szimulátor](https://azure-samples.github.io/iot-devkit-web-simulator/) vagy [vásárolhat egy DevKit](https://aka.ms/iot-devkit-purchase).
+
+Annak a forráskód minden DevKit kapcsolatos, a [IoTDevEnvExamples](https://github.com/IoTDevEnvExamples) tárház.
 
 ## <a name="what-you-need"></a>Mi szükséges
 
@@ -132,6 +134,11 @@ A fejlesztői készlet az IoT hub eszközspecifikus végponthoz csatlakozik, és
     ![Wi-Fi IP](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/wifi-ip.jpg)
 
     ![Adatok küldése](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/sending-data.jpg)
+
+1. Annak ellenőrzéséhez, az Azure-bA küldött telemetriai adatok, az Azure Cloud Shellben futtassa a következő parancsot:
+    ```bash
+    az iot hub monitor-events --hub-name YourIoTHubName --output table
+    ```
 
 ## <a name="prepare-the-development-environment"></a>A fejlesztési környezet előkészítése
 
@@ -301,7 +308,7 @@ Használhat [Azure IoT-eszközök](https://marketplace.visualstudio.com/items?it
 1. A VS Code-ban kattintson `F1`, írja be, és válassza ki **Azure IoT hubbal: Állítsa be az IoT Hub kapcsolati karakterláncra**. A kapcsolati karakterlánc másolja a fájlba.
     ![Azure IoT Hub kapcsolati karakterlánc beállítása](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/set-iothub-connection-string.png)
 
-1. Bontsa ki a **AZURE IOT HUB-eszközök** a jobb oldali ablaktáblán a jobb gombbal a létrehozott, és válassza ki az eszköz nevét **figyelési D2C üzenet Start**.
+1. Bontsa ki a **AZURE IOT HUB-eszközök** a jobb oldali ablaktáblán a jobb gombbal a létrehozott, és válassza ki az eszköz nevét **Start beépített esemény végpont**.
     ![D2C üzenet figyelése](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/monitor-d2c.png)
 
 1. A **kimeneti** panelen láthatja a bejövő D2C-messages az IoT hubnak.

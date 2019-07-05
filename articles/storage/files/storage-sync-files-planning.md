@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9bb33e7d2bb80bcb19087dca6bc21bafc791af2a
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: a745fefa5ceb0f81cf8d66e7af9e308c0ecb40b9
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303917"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449855"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -183,6 +183,12 @@ Olyan kötetek, amelyek nem rendelkeznek a felhőbeli rétegezés engedélyezve 
 - A deduplikációs optimalizálási feladatok folyamatos, felhőbeli rétegezés dátum szabályzattal késleltetett az Adatdeduplikáció által első [MinimumFileAgeDays](https://docs.microsoft.com/powershell/module/deduplication/set-dedupvolume?view=win10-ps) beállítást, ha a fájl már nem többszintű. 
     - Példa: Ha a MinimumFileAgeDays beállítás 7 nap, és a felhőrétegzés dátum felhőhasználatiszabályzat pedig 30 nap, az a dátum házirend 37 nap után rétegzi fájlokat.
     - Megjegyzés: Miután egy fájlt az Azure File Sync többszintű, a deduplikációs optimalizálási feladat kihagyja a fájlt.
+- Ha egy az Azure File Sync-ügynök telepítve a Windows Server 2012 R2 rendszerű kiszolgáló frissítése a Windows Server 2016 vagy Windows Server 2019 támogatásához az Adatdeduplikáció és a felhőrétegzés ugyanazon a köteten az alábbi lépéseket kell elvégezni:  
+    - Távolítsa el az Azure File Sync ügynök Windows Server 2012 R2, és indítsa újra a kiszolgálót.
+    - Töltse le az Azure File Sync ügynök az új kiszolgáló operációsrendszer-verzió (Windows Server 2016 vagy Windows Server 2019).
+    - Az Azure File Sync ügynök telepítése, és indítsa újra a kiszolgálót.  
+    
+    Megjegyzés: Az Azure File Sync-konfigurációs beállításokat a kiszolgálón megmaradnak, ha az ügynök eltávolítása és újratelepítése.
 
 ### <a name="distributed-file-system-dfs"></a>Az elosztott fájlrendszer (DFS)
 Az Azure File Sync kompatibilisek az elosztott Fájlrendszerbeli névtereket (DFS-N) és az elosztott fájlrendszer replikációs szolgáltatása (DFS-R) támogatja.
@@ -255,7 +261,7 @@ Az Azure File Sync csak az alábbi régiókban érhető el:
 | Közép-India | Pune |
 | USA középső régiója | Iowa |
 | Kelet-Ázsia | Hongkong (KKT) |
-| USA keleti régiója | Virginia |
+| East US | Virginia |
 | USA 2. keleti régiója | Virginia |
 | Korea középső régiója| Szöul |
 | Korea déli régiója| Busan |
@@ -296,7 +302,7 @@ Georedundáns tárolás és az Azure File Sync feladatátvételi integrációjá
 | Közép-India       | Dél-India        |
 | USA középső régiója          | USA 2. keleti régiója          |
 | Kelet-Ázsia           | Délkelet-Ázsia     |
-| USA keleti régiója             | USA nyugati régiója            |
+| East US             | USA nyugati régiója            |
 | USA 2. keleti régiója           | USA középső régiója         |
 | Kelet-Japán          | Nyugat-Japán         |
 | Nyugat-Japán          | Kelet-Japán         |
@@ -314,7 +320,7 @@ Georedundáns tárolás és az Azure File Sync feladatátvételi integrációjá
 | USA-beli államigazgatás – Virginia      | USA-beli államigazgatás – Texas       |
 | Nyugat-Európa         | Észak-Európa       |
 | USA nyugati középső régiója     | USA nyugati régiója, 2.          |
-| USA nyugati régiója             | USA keleti régiója            |
+| USA nyugati régiója             | East US            |
 | USA nyugati régiója, 2.           | USA nyugati középső régiója    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Az Azure File Sync ügynökének frissítési szabályzata

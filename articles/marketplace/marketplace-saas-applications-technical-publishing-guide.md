@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: keithcharlie
-ms.openlocfilehash: 4501a343b406f07b4775f3ad0e84d71825412a4b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d2b44b89443b5e7e82d303e1447533546d27ec9a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752737"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445730"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS-alkalmazások ajánlat közzétételi útmutató
 
@@ -94,7 +94,7 @@ Emellett az Azure Active Directory biztosít egy hely szolgáltatás frissítés
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Az Azure Active Directoryval kísérletek engedélyezése  
 
-A Microsoft végzi a hitelesítést minden Marketplace-felhasználót az Azure ad-vel, ezért amikor a hitelesített felhasználók a próbaidőszak listázása a Marketplace-en keresztül kattint, és a rendszer átirányítja az Ön próbaverziós környezetére, helyezheti üzembe a felhasználó közvetlenül hozzárendelhet egy próbaverziós fiókot anélkül, hogy egy további bejelentkezési lépések. A jogkivonatot, amely az alkalmazás fogad a hitelesítés során az Azure AD-ből, amelyek segítségével hozzon létre egy felhasználói fiókot az alkalmazásba, lehetővé téve a automatizálni az üzembe helyezési élmény és átalakítás valószínűségének növelése értékes felhasználói adatokat tartalmazza. A jogkivonat kapcsolatos további információkért lásd: [minta jogkivonatok](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims) .
+A Microsoft hitelesít minden Marketplace-felhasználót az Azure ad-vel, így amikor a hitelesített felhasználók a próbaidőszak listázása a Marketplace-en keresztül kattint, és a rendszer átirányítja az Ön próbaverziós környezetére, építhet a felhasználó közvetlenül hozzárendelhet egy próbaverziós fiókot anélkül, hogy egy további bejelentkezési lépések. A jogkivonatot, amely az alkalmazás fogad a hitelesítés során az Azure AD-ből, amelyek segítségével hozzon létre egy felhasználói fiókot az alkalmazásba, lehetővé téve a automatizálni az üzembe helyezési élmény és átalakítás valószínűségének növelése értékes felhasználói adatokat tartalmazza. A jogkivonat kapcsolatos további információkért lásd: [minta jogkivonatok](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims) .
 
 Az alkalmazás vagy a próbaidőszak 1 kattintással hitelesítés engedélyezése az Azure AD használatával a következőket teszi:  
 * Leegyszerűsíti a felhasználói élmény a próbaverzió a piactérről.  
@@ -104,7 +104,7 @@ Az alkalmazás vagy a próbaidőszak 1 kattintással hitelesítés engedélyezé
 
 ## <a name="certifying-your-azure-ad-integration-for-marketplace"></a>Igazolja a Marketplace-en Azure AD-integráció  
 
-Is az Azure AD-integrációs tanúsítása több különböző módon, attól függően, hogy az alkalmazás egybérlős vagy több-bérlős,-e, és akár most ismerkedik az Azure AD összevont egyszeri bejelentkezést (SSO), vagy már támogatják a forgatókönyvet.  
+Az Azure AD-integrációs tanúsítása több különböző módon, attól függően, hogy az alkalmazás egybérlős vagy több-bérlős, és akár most ismerkedik az Azure AD összevont egyszeri bejelentkezést (SSO), vagy már támogatják a forgatókönyvet.  
 
 **Több-bérlős alkalmazásokhoz:**  
 

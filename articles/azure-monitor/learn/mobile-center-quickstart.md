@@ -5,18 +5,18 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 04/22/2019
+ms.date: 06/26/2019
 ms.service: application-insights
 ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 67ddedbaca88d46e706c9a143100b215a0d16a90
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b8ce08c662e1615b62160e0c681a2fe8dbcb2be1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683430"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447043"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>A mobilalkalmazás elemzésének első lépései az App Center és az Application Insights használatával
 
@@ -68,18 +68,18 @@ Ha meg szeretne győződni arról, hogy az App Center fogadja az egyéni esemén
 Ha az alkalmazás egyéni eseményeket küld, és az App Center fogadja ezeket az eseményeket, létre kell hoznia egy App Center-típusú Application Insights-erőforrást az Azure Portalon:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Válassza az **Erőforrás létrehozása** > **Kezelőeszközök** > **Application Insights** elemet.
+2. Válassza az **Erőforrás létrehozása** > **Fejlesztői eszközök** > **Application Insights** elemet.
 
-    ![Application Insights-erőforrások hozzáadása](./media/mobile-center-quickstart/add-b.png)
+    > [!NOTE]
+    > Ha az első alkalommal Application Insights-erőforrás létrehozása,. További információkért látogasson el a [hozzon létre egy Application Insights-erőforrás](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) doc.
 
     Megjelenik egy konfigurációs képernyő. Az adatbeviteli mezők kitöltéséhez használja az alábbi táblázatot.
 
     | Beállítások        |  Érték           | Leírás  |
    | ------------- |:-------------|:-----|
-   | **Name (Név)**      | Néhány globálisan egyedi érték, például „myApp-iOS” | A figyelt alkalmazást azonosító név |
-   | **Alkalmazás típusa** | App Center-alkalmazás | A figyelt alkalmazás típusa |
-   | **Erőforráscsoport**     | Egy új erőforráscsoport, vagy egy meglévő a menüből | Az erőforráscsoport, amelyben létrehozza az új Application Insights-erőforrást |
-   | **Hely** | Egy hely a menüből | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
+   | **Name**      | Néhány globálisan egyedi érték, például „myApp-iOS” | A figyelt alkalmazást azonosító név |
+     | **Erőforráscsoport**     | Egy új erőforráscsoport, vagy egy meglévő a menüből | Az erőforráscsoport, amelyben létrehozza az új Application Insights-erőforrást |
+   | **Location** | Egy hely a menüből | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
 
 3. Kattintson a **Create** (Létrehozás) gombra.
 
@@ -89,9 +89,7 @@ Ha az alkalmazás több platformot (iOS, Android stb.) támogat, érdemes minden
 
 Az új Application Insights-erőforrást a a a **áttekintése** lapot. Az erőforrás a kialakítási kulcs másolása.
 
-   ![Elemzés gomb az Application Insightsban](./media/mobile-center-quickstart/overview-01.png)
-
-Az alkalmazáshoz tartozó App Center-példányban:
+Az a [App Center](https://appcenter.ms/) az alkalmazás-példány:
 
 1. A **Beállítások** oldalon kattintson az **Exportálás** lehetőségre.
 2. Válassza az **Új exportálás**, majd az **Application Insights** elemet, végül pedig kattintson a **Testreszabás** lehetőségre.
@@ -108,13 +106,11 @@ Hogy még több adatot kapjon az első csatlakozáskor, az App Center automatiku
 
 Az App Center által biztosított elemzőeszközök mellett az Application Insights is képes az alkalmazásoktól kapott egyéniesemény-telemetriák lekérdezésére, szegmentálására, szűrésére és elemzésére.
 
-1. **Kérdezze le az egyéniesemény-telemetriát.** Az Application Insights **Áttekintés** oldalán válassza az **Elemzés** lehetőséget. 
+1. **Kérdezze le az egyéniesemény-telemetriát.** Az Application Insights **áttekintése** lapon a **naplók (Analytics)** .
 
-   ![Elemzés gomb az Application Insightsban](./media/mobile-center-quickstart/analytics-001.png)
-
-   Megnyílik az Application Insights-erőforráshoz társított Application Insights Analytics-portál. Az Analytics-portálon közvetlenül lekérdezheti az adatokat a Log Analytics lekérdezési nyelv használatával, így tetszőlegesen bonyolult kérdéseket tehet fel az alkalmazással és a felhasználóival kapcsolatban.
+   Az Application Insights-Logs (Analytics) portal, az Application Insights-erőforráshoz társított nyílik meg. A naplók (Analytics) portálon közvetlenül lekérdezheti az adatokat a Log Analytics lekérdezési nyelv használatával, így tetszőlegesen bonyolult kérdéseket érdeklődjön az alkalmazás és a felhasználóknak, lehetővé teszi.
    
-   Nyisson meg egy új lapot az Analytics-portálon, majd illessze be a következő lekérdezést. Ez visszaadja, hogy hány különböző felhasználó küldte el az egyes egyéni eseményeket az alkalmazásból az elmúlt 24 órában, számok szerint rendezve.
+   Nyissa meg a naplók (Analytics) portálon egy új lapot, majd illessze be a következő lekérdezést. Ez visszaadja, hogy hány különböző felhasználó küldte el az egyes egyéni eseményeket az alkalmazásból az elmúlt 24 órában, számok szerint rendezve.
 
    ```AIQL
    customEvents
@@ -123,7 +119,7 @@ Az App Center által biztosított elemzőeszközök mellett az Application Insig
    | order by dcount_user_Id desc 
    ```
 
-   ![Analytics-portál](./media/mobile-center-quickstart/analytics-portal-001.png)
+   ![Naplók (Analytics) portál](./media/mobile-center-quickstart/analytics-portal-001.png)
 
    1. Jelölje ki a lekérdezést úgy, hogy a lekérdezés egy tetszőleges pontjára kattint a szövegszerkesztőben.
    2. Ezután kattintson az **Indítás** lehetőségre a lekérdezés futtatásához. 

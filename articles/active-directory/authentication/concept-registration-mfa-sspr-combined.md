@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2d1a5a342bfe4527c15a0721a8f852a269bef67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fc0e80ec7a378d44000565034ce47d95c78b777e
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113518"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537010"
 ---
 # <a name="combined-security-information-registration-preview"></a>Egyesített biztonsági információk regisztrációs (előzetes verzió)
 
@@ -136,6 +136,8 @@ A felhasználók, akik korábban már beállított legalább egy olyan módszer,
 ## <a name="next-steps"></a>További lépések
 
 [A bérlő kombinált regisztrációs engedélyezése](howto-registration-mfa-sspr-combined.md)
+
+[SSPR és az MFA használatát és a jelentéskészítés insights](howto-authentication-methods-usage-insights.md)
 
 [A multi-factor Authentication és az SSPR elérhető módszerek](concept-authentication-methods.md)
 

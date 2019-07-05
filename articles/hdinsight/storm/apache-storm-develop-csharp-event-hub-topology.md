@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7f4db76fe2a302dd5acce01b456ef3b676b187c6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dd1a46ea008ce5f8fb02dd468b27494d231717f0
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078271"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483916"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Dolgozza fel az Azure Event hubs Eseményközpontokból a HDInsight-alapú Apache Storm (C#)
 
@@ -103,11 +103,11 @@ topologyBuilder.SetJavaBolt(
 
 ## <a name="download-the-completed-project"></a>Töltse le a befejezett projekt
 
-A projekt ebben az oktatóanyagban létrehozott egy teljes körű verziója letölthető [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub). Azonban továbbra is szeretné az oktatóanyag lépéseit követve adja meg a konfigurációs beállításokat.
+Az ebben a cikkben létrehozott projekt teljes verzióját letöltheti [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub). Azonban továbbra is szeretné Ez a cikk lépéseit követve adja meg a konfigurációs beállításokat.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-* Egy [Apache Storm on HDInsight 3.5-ös és 3.6-os fürtverzió](apache-storm-tutorial-get-started-linux.md).
+* Egy HDInsight az Apache Storm-fürt. Lásd: [Apache Hadoop-fürtök létrehozása az Azure portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) válassza **Storm** a **fürt típusa**.
 
     > [!WARNING]  
     > Az itt bemutatott példa a Storm on HDInsight 3.5-ös és 3.6-os verziója szükséges. Ez nem működik a HDInsight, régebbi verzióival használhatatlanná tévő osztály nevének módosítása miatt. Ebben a példában, amely együttműködik a régi fürtök verzióját, lásd: [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub/releases).

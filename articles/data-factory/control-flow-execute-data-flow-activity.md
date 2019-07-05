@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: e75c6290474d876ca22b5888d06b1fc0e4c8cd05
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 24b27c16573a35b1d8749d7ff381fbef970f4bd0
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077322"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67471660"
 ---
 # <a name="execute-data-flow-activity-in-azure-data-factory"></a>Data flow tevékenység végrehajtása az Azure Data Factoryban
 A végrehajtási adatok folyamat tevékenység használatával futtassa az ADF adatfolyama folyamatfuttatások hibakeresési (védőfal), és az aktivált folyamatfuttatások.
@@ -80,11 +80,17 @@ Paraméteres adatkészleteket használja, ha mindenképpen állítsa be a param�
 
 ![Hajtsa végre a Flow Adatparaméterek](media/data-flow/params.png "paraméterek")
 
-### <a name="debugging-parameterized-data-flows"></a>Hibakeresési paraméteres adatfolyamok
+## <a name="parameterized-data-flows"></a>A paraméteres adatfolyamok
 
-Csak a paraméteres adatkészletekkel való futtatásához a végrehajtási adatok folyamat tevékenységgel folyamat hibakeresési adatfolyamok is hibakeresési. Az ADF adatfolyam interaktív hibakeresési munkamenetek jelenleg nem működik a paraméteres adatkészletek. Folyamat-végrehajtás és hibakeresési futtatások paraméterekkel együtt fog működni.
+Ha az adatok folyamaton, hogy a paramétereket, akkor állítja be a dinamikus paraméterek értékeit, az adatokat a folyamat itt az adatokat a folyamat végrehajtása tevékenység a Paraméterek szakaszban. Az ADF folyamat kifejezésnyelveket (csak a karakterlánc-paraméter esetében) vagy az adatok Flow kifejezés nyelve segítségével állítsa be a dinamikus kifejezésekkel paraméter értékét, vagy statikus konstansértékekkel.
 
-Bevált gyakorlat, hogy hozhat létre a statikus adatkészlet adatfolyamait, hogy teljes oszlop propagálás elérhető tervezés időpontjában. Ezután cserélje le a statikus adatkészlet dinamikus paraméteres adatkészlet, a flow adatfolyamat üzembe helyezése során.
+![Hajtsa végre az adatok folyamat paraméter példa](media/data-flow/parameter-example.png "paraméter-példa")
+
+### <a name="debugging-data-flows-with-parameters"></a>Hibakeresési adatfolyamok paraméterekkel
+
+Az aktuális időpontban adatfolyamok paraméterekkel történő futtatásához a végrehajtási adatok folyamat tevékenységgel hibakeresési folyamatot csak hibakeresési. Az ADF adatfolyam interaktív hibakeresési munkamenetek hamarosan elérhető lesz. Folyamat-végrehajtás és hibakeresési fut, azonban fog működni a paraméterekkel.
+
+Bevált gyakorlat, hogy hozhat létre a statikus tartalom adatfolyamait, hogy teljes oszlop propagálás érhető el a hibaelhárítással nyomvonalpontjait. Ezután cserélje le a statikus adatkészlet dinamikus paraméteres adatkészlet, a flow adatfolyamat üzembe helyezése során.
 
 ## <a name="next-steps"></a>További lépések
 Tekintse meg a többi Data Factory által támogatott átvitelvezérlési tevékenységek: 

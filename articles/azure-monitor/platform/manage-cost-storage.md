@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 06/06/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 3cad3722a9d0a52b1a0e66c760e948ceb3c1671c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b7fa59f4086608a8bacabde21f0c02c108f1f5e8
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061048"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466729"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Használat és költségek az Azure Monitor naplóira kezelése
 
@@ -105,10 +105,12 @@ Az alábbi lépéseket adatért által a munkaterületen milyen hosszú log konf
 3. A panelen a csúszka segítségével növelheti vagy csökkentheti a napok számát, és kattintson a **OK**.  Ha a *ingyenes* szint, nem tudja módosítani az Adatmegőrzés időtartama, és annak érdekében, hogy ez a beállítás szabályozza a fizetős csomagra frissíteni szeretne.
 
     ![Munkaterület megőrzése beállításának módosítása](media/manage-cost-storage/manage-cost-change-retention-01.png)
+    
+A megőrzési is lehet [ARM-en keresztül](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) használatával a `dataRetention` paraméter. Ezenkívül ha az adatmegőrzés 30 napra, aktiválhat egy azonnali végleges törlésére régebbi adatokat az a `immediatePurgeDataOn30Days` paramétert, amely a megfelelőséggel kapcsolatos esetekben hasznos lehet. Ez a funkció csak ARM elérhetővé. 
 
 ## <a name="legacy-pricing-tiers"></a>Örökölt tarifacsomagok
 
-Előfizetések, aki eddig egy Log Analytics-munkaterület és Application Insights-erőforrást, 2018. április 2. előtt, vagy 2019. február 1. előtt elindított nagyvállalati szerződéshez kapcsolódó továbbra is hozzáférhetnek a tarifacsomagok régebbi: **Ingyenes**, **önálló (GB-onként)** és **Csomópontonkénti (OMS)** .  Az ingyenes díjcsomag munkaterületein napi korlátja 500 MB (kivéve az Azure Security Center által gyűjtött biztonsági adattípusok) adatbetöltés fog rendelkezni, és az adatmegőrzés legfeljebb 7 napig. Az ingyenes díjcsomag kizárólag értékelési célokra szolgál. Az önálló vagy Csomópontonkénti tarifacsomagok munkaterületekre akár 2 évig fenntartása felhasználó által konfigurálható. 
+Előfizetések, aki eddig egy Log Analytics-munkaterület és Application Insights-erőforrást, 2018. április 2. előtt, vagy 2019. február 1. előtt elindított nagyvállalati szerződéshez kapcsolódó továbbra is hozzáférhetnek a tarifacsomagok régebbi: **Ingyenes**, **önálló (GB-onként)** és **Csomópontonkénti (OMS)** .  Az ingyenes díjcsomag munkaterületein napi korlátja 500 MB (kivéve az Azure Security Center által gyűjtött biztonsági adattípusok) adatbetöltés fog rendelkezni, és az adatmegőrzés legfeljebb 7 napig. Az ingyenes díjcsomag kizárólag értékelési célokra szolgál. Az önálló vagy Csomópontonkénti tarifacsomagok munkaterületekre akár 2 évig fenntartása felhasználó által konfigurálható. 2016. április előtt létrehozott munkaterületeket is rendelkezik elérheti az eredeti **Standard** és **prémium** díjcsomagok árából. További részleteket az árképzési szint korlátozásai [Itt](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces).
 
 > [!NOTE]
 > Az OMS E1 csomag, OMS E2 csomagot vagy a System Center OMS bővítményének megvásárlásából származó jogosultságok használatához válassza a Log Analytics *Csomópontonkénti* tarifacsomag.
@@ -126,11 +128,7 @@ Ha a Log Analytics-munkaterület hozzáfér az örökölt tarifacsomagok közöt
 3. A **tarifacsomag**válassza ki a tarifacsomagot, majd kattintson a **kiválasztása**.  
     ![A kijelölt tarifacsomag](media/manage-cost-storage/workspace-pricing-tier-info.png)
 
-A munkaterület helyezhetik át a jelenlegi tarifacsomag szeretne, ha az előfizetés figyelést módosítani szeretné [díjszabási modell az Azure monitorban](usage-estimated-costs.md#moving-to-the-new-pricing-model) amelyek módosulnak, az adott előfizetésben minden munkaterület tarifacsomagját.
-
-> [!NOTE]
-> További információ a tarifacsomag beállítását amikor [egy Azure Resource Manager-sablonnal](template-workspace-configuration.md#create-a-log-analytics-workspace) hozzon létre egy munkaterületet, és győződjön meg arról, hogy az Azure Resource Manager-sablon üzembe helyezése lesz sikeres, függetlenül attól, hogy a előfizetés van a régi vagy új díjszabási modell. 
-
+Emellett [ARM-n keresztül a tarifacsomagot állítsa](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) használatával a `ServiceTier` paraméter. 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>A Log Analytics már nem gyűjt adatokat okozó hibák elhárítása
 

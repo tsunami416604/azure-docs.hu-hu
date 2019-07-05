@@ -8,31 +8,25 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 58f50a1a2b90b4b5f9708bf0f1a7cb51db8e47ae
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 7fb0fba519a7833ac318c713dc9eb3c6ac7f8b5b
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275963"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509553"
 ---
 # <a name="set-up-a-device-template"></a>Eszközsablon beállítása
 
 Egy eszköz, amely meghatározza a jellemzőit és a egy eszköz, amely csatlakozik az Azure IoT Central alkalmazáshoz típusú viselkedéseit tervrajz áll.
 
-Például egy jelentéskészítő egy IoT-csatlakoztatott ventilátor v: rendelkező eszköz sablon létrehozása
+Például egy jelentéskészítő egy csatlakoztatott ventilátor, amely a következő jellemzőkkel rendelkezik eszköz sablont hozhat létre:
 
 - Hőmérsékleti telemetria mérési
-
+- Hely mérése
 - Ventilátor motor hiba esemény mérési
-
 - Működési állapot mérési ventilátor
-
 - Ventilátor sebesség beállítása
-
-- Location tulajdonság
-
 - Szabályok, amelyek az értesítések küldése
-
 - Irányítópult, amelyen az eszköz átfogó képet
 
 Eszköz sablonból, az operátornak hozhat létre és valódi ventilátor eszközök csatlakoztatása a neveket például **ventilátor.-1** és **ventilátor-2**. Az összes alábbi ventilátorok mérések, beállítások, tulajdonságainak, szabályok és egy irányítópultot, amely az alkalmazás felhasználóinak monitorozni és kezelni a rendelkezik.
@@ -61,6 +55,7 @@ Mértékek az eszközről az adatokat. Az eszköz a sablon megfelelő az eszköz
 - **Telemetria** mérések, amely az eszköz által összegyűjtött numerikus adatpontok. Ezek még folyama jelöli. Ilyen például a hőmérsékletet.
 - **Esemény** mérések időponthoz adatok, amelyek valamit az eszközön a jelentősége. Egy súlyossági szintet az esemény fontossága jelöli. Példa ventilátor motor hiba.
 - **Állapot** mérések az eszköz vagy összetevőinek állapotát képviselik egy időszakon belül. Például egy ventilátor mód lehet meghatározni, hogy **operációs** és **leállítva** , a két lehetséges állapota.
+- **Hely** mérések egy időszak, az eszköz szélességi és hosszúsági koordinátáit. Ha például egy ventilátor áthelyezhetők egyik helyről egy másikra.
 
 ### <a name="create-a-telemetry-measurement"></a>Telemetria mérték létrehozása
 
@@ -78,7 +73,7 @@ Egy új telemetriai mérési hozzáadásához válassza **+ új mérték**, vál
 
 Kiválasztása után **mentése**, a **hőmérséklet** mérési mérések listájában jelenik meg. Egy rövid ideig a szimulált eszközről érkező hőmérsékleti adatok a Vizualizáció látható.
 
-Telemetria megjelenítése, ha az alábbi összesítési lehetőségek közül választhat: Átlagos, minimális, maximális, Sum és száma. **Átlagos** van kiválasztva az alapértelmezett összesítés a diagramra. 
+Telemetria megjelenítése, ha az alábbi összesítési lehetőségek közül választhat: Átlagos, minimális, maximális, Sum és száma. **Átlagos** van kiválasztva az alapértelmezett összesítés a diagramra.
 
 > [!NOTE]
 > A telemetriai adatok mérték adattípusa lebegőpontos szám.
@@ -127,6 +122,32 @@ Az eszköz a kis időtartam túl sok adatpont küld, ha az állapot mértéket e
 > [!NOTE]
 > Az állapot mérték adattípusa karakterlánc.
 
+### <a name="create-a-location-measurement"></a>Egy hely mérték létrehozása
+
+Egy új helyet mérési hozzáadásához válassza **+ új mérték**, válassza a **hely** a mérték, írja be, és adja meg, hogy a **mérték létrehozása** űrlap.
+
+Például egy új helyet telemetriai mérték is hozzáadhat:
+
+| Megjelenített név        | Mezőnév    |
+| --------------------| ------------- |
+| Eszköz helye      |  assetloc     |
+
+![Hely mérési adatokkal "Hely létrehozása" képernyő](./media/howto-set-up-template/locationmeasurementsform.png)
+
+Kiválasztása után **mentése**, a **hely** mérési mérések listájában jelenik meg. Egy rövid ideig a képi megjelenítését az adatok gyűjtésével a szimulált eszköz látható.
+
+Amikor helyet megjelenítése, az alábbi lehetőségek közül választhat: legújabb helyét és a korábbi tartózkodási helyek. **Korábbi tartózkodási helyek** csak a kijelölt időtartományban keresztül vonatkozik.
+
+A hely mérték adattípusa olyan objektum, amely tartalmazza a hosszúság, szélesség és a egy nem kötelező magasság. A következő kódrészlet a JavaScript a struktúra látható:
+
+```javascript
+assetloc: {
+  lon: floating point number,
+  lat: floating point number,
+  alt?: floating point number
+}
+```
+
 ## <a name="settings"></a>Beállítások
 
 Beállítások egy eszköz vezérlésére. Adja meg a bemeneti adatok az eszköz operátorokat lehetővé teszik. Csempék formájában jelenik meg az eszköz-sablon több beállítást is hozzáadhat a **beállítások** fülre az operátorok használatához. Számos különböző típusú beállításokat is hozzáadhat: szám, szöveg, dátum, be-vagy kikapcsolása, választéklista és szakaszcímke.
@@ -151,12 +172,12 @@ Kiválasztása után **mentése**, a **ventilátor sebesség** beállítás egy 
 
 ## <a name="properties"></a>Tulajdonságok
 
-A tulajdonságok akkor az eszközön, például az eszköz helye és sorozatszám társított metaadatokat. Több tulajdonságok hozzáadása a sablonhoz, eszköz, amely a csempék formájában jelenik meg a **tulajdonságok** fülre. Vlastnost rendelkezhet egy típus, például a szám, szöveg, dátum, be-vagy kikapcsolása, eszköztulajdonság, címkét vagy helyet. Az operátor is adja meg a tulajdonságok értékeit, hozzon létre egy eszközt, és ezeket az értékeket bármikor szerkesztheti azokat. Eszköztulajdonságok csak olvashatók, és az eszköz az alkalmazásba küldi. Az operátornak eszköz tulajdonságai nem módosíthatók. Egy valós eszköz csatlakozik, az tulajdonság csempére esetén az alkalmazás a frissítéseket.
+A tulajdonságok akkor az eszközön, például a rögzített eszköz helye és sorozatszám társított metaadatokat. Több tulajdonságok hozzáadása a sablonhoz, eszköz, amely a csempék formájában jelenik meg a **tulajdonságok** fülre. A tulajdonságnak egy típus, például a szám, szöveg, dátum, be-vagy kikapcsolása, eszköztulajdonság, címkét vagy helyhez kötött. Az operátor megadja a tulajdonságok értékeit, ha során létrehoznak egy eszközt, és ezeket az értékeket bármikor szerkesztheti azokat. Eszköztulajdonságok csak olvashatók, és az eszköz az alkalmazásba küldi. Az operátornak eszköz tulajdonságai nem módosíthatók. Amikor egy valós eszköz csatlakozik, az tulajdonság csempére frissíti, az alkalmazásban.
 
 Két tulajdonságkategória érhető el:
 
 - _Eszköztulajdonságok_ által jelentett az IoT Central alkalmazáshoz. Eszköztulajdonságok az eszköz által jelentett csak olvasható érték, és frissülnek az alkalmazásban, ha egy valódi eszköz csatlakoztatva van.
-- _Alkalmazástulajdonságok_ , amely az alkalmazás tárolódnak, és szerkesztheti az operátor. Az eszköz nem ismeri fel az alkalmazás tulajdonságait.
+- _Alkalmazástulajdonságok_ , amely az alkalmazás tárolódnak, és szerkesztheti az operátor. Alkalmazástulajdonságok csak az alkalmazás tárolja, és egy eszköz soha nem láthatók.
 
 Például az eszköz utolsó szervizelt dátumának hozzáadhat egy új **dátum** (egy alkalmazás-tulajdonság) tulajdonsága a **tulajdonságok** lapon:
 
@@ -170,14 +191,17 @@ Miután kiválasztotta **mentése**, a legutóbbi dátum szolgálja ki, a csempe
 
 Miután létrehozta a csempét, módosíthatja az alkalmazás tulajdonság értéke az a **Device Explorer**.
 
-### <a name="create-a-location-property-through-azure-maps"></a>Hozzon létre egy hely tulajdonságot az Azure Maps révén
+### <a name="create-a-location-property"></a>Hozzon létre egy location tulajdonság
 
-Az Azure IoT Central helyadatok földrajzi összefüggésbe, és bármely olyan utca, házszám szélességi és hosszúsági koordinátáit leképezése. Vagy leképezheti szélességi és hosszúsági koordinátáit. Az Azure Maps ezt a lehetőséget az IoT Central lehetővé teszi.
+Az Azure IoT Central helyadatok földrajzi összefüggésbe, és bármely szélességi és hosszúsági koordináták vagy egy utca, házszám leképezése. Az Azure Maps ezt a lehetőséget az IoT Central lehetővé teszi.
 
 Hely tulajdonságai két típusú adhat hozzá:
 
-- **A helyen, ahol egy alkalmazás tulajdonság**, amely tárolja az alkalmazást. Az eszköz nem ismeri fel az alkalmazás tulajdonságait.
-- **A helyen, ahol egy adott eszköztulajdonság**, amely az eszköz jelenti, hogy az alkalmazás.
+- **A helyen, ahol egy alkalmazás tulajdonság**, amely tárolja az alkalmazást. Alkalmazástulajdonságok csak az alkalmazás tárolja, és egy eszköz soha nem láthatók.
+- **A helyen, ahol egy adott eszköztulajdonság**, amely az eszköz jelenti, hogy az alkalmazás. Az ilyen típusú tulajdonság akkor használható a legjobban statikus hely.
+
+> [!NOTE]
+> A helyen, ahol egy tulajdonság nem rögzíti a előzményei. Előzmények van szükség, ha használja egy helyen mérték.
 
 #### <a name="add-location-as-an-application-property"></a>Egy alkalmazás tulajdonságként helyének hozzáadása
 
@@ -190,7 +214,7 @@ Egy alkalmazás tulajdonságként a location tulajdonsághoz hozhat létre az Io
 3. Konfigurálása **megjelenítendő név**, **mezőnév**, és (opcionálisan) **kezdeti érték** helyéhez.
 
     | Megjelenített név  | Mezőnév | Kezdeti érték |
-    | --------------| -----------|---------| 
+    | --------------| -----------|---------|
     | Telepítési címe | installAddress | Microsoft, 1 Microsoft Way, Redmond, WA 98052   |
 
    !["A hely konfigurálása" űrlapján hely részletei](./media/howto-set-up-template/locationcloudproperty2.png)
@@ -220,7 +244,7 @@ A location tulajdonság által jelentett tulajdonságként eszköz hozhat létre
 
    !["Az eszköz tulajdonságainak konfigurálása" űrlapján hely részletei](./media/howto-set-up-template/locationdeviceproperty2.png)
 
-A valós eszközöknek a csatlakozás után a helyre, amely egy adott eszköztulajdonság hozzáadott frissül az értéket, az eszköz által küldött. Most, hogy konfigurálta a location tulajdonsághoz, [jeleníthetik meg a helyet, az eszköz irányítópult térképen hozzáadása](#add-an-azure-maps-location-in-the-dashboard).
+A valós eszközöknek a csatlakozás után a hely hozzáadott egy adott eszköztulajdonság az értéket, az eszköz által küldött történő frissítésekor. Miután konfigurálta a location tulajdonsághoz, [jeleníthetik meg a helyet, az eszköz irányítópult térképen hozzáadása](#add-a-location-in-the-dashboard).
 
 ## <a name="commands"></a>Parancsok
 
@@ -250,7 +274,7 @@ Szabályok kezelők számára az eszközök közel valós idejű figyelését. S
 
 ## <a name="dashboard"></a>Irányítópult
 
-Az irányítópulton, ahol az operátornak lépjen az eszköz adatainak megtekintése:. Mint szerkesztő csempék is hozzáadhat az ezen a lapon, a kezelők számára a megértéséhez, hogy az eszköz működése. Az eszköz sablon több irányítópult-csempék is hozzáadhat. Adja hozzá például a lemezkép, vonaldiagram, sávdiagramot oszlopdiagramra cseréli, fő teljesítménymutató (KPI), beállítások és tulajdonságok irányítópult-csempék számos különböző típusú, és címkézését.
+Az irányítópult, ahol az operátornak kerül egy eszközre vonatkozó információk megtekintéséhez. Szerkesztő, mint a kezelők számára a megismerheti, hogyan van viselkedik az eszköz ezen a lapon vegyen fel csempék. Adja hozzá például a lemezkép, vonaldiagram, sávdiagramot oszlopdiagramra cseréli, fő teljesítménymutató (KPI), beállítások és tulajdonságok irányítópult-csempék számos különböző típusú, és címkézését.
 
 Például hozzáadhat egy **beállításait és tulajdonságait** az aktuális értékek beállítás- és a egy kijelölt kiválasztásával mozaiklapra a **irányítópult** lapra, és a csempét a tárból:
 
@@ -258,27 +282,29 @@ Például hozzáadhat egy **beállításait és tulajdonságait** az aktuális �
 
 Mostantól Ha egy operátort megtekinti az irányítópult a **Device Explorer**, megjelenik a csempén.
 
-### <a name="add-an-azure-maps-location-in-the-dashboard"></a>Az Azure Maps-hely hozzáadása az irányítópult
+### <a name="add-a-location-in-the-dashboard"></a>Adjon hozzá egy helyen az irányítópulton
 
-Ha konfigurálta a location tulajdonsághoz, az eszköz irányítópultján egy térkép segítségével jelenítheti meg a helyet.
+Ha egy hely mérési konfigurálta, a helyét a térképen jelenítheti meg az eszköz irányítópultján.
 
 1. Keresse meg a **irányítópult** fülre.
 
 1. Az eszköz irányítópultján válassza **térkép** a könyvtárból.
 
-1. Adjon meg egy címet a térképen. Az alábbi példa címe **telepítési hely**. Majd válassza ki a helyet jelölő tulajdonsághoz, amely a korábban konfigurált a **tulajdonságok** fülre. A következő példában **telepítési cím** van kiválasztva.
+1. Adjon meg egy címet a térképen. Az alábbi példa címe **eszköz aktuális helye**. Majd válassza ki a korábban konfigurált helyen mértéket a **mérések** fülre. A következő példában a **eszköz helye** mérési van kiválasztva:
 
    ![Cím és a Tulajdonságok részleteit tartalmazó "Konfigurálása a Map" képernyő](./media/howto-set-up-template/locationcloudproperty5map.png)
 
-4. Kattintson a **Mentés** gombra. A szolgáltatástérkép csempe mostantól megjeleníti a kiválasztott hely.
+1. Kattintson a **Mentés** gombra. A szolgáltatástérkép csempe mostantól megjeleníti a kiválasztott hely.
 
-A térkép méretezheti át a kívánt méretre. Mostantól Ha egy operátort megtekinti az irányítópult a **Device Explorer**, minden irányítópult-csempék, hogy konfigurálta, beleértve a helyek térképe láthatók.
+A szolgáltatástérkép csempe átméretezése Amikor az operátornak megtekinti az irányítópult a **Device Explorer**, minden irányítópult-csempék, hogy konfigurálta, beleértve a helyek térképe láthatók.
+
+Csempék az Azure IoT Central használatával kapcsolatos további tudnivalókért lásd: [irányítópult-csempék használata](howto-use-tiles.md).
 
 ## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte az Azure IoT Central alkalmazáshoz egy eszköz-sablon beállítása, hogy a következőket teheti:
 
 > [!div class="nextstepaction"]
-> [Hozzon létre egy új eszköz sablon verziója](howto-version-devicetemplate.md)
+> [Hozzon létre egy új eszköz sablon verziója](howto-version-device-template.md)
 > [az MXChip IoT DevKit eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz](howto-connect-devkit.md)
 > [egy általános ügyfél az Azure-alkalmazás csatlakoztatása IoT Central-alkalmazást (Node.js)](howto-connect-nodejs.md)

@@ -5,17 +5,17 @@ keywords: automation rbac, szerepköralapú hozzáférés-vezérlés, azure rbac
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bcbda2464a4607aaa0b1bb96ef8f34c8713cb5f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9b2bcdf3d74c6946b8c9f0dacaeabf28d9c76f94
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60738757"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477719"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Szerepköralapú hozzáférés-vezérlés az Azure Automationben
 
@@ -232,6 +232,7 @@ Az alábbi táblázatok bemutatják a virtuális gépek előkészítése a Chang
 |Regisztrációs állapot ellenőrzése – olvasás VM      | Microsoft.Compute/virtualMachines/read         | Virtuális gép         |
 |Regisztrációs állapot ellenőrzése – olvasható fiók      | Microsoft.Automation/automationAccounts/read  |  Automation-fiók   |
 | Bevezetési munkaterületen ellenőrizze a virtuális gép<sup>1</sup>       | Microsoft.OperationalInsights/workspaces/read         | Előfizetés         |
+| A Log Analytics-szolgáltató regisztrálása |Microsoft.Insights/register/action | Előfizetés|
 
 <sup>1</sup> erre az engedélyre van szükség üzembe helyezni a virtuális gép portáljának felületén keresztül.
 
@@ -251,6 +252,7 @@ Az alábbi táblázatok bemutatják a virtuális gépek előkészítése a Chang
 |Hozzon létre vagy mentett keresés szerkesztése     | Microsoft.OperationalInsights/workspaces/write        | Munkaterület        |
 |Hatókör-konfiguráció létrehozása/szerkesztése     | Microsoft.OperationalInsights/workspaces/write        | Munkaterület        |
 |Hatókör-konfigurációs hivatkozás megoldás      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write         | Megoldás         |
+| A Log Analytics-szolgáltató regisztrálása |Microsoft.Insights/register/action | Előfizetés|
 |**2. lépés – bevezetése több virtuális gép**     |         |         |
 |VMOnboarding panel – MMA létrehozása bővítmény     | Microsoft.Compute/virtualMachines/write           | Virtuális gép        |
 |Létrehozása és a mentett keresés szerkesztése     | Microsoft.OperationalInsights/workspaces/write           | Munkaterület        |

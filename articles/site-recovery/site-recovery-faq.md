@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 6/27/2019
 ms.author: raynew
-ms.openlocfilehash: f2d64e0a081ff483be84053c442f48e7d145ca50
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a9c7aa2be945e4fbaa65bdd2a145d576422c5539
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66396503"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491768"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Az Azure Site Recovery: gyakori kérdések (GYIK)
 Ez a cikk összefoglalja az Azure Site Recovery – gyakori kérdések.</br>
@@ -150,7 +150,7 @@ Az Azure Site Recovery replikálja az adatokat egy Azure storage-fiók vagy a fe
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Miért nem tudja replikálni VPN-kapcsolaton keresztül?
 
-Ha Azure-bA replikálni replikációs forgalom eléri a nyilvános végpontokat az Azure Storage-tárolók. Így csak replikálhatja az expressroute-tal (nyilvános társviszony-létesítés) a nyilvános interneten keresztül, és a VPN nem működik.
+Ha Azure-bA replikálni replikációs forgalom eléri a nyilvános végpontokat az Azure Storage-tárolók. Így csak replikálhatja az expressroute-tal (Microsoft társviszony-létesítés vagy egy meglévő nyilvános társviszony-létesítés) a nyilvános interneten keresztül, és a VPN nem működik.
 
 ### <a name="can-i-use-riverbed-steelheads-for-replication"></a>Használhatok Riverbed SteelHeads replikáció?
 
@@ -159,12 +159,11 @@ A partner Riverbed, részletes útmutatást nyújt az Azure Site Recovery haszn�
 ### <a name="can-i-use-expressroute-to-replicate-virtual-machines-to-azure"></a>Az ExpressRoute használatával virtuális gépek replikálása az Azure-bA?
 Igen, [ExpressRoute is használható](concepts-expressroute-with-site-recovery.md) a helyszíni virtuális gépek replikálása az Azure-bA.
 
-- Az Azure Site Recovery replikálja az adatokat egy Azure Storage egy nyilvános végpontot keresztül. Be kell állítania [nyilvános társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#publicpeering) vagy [Microsoft társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) ExpressRoute használata a Site Recovery replikációjára.
+- Az Azure Site Recovery replikálja az adatokat egy Azure Storage egy nyilvános végpontot keresztül. Be kell állítania [Microsoft társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) vagy használjon egy meglévő [nyilvános társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#publicpeering) (új Kapcsolatcsoportok elavult) az ExpressRoute használata a Site Recovery replikációjára.
 - Microsoft társviszony-létesítés a replikáció ajánlott útválasztási tartományhoz.
-- Miután a virtuális gépek feladatátadása megtörtént az Azure virtual Networkhöz elérheti azokat használatával a [magánhálózati társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#privatepeering) beállítása az Azure virtuális hálózattal.
 - Replikáció nem támogatott a privát társviszony-létesítésen keresztül.
-- Ha VMware-alapú gépek vagy fizikai gépek védi, győződjön meg arról, hogy a konfigurációs kiszolgáló megfelel-e az [hálózati követelményeiben](vmware-azure-configuration-server-requirements.md#network-requirements) replikálásra. 
-
+- Ha VMware-alapú gépek vagy fizikai gépek védi, győződjön meg arról, hogy a [hálózati követelmények](vmware-azure-configuration-server-requirements.md#network-requirements) a konfigurációs kiszolgáló számára is teljesülnek. Adott URL-címek kapcsolat szükséges konfigurációs kiszolgáló által a Site Recovery replikációs vezénylését. Ez a kapcsolat ExpressRoute nem használható.
+- Miután a virtuális gépek feladatátadása megtörtént az Azure virtual Networkhöz elérheti azokat használatával a [magánhálózati társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#privatepeering) beállítása az Azure virtuális hálózattal.
 
 
 ### <a name="if-i-replicate-to-azure-what-kind-of-storage-account-or-managed-disk-do-i-need"></a>Ha az Azure-bA replikálok, milyen típusú storage-fiók vagy a felügyelt lemez van szükségem?

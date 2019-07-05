@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 19a8400a076825f17501fabdb3f38ea05915822e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e00e41a34bb28a2569d5922926a8f6c4fbe4bd57
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65138724"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481425"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Alkalmazások csoport-jogcímek konfigurálása az Azure Active Directoryval (nyilvános előzetes verzió)
 
@@ -137,7 +137,7 @@ Csoportjogcímek is megadható az a [választható jogcímek](../../active-direc
 
 3. Állítsa be a csoport konfigurációja nem kötelező jogcímekben.
 
-   Ha szeretné a jogkivonat csoportok a helyszíni AD-csoport attribútumok az opcionális jogcímek szakaszban adja meg, melyik typ tokenu választható jogcímet kell alkalmazni, a kért választható jogcím és minden egyéb tulajdonságot, kívánt nevét tartalmazza.  Több tokentípusokat is listázva lehet:
+   Ha azt szeretné, hogy a jogkivonat a csoportok a helyszíni AD-csoport attribútumok az opcionális jogcímek szakaszban adja meg, melyik typ tokenu választható jogcímet kell alkalmazni, a kért választható jogcím és minden egyéb tulajdonságot, kívánt nevét tartalmazza.  Több tokentípusokat is listázva lehet:
 
    - idToken a OIDC azonosító jogkivonat
    - az OAuth/OIDC jogkivonat a hozzáférési tokent

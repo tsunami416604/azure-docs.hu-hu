@@ -10,12 +10,12 @@ ms.author: minxia
 author: mx-iao
 ms.date: 06/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: e1f587785b06f10bab42a425b0910d4f25fddf9f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: a13afe56e007e2371b3193003ee95266b0750569
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165542"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543779"
 ---
 # <a name="train-and-register-tensorflow-models-at-scale-with-azure-machine-learning-service"></a>Betanítása és ipari méretekben TensorFlow-modellek regisztrálása az Azure Machine Learning szolgáltatás
 
@@ -23,7 +23,7 @@ Ez a cikk bemutatja, hogyan betanítása és regisztrálnia kell egy TensorFlow 
 
 Tensorflow-hoz egy olyan nyílt forráskódú számítási keretrendszer, általánosan használt Neurális hálózatok (DNN) létrehozása. Az Azure Machine Learning szolgáltatás gyors horizontális felskálázása lehetséges nyílt forráskódú betanítási feladatokat a rugalmas felhőalapú számítási erőforrások használatával. Is nyomon követheti a betanítási futtatás, a verzió modellek üzembe helyezése a modelleket, és még sok más.
 
-Akár az alapoktól a TensorFlow modell fejleszt, vagy már meglévő modell üzembe a felhőben, Azure Machine Learning szolgáltatás segítségével éles használatra kész modelleket.
+E alapoktól a TensorFlow modell fejleszt, vagy akkor válnak elérhetővé az [meglévő modell](how-to-deploy-existing-model.md) a felhőbe az Azure Machine Learning szolgáltatás segítségével éles használatra kész modelleket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -290,7 +290,7 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben betanított és a egy TensorFlow modell Azure Machine Learning szolgáltatásban regisztrált. Megtudhatja, hogyan helyezhet üzembe modelleket, és továbbléphet a modell üzembe helyezési című cikkben.
+Ebben a cikkben betanított és a egy TensorFlow-modell regisztrálva. Ismerje meg, hogyan helyezhet üzembe modelleket GPU-kompatibilis fürtre, hogy folytassa GPU modell üzembe helyezési című cikkben.
 
-> [!div class="nextstepaction"]
-> [Hogyan és hol érdemes a modellek üzembe helyezése](how-to-deploy-and-where.md)
+[A GPU-kkal következtetési üzembe helyezése](how-to-deploy-inferencing-gpus.md)
+[Tensorboard a figyelése](how-to-monitor-tensorboard.md)

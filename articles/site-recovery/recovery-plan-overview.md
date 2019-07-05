@@ -8,19 +8,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: ea2399572177cc10006a5d9ee715190fff4a347b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0df9e4b41ff89dd295fe644900b78640a083e985
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66471447"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514571"
 ---
 # <a name="about-recovery-plans"></a>A helyreállítási tervek ismertetése
 
 Ez a cikk ismerteti a helyreállítási tervek [Azure Site Recovery](site-recovery-overview.md).
 
-A helyreállítási terv összegyűjti a gépek helyreállítási csoportokba. Testre szabhatja, hogy egy csomag sorrendben, utasításokat és feladatok hozzáadva. Miután egy csomagban van definiálva, feladatátvétel, futtathatja.
-
+A helyreállítási terv összegyűjti a gépek helyreállítási csoportokba. Testre szabhatja, hogy egy csomag sorrendben, utasításokat és feladatok hozzáadva. Miután egy csomagban van definiálva, feladatátvétel, futtathatja.  Több helyreállítási tervek, amelyben további csomagok kihagyja az üzembe helyezés/indítási a gép Ha korábban már telepítették keresztül egy másik helyreállítási tervben szereplő gépek lehet hivatkozni.
 
 
 ## <a name="why-use-a-recovery-plan"></a>Miért érdemes használni egy olyan helyreállítási tervet?

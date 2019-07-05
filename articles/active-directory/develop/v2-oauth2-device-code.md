@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79718b14210bfdf139bca76db91c57c38a791434
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e92e4d0e296e83b413cfd2a67041a5749c16699e
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052243"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482237"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-code-flow"></a>A Microsoft identity platform és az OAuth 2.0 eszköz kódfolyamat
 
@@ -52,7 +52,7 @@ Az ügyfél először ellenőriznie kell az eszköz- és kódot, amellyel hitele
 
 > [!TIP]
 > Próbálja ki a Postmanben a kérelem végrehajtása!
-> [![A Postmanben futtatása](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> [![Próbálja meg futtatni a postmanben a kérelem](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ```
 // Line breaks are for legibility only.
@@ -103,7 +103,7 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8
 | -------- | -------- | ---------- |
 | `grant_type` | Kötelező | Kell lennie `urn:ietf:params:oauth:grant-type:device_code`|
 | `client_id`  | Kötelező | Meg kell egyeznie a `client_id` a kiindulási kérelemhez használt. |
-| `device_code`| Szükséges | A `device_code` adja vissza az eszköz engedélyezési kérésben.  |
+| `device_code`| Kötelező | A `device_code` adja vissza az eszköz engedélyezési kérésben.  |
 
 ### <a name="expected-errors"></a>Várt hibák
 

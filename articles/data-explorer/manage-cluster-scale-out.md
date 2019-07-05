@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: 24bbddd28943adc929fbaea456eeae8165db290c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/30/2019
+ms.openlocfilehash: 882f44683bbdc7f4eb49ff4912ca7a33187afbf8
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60758664"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537900"
 ---
 # <a name="manage-cluster-scale-out-to-accommodate-changing-demand"></a>Fürt horizontális felskálázás változó igényeket elégíthet kezelése
 
@@ -76,10 +76,10 @@ A következő ábrán látható a folyamat a következő néhány lépést. Tov�
 
 Most már konfigurálta az Azure Data Explorer fürt egy horizontális felskálázási művelet. Adjon meg egy másik szabályt a horizontális leskálázási művelet. Ez a konfiguráció lehetővé teszi, hogy a fürt méretezése dinamikusan megadott metrikák alapján.
 
-Emellett [kezelheti a fürt vertikális felskálázása](manage-cluster-scale-up.md) a fürt megfelelő méretezéshez.
-
 Ha a fürt méretezése problémák segítségre van szüksége [nyisson egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) az Azure Portalon.
 
 ## <a name="next-steps"></a>További lépések
 
-[Azure Data Explorer Teljesítményfigyelő, egészségügyi és használati metrikákkal](using-metrics.md)
+* [Azure Data Explorer Teljesítményfigyelő, egészségügyi és használati metrikákkal](using-metrics.md)
+
+* [Fürt vertikális felskálázása kezelése](manage-cluster-scale-up.md) a fürt megfelelő méretezéshez.

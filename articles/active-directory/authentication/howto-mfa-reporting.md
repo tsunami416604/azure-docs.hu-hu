@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9cf0b848e551d3c0e7d7275af9eb2c8e970dbd9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd4c6952aab1581a968fc671141792c0e16a7d46
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113401"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536961"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication jelentései
 
 Az Azure multi-factor Authentication számos jelentéseket biztosít, amelyek segítségével az Ön és szervezete az Azure Portalon keresztül érhető el. Az alábbi táblázatban az elérhető jelentéseket sorolja fel:
 
-| Jelentés | Location egység | Leírás |
+| Jelentés | Location | Leírás |
 |:--- |:--- |:--- |
 | Blokkolt felhasználó – előzmények | Az Azure AD > MFA-kiszolgáló > felhasználó blokkolása/feloldása | A felhasználók blokkolása és feloldása kérelmek előzményeit jeleníti meg. |
 | Használat és a csalási riasztás | Az Azure AD > bejelentkezések | Információt nyújt az általános használat – felhasználói összefoglalás és felhasználói adatait; csakúgy, mint a megadott dátumtartományban küldött visszaélési riasztások előzményeit. |
@@ -188,5 +188,6 @@ A következő táblázat használható hibaelhárítása a multi-factor Authenti
 
 ## <a name="next-steps"></a>További lépések
 
+* [SSPR és az MFA használatát és a jelentéskészítés insights](howto-authentication-methods-usage-insights.md)
 * [A felhasználók számára](../user-help/multi-factor-authentication-end-user.md)
 * [Az üzembe helyezés](concept-mfa-whichversion.md)

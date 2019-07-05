@@ -4,15 +4,15 @@ description: Ez a cikk bemutatja, hogyan nyújt az Azure Cosmos DB a magas rende
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/29/2019
+ms.date: 06/28/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 23273084826775b47170753dff3e5cf5ed8ae45f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 928c943e21e7d00b87ac1e506b98d47107ac4348
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063558"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508556"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Az Azure Cosmos DB magas rendelkezésre állás
 
@@ -70,6 +70,9 @@ Ez a funkció az alábbi Azure-régióban érhető el:
 
 * Az Egyesült Királyság déli régiója
 * Délkelet-Ázsia 
+* East US
+* USA 2. keleti régiója 
+* USA középső régiója
 
 > [!NOTE] 
 > A rendelkezésre állási zónák engedélyezése az Azure Cosmos-fiók egy régió egyenértékű egy további régióban ad a számlájához díjakat eredményez. További információ a díjszabásról: a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/cosmos-db/) és a [többrégiós költségek az Azure Cosmos DB](optimize-cost-regions.md) cikkeket. 
@@ -89,7 +92,10 @@ Az alábbi táblázat foglalja össze különböző fiókkonfigurációt magas r
 |Regionális kimaradás – rendelkezésre állás  |  Rendelkezésre állás elvesztése       |  Rendelkezésre állás elvesztése       |  Rendelkezésre állási adatvesztés nélkül  |
 |Teljesítmény    |  X RU/s kiosztott átviteli sebesség      |  X RU/s kiosztott átviteli sebesség       |  2 x RU/s kiosztott átviteli sebesség <br/><br/> A konfigurációs mód szükséges kétszer átviteli sebesség, mert két régióban van a rendelkezésre állási zónákban egyetlen régióban történő képest mennyisége.   |
 
-A zone redudancy engedélyezheti egy régió új vagy meglévő Azure-Cosmos-fiókok való hozzáadásakor. Jelenleg csak engedélyezheti a zone redudancy PowerShell vagy az Azure Resource Manager-sablonok használatával. Ahhoz, hogy a zone redudancy a Azure Cosmos-fiókjában, állítsa be a `isZoneRedundant` jelzőt `true` egy konkrét hely. Ez a jelző a helyek tulajdonságok állíthatja be. Például a következő powershell-kódrészlettel lehetővé teszi a zone redudancy a "Délkelet-Ázsia" régió:
+> [!NOTE] 
+> Ahhoz, hogy a rendelkezésre állási zóna támogatása, az Azure Cosmos DB-fiók több-főkulcs/több-region írások engedélyezve kell rendelkeznie. 
+
+A zone redudancy engedélyezheti egy régió új vagy meglévő Azure-Cosmos-fiókok való hozzáadásakor. Jelenleg csak engedélyezheti a zone redudancy az Azure portal, PowerShell és Azure Resource Manager-sablonok. Ahhoz, hogy a zone redudancy a Azure Cosmos-fiókjában, állítsa be a `isZoneRedundant` jelzőt `true` egy konkrét hely. Ez a jelző a helyek tulajdonságok állíthatja be. Például a következő powershell-kódrészlettel lehetővé teszi a zone redudancy a "Délkelet-Ázsia" régió:
 
 ```powershell
 $locations = @( 
@@ -97,6 +103,10 @@ $locations = @(
     @{ "locationName"="East US"; "failoverPriority"=1 } 
 ) 
 ```
+
+A rendelkezésre állási zónák egy Azure Cosmos-fiók létrehozásakor az Azure portal használatával engedélyezheti. Egy fiók létrehozásakor ügyeljen arra, hogy engedélyezze a **georedundancia**, **többrégiós ír**, és válassza ki a régiót, ahol a rendelkezésre állási zónák használata támogatott: 
+
+![Az Azure portal használatával, a rendelkezésre állási zónák engedélyezése](./media/high-availability/enable-availability-zones-using-portal.png) 
 
 ## <a name="building-highly-available-applications"></a>Magas rendelkezésre állású alkalmazások létrehozása
 
@@ -106,7 +116,7 @@ $locations = @(
 
 - Akkor is, ha a Cosmos-fiók magas rendelkezésre állású, az alkalmazás lehetséges, hogy nem helyesen kialakítani, hogy továbbra is magas rendelkezésre állású. A végpontok közötti magas rendelkezésre állás az alkalmazás teszteléséhez rendszeres időközönként meghívása a [manuális feladatátvételt az Azure CLI-vel vagy az Azure portal használatával](how-to-manage-database-account.md#manual-failover), az alkalmazás tesztelésének vagy a vészhelyreállítás (DR) részeként gyakorlatokat.
 
-- Egy globálisan elosztott adatbázis-környezeten belül nincs közvetlen kapcsolat folytonosságát egy régióra kiterjedő szolgáltatáskimaradás konzisztencia szint és az adatok tartósságának között. Az üzletmenet folytonosságát biztosító terve kidolgozásakor kell tudni, mielőtt az alkalmazás a zavaró eseményeket követő teljes helyreállításának maximális elfogadható idő. Az alkalmazás teljes helyreállításához szükséges időt a helyreállítási időre vonatkozó célkitűzés (RTO) néven ismert. Emellett ismernie kell a leghosszabb az alkalmazás működését, Adatfrissítés elvesztése zavaró eseményeket követő helyreállítása során. Az adott időszakban, előfordulhat, hogy elfogadható frissítések helyreállításipont-célkitűzés (RPO) néven ismert. Az Azure Cosmos DB az RPO és RTO megtekintéséhez lásd: [konzisztencia szinteket és az adatok tartóssága](consistency-levels-tradeoffs.md#rto)
+- Egy globálisan elosztott adatbázis-környezeten belül nincs közvetlen kapcsolat folytonosságát egy régióra kiterjedő szolgáltatáskimaradás konzisztencia szint és az adatok tartósságának között. Az üzletmenet folytonosságát biztosító terve kidolgozásakor kell tudni, mielőtt az alkalmazás a zavaró eseményeket követő teljes helyreállításának maximális elfogadható idő. Az alkalmazás teljes helyreállításához szükséges időt a helyreállítási időre vonatkozó célkitűzés (RTO) néven ismert. Emellett ismernie kell a leghosszabb az alkalmazás működését, Adatfrissítés elvesztése zavaró eseményeket követő helyreállítása során. Az adatfrissítés-vesztés megengedhető időkorlátja a helyreállítási időkorlát (RPO). Az Azure Cosmos DB az RPO és RTO megtekintéséhez lásd: [konzisztencia szinteket és az adatok tartóssága](consistency-levels-tradeoffs.md#rto)
 
 ## <a name="next-steps"></a>További lépések
 

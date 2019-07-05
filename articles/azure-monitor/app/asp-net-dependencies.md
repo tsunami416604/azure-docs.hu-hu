@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 06/25/2019
 ms.author: mbullwin
-ms.openlocfilehash: 479b810c5a66917bde5754d32991fb489ea26c9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d8ba5b19ad5d8f03203e9a028fbc5aec84e5ec06
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66299281"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565373"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Függőségi nyomkövetés az Azure Application insights szolgáltatásban 
 
@@ -104,7 +104,7 @@ Az ASP.NET-alkalmazások teljes SQL-lekérdezést igényel a rendszerállapot-mo
 | --- | --- |
 | Azure Web App |A WebApp Vezérlőpultját, a [nyissa meg az Application Insights paneljén](../../azure-monitor/app/azure-web-apps.md) , és engedélyezze a .NET SQL-parancsok |
 | IIS-kiszolgáló (az Azure virtuális gép, helyszíni stb.) | [Az alkalmazást futtató kiszolgálón telepítse az Állapotfigyelőt](../../azure-monitor/app/monitor-performance-live-website-now.md) , és indítsa újra az IIS.
-| Azure Cloud Service |[Használat indítási feladat](../../azure-monitor/app/cloudservices.md) való [állapotfigyelő telepítése](monitor-performance-live-website-now.md#download) |
+| Azure Cloud Service | Adjon hozzá [indítási feladat StatusMonitor telepítése](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Az alkalmazás lehet applicationinsights – SDK-ra felkészített időben NuGet-csomag telepítésével [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) vagy [ASP.NET Core-alkalmazások](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) |
 | Az IIS Express | Nem támogatott
 
 A fenti esetekben a megfelelő módszer annak ellenőrzése, hogy a rendszerállapot-motor megfelelően telepítve van ellenőrzi, hogy az SDK-verziója, az összegyűjtött `DependencyTelemetry` "rddp" van. "rdddsd" vagy "rddf" jelzi a függőségek DiagnosticSource vagy EventSource visszahívások keresztül gyűjteni, és ezért a teljes SQL-lekérdezést nem lehetett rögzíteni.
@@ -113,47 +113,25 @@ A fenti esetekben a megfelelő módszer annak ellenőrzése, hogy a rendszeráll
 
 * [Alkalmazás-hozzárendelés](app-map.md) megjeleníti az alkalmazás és a szomszédos összetevők közötti függőségek.
 * [Tranzakció diagnosztikája](transaction-diagnostics.md) jeleníti meg az egységes, korrelált server-adatok.
-* [Böngészők panelen](javascript.md#ajax-performance) jeleníti meg a felhasználók böngészőinek AJAX-hívások.
+* [Böngészők lap](javascript.md#ajax-performance) jeleníti meg a felhasználók böngészőinek AJAX-hívások.
 * Kattintson végig ellenőrizze azok függőségi hívásaihoz lassú vagy hibás kérésekből származó.
-* [Analytics](#analytics) használható függőségi adatokat lekérdezni.
+* [Analytics](#logs-analytics) használható függőségi adatokat lekérdezni.
 
 ## <a name="diagnosis"></a> Lassú kérelmek diagnosztizálása
 
 Minden egyes kérés esemény társítva a függőségi hívások, kivételeket és eseményeket, amelyek a rendszer nyomon követi, amíg az alkalmazás a kérés feldolgozása folyamatban van. Tehát ha az egyes kérések rosszul végeznek, annak meg, hogy van-e lassú válaszai a függőség miatt.
 
-Nézzük meg, amely egy példát.
-
 ### <a name="tracing-from-requests-to-dependencies"></a>A kérelmek, a függőségek nyomon követése
 
-A teljesítmény panel megnyitásához, és tekintse meg a rács kérések:
+Nyissa meg a **teljesítmény** lapra, és keresse meg a **függőségek** műveletek mellett a felső fülön.
 
-![Kéréseit átlagok és száma](./media/asp-net-dependencies/02-reqs.png)
+Kattintson a egy **függőség neve** teljes alatt. Miután kiválasztotta a függőség, időtartamok megoszlása a függőségi grafikon a jobb oldalon jelennek meg.
 
-A felső egy hosszú időt vesz igénybe. Nézzük meg, ha azt is megtudhatja, hol a telik el.
+![A függőségi lapon, majd egy függőség neve a diagram tetején kattintson fülre a teljesítmény](./media/asp-net-dependencies/2-perf-dependencies.png)
 
-Kattintson az egyéni lekérési események megtekintéséhez a sorhoz:
+Kattintson a kék a **minták** gombra a jobb alsó, majd a minta a végpontok közötti tranzakció részleteinek megtekintéséhez.
 
-![A kérelem események listája](./media/asp-net-dependencies/03-instances.png)
-
-Kattintson a tovább vizsgálja meg, és görgessen le a távoli függőségi hívás ehhez a kérelemhez kapcsolódó bármely hosszú ideig futó példány:
-
-![Távoli függőségekhez intézett hívások keresse meg, azonosíthatja a szokatlan időtartama](./media/asp-net-dependencies/04-dependencies.png)
-
-A kérelem egy hívás egy helyi service telt karbantartási idő a legtöbb tűnik.
-
-További információért a sorhoz kiválasztása:
-
-![Kattintson végig a távoli függőség nem sokkal azonosításához](./media/asp-net-dependencies/05-detail.png)
-
-Úgy tűnik, a függőség, ahol a probléma van. Mi a probléma már pinpointed, tehát most sínen szeretné tudni, miért Ez a meghívás tart sokáig.
-
-### <a name="request-timeline"></a>Kérelem ütemterv
-
-Más esetben nem nincs függőségi hívás, amely túl hosszú. De között idősor nézetének, láthatjuk, ahol a késés a belső feldolgozási történt:
-
-![Távoli függőségekhez intézett hívások keresse meg, azonosíthatja a szokatlan időtartama](./media/asp-net-dependencies/04-1.png)
-
-Úgy tűnik, hogy nagy eseményáramlási kimaradást követően az első függőség hívása, így a kódban, hogy miért ez megnézzük kell.
+![Kattintson ide a részletek a végpontok közötti tranzakció minta](./media/asp-net-dependencies/3-end-to-end.png)
 
 ### <a name="profile-your-live-site"></a>Az élő webhelyet profil
 
@@ -161,35 +139,35 @@ Nem tudja, ahol az idő halad? A [Application Insights profiler](../../azure-mon
 
 ## <a name="failed-requests"></a>Sikertelen kérelmek
 
-Sikertelen kérelmek is lehet társítva, a függőségek hívásainak sikertelen. Ismét hogy végigkattinthat nyomon követheti a problémát.
+Sikertelen kérelmek is lehet társítva, a függőségek hívásainak sikertelen.
 
-![Kattintson a sikertelen kérelmeit tartalmazó diagram](./media/asp-net-dependencies/06-fail.png)
+Megnyithatja azt a **hibák** a bal oldali lapon, majd kattintson a a **függőségek** a felső fülön.
 
-Kattintson végig a sikertelen kérelmek előfordulása, és tekintse meg a kapcsolódó eseményeket.
+![Kattintson a sikertelen kérelmeit tartalmazó diagram](./media/asp-net-dependencies/4-fail.png)
 
-![Kattintson egy kérés típusa, a másik nézet ugyanazon-példány beolvasásához, kattintson rá a kivétel részletes-példány.](./media/asp-net-dependencies/07-faildetail.png)
+Itt fogja látni a sikertelen függőségek száma. Egy kísérlet az alsó táblázaton a függőségi nevére kattintva sikertelen előfordulás kapcsolatos további részletekért. A kék kattintva **függőségek** a végpontok közötti tranzakció részleteinek jobb alsó gombra.
 
-## <a name="analytics"></a>Elemzés
+## <a name="logs-analytics"></a>Naplók (Analytics)
 
 Nyomon követheti a függőségeket a [Kusto-lekérdezés nyelvi](/azure/kusto/query/). Néhány példa:
 
 * Keresse meg az összes sikertelen függőségi hívások:
 
-```
+``` Kusto
 
     dependencies | where success != "True" | take 10
 ```
 
 * Keresse meg az AJAX-hívások:
 
-```
+``` Kusto
 
     dependencies | where client_Type == "Browser" | take 10
 ```
 
 * Függőségi hívások kérelmekhez keresése:
 
-```
+``` Kusto
 
     dependencies
     | where timestamp > ago(1d) and  client_Type != "Browser"
@@ -200,17 +178,13 @@ Nyomon követheti a függőségeket a [Kusto-lekérdezés nyelvi](/azure/kusto/q
 
 * Keresés AJAX-hívások lapmegtekintés társított:
 
-```
+``` Kusto 
 
     dependencies
     | where timestamp > ago(1d) and  client_Type == "Browser"
     | join (browserTimings | where timestamp > ago(1d))
       on operation_Id
 ```
-
-## <a name="video"></a>Videó
-
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -220,7 +194,6 @@ Nyomon követheti a függőségeket a [Kusto-lekérdezés nyelvi](/azure/kusto/q
 
 ## <a name="open-source-sdk"></a>Open-source SDK
 Minden Application Insights SDK-t, például függőségi gyűjtő moduljának akkor is nyílt forráskódú. Olvassa el és járulnak hozzá a kódot, vagy a problémák jelentése [a hivatalos GitHub-adattárat](https://github.com/Microsoft/ApplicationInsights-dotnet-server).
-
 
 ## <a name="next-steps"></a>További lépések
 

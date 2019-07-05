@@ -6,12 +6,13 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: 0fc4eb90d9bed3877b4618fd839d9e8bf1608718
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: fasttrack-edit
+ms.openlocfilehash: c328f0dc510c1b7d36b547e6560a292f98d72f6f
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063742"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448048"
 ---
 # <a name="supported-postgresql-database-versions"></a>PostgreSQL-adatbázis támogatott verziók
 A Microsoft célja, hogy támogatja a PostgreSQL-motor n-2 verzióit az Azure Database for PostgreSQL – egyetlen kiszolgáló. A verziók lenne, az aktuális főbb verzióhoz az Azure-ban (n) és a két előző főbb verzió (-2).
@@ -35,6 +36,9 @@ Tekintse meg a [PostgreSQL dokumentációja](https://www.postgresql.org/docs/9.5
 
 ## <a name="managing-updates-and-upgrades"></a>Frissítések kezelése
 Azure Database for postgresql-hez automatikusan kezeli a alverzió javítások. Főverzió frissítés jelenleg nem támogatott. Például PostgreSQL 9,5 PostgreSQL 9.6 rendszerről történő frissítés nem támogatott. Ha szeretné, a következő fő verzióra való frissítéshez, hozzon létre egy adatbázist [memóriakép és visszaállítás](./howto-migrate-using-dump-and-restore.md) , hogy egy kiszolgálót, amely az új motor verziójával lett létrehozva.
+
+> PostgreSQL, 10-es verzió előtt vegye figyelembe, hogy a [PostgreSQL versioning házirend](https://www.postgresql.org/support/versioning/) számít egy _főverzió_ megnöveli az első frissítés _vagy_ száma (a második például tekintették 9,5 a 9.6- _fő_ termékverzió-frissítés).
+> Től 10-es verzió, csak az első szám módosítása a főverzió-frissítés számít (például 10.0, 10.1 van egy _kisebb_ termékverzió-frissítés, illetve 10, 11 egy _fő_ termékverzió-frissítés).
 
 ## <a name="next-steps"></a>További lépések
 A különböző PostgreSQL-bővítmények a támogatásával kapcsolatos információkat lásd: [PostgreSQL-bővítmények](concepts-extensions.md).

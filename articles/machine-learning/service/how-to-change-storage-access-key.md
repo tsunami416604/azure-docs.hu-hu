@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/17/2019
-ms.openlocfilehash: 11abbb0494a9771676dcf2436b5e808346c16368
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 488a032e177897caf2897ba6335f4e7f64dc0e4d
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078559"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543833"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Tárfiók hozzáférési kulcsainak újragenerálása
 
@@ -72,7 +72,7 @@ Frissítése az Azure Machine Learning szolgáltatás az új kulcsot használja,
 > [!IMPORTANT]
 > Hajtsa végre a lépéseket, a parancssori felület és a Python használatával adattárainak a munkaterület frissítése is. Csak az egyik vagy másik frissítése hibákat okozhat, amíg mindkettő frissülnek.
 
-1. A kulcs újragenerálása. A hozzáférési kulcs újragenerálása információkért lásd: a [kezelése a storage-fiók](/azure/storage/common/storage-account-manage.md#access-keys) cikk. Az új kulcs mentéséhez.
+1. A kulcs újragenerálása. A hozzáférési kulcs újragenerálása információkért lásd: a [kezelése a storage-fiók](/azure/storage/common/storage-account-manage#access-keys) cikk. Az új kulcs mentéséhez.
 
 1. A munkaterület használata az új kulcs frissítéséhez használja az alábbi lépéseket:
 

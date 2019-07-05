@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 5/5/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5e2f7b52ca3cb8a4d472b353e844bdad3aa1b0c1
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 91ec65e17b77ccb3864fce45e30729ff420a48b6
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67150449"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542648"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Az Azure Files méretezhetőségi és teljesítménycéljai
 
@@ -34,15 +34,17 @@ A szülő erőforrás Azure-fájlmegosztások az Azure storage-fiók. Storage-fi
 
 ## <a name="azure-files-scale-targets"></a>Az Azure Files méretezési célok
 
-### <a name="premium-scale-targets"></a>Prémium szintű méretezési célok
+Az Azure Files számára megfontolandó korlátozások három kategóriába sorolhatók: storage-fiókok, a megosztások és a fájlokat.
 
-Prémium szintű fájlmegosztások megfontolandó korlátozások három kategóriába sorolhatók: storage-fiókok, a megosztások és a fájlokat.
+Példa: Prémium szintű fájlmegosztásokkal egyetlen megosztása 100 000 IOPS érhető el, és egyetlen fájl akár 5000 IOPS is méretezhető. Tehát, ha egy megosztást a három fájlt, a maximális iops-érték kérhet le, hogy a megosztás 15 000.
 
-Példa: Egyetlen megosztása 100 000 IOPS érhető el, és egyetlen fájl akár 5000 IOPS skálázhatja. Így például, ha már három egy megosztásban lévő fájlokat, a maximális iops-érték el azt a megosztást, 15 000.
+### <a name="standard-storage-account-limits"></a>Standard szintű tárfiókok korlátai
+
+Tekintse meg a [az Azure storage-fiók méretezési célok](#azure-storage-account-scale-targets) ezeket a korlátokat a következő szakaszban.
 
 ### <a name="premium-filestorage-account-limits"></a>Prémium szintű FileStorage korlátai
 
-Prémium szintű fájlmegosztások vannak kiépítve nevű speciális tárfiók **filestorage (előzetes verzió)** . Ez a fiók rendelkezik, mint a normál fájlmegosztásokhoz használt tárfiók némileg eltérő méretezési célokat. A tárolási fiók méretezési célokat, tekintse meg a tábla a [az Azure storage-fiók méretezési célok](#azure-storage-account-scale-targets) szakaszban.
+[!INCLUDE [azure-storage-limits-filestorage](../../../includes/azure-storage-limits-filestorage.md)]
 
 > [!IMPORTANT]
 > Tárfiókok korlátai megosztások a alkalmazni. Méretezés akár a maximális FileStorage fiókok csak akkor elérhető FileStorage-fiókonként csak egy megosztás esetén.

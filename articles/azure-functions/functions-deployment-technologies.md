@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 10976c9cf16dfab4c31d0d77c519dc3277204a51
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 118daf02ab59646f2926071763aa4d7e97846e04
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293049"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508222"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Központi telepítési technológiák az Azure Functions szolgáltatásban
 
@@ -50,16 +50,18 @@ A folytatás előtt fontos ismerje meg, néhány főbb fogalmakat kritikus fonto
 Ha bármelyik az eseményindítók, a Functions-infrastruktúra kell figyelembe venni ezeket a módosításokat. A szinkronizálás számos központi telepítési technológiák esetében automatikusan történik. Azonban bizonyos esetekben manuálisan kell szinkronizálnia az eseményindítók. A frissítések, egy külső csomag URL-CÍMÉT, helyi Git, felhőalapú szinkronizálás vagy FTP használatával történő telepítésekor ne felejtse el manuálisan szinkronizálhatja az eseményindítók kell lennie. Eseményindítók három módszerrel szinkronizálhatók:
 
 * Indítsa újra a függvényalkalmazást az Azure Portalon
-* Egy HTTP POST-kérést küld `https://www.{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` használatával a [főkulcs](functions-bindings-http-webhook.md#authorization-keys).
+* Egy HTTP POST-kérést küld `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` használatával a [főkulcs](functions-bindings-http-webhook.md#authorization-keys).
 * Egy HTTP POST-kérést küld `https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01`. A helyőrzőket cserélje le az előfizetés-azonosító, erőforráscsoport-nevet és a függvényalkalmazás nevére.
 
 ## <a name="deployment-technology-details"></a>Központi telepítési technológia részletei  
+
+Az Azure Functions támogatja a következő központi telepítési módszerekkel.
 
 ### <a name="external-package-url"></a>Külső csomag URL-címe
 
 Lehetővé teszi egy távoli csomag (.zip) fájlt, amely tartalmazza a függvényalkalmazás hivatkozhat. A fájl letöltése a megadott URL-címről, és az alkalmazás fut [Run-a-Package](run-functions-from-deployment-package.md) mód.
 
->__Hogyan kell használni:__ Adjon hozzá `WEBSITE_RUN_FROM_PACKAGE` való az alkalmazás beállításait. Ez a beállítás értékét kell lennie egy URL - szeretné futtatni a megadott alkalmazáscsomag-fájl helyét. Beállítások adhat hozzá vagy [a portálon](functions-how-to-use-azure-function-app-settings.md#settings) vagy [az Azure CLI-vel](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set). Azure blob storage használatával, ha egy privát tároló használja egy [közös hozzáférésű Jogosultságkód (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#attach-a-storage-account-by-using-a-shared-access-signature-sas) funkciók hozzáférést adhat a csomaghoz. Bármikor az alkalmazás újraindul, beolvassa a tartalmat, ami azt jelenti, hogy a hivatkozás érvényesnek kell lennie az alkalmazás teljes élettartama egy példányát.
+>__Hogyan kell használni:__ Adjon hozzá `WEBSITE_RUN_FROM_PACKAGE` való az alkalmazás beállításait. Ez a beállítás értékét kell lennie egy URL - szeretné futtatni a megadott alkalmazáscsomag-fájl helyét. Beállítások adhat hozzá vagy [a portálon](functions-how-to-use-azure-function-app-settings.md#settings) vagy [az Azure CLI-vel](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set). Azure blob storage használatával, ha egy privát tároló használja egy [közös hozzáférésű Jogosultságkód (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) funkciók hozzáférést adhat a csomaghoz. Bármikor az alkalmazás újraindul, beolvassa a tartalmat, ami azt jelenti, hogy a hivatkozás érvényesnek kell lennie az alkalmazás teljes élettartama egy példányát.
 
 >__Mikor érdemes használni, azt:__ Ez a egyetlen üzembe helyezési mód az Azure Functions Linux rendszeren futó, Használatalapú csomagban (előzetes verzió) támogatott. A függvényalkalmazás hivatkozik alkalmazáscsomag-fájl frissítésekor kell [manuálisan szinkronizálni az eseményindítók](#trigger-syncing) Azure állapítható meg, hogy az alkalmazás módosult.
 
@@ -88,11 +90,11 @@ Tárolórendszerkép üzembe helyezése Linux rendszerű, amely tartalmazza a f�
 
 ### <a name="web-deploy-msdeploy"></a>A Web deploy (MSDeploy)
 
-A csomagok és helyez üzembe Windows-alkalmazásait akár bármely IIS-kiszolgálón, beleértve az Azure function appsszel, a Windows rendszerű.
+A csomagok és helyez üzembe Windows-alkalmazásait akár minden olyan IIS-kiszolgálón, beleértve a Windows Azure-ban futó függvényalkalmazást.
 
->__Hogyan kell használni:__ Használja a [Azure Functions Visual Studio-eszközök](functions-create-your-first-function-visual-studio.md), és nem az osztásjelek a `Run from package file (recommended)` jelölőnégyzetet.
+>__Hogyan kell használni:__ Használja a [Azure Functions Visual Studio-eszközök](functions-create-your-first-function-visual-studio.md), és törölje a jelet a `Run from package file (recommended)` mezőbe.
 >
->Másik lehetőségként hívás `MSDeploy.exe` letöltése után közvetlenül [webalkalmazás üzembe helyezése 3.6](https://www.iis.net/downloads/microsoft/web-deploy).
+> Letölthető, [webalkalmazás üzembe helyezése 3.6](https://www.iis.net/downloads/microsoft/web-deploy) hívja `MSDeploy.exe` közvetlenül.
 
 >__Mikor érdemes használni, azt:__ A központi telepítési technológia támogatott és nem problémákkal rendelkezik, de az előnyben részesített mechanizmus most [Zip üzembe helyezéséhez futtassa a csomag engedélyezett](#zip-deploy). További tudnivalókért látogasson el a [Visual Studio – fejlesztési útmutató](functions-develop-vs.md#publish-to-azure).
 

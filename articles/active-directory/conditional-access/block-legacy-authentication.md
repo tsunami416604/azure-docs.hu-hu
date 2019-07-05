@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b2120466652db363206ec20c2303ad56670228c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 60fc168a6c15e7cb8d6e4271154d99fb4136226e
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164801"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509032"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Útmutató: Örökölt hitelesítés letiltása az Azure AD feltételes hozzáférés   
 
@@ -36,7 +36,6 @@ Ez a cikk azt feltételezi, hogy Ön ismeri a:
 Az Azure AD számos, beleértve az örökölt hitelesítési leggyakrabban használt hitelesítési és engedélyezési protokollokat támogatja. Az örökölt hitelesítési protokollok alapszintű hitelesítést használó hivatkozik. Ezeket a protokollokat általában bármilyen típusú második tényezős hitelesítést nem érvényesíthetők. Példák az örökölt hitelesítési alapuló alkalmazások a következők:
 
 - Régebbi Microsoft Office-alkalmazások
-
 - Alkalmazások levelezési protokollok, mint POP, IMAP és az SMTP használatával
 
 Egyetlen többtényezős hitelesítés (például felhasználónév és jelszó) nem áll elég napjainkban. Jelszavak rendszer rossz, könnyen kitalálni, és hogy (emberek) rossz jelszavak jó választás. Jelszavak is ki téve támadásoktól, például az adathalászatot vagy a jelszó megfelelő különböző. A legegyszerűbb lehetőség jelszó fenyegetésekkel egyik MFA megvalósítása. Az MFA még akkor is, ha egy támadó lekérdezi egy felhasználó jelszavát, birtokában egyedül a jelszó azonban nem sikeresen hitelesíteni, és az adatok eléréséhez.
@@ -71,46 +70,34 @@ Ezek az alkalmazások hozzáférésének blokkolása, kell választania **blokko
 
 ![Hozzáférés letiltása](./media/block-legacy-authentication/02.png)
 
-
 ### <a name="select-users-and-cloud-apps"></a>A kiválasztott felhasználók és a felhőalapú alkalmazások
 
 Ha a szervezet számára az örökölt hitelesítés letiltása, valószínűleg úgy gondolja, hogy ez elvégezhető kiválasztásával:
 
 - Minden felhasználó
-
 - Minden felhőalapú alkalmazásra
-
 - Hozzáférés letiltása
- 
 
 ![Hozzárendelések](./media/block-legacy-authentication/03.png)
-
-
 
 Az Azure rendelkezik olyan biztonsági szolgáltatás, amely megakadályozza, hogy ehhez hasonló szabályzat létrehozása, mert ez a konfiguráció sérti a [ajánlott eljárások](best-practices.md) a feltételes hozzáférési szabályzatokat.
  
 ![A szabályzatkonfiguráció nem támogatott](./media/block-legacy-authentication/04.png)
 
-
 Szükség a biztonsági funkció mert *letiltása minden felhasználó és az összes felhőalapú alkalmazások* magában hordozza a bejelentkezést a bérlő vállalata blokkolására. Ki kell zárnia a minimális ajánlott gyakorlat követelmény teljesítéséhez legalább egy felhasználót. Sikerült zárnia olyan címtárbeli szerepkörrel.
 
 ![A szabályzatkonfiguráció nem támogatott](./media/block-legacy-authentication/05.png)
 
-
 Egy felhasználó kizárása a szabályzat által a biztonsági funkció képes kielégíteni. Ideális esetben meg kell határozni néhány [válságkezelési hozzáférés rendszergazdai fiókok az Azure ad-ben](../users-groups-roles/directory-emergency-access.md) , és kizárhatja azokat a szabályzat alól.
- 
 
 ## <a name="policy-deployment"></a>Házirend központi telepítése
 
 Mielőtt a szabályzat az éles környezetbe, gondoskodik:
  
 - **Szolgáltatásfiókok** -felhasználói fiókok, szolgáltatásfiókok vagy az eszközök, például konferencia szoba telefonok használt azonosításához. Ellenőrizze, hogy ezek a fiókok erős jelszavakat, és hozzáadhatja őket a kizárt csoportba.
- 
 - **Jelentkezzen be a jelentések** – tekintse át a bejelentkezési jelentést, és keressen **más ügyfél** forgalmat. Felső kihasználtsága határozza meg és vizsgálja meg, miért használatban van. A forgalom általában, ne használja a modern hitelesítést, vagy néhány külső levelezési alkalmazás régebbi Office-ügyfelek által jön létre. Ezek az alkalmazások alacsony használat áthelyezése, vagy a hatással, ha a felhasználók értesítése, hogy nem használhatják ezeket az alkalmazásokat többé megtervezik.
  
 További információkért lásd: [hogyan kell egy új házirendet telepít?](best-practices.md#how-should-you-deploy-a-new-policy).
-
-
 
 ## <a name="what-you-should-know"></a>Alapismeretek
 
@@ -120,23 +107,17 @@ A házirend beállítása **más ügyfelek** letiltja az egyes ügyfelek, péld�
 
 A házirend érvénybe lép, akár 24 órát is igénybe vehet.
 
-Kiválaszthatja a feltételhez más ügyfelek; az összes rendelkezésre álló engedély azonban a végfelhasználói mindig azonos, - hozzáférés blokkolva.
+Kiválaszthatja, hogy az összes rendelkezésre álló engedély a **más ügyfelek** feltétel; azonban a végfelhasználói mindig azonos, - hozzáférés blokkolva.
 
-Ha letiltja az örökölt hitelesítési ügyfelek vonatkozó feltétellel, az eszköz platform és hely feltételt is beállíthat. Például ha csak szeretné mobileszközökhöz az örökölt hitelesítés letiltása, állítsa be a **eszközplatformok** kiválasztásával feltétel:
+Ha letiltja az örökölt hitelesítés használata a **más ügyfelek** feltétel, az eszköz platform és hely feltételt is beállíthat. Például ha csak szeretné mobileszközökhöz az örökölt hitelesítés letiltása, állítsa be a **eszközplatformok** kiválasztásával feltétel:
 
 - Android
-
 - iOS
-
 - Windows Phone
 
 ![A szabályzatkonfiguráció nem támogatott](./media/block-legacy-authentication/06.png)
 
-
-
-
 ## <a name="next-steps"></a>További lépések
 
 - Ha nem ismeri még a feltételes hozzáférési szabályzatok konfigurálása, lásd: [többtényezős hitelesítés konkrét alkalmazások esetén az Azure Active Directory feltételes hozzáférés](app-based-mfa.md) példaként.
-
 - Modern hitelesítés nélküli támogatásával kapcsolatos további információkért lásd: [Office 2013 és az Office 2016 ügyfélalkalmazások számára a modern hitelesítés működéséről](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) 

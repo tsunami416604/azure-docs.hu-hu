@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: gracez
-ms.openlocfilehash: 6324da55c8af4934185fa39a106939844788adba
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 33907437ab330278bdf7b023f6a93bd96e78cbad
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60653716"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561341"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Bing Speech áttelepít a beszédszolgáltatás
 
@@ -69,7 +69,7 @@ A Speech Services WebSockets protokollt is használta a Bing Speech összhangban
 
 Ha egy adott programozási nyelvhez használja a Bing Speech ügyféloldali kódtár,-ba való migrálás a [beszéd SDK](speech-sdk.md) az alkalmazás módosítását igényli, mivel az API-t nem egyezik. A beszédfelismerés SDK-t is egyszerűbbé teszik a kódját, közben is betekinthet a új szolgáltatások.
 
-A beszédfelismerés SDK jelenleg C# (Windows 10 UWP, .NET Standard), Java (Android és az egyéni eszközök), (iOS) Objective C, C++ (Windows és Linux) és a JavaScript támogatja. API-k minden platformon hasonlóak, egyszerűsített többplatformos fejlesztést.
+Jelenleg a Speech SDK támogatja a C# ([részletesen Itt](https://aka.ms/csspeech)), Java (Android és az egyéni eszközök), az Objective C (iOS) C++ (Windows és Linux), és a JavaScript. API-k minden platformon hasonlóak, egyszerűsített többplatformos fejlesztést.
 
 A beszédfelismerési szolgáltatás globális végpontja nem olyan. Határozza meg, ha ha használ egy regionális végpontot az összes, a forgalom hatékony működik-e az alkalmazás. Ha nem, földrajzi hely meghatározásának segítségével határozhatja meg, a leghatékonyabb végpontot. Az egyes régiókban használhat egy külön beszédszolgáltatások előfizetés szükséges.
 

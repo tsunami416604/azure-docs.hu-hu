@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f80ecf02a7e517300c41e84986659a66cfa11c90
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c0d04db6e9ccedc1e67ed0cdfd914ab42ebea0b1
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60414936"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536952"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication az NPS-bővítményének hibaüzenetek feloldása
 
@@ -31,7 +31,7 @@ Ha az Azure multi-factor Authentication NPS-bővítményéhez hibákat észlel, 
 | **ESTS_TOKEN_ERROR** | Kövesse a [hibáinak elhárítása az MFA NPS-bővítményének](howto-mfa-nps-extension.md#troubleshooting) ügyféltanúsítvány, és az adal-t vizsgálhatja a jogkivonat-problémák. |
 | **HTTPS_COMMUNICATION_ERROR** | A hálózati házirend-kiszolgáló nem tudja az Azure MFA válaszokat kaphatnak. Ellenőrizze, hogy a tűzfal nyitva kétirányúan a forgalmat a https://adnotifications.windowsazure.com |
 | **HTTP_CONNECT_ERROR** | Az NPS-bővítményt futtató kiszolgáló, ellenőrizze, hogy elérheti https://adnotifications.windowsazure.com és https://login.microsoftonline.com/. Ha ezeket a helyeket nem töltődik be, az adott kiszolgálón-kapcsolatának hibaelhárítása. |
-| **Az Azure MFA NPS-bővítményének:** <br> Az Azure MFA NPS-bővítményének másodlagos hitelesítés csak a Radius-kéréseket AccessAccept állapotban hajtja végre. A kérelem érkezett a következő válasz állapota AccessReject, figyelmen kívül hagyja a kérelem felhasználó felhasználóneve. | Ez a hiba általában tükrözi hitelesítési hiba történt az ad-ben, vagy a hálózati házirend-kiszolgáló nem tud válaszokat kaphatnak az Azure ad-ből. Ellenőrizze, hogy a tűzfal nyitva kétirányúan a forgalmat a https://adnotifications.windowsazure.com és https://login.microsoftonline.com 80-as és 443-as portot használja. Fontos továbbá ellenőrizze, hogy a hálózati hozzáférési engedélyek DIAL-IN lapján, a beállítás értéke "szabályozhatja a hálózati házirend-kiszolgáló elérés". |
+| **Az Azure MFA NPS-bővítményének:** <br> Az Azure MFA NPS-bővítményének másodlagos hitelesítés csak a Radius-kéréseket AccessAccept állapotban hajtja végre. A kérelem érkezett a következő válasz állapota AccessReject, figyelmen kívül hagyja a kérelem felhasználó felhasználóneve. | Ez a hiba általában tükrözi hitelesítési hiba történt az ad-ben, vagy a hálózati házirend-kiszolgáló nem tud válaszokat kaphatnak az Azure ad-ből. Ellenőrizze, hogy a tűzfal nyitva kétirányúan a forgalmat a https://adnotifications.windowsazure.com és https://login.microsoftonline.com 80-as és 443-as portot használja. Fontos továbbá ellenőrizze, hogy a hálózati hozzáférési engedélyek DIAL-IN lapján, a beállítás értéke "szabályozhatja a hálózati házirend-kiszolgáló elérés". Ez a hiba, ha a felhasználóhoz nincs hozzárendelve licenc is indíthat. |
 | **REGISTRY_CONFIG_ERROR** | A kulcs nincs megadva a beállításjegyzékben, az alkalmazás, amely lehet az oka az [PowerShell-parancsprogram](howto-mfa-nps-extension.md#install-the-nps-extension) nem volt a telepítés után futtassa. A hibaüzenet tartalmaznia kell a hiányzó kulcs. Győződjön meg arról, hogy a kulcs alatt HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa. |
 | **REQUEST_FORMAT_ERROR** <br> RADIUS-kérést Radius userName\Identifier kötelező attribútum hiányzik. Győződjön meg arról, hogy a hálózati házirend-kiszolgáló RADIUS-kéréseket fogad | Ez a hiba általában a telepítési probléma tükrözi. Az NPS-bővítményt telepíteni kell a RADIUS-kérelmeket fogadhat hálózati házirend-kiszolgálókat. Telepíti a függőségeket RDG és RRAS például hálózati házirend-kiszolgálókat nem kapja meg radius-kéréseket. NPS-bővítményének nem működik, ha ilyen telepítések és a hibák meg telepíteni, mert a nem tud olvasni a hitelesítési kérelem részleteit. |
 | **REQUEST_MISSING_CODE** | Győződjön meg arról, hogy a titkosítási protokollt a hálózati házirend- és NAS-kiszolgálók közötti támogatja-e a másodlagos hitelesítési módszert használ. **A PAP** a felhőben, az Azure MFA hitelesítési módszereket támogatja: telefonhívás, egyirányú SMS, mobilalkalmazásbeli értesítés és mobilalkalmazásbeli ellenőrző kód. **CHAPv2** és **EAP** telefonhívás- és mobilalkalmazás-értesítés támogatja. |

@@ -2,7 +2,7 @@
 title: Offline szinkronizálás engedélyezése az univerzális Windows Platform (UWP) alkalmazás számára a Mobile Apps |} A Microsoft Docs
 description: Ismerje meg, hogyan használhatja az Azure-mobilalkalmazás offline adatok gyorsítótár és a szinkronizálási az univerzális Windows Platform (UWP) alkalmazásban.
 documentationcenter: windows
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 services: app-service\mobile
@@ -12,17 +12,21 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/01/2016
-ms.author: crdun
-ms.openlocfilehash: 69ee9e7101a2b7337e1e42ff5ae09954fbfd50b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 4970a80b911a1efbc308d48ac4b8a50f774b4d04
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62128049"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551934"
 ---
 # <a name="enable-offline-sync-for-your-windows-app"></a>Windows-alkalmazás kapcsolat nélküli szinkronizálásának engedélyezése
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
+
+> [!NOTE]
+> A Visual Studio App Center fektet a mobilalkalmazás-fejlesztés központi új, integrált szolgáltatások. A fejlesztők a **hozhat létre**, **teszt** és **terjesztése** állíthat be folyamatos integrációt és teljesítést folyamat szolgáltatások. Az alkalmazás telepítve van, a fejlesztők monitorozható az állapot és az alkalmazás használatával használatát a **Analytics** és **diagnosztikai** -szolgáltatásokat, és kapcsolatba léphet a felhasználókat a **leküldéses** a szolgáltatás. A fejlesztők is kihasználhatják a **Auth** azok a felhasználók hitelesítéséhez és **adatok** szolgáltatás és a felhőbeli alkalmazások adatainak szinkronizálása. Tekintse meg [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-windows-store-dotnet-get-started-offline-data) még ma.
+>
 
 ## <a name="overview"></a>Áttekintés
 Ez az oktatóanyag bemutatja, hogyan adhat offline támogatást egy univerzális Windows Platform (UWP) egy Azure Mobile Apps-háttéralkalmazás segítségével. Kapcsolat nélküli szinkronizálás lehetővé teszi, hogy a végfelhasználók számára, hogy kommunikáljanak egy mobilalkalmazást – megtekintését, hozzáadását és módosítását a data - még akkor is, ha nincs hálózati kapcsolat. Változások a helyi adatbázisban vannak tárolva. Az eszköz újra online állapotba kerül, ha ezeket a módosításokat a távoli háttérrendszerrel vannak szinkronizálva.
@@ -40,7 +44,7 @@ Ez az oktatóanyag a következő előfeltételek teljesülésére van szükség:
 * [Univerzális Windows Platform fejlesztési SQLite](https://marketplace.visualstudio.com/items?itemName=SQLiteDevelopmentTeam.SQLiteforUniversalWindowsPlatform) 
 
 ## <a name="update-the-client-app-to-support-offline-features"></a>Offline funkciók támogatásához az ügyféloldali alkalmazás frissítése
-Az Azure Mobile Apps offline funkciói lehetővé teszik helyi adatbázis használhatja, amikor egy offline állapotban van. Ezek a funkciók használata az alkalmazásban, inicializálni egy [SyncContext] [ synccontext] a helyi tárolóba. Ezután hivatkozhat a tábla keresztül a [IMobileServiceSyncTable][IMobileServiceSyncTable] felületet. Az eszközön a helyi tároló SQLite használatban van.
+Az Azure Mobile Apps offline funkciói lehetővé teszik helyi adatbázis használhatja, amikor egy offline állapotban van. Ezek a funkciók használata az alkalmazásban, inicializálni egy [SyncContext][synccontext] to a local store. Then reference your table through the [IMobileServiceSyncTable][IMobileServiceSyncTable] felületet. Az eszközön a helyi tároló SQLite használatban van.
 
 1. Telepítse a [SQLite-modul a Universal Windows Platform](https://sqlite.org/2016/sqlite-uwp-3120200.vsix).
 2. A Visual Studióban nyissa meg a NuGet-Csomagkezelő az UWP-alkalmazásprojektet, hogy végrehajtotta a [egy Windows-alkalmazás létrehozása] oktatóanyag.
@@ -78,10 +82,10 @@ Az alkalmazás első futtatásakor a `OnNavigatedTo` eseménykezelő-hívások `
    `UpdateCheckedTodoItem` hívások `SyncAsync` való szinkronizálás minden elem a Mobile Apps-háttéralkalmazást. `SyncAsync` meghívja a lekérést és. Azonban **, amikor egy lekéréses elleni egy táblát, amely az ügyfél által végrehajtott módosítások a végrehajtása, egy leküldéses mindig futtatja automatikusan**. Ez a viselkedés garantálja, hogy a helyi tároló kapcsolatok mellett minden tábla konzisztens marad. Egy váratlan leküldéses ezt a viselkedést okozhat.  Ezt a viselkedést a további információkért lásd: [Offline adatszinkronizálás az Azure Mobile Appsban].
 
 ## <a name="api-summary"></a>API összefoglaló
-A mobilszolgáltatások offline funkcióinak támogatása érdekében használjuk a [IMobileServiceSyncTable] felületet, és inicializálva [MobileServiceClient.SyncContext] [ synccontext] együtt egy helyi SQLite-adatbázis. Ha offline állapotban van, a Mobile Apps-alkalmazáshoz a szokásos CRUD-műveletek dolgozhatnak, mintha az az alkalmazás továbbra is csatlakozik, miközben a műveleteket a rendszer a helyi tárolóban. A helyi tároló szinkronizálása a kiszolgálóval a következő módszerek használhatók:
+A mobilszolgáltatások offline funkcióinak támogatása érdekében használjuk a [IMobileServiceSyncTable] felületet, és inicializálva [MobileServiceClient.SyncContext][synccontext] helyi SQLite-adatbázis. Ha offline állapotban van, a Mobile Apps-alkalmazáshoz a szokásos CRUD-műveletek dolgozhatnak, mintha az az alkalmazás továbbra is csatlakozik, miközben a műveleteket a rendszer a helyi tárolóban. A helyi tároló szinkronizálása a kiszolgálóval a következő módszerek használhatók:
 
 * **[PushAsync]**  ezt a módszert a tagja, mert [IMobileServicesSyncContext], módosítások összes kerüljenek a háttérrendszerhez. A kiszolgáló csak a helyi változások rekordok kerülnek.
-* **[PullAsync]**  lekérési környezetből indítható el egy [IMobileServiceSyncTable]. Ha nyomon követett módosításait a tábla, egy implicit leküldéses futtatásával győződjön meg arról, hogy a helyi tároló kapcsolatok mellett minden tábla konzisztens marad. A *pushOtherTables* e más táblák környezetében leküld egy implicit leküldéses a paraméterrel állítható be. A *lekérdezés* paraméter egy [IMobileServiceTableQuery<T> ] [ IMobileServiceTableQuery] vagy OData-lekérdezési karakterláncot a visszaadott adatok szűrésére. A *queryId* paraméter a növekményes szinkronizálás meghatározására szolgál. További információkért lásd: [Offline adatszinkronizálás az Azure Mobile Apps](app-service-mobile-offline-data-sync.md#how-sync-works).
+* **[PullAsync]**  lekérési környezetből indítható el egy [IMobileServiceSyncTable]. Ha nyomon követett módosításait a tábla, egy implicit leküldéses futtatásával győződjön meg arról, hogy a helyi tároló kapcsolatok mellett minden tábla konzisztens marad. A *pushOtherTables* e más táblák környezetében leküld egy implicit leküldéses a paraméterrel állítható be. A *lekérdezés* paraméter egy [IMobileServiceTableQuery\<T >][IMobileServiceTableQuery] vagy OData-lekérdezési karakterláncot a visszaadott adatok szűrésére. A *queryId* paraméter a növekményes szinkronizálás meghatározására szolgál. További információkért lásd: [Offline adatszinkronizálás az Azure Mobile Apps](app-service-mobile-offline-data-sync.md#how-sync-works).
 * **[PurgeAsync]**  rendszeres időközönként az alkalmazásnak meg kell hívnia ezt a metódust a helyi tároló elavult adatok törlése. Használja a *kényszerítése* paramétert, ha még nem szinkronizált változtatások kiürítése kell.
 
 Ezek a fogalmak kapcsolatos további információkért lásd: [Offline adatszinkronizálás az Azure Mobile Apps](app-service-mobile-offline-data-sync.md#how-sync-works).

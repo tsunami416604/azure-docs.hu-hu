@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 3/5/2019
+ms.date: 07/01/2019
 ms.author: moderakh
-ms.openlocfilehash: 356838f16f7f13506657326bae5dbe994d54bdd5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3cafa4d5aecaa4c8f3863c3269ec02793340e3e6
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "57570096"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509260"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Aszinkron Java az Azure Cosmos DB SQL API-hoz készült SDK: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -43,6 +43,16 @@ Az SQL API aszinkron Java SDK azáltal, hogy az aszinkron műveletek támogatás
 | **Minimális támogatott futtatókörnyezet**|[JDK 8](https://aka.ms/azure-jdks) | 
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="a-name250250"></a><a name="2.5.0"/>2.5.0
+* TCP mód mostantól alapértelmezés szerint
+* A több partícióra kiterjedő lekérdezés metrikát most már az összes partíció adja vissza
+* Az erős globális most már megfelelően működik
+* Feladatátvételi lekérdezések nem megfelelően újrapróbálkozik a több főkiszolgálós
+* Függőségi ívek biztonsági gyorsjavítások
+
+### <a name="a-name245245"></a><a name="2.4.5"/>2.4.5
+* Bugfix kivonatot a V2-támogatás
 
 ### <a name="a-name243243"></a><a name="2.4.3"/>2.4.3
 * Az erőforrás-memóriavesztés client#close() a Bugfix ([github #88](https://github.com/Azure/azure-cosmosdb-java/issues/88)).
@@ -146,22 +156,22 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
-| [2.4.3](#2.4.3) |2019\. március 5.|--- |
-| [2.4.2](#2.4.2) |2019\. március 1.|--- |
-| [2.4.1](#2.4.1) |2019\. február 20.|--- |
-| [2.4.0](#2.4.0) |2019\. február 8.|--- |
-| [2.4.0-beta-1](#2.4.0-beta-1) |2019\. február 4.|--- |
-| [2.3.1](#2.3.1) |2019\. január 15.|--- |
-| [2.3.0](#2.3.0) |2018\. november 29.|--- |
-| [2.2.2](#2.2.2) |2018\. november 8.|--- |
-| [2.2.1](#2.2.1) |2018\. november 2.|--- |
-| [2.2.0](#2.2.0) |2018\. szeptember 22.|--- |
-| [2.1.0](#2.1.0) |2018\. szeptember 5.|--- |
-| [2.0.1](#2.0.1) |2018\. augusztus 16.|--- |
-| [2.0.0](#2.0.0) |2018\. június 20.|--- |
-| [1.0.2](#1.0.2) |2018\. május 18.|--- |
-| [1.0.1](#1.0.1) |2018\. április 20.|--- |
-| [1.0.0](#1.0.0) |2018\. február 27.|--- |
+| [2.4.3](#2.4.3) |2019. március 5.|--- |
+| [2.4.2](#2.4.2) |2019. március 1.|--- |
+| [2.4.1](#2.4.1) |2019. február 20.|--- |
+| [2.4.0](#2.4.0) |2019. február 8.|--- |
+| [2.4.0-beta-1](#2.4.0-beta-1) |2019. február 4.|--- |
+| [2.3.1](#2.3.1) |2019. január 15.|--- |
+| [2.3.0](#2.3.0) |2018. november 29.|--- |
+| [2.2.2](#2.2.2) |2018. november 8.|--- |
+| [2.2.1](#2.2.1) |2018. november 2.|--- |
+| [2.2.0](#2.2.0) |2018. szeptember 22.|--- |
+| [2.1.0](#2.1.0) |2018. szeptember 5.|--- |
+| [2.0.1](#2.0.1) |2018. augusztus 16.|--- |
+| [2.0.0](#2.0.0) |2018. június 20.|--- |
+| [1.0.2](#1.0.2) |2018. május 18.|--- |
+| [1.0.1](#1.0.1) |2018. április 20.|--- |
+| [1.0.0](#1.0.0) |2018. február 27.|--- |
 
 ## <a name="faq"></a>GYIK
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]

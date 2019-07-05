@@ -1,19 +1,19 @@
 ---
-title: Fizessen elő az SQL Data Warehouse-díjak, hogy az Azure fenntartott kapacitás |} A Microsoft Docs
+title: Fizessen elő az SQL Data Warehouse-díjak, hogy az Azure fenntartott kapacitás
 description: Ismerje meg, hogyan akkor is fizessen elő az SQL Data Warehouse díjai fenntartott kapacitás pénzt takaríthat meg.
 services: billing
 author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 04/13/2019
+ms.date: 07/03/2019
 ms.author: banders
-ms.openlocfilehash: 3d56ee99f8056139a234477b6eed93d9fcbe2bbb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cea2c8e6d476c3ea2799337ab2da1f9406731814
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371189"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565357"
 ---
 # <a name="prepay-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Fizessen elő az SQL Data Warehouse díjai, hogy a lefoglalt kapacitás
 
@@ -43,14 +43,15 @@ Tegyük fel például, a teljes használat az SQL Data Warehouse: DW3000c. Szere
 
 ## <a name="buy-sql-data-warehouse-reserved-capacity"></a>Az SQL Data Warehouse szolgáltatás számára fenntartott kapacitás vásárlása
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Válassza ki **minden szolgáltatás** > **foglalások**.
 3. Válasszon egy előfizetést. Az előfizetés-lista segítségével válassza ki az előfizetést, amellyel a lefoglalt kapacitás kell fizetnie. A fizetési módot, az előfizetés az előzetes költségek, a szolgáltatás számára fenntartott kapacitás után kell fizetni. Az előfizetés típusúnak kell lennie a nagyvállalati szerződés (számok kínálnak: MS-AZR-0017P vagy MS-AZR - 0148 P) vagy a használatalapú fizetés (számok kínálnak: MS-AZR-0003P vagy MS-AZR-0023P).
   - Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva.
   - Használatalapú fizetéses előfizetéseknél a díjakat az előfizetéshez tartozó hitelkártyára terheljük vagy a számlafizetési módnak megfelelően számlázzuk.
 4. Válassza ki a hatókört. A hatókör-lista használatával egy előfizetési hatókört válassza.
-  - Az a **egyetlen** beállítást, a foglalási kedvezményt az SQL Data Warehouse a kijelölt előfizetésben üzembe helyezett alkalmazzák.
-  - Az a **megosztott** beállítást, a foglalási kedvezményt a számlázási környezetben előfizetésekkel példányai alkalmazzák.
+  - **Erőforrás-csoport hatóköre egyetlen** – vonatkozik a foglalási kedvezményt a megfelelő erőforrások csak a kiválasztott erőforráscsoportban.
+  - **Egyetlen előfizetéses hatókört** – alkalmazza a foglalási kedvezményt a megfelelő erőforrások a kijelölt előfizetésben.
+  - **A megosztott hatókör** – alkalmazza a foglalási kedvezményt támogatásra jogosult előfizetések, a számlázási környezetben lévő erőforrások megfelelő. Nagyvállalati szerződéssel rendelkező ügyfeleknek a számlázási környezetben a regisztrációt. Az utólagos elszámolású díjszabás szerint az egyes előfizetések a számlázási hatóköre a fiók rendszergazdája által létrehozott összes jogosult előfizetéssel.
     - Nagyvállalati ügyfeleink esetén a számlázási környezetben az EA-regisztrációhoz.
     - Használatalapú fizetéses ügyfelek számára a megosztott hatókörrel a fiók rendszergazdája által létrehozott összes utólagos elszámolású előfizetések.
 5. Válassza ki egy régiót, és válassza ki a kívánt Azure-régiót, amelyet a lefoglalt kapacitás jelez.

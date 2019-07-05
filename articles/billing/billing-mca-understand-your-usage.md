@@ -1,55 +1,51 @@
 ---
-title: A Microsoft vevői szerződés az Azure-használat és költségek CSV feltételeinek értelmezése |} A Microsoft Docs
-description: Ismerje meg, hogyan olvashatók és érthetők a szakaszok az az Azure használatáról és a fürt megosztott kötetei szolgáltatás díja a számlázási profilja
-services: ''
-documentationcenter: ''
+title: Az Azure használat és a díj a Microsoft vevői szerződés feltételei
+description: Megtudhatja, hogyan olvashatók és érthetők, az Azure-használat és a fürt megosztott kötetei szolgáltatás díja a számlázási profilja szakaszait.
 author: bandersmsft
-manager: alherz
-editor: ''
+manager: jureid
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/31/2017
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 8f71f42386ce49d4d7178cb03d28d74edacd7e39
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d11e31366ea5aa15cf7a790eaee800fa2ea6dabe
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371308"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490624"
 ---
-# <a name="understand-terms-on-your-azure-usage-and-charges-csv-for-a-microsoft-customer-agreement"></a>A Microsoft vevői szerződés az Azure-használat és költségek CSV feltételeinek értelmezése
+# <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Az Azure használat és a díj a Microsoft vevői szerződés feltételei
 
 Ez a cikk a Microsoft vevői szerződés számlázási fiók vonatkozik. [Ellenőrizze, hogy egy Microsoft Ügyfélszerződéséhez hozzáférést](#check-access-to-a-microsoft-customer-agreement).
 
-Az Azure használat és költségek CSV-fájlt a jelenlegi számlázási időszak napi és a mérőszám szintű használati díjakat tartalmazza.
+Az Azure használat és költségek CSV-fájlt a jelenlegi számlázási időszak napi és a mérőszám-szintű használati díjak tartalmazza.
 
-A használat és költségek az Azure file lekéréséhez lásd: [és a Microsoft Ügyfélszerződéséhez díjai megtekintése és letöltése az Azure használati](billing-download-azure-daily-usage.md).
-Egy vesszővel tagolt (.csv) formátumú, amelyeket megnyithat egy számolótábla alkalmazásban érhető el.
+A használat és költségek az Azure file lekéréséhez lásd: [és a Microsoft Ügyfélszerződéséhez díjai megtekintése és letöltése az Azure használati](billing-download-azure-daily-usage.md). Egy vesszővel tagolt (.csv) formátumú, amelyeket megnyithat egy számolótábla alkalmazásban érhető el.
 
 A használati díjak az összes **havi** díjak egy adott előfizetés. A használati díjak ne vegye figyelembe bármely jóváírások és engedmények.
 
-## <a name="changes-in-the-enterprise-agreement-azure-usage-and-charges-csv"></a>A nagyvállalati szerződés program Azure-használat és költségek fürt megosztott kötetei szolgáltatás változásai
+## <a name="changes-from-azure-ea-usage-and-charges"></a>Változások az Azure nagyvállalati szerződéssel rendelkező használat és költségek
 
-Ha nagyvállalati szerződéssel rendelkező ügyfelek, láthatja, hogy a számlázási profilja CSV-fájlból az Azure használati feltételeit eltérnek a feltételeket a nagyvállalati szerződéssel rendelkező Azure használati CSV-fájl. A nagyvállalati szerződésre vonatkozó használati feltételek profil használati feltételek számlázással leképezés a következő:
+Ha nagyvállalati szerződéssel rendelkező ügyfelek, láthatja, hogy az Azure számlázási profil használati CSV-fájl a feltételek eltérnek a feltételeket az Azure nagyvállalati szerződéssel rendelkező használati CSV-fájl. A nagyvállalati szerződésre vonatkozó használati feltételek profil használati feltételek számlázással leképezés a következő:
 
-| Fürt megosztott kötetei szolgáltatás nagyvállalati szerződéssel rendelkező Azure-használat | A Microsoft vevői szerződés program Azure-használat és a fürt megosztott kötetei szolgáltatás díj |
+| Az Azure nagyvállalati szerződéssel rendelkező használati CSV | A Microsoft vevői szerződés program Azure-használat és a fürt megosztott kötetei szolgáltatás díj |
 | --- | --- |
 | Dátum | date |
 | Hónap| date |
 | Nap | date |
 | Év | date |
-| Product | A termék |
+| Product | product |
 | MeterId | meterID |
 | MeterCategory | MeterCategory |
 | MeterSubCategory | meterSubCategory |
 | MeterRegion | MeterRegion |
 | MeterName | MeterName |
 | ConsumedQuantity | Mennyiség |
-| ResourceRate | effectivePrice | <!-- this was highlighted -->
+| ResourceRate | effectivePrice |
 | ExtendedCost | költség |
 | resourceLocation | resourceLocation |
 | ConsumedService | consumedService |
@@ -59,17 +55,15 @@ Ha nagyvállalati szerződéssel rendelkező ügyfelek, láthatja, hogy a száml
 | AdditionalInfo | additionalInfo |
 | Tags | címkék |
 | StoreServiceIdentifier | – |
-| Részleg neve | invoiceSection | <!-- this was highlighted -->
+| Részleg neve | invoiceSection |
 | CostCenter | costCenter |
 | UnitOfMeasure | unitofMeasure |
-| ResourceGroup | Erőforráscsoport |
-| ChargesBilledSeparately | isAzureCreditEligible | <!-- this was highlighted -->
+| ResourceGroup | resourceGroup |
+| ChargesBilledSeparately | isAzureCreditEligible |
 
-<!-- TO DO: Marketplace CSV? -->
+## <a name="detailed-terms-and-descriptions"></a>Részletes használati és -leírások
 
-## <a name="detailed-terms-and-descriptions-in-your-azure-usage-and-charges-file"></a>Részletes használati és -leírások az Azure használat és költségek fájlban
-
-Az alábbi szakasz ismerteti az Azure használat és költségek jelenik meg a fontos fogalmakat.
+Az alábbi feltételek jelennek meg az Azure használat és költségek.
 
 Kifejezés | Leírás
 --- | ---
@@ -98,7 +92,7 @@ meterSubCategory | A mérőszám alárendelt besorolási kategória neve
 MeterRegion | Neve az a régió, ahol a szolgáltatás a fogyasztásmérő érhető el. A releváns adatközpont bizonyos szolgáltatásokhoz, amelyek díjszabása adatokat szolgáltató adatközpont elhelyezkedése alapján.
 az ajánlat | A megvásárolt előfizetési csomag neve
 productId | A díjakat halmoz fel a termék egyedi azonosítója
-A termék | A díjakat halmoz fel a termék neve
+product | A díjakat halmoz fel a termék neve
 előfizetés-azonosító | Az előfizetés, a díjakat halmoz fel egyedi azonosítója
 subscriptionName | A díjakat halmoz fel az előfizetés neve
 reservationId | A megvásárolt foglalás-példány egyedi azonosítója
@@ -120,9 +114,9 @@ serviceInfo2 | Régi mező, amelyben a nem kötelező szolgáltatásspecifikus m
 additionalInfo | További szolgáltatásspecifikus metaadatok láthatók.
 címkék | Az erőforrás rendel címkék
 
-### <a name="how-do-i-make-sure-that-the-charges-in-my-azure-usage-and-charges-file-are-correct"></a>Hogyan ellenőrizhetem, hogy, hogy helyesek-e a saját Azure-használat és költségek fájlban kell fizetni?
+### <a name="make-sure-that-charges-are-correct"></a>Győződjön meg arról, hogy helyesek-e a költségek
 
-Ha a részletes használati fájl, amelyet további részleteket a díj, lásd: [a számlázási profilja számlán a költségek ismertetése](billing-mca-understand-your-bill.md)
+Ha azt szeretné, győződjön meg arról, hogy helyesek-e a részletes használati fájlban kell fizetni, ellenőrizheti őket. Lásd: [a számlázási profilja számlán a költségek ismertetése](billing-mca-understand-your-bill.md)
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>A Microsoft Ügyfélszerződéséhez való hozzáférés ellenőrzése
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]

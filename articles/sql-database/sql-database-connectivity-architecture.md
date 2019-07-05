@@ -1,23 +1,23 @@
 ---
-title: Az Azure SQL Database és az SQL Data warehouse-bA az Azure forgalom átirányítása |} A Microsoft Docs
-description: Ez a dokumentum ismerteti a Azcure SQL onnectivity architektúra az adatbázis-kapcsolatok Azure-ban vagy az Azure-on kívül.
+title: Az Azure SQL Database és az SQL Data Warehouse-kapcsolati architektúra |} A Microsoft Docs
+description: Ez a dokumentum ismerteti az Azure SQL kapcsolati architektúra az adatbázis-kapcsolatok Azure-ban vagy az Azure-on kívül.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: srdan-bozovic-msft
-ms.author: srbozovi
-ms.reviewer: carlrab
+author: rohitnayakmsft
+ms.author: rohitna
+ms.reviewer: carlrab, vanto
 manager: craigg
-ms.date: 04/03/2019
-ms.openlocfilehash: 4ff6cc0ba18074f353eb5b99af7052edd658a80e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/02/2019
+ms.openlocfilehash: 8441e64981b7157e91a56124a08c0aa02a9b1db0
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66164468"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537924"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Az Azure SQL-kapcsolati architektúra
 
@@ -57,48 +57,47 @@ Ha Azure-on kívülről csatlakozik, a kapcsolatok rendelkezik-e a kapcsolódás
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Az Azure SQL Database átjárója IP-címek
 
-Csatlakozhat egy Azure SQL database a helyszíni erőforrásairól, szüksége, hogy a kimenő hálózati forgalom az Azure SQL Database-átjáróhoz, az az Azure-régióban. A kapcsolatokat csak nyissa meg az átjárón keresztül a csatlakozáskor `Proxy` üzemmódot, amely az alapértelmezett érték, amikor csatlakozik a helyszíni erőforrások.
+Az alábbi táblázat felsorolja az IP-címek az átjárók régiónként. Szeretne csatlakozni egy Azure SQL Database, a & a hálózati adatforgalom engedélyezéséhez szüksége **összes** számára, az átjárókat.
 
-Az alábbi táblázat az elsődleges és másodlagos IP-címek, adatok minden régió esetében az Azure SQL Database-átjáró. Az egyes régiókban vannak két IP-címet. Ezekben a régiókban az elsődleges IP-cím az átjáró aktuális IP-címe pedig a második IP-cím feladatátvételi IP-címet. A feladatátvétel a címet, amelyre nem lehet áthelyezni, hogy a szolgáltatás magas rendelkezésre állását a kiszolgáló címe. Ezekben a régiókban javasoljuk, hogy engedélyezi a kimenő mindkét IP-címet. A második IP-cím a Microsoft tulajdonában van, és nem figyel a függő szolgáltatások mindaddig, amíg aktívvá válik, az Azure SQL Database-kapcsolatok fogadására által.
+Továbbítja, hogy fog felvenni további átjárók az egyes régiókban és kivonása az átjárók a leszerelt átjáró IP-cím oszlopot az alábbi táblázat a. További információt a következő cikkben megadott folyamat leszerelése: [Az Azure SQL Database forgalom áttelepítési újabb átjárók](sql-database-gateway-migration.md)
 
-| Régiónév | Elsődleges IP-cím | Másodlagos IP-cím |
-| --- | --- |--- |
-| Kelet-Ausztrália | 13.75.149.87 | 40.79.161.1 |
-| Délkelet-Ausztrália | 191.239.192.109 | 13.73.109.251 |
-| Dél-Brazília | 104.41.11.5 | |
-| Közép-Kanada | 40.85.224.249 | |
-| Kelet-Kanada | 40.86.226.166 | |
-| USA középső régiója | 23.99.160.139 | 13.67.215.62 |
-| Kelet-Kína 1 | 139.219.130.35 | |
-| Kelet-Kína 2 | 40.73.82.1 | |
-| Észak-Kína 1 | 139.219.15.17 | |
-| Észak-Kína 2 | 40.73.50.0 | |
-| Kelet-Ázsia | 191.234.2.139 | 52.175.33.150 |
-| 1 USA keleti régiója | 191.238.6.43 | 40.121.158.30 |
-| USA 2. keleti régiója | 191.239.224.107 | 40.79.84.180 * |
-| Közép-Franciaország | 40.79.137.0 | 40.79.129.1 |
-| Közép-Németország | 51.4.144.100 | |
-| Németország, Északkelet | 51.5.144.179 | |
-| Közép-India | 104.211.96.159 | |
-| Dél-India | 104.211.224.146 | |
-| Nyugat-India | 104.211.160.80 | |
-| Kelet-Japán | 191.237.240.43 | 13.78.61.196 |
-| Nyugat-Japán | 191.238.68.11 | 104.214.148.156 |
-| Korea középső régiója | 52.231.32.42 | |
-| Korea déli régiója | 52.231.200.86 |  |
-| USA északi középső régiója | 23.98.55.75 | 23.96.178.199 |
-| Észak-Európa | 191.235.193.75 | 40.113.93.91 |
-| USA déli középső régiója | 23.98.162.75 | 13.66.62.124 |
-| Délkelet-Ázsia | 23.100.117.95 | 104.43.15.0 |
-| Az Egyesült Királyság déli régiója | 51.140.184.11 | |
-| Az Egyesült Királyság nyugati régiója | 51.141.8.11| |
-| USA nyugati középső régiója | 13.78.145.25 | |
-| Nyugat-Európa | 191.237.232.75 | 40.68.37.158 |
-| USA nyugati RÉGIÓJA 1 | 23.99.34.75 | 104.42.238.205 |
-| USA nyugati régiója, 2. | 13.66.226.202 | |
-||||
 
-\* **MEGJEGYZÉS:** *USA keleti RÉGIÓJA 2* is a harmadlagos IP-címmel rendelkezik `52.167.104.0`.
+| Régiónév          | Átjáró IP-címe | Leszerelt átjáró </br> IP-cím| Megjegyzés a kötegműveletekkel kapcsolatban leszerelése | 
+| --- | --- | --- | --- |
+| Kelet-Ausztrália       | 13.75.149.87, 40.79.161.1 | | |
+| Délkelet-Ausztrália | 191.239.192.109, 13.73.109.251 | | |
+| Dél-Brazília         | 104.41.11.5        |                 | |
+| Közép-Kanada       | 40.85.224.249      |                 | |
+| Kelet-Kanada          | 40.86.226.166      |                 | |
+| USA középső régiója           | 13.67.215.62, 52.182.137.15 | 23.99.160.139 | Nincsenek kapcsolatok 2019. szeptember 1. után |
+| Kelet-Kína 1         | 139.219.130.35     |                 | |
+| Kelet-Kína 2         | 40.73.82.1         |                 | |
+| Észak-Kína 1        | 139.219.15.17      |                 | |
+| Észak-Kína 2        | 40.73.50.0         |                 | |
+| Kelet-Ázsia            | 191.234.2.139, 52.175.33.150 |       | |
+| 1 USA keleti régiója            | 40.121.158.30, 40.79.153.12 | 191.238.6.43 | Nincsenek kapcsolatok 2019. szeptember 1. után |
+| USA 2. keleti régiója            | 40.79.84.180, 52.177.185.181, 52.167.104.0 | 191.239.224.107    | Nincsenek kapcsolatok 2019. szeptember 1. után |
+| Közép-Franciaország       | 40.79.137.0, 40.79.129.1 |           | |
+| Közép-Németország      | 51.4.144.100       |                 | |
+| Németország, Északkelet   | 51.5.144.179       |                 | |
+| Közép-India        | 104.211.96.159     |                 | |
+| Dél-India          | 104.211.224.146    |                 | |
+| Nyugat-India           | 104.211.160.80     |                 | |
+| Kelet-Japán           | 13.78.61.196, 40.79.184.8, 13.78.106.224 | 191.237.240.43 | Nincsenek kapcsolatok 2019. szeptember 1. után |
+| Nyugat-Japán           | 104.214.148.156, 40.74.100.192 | 191.238.68.11 | Nincsenek kapcsolatok 2019. szeptember 1. után |
+| Korea középső régiója        | 52.231.32.42       |                 | |
+| Korea déli régiója          | 52.231.200.86      |                 | |
+| USA északi középső régiója     | 23.96.178.199      | 23.98.55.75     | Nincsenek kapcsolatok 2019. szeptember 1. után |
+| Észak-Európa         | 40.113.93.91       | 191.235.193.75  | Nincsenek kapcsolatok 2019. szeptember 1. után |
+| USA déli középső régiója     | 13.66.62.124       | 23.98.162.75    | Nincsenek kapcsolatok 2019. szeptember 1. után |
+| Délkelet-Ázsia      | 104.43.15.0        | 23.100.117.95   | Nincsenek kapcsolatok 2019. szeptember 1. után |
+| Az Egyesült Királyság déli régiója             | 51.140.184.11      |                 | |
+| Az Egyesült Királyság nyugati régiója              | 51.141.8.11        |                 | |
+| USA nyugati középső régiója      | 13.78.145.25       |                 | |
+| Nyugat-Európa          | 191.237.232.75, 40.68.37.158 |       | |
+| USA nyugati RÉGIÓJA 1            | 23.99.34.75, 104.42.238.205 |        | |
+| USA nyugati régiója, 2.            | 13.66.226.202      |                 | |
+|                      |                    |                 | |
 
 ## <a name="change-azure-sql-database-connection-policy"></a>Azure SQL Database-kapcsolat házirend módosítása
 
@@ -111,10 +110,7 @@ Az Azure SQL Database egy Azure SQL Database-kiszolgáló kapcsolódási szabál
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek.
-
-> [!IMPORTANT]
-> A szkriptnek szüksége van a [Azure PowerShell-modul](/powershell/azure/install-az-ps).
+> A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek. A következő parancsfájl van szükség a [Azure PowerShell-modul](/powershell/azure/install-az-ps).
 
 A következő PowerShell-parancsfájl bemutatja, hogyan módosíthatja a kapcsolódási szabályzat.
 
@@ -137,20 +133,43 @@ Set-AzResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
 > [!IMPORTANT]
 > A szkriptnek szüksége van a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-A következő CLI-példaszkript bemutatja, hogyan módosíthatja a kapcsolódási szabályzat.
+### <a name="azure-cli-in-a-bash-shell"></a>Bash-felületen az Azure CLI
+
+> [!IMPORTANT]
+> A szkriptnek szüksége van a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli).
+
+A következő CLI-példaszkript bemutatja, hogyan módosíthatja a kapcsolódási szabályzat bash-felületen.
 
 ```azurecli-interactive
 # Get SQL Server ID
 sqlserverid=$(az sql server show -n sql-server-name -g sql-server-group --query 'id' -o tsv)
 
 # Set URI
-id="$sqlserverid/connectionPolicies/Default"
+ids="$sqlserverid/connectionPolicies/Default"
 
 # Get current connection policy
-az resource show --ids $id
+az resource show --ids $ids
 
 # Update connection policy
-az resource update --ids $id --set properties.connectionType=Proxy
+az resource update --ids $ids --set properties.connectionType=Proxy
+```
+
+### <a name="azure-cli-from-a-windows-command-prompt"></a>Az Azure parancssori felület a Windows parancssorból
+
+> [!IMPORTANT]
+> A szkriptnek szüksége van a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli).
+
+A következő CLI-példaszkript bemutatja, hogyan módosíthatja a kapcsolódási szabályzat a Windows parancssorból (az Azure CLI telepítve van).
+
+```azurecli
+# Get SQL Server ID and set URI
+FOR /F "tokens=*" %g IN ('az sql server show --resource-group myResourceGroup-571418053 --name server-538465606 --query "id" -o tsv') do (SET sqlserverid=%g/connectionPolicies/Default)
+
+# Get current connection policy
+az resource show --ids %sqlserverid%
+
+# Update connection policy
+az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
 ```
 
 ## <a name="next-steps"></a>További lépések

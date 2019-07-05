@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: c9ee106972cc78a08709d2ce55d2dfddc96edbf7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/24/2019
+ms.openlocfilehash: 8fadcc8cb418063662df45d4134bef0578ffccda
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079235"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444823"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>Konfigurálja és hozzáférési naplók az Azure Portalon
 
@@ -40,7 +40,7 @@ Engedélyezze és konfigurálja a naplózásra.
 1. Frissítés a **audit_log_enabled** paraméter ON értékre állítása.
     ![Engedélyezze a vizsgálati naplók](./media/howto-configure-audit-logs-portal/audit-log-enabled.png)
 
-1. Válassza ki az események frissítésével be kell jelentkeznie a **audit_log_events** paraméter.
+1. Válassza ki a [eseménytípusok](concepts-audit-logs.md#configure-audit-logging) frissítésével be kell jelentkeznie a **audit_log_events** paraméter.
     ![Alkalmazásnapló-események naplózása](./media/howto-configure-audit-logs-portal/audit-log-events.png)
 
 1. Bármely frissítésével naplózási kizárandók MariaDB-felhasználók hozzáadása a **audit_log_exclude_users** paraméter. Adja meg a felhasználók a MariaDB felhasználói név megadásával.

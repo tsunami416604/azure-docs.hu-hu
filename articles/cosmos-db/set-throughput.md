@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: rimman
-ms.openlocfilehash: 61f8e93fd82f7da632e0ab7e16ad6fbf4ca25646
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: adf0891203321ca02c47494f1865ca78a833e301
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165037"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561380"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Átviteli sebesség kiosztása tárolókra és adatbázisokra
 
@@ -98,7 +98,6 @@ A kiosztott átviteli sebesség, tárolók és a egy adatbázis bármikor skál�
 |---------|---------|---------|
 |Minimális kérelemegység |400-as (után az első négy tárolók, a tárolók további használatához az minimum 100 kérelemegység / másodperc.) |400|
 |Minimális RUs tárolónként|100|400|
-|1 GB-os tárhelyet felhasználásához szükséges minimális kérelemegység|40|40|
 |Maximális kérelemegység|Korlátlan, az adatbázison.|Korlátlan, a tárolón.|
 |Kérelemegység hozzárendelt vagy elérhető egy adott tárolóba|Nincs garancia. Egy adott tárolóhoz rendelt RUs tulajdonságainak függenek. Tulajdonságok lehet a kiválasztott partíciókulcsok a tárolók, amelyek az átviteli sebességet, a számítási feladatok és tárolók száma eloszlása. |A tároló konfigurált fenntartott egységek kizárólag a tároló számára vannak fenntartva.|
 |Egy tároló maximális tárterülete|Korlátlan számú.|Korlátlan számú.|

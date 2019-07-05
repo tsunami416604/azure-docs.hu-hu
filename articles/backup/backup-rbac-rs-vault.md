@@ -2,18 +2,18 @@
 title: 'Az Azure szerepköralapú hozzáférés-vezérlés biztonsági másolatok kezelése:'
 description: Szerepköralapú hozzáférés-vezérlés használatával a biztonsági mentési műveletek a Recovery Services-tárolóban való hozzáférés kezelése.
 services: backup
-author: trinadhk
+author: utraghuv
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 04/17/2019
-ms.author: trinadhk
-ms.openlocfilehash: ed3797183e13a00d2c5381fa6449c111c3bc9ab9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/24/2019
+ms.author: utraghuv
+ms.openlocfilehash: 3b4585422a36992241fb4839238b1f6aa46c659f
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60253730"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565641"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Szerepköralapú hozzáférés-vezérlés használata kezelheti az Azure Backup helyreállítási pontok
 Az Azure Szerepköralapú hozzáférés-vezérlés (RBAC) részletes hozzáférés-vezérlést biztosít az Azure-hoz. Az RBAC használata lehetővé teszi, hogy elkülönítse a kötelességeket a csapaton belül, valamint csak olyan mértékű hozzáférést biztosítson, amelyre a felhasználóknak a feladataik elvégzéséhez szüksége van.
@@ -23,7 +23,7 @@ Az Azure Szerepköralapú hozzáférés-vezérlés (RBAC) részletes hozzáfér�
 
 Az Azure Backup biztonsági mentési műveletek szabályozásához három beépített szerepkört biztosít. További információ az [Azure beépített RBAC-szerepköreivel](../role-based-access-control/built-in-roles.md) kapcsolatban.
 
-* [Biztonsági mentési közreműködő](../role-based-access-control/built-in-roles.md#backup-contributor) – Ez a szerepkör létrehozásához és kezeléséhez a biztonsági mentés a Recovery Services-tároló létrehozásának és a másoknak való hozzáférés megadását kivételével minden olyan engedéllyel rendelkezik. Képzelje el ezt a szerepkört, akik minden biztonságimásolat-felügyeleti műveletet végezhet biztonsági másolatokat kezelő rendszergazdájaként.
+* [Biztonsági mentési közreműködő](../role-based-access-control/built-in-roles.md#backup-contributor) – Ez a szerepkör létrehozásához és kezeléséhez a biztonsági mentés a Recovery Services-tároló törlése és a másoknak való hozzáférés megadását kivételével minden olyan engedéllyel rendelkezik. Képzelje el ezt a szerepkört, akik minden biztonságimásolat-felügyeleti műveletet végezhet biztonsági másolatokat kezelő rendszergazdájaként.
 * [Biztonsági mentési operátor](../role-based-access-control/built-in-roles.md#backup-operator) – Ez a szerepkör jogosult mindent közreműködő kivéve a biztonsági mentési és kezelését a biztonsági mentési szabályzatok eltávolítása. Ez a szerepkör közreműködői egyenértékű, azzal a különbséggel, nem romboló műveletek végrehajtása, például a biztonsági mentés leállítása az adatok törlése, vagy távolítsa el a helyszíni erőforrások regisztrációját.
 * [Biztonsági mentési olvasó](../role-based-access-control/built-in-roles.md#backup-reader) – Ez a szerepkör az összes biztonsági mentési műveletek megtekintéséhez szükséges engedélyekkel rendelkezik. Képzelje el ezt a szerepkört olyan figyelési személy.
 
@@ -36,7 +36,7 @@ Az alábbi táblázat a biztonsági mentés felügyeleti műveletek és a művel
 
 | Ügynökfelügyeleti művelet | Minimálisan szükséges RBAC-szerepkör | Hatókör szükséges |
 | --- | --- | --- |
-| Helyreállítási tár létrehozása | Közreműködő | A tároló tartalmazó erőforráscsoportot |
+| Helyreállítási tár létrehozása | Biztonsági mentési közreműködő | A tároló tartalmazó erőforráscsoportot |
 | Azure virtuális gépek biztonsági mentésének engedélyezése | Biztonságimásolat-felelős | A tároló tartalmazó erőforráscsoportot |
 | | Virtuális gépek Közreműködője | VM-erőforrás |
 | Igény szerinti biztonsági mentést a virtuális gép | Biztonságimásolat-felelős | Helyreállítási tár erőforrás |

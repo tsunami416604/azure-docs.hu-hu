@@ -12,21 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/22/2019
+ms.date: 07/03/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c0e5035331cbe4f54926f0ae60ae0c5c31f6a9a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 60eeb420c723e22b771b4b86b55c2ce7d6a23659
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66119726"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536834"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Útmutató: Adja meg a választható jogcímeket, az Azure AD-alkalmazás
 
-Ez a szolgáltatás-k segítségével az alkalmazásfejlesztők adja meg, milyen jogcímeket szeretnének biztosítani az alkalmazásokban a jogkivonatokban. Nem kötelező jogcímeket is használhatja:
+Az alkalmazásfejlesztők használatával választható jogcímek az Azure AD-alkalmazásokban adja meg, milyen jogcímeket szeretnének biztosítani az alkalmazásokban a jogkivonatokban. 
+
+Nem kötelező jogcímeket is használhatja:
 
 - Válassza ki az alkalmazáshoz tartozó jogkivonatok foglalandó további jogcímek.
 - Változtathatja meg bizonyos jogcímek, az Azure AD eredményül a jogkivonatokban.
@@ -34,16 +36,16 @@ Ez a szolgáltatás-k segítségével az alkalmazásfejlesztők adja meg, milyen
 
 Standard jogcímek listáját lásd: a [hozzáférési jogkivonat](access-tokens.md) és [id_token](id-tokens.md) jogcím-dokumentációt. 
 
-Bár nem kötelező jogcímeket is 1.0-s verzió és a v2.0-formátumú jogkivonatokat, valamint SAML-jogkivonatok támogatottak, az érték a legtöbb nyújtanak történő áthelyezése 1.0-s verziója a 2.0-s verzió. Az egyik a [az Azure AD v2.0-végpont](active-directory-appmodel-v2-overview.md) az ügyfelek által az optimális teljesítmény biztosítása érdekében kisebb token méretű. Ennek eredményeképpen korábban szerepelni fog a hozzáférési és azonosító-jogkivonatokat több jogcím már nem találhatók a 2.0-s verziójú jogkivonatokban, és kifejezetten a alkalmazásonkénti alapján kell kérni.
+Bár nem kötelező jogcímeket is 1.0-s verzió és a v2.0-formátumú jogkivonatokat, valamint SAML-jogkivonatok támogatottak, az érték a legtöbb nyújtanak történő áthelyezése 1.0-s verziója a 2.0-s verzió. Az egyik célja, a [v2.0 a Microsoft identity platform endpoint](active-directory-appmodel-v2-overview.md) az ügyfelek által az optimális teljesítmény biztosítása érdekében kisebb token méretű. Ennek eredményeképpen korábban szerepelni fog a hozzáférési és azonosító-jogkivonatokat több jogcím már nem találhatók a 2.0-s verziójú jogkivonatokban, és kifejezetten a alkalmazásonkénti alapján kell kérni.
 
 **1. táblázat: Alkalmazhatósági**
 
 | Fiók típusa | 1\.0-s verziójú jogkivonatok | 2\.0-s verziójú jogkivonatok  |
 |--------------|---------------|----------------|
-| Személyes Microsoft-fiók  | –  | Támogatott|
+| Személyes Microsoft-fiók  | –  | Támogatott |
 | Azure AD-fiók      | Támogatott | Támogatott |
 
-## <a name="v10-and-v20-optional-claims-set"></a>1\.0-s és 2.0-s verziójú választható jogcímek beállítása
+## <a name="v10-and-v20-optional-claims-set"></a>1\.0-s és 2.0-s verziójú választható jogcímek készletébe
 
 Az alkalmazásokkal való használatra alapértelmezés szerint elérhető nem kötelező jogcímek készlete alább láthatók. Az egyéni opcionális jogcímek az alkalmazáshoz adni, tekintse meg a [Címtárbővítmények](#configuring-directory-extension-optional-claims), az alábbi. Jogcímek hozzáadásakor a **hozzáférési jogkivonat**, ez vonatkozik a kért hozzáférési jogkivonatok *a* az alkalmazás (webes API-k), azokat *által* az alkalmazást. Ez biztosítja, hogy az ügyfelet, az API elérése, függetlenül attól, hogy a megfelelő adatok már jelen vannak a hozzáférési jogkivonat hitelesíti a rendszer az API-t használják.
 
@@ -70,7 +72,7 @@ Az alkalmazásokkal való használatra alapértelmezés szerint elérhető nem k
 | `xms_pl`                   | A felhasználó preferált nyelvét  | JWT ||A felhasználó elsődleges nyelv, ha a beállítása. Származási hely a saját bérlőjén, a Vendég adathozzáférési forgatókönyvek esetében. R-CC formátumú ("en-us"). |
 | `xms_tpl`                  | A bérlői elsődleges nyelv| JWT | | Az erőforrás-bérlő elsődleges nyelv, ha a beállítása. Formázott LL ("hu"). |
 | `ztdid`                    | Beavatkozás nélküli telepítés azonosítója | JWT | | A használt eszközidentitás [Windows AutoPilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) |
-| `email`                    | Címezhető e-mail a felhasználó, ha a felhasználó rendelkezik ilyennel.  | JWT, SAML | MSA, AAD | Ha a felhasználó a bérlő Vendég Ez az érték alapértelmezés szerint tartalmazza.  Felügyelt felhasználók (amelyeket a bérlőn belül) azt kell kérik, ez nem kötelező a jogcím, vagy a 2.0-s verziójú csak, és az OpenID hatókörének.  Felügyelt felhasználók esetén az e-mail-cím formájában kell megadni a [Office rendszergazdai portál](https://portal.office.com/adminportal/home#/users).| 
+| `email`                    | Címezhető e-mail a felhasználó, ha a felhasználó rendelkezik ilyennel.  | JWT, SAML | MSA, Azure AD | Ha a felhasználó a bérlő Vendég Ez az érték alapértelmezés szerint tartalmazza.  Felügyelt felhasználók (amelyeket a bérlőn belül) azt kell kérik, ez nem kötelező a jogcím, vagy a 2.0-s verziójú csak, és az OpenID hatókörének.  Felügyelt felhasználók esetén az e-mail-cím formájában kell megadni a [Office rendszergazdai portál](https://portal.office.com/adminportal/home#/users).| 
 | `groups`| Nem kötelező csoportjogcímek formázása |JWT, SAML| |A GroupMembershipClaims beállításával együtt használják a [alkalmazásjegyzék](reference-app-manifest.md), amely is kell állítani. További részletekért lásd: [jogcímek csoport](#Configuring-group-optional claims) alatt. Csoport jogcímek további információ: [csoportjogcímek konfigurálása](../hybrid/how-to-connect-fed-group-claims.md)
 | `acct`             | Felhasználói fiók állapota-bérlőben. | JWT, SAML | | Ha a felhasználó tagja a bérlő, a értéke `0`. A Vendég, ha az értéke `1`. |
 | `upn`                      | UserPrincipalName claim. | JWT, SAML  |           | Bár ez a jogcím automatikusan tartalmazza, mint egy nem kötelező jogcím csatolni a Vendég felhasználói esetben viselkedésének módosítása további tulajdonságok megadhat.  |
@@ -79,7 +81,7 @@ Az alkalmazásokkal való használatra alapértelmezés szerint elérhető nem k
 
 Ezeket a jogcímeket 1.0-s verziójú Azure AD-jogkivonatok mindig szerepel, de nem tartalmazza a 2.0-s verziójú jogkivonatokban, kivéve, ha a kért. Ezeket a jogcímeket (azonosító-jogkivonatokat és hozzáférési jogkivonatok) JWTs csak vonatkoznak. 
 
-**3. táblázat: Nem kötelező jogcímek csak 2.0-s verzió**
+**3. táblázat: csak v2.0 választható jogcímek**
 
 | JWT-jogcím     | Name (Név)                            | Leírás                                | Megjegyzések |
 |---------------|---------------------------------|-------------|-------|
@@ -89,8 +91,8 @@ Ezeket a jogcímeket 1.0-s verziójú Azure AD-jogkivonatok mindig szerepel, de 
 | `pwd_url`     | Jelszó URL-Címének módosítása             | Egy URL-címet, amely a felhasználó ellátogathat a jelszó módosítására.   |   |
 | `in_corp`     | Vállalati hálózaton belül        | Ha az ügyfél bejelentkezik a vállalati hálózatról jelek. Ha nem, a jogcím nem tartalmaz.   |  Ki-alapú a [megbízható IP-címek](../authentication/howto-mfa-mfasettings.md#trusted-ips) beállításokat az MFA-ban.    |
 | `nickname`    | Becenév                        | A felhasználó, az első vagy utolsó külön további neve. | 
-| `family_name` | Vezetéknév                       | Az utolsó neve, Vezetéknév vagy felhasználó családnév biztosít a user objektum a. <br>"family_name":"Miller" | Az MSA és aad-ben támogatott   |
-| `given_name`  | Utónév                      | Itt az első vagy az "adott" a felhasználó nevét a user objektum készletként.<br>"given_name": "Frank"                   | Az MSA és aad-ben támogatott  |
+| `family_name` | Vezetéknév                       | Az utolsó neve, Vezetéknév vagy felhasználó családnév biztosít a user objektum a. <br>"family_name":"Miller" | Az MSA és az Azure ad-ben támogatott   |
+| `given_name`  | Utónév                      | Itt az első vagy az "adott" a felhasználó nevét a user objektum készletként.<br>"given_name": "Frank"                   | Az MSA és az Azure ad-ben támogatott  |
 | `upn`         | Egyszerű felhasználónév | Egy azonosítóval, a felhasználó a username_hint paraméterrel használható.  A felhasználó nem egy tartós azonosítót, és nem használható a fontos adatokat. | Lásd: [további tulajdonságok](#additional-properties-of-optional-claims) alább a jogcím-konfigurációhoz. |
 
 ### <a name="additional-properties-of-optional-claims"></a>Nem kötelező jogcímek további tulajdonságok
@@ -190,7 +192,8 @@ Ha az egy adott jogcím támogatja, a további tulajdonságok mező használatá
 A standard szintű választható jogcímek készletébe mellett tartalmazza a directory-sémabővítmények jogkivonatok is beállíthatja. További információ: [Directory sémakiterjesztései](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions). Ez a funkció akkor hasznos, amelyek az alkalmazás használhatja – például további felhasználói adatokat, egy további azonosító vagy a fontos konfigurációs beállítás, amelyet a felhasználó be van állítva. 
 
 > [!Note]
-> Directory-sémabővítmények egy csak AAD-funkció,, így ha az alkalmazás jegyzékfájlja kérelmek egyedi bővítmény és a egy MSA felhasználó bejelentkezik az alkalmazás, ezek a bővítmények nem állítható vissza.
+> - Directory sémakiterjesztései az Azure AD csak szolgáltatásai, így ha az alkalmazás jegyzékfájlja kérelmek egyedi bővítmény és a egy MSA felhasználó bejelentkezik az alkalmazás, ezek a bővítmények nem állítható vissza.
+> - Az Azure AD nem kötelező jogcímek csak működnek az Azure AD-bővítmény és a munkahelyi Microsoft Graph címtár kiterjesztése nem működik. Mindkét API-k megkövetelése a `Directory.ReadWriteAll` engedéllyel, amely a rendszergazdák csak is beleegyezés.
 
 ### <a name="directory-extension-formatting"></a>Címtárkiterjesztés formázása
 
@@ -203,11 +206,12 @@ Az SAML-jogkivonatok belül ezeket a jogcímeket fog bocsátja ki az URI formát
 ## <a name="configuring-group-optional-claims"></a>Nem kötelező csoportjogcímek konfigurálása
 
    > [!NOTE]
-   > Nyilvános előzetes verzióban arra, hogy a felhasználók és csoportok szinkronizálása a helyszíni csoportnevek kibocsátható
+   > Nyilvános előzetes verzióban arra, hogy a felhasználók és csoportok szinkronizálása a helyszíni csoportnevek küldik.
 
-Ez a szakasz ismerteti a konfigurációs beállítások módosítása a csoport a helyszíni Windows Active Directoryból szinkronizált attribútumok csoportnak az alapértelmezett csoport objectID jogcímeket használt attribútum nem kötelező jogcímeket alatt
+Ez a szakasz ismerteti a konfigurációs beállítások módosítása a csoport a helyszíni Windows Active Directoryból szinkronizált attribútumok csoportnak az alapértelmezett csoport objectID jogcímeket használt attribútum nem kötelező jogcímeket alatt.
+
 > [!IMPORTANT]
-> Lásd: [csoportjogcímek alkalmazások konfigurálása az Azure Active Directoryval](../hybrid/how-to-connect-fed-group-claims.md) további részletekért, többek között a nyilvános előzetes verzió, a helyszíni attribútumok a csoportjogcímek fontos figyelmeztetések.
+> Lásd: [csoportjogcímek alkalmazások konfigurálása az Azure ad-vel](../hybrid/how-to-connect-fed-group-claims.md) további részletekért, többek között a nyilvános előzetes verzió, a helyszíni attribútumok a csoportjogcímek fontos figyelmeztetések.
 
 1. A portálon az Azure Active Directory -> Alkalmazás -> -> Válassza ki a regisztrációk alkalmazás-jegyzékfájl >
 

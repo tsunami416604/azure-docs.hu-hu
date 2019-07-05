@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b9562a1686c4de4f4e2ef57a7d91bbf18dce63ef
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 7e40af9b2362ee52a1d00f29cdc112d3c2b9a842
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447604"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565855"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>Mit jelent a QnA Maker Knowledge base?
 
@@ -40,7 +40,7 @@ Metaadatokat tartalmazó mezőket állnak, amelyek egy pontosvesszővel elválas
 
 ## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>Hogyan dolgozza fel a QnA Maker válassza ki a legjobb választ a felhasználó lekérdezése
 
-A betanított és [közzétett](/quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) QnA Maker Tudásbázis kap egy felhasználó, egy robot vagy más ügyfélalkalmazás a [GenerateAnswer API](/how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api). A következő ábra szemlélteti a folyamatot, amikor a felhasználó lekérdezése érkezik.
+A betanított és [közzétett](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA Maker Tudásbázis kap egy felhasználó, egy robot vagy más ügyfélalkalmazás a [GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage). A következő ábra szemlélteti a folyamatot, amikor a felhasználó lekérdezése érkezik.
 
 ![Felhasználói lekérdezés rangsorolási folyamata](../media/qnamaker-concepts-knowledgebase/rank-user-query-first-with-azure-search-then-with-qna-maker.png)
 
@@ -48,7 +48,7 @@ A folyamat az alábbi táblázat magyarázza:
 
 |Lépés|Cél|
 |--|--|
-|1|Az ügyfélalkalmazás elküldi a felhasználói lekérdezés a [GenerateAnswer API](/how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api).|
+|1|Az ügyfélalkalmazás elküldi a felhasználói lekérdezés a [GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage).|
 |2|A QnA Maker alkalmazásával feldolgozza azokat a felhasználói lekérdezési nyelv észlelése, spellers és szóhatároló.|
 |3|Alter felhasználó lekérdezése a keresési eredmények elérése érdekében ajánlott az előfeldolgozási venni.|
 |4|Azure Search-Index, a módosított lekérdezés küldődik fogadása a `top` eredmények száma. Ha a helyes válasz nem a ezekkel az eredményekkel, értékének növelése `top` némileg. Általában 10 értéket `top` 90 %-a lekérdezések működik.|

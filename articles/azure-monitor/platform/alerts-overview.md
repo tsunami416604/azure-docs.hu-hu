@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 6fb49baf8ab58ae6cfe7639cedcc4466810c8b96
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c389f2ab9e67cbb1fd1a6a0c9ee274bca7d4c99d
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60347451"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560422"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>A Microsoft Azure-ban riasztások áttekintése 
 
@@ -33,7 +33,7 @@ Az alábbi ábrán a folyamat a riasztások jelöli.
 
 ![A riasztási folyamat](media/alerts-overview/Azure-Monitor-Alerts.svg)
 
-Riasztási szabályok vannak elkülönítve, a riasztások és a riasztások aktiválódásakor elvégzett műveletet. 
+Riasztási szabályok vannak elkülönítve, a riasztások és a riasztások aktiválódásakor végzett műveleteket. 
 
 **Riasztási szabály** – a riasztási szabályt kell-e a cél és a riasztási feltételeket. A riasztási szabály is lehet egy engedélyezett vagy letiltott állapotban. Riasztások csak akkor aktiválódjanak, ha engedélyezve van. 
 
@@ -94,6 +94,8 @@ Az intelligens csoportjai összesítések alapján gépi tanulási algoritmusok,
 ## <a name="alerts-experience"></a>Riasztások élmény 
 Az alapértelmezett riasztások oldal, amely egy adott időtartományon belül jönnek létre riasztások összegzését tartalmazza. Megjeleníti a riasztások esetében minden egyes oszlopokat, amelyek azonosítják az egyes állapotokban esetében minden egyes riasztások száma összesen. Válassza ki valamelyik megnyitásához a súlyossági szinten pedig a [minden riasztás](#all-alerts-page) oldalon a súlyosság szerint szűrve.
 
+Lehetőségként [a riasztási példányok létre előfizetéséhez vagy előfizetéseihez a REST API-k használatával programozott módon számbavétele](#manage-your-alert-instances-programmatically).
+
 Nem megjelenítése és nyomon követheti a régebbi [klasszikus riasztások](#classic-alerts). Módosíthatja az előfizetések vagy szűrőparaméterek frissíteni a lapot. 
 
 ![Riasztások lap](media/alerts-overview/alerts-page.png)
@@ -102,7 +104,7 @@ Ez a nézet legördülő listák az oldal tetején lévő értékek kijelölés�
 
 | Oszlop | Leírás |
 |:---|:---|
-| Előfizetés | Legfeljebb öt Azure-előfizetések kiválasztása. Csak a kijelölt előfizetésekben riasztások nézetében megtalálhatók. |
+| Előfizetés | Válassza ki az Azure-előfizetést, amelynek meg szeretné tekinteni a riasztásokat. Igény szerint kiválaszthatja, jelölje be az összes előfizetés. Csak azon, hogy rendelkezik-e a hozzáférést a kijelölt előfizetésekben riasztások nézetében megtalálhatók. |
 | Erőforráscsoport | Válasszon egy erőforráscsoportot. Csak azon riasztások t a kiválasztott erőforráscsoportban megtalálhatók a nézetet. |
 | Időtartomány | Csak az adott időtartamon belül aktivált riasztások nézetében megtalálhatók. Támogatott értékei a következők: az elmúlt egy órában, az elmúlt 24 órában, az elmúlt 7 napban és az elmúlt 30 napban. |
 
@@ -145,7 +147,7 @@ Válassza ki a következő értékeket a lap tetején lévő legördülő listá
 
 | Oszlop | Leírás |
 |:---|:---|
-| Előfizetés | Legfeljebb öt Azure-előfizetések kiválasztása. Csak a kijelölt előfizetésekben riasztások nézetében megtalálhatók. |
+| Előfizetés | Válassza ki az Azure-előfizetést, amelynek meg szeretné tekinteni a riasztásokat. Igény szerint kiválaszthatja, jelölje be az összes előfizetés. Csak azon, hogy rendelkezik-e a hozzáférést a kijelölt előfizetésekben riasztások nézetében megtalálhatók. |
 | Erőforráscsoport | Válasszon egy erőforráscsoportot. Csak azon riasztások t a kiválasztott erőforráscsoportban megtalálhatók a nézetet. |
 | Erőforrás típusa | Válassza ki egy vagy több erőforrás-típus. Csak azon riasztások t a kiválasztott típusú megtalálhatók a nézetet. Ez az oszlop csak akkor használható, miután lett megadva egy erőforráscsoportot. |
 | Erőforrás | Válasszon ki egy erőforrást. Csak azon riasztások t célként adott erőforrásra a nézet szerepelnek. Ez az oszlop csak akkor használható, miután egy erőforrás-típus lett megadva. |
@@ -157,20 +159,47 @@ Válassza ki a következő értékeket a lap tetején lévő legördülő listá
 
 Válassza ki **oszlopok** jelölje be a megjelenítendő oszlopokat az oldal tetején. 
 
-## <a name="alert-detail-page"></a>Riasztás részletei lap
+## <a name="alert-details-page"></a>Riasztás részletei lap
 A riasztás részletei lap jelenik meg, válasszon ki egy riasztást. A riasztás részleteinek biztosít, és lehetővé teszi az állapot módosítását.
 
 ![Riasztás részletei](media/alerts-overview/alert-detail2.png)
 
-A riasztás részletei lap az alábbi szakaszokat tartalmazza.
+A riasztás részleteit tartalmazó lapon az alábbi szakaszokat tartalmazza.
 
-| Section | Leírás |
+| `Section` | Leírás |
 |:---|:---|
-| Alapvető erőforrások | A tulajdonságok és más jelentős a riasztásra vonatkozó információk megjelenítése. |
+| Összefoglalás | A tulajdonságok és más jelentős a riasztásra vonatkozó információk megjelenítése. |
 | Előzmények | Minden egyes a riasztás által végrehajtott műveletek és a riasztás végzett módosítások sorolja fel. Egyelőre csak állapotváltozásokat. |
-| Az intelligens csoport | Információk az intelligens csoport tartalmazza a riasztás. A *riasztások száma* hivatkozik, amely az intelligens csoportban levő értesítések száma. Az azonos intelligens csoport, függetlenül az Időszűrő a riasztások lista lap az elmúlt 30 napban létrehozott egyéb riasztásokat tartalmazza. Válasszon ki egy riasztást, a részletek megtekintéséhez. |
-| További részletek | A további környezeti információkat a riasztás, a riasztást létrehozó adatforrás típusa általában jellemző megjelenítése. |
+| Diagnosztika | Információk az intelligens csoport tartalmazza a riasztás. A *riasztások száma* hivatkozik, amely az intelligens csoportban levő értesítések száma. Az azonos intelligens csoport, függetlenül az Időszűrő a riasztások lista lap az elmúlt 30 napban létrehozott egyéb riasztásokat tartalmazza. Válasszon ki egy riasztást, a részletek megtekintéséhez. |
 
+## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>Szerepköralapú hozzáférés-vezérlés (RBAC) a riasztás-példányok
+
+A használat és a riasztási példányok felügyeletét a felhasználónak szüksége van a beépített RBAC-szerepkörök valamelyikének [közreműködő figyelése](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) vagy [olvasó figyelése](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader). Ezek a szerepkörök minden olyan Azure Resource Manager hatókörben részletes hozzárendelések erőforrás szinten az előfizetési szintről támogatottak. Például ha a felhasználó csak hozzáférés "közreműködő figyelése" virtuális gép "ContosoVM1", majd azt is használják, és csak a "ContosoVM1" a létrehozott riasztások kezelése.
+
+## <a name="manage-your-alert-instances-programmatically"></a>Programozott módon kezelheti a riasztási példányok
+
+Ha szeretne programozott módon lekérdezése generált riasztások esetében az előfizetésen számos forgatókönyv közül választhat. Ez lehet az Azure Portalon kívül egyéni nézeteket hozhat létre, vagy elemzi a riasztásokat, minták és trendek azonosításához.
+
+Az előfizetésekhez keresztül létrehozott riasztások lekérdezhető a [riasztási felügyeleti REST API](https://aka.ms/alert-management-api) vagy a [Azure Resource Graph REST API-riasztások](https://docs.microsoft.com/rest/api/azureresourcegraph/resources/resources).
+
+A [Azure Resource Graph REST API-riasztások](https://docs.microsoft.com/rest/api/azureresourcegraph/resources/resources) lehetővé teszi, hogy nagy mennyiségű riasztás példányok lekérdezése. Ez a javasolt forgatókönyvekhez, amelyekben sok előfizetések között létrehozott riasztások kezelése. 
+
+A következő mintában az API-ra vonatkozó kérelem egy előfizetésen belüli riasztások számát adja vissza:
+
+```json
+{
+  "subscriptions": [
+    <subscriptionId>
+  ],
+  "query": "where type =~ 'Microsoft.AlertsManagement/alerts' | summarize count()",
+  "options": {
+            "dataset":"alerts"
+  }
+}
+```
+A riasztások lehet lekérdezni a ["fontos"](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#essentials-fields) mezőket.
+
+A [riasztás felügyeleti REST API](https://aka.ms/alert-management-api) használható meghatározott riasztások, beleértve a további információt szeretne kapni a ["riasztás környezete"](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields) mezőket.
 
 ## <a name="classic-alerts"></a>Klasszikus riasztások 
 

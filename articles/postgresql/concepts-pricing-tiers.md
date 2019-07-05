@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: a92017c462ef62cbfb1aa6c2613a502d1cc5ffc6
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 5f60a2786a87f4bd9be1f4a9e2a7a222e097b2e1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340739"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448075"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Az Azure Database for PostgreSQL - kiszolgáló egyetlen tarifacsomagok
 
@@ -64,16 +64,16 @@ A tárfiókok korlátai növeljük az általános célú és memóriahasználatr
 | Tárolási típus | Azure Premium Storage | Azure Premium Storage |
 | Tároló mérete | 32 GB és 16 TB| 32-16 TB |
 | Növekmény tárméret | 1 GB | 1 GB |
-| IO | 3 IOPS/GB<br/>Minimum 100 IOPS<br/>Legfeljebb 20 000 iops-érték| 3 IOPS/GB<br/>Minimum 100 IOPS<br/>Legfeljebb 20 000 iops-érték |
+| IO | 3 IOPS/GB<br/>Minimum 100 IOPS<br/>Legfeljebb 20 000 iops-érték | 3 IOPS/GB<br/>Minimum 100 IOPS<br/>Legfeljebb 20 000 iops-érték |
 
 > [!IMPORTANT]
-> Nagy méretű tároló jelenleg nyilvános előzetes verzióban elérhető a következő régióban: USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA középső RÉGIÓJA, USA nyugati RÉGIÓJA, Észak-Európa, Nyugat-Európa, Délkelet-Ázsia, kelet-japán, Korea középső régiója, Kelet-Ausztrália.
+> Nagy méretű tároló jelenleg nyilvános előzetes verzióban elérhető a következő régióban: USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA középső RÉGIÓJA, USA nyugati RÉGIÓJA, Észak-Európa, Nyugat-Európa, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Délkelet-Ázsia, Kelet-Ázsiában, japán, kelet-japán nyugati régiója, Korea középső régiója, Korea déli régiója, Kelet-Ausztrália, Kelet-Ausztrália Dél-India.
 >
->A nagy méretű tároló előzetes jelenleg nem támogatja:
+> A nagy méretű tároló előzetes jelenleg nem támogatja:
 >
 > * Virtuális hálózati Szolgáltatásvégpontok keresztüli bejövő kapcsolatok
 > * Georedundáns biztonsági mentés
-> * Adatbázisközi régió replikáció
+> * Olvasási replikák
 
 ### <a name="reaching-the-storage-limit"></a>Skálázhatósági méretkorlátot
 

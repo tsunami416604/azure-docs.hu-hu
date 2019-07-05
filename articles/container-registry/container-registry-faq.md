@@ -4,16 +4,16 @@ description: Az Azure Container Registry szolgáltatással kapcsolatos gyakori k
 services: container-registry
 author: sajayantony
 manager: jeconnoc
-ms.service: container-instances
+ms.service: container-registry
 ms.topic: article
-ms.date: 5/13/2019
+ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: beeb4986750e398071e3afb6c1f04663f858cec1
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: c32d7342aaf1c4cce52ce14abe48ea1bc347fdb3
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303577"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551592"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry kapcsolatos gyakori kérdések
 
@@ -27,6 +27,7 @@ Ez a cikk gyakori kérdéseket és az Azure Container Registry kapcsolatos ismer
 - [Hogyan szerezhetem be a rendszergazdai hitelesítő adatait a container Registry?](#how-do-i-get-admin-credentials-for-a-container-registry)
 - [Hogyan szerezhetem be a rendszergazdai hitelesítő adatait a Resource Manager-sablonnal?](#how-do-i-get-admin-credentials-in-a-resource-manager-template)
 - [Replikáció törlése tiltott állapot sikertelen lesz, bár a replikáció törlése az Azure CLI-vel vagy az Azure PowerShell használatával](#delete-of-replication-fails-with-forbidden-status-although-the-replication-gets-deleted-using-the-azure-cli-or-azure-powershell)
+- [Tűzfalszabályok frissítése sikeresen megtörtént, de azok nem lépnek érvénybe](#firewall-rules-are-updated-successfully-but-they-do-not-take-effect)
 
 ### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>Létrehozhat egy Azure Container Registry használatával a Resource Manager-sablonnal?
 
@@ -34,11 +35,11 @@ Igen. Íme [sablon](https://github.com/Azure/azure-cli/blob/master/src/command_m
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>Biztonsági rés keresése a rendszerképeket az ACR van?
 
-Igen. Tekintse meg a dokumentációjának [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) és [Aqua](http://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
+Igen. Tekintse meg a dokumentációjának [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) és [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Hogyan konfigurálható a Kubernetes az Azure Container Registry?
 
-A dokumentációban [Kubernetes](http://kubernetes.io/docs/user-guide/images/#using-azure-container-registry-acr) és lépések [Azure Kubernetes Service](container-registry-auth-aks.md).
+A dokumentációban [Kubernetes](https://kubernetes.io/docs/user-guide/images/#using-azure-container-registry-acr) és lépések [Azure Kubernetes Service](container-registry-auth-aks.md).
 
 ### <a name="how-do-i-get-admin-credentials-for-a-container-registry"></a>Hogyan szerezhetem be a rendszergazdai hitelesítő adatait a container Registry?
 
@@ -90,6 +91,11 @@ Amikor a felhasználó rendelkezik a szükséges engedélyekkel a beállításje
 ```azurecli  
 az role assignment create --role "Reader" --assignee user@contoso.com --scope /subscriptions/<subscription_id> 
 ```
+
+### <a name="firewall-rules-are-updated-successfully-but-they-do-not-take-effect"></a>Tűzfalszabályok frissítése sikeresen megtörtént, de azok nem lépnek érvénybe
+
+Tűzfal szabály módosítások propagálása némi időt vesz igénybe. Tűzfal beállításainak módosítása, után várjon néhány percet, ez a módosítás ellenőrzése.
+
 
 ## <a name="registry-operations"></a>Regisztrációs adatbázis műveletei
 
@@ -245,8 +251,9 @@ Csak a használnak a `AcrPull` vagy `AcrPush` szerepkör, a megbízott nem rende
 
 Kép karantén jelenleg előzetes verziójú funkció az ACR. A beállításjegyzék karantén módot, csak a biztonsági ellenőrzés sikeresen megfelelt képeket legyenek láthatók a normál felhasználók számára engedélyezheti. További információkért lásd: a [ACR GitHub-adattárat](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 
-## <a name="diagnostics"></a>Diagnosztika
+## <a name="diagnostics-and-health-checks"></a>Diagnosztikai és állapot-ellenőrzések
 
+- [Ellenőrizze az állapotát `az acr check-health`](#check-health-with-az-acr-check-health)
 - [docker pull hibaüzenettel meghiúsul: net/http: kérelem megszakadt a kapcsolat (fejlécek várakozás közben túllépte Client.Timeout) való várakozás közben](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers)
 - [a docker leküldéses sikeresen befejeződik, de docker pull hibaüzenettel meghiúsul: nem engedélyezett: hitelesítés szükséges](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required)
 - [Engedélyezze, és a docker-démont, hibakeresési naplók lekérése](#enable-and-get-the-debug-logs-of-the-docker-daemon) 
@@ -255,16 +262,30 @@ Kép karantén jelenleg előzetes verziójú funkció az ACR. A beállításjegy
 - [Miért nem az Azure Portalon található összes tárházak vagy címkék?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
 - [Hogyan összegyűjtése a Windows http-nyomkövetések?](#how-do-i-collect-http-traces-on-windows)
 
+### <a name="check-health-with-az-acr-check-health"></a>Ellenőrizze az állapotát `az acr check-health`
+
+Közös környezet és a beállításjegyzék-problémák hibaelhárítása: [egy Azure container registryt állapotát](container-registry-check-health.md).
+
 ### <a name="docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers"></a>docker pull hibaüzenettel meghiúsul: net/http: kérelem megszakadt a kapcsolat (fejlécek várakozás közben túllépte Client.Timeout) való várakozás közben
 
  - Ha ez a hiba átmeneti jellegű probléma, majd próbálkozzon újra lesz sikeres.
- - Ha `docker pull` folyamatosan, sikertelen, akkor lehetséges, hogy a docker-démon problémájára. A probléma általában enyhíthetők a docker-démon újraindítása. 
- - Docker-démon újraindítása után jelenik meg a probléma továbbra is, ha a probléma néhány hálózati kapcsolati problémák a gép lehet. Ellenőrizze, hogy kifogástalan állapotban-e a gépen általános hálózati, próbálkozzon egy parancs például `ping www.bing.com`.
- - Az összes docker-Ügyfélműveletek mindig kell egy újrapróbálkozási mechanizmust.
+ - Ha `docker pull` folyamatosan, sikertelen, akkor lehetséges, hogy a Docker-démon problémájára. A probléma általában enyhíthetők a Docker-démon újraindítása. 
+ - Docker-démon újraindítása után jelenik meg a probléma továbbra is, ha a probléma néhány hálózati kapcsolati problémák a gép lehet. Ellenőrizze, hogy a számítógép általános hálózati kifogástalan állapotban-e, futtassa a végpont kapcsolat teszteléséhez a következő parancsot. A minimális `az acr` , amely tartalmazza a kapcsolat ellenőrzése parancs verziószáma 2.2.9-es verziónál. A frissítés az Azure CLI-vel, ha egy régebbi verzióját használja.
+ 
+   ```azurecli
+    az acr check-health -n myRegistry
+    ```
+ - Az összes Docker-Ügyfélműveletek mindig kell egy újrapróbálkozási mechanizmust.
+
+### <a name="docker-pull-is-slow"></a>Docker pull lassú
+Használat [ez](http://www.azurespeed.com/Azure/Download) tesztelése a machine hálózati letöltési sebesség eszközt. Ha machine hálózati túl lassú, fontolja Azure virtuális gép és a beállításjegyzék ugyanabban a régióban. Ez általában lehetővé teszi nagyobb hálózati sebességet.
+
+### <a name="docker-push-is-slow"></a>A docker leküldéses lassú
+Használat [ez](http://www.azurespeed.com/Azure/Upload) eszköz teszteléséhez a gép hálózaton feltöltési sebességét. Ha machine hálózati túl lassú, fontolja Azure virtuális gép és a beállításjegyzék ugyanabban a régióban. Ez általában lehetővé teszi nagyobb hálózati sebességet.
 
 ### <a name="docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required"></a>a docker leküldéses sikeresen befejeződik, de docker pull hibaüzenettel meghiúsul: nem engedélyezett: hitelesítés szükséges
 
-Ez a hiba akkor fordulhat elő, Red Hat verziójával, docker-démont, ahol `--signature-verification` alapértelmezés szerint engedélyezve van. A Red Hat Enterprise Linux (RHEL) és a Fedora docker démon lehetőségeit a következő parancs futtatásával ellenőrizheti:
+Ez a hiba akkor fordulhat elő, Red Hat verziójával, a Docker-démont, ahol `--signature-verification` alapértelmezés szerint engedélyezve van. A Red Hat Enterprise Linux (RHEL) és a Fedora Docker démon lehetőségeit a következő parancs futtatásával ellenőrizheti:
 
 ```bash
 grep OPTIONS /etc/sysconfig/docker
@@ -284,12 +305,12 @@ unauthorized: authentication required
 ```
 
 A hiba megoldásához:
-1. A beállítás hozzáadásához `--signature-verification=false` a docker-démon konfigurációs fájl `/etc/sysconfig/docker`. Példa:
+1. A beállítás hozzáadásához `--signature-verification=false` a Docker-démon konfigurációs fájl `/etc/sysconfig/docker`. Példa:
 
   ```
   OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
   ```
-2. Indítsa újra a docker-démon szolgáltatás a következő parancs futtatásával:
+2. Indítsa újra a Docker-démon szolgáltatás a következő parancs futtatásával:
 
   ```bash
   sudo systemctl restart docker.service
@@ -297,9 +318,9 @@ A hiba megoldásához:
 
 A részletek `--signature-verification` futtatásával található `man dockerd`.
 
-### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>Engedélyezze, és a docker-démont, hibakeresési naplók lekérése  
+### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>Engedélyezze, és a Docker-démont, hibakeresési naplók lekérése  
 
-Indítsa el `dockerd` együtt a `debug` lehetőséget. Először hozza létre a docker-démon konfigurációs fájl (`/etc/docker/daemon.json`) Ha nem létezik, és adja hozzá a `debug` lehetőséget:
+Indítsa el `dockerd` együtt a `debug` lehetőséget. Először hozza létre a Docker-démon konfigurációs fájl (`/etc/docker/daemon.json`) Ha nem létezik, és adja hozzá a `debug` lehetőséget:
 
 ```json
 {   
@@ -387,7 +408,7 @@ curl $redirect_url
 
 ### <a name="why-does-the-azure-portal-not-list-all-my-repositories-or-tags"></a>Miért nem az Azure Portalon található összes tárházak vagy címkék? 
 
-Ha a Microsoft Edge böngészőt használ, legfeljebb 100 tárházak vagy felsorolt címkék láthatja. Ha a tárolójegyzék több mint 100 tárházak vagy címkék, azt javasoljuk, hogy a Firefox vagy a Chrome böngészőben közzéteheti az összes használja.
+Ha a Microsoft Edge/IE böngészőt használ, legfeljebb 100 tárházak vagy címkék láthatja. Ha a tárolójegyzék több mint 100 tárházak vagy címkék, azt javasoljuk, hogy a Firefox vagy a Chrome böngészőben közzéteheti az összes használja.
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Hogyan összegyűjtése a Windows http-nyomkövetések?
 
@@ -439,86 +460,6 @@ Ez a beállítás is vonatkozik a `az acr run` parancsot.
 
 - [CircleCI](https://github.com/Azure/acr/blob/master/docs/integration/CircleCI.md)
 - [GitHub Actions](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
-
-## <a name="error-references-for-az-acr-check-health"></a>Hiba mutató hivatkozások `az acr check-health`
-
-### <a name="dockercommanderror"></a>DOCKER_COMMAND_ERROR
-
-Ez a hiba azt jelenti, hogy a docker-ügyfél a CLI nem található, amely eleve keresése a docker-verzió, a docker-démon állapotának kiértékelésekor és a docker pull parancs futtatható biztosítása.
-
-*A lehetséges megoldások*: docker-ügyfél telepítése; a rendszer változók hozzáadásával docker elérési útját.
-
-### <a name="dockerdaemonerror"></a>DOCKER_DAEMON_ERROR
-
-Ez a hiba azt jelenti, hogy a docker-démon állapota nem érhető el, vagy hogy azt nem érhető el a parancssori felület használatával. Ez azt jelenti, hogy a docker-műveletek (például bejelentkezési, leküldéses) nem lesz elérhető a parancssori felületén keresztül.
-
-*A lehetséges megoldások*: Indítsa újra a docker-démont, vagy ellenőrizze, hogy helyesen van-e telepítve.
-
-### <a name="dockerversionerror"></a>DOCKER_VERSION_ERROR
-
-Ez a hiba, az azt jelenti, hogy a CLI nem volt képes a parancs futtatásához `docker --version`.
-
-*A lehetséges megoldások*: próbálja ki a következő parancs futtatásával manuálisan, ellenőrizze, hogy a CLI legújabb verzióját, és vizsgálja meg a hibaüzenetet.
-
-### <a name="dockerpullerror"></a>DOCKER_PULL_ERROR
-
-Ez a hiba, az azt jelenti, hogy a CLI nem tudta lekérni egy képet a környezetben.
-
-*A lehetséges megoldások*: Ellenőrizze, hogy az összes összetevő szükséges képet betölteni megfelelően futnak-e.
-
-### <a name="helmcommanderror"></a>HELM_COMMAND_ERROR
-
-Ez a hiba azt jelenti, hogy a helm-ügyfél nem található a parancssori felület, amely kizárja a helm-műveletnél.
-
-*A lehetséges megoldások*: Győződjön meg arról, hogy a helm-ügyfél, és hogy annak elérési útja bekerül a rendszerszintű környezeti változókat.
-
-### <a name="helmversionerror"></a>HELM_VERSION_ERROR
-
-Ez a hiba, az azt jelenti, hogy a CLI nem tudta meghatározni a Helm-verzió van telepítve. Ez akkor fordulhat elő, ha az Azure CLI verziójának (vagy ha a helm-verzió) használt elavult.
-
-*A lehetséges megoldások*: az Azure CLI legújabb verzióját, vagy a javasolt helm verzióra frissítése; manuálisan futtassa a parancsot, és vizsgálja meg a hibaüzenetet.
-
-### <a name="connectivitydnserror"></a>CONNECTIVITY_DNS_ERROR
-
-Ez a hiba azt jelenti, hogy a DNS-ÉT az adott adatbázis bejelentkezési kiszolgálója volt pingkérést küldött, de nem válaszolt, ami azt jelenti, hogy nem érhető el. Ez azt jelezheti kapcsolódási problémák. Is jelentheti, hogy a beállításjegyzék nem létezik, vagy, hogy a tároló-beállításjegyzék egy másik felhőben fut, a használatban van az Azure CLI-ben, hogy a felhasználó nem rendelkezik az engedélyeket a beállításjegyzék (lekérdezni a bejelentkezési kiszolgáló megfelelően).
-
-*A lehetséges megoldások*: kapcsolat érvényesítése; a beállításjegyzék helyesírás-ellenőrzése és a beállításjegyzék létezik; győződjön meg arról, hogy a felhasználó rendelkezik-e a megfelelő engedélyekkel, és, hogy a tárolójegyzék felhőalapú megegyezik az Azure CLI-vel használt.
-
-### <a name="connectivityforbiddenerror"></a>CONNECTIVITY_FORBIDDEN_ERROR
-
-Ez azt jelenti, hogy az adott beállításjegyzékhez a kérdés végpont válaszolt egy 403 Tiltott HTTP-állapot. Ez azt jelenti, hogy felhasználók nincs hozzáférése a regisztrációs adatbázisba, valószínűleg a VNET-konfiguráció miatt.
-
-*A lehetséges megoldások*: távolítsa el a virtuális hálózati szabályainak, vagy a jelenlegi ügyfél IP-Címének hozzáadása az engedélyezett listára.
-
-### <a name="connectivitychallengeerror"></a>CONNECTIVITY_CHALLENGE_ERROR
-
-Ez a hiba, az azt jelenti, hogy a tároló-beállításjegyzék challenge végpontja nem hajtotta végre kihívást.
-
-*A lehetséges megoldások*: próbálja meg újra egy kis idő múlva. Ha a hiba továbbra is fennáll, am problémáját, nyisson https://aka.ms/acr/issues.
-
-### <a name="connectivityaadloginerror"></a>CONNECTIVITY_AAD_LOGIN_ERROR
-
-Ez a hiba azt jelenti, hogy a tároló-beállításjegyzék challenge végpontja kihívást, de az a beállításjegyzék nem támogatja az AAD-bejelentkezéséhez.
-
-*A lehetséges megoldások*: próbálja ki a másik lehetőség a naplózási, például a rendszergazdai hitelesítő adataival. Abban az esetben, ha a felhasználó szeretne bejelentkezés az AAD-támogatást, de problémáját, nyissa meg https://aka.ms/acr/issues.
-
-### <a name="connectivityrefreshtokenerror"></a>CONNECTIVITY_REFRESH_TOKEN_ERROR
-
-Ez azt jelenti, hogy a tárolójegyzék bejelentkezési kiszolgálójának frissítési jogkivonatok, ami azt jelenti, hogy a rendszer megtagadta a hozzáférést a tároló-beállításjegyzék nem válaszolt. Ez akkor fordulhat elő, ha a felhasználó nem rendelkezik a megfelelő engedélyekkel a beállításjegyzék, vagy ha a hitelesítő adatokat az Azure CLI már nem használatosak.
-
-*A lehetséges megoldások*: Győződjön meg arról, ha a felhasználó rendelkezik-e a megfelelő engedélyekkel a beállításjegyzék; Futtatás `az login` engedélyeket, a jogkivonatok és a hitelesítő adatok frissítése.
-
-### <a name="connectivityaccesstokenerror"></a>CONNECTIVITY_ACCESS_TOKEN_ERROR
-
-Ez azt jelenti, hogy a tárolójegyzék bejelentkezési kiszolgálójának egy hozzáférési jogkivonattal, ami azt jelenti, hogy a rendszer megtagadta a hozzáférést a tároló-beállításjegyzék nem válaszolt. Ez akkor fordulhat elő, ha a felhasználó nem rendelkezik a megfelelő engedélyekkel a beállításjegyzék, vagy ha a hitelesítő adatokat az Azure CLI már nem használatosak.
-
-*A lehetséges megoldások*: Győződjön meg arról, ha a felhasználó rendelkezik-e a megfelelő engedélyekkel a beállításjegyzék; Futtatás `az login` engedélyeket, a jogkivonatok és a hitelesítő adatok frissítése.
-
-### <a name="loginservererror"></a>LOGIN_SERVER_ERROR
-
-Ez azt jelenti, hogy a CLI nem találja a megadott beállításkulcs értékét a bejelentkezési kiszolgáló, és nincs alapértelmezett utótag nem található a jelenlegi felhőt. Ez akkor fordulhat elő, ha a beállításjegyzék nem létezik, ha a felhasználó nem rendelkezik a megfelelő engedélyekkel a beállításjegyzék Ha a tárolójegyzék felhőbeli és a jelenlegi Azure CLI-felhő nem egyezik, vagy ha az Azure CLI verziója elavult.
-
-*A lehetséges megoldások*: Ellenőrizze, hogy helyesen szerepel-e a helyesírás-ellenőrzés és, hogy a beállításjegyzék létezik; győződjön meg arról, ha a felhasználó rendelkezik-e a megfelelő engedélyekkel a beállításjegyzék, valamint, hogy a beállításjegyzék és a parancssori felület környezetében a felhők egyezik; az Azure parancssori felület frissítése a legújabb verzióra.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 12e86e2a47698d7f736b5f66a92819a4621d5e96
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 47e14ff87a6197ccc97231835da545207545a328
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165684"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460824"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>IoT hub-eseményforrás hozzáadása a Time Series Insights-környezethez
 
@@ -42,7 +42,7 @@ Az IoT hub egy új felhasználói csoport hozzáadása:
 
 1. Alatt **beállítások**válassza **beépített végpontokról**, majd válassza ki a **események** végpont.
 
-   [![A beépített végpontok lapon válassza ki az események gomb](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_one.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_one.png#lightbox)
+   [![A beépített végpontok lapon válassza ki az események gomb](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-one.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-one.png#lightbox)
 
 1. A **fogyasztói csoportok**, adjon meg egy egyedi nevet a fogyasztói csoportot. Használja ezt a nevet a Time Series Insights-környezetben, ha egy új eseményforrás létrehozása.
 
@@ -56,7 +56,7 @@ Az IoT hub egy új felhasználói csoport hozzáadása:
 
 1. Alatt **környezeti topológia**válassza **eseményforrások**, majd válassza ki **Hozzáadás**.
 
-   [![Válassza ki a eseményforrások, és válassza a Hozzáadás gombra.](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_two.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_two.png#lightbox)
+   [![Válassza ki a eseményforrások, és válassza a Hozzáadás gombra.](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-two.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-two.png#lightbox)
 
 1. Az a **új eseményforrás** panelen a **eseményforrás nevének**, adja meg a Time Series Insights-környezet egyedi nevét. Adja meg például **esemény-adatfolyam**.
 
@@ -66,11 +66,11 @@ Az IoT hub egy új felhasználói csoport hozzáadása:
 
    * Ha már rendelkezik egy IoT hubot az egyik előfizetésének átadását, válassza ki a **használja az IoT Hub a rendelkezésre álló előfizetések**. Ez a lehetőség akkor a legegyszerűbb megközelítés.
    
-     [![Válassza ki a beállításokat az új esemény forrás panelen](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_three.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_three.png#lightbox)
+     [![Válassza ki a beállításokat az új esemény forrás panelen](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-three.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-three.png#lightbox)
 
     * A következő táblázat ismerteti a tulajdonságok, amelyek szükségesek a **használja az IoT Hub a rendelkezésre álló előfizetések** lehetőséget:
 
-       [![Új esemény adatforrás ablaktábla - tulajdonságok beállítása IoT Hub használata a rendelkezésre álló előfizetések közül](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_four.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_four.png#lightbox)
+       [![Új esemény adatforrás ablaktábla - tulajdonságok beállítása IoT Hub használata a rendelkezésre álló előfizetések közül](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-four.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-four.png#lightbox)
 
        | Tulajdonság | Leírás |
        | --- | --- |
@@ -101,7 +101,7 @@ Az IoT hub egy új felhasználói csoport hozzáadása:
 
 1. Kattintson a **Létrehozás** gombra.
 
-   [![A Létrehozás gombra](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_five.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_five.png#lightbox)
+   [![A Létrehozás gombra](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-five.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-five.png#lightbox)
 
 1. Miután létrehozta az eseményforrás, a Time Series Insights automatikusan elindul, streamelési adatok a környezetben.
 

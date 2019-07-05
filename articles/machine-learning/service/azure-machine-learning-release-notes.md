@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9e7441ab9503919fbf1d0890ce69f04259f38986
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d43bef902b66976c32735b6d45029f41bb5e3264
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065770"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514043"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
@@ -24,6 +24,57 @@ Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.
 + Az Azure Machine Learning [ **adat-előkészítési SDK**](https://aka.ms/data-prep-sdk)
 
 Lásd: [kapcsolatos ismert problémák listája](resource-known-issues.md) ismert hibák és a lehetséges megoldások megismeréséhez.
+
+
+## <a name="2019-07-01"></a>2019-07-01
+
+### <a name="azure-machine-learning-data-prep-sdk-v117"></a>Az Azure Machine Learning adat-előkészítési SDK v1.1.7
+
+Azt állítja vissza a rendszer egy olyan módosítást, a jobb teljesítmény, mivel problémákat okozott az egyes ügyfelek az Azure Databricks használatával. Ha az Azure databricks szolgáltatásban hibát tapasztal, az alábbi módszerek egyikével 1.1.7 verzióra frissíthet:
+1. Futtassa ezt a szkriptet frissítése: `%sh /home/ubuntu/databricks/python/bin/pip install azureml-dataprep==1.1.7`
+2. Hozza létre újra a fürt a Data Prep SDK legújabb verzióját telepíti.
+
+## <a name="2019-06-25"></a>2019-06-25
+
+### <a name="azure-machine-learning-sdk-for-python-v1045"></a>Az Azure Machine Learning SDK for Python v1.0.45
+
++ **Új funkciók**
+  + Döntési fa helyettes modell referenciaszámítógépnek ismertető azureml azt ismertetik, modell-csomag hozzáadása
+  + Adjon meg egy CUDA verziót telepíteni a következtetési lemezképek képessége. CUDA 9.0 9.1 és 10.0 támogatása.
+  + Információ az Azure Machine Learning betanítási alaplemezképek már elérhetők a [Azure ML tárolók GitHub-adattár](https://github.com/Azure/AzureML-Containers) és [DockerHub](https://hub.docker.com/_/microsoft-azureml)
+  + A hozzáadott CLI folyamat ütemezése támogatása. További információért futtassa a "az ml folyamat -h"
+  + Egyéni Kubernetes-névtér paraméter hozzáadja az AKS webszolgáltatás telepítési konfigurációjáról és a parancssori felület.
+  + Elavult hash_paths paraméter az összes folyamat lépései
+  + Model.register mostantól támogatja a több egyéni fájlok regisztrálása egy adott modellt használ, a `child_paths` paraméter.
+  
++ **Előzetes verziójú funkciók**
+    + Pontozó explainers igény szerint most conda mentheti és pip megbízhatóbb szerializálást és deszerializálást adatait.
+    + A szolgáltatás-választó automatikus hibajavítás.
+    + Frissítve az új api, az új telepítés által elérhetővé tett javított hibák mlflow.azureml.build_image.
+
++ **Használhatatlanná tévő változásai**
+
++ **Hibajavítások és kapcsolatos fejlesztések**
+  + Eltávolított paramiko függőség az azureml-core. A hozzáadott elavulással kapcsolatos figyelmeztetések örökölt számítási célnak csatolása módszereket.
+  + Run.create_children teljesítményének növelése
+  + A mimic ismertető a bináris osztályozó javítsa ki az valószínűségek sorrendjét, oktatói valószínűségi használata méretezését Alakzatadatok értékek
+  + Továbbfejlesztett hiba- és automatikus gépi tanulási üzenet. 
+  + Kijavítva az iteráció időtúllépési automatikus machine Learning.
+  + Továbbfejlesztett automatikus gépi tanulási idősorozat-átalakítás teljesítményét.
+
+## <a name="2019-06-24"></a>2019-06-24
+
+### <a name="azure-machine-learning-data-prep-sdk-v116"></a>Az Azure Machine Learning adat-előkészítési SDK v1.1.6
+
++ **Új funkciók**
+  + Felső értékek összesítő függvények hozzáadott (`SummaryFunction.TOPVALUES`) és alsó értékek (`SummaryFunction.BOTTOMVALUES`).
+
++ **Hibajavítások és kapcsolatos fejlesztések**
+  + Jelentősen javult a teljesítménye `read_pandas_dataframe`.
+  + Kijavítva a hiba, amely miatt `get_profile()` a sikertelen bináris fájlokra mutató adatfolyamot.
+  + Közzétett `set_diagnostics_collection()` a programozott engedélyezése vagy letiltása a telemetriai adatok gyűjtésének engedélyezéséhez.
+  + A viselkedése megváltozott `get_profile()`. NaN értéket most figyelmen kívül hagyja, Min, átlag, Standard és a Sum, amely igazodik a Pandas viselkedését.
+
 
 ## <a name="2019-06-10"></a>2019-06-10
 
@@ -38,7 +89,6 @@ Lásd: [kapcsolatos ismert problémák listája](resource-known-issues.md) ismer
     + Az előrejelzési STL featurizer
     + KMeans fürtszolgáltatás funkció kezdik engedélyezve van
   + Jóváhagyások AmlCompute kvóta most vált gyorsabb! Most a folyamat egy küszöbértéken belül a kvóta kérelmek jóváhagyása automatizálta azt. További információ a kvóták működéséről további [kvóták kezelése](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas).
- 
 
 + **Előzetes verziójú funkciók**
     + Integráció a [MLflow](https://mlflow.org) nyomon követése az azureml-mlflow csomag 1.0.0-s ([példa notebookok](https://aka.ms/azureml-mlflow-examples)).

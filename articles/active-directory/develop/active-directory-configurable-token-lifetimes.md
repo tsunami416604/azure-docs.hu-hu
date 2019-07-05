@@ -12,24 +12,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 07/04/2019
 ms.author: ryanwi
 ms.custom: aaddev, annaba
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b1c68d9254b0da2e5296c83d8dd4c95091fde1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd9ff2360fce26b77ba0f5be4d5f70103504ec05
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111801"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67564445"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Az Azure Active Directoryban (előzetes verzió) konfigurálható jogkivonatok élettartama
 
 Az Azure Active Directory (Azure AD) által kiállított jogkivonatok élettartamát is megadhat. Beállíthatja a jogkivonatok élettartamának, a szervezet minden alkalmazás, több-bérlős (több cég) alkalmazás vagy egy adott szolgáltatásnév a szervezetben.
 
 > [!IMPORTANT]
-> Után az előzetes verzióban az ügyfelektől származó várjuk, hogy már cserélni a jogkivonatok élettartamának konfigurálható szolgáltatása, amely rendelkezik [hitelesítési munkamenet felügyeleti képességek](https://go.microsoft.com/fwlink/?linkid=2083106) az Azure AD feltételes hozzáférés. Ez a funkció elavulttá válik, a 2019. November 1. Ha a jogkivonat élettartama konfigurálható szabályzatot használ, váltson át az új feltételes hozzáférési funkciót. 
+> Az előzetes verzióban az ügyfelektől származó hallás, miután általunk megvalósított [hitelesítési munkamenet felügyeleti képességek](https://go.microsoft.com/fwlink/?linkid=2083106) az Azure AD feltételes hozzáférés. Ez az új funkció segítségével frissítési jogkivonatok élettartamának beállítása bejelentkezési gyakoriságának beállításával. 2019. November 1. után nem lesz a jogkivonat élettartama konfigurálható csoportházirend segítségével konfigurálhatja a frissítési biztonsági jogkivonat, de továbbra is használhatja azt a hozzáférési jogkivonatok konfigurálása.
 
 Az Azure AD-ben a csoportházirend-objektum egy szabálykészletet, a kényszerített egyes alkalmazások, illetve a szervezeten belüli összes alkalmazás jelöli. Minden házirendtípus egy egyedi szerkezetűek, és a egy objektumot, amelyhez hozzá van rendelve alkalmazott tulajdonságkészlettel rendelkezik.
 

@@ -11,13 +11,13 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 manager: craigg
-ms.date: 06/13/2019
-ms.openlocfilehash: 2ea1d116de2c435e873c653bbfa0571377c4f5ef
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/01/2019
+ms.openlocfilehash: 5188862c50895c8e3f1bdecb4e08d39409bb5f9e
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067057"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491663"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Az Azure SQL Database rugalmas lekérdezésének áttekintése (előzetes verzió)
 
@@ -143,6 +143,7 @@ Rugalmas lekérdezés az Azure SQL Database-adatbázisok költségeinek tartalma
 * Típus: nvarchar(max), kivéve (beleértve a térbeli típusok) LOB-típusok nem támogatottak a külső mérettábla definíciói. Áthidaló megoldásként létrehozhat egy nézet a távoli adatbázis, amely a LOB-típusok nvarchar(max) helyezhetők kerül, a külső tábla megadása helyett az alaptábla a nézetben és majd alakítania azt az eredeti LOB típusú be újra a lekérdezést.
 * Eredmény set tiltsa le az nvarchar(max) adattípusú oszlopokkal speciális kötegelés technics rugalmas lekérdezés végrehajtása során használt, és hatással lehet ez ezerszer tartozó lekérdezés teljesítményére, vagy még két nagyságrenddel a nem kanonikus használati eseteket, ahol nagy mennyiségű nem összesíthető adatátvitel lekérdezés eredményeként.
 * A külső táblákon végrehajtott oszlopstatisztika jelenleg nem támogatott. Táblastatisztika támogatottak, de manuálisan kell létrehozni.
+* Rugalmas lekérdezés csak az Azure SQL Database szolgáltatással működik. Nem használhatja a helyszíni SQL Server vagy SQL Server virtuális Gépen lekérdezéséhez.
 
 ## <a name="feedback"></a>Visszajelzés
 

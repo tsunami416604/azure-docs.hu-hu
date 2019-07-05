@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 05/21/2019
-ms.openlocfilehash: eb405549ba2d1c97b16f5b465abf0dc54de3b80d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/02/2019
+ms.openlocfilehash: 46aca2c1a7d40df69b89e15917ff07b983f5ff5f
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66000919"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561471"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>SSL-összekapcsolhatóság konfigurálása az alkalmazásban való kapcsolódás az Azure Database for MySQL-hez
 Azure Database for MySQL támogatja a Secure Sockets Layer (SSL) használó ügyfélalkalmazások az Azure Database for MySQL-kiszolgálóhoz csatlakozik. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket.
@@ -24,9 +24,18 @@ Töltse le a tanúsítványt, az Azure Database for MySQL-kiszolgáló az SSL-en
 
 Az adott programozási nyelv kapcsolati karakterláncok, tekintse meg a [mintakód](howto-configure-ssl.md#sample-code) alatt.
 
-### <a name="connecting-to-server-using-the-mysql-workbench-over-ssl"></a>Kapcsolódás a kiszolgálóhoz a MySQL Workbench használatával SSL-en keresztül
-Állítsa be a MySQL Workbench SSL-en keresztül biztonságos kapcsolatot. Az új kapcsolat beállítása párbeszédpanelen keresse meg a **SSL** fülre. Az a **SSL CA-fájl:** mezőben adja meg a fájl helyét, a **BaltimoreCyberTrustRoot.crt.pem**. 
-![Mentse testre szabott csempe](./media/howto-configure-ssl/mysql-workbench-ssl.png) a meglévő kapcsolatok esetében kattintson a jobb gombbal a kapcsolat ikon az SSL bind és kattintson a Szerkesztés. Keresse meg a **SSL** lapra, és kösse a tanúsítványfájl.
+### <a name="connecting-to-server-using-mysql-workbench-over-ssl"></a>Kapcsolódás a kiszolgálóhoz a MySQL Workbench használatával SSL-en keresztül
+Állítsa be a MySQL Workbench SSL-en keresztül biztonságos kapcsolatot. 
+
+1. Az új kapcsolat beállítása párbeszédpanelen keresse meg a **SSL** fülre. 
+
+1. Frissítés a **SSL használata** mezőt "Szükséges".
+
+1. Az a **SSL CA-fájl:** mezőben adja meg a fájl helyét, a **BaltimoreCyberTrustRoot.crt.pem**. 
+    
+    ![Az SSL konfigurációjának mentése](./media/howto-configure-ssl/mysql-workbench-ssl.png)
+
+Meglévő kapcsolatok esetén SSL bind kattintson a jobb gombbal a kapcsolat ikonra, és kattintson a Szerkesztés. Keresse meg a **SSL** lapra, és kösse a tanúsítványfájl.
 
 ### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>Kapcsolódás a kiszolgálóhoz a MySQL parancssori felületről SSL-en keresztül
 Az SSL-tanúsítvány kötése egy másik módja, hogy a MySQL parancssori felületet a következő parancsok végrehajtásával. 
