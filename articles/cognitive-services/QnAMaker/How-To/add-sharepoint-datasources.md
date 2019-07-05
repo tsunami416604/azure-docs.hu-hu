@@ -1,7 +1,7 @@
 ---
 title: SharePoint-fájlok – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Védett Sharepoint-adatforrások hozzáadása a Tudásbázis feldúsítani a Tudásbázis kérdésekkel és válaszokkal, előfordulhat, hogy az Active Directoryban kell védeni.
+description: Védett SharePoint-adatforrások hozzáadása a Tudásbázis feldúsítani a Tudásbázis kérdésekkel és válaszokkal, előfordulhat, hogy az Active Directoryban kell védeni.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,33 +10,33 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: diberry
-ms.openlocfilehash: 3e5aa1cc78efeb6e8158155b5e0676c8a63cf6e6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 99b20e36163ec8c91fba864706f883b7866de65c
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447551"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592904"
 ---
-# <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>A Tudásbázis egy védett Sharepoint-adatforrás hozzáadása
+# <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>A Tudásbázis egy védett SharePoint-adatforrás hozzáadása
 
-Védett Sharepoint-adatforrások hozzáadása a Tudásbázis feldúsítani a Tudásbázis kérdésekkel és válaszokkal, előfordulhat, hogy az Active Directoryban kell védeni. 
+Védett SharePoint-adatforrások hozzáadása a Tudásbázis feldúsítani a Tudásbázis kérdésekkel és válaszokkal, előfordulhat, hogy az Active Directoryban kell védeni. 
 
-A Tudásbázis, mint a QnA Maker manager védett Sharepoint-dokumentum hozzáadásakor kérje meg az Active Directory számára a QnA Maker. Miután ezt az engedélyt kap az Active Directory managerből QnA Maker hozzáférés a Sharepointhoz, nem kell újra kell megadni. Minden ezt követő dokumentum Hozzáadás a Tudásbázis következő, nem kell engedélyezési, amennyiben az ugyanazon a Sharepoint-erőforrás található. 
+A Tudásbázis, mint a QnA Maker manager védett SharePoint-dokumentum hozzáadásakor kérje meg az Active Directory számára a QnA Maker. Miután ezt az engedélyt kap az Active Directory managerből QnA Maker hozzáférés a Sharepointhoz, nem kell újra kell megadni. Minden ezt követő dokumentum Hozzáadás a Tudásbázis következő, nem kell engedélyezési, amennyiben az ugyanazon a SharePoint-erőforrás található. 
 
 Ha a QnA Maker Tudásbázis-kezelő nem az Active Directory-kezelőt, szüksége lesz az Active Directory-kezelővel, ez a folyamat befejezéséhez kommunikációhoz.
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>Támogatott fájltípusok Tudásbázis hozzáadása
 
-Adhat hozzá az összes QnA Maker által támogatott [fájltípusok](../Concepts/data-sources-supported.md) a Sharepoint-kiszolgáló a tudásbázist. Előfordulhat, hogy biztosítania [engedélyek](#permissions) Ha a fájl erőforrás védett.
+Adhat hozzá az összes QnA Maker által támogatott [fájltípusok](../Concepts/data-sources-supported.md) a Tudásbázis a SharePoint-webhelyről. Előfordulhat, hogy biztosítania [engedélyek](#permissions) Ha a fájl erőforrás védett.
 
-1. A Sharepoint server, válassza ki a Fájl menü három pontot ábrázoló `...`.
+1. A SharePoint-webhely a könyvtárból, válassza ki a Fájl menü három pontot ábrázoló `...`.
 1. A fájl URL-Címének másolása.
 
-    ![A fájl három pont menü, majd másolja az URL-címet kapni a Sharepoint-fájl URL-címe.](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
+    ![A fájl három pont menü, majd másolja az URL-címet kapni a SharePoint-fájl URL-címe.](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
 
 1. A QnA Maker Portal a a **beállítások** lapon [adja hozzá az URL-cím](edit-knowledge-base.md#add-datasource) a Tudásbázisban. 
 
-### <a name="images-with-sharepoint-files"></a>Képek a Sharepoint-fájlok
+### <a name="images-with-sharepoint-files"></a>Képek a SharePoint-fájlok
 
 Ha a fájlok képeket is tartalmaznak, ezek nincs kibontva. A QnA Maker Portalról, hozzáadhatja a lemezképet, miután a fájl kibontása a QnA párok.
 
@@ -52,26 +52,26 @@ A kérdés-válasz párt a interaktív vizsgálati panelen, a QnA Maker Portal t
 
 ## <a name="permissions"></a>Engedélyek
 
-Engedélyek megadása történik, ha a Sharepoint-kiszolgáló egy védett fájlt adnak hozzá egy Tudásbázis. Attól függően, hogyan van beállítva a Sharepoint fel és az engedélyeket ehhez szükség volt a fájl hozzáadása a személy:
+Engedélyek megadása történik, ha egy SharePoint-webhelyről egy védett fájlt adnak hozzá egy Tudásbázis. Attól függően, hogyan van beállítva a SharePoint fel és az engedélyeket ehhez szükség volt a fájl hozzáadása a személy:
 
 * Nincsenek további lépések szükségesek: a fájl hozzáadása a személy rendelkezik a szükséges összes engedélyt.
 * mindkét lépést [Tudásbázis-kezelő](#knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal) és [Active Directory kezelő](#active-directory-manager-grant-file-read-access-to-qna-maker).
 
 Tekintse meg az alábbi lépéseket. 
 
-### <a name="knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal"></a>Tudásbázis-kezelő: a QnA Maker portál Sharepoint-adatforrás hozzáadása
+### <a name="knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal"></a>Tudásbázis-kezelő: a QnA Maker portál SharePoint-adatforrás hozzáadása
 
-Ha a **QnA Maker manager** ad hozzá egy védett Sharepoint-dokumentum Tudásbázis, a Tudásbázis-kezelő kezdeményezi, amely az Active Directory kezelő el kell végeznie engedélyt kér.
+Ha a **QnA Maker manager** ad hozzá egy védett SharePoint-dokumentum Tudásbázis, a Tudásbázis-kezelő kezdeményezi, amely az Active Directory kezelő el kell végeznie engedélyt kér.
 
 A kérelem egy előugró ablak, Active Directory-fiókkal történő hitelesítést kezdődik. 
 
 ![Felhasználói fiók hitelesítéséhez](../media/add-sharepoint-datasources/authenticate-user-account.png)
 
-A QnA Maker kezelő kiválasztja a fiókot, ha az Active Directory-rendszergazda a QnA Maker a Sharepoint-erőforrás (nem a QnA Maker manager) alkalmazás hozzáférésének engedélyezéséhez szükséges értesítést kap. Az Active Directory kezelő kell ehhez a minden Sharepoint-erőforrás, de nem minden dokumentum az adott erőforráshoz. 
+A QnA Maker kezelő kiválasztja a fiókot, ha az Azure Active Directory-rendszergazda a QnA Maker a SharePoint-erőforrás (nem a QnA Maker manager) alkalmazás hozzáférésének engedélyezéséhez szükséges értesítést kap. Az Azure Active Directory-kezelőt kell tegye meg minden SharePoint-erőforrás, de nem minden dokumentum az adott erőforráshoz. 
 
 ### <a name="active-directory-manager-grant-file-read-access-to-qna-maker"></a>Az Active directory kezelő: fájl olvasási jogot a QnA Maker
 
-Az Active Directory-kezelő (nem a QnA Maker manager) van szüksége a hozzáférési jogot a Sharepoint-erőforrás eléréséhez kiválasztásával a QnA Maker [ezt a hivatkozást](https://login.microsoftonline.com/common/oauth2/v2.0/authorize?response_type=id_token&scope=Files.Read%20Files.Read.All%20Sites.Read.All%20User.Read%20User.ReadBasic.All%20profile%20openid%20email&client_id=c2c11949-e9bb-4035-bda8-59542eb907a6&redirect_uri=https%3A%2F%2Fwww.qnamaker.ai%3A%2FCreate&state=68) engedélyezéséhez a QnA Maker Portal Sharepoint nagyvállalati alkalmazás fájl olvasása engedélyek. 
+Az Active Directory-kezelő (nem a QnA Maker manager) van szüksége a hozzáférési jogot a SharePoint-erőforrás eléréséhez kiválasztásával a QnA Maker [ezt a hivatkozást](https://login.microsoftonline.com/common/oauth2/v2.0/authorize?response_type=id_token&scope=Files.Read%20Files.Read.All%20Sites.Read.All%20User.Read%20User.ReadBasic.All%20profile%20openid%20email&client_id=c2c11949-e9bb-4035-bda8-59542eb907a6&redirect_uri=https%3A%2F%2Fwww.qnamaker.ai%3A%2FCreate&state=68) engedélyezéséhez a QnA Maker Portal SharePoint nagyvállalati alkalmazás fájl olvasása engedélyek. 
 
 ![Az Azure Active Directory manager engedélyt ad a interaktív módon](../media/add-sharepoint-datasources/aad-manager-grants-permission-interactively.png)
 
@@ -129,13 +129,13 @@ The Active Directory manager will get a pop-up window requesting permissions to 
   
 <!--
 
-## Add Sharepoint data source with APIs
+## Add SharePoint data source with APIs
 
-You need to get the Sharepoint file's URI before adding it to QnA Maker. 
+You need to get the SharePoint file's URI before adding it to QnA Maker. 
 
-## Get Sharepoint File URI
+## Get SharePoint File URI
 
-Use the following steps to transform the Sharepoint URL into a sharing token.
+Use the following steps to transform the SharePoint URL into a sharing token.
 
 1. Encode the URL using [base64](https://en.wikipedia.org/wiki/Base64). 
 
@@ -154,7 +154,7 @@ Use the following steps to transform the Sharepoint URL into a sharing token.
 
     Get the **@microsoft.graph.downloadUrl** and use this as `fileuri` in the QnA Maker APIs.
 
-### Add or update a Sharepoint File URI to your knowledge base
+### Add or update a SharePoint File URI to your knowledge base
 
 Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileuri` in the QnA Maker API for [adding a knowledge base](https://go.microsoft.com/fwlink/?linkid=2092179) or [updating a knowledge base](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update). The following fields are mandatory: name, fileuri, filename, source.
 
@@ -177,10 +177,10 @@ Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileu
 
 
 
-## Remove QnA Maker app from Sharepoint authorization
+## Remove QnA Maker app from SharePoint authorization
 
 1. Use the steps in the previous section to find the Qna Maker app in the Active Directory admin center. 
-1. When you select the **QnAMakerPortalSharepoint**, select **Overview**. 
+1. When you select the **QnAMakerPortalSharePoint**, select **Overview**. 
 1. Select **Delete** to remove permissions. 
 
 -->

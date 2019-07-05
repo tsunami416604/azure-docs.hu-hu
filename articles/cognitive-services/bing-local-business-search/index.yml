@@ -13,7 +13,7 @@ metadata:
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 08/02/2018
-  ms.author: 'rosh, v-gedod'
+  ms.author: rosh
 abstract:
   description: A Bing Local Business Search API-val az alkalmazások a közeli vállalkozásokkal kapcsolatos elérhetőségi és helyinformációkat találhatnak keresési lekérdezések alapján.
 sections:

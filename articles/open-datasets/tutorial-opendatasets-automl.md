@@ -4,18 +4,17 @@ titleSuffix: Azure Open Datasets
 description: Ismerje meg, hogy miként lehet hasznosítani a kényelem érdekében az Azure Open adatkészletek és a egy NYC taxi diszkont árak előrejelzésére regressziós modell létrehozásához az Azure Machine Learning szolgáltatás a power.
 services: open-datasets
 ms.service: open-datasets
-ms.subservice: core
 ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 05/02/2019
-ms.openlocfilehash: e753793b5da59d09a21991831046a43899c62ef2
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: a1df79c59ede8cd9ad72a2ebb2edb4bdb64b802a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026822"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588977"
 ---
 # <a name="tutorial-build-a-regression-model-with-automated-machine-learning-and-open-datasets"></a>Oktatóanyag: Automatizált gépi tanulással és nyissa meg az adatkészletek regressziós modell létrehozása
 
@@ -1000,7 +999,7 @@ taxi_holidays_df.head(5)
       <td>4</td>
       <td>21</td>
       <td>USA</td>
-      <td>True (Igaz)</td>
+      <td>True</td>
       <td>Új év napja</td>
     </tr>
     <tr>
@@ -1019,7 +1018,7 @@ taxi_holidays_df.head(5)
       <td>4</td>
       <td>0</td>
       <td>USA</td>
-      <td>True (Igaz)</td>
+      <td>True</td>
       <td>Új év napja</td>
     </tr>
     <tr>
@@ -1543,7 +1542,7 @@ taxi_holidays_weather_df.describe()
       <td>132.000000</td>
     </tr>
     <tr>
-      <th>max.</th>
+      <th>max</th>
       <td>2.000000</td>
       <td>460.000000</td>
       <td>51.950000</td>
@@ -1723,7 +1722,7 @@ final_df.describe()
       <td>41.000000</td>
     </tr>
     <tr>
-      <th>max.</th>
+      <th>max</th>
       <td>2.000000</td>
       <td>6.000000</td>
       <td>51.950000</td>

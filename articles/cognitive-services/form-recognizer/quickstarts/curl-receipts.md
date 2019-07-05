@@ -5,16 +5,16 @@ description: Ez a rövid útmutatóban az űrlap felismerő REST API-t fogjuk a 
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: form-recognizer
+ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: pafarley
-ms.openlocfilehash: f9111dcb1f85b28a688282f792540128e7146a6b
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 0178e53e6a7fde54b988e710a1cabbb7ded69b22
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566192"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592582"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Gyors útmutató: A képernyő felismerő REST API használatával a curl használatával beérkezési adatokat nyerhet ki
 

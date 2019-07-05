@@ -49,7 +49,7 @@ Az alábbiakban néhány egyéb általános módszer használható függvény ki
 
 | Tevékenység | Függvény-szintaxis a kifejezés |
 | ---- | -------------------------------- |
-| Hajtanak végre munkát egy elemet az adott elem a függvénynek adja át. | "\@<*functionName*> (<*elem*>)" |
+| Hajtanak végre munkát egy elemet az adott elem a függvénynek adja át. | "\@<*functionName*>(<*item*>)" |
 | 1. Első a *parameterName*a használatával a beágyazott érték `parameters()` függvény. </br>2. Ezt az értéket adja át az eredmény az elvégzéséhez *functionName*. | "\@<*functionName*> (paraméter (" <*parameterName*> "))" |
 | 1. Az eredményt kapja a beágyazott belső függvény *functionName*. </br>2. Adja át az eredmény a külső függvényhez *functionName2*. | "\@<*functionName2*>(<*functionName*>(<*item*>))" |
 | 1. Elérhető az eredmény *functionName*. </br>2. Tekintve, hogy az eredmény egy tulajdonsággal rendelkező objektumot *propertyName*, jelenik meg, hogy a tulajdonság értékét. | "\@<*functionName*>(<*item*>). <*propertyName*>" |
@@ -88,7 +88,7 @@ Karakterlánc-függvények csak karakterláncok működik.
 | [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Kezdő pozíciójának egy karakterláncrészt adja vissza. |
 | [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Az utolsó előfordulás a kezdő pozíciójának a substring visszaadása. |
 | [replace](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Cserélje le a megadott karakterlánc részkarakterláncot, és a frissített karakterláncot ad vissza. |
-| [felosztás](../logic-apps/workflow-definition-language-functions-reference.md#split) | Egy tömb, amely tartalmazza a karakterláncrész, vesszővel elválasztva egy nagyobb karakterláncból alapján egy megadott elválasztó karakter az eredeti karakterláncot adja vissza. |
+| [split](../logic-apps/workflow-definition-language-functions-reference.md#split) | Egy tömb, amely tartalmazza a karakterláncrész, vesszővel elválasztva egy nagyobb karakterláncból alapján egy megadott elválasztó karakter az eredeti karakterláncot adja vissza. |
 | [startsWith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | Annak ellenőrzése, hogy e karakterlánc kezdődik-e egy adott karakterláncrészletet. |
 | [substring](../logic-apps/workflow-definition-language-functions-reference.md#substring) | Karaktert adja vissza egy karakterláncból, a megadott pozíciónál kezdve. |
 | [toLower](../logic-apps/workflow-definition-language-functions-reference.md#toLower) | Kis formátumban adja vissza. |
@@ -104,14 +104,14 @@ Gyűjtemények, általában tömbök, karakterláncok és egyes esetekben szót�
 
 | Gyűjtemény függvény | Tevékenység |
 | ------------------- | ---- |
-| [tartalmaz](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Ellenőrizze, hogy egy gyűjtemény rendelkezik-e egy adott elemet. |
-| [üres](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Ellenőrizze, hogy egy gyűjtemény üres. |
+| [contains](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Ellenőrizze, hogy egy gyűjtemény rendelkezik-e egy adott elemet. |
+| [empty](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Ellenőrizze, hogy egy gyűjtemény üres. |
 | [első](../logic-apps/workflow-definition-language-functions-reference.md#first) | Az első elem visszaadása egy gyűjteményt. |
-| [Metszet](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Vissza, amely rendelkezik *csak* a gyakori elemek a megadott gyűjtemények között. |
-| [Elem](../logic-apps/workflow-definition-language-functions-reference.md#item) | Ismétlődő műveletet keresztül egy tömb, belül vissza az aktuális elem a tömbben a művelet aktuális iteráció során. |
+| [intersection](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Vissza, amely rendelkezik *csak* a gyakori elemek a megadott gyűjtemények között. |
+| [item](../logic-apps/workflow-definition-language-functions-reference.md#item) | Ismétlődő műveletet keresztül egy tömb, belül vissza az aktuális elem a tömbben a művelet aktuális iteráció során. |
 | [join](../logic-apps/workflow-definition-language-functions-reference.md#join) | Adja vissza, amely rendelkezik *összes* elemet a tömb a megadott karakter választja el. |
 | [last](../logic-apps/workflow-definition-language-functions-reference.md#last) | Az utolsó elem visszaadása egy gyűjteményt. |
-| [Hossza](../logic-apps/workflow-definition-language-functions-reference.md#length) | A tömb vagy karakterlánc elemek számának visszaadása. |
+| [length](../logic-apps/workflow-definition-language-functions-reference.md#length) | A tömb vagy karakterlánc elemek számának visszaadása. |
 | [skip](../logic-apps/workflow-definition-language-functions-reference.md#skip) | A gyűjtemény elejéről eltávolítandó elemek, és vissza *összes többi* elemek. |
 | [take](../logic-apps/workflow-definition-language-functions-reference.md#take) | Az első gyűjtemény elemek visszaadása. |
 | [union](../logic-apps/workflow-definition-language-functions-reference.md#union) | Vissza, amely rendelkezik *összes* elemet a megadott gyűjteményekkel a. |
@@ -245,8 +245,8 @@ Kapcsolatos minden funkció teljes körű referenciáért lásd: a [betűrend sz
 | [body](#body) | Egy művelet visszaadandó `body` kimeneti futásidőben. Lásd még: [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody). |
 | [formDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues) | Hozzon létre egy tömb azokra az értékekre, amelyek megfelelnek a kulcs nevét *űrlapadatokból* vagy *űrlapként* műveleti kimenetek. |
 | [formDataValue](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) | Ad vissza, amely megfelel egy műveletet a kulcs nevét egyetlen értéket *űrlapadatokból* vagy *űrlapként kimeneti*. |
-| [Elem](../logic-apps/workflow-definition-language-functions-reference.md#item) | Ismétlődő műveletet keresztül egy tömb, belül vissza az aktuális elem a tömbben a művelet aktuális iteráció során. |
-| [elemek](../logic-apps/workflow-definition-language-functions-reference.md#items) | Egy Foreach belül vagy Until ciklus, az aktuális elem visszaadása a megadott ciklus.|
+| [item](../logic-apps/workflow-definition-language-functions-reference.md#item) | Ismétlődő műveletet keresztül egy tömb, belül vissza az aktuális elem a tömbben a művelet aktuális iteráció során. |
+| [items](../logic-apps/workflow-definition-language-functions-reference.md#items) | Egy Foreach belül vagy Until ciklus, az aktuális elem visszaadása a megadott ciklus.|
 | [iterationIndexes](../logic-apps/workflow-definition-language-functions-reference.md#iterationIndexes) | Belül egy Until ciklus aktuális ismétléseinek index értékének visszaadása. Ez a függvény belül beágyazott hurkok amíg használható. |
 | [listCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | A "visszahívási URL-címe", amely meghívja az eseményindítók vagy műveletek visszaadása. |
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Egy adott rész törzsét visszaadása egy művelet kimenete, amely több részből áll. |
@@ -1109,7 +1109,7 @@ concat('Hello', 'World')
 
 <a name="contains"></a>
 
-### <a name="contains"></a>tartalmaz
+### <a name="contains"></a>contains
 
 Ellenőrizze, hogy egy gyűjtemény rendelkezik-e egy adott elemet.
 Igaz értéket ad vissza, ha az elem található, vagy visszatérhet false (hamis) Ha nem található.
@@ -1664,7 +1664,7 @@ encodeUriComponent('https://contoso.com')
 
 <a name="empty"></a>
 
-### <a name="empty"></a>üres
+### <a name="empty"></a>empty
 
 Ellenőrizze, hogy egy gyűjtemény üres.
 Igaz értéket ad vissza üres a gyűjtemény esetén, vagy visszatérhet a hamis értéket, ha nem üres.
@@ -2230,7 +2230,7 @@ int('10')
 
 <a name="item"></a>
 
-### <a name="item"></a>Elem
+### <a name="item"></a>item
 
 Egy ismétlődő műveletet használat keresztül egy tömb, vissza az aktuális elem a tömbben a művelet aktuális iteráció során.
 Az értékeket is kérhet, hogy elem tulajdonságai.
@@ -2270,7 +2270,7 @@ items('<loopName>')
 
 | Vrácená hodnota | Típus | Leírás |
 | ------------ | ---- | ----------- |
-| <*Elem*> | Bármely | Az elem található a megadott for-each ciklusban az aktuális ciklus |
+| <*item*> | Bármely | Az elem található a megadott for-each ciklusban az aktuális ciklus |
 ||||
 
 *Példa*
@@ -2442,7 +2442,7 @@ json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> 
 
 <a name="intersection"></a>
 
-### <a name="intersection"></a>Metszet
+### <a name="intersection"></a>intersection
 
 Vissza, amely rendelkezik *csak* a gyakori elemek a megadott gyűjtemények között.
 Az eredmény jelenik meg, hogy egy elem szerepelnie kell a függvénynek átadott összes gyűjteményt.
@@ -3177,7 +3177,7 @@ Ez a fennmaradó elemek tömböt ad vissza, és: `[1,2,3]`
 
 <a name="split"></a>
 
-### <a name="split"></a>felosztás
+### <a name="split"></a>split
 
 Egy tömb, amely tartalmazza a karakterláncrész, vesszővel elválasztva, az eredeti karakterláncot a megadott elválasztó karakter alapján ad vissza.
 
@@ -3428,7 +3428,7 @@ substring('<text>', <startIndex>, <length>)
 | --------- | -------- | ---- | ----------- |
 | <*text*> | Igen | String | A karakterláncot, amelynek kívánt karakterek |
 | <*startIndex*> | Igen | Egész szám | Egy pozitív szám, amelyet szeretne használja, mint a kezdő pozíció vagy index érték 0-nál nagyobb vagy egyenlő |
-| <*Hossza*> | Igen | Egész szám | Pozitív szám, amelyet szeretne a substring karakter |
+| <*length*> | Igen | Egész szám | Pozitív szám, amelyet szeretne a substring karakter |
 |||||
 
 | Vrácená hodnota | Típus | Leírás |

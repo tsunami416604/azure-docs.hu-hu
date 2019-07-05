@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 06/05/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 1c432ee5851115e029b55722b6b238b4672e8345
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d74539ec1de8f503b0d0e423adf6273d1422fed5
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446714"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592339"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>A fájl megosztási tartalmainak migrálása a SharePoint online-hoz az Azure Data Box (nagy erőforrásigényű) használata
 
@@ -23,7 +23,7 @@ A Microsoft Azure Data Box szolgáltatása lehetővé teszi egy eszköz a Micros
 
 - [Data Box-lemezek](https://docs.microsoft.com/azure/databox/data-box-disk-overview) 35 TB-os használható kapacitása megrendelésenként kis és közepes méretű adatkészletek esetében.
 - [Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) a 80 TB felhasználható kapacitás eszközönként közepes nagyméretű adatkészletek esetében.
-- [Data Box nehéz](https://docs.microsoft.com/azure/databox/data-box-heavy-overview) 770-TB felhasználható kapacitás eszközönként nagy adatkészletek esetében a. Data Box nehéz jelenleg előzetes verzióban érhető el.
+- [Data Box nehéz](https://docs.microsoft.com/azure/databox/data-box-heavy-overview) 770-TB felhasználható kapacitás eszközönként nagy adatkészletek esetében a.
 
 Ez a cikk kifejezetten a fájl megosztási tartalmainak migrálása a SharePoint online-hoz a Data Box (nagy erőforrásigényű) használatát ismerteti.
 

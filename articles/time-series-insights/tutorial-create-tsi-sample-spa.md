@@ -8,12 +8,12 @@ ms.date: 06/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: e415c681ae5a35de6e8ff76e09cfef8cc8cc98f8
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 8ee4cd30d5742896df96ccfd714d85ebbab194f9
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544069"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595700"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Oktatóanyag: Azure Time Series Insights egyoldalas webalkalmazás létrehozása
 
@@ -101,7 +101,7 @@ Ez az oktatóanyag a mintaalkalmazás a Time Series Insights-környezet adatait 
       <link rel="stylesheet" type="text/css" href="../../dist/tsiclient.css"> -->
       ```
 
-   1. Konfigurálásához az alkalmazásnak, hogy az Azure AD alkalmazás regisztrációs Azonosítót használja, módosítsa a `clientID` használt értéket a a **Alkalmazásazonosító** a másolt **3. lépés** amikor, [az alkalmazás regisztrálva az Azure AD használata](#register-the-application-with-azure-ad). Ha létrehozott egy **kijelentkezési URL-címe** az Azure ad-ben, állítsa be ezt az értéket a `postLogoutRedirectUri` értéket.
+   1. Konfigurálásához az alkalmazásnak, hogy az Azure AD alkalmazás regisztrációs Azonosítót használja, módosítsa a `clientID` használt értéket a **Alkalmazásazonosító** a másolt **3. lépés** amikor, [az alkalmazás használatához regisztrálni Az Azure AD](#register-the-application-with-azure-ad). Ha létrehozott egy **kijelentkezési URL-címe** az Azure ad-ben, állítsa be ezt az értéket a `postLogoutRedirectUri` értéket.
 
       [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-153&highlight=4-5)]
 

@@ -12,6 +12,6 @@ metadata:
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 03/19/2018
-  ms.author: 'rosh, v-gedod'
+  ms.author: rosh
 abstract:
   description: 'A Bing URL Preview API információkat kér le egy cél URL-címmel kapcsolatban, beleértve a leírást, az isFamilyFriendly jelzőt, a címet jelölő képet és az oldalra mutató hivatkozást.'

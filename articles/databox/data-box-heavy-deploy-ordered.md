@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 05/29/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 8453a3592c1822489a3724dacdf8f0ff5e8492f1
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: c7fbd37ff8d40f27e0ca18a6f9816d3d96422ab9
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427908"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592407"
 ---
-# <a name="tutorial-order-azure-data-box-heavy-preview"></a>Oktatóanyag: Rendelés Azure Data Box nehéz (előzetes verzió)
+# <a name="tutorial-order-azure-data-box-heavy"></a>Oktatóanyag: Rendelés az Azure Data Box (nagy erőforrásigényű)
 
 
 Az Azure Data Box (nagy erőforrásigényű), amely lehetővé teszi, hogy a helyszíni adatok importálása az Azure-gyors, egyszerű, és megbízhatóan hibrid megoldás is. Az adatok átvitele a Microsoft által biztosított 770 TB (hozzávetőleges felhasználható kapacitás) tárolóeszköz, és ezután küldje az vissza az eszközt. Az adatok ezt követően fel lesznek töltve az Azure-ba.

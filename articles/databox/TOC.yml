@@ -143,6 +143,14 @@
               items:
                 - name: SMB-n keresztül
                   href: data-box-heavy-deploy-copy-data.md
+                - name: NFS-en keresztül
+                  href: data-box-heavy-deploy-copy-data-via-nfs.md
+                - name: REST-en keresztül
+                  href: data-box-heavy-deploy-copy-data-via-rest.md
+                - name: Adatmásolási szolgáltatással
+                  href: data-box-heavy-deploy-copy-data-via-copy-service.md
+                - name: Felügyelt lemezekre
+                  href: data-box-heavy-deploy-copy-data-from-vhds.md
             - name: '4 – Visszaküldés, feltöltés, ellenőrzés'
               href: data-box-heavy-deploy-picked-up.md
         - name: Alapelvek
