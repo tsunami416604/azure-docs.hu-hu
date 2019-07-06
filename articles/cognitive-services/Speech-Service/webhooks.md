@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/11/2019
+ms.date: 07/05/2019
 ms.author: panosper
-ms.custom: seodec18
-ms.openlocfilehash: fbe6fe25b5ff0cd5148e3bba22dec4648399510d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a100049ddfc9d4859e303546c1b10e814cf96ebb
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072306"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606211"
 ---
 # <a name="webhooks-for-speech-services"></a>Webhookok az beszédszolgáltatások
 
@@ -24,7 +23,7 @@ Webhookok hasonlóak a HTTP-visszahívásokat nevezzük, amelyek lehetővé tesz
 
 ## <a name="supported-operations"></a>Támogatott műveletek
 
-A beszédszolgáltatások webhookok támogatása az összes hosszú ideig futó műveletek. Az alábbi műveletek mindegyike egy HTTP-visszahívás befejezése után is indíthat. 
+A beszédszolgáltatások webhookok támogatása az összes hosszú ideig futó műveletek. Az alábbi műveletek mindegyike egy HTTP-visszahívás befejezése után is indíthat.
 
 * DataImportCompletion
 * ModelAdaptationCompletion
@@ -37,7 +36,7 @@ Következő lépésként hozzunk létre egy webhook.
 
 ## <a name="create-a-webhook"></a>A webhook létrehozása
 
-Hozzunk létre egy webhookot az-offline beszédátírási. A forgatókönyv: egy felhasználó egy hosszú ideig futó hangfájl, amelyek szeretnék lefényképezze aszinkron módon történik a Batch Beszédátírási API-val rendelkezik. 
+Hozzunk létre egy webhookot az-offline beszédátírási. A forgatókönyv: egy felhasználó egy hosszú ideig futó hangfájl, amelyek szeretnék lefényképezze aszinkron módon történik a Batch Beszédátírási API-val rendelkezik.
 
 Egy POST kérést a https:// Webhookokat hozhat létre\<régió\>.cris.ai/api/speechtotext/v2.1/transcriptions/hooks.
 
@@ -65,7 +64,7 @@ A Batch Beszédátírási API minden POST kérelemhez szükséges egy `name`. A 
 
 A `Active` tulajdonság a Váltás hívása vissza az URL-CÍMÉT, kapcsolja ki, törölje és hozza létre újból a webhook-regisztráció nélkül használható. Ha csak szeretné a visszahívási egyszer a folyamat, amelyet követően befejeződött, törölje a webhook és a kapcsoló a `Active` FALSE tulajdonságot.
 
-Az esemény típusa `TranscriptionCompletion` megtalálható-e az események tömb. Bude volat vissza a végpontra, amikor egy beszédátírási bekerült egy állapotot (`Succeeded` vagy `Failed`). Hívja meg ismét a regisztrált URL-címre, amikor a kérelem fogja tartalmazni az `X-MicrosoftSpeechServices-Event` a regisztrált esemény típusú tartalmazó fejléc. Nincs regisztrált esemény típus szerint egy kérelmet. 
+Az esemény típusa `TranscriptionCompletion` megtalálható-e az események tömb. Bude volat vissza a végpontra, amikor egy beszédátírási bekerült egy állapotot (`Succeeded` vagy `Failed`). Hívja meg ismét a regisztrált URL-címre, amikor a kérelem fogja tartalmazni az `X-MicrosoftSpeechServices-Event` a regisztrált esemény típusú tartalmazó fejléc. Nincs regisztrált esemény típus szerint egy kérelmet.
 
 Nincs több esemény típusa, amely nem lehet előfizetni. Ez a `Ping` eseménytípus. Az ilyen típusú kérelmet küld az URL-címet, ha befejeződött a webhook létrehozása, ha a pingelés URL-cím (lásd alább) használatával.  
 
@@ -94,7 +93,7 @@ public async Task<IActionResult> PostAsync([FromHeader(Name = EventTypeHeaderNam
             var validated = contentHash.SequenceEqual(storedHash);
         }
     }
- 
+
     switch (eventTypeHeader)
     {
         case WebHookEventType.Ping:
@@ -106,7 +105,7 @@ public async Task<IActionResult> PostAsync([FromHeader(Name = EventTypeHeaderNam
         default:
             break;
     }
- 
+
     return this.Ok();
 }
 
@@ -121,12 +120,12 @@ Egy adott webhook beolvasása: GET https://westus.cris.ai/api/speechtotext/v2.1/
 
 Egy adott webhook eltávolítása: TÖRLÉSE https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id
 
-> [!Note] 
+> [!Note]
 > A fenti példában a régióban 'westus'. Ez az a régió, ahol az Azure Portalon létrehozta a beszédszolgáltatások erőforrás kell helyettesíteni.
 
 POST https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/ping törzse: üres
 
-Egy POST kérést küld a regisztrált URL-CÍMÉT. A kérés tartalmaz egy `X-MicrosoftSpeechServices-Event` egy érték ping-fejléc. Ha a webhook regisztrálva lett az egy titkos kulcsot, tartalmazni fog egy `X-MicrosoftSpeechServices-Signature` a titkos kulcs HMAC-val rendelkező SHA256-kivonata egy fejlécet. A kivonatot a Base64-kódolású. 
+Egy POST kérést küld a regisztrált URL-CÍMÉT. A kérés tartalmaz egy `X-MicrosoftSpeechServices-Event` egy érték ping-fejléc. Ha a webhook regisztrálva lett az egy titkos kulcsot, tartalmazni fog egy `X-MicrosoftSpeechServices-Signature` a titkos kulcs HMAC-val rendelkező SHA256-kivonata egy fejlécet. A kivonatot a Base64-kódolású.
 
 POST https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/test törzse: üres
 

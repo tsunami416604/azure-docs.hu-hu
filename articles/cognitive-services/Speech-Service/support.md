@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/26/2018
+ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 4099bc7bfce6de620504e03be3afc5392281d8d8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9e975bbdcec2b45d67f910ac1a83a71ed252ebda
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072377"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606257"
 ---
 # <a name="support-and-help-options"></a>Támogatás és Súgó
 
@@ -71,7 +71,7 @@ Ha nem talál választ a problémára felvétellel, küldje el a Stack Overflow 
 |Beszédfordítás |[[microsoft-cognitive+translation]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
 |Beszéd leképezés |[[a microsoft-cognitive + luis]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
 |Általános beszéd SDK |[[microsoft-cognitive+microsoft-speech-api]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
-| Hang-és felhőközpontú virtuális asszisztensek (előzetes verzió) | [[microsoft-cognitive+virtual-assistant+botframework]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+virtual-assistant+botframework) | 
+| Hang-és felhőközpontú virtuális asszisztensek (előzetes verzió) | [[microsoft-cognitive+virtual-assistant+botframework]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+virtual-assistant+botframework) |
 
 > [!TIP]
 > A Stack overflow-n a következő bejegyzések tippekkel szolgál az űrlapon kérdések tartalmazhat, és hozzáadása a forráskódja. Ezen irányelvek betartása érdekében előfordulhat, hogy növelheti annak esélyét, hogy a Közösség tagjai mérje fel, és gyorsan válaszolni:  

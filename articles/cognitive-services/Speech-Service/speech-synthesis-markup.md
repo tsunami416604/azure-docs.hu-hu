@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 488cbf1874e023cf3a665bc9f2087900b30b3d3d
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 8285a76f8cd07863874f9c8e8eebe96f1cb968dd
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204924"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604819"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Beszédszintézis-jelölőnyelv (SSML)
 
@@ -181,7 +180,7 @@ Használja a `break` elem szüneteltetése (vagy oldaltörések) beszúrása a s
 | erőssége | Adja meg a következő értékek egyikével szünetet relatív időtartama:<ul><li>Egyik sem</li><li>x-weak</li><li>gyenge</li><li>Közepes (alapértelmezett)</li><li>Erős</li><li>x erős</li></ul> | Optional |
 | time | Adja meg a másodperc vagy milliszekundum szünetet abszolút időtartama. Példák az érvényes értékek a következők 2s és 500 | Optional |
 
-| Erőssége | Leírás |
+| erőssége | Leírás |
 |----------|-------------|
 | Egyik sem, vagy ha nincs megadva érték | 0 ms |
 | x-weak | 250 ms |
@@ -290,7 +289,7 @@ Prosodic attribútum értékei eltérőek lehetnek, számos különböző keresz
 | ELOSZLÁS | Körvonal Neurális beszédhangot nem támogatott. Körvonal beszédtartalom felébresztve változásai, a beszéd-kimenetben megadott pozíciók célok tömbjeként jelöli. Minden cél párok paraméter beállítása határozza meg. Példa: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Az egyes paramétereket az első értéket az időtartam, a szöveg százalékában térköz módosítása helyét adja meg. A második érték meghatározza a növelje vagy csökkentse a terv lényegét, egy relatív érték vagy egy enumerálás használatával a terv lényegét (lásd: `pitch`). | Optional |
 | Címtartomány  | A szöveg felébresztve tartományán jelölő érték. Előfordulhat, hogy express `range` az azonos abszolút értékeket, képest relatív értékeket vagy enumerálási leírására szolgáló `pitch`. | Optional |
 | Arány  | Azt jelzi, hogy a szöveg nyelvű arányát. Előfordulhat, hogy express `rate` mint:<ul><li>Relatív érték, egy számot, amely az alapértelmezett Mindösszesen funkcionál. Érték például *1* eredményeként az arány nem változik. Érték *.5* egy sebessége halving eredményez. Érték *3* egy sebessége tripling eredményez.</li><li>Állandó érték:<ul><li>x-lassú</li><li>lassú</li><li>Közepes</li><li>gyors</li><li>x-gyors</li><li>alapértelmezett</li></ul></li></ul> | Optional |
-| Időtartam  | Az az időtartam, amely kell eltelnie a beszéd közben összefoglaló (Szövegfelolvasás) szolgáltatás olvassa be a szöveget, másodperc vagy milliszekundum. Ha például *2s* vagy *1800ms*. | Optional |
+| duration  | Az az időtartam, amely kell eltelnie a beszéd közben összefoglaló (Szövegfelolvasás) szolgáltatás olvassa be a szöveget, másodperc vagy milliszekundum. Ha például *2s* vagy *1800ms*. | Optional |
 | kötet  | Azt jelzi, hogy a nyelvű hang a kötetek szintjén. A kötetet, előfordulhat, hogy express:<ul><li>Rögzített érték, a tartomány számos 0,0-100.0 a kifejezett *legcsendesebb* való *leghangosabb*. Ha például a 75. Az alapértelmezett érték 100.0.</li><li>A relatív érték, egy szám, amelyet kifejezett "+" vagy "-", amely meghatározza egy módosításához a kötetet. Például: + 10 vagy-5.5.</li><li>Állandó érték:<ul><li>Beavatkozás nélküli</li><li>x-soft</li><li>helyreállítható</li><li>Közepes</li><li>Hangos</li><li>x-loud</li><li>alapértelmezett</li></ul></li></ul> | Optional |
 
 ### <a name="change-speaking-rate"></a>Nyelvű sebességének módosítása

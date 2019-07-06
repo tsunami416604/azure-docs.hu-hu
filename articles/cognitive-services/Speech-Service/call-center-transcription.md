@@ -7,15 +7,15 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: overview
-ms.date: 05/02/2019
+ms.topic: conceptual
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 055d141cab8ece3fcb462573f6ed4d8941c19751
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 37d68a4d2b7658542ebcfdb5d22a10676a8e4d52
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064126"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603304"
 ---
 # <a name="speech-services-for-telephony-data"></a>A telefonos adatok beszédszolgáltatások
 
@@ -36,7 +36,7 @@ Tekintsük át néhány a technológia és a kapcsolódó szolgáltatásokat Azu
 
 A beszédszolgáltatások működési aspektusa túli elsődleges célja – ügyfélszolgálatával – alkalmazásakor, a felhasználói élmény javítása érdekében. Három egyértelmű tartományok e tekintetben létezik:
 
-* Utáni hívás analytics, batch-hívás felvételek feldolgozása 
+* Utáni hívás analytics, batch-hívás felvételek feldolgozása
 * A hang jelzés különböző információk kinyerése, mivel a hívás lefolyása (az folyamatban van egy neves alkalmazási helyzet vélemények) valós idejű elemzések feldolgozását és
 * Virtuális asszisztensek (Robotokat), vagy az ügyfél és a robot közötti párbeszéd vezetési oldja meg a probléma nincs ügynök részvételével tett kísérlet, vagy folyamatban van az alkalmazás az AI protokollok, amelyek segítik az ügynököt.
 
@@ -44,9 +44,9 @@ Az alábbi képen egy batch-forgatókönyv végrehajtása egy tipikus Architekt�
 
 ## <a name="speech-analytics-technology-components"></a>Beszéd analitikai technológia összetevők
 
-Hogy a tartomány utáni hívás vagy a valós idejű, az Azure a felhasználói élmény javításán technológiák érett és újonnan felbukkanó csoportja készletét kínálja. 
+Hogy a tartomány utáni hívás vagy a valós idejű, az Azure a felhasználói élmény javításán technológiák érett és újonnan felbukkanó csoportja készletét kínálja.
 
-### <a name="speech-to-text-stt"></a>Diktálás (STT) 
+### <a name="speech-to-text-stt"></a>Diktálás (STT)
 
 [Hang-szöveg transzformációs](speech-to-text.md) után a szolgáltatás hívást center megoldásban a egészíti van. Alsóbb rétegbeli elemzési folyamatok átírt szöveg támaszkodhat, mivel a word Hibaarány (WER) van, rendkívül fontos. Hívás center beszédátírási kulcsfontosságú kihívása, nevezetesen egyik, a háttérzaj, amely elterjedt a ügyfélszolgálatával (például más ügynökök, és beszéljen a háttérben), a gazdag különböző nyelvű területi beállításokhoz és dialektusok, valamint a gyenge minőségű, a tényleges telefon jel. A WER magas összefügg az akusztikai és nyelvi modelleket képzett arról, hogy egy adott területi beállításhoz tartozó, így tudja a modellt a területi beállítások testreszabása fontos. Az egyesített verzió legújabb 4.x modellek a megoldás beszédátírási pontosság és a késés is. Több tíz képzett óra akusztikai adathoz, több ezer és lexikális információk egyesített milliárd modellek a piacon elérhető, a hívás center átvezeti a legpontosabb modellek.
 
@@ -60,9 +60,9 @@ már nem ritka, hogy a támogatási hívás, úgynevezett nem beszédidő kell 3
 Egyes vállalatok kísérletezünk biztosít a lefordított szövegekben az idegen nyelvű segélykérő hívások számát, hogy a kézbesítési kezelők képes megérteni az ügyfeleknek világszerte élménye. A [fordítási](translation.md) funkciók a következők unsurpassed. Azt is fordítani hang-, hang- és audiotartalmak szöveggé területi beállítás nagy számú.
 
 ### <a name="text-to-speech"></a>Szövegfelolvasás
-[Szöveg-hang transzformációs](text-to-speech.md) egy másik fontos terület, az ügyfeleknek a kommunikáló robotokat végrehajtása során. A tipikus út lesz, hogy az ügyfél beszél, beszéddel a megjelenített érzéseket szöveggé, leképezések az elemzett szöveg, választ van synthesized alapján a felismert szándékkal, és majd egy eszköz vagy illesztett az ügyfél vagy egy szintetizált válasz hozza létre. Természetesen ez összes rendelkezik gyorsan – történik, így a késés az ezekben a rendszerekben sikeres fontos összetevője. 
+[Szöveg-hang transzformációs](text-to-speech.md) egy másik fontos terület, az ügyfeleknek a kommunikáló robotokat végrehajtása során. A tipikus út lesz, hogy az ügyfél beszél, beszéddel a megjelenített érzéseket szöveggé, leképezések az elemzett szöveg, választ van synthesized alapján a felismert szándékkal, és majd egy eszköz vagy illesztett az ügyfél vagy egy szintetizált válasz hozza létre. Természetesen ez összes rendelkezik gyorsan – történik, így a késés az ezekben a rendszerekben sikeres fontos összetevője.
 
-A végpontok közötti késés viszonylag kevés, figyelembe véve a különböző technológiákkal, mint például az érintett [hang-szöveg transzformációs](speech-to-text.md), [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/), [Bot Framework](https://dev.botframework.com/), [ Szöveg-hang transzformációs](text-to-speech.md). 
+A végpontok közötti késés viszonylag kevés, figyelembe véve a különböző technológiákkal, mint például az érintett [hang-szöveg transzformációs](speech-to-text.md), [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/), [Bot Framework](https://dev.botframework.com/), [ Szöveg-hang transzformációs](text-to-speech.md).
 
 Az új beszédhangot is rendelkezésre állnak az emberi beszédhangot megkülönböztetni. Tegye robotjait az egyedi személyiségelemző használható beszédhangot ki.
 

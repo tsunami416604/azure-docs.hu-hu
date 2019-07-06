@@ -7,17 +7,17 @@ author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: quickstart
-ms.date: 10/10/2018
+ms.topic: conceptual
+ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: da8ad71ccf8b58ddf3ef7cc6a2f9e9c732913caa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0ab11d8ef9fd481d2b3ea7029664a1ec2778cf4b
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60607649"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604080"
 ---
-# <a name="quickstart-check-text-against-a-custom-term-list-in-c"></a>Gyors útmutató: Egyéni kifejezés listájában összeveti ellenőrzéseC#
+# <a name="check-text-against-a-custom-term-list-in-c"></a>Egyéni kifejezés listájában összeveti ellenőrzéseC#
 
 Az Azure Content Moderator alapértelmezett globális kifejezéslistája a legtöbb tartalommoderálási igénynek megfelel. Azonban szükség lehet bizonyos szervezetspecifikus kifejezések szűrésére is. Például elképzelhető, hogy meg szeretné címkézni az üzleti vetélytársak neveit további ellenőrzés céljából. 
 
@@ -373,7 +373,7 @@ static void DeleteTermList (ContentModeratorClient client, string list_id)
 }
 ```
 
-## <a name="putting-it-all-together"></a>Végső összeállítás
+## <a name="compose-the-main-method"></a>Állítsa össze a Main metódushoz
 
 Adja hozzá a **Main** metódusdefiníciót a **TermLists** névtér **Program** osztályához. Végül zárja be a **Program** osztályt és a **TermLists** névteret.
 
@@ -415,9 +415,9 @@ static void Main(string[] args)
 
 ## <a name="run-the-application-to-see-the-output"></a>Futtassa az alkalmazást a kimenet megtekintéséhez
 
-A kimenet az alábbihoz hasonló lesz, de eltérő adatokkal.
+A konzol kimenete a következőhöz hasonlóan fog kinézni:
 
-```
+```console
 Creating term list.
 Term list created. ID: 252.
 Updating information for term list with ID 252.

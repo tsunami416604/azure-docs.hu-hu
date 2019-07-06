@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Ellenőrizze a képek összeveti az egyedi listákkal C# -Content Moderator'
+title: Ellenőrizze a képek összeveti az egyedi listákkal C# -Content Moderator
 titlesuffix: Azure Cognitive Services
 description: A cikk bemutatja, hogyan végezhető el képek moderálása egyéni képlistákkal a C#-hoz készült Content Moderator SDK-val.
 services: cognitive-services
@@ -7,17 +7,17 @@ author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: quickstart
-ms.date: 10/10/2018
+ms.topic: conceptual
+ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: ded5b097e7c8feab56e2d82cb44f92e3127519e2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 49f87b7cf3d7f46a66c0992edf25968b1dbae073
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60699120"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603408"
 ---
-# <a name="quickstart-moderate-with-custom-image-lists-in-c"></a>Gyors útmutató: Az egyéni rendszerkép listákkal mérsékeltC#
+# <a name="moderate-with-custom-image-lists-in-c"></a>Az egyéni rendszerkép listákkal mérsékeltC#
 
 Ez a cikk ahhoz biztosít információt és kódmintákat, hogy elvégezhesse a következő műveleteket a [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) segítségével:
 - Egyéni képlista létrehozása
@@ -32,7 +32,7 @@ Ez a cikk ahhoz biztosít információt és kódmintákat, hogy elvégezhesse a 
 > [!NOTE]
 > A maximális korlát **5 képlista**, amelyek egyenként **nem haladhatják meg a 10 000 képet**.
 
-Az oktatóanyagban leírt konzolalkalmazás néhány olyan feladatot szimulál, amelyek a képlista API-val végezhetők el.
+Ebben az útmutatóban a konzolalkalmazást szimulálja a feladatokat hajthat végre a képlista API.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
 
@@ -303,7 +303,7 @@ private static ImageList CreateCustomList(ContentModeratorClient client)
 
 ## <a name="create-a-method-to-add-a-collection-of-images-to-the-list"></a>Metódus létrehozása egy képgyűjtemény listához való hozzáadására
 
-Adja hozzá a **Program** osztályhoz a következő metódust. Ez a rövid útmutató nem mutatja be, hogy a listában található képek hogyan láthatók el címkékkel. 
+Adja hozzá a **Program** osztályhoz a következő metódust. Ez az útmutató nem bemutatják, hogyan lehet a listában található rendszerképek címkékkel. 
 
 ```csharp
 /// <summary>

@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 08bf1363f3c6c9b68243cc10ffb2785f53e02107
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 684ddcd49d3cd3c3d4f0a8d6f4675e1e27bdb7b9
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342193"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604886"
 ---
 # <a name="text-to-speech-rest-api"></a>Szöveg-hang transzformációs REST API-val
 
@@ -49,7 +48,7 @@ A `voices/list` végpont lehetővé teszi, hogy egy adott régióban végponton 
 | Közép-Kanada | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA középső régiója | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Kelet-Ázsia | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| USA keleti régiója | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| East US | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA 2. keleti régiója | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Közép-Franciaország | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Közép-India | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -70,7 +69,7 @@ Ez a táblázat felsorolja a szükséges és választható fejlécek a szöveg-h
 
 | Fejléc | Leírás | Kötelező / választható |
 |--------|-------------|---------------------|
-| `Authorization` | Egy engedélyezési jogkivonatot előzi meg a word `Bearer`. További információért lásd: [Hitelesítés](#authentication). | Szükséges |
+| `Authorization` | Egy engedélyezési jogkivonatot előzi meg a word `Bearer`. További információért lásd: [Hitelesítés](#authentication). | Kötelező |
 
 ### <a name="request-body"></a>A kérés törzse
 
@@ -161,10 +160,10 @@ Ez a táblázat felsorolja a szükséges és választható fejlécek a szöveg-h
 
 | Fejléc | Leírás | Kötelező / választható |
 |--------|-------------|---------------------|
-| `Authorization` | Egy engedélyezési jogkivonatot előzi meg a word `Bearer`. További információért lásd: [Hitelesítés](#authentication). | Szükséges |
+| `Authorization` | Egy engedélyezési jogkivonatot előzi meg a word `Bearer`. További információért lásd: [Hitelesítés](#authentication). | Kötelező |
 | `Content-Type` | A megadott szöveg a tartalom típusát határozza meg. Elfogadott érték: `application/ssml+xml`. | Szükséges |
 | `X-Microsoft-OutputFormat` | A hangkimeneti formátum meghatározása. Elfogadott értékek teljes listáját lásd: [hang kimenetek](#audio-outputs). | Szükséges |
-| `User-Agent` | Az alkalmazás neve. A megadott érték legfeljebb 255 karakter hosszú lehet. | Szükséges |
+| `User-Agent` | Az alkalmazás neve. A megadott érték legfeljebb 255 karakter hosszú lehet. | Kötelező |
 
 ### <a name="audio-outputs"></a>Hang kimenetek
 
@@ -225,7 +224,7 @@ A HTTP-állapotkód: minden válasz azt jelzi, hogy a sikeres vagy gyakori hibá
 | 400 | Hibás kérelem | Egy kötelező paraméter hiányzik, üres vagy null értékű. Másik lehetőségként átadott vagy egy kötelező vagy választható paraméter értéke érvénytelen. Egy gyakori probléma egy fejlécet, amely túl hosszú. |
 | 401 | Nem engedélyezett | A kérelem nem engedélyezett. Ellenőrizze, hogy az előfizetési kulcs, vagy a jogkivonat érvényes, és a megfelelő régióban. |
 | 413 | Kérelem az entitás túl nagy | A SSML bemeneti adat 1024 karakternél hosszabb. |
-| 415 | Nem támogatott adathordozó-típus | Lehetséges, hogy nem a megfelelő `Content-Type` lett megadva. `Content-Type` Jelölje meg `application/ssml+xml`. | 
+| 415 | Nem támogatott adathordozó-típus | Lehetséges, hogy nem a megfelelő `Content-Type` lett megadva. `Content-Type` Jelölje meg `application/ssml+xml`. |
 | 429 | Túl sok kérelem | Túllépte a kvótát, vagy engedélyezett az előfizetéséhez kérelmek száma. |
 | 502 | Hibás átjáró | Hálózati vagy kiszolgálóoldali probléma. Érvénytelen fejlécek is jelezhet. |
 

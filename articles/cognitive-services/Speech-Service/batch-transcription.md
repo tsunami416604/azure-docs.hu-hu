@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 2/20/2019
+ms.date: 07/05/2019
 ms.author: panosper
-ms.custom: seodec18
-ms.openlocfilehash: 45ed0167f5a83fa843a224ada35e96672a6752a1
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: b71400c3ae3c1cc6737d9194b4d94bf0b9c7efa9
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67311839"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606749"
 ---
 # <a name="why-use-batch-transcription"></a>Miért érdemes használni a Batch beszédátírási?
 
@@ -56,7 +55,7 @@ A Batch Beszédátírási API támogatja a következő formátumok:
 | MP3 | A PCM | 16-bit | 8 vagy 16 kHz, Monó, sztereó |
 | OGG | OPUS | 16-bit | 8 vagy 16 kHz, Monó, sztereó |
 
-Sztereó audiostreamek lejátszásával, a a Batch API beszédátírási bontja a bal és jobb csatorna a beszédátírási során. A két JSON-fájlok az eredmény az egyes jönnek létre egyetlen csatornákon. Az utterance (kifejezés) / időbélyegeket köszönhetően a fejlesztő hozzon létre egy rendezett végleges átiratok. A minta kérelem cenzúrázása szűrést, írásjelek és word szintű időbélyegeket tulajdonságait tartalmazza. 
+Sztereó audiostreamek lejátszásával, a a Batch API beszédátírási bontja a bal és jobb csatorna a beszédátírási során. A két JSON-fájlok az eredmény az egyes jönnek létre egyetlen csatornákon. Az utterance (kifejezés) / időbélyegeket köszönhetően a fejlesztő hozzon létre egy rendezett végleges átiratok. A minta kérelem cenzúrázása szűrést, írásjelek és word szintű időbélyegeket tulajdonságait tartalmazza.
 
 ### <a name="configuration"></a>Konfiguráció
 
@@ -97,7 +96,7 @@ Ezek a választható tulajdonságok használatával beszédátírási konfigurá
 
 Batch-átírási támogatja [Azure Blob storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) hang- és Storage írása beszédátírás olvasásához.
 
-## <a name="webhooks"></a>Webhookok 
+## <a name="webhooks"></a>webhooks
 
 A beszédátírási állapotának lekérdezése nem, a legtöbb nagy teljesítményű, vagy a legjobb felhasználói élményt. A állapotának lekérdezéséhez, regisztrálhat visszahívást, amelyet az ügyfél értesíti, amikor a hosszú ideig futó beszédátírási tevékenységei befejeződtek.
 
@@ -123,7 +122,7 @@ Szeretne kérni, hogy a hanganyag átírása kérelem diarization érdekében do
 }
 ```
 
-Word szintű időbélyegek is kellene "bekapcsolva", a paramétereket a fenti kérés a jelzi. 
+Word szintű időbélyegek is kellene "bekapcsolva", a paramétereket a fenti kérés a jelzi.
 
 A megfelelő hanganyag tartalmazni fog egy adott azonosított előadó (jelenleg tesztenként csak két beszédhangot, így az előadók azonosította "Speaker 1 ' és Beszélőfelismerési" % 2") a beszédátírási kimenet követ.
 
@@ -134,7 +133,7 @@ Azt is vegye figyelembe, hogy Diarization nem érhető el a sztereó felvételek
 
 ## <a name="sentiment"></a>Hangulat
 
-Vélemények Batch Beszédátírási API-ban új funkció, a hívás center tartomány egyik fontos szolgáltatása. Az ügyfelek használhatják a `AddSentiment` paramétereket saját kérelmek 
+Vélemények Batch Beszédátírási API-ban új funkció, a hívás center tartomány egyik fontos szolgáltatása. Az ügyfelek használhatják a `AddSentiment` paramétereket saját kérelmek
 
 1.  Elemzések lekérése az ügyfél-elégedettséget
 2.  Ismerkedjen meg a teljesítményét, az ügynökök (team a hívások fogadása)
@@ -187,7 +186,7 @@ A szolgáltatás, amely jelenleg bétaverzióban vélemények modellt használ.
 
 Teljes minták érhetők el a [GitHub-mintaadattárból](https://aka.ms/csspeech/samples) belül a `samples/batch` alkönyvtárat.
 
-Testre szabhatja a mintakódot az előfizetési adatokkal, a szolgáltatás a régióban, az SAS URI-t a hangfájl mutató alapuló átírás és modellezheti az azonosítók, abban az esetben, ha egy egyéni akusztikai és nyelvi modell használni kívánt kell. 
+Testre szabhatja a mintakódot az előfizetési adatokkal, a szolgáltatás a régióban, az SAS URI-t a hangfájl mutató alapuló átírás és modellezheti az azonosítók, abban az esetben, ha egy egyéni akusztikai és nyelvi modell használni kívánt kell.
 
 [!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchdefinition)]
 

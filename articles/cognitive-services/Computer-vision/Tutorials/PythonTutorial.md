@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Hajtsa végre a lemezkép műveletek – Python'
+title: Hajtsa végre a lemezkép műveletek – Python
 titlesuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan használhatja a Computer Vision API-t és a Pythont Jupyter-notebookokkal. Az eredményeket népszerű címtárakkal jelenítheti meg.
 services: cognitive-services
@@ -7,20 +7,20 @@ author: KellyDF
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: tutorial
-ms.date: 11/06/2018
+ms.topic: conceptual
+ms.date: 07/03/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: b5333557355aa816245b5086836eac980d90540a
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: b18f41db772c1c214bdf48c9bb765b1ce7e6d2c2
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341488"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604159"
 ---
-# <a name="tutorial-computer-vision-api-python"></a>Oktatóanyag: Számítógép Vision API Python
+# <a name="computer-vision-api-jupyter-notebook"></a>Számítógép Vision API Jupyter notebook
 
-Ebben az oktatóanyagban megtudhatja, hogyan használható a Computer Vision API a Pythonban, és hogyan vizualizálhatók az eredmények népszerű kódtárak használatával. Az oktatóanyag futtatásához a Jupytert fogja használni. Ismerje meg, hogyan interaktív Jupyter notebookok használatának első lépései, tekintse meg a [Jupyter dokumentáció](https://jupyter.readthedocs.io/en/latest/index.html).
+Ez az útmutató bemutatja, hogyan használhatja a Computer Vision API a Python, és hogyan jelenítheti meg az eredményeket, népszerű kódtárak használatával. Az oktatóanyag futtatásához a Jupytert fogja használni. Ismerje meg, hogyan interaktív Jupyter notebookok használatának első lépései, tekintse meg a [Jupyter dokumentáció](https://jupyter.readthedocs.io/en/latest/index.html).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -28,7 +28,7 @@ Ebben az oktatóanyagban megtudhatja, hogyan használható a Computer Vision API
 - [pip](https://pip.pypa.io/en/stable/installing/) eszköz
 - [Jupyter Notebook](https://jupyter.org/install) telepítve
 
-## <a name="open-the-tutorial-notebook-in-jupyter"></a>Az oktatóanyag notebookjának megnyitása a Jupyterben 
+## <a name="open-the-notebook-in-jupyter"></a>Nyissa meg a notebook Jupyter 
 
 1. Nyissa meg a [Cognitive Vision Python](https://github.com/Microsoft/Cognitive-Vision-Python) GitHub-adattárat. 
 2. Kattintson a zöld gombra az adattár klónozásához vagy letöltéséhez. 
@@ -37,7 +37,7 @@ Ebben az oktatóanyagban megtudhatja, hogyan használható a Computer Vision API
 1. Indítsa el a Jupytert a `jupyter notebook` parancs parancssorból történő futtatásával.
 1. A Jupyter ablakában kattintson a _Computer Vision API Example.ipynb_ elemre az oktatóanyag notebookjának megnyitásához.
 
-## <a name="run-the-tutorial"></a>Az oktatóanyag futtatása
+## <a name="run-the-notebook"></a>A notebook futtatása
 
 Ehhez a notebookhoz egy Computer Vision API-előfizetési kulcsra lesz szüksége. A regisztrációhoz nyissa meg az [Előfizetés lapot](https://azure.microsoft.com/try/cognitive-services/). A **Bejelentkezés** lapon jelentkezzen be a Microsoft-fiókjával. Ezután előfizethet, és beszerezheti az ingyenes kulcsokat. A feliratkozási folyamat befejezése után illessze be a kulcsot a notebook `Variables` tartalmazó szakaszába (az alább látható módon). Az elsődleges és a másodlagos kulcs egyaránt használható. Ügyeljen arra, hogy a kulcsot tegye idézőjelek közé, hogy a rendszer sztringként kezelje.
 
