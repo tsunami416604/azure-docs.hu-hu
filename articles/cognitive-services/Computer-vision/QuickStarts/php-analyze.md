@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 432ad21ac856f4abde26d30b8f1ef8b34cc6dc0e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f9375d3ce7c5127ed80f3f7fad93f4db8aa58b76
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60408665"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604306"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-php-in-computer-vision"></a>Gyors útmutató: A REST API-t és a PHP használ a Computer Vision egy távoli kép elemzése
+# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-php"></a>Gyors útmutató: A Computer Vision REST API és a PHP használatával egy távoli kép elemzése
 
 Ebben a rövid útmutatóban egy távolban tárolt képet fog elemezni vizuális jellemzők kinyerése érdekében a Computer Vision REST API-jával. Az [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) metódussal vizuális jellemzőket nyerhet ki a képek tartalma alapján.
 
@@ -36,7 +36,7 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
 
 1. Telepítse a PHP5 [`HTTP_Request2`](https://pear.php.net/package/HTTP_Request2) csomagot.
    1. Nyissa meg a parancssori ablakot rendszergazdaként.
-   1. Futtassa az alábbi parancsot:
+   1. Futtassa a következő parancsot:
 
       ```console
       pear install HTTP_Request2
@@ -179,7 +179,7 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintawebhely elem
 Ha már nincs rá szükség, törölje a fájlt, majd távolítsa el a PHP5 `HTTP_Request2` csomagot. A csomag eltávolításához hajtsa végre a következő lépéseket:
 
 1. Nyissa meg a parancssori ablakot rendszergazdaként.
-2. Futtassa az alábbi parancsot:
+2. Futtassa a következő parancsot:
 
    ```console
    pear uninstall HTTP_Request2

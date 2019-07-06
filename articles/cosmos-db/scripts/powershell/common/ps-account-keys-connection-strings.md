@@ -3,15 +3,15 @@ title: Azure PowerShell-példaszkript – fiókkulcsra és a kapcsolati karakter
 description: Az Azure PowerShell-példaszkript – fiók kulcs és a kapcsolati karakterlánc műveletekhez, egy Azure Cosmos-fiók
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
+ms.topic: sample
 ms.date: 05/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: a7f86bfee0ee2472260b622dc709dc437e53414c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 55f28ef6c6ff82f0b82b10ac1dd7931ac46aa2fc
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66247859"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67602511"
 ---
 # <a name="connection-string-and-account-key-operations-for-an-azure-cosmos-account-using-powershell"></a>A kapcsolati karakterláncot, és a fiók kulcsának műveletek egy olyan PowerShell-lel az Azure Cosmos-fiók
 

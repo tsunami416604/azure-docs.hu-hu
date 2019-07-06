@@ -3,17 +3,17 @@ title: fájl belefoglalása
 description: fájl belefoglalása
 services: functions
 author: ggailey777
-ms.service: functions
+ms.service: azure-functions
 ms.topic: include
 ms.date: 04/06/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: b6cafcfe6c892cd43f056458fe3586da834c2fd1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9c519fc2db020b8df22275c6b276c6ec23d10b1c
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178882"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67608212"
 ---
 Funkciók egyszerűvé teszi a függvényalkalmazás hozzáadása az Application Insights-integráció a [Azure Portal].
 
@@ -27,7 +27,7 @@ Funkciók egyszerűvé teszi a függvényalkalmazás hozzáadása az Application
 
     | Beállítás      | Ajánlott érték  | Leírás                                        |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Name (Név)** | Egyedi nevet az alkalmazáshoz | A legegyszerűbb használja ugyanazt a nevet a függvényalkalmazás, amelyek az előfizetésében egyedinek kell lennie. | 
+    | **Name** | Egyedi nevet az alkalmazáshoz | A legegyszerűbb használja ugyanazt a nevet a függvényalkalmazás, amelyek az előfizetésében egyedinek kell lennie. | 
     | **Location** | Nyugat-Európa | Ha lehetséges, használjon azonos [régió](https://azure.microsoft.com/regions/) a függvényalkalmazás, vagy a függvényalkalmazáshoz. |
 
 1. Válassza az **OK** gombot. Az Application Insights-erőforrást az ugyanabban az erőforráscsoportban és előfizetésben, a függvényalkalmazás jön létre. Létrehozás befejezése után zárja be az Application Insights ablakot.

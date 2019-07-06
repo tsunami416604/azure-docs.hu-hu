@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 03/11/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 4a28e9f1f911e274f9a53275afa577024405b336
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: b210af2a70a3ce858d8f53102a181c75373b4176
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474695"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606946"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Oktatóanyag: Videók és átiratok moderálása
 
@@ -37,7 +37,7 @@ Ez az oktatóanyag a következőket mutatja be:
 - Regisztráljon a [Content Moderator felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) webhely, és hozzon létre egyéni címkék. Lásd: [címkékkel](Review-Tool-User-Guide/tags.md) Ha ehhez a lépéshez segítségre van szüksége.
 
     ![Képernyőkép a videó moderálás egyéni címkék](images/video-tutorial-custom-tags.png)
-- Futtassa a mintaalkalmazást, szüksége van egy Azure-fiókra, egy Azure Media Services-erőforrás, egy Azure Content Moderator erőforrás és az Azure Active Directorybeli hitelesítő adatokat. Ezek kapcsolatos utasításokért lásd: a [videó moderálási API](video-moderation-api.md) útmutató.
+- Futtassa a mintaalkalmazást, szüksége van egy Azure-fiókra, egy Azure Media Services-erőforrás, egy Azure Content Moderator erőforrás és az Azure Active Directorybeli hitelesítő adatokat. Ezek az erőforrások beszerzésének módját útmutatásért lásd: a [videó moderálási API](video-moderation-api.md) útmutató.
 - Töltse le a [videó felülvizsgálati Konzolalkalmazás](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp) a Githubon.
 
 ## <a name="enter-credentials"></a>Adja meg hitelesítő adatait
@@ -225,7 +225,7 @@ A `GenerateVTT` jelölő használatakor hangátirat is készül.
 > [!NOTE]
 > A konzolalkalmazás az [Azure Media Indexer API-val](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) átiratokat készít a feltöltött videó hangsávjából. Az eredmények WebVTT formátumban készülnek el. További információt erről a formátumról a [webes videók szövegsávos formátumáról](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) szóló cikkben találhat.
 
-## <a name="create-a-the-human-in-the-loop-review"></a>Hozzon létre egy az emberi hurok áttekintése
+## <a name="create-a-human-review"></a>Hozzon létre egy emberi vizsgálóeszközt
 
 A moderálási folyamat visszaadja a videó kulcskockáinak listáját, valamint a hangsávok átiratát. A következő lépés egy emberi moderátoroknak szóló értékelés elkészítése a Content Moderator felülvizsgálati eszközben. Ha visszatér a `Program.cs` `ProcessVideo()` metódusához, láthatja a `CreateVideoReviewInContentModerator()` metódus meghívását. Ez a metódus a `videoReviewApi` osztályba tartozik, amely a `VideoReviewAPI.cs` fájlban található, és itt látható.
 

@@ -3,15 +3,15 @@ title: Azure PowerShell-példaszkript – Azure Cosmos DB MongoDB API-adatbázis
 description: Azure PowerShell-példaszkript – Azure Cosmos DB MongoDB API-adatbázis és gyűjtemény létrehozása
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
+ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 9263df4b803d60fa0bfdf5bdc30f62e732e774b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c299ca8ea46d8c36f16209e9b5d6b603fa2a1894
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66247454"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67602354"
 ---
 # <a name="create-a-database-and-collection-for-azure-cosmos-db---mongodb-api"></a>Hozzon létre egy adatbázist és gyűjteményt az Azure Cosmos DB - MongoDB API-val
 

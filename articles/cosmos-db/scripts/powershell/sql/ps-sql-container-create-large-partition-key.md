@@ -3,15 +3,15 @@ title: Az Azure PowerShell parancsfájl - tároló létrehozása egy Azure Cosmo
 description: Azure PowerShell-példaszkript – egy nagy partíciós kulccsal, egy Azure Cosmos-fiók egy tároló létrehozása
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
+ms.topic: sample
 ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: c4e8f26c59312b5216a6834e34c5bbc2bf58563a
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 1e61640115d1b85c69a1513b043a1a55ac720c19
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566803"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603858"
 ---
 # <a name="create-a-container-with-a-large-partition-key-in-an-azure-cosmos-account-using-powershell"></a>Hozzon létre egy tárolót egy nagy partíciós kulccsal, egy PowerShell-lel az Azure Cosmos-fiókban
 

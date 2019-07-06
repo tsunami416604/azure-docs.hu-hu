@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: af303544be7b4e7686105b7d57a71c33c0a6a314
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 55fa5ffbfe8cdb266340df1a407968d542b36c1a
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60408990"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605991"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-curl-in-computer-vision"></a>Gyors útmutató: A REST API-val miniatűrkép generálása és a cURL a Computer Vision
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-curl"></a>Gyors útmutató: A Computer Vision REST API és a cURL használatával miniatűrkép generálása
 
 Ez a rövid útmutatóban egy rendszerképből számítógépes Látástechnológiai REST API használatával létrehozza a miniatűr. Megadhatja a kívánt magasságát és szélességét, amelyek eltérőek lehetnek a oldalarányát. a bemeneti lemezképből. Computer Vision segítségével intelligens vágása nyelvelemző, mind a terület hasznos helyek azonosításához, és hozzon létre körbevágási koordináták körül, adott régióban.
 
@@ -59,7 +59,7 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
 1. Nyisson meg egy parancssort.
 1. Illessze be a szövegszerkesztőből a parancsot, majd futtassa.
 
-    ```console
+    ```bash
     curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -o <thumbnailFile> -H "Content-Type: application/json" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/generateThumbnail?width=100&height=100&smartCropping=true" -d "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Shorkie_Poo_Puppy.jpg/1280px-Shorkie_Poo_Puppy.jpg\"}"
     ```
 

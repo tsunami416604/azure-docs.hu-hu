@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/11/2019
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6722fa103b3d48a8ca8ff4b96c9d179a4f743608
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 18a00c2aebd05d2ed2da54e436d245c70bf25051
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60409090"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604460"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-c35-in-computer-vision"></a>Gyors útmutató: A REST API-t és a C használatával (OCR) nyomtatott szöveg kinyerése&#35; a Computer Vision
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-c"></a>Gyors útmutató: A Computer Vision REST API használatával (OCR) nyomtatott szöveg kinyerése ésC#
 
 Ebben a rövid, fog nyomtatott szöveg kinyerése optikai karakterfelismerés (OCR) a kép számítógépes Látástechnológiai REST API-val. Az a [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) funkció, nyomtatott szöveg a képet észlelése és a egy számítógép felhasználható karakter adatfolyamba való kinyerése a felismert karaktereket.
 
@@ -247,10 +247,6 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintaalkalmazás 
     ]
 }
 ```
-
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-
-Ha már nincs rá szükség, törölje a Visual Studio-megoldást. Ehhez nyissa meg a Fájlkezelőt, lépjen a Visual Studio-megoldást tartalmazó mappára, majd törölje azt.
 
 ## <a name="next-steps"></a>További lépések
 

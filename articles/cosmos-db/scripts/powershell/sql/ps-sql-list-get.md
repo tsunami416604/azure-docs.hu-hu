@@ -3,15 +3,15 @@ title: Azure PowerShell-példaszkript – Azure Cosmos DB listában és az SQL (
 description: Azure PowerShell-példaszkript – Azure Cosmos DB listában és az SQL (fő) API műveletek beolvasása
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
+ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: a2bcf8a123ffd19c84e2d39b38d0c9612ba43afb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4c82f1ffffe5149960f710252ec8dfe967ffbe2b
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66247349"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603813"
 ---
 # <a name="list-and-get-databases-and-containers-for-azure-cosmos-db---sql-core-api"></a>Listán, és az Azure Cosmos DB - (mag) API-t az SQL adatbázisok és a tárolók beolvasása
 

@@ -3,15 +3,15 @@ title: Az Azure PowerShell parancsfájl - tároló indexelése ki van kapcsolva 
 description: Azure PowerShell-példaszkript – egy tároló indexelése ki van kapcsolva egy Azure Cosmos-fiók létrehozása
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
+ms.topic: sample
 ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4fc75eadd0f3ad87d313d10a9005997d46103666
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 7cec954bc85873d300a4abb96396025600e17201
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566816"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603869"
 ---
 # <a name="create-a-container-indexing-turned-off-in-an-azure-cosmos-account-using-powershell"></a>Egy tároló indexelése ki van kapcsolva egy PowerShell-lel az Azure Cosmos-fiók létrehozása
 

@@ -1,25 +1,25 @@
 ---
 title: 'Gyors útmutató: A nemkívánatos tartalmat a képeket elemezhet C# -Content Moderator'
 titlesuffix: Azure Cognitive Services
-description: Kép tartalmának elemzése különböző kifogásolható tartalmak felismeréséhez a Content Moderator SDK for .NET használatával
+description: Moderátor tartalom SDK használatával a .NET-hez különböző nemkívánatos anyagok tartalmát kép elemzése
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 03/20/2019
+ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: 9cc18ce1fde5de354e3da5e384c08ada1927d097
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d9a28dcd4af68cf9c00eb3d338c4bd83c8d89ecc
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60699069"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604121"
 ---
 # <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>Gyors útmutató: A nemkívánatos tartalmat a képeket elemezhetC#
 
-Ez a cikk ahhoz biztosít információt és kódmintákat, hogy megismerkedhessen a [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) használatával. Megtanulja, hogyan szűrheti ki a felnőtteknek szóló és kényes tartalmakat, hogyan kereshet kinyerhető szöveget, és hogyan ismerheti fel az emberi arcokat az esetlegesen kifogásolható tartalom moderálása céljából.
+Ez a cikk ahhoz biztosít információt és kódmintákat, hogy megismerkedhessen a [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) használatával. Megtudhatja, hogyan felnőtt vagy pikáns tartalmak és a szöveg kibontható-e, és azzal a céllal, hogy a potenciálisan nem kívánt tartalom moderálása emberi arcok azonosítására.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
 
@@ -60,7 +60,7 @@ Adja hozzá a következő kódot a *Program.cs* fájlhoz, hogy létrehozzon egy 
 
 ### <a name="set-up-input-and-output-targets"></a>Bemeneti és kimeneti célok beállítása
 
-Adja hozzá a következő statikus mezőket a **Program** osztályhoz a _Program.cs_-ben. Ezek adják meg a bemeneti kép tartalmának és a kimeneti JSON tartalmának fájljait.
+Adja hozzá a következő statikus mezőket a **Program** osztályhoz a _Program.cs_-ben. Ezek a mezők adja meg a bemeneti kép tartalomhoz kapcsolódó fájlokat, és a kimeneti JSON-tartalom.
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=49-53)]
 
@@ -86,13 +86,13 @@ Adja hozzá a **Program** osztályhoz a következő metódust. Ez a módszer há
 
 ### <a name="load-the-input-images"></a>A bemeneti képek betöltése
 
-Adja hozzá a következő kódot a **Main** metódushoz a **Program** osztályban. Ez beállítja a programot, hogy lekérje a bemeneti fájlban található egyes képek URL-címeinek kiértékelési adatait. Ezután a program ezeket az adatokat egy kimeneti fájlba írja.
+Adja hozzá a következő kódot a **Main** metódushoz a **Program** osztályban. Ez a kód beállítja a program az egyes kép URL-címe a bemeneti fájl értékelési adatok lekéréséhez. Ezután a program ezeket az adatokat egy kimeneti fájlba írja.
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=17-46)]
 
 ## <a name="run-the-program"></a>A program futtatása
 
-A program a JSON-sztringadatokat a _ModerationOutput.json_ fájlba írja. Az ebben a rövid útmutatóban használt mintaképek a következő kimenetet adják. Vegye figyelembe, hogy minden egyes kép külön `ImageModeration`, `FaceDetection` és `TextDetection` szakasszal rendelkezik, amelyek az **EvaluateImage** metódus három API-hívásának felelnek meg.
+A program a JSON-sztringadatokat a _ModerationOutput.json_ fájlba írja. Az ebben a rövid útmutatóban használt mintaképek a következő kimenetet adják. Minden rendszerkép rendelkezik a különböző szakaszokat `ImageModeration`, `FaceDetection`, és `TextDetection`, amely a három API-hívásnak felel meg a **EvaluateImage** metódust.
 
 ```json
 [{

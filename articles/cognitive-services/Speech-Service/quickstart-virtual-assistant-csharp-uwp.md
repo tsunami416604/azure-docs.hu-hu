@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: travisw
-ms.custom: ''
-ms.openlocfilehash: 4044f8d48efae4e8423f780c85e0f3ccfde12461
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 22c18b573e7107163f858c79956ca6f5380f6834
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67467057"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604977"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Gyors útmutató: Hozzon létre egy hang-és felhőközpontú virtuális asszisztensek UWP Speech-SDK-val
 
@@ -81,7 +80,7 @@ Ez a rövid útmutató azt ismerteti, lépésről lépésre, hogyan, hogy egy eg
     </Page>
     ```
 
-1. Nyissa meg a háttérkód forrásfájl `MainPage.xaml.cs`. Megtalálhatja azt alatta `MainPage.xaml`. Cserélje le a tartalmát az alábbi kódot. Itt van ez a minta ismerteti: 
+1. Nyissa meg a háttérkód forrásfájl `MainPage.xaml.cs`. Megtalálhatja azt alatta `MainPage.xaml`. Cserélje le a tartalmát az alábbi kódot. Itt van ez a minta ismerteti:
 
     * Using utasításokat a beszéd- és Speech.Dialog névtér
     * Egy gomb kezelőnek vezetékes mikrofon-hozzáférés biztosításához egy egyszerű megvalósítása

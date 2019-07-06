@@ -1,25 +1,25 @@
 ---
 title: 'Gyors útmutató: A szöveg elemzése C# -Content Moderator'
 titlesuffix: Azure Cognitive Services
-description: Szöveg tartalmának elemzése különböző kifogásolható tartalmak felismeréséhez a Content Moderator SDK for .NET használatával
+description: Moderátori tartalom SDK használatával a .NET-hez különböző nemkívánatos anyagok tartalmát szöveg elemzése
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: 09fd58fa33873c06ac5dab4970af199bc3030479
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f848ea0d1c86b9c12d26c59b8f0e92d1e5d70094
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60607090"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604048"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Gyors útmutató: A nem kívánt tartalom szöveges tartalmakat elemezhetC#
 
-Ez a cikk ahhoz biztosít információt és kódmintákat, hogy megismerkedhessen a [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) használatával. Megtanulhatja, hogyan végezhet szűrést kifejezések alapján, és hogyan osztályozhatja a szöveges tartalmakat az esetlegesen kifogásolható tartalmak moderálása céljából.
+Ez a cikk ahhoz biztosít információt és kódmintákat, hogy megismerkedhessen a [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) használatával. Megtudhatja, hogyan kifejezés-alapú szűrés és a szöveges tartalom azzal a céllal, hogy a potenciálisan nem kívánt tartalom moderálása besorolása végrehajtásához.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
 
@@ -57,11 +57,11 @@ Adja hozzá a következő kódot a *Program.cs* fájlhoz, hogy létrehozzon egy 
 
 ### <a name="set-up-input-and-output-targets"></a>Bemeneti és kimeneti célok beállítása
 
-Adja hozzá a következő statikus mezőket a **Program** osztályhoz a _Program.cs_-ben. Ezek adják meg a bemeneti szöveg tartalmának és a kimeneti JSON tartalmának fájljait.
+Adja hozzá a következő statikus mezőket a **Program** osztályhoz a _Program.cs_-ben. Ezek a mezők adja meg a bemeneti szöveg tartalomhoz kapcsolódó fájlokat, és a kimeneti JSON-tartalom.
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=15-19)]
 
-Létre kell hoznia a *TextFile.txt* bemeneti fájlt, és ennek megfelelően frissítenie kell az elérési útját (a relatív elérési utak a végrehajtási könyvtárhoz képest relatívak). Nyissa meg a _TextFile.txt_ fájlt, és adja hozzá a moderálandó szöveget. Ez a rövid útmutató a következő mintaszöveget használja:
+Létrehozásához szüksége lesz a *TextFile.txt* bemeneti fájlt, és frissítse az elérési útját (a végrehajtási könyvtár képest relatív útvonalakat használ). Nyissa meg a _TextFile.txt_ fájlt, és adja hozzá a moderálandó szöveget. Ez a rövid útmutató a következő mintaszöveget használja:
 
 ```
 Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.

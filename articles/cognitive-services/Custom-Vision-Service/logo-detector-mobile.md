@@ -8,18 +8,18 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 03/11/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 51b2cd42fabe6406f88388e99459a6f3dd3e69f5
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: b4b10591069b71a4e70769f5bdcd6149768c5007
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827655"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604023"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Oktatóanyag: Ismeri fel az Azure-szolgáltatás emblémát a kamera képek
 
-Ebben az oktatóanyagban azt vizsgáljuk meg egy mintaalkalmazást, amely nagyobb a forgatókönyv részét képező Azure Custom Vision használja. A mesterséges Intelligencia vizuális kiépítése alkalmazást, a Xamarin.Forms-alkalmazás mobil platformokhoz elemzi az Azure-szolgáltatás emblémák kamera készíthessenek, és majd üzembe helyezi a tényleges szolgáltatások a felhasználó Azure-fiókjába. Itt megtudhatja, hogyan használja Custom Vision együtt más összetevőket egy hasznos, teljes körű alkalmazás biztosításához. Futtatni teljes alkalmazás saját maga, vagy egyszerűen a Custom Vision része a telepítés befejezéséhez, és ismerje meg, hogy az alkalmazás használ, azt.
+Ebben az oktatóanyagban azt vizsgáljuk meg egy mintaalkalmazást, amely nagyobb a forgatókönyv részét képező Azure Custom Vision használja. A mesterséges Intelligencia vizuális kiépítése alkalmazást, a Xamarin.Forms-alkalmazás mobil platformokhoz elemzi az Azure-szolgáltatás emblémák kamera készíthessenek, és majd üzembe helyezi a tényleges szolgáltatások a felhasználó Azure-fiókjába. Itt megtudhatja, hogyan használja Custom Vision együtt más összetevőket egy hasznos, teljes körű alkalmazás biztosításához. A teljes forgatókönyv futtathatja saját maga, vagy végezze el a telepítés csak a Custom Vision részeként, és ismerje meg, hogy az alkalmazás használ, azt.
 
 Ez az oktatóanyag a következőket mutatja be:
 
@@ -51,7 +51,7 @@ Jelentkezzen be a [Custom Vision webhely](https://customvision.ai/) , és hozzon
 
 Ezután az embléma észlelési algoritmus betanítás rendszerképek az Azure-szolgáltatás emblémák feltöltése és címkézés őket manuálisan. A AIVisualProvision tárház tartalmaz egy betanító kép, amelyet használhat. A webhelyen válassza ki a **lemezképeket** gombot a **betanító kép** fülre. Ezután nyissa meg a **dokumentumok/képek/Training_DataSet** mappában található az adattárban. Kell manuálisan címkézése a emblémák az egyes rendszerképek, így csak tesztelt ki a projektet, előfordulhat, hogy szeretné-e a lemezképek csak egy részhalmazát feltölteni. Minden címke használatához legalább 15 példányok feltöltésére.
 
-Miután feltölti a betanító kép, válassza ki a jelenik az elsőt. A címkézési ablakban megjelenik. Állít be, és rendelje hozzá a címkéket az egyes rendszerképek mindkét emblémának. 
+Miután feltölti a betanító kép, válassza ki a jelenik az elsőt. A címkézési ablak jelenik meg. Állít be, és rendelje hozzá a címkéket az egyes rendszerképek mindkét emblémának. 
 
 ![A Custom Vision webhelyen címkézés embléma](media/azure-logo-tutorial/tag-logos.png)
 
@@ -63,13 +63,13 @@ Követően egy képet, nyissa meg a következő címke jobb. Amikor végzett, z�
 
 ## <a name="train-the-object-detector"></a>Az objektum érzékelő betanítása
 
-A bal oldali panelen állítsa be a **címkék** váltson **címkézett** a kép megjelenítéséhez. Ezután válassza ki a modell betanításához az oldal tetején lévő zöld gombot. Ez hogyan az algoritmust, hogy ismeri fel az új képek ugyanazt a címkét. Azt is teszteli a modellt a meglévő rendszerképek pontossága pontszámok létrehozásához néhány.
+A bal oldali panelen állítsa be a **címkék** váltson **címkézett** a kép megjelenítéséhez. Ezután válassza ki a modell betanításához az oldal tetején lévő zöld gombot. Az algoritmus fog betanításához felismerje az új képek ugyanazt a címkét. Azt is teszteli a modellt a meglévő rendszerképek pontossága pontszámok létrehozásához néhány.
 
 ![A Custom Vision webhely betanító kép lapján. Az ezen a képernyőfelvételen látható szerint alakul a vonat gomb](media/azure-logo-tutorial/train-model.png)
 
 ## <a name="get-the-prediction-url"></a>Az előrejelzési URL-Címének lekéréséhez
 
-Miután a modell tanítása, készen áll integrálnia kell az alkalmazást. Ehhez be kell szereznie, a végpont URL-címe (a modellt, amely lekérdezi az alkalmazás címe) és az előrejelzési kulcs (a hozzáférést az alkalmazás számára előrejelzési kérések). Az a **teljesítmény** lapon jelölje be a **előrejelzési URL-cím** gombra a lap tetején.
+Miután a modell tanítása, készen áll integrálnia kell az alkalmazást. A végpont URL-címe (a modellt, amely lekérdezi az alkalmazás címe) és az előrejelzési kulcs (a hozzáférést az alkalmazás számára előrejelzési kérések) kell. Az a **teljesítmény** lapon jelölje be a **előrejelzési URL-cím** gombra a lap tetején.
 
 ![A Custom Vision webhelyre, és egy URL-címét és API-kulcs megjelenítő előrejelzési API ablak megjelenítése](media/azure-logo-tutorial/cusvis-endpoint.png)
 
@@ -95,7 +95,7 @@ Az oktatóanyag a Custom Vision része befejeződött. Ha szeretné futtatni az 
 
 Fizessen elő a Computer Vision service, kulcsának és végpontjának URL-Címének lekéréséhez. Ez a lépés segítséget, lásd: [előfizetői azonosítók beszerzése](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtosubscribe).
 
-![A Computer Vision service az Azure Portalon, a kiválasztott gyors üzembe helyezési menü. Egy hivatkozást a kulcsok vázolt, mivel az API-végpont URL-címe](media/azure-logo-tutorial/comvis-keys.png)
+![A Computer Vision szolgáltatás az Azure Portalon, a rövid útmutató menüből kiválasztva. Egy hivatkozást a kulcsok vázolt, mivel az API-végpont URL-címe](media/azure-logo-tutorial/comvis-keys.png)
 
 Ezután nyissa meg a *Source\VisualProvision\AppSettings.cs* fájlt, és töltse fel a `ComputerVisionEndpoint` és `ComputerVisionKey` változók a megfelelő értékekkel.
 

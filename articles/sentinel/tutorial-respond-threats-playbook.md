@@ -7,7 +7,7 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: e4afc5c8-ffad-4169-8b73-98d00155fa5a
-ms.service: sentinel
+ms.service: azure-sentinel
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: d5f055ce337cb43e0813bc9ff295d0958e06f561
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: db529b45751ff418c93c43119f0d925f6b4b086e
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205444"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605308"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel-preview"></a>Oktatóanyag: Automatizált threat válaszok az Azure-on Előzetesben Sentinel-beállítása
 
@@ -62,7 +62,7 @@ Kövesse az alábbi lépéseket egy új biztonsági forgatókönyv létrehozása
 1. Nyissa meg a **Azure Sentinel-** irányítópultot.
 2. A **felügyeleti**válassza **forgatókönyvek**.
 
-   ![Logic App](./media/tutorial-respond-threats-playbook/playbookimg.png)
+   ![Logikai alkalmazás](./media/tutorial-respond-threats-playbook/playbookimg.png)
 
 3. Az a **Sentinel-Azure - forgatókönyvek (előzetes verzió)** kattintson **Hozzáadás** gombra.
 
@@ -76,7 +76,7 @@ Kövesse az alábbi lépéseket egy új biztonsági forgatókönyv létrehozása
 
 6. Ekkor megnyílik a Logikaialkalmazás-Tervező, vagy új hozhat létre és szerkesztheti a sablont. Egy forgatókönyv-létrehozásával kapcsolatos további információkért a [Logic Apps](../logic-apps/logic-apps-create-logic-apps-from-templates.md).
 
-7. Létrehozásakor egy üres forgatókönyv a a **keresés az összes összekötő és trigger között** mezőbe írja be a *Azure Sentinel-*, és válassza ki **aktiváltegyAzureSentinel-riasztásraadottválaszesetén**. <br>Miután elkészült, az új forgatókönyv megjelenik a **forgatókönyvek** listája. Ha nem jelenik meg, kattintson a **frissítése**. 
+7. Létrehozásakor egy üres forgatókönyv a a **keresés az összes összekötő és trigger között** mezőbe írja be a *Azure Sentinel-* , és válassza ki **aktiváltegyAzureSentinel-riasztásraadottválaszesetén**. <br>Miután elkészült, az új forgatókönyv megjelenik a **forgatókönyvek** listája. Ha nem jelenik meg, kattintson a **frissítése**. 
 
 7. Most meghatározhatja, mi történjen a forgatókönyv aktiválásakor. Hozzáadhat egy műveletet, logikai feltételeket, kapcsolóeset-feltételeket vagy hurkokat.
 

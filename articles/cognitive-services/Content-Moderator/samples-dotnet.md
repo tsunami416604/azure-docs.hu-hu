@@ -9,18 +9,16 @@ ms.subservice: content-moderator
 ms.topic: sample
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: f2b5fb5c44cbb2e0d766c49ed6b715484c22f62e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0857d571e3bb029f564299efbe8cc4fdf5fbb3ff
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60608797"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604112"
 ---
 # <a name="content-moderator-net-sdk-samples"></a>Content Moderator .NET SDK-minták
 
 A következő felsorolás a .NET-hez készült Azure Content Moderator SDK használatával létrehozott kódmintákra mutató hivatkozásokat tartalmaz.
-
-- **Segédkódtárba helyezni**: [Hozzon létre egy Content Moderator ügyfél más minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/ModeratorHelper/Clients.cs). Lásd a [rövid útmutatót](content-moderator-helper-quickstart-dotnet.md).
 
 ## <a name="moderation"></a>Moderálás
 

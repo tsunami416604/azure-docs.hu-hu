@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/06/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 212b935e8986731940effe79ec80f52c0d7b64c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68cdd147977294954051735d70307305aa5dc0cb
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60815381"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603327"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>Gyors útmutató: Arcfelismerés a képet, a Face REST API és a cURL használatával
 
@@ -29,7 +29,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="write-the-command"></a>A parancs írása
  
-A következőkhöz hasonló parancsot a Face API meghívásához és a egy rendszerképből face attribútumadatok visszaadásához fog használni. Először másolja be a kódot egy szövegszerkesztőbe&mdash;kell módosítania a parancs bizonyos részeit, mielőtt is futtatható legyen.
+A Face API-t és a face attribútum adatokat kérhet le a képet fogja használni a következőkhöz hasonló parancsot. Először másolja be a kódot egy szövegszerkesztőbe&mdash;kell módosítania a parancs bizonyos részeit, mielőtt is futtatható legyen.
 
 ```shell
 curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise" -H "Content-Type: application/json" --data-ascii "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}"
@@ -40,7 +40,7 @@ Cserélje le `<Subscription Key>` az Arcfelismerés érvényes előfizetési kul
 
 ### <a name="face-endpoint-url"></a>Face végpont URL-címe
 
-Az URL-cím `https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect` azt jelzi, hogy a lekérdezés Azure Face végpontot. Előfordulhat, hogy módosítania az URL-címet, a régiót, amelyben felel meg az előfizetési kulcs megfelelő első része (lásd a [Face API-dokumentumok](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) minden régióban végpontok listáját).
+Az URL-cím `https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect` azt jelzi, hogy a lekérdezés Azure Face végpontot. Előfordulhat, hogy módosítania az URL-címet, a régiót, amelyben felel meg az előfizetési kulcs megfelelő első része. Tekintse meg a [Face API-dokumentumok](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) minden régióban végpontok listáját.
 
 ### <a name="url-query-string"></a>URL-cím lekérdezési karakterlánc
 
@@ -51,13 +51,13 @@ A Face végponti URL-cím lekérdezési karakterláncában Megadja, hogy melyik 
 ```
 
 ### <a name="image-source-url"></a>Forrás URL-címe
-A forrás URL-cím azt jelzi, hogy bemeneteként használni kívánt lemezkép. Módosíthatja ezt a képet az elemezni kívánt mutasson.
+A forrás URL-cím azt jelzi, hogy bemeneteként használni kívánt lemezkép. Módosíthatja ezt a képet elemzési mutasson.
 
 ```
 https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg
 ``` 
 
-## <a name="run-the-command"></a>A parancs futtatása
+## <a name="run-the-command"></a>Futtassa a
 
 Amikor végzett a módosításokat, nyisson meg egy parancssort, és adja meg az új parancsot. Megtekintheti az arcfelismerési adatokat JSON-adatok a konzolablakban jelenik meg. Példa:
 

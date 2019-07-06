@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 0e24f66369cf990f6b271b894a31dc8395068e17
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: d61141a0955f916b1d4bfeabb22454ec38415cea
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257331"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603240"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Oktatóanyag: Ismeri fel a beszéd, a beszéd SDK-t a szándékC#
 
@@ -47,7 +47,7 @@ A LUIS integrálható a beszédszolgáltatások felismerni a speech leképezése
 
 A LUIS kétféle kulcsot kezel:
 
-|Kulcstípus|Cél|
+|Kulcs típusa|Cél|
 |--------|-------|
 |létrehozás|LUIS-appok programozott létrehozása és módosítása|
 |endpoint |engedélyezi a hozzáférést egy adott LUIS-apphoz|

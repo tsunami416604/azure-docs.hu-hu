@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 14cf500cff9f1f7f8b1573862c3060326e6518fa
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: d814a943bc8dc789abe84b33583714beb998c0ef
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688860"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607019"
 ---
 # <a name="what-is-azure-content-moderator"></a>Mi az az Azure Content Moderator?
 
@@ -65,7 +65,7 @@ A felülvizsgálati API-k lehetővé teszik a moderálási folyamat integrálás
 
 ## <a name="the-review-tool"></a>A felülvizsgálati eszköz
 
-A Content Moderator szolgáltatást is tartalmaz a webalapú [vizsgálóeszköz](Review-Tool-User-Guide/human-in-the-loop.md), tartalmat tároló, amely áttekinti az emberi moderátorok feldolgozni. Az emberi bevitel nem tanítja be a szolgáltatást, de a szolgáltatás és az emberi felülvizsgáló csapatok együttes munkája lehetővé teszi, hogy a fejlesztők megfelelő egyensúlyt érjenek el a hatékonyság és a pontosság között. A felülvizsgálati eszköz is biztosít egy felhasználóbarát előtér-Content Moderator erőforrások különböző.
+A Content Moderator szolgáltatást is tartalmaz a webalapú [vizsgálóeszköz](Review-Tool-User-Guide/human-in-the-loop.md), tartalmat tároló, amely áttekinti az emberi moderátorok feldolgozni. Az emberi bevitel nem tanítja be a szolgáltatást, de a szolgáltatás és az emberi felülvizsgáló csapatok együttes munkája lehetővé teszi, hogy a fejlesztők megfelelő egyensúlyt érjenek el a hatékonyság és a pontosság között. A felülvizsgálati eszköz is biztosít a különböző erőforrások a Content Moderator felhasználóbarát kezelőfelület.
 
 ![A Content Moderator emberi felülvizsgálati eszköz kezdőlapja](images/homepage.PNG)
 

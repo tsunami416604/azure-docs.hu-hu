@@ -3,15 +3,15 @@ title: Azure PowerShell-példaszkript – Azure Cosmos DB Update RU/s (fő) API 
 description: Azure PowerShell-példaszkript – Azure Cosmos DB Update RU/s (fő) API SQL
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
+ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 9558579fbdbd2185f6de650547863361ff2b80a4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fae1e7946905a96fbbf00909c96dd3aa99d766d5
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66247334"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603840"
 ---
 # <a name="update-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>Egy adatbázis vagy a tároló az Azure Cosmos DB - (mag) API-t az SQL frissítési RU/s
 

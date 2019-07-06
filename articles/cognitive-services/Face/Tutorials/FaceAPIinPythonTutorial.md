@@ -1,25 +1,25 @@
 ---
 title: 'Gyors útmutató: Észlelheti és keret arcokat a képet, a Python SDK-val'
 titleSuffix: Azure Cognitive Services
-description: Ez a rövid útmutatóban létrehozhat egy egyszerű Python-szkriptet, amely a Face API segítségével észlelheti és a egy távoli képen arcok keret.
+description: Ez a rövid útmutatóban létrehozhat egy Python-szkriptet, amely a Face API segítségével észlelheti és a egy távoli képen arcok keret.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 11/13/2018
+ms.date: 07/03/2018
 ms.author: sbowles
-ms.openlocfilehash: b816f4b78921c4bace1d15dd408b3fd701a3d6c5
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 741dd18a3b8da5e44d77c24d46adb8d550322281
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67339370"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603282"
 ---
 # <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>Gyors útmutató: Hozzon létre egy Python-szkriptet, és alkalmas keretet biztosítanak az arcok a képen
 
-Ez a rövid útmutatóban létrehozhat egy egyszerű Python-szkriptet, amely használja az Azure Face API, a Python SDK-n keresztül egy távoli lemezképben lévő emberi arcok észlelése. Az alkalmazás megjeleníti a kiválasztott kép, és megrajzolja az egyes észlelt face köré keretet.
+Ez a rövid útmutatóban létrehozhat egy Python-szkriptet, amely használja az Azure Face API, a Python SDK-n keresztül egy távoli lemezképben lévő emberi arcok észlelése. Az alkalmazás megjeleníti a kiválasztott kép, és megrajzolja az egyes észlelt face köré keretet.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
 
@@ -39,7 +39,7 @@ pip install cognitive_face
 
 ## <a name="detect-faces-in-an-image"></a>A kép arcok észlelése
 
-Hozzon létre egy új Python-szkriptet nevű _FaceQuickstart.py_ , és adja hozzá a következő kódot. Ez az arcfelismerés központi funkcióit. Le kell cserélnie `<Subscription Key>` a kulcs értékét. Is szükség lehet értékének módosítása `BASE_URL` a megfelelő régióazonosító használata a kulcshoz (lásd a [Face API-dokumentumok](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) minden régióban végpontok listáját). Ingyenes próba-előfizetését kulcsokat hoz létre a a **westus** régióban. Beállíthatja `img_url` URL-címét használni kívánt képet.
+Hozzon létre egy új Python-szkriptet nevű _FaceQuickstart.py_ , és adja hozzá a következő kódot. Ez a kód kezeli az arcfelismerés központi funkcióit. Le kell cserélnie `<Subscription Key>` a kulcs értékét. Is szükség lehet értékének módosítása `BASE_URL` a megfelelő régióazonosító használata a kulcshoz (lásd a [Face API-dokumentumok](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) minden régióban végpontok listáját). Ingyenes próba-előfizetését kulcsokat hoz létre a a **westus** régióban. Beállíthatja `img_url` URL-címét használni kívánt képet.
 
 A parancsfájl arcok észlelése meghívásával a **cognitive_face.face.detect** metódussal, amely becsomagolja a [hibakeresés](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) REST API-t és a egy téglalapot listáját adja vissza.
 
@@ -64,11 +64,11 @@ print(faces)
 
 Az alkalmazás futtatása paranccsal `python FaceQuickstart.py`. A konzolablakban, a következőhöz hasonló szöveg választ kell kapnia:
 
-```shell
+```console
 [{'faceId': '26d8face-9714-4f3e-bfa1-f19a7a7aa240', 'faceRectangle': {'top': 124, 'left': 459, 'width': 227, 'height': 227}}]
 ```
 
-Ez az észlelt arcok listáját. A lista minden eleme van egy **dict** példányán, amelyen `faceId` van egy egyedi Azonosítót a felismert arc és `faceRectangle` ismerteti az észlelt face pozícióját. 
+A kimenet észlelt arcok listáját jelöli. A lista minden eleme van egy **dict** példányán, amelyen `faceId` van egy egyedi Azonosítót a felismert arc és `faceRectangle` ismerteti az észlelt face pozícióját. 
 
 > [!NOTE]
 > Face azonosítók 24 óra; után lejárnak arcfelismerési adatokat explicit módon tárolja, ha szeretné megtartani hosszú távú kell.
@@ -83,7 +83,7 @@ from io import BytesIO
 from PIL import Image, ImageDraw
 ```
 
-A szkript alján adja hozzá a következő kódot. Ez létrehoz egy egyszerű függvényt a téglalap koordináták elemzéséhez, és párnád használja az eredeti rendszerkép téglalapokat rajzolhat. A lemezképet, majd az alapértelmezett image Viewer megjeleníti.
+A szkript alján adja hozzá a következő kódot. Ez a kód létrehoz egy egyszerű függvényt a téglalap koordináták elemzéséhez, és az eredeti rendszerkép téglalapokat rajzolhat a párnád segítségével. A lemezképet, majd az alapértelmezett image Viewer megjeleníti.
 
 ```python
 # Convert width height to a point in a rectangle

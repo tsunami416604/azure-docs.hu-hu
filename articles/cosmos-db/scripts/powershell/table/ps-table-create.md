@@ -3,15 +3,15 @@ title: Azure PowerShell-példaszkript – Azure Cosmos DB Table API-tábla létr
 description: Azure PowerShell-példaszkript – Azure Cosmos DB Table API-tábla létrehozásához
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
+ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: d159ea7c4b48f7b028ed2c3774713fc1d1384153
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 23b80befc8859916958a0004eecde3fabdf85c5e
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66247319"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67602089"
 ---
 # <a name="create-a-table-for-azure-cosmos-db---table-api"></a>Hozzon létre egy táblát az Azure Cosmos DB - Table API
 

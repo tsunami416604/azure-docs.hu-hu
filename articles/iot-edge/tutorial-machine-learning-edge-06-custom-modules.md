@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6c4636fe370a4046b1c5020aee249529f1498639
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 16c32fc14805ac8ae1412671b2bb400456b4ab7d
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155529"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603647"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Oktatóanyag: Hozhat létre és telepíthet egyéni IoT Edge-modulok
 
@@ -245,7 +245,7 @@ Ahogy említettük, az IoT Edge-futtatókörnyezet használ-e a konfigurált út
 3. Ezután adjon hozzá egy útvonalat üzenetek rulClassifier modulból a turbofanRouter modulba:
 
    ```json
-   "classifierToRouter": "FROM /messages/modules/classifier/outputs/amloutput INTO BrokeredEndpoint(\"/modules/turbofanRouter/inputs/rulInput\")"
+   "classifierToRouter": "FROM /messages/modules/turbofanRulClassifier/outputs/amloutput INTO BrokeredEndpoint(\"/modules/turbofanRouter/inputs/rulInput\")"
    ```
 
 #### <a name="outputs"></a>Kimenetek
@@ -255,7 +255,7 @@ Négy további útvonalakat adjon a $edgeHub útvonal paramétert, az útválasz
 1. Program.cs határozza meg a SendMessageToClassifier(), amely a modul-ügyfelet használ, egy üzenet küldéséhez az RUL osztályozó az útvonal segítségével módszert:
 
    ```json
-   "routerToClassifier": "FROM /messages/modules/turbofanRouter/outputs/classOutput INTO BrokeredEndpoint(\"/modules/classifier/inputs/amlInput\")"
+   "routerToClassifier": "FROM /messages/modules/turbofanRouter/outputs/classOutput INTO BrokeredEndpoint(\"/modules/turbofanRulClassifier/inputs/amlInput\")"
    ```
 
 2. SendRulMessageToIotHub() a modul-ügyfelet használ, az eszköz csak az RUL adatokat küldhet az IoT Hub, az útvonal-n keresztül:

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 280143d54e516fb626bb2d5afd01653e03d8a82c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2ed1a20bf47771d927c0d58730fa0eb4471572af
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60815446"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603376"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Gyors útmutató: Arcfelismerés a képet a REST API-t és a PHP használatával
 
@@ -43,7 +43,7 @@ Hozzon létre egy új HTML-fájlt *detectFaces.html*, és adja hozzá a követke
 
 ## <a name="write-the-php-script"></a>A PHP-parancsfájlok írása
 
-Adja hozzá a következő kódot a `body` elem a dokumentum. Állít be egy URL-cím mezőben, az alapszintű felhasználói felületet egy **face elemzése** gombra, a egy válasz panelre, és a egy kép megjelenítési ablaktáblán.
+Adja hozzá a következő kódot a `body` elem a dokumentum. Ezt a kódot állít be egy URL-cím mezőben, az alapszintű felhasználói felületet egy **face elemzése** gombra, a egy válasz panelre, és a egy kép megjelenítési ablaktáblán.
 
 ```php
 <?php

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 03/21/2019
+ms.date: 07/03/2019
 ms.author: areddish
-ms.openlocfilehash: 01052e218d2c7017ca6f29126f7232aeee16705a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 62f60e0a143bee7e8392792719b30aca1d629880
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60608142"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606861"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-sdk-for-java"></a>Gyors útmutató: Kép besorolási projekt létrehozása a Javához készült egyéni Látástechnológiai SDK-val
 
@@ -29,7 +29,7 @@ Ez a cikk ahhoz biztosít információt és mintakódot, hogy megismerkedhessen 
 
 ## <a name="get-the-custom-vision-sdk-and-sample-code"></a>A Custom Vision SDK és a mintakód letöltése
 
-A Custom Visiont használó Java-alkalmazás megírásához a Custom Vision Maven-csomagokra lesz szüksége. A csomagokat tartalmazza a mintaprojekt, amelyet le fog tölteni, azonban külön is elérheti őket itt.
+A Custom Visiont használó Java-alkalmazás megírásához a Custom Vision Maven-csomagokra lesz szüksége. Ezeket a csomagokat, töltse le a mintaprojektet szerepelnek, de elérheti azokat külön-külön itt.
 
 A Custom Vision SDK telepíthető a maven központi tárából:
 
@@ -51,7 +51,7 @@ $env:AZURE_CUSTOMVISION_PREDICTION_API_KEY ="<your prediction api key>"
 
 ## <a name="understand-the-code"></a>A kód értelmezése
 
-Töltse be a `Vision/CustomVision` projektet a Java IDE-be, majd nyissa meg a _CustomVisionSamples.java_ fájlt. Futtassa a **runSample** metódust, és tegye megjegyzésbe az **ObjectDetection_Sample** metódushívást – ez ugyanis az objektumészlelési forgatókönyvet hajtja végre, amelyre ez az útmutató nem tér ki. Az **ImageClassification_Sample** metódus valósítja meg ennek a példának az elsődleges funkcióját – keresse meg a definícióját, és vizsgálja meg a kódot.
+Töltse be a `Vision/CustomVision` projektet a Java IDE-be, majd nyissa meg a _CustomVisionSamples.java_ fájlt. Keresse meg a **runSample** metódust, és tegye megjegyzésbe a **ObjectDetection_Sample** metódushívás&mdash;ezen metódus hajtja végre az észlelési Ez az útmutató nem terjed ki objektum forgatókönyvben. Az **ImageClassification_Sample** metódus valósítja meg ennek a példának az elsődleges funkcióját – keresse meg a definícióját, és vizsgálja meg a kódot.
 
 ### <a name="create-a-custom-vision-service-project"></a>Custom Vision Service-projekt létrehozása
 

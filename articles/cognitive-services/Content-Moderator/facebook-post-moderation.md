@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 01/18/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 5d31285ca305ba7fefdf31b4a97e3183f58b3e3b
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: dd06330e82850cc44bc0f4d36ba7caf596ace939
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233814"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603516"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Oktatóanyag: Mérsékelt Facebook-bejegyzések és -parancsok használata az Azure Content Moderator
 
@@ -48,11 +48,11 @@ Tekintse meg a [próbálja ki a Content Moderator, a weben](quick-start.md) regi
 
 ## <a name="configure-image-moderation-workflow"></a>Kép moderálás munkafolyamat konfigurálása
 
-Tekintse meg a [definiálása, tesztelési és használja a munkafolyamatok](review-tool-user-guide/workflows.md) útmutató egy egyéni rendszerkép munkafolyamat létrehozásához. Ez lehetővé teszi a Content Moderator automatikusan Facebook-rendszerképek és elküldeni a felülvizsgálati eszköz. Jegyezze fel a munkafolyamat **neve**.
+Tekintse meg a [definiálása, tesztelési és használja a munkafolyamatok](review-tool-user-guide/workflows.md) útmutató egy egyéni rendszerkép munkafolyamat létrehozásához. A Content Moderator a munkafolyamat használatával automatikusan Facebook-rendszerképek keresése és néhány, a felülvizsgálati eszköz küldése. Jegyezze fel a munkafolyamat **neve**.
 
 ## <a name="configure-text-moderation-workflow"></a>Szöveg moderálása munkafolyamat konfigurálása
 
-Ismét tekintse meg a [definiálása, tesztelési és használja a munkafolyamatok](review-tool-user-guide/workflows.md) útmutató; ez idő, hozzon létre egy egyéni szövegtulajdonságot a munkafolyamat. Ez lehetővé teszi a Content Moderator automatikus keresése a szöveges tartalom. Jegyezze fel a munkafolyamat **neve**.
+Ismét tekintse meg a [definiálása, tesztelési és használja a munkafolyamatok](review-tool-user-guide/workflows.md) útmutató; ez alkalommal, hozzon létre egy egyéni szövegtulajdonságot a munkafolyamat. A Content Moderator automatikus keresése a szöveges tartalom fogja használni ezt a munkafolyamatot. Jegyezze fel a munkafolyamat **neve**.
 
 ![Szövegalapú munkafolyamat konfigurálása](images/text-workflow-configure.PNG)
 
@@ -77,7 +77,7 @@ Jelentkezzen be a [az Azure portal](https://portal.azure.com/) , és kövesse az
     | cm:TextWorkflow | A szövegek esetében futtatandó munkafolyamat neve |
     | cm:CallbackEndpoint | Az útmutató későbbi részében létrehozott CMListener Függvényalkalmazás URL-címe |
     | fb:VerificationToken | Titkos jogkivonat, amely hoz létre, a Facebook-hírcsatorna-esemény előfizetéséhez használt |
-    | fb:PageAccessToken | A Facebook Graph API hozzáférési jogkivonatának nincs lejárati ideje, és lehetővé teszi, hogy a függvény az Ön nevében elrejtsen vagy töröljön bejegyzéseket. Ez egy későbbi lépésben fog kapni. |
+    | fb:PageAccessToken | A Facebook Graph API hozzáférési jogkivonatának nincs lejárati ideje, és lehetővé teszi, hogy a függvény az Ön nevében elrejtsen vagy töröljön bejegyzéseket. Megjelenik a jogkivonatot egy későbbi lépésben. |
 
     Kattintson a **mentése** gombra a lap tetején.
 

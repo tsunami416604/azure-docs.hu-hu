@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: overview
-ms.date: 03/21/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 50935aca20af931eec63717921ef7a73267d2373
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8a5dd16948724e3a79863450212702aa8aeb2347
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60996642"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605142"
 ---
 # <a name="what-is-azure-custom-vision"></a>Mi az az Azure Custom Vision?
 
@@ -31,9 +31,9 @@ A Custom Vision funkciói két szolgáltatásra oszlanak. **Kép besorolási** k
 
 ### <a name="optimization"></a>Optimalizálás
 
-A Custom Vision service gyorsan felismerni a lemezképek közötti fő különbségeket van optimalizálva. Ez lehetővé teszi, hogy prototípus-készítés indítása a modell egy kisebb mennyiségű adatot. címke 50 képenként általában olyan remek kezdőpont. Azonban ez azt jelenti, hogy a szolgáltatás nem optimális a képek közötti apró különbségek észlelésére (például kisebb repedések és horpadások észlelésére minőségbiztosítási célból).
+A Custom Vision service gyorsan felismerni a rendszerképeket, így prototípus-készítés a modell egy kisebb mennyiségű adatot a fő különbségeit van optimalizálva. címke 50 képenként általában olyan remek kezdőpont. Azonban a szolgáltatás ne legyen optimális rendszerképek (például kisebb repedések vagy horpadásokra észlelése minőségi assurance forgatókönyvekben) finom eltérések észlelését.
 
-Ezenkívül közül választhat az egyéni Látástechnológiai algoritmus optimalizált bizonyos tulajdonos anyagokat tartalmazó lemezképeket számos fajtáinak&mdash;például arcrész vagy kereskedelmi elemek. Az ezekkel kapcsolatos további információkért tekintse meg a [tartalomosztályozó létrehozását](getting-started-build-a-classifier.md) ismertető útmutatót.
+Ezenkívül közül választhat az egyéni Látástechnológiai algoritmus optimalizált bizonyos tulajdonos anyagokat tartalmazó lemezképeket számos fajtáinak&mdash;például arcrész vagy kereskedelmi elemek. További információkért lásd: a [Tartalombesoroló létrehozása](getting-started-build-a-classifier.md) útmutató.
 
 ## <a name="what-it-includes"></a>Mit tartalmaz?
 

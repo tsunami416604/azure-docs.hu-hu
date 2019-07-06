@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: c45fd508c14c368c6c9057b9fdeea8df9d8a52c3
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 4be33f781dec93fd9fe1b1846322672266cd7350
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65905684"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606910"
 ---
 # <a name="what-is-the-azure-face-api"></a>Mi az Azure Face API?
 
@@ -59,11 +59,11 @@ A Group API több csoportra osztja az ismeretlen arcokat a hasonlóság alapján
 
 A azonosítása API egy olyan adatbázison, akikkel észlelt arc azonosítására szolgál. Ez a funkció a fénykép felügyeleti szoftver képcímkézés automatikus hasznos lehet. Előre létrehozni az adatbázist, és idővel szerkesztheti.
 
-Az alábbi képen egy példa egy "myfriends." nevű adatbázis Minden csoport legfeljebb 1 millió más személy objektumot is tartalmazhat. Mindegyik személyobjektumhoz legfeljebb 248 arc lehet regisztrálva.
+Az alábbi képen egy példa egy adatbázist `"myfriends"`. Minden csoport legfeljebb 1 millió más személy objektumot is tartalmazhat. Mindegyik személyobjektumhoz legfeljebb 248 arc lehet regisztrálva.
 
 ![A különböző face lemezképek három sort az emberek három oszlopot rács](./Images/person.group.clare.jpg)
 
-Miután létrehozott egy adatbázist, és betanított, egy új észlelt Face a csoporton azonosító is végezhet. Ha a rendszer a csoport egyik tagjaként azonosítja az arcot, visszaadja a személyobjektumot.
+Miután létrehozta és betanítunk egy adatbázist, azonosítása a csoporton egy új észlelt Face is végezhet. Ha a rendszer a csoport egyik tagjaként azonosítja az arcot, visszaadja a személyobjektumot.
 
 Személyek azonosítása kapcsolatos további információkért lásd: a [Arcfelismerési](concepts/face-recognition.md) fogalmak útmutató vagy a [azonosítása API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) referenciák dokumentációiba.
 

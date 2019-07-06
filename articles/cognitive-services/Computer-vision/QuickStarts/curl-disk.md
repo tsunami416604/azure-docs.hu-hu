@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: f76b61d3cc39f8ae35e1bf03316e7618b7136380
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 80d3478a684ef2fa686ac33b8492ec91be11ac6f
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60409039"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605983"
 ---
-# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-curl-in-computer-vision"></a>Gyors útmutató: Elemezheti a helyi rendszerképet a REST API használatával, és a Computer Vision cURL
+# <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-curl"></a>Gyors útmutató: Elemezheti a helyi rendszerképet a Computer Vision REST API és a cURL használatával
 
 Ebben a rövid útmutatóban egy helyileg tárolt képet fog elemezni vizuális jellemzők kinyeréséhez a Computer Vision REST API-jával. Az [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) metódussal vizuális jellemzőket nyerhet ki a képek tartalma alapján.
 
@@ -42,7 +42,7 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
 1. Nyisson meg egy parancssort.
 1. Illessze be a szövegszerkesztőből a parancsot, majd futtassa.
 
-```console
+```bash
 curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" -H "Content-Type: application/octet-stream" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Categories,Description&details=Landmarks&language=en" --data-binary "<localImage>"
 ```
 
@@ -105,10 +105,6 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintaalkalmazás 
   }
 }
 ```
-
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-
-Ha már nincs rá szükség, zárja be a parancssori ablakot és a szövegszerkesztőt.
 
 ## <a name="next-steps"></a>További lépések
 

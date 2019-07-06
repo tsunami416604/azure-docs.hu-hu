@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 57605f9bd1a39435e27a2f2c56c06cf3bfb38605
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bf4d11a18932d20e7dcc7580ebe5aa4e060c5a88
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60815429"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606781"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-net-sdk"></a>Gyors útmutató: Arcfelismerés a képet, a Face .NET SDK használatával
 
@@ -66,7 +66,7 @@ A a **fő** metódust, adja hozzá a következő kódot arcfelismerés helyi és
 
 ### <a name="detect-faces"></a>Arcfelismerés
 
-Adja hozzá a **Program** osztályhoz a következő metódust. A Face szolgáltatásügyfél arcfelismerés hivatkozik egy URL-címet, egy távoli képen használ. Vegye figyelembe, hogy használja a `faceAttributes` mező&mdash;a **DetectedFace** adott objektumok `faceList` fog rendelkezni a megadott attribútumok (Ez esetben, életkor és nem).
+Adja hozzá a **Program** osztályhoz a következő metódust. A Face szolgáltatásügyfél arcfelismerés hivatkozik egy URL-címet, egy távoli képen használ. Használja a `faceAttributes` mező&mdash;a **DetectedFace** adott objektumok `faceList` fog rendelkezni a megadott attribútumok (Ez esetben, életkor és nem).
 
 [!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=52-74)]
 

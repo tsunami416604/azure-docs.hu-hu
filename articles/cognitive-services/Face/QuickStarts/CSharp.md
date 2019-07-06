@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 40c9fac27f45699d4c56e57480dcfde1b0ffb64d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 349ae3450b5817b5cfe9c95c41d159e3daca7a39
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60815619"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603394"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Gyors útmutató: Arcfelismerés a képet, a Face REST API-val és aC#
 
@@ -77,7 +77,7 @@ namespace DetectFace
 
 ### <a name="receive-image-input"></a>A megadott fogadása
 
-Adja hozzá a következő kódot a **fő** módszere a **Program** osztály. Kérdés ír a konzolt, amely rákérdez, a felhasználónak meg kell adnia egy kép URL-címe. Ezután meghívja a másik módszer **MakeAnalysisRequest**, az adott helyen található kép feldolgozásához.
+Adja hozzá a következő kódot a **fő** módszere a **Program** osztály. Ezt a kódot ír egy parancssort a konzolt, amely rákérdez, a felhasználónak meg kell adnia egy kép URL-címe. Ezután meghívja a másik módszer **MakeAnalysisRequest**, az adott helyen található kép feldolgozásához.
 
 ```csharp
         static void Main(string[] args)
@@ -162,7 +162,7 @@ A következő lépésekben a segédmetódusokat fogja meghatározni.
 
 ### <a name="process-the-input-image-data"></a>A bemeneti kép adatok feldolgozása
 
-Adja hozzá a **Program** osztályhoz a következő metódust. A lemezkép a megadott URL-címen alakít egy bajtového Pole.
+Adja hozzá a **Program** osztályhoz a következő metódust. Ez a módszer egy bájttömböt alakítja át a képet a megadott URL-címen.
 
 ```csharp
         // Returns the contents of the specified file as a byte array.
@@ -179,7 +179,7 @@ Adja hozzá a **Program** osztályhoz a következő metódust. A lemezkép a meg
 
 ### <a name="parse-the-json-response"></a>A JSON-válasz elemzése
 
-Adja hozzá a **Program** osztályhoz a következő metódust. Ez formázza a JSON-bemenetben könnyebben olvasható is. Az alkalmazás a karakterláncadatokat írni a konzolon. Ezután bezárhatja az osztály és a névtér.
+Adja hozzá a **Program** osztályhoz a következő metódust. Ezzel a módszerrel formázza a JSON-bemenetben könnyebben olvasható is. Az alkalmazás a karakterláncadatokat írni a konzolon. Ezután bezárhatja az osztály és a névtér.
 
 ```csharp
         // Formats the given JSON string by adding line breaks and indents.

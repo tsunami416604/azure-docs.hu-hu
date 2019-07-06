@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 04/24/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 60e39dc18df218cbe89726590e6c072ea9f05b97
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 63b58e5e667d03d7808973b0783ed98ab4cb5447
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592516"
+ms.locfileid: "67605871"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Gyors útmutató: Űrlap felismerő modellek betanítása és űrlap adatokat nyerhet ki a REST API a pythonnal
 
@@ -40,7 +40,7 @@ Az Azure blob-tárolóban a dokumentumok űrlap felismerő modell betanításáh
 
 1. Cserélje le `<Endpoint>` az űrlap felismerő erőforrás Azure-régióban, ahol beszerzett az előfizetési kulcsok a végpont URL-címet.
 1. Cserélje le `<Subscription key>` az előfizetés az előző lépésben kimásolt kulccsal.
-1. Cserélje le `<SAS URL>` együtt az Azure Blob storage-tároló megosztott hozzáférési jogosultságkód (SAS) URL-címe. Ez lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, és válassza ki **Get közös hozzáférésű jogosultságkód**. Győződjön meg arról, a **olvasási** és **lista** engedélyeket a rendszer ellenőrzi a, és kattintson a **létrehozás**. Ezután másolja az értéket a **URL-cím** szakaszban. Az űrlap kell rendelkeznie: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+1. Cserélje le `<SAS URL>` együtt az Azure Blob storage-tároló megosztott hozzáférési jogosultságkód (SAS) URL-címe. Az SAS URL-cím lekérése, nyissa meg a Microsoft Azure Storage Explorert, kattintson a jobb gombbal a tároló és válassza ki a **Get közös hozzáférésű jogosultságkód**. Győződjön meg arról, a **olvasási** és **lista** engedélyeket a rendszer ellenőrzi a, és kattintson a **létrehozás**. Ezután másolja az értéket a **URL-cím** szakaszban. Az űrlap kell rendelkeznie: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
     ```python
     ########### Python Form Recognizer Train #############

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 52faef37dbd9a3ce324db9665f04d6ac9b223d9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6583db5b1403f70593d586a610f4d06be15c729b
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60815312"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603362"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Gyors útmutató: Arcfelismerés a képet a REST API-t és a Ruby használatával
 
@@ -28,7 +28,7 @@ Ebben a rövid útmutatóban meg fogja használni az Azure Face REST API Ruby em
 
 ## <a name="write-the-script"></a>A parancsfájl írásához
 
-Hozzon létre egy új fájlt _faceDetection.rb_, és adja hozzá a következő kódot. A Face API meghívja az egy adott kép URL-címe.
+Hozzon létre egy új fájlt _faceDetection.rb_, és adja hozzá a következő kódot. Ez a kód meghívja a Face API számára egy adott kép URL-címe.
 
 ```ruby
 require 'net/http'
@@ -64,7 +64,7 @@ puts response.body
 
 Frissíteni kell a `request['Ocp-Apim-Subscription-Key']` értéket az előfizetési kulcs, és előfordulhat, hogy módosítania kell a `uri` úgy, hogy a megfelelő régióazonosító tartalmaz (lásd a [Face API-dokumentumok](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) minden régióban végpontok listáját) . 
 
-Előfordulhat, hogy is módosítani kívánja a `imageUri` mezőt, hogy a saját bemeneti kép mutasson. Is érdemes cseréli a `returnFaceAttributes` mező, amely meghatározza, mely face attribútumok lekéréséhez.
+Előfordulhat, hogy is módosítani kívánja a `imageUri` mezőt, hogy a saját bemeneti kép mutasson. Emellett előfordulhat, hogy módosítani kívánja a `returnFaceAttributes` mező, amely meghatározza, mely face attribútumok lekéréséhez.
 
 ## <a name="run-the-script"></a>A szkript futtatása
 
@@ -74,7 +74,7 @@ Futtassa Ruby-szkriptet a következő paranccsal:
 ruby faceDetection.rb
 ```
 
-A konzol nyomtatott észlelt face adatok JSON-karakterláncot kell megjelennie. Az alábbiakban látható egy példa a sikeres JSON-választ.
+A konzol nyomtatott észlelt face adatok JSON-karakterláncot kell megjelennie. A következő szöveget, amelyek egy sikeres JSON-válasz.
 
 ```json
 [

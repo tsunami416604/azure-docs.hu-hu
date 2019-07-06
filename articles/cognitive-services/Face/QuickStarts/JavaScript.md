@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: d1aa3e3a23acf82af8435cbb075fac38353500e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 70c496aef0ff2f34c917fd594767d464cab3e625
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60815577"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603421"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Gyors útmutató: Arcfelismerés a képet a REST API-t és a JavaScript használatával
 
@@ -41,7 +41,7 @@ Hozzon létre egy új HTML-fájlt *detectFaces.html*, és adja hozzá a követke
 </html>
 ```
 
-Majd adja hozzá a következő kódot a `body` elem a dokumentum. Állít be egy URL-cím mezőben, az alapszintű felhasználói felületet egy **face elemzése** gombra, a egy válasz panelre, és a egy kép megjelenítési ablaktáblán.
+Majd adja hozzá a következő kódot a `body` elem a dokumentum. Ezt a kódot állít be egy URL-cím mezőben, az alapszintű felhasználói felületet egy **face elemzése** gombra, a egy válasz panelre, és a egy kép megjelenítési ablaktáblán.
 
 ```html
 <h1>Detect Faces:</h1>
@@ -65,7 +65,7 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
 
 ## <a name="write-the-javascript-script"></a>A JavaScript-parancsfájl írásához
 
-Adja hozzá a következő kódot közvetlenül a fenti a `h1` elem a dokumentumban. Ez beállítja a JavaScript-kódot, a Face API meghívásához.
+Adja hozzá a következő kódot közvetlenül a fenti a `h1` elem a dokumentumban. Ez a kód beállítja a JavaScript-kódot, a Face API meghívásához.
 
 ```html
 <script type="text/javascript">
@@ -140,7 +140,7 @@ Nyissa meg *detectFaces.html* a böngészőben. Amikor rákattint a **face elemz
 
 ![GettingStartCSharpScreenshot](../Images/face-detect-javascript.png)
 
-Az alábbiakban látható egy példa a sikeres JSON-választ.
+A következő szöveget, amelyek egy sikeres JSON-válasz.
 
 ```json
 [

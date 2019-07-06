@@ -3,15 +3,15 @@ title: Azure PowerShell-példaszkript – Azure Cosmos DB első átviteli sebess
 description: Azure PowerShell-példaszkript – Azure Cosmos DB első átviteli sebesség (RU/s) a Cassandra API-hoz
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
+ms.topic: sample
 ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: a4871f56aa3d479342ca1bd25e521d2760451d98
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 4aed55a0c3ae969cf9148e5bf8d6a70a3151f695
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566933"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603985"
 ---
 # <a name="get-throughput-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Átviteli sebesség (RU/s) lekérése a kulcstér és tábla az Azure Cosmos DB - Cassandra API-hoz
 
