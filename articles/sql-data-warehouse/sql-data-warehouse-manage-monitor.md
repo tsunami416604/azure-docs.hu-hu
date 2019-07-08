@@ -68,9 +68,9 @@ WHERE   [label] = 'My Query';
 
 A fenti lekérdezés eredménye a **jegyezze fel a kérés Azonosítóját** a lekérdezés, amely, amelyet szeretne vizsgálni.
 
-A lekérdezések a **felfüggesztett** állapot várólistára tehető aktív futó lekérdezések nagy száma miatt. Ezeket a lekérdezéseket is megjelennek a [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) vár lekérdezés UserConcurrencyResourceType típusú. Egyidejűségi korlátját kapcsolatos tudnivalókat lásd: [teljesítményszintek](performance-tiers.md) vagy [erőforrásosztályok számítási feladatok kezeléséhez](resource-classes-for-workload-management.md). Lekérdezések is, amíg a többi okai például objektum zárolása.  Ha a lekérdezés egy erőforrást vár, tekintse meg [erőforrások váró lekérdezések kivizsgálása] [ Investigating queries waiting for resources] további ebben a cikkben.
+A lekérdezések a **felfüggesztett** állapot várólistára tehető aktív futó lekérdezések nagy száma miatt. Ezeket a lekérdezéseket is megjelennek a [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) vár lekérdezés UserConcurrencyResourceType típusú. Egyidejűségi korlátját kapcsolatos tudnivalókat lásd: [teljesítményszintek](performance-tiers.md) vagy [erőforrásosztályok számítási feladatok kezeléséhez](resource-classes-for-workload-management.md). Lekérdezések is, amíg a többi okai például objektum zárolása.  Ha a lekérdezés egy erőforrást vár, tekintse meg [erőforrások váró lekérdezések kivizsgálása][Investigating queries waiting for resources] további ebben a cikkben.
 
-A keresést a lekérdezés egyszerűsítése érdekében a [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) táblában, használja [címke] [ LABEL] Megjegyzés rendelhet hozzá a lekérdezéshez, amely a sys.dm_pdw_exec_ kereshetők kérelmek megtekintése.
+A keresést a lekérdezés egyszerűsítése érdekében a [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) táblában, használja [címke][LABEL] Megjegyzés rendelhet hozzá a lekérdezéshez, amely a sys.dm_pdw_exec_ kereshetők kérelmek megtekintése.
 
 ```sql
 -- Query with Label
@@ -92,7 +92,7 @@ WHERE request_id = 'QID####'
 ORDER BY step_index;
 ```
 
-DSQL csomagot a vártnál tovább tart, amikor az OK lehet egy összetett terv számos DSQL lépéseket vagy hosszú ideig tart egy lépés.  Ha a csomag több áthelyezési művelet számos lépést, érdemes csökkentése érdekében az adatok áthelyezése a táblázat disztribúciókat optimalizálása. A [Táblaelosztással] [ Table distribution] a cikk azt ismerteti, miért adatok oldja meg a lekérdezés át kell helyezni, és ismerteti az egyes terjesztési stratégia adatáthelyezés minimalizálása érdekében.
+DSQL csomagot a vártnál tovább tart, amikor az OK lehet egy összetett terv számos DSQL lépéseket vagy hosszú ideig tart egy lépés.  Ha a csomag több áthelyezési művelet számos lépést, érdemes csökkentése érdekében az adatok áthelyezése a táblázat disztribúciókat optimalizálása. A [Táblaelosztással][Table distribution] a cikk azt ismerteti, miért adatok oldja meg a lekérdezés át kell helyezni, és ismerteti az egyes terjesztési stratégia adatáthelyezés minimalizálása érdekében.
 
 A további vizsgálat érdekében egy lépésben részleteit a *operation_type* oszlop a hosszan futó lekérdezést lépés és megjegyzés a **Lépésindex**:
 
@@ -110,7 +110,7 @@ SELECT * FROM sys.dm_pdw_sql_requests
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-A lekérdezés lépés futtatásakor [DBCC PDW_SHOWEXECUTIONPLAN] [ DBCC PDW_SHOWEXECUTIONPLAN] lekérni az SQL Server becsült terv a lépés egy adott terjesztési fut az SQL Server tervgyorsítótárból származó is használható.
+A lekérdezés lépés futtatásakor [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] lekérni az SQL Server becsült terv a lépés egy adott terjesztési fut az SQL Server tervgyorsítótárból származó is használható.
 
 ```sql
 -- Find the SQL Server execution plan for a query running on a specific SQL Data Warehouse Compute or Control node.
@@ -133,7 +133,7 @@ WHERE request_id = 'QID####' AND step_index = 2;
 * Ellenőrizze a *total_elapsed_time* oszlopban tekintheti meg, ha egy adott terjesztési jelentősen a vártnál tovább tart, mint a többi az adatok áthelyezését.
 * A hosszú ideig futó terjesztési, ellenőrizze a *rows_processed* , ha jelentősen nagyobb, mint a többi-e, hogy a terjesztés az áthelyezni kívánt sorok számát oszlop. Ha igen, ez találja az alapul szolgáló adatok torzulása utalhat.
 
-Ha a lekérdezés fut, [DBCC PDW_SHOWEXECUTIONPLAN] [ DBCC PDW_SHOWEXECUTIONPLAN] is lehet lekérni az SQL Server becsült terv az SQL Server tervgyorsítótárból származó, az aktuálisan futó SQL lépés belül egy adott terjesztési.
+Ha a lekérdezés fut, [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] is lehet lekérni az SQL Server becsült terv az SQL Server tervgyorsítótárból származó, az aktuálisan futó SQL lépés belül egy adott terjesztési.
 
 ```sql
 -- Find the SQL Server estimated plan for a query running on a specific SQL Data Warehouse Compute or Control node.

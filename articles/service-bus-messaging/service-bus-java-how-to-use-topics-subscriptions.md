@@ -38,7 +38,7 @@ Ebben a rövid üzeneteket küldeni a Service Bus-témakörbe, és majd üzenete
 3. [A Javához készült Azure SDK][Azure SDK for Java].
 
 ## <a name="configure-your-application-to-use-service-bus"></a>A Service Bus-alkalmazás konfigurálása
-Győződjön meg arról, hogy telepítette a [Javához készült Azure SDK] [ Azure SDK for Java] Ez a minta létrehozása előtt. Ha az Eclipse használja, telepítheti a [Azure Toolkit for Eclipse] [ Azure Toolkit for Eclipse] , amely tartalmazza a Javához készült Azure SDK. Ezután hozzáadhatja a **Javához készült Azure-könyvtárak Microsoft** a projekthez:
+Győződjön meg arról, hogy telepítette a [Javához készült Azure SDK][Azure SDK for Java] Ez a minta létrehozása előtt. Ha az Eclipse használja, telepítheti a [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] , amely tartalmazza a Javához készült Azure SDK. Ezután hozzáadhatja a **Javához készült Azure-könyvtárak Microsoft** a projekthez:
 
 ![Az eclipse-ben könyvtárak létrehozása elérési útja](media/service-bus-java-how-to-use-topics-subscriptions/eclipselibs.png)
 
