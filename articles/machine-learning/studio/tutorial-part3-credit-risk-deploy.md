@@ -1,5 +1,5 @@
 ---
-title: '3. oktatóanyag: Kredit kockázati modell üzembe helyezése'
+title: '3\. oktatóanyag: Kredit kockázati modell üzembe helyezése'
 titleSuffix: Azure Machine Learning Studio
 description: Hitelkockázat értékelésére szolgáló prediktív elemzési megoldás létrehozása az Azure Machine Learning Studio bemutató részletes oktatóanyag. Ez az oktatóanyag egy háromrészes oktatóanyag-sorozat harmadik része. Ez bemutatja, hogyan helyezhet üzembe modelleket webszolgáltatásként.
 keywords: hitelkockázat-kockázat, prediktív elemzési megoldás, kockázatértékelés, üzembe helyezéséhez, webszolgáltatás
@@ -17,7 +17,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "60734776"
 ---
-# <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio"></a>3. oktatóanyag: Kredit kockázati modell – az Azure Machine Learning Studio telepítése
+# <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio"></a>3\. oktatóanyag: Kredit kockázati modell – az Azure Machine Learning Studio telepítése
 
 Ebben az oktatóanyagban a folyamat egy prediktív elemzési megoldás fejlesztése tekintjük igénybe vehet. A Machine Learning Studio egy egyszerű modellt fejleszt.  A modell Azure Machine Learning-webszolgáltatásként majd rendszerbe.  Ez a modell üzembe helyezett végezhet előrejelzéseket új adatokkal. Ez az oktatóanyag **egy háromrészes oktatóanyag-sorozat harmadik része**.
 
@@ -100,7 +100,7 @@ Amikor rákattint **webszolgáltatás beállítása**, több dolog történik:
   * [Kétosztályos gyorsított döntési fa][two-class-boosted-decision-tree]
   * [Tanítási modell][train-model]
   * [Adatok felosztása][split]
-  * a második [R-szkript végrehajtása] [ execute-r-script] modul, amely a Tesztadatok lett megadva
+  * a második [R-szkript végrehajtása][execute-r-script] modul, amely a Tesztadatok lett megadva
 * A mentett betanított modell adnak vissza a kísérletbe
 * **Webalkalmazás-bemenet** és **webes szolgáltatás kimeneti** modulok hozzáadásakor (ezek segítségével azonosíthatók a felhasználó adatait, adja meg a modellt, és milyen adatokat ad vissza, ha a webszolgáltatás)
 
@@ -108,8 +108,8 @@ Amikor rákattint **webszolgáltatás beállítása**, több dolog történik:
 > Láthatja, hogy a kísérletet a kísérlet vászon tetején hozzáadott lapon szerepelnek, két részben menti. A lap alatt áll az eredeti betanítási kísérlet **betanítási kísérlet**, és alatt áll az újonnan létrehozott prediktív kísérletté **prediktív kísérletté**. A prediktív kísérletté lesz webszolgáltatásként fogja központilag telepíteni.
 
 Ezzel a kísérlettel együtt egy további lépésre van szükség.
-hozzáadott két [R-szkript végrehajtása] [ execute-r-script] modulokat biztosítanak az adatok súlyozási függvény. Csak akkor szükséges, és tesztelésre, körben, hogy a kész modell az ilyen modulokhoz ki volt.
-A Machine Learning Studio eltávolítani egy [R-szkript végrehajtása] [ execute-r-script] modul eltávolításakor, a [Split] [ split] modul. Most az egyiket, és csatlakozzon [metaadat-szerkesztő] [ metadata-editor] közvetlenül [Score Model][score-model].    
+hozzáadott két [R-szkript végrehajtása][execute-r-script] modulokat biztosítanak az adatok súlyozási függvény. Csak akkor szükséges, és tesztelésre, körben, hogy a kész modell az ilyen modulokhoz ki volt.
+A Machine Learning Studio eltávolítani egy [R-szkript végrehajtása][execute-r-script] modul eltávolításakor, a [Split][split] modul. Most az egyiket, és csatlakozzon [metaadat-szerkesztő][metadata-editor] közvetlenül [Score Model][score-model].    
 
 A kísérlet kell kinéznie:  
 
@@ -124,13 +124,13 @@ A kísérlet kell kinéznie:
 >A rendszer egyik lényeges tudnivaló, hogy vegye figyelembe, hogy ha az eredeti adatkészlet a címkét, majd a várt séma a webes bemeneti fog is hatással vannak a címkével ellátott oszlop! Ezt úgy, hogy távolítsa el a címkét, és minden egyéb adatot, a betanítási adatkészletet volt, de mielőtt csatlakozna a webes bemeneti és a betanítási adatkészletet azokat egy közös modult a webes bemenetei között nem lesz. 
 > 
 
-Futtassa a kísérletet, egyszer utoljára (kattintson **futtatása**.) Ha szeretné ellenőrizni, hogy továbbra is működik-e a modell, kattintson a kimenetét a [Score Model] [ score-model] modul, és válassza ki **eredmények megtekintése**. Láthatja, hogy az eredeti adatok megjelenik-e, és a kredit kockázati érték ("pontozott címkék") és a pontozási valószínűségi érték ("pontozott valószínűség".) 
+Futtassa a kísérletet, egyszer utoljára (kattintson **futtatása**.) Ha szeretné ellenőrizni, hogy továbbra is működik-e a modell, kattintson a kimenetét a [Score Model][score-model] modul, és válassza ki **eredmények megtekintése**. Láthatja, hogy az eredeti adatok megjelenik-e, és a kredit kockázati érték ("pontozott címkék") és a pontozási valószínűségi érték ("pontozott valószínűség".) 
 
 ## <a name="deploy-the-web-service"></a>A webszolgáltatás üzembe helyezése
 Telepítheti a kísérletet, vagy új webszolgáltatásként, amely az Azure Resource Manager-alapú vagy klasszikus webszolgáltatásként.
 
 ### <a name="deploy-as-a-classic-web-service"></a>Klasszikus webszolgáltatásként üzembe helyezése
-Származtatott kísérletből a klasszikus webszolgáltatások üzembe helyezéséhez kattintson **webszolgáltatás üzembe helyezése** a vásznon, majd válassza alább **Web Service telepítése [klasszikus]**. A Machine Learning Studio helyez üzembe webszolgáltatásként, amely a kísérletet, és megnyílik az irányítópult webes szolgáltatás. Ezen az oldalon bármikor visszatérhet a kísérletvászonra (**nézet pillanatkép** vagy **legújabb megtekintése**) és a webszolgáltatás egyszerű teszt futtatása (lásd: **a webszolgáltatás teszteléséhez** alább). Információ az alkalmazások eléréséhez (erről, amely a jelen oktatóanyag a következő lépésben) webszolgáltatás létrehozásához itt is van.
+Származtatott kísérletből a klasszikus webszolgáltatások üzembe helyezéséhez kattintson **webszolgáltatás üzembe helyezése** a vásznon, majd válassza alább **Web Service telepítése [klasszikus]** . A Machine Learning Studio helyez üzembe webszolgáltatásként, amely a kísérletet, és megnyílik az irányítópult webes szolgáltatás. Ezen az oldalon bármikor visszatérhet a kísérletvászonra (**nézet pillanatkép** vagy **legújabb megtekintése**) és a webszolgáltatás egyszerű teszt futtatása (lásd: **a webszolgáltatás teszteléséhez** alább). Információ az alkalmazások eléréséhez (erről, amely a jelen oktatóanyag a következő lépésben) webszolgáltatás létrehozásához itt is van.
 
 ![Webszolgáltatás irányítópultján](./media/tutorial-part3-credit-risk-deploy/publish6.png)
 
@@ -180,7 +180,7 @@ Klasszikus webes tesztelheti a szolgáltatást **Machine Learning Studio** vagy 
 Tesztelheti egy új webes szolgáltatás csak a **Machine Learning webszolgáltatások** portálon.
 
 > [!TIP]
-> Ha teszteli az Azure Machine Learning Web Services portálon, akkor is, amellyel tesztelheti a kérés-válasz szolgáltatás mintaadatok létrehozása a portálon. Az a **konfigurálása** lapra, jelölje be az "Igen" a **minta adatok engedélyezve van?**. Ha a kérés-válasz lapjának megnyitása a **teszt** , a portál ekkor kitölti a mintaadatokat az eredeti kredit kockázati adathalmazból származó.
+> Ha teszteli az Azure Machine Learning Web Services portálon, akkor is, amellyel tesztelheti a kérés-válasz szolgáltatás mintaadatok létrehozása a portálon. Az a **konfigurálása** lapra, jelölje be az "Igen" a **minta adatok engedélyezve van?** . Ha a kérés-válasz lapjának megnyitása a **teszt** , a portál ekkor kitölti a mintaadatokat az eredeti kredit kockázati adathalmazból származó.
 
 ### <a name="test-a-classic-web-service"></a>Klasszikus webszolgáltatás teszteléséhez
 
