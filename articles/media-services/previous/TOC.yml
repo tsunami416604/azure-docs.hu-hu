@@ -51,6 +51,9 @@
   items:
     - name: Kezelés
       items:
+        - name: Fiókok
+          displayName: subscription
+          href: media-services-account-concept.md
         - name: Entitások
           items:
             - name: .NET

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 7bc1f2adf3d8c38845218681a55e3942aa809db5
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 49195efa54c8e6eca9186a9e2fc33da84ff34413
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603203"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625386"
 ---
 # <a name="train-a-model-for-custom-speech"></a>A modell betanítását egyéni beszéd
 
@@ -25,12 +25,11 @@ Egy hang-szöveg transzformációs képzési szükség, mindkét a Microsoft bas
 
 Ha lépnek problémák felismerése a modellt, emberi címkével használatával szövegekben és további kapcsolódó adatok segítségével pontosságának növelése érdekében. Ez a táblázat segítségével mely adatkészlet használatával oldja meg a probléma meghatározásához:
 
-| Használati eset | Adattípus | Adatok mennyisége |
-|----------|-----------|---------------|
-| Pontos nevét a rendszer kifejezést | Kapcsolódó szöveg (mondatokat/utterances) | 10 MB – 500 MB |
-| Szavak vannak kifejezést egy hangsúlyos miatt | Kapcsolódó szöveg (írásmódja) | Adja meg a misrecognized szavakat |
-| Gyakori szavakat törölt vagy kifejezést | Hang + emberi címkével szövegekben | 10-es, 1000 beszédátírási óra |
-
+| Használati eset | Adattípus |
+|----------|-----------|
+| Iparág-specifikus szóhasználatának és nyelvtani, például terminológiát vagy informatikai szakkifejezéseivel pontosságának javítása | Kapcsolódó szöveg (mondatokat/utterances) |
+| Adja meg szó vagy kifejezés, amely rendelkezik a nem szabványos írásmódja, például termékneveket vagy betűszavakat fonetikus és megjelenített formájában. | Kapcsolódó szöveg (írásmódja) |
+| A stílusok, akcentusokhoz vagy adott háttér egy olyan, és beszéljen pontosságának fokozása | Hang + emberi címkével szövegekben |
 > [!IMPORTANT]
 > Ha még nem töltött fel egy adatkészletet, tekintse meg [előkészítése és a Tesztadatok](how-to-custom-speech-test-data.md). Ez a dokumentum útmutatást fel az adatokat, és kiváló minőségű adatkészleteket létrehozására vonatkozó irányelveket.
 

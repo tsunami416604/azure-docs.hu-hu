@@ -2,18 +2,18 @@
 title: Az Azure-on futó Kubernetes oktatóanyaga – Alkalmazás előkészítése
 description: Ebben az Azure Kubernetes Service-hez (AKS-hez) tartozó oktatóanyagban megismerheti, hogyan készíthet elő és hozhat létre többtárolós alkalmazást a Docker Compose használatával, amelyet aztán üzembe helyezhet az AKS-ben.
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: twhitney
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 8fdc36215841348cf62cd61245950be6573a1938
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 2b4ba646a037b2f5561dabf97dee14454c07c573
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304451"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614225"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Oktatóanyag: Az alkalmazás előkészítése az Azure Kubernetes Service (AKS)
 
@@ -34,7 +34,7 @@ A további oktatóanyagokban a tárolórendszerképet feltöltött egy Azure Con
 
 Az oktatóanyag feltételezi, hogy rendelkezik a Docker fő fogalmaira, például a tárolókra, tárolórendszerképekre és a `docker`-parancsokra vonatkozó alapvető ismeretekkel. A tárolókkal kapcsolatos alapfogalmakért tekintse meg [a Docker használatának első lépéseivel][docker-get-started] foglalkozó témakört.
 
-Az oktatóanyag elvégzéséhez szüksége lesz egy Linuxos tárolókat futtató helyi Docker fejlesztési környezetre. A Docker csomagokat biztosít, amelyekkel a Docker [Mac][docker-for-mac], [Windows][docker-for-windows] vagy [Linux][docker-for-linux] rendszereken konfigurálható.
+Az oktatóanyag elvégzéséhez szüksége lesz egy Linuxos tárolókat futtató helyi Docker fejlesztési környezetre. A docker csomagokat biztosít, a Docker konfigurálható egy [Mac][docker-for-mac], [Windows][docker-for-windows], vagy [Linux][docker-a-linux] rendszer.
 
 Az Azure Cloud Shell nem tartalmazza a jelen oktatóanyagok lépéseinek elvégzéséhez szükséges Docker-összetevőket. Ezért ajánlott egy teljes Docker fejlesztési környezet használata.
 
@@ -58,7 +58,7 @@ A könyvtárán belül található meg az alkalmazás forráskódja, egy előre 
 
 ## <a name="create-container-images"></a>Tárolórendszerképek létrehozása
 
-A [Docker Compose][docker-compose] segítségével automatizálhatja a tárolórendszerképek összeállítását és a többtárolós alkalmazások üzembe helyezését.
+[A docker Compose][docker-compose] automatizálásához használható tárolórendszerképek és a többtárolós alkalmazások üzembe helyezését.
 
 A mintául szolgáló `docker-compose.yaml` fájl használatával hozza létre a tárolórendszerképet, töltse le a Redis-rendszerképet, és indítsa el az alkalmazást:
 
@@ -97,7 +97,7 @@ A futó alkalmazás megtekintéséhez lépjen a `http://localhost:8080` helyre e
 
 Most, hogy az alkalmazás működésének ellenőrzése megtörtént, a futó tárolók leállíthatók és eltávolíthatók. Ne törölje a tárolórendszerképeket – a következő oktatóanyagban az *azure-vote-front* rendszerképet töltjük fel egy Azure Container Registry-példányba.
 
-Állítsa le és távolítsa el a tárolópéldányokat és -erőforrásokat a [docker-compose down][docker-compose-down] paranccsal:
+Állítsa le, és távolítsa el a container Instances szolgáltatásban és az erőforrások a [le a docker-compose][docker-compose-down] parancsot:
 
 ```console
 docker-compose down
@@ -117,7 +117,7 @@ Ebben az oktatóanyagban egy alkalmazást teszteltünk, és tárolórendszerkép
 Folytassa a következő oktatóanyaggal, amelyben a tárolórendszerképek az Azure Container Registry-ben való tárolásának módját ismerheti meg.
 
 > [!div class="nextstepaction"]
-> [Rendszerképek leküldése az Azure Container Registrybe][aks-tutorial-prepare-acr]
+> [Rendszerképek leküldése az Azure Container Registry-be][aks-tutorial-prepare-acr]
 
 <!-- LINKS - external -->
 [docker-compose]: https://docs.docker.com/compose/

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 24767f73e3e1409f81262ad57f3fd5152a4ec319
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 705e637235eb81be29a2ea0d7d68ccd000ea0470
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60828452"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626040"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Oktatóanyag: Power BI integrálható a Text Analytics Cognitive Service
 
@@ -103,7 +103,7 @@ A Text Analytics szolgáltatás a [Key Phrases API](https://westus.dev.cognitive
 Most már készen áll az egyéni függvény létrehozására, amely integrálja majd a Power BI-t és a Text Analytics szolgáltatást. A függvény a feldolgozandó szöveget paraméterként kapja meg. Elvégzi az adatok átalakítását a szükséges JSON formára és vissza, és elküldi a HTTP-kérést a Key Phrases API-nak. A függvény elemzi az API válaszát és a kinyert kulcskifejezések vesszővel tagolt listáját tartalmazó sztringet ad vissza.
 
 > [!NOTE]
-> A Power BI Desktop egyéni függvényei a [Power Query M képletnyelven](https://msdn.microsoft.com/library/mt211003.aspx) (röviden „M”) vannak megírva. Az M egy funkcionális programozási nyelv, amelynek az alapját az [F#](https://docs.microsoft.com/dotnet/fsharp/) képezi. Az oktatóanyag elvégzéséhez azonban nem kell programozónak lennie. A szükséges kód alább megtalálható.
+> A Power BI Desktop egyéni függvényei a [Power Query M képletnyelven](https://docs.microsoft.com/powerquery-m/power-query-m-reference) (röviden „M”) vannak megírva. Az M egy funkcionális programozási nyelv, amelynek az alapját az [F#](https://docs.microsoft.com/dotnet/fsharp/) képezi. Az oktatóanyag elvégzéséhez azonban nem kell programozónak lennie. A szükséges kód alább megtalálható.
 
 A Power BI Desktopban ellenőrizze, hogy még a Lekérdezésszerkesztő ablakban van-e. Ha nem, válassza ki a **Kezdőlap** menüszalagot, majd a **Külső adatok** csoportban kattintson a **lekérdezések szerkesztése** elemre.
 
@@ -188,7 +188,7 @@ Most pedig ezzel az oszloppal létrehozunk egy szófelhőt. Első lépésként k
 > [!NOTE]
 > Miért a kivonatolt kulcskifejezéseket használjuk a szófelhő létrehozásához a megjegyzések teljes szövege helyett? A kulcskifejezések az ügyfelek megjegyzéseiből a *fontos* és nem egyszerűen csak a *leggyakoribb* szavakat tartalmazzák. Emellett a szavak méretezését így nem torzítja az, ha valamely szó csak szűk számú megjegyzésben fordul elő nagyon gyakran.
 
-Ha a Word Cloud (Szófelhő) egyéni vizualizációt még nem telepítette, tegye meg. A munkaterület jobb oldalán lévő Vizualizációk panelen kattintson a három pontra (**...**), és válassza az **Importálás az áruházból** lehetőséget. Ezután keressen rá a „cloud” (felhő) kifejezésre, és kattintson a **Hozzáadás** gombra a Word Cloud (Szófelhő) vizualizáció mellett. A Power BI telepíti a szófelhő vizualizációt, és tájékoztatja, amint ez sikeresen megtörtént.
+Ha a Word Cloud (Szófelhő) egyéni vizualizációt még nem telepítette, tegye meg. A munkaterület jobb oldalán lévő Vizualizációk panelen kattintson a három pontra ( **...** ), és válassza az **Importálás az áruházból** lehetőséget. Ezután keressen rá a „cloud” (felhő) kifejezésre, és kattintson a **Hozzáadás** gombra a Word Cloud (Szófelhő) vizualizáció mellett. A Power BI telepíti a szófelhő vizualizációt, és tájékoztatja, amint ez sikeresen megtörtént.
 
 ![[egyéni vizualizáció hozzáadása]](../media/tutorials/power-bi/add-custom-visuals.png)<br><br>
 
@@ -294,7 +294,7 @@ További információk a Text Analytics szolgáltatásról, a Power Query M kép
 > [Text Analytics API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6)
 
 > [!div class="nextstepaction"]
-> [Power Query M-referencia](https://msdn.microsoft.com/library/mt211003.aspx)
+> [Power Query M-referencia](https://docs.microsoft.com/powerquery-m/power-query-m-reference)
 
 > [!div class="nextstepaction"]
 > [Power BI-dokumentáció](https://powerbi.microsoft.com/documentation/powerbi-landing-page/)

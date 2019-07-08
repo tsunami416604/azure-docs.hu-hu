@@ -2,18 +2,18 @@
 title: Az Azure-on futó Kubernetes oktatóanyaga – Tárolóregisztrációs adatbázis létrehozása
 description: Az Azure Kubernetes Service (AKS) jelen oktatóanyagában egy Azure Container Registry-példányt hozhat létre, és feltöltheti egy mintaalkalmazás tárolórendszerképét.
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: twhitney
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 1bd41dc464c251a2e7dab3087f3feffb15db785f
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 5089326af1d7f6e057667cd916f35de92bf517ef
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304413"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614246"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>Oktatóanyag: Az Azure Container Registry üzembe helyezése és használata
 
@@ -43,7 +43,7 @@ Hozzon létre egy erőforráscsoportot az [az group create][az-group-create] par
 az group create --name myResourceGroup --location eastus
 ```
 
-Hozzon létre egy Azure Container Registry-példányt az [az acr create][az-acr-create] paranccsal, és nevezze el a saját regisztrációs adatbázisát. A beállításjegyzék nevének egyedinek kell lennie az Azure rendszerben, és 5–50 alfanumerikus karaktert kell tartalmaznia. Az oktatóanyag hátralevő részében az `<acrName>` elem helyettesíti a tárolóregisztrációs adatbázis nevét. Adja meg a saját egyedi nevét. Az *Alapszintű* termékváltozat költséghatékony, fejlesztési célú belépési pontként szolgál, és kiegyenlített tárolási kapacitást és teljesítményt biztosít.
+Hozzon létre egy Azure Container Registry-példány az a [az acr létrehozása][az-acr-create] parancsot, és adja meg a saját beállításjegyzék nevét. A beállításjegyzék nevének egyedinek kell lennie az Azure rendszerben, és 5–50 alfanumerikus karaktert kell tartalmaznia. Az oktatóanyag hátralevő részében az `<acrName>` elem helyettesíti a tárolóregisztrációs adatbázis nevét. Adja meg a saját egyedi nevét. Az *Alapszintű* termékváltozat költséghatékony, fejlesztési célú belépési pontként szolgál, és kiegyenlített tárolási kapacitást és teljesítményt biztosít.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -51,7 +51,7 @@ az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 
 ## <a name="log-in-to-the-container-registry"></a>Bejelentkezés a tárolóregisztrációs adatbázisba
 
-Az ACR-példány használatához először be kell jelentkeznie. Használja az [az acr login][az-acr-login] parancsot, és adja meg a tárolóregisztrációs adatbázis az előző lépésben megadott egyedi nevét.
+Az ACR-példány használatához először be kell jelentkeznie. Használja a [az acr bejelentkezési][az-acr-login] parancsot, és adja meg a tárolóregisztrációs adatbázisba, az előző lépésben megadott egyedi nevét.
 
 ```azurecli
 az acr login --name <acrName>
@@ -61,7 +61,7 @@ A parancs a *Bejelentkezés sikeres* üzenetet adja vissza, ha befejeződött.
 
 ## <a name="tag-a-container-image"></a>A tárolórendszerképek címkézése
 
-A meglévő helyi rendszerképek listájának megtekintéséhez használja a [docker images][docker-images] parancsot:
+Az aktuális helyi rendszerképek listájának megtekintéséhez használja a [docker-rendszerképek][docker-images] parancsot:
 
 ```
 $ docker images
@@ -74,7 +74,7 @@ tiangolo/uwsgi-nginx-flask   flask               788ca94b2313        9 months ag
 
 Az *azure-vote-front* tárolórendszerkép ACR-ben való használatához a rendszerképet fel kell címkézni a tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának címével. Ezt a címkét a rendszer az útválasztáshoz használja, amikor tárolórendszerképeket küld le egy regisztrációs adatbázisba.
 
-A bejelentkezési kiszolgáló címének lekéréséhez az [az acr list][az-acr-list] paranccsal keresse meg a *loginServer* kiszolgálót az alábbiak szerint:
+A bejelentkezési kiszolgáló címének lekéréséhez használja a [az acr list][az-acr-list] parancsot, és lekérdezi a *adatbázis bejelentkezési kiszolgálójának nevével* módon:
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
@@ -86,7 +86,7 @@ Ezután címkézze fel a helyi *azure-vote-front* rendszerképet a tárolóregis
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
 ```
 
-A címkék kiosztásának ellenőrzéséhez futtassa ismét a [docker images][docker-images] parancsot. Ez felcímkézi a rendszerképet az ACR-példány címével és egy verziószámmal.
+A címkék alkalmazása ellenőrzéséhez futtassa [docker-rendszerképek][docker-images] újra. Ez felcímkézi a rendszerképet az ACR-példány címével és egy verziószámmal.
 
 ```
 $ docker images
@@ -100,7 +100,7 @@ tiangolo/uwsgi-nginx-flask                           flask         788ca94b2313 
 
 ## <a name="push-images-to-registry"></a>Rendszerképek leküldése a regisztrációs adatbázisba
 
-A rendszerkép összeállítása és címkézése és leküldése a *azure-vote-front* rendszerképet az ACR-példányba. Használja a [docker push][docker-push] parancsot, és adja meg a saját *acrLoginServer* címet a rendszerkép neveként az alábbiak szerint:
+A rendszerkép összeállítása és címkézése és leküldése a *azure-vote-front* rendszerképet az ACR-példányba. Használat [docker leküldéses][docker-push] , és adja meg a saját *acrLoginServer* oldja meg a rendszerkép nevének a következő:
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v1
@@ -110,7 +110,7 @@ A rendszerkép ACR-be való leküldése eltarthat néhány percig.
 
 ## <a name="list-images-in-registry"></a>A regisztrációs adatbázisban található rendszerképek felsorolása
 
-Az ACR-példányra leküldött rendszerképek listájának lekéréséhez használja az [az acr repository list][az-acr-repository-list] parancsot. Adja meg a saját `<acrName>` adatbázisnevét:
+Az ACR-példányba leküldött rendszerképek listájának lekéréséhez használja a [az acr-tárház lista][az-acr-repository-list] parancsot. Adja meg a saját `<acrName>` adatbázisnevét:
 
 ```azurecli
 az acr repository list --name <acrName> --output table
@@ -124,7 +124,7 @@ Result
 azure-vote-front
 ```
 
-Egy adott rendszerkép címkéinek megtekintéséhez használja az [az acr repository show-tags][az-acr-repository-show-tags] parancsot az alábbiak szerint:
+Egy adott rendszerkép címkéinek megtekintéséhez használja a [az acr tárház show-tags][az-acr-repository-show-tags] paranccsal a következőképpen:
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository azure-vote-front --output table

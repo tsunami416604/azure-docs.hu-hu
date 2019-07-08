@@ -1,21 +1,21 @@
 ---
-title: Oktatóanyag – a hitelesítés engedélyezése egy egyoldalas alkalmazásban – Azure Active Directory B2C |} A Microsoft Docs
-description: Arra vonatkozó útmutató, hogyan használhatja az Azure Active Directory B2C-t egy egyoldalas (JavaScript-) alkalmazás felhasználói bejelentkezésének biztosításához.
+title: Oktatóanyag – a hitelesítés engedélyezése egy egyoldalas alkalmazásban – Azure Active Directory B2C
+description: Ismerje meg, hogyan használhatja az Azure Active Directory B2C egy egyoldalas (JavaScript-) alkalmazás felhasználói bejelentkezésének biztosításához.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 02/04/2019
+ms.date: 07/08/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 6e4be3a14a6cfba6b32bea8a77975e3e34ea012d
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 6824cc84c24b41fd82afd39ead3029a212173948
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66507815"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67624797"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c"></a>Oktatóanyag: Az Azure Active Directory B2C egy egyoldalas alkalmazásban hitelesítés engedélyezése
 
@@ -32,27 +32,33 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Felhasználói folyamatok létrehozása](tutorial-create-user-flows.md) ahhoz, hogy az alkalmazás felhasználói élményt. 
-* Telepítse [Visual Studio 2019](https://www.visualstudio.com/downloads/) az a **ASP.NET és webfejlesztési** számítási feladatot.
-* Telepítse a [.NET Core 2.0.0 SDK](https://www.microsoft.com/net/core) vagy újabb
-* [Node.js](https://nodejs.org/en/download/) telepítése
+Ebben az oktatóanyagban a lépéseket folytatása előtt a következő Azure AD B2C-erőforrások helyen lesz szüksége:
+
+* [Az Azure AD B2C-bérlő](tutorial-create-tenant.md)
+* [Regisztrált alkalmazás](tutorial-register-applications.md) a bérlőben
+* [Felhasználói folyamatok létrehozott](tutorial-create-user-flows.md) a bérlőben
+
+Ezenkívül a következő szüksége a helyi fejlesztési környezetet:
+
+* Szerkesztő, például Code [Visual Studio Code](https://code.visualstudio.com/) vagy [Visual Studio 2019](https://www.visualstudio.com/downloads/)
+* [.NET core SDK 2.0.0-s](https://www.microsoft.com/net/core) vagy újabb
+* [Node.js](https://nodejs.org/en/download/)
 
 ## <a name="update-the-application"></a>Az alkalmazás frissítése
 
-Az oktatóanyagban az Előfeltételek részeként végrehajtott egy webalkalmazás, Azure AD B2C-ben hozzáadott. Az oktatóanyagban a minta való kommunikáció biztosításához, hozzá kell átirányítási URI-t az alkalmazáshoz az Azure AD B2C-ben.
+A második oktatóanyagban az Előfeltételek részeként végrehajtott egy webalkalmazás, Azure AD B2C-ben regisztrált. Az oktatóanyagban a minta való kommunikáció biztosításához, hozzá kell átirányítási URI-t az alkalmazáshoz az Azure AD B2C-ben.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
-3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
-4. Válassza ki **alkalmazások**, majd válassza ki a *webapp1* alkalmazás.
-5. A **válasz URL-cím**, adjon hozzá `http://localhost:6420`.
-6. Kattintson a **Mentés** gombra.
-7. A Tulajdonságok lapon jegyezze fel az Alkalmazásazonosítót, amelyek a webalkalmazás konfigurálásakor fogja használni.
-8. Válassza ki **kulcsok**válassza **kulcs létrehozása**, és válassza ki **mentése**. Jegyezze fel a kulcs, amelyet a webalkalmazás konfigurálásakor fogja használni.
+1. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
+1. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
+1. Válassza ki **alkalmazások**, majd válassza ki a *webapp1* alkalmazás.
+1. A **válasz URL-cím**, adjon hozzá `http://localhost:6420`.
+1. Kattintson a **Mentés** gombra.
+1. A Tulajdonságok lapon jegyezze fel a **Alkalmazásazonosító**. Az Alkalmazásazonosító egy későbbi lépésben használja, a egyoldalas webalkalmazást a kód frissítésekor.
 
-## <a name="configure-the-sample"></a>A minta konfigurálásához
+## <a name="get-the-sample-code"></a>A mintakód letöltése
 
-Ebben az oktatóanyagban a minta azt a githubról letölthető fog konfigurálni. A minta azt mutatja be, hogyan egy egyoldalas alkalmazás Azure AD B2C használata felhasználói regisztrációs, bejelentkezési, és védett webes API-hívás.
+Ebben az oktatóanyagban a Githubról letölthető egy kódmintát fog konfigurálni. A minta azt mutatja be, hogyan egy egyoldalas alkalmazás az Azure AD B2C-t a felhasználói regisztráció és a regisztrációs, és hívhat meg egy védett webes API-t.
 
 [Töltse le a zip-fájlt](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip), vagy a klónozza a GitHubon található mintát.
 
@@ -60,60 +66,78 @@ Ebben az oktatóanyagban a minta azt a githubról letölthető fog konfigurálni
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
 ```
 
-A beállítások módosítása:
+## <a name="update-the-sample"></a>A minta frissítése
 
-1. Nyissa meg a `index.html` a mintában lévő fájlt.
-2. Konfigurálja a mintát a alkalmazás Azonosítóját és kulcsát, korábban feljegyzett. A következő kódsorokat módosítsa az értékeket cserélje le a címtár és az API-k nevei:
+Most, hogy beszerezte a mintát, frissítse a kódot az Azure AD B2C bérlő neve és a egy korábbi lépésben rögzített az Alkalmazásazonosítót.
+
+1. Nyissa meg a `index.html` fájlt a mintául szolgáló könyvtár gyökerében.
+1. Az a `msalConfig` definíciót, módosítsa a **clientId** az alkalmazás azonosítójával egy korábbi lépésben rögzített érték. Ezután frissítse a **hatóság** az Azure AD B2C-bérlő nevét az URI értéket. Az URI-t is frissítheti a regisztrálási-regisztrálási vagy bejelentkezési felhasználói folyamata az Előfeltételek egyikében létrehozott nevét (például *B2C_1_signupsignin1*).
 
     ```javascript
-    // The current application coordinates were pre-registered in a B2C directory.
-    var applicationConfig = {
-        clientID: '<Application ID>',
-        authority: "https://contoso.b2clogin.com/tfp/contoso.onmicrosoft.com/B2C_1_signupsignin1",
-        b2cScopes: ["https://contoso.onmicrosoft.com/demoapi/demo.read"],
-        webApi: 'https://contosohello.azurewebsites.net/hello',
+    var msalConfig = {
+        auth: {
+            clientId: "00000000-0000-0000-0000-000000000000", //This is your client ID
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_susi", //This is your tenant info
+            validateAuthority: false
+        },
+        cache: {
+            cacheLocation: "localStorage",
+            storeAuthStateInCookie: true
+        }
     };
     ```
 
-    A felhasználói folyamatot, a jelen oktatóanyagban használt név **B2C_1_signupsignin1**. Ha egy másik folyamat felhasználónevet használ, használja a felhasználói interakciósorozat neve a `authority` értéket.
+    A felhasználói folyamatot, a jelen oktatóanyagban használt név **B2C_1_signupsignin1**. Ha egy másik folyamat felhasználónevet használ, adja meg ezt a nevet a a `authority` értéket.
 
 ## <a name="run-the-sample"></a>Minta futtatása
 
-1. Indítsa el a Node.js parancssort.
-2. Váltson arra a könyvtárra, amelyben a Node.js-minta található. Például: `cd c:\active-directory-b2c-javascript-msal-singlepageapp`
-3. Futtassa az alábbi parancsot:
+1. Nyisson meg egy konzolablakot, és módosítsa a mintát tartalmazó könyvtárra. Példa:
+
+    ```console
+    cd active-directory-b2c-javascript-msal-singlepageapp
+    ```
+1. Futtassa az alábbi parancsot:
 
     ```
     npm install && npm update
     node server.js
     ```
 
-    A konzolablakban megjelenik annak a portnak a száma, amelynél az alkalmazás található.
-    
+    A konzolablakban a helyileg futó Node.js-kiszolgáló port számát jeleníti meg:
+
     ```
     Listening on port 6420...
     ```
 
-4. Keresse meg a címet a böngésző segítségével `http://localhost:6420` az alkalmazás megtekintéséhez.
+1. Navigáljon a `http://localhost:6420` az alkalmazás megtekintéséhez a böngészőben.
 
 A minta regisztrációs, bejelentkezési, Profilszerkesztési támogatja, és új jelszó kérésére. Ez az oktatóanyag kiemeli, hogyan regisztrál egy felhasználó e-mail-címmel.
 
 ### <a name="sign-up-using-an-email-address"></a>Regisztrálás e-mail-címmel
 
-1. Kattintson a **bejelentkezési** az alkalmazás felhasználói regisztráció. Ez a **B2C_1_signupsignin1** az előző lépésben meghatározott felhasználói folyamatot.
-2. Az Azure AD B2C megjelenít egy bejelentkezési oldalt egy regisztrációs hivatkozással. Mivel még nincs fiókja, kattintson a **Regisztráció** hivatkozásra. 
-3. A regisztrációs munkafolyamat megjelenít egy lapot, amely a felhasználó azonosító adatait gyűjti be és ellenőrzi az e-mail-cím alapján. A munkafolyamat az a felhasználó jelszavát, és a felhasználói folyamat meghatározott attribútumokat is gyűjti.
+1. Kattintson a **bejelentkezési** az alkalmazás felhasználói regisztráció. Ez a **B2C_1_signupsignin1** az előző lépésben megadott felhasználói folyamatot.
+1. Az Azure AD B2C megjelenít egy bejelentkezési oldalt egy regisztrációs hivatkozással. Mivel még nincs fiókja, kattintson a **Regisztráció** hivatkozásra.
+1. A regisztrációs munkafolyamat megjelenít egy lapot, amely a felhasználó azonosító adatait gyűjti be és ellenőrzi az e-mail-cím alapján. A munkafolyamat az a felhasználó jelszavát, és a felhasználói folyamat meghatározott attribútumokat is gyűjti.
 
-    Érvényes e-mail-címet használjon, és ellenőrizze az ellenőrző kód használatával. Állítson be egy jelszót. Adja meg a kért attribútumokhoz tartozó értékeket. 
+    Érvényes e-mail-címet használjon, és ellenőrizze az ellenőrző kód használatával. Állítson be egy jelszót. Adja meg a kért attribútumokhoz tartozó értékeket.
 
     ![Regisztrációs munkafolyamat](media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.png)
 
-4. Kattintson a **Létrehozás** gombra egy helyi fiók létrehozására az Azure AD B2C-címtárban.
+1. Kattintson a **Létrehozás** gombra egy helyi fiók létrehozására az Azure AD B2C-címtárban.
 
-A felhasználó, e-mail-címmel jelentkezik be, és használja az SPA-alkalmazás használhatja.
+Amikor rákattint **létrehozás**, a bejelentkezési oldal bezárul, és a bejelentkezési oldal ismét megjelenik.
 
-> [!NOTE]
-> Bejelentkezés után az alkalmazás egy „nem megfelelő engedélyek” hibaüzenetet jelenít meg. Ezt a hibaüzenetet azért kapja, mert a bemutató címtár egyik erőforrásához próbál meg hozzáférni. Mivel a hozzáférési jogkivonat csak az Ön Azure AD-címtárához érvényes, az API-hívás nincs engedélyezve. Lépjen tovább a következő oktatóanyagra, amelyben egy védett webes API-t hozhat létre a címtár számára.
+Az e-mail cím és jelszó használatával most jelentkezzen be az alkalmazást.
+
+### <a name="error-insufficient-permissions"></a>Hiba: nem megfelelő engedélyek
+
+Miután bejelentkezik, az alkalmazás nem megfelelő engedélyek hibaüzenetet jelenít meg – ez a **várt**:
+
+`ServerError: AADB2C90205: This application does not have sufficient permissions against this web resource to perform the operation.`
+
+Ezt a hibaüzenetet kapja, mert a végrehajtani kívánt erőforrások eléréséhez a bemutató könyvtárból, de ha a hozzáférési jogkivonat csak az Azure AD-címtár esetében érvényes. Az API-hívás ezért nincs engedélyezve.
+
+Folytassa a következő oktatóanyag a sorozat (lásd: [lépések](#next-steps)) hozhat létre egy védett webes API-t a címtárhoz.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -123,6 +147,8 @@ Ebben a cikkben megtanulta, hogyan lehet:
 > * Frissítse az alkalmazást az Azure AD B2C-vel
 > * A minta az alkalmazás konfigurálása
 > * Iratkozzon fel a felhasználói folyamat használata
+
+Most már léphet tovább a sorozat következő oktatóanyaga az SPA egy védett webes API hozzáférést:
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Az ASP.NET Core webes API-t egy egyoldalas alkalmazásból az Azure Active Directory B2C használatával való hozzáférés engedélyezése](active-directory-b2c-tutorials-spa-webapi.md)

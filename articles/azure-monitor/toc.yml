@@ -435,8 +435,6 @@
                   href: app/proactive-exception-volume.md
                 - name: Memóriavesztés
                   href: app/proactive-potential-memory-leak.md
-                - name: Erőforrás-használat
-                  href: app/proactive-low-utilization-cloud-resources.md
                 - name: Biztonsági észlelés
                   href: app/proactive-application-security-detection-pack.md
                 - name: Azure Cloud Services

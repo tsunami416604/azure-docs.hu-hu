@@ -2,18 +2,18 @@
 title: Azure-on futó Kubernetes oktatóanyag – Alkalmazás frissítése
 description: Ebben az Azure Kubernetes Service-hez (AKS-hez) tartozó oktatóanyagban megismerheti, hogyan frissítheti a meglévő alkalmazástelepítéseket az AKS-ben az alkalmazáskód új verziójával.
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: twhitney
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 05eac7e673ad01e9d3e0fb25f261444fd7bc4e6d
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: b645fc9f67229d087a5d1655f733e2f3e50d4471
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475513"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614379"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Az Azure Kubernetes Service (AKS) alkalmazás frissítése
 
@@ -57,7 +57,7 @@ Mentse és zárja be a fájlt. A `vi`, használjon `:wq`.
 
 ## <a name="update-the-container-image"></a>A tárolórendszerkép frissítése
 
-Az előtéri rendszerkép újbóli létrehozásához és a frissített alkalmazás teszteléséhez használja a [docker-compose][docker-compose] parancsot. A `--build` argumentummal lehet utasítani a Docker Compose-t, hogy hozza újra létre az alkalmazás rendszerképét:
+Hozza létre újból az előtéri rendszerképet, és a frissített alkalmazás tesztelése, használja a [docker-compose][docker-compose]. A `--build` argumentummal lehet utasítani a Docker Compose-t, hogy hozza újra létre az alkalmazás rendszerképét:
 
 ```console
 docker-compose up --build -d
@@ -85,10 +85,10 @@ A [docker tag][docker-tag] paranccsal címkézze fel a rendszerképet. Az `<acrL
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v2
 ```
 
-Most a [docker push][docker-push] paranccsal töltse fel a rendszerképet a regisztrációs adatbázisba. Az `<acrLoginServer>` helyére az ACR bejelentkezési kiszolgálójának nevét írja be.
+Mostantól [docker leküldéses][docker-push] , feltöltheti a rendszerképet a tárolójegyzékbe. Az `<acrLoginServer>` helyére az ACR bejelentkezési kiszolgálójának nevét írja be.
 
 > [!NOTE]
-> Ha az ACR-beállításjegyzékbe való leküldés problémákat tapasztal, ellenőrizze, hogy továbbra is jelentkezett be. Futtassa a [az acr bejelentkezési] [ az-acr-login] parancsának használatával a létrehozott Azure Tárolóregisztrációs adatbázis nevét a [hozzon létre egy Azure Container Registry](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry) . lépés. Például: `az acr login --name <azure container registry name>`.
+> Ha az ACR-beállításjegyzékbe való leküldés problémákat tapasztal, ellenőrizze, hogy továbbra is jelentkezett be. Futtassa a [az acr bejelentkezési][az-acr-login] parancsának használatával a létrehozott Azure Tárolóregisztrációs adatbázis nevét a [hozzon létre egy Azure Container Registry](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry) . lépés. Például: `az acr login --name <azure container registry name>`.
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v2
@@ -96,7 +96,7 @@ docker push <acrLoginServer>/azure-vote-front:v2
 
 ## <a name="deploy-the-updated-application"></a>A frissített alkalmazás üzembe helyezése
 
-A rendelkezésre állás biztosítása érdekében az alkalmazáspodot több példányban kell futnia. Ellenőrizze a futó előtérbeli példányok számát a [kubectl get pods][kubectl-get] paranccsal:
+A rendelkezésre állás biztosítása érdekében az alkalmazáspodot több példányban kell futnia. Ellenőrizze a futó előtér-példányok száma a [kubectl get pods][kubectl-get] parancsot:
 
 ```
 $ kubectl get pods
@@ -163,7 +163,7 @@ Ebben az oktatóanyagban egy alkalmazást, és jelennek meg a frissítés, az AK
 Folytassa a következő oktatóanyaggal, amely az AKS-fürtök új Kubernetes-verzióra történő frissítését ismerteti.
 
 > [!div class="nextstepaction"]
-> [Kubernetes frissítése][aks-tutorial-upgrade]
+> [A Kubernetes frissítése][aks-tutorial-upgrade]
 
 <!-- LINKS - external -->
 [docker-compose]: https://docs.docker.com/compose/

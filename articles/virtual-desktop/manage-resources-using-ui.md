@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 275fec5fb696a7e1352bbddccd288863e984b796
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 9579db9836ef41706f2c6be09570fa7c1459e14f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304557"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620456"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>Oktatóanyag: Felügyeleti eszköz üzembe helyezése
 
@@ -57,8 +57,8 @@ Kövesse ezeket az utasításokat az Azure Resource Management-sablon üzembe he
 ### <a name="guidance-for-template-parameters"></a>Útmutató a sablon paraméterei
 A következő adja meg a paramétereket az eszköz konfigurálásának módjáról:
 
-- Ez a távoli asztali munkamenet-átvitelszervező URL-címe:  <https://rdbroker.wvd.microsoft.com/>
-- Ez az erőforrás URL-címe:  <https://mrs-prod.ame.gbl/mrs-RDInfra-prod>
+- A távoli asztali munkamenet-átvitelszervező URL-címe: https:\//rdbroker.wvd.microsoft.com/
+- Az erőforrás URL-címe: https:\//mrs-prod.ame.gbl/mrs-RDInfra-prod
 - Az AAD-hitelesítő adatok használata a többtényezős hitelesítés le van tiltva, hogy jelentkezzen be az Azure-bA. Lásd: [kell futtatni az Azure Resource Manager-sablon](#what-you-need-to-run-the-azure-resource-manager-template).
 - Használjon egy egyedi nevet, amely regisztrálva lesz az Azure Active Directory management Tool; Ha például Apr3UX.
 

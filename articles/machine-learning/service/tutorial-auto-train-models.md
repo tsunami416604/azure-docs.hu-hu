@@ -1,5 +1,5 @@
 ---
-title: 'Regressziós modell oktatóanyag: Automatizált gépi tanulás'
+title: 'Regressziós modell oktatóanyag: Automatizált ML'
 titleSuffix: Azure Machine Learning service
 description: Ismerje meg, hogyan hozhat létre a machine learning-modellek automatizált machine learning segítségével. Az Azure Machine Learning hajthat végre adatok előfeldolgozása, az algoritmus kiválasztása és a hiperparaméter kiválasztása automatikusan az Ön számára. Ezután a kész modell Azure Machine Learning szolgáltatás van telepítve.
 services: machine-learning
@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 907383c057c0c1eebee6550a0d1e9c75dd88513c
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 8cedf7abf71a772a0b770dd2f82d9a5508f5dd75
+ms.sourcegitcommit: dda9fc615db84e6849963b20e1dce74c9fe51821
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417304"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67622377"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Oktatóanyag: Automatizált gépi tanulás a regressziós modell létrehozása
 
@@ -655,7 +655,7 @@ Adja meg a kísérlet paramétert, és a modell a személyfelismerési és a han
 |**iteration_timeout_minutes**|10|Minden egyes ismétléskor percben időkorlát. Ezt az értéket a teljes futásidő csökkentéséhez csökkentse.|
 |**iterations**|30|Iterációk száma. Minden egyes ismétléskor egy új gépi tanulási modell tanítása az adatok. Ez az elsődleges, amely befolyásolja a teljes futási idő értéke.|
 |**primary_metric**| spearman_correlation | Az optimalizálni kívánt metrika. A regressziós modell Ez a metrika alapján fogja kiválasztani.|
-|**preprocess**| True (Igaz) | Használatával **igaz**, a kísérlet is előfeldolgozása a bemeneti adatok (kezelése az adatok hiányoznak, szöveg konvertálása a numerikus, stb.)|
+|**preprocess**| True | Használatával **igaz**, a kísérlet is előfeldolgozása a bemeneti adatok (kezelése az adatok hiányoznak, szöveg konvertálása a numerikus, stb.)|
 |**Részletességi**| logging.INFO | A naplózási szint szabályozza.|
 |**n_cross_validations**|5|Kereszt-ellenőrzési elágazást végrehajtani, ha nincs megadva érvényesítési adatok száma.|
 
@@ -1127,6 +1127,8 @@ print(y_predict[:10])
 Hozzon létre egy pontdiagram jelenítheti meg az előre jelzett költség értékeket, a tényleges költségek értékek képest. A következő kódban a `distance` funkció az x tengely és utazás `cost` , az y tengelyen. Minden egyes út távolság értéke a előre jelzett költség varianciáját összehasonlítani, az első 100, előre meghatározott és a tényleges költségek értékek külön adatsorozatként jönnek létre. Vizsgálata folyamatban van a diagram mutatja, hogy a távolság/költség kapcsolat szinte lineáris, és az előre jelzett költség értékek a következők a legtöbb esetben a nagyon közeli azonos trip távolság tényleges költségek értékeit.
 
 ```python
+%matplotlib inline
+
 import matplotlib.pyplot as plt
 
 fig = plt.figure(figsize=(14, 10))

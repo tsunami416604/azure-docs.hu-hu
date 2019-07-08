@@ -9,14 +9,14 @@ ms.assetid: 8B837DC2-70F1-41C7-9496-11EDFD1A888D
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 07/08/2019
 ms.author: scottwhi
-ms.openlocfilehash: 8d8fd03d9c3d912788e9893377bbab3efac86f8a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a89d73b63680415aa8e516926b8e1d6c59ffbbad
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66383841"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626018"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>A keresési válasz tartalmazza a válaszokat szűrése  
 
@@ -44,14 +44,20 @@ Előfordulhat, hogy a webes, a Bing a keresés megtalálja az összes kapcsolód
     }
 }    
 ```
-A tartalom (például képek, videók és hírek) esetén kap típusú használatával szűrheti a [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) lekérdezési paraméter. Ha a Bing kapcsolódó tartalmat a megadott válaszok talált, a lesz visszaadva. A válasz szűrő az válaszokat vesszővel tagolt listája. 
 
-Kizárandó konkrét típusú tartalmakra, például képeket, a válasz, hozzáadhat egy `-` karakter elejéhez a `responseFilter` értéket. Kizárt típusok elkülönítheti a vessző (`,`). Példa:
+## <a name="query-parameters"></a>Lekérdezési paraméterek
+
+A Bing által visszaadott válaszokat szűréséhez használja az alábbi lekérdezési paramétereket az API hívásakor.  
+
+### <a name="responsefilter"></a>ResponseFilter
+
+A válaszokat, amely a válaszban (például képek, videók és hírek) tartalmazza a Bing típusú használatával szűrheti a [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) lekérdezési paraméter, amely válasz egy vesszővel tagolt listája. Választ fog szerepelni a választ, ha a Bing kapcsolódó tartalom megkeresi azt. 
+
+Adott válaszok kizárása a választ, például képeket, jogosultságokat egy `-` karakter, a válasz típusát. Példa:
 
 ```
 &responseFilter=-images,-videos
 ```
-
 
 A következő bemutatja, hogyan `responseFilter` a kérelem képek, videók és hírek, hajózási dinghies. A lekérdezési karakterláncot kódol, amikor a vesszők módosítani: %2, C.  
 
@@ -94,7 +100,9 @@ Bing nem adott vissza az előző válaszban kapott a video- és hírkeresési er
 
 Nem ajánlott használatával `responseFilter` egyetlen API-ból származó eredmények eléréséhez. Ha azt szeretné, hogy a tartalom egy egyetlen Bing-API-ból, hívja közvetlenül API. Például csak képeket fogadásához egy kérelmet küld a képkeresési API-végpont `https://api.cognitive.microsoft.com/bing/v7.0/images/search` vagy egy másik [lemezképek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#endpoints) végpontok. Nem csupán a teljesítmény javítása érdekében fontos a egyetlen API meghívására, de mivel a tartalom-specifikus API-k elérhetővé gazdagabb eredményeket. Például használhatja a szűrők, amelyek nem érhetők el a Web Search API-nak az eredmények szűréséhez.  
 
-A keresési eredmények beolvasása egy adott tartományban, például a `site:` operátor a lekérdezési karakterláncban.  
+### <a name="site"></a>Hely
+
+A keresési eredmények beolvasása egy adott tartományban, például a `site:` lekérdezési paraméter, a lekérdezési karakterláncban.  
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us
@@ -103,9 +111,27 @@ https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:con
 > [!NOTE]
 > Ha használja a lekérdezéstől függően a `site:` operátor, annak esélyét, hogy a válasz tartalmazhat felnőtt tartalom, függetlenül attól, hogy van a [biztonságos keresési](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#safesearch) beállítás. Csak akkor használja a `site:` operátort, ha ismeri a webhely tartalmát, és a felnőtteknek szóló tartalmak megjelenítése nem okoz problémát.
 
+### <a name="freshness"></a>Közzététel ideje
+
+Korlátozza a Webes válasz eredményeket, amelyek egy adott időszak során felderített a Bing, állítsa be a [frissessége](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#freshness) lekérdezési paraméter a következő kis-és értékek egyikére:
+
+* `Day` – Ad vissza, amelyek az elmúlt 24 órában észlelt a Bing
+* `Week` – Ad vissza, amelyek az elmúlt 7 napon belül felderített Bing
+* `Month` – Ad vissza, amelyek az elmúlt 30 napon belül felderített
+
+Ezt a paramétert is megadhat, az űrlap egy egyéni dátumtartományt `YYYY-MM-DD..YYYY-MM-DD`. 
+
+`https://<host>/bing/v7.0/search?q=ipad+updates&freshness=2019-02-01..2019-05-30`
+
+Korlátozza az eredményeket egy adott dátumot, állítsa be a frissesség paraméter a megadott dátum:
+
+`https://<host>/bing/v7.0/search?q=ipad+updates&freshness=2019-02-04`
+
+Az eredmények tartalmazhat, amelyek a megadott időszakon kívül esnek, ha weboldalt, Bing, a szűrési feltételeknek megfelelő száma kisebb, mint a kért weblapok (vagy a alapértelmezett számát, amelyet a Bing adja vissza).
+
 ## <a name="limiting-the-number-of-answers-in-the-response"></a>A válaszban szereplő válaszok számának korlátozása
 
-A Bing válaszokat tartalmazza ennek a területnek a választ. Ha például lekérdezheti, ha *induló utazó + dinghies*, a Bing adja vissza `webpages`, `images`, `videos`, és `relatedSearches`.
+A Bing többféle választ adhat vissza a JSON-válaszban. Például, ha lekérdezheti, ha *induló utazó + dinghies*, a Bing vissza `webpages`, `images`, `videos`, és `relatedSearches`.
 
 ```json
 {
