@@ -304,14 +304,14 @@ Győződjön meg arról, hogy a tanúsítvány telepítve van-e a számítógép
 
         | Tulajdonság | Érték |
         |---|---|
-        | source | Bármely |
-        | Forrásporttartományok | * |
-        | Cél | Bármely |
-        | Célporttartomány | 636 |
-        | Protocol | Bármely |
-        | Műveletek | Engedélyezés |
-        | Prioritás | <Desired Number> |
-        | Name (Név) | Port_LDAP_636 |
+        | Source | Any |
+        | Source port ranges | * |
+        | Destination | Any |
+        | Destination port range | 636 |
+        | Protocol | Any |
+        | Action | Allow |
+        | Priority | \<Desired Number> |
+        | Name | Port_LDAP_636 |
 
     ![bejövő biztonsági szabály](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
 
