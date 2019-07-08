@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/10/2019
+ms.date: 07/03/2019
 ms.author: aljo
-ms.openlocfilehash: 4d7fb257c932d84d8ddcb6c69e5286373f9b6adf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 19f5d99fe95e1290cc30dedc8b8172e234bd4642
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067218"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67566062"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>A fejlesztőkörnyezet előkészítése Windowson
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "67067218"
 > 
 > 
 
-Az [Azure Service Fabric-alkalmazásoknak][1] a Windows rendszerű fejlesztői gépen való létrehozásához és futtatásához telepítse a Service Fabric-futtatókörnyezetet, az SDK-t és az eszközöket. Továbbá [engedélyeznie kell az SDK-ban található Windows PowerShell-szkriptek](#enable-powershell-script-execution) végrehajtását.
+Készíthet és futtathat [Azure Service Fabric-alkalmazások][1] a Windows fejlesztői gépén, telepítse a Service Fabric-futtatókörnyezet, SDK és eszközök. Továbbá [engedélyeznie kell az SDK-ban található Windows PowerShell-szkriptek](#enable-powershell-script-execution) végrehajtását.
 
 ## <a name="prerequisites"></a>Előfeltételek
 ### <a name="supported-operating-system-versions"></a>Támogatott operációsrendszer-verziók
@@ -43,7 +43,7 @@ A fejlesztéshez a következő operációsrendszer-verziók támogatottak:
 
 > [!NOTE]
 > Windows 7-támogatás:
-> - Alapértelmezés szerint a Windows 7 csak a Windows PowerShell 2.0-t tartalmazza. A Service Fabric PowerShell-parancsmagokhoz a PowerShell 3.0 vagy újabb verziója szükséges. A [Windows PowerShell 5.0-t letöltheti][powershell5-download] a Microsoft letöltőközpontból.
+> - Alapértelmezés szerint a Windows 7 csak a Windows PowerShell 2.0-t tartalmazza. A Service Fabric PowerShell-parancsmagokhoz a PowerShell 3.0 vagy újabb verziója szükséges. Is [töltse le a Windows PowerShell 5.0][powershell5-download] a Microsoft Download Center webhelyről.
 > - A Service Fabric fordított proxyja nem érhető el Windows 7 rendszeren.
 >
 
@@ -57,7 +57,7 @@ Webplatform-telepítő (WebPI) az SDK és eszközök telepítése a javasolt mó
 A Service Fabric-eszközök a Visual Studio 2017 Azure Development Workload munkafolyamatának részét képezik. A Visual Studio telepítésének részeként engedélyezze ezt a munkafolyamatot.
 Emellett telepítenie kell a Microsoft Azure Service Fabric SDK-t és futtatókörnyezetet is a webplatform-telepítővel.
 
-* [A Microsoft Azure Service Fabric SDK telepítése][core-sdk]
+* [Telepítse a Microsoft Azure Service Fabric SDK-t][core-sdk]
 
 ### <a name="to-use-visual-studio-2015-requires-visual-studio-2015-update-2-or-later"></a>A Visual Studio 2015 használata (Visual Studio 2015 2. frissítés vagy újabb szükséges)
 A Visual Studio 2015 esetében a Service Fabric-eszközök az SDK-val és a futtatókörnyezettel együtt települnek a webplatform-telepítő használatával:
@@ -66,12 +66,12 @@ A Visual Studio 2015 esetében a Service Fabric-eszközök az SDK-val és a futt
 
 ### <a name="sdk-installation-only"></a>Csak az SDK telepítése
 Ha csak az SDK-ra van szükség, telepítse a következő csomagot:
-* [A Microsoft Azure Service Fabric SDK telepítése][core-sdk]
+* [Telepítse a Microsoft Azure Service Fabric SDK-t][core-sdk]
 
 Az aktuális verziók a következők:
-* Service Fabric SDK és eszközök 3.4.639
-* Service Fabric-futtatókörnyezet 6.5.639
-* Service Fabric Tools Pro Visual Studio 2015 2.4.11116.1
+* Service Fabric SDK és eszközök 3.4.641
+* Service Fabric-futtatókörnyezet 6.5.641
+* Service Fabric Tools Pro Visual Studio 2015 2.5.20615.1
 * Visual Studio 2017 15.9 tartalmazza a Service Fabric Tools for Visual Studio 2.4.11024.1 
 
 Támogatott verziók listáját lásd: [Service Fabric-verziók](service-fabric-versions.md)

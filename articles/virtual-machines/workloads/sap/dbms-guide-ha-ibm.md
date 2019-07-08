@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
-ms.openlocfilehash: a74dd1a932cac41081786f76938a5b35de62d878
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7464ea481d4c95856b78a83a875f2cd24c00705b
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64689716"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503323"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -77,9 +77,9 @@ A telepítés megkezdése előtt az alábbi SAP-megjegyzések és dokumentáció
 | Dokumentáció | 
 | --- |
 | [Az SAP közösségi Wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes): Rendelkezik a szükséges SAP-megjegyzések mindegyikét linuxhoz |
-| [Az Azure virtuális gépek tervezése és megvalósítása a linuxon futó SAP] [ planning-guide] útmutató |
-| [Az Azure virtuális gépek üzembe helyezése Linuxon futó SAP-] [ deployment-guide] (Ez a cikk) |
-| [Az Azure Virtual Machines adatbázis felügyeleti system(DBMS) központi telepítése a linuxon futó SAP-] [ dbms-guide] útmutató |
+| [Az Azure virtuális gépek tervezése és megvalósítása a linuxon futó SAP][planning-guide] útmutató |
+| [Az Azure virtuális gépek üzembe helyezése Linuxon futó SAP-][deployment-guide] (Ez a cikk) |
+| [Az Azure Virtual Machines adatbázis felügyeleti system(DBMS) központi telepítése a linuxon futó SAP-][dbms-guide] útmutató |
 | [Az SAP számítási feladatok az Azure tervezési és telepítési ellenőrzőlista][azr-sap-plancheck] |
 | [SUSE Linux Enterprise Server SAP alkalmazások 12 SP3 ajánlott eljárások][sles-for-sap-bp] |
 | [SUSE Linux Enterprise magas rendelkezésre állású bővítmény 12 SP3][sles-ha-guide] |
@@ -496,13 +496,12 @@ Ha a telepítés előtt a Db2 HADR konfigurációs létrehozott hajtotta végre,
 
 A j2ee-alapú konfigurációs eszköz használatával ellenőrizze, vagy frissítse a JDBC URL-CÍMÉT. Mivel a j2ee-alapú konfigurációs eszközt egy grafikus eszközt, szüksége lesz az X kiszolgálón telepítve:
  
-1. Jelentkezzen be az elsődleges application server, a J2EE-példány, és hajtsa végre:
-     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>
+1. Jelentkezzen be az elsődleges application server, a J2EE-példány, és hajtsa végre:   `sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`
 1. Válassza a bal oldali keret **biztonsági tár**.
-1. Válassza a megfelelő keretet, a fő jdbc/készlet / \ <SAPSID> /URL.
+1. Válassza a megfelelő keretet, a főjdbc/készlet/\<SAPSID > / URL-címét.
 1. Módosítsa a JDBC URL-címben az állomásnév a virtuális gazdagép nevét.
-     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>
-1. Válassza ki **hozzáadása**.
+     `jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0`
+1. Válassza a **Hozzáadás** lehetőséget.
 1. A módosítások mentéséhez válassza a lemez ikonra a bal felső sarokban.
 1. Zárja be a konfigurációs eszközt.
 1. A Java-példány újraindítása.

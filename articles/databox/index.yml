@@ -10,10 +10,10 @@ metadata:
   ms.service: databox
   ms.subservice: pod
   ms.topic: landing-page
-  ms.date: 01/09/2019
+  ms.date: 07/03/2019
   ms.author: alkohli
 abstract:
-  description: 'Az Azure Data Box termékcsaláddal gyorsan, olcsón és megbízható módon vihet át több száz terabájtnyi adatot az Azure-ba. Ha az időbeli, hálózati vagy költségvetési lehetőségei korlátozottak, a Data Box-eszközöket offline adatátvitelhez is használhatja.<p>Az adatok méretétől függően a következő lehetőségek közül választhat: Data Box Disk, Data Box vagy Data Box Heavy <SUP>előzetes verzió</SUP>. Minden eszközről 4 egyszerű lépésben vihet át adatokat az Azure-ba – rendelje meg és vegye át az eszközt, másolja rá az adatokat, majd küldje vissza az Azure-nak. Az Azure-adatközpontban feltöltik, majd törlik az adatokat.</p><p>Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan használhatja a Data Boxot offline adatátvitelre.</p>'
+  description: 'Az Azure Data Box termékcsaláddal gyorsan, olcsón és megbízható módon vihet át több száz terabájtnyi adatot az Azure-ba. Ha az időbeli, hálózati vagy költségvetési lehetőségei korlátozottak, a Data Box-eszközöket offline adatátvitelhez is használhatja.<p>Az adatok méretétől függően a következő lehetőségek közül választhat: Data Box Disk, Data Box vagy Data Box Heavy. Minden eszközről 4 egyszerű lépésben vihet át adatokat az Azure-ba – rendelje meg és vegye át az eszközt, másolja rá az adatokat, majd küldje vissza az Azure-nak. Az Azure-adatközpontban feltöltik, majd törlik az adatokat.</p><p>Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan használhatja a Data Boxot offline adatátvitelre.</p>'
 sections:
   - title: Első lépések
     items:
@@ -30,8 +30,8 @@ sections:
             href: /azure/databox/data-box-disk-quickstart-portal
           - image:
               src: 'https://docs.microsoft.com/media/common/i_quick-start.svg'
-            text: A Data Box Heavy<SUP>előzetes verzió</SUP> regisztrálása
-            href: '/azure/databox/data-box-heavy-overview#sign-up'
+            text: A Data Box Heavy beállítása az Azure Portalon
+            href: /azure/databox/data-box-heavy-quickstart-portal
   - title: Oktatóanyagok
     items:
       - type: list
@@ -42,3 +42,5 @@ sections:
             html: <p><a href="/azure/databox/data-box-deploy-ordered">Az Azure Data Box megrendelése</a></p><p><a href="/azure/databox/data-box-deploy-set-up">Az Azure Data Box csatlakoztatása</a></p><p><a href="/azure/databox/data-box-deploy-copy-data">Adatok másolása az Azure Data Boxra</a></p><p><a href="/azure/databox/data-box-deploy-picked-up">Az Azure Data Box visszaküldése és a feltöltés ellenőrzése</a></p>
           - title: A Data Box Diskhez
             html: '<p><a href="/azure/databox/data-box-disk-deploy-ordered">Az Azure Data Box Disk megrendelése</a></p><p><a href="/azure/databox/data-box-disk-deploy-set-up">Az Azure Data Box Disk kicsomagolása, csatlakoztatása és a zárolás feloldása</a></p><p><a href="/azure/databox/data-box-disk-deploy-copy-data">Adatok másolása az Azure Data Box Diskre</a></p><p><a href="/azure/databox/data-box-disk-deploy-picked-up">Az Azure Data Box Disk visszaküldése és a feltöltés ellenőrzése</a></p>'
+          - title: A Data Box Heavyhez
+            html: <p><a href="/azure/databox/data-box-heavy-deploy-ordered">Az Azure Data Box Heavy megrendelése</a></p><p><a href="/azure/databox/data-box-heavy-deploy-set-up">Az Azure Data Box Heavy csatlakoztatása</a></p><p><a href="/azure/databox/data-box-heavy-deploy-copy-data">Adatok másolása az Azure Data Box Heavyre</a></p><p><a href="/azure/databox/data-box-heavy-deploy-picked-up">Az Azure Data Box Heavy visszaküldése és a feltöltés ellenőrzése</a></p>

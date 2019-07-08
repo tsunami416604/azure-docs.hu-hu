@@ -62,6 +62,8 @@
           href: backup-azure-files-faq.md
         - name: GYIK – Azure-beli virtuális gépeken futó SQL Server-adatbázisok biztonsági mentése
           href: faq-backup-sql-server.md
+        - name: GYIK – Azure Backup Server és DPM
+          href: backup-azure-dpm-azure-server-faq.md
     - name: Biztonsági mentési architektúra
       href: backup-architecture.md
     - name: Szerepköralapú hozzáférés-vezérlés

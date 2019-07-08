@@ -35,6 +35,12 @@
       href: security-center-data-security.md
     - name: Javaslatok használata a biztonság növelése érdekében
       href: security-center-using-recommendations.md
+    - name: Fenyegetésészlelés
+      href: security-center-detection-capabilities.md
+    - name: Biztonsági riasztások kezelése
+      href: security-center-managing-and-responding-alerts.md
+    - name: Biztonsági incidensek
+      href: security-center-incident.md
     - name: Incidensmegoldás
       href: security-center-incident-response.md
 - name: Útmutatók
@@ -97,19 +103,24 @@
           href: security-center-file-integrity-monitoring.md
         - name: Adaptív hálózat-megerősítés
           href: security-center-adaptive-network-hardening.md
-    - name: Fenyegetésészlelés
-      href: security-center-detection-capabilities.md
+    - name: Fenyegetésészlelési riasztások
       items:
-        - name: Biztonsági riasztások
-          href: security-center-managing-and-responding-alerts.md
-        - name: Biztonsági incidensek
-          href: security-center-incident.md
-        - name: Biztonsági riasztások ismertetése
-          href: security-center-alerts-type.md
-        - name: Riasztások érvényesítése
+        - name: Biztonsági riasztások áttekintése
+          href: security-center-alerts-overview.md
+        - name: Virtuális gépek és kiszolgálók fenyegetéseinek észlelése
+          href: security-center-alerts-iaas.md
+        - name: Natív felhőalapú számítások fenyegetéseinek észlelése
+          href: security-center-alerts-compute.md
+        - name: Adatszolgáltatások fenyegetéseinek észlelése
+          href: security-center-alerts-data-services.md
+        - name: Azure-szolgáltatásréteg fenyegetéseinek észlelése
+          href: security-center-alerts-service-layer.md
+        - name: Integráció az Azure Security-termékekkel
+          href: security-center-alerts-integration.md
+        - name: Felhőbeli intelligens riasztások korrelációi (incidensek)
+          href: security-center-alerts-cloud-smart.md
+        - name: Riasztások érvényesítése (EICAR-tesztfájl)
           href: security-center-alert-validation.md
-        - name: Azure-erőforrások és -felhasználók UEBA-elemzése
-          href: security-center-ueba-mcas.md
     - name: Archívum
       items:
         - name: Lemeztitkosítás alkalmazása
@@ -168,6 +179,10 @@
           href: security-center-search.md
         - name: Tervezés és műveletek
           href: security-center-planning-and-operations-guide.md
+        - name: Biztonsági riasztások ismertetése
+          href: security-center-alerts-type.md
+        - name: Azure-erőforrások és -felhasználók UEBA-elemzése
+          href: security-center-ueba-mcas.md
 - name: Referencia
   items:
     - name: REST API-k

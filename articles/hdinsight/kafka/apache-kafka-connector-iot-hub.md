@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 420800e718c8f98bfd3d5d7383829d5aa5472828
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5559d243573ea04400007cdce0e71009dc91e27a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64698159"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446441"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Használat Apache Kafka on HDInsight az Azure IoT hubbal
 
@@ -37,7 +37,7 @@ A csatlakozás API további információkért lásd: [ https://kafka.apache.org/
 
 * A Kafka-fürt az élcsomóponthoz. További információkért lásd: a [élcsomópontok használata a HDInsight](../hdinsight-apps-use-edge-node.md) dokumentumot.
 
-* Az Azure IoT hubra. A jelen oktatóanyag esetében javasolni tudom a [online szimulátor Raspberry Pi csatlakoztatása az Azure IoT hubra](https://docs.microsoft.com/azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started) dokumentumot.
+* Az Azure IoT hubra. Ebben a cikkben javasolt a [online szimulátor Raspberry Pi csatlakoztatása az Azure IoT hubra](https://docs.microsoft.com/azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started) dokumentumot.
 
 * Egy SSH-ügyfél. A jelen dokumentum lépései SSH használatával csatlakoznak a fürthöz. További információ: [SSH használata a HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 

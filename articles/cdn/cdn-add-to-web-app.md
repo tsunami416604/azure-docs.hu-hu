@@ -7,7 +7,7 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 33b47d33262a4968a0eafb9ec70ef73e50975735
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1b67522834497a264d95fc9b80246b16841d6026
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61462765"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594228"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Oktatóanyag: Az Azure CDN hozzáadása az Azure App Service webalkalmazás
 
@@ -76,7 +76,7 @@ Az **Azure Content Delivery Network** lapon adja meg az **Új végpont** beáll�
 | ------- | --------------- | ----------- |
 | **CDN-profil** | myCDNProfile | A CDN-profil ugyanabba a tarifacsomagba tartozó CDN-végpontok gyűjteménye. |
 | **Tarifacsomag** | Akamai Standard | A [tarifacsomag](cdn-features.md) határozza meg a szolgáltatót és az elérhető szolgáltatásokat. Ez az oktatóanyag a *Standard Akamai* szolgáltatást használja. |
-| **CDN-végpont neve** | Bármely egyedi név az azureedge.net tartományban | A gyorsítótárazott erőforrások az *&lt;endpointname&gt;*.azureedge.net tartományban érhetők el.
+| **CDN-végpont neve** | Bármely egyedi név az azureedge.net tartományban | A gyorsítótárazott erőforrások az *&lt;endpointname&gt;* .azureedge.net tartományban érhetők el.
 
 Válassza a **Létrehozás** lehetőséget egy új CDN-profil létrehozásához.
 

@@ -100,10 +100,10 @@
           href: manage-database-permissions.md
         - name: Fürt állapotának ellenőrzése
           href: check-cluster-health.md
-        - name: Fürt horizontális felskálázásának kezelése
-          href: manage-cluster-scale-out.md
-        - name: Fürt vertikális felskálázásának kezelése
-          href: manage-cluster-scale-up.md
+        - name: Fürtök horizontális skálázásának kezelése
+          href: manage-cluster-horizontal-scaling.md
+        - name: Fürtök vertikális skálázásának kezelése
+          href: manage-cluster-vertical-scaling.md
         - name: Adat törlése
           href: delete-data.md
         - name: A duplikált adatok kezelése
