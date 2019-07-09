@@ -189,9 +189,9 @@ Ez a cikk a Hive-tevékenység, amely egy igény szerinti HDInsight Hadoop-fürt
 
     |Tulajdonság  |Érték  |
     |---------|---------|
-    |Name (Név) | Adja meg az adat-előállító nevét. A névnek globálisan egyedinek kell lennie.|
-    |Előfizetés | Válassza ki az Azure-előfizetését. |
-    |Erőforráscsoport | Válassza ki **meglévő** , és válassza ki az erőforráscsoportot, a PowerShell-szkripttel létrehozott. |
+    |Name | Adja meg az adat-előállító nevét. A névnek globálisan egyedinek kell lennie.|
+    |Subscription | Válassza ki az Azure-előfizetését. |
+    |Resource group | Válassza ki **meglévő** , és válassza ki az erőforráscsoportot, a PowerShell-szkripttel létrehozott. |
     |Version | Maradjon a **V2**. |
     |Location | A hely automatikusan értéke a korábban az erőforráscsoport létrehozásakor megadott helyre. A jelen oktatóanyag esetében a hely értéke **USA keleti Régiójában**. |
 
