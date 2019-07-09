@@ -4,16 +4,16 @@ description: 'Útmutató: adatok másolása VHD-ből a helyszíni virtuális gé
 services: databox
 author: alkohli
 ms.service: databox
-ms.subservice: Heavy
+ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 8065d29c0cb984244178d49fe8c8c5aa853ee682
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: a29cd142b3322c958f70aad8d5cad2bc30b87d76
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595762"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670844"
 ---
 # <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>Oktatóanyag: Használati adatok mezőbe (nagy erőforrásigényű) az adatok importálása a felügyelt lemezek az Azure-ban
 

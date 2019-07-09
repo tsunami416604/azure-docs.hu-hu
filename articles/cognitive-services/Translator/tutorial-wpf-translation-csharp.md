@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: b300c40b4a9c832a0df87f7cfc6e6a9558d766f6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 36d85e11133e7197212ae1b37609628689b68a13
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448232"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657944"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Oktatóanyag: A WPF-fordítási alkalmazás létrehozása
 
@@ -62,7 +62,7 @@ Először azt kell tennünk, hogy a projekt a Visual Studióban be van állítva
 1. Nyissa meg a Visual Studiót. Válassza ki **File > New > Project**.
 2. A bal oldali panelen keresse meg és jelölje ki **Visual C#** . Ezután válassza ki **WPF App (.NET Framework)** a középső panelen.
    ![WPF-alkalmazás létrehozása a Visual Studióban](media/create-wpf-project-visual-studio.png)
-3. Nevezze el a projektet, állítsa a Framework **.NET-keretrendszer 4.5.2-es vagy újabb**, majd kattintson a **OK**.
+3. Adja a projektnek `MSTranslatorTextDemo`, beállítva a Framework **.NET-keretrendszer 4.5.2-es vagy újabb**, majd kattintson a **OK**.
 4. A projekt létrejött. Láthatja, hogy nincsenek két lap megnyitása: `MainWindow.xaml` és `MainWindow.xaml.cs`. Ez az oktatóanyag során adunk hozzá kódot a két fájlt. Az alkalmazás felhasználói felületén; az első az utóbbi a Translator Text és a Bing Spell Check-hívásokhoz.
    ![A környezet áttekintése](media/blank-wpf-project.png)
 
@@ -82,6 +82,7 @@ Adjunk szerelvények szerializálható és deszerializálható objektumokat, és
    * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization)
    * [System.Web](https://docs.microsoft.com/dotnet/api/system.web)
    * [System.Web.Extensions](https://docs.microsoft.com/dotnet/api/system.web)
+   * [System.Windows](https://docs.microsoft.com/dotnet/api/system.windows)
 3. Miután hozzáadta a projekthez mutató hivatkozásokat, kattinthat **OK** bezárásához **hivatkozáskezelő**.
 
 > [!NOTE]
@@ -197,7 +198,7 @@ A projekt összes van beágyazva a `MainWindow : Window` osztály. Először adj
        // authentication options, see: https://docs.microsoft.com/azure/cognitive-services/authentication.
        const string COGNITIVE_SERVICES_KEY = "YOUR_COG_SERVICES_KEY";
        // Endpoints for Translator Text and Bing Spell Check
-       public static readonly string TEXT_TRANSLATION_API_ENDPOINT = "https://api.cognitive.microsofttranslator.com/{0}?api- version=3.0";
+       public static readonly string TEXT_TRANSLATION_API_ENDPOINT = "https://api.cognitive.microsofttranslator.com/{0}?api-version=3.0";
        const string BING_SPELL_CHECK_API_ENDPOINT = "https://westus.api.cognitive.microsoft.com/bing/v7.0/spellcheck/";
        // An array of language codes
        private string[] languageCodes;
@@ -211,7 +212,7 @@ A projekt összes van beágyazva a `MainWindow : Window` osztály. Először adj
        {
            Exception e = (Exception)args.ExceptionObject;
            MessageBox.Show("Caught " + e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-           System.Windows.app.Current.Shutdown();
+           System.Windows.Application.Current.Shutdown();
        }
        // MainWindow constructor
        public MainWindow()
@@ -224,7 +225,7 @@ A projekt összes van beágyazva a `MainWindow : Window` osztály. Először adj
                MessageBox.Show("One or more invalid API subscription keys.\n\n" +
                    "Put your keys in the *_API_SUBSCRIPTION_KEY variables in MainWindow.xaml.cs.",
                    "Invalid Subscription Key(s)", MessageBoxButton.OK, MessageBoxImage.Error);
-               System.Windows.app.Current.Shutdown();
+               System.Windows.Application.Current.Shutdown();
            }
            else
            {

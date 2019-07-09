@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c90d0d2596eb6b8650e2d9809b23bb0e184d97c0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 4837867188721b13b3f4cb64245ae85a1e32fe50
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62117500"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656624"
 ---
 # <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>A linuxon futó Azure App Service-ben az ASP.NET Core és SQL Database alkalmazás készítése
 
@@ -145,7 +145,7 @@ az sql db create --resource-group myResourceGroup --server <server-name> --name 
 
 ### <a name="create-connection-string"></a>Kapcsolati sztring létrehozása
 
-Cserélje le a következő karakterláncot a  *\<-kiszolgálónév >*,  *\<db-username >*, és  *\<db-password >* , korábban használt.
+Cserélje le a következő karakterláncot a  *\<-kiszolgálónév >* ,  *\<db-username >* , és  *\<db-password >* , korábban használt.
 
 ```
 Server=tcp:<server-name>.database.windows.net,1433;Database=coreDB;User ID=<db-username>;Password=<db-password>;Encrypt=true;Connection Timeout=30;
@@ -171,7 +171,7 @@ Ebben a lépésben az SQL Database-hez csatlakoztatott .NET Core-alkalmazást he
 
 ### <a name="configure-an-environment-variable"></a>Környezeti változó konfigurálása
 
-Kapcsolati sztringek az Azure-alkalmazáshoz való beállításához használja az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancsot a Cloud Shellben. A következő parancsban cserélje le a  *\<alkalmazás-neve >*, valamint a  *\<kapcsolati karakterlánc >* paraméter a korábban létrehozott kapcsolati karakterlánccal.
+Kapcsolati sztringek az Azure-alkalmazáshoz való beállításához használja az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancsot a Cloud Shellben. A következő parancsban cserélje le a  *\<alkalmazás-neve >* , valamint a  *\<kapcsolati karakterlánc >* paraméter a korábban létrehozott kapcsolati karakterlánccal.
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection-string>' --connection-string-type SQLServer
@@ -362,7 +362,7 @@ A meglévő teendők továbbra is megjelennek. Ha ismét közzéteszi a .NET Cor
 
 ## <a name="stream-diagnostic-logs"></a>Diagnosztikai naplók streamelése
 
-A mintaprojekt már követi az útmutatóban talál: [ASP.NET Core naplózás az Azure-ban](https://docs.microsoft.com/aspnet/core/fundamentals/logging#logging-in-azure) két konfigurációs módosítás:
+A mintaprojekt már követi az útmutatóban talál: [ASP.NET Core naplózás az Azure-ban](https://docs.microsoft.com/aspnet/core/fundamentals/logging#azure-app-service-provider) két konfigurációs módosítás:
 
 - Tartalmaz egy hivatkozást a `Microsoft.Extensions.Logging.AzureAppServices` a *DotNetCoreSqlDb.csproj*.
 - Hívások `loggerFactory.AddAzureWebAppDiagnostics()` a *Startup.cs*.

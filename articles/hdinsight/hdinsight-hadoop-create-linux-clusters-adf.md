@@ -230,7 +230,7 @@ Ebben a szakaszban két társított szolgáltatást belül az adat-előállító
 
     |Tulajdonság |Érték |
     |---|---|
-    |Name (Név) |Írja be a `HDIStorageLinkedService` (igen) kifejezést.|
+    |Name |Írja be a `HDIStorageLinkedService` (igen) kifejezést.|
     |Azure-előfizetés |A legördülő listából válassza ki előfizetését.|
     |Storage account name (Tárfiók neve) |Válassza ki a létrehozott Azure Storage-fiókot a PowerShell-szkript részeként.|
 
@@ -252,7 +252,7 @@ Ebben a szakaszban két társított szolgáltatást belül az adat-előállító
 
     | Tulajdonság | Érték |
     | --- | --- |
-    | Name (Név) | Írja be a `HDInsightLinkedService` (igen) kifejezést.|
+    | Name | Írja be a `HDInsightLinkedService` (igen) kifejezést.|
     | Típus | Válassza ki **igény szerinti HDInsight**. |
     | Azure Storage társított szolgáltatás | Válassza a(z) `HDIStorageLinkedService` lehetőséget. |
     | Fürttípus | Válassza ki **hadoop** |
@@ -260,7 +260,7 @@ Ebben a szakaszban két társított szolgáltatást belül az adat-előállító
     | Szolgáltatásnév azonosítója | Adja meg az Előfeltételek részeként létrehozott Azure Active Directory egyszerű szolgáltatás Alkalmazásazonosítója. |
     | Szolgáltatásnév kulcsa | Adja meg a hitelesítési kulcsot az Azure Active Directory szolgáltatás egyszerű. |
     | Fürt nevének előtagja | Adja meg egy értéket, amely az előtaggal fog a data factory által létrehozott összes fürttípusok a. |
-    |Előfizetés |A legördülő listából válassza ki előfizetését.|
+    |Subscription |A legördülő listából válassza ki előfizetését.|
     | Erőforráscsoport kiválasztása | Válassza ki a létrehozott erőforráscsoportot a korábban használt PowerShell-parancsfájl részeként.|
     |Válassza ki a régiót | A legördülő listából válassza ki a régiót.|
     | Az operációs rendszer típusa/fürt SSH-felhasználónév | Adjon meg egy SSH-felhasználónév gyakran `sshuser`. |

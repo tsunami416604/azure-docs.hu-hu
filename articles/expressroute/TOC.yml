@@ -74,6 +74,9 @@
           href: expressroute-howto-circuit-arm.md
         - name: Azure CLI
           href: howto-circuit-cli.md
+        - name: Azure Resource Manager-sablon
+          displayName: 'ARM,resource manager template'
+          href: expressroute-howto-circuit-resource-manager-template.md
     - name: Társhálózati konfiguráció létrehozása és módosítása
       items:
         - name: Azure Portal
@@ -191,6 +194,7 @@
     - name: REST (klasszikus)
       href: 'https://msdn.microsoft.com/library/azure/dn606310'
     - name: Resource Manager-sablon
+      displayName: 'ARM,resource manager template'
       href: /azure/templates/microsoft.network/expressroutecircuits
 - name: További források
   items:

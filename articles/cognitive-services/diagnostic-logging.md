@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
-ms.openlocfilehash: e1a6a44d7ff9d5786388fc47245ef5c79cb9be82
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 3be912f053bf206999546678e1e407548af181bf
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155730"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657676"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Az Azure Cognitive Services diagnosztikai naplózás engedélyezése
 
@@ -28,14 +28,14 @@ Diagnosztikai naplózás engedélyezéséhez kell valahol a naplóadatokat táro
 * [Log Analytics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics) – olyan rugalmas log keresést és elemzést eszköz, amely lehetővé teszi, hogy egy Azure-erőforrás által létrehozott nyers naplók elemzése.
 
 > [!NOTE]
-> További konfigurációs lehetőségek állnak rendelkezésre. További tudnivalókért lásd: [gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
+> További konfigurációs lehetőségek állnak rendelkezésre. További tudnivalókért lásd: [gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview).
 
 ## <a name="enable-diagnostic-log-collection"></a>Diagnosztikai naplók összegyűjtése engedélyezése  
 
 Először engedélyezése a diagnosztikai naplózás az Azure portal használatával.
 
 > [!NOTE]
-> Ez a funkció a PowerShell vagy az Azure CLI használatával engedélyezze az szereplő utasítások [gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs#how-to-enable-collection-of-diagnostic-logs).
+> Ez a funkció a PowerShell vagy az Azure CLI használatával engedélyezze az szereplő utasítások [gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#diagnostic-settings).
 
 1. Keresse meg az Azure Portalon. Majd keresse meg és válassza ki a Cognitive Services-erőforrás. Ha például a webes keresési Bing-előfizetés.   
 2. Ezután a bal oldali navigációs menüben található **figyelés** válassza **diagnosztikai beállítások**. Ezen a képernyőn az erőforráshoz tartozó összes korábban létrehozott diagnosztikai beállításait tartalmazza.

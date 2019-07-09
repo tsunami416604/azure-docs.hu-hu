@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88940b40eb309a5fb6ff73c04a47813ec3a47669
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4728ad4fcd44c754a62ec19037562e63d92ec304
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67103860"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656613"
 ---
 # <a name="tutorial-integrate-drift-with-azure-active-directory"></a>Oktatóanyag: Eltéréseket integrálása az Azure Active Directoryval
 
@@ -88,7 +88,7 @@ Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyez�
 
     d. Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címe: `https://start.drift.com`
 
-6. Eltolódás alkalmazását a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a felhasználói attribútumok párbeszédpanel.
+6. Eltolódás alkalmazását a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a felhasználói attribútumok párbeszédpanel.
 
     ![image](common/edit-attribute.png)
 

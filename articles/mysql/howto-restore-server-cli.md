@@ -72,7 +72,7 @@ A `az mysql server restore` parancs paraméterei a következők:
 | Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  Az erőforráscsoport, amelyben a forráskiszolgáló található.  |
-| név | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
+| name | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
 | restore-point-in-time | 2018-03-13T13:59:00Z | Válasszon ki egy pontot időben való visszaállításához. Ennek a dátumnak és időnek a forráskiszolgáló biztonsági mentésének megőrzési időszakán belül kell lennie. ISO8601 dátum és idő formátumot használja. Például használhatja a saját időzónájára, mint például `2018-03-13T05:59:00-08:00`. Például az UTC Zulu formátumot is használható `2018-03-13T13:59:00Z`. |
 | source-server | mydemoserver | A forráskiszolgáló neve vagy azonosítója, amelyről a visszaállítást végzi. |
 

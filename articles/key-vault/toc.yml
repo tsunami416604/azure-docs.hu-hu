@@ -164,8 +164,6 @@
       href: common-parameters-and-headers.md
     - name: Ügyféladatok
       href: key-vault-customer-data.md
-    - name: Kibocsátási megjegyzések
-      href: key-vault-versions.md
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/key-vault/'
     - name: Régiónkénti elérhetőség

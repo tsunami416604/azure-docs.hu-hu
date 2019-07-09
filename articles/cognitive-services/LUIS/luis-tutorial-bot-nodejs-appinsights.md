@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/16/2019
 ms.author: diberry
-ms.openlocfilehash: 5459fb5d8304a35b3f009354c446514a2831c513
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: cfed5477df75350f24e77786117e85b9c728c49a
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155292"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657762"
 ---
 # <a name="add-luis-results-to-application-insights-from-a-bot-in-nodejs"></a>LUIS eredményeket adhat az Application Insights Node.js-ben a robot a
 Ez az oktatóanyag hozzáad robot és a Language Understanding információkat [Application Insights](https://azure.microsoft.com/services/application-insights/) telemetriai adatok tárolására. Miután az adatokat, kérdezhet le róla a Kusto-nyelv vagy a Power BI segítségével elemezheti, összesítése, és a jelentés a szándékok és entitások, valós idejű utterance (kifejezés). Az elemzés segít annak meghatározásában, ha kell hozzáadása vagy szerkesztése a szándékok és entitások, a LUIS-alkalmazás.
@@ -205,7 +205,7 @@ Nyissa meg az Application Insights a LUIS-bejegyzések megtekintéséhez. Az ada
     ![Tekintse át az Application insights szolgáltatásban tárolt LUIS egyéni tulajdonságok](./media/luis-tutorial-appinsights/application-insights-luis-trace-custom-properties-nodejs.png)
 
 ## <a name="query-application-insights-for-intent-score-and-utterance"></a>Lekérdezés az Application Insights szándékot, pontszám és utterance (kifejezés)
-Az Application Insights lehetővé teszi az adatok lekérdezéséhez a [Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) nyelven, valamint exportálási, hogy [Power BI](https://powerbi.microsoft.com). 
+Az Application Insights lehetővé teszi az adatok lekérdezéséhez a [Kusto](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview#what-language-do-log-queries-use) nyelven, valamint exportálási, hogy [Power BI](https://powerbi.microsoft.com). 
 
 1. Válassza ki **Log (Analytics)** . Egy lekérdezési ablak tetején, és a egy tábla ablak, amely alatt megjelenik egy új ablak. Ha a használt adatbázisokat korábban, ezzel az elrendezéssel fokozott tisztában van-e. A lekérdezés az előző szűrt adatokat jelöli. A **CustomDimensions** oszlopnak a robot és a LUIS-információkat.
 1. Is, a felső szándékot, pontszám és utterance (kifejezés), adja hozzá a következő csak az utolsó sort fent (a `|top...` sor) a lekérdezési ablakban:

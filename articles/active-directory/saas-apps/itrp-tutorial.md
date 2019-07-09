@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: c3be09c998399cdca886f207bf5fc621bf51d8dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d44391624e29d2bdd182bb07452e0e8def2d1407
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67099600"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656699"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező ITRP
 
@@ -153,9 +153,9 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés ITRP, ezeket a lép�
 
     1. Válassza ki **engedélyezve**.
 
-    1. Az a **távoli kijelentkezési URL-címe** mezőbe illessze be a **kijelentkezési URL-címe** , az Azure Portalról másolt érték.
+    1. Az a **távoli kijelentkezési URL-címe** mezőbe illessze be a **kijelentkezési URL-címe** , az Azure Portalról másolt érték.
 
-    1. Az a **SAML egyszeri bejelentkezési URL-cím** mezőbe illessze be a **bejelentkezési URL-cím** , az Azure Portalról másolt érték.
+    1. Az a **SAML egyszeri bejelentkezési URL-cím** mezőbe illessze be a **bejelentkezési URL-cím** , az Azure Portalról másolt érték.
 
     1. Az a **tanúsítvány-ujjlenyomat** mezőbe illessze be a **ujjlenyomat** a tanúsítványt, amely az Azure Portalról másolt értékét.
 

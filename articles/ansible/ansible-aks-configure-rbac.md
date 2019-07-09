@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: dbef7c2cb8de5a1b4bbb3073f694b8f77c9f441b
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: cf2bd694e126acb61ea31e71ff3fd9d15a6db9ef
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231297"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656574"
 ---
 # <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>Oktatóanyag: Szerepköralapú hozzáférés-vezérlés (RBAC) szerepkörök konfigurálása az Azure Kubernetes Service (AKS) az Ansible-lel
 
@@ -39,7 +39,7 @@ Az AKS használatához konfigurálhatók [Azure Active Directory (AD)](/azure/ac
 
 ## <a name="configure-azure-ad-for-aks-authentication"></a>AKS-hitelesítéshez az Azure AD konfigurálása
 
-AKS-hitelesítéshez az Azure AD konfigurálása, ha a két Azure AD-alkalmazások úgy vannak konfigurálva. Ez a művelet egy Azure-bérlő rendszergazdája kell elvégezni. További információkért lásd: [integrálása az Azure Active Directory az aks-sel](/azure/aks/aad-integration#create-server-application). 
+AKS-hitelesítéshez az Azure AD konfigurálása, ha a két Azure AD-alkalmazások úgy vannak konfigurálva. Ez a művelet egy Azure-bérlő rendszergazdája kell elvégezni. További információkért lásd: [integrálása az Azure Active Directory az aks-sel](/azure/aks/aad-integration#create-the-server-application). 
 
 Az Azure-bérlő rendszergazdája kérje le a következő értékeket:
 

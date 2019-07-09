@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/30/2019
 ms.author: jowargo
-ms.openlocfilehash: f4a0da5d3ef0dd2d5ae04a2cc1b07ddb0a649bef
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: dd11696ea4a90e61408a03400fa3315ee7eaff5f
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205396"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653509"
 ---
 # <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-firebase-cloud-messaging-fcm"></a>Oktatóanyag: Leküldéses értesítések küldése az Azure Notification Hubs és a Google Firebase Cloud Messaging (FCM) használatával adott Android-eszközök
 
@@ -329,7 +329,7 @@ Az alkalmazás ezzel elkészült, és képes egy kategóriakészlet tárolásár
 Ebben az oktatóanyagban szórásos értesítéseket küldött ki adott Android-eszközökre, amelyeket regisztráltak a kategóriákra. Ha szeretné megtudni, hogyan küldhet leküldéses értesítéseket adott felhasználóknak, lépjen tovább a következő oktatóanyagra:
 
 > [!div class="nextstepaction"]
->[Leküldéses értesítések küldése adott felhasználóknak](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md)
+>[Leküldéses értesítések küldése adott felhasználóknak](push-notifications-android-specific-users-firebase-cloud-messaging.md)
 
 <!-- Images. -->
 [A1]: ./media/notification-hubs-aspnet-backend-android-breaking-news/android-breaking-news1.PNG

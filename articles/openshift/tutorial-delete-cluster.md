@@ -6,14 +6,14 @@ author: jimzim
 ms.author: jzim
 manager: jeconnoc
 ms.topic: tutorial
-ms.service: openshift
+ms.service: container-service
 ms.date: 05/06/2019
-ms.openlocfilehash: 627acbfc1f3a460cbb94e322c43445a55fce1ffa
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 0ad70f4c3681705377a350fee8b02a55c526f26c
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306168"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67669340"
 ---
 # <a name="tutorial-delete-an-azure-red-hat-openshift-cluster"></a>Oktatóanyag: Az Azure Red Hat OpenShift fürt törlése
 
@@ -36,7 +36,7 @@ Az oktatóanyag elkezdése előtt:
 
 * Hozzon létre egy fürtöt az alábbi a [hozzon létre egy Azure Red Hat OpenShift fürtöt](tutorial-create-cluster.md) oktatóanyag.
 
-## <a name="step-1-sign-in-to-azure"></a>1. lépés: Bejelentkezés az Azure-ba
+## <a name="step-1-sign-in-to-azure"></a>1\. lépés: Bejelentkezés az Azure-ba
 
 Ha helyileg futtatja az Azure CLI, futtassa `az login` bejelentkezni az Azure-bA.
 
@@ -46,7 +46,7 @@ az login
 
 Ha több előfizetést is hozzáférhet, futtassa `az account set -s {subscription ID}` cseréje `{subscription ID}` a használni kívánt előfizetést.
 
-## <a name="step-2-delete-the-cluster"></a>2. lépés: A fürt törlése
+## <a name="step-2-delete-the-cluster"></a>2\. lépés: A fürt törlése
 
 Nyisson meg egy Bash terminált, és adja meg a változó fürtnév a fürt nevére:
 

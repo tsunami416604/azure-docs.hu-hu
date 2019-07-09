@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/30/2019
 ms.author: jowargo
-ms.openlocfilehash: c21b1e38077575fc49221150a61693a23aa408a3
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: f2efa9b7e1e534f93e4ea01ba52740c8c5ac7b02
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509107"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653850"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-firebase-cloud-messaging"></a>Oktatóanyag: Az Azure Notification Hubs és a Google Firebase Cloud Messaging leküldéses értesítések Android-eszközök
 
@@ -88,7 +88,26 @@ A központ dolgozhat a Firebase Cloud Messaging konfigurálva. Akkor is rendelke
 
 ### <a name="add-google-play-services-to-the-project"></a>Google Play-szolgáltatások felvétele a projektbe
 
-[!INCLUDE [Add Play Services](../../includes/notification-hubs-android-studio-add-google-play-services.md)]
+1. Az Android Studióban válassza a **eszközök** a menüben, és válassza ki a **SDK Manager**. 
+2. Válassza ki a használt Android SDK célverzióját a projektben. Válassza ki **csomag részleteinek**. 
+
+    ![Android SDK Manager - verzió cél kiválasztása](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
+3. Válassza ki **Google API-k**, ha az még nem telepítette.
+
+    ![Android SDK Manager – Google API-k kiválasztva](./media/notification-hubs-android-studio-add-google-play-services/googole-apis-selected.png)
+4. Váltson a **SDK Tools** fülre. Ha még nem telepítette a Google Play-szolgáltatások, válassza ki a **Google Play-szolgáltatások** az alábbi képen látható módon. Válassza ki **alkalmaz** telepítéséhez. Jegyezze fel az SDK elérési útját, mert szükség lesz rá egy későbbi lépésben.
+
+    ![Android SDK Manager – Google Play-szolgáltatások kiválasztva](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
+3. Ha megjelenik a **Módosítás megerősítése** párbeszédpanelen jelölje ki **OK**. Az összetevő-telepítő telepíti a kért összetevőket. Válassza ki **Befejezés** az összetevők telepítése után.
+4. Válassza ki **OK** gombra kattintva zárja be a **beállításait az új projektek** párbeszédpanel bezárásához.  
+5. Válassza ki **szinkronizálás most** ikonra az eszköztárban.
+1. Nyissa meg az AndroidManifest.xml fájlhoz, és adja a következő címkét a *alkalmazás* címke.
+
+    ```xml
+    <meta-data android:name="com.google.android.gms.version"
+         android:value="@integer/google_play_services_version" />
+    ```
+
 
 ### <a name="add-azure-notification-hubs-libraries"></a>Azure Notification Hubs-kódtárak hozzáadása
 
@@ -354,7 +373,6 @@ A központ dolgozhat a Firebase Cloud Messaging konfigurálva. Akkor is rendelke
 
         mainActivity = this;
         registerWithNotificationHubs();
-        MyHandler.createChannelAndHandleNotifications(getApplicationContext());
     }
     ```
 
@@ -526,7 +544,7 @@ Emellett győződjön meg arról, hogy hozzáadott a Google-fiókját a futó em
 Ebben az oktatóanyagban használt Firebase Cloud Messaging értesítéseket küldeni a szolgáltatásban regisztrált minden Android eszközre. Ha szeretné megtudni, hogy hogyan küldhet leküldéses értesítéseket adott eszközökre, lépjen tovább a következő oktatóanyagra:
 
 > [!div class="nextstepaction"]
->[Oktatóanyag: Leküldéses értesítések küldése adott Android-eszközök](notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md)
+>[Oktatóanyag: Leküldéses értesítések küldése adott Android-eszközök](push-notifications-android-specific-devices-firebase-cloud-messaging.md)
 
 <!-- Images. -->
 

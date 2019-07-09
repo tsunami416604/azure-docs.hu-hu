@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: d4269a99a8e535692e4897630a7edd9b27347d41
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: f98f16e9996d90b0380f05885e4c2d74e1413f23
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304038"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657670"
 ---
 # <a name="example-how-to-detect-sentiment-with-text-analytics"></a>Példa: Hangulat felismerése a Text Analytics használatával
 
@@ -103,7 +103,7 @@ A kimenetet visszaadása azonnali. Az eredmények adatfolyamát JSON elfogadó a
 
 Az alábbi példa a cikkbeli dokumentumgyűjteményre kapott választ mutatja.
 
-```
+```json
 {
     "documents": [
         {
@@ -130,6 +130,133 @@ Az alábbi példa a cikkbeli dokumentumgyűjteményre kapott választ mutatja.
     "errors": []
 }
 ```
+
+## <a name="sentiment-analysis-v3-public-preview"></a>Vélemények elemzése v3-as nyilvános előzetes verzió
+
+A [Hangulatelemzés következő verziójára](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-preview/operations/56f30ceeeda5650db055a3c9) már elérhető nyilvános előzetes verzió, jelentős fejlesztéseket biztosít a pontosság és az API-k szöveges kategorizálás részletei és pontozási folyamatokat. 
+
+> [!NOTE]
+> * A vélemények elemzése v3-as kérés formátumát és [data korlátai](../overview.md#data-limits) ugyanazok, mint a korábbi verzióra.
+> * Jelenleg hangulatelemzés V3: 
+>    * Jelenleg csak a az angol nyelvet támogatja.  
+>    * Az alábbi régiókban érhető el: `Central US`, `Central Canada`, ` East Asia` 
+
+|Funkció |Leírás  |
+|---------|---------|
+|Pontosság jobb legyen     | A pozitív, semleges, negatív és vegyes vélemények észlelése szöveges dokumentumok a korábbi verziókhoz képest jelentős fejlesztéseket tartalmaz.           |
+|A dokumentum és mondatszintű Véleménypontszámot     | Az egyes mondatok és a dokumentum hangulatának. Ha a dokumentum több mondatok is tartalmaz, minden mondat is hozzá van rendelve egy véleménypontszámot.         |
+|Vélemények kategória és pontszám     | Az API-t most adja vissza a vélemény kategóriák (`positive`, `negative`, `neutral` és `mixed`) szöveg mellett egy véleménypontszámot.        |
+| Továbbfejlesztett kimeneti | Hangulatelemzés mostantól egy teljes szöveges dokumentum és az egyes mondatokat kapcsolatos információkat ad vissza. |
+
+### <a name="sentiment-labeling"></a>Vélemények címkézés
+
+Hangulatelemzés V3 térhet vissza a pontszámokat és címkék (`positive`, `negative`, és `neutral`) mondatot, és a dokumentum szintjén. A dokumentum szintjén a `mixed` vélemények címkét (nem pontszám) is adhatók vissza. A dokumentum a róluk szóló véleményeket határozza meg a mondatok pontszámok összesíti.
+
+| Mondat vélemények                                                        | Visszaadott dokumentumok felirat |
+|---------------------------------------------------------------------------|----------------|
+| Legalább egy pozitív mondatot, és a többi a mondatok olyan semleges. | `positive`     |
+| Legalább egy negatív mondatot, és a többi a mondatok olyan semleges.  | `negative`     |
+| Legalább egy negatív mondatot, és legalább egy pozitív mondat helyett szerepel.         | `mixed`        |
+| Az összes mondatokat olyan semleges.                                                 | `neutral`      |
+
+### <a name="sentiment-analysis-v3-example-request"></a>Vélemények elemzése V3 kérelem (példa)
+
+A következő JSON-hangulatelemzés az új verzió szóló kérelem példája. Vegye figyelembe, hogy a kérelem a formázást ugyanaz, mint az előző verzió:
+
+```json
+{
+  "documents": [
+    {
+      "language": "en",
+      "id": "1",
+      "text": "Hello world. This is some input text that I love."
+    },
+    {
+      "language": "en",
+      "id": "2",
+      "text": "It's incredibly sunny outside! I'm so happy."
+    }
+  ]
+}
+```
+
+### <a name="sentiment-analysis-v3-example-response"></a>Hangulatelemzés V3 példaválasz
+
+Bár a kérés formátuma megegyezik az előző verzió, a válasz formátuma megváltozott. A következő JSON egy példaválasz az API új verzióját a következő:
+
+```json
+{
+    "documents": [
+        {
+            "id": "1",
+            "sentiment": "positive",
+            "documentScores": {
+                "positive": 0.98570585250854492,
+                "neutral": 0.0001625834556762,
+                "negative": 0.0141316400840878
+            },
+            "sentences": [
+                {
+                    "sentiment": "neutral",
+                    "sentenceScores": {
+                        "positive": 0.0785155147314072,
+                        "neutral": 0.89702343940734863,
+                        "negative": 0.0244610067456961
+                    },
+                    "offset": 0,
+                    "length": 12
+                },
+                {
+                    "sentiment": "positive",
+                    "sentenceScores": {
+                        "positive": 0.98570585250854492,
+                        "neutral": 0.0001625834556762,
+                        "negative": 0.0141316400840878
+                    },
+                    "offset": 13,
+                    "length": 36
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "sentiment": "positive",
+            "documentScores": {
+                "positive": 0.89198976755142212,
+                "neutral": 0.103382371366024,
+                "negative": 0.0046278294175863
+            },
+            "sentences": [
+                {
+                    "sentiment": "positive",
+                    "sentenceScores": {
+                        "positive": 0.78401315212249756,
+                        "neutral": 0.2067587077617645,
+                        "negative": 0.0092281140387058
+                    },
+                    "offset": 0,
+                    "length": 30
+                },
+                {
+                    "sentiment": "positive",
+                    "sentenceScores": {
+                        "positive": 0.99996638298034668,
+                        "neutral": 0.0000060341349126,
+                        "negative": 0.0000275444017461
+                    },
+                    "offset": 31,
+                    "length": 13
+                }
+            ]
+        }
+    ],
+    "errors": []
+}
+```
+
+### <a name="example-c-code"></a>Példa C# kódot
+
+Egy példa annak C# alkalmazás, amely meghívja a hangulatelemzés jelen verziója a [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/SentimentV3.cs).
 
 ## <a name="summary"></a>Összefoglalás
 

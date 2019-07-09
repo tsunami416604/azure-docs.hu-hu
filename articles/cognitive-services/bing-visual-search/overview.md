@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: overview
 ms.date: 03/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: bd93166cb878fbd961795492ed9a035c919429a8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 4da4340176259265fd36c55d2b81ecfc3f4ed5f8
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "64916624"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657704"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Mi az a Bing Visual Search API?
 
@@ -30,7 +30,7 @@ Ha használja a [a Bing Image Search API](../bing-image-search/overview.md), hel
 
 A Bing Visual Search használatával is felderítheti, a következő információkat:
 
-| Megállapítások                              | Leírás |
+| Elemzés                              | Leírás |
 |--------------------------------------|-------------|
 | Vizuálisan hasonló képek              | A bemeneti kép vizuálisan hasonló képek egy listája. |
 | Vizuálisan hasonló termékek            | Olyan termékhez, melyek a vizuálisan hasonló látható termékre.            |
@@ -47,7 +47,7 @@ A Bing vizuális keresési eredmények határoló hasznos helyhez az ábrán ré
 
 A Bing Visual Search API egy olyan webes RESTful szolgáltatás, így könnyen hívása minden programozási nyelvet, amely HTTP-kérelmeket és JSON elemzése. A szolgáltatás a REST API vagy az SDK-t használhat.
 
-1. Hozzon létre egy [Cognitive Services-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Bing keresési API-k eléréséhez. Ha nem rendelkezik Azure-előfizetéssel, akkor [-fiók létrehozása ingyen](https://azure.microsoft.com/free/). Megtekintheti az előfizetési kulcs, a [az Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#access-your-resource) a fiók létrehozását követően vagy [Azure-webhelyen](https://azure.microsoft.com/try/cognitive-services/my-apis) ingyenes próbaverzió aktiválása után.
+1. Hozzon létre egy [Cognitive Services-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Bing keresési API-k eléréséhez. Ha nem rendelkezik Azure-előfizetéssel, akkor [-fiók létrehozása ingyen](https://azure.microsoft.com/free/). Megtekintheti az előfizetési kulcs, a [az Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#get-the-keys-for-your-subscription) a fiók létrehozását követően vagy [Azure-webhelyen](https://azure.microsoft.com/try/cognitive-services/my-apis) ingyenes próbaverzió aktiválása után.
 2. Az API-t egy érvényes keresési lekérdezést egy kérés küldése.
 3. Az API válaszának feldolgozásához elemezze a visszaadott JSON-üzenetet.
 

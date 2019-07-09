@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec8c2fc2c2dbbfd2c98184215f696aaf18a87193
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 498650ce8a22f4804773bb66db3d640cd63bab8c
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105552"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655839"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex-meetings"></a>Oktatóanyag: Cisco Webex értekezletek az Azure Active Directory-integráció
 
@@ -122,7 +122,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Cisco Webex értekez
 
     A a **bejelentkezési URL-cím** szövegmezőjébe illessze be az értéket, **válasz URL-cím** ami lekéri automatikusan kitöltött SP metaadat-fájl feltöltése.
 
-5. Cisco Webex értekezletek alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva adja hozzá az attribútumokat.
+5. Cisco Webex értekezletek alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva adja hozzá az attribútumokat.
 
     ![image](common/edit-attribute.png)
 

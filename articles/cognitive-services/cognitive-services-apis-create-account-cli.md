@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: 26f7f3ab60347d9ec5f2a144410ad3de436f5b5c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: acafc2c42c2946632496b646d001c58d6b48c2a6
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67454894"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657708"
 ---
 # <a name="create-a-cognitive-services-account-using-the-azure-command-line-interfacecli"></a>Az Azure parancssori Interface(CLI) használatával Cognitive Services-fiók létrehozása
 
@@ -43,7 +43,7 @@ Az előfizetések, a Cognitive Services, Azure-erőforrások képviseli. Azure-e
 
 ### <a name="choose-your-resource-group-location"></a>Válassza ki az erőforráscsoport helye
 
-Erőforrás létrehozása kell egy elérhető az Azure-helyen az előfizetéshez. Lekérheti az elérhető helyek listáját a [az fiók list-locations](/cli/azure/account#az_account_list) parancsot. A legtöbb Cognitive Services több helyről is elérhetők. Válassza ki az Önhöz legközelebbi egy, vagy tekintse meg, melyik helyek elérhetőek a szolgáltatáshoz.
+Erőforrás létrehozása kell egy elérhető az Azure-helyen az előfizetéshez. Lekérheti az elérhető helyek listáját a [az fiók list-locations](/cli/azure/account#az-account-list-locations) parancsot. A legtöbb Cognitive Services több helyről is elérhetők. Válassza ki az Önhöz legközelebbi egy, vagy tekintse meg, melyik helyek elérhetőek a szolgáltatáshoz.
 
 > [!IMPORTANT]
 > * Az Azure-beli hely, ne feledje, mert szüksége lesz rá az Azure Cognitive Services hívása során.
@@ -55,7 +55,7 @@ az account list-locations \
     --out table
 ```
 
-Miután az Azure-beli hely, hozzon létre egy új erőforráscsoportot az Azure parancssori felületén a [az csoport létrehozása](/cli/azure/group#az_group_create) parancsot.
+Miután az Azure-beli hely, hozzon létre egy új erőforráscsoportot az Azure parancssori felületén a [az csoport létrehozása](/cli/azure/group#az-group-create) parancsot.
 
 Az alábbi példában cserélje le az Azure-beli hely `westus2` az előfizetéshez elérhető Azure-helyek egyikével.
 

@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: maheff
-ms.openlocfilehash: 7fc33f89797fe0e3cc3a9832c9dc084194cf6603
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 2c77d509a0e66fd02bd949e481c5f0316fdd9afb
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485767"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672004"
 ---
 # <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>C#Oktatóanyag: Az egy Azure Search szolgáltatásban az indexelés folyamat a Cognitive Services API-k meghívása
 
@@ -697,4 +697,4 @@ Az oktatóanyagok után fölöslegessé vált elemek eltávolítása leggyorsabb
 Egyéni képességekkel testre szabhatja vagy kibővítheti a folyamatot. Egyéni képességek létrehozása és egy képességcsoporthoz adása révén saját kezűleg írt szöveg- vagy képelemzést használhat.
 
 > [!div class="nextstepaction"]
-> [Példa: egyéni képesség létrehozása](cognitive-search-create-custom-skill-example.md)
+> [Példa: Cognitive Search egyéni műveleteket létrehozása](cognitive-search-create-custom-skill-example.md)

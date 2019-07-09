@@ -1,21 +1,21 @@
 ---
 title: 'Gyors útmutató: Hozzon létre, betöltését és használata az Azure portal – Azure Search-index lekérdezése'
 description: Az Azure Portalon az adatok importálása varázsló segítségével létrehozása, betöltése és lekérdezése az első Azure Search-index.
-author: HeidiSteen
+author: lobrien
 manager: cgronlun
 tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 05/02/2019
-ms.author: heidist
+ms.date: 07/01/2019
+ms.author: laobri
 ms.custom: seodec2018
-ms.openlocfilehash: 4a1944c5c5f169274cf45bd3ebfb6df47942dd5a
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 98ca455fd92b0c9ed276082413734c6bc063f310
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485638"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671929"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>Gyors útmutató: Az Azure portal használatával egy Azure Search-index létrehozása
 > [!div class="op_single_selector"]
@@ -23,7 +23,6 @@ ms.locfileid: "67485638"
 > * [PowerShell](search-howto-dotnet-sdk.md)
 > * [Postman](search-get-started-postman.md)
 > * [C#](search-create-index-dotnet.md)
->*
 
 Egy gyors felkészülési Azure Search-fogalmakról próbálja meg a beépített eszközök az Azure Portalon. Varázslók és a szerkesztők nem kínál a .NET és REST API-k teljes paritás, de Ön is gyorsan használatba a kódmentes bevezető érdekes-lekérdezéseket futtassanak a mintaadatok írása percen belül.
 
@@ -48,7 +47,7 @@ Sok ügyfél az ingyenes szolgáltatással kezdi. Ez a verzió három indexre, h
 
 A szolgáltatás irányítópultján szakaszok bemutatják, hogy hány indexek, indexelők és adatforrások már rendelkezik. 
 
-![Indexek, indexelők és adatforrások listája](media/search-get-started-portal/tiles-indexers-datasources2.png)
+![Indexek, indexelők és adatforrások listája](media/search-get-started-portal/tiles-indexers-datasources.png)
 
 ## <a name="create-index"></a> Index létrehozása és az adatok betöltése
 
@@ -60,11 +59,11 @@ Ebben az oktatóanyagban egy beépített mintaadathalmazt használunk, amely kö
 
 1. Az Azure Search szolgáltatás irányítópultján kattintson **adatimportálás** a parancssávon hozhat létre, és a search-index feltöltéséhez.
 
-   ![Adatok importálása parancs](media/search-get-started-portal/import-data-cmd2.png)
+   ![Adatok importálása parancs](media/search-get-started-portal/import-data-cmd.png)
 
-2. A varázslóban kattintson a **Csatlakozás az adatokhoz** > **Minták** > **realestate-us-sample** elemre. Az ehhez az adatforráshoz. A saját adatforrás hozott létre, ha egy név, típus és kapcsolatadatok megadása kell. Létrehozását követően „meglévő adatforrássá” válik, amely más importálási műveletek során ismét felhasználható.
+2. A varázslóban kattintson **csatlakozás az adatokhoz** > **minták** > **hotels-sample**. Az ehhez az adatforráshoz. A saját adatforrás hozott létre, ha egy név, típus és kapcsolatadatok megadása kell. Létrehozását követően „meglévő adatforrássá” válik, amely más importálási műveletek során ismét felhasználható.
 
-   ![Minta adatkészlet kiválasztása](media/search-get-started-portal/import-datasource-sample2.png)
+   ![Minta adatkészlet kiválasztása](media/search-get-started-portal/import-datasource-sample.png)
 
 3. Folytassa a következő lapra.
 
@@ -87,7 +86,7 @@ Az index létrehozása általában egy kódalapú gyakorlatban befejeződött az
 
 A mezők adattípusokkal és attribútumokkal rendelkeznek. A fent látható jelölőnégyzetek *indexattribútumok*, amelyek a mező használati módját szabályozzák.
 
-* **Lekérhető**: azt jelenti, hogy a mező a keresési eredmények listájában jelenik meg. A jelölőnégyzet törlésével az egyes mezőket a keresési eredmények korlátjain kívül esőként jelölheti meg, például amikor a mezőket csak szűrőkifejezésekben használják.
+* **Lekérhető**: azt jelenti, hogy a mező a keresési eredmények listájában jelenik meg. Keresési eredmények ki, az egyes mezők, például a mezőket csak szűrőkifejezésekben használják ezt a jelölőnégyzetet törlésével jelölheti meg.
 * **Kulcs** dokumentum egyedi azonosítója. A rendszer mindig egy karakterlánc, és szükség rá.
 * **Szűrhető**, **Sortable**, és **kategorizálható** meghatározása mezők használja-e egy szűrési, rendezési vagy jellemzőalapú navigációs struktúrát.
 * **Kereshető**: azt jelenti, hogy a mező szerepel a teljes szöveges keresésben. A sztringek kereshetők. A numerikus és logikai mezőket gyakran nem kereshetőként jelölik meg.
@@ -98,9 +97,9 @@ Alapértelmezés szerint a varázsló átvizsgálja a adatforrást egyedi azonos
 
 1. Fogadja el az alapértelmezett beállításokat. 
 
-   Ha újra futtatja a varázsló használatával realestate meglévő adatforrás másodszor, az index nem lesz konfigurálva, az alapértelmezett attribútumok. Manuálisan válassza ki a jövőbeli import attribútumok kell.
+   Ha újra futtatja a varázsló használatával egy "Hotels" létező adatforrást másodszor, az index nem lesz konfigurálva, az alapértelmezett attribútumok. Manuálisan válassza ki a jövőbeli import attribútumok kell. 
 
-   ![Létrehozott ingatlanindex](media/search-get-started-portal/realestateindex2.png)
+   ![Generált "Hotels" index](media/search-get-started-portal/hotelsindex.png)
 
 2. Folytassa a következő lapra.
 
@@ -114,7 +113,7 @@ Ez az objektum egy végrehajtható folyamatot határoz meg. Sikerült feltölten
 
 Kattintson a **küldés** hozhat létre, és egyszerre is futtathatja az indexelőt.
 
-  ![ingatlanindexelő](media/search-get-started-portal/realestate-indexer2.png)
+  !["Hotels" indexelő](media/search-get-started-portal/hotels-indexer.png)
 
 ## <a name="monitor-progress"></a>A figyelő folyamatban
 
@@ -122,7 +121,7 @@ A varázsló nagyjából az indexelők listájának, ahol figyelemmel kísérhet
 
 A portál a lap frissítése néhány percet vesz igénybe, de kell megjelennie a listában, az állapot jelzi az újonnan létrehozott indexelő "folyamatban" vagy sikeres indexelt dokumentumok számával együtt.
 
-   ![Indexelő állapotüzenete](media/search-get-started-portal/indexers-inprogress2.png)
+   ![Indexelő állapotüzenete](media/search-get-started-portal/indexers-inprogress.png)
 
 ## <a name="view-the-index"></a>Az index megtekintése
 
@@ -130,7 +129,7 @@ A fő szolgáltatás oldalát az Azure Search szolgáltatáshoz létrehozott er�
 
    ![A szolgáltatás irányítópultján indexek listája](media/search-get-started-portal/indexes-list.png)
 
-Ebből a listából, kattintson a a *realestate-us-sample* index imént hozta létre, megtekintheti az indexsémát. és ha szükséges, hozzáadhat új mezőket. 
+Ebből a listából, kattintson a a *hotels-sample* index imént hozta létre, megtekintheti az indexsémát. és ha szükséges, hozzáadhat új mezőket. 
 
 A **mezők** lapon látható az indexsémát. Adjon meg egy új mezőt a lista alján görgessen. A legtöbb esetben a meglévő mezők nem módosítható. A meglévő mezők fizikailag vannak jelölve az Azure Searchben, és így nem módosíthatók, még a kódban sem. Alapvető változást existující Pole, hozzon létre egy új index, az eredeti elvetését.
 
@@ -152,11 +151,11 @@ Továbblépve most már rendelkezünk egy keresési indexszel, amely készen ál
 
 1. A parancssávon kattintson a **Keresési ablak** elemre.
 
-   ![Keresési ablak parancs](media/search-get-started-portal/search-explorer-cmd2.png)
+   ![Keresési ablak parancs](media/search-get-started-portal/search-explorer-cmd.png)
 
-2. Kattintson a parancssáv **Index módosítása** elemére a *realestate-us-sample* indexre való váltáshoz. Kattintson a parancssáv **API-verzió beállítása** elemére az elérhető REST API-k megtekintéséhez. Az alábbi lekérdezésekhez használja az általánosan elérhető verziót (a 2019-05-06).
+2. Az a **Index** legördülő menüben válassza a *hotels-sample*. Kattintson a **API-verzió** legördülő menüben láthatja, hogy melyik REST API-k érhetők el. Az alábbi lekérdezésekhez használja az általánosan elérhető verziót (a 2019-05-06).
 
-   ![Index és API-parancsok](media/search-get-started-portal/search-explorer-changeindex-se2.png)
+   ![Index és API-parancsok](media/search-get-started-portal/search-explorer-changeindex.png)
 
 3. A keresősávba, illessze be az alábbi lekérdezési karakterláncokat, és kattintson a **keresési**.
 
@@ -168,29 +167,29 @@ Megadhat egy Binget vagy Google keresési, vagy teljesen megadott lekérdezési 
 
 ### <a name="simple-query-with-top-n-results"></a>Egyszerű lekérdezés az első N eredménnyel
 
-#### <a name="example-string-query-searchseattle"></a>(Lekérdezési karakterlánc). például: `search=seattle`
+#### <a name="example-string-query-searchspa"></a>(Lekérdezési karakterlánc). például: `search=spa`
 
-* A **search** paraméter kulcsszavas keresés bevitelére használható teljes szöveges kereséshez. Jelen esetben olyan hirdetéseket kapunk vissza a Washington állambeli King megyéből, amelyek tartalmazzák a *Seattle* kifejezést a dokumentum bármely kereshető mezőjében.
+* A **keresési** paraméter használható teljes szöveges kereséshez, ebben az esetben kulcsszavas keresés bevitelére azok számára, amely tartalmazza a szállodai adatvisszaadás *spa* a dokumentum bármely kereshető mezőjében.
 
 * A **Keresési ablak** JSON-formátumban adja vissza az eredményeket, amely részletes és nehezen olvasható lehet, ha a dokumentumok sűrű szerkezettel rendelkeznek. Ez a szándékos; a teljes dokumentum betekintést fontos fejlesztési célokra, különösen a tesztelés során. A jobb felhasználói élmény érdekében olyan kódot kell írnia, amely [a keresési eredmények kezelésével](search-pagination-page-layout.md) kiemeli a fontosabb elemeket.
 
-* A dokumentumokban minden mező „lekérdezhetőként” van jelölve az indexben. A portálon az indexattribútumok megtekintéséhez, kattintson a *realestate-us-sample* a a **indexek** listája.
+* A dokumentumokban minden mező „lekérdezhetőként” van jelölve az indexben. A portálon az indexattribútumok megtekintéséhez, kattintson a *hotels-sample* a a **indexek** listája.
 
-#### <a name="example-parameterized-query-searchseattlecounttruetop100"></a>(A paraméteres lekérdezés). például: `search=seattle&$count=true&$top=100`
+#### <a name="example-parameterized-query-searchspacounttruetop10"></a>(A paraméteres lekérdezés). például: `search=spa&$count=true&$top=10`
 
 * Az **&** szimbólum a keresési paraméterek összefűzésére használható, amelyek bármilyen sorrendben megadhatók.
 
-* A **$count=true** paraméter az összes visszaadott dokumentum teljes darabszámát adja vissza. Ez az érték a keresési eredmények elejénél található. A szűrőlekérdezések ellenőrzéséhez megfigyelheti a **$count=true** paraméter által jelentett módosításokat. A kisebb darabszámok azt jelzik, hogy a szűrő működik.
+* A **$count = true** paraméter visszaadja az összes visszaadott dokumentum teljes száma. Ez az érték a keresési eredmények elejénél található. A szűrőlekérdezések ellenőrzéséhez megfigyelheti a **$count=true** paraméter által jelentett módosításokat. A kisebb darabszámok azt jelzik, hogy a szűrő működik.
 
-* A **$top=100** paraméter az összes közül az első 100 dokumentumot adja vissza. Alapértelmezés szerint az Azure Search az első 50 egyezést adja vissza. A **$top** paraméter használatával növelheti vagy csökkentheti a mennyiséget.
+* A **$top = 10** a legmagasabb első összesen 10 dokumentumot adja vissza. Alapértelmezés szerint az Azure Search az első 50 egyezést adja vissza. A **$top** paraméter használatával növelheti vagy csökkentheti a mennyiséget.
 
 ### <a name="filter-query"></a> A lekérdezés szűrése
 
 A **$filter** paraméter hozzáfűzésekor a szűrők megjelennek a keresési kérésekben. 
 
-#### <a name="example-filtered-searchseattlefilterbeds-gt-3"></a>Példa (szűrt): `search=seattle&$filter=beds gt 3`
+#### <a name="example-filtered-searchbeachfilterrating-gt-4"></a>Példa (szűrt): `search=beach&$filter=Rating gt 4`
 
-* A **$filter** paraméter olyan eredményeket ad vissza, amelyek megfelelnek a megadott feltételeknek. Ebben az esetben: 3-nál több hálószoba.
+* A **$filter** paraméter olyan eredményeket ad vissza, amelyek megfelelnek a megadott feltételeknek. Ebben az esetben minősítése 4-nél nagyobb.
 
 * A szűrőszintaxis egy OData-konstrukció. További információk: [OData-szűrőszintaxis](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search).
 
@@ -198,45 +197,47 @@ A **$filter** paraméter hozzáfűzésekor a szűrők megjelennek a keresési k�
 
 Az értékkorlátozó szűrők megjelennek a keresési kérésekben. A facet paraméter adja vissza azon dokumentumok összegzett darabszámát, amelyek megfelelnek a megadott értékkorlátozási értéknek.
 
-#### <a name="example-faceted-with-scope-reduction-searchfacetcitytop2"></a>Példa (hatókörszűkítéssel korlátozva): `search=*&facet=city&$top=2`
+#### <a name="example-faceted-with-scope-reduction-searchfacetcategorytop2"></a>Példa (hatókörszűkítéssel korlátozva): `search=*&facet=Category&$top=2`
 
-* A **search=** * egy üres keresés. Az üres keresések mindenben keresnek. Az üres lekérdezések elküldésének egyik oka a teljes dokumentumkészlet szűrése vagy értékkorlátozása lehet. Például akkor, ha azt szeretné, hogy egy értékkorlátozó navigációs szerkezet az index összes városából álljon.
-
-* A **facet** paraméter olyan navigációs szerkezetet ad vissza, amelyet továbbíthat egy felhasználói felületi vezérlőnek. Kategóriákat és egy számot ad vissza. Jelen esetben a kategóriák alapját a városok száma jelenti. Az Azure Searchben nincs összesítés, de megbecsülheti az összesítést a `facet` használatával, amely az egyes kategóriákban lévő dokumentumok számát adja meg.
+* A **search=** * egy üres keresés. Az üres keresések mindenben keresnek. Az üres lekérdezések elküldésének egyik oka a teljes dokumentumkészlet szűrése vagy értékkorlátozása lehet. Ha például azt szeretné, egy értékkorlátozó navigációs szerkezet az index összes hotels áll.
+* A **facet** paraméter olyan navigációs szerkezetet ad vissza, amelyet továbbíthat egy felhasználói felületi vezérlőnek. Kategóriákat és egy számot ad vissza. Ebben az esetben kategóriák alapján mezője kényelmesen *kategória*. Az Azure Searchben nincs összesítés, de megbecsülheti az összesítést a `facet` használatával, amely az egyes kategóriákban lévő dokumentumok számát adja meg.
 
 * A **$top=2** paraméter két dokumentumot ad vissza, így bemutatja, hogy a `top` használatával csökkentheti és növelheti is az eredményeket.
 
-#### <a name="example-facet-on-numeric-values-searchseattlefacetbeds"></a>Példa (a numerikus értékekre korlátozva): `search=seattle&facet=beds`**
+#### <a name="example-facet-on-numeric-values-searchspafacetrating"></a>(Értékkorlátozás a numerikus értékek). például: `search=spa&facet=Rating`
 
-* Ez a lekérdezés az ágyak értékkorlátozását jelenti a *Seattle* szöveges kereséséhez. A *ágyak* kifejezés megadható értékkorlátozásként, mert a mező lekérdezhetőként, szűrhetőként és kategorizálhatóként van megjelölve az indexben, és a tartalmazott értékei (numerikus, 1–5) alkalmasak a hirdetések csoportokba való rendezésére (3 hálószobás, 4 hálószobás ingatlanok hirdetései).
+* Ez a lekérdezés az minősítést, szöveges kereséséhez *spa*. Az előfizetési időszak *minősítés* is megadható értékkorlátozásként, mert a mező lekérdezhetőként, szűrhetőként meg van jelölve, és kategorizálható az indexben, és az értékei (numerikus, 1 – 5) alkalmasak a csoportok ingatlanok.
 
 * Csak a szűrhető mezők értéke korlátozható. Csak a lekérdezhető mezők adhatók vissza az eredményekben.
+
+* A *minősítés* mező kétszeres pontosságú lebegőpontos és a csoportosítási pontos érték lesz. További információ a csoportosítási időköze (például "3 csillagokkal," "4 csillagosig," stb.), lásd: [jellemzőalapú navigáció megvalósítása az Azure Search](https://docs.microsoft.com/en-us/azure/search/search-faceted-navigation#filter-based-on-a-range).
+
 
 ### <a name="highlight-query"></a> Keresési eredmények kiemelése
 
 A találatok kiemelése a kulcsszóval megegyező szöveg formázását jelenti, feltéve, hogy vannak egyezések a megadott mezőben. Ha a keresett kifejezés egy leírás mélyén rejlik, a találatok kiemelése funkcióval könnyebben észrevehetővé teheti.
 
-#### <a name="example-highlighter-searchgranite-countertopshighlightdescription"></a>Példa (kiemelő): `search=granite countertops&highlight=description`
+#### <a name="example-highlighter-searchbeachhighlightdescription"></a>Példa (kiemelő): `search=beach&highlight=Description`
 
-* Ebben a példában a *gránit munkalapok* formázott kifejezés könnyebben észrevehető a leírás mezőben.
+* Ebben a példában a formázott szó *beach* az könnyebben észrevehető a Leírás mezőben.
 
-#### <a name="example-linguistic-analysis-searchmicehighlightdescription"></a>Példa (nyelvi elemzés): `search=mice&highlight=description`
+#### <a name="example-linguistic-analysis-searchbeacheshighlightdescription"></a>Példa (nyelvi elemzés): `search=beaches&highlight=Description`
 
-* A teljes szöveges keresés hasonló szemantikával rendelkező szóalakok keresésére használható. Jelen esetben a keresési eredmények tartalmazzák a „mouse” (egér) kiemelt szöveget az egérlakta házak esetében, pedig a keresési kulcsszó „mice” (egerek) volt. A nyelvészeti elemzés következtében ugyanazon szó különböző alakjai is megjelenhetnek az eredmények között.
+* A teljes szöveges keresés felismeri a word-űrlapok alapszintű változásait. Ebben az esetben a keresési eredmények tartalmazzák a kiemelt szöveget az "beach", a "Hotels" a kereshető mezőket, a keresési kulcsszó "tengerpartok" választ, amelyek a word. A nyelvészeti elemzés következtében ugyanazon szó különböző alakjai is megjelenhetnek az eredmények között. 
 
 * Az Azure Search szolgáltatás összesen 56, a Lucene-től és Microsoft-tól származó elemzőt támogat. A szolgáltatás alapértelmezés szerint a standard Lucene-elemzőt használja.
 
 ### <a name="fuzzy-search"></a> Az intelligens keresés kipróbálása
 
-Alapértelmezés szerint hibás lekérdezési kifejezéseket, például *samamish* a Seattle környékén található Sammamish plafont, az nem adnak vissza egyezések átlagos keresések. A következő példa nem ad vissza eredményt.
+Alapértelmezés szerint hibás lekérdezési kifejezéseket, például *seatle* a "Seattle", nem adnak vissza egyezések átlagos keresések. A következő példa nem ad vissza eredményt.
 
-#### <a name="example-misspelled-term-unhandled-searchsamamish"></a>Példa (elírt kifejezés, nem kezelve): `search=samamish`
+#### <a name="example-misspelled-term-unhandled-searchseatle"></a>Példa (elírt kifejezés, nem kezelve): `search=seatle`
 
 A helytelenül leírt szavak kezelésére használhat intelligens keresést. Az intelligens keresés akkor érhető el, amikor a teljes Lucene lekérdezési szintaxis használja, ehhez pedig a következő két dolog szükséges: állítsa be a **queryType=full** paramétert a lekérdezésre, és fűzze hozzá a **~** utótagot a keresési sztringhez.
 
-#### <a name="example-misspelled-term-handled-searchsamamishquerytypefull"></a>Példa (elírt kifejezés, kezelve): `search=samamish~&queryType=full`
+#### <a name="example-misspelled-term-handled-searchseatlequerytypefull"></a>Példa (elírt kifejezés, kezelve): `search=seatle~&queryType=full`
 
-Ez a példa már visszaadja a „Sammamish” kifejezést tartalmazó dokumentumokat.
+Ebben a példában most már megfelel a "Seattle" tartalmazó dokumentumokat ad vissza.
 
 Amikor a **queryType** paraméter nincs meghatározva, a rendszer az alapértelmezett egyszerű lekérdezéselemzőt használja. Ez az egyszerű lekérdezéselemző gyorsabb, de ha intelligens keresésre, reguláris kifejezésekre, közelségi keresésre vagy egyéb speciális lekérdezéstípusokra van szüksége, a teljes szintaxisra szüksége lesz.
 
@@ -248,7 +249,7 @@ A teljes lekérdezéselemző által lehetővé tett lekérdezési forgatókönyv
 
 A térinformatikai keresés az [edm.GeographyPoint adattípuson](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) keresztül támogatott a koordinátákat tartalmazó mezők esetében. A geosearch egy szűrőtípus, amelynek meghatározása a [OData-szűrőszintaxis](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) című témakörben olvasható.
 
-#### <a name="example-geo-coordinate-filters-searchcounttruefiltergeodistancelocationgeographypoint-122121513-47673988-le-5"></a>Példa (geokoordináta-szűrők): `search=*&$count=true&$filter=geo.distance(location,geography'POINT(-122.121513 47.673988)') le 5`
+#### <a name="example-geo-coordinate-filters-searchcounttruefiltergeodistancelocationgeographypoint-12212-4767-le-5"></a>Példa (geokoordináta-szűrők): `search=*&$count=true&$filter=geo.distance(Location,geography'POINT(-122.12 47.67)') le 5`
 
 A példa lekérdezés minden eredményt szűr a helyzeti adatok alapján, és olyan eredményeket a vissza, amelyek kevesebb, mint 5 kilométerre találhatók a (szélességi és hosszúsági koordinátákként) megadott ponttól. A **$count** paraméter hozzáadásával láthatja, hány eredményt ad vissza a rendszer, amikor módosítja a távolságot vagy a koordinátákat.
 
