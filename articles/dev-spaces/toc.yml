@@ -71,6 +71,8 @@
           href: how-to/upgrade-tools.md
         - name: A CI/CD és az Azure Dev Spaces használata
           href: how-to/setup-cicd.md
+        - name: Azure Dev Spaces beépülő modul használata Jenkinshez
+          href: ../jenkins/tutorial-jenkins-dev-spaces.md
         - name: Üzletmenet-folytonosság és vészhelyreállítás az Azure Dev Spaceshez
           href: how-to/dev-spaces-business-continuity.md
     - name: Hibaelhárítás

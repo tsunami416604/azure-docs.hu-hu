@@ -64,6 +64,8 @@
           href: faq-backup-sql-server.md
         - name: GYIK – Azure Backup Server és DPM
           href: backup-azure-dpm-azure-server-faq.md
+        - name: GYIK – Azure Backup monitorozási riasztás
+          href: backup-azure-monitor-alert-faq.md
     - name: Biztonsági mentési architektúra
       href: backup-architecture.md
     - name: Szerepköralapú hozzáférés-vezérlés
