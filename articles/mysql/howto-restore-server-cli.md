@@ -110,7 +110,7 @@ A `az mysql server georestore` parancs paraméterei a következők:
 | Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
 |resource-group| myResourceGroup | Az erőforráscsoport nevét az új kiszolgáló fog tartozni.|
-|név | mydemoserver-georestored | Az új kiszolgáló neve. |
+|name | mydemoserver-georestored | Az új kiszolgáló neve. |
 |source-server | mydemoserver | A meglévő kiszolgáló, amelynek földrajzi redundáns biztonsági mentések használhatók neve. |
 |location | eastus | Az új kiszolgáló helyét. |
 |sku-name| GP_Gen5_8 | Ez a paraméter beállítása az árképzési szint, számítási generáció és az új kiszolgáló virtuális magok számát. Egy általános célú, 8 virtuális maggal rendelkező Gen 5 kiszolgáló GP_Gen5_8 rendeli hozzá.|
