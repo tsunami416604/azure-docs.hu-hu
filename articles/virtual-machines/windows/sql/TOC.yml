@@ -58,8 +58,12 @@
           href: virtual-machines-windows-portal-sql-server-provision.md
         - name: Azure PowerShell használatával
           href: virtual-machines-windows-ps-sql-create.md
+    - name: Regisztráció az erőforrás-szolgáltatónál
+      href: virtual-machines-windows-sql-register-with-resource-provider.md
     - name: SQL-alapú virtuális gépek licencelési modelljének módosítása
       href: virtual-machines-windows-sql-ahb.md
+    - name: Váltás másik SQL Server-kiadásra
+      href: virtual-machines-windows-sql-change-edition.md
     - name: Migrate (Áttelepítés)
       items:
         - name: Microsoft SQL Server-adatbázis áttelepítése
