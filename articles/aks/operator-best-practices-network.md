@@ -99,7 +99,7 @@ spec:
          servicePort: 80
 ```
 
-Bejövőforgalom-vezérlőjéhez egy démon, amely egy AKS-csomóponton fut, és a bejövő kéréseket figyeli. Ezután ossza forgalmat a bejövő forgalom erőforrás megadott szabályok alapján. A leggyakoribb bejövőforgalom-vezérlőjéhez alapján [NGINX]. Az AKS nem korlátozza az Ön konkrét vezérlőhöz, így például használhatja más vezérlők [kontúrt][contour], [HAProxy][haproxy], vagy [ Traefik][traefik].
+Bejövőforgalom-vezérlőjéhez egy démon, amely egy AKS-csomóponton fut, és a bejövő kéréseket figyeli. Ezután ossza forgalmat a bejövő forgalom erőforrás megadott szabályok alapján. A leggyakoribb bejövőforgalom-vezérlőjéhez alapján [NGINX]. Az AKS nem korlátozza az Ön konkrét vezérlőhöz, így például használhatja más vezérlők [kontúrt][contour], [HAProxy][haproxy], vagy [Traefik][traefik].
 
 Bejövő tartományvezérlőket kell ütemezni egy Linux-csomóponton. A Windows Server-csomópontok (jelenleg előzetes verzióban érhető el az aks-ben) ne futtassa a bejövőforgalom-vezérlőt. Használjon a YAML-jegyzékfájlt vagy a Helm-diagram telepítési csomópont választókat jelzi, hogy az erőforrás egy Linux-alapú csomóponton futhat. További információkért lásd: [használja a vezérlő csomópont választók ahol podok az aks-ben ütemezett][concepts-node-selectors].
 
