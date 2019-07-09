@@ -72,7 +72,7 @@ A `az postgres server restore` parancs paraméterei a következők:
 | Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  Az erőforráscsoport, amelyben a forráskiszolgáló található.  |
-| név | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
+| name | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
 | restore-point-in-time | 2018-03-13T13:59:00Z | Válasszon ki egy pontot időben való visszaállításához. Ennek a dátumnak és időnek a forráskiszolgáló biztonsági mentésének megőrzési időszakán belül kell lennie. ISO8601 dátum és idő formátumot használja. Például használhatja a saját időzónájára, mint például `2018-03-13T05:59:00-08:00`. Például az UTC Zulu formátumot is használható `2018-03-13T13:59:00Z`. |
 | source-server | mydemoserver | A forráskiszolgáló neve vagy azonosítója, amelyről a visszaállítást végzi. |
 
@@ -112,7 +112,7 @@ A `az postgres server georestore` parancs paraméterei a következők:
 | Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
 |resource-group| myResourceGroup | Az erőforráscsoport nevét az új kiszolgáló fog tartozni.|
-|név | mydemoserver-georestored | Az új kiszolgáló neve. |
+|name | mydemoserver-georestored | Az új kiszolgáló neve. |
 |source-server | mydemoserver | A meglévő kiszolgáló, amelynek földrajzi redundáns biztonsági mentések használhatók neve. |
 |location | eastus | Az új kiszolgáló helyét. |
 |sku-name| GP_Gen4_8 | Ez a paraméter beállítása az árképzési szint, számítási generáció és az új kiszolgáló virtuális magok számát. Egy általános célú, 4. generációs kiszolgáló 8 virtuális maggal rendelkező GP_Gen4_8 rendeli hozzá.|
