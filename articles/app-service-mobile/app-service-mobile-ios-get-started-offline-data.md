@@ -165,11 +165,11 @@ A kapcsolat nélküli szinkronizálás – a szolgáltatás használatakor a ren
 
 | Attribútum | Típus |
 | --- | --- |
-| id | Egész 64 |
+| id | Integer 64 |
 | itemId | String |
-| properties | A bináris adatok |
+| properties | Binary Data |
 | table | String |
-| tableKind | Egész 16 |
+| tableKind | Integer 16 |
 
 
 **MS_TableOperationErrors**
@@ -179,9 +179,9 @@ A kapcsolat nélküli szinkronizálás – a szolgáltatás használatakor a ren
 | Attribútum | Típus |
 | --- | --- |
 | id |String |
-| operationId |Egész 64 |
-| properties |A bináris adatok |
-| tableKind |Egész 16 |
+| operationId |Integer 64 |
+| properties |Binary Data |
+| tableKind |Integer 16 |
 
  **MS_TableConfig**
 
@@ -191,7 +191,7 @@ A kapcsolat nélküli szinkronizálás – a szolgáltatás használatakor a ren
 | --- | --- |
 | id |String |
 | key |String |
-| keyType |Egész 64 |
+| keyType |Integer 64 |
 | table |String |
 | value |String |
 
