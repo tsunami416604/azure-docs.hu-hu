@@ -259,10 +259,10 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**direction**|| Kötelező – kell állítani `out`.|
 |**name**|| Kötelező – a a függvény kódját a kérelem vagy a kérelem törzsében használt változó neve. Ez az érték ```$return``` Ha csak egy visszatérési értéket tartalmaz. |
 |**apiKey**|**ApiKey**| Az API-kulcsot tartalmazó alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett alkalmazás beállítása a név "AzureWebJobsSendGridApiKey".|
-|**to**|**Címzett**| a címzett e-mail címét. |
-|**from**|**A**| a feladó e-mail címe. |
-|**subject**|**Tárgy**| az e-mail tárgya. |
-|**text**|**Szöveg**| az e-mail tartalma. |
+|**to**|**To**| a címzett e-mail címét. |
+|**from**|**From**| a feladó e-mail címe. |
+|**subject**|**Subject**| az e-mail tárgya. |
+|**text**|**Text**| az e-mail tartalma. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
