@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: dech
-ms.openlocfilehash: a942f91dfa03eea2d9dc14b4b44e2ef5ee57c1ba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 39e0932288b513aa1579945396dff1a7d2df77b3
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60686751"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786231"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account-sdk-version-3-preview"></a>Adatkezelés az Azure Cosmos DB SQL API-fiók (a SDK verziója 3 előzetes verzió) egy .NET-Konzolalkalmazás létrehozása
 
@@ -52,7 +52,7 @@ Most pedig lássunk neki!
 
 * [!INCLUDE [cosmos-db-emulator-vs](../../includes/cosmos-db-emulator-vs.md)]
 
-## <a name="step-1-create-an-azure-cosmos-db-account"></a>1. lépés: Azure Cosmos DB-fiók létrehozása
+## <a name="step-1-create-an-azure-cosmos-db-account"></a>1\. lépés: Azure Cosmos DB-fiók létrehozása
 Hozzunk létre egy Azure Cosmos DB-fiókot. Ha van már olyan fiókja, amelyet használni szeretne, ugorjon előre a [Visual Studio megoldás beállítása](#SetupVS) című lépésre. Ha vannak az Azure Cosmos DB Emulatort használja, kövesse [Azure Cosmos DB Emulator](local-emulator.md) az emulátor telepítéséhez, és folytassa a [beállítása a Visual Studio-projektek](#SetupVS).
 
 [!INCLUDE [create-dbaccount-preview](../../includes/cosmos-db-create-dbaccount-preview.md)]
@@ -60,7 +60,7 @@ Hozzunk létre egy Azure Cosmos DB-fiókot. Ha van már olyan fiókja, amelyet h
 ## <a id="SetupVS"></a>2. lépés: A Visual Studio-projekt beállítása
 1. Nyissa meg a **Visual Studio 2017-et** a számítógépén.
 1. A **Fájl** menüben válassza az **Új**, majd a **Projekt** elemet.
-1. Az a **új projekt** párbeszédablakban válassza **Visual C#**   /  **Console App (.NET Framework)**, nevezze el a projektet, és kattintson **OK** .
+1. Az a **új projekt** párbeszédablakban válassza **Visual C#**   /  **Console App (.NET Framework)** , nevezze el a projektet, és kattintson **OK** .
     ![Képernyőfelvétel az új projekt ablakról](./media/sql-api-get-started/dotnet-tutorial-visual-studio-new-project.png)
 1. A **Megoldáskezelőben** kattintson a jobb gombbal az új konzolalkalmazásra, amely a Visual Studio megoldás alatt található, majd kattintson a **NuGet-csomagok kezelése...** lehetőségre.
     
@@ -173,8 +173,8 @@ Remek! Most, hogy befejeztük a beállítást, lássunk neki a kód megírásán
 
 Gratulálunk! Sikeresen csatlakoztatta az Azure Cosmos DB-fiókot. 
 
-## <a name="step-4-create-a-database"></a>4. lépés: Adatbázis létrehozása
-Egy adatbázis használatával hozható létre a [ **Createdatabaseasync** ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosdatabases) vagy [ **Documentclient** ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosdatabases) funkcióját a ``CosmosDatabases`` osztály. Az adatbázis a tárolók között particionált elemek logikai tárolója.
+## <a name="step-4-create-a-database"></a>4\. lépés: Adatbázis létrehozása
+Egy adatbázis használatával hozható létre a [ **Createdatabaseasync** ](/dotnet/api/microsoft.azure.cosmos.cosmosclient.createdatabaseifnotexistsasync) vagy [ **Documentclient** ](/dotnet/api/microsoft.azure.cosmos.cosmosclient.createdatabaseasync) funkcióját a ``CosmosDatabases`` osztály. Az adatbázis a tárolók között particionált elemek logikai tárolója.
     
 1. Másolja és illessze be a **CreateDatabase** az alábbi metódust a **GetStartedDemoAsync** metódust. **CreateDatabase** létrehoz egy új adatbázist azonosítójú ``FamilyDatabase`` Ha ezt még nem létezik, a megadott azonosítójú a ``databaseId`` mező. 
 
@@ -291,7 +291,7 @@ Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB-adatbázist.
 > 
 > 
 
-Egy tároló használatával hozható létre a [ **CreateContainerIfNotExistsAsync** ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmoscontainers) vagy [ **CreateContainerAsync** ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmoscontainers) működni a **CosmosContainers** osztály. Egy tároló elemek (amely az SQL API esetén JSON-dokumentumok) áll, és a kapcsolódó JavaScript kiszolgálóoldali alkalmazás logikáját, például a tárolt eljárások, felhasználó által definiált függvények és eseményindítók.
+Egy tároló használatával hozható létre a [ **CreateContainerIfNotExistsAsync** ](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync) vagy [ **CreateContainerAsync** ](/dotnet/api/microsoft.azure.cosmos.database.createcontainerasync) működni a **CosmosContainers** osztály. Egy tároló elemek (amely az SQL API esetén JSON-dokumentumok) áll, és a kapcsolódó JavaScript kiszolgálóoldali alkalmazás logikáját, például a tárolt eljárások, felhasználó által definiált függvények és eseményindítók.
 
 1. Másolja és illessze be a **CreateContainer** az alábbi metódust a **CreateDatabase** metódust. **CreateContainer** létrehoz egy új tárolót azonosító ``FamilyContainer`` Ha ezt még nem létezik, a megadott azonosítójú a ``containerId`` mező. 
 
@@ -326,7 +326,7 @@ Egy tároló használatával hozható létre a [ **CreateContainerIfNotExistsAsy
 Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB-tárolót.  
 
 ## <a id="CreateDoc"></a>6. lépés: Elemek hozzáadása a tárolóhoz
-Egy elem használatával hozható létre a [ **CreateItemAsync** ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmositems) funkcióját a **CosmosItems** osztály. Az SQL API használatával az elemek dokumentumokként vannak kivetítve, amelyek felhasználói (tetszőleges) JSON-tartalmak. Most már beszúrhat egy elemet az Azure Cosmos DB-tárolóba.
+Egy elem használatával hozható létre a [ **CreateItemAsync** ](/dotnet/api/microsoft.azure.cosmos.container.createitemasync) funkcióját a **CosmosItems** osztály. Az SQL API használatával az elemek dokumentumokként vannak kivetítve, amelyek felhasználói (tetszőleges) JSON-tartalmak. Most már beszúrhat egy elemet az Azure Cosmos DB-tárolóba.
 
 Először létre kell hozni egy **Család** osztályt, amely ebben a mintában az Azure Cosmos DB-ben tárolt objektumokat képviseli. Létrehozunk még egy **Szülő**, **Gyermek**, **Háziállat** és **Cím** alosztályt is a **Család** osztályban való használatra. Ne feledje, hogy a dokumentumoknak rendelkezniük kell egy **Azonosító** tulajdonsággal, amely a JSON-fájlban **id**-ként van szerializálva. 
 1. Válassza ki **Ctrl + Shift + A** megnyitásához a **új elem hozzáadása** párbeszédpanel. Adjon hozzá egy új osztályt **Family.cs** a projekthez. 

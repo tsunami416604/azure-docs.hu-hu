@@ -13,8 +13,8 @@ ms.openlocfilehash: 38addf4651373ba0f4df411325218a255c835508
 ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711405"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67717195"
 ---
 ## <a name="create-an-azure-container-instance-resource"></a>Az Azure Container Instance-erőforrás létrehozásához
 
@@ -35,13 +35,13 @@ ms.locfileid: "67711405"
 
 3. Az a **hálózatkezelés** lapra, adja meg a következő adatokat:
 
-    |Beállítás|Érték|
+    |Beállítás|Value|
     |--|--|
     |Portok|A TCP-port beállítása `5000`. Tesz elérhetővé a tárolót 5000-es porton.|
 
 4. Az a **speciális** lapra, adja meg a szükséges **környezeti változók** tároló [beállítások számlázási](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers#billing-arguments) az ACI erőforrás:
 
-    | Kulcs | Érték |
+    | Kulcs | Value |
     |--|--|
     |`apikey`|Átmásolja a **kulcsok** a Text Analytics erőforrás lapján. Egy 32 alfanumerikus karakterből álló karakterlánc szóközöket vagy kötőjeleket, nélkül `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
     |`billing`|Átmásolja a **áttekintése** a Text Analytics erőforrás lapján. Például: `https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0`|

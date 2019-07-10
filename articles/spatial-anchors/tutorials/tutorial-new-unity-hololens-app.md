@@ -5,15 +5,15 @@ author: julianparismorgan
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: pmorgan
-ms.date: 05/14/2019
+ms.date: 07/05/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: c831e8fdacf5103619374605dd980ab1f6735047
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 57244dd9f3365b3899bcc1dde6382cc3b51719d9
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "67135309"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722926"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Oktatóanyag: Azure térbeli horgonyok használatával új HoloLens Unity-alkalmazás létrehozásának részletes útmutatóját
 
@@ -73,13 +73,21 @@ Szükségünk ahhoz, hogy a Unity tudja, hogy szeretne exportálni az alkalmazá
 3. Keresse meg a **egyértelmű jelzők** tulajdonságot, és módosítsa a legördülő **Skybox** való **egyszínű**.
 4. Kattintson a **háttér** mezőt, nyissa meg a színválasztó.
 5. Állítsa be **R, a G, a B és a egy** való **0**.
-6. Válassza ki **összetevő felvétele** és keressen rá a **térbeli leképezési Collider**.
+6. Válassza ki **összetevő felvétele** , és keresse meg és adja hozzá a **térbeli leképezési Collider**.
 
 **a parancsfájl létrehozása**
 1. Az a **projekt** panelen hozzon létre egy új mappát **parancsfájlok**alatt a **eszközök** mappát. 
 2. Kattintson jobb gombbal a mappára, majd válassza ki **létrehozás >** ,  **C# parancsfájl**. Ez a cím **AzureSpatialAnchorsScript**. 
 3. Lépjen a **GameObject** -> **hozzon létre üres**. 
 4. Válassza ki, majd a a **vizsgáló** nevezze át a **GameObject** való **MixedRealityCloud**. Válassza ki **összetevő felvétele** , és keresse meg és adja hozzá a **AzureSpatialAnchorsScript**.
+
+**A sphere prefab létrehozása**
+1. Lépjen a **GameObject** -> **3D objektum** -> **Sphere**.
+2. Az a **vizsgáló**, a méretezési csoport beállítása **0,25, 0,25, 0,25**.
+3. Keresse meg a **Sphere** objektumának a **hierarchia** ablaktáblán. Kattintson rá és húzza a **eszközök** mappájában a **projekt** ablaktáblán.
+4. Kattintson a jobb gombbal, és **törlése** az eredeti sphere létrehozott a **hierarchia** ablaktáblán.
+
+Most már egy prefab a sphere a **projekt** ablaktáblán.
 
 ## <a name="trying-it-out"></a>Kipróbálás
 Ajánlatos, hogy minden működik, az alkalmazás létrehozása **Unity** és hogyan telepítheti a **Visual Studio**. A 6. fejezet kövesse a [ **100 MR alapjai: Ismerkedés a Unity** tanfolyam](https://docs.microsoft.com/windows/mixed-reality/holograms-100#chapter-6---build-and-deploy-to-device-from-visual-studio) ennek a végrehajtására. A Unity, indítsa el a képernyőn, majd törölje megjelenítési kell megjelennie.
@@ -93,19 +101,25 @@ Először adja hozzá az alábbi importálásokat be a `Assembly-CSharp (Univers
 
 Adja hozzá az alábbi tagokat változókat a `AzureSpatialAnchorsScript` osztály: 
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=26-37,43-47,55-74)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=26-42,48-52,60-79)]
 
-Ezután adja hozzá az alábbi kódot a `Start()` metódust. Ez a kód fogja kapcsolni `GestureRecognizer`, amely észleli, ha van egy légi és hívás `HandleTap`.
+A folytatás előtt kell beállítani a sphere prefab a spherePrefab tag változó létrehozott. Lépjen vissza a **Unity**.
+1. A **Unity**, jelölje be a **MixedRealityCloud** objektumának a **hierarchia** ablaktáblán.
+2. Kattintson a a **Sphere** mentett prefab a **projekt** ablaktáblán. Húzza a **Sphere** , amire kattintott a **Sphere Prefab** alatti terület **Azure térbeli horgonyok parancsfájl (szkript)** a a **vizsgáló** panel .
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=76-85,88&highlight=4-10)]
+Most már a **Sphere** állítja be a parancsfájlt a prefab. Build **Unity** , majd nyissa meg a létrejövő **Visual Studio** megoldás újra, például csak tette azt [kipróbálja](#trying-it-out). 
+
+A **Visual Studio**, nyisson meg `AzureSpatialAnchorsScript.cs` újra. Adja hozzá az alábbi kódot a `Start()` metódust. Ez a kód fogja kapcsolni `GestureRecognizer`, amely észleli, ha van egy légi és hívás `HandleTap`.
+
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=81-90,93&highlight=4-10)]
 
 Ezzel kapunk, adja hozzá a következő `HandleTap()` metódus az alábbi `Update()`. Ez ray típuskonverzió tegye, és termelési találatok, amelynél a sphere helyezze. 
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=264-274,295-297,301-309)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=267-277,299-300,304-312)]
 
 Most kell létrehozni a sphere. A sphere kezdetben fehér, de ezt az értéket később módosítható. Adja hozzá a következő `CreateAndSaveSphere()` módszer:
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=311-324,389)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=314-325,390)]
 
 Futtassa az alkalmazást a **Visual Studio** még egyszer érvényesítéséhez. Most, koppintson a képernyő létrehozása, és helyezze el a fehér sphere tetszőleges felületén.
 
@@ -115,15 +129,15 @@ Unity dolgozik, az összes Unity API-k, például API-k segítségével hajtsa v
 
 Adjunk hozzá egy tag változó dispatchQueue, azaz egy Témakörműveleteket. Azt fogja az üzenetsorban, az alakzatot műveletek leküldéses eltávolítása a sorból és a műveletek futtatására a főszálban. 
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=33-46&highlight=6-9)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=38-51&highlight=6-9)]
 
 Ezután vegye fel az üzenetsorba művelet hozzáadása lehetőséget. Adjon hozzá `QueueOnUpdate()` után `Update()` :
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=102-112)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=107-117)]
 
 Most már használja a Update() hurok annak ellenőrzéséhez, hogy egy művelet várólistára. Ha igen, azt fogja a művelet eltávolítása a sorból, és futtathatja.
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=90-100&highlight=4-10)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=95-105&highlight=4-10)]
 
 ## <a name="get-the-azure-spatial-anchors-sdk"></a>Az Azure térbeli horgonyok SDK beszerzése
 
@@ -137,29 +151,29 @@ Most meg kell ahhoz, hogy az első Azure térbeli horgonyok SDK Nuget-csomagok v
 
 Az a **Visual Studio** megoldást, adja hozzá a következő importálható a `<ProjectName>\Assets\Scripts\AzureSpatialAnchorsScript.cs`:
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=18-21&highlight=1)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=23-26&highlight=1)]
 
 Adja hozzá az alábbi tag változókat a `AzureSpatialAnchorsScript` osztály:
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=43-58&highlight=6-11)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=48-63&highlight=6-11)]
 
 ## <a name="attach-a-local-azure-spatial-anchor-to-the-local-anchor"></a>Egy helyi Azure térbeli kapcsolati alapot csatolja a helyi forráshorgony
 
 Állítsa be az Azure térbeli Forráshorgony CloudSpatialAnchorSession. Adja hozzá a következő kezdjük `InitializeSession()` belül metódus az `AzureSpatialAnchorsScript` osztály. Miután nevű, biztosítani fogja az Azure térbeli horgonyok munkamenet létrejött, és az alkalmazás indításakor megfelelően inicializálva.
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=169-197,200-204)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=174-202,205-209)]
 
 Most meg kell írási delegált hívások kezeléséhez szükséges kódot. Hozzáadjuk több hozzájuk módon folytatódik.
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=206-221)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=211-226)]
 
 Most tekintsük környezet igénybe vételét a `initializeSession()` metódus be a `Start()` metódus.
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=76-88&highlight=12)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=81-93&highlight=12)]
 
 Végül adja hozzá az alábbi kódot a `CreateAndSaveSphere()` metódust. Ez egy helyi Azure térbeli kapcsolati alapot csatolása a sphere, amely azt a való világból elhelyezése.
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=311-337,390&highlight=16-31)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=314-338,390&highlight=14-25)]
 
 A folytatás előtt minden, szüksége lesz egy Azure térbeli horgonyokat létrehozni fiók azonosítóját és kulcsát, ha már nincs rájuk. Hajtsa végre a következő szakaszban azok beszerzési.
 
@@ -171,7 +185,7 @@ Miután a térbeli horgonyok Azure-fiók azonosítója és kulcsa, nyissa meg, �
 
 Végezetül hozzunk környezet igénybe vételét minden együtt. Az a `SpawnNewAnchoredObject()` metódust, adja hozzá a következő kódot. Ez meghívja a `CreateAnchorAsync()` metódus, amint a sphere jön létre. Ha a metódus visszatért, az alábbi kód elvégzi a sphere, a kék szín módosítása egy utolsó frissítése.
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=311-389&highlight=28-78)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=314-391&highlight=26-77)]
 
 Futtassa az alkalmazást a **Visual Studio** még egyszer. A fő mozgását, és ezután légi koppintással helyezze el a sphere. Amint rendelkezésünkre áll elég keretek, a sphere sárga be fog kapcsolni, és a felhő feltöltés indul. Miután a feltöltés befejezését követően a sphere kék fog kapcsolni. Igény szerint is használhat a kimeneti ablakban belül **Visual Studio** figyelése a az alkalmazás által küldött üzeneteket. Láthatja, hogy a létrehozás folyamatban van, valamint a horgony azonosítója, amely a felhő adja vissza a feltöltés befejeződése után az ajánlott megtekintéshez.
 
@@ -186,20 +200,20 @@ A horgony egy feltöltött a felhőbe, készen állunk való elhelyezése ismét
 * Inicializálása `CloudSpatialAnchorSession` újra. Hogy ezt az így meg arról, hogy a horgony, keresse meg fogjuk származik helyett folyamatban van a helyi jegyzetobjektum hoztunk létre a felhőben.
 * Hozzon létre egy **megfigyelő** , amely megkeresi a horgony Azure térbeli horgonyok feltölti azt.
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=264-302&highlight=13-31,34-36)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=267-305&highlight=13-31,35-36)]
 
 Most adjuk hozzá a `ResetSession()` és `CleanupObjects()` módszereket. Helyezheti őket az alábbi `QueueOnUpdate()`
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=114-167)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=119-172)]
 
 Most meg kell kapcsolni a kódot, amely akkor kell meghívni, ha azt a lekérdezésekor a horgony helye. Található `InitializeSession()`, adja hozzá a következő visszahívások:
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=195-201&highlight=4-5)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=200-206&highlight=4-5)]
 
  
 Most már lehetővé teszi, hogy adja hozzá a kódot, amely után a CloudSpatialAnchor megtalálható, helyezze el egy zöld sphere & létrehozása lesz. Azt is engedélyezheti a képernyőn koppintson újra, így a teljes forgatókönyv még egyszer ismételje meg: hozzon létre egy másik helyi forráshorgony, töltse fel, és keresse meg újra.
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=223-262)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=228-265)]
 
 Ennyi az egész! Futtassa az alkalmazást a **Visual Studio** próbálhatja ki a teljes forgatókönyv teljes körű egyszer utoljára. Navigálás az eszközt, és helyezze el a fehér sphere. Ezután folyamatosan áthelyezése a fő környezeti adatok rögzítéséhez, amíg a sphere sárga színűre váltott. A helyi forráshorgony fel lesz töltve, és a sphere kék fog kapcsolni. Végül koppintson a képernyő még egyszer, hogy a helyi forráshorgony törlődik, és majd azt fogja lekérdezni a felhő párjukhoz. Továbbra is a Navigálás az eszközt, amíg a térbeli felhőbeli horgony nem található. A megfelelő helyre meg kell jelennie egy zöld sphere, és le, és ismételje meg újra a teljes forgatókönyvet.
 

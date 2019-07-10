@@ -12,8 +12,8 @@ ms.openlocfilehash: cbf11c13bfb5c90739ea67fab92df08796a88e50
 ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711603"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67717282"
 ---
 ## <a name="create-an-computer-vision-resource"></a>Számítógépes Látástechnológia erőforrás létrehozása
 
@@ -32,7 +32,7 @@ ms.locfileid: "67711603"
 1. Kattintson a **létrehozás** és várja meg a létrehozandó erőforrás. Miután elkészült, lépjen az erőforrás oldalára
 1. Adatokat gyűjthet konfigurált `endpoint` és API-kulcs:
 
-    |Portál erőforrás lapján|Beállítás|Érték|
+    |Portál erőforrás lapján|Beállítás|Value|
     |--|--|--|
     |**Áttekintés**|Végpont|Másolja a végpont. Hasonló `https://computer-vision.cognitiveservices.azure.com/`|
     |**kulcsok**|API-kulcs|1\. a két kulcs másolása. Egy 32 alfanumerikus karakterből álló karakterlánc szóközöket vagy kötőjeleket, nélkül `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|

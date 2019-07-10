@@ -12,8 +12,8 @@ ms.openlocfilehash: 3c42bf2b2acc2472741bd603ea9d653a314ecc40
 ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711823"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67717259"
 ---
 ## <a name="create-a-speech-resource"></a>Beszéd erőforrás létrehozása
 
@@ -32,7 +32,7 @@ ms.locfileid: "67711823"
 1. Kattintson a **létrehozás** és várja meg a létrehozandó erőforrás. Miután elkészült, lépjen az erőforrás oldalára
 1. Adatokat gyűjthet konfigurált `endpoint` és API-kulcs:
 
-    |Portál erőforrás lapján|Beállítás|Érték|
+    |Portál erőforrás lapján|Beállítás|Value|
     |--|--|--|
     |**Áttekintés**|Végpont|Másolja a végpont. Hasonló `https://speech.cognitiveservices.azure.com/sts/v1.0/issuetoken`|
     |**kulcsok**|API-kulcs|1\. a két kulcs másolása. Egy 32 alfanumerikus karakterből álló karakterlánc szóközöket vagy kötőjeleket, nélkül `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|

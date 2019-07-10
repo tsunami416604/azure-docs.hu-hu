@@ -14,8 +14,8 @@ ms.openlocfilehash: 1b46c58d3f3c804052e637f7bde2e1a456764dba
 ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711504"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67717224"
 ---
 ### <a name="speech-to-text-sub-chart-chartsspeechtotext"></a>Hang-szöveg transzformációs (alárendelt diagram: diagramok/speechToText)
 

@@ -42,7 +42,7 @@ Ebben a szakaszban a Microsoft végigvezeti egy minta HTML-oldalt betöltéséhe
 
 ### <a name="open-the-sample-directly"></a>Nyissa meg közvetlenül a minta
 
-Egy előfizetési kulcsot beszerezni a fent leírtak szerint. Nyissa meg a [a minta mutató hivatkozás](https://htmlpreview.github.io/? https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/preview/samples/browser/Sample.html). Ez az oldal betölti az alapértelmezett böngésző be (használatával [htmlPreview](https://github.com/htmlpreview/htmlpreview.github.com)).
+Egy előfizetési kulcsot beszerezni a fent leírtak szerint. Nyissa meg a [a minta mutató hivatkozás](https://htmlpreview.github.io/?https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/preview/samples/browser/Sample.html). Ez az oldal betölti az alapértelmezett böngésző be (használatával [htmlPreview](https://github.com/htmlpreview/htmlpreview.github.com)).
 
 ### <a name="open-the-sample-from-a-local-copy"></a>Nyissa meg a mintát a helyi másolat
 

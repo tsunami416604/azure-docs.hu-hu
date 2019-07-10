@@ -12,8 +12,8 @@ ms.openlocfilehash: 52d8e1355558b197b193a50c7cde571799541268
 ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711834"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67717167"
 ---
 ## <a name="create-a-luis-resource"></a>A LUIS-erőforrás létrehozása
 

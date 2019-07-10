@@ -1,21 +1,21 @@
 ---
 title: Mi az Ink felismerő? – Tinta felismerő API
-titlesuffix: Azure Cognitive Services
-description: Az alkalmazások, webhelyek, eszközök és más megoldásokat biztosít a szabadkézi felismerő integrálása...
+titleSuffix: Azure Cognitive Services
+description: Az alkalmazások, webhelyek, eszközök és más megoldásokkal, hogy a szabadkézi körvonal adatok azonosíthatók és használja majd bemenetként a szabadkézi felismerő integrálhatja.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
-ms.topic: tutorial
+ms.topic: overview
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 0ed1a72a5dc61458200b72c768ad722656b820d8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 95121523c510e72894086740ad340bdfd33f3c32
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65027228"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721398"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Mi az Ink Recognizer API?
 
@@ -24,11 +24,11 @@ A szabadkézi felismerő Cognitive Service felhőalapú REST API-t biztosít ele
 
 ![Egy leíró küldése az API-t ink körvonal bemenete folyamatábrája](media/ink-recognizer-pen-graph.png)
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
 A tinta felismerő API-val könnyen megjegyezhető kézzel írt tartalmak az alkalmazásokban. 
 
-|Szolgáltatás  |Leírás  |
+|Funkció  |Leírás  |
 |---------|---------|
 | Kézírás-felismerés | Ismeri fel a 63 core kézzel írt tartalmak [nyelv és területi beállítások](language-support.md). | 
 | Elrendezés felismerése | A digitális ink tartalom szerkezeti adatainak beolvasása. A tartalom felosztása írása a régiók, bekezdések, sorok, szavakat, listajeles listák készítéséhez. Az alkalmazások ezután az elrendezés információk segítségével hozhat létre további szolgáltatások, mint az automatikus lista formázásának, és formázhatja igazítását. |

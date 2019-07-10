@@ -1,21 +1,21 @@
 ---
 title: Rendellenességek batch észlelése és a Power BI használatával jelenítheti meg
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Az Anomáliadetektálási detector használatával API és a Power BI használatával rendellenességek során az idősorozat-adatok megjelenítése.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/30/2019
 ms.author: aahi
-ms.openlocfilehash: de353c946da46b2bbe4e755e21e355f6bd18725b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 74b51d04f2706d890475c500e1e730cff75397c5
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65827139"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721487"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Oktatóanyag: Rendellenességek batch észlelése és a Power BI használatával jelenítheti meg
 

@@ -7,14 +7,14 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/26/2019
+ms.date: 7/3/2019
 ms.author: dapine
-ms.openlocfilehash: 1d68c08f6dfca74c38973af1686d614f3f10cc28
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: eb2d609c3a7dfd769c6a19854366ac5e45fddb7d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67455118"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67712520"
 ---
 ## <a name="create-an-azure-kubernetes-service-aks-cluster-resource"></a>Hozzon létre egy Azure Kubernetes Service (AKS)-erőforrás
 
@@ -22,10 +22,10 @@ ms.locfileid: "67455118"
 
 1. Az a **alapjai** lapra, adja meg a következő adatokat:
 
-    |Beállítás|Érték|
+    |Beállítás|Value|
     |--|--|
-    |Előfizetés|Válassza ki a megfelelő előfizetést|
-    |Erőforráscsoport|Válasszon ki egy rendelkezésre álló|
+    |Subscription|Válassza ki a megfelelő előfizetést|
+    |Resource group|Válasszon ki egy rendelkezésre álló|
     |Kubernetes-fürt neve|Kívánt nevét (, kisbetű)|
     |Régió|Válasszon ki egy közeli helyet|
     |Kubernetes-verzió|1.12.8 (alapértelmezett)|
@@ -37,7 +37,7 @@ ms.locfileid: "67455118"
 1. Az a **hitelesítési** lapra, és távozzon *szolgáltatásnév* és *engedélyezése az RBAC* alapértelmezett értékeket.
 1. Az a **hálózatkezelés** lapra, adja meg a következő lehetőségek közül:
 
-    |Beállítás|Érték|
+    |Beállítás|Value|
     |--|--|
     |HTTP-alkalmazások útválasztása|Nem|
     |Hálózati konfiguráció|Alapszintű|

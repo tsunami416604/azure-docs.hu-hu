@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 9b126d5ccbbf3cb1f22163ffb6ac53a8aff61004
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: c03568ece97bdaad86f4564debf9f3b2fa14c6ed
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357337"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786651"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Az Azure Cognitive Services számítógépes Látástechnológiai SDK a Pythonhoz
 
@@ -28,7 +28,7 @@ A Computer Vision szolgáltatás a fejlesztők számára hozzáférést biztosí
 * [Kézzel írt szöveg első rendszerképből](#get-text-from-image)
 * [Létrehozásához miniatűrön](#generate-thumbnail)
 
-Ezzel a szolgáltatással kapcsolatos további információkért lásd: [Mi az a Computer Vision?] [computervision_docs].
+Ezzel a szolgáltatással kapcsolatos további információkért lásd: [Mi az a Computer Vision?][computervision_docs].
 
 További dokumentáció keres?
 
@@ -38,11 +38,11 @@ További dokumentáció keres?
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Python 3.6-os +][python]
-* Ingyenes [számítógépes Látástechnológiai kulcs] [ computervision_resource] és a kapcsolódó végpont. Ezekre az értékekre szüksége az példány létrehozásakor a [ComputerVisionClient] [ ref_computervisionclient] objektumot. Az alábbi módszerek valamelyikével beolvasni ezeket az értékeket.
+* Ingyenes [számítógépes Látástechnológiai kulcs][computervision_resource] and associated endpoint. You need these values when you create the instance of the [ComputerVisionClient][ref_computervisionclient] objektumot. Az alábbi módszerek valamelyikével beolvasni ezeket az értékeket.
 
 ### <a name="if-you-dont-have-an-azure-subscription"></a>Ha nem rendelkezik Azure-előfizetéssel
 
-A 7 napig érvényes ingyenes kulcs létrehozása a **[Kipróbálom] [ computervision_resource]** élmény a Computer Vision service a. A kulcs létrehozásakor másolja a kulcs és a végpont nevét. Szüksége lesz a [az ügyfél létrehozása](#create-client).
+A 7 napig érvényes ingyenes kulcs létrehozása a **[Kipróbálom][computervision_resource]** élmény a Computer Vision service a. A kulcs létrehozásakor másolja a kulcs és a végpont nevét. Szüksége lesz a [az ügyfél létrehozása](#create-client).
 
 Tartsa a következő, a kulcs létrehozása után:
 
@@ -51,7 +51,7 @@ Tartsa a következő, a kulcs létrehozása után:
 
 ### <a name="if-you-have-an-azure-subscription"></a>Ha rendelkezik Azure-előfizetéssel
 
-Hozzon létre egy erőforrást az előfizetésében, a legegyszerűbb módszer, hogy használja a következő [Azure CLI-vel] [ azure_cli] parancsot. Ez létrehoz egy Cognitive Services-szolgáltatás-kulcsot, a cognitive services számos is használható. Meg kell adnia a _meglévő_ erőforráscsoport nevét, például "my-cogserv-group" és az új számítógép vision erőforrás nevével, például a "my-számítógép-látás-erőforrás".
+Hozzon létre egy erőforrást az előfizetésében, a legegyszerűbb módszer, hogy használja a következő [Azure CLI-vel][azure_cli] parancsot. Ez létrehoz egy Cognitive Services-szolgáltatás-kulcsot, a cognitive services számos is használható. Meg kell adnia a _meglévő_ erőforráscsoport nevét, például "my-cogserv-group" és az új számítógép vision erőforrás nevével, például a "my-számítógép-látás-erőforrás".
 
 ```Bash
 RES_REGION=westeurope
@@ -84,17 +84,17 @@ source cogsrv-vision-env/bin/activate
 
 ### <a name="install-the-sdk"></a>Az SDK telepítése
 
-Telepítse az Azure Cognitive Services számítógép Látástechnológiai SDK Pythonhoz készült [csomag] [ pypi_computervision] a [pip][pip]:
+Telepítse az Azure Cognitive Services számítógép Látástechnológiai SDK Pythonhoz készült [csomag][pypi_computervision] with [pip][pip]:
 
 ```Bash
 pip install azure-cognitiveservices-vision-computervision
 ```
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
 Miután a Computer Vision erőforrást hoz létre, meg kell annak **végpont**, és az egyik a **tárfiókkulcsokat** az ügyfél objektumpéldány.
 
-Az példány létrehozásakor használja ezeket az értékeket a [ComputerVisionClient] [ ref_computervisionclient] objektumot.
+Az példány létrehozásakor használja ezeket az értékeket a [ComputerVisionClient][ref_computervisionclient] objektumot.
 
 Például a Bash terminál segítségével beállíthatja a környezeti változókat:
 
@@ -107,7 +107,7 @@ ACCT_NAME=<computervision-account-name>
 
 Ha nem emlékszik a végpont és a kulcsot, a következő metódust használhatja azokat. Hozzon létre egy kulcsot és a végpontot kell, ha a módszert használhatja [Azure-előfizetés tulajdonosai](#if-you-have-an-azure-subscription) vagy [nem Azure-előfizetéssel rendelkező felhasználók](#if-you-dont-have-an-azure-subscription).
 
-Használja a [Azure CLI-vel] [ cloud_shell] feltölti a Computer Vision fiókkal két környezeti változó az alábbi kódrészlet **végpont** és az egyik a **kulcsok**(is megtalálhatja ezeket az értékeket a [az Azure portal][azure_portal]). A kódrészlet esetében a Bash felületen van formázva.
+Használja a [Azure CLI-vel][cloud_shell] feltölti a Computer Vision fiókkal két környezeti változó az alábbi kódrészlet **végpont** és az egyik a **kulcsok** (is megtalálhatja ezeket az értékeket a [az Azure portal][azure_portal]). A kódrészlet esetében a Bash felületen van formázva.
 
 ```Bash
 RES_GROUP=<resourcegroup-name>
@@ -129,7 +129,7 @@ export ACCOUNT_KEY=$(az cognitiveservices account keys list \
 
 ### <a name="create-client"></a>Ügyfél létrehozása
 
-A végpont és -kulcs beszerzéséhez a környezeti változókat, majd hozza létre a [ComputerVisionClient] [ ref_computervisionclient] objektumot.
+A végpont és -kulcs beszerzéséhez a környezeti változókat, majd hozza létre a [ComputerVisionClient][ref_computervisionclient] objektumot.
 
 ```Python
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
@@ -150,11 +150,11 @@ client = ComputerVisionClient(endpoint, credentials)
 
 ## <a name="examples"></a>Példák
 
-Kell egy [ComputerVisionClient] [ ref_computervisionclient] ügyfélobjektumát használata a következő feladatok közül bármelyik előtt.
+Kell egy [ComputerVisionClient][ref_computervisionclient] ügyfélobjektumát használata a következő feladatok közül bármelyik előtt.
 
 ### <a name="analyze-an-image"></a>Rendszerkép elemzése
 
-Bizonyos funkciókat a lemezkép elemezheti [ `analyze_image` ] [ ref_computervisionclient_analyze_image]. Használja a [ `visual_features` ] [ ref_computervision_model_visualfeatures] elemzés végrehajtásához a kép típusú beállítandó tulajdonság. Gyakori értékek a következők `VisualFeatureTypes.tags` és `VisualFeatureTypes.description`.
+Bizonyos funkciókat a lemezkép elemezheti [ `analyze_image` ][ref_computervisionclient_analyze_image] . Use the [`visual_features`][ref_computervision_model_visualfeatures] elemzés végrehajtásához a kép típusú beállítandó tulajdonság. Gyakori értékek a következők `VisualFeatureTypes.tags` és `VisualFeatureTypes.description`.
 
 ```Python
 url = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Broadway_and_Times_Square_by_night.jpg/450px-Broadway_and_Times_Square_by_night.jpg"
@@ -167,7 +167,7 @@ for tag in image_analysis.tags:
 
 ### <a name="get-subject-domain-list"></a>Tulajdonos tartomány listájának lekérése
 
-Tekintse át a területek, a lemezkép használatával [ `list_models` ] [ ref_computervisionclient_list_models]. A tartománynevek használt amikor [tartományonként kép elemzése](#analyze-an-image-by-domain). A tartomány például `landmarks`.
+Tekintse át a területek, a lemezkép használatával [ `list_models` ][ref_computervisionclient_list_models]. A tartománynevek használt amikor [tartományonként kép elemzése](#analyze-an-image-by-domain). A tartomány például `landmarks`.
 
 ```Python
 models = client.list_models()
@@ -178,7 +178,7 @@ for x in models.models_property:
 
 ### <a name="analyze-an-image-by-domain"></a>Tartomány szerint kép elemzése
 
-Elemezheti a tulajdonos tartományonként kép [ `analyze_image_by_domain` ] [ ref_computervisionclient_analyze_image_by_domain]. Első a [támogatott területek listája](#get-subject-domain-list) annak érdekében, hogy a megfelelő tartománynevet használja.
+Elemezheti a tulajdonos tartományonként kép [ `analyze_image_by_domain` ][ref_computervisionclient_analyze_image_by_domain]. Első a [támogatott területek listája](#get-subject-domain-list) annak érdekében, hogy a megfelelő tartománynevet használja.
 
 ```Python
 # type of prediction
@@ -199,7 +199,7 @@ for landmark in analysis.result["landmarks"]:
 
 ### <a name="get-text-description-of-an-image"></a>A kép leírását beolvasása
 
-Egy olyan rendszerképre nyelven alapuló szöveges leírása kap [ `describe_image` ] [ ref_computervisionclient_describe_image]. Több leírásokat a kérelem a `max_description` tulajdonság akkor használatos, ha a lemezképhez hozzárendelt kulcsszavak szövegelemzés. Egy szöveges leírása az alábbi képen például `a train crossing a bridge over a body of water`, `a large bridge over a body of water`, és `a train crossing a bridge over a large body of water`.
+Egy olyan rendszerképre nyelven alapuló szöveges leírása kap [ `describe_image` ][ref_computervisionclient_describe_image]. Több leírásokat a kérelem a `max_description` tulajdonság akkor használatos, ha a lemezképhez hozzárendelt kulcsszavak szövegelemzés. Egy szöveges leírása az alábbi képen például `a train crossing a bridge over a body of water`, `a large bridge over a body of water`, és `a train crossing a bridge over a large body of water`.
 
 ```Python
 domain = "landmarks"
@@ -216,7 +216,7 @@ for caption in analysis.captions:
 
 ### <a name="get-text-from-image"></a>Získat text z kép
 
-Kézzel írt vagy nyomtatott szöveg kaphat egy rendszerképből. Ehhez szükséges, hogy az SDK két hívások: [ `batch_read_file` ](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python#batch-read-file-url--mode--custom-headers-none--raw-false----operation-config-) és [ `get_read_operation_result` ](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python#get-read-operation-result-operation-id--custom-headers-none--raw-false----operation-config-). A hívás `batch_read_file` aszinkron. Az eredményeit a `get_read_operation_result` -hívással kell ellenőrizni, ha az első hívás befejeződött, [ `TextOperationStatusCodes` ] [ ref_computervision_model_textoperationstatuscodes] előtt szöveges adatok kinyeréséhez. Az eredmények tartalmazzák a szöveg, valamint a határolókeret koordinátái meg a szöveget.
+Kézzel írt vagy nyomtatott szöveg kaphat egy rendszerképből. Ehhez szükséges, hogy az SDK két hívások: [ `batch_read_file` ](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) és [ `get_read_operation_result` ](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python). A hívás `batch_read_file` aszinkron. Az eredményeit a `get_read_operation_result` -hívással kell ellenőrizni, ha az első hívás befejeződött, [ `TextOperationStatusCodes` ][ref_computervision_model_textoperationstatuscodes] előtt szöveges adatok kinyeréséhez. Az eredmények tartalmazzák a szöveg, valamint a határolókeret koordinátái meg a szöveget.
 
 ```Python
 # import models
@@ -253,7 +253,7 @@ if result.status == TextOperationStatusCodes.succeeded:
 
 ### <a name="generate-thumbnail"></a>Létrehozásához miniatűrön
 
-A kép miniatűrjét (JPG) is létrehozhat [ `generate_thumbnail` ] [ ref_computervisionclient_generate_thumbnail]. A miniatűr nem kell az eredeti rendszerkép azonos arányban kell.
+A kép miniatűrjét (JPG) is létrehozhat [ `generate_thumbnail` ][ref_computervisionclient_generate_thumbnail]. A miniatűr nem kell az eredeti rendszerkép azonos arányban kell.
 
 Telepítés **párnád** használata ebben a példában:
 
@@ -284,11 +284,11 @@ image.save('thumbnail.jpg')
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-### <a name="general"></a>Általános kérdések
+### <a name="general"></a>Általános
 
-Amikor dolgozhat a [ComputerVisionClient] [ ref_computervisionclient] ügyfélobjektumot, a Python SDK-val a [ `ComputerVisionErrorException` ] [ ref_computervision_computervisionerrorexception] az osztály az olvasni a hibákat. A szolgáltatás által visszaadott hibák REST API-kérések vissza ugyanazon HTTP-állapotkódok felelnek meg.
+Amikor dolgozhat a [ComputerVisionClient][ref_computervisionclient] client object using the Python SDK, the [`ComputerVisionErrorException`][ref_computervision_computervisionerrorexception] osztály használható olvasni a hibákat. A szolgáltatás által visszaadott hibák REST API-kérések vissza ugyanazon HTTP-állapotkódok felelnek meg.
 
-Például, ha a kép elemzése érvénytelen kulccsal próbál egy `401` hibát akkor adja vissza. Az alábbi kódrészletben a [hiba] [ ref_httpfailure] szabályosan kezeli a kivétel kölcsönhatásai és megjelenítése a hibával kapcsolatos további információkat.
+Például, ha a kép elemzése érvénytelen kulccsal próbál egy `401` hibát akkor adja vissza. Az alábbi kódrészletben a [hiba][ref_httpfailure] szabályosan kezeli a kivétel kölcsönhatásai és megjelenítése a hibával kapcsolatos további információkat.
 
 ```Python
 
@@ -312,12 +312,12 @@ except HTTPFailure as e:
 
 ### <a name="handle-transient-errors-with-retries"></a>Újrapróbálkozás átmeneti hibák kezelése
 
-A munka során a [ComputerVisionClient] [ ref_computervisionclient] ügyfél, akkor léphetnek fel átmeneti hibák által okozott [sebességhatárok] [ computervision_request_units] a szolgáltatás, vagy más átmeneti problémák, például a hálózati kimaradások kényszeríti. További információ az ilyen típusú hibák kezelése: [újrapróbálkozási minta] [ azure_pattern_retry] útmutató a tervezési minták Felhőkhöz, és a kapcsolódó [áramkör-megszakító minta] [azure_pattern_circuit_breaker].
+A munka során a [ComputerVisionClient][ref_computervisionclient] client, you might encounter transient failures caused by [rate limits][computervision_request_units] kényszeríti ki a szolgáltatást, vagy más átmeneti problémák, például a hálózati kimaradások. További információ az ilyen típusú hibák kezelése: [újrapróbálkozási minta][azure_pattern_retry] útmutató a tervezési minták Felhőkhöz, és a kapcsolódó [áramkör-megszakítóminta][azure_pattern_circuit_breaker].
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Képek tartalmának címkékkel](../concept-tagging-images.md)
+> [Tartalomcímkék alkalmazása képekre](../concept-tagging-images.md)
 
 <!-- LINKS -->
 [pip]: https://pypi.org/project/pip/

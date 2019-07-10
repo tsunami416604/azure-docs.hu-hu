@@ -12,8 +12,8 @@ ms.openlocfilehash: 3886777b283af35e84683480a59097584b537fea
 ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711581"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67717143"
 ---
 ## <a name="create-an-face-resource"></a>Face erőforrás létrehozása
 
@@ -32,7 +32,7 @@ ms.locfileid: "67711581"
 1. Kattintson a **létrehozás** és várja meg a létrehozandó erőforrás. Miután elkészült, lépjen az erőforrás oldalára
 1. Adatokat gyűjthet konfigurált `endpoint` és API-kulcs:
 
-    |Portál erőforrás lapján|Beállítás|Érték|
+    |Portál erőforrás lapján|Beállítás|Value|
     |--|--|--|
     |**Áttekintés**|Végpont|Másolja a végpont. Hasonló `https://face.cognitiveservices.azure.com/face/v1.0`|
     |**kulcsok**|API-kulcs|1\. a két kulcs másolása. Egy 32 alfanumerikus karakterből álló karakterlánc szóközöket vagy kötőjeleket, nélkül `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|

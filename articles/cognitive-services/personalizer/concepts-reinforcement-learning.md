@@ -7,15 +7,15 @@ author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: b65073c0646db0cd0c27a71005bb4f74b091ae09
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 26f8348bc2de9cb56110c1cc7ce896934bb46ef7
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506885"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722452"
 ---
 # <a name="what-is-reinforcement-learning"></a>Mi a megerősítő tanulást?
 
@@ -59,7 +59,7 @@ John is adott több oktatóanyagok korábban, többek között a közös előrej
 
 Jelenleg használt personalizer [Vowpal Wabbit](https://github.com/VowpalWabbit/vowpal_wabbit/wiki) a machine Learning alapjaként. Ezt a keretrendszert lehetővé teszi, hogy a maximális átviteli sebesség és a legkisebb késés, ha személyre szabása így rangsorolja és az összes esemény a modell betanításához.
 
-## <a name="references"></a>Hivatkozások
+## <a name="references"></a>Referencia
 
 * [Az alacsony műszaki adósságot környezetfüggő döntések](https://arxiv.org/abs/1606.03966)
 * [A csökkentési megközelítés valós besoroláshoz](https://arxiv.org/abs/1803.02453)

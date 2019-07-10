@@ -242,6 +242,12 @@
           href: monitor-events-portal-how-to.md
         - name: Események monitorozása – Parancssori felület
           href: job-state-events-cli-how-to.md
+    - name: Az Azure Monitor használata
+      items:
+        - name: Megfigyelési mérőszámok
+          href: media-services-metrics-howto.md
+        - name: Diagnosztikai naplók monitorozása
+          href: media-services-diagnostic-logs-howto.md
     - name: Tartalom védelme
       items:
         - name: Tartalomkulcs-szabályzat lekérése – .NET

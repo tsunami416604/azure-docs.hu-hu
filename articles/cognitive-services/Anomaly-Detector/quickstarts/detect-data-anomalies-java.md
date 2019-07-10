@@ -1,5 +1,6 @@
 ---
-title: 'Gyors útmutató: Rendellenességek észlelése az idősoros adatokat az Anomáliadetektálási detector használatával REST API-t és a Java használatával |} A Microsoft Docs'
+title: 'Gyors útmutató: Rendellenességek észlelése az idősoros adatokat az Anomáliadetektálási detector használatával REST API-t és a Java használatával'
+titleSuffix: Azure Cognitive Services
 description: Az Anomáliadetektálási detector használatával API segítségével észlelheti a rendellenességeket az adatsorozat egy kötegelt vagy a streamelt adatokon.
 services: cognitive-services
 author: aahill
@@ -9,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 04ace16559a6f5b747bc735aa89265d2962a32b3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2a219dfac597208a2c409f76c035a1b913864245
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073230"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721499"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-java"></a>Gyors útmutató: Rendellenességek észlelése az idősoros adatokat az Anomáliadetektálási detector használatával REST API-t és a Java használatával
 

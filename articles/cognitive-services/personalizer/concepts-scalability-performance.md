@@ -1,5 +1,5 @@
 ---
-title: Megerősítő tanulást - Personalizer
+title: Méretezhetőség és teljesítmény - Personalizer
 titleSuffix: Azure Cognitive Services
 description: 'Nagy teljesítményű és nagy adatforgalmú webhelyekhez és alkalmazásokhoz rendelkezik Personalizer a méretezhetőség és teljesítmény érdekében érdemes figyelembe venni két tényezőt: képzési teljesítmény és a késés.'
 services: cognitive-services
@@ -7,15 +7,15 @@ author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: edjez
-ms.openlocfilehash: 242cc1b96c08cd79dc3e2ef5efbbe96a934b8ad3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 06c2e65c723e18acc515dd7effc61aae0564f411
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058440"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722419"
 ---
 # <a name="scalability-and-performance"></a>Méretezhetőség és teljesítmény
 

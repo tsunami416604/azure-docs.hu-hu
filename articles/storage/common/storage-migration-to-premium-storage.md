@@ -9,12 +9,12 @@ ms.date: 06/27/2017
 ms.author: rogarana
 ms.reviewer: yuemlu
 ms.subservice: common
-ms.openlocfilehash: 5cfb96bd3115c8f3116a28926e93df89dff54351
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6b6e442ff3333a7fd085f8e452ae056e7daaba8c
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153765"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565505"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>(Nem felügyelt lemezek) az Azure Premium Storage-ba való migrálás
 
@@ -75,7 +75,7 @@ A Premium Storage-specifikációk további információkért tekintse meg [Azure
 #### <a name="disk-caching-policy"></a>Lemez gyorsítótárazási házirend
 Alapértelmezés szerint a lemez gyorsítótárazási házirend a *csak olvasható* minden a prémium szintű adatlemezek esetén és *olvasási és írási* a prémium szintű operációsrendszer-lemez a virtuális Géphez csatlakoztatva. Ezt a konfigurációs beállítást az optimális teljesítmény érdekében az alkalmazás IOs-hez javasolt. Írási vagy csak írási adatlemezek (például az SQL Server-naplófájlok) tiltsa le a lemezek gyorsítótárazása, így jobb alkalmazásteljesítményt érhet el. Használatával frissítheti a meglévő adatlemezek gyorsítótárazási beállításai a [az Azure portal](https://portal.azure.com) vagy a *- HostCaching* paraméterében a *Set-AzureDataDisk* parancsmagot.
 
-#### <a name="location"></a>Location egység
+#### <a name="location"></a>Location
 Válasszon ki egy helyet, ahol az Azure Premium Storage érhető el. Lásd: [Azure-szolgáltatások régió szerint](https://azure.microsoft.com/regions/#services) naprakész információk az elérhető helyek. A virtuális gépek és a Storage-fiókot, hogy tárolja a virtuális gép lemezei ad sokkal jobb teljesítményt, mint ha külön régióban vannak ugyanabban a régióban található.
 
 #### <a name="other-azure-vm-configuration-settings"></a>Más Azure-beli Virtuálisgép-konfigurációs beállítások
@@ -176,23 +176,23 @@ AzCopy használatával könnyedén tölthet fel a VHD-t az interneten keresztül
 
     ```azcopy
     AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /SourceKey:key1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /DestKey:key2 /Pattern:abc.vhd
-    ```
+        ```
 
-    Az alábbiakban az AzCopy-parancsban használt paraméterek leírását:
+    Here are descriptions of the parameters used in the AzCopy command:
 
-   * **/ Forrás:  *&lt;forrás&gt;:* ** A mappa vagy a storage tárolót tartalmazó URL-cím a virtuális merevlemez helye.
-   * **/ SourceKey:  *&lt;forrás-fiókkulcs&gt;:* ** A forrás tárfiókban tárfiókkulcs.
-   * **/ Cél:  *&lt;cél&gt;:* ** Tárolási tároló URL-cím a virtuális merevlemez másolása.
-   * **/ DestKey:  *&lt;dest fiókkulcs&gt;:* ** A cél tárfiók tárfiók kulcsa.
-   * **/ Minta:  *&lt;Fájlnév&gt;:* ** Adja meg a virtuális merevlemez másolása a fájl nevét.
+   * **/Source: _&lt;source&gt;:_** Location of the folder or storage container URL that contains the VHD.
+   * **/SourceKey: _&lt;source-account-key&gt;:_** Storage account key of the source storage account.
+   * **/Dest: _&lt;destination&gt;:_** Storage container URL to copy the VHD to.
+   * **/DestKey: _&lt;dest-account-key&gt;:_** Storage account key of the destination storage account.
+   * **/Pattern: _&lt;file-name&gt;:_** Specify the file name of the VHD to copy.
 
-Eszköz AzCopy használatával kapcsolatos részletekért, lásd: [adatátvitel az AzCopy parancssori segédprogrammal](storage-use-azcopy.md).
+For details on using AzCopy tool, see [Transfer data with the AzCopy Command-Line Utility](storage-use-azcopy.md).
 
-##### <a name="option-2-copy-a-vhd-with-powershell-synchronized-copy"></a>Option 2: Másolja a VHD-t a PowerShell-lel (Synchronized példány)
+##### Option 2: Copy a VHD with PowerShell (Synchronized copy)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Másolhatja a VHD-fájl Start-AzStorageBlobCopy PowerShell-parancsmag segítségével is. Az Azure PowerShell-lel az alábbi parancs használatával másolja a VHD-t. <> Szereplő értékeket cserélje le a forrás- és storage-fiókból tartozó értékek. Használja ezt a parancsot, a cél tárfiók VHD-ken nevű tárolóban kell rendelkeznie. Ha a tároló nem létezik, hozzon létre egyet a parancs futtatása előtt.
+You can also copy the VHD file using the PowerShell cmdlet Start-AzStorageBlobCopy. Use the following command on Azure PowerShell to copy VHD. Replace the values in <> with corresponding values from your source and destination storage account. To use this command, you must have a container called vhds in your destination storage account. If the container doesn't exist, create one before running the command.
 
 ```powershell
 $sourceBlobUri = <source-vhd-uri>
@@ -256,7 +256,7 @@ Most, hogy a VHD-t a helyi könyvtárban, az AzCopy vagy AzurePowerShell haszná
 Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 ```
 
-Példa \<Uri > lehet, hogy ***"https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd"***. Példa \<FileInfo > lehet, hogy ***"C:\path\to\upload.vhd"***.
+Példa \<Uri > lehet, hogy  ** _"https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd"_** . Példa \<FileInfo > lehet, hogy  ** _"C:\path\to\upload.vhd"_** .
 
 ##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>Option 2: A .vhd-fájl feltöltése AzCopy használatával
 AzCopy használatával könnyedén tölthet fel a VHD-t az interneten keresztül. A VHD méretétől függően ez időt vehet igénybe. Fontos, hogy ellenőrizze a tárfiókok bejövő/kimenő forgalom korlátai, ez a beállítás használatakor. Lásd: [Azure Storage méretezhetőségi és Teljesítménycéljai](storage-scalability-targets.md) részleteiről.
@@ -273,57 +273,57 @@ AzCopy használatával könnyedén tölthet fel a VHD-t az interneten keresztül
 
     ```azcopy
     AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /SourceKey:key1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /DestKey:key2 /BlobType:page /Pattern:abc.vhd
-    ```
+        ```
 
-    Az alábbiakban az AzCopy-parancsban használt paraméterek leírását:
+    Here are descriptions of the parameters used in the AzCopy command:
 
-   * **/ Forrás:  *&lt;forrás&gt;:* ** A mappa vagy a storage tárolót tartalmazó URL-cím a virtuális merevlemez helye.
-   * **/ SourceKey:  *&lt;forrás-fiókkulcs&gt;:* ** A forrás tárfiókban tárfiókkulcs.
-   * **/ Cél:  *&lt;cél&gt;:* ** Tárolási tároló URL-cím a virtuális merevlemez másolása.
-   * **/ DestKey:  *&lt;dest fiókkulcs&gt;:* ** A cél tárfiók tárfiók kulcsa.
-   * **/ BlobType: lap:** Megadja, hogy a cél egy lapblob.
-   * **/ Minta:  *&lt;Fájlnév&gt;:* ** Adja meg a virtuális merevlemez másolása a fájl nevét.
+   * **/Source: _&lt;source&gt;:_** Location of the folder or storage container URL that contains the VHD.
+   * **/SourceKey: _&lt;source-account-key&gt;:_** Storage account key of the source storage account.
+   * **/Dest: _&lt;destination&gt;:_** Storage container URL to copy the VHD to.
+   * **/DestKey: _&lt;dest-account-key&gt;:_** Storage account key of the destination storage account.
+   * **/BlobType: page:** Specifies that the destination is a page blob.
+   * **/Pattern: _&lt;file-name&gt;:_** Specify the file name of the VHD to copy.
 
-Eszköz AzCopy használatával kapcsolatos részletekért, lásd: [adatátvitel az AzCopy parancssori segédprogrammal](storage-use-azcopy.md).
+For details on using AzCopy tool, see [Transfer data with the AzCopy Command-Line Utility](storage-use-azcopy.md).
 
-##### <a name="other-options-for-uploading-a-vhd"></a>Más beállításokat a virtuális merevlemez feltöltése
-Emellett feltölthet egy virtuális Merevlemezt a tárfiókba, a következő módszerek egyikével:
+##### Other options for uploading a VHD
+You can also upload a VHD to your storage account using one of the following means:
 
-* [Az Azure Storage Blob másolásához API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
-* [Az Azure Storage Explorer Blobok feltöltése](https://azurestorageexplorer.codeplex.com/)
-* [Storage Import/Export szolgáltatás REST API-referencia](https://msdn.microsoft.com/library/dn529096.aspx)
-
-> [!NOTE]
-> Import/Export szolgáltatás használatát, ha a 7 napnál hosszabb ideje feltöltése, becsült javasoljuk. Használhat [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) megbecsülni az adatok mérete és átviteli egység időpontját.
->
-> Importálási/exportálási átmásolása a standard szintű tárfiók is használható. Szüksége lesz egy eszköz, például az AzCopy használata a premium storage-fiók átmásolása standard storage-ból.
->
->
-
-## <a name="create-azure-virtual-machine-using-premium-storage"></a>Hozzon létre az Azure virtuális gépek Premium Storage szolgáltatással
-Miután a virtuális merevlemez van feltöltve, vagy egy a kívánt tárfiókot, kövesse a történő regisztrálása a VHD-t operációsrendszer-képet, vagy a forgatókönyvtől függően operációsrendszer-lemez, és hozzon létre egy Virtuálisgép-példány belőle. A virtuális merevlemez adatlemez csatolható a virtuális gép létrehozása után.
-Ez a szakasz végén egy mintaszkriptet áttelepítési biztosítunk. Ez egyszerű szkript nem egyezik meg az összes forgatókönyv. Előfordulhat, hogy frissíteni szeretné a parancsfájlt az adott forgatókönyvnek megfelelően. Ha ez a szkript a forgatókönyvre vonatkozik, olvassa el alább [egy mintául szolgáló Migrálási parancsfájl](#a-sample-migration-script).
-
-### <a name="checklist"></a>Ellenőrzőlista
-1. Várja meg, amíg az összes másolása a VHD lemezek számára befejeződött.
-2. Ellenőrizze, hogy prémium szintű Storage elérhető végzi az áttelepítést a régióban.
-3. Döntse el, az új Virtuálisgép-sorozatok fog használni. Egy prémium szintű Storage képes a kell lennie, és mérete kell lehet attól függően, a rendelkezésre állási régióban, és saját igényei szerint.
-4. Döntse el, a pontos használandó Virtuálisgép-méretet. Virtuálisgép-méretet kell lennie, elég nagy legyen támogatja a több adatlemez van. Például Ha 4 adatlemezeket, a virtuális gép 2 vagy több mag kell rendelkeznie. Emellett érdemes lehet a feldolgozási teljesítményt, memóriát és hálózati sávszélességet kell.
-5. Prémium szintű Storage-fiók létrehozása a célrégióban. Ez az a fiók, az új virtuális gép fog használni.
-6. Rendelkezik a kényelmes, beleértve a lemezek és a megfelelő VHD-blobok listáját az aktuális virtuális gép adatait.
-
-Az alkalmazás előkészítése az állásidő. Egy tiszta az áttelepítés végrehajtásához, akkor az összes feldolgozó leállítása a jelenlegi rendszerben. Csak ezután beszerezheti azt áttelepítheti az új platformra a konzisztens állapotba. Állásidő időtartama áttelepíteni a lemezeken lévő adatok mennyisége függ.
+* [Azure Storage Copy Blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
+* [Azure Storage Explorer Uploading Blobs](https://azurestorageexplorer.codeplex.com/)
+* [Storage Import/Export Service REST API Reference](https://msdn.microsoft.com/library/dn529096.aspx)
 
 > [!NOTE]
-> Ha egy Azure Resource Manager virtuális gép létrehozása speciális lemezről a VHD esetén olvassa el [ezzel a sablonnal](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd) a meglévő lemezt használó Resource Manager virtuális gép üzembe helyezése.
+> We recommend using Import/Export Service if estimated uploading time is longer than 7 days. You can use [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) to estimate the time from data size and transfer unit.
+>
+> Import/Export can be used to copy to a standard storage account. You will need to copy from standard storage to premium storage account using a tool like AzCopy.
 >
 >
 
-### <a name="register-your-vhd"></a>Regisztrálja a virtuális merevlemez
-Virtuális gép létrehozása az operációs rendszer virtuális merevlemezből adatlemez csatolása egy új virtuális géphez, vagy először regisztrálnia kell őket. A virtuális merevlemez forgatókönyvtől függően az alábbi lépéseket követve.
+## <a name="create-azure-virtual-machine-using-premium-storage"></a>Create Azure VMs using Premium Storage
+After the VHD is uploaded or copied to the desired storage account, follow the instructions in this section to register the VHD as an OS image, or OS disk depending on your scenario and then create a VM instance from it. The data disk VHD can be attached to the VM once it is created.
+A sample migration script is provided at the end of this section. This simple script does not match all scenarios. You may need to update the script to match with your specific scenario. To see if this script applies to your scenario, see below [A Sample Migration Script](#a-sample-migration-script).
 
-#### <a name="generalized-operating-system-vhd-to-create-multiple-azure-vm-instances"></a>Általános operációs rendszer virtuális Merevlemezből, több Azure-beli Virtuálisgép-példányok létrehozásához
-Általános operációsrendszer-lemezkép VHD töltenek fel a tárfiók, miután regisztrálja, egy **Azure Virtuálisgép-lemezkép** úgy, hogy egy vagy több Virtuálisgép-példányok hozhat létre belőle. A következő PowerShell-parancsmagok segítségével regisztrálja a VHD-t egy Azure virtuális gép operációsrendszer-lemezképben. Adja meg a teljes körű URL-címet, ahol VHD-t másolta.
+### Checklist
+1. Wait until all the VHD disks copying is complete.
+2. Make sure Premium Storage is available in the region you are migrating to.
+3. Decide the new VM series you will be using. It should be a Premium Storage capable, and the size should be depending on the availability in the region and based on your needs.
+4. Decide the exact VM size you will use. VM size needs to be large enough to support the number of data disks you have. E.g. if you have 4 data disks, the VM must have 2 or more cores. Also, consider processing power, memory and network bandwidth needs.
+5. Create a Premium Storage account in the target region. This is the account you will use for the new VM.
+6. Have the current VM details handy, including the list of disks and corresponding VHD blobs.
+
+Prepare your application for downtime. To do a clean migration, you have to stop all the processing in the current system. Only then you can get it to consistent state which you can migrate to the new platform. Downtime duration will depend on the amount of data in the disks to migrate.
+
+> [!NOTE]
+> If you are creating an Azure Resource Manager VM from a specialized VHD Disk, please refer to [this template](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd) for deploying Resource Manager VM using existing disk.
+>
+>
+
+### Register your VHD
+To create a VM from OS VHD or to attach a data disk to a new VM, you must first register them. Follow steps below depending on your VHD's scenario.
+
+#### Generalized Operating System VHD to create multiple Azure VM instances
+After generalized OS image VHD is uploaded to the storage account, register it as an **Azure VM Image** so that you can create one or more VM instances from it. Use the following PowerShell cmdlets to register your VHD as an Azure VM OS image. Provide the complete container URL where VHD was copied to.
 
 ```powershell
 Add-AzureVMImage -ImageName "OSImageName" -MediaLocation "https://storageaccount.blob.core.windows.net/vhdcontainer/osimage.vhd" -OS Windows

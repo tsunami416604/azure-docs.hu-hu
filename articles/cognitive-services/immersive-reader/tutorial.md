@@ -1,20 +1,21 @@
 ---
-title: 'Oktatóanyag: A Modern olvasó indítása (Node.js)'
+title: 'Oktatóanyag: Indítsa el a Node.js használatával ragadó olvasó'
 titleSuffix: Azure Cognitive Services
 description: Ebben az oktatóanyagban egy Node.js-alkalmazás, amely elindítja a ragadó olvasó fog létrehozni.
 services: cognitive-services
 author: metanMSFT
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: ac90496c950d8a563bf8794b4c1bb105b6c12232
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f8697042ed46e0ff333f736454346908d76cf039
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444068"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718374"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Oktatóanyag: A Modern olvasó indítása (Node.js)
 

@@ -7,17 +7,17 @@ author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 29caea481b1999086440db2021b86d949ce6cbc6
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 3fdedd1af9b683b221dfa4aebad7a30559b7abff
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027235"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722489"
 ---
-# <a name="offline-evaluation"></a>Kapcsolat kiértékelése
+# <a name="offline-evaluation"></a>Offline értékelés
 
 Kapcsolat nélküli értékelési olyan módszer, amely lehetővé teszi, hogy tesztelése, és felmérheti a Personalizer szolgáltatás hatékonyságát a kód módosítása vagy a felhasználói élményt érintő nélkül. Offline értékelési adatokat, hasonlítsa össze a különböző holtversenyben a rang API-hoz, az alkalmazás által küldött végrehajtása után történtek használ.
 

@@ -1,38 +1,37 @@
 ---
 title: Helyszíni Kubernetes használata
 titleSuffix: Azure Cognitive Services
-description: A hang-szöveg és a szöveg-hang transzformációs tárolórendszerképeket meghatározásához használja a Kubernetes (K8s) és a Helm, egy Kubernetes-csomag létrehozása. Ez a csomag telepíti a kubernetes-fürt helyszíni.
+description: Kubernetes és a Helm használatával adja meg a hang-szöveg és a szöveg-hang transzformációs tárolórendszerképeket, egy Kubernetes-csomag létrehozása. Ez a csomag telepíti a kubernetes-fürt helyszíni.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/03/2019
+ms.date: 7/10/2019
 ms.author: dapine
-ms.openlocfilehash: 1e3afc80abad5f5c1f9b4d57c52ca75449eeb755
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 33d9de956a6d43145fc68f4ec46b09b8e8bf0188
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711482"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786255"
 ---
 # <a name="use-kubernetes-on-premises"></a>Helyszíni Kubernetes használata
 
-A hang-szöveg és a szöveg-hang transzformációs tárolórendszerképeket meghatározásához használja a Kubernetes (K8s) és a Helm, egy Kubernetes-csomag létrehozása. Ez a csomag telepíti a kubernetes-fürt helyszíni. Végül azt vizsgáljuk meg a telepített szolgáltatások és a különböző konfigurációs beállítások tesztelése.
+Kubernetes és a Helm használatával adja meg a hang-szöveg és a szöveg-hang transzformációs tárolórendszerképeket, egy Kubernetes-csomag létrehozása. Ez a csomag telepíti a kubernetes-fürt helyszíni. Végül azt vizsgáljuk meg a telepített szolgáltatások és a különböző konfigurációs beállítások tesztelése.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az eljárás több eszközt, hogy telepítve legyen, és helyi futtatása szükséges.
+Beszédfelismerési tárolókhoz helyi használata előtt a következő előfeltételeknek kell megfelelnie:
 
-* Használja az Azure-előfizetéssel. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot][free-azure-account] a virtuális gép létrehozásának megkezdése előtt.
-* Telepítse a [az Azure CLI][azure-cli] (az).
-* Telepítse a [Kubernetes parancssori Felületét][kubernetes-cli] (kubectl).
-* Telepítse a [Helm][helm-install] ügyfél, a Kubernetes-Csomagkezelőt.
-    * A Helm-kiszolgáló telepítése [a tiller valóban][tiller-install].
-* Egy Azure-erőforrás a megfelelő tarifacsomagot. Nem minden tarifacsomagja a tárolórendszerképek használata:
-    * **Beszéd** erőforrás F0 vagy Standard díjszabás csak szint esetében.
-    * **A cognitive Services** tarifacsomag az S0 erőforrás.
+|Szükséges|Cél|
+|--|--|
+| Azure-fiók | Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot][free-azure-account] a virtuális gép létrehozásának megkezdése előtt. |
+| Tárolóregisztrációs adatbázis eléréséhez | Ahhoz, Kubernetes, docker-rendszerképek lekérni a fürtbe el kell a tároló-beállításjegyzékbe való hozzáférést. Kell [kérjen hozzáférést a tárolóregisztrációs adatbázisba][speech-preview-access] első. |
+| Kubernetes parancssori Felületét | A [Kubernetes parancssori Felületét][kubernetes-cli] szükség a megosztott hitelesítő adatok kezelése a tárolóregisztrációs adatbázisból. Kubernetes Helm, a Kubernetes Csomagkezelő előtt is szükséges. |
+| Helm CLI | Részeként a [Helm CLI][helm-install] install, you'll also need to initialize Helm which will install [Tiller][tiller-install]. |
+|Beszéd erőforrás |Ezek a tárolók használatához rendelkeznie kell:<br><br>A _Speech_ Azure-erőforráshoz tartozó számlázási kulcs és számlázási végpont URI azonosítója. Mindkét értéket érhetők el az Azure Portalon **Speech** áttekintése és a kulcsok lapok és a szükséges a tárolót.<br><br>**{API_KEY}** : erőforrás-kulcs<br><br>**{ENDPOINT_URI}** : végpont URI-példa: `https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
 ## <a name="the-recommended-host-computer-configuration"></a>Az ajánlott gazdagépe számítógép-konfiguráció
 
@@ -43,19 +42,13 @@ Tekintse meg a [beszédszolgáltatás tároló gazdaszámítógép][speech-conta
 | **Speech-to-Text** | egy dekóder 1,150 millicore legalább igényel. Ha a `optimizedForAudioFile` engedélyezve van, majd 1,950 millicore szükség. (alapértelmezett: két dekóderek) | Szükséges: 2 GB<br>Korlátozott:  4 GB |
 | **Text-to-Speech** | egy párhuzamos kérés legalább 500 millicore igényel. Ha a `optimizeForTurboMode` engedélyezve van, akkor 1000 millicore szükség. (alapértelmezett: két egyidejű kérelmek) | Szükséges: 1 GB<br> Korlátozott: 2 GB |
 
-## <a name="request-access-to-the-container-registry"></a>A tároló-beállításjegyzék hozzáférés kérése
-
-Küldje el a [Cognitive Services beszéd tárolók űrlapot][speech-preview-access] hozzáférés kéréséhez a tárolóhoz. 
-
-[!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
-
 ## <a name="connect-to-the-kubernetes-cluster"></a>A Kubernetes-fürthöz való csatlakozáshoz
 
 A gazdaszámítógép kellene rendelkeznie az elérhető Kubernetes-fürtöt. Ebben az oktatóanyagban található [Kubernetes-fürt üzembe helyezése](../../aks/tutorial-kubernetes-deploy-cluster.md) fogalmi elsajátítása érdekében hogyan helyezhet üzembe egy Kubernetes-fürtöt egy gazdagépen.
 
 ### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Docker hitelesítő adatokat osztanak meg a Kubernetes-fürt
 
-A Kubernetes-fürthöz való engedélyezéséhez `docker pull` a konfigurált rendszerképeket a a `containerpreview.azurecr.io` tárolójegyzéket, át kell a docker hitelesítő adatokat a fürtbe. Hajtsa végre a [ `kubectl create` ][kubectl-create] létrehozásához az alábbi parancsot egy *docker-registry titkos* a tároló megadott hitelesítő adatok alapján [beállításjegyzék elérésének](#request-access-to-the-container-registry) szakaszban.
+A Kubernetes-fürthöz való engedélyezéséhez `docker pull` a konfigurált rendszerképeket a a `containerpreview.azurecr.io` tárolójegyzéket, át kell a docker hitelesítő adatokat a fürtbe. Hajtsa végre a [ `kubectl create` ][kubectl-create] létrehozásához az alábbi parancsot egy *docker-registry titkos* a container registry hozzáférés előfeltétel a megadott hitelesítő adatok alapján.
 
 A választott parancssori felületről futtassa a következő parancsot. Ne felejtse el a `<username>`, `<password>`, és `<email-address>` a container registry hitelesítő adatokkal.
 
