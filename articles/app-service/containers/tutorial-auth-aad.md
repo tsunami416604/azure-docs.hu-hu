@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/26/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ed056bf28881f391ed1ba16a875259e8e420b39d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2c173da9bfb60f74b90a17f4f3c5ea6f930ca528
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66138092"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705834"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>Oktatóanyag: Hitelesítés és engedélyezés felhasználóknak-végpontok a linuxon futó Azure App Service-ben
 
@@ -101,7 +101,7 @@ az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePla
 
 ### <a name="configure-cors"></a>A CORS konfigurálása
 
-Ez a lépés nem kapcsolódik a hitelesítéshez és az engedélyezéshez. Később azonban szükség van rá [a háttérrendszeri API előtérrendszerbeli böngészőből való meghívásához](#call-api-securely-from-browser-code), hogy a böngésző lehetővé tegye a tartományok közötti API-hívásokat az Angular.js-alkalmazásból. A Linuxon futó App Service a [Windows rendszeri megfelelőjétől eltérően](../app-service-web-tutorial-rest-api.md#add-cors-functionality) nem rendelkezik beépített CORS-funkcióval, ezért manuálisan kell hozzáadnia azt a háttérrendszeri alkalmazáshoz.
+Ez a lépés nem kapcsolódik a hitelesítéshez és az engedélyezéshez. Később azonban szükség van rá [a háttérrendszeri API előtérrendszerbeli böngészőből való meghívásához](#call-api-securely-from-browser-code), hogy a böngésző lehetővé tegye a tartományok közötti API-hívásokat az Angular.js-alkalmazásból. A linuxon futó App Service-ben mostantól támogatja a CORS-funkciók, például a [Windows párjukhoz does](../app-service-web-tutorial-rest-api.md#add-cors-functionality).
 
 A helyi adattárban nyissa meg a _Startup.cs_ fájlt. Adja hozzá a következő kódsort a `ConfigureServices(IServiceCollection services)` metódushoz:
 
@@ -242,7 +242,7 @@ Az Azure Active Directoryt fogja használni identitásszolgáltatóként. Továb
 
 ### <a name="enable-authentication-and-authorization-for-back-end-app"></a>Hitelesítés és engedélyezés engedélyezése a háttéralkalmazás számára
 
-Az a [az Azure portal](https://portal.azure.com), a háttér-alkalmazás kezelése lap megnyitásához kattintson a bal oldali menüből: **Erőforráscsoportok** > **myAuthResourceGroup** > _\<vissza\_záró\_alkalmazás\_neve >_.
+Az a [az Azure portal](https://portal.azure.com), a háttér-alkalmazás kezelése lap megnyitásához kattintson a bal oldali menüből: **Erőforráscsoportok** > **myAuthResourceGroup** >  _\<vissza\_záró\_alkalmazás\_neve >_ .
 
 ![Az Azure App Service-ben futó ASP.NET Core API](./media/tutorial-auth-aad/portal-navigate-back-end.png)
 
@@ -303,7 +303,7 @@ Jelentkezzen be az [Azure Erőforrás-kezelőbe](https://resources.azure.com). K
 
 ![Az Azure App Service-ben futó ASP.NET Core API](./media/tutorial-auth-aad/resources-enable-write.png)
 
-A bal oldali böngészőben kattintson az **Előfizetések** > **_&lt;saját\_előfizetés>_** > **resourceGroups** > **myAuthResourceGroup** > **szolgáltatók** > **Microsoft.Web** > **helyek** > **_\<előtér\_rendszerbeli\_alkalmazás\_neve>_** > **config** > **authsettings** elemre.
+A bal oldali böngészőben kattintson az **Előfizetések** > ** _&lt;saját\_előfizetés>_**  > **resourceGroups** > **myAuthResourceGroup** > **szolgáltatók** > **Microsoft.Web** > **helyek** >  ** _\<előtér\_rendszerbeli\_alkalmazás\_neve>_**  > **config** > **authsettings** elemre.
 
 Az **authsettings** nézetben kattintson a **Szerkesztés** gombra. A vágólapra másolt alkalmazásazonosító használatával állítsa az `additionalLoginParams` értéket a következő JSON-karakterláncra. 
 

@@ -186,7 +186,7 @@ Amikor a szolgáltató hozzáférési jogkivonat (nem a [tokenu relace](#extend-
 - **Microsoft-fiók**: Amikor [konfigurálása a Microsoft-fiók hitelesítési beállításai](configure-authentication-provider-microsoft.md), jelölje be a `wl.offline_access` hatókör.
 - **Azure Active Directory**: A [ https://resources.azure.com ](https://resources.azure.com), tegye a következőket:
     1. A lap tetején válassza **olvasási/írási**.
-    2. A bal oldali böngészőben navigáljon **előfizetések** >  ** _\<előfizetés\_neve_**   >  **resourceGroups** >  _ **\<erőforrás\_csoport\_neve >** _   >  **szolgáltatók** > **Microsoft.Web** > **helyek** >  _ **\<alkalmazás \_neve >** _ > **config** > **authsettings**. 
+    2. A bal oldali böngészőben navigáljon **előfizetések** >  ** _\<előfizetés\_neve_**   >  **resourceGroups** >  _ **\<erőforrás\_csoport\_neve >**_   >  **szolgáltatók** > **Microsoft.Web** > **helyek** >  _ **\<alkalmazás \_neve >**_  > **config** > **authsettings**. 
     3. Kattintson a **Szerkesztés** gombra.
     4. A következő tulajdonság módosításával. Cserélje le  _\<alkalmazás\_azonosítója >_ az Azure Active Directory-alkalmazás azonosítójával az elérni kívánt szolgáltatás.
 
@@ -233,7 +233,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 A Microsoft Account és az Azure Active Directory lehetővé teszi több tartományból jelentkezzen be. Például lehetővé teszi a Microsoft Account _Outlook.com-os_, _live.com_, és _hotmail.com_ fiókokat. Az Azure Active Directory lehetővé teszi, hogy minden olyan egyéni tartományok száma a bejelentkezési fiókok. Lehet, hogy ez a viselkedés a belső alkalmazás, amely nem szeretné, hogy bárki nemkívánatos egy _Outlook.com-os_ hozzáférési fiókot. Szeretné korlátozni a bejelentkezési fiók tartománynevét, kövesse az alábbi lépéseket.
 
-A [ https://resources.azure.com ](https://resources.azure.com), navigáljon a **előfizetések** >  ** _\< előfizetés\_ neve_**   >  **resourceGroups** >  _ **\< erőforrás\_ csoport\_ neve >** _   >  **szolgáltatók** > **Microsoft.Web** > **helyek**  >    _ **\< alkalmazás\_ neve >** _ > **config** > **authsettings**. 
+A [ https://resources.azure.com ](https://resources.azure.com), navigáljon a **előfizetések** >  ** _\< előfizetés\_ neve_**   >  **resourceGroups** >  _ **\< erőforrás\_ csoport\_ neve >**_   >  **szolgáltatók** > **Microsoft.Web** > **helyek**  >    _ **\< alkalmazás\_ neve >**_  > **config** > **authsettings**. 
 
 Kattintson a **szerkesztése**, a következő tulajdonság módosításával, és kattintson **Put**. Ne felejtse el  _\<tartomány\_neve >_ kívánt tartományával.
 
