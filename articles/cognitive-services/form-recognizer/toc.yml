@@ -35,6 +35,8 @@
         - name: Tárolók konfigurálása
           href: form-recognizer-container-configuration.md
           displayName: 'docker, container, run, billing, apikey, logging'
+        - name: A Container Instances használata
+          href: deploy-form-recognizer-on-container-instances.md
 - name: Referencia
   items:
     - name: Form Recognizer API

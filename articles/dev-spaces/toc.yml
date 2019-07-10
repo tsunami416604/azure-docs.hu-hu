@@ -9,14 +9,18 @@
       items:
         - name: Csoportos fejlesztés
           href: quickstart-team-development.md
-        - name: Java (VS Code és CLI)
+        - name: Alkalmazás futtatása
+          href: quickstart-cli.md
+        - name: Alkalmazás futtatása Dockerfile használatával
+          href: quickstart-cli-dockerfile.md
+        - name: Java-alkalmazások futtatása és hibakeresése a VS Code használatával
           href: quickstart-java.md
-        - name: .NET Core (VS Code és parancssori felület)
+        - name: .NET Core-alkalmazások futtatása és hibakeresése a VS Code használatával
           href: quickstart-netcore.md
-        - name: .NET Core (Visual Studio)
-          href: quickstart-netcore-visualstudio.md
-        - name: Node.js (VS Code és parancssori felület)
+        - name: Node.js-alkalmazások futtatása és hibakeresése a VS Code használatával
           href: quickstart-nodejs.md
+        - name: .NET Core-alkalmazások futtatása és hibakeresése a Visual Studio használatával
+          href: quickstart-netcore-visualstudio.md
     - name: Oktatóanyagok
       items:
         - name: Java (VS Code és CLI)
@@ -55,6 +59,8 @@
       items:
         - name: A Dev Spaces működése
           href: how-dev-spaces-works.md
+        - name: A VS Code és a Dev Spaces együttes használata
+          href: how-vs-code-works-with-dev-spaces.md
     - name: Útmutató
       items:
         - name: Kubernetes-fürt létrehozása az Azure Cloud Shell-lel

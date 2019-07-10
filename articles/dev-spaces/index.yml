@@ -8,23 +8,31 @@ metadata:
   author: zr-msft
   ms.service: azure-dev-spaces
   ms.topic: landing-page
-  ms.date: 04/29/2019
+  ms.date: 07/08/2019
   ms.author: zarhoads
-  manager: jeconnoc
+  manager: gwallace
 abstract:
   description: 'Az Azure Dev Spaces lehetővé teszi, hogy anélkül végezze el az Azure Kubernetes Service (AKS) szolgáltatásban futó teljes mikroszolgáltatás-alkalmazás tesztelését és iteratív fejlesztését, hogy függőségeket kellene replikálnia vagy szimulálnia. Az Azure Dev Spaces egyszerűbbé teszi a csapattal való együttműködést a megosztott Azure Kubernetes Service- (AKS-) fürtökben, valamint csökkenti a tárolók közvetlenül az AKS-ben való futtatásával és hibakeresésével járó terheket is. Ismerje meg az Azure Dev Spaces használatának módját a rövid útmutatók segítségével.'
 sections:
   - title: 5 perces gyors útmutatók
     items:
       - type: paragraph
-        text: 'Ismerje meg, hogyan működhetnek együtt a csapatok az AKS-ben az Azure Dev Spaces segítségével:'
+        text: 'Útmutató az Azure Dev Spaces használatához az AKS-ben:'
       - type: list
         style: icon48
         items:
           - image:
               src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: Csoportos fejlesztés az Azure CLI használatával
+            text: Fejlesztés csapatban
             href: quickstart-team-development.md
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
+            text: Alkalmazás futtatása
+            href: quickstart-cli.md
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
+            text: Alkalmazás futtatása Dockerfile használatával
+            href: quickstart-cli-dockerfile.md
       - type: paragraph
         text: 'Ismerje meg, hogyan végezhet iteratív fejlesztést és hibakeresést az AKS-ben az Azure Dev Spaces segítségével:'
       - type: list

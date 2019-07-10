@@ -49,6 +49,8 @@
       href: deploy-availability-zone-powershell.md
     - name: Integrálás a Load Balancerrel
       href: integrate-lb.md
+    - name: Alkalmazásszabályok SQL FQDN-ek használata esetén
+      href: sql-fqdn-filtering.md
 - name: Referencia
   items:
     - name: Azure CLI

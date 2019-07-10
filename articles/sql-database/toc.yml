@@ -209,6 +209,8 @@
           href: sql-database-managed-instance-index.yml
         - name: Felügyelt példány képességei
           href: sql-database-managed-instance.md
+        - name: Felügyelt példány – gyakori kérdések
+          href: sql-database-managed-instance-faq.md
         - name: Felügyeleti API-referencia
           href: sql-database-managed-instance-create-manage.md
         - name: Erőforráskorlátok

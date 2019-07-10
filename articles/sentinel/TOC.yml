@@ -52,6 +52,8 @@
           items:
             - name: Általános CEF csatlakoztatása
               href: connect-common-event-format.md
+            - name: Az AWS csatlakoztatása
+              href: connect-aws.md
             - name: A Barracuda csatlakoztatása
               href: connect-barracuda.md
             - name: A Check Point csatlakoztatása

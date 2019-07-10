@@ -25,6 +25,8 @@
   items:
     - name: Hitelesítési módszerek
       href: concept-authentication-methods.md
+    - name: Jelszó nélküli hitelesítés
+      href: concept-authentication-passwordless.md
     - name: Kombinált regisztráció
       href: concept-registration-mfa-sspr-combined.md
     - name: Új jelszó létrehozása
@@ -131,8 +133,12 @@
       href: howto-password-smart-lockout.md
     - name: Vállalati Windows Hello
       href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
-    - name: Jelszó nélküli telefonos bejelentkezés
-      href: howto-authentication-phone-sign-in.md
+    - name: Jelszó nélküli
+      items:
+        - name: Jelszó nélküli hitelesítés engedélyezése
+          href: howto-authentication-passwordless-enable.md
+        - name: Jelszó nélküli telefonos bejelentkezés
+          href: howto-authentication-phone-sign-in.md
     - name: Tanúsítványalapú hitelesítés
       items:
         - name: Bevezetés a tanúsítványalapú hitelesítésbe

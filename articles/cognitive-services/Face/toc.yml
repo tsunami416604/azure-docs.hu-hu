@@ -77,6 +77,8 @@
           href: face-how-to-install-containers.md
         - name: Tárolók konfigurálása
           href: face-resource-container-config.md
+        - name: A Container Instances használata
+          href: Face-API-How-to-Topics/deploy-face-container-on-container-instances.md
     - name: Face API csatlakoztatott szolgáltatás használata
       href: vs-face-connected-service.md
 - name: Referencia

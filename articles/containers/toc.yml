@@ -62,6 +62,19 @@
           href: 'https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server'
         - name: A Windows-tárolók
           href: 'https://docs.microsoft.com/virtualization/windowscontainers/about/index'
+    - name: Azure Red Hat OpenShift
+      href: 'https://docs.microsoft.com/azure/openshift/'
+      items:
+        - name: Mi az az Azure Red Hat OpenShift?
+          href: ../openshift/intro-openshift.md
+        - name: Oktatóanyag – Azure Red Hat OpenShift-fürt létrehozása és felügyelete
+          items:
+            - name: 1 – Azure Red Hat OpenShift-fürt létrehozása
+              href: ../openshift/tutorial-create-cluster.md
+            - name: 2 – Azure Red Hat OpenShift-fürt skálázása
+              href: ../openshift/tutorial-scale-cluster.md
+            - name: 3 – Azure Red Hat OpenShift-fürt törlése
+              href: ../openshift/tutorial-delete-cluster.md
     - name: Referencia
       items:
         - name: Azure Container Instances (az container)
