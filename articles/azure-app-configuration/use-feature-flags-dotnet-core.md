@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 5e27c6a1ab5fc9dff779c6e5d04689683d5c8e6d
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 1ce4e9c47bf6f885417b6c06c6036d3cadcaef7b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274150"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706452"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Oktatóanyag: A szolgáltatás jelzők használata az ASP.NET Core-alkalmazás
 
@@ -103,7 +103,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
            .UseStartup<Startup>();
 ```
 
-A szolgáltatás jelző értéket vár az idő előrehaladtával változik. Alapértelmezés szerint a szolgáltatás-kezelő 30 másodpercenként frissíti a szolgáltatás jelző értékét. A következő kód bemutatja, hogyan módosíthatja lekérdezési időközét az 5 másodperc a `options.UseFeatureFlags()` hívása:
+A szolgáltatás jelző értéket vár az idő előrehaladtával változik. Alapértelmezés szerint a szolgáltatás-kezelő 30 másodpercenként frissíti a szolgáltatás jelző értékét. A következő kód bemutatja, hogyan módosíthatja a lekérdezési időköz 5 perc az a `options.UseFeatureFlags()` hívása:
 
 ```csharp
 config.AddAzureAppConfiguration(options => {

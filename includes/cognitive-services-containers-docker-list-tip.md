@@ -1,15 +1,15 @@
 ---
 author: IEvangelist
 ms.author: dapine
+ms.date: 06/26/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/26/2019
-ms.openlocfilehash: 79fa102fcaa5570849757cbd1c9cf58c44382247
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 9b1243760b3830830268cb386309254f8f0bd90a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67434132"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704290"
 ---
 > [!TIP]
 > Használhatja a [docker-rendszerképek](https://docs.docker.com/engine/reference/commandline/images/) paranccsal listát készíthet a letöltött tárolólemezképek. Például a következő parancs megjeleníti az azonosítója, a tárházat, és a címke az egyes letöltött tárolórendszerképet, és táblázatként vannak formázva:

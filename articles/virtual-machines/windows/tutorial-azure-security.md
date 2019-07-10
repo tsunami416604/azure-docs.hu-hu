@@ -4,7 +4,7 @@ description: Ebben az oktatóanyagban megismeri az Azure Security Centert, és m
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4c54383df74d9cfd7941dc52d26856bc8da51457
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb9df71859947f868b858cbed0d6f75b91956a94
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60785825"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708130"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Oktatóanyag: Az Azure Security Center használata a Windows virtuális gépek figyelése céljából
 
@@ -51,7 +51,7 @@ Ha a virtuális gép biztonsági konfigurációjára kíváncsi, előbb be kell 
 
 1. A Security Center irányítópultján kattintson a **Biztonsági szabályzat** elemre, és válassza ki az előfizetését. 
 2. Az **Automatikus kiépítés** **Adatgyűjtés** pontjánál válassza a **Be** lehetőséget.
-3. Az **Alapértelmezett munkaterület-konfiguráció** menüpont beállítása maradjon a **Security Center által létrehozott munkaterület(ek) használata (alapértelmezett)**.
+3. Az **Alapértelmezett munkaterület-konfiguráció** menüpont beállítása maradjon a **Security Center által létrehozott munkaterület(ek) használata (alapértelmezett)** .
 4. A **Biztonsági eseményeknél** tartsa meg az **Általános** alapértelmezett beállítást.
 4. Kattintson az oldal tetején lévő **Mentés** elemre. 
 

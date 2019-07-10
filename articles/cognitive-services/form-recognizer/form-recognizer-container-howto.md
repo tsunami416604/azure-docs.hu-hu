@@ -9,14 +9,15 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: a3c7de8f5e86df749ec3b6d9e73e6f6299e94faf
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: f88cfb1d74897abddeaea6aaec9d7f7b1960be6e
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592677"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704209"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Telepítse és futtassa az űrlap felismerő tárolók
+
 Az Azure űrlap felismerő gépi tanulási technológia azonosíthatja és kulcs-érték párok és táblák kinyerése űrlapok vonatkozik. Értékek és táblabejegyzéseket társítja a kulcs-érték párok, és azt majd megjeleníti a strukturált adatok, amely tartalmazza a kapcsolatokat az eredeti fájlt. 
 
 Csökkentheti az összetettséget, és könnyedén integrálhatja egy egyéni űrlap felismerő modell a munkafolyamat automation vagy más alkalmazás, meghívhatja a modell egy egyszerű REST API-val. Szükség esetén, így eredmények gyorsan, pontosan, és az adott tartalom szabott csak öt űrlap dokumentumok (vagy egy üres képernyő és két ki vannak töltve formában). Nem nehéz kézi beavatkozás vagy kiterjedt data science szakértelmet nem szükséges. És nincs szükség adatok címkézési vagy adatok jegyzet.

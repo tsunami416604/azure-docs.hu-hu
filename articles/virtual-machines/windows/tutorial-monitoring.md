@@ -4,7 +4,7 @@ description: Ez az oktatóanyag bemutatja, hogyan monitorozhatja a Windows rends
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: aa423fc441c50c774a9670feec64d0f844a4f5ec
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 05fd9f06bec2a68455d42bfd460f0a5a419a255e
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66755291"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708041"
 ---
 # <a name="tutorial-monitor-and-update-a-windows-virtual-machine-in-azure"></a>Oktatóanyag: Figyelheti és frissítheti a Windows virtuális gép az Azure-ban
 
@@ -170,7 +170,7 @@ A frissítések telepítéséhez ütemezzen egy olyan telepítést, amely megfel
 
 Hozzon létre egy új frissítéstelepítést, jelölje be **frissítések központi telepítésének ütemezése**. A **új frissítéstelepítés** lap megnyitásakor. Adja meg az értékeket az alábbi táblázatban leírt tulajdonságokkal, és kattintson a **létrehozás**:
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 | --- | --- |
 | Name (Név) |A frissítéstelepítést beazonosító egyedi név. |
 |Operációs rendszer| Linux vagy Windows|

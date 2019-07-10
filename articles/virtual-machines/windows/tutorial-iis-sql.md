@@ -4,7 +4,7 @@ description: Ez az oktatóanyag bemutatja, hogyan telepítheti az Azure SQL, IIS
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 770fa89bc08b448482b4a74d21ee307df8a9f836
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 88a7a1ea736a418f4b08a22b3fa7b45ab0e126ff
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60784928"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708027"
 ---
 # <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>Oktatóanyag: Az SQL, IIS, .NET verem egy Windows-beli virtuális gépen az Azure PowerShell telepítése
 
@@ -100,7 +100,7 @@ Frissítse a Vnetet az új alhálózat adataival [Set-AzVirtualNetwork](https://
 $vNet | Set-AzVirtualNetwork
 ```
 
-## <a name="azure-sql-vm"></a>Azure SQL virtuális gép
+## <a name="azure-sql-vm"></a>Azure SQL VM
 
 Az SQL virtuális gép létrehozásához használja egy SQL Server előzetesen konfigurált, Azure Marketplace-en elérhető rendszerképét. Először létrehozzuk a virtuális gépet, majd telepítjük az SQL Server-bővítményt a gépen. 
 

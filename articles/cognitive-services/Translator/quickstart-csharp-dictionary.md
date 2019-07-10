@@ -10,18 +10,21 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 0c8fb4eb50b5824126d2be2160dd341ed60955af
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1f80f9b0f044fe8b32a555b0509e14cd2172dd0a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448198"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704598"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-c"></a>Gyors útmutató: Szavak kétnyelvű szótár használataC#
 
 Ebből a gyorsútmutatóból megtudhatja, hogyan alternatív fordítások beolvasni egy kifejezést, és is ezek használati példák az eredetitől eltérő fordításokat, .NET Core és a Translator Text API használatával.
 
 Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely tartalmaz egy Translator Text-erőforrást. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
+
+>[!TIP]
+> Ha szeretné egyszerre az összes kód megtekintéséhez, ehhez a mintához forráskódja elérhető a [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -146,7 +149,7 @@ static string PrettyPrint(string s)
 }
 ```
 
-Ha egy több szolgáltatást a Cognitive Services-előfizetést használ, akkor is tartalmaznia kell a `Ocp-Apim-Subscription-Region` az a kérelem paramétereit. [További információ a több szolgáltatásos előfizetéshez való hitelesítés közben](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
+Ha egy több szolgáltatást a Cognitive Services-előfizetést használ, akkor is tartalmaznia kell a `Ocp-Apim-Subscription-Region` az a kérelem paramétereit. [További információ a több szolgáltatásos előfizetéshez való hitelesítés közben](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="put-it-all-together"></a>Az alkalmazás összeállítása
 
@@ -199,10 +202,10 @@ Ellenőrizze, hogy a bizalmas adatok eltávolítása a mintaalkalmazás forrásk
 
 ## <a name="next-steps"></a>További lépések
 
-A GitHubon megismerheti a rövid útmutató és egyebek mintakódját, beleértve az átírást és a nyelvfelismerést is, valamint más Translator Text-projekteket.
+Vessen egy pillantást az API-referencia az elvégezhető műveletek a Translator Text API ismertetése.
 
 > [!div class="nextstepaction"]
-> [A C#-példák megismerése a GitHubon](https://aka.ms/TranslatorGitHub?type=&language=c%23)
+> [API-leírások](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
 
 ## <a name="see-also"></a>Lásd még
 

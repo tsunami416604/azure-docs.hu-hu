@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: quickstart
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 691f49e9be8aabe9a3e229bfd3b35ab183f9fed9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e4b9f31425c5029cdeb991fbdcdb7ae4a5c749c9
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61432824"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704751"
 ---
 # <a name="project-acoustics-unrealwwise-quickstart"></a>Projekt Akusztika Unreal/Wwise rövid útmutató
 Ebben a rövid útmutatóban fog kísérletezhet projekt Akusztika az Unreal Engine és Wwise megadott minta tartalom-Tervező szabályozza.
@@ -50,7 +50,7 @@ A projekt Akusztika Unreal beépülő modul további viselkedés szükséges leh
 
     ![Képernyőfelvétel a Windows Explorer ablak, rajta a parancsfájl javítás Wwise projekthez](media/patch-wwise-script.png)
 
-* Ha nem rendelkezik a DirectX SDK telepítve van, tegye megjegyzésbe a DXSDK_DIR tartalmazó sort kell `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs`
+* Ha nem rendelkezik a DirectX SDK telepítve van, használja, Wwise verziójától függően szükség lehet a tartalmazó sort tegye megjegyzésbe `DXSDK_DIR` a `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs`:
 
     ![Kódszerkesztő megjegyzésként DXSDK bemutató képernyőkép](media/directx-sdk-comment.png)
 
@@ -72,7 +72,7 @@ Ha a **hangelnyelés** Szorzó (az alapértelmezett érték 1) 1-nél nagyobb, h
 Ahhoz, hogy a fali keresztül átviteli, helyezze át a **átviteli (adatbázis)** csúszka ki a legalacsonyabb szintre. 
 
 ### <a name="modify-wetness-for-a-source"></a>A forrás wetness módosítása
-Milyen gyorsan wetness módosítja a távolságot módosításához használja a **technológiáira távolság Warp**. Projekt Akusztika kiszámítja a lemezterületet, a szimulációt, egész nedves szinteket, amelyek zökkenőmentesen távolság számától függ, és adja meg a technológiáira távolság jelek. Ez a hatás növelése a távolság lánc exaggerates távolság kapcsolatos nedves szintjei által. Hajlítási értékek 1-nél kisebb győződjön meg arról, módosítsa a távolság-alapú reverberation több változás is. Erről is módosítható részletesebben részletesen módosításával a **Wetness (adatbázis)**.
+Milyen gyorsan wetness módosítja a távolságot módosításához használja a **technológiáira távolság Warp**. Projekt Akusztika kiszámítja a lemezterületet, a szimulációt, egész nedves szinteket, amelyek zökkenőmentesen távolság számától függ, és adja meg a technológiáira távolság jelek. Ez a hatás növelése a távolság lánc exaggerates távolság kapcsolatos nedves szintjei által. Hajlítási értékek 1-nél kisebb győződjön meg arról, módosítsa a távolság-alapú reverberation több változás is. Erről is módosítható részletesebben részletesen módosításával a **Wetness (adatbázis)** .
 
 Növelje a késleltetési idő során a hely beállításával **Decay időskálára**. Vegyük azt az esetet, ahol a szimuláció eredménye egy késleltetési idő az 1.5-ös s. Beállítás a **Decay időskálára** 2 eredményez a alkalmazni a 3-ból a forrás késleltetési idő s.
 

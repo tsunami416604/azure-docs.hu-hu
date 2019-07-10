@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5b3c9a0152144ac0d705c7d3f12c18cbc38398f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 817eecce6c2c1be273b47494e8ecc14180394796
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67090153"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705333"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spotinst"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Spotinst
 
@@ -114,7 +114,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Spotinst, hajtsa vé
 
     ![Spotinst tartomány és URL-címeket egyetlen bejelentkezési adatait](common/metadata-upload-additional-signon.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be az URL-cím:  `https://console.spotinst.com`
+    Az a **bejelentkezési URL-** szövegmezőbe írja be az URL-cím:  `https://console.spotinst.com/auth/saml`
 
     > [!NOTE]
     > A továbbítási állapot értéke nem valódi. Továbbítási állapot értéke frissíti a tényleges továbbítási állapot érték, amelynek az ismertetése az oktatóanyag későbbi részében.
