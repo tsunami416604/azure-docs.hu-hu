@@ -84,7 +84,7 @@ Ezek a változások fürtre kiterjedő, de a Spark-feladat elküldésekor felül
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
-[A HDInsight-fürtökön az Apache Spark-feladat küldése](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[A HDInsight-fürtökön az Apache Spark-feladat küldése](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Egy Apache Spark-alkalmazás konfigurálása a fürtök Jupyter notebook használatával
 
@@ -98,7 +98,7 @@ Ezek a változások fürtre kiterjedő, de a Spark-feladat elküldésekor felül
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
-[A HDInsight-fürtökön az Apache Spark-feladat küldése](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[A HDInsight-fürtökön az Apache Spark-feladat küldése](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-livy-on-clusters"></a>Egy Apache Spark-alkalmazás konfigurálása fürtökön Apache Livy használatával
@@ -115,7 +115,7 @@ Ezek a változások fürtre kiterjedő, de a Spark-feladat elküldésekor felül
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
-[A HDInsight-fürtökön az Apache Spark-feladat küldése](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[A HDInsight-fürtökön az Apache Spark-feladat küldése](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-spark-submit-on-clusters"></a>Hogyan konfigurálhatom egy Apache Spark, az alkalmazás a spark-submit fürtökön?
 
@@ -131,7 +131,7 @@ Ezek a változások fürtre kiterjedő, de a Spark-feladat elküldésekor felül
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
-[A HDInsight-fürtökön az Apache Spark-feladat küldése](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[A HDInsight-fürtökön az Apache Spark-feladat küldése](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
 ## <a name="what-causes-an-apache-spark-application-outofmemoryerror-exception"></a>Az Apache Spark-alkalmazás OutofMemoryError kivételt mi okozza?
@@ -216,7 +216,7 @@ A kivétel legvalószínűbb oka az, hogy a nem elegendő halommemória a Java v
 ### <a name="additional-reading"></a>További olvasnivaló
 
 - [Az Apache Spark memória – áttekintés](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
-- [Egy HDInsight-fürtön egy Apache Spark-alkalmazás hibakeresése](https://web.archive.org/web/20190112152909/ https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
+- [Egy HDInsight-fürtön egy Apache Spark-alkalmazás hibakeresése](https://web.archive.org/web/20190112152909/https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
 
 
 ### <a name="see-also"></a>Lásd még:

@@ -9,7 +9,7 @@ ms.date: 07/17/2018
 ms.author: danlep
 ms.openlocfilehash: 13f1fa92365c284ed10bd7c0a1b2fdefef50b29e
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "60580280"
@@ -46,7 +46,7 @@ A log analytics-munkaterület Azonosítójára és az elsődleges kulcs beszerz�
 
 Most, hogy a log analytics-munkaterület Azonosítójára és az elsődleges kulcs, készen áll naplózás engedélyezése tárolócsoport létrehozásához.
 
-Az alábbi példák bemutatják, kétféle módon hozhat létre egy tárolócsoport egyetlen [fluentd] [ fluentd] tároló: Az Azure CLI és az Azure CLI-t egy YAML-sablont. A Fluentd tároló az alapértelmezett konfiguráció szerint több sornyi kimenetet hoz létre. Mivel ez a kimenet a Log Analytics-munkaterületre lesz elküldve, jól használható a naplók megtekintésének és lekérdezésének bemutatásához.
+Az alábbi példák bemutatják, kétféle módon hozhat létre egy tárolócsoport egyetlen [fluentd][fluentd] tároló: Az Azure CLI és az Azure CLI-t egy YAML-sablont. A Fluentd tároló az alapértelmezett konfiguráció szerint több sornyi kimenetet hoz létre. Mivel ez a kimenet a Log Analytics-munkaterületre lesz elküldve, jól használható a naplók megtekintésének és lekérdezésének bemutatásához.
 
 ### <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
 
