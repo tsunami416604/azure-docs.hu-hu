@@ -97,7 +97,7 @@
           href: container-instances-monitor.md
         - name: Tároló naplóinak és eseményeinek lekérése
           href: container-instances-get-logs.md
-        - name: Naplózás az Azure Log Analytics használatával
+        - name: Naplózás Azure Monitor-naplókkal
           href: container-instances-log-analytics.md
     - name: Hibaelhárítás
       items:
@@ -137,3 +137,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-container-instances'
     - name: Videók
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'
+    - name: GYIK
+      href: container-instances-faq.md

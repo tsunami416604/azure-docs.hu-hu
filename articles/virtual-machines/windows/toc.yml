@@ -256,9 +256,7 @@
             - name: Portál
               href: shared-images-portal.md
             - name: parancssori felület
-              href: ../linux/shared-images.md
-            - name: Portál
-              href: shared-images-portal.md
+              href: ../linux/shared-images.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
             - name: Rendszerképek megosztása több bérlőn
               href: share-images-across-tenants.md
             - name: Megosztott rendszerképek hibaelhárítása
