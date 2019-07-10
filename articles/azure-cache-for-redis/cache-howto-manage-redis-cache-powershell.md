@@ -144,18 +144,18 @@ Az alábbi táblázat a tulajdonságok és amikor létrehozásába és kezelés�
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration tulajdonságai
 | Tulajdonság | Leírás | Árképzési szintek |
 | --- | --- | --- |
-| RDB-fájlba való biztonsági mentés engedélyezve |E [Redis-adatmegőrzés](cache-how-to-premium-persistence.md) engedélyezve van |Csak prémium szinten |
+| rdb-backup-enabled |E [Redis-adatmegőrzés](cache-how-to-premium-persistence.md) engedélyezve van |Csak prémium szinten |
 | rdb-storage-connection-string |A storage-fiókhoz tartozó kapcsolati karakterlánc [Redis-adatmegőrzés](cache-how-to-premium-persistence.md) |Csak prémium szinten |
 | backup – gyakori RDB-fájlba való |A biztonsági mentési gyakorisága [Redis-adatmegőrzés](cache-how-to-premium-persistence.md) |Csak prémium szinten |
 | maxmemory-reserved |Konfigurálja a [szolgáltatás számára fenntartott memória](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) nem gyorsítótárazási folyamatok |Standard és Prémium |
-| a maxmemory-házirend |Konfigurálja a [kiürítési szabályzatot](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) a gyorsítótár |Az összes tarifacsomag |
+| maxmemory-policy |Konfigurálja a [kiürítési szabályzatot](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) a gyorsítótár |Az összes tarifacsomag |
 | notify-keyspace-events |Konfigurálja a [kulcstérértesítések](cache-configure.md#keyspace-notifications-advanced-settings) |Standard és Prémium |
 | hash-max-ziplist-entries |Konfigurálja a [memóriaoptimalizálási](https://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Prémium |
 | hash-max-ziplist-value |Konfigurálja a [memóriaoptimalizálási](https://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Prémium |
 | set-max-intset-entries |Konfigurálja a [memóriaoptimalizálási](https://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Prémium |
 | zset-max-ziplist-entries |Konfigurálja a [memóriaoptimalizálási](https://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Prémium |
 | zset-max-ziplist-value |Konfigurálja a [memóriaoptimalizálási](https://redis.io/topics/memory-optimization) kis összesített adatok esetében |Standard és Prémium |
-| adatbázisok |Konfigurálja az adatbázisok száma. Ez a tulajdonság csak a cache létrehozásakor konfigurálható. |Standard és Prémium |
+| databases |Konfigurálja az adatbázisok száma. Ez a tulajdonság csak a cache létrehozásakor konfigurálható. |Standard és Prémium |
 
 ## <a name="to-create-an-azure-cache-for-redis"></a>A redis Azure Cache létrehozása
 Új Azure Cache a Redis-példány használatával jön létre a [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) parancsmagot.
