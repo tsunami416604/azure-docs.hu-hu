@@ -61,7 +61,7 @@ A következő táblázat ismerteti a paramétereket:
 
 | Paraméter | Leírás |
 | --- | --- |
-| Name (Név) |A Traffic Manager-profil erőforrás erőforrás neve. A profilok ugyanabban az erőforráscsoportban egyedi névvel kell rendelkezniük. Ezt a nevet a DNS-név, DNS-lekérdezések használt elkülönül. |
+| Name |A Traffic Manager-profil erőforrás erőforrás neve. A profilok ugyanabban az erőforráscsoportban egyedi névvel kell rendelkezniük. Ezt a nevet a DNS-név, DNS-lekérdezések használt elkülönül. |
 | ResourceGroupName |A profil-erőforrást tartalmazó erőforráscsoport neve. |
 | TrafficRoutingMethod |Adja meg a forgalom-útválasztási módszer segítségével meghatározhatja, melyik végponthoz válaszban visszaadott DNS-lekérdezést. Lehetséges értékek: "Teljesítmény", "Súlyozott" vagy "Priority". |
 | RelativeDnsName |Adja meg a Traffic Manager-profil által biztosított DNS-név állomásnév részét. Ezt az értéket a profil teljesen minősített tartománynevét (FQDN) az Azure Traffic Manager által használt DNS-tartománynév együtt. Például "contoso" értékre állítja lesz "contoso.trafficmanager.net." |
