@@ -13,7 +13,7 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.openlocfilehash: acb44a34eae84d8a5718ebcc0003d3cf50b9d43a
 ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 06/13/2019
 ms.locfileid: "65510042"
@@ -52,7 +52,7 @@ Hozzon létre egy távoli asztali kapcsolatot a virtuális géppel.
 Konfigurálhatja ezeket a beállításokat manuálisan vagy adtunk meg egy PowerShell-parancsprogram segítségével automatizálhatja a konfigurálását.
 
 ### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>Option 1: Beágyazott virtualizálás konfigurálása egy PowerShell-parancsprogram használatával
-Egy PowerShell-parancsfájlt egy Windows Server 2016 gazdagépen beágyazott virtualizálás engedélyezése érhető el az [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested). A parancsfájl ellenőrzi az előfeltételeket, és ezután beállítja a beágyazott virtualizálás az Azure virtuális gépen. Az Azure virtuális gép újraindítására szükség a konfiguráció befejezéséhez. Ez a szkript más környezetekben is működhet, azonban nem garantált. Tekintse meg az Azure blog bejegyzésében az élő videó bemutatója a beágyazott virtualizálás az Azure-ban! https://aka.ms/AzureNVblog.
+Egy PowerShell-parancsfájlt egy Windows Server 2016 gazdagépen beágyazott virtualizálás engedélyezése érhető el az [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested). A parancsfájl ellenőrzi az előfeltételeket, és ezután beállítja a beágyazott virtualizálás az Azure virtuális gépen. Az Azure virtuális gép újraindítására szükség a konfiguráció befejezéséhez. Ez a szkript más környezetekben is működhet, azonban nem garantált. Tekintse meg az Azure blog bejegyzésében az élő videó bemutatója a beágyazott virtualizálás az Azure-ban! [https://aka.ms/AzureNVblog](https://aka.ms/AzureNVblog ).
 
 ### <a name="option-2-configure-nested-virtualization-manually"></a>Option 2: Beágyazott virtualizálás kézi konfigurálása
 

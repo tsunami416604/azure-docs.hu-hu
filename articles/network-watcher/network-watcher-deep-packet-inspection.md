@@ -41,7 +41,7 @@ Ebben a forgatókönyvben azt:
 
 Ebben a forgatókönyvben bemutatjuk, hogyan a Transmission Control Protocol (TCP) témakör két végpontja között előforduló kezdeti Adatváltási időt (RTT) megtekintéséhez.
 
-Ha a TCP-kapcsolat létrejött, az első három, a kapcsolat küldött csomagok gyakran Keresőmezőnek nevezzük a háromutas kézfogás mintát követi. Az első két csomagok küldi el a kézfogás, az eredeti kérést az ügyfél és a kiszolgáló válaszára megvizsgálásával hogy azt is megmutassa a késést, ha létrejött a kapcsolat. Ez a késés a neve, a Adatváltási ideje (Ezredmásodperc). További információ a TCP protokoll és a háromutas kézfogás tekintse meg a következő erőforrás. https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip
+Ha a TCP-kapcsolat létrejött, az első három, a kapcsolat küldött csomagok gyakran Keresőmezőnek nevezzük a háromutas kézfogás mintát követi. Az első két csomagok küldi el a kézfogás, az eredeti kérést az ügyfél és a kiszolgáló válaszára megvizsgálásával hogy azt is megmutassa a késést, ha létrejött a kapcsolat. Ez a késés a neve, a Adatváltási ideje (Ezredmásodperc). További információ a TCP protokoll és a háromutas kézfogás tekintse meg a következő erőforrás. [https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip )
 
 ### <a name="step-1"></a>1\. lépés
 
