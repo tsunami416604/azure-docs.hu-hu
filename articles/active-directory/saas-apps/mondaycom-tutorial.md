@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/17/2019
+ms.date: 07/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cdc605c059857c826056fece782bbb9a9c86a15
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 93c5e473c62dc6b38f0b2c2906560d6099842d49
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275811"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718498"
 ---
 # <a name="tutorial-integrate-mondaycom-with-azure-active-directory"></a>Oktatóanyag: Monday.com integrálása az Azure Active Directoryval
 
@@ -78,7 +78,7 @@ Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyez�
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** ablaktáblán, ha a service provider metaadatait tartalmazó fájl rendelkezik, és a konfigurálni kívánt **Identitásszolgáltató által kezdeményezett** mód, hajtsa végre az alábbi lépéseket:
+1. Az a **alapszintű SAML-konfigurációja** ablaktáblán, ha a service provider metaadatait tartalmazó fájl rendelkezik, és a konfigurálni kívánt **Identitásszolgáltató által kezdeményezett** mód, hajtsa végre az alábbi lépéseket:
 
     1. Válassza ki **metaadatfájl feltöltése**.
 
@@ -89,7 +89,7 @@ Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyez�
        > [!Note]
        > Ha a **azonosító** és **válasz URL-cím** értékek nem get kitölti a rendszer automatikusan, majd töltse ki az értékeket manuálisan. A **azonosító** és a **válasz URL-cím** azonos és érték szerepel a következő mintának: `https://<your-domain>.monday.com/saml/saml_callback`
 
-5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+1. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
     Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<your-domain>.monday.com`
 
@@ -100,19 +100,15 @@ Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyez�
 
     ![A felhasználói attribútumok ablaktáblából.](common/edit-attribute.png)
 
-6. Emellett a fentiekben monday.com alkalmazás vár néhány további attribútumok vissza SAML-válasz átadni. A a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen a következő lépésekkel adja hozzá a SAML-jogkivonat attribútumot, ahogyan az alábbi táblázatban:
+1. Emellett a fentiekben monday.com alkalmazás vár néhány további attribútumok vissza SAML-válasz átadni. A a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen a következő lépésekkel adja hozzá a SAML-jogkivonat attribútumot, ahogyan az alábbi táblázatban:
 
     | Name (Név) | Adatforrás-attribútum|
     | ---------------| --------------- |
-    | E-mail | user.mail |
+    | Email | user.mail |
     | FirstName | user.givenname |
     | LastName | user.surname |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
-
-    ![image](./media/mondaycom-tutorial/attribute01.png)
-
-    ![image](common/new-attribute-details.png)
 
     b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
 
@@ -136,17 +132,25 @@ Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyez�
 
 ### <a name="configure-mondaycom"></a>Monday.com konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be monday.com rendszergazdaként.
+1. Automatizálhatja a monday.com konfigurációra, telepítenie kell **saját alkalmazások biztonságos bejelentkezési böngészőbővítmény** kattintva **a bővítmény telepítése**.
 
-2. Nyissa meg a **profil** lapot, majd kattintson a jobb felső sarokban lévő **rendszergazdai**.
+    ![Saját alkalmazások kiterjesztése](common/install-myappssecure-extension.png)
 
-     ![Monday.com konfiguráció](./media/mondaycom-tutorial/configuration01.png)
+1. A felvett bővítmény a böngészőre, kattintson a **monday.com beállítása** amely lesz az monday.com alkalmazáshoz irányítja. Itt adja meg a rendszergazdai hitelesítő adataival bejelentkezni monday.com. A webböngésző-bővítmény automatikusan konfigurálja az alkalmazást, és 3 – 6. lépések automatizálásához.
 
-3. Válassza ki **biztonsági** , és győződjön meg arról, hogy kattintson a **nyílt** SAML mellett.
+    ![Konfiguráció beállítása](common/setup-sso.png)
+
+1. Szeretné monday.com manuálisan telepíteni, ha nyisson meg egy új böngészőablakban, és jelentkezzen be rendszergazdaként monday.com, és hajtsa végre az alábbi lépéseket:
+
+1. Nyissa meg a **profil** lapot, majd kattintson a jobb felső sarokban lévő **rendszergazdai**.
+
+    ![Monday.com konfiguráció](./media/mondaycom-tutorial/configuration01.png)
+
+1. Válassza ki **biztonsági** , és győződjön meg arról, hogy kattintson a **nyílt** SAML mellett.
 
     ![Monday.com konfiguráció](./media/mondaycom-tutorial/configuration02.png)
 
-4. Adja meg az identitásszolgáltató részleteit alább olvashatja.
+1. Adja meg az identitásszolgáltató részleteit alább olvashatja.
 
     ![Monday.com konfiguráció](./media/mondaycom-tutorial/configuration03.png)
 

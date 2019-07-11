@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 561da47aaf0020c80a64d18c935b4086cfca6623
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 341f35d04c7f3f591198acbbf05ac32afe84e95c
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604807"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718546"
 ---
 # <a name="about-the-speech-devices-sdk"></a>A beszéd-eszközökről SDK
 
@@ -32,6 +32,22 @@ A beszédfelismerési eszköz SDK-t használ a [beszéd SDK](speech-sdk.md). A b
 A beszédfelismerés eszközök SDK-t hozhat létre környezeti rendelkező eszközök a saját is használhatja [testre szabott ébresztési word](speech-devices-sdk-create-kws.md) így saját márkáját egyedi érték, amely felhasználói interakció kezdeményezi a köteg.
 
 A beszédfelismerés Devices SDK-val számos célra hang engedélyezve van, például elősegíti a [egyéni hang-és Felhőközpontú virtuális asszisztensek](https://aka.ms/bots/speech/va), a meghajtó-– sorrendjét, rendszerekben [beszélgetés beszédátírási](conversation-transcription-service.md), és intelligens előadók. Vissza a azokat egy alapértelmezett beszél, hogy a felhasználók a szöveges, reagáljon vagy [egyéni beszédfelismerési](how-to-customize-voice-font.md), adja meg a keresési eredmények között, [fordítása](speech-translation.md) az más nyelvekre, és egyéb. Kíváncsian várjuk, mit hoz létre!
+
+## <a name="get-the-speech-devices-sdk"></a>Beszédeszközök SDK letöltése
+
+### <a name="android"></a>Android
+
+Az androidos eszközök legújabb verzióját töltse le a [Speech eszközök SDK Androidra](https://aka.ms/sdsdk-download-android).
+
+### <a name="windows"></a>Windows
+
+A Windows a mintaalkalmazás verzióként többplatformos Java-alkalmazás. Töltse le a legújabb verzióját a [JRE Speech Devices SDK-val](https://aka.ms/sdsdk-download-JRE).
+Az alkalmazás össze lett a Speech SDK-csomagot, és az Eclipse a Java IDE (v4) a 64 bites Windows. és 64 bites Java 8 futtatókörnyezetben (JRE) fut.
+
+### <a name="linux"></a>Linux
+
+Linux-mintaalkalmazás verzióként többplatformos Java-alkalmazás. Töltse le a legújabb verzióját a [JRE Speech Devices SDK-val](https://aka.ms/sdsdk-download-JRE).
+Az alkalmazás össze lett a Speech SDK-csomagot, és az Eclipse a Java IDE (v4) 64 bites Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9). és 64 bites Java 8 futtatókörnyezetben (JRE) fut.
 
 ## <a name="next-steps"></a>További lépések
 

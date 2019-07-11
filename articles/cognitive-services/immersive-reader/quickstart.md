@@ -1,20 +1,21 @@
 ---
-title: 'Gyors útmutató: Hozzon létre egy webalkalmazást, amely elindítja a ragadó Reader (C#)'
+title: 'Gyors útmutató: Hozzon létre egy webalkalmazást, amely elindítja a ragadó olvasóhozC#'
 titlesuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban-webalkalmazás létrehozása az alapoktól, és adja hozzá a ragadó olvasók funkciói.
+description: Ebben a rövid-webalkalmazás létrehozása az alapoktól, és adja hozzá a ragadó olvasó API-funkciókat.
 services: cognitive-services
 author: metanMSFT
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: a4da8d23e78fde9b936bcf9258eec137bcdf9231
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 3b408de6b60e7e7704ee228b52c399e5b80e3a9e
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704137"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718416"
 ---
 # <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>Gyors útmutató: Hozzon létre egy webalkalmazást, amely elindítja a ragadó Reader (C#)
 

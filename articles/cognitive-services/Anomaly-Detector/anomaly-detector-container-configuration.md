@@ -1,20 +1,21 @@
 ---
-title: Tárolók – Anomáliadetektálási érzékelő konfigurálása
+title: Tároló konfigurálása Anomáliadetektálási detector használatával API-hoz
 titleSuffix: Azure Cognitive Services
-description: Az Anomáliadetektálási detector használatával tároló-futtatókörnyezet segítségével konfigurálható a `docker run` parancssori argumentumokat. Ez a tároló rendelkezik néhány választható beállítások mellett számos szükséges beállításokat.
+description: Az Anomáliadetektálási detector használatával API tároló-futtatókörnyezet segítségével konfigurálható a `docker run` parancssori argumentumokat. Ez a tároló rendelkezik néhány választható beállítások mellett számos szükséges beállításokat.
 services: cognitive-services
 author: IEvangelist
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 50f62fa20ea9b52db79160d9d2f3a6fa463079b7
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: cb0a12df6696e76050d4c53bd75e07134b3dc27c
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593103"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721732"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Anomáliadetektálási detector használatával tárolók konfigurálása
 
@@ -58,7 +59,7 @@ Ez a beállítás a következő helyen található:
 
 * Az Azure Portalon: **Anomáliadetektálási detector használatával** áttekintése, címkével `Endpoint`
 
-|Kötelező| Name (Név) | Adattípus | Leírás |
+|Szükséges| Name (Név) | Adattípus | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Billing` | Karakterlánc | A számlázás végpont URI azonosítója<br><br>Példa:<br>`Billing=https://westus2.api.cognitive.microsoft.com` |
 
@@ -89,8 +90,8 @@ A gazdagép csatlakoztatási helye a pontos szintaxisa a gazdagép operációs r
 
 |Optional| Name (Név) | Adattípus | Leírás |
 |-------|------|-----------|-------------|
-|Nem engedélyezett| `Input` | String | Anomáliadetektálási detector használatával tárolók ez nem használható.|
-|Optional| `Output` | String | A kimeneti csatlakoztatási célját. Az alapértelmezett érték `/output`. Ez az a hely a naplófájlok. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Nem engedélyezett| `Input` | Karakterlánc | Anomáliadetektálási detector használatával tárolók ez nem használható.|
+|Optional| `Output` | Sztring | A kimeneti csatlakoztatási célját. Az alapértelmezett érték `/output`. Ez az a hely a naplófájlok. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Példa docker-parancsok futtatása 
 

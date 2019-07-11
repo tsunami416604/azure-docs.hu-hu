@@ -1,7 +1,7 @@
 ---
-title: Mit jelent a Personalizer
+title: Mi a Personalizer?
 titleSuffix: Azure Cognitive Services
-description: Az Azure Personalizer egy felhőalapú API-szolgáltatás, amely lehetővé teszi, hogy válassza ki a legoptimálisabb megjeleníthető valós idejű viselkedésük képzés a felhasználók számára.
+description: Personalizer egy olyan felhőalapú API szolgáltatás, amely lehetővé teszi, hogy válassza ki a legoptimálisabb megjeleníthető valós idejű viselkedésük képzés a felhasználók számára.
 services: cognitive-services
 author: edjez
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 7eb85aa38815b8fcdfbe68518122563e1b579e17
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e5781af44732782936e1e1a87bf70bd4a9d4804d
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150396"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722287"
 ---
-# <a name="what-is-personalizer"></a>Mit jelent a Personalizer?
+# <a name="what-is-personalizer"></a>Mi a Personalizer?
 
-Az Azure Personalizer egy felhőalapú API-szolgáltatás, amely lehetővé teszi, hogy válassza ki a legoptimálisabb megjeleníthető valós idejű viselkedésük képzés a felhasználók számára.
+Az Azure Personalizer egy felhőalapú API-szolgáltatás, amellyel a valós idejű viselkedésükből tanulva kiválaszthatja a felhasználók számára megjelenítendő legjobb élményt.
 
 * A felhasználók és a tartalom információt biztosítanak, és a felső műveletet a megjelenítéséhez a felhasználók számára. 
 * Nincs szükség, amelyek megtisztítják és adatok címke Personalizer használata előtt.

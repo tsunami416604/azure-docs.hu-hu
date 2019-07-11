@@ -1,5 +1,5 @@
 ---
-title: Telepítse és futtassa a tároló - űrlap felismerő
+title: Telepítése és futtatása tárolója űrlap felismerő
 titleSuffix: Azure Cognitive Services
 description: Megismerheti, hogyan használhatja a Form Recognizer-tárolót az űrlap- és táblaadatok elemzéséhez.
 author: IEvangelist
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: f88cfb1d74897abddeaea6aaec9d7f7b1960be6e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a251e97d671c4aad0aebb1d6c3349cdc09444308
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704209"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718483"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Telepítse és futtassa az űrlap felismerő tárolók
 
@@ -32,7 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Mielőtt használná az űrlap felismerő tárolók, a következő előfeltételeknek kell megfelelnie:
 
-|Kötelező|Cél|
+|Szükséges|Cél|
 |--|--|
 |Docker-motor| A Docker-motor telepítve van szüksége egy [gazdaszámítógép](#the-host-computer). A docker csomagokat biztosít, a Docker-környezet konfigurálása a [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), és [Linux](https://docs.docker.com/engine/installation/#supported-platforms). A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> A Windows a Linux-tárolók támogatása is Docker kell konfigurálni.<br><br>|
 |Docker-ismeretek | A Docker fő fogalmaira, például a beállításjegyzékek, adattárak, tárolók, és tárolórendszerképeket és alapszintű ismerete alapvető ismeretekkel kell `docker` parancsokat.|
@@ -104,7 +104,7 @@ Miután a tároló-e a a [gazdaszámítógép](#the-host-computer), a következ�
 
 Használja a [futtatása docker](https://docs.docker.com/engine/reference/commandline/run/) parancs futtatása bármely három tárolóra. A parancs paraméterei a következők:
 
-| Helyőrző | Érték |
+| Helyőrző | Value |
 |-------------|-------|
 |{BILLING_KEY} | Ez a kulcs segítségével a tárolót. Az Azure Portalon elérhető **űrlap felismerő kulcsok** lapot.  |
 |{BILLING_ENDPOINT_URI} | A számlázási végpont URI érték érhető el az Azure Portalon **felismerő áttekintés képernyő** lapot.|
@@ -292,7 +292,7 @@ Ezek a beállítások kapcsolatos további információkért lásd: [tárolók k
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ebben a cikkben megtanulta, fogalmak és letöltése, telepítése és a futó tárolók űrlap felismerő munkafolyamat. Összegezve:
 

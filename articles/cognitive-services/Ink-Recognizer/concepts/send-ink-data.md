@@ -1,6 +1,6 @@
 ---
-title: Szabadkézi adatokat küldeni a szabadkézi felismerő API
-titlesuffix: Azure Cognitive Services
+title: Tintaadatok küldése az Ink Recognizer API-nak
+titleSuffix: Azure Cognitive Services
 description: További információ a különböző alkalmazások esetében az Ink-elemző API hívása
 services: cognitive-services
 author: erhopf
@@ -10,16 +10,16 @@ ms.subservice: ink-recognizer
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 5a212c7332d085c15baabef8650572162c47903d
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 23431a6171f9ce4d2550ee62ac84679ce36126de
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027095"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721760"
 ---
-# <a name="send-ink-data-to-the-ink-recognizer-api"></a>Szabadkézi adatokat küldeni a szabadkézi felismerő API 
+# <a name="send-ink-data-to-the-ink-recognizer-api"></a>Tintaadatok küldése az Ink Recognizer API-nak 
 
-A technológiákat, amelyek lehetővé teszik a digitális formában, például a kézírás-felismerés és rajzok bemeneti digitális szabadkézi hivatkozik. Ez általában úgy valósul meg, egy digitalizáló, amely rögzíti a bemeneti eszközökről, például a toll típusú áthelyezések használatával. Mivel eszközök bővítsék gazdag digitális szabadkézi, mesterséges intelligencia és machine learning lehetővé teszi, hogy a felismerés írt bármilyen típusú és a szöveg bármilyen környezetben. A tinta felismerő API segítségével, amellyel elküldhetők tollvonások, és a velük kapcsolatos részletes információkhoz juthat. 
+A digitális szabadkézi műveletek olyan technológiák, amelyek lehetővé teszik a bemenetek, például a kézírás és a rajzok digitális ábrázolását. Ez általában úgy valósul meg, egy digitalizáló, amely rögzíti a bemeneti eszközökről, például a toll típusú áthelyezések használatával. Mivel az eszközök folyamatosan bővítik a digitális szabadkézi műveletek használati körét, a mesterséges intelligencia és a gépi tanulás bármilyen környezetben lehetővé teszi az írott alakok és szövegek felismerését. A tinta felismerő API segítségével, amellyel elküldhetők tollvonások, és a velük kapcsolatos részletes információkhoz juthat. 
 
 ## <a name="the-ink-recognizer-api-vs-ocr-services"></a>A tinta felismerő API vs. Optikai Karakterfelismerés szolgáltatások
 

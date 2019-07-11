@@ -1,5 +1,6 @@
 ---
 title: 'Oktatóanyag: Streamelési adatok rendellenességeinek észlelése az Azure Databricks használatával'
+titleSuffix: Azure Cognitive Services
 description: Az Anomáliadetektálási detector használatával API és az Azure Databricks használatával figyelheti az adatok a rendellenességeket.
 titlesuffix: Azure Cognitive Services
 services: cognitive-services
@@ -10,12 +11,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 05/08/2019
 ms.author: aahi
-ms.openlocfilehash: 7009771f2b647bb582b3d8091edce99fe901a9f1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8d3f5d0e10fadd31fd8bde77339b872c1b90451f
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080784"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721468"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Oktatóanyag: Streamelési adatok rendellenességeinek észlelése az Azure Databricks használatával
 
@@ -74,7 +75,7 @@ Ebben a szakaszban, hozzon létre egy Azure Databricks munkaterületen a [az Azu
     |**Munkaterület neve**     | Adja meg a Databricks-munkaterület nevét.        |
     |**Előfizetés**     | Válassza ki a legördülő menüből a saját Azure-előfizetését.        |
     |**Erőforráscsoport**     | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni. Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. További információért olvassa el az [Azure-erőforráscsoportok áttekintését](../../../azure-resource-manager/resource-group-overview.md). |
-    |**Hely**     | Válassza ki **USA keleti RÉGIÓJA 2** vagy bármely más választható régiók a következők egyikét. Lásd: [elérhető Azure-szolgáltatások régió szerint](https://azure.microsoft.com/regions/services/) régiók rendelkezésre állása számára.        |
+    |**Location**     | Válassza ki **USA keleti RÉGIÓJA 2** vagy bármely más választható régiók a következők egyikét. Lásd: [elérhető Azure-szolgáltatások régió szerint](https://azure.microsoft.com/regions/services/) régiók rendelkezésre állása számára.        |
     |**Tarifacsomag**     |  Válassza a **Standard** vagy a **Prémium** előfizetést. Ne adja meg **próbaverzió**. További információkért a csomagokkal kapcsolatban tekintse meg a [Databricks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/databricks/).       |
 
     Kattintson a **Létrehozás** gombra.
@@ -165,10 +166,10 @@ Ebben az oktatóanyagban használja a [Azure Cognitive Services Anomáliadetekt�
     |Érték |Leírás  |
     |---------|---------|
     |Name (Név)     | Az Anomáliadetektálási detector használatával erőforrás nevét.        |
-    |Előfizetés     | Az Azure-előfizetés az erőforrás társítva lesz.        |
-    |Location egység     | Azure-helyen.        |
+    |Subscription     | Az Azure-előfizetés az erőforrás társítva lesz.        |
+    |Location     | Azure-helyen.        |
     |Tarifacsomag     | Egy tarifacsomagot a szolgáltatáshoz. Anomáliadetektálási detector használatával díjszabással kapcsolatos további információkért lásd: [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/).        |
-    |Erőforráscsoport     | Adja meg, hogy hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévőt.        |
+    |Resource group     | Adja meg, hogy hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévőt.        |
 
 
      Kattintson a **Létrehozás** gombra.

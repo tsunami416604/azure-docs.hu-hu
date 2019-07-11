@@ -1,26 +1,27 @@
 ---
-title: Kapcsolatos ragadó olvasó
-titlesuffix: Azure Cognitive Services
-description: További információ a ragadó olvasó
+title: Mi az a ragadó olvasó API-t?
+titleSuffix: Azure Cognitive Services
+description: Ismerje meg az API-ragadó olvasó.
 services: cognitive-services
 author: metanMSFT
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 38056f701b76f3fc2cf1f617a6977321445f78ff
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 4500b6213c549ab9977fe8f2d849ffa8089d04b9
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296790"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718439"
 ---
-# <a name="what-is-immersive-reader"></a>Mit jelent a ragadó olvasó?
+# <a name="what-is-immersive-reader"></a>Mi az a Modern olvasó?
 
 A [ragadó olvasó](https://www.onenote.com/learningtools) szélsőértékeket is beleértve megtervezett eszköz, amely megvalósítja az olvasó szövegértést az újonnan felbukkanó olvasók, nyelvet tanuló, és a tanulási például dyslexia különbségek rendelkező személyek bevált módszereket.
 
-A webalkalmazás ragadó olvasó használhatja a ragadó olvasó SDK-val.
+Webalkalmazásában a Modern olvasó SDK-jával használhatja a Modern olvasót.
 
 ## <a name="what-does-immersive-reader-do"></a>Mire ragadó olvasó?
 
@@ -28,7 +29,7 @@ A ragadó olvasó felhasználóbaráttá olvasási mindenki számára tervezték
 
 * A minimális olvasó nézetben látható tartalom
 
-  ![Immersive Reader](./media/immersive-reader.png)
+  ![Modern olvasó](./media/immersive-reader.png)
 
 * Megjeleníti a gyakran használt szó képek
 
@@ -56,7 +57,7 @@ A ragadó olvasó egy önálló webes alkalmazás, amely meghívásakor olvasó 
 
 ## <a name="next-steps"></a>További lépések
 
-Első lépések a ragadó olvasó:
+A Modern olvasó használatának első lépései:
 
 * Nyissa meg a [a rövid útmutató](./quickstart.md)
 * Fedezze fel a [ragadó olvasó SDK a Githubon](https://github.com/Microsoft/immersive-reader-sdk)

@@ -1,20 +1,21 @@
 ---
-title: Telepítse és futtassa a tárolók – Anomáliadetektálási detector használatával
+title: Hogyan telepítheti és futtathatja a tárolók Anomáliadetektálási detector használatával API használata
 titleSuffix: Azure Cognitive Services
 description: Az Anomáliadetektálási detector használatával API korszerű algoritmusokat segítségével azonosíthatja a rendellenességeket az idősoros adatokat.
 services: cognitive-services
 author: IEvangelist
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 254173df33bdc82b7de87328a715954c1a6993d7
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: f84f1bab048630d6dd45085b3d082004d10bb6a8
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593113"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721709"
 ---
 # <a name="install-and-run-anomaly-detector-containers"></a>Telepítse és futtassa a tárolók Anomáliadetektálási detector használatával
 
@@ -33,7 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Anomáliadetektálási detector használatával tárolók használata előtt a következő előfeltételeknek kell megfelelnie:
 
-|Kötelező|Cél|
+|Szükséges|Cél|
 |--|--|
 |Docker-motor| A Docker-motor telepítve van szüksége egy [gazdaszámítógép](#the-host-computer). A docker csomagokat biztosít, a Docker-környezet konfigurálása a [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), és [Linux](https://docs.docker.com/engine/installation/#supported-platforms). A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> **A Windows**, a Docker Linux-tárolók támogatása is kell konfigurálni.<br><br>|
 |Docker-ismeretek | A Docker fő fogalmaira, például a beállításjegyzékek, adattárak, tárolók, és tárolórendszerképeket, valamint alapszintű ismerete alapvető ismeretekkel kell `docker` parancsokat.| 
@@ -97,7 +98,7 @@ Ha a tároló a [gazdaszámítógép](#the-host-computer), a következő eljár�
 
 Használja a [futtatása docker](https://docs.docker.com/engine/reference/commandline/run/) parancs futtatása bármely három tárolóra. A parancs paraméterei a következők:
 
-| Helyőrző | Érték |
+| Helyőrző | Value |
 |-------------|-------|
 |{BILLING_KEY} | Ezt a kulcsot szolgál a tárolót, és az Azure Portalon Anomáliadetektálási detector használatával kulcsok lapján található.  |
 |{BILLING_ENDPOINT_URI} | A számlázási végpont URI azonosítóját az Azure Portalon Anomáliadetektálási detector használatával – Áttekintés lapon érhető el.|
@@ -181,7 +182,7 @@ Ezek a beállítások kapcsolatos további információkért lásd: [tárolók k
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ebben a cikkben megtanulta, fogalmak és a munkafolyamat letöltése, telepítése és a futó tárolók Anomáliadetektálási detector használatával. Összegezve:
 

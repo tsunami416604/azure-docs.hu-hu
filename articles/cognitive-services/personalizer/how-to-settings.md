@@ -1,5 +1,5 @@
 ---
-title: Beállítások konfigurálása
+title: Beállítások - Personalizer konfigurálása
 titleSuffix: Azure Cognitive Services
 description: Szolgáltatás konfigurációja magában foglalja, hogyan kezeli az a szolgáltatás a felhőtechnológia, milyen gyakran a szolgáltatást ismerteti, milyen gyakran van retrained a modell és tárolt adatok mennyiségétől.
 services: cognitive-services
@@ -7,15 +7,15 @@ author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 7b559dc9a5e5c5bb5dbf7a2dc1e40bf6a0df5ec9
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 6f5028f093a9fd8c17928c2167039599d4db897c
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626259"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722339"
 ---
 # <a name="personalizer-settings"></a>Personalizer beállításai
 

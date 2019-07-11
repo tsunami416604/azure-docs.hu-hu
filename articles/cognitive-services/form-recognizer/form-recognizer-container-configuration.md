@@ -1,5 +1,5 @@
 ---
-title: Tároló - űrlap felismerő konfigurálása
+title: Űrlap felismerő tároló konfigurálása
 titleSuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan konfigurálhatja a képernyő felismerő tároló elemezni az űrlap és a táblák adatait.
 author: IEvangelist
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: e4b6a852ece3060ecf866d66d32f213355d99950
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 7752b09dd1bf20d796b19d03e62426b098486c39
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592664"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718457"
 ---
 # <a name="configure-form-recognizer-containers"></a>Űrlap felismerő tárolók konfigurálása
 
@@ -45,7 +45,7 @@ A `Billing` beállítás határozza meg a végpont URI-t, a _űrlap felismerő_ 
 
 Ezt a beállítást, az Azure Portalon, az annak **űrlap felismerő áttekintése**alatt **végpont**.
 
-|Kötelező| Name (Név) | Adattípus | Leírás |
+|Szükséges| Name (Név) | Adattípus | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Billing` | Karakterlánc | A számlázás végpont URI azonosítója<br><br>Példa:<br>`Billing=https://westus2.api.cognitive.microsoft.com/` |
 
@@ -76,8 +76,8 @@ A gazdagép csatlakoztatási helye a pontos szintaxisa a gazdagép operációs r
 
 |Optional| Name (Név) | Adattípus | Leírás |
 |-------|------|-----------|-------------|
-|Kötelező| `Input` | String | A bemeneti csatlakoztatási célját. Az alapértelmezett érték `/input`.    <br><br>Példa:<br>`--mount type=bind,src=c:\input,target=/input`|
-|Kötelező| `Output` | String | A kimeneti csatlakoztatási célját. Az alapértelmezett érték `/output`.  <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Szükséges| `Input` | Sztring | A bemeneti csatlakoztatási célját. Az alapértelmezett érték `/input`.    <br><br>Példa:<br>`--mount type=bind,src=c:\input,target=/input`|
+|Szükséges| `Output` | Sztring | A kimeneti csatlakoztatási célját. Az alapértelmezett érték `/output`.  <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Példa docker-parancsok futtatása
 
@@ -88,7 +88,7 @@ Az alábbi példák bemutatják, hogyan írhat, és használja a konfigurációs
 
 Cserélje le a(z)_argument_name_} a következő táblázatban a saját értékeire:
 
-| Helyőrző | Érték |
+| Helyőrző | Value |
 |-------------|-------|
 |{BILLING_KEY} | A kulcsot, amellyel a tárolót. Az Azure Portalon űrlap felismerő kulcsok lapján érhető el.  |
 |{BILLING_ENDPOINT_URI} | A számlázási végpont URI azonosítóját az Azure Portalon űrlap felismerő áttekintése oldalon érhető el.|
