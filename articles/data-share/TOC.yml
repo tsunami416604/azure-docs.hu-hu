@@ -1,0 +1,39 @@
+- name: Az Azure Data Share előzetes verziójának dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az az Azure Data Share előzetes verzió?
+      href: overview.md
+- name: Oktatóanyagok
+  expanded: true
+  items:
+    - name: Adatok megosztása
+      href: share-your-data.md
+    - name: Adatok elfogadása és fogadása
+      href: subscribe-to-data-share.md
+- name: Alapelvek
+  items:
+    - name: Az Azure Data Share terminológiája
+      href: terminology.md
+    - name: Szerepkörök és követelmények
+      href: concepts-roles-permissions.md
+- name: Útmutatók
+  items:
+    - name: Figyelés
+      href: how-to-monitor.md
+    - name: Adathalmaz-leképezések konfigurálása
+      href: how-to-configure-mapping.md
+    - name: Hibaelhárítás
+      href: data-share-troubleshoot.md
+- name: További források
+  items:
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/tag/data-share'
+    - name: Microsoft Tech Community
+      href: 'https://techcommunity.microsoft.com/'
+    - name: Termékkel kapcsolatos visszajelzés
+      href: 'https://feedback.azure.com/forums/922759-azure-data-share-public-preview'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=data-share'

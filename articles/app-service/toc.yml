@@ -105,6 +105,10 @@
           href: web-sites-php-configure.md
         - name: A Java konfigurálása
           href: configure-language-java.md
+        - name: Csatlakozás helyszíni erőforrásokhoz
+          href: web-sites-integrate-with-vnet.md
+        - name: Azure Storage konfigurálása (tároló)
+          href: configure-connect-to-azure-storage.md
     - name: Üzembe helyezés az Azure-ban
       items:
         - name: Az alkalmazás üzembe helyezése

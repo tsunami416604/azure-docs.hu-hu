@@ -1,0 +1,51 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Az Azure Data Share előzetes verziójának dokumentációja
+metadata:
+  title: 'Az Azure Data Share előzetes verziójának dokumentációja – oktatóanyagok, útmutatók'
+  description: Az Azure Data Share előzetes verziója egy megbízható és biztonságos szolgáltatás az adatok külső szervezetekkel történő megosztására.
+  author: joannapea
+  ms.author: joanpo
+  ms.service: data-share
+  ms.topic: landing-page
+  ms.date: 07/10/2019
+abstract:
+  description: '<p>Az Azure Data Share előzetes verziója egy megbízható és biztonságos szolgáltatás az adatok külső szervezetekkel történő megosztására. Válassza ki a megosztani kívánt adathalmazt, adjon hozzá címzetteket, és máris megoszthatja adatait úgy, hogy közben szabályozhatja, monitorozhatja és felügyelheti az adatmegosztási viszonyokat. </p><p>Ismerje meg oktatóanyagainkból az Azure Data Share használatát.</p>'
+  aside:
+    image:
+      alt: null
+      height: 110
+      src: media/azure-friday.png
+      width: 250
+    title: Az Azure Data Share az Azure Fridayen
+    href: 'https://channel9.msdn.com/Shows/Azure-Friday/Share-data-simply-and-securely-using-Azure-Data-Share/player?format=ny'
+    width: 250
+sections:
+  - title: Útmutatók
+    items:
+      - type: paragraph
+        text: 'Ismerje meg a következő útmutatókból többek között azt, hogyan monitorozhatja adatmegosztását, konfigurálhatja adathalmaz-leképezéseit vagy vehet fel címzetteket:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/data-share/media/index/portal.svg
+            text: Az Azure Data Share monitorozása
+            href: /azure/data-share/how-to-monitor
+          - image:
+              src: /azure/data-share/media/index/portal.svg
+            text: Adathalmaz-leképezés konfigurálása
+            href: /azure/data-share/how-to-configure-mapping
+          - image:
+              src: /azure/data-share/media/index/portal.svg
+            text: Az Azure Data Share hibaelhárítása
+            href: /azure/data-share/data-share-troubleshoot
+  - title: Részletes útmutatók
+    items:
+      - type: paragraph
+        text: Útmutató az adatok Azure Data Share használatával történő megosztásához
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="share-your-data">Adatok megosztása az Azure Data Share használatával</a>
+          - html: <a href="subscribe-to-data-share">Adatok elfogadása és fogadása az Azure Data Share használatával</a>

@@ -53,6 +53,8 @@
       href: signalr-concept-performance.md
     - name: Hitelesítés
       href: signalr-concept-authenticate-oauth.md
+    - name: Eseménykezelés
+      href: signalr-concept-event-grid-integration.md
 - name: Útmutatók
   items:
     - name: Méretezés
@@ -67,6 +69,8 @@
       items:
         - name: Azure Functions-kötések
           href: signalr-concept-azure-functions.md
+        - name: Event Grid-integráció
+          href: signalr-howto-event-grid-integration.md
 - name: Referencia
   items:
     - name: Azure CLI

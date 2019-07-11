@@ -119,6 +119,9 @@
         - name: Kafka-események feldolgozása
           href: ../event-hubs/event-hubs-kafka-stream-analytics.md
           maintainContext: true
+        - name: Event Hubs-adatok feldolgozása
+          href: ../event-hubs/process-data-azure-stream-analytics.md
+          maintainContext: true
         - name: Térinformatikai forgatókönyvek
           href: geospatial-scenarios.md
     - name: Figyelés

@@ -142,6 +142,9 @@
         - name: Biztonsági ellenőrzőlista
           displayName: 'identity, active directory, password'
           href: azure-ad-secure-steps.md
+        - name: Jelszó nélküli hitelesítés kiválasztása
+          displayName: 'identity, active directory, passwordless'
+          href: azure-ad-passwordless.md
         - name: Ajánlott eljárások
           displayName: 'password, identity, active directory'
           href: azure-security-identity-management-best-practices.md
