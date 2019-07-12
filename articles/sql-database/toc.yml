@@ -30,6 +30,8 @@
       items:
         - name: Kiszolgálószintű IP-tűzfalszabályok
           href: sql-database-server-level-firewall-rule.md
+        - name: Nyilvános végpont konfigurálása felügyelt példányban
+          href: sql-database-managed-instance-public-endpoint-configure.md
         - name: Ügyfél–virtuálisgép-kapcsolat felügyelt példányhoz
           href: sql-database-managed-instance-configure-vm.md
         - name: Pont–hely-kapcsolat felügyelt példányhoz
@@ -512,8 +514,6 @@
           href: sql-database-managed-instance-threat-detection.md
         - name: Alkalmazások csatlakoztatása
           href: sql-database-managed-instance-connect-app.md
-        - name: Nyilvános végpont konfigurálása
-          href: sql-database-managed-instance-public-endpoint-configure.md
     - name: Adatok betöltése és áthelyezése
       items:
         - name: Adatbázis másolása az Azure-on belül

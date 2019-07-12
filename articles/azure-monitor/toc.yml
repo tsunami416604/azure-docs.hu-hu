@@ -358,6 +358,8 @@
                       href: app/status-monitor-v2-api-get-status.md
                     - name: API Set-ApplicationInsightsMonitoringConfig
                       href: app/status-monitor-v2-api-set-config.md
+                    - name: API Start-ApplicationInsightsMonitoringTrace
+                      href: app/status-monitor-v2-api-start-trace.md
                 - name: Asztali Windows
                   href: app/windows-desktop.md
                 - name: Konzol
@@ -460,6 +462,19 @@
             - name: Alkalmazásadatok küldése a Log Analyticsbe
               href: platform/app-insights-connector.md
             - name: Alkalmazásadatok exportálása
+              items:
+                - name: Folyamatos exportálás
+                  href: app/export-telemetry.md
+                  items:
+                    - name: Kódminták
+                      items:
+                        - name: SQL-exportálás a Stream Analytics használatával
+                          href: app/code-sample-export-sql-stream-analytics.md
+                        - name: Stream Analytics-exportálás
+                          href: app/export-stream-analytics.md
+                - name: Adatmodell exportálása
+                  href: app/export-data-model.md
+            - name: Hibaelhárítás
               items:
                 - name: Nincs adat a .NET-hez
                   href: app/asp-net-troubleshoot-no-data.md

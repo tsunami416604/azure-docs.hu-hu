@@ -3,45 +3,97 @@
 - name: Áttekintés
   items:
     - name: Az Azure Migrate bemutatása
-      href: migrate-overview.md
+      href: migrate-services-overview.md
+    - name: Újdonságok
+      href: whats-new.md
 - name: Oktatóanyagok
   items:
-    - name: VMware virtuális gépek felderítése és értékelése
-      href: tutorial-assessment-vmware.md
+    - name: VMware virtuális gép felmérése és migrálása
+      items:
+        - name: VMware előkészítése felméréshez és migráláshoz
+          href: tutorial-prepare-vmware.md
+        - name: VMware virtuális gépek felmérése migráláshoz
+          href: tutorial-assess-vmware.md
+        - name: VMware virtuális gépek migrálása
+          items:
+            - name: A VMware virtuális gépek migrálási lehetőségeinek bemutatása
+              href: server-migrate-overview.md
+            - name: VMware virtuális gépek migrálása ügynök nélkül
+              href: tutorial-migrate-vmware.md
+            - name: VMware virtuális gépek migrálása ügynökalapú migrálással
+              href: tutorial-migrate-vmware-agent.md
+    - name: Hyper-V felmérése és migrálása
+      items:
+        - name: Hyper-V előkészítése felméréshez és migráláshoz
+          href: tutorial-prepare-hyper-v.md
+        - name: Hyper-V virtuális gépek felmérése migráláshoz
+          href: tutorial-assess-hyper-v.md
+        - name: Hyper-V virtuális gépek migrálása
+          href: tutorial-migrate-hyper-v.md
+    - name: Fizikai kiszolgálók és virtuális gépek migrálása
+      href: tutorial-migrate-physical-virtual-machines.md
 - name: Alapelvek
   items:
-    - name: Tudnivalók a gyűjtőről
-      href: concepts-collector.md
-    - name: A gyűjtő verziófrissítései
-      href: concepts-collector-upgrade.md
+    - name: Gyakori kérdések
+      href: resources-faq.md
+    - name: Támogatási mátrixok
+      items:
+        - name: Az Azure Migrate támogatási mátrixa
+          href: migrate-support-matrix.md
+        - name: A VMware felmérésének és migrálásának támogatási mátrixa
+          href: migrate-support-matrix-vmware.md
+        - name: A Hyper-V felmérésének és migrálásának támogatási mátrixa
+          href: migrate-support-matrix-hyper-v.md
+    - name: A Hyper-V migrálási architektúrája
+      href: hyper-v-migration-architecture.md
+    - name: Ügynökalapú migrálási architektúra
+      href: agent-based-migration-architecture.md
+    - name: Azure Migrate-berendezés
+      href: migrate-appliance.md
+    - name: Azure Migrate replikációs berendezés
+      href: migrate-replication-appliance.md
+    - name: Ajánlott felmérési eljárások
+      href: best-practices-assessment.md
     - name: Értékelési számítások
       href: concepts-assessment-calculation.md
-    - name: A függőségek vizualizációjának ismertetése
+    - name: Függőségek vizualizációja
       href: concepts-dependency-visualization.md
 - name: Útmutatók
   items:
     - name: Migrálási példák – Contoso-sorozat
       href: contoso-migration-overview.md
-    - name: Nagy méretű környezet felderítése és értékelése
-      href: how-to-scale-assessment.md
-    - name: Gépek csoportosítása
-      href: how-to-create-a-group.md
-    - name: Gépek csoportosítása a gépek függőségeivel
-      href: how-to-create-group-machine-dependencies.md
-    - name: Csoport pontosítása csoportos függőségekkel
-      href: how-to-create-group-dependencies.md
+    - name: Berendezés telepítése VMware-felméréshez/migráláshoz (ügynök nélkül)
+      href: how-to-set-up-appliance-vmware.md
+    - name: Berendezés telepítése Hyper-V-felméréshez/migráláshoz
+      href: how-to-set-up-appliance-hyper-v.md
+    - name: Felmérési/migrálási eszköz hozzáadása első alkalommal
+      href: how-to-add-tool-first-time.md
+    - name: Felmérőeszközök hozzáadása
+      href: how-to-assess.md
+    - name: Migrálási eszközök hozzáadása
+      href: how-to-migrate.md
+    - name: Gépek csoportosítása felméréshez
+      items:
+        - name: Csoport létrehozása
+          href: how-to-create-a-group.md
+        - name: Gépek csoportosítása a gépek függőségeivel
+          href: how-to-create-group-machine-dependencies.md
+        - name: Csoport pontosítása csoportos függőségekkel
+          href: how-to-create-group-dependencies.md
     - name: Értékelés testreszabása
       href: how-to-modify-assessment.md
-    - name: Gépek migrálása értékelés után
-      href: how-to-get-migration-tool.md
-    - name: Nagy számú virtuális gép migrálásának automatizálása
-      href: how-to-migrate-at-scale.md
+    - name: Felmérés és migrálás skálázása
+      items:
+        - name: Hozzáférés nagy számú VMware virtuális géphez
+          href: scale-vmware-assessment.md
+        - name: Hozzáférés nagy számú Hyper-V virtuális géphez
+          href: scale-hyper-v-assessment.md
+        - name: Nagy számú virtuális gép migrálásának automatizálása
+          href: how-to-migrate-at-scale.md
     - name: Az Azure Migrate hibaelhárítása
       href: troubleshooting-general.md
 - name: További források
   items:
-    - name: GYIK
-      href: resources-faq.md
     - name: Migrálás a felhőbevezetési keretrendszerbe
       href: 'https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/index'
     - name: REST API

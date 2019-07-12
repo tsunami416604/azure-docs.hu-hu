@@ -1,7 +1,9 @@
 - name: Nagy teljesítményű feldolgozás dokumentációja
   items:
     - name: Áttekintés
-      href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
+      items:
+        - name: HPC H-sorozatú virtuális gépekhez
+          href: overview.md
     - name: Konfiguráció
       items:
         - name: Optimalizálás Linuxra

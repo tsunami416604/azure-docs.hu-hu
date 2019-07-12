@@ -41,10 +41,14 @@
   items:
     - name: Tárolóregisztrációs adatbázis termékváltozatai
       href: container-registry-skus.md
+    - name: 'Beállításjegyzékek, adattárak és rendszerképek'
+      href: container-registry-concepts.md
     - name: Képtárolás
       href: container-registry-storage.md
     - name: Tartalomformátumok
       href: container-registry-image-formats.md
+    - name: Rendszerképek címkézése és verziószámozása
+      href: container-registry-image-tag-version.md
     - name: Georeplikáció
       href: container-registry-geo-replication.md
     - name: Ajánlott eljárások a beállításjegyzék használatához

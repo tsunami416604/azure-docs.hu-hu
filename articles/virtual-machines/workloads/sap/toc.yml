@@ -128,6 +128,8 @@
           href: dbms_guide_ibm.md
         - name: Az IBM Db2 LUW magas rendelkezésre állása Azure-beli virtuális gépeken SUSE Linux Enterprise Serveren
           href: dbms-guide-ha-ibm.md
+        - name: Az IBM Db2 LUW magas rendelkezésre állása Azure-beli virtuális gépeken Red Hat Enterprise Linux Serveren
+          href: high-availability-guide-rhel-ibm-db2-luw.md
         - name: SAP ASE Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
           href: dbms_guide_sapase.md
         - name: 'SAP MaxDB, liveCache és tartalomkiszolgáló üzembe helyezése az Azure-ban'

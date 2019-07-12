@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4dadc68e78fbaa979751d5bcd04ef481c3ab886
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 1bc3c1325e8379082134e2cbec1586f7d338ee61
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544347"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797939"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Közvetlen összevonás az AD FS és a külső szolgáltatók a vendégfelhasználók számára (előzetes verzió)
 |     |
@@ -62,7 +62,7 @@ Például, ha a közvetlen összevonási beállítása **fabrikam.com**, a hitel
 ### <a name="signing-certificate-renewal"></a>Aláíró tanúsítvány megújítása
 Ha az identitás-szolgáltató beállításait a metaadatok URL-címet ad meg, az Azure AD automatikusan megújul az aláíró tanúsítvány a lejárat után. Azonban ha a tanúsítvány a lejárati idő előtt rotálásakor bármilyen okból, vagy ha nem ad meg a metaadatok URL-címe, az Azure AD nem tudja újíthatja meg. Ebben az esetben kell manuálisan frissítse az aláíró tanúsítvány.
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
-### <a name="can-i-set-up-direct-federation-with-an-unmanaged-email-verified-tenant"></a>Állítható be a közvetlen összevonás (e-mailben ellenőrzött) egy nem felügyelt bérlőt a? 
+### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>Állítható be a tartomány, amelyhez egy nem felügyelt bérlőt (e-mailben ellenőrzött) létezik közvetlen összevonási? 
 Igen. Ha még nem lett ellenőrizve a tartományhoz, és a bérlő még nem esett át egy [alá vonhatja rendszergazdai átvétellel](../users-groups-roles/domains-admin-takeover.md), állíthat be közvetlen összevonási. Nem felügyelt, vagy e-mailben ellenőrzött, bérlők jönnek létre, amikor egy felhasználó egy B2B meghívó visszaváltja vagy hajt végre egy önkiszolgáló, amely jelenleg nem létezik tartomány használata az Azure ad. Beállíthatja a közvetlen összevonás az ezekből a tartományokból. Ha megpróbál egy DNS-ellenőrzött tartomány, az Azure Portalon vagy a PowerShell használatával, közvetlen összevonási beállítása látni fogja a hibát.
 ### <a name="if-direct-federation-and-email-one-time-passcode-authentication-are-both-enabled-which-method-takes-precedence"></a>Ha közvetlen összevonási és e-mailben kapott egyszeri jelszót hitelesítést egyaránt engedélyezve van, melyik módszert élvez elsőbbséget?
 Ha közvetlen összevonási létrejön a a fiókpartner-szervezet, adott szervezet új vendégfelhasználó e-mailben kapott egyszeri jelszót hitelesítésnél élvez elsőbbséget. Vendégfelhasználó meghívó egyszer használatos jelszót hitelesítéssel közvetlen összevonási beállítása előtt válthatók be, ha azok továbbra is egyszeri jelszó-hitelesítés használatára. 
@@ -87,7 +87,7 @@ Az alábbi táblázatokban adott attribútumok és a jogcímeket kell konfigurá
 
 Az identitásszolgáltató SAML 2.0 válasza a szükséges attribútumok:
 
-|Attribútum  |Érték  |
+|Attribútum  |Value  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
 |Célközönség     |`urn:federation:MicrosoftOnline`         |
@@ -96,7 +96,7 @@ Az identitásszolgáltató SAML 2.0 válasza a szükséges attribútumok:
 
 Az identitásszolgáltató a kiállított SAML 2.0-token szükséges jogcímek:
 
-|Attribútum  |Érték  |
+|Attribútum  |Value  |
 |---------|---------|
 |NameID Format     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
 |e-mail cím     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
@@ -121,12 +121,12 @@ Az identitásszolgáltató a WS-Fed üzenetben szükséges attribútumok:
 
 A WS-Fed token az identitásszolgáltató által kiadott jogcímeket szükséges:
 
-|Attribútum  |Érték  |
+|Attribútum  |Value  |
 |---------|---------|
 |ImmutableID     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
 |e-mail cím     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
 
-## <a name="step-2-configure-direct-federation-in-azure-ad"></a>2\. lépés: Az Azure AD közvetlen összevonás konfigurálása 
+## <a name="step-2-configure-direct-federation-in-azure-ad"></a>2\. lépés: Az Azure AD közvetlen összevonás konfigurálása 
 Ezután konfigurálhatja összevonási, az Azure AD-ben az 1. lépésben konfigurált identitásszolgáltatóval. Az Azure AD portálon vagy a PowerShell is használhatja. 5 – 10 percet, mielőtt a közvetlen összevonási házirend érvénybe lép igénybe vehet. Ebben az időszakban ne kísérelje meg a közvetlen összevonási tartomány meghívó beváltása. A következő attribútumok szükség:
 - URI-ját partner identitásszolgáltató kibocsátója
 - Passzív hitelesítési végpontja partner identitásszolgáltató (csak https támogatott)

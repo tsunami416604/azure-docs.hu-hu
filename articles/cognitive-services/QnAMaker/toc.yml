@@ -52,6 +52,10 @@
               href: Quickstarts/get-answer-from-knowledge-base-nodejs.md
             - name: Python
               href: Quickstarts/get-answer-from-knowledge-base-python.md
+    - name: SDK-k használata
+      items:
+        - name: 'C#'
+          href: ./Quickstarts/create-publish-kb-csharp-sdk.md
 - name: Oktatóanyagok
   items:
     - name: Létrehozás és válaszküldés egy tudásbázisból
@@ -169,7 +173,9 @@
       items:
         - name: 'C#'
           items:
-            - name: NuGet
+            - name: Referenciadokumentáció
+              href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet'
+            - name: NuGet-csomag
               href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/'
         - name: Indítás
           items:

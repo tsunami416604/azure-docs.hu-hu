@@ -1,0 +1,59 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Lighthouse-dokumentáció
+metadata:
+  title: Azure Lighthouse-dokumentáció
+  description: Ügyfélerőforrások nagy léptékben történő kezelésének ismertetése
+  author: JnHs
+  manager: carmonm
+  ms.service: lighthouse
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 07/11/2019
+  ms.author: jenhayes
+abstract:
+  description: 'Az Azure Lighthouse által kínált megoldás révén a fejlesztők egyetlen vezérlősík használatával tekinthetik meg, illetve kezelhetik az Azure-t az összes ügyfél esetében, ami nagyobb fokú automatizálást, skálázhatóságot és szabályozást tesz lehetővé.'
+sections:
+  - title: Alapelvek
+    items:
+      - type: paragraph
+        text: Megismerheti az Azure Lighthouse kulcsfontosságú szempontjait.
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="concepts/azure-delegated-resource-management">Az Azure által delegált erőforrás-kezelés</a>
+          - html: <a href="concepts/cross-tenant-management-experience">Bérlők közötti felügyeleti megoldások</a>
+          - html: <a href="concepts/managed-services-offers">Felügyelt szolgáltatási ajánlatok az Azure Marketplace-en</a>
+          - html: <a href="concepts/recommended-security-practices.md">Ajánlott biztonsági eljárások</a>
+          - html: <a href="concepts/cloud-solution-provider.md">A felhőszolgáltatói program megfontolandó szempontjai</a>
+  - title: Útmutatók
+    items:
+      - type: paragraph
+        text: 'Megismerheti, hogyan végezhető el az ügyfelek előkészítése az Azure által delegált erőforrás-kezeléshez, illetve hogyan kell kezelni az erőforrásaikat.'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="how-to/onboard-customer">Ügyfél előkészítése az Azure által delegált erőforrás-kezeléshez</a>
+          - html: <a href="how-to/publish-managed-services-offers">Felügyelt szolgáltatási ajánlatok közzététele az Azure Marketplace-en</a>
+          - html: <a href="how-to/view-manage-customers">Ügyfelek és delegált erőforrások megtekintése és kezelése</a>
+          - html: <a href="how-to/view-manage-service-providers">Szolgáltatók megtekintése és kezelése</a>
+  - title: Példák
+    items:
+      - type: paragraph
+        text: A rendelkezésre álló minták és sablonok áttekintése segíthet az Azure Lighthouse használatában.
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="samples/index">Minták tárgymutatója</a>
+  - title: Referencia
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Nyelvek
+            html: '<p><a href="/dotnet/api/Microsoft.Azure.Management.ManagedServices">Azure SDK for .NET</a></p><p><a href="https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/">.NET-hez készült Azure SDK (NuGet)</a></p><p><a href="https://docs.microsoft.com/python/api/azure-mgmt-managedservices">Pythonhoz készült Azure SDK</a></p><p><a href="https://pypi.org/project/azure-mgmt-managedservices/">Pythonhoz készült Azure SDK (PyPi)</a></p>'
+          - title: REST
+            html: '<p><a href="https://docs.microsoft.com/rest/api/managedservices/">API-referencia</a></p><p><a href="https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/stable/2019-06-01">2019-06-01 (OpenAPI)</a></p>'

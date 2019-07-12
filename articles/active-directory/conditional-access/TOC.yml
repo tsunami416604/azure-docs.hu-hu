@@ -44,7 +44,7 @@
       items:
         - name: MFA megkövetelése rendszergazdáktól
           href: howto-baseline-protect-administrators.md
-        - name: Végfelhasználók védelme
+        - name: Végfelhasználói védelem
           href: howto-baseline-protect-end-users.md
         - name: Régi hitelesítési folyamat letiltása
           href: howto-baseline-protect-legacy-auth.md
@@ -52,22 +52,22 @@
           href: howto-baseline-protect-azure.md
     - name: Régi hitelesítési folyamat letiltása
       href: block-legacy-authentication.md
-    - name: Klasszikus szabályzatok migrálása
-      href: policy-migration.md
-    - name: Bejelentkezési gyakoriság és a böngésző adatmegőrzési vezérlői
-      href: howto-conditional-access-session-lifetime.md
+    - name: Feltételes hozzáférés MFA-regisztrációhoz
+      href: '../authentication/howto-registration-mfa-sspr-combined.md#conditional-access-policies-for-combined-registration'
     - name: Jóváhagyott ügyfélalkalmazások megkövetelése
       href: app-based-conditional-access.md
     - name: Alkalmazásvédelmi szabályzat megkövetelése
       href: app-protection-based-conditional-access.md
     - name: Felügyelt eszközök megkövetelése
       href: require-managed-devices.md
-    - name: Megbízható hálózatok megkövetelése az MFA-regisztrációhoz
-      href: '../authentication/howto-registration-mfa-sspr-combined.md#conditional-access-policies-for-combined-registration'
     - name: MFA megkövetelése a nem megbízható hálózatokból indított hozzáférési kísérletekhez
       href: untrusted-networks.md
     - name: Használati feltételek megkövetelése
       href: terms-of-use.md
+    - name: Bejelentkezési gyakoriság és a böngésző adatmegőrzési vezérlői
+      href: howto-conditional-access-session-lifetime.md
+    - name: Klasszikus szabályzatok migrálása
+      href: policy-migration.md
 - name: Referencia
   items:
     - name: Technikai útmutató

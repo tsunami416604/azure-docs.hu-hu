@@ -126,6 +126,8 @@
   items:
     - name: Szerzői sablonok
       href: /azure/azure-resource-manager/resource-group-authoring-templates?toc=%2fazure%2fnetworking%2ftoc.json
+    - name: Szolgáltatók
+      href: networking-partners-msp.md
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Közösségi sablonok

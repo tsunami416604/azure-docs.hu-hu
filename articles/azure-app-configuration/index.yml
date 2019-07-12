@@ -67,6 +67,7 @@ sections:
         style: unordered
         items:
           - html: <a href="/azure/azure-app-configuration/enable-dynamic-configuration-aspnet-core">Dinamikus konfiguráció engedélyezése az ASP.NET Core-ban</a>
+          - html: <a href="/azure/azure-app-configuration/enable-dynamic-configuration-dotnet-core">Dinamikus konfiguráció engedélyezése .NET Core-alkalmazásban</a>
           - html: <a href="/azure/azure-app-configuration/use-feature-flags-dotnet-core">Funkciójelölők használata .NET Core-alkalmazásokban</a>
           - html: <a href="/azure/azure-app-configuration/manage-feature-flags">Funkciójelölők kezelése</a>
           - html: <a href="/azure/azure-app-configuration/integrate-ci-cd-pipeline">Integráció CI-/CD-folyamattal</a>

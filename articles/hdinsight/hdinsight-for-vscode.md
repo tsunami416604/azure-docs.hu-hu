@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: aadfae9a7b74986fd0ac8857669dd3ccaf62af1f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: ebc41fc74d24708a177bf554029df8384c49df05
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67166138"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657241"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Az Azure HDInsight Tools for Visual Studio Code használata
 
@@ -219,7 +219,7 @@ PySpark interaktív lekérdezések nyújthatja be az alábbi lépéseket követv
 
    ![interaktivní okno pyspark interaktív pythonu](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png) 
 
-7. Adjon meg **"%% info"** , és nyomja le az **Shift + Enter** feladat adatainak megtekintéséhez. (Választható lehetőség)
+7. Adjon meg **"%% info"** , és nyomja le az **Shift + Enter** feladat adatainak megtekintéséhez. (Nem kötelező)
 
    ![feladat adatainak megtekintése](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
 
@@ -304,20 +304,20 @@ Fájl elküldése, figyelje meg, hogy a .vscode mappa automatikusan bekerül a m
     | name | description | type | 
     | :- | :- | :- | 
     | file | Hajtsa végre az alkalmazást tartalmazó fájlt | elérési út (kötelező) | 
-    | proxyUser | Felhasználó megszemélyesítése a feladat futtatásakor | string | 
-    | className | Alkalmazás Java/Spark main osztály | string |
+    | proxyUser | Felhasználó megszemélyesítése a feladat futtatásakor | Karakterlánc | 
+    | className | Alkalmazás Java/Spark main osztály | Karakterlánc |
     | args | Az alkalmazás a parancssori argumentumok | karakterláncok | 
     | jars | Ebben a munkamenetben használandó jars | Karakterlánc listája | 
     | pyFiles | Ebben a munkamenetben használandó Python-fájlok | Karakterlánc listája |
     | files | Ebben a munkamenetben használni kívánt fájlok | Karakterlánc listája |
-    | driverMemory | Az illesztőprogram-folyamathoz használandó memória mennyisége | string |
+    | driverMemory | Az illesztőprogram-folyamathoz használandó memória mennyisége | Karakterlánc |
     | driverCores | Az illesztőprogram-folyamathoz használandó magok száma | int |
-    | executorMemory | Memória / végrehajtó folyamat használata | string |
+    | executorMemory | Memória / végrehajtó folyamat használata | Karakterlánc |
     | executorCores | Minden egyes végrehajtó használandó magok száma | int |
     | numExecutors | A munkamenet elindításához végrehajtóval száma | int |
     | archives | Ebben a munkamenetben használandó archívum | Karakterlánc listája |
-    | queue | A neve, amelyhez a YARN várólista elküldve | string |
-    | name | A munkamenet neve | string |
+    | queue | A neve, amelyhez a YARN várólista elküldve | Karakterlánc |
+    | name | A munkamenet neve | Karakterlánc |
     | conf | Spark-konfiguráció tulajdonságai | Térkép kulcs = érték |
 
     Választörzs   
@@ -326,10 +326,10 @@ Fájl elküldése, figyelje meg, hogy a .vscode mappa automatikusan bekerül a m
     | name | description | type | 
     | :- | :- | :- | 
     | id | A munkamenet-azonosító | int | 
-    | appId | Ez a munkamenet-alkalmazás alkalmazásazonosítója |  String |
+    | appId | Ez a munkamenet-alkalmazás alkalmazásazonosítója |  Sztring |
     | appInfo | Az alkalmazás részletes adatai | Térkép kulcs = érték |
     | log | A napló sorok | karakterláncok |
-    | state |   A batch-állapot | string |
+    | state |   A batch-állapot | Karakterlánc |
 
 >[!NOTE]
 >A hozzárendelt livy-konfigurációs megjelennek a tesztkimenet ablaktáblán amikor küldje el a szkriptet.
@@ -436,7 +436,7 @@ Egy HDInsight-fürtöt az ADLS Gen2 feladat elküldésekor kéri, adja meg a tá
 
 > [!NOTE]
 > 
->Tárfiók elérési kulcsának kaphat az Azure Portalról. További információ: [tárelérési kulcsok megtekintése és másolása](https://docs.microsoft.com/azure/storage/common/storage-account-manage#view-and-copy-access-keys).
+>Tárfiók elérési kulcsának kaphat az Azure Portalról. További információ: [tárelérési kulcsok megtekintése és másolása](https://docs.microsoft.com/azure/storage/common/storage-account-manage#access-keys).
 
 ## <a name="unlink-cluster"></a>Fürt leválasztása
 

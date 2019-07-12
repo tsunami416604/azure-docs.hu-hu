@@ -45,3 +45,9 @@
     - name: 5 – Üzembe helyezés az Azure Service Fabricben
       href: azure-devops-project-service-fabric.md
       maintainContext: true
+    - name: 6 – Üzembe helyezés az Azure Cosmos DB-ben
+      href: azure-devops-project-cosmos-db.md
+      maintainContext: true
+    - name: 7 – Üzembe helyezés az Azure Functionsben
+      href: azure-devops-project-functions.md
+      maintainContext: true

@@ -285,7 +285,7 @@
           href: online-backup-and-restore.md
         - name: Megfelelőség
           href: compliance.md
-    - name: Erőforráskorlátok
+    - name: Szolgáltatáskvóták
       href: concepts-limits.md
 - name: 'Cassandra, MongoDB és egyéb API-k'
   expanded: true
@@ -632,6 +632,8 @@
           href: key-value-store-cost.md
     - name: Hibaelhárítás
       items:
+        - name: Lekérdezési teljesítmény hibaelhárítása
+          href: troubleshoot-query-performance.md
         - name: Java Async SDK-hibák elhárítása
           href: troubleshoot-java-async-sdk.md
         - name: .NET SDK-hibák elhárítása

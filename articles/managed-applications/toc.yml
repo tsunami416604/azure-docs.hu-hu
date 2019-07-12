@@ -11,14 +11,24 @@
       href: publish-managed-app-definition-quickstart.md
     - name: Szolgáltatáskatalógusban elérhető alkalmazás üzembe helyezése
       href: deploy-service-catalog-quickstart.md
+    - name: Egyéni erőforrás-szolgáltató létrehozása
+      href: create-custom-provider.md
 - name: Oktatóanyagok
   items:
+    - name: egyéni szolgáltatók
+      items:
+        - name: Az egyéni szolgáltatók alkalmazásának első lépései
+          href: tutorial-custom-providers-101.md
+        - name: Az Azure Functions beállítása
+          href: tutorial-custom-providers-function-setup.md
+        - name: RESTful-végpont létrehozása
+          href: tutorial-custom-providers-function-authoring.md
+        - name: Egyéni szolgáltatók létrehozása és alkalmazása
+          href: tutorial-custom-providers-create.md
     - name: Definíciós fájlok létrehozása
       href: publish-service-catalog-app.md
     - name: Piactéren elérhető alkalmazás közzététele
       href: publish-marketplace-app.md
-    - name: Egyéni erőforrás-szolgáltató létrehozása
-      href: create-custom-provider.md
 - name: Példák
   items:
     - name: Azure CLI
@@ -29,13 +39,13 @@
       href: sample-projects.md
 - name: Alapelvek
   items:
-    - name: Egyéni Azure erőforrás-szolgáltatók
+    - name: Egyéni Azure-szolgáltatók
       href: custom-providers-overview.md
     - name: Meghatározás megtekintése összetevő
       href: concepts-view-definition.md
 - name: Útmutatók
   items:
-    - name: Egyéni erőforrás-szolgáltatók
+    - name: Egyéni szolgáltatók
       items:
         - name: Egyéni műveletek hozzáadása az Azure-hoz
           href: custom-providers-action-endpoint-how-to.md
@@ -65,12 +75,14 @@
           href: approve-just-in-time-access.md
 - name: Referencia
   items:
-    - name: Egyéni erőforrás-szolgáltatók
+    - name: Egyéni szolgáltatók
       items:
         - name: Egyéni erőforrásproxy – referencia
           href: custom-providers-proxy-resource-endpoint-reference.md
         - name: Egyéni erőforrás-gyorsítótár – referencia
           href: custom-providers-proxy-cache-resource-endpoint-reference.md
+        - name: Egyéni szolgáltató RESTful-végpontja – referencia
+          href: reference-custom-providers-csharp-endpoint.md
     - name: Azure CLI
       href: /cli/azure/managedapp
     - name: PowerShell

@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   ms.date: 07/10/2019
 abstract:
-  description: '<p>Az Azure Data Share előzetes verziója egy megbízható és biztonságos szolgáltatás az adatok külső szervezetekkel történő megosztására. Válassza ki a megosztani kívánt adathalmazt, adjon hozzá címzetteket, és máris megoszthatja adatait úgy, hogy közben szabályozhatja, monitorozhatja és felügyelheti az adatmegosztási viszonyokat. </p><p>Ismerje meg oktatóanyagainkból az Azure Data Share használatát.</p>'
+  description: '<p>Az Azure Data Share előzetes verziója egy megbízható és biztonságos szolgáltatás az adatok külső szervezetekkel történő megosztására. Válassza ki a megosztani kívánt adathalmazt, adjon hozzá címzetteket, és máris megoszthatja adatait úgy, hogy közben szabályozhatja, monitorozhatja és felügyelheti az adatmegosztási viszonyokat. </p><p>Ismerje meg oktatóanyagainkból és útmutatóinkból az Azure Data Share használatát.</p>'
   aside:
     image:
       alt: null
